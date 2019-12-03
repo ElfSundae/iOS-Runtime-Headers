@@ -6,6 +6,7 @@
     UIColor * _actionsColor;
     bool  _allowsActions;
     UIView * _badgeView;
+    bool  _needsUpdateTouchAreas;
     bool  _shouldShowBadge;
     bool  _shouldShowTransportButtons;
     UIImageView * _standardStarView;
@@ -18,6 +19,7 @@
 @property (nonatomic, retain) UIColor *actionsColor;
 @property (nonatomic) bool allowsActions;
 @property (nonatomic, retain) UIView *badgeView;
+@property (nonatomic) bool needsUpdateTouchAreas;
 @property (nonatomic) bool shouldShowBadge;
 @property (nonatomic, readonly) bool shouldShowStar;
 @property (nonatomic) bool shouldShowTransportButtons;
@@ -38,6 +40,8 @@
 - (id)badgeView;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (void)layoutSubviews;
+- (bool)needsUpdateTouchAreas;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (void)prepareForReuse;
 - (id)rightMostView;
@@ -45,6 +49,7 @@
 - (void)setAllowsActions:(bool)arg1;
 - (void)setBadgeView:(id)arg1;
 - (void)setCardGroupItem:(id)arg1;
+- (void)setNeedsUpdateTouchAreas:(bool)arg1;
 - (void)setShouldShowBadge:(bool)arg1;
 - (void)setShouldShowTransportButtons:(bool)arg1;
 - (bool)shouldPerformDefaultAction;

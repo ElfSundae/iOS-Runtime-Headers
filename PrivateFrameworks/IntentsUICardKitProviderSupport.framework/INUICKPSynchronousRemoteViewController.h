@@ -22,6 +22,7 @@
 + (void)requestInstanceWithInfo:(id)arg1 configuration:(id)arg2 synchronousRemoteViewControllerDelegate:(id)arg3 reply:(id /* block */)arg4;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)_interaction;
 - (id)_minimumSizesBySystemVersion;
 - (id)cachedRepresentedParameters;

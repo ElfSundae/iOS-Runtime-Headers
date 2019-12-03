@@ -24,7 +24,6 @@
 - (void)_startNotificationCallbackListenerWithMachServiceName:(id)arg1;
 - (void)_stopNotificationCallbackListener;
 - (void)addNotification:(id)arg1;
-- (void)addSectionSubtypeWithDescriptor:(id)arg1;
 - (void)dealloc;
 - (id)delegate;
 - (id)init;
@@ -35,7 +34,6 @@
 - (void)notificationWasDismissed:(id)arg1;
 - (void)removeNotificationWithIdentifier:(id)arg1;
 - (void)removeNotificationsWithEventIdentifier:(id)arg1;
-- (void)removeSectionSubtypeWithDescriptor:(id)arg1;
 - (void)setDelegate:(id)arg1;
 
 @end

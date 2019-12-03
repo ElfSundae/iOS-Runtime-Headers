@@ -9,22 +9,23 @@
     unsigned long long  _indexOfFirstTrailingColumn;
     NSMutableArray * _labels;
     TLKGridLayoutManager * _manager;
+    bool  _needsSizingPass;
     TLKTableRow * _tableRow;
 }
 
-@property (retain) NSMutableArray *currentListOfViews;
-@property (retain) NSMutableArray *imageViews;
-@property unsigned long long indexOfFirstCenteredColumnForForcedCentering;
-@property unsigned long long indexOfFirstTrailingColumn;
-@property (retain) NSMutableArray *labels;
+@property (nonatomic, retain) NSMutableArray *currentListOfViews;
+@property (nonatomic, retain) NSMutableArray *imageViews;
+@property (nonatomic) unsigned long long indexOfFirstCenteredColumnForForcedCentering;
+@property (nonatomic) unsigned long long indexOfFirstTrailingColumn;
+@property (nonatomic, retain) NSMutableArray *labels;
 @property (nonatomic, retain) TLKGridLayoutManager *manager;
+@property (nonatomic) bool needsSizingPass;
 @property (nonatomic, retain) TLKTableRow *tableRow;
 
-+ (void)updateLabel:(id)arg1 withFormattedText:(id)arg2 alignment:(long long)arg3;
++ (void)updateLabel:(id)arg1 withRichText:(id)arg2 alignment:(long long)arg3;
 
 - (void).cxx_destruct;
 - (id)currentListOfViews;
-- (id)description;
 - (void)generateLabelsAndImagesIfNecessary;
 - (id)imageViews;
 - (unsigned long long)indexOfFirstCenteredColumnForForcedCentering;
@@ -35,6 +36,7 @@
 - (id)labels;
 - (void)layoutSubviews;
 - (id)manager;
+- (bool)needsSizingPass;
 - (void)observedPropertiesChanged;
 - (void)resetStateOfAllViews;
 - (void)setCurrentListOfViews:(id)arg1;
@@ -43,10 +45,9 @@
 - (void)setIndexOfFirstTrailingColumn:(unsigned long long)arg1;
 - (void)setLabels:(id)arg1;
 - (void)setManager:(id)arg1;
-- (void)setStylesForEverything;
+- (void)setNeedsSizingPass:(bool)arg1;
 - (void)setTableRow:(id)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
-- (void)styleDidChange:(unsigned long long)arg1;
 - (struct CGSize { double x1; double x2; })systemLayoutSizeFittingSize:(struct CGSize { double x1; double x2; })arg1;
 - (id)tableRow;
 

@@ -4,13 +4,13 @@
 
 @interface GEOLogFrameworkMetricItem : PBCodable <NSCopying> {
     struct { 
-        unsigned int metricItemSize : 1; 
-        unsigned int metricItemCount : 1; 
-        unsigned int metricItemIdHash : 1; 
-        unsigned int metricItemQueueTime : 1; 
-        unsigned int metricItemRetryCount : 1; 
-        unsigned int metricItemType : 1; 
-    }  _has;
+        unsigned int has_metricItemSize : 1; 
+        unsigned int has_metricItemCount : 1; 
+        unsigned int has_metricItemIdHash : 1; 
+        unsigned int has_metricItemQueueTime : 1; 
+        unsigned int has_metricItemRetryCount : 1; 
+        unsigned int has_metricItemType : 1; 
+    }  _flags;
     unsigned int  _metricItemCount;
     unsigned int  _metricItemIdHash;
     unsigned int  _metricItemQueueTime;
@@ -31,6 +31,8 @@
 @property (nonatomic) unsigned int metricItemRetryCount;
 @property (nonatomic) unsigned long long metricItemSize;
 @property (nonatomic) int metricItemType;
+
++ (bool)isValid:(id)arg1;
 
 - (int)StringAsMetricItemType:(id)arg1;
 - (void)copyTo:(id)arg1;
@@ -53,6 +55,7 @@
 - (unsigned long long)metricItemSize;
 - (int)metricItemType;
 - (id)metricItemTypeAsString:(int)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasMetricItemCount:(bool)arg1;
 - (void)setHasMetricItemIdHash:(bool)arg1;

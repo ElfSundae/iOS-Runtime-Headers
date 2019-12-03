@@ -5,7 +5,7 @@
 @interface NEIPSecSA : NSObject <NSCopying> {
     int  _authenticationAlgorithm;
     NSData * _authenticationKey;
-    NWInterface * _boundInterface;
+    NSString * _boundInterfaceName;
     int  _direction;
     int  _encryptionAlgorithm;
     NSData * _encryptionKey;
@@ -20,16 +20,18 @@
     unsigned long long  _natKeepaliveOffloadIntervalSeconds;
     bool  _natTraversalEnabled;
     unsigned short  _natTraversalPort;
+    unsigned short  _natTraversalSrcPort;
     int  _protocol;
     NWAddressEndpoint * _remoteAddress;
     unsigned int  _replayWindowSize;
+    bool  _sequencePerTrafficClass;
     unsigned int  _spi;
     NSString * _tunnelInterfaceName;
 }
 
 @property int authenticationAlgorithm;
 @property (retain) NSData *authenticationKey;
-@property (retain) NWInterface *boundInterface;
+@property (retain) NSString *boundInterfaceName;
 @property (readonly) int direction;
 @property int encryptionAlgorithm;
 @property (retain) NSData *encryptionKey;
@@ -44,19 +46,23 @@
 @property unsigned long long natKeepaliveOffloadIntervalSeconds;
 @property bool natTraversalEnabled;
 @property unsigned short natTraversalPort;
+@property unsigned short natTraversalSrcPort;
 @property int protocol;
 @property (retain) NWAddressEndpoint *remoteAddress;
 @property unsigned int replayWindowSize;
+@property bool sequencePerTrafficClass;
 @property unsigned int spi;
 @property (retain) NSString *tunnelInterfaceName;
 
 - (void).cxx_destruct;
 - (int)authenticationAlgorithm;
 - (id)authenticationKey;
-- (id)boundInterface;
+- (id)boundInterfaceName;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)createDictionary;
 - (void)dealloc;
+- (id)description;
+- (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;
 - (int)direction;
 - (int)encryptionAlgorithm;
 - (id)encryptionKey;
@@ -76,12 +82,14 @@
 - (unsigned long long)natKeepaliveOffloadIntervalSeconds;
 - (bool)natTraversalEnabled;
 - (unsigned short)natTraversalPort;
+- (unsigned short)natTraversalSrcPort;
 - (int)protocol;
 - (id)remoteAddress;
 - (unsigned int)replayWindowSize;
+- (bool)sequencePerTrafficClass;
 - (void)setAuthenticationAlgorithm:(int)arg1;
 - (void)setAuthenticationKey:(id)arg1;
-- (void)setBoundInterface:(id)arg1;
+- (void)setBoundInterfaceName:(id)arg1;
 - (void)setEncryptionAlgorithm:(int)arg1;
 - (void)setEncryptionKey:(id)arg1;
 - (void)setInternalSAID:(unsigned int)arg1;
@@ -95,9 +103,11 @@
 - (void)setNatKeepaliveOffloadIntervalSeconds:(unsigned long long)arg1;
 - (void)setNatTraversalEnabled:(bool)arg1;
 - (void)setNatTraversalPort:(unsigned short)arg1;
+- (void)setNatTraversalSrcPort:(unsigned short)arg1;
 - (void)setProtocol:(int)arg1;
 - (void)setRemoteAddress:(id)arg1;
 - (void)setReplayWindowSize:(unsigned int)arg1;
+- (void)setSequencePerTrafficClass:(bool)arg1;
 - (void)setSpi:(unsigned int)arg1;
 - (void)setTunnelInterfaceName:(id)arg1;
 - (unsigned int)spi;

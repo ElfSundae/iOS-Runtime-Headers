@@ -5,12 +5,14 @@
 @interface STAllowancesConfigurationGroupSpecifierProvider : STRootGroupSpecifierProvider <STAlwaysAllowListControllerDelegate, STDeviceBedtimeListControllerDelegate> {
     PSSpecifier * _alwaysAllowedSpecifier;
     PSSpecifier * _appLimitsSpecifier;
+    PSSpecifier * _communicationLimitsSpecifier;
     PSSpecifier * _contentPrivacySpecifier;
     PSSpecifier * _deviceBedtimeSpecifier;
 }
 
 @property (nonatomic, retain) PSSpecifier *alwaysAllowedSpecifier;
 @property (nonatomic, retain) PSSpecifier *appLimitsSpecifier;
+@property (nonatomic, retain) PSSpecifier *communicationLimitsSpecifier;
 @property (nonatomic, retain) PSSpecifier *contentPrivacySpecifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -19,14 +21,21 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_communicationLimitsDetailText;
+- (void)_communicationLimitsDidChangeFrom:(id)arg1 to:(id)arg2;
 - (void)_deviceBedtimeDidChange:(id)arg1;
+- (void)_isRemoteUserDidChangeFrom:(bool)arg1 to:(bool)arg2;
+- (void)_resetCommunicationLimitsDetailText;
+- (void)_showCommunicationLimitsViewController:(id)arg1;
 - (id)_subtitleTextForDeviceBedtime:(id)arg1;
+- (void)_userTypeDidChange:(unsigned long long)arg1;
 - (void)alwaysAllowListController:(id)arg1 didFinishEditingAlwaysAllowList:(id)arg2;
 - (id)alwaysAllowedDetailText;
 - (id)alwaysAllowedSpecifier;
 - (id)appLimitsDetailText;
 - (id)appLimitsSpecifier;
 - (void)bedtimeListController:(id)arg1 didFinishEditingBedtime:(id)arg2;
+- (id)communicationLimitsSpecifier;
 - (id)contentPrivacyDetailText;
 - (id)contentPrivacySpecifier;
 - (id)deviceBedtimeSpecifier;
@@ -34,6 +43,7 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (void)setAlwaysAllowedSpecifier:(id)arg1;
 - (void)setAppLimitsSpecifier:(id)arg1;
+- (void)setCommunicationLimitsSpecifier:(id)arg1;
 - (void)setContentPrivacySpecifier:(id)arg1;
 - (void)setCoordinator:(id)arg1;
 - (void)setDeviceBedtimeSpecifier:(id)arg1;

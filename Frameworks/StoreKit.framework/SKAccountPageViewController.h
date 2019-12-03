@@ -16,6 +16,7 @@
     id /* block */  _prepareBlock;
     SURedeemCameraViewController * _presentedRedeemCameraViewController;
     SKAccountPageViewController * _presentingAccountPageViewController;
+    NSString * _referrer;
     SKRemoteAccountPageViewController * _remoteViewController;
     SKInvocationQueueProxy<SKUIServiceAccountPageViewController> * _serviceProxy;
     long long  _type;
@@ -30,6 +31,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) SKAccountPageViewController *preWarmedViewController;
 @property (nonatomic) SKAccountPageViewController *presentingAccountPageViewController;
+@property (nonatomic, retain) NSString *referrer;
 @property (readonly) Class superclass;
 @property (nonatomic) long long type;
 
@@ -49,12 +51,14 @@
 - (void)_overrideCreditCardPresentationWithCompletion:(id /* block */)arg1;
 - (void)_overrideRedeemCameraPerformAction:(long long)arg1 withObject:(id)arg2;
 - (void)_overrideRedeemCameraWithCompletion:(id /* block */)arg1;
+- (id)_overrideScheme:(id)arg1;
 - (void)_popAllBridgedNavigationViewControllers;
 - (void)_popBridgedViewControllersToIndex:(unsigned long long)arg1;
 - (void)_presentBridgedViewController;
 - (void)_pushBridgedViewControllerAnimated:(bool)arg1 options:(id)arg2;
 - (void)_requestRemoteViewController;
 - (void)_setBridgedNavigationItemWithOptions:(id)arg1;
+- (void)_setupNavigationItem;
 - (void)_setupNotificationCenter;
 - (void)_setupPreWarmedViewController;
 - (void)_setupRemoteViewController:(bool)arg1;
@@ -73,14 +77,17 @@
 - (void)prepareWithCompletionBlock:(id /* block */)arg1;
 - (id)presentingAccountPageViewController;
 - (void)redeemCameraViewController:(id)arg1 didFinishWithRedeem:(id)arg2;
+- (id)referrer;
 - (void)setAccount:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setPreWarmedViewController:(id)arg1;
 - (void)setPresentingAccountPageViewController:(id)arg1;
+- (void)setReferrer:(id)arg1;
 - (void)setType:(long long)arg1;
 - (long long)type;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidLayoutSubviews;
+- (void)viewDidLoad;
 - (void)viewWillAppear:(bool)arg1;
 - (void)willMoveToParentViewController:(id)arg1;
 

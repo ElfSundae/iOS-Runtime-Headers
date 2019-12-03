@@ -20,6 +20,7 @@
     <TKTonePickerControllerDelegate> * _delegate;
     NSMutableDictionary * _finishedToneStoreDownloadsByIdentifier;
     bool  _hasLoadedTonesOnce;
+    NSMutableSet * _identifiersOfRemovableTones;
     bool  _ignoreMute;
     NSArray * _installedTones;
     bool  _isToneStoreDownloadButtonAllowed;
@@ -95,6 +96,7 @@
 - (void).cxx_destruct;
 - (id)_alertTonesPlistName;
 - (id)_annotatedNameForToneIdentifier:(id)arg1;
+- (void)_applyBatchUpdatesWithDeletedPickerRowItems:(id)arg1 deletedTonePickerSectionItems:(id)arg2 insertedPickerRowItems:(id)arg3 insertedTonePickerSectionItems:(id)arg4 tonePickerSectionItemsWithUpdatedHeaderText:(id)arg5 tonePickerSectionItemsWithUpdatedFooterText:(id)arg6;
 - (bool)_behavesAsRingtonePicker;
 - (void)_cachePickerRowItem:(id)arg1 atIndex:(long long)arg2 inSectionForItem:(id)arg3;
 - (void)_cachePickerSectionItem:(id)arg1 forSection:(long long)arg2;
@@ -149,6 +151,7 @@
 - (unsigned long long)_mediaItemsCount;
 - (id)_nameForToneIdentifier:(id)arg1;
 - (id)_nameOfSelectedVibrationIdentifier;
+- (void)_performBatchUpdates:(id /* block */)arg1 completion:(id /* block */)arg2;
 - (id)_pickerRowItemAtIndex:(long long)arg1 inSectionForItem:(id)arg2;
 - (void)_playToneWithIdentifier:(id)arg1;
 - (void)_redownloadAllTones;
@@ -187,10 +190,12 @@
 - (void)_unregisterForUserGeneratedVibrationsDidChangeNotification;
 - (void)_updateDetailTextOfVibrationItem;
 - (long long)alertType;
+- (bool)canDeleteTonePickerItem:(id)arg1;
 - (bool)canShowStore;
 - (void)dealloc;
 - (id)defaultToneIdentifier;
 - (id)delegate;
+- (void)deleteTonePickerItem:(id)arg1;
 - (void)didFinishCheckingForAvailableToneStoreDownloads:(bool)arg1;
 - (bool)didSelectTonePickerItem:(id)arg1;
 - (void)finishedWithPicker;

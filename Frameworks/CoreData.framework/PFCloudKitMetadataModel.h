@@ -13,16 +13,21 @@
 + (id)_newMetadataModelV2;
 + (id)_newMetadataModelV3;
 + (id)_newMetadataModelV4;
++ (id)_newMetadataModelV5;
++ (id)_newMetadataModelV6;
++ (id)_newMetadataModelV7;
++ (id)_newMetadataModelV8;
 + (void)addAttributes:(id)arg1 toPropertiesOfEntity:(id)arg2;
 + (void)addRelationships:(id)arg1 toPropertiesOfEntity:(id)arg2;
++ (id)allMetadataModels;
 + (unsigned long long)ancillaryEntityCount;
 + (unsigned long long)ancillaryEntityOffset;
 + (id)ancillaryModelNamespace;
-+ (void)applyMigrationStatementsForStore:(id)arg1 usingConnection:(id)arg2;
-+ (void)applyPurgeStatementsForStore:(id)arg1 usingConnection:(id)arg2;
-+ (bool)cachedVersionHashesMatchCurrent:(id)arg1;
++ (bool)checkAndRepairSchemaOfStore:(id)arg1 withManagedObjectContext:(id)arg2 error:(id*)arg3;
++ (bool)currentMetadataVersionHashesMatchCachedMetadataVersionHashes:(id)arg1;
 + (bool)doesMetadataModel:(id)arg1 matchConnection:(id)arg2 hasOldMetadataTables:(bool*)arg3;
-+ (id)identifyModelForStoreWithConnection:(id)arg1 hasOldMetadataTables:(bool*)arg2;
++ (id)identifyModelForStore:(id)arg1 withConnection:(id)arg2 hasOldMetadataTables:(bool*)arg3;
++ (void)initialize;
 + (id)newMetadataModelForFrameworkVersion:(id)arg1;
 
 @end

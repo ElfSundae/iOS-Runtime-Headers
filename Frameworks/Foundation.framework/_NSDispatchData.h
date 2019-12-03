@@ -9,6 +9,7 @@
 - (bool)_allowsDirectEncoding;
 - (id)_createDispatchData;
 - (bool)_isDispatchData;
+- (bool)_providesConcreteBacking;
 - (Class)classForCoder;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)encodeWithCoder:(id)arg1;

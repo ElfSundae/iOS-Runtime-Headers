@@ -8,7 +8,7 @@
 }
 
 @property (nonatomic, copy) NSSet *sourceIDs;
-@property (nonatomic, retain) NSSet *types;
+@property (nonatomic, copy) NSSet *types;
 
 + (void)applyEntries:(id)arg1 withProfile:(id)arg2;
 + (bool)supportsSecureCoding;

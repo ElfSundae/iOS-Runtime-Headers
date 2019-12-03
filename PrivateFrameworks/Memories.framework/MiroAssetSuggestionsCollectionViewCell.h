@@ -9,6 +9,7 @@
     UIView * _debugView;
     bool  _isKeyAssetPicker;
     UIView * _selectionIndicator;
+    UIView * _selectionIndicatorImageView;
     UILabel * _slomoDurationLabel;
     UIView * _slomoIndicator;
     UIImageView * _thumbnailView;
@@ -28,6 +29,7 @@
 @property (nonatomic) UIView *debugView;
 @property bool isKeyAssetPicker;
 @property (nonatomic, retain) UIView *selectionIndicator;
+@property (nonatomic, retain) UIView *selectionIndicatorImageView;
 @property (nonatomic, retain) UILabel *slomoDurationLabel;
 @property (nonatomic, retain) UIView *slomoIndicator;
 @property (nonatomic, retain) UIImageView *thumbnailView;
@@ -40,6 +42,8 @@
 @property (nonatomic, retain) NSLayoutConstraint *videoIndicatorTopConstraint;
 @property (nonatomic, retain) NSLayoutConstraint *videoIndicatorTrailingConstraint;
 
++ (id)circularGlyphViewWithName:(id)arg1 backgroundColor:(id)arg2;
+
 - (void).cxx_destruct;
 - (void)applyLayoutAttributes:(id)arg1;
 - (void)awakeFromNib;
@@ -51,6 +55,7 @@
 - (bool)isKeyAssetPicker;
 - (void)prepareForReuse;
 - (id)selectionIndicator;
+- (id)selectionIndicatorImageView;
 - (void)setDebugGradient:(id)arg1;
 - (void)setDebugLabel:(id)arg1;
 - (void)setDebugLabels:(id)arg1;
@@ -58,6 +63,7 @@
 - (void)setIsKeyAssetPicker:(bool)arg1;
 - (void)setSelected:(bool)arg1;
 - (void)setSelectionIndicator:(id)arg1;
+- (void)setSelectionIndicatorImageView:(id)arg1;
 - (void)setSlomoDurationLabel:(id)arg1;
 - (void)setSlomoIndicator:(id)arg1;
 - (void)setThumbnailView:(id)arg1;

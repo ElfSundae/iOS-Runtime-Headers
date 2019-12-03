@@ -5,6 +5,5 @@
 @interface SGSignificantAddressModel : SGModel
 
 + (id)newTransformerInstanceForLanguage:(id)arg1;
-+ (id)temporaryKeyMap;
 
 @end

@@ -10,9 +10,9 @@
 
 + (id)conditionalFormatting;
 
+- (void).cxx_destruct;
 - (void)addRange:(id)arg1;
 - (void)addRule:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 - (bool)isApplyToDate;

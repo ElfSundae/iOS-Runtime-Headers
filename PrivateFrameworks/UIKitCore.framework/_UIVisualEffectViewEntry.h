@@ -15,19 +15,17 @@
 - (void)addEffectToView:(id)arg1;
 - (void)applyEffectAsRequested:(bool)arg1 toView:(id)arg2;
 - (void)applyIdentityEffectToView:(id)arg1;
-- (bool)applyKeyPathsAndRelativeValues:(id)arg1 forMotionEffect:(id)arg2 toView:(id)arg3;
 - (void)applyRequestedEffectToView:(id)arg1;
 - (bool)canTransitionToEffect:(id)arg1;
+- (void)convertToIdentity;
 - (id)copyForTransitionOut;
 - (id)copyForTransitionToEffect:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
-- (bool)hasTransform;
 - (bool)isSameTypeOfEffect:(id)arg1;
 - (void)removeEffectFromView:(id)arg1;
 - (long long)requirements;
 - (void)setRequirements:(long long)arg1;
 - (bool)shouldAnimateProperty:(id)arg1;
-- (bool)shouldManageCornerRadius;
 
 @end

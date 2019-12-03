@@ -2,42 +2,41 @@
    Image: /System/Library/PrivateFrameworks/AssertionServices.framework/AssertionServices
  */
 
-@interface BKSProcess : NSObject <BKSProcessClientDelegate, BSDescriptionProviding> {
+@interface BKSProcess : NSObject <BSDescriptionProviding> {
+    BKSProcessAssertion * _accessoryAssertion;
+    RBSAssertion * _assertion;
+    BKSProcessAssertion * _audioAssertion;
     bool  _bootstrapped;
-    NSString * _bundleID;
-    NSObject<OS_dispatch_queue> * _callOutQueue;
-    BKSProcessClient * _client;
     bool  _connectedToExternalAccessories;
     <BKSProcessDelegate> * _delegate;
     BSProcessHandle * _handle;
-    NSString * _jobLabel;
+    RBSProcessIdentity * _identity;
     BKSLaunchdJobSpecification * _jobSpec;
     BKSProcessExitContext * _lastExitContext;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _lock;
+    BKSProcessAssertion * _mediaAssertion;
+    RBSProcessMonitor * _monitor;
     bool  _nowPlayingWithAudio;
-    NSObject<OS_dispatch_queue> * _queue;
+    RBSProcessHandle * _processHandle;
     bool  _recordingAudio;
     long long  _taskState;
     long long  _terminationReason;
     long long  _visibility;
+    RBSAssertion * _visibilityAssertion;
     bool  _workspaceLocked;
 }
 
 @property (nonatomic, readonly) double backgroundTimeRemaining;
-@property (nonatomic) bool bootstrapped;
-@property (nonatomic, retain) NSString *bundleID;
-@property (nonatomic, retain) NSObject<OS_dispatch_queue> *callOutQueue;
-@property (nonatomic, retain) BKSProcessClient *client;
 @property (nonatomic) bool connectedToExternalAccessories;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <BKSProcessDelegate> *delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, readonly, retain) BSProcessHandle *handle;
+@property (nonatomic, readonly) BSProcessHandle *handle;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) NSString *jobLabel;
-@property (nonatomic, retain) BKSLaunchdJobSpecification *jobSpec;
-@property (nonatomic, retain) BKSProcessExitContext *lastExitContext;
+@property (nonatomic, readonly) BKSProcessExitContext *lastExitContext;
 @property (nonatomic) bool nowPlayingWithAudio;
-@property (nonatomic, retain) NSObject<OS_dispatch_queue> *queue;
 @property (nonatomic) bool recordingAudio;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) long long taskState;
@@ -51,20 +50,13 @@
 
 - (void).cxx_destruct;
 - (bool)_bootstrapWithError:(out id*)arg1;
-- (void)_sendMessageType:(int)arg1 withMessage:(id /* block */)arg2;
-- (void)_sendMessageType:(int)arg1 withMessage:(id /* block */)arg2 withReplyHandler:(id /* block */)arg3 waitForReply:(bool)arg4;
+- (void)_lock_configureMonitor;
+- (void)_lock_updateVisibility;
 - (double)backgroundTimeRemaining;
+- (void)bootstrapCurrentProcess;
 - (bool)bootstrapWithProcessHandle:(id)arg1 error:(out id*)arg2;
 - (bool)bootstrapWithSpecification:(id)arg1 error:(out id*)arg2;
-- (bool)bootstrapped;
-- (id)bundleID;
-- (id)callOutQueue;
-- (id)client;
-- (void)client:(id)arg1 processDidChangeDebuggingState:(bool)arg2;
-- (void)client:(id)arg1 processDidChangeTaskState:(long long)arg2;
-- (void)client:(id)arg1 processDidExitWithContext:(id)arg2 completion:(id /* block */)arg3;
 - (bool)connectedToExternalAccessories;
-- (void)dealloc;
 - (id)delegate;
 - (id)description;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
@@ -73,25 +65,14 @@
 - (id)init;
 - (id)initWithBundleIdentifier:(id)arg1;
 - (id)initWithPID:(int)arg1 bundlePath:(id)arg2 visibility:(long long)arg3 workspaceLocked:(bool)arg4 queue:(id)arg5;
+- (id)initWithProcessIdentity:(id)arg1;
 - (void)invalidate;
-- (id)jobLabel;
-- (id)jobSpec;
 - (id)lastExitContext;
 - (bool)nowPlayingWithAudio;
-- (void)processAssertionExpirationImminentForClient:(id)arg1;
-- (id)queue;
 - (bool)recordingAudio;
-- (void)setBootstrapped:(bool)arg1;
-- (void)setBundleID:(id)arg1;
-- (void)setCallOutQueue:(id)arg1;
-- (void)setClient:(id)arg1;
 - (void)setConnectedToExternalAccessories:(bool)arg1;
 - (void)setDelegate:(id)arg1;
-- (void)setJobLabel:(id)arg1;
-- (void)setJobSpec:(id)arg1;
-- (void)setLastExitContext:(id)arg1;
 - (void)setNowPlayingWithAudio:(bool)arg1;
-- (void)setQueue:(id)arg1;
 - (void)setRecordingAudio:(bool)arg1;
 - (void)setTerminationReason:(long long)arg1;
 - (void)setVisibility:(long long)arg1;

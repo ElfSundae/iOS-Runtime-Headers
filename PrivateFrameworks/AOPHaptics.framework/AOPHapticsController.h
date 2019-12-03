@@ -4,12 +4,12 @@
 
 @interface AOPHapticsController : NSObject {
     struct atomic_flag { 
-        bool _Value; 
+        _Atomic bool _Value; 
     }  _activated;
     unsigned int  _arrivalNotification;
     id /* block */  _cancelHandler;
     struct atomic_flag { 
-        bool _Value; 
+        _Atomic bool _Value; 
     }  _cancelled;
     unsigned int  _connect;
     struct IONotificationPort { } * _notificationPort;

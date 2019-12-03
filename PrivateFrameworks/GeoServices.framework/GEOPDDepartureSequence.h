@@ -7,9 +7,25 @@
     NSMutableArray * _departures;
     NSString * _directionNameString;
     struct { 
-        unsigned int lineId : 1; 
-        unsigned int stopId : 1; 
-    }  _has;
+        unsigned int has_lineId : 1; 
+        unsigned int has_stopId : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_nextStopIds : 1; 
+        unsigned int read_operatingHours : 1; 
+        unsigned int read_departureFrequencys : 1; 
+        unsigned int read_departures : 1; 
+        unsigned int read_directionNameString : 1; 
+        unsigned int read_headsignString : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_nextStopIds : 1; 
+        unsigned int wrote_operatingHours : 1; 
+        unsigned int wrote_departureFrequencys : 1; 
+        unsigned int wrote_departures : 1; 
+        unsigned int wrote_directionNameString : 1; 
+        unsigned int wrote_headsignString : 1; 
+        unsigned int wrote_lineId : 1; 
+        unsigned int wrote_stopId : 1; 
+    }  _flags;
     NSString * _headsignString;
     unsigned long long  _lineId;
     struct { 
@@ -20,6 +36,12 @@
     struct GEOPDTimeRange { unsigned int x1; unsigned int x2; struct { unsigned int x_3_1_1 : 1; unsigned int x_3_1_2 : 1; } x3; } * _operatingHours;
     unsigned long long  _operatingHoursCount;
     unsigned long long  _operatingHoursSpace;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     unsigned long long  _stopId;
     PBUnknownFields * _unknownFields;
 }
@@ -42,8 +64,19 @@
 
 + (Class)departureFrequencyType;
 + (Class)departureType;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsDeparture:(id)arg1;
+- (void)_addNoFlagsDepartureFrequency:(id)arg1;
+- (void)_addNoFlagsNextStopId:(unsigned long long)arg1;
+- (void)_addNoFlagsOperatingHours:(struct GEOPDTimeRange { unsigned int x1; unsigned int x2; struct { unsigned int x_3_1_1 : 1; unsigned int x_3_1_2 : 1; } x3; })arg1;
+- (void)_readDepartureFrequencys;
+- (void)_readDepartures;
+- (void)_readDirectionNameString;
+- (void)_readHeadsignString;
+- (void)_readNextStopIds;
+- (void)_readOperatingHours;
 - (void)addDeparture:(id)arg1;
 - (void)addDepartureFrequency:(id)arg1;
 - (void)addNextStopId:(unsigned long long)arg1;
@@ -52,6 +85,7 @@
 - (void)clearDepartures;
 - (void)clearNextStopIds;
 - (void)clearOperatingHours;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -70,6 +104,8 @@
 - (bool)hasStopId;
 - (unsigned long long)hash;
 - (id)headsignString;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (unsigned long long)lineId;
 - (void)mergeFrom:(id)arg1;
@@ -79,6 +115,7 @@
 - (struct GEOPDTimeRange { unsigned int x1; unsigned int x2; struct { unsigned int x_3_1_1 : 1; unsigned int x_3_1_2 : 1; } x3; }*)operatingHours;
 - (struct GEOPDTimeRange { unsigned int x1; unsigned int x2; struct { unsigned int x_3_1_1 : 1; unsigned int x_3_1_2 : 1; } x3; })operatingHoursAtIndex:(unsigned long long)arg1;
 - (unsigned long long)operatingHoursCount;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setDepartureFrequencys:(id)arg1;
 - (void)setDepartures:(id)arg1;

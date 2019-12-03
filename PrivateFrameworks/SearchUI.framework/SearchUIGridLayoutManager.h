@@ -8,13 +8,14 @@
     NSMapTable * _tableMapping;
 }
 
-@property (retain) TLKGridLayoutManager *gridManager;
-@property bool isCompactTable;
-@property (retain) NSMapTable *tableMapping;
+@property (nonatomic, retain) TLKGridLayoutManager *gridManager;
+@property (nonatomic) bool isCompactTable;
+@property (nonatomic, retain) NSMapTable *tableMapping;
 
 + (id)alignmentsForSFHeaderRow:(id)arg1;
-+ (id)itemsForDataItems:(id)arg1;
-+ (bool)shouldHideViewForSection:(id)arg1;
++ (id)richTextForDataItems:(id)arg1;
++ (id)richTextForRichDataItems:(id)arg1;
++ (bool)shouldHideViewForRichData:(id)arg1;
 
 - (void).cxx_destruct;
 - (bool)computeCompactTableForSections:(id)arg1;

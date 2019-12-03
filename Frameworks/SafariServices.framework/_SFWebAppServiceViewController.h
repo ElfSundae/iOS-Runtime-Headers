@@ -5,7 +5,6 @@
 @interface _SFWebAppServiceViewController : SFBrowserServiceViewController <SFWebAppServiceViewControllerProtocol> {
     NSMutableArray * _fallbackURLs;
     unsigned int  _hostState;
-    _SFNavigationUtilitiesManager * _navigationUtilitiesManager;
     WKProcessPool * _processPool;
     BKSApplicationStateMonitor * _stateMonitor;
     UIView * _statusBarBackgroundView;
@@ -20,23 +19,23 @@
 
 + (id)_exportedInterface;
 + (id)_remoteViewControllerInterface;
-+ (void)_removeCachedWebAppWithIdentifier:(id)arg1;
 
 - (void).cxx_destruct;
 - (bool)_clientIsWebApp;
 - (void)_handleHostStateUpdate:(id)arg1;
 - (void)_hostApplicationDidEnterBackground;
 - (void)_initialLoadFinishedWithSuccess:(bool)arg1;
+- (bool)_isURLOutOfLegacyScope:(id)arg1 withLoginURLExempted:(bool)arg2;
 - (bool)_isURLOutOfManifestScope:(id)arg1;
-- (bool)_isURLOutOfScope:(id)arg1;
+- (bool)_isURLOutOfScope:(id)arg1 withLoginURLExempted:(bool)arg2;
 - (void)_loadNextFallbackURL;
 - (void)_loadWebClipPageURL:(id)arg1;
 - (unsigned long long)_persona;
-- (bool)_shouldCacheWebViewController;
 - (void)_updateDisplayMode;
 - (bool)_usesScrollToTopView;
 - (bool)canPrint;
 - (void)dealloc;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadWebAppWithIdentifier:(id)arg1;
 - (void)navigationBarDoneButtonWasTapped:(id)arg1;
 - (long long)preferredStatusBarStyle;

@@ -4,7 +4,9 @@
 
 @interface PVContext : NSObject <NSCopying, NSSecureCoding> {
     unsigned int  _faceAlgorithmUmbrellaVersion;
+    float  _faceClusteringAgeThreshold;
     bool  _faceClusteringDisabled;
+    float  _faceClusteringJunkThreshold;
     float  _faceClusteringThreshold;
     float  _faceMergeFaceprintDistanceThreshold;
     float  _facePrimarySuggestionsThreshold;
@@ -19,7 +21,9 @@
 }
 
 @property (nonatomic) unsigned int faceAlgorithmUmbrellaVersion;
+@property (nonatomic) float faceClusteringAgeThreshold;
 @property (nonatomic) bool faceClusteringDisabled;
+@property (nonatomic) float faceClusteringJunkThreshold;
 @property (nonatomic) float faceClusteringThreshold;
 @property (nonatomic) float faceMergeFaceprintDistanceThreshold;
 @property (nonatomic) float facePrimarySuggestionsThreshold;
@@ -37,7 +41,9 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned int)faceAlgorithmUmbrellaVersion;
+- (float)faceClusteringAgeThreshold;
 - (bool)faceClusteringDisabled;
+- (float)faceClusteringJunkThreshold;
 - (float)faceClusteringThreshold;
 - (float)faceMergeFaceprintDistanceThreshold;
 - (float)facePrimarySuggestionsThreshold;
@@ -52,7 +58,9 @@
 - (bool)quarantineTwinsOnAssetEnabled;
 - (unsigned int)sceneAlgorithmUmbrellaVersion;
 - (void)setFaceAlgorithmUmbrellaVersion:(unsigned int)arg1;
+- (void)setFaceClusteringAgeThreshold:(float)arg1;
 - (void)setFaceClusteringDisabled:(bool)arg1;
+- (void)setFaceClusteringJunkThreshold:(float)arg1;
 - (void)setFaceClusteringThreshold:(float)arg1;
 - (void)setFaceMergeFaceprintDistanceThreshold:(float)arg1;
 - (void)setFacePrimarySuggestionsThreshold:(float)arg1;

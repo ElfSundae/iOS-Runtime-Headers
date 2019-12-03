@@ -12,6 +12,7 @@
 - (id)calendarServerSearch;
 - (id)directoryServerSearch;
 - (id)duetSearch;
+- (id)localExtensionSearches;
 - (id)localSearch;
 - (id)recentsSearch;
 - (id)suggestionsSearch;

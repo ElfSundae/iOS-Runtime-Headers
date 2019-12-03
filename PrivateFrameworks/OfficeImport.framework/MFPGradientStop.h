@@ -7,8 +7,8 @@
     float  mPosition;
 }
 
+- (void).cxx_destruct;
 - (id)color;
-- (void)dealloc;
 - (id)initWithColor:(id)arg1 position:(float)arg2;
 - (float)position;
 

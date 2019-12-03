@@ -30,8 +30,8 @@
 + (id)newSequentialTimeNodeGroupForAnimationInfoWithClass:(Class)arg1 target:(id)arg2;
 + (id)timeNodeUnion:(id)arg1 initWithClass:(Class)arg2;
 
+- (void).cxx_destruct;
 - (bool)concurrent;
-- (void)dealloc;
 - (double)delay;
 - (double)direction;
 - (id)groupId;

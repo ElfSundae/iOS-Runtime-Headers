@@ -10,7 +10,6 @@
     bool  _hasHeadlessGPU;
     <NUDevice> * _headlessDevice;
     <NUDevice> * _integratedDevice;
-    <NUDevice> * _mainDevice;
     NSString * _name;
     bool  _supportsAutomaticGraphicsSwitching;
 }
@@ -25,6 +24,7 @@
 @property (nonatomic, retain) <NUDevice> *headlessDevice;
 @property (nonatomic, retain) <NUDevice> *integratedDevice;
 @property (nonatomic, readonly) <NUDevice> *mainDevice;
+@property (nonatomic, readonly) <NUDisplay> *mainDisplay;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic) bool supportsAutomaticGraphicsSwitching;
 @property (nonatomic, readonly) bool supportsLiveVideoRendering;
@@ -35,17 +35,19 @@
 - (void)clearCaches;
 - (id)cpuDevice;
 - (id)debugDescription;
-- (id)defaultDevice;
 - (bool)defaultSupportsLiveVideoRendering;
 - (id)description;
+- (id)deviceForDisplay:(id)arg1;
 - (id)devices;
 - (id)discreteDevice;
+- (id)displayWithIdentifier:(id)arg1;
 - (id)displays;
 - (bool)hasExtendedColorDisplay;
 - (bool)hasHeadlessGPU;
 - (id)headlessDevice;
 - (id)integratedDevice;
 - (id)mainDevice;
+- (id)mainDisplay;
 - (id)name;
 - (void)setCpuDevice:(id)arg1;
 - (void)setDevices:(id)arg1;

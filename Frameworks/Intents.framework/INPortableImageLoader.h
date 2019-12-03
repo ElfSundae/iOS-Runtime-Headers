@@ -7,6 +7,7 @@
     NSString * _helperClassName;
 }
 
+@property (setter=_setHelperClassName:, nonatomic, copy) NSString *_helperClassName;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -18,6 +19,8 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)_helperClassName;
+- (void)_setHelperClassName:(id)arg1;
 - (bool)canLoadImageDataForImage:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)helper;

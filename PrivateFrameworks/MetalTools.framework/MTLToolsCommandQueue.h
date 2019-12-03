@@ -11,17 +11,20 @@
 @property (getter=getStatOptions, nonatomic) unsigned long long StatOptions;
 @property int backgroundTrackingPID;
 @property (nonatomic, readonly) MTLToolsPointerArray *commandBuffers;
+@property (readonly) NSObject<OS_dispatch_queue> *commitQueue;
+@property (readonly) bool commitSynchronously;
+@property (readonly) NSObject<OS_dispatch_queue> *completionQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) <MTLDevice> *device;
+@property (readonly) bool disableCrossQueueHazardTracking;
 @property bool executionEnabled;
 @property (readonly) unsigned long long hash;
 @property bool isOpenGLQueue;
 @property (copy) NSString *label;
 @property (readonly) unsigned long long maxCommandBufferCount;
 @property (getter=isProfilingEnabled) bool profilingEnabled;
-@property (readonly) unsigned long long qosClass;
-@property (readonly) long long qosRelativePriority;
+@property (readonly) unsigned long long qosLevel;
 @property bool skipRender;
 @property (readonly) Class superclass;
 
@@ -32,8 +35,12 @@
 - (id)commandBuffer;
 - (id)commandBufferWithUnretainedReferences;
 - (id)commandBuffers;
+- (id)commitQueue;
+- (bool)commitSynchronously;
+- (id)completionQueue;
 - (id)counterInfo;
 - (void)dealloc;
+- (bool)disableCrossQueueHazardTracking;
 - (bool)executionEnabled;
 - (void)finish;
 - (unsigned long long)getBackgroundGPUPriority;
@@ -48,8 +55,7 @@
 - (bool)isStatEnabled;
 - (id)label;
 - (unsigned long long)maxCommandBufferCount;
-- (unsigned long long)qosClass;
-- (long long)qosRelativePriority;
+- (unsigned long long)qosLevel;
 - (int)requestCounters:(id)arg1;
 - (int)requestCounters:(id)arg1 withIndex:(unsigned long long)arg2;
 - (bool)setBackgroundGPUPriority:(unsigned long long)arg1;

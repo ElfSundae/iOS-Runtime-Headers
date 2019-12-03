@@ -14,6 +14,7 @@
 
 - (void).cxx_destruct;
 - (void)_ICSStringWithOptions:(unsigned long long)arg1 appendingToString:(id)arg2;
+- (Class)classForCoder;
 - (void)setStatusString:(id)arg1;
 - (id)statusString;
 

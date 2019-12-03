@@ -10,5 +10,6 @@
 - (id)genericToSpecificPropertyMap;
 - (int)legendBadgeType;
 - (bool)supportsSymbolDrawing;
+- (id)userInterfaceName;
 
 @end

@@ -12,7 +12,7 @@
         unsigned int payloadLen; 
     }  _header;
     const float * _matrixElts;
-    const unsigned int * _matrixIdxes;
+    const unsigned int * _matrixIndices;
     const char * _payloads;
     const unsigned int * _qids;
 }
@@ -20,8 +20,12 @@
 @property (nonatomic, readonly) unsigned long long outputTopicCount;
 
 - (void).cxx_destruct;
+- (id)QIDWeightsWithMappedTopicIdentifier:(id)arg1;
+- (void)_enumerateSparseColumnAtIndex:(unsigned int)arg1 block:(id /* block */)arg2;
+- (void)_enumerateSparseRowAtIndex:(unsigned int)arg1 block:(id /* block */)arg2;
 - (void)addBias:(float*)arg1;
-- (void)addTopicToBuffer:(float*)arg1 qid:(unsigned int)arg2 weight:(float)arg3;
+- (void)addWeightedTopicScoreToBuffer:(float*)arg1 countNonZeroComponentsInBuffer:(unsigned short*)arg2 qid:(unsigned int)arg3 score:(float)arg4;
+- (void)addWeightedTopicScoreToBuffer:(float*)arg1 qid:(unsigned int)arg2 score:(float)arg3;
 - (void)halfSigmoid:(float*)arg1;
 - (id)init;
 - (id)initWithPath:(id)arg1;

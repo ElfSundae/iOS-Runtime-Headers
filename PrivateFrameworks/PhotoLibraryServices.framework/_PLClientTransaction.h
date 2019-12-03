@@ -22,6 +22,7 @@
 + (id)_fdIsolationQueue;
 + (id)_fdResourceSemaphore;
 
+- (void).cxx_destruct;
 - (void)_updateChangeScopesDescriptionSnapshot;
 - (void)abortTransaction;
 - (void)addChangeScopes:(id)arg1;
@@ -34,7 +35,7 @@
 - (id)fdResourceSemaphore;
 - (int)fileDescriptor;
 - (id)generateChangeScopesDescription;
-- (id)init;
+- (id)initWithPathManager:(id)arg1;
 - (bool)isClientTransaction;
 - (id)path;
 - (void)persistTransactionScopes:(id)arg1;

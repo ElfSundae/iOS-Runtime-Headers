@@ -35,15 +35,15 @@
 - (id)init;
 - (void)invalidate;
 - (id)queue;
-- (void)registerStreamToken:(long long)arg1 remoteIDSDestination:(id)arg2 remoteMomentsAvailable:(bool)arg3 completion:(id /* block */)arg4;
+- (void)registerStreamToken:(long long)arg1 requesterID:(id)arg2 remoteIDSDestinations:(id)arg3 remoteMomentsAvailable:(bool)arg4 completion:(id /* block */)arg5;
 - (id)serverWithErrorHandler:(id /* block */)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setXpcConnection:(id)arg1;
-- (void)startRequestWithMediaType:(int)arg1 forStreamToken:(long long)arg2 completion:(id /* block */)arg3;
+- (void)startRequestWithMediaType:(int)arg1 forStreamToken:(long long)arg2 requesteeID:(id)arg3 completion:(id /* block */)arg4;
 - (id)synchronousServerWithErrorHandler:(id /* block */)arg1;
 - (int)token;
 - (void)unregisterStreamToken:(long long)arg1 completion:(id /* block */)arg2;
-- (oneway void)willCaptureRemoteRequest;
+- (oneway void)willCaptureRemoteRequestFromRequesterID:(id)arg1;
 - (id)xpcConnection;
 
 @end

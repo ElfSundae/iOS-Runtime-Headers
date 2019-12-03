@@ -3,7 +3,7 @@
  */
 
 @interface MTLResourceList : NSObject {
-    /* Warning: unhandled struct encoding: '{?="buckets"[64S]"numEntries"I"capacity"I"entries"^{MTLResourceListEntry}"pool"@"MTLResourceListPool""entry"{?="tqe_next"@"MTLResourceList""tqe_prev"^@}"time_added"Q}' */ struct { 
+    struct { 
         unsigned short buckets[64]; 
         unsigned int numEntries; 
         unsigned int capacity; 
@@ -12,8 +12,8 @@
         struct { 
             MTLResourceList *tqe_next; 
             id *tqe_prev; 
-            unsigned long long time_added; 
         } entry; 
+        unsigned long long time_added; 
     }  _listPriv;
 }
 

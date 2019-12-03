@@ -7,6 +7,7 @@
 }
 
 @property (readonly) NSString *defaultValue;
+@property (readonly) NSString *identityValue;
 @property (readonly) NSArray *values;
 
 + (id)deserializeFromDictionary:(id)arg1 error:(out id*)arg2;
@@ -14,6 +15,7 @@
 - (void).cxx_destruct;
 - (id)defaultValue;
 - (id)description;
+- (id)identityValue;
 - (id)init;
 - (id)initWithAttributes:(id)arg1;
 - (id)initWithValues:(id)arg1 attributes:(id)arg2;

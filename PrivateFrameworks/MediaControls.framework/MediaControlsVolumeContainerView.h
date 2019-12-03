@@ -6,8 +6,9 @@
     bool  _onScreen;
     long long  _style;
     bool  _transitioning;
+    MTVisualStylingProvider * _visualStylingProvider;
     unsigned int  _volumeCapabilities;
-    MPVolumeSlider * _volumeSlider;
+    MediaControlsVolumeSlider * _volumeSlider;
     MediaControlsRelativeVolumeStepper * _volumeStepper;
 }
 
@@ -18,8 +19,9 @@
 @property (nonatomic) long long style;
 @property (readonly) Class superclass;
 @property (getter=isTransitioning, nonatomic) bool transitioning;
+@property (nonatomic, retain) MTVisualStylingProvider *visualStylingProvider;
 @property (nonatomic) unsigned int volumeCapabilities;
-@property (nonatomic, retain) MPVolumeSlider *volumeSlider;
+@property (nonatomic, retain) MediaControlsVolumeSlider *volumeSlider;
 @property (nonatomic, retain) MediaControlsRelativeVolumeStepper *volumeStepper;
 
 - (void).cxx_destruct;
@@ -37,12 +39,14 @@
 - (void)setOnScreen:(bool)arg1;
 - (void)setStyle:(long long)arg1;
 - (void)setTransitioning:(bool)arg1;
+- (void)setVisualStylingProvider:(id)arg1;
 - (void)setVolumeCapabilities:(unsigned int)arg1;
 - (void)setVolumeSlider:(id)arg1;
 - (void)setVolumeStepper:(id)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (long long)style;
 - (void)traitCollectionDidChange:(id)arg1;
+- (id)visualStylingProvider;
 - (unsigned int)volumeCapabilities;
 - (id)volumeSlider;
 - (id)volumeStepper;

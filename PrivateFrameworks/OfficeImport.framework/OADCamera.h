@@ -9,9 +9,9 @@
     float  mZoom;
 }
 
+- (void).cxx_destruct;
 - (int)cameraType;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (float)fieldOfView;
 - (unsigned long long)hash;

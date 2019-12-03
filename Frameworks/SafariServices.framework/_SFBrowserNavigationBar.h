@@ -8,7 +8,5 @@
 
 - (id)newTextField;
 - (double)placeholderHorizontalInset;
-- (id)toolbarPlacedOnTop;
-- (void)updateToolbarTintColor:(id)arg1;
 
 @end

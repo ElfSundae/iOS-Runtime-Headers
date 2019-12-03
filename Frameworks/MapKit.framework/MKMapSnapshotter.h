@@ -22,6 +22,7 @@
 - (void)_failWithError:(id)arg1;
 - (void)_performSnapshot;
 - (void)_setupCustomFeaturesForAnnotationViewsIfNeeded;
+- (bool)_shouldShowDarkContent;
 - (void)_succeedWithSnapshot:(id)arg1;
 - (void)cancel;
 - (void)dealloc;

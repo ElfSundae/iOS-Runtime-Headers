@@ -22,7 +22,7 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_attachExpandAnimationToContainer:(struct blur_container { id x1; /* Warning: Unrecognized filer type: 'p' using 'void*' */ void*x2; void*x3; const int x4; out double x5; int x6; BOOL x7; void*x8; void*x9; in int x10; void*x11; void*x12; void*x13; int x14; out in void*x15; short x16; void*x17; void*x18; void*x19; void*x20; void*x21; bool x22; id x23; id x24; }*)arg1 withDelay:(double)arg2;
+- (void)_attachExpandAnimationToContainer:(struct blur_container { id x1; struct periodic_animation_state { bool x_2_1_1; id x_2_1_2; id x_2_1_3; id x_2_1_4; } x2; }*)arg1 withDelay:(double)arg2;
 - (void)_attachPulseAnimationWithDelay:(double)arg1;
 - (void)_endExpand;
 - (void)_setExpand:(bool)arg1 forBlurAtIndex:(unsigned long long)arg2 withDelay:(double)arg3;

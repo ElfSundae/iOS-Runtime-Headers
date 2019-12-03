@@ -9,6 +9,7 @@
 + (id)missingCodeSigningErrorForMethod:(id)arg1;
 + (id)priorityErrorForMethod:(id)arg1;
 + (id)programCreationErrorForMethod:(id)arg1;
++ (id)programInferenceOtherErrorForMethod:(id)arg1;
 + (id)programInferenceOverflowErrorForMethod:(id)arg1;
 + (id)programLoadErrorForMethod:(id)arg1;
 + (id)timeoutErrorForMethod:(id)arg1;

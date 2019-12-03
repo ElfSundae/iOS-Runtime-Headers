@@ -4,7 +4,7 @@
 
 @interface TCMessageContext : NSObject {
     NSObject<OS_dispatch_queue> * mMessageSyncQueue;
-    NSMutableArray * m_currentObjectStack;
+    NSMutableArray * m_affectedObjectStack;
     NSMutableSet * m_errors;
     NSMutableDictionary * m_placeholderToObjectMap;
     NSMutableSet * m_warnings;
@@ -13,15 +13,15 @@
 + (void)createContextForCurrentThread;
 + (id)currentObjectOrPlaceholder;
 + (id)getErrorArray;
++ (unsigned long long)getErrorCount;
 + (id)getWarningArray;
 + (void)initialize;
 + (bool)isFileStructuredStorage;
-+ (void)popCurrentObject;
-+ (void)popCurrentPlaceholder:(id)arg1;
-+ (void)pushCurrentObject:(id)arg1;
-+ (id)pushCurrentPlaceholder;
++ (void)popAffectedObject;
++ (void)popAffectedObjectPlaceholder:(id)arg1;
++ (void)pushAffectedObject:(id)arg1;
++ (void)pushAffectedObjectPlaceholder;
 + (void)removeContextForCurrentThread;
-+ (void)replacePlaceholdersWithObjects;
 + (void)reportError:(id)arg1;
 + (void)reportErrorException:(id)arg1;
 + (void)reportObject:(id)arg1 withWarning:(id)arg2;
@@ -29,23 +29,26 @@
 + (void)reportWarning:(id)arg1;
 + (void)reportWarningException:(id)arg1;
 + (void)reportWarningsToDelegate;
-+ (void)restoreObjectStack:(unsigned int)arg1;
-+ (unsigned long long)saveObjectStack;
++ (void)restoreAffectedObjectStack:(unsigned long long)arg1;
++ (unsigned long long)saveAffectedObjectStack;
 + (void)setIsFileStructuredStorage:(bool)arg1;
-+ (void)setObject:(id)arg1 forPlaceholder:(id)arg2;
 
+- (void).cxx_destruct;
 - (void)addErrorMessageEntry:(id)arg1;
 - (void)addWarningMessageEntry:(id)arg1;
-- (id)currentObject;
+- (id)currentObjectOrPlaceholder;
 - (void)dealloc;
 - (id)init;
-- (void)popObject;
-- (void)popPlaceholder:(id)arg1;
-- (void)pushObject:(id)arg1;
-- (id)pushPlaceholder;
-- (void)replacePlaceholdersWithObjects:(bool)arg1;
+- (void)popAffectedObject;
+- (void)popAffectedObjectPlaceholder:(id)arg1;
+- (void)pushAffectedObject:(id)arg1;
+- (void)pushAffectedObjectPlaceholder;
+- (void)replacePlaceholdersWithObjects;
 - (void)reportWarningForObject:(id)arg1 warning:(id)arg2 parameterList:(char *)arg3;
 - (void)reportWarningsToDelegate;
-- (void)setObject:(id)arg1 forPlaceholderKey:(id)arg2 dispatchSync:(bool)arg3;
+- (void)resolveObjectOfCurrentAffectedObjectPlaceholder;
+- (void)restoreAffectedObjectStack:(unsigned long long)arg1;
+- (unsigned long long)saveAffectedObjectStack;
+- (void)setAffectedObject:(id)arg1 forPlaceholderWithKey:(id)arg2;
 
 @end

@@ -30,6 +30,7 @@
 - (void)loadAssetWithID:(id)arg1 forSongID:(id)arg2;
 - (id)loadCachedSongs;
 - (void)requestDownloadOfAsset:(id)arg1;
+- (void)requestDownloadOfAsset:(id)arg1 withOptions:(id)arg2;
 - (void)requestPurgeOfAsset:(id)arg1;
 - (unsigned long long)retryCount;
 - (void)retryFetchAllSongs;

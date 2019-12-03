@@ -25,10 +25,7 @@
 
 - (void)CAMLParser:(id)arg1 setValue:(id)arg2 forKey:(id)arg3;
 - (id)CAMLTypeForKey:(id)arg1;
-- (void)_setCARenderBehavior:(struct Behavior { int (**x1)(); struct Atomic { struct { int x_1_2_1; } x_2_1_1; } x2; unsigned int x3; struct Ref<CA::Render::String> { struct String {} *x_4_1_1; } x4; unsigned int x5; unsigned int x6; unsigned int x7 : 8; unsigned int x8 : 8; struct Ref<const CA::Render::Behavior> { struct Behavior {} *x_9_1_1; } x9; }*)arg1;
-- (bool)allowsWeakReference;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)debugDescription;
 - (id)delegate;
 - (void)encodeWithCAMLWriter:(id)arg1;
@@ -37,10 +34,6 @@
 - (id)initWithCoder:(id)arg1;
 - (bool)isEnabled;
 - (id)name;
-- (oneway void)release;
-- (id)retain;
-- (unsigned long long)retainCount;
-- (bool)retainWeakReference;
 - (void)setDelegate:(id)arg1;
 - (void)setEnabled:(bool)arg1;
 - (void)setName:(id)arg1;

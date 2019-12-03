@@ -4,6 +4,7 @@
 
 @interface VUIHomeAppDocumentServiceViewController : VUICanvasAppDocumentServiceViewController
 
+- (bool)automaticallyProvidesMediaController;
 - (id)initWithDocumentServiceRequest:(id)arg1 loadImmediately:(bool)arg2 documentRef:(id)arg3 viewControllerIdentifier:(id)arg4;
 
 @end

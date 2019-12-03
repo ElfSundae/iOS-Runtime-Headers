@@ -3,15 +3,18 @@
  */
 
 @interface WKBrowsingContextHandle : NSObject <NSSecureCoding> {
-    unsigned long long  _pageID;
+    struct ObjectIdentifier<WebCore::PageIdentifierType> { 
+        unsigned long long m_identifier; 
+    }  _pageID;
 }
 
-@property (getter=_pageID, nonatomic, readonly) unsigned long long pageID;
+@property (getter=_pageID, nonatomic, readonly) struct ObjectIdentifier<WebCore::PageIdentifierType> { unsigned long long x1; } pageID;
 
 + (bool)supportsSecureCoding;
 
-- (id)_initWithPageID:(unsigned long long)arg1;
-- (unsigned long long)_pageID;
+- (id).cxx_construct;
+- (id)_initWithPageID:(struct ObjectIdentifier<WebCore::PageIdentifierType> { unsigned long long x1; })arg1;
+- (struct ObjectIdentifier<WebCore::PageIdentifierType> { unsigned long long x1; })_pageID;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;

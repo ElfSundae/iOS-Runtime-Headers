@@ -27,7 +27,7 @@
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (id)incidentDescription;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (id)initWithReuseIdentifier:(id)arg1;
 - (id)lastUpdated;
 - (void)setIncidentDescription:(id)arg1;

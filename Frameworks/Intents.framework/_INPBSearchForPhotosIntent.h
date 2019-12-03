@@ -3,6 +3,7 @@
  */
 
 @interface _INPBSearchForPhotosIntent : PBCodable <NSCopying, NSSecureCoding, _INPBSearchForPhotosIntent> {
+    bool  __encodeLegacyGloryData;
     _INPBActivityList * _activities;
     _INPBString * _albumName;
     _INPBContactList * _contentPerson;
@@ -30,6 +31,7 @@
     _INPBStringList * _searchTerm;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic, retain) _INPBActivityList *activities;
 @property (nonatomic, retain) _INPBString *albumName;
 @property (nonatomic, retain) _INPBContactList *contentPerson;
@@ -67,9 +69,13 @@
 @property (nonatomic, retain) _INPBStringList *searchTerm;
 @property (readonly) Class superclass;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (int)StringAsExcludedAttributes:(id)arg1;
 - (int)StringAsIncludedAttributes:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)activities;
 - (void)addExcludedAttribute:(int)arg1;
 - (void)addIncludedAttribute:(int)arg1;
@@ -79,7 +85,9 @@
 - (id)contentPerson;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dateCreated;
+- (void)dealloc;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (id)events;
 - (int)excludedAttributeAtIndex:(unsigned long long)arg1;
 - (int*)excludedAttributes;
@@ -105,6 +113,7 @@
 - (int*)includedAttributes;
 - (id)includedAttributesAsString:(int)arg1;
 - (unsigned long long)includedAttributesCount;
+- (id)initWithCoder:(id)arg1;
 - (id)intentMetadata;
 - (bool)isEqual:(id)arg1;
 - (id)keyword;

@@ -27,6 +27,7 @@
 - (void)setSpinner:(id)arg1;
 - (void)setTimeout:(double)arg1;
 - (void)showOverKeyWindow;
+- (void)showOverKeyWindowWithSpinnerOnly:(bool)arg1;
 - (id)spinner;
 - (void)timeout;
 

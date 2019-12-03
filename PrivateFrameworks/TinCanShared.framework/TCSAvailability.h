@@ -19,6 +19,7 @@
 
 - (void).cxx_destruct;
 - (bool)_calculateShouldShowStatusIndicator;
+- (void)_handleDeviceFirstUnlock;
 - (bool)_isUserUnavailable;
 - (void)_postNotificationName:(id)arg1;
 - (void)_setUserUnavailable:(bool)arg1;

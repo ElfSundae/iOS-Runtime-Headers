@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/HomeKit.framework/HomeKit
  */
 
-@interface HMAccessorySetting : NSObject <HFStateDumpBuildable, HMFLogging, _HMAccesorySettingDelegate> {
+@interface HMAccessorySetting : HMSetting <HFStateDumpBuildable, HMFLogging, _HMAccesorySettingDelegate> {
     HMAccessorySettingGroup * _group;
     _HMAccessorySetting * _internal;
 }
@@ -11,16 +11,11 @@
 @property (readonly, copy) NSString *description;
 @property HMAccessorySettingGroup *group;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly, copy) NSString *hf_debugValueDescription;
-@property (nonatomic, readonly) bool hf_isBooleanSetting;
 @property (readonly) _HMAccessorySetting *internal;
 @property (readonly, copy) NSString *keyPath;
-@property (readonly, copy) NSString *localizedTitle;
 @property (getter=isReflected, readonly) bool reflected;
 @property (readonly) Class superclass;
-@property (readonly, copy) <NSObject><NSCopying><NSSecureCoding> *value;
 @property (readonly) Class valueClass;
-@property (getter=isWritable, readonly) bool writable;
 
 // Image: /System/Library/Frameworks/HomeKit.framework/HomeKit
 
@@ -44,7 +39,6 @@
 - (bool)isReflected;
 - (bool)isWritable;
 - (id)keyPath;
-- (id)localizedTitle;
 - (id)logIdentifier;
 - (void)setGroup:(id)arg1;
 - (void)updateValue:(id)arg1 completionHandler:(id /* block */)arg2;
@@ -53,10 +47,6 @@
 
 // Image: /System/Library/PrivateFrameworks/Home.framework/Home
 
-+ (id)hf_debugDescriptionForValue:(id)arg1 keyPath:(id)arg2;
-
-- (id)hf_debugValueDescription;
-- (bool)hf_isBooleanSetting;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 
 @end

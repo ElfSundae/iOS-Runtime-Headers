@@ -12,7 +12,7 @@
 @property (nonatomic, readonly) OADFontCollection *minorFont;
 @property (nonatomic, copy) NSString *name;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)fontForId:(int)arg1;
 - (unsigned long long)hash;
 - (id)init;

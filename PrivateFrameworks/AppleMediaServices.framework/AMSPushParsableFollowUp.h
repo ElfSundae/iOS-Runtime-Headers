@@ -16,9 +16,9 @@
 + (void)_performPostWithPayload:(id)arg1;
 + (bool)_shouldAllowFollowUp:(id)arg1;
 + (bool)_shouldClearFollowUpFromPayload:(id)arg1;
-+ (void)handleNotificationPayload:(id)arg1 config:(id)arg2 bagContract:(id)arg3;
++ (void)handleNotificationPayload:(id)arg1 config:(id)arg2 bag:(id)arg3;
 + (bool)isDeviceOfferNotification:(id)arg1;
-+ (void)removeDeviceOfferWithPayload:(id)arg1 logKey:(id)arg2 bagContract:(id)arg3;
++ (void)removeDeviceOfferWithPayload:(id)arg1 logKey:(id)arg2 bag:(id)arg3;
 + (bool)shouldSkipAccountCheck;
 + (void)userNotification:(id)arg1 selectedButtonAction:(id)arg2;
 

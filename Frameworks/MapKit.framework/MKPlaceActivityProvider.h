@@ -17,6 +17,7 @@
 - (id)delegate;
 - (id)initWithMapItem:(id)arg1;
 - (id)mapItem;
+- (id)mapMetadataSpecialization;
 - (void)setDelegate:(id)arg1;
 - (void)setMapItem:(id)arg1;
 - (bool)shouldUseWebPlaceCardForActivityType:(id)arg1;

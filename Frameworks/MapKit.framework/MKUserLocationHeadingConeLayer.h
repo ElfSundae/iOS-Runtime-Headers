@@ -4,7 +4,7 @@
 
 @interface MKUserLocationHeadingConeLayer : CALayer <MKUserLocationHeadingIndicator> {
     CALayer * _maskLayer;
-    MKUserLocationView * _userLocationView;
+    _MKPuckAnnotationView * _userLocationView;
 }
 
 @property (readonly, copy) NSString *debugDescription;

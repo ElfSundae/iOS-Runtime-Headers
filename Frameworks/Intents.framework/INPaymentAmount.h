@@ -2,19 +2,25 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface INPaymentAmount : NSObject <NSCopying, NSSecureCoding> {
+@interface INPaymentAmount : NSObject <INJSONSerializable, NSCopying, NSSecureCoding> {
     INCurrencyAmount * _amount;
     long long  _amountType;
 }
 
 @property (nonatomic, readonly, copy) INCurrencyAmount *amount;
 @property (nonatomic, readonly) long long amountType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
++ (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
-- (id)_intents_readableDescriptionForLanguage:(id)arg1;
+- (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
+- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
 - (id)amount;
 - (long long)amountType;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

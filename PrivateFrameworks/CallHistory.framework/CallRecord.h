@@ -14,10 +14,10 @@
 @property (nonatomic, copy) NSNumber *disconnected_cause;
 @property (nonatomic, copy) NSNumber *duration;
 @property (nonatomic, copy) NSNumber *face_time_data;
+@property (nonatomic, copy) NSNumber *filtered_out_reason;
 @property (nonatomic, copy) NSNumber *handle_type;
 @property (nonatomic, copy) NSString *iso_country_code;
 @property (nonatomic, copy) NSUUID *localParticipantUUID;
-@property (nonatomic, retain) NSString *local_address;
 @property (nonatomic, copy) NSString *location;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSNumber *number_availability;
@@ -32,7 +32,9 @@
 @property (nonatomic, readonly) bool supportsOutgoingLocalParticipantUUID;
 @property (nonatomic, readonly) bool supportsRemoteParticipantHandles;
 @property (nonatomic, readonly) bool supportsServiceProvider;
+@property (nonatomic, readonly) bool supportsVerificationStatus;
 @property (nonatomic, copy) NSString *unique_id;
+@property (nonatomic, copy) NSNumber *verificationStatus;
 
 + (id)fetchRequest;
 
@@ -44,11 +46,13 @@
 - (id)compositeOutgoingLocalParticipantUUIDForContext:(id)arg1;
 - (id)compositeRemoteParticipantHandlesForContext:(id)arg1;
 - (id)compositeServiceProviderForContext:(id)arg1;
+- (id)compositeVerificationStatusForContext:(id)arg1;
 - (bool)supportsCallCategory;
 - (bool)supportsHandleType;
 - (bool)supportsLocalParticipantUUID;
 - (bool)supportsOutgoingLocalParticipantUUID;
 - (bool)supportsRemoteParticipantHandles;
 - (bool)supportsServiceProvider;
+- (bool)supportsVerificationStatus;
 
 @end

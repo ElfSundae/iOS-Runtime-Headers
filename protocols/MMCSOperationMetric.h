@@ -8,10 +8,12 @@
 - (void)addRange:(id <MMCSOperationStateTimeRange>)arg1;
 - (unsigned long long)bytesDownloaded;
 - (unsigned long long)bytesUploaded;
+- (NSMutableDictionary *)chunkCountByChunkProfile;
 - (unsigned long long)connections;
 - (unsigned long long)connectionsCreated;
 - (double)duration;
 - (double)executing;
+- (NSMutableDictionary *)fileCountByChunkProfile;
 - (<MMCSOperationStateTimeRange> *)newRangeWithOperationState:(unsigned long long)arg1 startDate:(NSDate *)arg2 duration:(double)arg3;
 - (double)queueing;
 - (NSArray *)rangesCopy;
@@ -23,5 +25,6 @@
 - (void)setExecuting:(double)arg1;
 - (void)setQueueing:(double)arg1;
 - (NSDate *)startDate;
+- (NSMutableDictionary *)totalBytesByChunkProfile;
 
 @end

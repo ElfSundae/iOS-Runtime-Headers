@@ -17,6 +17,7 @@
     bool  _prefersStatusBarVisible;
     bool  _prefersTabBarVisible;
     bool  _prefersToolbarVisible;
+    long long  _transitionsCounter;
     UIViewController * _viewController;
 }
 
@@ -42,6 +43,7 @@
 - (id)_animationOptions;
 - (bool)_hasViewAppeared;
 - (id)_implementationDelegate;
+- (void)_performBarsTransition:(id /* block */)arg1;
 - (long long)_preferredStatusBarUpdateAnimation;
 - (void)_setAnimationOptions:(id)arg1;
 - (void)_setHasViewAppeared:(bool)arg1;

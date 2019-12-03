@@ -3,6 +3,7 @@
  */
 
 @interface ATAsset : NSObject <NSCopying, NSSecureCoding> {
+    bool  _allowDownloadOnConstrainedNetwork;
     long long  _assetState;
     NSString * _assetType;
     bool  _bypassStore;
@@ -13,7 +14,10 @@
     id /* block */  _completionBlock;
     NSString * _dataclass;
     bool  _downloadOnly;
+    unsigned long long  _downloadPauseReason;
     float  _downloadProgress;
+    NSNumber * _downloadSourceContainerId;
+    long long  _enqueueSource;
     NSError * _error;
     NSURL * _icon;
     NSString * _identifier;
@@ -29,6 +33,7 @@
     bool  _legacy;
     NSString * _localPath;
     bool  _lyricsEmbeddedInAsset;
+    NMSMediaItemDownloadInfo * _mediaItemDownloadInfo;
     bool  _powerRequired;
     NSString * _prettyName;
     unsigned int  _priority;
@@ -47,6 +52,7 @@
     NSDictionary * _variantOptions;
 }
 
+@property (nonatomic) bool allowDownloadOnConstrainedNetwork;
 @property (nonatomic) long long assetState;
 @property (nonatomic, retain) NSString *assetType;
 @property (nonatomic) bool bypassStore;
@@ -57,7 +63,10 @@
 @property (nonatomic, copy) id /* block */ completionBlock;
 @property (nonatomic, retain) NSString *dataclass;
 @property (nonatomic) bool downloadOnly;
+@property (nonatomic) unsigned long long downloadPauseReason;
 @property (nonatomic) float downloadProgress;
+@property (nonatomic, retain) NSNumber *downloadSourceContainerId;
+@property (nonatomic) long long enqueueSource;
 @property (nonatomic, retain) NSError *error;
 @property (nonatomic, retain) NSURL *icon;
 @property (nonatomic, retain) NSString *identifier;
@@ -72,6 +81,7 @@
 @property (nonatomic) bool isRestore;
 @property (getter=isLegacy, nonatomic) bool legacy;
 @property (nonatomic) bool lyricsEmbeddedInAsset;
+@property (nonatomic, retain) NMSMediaItemDownloadInfo *mediaItemDownloadInfo;
 @property (nonatomic, retain) NSString *path;
 @property (nonatomic) bool powerRequired;
 @property (nonatomic, retain) NSString *prettyName;
@@ -97,7 +107,9 @@
 + (id)uploadAssetWithIdentifier:(id)arg1 dataclass:(id)arg2 sourcePath:(id)arg3 prettyName:(id)arg4;
 
 - (void).cxx_destruct;
+- (id)_ATAssetTypeFromDataClass:(id)arg1;
 - (id)_variantDescription;
+- (bool)allowDownloadOnConstrainedNetwork;
 - (unsigned long long)assetParts;
 - (long long)assetState;
 - (id)assetType;
@@ -111,8 +123,11 @@
 - (id)dataclass;
 - (id)description;
 - (bool)downloadOnly;
+- (unsigned long long)downloadPauseReason;
 - (float)downloadProgress;
+- (id)downloadSourceContainerId;
 - (void)encodeWithCoder:(id)arg1;
+- (long long)enqueueSource;
 - (id)error;
 - (unsigned long long)hash;
 - (id)icon;
@@ -132,6 +147,7 @@
 - (bool)isPrioritized;
 - (bool)isRestore;
 - (bool)lyricsEmbeddedInAsset;
+- (id)mediaItemDownloadInfo;
 - (id)path;
 - (bool)powerRequired;
 - (id)prettyName;
@@ -143,6 +159,7 @@
 - (bool)readyForStore;
 - (id)resumeData;
 - (id)serializedAsset;
+- (void)setAllowDownloadOnConstrainedNetwork:(bool)arg1;
 - (void)setAssetState:(long long)arg1;
 - (void)setAssetType:(id)arg1;
 - (void)setBypassStore:(bool)arg1;
@@ -153,7 +170,10 @@
 - (void)setCompletionBlock:(id /* block */)arg1;
 - (void)setDataclass:(id)arg1;
 - (void)setDownloadOnly:(bool)arg1;
+- (void)setDownloadPauseReason:(unsigned long long)arg1;
 - (void)setDownloadProgress:(float)arg1;
+- (void)setDownloadSourceContainerId:(id)arg1;
+- (void)setEnqueueSource:(long long)arg1;
 - (void)setError:(id)arg1;
 - (void)setIcon:(id)arg1;
 - (void)setIdentifier:(id)arg1;
@@ -168,6 +188,7 @@
 - (void)setIsRestore:(bool)arg1;
 - (void)setLegacy:(bool)arg1;
 - (void)setLyricsEmbeddedInAsset:(bool)arg1;
+- (void)setMediaItemDownloadInfo:(id)arg1;
 - (void)setPath:(id)arg1;
 - (void)setPowerRequired:(bool)arg1;
 - (void)setPrettyName:(id)arg1;

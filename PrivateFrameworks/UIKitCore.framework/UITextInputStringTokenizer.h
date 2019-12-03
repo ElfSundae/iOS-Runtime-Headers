@@ -11,7 +11,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (struct _NSRange { unsigned long long x1; unsigned long long x2; })_getClosestTokenRangeForPosition:(id)arg1 granularity:(long long)arg2 downstream:(bool)arg3;
+- (id)_closestTokenSubrangeForPosition:(id)arg1 granularity:(long long)arg2 downstream:(bool)arg3;
 - (long long)_indexForTextPosition:(id)arg1;
 - (bool)_isDownstreamForDirection:(long long)arg1 atPosition:(id)arg2;
 - (id)_positionFromPosition:(id)arg1 offset:(unsigned long long)arg2 affinity:(long long)arg3;

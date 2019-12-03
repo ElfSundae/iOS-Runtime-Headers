@@ -3,6 +3,7 @@
  */
 
 @interface PKDashboardCollectionViewCell : UICollectionViewCell {
+    bool  _bottomSeparatorVisible;
     bool  _customHorizontalInset;
     double  _horizontalInset;
     unsigned long long  _maskType;
@@ -29,10 +30,13 @@
 @property (nonatomic) bool wantsCustomAppearance;
 @property (nonatomic) bool wantsDefaultHighlightBehavior;
 
++ (id)defaultBackgroundColor;
 + (double)defaultHorizontalInset;
 
 - (void).cxx_destruct;
+- (double)_bottomSeparatorAlpha;
 - (double)horizontalInset;
+- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)layoutSubviews;
 - (unsigned long long)maskType;
 - (void)prepareForReuse;

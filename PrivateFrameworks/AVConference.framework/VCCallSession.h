@@ -2,22 +2,23 @@
    Image: /System/Library/PrivateFrameworks/AVConference.framework/AVConference
  */
 
-@interface VCCallSession : NSObject <AVCRateControllerDelegate, AVTelephonyInterfaceDelegate, VCAudioIOSink, VCCaptionsReceiverDelegate, VCSecureDataChannelDelegate, VCTransportSessionLegacyDelegate> {
+@interface VCCallSession : NSObject <AVCRateControllerDelegate, AVTelephonyInterfaceDelegate, VCAudioIOSink, VCCaptionsReceiverDelegate, VCRedundancyControllerDelegate, VCSecureDataChannelDelegate, VCTransportSessionLegacyDelegate> {
     NSDictionary * _allPayloadsLocalFeaturesString;
     void * _callLogFile;
     VCCaptionsReceiver * _captionsReceiver;
     bool  _cleanupDone;
     int  _currentRedPayloadType;
-    bool  _currentlyMediaStall;
     int  _deviceRole;
-    bool  _didSendBasebandCodec;
+    VCDisplayLink * _displayLink;
     bool  _inviteDataRequested;
     bool  _isConnectedOnIPv6_LowestConnectionQuality;
     bool  _isLocalCellular_LowestConnectionQuality;
     bool  _isRedEnabled;
     bool  _isRemoteCellular_LowestConnectionQuality;
+    bool  _isRemoteMediaStalledShort;
     bool  _isUseCaseWatchContinuity;
-    double  _lastMediaStallDuration;
+    double  _lastMediaStallStartTime;
+    double  _maxMediaStallTime;
     VCRateControlMediaController * _mediaController;
     VCMediaNegotiator * _mediaNegotiator;
     unsigned int  _mediaStallCount;
@@ -25,18 +26,24 @@
     unsigned int  _peerProtocolVersion;
     unsigned int  _rateChangeCounter;
     AVCRateController * _rateController;
+    double  _remoteMediaStallTimeout;
     bool  _shouldReportWRMMetrics;
+    int  _signalStrengthBars;
+    int  _signalStrengthDisplayBars;
+    int  _signalStrengthMaxDisplayBars;
     long long  _sipState;
+    VCSwitchManager * _switchManager;
     unsigned int  _targetBitrate;
     VCTransportSession * _transportSession;
     unsigned int  _transportType;
+    VCRedundancyControllerVideo * _videoRedundancyController;
     int  aacBlockSize;
     bool  allowAudioRecording;
     bool  allowAudioSwitching;
     bool  audioIsPaused;
     void * audioMediaControlInfoGenerator;
     NSObject<OS_dispatch_queue> * audioQueue;
-    struct tagVCAudioReceiver { struct tagVCAudioReceiverConfig { unsigned int x_1_1_1; struct tagVCAudioReceiverStream { struct tagHANDLE {} *x_2_2_1; unsigned short x_2_2_2; } x_1_1_2[3]; void *x_1_1_3; void *x_1_1_4; unsigned int x_1_1_5; int x_1_1_6; int x_1_1_7; bool x_1_1_8; struct opaqueRTCReporting {} *x_1_1_9; int x_1_1_10; bool x_1_1_11; struct __CFString {} *x_1_1_12; struct __CFString {} *x_1_1_13; unsigned short x_1_1_14; bool x_1_1_15; } x1; void *x2; void *x3; struct opaqueVCJitterBuffer {} *x4; bool x5; struct AudioStreamBasicDescription {} *x6; int x7; double x8; struct { long long x_9_1_1; int x_9_1_2; unsigned int x_9_1_3; long long x_9_1_4; } x9; struct tagVCRealTimeThread {} *x10; struct tagVCAudioReceiverReportingTask { struct opaqueRTCReporting {} *x_11_1_1; int x_11_1_2; struct tagHANDLE {} *x_11_1_3; } x11; bool x12; struct _opaque_pthread_mutex_t { long long x_13_1_1; BOOL x_13_1_2[56]; } x13; struct _opaque_pthread_mutex_t { long long x_14_1_1; BOOL x_14_1_2[56]; } x14; struct tagVCAudioDecoderList { struct tagDecoderSettings {} *x_15_1_1; unsigned int x_15_1_2; } x15; } * audioReceiver;
+    struct tagVCAudioReceiver { struct tagVCAudioReceiverConfig { unsigned int x_1_1_1; struct tagVCAudioReceiverStream { struct tagHANDLE {} *x_2_2_1; unsigned short x_2_2_2; struct tagVCAudioReceiver {} *x_2_2_3; } x_1_1_2[3]; void *x_1_1_3; void *x_1_1_4; unsigned int x_1_1_5; int x_1_1_6; int x_1_1_7; bool x_1_1_8; struct opaqueRTCReporting {} *x_1_1_9; int x_1_1_10; bool x_1_1_11; struct __CFString {} *x_1_1_12; struct __CFString {} *x_1_1_13; unsigned short x_1_1_14; bool x_1_1_15; } x1; void *x2; void *x3; struct opaqueVCJitterBuffer {} *x4; bool x5; struct AudioStreamBasicDescription {} *x6; int x7; double x8; struct { long long x_9_1_1; int x_9_1_2; unsigned int x_9_1_3; long long x_9_1_4; } x9; struct tagVCRealTimeThread {} *x10; struct tagVCAudioReceiverReportingTask { struct opaqueRTCReporting {} *x_11_1_1; int x_11_1_2; struct tagHANDLE {} *x_11_1_3; } x11; bool x12; bool x13; struct _opaque_pthread_mutex_t { long long x_14_1_1; BOOL x_14_1_2[56]; } x14; struct _opaque_pthread_mutex_t { long long x_15_1_1; BOOL x_15_1_2[56]; } x15; } * audioReceiver;
     VCAudioTransmitter * audioTransmitter;
     unsigned int  awdCallNonce;
     unsigned int  awdTime;
@@ -105,6 +112,7 @@
     bool  isWaitingForICEResult;
     unsigned int  lastReceived;
     double  lastReceivedPacketTimestamp;
+    double  lastVideoCallAlarmTime;
     double  lastVideoQualityNotificationUpdate;
     VCCallInfo * localCallInfo;
     unsigned short  maxPacketLength;
@@ -122,7 +130,7 @@
     float  packetLateAndMissingRatio;
     double  packetLossRate;
     long long  packetMultiplexMode;
-    int  packetsSinceMediaStall;
+    int  packetsSinceShortMediaStall;
     int  packetsSinceStall;
     struct _opaque_pthread_mutex_t { 
         long long __sig; 
@@ -164,8 +172,6 @@
     bool  remoteSupportsExpectedAspectRatio;
     bool  remoteSupportsVisibleRect;
     VideoAttributes * remoteVideoAttributes;
-    int  reportReportFrequency;
-    int  reportUpdateInterval;
     struct opaqueRTCReporting { } * reportingAgent;
     GKRingBuffer * ringBuf;
     unsigned int  roundTripTime;
@@ -185,9 +191,6 @@
     bool  shouldSendBlackFrame;
     bool  shouldTimeoutPackets;
     bool  shouldUpdateLastReceivedPacketTimestamp;
-    int  signalGrade;
-    int  signalRaw;
-    int  signalStrength;
     struct SKEStateOpaque { } * skeState;
     NSData * srtpKeyBytes;
     struct _opaque_pthread_mutex_t { 
@@ -226,11 +229,11 @@
         unsigned int mBitsPerChannel; 
         unsigned int mReserved; 
     }  vpioFormat;
-    struct tagWRMMetricsInfo { bool x1; struct tagHANDLE {} *x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; unsigned int x10; unsigned int x11; unsigned int x12; unsigned int x13; unsigned long long x14; unsigned long long x15; unsigned long long x16; int x17; int (*x18)(); struct { void *x_19_1_1; int (*x_19_1_2)(); int (*x_19_1_3)(); } x19; struct _opaque_pthread_mutex_t { long long x_20_1_1; BOOL x_20_1_2[56]; } x20; unsigned int x21; unsigned int x22; unsigned int x23; unsigned int x24; unsigned int x25; unsigned int x26; unsigned int x27; unsigned int x28; unsigned int x29; } * wrmInfo;
+    struct tagWRMMetricsInfo { bool x1; struct tagHANDLE {} *x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; unsigned int x10; unsigned int x11; unsigned int x12; unsigned int x13; unsigned int x14; unsigned long long x15; unsigned long long x16; unsigned long long x17; int x18; int (*x19)(); struct { void *x_20_1_1; int (*x_20_1_2)(); int (*x_20_1_3)(); } x20; struct _opaque_pthread_mutex_t { long long x_21_1_1; BOOL x_21_1_2[56]; } x21; unsigned int x22; unsigned int x23; unsigned int x24; unsigned int x25; unsigned int x26; unsigned int x27; unsigned int x28; unsigned int x29; unsigned int x30; unsigned int x31; unsigned int x32; unsigned int x33; unsigned int x34; unsigned int x35; unsigned int x36; } * wrmInfo;
 }
 
 @property (readonly) bool audioIsPaused;
-@property (readonly) struct tagVCAudioReceiver { struct tagVCAudioReceiverConfig { unsigned int x_1_1_1; struct tagVCAudioReceiverStream { struct tagHANDLE {} *x_2_2_1; unsigned short x_2_2_2; } x_1_1_2[3]; void *x_1_1_3; void *x_1_1_4; unsigned int x_1_1_5; int x_1_1_6; int x_1_1_7; bool x_1_1_8; struct opaqueRTCReporting {} *x_1_1_9; int x_1_1_10; bool x_1_1_11; struct __CFString {} *x_1_1_12; struct __CFString {} *x_1_1_13; unsigned short x_1_1_14; bool x_1_1_15; } x1; void *x2; void *x3; struct opaqueVCJitterBuffer {} *x4; bool x5; struct AudioStreamBasicDescription {} *x6; int x7; double x8; struct { long long x_9_1_1; int x_9_1_2; unsigned int x_9_1_3; long long x_9_1_4; } x9; struct tagVCRealTimeThread {} *x10; struct tagVCAudioReceiverReportingTask { struct opaqueRTCReporting {} *x_11_1_1; int x_11_1_2; struct tagHANDLE {} *x_11_1_3; } x11; bool x12; struct _opaque_pthread_mutex_t { long long x_13_1_1; BOOL x_13_1_2[56]; } x13; struct _opaque_pthread_mutex_t { long long x_14_1_1; BOOL x_14_1_2[56]; } x14; struct tagVCAudioDecoderList { struct tagDecoderSettings {} *x_15_1_1; unsigned int x_15_1_2; } x15; }*audioReceiver;
+@property (readonly) struct tagVCAudioReceiver { struct tagVCAudioReceiverConfig { unsigned int x_1_1_1; struct tagVCAudioReceiverStream { struct tagHANDLE {} *x_2_2_1; unsigned short x_2_2_2; struct tagVCAudioReceiver {} *x_2_2_3; } x_1_1_2[3]; void *x_1_1_3; void *x_1_1_4; unsigned int x_1_1_5; int x_1_1_6; int x_1_1_7; bool x_1_1_8; struct opaqueRTCReporting {} *x_1_1_9; int x_1_1_10; bool x_1_1_11; struct __CFString {} *x_1_1_12; struct __CFString {} *x_1_1_13; unsigned short x_1_1_14; bool x_1_1_15; } x1; void *x2; void *x3; struct opaqueVCJitterBuffer {} *x4; bool x5; struct AudioStreamBasicDescription {} *x6; int x7; double x8; struct { long long x_9_1_1; int x_9_1_2; unsigned int x_9_1_3; long long x_9_1_4; } x9; struct tagVCRealTimeThread {} *x10; struct tagVCAudioReceiverReportingTask { struct opaqueRTCReporting {} *x_11_1_1; int x_11_1_2; struct tagHANDLE {} *x_11_1_3; } x11; bool x12; bool x13; struct _opaque_pthread_mutex_t { long long x_14_1_1; BOOL x_14_1_2[56]; } x14; struct _opaque_pthread_mutex_t { long long x_15_1_1; BOOL x_15_1_2[56]; } x15; }*audioReceiver;
 @property (nonatomic, readonly) int audioTierAudioCodecBitrate;
 @property (nonatomic, readonly) int audioTierNetworkBitrate;
 @property (nonatomic, readonly) int audioTierPacketsPerBundle;
@@ -295,9 +298,9 @@
 @property (nonatomic, copy) NSString *sessionID;
 @property (nonatomic) bool shouldSendAudio;
 @property bool shouldTimeoutPackets;
-@property (nonatomic) int signalGrade;
-@property (nonatomic) int signalRaw;
-@property (nonatomic) int signalStrength;
+@property (nonatomic) int signalStrengthBars;
+@property (nonatomic) int signalStrengthDisplayBars;
+@property (nonatomic) int signalStrengthMaxDisplayBars;
 @property long long sipState;
 @property (retain) NSData *srtpKeyBytes;
 @property long long state;
@@ -313,6 +316,7 @@
 + (id)keyPathsForValuesAffectingNetworkQuality;
 + (int)setRxPayloadList:(struct tagHANDLE { int x1; }*)arg1 withPayloadTypes:(id)arg2;
 + (int)setRxPayloadList:(struct tagHANDLE { int x1; }*)arg1 withPayloadTypes:(id)arg2 isRedEnabled:(bool)arg3;
++ (void)stopSecureControlChannel:(id)arg1;
 
 - (int)Conference_SetBWEstMode:(bool)arg1 bFakeLargeFrameMode:(bool)arg2;
 - (id)activeControlChannel;
@@ -324,17 +328,20 @@
 - (int)applyFeaturesListStringForPayload:(int)arg1;
 - (bool)applyNegotiatedAudioSettings:(id*)arg1;
 - (void)applyNegotiatedCaptionsSettings;
+- (void)applyNegotiatedFaceTimeSettings;
 - (void)applyNegotiatedMomentsSettings;
 - (void)applyNegotiatedSettings;
 - (bool)applyNegotiatedVideoSettings:(id*)arg1;
 - (bool)audioIsPaused;
 - (unsigned int)audioRTPID;
-- (struct tagVCAudioReceiver { struct tagVCAudioReceiverConfig { unsigned int x_1_1_1; struct tagVCAudioReceiverStream { struct tagHANDLE {} *x_2_2_1; unsigned short x_2_2_2; } x_1_1_2[3]; void *x_1_1_3; void *x_1_1_4; unsigned int x_1_1_5; int x_1_1_6; int x_1_1_7; bool x_1_1_8; struct opaqueRTCReporting {} *x_1_1_9; int x_1_1_10; bool x_1_1_11; struct __CFString {} *x_1_1_12; struct __CFString {} *x_1_1_13; unsigned short x_1_1_14; bool x_1_1_15; } x1; void *x2; void *x3; struct opaqueVCJitterBuffer {} *x4; bool x5; struct AudioStreamBasicDescription {} *x6; int x7; double x8; struct { long long x_9_1_1; int x_9_1_2; unsigned int x_9_1_3; long long x_9_1_4; } x9; struct tagVCRealTimeThread {} *x10; struct tagVCAudioReceiverReportingTask { struct opaqueRTCReporting {} *x_11_1_1; int x_11_1_2; struct tagHANDLE {} *x_11_1_3; } x11; bool x12; struct _opaque_pthread_mutex_t { long long x_13_1_1; BOOL x_13_1_2[56]; } x13; struct _opaque_pthread_mutex_t { long long x_14_1_1; BOOL x_14_1_2[56]; } x14; struct tagVCAudioDecoderList { struct tagDecoderSettings {} *x_15_1_1; unsigned int x_15_1_2; } x15; }*)audioReceiver;
+- (struct tagVCAudioReceiver { struct tagVCAudioReceiverConfig { unsigned int x_1_1_1; struct tagVCAudioReceiverStream { struct tagHANDLE {} *x_2_2_1; unsigned short x_2_2_2; struct tagVCAudioReceiver {} *x_2_2_3; } x_1_1_2[3]; void *x_1_1_3; void *x_1_1_4; unsigned int x_1_1_5; int x_1_1_6; int x_1_1_7; bool x_1_1_8; struct opaqueRTCReporting {} *x_1_1_9; int x_1_1_10; bool x_1_1_11; struct __CFString {} *x_1_1_12; struct __CFString {} *x_1_1_13; unsigned short x_1_1_14; bool x_1_1_15; } x1; void *x2; void *x3; struct opaqueVCJitterBuffer {} *x4; bool x5; struct AudioStreamBasicDescription {} *x6; int x7; double x8; struct { long long x_9_1_1; int x_9_1_2; unsigned int x_9_1_3; long long x_9_1_4; } x9; struct tagVCRealTimeThread {} *x10; struct tagVCAudioReceiverReportingTask { struct opaqueRTCReporting {} *x_11_1_1; int x_11_1_2; struct tagHANDLE {} *x_11_1_3; } x11; bool x12; bool x13; struct _opaque_pthread_mutex_t { long long x_14_1_1; BOOL x_14_1_2[56]; } x14; struct _opaque_pthread_mutex_t { long long x_15_1_1; BOOL x_15_1_2[56]; } x15; }*)audioReceiver;
+- (double)audioReceivingBitrateKbps;
 - (int)audioTierAudioCodecBitrate;
 - (int)audioTierNetworkBitrate;
 - (int)audioTierPacketsPerBundle;
 - (int)audioTierPayload;
 - (int)audioTierRedNumPayloads;
+- (double)audioTransmittingBitrateKbps;
 - (void)avTelephonyInterface:(id)arg1 vocoderInfoChangedToType:(id)arg2 sampleRate:(id)arg3;
 - (int)bandwidthDownstream;
 - (int)bandwidthUpstream;
@@ -366,6 +373,7 @@
 - (void)configureRateController;
 - (long long)connectionChangeState;
 - (id)connectionManager;
+- (void)controlChannel:(id)arg1 receivedData:(id)arg2 transactionID:(unsigned int)arg3 fromParticipant:(id)arg4;
 - (bool)createAudioTransmitter:(id*)arg1;
 - (id)createInviteSDPWithError:(id*)arg1;
 - (bool)createMediaQueueHandle:(id*)arg1;
@@ -383,6 +391,7 @@
 - (bool)disconnectInternal:(bool)arg1 disconnectError:(id)arg2 didRemoteCancel:(bool)arg3;
 - (void)disconnectWithNoRemotePackets:(long long)arg1;
 - (void)disconnectWithNoRemotePackets:(long long)arg1 timeoutUsed:(double)arg2;
+- (void)displayLinkTick:(id)arg1;
 - (void)doSipEndAction:(int)arg1 callID:(unsigned int)arg2 error:(id)arg3;
 - (void)doSipEndProc:(id)arg1;
 - (bool)doesVideoPayloadMatchRemoteImageAttributeRules:(id)arg1;
@@ -422,15 +431,15 @@
 - (bool)handshakeComplete:(struct SSLContext { }*)arg1 withError:(struct __CFError {}**)arg2;
 - (id)imageAttributeRules;
 - (id)init;
-- (id)initWithDeviceRole:(int)arg1 transportType:(unsigned int)arg2;
+- (id)initWithDeviceRole:(int)arg1 transportType:(unsigned int)arg2 isGKVoiceChat:(bool)arg3 reportingHierarchyToken:(id)arg4;
 - (void)initWithRelevantStorebagEntries;
-- (bool)initializeVideoReceiver:(id*)arg1 reportingAgent:(struct opaqueRTCReporting { }*)arg2;
-- (bool)initializeVideoTransmitter:(id*)arg1 encodeRule:(id)arg2 captureRuleWifi:(id)arg3 captureRuleCellular:(id)arg4 unpausing:(bool)arg5 reportingAgent:(struct opaqueRTCReporting { }*)arg6;
+- (bool)initializeVideoReceiver:(id*)arg1 reportingAgent:(struct opaqueRTCReporting { }*)arg2 fecHeaderV1Enabled:(bool)arg3;
+- (bool)initializeVideoTransmitter:(id*)arg1 encodeRule:(id)arg2 captureRuleWifi:(id)arg3 captureRuleCellular:(id)arg4 unpausing:(bool)arg5 reportingAgent:(struct opaqueRTCReporting { }*)arg6 fecHeaderV1Enabled:(bool)arg7;
 - (unsigned char)inputMeter;
 - (int)interfaceForCurrentCall;
 - (id)inviteDataForParticipantID:(id)arg1 callID:(unsigned int*)arg2 remoteInviteData:(id)arg3 nonCellularCandidateTimeout:(double)arg4 error:(id*)arg5;
 - (bool)isAudioRunning;
-- (bool)isBetterForSIPInviteWithSourceDestinationInfo:(struct tagVCSourceDestinationInfo { int x1; union { struct { struct tagIPPORT { int x_1_3_1; BOOL x_1_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_1_3_3; unsigned short x_1_3_4; } x_1_2_1; struct tagIPPORT { int x_2_3_1; BOOL x_2_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_2_3_3; unsigned short x_2_3_4; } x_1_2_2; struct { bool x_3_3_1; unsigned short x_3_3_2; } x_1_2_3; } x_2_1_1; struct { int x_2_2_1; struct tagIPPORT { int x_2_3_1; BOOL x_2_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_2_3_3; unsigned short x_2_3_4; } x_2_2_2; } x_2_1_2; struct { unsigned int x_3_2_1; struct { BOOL x_2_3_1; unsigned short x_2_3_2; unsigned short x_2_3_3; unsigned char x_2_3_4; } x_3_2_2; } x_2_1_3; } x2; struct tagVCSourceDestinationInfo {} *x3; }*)arg1 thanSession:(id)arg2;
+- (bool)isBetterForSIPInviteWithSourceDestinationInfo:(struct tagVCSourceDestinationInfo { int x1; union { struct { struct tagIPPORT { int x_1_3_1; BOOL x_1_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_1_3_3; unsigned short x_1_3_4; } x_1_2_1; struct tagIPPORT { int x_2_3_1; BOOL x_2_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_2_3_3; unsigned short x_2_3_4; } x_1_2_2; struct { bool x_3_3_1; unsigned short x_3_3_2; } x_1_2_3; } x_2_1_1; struct { int x_2_2_1; struct tagIPPORT { int x_2_3_1; BOOL x_2_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_2_3_3; unsigned short x_2_3_4; } x_2_2_2; } x_2_1_2; struct { unsigned int x_3_2_1; struct { BOOL x_2_3_1; unsigned short x_2_3_2; unsigned short x_2_3_3; unsigned char x_2_3_4; } x_3_2_2; } x_2_1_3; struct { id x_4_2_1; } x_2_1_4; } x2; struct tagVCSourceDestinationInfo {} *x3; void *x4; }*)arg1 thanSession:(id)arg2;
 - (bool)isCallOngoing;
 - (bool)isCaller;
 - (bool)isCurrentPayloadTypeValid;
@@ -439,6 +448,7 @@
 - (bool)isLowBitrateCodecPreferred:(id)arg1;
 - (bool)isRTCPFBEnabled;
 - (bool)isRemoteMediaStalled;
+- (bool)isSIPEnabled;
 - (bool)isSKEOptimizationEnabled;
 - (bool)isSecureMessagingRequired;
 - (bool)isStarted;
@@ -474,6 +484,7 @@
 - (double)networkConditionsTimeoutInSeconds;
 - (double)networkQuality;
 - (id)newMediaBlobWithRemoteMediaBlob:(id)arg1 localCallID:(unsigned int)arg2 isLowBitrateCodecPreferred:(bool)arg3;
+- (id)newMediaNegotiatorAudioConfigurationWithAllowAudioSwitching:(bool)arg1 useSBR:(bool)arg2 aacBlockSize:(unsigned int)arg3;
 - (id)newRemoteScreenAttributesForOrientation:(int)arg1;
 - (id)newSKEBlobWithRemoteSKEBlob:(id)arg1;
 - (void)notifyDelegateActiveConnectionDidChange;
@@ -509,6 +520,8 @@
 - (void)rateController:(void*)arg1 targetBitrateDidChange:(unsigned int)arg2 rateChangeCounter:(unsigned int)arg3;
 - (void)rcvdFirstRemoteFrame;
 - (bool)receivedSIPInvite;
+- (void)redundancyController:(id)arg1 redundancyIntervalDidChange:(double)arg2;
+- (void)redundancyController:(id)arg1 redundancyPercentageDidChange:(unsigned int)arg2;
 - (void)releaseRTPHandles;
 - (void)remoteCellTechStateUpdate:(int)arg1 maxRemoteBitrate:(unsigned int)arg2;
 - (unsigned int)remoteFrameHeight;
@@ -517,9 +530,10 @@
 - (void)remotePauseDidChangeToState:(bool)arg1 forVideo:(bool)arg2;
 - (id)remoteVideoAttributes;
 - (void)reportDashboardEndResult:(bool)arg1;
+- (void)reportImmediateWRMMetric:(int)arg1 value:(unsigned long long)arg2;
 - (void)reportOperatingMode;
 - (void)reportSymptom:(unsigned int)arg1;
-- (void)reportWRMMetrics:(const struct { unsigned long long x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; unsigned long long x5; unsigned long long x6; unsigned long long x7; unsigned long long x8; unsigned long long x9; unsigned long long x10; unsigned long long x11; unsigned long long x12; unsigned long long x13; unsigned long long x14; unsigned long long x15; unsigned long long x16; unsigned long long x17; unsigned long long x18; unsigned long long x19; unsigned long long x20; unsigned long long x21; unsigned long long x22; unsigned long long x23; unsigned long long x24; unsigned long long x25; unsigned long long x26; unsigned long long x27; unsigned long long x28; }*)arg1;
+- (void)reportWRMMetrics:(const struct { unsigned long long x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; unsigned long long x5; unsigned long long x6; unsigned long long x7; unsigned long long x8; unsigned long long x9; unsigned long long x10; unsigned long long x11; unsigned long long x12; unsigned long long x13; unsigned long long x14; unsigned long long x15; unsigned long long x16; unsigned long long x17; unsigned long long x18; unsigned long long x19; unsigned long long x20; unsigned long long x21; unsigned long long x22; unsigned long long x23; unsigned long long x24; unsigned long long x25; unsigned long long x26; unsigned long long x27; unsigned long long x28; unsigned long long x29; unsigned long long x30; unsigned long long x31; unsigned long long x32; unsigned long long x33; unsigned long long x34; unsigned long long x35; unsigned long long x36; unsigned long long x37; unsigned long long x38; }*)arg1;
 - (struct opaqueRTCReporting { }*)reportingAgent;
 - (void)reportingMomentsWithRequest:(id)arg1;
 - (void)requestWRMNotification;
@@ -584,6 +598,7 @@
 - (void)setPeerCN:(id)arg1;
 - (void)setPeerProtocolVersion:(unsigned int)arg1;
 - (void)setPeerReportingID:(id)arg1;
+- (void)setPreWarmState:(bool)arg1;
 - (void)setPreferredAudioCodec:(int)arg1;
 - (void)setQualityDelegate:(id)arg1;
 - (bool)setRTPPayloads:(id)arg1 withError:(id*)arg2;
@@ -605,9 +620,9 @@
 - (void)setSessionID:(id)arg1;
 - (void)setShouldSendAudio:(bool)arg1;
 - (void)setShouldTimeoutPackets:(bool)arg1;
-- (void)setSignalGrade:(int)arg1;
-- (void)setSignalRaw:(int)arg1;
-- (void)setSignalStrength:(int)arg1;
+- (void)setSignalStrengthBars:(int)arg1;
+- (void)setSignalStrengthDisplayBars:(int)arg1;
+- (void)setSignalStrengthMaxDisplayBars:(int)arg1;
 - (void)setSipState:(long long)arg1;
 - (void)setSrtpKeyBytes:(id)arg1;
 - (void)setState:(long long)arg1;
@@ -620,8 +635,9 @@
 - (void)setUseUEP:(bool)arg1;
 - (void)setVideoPayload:(long long)arg1;
 - (void)setWRMMetricConfig:(struct { unsigned long long x1; }*)arg1;
-- (void)setWRMNotification:(struct { int x1; int x2; unsigned long long x3; unsigned long long x4; unsigned long long x5; }*)arg1;
+- (void)setWRMNotification:(struct { int x1; int x2; unsigned long long x3; char *x4; unsigned long long x5; unsigned long long x6; }*)arg1;
 - (void)setupAACELDPayload:(int)arg1;
+- (void)setupABTesting;
 - (bool)setupAudioCodecWithPayload:(int)arg1;
 - (bool)setupAudioCookies;
 - (void)setupAudioOnOffStateMessages;
@@ -635,14 +651,16 @@
 - (void)setupCellTechChangeMessages;
 - (void)setupConnectionTimeoutTimerWithErrorCode:(int)arg1 detailedCode:(int)arg2 description:(id)arg3 reason:(id)arg4;
 - (void)setupDTLSDefaults;
+- (void)setupDisconnectMessage;
 - (int)setupEncryptionWithKey:(const struct __CFData {}**)arg1 confIndex:(int*)arg2;
 - (void)setupHandoverCandidateChangeMessage;
 - (bool)setupIDSConnectionForCallID:(unsigned int)arg1 destination:(id)arg2 socket:(int)arg3 error:(id*)arg4;
 - (void)setupMessaging;
 - (void)setupMomentsMessages;
-- (void)setupPeerInfo:(id)arg1 usingInviteData:(id)arg2 isCaller:(bool)arg3 capabilities:(id)arg4;
+- (void)setupPeerInfo:(bool)arg1 capabilities:(id)arg2;
 - (void)setupPiPStateChangeMessage;
 - (void)setupPreferredInterfaceMessage;
+- (void)setupRemoteCallInfoWithParticipantID:(id)arg1 usingInviteData:(id)arg2;
 - (void)setupSecureDataChannel;
 - (void)setupSymptomEnabledMessage;
 - (void)setupVideoPauseMessages;
@@ -653,9 +671,9 @@
 - (void)shouldSendBlackFrame:(bool)arg1;
 - (bool)shouldTimeoutPackets;
 - (void)shutdownVoiceChatFromRemoteSIPSignal:(int)arg1 withReason:(const char *)arg2;
-- (int)signalGrade;
-- (int)signalRaw;
-- (int)signalStrength;
+- (int)signalStrengthBars;
+- (int)signalStrengthDisplayBars;
+- (int)signalStrengthMaxDisplayBars;
 - (int)sipCallback:(int)arg1 callID:(unsigned int)arg2 msgIn:(const char *)arg3 msgOut:(char *)arg4 optional:(void*)arg5 confIndex:(int*)arg6;
 - (void)sipConnectThreadProc:(id)arg1;
 - (bool)sipConnectWithError:(id*)arg1;
@@ -696,11 +714,13 @@
 - (void)updateCachedConnectionState;
 - (void)updateDeviceRole:(int)arg1;
 - (void)updateLastReceivedAudioTime;
-- (void)updateLastReceivedPacket:(bool)arg1;
-- (void)updateLastReceivedPacketWithTimestamp:(double)arg1;
+- (void)updateLastReceivedPacket:(bool)arg1 packetType:(int)arg2;
+- (void)updateLastReceivedPacketWithTimestamp:(double)arg1 packetType:(int)arg2;
 - (void)updateMaxPktLength;
 - (void)updateNetworkCheckHint:(double)arg1;
 - (void)updateRemoteMediaStallState:(double)arg1;
+- (void)updateRemoteMediaStallStateReporting:(double)arg1;
+- (void)updateStatistics:(struct { int x1; double x2; bool x3; bool x4; union { struct { unsigned int x_1_2_1; unsigned int x_1_2_2; unsigned int x_1_2_3; unsigned int x_1_2_4; unsigned int x_1_2_5; double x_1_2_6; double x_1_2_7; double x_1_2_8; double x_1_2_9; BOOL x_1_2_10[64]; } x_5_1_1; struct { unsigned int x_2_2_1; unsigned int x_2_2_2; unsigned int x_2_2_3; unsigned int x_2_2_4; unsigned int x_2_2_5; unsigned int x_2_2_6; unsigned int x_2_2_7; unsigned int x_2_2_8; unsigned int x_2_2_9; unsigned int x_2_2_10; unsigned int x_2_2_11; double x_2_2_12; unsigned int x_2_2_13; unsigned int x_2_2_14; double x_2_2_15; unsigned int x_2_2_16; } x_5_1_2; struct { double x_3_2_1; double x_3_2_2; unsigned int x_3_2_3; unsigned int x_3_2_4; unsigned int x_3_2_5; unsigned int x_3_2_6; unsigned int x_3_2_7; unsigned long long x_3_2_8; } x_5_1_3; struct { unsigned int x_4_2_1; bool x_4_2_2; bool x_4_2_3; bool x_4_2_4; unsigned int x_4_2_5; unsigned int x_4_2_6; double x_4_2_7; unsigned int x_4_2_8; } x_5_1_4; struct { unsigned char x_5_2_1; unsigned int x_5_2_2; unsigned int x_5_2_3; unsigned int x_5_2_4; unsigned int x_5_2_5; unsigned int x_5_2_6; unsigned int x_5_2_7; unsigned int x_5_2_8; unsigned int x_5_2_9; unsigned int x_5_2_10; double x_5_2_11; double x_5_2_12; double x_5_2_13; unsigned int x_5_2_14; unsigned int x_5_2_15; unsigned int x_5_2_16; } x_5_1_5; } x5; })arg1;
 - (void)updateVideoQualityNotification:(double)arg1;
 - (void)updateVideoQualityStatus:(double)arg1 bitrate:(double)arg2 time:(double)arg3 isRemote:(bool)arg4;
 - (bool)useCompressedConnectionData;

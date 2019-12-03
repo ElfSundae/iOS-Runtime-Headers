@@ -9,7 +9,7 @@
 
 @property (nonatomic, copy) NSString *text;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithImage:(id)arg1 text:(id)arg2 textColor:(id)arg3;
 - (void)layoutSubviews;
 - (void)setText:(id)arg1;

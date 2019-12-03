@@ -20,6 +20,7 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (short)closestVertexIndexToLabeledFacePosition:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initPrivate;
@@ -29,7 +30,9 @@
 - (id)initWithFaceTrackingData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (unsigned long long)normalCount;
+- (void)normalForLabeledFacePosition:(id)arg1;
 - (const /* Warning: Unrecognized filer type: '1' using 'void*' */ void**)normals;
+- (void)positionForLabeledFacePosition:(id)arg1;
 - (unsigned long long)textureCoordinateCount;
 - (const /* Warning: Unrecognized filer type: '1' using 'void*' */ void**)textureCoordinates;
 - (unsigned long long)triangleCount;

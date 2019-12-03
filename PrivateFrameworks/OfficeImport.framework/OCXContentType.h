@@ -11,8 +11,8 @@
 @property (nonatomic, readonly) NSString *contentType;
 @property (nonatomic, readonly) NSString *path;
 
+- (void).cxx_destruct;
 - (id)contentType;
-- (void)dealloc;
 - (id)initWithContentType:(id)arg1 extension:(id)arg2;
 - (id)initWithContentType:(id)arg1 path:(id)arg2;
 - (bool)isOverride;

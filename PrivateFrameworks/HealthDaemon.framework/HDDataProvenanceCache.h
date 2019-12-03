@@ -13,6 +13,7 @@
     HDDataProvenanceManager * _provenanceManager;
     NSMutableDictionary * _sourceByPersistentIDCache;
     HDEntityEncoder * _sourceEncoder;
+    NSMutableDictionary * _sourceRevisionByDataProvenanceIDCache;
     NSMutableDictionary * _sourceRevisionsDictionaryBySourceCache;
 }
 
@@ -26,6 +27,7 @@
 @property (nonatomic, retain) HDDataProvenanceManager *provenanceManager;
 @property (nonatomic, retain) NSMutableDictionary *sourceByPersistentIDCache;
 @property (nonatomic, retain) HDEntityEncoder *sourceEncoder;
+@property (nonatomic, retain) NSMutableDictionary *sourceRevisionByDataProvenanceIDCache;
 @property (nonatomic, retain) NSMutableDictionary *sourceRevisionsDictionaryBySourceCache;
 
 - (void).cxx_destruct;
@@ -46,7 +48,7 @@
 - (id)profile;
 - (id)provenanceByID;
 - (id)provenanceManager;
-- (id)provenanceWithID:(long long)arg1;
+- (id)provenanceWithID:(id)arg1;
 - (void)setCodableObjectCollectionsByProvenance:(id)arg1;
 - (void)setCodableSourcesByID:(id)arg1;
 - (void)setDatabase:(id)arg1;
@@ -57,10 +59,12 @@
 - (void)setProvenanceManager:(id)arg1;
 - (void)setSourceByPersistentIDCache:(id)arg1;
 - (void)setSourceEncoder:(id)arg1;
+- (void)setSourceRevisionByDataProvenanceIDCache:(id)arg1;
 - (void)setSourceRevisionsDictionaryBySourceCache:(id)arg1;
 - (id)sourceByPersistentIDCache;
 - (id)sourceEncoder;
-- (id)sourceRevisionForPersistentID:(id)arg1 sourceVersion:(id)arg2 productType:(id)arg3 operatingSystemVersion:(struct { long long x1; long long x2; long long x3; })arg4 profile:(id)arg5 error:(id*)arg6;
+- (id)sourceRevisionByDataProvenanceIDCache;
+- (id)sourceRevisionForProvenanceID:(id)arg1 dataProvenance:(id)arg2 profile:(id)arg3 error:(id*)arg4;
 - (id)sourceRevisionsDictionaryBySourceCache;
 
 @end

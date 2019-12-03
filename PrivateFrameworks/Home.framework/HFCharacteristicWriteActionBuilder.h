@@ -14,12 +14,13 @@
 + (Class)homeKitRepresentationClass;
 
 - (void).cxx_destruct;
-- (id)_performValidation;
 - (id)characteristic;
 - (id)commitItem;
 - (id)copyForCreatingNewAction;
 - (id)createNewAction;
+- (bool)hasSameTargetAsAction:(id)arg1;
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2;
+- (id)performValidation;
 - (bool)requiresDeviceUnlock;
 - (void)setCharacteristic:(id)arg1;
 - (void)setTargetValue:(id)arg1;

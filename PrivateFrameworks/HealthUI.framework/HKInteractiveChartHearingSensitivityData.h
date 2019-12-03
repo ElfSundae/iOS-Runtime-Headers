@@ -3,6 +3,7 @@
  */
 
 @interface HKInteractiveChartHearingSensitivityData : NSObject <HKGraphSeriesChartData> {
+    bool  _isAverage;
     bool  _isLeftEar;
     double  _sensitivityDbHL;
 }
@@ -10,12 +11,15 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) bool isAverage;
 @property (nonatomic) bool isLeftEar;
 @property (nonatomic) double sensitivityDbHL;
 @property (readonly) Class superclass;
 
+- (bool)isAverage;
 - (bool)isLeftEar;
 - (double)sensitivityDbHL;
+- (void)setIsAverage:(bool)arg1;
 - (void)setIsLeftEar:(bool)arg1;
 - (void)setSensitivityDbHL:(double)arg1;
 

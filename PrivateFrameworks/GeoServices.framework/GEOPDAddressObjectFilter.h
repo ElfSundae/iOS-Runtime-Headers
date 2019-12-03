@@ -10,11 +10,13 @@
 @property (nonatomic, retain) NSMutableArray *libraryVersions;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
 + (Class)libraryVersionType;
 
 - (void).cxx_destruct;
 - (void)addLibraryVersion:(id)arg1;
 - (void)clearLibraryVersions;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -25,6 +27,7 @@
 - (id)libraryVersions;
 - (unsigned long long)libraryVersionsCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setLibraryVersions:(id)arg1;
 - (id)unknownFields;

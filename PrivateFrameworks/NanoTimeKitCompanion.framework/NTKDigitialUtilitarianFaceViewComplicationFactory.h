@@ -21,10 +21,10 @@
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2 attributes:(unsigned long long)arg3 faceView:(id)arg4;
 - (long long)_photosUtilitySlotForSlot:(id)arg1;
 - (double)_timeTravelYAdjustment;
-- (void)applyComplicationContentSpecificAttributesAnimated:(bool)arg1 attributes:(unsigned long long)arg2 faceView:(id)arg3;
 - (void)applyComplicationContentSpecificAttributesAnimated:(bool)arg1 faceView:(id)arg2;
 - (void)cleanupAfterEditingForFaceView:(id)arg1;
 - (void)configureComplicationView:(id)arg1 forSlot:(id)arg2 faceView:(id)arg3;
+- (id)createComplicationContentSpecificAttributesAnimationWithAttributes:(unsigned long long)arg1 faceView:(id)arg2 forSlots:(id)arg3;
 - (bool)fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2 faceView:(id)arg3;
 - (id)initForDevice:(id)arg1;
 - (unsigned long long)keylineLabelAlignmentForComplicationSlot:(id)arg1 faceView:(id)arg2;

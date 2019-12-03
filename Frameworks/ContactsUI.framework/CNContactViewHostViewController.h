@@ -29,12 +29,16 @@
 - (void)didChangeToEditMode:(bool)arg1;
 - (void)didCompleteWithContact:(id)arg1;
 - (void)didDeleteContact:(id)arg1;
+- (void)didExecuteClearRecentsDataAction;
+- (void)didExecuteDeleteFromDowntimeWhitelistAction;
 - (void)editCancel;
 - (id)extension;
 - (void)invalidate;
 - (void)isPresentingEditingController:(bool)arg1;
 - (void)isPresentingFullscreen:(bool)arg1;
+- (void)performConfirmedCancel;
 - (id)pptDelegate;
+- (void)presentCancelConfirmationAlert;
 - (id)protocolContext;
 - (void)setCurrentRequestIdentifier:(id)arg1;
 - (void)setDelegate:(id)arg1;

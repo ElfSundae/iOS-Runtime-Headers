@@ -4,8 +4,8 @@
 
 @interface GEOBatchPlaceResult : PBCodable <NSCopying> {
     struct { 
-        unsigned int statusCode : 1; 
-    }  _has;
+        unsigned int has_statusCode : 1; 
+    }  _flags;
     GEOPlaceResult * _placeResult;
     int  _statusCode;
 }
@@ -15,8 +15,11 @@
 @property (nonatomic, retain) GEOPlaceResult *placeResult;
 @property (nonatomic) int statusCode;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsStatusCode:(id)arg1;
+- (void)clearSensitiveFields;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -27,6 +30,7 @@
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)placeResult;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasStatusCode:(bool)arg1;
 - (void)setPlaceResult:(id)arg1;

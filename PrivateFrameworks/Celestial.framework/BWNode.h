@@ -13,6 +13,7 @@
     <BWNodeRenderDelegate> * _renderDelegate;
     bool  _singleInput;
     bool  _singleOutput;
+    NSString * _subgraphName;
     bool  _supportsConcurrentLiveInputCallbacks;
     bool  _supportsLiveReconfiguration;
 }
@@ -27,6 +28,7 @@
 @property (readonly) BWNodeOutput *output;
 @property (readonly) NSArray *outputs;
 @property (nonatomic) <BWNodeRenderDelegate> *renderDelegate;
+@property (nonatomic, copy) NSString *subgraphName;
 @property (nonatomic) bool supportsConcurrentLiveInputCallbacks;
 @property (nonatomic) bool supportsLiveReconfiguration;
 
@@ -47,7 +49,7 @@
 - (void)handleDroppedSample:(id)arg1 forInput:(id)arg2;
 - (void)handleIrisReferenceMovieRequest:(id)arg1 forInput:(id)arg2;
 - (void)handleNodeError:(id)arg1 forInput:(id)arg2;
-- (void)handleStillImagePrewarmWithRequestedStillImageCaptureSettings:(id)arg1 resolvedStillImageCaptureSettings:(id)arg2 resolvedPhotoManifest:(id)arg3 forInput:(id)arg4;
+- (void)handleStillImagePrewarmWithRequestedStillImageCaptureSettings:(id)arg1 resolvedStillImageCaptureSettings:(id)arg2 photoManifest:(id)arg3 forInput:(id)arg4;
 - (void)handleStillImageReferenceFrameBracketedCaptureSequenceNumber:(int)arg1 forInput:(id)arg2;
 - (bool)hasNonLiveConfigurationChanges;
 - (id)init;
@@ -66,8 +68,10 @@
 - (void)setGraph:(id)arg1;
 - (void)setName:(id)arg1;
 - (void)setRenderDelegate:(id)arg1;
+- (void)setSubgraphName:(id)arg1;
 - (void)setSupportsConcurrentLiveInputCallbacks:(bool)arg1;
 - (void)setSupportsLiveReconfiguration:(bool)arg1;
+- (id)subgraphName;
 - (bool)supportsConcurrentLiveInputCallbacks;
 - (bool)supportsLiveReconfiguration;
 

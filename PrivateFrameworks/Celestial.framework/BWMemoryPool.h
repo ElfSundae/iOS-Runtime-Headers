@@ -21,7 +21,9 @@
 - (void)discardMemory;
 - (void)discardMemoryWithCompletionHandler:(id /* block */)arg1;
 - (void)ensureMemoryAsync;
+- (void)ensureMemorySync;
 - (id)initWithDefaultCacheMemoryPoolSize:(long long)arg1 writeCombineCacheMemoryPoolSize:(long long)arg2;
+- (id)newMTLBufferWithLength:(unsigned long long)arg1 forDevice:(id)arg2;
 - (int)removeMemoryPoolFromPropertiesForCaptureDevice:(struct OpaqueFigCaptureDevice { }*)arg1;
 
 @end

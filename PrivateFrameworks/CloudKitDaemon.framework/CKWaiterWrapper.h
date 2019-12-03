@@ -5,24 +5,25 @@
 @interface CKWaiterWrapper : NSObject {
     NSObject<OS_os_activity> * _activity;
     id /* block */  _completionHandler;
+    NSString * _personaID;
     <CKDZoneGatekeeperWaiter> * _waiter;
     NSArray * _zoneIDs;
 }
 
-@property (nonatomic, retain) NSObject<OS_os_activity> *activity;
-@property (nonatomic, copy) id /* block */ completionHandler;
-@property (nonatomic, retain) <CKDZoneGatekeeperWaiter> *waiter;
-@property (nonatomic, retain) NSArray *zoneIDs;
+@property (nonatomic, readonly) NSObject<OS_os_activity> *activity;
+@property (nonatomic, readonly) id /* block */ completionHandler;
+@property (nonatomic, readonly) NSString *personaID;
+@property (nonatomic, readonly) <CKDZoneGatekeeperWaiter> *waiter;
+@property (nonatomic, readonly) NSArray *zoneIDs;
 
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
 - (id)activity;
 - (id /* block */)completionHandler;
 - (id)description;
-- (void)setActivity:(id)arg1;
-- (void)setCompletionHandler:(id /* block */)arg1;
-- (void)setWaiter:(id)arg1;
-- (void)setZoneIDs:(id)arg1;
+- (id)initWithWaiter:(id)arg1 zoneIDs:(id)arg2 completionHandler:(id /* block */)arg3 activity:(id)arg4;
+- (void)invokeCompletionHandler:(bool)arg1;
+- (id)personaID;
 - (id)waiter;
 - (id)zoneIDs;
 

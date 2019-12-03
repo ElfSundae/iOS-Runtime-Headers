@@ -9,7 +9,6 @@
     <UIViewAnimationComposing> * _composer;
     bool  _invalidated;
     bool  _running;
-    bool  _shouldNotRemovePresentationModifier;
     NSObject<OS_dispatch_queue> * _transactionQueue;
 }
 
@@ -17,7 +16,6 @@
 @property (nonatomic, retain) <UIViewAnimationComposing> *composer;
 @property (nonatomic) bool invalidated;
 @property (nonatomic) bool running;
-@property (nonatomic) bool shouldNotRemovePresentationModifier;
 
 - (void).cxx_destruct;
 - (id)animationState;
@@ -33,7 +31,5 @@
 - (void)setComposer:(id)arg1;
 - (void)setInvalidated:(bool)arg1;
 - (void)setRunning:(bool)arg1;
-- (void)setShouldNotRemovePresentationModifier:(bool)arg1;
-- (bool)shouldNotRemovePresentationModifier;
 
 @end

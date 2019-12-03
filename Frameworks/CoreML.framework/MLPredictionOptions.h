@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CoreML.framework/CoreML
  */
 
-@interface MLPredictionOptions : NSObject {
+@interface MLPredictionOptions : NSObject <NSCopying, NSSecureCoding> {
     unsigned long long  _classifyTopK;
     unsigned long long  _maxComputationBatchSize;
     bool  _usesCPUOnly;
@@ -14,9 +14,13 @@
 @property (nonatomic) bool usesCPUOnly;
 
 + (id)defaultOptions;
++ (bool)supportsSecureCoding;
 
 - (unsigned long long)classifyTopK;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithUseCPUOnly:(bool)arg1;
 - (id)initWithUsesCPUOnly:(bool)arg1;
 - (unsigned long long)maxComputationBatchSize;

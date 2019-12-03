@@ -9,6 +9,7 @@
 - (bool)canPlayLoopingVideo;
 - (bool)canPlayPhotoIris;
 - (NSDate *)creationDate;
+- (unsigned long long)deferredLogInfo;
 - (double)duration;
 - (bool)hasPhotoColorAdjustments;
 - (bool)isAnimatedImage;
@@ -17,6 +18,7 @@
 - (bool)isLivePhoto;
 - (bool)isPhotoIrisPlaceholder;
 - (bool)isTemporaryPlaceholder;
+- (NSDate *)localCreationDate;
 - (NSString *)localizedGeoDescription;
 - (CLLocation *)location;
 - (unsigned long long)mediaSubtypes;
@@ -31,5 +33,9 @@
 - (long long)playbackVariation;
 - (NSString *)uniformTypeIdentifier;
 - (NSString *)uuid;
+
+@optional
+
+- (struct { long long x1; int x2; unsigned int x3; long long x4; })videoKeyFrameSourceTime;
 
 @end

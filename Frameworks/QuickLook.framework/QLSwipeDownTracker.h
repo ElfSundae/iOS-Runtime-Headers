@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/QuickLook.framework/QuickLook
  */
 
-@interface QLSwipeDownTracker : PHSwipeDownTracker <QLDismissGestureTracking> {
+@interface QLSwipeDownTracker : QLPHSwipeDownTracker <QLDismissGestureTracking> {
     struct CGRect { 
         struct CGPoint { 
             double x; 

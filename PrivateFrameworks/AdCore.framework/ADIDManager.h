@@ -5,6 +5,7 @@
 @interface ADIDManager : ADSingleton <ADIDManager_XPC, BackgroundTaskDelegate> {
     DSIDRecord * _activeDSIDRecord;
     NSArray * _monthlyResetArray;
+    NSDictionary * _usageVectors;
 }
 
 @property (nonatomic, readonly) NSString *IDFA;
@@ -15,6 +16,7 @@
 @property (readonly) unsigned long long hash;
 @property (retain) NSArray *monthlyResetArray;
 @property (readonly) Class superclass;
+@property (nonatomic, retain) NSDictionary *usageVectors;
 
 // Image: /System/Library/PrivateFrameworks/AdCore.framework/AdCore
 
@@ -34,11 +36,14 @@
 - (bool)loadIDs;
 - (void)logIDs:(id)arg1;
 - (id)monthlyResetArray;
+- (id)readUsageVectors:(id)arg1;
 - (id)reloadRecords:(id)arg1;
 - (void)reloadRecords:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)retrieveDeviceIDs;
 - (void)setActiveDSIDRecord:(id)arg1;
 - (void)setMonthlyResetArray:(id)arg1;
+- (void)setUsageVectors:(id)arg1;
+- (id)usageVectors;
 
 // Image: /System/Library/PrivateFrameworks/AdID.framework/AdID
 
@@ -55,6 +60,7 @@
 - (id)init;
 - (void)notifyActiveRecordChanged;
 - (void)performOperationAfterReconcile:(id /* block */)arg1;
+- (void)performOperationWhenNotReconciling:(id /* block */)arg1;
 - (void)prepareForPushNotification;
 - (void)reconcile:(id /* block */)arg1;
 - (bool)reconcileInProgress;
@@ -66,6 +72,8 @@
 - (void)setDSID:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)setDSID:(id)arg1 withoutRestrictions:(bool)arg2 completionHandler:(id /* block */)arg3;
 - (void)setReconcileOperations:(id)arg1;
+- (id)storableUsageVectors;
 - (void)updateAccountData:(id /* block */)arg1;
+- (void)updateUsageVectors:(id)arg1;
 
 @end

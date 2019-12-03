@@ -18,6 +18,7 @@
     bool  _inputViewVisible;
     bool  _inputViewWillBecomeVisible;
     id /* block */  _insertPayloadCompletionHandler;
+    bool  _isDismissingAppModal;
     bool  _keyboardIsHiding;
     long long  _lastSeenOrientation;
     UIViewController<CKBrowserViewControllerProtocol> * _modalBrowserViewController;
@@ -34,6 +35,7 @@
 
 @property (nonatomic) bool _isRunningPPT;
 @property (nonatomic, readonly) bool appManagerIsDisplayed;
+@property (nonatomic, readonly) bool appModalIsDisplayed;
 @property (nonatomic, readonly) bool appStoreIsDisplayed;
 @property (nonatomic, retain) IMBalloonPlugin *browserPlugin;
 @property (nonatomic, retain) IMBalloonPluginDataSource *browserPluginDataSource;
@@ -54,13 +56,13 @@
 @property (getter=isInputViewVisible, nonatomic) bool inputViewVisible;
 @property (nonatomic) bool inputViewWillBecomeVisible;
 @property (nonatomic, copy) id /* block */ insertPayloadCompletionHandler;
+@property (nonatomic, readonly) bool isDismissingAppModal;
 @property (nonatomic) bool keyboardIsHiding;
 @property (nonatomic) long long lastSeenOrientation;
 @property (nonatomic, retain) UIViewController<CKBrowserViewControllerProtocol> *modalBrowserViewController;
 @property (nonatomic, retain) CKDeviceOrientationManager *orientationManager;
 @property (nonatomic, retain) CKScheduledUpdater *orientationUpdater;
 @property (nonatomic, retain) UINavigationController *presentedBrowserNavigationController;
-@property (nonatomic, readonly) bool presentsHandwritingOnRotation;
 @property (nonatomic) bool shouldRestoreAppSwitcher;
 @property (nonatomic) bool shouldSuppressStatusBarForHandwriting;
 @property (nonatomic, retain) UIViewController *statusBarStyleViewController;
@@ -96,6 +98,7 @@
 - (void)_reconfigurePluginDataSourceWithBalloonControllerIfNecessary;
 - (void)_setupObserverForLaunchAppExtensionForDebugging;
 - (bool)_shouldSendTypingIndicatorDataForPluginIdentifier:(id)arg1;
+- (bool)_shouldShowHandwriting;
 - (void)_showFullScreenBrowser:(id)arg1;
 - (void)_startEditingPayload:(id)arg1;
 - (bool)_switcherPluginCanMessageAPI;
@@ -103,6 +106,7 @@
 - (bool)_switcherPluginHasTouchTokenForDirectSend;
 - (id)appIconOverride;
 - (bool)appManagerIsDisplayed;
+- (bool)appModalIsDisplayed;
 - (bool)appStoreIsDisplayed;
 - (id)appTitleOverride;
 - (void)applicationWillAddDeactivationReasonNotification:(id)arg1;
@@ -165,16 +169,18 @@
 - (void)handwritingPresentationControllerWillHideHandwriting:(id)arg1;
 - (bool)inCollapseOrExpandAnimation;
 - (id)init;
-- (id)inputAccessoryView;
 - (id)inputViewController;
 - (bool)inputViewWillBecomeVisible;
 - (id /* block */)insertPayloadCompletionHandler;
+- (bool)isDismissingAppModal;
+- (bool)isHandwritingLandscape;
 - (bool)isInputViewVisible;
 - (void)keyboardDidHide:(id)arg1;
 - (bool)keyboardIsHiding;
 - (void)keyboardWillHide:(id)arg1;
 - (void)keyboardWillShow:(id)arg1;
 - (long long)lastSeenOrientation;
+- (void)launchAndShowBrowserForPlugin:(id)arg1 dataSource:(id)arg2 style:(unsigned long long)arg3;
 - (id)localizedTitleForClientActionFromUrl:(id)arg1 context:(id)arg2;
 - (bool)messageEntryShouldHideCaret:(id)arg1;
 - (void)messageEntryView:(id)arg1 didSelectPluginAtIndex:(id)arg2;
@@ -202,7 +208,6 @@
 - (void)presentPluginWithBundleID:(id)arg1 appLaunchPayload:(id)arg2;
 - (void)presentViewControllerWithPluginChatItem:(id)arg1 presentationStyle:(unsigned long long)arg2;
 - (id)presentedBrowserNavigationController;
-- (bool)presentsHandwritingOnRotation;
 - (void)registerForTextInputPayloadHandling:(bool)arg1 isGroupChat:(bool)arg2;
 - (void)requestPhotoBrowserInitFromDraft:(id)arg1;
 - (void)requestPhotoBrowserToAppendFinalImagesToComposition;
@@ -242,6 +247,7 @@
 - (void)setSwitcherLastTouchDate:(id)arg1;
 - (void)setTextInputPayloadController:(id)arg1;
 - (void)set_isRunningPPT:(bool)arg1;
+- (bool)shouldPreventAppFromDisplayingForBundleIdentifier:(id)arg1;
 - (bool)shouldRestoreAppSwitcher;
 - (bool)shouldSuppressStatusBarForHandwriting;
 - (void)showAppsBrowser;
@@ -254,6 +260,7 @@
 - (void)showHandwritingBrowser;
 - (void)showHandwritingBrowserWithExistingPayload:(id)arg1;
 - (void)showKeyboard;
+- (void)showModalViewController:(id)arg1 animated:(bool)arg2 completion:(id /* block */)arg3;
 - (void)showPhotosBrowser;
 - (void)showPhotosBrowserCollapsingEntryField:(bool)arg1;
 - (void)stageAssetArchive:(id)arg1 skipShelf:(bool)arg2 completionHandler:(id /* block */)arg3;

@@ -3,8 +3,9 @@
  */
 
 @interface HalogenMeasurement : NSObject {
-    ResourceArbiterClient * _arbiterClient;
+    BaseResourceArbiterClient * _arbiterClient;
     bool  _arbiterLocked;
+    bool  _arbitrationRequired;
     struct OpaqueAudioComponentInstance { } * _audioComponentInst;
     NSCondition * _audioTimeoutCond;
     int  _audioTimeoutInSec;
@@ -35,7 +36,6 @@
     int  _inputFrameSizeInBytes;
     bool  _isCalibrationDone;
     bool  _isMeasurementDone;
-    bool  _isPowerAssertionHeld;
     unsigned short  _maxOutputAmplitude;
     double  _measurementCondetSNR;
     double  _measurementCurrentNoiseLevel;
@@ -73,8 +73,9 @@
     double  _resistanceInOhms;
     int  _sampleRate;
     unsigned int  _service;
+    bool  _shouldInvertData;
     double  _signalFreq;
-    unsigned int  _sleepAssertionID;
+    unsigned short  _signalOffset;
     unsigned int  _systemPowerIterator;
     struct IONotificationPort { } * _systemPowerNotifyPortRef;
     unsigned int  _systemPowerPort;
@@ -84,8 +85,9 @@
     int  _warmupTimeInMs;
 }
 
-@property (nonatomic, readonly) ResourceArbiterClient *arbiterClient;
+@property (nonatomic, readonly) BaseResourceArbiterClient *arbiterClient;
 @property (nonatomic, readonly) bool arbiterLocked;
+@property (nonatomic, readonly) bool arbitrationRequired;
 @property struct OpaqueAudioComponentInstance { }*audioComponentInst;
 @property NSCondition *audioTimeoutCond;
 @property int audioTimeoutInSec;
@@ -116,8 +118,7 @@
 @property int inputFrameSizeInBytes;
 @property bool isCalibrationDone;
 @property bool isMeasurementDone;
-@property bool isPowerAssertionHeld;
-@property unsigned short maxOutputAmplitude;
+@property (nonatomic, readonly) unsigned short maxOutputAmplitude;
 @property (readonly) double measurementCondetSNR;
 @property (readonly) double measurementCurrentNoiseLevel;
 @property (readonly) double measurementCurrentSNR;
@@ -154,8 +155,9 @@
 @property (readonly) double resistanceInOhms;
 @property int sampleRate;
 @property unsigned int service;
+@property (nonatomic, readonly) bool shouldInvertData;
 @property double signalFreq;
-@property unsigned int sleepAssertionID;
+@property (nonatomic, readonly) unsigned short signalOffset;
 @property (nonatomic) unsigned int systemPowerIterator;
 @property (nonatomic) struct IONotificationPort { }*systemPowerNotifyPortRef;
 @property (nonatomic) unsigned int systemPowerPort;
@@ -167,17 +169,19 @@
 - (bool)_allocBuffers;
 - (bool)_connectToAccessoryManager:(int)arg1;
 - (bool)_createSleepWakeNotifier;
+- (void)_deinitArbiter;
 - (void)_deinitAudioPath;
 - (void)_destroySleepWakeNotifier;
 - (void)_disconnectFromAccessoryManager;
-- (bool)_doHalogenLdcmCalc:(bool)arg1 isReceptacleWet:(bool)arg2;
+- (bool)_doHalogenLdcmCalc:(bool)arg1 isReceptacleWet:(bool)arg2 withWetTransitionThreshold:(double)arg3 withDryTransitionThreshold:(double)arg4;
 - (void)_freeBuffers;
 - (void)_generateSineWave;
-- (bool)_holdPowerAssertion:(bool)arg1;
+- (bool)_initArbiter;
 - (bool)_initAudioPath;
 - (void)_resetCalcValues;
 - (id)arbiterClient;
 - (bool)arbiterLocked;
+- (bool)arbitrationRequired;
 - (struct OpaqueAudioComponentInstance { }*)audioComponentInst;
 - (id)audioTimeoutCond;
 - (int)audioTimeoutInSec;
@@ -198,7 +202,7 @@
 - (double)currentGainCorrection;
 - (double)currentPhaseCompensation;
 - (void)dealloc;
-- (int)doMeasurement:(bool)arg1 onPin:(int)arg2 isReceptacleEmpty:(bool)arg3 isReceptacleWet:(bool)arg4;
+- (int)doMeasurement:(bool)arg1 onPin:(int)arg2 isReceptacleEmpty:(bool)arg3 isReceptacleWet:(bool)arg4 withWetTransitionThreshold:(double)arg5 withDryTransitionThreshold:(double)arg6;
 - (unsigned long long)eisPinToken1;
 - (unsigned long long)eisPinToken2;
 - (id)getResultString;
@@ -218,7 +222,6 @@
 - (bool)isLowerBoundViolation_goertzelImpedance;
 - (bool)isLowerBoundViolation_goertzelPhase;
 - (bool)isMeasurementDone;
-- (bool)isPowerAssertionHeld;
 - (bool)isUpperBoundViolation_goertzelImpedance;
 - (bool)isUpperBoundViolation_goertzelPhase;
 - (unsigned short)maxOutputAmplitude;
@@ -273,8 +276,6 @@
 - (void)setInputFrameSizeInBytes:(int)arg1;
 - (void)setIsCalibrationDone:(bool)arg1;
 - (void)setIsMeasurementDone:(bool)arg1;
-- (void)setIsPowerAssertionHeld:(bool)arg1;
-- (void)setMaxOutputAmplitude:(unsigned short)arg1;
 - (void)setMeasurementSampleOffsetInFrames:(int)arg1;
 - (void)setNHydraSettlingSamples:(int)arg1;
 - (void)setNInputChannels:(int)arg1;
@@ -297,15 +298,15 @@
 - (void)setSampleRate:(int)arg1;
 - (void)setService:(unsigned int)arg1;
 - (void)setSignalFreq:(double)arg1;
-- (void)setSleepAssertionID:(unsigned int)arg1;
 - (void)setSystemPowerIterator:(unsigned int)arg1;
 - (void)setSystemPowerNotifyPortRef:(struct IONotificationPort { }*)arg1;
 - (void)setSystemPowerPort:(unsigned int)arg1;
 - (void)setSystemPowerQueue:(id)arg1;
 - (void)setVoltageData:(id)arg1;
 - (void)setWarmupTimeInMs:(int)arg1;
+- (bool)shouldInvertData;
 - (double)signalFreq;
-- (unsigned int)sleepAssertionID;
+- (unsigned short)signalOffset;
 - (unsigned int)systemPowerIterator;
 - (struct IONotificationPort { }*)systemPowerNotifyPortRef;
 - (unsigned int)systemPowerPort;

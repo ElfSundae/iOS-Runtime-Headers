@@ -20,6 +20,7 @@
 + (void)initialize;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_updatePlatterForHashedRouteUID:(id)arg1;
 - (void)_updatePlatterForRouteUID:(id)arg1;
 - (id)cardSection;

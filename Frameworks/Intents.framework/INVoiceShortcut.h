@@ -8,19 +8,15 @@
     INShortcut * _shortcut;
 }
 
-@property (nonatomic, readonly, copy) INVoiceShortcutAction *action;
 @property (nonatomic, readonly) NSUUID *identifier;
-@property (nonatomic, readonly) INIntent *intent;
 @property (nonatomic, readonly, copy) NSString *invocationPhrase;
 @property (nonatomic, readonly, copy) INShortcut *shortcut;
-@property (nonatomic, readonly) NSUserActivity *userActivity;
 
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)_initWithIdentifier:(id)arg1 invocationPhrase:(id)arg2 shortcut:(id)arg3;
 - (id)_initWithVCVoiceShortcut:(id)arg1;
-- (id)action;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

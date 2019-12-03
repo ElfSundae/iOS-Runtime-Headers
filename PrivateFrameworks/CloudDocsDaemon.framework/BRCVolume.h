@@ -27,7 +27,8 @@
         BOOL f_fstypename[16]; 
         BOOL f_mntonname[1024]; 
         BOOL f_mntfromname[1024]; 
-        unsigned int f_reserved[8]; 
+        unsigned int f_flags_ext; 
+        unsigned int f_reserved[7]; 
     }  _stfs;
 }
 

@@ -16,6 +16,7 @@
 @property (nonatomic, readonly) unsigned long long nextWidowPullsDownFromCharIndex;
 @property (nonatomic, readonly) struct _NSRange { unsigned long long x1; unsigned long long x2; } range;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) bool terminatedByBreak;
 
 - (void).cxx_destruct;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })anchoredRange;
@@ -28,6 +29,7 @@
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })range;
 - (unsigned long long)startAnchoredCharIndex;
 - (unsigned long long)startCharIndex;
+- (bool)terminatedByBreak;
 - (void)trimToCharIndex:(unsigned long long)arg1 inTarget:(id)arg2 removeFootnoteReferenceCount:(unsigned long long)arg3 removeAutoNumberFootnoteCount:(unsigned long long)arg4;
 
 @end

@@ -17,9 +17,7 @@
 @property (nonatomic) int pendingItemsType;
 @property (nonatomic) long long syncEventOrderKey;
 
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
-+ (id)insertInManagedObjectContext:(id)arg1;
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
 
 @end

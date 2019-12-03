@@ -21,6 +21,7 @@
 @property (nonatomic) unsigned int targetAudioSessionID;
 
 + (id)discoverySessionWithEndpointFeatures:(unsigned int)arg1;
++ (id)discoverySessionWithEndpointFeatures:(unsigned int)arg1 enableThrottling:(bool)arg2;
 
 - (void).cxx_destruct;
 - (id)_init;

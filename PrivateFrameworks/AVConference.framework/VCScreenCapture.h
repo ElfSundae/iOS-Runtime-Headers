@@ -20,6 +20,7 @@
     struct OpaqueFigVirtualDisplaySession { } * _session;
     bool  _shouldResize;
     bool  _shouldResizeInitialized;
+    id  _weakCapture;
 }
 
 - (int)_startCapture;
@@ -31,7 +32,7 @@
 - (int)frameBecameAvailableCount:(int*)arg1 figBufferQueueEmptyCount:(int*)arg2 figBufferQueueErrorCount:(int*)arg3;
 - (id)getCameraUID;
 - (int)getPreviewFrameCount:(int*)arg1 captureFrameCount:(int*)arg2 reset:(bool)arg3;
-- (id)initWithCaptureServer:(id)arg1 width:(int)arg2 height:(int)arg3 frameRate:(int)arg4 error:(int*)arg5;
+- (id)initWithCaptureServer:(id)arg1 width:(int)arg2 height:(int)arg3 frameRate:(int)arg4 clientPID:(int)arg5 error:(int*)arg6;
 - (bool)isFrontCamera;
 - (bool)isPreviewRunning;
 - (int)setCameraWithUID:(id)arg1;

@@ -5,7 +5,6 @@
 @interface UITableViewRowAction : NSObject <NSCopying> {
     UIColor * _backgroundColor;
     UIVisualEffect * _backgroundEffect;
-    _UITableViewCellActionButton * _button;
     id /* block */  _handler;
     long long  _style;
     NSString * _title;

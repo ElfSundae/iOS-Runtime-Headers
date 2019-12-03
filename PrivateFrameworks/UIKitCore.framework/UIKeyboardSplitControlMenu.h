@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface UIKeyboardSplitControlMenu : UIKeyboardMenuView {
+@interface UIKeyboardSplitControlMenu : UIKeyboardMenuView <_UIInputSwitcherSplitMenu> {
     id /* block */  _finishSplitTransitionBlock;
     NSArray * _items;
     struct CGSize { 
@@ -28,6 +28,7 @@
 - (void)setFinishSplitTransitionBlock:(id /* block */)arg1;
 - (void)setSplitAndUndocked:(bool)arg1;
 - (id)titleForItemAtIndex:(unsigned long long)arg1;
+- (bool)usesDeviceLanguageForItemAtIndex:(unsigned long long)arg1;
 - (int)visibleItemForIndex:(unsigned long long)arg1;
 
 @end

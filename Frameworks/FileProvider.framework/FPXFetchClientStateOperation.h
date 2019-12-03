@@ -3,18 +3,22 @@
  */
 
 @interface FPXFetchClientStateOperation : FPOperation {
+    FPXDomainContext * _domainContext;
+    NSString * _domainIdentifier;
     CSSearchableIndex * _index;
     NSString * _indexName;
+    NSString * _reason;
 }
 
 + (id)_currentIndexerVersion;
 
 - (void).cxx_destruct;
-- (bool)_clientStateResetNeeded;
+- (id)_clientStateCurrentVersionIfNeedReset;
 - (void)_fetchClientState;
 - (void)_handleFetchedClientState:(id)arg1 error:(id)arg2;
 - (void)_markClientStateResetDone;
-- (id)initWithIndex:(id)arg1 indexName:(id)arg2;
+- (id)initWithIndex:(id)arg1 context:(id)arg2 indexName:(id)arg3 domainID:(id)arg4 reason:(id)arg5;
 - (void)main;
+- (id)operationDescription;
 
 @end

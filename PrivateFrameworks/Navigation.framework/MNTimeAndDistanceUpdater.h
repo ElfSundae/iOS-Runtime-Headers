@@ -29,10 +29,10 @@
 - (double)remainingDistance;
 - (double)remainingTime;
 - (void)setDelegate:(id)arg1;
-- (void)setLocation:(id)arg1;
-- (void)setRoutes:(id)arg1;
+- (void)setLocation:(id)arg1 notificationType:(unsigned long long)arg2;
+- (void)setRoutes:(id)arg1 mainRoute:(id)arg2 location:(id)arg3 notificationType:(unsigned long long)arg4;
 - (void)startUpdating;
 - (void)stopUpdating;
-- (void)updateDisplayETAForRoute:(id)arg1 shouldNotifyDelegate:(bool)arg2;
+- (void)updateDisplayETAForRoute:(id)arg1 notificationType:(unsigned long long)arg2;
 
 @end

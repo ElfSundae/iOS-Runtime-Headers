@@ -3,9 +3,11 @@
  */
 
 @interface AXMModelDetectorNode : AXMEvaluationNode {
+    VNCoreMLModel * _model;
     NSURL * _modelURL;
 }
 
+@property (nonatomic, readonly) NSString *modelIdentifier;
 @property (nonatomic, retain) NSURL *modelURL;
 
 + (bool)isSupported;
@@ -13,9 +15,11 @@
 + (id)title;
 
 - (void).cxx_destruct;
+- (bool)_loadModel:(id*)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)evaluate:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)modelIdentifier;
 - (id)modelURL;
 - (void)nodeInitialize;
 - (bool)preloadModelIfNeeded:(id*)arg1;

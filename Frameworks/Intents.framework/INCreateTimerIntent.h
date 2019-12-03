@@ -10,6 +10,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) INSpeakableString *label;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) long long type;
 
 - (id)_categoryVerb;
 - (id)_dictionaryRepresentation;
@@ -20,14 +21,16 @@
 - (id)_typedBackingStore;
 - (id)domain;
 - (double)duration;
-- (id)initWithLabel:(id)arg1 duration:(double)arg2;
+- (id)initWithLabel:(id)arg1 duration:(double)arg2 type:(long long)arg3;
 - (id)label;
 - (id)parametersByName;
 - (void)setDomain:(id)arg1;
 - (void)setDuration:(double)arg1;
 - (void)setLabel:(id)arg1;
 - (void)setParametersByName:(id)arg1;
+- (void)setType:(long long)arg1;
 - (void)setVerb:(id)arg1;
+- (long long)type;
 - (id)verb;
 
 @end

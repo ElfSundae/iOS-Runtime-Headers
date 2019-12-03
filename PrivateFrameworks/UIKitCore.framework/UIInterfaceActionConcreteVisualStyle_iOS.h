@@ -9,6 +9,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (id)_highlightedView;
 - (id)_preferredActionFont;
 - (id)_regularActionFont;
 - (id)actionTitleLabelColorForViewState:(id)arg1;

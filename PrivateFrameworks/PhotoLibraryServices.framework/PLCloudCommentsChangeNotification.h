@@ -6,13 +6,13 @@
     NSDictionary * _userInfo;
 }
 
-@property (nonatomic, readonly, retain) PLManagedAsset *asset;
+@property (nonatomic, readonly) PLManagedAsset *asset;
 
 + (id)notificationWithAsset:(id)arg1 snapshot:(id)arg2;
 
+- (void).cxx_destruct;
 - (id)_contentRelationshipName;
 - (id)asset;
-- (void)dealloc;
 - (id)description;
 - (id)name;
 - (id)userInfo;

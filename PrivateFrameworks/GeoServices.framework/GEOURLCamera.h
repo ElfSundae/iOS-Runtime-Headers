@@ -5,12 +5,12 @@
 @interface GEOURLCamera : PBCodable <NSCopying> {
     double  _altitude;
     struct { 
-        unsigned int altitude : 1; 
-        unsigned int heading : 1; 
-        unsigned int latitude : 1; 
-        unsigned int longitude : 1; 
-        unsigned int pitch : 1; 
-    }  _has;
+        unsigned int has_altitude : 1; 
+        unsigned int has_heading : 1; 
+        unsigned int has_latitude : 1; 
+        unsigned int has_longitude : 1; 
+        unsigned int has_pitch : 1; 
+    }  _flags;
     double  _heading;
     double  _latitude;
     double  _longitude;
@@ -27,6 +27,8 @@
 @property (nonatomic) double latitude;
 @property (nonatomic) double longitude;
 @property (nonatomic) double pitch;
+
++ (bool)isValid:(id)arg1;
 
 - (double)altitude;
 - (void)copyTo:(id)arg1;
@@ -45,6 +47,7 @@
 - (double)longitude;
 - (void)mergeFrom:(id)arg1;
 - (double)pitch;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAltitude:(double)arg1;
 - (void)setHasAltitude:(bool)arg1;

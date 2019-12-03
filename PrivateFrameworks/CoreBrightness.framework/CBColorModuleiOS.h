@@ -4,10 +4,13 @@
 
 @interface CBColorModuleiOS : CBContainer <CBContainerProtocol, CBHIDServiceProtocol, CBStatusInfoProtocol, NightShiftSupportProtocol> {
     int  _NSamples;
+    bool  _aggregatedConfigApplied;
     bool  _allALSEventsArrived;
     NSMutableDictionary * _alsNodes;
     NSMutableArray * _alsServices;
+    bool  _ammoliteEnabledStatus;
     unsigned int  _backlightService;
+    bool  _colorEffectsEnabled;
     CBColorFilter * _colorFilter;
     struct { 
         struct ColorEffects {} *cfx; 
@@ -30,6 +33,7 @@
     }  _colorStruct;
     bool  _continueWithFewerALSs;
     bool  _displayOn;
+    bool  _dropALSColorSamples;
     bool  _endRamp;
     bool  _fadeInProgress;
     NSMutableArray * _filters;
@@ -88,18 +92,24 @@
 - (void)CAStrengthUpdate:(float)arg1 withPeriod:(float)arg2;
 - (bool)CAWeakestColorAdaptationModeAnimatedPropertyHandler:(id)arg1;
 - (bool)CAWeakestColorAdaptationModePropertyHandler:(id)arg1;
+- (bool)CoreBrightnessFeaturesDisabledPropertyHandler:(id)arg1;
 - (void)activateColorAdaptation;
 - (bool)addHIDServiceClient:(struct __IOHIDServiceClient { }*)arg1;
+- (bool)ammolitePropertyHandler:(id)arg1 key:(id)arg2;
+- (void)applyAggregatedConfig:(bool)arg1;
+- (bool)applyAggregatedConfigPropertyHandler:(id)arg1;
 - (void)armFirstALSSampleTimer;
 - (void)cancelFirstSampleTimeout;
 - (bool)carryLogCommentHandler:(id)arg1;
 - (bool)carryLogCommitHandler:(id)arg1;
 - (bool)carryLogEnabledHandler:(id)arg1;
 - (bool)colorFilterModeHandler:(id)arg1;
-- (void)colorRampRoutine:(const struct { float x1; float x2[9]; unsigned int x3; float x4; struct { float x_5_1_1; float x_5_1_2; } x5; }*)arg1;
-- (void)commitPowerLogReport:(struct { struct { double x_1_1_1[17]; int x_1_1_2[17]; int x_1_1_3; unsigned long long x_1_1_4; } x1; struct { double x_2_1_1[17]; int x_2_1_2[17]; int x_2_1_3; unsigned long long x_2_1_4; } x2; struct { double x_3_1_1; double x_3_1_2; double x_3_1_3; bool x_3_1_4; float x_3_1_5; } x3; struct { double x_4_1_1[10]; int x_4_1_2; double x_4_1_3; } x4; struct { double x_5_1_1; double x_5_1_2; double x_5_1_3; double x_5_1_4; float x_5_1_5; float x_5_1_6; } x5; int x6; }*)arg1;
+- (bool)colorRampPeriodOverrideHandler:(id)arg1;
+- (void)colorRampRoutine:(const struct { float x1; float x2[9]; unsigned int x3; float x4; struct { float x_5_1_1; float x_5_1_2; } x5; int x6; double x7; }*)arg1;
+- (void)commitPowerLogReport:(struct { struct { double x_1_1_1[17]; int x_1_1_2[17]; int x_1_1_3; unsigned long long x_1_1_4; } x1; struct { double x_2_1_1[17]; int x_2_1_2[17]; int x_2_1_3; unsigned long long x_2_1_4; } x2; struct { double x_3_1_1[46]; int x_3_1_2; unsigned long long x_3_1_3; } x3; struct { double x_4_1_1; double x_4_1_2; double x_4_1_3; bool x_4_1_4; float x_4_1_5; } x4; struct { double x_5_1_1[10]; int x_5_1_2; double x_5_1_3; } x5; struct { double x_6_1_1; double x_6_1_2; double x_6_1_3; double x_6_1_4; float x_6_1_5; float x_6_1_6; } x6; int x7; }*)arg1;
 - (bool)convertNSData:(id)arg1 toUint32:(unsigned int*)arg2;
 - (id)copyIdentifiers;
+- (id)copyLocalAggregatedConfig;
 - (id)copyPreferenceForKey:(id)arg1 user:(id)arg2;
 - (id)copyPreferencesForKey:(id)arg1;
 - (id)copyPropertyForKey:(id)arg1;
@@ -115,6 +125,7 @@
 - (int)getVid:(struct __IOHIDServiceClient { }*)arg1;
 - (void)handleALSEvent:(id)arg1;
 - (void)handleDisplayBrightnessFactorZero:(id)arg1;
+- (void)handleFilterNotificationForKey:(id)arg1 withProperty:(id)arg2;
 - (bool)handleHIDEvent:(struct __IOHIDEvent { }*)arg1 from:(struct __IOHIDServiceClient { }*)arg2;
 - (void)handleHIDEventInternal:(struct __IOHIDEvent { }*)arg1 from:(struct __IOHIDServiceClient { }*)arg2;
 - (void)handleNotificationForKey:(id)arg1 withProperty:(id)arg2;
@@ -125,6 +136,7 @@
 - (unsigned long long)moduleType;
 - (id)newAdaptationModeMappingArray:(float*)arg1 strengthNum:(int)arg2;
 - (id)newAdaptationModeMappingDictionary:(float*)arg1 strengthNum:(int)arg2;
+- (id)newAggregatedConfigFromSerializedConfig:(id)arg1;
 - (id)newArrayFromDoubles:(double*)arg1 size:(int)arg2;
 - (id)newArrayFromIntegers:(int*)arg1 size:(int)arg2;
 - (bool)parseAdaptationModeMappingArray:(id)arg1 strengths:(float*)arg2 strengthNum:(int)arg3;
@@ -136,8 +148,9 @@
 - (void)reportCommitWithStop:(bool)arg1;
 - (void)reportInitialize;
 - (void)reportResetTimerWithStop:(bool)arg1;
-- (void)reportToAggd:(struct { struct { double x_1_1_1[17]; int x_1_1_2[17]; int x_1_1_3; unsigned long long x_1_1_4; } x1; struct { double x_2_1_1[17]; int x_2_1_2[17]; int x_2_1_3; unsigned long long x_2_1_4; } x2; struct { double x_3_1_1; double x_3_1_2; double x_3_1_3; bool x_3_1_4; float x_3_1_5; } x3; struct { double x_4_1_1[10]; int x_4_1_2; double x_4_1_3; } x4; struct { double x_5_1_1; double x_5_1_2; double x_5_1_3; double x_5_1_4; float x_5_1_5; float x_5_1_6; } x5; int x6; }*)arg1;
+- (void)reportToAggd:(struct { struct { double x_1_1_1[17]; int x_1_1_2[17]; int x_1_1_3; unsigned long long x_1_1_4; } x1; struct { double x_2_1_1[17]; int x_2_1_2[17]; int x_2_1_3; unsigned long long x_2_1_4; } x2; struct { double x_3_1_1[46]; int x_3_1_2; unsigned long long x_3_1_3; } x3; struct { double x_4_1_1; double x_4_1_2; double x_4_1_3; bool x_4_1_4; float x_4_1_5; } x4; struct { double x_5_1_1[10]; int x_5_1_2; double x_5_1_3; } x5; struct { double x_6_1_1; double x_6_1_2; double x_6_1_3; double x_6_1_4; float x_6_1_5; float x_6_1_6; } x6; int x7; }*)arg1;
 - (void)sendNotificationForKey:(id)arg1 andValue:(id)arg2;
+- (bool)serializedAggregatedConfigPropertyHandler:(id)arg1;
 - (void)setNightShiftFactorDictionary:(id)arg1;
 - (void)setPreference:(id)arg1 forKey:(id)arg2 user:(id)arg3;
 - (void)setPreferences:(id)arg1 forKey:(id)arg2;

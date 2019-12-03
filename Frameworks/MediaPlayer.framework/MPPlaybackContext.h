@@ -2,35 +2,33 @@
    Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
  */
 
-@interface MPPlaybackContext : NSObject <NSSecureCoding> {
+@interface MPPlaybackContext : NSObject <NSCopying, NSSecureCoding> {
     long long  _actionAfterQueueLoad;
     NSString * _playActivityFeatureName;
     NSData * _playActivityRecommendationData;
     MPAVItem * _playerCurrentItem;
     long long  _repeatType;
-    bool  _requireFinalTracklist;
-    bool  _shouldRestartPlayback;
+    NSString * _sessionIdentifier;
     long long  _shuffleType;
     NSString * _siriAssetInfo;
     NSString * _siriReferenceIdentifier;
     NSDictionary * _siriWHAMetricsInfo;
-    long long  _startIndex;
+    bool  _supportsAccountRectification;
 }
 
 @property (nonatomic) long long actionAfterQueueLoad;
-@property (getter=mpcReporting_isQuickPlay, nonatomic, readonly) bool mpcReporting_quickPlay;
+@property (nonatomic, readonly) bool containsRestorableContent;
 @property (nonatomic, copy) NSString *playActivityFeatureName;
 @property (nonatomic, copy) NSData *playActivityRecommendationData;
-@property (nonatomic, retain) MPAVItem *playerCurrentItem;
 @property (nonatomic) long long repeatType;
-@property (nonatomic) bool requireFinalTracklist;
+@property (nonatomic, copy) NSString *sessionIdentifier;
 @property (nonatomic, readonly) bool shouldBecomeActive;
-@property (nonatomic) bool shouldRestartPlayback;
 @property (nonatomic) long long shuffleType;
 @property (nonatomic, copy) NSString *siriAssetInfo;
 @property (nonatomic, copy) NSString *siriReferenceIdentifier;
 @property (nonatomic, copy) NSDictionary *siriWHAMetricsInfo;
-@property (nonatomic) long long startIndex;
+@property (getter=isSupported, nonatomic, readonly) bool supported;
+@property (nonatomic) bool supportsAccountRectification;
 
 // Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
 
@@ -39,39 +37,38 @@
 
 - (void).cxx_destruct;
 - (long long)actionAfterQueueLoad;
+- (void)clearStartItem;
+- (bool)containsRestorableContent;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)descriptionComponents;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (bool)isSupported;
 - (id)playActivityFeatureName;
 - (id)playActivityRecommendationData;
-- (id)playerCurrentItem;
 - (long long)repeatType;
-- (bool)requireFinalTracklist;
+- (id)sessionIdentifier;
 - (void)setActionAfterQueueLoad:(long long)arg1;
 - (void)setPlayActivityFeatureName:(id)arg1;
 - (void)setPlayActivityRecommendationData:(id)arg1;
-- (void)setPlayerCurrentItem:(id)arg1;
 - (void)setRepeatType:(long long)arg1;
-- (void)setRequireFinalTracklist:(bool)arg1;
-- (void)setShouldRestartPlayback:(bool)arg1;
+- (void)setSessionIdentifier:(id)arg1;
 - (void)setShuffleType:(long long)arg1;
 - (void)setSiriAssetInfo:(id)arg1;
 - (void)setSiriReferenceIdentifier:(id)arg1;
 - (void)setSiriWHAMetricsInfo:(id)arg1;
-- (void)setStartIndex:(long long)arg1;
+- (void)setSupportsAccountRectification:(bool)arg1;
 - (bool)shouldBecomeActive;
-- (bool)shouldRestartPlayback;
 - (long long)shuffleType;
 - (id)siriAssetInfo;
 - (id)siriReferenceIdentifier;
 - (id)siriWHAMetricsInfo;
-- (long long)startIndex;
+- (bool)supportsAccountRectification;
 
 // Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
 
 - (void)getRemotePlaybackQueueRepresentationWithPlayerPath:(id)arg1 completion:(id /* block */)arg2;
-- (bool)mpcReporting_isQuickPlay;
 
 @end

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
  */
 
-@interface HMDWACScanner : NSObject <HMDWACScanner, HMFLogging> {
+@interface HMDWACScanner : NSObject <HAPAirPlayAccessoryBrowserDelegate, HMDWACScanner, HMFLogging> {
     <HMDWACScannerDelegate> * _delegate;
     NSObject<OS_dispatch_queue> * _delegateQueue;
     NSObject<OS_dispatch_queue> * _dispatchQueue;
@@ -28,6 +28,10 @@
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 - (void)setDelegateQueue:(id)arg1;
 - (void)start;
+- (void)startDiscoveringAirPlayAccessoriesWithBrowser:(id)arg1;
 - (void)stop;
+- (void)wacBrowser:(id)arg1 didFindAirPlayDevice:(id)arg2;
+- (void)wacBrowser:(id)arg1 didRemoveAirPlayDevice:(id)arg2;
+- (void)wacBrowser:(id)arg1 didUpdateAirPlayDevice:(id)arg2;
 
 @end

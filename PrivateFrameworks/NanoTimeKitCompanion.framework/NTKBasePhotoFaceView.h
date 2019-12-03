@@ -66,11 +66,9 @@
 - (void)_configureForEditMode:(long long)arg1;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (bool)_curtainViewVisible;
-- (id)_digitalTimeLabelStyle;
+- (id)_digitalTimeLabelStyleFromViewMode:(long long)arg1 faceBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (double)_editSpeedForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_endScrubbingAnimationFromUIViewAnimateWithDuration;
-- (void)_fadeFromCurtainViewWithDuration:(double)arg1 completion:(id /* block */)arg2;
-- (void)_fadeToCurtainViewWithDuration:(double)arg1 completion:(id /* block */)arg2;
 - (bool)_fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2;
 - (void)_handleLongPress:(id)arg1;
 - (void)_handleOrdinaryScreenWake;

@@ -34,6 +34,7 @@
 - (id)description;
 - (id)embeddedPrincipal;
 - (id)findProtocol:(id)arg1;
+- (void)hostHasControl;
 - (id)hostPrincipal;
 - (id)initWithConnection:(id)arg1;
 - (id)plugInPrincipal;

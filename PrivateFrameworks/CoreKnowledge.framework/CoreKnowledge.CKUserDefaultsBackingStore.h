@@ -2,11 +2,8 @@
    Image: /System/Library/PrivateFrameworks/CoreKnowledge.framework/CoreKnowledge
  */
 
-@interface CoreKnowledge.CKUserDefaultsBackingStore : CKAbstractBackingStore {
+@interface CoreKnowledge.CKUserDefaultsBackingStore : Swift._SwiftObject {
     void kv;
 }
-
-- (void).cxx_destruct;
-- (id)init;
 
 @end

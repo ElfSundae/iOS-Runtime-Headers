@@ -20,6 +20,7 @@
 - (id)helper;
 - (id)init;
 - (void)invalidate;
+- (bool)proxyRebuildCache;
 - (void)setError:(int)arg1;
 
 @end

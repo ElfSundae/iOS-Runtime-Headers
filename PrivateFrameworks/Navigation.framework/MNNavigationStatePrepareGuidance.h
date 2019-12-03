@@ -4,20 +4,23 @@
 
 @interface MNNavigationStatePrepareGuidance : MNNavigationState {
     MNNavigationSessionManager * _navigationSessionManager;
-    MNRoutePlanningDetails * _routePlanningDetails;
+    NSArray * _previewRoutes;
+    unsigned long long  _selectedRouteIndex;
 }
 
 - (void).cxx_destruct;
 - (unsigned long long)desiredLocationProviderType;
-- (unsigned long long)desiredResourcePolicy;
 - (void)enterState;
-- (id)initWithStateManager:(id)arg1 routePlanningDetails:(id)arg2;
+- (id)initWithStateManager:(id)arg1 previewRoutes:(id)arg2 selectedRouteIndex:(unsigned long long)arg3;
 - (void)leaveState;
-- (void)prepareNavigationWithRouteDetails:(id)arg1;
+- (void)pauseRealtimeUpdatesForSubscriber:(id)arg1;
 - (bool)requiresHighMemoryThreshold;
-- (void)startNavigationForRouteDetails:(id)arg1 handler:(id /* block */)arg2;
+- (void)resumeRealtimeUpdatesForSubscriber:(id)arg1;
+- (void)setRoutesForPreview:(id)arg1 selectedRouteIndex:(unsigned long long)arg2;
+- (bool)shouldClearStoredRoutes;
+- (void)startNavigationWithDetails:(id)arg1 activeBlock:(id /* block */)arg2;
 - (void)stopNavigation;
 - (id)traceManager;
-- (long long)type;
+- (unsigned long long)type;
 
 @end

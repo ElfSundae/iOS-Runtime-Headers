@@ -25,8 +25,6 @@
 @property (nonatomic, readonly) bool roadsWithSimpleLineMeshesAvailable;
 @property (nonatomic, readonly) double routeLineSimplificationEpsilon;
 @property (nonatomic, readonly) bool shouldDrawWhenReady;
-@property (nonatomic, readonly) bool shouldLayoutLabelsInParallel;
-@property (nonatomic, readonly) bool shouldPregenerateLabelGlyphs;
 @property (nonatomic, readonly) bool shouldStyleLabelsInParallel;
 @property (nonatomic, readonly) bool supports3DBuildingStrokes;
 @property (nonatomic, readonly) bool supports3DBuildings;
@@ -56,8 +54,6 @@
 - (bool)roadsWithSimpleLineMeshesAvailable;
 - (double)routeLineSimplificationEpsilon;
 - (bool)shouldDrawWhenReady;
-- (bool)shouldLayoutLabelsInParallel;
-- (bool)shouldPregenerateLabelGlyphs;
 - (bool)shouldStyleLabelsInParallel;
 - (bool)supports3DBuildingStrokes;
 - (bool)supports3DBuildings;

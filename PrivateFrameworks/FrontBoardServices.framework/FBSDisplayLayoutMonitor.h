@@ -2,43 +2,42 @@
    Image: /System/Library/PrivateFrameworks/FrontBoardServices.framework/FrontBoardServices
  */
 
-@interface FBSDisplayLayoutMonitor : NSObject <FBSDisplayLayoutMonitorClientDelegate> {
-    NSObject<OS_dispatch_queue> * _calloutQueue;
-    long long  _displayType;
-    unsigned long long  _qualityOfService;
-    NSObject<OS_dispatch_queue> * _queue;
-    FBSDisplayLayoutMonitorClient * _queue_client;
-    FBSDisplayLayout * _queue_currentLayout;
-    id /* block */  _queue_handler;
-    bool  _queue_invalidated;
-    NSHashTable * _queue_observers;
-    bool  _sharedInstance;
+@interface FBSDisplayLayoutMonitor : NSObject <BSInvalidatable> {
+    long long  _deprecated_displayType;
+    BSServiceConnectionEndpoint * _deprecated_endpoint;
+    bool  _deprecated_mutable;
+    BOOL  _deprecated_qos;
+    bool  _deprecated_singleton;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _lock;
+    id /* block */  _lock_deprecated_handler;
+    NSMapTable * _lock_deprecated_observerAssertions;
+    _FBSDisplayLayoutServiceAssertion * _lock_handlerAssertion;
+    bool  _lock_invalidated;
 }
 
 @property (nonatomic, readonly) FBSDisplayLayout *currentLayout;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, readonly) long long displayType;
-@property (nonatomic, copy) id /* block */ handler;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) unsigned long long qualityOfService;
 @property (readonly) Class superclass;
 
++ (id)_endpointForDisplayType:(long long)arg1;
++ (id)interface;
++ (id)mainDisplayInstanceIdentifier;
++ (id)monitorWithConfiguration:(id)arg1;
++ (id)serviceIdentifier;
 + (id)sharedMonitorForDisplayType:(long long)arg1;
 
 - (void).cxx_destruct;
-- (void)_calloutQueue_postLayout:(id)arg1 withContext:(id)arg2 toObserver:(id)arg3;
-- (id)_observers;
-- (void)_queue_updateClient;
-- (void)_queue_updateLayout:(id)arg1 withContext:(id)arg2;
+- (id)_initWithConfiguration:(id)arg1 singleton:(bool)arg2 needsDefaultPriority:(bool)arg3 mutable:(bool)arg4 displayType:(long long)arg5 mutableHandler:(id /* block */)arg6;
 - (void)addObserver:(id)arg1;
-- (void)client:(id)arg1 handleNewDisplayLayout:(id)arg2 withContext:(id)arg3;
-- (long long)clientDisplayType:(id)arg1;
-- (unsigned long long)clientQualityOfService:(id)arg1;
 - (id)currentLayout;
 - (void)dealloc;
 - (long long)displayType;
 - (id /* block */)handler;
+- (id)init;
 - (id)initWithDisplayType:(long long)arg1;
 - (id)initWithDisplayType:(long long)arg1 handler:(id /* block */)arg2;
 - (id)initWithDisplayType:(long long)arg1 qualityOfService:(unsigned long long)arg2 handler:(id /* block */)arg3;

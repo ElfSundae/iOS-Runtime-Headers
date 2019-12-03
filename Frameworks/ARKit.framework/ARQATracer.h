@@ -13,12 +13,19 @@
         double x; 
         double y; 
     }  _offset;
+    ARPresentationStats * _presentationStats;
     NSObject<OS_dispatch_queue> * _processingQueue;
+    NSDictionary * _raycastQueryData;
+    NSArray * _raycastResultData;
     bool  _recordScreen;
     UILabel * _replayFrameLabel;
     ARScreenRecording * _screenRecorder;
+    MOVWriterInterface * _segmentationVideoFileWriter;
+    NSObject<OS_dispatch_queue> * _segmentationVideoQueue;
+    struct __CVPixelBufferPool { } * _segmentationYUVPixelBufferPool;
     NSMutableDictionary * _traceHeader;
     NSString * _traceOutputFilePath;
+    struct OpaqueVTPixelTransferSession { } * _vtTransferSession;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,6 +34,7 @@
 @property (nonatomic) bool forceQuitApp;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct CGPoint { double x1; double x2; } offset;
+@property (nonatomic, retain) ARPresentationStats *presentationStats;
 @property (nonatomic) bool recordScreen;
 @property (nonatomic, retain) UILabel *replayFrameLabel;
 @property (nonatomic, retain) ARScreenRecording *screenRecorder;
@@ -36,13 +44,16 @@
 + (bool)isEnabled;
 
 - (void).cxx_destruct;
+- (struct __CVBuffer { }*)_createRecordablePixelBufferFromSegmentationBuffer:(struct __CVBuffer { }*)arg1;
 - (void)addFrameLabel:(id)arg1;
 - (id)createTraceOutputDirectory;
+- (void)dealloc;
 - (id)delegate;
 - (void)flushDataBufferToFile;
 - (bool)forceQuitApp;
 - (id)init;
 - (struct CGPoint { double x1; double x2; })offset;
+- (id)presentationStats;
 - (void)receiveDefaults;
 - (bool)recordScreen;
 - (id)replayFrameLabel;
@@ -53,6 +64,7 @@
 - (void)setDelegate:(id)arg1;
 - (void)setForceQuitApp:(bool)arg1;
 - (void)setOffset:(struct CGPoint { double x1; double x2; })arg1;
+- (void)setPresentationStats:(id)arg1;
 - (void)setRecordScreen:(bool)arg1;
 - (void)setReplayFrameLabel:(id)arg1;
 - (void)setScreenRecorder:(id)arg1;
@@ -60,7 +72,9 @@
 - (void)start:(id)arg1;
 - (void)stop;
 - (id)traceOutputFilePath;
-- (void)update:(id)arg1;
+- (void)traceRaycastQuery:(id)arg1;
+- (void)traceRaycastResults:(id)arg1;
+- (void)update:(id)arg1 session:(id)arg2;
 - (void)writeJSONObjectToStream:(id)arg1 prefix:(id)arg2;
 - (void)writeStringToOutputStream:(id)arg1;
 

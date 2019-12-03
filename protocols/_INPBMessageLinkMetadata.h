@@ -10,6 +10,8 @@
 - (void)addImageURL:(NSString *)arg1;
 - (NSString *)albumArtist;
 - (NSString *)albumName;
+- (NSString *)appleTvSubtitle;
+- (NSString *)appleTvTitle;
 - (NSString *)artistGenre;
 - (NSString *)artistName;
 - (NSString *)audioBookAuthor;
@@ -22,6 +24,8 @@
 - (NSString *)creator;
 - (bool)hasAlbumArtist;
 - (bool)hasAlbumName;
+- (bool)hasAppleTvSubtitle;
+- (bool)hasAppleTvTitle;
 - (bool)hasArtistGenre;
 - (bool)hasArtistName;
 - (bool)hasAudioBookAuthor;
@@ -34,6 +38,8 @@
 - (bool)hasITunesStoreIdentifier;
 - (bool)hasItemType;
 - (bool)hasLinkMediaType;
+- (bool)hasMovieBundleGenre;
+- (bool)hasMovieBundleName;
 - (bool)hasMovieGenre;
 - (bool)hasMovieName;
 - (bool)hasMusicVideoArtist;
@@ -63,6 +69,7 @@
 - (bool)hasTvEpisodeSeasonName;
 - (bool)hasTvSeasonGenre;
 - (bool)hasTvSeasonName;
+- (bool)hasTvShowName;
 - (NSString *)iTunesStoreFrontIdentifier;
 - (NSString *)iTunesStoreIdentifier;
 - (NSString *)iconURLAtIndex:(unsigned long long)arg1;
@@ -74,6 +81,8 @@
 - (NSString *)itemType;
 - (int)linkMediaType;
 - (NSString *)linkMediaTypeAsString:(int)arg1;
+- (NSString *)movieBundleGenre;
+- (NSString *)movieBundleName;
 - (NSString *)movieGenre;
 - (NSString *)movieName;
 - (NSString *)musicVideoArtist;
@@ -91,6 +100,8 @@
 - (NSString *)radioName;
 - (void)setAlbumArtist:(NSString *)arg1;
 - (void)setAlbumName:(NSString *)arg1;
+- (void)setAppleTvSubtitle:(NSString *)arg1;
+- (void)setAppleTvTitle:(NSString *)arg1;
 - (void)setArtistGenre:(NSString *)arg1;
 - (void)setArtistName:(NSString *)arg1;
 - (void)setAudioBookAuthor:(NSString *)arg1;
@@ -106,6 +117,8 @@
 - (void)setImageURLs:(NSArray *)arg1;
 - (void)setItemType:(NSString *)arg1;
 - (void)setLinkMediaType:(int)arg1;
+- (void)setMovieBundleGenre:(NSString *)arg1;
+- (void)setMovieBundleName:(NSString *)arg1;
 - (void)setMovieGenre:(NSString *)arg1;
 - (void)setMovieName:(NSString *)arg1;
 - (void)setMusicVideoArtist:(NSString *)arg1;
@@ -135,6 +148,7 @@
 - (void)setTvEpisodeSeasonName:(NSString *)arg1;
 - (void)setTvSeasonGenre:(NSString *)arg1;
 - (void)setTvSeasonName:(NSString *)arg1;
+- (void)setTvShowName:(NSString *)arg1;
 - (NSString *)siteName;
 - (NSString *)softwareGenre;
 - (NSString *)softwareName;
@@ -149,5 +163,6 @@
 - (NSString *)tvEpisodeSeasonName;
 - (NSString *)tvSeasonGenre;
 - (NSString *)tvSeasonName;
+- (NSString *)tvShowName;
 
 @end

@@ -19,7 +19,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly, copy) NSString *sysdiagnoseDataIdentifier;
 
-+ (bool)willMonitorLifetime:(id)arg1;
++ (Class)lifetimeClass;
 
 - (void).cxx_destruct;
 - (id)activeLifetimeAssertionUUIDs;
@@ -34,6 +34,6 @@
 - (void)setDelegate:(id)arg1;
 - (id)sysdiagnoseDataForDate:(id)arg1;
 - (id)sysdiagnoseDataIdentifier;
-- (id)updateForModeAssertionDetails:(id)arg1 date:(id)arg2;
+- (id)updateForModeAssertions:(id)arg1 date:(id)arg2;
 
 @end

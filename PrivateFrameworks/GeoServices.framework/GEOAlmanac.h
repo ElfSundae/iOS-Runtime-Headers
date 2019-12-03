@@ -20,7 +20,6 @@
 @property (nonatomic, readonly) NSDate *transit;
 
 - (void).cxx_destruct;
-- (id)_newRiseTransitSetForLocation:(struct { double x1; double x2; })arg1 julianDay:(double)arg2 altitude:(double)arg3;
 - (void)calculateAstronomicalTimeForLocation:(struct { double x1; double x2; })arg1;
 - (void)calculateAstronomicalTimeForLocation:(struct { double x1; double x2; })arg1 altitudeInDegrees:(double)arg2;
 - (void)calculateAstronomicalTimeForLocation:(struct { double x1; double x2; })arg1 date:(id)arg2 altitudeInDegrees:(double)arg3;

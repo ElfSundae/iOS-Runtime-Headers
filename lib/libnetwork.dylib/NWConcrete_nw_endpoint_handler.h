@@ -12,7 +12,9 @@
         unsigned int domain; 
         unsigned int event; 
     }  event;
+    void * fallback_timer;
     unsigned int  has_better_path;
+    unsigned int  has_finished_transport;
     unsigned char  id_chain;
     BOOL  id_str;
     NSObject<OS_xpc_object> * inactive_agent_dictionaries;
@@ -23,11 +25,13 @@
     }  lock;
     int  mode;
     NSObject<NWConcrete_nw_endpoint_mode_handler> * mode_handler;
+    NSObject<OS_nw_path_evaluator> * override_evaluator;
     NSObject<OS_nw_parameters> * parameters;
     NWConcrete_nw_endpoint_handler * parent_handler;
     int  privacy_level;
     int (* report_callback;
     unsigned int  reuse_association;
+    unsigned long long  start_time;
     int  state;
     NSObject<OS_dispatch_queue> * tls_client_queue;
     id /* block */  tls_message_block;

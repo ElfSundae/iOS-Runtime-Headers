@@ -12,21 +12,25 @@
     CNUIIDSContactPropertyResolver * _idsContactPropertyResolver;
     <CNMCProfileConnection> * _profileConnection;
     <CNSchedulerProvider> * _schedulerProvider;
+    <CNUIUserActionTargetDiscovering> * _targetDiscoveringHelper;
+    <CNUIRTTUtilities> * _ttyUtilities;
 }
 
-@property (nonatomic, retain) <CNLSApplicationWorkspace> *applicationWorkspace;
-@property (nonatomic, retain) <CNTUCallProviderManager> *callProviderManager;
-@property (nonatomic, retain) <CNCapabilities> *capabilities;
-@property (nonatomic, retain) CNContactStore *contactStore;
+@property (nonatomic, readonly) <CNLSApplicationWorkspace> *applicationWorkspace;
+@property (nonatomic, readonly) <CNTUCallProviderManager> *callProviderManager;
+@property (nonatomic, readonly) <CNCapabilities> *capabilities;
+@property (nonatomic, readonly) CNContactStore *contactStore;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic, retain) <CNUIDefaultUserActionFetcher> *defaultUserActionFetcher;
+@property (nonatomic, readonly) <CNUIDefaultUserActionFetcher> *defaultUserActionFetcher;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) <CNSchedulerProvider> *highLatencySchedulerProvider;
-@property (nonatomic, retain) CNUIIDSContactPropertyResolver *idsContactPropertyResolver;
-@property (nonatomic, retain) <CNMCProfileConnection> *profileConnection;
-@property (nonatomic, retain) <CNSchedulerProvider> *schedulerProvider;
+@property (nonatomic, readonly) <CNSchedulerProvider> *highLatencySchedulerProvider;
+@property (nonatomic, readonly) CNUIIDSContactPropertyResolver *idsContactPropertyResolver;
+@property (nonatomic, readonly) <CNMCProfileConnection> *profileConnection;
+@property (nonatomic, readonly) <CNSchedulerProvider> *schedulerProvider;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) <CNUIUserActionTargetDiscovering> *targetDiscoveringHelper;
+@property (nonatomic, readonly) <CNUIRTTUtilities> *ttyUtilities;
 
 - (void).cxx_destruct;
 - (id)applicationWorkspace;
@@ -38,19 +42,13 @@
 - (id)highLatencySchedulerProvider;
 - (id)idsContactPropertyResolver;
 - (id)init;
-- (id)initWithApplicationWorkspace:(id)arg1 callProviderManager:(id)arg2 idsContactPropertyResolver:(id)arg3 profileConnection:(id)arg4 contactStore:(id)arg5 schedulerProvider:(id)arg6 highLatencySchedulerProvider:(id)arg7 capabilities:(id)arg8 defaultUserActionFetcher:(id)arg9;
+- (id)initWithApplicationWorkspace:(id)arg1 callProviderManager:(id)arg2 idsContactPropertyResolver:(id)arg3 profileConnection:(id)arg4 contactStore:(id)arg5 schedulerProvider:(id)arg6 highLatencySchedulerProvider:(id)arg7 capabilities:(id)arg8 defaultUserActionFetcher:(id)arg9 ttyUtilities:(id)arg10;
+- (id)initWithIDSAvailabilityProvider:(id)arg1 schedulerProvider:(id)arg2 capabilities:(id)arg3 defaultUserActionFetcher:(id)arg4;
 - (id)initWithIDSAvailablilityProvider:(id)arg1 schedulerProvider:(id)arg2 capabilities:(id)arg3 defaultUserActionFetcher:(id)arg4;
 - (id)nts_lazyContactStore;
 - (id)profileConnection;
 - (id)schedulerProvider;
-- (void)setApplicationWorkspace:(id)arg1;
-- (void)setCallProviderManager:(id)arg1;
-- (void)setCapabilities:(id)arg1;
-- (void)setContactStore:(id)arg1;
-- (void)setDefaultUserActionFetcher:(id)arg1;
-- (void)setHighLatencySchedulerProvider:(id)arg1;
-- (void)setIdsContactPropertyResolver:(id)arg1;
-- (void)setProfileConnection:(id)arg1;
-- (void)setSchedulerProvider:(id)arg1;
+- (id)targetDiscoveringHelper;
+- (id)ttyUtilities;
 
 @end

@@ -4,6 +4,7 @@
 
 @interface NMBUIMediaTableCell : PSSwitchTableCell {
     UIStackView * _accessoryStackView;
+    NMBUIDownloadProgressView * _downloadProgressView;
     UIButton * _errorButton;
 }
 
@@ -12,8 +13,11 @@
 + (double)defaultCellHeight;
 
 - (void).cxx_destruct;
+- (id)downloadProgressView;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;
 - (void)prepareForReuse;
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
+- (void)setDownloadState:(unsigned long long)arg1 progress:(double)arg2;
+- (void)setDownloadState:(unsigned long long)arg1 progress:(double)arg2 animated:(bool)arg3;
 
 @end

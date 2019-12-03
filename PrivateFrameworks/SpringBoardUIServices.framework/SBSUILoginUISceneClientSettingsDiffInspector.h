@@ -8,5 +8,6 @@
 - (void)observeIdleTimerModeWithBlock:(id /* block */)arg1;
 - (void)observeRotationModeWithBlock:(id /* block */)arg1;
 - (void)observeStatusBarUserNameOverrideWithBlock:(id /* block */)arg1;
+- (void)observeWallpaperModeWithBlock:(id /* block */)arg1;
 
 @end

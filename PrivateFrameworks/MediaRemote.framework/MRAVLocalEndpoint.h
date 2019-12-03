@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/MediaRemote.framework/MediaRemote
  */
 
-@interface MRAVLocalEndpoint : MRAVConcreteEndpoint <MROutputContextDataSourceDelegate, NSSecureCoding> {
+@interface MRAVLocalEndpoint : MRAVConcreteEndpoint <NSSecureCoding> {
     MRAVOutputContext * _outputContext;
     MROutputContextController * _outputContextController;
     NSArray * _outputDevices;
@@ -10,39 +10,37 @@
     NSString * _uniqueIdentifier;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSArray *outputDevices;
-@property (readonly) Class superclass;
 
++ (id)sharedLocalEndpointForRoutingContextWithUID:(id)arg1;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
-- (void)_localizeOutputDevices:(id)arg1 withReplyQueue:(id)arg2 completion:(id /* block */)arg3;
+- (void)_ouputDevicesForOutputDeviceUIDs:(id)arg1 completion:(id /* block */)arg2;
 - (void)_outputContextDevicesDidChangeNotification:(id)arg1;
+- (void)_registerForNotifications;
 - (void)_reloadOutputDevicesFromContext;
-- (void)addOutputDevices:(id)arg1 withReplyQueue:(id)arg2 completion:(id /* block */)arg3;
+- (void)addOutputDevices:(id)arg1 initiator:(id)arg2 withReplyQueue:(id)arg3 completion:(id /* block */)arg4;
 - (bool)canModifyGroupMembership;
+- (void)connectToExternalDeviceWithCompletion:(id /* block */)arg1;
 - (long long)connectionType;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithOutputContext:(id)arg1;
-- (id)initWithOutputContext:(id)arg1 wantsUpdates:(bool)arg2;
 - (id)initWithOutputDevices:(id)arg1;
 - (bool)isProxyGroupPlayer;
-- (void)outputContextDataSource:(id)arg1 didAddOutputDevice:(id)arg2;
-- (void)outputContextDataSource:(id)arg1 didRemoveOutputDevice:(id)arg2;
-- (void)outputContextDataSource:(id)arg1 outputDevice:(id)arg2 didChangeVolume:(float)arg3;
-- (void)outputContextDataSource:(id)arg1 outputDevice:(id)arg2 didChangeVolumeControlCapabilities:(unsigned int)arg3;
+- (id)origin;
+- (void)outputContextDataSourceOutputDeviceDidChangeVolume:(id)arg1;
+- (void)outputContextDataSourceOutputDeviceDidChangeVolumeControlCapabilities:(id)arg1;
 - (void)outputDeviceVolume:(id)arg1 queue:(id)arg2 completion:(id /* block */)arg3;
 - (id)outputDevices;
+- (id)personalOutputDevices;
 - (void)removeOutputDeviceFromParentGroup:(id)arg1 queue:(id)arg2 completion:(id /* block */)arg3;
-- (void)removeOutputDevices:(id)arg1 withReplyQueue:(id)arg2 completion:(id /* block */)arg3;
+- (void)removeOutputDevices:(id)arg1 initiator:(id)arg2 withReplyQueue:(id)arg3 completion:(id /* block */)arg4;
 - (void)setOutputDeviceVolume:(float)arg1 outputDevice:(id)arg2 queue:(id)arg3 completion:(id /* block */)arg4;
 - (void)setOutputDevices:(id)arg1;
-- (void)setOutputDevices:(id)arg1 withReplyQueue:(id)arg2 completion:(id /* block */)arg3;
+- (void)setOutputDevices:(id)arg1 initiator:(id)arg2 withReplyQueue:(id)arg3 completion:(id /* block */)arg4;
 - (id)uniqueIdentifier;
 - (void)volumeControlCapabilitiesForOutputDevice:(id)arg1 queue:(id)arg2 completion:(id /* block */)arg3;
 

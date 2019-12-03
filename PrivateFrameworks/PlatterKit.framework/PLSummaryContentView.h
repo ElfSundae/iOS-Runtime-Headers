@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PlatterKit.framework/PlatterKit
  */
 
-@interface PLSummaryContentView : UIView <MTVibrantStylingProviderObserving, MTVibrantStylingRequiring, PLContentSizeCategoryAdjusting> {
+@interface PLSummaryContentView : UIView <MTVisualStylingRequiring, PLContentSizeCategoryAdjusting> {
     UIView * _accessoryView;
     bool  _adjustsFontForContentSizeCategory;
     struct UIEdgeInsets { 
@@ -20,7 +20,7 @@
     UILabel * _secondaryLabel;
     BSUIEmojiLabelView * _summaryLabel;
     UIImageView * _thumbnailImageView;
-    MTVibrantStylingProvider * _vibrantStylingProvider;
+    MTVisualStylingProvider * _visualStylingProvider;
     NSMutableDictionary * _widthToFontToStringToMeasuredNumLines;
 }
 
@@ -36,13 +36,13 @@
 @property (getter=_primarySubtitleLabel, setter=_setPrimarySubtitleLabel:, nonatomic, retain) UILabel *primarySubtitleLabel;
 @property (nonatomic, retain) NSString *primarySubtitleText;
 @property (nonatomic, retain) NSString *primaryText;
+@property (nonatomic, readonly, copy) NSArray *requiredVisualStyleCategories;
 @property (getter=_secondaryLabel, nonatomic, readonly) UILabel *secondaryLabel;
 @property (nonatomic, retain) NSString *secondaryText;
 @property (getter=_summaryLabel, setter=_setSummaryLabel:, nonatomic, retain) BSUIEmojiLabelView *summaryLabel;
 @property (nonatomic, retain) NSString *summaryText;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) UIImage *thumbnail;
-@property (nonatomic, retain) MTVibrantStylingProvider *vibrantStylingProvider;
 
 - (void).cxx_destruct;
 - (unsigned long long)_cachedNumberOfMeasuredLinesForText:(id)arg1 withFont:(id)arg2 forWidth:(double)arg3;
@@ -114,6 +114,7 @@
 - (id)preferredContentSizeCategory;
 - (id)primarySubtitleText;
 - (id)primaryText;
+- (id)requiredVisualStyleCategories;
 - (id)secondaryText;
 - (void)setAccessoryView:(id)arg1;
 - (void)setAdjustsFontForContentSizeCategory:(bool)arg1;
@@ -125,12 +126,11 @@
 - (void)setSecondaryText:(id)arg1;
 - (void)setSummaryText:(id)arg1;
 - (void)setThumbnail:(id)arg1;
-- (void)setVibrantStylingProvider:(id)arg1;
+- (void)setVisualStylingProvider:(id)arg1 forCategory:(long long)arg2;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (id)summaryText;
 - (id)thumbnail;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)vibrantStylingDidChangeForProvider:(id)arg1;
-- (id)vibrantStylingProvider;
+- (id)visualStylingProviderForCategory:(long long)arg1;
 
 @end

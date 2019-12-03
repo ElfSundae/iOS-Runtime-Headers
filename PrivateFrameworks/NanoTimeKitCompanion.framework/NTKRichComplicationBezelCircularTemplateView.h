@@ -5,7 +5,6 @@
 @interface NTKRichComplicationBezelCircularTemplateView : NTKRichComplicationBezelBaseCircularView
 
 + (bool)handlesComplicationTemplate:(id)arg1;
-+ (void)load;
 + (bool)supportsComplicationFamily:(long long)arg1;
 
 - (id)_bezelTextProviderFromTemplate:(id)arg1;

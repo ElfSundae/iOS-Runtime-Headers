@@ -12,6 +12,7 @@
 @property (nonatomic, readonly) MPModelSongKind *songKind;
 @property (nonatomic, readonly) unsigned long long variants;
 
++ (id)identityKind;
 + (id)kindWithVariants:(unsigned long long)arg1 songKind:(id)arg2 options:(unsigned long long)arg3;
 + (bool)supportsSecureCoding;
 

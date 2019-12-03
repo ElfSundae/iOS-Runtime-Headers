@@ -35,7 +35,7 @@
 - (void)_onqueue_willBeRetried;
 - (void)_onqueue_willSendRequestForEstablishedConnection:(id)arg1 withCompletion:(id /* block */)arg2;
 - (void)dealloc;
-- (id)initWithSession:(id)arg1 remoteSession:(id)arg2 request:(id)arg3 ident:(unsigned long long)arg4;
+- (id)initWithOriginalRequest:(id)arg1 ident:(unsigned long long)arg2 taskGroup:(id)arg3;
 - (bool)isKindOfClass:(Class)arg1;
 - (bool)isStreamBased;
 - (void)readFromStream;

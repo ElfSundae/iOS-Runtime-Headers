@@ -26,6 +26,7 @@
     NSSet * _relativePathsToBackgroundRestore;
     NSSet * _relativePathsToBackupAndRestore;
     NSSet * _relativePathsToBackupIgnoringProtectionClass;
+    NSSet * _relativePathsToBackupToDriveAndStandardAccount;
     NSSet * _relativePathsToIgnoreExclusionsForDrive;
     NSSet * _relativePathsToOnlyBackupEncrypted;
     NSSet * _relativePathsToRemoveOnRestore;
@@ -65,6 +66,7 @@
 @property (nonatomic, readonly) NSSet *relativePathsToBackup;
 @property (nonatomic, retain) NSSet *relativePathsToBackupAndRestore;
 @property (nonatomic, retain) NSSet *relativePathsToBackupIgnoringProtectionClass;
+@property (nonatomic, retain) NSSet *relativePathsToBackupToDriveAndStandardAccount;
 @property (nonatomic, retain) NSSet *relativePathsToIgnoreExclusionsForDrive;
 @property (nonatomic, retain) NSSet *relativePathsToOnlyBackupEncrypted;
 @property (nonatomic, retain) NSSet *relativePathsToRemoveOnRestore;
@@ -154,6 +156,7 @@
 - (id)relativePathsToBackup;
 - (id)relativePathsToBackupAndRestore;
 - (id)relativePathsToBackupIgnoringProtectionClass;
+- (id)relativePathsToBackupToDriveAndStandardAccount;
 - (id)relativePathsToIgnoreExclusionsForDrive;
 - (id)relativePathsToOnlyBackupEncrypted;
 - (id)relativePathsToRemoveOnRestore;
@@ -180,6 +183,7 @@
 - (void)setRelativePathsToBackgroundRestore:(id)arg1;
 - (void)setRelativePathsToBackupAndRestore:(id)arg1;
 - (void)setRelativePathsToBackupIgnoringProtectionClass:(id)arg1;
+- (void)setRelativePathsToBackupToDriveAndStandardAccount:(id)arg1;
 - (void)setRelativePathsToIgnoreExclusionsForDrive:(id)arg1;
 - (void)setRelativePathsToOnlyBackupEncrypted:(id)arg1;
 - (void)setRelativePathsToRemoveOnRestore:(id)arg1;

@@ -3,6 +3,7 @@
  */
 
 @interface NNMKContentAttributedStringHTMLParser : NNMKHTMLParser {
+    NSDataDetector * _dataDetector;
     NSMutableDictionary * _imageAtachmentsDataByContentId;
     NSLock * _lock;
     double  _maxImageWidth;
@@ -11,6 +12,7 @@
     bool * _partiallyParsed;
 }
 
+@property (nonatomic, retain) NSDataDetector *dataDetector;
 @property (nonatomic, retain) NSMutableDictionary *imageAtachmentsDataByContentId;
 @property (nonatomic, retain) NSLock *lock;
 @property (nonatomic) double maxImageWidth;
@@ -31,10 +33,12 @@
 - (bool)_validateURLsAndHTMLTagsInParsedString:(id)arg1 urlsFound:(id*)arg2;
 - (void)appendImageWithSource:(id)arg1 width:(double)arg2 height:(double)arg3 stringAttributes:(id)arg4;
 - (void)appendString:(id)arg1 stringAttributes:(id)arg2;
+- (id)dataDetector;
 - (id)imageAtachmentsDataByContentId;
 - (bool)isElementBlacklisted:(id)arg1 attributeQueryBlock:(id /* block */)arg2;
 - (bool)isElementIgnorable:(id)arg1;
 - (bool)isErrorTypeBlacklisted:(char *)arg1;
+- (bool)isWebLink:(id)arg1;
 - (id)lock;
 - (double)maxImageWidth;
 - (unsigned long long)maxLength;
@@ -42,6 +46,7 @@
 - (id)parseHTMLBody:(id)arg1 encoding:(unsigned long long)arg2 maxLength:(unsigned long long)arg3 maxImageWidth:(double)arg4 partiallyParsed:(bool*)arg5 imageAttachmentsLoaded:(id*)arg6 urlsFound:(id*)arg7;
 - (id)parsedAttributedString;
 - (bool*)partiallyParsed;
+- (void)setDataDetector:(id)arg1;
 - (void)setImageAtachmentsDataByContentId:(id)arg1;
 - (void)setLock:(id)arg1;
 - (void)setMaxImageWidth:(double)arg1;

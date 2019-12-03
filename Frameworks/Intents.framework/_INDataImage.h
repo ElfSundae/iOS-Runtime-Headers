@@ -4,7 +4,7 @@
 
 @interface _INDataImage : INImage {
     NSData * _imageData;
-    NSUUID * _md5HashUUID;
+    NSUUID * _sha256HashUUID;
 }
 
 @property (nonatomic, readonly, copy) NSData *imageData;
@@ -18,10 +18,10 @@
 - (id)_imageData;
 - (bool)_isEligibleForProxying;
 - (void)_loadImageDataAndSizeWithHelper:(id)arg1 accessSpecifier:(id)arg2 completion:(id /* block */)arg3;
-- (id)_md5HashUUID;
 - (bool)_requiresRetrieval;
 - (void)_retrieveImageDataWithReply:(id /* block */)arg1;
 - (void)_setImageData:(id)arg1;
+- (id)_sha256HashUUID;
 - (void)encodeWithCoder:(id)arg1;
 - (id)imageData;
 - (id)initWithCoder:(id)arg1;

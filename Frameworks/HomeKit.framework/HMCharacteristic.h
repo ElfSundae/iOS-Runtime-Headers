@@ -34,6 +34,7 @@
 @property (nonatomic, copy) NSDate *notificationEnabledTime;
 @property (nonatomic, copy) NSArray *properties;
 @property (nonatomic) bool requiresDeviceUnlock;
+@property (readonly, copy) NSDictionary *serializedDictionaryRepresentation;
 @property (nonatomic) HMService *service;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly, copy) NSUUID *uniqueIdentifier;
@@ -44,6 +45,8 @@
 
 + (id)__localizedDescriptionForCharacteristicType:(id)arg1;
 + (id)_characteristicTypeAsString:(id)arg1;
++ (id)characteristicWithCharacteristicReference:(id)arg1 home:(id)arg2;
++ (id)characteristicWithSerializedDictionaryRepresentation:(id)arg1 home:(id)arg2;
 + (id)localizedDescriptionForCharacteristicType:(id)arg1;
 + (id)logCategory;
 + (bool)supportsSecureCoding;
@@ -77,6 +80,7 @@
 - (id)properties;
 - (void)readValueWithCompletionHandler:(id /* block */)arg1;
 - (bool)requiresDeviceUnlock;
+- (id)serializedDictionaryRepresentation;
 - (id)service;
 - (void)setCharacteristicType:(id)arg1;
 - (void)setContext:(id)arg1;
@@ -109,7 +113,9 @@
 + (id)hf_powerStateCharacteristicTypes;
 + (bool)hf_shouldCaptureCharacteristicTypeInActionSets:(id)arg1;
 + (long long)hf_sortPriorityForCharacteristicType:(id)arg1;
++ (id)hf_suggestionVendorForCharacteristicType:(id)arg1;
 + (id)hf_targetStateCharacteristicTypeForCurrentStateCharacteristicType:(id)arg1;
++ (id)hf_valueRangeCharacteristicTypes;
 
 - (id)hf_associatedCharacteristicType;
 - (id)hf_characteristicTypeDescription;
@@ -120,10 +126,16 @@
 - (id)hf_home;
 - (bool)hf_isReadable;
 - (bool)hf_isWritable;
+- (id)hf_maximumTriggerValue;
+- (id)hf_minimumTriggerValue;
 - (id)hf_programmableSwitchTriggerValueToEventTriggersMap;
 - (id)hf_programmableSwitchValidValueSet;
 - (bool)hf_shouldCaptureInActionSets;
 - (long long)hf_sortPriority;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
+- (id)hf_thresholdValueForRange:(id)arg1;
+- (id)hf_triggerValues;
+- (id)hf_valueAfterTriggerValue:(id)arg1;
+- (id)hf_valueBeforeTriggerValue:(id)arg1;
 
 @end

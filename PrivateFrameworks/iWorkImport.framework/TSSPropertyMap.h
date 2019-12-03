@@ -47,7 +47,7 @@
 - (id)objectForProperty:(int)arg1;
 - (id)old_description;
 - (void)pSetArrayOfFloats:(double)arg1 forProperty:(int)arg2;
-- (void)pSetArrayOfObjects:(/* Warning: unhandled array encoding: '[9@]' */ id)arg1 forProperty:(int)arg2;
+- (void)pSetArrayOfObjects:(id)arg1 forProperty:(int)arg2;
 - (void)p_getAllKeys:(int*)arg1;
 - (id)propertyMapByAddingValuesFromPropertyMap:(id)arg1;
 - (id)propertyMapByRemovingValuesForProperties:(id)arg1;

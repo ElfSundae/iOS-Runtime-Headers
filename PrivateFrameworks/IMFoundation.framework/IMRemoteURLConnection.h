@@ -3,7 +3,6 @@
  */
 
 @interface IMRemoteURLConnection : NSObject {
-    bool  _alwaysForceCellular;
     id /* block */  _block;
     NSString * _bundleIdentifierForDataUsage;
     bool  _cancelled;
@@ -21,7 +20,6 @@
     bool  _shouldUsePipelining;
 }
 
-@property bool alwaysForceCellular;
 @property (copy) id /* block */ block;
 @property (retain) NSString *bundleIdentifierForDataUsage;
 @property int concurrentConnections;
@@ -37,7 +35,6 @@
 - (bool)_connect;
 - (bool)_disconnect;
 - (void)_disconnected;
-- (bool)alwaysForceCellular;
 - (id /* block */)block;
 - (id)bundleIdentifierForDataUsage;
 - (void)cancel;
@@ -52,7 +49,6 @@
 - (void)load;
 - (id)request;
 - (bool)requireIDSHost;
-- (void)setAlwaysForceCellular:(bool)arg1;
 - (void)setBlock:(id /* block */)arg1;
 - (void)setBundleIdentifierForDataUsage:(id)arg1;
 - (void)setConcurrentConnections:(int)arg1;

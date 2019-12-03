@@ -13,6 +13,7 @@
     <CADInterface> * _remoteOperationProxy;
     NSObject<OS_dispatch_queue> * _replyHandlerLock;
     <CADInterface> * _syncRemoteOperationProxy;
+    bool  _wasAbortedDueToExcessiveConnctions;
     NSXPCConnection * _xpcConnection;
 }
 
@@ -22,6 +23,10 @@
 @property (nonatomic) bool hasEverConnected;
 @property (nonatomic, retain) CADDatabaseInitializationOptions *initializationOptions;
 @property (nonatomic, readonly, retain) NSXPCConnection *xpcConnection;
+
++ (bool)_tryRegisterNewConnection;
++ (void)_unregisterConnection;
++ (unsigned long long)maxNumberOfOpenConnections;
 
 - (void).cxx_destruct;
 - (void)CADClientReceiveOccurrenceCacheSearchResults:(id)arg1 forSearchToken:(unsigned int)arg2 finished:(bool)arg3;

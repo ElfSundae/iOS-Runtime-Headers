@@ -5,7 +5,7 @@
 @interface HMDCameraStreamManagerSession : HMFObject {
     HMFMessage * _currentMessage;
     NSString * _destinationID;
-    HMDCameraSessionID * _sessionID;
+    HMDCameraStreamSessionID * _sessionID;
     NSNumber * _slotIdentifier;
     <HMDCameraStreamControlManagerProtocol> * _streamControlManager;
     HMFTimer * _streamSetupTimer;
@@ -14,7 +14,7 @@
 
 @property (nonatomic, retain) HMFMessage *currentMessage;
 @property (nonatomic, readonly) NSString *destinationID;
-@property (nonatomic, readonly) HMDCameraSessionID *sessionID;
+@property (nonatomic, readonly) HMDCameraStreamSessionID *sessionID;
 @property (nonatomic, retain) NSNumber *slotIdentifier;
 @property (nonatomic, readonly) <HMDCameraStreamControlManagerProtocol> *streamControlManager;
 @property (nonatomic, readonly) HMFTimer *streamSetupTimer;

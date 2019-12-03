@@ -18,6 +18,7 @@
 - (void).cxx_destruct;
 - (void)_resetGestureRecognizer;
 - (void)clearTimer;
+- (id)initWithTarget:(id)arg1 action:(SEL)arg2;
 - (double)secondDelay;
 - (bool)secondDelayElapsed;
 - (void)secondDelayElapsed:(id)arg1;

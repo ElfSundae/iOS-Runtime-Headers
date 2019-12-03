@@ -4,11 +4,11 @@
 
 @interface HMDAccessorySettingModel : HMDBackingStoreModelObject
 
-@property (nonatomic, retain) NSNumber *configurationVersion;
-@property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) NSNumber *properties;
-@property (nonatomic, retain) NSNumber *type;
-@property (nonatomic, retain) NSData *value;
+@property (nonatomic, copy) NSNumber *configurationVersion;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSNumber *properties;
+@property (nonatomic, copy) NSNumber *type;
+@property (nonatomic, copy) NSData *value;
 
 + (id)properties;
 + (id)schemaHashRoot;

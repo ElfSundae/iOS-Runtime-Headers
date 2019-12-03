@@ -3,18 +3,28 @@
  */
 
 @interface _UIDictationPrivacySheetController : UINavigationController {
-    id /* block */  _dismissHandler;
+    VTUIDictationDataSharingOptInPresenter * _dataSharingOptInPresenter;
+    <_UIDictationPrivacySheetControllerDelegate> * _privacyDelegate;
+    OBPrivacyPresenter * _privacyPresenter;
+    long long  _sheetType;
 }
 
-@property (copy) id /* block */ dismissHandler;
+@property (nonatomic, retain) VTUIDictationDataSharingOptInPresenter *dataSharingOptInPresenter;
+@property (nonatomic) <_UIDictationPrivacySheetControllerDelegate> *privacyDelegate;
+@property (nonatomic, retain) OBPrivacyPresenter *privacyPresenter;
+@property (nonatomic) long long sheetType;
 
-+ (id)controllerWithDismissHandler:(id /* block */)arg1;
-
+- (id)dataSharingOptInPresenter;
 - (void)dealloc;
 - (void)dismiss;
-- (void)dismissAnimated:(bool)arg1;
-- (id /* block */)dismissHandler;
-- (id)initWithHandler:(id /* block */)arg1;
-- (void)setDismissHandler:(id /* block */)arg1;
+- (id)initWithType:(long long)arg1;
+- (id)privacyDelegate;
+- (id)privacyPresenter;
+- (void)setDataSharingOptInPresenter:(id)arg1;
+- (void)setPresentationDelegate:(id)arg1;
+- (void)setPrivacyDelegate:(id)arg1;
+- (void)setPrivacyPresenter:(id)arg1;
+- (void)setSheetType:(long long)arg1;
+- (long long)sheetType;
 
 @end

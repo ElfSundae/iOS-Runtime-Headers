@@ -9,6 +9,8 @@
     <PGPictureInPictureRemoteObjectDelegate> * _delegate;
     struct { 
         unsigned int pictureInPictureRemoteObject_shouldAcceptSetupRequest : 1; 
+        unsigned int pictureInPictureRemoteObject_shouldCancelActivePictureInPictureOnStart : 1; 
+        unsigned int pictureInPictureRemoteObject_shouldUpdateCancellationPolicyOnStart : 1; 
         unsigned int pictureInPictureRemoteObject_didCreatePictureInPictureViewController : 1; 
         unsigned int pictureInPictureRemoteObject_willShowPictureInPictureViewController : 1; 
         unsigned int pictureInPictureRemoteObject_didShowPictureInPictureViewController : 1; 
@@ -43,9 +45,12 @@
     NSObject<OS_dispatch_queue> * _queue;
     bool  _shouldShowAlternateActionButtonImage;
     bool  _shouldShowLoadingIndicator;
+    NSString * _sourceSceneSessionPersistentIdentifier;
     unsigned long long  _transitioningState;
 }
 
+@property (nonatomic, readonly) bool canCancelPictureInPicture;
+@property (nonatomic, readonly) bool canStopPictureInPicture;
 @property (nonatomic, readonly) NSXPCConnection *connection;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <PGPictureInPictureRemoteObjectDelegate> *delegate;
@@ -58,6 +63,7 @@
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } preferredContentSize;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *queue;
 @property (nonatomic, readonly) bool shouldStartPictureInPictureEnteringBackground;
+@property (nonatomic, readonly) NSString *sourceSceneSessionPersistentIdentifier;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) unsigned long long transitioningState;
 
@@ -66,7 +72,10 @@
 - (void)_invalidateInterruptionBeganFinishTaskAssertion;
 - (id)_processAssertionForProcessIdentifier:(int)arg1;
 - (void)_tearDownAndNotifyClientAboutCancellation:(bool)arg1;
+- (bool)canCancelPictureInPicture;
+- (bool)canStopPictureInPicture;
 - (void)cancel;
+- (oneway void)checkActivePictureInPictureCancellationPolicyWithCompletion:(id /* block */)arg1;
 - (oneway void)cleanupWithCompletionHandler:(id /* block */)arg1;
 - (id)connection;
 - (void)dealloc;
@@ -78,6 +87,7 @@
 - (void)invalidate;
 - (bool)isPictureInPicturePossible;
 - (bool)isStartingStoppingOrCancellingPictureInPicture;
+- (bool)matchesSceneSessionIdentifier:(id)arg1;
 - (id)pictureInPictureApplication;
 - (void)pictureInPictureInterruptionBegan;
 - (void)pictureInPictureInterruptionEnded;
@@ -91,6 +101,7 @@
 - (id)queue;
 - (void)resume;
 - (oneway void)rotateContentContainer:(long long)arg1 withCompletionHandler:(id /* block */)arg2;
+- (oneway void)setControlsStyle:(long long)arg1 animated:(bool)arg2 completionHandler:(id /* block */)arg3;
 - (void)setDelegate:(id)arg1;
 - (oneway void)setLoadedTimeRanges:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)setPictureInPicturePossible:(bool)arg1;
@@ -98,15 +109,18 @@
 - (oneway void)setPlaybackProgress:(id)arg1 completionHandler:(id /* block */)arg2;
 - (oneway void)setShouldShowAlternateActionButtonImage:(bool)arg1 completionHandler:(id /* block */)arg2;
 - (oneway void)setShouldShowLoadingIndicator:(bool)arg1 completionHandler:(id /* block */)arg2;
-- (oneway void)setupStartAnimated:(bool)arg1 hostedWindowHostingHandle:(id)arg2 preferredContentSize:(struct CGSize { double x1; double x2; })arg3 initialInterfaceOrientation:(long long)arg4 initialLayerFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg5 completionHandler:(id /* block */)arg6;
+- (oneway void)setupStartAnimated:(bool)arg1 hostedWindowHostingHandle:(id)arg2 sceneSessionPersistentIdentifier:(id)arg3 preferredContentSize:(struct CGSize { double x1; double x2; })arg4 initialInterfaceOrientation:(long long)arg5 initialLayerFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg6 completionHandler:(id /* block */)arg7;
 - (oneway void)setupStopAnimated:(bool)arg1 activateApplicationIfNeeded:(bool)arg2 completionHandler:(id /* block */)arg3;
 - (bool)shouldStartPictureInPictureEnteringBackground;
+- (id)sourceSceneSessionPersistentIdentifier;
 - (oneway void)startPictureInPictureAnimated:(bool)arg1 completionHandler:(id /* block */)arg2;
 - (void)startPictureInPictureEnteringBackgroundAnimated:(bool)arg1 withCompletionHandler:(id /* block */)arg2;
+- (void)stopPictureInPictureAnimated:(bool)arg1 withCompletionHandler:(id /* block */)arg2;
 - (oneway void)stopPictureInPictureAnimated:(bool)arg1 withFinalInterfaceOrientation:(long long)arg2 finalLayerFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3 completionHandler:(id /* block */)arg4;
 - (void)suspend;
 - (unsigned long long)transitioningState;
 - (oneway void)updateInitialLayerFrameForInteractiveTransitionAnimationUponBackgrounding:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 withCompletionHandler:(id /* block */)arg2;
 - (oneway void)updatePreferredContentSize:(struct CGSize { double x1; double x2; })arg1 withCompletionHandler:(id /* block */)arg2;
+- (oneway void)updateSourceSceneSessionPersistentIdentifierForInteractiveTransitionAnimationUponBackgrounding:(id)arg1 withCompletionHandler:(id /* block */)arg2;
 
 @end

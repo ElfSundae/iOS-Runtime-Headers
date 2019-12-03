@@ -8,6 +8,7 @@
     }  _EVOrganizationName;
     bool  _EVOrganizationNameIsValid;
     WKWebView * __webView;
+    bool  _exitRequested;
     struct CGRect { 
         struct CGPoint { 
             double x; 

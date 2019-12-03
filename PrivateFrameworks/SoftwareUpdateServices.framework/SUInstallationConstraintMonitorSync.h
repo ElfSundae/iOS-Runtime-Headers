@@ -12,6 +12,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void)_queue_initilizaSyncState;
 - (void)_queue_setSyncing:(bool)arg1;
 - (void)connection:(id)arg1 updatedProgress:(id)arg2;
 - (void)connectionWasInterrupted:(id)arg1;

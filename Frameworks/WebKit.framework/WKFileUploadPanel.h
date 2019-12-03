@@ -8,6 +8,9 @@
     struct RetainPtr<UIDocumentMenuViewController> { 
         void *m_ptr; 
     }  _documentMenuController;
+    struct RetainPtr<UIDocumentPickerViewController> { 
+        void *m_ptr; 
+    }  _documentPickerController;
     struct RetainPtr<UIImagePickerController> { 
         void *m_ptr; 
     }  _imagePicker;
@@ -41,13 +44,12 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_adjustMediaCaptureType;
-- (id)_cameraButtonLabel;
+- (id)_cameraButtonLabelAllowingPhoto:(bool)arg1 allowingVideo:(bool)arg2;
 - (void)_cancel;
 - (void)_chooseFiles:(id)arg1 displayString:(id)arg2 iconImage:(id)arg3;
 - (void)_configureImagePicker:(id)arg1;
 - (void)_dismissDisplayAnimated:(bool)arg1;
 - (void)_dispatchDidDismiss;
-- (id)_documentPickerMenuMediaTypes;
 - (id)_mediaTypesForPickerSourceType:(long long)arg1;
 - (id)_photoLibraryButtonLabel;
 - (void)_presentFullscreenViewController:(id)arg1 animated:(bool)arg2;
@@ -62,12 +64,13 @@
 - (void)_uploadItemForJPEGRepresentationOfImage:(id)arg1 successBlock:(id /* block */)arg2 failureBlock:(id /* block */)arg3;
 - (void)_uploadItemFromMediaInfo:(id)arg1 successBlock:(id /* block */)arg2 failureBlock:(id /* block */)arg3;
 - (bool)_willMultipleSelectionDelegateBeCalled;
+- (id)currentAvailableActionTitles;
 - (void)dealloc;
 - (id)delegate;
 - (void)dismiss;
 - (void)documentMenu:(id)arg1 didPickDocumentPicker:(id)arg2;
 - (void)documentMenuWasCancelled:(id)arg1;
-- (void)documentPicker:(id)arg1 didPickDocumentAtURL:(id)arg2;
+- (void)documentPicker:(id)arg1 didPickDocumentsAtURLs:(id)arg2;
 - (void)documentPickerWasCancelled:(id)arg1;
 - (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
 - (void)imagePickerController:(id)arg1 didFinishPickingMultipleMediaWithInfo:(id)arg2;
@@ -75,7 +78,7 @@
 - (id)initWithView:(id)arg1;
 - (bool)platformSupportsPickerViewController;
 - (void)popoverControllerDidDismissPopover:(id)arg1;
-- (void)presentWithParameters:(struct OpenPanelParameters { int (**x1)(); id x2; /* Warning: Unrecognized filer type: 'F' using 'void*' */ void*x3; int x4; long x5; void*x6; unsigned char x7; void*x8; out out short x9; void*x10; const unsigned short x11; void*x12; void*x13; void*x14; int x15; in void*x16; short x17; void*x18; bool x19; bool x20; struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16> { struct String {} *x_21_1_1; unsigned int x_21_1_2; unsigned int x_21_1_3; } x21; struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16> { struct String {} *x_22_1_1; unsigned int x_22_1_2; unsigned int x_22_1_3; } x22; struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16> { struct String {} *x_23_1_1; unsigned int x_23_1_2; unsigned int x_23_1_3; } x23; int x24; }*)arg1 resultListener:(struct WebOpenPanelResultListenerProxy { int (**x1)(); id x2; /* Warning: Unrecognized filer type: 'R' using 'void*' */ void*x3; void*x4; float x5; void*x6; void*x7; const void*x8; void*x9; void*x10; unsigned int x11/* : ? */; void*x12; int x13; void*x14; SEL x15; SEL x16; void*x17; void*x18; unsigned int x19/* : ? */; void*x20; void*x21; void*x22; void*x23; void*x24; const out void*x25; void*x26; void*x27; void*x28; void*x29; void*x30; void*x31; SEL x32; SEL x33; long doublex34; void*x35; void*x36; unsigned int x37/* : ? */; void*x38; void*x39; const void*x40; const void*x41; int x42; void*x43; short x44; void*x45; void*x46; void*x47; unsigned int x48/* : ? */; void*x49; int x50; void*x51; SEL x52; SEL x53; void*x54; void*x55; unsigned int x56/* : ? */; void*x57; void*x58; void*x59; void*x60; void*x61; const out void*x62; void*x63; void*x64; void*x65; void*x66; void*x67; struct WebPageProxy {} *x68; }*)arg2;
+- (void)presentWithParameters:(struct OpenPanelParameters { int (**x1)(); id x2; struct FileChooserSettings { bool x_3_1_1; bool x_3_1_2; struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16> { struct String {} *x_3_2_1; unsigned int x_3_2_2; unsigned int x_3_2_3; } x_3_1_3; struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16> { struct String {} *x_4_2_1; unsigned int x_4_2_2; unsigned int x_4_2_3; } x_3_1_4; struct Vector<WTF::String, 0, WTF::CrashOnOverflow, 16> { struct String {} *x_5_2_1; unsigned int x_5_2_2; unsigned int x_5_2_3; } x_3_1_5; int x_3_1_6; } x3; }*)arg1 resultListener:(struct WebOpenPanelResultListenerProxy { int (**x1)(); id x2; struct RefPtr<WebKit::WebPageProxy, WTF::DumbPtrTraits<WebKit::WebPageProxy> > { struct WebPageProxy {} *x_3_1_1; } x3; }*)arg2;
 - (void)setDelegate:(id)arg1;
 
 @end

@@ -5,9 +5,31 @@
 @interface GEORPMerchantLookupContext : PBCodable <NSCopying> {
     NSString * _correlationId;
     struct { 
-        unsigned int merchantIndustryCode : 1; 
-        unsigned int transactionTime : 1; 
-    }  _has;
+        unsigned int has_merchantIndustryCode : 1; 
+        unsigned int has_transactionTime : 1; 
+        unsigned int read_correlationId : 1; 
+        unsigned int read_merchantAdamId : 1; 
+        unsigned int read_merchantFormattedAddress : 1; 
+        unsigned int read_merchantId : 1; 
+        unsigned int read_merchantIndustryCategory : 1; 
+        unsigned int read_merchantName : 1; 
+        unsigned int read_merchantRawName : 1; 
+        unsigned int read_merchantUrl : 1; 
+        unsigned int read_transactionLocation : 1; 
+        unsigned int read_transactionType : 1; 
+        unsigned int wrote_correlationId : 1; 
+        unsigned int wrote_merchantAdamId : 1; 
+        unsigned int wrote_merchantFormattedAddress : 1; 
+        unsigned int wrote_merchantId : 1; 
+        unsigned int wrote_merchantIndustryCategory : 1; 
+        unsigned int wrote_merchantIndustryCode : 1; 
+        unsigned int wrote_merchantName : 1; 
+        unsigned int wrote_merchantRawName : 1; 
+        unsigned int wrote_merchantUrl : 1; 
+        unsigned int wrote_transactionLocation : 1; 
+        unsigned int wrote_transactionTime : 1; 
+        unsigned int wrote_transactionType : 1; 
+    }  _flags;
     NSString * _merchantAdamId;
     NSString * _merchantFormattedAddress;
     GEOPDMapsIdentifier * _merchantId;
@@ -16,6 +38,12 @@
     NSString * _merchantName;
     NSString * _merchantRawName;
     NSString * _merchantUrl;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     GEOLocation * _transactionLocation;
     double  _transactionTime;
     NSString * _transactionType;
@@ -46,7 +74,19 @@
 @property (nonatomic) double transactionTime;
 @property (nonatomic, retain) NSString *transactionType;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_readCorrelationId;
+- (void)_readMerchantAdamId;
+- (void)_readMerchantFormattedAddress;
+- (void)_readMerchantId;
+- (void)_readMerchantIndustryCategory;
+- (void)_readMerchantName;
+- (void)_readMerchantRawName;
+- (void)_readMerchantUrl;
+- (void)_readTransactionLocation;
+- (void)_readTransactionType;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)correlationId;
@@ -65,6 +105,8 @@
 - (bool)hasTransactionTime;
 - (bool)hasTransactionType;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)merchantAdamId;
 - (id)merchantFormattedAddress;
@@ -75,6 +117,7 @@
 - (id)merchantRawName;
 - (id)merchantUrl;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setCorrelationId:(id)arg1;
 - (void)setHasMerchantIndustryCode:(bool)arg1;

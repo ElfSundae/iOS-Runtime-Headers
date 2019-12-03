@@ -74,7 +74,6 @@
 - (void)canvasWillScroll;
 - (void)canvasWillZoom;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })caretRectForPosition:(id)arg1;
-- (void)changeFirstResponderIfNecessary;
 - (id)characterRangeAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (id)characterRangeByExtendingPosition:(id)arg1 inDirection:(long long)arg2;
 - (void)clearEditorAndResignFirstResponder;
@@ -108,6 +107,7 @@
 - (bool)isResigning;
 - (bool)isSecureTextEntry;
 - (id)keyCommands;
+- (long long)keyboardType;
 - (void)makeTextWritingDirectionLeftToRight:(id)arg1;
 - (void)makeTextWritingDirectionRightToLeft:(id)arg1;
 - (id)markedTextRange;

@@ -3,14 +3,14 @@
  */
 
 @interface NFFieldNotificationECP2_0 : NFFieldNotification {
-    unsigned char  _odaRequired;
+    bool  _odaRequired;
     NSData * _openLoopSchemeBitfield;
     NSArray * _tciArray;
     unsigned char  _terminalSubType;
     unsigned long long  _terminalType;
 }
 
-@property (readonly) unsigned char odaRequired;
+@property (readonly) bool odaRequired;
 @property (readonly, retain) NSData *openLoopSchemeBitfield;
 @property (readonly, retain) NSArray *tciArray;
 @property (readonly) unsigned char terminalSubType;
@@ -23,7 +23,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
-- (unsigned char)odaRequired;
+- (bool)odaRequired;
 - (id)openLoopSchemeBitfield;
 - (id)tciArray;
 - (unsigned char)terminalSubType;

@@ -24,7 +24,7 @@
     UIImageView * _previewImageView;
     NSArray * _previewImageViewConstraints;
     double  _videoAppearanceCrossfadeDuration;
-    _PXVideoView * _videoView;
+    PXVideoView * _videoView;
     NSArray * _videoViewConstraints;
     long long  _videoViewContentMode;
     id /* block */  _visibilityChangeCompletionHandler;

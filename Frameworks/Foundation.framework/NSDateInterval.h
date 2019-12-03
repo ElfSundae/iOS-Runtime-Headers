@@ -2,12 +2,16 @@
    Image: /System/Library/Frameworks/Foundation.framework/Foundation
  */
 
-@interface NSDateInterval : NSObject <NSCopying, NSSecureCoding>
+@interface NSDateInterval : NSObject <NSCopying, NSSecureCoding, WDDataListDataObjectSource>
 
 @property (nonatomic, readonly) bool crk_containsCurrentDate;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly) double duration;
 @property (readonly, copy) NSDate *endDate;
+@property (readonly) unsigned long long hash;
 @property (readonly, copy) NSDate *startDate;
+@property (readonly) Class superclass;
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
@@ -35,11 +39,18 @@
 // Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
 
 + (id)hk_dateIntervalForDayFromDate:(id)arg1 calendar:(id)arg2;
++ (id)hk_dateIntervalWithAnchor:(id)arg1 startOffset:(double)arg2 endOffset:(double)arg3;
 + (id)hk_dateIntervalWithStart:(double)arg1 end:(double)arg2;
++ (id)hk_instantaneousDateIntervalWithDate:(id)arg1;
 
 - (bool)hk_containsTime:(double)arg1;
 - (bool)hk_intersectsDateIntervalWithStartDate:(id)arg1 endDate:(id)arg2;
-- (id)hk_midDate;
+- (id)hk_prettyString;
+
+// Image: /System/Library/Frameworks/SensorKit.framework/SensorKit
+
++ (id)srDateIntervalWithDate:(id)arg1 fuzzTimeInterval:(double)arg2;
++ (id)srDateIntervalWithDate:(id)arg1 roundDownToNearest:(double)arg2 duration:(double)arg3;
 
 // Image: /System/Library/PrivateFrameworks/ClassroomKit.framework/ClassroomKit
 
@@ -51,15 +62,25 @@
 + (id)dnds_dateIntervalForScheduleSettings:(id)arg1 date:(id)arg2 calendar:(id)arg3;
 + (id)dnds_dateIntervalUntilEndOfScheduleForScheduleSettings:(id)arg1 startDate:(id)arg2 calendar:(id)arg3;
 
+- (unsigned long long)dnds_lifetimePhaseForDate:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/HealthToolbox.framework/HealthToolbox
+
+- (id)device;
+- (id)source;
+
 // Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
 
 + (id)hk_dateIntervalWithValueRange:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/Home.framework/Home
+
+- (unsigned long long)hf_searchResultForDate:(id)arg1;
+
 // Image: /System/Library/PrivateFrameworks/MobileTimer.framework/MobileTimer
 
-+ (id)_mt_dateIntervalFromPropertyList:(id)arg1;
++ (id)mtDateIntervalWithEndDate:(id)arg1 duration:(double)arg2;
 
-- (id)_mt_propertyList;
 - (bool)mtContainsDate:(id)arg1;
 
 @end

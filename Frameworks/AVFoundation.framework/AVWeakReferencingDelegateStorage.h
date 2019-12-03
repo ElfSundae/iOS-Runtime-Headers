@@ -23,10 +23,10 @@
 - (void)dealloc;
 - (id)delegate;
 - (id)delegateQueue;
-- (void)finalize;
 - (void)getRetainedDelegate:(id*)arg1 retainedDelegateQueue:(id*)arg2;
 - (id)init;
 - (void)invokeDelegateCallbackWithBlock:(id /* block */)arg1;
+- (void)invokeDelegateCallbackWithBlock:(id /* block */)arg1 synchronouslyIfDelegateQueueIsQueue:(id)arg2;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 
 @end

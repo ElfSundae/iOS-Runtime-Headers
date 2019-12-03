@@ -13,9 +13,12 @@
 @property (nonatomic, readonly) unsigned long long photoSizeFiltersCount;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (void)addPhotoSizeFilter:(struct GEOPDPhotoSizeFilterValue { unsigned int x1; unsigned int x2; struct { unsigned int x_3_1_1 : 1; unsigned int x_3_1_2 : 1; } x3; })arg1;
 - (void)clearPhotoSizeFilters;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -27,6 +30,7 @@
 - (struct GEOPDPhotoSizeFilterValue { unsigned int x1; unsigned int x2; struct { unsigned int x_3_1_1 : 1; unsigned int x_3_1_2 : 1; } x3; })photoSizeFilterAtIndex:(unsigned long long)arg1;
 - (struct GEOPDPhotoSizeFilterValue { unsigned int x1; unsigned int x2; struct { unsigned int x_3_1_1 : 1; unsigned int x_3_1_2 : 1; } x3; }*)photoSizeFilters;
 - (unsigned long long)photoSizeFiltersCount;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setPhotoSizeFilters:(struct GEOPDPhotoSizeFilterValue { unsigned int x1; unsigned int x2; struct { unsigned int x_3_1_1 : 1; unsigned int x_3_1_2 : 1; } x3; }*)arg1 count:(unsigned long long)arg2;
 - (id)unknownFields;

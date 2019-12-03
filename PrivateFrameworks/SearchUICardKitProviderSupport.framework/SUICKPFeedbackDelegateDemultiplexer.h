@@ -32,6 +32,7 @@
 - (id)feedbackDelegatesByCardSectionViewIds;
 - (id)init;
 - (void)presentViewController:(id)arg1;
+- (void)presentViewControllerForCard:(id)arg1 animate:(bool)arg2;
 - (void)reportFeedback:(id)arg1 queryId:(long long)arg2;
 - (void)sendCustomFeedback:(id)arg1;
 - (void)setDefaultDelegate:(id)arg1;

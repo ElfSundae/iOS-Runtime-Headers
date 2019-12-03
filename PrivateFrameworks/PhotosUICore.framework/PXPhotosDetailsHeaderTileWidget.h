@@ -98,6 +98,7 @@
 @property (nonatomic, readonly) NSString *localizedSubtitle;
 @property (nonatomic, readonly) NSString *localizedTitle;
 @property (nonatomic, retain) PXOneUpPresentation *oneUpPresentation;
+@property (nonatomic, readonly) <PXDisplayAsset> *presentedKeyAsset;
 @property (getter=isSelecting, nonatomic) bool selecting;
 @property (nonatomic, readonly) PXSectionedSelectionManager *selectionManager;
 @property (nonatomic, retain) PXWidgetSpec *spec;
@@ -131,7 +132,6 @@
 - (bool)_isPreventingSlideshowNextStep;
 - (bool)_isSlideShowReadyToStart;
 - (bool)_isSlideshowTileCheckedOut;
-- (id)_keyAsset;
 - (id)_keyAssetsFetchResult;
 - (void)_loadBasicContent;
 - (id)_loadCoordinationToken;
@@ -206,9 +206,9 @@
 - (bool)hasLoadedContentData;
 - (id)init;
 - (bool)isUserInteractionEnabled;
+- (id)keyAsset;
 - (void)loadContentData;
 - (id)localizedTitle;
-- (bool)movieProvider:(id)arg1 navigateToMemory:(id)arg2;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void*)arg3;
 - (void)photosDataSource:(id)arg1 didChange:(id)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })photosDetailsHeaderTileLayout:(id)arg1 contentsRectForAspectRatio:(double)arg2;
@@ -217,6 +217,8 @@
 - (void)ppt_navigateToMovieWithCompletionHandler:(id /* block */)arg1;
 - (double)preferredContentHeightForWidth:(double)arg1;
 - (void)preloadWithSourceRegionOfInterest:(id)arg1 forContext:(id)arg2;
+- (id)presentedKeyAsset;
+- (id)presentingViewControllerForMovieProvider:(id)arg1;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint { double x1; double x2; })arg1 inCoordinateSpace:(id)arg2;
 - (id)regionOfInterestForContext:(id)arg1;
 - (void)scrollViewControllerDidEndScrolling:(id)arg1;

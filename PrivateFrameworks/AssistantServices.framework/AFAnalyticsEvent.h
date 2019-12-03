@@ -16,6 +16,7 @@
 @property (nonatomic, readonly) unsigned long long timestamp;
 @property (nonatomic, readonly) long long type;
 
++ (id)eventsReferenceTime;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -24,6 +25,7 @@
 - (id)contextDataAsProtobuf;
 - (long long)contextDataType;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)dateStamp;
 - (unsigned long long)deliveryStream;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

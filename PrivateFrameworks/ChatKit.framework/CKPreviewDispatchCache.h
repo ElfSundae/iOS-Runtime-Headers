@@ -13,6 +13,7 @@
 + (void)_invalidateStickerPreviewCache;
 + (id)detailsPreviewCache;
 + (id)mapThumbnailQueue;
++ (id)previewPrewarmQueue;
 + (id)snapshotCache;
 + (id)stickerPreviewCache;
 + (id)transcriptPreviewCache;

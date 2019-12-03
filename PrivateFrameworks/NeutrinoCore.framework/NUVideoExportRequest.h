@@ -3,19 +3,24 @@
  */
 
 @interface NUVideoExportRequest : NUExportRequest {
+    double  _bitRateMultiplicationFactor;
     NUColorSpace * _cachedColorSpace;
     NSArray * _metadata;
     NSDictionary * _outputSettings;
+    NSProgress * _progress;
     bool  _requiresVideoComposition;
 }
 
+@property (nonatomic) double bitRateMultiplicationFactor;
 @property (retain) NUColorSpace *cachedColorSpace;
 @property (readonly) NUColorSpace *colorSpace;
 @property (copy) NSArray *metadata;
 @property (copy) NSDictionary *outputSettings;
+@property (retain) NSProgress *progress;
 @property (nonatomic) bool requiresVideoComposition;
 
 - (void).cxx_destruct;
+- (double)bitRateMultiplicationFactor;
 - (id)cachedColorSpace;
 - (id)colorSpace;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -24,11 +29,15 @@
 - (id)metadata;
 - (id)newRenderJob;
 - (id)outputSettings;
+- (id)progress;
 - (bool)requiresVideoComposition;
+- (void)setBitRateMultiplicationFactor:(double)arg1;
 - (void)setCachedColorSpace:(id)arg1;
 - (void)setMetadata:(id)arg1;
 - (void)setOutputSettings:(id)arg1;
+- (void)setProgress:(id)arg1;
 - (void)setRequiresVideoComposition:(bool)arg1;
 - (void)submit:(id /* block */)arg1;
+- (void)submitWithProgress:(id)arg1 completion:(id /* block */)arg2;
 
 @end

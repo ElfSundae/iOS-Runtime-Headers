@@ -3,7 +3,7 @@
  */
 
 @interface GEOETARequester : NSObject {
-    NSObject<OS_dispatch_queue> * _isolationQueue;
+    geo_isolater * _isolater;
     NSMapTable * _pendingRequests;
     NSHashTable * _pendingSimpleRequests;
 }
@@ -11,12 +11,14 @@
 + (id)sharedRequester;
 
 - (void).cxx_destruct;
+- (bool)_finishRequest:(id)arg1;
+- (bool)_finishSimpleRequest:(id)arg1;
 - (void)cancelRequest:(id)arg1;
 - (void)cancelSimpleETARequest:(id)arg1;
 - (void)dealloc;
 - (id)init;
-- (void)startRequest:(id)arg1 connectionProperties:(id)arg2 auditToken:(id)arg3 requestMode:(int)arg4 willSendRequest:(id /* block */)arg5 finished:(id /* block */)arg6 networkActivity:(id /* block */)arg7 error:(id /* block */)arg8;
-- (void)startSimpleETARequest:(id)arg1 auditToken:(id)arg2 requestMode:(int)arg3 finished:(id /* block */)arg4 networkActivity:(id /* block */)arg5 error:(id /* block */)arg6;
-- (void)updateRequest:(id)arg1 finished:(id /* block */)arg2 networkActivity:(id /* block */)arg3 error:(id /* block */)arg4;
+- (void)startRequest:(id)arg1 connectionProperties:(id)arg2 auditToken:(id)arg3 throttleToken:(id)arg4 callbackQueue:(id)arg5 willSendRequest:(id /* block */)arg6 finished:(id /* block */)arg7 networkActivity:(id /* block */)arg8 error:(id /* block */)arg9;
+- (void)startSimpleETARequest:(id)arg1 auditToken:(id)arg2 throttleToken:(id)arg3 callbackQueue:(id)arg4 finished:(id /* block */)arg5 networkActivity:(id /* block */)arg6 error:(id /* block */)arg7;
+- (void)updateRequest:(id)arg1 callbackQueue:(id)arg2 finished:(id /* block */)arg3 networkActivity:(id /* block */)arg4 error:(id /* block */)arg5;
 
 @end

@@ -12,6 +12,7 @@
 - (void)_updateForCurrentSizeCategory;
 - (id)heightConstraint;
 - (void)setHeightConstraint:(id)arg1;
+- (void)setTitle:(id)arg1 forState:(unsigned long long)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 
 @end

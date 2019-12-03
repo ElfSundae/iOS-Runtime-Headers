@@ -3,9 +3,10 @@
  */
 
 @interface ConversationKit.ParticipantGridView : UIView {
-    void currentlyFocusedParticipantIdentifier;
+    union { in /* Warning: Unrecognized filer type: 'u' using 'void*' */ void*x1; long x2; long x3; }  currentlyFocusedParticipantIdentifier;
     void delegate;
     void mostRecentAnimationIndex;
+    void organicLayoutConfiguration;
     void participantViews;
     void unfocusedParticipantOverlay;
 }

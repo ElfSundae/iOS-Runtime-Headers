@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/FileProvider.framework/FileProvider
  */
 
-@interface FPXServiceEndpointFactory : NSObject <_NSFileProviderServiceEndpointCreating> {
+@interface FPXServiceEndpointFactory : NSObject <NSFileProviderServiceEndpointCreating> {
     FPXDomainContext * _domainContext;
     NSDictionary * _serviceSources;
 }

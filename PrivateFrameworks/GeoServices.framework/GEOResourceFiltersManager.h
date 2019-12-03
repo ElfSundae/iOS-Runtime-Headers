@@ -6,7 +6,9 @@
     GEOActiveResourceFilters * _activeFilters;
     GEOResourceManifestConfiguration * _configuration;
     <GEOResourceFiltersManagerDelegate> * _delegate;
-    NSLock * _lock;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _lock;
 }
 
 @property (nonatomic, readonly) NSSet *activeScales;

@@ -10,6 +10,7 @@
         unsigned int _os_unfair_lock_opaque; 
     }  _lock;
     NSMutableArray * _results;
+    CLSSearchSpecification * _searchSpec;
     bool  _shouldAddResultsToDataStore;
     bool  _shouldFaultResults;
     NSDate * _startDate;
@@ -22,6 +23,7 @@
 @property (getter=isExecuting) bool executing;
 @property (nonatomic) long long fetchLimit;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) CLSSearchSpecification *searchSpec;
 @property (nonatomic) bool shouldAddResultsToDataStore;
 @property (nonatomic) bool shouldFaultResults;
 @property (retain) NSDate *startDate;
@@ -30,6 +32,7 @@
 
 + (id)queryWithObjectType:(Class)arg1 predicate:(id)arg2;
 + (id)queryWithObjectType:(Class)arg1 predicate:(id)arg2 error:(id*)arg3;
++ (id)queryWithSearchSpecification:(id)arg1;
 
 - (void).cxx_destruct;
 - (void)_faultResultsAndComplete;
@@ -42,9 +45,11 @@
 - (id)description;
 - (long long)fetchLimit;
 - (id)initWithObjectType:(Class)arg1 predicate:(id)arg2 sortDescriptors:(id)arg3 error:(id*)arg4;
+- (id)initWithSearchSpecification:(id)arg1 error:(id*)arg2;
 - (bool)isExecuting;
 - (void)lock;
 - (void)reset;
+- (id)searchSpec;
 - (void)setCompletion:(id /* block */)arg1;
 - (void)setExecuting:(bool)arg1;
 - (void)setFetchLimit:(long long)arg1;

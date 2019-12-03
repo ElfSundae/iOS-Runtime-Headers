@@ -13,6 +13,7 @@
 - (void)finishAggregationWithDate:(NSDate *)arg1;
 - (void)generateError:(NSError *)arg1;
 - (void)generateEvent:(_HKWorkoutEvent *)arg1;
+- (void)generateMetadata:(NSDictionary *)arg1;
 - (bool)pauseWithError:(id*)arg1;
 - (bool)prepareWithError:(id*)arg1;
 - (bool)resumeWithError:(id*)arg1;

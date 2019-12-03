@@ -120,6 +120,7 @@
 - (void)dismissBackOfPassIfNecessaryForUniqueID:(id)arg1;
 - (unsigned long long)displayIndex;
 - (void)endPinningFrontFaceContentMode;
+- (void)faceFrameDidChangeForPassView:(id)arg1;
 - (id)frontmostPassView;
 - (bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
@@ -146,18 +147,15 @@
 - (void)passView:(id)arg1 deleteButtonPressedForPass:(id)arg2;
 - (void)passView:(id)arg1 didPresentPassDetailsViewController:(id)arg2;
 - (void)passView:(id)arg1 willPresentPassDetailsViewController:(id)arg2;
-- (bool)passViewCanShowBarcode:(id)arg1;
 - (id)passViewForIndex:(unsigned long long)arg1;
 - (id)passViewQueue;
 - (void)passViewTapped:(id)arg1;
-- (void)passViewUpdateBarcodeVisibility:(id)arg1 animated:(bool)arg2;
 - (void)presentDiff:(id)arg1 completion:(id /* block */)arg2;
 - (void)presentPassWithUniqueID:(id)arg1;
 - (void)presentPassWithUniqueID:(id)arg1 withContext:(id)arg2;
 - (long long)presentationState;
 - (id)pressGestureRecognizer;
 - (void)removeFromSuperview;
-- (void)resizePassViewForPass:(id)arg1 animated:(bool)arg2;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(bool)arg2;
 - (void)scrollViewDidEndScrollingAnimation:(id)arg1;

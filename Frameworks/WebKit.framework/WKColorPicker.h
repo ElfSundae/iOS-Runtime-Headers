@@ -18,7 +18,7 @@
     struct RetainPtr<WKColorMatrixView> { 
         void *m_ptr; 
     }  _mainColorMatrix;
-    /* Warning: unhandled struct encoding: '{WeakObjCPtr<WKColorButton>="m_weakReference"@}' */ struct WeakObjCPtr<WKColorButton> { 
+    struct WeakObjCPtr<WKColorButton> { 
         id m_weakReference; 
     }  _selectedColorButton;
     struct RetainPtr<WKColorMatrixView> { 

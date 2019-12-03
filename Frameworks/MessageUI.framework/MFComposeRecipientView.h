@@ -12,7 +12,6 @@
     MFCorecipientsIndicatorAtom * _corecipientsIndicatorAtom;
     unsigned long long  _defaultAtomPresentationOptions;
     NSTimer * _delayTimer;
-    <MFComposeRecipientViewDelegate> * _delegate;
     bool  _deselectOnNextKeyboardInput;
     bool  _didIgnoreFirstResponderResign;
     long long  _dragSourceOriginalIndex;
@@ -39,8 +38,9 @@
 @property (nonatomic, readonly) UIView *addButton;
 @property (nonatomic, copy) NSArray *addresses;
 @property (nonatomic) bool allowsDragAndDrop;
+@property (nonatomic, retain) NSMutableDictionary *atoms;
 @property (nonatomic, retain) UIFont *baseFont;
-@property (nonatomic, readonly) MFCorecipientsIndicatorAtom *corecipientsIndicator;
+@property (nonatomic, retain) MFCorecipientsIndicatorAtom *corecipientsIndicator;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) unsigned long long defaultAtomPresentationOptions;
 @property (nonatomic) <MFComposeRecipientViewDelegate> *delegate;
@@ -61,6 +61,7 @@
 @property (nonatomic, readonly) NSString *text;
 @property (nonatomic, readonly) UITextField *textField;
 
+- (void).cxx_destruct;
 - (void)_addRecord:(void*)arg1 identifier:(int)arg2;
 - (void)_addUncommentedAddress:(id)arg1;
 - (bool)_addable;
@@ -87,6 +88,7 @@
 - (void)addRecord:(void*)arg1 property:(int)arg2 identifier:(int)arg3;
 - (id)addresses;
 - (bool)allowsDragAndDrop;
+- (id)atoms;
 - (id)baseFont;
 - (bool)becomeFirstResponder;
 - (void)clearAllAddressAtomPresentationOptions;
@@ -136,9 +138,10 @@
 - (void)setAddressAtomPresentationOptions:(unsigned long long)arg1 forRecipient:(id)arg2;
 - (void)setAddresses:(id)arg1;
 - (void)setAllowsDragAndDrop:(bool)arg1;
+- (void)setAtoms:(id)arg1;
 - (void)setBaseFont:(id)arg1;
+- (void)setCorecipientsIndicator:(id)arg1;
 - (void)setDefaultAtomPresentationOptions:(unsigned long long)arg1;
-- (void)setDelegate:(id)arg1;
 - (void)setDidIgnoreFirstResponderResign:(bool)arg1;
 - (void)setEditable:(bool)arg1;
 - (void)setExpanded:(bool)arg1;

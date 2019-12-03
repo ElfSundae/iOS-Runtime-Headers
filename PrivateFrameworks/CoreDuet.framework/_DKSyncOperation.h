@@ -3,7 +3,7 @@
  */
 
 @interface _DKSyncOperation : NSOperation {
-    unsigned char  _state;
+    _Atomic unsigned char  _state;
 }
 
 + (bool)_removesDependenciesAfterFinish;

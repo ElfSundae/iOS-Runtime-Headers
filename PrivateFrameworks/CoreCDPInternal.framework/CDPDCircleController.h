@@ -5,8 +5,11 @@
 @interface CDPDCircleController : NSObject {
     CDPDCircleStateObserver * _circleJoinObserver;
     <CDPDCircleProxy> * _circleProxy;
+    unsigned long long  _cliqueStatusRetryCount;
     NSObject<CDPDCircleDelegate> * _delegate;
     NSObject<OS_dispatch_queue> * _requestSynchronizationQueue;
+    NSArray * _retryIntervals;
+    NSObject<OS_dispatch_queue> * _retryQueue;
     <CDPStateUIProviderInternal> * _uiProvider;
 }
 
@@ -24,15 +27,16 @@
 - (void)_requestToJoinWithObserver:(id)arg1 completion:(id /* block */)arg2;
 - (void)_requestToJoinWithRequestBlock:(id /* block */)arg1 completion:(id /* block */)arg2;
 - (void)applyToJoinCircleWithJoinHandler:(id /* block */)arg1;
+- (bool)canRetryCliqueStatus;
 - (void)cancelApplicationToJoinCircle;
 - (id)circleProxy;
-- (int)circleStatus;
+- (unsigned long long)circleStatus;
 - (void)dealloc;
 - (id)delegate;
 - (id)initWithUiProvider:(id)arg1 delegate:(id)arg2 circleProxy:(id)arg3;
-- (void)joinCircleAfterRecoveryWithCompletion:(id /* block */)arg1;
 - (void)joinCircleIgnoringBackups:(bool)arg1 completion:(id /* block */)arg2;
 - (void)joinCircleWithCompletion:(id /* block */)arg1;
+- (long long)nextRetryInterval;
 - (id)peerID;
 - (void)prepareCircleStateForRecovery;
 - (void)promptForCredentials:(id /* block */)arg1;

@@ -4,21 +4,21 @@
 
 @interface PXCMMPhotoKitPersonSuggestion : NSObject <PXCMMPersonSuggestion> {
     PXRecipientTransport * _bestTransport;
-    NSString * _displayName;
     CNContact * _fetchQueue_linkedContact;
     PHFetchResult * _keyAssetFetchResult;
     PHFetchResult * _keyFaceFetchResult;
+    NSString * _localizedName;
     PHPerson * _person;
 }
 
 @property (nonatomic, retain) PXRecipientTransport *bestTransport;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, readonly) NSString *displayName;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) PHFetchResult *keyAssetFetchResult;
 @property (nonatomic, readonly) PHFetchResult *keyFaceFetchResult;
 @property (nonatomic, readonly) CNContact *linkedContact;
+@property (nonatomic, readonly) NSString *localizedName;
 @property (nonatomic, readonly) PHPerson *person;
 @property (readonly) Class superclass;
 
@@ -33,7 +33,6 @@
 - (id)bestTransport;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
-- (id)displayName;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithPerson:(id)arg1 keyFaceFetchResult:(id)arg2 keyAssetFetchResult:(id)arg3;
@@ -41,6 +40,7 @@
 - (id)keyAssetFetchResult;
 - (id)keyFaceFetchResult;
 - (id)linkedContact;
+- (id)localizedName;
 - (bool)matchesRecipientInRecipients:(id)arg1;
 - (id)person;
 - (id)personSuggestionUpdatedKeyAssetFetchResult:(id)arg1;

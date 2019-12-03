@@ -3,9 +3,11 @@
  */
 
 @interface ARImageDetectionTechnique : ARImageBasedTechnique {
+    ARWorldTrackingPoseData * _currentWorldTrackingPose;
     NSObject<OS_dispatch_semaphore> * _dataSemaphore;
     NSObject<OS_dispatch_semaphore> * _detectionSemaphore;
     bool  _deterministicMode;
+    bool  _enableAutomaticImageScaleEstimation;
     bool  _finishedLoadingImages;
     NSObject<OS_dispatch_semaphore> * _loadingSemaphore;
     bool  _needsWorldTrackingPoseData;
@@ -21,6 +23,8 @@
     bool  _tracking;
 }
 
+@property (retain) ARWorldTrackingPoseData *currentWorldTrackingPose;
+@property (nonatomic) bool enableAutomaticImageScaleEstimation;
 @property (nonatomic, readonly) bool finishedLoadingImages;
 @property (readonly) ARODTHandleManager *odtTHandleManger;
 @property (readonly) NSDictionary *referenceImageMap;
@@ -35,7 +39,9 @@
 - (void)_loadReferenceImages;
 - (id)_trackImagesWithImageData:(id)arg1 timeBudget:(double)arg2;
 - (long long)captureBehavior;
+- (id)currentWorldTrackingPose;
 - (bool)deterministicMode;
+- (bool)enableAutomaticImageScaleEstimation;
 - (bool)finishedLoadingImages;
 - (id)initWithReferenceImages:(id)arg1;
 - (id)initWithReferenceImages:(id)arg1 maximumNumberOfTrackedImages:(long long)arg2;
@@ -43,12 +49,18 @@
 - (id)initWithReferenceImages:(id)arg1 maximumNumberOfTrackedImages:(long long)arg2 processingQueue:(id)arg3;
 - (bool)isEqual:(id)arg1;
 - (id)odtTHandleManger;
+- (id)predictAtTimeStamp:(double)arg1 timeBudget:(double)arg2 predictedWorldTrackingPose:(id)arg3;
 - (void)prepare;
 - (id)processData:(id)arg1;
 - (id)processResultData:(id)arg1 timestamp:(double)arg2 context:(id)arg3;
 - (id)referenceImageMap;
 - (unsigned long long)requiredSensorDataTypes;
 - (double)requiredTimeInterval;
+- (void)setCurrentWorldTrackingPose:(id)arg1;
+- (void)setEnableAutomaticImageScaleEstimation:(bool)arg1;
+- (void)setPowerUsage:(unsigned long long)arg1;
 - (bool)syncWithProcessedImage;
+- (void)updateARPresentationMode:(long long)arg1;
+- (void)updateDevicePerformanceLevel:(id)arg1;
 
 @end

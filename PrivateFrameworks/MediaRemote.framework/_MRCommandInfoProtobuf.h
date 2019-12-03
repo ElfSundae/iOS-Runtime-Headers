@@ -6,6 +6,7 @@
     bool  _active;
     int  _canScrub;
     int  _command;
+    NSMutableArray * _currentPlaybackSessionTypes;
     bool  _enabled;
     struct { 
         unsigned int canScrub : 1; 
@@ -29,6 +30,7 @@
     float  _maximumRating;
     float  _minimumRating;
     int  _numAvailableSkips;
+    NSString * _playbackSessionIdentifier;
     struct { 
         double *list; 
         unsigned long long count; 
@@ -51,6 +53,7 @@
         unsigned long long count; 
         unsigned long long size; 
     }  _supportedPlaybackQueueTypes;
+    NSMutableArray * _supportedPlaybackSessionTypes;
     struct { 
         float *list; 
         unsigned long long count; 
@@ -63,6 +66,7 @@
 @property (nonatomic) bool active;
 @property (nonatomic) int canScrub;
 @property (nonatomic) int command;
+@property (nonatomic, retain) NSMutableArray *currentPlaybackSessionTypes;
 @property (nonatomic) bool enabled;
 @property (nonatomic) bool hasActive;
 @property (nonatomic) bool hasCanScrub;
@@ -73,6 +77,7 @@
 @property (nonatomic) bool hasMaximumRating;
 @property (nonatomic) bool hasMinimumRating;
 @property (nonatomic) bool hasNumAvailableSkips;
+@property (nonatomic, readonly) bool hasPlaybackSessionIdentifier;
 @property (nonatomic) bool hasPreferredPlaybackRate;
 @property (nonatomic) bool hasPresentationStyle;
 @property (nonatomic) bool hasRepeatMode;
@@ -86,6 +91,7 @@
 @property (nonatomic) float maximumRating;
 @property (nonatomic) float minimumRating;
 @property (nonatomic) int numAvailableSkips;
+@property (nonatomic, retain) NSString *playbackSessionIdentifier;
 @property (nonatomic, readonly) double*preferredIntervals;
 @property (nonatomic, readonly) unsigned long long preferredIntervalsCount;
 @property (nonatomic) float preferredPlaybackRate;
@@ -99,33 +105,43 @@
 @property (nonatomic, readonly) unsigned long long supportedInsertionPositionsCount;
 @property (nonatomic, readonly) int*supportedPlaybackQueueTypes;
 @property (nonatomic, readonly) unsigned long long supportedPlaybackQueueTypesCount;
+@property (nonatomic, retain) NSMutableArray *supportedPlaybackSessionTypes;
 @property (nonatomic, readonly) float*supportedRates;
 @property (nonatomic, readonly) unsigned long long supportedRatesCount;
 @property (nonatomic) bool supportsSharedQueue;
 @property (nonatomic) int upNextItemCount;
 
++ (Class)currentPlaybackSessionTypesType;
 + (Class)supportedCustomQueueIdentifierType;
++ (Class)supportedPlaybackSessionTypesType;
 
 - (void).cxx_destruct;
 - (int)StringAsCommand:(id)arg1;
 - (int)StringAsRepeatMode:(id)arg1;
 - (int)StringAsShuffleMode:(id)arg1;
 - (bool)active;
+- (void)addCurrentPlaybackSessionTypes:(id)arg1;
 - (void)addPreferredInterval:(double)arg1;
 - (void)addSupportedCustomQueueIdentifier:(id)arg1;
 - (void)addSupportedInsertionPositions:(int)arg1;
-- (void)addSupportedPlaybackQueueType:(int)arg1;
+- (void)addSupportedPlaybackQueueTypes:(int)arg1;
+- (void)addSupportedPlaybackSessionTypes:(id)arg1;
 - (void)addSupportedRate:(float)arg1;
 - (int)canScrub;
+- (void)clearCurrentPlaybackSessionTypes;
 - (void)clearPreferredIntervals;
 - (void)clearSupportedCustomQueueIdentifiers;
 - (void)clearSupportedInsertionPositions;
 - (void)clearSupportedPlaybackQueueTypes;
+- (void)clearSupportedPlaybackSessionTypes;
 - (void)clearSupportedRates;
 - (int)command;
 - (id)commandAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)currentPlaybackSessionTypes;
+- (id)currentPlaybackSessionTypesAtIndex:(unsigned long long)arg1;
+- (unsigned long long)currentPlaybackSessionTypesCount;
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
@@ -139,6 +155,7 @@
 - (bool)hasMaximumRating;
 - (bool)hasMinimumRating;
 - (bool)hasNumAvailableSkips;
+- (bool)hasPlaybackSessionIdentifier;
 - (bool)hasPreferredPlaybackRate;
 - (bool)hasPresentationStyle;
 - (bool)hasRepeatMode;
@@ -155,6 +172,7 @@
 - (void)mergeFrom:(id)arg1;
 - (float)minimumRating;
 - (int)numAvailableSkips;
+- (id)playbackSessionIdentifier;
 - (double)preferredIntervalAtIndex:(unsigned long long)arg1;
 - (double*)preferredIntervals;
 - (unsigned long long)preferredIntervalsCount;
@@ -166,6 +184,7 @@
 - (void)setActive:(bool)arg1;
 - (void)setCanScrub:(int)arg1;
 - (void)setCommand:(int)arg1;
+- (void)setCurrentPlaybackSessionTypes:(id)arg1;
 - (void)setEnabled:(bool)arg1;
 - (void)setHasActive:(bool)arg1;
 - (void)setHasCanScrub:(bool)arg1;
@@ -187,6 +206,7 @@
 - (void)setMaximumRating:(float)arg1;
 - (void)setMinimumRating:(float)arg1;
 - (void)setNumAvailableSkips:(int)arg1;
+- (void)setPlaybackSessionIdentifier:(id)arg1;
 - (void)setPreferredIntervals:(double*)arg1 count:(unsigned long long)arg2;
 - (void)setPreferredPlaybackRate:(float)arg1;
 - (void)setPresentationStyle:(int)arg1;
@@ -197,6 +217,7 @@
 - (void)setSupportedCustomQueueIdentifiers:(id)arg1;
 - (void)setSupportedInsertionPositions:(int*)arg1 count:(unsigned long long)arg2;
 - (void)setSupportedPlaybackQueueTypes:(int*)arg1 count:(unsigned long long)arg2;
+- (void)setSupportedPlaybackSessionTypes:(id)arg1;
 - (void)setSupportedRates:(float*)arg1 count:(unsigned long long)arg2;
 - (void)setSupportsSharedQueue:(bool)arg1;
 - (void)setUpNextItemCount:(int)arg1;
@@ -210,9 +231,12 @@
 - (int*)supportedInsertionPositions;
 - (int)supportedInsertionPositionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)supportedInsertionPositionsCount;
-- (int)supportedPlaybackQueueTypeAtIndex:(unsigned long long)arg1;
 - (int*)supportedPlaybackQueueTypes;
+- (int)supportedPlaybackQueueTypesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)supportedPlaybackQueueTypesCount;
+- (id)supportedPlaybackSessionTypes;
+- (id)supportedPlaybackSessionTypesAtIndex:(unsigned long long)arg1;
+- (unsigned long long)supportedPlaybackSessionTypesCount;
 - (float)supportedRateAtIndex:(unsigned long long)arg1;
 - (float*)supportedRates;
 - (unsigned long long)supportedRatesCount;

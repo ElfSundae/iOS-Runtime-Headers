@@ -19,11 +19,13 @@
 - (id)legalChartLabelPositions;
 - (int)legendBadgeType;
 - (id)propertiesForReferenceColors;
+- (int)seriesStrokeProperty;
 - (id)supportedValueLabelsAxisCombinations;
 - (bool)supportsFillSetFill;
 - (bool)supportsLineConnectionStyle;
 - (bool)supportsSeriesStroke;
 - (bool)supportsSymbolTypeEditing;
+- (id)userInterfaceName;
 - (unsigned long long)valueDimensions;
 
 @end

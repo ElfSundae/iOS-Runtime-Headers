@@ -54,6 +54,7 @@
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, readonly) NSURL *url;
 @property (nonatomic, readonly) NSString *urlString;
+@property (nonatomic, readonly, copy) NSString *userVisibleHostOrFallbackURLString;
 @property (nonatomic, readonly) NSString *userVisibleURLString;
 @property (nonatomic, readonly) unsigned long long visitCount;
 @property (nonatomic, readonly) unsigned long long visitCountScore;
@@ -77,6 +78,7 @@
 - (void)_padDailyCountsForNewVisitAtTime:(double)arg1 indexOfNewVisit:(int*)arg2;
 - (void)_wasVisitedOnSynchronizationQueue:(id)arg1;
 - (bool)addAutocompleteTrigger:(id)arg1;
+- (void)addExistingVisit:(id)arg1;
 - (void)addRedirectSourceItemFromSynchronizationQueue:(id)arg1;
 - (id)autocompleteTriggers;
 - (id)autocompleteTriggersDataOnSynchronizationQueue;
@@ -116,6 +118,7 @@
 - (id)title;
 - (id)url;
 - (id)urlString;
+- (id)userVisibleHostOrFallbackURLString;
 - (id)userVisibleURLString;
 - (unsigned long long)visitCount;
 - (unsigned long long)visitCountScore;

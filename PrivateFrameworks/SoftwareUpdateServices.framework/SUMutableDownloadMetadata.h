@@ -6,6 +6,7 @@
 
 @property (getter=isAutoDownload, nonatomic) bool autoDownload;
 @property (nonatomic) int downloadFeeAgreementStatus;
+@property (getter=isDownloadOnly, nonatomic) bool downloadOnly;
 @property (nonatomic) bool enforceWifiOnlyOverride;
 @property (nonatomic) int termsAndConditionsAgreementStatus;
 

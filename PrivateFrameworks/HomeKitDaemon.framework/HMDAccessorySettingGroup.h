@@ -104,6 +104,7 @@
 - (void)setMessageDispatcher:(id)arg1;
 - (id)settingWithIdentifier:(id)arg1;
 - (id)settings;
+- (bool)shouldEncodeForCoder:(id)arg1;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (id)transactionWithObjectChangeType:(unsigned long long)arg1;

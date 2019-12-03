@@ -2,25 +2,22 @@
    Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
  */
 
-@interface PKPeerPaymentActionTransferToBankViewController : PKPeerPaymentActionViewController <PKPeerPaymentActionControllerDelegate, UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate> {
-    long long  _backdropStyle;
-    _UIBackdropView * _backdropView;
+@interface PKPeerPaymentActionTransferToBankViewController : PKPeerPaymentActionViewController <PKEnterCurrencyAmountPassViewDelegate, PKPeerPaymentActionControllerDelegate, UITableViewDataSource, UITableViewDelegate, _PKUIKVisibilityBackdropViewDelegate> {
+    _PKUIKVisibilityBackdropView * _backdropView;
     double  _backdropWeight;
     NSNumberFormatter * _currencyFormatter;
     PKPaymentPass * _defaultInstantFundsOutPaymentPass;
-    PKEnterCurrencyAmountView * _enterCurrencyAmountView;
     NSDecimalNumber * _feePercentage;
     UILabel * _footerTextLabel;
     bool  _isSmallPhone;
     NSDecimalNumber * _maximumFee;
     NSDecimalNumber * _minimumFee;
     UIImageView * _navbarPassView;
-    PKEnterValueNewBalanceView * _newBalanceView;
     PKAnimatedNavigationBarTitleView * _passNavbarTitleView;
     NSNumberFormatter * _percentageFormatter;
     NSDecimalNumberHandler * _roundingHandler;
-    UIScrollView * _scrollView;
     NSArray * _supportedTransferActions;
+    PKEnterCurrencyAmountPassTableHeaderFooterView * _tableHeaderView;
     UITableView * _tableView;
     bool  _usesAccessibilityLayout;
 }
@@ -31,6 +28,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_amountPassView;
 - (void)_calculateBlur;
 - (id)_calculateFee;
 - (void)_currentAmountDidChangeTo:(id)arg1 shouldGenerateNewSuggestions:(bool)arg2;
@@ -47,7 +45,9 @@
 - (void)_updateBarButtonEnabledState;
 - (void)_updateCurrentAmount:(id)arg1 shouldGenerateNewSuggestions:(bool)arg2;
 - (void)_updateFooterText;
+- (void)_updateTableHeaderHeight;
 - (void)dealloc;
+- (void)enterCurrencyAmountPassViewDidLoadPassSnapshot:(id)arg1;
 - (id)initWithPaymentPass:(id)arg1 webService:(id)arg2 context:(long long)arg3;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;
@@ -65,5 +65,6 @@
 - (bool)tableView:(id)arg1 shouldDrawTopSeparatorForSection:(long long)arg2;
 - (void)updateAccountValues;
 - (void)viewWillLayoutSubviews;
+- (long long)visibilityBackdropView:(id)arg1 preferredStyleForTraitCollection:(id)arg2;
 
 @end

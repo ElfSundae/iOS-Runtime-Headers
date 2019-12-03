@@ -26,7 +26,9 @@
 - (void)setGameCenterPickedHandles:(NSArray *)arg1 playerNames:(NSArray *)arg2;
 - (void)setPendingAddresses:(NSArray *)arg1;
 - (void)setPhotoIDs:(NSArray *)arg1;
+- (void)setShareSheetSessionID:(NSString *)arg1;
 - (void)setText:(NSString *)arg1 subject:(NSString *)arg2 addresses:(NSArray *)arg3;
+- (void)setText:(NSString *)arg1 subject:(NSString *)arg2 addresses:(NSArray *)arg3 chatGUID:(NSString *)arg4 groupName:(NSString *)arg5;
 - (void)setTextEntryContentsVisible:(bool)arg1;
 - (void)setUICustomizationData:(NSData *)arg1;
 - (void)setUTIs:(NSArray *)arg1;

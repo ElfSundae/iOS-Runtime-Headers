@@ -3,14 +3,16 @@
  */
 
 @interface BWMeteorHeadroomNode : BWNode {
-    long long  _lastCaptureSettingsID;
+    NSString * _lastCaptureRequestIdentifier;
     float  _lastMeteorHeadroom;
+    NSDictionary * _meteorHeadroomParametersByPortType;
 }
 
 + (void)initialize;
 
+- (void)dealloc;
 - (void)didSelectFormat:(id)arg1 forInput:(id)arg2;
-- (id)init;
+- (id)initWithSensorConfigurationsByPortType:(id)arg1;
 - (void)renderSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 forInput:(id)arg2;
 
 @end

@@ -22,6 +22,7 @@
 - (void)endEncoding;
 - (void)forwardInvocation:(id)arg1;
 - (id)initWithCMMTLCommandBuffer:(id)arg1;
+- (id)initWithCMMTLCommandBuffer:(id)arg1 dispatchType:(unsigned long long)arg2;
 - (void)setBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setComputePipelineState:(id)arg1;
 - (void)setTexture:(id)arg1 atIndex:(unsigned long long)arg2;

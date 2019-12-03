@@ -4,11 +4,13 @@
 
 @interface PPTopicRecord : NSObject <NSCopying, NSMutableCopying, NSSecureCoding> {
     unsigned long long  _algorithm;
+    BOOL  _bucketizedSentimentScore;
     double  _decayRate;
     unsigned long long  _extractionAssetVersion;
     NSString * _extractionOsBuild;
     double  _initialScore;
     bool  _isLocal;
+    PPTopicMetadata * _metadata;
     PPSource * _source;
     PPTopic * _topic;
 }
@@ -19,6 +21,8 @@
 @property (nonatomic, readonly) NSString *extractionOsBuild;
 @property (nonatomic, readonly) double initialScore;
 @property (nonatomic, readonly) bool isLocal;
+@property (nonatomic, readonly) PPTopicMetadata *metadata;
+@property (nonatomic, readonly) double sentimentScore;
 @property (nonatomic, readonly) PPSource *source;
 @property (nonatomic, readonly) PPTopic *topic;
 
@@ -32,10 +36,15 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)extractionAssetVersion;
 - (id)extractionOsBuild;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (double)initialScore;
+- (bool)isEqual:(id)arg1;
+- (bool)isEqualToTopicRecord:(id)arg1;
 - (bool)isLocal;
+- (id)metadata;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
+- (double)sentimentScore;
 - (id)source;
 - (id)topic;
 

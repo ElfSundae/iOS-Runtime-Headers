@@ -5,6 +5,7 @@
 @interface _GEODirectionsRequestTicket : NSObject <GEODirectionServiceTicket> {
     bool  _active;
     bool  _canceled;
+    GEODirectionsRequester * _directionsRequester;
     bool  _isDoom;
     bool  _isReroute;
     GEOComposedRoute * _originalRoute;
@@ -18,6 +19,7 @@
 @property (nonatomic, readonly) bool canceled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) GEODirectionsRequester *directionsRequester;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool isDoom;
 @property (nonatomic) bool isReroute;
@@ -33,13 +35,15 @@
 - (void)cancel;
 - (bool)canceled;
 - (id)description;
-- (id)initWithRequest:(id)arg1;
+- (id)directionsRequester;
+- (id)initWithRequest:(id)arg1 directionsRequester:(id)arg2;
 - (bool)isDoom;
 - (bool)isReroute;
 - (id)originalRoute;
 - (id)request;
 - (id)requestPriority;
 - (id)responseUserInfo;
+- (void)setDirectionsRequester:(id)arg1;
 - (void)setIsDoom:(bool)arg1;
 - (void)setIsReroute:(bool)arg1;
 - (void)setOriginalRoute:(id)arg1;

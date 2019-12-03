@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/MediaControls.framework/MediaControls
  */
 
-@interface MediaControlsHomeObserver : NSObject <HFHomeManagerObserver, HFHomeObserver> {
+@interface MediaControlsHomeObserver : NSObject <HMHomeDelegate, HMHomeManagerDelegate> {
     <MediaControlsHomeObserverDelegate> * _delegate;
     HMHomeManager * _homeManager;
     NSMutableSet * _knownUIDs;
@@ -24,6 +24,8 @@
 - (bool)hasAccessoryWithUID:(id)arg1;
 - (void)home:(id)arg1 didAddAccessory:(id)arg2;
 - (void)home:(id)arg1 didRemoveAccessory:(id)arg2;
+- (void)homeManager:(id)arg1 didAddHome:(id)arg2;
+- (void)homeManager:(id)arg1 didRemoveHome:(id)arg2;
 - (void)homeManagerDidUpdateHomes:(id)arg1;
 - (id)init;
 - (void)setDelegate:(id)arg1;

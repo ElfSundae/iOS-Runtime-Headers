@@ -21,12 +21,12 @@
     OADTablePartStyle * mWholeTableStyle;
 }
 
+- (void).cxx_destruct;
 - (id)background;
 - (id)band1HorzStyle;
 - (id)band1VertStyle;
 - (id)band2HorzStyle;
 - (id)band2VertStyle;
-- (void)dealloc;
 - (id)description;
 - (id)firstColumnStyle;
 - (id)firstRowStyle;

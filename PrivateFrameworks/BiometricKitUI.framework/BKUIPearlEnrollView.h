@@ -3,6 +3,7 @@
  */
 
 @interface BKUIPearlEnrollView : UIView <BKUIVideoCaptureSesssionDelegate> {
+    bool  _activated;
     bool  _active;
     bool  _blurInProgress;
     UIView * _cameraShadeView;
@@ -54,10 +55,12 @@
 @property (nonatomic) bool active;
 @property (nonatomic) bool debugOverlayVisible;
 @property (nonatomic) <BKUIPearlEnrollViewDelegate> *delegate;
+@property (nonatomic, retain) UIImageView *entryAnimationView;
 @property (nonatomic, retain) BKUIPearlPillContainerView *pillContainer;
 @property (nonatomic, readonly) UILayoutGuide *portalLayoutGuide;
 @property (nonatomic, retain) NSArray *portalLayoutGuideConstraints;
 @property (nonatomic) int state;
+@property (nonatomic, retain) BKUIPearlMovieLoopView *tutorialMovieView;
 
 - (void).cxx_destruct;
 - (bool)_animateCircleMaskWithPositioningGuide;
@@ -73,6 +76,8 @@
 - (void)_animateToSecondScanWithCompletion:(id /* block */)arg1;
 - (void)_animateToState:(int)arg1 fromState:(int)arg2 completion:(id /* block */)arg3;
 - (void)_animateToTutorialWithCompletion:(id /* block */)arg1;
+- (void)_cleanupUIState;
+- (void)_endAndCleanupEnrollSessionIfNeeded;
 - (id)_enrollMaskPathWithRadius:(double)arg1;
 - (id)_maskPathWithRadius:(double)arg1 inFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (struct CATransform3D { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; double x11; double x12; double x13; double x14; double x15; double x16; })_needsPositioningPreviewTransform;
@@ -95,6 +100,7 @@
 - (void)dealloc;
 - (bool)debugOverlayVisible;
 - (id)delegate;
+- (id)entryAnimationView;
 - (bool)expectsRunningVideoCaptureSession:(id)arg1;
 - (id)initWithVideoCaptureSession:(id)arg1;
 - (void)layoutSubviews;
@@ -106,6 +112,8 @@
 - (id)portalLayoutGuideConstraints;
 - (struct CGPoint { double x1; double x2; })portalOffset;
 - (double)portalRadius;
+- (void)postEnrollDeActivate;
+- (void)preEnrollActivate;
 - (id)previewLayer;
 - (void)setActive:(bool)arg1;
 - (void)setBackgroundColor:(id)arg1;
@@ -114,6 +122,7 @@
 - (void)setDebugOverlayVisible:(bool)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setEntryAnimationImages:(id)arg1;
+- (void)setEntryAnimationView:(id)arg1;
 - (void)setFailed;
 - (void)setMovieViewHidden:(bool)arg1;
 - (void)setNudgesPaused:(bool)arg1;
@@ -124,11 +133,14 @@
 - (void)setState:(int)arg1;
 - (void)setState:(int)arg1 completion:(id /* block */)arg2;
 - (void)setSuspended:(bool)arg1;
+- (void)setTutorialMovieView:(id)arg1;
 - (void)startCapture;
 - (int)state;
 - (void)traitCollectionDidChange:(id)arg1;
 - (struct CGSize { double x1; double x2; })tutorialMovieSize;
+- (id)tutorialMovieView;
 - (double)tutorialRingRadius;
+- (void)updateEntryAnimationViewForOrientationChange;
 - (void)updatePortalLayoutGuide;
 - (void)updateWithFaceState:(id)arg1;
 - (void)updateWithProgress:(id)arg1;

@@ -11,6 +11,7 @@
 }
 
 - (void).cxx_destruct;
+- (bool)_canChangeAvailability;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (bool)configureWithCalendar:(id)arg1 preview:(bool)arg2;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;

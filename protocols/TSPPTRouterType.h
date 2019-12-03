@@ -5,6 +5,7 @@
 
 @required
 
+- (void)routeToFeedWithTag:(id <FCTagProviding>)arg1;
 - (void)routeToHeadlineForAritlceID:(NSString *)arg1;
 
 @end

@@ -52,6 +52,8 @@
     id /* block */  _receivedRequestHandler;
     RPConnection * _rpCnx;
     bool  _serverMode;
+    id /* block */  _statusChangedHandler;
+    unsigned long long  _statusFlags;
     id /* block */  _streamAcceptHandler;
     unsigned int  _streamFlags;
     NSString * _streamID;
@@ -60,6 +62,8 @@
     int  _streamType;
     CUTCPServer * _tcpServer;
     unsigned int  _trafficFlags;
+    bool  _trafficRegistrationCalled;
+    NSString * _trafficSessionID;
     CUWiFiManager * _wifiManager;
 }
 
@@ -74,6 +78,8 @@
 @property (nonatomic, copy) id /* block */ receivedEventHandler;
 @property (nonatomic, copy) id /* block */ receivedRequestHandler;
 @property (nonatomic) bool serverMode;
+@property (nonatomic, copy) id /* block */ statusChangedHandler;
+@property (nonatomic, readonly) unsigned long long statusFlags;
 @property (nonatomic, copy) id /* block */ streamAcceptHandler;
 @property (nonatomic) unsigned int streamFlags;
 @property (nonatomic, copy) NSString *streamID;
@@ -81,6 +87,7 @@
 @property (nonatomic) int streamSocket;
 @property (nonatomic) int streamType;
 @property (nonatomic) unsigned int trafficFlags;
+@property (nonatomic, copy) NSString *trafficSessionID;
 
 + (bool)supportsSecureCoding;
 
@@ -138,6 +145,7 @@
 - (void)setReceivedEventHandler:(id /* block */)arg1;
 - (void)setReceivedRequestHandler:(id /* block */)arg1;
 - (void)setServerMode:(bool)arg1;
+- (void)setStatusChangedHandler:(id /* block */)arg1;
 - (void)setStreamAcceptHandler:(id /* block */)arg1;
 - (void)setStreamFlags:(unsigned int)arg1;
 - (void)setStreamID:(id)arg1;
@@ -145,7 +153,10 @@
 - (void)setStreamSocket:(int)arg1;
 - (void)setStreamType:(int)arg1;
 - (void)setTrafficFlags:(unsigned int)arg1;
+- (void)setTrafficSessionID:(id)arg1;
 - (void)startServerConnectionWithCompletion:(id /* block */)arg1;
+- (id /* block */)statusChangedHandler;
+- (unsigned long long)statusFlags;
 - (id /* block */)streamAcceptHandler;
 - (unsigned int)streamFlags;
 - (id)streamID;
@@ -153,5 +164,6 @@
 - (int)streamSocket;
 - (int)streamType;
 - (unsigned int)trafficFlags;
+- (id)trafficSessionID;
 
 @end

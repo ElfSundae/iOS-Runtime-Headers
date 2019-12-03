@@ -10,6 +10,8 @@
 @property (nonatomic, readonly) WBSHistoryItem *historyItem;
 @property (nonatomic, readonly) float score;
 
++ (id)titleForHistoryItem:(id)arg1;
+
 - (void).cxx_destruct;
 - (id)historyItem;
 - (id)initWithHistoryItem:(id)arg1 score:(float)arg2;

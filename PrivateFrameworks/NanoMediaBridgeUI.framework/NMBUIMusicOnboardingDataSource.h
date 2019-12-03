@@ -14,6 +14,7 @@
 - (void).cxx_destruct;
 - (id)_recommendationSelected:(id)arg1;
 - (void)_setRecommendationSelected:(id)arg1 withSpecifier:(id)arg2;
+- (id)arrowIconImage;
 - (id)configurationConfirmSubtitle;
 - (id)configurationConfirmTitle;
 - (id)configurationFooterDescription;

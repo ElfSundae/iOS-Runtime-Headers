@@ -4,7 +4,7 @@
 
 @interface GKTable : NSObject {
     unsigned long long  _count;
-    struct _gktableitem { unsigned int x1; id x2; double x3; } * _items;
+    struct _gktableitem { unsigned int x1; id x2; double x3; double x4; } * _items;
     struct _opaque_pthread_mutex_t { 
         long long __sig; 
         BOOL __opaque[56]; 

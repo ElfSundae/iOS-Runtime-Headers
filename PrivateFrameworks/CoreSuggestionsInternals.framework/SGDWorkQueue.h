@@ -3,7 +3,7 @@
  */
 
 @interface SGDWorkQueue : NSObject {
-    long long  _counter;
+    _Atomic long long  _counter;
     NSString * _dir;
     struct _opaque_pthread_mutex_t { 
         long long __sig; 

@@ -12,8 +12,8 @@
 @property (nonatomic, readonly) int listDefinitionId;
 @property (nonatomic, readonly) int listId;
 
+- (void).cxx_destruct;
 - (id)addLevelOverrideWithLevel:(unsigned char)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)initWithDocument:(id)arg1 listId:(int)arg2 listDefinitionId:(int)arg3;
 - (bool)isAnyListLevelOverridden;

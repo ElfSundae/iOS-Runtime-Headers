@@ -9,9 +9,11 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly, copy) NSString *messageName;
 @property (nonatomic, readonly) NSDictionary *messagePayload;
 @property (nonatomic, retain) AKDevice *proxyDevice;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly, copy) NSString *xpcMessageName;
 
 + (id)messageName;
 + (id)objWithDict:(id)arg1;

@@ -4,11 +4,9 @@
 
 @interface TSABaseApplicationDelegate : TSKApplicationDelegate {
     <TSADownloadDelegate> * _downloadDelegate;
-    TSADocumentRoot * mDocumentRoot;
 }
 
 @property (nonatomic, readonly) NSArray *applicationTemplateVariants;
-@property (nonatomic) TSADocumentRoot *documentRoot;
 @property (nonatomic, retain) <TSADownloadDelegate> *downloadDelegate;
 @property (nonatomic, readonly) NSArray *importableDocumentTypes;
 @property (nonatomic, readonly) NSString *nativeDocumentExtension;
@@ -28,7 +26,6 @@
 - (id)applicationTemplateVariants;
 - (id)applicationTemplateVariantsForLocale:(struct __CFLocale { }*)arg1;
 - (void)dealloc;
-- (id)documentRoot;
 - (Class)documentRootClass;
 - (id)downloadDelegate;
 - (id)existingNestedDocumentPathForPath:(id)arg1;
@@ -41,11 +38,10 @@
 - (id)nativeDocumentExtension;
 - (id)nativeDocumentType;
 - (id)nativeSFFDocumentType;
-- (bool)openURL:(id)arg1;
+- (bool)openURL:(id)arg1 sourceDocumentRoot:(id)arg2;
 - (void)persistenceError:(id)arg1;
 - (id)readableDocumentTypes;
 - (void)registerDefaults;
-- (void)setDocumentRoot:(id)arg1;
 - (void)setDownloadDelegate:(id)arg1;
 - (id)tangierEditingFormatDocumentType;
 - (id)templateDocumentExtension;

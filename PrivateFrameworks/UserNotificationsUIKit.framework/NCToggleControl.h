@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UserNotificationsUIKit.framework/UserNotificationsUIKit
  */
 
-@interface NCToggleControl : PLGlyphControl <NCPreviewInteractionPresenterDelegate, PLContentSizeCategoryAdjusting> {
+@interface NCToggleControl : PLGlyphControl <NCClickInteractionPresenterDelegate, PLContentSizeCategoryAdjusting> {
     bool  _adjustsFontForContentSizeCategory;
     unsigned int  _anchorEdge;
     struct CGSize { 
@@ -19,7 +19,7 @@
     bool  _glyphAlwaysVisible;
     NCToggleControlPair * _managingPair;
     NSString * _preferredContentSizeCategory;
-    NCPreviewInteractionPresenter * _previewInteractionPlatterPresenter;
+    NCClickInteractionPresenter * _previewInteractionPlatterPresenter;
     UILabel * _titleLabel;
     unsigned long long  _toggleControlType;
 }
@@ -37,24 +37,23 @@
 @property (readonly) unsigned long long hash;
 @property (getter=_managingPair, setter=_setManagingPair:, nonatomic) NCToggleControlPair *managingPair;
 @property (nonatomic, copy) NSString *preferredContentSizeCategory;
-@property (getter=_previewInteractionPlatterPresenter, nonatomic, retain) NCPreviewInteractionPresenter *previewInteractionPlatterPresenter;
+@property (getter=_previewInteractionPlatterPresenter, nonatomic, retain) NCClickInteractionPresenter *previewInteractionPlatterPresenter;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *title;
 @property (getter=_titleLabel, nonatomic, readonly) UILabel *titleLabel;
 @property (getter=_toggleControlType, nonatomic, readonly) unsigned long long toggleControlType;
 
 + (id)_labelFont:(bool)arg1;
-+ (id)dismissControlWithMaterialRecipe:(long long)arg1 backgroundMaterialOptions:(unsigned long long)arg2 overlayMaterialOptions:(unsigned long long)arg3;
++ (id)dismissControlWithMaterialRecipe:(long long)arg1;
 + (double)effectiveHeight:(bool)arg1;
 + (void)performWithDefaultExpansionAnimation:(id /* block */)arg1 completion:(id /* block */)arg2;
-+ (id)showLessControlWithMaterialRecipe:(long long)arg1 backgroundMaterialOptions:(unsigned long long)arg2 overlayMaterialOptions:(unsigned long long)arg3;
++ (id)showLessControlWithMaterialRecipe:(long long)arg1;
 
 - (void).cxx_destruct;
 - (struct CGSize { double x1; double x2; })_cachedEffectiveMaxExpandedSize;
 - (struct CGSize { double x1; double x2; })_cachedEffectiveMaxUnexpandedSize;
 - (void)_configureTitleLabelIfNecessaryWithTitle:(id)arg1;
 - (double)_cornerRadius;
-- (void)_darkerSystemColorsStatusDidChange:(id)arg1;
 - (struct CGSize { double x1; double x2; })_effectiveExpandedSize;
 - (struct CGSize { double x1; double x2; })_effectiveGlyphSize;
 - (double)_effectiveHeight;
@@ -66,7 +65,6 @@
 - (id)_labelFont;
 - (id)_managingPair;
 - (id)_previewInteractionPlatterPresenter;
-- (void)_reduceTransparencyStatusDidChange:(id)arg1;
 - (void)_sendActionsForEvents:(unsigned long long)arg1 withEvent:(id)arg2;
 - (void)_setManagingPair:(id)arg1;
 - (struct CGSize { double x1; double x2; })_sizeThatFits:(struct CGSize { double x1; double x2; })arg1 whenExpanded:(bool)arg2;
@@ -74,13 +72,18 @@
 - (unsigned long long)_toggleControlType;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_unexpandedFrame;
 - (void)_updateTitleLabelTextAttributes;
-- (void)_updateTitleLabelVibrantStyling;
+- (void)_updateTitleLabelVisualStyling;
 - (bool)_wasExpandedPriorToControlEvent;
 - (void)addTarget:(id)arg1 forPreviewInteractionPresentedContentWithAction:(SEL)arg2;
 - (bool)adjustForContentSizeCategoryChange;
 - (bool)adjustsFontForContentSizeCategory;
 - (unsigned int)anchorEdge;
-- (id)containerViewForPreviewInteractionPresenter:(id)arg1;
+- (void)clickInteractionPresenterDidBeginInteraction:(id)arg1;
+- (void)clickInteractionPresenterDidCommitToPresentation:(id)arg1;
+- (void)clickInteractionPresenterDidDismiss:(id)arg1;
+- (void)clickInteractionPresenterDidPresent:(id)arg1;
+- (bool)clickInteractionPresenterShouldBegin:(id)arg1;
+- (id)containerViewForClickInteractionPresenter:(id)arg1;
 - (id)delegate;
 - (bool)dismissModalFullScreenIfNeeded;
 - (bool)isExpanded;
@@ -88,11 +91,6 @@
 - (void)layoutSubviews;
 - (bool)pointInside:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
 - (id)preferredContentSizeCategory;
-- (void)previewInteractionPresenterDidBeginInteraction:(id)arg1;
-- (void)previewInteractionPresenterDidCommitToPresentation:(id)arg1;
-- (void)previewInteractionPresenterDidDismiss:(id)arg1;
-- (void)previewInteractionPresenterDidPresent:(id)arg1;
-- (bool)previewInteractionPresenterShouldBegin:(id)arg1;
 - (void)setAdjustsFontForContentSizeCategory:(bool)arg1;
 - (void)setAnchorEdge:(unsigned int)arg1;
 - (void)setDelegate:(id)arg1;

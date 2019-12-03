@@ -11,11 +11,11 @@
     NSError * _error;
     double  _fullSessionTimeout;
     NSString * _identifier;
-    bool  _inTransaction;
+    _Atomic bool  _inTransaction;
     bool  _isSending;
     long long  _maxConcurrentMessages;
     NSDictionary * _options;
-    bool  _paused;
+    _Atomic bool  _paused;
     NSMutableDictionary * _peerGenerationIDs;
     NSMutableSet * _pendingMessageIDs;
     double  _perMessageTimeout;
@@ -28,7 +28,11 @@
     NSDictionary * _sessionMetadata;
     unsigned long long  _sessionSignpost;
     bool  _sessionStarted;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _setDelegateLock;
     struct NSMutableDictionary { Class x1; } * _stateResponders;
+    NSObject<OS_os_transaction> * _transaction;
     NSDictionary * _userContext;
 }
 

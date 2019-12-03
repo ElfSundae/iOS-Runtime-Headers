@@ -10,6 +10,7 @@
     bool  _denyCellularFallback;
     long long  _internalCellularBehavior;
     long long  _internalWiFiBehavior;
+    bool  _isIdentifierExternal;
 }
 
 @property (retain) NSNumber *aggregateEnterpriseCellular;
@@ -21,6 +22,7 @@
 @property bool denyCellularFallback;
 @property long long internalCellularBehavior;
 @property long long internalWiFiBehavior;
+@property bool isIdentifierExternal;
 @property long long wifiBehavior;
 
 + (long long)aggregateNetworkBehavior:(long long)arg1 other:(long long)arg2;
@@ -46,6 +48,7 @@
 - (bool)isAggregateRule;
 - (bool)isDefaultPathRule;
 - (bool)isEqual:(id)arg1;
+- (bool)isIdentifierExternal;
 - (void)setAggregateEnterpriseCellular:(id)arg1;
 - (void)setAggregateEnterpriseWiFi:(id)arg1;
 - (void)setAggregatePersonalCellular:(id)arg1;
@@ -54,6 +57,7 @@
 - (void)setDenyCellularFallback:(bool)arg1;
 - (void)setInternalCellularBehavior:(long long)arg1;
 - (void)setInternalWiFiBehavior:(long long)arg1;
+- (void)setIsIdentifierExternal:(bool)arg1;
 - (void)setWifiBehavior:(long long)arg1;
 - (bool)signingIdentifierAllowed:(id)arg1 domainsRequired:(out bool*)arg2;
 - (bool)supportsCellularBehavior:(long long)arg1;

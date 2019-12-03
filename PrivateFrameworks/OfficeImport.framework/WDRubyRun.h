@@ -7,8 +7,8 @@
     WDRubyProperties * mRubyProperties;
 }
 
+- (void).cxx_destruct;
 - (void)appendPhoneticRunString:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)initWithParagraph:(id)arg1;
 - (id)phoneticRun;

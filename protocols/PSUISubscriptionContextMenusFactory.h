@@ -11,6 +11,7 @@
 - (CTCellularPlanManager *)createCellularPlanManager;
 - (PSUICellularPlanManagerCache *)createCellularPlanManagerCache;
 - (PSUICoreTelephonyDataCache *)createDataCache;
+- (PSUILowDataModeSubgroup *)createLowDataModeSubgroup;
 - (PSUIMyNumberSubgroup *)createMyNumberSubgroup;
 - (PSUINetworkSelectionSubgroup *)createNetworkSelectionSubgroup;
 - (PSUINetworkSettingsSubgroup *)createNetworkSettingsSubgroup;

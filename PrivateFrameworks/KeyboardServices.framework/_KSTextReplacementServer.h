@@ -47,7 +47,6 @@
 - (void)reachabilityDidChange:(id)arg1;
 - (void)registerForPushNotifications;
 - (void)removeAllEntries;
-- (void)requestPeriodicSync;
 - (void)requestSync:(unsigned long long)arg1 withCompletionBlock:(id /* block */)arg2;
 - (void)requestSyncWithCompletionBlock:(id /* block */)arg1;
 - (void)runMigration;

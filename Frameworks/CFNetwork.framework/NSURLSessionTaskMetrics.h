@@ -2,18 +2,30 @@
    Image: /System/Library/Frameworks/CFNetwork.framework/CFNetwork
  */
 
-@interface NSURLSessionTaskMetrics : NSObject
+@interface NSURLSessionTaskMetrics : NSObject <NSSecureCoding> {
+    __CFN_TaskMetrics * __metrics;
+}
 
-@property unsigned long long redirectCount;
-@property (copy) NSDateInterval *taskInterval;
-@property (copy) NSArray *transactionMetrics;
+@property (nonatomic, readonly) __CFN_TaskMetrics *_metrics;
+@property (readonly) unsigned long long redirectCount;
+@property (readonly, copy) NSDateInterval *taskInterval;
+@property (readonly, copy) NSArray *transactionMetrics;
 
 // Image: /System/Library/Frameworks/CFNetwork.framework/CFNetwork
 
-- (id)_initWithTask:(id)arg1;
-- (void)dealloc;
++ (id)new;
++ (bool)supportsSecureCoding;
+
+- (void).cxx_destruct;
+- (id)_metrics;
+- (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
-- (id)initWithNoInit;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithMetrics:(id)arg1;
+- (unsigned long long)redirectCount;
+- (id)taskInterval;
+- (id)transactionMetrics;
 
 // Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
 

@@ -4,9 +4,11 @@
 
 @interface CPLMinglePulledChangesTask : CPLEngineSyncTask {
     NSString * _clientCacheIdentifier;
-    unsigned long long  _countOfNotifiedBatchesInPullQueue;
+    bool  _didNotifySchedulerPullQueueIsFullOnce;
     bool  _hasPreparedForMingling;
     NSObject<OS_dispatch_queue> * _lock;
+    bool  _needsToNotifySchedulerPullQueueIsFull;
+    NSObject<OS_dispatch_queue> * _notifyQueue;
     CPLScopeFilter * _scopeFilter;
 }
 
@@ -17,10 +19,13 @@
 - (void).cxx_destruct;
 - (bool)_checkContinueMinglingInTransaction:(id)arg1;
 - (void)_launch;
+- (void)_notifySchedulerPullQueueIsFull;
+- (void)_notifySchedulerPullQueueIsFullNowIfNecessary;
 - (void)_processNextBatch;
+- (void)_reallyNotifySchedulerPullQueueIsFull;
 - (void)_taskDidFinishWithError:(id)arg1;
 - (void)cancel;
-- (id)initWithEngineLibrary:(id)arg1;
+- (id)initWithEngineLibrary:(id)arg1 session:(id)arg2;
 - (void)launch;
 - (id)scopeFilter;
 - (void)setScopeFilter:(id)arg1;

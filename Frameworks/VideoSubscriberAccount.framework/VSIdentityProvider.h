@@ -7,8 +7,10 @@
     NSNumber * _appPlacementPosition;
     NSURL * _appStoreRoomURL;
     NSURL * _authenticationURL;
+    NSString * _defaultAppId;
     bool  _developer;
     NSString * _displayName;
+    bool  _isSTBOptOutAllowed;
     bool  _isSetTopBoxSupported;
     NSString * _nameForSorting;
     bool  _prohibitedByStore;
@@ -27,8 +29,10 @@
 @property (nonatomic, copy) NSNumber *appPlacementPosition;
 @property (nonatomic, copy) NSURL *appStoreRoomURL;
 @property (nonatomic, copy) NSURL *authenticationURL;
+@property (nonatomic, copy) NSString *defaultAppId;
 @property (getter=isDeveloper, nonatomic) bool developer;
 @property (nonatomic, readonly) VSOptional *displayName;
+@property (nonatomic) bool isSTBOptOutAllowed;
 @property (nonatomic) bool isSetTopBoxSupported;
 @property (nonatomic, copy) NSString *nameForSorting;
 @property (getter=isProhibitedByStore, nonatomic) bool prohibitedByStore;
@@ -52,6 +56,7 @@
 - (id)appStoreRoomURL;
 - (id)authenticationURL;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)defaultAppId;
 - (id)description;
 - (id)displayName;
 - (void)encodeWithCoder:(id)arg1;
@@ -62,6 +67,7 @@
 - (bool)isEqual:(id)arg1;
 - (bool)isFullySupportedForRequestsExpectingAuthenticationSchemes:(id)arg1;
 - (bool)isProhibitedByStore;
+- (bool)isSTBOptOutAllowed;
 - (bool)isSetTopBoxSupported;
 - (id)nameForSorting;
 - (id)providerAppArtworkTemplateURL;
@@ -73,7 +79,9 @@
 - (void)setAppPlacementPosition:(id)arg1;
 - (void)setAppStoreRoomURL:(id)arg1;
 - (void)setAuthenticationURL:(id)arg1;
+- (void)setDefaultAppId:(id)arg1;
 - (void)setDeveloper:(bool)arg1;
+- (void)setIsSTBOptOutAllowed:(bool)arg1;
 - (void)setIsSetTopBoxSupported:(bool)arg1;
 - (void)setNameForSorting:(id)arg1;
 - (void)setProhibitedByStore:(bool)arg1;

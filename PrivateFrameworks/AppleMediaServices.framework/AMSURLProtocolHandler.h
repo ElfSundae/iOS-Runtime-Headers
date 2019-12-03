@@ -19,8 +19,8 @@
 + (double)_randomDouble;
 
 - (void).cxx_destruct;
-- (bool)_URLIsTrustedFromRequest:(id)arg1 bagContract:(id)arg2;
-- (void)_pingURL:(id)arg1 contract:(id)arg2;
+- (bool)_URLIsTrustedFromRequest:(id)arg1 bag:(id)arg2;
+- (void)_pingURL:(id)arg1 session:(id)arg2 bag:(id)arg3;
 - (void)_setResponseCookiesFromResponse:(id)arg1 taskInfo:(id)arg2;
 - (bool)_shouldEnableReversePushForTask:(id)arg1;
 - (id)decodeData:(id)arg1 task:(id)arg2 error:(id*)arg3;

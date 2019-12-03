@@ -41,6 +41,7 @@
 - (id)filterPredicate;
 - (bool)hideHiddenAssets;
 - (id)init;
+- (id)initWithAssetFetchResult:(id)arg1 options:(unsigned long long)arg2;
 - (id)initWithCollectionListFetchResult:(id)arg1 options:(unsigned long long)arg2;
 - (unsigned long long)options;
 - (id)photoLibrary;

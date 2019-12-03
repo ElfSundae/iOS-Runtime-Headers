@@ -47,6 +47,7 @@
 - (void)_handleTapOnCallout:(id)arg1;
 - (double)_innerDiameter;
 - (void)_updateCroppedImage;
+- (void)_updateStyle;
 - (id)balloonTintColor;
 - (bool)calloutContainsPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (id)contentView;
@@ -72,5 +73,6 @@
 - (double)smallBalloonScale;
 - (id)strokeColor;
 - (long long)style;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end

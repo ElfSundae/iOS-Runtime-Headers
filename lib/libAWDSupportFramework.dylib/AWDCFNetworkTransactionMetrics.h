@@ -3,6 +3,8 @@
  */
 
 @interface AWDCFNetworkTransactionMetrics : PBCodable <NSCopying> {
+    bool  _apsRelayAttempted;
+    bool  _apsRelaySucceeded;
     NSString * _connectionUUID;
     struct { 
         unsigned int requestEnd : 1; 
@@ -14,6 +16,8 @@
         unsigned int totalBytesWritten : 1; 
         unsigned int networkLoadType : 1; 
         unsigned int networkProtocolName : 1; 
+        unsigned int apsRelayAttempted : 1; 
+        unsigned int apsRelaySucceeded : 1; 
         unsigned int isRedirected : 1; 
         unsigned int reusedConnection : 1; 
     }  _has;
@@ -30,7 +34,11 @@
     unsigned long long  _totalBytesWritten;
 }
 
+@property (nonatomic) bool apsRelayAttempted;
+@property (nonatomic) bool apsRelaySucceeded;
 @property (nonatomic, retain) NSString *connectionUUID;
+@property (nonatomic) bool hasApsRelayAttempted;
+@property (nonatomic) bool hasApsRelaySucceeded;
 @property (nonatomic, readonly) bool hasConnectionUUID;
 @property (nonatomic) bool hasIsRedirected;
 @property (nonatomic) bool hasNetworkLoadType;
@@ -57,12 +65,16 @@
 
 - (int)StringAsNetworkLoadType:(id)arg1;
 - (int)StringAsNetworkProtocolName:(id)arg1;
+- (bool)apsRelayAttempted;
+- (bool)apsRelaySucceeded;
 - (id)connectionUUID;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (bool)hasApsRelayAttempted;
+- (bool)hasApsRelaySucceeded;
 - (bool)hasConnectionUUID;
 - (bool)hasIsRedirected;
 - (bool)hasNetworkLoadType;
@@ -89,7 +101,11 @@
 - (unsigned long long)responseEnd;
 - (unsigned long long)responseStart;
 - (bool)reusedConnection;
+- (void)setApsRelayAttempted:(bool)arg1;
+- (void)setApsRelaySucceeded:(bool)arg1;
 - (void)setConnectionUUID:(id)arg1;
+- (void)setHasApsRelayAttempted:(bool)arg1;
+- (void)setHasApsRelaySucceeded:(bool)arg1;
 - (void)setHasIsRedirected:(bool)arg1;
 - (void)setHasNetworkLoadType:(bool)arg1;
 - (void)setHasNetworkProtocolName:(bool)arg1;

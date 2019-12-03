@@ -3,12 +3,12 @@
  */
 
 @interface CKQuestionAcknowledgmentGlyphView : CKAcknowledgmentGlyphView {
-    UIImageView * _dot;
-    UIImageView * _glyph;
+    CKAcknowledgmentGlyphImageView * _dot;
+    CKAcknowledgmentGlyphImageView * _glyph;
 }
 
-@property (nonatomic, retain) UIImageView *dot;
-@property (nonatomic, retain) UIImageView *glyph;
+@property (nonatomic, retain) CKAcknowledgmentGlyphImageView *dot;
+@property (nonatomic, retain) CKAcknowledgmentGlyphImageView *glyph;
 
 - (void).cxx_destruct;
 - (long long)acknowledgmentType;

@@ -7,30 +7,32 @@
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
     }  _connectionLock;
-    bool  _hasConfiguredRemoteAccountStore;
+    NSString * _effectiveBundleID;
+    NSXPCListenerEndpoint * _listenerEndpoint;
     bool  _notificationsEnabled;
-    NSString * _spoofedBundleID;
-    bool  _xpcConnectionHasBeenInvalidated;
 }
 
+@property (nonatomic, copy) NSString *effectiveBundleID;
+@property (nonatomic, readonly) NSXPCListenerEndpoint *listenerEndpoint;
 @property (nonatomic) bool notificationsEnabled;
-@property (nonatomic, copy) NSString *spoofedBundleID;
 
 - (void).cxx_destruct;
-- (void)_configureConnection;
-- (void)_configureRemoteAccountStoreIfNecessary;
 - (id)_connection;
+- (void)_locked_configureRemoteAccountStoreWithConnection:(id)arg1;
+- (void)_locked_connection:(id)arg1 setEffectiveBundleID:(id)arg2;
+- (void)_locked_connection:(id)arg1 setNotificationsEnabled:(bool)arg2;
 - (void)_setConnectionInterrupted;
 - (void)_setConnectionInvalidated;
-- (void)connect;
-- (void)disconnect;
-- (id)initWithXPCConnection:(id)arg1;
+- (void)dealloc;
+- (id)effectiveBundleID;
+- (id)init;
+- (id)initWithListenerEndpoint:(id)arg1;
+- (id)listenerEndpoint;
 - (bool)notificationsEnabled;
 - (id)remoteObjectProxy;
 - (id)remoteObjectProxyWithErrorHandler:(id /* block */)arg1;
+- (void)setEffectiveBundleID:(id)arg1;
 - (void)setNotificationsEnabled:(bool)arg1;
-- (void)setSpoofedBundleID:(id)arg1;
-- (id)spoofedBundleID;
 - (id)synchronousRemoteObjectProxyWithErrorHandler:(id /* block */)arg1;
 
 @end

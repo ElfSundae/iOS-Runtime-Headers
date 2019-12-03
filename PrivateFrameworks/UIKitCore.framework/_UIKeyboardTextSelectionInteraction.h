@@ -4,7 +4,7 @@
 
 @interface _UIKeyboardTextSelectionInteraction : UITextInteraction <_UIPanOrFlickGestureRecognizerDelegate> {
     _UIPanOrFlickGestureRecognizer * _activePress;
-    UITapGestureRecognizer * _activeTap;
+    _UITouchesObservingGestureRecognizer * _addedTouchRecognizer;
     id  _deallocToken;
     _UIKeyboardTextSelectionGestureController * _owner;
     NSTimer * _touchPadTimer;
@@ -24,8 +24,8 @@
 - (void)_cancelTouchPadTimer;
 - (void)_clearHiding;
 - (void)_clearTouchPadCallback;
+- (void)_configureLongPressAddedTouchRecognizer:(id)arg1;
 - (void)_configureLongPressRecognizer:(id)arg1;
-- (void)_configureLongPressTapRecognizer:(id)arg1;
 - (void)_configureOneFingerForcePressRecognizer:(id)arg1;
 - (void)_configureTwoFingerPanGestureRecognizer:(id)arg1;
 - (void)_configureTwoFingerTapGestureRecognizer:(id)arg1;
@@ -42,11 +42,11 @@
 - (double)additionalPressDurationForTypingCadence:(id)arg1;
 - (void)beginCursorManipulationFromRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)beginIndirectBlockPanWithTranslation:(struct CGPoint { double x1; double x2; })arg1 executionContext:(id)arg2;
+- (void)beginLongPressWithTranslation:(struct CGPoint { double x1; double x2; })arg1 touchCount:(unsigned long long)arg2 executionContext:(id)arg3;
 - (void)beginTwoFingerCursorPanWithTranslation:(struct CGPoint { double x1; double x2; })arg1 executionContext:(id)arg2;
-- (void)beginTwoFingerLongPressWithTranslation:(struct CGPoint { double x1; double x2; })arg1 executionContext:(id)arg2;
 - (void)beginTwoFingerPanWithTranslation:(struct CGPoint { double x1; double x2; })arg1 executionContext:(id)arg2;
 - (struct CGPoint { double x1; double x2; })boundedTranslation:(struct CGPoint { double x1; double x2; })arg1;
-- (void)cancelTwoFingerLongPressWithExecutionContext:(id)arg1;
+- (void)cancelLongPressWithExecutionContext:(id)arg1;
 - (void)cancelTwoFingerPanWithExecutionContext:(id)arg1;
 - (void)clearKeyboardTouchesForGesture:(id)arg1;
 - (struct CGPoint { double x1; double x2; })cursorLocationForTranslation:(struct CGPoint { double x1; double x2; })arg1;
@@ -54,9 +54,9 @@
 - (void)detach;
 - (void)disableEnclosingScrollViewScrolling;
 - (void)endIndirectBlockPanWithExecutionContext:(id)arg1;
-- (void)endTwoFingerLongPressWithExecutionContext:(id)arg1;
+- (void)endLongPressWithExecutionContext:(id)arg1;
 - (void)endTwoFingerPanWithExecutionContext:(id)arg1;
-- (void)finishTwoFingerLongPressWithExecutionContext:(id)arg1;
+- (void)finishLongPressWithExecutionContext:(id)arg1;
 - (bool)forceTouchGestureRecognizerShouldBegin:(id)arg1;
 - (bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
@@ -72,18 +72,18 @@
 - (id)initWithView:(id)arg1 owner:(id)arg2 forTypes:(long long)arg3;
 - (bool)isPlacedCarefully;
 - (long long)layoutDirectionFromFlickDirection:(unsigned long long)arg1;
+- (void)longPressGestureWithState:(long long)arg1 withTranslation:(struct CGPoint { double x1; double x2; })arg2 touchCount:(unsigned long long)arg3;
 - (void)oneFingerForcePan:(id)arg1;
 - (void)oneFingerForcePress:(id)arg1;
 - (id)owner;
 - (void)panningGesture:(id)arg1;
-- (void)panningGestureTap:(id)arg1;
+- (void)panningGestureAddedTouch:(id)arg1;
 - (void)registerOwner:(id)arg1;
 - (void)removeTemporaryGesture;
 - (id)selectionController;
-- (void)twoFingerLongPressGestureWithState:(long long)arg1 withTranslation:(struct CGPoint { double x1; double x2; })arg2;
 - (void)twoFingerTap:(id)arg1;
 - (void)updateIndirectBlockPanWithTranslation:(struct CGPoint { double x1; double x2; })arg1 executionContext:(id)arg2;
-- (void)updateTwoFingerLongPressWithTranslation:(struct CGPoint { double x1; double x2; })arg1 executionContext:(id)arg2;
+- (void)updateLongPressWithTranslation:(struct CGPoint { double x1; double x2; })arg1 executionContext:(id)arg2;
 - (void)updateTwoFingerPanWithTranslation:(struct CGPoint { double x1; double x2; })arg1 executionContext:(id)arg2;
 
 @end

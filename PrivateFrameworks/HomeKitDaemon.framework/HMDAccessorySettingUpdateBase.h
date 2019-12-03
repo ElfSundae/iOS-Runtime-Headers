@@ -44,6 +44,7 @@
 - (id)target;
 - (void)update;
 - (id)updateValueWithPayload:(id)arg1 setting:(id)arg2;
+- (void)updateWithAdditionalModel:(id)arg1;
 - (id)value;
 
 @end

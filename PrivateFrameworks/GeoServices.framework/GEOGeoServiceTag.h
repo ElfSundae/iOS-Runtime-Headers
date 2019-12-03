@@ -4,8 +4,8 @@
 
 @interface GEOGeoServiceTag : PBCodable <NSCopying> {
     struct { 
-        unsigned int serviceType : 1; 
-    }  _has;
+        unsigned int has_serviceType : 1; 
+    }  _flags;
     int  _serviceType;
     NSString * _tag;
     PBUnknownFields * _unknownFields;
@@ -17,9 +17,11 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 + (id)defaultTag;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsServiceType:(id)arg1;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -28,6 +30,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (int)serviceType;
 - (id)serviceTypeAsString:(int)arg1;

@@ -27,6 +27,7 @@
 @property (nonatomic, readonly) bool isCorrupt;
 @property (nonatomic, readonly) NSArray *messageEditChatItems;
 @property (nonatomic) struct _NSRange { unsigned long long x1; unsigned long long x2; } messagePartRange;
+@property (nonatomic, readonly) bool requiresSiriAttribution;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly, copy) NSAttributedString *text;
 @property (setter=_setVisibleAssociatedMessageChatItems:, nonatomic, retain) NSArray *visibleAssociatedMessageChatItems;
@@ -41,7 +42,9 @@
 + (id)_newMessagePartsForMessageItem:(id)arg1;
 + (id)_newMessagePartsForMessageItem:(id)arg1 shouldDisplayLink:(bool)arg2 isBusiness:(bool)arg3 parentChatIsSpam:(bool)arg4 hasKnownParticipants:(bool)arg5;
 + (id)_richLinkRangesForMessageText:(id)arg1 sender:(id)arg2 isWhitelistedRichLinkSender:(bool)arg3;
++ (bool)_shouldAggregateForTransferType:(id)arg1;
 + (bool)_supportsRichLinkURL:(id)arg1 forSender:(id)arg2 isWhitelistedRichLinkSender:(bool)arg3;
++ (bool)isSiriEnabled;
 
 - (void).cxx_destruct;
 - (id)_initWithItem:(id)arg1 messagePartRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
@@ -60,12 +63,14 @@
 - (bool)isWhitelistedRichLinkSender;
 - (id)messageEditChatItems;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })messagePartRange;
+- (bool)requiresSiriAttribution;
 - (void)setChatInScrutinyMode:(bool)arg1;
 - (void)setIndex:(long long)arg1;
 - (void)setIsBusiness:(bool)arg1;
 - (void)setMessagePartRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (void)setWhitelistedRichLinkSender:(bool)arg1;
 - (id)text;
+- (id)transcriptText;
 - (id)visibleAssociatedMessageChatItems;
 
 @end

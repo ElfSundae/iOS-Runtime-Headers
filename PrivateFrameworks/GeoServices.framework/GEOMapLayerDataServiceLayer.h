@@ -4,13 +4,15 @@
 
 @interface GEOMapLayerDataServiceLayer : PBCodable <NSCopying> {
     struct { 
-        unsigned int identifier : 1; 
-    }  _has;
+        unsigned int has_identifier : 1; 
+    }  _flags;
     unsigned int  _identifier;
 }
 
 @property (nonatomic) bool hasIdentifier;
 @property (nonatomic) unsigned int identifier;
+
++ (bool)isValid:(id)arg1;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -21,6 +23,7 @@
 - (unsigned int)identifier;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasIdentifier:(bool)arg1;
 - (void)setIdentifier:(unsigned int)arg1;

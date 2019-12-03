@@ -32,6 +32,7 @@
 - (void).cxx_destruct;
 - (id)baseColorPreset;
 - (bool)canShowSlider;
+- (id)copyForPairedCategory:(long long)arg1;
 - (id)copyWithRangeMin:(float)arg1 rangeMax:(float)arg2 showSlider:(bool)arg3;
 - (unsigned long long)costForScope:(id)arg1;
 - (id)derivedColorsByCategories;

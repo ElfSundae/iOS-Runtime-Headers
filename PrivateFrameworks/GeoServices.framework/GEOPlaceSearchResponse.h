@@ -4,15 +4,39 @@
 
 @interface GEOPlaceSearchResponse : PBCodable <NSCopying> {
     struct { 
-        unsigned int turnaroundTime : 1; 
-        unsigned int statusCodeInfo : 1; 
-        unsigned int isChainResultSet : 1; 
-    }  _has;
+        unsigned int has_turnaroundTime : 1; 
+        unsigned int has_statusCodeInfo : 1; 
+        unsigned int has_isChainResultSet : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_mapRegion : 1; 
+        unsigned int read_namedFeatures : 1; 
+        unsigned int read_nearbySectionHeader : 1; 
+        unsigned int read_placeResults : 1; 
+        unsigned int read_suggestionEntryLists : 1; 
+        unsigned int read_suggestionMetadata : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_mapRegion : 1; 
+        unsigned int wrote_namedFeatures : 1; 
+        unsigned int wrote_nearbySectionHeader : 1; 
+        unsigned int wrote_placeResults : 1; 
+        unsigned int wrote_suggestionEntryLists : 1; 
+        unsigned int wrote_suggestionMetadata : 1; 
+        unsigned int wrote_turnaroundTime : 1; 
+        unsigned int wrote_statusCodeInfo : 1; 
+        unsigned int wrote_status : 1; 
+        unsigned int wrote_isChainResultSet : 1; 
+    }  _flags;
     bool  _isChainResultSet;
     GEOMapRegion * _mapRegion;
     NSMutableArray * _namedFeatures;
     NSString * _nearbySectionHeader;
     NSMutableArray * _placeResults;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     int  _status;
     int  _statusCodeInfo;
     NSMutableArray * _suggestionEntryLists;
@@ -39,6 +63,7 @@
 @property (nonatomic) double turnaroundTime;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
 + (Class)namedFeaturesType;
 + (Class)placeResultType;
 + (Class)suggestionEntryListsType;
@@ -46,12 +71,23 @@
 - (void).cxx_destruct;
 - (int)StringAsStatus:(id)arg1;
 - (int)StringAsStatusCodeInfo:(id)arg1;
+- (void)_addNoFlagsNamedFeatures:(id)arg1;
+- (void)_addNoFlagsPlaceResult:(id)arg1;
+- (void)_addNoFlagsSuggestionEntryLists:(id)arg1;
+- (void)_readMapRegion;
+- (void)_readNamedFeatures;
+- (void)_readNearbySectionHeader;
+- (void)_readPlaceResults;
+- (void)_readSuggestionEntryLists;
+- (void)_readSuggestionMetadata;
 - (void)addNamedFeatures:(id)arg1;
 - (void)addPlaceResult:(id)arg1;
 - (void)addSuggestionEntryLists:(id)arg1;
 - (void)clearNamedFeatures;
 - (void)clearPlaceResults;
+- (void)clearSensitiveFields;
 - (void)clearSuggestionEntryLists;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -63,6 +99,8 @@
 - (bool)hasSuggestionMetadata;
 - (bool)hasTurnaroundTime;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isChainResultSet;
 - (bool)isEqual:(id)arg1;
 - (id)mapRegion;
@@ -74,6 +112,7 @@
 - (id)placeResultAtIndex:(unsigned long long)arg1;
 - (id)placeResults;
 - (unsigned long long)placeResultsCount;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasIsChainResultSet:(bool)arg1;
 - (void)setHasStatusCodeInfo:(bool)arg1;

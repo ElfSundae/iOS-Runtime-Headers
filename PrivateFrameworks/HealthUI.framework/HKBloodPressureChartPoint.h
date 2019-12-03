@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 - (id)allYValues;
 - (id)date;
+- (id)description;
 - (id)diastolicChartPoint;
 - (id)maxXValueAsGenericType;
 - (id)maxYValue;

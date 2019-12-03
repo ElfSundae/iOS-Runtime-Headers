@@ -8,6 +8,7 @@
     bool  _assetChanged;
     bool  _badgeInfoChanged;
     bool  _contentOffsetChanged;
+    bool  _flippingFullSizeRenderStateChanged;
     bool  _focusValueChanged;
     bool  _forceBadgesVisibleChanged;
     bool  _importStateChanged;
@@ -20,6 +21,7 @@
     bool  _modelTileTransformChanged;
     bool  _saveProgressChanged;
     bool  _saveStateChanged;
+    bool  _toggleCTMChanged;
     PUBrowsingVideoPlayerChange * _videoPlayerChange;
 }
 
@@ -28,6 +30,7 @@
 @property (setter=_setAssetChanged:, nonatomic) bool assetChanged;
 @property (setter=_setBadgeInfoChanged:, nonatomic) bool badgeInfoChanged;
 @property (setter=_setContentOffsetChanged:, nonatomic) bool contentOffsetChanged;
+@property (setter=_setFlippingFullSizeRenderStateChanged:, nonatomic) bool flippingFullSizeRenderStateChanged;
 @property (setter=_setFocusValueChanged:, nonatomic) bool focusValueChanged;
 @property (setter=_setForceBadgesVisibleChanged:, nonatomic) bool forceBadgesVisibleChanged;
 @property (setter=_setImportStateChanged:, nonatomic) bool importStateChanged;
@@ -40,6 +43,7 @@
 @property (setter=_setModelTileTransformChanged:, nonatomic) bool modelTileTransformChanged;
 @property (setter=_setSaveProgressChanged:, nonatomic) bool saveProgressChanged;
 @property (setter=_setSaveStateChanged:, nonatomic) bool saveStateChanged;
+@property (setter=_setToggleCTMChanged:, nonatomic) bool toggleCTMChanged;
 @property (setter=_setVideoPlayerChange:, nonatomic, retain) PUBrowsingVideoPlayerChange *videoPlayerChange;
 
 - (void).cxx_destruct;
@@ -48,6 +52,7 @@
 - (void)_setAssetChanged:(bool)arg1;
 - (void)_setBadgeInfoChanged:(bool)arg1;
 - (void)_setContentOffsetChanged:(bool)arg1;
+- (void)_setFlippingFullSizeRenderStateChanged:(bool)arg1;
 - (void)_setFocusValueChanged:(bool)arg1;
 - (void)_setForceBadgesVisibleChanged:(bool)arg1;
 - (void)_setImportStateChanged:(bool)arg1;
@@ -59,6 +64,7 @@
 - (void)_setModelTileTransformChanged:(bool)arg1;
 - (void)_setSaveProgressChanged:(bool)arg1;
 - (void)_setSaveStateChanged:(bool)arg1;
+- (void)_setToggleCTMChanged:(bool)arg1;
 - (void)_setUserTransformingTileDidChange:(bool)arg1;
 - (void)_setVideoPlayerChange:(id)arg1;
 - (bool)accessoryViewVisibilityChanged;
@@ -66,6 +72,7 @@
 - (bool)assetChanged;
 - (bool)badgeInfoChanged;
 - (bool)contentOffsetChanged;
+- (bool)flippingFullSizeRenderStateChanged;
 - (bool)focusValueChanged;
 - (bool)forceBadgesVisibleChanged;
 - (bool)hasChanges;
@@ -79,6 +86,7 @@
 - (bool)modelTileTransformChanged;
 - (bool)saveProgressChanged;
 - (bool)saveStateChanged;
+- (bool)toggleCTMChanged;
 - (id)videoPlayerChange;
 
 @end

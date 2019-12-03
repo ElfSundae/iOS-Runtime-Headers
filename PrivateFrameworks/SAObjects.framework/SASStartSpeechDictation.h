@@ -16,6 +16,7 @@
 @property (nonatomic, copy) NSString *keyboardReturnKey;
 @property (nonatomic, copy) NSString *keyboardType;
 @property (nonatomic, copy) NSString *language;
+@property (nonatomic, copy) NSArray *languages;
 @property (nonatomic, copy) NSString *postfixText;
 @property (nonatomic, copy) NSString *prefixText;
 @property (nonatomic, copy) NSString *region;
@@ -40,6 +41,7 @@
 - (id)keyboardReturnKey;
 - (id)keyboardType;
 - (id)language;
+- (id)languages;
 - (id)postfixText;
 - (id)prefixText;
 - (id)region;
@@ -58,6 +60,7 @@
 - (void)setKeyboardReturnKey:(id)arg1;
 - (void)setKeyboardType:(id)arg1;
 - (void)setLanguage:(id)arg1;
+- (void)setLanguages:(id)arg1;
 - (void)setPostfixText:(id)arg1;
 - (void)setPrefixText:(id)arg1;
 - (void)setRegion:(id)arg1;

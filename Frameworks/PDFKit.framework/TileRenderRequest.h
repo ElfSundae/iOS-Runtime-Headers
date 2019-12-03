@@ -13,7 +13,6 @@
     }  matrix;
     PDFPage * page;
     PDFRenderingProperties * renderingProperties;
-    bool  shouldAntiAlias;
     <PDFTilePoolDelegate> * target;
     struct CGRect { 
         struct CGPoint { 

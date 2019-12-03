@@ -5,6 +5,7 @@
 @interface NBBackup : NSObject <NSSecureCoding> {
     NSURL * _activeWatchFaceFileURL;
     NSNumber * _backingColor;
+    unsigned long long  _backupType;
     NSNumber * _bcmWindowMaterial;
     NSNumber * _bottomEnclosureMaterial;
     NSNumber * _coverGlassColor;
@@ -31,6 +32,7 @@
 
 @property (nonatomic, retain) NSURL *activeWatchFaceFileURL;
 @property (nonatomic, retain) NSNumber *backingColor;
+@property (nonatomic) unsigned long long backupType;
 @property (nonatomic, retain) NSNumber *bcmWindowMaterial;
 @property (nonatomic, retain) NSNumber *bottomEnclosureMaterial;
 @property (nonatomic, retain) NSNumber *coverGlassColor;
@@ -59,6 +61,7 @@
 - (void).cxx_destruct;
 - (id)activeWatchFaceFileURL;
 - (id)backingColor;
+- (unsigned long long)backupType;
 - (id)bcmWindowMaterial;
 - (id)bottomEnclosureMaterial;
 - (id)coverGlassColor;
@@ -79,6 +82,7 @@
 - (id)productType;
 - (void)setActiveWatchFaceFileURL:(id)arg1;
 - (void)setBackingColor:(id)arg1;
+- (void)setBackupType:(unsigned long long)arg1;
 - (void)setBcmWindowMaterial:(id)arg1;
 - (void)setBottomEnclosureMaterial:(id)arg1;
 - (void)setCoverGlassColor:(id)arg1;

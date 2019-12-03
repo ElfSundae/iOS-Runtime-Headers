@@ -21,6 +21,7 @@
         bool bluetoothDisplayLoadFailed; 
         bool tableLoadFailed; 
         bool displayModeChanged; 
+        bool copyStringToClipboard; 
         bool startEditing; 
         bool insertUntranslatedText; 
         bool deleteUntranslatedText; 
@@ -50,6 +51,7 @@
 - (void)handleBrailleKeypress:(id)arg1;
 - (void)handleBrailleReplaceTextRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 withString:(id)arg2 cursor:(unsigned long long)arg3;
 - (void)handleBrailleTableFailedToLoad:(id)arg1;
+- (void)handleCopyStringToClipboard:(id)arg1;
 - (void)handleDisplayModeChanged:(id)arg1;
 - (void)handleFailedToLoadBluetoothDevice:(id)arg1;
 - (int)handleGetValue:(id*)arg1 forKey:(int)arg2 withObject:(id)arg3 trusted:(bool)arg4;

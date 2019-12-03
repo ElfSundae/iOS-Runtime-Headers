@@ -17,7 +17,7 @@
 - (void).cxx_destruct;
 - (void)contentSizeCategoryDidChange:(id)arg1;
 - (double)currentMaxWidth;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (id)initWithTextItemContainer:(id)arg1;
 - (double)maxWidth;
 - (void)setMaxWidth:(double)arg1;

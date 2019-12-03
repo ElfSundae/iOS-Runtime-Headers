@@ -6,7 +6,7 @@
     id /* block */  _changeBlock;
     AVPlayerItem * _item;
     SVKeyValueObserver * _observer;
-    SVPlayer * _player;
+    AVPlayer * _player;
 }
 
 @property (setter=onChange:, nonatomic, copy) id /* block */ changeBlock;
@@ -15,7 +15,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) AVPlayerItem *item;
 @property (nonatomic, readonly) SVKeyValueObserver *observer;
-@property (nonatomic, readonly) SVPlayer *player;
+@property (nonatomic, readonly) AVPlayer *player;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

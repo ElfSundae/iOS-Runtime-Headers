@@ -2,26 +2,20 @@
    Image: /System/Library/PrivateFrameworks/SearchUI.framework/SearchUI
  */
 
-@interface SearchUICardSectionView : NUIContainerStackView <NUIContainerStackViewDelegate> {
+@interface SearchUICardSectionView : NUIContainerStackView {
     UIView * _chevronView;
     UIView * _contentView;
+    UIViewController * _embeddedViewController;
     <SearchUIFeedbackDelegate> * _feedbackDelegate;
     SearchUICardSectionRowModel * _rowModel;
-    bool  _spansFullWidth;
-    unsigned long long  _style;
 }
 
-@property (retain) UIView *chevronView;
-@property (retain) UIView *contentView;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property <SearchUIFeedbackDelegate> *feedbackDelegate;
-@property (readonly) unsigned long long hash;
+@property (nonatomic, retain) UIView *chevronView;
+@property (nonatomic, retain) UIView *contentView;
+@property (readonly) UIViewController *embeddedViewController;
+@property (nonatomic) <SearchUIFeedbackDelegate> *feedbackDelegate;
 @property (nonatomic, retain) SearchUICardSectionRowModel *rowModel;
 @property (nonatomic, readonly) SFCardSection *section;
-@property (readonly) bool spansFullWidth;
-@property unsigned long long style;
-@property (readonly) Class superclass;
 
 + (id)dragSubtitleForCardSection:(id)arg1;
 + (id)dragTitleForCardSection:(id)arg1;
@@ -31,13 +25,18 @@
 + (bool)supportsRecyclingForCardSection:(id)arg1;
 
 - (void).cxx_destruct;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (id)chevronView;
 - (id)contentView;
+- (id)description;
 - (void)didInvalidateSizeAnimate:(bool)arg1;
+- (void)didMoveToWindow;
+- (id)embeddedViewController;
 - (id)feedbackDelegate;
-- (id)initWithRowModel:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
+- (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
 - (void)openPunchout:(id)arg1 triggerEvent:(unsigned long long)arg2;
 - (void)presentViewController:(id)arg1;
+- (void)requestRemovalFromEnclosingView;
 - (id)rowModel;
 - (id)section;
 - (id)sendFeedbackForPunchout:(id)arg1 triggerEvent:(unsigned long long)arg2;
@@ -45,10 +44,8 @@
 - (void)setContentView:(id)arg1;
 - (void)setFeedbackDelegate:(id)arg1;
 - (void)setRowModel:(id)arg1;
-- (void)setStyle:(unsigned long long)arg1;
 - (id)setupContentView;
-- (bool)spansFullWidth;
-- (unsigned long long)style;
+- (void)tlk_updateForAppearance:(id)arg1;
 - (void)updateChevronVisible:(bool)arg1 leaveSpaceForChevron:(bool)arg2;
 - (void)updateWithRowModel:(id)arg1;
 

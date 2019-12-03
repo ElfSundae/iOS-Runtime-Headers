@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXMessagesRootGadgetViewController : PXGadgetViewController {
+@interface PXMessagesRootGadgetViewController : PXGadgetUIViewController {
     PXMessagesGadgetDataSourceManager * _messagesDataSourceManager;
 }
 

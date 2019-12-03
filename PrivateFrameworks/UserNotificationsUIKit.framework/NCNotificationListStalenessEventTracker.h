@@ -7,9 +7,11 @@
     NCNotificationListSection * _notificationList;
     NSObject<OS_dispatch_queue> * _queue;
     PETScalarEventTracker * _stalenessEventTracker;
+    NCNotificationStructuredSectionList * _structuredSectionList;
 }
 
 @property (nonatomic) NCNotificationListSection *notificationList;
+@property (nonatomic) NCNotificationStructuredSectionList *structuredSectionList;
 
 + (id)_allMetricsSafeBundleIdentifiers;
 + (id)_metricsSafeBundleIdentifierByBundleIdentifier;
@@ -28,5 +30,7 @@
 - (id)init;
 - (id)notificationList;
 - (void)setNotificationList:(id)arg1;
+- (void)setStructuredSectionList:(id)arg1;
+- (id)structuredSectionList;
 
 @end

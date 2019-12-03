@@ -5,6 +5,7 @@
 @interface UIPress : NSObject <_UIResponderForwardable> {
     bool  _abandonForwardingRecord;
     unsigned long long  _clickCount;
+    unsigned int  _contextID;
     double  _force;
     NSMutableArray * _forwardingRecord;
     unsigned long long  _gameControllerComponent;
@@ -23,6 +24,7 @@
 @property (setter=_setForwardablePhase:, nonatomic) long long _forwardablePhase;
 @property (setter=_setResponder:, nonatomic, retain) UIResponder *_responder;
 @property (nonatomic) unsigned long long clickCount;
+@property (nonatomic, readonly) unsigned int contextID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) double force;
@@ -62,6 +64,7 @@
 - (unsigned long long)_source;
 - (bool)_wantsForwardingFromResponder:(id)arg1 toNextResponder:(id)arg2 withEvent:(id)arg3;
 - (unsigned long long)clickCount;
+- (unsigned int)contextID;
 - (id)description;
 - (double)force;
 - (id)gestureRecognizers;

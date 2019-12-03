@@ -103,6 +103,7 @@
 @property (readonly) double localFramerate;
 @property (nonatomic) void*localVideoLayer;
 @property (getter=isMicrophoneMuted) bool microphoneMuted;
+@property (nonatomic, readonly) long long outputAudioPowerSpectrumToken;
 @property (nonatomic, readonly) float outputMeterLevel;
 @property (getter=isOutputMeteringEnabled) bool outputMeteringEnabled;
 @property (readonly) double remoteBitrate;
@@ -142,6 +143,7 @@
 - (id)localDisplayNameForCallID:(unsigned int)arg1;
 - (double)localFramerate;
 - (void*)localVideoLayer;
+- (long long)outputAudioPowerSpectrumToken;
 - (float)outputMeterLevel;
 - (void)receivedData:(id)arg1 fromParticipantID:(id)arg2;
 - (double)remoteBitrate;

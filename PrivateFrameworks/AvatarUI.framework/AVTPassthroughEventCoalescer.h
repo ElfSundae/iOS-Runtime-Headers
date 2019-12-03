@@ -9,7 +9,7 @@
 @property (nonatomic, copy) id /* block */ handler;
 
 - (void).cxx_destruct;
-- (void)eventDidOccur;
+- (void)eventDidOccur:(id /* block */)arg1;
 - (id /* block */)handler;
 - (void)registerEventForCoalescingWithLabel:(id)arg1 handler:(id /* block */)arg2;
 - (void)setHandler:(id /* block */)arg1;

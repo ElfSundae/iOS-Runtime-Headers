@@ -9,7 +9,11 @@
     long long  _certificationStatus;
     NSString * _identifier;
     long long  _linkType;
-    AWDHomeKitVendorInformation * _vendorInfo;
+    bool  _networkRouterAdd;
+    bool  _networkRouterReplace;
+    HMDAccessory * _pairedAccessory;
+    bool  _usedOwnershipProof;
+    bool  _usedWiFiPPSK;
     bool  _wacLegacy;
 }
 
@@ -22,13 +26,17 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSString *identifier;
 @property (nonatomic) long long linkType;
+@property (getter=isNetworkRouterAdd, nonatomic) bool networkRouterAdd;
+@property (getter=isNetworkRouterReplace, nonatomic) bool networkRouterReplace;
+@property (nonatomic, retain) HMDAccessory *pairedAccessory;
 @property (readonly) Class superclass;
-@property (nonatomic, retain) AWDHomeKitVendorInformation *vendorInfo;
+@property (getter=isUsedOwnershipProof, nonatomic) bool usedOwnershipProof;
+@property (getter=isUsedWiFiPPSK, nonatomic) bool usedWiFiPPSK;
 @property (getter=isWacLegacy, nonatomic) bool wacLegacy;
 
 + (void)initialize;
-+ (id)pairingAccessory:(id)arg1;
-+ (id)pairingAccessoryWithDescription:(id)arg1;
++ (id)pairingAccessory:(id)arg1 home:(id)arg2;
++ (id)pairingAccessoryWithDescription:(id)arg1 home:(id)arg2;
 + (id)removingAccessory:(id)arg1 hapAccessory:(id)arg2;
 + (id)uuid;
 
@@ -37,13 +45,18 @@
 - (unsigned long long)authMethod;
 - (long long)certificationStatus;
 - (id)identifier;
-- (id)initWithAccessoryDescription:(id)arg1;
-- (id)initWithUnpairedAccessory:(id)arg1 pairedAccessory:(id)arg2 hapAccessory:(id)arg3 isAddOperation:(bool)arg4;
+- (id)initWithAccessoryDescription:(id)arg1 home:(id)arg2;
+- (id)initWithUnpairedAccessory:(id)arg1 pairedAccessory:(id)arg2 hapAccessory:(id)arg3 home:(id)arg4 isAddOperation:(bool)arg5;
 - (bool)isAddOperation;
 - (bool)isAddViaWAC;
+- (bool)isNetworkRouterAdd;
+- (bool)isNetworkRouterReplace;
+- (bool)isUsedOwnershipProof;
+- (bool)isUsedWiFiPPSK;
 - (bool)isWacLegacy;
 - (long long)linkType;
 - (id)metricForAWD;
+- (id)pairedAccessory;
 - (void)pairedAccessory:(id)arg1;
 - (void)pairedToServer:(id)arg1 certificationStatus:(long long)arg2;
 - (void)setAddViaWAC:(bool)arg1;
@@ -53,9 +66,11 @@
 - (void)setCertificationStatus:(long long)arg1;
 - (void)setIdentifier:(id)arg1;
 - (void)setLinkType:(long long)arg1;
-- (void)setVendorInfo:(id)arg1;
+- (void)setNetworkRouterAdd:(bool)arg1;
+- (void)setNetworkRouterReplace:(bool)arg1;
+- (void)setPairedAccessory:(id)arg1;
+- (void)setUsedOwnershipProof:(bool)arg1;
+- (void)setUsedWiFiPPSK:(bool)arg1;
 - (void)setWacLegacy:(bool)arg1;
-- (void)setcertificationStatus:(long long)arg1;
-- (id)vendorInfo;
 
 @end

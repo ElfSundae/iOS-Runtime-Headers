@@ -11,7 +11,7 @@
 }
 
 - (void).cxx_destruct;
-- (id)_dependencyAnalyzedRequestsForRequests:(id)arg1;
+- (id)_dependencyAnalyzedRequestsForRequests:(id)arg1 withPerformingContext:(id)arg2 error:(id*)arg3;
 - (id)_orderedRequestsForRequests:(id)arg1;
 - (bool)_performOrderedRequests:(id)arg1 inContext:(id)arg2 error:(id*)arg3;
 - (bool)_validateAndPrepareRequests:(id)arg1 error:(id*)arg2;

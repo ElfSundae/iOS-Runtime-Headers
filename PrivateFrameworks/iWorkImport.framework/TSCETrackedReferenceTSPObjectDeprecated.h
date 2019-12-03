@@ -3,15 +3,15 @@
  */
 
 @interface TSCETrackedReferenceTSPObjectDeprecated : TSPObject {
-    struct TSCEASTNodeArray { char *x1; unsigned long long x2; unsigned long long x3; id x4; } * mAST;
+    struct TSCEASTNodeArray { char *x1; unsigned long long x2; unsigned long long x3; id x4; bool x5; } * mAST;
     struct { 
         unsigned int formulaID : 48; 
     }  mFormulaID;
 }
 
-- (struct TSCEASTNodeArray { char *x1; unsigned long long x2; unsigned long long x3; id x4; }*)ast;
+- (struct TSCEASTNodeArray { char *x1; unsigned long long x2; unsigned long long x3; id x4; bool x5; }*)ast;
 - (void)dealloc;
-- (void)encodeToArchive:(struct TrackedReferenceArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct ASTNodeArrayArchive {} *x5; unsigned int x6; }*)arg1;
+- (void)encodeToArchive:(struct TrackedReferenceArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct ASTNodeArrayArchive {} *x5; unsigned int x6; }*)arg1;
 - (struct { unsigned int x1 : 48; })formulaID;
 - (void)saveToArchiver:(id)arg1;
 - (bool)validatedLoadFromUnarchiver:(id)arg1;

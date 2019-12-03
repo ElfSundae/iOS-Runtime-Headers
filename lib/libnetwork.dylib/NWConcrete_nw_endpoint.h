@@ -7,12 +7,14 @@
     struct nw_hash_table { } * associations;
     NSObject<OS_nw_context> * context;
     char * description;
+    unsigned int  description_used;
     NSObject<OS_nw_interface> * interface;
     unsigned int  is_local_domain;
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
     }  lock;
     char * logging_description;
+    unsigned int  logging_description_used;
     int  original_fd;
     NWConcrete_nw_endpoint * parent_endpoint;
     unsigned int  parent_is_proxy;
@@ -23,9 +25,12 @@
 @property (nonatomic, readonly) const char *domainForPolicy;
 @property (nonatomic, readonly) const char *getDescription;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) const char *hostname;
 @property (nonatomic, readonly) unsigned short port;
+@property (nonatomic) unsigned short priority;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) unsigned int type;
+@property (nonatomic) unsigned short weight;
 
 - (void).cxx_destruct;
 - (id)copyDictionary;
@@ -37,11 +42,16 @@
 - (const char *)getDescription;
 - (unsigned long long)getHash;
 - (const char *)getLoggingDescription;
+- (const char *)hostname;
 - (id)init;
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToEndpoint:(id)arg1 matchInterface:(bool)arg2 matchParent:(bool)arg3;
 - (unsigned short)port;
+- (unsigned short)priority;
 - (id)redactedDescription;
+- (void)setPriority:(unsigned short)arg1;
+- (void)setWeight:(unsigned short)arg1;
 - (unsigned int)type;
+- (unsigned short)weight;
 
 @end

@@ -20,11 +20,11 @@
 @property bool deliveredPlaceholder;
 @property (retain) NSString *sandboxExtensionToken;
 
+- (void).cxx_destruct;
 - (long long)EXIFOrientation;
 - (id)URL;
 - (id)UTI;
 - (bool)canDownloadFromCloud;
-- (void)dealloc;
 - (long long)deliveredFormat;
 - (bool)deliveredPlaceholder;
 - (id)description;

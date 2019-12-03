@@ -2,18 +2,20 @@
    Image: /System/Library/PrivateFrameworks/SearchUI.framework/SearchUI
  */
 
-@interface SearchUISuggestionCardSectionView : SearchUICardSectionView {
+@interface SearchUISuggestionCardSectionView : SearchUICardSectionView <NUIContainerViewDelegate> {
     SearchUIImageView * _iconView;
-    TLKEmojiableVibrantLabel * _suggestionLabel;
+    TLKLabel * _suggestionLabel;
 }
 
-@property (retain) NUIContainerStackView *contentView;
-@property (retain) SearchUIImageView *iconView;
-@property (retain) TLKEmojiableVibrantLabel *suggestionLabel;
+@property (nonatomic, retain) NUIContainerStackView *contentView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, retain) SearchUIImageView *iconView;
+@property (nonatomic, retain) TLKLabel *suggestionLabel;
+@property (readonly) Class superclass;
 
-+ (id)_imageForSuggestion:(id)arg1 withStyle:(unsigned long long)arg2;
-+ (id)suggestedContactIconWithStyle:(unsigned long long)arg1;
-+ (id)suggestedQueryIconWithStyle:(unsigned long long)arg1;
++ (void)initialize;
 + (bool)supportsRecyclingForCardSection:(id)arg1;
 
 - (void).cxx_destruct;
@@ -22,6 +24,8 @@
 - (void)setSuggestionLabel:(id)arg1;
 - (id)setupContentView;
 - (id)suggestionLabel;
+- (void)tlk_updateForAppearance:(id)arg1;
+- (void)updateMargins;
 - (void)updateWithRowModel:(id)arg1;
 
 @end

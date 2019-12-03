@@ -7,6 +7,8 @@
     NTKHandView * _chronoFlybackSecondHandView;
     NTKHandView * _chronoMinuteHandView;
     NTKHandView * _chronoSecondHandView;
+    bool  _isChronoAnimationRunning;
+    bool  _minuteHandUsesManualTime;
     NTKChronoPalette * _palette;
     unsigned long long  _timeScale;
 }
@@ -15,6 +17,7 @@
 @property (nonatomic, readonly) NTKHandView *chronoFlybackSecondHandView;
 @property (nonatomic, readonly) NTKHandView *chronoMinuteHandView;
 @property (nonatomic, readonly) NTKHandView *chronoSecondHandView;
+@property (nonatomic) bool minuteHandUsesManualTime;
 @property (nonatomic, retain) NTKChronoPalette *palette;
 @property (nonatomic) unsigned long long timeScale;
 
@@ -37,8 +40,10 @@
 - (id)chronoSecondHandView;
 - (id)initForDevice:(id)arg1;
 - (void)layoutSubviews;
+- (bool)minuteHandUsesManualTime;
 - (id)palette;
 - (double)secondsAnimationFPS;
+- (void)setMinuteHandUsesManualTime:(bool)arg1;
 - (void)setPalette:(id)arg1;
 - (void)setTimeScale:(unsigned long long)arg1;
 - (void)showChronoMode;

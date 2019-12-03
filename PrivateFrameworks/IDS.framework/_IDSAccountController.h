@@ -57,8 +57,6 @@
 - (void)removeDelegate:(id)arg1;
 - (id)serviceName;
 - (void)setupAccountWithLoginID:(id)arg1 aliases:(id)arg2 password:(id)arg3 completionHandler:(id /* block */)arg4;
-- (void)setupAccountWithLoginID:(id)arg1 authToken:(id)arg2 profileID:(id)arg3 selfHandle:(id)arg4 aliases:(id)arg5 completionHandler:(id /* block */)arg6;
-- (void)setupAccountWithLoginID:(id)arg1 authToken:(id)arg2 profileID:(id)arg3 selfHandle:(id)arg4 completionHandler:(id /* block */)arg5;
 - (void)setupAccountWithLoginID:(id)arg1 password:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)setupAccountWithSetupParameters:(id)arg1 aliases:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)setupCompleteForAccount:(id)arg1 transactionID:(id)arg2 setupError:(id)arg3;

@@ -3,6 +3,7 @@
  */
 
 @interface CRKCourseEnrollmentController : NSObject <CATTaskOperationNotificationDelegate, CRKSettingsPaneInfoProvider, CRKStudentDaemonProxyObserver> {
+    NSSet * _acceptedInvitationIdentifiers;
     NSArray * _activeCourseIdentifiers;
     NSArray * _activeInstructorIdentifiers;
     unsigned long long  _configurationType;
@@ -18,6 +19,7 @@
     CRKSecureCodedUserDefaultsObject * mStoredCourses;
 }
 
+@property (nonatomic, copy) NSSet *acceptedInvitationIdentifiers;
 @property (nonatomic, copy) NSArray *activeCourseIdentifiers;
 @property (nonatomic, copy) NSArray *activeInstructorIdentifiers;
 @property (nonatomic) unsigned long long configurationType;
@@ -31,6 +33,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)acceptedInvitationIdentifiers;
 - (id)activeCourseIdentifiers;
 - (id)activeInstructorIdentifiers;
 - (void)applicationDidEnterBackground:(id)arg1;
@@ -63,6 +66,7 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (id)observingInstructorIdentifiersByCourseIdentifiers;
 - (void)screenObserversHaveChanged:(id)arg1;
+- (void)setAcceptedInvitationIdentifiers:(id)arg1;
 - (void)setActiveCourseIdentifiers:(id)arg1;
 - (void)setActiveInstructorIdentifiers:(id)arg1;
 - (void)setConfigurationType:(unsigned long long)arg1;

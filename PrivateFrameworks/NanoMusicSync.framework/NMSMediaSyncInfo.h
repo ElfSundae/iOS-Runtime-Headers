@@ -29,10 +29,14 @@
 - (id)info;
 - (id)initWithTarget:(unsigned long long)arg1;
 - (id)itemsForContainer:(id)arg1;
+- (unsigned long long)numberOfItemsOverStorageLimit;
+- (unsigned long long)numberOfItemsOverStorageLimitForContainer:(id)arg1;
 - (unsigned long long)playabilityForContainer:(id)arg1;
+- (float)progress;
 - (float)progressForContainer:(id)arg1;
 - (float)progressForItem:(id)arg1;
 - (void)setInfo:(id)arg1;
+- (unsigned long long)status;
 - (unsigned long long)statusForContainer:(id)arg1;
 - (unsigned long long)statusForItem:(id)arg1;
 - (unsigned long long)target;

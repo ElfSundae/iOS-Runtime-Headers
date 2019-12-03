@@ -31,6 +31,7 @@
 - (int)attribute;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)creationTime;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (int)entity;
 - (id)init;

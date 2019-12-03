@@ -24,6 +24,7 @@
 @property (nonatomic, readonly) NSCloudKitMirroringDelegateOptions *mirroringOptions;
 
 + (void)initialize;
++ (id)mirroringContainer;
 + (id)newObjectModel;
 + (id)sharedContainer;
 
@@ -40,7 +41,6 @@
 - (id)_nextTransactionAfterToken:(id)arg1 context:(id)arg2 error:(id*)arg3;
 - (id)_valueForDatabaseProperty:(id)arg1 context:(id)arg2;
 - (id)cloudStore;
-- (void)dealloc;
 - (id)localStore;
 - (id)metadata;
 - (id)mirroringOptions;

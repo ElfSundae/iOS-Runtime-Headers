@@ -21,6 +21,7 @@
     NSSet * _sourcePersonBackingAssetIdentifiers;
 }
 
+@property (nonatomic, readonly) NSString *anonymizedName;
 @property (nonatomic, retain) NSMutableSet *backingAssetIdentifiers;
 @property (nonatomic, retain) NSMutableSet *backingFaceIdentifiers;
 @property (nonatomic, retain) NSMutableDictionary *backingFaceIdentifiersByMomentIdentifiers;
@@ -41,7 +42,6 @@
 @property (nonatomic, readonly) NSString *localIdentifier;
 @property (nonatomic) long long manualOrder;
 @property (nonatomic, retain) NSMutableSet *mergedPersonIdentifiers;
-@property (nonatomic, readonly) NSString *name;
 @property (nonatomic) <PVPhotoLibraryProtocol> *photoLibrary;
 @property (nonatomic) bool quarantined;
 @property (nonatomic, retain) NSMutableDictionary *representativeFaceByFaceIdentifiers;
@@ -53,6 +53,7 @@
 
 - (void).cxx_destruct;
 - (void)_cacheDates;
+- (id)anonymizedName;
 - (id)backingAssetIdentifiers;
 - (id)backingFaceIdentifiers;
 - (id)backingFaceIdentifiersByMomentIdentifiers;
@@ -79,7 +80,6 @@
 - (id)localIdentifier;
 - (long long)manualOrder;
 - (id)mergedPersonIdentifiers;
-- (id)name;
 - (id)personLocalIdentifiers;
 - (id)photoLibrary;
 - (void)pv_addMergeCandidatePersons:(id)arg1;

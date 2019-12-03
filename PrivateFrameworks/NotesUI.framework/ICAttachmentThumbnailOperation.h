@@ -2,11 +2,12 @@
    Image: /System/Library/PrivateFrameworks/NotesUI.framework/NotesUI
  */
 
-@interface ICAttachmentThumbnailOperation : NSBlockOperation {
+@interface ICAttachmentThumbnailOperation : NSOperation <ICAttachmentThumbnailOperation> {
+    ICAppearanceInfo * _appearanceInfo;
     NSManagedObjectID * _attachmentID;
     ICAttachmentPreviewImageLoader * _attachmentPreviewImageLoader;
     bool  _attachmentPropertiesCaptured;
-    NSCache * _cache;
+    ICThumbnailDataCache * _cache;
     NSString * _cacheKey;
     NSMutableArray * _completionBlocks;
     id /* block */  _fallbackBlock;
@@ -18,14 +19,16 @@
         double height; 
     }  _minSize;
     id /* block */  _processingBlock;
+    ICAttachmentThumbnailOperationQueue * _queue;
     double  _scale;
     bool  _showAsFileIcon;
 }
 
+@property (nonatomic, retain) ICAppearanceInfo *appearanceInfo;
 @property (nonatomic, retain) NSManagedObjectID *attachmentID;
 @property (nonatomic, retain) ICAttachmentPreviewImageLoader *attachmentPreviewImageLoader;
 @property (nonatomic) bool attachmentPropertiesCaptured;
-@property (nonatomic, retain) NSCache *cache;
+@property (nonatomic, retain) ICThumbnailDataCache *cache;
 @property (nonatomic, retain) NSString *cacheKey;
 @property (nonatomic, retain) NSMutableArray *completionBlocks;
 @property (nonatomic, copy) id /* block */ fallbackBlock;
@@ -34,11 +37,13 @@
 @property (nonatomic, retain) NSURL *mediaURL;
 @property (nonatomic) struct CGSize { double x1; double x2; } minSize;
 @property (nonatomic, copy) id /* block */ processingBlock;
+@property (nonatomic) ICAttachmentThumbnailOperationQueue *queue;
 @property (nonatomic) double scale;
 @property (nonatomic) bool showAsFileIcon;
 
 - (void).cxx_destruct;
 - (void)addCompletionBlock:(id /* block */)arg1;
+- (id)appearanceInfo;
 - (id)attachmentID;
 - (id)attachmentPreviewImageLoader;
 - (bool)attachmentPropertiesCaptured;
@@ -48,13 +53,17 @@
 - (id)completionBlocks;
 - (id /* block */)fallbackBlock;
 - (unsigned long long)imageScaling;
-- (id)initWithAttachment:(id)arg1 size:(struct CGSize { double x1; double x2; })arg2 scale:(double)arg3 cache:(id)arg4 cacheKey:(id)arg5 processingBlock:(id /* block */)arg6 completionBlock:(id /* block */)arg7 fallbackBlock:(id /* block */)arg8;
+- (id)initWithAttachment:(id)arg1 size:(struct CGSize { double x1; double x2; })arg2 scale:(double)arg3 appearanceInfo:(id)arg4 cache:(id)arg5 cacheKey:(id)arg6 processingBlock:(id /* block */)arg7 completionBlock:(id /* block */)arg8 fallbackBlock:(id /* block */)arg9 queue:(id)arg10;
+- (bool)isMatchingOperationForCacheKey:(id)arg1 cache:(id)arg2;
 - (bool)isMovie;
 - (void)main;
 - (id)mediaURL;
 - (struct CGSize { double x1; double x2; })minSize;
 - (id /* block */)processingBlock;
+- (id)queue;
+- (void)requestThumbnail;
 - (double)scale;
+- (void)setAppearanceInfo:(id)arg1;
 - (void)setAttachmentID:(id)arg1;
 - (void)setAttachmentPreviewImageLoader:(id)arg1;
 - (void)setAttachmentPropertiesCaptured:(bool)arg1;
@@ -67,6 +76,7 @@
 - (void)setMediaURL:(id)arg1;
 - (void)setMinSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setProcessingBlock:(id /* block */)arg1;
+- (void)setQueue:(id)arg1;
 - (void)setScale:(double)arg1;
 - (void)setShowAsFileIcon:(bool)arg1;
 - (bool)showAsFileIcon;

@@ -95,7 +95,7 @@
 - (double)minimumScrubberWidth;
 - (double)minimumTransportControlsWidth;
 - (double)playButtonCenterToBottomDistance;
-- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })playbackControlsViewLayoutMarginsForView:(id)arg1 isFullScreen:(bool)arg2;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })playbackControlsViewLayoutMarginsForView:(id)arg1 keyboardHeight:(double)arg2 isFullScreen:(bool)arg3;
 - (struct CGSize { double x1; double x2; })routePickerButtonFullScreenSize;
 - (struct CGSize { double x1; double x2; })routePickerButtonInlineSize;
 - (double)scrubberCenterToScrubInstructionsDistance;

@@ -6,8 +6,8 @@
     <_DKSyncLocalKnowledgeStorage> * _localStorage;
     _DKSyncPeer * _me;
     struct _CDPerfEvent { 
-        unsigned long long CDPM_startTime; 
-        unsigned long long CDPM_endTime; 
+        double startTime; 
+        double endTime; 
     }  _perfEvent;
     _CDMutablePerfMetric * _perfMetric;
     _DKSync2Policy * _policy;

@@ -21,9 +21,18 @@
 @property (getter=isUndefined, nonatomic, readonly) bool undefined;
 @property (retain) id value;
 
++ (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })cropRectFromOptions:(id)arg1;
 + (id)featureValueOfType:(long long)arg1 fromObject:(id)arg2 error:(id*)arg3;
++ (id)featureValueWithCGImage:(struct CGImage { }*)arg1 constraint:(id)arg2 options:(id)arg3 error:(id*)arg4;
++ (id)featureValueWithCGImage:(struct CGImage { }*)arg1 orientation:(unsigned int)arg2 constraint:(id)arg3 options:(id)arg4 error:(id*)arg5;
++ (id)featureValueWithCGImage:(struct CGImage { }*)arg1 orientation:(unsigned int)arg2 pixelsWide:(long long)arg3 pixelsHigh:(long long)arg4 pixelFormatType:(unsigned int)arg5 options:(id)arg6 error:(id*)arg7;
++ (id)featureValueWithCGImage:(struct CGImage { }*)arg1 pixelsWide:(long long)arg2 pixelsHigh:(long long)arg3 pixelFormatType:(unsigned int)arg4 options:(id)arg5 error:(id*)arg6;
 + (id)featureValueWithDictionary:(id)arg1 error:(id*)arg2;
 + (id)featureValueWithDouble:(double)arg1;
++ (id)featureValueWithImageAtURL:(id)arg1 constraint:(id)arg2 options:(id)arg3 error:(id*)arg4;
++ (id)featureValueWithImageAtURL:(id)arg1 orientation:(unsigned int)arg2 constraint:(id)arg3 options:(id)arg4 error:(id*)arg5;
++ (id)featureValueWithImageAtURL:(id)arg1 orientation:(unsigned int)arg2 pixelsWide:(long long)arg3 pixelsHigh:(long long)arg4 pixelFormatType:(unsigned int)arg5 options:(id)arg6 error:(id*)arg7;
++ (id)featureValueWithImageAtURL:(id)arg1 pixelsWide:(long long)arg2 pixelsHigh:(long long)arg3 pixelFormatType:(unsigned int)arg4 options:(id)arg5 error:(id*)arg6;
 + (id)featureValueWithInt64:(long long)arg1;
 + (id)featureValueWithInt64KeyDictionary:(id)arg1;
 + (id)featureValueWithMultiArray:(id)arg1;
@@ -32,6 +41,7 @@
 + (id)featureValueWithString:(id)arg1;
 + (id)featureValueWithStringKeyDictionary:(id)arg1;
 + (id)undefinedFeatureValueWithType:(long long)arg1;
++ (unsigned long long)visionCropAndScaleOptionFromOptions:(id)arg1;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -41,6 +51,7 @@
 - (id)dictionaryValue;
 - (double)doubleValue;
 - (id)getFeatureSize:(id*)arg1;
+- (id)getFeatureSize:(id*)arg1 ndArrayMode:(bool)arg2;
 - (unsigned long long)hash;
 - (struct __CVBuffer { }*)imageBufferValue;
 - (id)initWithUndefinedValueAndType:(long long)arg1;

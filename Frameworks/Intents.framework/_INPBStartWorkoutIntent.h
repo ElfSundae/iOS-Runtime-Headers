@@ -3,6 +3,7 @@
  */
 
 @interface _INPBStartWorkoutIntent : PBCodable <NSCopying, NSSecureCoding, _INPBStartWorkoutIntent> {
+    bool  __encodeLegacyGloryData;
     _INPBDouble * _goalValue;
     struct { 
         unsigned int isOpenEnded : 1; 
@@ -16,6 +17,7 @@
     _INPBDataString * _workoutName;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) _INPBDouble *goalValue;
@@ -33,11 +35,16 @@
 @property (nonatomic) int workoutLocationType;
 @property (nonatomic, retain) _INPBDataString *workoutName;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (int)StringAsWorkoutGoalUnitType:(id)arg1;
 - (int)StringAsWorkoutLocationType:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (id)goalValue;
 - (bool)hasGoalValue;
 - (bool)hasIntentMetadata;
@@ -46,6 +53,7 @@
 - (bool)hasWorkoutLocationType;
 - (bool)hasWorkoutName;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)intentMetadata;
 - (bool)isEqual:(id)arg1;
 - (bool)isOpenEnded;

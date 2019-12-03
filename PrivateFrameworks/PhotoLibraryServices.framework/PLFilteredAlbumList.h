@@ -16,7 +16,7 @@
 @property (nonatomic, readonly, retain) NSString *_prettyDescription;
 @property (nonatomic, readonly, retain) NSString *_typeDescription;
 @property (nonatomic, readonly) short albumListType;
-@property (nonatomic, readonly, retain) NSMutableOrderedSet *albums;
+@property (nonatomic, readonly) NSMutableOrderedSet *albums;
 @property (nonatomic, readonly) unsigned long long albumsCount;
 @property (nonatomic, readonly, copy) id /* block */ albumsSortingComparator;
 @property (nonatomic, retain) PLManagedAlbumList *backingAlbumList;
@@ -28,9 +28,9 @@
 @property (nonatomic) int filter;
 @property (nonatomic, readonly, copy) NSIndexSet *filteredIndexes;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly, retain) PLIndexMapper *indexMapper;
+@property (nonatomic, readonly) PLIndexMapper *indexMapper;
 @property (nonatomic, readonly) bool isFolder;
-@property (nonatomic, readonly, retain) PLPhotoLibrary *photoLibrary;
+@property (nonatomic, readonly) PLPhotoLibrary *photoLibrary;
 @property (nonatomic, retain) NSPredicate *predicate;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) unsigned long long unreadAlbumsCount;
@@ -63,7 +63,6 @@
 - (int)filter;
 - (id)filteredAlbumsAtIndexes:(id)arg1;
 - (id)filteredIndexes;
-- (void)getFilteredAlbums:(id*)arg1 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (bool)hasAtLeastOneAlbum;
 - (id)identifier;
 - (unsigned long long)indexInFilteredAlbumsOfObject:(id)arg1;

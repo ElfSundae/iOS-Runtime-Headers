@@ -3,10 +3,18 @@
  */
 
 @interface HDQueryManager : NSObject <HDDiagnosticObject, HDProcessStateObserver> {
+    long long  _countOfExecutingThrottledDatabaseAccessBlocks;
     HDDaemon * _daemon;
+    NSMutableArray * _executingDatabaseAccessBlocks;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _lock;
+    NSMutableArray * _pendingDatabaseAccessBlocks;
     NSMutableDictionary * _queryCollectionsByProcessBundleIdentifier;
     NSMutableDictionary * _queryServersByUUID;
-    NSObject<OS_dispatch_queue> * _queue;
+    <HDQueryManagerUnitTestDelegate> * _unitTest_delegate;
+    NSObject<OS_dispatch_queue> * _unitTest_delegateQueue;
+    long long  _unitTest_suspendCount;
 }
 
 @property (nonatomic, readonly) HDDaemon *daemon;
@@ -14,21 +22,37 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property <HDQueryManagerUnitTestDelegate> *unitTest_delegate;
+@property (retain) NSObject<OS_dispatch_queue> *unitTest_delegateQueue;
 
 - (void).cxx_destruct;
+- (void)_didExecuteDatabaseAccessBlock:(id)arg1;
+- (bool)_lock_canDequeueBlock:(id)arg1;
+- (id)_lock_dequeueNextDatabaseAccessBlock;
+- (void)_lock_executeDatabaseAccessBlocks;
+- (id)_lock_foregroundBundleIdentifiers;
+- (void)_lock_handleClientStateChangeWithQueryCollection:(id)arg1;
+- (id)_lock_queryCollectionForBundleIdentifier:(id)arg1 createIfNecessary:(bool)arg2;
+- (id)_lock_registerQueryServer:(id)arg1 bundleIdentifier:(id)arg2;
+- (id)_lock_registerQueryServer:(id)arg1 error:(id*)arg2;
+- (void)_lock_startQueryServer:(id)arg1 completion:(id /* block */)arg2;
+- (void)_lock_unregisterQueryServer:(id)arg1;
+- (void)_lock_willExecuteDatabaseAccessBlock:(id)arg1;
 - (void)_logQueryActivationWithServer:(id)arg1;
+- (void)_performAsyncWithUnitTestDelegate:(id /* block */)arg1;
 - (void)_queryServerDidFinish:(id)arg1;
-- (void)_queue_processWithBundleIdentifier:(id)arg1 didSuspend:(bool)arg2;
-- (id)_queue_queryCollectionForBundleIdentifier:(id)arg1 createIfNecessary:(bool)arg2;
-- (id)_queue_registerQueryServer:(id)arg1;
-- (void)_queue_startQueryServer:(id)arg1 handler:(id /* block */)arg2;
-- (void)_queue_unregisterQueryServer:(id)arg1;
 - (id)daemon;
 - (void)dealloc;
 - (id)diagnosticDescription;
 - (id)initWithDaemon:(id)arg1;
-- (void)processResumed:(id)arg1;
-- (void)processSuspended:(id)arg1;
-- (void)startQueryServer:(id)arg1 handler:(id /* block */)arg2;
+- (void)logDiagnostics;
+- (void)processWithBundleIdentifier:(id)arg1 didTransitionFromState:(unsigned int)arg2 toState:(unsigned int)arg3;
+- (void)scheduleDatabaseAccessForQueryServer:(id)arg1 block:(id /* block */)arg2;
+- (void)setUnitTest_delegate:(id)arg1;
+- (void)setUnitTest_delegateQueue:(id)arg1;
+- (void)startQueryServer:(id)arg1 completion:(id /* block */)arg2;
+- (id)unitTest_delegate;
+- (id)unitTest_delegateQueue;
+- (void)unitTest_suspendWithCount:(unsigned long long)arg1;
 
 @end

@@ -14,6 +14,7 @@
     MRAVDistantExternalDeviceMetadata * _externalDeviceMetadata;
     bool  _hasEverAttemptedToConnect;
     NSXPCConnection * _hostedExternalDeviceConnection;
+    bool  _isValid;
     id /* block */  _nameCallback;
     NSObject<OS_dispatch_queue> * _nameCallbackQueue;
     NSObject<OS_dispatch_queue> * _serialQueue;

@@ -18,6 +18,7 @@
 - (struct CGSize { double x1; double x2; })_bestAllowedSizeForAllowedSizesDictionary:(id)arg1;
 - (id)_errorHandlingHostProxy;
 - (void)_requestHandlingOfIntent:(id)arg1;
+- (void)_willBeginEditing;
 - (struct CGSize { double x1; double x2; })hostedViewMaximumAllowedSize;
 - (struct CGSize { double x1; double x2; })hostedViewMinimumAllowedSize;
 - (id)initWithInputItems:(id)arg1 listenerEndpoint:(id)arg2 contextUUID:(id)arg3;

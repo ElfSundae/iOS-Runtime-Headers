@@ -37,6 +37,7 @@
     unsigned long long  _metricCompressionErrors;
     unsigned int  _metricDisconnects;
     unsigned long long  _metricFileSizeBuckets;
+    unsigned long long  _metricLastFileCompletionTicks;
     unsigned int  _metricLinkTypeCountAWDL;
     unsigned int  _metricLinkTypeCountOther;
     unsigned int  _metricLinkTypeCountUSB;

@@ -9,6 +9,7 @@
     <SFSQLiteDelegate> * _delegate;
     bool  _hasMigrated;
     NSString * _objectClassPrefix;
+    NSDateFormatter * _oldDateFormatter;
     unsigned long long  _openCount;
     NSString * _path;
     NSString * _schema;
@@ -26,6 +27,7 @@
 @property (nonatomic, readonly) bool hasMigrated;
 @property (nonatomic, readonly) bool isOpen;
 @property (nonatomic, retain) NSString *objectClassPrefix;
+@property (nonatomic, retain) NSDateFormatter *oldDateFormatter;
 @property (nonatomic) unsigned long long openCount;
 @property (nonatomic, readonly) NSString *path;
 @property (nonatomic, readonly) NSString *schema;
@@ -67,6 +69,7 @@
 - (bool)isOpen;
 - (long long)lastInsertRowID;
 - (id)objectClassPrefix;
+- (id)oldDateFormatter;
 - (void)open;
 - (unsigned long long)openCount;
 - (bool)openWithError:(id*)arg1;
@@ -91,6 +94,7 @@
 - (void)setDb:(struct sqlite3 { }*)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setObjectClassPrefix:(id)arg1;
+- (void)setOldDateFormatter:(id)arg1;
 - (void)setOpenCount:(unsigned long long)arg1;
 - (void)setProperty:(id)arg1 forKey:(id)arg2;
 - (void)setSynchronousMode:(long long)arg1;

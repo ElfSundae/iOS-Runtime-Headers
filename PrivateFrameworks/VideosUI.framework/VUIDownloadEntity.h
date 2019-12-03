@@ -11,6 +11,7 @@
     NSNumber * _numberOfMediaItems;
     NSNumber * _numberOfMediaItemsDownloading;
     NSNumber * _releaseYear;
+    NSObject<VUIMediaEntityIdentifier> * _showIdentifier;
     NSString * _title;
 }
 
@@ -25,6 +26,7 @@
 @property (nonatomic, retain) NSNumber *numberOfMediaItems;
 @property (nonatomic, retain) NSNumber *numberOfMediaItemsDownloading;
 @property (nonatomic, retain) NSNumber *releaseYear;
+@property (nonatomic, retain) NSObject<VUIMediaEntityIdentifier> *showIdentifier;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSString *title;
 
@@ -50,7 +52,9 @@
 - (void)setNumberOfMediaItems:(id)arg1;
 - (void)setNumberOfMediaItemsDownloading:(id)arg1;
 - (void)setReleaseYear:(id)arg1;
+- (void)setShowIdentifier:(id)arg1;
 - (void)setTitle:(id)arg1;
+- (id)showIdentifier;
 - (id)title;
 
 @end

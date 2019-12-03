@@ -4,6 +4,7 @@
 
 @interface TSgPTPNetworkPort : TSgPTPPort {
     bool  _asCapable;
+    NSMutableArray * _clients;
     unsigned int  _connection;
     NSString * _destinationAddressString;
     bool  _enabled;
@@ -79,6 +80,7 @@
 - (bool)_commonInitWithService:(unsigned int)arg1;
 - (id)_destinationAddressString;
 - (bool)_enabled;
+- (void)_handleNotification:(int)arg1 withArg1:(unsigned long long)arg2 andArg2:(unsigned long long)arg3;
 - (bool)_hasLocalFrequencyStability;
 - (bool)_hasLocalFrequencyTolerance;
 - (bool)_hasRemoteFrequencyStability;
@@ -109,8 +111,10 @@
 - (BOOL)_remoteSyncLogMeanInterval;
 - (unsigned char)_remoteTimestampingMode;
 - (id)_sourceAddressString;
+- (void)addClient:(id)arg1;
 - (unsigned int)connection;
 - (void)dealloc;
+- (bool)deregisterAsyncCallbackError:(id*)arg1;
 - (id)destinationAddressString;
 - (bool)disablePortError:(id*)arg1;
 - (bool)enablePortError:(id*)arg1;
@@ -120,8 +124,6 @@
 - (bool)hasLocalFrequencyTolerance;
 - (bool)hasRemoteFrequencyStability;
 - (bool)hasRemoteFrequencyTolerance;
-- (id)initWithMatchingDictionary:(id)arg1;
-- (id)initWithService:(unsigned int)arg1;
 - (id)interfaceName;
 - (bool)isASCapable;
 - (BOOL)localAnnounceLogMeanInterval;
@@ -140,6 +142,7 @@
 - (unsigned short)overridenReceivePortNumber;
 - (unsigned int)propagationDelay;
 - (unsigned int)propagationDelayLimit;
+- (bool)registerAsyncCallbackError:(id*)arg1;
 - (BOOL)remoteAnnounceLogMeanInterval;
 - (unsigned long long)remoteClockIdentity;
 - (unsigned int)remoteFrequencyStability;
@@ -149,6 +152,7 @@
 - (unsigned short)remotePortNumber;
 - (BOOL)remoteSyncLogMeanInterval;
 - (unsigned char)remoteTimestampingMode;
+- (void)removeClient:(id)arg1;
 - (bool)requestRemoteMessageIntervalsWithPDelayMessageInterval:(BOOL)arg1 syncMessageInterval:(BOOL)arg2 announceMessageInterval:(BOOL)arg3 error:(id*)arg4;
 - (bool)restoreReceiveMatchingError:(id*)arg1;
 - (void)setAsCapable:(bool)arg1;

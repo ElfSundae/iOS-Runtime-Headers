@@ -12,7 +12,7 @@
 @property (nonatomic, readonly) CUTCheckpointRange *sendToDaemon;
 @property (nonatomic, readonly) CUTCheckpointRange *waitForACK;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithStartDate:(id)arg1 endDate:(id)arg2 name:(id)arg3 uniqueIdentifier:(id)arg4;
 - (id)initWithUniqueIdentifier:(id)arg1;
 - (id)messageOnQueue;

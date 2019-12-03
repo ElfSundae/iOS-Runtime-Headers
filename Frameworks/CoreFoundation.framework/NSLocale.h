@@ -7,10 +7,14 @@
 @property (readonly) long long ITUCountryCode;
 @property (readonly) long long _calendarDirection;
 @property (readonly, copy) NSArray *availableNumberingSystems;
+@property (readonly, copy) NSString *explanationTextForSelectableScripts;
 @property (nonatomic, readonly) bool hk_isUSLocale;
-@property (nonatomic, readonly) NSString *languageIdentifier;
 @property (readonly) NSString *languageIdentifier;
+@property (nonatomic, readonly) NSString *languageIdentifier;
 @property (readonly, copy) NSString *numberingSystem;
+@property (readonly, copy) NSString *optionNameForSelectableScripts;
+@property (readonly, copy) NSString *optionNameWithColonForSelectableScripts;
+@property (readonly, copy) NSArray *selectableScriptCodes;
 @property (nonatomic) int wf_temperatureUnit;
 
 // Image: /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
@@ -95,6 +99,7 @@
 + (id)autoupdatingCurrentLocale;
 + (id)mostPreferredLanguageOf:(id)arg1 forUsage:(unsigned long long)arg2 options:(unsigned long long)arg3;
 + (id)mostPreferredLanguageOf:(id)arg1 withPreferredLanguages:(id)arg2 forUsage:(unsigned long long)arg3 options:(unsigned long long)arg4;
++ (id)preferredLocale;
 + (void)registerPreferredLanguage:(id)arg1 usage:(unsigned long long)arg2 confidence:(float)arg3;
 + (void)setPreferredLanguages:(id)arg1;
 + (id)systemLanguages;
@@ -111,6 +116,7 @@
 + (void)hk_setTestLocale:(id)arg1;
 + (id)hk_testableAutoupdatingCurrentLocale;
 
+- (bool)hk_isEquivalent:(id)arg1;
 - (bool)hk_isUSLocale;
 
 // Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
@@ -136,6 +142,11 @@
 
 - (id)af_aceTemperatureUnit;
 
+// Image: /System/Library/PrivateFrameworks/BusinessChatService.framework/BusinessChatService
+
++ (id)currentCountry;
++ (id)currentLanguage;
+
 // Image: /System/Library/PrivateFrameworks/CalendarFoundation.framework/CalendarFoundation
 
 - (bool)CalLanguageIsSimplifiedChinese;
@@ -156,6 +167,17 @@
 
 + (bool)crk_showPhoneticNames;
 
+// Image: /System/Library/PrivateFrameworks/EmailFoundation.framework/EmailFoundation
+
++ (id)ef_localesFromLanguages:(id)arg1;
++ (id)ef_posixLocale;
++ (id)ef_quotePairsForLanguages:(id)arg1;
++ (id)ef_quotePairsForLocales:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/IconServices.framework/IconServices
+
++ (unsigned long long)_IS_currentLanguageDirection;
+
 // Image: /System/Library/PrivateFrameworks/InternationalSupport.framework/InternationalSupport
 
 + (id)_ICUdisplayNameForLanguage:(id)arg1 capitalization:(struct ULocaleDisplayNames { }*)arg2;
@@ -163,12 +185,14 @@
 + (id)_displayNameForLanguage:(id)arg1 displayLanguage:(id)arg2 context:(long long)arg3;
 + (id)_displayNameForNormalizedLanguage:(id)arg1 context:(long long)arg2 displayLanguage:(id)arg3;
 + (id)_displayNameForRegion:(id)arg1 displayLanguage:(id)arg2 context:(long long)arg3 short:(bool)arg4;
-+ (id)_filterLanguageList:(id)arg1 forRegion:(id)arg2 fromLanguages:(id)arg3;
++ (id)_globalPreferredLanguages;
 + (id)_languageNameOverrides;
-+ (id)_languagesForRegionWithoutFiltering:(id)arg1;
++ (id)_languagesForRegion:(id)arg1 subdivision:(id)arg2 withThreshold:(long long)arg3;
 + (id)_languagesToExemplarStrings;
 + (id)_normalizedLanguageIdentifierFromString:(id)arg1;
 + (id)_parentLocaleIdentifierForIdentifier:(id)arg1;
++ (id)_regionLanguageDataForRegionCode:(id)arg1 subdivisionCode:(id)arg2;
++ (id)_supportedKeyboardLanguages;
 + (id)baseLanguageFromLanguage:(id)arg1;
 + (id)baseSystemLanguages;
 + (id)deviceLanguage;
@@ -176,12 +200,16 @@
 + (id)displayNameForRegion:(id)arg1 displayLanguage:(id)arg2 context:(long long)arg3 short:(bool)arg4;
 + (id)exemplarForLanguage:(id)arg1;
 + (id)languageFromLanguage:(id)arg1 byReplacingRegion:(id)arg2;
++ (id)languagesByAddingRelatedLanguagesToLanguages:(id)arg1;
++ (id)languagesForRegion:(id)arg1 subdivision:(id)arg2 withThreshold:(long long)arg3 filter:(long long)arg4;
 + (id)matchedLanguagesFromAvailableLanguages:(id)arg1 forPreferredLanguages:(id)arg2;
++ (id)relatedLanguagesForLanguage:(id)arg1;
++ (id)scriptCodeFromLanguage:(id)arg1;
 + (id)supportedLanguages;
 + (id)supportedRegions;
-+ (id)systemLanguagesForRegion:(id)arg1;
 
 - (id)availableNumberingSystems;
+- (id)countryCodeTopLevelDomainsUsingPunycode:(bool)arg1;
 - (id)displayNameForLanguage:(id)arg1 displayLanguage:(id)arg2 context:(long long)arg3;
 - (id)displayNameForRegion:(id)arg1 displayLanguage:(id)arg2 context:(long long)arg3 short:(bool)arg4;
 - (bool)isEquivalentTo:(id)arg1;
@@ -193,6 +221,8 @@
 
 // Image: /System/Library/PrivateFrameworks/IntlPreferences.framework/IntlPreferences
 
++ (id)_sanitizedLanguageIdentifierFromKeyboardLanguage:(id)arg1;
++ (id)_subdivisionCodeFromSubdivisionTag:(id)arg1 restrictedToRegionCode:(id)arg2;
 + (id)addLikelySubtagsForLocaleIdentifier:(id)arg1;
 + (id)archivedPreferences;
 + (id)canonicalLanguageAndScriptCodeIdentifierForIdentifier:(id)arg1;
@@ -201,9 +231,9 @@
 + (id)canonicalLocaleIdentifierWithValidCalendarForComponents:(id)arg1;
 + (id)deviceLanguageIdentifier;
 + (id)deviceLanguageLocale;
++ (id)displayNameForSelectableScriptCode:(id)arg1;
 + (void)enableDefaultKeyboardForPreferredLanguages;
 + (id)languageArrayAfterSettingLanguage:(id)arg1 fallback:(id)arg2 toLanguageArray:(id)arg3;
-+ (bool)localeLanguageMatchesPrimaryLanguage;
 + (void)registerPreferredLanguageForAddedKeyboardLanguage:(id)arg1;
 + (id)renderableLanguagesFromList:(id)arg1;
 + (id)renderableLocaleLanguages;
@@ -216,13 +246,22 @@
 + (void)setLocaleAndResetTimeFormat:(id)arg1;
 + (void)setLocaleOnly:(id)arg1;
 + (bool)shouldShowPreferredLanguages;
-+ (id)string:(id)arg1 withCapitalizedDisplayNamesForFirstLanguageIdentifier:(id)arg2 secondLanguageIdentifier:(id)arg3 thirdLanguageIdentifier:(id)arg4;
 + (id)supportedCJLanguageIdentifiers;
++ (void)unregisterPreferredLanguageForKeyboardLanguage:(id)arg1;
 + (void)updateShouldShowPreferredLanguages:(bool)arg1;
 + (id)validateLocale:(id)arg1;
 
+- (id)_languagesForMultilingualSetupWithKeyboardsIDs:(id)arg1;
+- (bool)_requiresMultilingualSetupWithKeyboardIDs:(id)arg1;
+- (id)defaultLanguagesForMultilingualSetup;
+- (id)explanationTextForSelectableScripts;
 - (id)languageIdentifier;
+- (id)languagesForMultilingualSetup;
 - (id)localeByChangingLanguageTo:(id)arg1;
+- (id)optionNameForSelectableScripts;
+- (id)optionNameWithColonForSelectableScripts;
+- (bool)requiresMultilingualSetup;
+- (id)selectableScriptCodes;
 
 // Image: /System/Library/PrivateFrameworks/MobileTimer.framework/MobileTimer
 
@@ -296,10 +335,6 @@
 
 + (id)localeForBundleLanguage:(id)arg1;
 
-// Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
-
-+ (id)_UIKBPreferredLocale;
-
 // Image: /System/Library/PrivateFrameworks/VectorKit.framework/VectorKit
 
 + (long long)_vk_indexForLocale:(id)arg1;
@@ -312,6 +347,10 @@
 
 - (void)setWf_temperatureUnit:(int)arg1;
 - (int)wf_temperatureUnit;
+
+// Image: /System/Library/PrivateFrameworks/WorkflowKit.framework/WorkflowKit
+
++ (bool)isGerman;
 
 // Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
 

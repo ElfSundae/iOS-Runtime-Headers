@@ -3,9 +3,7 @@
  */
 
 @interface PXUIScrollViewController : PXScrollViewController <PXUIScrollViewDelegate, UIScrollViewDelegate> {
-    UIView * _contentView;
     bool  _isScrollingToTop;
-    bool  _isUpdatingContentBounds;
     _PXUIScrollView * _scrollView;
 }
 
@@ -24,8 +22,14 @@
 - (void)addSubviewToScrollView:(struct NSObject { Class x1; }*)arg1;
 - (void)applyScrollInfo:(id)arg1;
 - (id)contentCoordinateSpace;
+- (bool)deferContentOffsetUpdates;
+- (bool)hasWindow;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (bool)isDecelerating;
+- (bool)isDragging;
+- (bool)isScrolledAtEdge:(unsigned int)arg1 tolerance:(double)arg2;
 - (bool)isScrollingToTop;
+- (bool)isTracking;
 - (void)removeGestureRecognizer:(id)arg1;
 - (void)scrollRectToVisible:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 avoidingContentInsetEdges:(unsigned long long)arg2 animated:(bool)arg3;
 - (id)scrollView;
@@ -43,10 +47,12 @@
 - (void)scrollViewLayoutIfNeeded;
 - (struct CGSize { double x1; double x2; })scrollViewReferenceSize;
 - (bool)scrollViewShouldScrollToTop:(id)arg1;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })scrollViewTargetRect;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })scrollViewVisibleRect;
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint { double x1; double x2; })arg2 targetContentOffset:(inout struct CGPoint { double x1; double x2; }*)arg3;
 - (void)scrollViewWillLayoutSubviews:(id)arg1;
+- (void)setDeferContentOffsetUpdates:(bool)arg1;
 - (void)setScrollViewContentBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setScrollViewNeedsLayout;
 - (void)setScrollingToTop:(bool)arg1;
@@ -54,7 +60,6 @@
 
 // Image: /System/Library/PrivateFrameworks/AssetExplorer.framework/AssetExplorer
 
-- (void)ae_ensureSubview:(id)arg1;
 - (void)ae_ensureSubview:(id)arg1;
 
 @end

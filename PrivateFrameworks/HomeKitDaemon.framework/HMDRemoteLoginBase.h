@@ -27,7 +27,6 @@
 
 + (bool)hasMessageReceiverChildren;
 + (id)logCategory;
-+ (bool)shouldAcceptMessage:(id)arg1 home:(id)arg2;
 
 - (void).cxx_destruct;
 - (id)accessory;

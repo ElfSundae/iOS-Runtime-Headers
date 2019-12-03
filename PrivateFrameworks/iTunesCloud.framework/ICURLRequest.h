@@ -27,6 +27,7 @@
     NSData * _resumeData;
     unsigned long long  _retryCount;
     double  _retryDelay;
+    double  _startTime;
     NSURLSessionTask * _task;
     long long  _type;
     NSURLRequest * _urlRequest;
@@ -58,6 +59,7 @@
 @property (nonatomic, readonly, copy) NSData *resumeData;
 @property (nonatomic) unsigned long long retryCount;
 @property (nonatomic) double retryDelay;
+@property (nonatomic) double startTime;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSURLSessionTask *task;
 @property (nonatomic) long long type;
@@ -115,10 +117,12 @@
 - (void)setResponseHandler:(id)arg1;
 - (void)setRetryCount:(unsigned long long)arg1;
 - (void)setRetryDelay:(double)arg1;
+- (void)setStartTime:(double)arg1;
 - (void)setTask:(id)arg1;
 - (void)setType:(long long)arg1;
 - (void)setUrlResponse:(id)arg1;
 - (void)setWaitSemaphore:(id)arg1;
+- (double)startTime;
 - (id)task;
 - (long long)type;
 - (void)updateState:(long long)arg1;

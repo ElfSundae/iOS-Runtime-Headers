@@ -15,8 +15,11 @@
     <MTLComputePipelineState> * _laplacianDavidKernel;
     <MTLComputePipelineState> * _laplacianJacobiKernel;
     <MTLLibrary> * _library;
-    <MTLTexture> * _tmpOut16;
-    <MTLTexture> * _tmpOut32;
+    <MTLResourceGroupSPI> * _temporaryTextureGroup;
+    <MTLTexture> * _tmpOut16_0;
+    <MTLTexture> * _tmpOut16_1;
+    <MTLTexture> * _tmpOut32_0;
+    <MTLTexture> * _tmpOut32_1;
     unsigned long long  _width;
 }
 

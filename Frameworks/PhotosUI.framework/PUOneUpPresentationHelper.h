@@ -5,7 +5,6 @@
 @interface PUOneUpPresentationHelper : NSObject <PUPhotosPreviewPresentationControllerDelegate, PUPinchedTileTrackerDelegate, PUTilingViewControllerTransitionEndPoint, PUTilingViewTileSource, PUTilingViewTileTransitionDelegate, PUTilingViewTileUseDelegate, UIGestureRecognizerDelegate> {
     NSSet * __assetReferencesDisplayedInTilingView;
     id /* block */  __browsingSessionCreationBlock;
-    PUCameraPreviewTransitionDelegate * __cameraPreviewTransitionDelegate;
     PUTilingView * __disappearingTilingView;
     bool  __isEndingPresentation;
     bool  __isPerformingNonAnimatedPush;
@@ -60,7 +59,6 @@
 
 @property (setter=_setAssetReferencesDisplayedInTilingView:, nonatomic, retain) NSSet *_assetReferencesDisplayedInTilingView;
 @property (nonatomic, readonly, copy) id /* block */ _browsingSessionCreationBlock;
-@property (setter=_setCameraPreviewTransitionDelegate:, nonatomic, retain) PUCameraPreviewTransitionDelegate *_cameraPreviewTransitionDelegate;
 @property (setter=_setDisappearingTilingView:, nonatomic) PUTilingView *_disappearingTilingView;
 @property (setter=_setEndingPresentation:, nonatomic) bool _isEndingPresentation;
 @property (setter=_setIsPerformingNonAnimatedPush:, nonatomic) bool _isPerformingNonAnimatedPush;
@@ -94,8 +92,7 @@
 - (void).cxx_destruct;
 - (id)_assetReferencesDisplayedInTilingView;
 - (id /* block */)_browsingSessionCreationBlock;
-- (id)_cameraPreviewTransitionDelegate;
-- (void)_cleanUpAfterTilingViewTransitionAnimated:(bool)arg1;
+- (void)_cleanUpAfterTilingViewTransitionAnimated:(bool)arg1 transitionAborted:(bool)arg2;
 - (void)_cleanupOneUpViewControllerForDismissalIfNeeded;
 - (void)_configureNavigationController:(id)arg1;
 - (id)_createOneUpViewControllerWithBrowsingSession:(id)arg1 options:(unsigned long long)arg2;
@@ -123,10 +120,8 @@
 - (void)_presentationEndDidTimeOut:(long long)arg1;
 - (long long)_presentationEndTimeoutIdentifier;
 - (long long)_presentationOrigin;
-- (id)_scrollViewForPreviewing;
 - (void)_setAssetReferencesDisplayedInTilingView:(id)arg1;
 - (void)_setBrowsingSession:(id)arg1;
-- (void)_setCameraPreviewTransitionDelegate:(id)arg1;
 - (void)_setDisappearingTilingView:(id)arg1;
 - (void)_setEndingPresentation:(bool)arg1;
 - (void)_setIsPerformingNonAnimatedPush:(bool)arg1;
@@ -153,7 +148,6 @@
 - (void)_updateLayout;
 - (void)_updateLayout:(id)arg1;
 - (void)_updatePresentationInfoIfNeeded;
-- (void)_updatePreviewingScrubber;
 - (void)_updateTapGestureRecognizer;
 - (id)assetDisplayDelegate;
 - (void)beginUsingBlackTheme;

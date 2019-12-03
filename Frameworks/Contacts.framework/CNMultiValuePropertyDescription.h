@@ -8,6 +8,7 @@
 @property (nonatomic, readonly) bool isMultiValue;
 @property (nonatomic, readonly) bool isSingleValue;
 @property (nonatomic, readonly) Class labeledValueClass;
+@property (nonatomic, readonly) NSArray *managedLabels;
 @property (nonatomic, readonly) id /* block */ plistTransform;
 @property (nonatomic, readonly) NSArray *standardLabels;
 @property (nonatomic, readonly) Class valueClass;
@@ -37,8 +38,11 @@
 - (bool)isValidMultiValueValue:(id)arg1 error:(id*)arg2;
 - (bool)isValidValue:(id)arg1 error:(id*)arg2;
 - (Class)labeledValueClass;
+- (id)localizedStringForLabel:(id)arg1;
+- (id)managedLabels;
 - (id /* block */)plistTransform;
 - (id)standardLabels;
+- (id)standardLabelsWithOptions:(unsigned long long)arg1;
 - (id)stringForIndexingForContact:(id)arg1;
 - (Class)valueClass;
 - (id)valueWithResetIdentifiers:(id)arg1;
@@ -50,6 +54,7 @@
 - (id /* block */)CNLabeledValueFromABSMultiValueTranform;
 - (id)CNValueFromABSValue:(void*)arg1;
 - (id /* block */)dictionaryBasedMultiValueTransformWithLabelMapping:(id)arg1 inputKeys:(id)arg2 destinationClass:(Class)arg3 valueMapping:(id)arg4;
+- (bool)isABSLabeledValueValue:(id)arg1 equalToValue:(id)arg2;
 - (id /* block */)multiValueTransformWithLabelMapping:(id)arg1 valueTransform:(id /* block */)arg2;
 - (id /* block */)passThroughMultivalueTransformWithLabelMapping:(id)arg1;
 

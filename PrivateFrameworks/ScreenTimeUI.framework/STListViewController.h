@@ -29,6 +29,7 @@
 - (void)specifierProvider:(id)arg1 popToViewControllerAnimated:(bool)arg2;
 - (void)specifierProvider:(id)arg1 presentViewController:(id)arg2 animated:(bool)arg3;
 - (void)specifierProvider:(id)arg1 presentViewController:(id)arg2 animated:(bool)arg3 completion:(id /* block */)arg4;
+- (void)specifierProvider:(id)arg1 reloadSectionHeaderFootersWithAnimation:(long long)arg2;
 - (void)specifierProvider:(id)arg1 reloadSpecifier:(id)arg2 animated:(bool)arg3;
 - (void)specifierProvider:(id)arg1 showConfirmationViewForSpecifier:(id)arg2;
 - (void)specifierProvider:(id)arg1 showController:(id)arg2 animated:(bool)arg3;
@@ -37,6 +38,7 @@
 - (void)specifierProviderEndUpdates:(id)arg1;
 - (id)specifierProviders;
 - (id)specifiers;
+- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (id)visibleSpecifierProviders;

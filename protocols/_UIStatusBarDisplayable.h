@@ -8,6 +8,7 @@
 - (UIAccessibilityHUDItem *)accessibilityHUDRepresentation;
 - (void)applyStyleAttributes:(_UIStatusBarStyleAttributes *)arg1;
 - (long long)overriddenVerticalAlignment;
+- (bool)prefersBaselineAlignment;
 - (bool)wantsCrossfade;
 
 @end

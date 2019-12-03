@@ -16,7 +16,7 @@
 - (void)addDequeueCallback:(id /* block */)arg1;
 - (void)addNotification:(id)arg1 asDead:(bool)arg2;
 - (unsigned long long)count;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (void)dequeue:(unsigned long long)arg1 block:(id /* block */)arg2;
 - (id)description;
 - (id)init;

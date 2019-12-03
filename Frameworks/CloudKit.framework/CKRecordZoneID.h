@@ -10,6 +10,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy) NSString *hmbDescription;
 @property (nonatomic, readonly) NSString *ownerName;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSString *zoneName;
@@ -44,7 +45,6 @@
 // Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
 
 + (id)newFromSqliteStatement:(struct sqlite3_stmt { }*)arg1 atIndex:(int)arg2;
-+ (id)newFromSqliteValue:(struct sqlite3_value { }*)arg1;
 
 - (void)sqliteBind:(struct sqlite3_stmt { }*)arg1 index:(int)arg2;
 
@@ -57,6 +57,10 @@
 - (bool)hd_splitIntoSyncCircleIdentifier:(id*)arg1 storeIdentifier:(id*)arg2;
 - (id)hd_storeIdentifier;
 - (id)hd_syncCircleIdentifier;
+
+// Image: /System/Library/PrivateFrameworks/HomeKitBackingStore.framework/HomeKitBackingStore
+
+- (id)hmbDescription;
 
 // Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
 

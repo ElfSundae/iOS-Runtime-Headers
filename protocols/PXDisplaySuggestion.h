@@ -6,7 +6,6 @@
 @required
 
 - (NSDictionary *)actionProperties;
-- (NSDate *)creationDate;
 - (NSDate *)endDate;
 - (<PXDisplayAssetFetchResult> *)fetchKeyAssets;
 - (NSString *)localIdentifier;

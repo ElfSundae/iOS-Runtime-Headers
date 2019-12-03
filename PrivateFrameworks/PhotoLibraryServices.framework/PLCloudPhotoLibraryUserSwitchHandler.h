@@ -12,6 +12,7 @@
 @property (retain) <PLCloudUserSessionHandling> *sessionHandler;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
 - (id)sessionHandler;

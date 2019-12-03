@@ -12,6 +12,7 @@
     HDEnhancedFTMSData * _initialEnhancedFTMSData;
     HDFitnessMachineDataCharacteristicBase * _initialMachineData;
     HDFitnessMachineStatus * _initialMachineStatus;
+    NSDate * _machinePreferredUntilDate;
     NSDate * _machineStartDate;
     unsigned long long  _machineState;
     NSDate * _machineStateUpdateDate;
@@ -36,6 +37,7 @@
 @property (nonatomic, retain) HDEnhancedFTMSData *initialEnhancedFTMSData;
 @property (nonatomic, retain) HDFitnessMachineDataCharacteristicBase *initialMachineData;
 @property (nonatomic, retain) HDFitnessMachineStatus *initialMachineStatus;
+@property (nonatomic, retain) NSDate *machinePreferredUntilDate;
 @property (nonatomic, retain) NSDate *machineStartDate;
 @property (nonatomic) unsigned long long machineState;
 @property (nonatomic, retain) NSDate *machineStateUpdateDate;
@@ -70,6 +72,7 @@
 - (id)initialEnhancedFTMSData;
 - (id)initialMachineData;
 - (id)initialMachineStatus;
+- (id)machinePreferredUntilDate;
 - (id)machineStartDate;
 - (unsigned long long)machineState;
 - (id)machineStateUpdateDate;
@@ -92,6 +95,7 @@
 - (void)setInitialEnhancedFTMSData:(id)arg1;
 - (void)setInitialMachineData:(id)arg1;
 - (void)setInitialMachineStatus:(id)arg1;
+- (void)setMachinePreferredUntilDate:(id)arg1;
 - (void)setMachineStartDate:(id)arg1;
 - (void)setMachineState:(unsigned long long)arg1;
 - (void)setMachineStateUpdateDate:(id)arg1;

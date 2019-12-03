@@ -20,9 +20,9 @@
 
 + (id)fontMetadataWithSig:(id)arg1 charSet:(int)arg2 panose1:(id)arg3 pitch:(int)arg4 genericFamily:(int)arg5 altNames:(id)arg6;
 
+- (void).cxx_destruct;
 - (id)altNames;
 - (int)charSet;
-- (void)dealloc;
 - (int)genericFamily;
 - (id)initWithSig:(id)arg1 charSet:(int)arg2 panose1:(id)arg3 pitch:(int)arg4 genericFamily:(int)arg5 altNames:(id)arg6;
 - (id)panose1;

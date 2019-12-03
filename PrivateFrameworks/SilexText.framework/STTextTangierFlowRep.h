@@ -33,6 +33,7 @@
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })_accessibilitySelectedTextRange;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (id)accessibilityDataSource;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })accessibilityFrameForScrolling;
 - (id)accessibilityNextTextNavigationElement;
 - (id)accessibilityPreviousTextNavigationElement;
 - (bool)accessibilitySupportsTextSelection;
@@ -45,6 +46,7 @@
 - (id)hitRep:(struct CGPoint { double x1; double x2; })arg1 withGesture:(id)arg2 passingTest:(id /* block */)arg3;
 - (id)icc;
 - (id)interactiveCanvasController;
+- (bool)isAccessibilityElement;
 - (id)itemsForCustomRotor:(id)arg1;
 - (id)linkRotor;
 - (id)orderedSiblings;
@@ -56,7 +58,6 @@
 - (void)setHeadingsRotor:(id)arg1;
 - (void)setIcc:(id)arg1;
 - (void)setLinkRotor:(id)arg1;
-- (bool)shouldBeginEditingWithGesture:(id)arg1;
 - (id)siblings;
 - (id)storage;
 - (id)supportedCustomRotors;

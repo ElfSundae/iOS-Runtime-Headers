@@ -17,6 +17,7 @@
         unsigned int databasePartition : 1; 
         unsigned int databaseType : 1; 
     }  _has;
+    CKCDPCodeServiceRequestOperationGroup * _operationGroup;
     NSString * _userAgent;
     NSString * _userId;
 }
@@ -37,8 +38,10 @@
 @property (nonatomic) bool hasDatabaseType;
 @property (nonatomic, readonly) bool hasDeviceId;
 @property (nonatomic) bool hasDsid;
+@property (nonatomic, readonly) bool hasOperationGroup;
 @property (nonatomic, readonly) bool hasUserAgent;
 @property (nonatomic, readonly) bool hasUserId;
+@property (nonatomic, retain) CKCDPCodeServiceRequestOperationGroup *operationGroup;
 @property (nonatomic, retain) NSString *userAgent;
 @property (nonatomic, retain) NSString *userId;
 
@@ -67,11 +70,13 @@
 - (bool)hasDatabaseType;
 - (bool)hasDeviceId;
 - (bool)hasDsid;
+- (bool)hasOperationGroup;
 - (bool)hasUserAgent;
 - (bool)hasUserId;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)operationGroup;
 - (bool)readFrom:(id)arg1;
 - (void)setApplicationBundleId:(id)arg1;
 - (void)setClientInfo:(id)arg1;
@@ -85,6 +90,7 @@
 - (void)setHasDatabasePartition:(bool)arg1;
 - (void)setHasDatabaseType:(bool)arg1;
 - (void)setHasDsid:(bool)arg1;
+- (void)setOperationGroup:(id)arg1;
 - (void)setUserAgent:(id)arg1;
 - (void)setUserId:(id)arg1;
 - (id)userAgent;

@@ -28,8 +28,6 @@
 @property (nonatomic, copy) NSData *ssid;
 @property (nonatomic, copy) NSString *ssidString;
 
-+ (id)__identifierForPreferredNetwork:(id)arg1;
-+ (id)__preferredNetworkForIOSPreferredNetwork:(struct __WiFiNetwork { }*)arg1;
 + (id)preferredNetworksList;
 + (bool)supportsSecureCoding;
 

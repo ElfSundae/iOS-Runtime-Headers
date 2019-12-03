@@ -14,6 +14,7 @@
 @property (nonatomic, copy) id /* block */ automationCompletionBlock;
 @property (nonatomic, retain) IMDReplayStorageIterationContext *heldDeletionContext;
 @property (nonatomic, readonly) bool isRecordingReplayDB;
+@property (nonatomic, retain) IMDReplayStorageController *storageController;
 @property (nonatomic, retain) NSDictionary *syncTaskByServiceName;
 
 + (long long)batchSize;
@@ -36,8 +37,10 @@
 - (void)scheduleSyncTaskForServices:(id)arg1;
 - (void)setAutomationCompletionBlock:(id /* block */)arg1;
 - (void)setHeldDeletionContext:(id)arg1;
+- (void)setStorageController:(id)arg1;
 - (void)setSyncTaskByServiceName:(id)arg1;
 - (void)startRecordingReplayDatabase;
+- (id)storageController;
 - (bool)storeMessage:(id)arg1 type:(unsigned char)arg2 error:(id*)arg3;
 - (id)syncTaskByServiceName;
 

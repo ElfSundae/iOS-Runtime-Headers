@@ -3,6 +3,7 @@
  */
 
 @interface PKPaymentSetupFieldsViewController : PKPaymentSetupTableViewController <PKNavigationItemController, PKPaymentSetupFieldCellDelegate, UITextFieldDelegate> {
+    bool  _cellsAreEnabled;
     id  _currentNextActionBlock;
     NSMapTable * _fieldIdentifierToCellMap;
     PKPaymentSetupFieldsModel * _fieldsModel;
@@ -11,6 +12,7 @@
     bool  _hidesBackButton;
     NSArray * _leftBarButtonItems;
     bool  _navigationEnabled;
+    bool  _performingNextActionLoop;
     NSArray * _rightBarButtonItems;
     bool  _rightBarButtonItemsEnabled;
     <PKPaymentSetupViewControllerDelegate> * _setupDelegate;
@@ -23,6 +25,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) PKPaymentSetupFieldsModel *fieldsModel;
 @property (readonly) unsigned long long hash;
+@property (getter=isPerformingNextActionLoop, nonatomic, readonly) bool performingNextActionLoop;
 @property (nonatomic) <PKPaymentSetupViewControllerDelegate> *setupDelegate;
 @property (getter=isShowingActivitySpinner, nonatomic, readonly) bool showingActivitySpinner;
 @property (readonly) Class superclass;
@@ -30,8 +33,10 @@
 
 - (void).cxx_destruct;
 - (id)_contextSpecificStringForAggDKey:(id)arg1;
+- (void)_continueNextActionLoop:(bool)arg1;
 - (void)_destroyNavigationBarButtonItemsAnimated:(bool)arg1;
 - (void)_handleNextButtonTapped:(id)arg1;
+- (void)_setCellsEnabled:(bool)arg1;
 - (void)_setIdleTimerDisabled:(bool)arg1 title:(id)arg2 subtitle:(id)arg3;
 - (void)_setLeftBarButtonItems:(id)arg1 animated:(bool)arg2;
 - (void)_setNavigationBarEnabled:(bool)arg1 animated:(bool)arg2;
@@ -67,6 +72,7 @@
 - (id)initWithWebService:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3 setupFieldsModel:(id)arg4;
 - (bool)isComplete;
 - (bool)isEmpty;
+- (bool)isPerformingNextActionLoop;
 - (bool)isShowingActivitySpinner;
 - (void)logAggDCheckpointForKey:(id)arg1;
 - (void)logAggDContextSpecificCheckpointForKey:(id)arg1;

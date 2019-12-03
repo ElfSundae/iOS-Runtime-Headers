@@ -10,6 +10,7 @@
     CLLocationManager * _locationManager;
     NSMutableArray * _locationPendingAssets;
     NSString * _locationStr;
+    PLPhotoLibrary * _photoLibrary;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -21,6 +22,7 @@
 + (id)sharedInstance;
 + (bool)usesEffectiveBundleIdentifier;
 
+- (void).cxx_destruct;
 - (bool)_addLocationToAsset:(id)arg1;
 - (void)_applicationStateChanged:(id)arg1;
 - (void)_assetContainerChanged:(id)arg1;
@@ -35,6 +37,7 @@
 - (id)locationDictionaryForImageWithDeviceOrientation:(int)arg1 rearFacingCamera:(bool)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
 - (id)locationString;
+- (id)photoLibrary;
 - (void)setEnabled:(bool)arg1;
 - (void)setHeadingEnabled:(bool)arg1;
 

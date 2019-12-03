@@ -12,6 +12,7 @@
     NSObject<OS_dispatch_queue> * _delegateQueue;
     bool  _forceOfflineRecognition;
     bool  _hasActiveRequest;
+    AFCallSiteInfo * _initiationCallSiteInfo;
     AFAudioPowerUpdater * _inputAudioPowerUpdater;
     NSObject<OS_dispatch_queue> * _internalQueue;
     bool  _isCapturingSpeech;
@@ -19,6 +20,8 @@
     NSSet * _knownOfflineInstalledLanguages;
     NSString * _lastUsedLanguage;
     bool  _narrowband;
+    NSArray * _previouslyRecognizedPhrases;
+    bool  _recognizingIncrementally;
     NSString * _requestIdString;
     NSObject<OS_dispatch_group> * _speechCallbackGroup;
     AFSpeechRequestOptions * _stopOptions;
@@ -36,6 +39,7 @@
 + (bool)dictationIsSupportedForLanguageCode:(id)arg1 error:(id*)arg2;
 + (void)fetchSupportedLanguageCodes:(id /* block */)arg1;
 + (void)getForcedOfflineDictationSupportedLanguagesWithCompletion:(id /* block */)arg1;
++ (bool)languageDetectorIsEnabled;
 
 - (void).cxx_destruct;
 - (void)_availabilityChanged;
@@ -47,6 +51,7 @@
 - (id)_connection;
 - (void)_connectionClearedForInterruption:(bool)arg1;
 - (void)_delayedStopSpeechWithOptions:(id)arg1;
+- (void)_delegateDidRecognizeSpeechTokens:(id)arg1 languageModel:(id)arg2 delegate:(id)arg3;
 - (id)_dequeueAudioWithLength:(unsigned long long)arg1;
 - (id)_dictationService;
 - (id)_dictationServiceWithErrorHandler:(id /* block */)arg1;
@@ -64,7 +69,8 @@
 - (void)_tellSpeechDelegateAvailabilityChanged;
 - (void)_tellSpeechDelegateDidProcessAudioDuration:(double)arg1;
 - (void)_tellSpeechDelegateDidRecognizePackage:(id)arg1;
-- (void)_tellSpeechDelegateDidRecognizeSpeechPhrases:(id)arg1 languageModel:(id)arg2 correctionIdentifier:(id)arg3;
+- (void)_tellSpeechDelegateDidRecognizePartialResult:(id)arg1;
+- (void)_tellSpeechDelegateDidRecognizeSpeechPhrases:(id)arg1 utterances:(id)arg2 languageModel:(id)arg3 correctionIdentifier:(id)arg4 audioAnalytics:(id)arg5;
 - (void)_tellSpeechDelegateDidRecognizeSpeechTokens:(id)arg1 languageModel:(id)arg2;
 - (void)_tellSpeechDelegateDidRecognizeTranscriptionObjects:(id)arg1 languageModel:(id)arg2;
 - (void)_tellSpeechDelegateRecognitionDidFail:(id)arg1;
@@ -90,14 +96,17 @@
 - (bool)dictationIsAvailableForLanguage:(id)arg1;
 - (void)endSession;
 - (bool)forcedOfflineDictationIsAvailableForLanguage:(id)arg1;
+- (bool)forcedOfflineDictationIsAvailableForLanguage:(id)arg1 synchronous:(bool)arg2;
 - (id)init;
 - (void)networkAvailability:(id)arg1 isAvailable:(bool)arg2;
 - (float)peakPower;
 - (void)preheat;
 - (void)preheatWithRecordDeviceIdentifier:(id)arg1;
+- (void)reportIssueForError:(id)arg1 eventType:(long long)arg2 context:(id)arg3;
 - (void)requestOfflineDictationSupportForLanguage:(id)arg1 completion:(id /* block */)arg2;
 - (void)sendEngagementFeedback:(long long)arg1 voiceQueryIdentifier:(id)arg2;
 - (void)sendSpeechCorrection:(id)arg1 forIdentifier:(id)arg2;
+- (void)sendUserSelectedAlternativeDictationLanguageCode:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDelegateQueue:(id)arg1;
 - (void)startDictationWithLanguageCode:(id)arg1 options:(id)arg2;

@@ -4,16 +4,13 @@
 
 @interface TCXmlStreamWriter : NSObject {
     NSMutableSet * mAddedIds;
-    bool  mContentAdded;
+    bool  mContentAddedToTopElement;
     unsigned int  mCurrentDepth;
-    struct _xmlTextWriter { } * mStreamAPI;
+    TCXmlTextWriterProvider * mTextWriterProvider;
 }
 
-+ (bool)cleanUpXmlTextWriter:(struct _xmlTextWriter { }*)arg1;
-+ (struct _xmlTextWriter { }*)createXmlTextWriterAtEntry:(id)arg1 inOutputStream:(id)arg2 isCompressed:(bool)arg3;
-+ (struct _xmlTextWriter { }*)createXmlTextWriterWithBuffer:(struct _xmlOutputBuffer { void *x1; int (*x2)(); int (*x3)(); struct _xmlCharEncodingHandler {} *x4; struct _xmlBuf {} *x5; struct _xmlBuf {} *x6; int x7; int x8; }*)arg1;
-+ (struct _xmlTextWriter { }*)createXmlTextWriterWithContext:(id)arg1;
 + (bool)endElementInStream:(struct _xmlTextWriter { }*)arg1;
++ (id)newXmlStreamWriterWithZipEntryName:(id)arg1 outputStream:(id)arg2 isCompressed:(bool)arg3;
 + (void)resetElementIds;
 + (bool)startElementInStream:(struct _xmlTextWriter { }*)arg1 name:(id)arg2 prefix:(id)arg3 ns:(const char *)arg4;
 + (bool)startPlainElementInStream:(struct _xmlTextWriter { }*)arg1 name:(id)arg2;
@@ -24,14 +21,20 @@
 + (bool)writePlainAttributeToStream:(struct _xmlTextWriter { }*)arg1 name:(id)arg2 content:(id)arg3;
 + (bool)writeStringToStream:(struct _xmlTextWriter { }*)arg1 text:(id)arg2;
 
-- (bool)contentAdded;
+- (void).cxx_destruct;
+- (bool)contentAddedToTopElement;
+- (unsigned int)currentDepth;
 - (void)dealloc;
 - (bool)endElement;
-- (bool)endElementsToBase;
-- (id)initWithTextWriter:(struct _xmlTextWriter { }*)arg1;
+- (bool)endElementsToDepth:(unsigned int)arg1;
+- (id)initWithTextWriterProvider:(id)arg1;
+- (bool)isWriting;
+- (bool)setUp;
 - (bool)startElement:(id)arg1 prefix:(id)arg2 ns:(const char *)arg3;
 - (bool)startPlainElement:(id)arg1;
+- (bool)tearDown;
 - (struct _xmlTextWriter { }*)textWriter;
+- (id)textWriterProvider;
 - (bool)writeAnchorTarget:(id)arg1;
 - (bool)writeAttribute:(id)arg1 boolContent:(bool)arg2 prefix:(id)arg3 ns:(const char *)arg4;
 - (bool)writeAttribute:(id)arg1 content:(id)arg2 prefix:(id)arg3 ns:(const char *)arg4;

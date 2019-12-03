@@ -6,7 +6,10 @@
 
 + (id)_externalDetailTextColor;
 + (id)_externalTextColor;
++ (void)initialize;
 + (id)layoutManagerForTableViewCellStyle:(long long)arg1;
++ (bool)requiresLegacyLayout;
++ (id)sharedLayoutManager;
 
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_accessoryRectForCell:(id)arg1 offscreen:(bool)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_accessoryRectForCell:(id)arg1 offscreen:(bool)arg2 rowWidth:(double)arg3;
@@ -23,15 +26,21 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_editControlRectForCell:(id)arg1 offscreen:(bool)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_editingAccessoryRectForCell:(id)arg1 offscreen:(bool)arg2;
 - (void)_layoutFocusGuidesForCell:(id)arg1;
+- (void)_legacy_cell:(id)arg1 didTransitionToState:(unsigned long long)arg2;
+- (void)_legacy_cell:(id)arg1 willTransitionToState:(unsigned long long)arg2;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_legacy_contentRectForCell:(id)arg1 forEditingState:(bool)arg2 showingDeleteConfirmation:(bool)arg3 rowWidth:(double)arg4;
+- (void)_legacy_layoutSubviewsOfCell:(id)arg1;
+- (void)_modern_cell:(id)arg1 didTransitionToState:(unsigned long long)arg2;
+- (void)_modern_layoutSubviewsOfCell:(id)arg1;
+- (void)_reconfigureCell:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_reorderControlRectForCell:(id)arg1 offscreen:(bool)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_reorderSeparatorRectForCell:(id)arg1 offscreen:(bool)arg2;
+- (void)_resetTextLabelDefaultFontInCell:(id)arg1;
 - (void)_updateFocusGuidesForCell:(id)arg1 editing:(bool)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })accessoryEndingRectForCell:(id)arg1 forNewEditingState:(bool)arg2 showingDeleteConfirmation:(bool)arg3;
 - (bool)accessoryShouldAppearForCell:(id)arg1;
 - (bool)accessoryShouldFadeForCell:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })accessoryStartingRectForCell:(id)arg1 forNewEditingState:(bool)arg2 showingDeleteConfirmation:(bool)arg3;
-- (void)applyCarPlayDefaultValuesToDetailTextLabel:(id)arg1 inCell:(id)arg2;
-- (void)applyCarPlayDefaultValuesToTextLabel:(id)arg1 inCell:(id)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })backgroundEndingRectForCell:(id)arg1 forNewEditingState:(bool)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })backgroundStartingRectForCell:(id)arg1 forNewEditingState:(bool)arg2;
 - (id)badgeForCell:(id)arg1;
@@ -54,7 +63,6 @@
 - (id)defaultLabelForCell:(id)arg1 ofClass:(Class)arg2;
 - (id)defaultTextLabelFontForCell:(id)arg1;
 - (double)defaultTextLabelFontSizeForCell:(id)arg1;
-- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })deleteConfirmationRectForCell:(id)arg1;
 - (id)detailTextLabelForCell:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })editControlEndingRectForCell:(id)arg1 forNewEditingState:(bool)arg2;
 - (bool)editControlShouldAppearForCell:(id)arg1;
@@ -70,6 +78,7 @@
 - (struct CGSize { double x1; double x2; })intrinsicContentSizeForCell:(id)arg1 rowWidth:(double)arg2;
 - (void)layoutSubviewsOfCell:(id)arg1;
 - (struct CGSize { double x1; double x2; })optimumSizeForLabel:(id)arg1 inTotalTextRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 minimizeWidthOnVerticalOverflow:(bool)arg3 preferSingleLineWidth:(bool)arg4;
+- (void)prepareCellForReuse:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })reorderControlEndingRectForCell:(id)arg1 forNewEditingState:(bool)arg2 showingDeleteConfirmation:(bool)arg3;
 - (bool)reorderControlShouldAppearForCell:(id)arg1;
 - (bool)reorderControlShouldFadeForCell:(id)arg1;

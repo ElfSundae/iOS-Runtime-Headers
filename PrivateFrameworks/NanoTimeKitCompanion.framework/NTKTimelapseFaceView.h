@@ -54,7 +54,6 @@
 - (long long)_utilitySlotForSlot:(id)arg1;
 - (id)_viewForEditOption:(id)arg1;
 - (void)dealloc;
-- (void)didAddSubview:(id)arg1;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 - (void)layoutSubviews;
 - (void)videoPlayerViewDidBeginPlaying:(id)arg1;

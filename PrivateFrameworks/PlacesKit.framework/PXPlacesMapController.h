@@ -51,6 +51,7 @@
 @property <PXPlacesMapControllerChangeDelegate> *changeDelegate;
 @property (retain) PXPlacesMapPipelineExecutionContext *currentExecutionContext;
 @property (nonatomic) int currentLocationAuthorizationStatus;
+@property (nonatomic, readonly) NSOrderedSet *currentSelectedGeotaggables;
 @property (nonatomic, retain) <MKAnnotation> *currentSelection;
 @property (retain) NSMapTable *dataSourceToPipelineMap;
 @property (retain) NSSet *dataSources;
@@ -71,6 +72,8 @@
 @property <PXPlacesMapControllerLoadingStateDelegate> *stateDelegate;
 @property (readonly) Class superclass;
 
++ (void)launchMapsAtCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg1 withTitle:(id)arg2;
+
 - (void).cxx_destruct;
 - (double)_defaultAnimationDuration;
 - (struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })_ensureMinimumSize:(struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })arg1;
@@ -90,6 +93,7 @@
 - (id)createTrackingBarButtonItem;
 - (id)currentExecutionContext;
 - (int)currentLocationAuthorizationStatus;
+- (id)currentSelectedGeotaggables;
 - (id)currentSelection;
 - (void)dataSource:(id)arg1 didChange:(id)arg2;
 - (id)dataSourceToPipelineMap;
@@ -102,7 +106,6 @@
 - (id)init;
 - (struct CLLocationCoordinate2D { double x1; double x2; })initialCenterCoordinate;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })initialEdgePadding;
-- (void)launchMapsAtCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg1 withTitle:(id)arg2;
 - (void)loadView;
 - (id)locationManager;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;

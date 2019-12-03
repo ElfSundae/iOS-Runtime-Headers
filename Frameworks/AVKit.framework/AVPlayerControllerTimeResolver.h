@@ -29,12 +29,12 @@
 @property (getter=isThirtySecondsBeforeCurrentTimeWithinSeekableTimeRanges, readonly) bool thirtySecondsBeforeCurrentTimeWithinSeekableTimeRanges;
 
 + (bool)automaticallyNotifiesObserversOfCurrentTime;
-+ (id)keyPathForValuesAffectingSeekableTimeRangeDuration;
 + (id)keyPathsForValuesAffectingCurrentTimeAtEndOfSeekableTimeRanges;
 + (id)keyPathsForValuesAffectingCurrentTimeWithinEndTimes;
 + (id)keyPathsForValuesAffectingRemainingTargetTimeWithinEndTimes;
 + (id)keyPathsForValuesAffectingRemainingTime;
 + (id)keyPathsForValuesAffectingRemainingTimeWithinEndTimes;
++ (id)keyPathsForValuesAffectingSeekableTimeRangeDuration;
 + (id)keyPathsForValuesAffectingTargetTime;
 + (id)keyPathsForValuesAffectingTargetTimeWithinEndTimes;
 + (id)keyPathsForValuesAffectingThirtySecondsBeforeCurrentTimeWithinSeekableTimeRanges;

@@ -8,11 +8,11 @@
 
 @property (nonatomic, retain) NSMutableArray *blips;
 
+- (void).cxx_destruct;
 - (unsigned int)addBlip:(id)arg1;
 - (id)blipAtIndex:(int)arg1;
 - (unsigned int)blipCount;
 - (id)blips;
-- (void)dealloc;
 - (id)init;
 - (void)setBlips:(id)arg1;
 

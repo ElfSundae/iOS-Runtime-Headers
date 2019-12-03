@@ -9,16 +9,18 @@
         bool respondsToPhotosDetailsContext; 
         bool respondsToInitialAssetReference; 
         bool respondsToCurrentImageForAssetReference; 
-        bool respondsToRegionOfInterestForAssetReferenceInCoordinateSpace; 
+        bool respondsToRegionOfInterestForAssetReference; 
         bool respondsToScrollAssetReferenceToVisible; 
         bool respondsToSetHiddenAssetReferences; 
         bool respondsToShouldAutoPlay; 
+        bool respondsToPreventShowInAllPhotos; 
         bool respondsToActionManager; 
         bool respondsToActionManagerForPreviewing; 
         bool respondsToActionContext; 
         bool respondsToGestureProvider; 
         bool respondsToImportStatusManager; 
         bool respondsToOrigin; 
+        bool respondsToScrollView; 
     }  _delegateFlags;
     bool  _enabled;
     <PXOneUpPresentationImplementationDelegate> * _implementationDelegate;
@@ -47,13 +49,15 @@
 @property (getter=isEnabled, nonatomic) bool enabled;
 @property (nonatomic, readonly) PXGestureProvider *gestureProvider;
 @property (nonatomic) <PXOneUpPresentationImplementationDelegate> *implementationDelegate;
-@property (nonatomic, readonly) <PXImportStatusManager> *importStatusManager;
+@property (nonatomic, readonly) <PXAssetImportStatusManager> *importStatusManager;
 @property (nonatomic, readonly) PXAssetReference *initialAssetReference;
 @property (nonatomic, readonly) PXUIMediaProvider *mediaProvider;
 @property (nonatomic, readonly) long long origin;
 @property (nonatomic) UIViewController *originalPresentingViewController;
 @property (nonatomic, readonly) PXPhotosDetailsContext *photosDetailsContext;
 @property (nonatomic, readonly) UIViewController *presentingViewController;
+@property (nonatomic, readonly) bool preventShowInAllPhotosAction;
+@property (nonatomic, readonly) UIScrollView *scrollView;
 @property (nonatomic, readonly) bool shouldAutoPlay;
 
 // Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
@@ -90,9 +94,11 @@
 - (void)presentingViewControllerViewDidDisappear:(bool)arg1;
 - (void)presentingViewControllerViewWillAppear:(bool)arg1;
 - (void)presentingViewControllerViewWillDisappear:(bool)arg1;
+- (bool)preventShowInAllPhotosAction;
 - (id)previewViewControllerAllowingActions:(bool)arg1;
 - (id)regionOfInterestForAssetReference:(id)arg1;
 - (void)scrollAssetReferenceToVisible:(id)arg1;
+- (id)scrollView;
 - (void)setDelegate:(id)arg1;
 - (void)setEnabled:(bool)arg1;
 - (void)setHiddenAssetReferences:(id)arg1;

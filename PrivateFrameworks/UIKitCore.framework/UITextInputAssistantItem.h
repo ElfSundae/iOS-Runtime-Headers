@@ -11,7 +11,7 @@
     bool  _independentGroupSizes;
     NSArray * _leadingBarButtonGroups;
     double  _marginOverride;
-    UIKeyboardAssistantBar * _owner;
+    bool  _showsBarButtonItemsInline;
     NSArray * _trailingBarButtonGroups;
 }
 
@@ -24,8 +24,8 @@
 @property (getter=_independentGroupSizes, setter=_setIndependentGroupSizes:, nonatomic) bool independentGroupSizes;
 @property (nonatomic, copy) NSArray *leadingBarButtonGroups;
 @property (getter=_marginOverride, setter=_setMarginOverride:, nonatomic) double marginOverride;
-@property (getter=_owner, setter=_setOwner:, nonatomic) UIKeyboardAssistantBar *owner;
 @property (getter=_requiresPredictionDisabled, nonatomic, readonly) bool requiresPredictionDisabled;
+@property (getter=_showsBarButtonItemsInline, setter=_setShowsBarButtonItemsInline:, nonatomic) bool showsBarButtonItemsInline;
 @property (nonatomic, copy) NSArray *trailingBarButtonGroups;
 
 + (id)_keyboardDeleteItem;
@@ -37,7 +37,6 @@
 - (bool)_hasItemsToDisplay;
 - (bool)_independentGroupSizes;
 - (double)_marginOverride;
-- (id)_owner;
 - (bool)_requiresPredictionDisabled;
 - (void)_setCenterBarButtonGroups:(id)arg1;
 - (void)_setDetachedBackgroundColor:(id)arg1;
@@ -45,7 +44,8 @@
 - (void)_setDetachedTintColor:(id)arg1;
 - (void)_setIndependentGroupSizes:(bool)arg1;
 - (void)_setMarginOverride:(double)arg1;
-- (void)_setOwner:(id)arg1;
+- (void)_setShowsBarButtonItemsInline:(bool)arg1;
+- (bool)_showsBarButtonItemsInline;
 - (bool)allowsHidingShortcuts;
 - (void)dealloc;
 - (id)description;

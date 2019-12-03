@@ -16,6 +16,7 @@
 @property (nonatomic, retain) TITypologyLog *typologyLog;
 @property (nonatomic, retain) TITypologyStatistic *typologyStatistic;
 
++ (id)accessibilityConfigInfo;
 + (id)generateStructuredDataReportForTypologyLog:(id)arg1;
 + (void)pruneTypologyLogsToMaxNumBytes:(long long)arg1 satisfyingPredicate:(id /* block */)arg2;
 + (bool)shouldSubmitStructuredDataReportForTypologyLog:(id)arg1;
@@ -37,6 +38,7 @@
 - (void)logKeyboardConfig:(id)arg1 forAdjustedPhraseBoundaryInForwardDirection:(bool)arg2 granularity:(int)arg3 keyboardState:(id)arg4;
 - (void)logKeyboardConfig:(id)arg1 forSyncToKeyboardState:(id)arg2;
 - (void)logKeyboardConfig:(id)arg1 textToCommit:(id)arg2 forAcceptedCandidate:(id)arg3 keyboardState:(id)arg4;
+- (void)logKeyboardLayout:(id)arg1 name:(id)arg2;
 - (void)logKeyboardOutput:(id)arg1 keyboardConfiguration:(id)arg2 forKeyboardInput:(id)arg3 keyboardState:(id)arg4;
 - (void)logReceivedCandidateRejected:(id)arg1;
 - (void)logReceivedLastAcceptedCandidateCorrected;

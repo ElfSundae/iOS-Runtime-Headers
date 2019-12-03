@@ -10,5 +10,7 @@
 - (void)_finishRouteMatch:(id)arg1 previousRouteMatch:(id)arg2 forLocation:(id)arg3;
 - (double)_maxMatchDistance:(double)arg1 routeIndex:(unsigned int)arg2 previousMatchGood:(bool)arg3;
 - (double)_modifiedHorizontalAccuracy:(double)arg1 routeIndex:(unsigned int)arg2;
+- (bool)_supportsSnapping;
+- (id)initWithRoute:(id)arg1;
 
 @end

@@ -8,6 +8,8 @@
 
 @property (nonatomic) int functionIndex;
 
++ (bool)storageExceedsMaxFormulaLength:(id)arg1;
+
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (int)functionIndex;
 - (void)insertFormulaText:(id)arg1 includeWhitespace:(bool)arg2;

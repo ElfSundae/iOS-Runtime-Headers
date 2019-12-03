@@ -25,12 +25,18 @@
 - (void)_handleMediaSessionSetAudioControl:(id)arg1;
 - (void)_handleRefreshPlayback:(id)arg1;
 - (void)_handleSetPlayback:(id)arg1;
+- (void)_handleSetPower:(id)arg1;
+- (void)_handleSetValue:(id)arg1 withRequestProperty:(id)arg2 withCompletionHandler:(id /* block */)arg3;
 - (void)_sessionPlaybackStateUpdated:(id)arg1 notifyXPCClients:(bool)arg2;
-- (void)configureWithMessageDispatcher:(id)arg1;
+- (id)assistantObject;
+- (void)configureWithMessageDispatcher:(id)arg1 configurationTracker:(id)arg2;
 - (id)container;
 - (void)encodeWithCoder:(id)arg1;
 - (void)handleMediaResponses:(id)arg1 message:(id)arg2;
 - (void)handleSessionPlaybackStateUpdatedNotification:(id)arg1;
+- (void)handleSessionUpdatedNotification:(id)arg1;
+- (void)handleSessionVolumeUpdatedNotification:(id)arg1;
+- (void)handleSetValue:(id)arg1 withRequestProperty:(id)arg2 withCompletionHandler:(id /* block */)arg3;
 - (id)initWithAccessory:(id)arg1;
 - (id)initWithAccessory:(id)arg1 uniqueIdentifier:(id)arg2 services:(id)arg3;
 - (id)mediaAccessory;
@@ -44,5 +50,6 @@
 - (void)setMediaSession:(id)arg1;
 - (void)setMediaSystem:(id)arg1;
 - (void)updateWithResponses:(id)arg1 message:(id)arg2;
+- (id)url;
 
 @end

@@ -5,6 +5,7 @@
 @interface VCMediaStream : VCObject <RTCPReportProvider, VCConnectionChangedHandler, VCMediaStreamProtocol, VCMediaStreamTransportDelegate, VCSecurityEventHandler> {
     AVCBasebandCongestionDetector * _basebandCongestionDetector;
     NSString * _callID;
+    int  _clientPID;
     VCDatagramChannelIDS * _datagramChannel;
     double  _decryptionErrorStartTime;
     double  _decryptionTimeoutEnabledTime;
@@ -20,7 +21,10 @@
     struct tagVCMediaQueue { } * _mediaQueue;
     <VCMomentsCollectorDelegate> * _momentsCollectorDelegate;
     VCWeakObjectHolder * _notificationDelegate;
+    int (* _notificationHandler;
     int  _operatingMode;
+    int (* _packetEventHandler;
+    VCCallInfoBlob * _remoteEndpointInfo;
     VCWeakObjectHolder * _rtcpReportProvider;
     NSObject<OS_dispatch_source> * _rtcpSendHeartbeat;
     double  _rtcpTimeoutEnabledTime;
@@ -31,6 +35,7 @@
         long long __sig; 
         BOOL __opaque[56]; 
     }  _streamLock;
+    long long  _streamToken;
     NSObject<OS_dispatch_source> * _timeoutHeartbeat;
     NSMutableArray * _transportArray;
     unsigned int  _transportSessionID;
@@ -61,6 +66,11 @@
                     unsigned short wPort; 
                 } srcRTPIPPort; 
             } ipInfo; 
+            struct { 
+                NSObject<OS_nw_connection> *connection; 
+                struct tagVCNWConnectionMonitor {} *monitor; 
+                int isCallbackSet; 
+            } nwInfo; 
         } ; 
         unsigned int sourceRate; 
         unsigned int datagramChannelToken; 
@@ -89,6 +99,7 @@
 @property (nonatomic) <RTCPReportProvider> *rtcpReportProvider;
 @property (nonatomic, readonly) int state;
 @property (nonatomic, retain) AVCStatisticsCollector *statisticsCollector;
+@property (nonatomic, readonly) long long streamToken;
 @property (readonly) Class superclass;
 
 + (bool)isSameSRTPKey:(id)arg1 newKey:(id)arg2;
@@ -98,11 +109,12 @@
 - (void)checkForDecryptionTimeout;
 - (void)checkRTCPPacketTimeoutAgainstTime:(double)arg1 lastReceivedPacketTime:(double)arg2;
 - (void)checkRTPPacketTimeoutAgainstTime:(double)arg1 lastReceivedPacketTime:(double)arg2;
+- (void)cleanupNWInfo:(struct { id x1; struct tagVCNWConnectionMonitor {} *x2; int x3; }*)arg1;
 - (void)collectRxChannelMetrics:(struct { unsigned int x1; unsigned int x2; double x3; }*)arg1;
 - (void)collectRxChannelMetrics:(struct { unsigned int x1; unsigned int x2; double x3; }*)arg1 interval:(float)arg2;
 - (void)collectTxChannelMetrics:(struct { unsigned int x1; unsigned int x2; double x3; }*)arg1;
 - (double)computeNextTimoutWithEnabledTime:(double)arg1 timeoutInterval:(double)arg2 lastReceivedPacketTime:(double)arg3 currentTime:(double)arg4 lastTimeoutReportTime:(double)arg5;
-- (id)createTransport;
+- (id)createTransportWithSSRC:(unsigned int)arg1;
 - (void)dealloc;
 - (void)decryptionStatusChanged:(bool)arg1;
 - (id)defaultStreamConfig;
@@ -113,6 +125,7 @@
 - (unsigned int)getRTCPReportNTPTimeMiddle32ForReportId:(unsigned char)arg1;
 - (void)handleActiveConnectionChange:(id)arg1;
 - (bool)handleEncryptionInfoChange:(id)arg1;
+- (int)handleMediaCallbackNotification:(int)arg1 inData:(void*)arg2 outData:(void*)arg3;
 - (id)init;
 - (id)initWithTransportSessionID:(unsigned int)arg1;
 - (id)initWithTransportSessionID:(unsigned int)arg1 localSSRC:(unsigned int)arg2;
@@ -169,12 +182,16 @@
 - (bool)setStreamConfig:(id)arg1 withError:(id*)arg2;
 - (void)setStreamDirection:(long long)arg1;
 - (void)setStreamIDs:(id)arg1 repairStreamIDs:(id)arg2;
+- (void)setupCallbacksWithNWConnectionMonitor:(struct tagVCNWConnectionMonitor { }*)arg1;
 - (void)setupMediaStream;
+- (bool)setupNWConnectionWithClientID:(unsigned char)arg1;
 - (id)setupRTPForIDS;
 - (id)setupRTPWithIDSDestination:(id)arg1 error:(id*)arg2;
 - (id)setupRTPWithIPInfo:(id)arg1 error:(id*)arg2;
 - (id)setupRTPWithLocalParticipantInfo:(id)arg1 error:(id*)arg2;
-- (id)setupRTPWithSockets:(id)arg1 error:(id*)arg2;
+- (id)setupRTPWithNWConnectionID:(id)arg1 error:(id*)arg2;
+- (void)setupRTPWithRTPSocket:(int)arg1 RTCPSocket:(int)arg2;
+- (id)setupRTPWithSocketDictionary:(id)arg1 error:(id*)arg2;
 - (void)start;
 - (void)startRTCPSendHeartbeat;
 - (void)startTimeoutHeartbeat;
@@ -185,6 +202,7 @@
 - (void)stopTimeoutHeartbeat;
 - (long long)streamDirection;
 - (char *)streamStateToString:(int)arg1;
+- (long long)streamToken;
 - (id)supportedPayloads;
 - (void)timeoutHeartbeat;
 - (void)unlock;

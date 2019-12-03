@@ -14,7 +14,6 @@
     NTKDigitalTimeLabel * _smallTimeLabel;
     NTKDigitalTimeLabelStyle * _smallTimeLabelStyle;
     bool  _snapshotContentViewsLoaded;
-    bool  _statusBarIsVisible;
     UITapGestureRecognizer * _timeTravelExitRecognizer;
     UIView * _timeTravelExitView;
     UILabel * _timeTravelLabel;
@@ -42,14 +41,13 @@
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (void)_configureLargeTimeLabelColors;
 - (void)_configureSmallTimeLabelColors;
+- (void)_createTimeViews;
 - (void)_handleTimeTravelTapGesture:(id)arg1;
 - (void)_initLargeTimeLabelIfNecessary;
 - (void)_initSmallTimeLabelIfNecessary;
 - (double)_keylineCornerRadiusForComplicationSlot:(id)arg1;
-- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_keylineLabelActiveAreaInsetsForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
-- (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (bool)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_layoutForegroundContainerView;
@@ -63,6 +61,7 @@
 - (void)_prepareForStatusChange:(bool)arg1;
 - (void)_prepareToZoomWithIconView:(id)arg1 minDiameter:(double)arg2 maxDiameter:(double)arg3;
 - (void)_prepareWristRaiseAnimation;
+- (void)_removeTimeViews;
 - (void)_scrubToDate:(id)arg1 animated:(bool)arg2;
 - (double)_smallTimeAlphaForEditMode:(long long)arg1;
 - (void)_startScrubbingAnimated:(bool)arg1 withCompletion:(id /* block */)arg2;

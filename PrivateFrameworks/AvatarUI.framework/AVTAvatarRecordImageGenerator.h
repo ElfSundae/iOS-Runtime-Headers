@@ -25,6 +25,7 @@
 - (bool)deleteThumbnailsForAvatarRecordsWithIdentifiers:(id)arg1 error:(id*)arg2;
 - (id)environment;
 - (bool)generateThumbnailForAvatarRecordItem:(id)arg1 avatarConfiguration:(id)arg2 scope:(id)arg3 error:(id*)arg4;
+- (bool)generateThumbnailsForAvatarRecord:(id)arg1 avatar:(id)arg2 error:(id*)arg3;
 - (bool)generateThumbnailsForAvatarRecords:(id)arg1 error:(id*)arg2;
 - (bool)generateThumbnailsForDuplicateAvatarRecord:(id)arg1 originalRecord:(id)arg2 error:(id*)arg3;
 - (id)imageStore;

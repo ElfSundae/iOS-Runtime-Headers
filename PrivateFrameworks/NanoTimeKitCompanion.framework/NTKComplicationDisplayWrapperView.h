@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/NanoTimeKitCompanion.framework/NanoTimeKitCompanion
  */
 
-@interface NTKComplicationDisplayWrapperView : UIControl <NTKComplicationDisplayObserver, NTKControl, NTKTimeTravel> {
+@interface NTKComplicationDisplayWrapperView : UIControl <NTKComplicationDisplayObserver, NTKControl, NTKSensitiveUIStateObserver, NTKTimeTravel> {
     double  _alphaForDimmedState;
     <NTKComplicationDisplayWrapperViewAnimationDelegate> * _animationDelegate;
     UIView * _clipView;
@@ -17,6 +17,7 @@
     UIView * _earlierContainerView;
     bool  _editing;
     long long  _family;
+    <CLKMonochromeFilterProvider> * _filterProvider;
     bool  _hasLegacyDisplay;
     bool  _isAnimating;
     bool  _isDetachedDisplay;
@@ -29,6 +30,7 @@
     id /* block */  _needsResizeHandler;
     UIView<NTKComplicationDisplay> * _nextComplicationView;
     bool  _paused;
+    CLKComplicationTemplate * _prevTemplate;
     bool  _supportsCurvedText;
     bool  _tapEnabled;
     CLKComplicationTemplate * _template;
@@ -48,6 +50,7 @@
 @property (nonatomic, copy) id /* block */ displayConfigurationHandler;
 @property (nonatomic) bool editing;
 @property (nonatomic, readonly) long long family;
+@property (nonatomic) <CLKMonochromeFilterProvider> *filterProvider;
 @property (nonatomic, readonly) bool hasLegacyDisplay;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) long long layoutOverride;
@@ -69,14 +72,16 @@
 - (void)_invokeTouchUpInsideHandler;
 - (void)_prepareToSetDisplay:(id)arg1 withComplicationAnimation:(inout unsigned long long*)arg2;
 - (void)_removeDisplay:(id)arg1;
-- (void)_replaceDisplayWithDisplayClass:(Class)arg1 template:(id)arg2 reason:(long long)arg3 animation:(unsigned long long)arg4;
+- (void)_replaceDisplayWithDisplayClass:(Class)arg1 template:(id)arg2 reason:(long long)arg3 animation:(unsigned long long)arg4 animationType:(unsigned long long)arg5 animationFraction:(float)arg6;
 - (void)_resetComplicationViews;
+- (void)_setComplicationTemplate:(id)arg1 reason:(long long)arg2 animation:(unsigned long long)arg3 animationType:(unsigned long long)arg4 animationFraction:(float)arg5;
 - (void)_setDimmed:(bool)arg1 animated:(bool)arg2;
-- (void)_setDisplay:(id)arg1 withComplicationAnimation:(unsigned long long)arg2;
+- (void)_setDisplay:(id)arg1 withComplicationAnimation:(unsigned long long)arg2 animationType:(unsigned long long)arg3 animationFraction:(float)arg4;
 - (void)_setDisplayEditing:(bool)arg1;
 - (void)_setDisplayMaxSize:(struct CGSize { double x1; double x2; })arg1;
-- (void)_startDefaultNewDataAnimationFromEarlierView:(id)arg1 laterView:(id)arg2 forward:(bool)arg3 completionBlock:(id /* block */)arg4;
+- (void)_timelineAnimationDidFinish;
 - (void)_tryToSetDisplayHighlighted:(bool)arg1;
+- (void)_updateVisibilityForSensitivity:(long long)arg1;
 - (double)alphaForDimmedState;
 - (id)animationDelegate;
 - (void)complicationDisplayNeedsResize:(id)arg1;
@@ -87,6 +92,7 @@
 - (id /* block */)displayConfigurationHandler;
 - (bool)editing;
 - (long long)family;
+- (id)filterProvider;
 - (bool)hasLegacyDisplay;
 - (id)init;
 - (id)initWithCustomTemplateDisplay:(id)arg1 isDetachedDisplay:(bool)arg2 family:(long long)arg3;
@@ -102,15 +108,17 @@
 - (bool)paused;
 - (bool)pointInside:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
 - (struct CGSize { double x1; double x2; })preferredSize;
+- (void)sensitiveUIStateChanged;
 - (void)setAlphaForDimmedState:(double)arg1;
 - (void)setAnimationDelegate:(id)arg1;
 - (void)setComplicationSlotIdentifier:(id)arg1;
 - (void)setComplicationTemplate:(id)arg1 reason:(long long)arg2 animation:(unsigned long long)arg3;
-- (void)setComplicationView:(id)arg1 withComplicationAnimation:(unsigned long long)arg2;
+- (void)setComplicationView:(id)arg1 withComplicationAnimation:(unsigned long long)arg2 animationType:(unsigned long long)arg3 animationFraction:(float)arg4;
 - (void)setDimmed:(bool)arg1;
 - (void)setDimmed:(bool)arg1 animated:(bool)arg2;
 - (void)setDisplayConfigurationHandler:(id /* block */)arg1;
 - (void)setEditing:(bool)arg1;
+- (void)setFilterProvider:(id)arg1;
 - (void)setHighlighted:(bool)arg1;
 - (void)setMaxSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setNeedsResizeHandler:(id /* block */)arg1;

@@ -4,15 +4,19 @@
 
 @interface PHResourceDownloadRequestOptions : NSObject {
     bool  _dontAllowRAW;
+    bool  _downloadAllAssetResources;
     bool  _treatLivePhotoAsStill;
 }
 
 @property (nonatomic) bool dontAllowRAW;
+@property (nonatomic) bool downloadAllAssetResources;
 @property (nonatomic) bool treatLivePhotoAsStill;
 
 - (id)description;
 - (bool)dontAllowRAW;
+- (bool)downloadAllAssetResources;
 - (void)setDontAllowRAW:(bool)arg1;
+- (void)setDownloadAllAssetResources:(bool)arg1;
 - (void)setTreatLivePhotoAsStill:(bool)arg1;
 - (bool)treatLivePhotoAsStill;
 

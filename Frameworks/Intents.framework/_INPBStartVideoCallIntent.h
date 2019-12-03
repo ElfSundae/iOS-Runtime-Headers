@@ -3,6 +3,7 @@
  */
 
 @interface _INPBStartVideoCallIntent : PBCodable <NSCopying, NSSecureCoding, _INPBStartVideoCallIntent> {
+    bool  __encodeLegacyGloryData;
     int  _audioRoute;
     NSArray * _contacts;
     struct { 
@@ -12,6 +13,7 @@
     NSArray * _targetContacts;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic) int audioRoute;
 @property (nonatomic, copy) NSArray *contacts;
 @property (nonatomic, readonly) unsigned long long contactsCount;
@@ -26,10 +28,13 @@
 @property (nonatomic, readonly) unsigned long long targetContactsCount;
 
 + (Class)contactType;
++ (bool)supportsSecureCoding;
 + (Class)targetContactsType;
 
 - (void).cxx_destruct;
 - (int)StringAsAudioRoute:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (void)addContact:(id)arg1;
 - (void)addTargetContacts:(id)arg1;
 - (int)audioRoute;
@@ -41,9 +46,11 @@
 - (unsigned long long)contactsCount;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasAudioRoute;
 - (bool)hasIntentMetadata;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)intentMetadata;
 - (bool)isEqual:(id)arg1;
 - (bool)readFrom:(id)arg1;

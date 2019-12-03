@@ -3,6 +3,8 @@
  */
 
 @interface CSVoiceTriggerStatistics : NSObject <CSVoiceTriggerDelegate> {
+    unsigned long long  _consecutivePHSRejects;
+    double  _lastPHSReject;
     NSObject<OS_dispatch_queue> * _queue;
     unsigned long long  _triggerCount;
 }
@@ -16,8 +18,12 @@
 
 - (void).cxx_destruct;
 - (void)clearTriggerCount;
+- (double)getLastPHSRejectTime;
+- (unsigned long long)getPHSRejectCount;
 - (void)increaseTriggerCount;
+- (void)incrementPHSRejectCount;
 - (id)init;
+- (void)resetPHSRejectCount;
 - (unsigned long long)triggerCount;
 - (void)voiceTriggerDidDetectKeyword:(id)arg1 deviceId:(id)arg2;
 

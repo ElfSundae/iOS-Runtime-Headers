@@ -7,7 +7,7 @@
     NSString * _applicationBundleIdentifier;
     SBSApplicationShortcutService * _applicationShortcutService;
     SBSApplicationShortcutServiceFetchResult * _applicationShortcutServiceFetchResult;
-    double  _applicationShortcutServiceFetchResultExpirationTimeInterval;
+    BSMonotonicReferenceTime * _applicationShortcutServiceFetchResultExpirationReferenceTime;
     NSString * _applicationShortcutWidgetBundleIdentifier;
     NSURL * _bundleURL;
     NSString * _displayName;

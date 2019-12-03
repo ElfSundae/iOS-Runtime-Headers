@@ -40,6 +40,8 @@
         } __ptr_; 
     }  _suddenTerminationDisabler;
     NSData * _syncCircleSizeRetrievalThrottlerData;
+    bool  _syncsWithManateeContainer;
+    WBSHistoryTagDatabaseController * _tagController;
     NSMapTable * _weakVisitsByDatabaseID;
     bool  _writeLastMaintenanceDateOnNextWrite;
     NSTimer * _writeTimer;
@@ -61,6 +63,7 @@
 @property (nonatomic, readonly) NSData *salt;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSData *syncCircleSizeRetrievalThrottlerData;
+@property (nonatomic) bool syncsWithManateeContainer;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -68,14 +71,17 @@
 - (unsigned long long)_cachedNumberOfDevicesInSyncCircleOnDatabaseQueue;
 - (bool)_checkDatabaseIntegrity;
 - (void)_checkpointWriteAheadLog;
+- (Class)_classForHistoryTagType:(unsigned long long)arg1;
 - (void)_clearHistoryVisitsAddedAfterDate:(id)arg1 beforeDate:(id)arg2 addingTombstone:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)_clearHistoryVisitsMatchingURLHash:(id)arg1 salt:(id)arg2 afterDate:(id)arg3 beforeDate:(id)arg4 addingTombstone:(id)arg5 completionHandler:(id /* block */)arg6;
 - (void)_clearHistoryVisitsMatchingURLString:(id)arg1 afterDate:(id)arg2 beforeDate:(id)arg3 addingTombstone:(id)arg4 completionHandler:(id /* block */)arg5;
 - (void)_convertTombstoneWithGenerationToSecureFormat:(long long)arg1;
+- (id)_createHistoryTagsWithIdentifiers:(id)arg1 titles:(id)arg2 type:(unsigned long long)arg3 level:(long long)arg4 error:(id*)arg5;
 - (long long)_currentGeneration;
 - (id)_deletionPlanForDeletionOfVisits:(id)arg1;
 - (void)_enforceAgeAndItemCountLimits:(id /* block */)arg1;
 - (void)_expireOldVisits;
+- (id)_fetchHistoryTagsWithPredicate:(id)arg1 error:(id*)arg2;
 - (void)_finishLoadingOnMainThread;
 - (void)_finishLoadingOnMainThreadIfNeeded;
 - (void)_incrementCurrentGeneration;
@@ -93,11 +99,13 @@
 - (int)_migrateToCurrentSchemaVersionIfNeeded;
 - (void)_openDatabase:(id)arg1 andCheckIntegrity:(bool)arg2;
 - (void)_performMaintenance:(id /* block */)arg1;
+- (bool)_populateHistoryItemsInHistoryTopicTag:(id)arg1 fromStartDate:(id)arg2 toEndDate:(id)arg3 error:(id*)arg4;
 - (void)_processPendingDeletes;
 - (void)_processPendingVisitDeletes;
 - (void)_processPendingWrites;
 - (void)_pruneTombstonesOnDatabaseQueueWithEndDatePriorToDate:(id)arg1;
 - (void)_recomputeDerivedVisitCountScores;
+- (void)_registerHistoryTagFrecencyScoringFunction;
 - (void)_removeVisitsProvidedByBlockInvokedOnDatabaseQueue:(id /* block */)arg1 addingTombstone:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)_scheduleMaintenance;
 - (void)_scheduleWrite;
@@ -107,6 +115,7 @@
 - (int)_setOrigin:(long long)arg1 forVisitsFromOrigin:(long long)arg2;
 - (bool)_shouldEmitLegacyTombstones;
 - (bool)_shouldMigrateFromPropertyListWhenLoadingDatabase:(id)arg1;
+- (id)_tagsWithIdentifiers:(id)arg1 titles:(id)arg2 ofType:(unsigned long long)arg3 level:(long long)arg4 creatingIfNeeded:(bool)arg5 createdTags:(id*)arg6 error:(id*)arg7;
 - (id)_tombstonesNeedingSync;
 - (void)_updateDatabaseAfterSuccessfulSyncWithGeneration:(long long)arg1 convertTombstonesToSecureFormat:(bool)arg2;
 - (void)_updateGenerationForVisits:(id)arg1;
@@ -122,6 +131,7 @@
 - (void)_writeTimerFired;
 - (void)addOrUpdateItemsOnDatabaseQueue:(id)arg1;
 - (id)allVisitsForItemsOnDatabaseQueue:(id)arg1;
+- (void)assignHistoryItem:(id)arg1 toTopicTags:(id)arg2 completionHandler:(id /* block */)arg3;
 - (unsigned long long)cachedNumberOfDevicesInSyncCircle;
 - (void)checkIfLocalVisitExistsInAnyOfItems:(id)arg1 withCompletion:(id /* block */)arg2;
 - (void)clearHistoryVisitsAddedAfterDate:(id)arg1 beforeDate:(id)arg2 completionHandler:(id /* block */)arg3;
@@ -136,6 +146,8 @@
 - (void)enumerateSubsequentVisitsInRedirectChainOnDatabaseQueue:(id)arg1 items:(id)arg2 enumerationBlock:(id /* block */)arg3;
 - (id)existingItemFromVisitRow:(id)arg1;
 - (id)fetchThrottlerData;
+- (void)fetchTopicsFromStartDate:(id)arg1 toEndDate:(id)arg2 completionHandler:(id /* block */)arg3;
+- (void)fetchTopicsFromStartDate:(id)arg1 toEndDate:(id)arg2 limit:(unsigned long long)arg3 minimumItemCount:(unsigned long long)arg4 sortOrder:(long long)arg5 completionHandler:(id /* block */)arg6;
 - (void)getAllTombstonesWithCompletion:(id /* block */)arg1;
 - (void)getServerChangeTokenDataWithCompletion:(id /* block */)arg1;
 - (void)getVisitsAndTombstonesNeedingSyncWithVisitSyncWindow:(double)arg1 completion:(id /* block */)arg2;
@@ -168,9 +180,14 @@
 - (void)setPushThrottlerData:(id)arg1;
 - (void)setServerChangeTokenData:(id)arg1;
 - (void)setSyncCircleSizeRetrievalThrottlerData:(id)arg1;
+- (void)setSyncsWithManateeContainer:(bool)arg1;
+- (void)setTitle:(id)arg1 ofTag:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)startLoading;
 - (id)syncCircleSizeRetrievalThrottlerData;
+- (bool)syncsWithManateeContainer;
+- (void)tagsWithIdentifiers:(id)arg1 type:(unsigned long long)arg2 level:(long long)arg3 creatingIfNecessary:(bool)arg4 withTitles:(id)arg5 completionHandler:(id /* block */)arg6;
 - (void)updateHistoryAfterSuccessfulPersistedLongLivedSaveOperationWithGeneration:(long long)arg1 completion:(id /* block */)arg2;
+- (void)vacuumHistoryWithCompletionHandler:(id /* block */)arg1;
 - (id)visitForItem:(id)arg1 row:(id)arg2;
 - (id)visitForRow:(id)arg1;
 - (void)visitIdentifiersMatchingExistingVisits:(id)arg1 populateAssociatedVisits:(bool)arg2 completion:(id /* block */)arg3;

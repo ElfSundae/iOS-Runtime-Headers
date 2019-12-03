@@ -13,6 +13,7 @@
 - (void).cxx_destruct;
 - (id)initWithPKStroke:(id)arg1 pencilAnnotationDrawingScale:(double)arg2;
 - (id)internalPencilKitStroke;
+- (struct CGPoint { double x1; double x2; })locationAtIndex:(unsigned long long)arg1;
 - (id)peaceMutableStroke;
 - (void)setLocation:(struct CGPoint { double x1; double x2; })arg1 atIndex:(unsigned long long)arg2;
 - (void)setPeaceMutableStroke:(id)arg1;

@@ -3,38 +3,40 @@
  */
 
 @interface PFMirroredManyToManyRelationship : PFMirroredRelationship {
-    NSString * _ckRecordName;
+    CKRecordID * _ckRecordID;
     NSRelationshipDescription * _inverseRelationshipDescription;
-    NSString * _manyToManyRecordName;
+    CKRecordID * _manyToManyRecordID;
     NSString * _manyToManyRecordType;
-    NSString * _relatedCKRecordName;
+    CKRecordID * _relatedCKRecordID;
     NSRelationshipDescription * _relationshipDescription;
     unsigned long long  _type;
 }
 
-@property (nonatomic, readonly) NSString *ckRecordName;
+@property (nonatomic, readonly) CKRecordID *ckRecordID;
 @property (nonatomic, readonly) NSRelationshipDescription *inverseRelationshipDescription;
-@property (nonatomic, readonly) NSString *manyToManyRecordName;
+@property (nonatomic, readonly) CKRecordID *manyToManyRecordID;
 @property (nonatomic, readonly) NSString *manyToManyRecordType;
-@property (nonatomic, readonly) NSString *relatedCKRecordName;
+@property (nonatomic, readonly) CKRecordID *relatedCKRecordID;
 @property (nonatomic, readonly) NSRelationshipDescription *relationshipDescription;
 @property (nonatomic, readonly) unsigned long long type;
 
++ (bool)_isValidMirroredRelationshipRecord:(id)arg1 values:(id)arg2;
 + (id)ckRecordNameForOrderedRecordNames:(id)arg1;
 + (id)ckRecordTypeForOrderedRelationships:(id)arg1;
 + (id)orderRelationships:(id)arg1;
 + (id)orderedRelationshipsForRecordType:(id)arg1 andManagedObjectModel:(id)arg2;
 + (id)recordNamesFromManyToManyCKRecordName:(id)arg1;
 
-- (void)_setManyToManyRecordName:(id)arg1 manyToManyRecordType:(id)arg2 ckRecordName:(id)arg3 relatedCKRecordName:(id)arg4 relationshipDescription:(id)arg5 inverseRelationshipDescription:(id)arg6;
-- (id)ckRecordName;
+- (void)_setManyToManyRecordID:(id)arg1 manyToManyRecordType:(id)arg2 ckRecordID:(id)arg3 relatedCKRecordID:(id)arg4 relationshipDescription:(id)arg5 inverseRelationshipDescription:(id)arg6 type:(unsigned long long)arg7;
+- (id)ckRecordID;
 - (void)dealloc;
-- (id)initWithRecordName:(id)arg1 recordType:(id)arg2 managedObjectModel:(id)arg3 andType:(unsigned long long)arg4;
+- (id)description;
+- (id)initWithRecordID:(id)arg1 recordType:(id)arg2 managedObjectModel:(id)arg3 andType:(unsigned long long)arg4;
 - (id)inverseRelationshipDescription;
-- (id)manyToManyRecordName;
+- (id)manyToManyRecordID;
 - (id)manyToManyRecordType;
-- (id)recordTypesToRecordNames;
-- (id)relatedCKRecordName;
+- (id)recordTypeToRecordID;
+- (id)relatedCKRecordID;
 - (id)relationshipDescription;
 - (unsigned long long)type;
 - (bool)updateRelationshipValueUsingImportContext:(id)arg1 andManagedObjectContext:(id)arg2 error:(id*)arg3;

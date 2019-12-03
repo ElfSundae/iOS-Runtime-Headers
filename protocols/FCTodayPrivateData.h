@@ -6,13 +6,12 @@
 @required
 
 - (NSSet *)autoFavoriteTagIDs;
-- (NSString *)bundleIAP;
-- (unsigned long long)bundleSubscriptionState;
+- (FCBundleSubscription *)bundleSubscription;
 - (<FCDerivedPersonalizationData><NSCoding> *)derivedPersonalizationData;
 - (NSSet *)mutedTagIDs;
 - (NSNumber *)onboardingVersion;
 - (NSSet *)purchasedTagIDs;
-- (NSArray *)rankedPersonalSubscribedTagIDs;
+- (NSArray *)rankedAllSubscribedTagIDs;
 - (NSDictionary *)recentlyReadHistoryItems;
 - (NSArray *)recentlySeenHistoryItems;
 

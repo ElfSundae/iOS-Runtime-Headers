@@ -5,10 +5,10 @@
 @interface GEOLogMsgStateNavigation : PBCodable <NSCopying> {
     double  _distanceToDestination;
     struct { 
-        unsigned int distanceToDestination : 1; 
-        unsigned int lineType : 1; 
-        unsigned int navState : 1; 
-    }  _has;
+        unsigned int has_distanceToDestination : 1; 
+        unsigned int has_lineType : 1; 
+        unsigned int has_navState : 1; 
+    }  _flags;
     int  _lineType;
     GEONavCameraState * _navCameraState;
     int  _navState;
@@ -22,6 +22,8 @@
 @property (nonatomic) int lineType;
 @property (nonatomic, retain) GEONavCameraState *navCameraState;
 @property (nonatomic) int navState;
+
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsLineType:(id)arg1;
@@ -43,6 +45,7 @@
 - (id)navCameraState;
 - (int)navState;
 - (id)navStateAsString:(int)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setDistanceToDestination:(double)arg1;
 - (void)setHasDistanceToDestination:(bool)arg1;

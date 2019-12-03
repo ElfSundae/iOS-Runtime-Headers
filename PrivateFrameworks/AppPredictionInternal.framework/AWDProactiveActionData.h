@@ -18,6 +18,7 @@
     }  _has;
     NSString * _heuristicName;
     double  _score;
+    NSString * _sessionId;
     bool  _shown;
     AWDProactiveAppPredictionSubscores * _subscores;
     unsigned long long  _timestamp;
@@ -35,11 +36,13 @@
 @property (nonatomic) bool hasFutureMedia;
 @property (nonatomic, readonly) bool hasHeuristicName;
 @property (nonatomic) bool hasScore;
+@property (nonatomic, readonly) bool hasSessionId;
 @property (nonatomic) bool hasShown;
 @property (nonatomic, readonly) bool hasSubscores;
 @property (nonatomic) bool hasTimestamp;
 @property (nonatomic, retain) NSString *heuristicName;
 @property (nonatomic) double score;
+@property (nonatomic, retain) NSString *sessionId;
 @property (nonatomic) bool shown;
 @property (nonatomic, retain) AWDProactiveAppPredictionSubscores *subscores;
 @property (nonatomic) unsigned long long timestamp;
@@ -61,6 +64,7 @@
 - (bool)hasFutureMedia;
 - (bool)hasHeuristicName;
 - (bool)hasScore;
+- (bool)hasSessionId;
 - (bool)hasShown;
 - (bool)hasSubscores;
 - (bool)hasTimestamp;
@@ -70,6 +74,7 @@
 - (void)mergeFrom:(id)arg1;
 - (bool)readFrom:(id)arg1;
 - (double)score;
+- (id)sessionId;
 - (void)setActionKey:(id)arg1;
 - (void)setCacheRank:(int)arg1;
 - (void)setEngaged:(id)arg1;
@@ -83,6 +88,7 @@
 - (void)setHasTimestamp:(bool)arg1;
 - (void)setHeuristicName:(id)arg1;
 - (void)setScore:(double)arg1;
+- (void)setSessionId:(id)arg1;
 - (void)setShown:(bool)arg1;
 - (void)setSubscores:(id)arg1;
 - (void)setTimestamp:(unsigned long long)arg1;

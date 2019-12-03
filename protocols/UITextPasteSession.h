@@ -5,12 +5,14 @@
 
 @required
 
+- (void)animationCompleted;
+- (void)animationStarted;
 - (<UITextPasteSessionDelegate> *)delegate;
-- (bool)isPastingBlocked;
+- (NSArray *)originalItems;
 - (NSAttributedString *)pasteResult;
-- (void)pasteWithAnimator:(id <UITextPasteAnimating>)arg1;
 - (_UIPositionedAttributedString *)positionedPasteResult;
 - (UITextRange *)range;
 - (void)setDelegate:(id <UITextPasteSessionDelegate>)arg1;
+- (void)setOriginalItems:(NSArray *)arg1;
 
 @end

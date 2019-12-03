@@ -3,6 +3,7 @@
  */
 
 @interface UIRepeatedAction : NSObject {
+    NSObject<UIRepeatedActionDelegate> * _delegate;
     bool  _didCompleteInvocationDelay;
     bool  _didCompletePreInvocationDelay;
     bool  _disableRepeat;
@@ -15,6 +16,7 @@
     NSTimer * _timer;
 }
 
+@property (nonatomic) NSObject<UIRepeatedActionDelegate> *delegate;
 @property (nonatomic) bool disableRepeat;
 @property (nonatomic, retain) NSInvocation *invocation;
 @property (nonatomic, retain) id invocationArgument;
@@ -28,10 +30,12 @@
 + (id)actionWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3;
 
 - (void).cxx_destruct;
+- (void)_adjustInvocationForPhase:(unsigned long long)arg1;
 - (void)_invocationTimerFire;
 - (void)_preInvocationTimerFire;
 - (void)_repeatedTimerFire;
 - (void)dealloc;
+- (id)delegate;
 - (bool)disableRepeat;
 - (id)initWithInvocation:(id)arg1;
 - (id)initWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3;
@@ -45,6 +49,7 @@
 - (void)reset;
 - (void)schedule;
 - (void)scheduleWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3;
+- (void)setDelegate:(id)arg1;
 - (void)setDisableRepeat:(bool)arg1;
 - (void)setInvocation:(id)arg1;
 - (void)setInvocationArgument:(id)arg1;

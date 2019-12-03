@@ -3,6 +3,7 @@
  */
 
 @interface _INPBOpenFileIntentResponse : PBCodable <NSCopying, NSSecureCoding, _INPBOpenFileIntentResponse> {
+    bool  __encodeLegacyGloryData;
     NSArray * _entities;
     struct { 
         unsigned int success : 1; 
@@ -12,6 +13,7 @@
     bool  _success;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, copy) NSArray *entities;
@@ -26,12 +28,16 @@
 @property (readonly) Class superclass;
 
 + (Class)entitiesType;
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (void)addEntities:(id)arg1;
 - (void)clearEntities;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (id)entities;
 - (id)entitiesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)entitiesCount;
@@ -39,6 +45,7 @@
 - (bool)hasQuery;
 - (bool)hasSuccess;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)numResults;
 - (id)query;

@@ -30,6 +30,7 @@
 - (id)modificationDate;
 - (id)movie;
 - (id)originalMovie;
+- (float)originalPhotoOffsetSeconds;
 - (float)photoOffsetSeconds;
 - (unsigned long long)pixelHeight;
 - (unsigned long long)pixelWidth;

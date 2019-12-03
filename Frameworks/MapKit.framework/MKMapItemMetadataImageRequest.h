@@ -8,7 +8,7 @@
 }
 
 @property (nonatomic, copy) id /* block */ imageHandler;
-@property (retain) GEOPhotoInfo *info;
+@property (nonatomic, retain) GEOPhotoInfo *info;
 
 + (id)requestWithMapItem:(id)arg1 info:(id)arg2;
 

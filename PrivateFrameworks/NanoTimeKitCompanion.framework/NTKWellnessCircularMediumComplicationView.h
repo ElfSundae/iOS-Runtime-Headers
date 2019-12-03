@@ -5,7 +5,6 @@
 @interface NTKWellnessCircularMediumComplicationView : NTKWellnessCircularSmallComplicationView
 
 + (bool)handlesComplicationTemplate:(id)arg1;
-+ (void)load;
 
 - (bool)usesMediumLayout;
 

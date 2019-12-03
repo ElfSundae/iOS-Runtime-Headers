@@ -2,10 +2,10 @@
    Image: /System/Library/PrivateFrameworks/CarPlaySupport.framework/CarPlaySupport
  */
 
-@interface CPSBannerSource : NSObject <CPBannerProviding, CPSApplicationStateObserving, SBUIBannerSource, SBUIBannerTargetManagerObserver> {
+@interface CPSBannerSource : NSObject <CPBannerProviding, CPSApplicationStateObserving, CPSBannerItemDelegate, SBUIBannerSource, SBUIBannerTargetManagerObserver> {
     bool  _applicationActive;
     <SBUIBannerTarget> * _bannerTarget;
-    <CPBannerDelegate> * _delegate;
+    <CPSBannerSourceDelegate> * _delegate;
     NSTimer * _dimissTimer;
     UIView<SBUIBannerView> * _displayedBannerView;
     NSUUID * _lastUserDismissedIdentifier;
@@ -17,7 +17,7 @@
 @property (getter=isApplicationActive, nonatomic) bool applicationActive;
 @property (nonatomic) <SBUIBannerTarget> *bannerTarget;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) <CPBannerDelegate> *delegate;
+@property (nonatomic) <CPSBannerSourceDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) NSTimer *dimissTimer;
 @property (nonatomic) UIView<SBUIBannerView> *displayedBannerView;
@@ -35,7 +35,7 @@
 - (void)_resetDismissTimer;
 - (void)_resetLastUserDismissedIdentifierTimer;
 - (void)_resetLastUserDismissedIdentifierTimerFired:(id)arg1;
-- (void)applicationStateMonitor:(id)arg1 didBecomeActive:(bool)arg2;
+- (void)bannerTappedWithIdentifier:(id)arg1;
 - (id)bannerTarget;
 - (void)bannerTargetManager:(id)arg1 didAddTarget:(id)arg2;
 - (void)bannerTargetManager:(id)arg1 didRemoveTarget:(id)arg2;
@@ -57,6 +57,7 @@
 - (void)postBannerForManeuver:(id)arg1 travelEstimates:(id)arg2;
 - (void)postBannerForNavigationAlert:(id)arg1;
 - (id)queuedItems;
+- (void)sceneActivationStateChangedTo:(id)arg1;
 - (void)setApplicationActive:(bool)arg1;
 - (void)setBannerTarget:(id)arg1;
 - (void)setDelegate:(id)arg1;

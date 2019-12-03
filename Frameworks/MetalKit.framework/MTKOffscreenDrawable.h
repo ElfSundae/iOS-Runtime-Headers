@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MetalKit.framework/MetalKit
  */
 
-@interface MTKOffscreenDrawable : NSObject <CAMetalDrawable> {
+@interface MTKOffscreenDrawable : NSObject <MTLDrawable> {
     <MTLDevice> * _device;
     unsigned long long  _drawableID;
     CAMetalLayer * _layer;
@@ -26,7 +26,6 @@
 @property (nonatomic, readonly) double presentedTime;
 @property (nonatomic) struct CGSize { double x1; double x2; } size;
 @property (readonly) Class superclass;
-@property (readonly) <MTLTexture> *texture;
 
 - (void).cxx_destruct;
 - (void)addPresentedHandler:(id /* block */)arg1;

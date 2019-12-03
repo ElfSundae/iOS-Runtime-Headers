@@ -13,7 +13,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSArray *listItems;
 @property (readonly) Class superclass;
-@property (nonatomic, retain) <CPSearchTemplateProviding> *templateProvider;
+@property (nonatomic, retain) NAFuture *templateProviderFuture;
 
 - (void).cxx_destruct;
 - (id)delegate;

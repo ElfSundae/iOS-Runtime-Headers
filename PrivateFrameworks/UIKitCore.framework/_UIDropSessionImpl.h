@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface _UIDropSessionImpl : NSObject <UIDropSession, _UIDragDropSessionInternal> {
+@interface _UIDropSessionImpl : NSObject <UIDropSession, _UIDragDropSessionInternal, _UIDropSessionPrivate> {
     NSArray * _items;
     <UIDragSession> * _localDragSession;
     unsigned long long  _progressIndicatorStyle;
@@ -28,7 +28,7 @@
 - (bool)_allowsItemsToUpdate;
 - (id)_createItemsOfClass:(Class)arg1 synchronouslyIfPossible:(bool)arg2 completion:(id /* block */)arg3;
 - (long long)_dataOwner;
-- (id)_draggingSession;
+- (id)_internalSession;
 - (void)_itemsNeedUpdate:(id)arg1;
 - (unsigned long long)_operationMask;
 - (bool)allowsMoveOperation;
@@ -42,6 +42,7 @@
 - (struct CGPoint { double x1; double x2; })locationInView:(id)arg1;
 - (id)progress;
 - (unsigned long long)progressIndicatorStyle;
+- (void)requestVisibleItems:(id /* block */)arg1;
 - (id)sessionDestination;
 - (void)setProgressIndicatorStyle:(unsigned long long)arg1;
 

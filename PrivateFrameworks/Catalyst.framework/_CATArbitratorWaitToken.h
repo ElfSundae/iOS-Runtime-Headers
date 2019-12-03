@@ -6,7 +6,7 @@
     id /* block */  mCompletionBlock;
     NSObject<OS_dispatch_queue> * mDelegateQueue;
     NSObject<OS_dispatch_group> * mGroup;
-    int  mState;
+    _Atomic int  mState;
     NSMutableDictionary * mTokenByKey;
 }
 

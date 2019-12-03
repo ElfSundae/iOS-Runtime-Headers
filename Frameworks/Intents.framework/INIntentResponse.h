@@ -2,15 +2,19 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface INIntentResponse : NSObject <INCacheableContainer, INFileURLEnumerable, INGenericIntentResponse, INImageProxyInjecting, INIntentResponseExport, INIntentSlotComposing, INKeyImageProducing, INRuntimeObject, NSCopying, NSSecureCoding> {
+@interface INIntentResponse : NSObject <INCacheableContainer, INFileEnumerable, INGenericIntentResponse, INImageProxyInjecting, INIntentResponseExport, INIntentSlotComposing, INKeyImageProducing, INRuntimeObject, NSCopying, NSSecureCoding> {
+    long long  __stage;
     bool  __userConfirmationRequired;
     _INPBIntentResponse * _backingStore;
+    INCodableDescription * _codableDescription;
     long long  _code;
     PBCodable * _responseMessagePBRepresentation;
     NSUserActivity * _userActivity;
 }
 
+@property (nonatomic, readonly) NSDictionary *_JSONDictionaryRepresentation;
 @property (nonatomic, readonly) NSString *_className;
+@property (nonatomic, readonly) INCodableDescription *_codableDescription;
 @property (nonatomic, readonly) INIntentResponseDescription *_instanceDescription;
 @property (nonatomic, readonly) INIntentResponseCodableCode *_intentResponseCodableCode;
 @property (nonatomic, readonly) long long _intentResponseCode;
@@ -21,6 +25,7 @@
 @property (setter=_setRequiresProtectedData:, nonatomic) bool _requiresProtectedData;
 @property (setter=_setResponseMessagePBRepresentation:, nonatomic, retain) PBCodable *_responseMessagePBRepresentation;
 @property (nonatomic, readonly) bool _shouldForwardIntentToApp;
+@property (setter=_setStage:, nonatomic) long long _stage;
 @property (getter=_isSuccess, nonatomic, readonly) bool _success;
 @property (nonatomic, readonly) long long _type;
 @property (nonatomic, readonly) bool _userConfirmationRequired;
@@ -30,7 +35,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSDictionary *propertiesByName;
-@property (nonatomic) bool shouldOpenContainingApplication;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSUserActivity *userActivity;
 
@@ -49,12 +53,15 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)_JSONDictionaryRepresentation;
 - (id)_className;
+- (id)_codableDescription;
 - (long long)_code;
+- (long long)_codeWithName:(id)arg1;
 - (bool)_commonInit;
+- (long long)_compareSubProducerOne:(id)arg1 subProducerTwo:(id)arg2;
 - (id)_dictionaryRepresentation;
-- (void)_enumerateFileURLsWithMutatingBlock:(id /* block */)arg1;
-- (id)_impl;
+- (void)_enumerateWithValueProcessingBlock:(id /* block */)arg1 mutate:(bool)arg2;
 - (id)_inCodable;
 - (id)_initWithCode:(long long)arg1 userActivity:(id)arg2;
 - (void)_injectProxiesForImages:(id /* block */)arg1 completion:(id /* block */)arg2;
@@ -63,13 +70,18 @@
 - (id)_intentResponseCodableCode;
 - (long long)_intentResponseCode;
 - (id)_intents_cacheableObjects;
+- (void)_intents_enumerateFileURLsWithBlock:(id /* block */)arg1 mutate:(bool)arg2;
+- (void)_intents_enumerateFilesWithBlock:(id /* block */)arg1 mutate:(bool)arg2;
 - (long long)_intents_toggleState;
 - (void)_intents_updateContainerWithCache:(id)arg1;
 - (bool)_isSuccess;
+- (bool)_isValidKey:(id)arg1;
+- (id)_keyImage;
 - (id)_originatingBundleIdentifier;
 - (id)_payloadResponseMessageData;
 - (id)_payloadResponseTypeName;
 - (id)_propertiesByNameForLanguage:(id)arg1;
+- (id)_querySchemaWithBlock:(id /* block */)arg1;
 - (id)_renderedResponseForLanguage:(id)arg1 requiresSiriCompatibility:(bool)arg2;
 - (bool)_requiresAuthentication;
 - (bool)_requiresProtectedData;
@@ -82,8 +94,12 @@
 - (void)_setRequiresAuthentication:(bool)arg1;
 - (void)_setRequiresProtectedData:(bool)arg1;
 - (void)_setResponseMessagePBRepresentation:(id)arg1;
+- (void)_setStage:(long long)arg1;
 - (bool)_shouldForwardIntentToApp;
+- (long long)_stage;
+- (long long)_stageWithName:(id)arg1;
 - (long long)_type;
+- (void)_updateWithJSONDictionary:(id)arg1;
 - (bool)_userConfirmationRequired;
 - (id)backingStore;
 - (long long)code;
@@ -99,22 +115,18 @@
 - (id)intentSlotDescriptions;
 - (id)localizeValueOfSlotDescription:(id)arg1 forLanguage:(id)arg2;
 - (id)propertiesByName;
-- (id)protoData;
 - (void)setCode:(long long)arg1;
 - (void)setPropertiesByName:(id)arg1;
-- (void)setShouldOpenContainingApplication:(bool)arg1;
 - (void)setUserActivity:(id)arg1;
 - (bool)setValue:(id)arg1 forProperty:(id)arg2;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
-- (bool)shouldOpenContainingApplication;
 - (id)userActivity;
 - (id)valueForKey:(id)arg1;
 - (id)valueForProperty:(id)arg1;
 - (id)valueForUndefinedKey:(id)arg1;
 
-// Image: /System/Library/PrivateFrameworks/IntentsCore.framework/IntentsCore
+// Image: /System/Library/PrivateFrameworks/WorkflowKit.framework/WorkflowKit
 
-- (long long)_compareSubProducerOne:(id)arg1 subProducerTwo:(id)arg2;
-- (id)_keyImage;
+- (void)wf_getOutputValueWithCompletionHandler:(id /* block */)arg1;
 
 @end

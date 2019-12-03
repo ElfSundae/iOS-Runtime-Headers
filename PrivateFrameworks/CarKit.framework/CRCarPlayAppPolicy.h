@@ -3,10 +3,12 @@
  */
 
 @interface CRCarPlayAppPolicy : NSObject {
+    unsigned long long  _applicationCategory;
     bool  _badgesAppIcon;
     bool  _canDisplayOnCarScreen;
     bool  _carPlaySupported;
     bool  _handlesCarIntents;
+    bool  _launchNotificationsUsingSiri;
     bool  _launchUsingMapsTemplateUI;
     bool  _launchUsingMusicUIService;
     bool  _launchUsingSiri;
@@ -14,10 +16,12 @@
     NSDictionary * _siriActivationOptions;
 }
 
+@property (nonatomic) unsigned long long applicationCategory;
 @property (nonatomic) bool badgesAppIcon;
 @property (nonatomic) bool canDisplayOnCarScreen;
 @property (getter=isCarPlaySupported, nonatomic) bool carPlaySupported;
 @property (nonatomic) bool handlesCarIntents;
+@property (nonatomic) bool launchNotificationsUsingSiri;
 @property (nonatomic) bool launchUsingMapsTemplateUI;
 @property (nonatomic) bool launchUsingMusicUIService;
 @property (nonatomic) bool launchUsingSiri;
@@ -25,18 +29,22 @@
 @property (nonatomic, copy) NSDictionary *siriActivationOptions;
 
 - (void).cxx_destruct;
+- (unsigned long long)applicationCategory;
 - (bool)badgesAppIcon;
 - (bool)canDisplayOnCarScreen;
 - (bool)handlesCarIntents;
 - (id)init;
 - (bool)isCarPlaySupported;
+- (bool)launchNotificationsUsingSiri;
 - (bool)launchUsingMapsTemplateUI;
 - (bool)launchUsingMusicUIService;
 - (bool)launchUsingSiri;
+- (void)setApplicationCategory:(unsigned long long)arg1;
 - (void)setBadgesAppIcon:(bool)arg1;
 - (void)setCanDisplayOnCarScreen:(bool)arg1;
 - (void)setCarPlaySupported:(bool)arg1;
 - (void)setHandlesCarIntents:(bool)arg1;
+- (void)setLaunchNotificationsUsingSiri:(bool)arg1;
 - (void)setLaunchUsingMapsTemplateUI:(bool)arg1;
 - (void)setLaunchUsingMusicUIService:(bool)arg1;
 - (void)setLaunchUsingSiri:(bool)arg1;

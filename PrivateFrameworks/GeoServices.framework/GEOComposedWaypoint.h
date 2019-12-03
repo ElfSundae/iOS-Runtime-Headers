@@ -3,8 +3,22 @@
  */
 
 @interface GEOComposedWaypoint : PBCodable <NSCopying> {
+    struct { 
+        unsigned int read_latLng : 1; 
+        unsigned int read_mapItemStorage : 1; 
+        unsigned int read_waypoint : 1; 
+        unsigned int wrote_latLng : 1; 
+        unsigned int wrote_mapItemStorage : 1; 
+        unsigned int wrote_waypoint : 1; 
+    }  _flags;
     GEOLatLng * _latLng;
     GEOMapItemStorage * _mapItemStorage;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     GEOWaypointTyped * _waypoint;
 }
 
@@ -22,7 +36,7 @@
 + (id)composedWaypointForCurrentLocation:(id)arg1 traits:(id)arg2 auditToken:(id)arg3 completionHandler:(id /* block */)arg4 networkActivityHandler:(id /* block */)arg5;
 + (id)composedWaypointForCurrentLocation:(id)arg1 traits:(id)arg2 completionHandler:(id /* block */)arg3 networkActivityHandler:(id /* block */)arg4;
 + (id)composedWaypointForID:(unsigned long long)arg1 resultsProviderID:(int)arg2 contentProvider:(id)arg3 traits:(id)arg4 clientAttributes:(id)arg5 completionHandler:(id /* block */)arg6 networkActivityHandler:(id /* block */)arg7;
-+ (id)composedWaypointForID:(unsigned long long)arg1 traits:(id)arg2 clientAttributes:(id)arg3 completionHandler:(id /* block */)arg4 networkActivityHandler:(id /* block */)arg5;
++ (id)composedWaypointForIdentifier:(id)arg1 traits:(id)arg2 clientAttributes:(id)arg3 completionHandler:(id /* block */)arg4 networkActivityHandler:(id /* block */)arg5;
 + (id)composedWaypointForIncompleteMapItem:(id)arg1 traits:(id)arg2 clientAttributes:(id)arg3 completionHandler:(id /* block */)arg4 networkActivityHandler:(id /* block */)arg5;
 + (id)composedWaypointForLocation:(id)arg1 mapItem:(id)arg2 traits:(id)arg3 auditToken:(id)arg4 completionHandler:(id /* block */)arg5 networkActivityHandler:(id /* block */)arg6;
 + (id)composedWaypointForLocation:(id)arg1 mapItem:(id)arg2 traits:(id)arg3 completionHandler:(id /* block */)arg4 networkActivityHandler:(id /* block */)arg5;
@@ -35,12 +49,17 @@
 + (id)composedWaypointForSearchString:(id)arg1 completionItem:(id)arg2 traits:(id)arg3 clientAttributes:(id)arg4 completionHandler:(id /* block */)arg5 networkActivityHandler:(id /* block */)arg6;
 + (id)composedWaypointForTransitID:(unsigned long long)arg1 coordinate:(struct { double x1; double x2; })arg2 isCurrentLocation:(bool)arg3 traits:(id)arg4 clientAttributes:(id)arg5 completionHandler:(id /* block */)arg6 networkActivityHandler:(id /* block */)arg7;
 + (id)composedWaypointForWaypointTyped:(id)arg1 completionHandler:(id /* block */)arg2 networkActivityHandler:(id /* block */)arg3;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (id)_addressCandidatesForComparison;
 - (id)_locationCandidatesForComparison;
 - (id)_muidCandidatesForComparison;
+- (void)_readLatLng;
+- (void)_readMapItemStorage;
+- (void)_readWaypoint;
 - (id)_regionCandidatesForContainment;
+- (id)bestLatLng;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -51,6 +70,8 @@
 - (bool)hasMapItemStorage;
 - (bool)hasWaypoint;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (id)initWithLocation:(id)arg1 isCurrentLocation:(bool)arg2;
 - (id)initWithMapItem:(id)arg1;
 - (bool)isCurrentLocation;
@@ -61,6 +82,7 @@
 - (id)latLng;
 - (id)mapItemStorage;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setIsCurrentLocation:(bool)arg1;
 - (void)setLatLng:(id)arg1;
@@ -76,7 +98,15 @@
 
 // Image: /System/Library/PrivateFrameworks/Navigation.framework/Navigation
 
++ (id)appleParkWaypointFromAddress;
++ (id)appleParkWaypointFromLatLng;
++ (id)appleParkWaypointFromMuid;
+
+- (id)destinationInfo;
 - (int)destinationType;
+- (id)humanDescription;
+- (id)humanDescriptionWithAddressAndLatLng;
+- (id)humanDescriptionWithLatLng;
 - (id)localeIdentifier;
 - (id)navAnnouncementAddress;
 - (id)navAnnouncementName;

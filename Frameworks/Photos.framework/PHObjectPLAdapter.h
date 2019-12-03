@@ -6,6 +6,7 @@
     PLManagedObject * _backingManagedObject;
     NSMutableOrderedSet * _ignoredKeys;
     NSMutableDictionary * _modifiedKeyValues;
+    PHPhotoLibrary * _photoLibrary;
 }
 
 @property (nonatomic, readonly) PLManagedObject *backingManagedObject;
@@ -14,17 +15,19 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSMutableOrderedSet *ignoredKeys;
 @property (nonatomic, retain) NSMutableDictionary *modifiedKeyValues;
+@property (nonatomic, readonly) PHPhotoLibrary *photoLibrary;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)backingManagedObject;
 - (id)ignoredKeys;
-- (id)initWithPLManagedObject:(id)arg1;
+- (id)initWithPLManagedObject:(id)arg1 photoLibrary:(id)arg2;
 - (id)modifiedKeyValues;
 - (id)mutableAccessingCopy;
 - (id)objectForKey:(id)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (id)objectWithPropertySets:(id)arg1;
+- (id)photoLibrary;
 - (void)removeObjectForKey:(id)arg1;
 - (void)setIgnoredKeys:(id)arg1;
 - (void)setModifiedKeyValues:(id)arg1;

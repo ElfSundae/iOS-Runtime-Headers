@@ -19,6 +19,7 @@
 - (id)feedbackDelegate;
 - (id)feedbackListener;
 - (void)presentViewController:(id)arg1;
+- (void)presentViewControllerForCard:(id)arg1 animate:(bool)arg2;
 - (void)setFeedbackDelegate:(id)arg1;
 - (bool)shouldHandleCardSectionEngagement:(id)arg1;
 - (void)willDismissViewController:(id)arg1;

@@ -11,6 +11,8 @@
 + (id)eventStream;
 
 - (void).cxx_destruct;
+- (void)deactivate;
+- (void)dealloc;
 - (void)start;
 - (void)stop;
 

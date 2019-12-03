@@ -11,7 +11,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) HMHome *home;
 @property (nonatomic, readonly) <HFHomeKitObject> *homeKitObject;
+@property (nonatomic, readonly) NSSet *services;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) <HFCharacteristicValueSource> *valueSource;
 
@@ -20,14 +22,16 @@
 - (id)accessories;
 - (id)accessory;
 - (bool)actionsMayRequireDeviceUnlock;
-- (bool)containsActionableCharacteristics;
+- (bool)containsActions;
 - (id)copyWithValueSource:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)currentStateActionBuildersForHome:(id)arg1;
+- (id)home;
 - (id)homeKitObject;
 - (id)iconDescriptor;
 - (id)init;
 - (id)initWithAccessory:(id)arg1 valueSource:(id)arg2;
+- (id)namingComponentForHomeKitObject;
 - (id)serviceLikeBuilderInHome:(id)arg1;
 - (id)services;
 - (void)setAccessory:(id)arg1;

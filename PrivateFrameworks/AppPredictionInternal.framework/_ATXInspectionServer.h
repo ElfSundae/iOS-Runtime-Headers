@@ -31,15 +31,18 @@
 - (void)appIntentHistoryMockIntentLaunch:(id)arg1 source:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 timeZone:(id)arg5 reply:(id /* block */)arg6;
 - (void)benchmarkAppPrediction:(unsigned long long)arg1 reply:(id /* block */)arg2;
 - (void)benchmarkAppPredictionForConsumerSubType:(unsigned char)arg1 ntimes:(unsigned long long)arg2 reply:(id /* block */)arg3;
+- (void)dumpPredictionTableForMMExpert:(id)arg1 reply:(id /* block */)arg2;
 - (void)feedbackClear:(id /* block */)arg1;
 - (void)feedbackLaunched:(id)arg1 rejected:(id)arg2 reply:(id /* block */)arg3;
+- (void)forceMagicalMomentsAppPredictionForBundleId:(id)arg1 expert:(id)arg2 reply:(id /* block */)arg3;
 - (void)getABGroups:(id /* block */)arg1;
 - (void)getActionLogs:(id /* block */)arg1;
 - (void)getAppFeedbackData:(id /* block */)arg1;
 - (void)getNotificationLogs:(id /* block */)arg1;
+- (void)getNotificationSettings:(id /* block */)arg1;
 - (void)getNotificationsSuggestionResponses:(id /* block */)arg1;
 - (void)getParseTreeForConsumerSubType:(unsigned char)arg1 reply:(id /* block */)arg2;
-- (void)getPredictionModelDetails:(id /* block */)arg1;
+- (void)getPredictionModelDetailsForConsumerSubType:(unsigned char)arg1 reply:(id /* block */)arg2;
 - (id)init;
 - (bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)predictAppsAndReturnInputsAndSubscores:(id /* block */)arg1;
@@ -51,5 +54,6 @@
 - (void)resetNotificationsSuggestionResponses:(id /* block */)arg1;
 - (void)retrainActionHistograms:(id /* block */)arg1;
 - (void)retrainActionSlotDatabase:(id /* block */)arg1;
+- (void)trainMagicalMomentsAppPredictor:(id /* block */)arg1;
 
 @end

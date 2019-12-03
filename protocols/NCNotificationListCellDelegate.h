@@ -16,4 +16,9 @@
 - (NCNotificationSectionSettings *)notificationListCellRequestsSectionSettings:(NCNotificationListCell *)arg1 sectionIdentifier:(NSString *)arg2;
 - (void)willTearDownNotificationListCell:(NCNotificationListCell *)arg1;
 
+@optional
+
+- (void)notificationListCell:(NCNotificationListCell *)arg1 didMoveToNewXPosition:(double)arg2;
+- (bool)notificationListCellShouldPerformClipping:(NCNotificationListCell *)arg1;
+
 @end

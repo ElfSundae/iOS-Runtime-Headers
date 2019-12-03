@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/MaterialKit.framework/MaterialKit
  */
 
-@interface MTLumaDodgePillStyleSettings : _UISettings {
+@interface MTLumaDodgePillStyleSettings : PTSettings {
     double  _blur;
     double  _brightness;
     double  _colorAddOpacity;

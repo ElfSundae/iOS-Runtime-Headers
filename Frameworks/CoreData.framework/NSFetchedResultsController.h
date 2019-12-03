@@ -3,26 +3,30 @@
  */
 
 @interface NSFetchedResultsController : NSObject {
-    void * _cache;
     NSString * _cacheName;
+    id  _cachePath;
     id  _delegate;
     NSFetchRequest * _fetchRequest;
     id  _fetchedObjects;
     struct _fetchResultsControllerFlags { 
+        unsigned int _changedResultsSinceLastSave : 1; 
+        unsigned int _hasBatchedArrayResults : 1; 
+        unsigned int _hasMutableFetchedResults : 1; 
+        unsigned int _hasSections : 1; 
+        unsigned int _includesSubentities : 1; 
+        unsigned int _sendDidChangeContentDiffNotifications : 1; 
+        unsigned int _sendDidChangeContentNotifications : 1; 
+        unsigned int _sendDidChangeContentSnapshotNotifications : 1; 
         unsigned int _sendObjectChangeNotifications : 1; 
         unsigned int _sendSectionChangeNotifications : 1; 
-        unsigned int _sendDidChangeContentNotifications : 1; 
-        unsigned int _sendWillChangeContentNotifications : 1; 
         unsigned int _sendSectionIndexTitleForSectionName : 1; 
-        unsigned int _changedResultsSinceLastSave : 1; 
-        unsigned int _hasMutableFetchedResults : 1; 
-        unsigned int _hasBatchedArrayResults : 1; 
-        unsigned int _hasSections : 1; 
+        unsigned int _sendWillChangeContentNotifications : 1; 
         unsigned int _usesNonpersistedProperties : 1; 
-        unsigned int _includesSubentities : 1; 
-        unsigned int _reservedFlags : 21; 
+        unsigned int _reservedFlags : 19; 
     }  _flags;
     NSManagedObjectContext * _managedObjectContext;
+    NSPredicate * _originalPredicate;
+    NSPredicate * _remappedPredicate;
     id  _sectionIndexTitles;
     id  _sectionIndexTitlesSections;
     NSString * _sectionNameKey;
@@ -52,6 +56,7 @@
 - (void)_appendAffectedStoreInfoToData:(id)arg1 adjustedOffset:(long long*)arg2;
 - (bool)_computeSectionInfo:(id)arg1 error:(id*)arg2;
 - (bool)_computeSectionInfoWithGroupBy:(id)arg1 error:(id*)arg2;
+- (void)_conditionallyDispatchSnapshotToDelegate:(id)arg1;
 - (void)_core_managedObjectContextDidChange:(id)arg1;
 - (void)_core_managedObjectContextDidSave:(id)arg1;
 - (id)_createNewSectionForObject:(id)arg1;
@@ -67,6 +72,7 @@
 - (void)_makeMutableFetchedObjects;
 - (void)_managedObjectContextDidChange:(id)arg1;
 - (void)_managedObjectContextDidChangeObjectIDs:(id)arg1;
+- (void)_managedObjectContextDidMutateObjectIDs:(id)arg1;
 - (void)_managedObjectContextDidSave:(id)arg1;
 - (bool)_objectInResults:(id)arg1;
 - (void)_preprocessDeletedObjects:(id)arg1 deletesInfo:(id)arg2 sectionsWithDeletes:(id)arg3;

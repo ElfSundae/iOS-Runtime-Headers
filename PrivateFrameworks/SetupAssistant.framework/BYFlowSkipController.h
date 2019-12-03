@@ -42,7 +42,7 @@
 - (void)observeFinishSetupTriggers;
 - (void)passcodeDidChange;
 - (void)registerActivities;
-- (void)revisePendingFollowUps;
+- (void)revisePendingFollowUpsForcingRepost:(bool)arg1;
 - (void)setBasicFunctionalityEnabled:(bool)arg1;
 
 @end

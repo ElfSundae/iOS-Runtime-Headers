@@ -49,7 +49,7 @@
 - (bool)isShieldLabel;
 - (bool)isTrafficCameraLabel;
 - (const struct shared_ptr<md::NavLabel> { struct NavLabel {} *x1; struct __shared_weak_count {} *x2; }*)label;
-- (void)layoutWithNavContext:(struct NavContext { int (**x1)(); struct LabelManager {} *x2; struct LabelLayoutContext {} *x3; struct LabelNavLayoutContext {} *x4; }*)arg1;
+- (void)layoutWithNavContext:(struct NavContext { int (**x1)(); struct LabelManager {} *x2; struct MapNavLabeler {} *x3; struct LabelLayoutContext {} *x4; struct LabelNavLayoutContext {} *x5; }*)arg1;
 - (struct Mercator2<double> { double x1[2]; })mercatorPoint;
 - (id)navFeature;
 - (unsigned short)renderOrder;

@@ -5,6 +5,7 @@
 @interface NTNewsTodayResultsExplicitAllocationAggregator : NSObject <NTTodayResultsAggregator> {
     bool  _allowLeadingCell;
     bool  _allowSectionTitles;
+    <FCCoreConfigurationManager> * _configurationManager;
     unsigned long long  _embedsLimit;
     <FCFeedPersonalizing> * _feedPersonalizer;
     NSDate * _filterDate;
@@ -17,6 +18,7 @@
 
 @property (nonatomic) bool allowLeadingCell;
 @property (nonatomic) bool allowSectionTitles;
+@property (nonatomic, retain) <FCCoreConfigurationManager> *configurationManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long embedsLimit;
@@ -36,15 +38,17 @@
 - (id)aggregateSections:(id)arg1 itemsBySectionDescriptor:(id)arg2;
 - (bool)allowLeadingCell;
 - (bool)allowSectionTitles;
+- (id)configurationManager;
 - (unsigned long long)embedsLimit;
 - (id)feedPersonalizer;
 - (id)filterDate;
 - (id)init;
-- (id)initWithFeedPersonalizer:(id)arg1 nonVideoSectionSlotCostInfo:(id)arg2 videoSectionSlotCostInfo:(id)arg3 embedsLimit:(unsigned long long)arg4 allowLeadingCell:(bool)arg5 allowSectionTitles:(bool)arg6 respectMinMaxLimit:(bool)arg7 filterDate:(id)arg8 todayData:(id)arg9 slotsLimit:(double)arg10;
+- (id)initWithConfigurationManager:(id)arg1 feedPersonalizer:(id)arg2 nonVideoSectionSlotCostInfo:(id)arg3 videoSectionSlotCostInfo:(id)arg4 embedsLimit:(unsigned long long)arg5 allowLeadingCell:(bool)arg6 allowSectionTitles:(bool)arg7 respectMinMaxLimit:(bool)arg8 filterDate:(id)arg9 todayData:(id)arg10 slotsLimit:(double)arg11;
 - (id)nonVideoSectionSlotCostInfo;
 - (bool)respectMinMaxLimit;
 - (void)setAllowLeadingCell:(bool)arg1;
 - (void)setAllowSectionTitles:(bool)arg1;
+- (void)setConfigurationManager:(id)arg1;
 - (void)setEmbedsLimit:(unsigned long long)arg1;
 - (void)setFeedPersonalizer:(id)arg1;
 - (void)setFilterDate:(id)arg1;

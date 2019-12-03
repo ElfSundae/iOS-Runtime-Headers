@@ -18,6 +18,7 @@
 // Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
 
 + (bool)_isConcreteObjectClass;
++ (id)_newClinicalRecordWithType:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 device:(id)arg4 metadata:(id)arg5 displayName:(id)arg6 FHIRResource:(id)arg7 config:(id /* block */)arg8;
 + (id)clinicalRecordWithType:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 device:(id)arg4 metadata:(id)arg5 displayName:(id)arg6 FHIRResource:(id)arg7;
 + (bool)supportsEquivalence;
 + (bool)supportsSecureCoding;
@@ -26,7 +27,7 @@
 - (id)FHIRResource;
 - (void)_setDisplayName:(id)arg1;
 - (void)_setFHIRResource:(id)arg1;
-- (id)_validateConfiguration;
+- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
 - (id)clinicalType;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;

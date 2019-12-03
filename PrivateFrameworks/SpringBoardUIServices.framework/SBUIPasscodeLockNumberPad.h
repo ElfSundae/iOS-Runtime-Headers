@@ -15,6 +15,7 @@
     bool  _showsBackspaceButton;
     bool  _showsCancelButton;
     bool  _showsEmergencyCallButton;
+    bool  _snapshotsDisabled;
     bool  _useLightStyle;
     bool  _visible;
 }
@@ -50,6 +51,7 @@
 - (void)_numberPadTouchDown:(id)arg1 forEvent:(id)arg2;
 - (void)_numberPadTouchDrag:(id)arg1 forEvent:(id)arg2;
 - (void)_numberPadTouchUp:(id)arg1 forEvent:(id)arg2;
+- (void)_setSnapshotsDisabled:(bool)arg1;
 - (double)ancillaryButtonOffset;
 - (id)backspaceButton;
 - (id)buttons;

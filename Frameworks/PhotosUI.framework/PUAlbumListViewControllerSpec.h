@@ -63,7 +63,6 @@
 @property (nonatomic, readonly) PUFontManager *_fontManager;
 @property (nonatomic, readonly) PXLayoutMetricInterpolator *_insetsInterpolator;
 @property (nonatomic, readonly) PXLayoutMetricInterpolator *_stackWidthInterpolator;
-@property (nonatomic, readonly) UIImage *addSharedAlbumPlaceholderImage;
 @property (nonatomic, readonly) long long albumDeletionConfirmationStyle;
 @property (nonatomic, readonly) PUPhotosAlbumViewControllerSpec *albumViewControllerSpec;
 @property (nonatomic, readonly) bool canShowVirtualCollections;
@@ -72,13 +71,10 @@
 @property (readonly) struct CGSize { double x1; double x2; } collageImageSize;
 @property (nonatomic, readonly) double collageSpacing;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } contentSizeForViewInPopover;
-@property (nonatomic, readonly) UIImage *emptyAlbumPlaceholderImage;
-@property (nonatomic, readonly) UIImage *emptySharedAlbumPlaceholderImage;
 @property (nonatomic, readonly) PUPhotoDecoration *emptyStackPhotoDecoration;
 @property (nonatomic, readonly) PUFeedViewControllerSpec *feedViewControllerSpec;
 @property (nonatomic, readonly) unsigned long long folderStackViewStyle;
 @property (nonatomic, readonly) PUPhotosGridViewControllerSpec *gridViewControllerSpec;
-@property (nonatomic, readonly) UIImage *hiddenAlbumPlaceholderImage;
 @property (readonly) long long imageContentMode;
 @property (readonly) struct CGSize { double x1; double x2; } imageSize;
 @property (nonatomic, readonly) NSString *nameOfAddSharedAlbumPlaceholderImage;
@@ -90,7 +86,6 @@
 @property (nonatomic, readonly) PUPhotosPickerViewControllerSpec *photosPickerViewControllerSpec;
 @property (nonatomic, readonly) double posterSquareCornerRadius;
 @property (nonatomic, readonly) double posterSubitemCornerRadius;
-@property (nonatomic, readonly) UIImage *recentlyDeletedAlbumPlaceholderImage;
 @property (nonatomic, readonly) double sectionFooterHeight;
 @property (nonatomic, readonly) double sectionHeaderHeight;
 @property (nonatomic, readonly) bool shouldShowSectionHeaders;
@@ -111,14 +106,14 @@
 + (id)phoneSpec;
 
 - (void).cxx_destruct;
-- (id)_centeredGlyphImage:(id)arg1 withBackgroundColor:(id)arg2 size:(struct CGSize { double x1; double x2; })arg3 imageAlpha:(double)arg4;
-- (id)_centeredTintedGlyphImage:(id)arg1 withBackgroundColor:(id)arg2 size:(struct CGSize { double x1; double x2; })arg3;
+- (id)_centeredGlyphImage:(id)arg1 withBackgroundColor:(id)arg2 size:(struct CGSize { double x1; double x2; })arg3 imageAlpha:(double)arg4 window:(id)arg5;
+- (id)_centeredTintedGlyphImage:(id)arg1 withBackgroundColor:(id)arg2 size:(struct CGSize { double x1; double x2; })arg3 window:(id)arg4;
 - (id)_fontManager;
 - (void)_getStackSize:(struct CGSize { double x1; double x2; }*)arg1 outEdgeInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; }*)arg2 forLayoutReferenceSize:(struct CGSize { double x1; double x2; })arg3 safeAreaInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg4;
 - (id)_insetsInterpolator;
-- (struct CGPoint { double x1; double x2; })_pixelRoundedOriginForCenteredImage:(id)arg1 inRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
+- (struct CGPoint { double x1; double x2; })_pixelRoundedOriginForCenteredImage:(id)arg1 inRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 window:(id)arg3;
 - (id)_stackWidthInterpolator;
-- (id)addSharedAlbumPlaceholderImage;
+- (id)addSharedAlbumPlaceholderImageForWindow:(id)arg1;
 - (long long)albumDeletionConfirmationStyle;
 - (id)albumViewControllerSpec;
 - (bool)canShowVirtualCollections;
@@ -132,13 +127,13 @@
 - (void)configureGridLayout:(id)arg1 forLayoutReferenceSize:(struct CGSize { double x1; double x2; })arg2 safeAreaInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg3;
 - (void)configureStackViewWithGridStyle:(id)arg1;
 - (struct CGSize { double x1; double x2; })contentSizeForViewInPopover;
-- (id)emptyAlbumPlaceholderImage;
-- (id)emptySharedAlbumPlaceholderImage;
+- (id)emptyAlbumPlaceholderImageForWindow:(id)arg1;
+- (id)emptySharedAlbumPlaceholderImageForWindow:(id)arg1;
 - (id)emptyStackPhotoDecoration;
 - (id)feedViewControllerSpec;
 - (unsigned long long)folderStackViewStyle;
 - (id)gridViewControllerSpec;
-- (id)hiddenAlbumPlaceholderImage;
+- (id)hiddenAlbumPlaceholderImageForWindow:(id)arg1;
 - (long long)imageContentMode;
 - (struct CGSize { double x1; double x2; })imageSize;
 - (struct CGSize { double x1; double x2; })imageSizeForLayoutReferenceSize:(struct CGSize { double x1; double x2; })arg1 safeAreaInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg2;
@@ -151,7 +146,7 @@
 - (id)photosPickerViewControllerSpec;
 - (double)posterSquareCornerRadius;
 - (double)posterSubitemCornerRadius;
-- (id)recentlyDeletedAlbumPlaceholderImage;
+- (id)recentlyDeletedAlbumPlaceholderImageForWindow:(id)arg1;
 - (double)sectionFooterHeight;
 - (double)sectionHeaderHeight;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })sectionInsetsForLayoutReferenceSize:(struct CGSize { double x1; double x2; })arg1 safeAreaInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg2;

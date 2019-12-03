@@ -29,12 +29,13 @@
 - (void)_applyVisualStyle;
 - (void)_applyVisualStyleToDisplayedViews;
 - (void)_arrangeDisplayedViews;
+- (id)_constraintForBaselineAligningOrVerticallyCenteringImageViewToLabelsView:(id)arg1;
+- (id)_constraintForVerticallyCenteringLabelsView;
 - (id)_constraintsForHorizontallyCenteringLabelsView;
 - (id)_constraintsForInsettingImageViewsLeadingAndTrailingEdge;
 - (id)_constraintsForInsettingLabelsViewLeadingAndTrailing;
 - (id)_constraintsForInsettingLabelsViewLeadingAndTrailingHorizontalEdgeReferenceExact:(bool)arg1;
 - (id)_constraintsForInsettingLabelsViewLeadingAndTrailingToImageViewsExact:(bool)arg1;
-- (id)_constraintsForVeritcallyCenteringViews:(id)arg1;
 - (id)_constraintsToEnsureContainerHeightTallEnoughForViews:(id)arg1;
 - (bool)_displayedViewsConstraintsNeedsLoading;
 - (bool)_hasLoadedContents;

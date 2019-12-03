@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CoreDuet.framework/CoreDuet
  */
 
-@interface _DKSync2Coordinator : NSObject <APSConnectionDelegate, _DKSyncRemoteKnowledgeStorageFetchDelegate> {
+@interface _DKSync2Coordinator : _DKSyncContextObject <APSConnectionDelegate, _DKKnowledgeStorageEventNotificationDelegate, _DKSyncCoordinator, _DKSyncRemoteKnowledgeStorageFetchDelegate> {
     NSMutableSet * _activatedPeers;
     _DKThrottledActivity * _activityThrottler;
     NSMutableSet * _busyTransactions;
@@ -22,8 +22,8 @@
     <_DKSyncLocalKnowledgeStorage> * _localStorage;
     <NSObject> * _observerToken;
     struct _CDPerfEvent { 
-        unsigned long long CDPM_startTime; 
-        unsigned long long CDPM_endTime; 
+        double startTime; 
+        double endTime; 
     }  _perfEvent;
     _CDMutablePerfMetric * _perfMetric;
     _CDPeriodicSchedulerJob * _periodicJob;
@@ -42,6 +42,8 @@
     <_DKSyncRemoteKnowledgeStorage> * _transportCloudDown;
     <_DKSyncRemoteKnowledgeStorage> * _transportCloudUp;
     <_DKSyncRemoteKnowledgeStorage> * _transportRapport;
+    NSObject<OS_xpc_object> * _triggeredSyncActivity;
+    bool  _triggeredSyncActivityRegistered;
     NSString * _triggeredSyncDelayActivityName;
 }
 
@@ -51,6 +53,7 @@
 @property (nonatomic) bool hasSyncedUpHistoryToCloud;
 @property (readonly) unsigned long long hash;
 @property bool isBusy;
+@property (nonatomic, retain) <_DKKeyValueStore> *keyValueStore;
 @property (nonatomic, retain) <_DKSyncLocalKnowledgeStorage> *localStorage;
 @property (nonatomic, readonly) _DKKnowledgeStorage *storage;
 @property (readonly) Class superclass;
@@ -59,6 +62,7 @@
 @property (nonatomic, retain) <_DKSyncRemoteKnowledgeStorage> *transportCloudUp;
 @property (nonatomic, retain) <_DKSyncRemoteKnowledgeStorage> *transportRapport;
 
++ (id)_syncTypeFromActivity:(id)arg1;
 + (void)_updateEventStatsWithSyncElapsedTimeStartDate:(id)arg1 endDate:(id)arg2;
 + (void)_updateEventStatsWithSyncType:(id)arg1;
 + (bool)canPerformSyncOperationWithClass:(Class)arg1 syncType:(id)arg2 history:(id)arg3 transport:(id)arg4 peer:(id)arg5 policy:(id)arg6;
@@ -71,6 +75,7 @@
 - (void).cxx_destruct;
 - (void)__finishSyncWithTransaction:(id)arg1 startDate:(id)arg2 completion:(id /* block */)arg3;
 - (void)__performSyncWithCompletion:(id /* block */)arg1;
+- (void)_checkInTriggeredSyncActivity:(id)arg1 isStartup:(bool)arg2;
 - (void)_cloudIsAvailableToggle;
 - (void)_cloudIsUnavailableToggle;
 - (void)_cloudSyncAvailabilityDidChange:(id)arg1;
@@ -82,6 +87,7 @@
 - (void)_deleteSiriEventsIfSiriCloudSyncHasBeenDisabled;
 - (void)_destroyPushConnection;
 - (id)_executionCriteriaWithInterval:(double)arg1;
+- (void)_finishActivityWithError:(id)arg1;
 - (double)_intervalForJobGivenIsSingleDevice:(bool)arg1;
 - (void)_noTransportIsAvailableToggle;
 - (void)_performEnableAndStart;
@@ -99,9 +105,12 @@
 - (void)_registerPeriodicJob;
 - (void)_registerPeriodicJobWithInterval:(double)arg1;
 - (void)_registerRapportAvailablityObserver;
+- (void)_registerRapportLaunchOnDemandHandler;
 - (void)_registerSiriSyncEnabledObserver;
 - (void)_registerSyncPolicyChangedObserver;
+- (void)_registerTriggeredSyncActivityWithIsStartup:(bool)arg1;
 - (void)_reregisterPeriodicJob;
+- (void)_runTriggeredSyncActivity:(id)arg1;
 - (void)_siriSyncEnabledDidChange;
 - (void)_someTransportIsAvailableToggle;
 - (void)_syncDisabledToggle;
@@ -115,6 +124,9 @@
 - (void)_unregisterRapportAvailablityObserver;
 - (void)_unregisterSiriSyncEnabledObserver;
 - (void)_unregisterSyncPolicyChangedObserver;
+- (void)_unregisterTriggeredSyncActivity;
+- (void)_updateTriggeredSyncActivity;
+- (id)_updatedExecutionCriteriaFromType:(id)arg1;
 - (void)configureTracker;
 - (void)connection:(id)arg1 didReceiveIncomingMessage:(id)arg2;
 - (void)connection:(id)arg1 didReceivePublicToken:(id)arg2;
@@ -125,12 +137,14 @@
 - (id)deviceUUID;
 - (void)fetchSourceDeviceIDFromPeer:(id)arg1;
 - (void)handleDataProtectionChangeFor:(id)arg1 willBeAvailable:(bool)arg2;
-- (void)handleFetchedSourceDeviceID:(id)arg1 fromPeer:(id)arg2 error:(id)arg3;
+- (void)handleFetchedSourceDeviceID:(id)arg1 version:(id)arg2 fromPeer:(id)arg3 error:(id)arg4;
 - (void)handleStatusChangeForPeer:(id)arg1 previousTransports:(long long)arg2;
 - (bool)hasSyncedUpHistoryToCloud;
+- (id)initWithContext:(id)arg1;
 - (id)initWithStorage:(id)arg1;
 - (bool)isBusy;
 - (bool)isSingleDevice;
+- (id)keyValueStore;
 - (void)knowledgeStorage:(id)arg1 didDeleteEventsWithStreamNameCounts:(id)arg2;
 - (void)knowledgeStorage:(id)arg1 didDeleteSyncedEvents:(id)arg2;
 - (void)knowledgeStorage:(id)arg1 didHaveInsertsAndDeletesWithCount:(unsigned long long)arg2;
@@ -142,12 +156,14 @@
 - (void)removeBusyTransaction:(id)arg1;
 - (void)setHasSyncedUpHistoryToCloud:(bool)arg1;
 - (void)setIsBusy:(bool)arg1;
+- (void)setKeyValueStore:(id)arg1;
 - (void)setLocalStorage:(id)arg1;
 - (void)setTransportCloudDown:(id)arg1;
 - (void)setTransportCloudUp:(id)arg1;
 - (void)setTransportRapport:(id)arg1;
 - (void)setupStorage;
-- (id)sortedEventsWithCreationDateBetweenDate:(id)arg1 andDate:(id)arg2 streamNames:(id)arg3 limit:(unsigned long long)arg4 fetchOrder:(long long)arg5 error:(id*)arg6;
+- (id)sortedEventsFromSyncWindows:(id)arg1 streamNames:(id)arg2 compatibility:(id)arg3 limit:(unsigned long long)arg4 fetchOrder:(long long)arg5 error:(id*)arg6;
+- (id)sortedEventsFromSyncWindows:(id)arg1 streamNames:(id)arg2 limit:(unsigned long long)arg3 fetchOrder:(long long)arg4 error:(id*)arg5;
 - (void)start;
 - (id)storage;
 - (id)syncType;

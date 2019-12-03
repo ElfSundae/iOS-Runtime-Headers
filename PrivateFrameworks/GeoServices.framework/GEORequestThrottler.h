@@ -3,17 +3,20 @@
  */
 
 @interface GEORequestThrottler : NSObject {
-    NSLock * _lock;
-    NSMapTable * _throttleMap;
+    NSMutableDictionary * _enqueuedTickets;
+    bool  _isSubmitting;
+    geo_isolater * _isolater;
+    double  _nextSubmissionTime;
+    NSObject<OS_dispatch_source> * _submissionTimer;
 }
 
 + (id)sharedThrottler;
 
 - (void).cxx_destruct;
-- (id)_throttlePolicyForKey:(id)arg1;
-- (bool)allowRequestForKey:(id)arg1;
+- (void)_scheduleTimer:(double)arg1;
+- (void)cancelTicket:(id)arg1;
+- (void)enqueueTicket:(id)arg1 submissionHandler:(id /* block */)arg2;
 - (id)init;
-- (unsigned long long)throttleStateLevelForKey:(id)arg1;
-- (double)throttleStateResetTimeRemainingForKey:(id)arg1;
+- (void)submitTickets;
 
 @end

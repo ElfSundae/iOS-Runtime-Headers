@@ -43,6 +43,7 @@
 - (void)_queryDaemonWithStartingTokenValue:(unsigned long long)arg1 currentTokenValue:(unsigned long long)arg2 withBlock:(id /* block */)arg3;
 - (void)_queryDataAsyncForce:(bool)arg1 ifNeededWithBlock:(id /* block */)arg2;
 - (void)_queryDataAsyncIfNeededWithBlock:(id /* block */)arg1;
+- (bool)_shouldWaitForData;
 - (void)_wipeRegistryWith:(unsigned long long)arg1 block:(id /* block */)arg2;
 - (id)addDiffIndexObserverWithWriteBlock:(id /* block */)arg1;
 - (unsigned long long)backoffDuration;
@@ -72,6 +73,7 @@
 - (void)setOutstandingRegistryQuery:(bool)arg1;
 - (void)setRegistryQueryCompletionBlockEntries:(id)arg1;
 - (void)setTokenValue:(unsigned long long)arg1;
+- (void)syncGrabRegistryWithReadBlock:(id /* block */)arg1;
 - (unsigned long long)tokenValue;
 
 @end

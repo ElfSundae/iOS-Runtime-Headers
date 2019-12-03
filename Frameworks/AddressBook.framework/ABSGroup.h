@@ -22,6 +22,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) unsigned int type;
 
++ (void)initialize;
 + (id)propertyKeyForPropertyID:(int)arg1;
 
 - (void).cxx_destruct;

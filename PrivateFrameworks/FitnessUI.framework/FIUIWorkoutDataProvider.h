@@ -8,6 +8,7 @@
     NSCalendar * _gregorianCalendar;
     HKHealthStore * _healthStore;
     _HKAnchoredObjectQueryManager * _queryManager;
+    NSDate * _retryDate;
     NSMutableArray * _updateHandlers;
     NSMutableDictionary * _workoutsByDay;
 }
@@ -17,6 +18,8 @@
 - (void)_fetchAllWorkoutsFromDate:(id)arg1;
 - (void)_handleAddedSamples:(id)arg1;
 - (void)_handleRemovedObjects:(id)arg1;
+- (void)_retryQuery:(id)arg1;
+- (void)_retryQueryOnDidBecomeActiveWithDate:(id)arg1;
 - (void)_runUpdateHandlers;
 - (void)_timeZoneDidChange:(id)arg1;
 - (void)addUpdateHandler:(id /* block */)arg1;

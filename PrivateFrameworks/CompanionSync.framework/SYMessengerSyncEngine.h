@@ -40,6 +40,7 @@
 - (id)initWithService:(id)arg1 queue:(id)arg2;
 - (id)messageCenter;
 - (void)messageCenter:(id)arg1 activeDeviceChanged:(id)arg2 acknowledgement:(id /* block */)arg3;
+- (void)messageCenter:(id)arg1 connectedDevicesChanged:(id)arg2;
 - (void)messageCenter:(id)arg1 didReceiveIncomingFileTransfer:(id)arg2;
 - (void)messageCenter:(id)arg1 didReceiveUnknownRequest:(id)arg2;
 - (void)messageCenter:(id)arg1 didResolveIDSIdentifier:(id)arg2 forFileTransfer:(id)arg3;
@@ -54,6 +55,7 @@
 - (void)setCustomIDSOptions:(id)arg1;
 - (id)stateForLogging;
 - (void)suspend;
+- (bool)targetConnected;
 - (bool)targetIsNearby;
 
 @end

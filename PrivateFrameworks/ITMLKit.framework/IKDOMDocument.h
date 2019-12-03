@@ -10,6 +10,8 @@
         bool hasSetNeedsUpdate; 
         bool hasSnapshotImpressions; 
         bool hasRecordedImpressions; 
+        bool hasRecordedImpressionsCallback; 
+        bool hasRecordedImpressionsMatchingCallback; 
         bool hasImpressionsMatchingTag; 
         bool hasScrollToTop; 
         bool hasRunTest; 
@@ -76,6 +78,8 @@
 - (long long)nodeType;
 - (void)prepareForPresentationWithExtraInfo:(id)arg1;
 - (id)recordedImpressions:(id)arg1;
+- (void)recordedImpressions:(id)arg1 :(id)arg2;
+- (void)recordedImpressionsMatching:(id)arg1 :(id)arg2 :(id)arg3;
 - (void)replace:(id)arg1;
 - (void)runTest:(id)arg1 :(id)arg2;
 - (void)scrollToTop;

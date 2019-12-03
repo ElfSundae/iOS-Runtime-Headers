@@ -10,7 +10,6 @@
     NSTimer * _idleJiggleTimer;
     bool  _isPasswordDirty;
     bool  _isPresentedModally;
-    CNMonogrammer * _monogrammer;
     UIBarButtonItem * _nextButtonBarItem;
     NSString * _password;
     id /* block */  _passwordHandler;
@@ -44,7 +43,6 @@
 - (double)_heightForCreateNewAccountFooterWithWidth:(double)arg1;
 - (double)_heightForCreateNewAccountSpecifierWithWidth:(double)arg1;
 - (void)_iForgotButtonWasTapped:(id)arg1;
-- (id)_monogrammer;
 - (void)_openWebBasedCredentialRecoveryFlow;
 - (id)_passwordForSpecifier:(id)arg1;
 - (void)_presentAppleIDPrivacyInformationPane;
@@ -58,6 +56,7 @@
 - (bool)_shouldShowCancelDone;
 - (void)_signInButtonWasTapped:(id)arg1;
 - (void)_signInWithUsername:(id)arg1 password:(id)arg2;
+- (id)_silhouetteMonogram;
 - (id)_specifierForGroupWithiForgotLink;
 - (id)_specifierForLoginPasswordForm;
 - (id)_specifierForLoginUserForm;

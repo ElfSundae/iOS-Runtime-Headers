@@ -27,7 +27,6 @@
 - (id)customVideoCompositor;
 - (void)dealloc;
 - (id)description;
-- (void)finalize;
 - (id)init;
 - (id)initWithVideoTracks:(id)arg1 videoSettings:(id)arg2;
 - (id)mediaType;

@@ -4,13 +4,15 @@
 
 @interface GEOLogMsgEventTimeToLeaveInitialTravelTime : PBCodable <NSCopying> {
     struct { 
-        unsigned int travelTime : 1; 
-    }  _has;
+        unsigned int has_travelTime : 1; 
+    }  _flags;
     int  _travelTime;
 }
 
 @property (nonatomic) bool hasTravelTime;
 @property (nonatomic) int travelTime;
+
++ (bool)isValid:(id)arg1;
 
 - (int)StringAsTravelTime:(id)arg1;
 - (void)copyTo:(id)arg1;
@@ -21,6 +23,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasTravelTime:(bool)arg1;
 - (void)setTravelTime:(int)arg1;

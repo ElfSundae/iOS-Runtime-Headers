@@ -13,6 +13,7 @@
     bool  _launchOnce;
     int  _outputFrameIdx;
     NSObject<OS_dispatch_semaphore> * _outputSemaphore;
+    NSObject<OS_dispatch_queue> * _queue;
     struct opaqueCMSampleBuffer {} * _sampleBuffer;
     struct { 
         struct { 

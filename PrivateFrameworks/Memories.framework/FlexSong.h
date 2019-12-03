@@ -2,59 +2,33 @@
    Image: /System/Library/PrivateFrameworks/Memories.framework/Memories
  */
 
-@interface FlexSong : NSObject <FlexSongProtocol> {
+@interface FlexSong : FlexSongBackend {
     NSDictionary * _analysisData;
-    NSString * _artistName;
     NSObject<FlexSongAssetProviderProtocol> * _assetProvider;
-    NSArray * _assets;
-    NSString * _audioEncoderPresetName;
     NSString * _audioFileExtension;
     NSArray * _bodySegments;
-    UIImage * _cachedArtwork;
-    NSArray * _crossFadeSegments;
-    NSDictionary * _customOptions;
-    bool  _hidden;
-    NSArray * _introSegments;
-    NSSet * _keywords;
-    NSArray * _mainSegments;
-    long long  _metadataVersion;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    }  _naturalDuration;
+    }  _cachedNaturalDuration;
+    NSArray * _crossFadeSegments;
+    NSArray * _introSegments;
+    NSArray * _mainSegments;
     NSArray * _outroSegments;
-    bool  _recalled;
-    long long  _sampleRate;
-    NSString * _songName;
-    NSSet * _tagIDs;
     NSArray * _transSegments;
-    NSString * _uid;
     NSArray * _unloadedMainSegments;
 }
 
-@property (nonatomic, readonly) NSString *artistName;
-@property (nonatomic, readonly) UIImage *artwork;
 @property (nonatomic, readonly) NSObject<FlexSongAssetProviderProtocol> *assetProvider;
-@property (nonatomic, readonly) NSArray *assets;
-@property (nonatomic, readonly) NSString *audioEncoderPresetName;
 @property (nonatomic, readonly) NSString *audioFileExtension;
 @property (nonatomic, readonly) NSArray *bodySegments;
 @property (nonatomic, readonly) NSArray *crossFadeSegments;
-@property (nonatomic, readonly) NSDictionary *customOptions;
-@property (nonatomic, readonly) bool hidden;
 @property (nonatomic, readonly) NSArray *introSegments;
-@property (nonatomic, readonly) NSSet *keywords;
 @property (nonatomic, readonly) NSArray *mainSegments;
-@property (nonatomic, readonly) long long metadataVersion;
 @property (nonatomic, readonly) NSArray *outroSegments;
-@property (nonatomic, readonly) bool recalled;
-@property (nonatomic, readonly) long long sampleRate;
-@property (nonatomic, readonly) NSString *songName;
-@property (nonatomic, readonly) NSSet *tagIDs;
 @property (nonatomic, readonly) NSArray *transSegments;
-@property (nonatomic, readonly) NSString *uid;
 
 + (long long)_durationInSamplesToReserveForOutroSegment:(id)arg1 withOptions:(id)arg2;
 + (long long)_findEarlyFadeStartOffsetInSamplesForOutroSegment:(id)arg1 withOptions:(id)arg2;
@@ -70,17 +44,15 @@
 - (bool)_addBodySegmentsForAssemblyList:(id)arg1 forDuration:(long long)arg2 unusedDuration:(long long*)arg3 testingContext:(id)arg4 timedOut:(bool*)arg5;
 - (bool)_addIntroSegmentsToAssemblyList:(id)arg1 forDuration:(long long)arg2 testingContext:(id)arg3;
 - (bool)_addOutroSegmentsToAssemblyList:(id)arg1 forDuration:(long long)arg2 allowTrim:(bool)arg3 testingContext:(id)arg4;
-- (void)_addPrerenderedFadesToAssemblyList:(id)arg1;
 - (bool)_addSegment:(id)arg1 withDuration:(long long)arg2 toAssemblyList:(id)arg3 indexOfNewSegment:(long long*)arg4;
 - (bool)_addSegment:(id)arg1 withDuration:(long long)arg2 toAssemblyList:(id)arg3 timeRemaining:(long long)arg4 reusedSegment:(id*)arg5 indexofNewSegment:(long long*)arg6;
 - (bool)_buildIntroAndOutroOnlySegmentAssemblyList:(id)arg1 forDuration:(long long)arg2 testingContext:(id)arg3;
-- (bool)_buildSegmentAssemblyList:(id)arg1 forDuration:(long long)arg2 withOptions:(id)arg3 testingContext:(id)arg4 usePreRenderedFades:(bool)arg5;
+- (bool)_buildSegmentAssemblyList:(id)arg1 forDuration:(long long)arg2 withOptions:(id)arg3 testingContext:(id)arg4;
 - (void)_cacheSegmentsByType;
-- (id)_clipPlaylistForDuration:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 withOptions:(id)arg2 usePreRenderedFades:(bool)arg3 testingContext:(id)arg4;
-- (id)_fullSongLoopedClipPlaylistForDuration:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 withOptions:(id)arg2 usePreRenderedFades:(bool)arg3 testingContext:(id)arg4;
+- (id)_clipPlaylistForDuration:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 withOptions:(id)arg2 testingContext:(id)arg3;
+- (id)_fullSongLoopedClipPlaylistForDuration:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 withOptions:(id)arg2 testingContext:(id)arg3;
 - (unsigned long long)_highestIndexForSegmentType:(unsigned long long)arg1;
 - (void)_loadAnalysisData;
-- (id)_loadArtworkImage;
 - (void)_loadSegments;
 - (id)_longestSegmentForType:(unsigned long long)arg1;
 - (id)_longestSegmentsForType:(unsigned long long)arg1;
@@ -100,6 +72,7 @@
 - (id)_segmentsForIndex:(unsigned long long)arg1 andType:(unsigned long long)arg2;
 - (id)_segmentsforType:(unsigned long long)arg1;
 - (void)_sequenceBodySegmentList:(id)arg1 forIndexes:(id)arg2;
+- (void)_setupInitialAssets:(id)arg1;
 - (id)_shortestSegmentForType:(unsigned long long)arg1;
 - (id)_shortestSegmentsForType:(unsigned long long)arg1;
 - (id)_sortFlexSegmentsShortestToLongest:(id)arg1;
@@ -111,39 +84,26 @@
 - (bool)_validateTransitionsInRendition:(id)arg1 failureReason:(id*)arg2;
 - (bool)_verifyAssetsForSegment:(id)arg1 withFailureReason:(id*)arg2;
 - (id)analysisData;
-- (id)artistName;
-- (id)artwork;
 - (id)assetProvider;
-- (id)assetWithID:(id)arg1;
-- (id)assets;
-- (id)audioEncoderPresetName;
 - (id)audioFileExtension;
 - (id)bodySegments;
 - (bool)canPlay;
 - (id)crossFadeSegments;
-- (id)customOptions;
 - (id)description;
 - (id)encodeAsDictionary;
-- (bool)hidden;
+- (id)idealDurations;
+- (id)initCommonWithUID:(id)arg1 songName:(id)arg2 artistName:(id)arg3 tagIDs:(id)arg4 keywords:(id)arg5 hidden:(bool)arg6 sampleRate:(long long)arg7 mainSegments:(id)arg8 crossFadeSegments:(id)arg9 audioFileExtension:(id)arg10 audioEncoderPresetName:(id)arg11 metadataVersion:(long long)arg12 customOptions:(id)arg13;
 - (id)initWithDictionary:(id)arg1 assets:(id)arg2;
 - (id)initWithUID:(id)arg1 songName:(id)arg2 artistName:(id)arg3 tagIDs:(id)arg4 keywords:(id)arg5 hidden:(bool)arg6 sampleRate:(long long)arg7 mainSegments:(id)arg8 crossFadeSegments:(id)arg9 assets:(id)arg10 audioFileExtension:(id)arg11 audioEncoderPresetName:(id)arg12 metadataVersion:(long long)arg13 customOptions:(id)arg14;
 - (id)introSegments;
-- (id)keywords;
+- (bool)isLoaded;
 - (id)mainSegments;
-- (long long)metadataVersion;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })minimumDuration;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })naturalDuration;
 - (id)outroSegments;
-- (bool)recalled;
-- (id)renditionForDuration:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 withOptions:(id)arg2 usePreRenderedFades:(bool)arg3 testingContext:(id)arg4;
-- (long long)sampleRate;
-- (id)songName;
-- (id)tagIDs;
+- (id)renditionForDuration:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 withOptions:(id)arg2 testingContext:(id)arg3;
 - (id)timedMetadataItemsWithIdentifier:(id)arg1 forRendition:(id)arg2;
 - (id)transSegments;
-- (id)uid;
-- (void)updateAssets:(id)arg1;
-- (void)updateSongArtist:(id)arg1 title:(id)arg2 tags:(id)arg3 keywords:(id)arg4 hidden:(bool)arg5 recalled:(bool)arg6 metadataVersion:(long long)arg7;
 - (bool)verifyAssetsWithFailureReason:(id*)arg1;
 - (bool)verifyRendition:(id)arg1 forDuration:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2 failureReason:(id*)arg3;
 

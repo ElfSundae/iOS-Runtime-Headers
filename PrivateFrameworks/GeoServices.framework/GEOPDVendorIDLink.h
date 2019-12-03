@@ -5,6 +5,22 @@
 @interface GEOPDVendorIDLink : PBCodable <NSCopying> {
     NSString * _externalItemId;
     struct { 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_reservationTypes : 1; 
+        unsigned int read_externalItemId : 1; 
+        unsigned int read_vendorId : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_reservationTypes : 1; 
+        unsigned int wrote_externalItemId : 1; 
+        unsigned int wrote_vendorId : 1; 
+    }  _flags;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
+    struct { 
         int *list; 
         unsigned long long count; 
         unsigned long long size; 
@@ -21,10 +37,17 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic, retain) NSString *vendorId;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsReservationTypes:(id)arg1;
+- (void)_addNoFlagsReservationType:(int)arg1;
+- (void)_readExternalItemId;
+- (void)_readReservationTypes;
+- (void)_readVendorId;
 - (void)addReservationType:(int)arg1;
 - (void)clearReservationTypes;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -34,8 +57,11 @@
 - (bool)hasExternalItemId;
 - (bool)hasVendorId;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (int)reservationTypeAtIndex:(unsigned long long)arg1;
 - (int*)reservationTypes;

@@ -26,6 +26,7 @@
 - (void)generateRandomTransactionForPassWithUniqueIdentifier:(id)arg1 completion:(id /* block */)arg2;
 - (id)init;
 - (void)itemOfItemType:(unsigned long long)arg1 recordName:(id)arg2 completion:(id /* block */)arg3;
+- (void)itemOfItemType:(unsigned long long)arg1 recordName:(id)arg2 qualityOfService:(long long)arg3 completion:(id /* block */)arg4;
 - (void)noteAccountDeleted;
 - (void)noteCloudSyncPassesSwitchChanged;
 - (void)populateEvents:(id)arg1 forAccountIdentifier:(id)arg2 completion:(id /* block */)arg3;

@@ -70,6 +70,7 @@
 - (id)_regionMapSnapshots;
 - (id)_regionMapSnapshotsVisualRepresentation;
 - (id)_request;
+- (void)_restoreRestrictedFocusMovementWithMovement:(id)arg1;
 - (void)_setCommonScrollableContainer:(id)arg1;
 - (void)_setDestinationViewDistanceOffscreen:(double)arg1;
 - (void)_setFocusMapSearchInfo:(id)arg1;

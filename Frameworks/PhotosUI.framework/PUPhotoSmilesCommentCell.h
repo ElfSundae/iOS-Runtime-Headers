@@ -4,7 +4,6 @@
 
 @interface PUPhotoSmilesCommentCell : UITableViewCell {
     bool  _isVideo;
-    bool  _showUserLikes;
     UILabel * _smileContentLabel;
     UIView * _styledSeparatorView;
     NSOrderedSet * _userLikes;
@@ -12,7 +11,6 @@
 }
 
 @property (nonatomic) bool isVideo;
-@property (nonatomic) bool showUserLikes;
 @property (nonatomic, readonly, retain) UILabel *smileContentLabel;
 @property (nonatomic, readonly, retain) UIView *styledSeparatorView;
 @property (nonatomic, copy) NSOrderedSet *userLikes;
@@ -29,10 +27,8 @@
 - (void)layoutSubviews;
 - (void)prepareForReuse;
 - (void)setIsVideo:(bool)arg1;
-- (void)setShowUserLikes:(bool)arg1;
 - (void)setUserLikes:(id)arg1;
 - (void)setUsesCompactSeparators:(bool)arg1;
-- (bool)showUserLikes;
 - (id)smileContentLabel;
 - (id)styledSeparatorView;
 - (id)userLikes;

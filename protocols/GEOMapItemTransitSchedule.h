@@ -13,7 +13,9 @@
 - (NSArray *)inactiveLinesForSystem:(void *)arg1 relativeToDateFromBlock:(void *)arg2 excludingIncidentEntities:(void *)arg3; // needs 3 arg types, found 8: <GEOTransitSystem> *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, NSDate *, id /* block */, <GEOTransitDepartureSequence> *, void*, NSSet *
 - (NSDate *)lastFullScheduleValidDate;
 - (unsigned long long)numAdditionalDeparturesForSequence:(id <GEOTransitDepartureSequence>)arg1;
-- (NSArray *)sequencesForSystem:(void *)arg1 excludingIncidentEntities:(void *)arg2 direction:(void *)arg3 validForDateFromBlock:(void *)arg4; // needs 4 arg types, found 9: <GEOTransitSystem> *, NSSet *, NSString *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, NSDate *, id /* block */, <GEOTransitDepartureSequence> *, void*
 - (NSDate *)serviceResumesDateForLine:(id <GEOTransitLine>)arg1 excludingIncidentEntities:(NSSet *)arg2 afterDate:(NSDate *)arg3 blocked:(out bool*)arg4;
+- (NSString *)subtitle;
+- (double)timeToLive;
+- (NSString *)title;
 
 @end

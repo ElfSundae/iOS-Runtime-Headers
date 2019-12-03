@@ -18,6 +18,7 @@
 - (void)addObjectsFromOrderedSet:(id)arg1;
 - (void)addObjectsFromOrderedSet:(id)arg1 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (void)addObjectsFromSet:(id)arg1;
+- (id)arrayByAddingObjectsFromArray:(id)arg1;
 - (void)exchangeObjectAtIndex:(unsigned long long)arg1 withObjectAtIndex:(unsigned long long)arg2;
 - (id)initWithCapacity:(unsigned long long)arg1;
 - (id)initWithObjects:(const id*)arg1 count:(unsigned long long)arg2;
@@ -78,23 +79,34 @@
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
+- (void)applyDifference:(id)arg1;
 - (Class)classForCoder;
 - (void)filterUsingPredicate:(id)arg1;
 - (id)initWithContentsOfFile:(id)arg1;
 - (id)initWithContentsOfURL:(id)arg1;
+- (id)initWithContentsOfURL:(id)arg1 error:(id*)arg2;
 - (void)removeObjectsFromIndices:(unsigned long long*)arg1 numIndices:(unsigned long long)arg2;
 - (void)sortUsingDescriptors:(id)arg1;
 
 // Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
 
+- (void)hk_addNonNilObject:(id)arg1;
 - (void)hk_addObjectsFromArray:(id)arg1 passingTest:(id /* block */)arg2;
 - (id)hk_dequeue;
 - (void)hk_removeObjectsPassingTest:(id /* block */)arg1;
 
+// Image: /System/Library/Frameworks/ImageCaptureCore.framework/ImageCaptureCore
+
+- (void)addItemsMatchingExtensions:(id)arg1 orTypes:(id)arg2 fromFolder:(id)arg3;
+- (void)addItemsMatchingType:(id)arg1 fromFolder:(id)arg2;
+- (void)addTruth:(bool)arg1 code:(long long)arg2;
+- (void)insertObject:(id)arg1 sortDescriptor:(id)arg2;
+- (void)insertObject:(id)arg1 sortFunction:(int (*)arg2 context:(void*)arg3;
+- (void)insertObject:(id)arg1 sortSelector:(SEL)arg2;
+
 // Image: /System/Library/Frameworks/MapKit.framework/MapKit
 
 - (void)_mapkit_insertObject:(id)arg1 sortedUsingSelector:(SEL)arg2;
-- (void)_mapkit_makeObjectsPerformSelector:(SEL)arg1;
 - (id)_mapkit_popLastObject;
 - (void)_mapkit_sortUsingDistanceFromCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg1;
 - (void)_mapkit_sortUsingDistanceFromCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg1 ascending:(bool)arg2;
@@ -114,9 +126,10 @@
 - (id)nc_pop;
 - (void)nc_push:(id)arg1;
 
-// Image: /System/Library/Frameworks/Photos.framework/Photos
+// Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
 
-- (void)insertObject:(id)arg1 sortedBy:(id /* block */)arg2;
+- (void)pu_addCFString:(struct __CFString { }*)arg1;
+- (void)pu_valuesChanged:(bool)arg1 forKey:(struct __CFString { }*)arg2;
 
 // Image: /System/Library/Frameworks/SpriteKit.framework/SpriteKit
 
@@ -128,12 +141,18 @@
 - (void)un_safeAddObject:(id)arg1 class:(Class)arg2;
 - (void)un_safeAddObject:(id)arg1 classes:(id)arg2;
 
+// Image: /System/Library/Frameworks/VisionKit.framework/VisionKit
+
+- (void)dc_addNonNilObject:(id)arg1;
+- (void)dc_insertNonNilObject:(id)arg1 atIndex:(long long)arg2;
+
 // Image: /System/Library/PrivateFrameworks/AXCoreUtilities.framework/AXCoreUtilities
 
 - (id)ax_dequeueObject;
 - (void)ax_enqueueObject:(id)arg1;
 - (id)ax_lastEnqueuedObject;
 - (id)ax_nextDequeuedObject;
+- (void)ax_removeObjectsFromArrayUsingBlock:(id /* block */)arg1;
 
 // Image: /System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities
 
@@ -148,6 +167,12 @@
 // Image: /System/Library/PrivateFrameworks/AppleMediaServices.framework/AppleMediaServices
 
 - (void)ams_addNullableObject:(id)arg1;
+- (void)ams_addObjectsFromNullableArray:(id)arg1;
+- (void)ams_removeObjectsPassingTest:(id /* block */)arg1;
+
+// Image: /System/Library/PrivateFrameworks/AskPermission.framework/AskPermission
+
+- (void)ap_addNullableObject:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/BaseBoard.framework/BaseBoard
 
@@ -171,6 +196,10 @@
 - (id)bw_peek;
 - (id)bw_pop;
 - (void)bw_push:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/ClassroomKit.framework/ClassroomKit
+
+- (bool)crk_pluckFlag:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/ContactsFoundation.framework/ContactsFoundation
 
@@ -200,15 +229,27 @@
 
 - (id)popFirstObject;
 
-// Image: /System/Library/PrivateFrameworks/CrashReporterSupport.framework/CrashReporterSupport
-
-- (id)section_pop;
-- (void)section_push:(id)arg1;
-
 // Image: /System/Library/PrivateFrameworks/DocumentCamera.framework/DocumentCamera
 
 - (void)dc_addNonNilObject:(id)arg1;
 - (void)dc_insertNonNilObject:(id)arg1 atIndex:(long long)arg2;
+
+// Image: /System/Library/PrivateFrameworks/EmailFoundation.framework/EmailFoundation
+
+- (void)ef_addAbsentObjectsFromArrayAccordingToEquals:(id)arg1;
+- (void)ef_addObject:(id)arg1 orPlaceholder:(id)arg2;
+- (bool)ef_addObjectIfAbsent:(id)arg1;
+- (bool)ef_addObjectIfAbsentAccordingToEquals:(id)arg1;
+- (void)ef_addOptionalObject:(id)arg1;
+- (unsigned long long)ef_insertObject:(id)arg1 usingComparator:(id /* block */)arg2 allowDuplicates:(bool)arg3;
+- (unsigned long long)ef_insertObject:(id)arg1 usingSortDescriptors:(id)arg2;
+- (unsigned long long)ef_insertObject:(id)arg1 usingSortFunction:(int (*)arg2 context:(void*)arg3 allowDuplicates:(bool)arg4;
+- (unsigned long long)ef_insertObjectIfAbsent:(id)arg1 usingComparator:(id /* block */)arg2;
+- (void)ef_moveObjectAtIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;
+- (unsigned long long)ef_removeObject:(id)arg1 usingComparator:(id /* block */)arg2;
+- (unsigned long long)ef_removeObject:(id)arg1 usingSortFunction:(int (*)arg2 context:(void*)arg3;
+- (void)ef_reverseObjects;
+- (void)ef_trimToCount:(unsigned long long)arg1 fromStart:(bool)arg2;
 
 // Image: /System/Library/PrivateFrameworks/FMCoreLite.framework/FMCoreLite
 
@@ -226,6 +267,10 @@
 - (id)hmf_maybeDequeue;
 - (void)hmf_removeFirstObject;
 
+// Image: /System/Library/PrivateFrameworks/HearingCore.framework/HearingCore
+
+- (void)hcSafeAddObject:(id)arg1;
+
 // Image: /System/Library/PrivateFrameworks/IMFoundation.framework/IMFoundation
 
 + (id)copyNonRetainingArray;
@@ -234,38 +279,13 @@
 - (void)__imRandomizeArray;
 - (void)removeFirstObject;
 
-// Image: /System/Library/PrivateFrameworks/IMSharedUtilities.framework/Frameworks/XCTest.framework/XCTest
+// Image: /System/Library/PrivateFrameworks/IntentsFoundation.framework/IntentsFoundation
 
-- (void)xct_shuffle;
-
-// Image: /System/Library/PrivateFrameworks/ImageCapture.framework/ImageCapture
-
-- (void)addItemsMatchingExtensions:(id)arg1 orTypes:(id)arg2 fromFolder:(id)arg3;
-- (void)addItemsMatchingType:(id)arg1 fromFolder:(id)arg2;
-- (void)addTruth:(bool)arg1 code:(long long)arg2;
-- (void)insertObject:(id)arg1 sortDescriptor:(id)arg2;
-- (void)insertObject:(id)arg1 sortFunction:(int (*)arg2 context:(void*)arg3;
-- (void)insertObject:(id)arg1 sortSelector:(SEL)arg2;
-
-// Image: /System/Library/PrivateFrameworks/MIME.framework/MIME
-
-- (void)mf_addObject:(id)arg1 orPlaceholder:(id)arg2;
-- (bool)mf_addObjectIfAbsent:(id)arg1;
-- (bool)mf_addObjectIfAbsentAccordingToEquals:(id)arg1;
-- (unsigned long long)mf_insertObject:(id)arg1 usingComparator:(id /* block */)arg2 allowDuplicates:(bool)arg3;
-- (unsigned long long)mf_insertObject:(id)arg1 usingSortFunction:(int (*)arg2 context:(void*)arg3 allowDuplicates:(bool)arg4;
-- (void)mf_moveObjectAtIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;
-- (unsigned long long)mf_removeObject:(id)arg1 usingComparator:(id /* block */)arg2;
-- (unsigned long long)mf_removeObject:(id)arg1 usingSortFunction:(int (*)arg2 context:(void*)arg3;
-- (void)mf_reverseObjects;
+- (void)if_addObjectIfNonNil:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/Memories.framework/Memories
 
 - (void)addObjectIfNotPresent:(id)arg1;
-
-// Image: /System/Library/PrivateFrameworks/MobileBackup.framework/MobileBackup
-
-- (void)shuffle;
 
 // Image: /System/Library/PrivateFrameworks/NanoPassKit.framework/NanoPassKit
 
@@ -285,6 +305,7 @@
 // Image: /System/Library/PrivateFrameworks/NetAppsUtilities.framework/NetAppsUtilities
 
 - (void)na_safeAddObject:(id)arg1;
+- (void)na_safeAddObjectsFromArray:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
 
@@ -311,12 +332,19 @@
 // Image: /System/Library/PrivateFrameworks/Notes.framework/Notes
 
 - (void)ic_addNonNilObject:(id)arg1;
+- (void)ic_addObjectsFromNonNilArray:(id)arg1;
 - (void)ic_insertNonNilObject:(id)arg1 atIndex:(long long)arg2;
 
 // Image: /System/Library/PrivateFrameworks/OSAnalytics.framework/OSAnalytics
 
+- (void)addImage:(unsigned char)arg1 address:(unsigned long long)arg2 size:(unsigned long long)arg3;
+- (id)parent;
+- (id)pop;
+- (void)push:(id)arg1;
 - (id)section_pop;
 - (void)section_push:(id)arg1;
+- (void)sortByAddressAndSetInferredSizes;
+- (id)top;
 
 // Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
 
@@ -335,22 +363,17 @@
 
 - (void)safelyAddObject:(id)arg1;
 
-// Image: /System/Library/PrivateFrameworks/PhotoEditSupport.framework/PhotoEditSupport
-
-- (void)bl_addObjectIfIdenticalNotPresent:(id)arg1;
-- (void)bl_addObjectIfNotNil:(id)arg1;
-- (void)bl_addObjectIfNotPresent:(id)arg1;
-- (void)bl_addObjectsFromArrayIfIdenticalNotPresent:(id)arg1;
-- (void)bl_addObjectsFromArrayIfNotPresent:(id)arg1;
-- (void)bl_insertObject:(id)arg1 usingFunction:(int (*)arg2 context:(void*)arg3;
-- (void)bl_moveIdenticalObjectToFirst:(id)arg1;
-
 // Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
 
 - (void)_pl_addNonNilObject:(id)arg1;
 - (unsigned long long)_pl_insertObject:(id)arg1 atBinarySearchingInsertionIndexWithComparator:(id /* block */)arg2;
-- (void)pl_addCFString:(struct __CFString { }*)arg1;
-- (void)pl_valuesChanged:(bool)arg1 forKey:(struct __CFString { }*)arg2;
+
+// Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
+
+- (id)px_popFirst;
+- (id)px_popFirstPassingTest:(id /* block */)arg1;
+- (id)px_popLast;
+- (id)px_popRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 
 // Image: /System/Library/PrivateFrameworks/Preferences.framework/Preferences
 
@@ -362,10 +385,6 @@
 - (void)ps_insertObject:(id)arg1 afterObject:(id)arg2;
 - (void)ps_insertObjectsFromArray:(id)arg1 afterObject:(id)arg2;
 
-// Image: /System/Library/PrivateFrameworks/ProtocolBuffer.framework/ProtocolBuffer
-
-- (void)setObject:(id)arg1 atIndex:(unsigned long long)arg2;
-
 // Image: /System/Library/PrivateFrameworks/RemoteUI.framework/RemoteUI
 
 - (void)_remoteUI_addObjectIfNotNil:(id)arg1;
@@ -373,11 +392,20 @@
 // Image: /System/Library/PrivateFrameworks/SafariCore.framework/SafariCore
 
 - (void)safari_addObjectUnlessNil:(id)arg1;
+- (void)safari_removeObjectsAtIndexes:(id)arg1 withOffset:(long long)arg2 startingAtIndex:(unsigned long long)arg3;
+- (void)safari_removeObjectsPassingTest:(id /* block */)arg1;
 - (void)safari_setObject:(id)arg1 atIndex:(unsigned long long)arg2 withPaddingObject:(id)arg3;
 
 // Image: /System/Library/PrivateFrameworks/ScreenReaderCore.framework/ScreenReaderCore
 
 - (void)insertObjects:(id)arg1 atIndex:(unsigned long long)arg2;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoard.framework/SpringBoard
+
+- (id)_sb_dequeue;
+- (void)_sb_enqueue:(id)arg1;
+- (id)_sb_peek;
+- (void)_sb_safeAddObject:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/TSReading.framework/TSReading
 
@@ -451,6 +479,10 @@
 - (bool)vui_applyChangeSet:(id)arg1 destinationObjectsBlock:(id /* block */)arg2 updateObjectBlock:(id /* block */)arg3;
 - (bool)vui_applyChangeSetIfAvailable:(id)arg1 destinationObjects:(id)arg2 replaceContentsOnNilChanges:(bool)arg3;
 
+// Image: /System/Library/PrivateFrameworks/WeatherFoundation.framework/WeatherFoundation
+
+- (void)wf_safelyAddObject:(id)arg1;
+
 // Image: /System/Library/PrivateFrameworks/WebContentAnalysis.framework/WebContentAnalysis
 
 - (struct _xmlNode { void *x1; int x2; char *x3; struct _xmlNode {} *x4; struct _xmlNode {} *x5; struct _xmlNode {} *x6; struct _xmlNode {} *x7; struct _xmlNode {} *x8; struct _xmlDoc {} *x9; struct _xmlNs {} *x10; char *x11; struct _xmlAttr {} *x12; struct _xmlNs {} *x13; void *x14; unsigned short x15; unsigned short x16; }*)WF_pop;
@@ -458,14 +490,14 @@
 
 // Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
 
-+ (id)tsch_instanceWithArchive:(const struct ChartsNSArrayOfNSNumberDoubleArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct RepeatedField<double> { int x_5_1_1; int x_5_1_2; union Pointer { struct Arena {} *x_3_2_1; struct Rep {} *x_3_2_2; } x_5_1_3; } x5; }*)arg1 unarchiver:(id)arg2;
++ (id)tsch_instanceWithArchive:(const struct ChartsNSArrayOfNSNumberDoubleArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct RepeatedField<double> { int x_5_1_1; int x_5_1_2; union Pointer { struct Arena {} *x_3_2_1; struct Rep {} *x_3_2_2; } x_5_1_3; } x5; }*)arg1 unarchiver:(id)arg2;
 
 - (void)replaceStrokeLayerAtIndex:(unsigned long long)arg1 withObject:(id)arg2;
 - (id)strokeLayerAtIndex:(unsigned long long)arg1;
 - (unsigned long long)strokeLayerCount;
 - (void)tsce_addObjectNonNil:(id)arg1;
-- (id)tsch_initWithArchive:(const struct ChartsNSArrayOfNSNumberDoubleArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct RepeatedField<double> { int x_5_1_1; int x_5_1_2; union Pointer { struct Arena {} *x_3_2_1; struct Rep {} *x_3_2_2; } x_5_1_3; } x5; }*)arg1 unarchiver:(id)arg2;
-- (void)tsch_saveToArchive:(struct ChartsNSArrayOfNSNumberDoubleArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct RepeatedField<double> { int x_5_1_1; int x_5_1_2; union Pointer { struct Arena {} *x_3_2_1; struct Rep {} *x_3_2_2; } x_5_1_3; } x5; }*)arg1 archiver:(id)arg2;
+- (id)tsch_initWithArchive:(const struct ChartsNSArrayOfNSNumberDoubleArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct RepeatedField<double> { int x_5_1_1; int x_5_1_2; union Pointer { struct Arena {} *x_3_2_1; struct Rep {} *x_3_2_2; } x_5_1_3; } x5; }*)arg1 unarchiver:(id)arg2;
+- (void)tsch_saveToArchive:(struct ChartsNSArrayOfNSNumberDoubleArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct RepeatedField<double> { int x_5_1_1; int x_5_1_2; union Pointer { struct Arena {} *x_3_2_1; struct Rep {} *x_3_2_2; } x_5_1_3; } x5; }*)arg1 archiver:(id)arg2;
 - (void)tss_addProperty:(int)arg1;
 - (void)tsu_addNonNilObject:(id)arg1;
 - (void)tsu_addObjects:(id)arg1;

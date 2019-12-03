@@ -5,6 +5,7 @@
 
 @required
 
+- (UIImage *)arrowIconImage;
 - (NSString *)configurationConfirmSubtitle;
 - (NSString *)configurationConfirmTitle;
 - (NSString *)configurationFooterDescription;

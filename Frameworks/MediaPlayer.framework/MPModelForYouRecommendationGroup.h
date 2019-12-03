@@ -3,9 +3,12 @@
  */
 
 @interface MPModelForYouRecommendationGroup : MPModelObject {
+    bool  _groupRecommendation;
     NSURL * _refreshURL;
 }
 
+@property (nonatomic) bool displaysAsGridCellInCarPlay;
+@property (getter=isGroupRecommendation, nonatomic) bool groupRecommendation;
 @property (nonatomic) unsigned long long groupType;
 @property (nonatomic, retain) NSDate *lastUpdatedDate;
 @property (nonatomic, copy) NSURL *loadAdditionalContentURL;
@@ -15,8 +18,7 @@
 @property (nonatomic, copy) NSArray *subgroups;
 @property (nonatomic, copy) NSString *title;
 
-// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
-
++ (id)__displaysAsGridCellInCarPlay_KEY;
 + (id)__groupType_KEY;
 + (id)__lastUpdatedDate_KEY;
 + (id)__loadAdditionalContentURL_KEY;
@@ -25,15 +27,14 @@
 + (id)__sectionedItems_KEY;
 + (id)__subgroups_KEY;
 + (id)__title_KEY;
++ (id)classesForSecureCoding;
 
 - (void).cxx_destruct;
+- (bool)isGroupRecommendation;
 - (id)itemAtIndex:(long long)arg1;
 - (long long)numberOfItems;
 - (id)refreshURL;
+- (void)setGroupRecommendation:(bool)arg1;
 - (void)setRefreshURL:(id)arg1;
-
-// Image: /System/Library/PrivateFrameworks/NanoMusicSync.framework/NanoMusicSync
-
-- (void)enumerateItemsUsingBlock:(id /* block */)arg1;
 
 @end

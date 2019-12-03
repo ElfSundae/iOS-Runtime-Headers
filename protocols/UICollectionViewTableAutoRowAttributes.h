@@ -14,7 +14,6 @@
 - (double)indexBarExtentFromEdge;
 - (bool)insetsContentViewsToSafeArea;
 - (bool)layoutMarginsFollowReadableWidth;
-- (double)sectionBorderWidth;
 - (int)sectionLocation;
 - (void)setBackgroundInset:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setDefaultLeadingCellMarginWidth:(double)arg1;
@@ -25,7 +24,6 @@
 - (void)setIndexBarExtentFromEdge:(double)arg1;
 - (void)setInsetsContentViewsToSafeArea:(bool)arg1;
 - (void)setLayoutMarginsFollowReadableWidth:(bool)arg1;
-- (void)setSectionBorderWidth:(double)arg1;
 - (void)setSectionLocation:(int)arg1;
 
 @end

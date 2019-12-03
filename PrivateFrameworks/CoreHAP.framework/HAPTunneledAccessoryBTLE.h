@@ -7,13 +7,13 @@
     NSOperationQueue * _clientOperationQueue;
     HMFTimer * _connectionIdleTimer;
     <HAPKeyStore> * _keyStore;
+    <HMFLocking> * _lock;
     HAPCharacteristic * _pairVerifyCharacteristic;
     NSOperationQueue * _pairVerifyOperationQueue;
     HAPService * _pairingService;
     HAPCharacteristic * _pairingsCharacteristic;
     NSMutableArray * _pendingRequests;
     NSMutableArray * _pendingResponses;
-    NSObject<OS_dispatch_queue> * _propertyQueue;
     NSOperationQueue * _requestOperationQueue;
     HAPSecuritySession * _securitySession;
     bool  _securitySessionOpen;
@@ -39,7 +39,6 @@
 @property (nonatomic) HAPCharacteristic *pairingsCharacteristic;
 @property (nonatomic, readonly) NSMutableArray *pendingRequests;
 @property (nonatomic, readonly) NSMutableArray *pendingResponses;
-@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *propertyQueue;
 @property (nonatomic, readonly) NSOperationQueue *requestOperationQueue;
 @property (nonatomic, retain) HAPSecuritySession *securitySession;
 @property (getter=isSecuritySessionOpen, nonatomic) bool securitySessionOpen;
@@ -120,7 +119,6 @@
 - (id)pairingsCharacteristic;
 - (id)pendingRequests;
 - (id)pendingResponses;
-- (id)propertyQueue;
 - (void)readCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)readValueForCharacteristic:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)removePairing:(id)arg1 completionQueue:(id)arg2 completionHandler:(id /* block */)arg3;

@@ -36,6 +36,9 @@
 - (bool)isUserActivated;
 - (bool)isVoluntary;
 - (id)privateDescription;
+- (bool)requiresAssert;
 - (void)setInternalNetagent:(struct netagent { unsigned char x1[16]; BOOL x2[32]; BOOL x3[32]; BOOL x4[128]; unsigned int x5; unsigned int x6; unsigned char x7[0]; }*)arg1;
+- (bool)supportsBrowse;
+- (bool)supportsResolve;
 
 @end

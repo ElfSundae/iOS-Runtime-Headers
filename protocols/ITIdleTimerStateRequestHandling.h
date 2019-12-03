@@ -5,6 +5,8 @@
 
 @required
 
-- (void)setIdleTimerDisabled:(bool)arg1 forReason:(NSString *)arg2;
+- (void)addIdleTimerConfiguration:(ITIdleTimerConfiguration *)arg1 forReason:(NSString *)arg2;
+- (bool)isIdleTimerServiceAvailable;
+- (void)removeIdleTimerConfiguration:(ITIdleTimerConfiguration *)arg1 forReason:(NSString *)arg2;
 
 @end

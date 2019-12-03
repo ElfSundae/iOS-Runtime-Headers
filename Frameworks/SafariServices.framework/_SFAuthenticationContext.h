@@ -36,7 +36,7 @@
 - (bool)_contextShouldAllowPasscodeFallback;
 - (void)_evaluatePolicyForClient:(id)arg1 userInitiated:(bool)arg2 reply:(id /* block */)arg3;
 - (void)_handleTouchIDEventWithParameters:(id)arg1;
-- (bool)_hasAuthenticationCapability;
+- (bool)_hasAuthenticationCapability:(id*)arg1;
 - (void)_invalidateAuthentication;
 - (bool)_monotonicTimeIsWithinAuthenticationGracePeriod:(double)arg1;
 - (void)_processNextClientAwaitingAuthenticationUserInitiated:(bool)arg1;

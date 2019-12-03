@@ -4,7 +4,7 @@
 
 @interface _NMSDispatchQueue : NSObject {
     NSObject<OS_dispatch_queue> * _q;
-    bool  _r;
+    _Atomic bool  _r;
 }
 
 @property (getter=isSuspended, nonatomic, readonly) bool suspended;

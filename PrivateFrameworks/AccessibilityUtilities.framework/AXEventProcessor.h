@@ -46,10 +46,13 @@
 - (void)_installHIDEventFilter;
 - (void)_installSystemEventFilter;
 - (void)_runHIDEventReceiveThread;
+- (void)_threadStop;
 - (void)_uninstallHIDEventFilter;
 - (void)_uninstallSystemEventFilter;
 - (void)beginHandlingHIDEventsForReason:(id)arg1;
 - (void)beginHandlingSystemEventsForReason:(id)arg1;
+- (void)cleanup;
+- (void)dealloc;
 - (void)endHandlingHIDEventsForReason:(id)arg1;
 - (void)endHandlingSystemEventsForReason:(id)arg1;
 - (id)hidActualEventTapEnabledReasons;

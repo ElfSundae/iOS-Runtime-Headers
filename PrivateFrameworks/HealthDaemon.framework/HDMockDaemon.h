@@ -32,6 +32,7 @@
 - (id)mockPrimaryProfile;
 - (id)pluginManager;
 - (id)primaryProfile;
+- (void)registerDaemonReadyObserver:(id)arg1 queue:(id)arg2;
 - (void)registerForDaemonReady:(id)arg1;
 - (void)registerForLaunchNotification:(const char *)arg1;
 - (void)setAlertSuppressionService:(id)arg1;

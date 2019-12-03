@@ -30,6 +30,7 @@
 @property bool zeroPadsFractionDigits;
 
 + (id)stringFromByteCount:(long long)arg1 countStyle:(long long)arg2;
++ (id)stringFromMeasurement:(id)arg1 countStyle:(long long)arg2;
 
 - (bool)_mayDecorateAttributedStringForObjectValue:(id)arg1;
 - (unsigned long long)_options;
@@ -59,6 +60,7 @@
 - (void)setZeroPadsFractionDigits:(bool)arg1;
 - (id)stringForObjectValue:(id)arg1;
 - (id)stringFromByteCount:(long long)arg1;
+- (id)stringFromMeasurement:(id)arg1;
 - (bool)zeroPadsFractionDigits;
 
 @end

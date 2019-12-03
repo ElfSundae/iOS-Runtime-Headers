@@ -12,8 +12,6 @@
 
 - (void).cxx_destruct;
 - (id)_runningQueries;
-- (void)databaseFull;
-- (void)databaseNoLongerFull;
 - (void)dealloc;
 - (id)init;
 - (void)loadMessageWithGUID:(id)arg1 completionBlock:(id /* block */)arg2;

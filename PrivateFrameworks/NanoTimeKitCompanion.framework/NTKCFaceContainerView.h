@@ -32,6 +32,7 @@
 - (void).cxx_destruct;
 - (double)_outlineLineWidth;
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })_transformForFaceView;
+- (void)_updateOutlineColor;
 - (bool)active;
 - (id)backgroundView;
 - (id)faceContainer;
@@ -53,5 +54,6 @@
 - (void)setStyle:(long long)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (long long)style;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end

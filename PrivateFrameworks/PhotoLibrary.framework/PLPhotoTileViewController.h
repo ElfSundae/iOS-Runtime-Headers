@@ -67,9 +67,11 @@
         double height; 
     }  _imageSize;
     PLExpandableImageView * _imageView;
+    int  _inflightFullSizeImageRequestID;
     bool  _isLoadingFullSizeImage;
     unsigned int  _isTVOut;
     unsigned int  _lockedUnderCropOverlay;
+    NSNumber * _maxZoomScaleOverride;
     double  _minZoomScale;
     int  _mode;
     PHAsset * _modelPhoto;
@@ -127,6 +129,8 @@
 @property (nonatomic) bool force1XCroppedImage;
 @property (nonatomic) bool forceNativeScreenScale;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) int inflightFullSizeImageRequestID;
+@property (nonatomic, retain) NSNumber *maxZoomScaleOverride;
 @property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } overlayInsets;
 @property (nonatomic, readonly) PHAsset *photo;
 @property (nonatomic) bool picked;
@@ -154,11 +158,14 @@
 - (bool)_clientIsWallpaper;
 - (void)_configureViews;
 - (id)_customCenterOverlay;
+- (void)_getFullScreenImageData:(id*)arg1 forImage:(id)arg2 fullSize:(struct CGSize { double x1; double x2; })arg3 imageView:(id)arg4 screenScaleTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg5;
 - (void)_handleDoubleTap:(id)arg1;
 - (void)_handleFullSizeImageRequestResult:(id)arg1 dataUTI:(id)arg2 orientation:(long long)arg3;
 - (void)_handleSingleTap:(id)arg1;
 - (long long)_imageOrientation;
 - (void)_installSubview:(id)arg1;
+- (id)_newCGImageBackedUIImageFromImage:(id)arg1;
+- (id)_newImageForAsset:(id)arg1 targetSize:(struct CGSize { double x1; double x2; })arg2 cropRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3 fullSize:(struct CGSize { double x1; double x2; })arg4;
 - (id)_newOriginalImageForPickerFromCachedData;
 - (void)_performDidEndZoomBlock;
 - (void)_performRotationUpdatesWithDuration:(double)arg1 size:(struct CGSize { double x1; double x2; })arg2;
@@ -211,6 +218,7 @@
 - (id)image;
 - (int)imageOrientation;
 - (id)imageView;
+- (int)inflightFullSizeImageRequestID;
 - (id)init;
 - (id)initForPageController;
 - (id)initWithModelPhoto:(id)arg1 image:(id)arg2 frame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3 isThumbnail:(bool)arg4 imageOrientation:(int)arg5 allowZoomToFill:(bool)arg6 mode:(int)arg7;
@@ -219,10 +227,10 @@
 - (bool)isTVOut;
 - (bool)isZoomedOut;
 - (void)loadView;
+- (id)maxZoomScaleOverride;
 - (double)minRotatedScale;
 - (double)minZoomScale;
-- (id)newCGImageBackedUIImage;
-- (id)newImageWithCropRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 minimalCropDimension:(double)arg2 croppedImageData:(id*)arg3 fullScreenImageData:(id*)arg4 fullScreenImage:(struct CGImage {}**)arg5 imageCropRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg6 intersectCropWithFullRect:(bool)arg7;
+- (id)newImageWithCropRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 minimalCropDimension:(double)arg2 croppedImageData:(id*)arg3 fullScreenImageData:(id*)arg4 imageCropRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg5 intersectCropWithFullRect:(bool)arg6;
 - (void)noteParentViewControllerDidDisappear;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })overlayInsets;
 - (id)photo;
@@ -230,6 +238,7 @@
 - (bool)photoShouldHaveHDRBadge;
 - (bool)picked;
 - (void)refreshTileWithFullScreenImage:(id)arg1 modelPhoto:(id)arg2;
+- (void)reloadZoomScale;
 - (void)resetZoom;
 - (void)retryDownload;
 - (bool)reviewing;
@@ -252,7 +261,9 @@
 - (void)setForceNativeScreenScale:(bool)arg1;
 - (void)setFullSizeImage:(id)arg1;
 - (void)setGesturesEnabled:(bool)arg1;
+- (void)setInflightFullSizeImageRequestID:(int)arg1;
 - (void)setLockedUnderCropOverlay:(bool)arg1;
+- (void)setMaxZoomScaleOverride:(id)arg1;
 - (void)setOrientationDelegate:(id)arg1;
 - (void)setOverlayInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setPicked:(bool)arg1;
@@ -291,6 +302,7 @@
 - (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLayoutSubviews;
 - (id)viewForZoomingInScrollView:(id)arg1;
+- (void)viewSafeAreaInsetsDidChange;
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
 - (bool)wantsCompactLayout;

@@ -5,11 +5,13 @@
 @interface FCPersonalizationFeature : NSObject <NSCopying> {
     NSString * _fc_description;
     NSString * _personalizationIdentifier;
+    bool  _shouldBeBoosted;
     NSString * _tagID;
 }
 
 @property (nonatomic, readonly) NSString *fc_description;
 @property (nonatomic, retain) NSString *personalizationIdentifier;
+@property (nonatomic) bool shouldBeBoosted;
 @property (nonatomic, retain) NSString *tagID;
 
 + (id)featureForFreeValuedIdentifier:(id)arg1;
@@ -17,9 +19,9 @@
 + (id)featureForIdentifier:(id)arg1 allowFreeValued:(bool)arg2;
 + (id)featureFromTagID:(id)arg1;
 + (id)featureObserver;
-+ (id)featuresFromHeadline:(id)arg1;
++ (id)featuresFromHeadline:(id)arg1 personalizationTreatment:(id)arg2;
 + (id)featuresFromIssue:(id)arg1;
-+ (id)featuresFromPersonalizingItem:(id)arg1;
++ (id)featuresFromPersonalizingItem:(id)arg1 personalizationTreatment:(id)arg2;
 + (id)featuresFromTag:(id)arg1;
 + (id)featuresFromTagIDs:(id)arg1;
 + (id)featuresFromTodayPersonalizationEvent:(id)arg1;
@@ -28,6 +30,7 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)fc_description;
+- (double)featureWeightWithConfigurableValues:(id)arg1 publisherID:(id)arg2;
 - (id)fr_description;
 - (unsigned long long)hash;
 - (id)init;
@@ -35,7 +38,9 @@
 - (bool)isEqual:(id)arg1;
 - (id)personalizationIdentifier;
 - (void)setPersonalizationIdentifier:(id)arg1;
+- (void)setShouldBeBoosted:(bool)arg1;
 - (void)setTagID:(id)arg1;
+- (bool)shouldBeBoosted;
 - (id)tagID;
 
 @end

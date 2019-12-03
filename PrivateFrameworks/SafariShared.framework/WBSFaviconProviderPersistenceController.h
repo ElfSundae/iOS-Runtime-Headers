@@ -50,6 +50,7 @@
 - (void)pageURLStringsPrefixedWithVariantsOfDomainString:(id)arg1 includingPrivateData:(bool)arg2 completionHandler:(id /* block */)arg3;
 - (void)rejectedResourceInfoForPageURLString:(id)arg1 iconURLString:(id)arg2 includingPrivateData:(bool)arg3 completionHandler:(id /* block */)arg4;
 - (void)removeAllIconsWithCompletionHandler:(id /* block */)arg1;
+- (void)removeIconFilesNotReferencedInDatabaseWithCompletionHandler:(id /* block */)arg1;
 - (void)removeIconWithPageURLString:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)removeIconsWithURLStringsNotFoundIn:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)savePendingChangesBeforeTermination;

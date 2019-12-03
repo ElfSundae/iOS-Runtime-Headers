@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUAddToAlbumActivity : PUActivity {
+@interface PUAddToAlbumActivity : PXActivity {
     PUAlbumPickerViewController * _albumPickerViewController;
 }
 
@@ -10,6 +10,7 @@
 
 - (void).cxx_destruct;
 - (id)_activityBundleImageConfiguration;
+- (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;
 - (id)activityViewController;

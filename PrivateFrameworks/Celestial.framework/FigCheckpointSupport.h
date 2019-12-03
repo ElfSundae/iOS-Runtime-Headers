@@ -2,9 +2,7 @@
    Image: /System/Library/PrivateFrameworks/Celestial.framework/Celestial
  */
 
-@interface FigCheckpointSupport : NSObject {
-    struct FigCheckpointSupportPrivate { } * _priv;
-}
+@interface FigCheckpointSupport : NSObject
 
 + (id)makeDictionary;
 

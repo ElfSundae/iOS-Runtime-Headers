@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Photos.framework/Photos
  */
 
-@interface PHMemory : PHAssetCollection {
+@interface PHMemory : PHAssetCollection <PGMemoryCore> {
     NSData * _assetListPredicate;
     PHMemoryFeature * _blacklistedFeature;
     unsigned long long  _category;
@@ -39,15 +39,21 @@
 @property (nonatomic, readonly) NSArray *blacklistableFeatures;
 @property (nonatomic, readonly) PHMemoryFeature *blacklistedFeature;
 @property (nonatomic, readonly) unsigned long long category;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (getter=isFavorite, nonatomic, readonly) bool favorite;
 @property (nonatomic, readonly) NSSet *featuredPeopleIdentifiers;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) bool isContiguous;
 @property (nonatomic, readonly) bool isGreat;
 @property (nonatomic, readonly) bool isMustSee;
 @property (nonatomic, readonly) bool isStellar;
 @property (nonatomic, readonly) NSDate *lastMoviePlayedDate;
 @property (nonatomic, readonly) NSDate *lastViewedDate;
+@property (nonatomic, readonly) NSArray *meaningLabels;
+@property (nonatomic, readonly) NSArray *moodKeywords;
 @property (nonatomic, readonly) NSData *movieData;
+@property (nonatomic, readonly) NSDictionary *musicGenreDistribution;
 @property (nonatomic, readonly) unsigned long long notificationState;
 @property (getter=isPending, nonatomic, readonly) bool pending;
 @property (nonatomic, readonly) NSDictionary *photosGraphProperties;
@@ -58,6 +64,10 @@
 @property (nonatomic, readonly) long long shareCount;
 @property (nonatomic, readonly) unsigned long long subcategory;
 @property (nonatomic, readonly) NSString *subtitle;
+@property (nonatomic, readonly) unsigned long long suggestedMood;
+@property (readonly) Class superclass;
+@property (nonatomic, readonly) NSDate *universalEndDate;
+@property (nonatomic, readonly) NSDate *universalStartDate;
 @property (getter=isUserCreated, nonatomic, readonly) bool userCreated;
 @property (nonatomic, readonly) long long viewCount;
 
@@ -68,7 +78,7 @@
 + (id)assetListPredicateFromQueryHintObjects:(id)arg1;
 + (id)entityKeyMap;
 + (id)fetchBestRecentMemoryWithOptions:(id)arg1;
-+ (id)fetchTransientMemoriesWithOptions:(id)arg1 photoLibrary:(id)arg2;
++ (id)fetchBlacklistedMemoriesWithOptions:(id)arg1;
 + (id)fetchType;
 + (void)generateMemoriesWithOptions:(id)arg1 completion:(id /* block */)arg2;
 + (id)identifierCode;
@@ -76,6 +86,7 @@
 + (bool)managedObjectSupportsPendingState;
 + (bool)managedObjectSupportsRejectedState;
 + (bool)managedObjectSupportsTrashedState;
++ (id)memoryInfosWithOptions:(id)arg1 photoLibrary:(id)arg2;
 + (id)memoryTreeLevelWithOptions:(id)arg1 photoLibrary:(id)arg2;
 + (id)movieDataWithTitleFontName:(id)arg1;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
@@ -83,11 +94,11 @@
 + (id)stringForSubcategory:(unsigned long long)arg1;
 + (id)titleFontNameFromMovieData:(id)arg1;
 + (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
-+ (id)transientMemoryWithDictionary:(id)arg1;
++ (id)transientMemoryWithInfo:(id)arg1 photoLibrary:(id)arg2;
 
 - (void).cxx_destruct;
-- (id)_curatedAssetIDs;
-- (id)_extendedCuratedAssetIDs;
+- (id)_curatedAssetIDsWithLibrary:(id)arg1;
+- (id)_extendedCuratedAssetIDsWithLibrary:(id)arg1;
 - (id)_representativeAndCuratedAssetIDs;
 - (id)assetListPredicate;
 - (id)blacklistableFeatures;
@@ -99,6 +110,7 @@
 - (Class)changeRequestClass;
 - (bool)collectionHasFixedOrder;
 - (id)creationDate;
+- (id)defaultSortDescriptor;
 - (id)description;
 - (id)featuredPeopleIdentifiers;
 - (bool)hasBlacklistableFeature;
@@ -115,14 +127,16 @@
 - (id)lastMoviePlayedDate;
 - (id)lastViewedDate;
 - (id)localizedSubtitle;
+- (id)meaningLabels;
 - (id)moodKeywords;
 - (id)movieData;
 - (id)movieStateDataForAsset:(id)arg1;
+- (id)musicGenreDistribution;
 - (unsigned long long)notificationState;
 - (id)photosGraphProperties;
 - (long long)photosGraphVersion;
 - (long long)playCount;
-- (id)predicateForAllAssets;
+- (id)predicateForAllAssetsWithLibrary:(id)arg1;
 - (id)predicateForAllMomentsFromRepresentativeAssets;
 - (id)query;
 - (id)queryForCuratedAssetsWithOptions:(id)arg1;
@@ -141,6 +155,11 @@
 - (id)transientMemoryStartDate;
 - (id)transientRepresentativeAndCuratedAssetIDs;
 - (long long)viewCount;
+
+// Image: /System/Library/PrivateFrameworks/PhotosGraph.framework/PhotosGraph
+
+- (id)universalEndDate;
+- (id)universalStartDate;
 
 // Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
 

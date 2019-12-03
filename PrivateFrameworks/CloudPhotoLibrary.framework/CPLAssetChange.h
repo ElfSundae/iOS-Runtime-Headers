@@ -4,6 +4,8 @@
 
 @interface CPLAssetChange : CPLItemChange {
     NSDate * _addedDate;
+    NSData * _adjustedMediaMetaData;
+    NSString * _adjustedMediaMetaDataType;
     CPLAdjustments * _adjustments;
     NSDate * _assetDate;
     unsigned long long  _assetHDRType;
@@ -47,6 +49,8 @@
 }
 
 @property (nonatomic, copy) NSDate *addedDate;
+@property (nonatomic, retain) NSData *adjustedMediaMetaData;
+@property (nonatomic, copy) NSString *adjustedMediaMetaDataType;
 @property (nonatomic, retain) CPLAdjustments *adjustments;
 @property (nonatomic, copy) NSDate *assetDate;
 @property (nonatomic) unsigned long long assetHDRType;
@@ -98,6 +102,8 @@
 - (void).cxx_destruct;
 - (bool)_canLowerQuota;
 - (id)addedDate;
+- (id)adjustedMediaMetaData;
+- (id)adjustedMediaMetaDataType;
 - (id)adjustments;
 - (id)allRelatedScopedIdentifiers;
 - (id)assetDate;
@@ -122,6 +128,7 @@
 - (unsigned long long)fullChangeTypeForFullRecord;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (bool)isAssetChange;
 - (bool)isFavorite;
 - (bool)isHidden;
 - (id)keywords;
@@ -145,6 +152,8 @@
 - (id)scopeIdentifiersForQuarantine;
 - (id)scopedIdentifiersForMapping;
 - (void)setAddedDate:(id)arg1;
+- (void)setAdjustedMediaMetaData:(id)arg1;
+- (void)setAdjustedMediaMetaDataType:(id)arg1;
 - (void)setAdjustments:(id)arg1;
 - (void)setAssetDate:(id)arg1;
 - (void)setAssetHDRType:(unsigned long long)arg1;
@@ -189,6 +198,7 @@
 - (void)setViewCount:(long long)arg1;
 - (long long)shareCount;
 - (bool)supportsDeletion;
+- (bool)supportsResourceType:(unsigned long long)arg1;
 - (bool)supportsResources;
 - (id)timeZoneName;
 - (id)timeZoneOffset;

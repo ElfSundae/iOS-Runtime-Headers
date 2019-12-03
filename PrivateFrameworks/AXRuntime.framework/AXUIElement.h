@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/AXRuntime.framework/AXRuntime
  */
 
-@interface AXUIElement : NSObject <UIElementProtocol> {
+@interface AXUIElement : NSObject <NSCopying, UIElementProtocol> {
     struct __AXUIElement { } * _axElement;
     NSMutableDictionary * _cachedAttributes;
     long long  _cachedRefCount;
@@ -48,6 +48,7 @@
 - (id)cachedAttributes;
 - (bool)canPerformAXAction:(int)arg1;
 - (struct CGColor { }*)colorWithAXAttribute:(long long)arg1;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (void)disableCache;
 - (void)enableCache:(bool)arg1;

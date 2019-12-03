@@ -7,10 +7,10 @@
 @property (nonatomic, readonly) unsigned int defaultOutputIndex;
 @property (nonatomic, readonly) unsigned int landmarksOutputIndex;
 
-+ (id)landmarksConfigurationWithFaceDetectionEnabled:(bool)arg1;
++ (id)landmarksConfiguration;
 
 - (unsigned int)defaultOutputIndex;
-- (id)initWithFaceDetectionEnabled:(bool)arg1;
+- (id)init;
 - (unsigned int)landmarksOutputIndex;
 
 @end

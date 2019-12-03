@@ -17,6 +17,7 @@
 - (void)_updateNavigationButton;
 - (bool)alwaysShowSearchResultsTable;
 - (id)doneButton;
+- (id)handlesForScreenTimePolicyCheck;
 - (bool)homogenizePreferredServiceForiMessage;
 - (id)initWithConversation:(id)arg1;
 - (void)loadView;
@@ -34,6 +35,7 @@
 - (void)setDoneButton:(id)arg1;
 - (bool)shouldAutorotate;
 - (bool)shouldSuppressSearchResultsTable;
+- (double)topInsetForNavBar;
 - (void)viewDidAppearDeferredSetup;
 - (void)viewWillAppear:(bool)arg1;
 

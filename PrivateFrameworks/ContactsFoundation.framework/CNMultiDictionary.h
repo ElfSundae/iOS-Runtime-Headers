@@ -13,11 +13,11 @@
 + (id)multiDictionary;
 + (id)multiDictionaryWithObject:(id)arg1 forKey:(id)arg2;
 
+- (void).cxx_destruct;
 - (id)allKeys;
 - (bool)containsKey:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned long long)count;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (void)eachObject:(id /* block */)arg1;

@@ -21,15 +21,14 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_init;
 - (void)_stopBrowsingRemoveCache:(bool)arg1;
 - (id)delegate;
 - (id)enableHotspot:(id)arg1 error:(out id*)arg2;
 - (id)hotspotSession;
+- (id)init;
 - (id)internalQueue;
 - (bool)isScanning;
 - (id)networks;
-- (void)pauseBrowsing;
 - (void)session:(id)arg1 updatedFoundDevices:(id)arg2;
 - (void)setDelegate:(id)arg1;
 - (void)setHotspotSession:(id)arg1;

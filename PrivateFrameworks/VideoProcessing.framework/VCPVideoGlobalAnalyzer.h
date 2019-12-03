@@ -6,6 +6,7 @@
 
 - (float)analyzeOverallQuality:(id)arg1 withFpsRate:(float)arg2;
 - (float)assetActionScoreFromAnalysis:(id)arg1;
+- (float)assetActivityLevelFromAnalysisResults:(id)arg1;
 - (float)assetCameraMotionScoreFromAnalysis:(id)arg1;
 - (float)assetExpressionScoreFromAnalysis:(id)arg1;
 - (float)assetJunkScoreFromAnalysis:(id)arg1;

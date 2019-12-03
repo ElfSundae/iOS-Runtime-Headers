@@ -12,8 +12,8 @@
     NSArray * mSurroundColors;
 }
 
+- (void).cxx_destruct;
 - (void)createShading;
-- (void)dealloc;
 - (id)endColor;
 - (void)setCenterColor:(id)arg1;
 - (void)setCenterPoint:(struct CGPoint { double x1; double x2; })arg1;

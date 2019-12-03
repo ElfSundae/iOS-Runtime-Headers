@@ -33,7 +33,6 @@
 - (id)defaultOption;
 - (id)description;
 - (id)dictionary;
-- (void)finalize;
 - (id)init;
 - (id)mediaSelectionOptionWithPropertyList:(id)arg1;
 - (id)options;

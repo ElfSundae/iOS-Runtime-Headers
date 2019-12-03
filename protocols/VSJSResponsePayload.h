@@ -5,6 +5,7 @@
 
 @required
 
+- (NSString *)appBundleIdentifier;
 - (NSString *)authN;
 - (NSString *)authenticationScheme;
 - (NSArray *)clearSubscriptions;
@@ -12,6 +13,7 @@
 - (NSDate *)expirationDate;
 - (id)init;
 - (NSString *)logout;
+- (void)setAppBundleIdentifier:(NSString *)arg1;
 - (void)setAuthN:(NSString *)arg1;
 - (void)setAuthenticationScheme:(NSString *)arg1;
 - (void)setClearSubscriptions:(NSArray *)arg1;

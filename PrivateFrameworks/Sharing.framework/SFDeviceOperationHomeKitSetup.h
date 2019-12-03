@@ -9,6 +9,7 @@
     bool  _configuredStereoPair;
     NSObject<OS_dispatch_queue> * _dispatchQueue;
     bool  _hasHomePod;
+    bool  _hasMultipleUsers;
     bool  _homeAppInstallUserDidChoose;
     HMAccessory * _homeKitAccessory;
     bool  _homeKitAddedAccessory;
@@ -49,6 +50,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *dispatchQueue;
 @property (nonatomic, readonly) bool hasHomePod;
+@property (nonatomic, readonly) bool hasMultipleUsers;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) HMHome *homeKitSelectedHome;
 @property (nonatomic, readonly, copy) NSString *homeKitSelectedRoomName;
@@ -90,7 +92,7 @@
 - (void)_runPersonalRequestsStart;
 - (void)_startTimeout:(double)arg1;
 - (void)_updateAccount;
-- (void)_updateHomeHasHomePod;
+- (void)_updateHomeStats;
 - (void)accessoryBrowser:(id)arg1 didFindNewAccessory:(id)arg2;
 - (void)accessoryBrowser:(id)arg1 didRemoveNewAccessory:(id)arg2;
 - (void)activate;
@@ -99,6 +101,7 @@
 - (id)dispatchQueue;
 - (id)findStereoCounterparts;
 - (bool)hasHomePod;
+- (bool)hasMultipleUsers;
 - (void)homeAppInstallChoice:(bool)arg1;
 - (id)homeKitSelectedHome;
 - (id)homeKitSelectedRoomName;

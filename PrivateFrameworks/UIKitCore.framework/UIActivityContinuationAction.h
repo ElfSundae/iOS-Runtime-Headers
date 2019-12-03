@@ -12,6 +12,8 @@
 @property (nonatomic, readonly) NSString *originatingDeviceType;
 @property (nonatomic, readonly) NSData *userActivityData;
 
+// Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
+
 - (long long)UIActionType;
 - (id)activityType;
 - (id)activityTypeIdentifier;
@@ -22,5 +24,9 @@
 - (id)originatingDeviceName;
 - (id)originatingDeviceType;
 - (id)userActivityData;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoard.framework/SpringBoard
+
+- (id)initWithIdentifier:(id)arg1 activityTypeIdentifier:(id)arg2 appSuggestion:(id)arg3;
 
 @end

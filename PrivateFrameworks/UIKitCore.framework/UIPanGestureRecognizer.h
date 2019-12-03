@@ -52,6 +52,7 @@
 + (double)_defaultHysteresis;
 + (void)_setPanGestureRecognizersEnabled:(bool)arg1;
 + (bool)_shouldDefaultToTouches;
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)_activeTouches;
@@ -91,6 +92,7 @@
 - (bool)_shouldTryToBeginWithEvent:(id)arg1;
 - (bool)_touchesExceedAllowableSeparation;
 - (void)_touchesListChangedFrom:(id)arg1 to:(id)arg2;
+- (double)_translationDistanceInSceneInSelfAxis:(struct CGPoint { double x1; double x2; })arg1;
 - (void)_updateDigitizerLocationWithEvent:(id)arg1;
 - (bool)_updateMovingTouchesArraySavingOldArray:(id*)arg1;
 - (id)_velocitySample;
@@ -120,10 +122,6 @@
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (struct CGPoint { double x1; double x2; })translationInView:(id)arg1;
 - (struct CGPoint { double x1; double x2; })velocityInView:(id)arg1;
-
-// Image: /System/Library/PrivateFrameworks/IMSharedUtilities.framework/Frameworks/XCTest.framework/XCTest
-
-- (id)_automationName;
 
 // Image: /System/Library/PrivateFrameworks/TSReading.framework/TSReading
 

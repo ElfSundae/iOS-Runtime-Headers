@@ -4,13 +4,15 @@
 
 @interface GEOAutoCompleteResultInfo : PBCodable <NSCopying> {
     struct { 
-        unsigned int suggestionsAcType : 1; 
-    }  _has;
+        unsigned int has_suggestionsAcType : 1; 
+    }  _flags;
     int  _suggestionsAcType;
 }
 
 @property (nonatomic) bool hasSuggestionsAcType;
 @property (nonatomic) int suggestionsAcType;
+
++ (bool)isValid:(id)arg1;
 
 - (int)StringAsSuggestionsAcType:(id)arg1;
 - (void)copyTo:(id)arg1;
@@ -21,6 +23,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasSuggestionsAcType:(bool)arg1;
 - (void)setSuggestionsAcType:(int)arg1;

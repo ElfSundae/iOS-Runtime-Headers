@@ -19,13 +19,13 @@
 @property (nonatomic, readonly) double asleepDuration;
 @property (nonatomic, readonly) double asleepDurationGoal;
 @property (nonatomic, readonly) long long asleepDurationGoalSource;
-@property (nonatomic, readonly) NSDateInterval *dateInterval;
+@property (nonatomic, readonly, copy) NSDateInterval *dateInterval;
 @property (nonatomic, readonly) double efficiency;
-@property (nonatomic, readonly) NSDate *endDate;
+@property (nonatomic, readonly, copy) NSDate *endDate;
 @property (nonatomic, readonly) double inBedDuration;
 @property (nonatomic, readonly) long long numberOfInterruptions;
 @property (nonatomic, readonly, copy) NSArray *sleepPeriods;
-@property (nonatomic, readonly) NSDate *startDate;
+@property (nonatomic, readonly, copy) NSDate *startDate;
 @property (nonatomic, readonly) double timeAwakeDuringIntendedSleepPeriod;
 
 - (void).cxx_destruct;

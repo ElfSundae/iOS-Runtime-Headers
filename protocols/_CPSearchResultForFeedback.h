@@ -11,6 +11,7 @@
 - (NSString *)completedQuery;
 - (NSString *)correctedQuery;
 - (bool)doNotFold;
+- (NSData *)entityData;
 - (NSString *)fbr;
 - (unsigned long long)hashedIdentifier;
 - (NSString *)identifier;
@@ -38,6 +39,7 @@
 - (void)setCompletedQuery:(NSString *)arg1;
 - (void)setCorrectedQuery:(NSString *)arg1;
 - (void)setDoNotFold:(bool)arg1;
+- (void)setEntityData:(NSData *)arg1;
 - (void)setFbr:(NSString *)arg1;
 - (void)setHashedIdentifier:(unsigned long long)arg1;
 - (void)setIdentifier:(NSString *)arg1;

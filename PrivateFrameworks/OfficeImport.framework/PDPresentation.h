@@ -22,6 +22,7 @@
     NSMutableArray * mSlides;
 }
 
+- (void).cxx_destruct;
 - (unsigned int)addBulletBlip:(id)arg1;
 - (void)addCommentAuthor:(id)arg1;
 - (void)addNotesMaster:(id)arg1;
@@ -34,7 +35,6 @@
 - (void)cacheGraphicStylesForSlideBase:(id)arg1;
 - (id)commentAuthorAtIndex:(unsigned long long)arg1;
 - (unsigned long long)commentAuthorCount;
-- (void)dealloc;
 - (id)description;
 - (void)ensureDefaultLayoutsForMasters;
 - (void)flushUnusedMastersAndLayouts;

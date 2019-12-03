@@ -13,6 +13,11 @@
 @property (setter=hk_setDemoResultKeys:, nonatomic, retain) NSArray *hk_demoResultKeys;
 @property (getter=hk_electrocardiogramSetupModalViewHasBeenPresented, setter=hk_setElectrocardiogramSetupModalViewPresented:, nonatomic) bool hk_electrocardiogramSetupModalViewPresented;
 @property (nonatomic, readonly) bool hk_hfeModeEnabled;
+@property (nonatomic, readonly) bool hkmc_analyticsDebugModeEnabled;
+@property (nonatomic, readonly) bool hkmc_calendarLogAdjacentDaysDisabled;
+@property (nonatomic, readonly) bool hkmc_timelineLogAdjacentDaysEnabled;
+@property (nonatomic, readonly) bool hkmc_timelineTapToLogDisabled;
+@property (nonatomic, readonly) bool hkmc_useDemoCycles;
 
 // Image: /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
 
@@ -25,6 +30,7 @@
 // Image: /System/Library/Frameworks/ARKit.framework/ARKit
 
 + (id)appleGlobalDomain;
++ (id)appleGlobalDomainARKItDefaults;
 + (id)appleGlobalDomainARKitKeys;
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
@@ -110,10 +116,6 @@
 + (id)mf_copyCompositionServicesPreferenceValueForKey:(id)arg1;
 + (void)mf_setCompositionServicesPreferenceValue:(id)arg1 forKey:(id)arg2;
 
-// Image: /System/Library/Frameworks/ModelIO.framework/ModelIO
-
-+ (void)mdltsu_registerDefaults;
-
 // Image: /System/Library/Frameworks/SafariServices.framework/SafariServices
 
 + (id)_sf_safariDefaults;
@@ -126,6 +128,11 @@
 - (bool)_sf_shouldAutomaticallyDownloadReadingListItems;
 - (id)_sf_stringForKey:(id)arg1 defaultValue:(id)arg2;
 - (bool)_sf_warnAboutFraudulentWebsites;
+
+// Image: /System/Library/PrivateFrameworks/ARDisplayDevice.framework/ARDisplayDevice
+
++ (id)appleGlobalDomain;
++ (id)appleGlobalDomainARDisplayDeviceKeys;
 
 // Image: /System/Library/PrivateFrameworks/AnnotationKit.framework/AnnotationKit
 
@@ -180,16 +187,43 @@
 
 // Image: /System/Library/PrivateFrameworks/DocumentManager.framework/DocumentManager
 
-- (id)DOC_roleSpecificKeyForKey:(id)arg1 configuration:(id)arg2;
-- (void)DOC_setObject:(id)arg1 forRoleKey:(id)arg2 configuation:(id)arg3;
+- (id)doc_roleSpecificKeyForKey:(id)arg1 configuration:(id)arg2;
+- (void)doc_setObject:(id)arg1 forRoleKey:(id)arg2 configuation:(id)arg3;
+
+// Image: /System/Library/PrivateFrameworks/DocumentManagerCore.framework/DocumentManagerCore
+
+- (id)doc_roleSpecificKeyForKey:(id)arg1 configuration:(id)arg2;
+- (void)doc_setObject:(id)arg1 forRoleKey:(id)arg2 configuation:(id)arg3;
+
+// Image: /System/Library/PrivateFrameworks/Email.framework/Email
+
++ (void)em_migrateDefault:(id)arg1;
++ (id)em_userDefaults;
 
 // Image: /System/Library/PrivateFrameworks/FitnessUI.framework/FitnessUI
 
++ (void)fu_backupAndSetBool:(bool)arg1 forKey:(id)arg2;
++ (void)fu_backupAndSetDouble:(double)arg1 forKey:(id)arg2;
++ (void)fu_backupAndSetFloat:(float)arg1 forKey:(id)arg2;
++ (void)fu_backupAndSetInteger:(long long)arg1 forKey:(id)arg2;
++ (void)fu_backupAndSetObject:(id)arg1 forKey:(id)arg2;
++ (void)fu_backupAndSetURL:(id)arg1 forKey:(id)arg2;
 + (void)fu_backupStandardUserDefaultsKey:(id)arg1;
 + (void)fu_backupStandardUserDefaultsKey:(id)arg1 useContainer:(bool)arg2;
 + (id)fu_npsManager;
 + (void)fu_synchronizeStandardUserDefaultsKey:(id)arg1;
 + (void)fu_synchronizeStandardUserDefaultsKey:(id)arg1 useContainer:(bool)arg2;
+
+// Image: /System/Library/PrivateFrameworks/HealthMenstrualCycles.framework/HealthMenstrualCycles
+
++ (id)hkmc_menstrualCyclesDefaults;
+
+- (bool)hkmc_analyticsDebugModeEnabled;
+- (bool)hkmc_calendarLogAdjacentDaysDisabled;
+- (long long)hkmc_integerForKey:(id)arg1 defaultValue:(long long)arg2;
+- (bool)hkmc_timelineLogAdjacentDaysEnabled;
+- (bool)hkmc_timelineTapToLogDisabled;
+- (bool)hkmc_useDemoCycles;
 
 // Image: /System/Library/PrivateFrameworks/IMDaemonCore.framework/IMDaemonCore
 
@@ -206,12 +240,30 @@
 
 - (void)nf_migrateObjectForKey:(id)arg1 toKey:(id)arg2;
 
+// Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
+
++ (void)tsu_registerDefaults;
+
+// Image: /System/Library/PrivateFrameworks/PodcastsKit.framework/PodcastsKit
+
++ (id)appUserDefaults;
++ (id)appUserDefaultsForUnitTesting;
++ (id)groupUserDefaultsForUnitTesting;
++ (void)setAppUserDefaultsForUnitTesting:(id)arg1;
++ (void)setGroupUserDefaultsForUnitTesting:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit
+
+- (id)objectIDForKey:(id)arg1;
+- (void)setObjectID:(id)arg1 forKey:(id)arg2;
+
 // Image: /System/Library/PrivateFrameworks/SafariCore.framework/SafariCore
 
 + (id)safari_cloudBookmarksDefaults;
 + (id)safari_notificationNameForUserDefaultsKey:(id)arg1;
 
 - (id)safari_dateForKey:(id)arg1;
+- (id)safari_numberForKey:(id)arg1;
 - (void)safari_setBool:(bool)arg1 andNotifyForKey:(id)arg2;
 - (void)safari_setDate:(id)arg1 forKey:(id)arg2;
 - (bool)safari_toggleBoolAndNotifyForKey:(id)arg1;
@@ -266,6 +318,15 @@
 
 + (id)tu_defaults;
 
+// Image: /System/Library/PrivateFrameworks/VoiceMemos.framework/VoiceMemos
+
+- (bool)_deletionMatchesWindow:(long long)arg1;
+- (long long)rc_audioQuality;
+- (bool)rc_deletionIsImmediate;
+- (bool)rc_deletionIsNever;
+- (long long)rc_recentlyDeletedWindow;
+- (bool)rc_useLocationBasedNaming;
+
 // Image: /System/Library/PrivateFrameworks/WebKitLegacy.framework/WebKitLegacy
 
 + (id)_webkit_preferredLanguageCode;
@@ -273,6 +334,20 @@
 // Image: /System/Library/PrivateFrameworks/WebUI.framework/WebUI
 
 + (id)webui_defaults;
+
+// Image: /System/Library/PrivateFrameworks/WorkflowKit.framework/WorkflowKit
+
++ (id)siriAssistantUserDefaults;
++ (id)systemShortcutsUserDefaults;
++ (id)workflowUserDefaults;
+
+- (void)setWorkflowIdentifier:(id)arg1 forToken:(id)arg2;
+- (bool)wf_isCurrentDeviceModelDisabledInSiri;
+- (bool)wf_isDeviceIdiomDisabledInSiri:(long long)arg1;
+- (id)wf_keyForDisablingDeviceIdiom:(long long)arg1;
+- (void)wf_registerDefaultDisabledDevices;
+- (bool)wf_voiceParametersDisabled;
+- (id)workflowIdentifierConsumingSingleUseToken:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
 

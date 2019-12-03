@@ -2,17 +2,17 @@
    Image: /System/Library/PrivateFrameworks/SearchUI.framework/SearchUI
  */
 
-@interface SearchUIMovieCardSectionBuyButtonView : SearchUIWidthLimitedStackView {
-    SKUIItemOfferButton * _button;
+@interface SearchUIMovieCardSectionBuyButtonView : TLKStackView {
+    SearchUIOfferButtonView * _button;
     SearchUIMovieCardSectionView * _cardSectionView;
     SFPunchout * _punchout;
-    SearchUIVibrantLabel * _subtitleLabel;
+    SearchUILabel * _subtitleLabel;
 }
 
-@property (retain) SKUIItemOfferButton *button;
-@property SearchUIMovieCardSectionView *cardSectionView;
-@property (retain) SFPunchout *punchout;
-@property (retain) SearchUIVibrantLabel *subtitleLabel;
+@property (nonatomic, retain) SearchUIOfferButtonView *button;
+@property (nonatomic) SearchUIMovieCardSectionView *cardSectionView;
+@property (nonatomic, retain) SFPunchout *punchout;
+@property (nonatomic, retain) SearchUILabel *subtitleLabel;
 
 - (void).cxx_destruct;
 - (id)button;
@@ -26,6 +26,5 @@
 - (void)setPunchout:(id)arg1;
 - (void)setSubtitleLabel:(id)arg1;
 - (id)subtitleLabel;
-- (struct CGSize { double x1; double x2; })systemLayoutSizeFittingSize:(struct CGSize { double x1; double x2; })arg1;
 
 @end

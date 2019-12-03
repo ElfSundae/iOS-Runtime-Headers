@@ -22,7 +22,11 @@
 + (id)expandedFont;
 + (double)height;
 + (id)normalFont;
++ (id)pillFont;
++ (struct CGSize { double x1; double x2; })pillSize;
++ (id)pillSmallFont;
 + (double)regionSpacing;
++ (struct CGSize { double x1; double x2; })smallPillSize;
 + (Class)visualProviderSubclassForScreen:(id)arg1;
 
 - (void).cxx_destruct;
@@ -43,6 +47,7 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (id)orderedDisplayItemPlacements;
 - (id)orderedDisplayItemPlacementsInRegionWithIdentifier:(id)arg1;
+- (id)overriddenStyleAttributesForDisplayItemWithIdentifier:(id)arg1;
 - (id)regionIdentifiersForPartWithIdentifier:(id)arg1;
 - (void)setDatePlacement:(id)arg1;
 - (void)setLeadingRegionTrailingAnchorConstraint:(id)arg1;
@@ -51,7 +56,7 @@
 - (void)setTrailingRegionLeadingAnchorConstraint:(id)arg1;
 - (id)setupInContainerView:(id)arg1;
 - (void)sizeUpdatedFromSize:(struct CGSize { double x1; double x2; })arg1;
-- (id)styleAttributes;
+- (id)styleAttributesForStyle:(long long)arg1;
 - (id)timePlacement;
 - (id)trailingRegionLeadingAnchorConstraint;
 

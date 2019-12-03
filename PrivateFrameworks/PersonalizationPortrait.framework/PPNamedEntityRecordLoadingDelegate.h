@@ -2,9 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PersonalizationPortrait.framework/PersonalizationPortrait
  */
 
-@interface PPNamedEntityRecordLoadingDelegate : NSObject {
-    NSDate * _loadEntitiesDetectedSince;
-    NSString * _name;
+@interface PPNamedEntityRecordLoadingDelegate : PPRecordLoadingDelegate {
     id /* block */  _namedEntityRecordsCompletion;
     id /* block */  _namedEntityRecordsHandler;
     id /* block */  _namedEntityRecordsSetup;
@@ -14,8 +12,6 @@
     id /* block */  _resetNamedEntityRecordData;
 }
 
-@property (nonatomic, retain) NSDate *loadEntitiesDetectedSince;
-@property (nonatomic, readonly) NSString *name;
 @property (nonatomic, copy) id /* block */ namedEntityRecordsCompletion;
 @property (nonatomic, copy) id /* block */ namedEntityRecordsHandler;
 @property (nonatomic, copy) id /* block */ namedEntityRecordsSetup;
@@ -27,16 +23,20 @@
 - (void).cxx_destruct;
 - (id)description;
 - (id)initWithName:(id)arg1;
-- (id)loadEntitiesDetectedSince;
-- (id)name;
 - (id /* block */)namedEntityRecordsCompletion;
 - (id /* block */)namedEntityRecordsHandler;
 - (id /* block */)namedEntityRecordsSetup;
 - (id /* block */)recentNamedEntityRecordsCompletion;
 - (id /* block */)recentNamedEntityRecordsHandler;
 - (id /* block */)recentNamedEntityRecordsSetup;
+- (void)recentRecordLoadingCompletion;
+- (unsigned char)recentRecordLoadingHandler:(id)arg1;
+- (unsigned char)recentRecordLoadingSetup;
+- (void)recordLoadingCompletion;
+- (unsigned char)recordLoadingHandler:(id)arg1;
+- (unsigned char)recordLoadingSetup;
 - (id /* block */)resetNamedEntityRecordData;
-- (void)setLoadEntitiesDetectedSince:(id)arg1;
+- (void)resetRecordData;
 - (void)setNamedEntityRecordsCompletion:(id /* block */)arg1;
 - (void)setNamedEntityRecordsHandler:(id /* block */)arg1;
 - (void)setNamedEntityRecordsSetup:(id /* block */)arg1;

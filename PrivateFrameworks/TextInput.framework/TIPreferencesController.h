@@ -8,7 +8,6 @@
     NSMutableDictionary * _configuredPreferences;
     bool  _ignoreNextSyncNotification;
     bool  _inhibitGlobalNotification;
-    double  _lastSynchronizePreferencesTime;
     NSTimer * _synchronizePreferencesTimer;
     bool  isInternalInstall;
 }
@@ -16,6 +15,8 @@
 @property (nonatomic) bool automaticMinimizationEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) unsigned long long floatingKeyboardDockedEdge;
+@property (nonatomic) struct CGPoint { double x1; double x2; } floatingKeyboardPosition;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool ignoreNextSyncNotification;
 @property (nonatomic) bool inhibitGlobalNotification;
@@ -46,6 +47,8 @@
 - (void)didSeeHardwareKeyboard:(id)arg1;
 - (void)didTriggerOneTimeAction:(id)arg1;
 - (void)didUnseeHardwareKeyboard:(id)arg1;
+- (unsigned long long)floatingKeyboardDockedEdge;
+- (struct CGPoint { double x1; double x2; })floatingKeyboardPosition;
 - (bool)ignoreNextSyncNotification;
 - (bool)inhibitGlobalNotification;
 - (id)init;
@@ -61,6 +64,8 @@
 - (bool)predictionEnabled;
 - (void)preferencesChangedCallback:(id)arg1;
 - (void)setAutomaticMinimizationEnabled:(bool)arg1;
+- (void)setFloatingKeyboardDockedEdge:(unsigned long long)arg1;
+- (void)setFloatingKeyboardPosition:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setIgnoreNextSyncNotification:(bool)arg1;
 - (void)setInhibitGlobalNotification:(bool)arg1;
 - (void)setInputModeSelectionSequence:(id)arg1;
@@ -75,6 +80,7 @@
 - (void)synchronizePreferences;
 - (void)touchSynchronizePreferencesTimer;
 - (void)updateDidPerformFirstReachableKeyboardInteraction;
+- (void)updateEnableProKeyboard:(bool)arg1;
 - (void)updateEnabledDictationLanguages:(id)arg1;
 - (void)updateInputModes:(id)arg1;
 - (void)updateKeyboardHandBias:(id)arg1;

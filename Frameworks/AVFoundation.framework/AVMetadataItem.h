@@ -71,7 +71,6 @@
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })duration;
 - (id)extendedLanguageTag;
 - (id)extraAttributes;
-- (void)finalize;
 - (unsigned long long)hash;
 - (id)identifier;
 - (struct CGImage { }*)imageValue;

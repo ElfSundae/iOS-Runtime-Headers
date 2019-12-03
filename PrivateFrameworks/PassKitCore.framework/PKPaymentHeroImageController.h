@@ -17,6 +17,7 @@
 @property (nonatomic, copy) NSString *primaryImageIdentifier;
 @property (nonatomic) long long watchSize;
 
++ (struct CGSize { double x1; double x2; })cardArtSizeForWatchViewSize:(struct CGSize { double x1; double x2; })arg1;
 + (id)defaultImages;
 
 - (void).cxx_destruct;

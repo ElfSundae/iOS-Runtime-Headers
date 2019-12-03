@@ -10,10 +10,10 @@
 @property (nonatomic, retain) NSMutableArray *array;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *concurrentQueue;
 
+- (void).cxx_destruct;
 - (id)array;
 - (id)concurrentQueue;
 - (unsigned long long)count;
-- (void)dealloc;
 - (id)dequeue;
 - (void)enqueue:(id)arg1;
 - (id)init;

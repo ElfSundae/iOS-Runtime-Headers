@@ -15,7 +15,6 @@
 + (id)iCloudAccount;
 + (id)iTunesAccountIdentifier;
 + (id)iTunesStoreAccount;
-+ (bool)isAppleAccountAvailable;
 + (bool)isManagedAppleId;
 + (bool)isiCloudAccountAvailable;
 + (bool)isiCloudManagedAppleId;
@@ -23,7 +22,7 @@
 + (bool)isiTunesManagedAppleId;
 + (id)sharedInstance;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (bool)deviceHasHomeButton;
 - (id)lastiTunesAccountID;
 - (id)notifyToken;

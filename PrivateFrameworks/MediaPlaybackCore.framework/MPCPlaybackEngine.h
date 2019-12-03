@@ -3,23 +3,33 @@
  */
 
 @interface MPCPlaybackEngine : NSObject <MPCExplicitContentAuthorizationDelegate> {
+    _MPCPlaybackAccountManager * _accountManager;
+    MPCAudioSpectrumAnalyzer * _audioAnalyzer;
+    bool  _audioAnalyzerEnabled;
     NSString * _audioSessionCategory;
+    unsigned long long  _audioSessionOptions;
     <MPCPlaybackEngineDelegate> * _delegate;
     MPProtocolProxy<MPCPlaybackEngineEventObserving> * _eventObserver;
     MPCPlaybackIntent * _fallbackPlaybackIntent;
     _MPCAVController * _implementation;
     _MPCLeaseManager * _leaseManager;
     _MPCMediaRemotePublisher * _mediaRemotePublisher;
+    unsigned long long  _options;
     bool  _pictureInPictureSupported;
     NSString * _playerID;
     _MPCReportingController * _reportingController;
     bool  _scheduledPlaybackStatePreservation;
+    _MPCPlaybackEngineSessionManager * _sessionManager;
     bool  _stateRestorationSupported;
     bool  _systemMusicApplication;
     bool  _videoSupported;
 }
 
+@property (nonatomic, readonly) _MPCPlaybackAccountManager *accountManager;
+@property (nonatomic, readonly) MPCAudioSpectrumAnalyzer *audioAnalyzer;
+@property (getter=isAudioAnalyzerEnabled, nonatomic) bool audioAnalyzerEnabled;
 @property (nonatomic, copy) NSString *audioSessionCategory;
+@property (nonatomic) unsigned long long audioSessionOptions;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <MPCPlaybackEngineDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -29,11 +39,13 @@
 @property (nonatomic, readonly) _MPCAVController *implementation;
 @property (nonatomic, readonly) _MPCLeaseManager *leaseManager;
 @property (nonatomic, readonly) _MPCMediaRemotePublisher *mediaRemotePublisher;
+@property (nonatomic, readonly) unsigned long long options;
 @property (getter=isPictureInPictureSupported, nonatomic) bool pictureInPictureSupported;
 @property (nonatomic, readonly, copy) NSString *playerID;
 @property (nonatomic, readonly) MPCPlayerPath *playerPath;
 @property (nonatomic, readonly) _MPCReportingController *reportingController;
 @property (getter=hasScheduledPlaybackStatePreservation, nonatomic) bool scheduledPlaybackStatePreservation;
+@property (nonatomic, readonly) _MPCPlaybackEngineSessionManager *sessionManager;
 @property (getter=isStateRestorationSupported, nonatomic) bool stateRestorationSupported;
 @property (readonly) Class superclass;
 @property (getter=isSystemMusicApplication, nonatomic) bool systemMusicApplication;
@@ -45,11 +57,15 @@
 
 - (void).cxx_destruct;
 - (void)_initializePlaybackStack;
-- (void)_preservePlaybackStateImmediately;
-- (void)_restorePlaybackStateWithCompletion:(id /* block */)arg1;
+- (void)_itemAssetLoadedNotification:(id)arg1;
+- (void)_itemInsertedNotification:(id)arg1;
+- (bool)_shouldIgnorePlaybackSessionError:(id)arg1;
+- (id)accountManager;
 - (void)addEngineObserver:(id)arg1;
 - (void)addSupportedSpecializedQueueIdentifier:(id)arg1 localizedName:(id)arg2 queueType:(long long)arg3 queueParameters:(id)arg4;
+- (id)audioAnalyzer;
 - (id)audioSessionCategory;
+- (unsigned long long)audioSessionOptions;
 - (void)becomeActive;
 - (id)delegate;
 - (id)eventObserver;
@@ -57,12 +73,15 @@
 - (bool)hasScheduledPlaybackStatePreservation;
 - (id)implementation;
 - (id)initWithPlayerID:(id)arg1;
+- (id)initWithPlayerID:(id)arg1 options:(unsigned long long)arg2;
+- (bool)isAudioAnalyzerEnabled;
 - (bool)isPictureInPictureSupported;
 - (bool)isStateRestorationSupported;
 - (bool)isSystemMusicApplication;
 - (bool)isVideoSupported;
 - (id)leaseManager;
 - (id)mediaRemotePublisher;
+- (unsigned long long)options;
 - (id)playerID;
 - (id)playerPath;
 - (void)removeEngineObserver:(id)arg1;
@@ -72,7 +91,10 @@
 - (void)requestAuthorizationForExplicitItem:(id)arg1 reason:(long long)arg2 completion:(id /* block */)arg3;
 - (void)restoreStateWithCompletion:(id /* block */)arg1;
 - (void)schedulePlaybackStatePreservation;
+- (id)sessionManager;
+- (void)setAudioAnalyzerEnabled:(bool)arg1;
 - (void)setAudioSessionCategory:(id)arg1;
+- (void)setAudioSessionOptions:(unsigned long long)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setFallbackPlaybackIntent:(id)arg1;
 - (void)setPictureInPictureSupported:(bool)arg1;

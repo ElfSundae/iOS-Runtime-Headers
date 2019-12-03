@@ -4,7 +4,7 @@
 
 @interface NSFileCoordinatorAccessorBlockCompletion : NSObject {
     id /* block */  block;
-    int  count;
+    _Atomic int  count;
 }
 
 + (id)completionWithBlock:(id /* block */)arg1;

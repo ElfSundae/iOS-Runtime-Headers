@@ -44,7 +44,6 @@
 - (long long)downloadOverdue;
 - (double)durationWatched;
 - (long long)entryReasonCode;
-- (void)finalize;
 - (double)indicatedAverageBitrate;
 - (double)indicatedBitrate;
 - (id)init;

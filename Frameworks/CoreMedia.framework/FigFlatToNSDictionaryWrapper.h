@@ -9,9 +9,12 @@
     struct OpaqueFigFlatDictionary { } * _flatDictionary;
     int  _keySpace;
     struct OpaqueFigFlatDictionaryKeySpec { } * _keySpec;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _lazyInitializationMutex;
 }
 
-- (void)_initializeFlatDictionary;
+- (bool)_ensureFlatDictionaryIsInitialized;
 - (id)arrayForFlatDictionaryArrayDataKey:(struct { int x1; int x2; char *x3; int x4; unsigned long long x5; void *x6; }*)arg1;
 - (unsigned long long)count;
 - (void)dealloc;

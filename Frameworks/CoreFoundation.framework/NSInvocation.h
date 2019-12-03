@@ -2,18 +2,24 @@
    Image: /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
  */
 
-@interface NSInvocation : NSObject {
-    id  _container;
+@interface NSInvocation : NSObject <EFLoggable> {
+    NSMutableArray * _container;
     void * _frame;
-    unsigned char  _reserved;
+    unsigned int  _magic;
+    bool * _replacedByPointerBacking;
     unsigned char  _retainedArgs;
     void * _retdata;
-    id  _signature;
+    NSMethodSignature * _signature;
+    unsigned char  _stackAllocated;
 }
 
 @property (readonly) bool argumentsRetained;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, retain) NSMethodSignature *methodSignature;
 @property SEL selector;
+@property (readonly) Class superclass;
 @property id target;
 
 // Image: /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
@@ -46,6 +52,9 @@
 // Image: /System/Library/Frameworks/FileProvider.framework/FileProvider
 
 - (id)fp_copy;
+- (void)fp_sanitizeError;
+- (void)fp_transformArgumentAtIndex:(unsigned long long)arg1 withBlock:(id /* block */)arg2;
+- (void)fp_zeroOutReplyBlockArgumentsWithError:(id)arg1;
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
@@ -58,13 +67,6 @@
 
 + (id)_mapkit_invocationWithSelector:(SEL)arg1 target:(id)arg2;
 + (id)_mapkit_invocationWithSelector:(SEL)arg1 target:(id)arg2 arguments:(char *)arg3;
-
-// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
-
-- (void)MP_clearRetainedArguments;
-- (void)MP_setRetainedArgument2:(id)arg1;
-- (void)MP_setRetainedArgument3:(id)arg1;
-- (void)MP_setRetainedTarget:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/GameCenterFoundation.framework/GameCenterFoundation
 
@@ -89,11 +91,25 @@
 
 // Image: /System/Library/PrivateFrameworks/Message.framework/Message
 
++ (id)log;
 + (id)mf_invocationWithSelector:(SEL)arg1 target:(id)arg2;
 + (id)mf_invocationWithSelector:(SEL)arg1 target:(id)arg2 object1:(id)arg3 object2:(id)arg4;
 + (id)mf_invocationWithSelector:(SEL)arg1 target:(id)arg2 object:(id)arg3;
 
 - (bool)mf_shouldLogInvocation;
+
+// Image: /System/Library/PrivateFrameworks/MessageLegacy.framework/MessageLegacy
+
++ (id)mf_invocationWithSelector:(SEL)arg1 target:(id)arg2;
++ (id)mf_invocationWithSelector:(SEL)arg1 target:(id)arg2 object1:(id)arg3 object2:(id)arg4;
++ (id)mf_invocationWithSelector:(SEL)arg1 target:(id)arg2 object:(id)arg3;
+
+- (bool)mf_shouldLogInvocation;
+
+// Image: /System/Library/PrivateFrameworks/NetAppsUtilities.framework/NetAppsUtilities
+
+- (id)na_argumentDescriptionsWithObjectFormatter:(id /* block */)arg1;
+- (id)na_argumentsAsObjects;
 
 // Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
 

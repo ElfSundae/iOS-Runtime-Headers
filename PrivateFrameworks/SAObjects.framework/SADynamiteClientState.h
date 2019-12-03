@@ -7,9 +7,12 @@
 @property (nonatomic) bool activeTvUser;
 @property (nonatomic) bool ageVerificationRequired;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic, retain) SAUserState *defaultUserState;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) SACalendar *expirationDate;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, copy) NSNumber *iCloudMusicLibraryToggle;
+@property (nonatomic, copy) NSArray *inContextUsersStates;
 @property (nonatomic, copy) NSString *status;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSNumber *userHistoryUnmodifiable;
@@ -25,12 +28,18 @@
 
 - (bool)activeTvUser;
 - (bool)ageVerificationRequired;
+- (id)defaultUserState;
 - (id)encodedClassName;
 - (id)expirationDate;
 - (id)groupIdentifier;
+- (id)iCloudMusicLibraryToggle;
+- (id)inContextUsersStates;
 - (void)setActiveTvUser:(bool)arg1;
 - (void)setAgeVerificationRequired:(bool)arg1;
+- (void)setDefaultUserState:(id)arg1;
 - (void)setExpirationDate:(id)arg1;
+- (void)setICloudMusicLibraryToggle:(id)arg1;
+- (void)setInContextUsersStates:(id)arg1;
 - (void)setStatus:(id)arg1;
 - (void)setUserHistoryUnmodifiable:(id)arg1;
 - (void)setUserToken:(id)arg1;

@@ -6,15 +6,15 @@
     long long  _businessID;
     int  _feedbackType;
     struct { 
-        unsigned int sessionGUID : 1; 
-        unsigned int businessID : 1; 
-        unsigned int timestamp : 1; 
-        unsigned int feedbackType : 1; 
-        unsigned int localSearchProviderID : 1; 
-        unsigned int numberOfResults : 1; 
-        unsigned int positionInResults : 1; 
-        unsigned int sequenceNumber : 1; 
-    }  _has;
+        unsigned int has_sessionGUID : 1; 
+        unsigned int has_businessID : 1; 
+        unsigned int has_timestamp : 1; 
+        unsigned int has_feedbackType : 1; 
+        unsigned int has_localSearchProviderID : 1; 
+        unsigned int has_numberOfResults : 1; 
+        unsigned int has_positionInResults : 1; 
+        unsigned int has_sequenceNumber : 1; 
+    }  _flags;
     int  _localSearchProviderID;
     int  _numberOfResults;
     int  _positionInResults;
@@ -43,6 +43,8 @@
 @property (nonatomic) struct GEOSessionID { unsigned long long x1; unsigned long long x2; } sessionGUID;
 @property (nonatomic) double timestamp;
 
++ (bool)isValid:(id)arg1;
+
 - (int)StringAsFeedbackType:(id)arg1;
 - (long long)businessID;
 - (void)copyTo:(id)arg1;
@@ -65,6 +67,7 @@
 - (void)mergeFrom:(id)arg1;
 - (int)numberOfResults;
 - (int)positionInResults;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (unsigned int)requestTypeCode;
 - (Class)responseClass;

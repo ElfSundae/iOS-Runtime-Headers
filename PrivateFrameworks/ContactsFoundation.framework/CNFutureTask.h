@@ -16,6 +16,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_flushCompletionBlocks;
 - (void)addFailureBlock:(id /* block */)arg1;
 - (void)addFailureBlock:(id /* block */)arg1 scheduler:(id)arg2;
@@ -25,7 +26,6 @@
 - (bool)cancel;
 - (id /* block */)completionHandlerAdapter;
 - (id /* block */)completionHandlerAdapterWithDefaultValue:(id)arg1;
-- (void)dealloc;
 - (void)didCancel;
 - (id /* block */)errorOnlyCompletionHandlerAdapter;
 - (bool)finishWithError:(id)arg1;

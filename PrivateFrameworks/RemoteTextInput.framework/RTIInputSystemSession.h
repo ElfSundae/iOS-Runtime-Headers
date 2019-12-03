@@ -24,6 +24,7 @@
 - (void)_createTextOperationsIfNecessary;
 - (id)_textOperations;
 - (void)addSessionDelegate:(id)arg1;
+- (void)applyLocalTextOperations:(id)arg1 toDocumentState:(id)arg2;
 - (id)documentState;
 - (id)documentTraits;
 - (void)enumerateSessionDelegatesUsingBlock:(id /* block */)arg1;

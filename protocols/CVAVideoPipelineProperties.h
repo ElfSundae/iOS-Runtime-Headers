@@ -17,7 +17,6 @@
 - (unsigned long long)inputDisparityPixelBufferHeight;
 - (unsigned int)inputDisparityPixelBufferPixelFormat;
 - (unsigned long long)inputDisparityPixelBufferWidth;
-- (unsigned int)inputSegmentationPixelBufferPixelFormat;
 - (unsigned long long)inputToOutputDisparityPixelBufferRotation;
 - (unsigned long long)outputDisparityPixelBufferHeight;
 - (unsigned int)outputDisparityPixelBufferPixelFormat;
@@ -34,5 +33,6 @@
 - (void)setInputToOutputDisparityPixelBufferRotation:(unsigned long long)arg1;
 - (void)setOutputDisparityPixelBufferHeight:(unsigned long long)arg1;
 - (void)setOutputDisparityPixelBufferWidth:(unsigned long long)arg1;
+- (NSArray *)supportedInputSegmentationPixelBufferPixelFormats;
 
 @end

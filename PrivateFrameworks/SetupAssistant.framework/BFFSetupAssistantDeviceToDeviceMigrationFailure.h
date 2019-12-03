@@ -11,7 +11,9 @@
         unsigned int timestamp : 1; 
         unsigned int underlyingErrorCode : 1; 
         unsigned int connectionType : 1; 
+        unsigned int inAppleStore : 1; 
     }  _has;
+    bool  _inAppleStore;
     NSString * _sourceDeviceModel;
     NSString * _sourceDeviceProductVersion;
     NSString * _targetDeviceModel;
@@ -27,6 +29,7 @@
 @property (nonatomic) bool hasConnectionType;
 @property (nonatomic) bool hasErrorCode;
 @property (nonatomic, readonly) bool hasErrorDomain;
+@property (nonatomic) bool hasInAppleStore;
 @property (nonatomic, readonly) bool hasSourceDeviceModel;
 @property (nonatomic, readonly) bool hasSourceDeviceProductVersion;
 @property (nonatomic, readonly) bool hasTargetDeviceModel;
@@ -34,6 +37,7 @@
 @property (nonatomic) bool hasTimestamp;
 @property (nonatomic) bool hasUnderlyingErrorCode;
 @property (nonatomic, readonly) bool hasUnderlyingErrorDomain;
+@property (nonatomic) bool inAppleStore;
 @property (nonatomic, retain) NSString *sourceDeviceModel;
 @property (nonatomic, retain) NSString *sourceDeviceProductVersion;
 @property (nonatomic, retain) NSString *targetDeviceModel;
@@ -53,6 +57,7 @@
 - (bool)hasConnectionType;
 - (bool)hasErrorCode;
 - (bool)hasErrorDomain;
+- (bool)hasInAppleStore;
 - (bool)hasSourceDeviceModel;
 - (bool)hasSourceDeviceProductVersion;
 - (bool)hasTargetDeviceModel;
@@ -61,6 +66,7 @@
 - (bool)hasUnderlyingErrorCode;
 - (bool)hasUnderlyingErrorDomain;
 - (unsigned long long)hash;
+- (bool)inAppleStore;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (bool)readFrom:(id)arg1;
@@ -69,8 +75,10 @@
 - (void)setErrorDomain:(id)arg1;
 - (void)setHasConnectionType:(bool)arg1;
 - (void)setHasErrorCode:(bool)arg1;
+- (void)setHasInAppleStore:(bool)arg1;
 - (void)setHasTimestamp:(bool)arg1;
 - (void)setHasUnderlyingErrorCode:(bool)arg1;
+- (void)setInAppleStore:(bool)arg1;
 - (void)setSourceDeviceModel:(id)arg1;
 - (void)setSourceDeviceProductVersion:(id)arg1;
 - (void)setTargetDeviceModel:(id)arg1;

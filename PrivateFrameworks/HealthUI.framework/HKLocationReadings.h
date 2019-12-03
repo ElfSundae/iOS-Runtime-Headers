@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
  */
 
-@interface HKLocationReadings : NSObject {
+@interface HKLocationReadings : NSObject <NSSecureCoding> {
     NSArray * _allValidLocations;
     double  _averageSpeed;
     double  _bottomSpeed;
@@ -20,6 +20,8 @@
 @property (nonatomic, readonly) double topSpeed;
 @property (nonatomic, readonly) HKWorkout *workout;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (void)_calculateSpeeds;
 - (void)_filterLocationsByActiveTimePeriod:(id)arg1;
@@ -29,8 +31,10 @@
 - (long long)count;
 - (id)debugDescription;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (id)firstObject;
 - (id)inOrderLocationArrays;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithLocation:(id)arg1 workout:(id)arg2;
 - (id)initWithLocations:(id)arg1 workout:(id)arg2 isSmoothed:(bool)arg3;
 - (bool)isSmoothed;

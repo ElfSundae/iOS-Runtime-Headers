@@ -26,6 +26,7 @@
 
 + (struct { })boundsForTrackingData:(id)arg1;
 + (id)featurePointsForTrackingData:(id)arg1 referenceOriginTransform:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })arg2;
++ (id)keyframesForTrackingData:(id)arg1 withFeaturePoints:(id)arg2 referenceOriginTransform:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })arg3;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;

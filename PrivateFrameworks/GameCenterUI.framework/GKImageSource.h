@@ -23,6 +23,7 @@
 + (id)sharedCache;
 + (id)syncQueue;
 
+- (void).cxx_destruct;
 - (void)_storeImage:(id)arg1 cacheKey:(id)arg2 path:(id)arg3 context:(id)arg4;
 - (id)cache;
 - (unsigned long long)cacheCostForImage:(id)arg1;

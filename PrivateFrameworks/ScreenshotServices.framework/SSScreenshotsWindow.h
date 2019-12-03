@@ -26,7 +26,6 @@
 - (void)activeInterfaceOrientationObserver:(id)arg1 observedChangeToInterfaceOrientation:(long long)arg2 withDuration:(double)arg3;
 - (void)dealloc;
 - (void)handleStatusBarChangeFromHeight:(double)arg1 toHeight:(double)arg2;
-- (id)hitTest:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
 - (id)init;
 - (void)remoteViewControllerDisconnectedFromHostViewController:(id)arg1 withError:(id)arg2;
 - (void)remoteViewControllerOfHostViewControllerHasDismissedScreenshots:(id)arg1;

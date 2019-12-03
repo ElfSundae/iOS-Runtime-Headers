@@ -4,9 +4,21 @@
 
 @interface GEOLogMsgEventRefineSearchSession : PBCodable <NSCopying> {
     struct { 
-        unsigned int refineSearchType : 1; 
-        unsigned int searchType : 1; 
-    }  _has;
+        unsigned int has_refineSearchType : 1; 
+        unsigned int has_searchType : 1; 
+        unsigned int read_searchString : 1; 
+        unsigned int read_suggestionItems : 1; 
+        unsigned int wrote_searchString : 1; 
+        unsigned int wrote_suggestionItems : 1; 
+        unsigned int wrote_refineSearchType : 1; 
+        unsigned int wrote_searchType : 1; 
+    }  _flags;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     int  _refineSearchType;
     NSString * _searchString;
     int  _searchType;
@@ -21,11 +33,15 @@
 @property (nonatomic) int searchType;
 @property (nonatomic, retain) NSMutableArray *suggestionItems;
 
++ (bool)isValid:(id)arg1;
 + (Class)suggestionItemType;
 
 - (void).cxx_destruct;
 - (int)StringAsRefineSearchType:(id)arg1;
 - (int)StringAsSearchType:(id)arg1;
+- (void)_addNoFlagsSuggestionItem:(id)arg1;
+- (void)_readSearchString;
+- (void)_readSuggestionItems;
 - (void)addSuggestionItem:(id)arg1;
 - (void)clearSuggestionItems;
 - (void)copyTo:(id)arg1;
@@ -36,8 +52,11 @@
 - (bool)hasSearchString;
 - (bool)hasSearchType;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (int)refineSearchType;
 - (id)refineSearchTypeAsString:(int)arg1;

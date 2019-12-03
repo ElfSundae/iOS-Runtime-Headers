@@ -5,8 +5,21 @@
 @interface GEOSearchAttributionManifest : PBCodable <NSCopying> {
     NSMutableArray * _actionComponentMapEntries;
     struct { 
-        unsigned int timestamp : 1; 
-    }  _has;
+        unsigned int has_timestamp : 1; 
+        unsigned int read_actionComponentMapEntries : 1; 
+        unsigned int read_searchAttributionSources : 1; 
+        unsigned int read_sourceURL : 1; 
+        unsigned int wrote_actionComponentMapEntries : 1; 
+        unsigned int wrote_searchAttributionSources : 1; 
+        unsigned int wrote_sourceURL : 1; 
+        unsigned int wrote_timestamp : 1; 
+    }  _flags;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     NSMutableArray * _searchAttributionSources;
     NSString * _sourceURL;
     double  _timestamp;
@@ -20,9 +33,15 @@
 @property (nonatomic) double timestamp;
 
 + (Class)actionComponentMapEntriesType;
++ (bool)isValid:(id)arg1;
 + (Class)searchAttributionSourcesType;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsActionComponentMapEntries:(id)arg1;
+- (void)_addNoFlagsSearchAttributionSources:(id)arg1;
+- (void)_readActionComponentMapEntries;
+- (void)_readSearchAttributionSources;
+- (void)_readSourceURL;
 - (id)actionComponentMapEntries;
 - (id)actionComponentMapEntriesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)actionComponentMapEntriesCount;
@@ -37,8 +56,11 @@
 - (bool)hasSourceURL;
 - (bool)hasTimestamp;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)searchAttributionSources;
 - (id)searchAttributionSourcesAtIndex:(unsigned long long)arg1;

@@ -9,8 +9,8 @@
 
 - (void).cxx_destruct;
 - (id)_createStore;
-- (bool)_isCarousel;
+- (id)_init;
+- (bool)_isClockHostApp;
 - (void)accessHealthStore:(id /* block */)arg1;
-- (id)init;
 
 @end

@@ -4,10 +4,23 @@
 
 @interface GEOPDCategoryLookupParameters : PBCodable <NSCopying> {
     struct { 
-        unsigned int industryCode : 1; 
-    }  _has;
+        unsigned int has_industryCode : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_mapsCategoryId : 1; 
+        unsigned int read_walletCategoryId : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_industryCode : 1; 
+        unsigned int wrote_mapsCategoryId : 1; 
+        unsigned int wrote_walletCategoryId : 1; 
+    }  _flags;
     long long  _industryCode;
     NSString * _mapsCategoryId;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     PBUnknownFields * _unknownFields;
     NSString * _walletCategoryId;
 }
@@ -20,7 +33,12 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic, retain) NSString *walletCategoryId;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_readMapsCategoryId;
+- (void)_readWalletCategoryId;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -30,9 +48,12 @@
 - (bool)hasWalletCategoryId;
 - (unsigned long long)hash;
 - (long long)industryCode;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)mapsCategoryId;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasIndustryCode:(bool)arg1;
 - (void)setIndustryCode:(long long)arg1;

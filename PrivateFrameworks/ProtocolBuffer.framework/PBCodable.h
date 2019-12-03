@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/ProtocolBuffer.framework/ProtocolBuffer
  */
 
-@interface PBCodable : NSObject <NSSecureCoding, PQLValuable>
+@interface PBCodable : NSObject <NSSecureCoding, PQLValuable, VCPBCodable>
 
 @property (nonatomic, readonly) NSData *data;
 @property (readonly, copy) NSString *debugDescription;
@@ -28,6 +28,10 @@
 // Image: /System/Library/PrivateFrameworks/AdCore.framework/AdCore
 
 - (id)jsonString;
+
+// Image: /System/Library/PrivateFrameworks/AssistantServices.framework/AssistantServices
+
+- (id)si_dictionaryRepresentation;
 
 // Image: /System/Library/PrivateFrameworks/BulletinDistributorCompanion.framework/BulletinDistributorCompanion
 
@@ -55,6 +59,13 @@
 
 - (void)setClientMetricsIfSupported:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/MediaMiningKit.framework/MediaMiningKit
+
++ (void)load;
+
+- (id)debugRequestName;
+- (id)formattedText;
+
 // Image: /System/Library/PrivateFrameworks/MediaRemote.framework/MediaRemote
 
 - (id)mr_valueForPotentiallyUndefinedKey:(id)arg1;
@@ -63,14 +74,15 @@
 
 - (id)nmr_valueForPotentiallyUndefinedKey:(id)arg1;
 
-// Image: /System/Library/PrivateFrameworks/PhotoAnalysis.framework/Frameworks/PhotosGraph.framework/Frameworks/MediaMiningKit.framework/MediaMiningKit
+// Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
 
-+ (void)load;
+- (id)hexStringFromData:(id)arg1;
+- (id)logMessage;
+- (id)logMessageDictionaryFromProtobufDictionary:(id)arg1;
 
-- (id)formattedText;
+// Image: /System/Library/PrivateFrameworks/VoiceShortcuts.framework/VoiceShortcuts
 
-// Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
-
-- (id)si_dictionaryRepresentation;
+- (bool)readFrom:(id)arg1 error:(id*)arg2;
+- (bool)writeTo:(id)arg1 error:(id*)arg2;
 
 @end

@@ -9,6 +9,8 @@
 @property (nonatomic, retain) NSString *bogusFieldForTestingPurposes;
 @property (nonatomic, readonly) bool hasBogusFieldForTestingPurposes;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (id)bogusFieldForTestingPurposes;
 - (void)copyTo:(id)arg1;
@@ -19,6 +21,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setBogusFieldForTestingPurposes:(id)arg1;
 - (void)writeTo:(id)arg1;

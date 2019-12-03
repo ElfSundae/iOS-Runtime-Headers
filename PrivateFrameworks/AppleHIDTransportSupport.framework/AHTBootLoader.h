@@ -40,6 +40,7 @@
 - (id)dispatchSourceForNotification:(id)arg1 action:(id /* block */)arg2 error:(id*)arg3;
 - (bool)getMemoryDumpLevel:(unsigned int*)arg1 error:(id*)arg2;
 - (bool)getMemoryDumps:(id*)arg1 error:(id*)arg2;
+- (bool)getProperty:(id)arg1 property:(id*)arg2 options:(unsigned long long)arg3 error:(id*)arg4;
 - (unsigned int)imageTag;
 - (id)initWithDevice:(id)arg1 service:(unsigned int)arg2;
 - (id)initWithService:(unsigned int)arg1;

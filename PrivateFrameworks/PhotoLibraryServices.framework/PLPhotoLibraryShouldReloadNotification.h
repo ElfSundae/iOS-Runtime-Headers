@@ -4,9 +4,6 @@
 
 @interface PLPhotoLibraryShouldReloadNotification : PLChangeNotification
 
-- (id)initNotification;
-- (id)name;
-- (id)object;
-- (id)userInfo;
+- (id)initNotificationWithPhotoLibrary:(id)arg1;
 
 @end

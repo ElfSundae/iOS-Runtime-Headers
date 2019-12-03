@@ -49,13 +49,13 @@
 - (bool)hasRepairedStreamID;
 - (bool)hasSupportedPayloads;
 - (unsigned long long)hash;
-- (id)initWithMultiwayConfig:(id)arg1;
+- (id)initWithStreamConfig:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (unsigned int)maxMediaBitrate;
 - (unsigned int)maxNetworkBitrate;
 - (float)maxPacketsPerSecond;
 - (void)mergeFrom:(id)arg1;
-- (id)newAudioRuleCollectionWithAudioRuleCollection:(id)arg1;
+- (id)newMultiwayAudioStream;
 - (void)printWithLogFile:(void*)arg1;
 - (unsigned int)qualityIndex;
 - (bool)readFrom:(id)arg1;
@@ -70,7 +70,7 @@
 - (void)setMaxMediaBitrate:(unsigned int)arg1;
 - (void)setMaxNetworkBitrate:(unsigned int)arg1;
 - (void)setMaxPacketsPerSecond:(float)arg1;
-- (void)setPayloadFlagsWithAudioRuleCollection:(id)arg1;
+- (void)setPayloadFlagsWithPayloads:(id)arg1;
 - (void)setQualityIndex:(unsigned int)arg1;
 - (void)setRepairedMaxNetworkBitrate:(unsigned int)arg1;
 - (void)setRepairedStreamID:(unsigned int)arg1;

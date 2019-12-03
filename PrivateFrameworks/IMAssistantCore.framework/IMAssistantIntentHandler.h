@@ -7,7 +7,6 @@
 }
 
 - (void).cxx_destruct;
-- (id)currentApplicationContext;
 - (id)existingHandlerForIntentIdentifier:(id)arg1;
 - (id)handlerForIntent:(id)arg1;
 - (id)init;

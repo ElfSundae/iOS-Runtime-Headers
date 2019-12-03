@@ -3,11 +3,13 @@
  */
 
 @interface MPTiledArtworkRequest : NSObject <NSCopying> {
-    NSObject<OS_dispatch_queue> * _accessQueue;
     bool  _allowsSynchronousArtworkCatalogsBlockExecution;
     id /* block */  _artworkCatalogsBlock;
     NSArray * _artworkCatalogsCache;
     long long  _artworkCatalogsCacheCount;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _cacheLock;
     <NSCopying> * _entityIdentifier;
     <NSCopying> * _namespaceIdentifier;
     unsigned long long  _numberOfColumns;

@@ -17,10 +17,10 @@
 
 + (id)pivotField;
 
+- (void).cxx_destruct;
 - (int)axis;
 - (bool)compact;
 - (bool)dataField;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 - (bool)insertBlankRow;

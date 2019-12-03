@@ -17,6 +17,7 @@
 // Image: /System/Library/Frameworks/HomeKit.framework/HomeKit
 
 - (void).cxx_destruct;
+- (bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (id)delegate;
 - (id)initWithTelevisionService:(id)arg1 linkedServices:(id)arg2;
 - (id)mediaSourceDisplayOrder;
@@ -28,5 +29,6 @@
 // Image: /System/Library/PrivateFrameworks/Home.framework/Home
 
 - (id /* block */)hf_mediaSourceComparator;
+- (bool)hf_offersAutomation;
 
 @end

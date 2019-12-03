@@ -2,15 +2,13 @@
    Image: /System/Library/PrivateFrameworks/DataDetectorsCore.framework/DataDetectorsCore
  */
 
-@interface DDScanServer : NSObject {
+@interface DDScanServer : DDScannerService {
     long long  _options;
     double  _timeout;
 }
 
 @property (nonatomic) long long options;
 @property (nonatomic) double timeout;
-
-+ (void)appendWatchOSLinksToString:(id)arg1;
 
 - (id)init;
 - (long long)options;

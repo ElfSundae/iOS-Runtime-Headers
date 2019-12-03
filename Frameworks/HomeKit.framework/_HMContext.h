@@ -18,6 +18,7 @@
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *queue;
 
 + (id)contextWithName:(id)arg1;
++ (id)contextWithName:(id)arg1 delegateCaller:(id)arg2;
 
 - (void).cxx_destruct;
 - (id)delegateCaller;

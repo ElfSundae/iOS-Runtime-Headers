@@ -19,6 +19,7 @@
         unsigned int hasTitle : 1; 
         unsigned int hasState : 1; 
         unsigned int hasDuration : 1; 
+        unsigned int hasType : 1; 
         unsigned int hasFireTimeInterval : 1; 
         unsigned int hasFireDate : 1; 
         unsigned int hasFiredDate : 1; 
@@ -29,6 +30,7 @@
     NSUUID * _timerID;
     NSURL * _timerURL;
     NSString * _title;
+    long long  _type;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -51,5 +53,6 @@
 - (void)setTimerID:(id)arg1;
 - (void)setTimerURL:(id)arg1;
 - (void)setTitle:(id)arg1;
+- (void)setType:(long long)arg1;
 
 @end

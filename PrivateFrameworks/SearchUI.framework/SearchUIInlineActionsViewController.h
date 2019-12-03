@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchUI.framework/SearchUI
  */
 
-@interface SearchUIInlineActionsViewController : SearchUIAccessoryViewController <CNActionViewDelegate, CNContactInlineActionsViewControllerDelegate, CNUIObjectViewControllerDelegate, NUIContainerStackViewDelegate> {
+@interface SearchUIInlineActionsViewController : SearchUIAccessoryViewController <CNActionViewDelegate, CNContactInlineActionsViewControllerDelegate, CNUIObjectViewControllerDelegate, NUIContainerViewDelegate> {
     UIView * _directionsButton;
     CNContactInlineActionsViewController * _inlineActionsViewController;
     double  _latitude;
@@ -15,19 +15,19 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (retain) UIView *directionsButton;
+@property (nonatomic, retain) UIView *directionsButton;
 @property (readonly) unsigned long long hash;
-@property (retain) CNContactInlineActionsViewController *inlineActionsViewController;
-@property double latitude;
-@property double longitude;
-@property (retain) NSData *mapsData;
-@property (retain) UIView *messageButton;
-@property (retain) NSURL *messageURL;
-@property (retain) NSString *name;
+@property (nonatomic, retain) CNContactInlineActionsViewController *inlineActionsViewController;
+@property (nonatomic) double latitude;
+@property (nonatomic) double longitude;
+@property (nonatomic, retain) NSData *mapsData;
+@property (nonatomic, retain) UIView *messageButton;
+@property (nonatomic, retain) NSURL *messageURL;
+@property (nonatomic, retain) NSString *name;
 @property (readonly) Class superclass;
 
 + (id)directionsButtonImage;
-+ (bool)supportsResult:(id)arg1;
++ (bool)supportsRowModel:(id)arg1;
 
 - (void).cxx_destruct;
 - (void)contactInlineActionsViewController:(id)arg1 willPerformActionOfType:(id)arg2;
@@ -50,8 +50,9 @@
 - (void)setMessageButton:(id)arg1;
 - (void)setMessageURL:(id)arg1;
 - (void)setName:(id)arg1;
-- (id)setupViewWithStyle:(unsigned long long)arg1;
-- (void)updateWithContact:(id)arg1;
-- (void)updateWithResult:(id)arg1;
+- (id)setupView;
+- (unsigned long long)type;
+- (void)updateWithContacts:(id)arg1;
+- (void)updateWithRowModel:(id)arg1;
 
 @end

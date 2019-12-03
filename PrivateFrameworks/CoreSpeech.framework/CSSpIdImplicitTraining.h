@@ -30,8 +30,9 @@
 
 - (void).cxx_destruct;
 - (unsigned long long)_getBiometricMatchResultForTriggerTimeStamp:(unsigned long long)arg1;
-- (unsigned long long)_getNumberOfWavFilesAt:(id)arg1;
 - (bool)_isUtteranceHandheld;
+- (void)_segmentTDfromAudioFile:(id)arg1 withVTEventInfo:(id)arg2 withOtherCtxt:(id)arg3 withCompletion:(id /* block */)arg4;
+- (void)_storeSingleUserImplicitTrainingUtterance:(id)arg1 audioDeviceType:(id)arg2 audioRecordType:(id)arg3 withVoiceTriggerCtxt:(id)arg4 withOtherCtxt:(id)arg5 withCompletion:(id /* block */)arg6;
 - (id)biometricMonitor;
 - (id)gestureMonitor;
 - (id)init;
@@ -39,6 +40,7 @@
 - (void)processAudioChunk:(id)arg1;
 - (void)processImplicitTrainingUtterance:(id)arg1 forVoiceProfileId:(id)arg2 withRecordDeviceInfo:(id)arg3 withRecordCtxt:(id)arg4 withVoiceTriggerCtxt:(id)arg5 withOtherCtxt:(id)arg6 withCompletion:(id /* block */)arg7;
 - (void)processImplicitTrainingUtteranceWithVoiceTriggerEventInfo:(id)arg1;
+- (void)processSingleUserImplicitTrainingUtterance:(id)arg1 audioDeviceType:(id)arg2 audioRecordType:(id)arg3 withVoiceTriggerCtxt:(id)arg4 withOtherCtxt:(id)arg5 withCompletion:(id /* block */)arg6;
 - (id)queue;
 - (id)recordingContext;
 - (void)recordingStoppedForReason:(long long)arg1;
@@ -49,6 +51,7 @@
 - (void)setRecordingContext:(id)arg1;
 - (void)setUttLogger:(id)arg1;
 - (void)setVoiceTriggerEventInfo:(id)arg1;
+- (void)storeMultiUserImplicitTrainingUtterance:(id)arg1 forProfileId:(id)arg2 withAudioDeviceType:(id)arg3 withAudioRecordType:(id)arg4 withVoiceTriggerCtxt:(id)arg5 withOtherCtxt:(id)arg6 withCompletion:(id /* block */)arg7;
 - (id)uttLogger;
 - (id)voiceTriggerEventInfo;
 

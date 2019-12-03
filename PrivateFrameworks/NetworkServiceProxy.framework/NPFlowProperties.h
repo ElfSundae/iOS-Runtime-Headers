@@ -4,7 +4,6 @@
 
 @interface NPFlowProperties : NSObject {
     int  _dataMode;
-    NSUUID * _dayPassUUID;
     NWEndpoint * _directEndpoint;
     double  _fallbackTimeout;
     unsigned int  _flags;
@@ -16,26 +15,26 @@
     unsigned long long * _timestamps;
 }
 
-@property int dataMode;
-@property (retain) NSUUID *dayPassUUID;
-@property (retain) NWEndpoint *directEndpoint;
-@property bool enableNSP;
-@property double fallbackTimeout;
-@property unsigned int flags;
-@property unsigned int flowIdentifier;
-@property bool isLoopback;
-@property (retain) NSDictionary *replacementAddressMap;
-@property (retain) NPTunnelTuscanyEndpoint *replacementEndpoint;
-@property (retain) NSData *requestData;
-@property unsigned long long serviceID;
-@property unsigned long long*timestamps;
+@property (nonatomic) int dataMode;
+@property (nonatomic, retain) NWEndpoint *directEndpoint;
+@property (nonatomic) bool disableIdleTimeout;
+@property (nonatomic) bool enableNSP;
+@property (nonatomic) double fallbackTimeout;
+@property (nonatomic) unsigned int flags;
+@property (nonatomic) unsigned int flowIdentifier;
+@property (nonatomic) bool isLoopback;
+@property (nonatomic, retain) NSDictionary *replacementAddressMap;
+@property (nonatomic, retain) NPTunnelTuscanyEndpoint *replacementEndpoint;
+@property (nonatomic, retain) NSData *requestData;
+@property (nonatomic) unsigned long long serviceID;
+@property (nonatomic) unsigned long long*timestamps;
 
 - (void).cxx_destruct;
 - (id)copyTLVData;
 - (int)dataMode;
-- (id)dayPassUUID;
 - (void)dealloc;
 - (id)directEndpoint;
+- (bool)disableIdleTimeout;
 - (bool)enableNSP;
 - (double)fallbackTimeout;
 - (unsigned int)flags;
@@ -47,8 +46,8 @@
 - (id)requestData;
 - (unsigned long long)serviceID;
 - (void)setDataMode:(int)arg1;
-- (void)setDayPassUUID:(id)arg1;
 - (void)setDirectEndpoint:(id)arg1;
+- (void)setDisableIdleTimeout:(bool)arg1;
 - (void)setEnableNSP:(bool)arg1;
 - (void)setFallbackTimeout:(double)arg1;
 - (void)setFlags:(unsigned int)arg1;

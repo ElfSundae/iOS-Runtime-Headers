@@ -2,11 +2,12 @@
    Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
  */
 
-@interface PKPaymentTransactionDetailViewController : PKSectionTableViewController <PKPaymentDataProviderDelegate, PKPeerPaymentContactResolverDelegate> {
+@interface PKPaymentTransactionDetailViewController : PKSectionTableViewController <CNContactViewControllerDelegate, PKAccountServiceAccountResolutionControllerDelegate, PKPaymentDataProviderDelegate, PKPaymentTransactionReportFraudConfirmationViewControllerDelegate, PKPeerPaymentContactResolverDelegate, PKTransactionDetailQuestionCellDelegate> {
+    PKAccountServiceAccountResolutionController * _accountResolutionController;
     bool  _allowTransactionLinks;
     PKPaymentTransaction * _associatedAdjustment;
+    NSArray * _associatedInstallmentPlans;
     PKPaymentTransaction * _associatedRefund;
-    PKTransactionDetailBottomContainer * _bottomContainer;
     PKPeerPaymentContactResolver * _contactResolver;
     long long  _detailViewStyle;
     PKPaymentTransactionDetailHeaderView * _headerView;
@@ -23,13 +24,13 @@
     bool  _showProductTimeZone;
     bool  _showRawName;
     bool  _showTransactionTimeZone;
+    NSString * _submittingAnswer;
     PKPaymentTransaction * _transaction;
     PKPaymentTransactionCellController * _transactionCellController;
     NSDateFormatter * _transactionDateFormatter;
     NSDateFormatter * _transactionLocalTimeDateFormatter;
 }
 
-@property (nonatomic, retain) PKTransactionDetailBottomContainer *bottomContainer;
 @property (nonatomic, retain) PKPeerPaymentContactResolver *contactResolver;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -51,11 +52,15 @@
 @property (nonatomic, retain) NSDateFormatter *transactionLocalTimeDateFormatter;
 
 - (void).cxx_destruct;
+- (void)_accountWithCompletion:(id /* block */)arg1;
+- (void)_accountWithIdentifier:(id)arg1 completion:(id /* block */)arg2;
 - (unsigned long long)_actionRowForRowIndex:(long long)arg1;
 - (bool)_actionRowIsEnabled:(unsigned long long)arg1;
 - (id)_amountDetailsCellForTableView:(id)arg1 atIndexPath:(id)arg2;
 - (unsigned long long)_amountDetailsRowForIndex:(unsigned long long)arg1;
 - (bool)_amountDetailsRowIsEnabled:(unsigned long long)arg1;
+- (void)_applyAmountDetailSeparatorInsetForTableView:(id)arg1 cell:(id)arg2;
+- (id)_associatedInstallmentCellForTableView:(id)arg1 atIndexPath:(id)arg2;
 - (id)_debugDetailCellForTableView:(id)arg1 atIndexPath:(id)arg2;
 - (id)_fraudRiskCellForTableView:(id)arg1;
 - (void)_handlePeerPaymentDisplayableError:(id)arg1 withPeerPaymentController:(id)arg2;
@@ -65,14 +70,20 @@
 - (id)_merchantAddressCellForTableView:(id)arg1;
 - (long long)_numberOfActionRowsEnabled;
 - (unsigned long long)_numberOfAmountDetailsRows;
+- (void)_openBusinessChatControllerForContext:(id)arg1;
 - (void)_openMessagesToPresentAction:(unsigned long long)arg1;
 - (void)_openTransactionInIssuerApp;
 - (void)_performPeerPaymentAction:(id)arg1 withCompletion:(id /* block */)arg2;
+- (void)_presentCardNumberUpdatedAlert;
+- (void)_presentContactViewController;
+- (void)_presentPhysicalCardSuspendedAlert;
 - (void)_presentReportIssue;
+- (id)_questionCellForTableView:(id)arg1 atIndexPath:(id)arg2;
 - (void)_recomputeLineItems;
 - (void)_reloadTableHeaderView;
 - (long long)_rowIndexForActionRow:(unsigned long long)arg1;
 - (bool)_shouldHighlightAction:(unsigned long long)arg1;
+- (void)_showInstallmentDetailsForAssociatedInstallment:(id)arg1;
 - (id)_statusCellForTableView:(id)arg1;
 - (id)_subtitleCellWithTitle:(id)arg1 subtitle:(id)arg2;
 - (id)_tableView:(id)arg1 actionButtonCellForSection:(unsigned long long)arg2;
@@ -82,15 +93,19 @@
 - (void)_tableView:(id)arg1 didSelectMechantAddressAtIndexPath:(id)arg2;
 - (void)_tableView:(id)arg1 didSelectPeerPaymentAction:(id)arg2 atIndexPath:(id)arg3;
 - (void)_tableView:(id)arg1 willDisplayAmountDetailsCell:(id)arg2 atIndexPath:(id)arg3;
-- (id)_titleValueCellWithTitle:(id)arg1 value:(id)arg2;
 - (bool)_transactionHasNonZeroSecondaryFundingSourceAmount;
 - (id)_transactionIdentifierCellForTableView:(id)arg1;
 - (id)_transactionStatusString;
+- (void)_updateAccountResolutionControllerIfNecessaryWithCompletion:(id /* block */)arg1;
 - (void)_updatePeerPaymentTransactionStatusWithCompletion:(id /* block */)arg1;
 - (void)_updateTableHeaderHeight;
-- (id)bottomContainer;
+- (void)accountServiceAccountResolutionController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(bool)arg3;
 - (id)contactResolver;
+- (void)contactViewController:(id)arg1 didCompleteWithContact:(id)arg2;
+- (bool)contactViewController:(id)arg1 shouldPerformDefaultActionForContactProperty:(id)arg2;
 - (void)contactsDidChangeForContactResolver:(id)arg1;
+- (void)didReportFraudInViewController:(id)arg1;
+- (void)explanationViewControllerDidSelectCancel:(id)arg1;
 - (id)formattedBalanceAdjustmentAmountWithTransitDescriptors;
 - (id)headerView;
 - (bool)inBridge;
@@ -104,12 +119,9 @@
 - (id)paymentServiceDataProvider;
 - (id)peerPaymentController;
 - (id)peerPaymentStatusResponse;
-- (id)pkui_navigationBarTintColor;
-- (bool)pkui_prefersNavigationBarShadowHidden;
 - (id)productTimeZone;
 - (id)productTimeZoneFormatter;
 - (void)scrollViewDidScroll:(id)arg1;
-- (void)setBottomContainer:(id)arg1;
 - (void)setContactResolver:(id)arg1;
 - (void)setHeaderView:(id)arg1;
 - (void)setInBridge:(bool)arg1;
@@ -124,6 +136,7 @@
 - (void)setTransactionDateFormatter:(id)arg1;
 - (void)setTransactionLocalTimeDateFormatter:(id)arg1;
 - (bool)shouldMapSection:(unsigned long long)arg1;
+- (void)submitAnswer:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
@@ -135,6 +148,7 @@
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)transaction;
 - (id)transactionDateFormatter;
 - (id)transactionLocalTimeDateFormatter;

@@ -3,13 +3,13 @@
  */
 
 @interface HDStandardTaskServer : NSObject <HDTaskServer, HKUnitTestingTaskServerInterface> {
-    HDXPCClient * _client;
+    HDHealthStoreClient * _client;
     <HDTaskServerDelegate> * _delegate;
     HDProfile * _profile;
     NSUUID * _taskUUID;
 }
 
-@property (nonatomic, readonly) HDXPCClient *client;
+@property (nonatomic, readonly) HDHealthStoreClient *client;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, readonly) <HDTaskServerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -26,9 +26,10 @@
 - (void)connectionInvalidated;
 - (id)delegate;
 - (id)exportedInterface;
-- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
 - (id)profile;
 - (id)remoteInterface;
+- (id)remoteObjectProxyWithErrorHandler:(id /* block */)arg1;
 - (void)remote_unitTesting_createTaskServerNoOpWithCompletion:(id /* block */)arg1;
 - (id)taskUUID;
 

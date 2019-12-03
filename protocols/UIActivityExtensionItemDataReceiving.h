@@ -8,5 +8,6 @@
 + (Class)classForPreparingExtensionItemData;
 
 - (void)prepareWithActivityExtensionItemData:(UISUIActivityExtensionItemData *)arg1;
+- (void)prepareWithActivityItemData:(UISDActivityItemData *)arg1;
 
 @end

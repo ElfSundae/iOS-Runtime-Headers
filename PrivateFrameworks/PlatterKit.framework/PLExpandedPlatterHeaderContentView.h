@@ -2,24 +2,20 @@
    Image: /System/Library/PrivateFrameworks/PlatterKit.framework/PlatterKit
  */
 
-@interface PLExpandedPlatterHeaderContentView : PLPlatterHeaderContentView {
-    NSArray * _iconButtonShadows;
-}
+@interface PLExpandedPlatterHeaderContentView : PLPlatterHeaderContentView
 
-- (void).cxx_destruct;
 - (void)_configureDateLabel;
-- (void)_configureIconButtonsForIcons:(id)arg1;
+- (void)_configureIconButton:(id)arg1 withIcon:(id)arg2;
 - (void)_configureUtilityButton;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (id)_ellipsisHighlightedBackgroundImage;
 - (double)_headerHeightForWidth:(double)arg1;
 - (double)_iconDimension;
 - (double)_iconLeadingPadding;
-- (id)_iconShadowImageForIcon:(id)arg1;
 - (double)_iconTrailingPadding;
 - (double)_largeTextLabelBaselineOffsetFromBottom;
 - (double)_largeTextTitleLabelBaselineOffset;
 - (void)_layoutDateLabelWithScale:(double)arg1;
-- (void)_layoutIconButtonsWithScale:(double)arg1;
 - (void)_layoutTitleLabelWithScale:(double)arg1;
 - (void)_layoutUtilityButtonWithScale:(double)arg1;
 - (double)_titleFirstLineCenterY;

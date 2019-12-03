@@ -12,9 +12,9 @@
 
 + (id)iconWithCustomImage:(id)arg1;
 + (id)iconWithCustomImage:(id)arg1 isTemplate:(bool)arg2;
++ (id)iconWithSystemImageName:(id)arg1;
 + (id)iconWithTemplateImageName:(id)arg1;
 + (id)iconWithType:(long long)arg1;
-+ (long long)sbsIconTypeForIconType:(long long)arg1;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;

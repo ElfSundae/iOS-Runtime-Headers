@@ -7,6 +7,7 @@
     struct __CFArray { } * _items;
 }
 
+@property (nonatomic, readonly, copy) NSArray *_items;
 @property (nonatomic) unsigned long long capacity;
 @property (nonatomic, readonly) bool isMoreToLoad;
 
@@ -31,10 +32,13 @@
 - (void)_removeItem:(id)arg1;
 - (void)_replaceItems:(id)arg1;
 - (void)_replaceStaleTypingMessage;
+- (void)_resortItems;
 - (void)_setSortID:(id)arg1;
+- (bool)_shouldPinUnsentMessagesToBottom;
 - (bool)_trimIfNeeded;
 - (id)_typingMessage;
 - (void)assignSortIDsToItems:(id)arg1;
+- (void)assignSortIDsToItems:(id)arg1 shouldRecalculateSortIDForAllMessages:(bool)arg2;
 - (unsigned long long)capacity;
 - (void)dealloc;
 - (id)init;

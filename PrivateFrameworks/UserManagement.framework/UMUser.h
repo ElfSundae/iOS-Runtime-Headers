@@ -39,6 +39,7 @@
 }
 
 @property (nonatomic, copy) id _photo;
+@property (nonatomic, readonly) NSArray *allUserPersonas;
 @property (nonatomic, copy) NSString *alternateDSID;
 @property (nonatomic, copy) NSDate *creationDate;
 @property (nonatomic) unsigned long long dataQuota;
@@ -81,6 +82,7 @@
 - (void).cxx_destruct;
 - (struct dqblk { unsigned long long x1; unsigned long long x2; unsigned long long x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; unsigned int x10[4]; })_diskQuota;
 - (id)_photo;
+- (id)allUserPersonas;
 - (id)alternateDSID;
 - (bool)commitChanges;
 - (bool)commitChangesWithError:(id*)arg1;
@@ -158,6 +160,7 @@
 - (bool)shouldFetchAttributes;
 - (unsigned int)uid;
 - (id)userAuxiliaryString;
+- (id)userPersonaFromIdentityString:(id)arg1;
 - (unsigned long long)userType;
 - (id)username;
 

@@ -3,18 +3,18 @@
  */
 
 @interface PXAssetVariationRenderingOperation : NSOperation {
-    PLPhotoEditModel * _adjustedEditModel;
+    PICompositionController * _adjustedCompositionController;
     NSDictionary * _analysisResult;
-    PLPhotoEditModel * _baseEditModel;
+    PICompositionController * _baseCompositionController;
     NSNumber * _duration;
+    PLLivePhotoEditSource * _editSource;
     NSError * _error;
-    NSURL * _inputImageURL;
-    NSURL * _inputVideoURL;
     AVAsset * _outputAVAsset;
     UIImage * _outputImage;
     NSURL * _outputImageURL;
     AVVideoComposition * _outputVideoComposition;
     NSURL * _outputVideoURL;
+    PLLivePhotoEditSource * _overcaptureEditSource;
     NSProgress * _progress;
     bool  _renderAllResources;
     id /* block */  _startHandler;
@@ -26,18 +26,18 @@
     long long  _variationType;
 }
 
-@property (nonatomic, readonly, copy) PLPhotoEditModel *adjustedEditModel;
+@property (nonatomic, readonly, copy) PICompositionController *adjustedCompositionController;
 @property (nonatomic, readonly, copy) NSDictionary *analysisResult;
-@property (nonatomic, readonly, copy) PLPhotoEditModel *baseEditModel;
+@property (nonatomic, readonly, copy) PICompositionController *baseCompositionController;
 @property (nonatomic, readonly) NSNumber *duration;
+@property (nonatomic, readonly) PLLivePhotoEditSource *editSource;
 @property (nonatomic, readonly) NSError *error;
-@property (nonatomic, readonly) NSURL *inputImageURL;
-@property (nonatomic, readonly) NSURL *inputVideoURL;
 @property (nonatomic, readonly) AVAsset *outputAVAsset;
 @property (nonatomic, readonly) UIImage *outputImage;
 @property (nonatomic, readonly) NSURL *outputImageURL;
 @property (nonatomic, readonly) AVVideoComposition *outputVideoComposition;
 @property (nonatomic, readonly) NSURL *outputVideoURL;
+@property (nonatomic, readonly) PLLivePhotoEditSource *overcaptureEditSource;
 @property (nonatomic, readonly) NSProgress *progress;
 @property (nonatomic, readonly) bool renderAllResources;
 @property (nonatomic, copy) id /* block */ startHandler;
@@ -48,22 +48,22 @@
 - (void).cxx_destruct;
 - (void)_incrementProgressWithStartDate:(id)arg1;
 - (void)_timeout;
-- (id)adjustedEditModel;
+- (id)adjustedCompositionController;
 - (id)analysisResult;
-- (id)baseEditModel;
+- (id)baseCompositionController;
 - (void)cancel;
 - (id)duration;
+- (id)editSource;
 - (id)error;
 - (id)init;
-- (id)initWithInputImageURL:(id)arg1 inputVideoURL:(id)arg2 variationType:(long long)arg3 analysisResult:(id)arg4 baseEditModel:(id)arg5 outputImageURL:(id)arg6 outputVideoURL:(id)arg7 targetSize:(struct CGSize { double x1; double x2; })arg8 renderAllResources:(bool)arg9;
-- (id)inputImageURL;
-- (id)inputVideoURL;
+- (id)initWithEditSource:(id)arg1 overcaptureEditSource:(id)arg2 variationType:(long long)arg3 analysisResult:(id)arg4 baseCompositionController:(id)arg5 outputImageURL:(id)arg6 outputVideoURL:(id)arg7 targetSize:(struct CGSize { double x1; double x2; })arg8 renderAllResources:(bool)arg9;
 - (void)main;
 - (id)outputAVAsset;
 - (id)outputImage;
 - (id)outputImageURL;
 - (id)outputVideoComposition;
 - (id)outputVideoURL;
+- (id)overcaptureEditSource;
 - (id)progress;
 - (bool)renderAllResources;
 - (void)setStartHandler:(id /* block */)arg1;

@@ -11,6 +11,7 @@
     NSMutableSet * _browsingConnections;
     HAPAccessoryServerBrowserBTLE * _btleAccessoryServerBrowser;
     bool  _btlePowerState;
+    NSString * _countrycodeForAccessoryReprovisioning;
     NSMutableArray * _currentlyPairingAccessories;
     NSMutableArray * _currentlyPairingProgressHandlers;
     NSMapTable * _delegates;
@@ -39,7 +40,9 @@
     NSMutableSet * _unassociatedWACAccessories;
     NSMutableSet * _unpairedHAPAccessories;
     NSUUID * _uuid;
+    HAPWACAccessoryBrowser * _wacAccessoryBrowser;
     HMDWACBrowser * _wacBrowser;
+    NSData * _wiFiPSKForAccessoryReprovisioning;
     NSObject<OS_dispatch_queue> * _workQueue;
 }
 
@@ -50,6 +53,7 @@
 @property (nonatomic, retain) HMDAuthServer *authServer;
 @property (nonatomic, retain) HAPAccessoryServerBrowserBTLE *btleAccessoryServerBrowser;
 @property (nonatomic) bool btlePowerState;
+@property (nonatomic, retain) NSString *countrycodeForAccessoryReprovisioning;
 @property (nonatomic, retain) NSMutableArray *currentlyPairingAccessories;
 @property (nonatomic, retain) NSMutableArray *currentlyPairingProgressHandlers;
 @property (readonly, copy) NSString *debugDescription;
@@ -83,7 +87,9 @@
 @property (nonatomic, readonly) NSArray *unassociatedMediaAccessories;
 @property (nonatomic, readonly) NSArray *unpairedHAPAccessories;
 @property (nonatomic, retain) NSUUID *uuid;
+@property (nonatomic, retain) HAPWACAccessoryBrowser *wacAccessoryBrowser;
 @property (nonatomic, retain) HMDWACBrowser *wacBrowser;
+@property (nonatomic, retain) NSData *wiFiPSKForAccessoryReprovisioning;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *workQueue;
 
 + (id)logCategory;
@@ -103,7 +109,7 @@
 - (void)_callProgressOrErrorOut:(id)arg1 pairingInfo:(id)arg2 accessoryInfo:(id)arg3 unpairedAccessory:(id)arg4 progress:(long long)arg5 certStatus:(unsigned long long)arg6;
 - (void)_cancelCurrentlyPairingAccessories:(id)arg1;
 - (void)_cancelPairingWithAccessory:(id)arg1 error:(id)arg2;
-- (void)_checkDelegatesOfAccessoryWithSetupID:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)_checkDelegatesOfAccessoryWithSetupID:(id)arg1 serverIdentifier:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)_checkDelegatesofBlockedAccessoryServer:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)_checkIfPairingWithPairedAccessoryServer:(id)arg1 errorCode:(long long)arg2;
 - (void)_continueAfterPPIDValidation:(bool)arg1 server:(id)arg2;
@@ -112,7 +118,6 @@
 - (void)_handleActiveAppOrSiriCommand;
 - (void)_handleAddedAccessory:(id)arg1;
 - (void)_handleAddedAccessoryAdvertisements:(id)arg1;
-- (void)_handleInvalidatedXPCConnection:(id)arg1;
 - (void)_handleNoActiveHomeKitAppOrSiriCommand;
 - (void)_handlePairingInterruptedTimeout:(id)arg1 error:(id)arg2;
 - (void)_handleRemovedAccessory:(id)arg1;
@@ -121,6 +126,7 @@
 - (void)_handleRequestFetchNewAccessories:(id)arg1;
 - (void)_handleRequestSearchForNewAccessories:(id)arg1;
 - (void)_handleSetupCodeAvailable:(id)arg1;
+- (void)_handleWACAccessoryFound;
 - (bool)_isAccessoryServerTombstoned:(id)arg1;
 - (bool)_isBrowsingAllowed;
 - (void)_notifyDelegatesOfAccessoryServer:(id)arg1 didDiscoverAccessories:(id)arg2 transaction:(id)arg3 error:(id)arg4;
@@ -138,19 +144,20 @@
 - (void)_notifyDelegatesOfRemovedAccessoryServer:(id)arg1 error:(id)arg2;
 - (void)_notifyDelegatesOfTombstonedAccessoryServer:(id)arg1;
 - (void)_notifyDelegatesOfWACCompletionForAccessoryServerWithIdentifier:(id)arg1 error:(id)arg2;
-- (void)_pairAccessory:(id)arg1 homeName:(id)arg2 setupCode:(id)arg3 setupCodeProvider:(id /* block */)arg4 completionHandler:(id /* block */)arg5;
-- (void)_pairAccessoryWithDescription:(id)arg1 homeName:(id)arg2 needsUserConfirmation:(bool)arg3 progressHandler:(id /* block */)arg4 completionHandler:(id /* block */)arg5;
+- (void)_pairAccessory:(id)arg1 configuration:(id)arg2 completionHandler:(id /* block */)arg3;
+- (void)_pairAccessoryWithDescription:(id)arg1 configuration:(id)arg2 progressHandler:(id /* block */)arg3 completionHandler:(id /* block */)arg4;
 - (id)_pairingInformationForUnpairedAccessory:(id)arg1;
 - (id)_progressHandlerForUnpairedAccessory:(id)arg1;
 - (void)_promptForPairingPasswordForServer:(id)arg1 reason:(id)arg2;
 - (void)_registerForMessages;
+- (void)_registerForNotifications;
 - (void)_removeBrowsingConnection:(id)arg1;
 - (void)_removeMediaAccessoryControlObserverMatchingConnection:(id)arg1;
 - (void)_removePairingInformation:(id)arg1 errorCode:(long long)arg2;
 - (void)_removePairingInformationForUnpairedAccessory:(id)arg1;
-- (void)_reprovisionAccessoryWithIdentifier:(id)arg1 withCompletion:(id /* block */)arg2;
+- (void)_reprovisionAccessoryWithIdentifier:(id)arg1 wiFiPSK:(id)arg2 countryCode:(id)arg3 withCompletion:(id /* block */)arg4;
 - (void)_resurrectAccessoryServer:(id)arg1;
-- (void)_sendNewAccessoryData:(id)arg1 added:(bool)arg2 requiresSPIEntitlement:(bool)arg3;
+- (void)_sendNewAccessoryData:(id)arg1 added:(bool)arg2 requiresSPIEntitlement:(bool)arg3 requiresSetupPayloadEntitlement:(bool)arg4;
 - (void)_sendPairingCompletionStatusForServer:(id)arg1 error:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)_setBTLEPowerChangeCompletionHandler;
 - (bool)_shouldAccessoryServerBeTombstoned:(id)arg1;
@@ -168,9 +175,7 @@
 - (void)_tombstoneAccessoryServer:(id)arg1;
 - (id)_tombstonedAccessoryServerWithServerIdentifier:(id)arg1;
 - (id)_unassociatedMediaAccessoryWithIdentifier:(id)arg1;
-- (id)_unpairedAccessoryForServer:(id)arg1;
 - (id)_unpairedAccessoryMatchingPairingInfo:(id)arg1;
-- (id)_unpairedAccessoryWithServerIdentifier:(id)arg1;
 - (void)_updatePairingRetryTimerForAccessory:(id)arg1 delay:(long long)arg2;
 - (void)accessoryServer:(id)arg1 authenticateUUID:(id)arg2 token:(id)arg3;
 - (void)accessoryServer:(id)arg1 confirmUUID:(id)arg2 token:(id)arg3;
@@ -203,6 +208,7 @@
 - (void)accessoryServerBrowser:(id)arg1 saveCache:(id)arg2 serverIdentifier:(id)arg3;
 - (id)accessoryServerBrowsers;
 - (void)accessoryServerDidUpdateStateNumber:(id)arg1;
+- (void)accessoryServerNeedsOwnershipToken:(id)arg1;
 - (id)acessoryBrowserHapProtocol;
 - (void)activate:(bool)arg1;
 - (bool)activeSiriCommand;
@@ -226,8 +232,10 @@
 - (void)cancelPairingWithAccessoryDescription:(id)arg1 error:(id)arg2;
 - (void)configureAccessory:(id)arg1 trackState:(bool)arg2 connectionPriority:(bool)arg3;
 - (void)configureDemoBrowserWithDemoAccessories:(id)arg1 finalized:(bool)arg2;
+- (void)configureDemoBrowserWithTestAccessories:(id)arg1;
 - (void)configureWithHomeManager:(id)arg1;
-- (void)continueAddingAccesosryToHomeAfterUserConfirmation:(id)arg1 withError:(id)arg2;
+- (void)continueAddingAccessoryToHomeAfterUserConfirmation:(id)arg1 withError:(id)arg2;
+- (id)countrycodeForAccessoryReprovisioning;
 - (id)currentlyPairingAccessories;
 - (id)currentlyPairingProgressHandlers;
 - (void)dealloc;
@@ -236,7 +244,7 @@
 - (void)deregisterPairedAccessory:(id)arg1;
 - (id)deviceSetupMediaAccessories;
 - (void)didFinishActivation:(id)arg1 context:(id)arg2;
-- (void)didReceiveUserConsentResponseForSetupAccessoryDescription:(id)arg1 consent:(bool)arg2;
+- (void)didReceiveUserConsentResponseForSetupAccessoryDetail:(id)arg1 consent:(bool)arg2;
 - (void)discoverAccessories:(id)arg1;
 - (void)discoverAccessoryServer:(id)arg1 linkType:(long long)arg2 errorHandler:(id /* block */)arg3;
 - (id)discoveredAccessoryServerIdentifiers;
@@ -261,6 +269,7 @@
 - (void)handleRemovedAccessory:(id)arg1;
 - (void)handleSetupCodeAvailable:(id)arg1;
 - (void)handleStartDiscoveringAssociatedMediaAccessories:(bool)arg1 forTransport:(id)arg2 completionHandler:(id /* block */)arg3;
+- (void)handleXPCConnectionInvalidated:(id)arg1;
 - (bool)hasClientRequestedMediaAccessoryControl:(id)arg1;
 - (void)homeLocationChangeNotification:(id)arg1;
 - (id)homeManager;
@@ -282,8 +291,8 @@
 - (id)messageTargetUUID;
 - (void)notifyDelegatesOfReachability:(bool)arg1 forAccessoryWithIdentifier:(id)arg2;
 - (unsigned long long)numPairedIPAccessories;
-- (void)pairAccessory:(id)arg1 homeName:(id)arg2 setupCode:(id)arg3 setupCodeProvider:(id /* block */)arg4 completionHandler:(id /* block */)arg5;
-- (void)pairAccessoryWithDescription:(id)arg1 homeName:(id)arg2 needsUserConfirmation:(bool)arg3 progressHandler:(id /* block */)arg4 completionHandler:(id /* block */)arg5;
+- (void)pairAccessory:(id)arg1 configuration:(id)arg2 completionHandler:(id /* block */)arg3;
+- (void)pairAccessoryWithDescription:(id)arg1 configuration:(id)arg2 progressHandler:(id /* block */)arg3 completionHandler:(id /* block */)arg4;
 - (void)probeReachabilityForBTLEAccessoryServersWithIdentifiers:(id)arg1 onQueue:(id)arg2 withCompletion:(id /* block */)arg3;
 - (id)propertyQueue;
 - (id)reachabilityTimerForBTLE;
@@ -291,12 +300,13 @@
 - (void)registerProgressHandler:(id /* block */)arg1 unpairedAccessoryUUID:(id)arg2;
 - (id)relayAccessoryServerBrowser;
 - (void)removeDelegate:(id)arg1;
+- (void)removePairingInformationForAccessoryServer:(id)arg1;
 - (void)removeUnassociatedAccessory:(id)arg1;
 - (void)removeUnassociatedAccessoryWithIdentifier:(id)arg1;
 - (void)removeUnassociatedMediaAccessory:(id)arg1;
 - (void)removeUnassociatedWACAccessory:(id)arg1;
 - (void)removeUnpairedHAPAccessory:(id)arg1;
-- (void)reprovisionAccessoryWithIdentifier:(id)arg1 withCompletion:(id /* block */)arg2;
+- (void)reprovisionAccessoryWithIdentifier:(id)arg1 wiFiPSK:(id)arg2 countryCode:(id)arg3 withCompletion:(id /* block */)arg4;
 - (void)requestPermissionToAssociateWACAccessory:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)resetConfiguration;
 - (void)resetMediaAccessoryControlConnections;
@@ -309,6 +319,7 @@
 - (void)setAuthServer:(id)arg1;
 - (void)setBtleAccessoryServerBrowser:(id)arg1;
 - (void)setBtlePowerState:(bool)arg1;
+- (void)setCountrycodeForAccessoryReprovisioning:(id)arg1;
 - (void)setCurrentlyPairingAccessories:(id)arg1;
 - (void)setCurrentlyPairingProgressHandlers:(id)arg1;
 - (void)setDelegates:(id)arg1;
@@ -329,7 +340,9 @@
 - (void)setStopBrowsingAccessoriesNeedingReprovisioningTimer:(id)arg1;
 - (void)setStopReprovisioningTimer:(id)arg1;
 - (void)setUuid:(id)arg1;
+- (void)setWacAccessoryBrowser:(id)arg1;
 - (void)setWacBrowser:(id)arg1;
+- (void)setWiFiPSKForAccessoryReprovisioning:(id)arg1;
 - (void)setWorkQueue:(id)arg1;
 - (void)startDiscoveringAccessories;
 - (void)startDiscoveringAccessoriesNeedingReprovisioning;
@@ -344,17 +357,22 @@
 - (void)tombstoneAccessoryServer:(id)arg1;
 - (id)tombstonedHAPAccessoryServers;
 - (id)unassociatedAccessories;
-- (id)unassociatedAccessoriesForNonEntitledClients;
+- (id)unassociatedAccessoriesForClientRequest:(id)arg1;
 - (id)unassociatedMediaAccessories;
 - (void)unassociatedWACAccessoryDidFinishAssociation:(id)arg1 withError:(id)arg2;
 - (void)unassociatedWACAccessoryDidStartAssociation:(id)arg1;
+- (id)unpairedAccessoryForServer:(id)arg1;
+- (id)unpairedAccessoryWithServerIdentifier:(id)arg1;
 - (id)unpairedAccessoryWithUUID:(id)arg1;
 - (id)unpairedHAPAccessories;
+- (id)unpairedHAPAccessoryWithAccessoryDescription:(id)arg1;
 - (void)updateBroadcastKeyForIdentifer:(id)arg1 key:(id)arg2 keyUpdatedStateNumber:(id)arg3 keyUpdatedTime:(double)arg4;
 - (void)updateStateForIdentifier:(id)arg1 stateNumber:(id)arg2;
 - (void)updateUnassociatedWACAccessory:(id)arg1;
 - (id)uuid;
+- (id)wacAccessoryBrowser;
 - (id)wacBrowser;
+- (id)wiFiPSKForAccessoryReprovisioning;
 - (id)workQueue;
 
 @end

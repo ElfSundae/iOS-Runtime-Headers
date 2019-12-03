@@ -2,11 +2,12 @@
    Image: /System/Library/Frameworks/SafariServices.framework/SafariServices
  */
 
-@interface SFBrowserServiceViewController : _SFBrowserContentViewController <SFServiceViewControllerProtocol, _SFActivityDelegate> {
+@interface SFBrowserServiceViewController : _SFBrowserContentViewController <SFServiceViewControllerProtocol, _SFActivityDelegate, _SFLinkPreviewHeaderDelegate> {
     id /* block */  _activityViewControllerInfoFetchCompletionHandler;
     SFBrowserPersonaAnalyticsHelper * _cachedAnalyticsHelper;
     bool  _canNotifyHostApplicationOfRedirects;
     bool  _hasBegunFirstNavigation;
+    bool  _hasConnectedToHostApplication;
     NSString * _hostApplicationCallbackURLScheme;
     bool  _hostApplicationIsForeground;
     bool  _isExpectingClientRedirect;
@@ -33,10 +34,12 @@
 - (id)_applicationPayloadForOpeningInSafari;
 - (void)_closeDatabasesOnBackgroundingOrDismissal;
 - (void)_didLoadWebView;
+- (void)_didResolveDestinationURL:(id)arg1 pendingAppLinkCheck:(bool)arg2;
 - (void)_dismiss;
 - (bool)_ensureWebsiteDataStoreURL:(id)arg1 cookieStoreURL:(id)arg2;
 - (void)_fetchActivityViewControllerInfoForURL:(id)arg1 title:(id)arg2 completion:(id /* block */)arg3;
 - (void)_getSafariDataSharingModeWithCompletion:(id /* block */)arg1;
+- (id)_hostAppBundleId;
 - (void)_hostApplicationDidEnterBackground;
 - (void)_hostApplicationWillEnterForeground;
 - (bool)_notifyInitialLoadDidFinish:(bool)arg1;
@@ -47,6 +50,7 @@
 - (bool)_shouldReloadImmediatelyAfterPageLoadError;
 - (void)_updateRemoteSwipeGestureState;
 - (id)_webDataStoreRootURL;
+- (id)_websiteDataStoreURL;
 - (void)_willAppearInRemoteViewController;
 - (void)browserViewDidReceiveTouchEvent:(id)arg1;
 - (id)bundleIdentifierForProfileInstallation;
@@ -55,8 +59,10 @@
 - (void)didDetectRemoteViewControllerViewIsHidden;
 - (void)didDetectUserInteractionFromHostApp;
 - (void)didFetchCustomActivities:(id)arg1 excludedActivityTypes:(id)arg2;
+- (void)didRequestShowLinkPreviews:(bool)arg1;
 - (id)hostApplicationCallbackURLScheme;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)linkPreviewHeader:(id)arg1 didEnableLinkPreview:(bool)arg2;
 - (void)loadURL:(id)arg1;
 - (void)openCurrentURLInSafari;
 - (id)processPool;
@@ -64,12 +70,15 @@
 - (void)repostNotificationInViewService:(id)arg1;
 - (void)safariActivity:(id)arg1 didFinish:(bool)arg2;
 - (void)setDismissButtonStyle:(long long)arg1;
+- (void)setDisplayMode:(long long)arg1;
 - (void)setHostApplicationCallbackURLScheme:(id)arg1;
 - (void)setIsRunningTransitionAnimation:(bool)arg1;
 - (void)setUserNotification:(id)arg1;
+- (void)startResolveRedirectionForURL:(id)arg1;
 - (void)updateScrollViewIndicatorVerticalInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1 horizontalInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg2;
 - (id)userNotification;
 - (void)viewDidAppear:(bool)arg1;
+- (void)viewDidDisappear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;
 - (void)webViewController:(id)arg1 didChangeFullScreen:(bool)arg2;
 - (void)webViewController:(id)arg1 didFinishDocumentLoadForNavigation:(id)arg2;

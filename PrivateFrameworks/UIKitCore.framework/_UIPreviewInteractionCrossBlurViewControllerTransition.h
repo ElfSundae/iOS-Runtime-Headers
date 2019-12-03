@@ -30,6 +30,7 @@
 @property (readonly, copy) NSString *description;
 @property (getter=isDismissTransition, nonatomic) bool dismissTransition;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, copy) UITargetedPreview *sourcePreview;
 @property (readonly) Class superclass;
 
 - (bool)isDismissTransition;

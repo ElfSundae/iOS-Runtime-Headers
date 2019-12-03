@@ -58,6 +58,7 @@
 - (void)notifySubitemDidSave:(unsigned long long)arg1;
 - (void)notifyTextChanged;
 - (unsigned long long)numberOfSubitems;
+- (void)prepareForReload;
 - (void)refreshFromCalendarItemAndStore;
 - (bool)requiresReconfigurationOnSave;
 - (void)reset;
@@ -70,6 +71,8 @@
 - (bool)shouldAppearWithVisibility:(int)arg1;
 - (bool)shouldPinKeyboard;
 - (id)styleProvider;
+- (void)tableViewDidScroll;
+- (id)trailingSwipeActionsConfigurationForRowAtIndex:(long long)arg1;
 - (bool)usesDetailViewControllerForSubitem:(unsigned long long)arg1;
 - (id)viewForActionSheet;
 

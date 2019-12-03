@@ -8,6 +8,8 @@
     SATimestamp * _startTimestamp;
     unsigned long long  _state;
     unsigned long long  _threadId;
+    unsigned char  _threadPriority;
+    SATurnstileInfo * _turnstileInfo;
     SAWaitInfo * _waitInfo;
 }
 
@@ -20,18 +22,22 @@
 @property (readonly) unsigned long long state;
 @property (readonly) Class superclass;
 @property (readonly) unsigned long long threadId;
+@property (readonly) unsigned char threadPriority;
+@property (readonly) SATurnstileInfo *turnstileInfo;
 @property (readonly) SAWaitInfo *waitInfo;
 
-+ (id)treeCountedStateWithWaitInfo:(id)arg1 state:(unsigned long long)arg2 microstackshotState:(unsigned int)arg3 pid:(int)arg4 threadId:(unsigned long long)arg5 startSampleIndex:(unsigned long long)arg6 startTimestamp:(id)arg7 sampleCount:(unsigned long long)arg8;
++ (id)treeCountedStateWithWaitInfo:(id)arg1 turnstileInfo:(id)arg2 state:(unsigned long long)arg3 microstackshotState:(unsigned int)arg4 pid:(int)arg5 threadId:(unsigned long long)arg6 threadPriority:(unsigned char)arg7 startSampleIndex:(unsigned long long)arg8 startTimestamp:(id)arg9 sampleCount:(unsigned long long)arg10;
 + (void)writeJSONDictionaryEntriesToStream:(id)arg1 microstackshotState:(unsigned int)arg2 primaryMicrostackshotState:(unsigned int)arg3 includeIdleAndBattery:(bool)arg4;
 
 - (void).cxx_destruct;
-- (id)initWithWaitInfo:(id)arg1 state:(unsigned long long)arg2 microstackshotState:(unsigned int)arg3 pid:(int)arg4 threadId:(unsigned long long)arg5 startSampleIndex:(unsigned long long)arg6 startTimestamp:(id)arg7 sampleCount:(unsigned long long)arg8;
+- (id)initWithWaitInfo:(id)arg1 turnstileInfo:(id)arg2 state:(unsigned long long)arg3 microstackshotState:(unsigned int)arg4 pid:(int)arg5 threadId:(unsigned long long)arg6 threadPriority:(unsigned char)arg7 startSampleIndex:(unsigned long long)arg8 startTimestamp:(id)arg9 sampleCount:(unsigned long long)arg10;
 - (unsigned int)microstackshotState;
 - (int)pid;
 - (id)startTimestamp;
 - (unsigned long long)state;
 - (unsigned long long)threadId;
+- (unsigned char)threadPriority;
+- (id)turnstileInfo;
 - (id)waitInfo;
 - (void)writeJSONDictionaryEntriesToStream:(id)arg1;
 

@@ -3,6 +3,7 @@
  */
 
 @interface _INPBBalanceAmountValue : PBCodable <NSCopying, NSSecureCoding, _INPBBalanceAmountValue> {
+    bool  __encodeLegacyGloryData;
     _INPBCurrencyAmountValue * _currencyAmount;
     _INPBDecimalNumberValue * _customAmount;
     struct { 
@@ -12,6 +13,7 @@
     _INPBValueMetadata * _valueMetadata;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic, retain) _INPBCurrencyAmountValue *currencyAmount;
 @property (nonatomic, retain) _INPBDecimalNumberValue *customAmount;
 @property (readonly, copy) NSString *debugDescription;
@@ -25,17 +27,23 @@
 @property (nonatomic) int type;
 @property (nonatomic, retain) _INPBValueMetadata *valueMetadata;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)currencyAmount;
 - (id)customAmount;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasCurrencyAmount;
 - (bool)hasCustomAmount;
 - (bool)hasType;
 - (bool)hasValueMetadata;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setCurrencyAmount:(id)arg1;

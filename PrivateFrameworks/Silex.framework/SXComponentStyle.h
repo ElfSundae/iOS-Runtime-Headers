@@ -15,7 +15,7 @@
 @property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, readonly) SXComponentMask *mask;
 @property (nonatomic, readonly) double opacity;
-@property (nonatomic, readonly) SXShadow *shadow;
+@property (nonatomic, readonly) SXComponentShadow *shadow;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) SXDataTableStyle *tableStyle;
 @property (nonatomic, readonly) unsigned long long traits;

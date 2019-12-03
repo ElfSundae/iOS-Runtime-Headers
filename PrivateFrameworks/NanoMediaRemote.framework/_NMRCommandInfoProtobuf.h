@@ -10,6 +10,7 @@
         unsigned int command : 1; 
         unsigned int maximumRating : 1; 
         unsigned int minimumRating : 1; 
+        unsigned int preferredPlaybackRate : 1; 
         unsigned int presentationStyle : 1; 
         unsigned int repeatMode : 1; 
         unsigned int shuffleMode : 1; 
@@ -25,6 +26,7 @@
         unsigned long long count; 
         unsigned long long size; 
     }  _preferredIntervals;
+    float  _preferredPlaybackRate;
     int  _presentationStyle;
     int  _repeatMode;
     int  _shuffleMode;
@@ -32,7 +34,7 @@
         float *list; 
         unsigned long long count; 
         unsigned long long size; 
-    }  _supportedRates;
+    }  _supportedPlaybackRates;
 }
 
 @property (nonatomic) bool active;
@@ -45,6 +47,7 @@
 @property (nonatomic, readonly) bool hasLocalizedTitle;
 @property (nonatomic) bool hasMaximumRating;
 @property (nonatomic) bool hasMinimumRating;
+@property (nonatomic) bool hasPreferredPlaybackRate;
 @property (nonatomic) bool hasPresentationStyle;
 @property (nonatomic) bool hasRepeatMode;
 @property (nonatomic) bool hasShuffleMode;
@@ -54,11 +57,12 @@
 @property (nonatomic) float minimumRating;
 @property (nonatomic, readonly) double*preferredIntervals;
 @property (nonatomic, readonly) unsigned long long preferredIntervalsCount;
+@property (nonatomic) float preferredPlaybackRate;
 @property (nonatomic) int presentationStyle;
 @property (nonatomic) int repeatMode;
 @property (nonatomic) int shuffleMode;
-@property (nonatomic, readonly) float*supportedRates;
-@property (nonatomic, readonly) unsigned long long supportedRatesCount;
+@property (nonatomic, readonly) float*supportedPlaybackRates;
+@property (nonatomic, readonly) unsigned long long supportedPlaybackRatesCount;
 
 - (void).cxx_destruct;
 - (int)StringAsCommand:(id)arg1;
@@ -66,9 +70,9 @@
 - (int)StringAsShuffleMode:(id)arg1;
 - (bool)active;
 - (void)addPreferredInterval:(double)arg1;
-- (void)addSupportedRate:(float)arg1;
+- (void)addSupportedPlaybackRate:(float)arg1;
 - (void)clearPreferredIntervals;
-- (void)clearSupportedRates;
+- (void)clearSupportedPlaybackRates;
 - (int)command;
 - (id)commandAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
@@ -84,6 +88,7 @@
 - (bool)hasLocalizedTitle;
 - (bool)hasMaximumRating;
 - (bool)hasMinimumRating;
+- (bool)hasPreferredPlaybackRate;
 - (bool)hasPresentationStyle;
 - (bool)hasRepeatMode;
 - (bool)hasShuffleMode;
@@ -97,6 +102,7 @@
 - (double)preferredIntervalAtIndex:(unsigned long long)arg1;
 - (double*)preferredIntervals;
 - (unsigned long long)preferredIntervalsCount;
+- (float)preferredPlaybackRate;
 - (int)presentationStyle;
 - (bool)readFrom:(id)arg1;
 - (int)repeatMode;
@@ -109,6 +115,7 @@
 - (void)setHasEnabled:(bool)arg1;
 - (void)setHasMaximumRating:(bool)arg1;
 - (void)setHasMinimumRating:(bool)arg1;
+- (void)setHasPreferredPlaybackRate:(bool)arg1;
 - (void)setHasPresentationStyle:(bool)arg1;
 - (void)setHasRepeatMode:(bool)arg1;
 - (void)setHasShuffleMode:(bool)arg1;
@@ -117,15 +124,16 @@
 - (void)setMaximumRating:(float)arg1;
 - (void)setMinimumRating:(float)arg1;
 - (void)setPreferredIntervals:(double*)arg1 count:(unsigned long long)arg2;
+- (void)setPreferredPlaybackRate:(float)arg1;
 - (void)setPresentationStyle:(int)arg1;
 - (void)setRepeatMode:(int)arg1;
 - (void)setShuffleMode:(int)arg1;
-- (void)setSupportedRates:(float*)arg1 count:(unsigned long long)arg2;
+- (void)setSupportedPlaybackRates:(float*)arg1 count:(unsigned long long)arg2;
 - (int)shuffleMode;
 - (id)shuffleModeAsString:(int)arg1;
-- (float)supportedRateAtIndex:(unsigned long long)arg1;
-- (float*)supportedRates;
-- (unsigned long long)supportedRatesCount;
+- (float)supportedPlaybackRateAtIndex:(unsigned long long)arg1;
+- (float*)supportedPlaybackRates;
+- (unsigned long long)supportedPlaybackRatesCount;
 - (void)writeTo:(id)arg1;
 
 @end

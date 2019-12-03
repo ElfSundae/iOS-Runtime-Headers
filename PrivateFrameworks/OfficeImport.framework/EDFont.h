@@ -34,11 +34,11 @@
 
 + (id)fontWithResources:(id)arg1;
 
+- (void).cxx_destruct;
 - (int)charSet;
 - (id)color;
 - (id)colorReference;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (int)family;
 - (unsigned long long)hash;

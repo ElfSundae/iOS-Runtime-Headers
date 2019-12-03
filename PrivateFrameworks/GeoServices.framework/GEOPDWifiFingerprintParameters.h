@@ -4,8 +4,8 @@
 
 @interface GEOPDWifiFingerprintParameters : PBCodable <NSCopying> {
     struct { 
-        unsigned int maxLabels : 1; 
-    }  _has;
+        unsigned int has_maxLabels : 1; 
+    }  _flags;
     unsigned int  _maxLabels;
     NSMutableArray * _measurements;
     PBUnknownFields * _unknownFields;
@@ -16,11 +16,14 @@
 @property (nonatomic, retain) NSMutableArray *measurements;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
 + (Class)measurementType;
 
 - (void).cxx_destruct;
 - (void)addMeasurement:(id)arg1;
 - (void)clearMeasurements;
+- (void)clearSensitiveFields;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -33,6 +36,7 @@
 - (id)measurements;
 - (unsigned long long)measurementsCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasMaxLabels:(bool)arg1;
 - (void)setMaxLabels:(unsigned int)arg1;

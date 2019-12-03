@@ -11,5 +11,7 @@
 - (NSDate *)geocodeStartDate;
 - (NSTimeZone *)geocodeStartTimeZone;
 - (id)geocodedEventWithStartDate:(NSDate *)arg1 startTimeZone:(NSTimeZone *)arg2 endDate:(NSDate *)arg3 endTimeZone:(NSTimeZone *)arg4 locations:(NSArray *)arg5;
+- (unsigned long long)geocodingMode;
+- (NSString *)poiFilters;
 
 @end

@@ -13,8 +13,12 @@
 @property (readonly) bool HTTPShouldUsePipelining;
 @property (readonly, copy) NSURL *URL;
 @property (getter=_gkSAPSession, setter=_gkSetSAPSession:, nonatomic, retain) GKFairPlaySAPSession *_gkSAPSession;
+@property (readonly) struct URLRequest { int (**x1)(); struct __CFURL {} *x2; unsigned long long x3; double x4; struct __CFURL {} *x5; struct __CFDictionary {} *x6; struct __CFDictionary {} *x7; struct HTTPRequest {} *x8; struct Flags { unsigned int x_9_1_1 : 1; unsigned int x_9_1_2 : 1; unsigned int x_9_1_3 : 1; unsigned int x_9_1_4 : 1; unsigned int x_9_1_5 : 1; unsigned int x_9_1_6 : 1; unsigned int x_9_1_7 : 1; unsigned int x_9_1_8 : 1; unsigned int x_9_1_9 : 1; unsigned int x_9_1_10 : 1; unsigned int x_9_1_11 : 1; unsigned int x_9_1_12 : 1; unsigned int x_9_1_13 : 1; unsigned int x_9_1_14 : 1; unsigned int x_9_1_15 : 1; unsigned int x_9_1_16 : 1; unsigned int x_9_1_17 : 1; unsigned int x_9_1_18 : 1; } x9; struct __CFDictionary {} *x10; struct __CFArray {} *x11; long long x12; unsigned long long x13; int x14; struct __CFString {} *x15; unsigned long long x16; double x17; double x18; double x19; unsigned char x20; unsigned char x21; unsigned char x22; unsigned char x23; double x24; struct __CFDictionary {} *x25; /* Warning: unhandled struct encoding: '{unique_ptr<_CFHSTSPolicy' */ struct x26; }*_inner; /* unknown property attribute:  Deleter_CFRelease>=^{_CFHSTSPolicy}}}ii^{__CFURLStorageSession}} */
 @property (readonly, copy) NSDictionary *allHTTPHeaderFields;
 @property (readonly) bool allowsCellularAccess;
+@property (readonly) bool allowsConstrainedNetworkAccess;
+@property (readonly) bool allowsExpensiveNetworkAccess;
+@property (nonatomic, readonly) NSDictionary *ams_cookies;
 @property (nonatomic, readonly) bool ams_requestIsBagLoad;
 @property (readonly) unsigned long long cachePolicy;
 @property (readonly, copy) NSURL *mainDocumentURL;
@@ -44,12 +48,15 @@
 - (bool)HTTPShouldUsePipelining;
 - (id)HTTPUserAgent;
 - (id)URL;
-- (struct _CFURLRequest { }*)_CFURLRequest;
+- (id)_CFURLRequest;
 - (bool)_URLHasScheme:(id)arg1;
 - (id)_allHTTPHeaderFieldsAsArrays;
+- (id)_bodyParts;
 - (id)_copyReplacingURLWithURL:(id)arg1;
 - (bool)_ignoreHSTS;
-- (id)_initWithCFURLRequest:(struct _CFURLRequest { }*)arg1;
+- (id)_initWithCFURLRequest:(id)arg1;
+- (id)_initWithInternal:(id)arg1;
+- (struct URLRequest { int (**x1)(); struct __CFURL {} *x2; unsigned long long x3; double x4; struct __CFURL {} *x5; struct __CFDictionary {} *x6; struct __CFDictionary {} *x7; struct HTTPRequest {} *x8; struct Flags { unsigned int x_9_1_1 : 1; unsigned int x_9_1_2 : 1; unsigned int x_9_1_3 : 1; unsigned int x_9_1_4 : 1; unsigned int x_9_1_5 : 1; unsigned int x_9_1_6 : 1; unsigned int x_9_1_7 : 1; unsigned int x_9_1_8 : 1; unsigned int x_9_1_9 : 1; unsigned int x_9_1_10 : 1; unsigned int x_9_1_11 : 1; unsigned int x_9_1_12 : 1; unsigned int x_9_1_13 : 1; unsigned int x_9_1_14 : 1; unsigned int x_9_1_15 : 1; unsigned int x_9_1_16 : 1; unsigned int x_9_1_17 : 1; unsigned int x_9_1_18 : 1; } x9; struct __CFDictionary {} *x10; struct __CFArray {} *x11; long long x12; unsigned long long x13; int x14; struct __CFString {} *x15; unsigned long long x16; double x17; double x18; double x19; unsigned char x20; unsigned char x21; unsigned char x22; unsigned char x23; double x24; struct __CFDictionary {} *x25; struct unique_ptr<_CFHSTSPolicy, Deleter_CFRelease> { struct __compressed_pair<_CFHSTSPolicy *, Deleter_CFRelease> { struct _CFHSTSPolicy {} *x_1_2_1; } x_26_1_1; } x26; }*)_inner;
 - (bool)_isIdempotent;
 - (bool)_isSafeRequestForBackgroundDownload;
 - (double)_payloadTransmissionTimeout;
@@ -64,8 +71,11 @@
 - (double)_timeWindowDuration;
 - (id)allHTTPHeaderFields;
 - (bool)allowsCellularAccess;
+- (bool)allowsConstrainedNetworkAccess;
+- (bool)allowsExpensiveNetworkAccess;
 - (id)boundInterfaceIdentifier;
 - (unsigned long long)cachePolicy;
+- (const struct __CFURL { }*)cfURL;
 - (id)contentDispositionEncodingFallbackArray;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -94,12 +104,17 @@
 
 // Image: /System/Library/PrivateFrameworks/AppleMediaServices.framework/AppleMediaServices
 
+- (id)ams_cookies;
 - (bool)ams_requestIsBagLoad;
 - (id)ams_valueForHTTPHeader:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/AuthKit.framework/AuthKit
 
 - (bool)ak_usesHTTPSScheme;
+
+// Image: /System/Library/PrivateFrameworks/CDDataAccess.framework/CDDataAccess
+
+- (id)DARequestByApplyingStorageSession:(struct __CFURLStorageSession { }*)arg1;
 
 // Image: /System/Library/PrivateFrameworks/DataAccess.framework/DataAccess
 
@@ -126,6 +141,12 @@
 
 - (id)copyXPCEncoding;
 - (id)initWithXPCEncoding:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/TrialServer.framework/TrialServer
+
+- (id)triHTTPBodyAsJsonObj;
+- (id)triJSONString;
+- (id)triJSONStringWithOptions:(unsigned long long)arg1 error:(id*)arg2;
 
 // Image: /System/Library/PrivateFrameworks/WatchListKit.framework/WatchListKit
 

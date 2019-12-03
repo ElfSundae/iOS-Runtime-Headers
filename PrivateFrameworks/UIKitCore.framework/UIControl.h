@@ -15,7 +15,7 @@
         unsigned int allowActionsToQueue : 1; 
         unsigned int pendingUnhighlight : 1; 
         unsigned int selected : 1; 
-        unsigned int verticalAlignment : 2; 
+        unsigned int verticalAlignment : 3; 
         unsigned int horizontalAlignment : 3; 
         unsigned int wasLastHighlightSuccessful : 1; 
         unsigned int touchHasHighlighted : 1; 
@@ -97,6 +97,7 @@
 - (bool)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)dealloc;
 - (long long)effectiveContentHorizontalAlignment;
+- (long long)effectiveContentVerticalAlignment;
 - (void)encodeWithCoder:(id)arg1;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (bool)hasOneOrMoreTargets;
@@ -138,10 +139,6 @@
 // Image: /System/Library/Frameworks/MapKit.framework/MapKit
 
 - (void)_mapkit_setTarget:(id)arg1 action:(SEL)arg2;
-
-// Image: /System/Library/PrivateFrameworks/FuseUI.framework/FuseUI
-
-- (void)music_configureControlWithTextDescriptor:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/StoreKitUI.framework/StoreKitUI
 

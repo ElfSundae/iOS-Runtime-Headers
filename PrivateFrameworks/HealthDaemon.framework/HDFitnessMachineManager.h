@@ -11,7 +11,6 @@
     HDFitnessMachineSession * _fitnessMachineSession;
     HKObserverSet * _fitnessMachineSessionObservers;
     HDFitnessMachineStateTimers * _fitnessMachineStateTimers;
-    NSDate * _machinePreferredUntilDate;
     HDFitnessMachinePairingManager * _pairingManager;
     HDProfile * _profile;
     NSObject<OS_dispatch_queue> * _queue;
@@ -71,6 +70,7 @@
 - (void)_queue_resetConnectionForcing:(bool)arg1;
 - (void)_queue_setConnectionState:(unsigned long long)arg1 error:(id)arg2;
 - (void)_queue_setDeviceInformation:(id)arg1;
+- (void)_queue_setMachinePreferredUntilDate:(id)arg1;
 - (void)_queue_setMachineState:(unsigned long long)arg1 date:(id)arg2;
 - (void)_queue_simulateDisconnect;
 - (void)_queue_tearDownAfterStopEvent;
@@ -89,6 +89,7 @@
 - (void)finishSessionWithConfiguration:(id)arg1;
 - (id)fitnessMachineDataProducer;
 - (id)fitnessMachineStateTimers;
+- (unsigned long long)fitnessMachineTypeForSessionUUID:(id)arg1;
 - (void)hktest_setMachinePreferredUntilDate:(id)arg1;
 - (id)initWithProfile:(id)arg1;
 - (id)machinePreferredUntilDate;

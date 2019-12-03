@@ -12,6 +12,7 @@
 @property (readonly) float minSupportedFrameRate;
 @property (readonly) float portraitEffectsMatteMainImageDownscalingFactor;
 @property (getter=isStillImageOnlyDepthData, readonly) bool stillImageOnlyDepthData;
+@property (readonly) NSArray *supportedSemanticSegmentationMatteURNs;
 
 - (bool)RGBIRStereoFusionSupported;
 - (id)copyWithNewPixelFormat:(unsigned int)arg1;
@@ -25,5 +26,6 @@
 - (unsigned int)mediaType;
 - (float)minSupportedFrameRate;
 - (float)portraitEffectsMatteMainImageDownscalingFactor;
+- (id)supportedSemanticSegmentationMatteURNs;
 
 @end

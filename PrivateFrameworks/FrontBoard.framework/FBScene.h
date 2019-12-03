@@ -2,20 +2,25 @@
    Image: /System/Library/PrivateFrameworks/FrontBoard.framework/FrontBoard
  */
 
-@interface FBScene : NSObject <BSDescriptionProviding, FBSceneHost, FBUISceneUpdater> {
+@interface FBScene : NSObject <BSDescriptionProviding, FBSceneHost> {
     <FBSceneClient> * _client;
     FBProcess * _clientProcess;
     <FBSceneClientProvider> * _clientProvider;
     FBSSceneClientSettings * _clientSettings;
+    long long  _contentState;
+    bool  _contentStateIsChanging;
     FBSSceneDefinition * _definition;
-    <FBSceneDelegate> * _delegate;
+    FBSceneObserver * _delegateProxy;
     NSHashTable * _geometryObservers;
     FBSceneHostManager * _hostManager;
     NSString * _identifier;
+    FBSSceneIdentityToken * _identityToken;
     bool  _inTransaction;
     unsigned long long  _lastForegroundingTransitionID;
     FBSceneLayerManager * _layerManager;
     FBSMutableSceneSettings * _mutableSettings;
+    NSMutableOrderedSet * _observerProxies;
+    <FBSceneManagerSceneDelegate> * _sceneManagerSceneDelegate;
     FBSSceneSettings * _settings;
     <BSInvalidatable> * _stateCaptureAssertion;
     unsigned long long  _transactionID;
@@ -29,17 +34,22 @@
 @property (nonatomic, readonly) FBProcess *clientProcess;
 @property (nonatomic, readonly) <FBSceneClientProvider> *clientProvider;
 @property (nonatomic, readonly) FBSSceneClientSettings *clientSettings;
+@property (nonatomic, readonly) long long contentState;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, readonly, copy) FBSSceneDefinition *definition;
 @property (nonatomic) <FBSceneDelegate> *delegate;
+@property (nonatomic, readonly) FBSceneObserver *delegateProxy;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly, retain) FBSDisplayConfiguration *display;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) FBSceneHostManager *hostManager;
 @property (nonatomic, readonly, copy) NSString *identifier;
+@property (nonatomic, readonly, copy) FBSSceneIdentityToken *identityToken;
 @property (nonatomic, readonly) FBSceneLayerManager *layerManager;
 @property (nonatomic, retain) FBSMutableSceneSettings *mutableSettings;
+@property (nonatomic, readonly, copy) NSArray *observerProxies;
 @property (nonatomic, readonly, copy) FBSSceneParameters *parameters;
+@property (nonatomic) <FBSceneManagerSceneDelegate> *sceneManagerSceneDelegate;
 @property (nonatomic, readonly) FBSSceneSettings *settings;
 @property (nonatomic, readonly, copy) FBSSceneSpecification *specification;
 @property (readonly) Class superclass;
@@ -50,6 +60,7 @@
 
 - (void).cxx_destruct;
 - (void)_addSceneGeometryObserver:(id)arg1;
+- (void)_adjustInitialSettings:(id)arg1;
 - (void)_applyUpdateWithContext:(id)arg1 completion:(id /* block */)arg2;
 - (unsigned long long)_beginTransaction;
 - (void)_dispatchClientMessageWithBlock:(id /* block */)arg1;
@@ -57,18 +68,17 @@
 - (void)_invalidateWithTransitionContext:(id)arg1;
 - (bool)_isInTransaction;
 - (void)_removeSceneGeometryObserver:(id)arg1;
+- (void)_setContentState:(long long)arg1;
 - (unsigned long long)_transactionID;
+- (void)addObserver:(id)arg1;
 - (id)client;
-- (void)client:(id)arg1 attachLayer:(id)arg2;
-- (void)client:(id)arg1 detachLayer:(id)arg2;
 - (void)client:(id)arg1 didReceiveActions:(id)arg2;
 - (void)client:(id)arg1 didUpdateClientSettings:(id)arg2 withDiff:(id)arg3 transitionContext:(id)arg4;
-- (void)client:(id)arg1 updateLayer:(id)arg2;
 - (id)clientProcess;
 - (id)clientProvider;
 - (id)clientSettings;
 - (void)clientWillInvalidate:(id)arg1;
-- (id)contentView;
+- (long long)contentState;
 - (id)createSnapshot;
 - (id)createSnapshotWithContext:(id)arg1;
 - (long long)currentInterfaceOrientation;
@@ -76,20 +86,26 @@
 - (id)debugDescription;
 - (id)definition;
 - (id)delegate;
+- (id)delegateProxy;
 - (id)description;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)display;
 - (id)hostManager;
 - (id)identifier;
+- (id)identityToken;
 - (id)initWithDefiniton:(id)arg1 initialParameters:(id)arg2 clientProvider:(id)arg3;
 - (bool)isValid;
 - (id)layerManager;
 - (id)mutableSettings;
+- (id)observerProxies;
 - (id)parameters;
+- (void)removeObserver:(id)arg1;
+- (id)sceneManagerSceneDelegate;
 - (void)sendActions:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setMutableSettings:(id)arg1;
+- (void)setSceneManagerSceneDelegate:(id)arg1;
 - (id)settings;
 - (id)snapshotContext;
 - (id)specification;
@@ -108,8 +124,8 @@
 // Image: /System/Library/PrivateFrameworks/Accessibility.framework/Frameworks/AXFrontBoardUtils.framework/AXFrontBoardUtils
 
 - (bool)accessibilityIsSceneOccluded;
+- (bool)accessibilityIsSceneOnCarScreen;
 - (bool)accessibilityIsSceneOnMainScreen;
-- (bool)accessibilityIsShowingSheet;
 - (bool)accessibilitySceneBelongsToTheSystemApp;
 - (id)accessibilitySceneDescription;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })accessibilitySceneFrame;

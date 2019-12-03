@@ -40,9 +40,14 @@
 @property (nonatomic) bool shouldAdjustOnAnalyze;
 @property (nonatomic) int textContentType;
 
++ (id)baseLayout;
 + (void)loadMobileAssetContentsForInputModes:(id)arg1 assetContentTypes:(id)arg2 inMecabra:(struct __Mecabra { }*)arg3 onQueue:(id)arg4;
++ (void)loadMobileAssetContentsForInputModes:(id)arg1 assetContentTypes:(id)arg2 onQueue:(id)arg3 withCompletionBlock:(id /* block */)arg4;
 + (void)loadMobileAssetContentsForInputModes:(id)arg1 inMecabra:(struct __Mecabra { }*)arg2 onQueue:(id)arg3;
++ (void)loadMobileAssetContentsForInputModes:(id)arg1 onQueue:(id)arg2 withCompletionBlock:(id /* block */)arg3;
++ (id)loadMobileAssetContentsWhenMobileAssetChangesForCHRecognizer:(id)arg1 inputModes:(id)arg2 onQueue:(id)arg3 oldMobileAssetChangeListener:(id)arg4;
 + (id)loadMobileAssetContentsWhenMobileAssetChangesForMecabra:(struct __Mecabra { }*)arg1 inputModes:(id)arg2 onQueue:(id)arg3 oldMobileAssetChangeListener:(id)arg4;
++ (int)maxNumberOfDrawSamples;
 + (void)removeMobileAssetListener:(id)arg1;
 
 - (void).cxx_destruct;
@@ -56,11 +61,13 @@
 - (void)adjustEnvironmentDirectly:(long long)arg1;
 - (void)adjustEnvironmentOnAction:(long long)arg1;
 - (void)analyzeCandidateContextWithSplit:(bool)arg1;
+- (bool)analyzeInput:(id)arg1 options:(unsigned long long)arg2;
 - (bool)analyzeString:(id)arg1 options:(unsigned long long)arg2;
 - (unsigned long long)candidateIndex;
 - (id)candidatesLeftOfCaret;
 - (id)candidatesRightOfCaret;
 - (id)candidatesToDelete;
+- (void)commitPredictionCandidate:(void*)arg1;
 - (void)compareDocumentAndEnvironmentCandidates;
 - (void)completelyCommitInlineCandidate:(void*)arg1;
 - (id)contextCandidateSurfaces;
@@ -91,6 +98,7 @@
 - (void)setCandidatesRightOfCaret:(id)arg1;
 - (void)setCandidatesToDelete:(id)arg1;
 - (void)setGeometryModel:(void*)arg1 modelData:(struct __CFArray { }*)arg2;
+- (void)setKeyboardLayout:(id)arg1;
 - (void)setLeftDocumentContext:(id)arg1;
 - (void)setLeftDocumentContextCorrespondingToCandidates:(id)arg1;
 - (void)setLeftDocumentContextCorrespondingToCandidatesRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;

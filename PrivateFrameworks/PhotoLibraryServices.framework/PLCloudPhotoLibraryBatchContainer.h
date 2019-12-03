@@ -16,11 +16,11 @@
 @property (nonatomic) bool wasFixed;
 @property (nonatomic) bool wasSplit;
 
+- (void).cxx_destruct;
 - (void)addRecord:(id)arg1;
 - (id)batch;
 - (id)batchesSplitForError;
 - (unsigned long long)count;
-- (void)dealloc;
 - (id)description;
 - (void)incrementRetryCount;
 - (id)init;

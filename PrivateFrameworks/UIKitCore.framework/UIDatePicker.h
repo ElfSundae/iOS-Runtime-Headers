@@ -8,7 +8,6 @@
     bool  shouldAnimateSetDateCall;
 }
 
-@property (getter=_usesModernStyle, setter=_setUsesModernStyle:, nonatomic) bool _usesModernStyle;
 @property (getter=_allowsZeroCountDownDuration, setter=_setAllowsZeroCountDownDuration:, nonatomic) bool allowsZeroCountDownDuration;
 @property (getter=_allowsZeroTimeInterval, setter=_setAllowsZeroTimeInterval:, nonatomic) bool allowsZeroTimeInterval;
 @property (nonatomic, copy) NSCalendar *calendar;
@@ -21,6 +20,7 @@
 @property (getter=_highlightColor, setter=_setHighlightColor:, nonatomic, retain) UIColor *highlightColor;
 @property (getter=_isTimeIntervalMode, nonatomic, readonly) bool isTimeIntervalMode;
 @property (nonatomic, retain) NSLocale *locale;
+@property (getter=_magnifierLineColor, setter=_setMagnifierLineColor:, nonatomic, retain) UIColor *magnifierLineColor;
 @property (nonatomic, retain) NSDate *maximumDate;
 @property (nonatomic, retain) NSDate *minimumDate;
 @property (nonatomic) long long minuteInterval;
@@ -51,6 +51,7 @@
 - (id)_labelTextForCalendarUnit:(unsigned long long)arg1;
 - (id)_lastSelectedDateComponents;
 - (id)_locale;
+- (id)_magnifierLineColor;
 - (void)_performScrollTest:(id)arg1 withIterations:(long long)arg2 rowsToScroll:(long long)arg3 inComponent:(long long)arg4;
 - (void)_populateArchivedSubviews:(id)arg1;
 - (id)_selectedTextForCalendarUnit:(unsigned long long)arg1;
@@ -61,19 +62,18 @@
 - (void)_setHighlightColor:(id)arg1;
 - (void)_setHighlightsToday:(bool)arg1;
 - (void)_setLocale:(id)arg1;
+- (void)_setMagnifierLineColor:(id)arg1;
 - (void)_setShouldAnimateSetDateCall:(bool)arg1;
 - (void)_setTextColor:(id)arg1;
 - (void)_setTextShadowColor:(id)arg1;
 - (void)_setUpInitialValues;
 - (void)_setUseCurrentDateDuringDecoding:(bool)arg1;
 - (void)_setUsesBlackChrome:(bool)arg1;
-- (void)_setUsesModernStyle:(bool)arg1;
 - (bool)_shouldAnimateSetDateCall;
 - (id)_textColor;
 - (id)_textShadowColor;
 - (bool)_useCurrentDateDuringDecoding;
 - (bool)_usesBlackChrome;
-- (bool)_usesModernStyle;
 - (void)awakeFromNib;
 - (id)calendar;
 - (double)countDownDuration;

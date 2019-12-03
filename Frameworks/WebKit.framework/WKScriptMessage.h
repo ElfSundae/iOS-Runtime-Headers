@@ -12,7 +12,7 @@
     struct RetainPtr<NSString> { 
         void *m_ptr; 
     }  _name;
-    /* Warning: unhandled struct encoding: '{WeakObjCPtr<WKWebView>="m_weakReference"@}' */ struct WeakObjCPtr<WKWebView> { 
+    struct WeakObjCPtr<WKWebView> { 
         id m_weakReference; 
     }  _webView;
 }

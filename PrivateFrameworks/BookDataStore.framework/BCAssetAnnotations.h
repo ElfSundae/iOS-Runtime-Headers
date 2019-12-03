@@ -21,9 +21,9 @@
 
 + (id)propertyIDKey;
 
-- (void)_configureFromAssetAnnotations:(id)arg1;
+- (void)_configureFromAssetAnnotations:(id)arg1 withMergers:(id)arg2;
 - (void)_mergeInAssetID:(id)arg1 assetVersion:(id)arg2 serializedData:(id)arg3;
-- (void)configureFromCloudData:(id)arg1;
+- (void)configureFromCloudData:(id)arg1 withMergers:(id)arg2;
 - (id)debugDescription;
 - (id)identifier;
 - (bool)isEqualExceptForDate:(id)arg1;

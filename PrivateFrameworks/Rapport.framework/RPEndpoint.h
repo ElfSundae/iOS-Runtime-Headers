@@ -17,6 +17,7 @@
     NSString * _name;
     bool  _present;
     int  _proximity;
+    NSDictionary * _serviceInfo;
     NSString * _serviceType;
     NSArray * _serviceTypes;
     NSString * _sourceVersion;
@@ -37,6 +38,7 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic) bool present;
 @property (nonatomic, readonly) int proximity;
+@property (nonatomic, readonly, copy) NSDictionary *serviceInfo;
 @property (nonatomic, readonly, copy) NSString *serviceType;
 @property (nonatomic, copy) NSArray *serviceTypes;
 @property (nonatomic, copy) NSString *sourceVersion;
@@ -67,6 +69,7 @@
 - (bool)removeBonjourDevice:(id)arg1;
 - (unsigned int)removeIDSDevice;
 - (bool)removeSFDevice:(id)arg1;
+- (id)serviceInfo;
 - (id)serviceType;
 - (id)serviceTypes;
 - (void)setBleDevice:(id)arg1;

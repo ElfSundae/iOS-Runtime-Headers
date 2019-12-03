@@ -5,7 +5,7 @@
 @interface HDCloudSyncStoreEntity : HDHealthEntity
 
 + (id)_propertiesForEntity;
-+ (const struct { id x1; unsigned char x2; }*)columnDefinitionsWithCount:(unsigned long long*)arg1;
++ (const struct { id x1; id x2; unsigned char x3; }*)columnDefinitionsWithCount:(unsigned long long*)arg1;
 + (id)databaseTable;
 + (id)foreignKeys;
 + (bool)persistState:(id)arg1 storeUUID:(id)arg2 shouldReplace:(bool)arg3 healthDatabase:(id)arg4 error:(id*)arg5;

@@ -9,16 +9,14 @@
     WKWebView * _webView;
 }
 
-+ (bool)shouldBeRemoteForContentType:(id)arg1;
-+ (id)supportedContentTypes;
-+ (Class)transformerClass;
-
 - (void).cxx_destruct;
 - (void)_updateConstraintConstants:(bool)arg1;
 - (bool)automaticallyUpdateScrollViewContentInset;
 - (bool)automaticallyUpdateScrollViewContentOffset;
 - (bool)automaticallyUpdateScrollViewIndicatorInset;
 - (bool)canEnterFullScreen;
+- (bool)canPinchToDismiss;
+- (bool)canSwipeToDismiss;
 - (void)dealloc;
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)loadView;

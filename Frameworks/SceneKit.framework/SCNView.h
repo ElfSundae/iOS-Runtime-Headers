@@ -5,6 +5,7 @@
 @interface SCNView : UIView <SCNSceneRenderer, SCNTechniqueSupport> {
     unsigned long long  __ibPreferredRenderingAPI;
     NSString * __ibSceneName;
+    unsigned int  _appChangedColorAppearance;
     unsigned int  _appIsDeactivated;
     unsigned int  _autoPausedScene;
     UIColor * _backgroundColor;
@@ -25,6 +26,7 @@
     unsigned int  _firstDrawDone;
     unsigned int  _ibNoMultisampling;
     unsigned int  _inRenderQueueForLayerBackedGLRendering;
+    bool  _isHidden;
     unsigned int  _isInLiveResize;
     unsigned int  _isOpaque;
     SCNJitterer * _jitterer;
@@ -36,6 +38,7 @@
     unsigned long long  _renderingAPI;
     unsigned int  _rendersContinuously;
     SCNScene * _scene;
+    bool  _skipFramesIfNoDrawableAvailable;
     char * _snapshotImageData;
     unsigned long long  _snapshotImageDataLength;
     SCNSpriteKitEventHandler * _spriteKitEventHandler;
@@ -53,6 +56,7 @@
 @property (nonatomic, readonly) <MTLCommandQueue> *commandQueue;
 @property (nonatomic, readonly) void*context;
 @property (nonatomic, readonly) <MTLRenderCommandEncoder> *currentRenderCommandEncoder;
+@property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } currentViewport;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) unsigned long long debugOptions;
 @property (nonatomic, readonly) SCNCameraController *defaultCameraController;
@@ -76,6 +80,8 @@
 @property (nonatomic, readonly) unsigned long long stencilPixelFormat;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) SCNTechnique *technique;
+@property (getter=isTemporalAntialiasingEnabled, nonatomic) bool temporalAntialiasingEnabled;
+@property (nonatomic) bool usesReverseZ;
 
 + (bool)_isMetalSupported;
 + (id)_kvoKeysForwardedToRenderer;
@@ -100,6 +106,7 @@
 - (id)_defaultBackgroundColor;
 - (bool)_disableLinearRendering;
 - (void)_drawAtTime:(double)arg1;
+- (bool)_enableARMode;
 - (bool)_enablesDeferredShading;
 - (void)_enterBackground:(id)arg1;
 - (void)_enterForeground:(id)arg1;
@@ -111,7 +118,7 @@
 - (int)_ibPreferredRenderingAPI;
 - (id)_ibSceneName;
 - (bool)_ibWantsMultisampling;
-- (void)_initializeDisplayLink;
+- (void)_initializeDisplayLinkWithCompletionHandler:(id /* block */)arg1;
 - (bool)_isEditor;
 - (void)_jitterRedisplay;
 - (long long)_preferredFocusMovementStyle;
@@ -122,35 +129,38 @@
 - (void)_resetContentsScaleFactor;
 - (double)_runFPSTestWithDuration:(double)arg1;
 - (void)_sceneDidUpdate:(id)arg1;
+- (void)_scnUpdateContentsGravity;
 - (struct SCNMatrix4 { float x1; float x2; float x3; float x4; float x5; float x6; float x7; float x8; float x9; float x10; float x11; float x12; float x13; float x14; float x15; float x16; })_screenTransform;
 - (void)_searchForFocusRegionsInContext:(id)arg1;
 - (void)_selectRenderingAPIWithOptions:(id)arg1;
-- (void)_setGestureRecognizers:(id)arg1;
 - (void)_setNeedsDisplay;
+- (bool)_shouldDelegateARCompositing;
 - (bool)_showsAuthoringEnvironment;
 - (double)_superSamplingFactor;
 - (bool)_supportsJitteringSyncRedraw;
 - (void)_systemTimeAnimationStarted:(id)arg1;
 - (struct CGSize { double x1; double x2; })_updateBackingSize;
 - (void)_updateContentsScaleFactor;
-- (void)_updateGestureRecognizers;
 - (void)_updateOpacity;
 - (void)_updateProbes:(id)arg1 withProgress:(id)arg2;
 - (struct SCNVector4 { float x1; float x2; float x3; float x4; })_viewport;
 - (bool)_wantsSceneRendererDelegationMessages;
 - (bool)allowsCameraControl;
 - (unsigned long long)antialiasingMode;
+- (bool)asynchronousResizing;
 - (id)audioEngine;
 - (id)audioEnvironmentNode;
 - (id)audioListener;
 - (bool)autoenablesDefaultLighting;
 - (id)backgroundColor;
+- (struct CGSize { double x1; double x2; })backingSizeForBoundSize:(struct CGSize { double x1; double x2; })arg1;
 - (id)cameraControlConfiguration;
 - (unsigned long long)colorPixelFormat;
 - (id)commandQueue;
 - (void*)context;
 - (id)currentRenderCommandEncoder;
 - (id)currentRenderPassDescriptor;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })currentViewport;
 - (void)dealloc;
 - (unsigned long long)debugOptions;
 - (id)defaultCameraController;
@@ -162,6 +172,7 @@
 - (void)displayLayer:(id)arg1;
 - (id)displayLink;
 - (void)drawRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (bool)drawableResizesAsynchronously;
 - (id)eaglContext;
 - (void)encodeWithCoder:(id)arg1;
 - (id)eventHandler;
@@ -180,6 +191,7 @@
 - (bool)isNodeInsideFrustum:(id)arg1 withPointOfView:(id)arg2;
 - (bool)isOpaque;
 - (bool)isPlaying;
+- (bool)isTemporalAntialiasingEnabled;
 - (void)layoutSubviews;
 - (void)lock;
 - (bool)loops;
@@ -207,8 +219,11 @@
 - (id)scn_backingLayer;
 - (bool)scn_inLiveResize;
 - (void)scn_setBackingLayer:(id)arg1;
+- (void)scn_setGestureRecognizers:(id)arg1;
+- (void)scn_updateGestureRecognizers;
 - (void)setAllowsCameraControl:(bool)arg1;
 - (void)setAntialiasingMode:(unsigned long long)arg1;
+- (void)setAsynchronousResizing:(bool)arg1;
 - (void)setAudioListener:(id)arg1;
 - (void)setAutoenablesDefaultLighting:(bool)arg1;
 - (void)setBackgroundColor:(id)arg1;
@@ -216,14 +231,17 @@
 - (void)setDebugOptions:(unsigned long long)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDisplayLink:(id)arg1;
+- (void)setDrawableResizesAsynchronously:(bool)arg1;
 - (void)setEaglContext:(id)arg1;
 - (void)setEventHandler:(id)arg1;
+- (void)setHidden:(bool)arg1;
 - (void)setIbPreferredRenderingAPI:(int)arg1;
 - (void)setIbSceneName:(id)arg1;
 - (void)setIbWantsMultisampling:(bool)arg1;
 - (void)setJitteringEnabled:(bool)arg1;
 - (void)setLoops:(bool)arg1;
 - (void)setNavigationCameraController:(id)arg1;
+- (void)setNeedsDisplay;
 - (void)setOverlaySKScene:(id)arg1;
 - (void)setPlaying:(bool)arg1;
 - (void)setPointOfCulling:(id)arg1;
@@ -234,18 +252,24 @@
 - (void)setScene:(id)arg1;
 - (void)setSceneTime:(double)arg1;
 - (void)setShowsStatistics:(bool)arg1;
+- (void)setSkipFramesIfNoDrawableAvailable:(bool)arg1;
 - (void)setTechnique:(id)arg1;
+- (void)setTemporalAntialiasingEnabled:(bool)arg1;
+- (void)setUsesReverseZ:(bool)arg1;
 - (void)set_disableLinearRendering:(bool)arg1;
+- (void)set_enableARMode:(bool)arg1;
 - (void)set_enablesDeferredShading:(bool)arg1;
 - (void)set_ibPreferredRenderingAPI:(int)arg1;
 - (void)set_ibSceneName:(id)arg1;
 - (void)set_ibWantsMultisampling:(bool)arg1;
 - (void)set_renderOptions:(unsigned long long)arg1;
 - (void)set_screenTransform:(struct SCNMatrix4 { float x1; float x2; float x3; float x4; float x5; float x6; float x7; float x8; float x9; float x10; float x11; float x12; float x13; float x14; float x15; float x16; })arg1;
+- (void)set_shouldDelegateARCompositing:(bool)arg1;
 - (void)set_showsAuthoringEnvironment:(bool)arg1;
 - (void)set_superSamplingFactor:(double)arg1;
 - (void)set_wantsSceneRendererDelegationMessages:(bool)arg1;
 - (bool)showsStatistics;
+- (bool)skipFramesIfNoDrawableAvailable;
 - (id)snapshot;
 - (unsigned long long)stencilPixelFormat;
 - (void)stop:(id)arg1;
@@ -256,9 +280,11 @@
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)unlock;
 - (struct SCNVector3 { float x1; float x2; float x3; })unprojectPoint:(struct SCNVector3 { float x1; float x2; float x3; })arg1;
 - (void)updateAtTime:(double)arg1;
+- (bool)usesReverseZ;
 - (void)willMoveToWindow:(id)arg1;
 
 @end

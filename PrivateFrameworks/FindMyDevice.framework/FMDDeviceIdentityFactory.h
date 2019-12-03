@@ -4,7 +4,7 @@
 
 @interface FMDDeviceIdentityFactory : NSObject
 
-- (void)attestIdentityForSigningRequest:(id)arg1 type:(unsigned long long)arg2 completion:(id /* block */)arg3;
+- (void)baaIdentityAttestationForSigningRequest:(id)arg1 completion:(id /* block */)arg2;
 - (void)identityForPasscodeActivationUnlockWithContext:(id)arg1 completion:(id /* block */)arg2;
 
 @end

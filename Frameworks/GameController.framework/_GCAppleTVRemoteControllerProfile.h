@@ -2,14 +2,13 @@
    Image: /System/Library/Frameworks/GameController.framework/GameController
  */
 
-@interface _GCAppleTVRemoteControllerProfile : _GCMicroGamepad <DigitizerValueChangedDelegate, _GCACHomeButtonDelegate> {
+@interface _GCAppleTVRemoteControllerProfile : GCMicroGamepad <DigitizerValueChangedDelegate, _GCACHomeButtonDelegate> {
     _GCACHomeButton * _acHome;
     unsigned int  _accumInputSampleCount;
     int  _candidateOrientation;
     NSDate * _candidateOrientationTimestamp;
     double  _deadzoneSize;
     unsigned int  _digitizerTouchState;
-    GCMotion * _motion;
     int  _orientation;
     unsigned long long  _owner;
     double  _prevLogTime;
@@ -39,9 +38,7 @@
 - (void)initCommon:(id)arg1;
 - (id)initWithController:(id)arg1;
 - (id)initWithController:(id)arg1 dpadFlippedY:(bool)arg2;
-- (id)inputForElement:(struct __IOHIDElement { }*)arg1;
 - (id)menuButton;
-- (id)motion;
 - (id)name;
 - (unsigned long long)owner;
 - (bool)ownershipClaimingElementsZero;
@@ -51,7 +48,6 @@
 - (void)setDpad:(id)arg1 x:(double)arg2 y:(double)arg3 timestamp:(unsigned long long)arg4 forceSkipDpadRotation:(bool)arg5;
 - (void)setOwner:(unsigned long long)arg1;
 - (void)setPlayerIndex:(long long)arg1;
-- (void)set_motion:(id)arg1;
 - (void)toggleSuspendResume;
 
 @end

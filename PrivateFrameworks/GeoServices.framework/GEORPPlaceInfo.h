@@ -3,8 +3,24 @@
  */
 
 @interface GEORPPlaceInfo : PBCodable <NSCopying> {
+    struct { 
+        unsigned int read_placeRequest : 1; 
+        unsigned int read_placeResponse : 1; 
+        unsigned int read_sourceApplication : 1; 
+        unsigned int read_sourceUrl : 1; 
+        unsigned int wrote_placeRequest : 1; 
+        unsigned int wrote_placeResponse : 1; 
+        unsigned int wrote_sourceApplication : 1; 
+        unsigned int wrote_sourceUrl : 1; 
+    }  _flags;
     GEOPDPlaceRequest * _placeRequest;
     GEOPDPlaceResponse * _placeResponse;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     NSString * _sourceApplication;
     NSString * _sourceUrl;
 }
@@ -18,9 +34,15 @@
 @property (nonatomic, retain) NSString *sourceApplication;
 @property (nonatomic, retain) NSString *sourceUrl;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (void)_clearLocationsFromPlaceRequest;
 - (void)_clearLocationsFromPlaceResponse;
+- (void)_readPlaceRequest;
+- (void)_readPlaceResponse;
+- (void)_readSourceApplication;
+- (void)_readSourceUrl;
 - (void)clearLocations;
 - (void)clearSessionId;
 - (void)copyTo:(id)arg1;
@@ -32,10 +54,13 @@
 - (bool)hasSourceApplication;
 - (bool)hasSourceUrl;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)placeRequest;
 - (id)placeResponse;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setPlaceRequest:(id)arg1;
 - (void)setPlaceResponse:(id)arg1;

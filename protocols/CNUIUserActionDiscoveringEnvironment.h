@@ -15,5 +15,7 @@
 - (CNUIIDSContactPropertyResolver *)idsContactPropertyResolver;
 - (<CNMCProfileConnection> *)profileConnection;
 - (<CNSchedulerProvider> *)schedulerProvider;
+- (<CNUIUserActionTargetDiscovering> *)targetDiscoveringHelper;
+- (<CNUIRTTUtilities> *)ttyUtilities;
 
 @end

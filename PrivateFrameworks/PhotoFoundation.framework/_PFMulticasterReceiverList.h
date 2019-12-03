@@ -5,7 +5,7 @@
 @interface _PFMulticasterReceiverList : NSObject {
     unsigned long long  _count;
     NSMutableArray * _extraReceivers;
-    /* Warning: unhandled array encoding: '[12@]' */ id  _inlineReceivers;
+    id  _inlineReceivers;
     SEL  _selector;
 }
 

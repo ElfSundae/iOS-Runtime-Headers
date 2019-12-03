@@ -39,6 +39,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)filterPointCloudFromellipsoid;
+- (id)filterPointCloudWithIdentifiers:(struct set<unsigned long long, std::__1::less<unsigned long long>, std::__1::allocator<unsigned long long> > { struct __tree<unsigned long long, std::__1::less<unsigned long long>, std::__1::allocator<unsigned long long> > { struct __tree_end_node<std::__1::__tree_node_base<void *> *> {} *x_1_1_1; struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<unsigned long long, void *> > > { struct __tree_end_node<std::__1::__tree_node_base<void *> *> { struct __tree_node_base<void *> {} *x_1_3_1; } x_2_2_1; } x_1_1_2; struct __compressed_pair<unsigned long, std::__1::less<unsigned long long> > { unsigned long long x_3_2_1; } x_1_1_3; } x1; })arg1;
 - (unsigned long long)hash;
 - (const unsigned long long*)identifiers;
 - (id)initWithCoder:(id)arg1;

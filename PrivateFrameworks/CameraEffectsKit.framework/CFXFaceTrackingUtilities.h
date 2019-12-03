@@ -4,10 +4,10 @@
 
 @interface CFXFaceTrackingUtilities : NSObject
 
-+ (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[3]; })CFX_adjustIntrinsics:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[3]; })arg1 forRenderSize:(struct CGSize { double x1; double x2; })arg2 withCapturedSize:(struct CGSize { double x1; double x2; })arg3;
 + (struct SCNVector3 { float x1; float x2; float x3; })CFX_modelPointFromCompositionPoint:(struct CGPoint { double x1; double x2; })arg1 withFaceAnchor:(id)arg2 bufferSize:(struct CGSize { double x1; double x2; })arg3;
 + (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })CFX_projectionMatrixWithFaceAnchor:(id)arg1 bufferSize:(struct CGSize { double x1; double x2; })arg2;
 + (struct SCNVector3 { float x1; float x2; float x3; })CFX_screenPointFromModelPoint:(struct SCNVector3 { float x1; float x2; float x3; })arg1 withFaceAnchor:(id)arg2 locatedOnFace:(bool)arg3 bufferSize:(struct CGSize { double x1; double x2; })arg4;
++ (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[3]; })adjustIntrinsics:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[3]; })arg1 forRenderSize:(struct CGSize { double x1; double x2; })arg2 capturedSize:(struct CGSize { double x1; double x2; })arg3 interfaceOrientation:(long long)arg4;
 + (struct CGPoint { double x1; double x2; })compositionPointFromScreenPoint:(struct CGPoint { double x1; double x2; })arg1 locatedOnFace:(bool)arg2 withFaceAnchor:(id)arg3 bufferSize:(struct CGSize { double x1; double x2; })arg4;
 + (struct CGSize { double x1; double x2; })faceRectScaleFactorForInterfaceOrientation:(long long)arg1 andDeviceInterfaceOrientation:(long long)arg2;
 + (bool)inputBufferIsLandscapeAspect:(struct CGSize { double x1; double x2; })arg1;

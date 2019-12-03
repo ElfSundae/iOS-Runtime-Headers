@@ -26,8 +26,8 @@
 - (id)_itemsArrayFromObjects:(id)arg1;
 - (id)_membersForModelObjects:(id)arg1;
 - (long long)_personTypeForFetchType:(unsigned long long)arg1;
-- (void)addVisiblePerson:(id)arg1;
 - (void)cancelImageLoadingForItem:(id)arg1;
+- (id)faceTileAtIndex:(long long)arg1;
 - (id)generateFetchResult;
 - (id)imageManager;
 - (id)initWithName:(id)arg1 personFetchType:(unsigned long long)arg2;
@@ -35,7 +35,6 @@
 - (void)loadObjectsAndUpdateMembersWithCompletion:(id /* block */)arg1;
 - (unsigned long long)personFetchType;
 - (void)photoLibraryDidChange:(id)arg1;
-- (void)removeVisiblePerson:(id)arg1;
 - (void)setPersonFetchType:(unsigned long long)arg1;
 - (void)startListeningForChanges;
 - (void)stopListeningForChanges;

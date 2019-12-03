@@ -5,6 +5,7 @@
 
 @required
 
+- (UIImage *)coverImage;
 - (bool)isPlaying;
 
 @end

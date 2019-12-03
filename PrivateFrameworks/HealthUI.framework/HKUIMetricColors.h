@@ -3,36 +3,37 @@
  */
 
 @interface HKUIMetricColors : NSObject {
-    HKGradient * _contentViewChartGradient;
     UIColor * _contextViewInfoButtonBackgroundColor;
     UIColor * _contextViewInfoButtonGlyphColor;
     UIColor * _contextViewPrimaryTextColor;
     UIColor * _contextViewSecondaryTextColor;
-    HKGradient * _gradient;
     UIColor * _keyColor;
 }
 
-@property (nonatomic, retain) HKGradient *contentViewChartGradient;
 @property (nonatomic, retain) UIColor *contextViewInfoButtonBackgroundColor;
 @property (nonatomic, retain) UIColor *contextViewInfoButtonGlyphColor;
 @property (nonatomic, retain) UIColor *contextViewPrimaryTextColor;
 @property (nonatomic, retain) UIColor *contextViewSecondaryTextColor;
-@property (nonatomic, retain) HKGradient *gradient;
 @property (nonatomic, retain) UIColor *keyColor;
+
+// Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
 
 + (id)activityColors;
 + (id)allergiesClinicalColors;
 + (id)bodyMeasurementColors;
 + (id)conditionsClinicalColors;
-+ (id)defaultContextViewColors;
++ (id)defaultClinicalColors;
++ (id)defaultContextViewColorsUsingColor:(id)arg1;
++ (id)hearingHealthColors;
 + (id)immunizationsClinicalColors;
 + (id)labResultsClinicalColors;
 + (id)medicationsClinicalColors;
 + (id)metricColorsForHeartRateContext:(long long)arg1;
 + (id)mindfulnessColors;
++ (id)otherColors;
 + (id)proceduresClinicalColors;
 + (id)reproductiveHealthColors;
-+ (id)resultsColors;
++ (id)respiratoryColors;
 + (id)sleepColors;
 + (id)unknownCategoryClinicalColors;
 + (id)vitalsClinicalColors;
@@ -40,19 +41,20 @@
 + (id)workoutContextViewColors;
 
 - (void).cxx_destruct;
-- (id)contentViewChartGradient;
 - (id)contextViewInfoButtonBackgroundColor;
 - (id)contextViewInfoButtonGlyphColor;
 - (id)contextViewPrimaryTextColor;
 - (id)contextViewSecondaryTextColor;
-- (id)gradient;
 - (id)keyColor;
-- (void)setContentViewChartGradient:(id)arg1;
 - (void)setContextViewInfoButtonBackgroundColor:(id)arg1;
 - (void)setContextViewInfoButtonGlyphColor:(id)arg1;
 - (void)setContextViewPrimaryTextColor:(id)arg1;
 - (void)setContextViewSecondaryTextColor:(id)arg1;
-- (void)setGradient:(id)arg1;
 - (void)setKeyColor:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/HealthRecordsUI.framework/HealthRecordsUI
+
++ (id)chartFilterDefaultForMultiple;
++ (id)chartFilterDefaultForSingle;
 
 @end

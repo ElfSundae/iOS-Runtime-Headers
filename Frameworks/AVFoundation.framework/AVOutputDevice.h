@@ -22,6 +22,7 @@
 - (id)ID;
 - (id)airPlayProperties;
 - (bool)automaticallyAllowsConnectionsFromPeersInHomeGroup;
+- (id)availableBluetoothListeningModes;
 - (float)batteryLevel;
 - (bool)canAccessAppleMusic;
 - (bool)canAccessRemoteAssets;
@@ -36,6 +37,7 @@
 - (void)configureUsingBlock:(id /* block */)arg1 completionHandler:(id /* block */)arg2;
 - (void)configureUsingBlock:(id /* block */)arg1 options:(id)arg2 completionHandler:(id /* block */)arg3;
 - (id)connectedPairedDevices;
+- (id)currentBluetoothListeningMode;
 - (void)dealloc;
 - (id)description;
 - (unsigned long long)deviceFeatures;
@@ -43,7 +45,7 @@
 - (id)deviceName;
 - (long long)deviceSubType;
 - (long long)deviceType;
-- (id)figEndpointOutputImpl;
+- (id)figEndpointOutputDeviceImpl;
 - (id)firmwareVersion;
 - (double)frecencyScore;
 - (bool)groupContainsGroupLeader;
@@ -70,8 +72,11 @@
 - (bool)presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
 - (bool)requiresAuthorization;
 - (id)serialNumber;
+- (void)setCurrentBluetoothListeningMode:(id)arg1;
+- (bool)setCurrentBluetoothListeningMode:(id)arg1 error:(id*)arg2;
 - (void)setSecondDisplayEnabled:(bool)arg1;
 - (void)setVolume:(float)arg1;
+- (bool)supportsBluetoothSharing;
 - (bool)supportsBufferedAirPlay;
 - (void)updateFrecencyScore;
 - (float)volume;

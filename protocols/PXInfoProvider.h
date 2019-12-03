@@ -5,7 +5,7 @@
 
 @required
 
-- (NSProgress *)requestInfoOfKind:(void *)arg1 withResultHandler:(void *)arg2; // needs 2 arg types, found 6: NSString *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, id
+- (NSProgress *)requestInfoOfKind:(void *)arg1 withResultHandler:(void *)arg2; // needs 2 arg types, found 7: NSString *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, id, void*
 
 @optional
 

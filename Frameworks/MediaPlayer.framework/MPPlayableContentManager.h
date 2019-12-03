@@ -2,14 +2,14 @@
    Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
  */
 
-@interface MPPlayableContentManager : NSObject {
+@interface MPPlayableContentManager : NSObject <CARSessionObserving> {
     NSOperationQueue * _artworkUpdateQueue;
     bool  _coalescingUpdates;
     NSMutableSet * _contentItemIdentifiersSentToMediaRemote;
     MPPlayableContentManagerContext * _context;
+    CARSessionStatus * _currentSessionStatus;
     <MPPlayableContentDataSource> * _dataSource;
     <MPPlayableContentDelegate> * _delegate;
-    AVExternalDevice * _externalDevice;
     NSMutableSet * _mutatedContentItems;
     NSArray * _nowPlayingIdentifiers;
     bool  _scheduledSupportedAPIsChange;
@@ -18,8 +18,12 @@
 
 @property (nonatomic, retain) MPPlayableContentManagerContext *context;
 @property (nonatomic) <MPPlayableContentDataSource> *dataSource;
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <MPPlayableContentDelegate> *delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSArray *nowPlayingIdentifiers;
+@property (readonly) Class superclass;
 
 + (bool)_deviceIsCarplayCapable;
 + (id)sharedContentManager;
@@ -53,6 +57,8 @@
 - (id)init;
 - (id)nowPlayingIdentifiers;
 - (void)reloadData;
+- (void)sessionDidConnect:(id)arg1;
+- (void)sessionDidDisconnect:(id)arg1;
 - (void)setContext:(id)arg1;
 - (void)setDataSource:(id)arg1;
 - (void)setDelegate:(id)arg1;

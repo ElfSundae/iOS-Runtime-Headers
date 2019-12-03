@@ -41,6 +41,7 @@
 - (void)_handleFetchDatabaseChangesRequestFinishedWithSchedulerInfo:(id)arg1;
 - (void)_sendFetchDatabaseChangesRequestWithChangeToken:(id)arg1 previousRequestSchedulerInfo:(id)arg2;
 - (id)activityCreate;
+- (id)analyticsPayload;
 - (bool)fetchAllChanges;
 - (id)fetchZonesGroup;
 - (void)fillOutOperationResult:(id)arg1;

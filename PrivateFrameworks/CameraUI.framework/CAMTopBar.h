@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CameraUI.framework/CameraUI
  */
 
-@interface CAMTopBar : UIView <CAMApertureButtonDelegate, CAMExpandableMenuButtonDelegate> {
+@interface CAMTopBar : UIView <CAMExpandableMenuButtonDelegate, CEKApertureButtonDelegate> {
     CAMHDRButton * _HDRButton;
     NSArray * __allowedControls;
     UIView * __backgroundView;
@@ -15,7 +15,7 @@
         double right; 
     }  __expandedMenuButtonTappableInsets;
     long long  __mode;
-    CAMApertureButton * _apertureButton;
+    CEKApertureButton * _apertureButton;
     long long  _backgroundStyle;
     PUReviewScreenDoneButton * _doneButton;
     CAMElapsedTimeView * _elapsedTimeView;
@@ -23,6 +23,7 @@
     CAMFlashButton * _flashButton;
     CAMFlipButton * _flipButton;
     CAMFramerateIndicatorView * _framerateIndicatorView;
+    CAMIntensityButton * _intensityButton;
     CAMLivePhotoButton * _livePhotoButton;
     long long  _orientation;
     CAMMessagesPhotosButton * _photosButton;
@@ -38,7 +39,7 @@
 @property (setter=_setExpandedMenuButton:, nonatomic, retain) CAMExpandableMenuButton *_expandedMenuButton;
 @property (setter=_setExpandedMenuButtonTappableInsets:, nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } _expandedMenuButtonTappableInsets;
 @property (nonatomic, readonly) long long _mode;
-@property (nonatomic, retain) CAMApertureButton *apertureButton;
+@property (nonatomic, retain) CEKApertureButton *apertureButton;
 @property (nonatomic) long long backgroundStyle;
 @property (nonatomic, retain) PUReviewScreenDoneButton *doneButton;
 @property (nonatomic, retain) CAMElapsedTimeView *elapsedTimeView;
@@ -47,6 +48,7 @@
 @property (nonatomic, retain) CAMFlipButton *flipButton;
 @property (getter=isFloating, nonatomic, readonly) bool floating;
 @property (nonatomic, retain) CAMFramerateIndicatorView *framerateIndicatorView;
+@property (nonatomic, retain) CAMIntensityButton *intensityButton;
 @property (nonatomic, retain) CAMLivePhotoButton *livePhotoButton;
 @property (nonatomic) long long orientation;
 @property (nonatomic, retain) CAMMessagesPhotosButton *photosButton;
@@ -90,7 +92,7 @@
 - (bool)_shouldHideSubview:(id)arg1;
 - (void)_updateControlVisibilityAnimated:(bool)arg1;
 - (id)apertureButton;
-- (void)apertureButtonNeedsLayout:(id)arg1;
+- (void)apertureButtonNeedsLayout:(id)arg1 animated:(bool)arg2;
 - (long long)backgroundStyle;
 - (void)collapseMenuButton:(id)arg1 animated:(bool)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })collapsedFrameForMenuButton:(id)arg1;
@@ -108,6 +110,7 @@
 - (id)hudItemForAccessibilityHUDManager:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (id)intensityButton;
 - (bool)isFloating;
 - (void)layoutSubviews;
 - (id)livePhotoButton;
@@ -125,6 +128,7 @@
 - (void)setFlipButton:(id)arg1;
 - (void)setFramerateIndicatorView:(id)arg1;
 - (void)setHDRButton:(id)arg1;
+- (void)setIntensityButton:(id)arg1;
 - (void)setLivePhotoButton:(id)arg1;
 - (void)setOrientation:(long long)arg1;
 - (void)setPhotosButton:(id)arg1;
@@ -140,6 +144,7 @@
 - (bool)shouldHideFlipButtonForGraphConfiguration:(id)arg1;
 - (bool)shouldHideFramerateIndicatorForGraphConfiguration:(id)arg1;
 - (bool)shouldHideHDRButtonForGraphConfiguration:(id)arg1;
+- (bool)shouldHideIntensityButtonForGraphConfiguration:(id)arg1;
 - (bool)shouldHideLivePhotoButtonForGraphConfiguration:(id)arg1;
 - (bool)shouldHidePhotosButtonForGraphConfiguration:(id)arg1;
 - (bool)shouldHideTimerButtonForGraphConfiguration:(id)arg1;

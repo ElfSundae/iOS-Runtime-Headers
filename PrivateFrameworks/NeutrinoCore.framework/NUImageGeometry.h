@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/NeutrinoCore.framework/NeutrinoCore
  */
 
-@interface NUImageGeometry : NSObject <NUSpaceMapping> {
+@interface NUImageGeometry : NSObject <NUTaggedSpaceMapping> {
     struct { 
         struct { 
             long long x; 
@@ -18,7 +18,7 @@
         long long numerator; 
         long long denominator; 
     }  _renderScale;
-    <NUSpaceMapping> * _spaceMap;
+    <NUTaggedSpaceMapping> * _spaceMap;
 }
 
 @property (nonatomic, readonly) struct { struct { long long x_1_1_1; long long x_1_1_2; } x1; struct { long long x_2_1_1; long long x_2_1_2; } x2; } extent;
@@ -27,7 +27,7 @@
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } scaledExtent;
 @property (nonatomic, readonly) struct { long long x1; long long x2; } scaledSize;
 @property (nonatomic, readonly) struct { long long x1; long long x2; } size;
-@property (nonatomic, readonly) <NUSpaceMapping> *spaceMap;
+@property (nonatomic, readonly) <NUTaggedSpaceMapping> *spaceMap;
 
 - (void).cxx_destruct;
 - (id)description;

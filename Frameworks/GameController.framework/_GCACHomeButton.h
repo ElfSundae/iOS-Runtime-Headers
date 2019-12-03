@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/GameController.framework/GameController
  */
 
-@interface _GCACHomeButton : _GCControllerButtonInput {
+@interface _GCACHomeButton : GCControllerButtonInput {
     <_GCACHomeButtonDelegate> * _delegate;
     bool  needsReset;
 }

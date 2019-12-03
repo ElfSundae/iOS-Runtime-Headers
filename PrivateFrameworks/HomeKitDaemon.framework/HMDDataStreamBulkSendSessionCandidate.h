@@ -20,7 +20,7 @@
 - (id)initWithProtocol:(id)arg1 requestHeader:(id)arg2;
 - (id)pendingReads;
 - (id)receivedFailure;
-- (void)rejectBulkSendSessionWithReason:(unsigned short)arg1;
+- (void)rejectBulkSendSessionWithStatus:(unsigned short)arg1;
 - (id)requestHeader;
 - (void)setPendingReads:(id)arg1;
 - (void)setReceivedFailure:(id)arg1;

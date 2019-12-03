@@ -40,6 +40,7 @@
 @property (readonly) bool isNonVisible;
 @property (readonly) bool isPidSuspended;
 @property (readonly) bool isSuppressed;
+@property (readonly) bool isSuspended;
 @property (readonly) bool isTaskResourceFlagged;
 @property (readonly) bool isTerminatedSnapshot;
 @property (readonly) bool isTimerThrottled;
@@ -95,6 +96,7 @@
 - (bool)isNonVisible;
 - (bool)isPidSuspended;
 - (bool)isSuppressed;
+- (bool)isSuspended;
 - (bool)isTaskResourceFlagged;
 - (bool)isTerminatedSnapshot;
 - (bool)isTimerThrottled;

@@ -14,14 +14,14 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) unsigned int iconAttributeKey;
 @property (nonatomic, readonly) unsigned int iconAttributeValue;
-@property (nonatomic, readonly) long long iconType;
+@property (nonatomic, readonly) int iconType;
 @property (readonly) Class superclass;
 
 - (unsigned int)cartoID;
 - (unsigned int)defaultTransitType;
 - (unsigned int)iconAttributeKey;
 - (unsigned int)iconAttributeValue;
-- (long long)iconType;
+- (int)iconType;
 - (id)initWithCartoId:(unsigned int)arg1 defaultTransitType:(unsigned int)arg2;
 
 @end

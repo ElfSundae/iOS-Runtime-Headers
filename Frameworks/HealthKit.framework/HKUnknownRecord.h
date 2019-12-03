@@ -16,15 +16,16 @@
 // Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
 
 + (bool)_isConcreteObjectClass;
++ (id)_newUnknownRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(bool)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 displayName:(id)arg11 config:(id /* block */)arg12;
 + (id)defaultDisplayString;
 + (bool)supportsEquivalence;
 + (bool)supportsSecureCoding;
-+ (id)unknownRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(bool)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 displayName:(id)arg9;
-+ (id)unknownRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(bool)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 sortDate:(id)arg9 displayName:(id)arg10;
++ (id)unknownRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(bool)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 displayName:(id)arg10;
++ (id)unknownRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(bool)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 displayName:(id)arg11;
 
 - (void).cxx_destruct;
 - (void)_setDisplayName:(id)arg1;
-- (id)_validateConfiguration;
+- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)displayName;
@@ -42,6 +43,14 @@
 
 - (bool)addCodableRepresentationToCollection:(id)arg1;
 - (id)codableRepresentationForSync;
+
+// Image: /System/Library/PrivateFrameworks/HealthRecordsUI.framework/HealthRecordsUI
+
+- (void)fetchConceptRoomItemsWithHealthRecordsStore:(id)arg1 conceptStore:(id)arg2 completion:(id /* block */)arg3;
+- (void)fetchDetailItemsWithHealthRecordsStore:(id)arg1 conceptStore:(id)arg2 completion:(id /* block */)arg3;
+- (long long)recordCategoryType;
+- (id)title;
+- (id)titleDisplayStringForDetailViewController;
 
 // Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
 

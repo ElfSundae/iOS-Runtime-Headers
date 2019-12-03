@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/ScreenReaderOutput.framework/ScreenReaderOutput
  */
 
-@interface SCROPendingBrailleModifierPair : NSObject {
+@interface SCROPendingBrailleModifierPair : SCROPendingBrailleEdit {
     NSArray * _modifiers;
     NSString * _pendingBraille;
 }

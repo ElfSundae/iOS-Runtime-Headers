@@ -6,8 +6,6 @@
 
 @property (nonatomic, readonly) double initialAlpha;
 
-+ (id)typeString;
-
 - (Class)handlerClass;
 - (int)transitionBehavior;
 

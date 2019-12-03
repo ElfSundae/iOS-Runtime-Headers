@@ -2,11 +2,10 @@
    Image: /System/Library/Frameworks/ContactsUI.framework/ContactsUI
  */
 
-@interface CNPropertyAction : CNContactAction <CNContactActionProtocol> {
+@interface CNPropertyAction : CNContactAction {
     NSArray * _propertyItems;
 }
 
-@property (nonatomic, readonly) bool canPerformAction;
 @property (nonatomic) <CNPropertyActionDelegate> *delegate;
 @property (nonatomic, readonly) CNPropertyGroupItem *propertyItem;
 @property (nonatomic, copy) NSArray *propertyItems;

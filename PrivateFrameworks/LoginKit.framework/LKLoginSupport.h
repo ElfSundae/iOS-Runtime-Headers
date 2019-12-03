@@ -3,23 +3,27 @@
  */
 
 @interface LKLoginSupport : NSObject {
-    NSThread * _timerThread;
+    NSOperationQueue * _completionQueue;
+    NSOperationQueue * _listenerQueue;
 }
 
-@property (nonatomic, retain) NSThread *timerThread;
+@property (nonatomic, retain) NSOperationQueue *completionQueue;
+@property (nonatomic, retain) NSOperationQueue *listenerQueue;
+
++ (bool)isNewUserAbleToLogin;
 
 - (void).cxx_destruct;
-- (void)_createTimerWithTimeOutPeriod:(double)arg1 error:(id)arg2 timeOutHandler:(id /* block */)arg3;
 - (id)_errorForNotificationType:(unsigned long long)arg1;
 - (id)_notificationForNotificationType:(unsigned long long)arg1;
 - (void)_runWhenDarwinNotificationPosted:(unsigned long long)arg1 timeOutPeriod:(double)arg2 block:(id /* block */)arg3;
-- (void)_setTimeOutTimer:(id)arg1;
-- (void)_startTimerThread;
-- (void)dealloc;
+- (void)_runWithTimeOutPeriod:(double)arg1 notificationType:(unsigned long long)arg2 completionBlock:(id /* block */)arg3;
+- (void)_timeOutAfterTimePeriod:(double)arg1 withError:(id)arg2 block:(id /* block */)arg3;
+- (id)completionQueue;
 - (id)init;
+- (id)listenerQueue;
 - (void)runWithTimeOutPeriod:(double)arg1 loggedInBlock:(id /* block */)arg2;
 - (void)runWithTimeOutPeriod:(double)arg1 readyToLoginBlock:(id /* block */)arg2;
-- (void)setTimerThread:(id)arg1;
-- (id)timerThread;
+- (void)setCompletionQueue:(id)arg1;
+- (void)setListenerQueue:(id)arg1;
 
 @end

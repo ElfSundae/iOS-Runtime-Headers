@@ -3,7 +3,7 @@
  */
 
 @interface FBApplicationTrustData : NSObject {
-    FBApplicationInfo * _appInfo;
+    FBSApplicationInfo * _appInfo;
     bool  _hasFreeDeveloperProvisioningProfile;
     bool  _hasUniversalProvisioningProfile;
     bool  _isManaged;

@@ -14,13 +14,13 @@
 
 + (id)objectInArray:(id)arg1 withPossiblyOutOfRangeIndex:(unsigned long long)arg2 defaultValue:(id)arg3;
 
+- (void).cxx_destruct;
 - (void)addBgFill:(id)arg1;
 - (void)addEffects:(id)arg1;
 - (void)addFill:(id)arg1;
 - (void)addStroke:(id)arg1;
 - (id)bgFillAtIndex:(unsigned long long)arg1;
 - (unsigned long long)bgFillCount;
-- (void)dealloc;
 - (id)description;
 - (id)effectsAtIndex:(unsigned long long)arg1;
 - (id)effectsAtIndex:(unsigned long long)arg1 color:(id)arg2;

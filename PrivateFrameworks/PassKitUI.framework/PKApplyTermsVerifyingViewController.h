@@ -15,6 +15,7 @@
 - (void)_processTerms;
 - (void)_showActivationSpinner:(bool)arg1;
 - (void)_terminateSetupFlow;
+- (void)dealloc;
 - (id)initWithController:(id)arg1 setupDelegate:(id)arg2 context:(long long)arg3 termsIdentifier:(id)arg4;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidLoad;

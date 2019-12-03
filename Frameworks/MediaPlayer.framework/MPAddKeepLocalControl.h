@@ -21,6 +21,7 @@
     UILabel * _controlTitleLabel;
     long long  _displayStyle;
     MPDownloadProgressView * _downloadProgressView;
+    UIColor * _filledTintColor;
     bool  _hadFirstTouchHighlight;
     bool  _scaleImageForAccessibility;
     bool  _traitCollectionDidChangeWasCalled;
@@ -31,14 +32,13 @@
 @property (nonatomic) bool allowsAddImage;
 @property (nonatomic) struct MPAddKeepLocalControlStatus { long long x1; double x2; } controlStatus;
 @property (nonatomic) long long displayStyle;
+@property (nonatomic, retain) UIColor *filledTintColor;
 @property (nonatomic) bool scaleImageForAccessibility;
 
 + (struct CGSize { double x1; double x2; })_expectedSizeForControlStatusType:(long long)arg1 controlTitle:(id)arg2 hasControlImage:(bool)arg3 displayScale:(double)arg4 preferredHeight:(double)arg5;
 + (id)_imageNamed:(id)arg1 compatibleWithTraitCollection:(id)arg2;
 + (id)_newControlTitleLabel;
-+ (id)cloudDownloadImageForTintColor:(id)arg1 outlineColor:(id)arg2 traitCollection:(id)arg3;
 + (id)controlTitleFontForControlStatusType:(long long)arg1;
-+ (id)systemLightGrayColor;
 
 - (void).cxx_destruct;
 - (void)_applicationWillEnterForegroundNotification:(id)arg1;
@@ -55,6 +55,7 @@
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (long long)displayStyle;
+- (id)filledTintColor;
 - (id)hitTest:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)layoutSubviews;
@@ -66,6 +67,7 @@
 - (void)setControlStatus:(struct MPAddKeepLocalControlStatus { long long x1; double x2; })arg1;
 - (void)setControlStatus:(struct MPAddKeepLocalControlStatus { long long x1; double x2; })arg1 animated:(bool)arg2;
 - (void)setDisplayStyle:(long long)arg1;
+- (void)setFilledTintColor:(id)arg1;
 - (void)setHighlighted:(bool)arg1;
 - (void)setScaleImageForAccessibility:(bool)arg1;
 - (void)setTitle:(id)arg1 forControlStatusType:(long long)arg2;

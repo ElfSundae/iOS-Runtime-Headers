@@ -26,7 +26,7 @@
 @property (nonatomic, readonly) struct _NSRange { unsigned long long x1; unsigned long long x2; } selectedRange;
 @property (nonatomic, readonly) UIResponder<UITextInput> *textInput;
 @property (nonatomic, readonly, copy) NSString *textWithContext;
-@property (nonatomic, readonly) UIView *view;
+@property (nonatomic, retain) UIView *view;
 
 + (id)sessionContextForType:(long long)arg1 withTextInput:(id)arg2;
 + (id)sessionContextWithText:(id)arg1 withRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 withRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3 withView:(id)arg4;
@@ -42,6 +42,7 @@
 - (id)initWithCoder:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })presentationRect;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })selectedRange;
+- (void)setView:(id)arg1;
 - (id)textInput;
 - (id)textWithContext;
 - (id)view;

@@ -12,6 +12,7 @@
     id  _pbRequest;
     unsigned long long  _priority;
     NMSOutgoingResponse * _response;
+    NSObject<OS_os_transaction> * _transaction;
     NSString * sourceDeviceID;
 }
 
@@ -29,6 +30,7 @@
 @property (nonatomic, retain) NMSOutgoingResponse *response;
 @property (nonatomic, retain) NSString *sourceDeviceID;
 @property (readonly) Class superclass;
+@property (nonatomic, retain) NSObject<OS_os_transaction> *transaction;
 
 + (bool)allowsUnrepliedRequestsForUnitTesting;
 + (void)setAllowsUnrepliedRequestsForUnitTesting:(bool)arg1;
@@ -58,6 +60,8 @@
 - (void)setPriority:(unsigned long long)arg1;
 - (void)setResponse:(id)arg1;
 - (void)setSourceDeviceID:(id)arg1;
+- (void)setTransaction:(id)arg1;
 - (id)sourceDeviceID;
+- (id)transaction;
 
 @end

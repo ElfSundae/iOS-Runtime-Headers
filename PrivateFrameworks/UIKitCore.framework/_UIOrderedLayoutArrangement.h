@@ -29,6 +29,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long distribution;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) NSSet *invalidBaselineConstraints;
 @property (nonatomic) bool layoutFillsCanvas;
 @property (nonatomic) bool layoutUsesCanvasMarginsWhenFilling;
 @property (nonatomic) double spacing;

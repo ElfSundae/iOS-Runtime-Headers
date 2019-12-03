@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/ConversationKit.framework/ConversationKit
  */
 
-@interface CNKStagingAreaViewController : UIViewController <AVCEffectsDelegate, CFXCameraViewControllerDelegate, CFXEffectBrowserContentPresenterDelegate, CNKFaceTimeInCallControlsDragControllerDelegate, CNKFaceTimeInCallControlsViewControllerDelegate> {
+@interface CNKStagingAreaViewController : UIViewController <AVCEffectsDelegate, CFXCameraViewControllerDelegate, CFXEffectBrowserContentPresenterDelegate, CNKFaceTimeCameraViewControllerDelegate, CNKFaceTimeInCallControlsDragControllerDelegate, CNKFaceTimeInCallControlsViewControllerDelegate> {
     void audioVisualizationView;
     void avcEffects;
     void call;
@@ -37,6 +37,7 @@
 @property (nonatomic) <CNKStagingAreaViewControllerDelegate> *stagingAreaDelegate;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)call;
 - (void)cameraViewController:(id)arg1 didChangeEffectsState:(long long)arg2;
 - (void)cameraViewController:(id)arg1 didRenderFrame:(id)arg2;
@@ -44,6 +45,8 @@
 - (id)delegate;
 - (long long)deviceOrientation;
 - (void)didCaptureVideoFrame:(id)arg1;
+- (void)didCreateTableViewForInCallControlsViewController:(id)arg1;
+- (void)didSelectApp:(id)arg1;
 - (void)didTapJoinButton;
 - (void)didTapLeaveButton;
 - (void)didTapSwapLocalParticipantCamera;
@@ -53,6 +56,7 @@
 - (bool)effectsEnabled;
 - (struct CGSize { double x1; double x2; })expandedAppViewControllerSizeForEffectBrowserViewController:(id)arg1;
 - (bool)hasJoined;
+- (void)hideEffectsBrowser;
 - (void)inCallControlsDragController:(id)arg1 didEndDragAt:(long long)arg2;
 - (void)inCallControlsDragController:(id)arg1 didStartDragTo:(long long)arg2;
 - (void)inCallControlsDragController:(id)arg1 willStartDragFrom:(long long)arg2;

@@ -4,7 +4,7 @@
 
 @interface HMDHomeSettingsModel : HMDBackingStoreModelObject
 
-@property (nonatomic, retain) NSNumber *automaticSoftwareUpdateEnabled;
+@property (nonatomic, copy) NSNumber *automaticSoftwareUpdateEnabled;
 
 + (id)defaultModelForHome:(id)arg1;
 + (id)modelIDForHome:(id)arg1;

@@ -30,6 +30,8 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSNumber *systemMinimumMargin;
 
+// Image: /System/Library/PrivateFrameworks/UIKitServices.framework/UIKitServices
+
 + (id)defaultDisplayEdgeInfo;
 + (id)defaultDisplayEdgeInfoForceInsets:(bool)arg1;
 
@@ -54,5 +56,18 @@
 - (void)setSafeAreaInsetsPortraitUpsideDown:(id)arg1;
 - (void)setSystemMinimumMargin:(id)arg1;
 - (id)systemMinimumMargin;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoard.framework/SpringBoard
+
++ (id)sb_displayEdgeInfoForClassicMode:(long long)arg1;
++ (id)sb_floatingApplicationDisplayEdgeInfo;
++ (id)sb_homeButtonDeviceDisplayEdgeInfo;
++ (id)sb_roundCornerPadDisplayEdgeInfo;
++ (id)sb_roundCornerPhoneDisplayEdgeInfo;
++ (id)sb_thisDeviceDisplayEdgeInfo;
+
+- (void)sb_applyDisplayEdgeInfoToSceneSettings:(id)arg1;
+- (id)sb_displayEdgeInfoWithSafeAreaInsetsForStatusBarHeight:(double)arg1;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })sb_orientedEdgeInsetsForInterfaceOrientation:(long long)arg1 traitCollection:(id)arg2;
 
 @end

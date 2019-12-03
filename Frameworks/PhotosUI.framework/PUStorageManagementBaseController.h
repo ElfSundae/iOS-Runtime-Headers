@@ -21,6 +21,7 @@
 - (void)didUnlock;
 - (void)didWake;
 - (void)handleURL:(id)arg1;
+- (void)handleURL:(id)arg1 withCompletion:(id /* block */)arg2;
 - (id)parentController;
 - (id)readPreferenceValue:(id)arg1;
 - (id)rootController;

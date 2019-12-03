@@ -7,7 +7,9 @@
     id /* block */  _callback;
     NSMutableDictionary * _clients;
     NSMutableDictionary * _clientsProps;
+    NSMutableDictionary * _combinableProps;
     NSXPCListener * _listener;
+    NSObject<OS_os_log> * _logHandle;
     NSMutableDictionary * _ownedProps;
     BLControl * bl;
 }
@@ -23,13 +25,17 @@
 - (void)dealloc;
 - (void)destroyServer;
 - (id)init;
+- (bool)isACombinableProperty:(id)arg1;
 - (bool)isAlsSupported;
 - (bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
+- (id)newAggregatedPropertyForCombinablePropertiesForKey:(id)arg1;
 - (void)notifyClientsForProperty:(id)arg1 key:(id)arg2;
 - (void)registerNotificationBlock:(id /* block */)arg1;
+- (bool)setCombinableProperty:(id)arg1 forKey:(id)arg2 client:(id)arg3;
 - (void)setNotificationProperties:(id)arg1 forClient:(id)arg2;
 - (void)setOwnedProperty:(id)arg1 forKey:(id)arg2 client:(id)arg3;
 - (bool)setProperty:(id)arg1 forKey:(id)arg2 client:(id)arg3;
+- (void)undoCombinablePropertiesForClient:(id)arg1;
 - (void)undoOwnedPropertiesForClient:(id)arg1;
 
 @end

@@ -5,12 +5,12 @@
 @interface SXAudioComponentOverlayView : UIImageView {
     UIActivityIndicatorView * _activityIndicator;
     UIImage * _audioIndicatorImage;
-    UIView<SXVideoOverlayButton> * _playButton;
+    UIButton * _playButton;
 }
 
 @property (nonatomic, readonly) UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, readonly) UIImage *audioIndicatorImage;
-@property (nonatomic, readonly) UIView<SXVideoOverlayButton> *playButton;
+@property (nonatomic, readonly) UIButton *playButton;
 
 - (void).cxx_destruct;
 - (id)activityIndicator;

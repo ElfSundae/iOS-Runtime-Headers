@@ -17,11 +17,11 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_init;
 - (void)_queue_clearConnection;
 - (void)_queue_setLocation:(id)arg1;
 - (void)_queue_setupConnection;
 - (void)dealloc;
-- (id)init;
 - (id)location;
 - (id)queue;
 - (void)setLocation:(id)arg1;

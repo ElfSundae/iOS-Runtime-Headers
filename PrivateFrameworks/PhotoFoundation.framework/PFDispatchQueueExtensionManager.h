@@ -3,8 +3,8 @@
  */
 
 @interface PFDispatchQueueExtensionManager : NSObject <PFDispatchQueueExtending> {
-    unsigned long long  _enabledExtensionCount;
-    bool  _extensionEnabled;
+    _Atomic unsigned long long  _enabledExtensionCount;
+    _Atomic bool  _extensionEnabled;
     PFDispatchQueueExtension * _extensions;
     unsigned long long  _suspendCount;
 }

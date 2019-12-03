@@ -37,6 +37,7 @@
 
 @property (nonatomic, readonly) AXElement *accessibilityUIServerApplication;
 @property (nonatomic, readonly) AXElement *application;
+@property (nonatomic, readonly) bool applicationIsModal;
 @property (nonatomic, readonly) long long applicationOrientation;
 @property (nonatomic) bool assistiveTechFocused;
 @property (nonatomic, retain) AXElement *autoscrollTarget;
@@ -59,6 +60,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) NSArray *drags;
 @property (nonatomic, readonly) NSArray *drops;
+@property (nonatomic, readonly) AXElement *elementForTextInsertionAndDeletion;
 @property (nonatomic, readonly) AXElement *elementParent;
 @property (nonatomic, readonly) struct __AXUIElement { }*elementRef;
 @property (nonatomic, readonly) NSArray *elementsWithSemanticContext;
@@ -106,6 +108,7 @@
 @property (nonatomic, readonly) NSString *processName;
 @property (nonatomic, readonly) AXElement *remoteParent;
 @property (nonatomic, readonly) bool representsScannerGroup;
+@property (nonatomic, readonly) bool required;
 @property (nonatomic, readonly) NSString *roleDescription;
 @property (nonatomic, readonly) struct _NSRange { unsigned long long x1; unsigned long long x2; } rowRange;
 @property (nonatomic, readonly) long long scannerActivateBehavior;
@@ -114,17 +117,21 @@
 @property (nonatomic, readonly) NSDictionary *semanticContext;
 @property (nonatomic, readonly) NSArray *siriContentElementsWithSemanticContext;
 @property (nonatomic, readonly) NSArray *siriContentNativeFocusableElements;
+@property (nonatomic, readonly) NSString *speakThisString;
+@property (nonatomic, readonly) NSString *speechInputLabel;
 @property (nonatomic, readonly) AXElement *springBoardApplication;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSArray *supportedGestures;
 @property (nonatomic, readonly) AXElement *systemApplication;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } textCursorFrame;
 @property (nonatomic, readonly) NSArray *textOperations;
+@property (nonatomic, readonly) NSString *textualContext;
 @property (nonatomic, readonly) AXElement *touchContainer;
 @property (nonatomic, readonly) unsigned long long traits;
 @property (nonatomic, readonly) NSArray *typingCandidates;
 @property (nonatomic, retain) AXUIElement *uiElement;
 @property (nonatomic, readonly) NSURL *url;
+@property (nonatomic, readonly) NSArray *userInputLabels;
 @property (nonatomic) NSString *value;
 @property (nonatomic, readonly) NSArray *variantKeys;
 @property (nonatomic, readonly) NSArray *visibleElements;
@@ -133,8 +140,12 @@
 @property (nonatomic, readonly) unsigned int windowContextId;
 @property (nonatomic, readonly) unsigned int windowDisplayId;
 
+// Image: /System/Library/PrivateFrameworks/AXRuntime.framework/AXRuntime
+
++ (id)applicationAtCoordinate:(struct CGPoint { double x1; double x2; })arg1;
 + (id)elementAtCoordinate:(struct CGPoint { double x1; double x2; })arg1 withVisualPadding:(bool)arg2;
 + (id)elementWithAXUIElement:(struct __AXUIElement { }*)arg1;
++ (id)elementWithData:(id)arg1;
 + (id)elementWithUIElement:(id)arg1;
 + (id)elementsWithUIElements:(id)arg1;
 + (id)primaryApp;
@@ -145,8 +156,11 @@
 - (void).cxx_destruct;
 - (id)_axElementsForAXUIElements:(id)arg1;
 - (id)_elementForAttribute:(long long)arg1 shouldUpdateCache:(bool)arg2 shouldFetchAttributes:(bool)arg3;
+- (id)_objectForRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 withParameterizedAttribute:(long long)arg2;
 - (bool)_performActivate;
 - (id)_remoteParentForContextID;
+- (id)_textOperationsOperator;
+- (id)_uiElementForTextInsertionAndDeletion;
 - (void)_updateLabel;
 - (bool)_zoomInOrOut:(bool)arg1;
 - (id)accessibilityLocalizationBundleID;
@@ -154,12 +168,15 @@
 - (id)accessibilityLocalizedStringKey;
 - (id)accessibilityLocalizedStringTableName;
 - (id)accessibilityUIServerApplication;
+- (id)alternativesForTextAtPosition:(unsigned long long)arg1;
 - (id)application;
+- (bool)applicationIsModal;
 - (long long)applicationOrientation;
 - (bool)assistiveTechFocused;
 - (id)auditIssuesForOptions:(id)arg1;
 - (void)autoscrollInDirection:(unsigned long long)arg1;
 - (id)autoscrollTarget;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })boundsForTextRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (id)bundleId;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })cachedFrame;
 - (struct CGPath { }*)cachedPath;
@@ -172,6 +189,7 @@
 - (bool)canPerformTrackingDetail;
 - (bool)canPerformZoom;
 - (bool)canScrollInAtLeastOneDirection;
+- (id)carPlaySystemApplication;
 - (struct CGPoint { double x1; double x2; })centerPoint;
 - (id)children;
 - (void)clearCachedFrame:(bool)arg1 cachedVisibleFrame:(bool)arg2;
@@ -188,6 +206,7 @@
 - (id)customActions;
 - (void)dealloc;
 - (void)decreaseAutoscrollSpeed;
+- (void)deleteText;
 - (id)description;
 - (unsigned int)displayIdForContextId:(unsigned int)arg1;
 - (double)distanceToElement:(id)arg1;
@@ -196,11 +215,14 @@
 - (id)drops;
 - (id)elementForAttribute:(long long)arg1;
 - (id)elementForAttribute:(long long)arg1 parameter:(id)arg2;
+- (id)elementForTextInsertionAndDeletion;
 - (id)elementParent;
 - (struct __AXUIElement { }*)elementRef;
 - (id)elementsForAttribute:(long long)arg1;
+- (id)elementsForAttribute:(long long)arg1 parameter:(id)arg2;
 - (id)elementsMatchingText:(id)arg1;
 - (id)elementsWithSemanticContext;
+- (bool)eligibleForIconVision;
 - (id)explorerElements;
 - (id)firstElementInApplication;
 - (id)firstElementInApplicationForFocus;
@@ -220,8 +242,9 @@
 - (void)increaseAutoscrollSpeed;
 - (id)initWithAXUIElement:(struct __AXUIElement { }*)arg1;
 - (id)initWithUIElement:(id)arg1;
-- (void)insertText:(id)arg1 atPosition:(long long)arg2;
-- (void)insertTextAtCurrentPosition:(id)arg1;
+- (void)insertText:(id)arg1;
+- (void)insertText:(id)arg1 asUndoableAction:(bool)arg2;
+- (void)insertTextWithAlternatives:(id)arg1;
 - (bool)isAXUIServer;
 - (bool)isAccessibilityOpaqueElementProvider;
 - (bool)isAccessibleElement;
@@ -286,6 +309,7 @@
 - (id)remoteApplication;
 - (id)remoteParent;
 - (bool)representsScannerGroup;
+- (bool)required;
 - (id)roleDescription;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })rowRange;
 - (long long)scannerActivateBehavior;
@@ -297,6 +321,7 @@
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })selectedTextRange;
 - (id)semanticContext;
 - (void)sendUserEventOccurred;
+- (id)serializeToData;
 - (void)setAssistiveTechFocused:(bool)arg1;
 - (void)setAutoscrollTarget:(id)arg1;
 - (void)setCachedFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
@@ -313,6 +338,8 @@
 - (bool)showContextMenu;
 - (id)siriContentElementsWithSemanticContext;
 - (id)siriContentNativeFocusableElements;
+- (id)speakThisString;
+- (id)speechInputLabel;
 - (id)springBoardApplication;
 - (id)supportedGestures;
 - (bool)supportsAction:(int)arg1;
@@ -329,12 +356,14 @@
 - (bool)systemPressTVUpButton;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })textCursorFrame;
 - (id)textOperations;
+- (id)textualContext;
 - (id)touchContainer;
 - (unsigned long long)traits;
 - (id)typingCandidates;
 - (id)uiElement;
 - (void)updateCache:(long long)arg1;
 - (id)url;
+- (id)userInputLabels;
 - (id)value;
 - (id)variantKeys;
 - (bool)viewHierarchyHasNativeFocus;
@@ -345,5 +374,54 @@
 - (unsigned int)windowDisplayId;
 - (bool)zoomIn;
 - (bool)zoomOut;
+
+// Image: /System/Library/PrivateFrameworks/SpeechRecognitionCommandAndControl.framework/SpeechRecognitionCommandAndControl
+
++ (bool)_smartlyTruncateMutableString:(id)arg1 toMaxCharacterLength:(long long)arg2;
++ (long long)doesArrayOfWords:(id)arg1 containArrayOfArrayWords:(id)arg2;
++ (id)wordsFromString:(id)arg1;
+
+- (id)_cleanedStringFromTitle:(id)arg1;
+- (struct _NSRange { unsigned long long x1; unsigned long long x2; })_findRangeForEnumerationType:(long long)arg1 atRelativeIncrement:(long long)arg2 fromPosition:(id)arg3 options:(unsigned long long)arg4;
+- (unsigned long long)_numberOfCharacters;
+- (bool)_range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 includesRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
+- (struct _NSRange { unsigned long long x1; unsigned long long x2; })_rangeOfWordBasedSearchString:(id)arg1 inString:(id)arg2 withRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3 forwardSearchDirection:(bool)arg4;
+- (void)_scrollToVisibleForRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
+- (void)_showDisabiguationForMatchedPhraseResults:(id)arg1 axElement:(id)arg2 actionBlock:(id /* block */)arg3;
+- (id)actOnStrings:(id)arg1 ambiguityResolution:(id)arg2 substringSearchGranularity:(int)arg3 commandRecognizedParameters:(id)arg4 alwaysCallActionOnClosestMatch:(bool)arg5 actionBlock:(id /* block */)arg6;
+- (void)cacActivate;
+- (void)cacApplyFormatBold;
+- (void)cacApplyFormatItalics;
+- (void)cacApplyFormatUnderline;
+- (id)cacFirstPosition;
+- (id)cacLastPosition;
+- (void)cacPerformExcapeAction;
+- (void)cacPerformTextCopy;
+- (void)cacPerformTextCut;
+- (void)cacPerformTextOperation:(id)arg1;
+- (void)cacPerformTextPaste;
+- (void)cacPerformTextRedo;
+- (void)cacPerformTextSelectAll;
+- (void)cacPerformTextUndo;
+- (void)cacSetTextSelectionToCACTextMarkerRange:(id)arg1;
+- (void)cacSetTextSelectionToRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
+- (id)cacString;
+- (id)cacStringForCACTextMarkerRange:(id)arg1;
+- (id)cacStringForRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
+- (bool)cacSupportsTextOperation:(id)arg1;
+- (id)cacTextOperations;
+- (id)cacTextSelectionCACTextMarkerRange;
+- (void)deleteTextAtRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
+- (void)deleteTextAtTextMarkerRange:(id)arg1;
+- (bool)isVisibleTextRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
+- (bool)isVisibleTextRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (struct _NSRange { unsigned long long x1; unsigned long long x2; })lineRangeForPosition:(unsigned long long)arg1;
+- (id)markerRangeForEnumerationType:(long long)arg1 desiredBlock:(int)arg2 count:(unsigned long long)arg3 options:(int)arg4;
+- (id)markerRangeForLineInDesiredBlock:(int)arg1 count:(unsigned long long)arg2 options:(int)arg3;
+- (id)orderedPhraseMatchesFromStrings:(id)arg1 forwardDirection:(bool)arg2 referenceLocation:(long long)arg3 substringSearchGranularity:(int)arg4;
+- (struct _NSRange { unsigned long long x1; unsigned long long x2; })rangeOfStrings:(id)arg1 referenceRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 ambiguityResolution:(id)arg3 substringSearchGranularity:(int)arg4 foundStringRef:(id*)arg5;
+- (id)recognitionStrings;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })rectForRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
+- (id)visiblePhraseMatchesFromStrings:(id)arg1 substringSearchGranularity:(int)arg2;
 
 @end

@@ -14,12 +14,14 @@
 + (double)widgetHeightWithAccessibilityLayout:(bool)arg1;
 
 - (void).cxx_destruct;
+- (void)_applyStyles;
 - (id)action;
 - (id)initWithWidgetViewStyle:(unsigned long long)arg1;
 - (void)layoutSubviews;
 - (void)setAction:(id)arg1;
 - (void)setHighlighted:(bool)arg1;
 - (void)setUsesAccessibilityLayout:(bool)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (bool)usesAccessibilityLayout;
 
 @end

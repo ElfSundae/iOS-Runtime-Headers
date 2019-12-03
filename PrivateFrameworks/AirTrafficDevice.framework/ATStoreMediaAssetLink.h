@@ -2,12 +2,15 @@
    Image: /System/Library/PrivateFrameworks/AirTrafficDevice.framework/AirTrafficDevice
  */
 
-@interface ATStoreMediaAssetLink : NSObject <ATAssetLink, ATEnvironmentMonitorObserver, ATStoreDownloadObserver> {
+@interface ATStoreMediaAssetLink : NSObject <ATAssetLink, ATStoreDownloadObserver, ICEnvironmentMonitorObserver> {
     NSObject<OS_dispatch_queue> * _callbackQueue;
     NSMutableSet * _cancelledAssets;
     <ATAssetLinkDelegate> * _delegate;
     ATStoreDownloadService * _downloadService;
-    NSMutableSet * _enqueuedAssets;
+    NSMutableOrderedSet * _downloadsPendingEnqueue;
+    NSMutableSet * _enqueuedDownloadAssets;
+    NSMutableSet * _enqueuedRestoreAssets;
+    bool  _isNetworkConstrained;
     bool  _open;
     NSObject<OS_dispatch_queue> * _queue;
     NSMutableSet * _resumableAssets;
@@ -29,6 +32,7 @@
 - (void)ATStoreDownloadService:(id)arg1 didResumeAsset:(id)arg2;
 - (void)ATStoreDownloadService:(id)arg1 didUpdateProgressForAsset:(id)arg2 progress:(float)arg3;
 - (long long)_ATAssetStateForStoreDownloadState:(long long)arg1;
+- (bool)_canEnqueueAssetUnderCurrentEnvironmentConditions:(id)arg1 didUpdatePauseReason:(bool*)arg2;
 - (void)_finishAsset:(id)arg1 error:(id)arg2 cancelPendingAssetsInBatch:(bool)arg3;
 - (void)_setupActivityToResumeDownloads;
 - (bool)canEnqueueAsset:(id)arg1;

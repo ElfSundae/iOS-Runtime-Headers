@@ -32,7 +32,6 @@
 - (void)requestDidParsePlistObject:(id)arg1;
 - (bool)requiresConfiguration;
 - (bool)requiresDeviceID;
-- (bool)requiresSignature;
 - (bool)requiresTokenRegistration;
 - (long long)serverType;
 - (void)setVerifiedPublicKey:(id)arg1;

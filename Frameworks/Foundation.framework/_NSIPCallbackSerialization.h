@@ -5,8 +5,8 @@
 @interface _NSIPCallbackSerialization : NSObject {
     NSUUID * _UUID;
     id /* block */  _endBlock;
-    bool  _hasBegun;
-    bool  _hasEnded;
+    _Atomic bool  _hasBegun;
+    _Atomic bool  _hasEnded;
 }
 
 @property (nonatomic, copy) NSUUID *UUID;

@@ -41,6 +41,7 @@
 - (void).cxx_destruct;
 - (void)_cancelDelayedFocusAction;
 - (id)_currentlyFocusedCell;
+- (void)_flipIfRightToLeft;
 - (bool)_isViewEntryCell:(id)arg1;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_parentSafeAreaInsets;
 - (void)_selectEntryForTitleIndex:(long long)arg1;
@@ -77,5 +78,6 @@
 - (void)setSectionInset:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setSelectedCell:(id)arg1;
 - (bool)shouldUpdateFocusInContext:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end

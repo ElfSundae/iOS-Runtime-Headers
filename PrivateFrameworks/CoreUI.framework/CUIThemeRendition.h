@@ -38,13 +38,12 @@
     long long  _type;
     struct CGImage { } * _uncroppedImage;
     NSString * _utiType;
-    long long  _validLookGradation;
 }
 
 @property (nonatomic) long long artworkStatus;
 @property (nonatomic) int blendMode;
 @property (nonatomic) int exifOrientation;
-@property (nonatomic) NSString *internalName;
+@property (nonatomic, retain) NSString *internalName;
 @property (nonatomic) unsigned int internalScale;
 @property (nonatomic) long long internalTemplateRenderingMode;
 @property (nonatomic) double opacity;
@@ -53,7 +52,6 @@
 @property (nonatomic) long long type;
 
 + (id)displayNameForRenditionType:(long long)arg1;
-+ (id)filteredCSIDataFromBaseCSIData:(id)arg1;
 + (Class)renditionClassForRenditionType:(long long)arg1 andPixelFormat:(unsigned int)arg2;
 
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_destinationFrame;
@@ -65,15 +63,17 @@
 - (void)_initializeRenditionKey:(const struct _renditionkeytoken { unsigned short x1; unsigned short x2; }*)arg1;
 - (void)_initializeTypeIdentifiersWithLayout:(unsigned short)arg1;
 - (void)_setStructuredThemeStore:(id)arg1;
+- (id)_sourceRendition;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })alphaCroppedRect;
 - (long long)artworkStatus;
 - (id)assetPackIdentifier;
 - (int)bitmapEncoding;
 - (int)blendMode;
+- (struct CGColor { }*)cgColor;
 - (unsigned long long)colorSpaceID;
 - (id)contentNames;
 - (struct CGImage { }*)createImageFromPDFRenditionWithScale:(double)arg1;
-- (const struct _csicolor { unsigned int x1; unsigned int x2; unsigned int x3 : 8; unsigned int x4 : 3; unsigned int x5 : 21; unsigned int x6; double x7[0]; }*)csiColor;
+- (const struct _csitextstyle { unsigned int x1; unsigned int x2; unsigned int x3; float x4; float x5; float x6; unsigned int x7; unsigned int x8; BOOL x9[0]; }*)csiTextStyle;
 - (id)data;
 - (void)dealloc;
 - (id)description;
@@ -97,7 +97,6 @@
 - (bool)isScaled;
 - (bool)isTiled;
 - (bool)isTintable;
-- (bool)isValidForLookGradation:(long long)arg1;
 - (bool)isVectorBased;
 - (const struct _renditionkeytoken { unsigned short x1; unsigned short x2; }*)key;
 - (id)layerReferences;
@@ -105,6 +104,9 @@
 - (id)maskForSliceIndex:(long long)arg1;
 - (id)metrics;
 - (id)mipLevels;
+- (id)modelAsset;
+- (id)modelMesh;
+- (id)modelSubmesh;
 - (id)name;
 - (int)objectVersion;
 - (double)opacity;
@@ -134,6 +136,7 @@
 - (id)srcData;
 - (bool)substituteWithSystemColor;
 - (unsigned int)subtype;
+- (struct CGSVGDocument { }*)svgDocument;
 - (id)systemColorName;
 - (long long)templateRenderingMode;
 - (id)textureImages;
@@ -144,5 +147,10 @@
 - (struct CGSize { double x1; double x2; })unslicedSize;
 - (id)utiType;
 - (unsigned short)valueForTokenIdentifier:(unsigned short)arg1;
+- (struct { double x1; double x2; double x3; double x4; })vectorGlyphAlignmentRectInsets;
+- (id)vectorGlyphAvailableSizes;
+- (double)vectorGlyphBaseline;
+- (double)vectorGlyphCapLine;
+- (double)vectorGlyphReferencePointSize;
 
 @end

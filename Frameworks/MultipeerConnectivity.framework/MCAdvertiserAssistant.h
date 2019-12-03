@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MultipeerConnectivity.framework/MultipeerConnectivity
  */
 
-@interface MCAdvertiserAssistant : NSObject <MCNearbyServiceAdvertiserDelegate, UIAlertViewDelegate> {
+@interface MCAdvertiserAssistant : NSObject <MCNearbyServiceAdvertiserDelegate> {
     MCNearbyServiceAdvertiser * _advertiser;
     MCAlertController * _alertController;
     NSString * _appName;

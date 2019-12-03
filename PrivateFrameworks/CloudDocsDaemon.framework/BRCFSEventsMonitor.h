@@ -18,15 +18,14 @@
     BRCFSEventsPersistedState * _persistedState;
     NSObject<OS_dispatch_queue> * _processQueue;
     BRCFSEventsPersistedState * _rendezVous;
-    int  _resetCount;
+    _Atomic int  _resetCount;
     BRCRelativePath * _root;
-    NSString * _rootPathRelativeToDevice;
     NSObject<OS_dispatch_source> * _rootVnodeWatcher;
     NSObject<OS_dispatch_semaphore> * _semaphore;
     BRCAccountSession * _session;
     struct __FSEventStream { } * _stream;
     NSObject<OS_dispatch_queue> * _streamQueue;
-    int  _suspendCount;
+    _Atomic int  _suspendCount;
     BRCVolume * _volume;
 }
 

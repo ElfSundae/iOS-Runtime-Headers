@@ -3,6 +3,7 @@
  */
 
 @interface _INPBBillDetailsValue : PBCodable <NSCopying, NSSecureCoding, _INPBBillDetailsValue> {
+    bool  __encodeLegacyGloryData;
     _INPBCurrencyAmountValue * _amountDue;
     _INPBBillPayeeValue * _billPayee;
     int  _billType;
@@ -18,6 +19,7 @@
     _INPBValueMetadata * _valueMetadata;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic, retain) _INPBCurrencyAmountValue *amountDue;
 @property (nonatomic, retain) _INPBBillPayeeValue *billPayee;
 @property (nonatomic) int billType;
@@ -41,9 +43,13 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) _INPBValueMetadata *valueMetadata;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (int)StringAsBillType:(id)arg1;
 - (int)StringAsStatus:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)amountDue;
 - (id)billPayee;
 - (int)billType;
@@ -51,6 +57,7 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (id)dueDate;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasAmountDue;
 - (bool)hasBillPayee;
 - (bool)hasBillType;
@@ -61,6 +68,7 @@
 - (bool)hasStatus;
 - (bool)hasValueMetadata;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)lateFee;
 - (id)minimumDue;

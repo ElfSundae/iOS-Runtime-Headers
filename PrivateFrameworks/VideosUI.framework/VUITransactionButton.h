@@ -4,13 +4,13 @@
 
 @interface VUITransactionButton : VUIButton {
     bool  _monitorTransaction;
-    VUICircleProgressIndicator * _progressIndicator;
+    VUICircularProgress * _progressIndicator;
     NSString * _textContentTitleBackup;
     bool  _waitingForTransactionToStart;
 }
 
 @property (nonatomic) bool monitorTransaction;
-@property (nonatomic, retain) VUICircleProgressIndicator *progressIndicator;
+@property (nonatomic, retain) VUICircularProgress *progressIndicator;
 @property (nonatomic, copy) NSString *textContentTitleBackup;
 @property (getter=isWaitingForTransactionToStart, nonatomic) bool waitingForTransactionToStart;
 

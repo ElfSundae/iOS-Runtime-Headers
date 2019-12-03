@@ -5,8 +5,8 @@
 @interface GEOPlaceIdentifier : PBCodable <NSCopying> {
     GEOLatLng * _center;
     struct { 
-        unsigned int muid : 1; 
-    }  _has;
+        unsigned int has_muid : 1; 
+    }  _flags;
     unsigned long long  _muid;
     PBUnknownFields * _unknownFields;
 }
@@ -17,8 +17,11 @@
 @property (nonatomic) unsigned long long muid;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (id)center;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -29,6 +32,7 @@
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)muid;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setCenter:(id)arg1;
 - (void)setHasMuid:(bool)arg1;

@@ -5,7 +5,7 @@
 @interface NSMetadataQuery : NSObject {
     unsigned long long  _flags;
     double  _interval;
-    /* Warning: unhandled array encoding: '[11@]' */ id  _private;
+    id  _private;
     void * _reserved;
 }
 

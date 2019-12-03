@@ -7,7 +7,7 @@
     double  _avg;
     NSString * _command;
     long long  _count;
-    long long  _dataLength;
+    unsigned long long  _dataLength;
     double  _endedAt;
     NSString * _interfaceName;
     double  _interval;
@@ -26,7 +26,7 @@
 @property (nonatomic) double avg;
 @property (nonatomic, copy) NSString *command;
 @property (nonatomic) long long count;
-@property (nonatomic) long long dataLength;
+@property (nonatomic) unsigned long long dataLength;
 @property (nonatomic) double endedAt;
 @property (nonatomic, copy) NSString *interfaceName;
 @property (nonatomic) double interval;
@@ -49,7 +49,7 @@
 - (bool)conformsToProtocol:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (long long)count;
-- (long long)dataLength;
+- (unsigned long long)dataLength;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
@@ -65,7 +65,7 @@
 - (void)setAvg:(double)arg1;
 - (void)setCommand:(id)arg1;
 - (void)setCount:(long long)arg1;
-- (void)setDataLength:(long long)arg1;
+- (void)setDataLength:(unsigned long long)arg1;
 - (void)setEndedAt:(double)arg1;
 - (void)setInterfaceName:(id)arg1;
 - (void)setInterval:(double)arg1;

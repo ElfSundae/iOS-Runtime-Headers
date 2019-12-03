@@ -5,6 +5,7 @@
 @interface FTMessageDelivery_HTTP : FTMessageDelivery <FTMessageQueueDelegate> {
     IDSServerBag * _iMessageServerBag;
     IDSServerBag * _idsServerBag;
+    <FTMessageDeliveryHTTPMobileNetworkManager> * _mobileNetworkManager;
     bool  _pendingRetryAfterAirplaneMode;
     <FTMessageDeliveryRemoteURLConnection> * _remoteConnection;
     <FTMessageDeliveryRemoteURLConnectionFactory> * _remoteConnectionFactory;
@@ -23,12 +24,12 @@
 - (void)_serverBagLoaded:(id)arg1;
 - (bool)_tryRetryMessageWithTimeInterval:(double)arg1;
 - (void)_updateWiFiAssertions;
-- (void)_urlRequestWithURL:(id)arg1 andData:(id)arg2 message:(id)arg3 missingAnisetteHeaders:(bool*)arg4 completionBlock:(id /* block */)arg5;
+- (void)_urlRequestWithURL:(id)arg1 andData:(id)arg2 message:(id)arg3 completionBlock:(id /* block */)arg4;
 - (bool)busy;
 - (void)cancelMessage:(id)arg1;
 - (void)dealloc;
 - (id)init;
-- (id)initWithIDSServerBag:(id)arg1 iMessageServerBag:(id)arg2 remoteConnectionFactory:(id)arg3 retryBackoffProvider:(id /* block */)arg4;
+- (id)initWithIDSServerBag:(id)arg1 iMessageServerBag:(id)arg2 remoteConnectionFactory:(id)arg3 mobileNetworkManager:(id)arg4 retryBackoffProvider:(id /* block */)arg5;
 - (void)invalidate;
 - (void)networkStateChanged;
 - (void)queue:(id)arg1 hitTimeoutForMessage:(id)arg2;

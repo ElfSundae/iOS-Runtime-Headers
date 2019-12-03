@@ -4,16 +4,17 @@
 
 @interface CLSSettingsVisibilityController : NSObject {
     CLSCurrentUser * _currentUser;
+    bool  _needToUpdateCurrentUser;
+    NSObject<OS_dispatch_queue> * _queue;
 }
 
 + (id)shared;
 
 - (void).cxx_destruct;
+- (id)cachedCurrentUserAppleID;
 - (id)currentUser;
 - (void)currentUserChanged;
 - (void)dealloc;
-- (bool)hasCapableAccount;
-- (bool)hasSupportedRole;
 - (id)init;
 - (bool)settingsUIVisible;
 

@@ -5,6 +5,7 @@
 
 @required
 
+- (void)didPressFootnoteButton;
 - (void)didPressMoreButton;
 
 @end

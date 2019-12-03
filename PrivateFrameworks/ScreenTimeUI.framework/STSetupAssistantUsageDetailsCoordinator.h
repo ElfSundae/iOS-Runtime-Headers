@@ -19,11 +19,11 @@
 @property (nonatomic, readonly) STUsageDetailsViewModel *viewModel;
 
 - (void).cxx_destruct;
+- (id)_introUsageItemsWithStartDate:(id)arg1;
 - (id)appConfigByIdentifier;
 - (id)categoryConfigByIdentifier;
 - (id)devices;
 - (id)init;
-- (id)introUsageItems;
 - (bool)isRefreshing;
 - (void)refreshUsageData;
 - (id)selectedDeviceIdentifier;

@@ -7,6 +7,7 @@
     <MTLComputePipelineState> * _closestSitesKernel;
     <MTLDeviceSPI> * _device;
     <MTLComputePipelineState> * _distanceTransformKernel;
+    <MTLResourceGroupSPI> * _intermediateTexturesResourceGroup;
     NSString * _label;
     <MTLLibrary> * _library;
 }

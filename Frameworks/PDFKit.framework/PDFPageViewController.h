@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/PDFKit.framework/PDFKit
  */
 
-@interface PDFPageViewController : UIViewController <UIScrollViewDelegate> {
+@interface PDFPageViewController : UIViewController <PDFTextInputDelegate, UIScrollViewDelegate> {
     PDFPageViewControllerPrivate * _private;
 }
 
@@ -16,12 +16,16 @@
 - (void)_buildPDFPageView;
 - (void)_centerAlign;
 - (void)_removePDFView;
+- (void)_setupGestureRecognizerDependencies;
 - (void)_updateAnnotations;
 - (double)autoScaleFactor;
+- (void)changedBoundsForBoxNotification:(id)arg1;
 - (void)dealloc;
+- (void)didRotatePageNotification:(id)arg1;
 - (void)enforceAutoScaleFactor;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)pageView;
+- (id)pdfView;
 - (void)removeAKOverlay;
 - (double)scaleFactor;
 - (id)scrollView;
@@ -32,6 +36,7 @@
 - (void)scrollViewDidZoom:(id)arg1;
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewWillBeginZooming:(id)arg1 withView:(id)arg2;
+- (id)selection;
 - (void)setAutoScales:(bool)arg1;
 - (void)setBackgroundImage:(id)arg1 atBackgroundQuality:(int)arg2;
 - (void)setMinScaleFactor:(double)arg1 withMaxScaleFactor:(double)arg2;
@@ -40,6 +45,8 @@
 - (void)setPageBreakMargins:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setRenderingProperties:(id)arg1;
 - (void)setScaleFactor:(double)arg1;
+- (void)setSelection:(id)arg1;
+- (id)textInputView;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidDisappear:(bool)arg1;
 - (id)viewForZoomingInScrollView:(id)arg1;

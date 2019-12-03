@@ -14,6 +14,7 @@
 + (bool)isCharacterNonBreaking:(unsigned short)arg1;
 + (id)tokenizeString:(id)arg1;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
 - (id)initWithLocale:(id)arg1;

@@ -4,34 +4,33 @@
 
 @interface IMDCKDatabaseManager : NSObject {
     CKContainer * _manateeContainer;
-    IMDCKMockDatabase * _mockDatabase;
+    CKContainer * _nickNameContainer;
     CKContainer * _nonHSA2ManateeContainer;
-    CKContainer * _stingRayContainer;
-    bool  _useStingRay;
 }
 
 @property (nonatomic, readonly) CKContainer *manateeContainer;
-@property (nonatomic, readonly) IMDCKMockDatabase *mockDatabase;
+@property (nonatomic, readonly) CKContainer *nickNameContainer;
 @property (nonatomic, readonly) CKContainer *nonHSA2ManateeContainer;
-@property (nonatomic, readonly) CKContainer *stingRayContainer;
 @property (nonatomic, readonly) CKContainer *truthContainer;
-@property (nonatomic) bool useStingRay;
+@property (nonatomic, readonly) bool useStingRay;
 
 + (id)sharedInstance;
 
-- (bool)_useMockCloudKit;
+- (id)_nickNameContainer;
+- (id)_nickNameContainerIdentifier;
+- (bool)_serverSaysToUseOldContainer;
 - (void)dealloc;
+- (void)fetchCurrentUserForNicknameContainer:(id /* block */)arg1;
 - (id)init;
 - (id)manateeContainer;
 - (id)manateeDataBase;
-- (id)mockDatabase;
+- (id)nickNameContainer;
+- (id)nickNamePublicDatabase;
 - (id)nonHSA2ManateeContainer;
 - (id)nonHSA2ManateeDatabase;
-- (void)setUseStingRay:(bool)arg1;
-- (id)stingRayContainer;
-- (id)stingRayDatabase;
 - (id)truthContainer;
 - (id)truthDatabase;
+- (id)truthPublicDatabase;
 - (bool)useStingRay;
 
 @end

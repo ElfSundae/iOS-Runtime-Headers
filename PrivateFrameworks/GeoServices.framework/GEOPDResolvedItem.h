@@ -5,9 +5,9 @@
 @interface GEOPDResolvedItem : PBCodable <NSCopying> {
     NSString * _extractedTerm;
     struct { 
-        unsigned int resolvedItemType : 1; 
-        unsigned int resultIndex : 1; 
-    }  _has;
+        unsigned int has_resolvedItemType : 1; 
+        unsigned int has_resultIndex : 1; 
+    }  _flags;
     int  _resolvedItemType;
     unsigned int  _resultIndex;
     PBUnknownFields * _unknownFields;
@@ -21,8 +21,11 @@
 @property (nonatomic) unsigned int resultIndex;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsResolvedItemType:(id)arg1;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -34,6 +37,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (int)resolvedItemType;
 - (id)resolvedItemTypeAsString:(int)arg1;

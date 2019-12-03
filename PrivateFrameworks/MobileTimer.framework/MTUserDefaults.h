@@ -17,6 +17,7 @@
 + (id)sharedUserDefaults;
 
 - (void).cxx_destruct;
+- (void)_cleanupObserversForNotification:(id)arg1;
 - (void)_postNotification:(id)arg1;
 - (bool)boolForKey:(id)arg1;
 - (bool)boolForKey:(id)arg1 exists:(bool*)arg2;

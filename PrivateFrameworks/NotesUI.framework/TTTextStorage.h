@@ -24,9 +24,11 @@
     bool  _isChangingSelectionByGestures;
     bool  _isDictating;
     bool  _isDragging;
+    bool  _isDropping;
     bool  _isEndingEditing;
     bool  _isFixing;
     bool  _isHandlingTextCheckingResults;
+    bool  _isPerformingAccessibilityUndoableTextInsertion;
     bool  _isReadingSelectionFromPasteboard;
     bool  _isResettingBaseWritingDirection;
     bool  _isSelectingText;
@@ -41,6 +43,7 @@
     bool  _previouslyHadMarkedText;
     bool  _retainOriginalFormatting;
     bool  _shouldConvertTablesToTabs;
+    bool  _shouldRemoveLeadingWhitespaceForChecklistDrop;
     <TTTextStorageStyler> * _styler;
     unsigned long long  _temporaryAttributeEditing;
     long long  _ttChangeInLength;
@@ -52,6 +55,7 @@
     NSMutableArray * _undoCommands;
     NSUndoManager * _undoManager;
     bool  _wantsUndoCommands;
+    bool  _wantsUpdateTrackingForInitialLoading;
 }
 
 @property (nonatomic, readonly) NSAttributedString *_icaxUnfilteredAttributedString;
@@ -76,10 +80,12 @@
 @property (nonatomic) bool isChangingSelectionByGestures;
 @property (nonatomic) bool isDictating;
 @property (nonatomic) bool isDragging;
+@property (nonatomic) bool isDropping;
 @property (nonatomic, readonly) bool isEditingTemporaryAttributes;
 @property (nonatomic) bool isEndingEditing;
 @property (nonatomic) bool isFixing;
 @property (nonatomic) bool isHandlingTextCheckingResults;
+@property (nonatomic) bool isPerformingAccessibilityUndoableTextInsertion;
 @property (nonatomic) bool isReadingSelectionFromPasteboard;
 @property (nonatomic) bool isResettingBaseWritingDirection;
 @property (nonatomic) bool isSelectingText;
@@ -91,6 +97,7 @@
 @property (nonatomic) bool pendingFixupAfterEditing;
 @property (nonatomic) bool retainOriginalFormatting;
 @property (nonatomic) bool shouldConvertTablesToTabs;
+@property (nonatomic) bool shouldRemoveLeadingWhitespaceForChecklistDrop;
 @property (nonatomic, retain) <TTTextStorageStyler> *styler;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSArray *textViews;
@@ -101,9 +108,10 @@
 @property (nonatomic, retain) NSUndoManager *undoManager;
 @property (nonatomic, readonly) NSObject<TTTextUndoTarget> *undoTarget;
 @property (nonatomic) bool wantsUndoCommands;
+@property (nonatomic) bool wantsUpdateTrackingForInitialLoading;
 
 + (id)bulletTextAttributesWithTextFont:(struct UIFont { Class x1; }*)arg1 paragraphStyle:(id)arg2 letterpress:(bool)arg3 withStyler:(id)arg4;
-+ (id)filteredAttributedSubstring:(id)arg1 fromRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 forPlainText:(bool)arg3 forStandardizedText:(bool)arg4 fixAttachments:(bool)arg5;
++ (id)filteredAttributedSubstring:(id)arg1 fromRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 forPlainText:(bool)arg3 forStandardizedText:(bool)arg4 fixAttachments:(bool)arg5 insertListMarkers:(bool)arg6;
 + (void)fixAttachmentsForRenderingInAttributedString:(id)arg1 forPlainText:(bool)arg2 forStandardizedText:(bool)arg3;
 + (double)listItemGlyphPointSizeForUnorderedListStyle:(unsigned int)arg1 withStyler:(id)arg2;
 + (id)removeDataDetectorLinksForAttributedString:(id)arg1;
@@ -136,7 +144,7 @@
 - (id)correctParagraphStyleReuseForRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 withNewAttributedString:(id)arg2;
 - (id)customPasteboardDataFromRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 persistenceHelper:(id)arg2;
 - (id)dataFromRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 documentAttributes:(id)arg2 error:(id*)arg3;
-- (void)dd_makeLinksForResultsInAttributesOfType:(unsigned long long)arg1 context:(id)arg2;
+- (void)dd_makeLinksForResultsInAttributesOfType:(unsigned long long)arg1 context:(id)arg2 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3;
 - (void)dd_resetResults;
 - (bool)delayedFixupAfterEditingWantsUndoCommand;
 - (id)deletedRanges;
@@ -155,6 +163,7 @@
 - (bool)filterSubstringAttributesForPlainText;
 - (id)filteredAttributedStringForUTI:(id)arg1 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (id)filteredAttributedSubstringFromRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
+- (id)filteredAttributedSubstringFromRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 insertListMarkers:(bool)arg2;
 - (void)fixupAfterEditing;
 - (void)fixupAfterEditingDelayedToEndOfRunLoop;
 - (void)forceFixupAfterEditingIfDelayed;
@@ -172,21 +181,26 @@
 - (bool)isDeletingDictationAttachmentWithReplacementRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 replacementLength:(unsigned long long)arg2;
 - (bool)isDictating;
 - (bool)isDragging;
+- (bool)isDropping;
 - (bool)isEditing;
 - (bool)isEditingOrConvertingMarkedText:(bool)arg1;
 - (bool)isEditingTemporaryAttributes;
 - (bool)isEndingEditing;
 - (bool)isFixing;
 - (bool)isHandlingTextCheckingResults;
+- (bool)isPerformingAccessibilityUndoableTextInsertion;
 - (bool)isReadingSelectionFromPasteboard;
 - (bool)isResettingBaseWritingDirection;
 - (bool)isSelectingText;
 - (bool)isTypingOrMarkingText;
+- (id)itemProviderForRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 andNote:(id)arg2;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })lastUndoEditRange;
+- (unsigned long long)length;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })logicalRangeForLocation:(unsigned long long)arg1;
 - (unsigned long long)mergeWithDocument:(id)arg1;
 - (id)mergeableString;
 - (bool)mergeableStringIsEqualAfterSerialization:(id)arg1;
+- (id)mergeableStringReplicaUUIDAtIndex:(unsigned long long)arg1;
 - (id)newCoalescingUndoGroup;
 - (id)overrideUndoTarget;
 - (id)pasteboardTypes;
@@ -221,9 +235,11 @@
 - (void)setIsChangingSelectionByGestures:(bool)arg1;
 - (void)setIsDictating:(bool)arg1;
 - (void)setIsDragging:(bool)arg1;
+- (void)setIsDropping:(bool)arg1;
 - (void)setIsEndingEditing:(bool)arg1;
 - (void)setIsFixing:(bool)arg1;
 - (void)setIsHandlingTextCheckingResults:(bool)arg1;
+- (void)setIsPerformingAccessibilityUndoableTextInsertion:(bool)arg1;
 - (void)setIsReadingSelectionFromPasteboard:(bool)arg1;
 - (void)setIsResettingBaseWritingDirection:(bool)arg1;
 - (void)setIsSelectingText:(bool)arg1;
@@ -234,6 +250,7 @@
 - (void)setPendingFixupAfterEditing:(bool)arg1;
 - (void)setRetainOriginalFormatting:(bool)arg1;
 - (void)setShouldConvertTablesToTabs:(bool)arg1;
+- (void)setShouldRemoveLeadingWhitespaceForChecklistDrop:(bool)arg1;
 - (void)setStyler:(id)arg1;
 - (void)setTtChangeInLength:(long long)arg1;
 - (void)setTtEditedMask:(unsigned long long)arg1;
@@ -241,9 +258,13 @@
 - (void)setUndoCommands:(id)arg1;
 - (void)setUndoManager:(id)arg1;
 - (void)setWantsUndoCommands:(bool)arg1;
+- (void)setWantsUpdateTrackingForInitialLoading:(bool)arg1;
 - (bool)shouldBreakUndoCoalescingWithReplacementRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 replacementLength:(unsigned long long)arg2;
 - (bool)shouldConvertTablesToTabs;
+- (bool)shouldRemoveLeadingWhitespaceForChecklistDrop;
 - (id)standardizedAttributedStringFixingTextAttachments;
+- (id)standardizedAttributedStringFixingTextAttachmentsForRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
+- (id)standardizedAttributedStringFixingTextAttachmentsForRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 styler:(id)arg2;
 - (id)string;
 - (void)styleTextInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (id)styler;
@@ -256,5 +277,6 @@
 - (id)undoManager;
 - (id)undoTarget;
 - (bool)wantsUndoCommands;
+- (bool)wantsUpdateTrackingForInitialLoading;
 
 @end

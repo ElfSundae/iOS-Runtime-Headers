@@ -7,7 +7,7 @@
     id  mNext;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (bool)hasNext;
 - (id)initWithIterator:(id)arg1;
 - (id)next;

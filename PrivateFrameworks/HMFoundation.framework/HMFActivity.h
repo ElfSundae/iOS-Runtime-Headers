@@ -3,16 +3,17 @@
  */
 
 @interface HMFActivity : HMFObject <HMFLogging, HMFObject> {
-    unsigned long long  _assertions;
     NSUUID * _identifier;
     NSObject<OS_os_activity> * _internal;
     NSArray * _internalAssertions;
     HMFUnfairLock * _lock;
     NSString * _name;
+    unsigned long long  _options;
     HMFActivity * _parent;
     NSDate * _startDate;
-    struct os_activity_scope_state_s { unsigned long long x1[2]; } * _state;
+    NSMutableSet * _threadContexts;
     bool  _valid;
+    NSObject<OS_voucher> * _voucher;
 }
 
 @property (readonly) unsigned long long assertions;
@@ -23,6 +24,7 @@
 @property (readonly, copy) NSUUID *identifier;
 @property (nonatomic, readonly) NSArray *internalAssertions;
 @property (readonly, copy) NSString *name;
+@property (readonly) unsigned long long options;
 @property (readonly) HMFActivity *parent;
 @property (readonly, copy) NSString *privateDescription;
 @property (readonly, copy) NSString *propertyDescription;
@@ -31,22 +33,33 @@
 @property (readonly) Class superclass;
 @property (getter=isValid, readonly) bool valid;
 
+// Image: /System/Library/PrivateFrameworks/HMFoundation.framework/HMFoundation
+
 + (void)activityWithName:(id)arg1 block:(id /* block */)arg2;
 + (void)activityWithName:(id)arg1 parent:(id)arg2 assertions:(unsigned long long)arg3 block:(id /* block */)arg4;
 + (void)activityWithName:(id)arg1 parent:(id)arg2 block:(id /* block */)arg3;
-+ (id)assertionsForActivityAssertions:(unsigned long long)arg1 name:(id)arg2;
++ (void)activityWithName:(id)arg1 parent:(id)arg2 options:(unsigned long long)arg3 block:(id /* block */)arg4;
 + (id)bundleIdentifier;
++ (id)currentActivity;
++ (void)initialize;
 + (id)logCategory;
 + (id)shortDescription;
 
 - (void).cxx_destruct;
 - (unsigned long long)assertions;
+- (id)attributeDescriptions;
+- (void)begin;
+- (id /* block */)blockWithBlock:(id /* block */)arg1;
+- (id /* block */)blockWithQualityOfService:(long long)arg1 block:(id /* block */)arg2;
 - (void)dealloc;
+- (void)end;
+- (unsigned long long)hash;
 - (id)identifier;
 - (id)init;
 - (id)initWithName:(id)arg1;
 - (id)initWithName:(id)arg1 parent:(id)arg2;
 - (id)initWithName:(id)arg1 parent:(id)arg2 assertions:(unsigned long long)arg3;
+- (id)initWithName:(id)arg1 parent:(id)arg2 options:(unsigned long long)arg3;
 - (id)internalAssertions;
 - (void)invalidate;
 - (bool)isValid;
@@ -55,9 +68,21 @@
 - (void)markWithFormat:(id)arg1;
 - (void)markWithReason:(id)arg1;
 - (id)name;
+- (unsigned long long)options;
 - (id)parent;
-- (id)propertyDescription;
+- (void)performBlock:(id /* block */)arg1;
 - (id)shortDescription;
 - (id)startDate;
+
+// Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
+
+- (void)logDebugAndMarkWithObject:(id)arg1 format:(id)arg2;
+- (void)logDebugAndMarkWithObject:(id)arg1 reason:(id)arg2;
+- (void)logDefaultAndMarkWithObject:(id)arg1 format:(id)arg2;
+- (void)logDefaultAndMarkWithObject:(id)arg1 reason:(id)arg2;
+- (void)logErrorAndMarkWithObject:(id)arg1 format:(id)arg2;
+- (void)logErrorAndMarkWithObject:(id)arg1 reason:(id)arg2;
+- (void)logInfoAndMarkWithObject:(id)arg1 format:(id)arg2;
+- (void)logInfoAndMarkWithObject:(id)arg1 reason:(id)arg2;
 
 @end

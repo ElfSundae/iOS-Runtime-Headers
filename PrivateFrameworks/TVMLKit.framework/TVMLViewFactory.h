@@ -25,7 +25,6 @@
 - (id)_loadingImageViewForElement:(id)arg1 existingView:(id)arg2;
 - (id)_monogramViewForElement:(id)arg1 existingView:(id)arg2;
 - (id)_organizerViewForElement:(id)arg1 existingView:(id)arg2;
-- (id)_popoverViewWithElement:(id)arg1 existingView:(id)arg2;
 - (id)_progressBarFromElement:(id)arg1 existingView:(id)arg2;
 - (id)_ratingBadgeFromElement:(id)arg1 existingView:(id)arg2;
 - (void)_registerViewCreators;

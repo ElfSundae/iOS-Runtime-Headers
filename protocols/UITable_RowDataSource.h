@@ -5,7 +5,7 @@
 
 @required
 
-- (void)_applyContentSizeDeltaForEstimatedHeightAdjustments:(double)arg1;
+- (void)_applyContentSizeDeltaImmediately:(double)arg1;
 - (void)_coalesceContentSizeUpdateWithDelta:(double)arg1;
 - (<UITableConstants> *)_constants;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_contentInset;
@@ -39,7 +39,6 @@
 - (bool)_shouldUseNewHeaderFooterBehavior;
 - (bool)_shouldUseSearchBarHeaderBehavior;
 - (double)_sidePadding;
-- (double)_swipeToDeleteOffsetForRow:(long long)arg1 inSection:(long long)arg2;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_tableContentInset;
 - (UIView *)_tableFooterView;
 - (UIView *)_tableHeaderView;

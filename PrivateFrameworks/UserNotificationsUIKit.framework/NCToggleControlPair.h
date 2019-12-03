@@ -2,16 +2,16 @@
    Image: /System/Library/PrivateFrameworks/UserNotificationsUIKit.framework/UserNotificationsUIKit
  */
 
-@interface NCToggleControlPair : UIView <PLContentSizeCategoryAdjusting> {
-    NSString * _backgroundGroupName;
+@interface NCToggleControlPair : UIView <MTMaterialGrouping, PLContentSizeCategoryAdjusting> {
+    NSString * _materialGroupNameBase;
     NSArray * _toggleControls;
 }
 
 @property (nonatomic) bool adjustsFontForContentSizeCategory;
-@property (nonatomic, copy) NSString *backgroundGroupName;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, copy) NSString *materialGroupNameBase;
 @property (nonatomic, copy) NSString *preferredContentSizeCategory;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSArray *toggleControls;
@@ -24,12 +24,12 @@
 - (id)_trailingToggleControl;
 - (bool)adjustForContentSizeCategoryChange;
 - (bool)adjustsFontForContentSizeCategory;
-- (id)backgroundGroupName;
 - (id)initWithLeadingToggleControl:(id)arg1 trailingToggleControl:(id)arg2;
 - (void)layoutSubviews;
+- (id)materialGroupNameBase;
 - (void)setAdjustsFontForContentSizeCategory:(bool)arg1;
-- (void)setBackgroundGroupName:(id)arg1;
 - (void)setLeadingControlExpanded:(bool)arg1 animated:(bool)arg2;
+- (void)setMaterialGroupNameBase:(id)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (id)toggleControls;
 

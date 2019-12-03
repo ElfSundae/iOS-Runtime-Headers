@@ -5,19 +5,20 @@
 
 @required
 
-- (long long)aptpRequestDataForFiles:(NSArray *)arg1 fromDevice:(ICCameraDevice *)arg2 contextInfo:(void*)arg3;
-- (long long)aptpRetrieveDataForFiles:(ICCameraDevice *)arg1 contextInfo:(void*)arg2;
 - (long long)closeDevice:(ICDevice *)arg1 contextInfo:(void*)arg2;
-- (long long)closeSession:(ICDevice *)arg1 contextInfo:(void*)arg2;
-- (long long)deleteFile:(ICCameraFile *)arg1 fromDevice:(ICCameraDevice *)arg2 contextInfo:(void*)arg3;
-- (long long)downloadFile:(ICCameraFile *)arg1 fromDevice:(ICCameraDevice *)arg2 options:(NSDictionary *)arg3 contextInfo:(void*)arg4;
+- (long long)closeSession:(void *)arg1 withOptions:(void *)arg2 completion:(void *)arg3; // needs 3 arg types, found 9: ICCameraDevice *, NSDictionary *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, id, NSMutableDictionary *, void*
+- (long long)deleteFile:(void *)arg1 fromDevice:(void *)arg2 completion:(void *)arg3; // needs 3 arg types, found 9: ICCameraFile *, ICCameraDevice *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, id, NSMutableDictionary *, void*
+- (long long)downloadFile:(void *)arg1 fromDevice:(void *)arg2 withOptions:(void *)arg3 completion:(void *)arg4; // needs 4 arg types, found 10: ICCameraFile *, ICCameraDevice *, NSDictionary *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, id, NSMutableDictionary *, void*
 - (long long)eject:(ICCameraDevice *)arg1;
 - (void)enumerateContent;
-- (long long)getDataOfFile:(void *)arg1 fromDevice:(void *)arg2 withOptions:(void *)arg3 completion:(void *)arg4; // needs 4 arg types, found 10: ICCameraFile *, ICCameraDevice *, NSDictionary *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, ICCameraFile *, NSMutableDictionary *, void*
-- (long long)getMetadataOfFile:(void *)arg1 fromDevice:(void *)arg2 withOptions:(void *)arg3 completion:(void *)arg4; // needs 4 arg types, found 10: ICCameraFile *, ICCameraDevice *, NSDictionary *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, ICCameraFile *, NSMutableDictionary *, void*
-- (long long)getThumbnailOfFile:(void *)arg1 fromDevice:(void *)arg2 withOptions:(void *)arg3 completion:(void *)arg4; // needs 4 arg types, found 10: ICCameraFile *, ICCameraDevice *, NSDictionary *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, ICCameraFile *, NSMutableDictionary *, void*
+- (long long)getFileData:(void *)arg1 fromDevice:(void *)arg2 withOptions:(void *)arg3 completion:(void *)arg4; // needs 4 arg types, found 10: ICCameraFile *, ICCameraDevice *, NSDictionary *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, id, NSMutableDictionary *, void*
+- (long long)getFileMetadata:(void *)arg1 fromDevice:(void *)arg2 withOptions:(void *)arg3 completion:(void *)arg4; // needs 4 arg types, found 10: ICCameraFile *, ICCameraDevice *, NSDictionary *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, id, NSMutableDictionary *, void*
+- (long long)getFileThumbnail:(void *)arg1 fromDevice:(void *)arg2 withOptions:(void *)arg3 completion:(void *)arg4; // needs 4 arg types, found 10: ICCameraFile *, ICCameraDevice *, NSDictionary *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, id, NSMutableDictionary *, void*
 - (long long)openDevice:(NSDictionary *)arg1 contextInfo:(void*)arg2;
-- (long long)openSession:(ICDevice *)arg1 contextInfo:(void*)arg2;
-- (long long)syncClock:(ICDevice *)arg1 contextInfo:(void*)arg2;
+- (long long)openSession:(void *)arg1 withOptions:(void *)arg2 completion:(void *)arg3; // needs 3 arg types, found 9: ICCameraDevice *, NSDictionary *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, id, NSMutableDictionary *, void*
+- (long long)registerDevice:(ICCameraDevice *)arg1 forImageCaptureEventNotifications:(NSArray *)arg2;
+- (long long)sendDevice:(void *)arg1 ptpCommand:(void *)arg2 andPayload:(void *)arg3 completion:(void *)arg4; // needs 4 arg types, found 10: ICCameraDevice *, NSData *, NSData *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, id, NSMutableDictionary *, void*
+- (long long)syncClock:(void *)arg1 completion:(void *)arg2; // needs 2 arg types, found 8: ICDevice *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, id, NSMutableDictionary *, void*
+- (long long)unregisterDevice:(ICCameraDevice *)arg1 forImageCaptureEventNotifications:(NSArray *)arg2;
 
 @end

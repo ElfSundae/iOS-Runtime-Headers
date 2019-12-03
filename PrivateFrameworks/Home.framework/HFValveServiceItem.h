@@ -7,7 +7,7 @@
 + (id)supportedServiceTypes;
 
 - (id)_subclass_updateWithOptions:(id)arg1;
-- (bool)containsActionableCharacteristics;
+- (bool)containsActions;
 - (id)createControlItems;
 - (id)currentStateActionBuildersForHome:(id)arg1;
 

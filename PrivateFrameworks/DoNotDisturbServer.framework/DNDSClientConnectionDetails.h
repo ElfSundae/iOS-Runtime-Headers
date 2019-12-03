@@ -2,28 +2,26 @@
    Image: /System/Library/PrivateFrameworks/DoNotDisturbServer.framework/DoNotDisturbServer
  */
 
-@interface DNDSClientConnectionDetails : NSObject {
-    NSXPCConnection * _connection;
-    NSString * _identifier;
-    bool  _wantsAssertionUpdates;
+@interface DNDSClientConnectionDetails : NSObject <NSCopying, NSMutableCopying> {
+    NSSet * _assertionUpdateClientIdentifiers;
+    NSUUID * _interruptionInvalidationAssertionUUID;
     bool  _wantsSettingsUpdates;
     bool  _wantsStateUpdates;
 }
 
-@property (nonatomic, readonly) NSXPCConnection *connection;
-@property (nonatomic, readonly, copy) NSString *identifier;
-@property (nonatomic) bool wantsAssertionUpdates;
-@property (nonatomic) bool wantsSettingsUpdates;
-@property (nonatomic) bool wantsStateUpdates;
+@property (nonatomic, readonly, copy) NSSet *assertionUpdateClientIdentifiers;
+@property (nonatomic, readonly, copy) NSUUID *interruptionInvalidationAssertionUUID;
+@property (nonatomic, readonly) bool wantsSettingsUpdates;
+@property (nonatomic, readonly) bool wantsStateUpdates;
 
 - (void).cxx_destruct;
-- (id)connection;
-- (id)identifier;
-- (id)initWithIdentifier:(id)arg1 connection:(id)arg2;
-- (void)setWantsAssertionUpdates:(bool)arg1;
-- (void)setWantsSettingsUpdates:(bool)arg1;
-- (void)setWantsStateUpdates:(bool)arg1;
-- (bool)wantsAssertionUpdates;
+- (id)_initWithDetails:(id)arg1;
+- (id)_initWithInterruptionInvalidationAssertionUUID:(id)arg1 assertionUpdateClientIdentifiers:(id)arg2 wantsStateUpdates:(bool)arg3 wantsSettingsUpdates:(bool)arg4;
+- (id)assertionUpdateClientIdentifiers;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)init;
+- (id)interruptionInvalidationAssertionUUID;
+- (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (bool)wantsSettingsUpdates;
 - (bool)wantsStateUpdates;
 

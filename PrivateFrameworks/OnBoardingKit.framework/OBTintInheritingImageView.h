@@ -2,9 +2,17 @@
    Image: /System/Library/PrivateFrameworks/OnBoardingKit.framework/OnBoardingKit
  */
 
-@interface OBTintInheritingImageView : UIImageView
+@interface OBTintInheritingImageView : UIImageView {
+    UIImage * _originalImage;
+}
 
+@property (nonatomic, retain) UIImage *originalImage;
+
+- (void).cxx_destruct;
 - (id)initWithImage:(id)arg1 highlightedImage:(id)arg2;
+- (id)originalImage;
+- (void)setImage:(id)arg1;
+- (void)setOriginalImage:(id)arg1;
 - (void)tintColorDidChange;
 
 @end

@@ -20,8 +20,13 @@
     _MROriginProtobuf * _origin;
     id /* block */  _playbackQueueCallback;
     id /* block */  _playbackQueueTransactionCallback;
+    id /* block */  _playbackSessionCallback;
+    id /* block */  _playbackSessionMigrateBeginCallback;
+    id /* block */  _playbackSessionMigrateEndCallback;
+    id /* block */  _playbackSessionMigrateRequestCallback;
     unsigned int  _routeDiscoveryMode;
     NSObject<OS_dispatch_queue> * _serialQueue;
+    float  _volume;
     unsigned int  _volumeCapabilities;
 }
 
@@ -40,7 +45,12 @@
 @property (nonatomic, readonly) _MROriginProtobuf *origin;
 @property (nonatomic, copy) id /* block */ playbackQueueCallback;
 @property (nonatomic, copy) id /* block */ playbackQueueTransactionCallback;
+@property (nonatomic, copy) id /* block */ playbackSessionCallback;
+@property (nonatomic, copy) id /* block */ playbackSessionMigrateBeginCallback;
+@property (nonatomic, copy) id /* block */ playbackSessionMigrateEndCallback;
+@property (nonatomic, copy) id /* block */ playbackSessionMigrateRequestCallback;
 @property (nonatomic) unsigned int routeDiscoveryMode;
+@property (nonatomic) float volume;
 @property (nonatomic) unsigned int volumeCapabilities;
 
 - (void).cxx_destruct;
@@ -68,6 +78,10 @@
 - (id)origin;
 - (id /* block */)playbackQueueCallback;
 - (id /* block */)playbackQueueTransactionCallback;
+- (id /* block */)playbackSessionCallback;
+- (id /* block */)playbackSessionMigrateBeginCallback;
+- (id /* block */)playbackSessionMigrateEndCallback;
+- (id /* block */)playbackSessionMigrateRequestCallback;
 - (void)removeClient:(id)arg1;
 - (void)restoreNowPlayingClientState;
 - (unsigned int)routeDiscoveryMode;
@@ -84,8 +98,14 @@
 - (void)setIsOverrideApp:(bool)arg1;
 - (void)setPlaybackQueueCallback:(id /* block */)arg1;
 - (void)setPlaybackQueueTransactionCallback:(id /* block */)arg1;
+- (void)setPlaybackSessionCallback:(id /* block */)arg1;
+- (void)setPlaybackSessionMigrateBeginCallback:(id /* block */)arg1;
+- (void)setPlaybackSessionMigrateEndCallback:(id /* block */)arg1;
+- (void)setPlaybackSessionMigrateRequestCallback:(id /* block */)arg1;
 - (void)setRouteDiscoveryMode:(unsigned int)arg1;
+- (void)setVolume:(float)arg1;
 - (void)setVolumeCapabilities:(unsigned int)arg1;
+- (float)volume;
 - (unsigned int)volumeCapabilities;
 
 @end

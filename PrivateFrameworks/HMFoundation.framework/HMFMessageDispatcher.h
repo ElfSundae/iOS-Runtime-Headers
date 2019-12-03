@@ -2,42 +2,55 @@
    Image: /System/Library/PrivateFrameworks/HMFoundation.framework/HMFoundation
  */
 
-@interface HMFMessageDispatcher : HMFObject <HMFMessageTransportDelegate> {
-    NSMutableDictionary * _notificationHandlers;
-    bool  _remote;
+@interface HMFMessageDispatcher : HMFObject <HMFLogging, HMFMessageTransportDelegate, HMFTimerDelegate> {
+    NSMutableDictionary * _destinationHandlerIndexes;
+    NSSet * _filterClasses;
+    NSMutableOrderedSet * _handlers;
+    NSMutableArray * _indexOperations;
+    HMFTimer * _indexWatchdog;
+    <HMFLocking> * _lock;
+    NSMutableDictionary * _nameHandlerIndexes;
+    NSObject<OS_dispatch_queue> * _queue;
     HMFMessageTransport * _transport;
     NSObject<OS_dispatch_queue> * _workQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly) NSMutableDictionary *destinationHandlerIndexes;
+@property (copy) NSSet *filterClasses;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) NSMutableDictionary *notificationHandlers;
-@property (getter=isRemote, nonatomic) bool remote;
+@property (readonly) NSMutableDictionary *nameHandlerIndexes;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) HMFMessageTransport *transport;
-@property (nonatomic, retain) NSObject<OS_dispatch_queue> *workQueue;
+@property (readonly) NSObject<OS_dispatch_queue> *workQueue;
+
++ (id)logCategory;
 
 - (void).cxx_destruct;
-- (void)_deregisterForMessage:(id)arg1 receiver:(id)arg2 token:(id)arg3;
 - (void)deregisterForMessage:(id)arg1 receiver:(id)arg2;
 - (void)deregisterReceiver:(id)arg1;
+- (id)destinationHandlerIndexes;
 - (void)dispatchMessage:(id)arg1;
 - (void)dispatchMessage:(id)arg1 target:(id)arg2;
+- (id)filterClasses;
+- (id)handlersForMessage:(id)arg1;
 - (id)init;
 - (id)initWithTransport:(id)arg1;
-- (bool)isRemote;
 - (void)messageTransport:(id)arg1 didReceiveMessage:(id)arg2;
-- (id)notificationHandlers;
+- (id)nameHandlerIndexes;
 - (void)registerForMessage:(id)arg1 receiver:(id)arg2 messageHandler:(id /* block */)arg3;
+- (void)registerForMessage:(id)arg1 receiver:(id)arg2 policies:(id)arg3 messageHandler:(id /* block */)arg4;
+- (void)registerForMessage:(id)arg1 receiver:(id)arg2 policies:(id)arg3 selector:(SEL)arg4;
+- (void)registerForMessage:(id)arg1 receiver:(id)arg2 selector:(SEL)arg3;
+- (void)sendMessage:(id)arg1;
 - (void)sendMessage:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)sendMessage:(id)arg1 target:(id)arg2;
 - (void)sendMessage:(id)arg1 target:(id)arg2 andInvokeCompletionHandler:(id /* block */)arg3;
 - (void)sendMessage:(id)arg1 target:(id)arg2 responseQueue:(id)arg3 responseHandler:(id /* block */)arg4;
 - (void)sendMessage:(id)arg1 target:(id)arg2 responseQueue:(id)arg3 responseHandler:(id /* block */)arg4 completionHandler:(id /* block */)arg5;
-- (void)setNotificationHandlers:(id)arg1;
-- (void)setRemote:(bool)arg1;
-- (void)setWorkQueue:(id)arg1;
+- (void)setFilterClasses:(id)arg1;
+- (void)timerDidFire:(id)arg1;
 - (id)transport;
 - (id)workQueue;
 

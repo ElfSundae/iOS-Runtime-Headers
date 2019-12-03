@@ -17,14 +17,17 @@
 
 - (void).cxx_destruct;
 - (void)_registerCallbacks;
-- (void)addCustomXPCHandler:(id /* block */)arg1 forKey:(id)arg2;
+- (void)addCustomXPCHandler:(id /* block */)arg1 forKey:(unsigned long long)arg2;
 - (id)connection;
 - (void)dealloc;
 - (id)initWithConnection:(id)arg1 queue:(id)arg2;
 - (id /* block */)invalidationHandler;
 - (id /* block */)messageHandler;
 - (int)pid;
-- (void)removeCustomXPCHandler:(id)arg1;
+- (void)removeCustomXPCHandler:(unsigned long long)arg1;
+- (void)sendMessage:(id)arg1 queue:(id)arg2 reply:(id /* block */)arg3;
+- (void)sendMessageWithType:(unsigned long long)arg1 queue:(id)arg2 reply:(id /* block */)arg3;
+- (id)sendSyncMessage:(id)arg1 error:(id*)arg2;
 - (void)setInvalidationHandler:(id /* block */)arg1;
 - (void)setMessageHandler:(id /* block */)arg1;
 

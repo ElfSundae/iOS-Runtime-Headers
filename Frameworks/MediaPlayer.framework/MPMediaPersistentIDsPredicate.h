@@ -28,10 +28,10 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithProtobufferDecodableObject:(id)arg1;
+- (id)initWithProtobufferDecodableObject:(id)arg1 library:(id)arg2;
 - (bool)isEqual:(id)arg1;
 - (const long long*)persistentIDs;
-- (id)protobufferEncodableObject;
+- (id)protobufferEncodableObjectFromLibrary:(id)arg1;
 - (bool)shouldContain;
 
 @end

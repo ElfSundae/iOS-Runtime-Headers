@@ -18,16 +18,20 @@
 - (void).cxx_destruct;
 - (void)_presentDisplayableError:(id)arg1;
 - (void)_presentViewController:(id)arg1;
+- (void)_reportEventForPassIfNecessary:(id)arg1;
 - (void)_terminateSetupFlow;
 - (bool)_willPerformProvisioningActions;
 - (void)accountFlowController:(id)arg1 requestsPresentationOfDisplayableError:(id)arg2;
 - (void)accountFlowController:(id)arg1 requestsPresentationOfViewController:(id)arg2;
+- (void)dealloc;
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (void)explanationViewDidSelectSetupLater:(id)arg1;
 - (id)initWithAccountFlowController:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3;
 - (void)loadView;
 - (void)preflightWithCompletion:(id /* block */)arg1;
+- (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;
 
 @end

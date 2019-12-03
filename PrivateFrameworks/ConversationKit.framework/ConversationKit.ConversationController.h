@@ -2,18 +2,24 @@
    Image: /System/Library/PrivateFrameworks/ConversationKit.framework/ConversationKit
  */
 
-@interface ConversationKit.ConversationController : NSObject <AVCRemoteVideoClientDelegate, TUAudioFrequencyControllerDelegate> {
+@interface ConversationKit.ConversationController : NSObject <AVCRemoteVideoClientDelegate, TUAudioFrequencyControllerDelegate, TUMomentsControllerDelegate> {
+    void $__lazy_storage_$_momentsController;
     void audioCallbackQueue;
     void audioFrequencyController;
     void audioRouteDidChange;
-    void availableParticipantColors;
+    void blockedCallerChecker;
+    void blockedCallerLookupQueue;
+    void blockedParticipantsAdded;
+    void blocklistCheckedHandles;
     void broadcastingState;
     void call;
     void callCenter;
+    void cameraZoomAvailabiltyDidChange;
     void carPlayConnectedDidChange;
+    void carPlayDisconnectRequiresLocalVideoEnable;
     void conversationState;
     void conversationStateDidChange;
-    void conversationUUID;
+    union { in /* Warning: Unrecognized filer type: 'u' using 'void*' */ void*x1; long x2; long x3; }  conversationUUID;
     void deviceOrientation;
     void didAddVisibleParticipant;
     void didRemoveVisibleParticipant;
@@ -23,23 +29,30 @@
     void didUpdateVisibleParticipant;
     void enableVideoOnJoin;
     void includeLocalParticipantInVisibleParticipants;
-    void localParticipant;
+    void lastRegisteredMomentsProvider;
+    union { in /* Warning: Unrecognized filer type: 'u' using 'void*' */ void*x1; long x2; long x3; }  localParticipant;
+    void needsUserConfirmationForBlockedCaller;
     void participantAudioPowerDidChange;
     void participantMediaProviderCreator;
     void participantsMediaPrioritiesDidChange;
     void recentPresentationContexts;
     void remoteParticipants;
+    void scheduledIsChangingMirroredVideoResetDates;
     void visibleParticipantDidBecomeActive;
 }
 
 @property (nonatomic, readonly) NSString *description;
 
 - (void).cxx_destruct;
+- (void)dealloc;
 - (id)description;
-- (void)frequencyController:(id)arg1 audioPowerChanged:(float)arg2 forParticipantWithStreamToken:(unsigned long long)arg3;
+- (void)frequencyController:(id)arg1 audioPowerChanged:(float)arg2 forParticipantWithStreamToken:(long long)arg3;
+- (void)handleCameraZoomBecameAvailable:(id)arg1;
+- (void)handleCameraZoomBecameUnavailable:(id)arg1;
 - (void)handleLocalVideoPreviewFirstFrameArrived:(id)arg1;
 - (void)handleScreenConnectionDidUpdate:(id)arg1;
 - (id)init;
+- (void)momentsController:(id)arg1 didUpdateCapabilities:(id)arg2 forProvider:(id)arg3;
 - (void)remoteVideoClient:(id)arg1 remoteVideoAttributesDidChange:(id)arg2;
 - (void)remoteVideoClient:(id)arg1 remoteVideoDidPause:(bool)arg2;
 - (void)remoteVideoClient:(id)arg1 videoDidDegrade:(bool)arg2;

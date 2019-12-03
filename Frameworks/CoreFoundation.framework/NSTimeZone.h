@@ -2,10 +2,15 @@
    Image: /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
  */
 
-@interface NSTimeZone : NSObject <NSCopying, NSSecureCoding>
+@interface NSTimeZone : NSObject <INJSONSerializable, NSCopying, NSSecureCoding>
 
+@property (nonatomic, readonly, copy) NSString *ISO8601TimeZoneOffsetFromUTC;
 @property (readonly, copy) NSData *data;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, copy) NSString *name;
+@property (readonly) Class superclass;
 
 // Image: /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
 
@@ -68,6 +73,16 @@
 - (id)initWithCoder:(id)arg1;
 - (id)replacementObjectForPortCoder:(id)arg1;
 
+// Image: /System/Library/Frameworks/Intents.framework/Intents
+
++ (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
+
+- (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
+
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
+- (id)ISO8601TimeZoneOffsetFromUTC;
+
 // Image: /System/Library/Frameworks/VideoSubscriberAccount.framework/VideoSubscriberAccount
 
 + (bool)vs_isTimeZoneSet;
@@ -94,15 +109,23 @@
 + (id)systemTimeZoneFromString:(id)arg1;
 + (id)systemTimeZoneWithWindowsName:(id)arg1;
 
-// Image: /System/Library/PrivateFrameworks/DataAccess.framework/Frameworks/DAEAS.framework/DAEAS
+// Image: /System/Library/PrivateFrameworks/ExchangeSync.framework/Frameworks/DAEAS.framework/DAEAS
 
 + (id)gmt;
+
+// Image: /System/Library/PrivateFrameworks/HMFoundation.framework/HMFoundation
+
++ (id)hmf_unarchiveFromData:(id)arg1 error:(id*)arg2;
 
 // Image: /System/Library/PrivateFrameworks/Navigation.framework/Navigation
 
 - (bool)_navigation_hasSameOffsetFromGMTAsTimeZone:(id)arg1;
 - (bool)_navigation_isEquivalentToTimeZone:(id)arg1 forDate:(id)arg2;
 - (bool)_navigation_isEquivalentToTimeZone:(id)arg1 forDates:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit
+
+- (bool)rem_isEquivalentTo:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/iCalendar.framework/iCalendar
 

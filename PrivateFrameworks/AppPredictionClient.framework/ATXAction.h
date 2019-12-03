@@ -14,6 +14,7 @@
     bool  _isFutureMedia;
     bool  _isTVWhiteListedLongFormMedia;
     NSString * _itemIdentifier;
+    NSString * _languageCode;
     ATXAVRouteInfo * _routeInfo;
     NSString * _subtitle;
     NSString * _title;
@@ -27,8 +28,6 @@
 @property (nonatomic, readonly) NSString *bundleId;
 @property (nonatomic, readonly) CSSearchableItemAttributeSet *contentAttributeSet;
 @property (nonatomic, readonly) ATXActionCriteria *criteria;
-@property (nonatomic, readonly) NSString *customSubtitle;
-@property (nonatomic, readonly) NSString *customTitle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -47,6 +46,7 @@
 // Image: /System/Library/PrivateFrameworks/AppPredictionClient.framework/AppPredictionClient
 
 + (id)_extractValueInKeyValueBlob:(id)arg1 withKey:(id)arg2;
++ (bool)_isTVIntent:(id)arg1 bundleId:(id)arg2;
 + (bool)_isTVWhiteListedLongFormMediaIntent:(id)arg1 bundleId:(id)arg2;
 + (unsigned long long)_userActivityHashForUserInfoDict:(id)arg1 activityType:(id)arg2 webpageURL:(id)arg3;
 + (id)getActionKeyForBundleId:(id)arg1 actionType:(id)arg2;
@@ -56,6 +56,7 @@
 
 - (void).cxx_destruct;
 - (id)_bundleIdForDisplay;
+- (bool)_shouldUseCachedTitle:(id)arg1 cachedLanguageCode:(id)arg2;
 - (id)_spotlightContentType;
 - (id)actionDescription;
 - (id)actionKey;
@@ -63,14 +64,12 @@
 - (id)actionTitle;
 - (unsigned long long)actionType;
 - (id)actionUUID;
-- (id)atx_actionWithRouteInfo:(id)arg1;
+- (id)actionWithRouteInfo:(id)arg1;
 - (id)bundleId;
 - (id)contentAttributeSet;
 - (id)copyWithParameterWhitelist:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)criteria;
-- (id)customSubtitle;
-- (id)customTitle;
 - (id)dateForAction;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
@@ -79,18 +78,17 @@
 - (id)heuristic;
 - (id)heuristicMetadata;
 - (id)init;
-- (id)initWithActivity:(id)arg1 activityString:(id)arg2 itemIdentifier:(id)arg3 contentAttributeSet:(id)arg4 intent:(id)arg5 actionUUID:(id)arg6 bundleId:(id)arg7 type:(unsigned long long)arg8 heuristic:(id)arg9 heuristicMetadata:(id)arg10 criteria:(id)arg11 isFutureMedia:(bool)arg12 routeInfo:(id)arg13 title:(id)arg14 subtitle:(id)arg15;
+- (id)initWithActivity:(id)arg1 activityString:(id)arg2 itemIdentifier:(id)arg3 contentAttributeSet:(id)arg4 intent:(id)arg5 actionUUID:(id)arg6 bundleId:(id)arg7 type:(unsigned long long)arg8 heuristic:(id)arg9 heuristicMetadata:(id)arg10 criteria:(id)arg11 isFutureMedia:(bool)arg12 routeInfo:(id)arg13 title:(id)arg14 subtitle:(id)arg15 languageCode:(id)arg16;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIntent:(id)arg1 actionUUID:(id)arg2 bundleId:(id)arg3 heuristic:(id)arg4 criteria:(id)arg5 isFutureMedia:(bool)arg6 title:(id)arg7 subtitle:(id)arg8;
 - (id)initWithIntent:(id)arg1 actionUUID:(id)arg2 bundleId:(id)arg3 heuristic:(id)arg4 heuristicMetadata:(id)arg5 criteria:(id)arg6 isFutureMedia:(bool)arg7 title:(id)arg8 subtitle:(id)arg9;
-- (id)initWithNSUserActivity:(id)arg1 actionUUID:(id)arg2 bundleId:(id)arg3 contentAttributeSet:(id)arg4 itemIdentifier:(id)arg5 heuristic:(id)arg6 criteria:(id)arg7 isFutureMedia:(bool)arg8 title:(id)arg9 subtitle:(id)arg10;
 - (id)initWithNSUserActivity:(id)arg1 actionUUID:(id)arg2 bundleId:(id)arg3 contentAttributeSet:(id)arg4 itemIdentifier:(id)arg5 heuristic:(id)arg6 heuristicMetadata:(id)arg7 criteria:(id)arg8 isFutureMedia:(bool)arg9 title:(id)arg10 subtitle:(id)arg11;
-- (id)initWithNSUserActivityString:(id)arg1 actionUUID:(id)arg2 bundleId:(id)arg3 itemIdentifier:(id)arg4 contentAttributeSet:(id)arg5 heuristic:(id)arg6 isFutureMedia:(bool)arg7 title:(id)arg8 subtitle:(id)arg9;
+- (id)initWithNSUserActivityString:(id)arg1 actionUUID:(id)arg2 bundleId:(id)arg3 itemIdentifier:(id)arg4 contentAttributeSet:(id)arg5 heuristic:(id)arg6 heuristicMetadata:(id)arg7 isFutureMedia:(bool)arg8 title:(id)arg9 subtitle:(id)arg10;
 - (id)intent;
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToAction:(id)arg1;
 - (bool)isFutureMedia;
 - (bool)isHeuristic;
+- (bool)isTVAction;
 - (bool)isTVWhiteListedLongFormMedia;
 - (id)itemIdentifier;
 - (id)json;
@@ -98,6 +96,8 @@
 - (id)routeInfo;
 - (void)setCriteria:(id)arg1;
 - (void)setHeuristic:(id)arg1;
+- (void)setSubtitleForSerializationToCache;
+- (void)setTitleForSerializationToCache;
 - (id)underlyingInteraction;
 - (id)userActivity;
 - (unsigned long long)userActivityHash;

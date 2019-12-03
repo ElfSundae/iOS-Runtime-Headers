@@ -5,6 +5,7 @@
 @interface SASStartSpeech : SABaseCommand <SAServerBoundCommand>
 
 @property (nonatomic, copy) NSString *aceId;
+@property (nonatomic, copy) NSString *audioDestination;
 @property (nonatomic, copy) NSString *audioSource;
 @property (nonatomic) bool clearContext;
 @property (nonatomic) int codec;
@@ -34,6 +35,7 @@
 + (id)startSpeech;
 + (id)startSpeechWithDictionary:(id)arg1 context:(id)arg2;
 
+- (id)audioDestination;
 - (id)audioSource;
 - (bool)clearContext;
 - (int)codec;
@@ -53,6 +55,7 @@
 - (id)noiseReductionLevel;
 - (id)origin;
 - (bool)requiresResponse;
+- (void)setAudioDestination:(id)arg1;
 - (void)setAudioSource:(id)arg1;
 - (void)setClearContext:(bool)arg1;
 - (void)setCodec:(int)arg1;

@@ -3,14 +3,16 @@
  */
 
 @interface CAMetalLayer : CALayer {
-    struct _CAMetalLayerPrivate { struct Atomic { struct { int x_1_2_1; } x_1_1_1; } x1; struct Atomic { struct { int x_1_2_1; } x_2_1_1; } x2; struct SpinLock { struct { int x_1_2_1; } x_3_1_1; } x3; struct _CAImageQueue {} *x4; id x5; double x6; struct List<_CAMetalDrawablePrivate *> {} *x7; unsigned int x8; id x9; struct CGSize { double x_10_1_1; double x_10_1_2; } x10; unsigned int x11; unsigned int x12; unsigned int x13; unsigned int x14; struct Atomic { struct { int x_1_2_1; } x_15_1_1; } x15; id x16; /* Warning: Unrecognized filer type: 't' using 'void*' */ void*x17; out void*x18; int x19; BOOL x20; void*x21; struct { int x_22_1_1; } x22; } * _priv;
+    struct _CAMetalLayerPrivate { struct Atomic { struct { int x_1_2_1; } x_1_1_1; } x1; struct Atomic { struct { int x_1_2_1; } x_2_1_1; } x2; struct SpinLock { struct { int x_1_2_1; } x_3_1_1; } x3; struct _CAImageQueue {} *x4; id x5; double x6; double x7; struct List<_CAMetalDrawablePrivate *> {} *x8; unsigned int x9; id x10; id x11; unsigned long long x12; unsigned long long x13; struct CGSize { double x_14_1_1; double x_14_1_2; } x14; unsigned int x15; unsigned int x16; unsigned int x17; unsigned int x18; struct Atomic { struct { int x_1_2_1; } x_19_1_1; } x19; id x20; struct Atomic { struct { int x_1_2_1; } x_21_1_1; } x21; struct Atomic { struct { int x_1_2_1; } x_22_1_1; } x22; id x23; id x24; id x25; struct SpinLock { struct { int x_1_2_1; } x_26_1_1; } x26; id x27; unsigned long long x28; struct SpinLock { struct { int x_1_2_1; } x_29_1_1; } x29; id x30; unsigned long long x31; struct CGColorSpace {} *x32; unsigned long long x33; unsigned int x34 : 1; unsigned int x35 : 1; unsigned int x36 : 1; unsigned int x37 : 1; unsigned int x38 : 1; } * _priv;
 }
 
 @property bool allowsNextDrawableTimeout;
+@property struct CGColorSpace { }*colorspace;
 @property (retain) <MTLDevice> *device;
 @property (readonly) unsigned long long displayCompositingInternalStatus;
 @property struct CGSize { double x1; double x2; } drawableSize;
 @property double drawableTimeoutSeconds;
+@property bool exclusiveMode;
 @property bool fenceEnabled;
 @property bool framebufferOnly;
 @property double inputTime;
@@ -18,6 +20,7 @@
 @property unsigned long long maximumDrawableCount;
 @property bool nonDefaultColorspace;
 @property unsigned long long pixelFormat;
+@property (readonly) <MTLDevice> *preferredDevice;
 @property bool presentsWithTransaction;
 @property bool serverSyncEnabled;
 
@@ -36,6 +39,7 @@
 - (bool)displaySyncEnabled;
 - (struct CGSize { double x1; double x2; })drawableSize;
 - (double)drawableTimeoutSeconds;
+- (bool)exclusiveMode;
 - (bool)fenceEnabled;
 - (bool)framebufferOnly;
 - (id)init;
@@ -48,15 +52,19 @@
 - (id)nextDrawable;
 - (bool)nonDefaultColorspace;
 - (unsigned long long)pixelFormat;
+- (id)preferredDevice;
 - (bool)presentsWithTransaction;
+- (void)removeBackBuffers;
 - (bool)serverSyncEnabled;
 - (void)setAllowsNextDrawableTimeout:(bool)arg1;
 - (void)setColorspace:(struct CGColorSpace { }*)arg1;
 - (void)setColorspace:(struct CGColorSpace { }*)arg1 nonDefault:(bool)arg2;
+- (void)setContents:(id)arg1;
 - (void)setDevice:(id)arg1;
 - (void)setDisplaySyncEnabled:(bool)arg1;
 - (void)setDrawableSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setDrawableTimeoutSeconds:(double)arg1;
+- (void)setExclusiveMode:(bool)arg1;
 - (void)setFenceEnabled:(bool)arg1;
 - (void)setFramebufferOnly:(bool)arg1;
 - (void)setInputTime:(double)arg1;

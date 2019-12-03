@@ -2,43 +2,35 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaClientTransportEventMetadata : PBCodable <NSCopying> {
+@interface SISchemaClientTransportEventMetadata : PBCodable <NSSecureCoding, SISchemaClientTransportEventMetadata> {
     long long  _eventTransmittedRelativeToBootTimeTimestampNs;
     NSString * _eventTransmittedTimestampRefId;
-    struct { 
-        unsigned int eventTransmittedRelativeToBootTimeTimestampNs : 1; 
-        unsigned int serverArrivedTimestampMs : 1; 
-    }  _has;
-    long long  _serverArrivedTimestampMs;
+    long long  _serverArrivedTimestampNs;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) long long eventTransmittedRelativeToBootTimeTimestampNs;
-@property (nonatomic, retain) NSString *eventTransmittedTimestampRefId;
-@property (nonatomic) bool hasEventTransmittedRelativeToBootTimeTimestampNs;
-@property (nonatomic, readonly) bool hasEventTransmittedTimestampRefId;
-@property (nonatomic) bool hasServerArrivedTimestampMs;
-@property (nonatomic) long long serverArrivedTimestampMs;
+@property (nonatomic, copy) NSString *eventTransmittedTimestampRefId;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) NSData *jsonData;
+@property (nonatomic) long long serverArrivedTimestampNs;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
 - (long long)eventTransmittedRelativeToBootTimeTimestampNs;
 - (id)eventTransmittedTimestampRefId;
-- (bool)hasEventTransmittedRelativeToBootTimeTimestampNs;
-- (bool)hasEventTransmittedTimestampRefId;
-- (bool)hasServerArrivedTimestampMs;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (bool)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
+- (id)jsonData;
 - (bool)readFrom:(id)arg1;
-- (long long)serverArrivedTimestampMs;
+- (long long)serverArrivedTimestampNs;
 - (void)setEventTransmittedRelativeToBootTimeTimestampNs:(long long)arg1;
 - (void)setEventTransmittedTimestampRefId:(id)arg1;
-- (void)setHasEventTransmittedRelativeToBootTimeTimestampNs:(bool)arg1;
-- (void)setHasServerArrivedTimestampMs:(bool)arg1;
-- (void)setServerArrivedTimestampMs:(long long)arg1;
+- (void)setServerArrivedTimestampNs:(long long)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

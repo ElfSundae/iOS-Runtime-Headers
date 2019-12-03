@@ -78,7 +78,7 @@
 - (double)_totalEnergyBurnedInCanonicalUnit;
 - (double)_totalFlightsClimbedInCanonicalUnit;
 - (double)_totalSwimmingStrokeCountInCanonicalUnit;
-- (id)_validateConfiguration;
+- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
 - (id)_validateWorkoutEvents:(id)arg1;
 - (id)description;
 - (double)duration;
@@ -96,6 +96,7 @@
 
 + (bool)_isHeartRateSupportedInPowerSettingsForActivityType:(unsigned long long)arg1;
 + (bool)_isHeartRateSupportedInPrivacySettings;
++ (bool)fiui_activitySupportsMetricType:(unsigned long long)arg1 activityType:(id)arg2;
 + (unsigned long long)fiui_associatedMetricForGoalType:(unsigned long long)arg1;
 + (bool)fiui_isHeartRateSupportedForActivityType:(unsigned long long)arg1 isIndoor:(bool)arg2;
 + (bool)fiui_shouldTrackPaceWithOdometerForActivityType:(unsigned long long)arg1;
@@ -140,6 +141,8 @@
 - (bool)hd_insertRelatedDataWithPersistentID:(id)arg1 insertionContext:(id)arg2 profile:(id)arg3 database:(id)arg4 error:(id*)arg5;
 
 // Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
+
++ (id)hkui_localizedWorkoutStringForValue:(id)arg1;
 
 - (void)addDetailValuesToSection:(id)arg1;
 - (void)fetchSubSampleTypesWithHealthStore:(id)arg1 completion:(id /* block */)arg2;

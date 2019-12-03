@@ -13,8 +13,9 @@
 - (void)moduleCollectionViewController:(CCUIModuleCollectionViewController *)arg1 didOpenExpandedModule:(id <CCUIContentModule>)arg2;
 - (void)moduleCollectionViewController:(CCUIModuleCollectionViewController *)arg1 didUpdateHomeGestureDismissalAllowed:(bool)arg2;
 - (void)moduleCollectionViewController:(CCUIModuleCollectionViewController *)arg1 willCloseExpandedModule:(id <CCUIContentModule>)arg2;
+- (void)moduleCollectionViewController:(CCUIModuleCollectionViewController *)arg1 willDismissViewController:(UIViewController *)arg2;
 - (void)moduleCollectionViewController:(CCUIModuleCollectionViewController *)arg1 willOpenExpandedModule:(id <CCUIContentModule>)arg2;
+- (void)moduleCollectionViewController:(CCUIModuleCollectionViewController *)arg1 willPresentViewController:(UIViewController *)arg2;
 - (void)moduleCollectionViewController:(CCUIModuleCollectionViewController *)arg1 willRemoveModuleContainerViewController:(CCUIContentModuleContainerViewController *)arg2;
-- (UIView *)obscuringBackgroundViewForModuleCollectionViewController:(CCUIModuleCollectionViewController *)arg1;
 
 @end

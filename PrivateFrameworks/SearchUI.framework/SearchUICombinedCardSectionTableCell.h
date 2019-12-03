@@ -2,18 +2,11 @@
    Image: /System/Library/PrivateFrameworks/SearchUI.framework/SearchUI
  */
 
-@interface SearchUICombinedCardSectionTableCell : SearchUITableViewCell {
-    NSMutableArray * _subcells;
-}
+@interface SearchUICombinedCardSectionTableCell : SearchUITableViewCell
 
-@property (retain) NSMutableArray *subcells;
+@property (nonatomic, retain) SearchUICombinedCardSectionsView *sizingContainer;
 
-+ (id)cellViewForTableModel:(id)arg1 section:(unsigned long long)arg2 rowRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3 style:(unsigned long long)arg4 feedbackDelegate:(id)arg5;
-+ (void)updateChevronAndSeparatorForCell:(id)arg1 tableModel:(id)arg2 indexPath:(id)arg3;
-
-- (void).cxx_destruct;
-- (id)initWithTableModel:(id)arg1 section:(unsigned long long)arg2 rowRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3 style:(unsigned long long)arg4 feedbackDelegate:(id)arg5;
-- (void)setSubcells:(id)arg1;
-- (id)subcells;
+- (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
+- (void)updateWithRowModel:(id)arg1;
 
 @end

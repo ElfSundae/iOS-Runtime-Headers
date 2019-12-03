@@ -16,6 +16,7 @@
     DNDSettingsService * _notificationsSettingsService;
     DNDStateService * _notificationsStateService;
     NSObject<OS_dispatch_queue> * _queue;
+    bool  _sleepActive;
     bool  _workoutActive;
 }
 
@@ -27,7 +28,6 @@
 + (void)initialize;
 
 - (void).cxx_destruct;
-- (id)_attachmentForIdentifier:(id)arg1;
 - (void)_handleSignificantTimeChange;
 - (void)_queue_postOrRemoveNotificationWithUpdatedBehavior:(bool)arg1 significantTimeChange:(bool)arg2;
 - (id)initWithClientIdentifier:(id)arg1;

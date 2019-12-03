@@ -4,6 +4,7 @@
 
 @interface PKExpressPassesViewController : PKSectionTableViewController <PKExpressPassCategoryViewControllerDelegate> {
     LAContext * _LAContext;
+    NSArray * _allPasses;
     PKExpressPassController * _expressPassController;
     bool  _isUserInteractionsEnabled;
     PKPassSnapshotter * _passSnapshotter;
@@ -25,10 +26,17 @@
 - (void).cxx_destruct;
 - (void)_acquireUserAuthForPass:(id)arg1 withCompletion:(id /* block */)arg2;
 - (void)_addSpinnerToCell:(id)arg1;
+- (id)_categoryForIndex:(long long)arg1;
+- (id)_categoryForTransitPass:(id)arg1;
+- (id)_categoryIdentifierForPass:(id)arg1;
+- (long long)_categoryIndexForPass:(id)arg1;
 - (id)_conflictingPassesForUseCaseWithPasses:(id)arg1;
+- (id)_createCategoryForPass:(id)arg1;
 - (void)_disableExpressModeForPass:(id)arg1 withCompletion:(id /* block */)arg2;
 - (void)_enableExpressModeForPass:(id)arg1 withCompletion:(id /* block */)arg2;
 - (void)_invalidateUserAuth;
+- (id)_passWithUniqueIdentifier:(id)arg1;
+- (id)_paymentPassForIndex:(long long)arg1;
 - (void)_promptUserAboutConflicts:(id)arg1 forPass:(id)arg2 completion:(id /* block */)arg3;
 - (void)_sendExpressPassDidChangeNotification;
 - (void)_setUserInteractionsEnabled:(bool)arg1;
@@ -39,9 +47,7 @@
 - (void)_updatePaymentCardCellWithIndex:(long long)arg1 statusString:(id)arg2;
 - (void)_updateUIWithExpressState;
 - (void)_upgradeExpressModeForPass:(id)arg1 withCompletion:(id /* block */)arg2;
-- (id)categoryIdentifierForPass:(id)arg1;
-- (long long)categoryIndexForPass:(id)arg1;
-- (id)createCategoryForPass:(id)arg1;
+- (id)additionalViewControllersForPassUniqueIdentifier:(id)arg1;
 - (void)dealloc;
 - (void)expressPassCategoryViewController:(id)arg1 didUpdateExpressState:(id)arg2;
 - (double)heightForRowAtIndexPath:(id)arg1;

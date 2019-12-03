@@ -21,6 +21,7 @@
 @property (nonatomic, readonly) AVAsset *asset;
 @property (nonatomic, readonly) double duration;
 @property (nonatomic) double endPlaybackTime;
+@property (nonatomic, readonly) MPAVItem *item;
 @property (nonatomic, readonly) unsigned long long movieMediaTypes;
 @property (nonatomic) long long movieSourceType;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } naturalSize;
@@ -34,7 +35,6 @@
 + (id)movieWithURL:(id)arg1 options:(id)arg2 error:(id*)arg3;
 
 - (void).cxx_destruct;
-- (id)_MPArrayQueueItem;
 - (void)_determineMediaType;
 - (void)_durationAvailableNotification:(id)arg1;
 - (id)_initWithAsset:(id)arg1 error:(id*)arg2;
@@ -47,6 +47,7 @@
 - (void)dealloc;
 - (double)duration;
 - (double)endPlaybackTime;
+- (id)item;
 - (unsigned long long)movieMediaTypes;
 - (long long)movieSourceType;
 - (struct CGSize { double x1; double x2; })naturalSize;

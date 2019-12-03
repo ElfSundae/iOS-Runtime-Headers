@@ -3,7 +3,6 @@
  */
 
 @interface PXEducationalTipViewController : UIViewController {
-    _UIBackdropView * _backdropView;
     UIButton * _dismissButton;
     NSString * _dismissButtonTitle;
     id /* block */  _dismissHandler;
@@ -11,6 +10,7 @@
     UIImageView * _imageView;
     NSString * _message;
     UILabel * _messageLabel;
+    UIVisualEffectView * _visualEffectView;
 }
 
 @property (nonatomic, copy) NSString *dismissButtonTitle;
@@ -19,6 +19,7 @@
 @property (nonatomic, copy) NSString *message;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_handleDismissButton:(id)arg1;
 - (void)_invalidateContent;
 - (id)dismissButtonTitle;

@@ -12,6 +12,7 @@
 // Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
 
 + (id)contentInfoTextWithAttachmentCount:(unsigned long long)arg1;
++ (id)tableFromAttributedString:(id)arg1 managedObjectContext:(id)arg2;
 
 - (void).cxx_destruct;
 - (void)attachmentAwakeFromFetch;
@@ -29,10 +30,11 @@
 - (void)regenerateTextContentInNote;
 - (id)searchableTextContentInNote;
 - (void)setTableDocument:(id)arg1;
+- (id)stringsAtRow:(unsigned long long)arg1;
 - (id)table;
 - (id)tableDocument;
 - (id)textContentInNote;
-- (void)updateAttachmentByMergingWithTableDoc:(id)arg1;
+- (void)updateAttachmentByMergingWithTableData:(id)arg1;
 - (void)willMarkAttachmentForDeletion;
 - (void)writeMergeableData;
 
@@ -41,6 +43,9 @@
 - (id)activityItems;
 - (id)attributesForSharingHTMLWithTagName:(id*)arg1 textContent:(id*)arg2;
 - (bool)canConvertToHTMLForSharing;
+- (void)drawPreviewInRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)htmlString;
+- (struct CGSize { double x1; double x2; })previewInAvailableSize:(struct CGSize { double x1; double x2; })arg1 shouldDraw:(bool)arg2;
+- (id)quicklookPreviewItems;
 
 @end

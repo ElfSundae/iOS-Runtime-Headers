@@ -9,15 +9,16 @@
     int  data_mode;
     NSObject<OS_xpc_object> * disabled_protocols;
     int  fallback_mode;
+    unsigned int  fast_open_force_enable;
     int  multipath_service;
     unsigned int  no_fallback;
     unsigned int  no_proxy;
     unsigned int  prohibit_direct;
     NSObject<OS_nw_endpoint> * replace_endpoint;
+    unsigned int  set_multipath_service;
     unsigned int  tfo;
     unsigned int  tfo_no_cookie;
     NSObject<OS_nw_protocol_stack> * transform_stack;
-    unsigned int  use_tfo_heuristics;
 }
 
 @property (readonly, copy) NSString *debugDescription;

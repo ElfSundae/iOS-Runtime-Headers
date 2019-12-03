@@ -38,10 +38,12 @@
 
 - (void).cxx_destruct;
 - (void)_preferencesUpdated:(id)arg1;
-- (bool)_setupRegardlessOfPreferences:(bool)arg1;
+- (bool)_setupIfNecessary;
 - (bool)_shouldEnable;
 - (id)_stats_key;
 - (void)_updateEnabled;
+- (id)_updateFeedbackForOutputMode:(id)arg1;
+- (id)_updateFeedbacksForOutputMode:(id)arg1;
 - (long long)activationStyle;
 - (Class)clientClass;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

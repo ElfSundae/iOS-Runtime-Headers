@@ -11,12 +11,15 @@
 + (void)clearTestSettings;
 + (void)disableBundleIdentifier:(id)arg1;
 + (void)initialize;
++ (bool)isSupportedSearchableItemBundleIdentifier:(id)arg1;
++ (void)migrateForTests;
 + (id)sharedInstance;
 + (bool)shouldAdmitContentFromBundleIdentifier:(id)arg1;
 
 - (void).cxx_destruct;
 - (void)_clearTestSettings;
 - (void)_disableBundleIdentifier:(id)arg1;
+- (void)_migrateIfNeededWithCompletion:(id /* block */)arg1;
 - (void)_refreshDisabledBundleIds;
 - (bool)_shouldAdmitContentFromBundleIdentifier:(id)arg1;
 - (id)init;

@@ -68,6 +68,7 @@
 - (id)initWithCoreUIOptions:(id)arg1 forKey:(const struct _renditionkeytoken { unsigned short x1; unsigned short x2; }*)arg2 artworkStatus:(long long)arg3;
 - (unsigned short)keyScale;
 - (unsigned short)layer;
+- (unsigned short)localization;
 - (unsigned short)look;
 - (id)lookLocalizedString;
 - (unsigned long long)numberOfSlices;

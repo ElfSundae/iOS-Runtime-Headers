@@ -5,6 +5,6 @@
 
 @required
 
-- (void)moments:(VCMoments *)arg1 shouldProcessRequest:(NSDictionary *)arg2;
+- (void)moments:(VCMoments *)arg1 shouldProcessRequest:(NSDictionary *)arg2 recipientID:(NSString *)arg3;
 
 @end

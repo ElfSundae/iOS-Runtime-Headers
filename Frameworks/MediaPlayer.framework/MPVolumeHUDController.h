@@ -15,6 +15,7 @@
 - (void).cxx_destruct;
 - (void)_addCategory:(id)arg1;
 - (void)_updateVisibility;
+- (void)_updateVisibilityForVolumeDisplays:(id)arg1 inWindowScene:(id)arg2;
 - (void)addVolumeDisplay:(id)arg1;
 - (id)init;
 - (id)mainContext;

@@ -3,11 +3,13 @@
  */
 
 @interface UNSNotificationRecord : NSObject <BSDescriptionProviding> {
+    NSString * _accessoryImageName;
     bool  _allowsAlertDestination;
     bool  _allowsCarPlayDestination;
     bool  _allowsDefaultDestinations;
     bool  _allowsLockScreenDestination;
     bool  _allowsNotificationCenterDestination;
+    bool  _allowsSpokenDestination;
     NSArray * _attachments;
     NSString * _audioCategory;
     NSNumber * _audioVolume;
@@ -34,6 +36,7 @@
     NSString * _identifier;
     NSString * _launchImageName;
     NSNumber * _mutableContent;
+    unsigned long long  _realertCount;
     NSDate * _requestDate;
     bool  _shouldAuthenticateDefaultAction;
     bool  _shouldBackgroundDefaultAction;
@@ -44,6 +47,8 @@
     bool  _shouldIgnoreDowntime;
     bool  _shouldIgnoreRingerSwitch;
     bool  _shouldPlaySound;
+    bool  _shouldPreemptPresentedNotification;
+    bool  _shouldPreemptSTAR;
     bool  _shouldPresentAlert;
     bool  _shouldPreventNotificationDismissalAfterDefaultAction;
     bool  _shouldSoundRepeat;
@@ -56,6 +61,7 @@
     NSString * _subtitleLocalizationKey;
     NSString * _summaryArgument;
     unsigned long long  _summaryArgumentCount;
+    NSString * _targetContentIdentifier;
     NSString * _threadIdentifier;
     NSString * _title;
     NSArray * _titleLocalizationArguments;
@@ -63,6 +69,7 @@
     NSString * _toneAlertTopic;
     long long  _toneAlertType;
     NSString * _toneFileName;
+    NSURL * _toneFileURL;
     NSString * _toneIdentifier;
     unsigned long long  _toneMediaLibraryItemIdentifier;
     NSSet * _topicIdentifiers;
@@ -77,14 +84,16 @@
     NSString * _triggerType;
     NSDictionary * _userInfo;
     NSString * _vibrationIdentifier;
-    NSDictionary * _vibrationPattern;
+    NSURL * _vibrationPatternFileURL;
 }
 
+@property (nonatomic, copy) NSString *accessoryImageName;
 @property (nonatomic) bool allowsAlertDestination;
 @property (nonatomic) bool allowsCarPlayDestination;
 @property (nonatomic) bool allowsDefaultDestinations;
 @property (nonatomic) bool allowsLockScreenDestination;
 @property (nonatomic) bool allowsNotificationCenterDestination;
+@property (nonatomic) bool allowsSpokenDestination;
 @property (nonatomic, copy) NSArray *attachments;
 @property (nonatomic, copy) NSString *audioCategory;
 @property (nonatomic, copy) NSNumber *audioVolume;
@@ -118,6 +127,7 @@
 @property (nonatomic, copy) NSString *identifier;
 @property (nonatomic, copy) NSString *launchImageName;
 @property (nonatomic, copy) NSNumber *mutableContent;
+@property (nonatomic) unsigned long long realertCount;
 @property (nonatomic, copy) NSDate *requestDate;
 @property (nonatomic) bool shouldAuthenticateDefaultAction;
 @property (nonatomic) bool shouldBackgroundDefaultAction;
@@ -128,6 +138,8 @@
 @property (nonatomic) bool shouldIgnoreDowntime;
 @property (nonatomic) bool shouldIgnoreRingerSwitch;
 @property (nonatomic) bool shouldPlaySound;
+@property (nonatomic) bool shouldPreemptPresentedNotification;
+@property (nonatomic) bool shouldPreemptSTAR;
 @property (nonatomic) bool shouldPresentAlert;
 @property (nonatomic) bool shouldPreventNotificationDismissalAfterDefaultAction;
 @property (nonatomic) bool shouldSoundRepeat;
@@ -141,6 +153,7 @@
 @property (nonatomic, copy) NSString *summaryArgument;
 @property (nonatomic) unsigned long long summaryArgumentCount;
 @property (readonly) Class superclass;
+@property (nonatomic, copy) NSString *targetContentIdentifier;
 @property (nonatomic, copy) NSString *threadIdentifier;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSArray *titleLocalizationArguments;
@@ -148,6 +161,7 @@
 @property (nonatomic, copy) NSString *toneAlertTopic;
 @property (nonatomic) long long toneAlertType;
 @property (nonatomic, copy) NSString *toneFileName;
+@property (nonatomic, copy) NSURL *toneFileURL;
 @property (nonatomic, copy) NSString *toneIdentifier;
 @property (nonatomic) unsigned long long toneMediaLibraryItemIdentifier;
 @property (nonatomic, copy) NSSet *topicIdentifiers;
@@ -162,14 +176,16 @@
 @property (nonatomic, copy) NSString *triggerType;
 @property (nonatomic, copy) NSDictionary *userInfo;
 @property (nonatomic, copy) NSString *vibrationIdentifier;
-@property (nonatomic, copy) NSDictionary *vibrationPattern;
+@property (nonatomic, copy) NSURL *vibrationPatternFileURL;
 
 - (void).cxx_destruct;
+- (id)accessoryImageName;
 - (bool)allowsAlertDestination;
 - (bool)allowsCarPlayDestination;
 - (bool)allowsDefaultDestinations;
 - (bool)allowsLockScreenDestination;
 - (bool)allowsNotificationCenterDestination;
+- (bool)allowsSpokenDestination;
 - (id)attachments;
 - (id)audioCategory;
 - (id)audioVolume;
@@ -210,12 +226,15 @@
 - (bool)isSimilar:(id)arg1;
 - (id)launchImageName;
 - (id)mutableContent;
+- (unsigned long long)realertCount;
 - (id)requestDate;
+- (void)setAccessoryImageName:(id)arg1;
 - (void)setAllowsAlertDestination:(bool)arg1;
 - (void)setAllowsCarPlayDestination:(bool)arg1;
 - (void)setAllowsDefaultDestinations:(bool)arg1;
 - (void)setAllowsLockScreenDestination:(bool)arg1;
 - (void)setAllowsNotificationCenterDestination:(bool)arg1;
+- (void)setAllowsSpokenDestination:(bool)arg1;
 - (void)setAttachments:(id)arg1;
 - (void)setAudioCategory:(id)arg1;
 - (void)setAudioVolume:(id)arg1;
@@ -242,6 +261,7 @@
 - (void)setIdentifier:(id)arg1;
 - (void)setLaunchImageName:(id)arg1;
 - (void)setMutableContent:(id)arg1;
+- (void)setRealertCount:(unsigned long long)arg1;
 - (void)setRequestDate:(id)arg1;
 - (void)setShouldAuthenticateDefaultAction:(bool)arg1;
 - (void)setShouldBackgroundDefaultAction:(bool)arg1;
@@ -252,6 +272,8 @@
 - (void)setShouldIgnoreDowntime:(bool)arg1;
 - (void)setShouldIgnoreRingerSwitch:(bool)arg1;
 - (void)setShouldPlaySound:(bool)arg1;
+- (void)setShouldPreemptPresentedNotification:(bool)arg1;
+- (void)setShouldPreemptSTAR:(bool)arg1;
 - (void)setShouldPresentAlert:(bool)arg1;
 - (void)setShouldPreventNotificationDismissalAfterDefaultAction:(bool)arg1;
 - (void)setShouldSoundRepeat:(bool)arg1;
@@ -264,6 +286,7 @@
 - (void)setSubtitleLocalizationKey:(id)arg1;
 - (void)setSummaryArgument:(id)arg1;
 - (void)setSummaryArgumentCount:(unsigned long long)arg1;
+- (void)setTargetContentIdentifier:(id)arg1;
 - (void)setThreadIdentifier:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (void)setTitleLocalizationArguments:(id)arg1;
@@ -271,6 +294,7 @@
 - (void)setToneAlertTopic:(id)arg1;
 - (void)setToneAlertType:(long long)arg1;
 - (void)setToneFileName:(id)arg1;
+- (void)setToneFileURL:(id)arg1;
 - (void)setToneIdentifier:(id)arg1;
 - (void)setToneMediaLibraryItemIdentifier:(unsigned long long)arg1;
 - (void)setTopicIdentifiers:(id)arg1;
@@ -285,7 +309,7 @@
 - (void)setTriggerType:(id)arg1;
 - (void)setUserInfo:(id)arg1;
 - (void)setVibrationIdentifier:(id)arg1;
-- (void)setVibrationPattern:(id)arg1;
+- (void)setVibrationPatternFileURL:(id)arg1;
 - (bool)shouldAuthenticateDefaultAction;
 - (bool)shouldBackgroundDefaultAction;
 - (bool)shouldBadgeApplicationIcon;
@@ -295,6 +319,8 @@
 - (bool)shouldIgnoreDowntime;
 - (bool)shouldIgnoreRingerSwitch;
 - (bool)shouldPlaySound;
+- (bool)shouldPreemptPresentedNotification;
+- (bool)shouldPreemptSTAR;
 - (bool)shouldPresentAlert;
 - (bool)shouldPreventNotificationDismissalAfterDefaultAction;
 - (bool)shouldSoundRepeat;
@@ -309,6 +335,7 @@
 - (id)succinctDescriptionBuilder;
 - (id)summaryArgument;
 - (unsigned long long)summaryArgumentCount;
+- (id)targetContentIdentifier;
 - (id)threadIdentifier;
 - (id)title;
 - (id)titleLocalizationArguments;
@@ -316,6 +343,7 @@
 - (id)toneAlertTopic;
 - (long long)toneAlertType;
 - (id)toneFileName;
+- (id)toneFileURL;
 - (id)toneIdentifier;
 - (unsigned long long)toneMediaLibraryItemIdentifier;
 - (id)topicIdentifiers;
@@ -330,7 +358,7 @@
 - (id)triggerType;
 - (id)userInfo;
 - (id)vibrationIdentifier;
-- (id)vibrationPattern;
+- (id)vibrationPatternFileURL;
 - (bool)willNotifyUser;
 
 @end

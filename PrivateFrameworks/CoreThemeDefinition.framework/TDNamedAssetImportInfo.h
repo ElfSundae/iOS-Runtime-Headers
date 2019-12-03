@@ -41,6 +41,8 @@
     bool  _isFlippable;
     NSArray * _layerReferences;
     long long  _layoutDirection;
+    long long  _localizationIdentifier;
+    NSString * _localizationName;
     double  _lossyCompressionQuality;
     double  _maxPointSize;
     unsigned long long  _memoryClass;
@@ -62,6 +64,7 @@
     }  _resizableSliceSize;
     long long  _resizingMode;
     unsigned long long  _scaleFactor;
+    long long  _scalingStyle;
     long long  _sizeClassHorizontal;
     long long  _sizeClassVertical;
     struct { 
@@ -74,6 +77,7 @@
     NSString * _systemColorName;
     NSSet * _tags;
     long long  _templateRenderingMode;
+    long long  _textAlignment;
     unsigned long long  _textureDepth;
     unsigned long long  _textureHeight;
     NSArray * _textureInfos;
@@ -113,6 +117,8 @@
 @property (nonatomic) bool isTemplate;
 @property (nonatomic, copy) NSArray *layerReferences;
 @property (nonatomic) long long layoutDirection;
+@property (nonatomic) long long localizationIdentifier;
+@property (nonatomic, copy) NSString *localizationName;
 @property (nonatomic) double lossyCompressionQuality;
 @property (nonatomic) double maxPointSize;
 @property (nonatomic) unsigned long long memoryClass;
@@ -128,6 +134,7 @@
 @property (nonatomic) struct CGSize { double x1; double x2; } resizableSliceSize;
 @property (nonatomic) long long resizingMode;
 @property (nonatomic) unsigned long long scaleFactor;
+@property (nonatomic) long long scalingStyle;
 @property (nonatomic) long long sizeClassHorizontal;
 @property (nonatomic) long long sizeClassVertical;
 @property (nonatomic) struct { double x1; double x2; double x3; double x4; } sliceInsets;
@@ -135,6 +142,7 @@
 @property (nonatomic, retain) NSString *systemColorName;
 @property (nonatomic, copy) NSSet *tags;
 @property (nonatomic) long long templateRenderingMode;
+@property (nonatomic) long long textAlignment;
 @property (nonatomic) unsigned long long textureDepth;
 @property (nonatomic) unsigned long long textureHeight;
 @property (nonatomic, copy) NSArray *textureInfos;
@@ -175,6 +183,8 @@
 - (bool)isTemplate;
 - (id)layerReferences;
 - (long long)layoutDirection;
+- (long long)localizationIdentifier;
+- (id)localizationName;
 - (double)lossyCompressionQuality;
 - (double)maxPointSize;
 - (unsigned long long)memoryClass;
@@ -191,6 +201,7 @@
 - (struct CGSize { double x1; double x2; })resizableSliceSize;
 - (long long)resizingMode;
 - (unsigned long long)scaleFactor;
+- (long long)scalingStyle;
 - (void)setAlignmentRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setAppearanceIdentifier:(long long)arg1;
 - (void)setAppearanceName:(id)arg1;
@@ -218,6 +229,8 @@
 - (void)setIsTemplate:(bool)arg1;
 - (void)setLayerReferences:(id)arg1;
 - (void)setLayoutDirection:(long long)arg1;
+- (void)setLocalizationIdentifier:(long long)arg1;
+- (void)setLocalizationName:(id)arg1;
 - (void)setLossyCompressionQuality:(double)arg1;
 - (void)setMaxPointSize:(double)arg1;
 - (void)setMemoryClass:(unsigned long long)arg1;
@@ -233,6 +246,7 @@
 - (void)setResizableSliceSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setResizingMode:(long long)arg1;
 - (void)setScaleFactor:(unsigned long long)arg1;
+- (void)setScalingStyle:(long long)arg1;
 - (void)setSizeClassHorizontal:(long long)arg1;
 - (void)setSizeClassVertical:(long long)arg1;
 - (void)setSliceInsets:(struct { double x1; double x2; double x3; double x4; })arg1;
@@ -240,6 +254,7 @@
 - (void)setSystemColorName:(id)arg1;
 - (void)setTags:(id)arg1;
 - (void)setTemplateRenderingMode:(long long)arg1;
+- (void)setTextAlignment:(long long)arg1;
 - (void)setTextureDepth:(unsigned long long)arg1;
 - (void)setTextureHeight:(unsigned long long)arg1;
 - (void)setTextureInfos:(id)arg1;
@@ -255,6 +270,7 @@
 - (id)systemColorName;
 - (id)tags;
 - (long long)templateRenderingMode;
+- (long long)textAlignment;
 - (unsigned long long)textureDepth;
 - (unsigned long long)textureHeight;
 - (id)textureInfos;

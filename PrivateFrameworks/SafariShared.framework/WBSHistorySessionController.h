@@ -3,6 +3,7 @@
  */
 
 @interface WBSHistorySessionController : NSObject <WBSHistorySessions> {
+    WBSHistory * _history;
     WBSHistorySessionIntervalCache * _intervalCache;
     NSMutableDictionary * _itemsBySession;
     NSArray * _orderedSessions;
@@ -27,13 +28,13 @@
 - (void)_removeItemsFromSessionCache:(id)arg1;
 - (void)_requestSessionKeyForDate:(id)arg1 withBlock:(id /* block */)arg2;
 - (void)_timeZoneDidChange:(id)arg1;
-- (void)dealloc;
 - (void)enumerateOrderedItemsLastVisitedInSession:(id)arg1 usingBlock:(id /* block */)arg2;
-- (id)init;
+- (id)initWithHistory:(id)arg1;
 - (id)itemLastVisitedInSession:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)itemsLastVisitedInSession:(id)arg1;
 - (unsigned long long)numberOfItemsVisitedInSession:(id)arg1;
 - (unsigned long long)numberOfSessions;
+- (void)orderedItemsNewerThanDate:(id)arg1 maxCount:(unsigned long long)arg2 completionHandler:(id /* block */)arg3;
 - (id)orderedSessions;
 - (id)sessionForItem:(id)arg1;
 

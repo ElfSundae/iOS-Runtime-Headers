@@ -6,12 +6,14 @@
     bool  _areControlItemsRequestingToBeHidden;
     <HUQuickControlContentCharacteristicWritingDelegate> * _characteristicWritingDelegate;
     NSSet * _controlItems;
+    unsigned long long  _controlOrientation;
     unsigned long long  _controlSize;
     bool  _controlsVisible;
     <HUQuickControlViewControllerDelegate> * _delegate;
     HMHome * _home;
     HUQuickControlSimpleItemUpdater * _internalItemUpdater;
     <HUQuickControlItemUpdating> * _itemUpdater;
+    unsigned long long  _preferredControl;
     <HULayoutAnchorProviding> * _preferredFrameLayoutGuide;
     <HUQuickControlContentHosting> * _quickControlHost;
     bool  _userInteractionEnabled;
@@ -21,6 +23,7 @@
 @property (nonatomic) bool areControlItemsRequestingToBeHidden;
 @property (nonatomic) <HUQuickControlContentCharacteristicWritingDelegate> *characteristicWritingDelegate;
 @property (nonatomic, readonly, copy) NSSet *controlItems;
+@property (nonatomic) unsigned long long controlOrientation;
 @property (nonatomic) unsigned long long controlSize;
 @property (getter=areControlsVisible, nonatomic) bool controlsVisible;
 @property (readonly, copy) NSString *debugDescription;
@@ -33,6 +36,7 @@
 @property (nonatomic, readonly) <HUQuickControlItemUpdating> *itemUpdater;
 @property (nonatomic, readonly, copy) NSString *overrideSecondaryStatusText;
 @property (nonatomic, readonly, copy) NSString *overrideStatusText;
+@property (nonatomic) unsigned long long preferredControl;
 @property (nonatomic, retain) <HULayoutAnchorProviding> *preferredFrameLayoutGuide;
 @property (nonatomic, readonly) unsigned long long preferredPresentationStyle;
 @property (nonatomic) <HUQuickControlContentHosting> *quickControlHost;
@@ -50,6 +54,7 @@
 - (id)characteristicWritingDelegate;
 - (id)childQuickControlContentViewControllers;
 - (id)controlItems;
+- (unsigned long long)controlOrientation;
 - (unsigned long long)controlSize;
 - (id)delegate;
 - (bool)hasSingleControlView;
@@ -65,18 +70,22 @@
 - (id)overrideSecondaryStatusText;
 - (id)overrideStatusText;
 - (id)overrideValueForCharacteristic:(id)arg1;
+- (unsigned long long)preferredControl;
 - (id)preferredFrameLayoutGuide;
 - (unsigned long long)preferredPresentationStyle;
 - (id)quickControlHost;
 - (void)quickControlItemUpdater:(id)arg1 didUpdateResultsForControlItems:(id)arg2;
 - (void)setAreControlItemsRequestingToBeHidden:(bool)arg1;
 - (void)setCharacteristicWritingDelegate:(id)arg1;
+- (void)setControlOrientation:(unsigned long long)arg1;
 - (void)setControlSize:(unsigned long long)arg1;
 - (void)setControlsVisible:(bool)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setPreferredControl:(unsigned long long)arg1;
 - (void)setPreferredFrameLayoutGuide:(id)arg1;
 - (void)setQuickControlHost:(id)arg1;
 - (void)setUserInteractionEnabled:(bool)arg1;
 - (bool)shouldShowContentForReachabilityState:(bool)arg1;
+- (id)viewControllerForTouchContinuation;
 
 @end

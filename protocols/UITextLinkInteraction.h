@@ -15,4 +15,8 @@
 - (void)validateInteractionWithLinkAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (bool)willInteractWithLinkAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 
+@optional
+
+- (bool)interactionDidStartWithLinkAtPoint:(struct CGPoint { double x1; double x2; })arg1;
+
 @end

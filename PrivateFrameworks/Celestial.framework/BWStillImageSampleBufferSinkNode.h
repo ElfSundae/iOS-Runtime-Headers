@@ -3,34 +3,38 @@
  */
 
 @interface BWStillImageSampleBufferSinkNode : BWSinkNode {
-    bool  _aggdClientIsCameraOrMessages;
     bool  _aggdIsPhotoFormat;
     bool  _aggdIsTimeLapse;
-    NSString * _clientApplicationID;
+    bool  _captureTimePhotosCurationSupported;
+    bool  _clientIsCameraOrDerivative;
     long long  _lastCaptureRequestTime;
     id /* block */  _sampleBufferAvailableHandler;
 }
 
 @property (nonatomic, copy) id /* block */ sampleBufferAvailableHandler;
 
++ (id)_inferenceTypesForClientMetadata;
 + (void)initialize;
 
+- (void)_attachPrivateClientMetadataToSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1;
+- (id)_newFilteredDetectedObjectsInfoFromDetectedObjectsInfo:(id)arg1;
 - (void)_reportAggdDataWithRequestedStillImageSettings:(id)arg1 resolvedStillImageCaptureSettings:(id)arg2 sbuf:(struct opaqueCMSampleBuffer { }*)arg3;
 - (void)_reportCoreAnalyticsDataWithRequestedStillImageSettings:(id)arg1 resolvedStillImageCaptureSettings:(id)arg2 sbuf:(struct opaqueCMSampleBuffer { }*)arg3;
-- (bool)aggdClientIsCameraOrMessages;
 - (bool)aggdIsPhotoFormat;
 - (bool)aggdIsTimeLapse;
+- (bool)captureTimePhotosCurationSupported;
+- (bool)clientIsCameraOrDerivative;
 - (void)dealloc;
 - (void)handleNodeError:(id)arg1 forInput:(id)arg2;
-- (id)init;
-- (id)initWithInputMediaType:(unsigned int)arg1;
+- (id)initWithInputMediaType:(unsigned int)arg1 sinkID:(id)arg2;
+- (id)initWithSinkID:(id)arg1;
 - (id)nodeSubType;
 - (void)renderSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 forInput:(id)arg2;
 - (id /* block */)sampleBufferAvailableHandler;
-- (void)setAggdClientIsCameraOrMessages:(bool)arg1;
 - (void)setAggdIsPhotoFormat:(bool)arg1;
 - (void)setAggdIsTimeLapse:(bool)arg1;
-- (void)setClientApplicationID:(id)arg1;
+- (void)setCaptureTimePhotosCurationSupported:(bool)arg1;
+- (void)setClientIsCameraOrDerivative:(bool)arg1;
 - (void)setSampleBufferAvailableHandler:(id /* block */)arg1;
 
 @end

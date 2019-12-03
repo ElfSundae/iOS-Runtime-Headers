@@ -3,16 +3,21 @@
  */
 
 @interface DDScannerObject : NSObject {
+    bool  _hasBasicType;
+    long long  _jobIdentifier;
     struct __DDScanner { } * _scanner;
     int  _type;
 }
 
-- (id)ddResultsWithOptions:(long long)arg1;
+@property (nonatomic) long long jobIdentifier;
+
+- (void)cancel;
 - (void)dealloc;
-- (id)initWithType:(int)arg1;
-- (void)reset;
-- (id)resultsWithOptions:(long long)arg1;
-- (long long)scanString:(id)arg1;
+- (bool)hasBasicType;
+- (id)initWithType:(int)arg1 enableParsec:(bool)arg2;
+- (long long)jobIdentifier;
+- (id)scanString:(id)arg1 range:(struct { long long x1; long long x2; })arg2 query:(struct __DDScanQuery { }*)arg3 configuration:(id)arg4;
+- (void)setJobIdentifier:(long long)arg1;
 - (int)type;
 
 @end

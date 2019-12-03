@@ -13,6 +13,7 @@
 - (void).cxx_destruct;
 - (bool)cameraFirstProvisioningEnabled;
 - (id)description;
+- (id)initWithRequestContext:(id)arg1;
 - (void)setCameraFirstProvisioningEnabled:(bool)arg1;
 - (void)setSetupFields:(id)arg1;
 - (id)setupFields;

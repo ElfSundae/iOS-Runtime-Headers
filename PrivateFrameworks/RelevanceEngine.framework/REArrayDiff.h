@@ -4,13 +4,9 @@
 
 @interface REArrayDiff : NSObject {
     NSArray * _allOperations;
-    NSArray * _fromElements;
-    NSArray * _toElements;
 }
 
 @property (nonatomic, readonly) NSArray *allOperations;
-@property (nonatomic, readonly) NSArray *fromElements;
-@property (nonatomic, readonly) NSArray *toElements;
 
 + (id)_createSetFromElementArray:(id)arg1 equalComparator:(id /* block */)arg2 hashGenerator:(id /* block */)arg3;
 + (id)_indexSetFromSet:(id)arg1;
@@ -20,7 +16,5 @@
 - (void).cxx_destruct;
 - (id)allOperations;
 - (void)enumerateOperationsUsingBlock:(id /* block */)arg1;
-- (id)fromElements;
-- (id)toElements;
 
 @end

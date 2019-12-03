@@ -16,7 +16,7 @@
 @property (nonatomic) <HKMedicalIDEditorCellEditDelegate> *editDelegate;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) HKCaretOptionalTextField *inputTextField;
-@property (nonatomic, retain) NSString *label;
+@property (nonatomic, copy) NSString *label;
 @property (nonatomic, retain) UILabel *labelLabel;
 @property (nonatomic) double minimumLabelWidth;
 @property (nonatomic, retain) UIStackView *stackView;
@@ -30,6 +30,8 @@
 - (void)_localeDidChange:(id)arg1;
 - (void)beginEditing;
 - (void)commitEditing;
+- (void)dealloc;
+- (void)dismissInputView;
 - (id)editDelegate;
 - (id)formattedValue;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;

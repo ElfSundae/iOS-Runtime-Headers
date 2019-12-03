@@ -3,8 +3,8 @@
  */
 
 @interface HMDRemoteMessage : HMFMessage {
+    double  _remoteTimeout;
     HMDHomeKitVersion * _sourceVersion;
-    double  _timeout;
     NSUUID * _transactionIdentifier;
     long long  _type;
 }

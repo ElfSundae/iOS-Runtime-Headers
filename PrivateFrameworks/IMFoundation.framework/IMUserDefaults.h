@@ -11,13 +11,8 @@
 
 // Image: /System/Library/PrivateFrameworks/IMFoundation.framework/IMFoundation
 
-+ (bool)isAbsintheV4Enabled;
-+ (bool)isBAACertDisabled;
-+ (bool)isDebugPiscoLoggingEnabled;
-+ (bool)isDeviceScoringEnabled;
 + (bool)isEngramEnabled;
 + (bool)isLiveDeliveryWarmUpEnabled;
-+ (bool)isPiscoDisabled;
 + (long long)phoneNumberValidationMode;
 + (id)phoneNumberValidationPreflightTestData;
 + (void)setEnableEngram:(bool)arg1;
@@ -45,6 +40,10 @@
 - (void)setValue:(void*)arg1 forKey:(id)arg2 applicationID:(struct __CFString { }*)arg3 userName:(struct __CFString { }*)arg4 hostName:(struct __CFString { }*)arg5;
 - (void)synchronizeAppID:(id)arg1;
 - (void)synchronizeApplicationID:(struct __CFString { }*)arg1 userName:(struct __CFString { }*)arg2 hostName:(struct __CFString { }*)arg3;
+
+// Image: /System/Library/PrivateFrameworks/IDSFoundation.framework/IDSFoundation
+
++ (bool)inIDSPrototypeMode;
 
 // Image: /System/Library/PrivateFrameworks/IMSharedUtilities.framework/IMSharedUtilities
 

@@ -25,6 +25,7 @@
 - (id)dasSystemContextLog;
 - (long long)inexpensiveNetworkPathStatus;
 - (id)init;
+- (bool)isApplicationFocalForPushTask:(id)arg1;
 - (bool)isInexpensiveNetworkAvailable;
 - (bool)isNetworkAvailable;
 - (long long)networkPathStatus;

@@ -4,7 +4,24 @@
 
 @interface GEOPDIndexQueryNode : PBCodable <NSCopying> {
     NSString * _field;
+    struct { 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_field : 1; 
+        unsigned int read_operands : 1; 
+        unsigned int read_value : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_field : 1; 
+        unsigned int wrote_operands : 1; 
+        unsigned int wrote_value : 1; 
+        unsigned int wrote_type : 1; 
+    }  _flags;
     NSMutableArray * _operands;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     int  _type;
     PBUnknownFields * _unknownFields;
     NSString * _value;
@@ -18,12 +35,18 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic, retain) NSString *value;
 
++ (bool)isValid:(id)arg1;
 + (Class)operandType;
 
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
+- (void)_addNoFlagsOperand:(id)arg1;
+- (void)_readField;
+- (void)_readOperands;
+- (void)_readValue;
 - (void)addOperand:(id)arg1;
 - (void)clearOperands;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -32,11 +55,14 @@
 - (bool)hasField;
 - (bool)hasValue;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)operandAtIndex:(unsigned long long)arg1;
 - (id)operands;
 - (unsigned long long)operandsCount;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setField:(id)arg1;
 - (void)setOperands:(id)arg1;

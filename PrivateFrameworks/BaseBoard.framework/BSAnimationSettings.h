@@ -20,6 +20,8 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) CAMediaTimingFunction *timingFunction;
 
+// Image: /System/Library/PrivateFrameworks/BaseBoard.framework/BaseBoard
+
 + (id)settingsWithDuration:(double)arg1;
 + (id)settingsWithDuration:(double)arg1 delay:(double)arg2;
 + (id)settingsWithDuration:(double)arg1 delay:(double)arg2 timingFunction:(id)arg3;
@@ -50,5 +52,9 @@
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (float)speed;
 - (id)timingFunction;
+
+// Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
+
++ (void)tryAnimatingWithSettings:(id)arg1 actions:(id /* block */)arg2 completion:(id /* block */)arg3;
 
 @end

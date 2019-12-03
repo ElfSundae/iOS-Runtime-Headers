@@ -12,10 +12,10 @@
     long long  _priority;
 }
 
-@property (nonatomic, readonly) const struct __CFString { }*accessoryButtonEventTrackerKey;
 @property (nonatomic, readonly) NSString *accessoryButtonTitle;
 @property (nonatomic, readonly) unsigned long long accessoryButtonType;
 @property (nonatomic, retain) PXCMMCloudView *cloudView;
+@property (nonatomic, readonly) Class collectionViewItemClass;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <PXCMMCloudGadgetViewControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -52,7 +52,7 @@
 - (id)gadgetTitle;
 - (unsigned long long)gadgetType;
 - (bool)hasContentToDisplay;
-- (id)init;
+- (id)initWithSourceType:(unsigned long long)arg1;
 - (id)localizedTitle;
 - (long long)priority;
 - (void)setCloudView:(id)arg1;

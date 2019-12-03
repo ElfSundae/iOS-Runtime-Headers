@@ -5,12 +5,10 @@
 @interface PKPaymentTransactionLocationTableViewCell : PKTableViewCell {
     UIImageView * _disclosureView;
     PKTransactionMapView * _mapView;
-    bool  _shouldRoundCorners;
     UILabel * _titleLabel;
     PKPaymentTransaction * _transaction;
 }
 
-@property (nonatomic) bool shouldRoundCorners;
 @property (nonatomic, retain) PKPaymentTransaction *transaction;
 @property (nonatomic) bool usesDarkMapAppearance;
 
@@ -19,11 +17,9 @@
 - (bool)_shouldShowDisclosureIndicator;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
-- (void)setShouldRoundCorners:(bool)arg1;
 - (void)setTitleLabelColor:(id)arg1;
 - (void)setTransaction:(id)arg1;
 - (void)setUsesDarkMapAppearance:(bool)arg1;
-- (bool)shouldRoundCorners;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (id)transaction;
 - (bool)usesDarkMapAppearance;

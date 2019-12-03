@@ -17,6 +17,7 @@
 - (void)dealloc;
 - (id)displayTimeForRealTime:(id)arg1;
 - (id)faceDisplayTime;
+- (void)forceUpdateTimeOffset;
 - (id)init;
 - (void)setTimeOffset:(double)arg1;
 - (double)timeOffset;

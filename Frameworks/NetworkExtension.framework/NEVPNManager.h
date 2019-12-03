@@ -32,7 +32,7 @@
 - (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;
 - (bool)hasLoaded;
 - (id)init;
-- (id)initWithGrade:(long long)arg1 connection:(id)arg2;
+- (id)initWithGrade:(long long)arg1 connection:(id)arg2 tunnelType:(long long)arg3;
 - (bool)isEnabled;
 - (bool)isOnDemandEnabled;
 - (bool)isProtocolTypeValid:(long long)arg1;

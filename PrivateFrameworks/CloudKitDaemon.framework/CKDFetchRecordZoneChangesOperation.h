@@ -27,6 +27,7 @@
 - (void)_noteOperationFinishedBlockEnd;
 - (id)_optionsForZonesWithPendingChangesAfterRequest:(id)arg1;
 - (id)activityCreate;
+- (id)analyticsPayload;
 - (long long)changeTypes;
 - (bool)clientIsUsingLegacyCKFetchRecordChangesOperationAPI;
 - (void)fillOutOperationResult:(id)arg1;

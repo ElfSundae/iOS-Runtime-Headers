@@ -3,15 +3,17 @@
  */
 
 @interface PARSession : NSObject <SFFeedbackListener, SFResourceLoader> {
+    NSSet * _allowedAppsForSiriSuggestions;
     PARBag * _bag;
     PARSearchClient * _client;
     PARSessionConfiguration * _configuration;
     <PARSessionDelegate> * _delegate;
     NSFileManager * _fileManager;
     GEOSearchFoundationFeedbackListener * _mapsListener;
-    bool  _sampled;
+    _Atomic bool  _sampled;
 }
 
+@property (retain) NSSet *allowedAppsForSiriSuggestions;
 @property (retain) PARBag *bag;
 @property (nonatomic, retain) PARSearchClient *client;
 @property (retain) PARSessionConfiguration *configuration;
@@ -32,6 +34,7 @@
 - (void).cxx_destruct;
 - (void)_flushUsingConnectionToFBF:(id)arg1;
 - (void)_scheduleEagerFlush;
+- (id)allowedAppsForSiriSuggestions;
 - (id)awaitBag;
 - (id)bag;
 - (void)cardViewDidAppear:(id)arg1;
@@ -57,6 +60,7 @@
 - (void)didReportUserResponseFeedback:(id)arg1;
 - (void)didStartSearch:(id)arg1;
 - (void)didSubmitUserReportFeedback:(id)arg1;
+- (void)didUpdateSiriSuggestionsAppWhitelist;
 - (unsigned long long)enabledStatus;
 - (void)fileHandleAndAttributesForResource:(id)arg1 completion:(id /* block */)arg2;
 - (id)initWithConfiguration:(id)arg1;
@@ -67,6 +71,7 @@
 - (bool)loadMoreResults:(id)arg1 withCompletionHandler:(id /* block */)arg2;
 - (void)loadTask:(id)arg1;
 - (void)reportEvent:(id)arg1;
+- (void)reportFeedback:(id)arg1;
 - (void)reportFeedback:(id)arg1 queryId:(unsigned long long)arg2;
 - (void)resultsDidBecomeVisible:(id)arg1;
 - (void)searchViewDidAppear:(id)arg1;
@@ -74,6 +79,8 @@
 - (void)sectionHeaderDidBecomeVisible:(id)arg1;
 - (void)sendCBAEngagementFeedback:(id)arg1 query:(unsigned long long)arg2;
 - (void)sendCustomFeedback:(id)arg1;
+- (void)sendCustomFeedback:(id)arg1 completion:(id /* block */)arg2;
+- (void)setAllowedAppsForSiriSuggestions:(id)arg1;
 - (void)setBag:(id)arg1;
 - (void)setClient:(id)arg1;
 - (void)setConfiguration:(id)arg1;

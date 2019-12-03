@@ -26,7 +26,6 @@
 - (void)dealloc;
 - (id)defaultCIContext;
 - (id)filteringRequestsInFlight;
-- (void)finalize;
 - (id)init;
 - (void)renderContextChanged:(id)arg1;
 - (id)requiredPixelBufferAttributesForRenderContext;

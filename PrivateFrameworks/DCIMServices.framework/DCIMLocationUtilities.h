@@ -5,6 +5,8 @@
 @interface DCIMLocationUtilities : NSObject
 
 + (id)_sharedGPSDateAndTimestampFormatter;
++ (struct CLLocationCoordinate2D { double x1; double x2; })locationCoordinate2DFromAVAsset:(id)arg1;
++ (id)locationFromAVAsset:(id)arg1 timestampIfMissing:(id)arg2;
 + (id)locationFromImageProperties:(id)arg1;
 + (id)locationFromImageProperties:(id)arg1 timestampIfMissing:(id)arg2;
 

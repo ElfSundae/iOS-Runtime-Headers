@@ -11,9 +11,11 @@
         unsigned int hasTopPadding : 1; 
         unsigned int hasBottomPadding : 1; 
         unsigned int separatorStyle : 1; 
+        unsigned int numberOfRows : 1; 
     }  _has;
     bool  _hasBottomPadding;
     bool  _hasTopPadding;
+    unsigned long long  _numberOfRows;
     NSArray * _punchoutOptions;
     NSString * _punchoutPickerDismissText;
     NSString * _punchoutPickerTitle;
@@ -35,6 +37,7 @@
 @property (nonatomic) bool hideDivider;
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic, retain) SFCard *nextCard;
+@property (nonatomic) unsigned long long numberOfRows;
 @property (nonatomic, copy) NSArray *parameterKeyPaths;
 @property (nonatomic, copy) NSArray *punchoutOptions;
 @property (nonatomic, copy) NSString *punchoutPickerDismissText;
@@ -44,6 +47,8 @@
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, retain) SFUserReportRequest *userReportRequest;
+
+// Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
 
 + (bool)supportsSecureCoding;
 
@@ -58,11 +63,13 @@
 - (bool)hasCanBeHidden;
 - (bool)hasHasBottomPadding;
 - (bool)hasHasTopPadding;
+- (bool)hasNumberOfRows;
 - (bool)hasSeparatorStyle;
 - (bool)hasTopPadding;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProtobuf:(id)arg1;
 - (id)jsonData;
+- (unsigned long long)numberOfRows;
 - (id)punchoutOptions;
 - (id)punchoutPickerDismissText;
 - (id)punchoutPickerTitle;
@@ -72,11 +79,16 @@
 - (void)setCardSections:(id)arg1;
 - (void)setHasBottomPadding:(bool)arg1;
 - (void)setHasTopPadding:(bool)arg1;
+- (void)setNumberOfRows:(unsigned long long)arg1;
 - (void)setPunchoutOptions:(id)arg1;
 - (void)setPunchoutPickerDismissText:(id)arg1;
 - (void)setPunchoutPickerTitle:(id)arg1;
 - (void)setSeparatorStyle:(int)arg1;
 - (void)setType:(id)arg1;
 - (id)type;
+
+// Image: /System/Library/PrivateFrameworks/SearchUI.framework/SearchUI
+
+- (Class)_searchUIViewClass;
 
 @end

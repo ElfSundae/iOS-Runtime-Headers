@@ -4,8 +4,8 @@
 
 @interface CCUIToggleModule : NSObject <CCUIContentModule> {
     CCUIContentModuleContext * _contentModuleContext;
+    NSHashTable * _contentViewControllers;
     CCUICAPackageDescription * _glyphPackageDescription;
-    CCUIToggleViewController * _viewController;
 }
 
 @property (nonatomic, readonly) UIViewController<CCUIContentModuleBackgroundViewController> *backgroundViewController;
@@ -14,6 +14,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly, copy) CCUICAPackageDescription *glyphPackageDescription;
+@property (nonatomic, readonly) double glyphScale;
 @property (nonatomic, readonly, copy) NSString *glyphState;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) UIImage *iconGlyph;
@@ -24,9 +25,10 @@
 
 - (void).cxx_destruct;
 - (id)contentModuleContext;
-- (id)contentViewController;
+- (id)contentViewControllerForContext:(id)arg1;
 - (id)glyphPackage;
 - (id)glyphPackageDescription;
+- (double)glyphScale;
 - (id)glyphState;
 - (id)iconGlyph;
 - (bool)isSelected;

@@ -3,37 +3,39 @@
  */
 
 @interface _SFToolbar : UIToolbar <_SFBarCommon, _SFBarRegistrationObserving> {
-    _UIBackdropView * _backgroundView;
+    UIVisualEffectView * _backgroundView;
     <_SFBarRegistrationToken> * _barRegistration;
-    _UIBackdropViewSettings * _customBackdropSettings;
+    UIBlurEffect * _customBackdropEffect;
     long long  _placement;
     UIView * _separator;
-    unsigned long long  _tintStyle;
-    bool  _usesDarkTheme;
+    UIView * _superviewOwningLayout;
+    _SFBarTheme * _theme;
+    bool  _usesLegacyDarkBackdrop;
 }
 
-@property (nonatomic, readonly) double URLFieldHorizontalMargin;
 @property (nonatomic, copy) NSString *backdropGroupName;
 @property (nonatomic) <_SFBarRegistrationToken> *barRegistration;
+@property (nonatomic, readonly) double baselineOffsetAdjustment;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) long long placement;
 @property (readonly) Class superclass;
-@property (nonatomic) unsigned long long tintStyle;
-@property (nonatomic, readonly) long long toolbarSize;
+@property (nonatomic) UIView *superviewOwningLayout;
+@property (nonatomic, retain) _SFBarTheme *theme;
+@property (nonatomic) bool usesLegacyDarkBackdrop;
 
 - (void).cxx_destruct;
-- (double)URLFieldHorizontalMargin;
-- (id)_backdropInputSettings;
 - (void)_cancelLinkAnimations;
-- (id)_controlsTintColor;
-- (bool)_tintUsesDarkTheme;
+- (double)_contentMargin;
+- (void)_updateBackgroundViewEffects;
 - (void)animateLinkImage:(struct CGImage { }*)arg1 fromRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 inView:(id)arg3 toBarItem:(long long)arg4 afterImageDisappearsBlock:(id /* block */)arg5 afterDestinationLayerBouncesBlock:(id /* block */)arg6;
 - (void)animateSafariIconLinkFromPoint:(struct CGPoint { double x1; double x2; })arg1 inView:(id)arg2;
 - (id)backdropGroupName;
 - (id)barRegistration;
+- (double)baselineOffsetAdjustment;
 - (void)dealloc;
+- (void)didChangeArrangedBarItems:(id)arg1;
 - (void)didCompleteBarRegistrationWithToken:(id)arg1;
 - (id)initWithPlacement:(long long)arg1;
 - (bool)isMinibar;
@@ -43,12 +45,12 @@
 - (void)setBackdropGroupName:(id)arg1;
 - (void)setBarRegistration:(id)arg1;
 - (void)setItems:(id)arg1 animated:(bool)arg2;
-- (void)setTintStyle:(unsigned long long)arg1;
+- (void)setSuperviewOwningLayout:(id)arg1;
+- (void)setTheme:(id)arg1;
+- (void)setUsesLegacyDarkBackdrop:(bool)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
-- (unsigned long long)tintStyle;
-- (long long)toolbarSize;
-- (void)traitCollectionDidChange:(id)arg1;
-- (void)updateBackdropSettings:(id)arg1;
-- (void)updateTintColor;
+- (id)superviewOwningLayout;
+- (id)theme;
+- (bool)usesLegacyDarkBackdrop;
 
 @end

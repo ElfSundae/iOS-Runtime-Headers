@@ -35,7 +35,9 @@
 - (id)label;
 - (id)logKey;
 - (id)metricsEvent;
+- (id)performActionsWithBag:(id)arg1 account:(id)arg2;
 - (id)performActionsWithContract:(id)arg1 account:(id)arg2;
+- (id)postMetricsWithBag:(id)arg1;
 - (id)postMetricsWithBagContract:(id)arg1;
 - (id)preferredClient;
 - (id)request;

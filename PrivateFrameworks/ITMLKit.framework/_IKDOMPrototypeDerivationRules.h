@@ -3,19 +3,19 @@
  */
 
 @interface _IKDOMPrototypeDerivationRules : NSObject {
-    NSArray * _conditionalities;
     NSArray * _indexPath;
+    NSArray * _mutationRules;
 }
 
-@property (nonatomic, readonly, copy) NSArray *conditionalities;
 @property (nonatomic, readonly, copy) NSArray *indexPath;
+@property (nonatomic, readonly, copy) NSArray *mutationRules;
 
 + (id)derivationRulesForDOMElement:(id)arg1;
 + (void)removeRulesFromDOMElement:(id)arg1;
 
 - (void).cxx_destruct;
-- (id)conditionalities;
 - (id)indexPath;
-- (id)initWithIndexPath:(id)arg1 conditionalities:(id)arg2;
+- (id)initWithIndexPath:(id)arg1 mutationRules:(id)arg2;
+- (id)mutationRules;
 
 @end

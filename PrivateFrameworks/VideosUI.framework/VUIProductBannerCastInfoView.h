@@ -15,6 +15,7 @@
 + (id)configureViewWithItems:(id)arg1 existingView:(id)arg2;
 
 - (void).cxx_destruct;
+- (struct CGSize { double x1; double x2; })_layoutSubviewsWithSize:(struct CGSize { double x1; double x2; })arg1 computationOnly:(bool)arg2;
 - (void)_updateTextColor;
 - (id)labels;
 - (id)layout;

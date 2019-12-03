@@ -10,10 +10,13 @@
     MapsSuggestionsDonater * _donater;
     MapsSuggestionsETARequester * _etaRequester;
     struct NSMutableDictionary { Class x1; } * _etaTitleFormatters;
+    <MapsSuggestionsFlightRequester> * _flightRequester;
+    MapsSuggestionsFlightUpdater * _flightUpdater;
     GEOLocationShifter * _locationShifter;
     MapsSuggestionsManager * _manager;
     int  _mapType;
     MapsSuggestionsNetworkRequester * _networkRequester;
+    MapsSuggestionsPredictor * _predictor;
     NSMutableDictionary * _previousETAs;
     NSObject<OS_dispatch_queue> * _queue;
     double  _refreshDeferTime;
@@ -23,6 +26,7 @@
     bool  _shouldBeRunning;
     MapsSuggestionsMutableWeakEntries * _trackedEntries;
     int  _transportType;
+    id  _transportTypeChangedListener;
 }
 
 @property (nonatomic, retain) GEOAutomobileOptions *automobileOptions;
@@ -32,6 +36,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) int mapType;
 @property (nonatomic, retain) MapsSuggestionsNetworkRequester *networkRequester;
+@property (nonatomic, retain) MapsSuggestionsPredictor *predictor;
 @property (copy) MapsSuggestionsETARequirements *requirements;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) MapsSuggestionsMutableWeakEntries *trackedEntries;
@@ -41,7 +46,9 @@
 
 - (void).cxx_destruct;
 - (id)_bestValidOfflineETAForEntry:(id)arg1 destinationKey:(id)arg2;
-- (void)_decorateEntry:(id)arg1 eta:(id)arg2;
+- (void)_captureSignalsFromEntries:(struct NSArray { Class x1; }*)arg1;
+- (void)_decorateETA:(id)arg1 forEntry:(id)arg2;
+- (void)_decorateFlightInfoForEntry:(id)arg1;
 - (id)_distanceTitleFormatterForType:(long long)arg1;
 - (id)_etaTitleFormatterForType:(long long)arg1;
 - (bool)_hasTitleFormatterForType:(long long)arg1;
@@ -53,6 +60,7 @@
 - (void)_rememberETA:(id)arg1 forEntry:(id)arg2;
 - (void)_requestDistances;
 - (void)_requestETAs;
+- (void)_requestFlightInfo;
 - (void)_resetAllTitleFormatting;
 - (void)_scheduleRefresh;
 - (void)_scheduleRefreshIfCurrentLocationIsMuchBetterThanLocation:(id)arg1;
@@ -65,6 +73,7 @@
 - (id)location;
 - (int)mapType;
 - (id)networkRequester;
+- (id)predictor;
 - (id)requirements;
 - (void)resetAllTitleFormatting;
 - (void)scheduleRefresh;
@@ -73,6 +82,7 @@
 - (void)setLocation:(id)arg1;
 - (void)setMapType:(int)arg1;
 - (void)setNetworkRequester:(id)arg1;
+- (void)setPredictor:(id)arg1;
 - (void)setRequirements:(id)arg1;
 - (void)setTitleFormatter:(id)arg1 forType:(long long)arg2;
 - (void)setTrackedEntries:(id)arg1;

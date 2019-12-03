@@ -22,6 +22,7 @@
 @property (nonatomic, readonly) UIColor *overlayColor;
 
 - (void).cxx_destruct;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (void)_invalidateImage;
 - (bool)_needsUpdate;
 - (void)_setNeedsUpdate;

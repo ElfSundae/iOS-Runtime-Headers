@@ -4,7 +4,10 @@
 
 @interface MiroMetadataManager : VEiOSSharedObject {
     NSCache * _assetMetadataCache;
+    NSSet * _suggestions;
 }
+
+@property (nonatomic) NSSet *suggestions;
 
 + (id)sharedManager;
 
@@ -16,8 +19,11 @@
 - (void)analyzeLoudnessForRanges:(id)arg1 ofAssets:(id)arg2;
 - (void)analyzeLoudnessForRanges:(id)arg1 ofAssets:(id)arg2 progressHandler:(id /* block */)arg3 completionHandler:(id /* block */)arg4;
 - (void)clearCaches;
+- (id)clipSuggestionRangesForAsset:(id)arg1;
 - (id)init;
 - (id)metadataForAssetID:(id)arg1;
 - (void)setMetadata:(id)arg1 forAssetID:(id)arg2;
+- (void)setSuggestions:(id)arg1;
+- (id)suggestions;
 
 @end

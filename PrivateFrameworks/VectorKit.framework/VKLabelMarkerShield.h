@@ -6,7 +6,7 @@
     VKImageSourceKey * _imageKey;
 }
 
-@property (nonatomic, readonly) struct { struct { float x_1_1_1; float x_1_1_2; float x_1_1_3; float x_1_1_4; } x1; } color;
+@property (nonatomic, readonly) struct { float x1; float x2; float x3; float x4; } color;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -20,7 +20,7 @@
 
 // Image: /System/Library/PrivateFrameworks/VectorKit.framework/VectorKit
 
-- (struct { struct { float x_1_1_1; float x_1_1_2; float x_1_1_3; float x_1_1_4; } x1; })color;
+- (struct { float x1; float x2; float x3; float x4; })color;
 - (void)dealloc;
 - (id)initWithImageKey:(id)arg1;
 - (id)locale;

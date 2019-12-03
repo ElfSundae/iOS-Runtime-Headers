@@ -10,7 +10,7 @@
 
 @property (nonatomic, retain) NSMutableDictionary *propertyMap;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (bool)hasProperties;
 - (bool)hasTransition;
 - (id)init;

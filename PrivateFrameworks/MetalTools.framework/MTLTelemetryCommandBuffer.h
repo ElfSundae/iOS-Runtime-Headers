@@ -10,6 +10,7 @@
         int renderCount; 
     }  _initKernelState;
     MTLTelemetryDevice * _telemetryDevice;
+    struct MTLTelemetryAnisoClippedCountsRec { unsigned int x1[4]; } * anisoClippedCounts;
     struct MTLTelemetryStatisticUIRec { unsigned int x1; unsigned int x2; unsigned long long x3; unsigned int x4; } * attachmentCount;
     struct MTLTelemetryStatisticUIRec { unsigned int x1; unsigned int x2; unsigned long long x3; unsigned int x4; } * blitEncoderBlitDistribution;
     struct unordered_map<MTLPixelFormat, MTLTelemetryBlitDistribution, std::__1::hash<unsigned long long>, std::__1::equal_to<MTLPixelFormat>, std::__1::allocator<std::__1::pair<const MTLPixelFormat, MTLTelemetryBlitDistribution> > > { 

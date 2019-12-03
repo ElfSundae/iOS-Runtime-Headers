@@ -19,6 +19,7 @@
 @property (nonatomic, retain) LSDocumentProxy *documentProxy;
 @property (nonatomic) <_SFQuickLookDocumentSource> *documentSource;
 @property (nonatomic, copy) NSString *fileName;
+@property (nonatomic, readonly) unsigned long long fileSize;
 @property (nonatomic, readonly, copy) NSString *inferredUTI;
 @property (nonatomic, readonly, copy) NSString *localizedType;
 @property (nonatomic, copy) NSString *mimeType;
@@ -40,6 +41,7 @@
 - (id)documentProxy;
 - (id)documentSource;
 - (id)fileName;
+- (unsigned long long)fileSize;
 - (id)inferredUTI;
 - (id)initWithFileName:(id)arg1 mimeType:(id)arg2 uti:(id)arg3 needsQuickLookDocumentView:(bool)arg4;
 - (id)localizedType;

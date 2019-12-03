@@ -10,5 +10,7 @@
 - (void)contextDidPresentLoginAlertController:(AKAppleIDAuthenticationInAppContext *)arg1;
 - (void)contextWillBeginPresentingSecondaryUI:(AKAppleIDAuthenticationInAppContext *)arg1;
 - (void)contextWillDismissLoginAlertController:(AKAppleIDAuthenticationInAppContext *)arg1;
+- (RUIStyle *)remoteUIStyle;
+- (void)willPresentModalNavigationController:(UINavigationController *)arg1;
 
 @end

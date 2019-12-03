@@ -7,7 +7,7 @@
     long long  __statusBarStyle;
     unsigned int  _didSetImageMode;
     bool  _isWallpaperEdit;
-    PLWallpaperNavigationItem * _navItem;
+    UINavigationItem * _navItem;
     NSArray * _navigationToolbarItems;
     long long  _previewType;
     long long  _previewVariant;
@@ -50,7 +50,7 @@
 - (void)cropOverlayWasOKed:(id)arg1;
 - (void)dealloc;
 - (long long)desiredStatusBarAnimation;
-- (int)imageFormat;
+- (unsigned short)imageFormat;
 - (id)init;
 - (id)initWithUIImage:(id)arg1;
 - (id)initWithWallpaperVariant:(long long)arg1;

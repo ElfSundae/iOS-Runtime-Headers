@@ -11,6 +11,7 @@
 @property (getter=isPulsing, nonatomic) bool pulsing;
 
 + (struct CGSize { double x1; double x2; })_fixedSubjectIndicatorSizeForReferenceBounds:(struct CGSize { double x1; double x2; })arg1;
++ (struct CGSize { double x1; double x2; })fixedSize;
 
 - (void).cxx_destruct;
 - (id)_imageView;

@@ -18,6 +18,7 @@
     double  _homeKitSetupSecs;
     int  _homeKitSetupState;
     int  _homeKitUserInputState;
+    bool  _homeiCloudEnabled;
     bool  _iCloudAccountMatches;
     NSString * _iTunesUserID;
     bool  _invalidateCalled;
@@ -26,11 +27,13 @@
     SFDevice * _peerDevice;
     unsigned long long  _peerFeatureFlags;
     int  _preAuthState;
+    int  _preflightHomeKitState;
     int  _preflightWiFiState;
     int  _preflightiTunesState;
     UIViewController * _presentingViewController;
     id /* block */  _progressHandler;
     id /* block */  _promptForHomeHandler;
+    id /* block */  _promptForHomeiCloudHandler;
     id /* block */  _promptForPINHandler;
     id /* block */  _promptForRoomHandler;
     int  _proxSetupActiveToken;
@@ -56,6 +59,9 @@
     unsigned long long  _trSetupConfigurationStartTicks;
     int  _trSetupConfigurationState;
     NSSet * _trUnauthServices;
+    bool  _tvLatencyEnabled;
+    TVLAudioLatencyEstimator * _tvLatencyEstimator;
+    int  _tvLatencySetupState;
     bool  _useSFSession;
     double  _wifiSetupSecs;
 }
@@ -66,12 +72,15 @@
 @property (nonatomic, retain) UIViewController *presentingViewController;
 @property (nonatomic, copy) id /* block */ progressHandler;
 @property (nonatomic, copy) id /* block */ promptForHomeHandler;
+@property (nonatomic, copy) id /* block */ promptForHomeiCloudHandler;
 @property (nonatomic, copy) id /* block */ promptForPINHandler;
 @property (nonatomic, copy) id /* block */ promptForRoomHandler;
 
 - (void).cxx_destruct;
 - (void)_cleanup;
+- (void)_homeKitUpdateiCloudSwitchState:(bool)arg1;
 - (void)_reportError:(id)arg1 label:(id)arg2;
+- (void)_reportProgress:(unsigned int)arg1 info:(id)arg2;
 - (void)_run;
 - (int)_runBasicConfig;
 - (void)_runBasicConfigRequest;
@@ -84,6 +93,7 @@
 - (int)_runPreAuth;
 - (void)_runPreAuthRequest;
 - (void)_runPreAuthResponse:(id)arg1 error:(id)arg2;
+- (int)_runPreflightHomeKit;
 - (int)_runPreflightWiFi;
 - (int)_runPreflightiTunes;
 - (int)_runSFSessionStart;
@@ -93,12 +103,18 @@
 - (int)_runTRNetwork;
 - (int)_runTRSessionStart;
 - (int)_runTRSetupConfiguration;
+- (int)_runTVLatencySetup;
+- (void)_runTVLatencySetupEnded:(int)arg1;
+- (void)_runTVLatencySetupEstimate;
+- (void)_runTVLatencySetupProgressEvent:(unsigned long long)arg1 info:(id)arg2;
+- (void)_runTVLatencySetupRequest;
 - (bool)_verifyiCloudMatch:(unsigned long long)arg1 error:(id*)arg2;
 - (void)activate;
 - (void)dealloc;
 - (id)dispatchQueue;
 - (void)homeKitSelectHome:(id)arg1;
 - (void)homeKitSelectRoom:(id)arg1;
+- (void)homeiCloudEnable;
 - (id)init;
 - (void)invalidate;
 - (void)pairSetupTryPIN:(id)arg1;
@@ -107,6 +123,7 @@
 - (id)presentingViewController;
 - (id /* block */)progressHandler;
 - (id /* block */)promptForHomeHandler;
+- (id /* block */)promptForHomeiCloudHandler;
 - (id /* block */)promptForPINHandler;
 - (id /* block */)promptForRoomHandler;
 - (void)setDispatchQueue:(id)arg1;
@@ -115,6 +132,7 @@
 - (void)setPresentingViewController:(id)arg1;
 - (void)setProgressHandler:(id /* block */)arg1;
 - (void)setPromptForHomeHandler:(id /* block */)arg1;
+- (void)setPromptForHomeiCloudHandler:(id /* block */)arg1;
 - (void)setPromptForPINHandler:(id /* block */)arg1;
 - (void)setPromptForRoomHandler:(id /* block */)arg1;
 

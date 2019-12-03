@@ -13,31 +13,36 @@
     HMFUnfairLock * _lock;
     NSString * _name;
     unsigned long long  _port;
+    bool  _publishing;
     NSMutableArray * _resolveBlocks;
-    bool  _resolving;
+    bool  _resolved;
+    long long  _state;
     NSString * _type;
 }
 
-@property (nonatomic, readonly, copy) NSDictionary *TXTRecord;
+@property (readonly, copy) NSDictionary *TXTRecord;
 @property (readonly, copy) NSArray *addresses;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *clientQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property <HMFNetServiceDelegate> *delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, readonly, copy) NSString *domain;
+@property (readonly, copy) NSString *domain;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) NSUUID *hmd_sessionIdentifier;
 @property (readonly, copy) HMFNetAddress *hostName;
 @property (nonatomic, readonly) NSNetService *internal;
-@property (nonatomic, readonly, copy) NSString *name;
-@property (nonatomic, readonly) unsigned long long port;
+@property (readonly, copy) NSString *name;
+@property (readonly) unsigned long long port;
+@property (getter=isPublishing) bool publishing;
 @property (nonatomic, readonly) NSMutableArray *resolveBlocks;
-@property (getter=isResolving, nonatomic) bool resolving;
+@property (getter=isResolved, readonly) bool resolved;
+@property (nonatomic) long long state;
 @property (readonly) Class superclass;
-@property (nonatomic, readonly, copy) NSString *type;
+@property (readonly, copy) NSString *type;
 
 // Image: /System/Library/PrivateFrameworks/HMFoundation.framework/HMFoundation
 
++ (bool)automaticallyNotifiesObserversForKey:(id)arg1;
 + (id)errorFromNetServiceErrorDict:(id)arg1;
 + (id)logCategory;
 + (id)shortDescription;
@@ -62,7 +67,8 @@
 - (id)initWithNetService:(id)arg1;
 - (id)internal;
 - (bool)isEqual:(id)arg1;
-- (bool)isResolving;
+- (bool)isPublishing;
+- (bool)isResolved;
 - (id)logIdentifier;
 - (id)name;
 - (void)netService:(id)arg1 didNotResolve:(id)arg2;
@@ -78,10 +84,13 @@
 - (void)setAddresses:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setHostname:(id)arg1;
-- (void)setResolving:(bool)arg1;
+- (void)setPublishing:(bool)arg1;
+- (void)setResolved:(bool)arg1;
+- (void)setState:(long long)arg1;
 - (void)setTXTRecord:(id)arg1;
 - (id)shortDescription;
 - (void)startMonitoring;
+- (long long)state;
 - (id)type;
 - (void)updateTXTRecordWithData:(id)arg1;
 

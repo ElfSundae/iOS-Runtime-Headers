@@ -5,6 +5,7 @@
 
 @required
 
+- (GEOComposedRoute *)composedRoute;
 - (NSArray *)connections;
 - (NSString *)displayName;
 - (bool)hasTransitIncidentComponent;
@@ -16,5 +17,6 @@
 - (NSArray *)linesForSystem:(id <GEOTransitSystem>)arg1;
 - (NSArray *)systems;
 - (unsigned long long)systemsCount;
+- (NSArray *)transitTripStops;
 
 @end

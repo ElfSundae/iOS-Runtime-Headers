@@ -22,7 +22,6 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_contentViewFrame;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_contentViewInsets;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_contentViewInsetsForArrowDirection:(unsigned long long)arg1;
-- (bool)_needsSeperateBlending;
 - (void)_setChromeHidden:(bool)arg1;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_shadowInsets;
 - (struct CGSize { double x1; double x2; })_shadowOffset;
@@ -33,7 +32,6 @@
 - (bool)_shouldAnimatePropertyWithKey:(id)arg1;
 - (void)_updateChrome;
 - (void)_updateShadow;
-- (bool)_wantsDefaultContentAppearance;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (unsigned long long)arrowDirection;
 - (double)arrowOffset;

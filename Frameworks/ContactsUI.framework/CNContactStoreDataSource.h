@@ -8,6 +8,8 @@
     CNContactStoreFilter * _filter;
     NSArray * _keysToFetch;
     bool  _loadingSnapshot;
+    NSDictionary * _localizedSectionIndices;
+    <CNScheduler> * _mainThreadScheduler;
     CNManagedConfiguration * _managedConfiguration;
     CNContact * _meContact;
     bool  _meContactNeedsUpdate;
@@ -18,8 +20,6 @@
     <CNContactDataSourceDelegate> * delegate;
 }
 
-@property (nonatomic, readonly) unsigned int abSortOrder;
-@property (nonatomic, readonly) CNiOSAddressBook *addressBook;
 @property (nonatomic, readonly) bool canReload;
 @property (nonatomic, retain) CNContactFormatter *contactFormatter;
 @property (nonatomic, readonly) NSDictionary *contactMatchInfos;
@@ -53,8 +53,6 @@
 
 - (void).cxx_destruct;
 - (void)_reloadSynchronously:(bool)arg1;
-- (unsigned int)abSortOrder;
-- (id)addressBook;
 - (bool)canReload;
 - (id)completeContactFromContact:(id)arg1 fromMainStoreOnly:(bool)arg2 keysToFetch:(id)arg3;
 - (id)contactFormatter;
@@ -85,6 +83,7 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (id)preferredForNameMeContactIdentifier;
 - (id)preferredForNameMeContactWithKeysToFetch:(id)arg1;
+- (void)registerForRelevantChangeNotifications;
 - (void)reload;
 - (void)reloadAsynchronously;
 - (void)reset;

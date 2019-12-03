@@ -33,7 +33,6 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (bool)_isEqualToCPLServiceUIStatus:(id)arg1 onlyProgressIsNotEqual:(bool*)arg2;
 - (id /* block */)action;
 - (id)actionConfirmationAlertButtonTitle;
 - (id)actionConfirmationAlertSubtitle;

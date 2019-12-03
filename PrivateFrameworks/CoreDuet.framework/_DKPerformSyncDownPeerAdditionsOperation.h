@@ -5,8 +5,6 @@
 @interface _DKPerformSyncDownPeerAdditionsOperation : _DKSyncCompositeOperation {
     unsigned long long  _batchNumber;
     bool  _foundAdditions;
-    bool  _hadAdditions;
-    NSString * _hadAdditionsKey;
     bool  _highPriority;
     NSDate * _highWaterMark;
     _DKSyncHistory * _history;
@@ -15,11 +13,12 @@
     NSArray * _overlappingWindows;
     _DKSyncPeer * _peer;
     struct _CDPerfEvent { 
-        unsigned long long CDPM_startTime; 
-        unsigned long long CDPM_endTime; 
+        double startTime; 
+        double endTime; 
     }  _perfEvent;
     _CDMutablePerfMetric * _perfMetric;
     _DKSync2Policy * _policy;
+    NSDate * _startDate;
     NSArray * _streamNames;
     <_DKSyncRemoteKnowledgeStorage> * _transport;
     _DKSyncType * _type;
@@ -34,14 +33,14 @@
 - (void)coalesceRedundantOverlappingWindows;
 - (void)endOperation;
 - (void)endPerfMetrics;
-- (void)handleFetchedEvents:(id)arg1 windowStartDate:(id)arg2 windowEndDate:(id)arg3 window:(id)arg4;
+- (void)handleFetchedEvents:(id)arg1 completedWindows:(id)arg2 missingWindows:(id)arg3;
 - (id)initWithParent:(id)arg1 localStorage:(id)arg2 transport:(id)arg3 peer:(id)arg4 policy:(id)arg5 type:(id)arg6;
 - (bool)isAsynchronous;
 - (void)main;
 - (void)performSyncDownPeerAdditions;
+- (void)performSyncDownPeerAdditionsWithCompletedWindows:(id)arg1;
 - (void)performSyncDownPeerAdditionsWithDidPrewarm:(bool)arg1 orError:(id)arg2;
 - (void)performSyncDownPeerAdditionsWithHighWaterMark:(id)arg1 orError:(id)arg2;
-- (void)performSyncDownPeerAdditionsWithPreviousWindow:(id)arg1;
 - (void)startPerfMetrics;
 - (void)updateEvents:(id)arg1 withSourceDeviceID:(id)arg2;
 

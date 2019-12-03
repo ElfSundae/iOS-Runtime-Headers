@@ -3,6 +3,8 @@
  */
 
 @interface CFXReviewViewController : UIViewController <CFXEffectBrowserContentPresenterViewControllerDelegate, CFXEffectBrowserViewControllerDelegate, CFXPreviewViewControllerDelegate> {
+    CFXCounterRotationView * _bottomControlsSnapshotContainer;
+    long long  _cameraModeUsedForCapture;
     <CFXReviewViewControllerDelegate> * _delegate;
     CFXEffectBrowserViewController * _effectBrowserViewController;
     CFXPreviewViewController * _internalPreviewViewController;
@@ -15,6 +17,8 @@
 }
 
 @property (nonatomic, readonly, copy) NSData *adjustmentsData;
+@property (nonatomic, retain) CFXCounterRotationView *bottomControlsSnapshotContainer;
+@property (nonatomic) long long cameraModeUsedForCapture;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <CFXReviewViewControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -29,6 +33,7 @@
 @property (nonatomic, readonly) bool mediaCapturedInFunCam;
 @property (nonatomic) bool mediaCapturedInFunCam_metadata;
 @property (nonatomic, retain) CFXMediaItem *mediaItem;
+@property (nonatomic, readonly) bool mediaItemRequiresExport;
 @property (nonatomic, retain) NSObject<OS_dispatch_group> *metadataReaderGroup;
 @property (nonatomic, retain) CFXReviewControlsViewController *reviewControlsViewController;
 @property (readonly) Class superclass;
@@ -40,6 +45,8 @@
 - (void)CFX_updateAnalyticsForSentMediaItem:(id)arg1;
 - (id)adjustmentsData;
 - (bool)allowLandscapeForEffectBrowserViewController:(id)arg1;
+- (id)bottomControlsSnapshotContainer;
+- (long long)cameraModeUsedForCapture;
 - (id)delegate;
 - (id)effectBrowserViewController;
 - (void)effectBrowserViewController:(id)arg1 didDismissPickerForEffectType:(id)arg2;
@@ -64,6 +71,7 @@
 - (bool)mediaCapturedInFunCam_metadata;
 - (id)mediaItem;
 - (id)mediaItemForEffectBrowserViewController:(id)arg1;
+- (bool)mediaItemRequiresExport;
 - (id)metadataReaderGroup;
 - (long long)orientationUsedForCapture;
 - (void)previewViewController:(id)arg1 didFinishExportingMediaItem:(id)arg2 withError:(id)arg3;
@@ -77,6 +85,8 @@
 - (id)selectedAnimojiIdentifierForEffectBrowserViewController:(id)arg1;
 - (id)selectedAppIdentifierForPreviewViewController:(id)arg1;
 - (id)selectedFilterIdentifierForEffectBrowserViewController:(id)arg1;
+- (void)setBottomControlsSnapshotContainer:(id)arg1;
+- (void)setCameraModeUsedForCapture:(long long)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setEffectBrowserViewController:(id)arg1;
 - (void)setEffectsPickerDrawer:(id)arg1;
@@ -88,6 +98,9 @@
 - (void)setMetadataReaderGroup:(id)arg1;
 - (void)setReviewControlsViewController:(id)arg1;
 - (bool)shouldAlwaysPresentExpandedAppsForEffectBrowserViewController:(id)arg1;
+- (void)viewDidAppear:(bool)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
 
 @end

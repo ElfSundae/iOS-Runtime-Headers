@@ -12,12 +12,14 @@
 @property (nonatomic, readonly) NSString *convertedAnalysisString;
 @property (nonatomic, readonly) NSString *dictionaryReading;
 @property (nonatomic, readonly) bool isAutocorrectedCandidate;
+@property (nonatomic, readonly) bool isBilingualCandidate;
 @property (nonatomic, readonly) bool isConversionCandidate;
 @property (nonatomic, readonly) bool isEmojiCandidate;
 @property (nonatomic, readonly) bool isExtensionCandidate;
 @property (nonatomic, readonly) bool isFuzzyMatchCandidate;
 @property (nonatomic, readonly) bool isLearningDictionaryCandidate;
 @property (nonatomic, readonly) bool isOTAWordlistCandidate;
+@property (nonatomic, readonly) bool isPartialCandidate;
 @property (nonatomic, readonly) bool isPersonName;
 @property (nonatomic, readonly) bool isPredictionCandidate;
 @property (nonatomic, readonly) bool isRegionalCandidate;
@@ -42,11 +44,13 @@
 - (struct __CFArray { }*)copySyllableLengthArrayInConvertedAnalysisString;
 - (struct __CFArray { }*)copySyllableLengthArrayInDictionaryReading;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (long long)costAtIndex:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryReading;
 - (id)initWithCandidate:(struct MecabraCandidateBase { int (**x1)(); long long x2; }*)arg1;
 - (bool)isAutocorrectedCandidate;
+- (bool)isBilingualCandidate;
 - (bool)isConversionCandidate;
 - (bool)isEmojiCandidate;
 - (bool)isEqual:(id)arg1;
@@ -54,6 +58,7 @@
 - (bool)isFuzzyMatchCandidate;
 - (bool)isLearningDictionaryCandidate;
 - (bool)isOTAWordlistCandidate;
+- (bool)isPartialCandidate;
 - (bool)isPersonName;
 - (bool)isPredictionCandidate;
 - (bool)isRegionalCandidate;
@@ -62,6 +67,7 @@
 - (unsigned short)kind;
 - (unsigned short)lastPrefixValue;
 - (unsigned short)lcAttrAtIndex:(unsigned long long)arg1;
+- (double)lmProbability;
 - (unsigned short)matchType;
 - (unsigned short)matchedLengthType;
 - (long long)phraseBoundaryAfterWordAtIndex:(long long)arg1;

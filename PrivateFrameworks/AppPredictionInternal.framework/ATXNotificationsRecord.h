@@ -12,8 +12,6 @@
     bool  _finished;
     bool  _hidden;
     unsigned long long  _incomingFeed;
-    NSData * _mdata;
-    bool  _mdataUpdated;
     NSString * _message;
     NSString * _notificationId;
     NSNumber * _numSuppActions;

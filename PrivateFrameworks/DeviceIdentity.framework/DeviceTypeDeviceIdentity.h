@@ -7,6 +7,7 @@
     NSString * _hardware_model;
     bool  _has_internal_diagnostics;
     bool  _has_telephony;
+    bool  _is_audio_accessory;
     bool  _is_dev_board;
     bool  _is_fpga;
     bool  _is_internal_build;
@@ -20,6 +21,7 @@
 @property (nonatomic, readonly, copy) NSString *hardware_model;
 @property (nonatomic, readonly) bool has_internal_diagnostics;
 @property (nonatomic, readonly) bool has_telephony;
+@property (nonatomic, readonly) bool is_audio_accessory;
 @property (nonatomic, readonly) bool is_dev_board;
 @property (nonatomic, readonly) bool is_fpga;
 @property (nonatomic, readonly) bool is_internal_build;
@@ -39,6 +41,7 @@
 - (bool)has_internal_diagnostics;
 - (bool)has_telephony;
 - (id)init;
+- (bool)is_audio_accessory;
 - (bool)is_dev_board;
 - (bool)is_fpga;
 - (bool)is_internal_build;

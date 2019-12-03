@@ -5,6 +5,7 @@
 
 @required
 
+- (void)chatInputController:(void *)arg1 presentShelfModal:(void *)arg2 animated:(void *)arg3 completion:(void *)arg4; // needs 4 arg types, found 8: CKChatInputController *, UIViewController *, bool, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, void*
 - (void)chatInputControllerDidDismissCompactBrowserViewController:(CKChatInputController *)arg1;
 - (void)chatInputControllerDidDismissModalBrowserViewController:(CKChatInputController *)arg1;
 - (void)chatInputControllerDidPresentModalBrowserViewController:(CKChatInputController *)arg1;
@@ -13,6 +14,7 @@
 - (void)chatInputControllerDidTransitionCollapsed:(CKChatInputController *)arg1;
 - (void)chatInputControllerDidTransitionExpanded:(CKChatInputController *)arg1;
 - (void)chatInputControllerRequestInputViewFocusFromFullscreen:(CKChatInputController *)arg1;
+- (bool)chatInputControllerShouldShowHandwriting:(CKChatInputController *)arg1;
 - (void)chatInputControllerWillDismissCompactBrowserViewController:(CKChatInputController *)arg1;
 - (void)chatInputControllerWillDismissModalBrowserViewController:(CKChatInputController *)arg1;
 - (void)chatInputControllerWillHideHandwriting:(CKChatInputController *)arg1;

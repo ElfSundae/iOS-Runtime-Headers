@@ -12,6 +12,7 @@
 - (void)remote_createProfileOfType:(long long)arg1 displayName:(id)arg2 completion:(id /* block */)arg3;
 - (void)remote_deleteProfile:(id)arg1 completion:(id /* block */)arg2;
 - (void)remote_getAllProfilesWithCompletion:(id /* block */)arg1;
-- (void)remote_setDisplayName:(id)arg1 completion:(id /* block */)arg2;
+- (void)remote_profileIdentifierForNRDeviceUUID:(id)arg1 completion:(id /* block */)arg2;
+- (void)remote_setDisplayFirstName:(id)arg1 lastName:(id)arg2 completion:(id /* block */)arg3;
 
 @end

@@ -13,15 +13,19 @@
     NSProgress * _observedProgress;
     NSOperationQueue * _pendingAnimationQueue;
     double  _progress;
+    UITapGestureRecognizer * _tapGestureRecognizer;
 }
 
-@property (nonatomic, retain) UIColor *activeStrokeColor;
+@property (nonatomic, copy) UIColor *activeStrokeColor;
 @property (nonatomic) bool canShowStopButton;
 @property (nonatomic, retain) DOCDeterminateProgressRingView *determinateProgressRingView;
 @property (nonatomic, retain) DOCGhostRingView *ghostRingView;
-@property (nonatomic, retain) UIColor *inactiveStrokeColor;
+@property (nonatomic) bool graduallyIncreasingProgress;
+@property (nonatomic, copy) UIColor *inactiveStrokeColor;
 @property (nonatomic, retain) DOCIndeterminateProgressRingView *indeterminateProgressRingView;
 @property (nonatomic, retain) NSProgress *observedProgress;
+@property (nonatomic) double progress;
+@property (nonatomic, retain) UITapGestureRecognizer *tapGestureRecognizer;
 
 - (void).cxx_destruct;
 - (void)_addToPendingAnimationQueue:(id /* block */)arg1;
@@ -36,6 +40,8 @@
 - (id)determinateProgressRingView;
 - (void)fadeoutWithCompletion:(id /* block */)arg1;
 - (id)ghostRingView;
+- (bool)graduallyIncreasingProgress;
+- (void)handleTap:(id)arg1;
 - (id)inactiveStrokeColor;
 - (id)indeterminateProgressRingView;
 - (id)initWithCoder:(id)arg1;
@@ -44,14 +50,19 @@
 - (void)layoutSubviews;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (id)observedProgress;
+- (double)progress;
 - (void)setActiveStrokeColor:(id)arg1;
 - (void)setCanShowStopButton:(bool)arg1;
 - (void)setDeterminateProgressRingView:(id)arg1;
 - (void)setGhostRingView:(id)arg1;
+- (void)setGraduallyIncreasingProgress:(bool)arg1;
 - (void)setInactiveStrokeColor:(id)arg1;
 - (void)setIndeterminateProgressRingView:(id)arg1;
 - (void)setObservedProgress:(id)arg1;
+- (void)setProgress:(double)arg1;
 - (void)setProgress:(double)arg1 animated:(bool)arg2;
 - (void)setProgress:(double)arg1 animated:(bool)arg2 completion:(id /* block */)arg3;
+- (void)setTapGestureRecognizer:(id)arg1;
+- (id)tapGestureRecognizer;
 
 @end

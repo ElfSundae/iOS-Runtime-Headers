@@ -67,6 +67,7 @@
 
 + (id)pivotTableWithResources:(id)arg1;
 
+- (void).cxx_destruct;
 - (bool)applyAlignmentFormats;
 - (bool)applyBorderFormats;
 - (bool)applyFontFormats;
@@ -87,7 +88,6 @@
 - (id)dataFields;
 - (bool)dataOnRows;
 - (unsigned long long)dataPosition;
-- (void)dealloc;
 - (id)description;
 - (bool)disableFieldList;
 - (long long)firstDataColumn;

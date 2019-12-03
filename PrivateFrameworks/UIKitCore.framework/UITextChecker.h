@@ -10,9 +10,11 @@
 
 @property (nonatomic, retain) NSArray *ignoredWords;
 
++ (id)_dictionaryEntryForName:(id)arg1;
 + (bool)_forgetWord:(id)arg1 inDictionary:(id)arg2;
 + (bool)_isWord:(id)arg1 inDictionary:(id)arg2;
 + (bool)_learnWord:(id)arg1 inDictionary:(id)arg2;
++ (void)_setDictionaryEntry:(id)arg1 forName:(id)arg2;
 + (void)_setWords:(id)arg1 inDictionary:(id)arg2;
 + (id)_textCheckerBackgroundQueue;
 + (id)_wordsInDictionary:(id)arg1;

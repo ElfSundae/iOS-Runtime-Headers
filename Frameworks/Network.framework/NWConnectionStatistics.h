@@ -3,11 +3,13 @@
  */
 
 @interface NWConnectionStatistics : NSObject {
+    NSArray * _activities;
     unsigned int  _awdMetricID;
     PBCodable * _awdReport;
     NSString * _clientIdentifier;
     NSArray * _externallyVisibleActivityUUIDs;
     NSUUID * _externallyVisibleConnectionUUID;
+    NWL2Report * _layer2Report;
     struct netcore_stats_tcp_report { 
         union { 
             struct { 
@@ -207,8 +209,12 @@
                 unsigned int first_party : 1; 
                 unsigned int is_daemon : 1; 
                 unsigned int tls_handshake_timed_out : 1; 
-                unsigned int __pad_bits : 2; 
-                unsigned char __pad[7]; 
+                unsigned int is_path_expensive : 1; 
+                unsigned int is_path_constrained : 1; 
+                unsigned int prohibits_expensive : 1; 
+                unsigned int prohibits_constrained : 1; 
+                unsigned int __pad_bits : 6; 
+                unsigned char __pad[6]; 
             } nw_connection_report; 
         } u; 
         bool delegated; 
@@ -218,7 +224,7 @@
     NSString * _sourceIdentifier;
 }
 
-@property (nonatomic, readonly) NSArray *activities;
+@property (nonatomic, retain) NSArray *activities;
 @property (nonatomic) unsigned int awdMetricID;
 @property (nonatomic, retain) PBCodable *awdReport;
 @property (nonatomic, readonly) unsigned long long bytesDuplicate;
@@ -245,6 +251,7 @@
 @property (nonatomic, readonly) bool kernelReportingConnectionStalled;
 @property (nonatomic, readonly) bool kernelReportingReadStalled;
 @property (nonatomic, readonly) bool kernelReportingWriteStalled;
+@property (nonatomic, retain) NWL2Report *layer2Report;
 @property (nonatomic, readonly) unsigned long long packetsDuplicate;
 @property (nonatomic, readonly) unsigned long long packetsIn;
 @property (nonatomic, readonly) unsigned long long packetsOOO;
@@ -302,17 +309,20 @@
 - (bool)kernelReportingConnectionStalled;
 - (bool)kernelReportingReadStalled;
 - (bool)kernelReportingWriteStalled;
+- (id)layer2Report;
 - (unsigned long long)packetsDuplicate;
 - (unsigned long long)packetsIn;
 - (unsigned long long)packetsOOO;
 - (unsigned long long)packetsOut;
 - (unsigned long long)packetsRetransmitted;
 - (struct netcore_stats_tcp_report { union { struct { struct netcore_stats_tcp_statistics_report { unsigned long long x_1_3_1; unsigned long long x_1_3_2; unsigned long long x_1_3_3; unsigned long long x_1_3_4; unsigned long long x_1_3_5; unsigned long long x_1_3_6; unsigned long long x_1_3_7; unsigned long long x_1_3_8; unsigned long long x_1_3_9; unsigned long long x_1_3_10; unsigned long long x_1_3_11; unsigned long long x_1_3_12; unsigned long long x_1_3_13; unsigned long long x_1_3_14; unsigned long long x_1_3_15; unsigned long long x_1_3_16; unsigned int x_1_3_17; unsigned int x_1_3_18; unsigned int x_1_3_19; unsigned int x_1_3_20; unsigned int x_1_3_21; unsigned int x_1_3_22; unsigned int x_1_3_23; unsigned int x_1_3_24; unsigned int x_1_3_25; unsigned int x_1_3_26; unsigned int x_1_3_27; unsigned int x_1_3_28; unsigned int x_1_3_29; unsigned int x_1_3_30; unsigned int x_1_3_31; unsigned int x_1_3_32; unsigned int x_1_3_33; int x_1_3_34; int x_1_3_35; int x_1_3_36; unsigned int x_1_3_37 : 1; unsigned int x_1_3_38 : 1; unsigned int x_1_3_39 : 1; unsigned int x_1_3_40 : 1; unsigned int x_1_3_41 : 1; unsigned int x_1_3_42 : 1; } x_1_2_1; } x_1_1_1; } x1; })report;
+- (void)setActivities:(id)arg1;
 - (void)setAwdMetricID:(unsigned int)arg1;
 - (void)setAwdReport:(id)arg1;
 - (void)setClientIdentifier:(id)arg1;
 - (void)setExternallyVisibleActivityUUIDs:(id)arg1;
 - (void)setExternallyVisibleConnectionUUID:(id)arg1;
+- (void)setLayer2Report:(id)arg1;
 - (void)setReport:(struct netcore_stats_tcp_report { union { struct { struct netcore_stats_tcp_statistics_report { unsigned long long x_1_3_1; unsigned long long x_1_3_2; unsigned long long x_1_3_3; unsigned long long x_1_3_4; unsigned long long x_1_3_5; unsigned long long x_1_3_6; unsigned long long x_1_3_7; unsigned long long x_1_3_8; unsigned long long x_1_3_9; unsigned long long x_1_3_10; unsigned long long x_1_3_11; unsigned long long x_1_3_12; unsigned long long x_1_3_13; unsigned long long x_1_3_14; unsigned long long x_1_3_15; unsigned long long x_1_3_16; unsigned int x_1_3_17; unsigned int x_1_3_18; unsigned int x_1_3_19; unsigned int x_1_3_20; unsigned int x_1_3_21; unsigned int x_1_3_22; unsigned int x_1_3_23; unsigned int x_1_3_24; unsigned int x_1_3_25; unsigned int x_1_3_26; unsigned int x_1_3_27; unsigned int x_1_3_28; unsigned int x_1_3_29; unsigned int x_1_3_30; unsigned int x_1_3_31; unsigned int x_1_3_32; unsigned int x_1_3_33; int x_1_3_34; int x_1_3_35; int x_1_3_36; unsigned int x_1_3_37 : 1; unsigned int x_1_3_38 : 1; unsigned int x_1_3_39 : 1; unsigned int x_1_3_40 : 1; unsigned int x_1_3_41 : 1; unsigned int x_1_3_42 : 1; } x_1_2_1; } x_1_1_1; } x1; })arg1;
 - (void)setSourceIdentifier:(id)arg1;
 - (id)sourceIdentifier;

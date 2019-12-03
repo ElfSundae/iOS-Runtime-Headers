@@ -41,7 +41,9 @@
 - (bool)isVideo;
 - (unsigned long long)maxNumberOfPixelsIfSquare;
 - (unsigned long long)maxSideLengthIfSquare;
+- (void)preheatDataForThumbnailIndexes:(id)arg1 inLibrary:(id)arg2;
 - (void)setBackingCPLResourceType:(unsigned long long)arg1;
 - (void)setBackingImageFormat:(id)arg1;
+- (id)tableThumbnailDataForAsset:(id)arg1 dataSpecification:(struct PHAssetResourceTableDataSpecification { int x1; int x2; int x3; int x4; int x5; int x6; }*)arg2;
 
 @end

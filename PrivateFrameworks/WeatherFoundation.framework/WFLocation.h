@@ -27,11 +27,17 @@
 @property (nonatomic, copy) NSString *displayName;
 @property (nonatomic, copy) CLLocation *geoLocation;
 @property (nonatomic, copy) NSString *locationID;
+@property (nonatomic, readonly) bool nwm_isAQICountry;
+@property (nonatomic, readonly) bool nwm_isDAQICountry;
+@property (nonatomic, readonly) bool nwm_isUBACountry;
 @property (nonatomic, readonly) bool shouldQueryForAirQualityData;
 @property (nonatomic, copy) NSString *state;
 @property (nonatomic, copy) NSString *stateAbbreviation;
 @property (nonatomic, copy) NSTimeZone *timeZone;
 @property (nonatomic, copy) NSString *weatherDisplayName;
+@property (nonatomic, readonly) NSString *wf_weatherChannelGeocodeValue;
+
+// Image: /System/Library/PrivateFrameworks/WeatherFoundation.framework/WeatherFoundation
 
 + (long long)currentArchiveVersion;
 + (id)knownKeys;
@@ -55,7 +61,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)geoLocation;
 - (unsigned long long)hash;
-- (id)init;
 - (id)initWithCloudDictionaryRepresentation:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLocalDataRepresentation:(id)arg1;
@@ -90,5 +95,14 @@
 - (id)sunsetForDate:(id)arg1;
 - (id)timeZone;
 - (id)weatherDisplayName;
+- (id)wf_weatherChannelGeocodeValue;
+
+// Image: /System/Library/PrivateFrameworks/NanoWeatherComplicationsCompanion.framework/NanoWeatherComplicationsCompanion
+
++ (id)nwm_attributedDisplayNameWithLocationGlyph:(id)arg1 inFont:(id)arg2;
+
+- (bool)nwm_isAQICountry;
+- (bool)nwm_isDAQICountry;
+- (bool)nwm_isUBACountry;
 
 @end

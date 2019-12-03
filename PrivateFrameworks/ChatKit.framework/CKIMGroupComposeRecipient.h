@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
  */
 
-@interface CKIMGroupComposeRecipient : MFComposeRecipient <CKIMComposeRecipient> {
+@interface CKIMGroupComposeRecipient : CNComposeRecipientGroup <CKIMComposeRecipient> {
     NSArray * _composeRecipients;
     NSString * _conversationGUID;
     NSString * _detailsString;
@@ -11,12 +11,11 @@
     CKIMComposeRecipient * _matchingRecipient;
 }
 
-@property (nonatomic, retain) NSArray *composeRecipients;
+@property (nonatomic, readonly) NSArray *composeRecipients;
 @property (nonatomic, retain) NSString *conversationGUID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) NSString *detailsString;
-@property (nonatomic, retain) NSString *displayString;
 @property (nonatomic, retain) NSArray *handles;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSDate *lastMessageDate;
@@ -38,10 +37,8 @@
 - (id)lastMessageDate;
 - (id)matchingRecipient;
 - (void)releaseIMReferences;
-- (void)setComposeRecipients:(id)arg1;
 - (void)setConversationGUID:(id)arg1;
 - (void)setDetailsString:(id)arg1;
-- (void)setDisplayString:(id)arg1;
 - (void)setHandles:(id)arg1;
 - (void)setLastMessageDate:(id)arg1;
 - (void)setMatchingRecipient:(id)arg1;

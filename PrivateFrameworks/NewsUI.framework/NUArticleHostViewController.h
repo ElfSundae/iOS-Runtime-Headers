@@ -7,6 +7,7 @@
     FCArticle * _article;
     <NUArticleViewControllerFactory> * _articleViewControllerFactory;
     FCObservable * _articleViewStyler;
+    <NUArticleContentSizeManager> * _contentSizeManager;
     UIViewController * _contentTypeViewController;
     <NUErrorMessageFactory> * _errorMessageFactory;
     FCIssue * _issue;
@@ -14,6 +15,7 @@
     UIView<NULoadingViewProviding> * _loadingView;
     NFMultiDelegate * _multiLoadingDelegate;
     NSString * _pageIdentifier;
+    UIResponder * _responder;
     <NUSettings> * _settings;
 }
 
@@ -21,6 +23,9 @@
 @property (nonatomic, readonly) FCArticle *article;
 @property (nonatomic, readonly) <NUArticleViewControllerFactory> *articleViewControllerFactory;
 @property (nonatomic, readonly) FCObservable *articleViewStyler;
+@property (nonatomic) long long contentScale;
+@property (nonatomic, retain) NSString *contentSizeCategory;
+@property (nonatomic, readonly) <NUArticleContentSizeManager> *contentSizeManager;
 @property (nonatomic, retain) UIViewController *contentTypeViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -32,6 +37,7 @@
 @property (nonatomic, retain) UIView<NULoadingViewProviding> *loadingView;
 @property (nonatomic, readonly) NFMultiDelegate *multiLoadingDelegate;
 @property (nonatomic, readonly, copy) NSString *pageIdentifier;
+@property (nonatomic, retain) UIResponder *responder;
 @property (nonatomic, readonly) UIScrollView *scrollView;
 @property (nonatomic, readonly, copy) <NUSettings> *settings;
 @property (readonly) Class superclass;
@@ -41,11 +47,14 @@
 - (id)article;
 - (id)articleViewControllerFactory;
 - (id)articleViewStyler;
+- (bool)becomeFirstResponder;
+- (long long)contentScale;
+- (id)contentSizeCategory;
+- (id)contentSizeManager;
 - (id)contentTypeViewController;
 - (id)errorMessageFactory;
-- (id)initWithArticle:(id)arg1 articleViewControllerFactory:(id)arg2 settings:(id)arg3 errorMessageFactory:(id)arg4;
-- (id)initWithArticle:(id)arg1 articleViewControllerFactory:(id)arg2 settings:(id)arg3 errorMessageFactory:(id)arg4 analyticsReporting:(id)arg5;
-- (id)initWithArticle:(id)arg1 issue:(id)arg2 articleViewControllerFactory:(id)arg3 settings:(id)arg4 errorMessageFactory:(id)arg5 analyticsReporting:(id)arg6;
+- (id)initWithArticle:(id)arg1 articleViewControllerFactory:(id)arg2 settings:(id)arg3 errorMessageFactory:(id)arg4 contentSizeManager:(id)arg5;
+- (id)initWithArticle:(id)arg1 issue:(id)arg2 articleViewControllerFactory:(id)arg3 settings:(id)arg4 errorMessageFactory:(id)arg5 analyticsReporting:(id)arg6 contentSizeManager:(id)arg7;
 - (id)issue;
 - (void)loadArticleAndEmbedArticleViewController;
 - (id)loadingDelegate;
@@ -53,15 +62,21 @@
 - (void)loadingDidStart;
 - (void)loadingDidUpdateProgress:(double)arg1;
 - (id)loadingListeners;
+- (id)loadingTextForArticle:(id)arg1;
 - (id)loadingView;
 - (void)loadingWillStart;
 - (id)multiLoadingDelegate;
 - (id)pageIdentifier;
 - (void)reportEvent:(id)arg1;
+- (bool)resignFirstResponder;
+- (id)responder;
 - (id)scrollView;
+- (void)setContentScale:(long long)arg1;
+- (void)setContentSizeCategory:(id)arg1;
 - (void)setContentTypeViewController:(id)arg1;
 - (void)setLoadingDelegate:(id)arg1;
 - (void)setLoadingView:(id)arg1;
+- (void)setResponder:(id)arg1;
 - (id)settings;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

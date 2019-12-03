@@ -6,7 +6,7 @@
     id /* block */  _currentDateProvider;
     NSDate * _lastModifiedDate;
     MTTimerMigrator * _migrator;
-    NSPointerArray * _observers;
+    MTObserverStore * _observers;
     NSMutableArray * _orderedTimers;
     <MTPersistence> * _persistence;
     MTTimerScheduler * _scheduler;
@@ -20,7 +20,7 @@
 @property (nonatomic, copy) NSDate *lastModifiedDate;
 @property (nonatomic, retain) MTTimerMigrator *migrator;
 @property (nonatomic, readonly) MTTimer *nextTimer;
-@property (nonatomic, retain) NSPointerArray *observers;
+@property (nonatomic, retain) MTObserverStore *observers;
 @property (nonatomic, retain) NSMutableArray *orderedTimers;
 @property (nonatomic, retain) <MTPersistence> *persistence;
 @property (nonatomic) MTTimerScheduler *scheduler;
@@ -57,13 +57,15 @@
 - (id)_queue_updateTimer:(id)arg1 withCompletion:(id /* block */)arg2 source:(id)arg3;
 - (void)addTimer:(id)arg1 withCompletion:(id /* block */)arg2 source:(id)arg3;
 - (id /* block */)currentDateProvider;
+- (void)dealloc;
 - (void)dismissTimerWithIdentifier:(id)arg1 withCompletion:(id /* block */)arg2 source:(id)arg3;
 - (id)gatherDiagnostics;
 - (void)getTimersWithCompletion:(id /* block */)arg1;
 - (void)handleF5Reset;
+- (void)handleMigrationFinish;
 - (id)init;
 - (id)initWithPersistence:(id)arg1;
-- (id)initWithPersistence:(id)arg1 migrator:(id)arg2 scheduler:(id)arg3 currentDateProvider:(id /* block */)arg4;
+- (id)initWithPersistence:(id)arg1 migrator:(id)arg2 serializer:(id)arg3 callbackScheduler:(id)arg4 currentDateProvider:(id /* block */)arg5;
 - (id)lastModifiedDate;
 - (void)loadTimers;
 - (void)loadTimersSync;

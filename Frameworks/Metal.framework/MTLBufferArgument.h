@@ -26,6 +26,8 @@
 - (void)setAlignment:(unsigned long long)arg1;
 - (void)setDataSize:(unsigned long long)arg1;
 - (void)setStructType:(id)arg1;
+- (void)setStructType:(id)arg1 doRetain:(bool)arg2;
 - (void)setVertexDescriptorBuffer:(bool)arg1;
+- (id)structType;
 
 @end

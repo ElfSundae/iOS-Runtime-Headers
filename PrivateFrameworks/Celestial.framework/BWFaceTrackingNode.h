@@ -5,9 +5,11 @@
 @interface BWFaceTrackingNode : BWNode {
     bool  _addDebugInfo;
     bool  _addMesh;
-    bool  _dropBuffersWhenDepthIsDisabled;
     int  _faceKitMachThreadPriority;
+    int  _faceKitMaxFaces;
+    bool  _faceKitRGBOnly;
     struct CVAFaceKit { } * _faceKitRef;
+    bool  _faceKitUsesFaceRecognition;
     bool  _frontCamera;
     bool  _mirrored;
     struct opaqueCMSimpleQueue { } * _nextSbufQueue;
@@ -30,18 +32,20 @@
 - (void)_startProcessingSampleSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1;
 - (void)dealloc;
 - (void)didReachEndOfDataForInput:(id)arg1;
-- (bool)dropBuffersWhenDepthIsDisabled;
 - (bool)frontCamera;
 - (id)initWithProcessingSession:(struct OpaqueFigCaptureISPProcessingSession { }*)arg1 figThreadPriority:(unsigned int)arg2 useDepth:(bool)arg3 queueDepth:(int)arg4;
+- (int)maxFaces;
 - (bool)mirroringEnabled;
 - (id)nodeSubType;
 - (id)nodeType;
 - (int)orientation;
 - (void)prepareForCurrentConfigurationToBecomeLive;
 - (void)renderSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 forInput:(id)arg2;
-- (void)setDropBuffersWhenDepthIsDisabled:(bool)arg1;
 - (void)setFrontCamera:(bool)arg1;
+- (void)setMaxFaces:(int)arg1;
 - (void)setMirrored:(bool)arg1;
 - (void)setOrientation:(int)arg1;
+- (void)setUsesFaceRecognition:(bool)arg1;
+- (bool)usesFaceRecognition;
 
 @end

@@ -2,7 +2,13 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface UIApplicationRotationFollowingWindow : UIWindow
+@interface UIApplicationRotationFollowingWindow : UIWindow {
+    bool  _limitToWindowLevel;
+    long long  _priorityLevel;
+}
+
+@property (nonatomic) bool limitToWindowLevel;
+@property (nonatomic) long long priorityLevel;
 
 + (bool)_isSystemWindow;
 
@@ -12,9 +18,14 @@
 - (id)_initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 attached:(bool)arg2;
 - (bool)_shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (bool)_shouldControlAutorotation;
+- (id)_topMostWindow;
 - (void)applicationWindowRotated:(id)arg1;
-- (void)dealloc;
 - (id)init;
+- (id)initWithWindowScene:(id)arg1;
 - (bool)isInterfaceAutorotationDisabled;
+- (bool)limitToWindowLevel;
+- (long long)priorityLevel;
+- (void)setLimitToWindowLevel:(bool)arg1;
+- (void)setPriorityLevel:(long long)arg1;
 
 @end

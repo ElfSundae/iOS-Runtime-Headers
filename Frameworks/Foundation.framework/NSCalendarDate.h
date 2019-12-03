@@ -12,7 +12,6 @@
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
-+ (id)allocWithZone:(struct _NSZone { }*)arg1;
 + (id)calendarDate;
 + (id)dateWithNaturalLanguageString:(id)arg1 date:(id)arg2 locale:(id)arg3;
 + (id)dateWithString:(id)arg1 calendarFormat:(id)arg2;
@@ -64,7 +63,7 @@
 - (id)ekmsuidGMTDateToDateInTimeZone:(id)arg1;
 - (id)ekmsuidStringForYearMonthDay;
 
-// Image: /System/Library/PrivateFrameworks/DataAccess.framework/Frameworks/DAEAS.framework/DAEAS
+// Image: /System/Library/PrivateFrameworks/ExchangeSync.framework/Frameworks/DAEAS.framework/DAEAS
 
 + (id)combinedDateWithYMDFrom:(id)arg1 HMSFrom:(id)arg2 componentDatesTimezone:(id)arg3;
 

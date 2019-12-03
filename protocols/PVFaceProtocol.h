@@ -5,6 +5,7 @@
 
 @required
 
+- (unsigned short)ageType;
 - (double)centerX;
 - (double)centerY;
 - (long long)clusterSequenceNumber;

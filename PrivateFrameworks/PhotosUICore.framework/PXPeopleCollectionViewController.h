@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXPeopleCollectionViewController : UICollectionViewController <PXPeopleCollectionViewCellDelegate, PXPeopleDragAndDropCollectionViewDelegate, PXPeopleDragAndDropCollectionViewDelegateLayout, PXPeoplePreviewActionViewControllerDelegate, PXPeopleSectionedDataSourceChangeObserver, PXPeopleSwipeSelectionManagerDelegate, PXPeopleZoomOverlayTransitionEndPoint, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, UIViewControllerPreviewingDelegate, UIViewControllerTransitioningDelegate> {
+@interface PXPeopleCollectionViewController : UICollectionViewController <PXPeopleCollectionViewCellDelegate, PXPeopleDragAndDropCollectionViewDelegate, PXPeopleDragAndDropCollectionViewDelegateLayout, PXPeopleSectionedDataSourceChangeObserver, PXPeopleSwipeSelectionManagerDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, UIViewControllerTransitioningDelegate> {
     NSDictionary * _contactByPersonLocalIdentifier;
     PXPeopleSectionedDataSource * _dataSource;
     UIBarButtonItem * _debugMenuItem;
@@ -92,7 +92,7 @@
 - (void).cxx_destruct;
 - (void)_animateCellAtIndexPathToDefaultState:(id)arg1;
 - (void)_applyChangeDetailsArrayOnCollectionView:(id)arg1;
-- (id)_bestTargetIndexGivenMergeIndexes:(id)arg1;
+- (id)_bestTargetIndexPathGivenMergeIndexPaths:(id)arg1;
 - (double)_bottomInsetForSection:(unsigned long long)arg1;
 - (id)_changeMemberAtIndex:(id)arg1 toPersonType:(long long)arg2;
 - (void)_changeSelectedIndexesToPersonType:(long long)arg1;
@@ -110,7 +110,6 @@
 - (struct CGSize { double x1; double x2; })_itemSizeForItemAtIndexPath:(id)arg1;
 - (id)_originalTargetIndexPathFromDragIndexPath:(id)arg1 targetIndexPath:(id)arg2;
 - (void)_performMerge:(bool)arg1 targetPerson:(id)arg2 dragPerson:(id)arg3;
-- (id)_personItemAtIndexPath:(id)arg1;
 - (void)_presentAllPeopleViewControllerWithCompletion:(id /* block */)arg1;
 - (void)_progressChanged:(id)arg1;
 - (void)_resetHomeIfNeeded;
@@ -125,9 +124,6 @@
 - (void)_updateToolbarItemsForIndexPaths:(id)arg1;
 - (void)_updateVisibleCellsForSelectionMode:(unsigned long long)arg1;
 - (long long)_verticalSizeClass;
-- (id)_visibleIndexPathForTransitionContextObject:(id)arg1;
-- (id)animationControllerForDismissedController:(id)arg1;
-- (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (bool)collectionView:(id)arg1 canMoveItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didBeginMergeWithDragIndexPath:(id)arg2 targetIndexPath:(id)arg3;
@@ -174,9 +170,8 @@
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (bool)pendingChanges;
 - (void)peopleCollectionViewCellDidToggleFavoriteState:(id)arg1;
-- (void)peoplePreviewActionViewController:(id)arg1 wantsToChangePerson:(id)arg2 toType:(long long)arg3;
 - (void)peopleSectionedDataSource:(id)arg1 didApplyIncrementalChanges:(id)arg2;
-- (void)peopleSectionedDataSourceMembersChanged:(id)arg1;
+- (void)peopleSectionedDataSourceMembersChangedNonIncrementally:(id)arg1;
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (id)ppt_bestPersonForBootstrap;
 - (id /* block */)ppt_cellsLoadedCompletionBlock;
@@ -185,8 +180,8 @@
 - (id)ppt_indexPathOfPersonWithMostAssets;
 - (id)ppt_indexPathsForPeopleThatCanChangeToType:(long long)arg1;
 - (bool)ppt_namePerson:(id)arg1;
-- (long long)ppt_numCells;
 - (long long)ppt_numCellsLeft;
+- (long long)ppt_numOfCellsLoadingImages;
 - (id)ppt_randomPerson;
 - (unsigned long long)ppt_sampledCountOfEmptyCells;
 - (unsigned long long)ppt_sampledCountOfFrames;
@@ -194,8 +189,6 @@
 - (id)ppt_seenPeople;
 - (bool)ppt_shouldRunPPTCode;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })ppt_visibleCollectionViewRect;
-- (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
-- (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint { double x1; double x2; })arg2;
 - (id)progressFooterView;
 - (id)progressManager;
 - (id)removeToolbarItem;
@@ -233,12 +226,9 @@
 - (void)setTargetIndexPath:(id)arg1;
 - (void)setTransitionAnimator:(id)arg1;
 - (void)setTransitionIndices:(id)arg1;
-- (bool)shouldPerformZoomingTransitionWithAnimator:(id)arg1;
 - (bool)shouldShowMeHeader;
 - (bool)shouldShowProgressFooter;
 - (void)showDetailsForMemberAtIndexPath:(id)arg1;
-- (id)snapshotRectsInScreenCoordinatesWithAnimator:(id)arg1;
-- (id)snapshotViewsForZoomingTransitionWithAnimator:(id)arg1;
 - (id)sourceDragIndexPath;
 - (id)statusDebugRecognizer;
 - (void)statusDebugRecognizerTapped:(id)arg1;
@@ -256,8 +246,5 @@
 - (void)viewDidLoad;
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
-- (void)zoomOverlayTransitionDidBeginAnimationWithAnimator:(id)arg1;
-- (void)zoomOverlayTransitionDidEndAnimationWithAnimator:(id)arg1;
-- (void)zoomOverlayTransitionWillEndAnimationWithAnimator:(id)arg1;
 
 @end

@@ -4,6 +4,10 @@
 
 @interface CNGroup : NSObject <ABSCNLegacyIdentifiable, NSCopying, NSMutableCopying, NSSecureCoding> {
     NSDate * _creationDate;
+    NSString * _externalIdentifier;
+    NSString * _externalModificationTag;
+    NSData * _externalRepresentation;
+    NSString * _externalUUID;
     int  _iOSLegacyIdentifier;
     NSString * _identifier;
     NSDate * _modificationDate;
@@ -14,6 +18,10 @@
 @property (nonatomic, readonly, copy) NSDate *creationDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly, copy) NSString *externalIdentifier;
+@property (nonatomic, readonly, copy) NSString *externalModificationTag;
+@property (nonatomic, readonly, copy) NSData *externalRepresentation;
+@property (nonatomic, readonly, copy) NSString *externalUUID;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) int iOSLegacyIdentifier;
 @property (nonatomic, readonly) NSString *identifier;
@@ -40,6 +48,10 @@
 - (id)creationDate;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)externalIdentifier;
+- (id)externalModificationTag;
+- (id)externalRepresentation;
+- (id)externalUUID;
 - (unsigned long long)hash;
 - (int)iOSLegacyIdentifier;
 - (id)identifier;

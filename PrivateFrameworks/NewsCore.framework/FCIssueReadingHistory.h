@@ -7,13 +7,14 @@
     FCMTWriterLock * _itemsLock;
 }
 
-@property (nonatomic, readonly) NSArray *allVisitedIssueIDs;
+@property (nonatomic, readonly) NSArray *allEngagedIssueIDs;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSMutableDictionary *itemsByID;
 @property (nonatomic, readonly) FCMTWriterLock *itemsLock;
 @property (nonatomic, readonly) NSString *mostRecentlyVisitedIssueID;
+@property (nonatomic, readonly) NSArray *recentlyEngagedIssueIDs;
 @property (nonatomic, readonly) NSArray *recentlyVisitedIssueIDs;
 @property (readonly) Class superclass;
 
@@ -38,21 +39,28 @@
 - (id)_historyItemForIssueID:(id)arg1;
 - (void)_modifyHistoryForIssueID:(id)arg1 withBlock:(id /* block */)arg2;
 - (void)addObserver:(id)arg1;
-- (id)allVisitedIssueIDs;
+- (id)allEngagedIssueIDs;
+- (id)allKnownRecordNamesWithinRecordZoneWithID:(id)arg1;
 - (id)bookmarkForLastVisitToIssueWithID:(id)arg1;
 - (bool)canHelpRestoreZoneName:(id)arg1;
 - (void)clearHistory;
-- (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordIDs:(id)arg2;
+- (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordNames:(id)arg2;
 - (bool)hasIssueWithIDBeenBadged:(id)arg1;
+- (bool)hasIssueWithIDBeenEngaged:(id)arg1;
 - (bool)hasIssueWithIDBeenVisited:(id)arg1;
 - (id)initWithContext:(id)arg1 pushNotificationCenter:(id)arg2 storeDirectory:(id)arg3;
 - (id)itemsByID;
 - (id)itemsLock;
+- (id)lastEngagedDateForIssueWithID:(id)arg1;
+- (id)lastRemovedFromMyMagazinesDateForIssueWithID:(id)arg1;
 - (id)lastVisitedDateForIssueWithID:(id)arg1;
 - (void)loadLocalCachesFromStore;
 - (void)markIssueAsBadgedWithID:(id)arg1;
+- (void)markIssueAsEngagedWithID:(id)arg1;
+- (void)markIssueAsRemovedFromMyMagazinesWithID:(id)arg1;
 - (void)markIssueWithID:(id)arg1 asVisitedWithBookmark:(id)arg2;
 - (id)mostRecentlyVisitedIssueID;
+- (id)recentlyEngagedIssueIDs;
 - (id)recentlyVisitedIssueIDs;
 - (id)recordsForRestoringZoneName:(id)arg1;
 - (void)removeObserver:(id)arg1;

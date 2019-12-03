@@ -4,6 +4,7 @@
 
 @interface BLTSectionConfigurationCMASItem : BLTSectionConfigurationItem
 
-- (bool)optOutOfCoordination;
+- (unsigned long long)coordinationType;
+- (bool)hasDisplayedCriticalBulletins;
 
 @end

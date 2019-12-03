@@ -6,6 +6,7 @@
     double  _alignmentPercent;
     SBFLockScreenAlternateDateLabel * _alternateDateLabel;
     NSDate * _date;
+    NSTimeZone * _timeZone;
     bool  _useCompactDateFormat;
 }
 
@@ -22,6 +23,7 @@
 - (void).cxx_destruct;
 - (double)_lunarDateLabelYOffsetFromDateLabel;
 - (void)_overlayCalendarDidChange;
+- (void)_setDate:(id)arg1 inTimeZone:(id)arg2;
 - (void)_setupAlternateDateLabel;
 - (void)_updateDateLabelForCompact;
 - (double)alignmentPercent;

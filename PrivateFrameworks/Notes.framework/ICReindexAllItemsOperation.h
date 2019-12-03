@@ -2,11 +2,14 @@
    Image: /System/Library/PrivateFrameworks/Notes.framework/Notes
  */
 
-@interface ICReindexAllItemsOperation : ICIndexItemsOperation
+@interface ICReindexAllItemsOperation : ICIndexItemsOperation {
+    NSData * _clientStateData;
+}
 
+@property (readonly) NSData *clientStateData;
+
+- (void).cxx_destruct;
+- (id)clientStateData;
 - (void)main;
-- (id)objectIDsToIndexFromDataSource:(id)arg1;
-- (id)searchableItemIdentifiersToDeleteFromDataSource:(id)arg1;
-- (bool)shouldDeleteAllItemsBeforeIndexing;
 
 @end

@@ -15,6 +15,8 @@
 
 @property (nonatomic) struct GEOPixelPoint { double x1; double x2; int x3; struct { unsigned int x_4_1_1 : 1; } x4; } shiftedPixel;
 
++ (bool)isValid:(id)arg1;
+
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -22,6 +24,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setShiftedPixel:(struct GEOPixelPoint { double x1; double x2; int x3; struct { unsigned int x_4_1_1 : 1; } x4; })arg1;
 - (struct GEOPixelPoint { double x1; double x2; int x3; struct { unsigned int x_4_1_1 : 1; } x4; })shiftedPixel;

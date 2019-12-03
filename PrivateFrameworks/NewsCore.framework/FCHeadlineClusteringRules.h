@@ -6,6 +6,7 @@
     double  _autoFavoriteClusterMaxSizeMultiplier;
     double  _autoFavoriteClusterMinSizeMultiplier;
     bool  _enableOptimizedLayout;
+    bool  _enforcePublisherCap;
     double  _expandedAutofavoriteClusterMaxSizeMultiplier;
     double  _expandedAutofavoriteClusterMinSizeMultiplier;
     unsigned long long  _maxClusterSize;
@@ -28,6 +29,7 @@
 @property (nonatomic) double autoFavoriteClusterMaxSizeMultiplier;
 @property (nonatomic) double autoFavoriteClusterMinSizeMultiplier;
 @property (nonatomic, readonly) bool enableOptimizedLayout;
+@property (nonatomic, readonly) bool enforcePublisherCap;
 @property (nonatomic, readonly) double expandedAutofavoriteClusterMaxSizeMultiplier;
 @property (nonatomic, readonly) double expandedAutofavoriteClusterMinSizeMultiplier;
 @property (nonatomic, readonly) unsigned long long maxClusterSize;
@@ -46,17 +48,18 @@
 @property (nonatomic, readonly) unsigned long long optimizedLayoutSizeThreshold;
 @property (nonatomic, retain) FCSolConfiguration *solConfiguration;
 
-+ (id)rulesWithTreatment:(id)arg1 configurationSet:(long long)arg2 deviceIsiPad:(bool)arg3 limitUnpaidArticles:(bool)arg4;
-+ (id)rulesWithTreatment:(id)arg1 deviceIsiPad:(bool)arg2 limitUnpaidArticles:(bool)arg3;
++ (id)rulesWithTreatment:(id)arg1 configurationSet:(long long)arg2 deviceIsiPad:(bool)arg3 limitUnpaidArticles:(bool)arg4 enforcePublisherCap:(bool)arg5;
++ (id)rulesWithTreatment:(id)arg1 deviceIsiPad:(bool)arg2 limitUnpaidArticles:(bool)arg3 enforcePublisherCap:(bool)arg4;
 
 - (void).cxx_destruct;
 - (double)autoFavoriteClusterMaxSizeMultiplier;
 - (double)autoFavoriteClusterMinSizeMultiplier;
 - (bool)enableOptimizedLayout;
+- (bool)enforcePublisherCap;
 - (double)expandedAutofavoriteClusterMaxSizeMultiplier;
 - (double)expandedAutofavoriteClusterMinSizeMultiplier;
 - (id)init;
-- (id)initWithMinClusterSize:(unsigned long long)arg1 maxClusterSize:(unsigned long long)arg2 minIdealClusterSize:(unsigned long long)arg3 maxIdealClusterSize:(unsigned long long)arg4 minClusterSizeAutoFavorite:(unsigned long long)arg5 maxClusterSizeAutoFavorite:(unsigned long long)arg6 minIdealClusterSizeAutoFavorite:(unsigned long long)arg7 maxIdealClusterSizeAutoFavorite:(unsigned long long)arg8 maxPublisherOccurrences:(unsigned long long)arg9 maxUnpaidArticles:(unsigned long long)arg10 enableOptimizedLayout:(bool)arg11 optimizedLayoutSizeThreshold:(unsigned long long)arg12 optimizedLayoutIncrementUnit:(unsigned long long)arg13 solConfiguration:(id)arg14 minSubscribedChannelRatioForUGroup:(double)arg15 maxExpandedAutofavoriteGroupCandidateRatio:(double)arg16 expandedAutofavoriteClusterMinSizeMultiplier:(double)arg17 expandedAutofavoriteClusterMaxSizeMultiplier:(double)arg18;
+- (id)initWithMinClusterSize:(unsigned long long)arg1 maxClusterSize:(unsigned long long)arg2 minIdealClusterSize:(unsigned long long)arg3 maxIdealClusterSize:(unsigned long long)arg4 minClusterSizeAutoFavorite:(unsigned long long)arg5 maxClusterSizeAutoFavorite:(unsigned long long)arg6 minIdealClusterSizeAutoFavorite:(unsigned long long)arg7 maxIdealClusterSizeAutoFavorite:(unsigned long long)arg8 maxPublisherOccurrences:(unsigned long long)arg9 enforcePublisherCap:(bool)arg10 maxUnpaidArticles:(unsigned long long)arg11 enableOptimizedLayout:(bool)arg12 optimizedLayoutSizeThreshold:(unsigned long long)arg13 optimizedLayoutIncrementUnit:(unsigned long long)arg14 solConfiguration:(id)arg15 minSubscribedChannelRatioForUGroup:(double)arg16 maxExpandedAutofavoriteGroupCandidateRatio:(double)arg17 expandedAutofavoriteClusterMinSizeMultiplier:(double)arg18 expandedAutofavoriteClusterMaxSizeMultiplier:(double)arg19;
 - (unsigned long long)maxClusterSize;
 - (unsigned long long)maxClusterSizeAutoFavorite;
 - (double)maxExpandedAutofavoriteGroupCandidateRatio;

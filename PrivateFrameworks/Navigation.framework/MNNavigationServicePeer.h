@@ -3,21 +3,25 @@
  */
 
 @interface MNNavigationServicePeer : GEONavdPeer {
+    GEOApplicationAuditToken * _auditToken;
     NSString * _peerIdentifier;
     int  _processIdentifier;
-    MNNavigationServiceLocalProxy * _proxy;
 }
 
+@property (nonatomic, readonly) GEOApplicationAuditToken *auditToken;
 @property (nonatomic, readonly) NSString *peerIdentifier;
 @property (nonatomic, readonly) int processIdentifier;
-@property (nonatomic, readonly) MNNavigationServiceLocalProxy *proxy;
+
++ (const char *)logCategory;
++ (id)peerForConnection:(id)arg1;
 
 - (void).cxx_destruct;
+- (id)auditToken;
 - (void)clearConnectionHandlers;
 - (void)dealloc;
-- (id)initWithServiceInterfaceProxy:(id)arg1 connection:(id)arg2 peerIdentifier:(id)arg3 processIdentifier:(int)arg4;
+- (id)initWithConnection:(id)arg1 peerIdentifier:(id)arg2 processIdentifier:(int)arg3;
+- (const char *)logCategory;
 - (id)peerIdentifier;
 - (int)processIdentifier;
-- (id)proxy;
 
 @end

@@ -9,6 +9,7 @@
         int (*DidRecognizePartialResultTokens)(); 
         int (*DidFinishRecognitionWithError)(); 
         int (*DidRecognizeFinalResults)(); 
+        int (*DidProcessAudioDuration)(); 
     }  _stream;
 }
 
@@ -18,8 +19,9 @@
 @property (readonly) Class superclass;
 
 - (void)dealloc;
-- (id)initWithStream:(struct EARCSpeechRecognitionResultStream { void *x1; int (*x2)(); int (*x3)(); int (*x4)(); int (*x5)(); }*)arg1;
+- (id)initWithStream:(struct EARCSpeechRecognitionResultStream { void *x1; int (*x2)(); int (*x3)(); int (*x4)(); int (*x5)(); int (*x6)(); }*)arg1;
 - (void)speechRecognizer:(id)arg1 didFinishRecognitionWithError:(id)arg2;
+- (void)speechRecognizer:(id)arg1 didProcessAudioDuration:(double)arg2;
 - (void)speechRecognizer:(id)arg1 didRecognizeFinalResults:(id)arg2;
 - (void)speechRecognizer:(id)arg1 didRecognizeFinalResults:(id)arg2 tokenSausage:(id)arg3 nBestChoices:(id)arg4;
 - (void)speechRecognizer:(id)arg1 didRecognizePartialResult:(id)arg2;

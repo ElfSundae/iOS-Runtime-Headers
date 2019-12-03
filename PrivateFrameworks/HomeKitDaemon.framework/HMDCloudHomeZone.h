@@ -19,6 +19,7 @@
 
 - (void).cxx_destruct;
 - (void)addCloudRecord:(id)arg1 ownerID:(id)arg2;
+- (void)allDescendentsCloudRecordsForParentID:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)cloudRecordWithObjectID:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)cloudRecordWithObjectIDs:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)cloudRecordsForParentID:(id)arg1 completionHandler:(id /* block */)arg2;
@@ -32,5 +33,7 @@
 - (void)setServerChangeToken:(id)arg1;
 - (void)setShareGroup:(id)arg1;
 - (id)shareGroup;
+- (void)updateCloudRecord:(id)arg1;
+- (void)updateCloudRecord:(id)arg1 completionHandler:(id /* block */)arg2;
 
 @end

@@ -4,8 +4,9 @@
 
 @interface PKPaymentSetupAssistantRegistrationViewController : PKPaymentSetupHeroViewController <PKPaymentSetupViewControllerDelegate> {
     <PKPaymentSetupViewControllerDelegate> * _externalDelegate;
-    NSObject<OS_dispatch_group> * _preflightGroup;
-    bool  _preflightResult;
+    bool  _isPreflighting;
+    NSMutableArray * _preflightCompletionHandlers;
+    unsigned long long  _preflightResult;
     UIButton * _skipButton;
 }
 
@@ -22,12 +23,20 @@
 
 - (void).cxx_destruct;
 - (void)_setExternalDelegate:(id)arg1;
+- (void)bridgeSetupAssistantDidFailToChangePasscode;
+- (void)bridgeSetupAssistantDidFinishPasscodeChange;
 - (id)delegate;
 - (id)initWithPaymentWebService:(id)arg1 context:(long long)arg2 delegate:(id)arg3;
 - (void)preflightWithCompletion:(id /* block */)arg1;
 - (id)requiredPaymentSetupFileURLs;
 - (void)setDelegate:(id)arg1;
+- (void)viewController:(id)arg1 didExitPasscodeUpgradeForPasscodeUpgradeFlowController:(id)arg2 withShouldContinue:(bool)arg3 error:(id)arg4;
+- (void)viewController:(id)arg1 didExitPasscodeUpgradeWithShouldContinue:(bool)arg2 error:(id)arg3;
 - (void)viewController:(id)arg1 didShowProvisioningError:(id)arg2;
+- (void)viewController:(id)arg1 requestPasscodeUpgradeForPasscodeUpgradeFlowController:(id)arg2 completion:(id /* block */)arg3;
+- (void)viewController:(id)arg1 requestPasscodeUpgradeWithCompletion:(id /* block */)arg2;
+- (void)viewControllerDidFailToChangePasscodeComplex:(id)arg1;
+- (void)viewControllerDidFinishChangingPasscodeComplex:(id)arg1;
 - (void)viewControllerDidShowEligibilityIssue:(id)arg1;
 - (void)viewControllerDidTerminateSetupFlow:(id)arg1;
 - (void)viewDidAppear:(bool)arg1;

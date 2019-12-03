@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/AccountsUI.framework/AccountsUI
  */
 
-@interface ACUIAddOtherAccountsViewController : PSListController <ACUISetupViewControllerDelegate> {
+@interface ACUIAddOtherAccountsViewController : PSListController <ACUISetupViewControllerDelegate, ACUISignInControllerDelegate> {
     NSString * _filteredDataclass;
 }
 

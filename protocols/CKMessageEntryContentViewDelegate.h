@@ -12,6 +12,7 @@
 - (void)messageEntryContentViewDidBeginEditing:(CKMessageEntryContentView *)arg1 wasAlreadyActive:(bool)arg2;
 - (void)messageEntryContentViewDidChange:(CKMessageEntryContentView *)arg1;
 - (void)messageEntryContentViewDidEndEditing:(CKMessageEntryContentView *)arg1;
+- (void)messageEntryContentViewDidReturn:(CKMessageEntryContentView *)arg1;
 - (void)messageEntryContentViewDidTapHandwritingKey:(CKMessageEntryContentView *)arg1;
 - (struct CGSize { double x1; double x2; })messageEntryContentViewMaxShelfPluginViewSize:(CKMessageEntryContentView *)arg1;
 - (void)messageEntryContentViewShelfDidChange:(CKMessageEntryContentView *)arg1;

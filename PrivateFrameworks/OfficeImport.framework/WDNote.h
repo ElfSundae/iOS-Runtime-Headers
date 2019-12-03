@@ -8,8 +8,8 @@
     WDText * mText;
 }
 
+- (void).cxx_destruct;
 - (bool)automaticNumbering;
-- (void)dealloc;
 - (id)description;
 - (id)initWithParagraph:(id)arg1 footnote:(bool)arg2;
 - (id)reference;

@@ -2,11 +2,11 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUNotThisPersonActivity : PUActivity
+@interface PUNotThisPersonActivity : PXActivity
 
 + (long long)activityCategory;
 
-- (id)activityImage;
+- (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;
 - (bool)canPerformWithActivityItems:(id)arg1;

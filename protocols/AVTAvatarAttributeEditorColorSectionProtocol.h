@@ -9,6 +9,5 @@
 - (AVTAvatarColorVariationStore *)colorVariationStore;
 - (NSArray *)extendedItems;
 - (NSArray *)primaryItems;
-- (<AVTAvatarAttributeEditorColorSectionProtocol> *)subSection;
 
 @end

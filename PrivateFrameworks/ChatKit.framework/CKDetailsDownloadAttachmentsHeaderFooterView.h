@@ -42,6 +42,7 @@
 - (void)handleUserTap:(id)arg1;
 - (id)iCloudImageView;
 - (id)initWithReuseIdentifier:(id)arg1;
+- (void)layoutSubviews;
 - (bool)logoHidden;
 - (void)setButtonText:(id)arg1;
 - (void)setButtonTextView:(id)arg1;

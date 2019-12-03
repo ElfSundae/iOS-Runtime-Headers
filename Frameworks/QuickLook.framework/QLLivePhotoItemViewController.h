@@ -3,6 +3,7 @@
  */
 
 @interface QLLivePhotoItemViewController : QLScrollableContentItemViewController <PHLivePhotoViewDelegate, UIGestureRecognizerDelegate> {
+    NSDate * _didEndPlayingTimestamp;
     bool  _fullyZoomedOut;
     struct CGSize { 
         double width; 
@@ -24,13 +25,11 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (bool)shouldBeRemoteForContentType:(id)arg1;
-+ (id)supportedContentTypes;
-+ (Class)transformerClass;
-
 - (void).cxx_destruct;
 - (void)_updateLivePhotoBadgeAnimated:(bool)arg1;
+- (bool)_wasJustPlaying;
 - (bool)canEnterFullScreen;
+- (bool)canToggleFullScreen;
 - (void)didEndZoomingAtScale:(double)arg1;
 - (bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (struct CGSize { double x1; double x2; })imageSize;

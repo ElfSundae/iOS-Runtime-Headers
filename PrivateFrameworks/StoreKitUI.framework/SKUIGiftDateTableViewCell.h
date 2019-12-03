@@ -8,6 +8,7 @@
     UIImageView * _checkmarkView;
     UILabel * _dateLabel;
     UILabel * _labelLabel;
+    bool  _leftToRight;
     UILabel * _placeholderLabel;
     UIView * _topBorderView;
 }
@@ -15,6 +16,7 @@
 @property (getter=isChecked, nonatomic) bool checked;
 @property (nonatomic, copy) NSString *dateString;
 @property (nonatomic, copy) NSString *label;
+@property (nonatomic) bool leftToRight;
 @property (nonatomic, copy) NSString *placeholder;
 
 - (void).cxx_destruct;
@@ -25,10 +27,12 @@
 - (bool)isChecked;
 - (id)label;
 - (void)layoutSubviews;
+- (bool)leftToRight;
 - (id)placeholder;
 - (void)setChecked:(bool)arg1;
 - (void)setDateString:(id)arg1;
 - (void)setLabel:(id)arg1;
+- (void)setLeftToRight:(bool)arg1;
 - (void)setPlaceholder:(id)arg1;
 
 @end

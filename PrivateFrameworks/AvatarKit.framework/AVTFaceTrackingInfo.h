@@ -6,7 +6,7 @@
     ARFrame * _arFrame;
     bool  _deleteWhenDone;
     double  _timestamp;
-    struct { double x1; bool x2; float x3[64]; float x4[64]; float x5[1]; float x6[1]; } * _trackingData;
+    struct { double x1; bool x2; float x3[51]; float x4[51]; float x5[1]; float x6[1]; } * _trackingData;
 }
 
 @property (nonatomic, readonly) ARFrame *arFrame;
@@ -17,7 +17,7 @@
 + (id)trackingInfoWithARFrame:(id)arg1 inputOrientation:(long long)arg2 outputOrientation:(long long)arg3;
 + (id)trackingInfoWithARFrame:(id)arg1 inputOrientation:(long long)arg2 outputOrientation:(long long)arg3 constrainHeadPose:(bool)arg4;
 + (id)trackingInfoWithARFrame:(id)arg1 orientation:(long long)arg2;
-+ (id)trackingInfoWrappingTrackingData:(struct { double x1; bool x2; float x3[64]; float x4[64]; float x5[1]; float x6[1]; }*)arg1;
++ (id)trackingInfoWrappingTrackingData:(struct { double x1; bool x2; float x3[51]; float x4[51]; float x5[1]; float x6[1]; }*)arg1;
 
 - (void).cxx_destruct;
 - (id)arFrame;
@@ -25,6 +25,6 @@
 - (void)discardARFrame;
 - (bool)hasFaceTrackingData;
 - (double)timestamp;
-- (struct { double x1; bool x2; float x3[64]; float x4[64]; float x5[1]; float x6[1]; }*)trackingData;
+- (struct { double x1; bool x2; float x3[51]; float x4[51]; float x5[1]; float x6[1]; }*)trackingData;
 
 @end

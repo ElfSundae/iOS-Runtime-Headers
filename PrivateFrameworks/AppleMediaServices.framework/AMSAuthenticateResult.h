@@ -2,14 +2,21 @@
    Image: /System/Library/PrivateFrameworks/AppleMediaServices.framework/AppleMediaServices
  */
 
-@interface AMSAuthenticateResult : NSObject {
+@interface AMSAuthenticateResult : NSObject <NSSecureCoding> {
     ACAccount * _account;
+    NSDictionary * _serverResponse;
 }
 
 @property (nonatomic, readonly) ACAccount *account;
+@property (nonatomic, readonly) NSDictionary *serverResponse;
+
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)account;
+- (void)encodeWithCoder:(id)arg1;
 - (id)initWithAccount:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)serverResponse;
 
 @end

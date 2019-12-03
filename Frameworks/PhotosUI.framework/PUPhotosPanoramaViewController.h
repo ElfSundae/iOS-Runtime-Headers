@@ -21,6 +21,7 @@
 - (void)configureSupplementaryView:(id)arg1 ofKind:(id)arg2 forIndexPath:(id)arg3;
 - (id)imageRequestOptionsForAsset:(id)arg1 pixelSize:(inout struct CGSize { double x1; double x2; }*)arg2;
 - (id)initWithSpec:(id)arg1;
+- (struct CGSize { double x1; double x2; })maximumThumbnailRequestSize;
 - (id)newGridLayout;
 - (id)panoramaSpec;
 - (void)rotatePhotoViewToHorizontalIfNeeded:(id)arg1 withAsset:(id)arg2;

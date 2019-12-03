@@ -56,6 +56,7 @@
 - (id)_newRenderPipelineStateWithDescriptor:(id)arg1 options:(unsigned long long)arg2 reflection:(id*)arg3 error:(id*)arg4;
 - (void)_newRenderPipelineStateWithTileDescriptor:(id)arg1 options:(unsigned long long)arg2 completionHandler:(id /* block */)arg3;
 - (id)_newRenderPipelineStateWithTileDescriptor:(id)arg1 options:(unsigned long long)arg2 reflection:(id*)arg3 error:(id*)arg4;
+- (id)_newSharedEventWithParent:(id)arg1;
 - (void)_resourceTrackingChecksummingEndOfFrame;
 - (void)bufferChecksummedInFrame:(id)arg1;
 - (unsigned int)checksumBuffer:(id)arg1;
@@ -68,6 +69,7 @@
 - (unsigned long long)minLinearTextureAlignmentForPixelFormat:(unsigned long long)arg1;
 - (unsigned long long)minimumLinearTextureAlignmentForPixelFormat:(unsigned long long)arg1;
 - (id)newArgumentEncoderWithArguments:(id)arg1;
+- (id)newArgumentEncoderWithLayout:(id)arg1;
 - (id)newBufferWithBytes:(const void*)arg1 length:(unsigned long long)arg2 options:(unsigned long long)arg3;
 - (id)newBufferWithBytesNoCopy:(void*)arg1 length:(unsigned long long)arg2 options:(unsigned long long)arg3 deallocator:(id /* block */)arg4;
 - (id)newBufferWithIOSurface:(struct __IOSurface { }*)arg1;
@@ -92,10 +94,12 @@
 - (id)newIndirectCommandBufferWithDescriptor:(id)arg1 maxCommandCount:(unsigned long long)arg2 options:(unsigned long long)arg3;
 - (id)newLibraryWithData:(id)arg1 error:(id*)arg2;
 - (id)newLibraryWithFile:(id)arg1 error:(id*)arg2;
+- (id)newLibraryWithImageFilterFunctionsSPI:(id)arg1 imageFilterFunctionInfo:(const struct { bool x1; unsigned long long x2; struct { /* ? */ } *x3; }*)arg2 error:(id*)arg3;
 - (void)newLibraryWithSource:(id)arg1 options:(id)arg2 completionHandler:(id /* block */)arg3;
 - (id)newLibraryWithSource:(id)arg1 options:(id)arg2 error:(id*)arg3;
 - (id)newLibraryWithURL:(id)arg1 error:(id*)arg2;
 - (id)newPipelineLibraryWithFilePath:(id)arg1 error:(id*)arg2;
+- (id)newRasterizationRateMapWithDescriptor:(id)arg1;
 - (void)newRenderPipelineStateWithDescriptor:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)newRenderPipelineStateWithDescriptor:(id)arg1 error:(id*)arg2;
 - (void)newRenderPipelineStateWithDescriptor:(id)arg1 options:(unsigned long long)arg2 completionHandler:(id /* block */)arg3;
@@ -108,6 +112,8 @@
 - (id)newSharedEvent;
 - (id)newSharedEventWithHandle:(id)arg1;
 - (id)newSharedEventWithMachPort:(unsigned int)arg1;
+- (id)newSharedTextureWithDescriptor:(id)arg1;
+- (id)newSharedTextureWithHandle:(id)arg1;
 - (id)newTextureLayoutWithDescriptor:(id)arg1 isHeapOrBufferBacked:(bool)arg2;
 - (id)newTextureWithBytesNoCopy:(void*)arg1 length:(unsigned long long)arg2 descriptor:(id)arg3 deallocator:(id /* block */)arg4;
 - (id)newTextureWithDescriptor:(id)arg1;

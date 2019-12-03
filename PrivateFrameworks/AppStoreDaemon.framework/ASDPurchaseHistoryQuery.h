@@ -4,6 +4,7 @@
 
 @interface ASDPurchaseHistoryQuery : NSObject <NSSecureCoding> {
     long long  _accountID;
+    NSArray * _bundleIDs;
     long long  _isFirstParty;
     long long  _isHidden;
     long long  _isPreorder;
@@ -13,6 +14,7 @@
 }
 
 @property long long accountID;
+@property (copy) NSArray *bundleIDs;
 @property long long isFirstParty;
 @property long long isHidden;
 @property long long isPreorder;
@@ -24,6 +26,7 @@
 
 - (void).cxx_destruct;
 - (long long)accountID;
+- (id)bundleIDs;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (long long)isFirstParty;
@@ -31,6 +34,7 @@
 - (long long)isPreorder;
 - (id)searchTerm;
 - (void)setAccountID:(long long)arg1;
+- (void)setBundleIDs:(id)arg1;
 - (void)setIsFirstParty:(long long)arg1;
 - (void)setIsHidden:(long long)arg1;
 - (void)setIsPreorder:(long long)arg1;

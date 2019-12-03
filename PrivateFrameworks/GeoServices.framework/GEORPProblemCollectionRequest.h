@@ -5,9 +5,35 @@
 @interface GEORPProblemCollectionRequest : PBRequest <NSCopying> {
     NSString * _countryCode;
     NSData * _devicePushToken;
+    struct { 
+        unsigned int read_countryCode : 1; 
+        unsigned int read_devicePushToken : 1; 
+        unsigned int read_hwMachine : 1; 
+        unsigned int read_inputLanguage : 1; 
+        unsigned int read_osRelease : 1; 
+        unsigned int read_requestElements : 1; 
+        unsigned int read_userCredentials : 1; 
+        unsigned int read_userEmail : 1; 
+        unsigned int read_userLocation : 1; 
+        unsigned int wrote_countryCode : 1; 
+        unsigned int wrote_devicePushToken : 1; 
+        unsigned int wrote_hwMachine : 1; 
+        unsigned int wrote_inputLanguage : 1; 
+        unsigned int wrote_osRelease : 1; 
+        unsigned int wrote_requestElements : 1; 
+        unsigned int wrote_userCredentials : 1; 
+        unsigned int wrote_userEmail : 1; 
+        unsigned int wrote_userLocation : 1; 
+    }  _flags;
     NSString * _hwMachine;
     NSString * _inputLanguage;
     NSString * _osRelease;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     NSMutableArray * _requestElements;
     GEORPUserCredentials * _userCredentials;
     NSString * _userEmail;
@@ -32,9 +58,20 @@
 @property (nonatomic, retain) NSString *userEmail;
 @property (nonatomic, retain) GEOLocation *userLocation;
 
++ (bool)isValid:(id)arg1;
 + (Class)requestElementType;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsRequestElement:(id)arg1;
+- (void)_readCountryCode;
+- (void)_readDevicePushToken;
+- (void)_readHwMachine;
+- (void)_readInputLanguage;
+- (void)_readOsRelease;
+- (void)_readRequestElements;
+- (void)_readUserCredentials;
+- (void)_readUserEmail;
+- (void)_readUserLocation;
 - (void)addRequestElement:(id)arg1;
 - (void)clearRequestElements;
 - (void)copyTo:(id)arg1;
@@ -53,10 +90,13 @@
 - (bool)hasUserLocation;
 - (unsigned long long)hash;
 - (id)hwMachine;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (id)inputLanguage;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)osRelease;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)requestElementAtIndex:(unsigned long long)arg1;
 - (id)requestElements;

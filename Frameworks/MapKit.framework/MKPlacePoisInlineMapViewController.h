@@ -16,15 +16,17 @@
 @property (nonatomic) bool resizableViewsDisabled;
 @property (readonly) Class superclass;
 
-+ (id)inlineMapWithMapItem:(id)arg1;
++ (id)inlineMapWithMapItem:(id)arg1 options:(unsigned long long)arg2;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_handleTapOnMap;
 - (void)_updateMap;
 - (void)fetchPoisForBrand;
 - (id)geoCamera;
 - (void)loadView;
 - (id)location;
+- (long long)preferredUserInterfaceStyle;
 - (bool)resizableViewsDisabled;
 - (void)setLocation:(id)arg1;
 - (void)setResizableViewsDisabled:(bool)arg1;

@@ -29,14 +29,14 @@
 + (id)filteredPickersForPickers:(id)arg1 filter:(unsigned long long)arg2;
 + (struct { unsigned int x1[8]; })hostAuditToken;
 + (id)hostBundleID;
++ (bool)isContentManaged;
 + (bool)isInAddToiCloudDrive;
 + (id)manageablePickersForMode:(unsigned long long)arg1 documentTypes:(id)arg2;
 + (id)pickerOrder;
 + (void)setHostAuditToken:(struct { unsigned int x1[8]; })arg1;
 + (void)setHostBundleID:(id)arg1;
++ (void)setIsContentManaged:(bool)arg1;
 + (void)setOrderFromPickers:(id)arg1;
-+ (void)setSourceIsManaged:(bool)arg1;
-+ (bool)sourceIsManaged;
 
 - (void).cxx_destruct;
 - (id)_extensionValueOfClass:(Class)arg1 forKey:(id)arg2;

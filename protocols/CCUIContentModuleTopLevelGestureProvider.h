@@ -6,6 +6,5 @@
 @optional
 
 - (NSArray *)topLevelBlockingGestureRecognizers;
-- (NSArray *)topLevelGestureRecognizers;
 
 @end

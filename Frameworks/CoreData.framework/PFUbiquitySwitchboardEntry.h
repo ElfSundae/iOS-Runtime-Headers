@@ -67,7 +67,7 @@
 - (id)storeName;
 - (void)synchronouslyExecuteBlockOnPrivateQueue:(id /* block */)arg1;
 - (id)ubiquityRootLocation;
-- (void)unregisterPersistentStore:(id)arg1;
+- (void)unregisterPersistentStore:(id)arg1 inCoordinator:(id)arg2;
 - (void)unregisterPersistentStoreCoordinator:(id)arg1;
 
 @end

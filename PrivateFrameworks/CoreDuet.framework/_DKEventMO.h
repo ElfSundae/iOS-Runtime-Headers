@@ -4,6 +4,7 @@
 
 @interface _DKEventMO : _DKObjectMO
 
+@property (nonatomic) long long compatibilityVersion;
 @property (nonatomic) double confidence;
 @property (nonatomic, retain) NSSet *customMetadata;
 @property (nonatomic) double endDate;

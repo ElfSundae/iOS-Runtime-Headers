@@ -34,8 +34,6 @@
 - (void)setDelegate:(id)arg1;
 - (bool)startCardEmulation;
 - (bool)startCardEmulation:(id*)arg1;
-- (bool)startHostCardEmulation;
-- (bool)startHostCardEmulation:(id*)arg1;
 - (bool)stopCardEmulation;
 - (bool)stopCardEmulation:(id*)arg1;
 

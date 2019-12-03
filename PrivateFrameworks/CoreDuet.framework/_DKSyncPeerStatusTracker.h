@@ -2,17 +2,21 @@
    Image: /System/Library/PrivateFrameworks/CoreDuet.framework/CoreDuet
  */
 
-@interface _DKSyncPeerStatusTracker : NSObject {
+@interface _DKSyncPeerStatusTracker : _DKSyncContextObject {
     NSDate * _firstForeignPeersCountDate;
     NSMutableDictionary * _lastSuccessfulActivityDates;
     NSMutableArray * _observers;
     NSMutableDictionary * _peerInfos;
+    _DKSyncPeer * _pseudoPeer;
     _DKKnowledgeStorage * _storage;
 }
 
 @property (nonatomic) _DKKnowledgeStorage *storage;
 
++ (id)peerStatusTrackerWithContext:(id)arg1;
 + (id)sharedInstance;
++ (id)stringForTransports:(long long)arg1;
++ (id)syncPeerTransportsStrings;
 
 - (void).cxx_destruct;
 - (void)_loadPeers;
@@ -25,9 +29,11 @@
 - (id)allPeers;
 - (void)debugLogPeers;
 - (id)description;
+- (id)existingPeerWithIDSDeviceIdentifier:(id)arg1;
 - (id)existingPeerWithSourceDeviceID:(id)arg1;
 - (unsigned long long)foreignPeersCount;
-- (id)initWithStorage:(id)arg1;
+- (id)initWithContext:(id)arg1;
+- (bool)isSingleDevice;
 - (id)lastSuccessfulActivityDateOnTransport:(long long)arg1 forPeer:(id)arg2;
 - (id)peerWithCompanionLinkDevice:(id)arg1;
 - (id)peerWithIDSDeviceIdentifier:(id)arg1;
@@ -42,10 +48,9 @@
 - (void)removeStatusChangeObserver:(id)arg1;
 - (void)setLastSeenDate:(id)arg1 onPeer:(id)arg2;
 - (void)setLastSuccessfulActivityDate:(id)arg1 onTransport:(long long)arg2 forPeer:(id)arg3;
-- (void)setSourceDeviceID:(id)arg1 peer:(id)arg2;
+- (void)setSourceDeviceID:(id)arg1 version:(id)arg2 peer:(id)arg3;
 - (void)setStorage:(id)arg1;
 - (id)storage;
-- (id)stringForTransports:(long long)arg1;
 - (id)uuidWithUUIDString:(id)arg1;
 
 @end

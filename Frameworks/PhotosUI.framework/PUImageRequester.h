@@ -25,6 +25,7 @@
     PUMediaProvider * _mediaProvider;
     bool  _networkAccessAllowed;
     NSArray * _requestFullSizeImageDataUTTypes;
+    bool  _shouldRequestPenultimateVersion;
     struct CGSize { 
         double width; 
         double height; 
@@ -50,6 +51,7 @@
 @property (nonatomic, readonly) PUMediaProvider *mediaProvider;
 @property (getter=isNetworkAccessAllowed, nonatomic) bool networkAccessAllowed;
 @property (nonatomic, retain) NSArray *requestFullSizeImageDataUTTypes;
+@property (nonatomic) bool shouldRequestPenultimateVersion;
 @property (nonatomic) struct CGSize { double x1; double x2; } targetSize;
 
 - (void).cxx_destruct;
@@ -104,7 +106,9 @@
 - (void)setAsset:(id)arg1;
 - (void)setNetworkAccessAllowed:(bool)arg1;
 - (void)setRequestFullSizeImageDataUTTypes:(id)arg1;
+- (void)setShouldRequestPenultimateVersion:(bool)arg1;
 - (void)setTargetSize:(struct CGSize { double x1; double x2; })arg1;
+- (bool)shouldRequestPenultimateVersion;
 - (struct CGSize { double x1; double x2; })targetSize;
 - (void)unregisterObserver:(id)arg1;
 - (void)updateIfNeeded;

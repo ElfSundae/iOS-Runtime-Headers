@@ -5,14 +5,30 @@
 @interface GEOSuggestionsOptions : PBCodable <NSCopying> {
     int  _entriesType;
     struct { 
-        unsigned int entriesType : 1; 
-        unsigned int listType : 1; 
-        unsigned int includeRankingFeatures : 1; 
-        unsigned int normalizePOIs : 1; 
-    }  _has;
+        unsigned int has_entriesType : 1; 
+        unsigned int has_listType : 1; 
+        unsigned int has_includeRankingFeatures : 1; 
+        unsigned int has_normalizePOIs : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_suggestionEntryMetadata : 1; 
+        unsigned int read_suggestionMetadata : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_suggestionEntryMetadata : 1; 
+        unsigned int wrote_suggestionMetadata : 1; 
+        unsigned int wrote_entriesType : 1; 
+        unsigned int wrote_listType : 1; 
+        unsigned int wrote_includeRankingFeatures : 1; 
+        unsigned int wrote_normalizePOIs : 1; 
+    }  _flags;
     bool  _includeRankingFeatures;
     int  _listType;
     bool  _normalizePOIs;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     NSData * _suggestionEntryMetadata;
     NSData * _suggestionMetadata;
     PBUnknownFields * _unknownFields;
@@ -32,9 +48,14 @@
 @property (nonatomic, retain) NSData *suggestionMetadata;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsEntriesType:(id)arg1;
 - (int)StringAsListType:(id)arg1;
+- (void)_readSuggestionEntryMetadata;
+- (void)_readSuggestionMetadata;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -49,11 +70,14 @@
 - (bool)hasSuggestionMetadata;
 - (unsigned long long)hash;
 - (bool)includeRankingFeatures;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (int)listType;
 - (id)listTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (bool)normalizePOIs;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setEntriesType:(int)arg1;
 - (void)setHasEntriesType:(bool)arg1;

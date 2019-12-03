@@ -19,6 +19,7 @@
 - (bool)cancelCardIngestion;
 - (void)connectToServer:(id)arg1 callback:(id /* block */)arg2;
 - (void)dealloc;
+- (id)deleteAllAppletsAndCleanupWithTSM;
 - (void)didInterruptXPCConnection:(id)arg1;
 - (void)didInvalidateXPCConnection:(id)arg1;
 - (id)getAPNPublicToken;

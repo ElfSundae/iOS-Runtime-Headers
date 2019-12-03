@@ -12,16 +12,13 @@
 
 // Image: /System/Library/Frameworks/EventKit.framework/EventKit
 
-+ (id)_originBundleIdentifiersPermittedForAllNotifications;
 + (id)_queue;
 
 - (void).cxx_destruct;
 - (Class)_SGSuggestionsServiceClass;
-- (bool)hiddenFromNotificationCenter;
 - (id)originAppName;
 - (id)suggestedEvent;
 - (void)updateSuggestedEventWithEventStore:(id)arg1;
-- (bool)whitelistedForAllNotifications;
 
 // Image: /System/Library/PrivateFrameworks/CalendarUIKit.framework/CalendarUIKit
 

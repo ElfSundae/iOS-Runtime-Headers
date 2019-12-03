@@ -15,6 +15,7 @@
 - (id)activeClientsWithError:(id*)arg1;
 - (id)initWithServiceBroker:(id)arg1;
 - (bool)pingWithError:(id*)arg1;
-- (bool)sendCommand:(long long)arg1 WithError:(id*)arg2;
+- (bool)sendCommand:(long long)arg1 withError:(id*)arg2;
+- (id)sendDetailsCommand:(long long)arg1 withError:(id*)arg2;
 
 @end

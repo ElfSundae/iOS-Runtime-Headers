@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
  */
 
-@interface PLRevGeoCompoundNameInfo : NSObject {
+@interface PLRevGeoCompoundNameInfo : NSObject <NSSecureCoding> {
     bool  _isContinuation;
     NSString * _namePrefix;
     NSString * _nameSuffix;
@@ -10,30 +10,26 @@
     bool  _suffixWhenPrefixOnly;
 }
 
-@property (nonatomic) bool isContinuation;
-@property (nonatomic, readonly, copy) NSArray *localizedSortedNames;
-@property (nonatomic, readonly, copy) NSString *localizedTitleForNameInfo;
-@property (nonatomic, copy) NSString *namePrefix;
-@property (nonatomic, copy) NSString *nameSuffix;
-@property (nonatomic, copy) NSArray *sortedNames;
-@property (nonatomic) bool suffixWhenPrefixOnly;
+@property (nonatomic, readonly) bool isContinuation;
+@property (nonatomic, readonly, copy) NSString *namePrefix;
+@property (nonatomic, readonly, copy) NSString *nameSuffix;
+@property (nonatomic, readonly, copy) NSArray *sortedNames;
+@property (nonatomic, readonly) bool suffixWhenPrefixOnly;
 
 + (id)_localizedNameForName:(id)arg1;
++ (bool)supportsSecureCoding;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
-- (id)dictionaryForInfo;
-- (id)initWithDictionary:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithNamePrefix:(id)arg1 nameSuffix:(id)arg2 sortedNames:(id)arg3 isContinuation:(bool)arg4 suffixWhenPrefixOnly:(bool)arg5;
 - (bool)isContinuation;
+- (bool)isEqual:(id)arg1;
 - (id)localizedSortedNames;
 - (id)localizedTitleForNameInfo;
 - (id)namePrefix;
 - (id)nameSuffix;
-- (void)setIsContinuation:(bool)arg1;
-- (void)setNamePrefix:(id)arg1;
-- (void)setNameSuffix:(id)arg1;
-- (void)setSortedNames:(id)arg1;
-- (void)setSuffixWhenPrefixOnly:(bool)arg1;
 - (id)sortedNames;
 - (bool)suffixWhenPrefixOnly;
 

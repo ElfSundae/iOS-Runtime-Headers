@@ -20,6 +20,7 @@
 - (id)privateContainer;
 - (id)registerClass:(Class)arg1 factory:(id /* block */)arg2;
 - (id)registerClass:(Class)arg1 name:(id)arg2 factory:(id /* block */)arg3;
+- (id)registerKey:(id)arg1 factory:(id /* block */)arg2;
 - (id)registerProtocol:(id)arg1 factory:(id /* block */)arg2;
 - (id)registerProtocol:(id)arg1 name:(id)arg2 factory:(id /* block */)arg3;
 - (void)setContainer:(id)arg1;

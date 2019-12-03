@@ -8,6 +8,7 @@
     bool  _isThirdPerson;
     bool  _isUnlikelyPhone;
     NSDate * _matchDate;
+    NSArray * _matchingContacts;
     bool  _regexBelongsToSender;
     bool  _regexDoesNotBelongToSender;
     NSString * _senderDisplayName;
@@ -18,6 +19,7 @@
 @property (nonatomic) bool isThirdPerson;
 @property (nonatomic) bool isUnlikelyPhone;
 @property (nonatomic) NSDate *matchDate;
+@property (nonatomic) NSArray *matchingContacts;
 @property (nonatomic) bool regexBelongsToSender;
 @property (nonatomic) bool regexDoesNotBelongToSender;
 @property (nonatomic) NSString *senderDisplayName;
@@ -29,6 +31,7 @@
 - (bool)isThirdPerson;
 - (bool)isUnlikelyPhone;
 - (id)matchDate;
+- (id)matchingContacts;
 - (struct SGMContactDetailFoundIn_ { unsigned long long x1; })metricsContactDetailFoundIn;
 - (struct SGMContactDetailOwner_ { unsigned long long x1; })metricsContactDetailOwner;
 - (bool)regexBelongsToSender;
@@ -39,6 +42,7 @@
 - (void)setIsThirdPerson:(bool)arg1;
 - (void)setIsUnlikelyPhone:(bool)arg1;
 - (void)setMatchDate:(id)arg1;
+- (void)setMatchingContacts:(id)arg1;
 - (void)setRegexBelongsToSender:(bool)arg1;
 - (void)setRegexDoesNotBelongToSender:(bool)arg1;
 - (void)setSenderDisplayName:(id)arg1;

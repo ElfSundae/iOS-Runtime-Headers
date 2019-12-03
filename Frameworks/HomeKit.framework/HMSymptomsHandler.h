@@ -13,14 +13,12 @@
     NSUUID * _uuid;
 }
 
-@property (readonly) bool canInitiateFix;
 @property (nonatomic, retain) _HMContext *context;
 @property (nonatomic, readonly) HMMutableArray *currentSymptoms;
 @property (readonly, copy) NSString *debugDescription;
 @property <HMSymptomsHandlerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) NSHashTable *fixSessions;
-@property (readonly) long long fixState;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (nonatomic, readonly) NSUUID *messageTargetUUID;
@@ -44,13 +42,11 @@
 - (void)_handleSFDeviceIdentifierUpdated:(id)arg1;
 - (void)_handleSymptomsUpdated:(id)arg1;
 - (bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
-- (bool)canInitiateFix;
 - (id)context;
 - (id)currentSymptoms;
 - (id)delegate;
 - (void)encodeWithCoder:(id)arg1;
 - (id)fixSessions;
-- (long long)fixState;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUUID:(id)arg1;

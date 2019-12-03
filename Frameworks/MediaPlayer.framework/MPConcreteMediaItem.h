@@ -13,6 +13,7 @@
 
 + (id)concreteMediaItemWithPersistentID:(unsigned long long)arg1;
 + (id)concreteMediaItemWithPersistentID:(unsigned long long)arg1 library:(id)arg2;
++ (id)createUncachedConcreteMediaItemWithPersistentID:(unsigned long long)arg1 library:(id)arg2;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -37,7 +38,6 @@
 - (id)initWithPersistentID:(unsigned long long)arg1;
 - (id)initWithPersistentID:(unsigned long long)arg1 library:(id)arg2;
 - (void)invalidateCachedProperties;
-- (Class)itemArrayCoderPIDDataCodingClass;
 - (void)markNominalAmountHasBeenPlayed;
 - (id)mediaLibrary;
 - (double)nominalHasBeenPlayedThreshold;

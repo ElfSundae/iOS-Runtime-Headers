@@ -35,13 +35,18 @@
 - (id)_generateTimeZoneString:(id)arg1;
 - (void)_getDefaultCalendarsTasksIfNeededForPrincipal:(id)arg1;
 - (id)_getDefaultMkCalendarForPrincipalTaskGroup:(id)arg1 isEventCalendar:(bool)arg2;
+- (id)_getIsAffectingAvailabilityCoreDAVItem:(id)arg1;
 - (id)_getMkcalendarTaskGroupForCalendar:(id)arg1;
+- (id)_getSetIsAffectingAvailabilityTask:(bool)arg1 forCalendar:(id)arg2 atURL:(id)arg3;
 - (id)_getSetPropertyStringTask:(id)arg1 forName:(id)arg2 andNamespace:(id)arg3 atURL:(id)arg4;
+- (id)_getSetPropertyTaskWithCoreDAVItem:(id)arg1 atURL:(id)arg2;
 - (void)_handleCalendarPublish;
+- (bool)_handleMkCalTaskGroupError:(id)arg1 forCalendar:(id)arg2;
 - (bool)_handleUpdateForCalendar:(id)arg1;
 - (void)_initializePrincipalCalendarCache;
 - (void)_prepareCalendarsBeforeRefresh;
 - (void)_reallyRefreshCalendarProperties;
+- (void)_retryMkCalForCalendar:(id)arg1;
 - (void)_sendAddsForCalendars;
 - (void)_sendDeletesForCalendars;
 - (void)_sendShareActionTasks;

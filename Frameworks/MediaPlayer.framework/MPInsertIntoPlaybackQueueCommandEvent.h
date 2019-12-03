@@ -7,6 +7,7 @@
     NSString * _insertAfterContentItemID;
     long long  _insertionPosition;
     MPRemotePlaybackQueue * _playbackQueue;
+    NSNumber * _privateListeningOverride;
     NSArray * _supportedInsertionPositions;
 }
 
@@ -14,6 +15,7 @@
 @property (nonatomic, readonly) NSString *insertAfterContentItemID;
 @property (nonatomic, readonly) long long insertionPosition;
 @property (nonatomic, readonly) MPRemotePlaybackQueue *playbackQueue;
+@property (nonatomic, readonly) NSNumber *privateListeningOverride;
 @property (nonatomic, copy) NSArray *supportedInsertionPositions;
 
 - (void).cxx_destruct;
@@ -23,6 +25,7 @@
 - (id)insertAfterContentItemID;
 - (long long)insertionPosition;
 - (id)playbackQueue;
+- (id)privateListeningOverride;
 - (void)setSupportedInsertionPositions:(id)arg1;
 - (id)supportedInsertionPositions;
 

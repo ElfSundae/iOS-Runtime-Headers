@@ -8,17 +8,18 @@
 
 @property (nonatomic, readonly) NSArray *powerPointDocumentTypes;
 
-- (bool)URLIsValidForImportedHyperlink:(id)arg1 targetDocumentRoot:(id)arg2;
+- (bool)URLIsValidForImportedHyperlink:(id)arg1 targetDocumentRoot:(id)arg2 forCrossDocumentPaste:(bool)arg3;
 - (id)appChartPropertyOverrides;
 - (void)applicationDidFinishLaunching;
 - (id)applicationDisplayName;
 - (id)applicationName;
-- (id)applicationTemplateVariantsForLocale:(struct __CFLocale { }*)arg1;
+- (id)applicationTemplateVariantsForLocale:(id)arg1;
 - (unsigned long long)applicationType;
 - (id)bladerunnerContainerIdentifier;
 - (id)cloudKitContainerIdentifier;
+- (id)cloudKitSyncContainerIdentifier;
 - (id)createCompatibilityDelegate;
-- (id)defaultHyperlinkURL;
+- (id)defaultHyperlinkURLWithDocumentRoot:(id)arg1;
 - (Class)documentRootClass;
 - (id)documentTypeDisplayName;
 - (id)documentTypeDisplayNameForSharingInvitation;
@@ -40,6 +41,7 @@
 - (id)sharedAlertMessageWithUserName:(id)arg1;
 - (id)sharedReadOnlyAlertMessageWithUserName:(id)arg1;
 - (bool)sidebarPositionRespectsUserInterfaceLayoutDirection;
+- (id)stringForApplePencilDoubleTapSettingsDescription;
 - (id)stringForApplicationUpdateError;
 - (id)stringForBoxCollaborationOptInMessage;
 - (id)stringForChangePasswordWhileConnectingAlertMessage;
@@ -69,6 +71,8 @@
 - (id)stringForGenericServerUnreachable;
 - (id)stringForICloudUnreachable;
 - (id)stringForLearnMoreSharingURL;
+- (id)stringForMoveInlineToFloatingButtonTitle;
+- (id)stringForMoveInlineToFloatingButtonToolTip;
 - (id)stringForNoItemsSyncingListItem;
 - (id)stringForOwnerHasCollabEnabledMessage;
 - (id)stringForOwnerHasCollabEnabledTitle;

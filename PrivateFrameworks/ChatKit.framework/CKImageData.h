@@ -32,6 +32,7 @@
 - (void).cxx_destruct;
 - (id)MIMEType;
 - (id)UTIType;
+- (id)_defaultDurationsWithMaxCount:(unsigned long long)arg1;
 - (void)_initializeProperties;
 - (id)_thumbnailFillToSize:(struct CGSize { double x1; double x2; })arg1 atIndex:(unsigned long long)arg2;
 - (id)_thumbnailFitToSize:(struct CGSize { double x1; double x2; })arg1 atIndex:(unsigned long long)arg2;

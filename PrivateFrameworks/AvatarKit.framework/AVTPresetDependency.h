@@ -14,6 +14,7 @@
 
 - (void).cxx_destruct;
 - (long long)category;
+- (id)debugDescription;
 - (id)preset;
 - (void)setCategory:(long long)arg1;
 - (void)setPreset:(id)arg1;

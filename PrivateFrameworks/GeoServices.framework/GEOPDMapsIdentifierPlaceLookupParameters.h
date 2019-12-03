@@ -5,9 +5,9 @@
 @interface GEOPDMapsIdentifierPlaceLookupParameters : PBCodable <NSCopying> {
     bool  _enablePartialClientization;
     struct { 
-        unsigned int resultProviderId : 1; 
-        unsigned int enablePartialClientization : 1; 
-    }  _has;
+        unsigned int has_resultProviderId : 1; 
+        unsigned int has_enablePartialClientization : 1; 
+    }  _flags;
     NSMutableArray * _mapsIds;
     int  _resultProviderId;
     PBUnknownFields * _unknownFields;
@@ -20,11 +20,13 @@
 @property (nonatomic) int resultProviderId;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
 + (Class)mapsIdType;
 
 - (void).cxx_destruct;
 - (void)addMapsId:(id)arg1;
 - (void)clearMapsIds;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -39,6 +41,7 @@
 - (id)mapsIds;
 - (unsigned long long)mapsIdsCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (int)resultProviderId;
 - (void)setEnablePartialClientization:(bool)arg1;

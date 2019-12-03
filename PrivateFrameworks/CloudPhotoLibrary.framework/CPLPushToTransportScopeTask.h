@@ -10,6 +10,8 @@
     CPLBatchExtractionStrategy * _currentStrategy;
     NSString * _currentTaskKey;
     bool  _deferredCancel;
+    CPLDerivativesFilter * _derivativesFilter;
+    bool  _didExtractOneBatch;
     unsigned long long  _estimatedCount;
     unsigned long long  _estimatedSize;
     CPLExtractedBatch * _extractedBatch;
@@ -23,6 +25,7 @@
     double  _latestApproximativeUploadRate;
     NSObject<OS_dispatch_queue> * _lock;
     bool  _mightPushSomeResources;
+    NSString * _phaseDescription;
     NSError * _preparationError;
     CPLEnginePushRepository * _pushRepository;
     unsigned long long  _recordCount;
@@ -52,13 +55,14 @@
 }
 
 @property (nonatomic) bool highPriority;
+@property (copy) NSString *phaseDescription;
 
 - (void).cxx_destruct;
 - (void)_checkForRecordExistence;
 - (void)_clearUploadBatch;
 - (void)_deleteGeneratedResourcesAfterError:(id)arg1;
 - (void)_detectUpdatesNeedingExistenceCheck:(id)arg1;
-- (void)_didFinishTaskWithKey:(id)arg1 error:(bool)arg2;
+- (void)_didFinishTaskWithKey:(id)arg1 error:(bool)arg2 cancelled:(bool)arg3;
 - (void)_didStartTaskWithKey:(id)arg1 recordCount:(unsigned long long)arg2;
 - (bool)_discardUploadedExtractedBatchWithError:(id*)arg1;
 - (void)_doOneIteration;
@@ -78,9 +82,11 @@
 - (void)cancel;
 - (void)cancel:(bool)arg1;
 - (bool)highPriority;
-- (id)initWithEngineLibrary:(id)arg1 clientCacheIdentifier:(id)arg2 scope:(id)arg3 transportScope:(id)arg4;
+- (id)initWithEngineLibrary:(id)arg1 session:(id)arg2 clientCacheIdentifier:(id)arg3 scope:(id)arg4 transportScope:(id)arg5;
 - (void)launch;
+- (id)phaseDescription;
 - (void)setHighPriority:(bool)arg1;
+- (void)setPhaseDescription:(id)arg1;
 - (id)taskIdentifier;
 
 @end

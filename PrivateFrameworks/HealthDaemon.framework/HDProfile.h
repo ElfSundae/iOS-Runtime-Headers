@@ -3,8 +3,10 @@
  */
 
 @interface HDProfile : NSObject <HDHealthDaemonReadyObserver> {
+    HDRestorableAlarmScheduler * _alarmScheduler;
     HDAuthorizationManager * _authorizationManager;
     HDAWDSubmissionManager * _awdSubmissionManager;
+    HDCloudSyncManager * _cloudSyncManager;
     HDDaemon * _daemon;
     HDDataManager * _dataManager;
     HDDataProvenanceManager * _dataProvenanceManager;
@@ -17,6 +19,7 @@
     HDMetadataManager * _metadataManager;
     HDMigrationManager * _migrationManager;
     NSDictionary * _profileExtensionsByIdentifier;
+    HKProfileIdentifier * _profileIdentifier;
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
     }  _profileLock;
@@ -31,6 +34,7 @@
 }
 
 @property (nonatomic, readonly) HDActivityCacheManager *activityCacheManager;
+@property (nonatomic, readonly) HDRestorableAlarmScheduler *alarmScheduler;
 @property (nonatomic, readonly) HDAppSubscriptionManager *appSubscriptionManager;
 @property (nonatomic, readonly) HDAuthorizationManager *authorizationManager;
 @property (nonatomic, readonly) HDAWDSubmissionManager *awdSubmissionManager;
@@ -48,6 +52,7 @@
 @property (nonatomic, readonly, copy) NSString *directoryPath;
 @property (nonatomic, readonly, copy) NSURL *directoryURL;
 @property (nonatomic, readonly) HDFitnessMachineManager *fitnessMachineManager;
+@property (nonatomic, readonly) bool hasHealthRecordsAccounts;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) <HDHealthDaemon> *healthDaemon;
 @property (nonatomic, readonly) HDMedicalIDDataManager *medicalIDDataManager;
@@ -56,6 +61,8 @@
 @property (nonatomic, readonly) HDMigrationManager *migrationManager;
 @property (nonatomic, readonly) HDNanoSyncManager *nanoSyncManager;
 @property (nonatomic, readonly) HDNotificationManager *notificationManager;
+@property (nonatomic, readonly) HDOntologyLifecycleManager *ontologyLifecycleManager;
+@property (nonatomic, readonly, copy) HKProfileIdentifier *profileIdentifier;
 @property (nonatomic, readonly) long long profileType;
 @property (nonatomic, readonly) HDServiceConnectionManager *serviceConnectionManager;
 @property (nonatomic, readonly) HDHealthServiceManager *serviceManager;
@@ -71,9 +78,13 @@
 
 - (void).cxx_destruct;
 - (void)_createExtensionsIfNeeded;
+- (id)_displayNameWithError:(id*)arg1;
+- (id)_lastNameWithError:(id*)arg1;
 - (id)_newAWDSubmissionManager;
+- (id)_newCloudSyncManager;
 - (id)_newUserCharacteristicsManager;
 - (id)activityCacheManager;
+- (id)alarmScheduler;
 - (id)appSubscriptionManager;
 - (id)authorizationManager;
 - (id)awdSubmissionManager;
@@ -90,12 +101,13 @@
 - (id)deviceManager;
 - (id)directoryPath;
 - (id)directoryURL;
-- (id)displayNameWithError:(id*)arg1;
+- (bool)fetchDisplayFirstName:(id*)arg1 lastName:(id*)arg2 error:(id*)arg3;
 - (id)fitnessMachineManager;
+- (bool)hasHealthRecordsAccounts;
 - (id)healthDaemon;
 - (id)healthDeviceManager;
 - (id)healthSourceManager;
-- (id)initWithDirectoryPath:(id)arg1 medicalIDDirectoryPath:(id)arg2 daemon:(id)arg3 profileType:(long long)arg4;
+- (id)initWithDirectoryPath:(id)arg1 medicalIDDirectoryPath:(id)arg2 daemon:(id)arg3 profileType:(long long)arg4 profileIdentifier:(id)arg5;
 - (void)invalidateAndWait;
 - (id)medicalIDDataManager;
 - (id)medicalIDDirectoryPath;
@@ -105,13 +117,15 @@
 - (id)notificationManager;
 - (void)obliterateAndTerminateWithOptions:(unsigned long long)arg1 reason:(id)arg2 completion:(id /* block */)arg3;
 - (void)obliterateWithOptions:(unsigned long long)arg1 reason:(id)arg2;
+- (id)ontologyLifecycleManager;
 - (id)profileExtensionWithIdentifier:(id)arg1;
 - (id)profileExtensionsConformingToProtocol:(id)arg1;
+- (id)profileIdentifier;
 - (long long)profileType;
 - (id)serviceConnectionManager;
 - (id)serviceManager;
 - (id)sessionAssertionManager;
-- (bool)setDisplayName:(id)arg1 error:(id*)arg2;
+- (bool)setDisplayFirstName:(id)arg1 lastName:(id)arg2 error:(id*)arg3;
 - (id)sourceManager;
 - (id)sourceOrderManager;
 - (id)syncEngine;

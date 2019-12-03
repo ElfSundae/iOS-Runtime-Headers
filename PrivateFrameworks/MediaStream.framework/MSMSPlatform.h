@@ -42,6 +42,7 @@
 - (void)logFile:(const char *)arg1 func:(const char *)arg2 line:(int)arg3 facility:(int)arg4 level:(int)arg5 format:(id)arg6 args:(char *)arg7;
 - (id)pathMediaStreamDir;
 - (bool)personIDUsesProductionPushEnvironment:(id)arg1;
+- (Class)pluginClass;
 - (bool)policyMayDownload;
 - (bool)policyMayUpload;
 - (Class)publisherPluginClass;
@@ -50,10 +51,10 @@
 - (void)setAccountStore:(id)arg1;
 - (void)setIsPerfLoggingEnabled:(bool)arg1;
 - (void)setPushToken:(id)arg1;
-- (Class)sharingPluginClass;
 - (bool)shouldEnableNewFeatures;
 - (bool)shouldLogAtLevel:(int)arg1;
 - (id)socketOptions;
+- (id)stringForSysctlKey:(id)arg1;
 - (Class)subscriberPluginClass;
 - (id)theDaemon;
 

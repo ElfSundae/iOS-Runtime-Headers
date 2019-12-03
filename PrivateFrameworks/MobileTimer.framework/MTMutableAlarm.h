@@ -4,20 +4,24 @@
 
 @interface MTMutableAlarm : MTAlarm
 
-@property (nonatomic) unsigned long long active;
-@property (getter=isActiveForThisDevice, nonatomic) bool activeForThisDevice;
 @property (nonatomic) bool allowsSnooze;
 @property (nonatomic) bool bedtimeDoNotDisturb;
+@property (nonatomic) unsigned long long bedtimeDoNotDisturbOptions;
 @property (nonatomic) unsigned long long bedtimeHour;
 @property (nonatomic) unsigned long long bedtimeMinute;
+@property (nonatomic, copy) NSNumber *bedtimeReminder;
 @property (nonatomic) unsigned long long bedtimeReminderMinutes;
 @property (getter=isEnabled, nonatomic) bool enabled;
 @property (nonatomic) unsigned long long hour;
 @property (nonatomic) unsigned long long minute;
+@property (nonatomic) unsigned long long playOptions;
 @property (nonatomic) unsigned long long repeatSchedule;
+@property (nonatomic) bool sleepSchedule;
 @property (nonatomic, copy) MTSound *sound;
+@property (nonatomic) bool timeInBedTracking;
 @property (nonatomic, copy) NSString *title;
 
+- (void)applyChangesFromChangeSet:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 
 @end

@@ -9,10 +9,10 @@
     NSString * _text;
 }
 
-@property (nonatomic, retain) NSArray *includePaths;
-@property (nonatomic, retain) NSString *path;
-@property (nonatomic, retain) NSDictionary *substitutions;
-@property (nonatomic, retain) NSString *text;
+@property (nonatomic, copy) NSArray *includePaths;
+@property (nonatomic, copy) NSString *path;
+@property (nonatomic, copy) NSDictionary *substitutions;
+@property (nonatomic, copy) NSString *text;
 
 - (void).cxx_destruct;
 - (unsigned long long)hash;

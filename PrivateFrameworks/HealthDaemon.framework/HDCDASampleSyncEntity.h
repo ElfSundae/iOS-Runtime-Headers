@@ -5,6 +5,7 @@
 @interface HDCDASampleSyncEntity : HDSampleSyncEntity
 
 + (id)_objectWithCodable:(id)arg1;
++ (Class)_syncedSampleTypeClass;
 + (Class)healthEntityClass;
 + (int)nanoSyncObjectType;
 + (unsigned long long)supportedNanoSyncDirectionsForProtocolVersion:(int)arg1;

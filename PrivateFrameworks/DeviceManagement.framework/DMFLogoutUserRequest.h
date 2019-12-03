@@ -4,8 +4,6 @@
 
 @interface DMFLogoutUserRequest : DMFLogOutUserRequest
 
-+ (bool)isPermittedOnSystemConnection;
-+ (bool)isPermittedOnUserConnection;
-+ (id)permittedPlatforms;
+- (Class)classForCoder;
 
 @end

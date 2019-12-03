@@ -9,11 +9,11 @@
         unsigned long long size; 
     }  _actions;
     int  _component;
-    bool  _handleLocally;
     struct { 
-        unsigned int component : 1; 
-        unsigned int handleLocally : 1; 
-    }  _has;
+        unsigned int has_component : 1; 
+        unsigned int has_handleLocally : 1; 
+    }  _flags;
+    bool  _handleLocally;
 }
 
 @property (nonatomic, readonly) int*actions;
@@ -22,6 +22,8 @@
 @property (nonatomic) bool handleLocally;
 @property (nonatomic) bool hasComponent;
 @property (nonatomic) bool hasHandleLocally;
+
++ (bool)isValid:(id)arg1;
 
 - (int)StringAsActions:(id)arg1;
 - (int)StringAsComponent:(id)arg1;
@@ -44,6 +46,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setActions:(int*)arg1 count:(unsigned long long)arg2;
 - (void)setComponent:(int)arg1;

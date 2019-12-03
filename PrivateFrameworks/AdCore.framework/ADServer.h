@@ -25,6 +25,7 @@
 - (void)buildConfigurationDictionary:(id)arg1;
 - (int)configurationExpirationTime;
 - (id)configurations;
+- (id)deserializeMessage:(id)arg1 error:(id*)arg2;
 - (void)handleRequest:(id)arg1 serverURL:(id)arg2 responseHandler:(id /* block */)arg3;
 - (id)init;
 - (void)restoreConfiguration;

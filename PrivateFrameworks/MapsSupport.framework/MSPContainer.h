@@ -12,6 +12,7 @@
     NSCountedSet * _editCoalescingContexts;
     NSMutableArray * _enqueuedCoalescingCompletionBlocks;
     NSMutableArray * _enqueuedCoalescingEditBarrierBlocks;
+    bool  _hasLoadedContents;
     bool  _hasScheduledDelayedCommitForCoalescedEdits;
     bool  _isCommittingEnqueuedEdits;
     NSHashTable * _observers;
@@ -22,6 +23,7 @@
 
 @property (nonatomic, readonly) bool _preventsAssertionsForDuplicateStorageIdentifiers;
 @property (getter=_accessQueue, nonatomic, readonly) NSObject<OS_dispatch_queue> *accessQueue;
+@property (nonatomic, readonly) bool containerHasLoadedContents;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) MSPQuerySource *entireContentsQuerySource;
@@ -57,6 +59,7 @@
 - (void)addObserver:(id)arg1;
 - (id)beginCoalescingEditsWithContext:(id)arg1;
 - (void)coalesceEditsForContext:(id)arg1 inBlock:(id /* block */)arg2;
+- (bool)containerHasLoadedContents;
 - (void)dealloc;
 - (void)editByMergingStateSnapshot:(id)arg1 mergeOptions:(id)arg2 context:(id)arg3 completionQueue:(id)arg4 completion:(id /* block */)arg5;
 - (void)editContentsUsingBarrierBlock:(id /* block */)arg1 completionQueue:(id)arg2 completion:(id /* block */)arg3;

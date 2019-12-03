@@ -10,6 +10,7 @@
     id  _extendedTraitObserver;
     long long  _geotaggablesCount;
     PXPlacesImageCache * _imageCache;
+    bool  _imageIsPlaceholder;
 }
 
 @property (nonatomic, retain) UILabel *countLabel;
@@ -21,6 +22,7 @@
 @property (nonatomic, retain) id extendedTraitObserver;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) PXPlacesImageCache *imageCache;
+@property (nonatomic) bool imageIsPlaceholder;
 @property (readonly) Class superclass;
 
 + (id)_thumbnailCreationOperationQueue;
@@ -36,6 +38,7 @@
 - (void)_reloadCount:(long long)arg1;
 - (void)_reloadData:(bool)arg1;
 - (void)_showCountLabel;
+- (void)_updatePlaceholderImageIfNeeded;
 - (id)countLabel;
 - (id)countLabelBackgroundImageView;
 - (void)dealloc;
@@ -43,6 +46,7 @@
 - (id)extendedTraitCollection;
 - (id)extendedTraitObserver;
 - (id)imageCache;
+- (bool)imageIsPlaceholder;
 - (id)initWithAnnotation:(id)arg1 reuseIdentifier:(id)arg2 extendedTraitCollection:(id)arg3 imageCache:(id)arg4;
 - (void)prepareForReuse;
 - (id)primaryGeotaggable;
@@ -55,6 +59,9 @@
 - (void)setExtendedTraitObserver:(id)arg1;
 - (void)setImage:(id)arg1;
 - (void)setImageCache:(id)arg1;
+- (void)setImageIsPlaceholder:(bool)arg1;
+- (void)setSelected:(bool)arg1 animated:(bool)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)userCacheKey;
 
 @end

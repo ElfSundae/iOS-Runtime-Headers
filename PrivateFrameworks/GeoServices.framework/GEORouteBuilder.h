@@ -13,11 +13,16 @@
     bool  _usesZilch;
 }
 
+@property (nonatomic, readonly) GEOMapRegion *boundingMapRegion;
+@property (nonatomic, readonly) NSMutableArray *pointSections;
+
 - (void).cxx_destruct;
-- (void)_buildPointSectionsForRoute:(id)arg1;
 - (id)_composedRouteLegForSteps:(id)arg1 route:(id)arg2;
 - (id)_composedRouteStepForStep:(id)arg1 route:(id)arg2;
+- (id)boundingMapRegion;
+- (void)buildPointSectionsForRoute:(id)arg1;
 - (void)buildRoute:(id)arg1;
 - (id)initWithRoute:(id)arg1;
+- (id)pointSections;
 
 @end

@@ -14,7 +14,7 @@
     long long  totalDataWritten;
 }
 
-- (long long)appendString:(id)arg1 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
+- (bool)appendString:(id)arg1 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 error:(id*)arg3;
 - (id)dataWithRootObject:(id)arg1 options:(unsigned long long)arg2 error:(id*)arg3;
 - (void)dealloc;
 - (id)init;

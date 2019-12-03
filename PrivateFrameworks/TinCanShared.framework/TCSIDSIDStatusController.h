@@ -28,12 +28,12 @@
 
 - (void).cxx_destruct;
 - (void)_statusQueryTimedOut;
+- (void)batchQueryController:(id)arg1 updatedDestinationsStatus:(id)arg2 onService:(id)arg3 error:(id)arg4;
 - (void)dealloc;
 - (id)delegate;
 - (id)destinationToStatus;
 - (id)destinations;
 - (void)execute;
-- (void)idStatusUpdatedForDestinations:(id)arg1;
 - (id)initWithItem:(id)arg1 delegate:(id)arg2 timeout:(double)arg3;
 - (id)item;
 - (id)queryController;

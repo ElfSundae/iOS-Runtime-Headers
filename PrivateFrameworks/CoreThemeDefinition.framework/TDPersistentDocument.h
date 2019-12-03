@@ -7,7 +7,6 @@
     NSURL * _fileURL;
     NSManagedObjectContext * _managedObjectContext;
     NSManagedObjectModel * _managedObjectModel;
-    id  _store;
     NSURL * _temporaryFileURL;
 }
 

@@ -23,6 +23,8 @@
 @property (nonatomic, readonly) NSMutableDictionary *_representativeAssetsByBurstIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (getter=isEmpty, nonatomic, readonly) bool empty;
+@property (nonatomic, readonly) NSSet *existingBurstIdentifiers;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
@@ -42,9 +44,12 @@
 - (id)description;
 - (void)enqueuePendingBurstAssetWithConvertible:(id)arg1;
 - (id)existingAssetForUUID:(id)arg1;
+- (id)existingAssetUUIDs;
+- (id)existingBurstIdentifiers;
 - (id)existingRepresentativeAssetForBurstIdentifier:(id)arg1;
 - (id)init;
 - (id)insertAssetWithConvertible:(id)arg1;
+- (bool)isEmpty;
 - (void)performChanges:(id /* block */)arg1;
 - (void)processPendingBurstAssets;
 - (void)registerChangeObserver:(id)arg1;

@@ -45,6 +45,8 @@
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, retain) SFUserReportRequest *userReportRequest;
 
+// Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
+
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -78,5 +80,9 @@
 - (void)setSeparatorStyle:(int)arg1;
 - (void)setType:(id)arg1;
 - (id)type;
+
+// Image: /System/Library/PrivateFrameworks/SearchUI.framework/SearchUI
+
+- (Class)_searchUIViewClass;
 
 @end

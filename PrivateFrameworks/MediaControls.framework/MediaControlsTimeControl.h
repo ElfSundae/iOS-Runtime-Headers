@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/MediaControls.framework/MediaControls
  */
 
-@interface MediaControlsTimeControl : UIControl <UIGestureRecognizerDelegate> {
+@interface MediaControlsTimeControl : UIControl <MTVisualStylingProviderObservingPrivate, UIGestureRecognizerDelegate> {
     double  _currentTimeInTrack;
     bool  _currentlyTracking;
     bool  _debugPreviousDisplayLinkPaused;
@@ -28,19 +28,22 @@
     UIView * _knobView;
     NSLayoutConstraint * _knobViewXConstraint;
     double  _lastRecordedTime;
-    UIImageView * _liveBackground;
+    UIView * _liveBackground;
+    CAGradientLayer * _liveBackgroundMask;
     UILabel * _liveLabel;
     NSString * _remainingTime;
     AVTimeFormatter * _remainingTimeFormatter;
     UILabel * _remainingTimeLabel;
     UIView * _remainingTrack;
     MPCPlayerResponse * _response;
+    MPCPlayerResponseItem * _responseItem;
     double  _sliderValue;
     long long  _style;
     bool  _timeControlOnScreen;
     UILayoutGuide * _trackLayoutGuide;
     NSArray * _trackingConstraints;
     bool  _transitioning;
+    MTVisualStylingProvider * _visualStylingProvider;
 }
 
 @property (getter=isCurrentlyTracking, nonatomic) bool currentlyTracking;
@@ -52,17 +55,20 @@
 @property (getter=isEmpty, nonatomic) bool empty;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) UIView *knobView;
-@property (nonatomic, retain) UIImageView *liveBackground;
+@property (nonatomic, retain) UIView *liveBackground;
+@property (nonatomic, retain) CAGradientLayer *liveBackgroundMask;
 @property (nonatomic, retain) UILabel *liveLabel;
 @property (nonatomic, retain) UILabel *remainingTimeLabel;
 @property (nonatomic, retain) UIView *remainingTrack;
 @property (nonatomic, retain) MPCPlayerResponse *response;
+@property (nonatomic, retain) MPCPlayerResponseItem *responseItem;
 @property (nonatomic) double sliderValue;
 @property (nonatomic) long long style;
 @property (readonly) Class superclass;
 @property (getter=isTimeControlOnScreen, nonatomic) bool timeControlOnScreen;
 @property (nonatomic, retain) UILayoutGuide *trackLayoutGuide;
 @property (getter=isTransitioning, nonatomic) bool transitioning;
+@property (nonatomic, retain) MTVisualStylingProvider *visualStylingProvider;
 
 - (void).cxx_destruct;
 - (void)_displayLinkTick:(id)arg1;
@@ -81,6 +87,8 @@
 - (id)elapsedTrack;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (bool)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)invalidateDisplayLinkIfNeeded;
 - (bool)isCurrentlyTracking;
@@ -90,11 +98,14 @@
 - (id)knobView;
 - (void)layoutSubviews;
 - (id)liveBackground;
+- (id)liveBackgroundMask;
 - (id)liveLabel;
 - (bool)pointInside:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
+- (void)providedStylesDidChangeForProvider:(id)arg1;
 - (id)remainingTimeLabel;
 - (id)remainingTrack;
 - (id)response;
+- (id)responseItem;
 - (void)setCurrentlyTracking:(bool)arg1;
 - (void)setDurationSnapshot:(struct { double x1; double x2; double x3; double x4; double x5; float x6; float x7; bool x8; bool x9; })arg1;
 - (void)setElapsedTimeLabel:(id)arg1;
@@ -103,20 +114,27 @@
 - (void)setEnabled:(bool)arg1;
 - (void)setKnobView:(id)arg1;
 - (void)setLiveBackground:(id)arg1;
+- (void)setLiveBackgroundMask:(id)arg1;
 - (void)setLiveLabel:(id)arg1;
 - (void)setRemainingTimeLabel:(id)arg1;
 - (void)setRemainingTrack:(id)arg1;
 - (void)setResponse:(id)arg1;
+- (void)setResponseItem:(id)arg1;
 - (void)setSliderValue:(double)arg1;
 - (void)setStyle:(long long)arg1;
 - (void)setTimeControlOnScreen:(bool)arg1;
 - (void)setTrackLayoutGuide:(id)arg1;
 - (void)setTransitioning:(bool)arg1;
+- (void)setVisualStylingProvider:(id)arg1;
 - (double)sliderValue;
 - (long long)style;
+- (void)tintColorDidChange;
 - (id)trackLayoutGuide;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updateBackgroundMask;
 - (void)updateLabelAvoidance;
+- (void)updateSliderConstraint;
 - (void)viewDidMoveToSuperview;
+- (id)visualStylingProvider;
 
 @end

@@ -7,7 +7,7 @@
     double  _cornerRadius;
     <_SFFluidProgressViewDelegate> * _delegate;
     bool  _progressAnimationSuppressed;
-    UIImageView * _progressBar;
+    UIView * _progressBar;
     UIColor * _progressBarFillColor;
     WBSFluidProgressState * _state;
 }
@@ -28,7 +28,6 @@
 - (void)_animateUsingDefaultTiming:(bool)arg1 stepAnimationTime:(double)arg2 options:(unsigned long long)arg3 animations:(id /* block */)arg4 completion:(id /* block */)arg5;
 - (void)_finishProgressBarWithDuration:(double)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_progressBarBoundsForValue:(double)arg1;
-- (void)_updateProgressBarImage;
 - (double)cornerRadius;
 - (id)delegate;
 - (void)fluidProgressController:(id)arg1 setProgressToCurrentPosition:(id)arg2;

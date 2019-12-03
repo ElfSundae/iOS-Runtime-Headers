@@ -8,8 +8,12 @@
 
 @property (readonly) NSXPCConnection *xpcConnection;
 
++ (id)getLocalDeviceIdentifierAndReturnError:(id*)arg1;
++ (void)synchronizeUsageWithCompletionHandler:(id /* block */)arg1;
+
 - (void).cxx_destruct;
 - (void)dealloc;
+- (void)fetchReportsDuringInterval:(id)arg1 partitionInterval:(double)arg2 completionHandler:(id /* block */)arg3;
 - (void)fetchReportsDuringInterval:(id)arg1 partitionInterval:(double)arg2 forceImmediateSync:(bool)arg3 completionHandler:(id /* block */)arg4;
 - (id)getLocalDeviceIdentifierAndReturnError:(id*)arg1;
 - (id)init;

@@ -4,9 +4,9 @@
 
 @interface SearchUITrailersCardSectionView : SearchUICardSectionView
 
-@property (retain) NUIContainerStackView *contentView;
+@property (nonatomic, retain) NUIContainerStackView *contentView;
 
-- (id)initWithRowModel:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
+- (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
 - (id)setupContentView;
 
 @end

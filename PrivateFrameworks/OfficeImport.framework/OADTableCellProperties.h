@@ -29,10 +29,10 @@
     OADStroke * mTopStroke;
 }
 
+- (void).cxx_destruct;
 - (id)bottomLeftToTopRightStroke;
 - (float)bottomMargin;
 - (id)bottomStroke;
-- (void)dealloc;
 - (id)description;
 - (id)fill;
 - (bool)isBottomMarginOverridden;

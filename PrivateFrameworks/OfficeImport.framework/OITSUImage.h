@@ -3,11 +3,11 @@
  */
 
 @interface OITSUImage : NSObject {
-    long long  mCachedImageLock;
+    TSUOnce * mCachedImageOnce;
     struct CGImage { } * mCachedSliceableImage;
     id  mCachedSystemImage;
-    long long  mImageSliceCacheLock;
     struct __CFDictionary { } * mImageSlices;
+    TSUOnce * mImageSlicesOnce;
 }
 
 @property (nonatomic, readonly) struct CGImage { }*CGImage;

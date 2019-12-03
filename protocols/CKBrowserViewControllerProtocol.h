@@ -14,6 +14,7 @@
 - (bool)inFullScreenModalPresentation;
 - (id)initWithBalloonPlugin:(IMBalloonPlugin *)arg1;
 - (id)initWithBalloonPlugin:(IMBalloonPlugin *)arg1 dataSource:(IMBalloonPluginDataSource *)arg2;
+- (bool)isDismissing;
 - (bool)isLoaded;
 - (bool)isPrimaryViewController;
 - (bool)isiMessage;

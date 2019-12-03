@@ -26,10 +26,12 @@
 - (id)modificationDate;
 - (id)movie;
 - (id)originalMovie;
+- (float)originalPhotoOffsetSeconds;
 - (float)photoOffsetSeconds;
 - (unsigned long long)pixelHeight;
 - (unsigned long long)pixelWidth;
 - (id)resources;
 - (float)slowmoRate;
+- (id)streamedMovie;
 
 @end

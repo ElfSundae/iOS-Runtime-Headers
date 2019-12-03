@@ -59,7 +59,8 @@
 
 - (void).cxx_destruct;
 - (void)_delayedFade;
-- (int)_internationalKeyRoundedCornerInLayout:(id)arg1;
+- (unsigned long long)_internationalKeyRoundedCornerInLayout:(id)arg1;
+- (id)_renderConfig;
 - (void)applicationWillSuspend:(id)arg1;
 - (void)autoscrollTimerFired:(id)arg1;
 - (bool)centerPopUpOverKey;
@@ -69,11 +70,11 @@
 - (void)dealloc;
 - (unsigned long long)defaultSelectedIndex;
 - (void)didSelectItemAtIndex:(unsigned long long)arg1;
+- (void)didShow;
 - (id)dimmingView;
 - (void)dimmingViewWasTapped:(id)arg1;
 - (void)endScrolling:(id)arg1;
 - (void)fade;
-- (void)fadeAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (void)fadeWithDelay:(double)arg1;
 - (void)fadeWithDelay:(double)arg1 forSelectionAtIndex:(unsigned long long)arg2;
 - (id)font;
@@ -86,6 +87,7 @@
 - (void)insertSelExtraView;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })interactiveBounds;
 - (bool)isVisible;
+- (bool)launchedFromKeyboard;
 - (id)layout;
 - (id)localizedTitleForItemAtIndex:(unsigned long long)arg1;
 - (id)maskForShadowViewBlurredBackground;
@@ -97,6 +99,7 @@
 - (struct CGSize { double x1; double x2; })preferredSize;
 - (id)referenceKey;
 - (void)removeFromSuperview;
+- (void)returnToKeyboardIfNeeded;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)selectItemAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
@@ -139,6 +142,7 @@
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)updateSelectionWithPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (bool)usesDarkTheme;
+- (bool)usesDeviceLanguageForItemAtIndex:(unsigned long long)arg1;
 - (bool)usesDimmingView;
 - (bool)usesShadowView;
 - (bool)usesStraightLeftEdge;

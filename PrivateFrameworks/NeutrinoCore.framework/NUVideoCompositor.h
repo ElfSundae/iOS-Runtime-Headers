@@ -3,8 +3,12 @@
  */
 
 @interface NUVideoCompositor : NSObject <AVVideoCompositing> {
+    NSMutableSet * _inFlightRequests;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _inFlightRequestsLock;
     NSObject<OS_dispatch_queue> * _renderingQueue;
-    bool  _shouldCancelAllRequests;
+    _Atomic unsigned long long  _requestCounter;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -25,6 +29,7 @@
 - (id)sourcePixelBufferAttributes;
 - (void)startVideoCompositionRequest:(id)arg1;
 - (bool)supportsWideColorSourceFrames;
+- (bool)testAndSetVideoCompositionRequestFinished:(id)arg1;
 - (id)videoFramesFromRequest:(id)arg1;
 
 @end

@@ -4,7 +4,7 @@
 
 @interface SKFollowPath : SKAction {
     struct CGPath { } * _cgPath;
-    struct SKCFollowPath { int (**x1)(); unsigned int x2; float x3; id /* block */ x4; id x5; double x6; double x7; float x8; float x9; double x10; bool x11; bool x12; id /* block */ x13; long long x14; float x15; float x16; float x17; float x18; float x19; unsigned int x20; struct PKPath {} *x21; struct { float x_22_1_1; float x_22_1_2; } x22; bool x23; bool x24; } * _mycaction;
+    struct SKCFollowPath { int (**x1)(); unsigned int x2; float x3; id /* block */ x4; id x5; bool x6; double x7; double x8; float x9; float x10; double x11; bool x12; bool x13; id /* block */ x14; long long x15; float x16; float x17; float x18; float x19; float x20; unsigned int x21; struct PKPath {} *x22; struct { float x_23_1_1; float x_23_1_2; } x23; bool x24; bool x25; } * _mycaction;
 }
 
 + (id)followPath:(struct CGPath { }*)arg1 asOffset:(bool)arg2 orientToPath:(bool)arg3 duration:(double)arg4;

@@ -77,6 +77,7 @@
 - (id)supplementaryItems;
 - (id)titleItem;
 - (unsigned long long)type;
+- (void)updateUpcomingEventNotificationWithHypothesisMessage:(id)arg1;
 - (id)userActivityUserInfo;
 
 @end

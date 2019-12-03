@@ -7,7 +7,7 @@
     NSObject<OS_dispatch_queue> * _activityRateLimiterQueue;
     NSObject<OS_dispatch_source> * _batchExecutionSource;
     NSObject<OS_dispatch_queue> * _batchExecutionSourceQueue;
-    <_DKKnowledgeSaving><_DKKnowledgeEventStreamDeleting> * _knowledgeStore;
+    <_DKKnowledgeQuerying><_DKKnowledgeSaving><_DKKnowledgeEventStreamDeleting> * _knowledgeStore;
     NSMutableArray * _pendingOperations;
     NSObject<OS_dispatch_queue> * _pendingOperationsQueue;
     NSObject<OS_os_transaction> * _pendingOperationsTransaction;
@@ -26,8 +26,8 @@
 + (void)recordAggdReceiverAction:(long long)arg1 bundleID:(id)arg2 count:(unsigned long long)arg3;
 + (id)spotlightItemRecorder;
 + (id)spotlightItemRecorderWithInteractionRecorder:(id)arg1;
-+ (id)spotlightItemRecorderWithInteractionRecorder:(id)arg1 knowledgeSaving:(id)arg2;
-+ (id)spotlightItemRecorderWithKnowledgeSaving:(id)arg1;
++ (id)spotlightItemRecorderWithInteractionRecorder:(id)arg1 knowledgeStore:(id)arg2;
++ (id)spotlightItemRecorderWithKnowledgeStore:(id)arg1;
 
 - (void).cxx_destruct;
 - (void)_addOrUpdateCoreDuetInteractions:(id)arg1 bundleID:(id)arg2;
@@ -44,6 +44,7 @@
 - (bool)canRecordInteractions;
 - (void)deleteAllInteractionsWithBundleID:(id)arg1 protectionClass:(id)arg2;
 - (void)deleteAllInteractionsWithBundleID:(id)arg1 protectionClass:(id)arg2 withCompletion:(id /* block */)arg3;
+- (void)deleteAllItemsWithBundleID:(id)arg1 completion:(id /* block */)arg2;
 - (void)deleteAllSearchableItemsWithBundleID:(id)arg1;
 - (void)deleteAllSearchableItemsWithBundleID:(id)arg1 withCompletion:(id /* block */)arg2;
 - (void)deleteAllUserActivities:(id)arg1;
@@ -61,8 +62,8 @@
 - (void)deleteUserActivitiesWithPersistentIdentifiers:(id)arg1 bundleID:(id)arg2;
 - (void)donateRelevantShortcuts:(id)arg1 bundleID:(id)arg2;
 - (id)initWithInteractionRecorder:(id)arg1;
-- (id)initWithInteractionRecorder:(id)arg1 knowledgeSaving:(id)arg2;
-- (id)initWithInteractionRecorder:(id)arg1 knowledgeSaving:(id)arg2 rateLimitEnforcer:(id)arg3;
+- (id)initWithInteractionRecorder:(id)arg1 knowledgeStore:(id)arg2;
+- (id)initWithInteractionRecorder:(id)arg1 knowledgeStore:(id)arg2 rateLimitEnforcer:(id)arg3;
 - (id)recorder;
 - (void)registerSpotlightRecorderWithServiceName:(id)arg1;
 - (void)runOperation:(id)arg1;

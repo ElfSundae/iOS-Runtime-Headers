@@ -16,6 +16,7 @@
         unsigned int leadingCellThumbnailSizePreset : 1; 
         unsigned int nonLeadingCellThumbnailSizePreset : 1; 
         unsigned int qualityOfService : 1; 
+        unsigned int scale : 1; 
         unsigned int slotsLimit : 1; 
         unsigned int sourceNameImageSizePreset : 1; 
         unsigned int dynamicThumbnailSizePresetMinimumHeightInPixels : 1; 
@@ -29,6 +30,7 @@
         unsigned int respectsWidgetSlotsLimit : 1; 
         unsigned int respectsWidgetVisibleSectionsPerQueueLimit : 1; 
     }  _has;
+    NSString * _keyboardInputMode;
     long long  _leadingCellThumbnailSizePreset;
     long long  _nonLeadingCellThumbnailSizePreset;
     NTPBSectionSlotCostInfo * _nonVideoSectionSlotCostInfo;
@@ -37,6 +39,7 @@
     long long  _qualityOfService;
     bool  _respectsWidgetSlotsLimit;
     bool  _respectsWidgetVisibleSectionsPerQueueLimit;
+    double  _scale;
     double  _slotsLimit;
     long long  _sourceNameImageSizePreset;
     NTPBSectionSlotCostInfo * _videoSectionSlotCostInfo;
@@ -58,6 +61,7 @@
 @property (nonatomic) bool hasDynamicThumbnailSizePresetMinimumWidthInPixels;
 @property (nonatomic) bool hasEmbedsLimit;
 @property (nonatomic) bool hasFetchWidgetConfig;
+@property (nonatomic, readonly) bool hasKeyboardInputMode;
 @property (nonatomic) bool hasLeadingCellThumbnailSizePreset;
 @property (nonatomic) bool hasNonLeadingCellThumbnailSizePreset;
 @property (nonatomic, readonly) bool hasNonVideoSectionSlotCostInfo;
@@ -66,9 +70,11 @@
 @property (nonatomic) bool hasQualityOfService;
 @property (nonatomic) bool hasRespectsWidgetSlotsLimit;
 @property (nonatomic) bool hasRespectsWidgetVisibleSectionsPerQueueLimit;
+@property (nonatomic) bool hasScale;
 @property (nonatomic) bool hasSlotsLimit;
 @property (nonatomic) bool hasSourceNameImageSizePreset;
 @property (nonatomic, readonly) bool hasVideoSectionSlotCostInfo;
+@property (nonatomic, retain) NSString *keyboardInputMode;
 @property (nonatomic) long long leadingCellThumbnailSizePreset;
 @property (nonatomic) long long nonLeadingCellThumbnailSizePreset;
 @property (nonatomic, retain) NTPBSectionSlotCostInfo *nonVideoSectionSlotCostInfo;
@@ -77,6 +83,7 @@
 @property (nonatomic) long long qualityOfService;
 @property (nonatomic) bool respectsWidgetSlotsLimit;
 @property (nonatomic) bool respectsWidgetVisibleSectionsPerQueueLimit;
+@property (nonatomic) double scale;
 @property (nonatomic) double slotsLimit;
 @property (nonatomic) long long sourceNameImageSizePreset;
 @property (nonatomic, retain) NTPBSectionSlotCostInfo *videoSectionSlotCostInfo;
@@ -103,6 +110,7 @@
 - (bool)hasDynamicThumbnailSizePresetMinimumWidthInPixels;
 - (bool)hasEmbedsLimit;
 - (bool)hasFetchWidgetConfig;
+- (bool)hasKeyboardInputMode;
 - (bool)hasLeadingCellThumbnailSizePreset;
 - (bool)hasNonLeadingCellThumbnailSizePreset;
 - (bool)hasNonVideoSectionSlotCostInfo;
@@ -111,11 +119,13 @@
 - (bool)hasQualityOfService;
 - (bool)hasRespectsWidgetSlotsLimit;
 - (bool)hasRespectsWidgetVisibleSectionsPerQueueLimit;
+- (bool)hasScale;
 - (bool)hasSlotsLimit;
 - (bool)hasSourceNameImageSizePreset;
 - (bool)hasVideoSectionSlotCostInfo;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
+- (id)keyboardInputMode;
 - (long long)leadingCellThumbnailSizePreset;
 - (void)mergeFrom:(id)arg1;
 - (long long)nonLeadingCellThumbnailSizePreset;
@@ -126,6 +136,7 @@
 - (bool)readFrom:(id)arg1;
 - (bool)respectsWidgetSlotsLimit;
 - (bool)respectsWidgetVisibleSectionsPerQueueLimit;
+- (double)scale;
 - (void)setAllowLeadingCell:(bool)arg1;
 - (void)setAllowOnlyWatchEligibleSections:(bool)arg1;
 - (void)setAllowSectionTitles:(bool)arg1;
@@ -148,8 +159,10 @@
 - (void)setHasQualityOfService:(bool)arg1;
 - (void)setHasRespectsWidgetSlotsLimit:(bool)arg1;
 - (void)setHasRespectsWidgetVisibleSectionsPerQueueLimit:(bool)arg1;
+- (void)setHasScale:(bool)arg1;
 - (void)setHasSlotsLimit:(bool)arg1;
 - (void)setHasSourceNameImageSizePreset:(bool)arg1;
+- (void)setKeyboardInputMode:(id)arg1;
 - (void)setLeadingCellThumbnailSizePreset:(long long)arg1;
 - (void)setNonLeadingCellThumbnailSizePreset:(long long)arg1;
 - (void)setNonVideoSectionSlotCostInfo:(id)arg1;
@@ -158,6 +171,7 @@
 - (void)setQualityOfService:(long long)arg1;
 - (void)setRespectsWidgetSlotsLimit:(bool)arg1;
 - (void)setRespectsWidgetVisibleSectionsPerQueueLimit:(bool)arg1;
+- (void)setScale:(double)arg1;
 - (void)setSlotsLimit:(double)arg1;
 - (void)setSourceNameImageSizePreset:(long long)arg1;
 - (void)setVideoSectionSlotCostInfo:(id)arg1;

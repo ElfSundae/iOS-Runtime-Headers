@@ -15,7 +15,6 @@
 + (id)fileReservationForImageFileForAsset:(id)arg1 format:(id)arg2 outFilePath:(id*)arg3 outImageType:(long long*)arg4;
 + (id)fileReservationForLargeDisplayableImageFileForAsset:(id)arg1 format:(id)arg2 allowMetadataSnapshot:(bool)arg3 forceLarge:(bool)arg4 outFilePath:(id*)arg5 outImageType:(long long*)arg6;
 
-- (void)dealloc;
 - (id)init;
 
 @end

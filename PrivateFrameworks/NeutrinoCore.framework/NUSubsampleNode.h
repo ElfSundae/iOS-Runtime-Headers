@@ -22,8 +22,11 @@
 - (id)_evaluateImage:(out id*)arg1;
 - (id)_evaluateImageGeometry:(out id*)arg1;
 - (id)_evaluateImageProperties:(out id*)arg1;
+- (id)_evaluateVideoComposition:(out id*)arg1;
+- (id)_evaluateVideoProperties:(out id*)arg1;
 - (id)_sourceNode;
 - (long long)appliedSubsampleFactor;
+- (id)debugQuickLookObject;
 - (id)initWithInput:(id)arg1 settings:(id)arg2;
 - (id)initWithPreparedSource:(id)arg1 container:(id)arg2 pipelineSettings:(id)arg3 sourceOptions:(id)arg4;
 - (id)initWithSubsampleFactor:(long long)arg1 source:(id)arg2 container:(id)arg3 pipelineSettings:(id)arg4 sourceOptions:(id)arg5;

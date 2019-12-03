@@ -13,6 +13,7 @@
 @property (nonatomic, readonly) NSArray *childViewElements;
 @property (getter=isDisabled, nonatomic) bool disabled;
 @property (nonatomic, readonly) IKViewElement *element;
+@property (nonatomic, readonly) NSDictionary *elementData;
 @property (nonatomic, readonly) NSString *elementIdentifier;
 @property (nonatomic, readonly) NSString *elementName;
 @property (nonatomic, readonly) TVViewElement *parentViewElement;
@@ -29,6 +30,7 @@
 - (void)dispatchEventOfType:(long long)arg1 canBubble:(bool)arg2 cancellable:(bool)arg3 extraInfo:(id)arg4 completion:(id /* block */)arg5;
 - (void)dispatchEventWithName:(id)arg1 canBubble:(bool)arg2 cancellable:(bool)arg3 extraInfo:(id)arg4 completion:(id /* block */)arg5;
 - (id)element;
+- (id)elementData;
 - (id)elementIdentifier;
 - (id)elementName;
 - (id)initWithViewElement:(id)arg1;

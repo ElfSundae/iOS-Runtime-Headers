@@ -10,15 +10,15 @@
     unsigned long long * _conversationFlagsRef;
     long long  _conversationIDHash;
     double  _dateSentInterval;
-    unsigned int  _libraryID;
-    int  _mailboxID;
+    long long  _libraryID;
+    long long  _mailboxID;
     MFMailMessage * _message;
     long long  _messageIDHash;
     NSMutableDictionary * _messageIDsBySubject;
-    MFSparseMutable64IndexSet * _references;
+    EFMutableInt64Set * _references;
     NSString * _sender;
     NSArray * _senderList;
-    NSString * _subject;
+    ECSubject * _subject;
     NSString * _to;
     NSArray * _toList;
 }
@@ -30,21 +30,20 @@
 @property (nonatomic) unsigned long long*conversationFlagsRef;
 @property (nonatomic) long long conversationIDHash;
 @property (nonatomic) double dateSentInterval;
-@property (nonatomic) unsigned int libraryID;
-@property (nonatomic) int mailboxID;
+@property (nonatomic) long long libraryID;
+@property (nonatomic) long long mailboxID;
 @property (nonatomic, retain) MFMailMessage *message;
 @property (nonatomic) long long messageIDHash;
 @property (nonatomic, retain) NSMutableDictionary *messageIDsBySubject;
 @property (nonatomic, readonly) MFEmailSet *participants;
-@property (nonatomic, retain) MFSparseMutable64IndexSet *references;
+@property (nonatomic, retain) EFMutableInt64Set *references;
 @property (nonatomic, copy) NSString *sender;
 @property (nonatomic, copy) NSArray *senderList;
-@property (nonatomic, copy) NSString *subject;
-@property (nonatomic, readonly) unsigned long long subjectPrefixLength;
-@property (nonatomic, readonly) NSString *subjectWithoutPrefix;
+@property (nonatomic, copy) ECSubject *subject;
 @property (nonatomic, copy) NSString *to;
 @property (nonatomic, copy) NSArray *toList;
 
+- (void).cxx_destruct;
 - (id)bcc;
 - (id)bccList;
 - (id)cc;
@@ -52,9 +51,8 @@
 - (unsigned long long*)conversationFlagsRef;
 - (long long)conversationIDHash;
 - (double)dateSentInterval;
-- (void)dealloc;
-- (unsigned int)libraryID;
-- (int)mailboxID;
+- (long long)libraryID;
+- (long long)mailboxID;
 - (id)message;
 - (long long)messageIDHash;
 - (id)messageIDsBySubject;
@@ -69,8 +67,8 @@
 - (void)setConversationFlagsRef:(unsigned long long*)arg1;
 - (void)setConversationIDHash:(long long)arg1;
 - (void)setDateSentInterval:(double)arg1;
-- (void)setLibraryID:(unsigned int)arg1;
-- (void)setMailboxID:(int)arg1;
+- (void)setLibraryID:(long long)arg1;
+- (void)setMailboxID:(long long)arg1;
 - (void)setMessage:(id)arg1;
 - (void)setMessageIDHash:(long long)arg1;
 - (void)setMessageIDsBySubject:(id)arg1;
@@ -81,8 +79,6 @@
 - (void)setTo:(id)arg1;
 - (void)setToList:(id)arg1;
 - (id)subject;
-- (unsigned long long)subjectPrefixLength;
-- (id)subjectWithoutPrefix;
 - (id)to;
 - (id)toList;
 

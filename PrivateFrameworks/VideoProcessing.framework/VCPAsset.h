@@ -23,6 +23,7 @@
 @property (nonatomic, readonly) unsigned long long mediaSubtypes;
 @property (nonatomic, readonly) long long mediaType;
 @property (nonatomic, readonly) NSDate *modificationDate;
+@property (nonatomic, readonly) float originalPhotoOffsetSeconds;
 @property (nonatomic, readonly) float photoOffsetSeconds;
 @property (nonatomic, readonly) unsigned long long pixelHeight;
 @property (nonatomic, readonly) unsigned long long pixelWidth;
@@ -53,10 +54,12 @@
 - (id)modificationDate;
 - (id)movie;
 - (id)originalMovie;
+- (float)originalPhotoOffsetSeconds;
 - (float)photoOffsetSeconds;
 - (unsigned long long)pixelHeight;
 - (unsigned long long)pixelWidth;
 - (float)slowmoRate;
+- (id)streamedMovie;
 - (float)timelapseRate;
 
 @end

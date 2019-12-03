@@ -3,7 +3,7 @@
  */
 
 @interface WKWebAllowDenyPolicyListener : NSObject <WebAllowDenyPolicyListener> {
-    struct Function<void (bool)>="m_callableWrapper"{unique_ptr<WTF::Function<void (bool)>::CallableWrapperBase, std::__1::default_delete<WTF::Function<void (bool)>::CallableWrapperBase> >="__ptr_"{__compressed_pair<WTF::Function<void (bool)>::CallableWrapperBase *, std::__1::default_delete<WTF::Function<void (bool)>::CallableWrapperBase> >="__value_"^{CallableWrapperBase {}  _completionHandler;
+    struct Function<void (bool)>="m_callableWrapper"{unique_ptr<WTF::Detail::CallableWrapperBase<void, bool>, std::__1::default_delete<WTF::Detail::CallableWrapperBase<void, bool> > >="__ptr_"{__compressed_pair<WTF::Detail::CallableWrapperBase<void, bool> *, std::__1::default_delete<WTF::Detail::CallableWrapperBase<void, bool> > >="__value_"^{CallableWrapperBase<void, bool> {}  _completionHandler;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -16,7 +16,7 @@
 - (void)allow;
 - (void)deny;
 - (void)denyOnlyThisRequest;
-- (id)initWithCompletionHandler:(struct Function<void (bool)>={unique_ptr<WTF::Function<void (bool)>::CallableWrapperBase, std::__1::default_delete<WTF::Function<void (bool)>::CallableWrapperBase> >={__compressed_pair<WTF::Function<void (bool)>::CallableWrapperBase *, std::__1::default_delete<WTF::Function<void (bool)>::CallableWrapperBase> >=^{CallableWrapperBase {}*)arg1;
+- (id)initWithCompletionHandler:(struct Function<void (bool)>={unique_ptr<WTF::Detail::CallableWrapperBase<void, bool>, std::__1::default_delete<WTF::Detail::CallableWrapperBase<void, bool> > >={__compressed_pair<WTF::Detail::CallableWrapperBase<void, bool> *, std::__1::default_delete<WTF::Detail::CallableWrapperBase<void, bool> > >=^{CallableWrapperBase<void, bool> {}*)arg1;
 - (bool)shouldClearCache;
 
 @end

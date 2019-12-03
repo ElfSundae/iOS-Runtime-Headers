@@ -8,7 +8,11 @@
     UIToolbar * _bar;
     _SFBarManager * _barManager;
     UIBarButtonItem * _bookmarksItem;
+    SFDownloadsBarButtonItem * _downloadsItem;
     UIBarButtonItem * _forwardItem;
+    NSMutableSet * _hiddenBarItems;
+    NSOrderedSet * _lastCommittedArrangedBarItems;
+    long long  _layout;
     UIBarButtonItem * _newTabItem;
     UIBarButtonItem * _openInSafariItem;
     UIBarButtonItem * _shareItem;
@@ -23,15 +27,23 @@
 - (void).cxx_destruct;
 - (id)UIBarButtonItemForItem:(long long)arg1;
 - (id)_UIBarButtonItemForBarItem:(long long)arg1;
+- (id)_UIBarButtonItemsForArrangedBarItems:(id)arg1;
+- (bool)_arrangedBarItemsNeedUpdate;
 - (long long)_barItemForUIBarButtonItem:(id)arg1;
+- (id)_effectiveArrangedBarItems;
 - (void)_itemReceivedLongPress:(id)arg1;
 - (void)_itemReceivedTap:(id)arg1;
 - (void)_itemReceivedTouchDown:(id)arg1;
+- (id)_newBarButtonItemForSFBarItem:(long long)arg1;
 - (bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (bool)containsBarItem:(long long)arg1;
 - (id)initWithBar:(id)arg1 barManager:(id)arg2 layout:(long long)arg3 persona:(unsigned long long)arg4;
 - (id)popoverSourceInfoForItem:(long long)arg1;
+- (void)pulseDownloadsItem;
 - (void)setBarItem:(long long)arg1 enabled:(bool)arg2;
+- (void)setBarItem:(long long)arg1 hidden:(bool)arg2;
 - (void)setBookmarksItemSelected:(bool)arg1;
+- (void)setDownloadsItemProgress:(double)arg1;
+- (void)updateArrangedUIBarButtonItemsIfNeeded;
 
 @end

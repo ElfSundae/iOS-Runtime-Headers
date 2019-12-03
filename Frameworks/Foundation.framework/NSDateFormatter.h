@@ -192,6 +192,7 @@
 
 // Image: /System/Library/PrivateFrameworks/Navigation.framework/Navigation
 
++ (id)_navigation_debugDescriptionForDate:(id)arg1;
 + (id)_navigation_localizedTimestampStringForDepartureArrivalDate:(id)arg1 inTimeZone:(id)arg2 canIncludeDate:(bool)arg3;
 + (id)_navigation_localizedTimestampStringForDepartureArrivalDate:(id)arg1 inTimeZone:(id)arg2 canIncludeDate:(bool)arg3 relativeToTimeZone:(id)arg4;
 + (id)_navigation_localizedTimestampStringForDepartureArrivalDate:(id)arg1 inTimeZone:(id)arg2 canIncludeDate:(bool)arg3 showTimeZone:(bool)arg4 useShortFormat:(bool)arg5;
@@ -207,6 +208,11 @@
 
 - (id)initWithFormat:(id)arg1 localeIdentifier:(id)arg2;
 
+// Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
+
++ (bool)px_shouldAlwaysDisplayYearBeforeMonthForCurrentLocale;
++ (bool)px_yearBeforeMonthForLocale:(id)arg1;
+
 // Image: /System/Library/PrivateFrameworks/RemoteConfiguration.framework/RemoteConfiguration
 
 + (id)dateFormatterWithFormat:(id)arg1 forReuse:(bool)arg2;
@@ -216,12 +222,9 @@
 
 - (id)initWithFormat:(id)arg1 localeIdentifier:(id)arg2;
 
-// Image: /System/Library/PrivateFrameworks/ScreenTimeUI.framework/ScreenTimeUI
+// Image: /System/Library/PrivateFrameworks/RemoteManagement.framework/Frameworks/RemoteManagementModel.framework/RemoteManagementModel
 
-+ (id)st_sharedShortTimeDateFormatter;
-+ (id)st_sharedStandaloneAbbreviatedMonthDateFormatter;
-+ (id)st_sharedStandaloneRelativeDateFormatter;
-+ (id)st_sharedStandaloneWeekdayFormatter;
++ (id)rmmodel_sharedRFC3339DateFormatter;
 
 // Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
 

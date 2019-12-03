@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/ReplayKit.framework/ReplayKit
  */
 
-@interface RPPreviewViewController : UIViewController <RPVideoEditorViewControllerDelegate> {
+@interface RPPreviewViewController : UIViewController <RPVideoEditorViewControllerDelegate, ReplayKitMacHelperDelegate> {
     RPVideoEditorHostViewController * _hostViewController;
     long long  _mode;
     NSURL * _movieURL;
@@ -10,10 +10,14 @@
     bool  _wasStatusBarHidden;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, retain) RPVideoEditorHostViewController *hostViewController;
 @property (nonatomic) long long mode;
 @property (nonatomic, retain) NSURL *movieURL;
 @property (nonatomic) <RPPreviewViewControllerDelegate> *previewControllerDelegate;
+@property (readonly) Class superclass;
 @property (nonatomic) bool wasStatusBarHidden;
 
 + (void)loadPreviewViewControllerWithMovieURL:(id)arg1 attachmentURL:(id)arg2 overrideShareMessage:(id)arg3 overrideTintColor:(id)arg4 completion:(id /* block */)arg5;
@@ -26,12 +30,14 @@
 - (long long)mode;
 - (id)movieURL;
 - (id)previewControllerDelegate;
+- (void)replayKitMacHelper:(id)arg1 didDismissVideoEditorSheetWithActivityTypes:(id)arg2;
 - (void)setHostViewController:(id)arg1;
 - (void)setMode:(long long)arg1;
 - (void)setMovieURL:(id)arg1;
 - (void)setPreviewControllerDelegate:(id)arg1;
 - (void)setWasStatusBarHidden:(bool)arg1;
 - (void)videoEditor:(id)arg1 didFinishWithActivityTypes:(id)arg2;
+- (void)viewDidAppear:(bool)arg1;
 - (void)viewDidDisappear:(bool)arg1;
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;

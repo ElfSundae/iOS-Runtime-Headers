@@ -13,12 +13,13 @@
     EDResources * mResources;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)font;
 - (unsigned long long)fontIndex;
 - (id)graphicProperties;
 - (id)initWithResources:(id)arg1;
+- (bool)isAutoSizeAndPosition;
 - (bool)isOverlay;
 - (bool)isSingleColumnLegend;
 - (id)labelEffects;

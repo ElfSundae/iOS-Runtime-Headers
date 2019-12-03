@@ -3,25 +3,27 @@
  */
 
 @interface SXFullscreenCanvasViewController : UIViewController {
+    <SXFullscreenCanvasViewControllerDelegate> * _delegate;
     bool  _isTransitioning;
-    id /* block */  _onTransition;
     long long  _statusBarStyle;
 }
 
+@property (nonatomic) <SXFullscreenCanvasViewControllerDelegate> *delegate;
 @property (nonatomic) bool isTransitioning;
-@property (nonatomic, copy) id /* block */ onTransition;
 @property (nonatomic) long long statusBarStyle;
 
 - (void).cxx_destruct;
+- (id)delegate;
+- (void)dismiss;
 - (bool)isTransitioning;
-- (id /* block */)onTransition;
 - (long long)preferredStatusBarStyle;
 - (long long)preferredStatusBarUpdateAnimation;
 - (bool)prefersStatusBarHidden;
+- (void)setDelegate:(id)arg1;
 - (void)setIsTransitioning:(bool)arg1;
-- (void)setOnTransition:(id /* block */)arg1;
 - (void)setStatusBarStyle:(long long)arg1;
 - (long long)statusBarStyle;
+- (void)viewDidLoad;
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
 

@@ -5,12 +5,13 @@
 @interface SXLayoutCoordinator : NSObject <SXLayoutCoordinator, SXLayoutInvalidationManagerDelegate, SXLayoutPipelineDelegate> {
     SXDOMObjectProvider * _DOMObjectProvider;
     SXLayoutBlueprintProvider * _blueprintProvider;
-    <SXDocumentControllerProvider> * _documentControllerProvider;
+    <SXDocumentProviding> * _documentProvider;
     <SXLayoutInstructionFactory> * _instructionFactory;
     <SXLayoutIntegrator> * _integrator;
     <SXLayoutInvalidationManager> * _invalidationManager;
     SXLayoutOptions * _layoutOptions;
     SXLayoutParametersManager * _layoutParametersManager;
+    <SXLayoutPolicyManager> * _layoutPolicyManager;
     <SXLayoutPipeline> * _pipeline;
     <SXLayoutCoordinatorDelegate> * delegate;
 }
@@ -20,13 +21,14 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <SXLayoutCoordinatorDelegate> *delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, readonly) <SXDocumentControllerProvider> *documentControllerProvider;
+@property (nonatomic, readonly) <SXDocumentProviding> *documentProvider;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) <SXLayoutInstructionFactory> *instructionFactory;
 @property (nonatomic, readonly) <SXLayoutIntegrator> *integrator;
 @property (nonatomic, readonly) <SXLayoutInvalidationManager> *invalidationManager;
 @property (nonatomic, retain) SXLayoutOptions *layoutOptions;
 @property (nonatomic, readonly) SXLayoutParametersManager *layoutParametersManager;
+@property (nonatomic, readonly) <SXLayoutPolicyManager> *layoutPolicyManager;
 @property (nonatomic, readonly) <SXLayoutPipeline> *pipeline;
 @property (readonly) Class superclass;
 
@@ -34,8 +36,8 @@
 - (id)DOMObjectProvider;
 - (id)blueprintProvider;
 - (id)delegate;
-- (id)documentControllerProvider;
-- (id)initWithPipeline:(id)arg1 integrator:(id)arg2 instructionFactory:(id)arg3 invalidationManager:(id)arg4 blueprintProvider:(id)arg5 DOMObjectProvider:(id)arg6 layoutParametersManager:(id)arg7 documentControllerProvider:(id)arg8;
+- (id)documentProvider;
+- (id)initWithPipeline:(id)arg1 integrator:(id)arg2 instructionFactory:(id)arg3 invalidationManager:(id)arg4 blueprintProvider:(id)arg5 DOMObjectProvider:(id)arg6 layoutParametersManager:(id)arg7 documentProvider:(id)arg8 layoutPolicyManager:(id)arg9;
 - (id)instructionFactory;
 - (id)integrator;
 - (id)invalidationManager;
@@ -43,6 +45,7 @@
 - (id)layoutOptions;
 - (id)layoutParametersManager;
 - (void)layoutPipeline:(id)arg1 finishedTask:(id)arg2 withResult:(id)arg3;
+- (id)layoutPolicyManager;
 - (void)layoutWithOptions:(id)arg1;
 - (id)pipeline;
 - (void)setDelegate:(id)arg1;

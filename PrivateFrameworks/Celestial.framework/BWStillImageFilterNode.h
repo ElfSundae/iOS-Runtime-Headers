@@ -3,7 +3,6 @@
  */
 
 @interface BWStillImageFilterNode : BWNode <BWRendererResourceProvider> {
-    NSDictionary * _cameraInfoByPortType;
     BWColorLookupCache * _colorLookupCache;
     bool  _depthDataDeliveryEnabled;
     struct { 
@@ -15,7 +14,6 @@
     BWMetalColorCubeRenderer * _metalFilterRenderer;
     BWStillImageMetalSDOFRenderer * _metalSDOFRenderer;
     <MTLCommandQueue> * _mtlCommandQueue;
-    <MTLDevice> * _mtlDevice;
     BWPixelBufferPool * _processingBufferPool;
     BWRenderList * _renderList;
     BWRenderListProcessor * _renderListProcessor;
@@ -34,15 +32,14 @@
 - (id)_debugStringForBuffer:(struct opaqueCMSampleBuffer { }*)arg1;
 - (void)_emitNodeErrorForErrorStatus:(int)arg1 numberOfNodeErrors:(int)arg2 requestedStillImageCaptureSettings:(id)arg3 resolvedStillImageCaptureSettings:(id)arg4;
 - (void)_emitSampleBufferAsync:(struct opaqueCMSampleBuffer { }*)arg1;
-- (id)_initWithDepthDataDeliveryEnabled:(bool)arg1 personSegmentationEnabled:(bool)arg2 refinedDepthEnabled:(bool)arg3 renderResourceProvider:(id)arg4;
+- (id)_initWithNodeConfiguration:(id)arg1 depthDataDeliveryEnabled:(bool)arg2 personSegmentationEnabled:(bool)arg3 refinedDepthEnabled:(bool)arg4 renderResourceProvider:(id)arg5;
 - (void)_prepareStillImageFilterRenderersForOriginalFilters:(id)arg1 processedFilters:(id)arg2;
-- (id)cameraInfoByPortType;
 - (void)dealloc;
 - (void)didReachEndOfDataForInput:(id)arg1;
 - (void)didSelectFormat:(id)arg1 forInput:(id)arg2 forAttachedMediaKey:(id)arg3;
 - (void)handleNodeError:(id)arg1 forInput:(id)arg2;
-- (void)handleStillImagePrewarmWithRequestedStillImageCaptureSettings:(id)arg1 resolvedStillImageCaptureSettings:(id)arg2 resolvedPhotoManifest:(id)arg3 forInput:(id)arg4;
-- (id)initWithDepthDataDeliveryEnabled:(bool)arg1 personSegmentationEnabled:(bool)arg2 refinedDepthEnabled:(bool)arg3;
+- (void)handleStillImagePrewarmWithRequestedStillImageCaptureSettings:(id)arg1 resolvedStillImageCaptureSettings:(id)arg2 photoManifest:(id)arg3 forInput:(id)arg4;
+- (id)initWithNodeConfiguration:(id)arg1 depthDataDeliveryEnabled:(bool)arg2 personSegmentationEnabled:(bool)arg3 refinedDepthEnabled:(bool)arg4;
 - (id)nodeSubType;
 - (id)nodeType;
 - (void)prepareForCurrentConfigurationToBecomeLive;
@@ -54,7 +51,6 @@
 - (id)provideStreamingCVAFilterRenderer;
 - (void)renderSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 forInput:(id)arg2;
 - (id)sensorIDDictionary;
-- (void)setCameraInfoByPortType:(id)arg1;
 - (void)setSensorIDDictionary:(id)arg1;
 
 @end

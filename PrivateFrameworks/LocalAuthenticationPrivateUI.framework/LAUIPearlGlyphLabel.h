@@ -54,6 +54,7 @@
     bool  _visibleNeedsUpdate;
 }
 
+@property (nonatomic) bool inApplicationContext;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } maximumSize;
 @property (getter=isShimmerEnabled, nonatomic, readonly) bool shimmerEnabled;
 @property (nonatomic, readonly) long long style;
@@ -74,15 +75,18 @@
 - (void)contentSizeCategoryDidChange:(id)arg1;
 - (void)dealloc;
 - (void)didMoveToWindow;
+- (bool)inApplicationContext;
 - (id)init;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)initWithStyle:(long long)arg1;
+- (void)invalidate;
 - (bool)isShimmerEnabled;
 - (void)layoutIfNeededAnimated:(bool)arg1;
 - (void)layoutSubviews;
 - (struct CGSize { double x1; double x2; })maximumSize;
 - (void)reduceMotionDidChange:(id)arg1;
 - (void)reduceTransparencyDidChange:(id)arg1;
+- (void)setInApplicationContext:(bool)arg1;
 - (void)setMaximumSize:(struct CGSize { double x1; double x2; })arg1 animated:(bool)arg2;
 - (void)setShimmerEnabled:(bool)arg1 animated:(bool)arg2;
 - (void)setStyle:(long long)arg1 animated:(bool)arg2;

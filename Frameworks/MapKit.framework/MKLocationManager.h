@@ -187,6 +187,7 @@
 - (double)minimumLocationUpdateInterval;
 - (double)navigationCourse;
 - (id /* block */)networkActivity;
+- (id)observersDescription;
 - (void)pushLocation:(id)arg1;
 - (void)requestWhenInUseAuthorization;
 - (void)requestWhenInUseAuthorizationWithPrompt;

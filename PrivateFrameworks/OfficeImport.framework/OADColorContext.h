@@ -14,8 +14,8 @@
 
 + (id)colorContextWithScheme:(id)arg1 map:(id)arg2 palette:(id)arg3;
 
+- (void).cxx_destruct;
 - (void)applyThemeOverrides:(id)arg1 colorMapOverride:(id)arg2;
-- (void)dealloc;
 - (unsigned long long)hash;
 - (id)initWithScheme:(id)arg1 map:(id)arg2 palette:(id)arg3;
 - (bool)isEqual:(id)arg1;

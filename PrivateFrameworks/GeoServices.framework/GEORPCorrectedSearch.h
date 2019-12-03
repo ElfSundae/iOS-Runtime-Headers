@@ -5,15 +5,33 @@
 @interface GEORPCorrectedSearch : PBCodable <NSCopying> {
     unsigned int  _correctedSearchResultIndex;
     struct { 
-        unsigned int correctedSearchResultIndex : 1; 
-        unsigned int originalSearchResultIndex : 1; 
-    }  _has;
+        unsigned int has_correctedSearchResultIndex : 1; 
+        unsigned int has_originalSearchResultIndex : 1; 
+        unsigned int read_placeRequest : 1; 
+        unsigned int read_placeResponse : 1; 
+        unsigned int read_placeSearchRequest : 1; 
+        unsigned int read_placeSearchResponse : 1; 
+        unsigned int read_preferredSearchDisplayLocation : 1; 
+        unsigned int wrote_placeRequest : 1; 
+        unsigned int wrote_placeResponse : 1; 
+        unsigned int wrote_placeSearchRequest : 1; 
+        unsigned int wrote_placeSearchResponse : 1; 
+        unsigned int wrote_preferredSearchDisplayLocation : 1; 
+        unsigned int wrote_correctedSearchResultIndex : 1; 
+        unsigned int wrote_originalSearchResultIndex : 1; 
+    }  _flags;
     unsigned int  _originalSearchResultIndex;
     GEOPDPlaceRequest * _placeRequest;
     GEOPDPlaceResponse * _placeResponse;
     GEOPlaceSearchRequest * _placeSearchRequest;
     GEOPlaceSearchResponse * _placeSearchResponse;
     NSString * _preferredSearchDisplayLocation;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
 }
 
 @property (nonatomic) unsigned int correctedSearchResultIndex;
@@ -31,7 +49,14 @@
 @property (nonatomic, retain) GEOPlaceSearchResponse *placeSearchResponse;
 @property (nonatomic, retain) NSString *preferredSearchDisplayLocation;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_readPlaceRequest;
+- (void)_readPlaceResponse;
+- (void)_readPlaceSearchRequest;
+- (void)_readPlaceSearchResponse;
+- (void)_readPreferredSearchDisplayLocation;
 - (bool)containsReportableData;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -46,6 +71,8 @@
 - (bool)hasPlaceSearchResponse;
 - (bool)hasPreferredSearchDisplayLocation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (unsigned int)originalSearchResultIndex;
@@ -54,6 +81,7 @@
 - (id)placeSearchRequest;
 - (id)placeSearchResponse;
 - (id)preferredSearchDisplayLocation;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setCorrectedSearchResultIndex:(unsigned int)arg1;
 - (void)setHasCorrectedSearchResultIndex:(bool)arg1;

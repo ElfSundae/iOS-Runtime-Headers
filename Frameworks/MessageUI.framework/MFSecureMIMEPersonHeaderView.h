@@ -20,13 +20,13 @@
 
 + (id)_explanationLabelDefaultAttributes;
 
+- (void).cxx_destruct;
 - (void)_insert:(bool)arg1 subview:(id)arg2;
 - (id)_secureLabel;
 - (void)_setText:(id)arg1 forLabel:(id)arg2;
 - (id)_signedLabel;
 - (id)_warningLabel;
 - (id)buttons;
-- (void)dealloc;
 - (bool)editing;
 - (id)explanationText;
 - (double)heightOfBottomMargin;

@@ -11,10 +11,10 @@
 
 @property <NSURLSessionDataDelegate> *delegate;
 @property (copy) NSArray *modes;
-@property (readonly, retain) NSURLSessionDataTask *task;
+@property (readonly) NSURLSessionDataTask *task;
 @property (retain) NSThread *thread;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)delegate;
 - (id)initWithTask:(id)arg1 delegate:(id)arg2 modes:(id)arg3;
 - (void)invalidate;

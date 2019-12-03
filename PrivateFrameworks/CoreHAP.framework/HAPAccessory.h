@@ -13,6 +13,7 @@
     NSString * _model;
     NSString * _name;
     bool  _primary;
+    NSString * _productData;
     bool  _reachable;
     NSString * _serialNumber;
     HAPAccessoryServer * _server;
@@ -38,6 +39,7 @@
 @property (nonatomic, copy) NSString *name;
 @property (getter=isPaired, nonatomic, readonly) bool paired;
 @property (getter=isPrimary, nonatomic) bool primary;
+@property (nonatomic, copy) NSString *productData;
 @property (getter=isReachable, nonatomic) bool reachable;
 @property (nonatomic, copy) NSString *serialNumber;
 @property (nonatomic) HAPAccessoryServer *server;
@@ -51,6 +53,7 @@
 + (id)instanceIDForUniqueIdentifier:(id)arg1;
 + (bool)isAccessoryPairedWithIdentifier:(id)arg1;
 + (bool)isAccessoryPrimaryWithUniqueIdentifier:(id)arg1;
++ (id)productDataStringFromData:(id)arg1;
 + (id)serverIdentifierWithUniqueIdentifier:(id)arg1;
 
 - (void).cxx_destruct;
@@ -59,6 +62,7 @@
 - (bool)_updateAndValidateServices;
 - (bool)_updateForAccessoryInformationService;
 - (bool)_updateService:(id)arg1;
+- (bool)_validateCharacteristicValues;
 - (id)bluetoothClassicMacAddress;
 - (id)category;
 - (id)characteristicOfType:(id)arg1 serviceType:(id)arg2;
@@ -82,6 +86,7 @@
 - (bool)mergeObject:(id)arg1;
 - (id)model;
 - (id)name;
+- (id)productData;
 - (void)readCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)readValueForCharacteristic:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(id /* block */)arg4;
 - (id)serialNumber;
@@ -98,6 +103,7 @@
 - (void)setModel:(id)arg1;
 - (void)setName:(id)arg1;
 - (void)setPrimary:(bool)arg1;
+- (void)setProductData:(id)arg1;
 - (void)setReachable:(bool)arg1;
 - (void)setSerialNumber:(id)arg1;
 - (void)setServer:(id)arg1;
@@ -109,7 +115,6 @@
 - (bool)shouldMergeObject:(id)arg1;
 - (bool)supportsRelay;
 - (id)uniqueIdentifier;
-- (bool)validateCharacteristicValues:(id*)arg1;
 - (id)workQueue;
 - (void)writeCharacteristicValue:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)writeCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(id /* block */)arg4;

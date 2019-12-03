@@ -4,6 +4,7 @@
 
 @interface FCPaidBundleConfiguration : NSObject <NSCopying> {
     NSDictionary * _configDict;
+    NSArray * _defaultSupportedStoreFronts;
     NSString * _localizedStorefrontID;
     NSDictionary * _magazineGenresByGenre;
     NSDictionary * _paywallConfigurationsByType;
@@ -11,15 +12,27 @@
     NSDictionary * _subscriptionButtonConfigurationsByType;
 }
 
+@property (nonatomic, readonly) NSString *appLaunchUpsellArticleID;
+@property (nonatomic, readonly) NSString *appLaunchUpsellInstanceID;
+@property (nonatomic, readonly) long long appLaunchUpsellNewSessionBackgroundTimeInterval;
+@property (nonatomic, readonly) unsigned long long appLaunchUpsellPaidVisibility;
+@property (nonatomic, readonly) long long appLaunchUpsellRequiredAppLaunchCount;
+@property (nonatomic, readonly) unsigned long long articleHardPaywallType;
 @property (nonatomic, readonly) long long bundleSubscriptionsGlobalMeteredCount;
 @property (getter=isCategoriesDownloadButtonEnabled, nonatomic, readonly) bool categoriesDownloadButtonEnabled;
 @property (nonatomic, retain) NSDictionary *configDict;
 @property (nonatomic, readonly) long long criticalStorageAutomaticIssueDownloadTTL;
 @property (nonatomic, readonly) long long criticalStorageManualIssueDownloadTTL;
 @property (nonatomic, readonly) NSString *defaultLandingPageArticleID;
+@property (nonatomic, readonly, copy) NSArray *defaultSupportedStoreFronts;
+@property (nonatomic, readonly) long long deferredHardPaywallMinimumBodyTextLength;
+@property (nonatomic, readonly) NSString *endOfPurchaseFamilySharingSetupArticleID;
+@property (nonatomic, readonly) NSString *endOfPurchaseNoFamilySharingSetupArticleID;
+@property (nonatomic, readonly) long long entitlementsCacheExpiredGracePeriodInSeconds;
 @property (nonatomic, readonly) long long entitlementsGracePeriodInSeconds;
 @property (nonatomic, readonly) NSString *expirationAlertDescription;
 @property (nonatomic, readonly) NSString *familySharingLandingPageArticleID;
+@property (getter=isFamilySharingSetupEnabled, nonatomic, readonly) bool familySharingSetupEnabled;
 @property (nonatomic, readonly) long long featuredArticlesFetchLimit;
 @property (nonatomic, readonly) NSString *featuredArticlesTagList;
 @property (nonatomic, readonly) long long feedAutoRefreshMinimumInterval;
@@ -28,6 +41,8 @@
 @property (nonatomic, readonly) long long forYouMaxMagazineGroupsForPaidUsers;
 @property (nonatomic, readonly) long long forYouMaxMagazineGroupsForTrialUsers;
 @property (getter=isFreeBadgeEnabled, nonatomic, readonly) bool freeBadgeEnabled;
+@property (getter=isFreeBadgeEnabledForNonSubscribers, nonatomic, readonly) bool freeBadgeEnabledForNonSubscribers;
+@property (getter=isFreeBadgeEnabledForSubscribers, nonatomic, readonly) bool freeBadgeEnabledForSubscribers;
 @property (nonatomic, readonly) NSString *freeBadgeTitle;
 @property (nonatomic, readonly) NSArray *groupWhitelistedTagIds;
 @property (nonatomic, readonly, copy) NSString *localizedStorefrontID;
@@ -35,6 +50,8 @@
 @property (nonatomic, readonly) long long lowStorageManualIssueDownloadTTL;
 @property (nonatomic, retain) NSDictionary *magazineGenresByGenre;
 @property (getter=areMagazinesEnabled, nonatomic, readonly) bool magazinesEnabled;
+@property (nonatomic, readonly) long long minFollowedMagazinesToHideSuggestionsCompact;
+@property (nonatomic, readonly) long long minFollowedMagazinesToHideSuggestionsRegular;
 @property (nonatomic, readonly) long long minimumArticlesInANFIssueBeforeRead;
 @property (nonatomic, readonly) long long minimumPagesInPDFIssueBeforeRead;
 @property (nonatomic, readonly) long long minimumReadIssuesInMyMagazines;
@@ -44,6 +61,8 @@
 @property (nonatomic, readonly) long long normalStorageManualIssueDownloadTTL;
 @property (nonatomic, readonly) NSArray *offeredBundlePurchaseIDs;
 @property (getter=isPaidBadgeEnabled, nonatomic, readonly) bool paidBadgeEnabled;
+@property (getter=isPaidBadgeEnabledForNonSubscribers, nonatomic, readonly) bool paidBadgeEnabledForNonSubscribers;
+@property (getter=isPaidBadgeEnabledForSubscribers, nonatomic, readonly) bool paidBadgeEnabledForSubscribers;
 @property (nonatomic, readonly) NSString *paidBadgeTitle;
 @property (getter=isPaidBundleVisible, nonatomic, readonly) bool paidBundleVisible;
 @property (nonatomic, readonly) NSString *paidFeedID;
@@ -55,10 +74,13 @@
 @property (getter=isSharingIssuesEnabled, nonatomic, readonly) bool sharingIssuesEnabled;
 @property (nonatomic, readonly, copy) NSString *storefrontID;
 @property (nonatomic, retain) NSDictionary *subscriptionButtonConfigurationsByType;
+@property (getter=isTemporaryAccessEnabled, nonatomic, readonly) bool temporaryAccessEnabled;
 @property (nonatomic, readonly) long long vanityURLMappingRefreshRate;
 @property (nonatomic, readonly) NSString *vanityURLMappingResourceID;
 
 + (id)defaultConfigurationForStorefrontID:(id)arg1;
++ (id)defaultEndOfPurchaseFamilySharingSetupArticleIDByLocalizedStorefrontID;
++ (id)defaultEndOfPurchaseNoFamilySharingSetupArticleIDByLocalizedStorefrontID;
 + (id)defaultFamilySharingLandingPageByLocalizedStorefrontID;
 + (id)defaultLandingPageByLocalizedStorefrontID;
 + (id)defaultPaidFeedIDByLocalizedStorefrontID;
@@ -67,7 +89,13 @@
 + (id)renewalLandingPageByLocalizedStorefrontID;
 
 - (void).cxx_destruct;
+- (id)appLaunchUpsellArticleID;
+- (id)appLaunchUpsellInstanceID;
+- (long long)appLaunchUpsellNewSessionBackgroundTimeInterval;
+- (unsigned long long)appLaunchUpsellPaidVisibility;
+- (long long)appLaunchUpsellRequiredAppLaunchCount;
 - (bool)areMagazinesEnabled;
+- (unsigned long long)articleHardPaywallType;
 - (long long)bundleSubscriptionsGlobalMeteredCount;
 - (id)configDict;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -77,6 +105,11 @@
 - (id)defaultMagazineGenres;
 - (id)defaultPaywallConfigs;
 - (id)defaultSubscriptionButtonConfigs;
+- (id)defaultSupportedStoreFronts;
+- (long long)deferredHardPaywallMinimumBodyTextLength;
+- (id)endOfPurchaseFamilySharingSetupArticleID;
+- (id)endOfPurchaseNoFamilySharingSetupArticleID;
+- (long long)entitlementsCacheExpiredGracePeriodInSeconds;
 - (long long)entitlementsGracePeriodInSeconds;
 - (id)expirationAlertDescription;
 - (id)familySharingLandingPageArticleID;
@@ -93,17 +126,25 @@
 - (id)init;
 - (id)initWithConfigDictionary:(id)arg1;
 - (id)initWithConfigDictionary:(id)arg1 storefrontID:(id)arg2;
-- (id)initWithConfigDictionary:(id)arg1 storefrontID:(id)arg2 localizedStorefrontID:(id)arg3;
+- (id)initWithConfigDictionary:(id)arg1 storefrontID:(id)arg2 localizedStorefrontID:(id)arg3 defaultSupportedStoreFronts:(id)arg4;
 - (bool)isCategoriesDownloadButtonEnabled;
 - (bool)isEqual:(id)arg1;
+- (bool)isFamilySharingSetupEnabled;
 - (bool)isFreeBadgeEnabled;
+- (bool)isFreeBadgeEnabledForNonSubscribers;
+- (bool)isFreeBadgeEnabledForSubscribers;
 - (bool)isPaidBadgeEnabled;
+- (bool)isPaidBadgeEnabledForNonSubscribers;
+- (bool)isPaidBadgeEnabledForSubscribers;
 - (bool)isPaidBundleVisible;
 - (bool)isSharingIssuesEnabled;
+- (bool)isTemporaryAccessEnabled;
 - (id)localizedStorefrontID;
 - (long long)lowStorageAutomaticIssueDownloadTTL;
 - (long long)lowStorageManualIssueDownloadTTL;
 - (id)magazineGenresByGenre;
+- (long long)minFollowedMagazinesToHideSuggestionsCompact;
+- (long long)minFollowedMagazinesToHideSuggestionsRegular;
 - (long long)minimumArticlesInANFIssueBeforeRead;
 - (long long)minimumPagesInPDFIssueBeforeRead;
 - (long long)minimumReadIssuesInMyMagazines;

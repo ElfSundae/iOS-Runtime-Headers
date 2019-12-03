@@ -35,6 +35,7 @@
 - (id)_circleLayer;
 - (id)_contentView;
 - (double)_contentsScale;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (id)_irisGlyphLayer;
 - (id)_progressArcLayer;
 - (void)_setCircleLayer:(id)arg1;

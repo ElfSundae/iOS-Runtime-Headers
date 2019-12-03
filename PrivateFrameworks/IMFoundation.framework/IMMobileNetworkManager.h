@@ -2,20 +2,19 @@
    Image: /System/Library/PrivateFrameworks/IMFoundation.framework/IMFoundation
  */
 
-@interface IMMobileNetworkManager : IMNetworkManager <CoreTelephonyClientDataDelegate, RadiosPreferencesDelegate> {
+@interface IMMobileNetworkManager : NSObject <CoreTelephonyClientDataDelegate, FTMessageDeliveryAPSMobileNetworkManager, FTMessageDeliveryHTTPMobileNetworkManager, RadiosPreferencesDelegate> {
     void * _cellAssertion;
     NSMutableSet * _cellAutoAssociationTokens;
     CoreTelephonyClient * _coreTelephonyClient;
     struct __CTServerConnection { } * _ctServerConnection;
     bool  _isDataContextActive;
-    bool  _isDataContextAttached;
     bool  _isDataContextUsable;
     bool  _isDataIndicatorNone;
+    bool  _isDataPossible;
     NSRecursiveLock * _lock;
     RadiosPreferences * _radiosPreferences;
     bool  _registered;
     bool  _shouldBringUpDataContext;
-    NSMutableSet * _wiFiAutoAssociationTokens;
 }
 
 @property (nonatomic) void*_cellAssertion;
@@ -36,9 +35,9 @@
 @property (nonatomic, readonly) bool isAirplaneModeEnabled;
 @property (nonatomic, readonly) bool isDataConnectionActive;
 @property (nonatomic) bool isDataContextActive;
-@property (nonatomic) bool isDataContextAttached;
 @property (nonatomic) bool isDataContextUsable;
 @property (nonatomic) bool isDataIndicatorNone;
+@property (nonatomic) bool isDataPossible;
 @property (nonatomic, readonly) bool isDataSwitchEnabled;
 @property (nonatomic, readonly) bool isHostingWiFiHotSpot;
 @property (nonatomic, readonly) bool isSIMLocked;
@@ -52,12 +51,13 @@
 @property (nonatomic, readonly) bool requiresSIMInserted;
 @property (nonatomic) bool shouldBringUpDataContext;
 @property (readonly) Class superclass;
-@property (nonatomic, retain) NSMutableSet *wiFiAutoAssociationTokens;
 @property (nonatomic, readonly, retain) NSNumber *wiFiScaledRSSI;
 @property (nonatomic, readonly, retain) NSNumber *wiFiScaledRate;
 @property (nonatomic, readonly, retain) NSNumber *wiFiSignalStrength;
 @property (nonatomic, readonly) bool willTryToAutoAssociateWiFiNetwork;
 @property (nonatomic, readonly) bool willTryToSearchForWiFiNetwork;
+
++ (id)sharedInstance;
 
 - (void)_adjustCellularAutoAssociation;
 - (void*)_cellAssertion;
@@ -65,8 +65,8 @@
 - (void)_createCTServerConnection;
 - (struct __CTServerConnection { }*)_ctServerConnection;
 - (id)_dataCTXPCServiceSubscriptionContext;
+- (int)_getCurrentCTDataStatus;
 - (void)_initializeDataState;
-- (bool)_isDataCTXPCServiceSubscriptionContext:(id)arg1;
 - (bool)_isDataConnectionAvailable;
 - (bool)_legacy_inValidSIMState;
 - (void)_lockedAdjustCellularAutoAssociation;
@@ -88,7 +88,6 @@
 - (id)cellularAutoAssociationTokens;
 - (void)connectionActivationError:(id)arg1 connection:(int)arg2 error:(int)arg3;
 - (void)connectionStateChanged:(id)arg1 connection:(int)arg2 dataConnectionStatusInfo:(id)arg3;
-- (void)cutWiFiManagerLinkDidChange:(id)arg1 context:(id)arg2;
 - (bool)dataConnectionExists;
 - (void)dataStatus:(id)arg1 dataStatusInfo:(id)arg2;
 - (void)dealloc;
@@ -100,9 +99,9 @@
 - (bool)isAirplaneModeEnabled;
 - (bool)isDataConnectionActive;
 - (bool)isDataContextActive;
-- (bool)isDataContextAttached;
 - (bool)isDataContextUsable;
 - (bool)isDataIndicatorNone;
+- (bool)isDataPossible;
 - (bool)isDataSwitchEnabled;
 - (bool)isHostingWiFiHotSpot;
 - (bool)isSIMLocked;
@@ -120,13 +119,12 @@
 - (void)setCellularAutoAssociationTokens:(id)arg1;
 - (void)setDataConnectionActive:(bool)arg1;
 - (void)setIsDataContextActive:(bool)arg1;
-- (void)setIsDataContextAttached:(bool)arg1;
 - (void)setIsDataContextUsable:(bool)arg1;
 - (void)setIsDataIndicatorNone:(bool)arg1;
+- (void)setIsDataPossible:(bool)arg1;
 - (void)setLock:(id)arg1;
 - (void)setRegistered:(bool)arg1;
 - (void)setShouldBringUpDataContext:(bool)arg1;
-- (void)setWiFiAutoAssociationTokens:(id)arg1;
 - (void)set_cellAssertion:(void*)arg1;
 - (void)set_coreTelephonyClient:(id)arg1;
 - (void)set_ctServerConnection:(struct __CTServerConnection { }*)arg1;
@@ -134,7 +132,6 @@
 - (bool)shouldBringUpDataContext;
 - (void)showNetworkOptions;
 - (void)showSIMUnlock;
-- (id)wiFiAutoAssociationTokens;
 - (id)wiFiScaledRSSI;
 - (id)wiFiScaledRate;
 - (id)wiFiSignalStrength;

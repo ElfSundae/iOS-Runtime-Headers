@@ -9,6 +9,7 @@
 
 + (id)threadLocalFactory;
 
+- (void).cxx_destruct;
 - (struct EshObject { int (**x1)(); unsigned short x2; }*)createObjectWithType:(unsigned short)arg1;
 - (struct EshObject { int (**x1)(); unsigned short x2; }*)createObjectWithType:(unsigned short)arg1 version:(unsigned short)arg2;
 - (void)dealloc;

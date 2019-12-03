@@ -12,7 +12,7 @@
     }  _checkoutLock;
     NSMapTable * _checkoutMap;
     long long  _concurrentReaderLimit;
-    int  _count;
+    _Atomic int  _count;
     <HDSQLiteDatabasePoolDelegate> * _delegate;
     NSObject<OS_dispatch_semaphore> * _readerSemaphore;
     NSObject<OS_dispatch_semaphore> * _writerSemaphore;

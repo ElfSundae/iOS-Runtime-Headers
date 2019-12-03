@@ -5,6 +5,7 @@
 @interface FCForYouConfig : NSObject <NSCopying> {
     FCSpecialEventGroupConfig * _breakingNewsGroupConfig;
     FCGroupConfig * _coverArticlesGroupConfig;
+    NSArray * _demoGroupConfigs;
     NSArray * _editorialGroupConfigs;
     NTPBForYouConfigRecord * _forYouConfigRecord;
     FCInterestToken * _interestToken;
@@ -20,6 +21,7 @@
 @property (nonatomic, retain) FCSpecialEventGroupConfig *breakingNewsGroupConfig;
 @property (nonatomic, readonly) NSString *coverArticlesArticleListID;
 @property (nonatomic, retain) FCGroupConfig *coverArticlesGroupConfig;
+@property (nonatomic, readonly) NSArray *demoGroupConfigs;
 @property (nonatomic, readonly) NSArray *editorialArticleListIDs;
 @property (nonatomic, retain) NSArray *editorialGroupConfigs;
 @property (nonatomic, readonly) NSArray *editorialSectionTagIDs;
@@ -45,6 +47,7 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)coverArticlesArticleListID;
 - (id)coverArticlesGroupConfig;
+- (id)demoGroupConfigs;
 - (id)editorialArticleListIDs;
 - (id)editorialGroupConfigs;
 - (id)editorialSectionTagIDs;

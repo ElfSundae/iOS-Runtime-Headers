@@ -3,9 +3,10 @@
  */
 
 @interface AVSystemController : NSObject {
-    struct AVSystemControllerPrivate { bool x1; bool x2; float x3; id x4; struct OpaqueFigPlayer {} x5; } * _priv;
+    struct AVSystemControllerPrivate { bool x1; bool x2; float x3; id x4; struct OpaqueFigSystemController {} *x5; id x6; id x7; } * _priv;
 }
 
++ (id)compatibleAudioRouteForRoute:(id)arg1;
 + (void)initialize;
 + (id)sharedAVSystemController;
 
@@ -20,6 +21,7 @@
 - (bool)currentRouteHasVolumeControl;
 - (void)dealloc;
 - (bool)didCancelRoutePicking:(id)arg1;
+- (id)errorWithCode:(int)arg1 description:(id)arg2;
 - (bool)getActiveCategoryMuted:(bool*)arg1;
 - (bool)getActiveCategoryMuted:(bool*)arg1 forRoute:(id)arg2 andDeviceIdentifier:(id)arg3;
 - (bool)getActiveCategoryVolume:(float*)arg1 andName:(id*)arg2;
@@ -32,7 +34,6 @@
 - (void)handleServerDied;
 - (bool)hasRouteSharingPolicyLongFormVideo:(id)arg1;
 - (id)init;
-- (void)makeError:(id*)arg1 withDescription:(id)arg2 code:(int)arg3;
 - (bool)okToNotifyFromThisThread;
 - (id)pickableRoutesForCategory:(id)arg1;
 - (id)pickableRoutesForCategory:(id)arg1 andMode:(id)arg2;

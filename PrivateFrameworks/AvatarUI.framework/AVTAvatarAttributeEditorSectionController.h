@@ -37,6 +37,7 @@
 - (void)didUnhighlightItemAtIndex:(long long)arg1 cell:(id)arg2 completionBlock:(id /* block */)arg3;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })edgeInsetsFittingSize:(struct CGSize { double x1; double x2; })arg1;
 - (id)environment;
+- (bool)evaluateDisplayCondition:(id)arg1;
 - (unsigned long long)indexForItem:(id)arg1;
 - (id)initWithThumbnailScheduler:(id)arg1 renderingScheduler:(id)arg2 environment:(id)arg3;
 - (void)invalidateLayoutForNewContainerSize:(struct CGSize { double x1; double x2; })arg1;

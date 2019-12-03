@@ -15,7 +15,7 @@
 @property (getter=isAnchoredToText, nonatomic, readonly) bool anchoredToText;
 @property (getter=isAttachedToBodyText, nonatomic, readonly) bool attachedToBodyText;
 @property (nonatomic, retain) TSDFill *backgroundFill;
-@property (nonatomic, readonly) NSArray *childInfos;
+@property (nonatomic, readonly, copy) NSArray *childInfos;
 @property (nonatomic, readonly) unsigned long long countOfMasterDrawables;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -26,6 +26,8 @@
 @property (nonatomic) bool headersFootersMatchPreviousPage;
 @property (nonatomic) bool hideHeadersFooters;
 @property (getter=isInlineWithText, nonatomic, readonly) bool inlineWithText;
+@property (nonatomic, readonly) bool isMaster;
+@property (nonatomic, readonly) bool isTopmostContainerInfo;
 @property (nonatomic, retain) NSMutableArray *masterDrawables;
 @property (nonatomic) bool matchesObjectPlaceholderGeometry;
 @property (nonatomic, retain) NSString *name;
@@ -70,6 +72,7 @@
 - (bool)isAttachedToBodyText;
 - (bool)isFloatingAboveText;
 - (bool)isInlineWithText;
+- (bool)isMaster;
 - (bool)isSelectable;
 - (bool)isThemeContent;
 - (bool)isUniqueTag:(id)arg1;

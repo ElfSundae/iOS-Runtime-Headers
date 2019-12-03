@@ -2,8 +2,8 @@
    Image: /System/Library/PrivateFrameworks/CardKit.framework/CardKit
  */
 
-@interface CRKCardViewController : UIViewController <CRKCardSectionViewControllerDataSource, CRKCardSectionViewControllerDelegate, CRKCardSectionViewProviderDelegate, CRKCardViewControlling> {
-    <CRKCardSectionViewSourcing> * _builtInCardSectionViewProviderManager;
+@interface CRKCardViewController : UIViewController <CRKCardSectionViewControllerDelegate, CRKCardSectionViewProviderDelegate, CRKCardViewControlling> {
+    <CRKCardSectionViewSourcing> * _builtInCardSectionViewSource;
     <CRCard> * _card;
     NSMutableArray * _cardSectionViewControllers;
     <CRKCardSectionViewSourcing> * _cardSectionViewSource;
@@ -40,6 +40,7 @@
 - (void).cxx_destruct;
 - (void)_addCardSectionViewControllersAsChildViewControllers:(id)arg1;
 - (bool)_askDelegateToPerformReferentialCommand:(id)arg1;
+- (bool)_canShowWhileLocked;
 - (void)_cancelTouchesIfNecessary;
 - (id)_cardSectionViewControllerForCardSection:(id)arg1;
 - (void)_configureCardSectionViewController:(id)arg1 forCardSection:(id)arg2;
@@ -63,7 +64,6 @@
 - (id)card;
 - (void)cardEventDidOccur:(unsigned long long)arg1 withIdentifier:(id)arg2 userInfo:(id)arg3;
 - (void)cardSectionViewController:(id)arg1 didSelectPreferredPunchoutIndex:(long long)arg2;
-- (id)cardSectionViewController:(id)arg1 interactionWithIdentifier:(id)arg2;
 - (void)cardSectionViewController:(id)arg1 requestsHandlingOfIntent:(id)arg2;
 - (void)cardSectionViewControllerBoundsDidChange:(id)arg1;
 - (void)cardSectionViewControllerDidFinishLoading:(id)arg1;

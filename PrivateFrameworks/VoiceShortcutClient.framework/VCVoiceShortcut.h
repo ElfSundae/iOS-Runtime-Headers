@@ -2,52 +2,42 @@
    Image: /System/Library/PrivateFrameworks/VoiceShortcutClient.framework/VoiceShortcutClient
  */
 
-@interface VCVoiceShortcut : NSObject <INSpeakable, NSSecureCoding> {
+@interface VCVoiceShortcut : NSObject <INVCVoiceShortcut, NSSecureCoding> {
     NSString * _associatedAppBundleIdentifier;
     unsigned long long  _cachedBlacklistStatus;
     NSDate * _dateCreated;
     NSDate * _dateLastModified;
     NSString * _identifier;
     INImage * _keyImage;
-    NSData * _keyImageData;
     NSString * _phrase;
-    NSData * _serializedWorkflowData;
+    INShortcut * _shortcut;
     NSString * _shortcutDescription;
     NSString * _shortcutName;
-    WFLWorkflow * _workflow;
 }
 
-@property (nonatomic, readonly) NSArray *alternativeSpeakableMatches;
-@property (nonatomic, copy) NSString *associatedAppBundleIdentifier;
+@property (nonatomic, readonly, copy) NSString *associatedAppBundleIdentifier;
 @property (nonatomic) unsigned long long cachedBlacklistStatus;
-@property (nonatomic, retain) NSDate *dateCreated;
-@property (nonatomic, retain) NSDate *dateLastModified;
+@property (nonatomic, readonly) NSDate *dateCreated;
+@property (nonatomic, readonly) NSDate *dateLastModified;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool hasBeenModified;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, copy) NSString *identifier;
-@property (nonatomic, readonly) NSString *identifier;
-@property (nonatomic, retain) INImage *keyImage;
-@property (nonatomic, retain) NSData *keyImageData;
-@property (nonatomic, copy) NSString *phrase;
-@property (nonatomic, readonly) NSString *pronunciationHint;
-@property (nonatomic, retain) NSData *serializedWorkflowData;
-@property (nonatomic, copy) NSString *shortcutDescription;
-@property (nonatomic, copy) NSString *shortcutName;
-@property (nonatomic, readonly) NSString *spokenPhrase;
+@property (nonatomic, readonly, copy) NSString *identifier;
+@property (nonatomic, readonly, copy) INImage *keyImage;
+@property (nonatomic, readonly, copy) NSString *phrase;
+@property (nonatomic, readonly) INShortcut *shortcut;
+@property (nonatomic, readonly, copy) NSString *shortcutDescription;
+@property (nonatomic, readonly, copy) NSString *shortcutName;
 @property (readonly) Class superclass;
-@property (nonatomic, readonly) NSString *vocabularyIdentifier;
-@property (nonatomic, retain) WFLWorkflow *workflow;
+@property (nonatomic, readonly) WFWorkflow *workflow;
 
 // Image: /System/Library/PrivateFrameworks/VoiceShortcutClient.framework/VoiceShortcutClient
 
 + (void)initialize;
-+ (bool)isValidVoiceShortcut:(id)arg1 error:(id*)arg2;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
-- (id)_handleIntentActionIfExists;
 - (id)associatedAppBundleIdentifier;
 - (unsigned long long)cachedBlacklistStatus;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -59,42 +49,18 @@
 - (unsigned long long)hash;
 - (id)identifier;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 phrase:(id)arg2 shortcutName:(id)arg3 shortcutDescription:(id)arg4 associatedAppBundleIdentifier:(id)arg5 dateCreated:(id)arg6 dateLastModified:(id)arg7 serializedWorkflowData:(id)arg8 keyImageData:(id)arg9 error:(id*)arg10;
-- (id)initWithPhrase:(id)arg1 workflow:(id)arg2 error:(id*)arg3;
+- (id)initWithIdentifier:(id)arg1 phrase:(id)arg2 shortcutName:(id)arg3 shortcutDescription:(id)arg4 associatedAppBundleIdentifier:(id)arg5 dateCreated:(id)arg6 dateLastModified:(id)arg7 shortcut:(id)arg8 keyImageData:(id)arg9 error:(id*)arg10;
 - (bool)isEqual:(id)arg1;
-- (bool)isValid:(id*)arg1;
 - (id)keyImage;
-- (id)keyImageData;
 - (id)phrase;
-- (id)serializedWorkflowData;
-- (void)setAssociatedAppBundleIdentifier:(id)arg1;
 - (void)setCachedBlacklistStatus:(unsigned long long)arg1;
-- (void)setDateCreated:(id)arg1;
-- (void)setDateLastModified:(id)arg1;
-- (void)setIdentifier:(id)arg1;
-- (void)setKeyImage:(id)arg1;
-- (void)setKeyImageData:(id)arg1;
-- (void)setPhrase:(id)arg1;
-- (void)setSerializedWorkflowData:(id)arg1;
-- (void)setShortcutDescription:(id)arg1;
-- (void)setShortcutName:(id)arg1;
-- (void)setWorkflow:(id)arg1;
+- (id)shortcut;
 - (id)shortcutDescription;
 - (id)shortcutName;
 - (id)workflow;
 
-// Image: /System/Library/PrivateFrameworks/VoiceShortcuts.framework/VoiceShortcuts
+// Image: /System/Library/PrivateFrameworks/WorkflowKit.framework/WorkflowKit
 
-- (id)alternativeSpeakableMatches;
-- (id)dictionaryRepresentation;
-- (id)initFromProtobufObject:(id)arg1;
-- (id)initWithDictionary:(id)arg1;
-- (id)initWithManagedObject:(id)arg1 error:(id*)arg2;
-- (id)initWithRecord:(id)arg1;
-- (id)pronunciationHint;
-- (id)protobufObject;
-- (id)searchableItemRepresentation;
-- (id)spokenPhrase;
-- (id)vocabularyIdentifier;
+- (id)workflow;
 
 @end

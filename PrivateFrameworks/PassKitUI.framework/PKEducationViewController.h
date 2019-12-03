@@ -42,6 +42,7 @@
 + (bool)shouldPresentForPass:(id)arg1 inEducationContext:(unsigned long long)arg2;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_performAddToWatchFlow;
 - (void)_removePlayerItem;
 - (void)_showAddToWatchOfferForPass:(id)arg1;

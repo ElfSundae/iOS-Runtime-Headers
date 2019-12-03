@@ -37,6 +37,7 @@
 
 + (id)defaultProperties;
 
+- (void).cxx_destruct;
 - (id)afterSpacing;
 - (unsigned char)align;
 - (id)beforeSpacing;
@@ -45,7 +46,6 @@
 - (id)bulletFont;
 - (id)bulletProperties;
 - (id)bulletSize;
-- (void)dealloc;
 - (float)defaultTab;
 - (id)description;
 - (void)fixPropertiesForChangingParentPreservingEffectiveValues:(id)arg1;

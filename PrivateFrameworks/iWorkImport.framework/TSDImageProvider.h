@@ -11,10 +11,10 @@
     }  mInterestLock;
     int  mLoadState;
     struct atomic<int> { 
-        int __a_; 
+        _Atomic int __a_; 
     }  mOwnerCount;
     struct atomic<int> { 
-        int __a_; 
+        _Atomic int __a_; 
     }  mRetainCount;
 }
 

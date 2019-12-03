@@ -3,35 +3,34 @@
  */
 
 @interface BiometricOperation : NSObject {
-    unsigned long long  _absoluteTime;
+    unsigned int  _cancelledMessage;
     BiometricKitXPCExportedClientObject * _client;
-    long long  _operationPriority;
-    int  _operationStatus;
-    int  _operationType;
-    NSDictionary * _params;
+    long long  _priority;
+    int  _status;
 }
 
-@property (nonatomic) unsigned long long absoluteTime;
+@property (nonatomic, readonly) unsigned int cancelledMessage;
 @property (nonatomic, retain) BiometricKitXPCExportedClientObject *client;
-@property (nonatomic) long long operationPriority;
-@property (nonatomic) int operationStatus;
-@property (nonatomic) int operationType;
-@property (nonatomic, retain) NSDictionary *params;
+@property (nonatomic) long long priority;
+@property (nonatomic) int status;
+@property (nonatomic, readonly) unsigned int taskPausedMessage;
+@property (nonatomic, readonly) unsigned int taskResumeFailedMessage;
+@property (nonatomic, readonly) unsigned int taskResumedMessage;
+@property (nonatomic, readonly) int type;
 
 - (void).cxx_destruct;
-- (unsigned long long)absoluteTime;
+- (unsigned int)cancelledMessage;
 - (id)client;
 - (id)description;
 - (id)init;
-- (long long)operationPriority;
-- (int)operationStatus;
-- (int)operationType;
-- (id)params;
-- (void)setAbsoluteTime:(unsigned long long)arg1;
+- (long long)priority;
 - (void)setClient:(id)arg1;
-- (void)setOperationPriority:(long long)arg1;
-- (void)setOperationStatus:(int)arg1;
-- (void)setOperationType:(int)arg1;
-- (void)setParams:(id)arg1;
+- (void)setPriority:(long long)arg1;
+- (void)setStatus:(int)arg1;
+- (int)status;
+- (unsigned int)taskPausedMessage;
+- (unsigned int)taskResumeFailedMessage;
+- (unsigned int)taskResumedMessage;
+- (int)type;
 
 @end

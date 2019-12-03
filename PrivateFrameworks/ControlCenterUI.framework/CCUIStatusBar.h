@@ -30,7 +30,8 @@
     double  _maxCompactScaleFactor;
     double  _trailingMarginDelta;
     unsigned long long  _trailingState;
-    double  _verticalAlignmentDelta;
+    double  _verticalBatteryAlignmentDelta;
+    double  _verticalSecondaryServiceDelta;
 }
 
 @property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } compactEdgeInsets;
@@ -45,7 +46,7 @@
 @property (nonatomic, readonly) double maxCompactScaleFactor;
 @property (nonatomic) long long orientation;
 @property (nonatomic) unsigned long long trailingState;
-@property (nonatomic, readonly) double verticalAlignmentDelta;
+@property (nonatomic, readonly) double verticalSecondaryServiceDelta;
 
 - (void).cxx_destruct;
 - (void)_updateCompactTrailingStatusBarStyleRequestAndAvoidanceFrame;
@@ -81,6 +82,6 @@
 - (void)setTrailingState:(unsigned long long)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (unsigned long long)trailingState;
-- (double)verticalAlignmentDelta;
+- (double)verticalSecondaryServiceDelta;
 
 @end

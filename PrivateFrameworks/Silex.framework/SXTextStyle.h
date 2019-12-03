@@ -18,7 +18,7 @@
 @property (nonatomic, readonly) SXTextStroke *stroke;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) UIColor *textColor;
-@property (nonatomic, readonly) SXShadow *textShadow;
+@property (nonatomic, readonly) SXTextShadow *textShadow;
 @property (nonatomic, readonly) long long textTransform;
 @property (nonatomic, readonly) double tracking;
 @property (nonatomic, readonly) SXTextDecoration *underline;

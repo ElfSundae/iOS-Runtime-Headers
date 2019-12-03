@@ -13,8 +13,6 @@
     bool  _supportsExtendedCalendarQuery;
     bool  _syncEvents;
     bool  _syncTodos;
-    NSDateComponents * _todoFilterEndDate;
-    NSDateComponents * _todoFilterStartDate;
 }
 
 @property (nonatomic, retain) <CalDAVCalendar> *calendar;
@@ -26,8 +24,6 @@
 @property (nonatomic) bool supportsExtendedCalendarQuery;
 @property (nonatomic) bool syncEvents;
 @property (nonatomic) bool syncTodos;
-@property (nonatomic, retain) NSDateComponents *todoFilterEndDate;
-@property (nonatomic, retain) NSDateComponents *todoFilterStartDate;
 
 - (void).cxx_destruct;
 - (bool)_shouldFetchEventsForState:(int)arg1;
@@ -59,14 +55,10 @@
 - (void)setSupportsExtendedCalendarQuery:(bool)arg1;
 - (void)setSyncEvents:(bool)arg1;
 - (void)setSyncTodos:(bool)arg1;
-- (void)setTodoFilterEndDate:(id)arg1;
-- (void)setTodoFilterStartDate:(id)arg1;
 - (bool)shouldFetchMoreETags;
 - (bool)shouldFetchResourceWithEtag:(id)arg1 propertiesToValues:(id)arg2;
 - (bool)supportsExtendedCalendarQuery;
 - (bool)syncEvents;
 - (bool)syncTodos;
-- (id)todoFilterEndDate;
-- (id)todoFilterStartDate;
 
 @end

@@ -16,6 +16,7 @@
 - (bool)isAsynchronous;
 - (bool)isExecuting;
 - (bool)isFinished;
+- (void)markSongAsUsed;
 - (id)memory;
 - (void)setMemory:(id)arg1;
 - (void)start;

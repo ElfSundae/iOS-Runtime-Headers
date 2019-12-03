@@ -6,6 +6,7 @@
     bool  _adjustMotionForSize;
     bool  _allowsNonOpaqueShadow;
     bool  _boostBrightness;
+    double  _continuousCornerRadiusEnabled;
     double  _cornerRadius;
     double  _defaultFocusedShadowOpacity;
     double  _defaultFocusedShadowRadius;
@@ -55,12 +56,14 @@
         double y; 
     }  _translationOffset;
     double  _unpressedDuration;
+    bool  _useSeparateUnfocusedShadowImage;
     double  _zDepth;
 }
 
 @property (nonatomic) bool adjustMotionForSize;
 @property (nonatomic) bool allowsNonOpaqueShadow;
 @property (nonatomic) bool boostBrightness;
+@property (getter=isContinuousCornerRadiusEnabled, nonatomic) double continuousCornerRadiusEnabled;
 @property (nonatomic) double cornerRadius;
 @property (nonatomic) double defaultFocusedShadowOpacity;
 @property (nonatomic) double defaultFocusedShadowRadius;
@@ -108,6 +111,7 @@
 @property (nonatomic) double specularOpacity;
 @property (nonatomic) struct CGPoint { double x1; double x2; } translationOffset;
 @property (nonatomic) double unpressedDuration;
+@property (nonatomic) bool useSeparateUnfocusedShadowImage;
 @property (nonatomic) double zDepth;
 
 + (id)newAppIconConfiguration;
@@ -145,6 +149,7 @@
 - (double)fullBleedUnfocusedShadowRadius;
 - (bool)hueShift;
 - (id)init;
+- (double)isContinuousCornerRadiusEnabled;
 - (bool)isEqual:(id)arg1;
 - (double)layerSelectionDuration;
 - (double)layerUnselectionDuration;
@@ -164,6 +169,7 @@
 - (void)setAdjustMotionForSize:(bool)arg1;
 - (void)setAllowsNonOpaqueShadow:(bool)arg1;
 - (void)setBoostBrightness:(bool)arg1;
+- (void)setContinuousCornerRadiusEnabled:(double)arg1;
 - (void)setCornerRadius:(double)arg1;
 - (void)setDefaultFocusedShadowOpacity:(double)arg1;
 - (void)setDefaultFocusedShadowRadius:(double)arg1;
@@ -210,6 +216,7 @@
 - (void)setSpecularOpacity:(double)arg1;
 - (void)setTranslationOffset:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setUnpressedDuration:(double)arg1;
+- (void)setUseSeparateUnfocusedShadowImage:(bool)arg1;
 - (void)setZDepth:(double)arg1;
 - (double)shadowSelectionDuration;
 - (double)shadowUnselectionDuration;
@@ -219,6 +226,7 @@
 - (double)specularOpacity;
 - (struct CGPoint { double x1; double x2; })translationOffset;
 - (double)unpressedDuration;
+- (bool)useSeparateUnfocusedShadowImage;
 - (double)zDepth;
 
 @end

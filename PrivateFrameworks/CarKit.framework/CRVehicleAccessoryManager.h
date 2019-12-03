@@ -3,27 +3,33 @@
  */
 
 @interface CRVehicleAccessoryManager : NSObject {
+    EAAccessoryManager * _accessoryManager;
     <CRVehicleAccessoryManagerDelegate> * _vehicleAccessoryDelegate;
     NSMutableDictionary * _vehiclesBySerialNumber;
 }
 
+@property (nonatomic, retain) EAAccessoryManager *accessoryManager;
 @property (nonatomic) <CRVehicleAccessoryManagerDelegate> *vehicleAccessoryDelegate;
 @property (nonatomic, retain) NSMutableDictionary *vehiclesBySerialNumber;
 
 + (id)_certificateSerialNumberForAccessory:(id)arg1;
 + (bool)_isValidAccessoryMacAddress:(id)arg1;
 + (bool)_isVehicleAccessory:(id)arg1;
++ (id)vehicleAccessQueue;
 
 - (void).cxx_destruct;
 - (void)_primeConnectedVehicleAccessories;
 - (void)_updateVehicle:(id)arg1 usingAccessory:(id)arg2;
 - (id)_vehicleForAccessory:(id)arg1;
+- (id)accessoryManager;
+- (id)connectedAccessories;
 - (id)connectedVehicleAccessories;
 - (void)dealloc;
 - (void)handleAccessoryConnect:(id)arg1;
 - (void)handleAccessoryDisconnect:(id)arg1;
 - (void)handleAccessoryInformationUpdate:(id)arg1;
 - (id)init;
+- (void)setAccessoryManager:(id)arg1;
 - (void)setVehicleAccessoryDelegate:(id)arg1;
 - (void)setVehiclesBySerialNumber:(id)arg1;
 - (id)vehicleAccessoryDelegate;

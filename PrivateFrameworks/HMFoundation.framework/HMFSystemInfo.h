@@ -23,6 +23,7 @@
 @property (getter=isMigrating, readonly) bool migrating;
 @property (nonatomic, readonly) <HMFSystemInfoMigrationDataSource> *migrationDataSource;
 @property (readonly, copy) NSString *model;
+@property (readonly, copy) NSString *modelIdentifier;
 @property (readonly, copy) NSString *name;
 @property (nonatomic, readonly) <HMFSystemInfoNameDataSource> *nameDataSource;
 @property (readonly) long long productClass;
@@ -50,6 +51,7 @@
 - (id)marketingDataSource;
 - (id)migrationDataSource;
 - (id)model;
+- (id)modelIdentifier;
 - (id)name;
 - (id)nameDataSource;
 - (long long)productClass;

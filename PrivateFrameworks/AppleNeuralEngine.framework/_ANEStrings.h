@@ -4,10 +4,12 @@
 
 @interface _ANEStrings : NSObject
 
++ (id)cacheDeleteServiceName;
 + (id)cacheDirectory;
 + (id)cloneDirectory;
 + (id)compilerServiceAccessEntitlement;
 + (id)dataVaultStorageClass;
++ (id)defaultCompilerOptionsFilename;
 + (id)errorDomainCompiler;
 + (id)errorDomainEspresso;
 + (id)errorDomainGeneric;
@@ -23,6 +25,7 @@
 + (id)testing_cloneDirectory:(id)arg1;
 + (id)testing_dataVaultStorageClass;
 + (id)testing_inputDirectory;
++ (id)testing_modelDirectory;
 + (id)testing_modelDirectory:(id)arg1;
 + (id)testing_modelNames;
 + (id)testing_tempDirectory:(id)arg1;

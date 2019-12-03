@@ -36,6 +36,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)date;
 - (id)description;
@@ -53,6 +54,7 @@
 - (id)originatingBundleID;
 - (id)originatingWebsiteURL;
 - (unsigned long long)predictionAge;
+- (long long)reverseCompare:(id)arg1;
 - (double)score;
 - (void)setDate:(id)arg1;
 - (void)setFields:(unsigned int)arg1;

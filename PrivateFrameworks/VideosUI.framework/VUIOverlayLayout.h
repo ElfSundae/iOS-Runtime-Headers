@@ -18,6 +18,7 @@
 @property (nonatomic, retain) VUITextLayout *titleLayout;
 
 + (id)layoutWithLayout:(id)arg1 overlayType:(long long)arg2 element:(id)arg3;
++ (id)layoutWithLayout:(id)arg1 overlayType:(long long)arg2 mediaItem:(id)arg3;
 
 - (void).cxx_destruct;
 - (id)_editorialTitleLayout;
@@ -25,6 +26,7 @@
 - (id)_ribbonTitleLayout;
 - (id)_spotlightTitleLayout;
 - (void)_updateLayoutWithElement:(id)arg1 andType:(long long)arg2;
+- (void)_updateLayoutWithMediaItem:(id)arg1 type:(long long)arg2;
 - (id)badgeLayout;
 - (long long)overlayType;
 - (id)progressBarLayout;

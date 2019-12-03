@@ -10,6 +10,7 @@
 @property (nonatomic, retain) NSNumber *containsCJK;
 @property (nonatomic, retain) NSString *content;
 @property (nonatomic, readonly) NSString *contentAsPlainText;
+@property (nonatomic, readonly) NSString *contentAsPlainTextPreservingNewlines;
 @property (nonatomic, retain) NSNumber *contentType;
 @property (nonatomic, retain) NSDate *creationDate;
 @property (readonly, copy) NSString *debugDescription;
@@ -31,6 +32,7 @@
 @property (nonatomic, readonly) bool isModernNote;
 @property (nonatomic) bool isPlainText;
 @property (nonatomic, retain) NSDate *modificationDate;
+@property (nonatomic, readonly) NSArray *noteCellKeyPaths;
 @property (nonatomic, readonly) NSURL *noteId;
 @property (nonatomic) unsigned long long sequenceNumber;
 @property (nonatomic, retain) NSString *serverId;
@@ -42,8 +44,6 @@
 
 // Image: /System/Library/PrivateFrameworks/Notes.framework/Notes
 
-+ (bool)didChooseToMigrateNote:(id)arg1 context:(/* Warning: unhandled struct encoding: '{NoteContext=#@@@@@@@@QBBBB@}' */ struct NoteContext { Class x1; id x2; id x3; id x4; id x5; unsigned long long x6; bool x7; bool x8; bool x9; bool x10; id x11; }*)arg2;
-
 - (id)accountName;
 - (id)authorsExcludingCurrentUser;
 - (bool)belongsToCollection:(id)arg1;
@@ -51,6 +51,7 @@
 - (id)content;
 - (id)contentAsPlainText;
 - (id)contentAsPlainTextPreservingNewlines;
+- (id)contentIdentifier;
 - (id)contentInfoText;
 - (id)dataForTypeIdentifier:(id)arg1;
 - (id)dateForCurrentSortType;
@@ -59,26 +60,29 @@
 - (id)externalRepresentation;
 - (unsigned long long)flags;
 - (id)folderName;
+- (id)folderNameForNoteList;
 - (bool)hasValidServerIntId;
 - (id)identifier;
-- (bool)ignoreInSearchIndexer;
 - (bool)isBeingMarkedForDeletion;
 - (bool)isHiddenFromSearch;
 - (bool)isMarkedForDeletion;
 - (bool)isModernNote;
+- (bool)isMovable;
 - (bool)isPasswordProtected;
 - (bool)isPlainText;
+- (bool)isSharedReadOnly;
 - (bool)isSharedViaICloud;
+- (bool)isSharedViaICloudFolder;
 - (void)markForDeletion;
 - (id)noteAsPlainTextWithoutTitle;
+- (id)noteCellKeyPaths;
 - (id)noteId;
 - (id)searchDomainIdentifier;
+- (id)searchIndexingIdentifier;
 - (bool)searchResultCanBeDeletedFromNoteContext;
 - (unsigned long long)searchResultType;
 - (unsigned long long)searchResultsSection;
-- (id)searchableContentKeyPaths;
 - (id)searchableItemAttributeSet;
-- (id)searchableItemIdentifier;
 - (unsigned long long)sequenceNumber;
 - (long long)serverIntId;
 - (void)setContent:(id)arg1;
@@ -90,6 +94,7 @@
 - (void)setServerIntId:(long long)arg1;
 - (void)setTitle:(id)arg1;
 - (id)trimmedTitle;
+- (id)userActivityContentAttributeSet;
 - (long long)visibilityTestingType;
 
 // Image: /System/Library/PrivateFrameworks/NotesUI.framework/NotesUI

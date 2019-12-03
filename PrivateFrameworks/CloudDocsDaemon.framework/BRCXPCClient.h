@@ -54,7 +54,7 @@
 - (id)_sharingOperationItemFromLookup:(id)arg1 url:(id)arg2 allowDirectory:(bool)arg3 error:(id*)arg4;
 - (void)_startDownloadItemsAtURLs:(id)arg1 pos:(unsigned long long)arg2 options:(unsigned long long)arg3 error:(id)arg4 reply:(id /* block */)arg5;
 - (void)_startMonitoringProcessIfNeeded;
-- (void)_startSharingOperationAfterAcceptation:(struct _BRCFrameworkOperation { Class x1; id x2; int x3; id x4; /* Warning: Unrecognized filer type: '1' using 'void*' */ void*x5; void*x6; unsigned char x7; void*x8; }*)arg1 client:(id)arg2 item:(id)arg3;
+- (void)_startSharingOperationAfterAcceptation:(struct _BRCFrameworkOperation { Class x1; id x2; unsigned char x3[16]; }*)arg1 client:(id)arg2 item:(id)arg3;
 - (void)_stopMonitoringProcess;
 - (void)_t_resetAllZones:(id)arg1 waitUntilIdle:(bool)arg2 reply:(id /* block */)arg3;
 - (void)accessLogicalOrPhysicalURL:(id)arg1 accessKind:(long long)arg2 dbAccessKind:(long long)arg3 asynchronously:(bool)arg4 handler:(id /* block */)arg5;

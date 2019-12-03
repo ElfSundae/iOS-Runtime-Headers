@@ -9,9 +9,9 @@
 
 + (id)defaultStyle;
 
+- (void).cxx_destruct;
 - (void)applyOverridesFrom:(id)arg1;
 - (id)cellStyle;
-- (void)dealloc;
 - (id)description;
 - (void)setCellStyle:(id)arg1;
 - (void)setTextStyle:(id)arg1;

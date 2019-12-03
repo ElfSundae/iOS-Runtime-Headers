@@ -15,8 +15,6 @@
     long long  _selectedIndex;
     bool  _showsHeader;
     AVTAvatarColorSliderContainerView * _sliderContainerView;
-    AVTAvatarAttributeEditorSectionColorController * _subController;
-    UIView * _subControllerView;
     <AVTAvatarAttributeEditorControllerSubSelectionDelegate> * delegate;
 }
 
@@ -38,15 +36,13 @@
 @property (nonatomic) long long selectedIndex;
 @property (nonatomic, readonly) bool showsHeader;
 @property (nonatomic, retain) AVTAvatarColorSliderContainerView *sliderContainerView;
-@property (nonatomic, retain) AVTAvatarAttributeEditorSectionColorController *subController;
-@property (nonatomic, retain) UIView *subControllerView;
 @property (readonly) Class superclass;
 
 + (struct CGSize { double x1; double x2; })cellSizeFittingWidth:(double)arg1 environment:(id)arg2;
 + (struct CGPoint { double x1; double x2; })clampedContentOffsetForOffset:(struct CGPoint { double x1; double x2; })arg1 collectionView:(id)arg2;
 + (double)edgeLengthFittingWidth:(double)arg1 environment:(id)arg2;
 + (bool)supportsSelection;
-+ (bool)updateCollectionViewLayout:(id)arg1 containerSize:(struct CGSize { double x1; double x2; })arg2 environment:(id)arg3 forExtended:(bool)arg4 withSlider:(bool)arg5 subSection:(bool)arg6 subSectionHeight:(double)arg7 numberOfItems:(long long)arg8;
++ (bool)updateCollectionViewLayout:(id)arg1 containerSize:(struct CGSize { double x1; double x2; })arg2 environment:(id)arg3 forExtended:(bool)arg4 withSlider:(bool)arg5 numberOfItems:(long long)arg6;
 
 - (void).cxx_destruct;
 - (void)animateWithSpringAnimations:(id /* block */)arg1 completion:(id /* block */)arg2;
@@ -63,8 +59,8 @@
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (id)collectionViewLayout;
 - (void)colorDataSource:(id)arg1 didChangeDisplayMode:(long long)arg2 previousDisplayMode:(long long)arg3;
-- (void)colorDataSource:(id)arg1 didDeselectItemAtIndex:(long long)arg2;
-- (void)colorDataSource:(id)arg1 didSelectItemAtIndex:(long long)arg2;
+- (void)colorDataSource:(id)arg1 didDeselectItemAtIndex:(long long)arg2 shouldReloadModel:(bool)arg3;
+- (void)colorDataSource:(id)arg1 didSelectItemAtIndex:(long long)arg2 shouldReloadModel:(bool)arg3;
 - (void)colorSliderDidFinishChangingVariation:(double)arg1 forItem:(id)arg2;
 - (void)colorSliderVariationChanged:(double)arg1 forItem:(id)arg2;
 - (id)containerView;
@@ -79,7 +75,9 @@
 - (bool)dontAnimateSelection;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })edgeInsetsFittingSize:(struct CGSize { double x1; double x2; })arg1;
 - (id)environment;
+- (bool)evaluateDisplayCondition:(id)arg1;
 - (id)headerView;
+- (double)heightForCollectionViewFittingWidth:(double)arg1;
 - (double)heightForSectionHeaderFittingWidth:(double)arg1;
 - (void)hideSliderAnimated:(bool)arg1;
 - (unsigned long long)indexForItem:(id)arg1;
@@ -92,13 +90,13 @@
 - (long long)numberOfItems;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (id)prefetchingSectionItemForIndex:(long long)arg1;
-- (void)prepareSubControllerView;
 - (void)reloadData;
 - (void)resetToDefaultState;
 - (void)scrollCollectionViewToOrigin;
 - (void)scrollCollectionViewToSelectedColor;
 - (id)section;
 - (id)sectionView;
+- (void)selectIndexPath:(id)arg1;
 - (long long)selectedIndex;
 - (void)setCollectionView:(id)arg1;
 - (void)setCollectionViewLayout:(id)arg1;
@@ -111,17 +109,15 @@
 - (void)setSelectedIndex:(long long)arg1;
 - (void)setSelectedState:(bool)arg1 animated:(bool)arg2 forCellAtIndexPath:(id)arg3;
 - (void)setSliderContainerView:(id)arg1;
-- (void)setSubController:(id)arg1;
-- (void)setSubControllerView:(id)arg1;
 - (void)showSliderAnimated:(bool)arg1;
 - (bool)showsHeader;
 - (struct CGSize { double x1; double x2; })sizeForItemAtIndex:(long long)arg1 fittingSize:(struct CGSize { double x1; double x2; })arg2;
 - (id)sliderContainerView;
-- (id)subController;
-- (id)subControllerView;
 - (void)updateCell:(id)arg1 forItemAtIndex:(long long)arg2;
-- (void)updateCollectionViewLayoutWithSizeChanged:(bool)arg1 containerSize:(struct CGSize { double x1; double x2; })arg2;
+- (void)updateCellLayer:(id)arg1 withColorItem:(id)arg2 withColorPreset:(id)arg3;
+- (void)updateCollectionViewLayoutWithContainerSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)updateSectionItem:(id)arg1 withVariation:(double)arg2;
+- (void)updateSliderForSectionItemIfNeeded:(id)arg1;
 - (void)updateWithSection:(id)arg1;
 - (id)viewForIndex:(long long)arg1;
 - (void)willDisplayViewForIndex:(long long)arg1;

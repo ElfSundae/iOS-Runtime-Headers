@@ -26,6 +26,7 @@
 - (id)devicesExpectedToBeMigratableAfterRestore;
 - (id)devicesFromMigrationConsentRequestData:(id)arg1;
 - (void)enterPreMigrationMode;
+- (void)isPhoneReadyToMigrateDevice:(id)arg1 withCompletion:(id /* block */)arg2;
 - (id)lastMigrationRequestPhoneName;
 - (id)migratableDevices;
 - (id)migratableDevicesRequiringConsent;

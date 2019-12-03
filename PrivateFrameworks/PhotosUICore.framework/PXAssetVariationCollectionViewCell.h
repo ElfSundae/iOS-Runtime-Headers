@@ -4,6 +4,7 @@
 
 @interface PXAssetVariationCollectionViewCell : UICollectionViewCell <PXAssetEditOperationManagerObserver, PXChangeObserver, PXMutableAssetVariationCollectionViewCell> {
     NSProgress * __renderProgress;
+    long long  _assetVariationContentMode;
     UIView * _backgroundView;
     PXAssetEditOperationManager * _editOperationManager;
     NSError * _error;
@@ -20,32 +21,44 @@
         bool failureView; 
         bool renderProgress; 
     }  _needsUpdateFlags;
+    UIImage * _placeholderImage;
+    double  _placeholderOverlayAlpha;
     bool  _playbackAllowed;
     PXAssetVariationRenderProvider * _renderProvider;
+    PXAssetVariationRenderResult * _renderResult;
     UIView * _selectedDecorationView;
+    UIColor * _selectedTitleColor;
     PXWidgetSpec * _spec;
+    UIColor * _titleColor;
     UILabel * _titleLabel;
     PXAssetVariationOption * _variationOption;
     UIView * _variationView;
 }
 
 @property (setter=_setRenderProgress:, nonatomic, retain) NSProgress *_renderProgress;
+@property (nonatomic, readonly) long long assetVariationContentMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) double distanceBetweenLastBaselineAndBottom;
 @property (nonatomic, readonly) PXAssetEditOperationManager *editOperationManager;
 @property (setter=_setError:, nonatomic, retain) NSError *error;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) UIImage *placeholderImage;
+@property (nonatomic, readonly) double placeholderOverlayAlpha;
 @property (getter=isPlaybackAllowed, nonatomic, readonly) bool playbackAllowed;
 @property (nonatomic, readonly) PXAssetVariationRenderProvider *renderProvider;
+@property (nonatomic, readonly) PXAssetVariationRenderResult *renderResult;
+@property (nonatomic, readonly) UIColor *selectedTitleColor;
 @property (nonatomic, readonly) PXWidgetSpec *spec;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) UIColor *titleColor;
 @property (nonatomic, readonly) PXAssetVariationOption *variationOption;
 
++ (id)placeholderFiltersWithOverlayWhite:(double)arg1;
 + (void)preloadResources;
 
 - (void).cxx_destruct;
-- (void)_commonInit;
+- (void)_PXAssetVariationCollectionViewCellCommonInit;
 - (void)_invalidateError;
 - (void)_invalidateFailureView;
 - (void)_invalidateProgressView;
@@ -67,6 +80,7 @@
 - (void)_updateTitleLabelIfNeeded;
 - (void)_updateVariationViewIfNeeded;
 - (void)assetEditOperationManager:(id)arg1 didChangeEditOperationsPerformedOnAsset:(id)arg2 context:(void*)arg3;
+- (long long)assetVariationContentMode;
 - (void)dealloc;
 - (double)distanceBetweenLastBaselineAndBottom;
 - (double)distanceBetweenPreviewBottomAndLastBaseline;
@@ -80,16 +94,27 @@
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void*)arg3;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (void)performChanges:(id /* block */)arg1;
+- (id)placeholderImage;
+- (double)placeholderOverlayAlpha;
 - (void)prepareForReuse;
 - (id)renderProvider;
+- (id)renderResult;
+- (id)selectedTitleColor;
+- (void)setAssetVariationContentMode:(long long)arg1;
 - (void)setEditOperationManager:(id)arg1;
+- (void)setPlaceholderImage:(id)arg1;
+- (void)setPlaceholderOverlayAlpha:(double)arg1;
 - (void)setPlaybackAllowed:(bool)arg1;
 - (void)setRenderProvider:(id)arg1;
+- (void)setRenderResult:(id)arg1;
+- (void)setSelectedTitleColor:(id)arg1;
 - (void)setSpec:(id)arg1;
+- (void)setTitleColor:(id)arg1;
 - (void)setVariationOption:(id)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFitsPreviewSize:(struct CGSize { double x1; double x2; })arg1;
 - (id)spec;
 - (void)tintColorDidChange;
+- (id)titleColor;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateError;
 - (void)updateVariationView;

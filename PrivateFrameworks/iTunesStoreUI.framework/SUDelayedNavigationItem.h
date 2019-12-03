@@ -17,6 +17,7 @@
 @property (nonatomic) bool shouldDelayChanges;
 @property (nonatomic, retain) SUNavigationItem *wrappedNavigationItem;
 
+- (void).cxx_destruct;
 - (void)_prepareButtonItemForDisplay:(id)arg1;
 - (void)_scheduleCommit;
 - (id)backButtonTitle;

@@ -16,9 +16,12 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (bool)_compoundFilterAcceptsObjectWithEvaluation:(id /* block */)arg1;
 - (id)_copyWithZone:(struct _NSZone { }*)arg1 subfilters:(id)arg2;
 - (id)_subfilters;
+- (bool)acceptsActivitySummary:(id)arg1;
 - (bool)acceptsDataObject:(id)arg1;
+- (bool)acceptsDataObjectWithStartTimestamp:(double)arg1 endTimestamp:(double)arg2 valueInCanonicalUnit:(double)arg3;
 - (unsigned long long)compoundType;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)encodeWithCoder:(id)arg1;

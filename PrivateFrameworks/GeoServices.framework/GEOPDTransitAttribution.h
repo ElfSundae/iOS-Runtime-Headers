@@ -10,12 +10,14 @@
 @property (nonatomic, retain) NSMutableArray *providerNames;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
 + (Class)providerNameType;
 + (id)transitAttributionForPlaceData:(id)arg1;
 
 - (void).cxx_destruct;
 - (void)addProviderName:(id)arg1;
 - (void)clearProviderNames;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -26,6 +28,7 @@
 - (id)providerNameAtIndex:(unsigned long long)arg1;
 - (id)providerNames;
 - (unsigned long long)providerNamesCount;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setProviderNames:(id)arg1;
 - (id)unknownFields;

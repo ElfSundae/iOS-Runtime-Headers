@@ -11,7 +11,7 @@
 - (SXTextDecoration *)strikethrough;
 - (SXTextStroke *)stroke;
 - (UIColor *)textColor;
-- (SXShadow *)textShadow;
+- (SXTextShadow *)textShadow;
 - (long long)textTransform;
 - (double)tracking;
 - (SXTextDecoration *)underline;

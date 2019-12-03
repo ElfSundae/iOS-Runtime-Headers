@@ -31,6 +31,8 @@
 - (void)addRecord:(id)arg1 knownUserKeys:(id)arg2;
 - (void)clearAllRecords;
 - (void)clearAllRecordsForZoneWithID:(id)arg1;
+- (void)clearAllRecordsInScope;
+- (void)clearAssetAuthTokensForRecord:(id)arg1;
 - (void)clearAssetAuthTokensForRecordWithID:(id)arg1;
 - (void)close;
 - (id)context;
@@ -40,6 +42,7 @@
 - (id)etagForRecordID:(id)arg1 requiredKeys:(id)arg2;
 - (id)initWithDatabase:(id)arg1 dbPool:(id)arg2 context:(id)arg3 scope:(long long)arg4;
 - (id)lastExpiryAttempt;
+- (unsigned long long)numberOfRecordsWithID:(id)arg1;
 - (void)open;
 - (id)queue;
 - (unsigned long long)recordCacheSizeLimit;
@@ -54,6 +57,5 @@
 - (void)setLastExpiryAttempt:(id)arg1;
 - (void)setQueue:(id)arg1;
 - (void)setScope:(long long)arg1;
-- (unsigned long long)sqlBatchCount;
 
 @end

@@ -3,6 +3,7 @@
  */
 
 @interface _INPBRideOption : PBCodable <NSCopying, NSSecureCoding, _INPBRideOption> {
+    bool  __encodeLegacyGloryData;
     NSArray * _availablePartySizeOptions;
     NSString * _availablePartySizeOptionsSelectionPrompt;
     NSString * _disclaimerMessage;
@@ -20,6 +21,7 @@
     bool  _usesMeteredFare;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic, copy) NSArray *availablePartySizeOptions;
 @property (nonatomic, readonly) unsigned long long availablePartySizeOptionsCount;
 @property (nonatomic, copy) NSString *availablePartySizeOptionsSelectionPrompt;
@@ -51,8 +53,11 @@
 
 + (Class)availablePartySizeOptionsType;
 + (Class)fareLineItemsType;
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (void)addAvailablePartySizeOptions:(id)arg1;
 - (void)addFareLineItems:(id)arg1;
 - (id)availablePartySizeOptions;
@@ -64,6 +69,7 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (id)disclaimerMessage;
+- (void)encodeWithCoder:(id)arg1;
 - (id)estimatedPickupDate;
 - (id)fareLineItems;
 - (id)fareLineItemsAtIndex:(unsigned long long)arg1;
@@ -79,6 +85,7 @@
 - (bool)hasUserActivityForBookingInApplication;
 - (bool)hasUsesMeteredFare;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)name;
 - (id)priceRange;

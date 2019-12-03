@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/FrontBoard.framework/FrontBoard
  */
 
-@interface FBUpdateSceneTransaction : FBTransaction <FBSceneManagerObserver, FBSynchronizedTransaction> {
+@interface FBUpdateSceneTransaction : FBTransaction <FBSceneObserver, FBSynchronizedTransaction> {
     FBSSceneDefinition * _definition;
     bool  _destroyed;
     FBWaitForSceneDestructionTransaction * _destructionTransaction;
@@ -40,16 +40,17 @@
 - (void)_createScene;
 - (id)_customizedDescriptionProperties;
 - (void)_didComplete;
-- (void)_didInterruptWithReason:(id)arg1;
-- (void)_enumerateUpdateSceneObserversWithBlock:(id /* block */)arg1;
 - (id)_initWithSceneDefinition:(id)arg1 parameters:(id)arg2 transitionContext:(id)arg3;
+- (void)_noteDidCommit:(bool)arg1;
+- (void)_noteDidCreate;
+- (void)_noteWillCommit;
+- (void)_noteWillUpdate;
 - (void)_performCommit;
 - (void)_updateScene;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (bool)destroyed;
 - (id)initWithSceneDefinition:(id)arg1 parameters:(id)arg2 transitionContext:(id)arg3;
-- (id)initWithSceneIdentifier:(id)arg1 process:(id)arg2 display:(id)arg3 newSettings:(id)arg4 transitionContext:(id)arg5 clientProviderProvider:(id /* block */)arg6 initialClientSettingsProvider:(id /* block */)arg7;
 - (id)initWithSceneIdentifier:(id)arg1 process:(id)arg2 parameters:(id)arg3 transitionContext:(id)arg4;
 - (id)initWithSceneToUpdate:(id)arg1 newSettings:(id)arg2 transitionContext:(id)arg3;
 - (bool)isReadyForSynchronizedCommit;
@@ -57,13 +58,8 @@
 - (void)performSynchronizedCommit;
 - (void)removeObserver:(id)arg1;
 - (id)scene;
+- (void)sceneDidInvalidate:(id)arg1;
 - (id)sceneIdentifier;
-- (void)sceneManager:(id)arg1 didCommitUpdateForScene:(id)arg2 transactionID:(unsigned long long)arg3 success:(bool)arg4;
-- (void)sceneManager:(id)arg1 didCreateScene:(id)arg2 withClient:(id)arg3;
-- (void)sceneManager:(id)arg1 didDestroyScene:(id)arg2;
-- (void)sceneManager:(id)arg1 willCommitUpdateForScene:(id)arg2 transactionID:(unsigned long long)arg3;
-- (void)sceneManager:(id)arg1 willDestroyScene:(id)arg2;
-- (void)sceneManager:(id)arg1 willUpdateScene:(id)arg2 withSettings:(id)arg3 transitionContext:(id)arg4;
 - (void)setSynchronizationDelegate:(id)arg1;
 - (void)setWaitsForSceneCommit:(bool)arg1;
 - (id)settings;

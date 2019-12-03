@@ -8,10 +8,17 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) GEOComposedWaypoint *endWaypoint;
 @property (readonly) unsigned long long hash;
 @property (getter=navigationWasInterrupted, nonatomic) bool navigationInterrupted;
+@property (nonatomic, readonly) bool navigationWasInterrupted;
+@property (nonatomic, readonly) GEOURLRouteHandle *routeHandle;
 @property (nonatomic, copy) <MSPRouteInformationSource> *routeInformationSource;
+@property (nonatomic, readonly) GEOComposedWaypoint *startWaypoint;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) bool tracksRAPReportingOnly;
+@property (nonatomic, readonly) long long transportType;
+@property (nonatomic, readonly, copy) NSDate *usageDate;
 
 + (Class)immutableObjectClass;
 + (id)immutableObjectProtocol;

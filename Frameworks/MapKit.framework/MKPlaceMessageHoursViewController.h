@@ -6,6 +6,7 @@
 
 + (id)messsageHoursWithMapItem:(id)arg1;
 
+- (bool)_canShowWhileLocked;
 - (id)businessHours;
 - (id)hoursBuilderWithHours:(id)arg1;
 - (id)timeZone;

@@ -8,6 +8,7 @@
     NSURL * _imageURL;
     NSURL * _inviteURL;
     NSArray * _invitees;
+    NSString * _overlaidTextColorString;
     NSString * _subtitle;
     NSString * _title;
 }
@@ -17,6 +18,7 @@
 @property (nonatomic, copy) NSURL *imageURL;
 @property (nonatomic, copy) NSURL *inviteURL;
 @property (nonatomic, copy) NSArray *invitees;
+@property (nonatomic, copy) NSString *overlaidTextColorString;
 @property (nonatomic, copy) NSString *subtitle;
 @property (nonatomic, copy) NSString *title;
 
@@ -29,11 +31,13 @@
 - (id)initWithResults:(id)arg1;
 - (id)inviteURL;
 - (id)invitees;
+- (id)overlaidTextColorString;
 - (void)setAction:(id)arg1;
 - (void)setCanEditRecipients:(bool)arg1;
 - (void)setImageURL:(id)arg1;
 - (void)setInviteURL:(id)arg1;
 - (void)setInvitees:(id)arg1;
+- (void)setOverlaidTextColorString:(id)arg1;
 - (void)setSubtitle:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (id)subtitle;

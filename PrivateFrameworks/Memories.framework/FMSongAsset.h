@@ -14,9 +14,8 @@
 
 @property (readonly) NSString *assetID;
 @property (readonly) unsigned long long assetStatus;
-@property (readonly) long long compatibilityVersion;
-@property (readonly) long long contentVersion;
-@property (readonly) double downloadProgress;
+@property (nonatomic, readonly) long long compatibilityVersion;
+@property (nonatomic, readonly) long long contentVersion;
 @property (readonly) NSURL *localURL;
 @property (retain) NSString *songUID;
 
@@ -36,6 +35,7 @@
 - (bool)localURLExists;
 - (void)purgeLocalCache;
 - (void)requestDownload;
+- (void)requestDownloadWithOptions:(id)arg1;
 - (void)setSongUID:(id)arg1;
 - (id)songUID;
 - (bool)updateDownloadProgress:(double)arg1;

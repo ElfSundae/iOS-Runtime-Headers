@@ -11,6 +11,7 @@
     UIImage * _fullsizeAppIcon;
     INIntent * _intent;
     bool  _isUsingPlaceholderArtwork;
+    UIImage * _monochromeBodyImage;
     INRelevantShortcut * _relevantShortcut;
     NSString * _subtitle;
     NSString * _title;
@@ -27,16 +28,19 @@
 @property (nonatomic, readonly) unsigned long long donationType;
 @property (nonatomic, readonly) UIImage *fullsizeAppIcon;
 @property (nonatomic, readonly) INIntent *intent;
+@property (nonatomic, readonly) INInteraction *interaction;
 @property (nonatomic, readonly) bool isBeginWorkoutDonation;
 @property (nonatomic, readonly) bool isEndWorkoutDonation;
 @property (nonatomic, readonly) bool isMediaDonation;
 @property (nonatomic, readonly) bool isWorkoutDonation;
 @property (nonatomic, readonly) NSString *localBundleIdentifier;
 @property (getter=isLocalDonation, nonatomic, readonly) bool localDonation;
+@property (nonatomic, readonly) UIImage *monochromeBodyImage;
 @property (nonatomic, readonly) INRelevantShortcut *relevantShortcut;
 @property (nonatomic, readonly) NSString *remoteBundleIdentifier;
 @property (nonatomic, readonly) bool requiresRemoteExecution;
 @property (nonatomic, readonly) NSString *subtitle;
+@property (nonatomic, readonly) bool supportsBackgroundExecution;
 @property (nonatomic, readonly) bool supportsLocalIntentExecution;
 @property (nonatomic, readonly) NSString *title;
 @property (nonatomic, readonly) NSUserActivity *userActivity;
@@ -45,6 +49,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (bool)_hasLocalExtensionForIntentExecution;
 - (bool)_isMusicDonation;
 - (bool)_isPodcastsDonation;
 - (void)_loadAppContentPropertiesWithCompletion:(id /* block */)arg1;
@@ -68,6 +73,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDonatedAction:(id)arg1;
 - (id)intent;
+- (id)interaction;
 - (bool)isBeginWorkoutDonation;
 - (bool)isEndWorkoutDonation;
 - (bool)isLocalDonation;
@@ -75,10 +81,12 @@
 - (bool)isWorkoutDonation;
 - (void)loadWithCompletion:(id /* block */)arg1;
 - (id)localBundleIdentifier;
+- (id)monochromeBodyImage;
 - (id)relevantShortcut;
 - (id)remoteBundleIdentifier;
 - (bool)requiresRemoteExecution;
 - (id)subtitle;
+- (bool)supportsBackgroundExecution;
 - (bool)supportsLocalIntentExecution;
 - (id)title;
 - (id)userActivity;

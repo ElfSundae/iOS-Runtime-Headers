@@ -9,7 +9,7 @@
 
 @optional
 
-- (void)controller:(AXIDCRemoteController *)arg1 didFinishSendingData:(AXIDCMessage *)arg2;
-- (void)controller:(AXIDCRemoteController *)arg1 didReceiveData:(AXIDCMessage *)arg2;
+- (void)controller:(HUIDCRemoteController *)arg1 didFinishSendingData:(HUIDCMessage *)arg2;
+- (void)controller:(HUIDCRemoteController *)arg1 didReceiveData:(HUIDCMessage *)arg2;
 
 @end

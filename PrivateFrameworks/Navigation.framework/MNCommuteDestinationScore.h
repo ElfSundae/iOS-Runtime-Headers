@@ -11,13 +11,13 @@
     int  _score;
 }
 
-@property (readonly) NSString *descriptionExtras;
+@property (nonatomic, readonly) NSString *descriptionExtras;
 @property (nonatomic) MNCommuteDestination *destination;
-@property (readonly) bool destinationInvalid;
+@property (nonatomic, readonly) bool destinationInvalid;
 @property (readonly) MNCommuteDestinationSuggestion *destinationSuggestion;
 @property (nonatomic, retain) NSDate *lastUpdate;
-@property (retain) NSHashTable *observers;
-@property (readonly) int score;
+@property (nonatomic, retain) NSHashTable *observers;
+@property (nonatomic, readonly) int score;
 @property (readonly) double weightedScore;
 
 + (id)sessionStartDate;

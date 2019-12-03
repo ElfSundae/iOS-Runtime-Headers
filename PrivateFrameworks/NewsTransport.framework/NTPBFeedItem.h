@@ -4,12 +4,14 @@
 
 @interface NTPBFeedItem : PBCodable <FCClassifiable, FCFeedTransformationItem, NSCopying> {
     NSString * _articleID;
+    long long  _bodyTextLength;
     NSString * _clusterID;
     unsigned long long  _contentType;
     unsigned long long  _feedHalfLifeMilliseconds;
     NSString * _feedID;
     double  _globalUserFeedback;
     struct { 
+        unsigned int bodyTextLength : 1; 
         unsigned int contentType : 1; 
         unsigned int feedHalfLifeMilliseconds : 1; 
         unsigned int globalUserFeedback : 1; 
@@ -17,20 +19,20 @@
         unsigned int order : 1; 
         unsigned int publishDateMilliseconds : 1; 
         unsigned int publisherArticleVersion : 1; 
-        unsigned int hasCoverArt : 1; 
         unsigned int hasThumbnail : 1; 
         unsigned int hasVideo : 1; 
         unsigned int isBundlePaid : 1; 
         unsigned int isExplicitContent : 1; 
+        unsigned int isFeatured : 1; 
         unsigned int isFromBlockedStorefront : 1; 
         unsigned int isHiddenFromAutoFavorites : 1; 
         unsigned int isPaid : 1; 
     }  _has;
-    bool  _hasCoverArt;
     bool  _hasThumbnail;
     bool  _hasVideo;
     bool  _isBundlePaid;
     bool  _isExplicitContent;
+    bool  _isFeatured;
     bool  _isFromBlockedStorefront;
     bool  _isHiddenFromAutoFavorites;
     bool  _isPaid;
@@ -47,6 +49,8 @@
 @property (getter=isANF, nonatomic, readonly) bool anf;
 @property (nonatomic, readonly, copy) NSString *articleID;
 @property (nonatomic, retain) NSString *articleID;
+@property (nonatomic, readonly) long long bodyTextLength;
+@property (nonatomic) long long bodyTextLength;
 @property (getter=isBundlePaid, nonatomic, readonly) bool bundlePaid;
 @property (nonatomic, readonly) bool canBePurchased;
 @property (nonatomic, readonly, copy) NSString *clusterID;
@@ -66,18 +70,18 @@
 @property (nonatomic) double globalUserFeedback;
 @property (nonatomic, readonly) unsigned long long halfLife;
 @property (nonatomic, readonly) bool hasArticleID;
+@property (nonatomic) bool hasBodyTextLength;
 @property (nonatomic, readonly) bool hasClusterID;
 @property (nonatomic) bool hasContentType;
-@property (nonatomic) bool hasCoverArt;
 @property (nonatomic) bool hasFeedHalfLifeMilliseconds;
 @property (nonatomic, readonly) bool hasFeedID;
 @property (nonatomic, readonly) bool hasGlobalUserFeedback;
 @property (nonatomic) bool hasGlobalUserFeedback;
-@property (nonatomic) bool hasHasCoverArt;
 @property (nonatomic) bool hasHasThumbnail;
 @property (nonatomic) bool hasHasVideo;
 @property (nonatomic) bool hasIsBundlePaid;
 @property (nonatomic) bool hasIsExplicitContent;
+@property (nonatomic) bool hasIsFeatured;
 @property (nonatomic) bool hasIsFromBlockedStorefront;
 @property (nonatomic) bool hasIsHiddenFromAutoFavorites;
 @property (nonatomic) bool hasIsPaid;
@@ -96,6 +100,8 @@
 @property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic) bool isBundlePaid;
 @property (nonatomic) bool isExplicitContent;
+@property (nonatomic, readonly) bool isFeatured;
+@property (nonatomic) bool isFeatured;
 @property (nonatomic) bool isFromBlockedStorefront;
 @property (nonatomic) bool isHiddenFromAutoFavorites;
 @property (nonatomic) bool isPaid;
@@ -128,6 +134,7 @@
 
 - (void)addTopicIDs:(id)arg1;
 - (id)articleID;
+- (long long)bodyTextLength;
 - (void)clearTopicIDs;
 - (id)clusterID;
 - (unsigned long long)contentType;
@@ -139,17 +146,17 @@
 - (id)feedID;
 - (double)globalUserFeedback;
 - (bool)hasArticleID;
+- (bool)hasBodyTextLength;
 - (bool)hasClusterID;
 - (bool)hasContentType;
-- (bool)hasCoverArt;
 - (bool)hasFeedHalfLifeMilliseconds;
 - (bool)hasFeedID;
 - (bool)hasGlobalUserFeedback;
-- (bool)hasHasCoverArt;
 - (bool)hasHasThumbnail;
 - (bool)hasHasVideo;
 - (bool)hasIsBundlePaid;
 - (bool)hasIsExplicitContent;
+- (bool)hasIsFeatured;
 - (bool)hasIsFromBlockedStorefront;
 - (bool)hasIsHiddenFromAutoFavorites;
 - (bool)hasIsPaid;
@@ -166,6 +173,7 @@
 - (bool)isBundlePaid;
 - (bool)isEqual:(id)arg1;
 - (bool)isExplicitContent;
+- (bool)isFeatured;
 - (bool)isFromBlockedStorefront;
 - (bool)isHiddenFromAutoFavorites;
 - (bool)isPaid;
@@ -178,20 +186,21 @@
 - (bool)readFrom:(id)arg1;
 - (id)scores;
 - (void)setArticleID:(id)arg1;
+- (void)setBodyTextLength:(long long)arg1;
 - (void)setClusterID:(id)arg1;
 - (void)setContentType:(unsigned long long)arg1;
 - (void)setFeedHalfLifeMilliseconds:(unsigned long long)arg1;
 - (void)setFeedID:(id)arg1;
 - (void)setGlobalUserFeedback:(double)arg1;
+- (void)setHasBodyTextLength:(bool)arg1;
 - (void)setHasContentType:(bool)arg1;
-- (void)setHasCoverArt:(bool)arg1;
 - (void)setHasFeedHalfLifeMilliseconds:(bool)arg1;
 - (void)setHasGlobalUserFeedback:(bool)arg1;
-- (void)setHasHasCoverArt:(bool)arg1;
 - (void)setHasHasThumbnail:(bool)arg1;
 - (void)setHasHasVideo:(bool)arg1;
 - (void)setHasIsBundlePaid:(bool)arg1;
 - (void)setHasIsExplicitContent:(bool)arg1;
+- (void)setHasIsFeatured:(bool)arg1;
 - (void)setHasIsFromBlockedStorefront:(bool)arg1;
 - (void)setHasIsHiddenFromAutoFavorites:(bool)arg1;
 - (void)setHasIsPaid:(bool)arg1;
@@ -203,6 +212,7 @@
 - (void)setHasVideo:(bool)arg1;
 - (void)setIsBundlePaid:(bool)arg1;
 - (void)setIsExplicitContent:(bool)arg1;
+- (void)setIsFeatured:(bool)arg1;
 - (void)setIsFromBlockedStorefront:(bool)arg1;
 - (void)setIsHiddenFromAutoFavorites:(bool)arg1;
 - (void)setIsPaid:(bool)arg1;

@@ -11,8 +11,10 @@
         double width; 
         double height; 
     }  __viewSize;
+    long long  _contentSizeCategory;
     double  _displayScale;
     bool  _enabled;
+    long long  _layoutDirection;
     struct UIEdgeInsets { 
         double top; 
         double left; 
@@ -31,12 +33,16 @@
         bool layoutReferenceSize; 
         bool traitCollection; 
         bool layoutSizeClass; 
+        bool layoutDirection; 
         bool layoutOrientation; 
+        bool contentSizeCategory; 
         bool displayScale; 
         bool safeAreaInsets; 
         bool layoutMargins; 
         bool userInterfaceIdiom; 
         bool userInterfaceFeature; 
+        bool userInterfaceStyle; 
+        bool userInterfaceLevel; 
     }  _needsUpdateFlags;
     struct UIEdgeInsets { 
         double top; 
@@ -47,13 +53,17 @@
     struct NSObject { Class x1; } * _traitCollection;
     long long  _userInterfaceFeature;
     long long  _userInterfaceIdiom;
+    long long  _userInterfaceLevel;
+    long long  _userInterfaceStyle;
     struct NSObject { Class x1; } * _viewController;
 }
 
 @property (setter=_setPendingViewTransitionSize:, nonatomic) struct CGSize { double x1; double x2; } _pendingViewTransitionSize;
 @property (setter=_setViewSize:, nonatomic) struct CGSize { double x1; double x2; } _viewSize;
+@property (nonatomic) long long contentSizeCategory;
 @property (setter=_setDisplayScale:, nonatomic) double displayScale;
 @property (getter=isEnabled, nonatomic) bool enabled;
+@property (nonatomic) long long layoutDirection;
 @property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } layoutMargins;
 @property (setter=_setLayoutOrientation:, nonatomic) long long layoutOrientation;
 @property (setter=_setLayoutReferenceSize:, nonatomic) struct CGSize { double x1; double x2; } layoutReferenceSize;
@@ -63,14 +73,20 @@
 @property (setter=_setTraitCollection:, nonatomic, retain) NSObject<PXAnonymousTraitCollection> *traitCollection;
 @property (setter=_setUserInterfaceFeature:, nonatomic) long long userInterfaceFeature;
 @property (setter=_setUserInterfaceIdiom:, nonatomic) long long userInterfaceIdiom;
+@property (setter=_setUserInterfaceLevel:, nonatomic) long long userInterfaceLevel;
+@property (setter=_setUserInterfaceStyle:, nonatomic) long long userInterfaceStyle;
 @property (nonatomic, readonly) NSObject<PXAnonymousViewController> *viewController;
 
 - (void).cxx_destruct;
+- (void)_invalidateContentSizeCategory;
+- (void)_invalidateLayoutDirection;
 - (void)_invalidateLayoutOrientation;
 - (void)_invalidateLayoutReferenceSize;
 - (void)_invalidateLayoutSizeClass;
 - (void)_invalidateUserInterfaceFeature;
 - (void)_invalidateUserInterfaceIdiom;
+- (void)_invalidateUserInterfaceLevel;
+- (void)_invalidateUserInterfaceStyle;
 - (void)_invalidateViewSize;
 - (bool)_needsUpdate;
 - (struct CGSize { double x1; double x2; })_pendingViewTransitionSize;
@@ -84,9 +100,13 @@
 - (void)_setTraitCollection:(struct NSObject { Class x1; }*)arg1;
 - (void)_setUserInterfaceFeature:(long long)arg1;
 - (void)_setUserInterfaceIdiom:(long long)arg1;
+- (void)_setUserInterfaceLevel:(long long)arg1;
+- (void)_setUserInterfaceStyle:(long long)arg1;
 - (void)_setViewSize:(struct CGSize { double x1; double x2; })arg1;
+- (void)_updateContentSizeCategoryIfNeeded;
 - (void)_updateDisplayScaleIfNeeded;
 - (void)_updateIfNeeded;
+- (void)_updateLayoutDirectionIfNeeded;
 - (void)_updateLayoutMarginsIfNeeded;
 - (void)_updateLayoutOrientationIfNeeded;
 - (void)_updateLayoutReferenceSizeIfNeeded;
@@ -95,16 +115,23 @@
 - (void)_updateTraitCollectionIfNeeded;
 - (void)_updateUserInterfaceFeatureIfNeeded;
 - (void)_updateUserInterfaceIdiomIfNeeded;
+- (void)_updateUserInterfaceLevelIfNeeded;
+- (void)_updateUserInterfaceStyleIfNeeded;
 - (void)_updateViewSizeIfNeeded;
 - (struct CGSize { double x1; double x2; })_viewSize;
 - (void)_viewWillLayoutSubviews;
+- (long long)contentSizeCategory;
 - (struct NSObject { Class x1; }*)createTraitCollection;
 - (void)dealloc;
 - (void)didPerformChanges;
 - (double)displayScale;
 - (double)displayScaleFromTraitCollection:(struct NSObject { Class x1; }*)arg1;
+- (void)getContentSizeCategory:(out long long*)arg1;
+- (void)getLayoutDirection:(out long long*)arg1;
 - (void)getSizeClass:(out long long*)arg1 sizeSubclass:(out long long*)arg2;
 - (void)getUserInterfaceIdiom:(out long long*)arg1;
+- (void)getUserInterfaceLevel:(out long long*)arg1;
+- (void)getUserInterfaceStyle:(out long long*)arg1;
 - (id)init;
 - (id)initWithViewController:(struct NSObject { Class x1; }*)arg1;
 - (void)invalidateDisplayScale;
@@ -112,6 +139,7 @@
 - (void)invalidateSafeAreaInsets;
 - (void)invalidateTraitCollection;
 - (bool)isEnabled;
+- (long long)layoutDirection;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })layoutMargins;
 - (long long)layoutOrientation;
 - (struct CGSize { double x1; double x2; })layoutReferenceSize;
@@ -120,7 +148,9 @@
 - (id)mutableChangeObject;
 - (void)registerObservations;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })safeAreaInsets;
+- (void)setContentSizeCategory:(long long)arg1;
 - (void)setEnabled:(bool)arg1;
+- (void)setLayoutDirection:(long long)arg1;
 - (void)setLayoutMargins:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setSafeAreaInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (struct NSObject { Class x1; }*)traitCollection;
@@ -128,6 +158,8 @@
 - (long long)userInterfaceFeature;
 - (long long)userInterfaceFeatureForViewController:(struct NSObject { Class x1; }*)arg1;
 - (long long)userInterfaceIdiom;
+- (long long)userInterfaceLevel;
+- (long long)userInterfaceStyle;
 - (struct NSObject { Class x1; }*)viewController;
 - (void)viewControllerDidMoveToParentViewController:(struct NSObject { Class x1; }*)arg1;
 - (void)viewControllerLayoutOrientationDidChange;
@@ -139,6 +171,5 @@
 - (void)viewControllerViewWillAppear;
 - (void)viewControllerViewWillLayoutSubviews;
 - (void)viewControllerViewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1;
-- (struct CGSize { double x1; double x2; })viewSize;
 
 @end

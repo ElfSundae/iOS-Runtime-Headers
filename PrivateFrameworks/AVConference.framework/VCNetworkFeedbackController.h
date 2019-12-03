@@ -10,6 +10,7 @@
     VCConnectionManager * _connectionManager;
     VCRecommendedNetworkSettings * _recommendedSettings;
     <VCNetworkFeedbackControllerDelegate> * _weakDelegate;
+    double  _wrmReportingInterval;
 }
 
 @property unsigned int clientTargetBitrate;
@@ -24,10 +25,13 @@
 - (id)initWithDelegate:(id)arg1 connectionManager:(id)arg2;
 - (unsigned int)recommendedTargetBitrateCap;
 - (void)requestWRMNotification;
+- (void)sendFeedbackControllerReport:(struct { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; })arg1;
+- (void)sendStatusUpdate:(const struct { int x1; int x2; int x3; unsigned int x4; }*)arg1;
 - (void)setClientTargetBitrate:(unsigned int)arg1;
 - (void)setClientTargetBitrateCap:(unsigned int)arg1;
+- (void)setPreWarmState:(bool)arg1;
 - (void)setWRMMetricConfig:(struct { unsigned long long x1; }*)arg1;
-- (void)setWRMNotification:(struct { int x1; int x2; unsigned long long x3; unsigned long long x4; unsigned long long x5; }*)arg1;
+- (void)setWRMNotification:(struct { int x1; int x2; unsigned long long x3; char *x4; unsigned long long x5; unsigned long long x6; }*)arg1;
 - (void)setupWCMClient;
 - (void)setupWRMClient;
 - (void)start;

@@ -6,7 +6,7 @@
 
 @property (readonly) NUJSAVCameraCalibrationData *cameraCalibrationData;
 @property (readonly) NUJSCGImageMetadata *depthMetaData;
-@property (readonly) <NUDepthProperties> *depthProperties;
+@property (readonly) <NUAuxiliaryImageProperties> *depthProperties;
 
 - (id)cameraCalibrationData;
 - (id)depthMetaData;

@@ -4,4 +4,8 @@
 
 @interface PLAssetsdDemoClient : PLAssetsdBaseClient
 
+- (void)cleanupForStoreDemoMode;
+- (bool)hasCompletedMomentAnalysis:(bool*)arg1 error:(id*)arg2;
+- (bool)hasCompletedRestorePostProcessing:(bool*)arg1 error:(id*)arg2;
+
 @end

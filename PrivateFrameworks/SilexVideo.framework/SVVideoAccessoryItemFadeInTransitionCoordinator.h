@@ -6,6 +6,7 @@
     UIViewPropertyAnimator * _animator;
 }
 
+@property (nonatomic, readonly) bool animated;
 @property (nonatomic, retain) UIViewPropertyAnimator *animator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -14,6 +15,7 @@
 
 - (void).cxx_destruct;
 - (void)animateWithContext:(id)arg1;
+- (bool)animated;
 - (id)animator;
 - (void)cancelTransition;
 - (void)setAnimator:(id)arg1;

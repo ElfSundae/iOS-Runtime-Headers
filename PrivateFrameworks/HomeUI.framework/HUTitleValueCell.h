@@ -4,7 +4,6 @@
 
 @interface HUTitleValueCell : HUIconCell {
     bool  _allowCopyValueToPasteboard;
-    long long  _compressionResistancePolicy;
     bool  _hideTitle;
     bool  _hideValue;
     UIStackView * _labelsStackView;
@@ -20,10 +19,9 @@
 }
 
 @property (nonatomic) bool allowCopyValueToPasteboard;
-@property (nonatomic) long long compressionResistancePolicy;
 @property (nonatomic) bool hideTitle;
 @property (nonatomic) bool hideValue;
-@property (nonatomic, retain) UIStackView *labelsStackView;
+@property (nonatomic, readonly) UIStackView *labelsStackView;
 @property (nonatomic, retain) NSArray *stackViewConstraints;
 @property (nonatomic) bool titleColorFollowsTintColor;
 @property (nonatomic, retain) UIFont *titleFont;
@@ -40,25 +38,22 @@
 - (void)_addTitleLabel;
 - (void)_addValueLabel;
 - (void)_ensureCorrectHeaderViewOrientation;
-- (void)_updateCompressionResistance;
 - (void)_updateTitle;
 - (void)_updateValue;
 - (bool)allowCopyValueToPasteboard;
 - (bool)canBecomeFirstResponder;
 - (bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
-- (long long)compressionResistancePolicy;
 - (void)copy:(id)arg1;
 - (bool)hideTitle;
 - (bool)hideValue;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (id)labelsStackView;
+- (void)layoutMarginsDidChange;
 - (void)prepareForReuse;
 - (void)setAllowCopyValueToPasteboard:(bool)arg1;
-- (void)setCompressionResistancePolicy:(long long)arg1;
 - (void)setDisabled:(bool)arg1;
 - (void)setHideTitle:(bool)arg1;
 - (void)setHideValue:(bool)arg1;
-- (void)setLabelsStackView:(id)arg1;
 - (void)setStackViewConstraints:(id)arg1;
 - (void)setTitleColorFollowsTintColor:(bool)arg1;
 - (void)setTitleFont:(id)arg1;

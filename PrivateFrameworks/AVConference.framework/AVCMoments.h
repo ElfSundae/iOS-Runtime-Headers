@@ -9,7 +9,7 @@
     int  _currentPendingRequestsCount;
     id  _delegate;
     NSObject<OS_dispatch_queue> * _delegateQueue;
-    NSString * _deviceID;
+    NSString * _requesterID;
     NSMutableDictionary * _requests;
     long long  _streamToken;
 }
@@ -17,8 +17,8 @@
 @property (nonatomic, readonly) int activeRequestCount;
 @property (nonatomic, readonly) unsigned int capabilities;
 @property (nonatomic, readonly) <AVCMomentsDelegate> *delegate;
-@property (nonatomic, readonly) NSString *deviceID;
 @property (nonatomic, readonly) int pendingRequestCount;
+@property (nonatomic, readonly) NSString *requesterID;
 @property (nonatomic, readonly) long long streamToken;
 
 - (int)activeRequestCount;
@@ -31,15 +31,16 @@
 - (id)delegate;
 - (void)deregisterBlocksForNotifications;
 - (id)description;
-- (id)deviceID;
 - (void)didEndProcessingRequestHelperWithResult:(id)arg1;
 - (void)didFinishRequestHelperWithResult:(id)arg1;
 - (void)didStartProcessingRequestHelperWithResult:(id)arg1;
 - (void)disconnect;
-- (id)initWithStreamToken:(long long)arg1 deviceID:(id)arg2 delegate:(id)arg3 dispatchQueue:(id)arg4;
-- (id)newRequestWithMediaType:(unsigned char)arg1;
+- (id)initWithStreamToken:(long long)arg1 requesterID:(id)arg2 delegate:(id)arg3 dispatchQueue:(id)arg4;
+- (id)newDictionaryForRequest:(id)arg1;
+- (id)newRequestWithMediaType:(unsigned char)arg1 requesteeID:(id)arg2;
 - (int)pendingRequestCount;
 - (void)registerBlocksForNotifications;
+- (id)requesterID;
 - (long long)streamToken;
 
 @end

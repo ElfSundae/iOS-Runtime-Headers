@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUZoomableGridViewController : PUPhotosGridViewController <PUMagnfiedViewControllerDelegate, PXCPLServiceUIDelegate, PXCloudQuotaControllerDelegate, PXPhotosGlobalFooterViewModelPresentationDelegate> {
+@interface PUZoomableGridViewController : PUPhotosGridViewController <PUMagnfiedViewControllerDelegate, PXCPLServiceUIDelegate, PXCloudQuotaControllerDelegate, PXPhotosLibraryFooterViewModelPresentationDelegate> {
     NSIndexPath * __dynamicLayoutTransitionAnchorIndexPath;
     struct CGPoint { 
         double x; 

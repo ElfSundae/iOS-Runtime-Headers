@@ -5,6 +5,7 @@
 
 @required
 
+- (NSString *)anonymizedName;
 - (unsigned long long)faceCount;
 - (bool)favorite;
 - (bool)hidden;
@@ -12,7 +13,7 @@
 - (<PVFaceProtocol> *)keyFace;
 - (NSString *)localIdentifier;
 - (long long)manualOrder;
-- (NSString *)name;
+- (NSArray *)personLocalIdentifiers;
 - (void)pv_addMergeCandidatePersons:(id <PVFetchResultProtocol>)arg1;
 - (void)setIsVerified:(bool)arg1;
 - (void)setKeyFace:(id <PVFaceProtocol>)arg1;

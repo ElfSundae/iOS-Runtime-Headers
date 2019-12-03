@@ -3,16 +3,18 @@
  */
 
 @interface PUImportOneUpCellBadgeView : UICollectionReusableView {
-    UIImageView * _badgeImageView;
+    UIView * _badgeContainerView;
     long long  _badgeType;
+    UIView * _badgeView;
     bool  _inUpdateBlock;
     bool  _needsBadgeUpdate;
     bool  _selectable;
     UIActivityIndicatorView * _spinner;
 }
 
-@property (nonatomic, retain) UIImageView *badgeImageView;
+@property (nonatomic, retain) UIView *badgeContainerView;
 @property (nonatomic) long long badgeType;
+@property (nonatomic, retain) UIView *badgeView;
 @property (nonatomic) bool inUpdateBlock;
 @property (nonatomic) bool needsBadgeUpdate;
 @property (nonatomic) bool selectable;
@@ -20,7 +22,7 @@
 
 - (void).cxx_destruct;
 - (void)_createSpinnerIfNecessary;
-- (id)badgeImageView;
+- (id)badgeContainerView;
 - (long long)badgeType;
 - (id)badgeView;
 - (bool)inUpdateBlock;
@@ -31,8 +33,9 @@
 - (void)performBadgeUpdates:(id /* block */)arg1;
 - (void)prepareForReuse;
 - (bool)selectable;
-- (void)setBadgeImageView:(id)arg1;
+- (void)setBadgeContainerView:(id)arg1;
 - (void)setBadgeType:(long long)arg1;
+- (void)setBadgeView:(id)arg1;
 - (void)setInUpdateBlock:(bool)arg1;
 - (void)setNeedsBadgeUpdate;
 - (void)setNeedsBadgeUpdate:(bool)arg1;

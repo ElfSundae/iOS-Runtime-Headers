@@ -9,7 +9,7 @@
     bool  _isCancelled;
     bool  _isWaitingForTransferBatch;
     unsigned long long  _maxCountOfBatchesInFlight;
-    int  _multipleItemsInteractiveSchedulingCount;
+    _Atomic int  _multipleItemsInteractiveSchedulingCount;
     long long  _nextFire;
     BRCDeadlineSource * _schedulingSource;
     BRCAccountSession * _session;

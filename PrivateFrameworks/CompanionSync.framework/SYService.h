@@ -39,6 +39,7 @@
     NSObject<OS_dispatch_queue> * _queue;
     _SYQueuedStartSession * _queuedStartSession;
     NSMutableSet * _rejectingV1SyncSessions;
+    long long  _sendingBufferCap;
     NSObject<OS_os_activity> * _serviceActivity;
     NSString * _serviceName;
     _SYMultiSuspendableQueue * _sessionQueue;
@@ -67,12 +68,14 @@
 @property (nonatomic, readonly) SYPersistentStore *persistentStore;
 @property (nonatomic) long long priority;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *queue;
+@property (nonatomic) long long sendingBufferCap;
 @property (nonatomic, readonly) NSObject<OS_os_activity> *serviceActivity;
 @property (nonatomic, readonly) _SYMultiSuspendableQueue *sessionQueue;
 @property (nonatomic) double sessionStalenessInterval;
 @property (nonatomic, readonly) PBCodable *stateForLogging;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) SYSyncEngine *syncEngine;
+@property (nonatomic, readonly) bool targetIsConnected;
 @property (nonatomic, readonly) bool targetIsInProximity;
 
 - (void).cxx_destruct;
@@ -136,6 +139,7 @@
 - (void)_whenSessionEnds:(id /* block */)arg1;
 - (void)_wrapUpCurrentSession:(id)arg1;
 - (id)aggdKeys;
+- (void)currentDeviceConnectionChanged:(bool)arg1;
 - (void)currentDeviceProximityChanged:(bool)arg1;
 - (id)currentSession;
 - (id)customIDSOptions;
@@ -156,6 +160,7 @@
 - (bool)hasPairingStore;
 - (id)init;
 - (id)initWithService:(id)arg1 priority:(long long)arg2 asMasterStore:(bool)arg3 options:(struct NSDictionary { Class x1; }*)arg4;
+- (id)initWithService:(id)arg1 priority:(long long)arg2 qos:(unsigned int)arg3 asMasterStore:(bool)arg4 options:(struct NSDictionary { Class x1; }*)arg5;
 - (bool)isMasterStore;
 - (id)name;
 - (id)options;
@@ -166,6 +171,7 @@
 - (bool)resume:(id*)arg1;
 - (void)sendData:(id)arg1 options:(struct NSDictionary { Class x1; }*)arg2 completion:(id /* block */)arg3;
 - (bool)sendData:(id)arg1 options:(struct NSDictionary { Class x1; }*)arg2 identifier:(id*)arg3 error:(id*)arg4;
+- (long long)sendingBufferCap;
 - (void)sentMessageWithID:(id)arg1 context:(id)arg2;
 - (void)serializeForIncomingSession:(id /* block */)arg1;
 - (id)serviceActivity;
@@ -181,10 +187,12 @@
 - (void)setNeedsResetSync;
 - (void)setOptions:(id)arg1;
 - (void)setPriority:(long long)arg1;
+- (void)setSendingBufferCap:(long long)arg1;
 - (void)setSessionStalenessInterval:(double)arg1;
 - (id)stateForLogging;
 - (void)suspend;
 - (id)syncEngine;
+- (bool)targetIsConnected;
 - (bool)targetIsInProximity;
 - (bool)willAcceptMessageWithHeader:(id)arg1 messageID:(id)arg2;
 

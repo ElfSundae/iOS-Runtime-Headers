@@ -14,6 +14,7 @@
 @property (nonatomic, retain) MFError *error;
 @property (nonatomic, retain) MFActivityMonitor *monitor;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)error;
 - (id)initWithMaximumSize:(unsigned int)arg1 latency:(double)arg2;

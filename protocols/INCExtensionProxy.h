@@ -13,6 +13,10 @@
 @optional
 
 - (id /* block */)backgroundAppHandler:(void *)arg1; // needs 1 arg types, found 12: id /* block */, NSString *, id /* block */, void*, void, id /* block */, INIntentResponse *, NSError *, void*, void*, id, SEL
+- (void)getDefaultValueForParameterNamed:(void *)arg1 completionHandler:(void *)arg2; // needs 2 arg types, found 8: NSString *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, id, NSError *, void*
+- (void)getOptionsForParameterNamed:(void *)arg1 completionHandler:(void *)arg2; // needs 2 arg types, found 8: NSString *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSArray *, NSError *, void*
 - (void)setBackgroundAppHandler:(void *)arg1; // needs 1 arg types, found 13: id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSString *, id /* block */, void*, void, id /* block */, INIntentResponse *, NSError *, void*, void*
+- (void)startSendingUpdatesToObserver:(id <INIntentResponseObserver>)arg1;
+- (void)stopSendingUpdates;
 
 @end

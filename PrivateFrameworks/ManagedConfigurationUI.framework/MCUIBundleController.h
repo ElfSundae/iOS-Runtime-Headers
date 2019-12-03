@@ -3,19 +3,18 @@
  */
 
 @interface MCUIBundleController : PSBundleController {
-    bool  _isForPairedDevice;
     NPSDomainAccessor * _nanoDomainAccessor;
     PSListController * _parentController;
     PSSpecifier * _specifier;
 }
 
-@property (nonatomic) bool isForPairedDevice;
 @property (nonatomic, retain) NPSDomainAccessor *nanoDomainAccessor;
 @property (nonatomic) unsigned long long nanoProfileCount;
 @property (nonatomic) PSListController *parentController;
 @property (nonatomic, retain) PSSpecifier *specifier;
 
 + (id)configurationProfiles;
++ (bool)isForPairedDevice;
 + (id)provisioningProfiles;
 + (id)provisioningProfilesWithValidityCheck:(bool)arg1;
 + (id)sharedInstance;
@@ -32,12 +31,10 @@
 - (void)decrementNanoProfileCount;
 - (void)incrementNanoProfileCount;
 - (id)initWithParentListController:(id)arg1 properties:(id)arg2;
-- (bool)isForPairedDevice;
 - (void)load;
 - (id)nanoDomainAccessor;
 - (unsigned long long)nanoProfileCount;
 - (id)parentController;
-- (void)setIsForPairedDevice:(bool)arg1;
 - (void)setNanoDomainAccessor:(id)arg1;
 - (void)setNanoProfileCount:(unsigned long long)arg1;
 - (void)setParentController:(id)arg1;

@@ -4,23 +4,19 @@
 
 @interface TLKContentsView : TLKStackView {
     NSMutableArray * _detailsLabels;
-    unsigned long long  _style;
-    UILabel * _titleLabel;
+    TLKLabel * _titleLabel;
 }
 
-@property (retain) NSMutableArray *detailsLabels;
-@property (nonatomic) unsigned long long style;
-@property (retain) UILabel *titleLabel;
+@property (nonatomic, retain) NSMutableArray *detailsLabels;
+@property (nonatomic, retain) TLKLabel *titleLabel;
 
-+ (id)detailsLabelWithStyle:(unsigned long long)arg1;
++ (id)detailsLabel;
 
 - (void).cxx_destruct;
 - (id)detailsLabels;
 - (id)init;
 - (void)setDetailsLabels:(id)arg1;
-- (void)setStyle:(unsigned long long)arg1;
 - (void)setTitleLabel:(id)arg1;
-- (unsigned long long)style;
 - (id)titleLabel;
 - (void)updateWithTitle:(id)arg1 contents:(id)arg2;
 

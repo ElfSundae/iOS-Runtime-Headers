@@ -12,6 +12,7 @@
 @property (nonatomic, retain) PKPeerPaymentTransactionMetadata *peerPaymentTransactionMetadata;
 @property (nonatomic) long long status;
 
++ (id)sanitizedErrors:(id)arg1;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;

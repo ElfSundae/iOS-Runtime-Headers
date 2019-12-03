@@ -10,9 +10,11 @@
     bool  _conversation;
     bool  _emergency;
     NSArray * _handles;
+    bool  _incoming;
     NSString * _isoCountryCode;
     NSString * _phoneNumberPrefixHint;
     bool  _useNetworkCountryCode;
+    bool  _verified;
     bool  _voicemail;
 }
 
@@ -23,9 +25,11 @@
 @property (getter=isConversation, nonatomic, readonly) bool conversation;
 @property (getter=isEmergency, nonatomic, readonly) bool emergency;
 @property (nonatomic, readonly, copy) NSArray *handles;
+@property (getter=isIncoming, nonatomic, readonly) bool incoming;
 @property (nonatomic, readonly, copy) NSString *isoCountryCode;
 @property (nonatomic, copy) NSString *phoneNumberPrefixHint;
 @property (nonatomic) bool useNetworkCountryCode;
+@property (getter=isVerified, nonatomic, readonly) bool verified;
 @property (getter=isVoicemail, nonatomic, readonly) bool voicemail;
 
 - (void).cxx_destruct;
@@ -41,6 +45,8 @@
 - (bool)isBlocked;
 - (bool)isConversation;
 - (bool)isEmergency;
+- (bool)isIncoming;
+- (bool)isVerified;
 - (bool)isVoicemail;
 - (id)isoCountryCode;
 - (id)phoneNumberPrefixHint;

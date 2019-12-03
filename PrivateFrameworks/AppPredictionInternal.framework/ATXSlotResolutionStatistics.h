@@ -14,6 +14,7 @@
     double  _totalConfirmsForAllSlots;
     double  _totalConfirmsInLockscreenForAllSlots;
     double  _totalConfirmsInSpotlightForAllSlots;
+    double  _totalConfirmsInSpotlightWithinMeanWindowForAllSlots;
     double  _totalConfirmsTodayInLockscreenForAllSlots;
     double  _totalDayAndLocationCount;
     double  _totalDayAndLocationOccurrences;
@@ -21,6 +22,8 @@
     double  _totalDayAndPrevLocationOccurrences;
     double  _totalDayOfWeekCount;
     double  _totalDayOfWeekOccurrences;
+    double  _totalEightHourWindowCount;
+    double  _totalHourWindowCount;
     double  _totalLaunches;
     double  _totalLocationCount;
     double  _totalLocationOccurrences;
@@ -41,7 +44,9 @@
     double  _totalRejectsForAllSlots;
     double  _totalRejectsInLockscreenForAllSlots;
     double  _totalRejectsInSpotlightForAllSlots;
+    double  _totalRejectsInSpotlightWithinMeanWindowForAllSlots;
     double  _totalRejectsTodayInLockscreenForAllSlots;
+    double  _totalThirtyMinuteWindowCount;
     double  _totalTimeAndDayAndLocationCount;
     double  _totalTimeAndDayAndLocationOccurrences;
     double  _totalTimeAndDayCount;
@@ -52,6 +57,7 @@
     double  _totalTimeAndPrevLocationOccurrences;
     double  _totalTimeOfDayCount;
     double  _totalTimeOfDayOccurrences;
+    NSMutableSet * _totalUniqueDaysConfirmedOrRejectedInSpotlightWithinMeanWindowForAllSlots;
     NSMutableSet * _totalUniqueDaysLaunched;
 }
 

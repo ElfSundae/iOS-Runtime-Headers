@@ -7,7 +7,7 @@
     UIView * __innerViewContrastView;
     UIImageView * __outerImageView;
     CAMShutterButtonRingView * __outerView;
-    UIImageView * __spinnerView;
+    UIView * __spinnerView;
     UIView * __stopModeBackground;
     CAMTimelapseShutterRingView * __timelapseOuterView;
     UIColor * _contentColor;
@@ -36,7 +36,7 @@
 @property (nonatomic, readonly) UIView *_innerViewContrastView;
 @property (nonatomic, readonly) UIImageView *_outerImageView;
 @property (nonatomic, readonly) CAMShutterButtonRingView *_outerView;
-@property (nonatomic, retain) UIImageView *_spinnerView;
+@property (nonatomic, retain) UIView *_spinnerView;
 @property (nonatomic, retain) UIView *_stopModeBackground;
 @property (nonatomic, readonly) CAMTimelapseShutterRingView *_timelapseOuterView;
 @property (nonatomic, retain) UIColor *contentColor;
@@ -60,11 +60,9 @@
 - (id)_contentColor;
 - (double)_cornerRadiusForMode:(long long)arg1;
 - (id)_innerCircleColorForMode:(long long)arg1 spinning:(bool)arg2;
-- (double)_innerCircleDiameter;
 - (id)_innerView;
 - (id)_innerViewContrastView;
 - (bool)_isSpinningSupportedForLayoutStyle:(long long)arg1;
-- (bool)_isStopMode:(long long)arg1;
 - (id)_outerImageForMode:(long long)arg1 layoutStyle:(long long)arg2;
 - (id)_outerImageView;
 - (id)_outerView;
@@ -72,12 +70,11 @@
 - (void)_performModeSwitchAnimationFromMode:(long long)arg1 toMode:(long long)arg2 animated:(bool)arg3;
 - (bool)_shouldShowBackgroundViewForMode:(long long)arg1;
 - (bool)_shouldShowContrastBorderForMode:(long long)arg1 layoutStyle:(long long)arg2;
-- (bool)_shouldUseImageViewForMode:(long long)arg1;
-- (bool)_shouldUseTimelapseOuterViewForMode:(long long)arg1;
 - (struct CGSize { double x1; double x2; })_sizeForMode:(long long)arg1;
 - (id)_spinnerView;
 - (id)_stopModeBackground;
 - (id)_timelapseOuterView;
+- (struct { long long x1; long long x2; double x3; double x4; })_timelapseRingSpecForLayoutStyle:(long long)arg1;
 - (void)_updateOuterAndInnerLayers;
 - (void)_updateSpinningAnimations;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })alignmentRectInsets;

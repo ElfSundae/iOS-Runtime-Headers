@@ -7,11 +7,16 @@
 
 - (NSString *)accessoryTitle;
 - (PHCollection *)collection;
+- (NSString *)glyphImageName;
 - (NSString *)identifier;
-- (NSString *)imageName;
 - (long long)indentationLevel;
+- (bool)isDraggable;
 - (bool)isExpandable;
 - (bool)isExpanded;
+- (bool)isGroup;
+- (bool)isRemovable;
+- (bool)isRenamable;
+- (id)representedObject;
 - (NSString *)title;
 - (NSString *)visualDescription;
 

@@ -3,30 +3,36 @@
  */
 
 @interface ISImage : NSObject {
-    struct CGImage { } * _CGImage;
-    bool  _placeholder;
-    double  _scale;
-    struct CGSize { 
-        double width; 
-        double height; 
-    }  _size;
-    NSUUID * _uuid;
+    NSData * _bitmapData;
 }
 
 @property (readonly) struct CGImage { }*CGImage;
+@property (readonly) NSData *bitmapData;
+@property (readonly) struct CGImage { }*cgImage;
+@property struct CGSize { double x1; double x2; } minimumSize;
+@property (readonly) struct CGSize { double x1; double x2; } pixelSize;
 @property (readonly) bool placeholder;
 @property (readonly) double scale;
 @property (readonly) struct CGSize { double x1; double x2; } size;
 @property (retain) NSUUID *uuid;
 
++ (id)allocWithZone:(struct _NSZone { }*)arg1;
++ (struct CGColorSpace { }*)srgbColorSpace;
+
 - (void).cxx_destruct;
 - (struct CGImage { }*)CGImage;
-- (void)dealloc;
+- (id)_init;
+- (id)bitmapData;
+- (id)debugDescription;
+- (id)description;
+- (id)digest;
+- (id)initWithCGImage:(struct CGImage { }*)arg1 scale:(double)arg2;
+- (id)initWithCGImage:(struct CGImage { }*)arg1 scale:(double)arg2 minimumSize:(struct CGSize { double x1; double x2; })arg3 placeholder:(bool)arg4;
+- (id)initWithCGImage:(struct CGImage { }*)arg1 scale:(double)arg2 placeholder:(bool)arg3;
+- (id)initWithContentsOfURL:(id)arg1 scale:(double)arg2;
 - (id)initWithData:(id)arg1 scale:(double)arg2;
-- (bool)placeholder;
-- (double)scale;
-- (void)setUuid:(id)arg1;
-- (struct CGSize { double x1; double x2; })size;
+- (struct CGSize { double x1; double x2; })pixelSize;
 - (id)uuid;
+- (bool)writeToURL:(id)arg1;
 
 @end

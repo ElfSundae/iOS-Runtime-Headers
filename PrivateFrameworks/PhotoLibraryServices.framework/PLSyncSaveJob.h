@@ -38,11 +38,11 @@
 @property (nonatomic, copy) NSString *uuid;
 @property (nonatomic, retain) NSURL *videoComplementURL;
 
+- (void).cxx_destruct;
 - (id)albumURIs;
 - (id)cleanupBeforeDate;
 - (bool)cleanupSyncState;
 - (id)creationDate;
-- (void)dealloc;
 - (id)description;
 - (id)facesInfo;
 - (id /* block */)finishedBlock;

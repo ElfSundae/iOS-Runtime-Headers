@@ -22,7 +22,7 @@
         bool m_initialized; 
         struct aligned_storage<proto::params::LocalizerParameters> { 
             union dummy_u { 
-                BOOL data[264]; 
+                BOOL data[280]; 
                 struct a8 { } aligner_; 
             } dummy_; 
         } m_storage; 
@@ -76,7 +76,7 @@
 - (unsigned int)indoorPrefetchRadiusKM;
 - (id)init;
 - (id)initWithAvailabilityTile:(struct AvailabilityTile { struct shared_ptr<proto::availability::AvailabilityTile> { struct AvailabilityTile {} *x_1_1_1; struct __shared_weak_count {} *x_1_1_2; } x1; bool x2; struct unique_ptr<wireless_diagnostics::google::protobuf::io::FileInputStream, std::__1::default_delete<wireless_diagnostics::google::protobuf::io::FileInputStream> > { struct __compressed_pair<wireless_diagnostics::google::protobuf::io::FileInputStream *, std::__1::default_delete<wireless_diagnostics::google::protobuf::io::FileInputStream> > { struct FileInputStream {} *x_1_2_1; } x_3_1_1; } x3; struct path { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > { struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> > { struct __rep { union { struct __long { char *x_1_6_1; unsigned long long x_1_6_2; unsigned long long x_1_6_3; } x_1_5_1; struct __short { BOOL x_2_6_1[23]; struct { unsigned char x_2_7_1; } x_2_6_2; } x_1_5_2; struct __raw { unsigned long long x_3_6_1[3]; } x_1_5_3; } x_1_4_1; } x_1_3_1; } x_1_2_1; } x_4_1_1; } x4; }*)arg1;
-- (struct optional<proto::params::LocalizerParameters> { bool x1; struct aligned_storage<proto::params::LocalizerParameters> { union dummy_u { BOOL x_1_2_1[264]; struct a8 { } x_1_2_2; } x_2_1_1; } x2; })localizerParams;
+- (struct optional<proto::params::LocalizerParameters> { bool x1; struct aligned_storage<proto::params::LocalizerParameters> { union dummy_u { BOOL x_1_2_1[280]; struct a8 { } x_1_2_2; } x_2_1_1; } x2; })localizerParams;
 - (unsigned int)nonFitnessToCyclingSeconds;
 - (unsigned int)nonFitnessToRunningSeconds;
 - (unsigned int)preferPredictionWithinNActivityCycles;

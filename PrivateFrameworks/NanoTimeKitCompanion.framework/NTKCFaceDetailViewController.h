@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/NanoTimeKitCompanion.framework/NanoTimeKitCompanion
  */
 
-@interface NTKCFaceDetailViewController : UIViewController <NTKCFaceDetailActionSectionDelegate, NTKCFaceDetailComplicationSectionDelegate, NTKCFaceDetailDataSourcesSectionDelegate, NTKCFaceDetailDescriptionSectionDelegate, NTKCFaceDetailEditOptionSectionDelegate, NTKCFaceDetailOtherSectionDelegate, NTKCFaceDetailPhotosSectionDelegate, NTKFaceCollectionObserver, NTKFaceObserver, UITableViewDataSource, UITableViewDelegate> {
+@interface NTKCFaceDetailViewController : UIViewController <NTKCFaceDetailActionSectionDelegate, NTKCFaceDetailComplicationSectionDelegate, NTKCFaceDetailDataSourcesSectionDelegate, NTKCFaceDetailDescriptionSectionDelegate, NTKCFaceDetailEditOptionSectionDelegate, NTKCFaceDetailOtherSectionDelegate, NTKCFaceDetailPhotosSectionDelegate, NTKCTableViewProviding, NTKFaceCollectionObserver, NTKFaceObserver, UITableViewDataSource, UITableViewDelegate> {
     _NTKCDetailActionButton * _addButton;
     UIActivityIndicatorView * _addSpinner;
     NSMutableArray * _currentSections;
@@ -58,6 +58,7 @@
 @property (nonatomic, retain) NTKCFaceDetailKaleidoscopeContentSectionController *kaleidoscopeContentSection;
 @property (nonatomic, retain) NTKCFaceDetailKaleidoscopeStyleSectionController *kaleidoscopeStyleSection;
 @property (nonatomic, retain) NTKFaceCollection *library;
+@property (nonatomic, readonly) UITableView *ntk_tableView;
 @property (nonatomic, retain) NTKCFaceDetailOtherSectionController *otherSection;
 @property (nonatomic, retain) NTKCFaceDetailPhotosSectionController *photosSection;
 @property (nonatomic, copy) id /* block */ selectionFinishedHandler;
@@ -81,6 +82,7 @@
 - (void)_loadLibrary;
 - (id)_pruneComplicationsNotAvailableOnGizmo:(id)arg1;
 - (id)_pruneRemovedOrRestrictedComplications:(id)arg1;
+- (void)_reloadUpNextDataSourceSections;
 - (id)_sectionForEditOptionCollection:(id)arg1;
 - (void)_setComplication:(id)arg1 forSlot:(id)arg2;
 - (void)_setEditOption:(id)arg1 forMode:(long long)arg2;
@@ -127,6 +129,7 @@
 - (id)kaleidoscopeContentSection;
 - (id)kaleidoscopeStyleSection;
 - (id)library;
+- (id)ntk_tableView;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)otherSection;
 - (void)otherSection:(id)arg1 didChangeShowSeconds:(id)arg2 forMode:(long long)arg3;

@@ -22,10 +22,10 @@
 - (id)_slotForUtilitySlot:(long long)arg1;
 - (id)_utilityComplicationSlots;
 - (long long)_utilitySlotForSlot:(id)arg1;
-- (void)applyComplicationContentSpecificAttributesAnimated:(bool)arg1 attributes:(unsigned long long)arg2 faceView:(id)arg3;
 - (void)applyComplicationContentSpecificAttributesAnimated:(bool)arg1 faceView:(id)arg2;
 - (void)cleanupAfterEditingForFaceView:(id)arg1;
 - (void)configureComplicationView:(id)arg1 forSlot:(id)arg2 faceView:(id)arg3;
+- (id)createComplicationContentSpecificAttributesAnimationWithAttributes:(unsigned long long)arg1 faceView:(id)arg2 forSlots:(id)arg3;
 - (void)curvedCircleRadius:(double*)arg1 centerAngle:(double*)arg2 maxAngularWidth:(double*)arg3 circleCenter:(struct CGPoint { double x1; double x2; }*)arg4 interior:(bool*)arg5 forSlot:(id)arg6;
 - (id)curvedMaskForSlot:(id)arg1;
 - (id)delegate;

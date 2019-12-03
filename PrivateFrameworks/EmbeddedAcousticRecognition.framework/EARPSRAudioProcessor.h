@@ -86,6 +86,7 @@
             } __r_; 
         } prefix; 
         struct PTree { 
+            int dataType; 
             struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > { 
                 struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> > { 
                     struct __rep { 
@@ -514,6 +515,19 @@
                 } __pair3_; 
             } __tree_; 
         } stringVecMap; 
+        struct map<std::__1::basic_string<char>, std::__1::vector<std::__1::pair<std::__1::basic_string<char>, std::__1::basic_string<char> >, std::__1::allocator<std::__1::pair<std::__1::basic_string<char>, std::__1::basic_string<char> > > > *, std::__1::less<std::__1::basic_string<char> >, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::vector<std::__1::pair<std::__1::basic_string<char>, std::__1::basic_string<char> >, std::__1::allocator<std::__1::pair<std::__1::basic_string<char>, std::__1::basic_string<char> > > > *> > > { 
+            struct __tree<std::__1::__value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::pair<std::__1::basic_string<char>, std::__1::basic_string<char> >, std::__1::allocator<std::__1::pair<std::__1::basic_string<char>, std::__1::basic_string<char> > > > *>, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::pair<std::__1::basic_string<char>, std::__1::basic_string<char> >, std::__1::allocator<std::__1::pair<std::__1::basic_string<char>, std::__1::basic_string<char> > > > *>, std::__1::less<std::__1::basic_string<char> >, true>, std::__1::allocator<std::__1::__value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::pair<std::__1::basic_string<char>, std::__1::basic_string<char> >, std::__1::allocator<std::__1::pair<std::__1::basic_string<char>, std::__1::basic_string<char> > > > *> > > { 
+                struct __tree_end_node<std::__1::__tree_node_base<void *> *> {} *__begin_node_; 
+                struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::pair<std::__1::basic_string<char>, std::__1::basic_string<char> >, std::__1::allocator<std::__1::pair<std::__1::basic_string<char>, std::__1::basic_string<char> > > > *>, void *> > > { 
+                    struct __tree_end_node<std::__1::__tree_node_base<void *> *> { 
+                        struct __tree_node_base<void *> {} *__left_; 
+                    } __value_; 
+                } __pair1_; 
+                struct __compressed_pair<unsigned long, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::pair<std::__1::basic_string<char>, std::__1::basic_string<char> >, std::__1::allocator<std::__1::pair<std::__1::basic_string<char>, std::__1::basic_string<char> > > > *>, std::__1::less<std::__1::basic_string<char> >, true> > { 
+                    unsigned long long __value_; 
+                } __pair3_; 
+            } __tree_; 
+        } stringPairVecMap; 
         struct map<std::__1::basic_string<char>, quasar::SystemConfig::Version, std::__1::less<std::__1::basic_string<char> >, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, quasar::SystemConfig::Version> > > { 
             struct __tree<std::__1::__value_type<std::__1::basic_string<char>, quasar::SystemConfig::Version>, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, quasar::SystemConfig::Version>, std::__1::less<std::__1::basic_string<char> >, true>, std::__1::allocator<std::__1::__value_type<std::__1::basic_string<char>, quasar::SystemConfig::Version> > > { 
                 struct __tree_end_node<std::__1::__tree_node_base<void *> *> {} *__begin_node_; 

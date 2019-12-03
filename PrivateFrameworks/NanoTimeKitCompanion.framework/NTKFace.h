@@ -17,7 +17,7 @@
     long long  _mostRecentEditMode;
     NSHashTable * _observers;
     NSString * _resourceDirectory;
-    bool  _resourceDirectoryIsHardLink;
+    bool  _resourceDirectoryIsOwned;
     NSMutableDictionary * _selectedSlotsByEditMode;
     bool  _suppressingConfigurationChangeNotifications;
 }
@@ -32,9 +32,12 @@
 @property (nonatomic, retain) CLKDevice *device;
 @property (nonatomic, readonly) long long editModeForCustomEditViewController;
 @property (nonatomic, readonly) NSArray *editModes;
+@property (nonatomic, readonly) bool editOptionsPrepared;
 @property (getter=isEditable, nonatomic, readonly) bool editable;
 @property (nonatomic) long long editedState;
 @property (nonatomic, readonly) long long faceStyle;
+@property (nonatomic, readonly) bool hasCompanionEdits;
+@property (nonatomic, readonly) bool hasGizmoEdits;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool isLibraryFace;
 @property (nonatomic, retain) NSDate *lastEditedDate;
@@ -51,6 +54,7 @@
 
 + (id)PPTBlankFace;
 + (bool)_complication:(id)arg1 isValidForSlot:(id)arg2 forDevice:(id)arg3;
++ (id)_complicationSlotDescriptors;
 + (bool)_customEditMode:(long long)arg1 hasActionForOption:(id)arg2 forDevice:(id)arg3;
 + (bool)_customEditModeIsColor:(long long)arg1 forDevice:(id)arg2;
 + (bool)_customEditModeIsRows:(long long)arg1 forDevice:(id)arg2;
@@ -65,6 +69,7 @@
 + (id)_linkedResourceRootDirectory;
 + (id)_localizedNameOverrideForCustomEditMode:(long long)arg1 forDevice:(id)arg2;
 + (id)_monogramComplicationSlotForDevice:(id)arg1;
++ (id)_orderedComplicationSlots;
 + (id)_richComplicationSlotsForDevice:(id)arg1;
 + (id)_sampleFaceDifferentFromFaces:(id)arg1 forDevice:(id)arg2;
 + (id)_slotsForCustomEditMode:(long long)arg1 forDevice:(id)arg2;
@@ -76,6 +81,8 @@
 + (id)dateSlotForDevice:(id)arg1;
 + (id)defaultFaceOfStyle:(long long)arg1 forDevice:(id)arg2;
 + (id)defaultFaceOfStyle:(long long)arg1 forDevice:(id)arg2 initCustomization:(id /* block */)arg3;
++ (void)enumerateComplicationSlots:(id)arg1 withBlock:(id /* block */)arg2;
++ (void)enumerateComplicationSlotsWithBlock:(id /* block */)arg1;
 + (id)faceWithJSONObjectRepresentation:(id)arg1 forDevice:(id)arg2;
 + (id)faceWithJSONObjectRepresentation:(id)arg1 forDevice:(id)arg2 forMigration:(bool)arg3;
 + (id)fixedComplicationSlotsForDevice:(id)arg1;
@@ -86,12 +93,14 @@
 + (unsigned long long)maximumRemoteComplicationsOnAnyFace;
 + (unsigned long long)maximumRemoteComplicationsOnAnyFaceForDevice:(id)arg1;
 + (id)monogramSlotForDevice:(id)arg1;
++ (id)possibleComplicationTypesForSlot:(id)arg1;
 + (id)richComplicationSlotsForDevice:(id)arg1;
 + (id)sampleFaceOfStyle:(long long)arg1 forDevice:(id)arg2 differentFromFaces:(id)arg3;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)JSONObjectRepresentation;
+- (id)_allComplications;
 - (id)_allowedComplicationsOfType:(unsigned long long)arg1 forSlot:(id)arg2;
 - (bool)_allowsEditing;
 - (bool)_applyConfiguration:(id)arg1 allowFailure:(bool)arg2;
@@ -108,7 +117,8 @@
 - (id)_defaultName;
 - (id)_defaultOptionForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (id)_defaultOptionForMissingCustomEditMode:(long long)arg1 slot:(id)arg2;
-- (void)_deleteResourceDirectoryHardLinkIfNecessary;
+- (void)_deleteResourceDirectoryIfOwned;
+- (id)_disabledComplicationTypesIndexSet;
 - (long long)_editModeForOldEncodingIndex:(long long)arg1;
 - (id)_faceDescription;
 - (id)_faceDescriptionForExternal;
@@ -141,6 +151,7 @@
 - (id)_resourceDirectorySnapshotKey;
 - (void)_selectDefaultSlots;
 - (void)_setResourceDirectory:(id)arg1;
+- (bool)_shouldHideUI;
 - (bool)_snapshotContext:(id)arg1 isStaleRelativeToContext:(id)arg2;
 - (id)_sortedComplicationSlots;
 - (void)_updateComplicationTombstones;
@@ -148,7 +159,9 @@
 - (bool)_verifyCompatibilityOfConfiguration:(id)arg1;
 - (bool)_wantsUnadornedSnapshot;
 - (void)addObserver:(id)arg1;
+- (id)allVisibleComplicationsForCurrentConfiguration;
 - (id)allowedComplicationTypesForSlot:(id)arg1;
+- (id)allowedComplicationTypesFromDescriptors:(id)arg1 slot:(id)arg2;
 - (id)allowedComplicationsForSlot:(id)arg1;
 - (id)allowedComplicationsForSlot:(id)arg1 includingComplication:(id)arg2;
 - (bool)applyConfiguration:(id)arg1;
@@ -161,6 +174,7 @@
 - (bool)complicationExistenceInvalidatesSnapshot;
 - (long long)complicationFamilyForSlot:(id)arg1;
 - (id)complicationForSlot:(id)arg1;
+- (id)complicationSlotsHiddenByEditOption:(id)arg1;
 - (id)configuration;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)creationDate;
@@ -174,19 +188,24 @@
 - (long long)editModeForCustomEditViewController;
 - (id)editModes;
 - (Class)editOptionClassFromEditMode:(long long)arg1 resourceDirectoryExists:(bool)arg2;
+- (id)editOptionThatHidesAllComplications;
 - (id)editOptionsForCustomEditModes;
+- (bool)editOptionsPrepared;
 - (long long)editedState;
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateComplicationSlotsWithBlock:(id /* block */)arg1;
 - (void)enumerateCustomEditModesWithBlock:(id /* block */)arg1;
 - (void)enumerateSlotsForCustomEditMode:(long long)arg1 withBlock:(id /* block */)arg2;
+- (void)enumerateVisibleComplicationSlotsForCurrentConfigurationWithBlock:(id /* block */)arg1;
 - (id)faceDescription;
 - (id)faceDescriptionForExternal;
 - (id)faceDescriptionForLibrary;
 - (long long)faceStyle;
+- (bool)hasCompanionEdits;
 - (bool)hasComplicationsOfType:(unsigned long long)arg1 forSlot:(id)arg2;
 - (bool)hasCustomSwitcherSelectionAction;
-- (bool)hasValidConfigurationForDeviceVersion:(unsigned int)arg1;
+- (bool)hasGizmoEdits;
+- (bool)hasValidConfigurationForDevice:(id)arg1;
 - (void)incrementNumberOfCompanionEdits;
 - (void)incrementNumberOfGizmoEdits;
 - (unsigned long long)indexOfOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
@@ -195,6 +214,7 @@
 - (bool)isEditable;
 - (bool)isEqual:(id)arg1;
 - (bool)isEquivalentToFace:(id)arg1;
+- (bool)isFullscreenConfiguration;
 - (bool)isLibraryFace;
 - (bool)isSingular;
 - (id)lastEditedDate;
@@ -230,7 +250,7 @@
 - (void)setName:(id)arg1;
 - (void)setOrigin:(long long)arg1;
 - (void)setResourceDirectory:(id)arg1;
-- (void)setResourceDirectoryByHardLinkingDirectory:(id)arg1;
+- (void)setResourceDirectoryByTransferringOwnership:(id)arg1;
 - (void)setSelectedSlot:(id)arg1 forEditMode:(long long)arg2;
 - (id)slotsForCustomEditMode:(long long)arg1;
 - (bool)snapshotContext:(id)arg1 isStaleRelativeToContext:(id)arg2;

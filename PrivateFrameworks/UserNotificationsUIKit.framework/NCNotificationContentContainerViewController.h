@@ -17,11 +17,11 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NCNotificationTextInputView *inputAccessoryView;
 @property (nonatomic, readonly) NCNotificationRequest *notificationRequest;
-@property (nonatomic) NCNotificationAction *presentationSourceAction;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly, copy) NSString *title;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_loadContentViewControllerForNotificationRequest:(id)arg1;
 - (void)_removeInputAccessoryView:(id)arg1;
 - (void)_setupContentViewController:(id)arg1;
@@ -34,7 +34,6 @@
 - (id)cancelTouches;
 - (id)contentExtensionIdentifier;
 - (id)contentViewController;
-- (void)customContent:(id)arg1 didLoadAudioAccessoryView:(id)arg2;
 - (void)customContent:(id)arg1 didUpdateUserNotificationActions:(id)arg2;
 - (void)customContent:(id)arg1 forwardAction:(id)arg2 forNotification:(id)arg3 withUserInfo:(id)arg4;
 - (void)customContent:(id)arg1 requestPermissionToExecuteAction:(id)arg2 forNotification:(id)arg3 withUserInfo:(id)arg4 completionHandler:(id /* block */)arg5;
@@ -48,13 +47,12 @@
 - (bool)didReceiveNotificationRequest:(id)arg1;
 - (id)initWithNotificationRequest:(id)arg1;
 - (id)inputAccessoryView;
-- (void)loadAudioAccessoryView;
 - (id)notificationRequest;
 - (void)notificationTextInputView:(id)arg1 didConfirmText:(id)arg2 forAction:(id)arg3;
 - (bool)overridesDefaultTitle;
 - (bool)performAction:(id)arg1 forNotification:(id)arg2;
 - (bool)performAction:(id)arg1 forNotification:(id)arg2 withUserInfo:(id)arg3;
-- (void)playAudioMessage;
+- (void)playMedia;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)preserveInputViews;
 - (bool)restoreInputViews;

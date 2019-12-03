@@ -15,12 +15,8 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) HMTrigger *trigger;
 
-+ (id)iconDescriptorForTriggerType:(unsigned long long)arg1;
-
 - (void).cxx_destruct;
-- (id)_descriptionForTrigger:(id)arg1 effectivelyEnabled:(bool)arg2;
 - (id)_subclass_updateWithOptions:(id)arg1;
-- (id)_uniqueServiceGroupForServices:(id)arg1;
 - (id)home;
 - (id)homeKitObject;
 - (id)init;

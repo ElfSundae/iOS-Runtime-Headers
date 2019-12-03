@@ -7,7 +7,9 @@
     long long  _configurationID;
     bool  _configuresAppAudioSession;
     NSMutableArray * _connections;
+    bool  _isMultiCamSession;
     bool  _usesAppAudioSession;
+    bool  _xctestAuthorizedToStealDevice;
 }
 
 @property (nonatomic) bool allowedToRunInWindowedLayout;
@@ -17,10 +19,12 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (getter=isMultiCamSession, nonatomic) bool multiCamSession;
 @property (nonatomic, readonly) NSArray *sinkConfigurations;
 @property (nonatomic, readonly) NSArray *sourceConfigurations;
 @property (readonly) Class superclass;
 @property (nonatomic) bool usesAppAudioSession;
+@property (nonatomic) bool xctestAuthorizedToStealDevice;
 
 + (void)initialize;
 
@@ -36,13 +40,17 @@
 - (id)init;
 - (id)initWithXPCEncoding:(id)arg1;
 - (bool)isEqual:(id)arg1;
+- (bool)isMultiCamSession;
 - (void)removeConnectionConfiguration:(id)arg1;
 - (void)setAllowedToRunInWindowedLayout:(bool)arg1;
 - (void)setConfigurationID:(long long)arg1;
 - (void)setConfiguresAppAudioSession:(bool)arg1;
+- (void)setMultiCamSession:(bool)arg1;
 - (void)setUsesAppAudioSession:(bool)arg1;
+- (void)setXctestAuthorizedToStealDevice:(bool)arg1;
 - (id)sinkConfigurations;
 - (id)sourceConfigurations;
 - (bool)usesAppAudioSession;
+- (bool)xctestAuthorizedToStealDevice;
 
 @end

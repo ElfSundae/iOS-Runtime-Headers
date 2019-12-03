@@ -10,6 +10,7 @@
 
 - (EKChangeSet *)changeSet;
 - (EKObject *)existingMeltedObject;
+- (Class)frozenClass;
 - (struct EKPersistentObject { Class x1; }*)frozenObject;
 - (id)initWithObject:(id <EKProtocolObject>)arg1;
 - (bool)isCompletelyEqual:(id <EKFrozenMeltedPair>)arg1;

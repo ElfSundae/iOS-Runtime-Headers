@@ -32,6 +32,7 @@
 - (void).cxx_destruct;
 - (id)convertDictionaryToString:(id)arg1;
 - (id)initWithScenario:(id)arg1;
+- (id)initWithSignpostEvent:(id)arg1 scenario:(id)arg2 error:(id*)arg3;
 - (id)initWithSignpostInterval:(id)arg1 scenario:(id)arg2 error:(id*)arg3;
 - (id)interval;
 - (id)metadata;

@@ -44,11 +44,11 @@
 + (id)defaultEscherWordArtProperties;
 + (id)defaultProperties;
 
+- (void).cxx_destruct;
 - (id)autoFit;
 - (float)bottomInset;
 - (int)columnCount;
 - (float)columnSpacing;
-- (void)dealloc;
 - (id)description;
 - (void)fixPropertiesForChangingParentPreservingEffectiveValues:(id)arg1;
 - (unsigned char)flowType;

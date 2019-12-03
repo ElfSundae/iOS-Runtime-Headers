@@ -42,6 +42,7 @@
         double height; 
     }  _shadowOffset;
     double  _shadowRadius;
+    UITraitCollection * _startingTraitCollection;
 }
 
 @property (nonatomic, retain) UIColor *backgroundColor;
@@ -102,6 +103,7 @@
 - (bool)_backgroundIsOpaque;
 - (id)_defaultPlaceholderColor;
 - (void)_drawBordersWithImageRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 bounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
+- (id)_dynamicUberImageWithBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 inputSize:(struct CGSize { double x1; double x2; })arg2 drawBlock:(id /* block */)arg3;
 - (id)_imageWithSize:(struct CGSize { double x1; double x2; })arg1 isOpaque:(bool)arg2 drawBlock:(id /* block */)arg3;
 - (id)_leftToRightGradient:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 contentRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 drawBlock:(id /* block */)arg3;
 - (id)_outputImageWithInputSize:(struct CGSize { double x1; double x2; })arg1 outputSize:(struct CGSize { double x1; double x2; })arg2 drawBlock:(id /* block */)arg3;
@@ -110,7 +112,7 @@
 - (id)_roundedBorderWithBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 contentRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 drawBlock:(id /* block */)arg3;
 - (id)_scaledImageWithBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 contentRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 drawBlock:(id /* block */)arg3;
 - (id)_uberBannerImageWithBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 inputSize:(struct CGSize { double x1; double x2; })arg2 drawBlock:(id /* block */)arg3;
-- (id)_uberImageWithBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 inputSize:(struct CGSize { double x1; double x2; })arg2 drawBlock:(id /* block */)arg3;
+- (id)_uberImageWithBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 inputSize:(struct CGSize { double x1; double x2; })arg2 backgroundColor:(id)arg3 drawBlock:(id /* block */)arg4;
 - (id)backgroundColor;
 - (id)borderColor;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })borderMargins;

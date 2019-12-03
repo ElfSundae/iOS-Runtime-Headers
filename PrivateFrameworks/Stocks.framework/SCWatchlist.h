@@ -18,6 +18,7 @@
 @property (nonatomic, retain) NSHashTable *observers;
 @property (nonatomic, retain) SCKStartupQueue *startupQueue;
 
++ (id)supportedCommands;
 + (id)zoneMergeHandler;
 + (id)zoneSchema;
 

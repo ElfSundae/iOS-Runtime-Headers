@@ -14,6 +14,8 @@
 @property (nonatomic, copy) NSString *tagline;
 @property (nonatomic, copy) NSString *title;
 
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
 + (id)__artworkCatalogBlock_KEY;
 + (id)__creator_KEY;
 + (id)__editorNotes_KEY;
@@ -28,5 +30,9 @@
 - (id)artworkCatalog;
 - (id)editorialArtworkCatalog;
 - (id)humanDescription;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
++ (id)mqf_requiredSectionPlaybackProperties;
 
 @end

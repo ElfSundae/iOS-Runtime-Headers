@@ -3,7 +3,6 @@
  */
 
 @interface HDHeartDailyAnalytics : NSObject {
-    HDAWDHealthKitHeartDailyAnalytics * _awdPayload;
     NSMutableDictionary * _payload;
 }
 

@@ -7,7 +7,9 @@
 
 - (long long)code;
 - (NSNumber *)continueRunning;
+- (NSNumber *)requestsIntentExecution;
 - (void)setContinueRunning:(NSNumber *)arg1;
+- (void)setRequestsIntentExecution:(NSNumber *)arg1;
 - (void)setSteps:(NSArray *)arg1;
 - (void)setUnderlyingIntent:(INArchivedObject *)arg1;
 - (void)setUnderlyingIntentResponse:(INArchivedObject *)arg1;

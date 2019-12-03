@@ -8,7 +8,7 @@
     NSString * _title;
 }
 
-@property double size;
+@property (nonatomic) double size;
 @property (nonatomic, retain) NSString *subtitle;
 @property (nonatomic, retain) NSString *title;
 

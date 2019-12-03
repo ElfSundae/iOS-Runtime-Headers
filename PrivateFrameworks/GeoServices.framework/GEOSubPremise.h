@@ -12,8 +12,11 @@
 @property (nonatomic) int type;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -22,6 +25,7 @@
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)name;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setName:(id)arg1;
 - (void)setType:(int)arg1;

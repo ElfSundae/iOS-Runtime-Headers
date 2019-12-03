@@ -11,6 +11,7 @@
 - (long long)code;
 - (id)domain;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (oneway void)release;
 - (id)retain;

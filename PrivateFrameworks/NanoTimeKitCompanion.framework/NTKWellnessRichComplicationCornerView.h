@@ -13,5 +13,7 @@
 - (void)_showEmptyViewsWithString:(id)arg1 shortText:(id)arg2;
 - (void)_updateLabelWithTemplate:(id)arg1;
 - (void)_updateRingWithTemplate:(id)arg1;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 
 @end

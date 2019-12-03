@@ -13,7 +13,7 @@
 
 - (id)createFetchRequestContext;
 - (void)dealloc;
-- (void)executeRequestCore:(id*)arg1;
+- (bool)executeRequestCore:(id*)arg1;
 - (id)fetchRequest;
 - (bool)forConflictAnalysis;
 - (id)initWithObjectID:(id)arg1 context:(id)arg2 sqlCore:(id)arg3;

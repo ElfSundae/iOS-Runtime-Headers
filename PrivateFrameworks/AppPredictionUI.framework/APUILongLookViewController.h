@@ -2,13 +2,13 @@
    Image: /System/Library/PrivateFrameworks/AppPredictionUI.framework/AppPredictionUI
  */
 
-@interface APUILongLookViewController : UIViewController <PLExpandedPlatterPresentationViewDelegate, PLPreviewInteractionPresentable> {
+@interface APUILongLookViewController : UIViewController <PLClickPresentationInteractionPresentable, PLExpandedPlatterPresentationViewDelegate> {
     UIActivityIndicatorView * _activityIndicatorView;
     <APUILongLookViewControllerDataSource> * _dataSource;
     <APUILongLookViewControllerDelegate> * _delegate;
     PLExpandedPlatterView * _expandedPlatterView;
     UITapGestureRecognizer * _platterTapGestureRecognizer;
-    <PLPreviewInteractionPresenting> * _presenter;
+    <PLClickPresentationInteractionPresenting> * _presenter;
     SUICProgressEventViewController * _progressEventViewController;
     bool  _suppressSpinner;
 }
@@ -20,7 +20,7 @@
 @property (nonatomic, retain) PLExpandedPlatterView *expandedPlatterView;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) UITapGestureRecognizer *platterTapGestureRecognizer;
-@property (nonatomic) <PLPreviewInteractionPresenting> *presenter;
+@property (nonatomic) <PLClickPresentationInteractionPresenting> *presenter;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) UIView *viewForTouchContinuation;
 @property (nonatomic, readonly) UIView *viewWithContent;

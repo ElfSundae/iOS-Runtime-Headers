@@ -7,12 +7,12 @@
     unsigned int  _count;
     NSMutableArray * _errors;
     struct { 
-        unsigned int bytes : 1; 
-        unsigned int count : 1; 
-        unsigned int httpStatus : 1; 
-        unsigned int missType : 1; 
-        unsigned int requestorType : 1; 
-    }  _has;
+        unsigned int has_bytes : 1; 
+        unsigned int has_count : 1; 
+        unsigned int has_httpStatus : 1; 
+        unsigned int has_missType : 1; 
+        unsigned int has_requestorType : 1; 
+    }  _flags;
     unsigned int  _httpStatus;
     int  _missType;
     int  _requestorType;
@@ -31,6 +31,7 @@
 @property (nonatomic) int requestorType;
 
 + (Class)errorsType;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsMissType:(id)arg1;
@@ -57,6 +58,7 @@
 - (void)mergeFrom:(id)arg1;
 - (int)missType;
 - (id)missTypeAsString:(int)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (int)requestorType;
 - (id)requestorTypeAsString:(int)arg1;

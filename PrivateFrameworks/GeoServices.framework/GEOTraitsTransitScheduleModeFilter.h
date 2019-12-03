@@ -4,8 +4,8 @@
 
 @interface GEOTraitsTransitScheduleModeFilter : PBCodable <NSCopying> {
     struct { 
-        unsigned int numAdditionalDepartures : 1; 
-    }  _has;
+        unsigned int has_numAdditionalDepartures : 1; 
+    }  _flags;
     unsigned int  _numAdditionalDepartures;
     GEOTraitsTransitScheduleTimeRange * _timeRange;
     PBUnknownFields * _unknownFields;
@@ -17,7 +17,10 @@
 @property (nonatomic, retain) GEOTraitsTransitScheduleTimeRange *timeRange;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)configureWithDefaultStartTime:(double)arg1 duration:(double)arg2 numAdditionalDepartures:(unsigned int)arg3;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -29,6 +32,7 @@
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (unsigned int)numAdditionalDepartures;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasNumAdditionalDepartures:(bool)arg1;
 - (void)setNumAdditionalDepartures:(unsigned int)arg1;

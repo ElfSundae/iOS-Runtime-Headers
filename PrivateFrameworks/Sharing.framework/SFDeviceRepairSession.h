@@ -17,6 +17,7 @@
     bool  _invalidateCalled;
     int  _pairVerifyState;
     SFDevice * _peerDevice;
+    int  _preflightWiFiEarlyState;
     int  _preflightWiFiState;
     UIViewController * _presentingViewController;
     unsigned long long  _problemFlags;
@@ -55,7 +56,8 @@
 - (int)_runGetProblems;
 - (int)_runHomeKitSetup;
 - (int)_runPairVerify;
-- (int)_runPreflightWiFi;
+- (int)_runPreflightWiFiEarly;
+- (int)_runPreflightWiFiFull;
 - (int)_runSFSessionStart;
 - (int)_runTRAuthentication;
 - (int)_runTRSessionStart;

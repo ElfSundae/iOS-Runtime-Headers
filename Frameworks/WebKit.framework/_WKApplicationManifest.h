@@ -10,7 +10,7 @@
     }  _applicationManifest;
 }
 
-@property (readonly) /* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*_apiObject;
+@property (readonly) struct Object { int (**x1)(); id x2; }*_apiObject;
 @property (nonatomic, readonly, copy) NSString *applicationDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -25,7 +25,7 @@
 + (id)applicationManifestFromJSON:(id)arg1 manifestURL:(id)arg2 documentURL:(id)arg3;
 + (bool)supportsSecureCoding;
 
-- (/* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*)_apiObject;
+- (struct Object { int (**x1)(); id x2; }*)_apiObject;
 - (id)applicationDescription;
 - (void)dealloc;
 - (long long)displayMode;

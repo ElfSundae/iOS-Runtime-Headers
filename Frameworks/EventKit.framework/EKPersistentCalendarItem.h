@@ -32,6 +32,7 @@
 - (id)externalData;
 - (id)externalID;
 - (id)externalModificationTag;
+- (id)externalScheduleID;
 - (bool)hasAttendees;
 - (bool)hasNotes;
 - (bool)hasRecurrenceRules;
@@ -74,6 +75,7 @@
 - (void)setExternalData:(id)arg1;
 - (void)setExternalID:(id)arg1;
 - (void)setExternalModificationTag:(id)arg1;
+- (void)setExternalScheduleID:(id)arg1;
 - (void)setHasAttendees:(bool)arg1;
 - (void)setHasNotes:(bool)arg1;
 - (void)setHasRecurrenceRules:(bool)arg1;

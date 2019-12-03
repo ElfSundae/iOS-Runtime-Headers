@@ -2,14 +2,14 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUSaveToCameraRollActivity : UISaveToCameraRollActivity <PUActivity> {
-    PUActivityItemSourceController * _itemSourceController;
+@interface PUSaveToCameraRollActivity : UISaveToCameraRollActivity <PXActivity> {
+    <PXActivityItemSourceController> * _itemSourceController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) PUActivityItemSourceController *itemSourceController;
+@property (nonatomic) <PXActivityItemSourceController> *itemSourceController;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

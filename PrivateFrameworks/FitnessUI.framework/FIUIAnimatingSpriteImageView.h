@@ -15,6 +15,9 @@
 @property (nonatomic) long long spriteFrameCount;
 @property (nonatomic, retain) UIImage *spriteImage;
 
++ (id)_createNewSpriteArray:(id)arg1 currentFrame:(unsigned long long)arg2 arraySize:(unsigned long long)arg3 interrupted:(bool)arg4;
++ (unsigned long long)_findSpriteIndex:(struct CGPoint { double x1; double x2; })arg1 centerPoints:(id)arg2;
+
 - (void).cxx_destruct;
 - (id)_centerPointValues;
 - (struct CGSize { double x1; double x2; })_spriteFrameSize;
@@ -33,6 +36,6 @@
 - (long long)spriteFrameCount;
 - (id)spriteImage;
 - (void)startAnimating;
-- (void)stopAnimating;
+- (void)stopAnimatingFinishingCycle:(bool)arg1;
 
 @end

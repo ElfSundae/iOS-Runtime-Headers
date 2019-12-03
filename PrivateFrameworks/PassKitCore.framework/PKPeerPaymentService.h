@@ -38,6 +38,7 @@
 - (void)presentRegistrationFlowWithAccount:(id)arg1 orientation:(id)arg2 completion:(id /* block */)arg3;
 - (void)receivedPeerPaymentMessageData:(id)arg1;
 - (void)registerDeviceWithCompletion:(id /* block */)arg1;
+- (void)registerDeviceWithForceReregister:(bool)arg1 completion:(id /* block */)arg2;
 - (void)registrationStatusWithCompletion:(id /* block */)arg1;
 - (void)resetApplePayManateeViewWithCompletion:(id /* block */)arg1;
 - (void)resumeAccountChangedNotifications;

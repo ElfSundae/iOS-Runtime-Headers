@@ -5,6 +5,7 @@
 @interface SBNotificationDefaults : SBAbstractSpringBoardDefaultDomain
 
 @property (nonatomic, readonly) bool alwaysPerformDefaultAction;
+@property (nonatomic, readonly) bool alwaysSpeakNotifications;
 @property (nonatomic, retain) NSArray *displayIDsWithBadgingEnabled;
 @property (nonatomic, readonly) bool dontSuppressForPrivacyWhenUnlocked;
 @property (nonatomic, readonly) NSArray *legacyAlarmList;

@@ -7,11 +7,25 @@
     int  _field;
     NSString * _fieldName;
     struct { 
-        unsigned int field : 1; 
-        unsigned int isMarkedIncorrect : 1; 
-    }  _has;
+        unsigned int has_field : 1; 
+        unsigned int has_isMarkedIncorrect : 1; 
+        unsigned int read_correctedValue : 1; 
+        unsigned int read_fieldName : 1; 
+        unsigned int read_originalValue : 1; 
+        unsigned int wrote_correctedValue : 1; 
+        unsigned int wrote_fieldName : 1; 
+        unsigned int wrote_originalValue : 1; 
+        unsigned int wrote_field : 1; 
+        unsigned int wrote_isMarkedIncorrect : 1; 
+    }  _flags;
     bool  _isMarkedIncorrect;
     NSString * _originalValue;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
 }
 
 @property (nonatomic, retain) NSString *correctedValue;
@@ -25,8 +39,13 @@
 @property (nonatomic) bool isMarkedIncorrect;
 @property (nonatomic, retain) NSString *originalValue;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsField:(id)arg1;
+- (void)_readCorrectedValue;
+- (void)_readFieldName;
+- (void)_readOriginalValue;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)correctedValue;
@@ -41,10 +60,13 @@
 - (bool)hasIsMarkedIncorrect;
 - (bool)hasOriginalValue;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)isMarkedIncorrect;
 - (void)mergeFrom:(id)arg1;
 - (id)originalValue;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setCorrectedValue:(id)arg1;
 - (void)setField:(int)arg1;

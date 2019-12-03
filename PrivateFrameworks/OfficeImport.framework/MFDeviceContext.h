@@ -42,10 +42,10 @@
 
 + (id)deviceContextWithDriver:(id)arg1;
 
+- (void).cxx_destruct;
 - (bool)clippingIsRestarted;
 - (id)clippingPaths;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (int)getArcDirection;
 - (id)getBkColour;
 - (int)getBkMode;

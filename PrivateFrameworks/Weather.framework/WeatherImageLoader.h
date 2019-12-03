@@ -20,6 +20,7 @@
 + (id)conditionImageNamed:(id)arg1 style:(long long)arg2;
 + (id)conditionImageWithConditionIndex:(long long)arg1;
 + (id)conditionImageWithConditionIndex:(long long)arg1 style:(long long)arg2;
++ (void)preloadImages;
 + (id)sharedImageLoader;
 
 - (void).cxx_destruct;

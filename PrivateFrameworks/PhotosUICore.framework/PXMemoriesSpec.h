@@ -3,6 +3,7 @@
  */
 
 @interface PXMemoriesSpec : PXFeatureSpec {
+    double  __columnWidth;
     double  __displayScale;
     unsigned long long  __style;
     bool  _alwaysShowFavoritesBadge;
@@ -13,9 +14,18 @@
     }  _borderOffset;
     double  _borderWidth;
     double  _distanceBetweenHeaderBaselineAndImageTop;
-    double  _favoriteBadgeHeight;
-    double  _favoriteBadgeInset;
+    struct UIEdgeInsets { 
+        double top; 
+        double left; 
+        double bottom; 
+        double right; 
+    }  _favoriteBadgeInset;
+    struct CGSize { 
+        double width; 
+        double height; 
+    }  _favoriteBadgeSize;
     double  _feedAdditionalContentThreshold;
+    long long  _feedAxis;
     struct UIColor { Class x1; } * _feedBackgroundColor;
     struct UIEdgeInsets { 
         double top; 
@@ -28,7 +38,6 @@
     long long  _feedHeroPosition;
     double  _feedInteritemSpacing;
     unsigned long long  _feedMemoriesPerRow;
-    long long  _feedScrollDirection;
     bool  _feedShouldAllowHeaders;
     double  _firstFeedEntryHeaderHeight;
     struct CGPoint { 
@@ -45,6 +54,7 @@
     double  _tabTopContentPadding;
 }
 
+@property (nonatomic, readonly) double _columnWidth;
 @property (nonatomic, readonly) double _displayScale;
 @property (nonatomic, readonly) unsigned long long _style;
 @property (nonatomic, readonly) bool alwaysShowFavoritesBadge;
@@ -53,9 +63,10 @@
 @property (nonatomic, readonly) double borderWidth;
 @property (nonatomic, readonly) double bottomShadowPadding;
 @property (nonatomic, readonly) double distanceBetweenHeaderBaselineAndImageTop;
-@property (nonatomic, readonly) double favoriteBadgeHeight;
-@property (nonatomic, readonly) double favoriteBadgeInset;
+@property (nonatomic, readonly) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } favoriteBadgeInset;
+@property (nonatomic, readonly) struct CGSize { double x1; double x2; } favoriteBadgeSize;
 @property (nonatomic, readonly) double feedAdditionalContentThreshold;
+@property (nonatomic, readonly) long long feedAxis;
 @property (nonatomic, readonly) UIColor *feedBackgroundColor;
 @property (nonatomic, readonly) Class feedDataSourceManagerClass;
 @property (nonatomic, readonly) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } feedEntryEdgeInsets;
@@ -67,7 +78,6 @@
 @property (nonatomic, readonly) double feedInteritemSpacing;
 @property (nonatomic, readonly) Class feedLayoutMetricsClass;
 @property (nonatomic, readonly) unsigned long long feedMemoriesPerRow;
-@property (nonatomic, readonly) long long feedScrollDirection;
 @property (nonatomic, readonly) double feedSecondaryImagePaddingBottom;
 @property (nonatomic, readonly) long long feedSectionLayoutAxis;
 @property (nonatomic, readonly) bool feedShouldAllowHeaders;
@@ -86,6 +96,7 @@
 
 - (void).cxx_destruct;
 - (void)_calculateSectionInsetWithExtendedTraitCollection:(id)arg1;
+- (double)_columnWidth;
 - (double)_displayScale;
 - (double)_feedInteritemSpacingForReferenceSize:(struct CGSize { double x1; double x2; })arg1;
 - (unsigned long long)_style;
@@ -96,9 +107,10 @@
 - (double)bottomShadowPadding;
 - (id)createViewSpecWithDescriptor:(struct PXViewSpecDescriptor { long long x1; unsigned long long x2; struct CGSize { double x_3_1_1; double x_3_1_2; } x3; })arg1;
 - (double)distanceBetweenHeaderBaselineAndImageTop;
-- (double)favoriteBadgeHeight;
-- (double)favoriteBadgeInset;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })favoriteBadgeInset;
+- (struct CGSize { double x1; double x2; })favoriteBadgeSize;
 - (double)feedAdditionalContentThreshold;
+- (long long)feedAxis;
 - (struct UIColor { Class x1; }*)feedBackgroundColor;
 - (struct UIColor { Class x1; }*)feedCategoryLabelTextColor;
 - (Class)feedDataSourceManagerClass;
@@ -111,7 +123,6 @@
 - (double)feedInteritemSpacing;
 - (Class)feedLayoutMetricsClass;
 - (unsigned long long)feedMemoriesPerRow;
-- (long long)feedScrollDirection;
 - (double)feedSecondaryImagePaddingBottom;
 - (long long)feedSectionLayoutAxis;
 - (bool)feedShouldAllowHeaders;

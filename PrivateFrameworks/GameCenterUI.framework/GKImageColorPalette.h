@@ -21,11 +21,11 @@
 
 @property (retain) NSArray *bubbleColors;
 
+- (void).cxx_destruct;
 - (bool)analyzeImage:(struct CGImage { }*)arg1;
 - (id)bubbleColors;
 - (void)clearMainHistograms;
 - (void)clearSaturationAndBrightnessHistograms;
-- (void)dealloc;
 - (void)findBrightColors;
 - (void)generateHSVMapWithContext:(struct CGContext { }*)arg1;
 - (id)initWithImage:(id)arg1;

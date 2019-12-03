@@ -31,7 +31,7 @@
 - (id)_newRentalExpirationlabel:(id)arg1 exisitingLabel:(id)arg2;
 - (void)_removeGenreLabelAndSeparator;
 - (void)_removeSeparatorsFromGroupsIfNeeded:(bool)arg1;
-- (bool)_shouldPutTextOnSeaparateLines;
+- (bool)_shouldPutTextOnSeparateLines;
 - (double)_totalSubviewsWidth;
 - (void)_updateAppearance;
 - (double)bottomMarginToLabel:(id)arg1 withBaselineMargin:(double)arg2;

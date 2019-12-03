@@ -7,10 +7,9 @@
 
 - (void)dismissGadgetViewController:(void *)arg1 animated:(void *)arg2 completion:(void *)arg3; // needs 3 arg types, found 7: struct NSObject { Class x1; }*, bool, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, void*
 - (bool)gadget:(void *)arg1 transitionToViewController:(void *)arg2 animated:(void *)arg3 completion:(void *)arg4; // needs 4 arg types, found 8: <PXGadget> *, struct NSObject { Class x1; }*, bool, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, void*
-- (<PXGridPresentation> *)gridPresentation;
-- (PXOneUpPresentation *)oneUpPresentation;
+- (<PXGadgetTransition> *)gadgetTransition;
 - (void)presentGadgetViewController:(void *)arg1 animated:(void *)arg2 completion:(void *)arg3; // needs 3 arg types, found 7: struct NSObject { Class x1; }*, bool, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, void*
-- (bool)scrollGadgetToVisible:(id <PXGadget>)arg1 animated:(bool)arg2;
+- (PXGadgetNavigationHelper *)rootNavigationHelper;
 
 @optional
 

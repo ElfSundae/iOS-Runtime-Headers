@@ -7,6 +7,7 @@
     NSArray * _distantEndpoints;
     NSMutableDictionary * _distantExternalDevices;
     NSArray * _distantOutputDevices;
+    bool  _enableThrottling;
     unsigned int  _endpointFeatures;
     bool  _hostedRoutingConnectionDidInitialize;
     NSXPCConnection * _hostedRoutingSessionConnection;
@@ -47,7 +48,7 @@
 - (id)distantOutputDevices;
 - (unsigned int)endpointFeatures;
 - (id)hostedRoutingSessionConnection;
-- (id)initWithEndpointFeatures:(unsigned int)arg1;
+- (id)initWithEndpointFeatures:(unsigned int)arg1 enableThrottling:(bool)arg2;
 - (id)routingContextUID;
 - (void)setDiscoveryMode:(unsigned int)arg1;
 - (void)setDistantEndpoints:(id)arg1;

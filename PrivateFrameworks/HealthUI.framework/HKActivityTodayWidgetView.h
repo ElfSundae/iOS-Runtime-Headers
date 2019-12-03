@@ -34,6 +34,7 @@
 - (void)_updateForCurrentSizeCategoryAndSystemLanguage;
 - (void)_updateMoveValueLabelWithSummary:(id)arg1;
 - (void)_updateStandTitleLabelWithSummary:(id)arg1;
+- (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 activeEnergyUnit:(id)arg2 basalEnergyUnit:(id)arg3;
 - (void)setActiveEnergyUnit:(id)arg1 basalEnergyUnit:(id)arg2;

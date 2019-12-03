@@ -25,6 +25,7 @@
     NSString * _performanceTestName;
     NSMutableDictionary * _placeholdersPerPassStyle;
     NSObject<OS_dispatch_queue> * _queueCaching;
+    NSObject<OS_dispatch_queue> * _queuePlaceholder;
     bool  _scrollingFast;
     bool  _scrollingUp;
     bool  _shouldProcessHighPriorityRequests;
@@ -43,16 +44,19 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long performanceTest;
 @property (nonatomic, retain) NSString *performanceTestName;
+@property (nonatomic, retain) NSDictionary *placeholders;
 @property (readonly) Class superclass;
 @property (nonatomic) long long testIteration;
+
++ (id)_generatePlaceholderImageForStyle:(long long)arg1;
++ (void)loadPlaceholdersWithCompletion:(id /* block */)arg1;
 
 - (void).cxx_destruct;
 - (id)_createImageForPass:(id)arg1 imageSize:(struct CGSize { double x1; double x2; })arg2 cacheKey:(id)arg3 fullPass:(bool)arg4 stacked:(bool)arg5;
 - (id)_createPassStackWithPassImage:(id)arg1 withHeight:(double)arg2;
-- (id)_cropImage:(id)arg1 toHeight:(double)arg2;
 - (void)_imageOfSize:(struct CGSize { double x1; double x2; })arg1 forPass:(id)arg2 fullPass:(bool)arg3 stacked:(bool)arg4 synchronously:(bool)arg5 preemptive:(bool)arg6 placeholder:(id /* block */)arg7 completion:(id /* block */)arg8;
 - (unsigned long long)_imagesToKeepOutsideVisibleCells;
-- (id)_resizedImageWithImage:(id)arg1 alignmentSize:(struct CGSize { double x1; double x2; })arg2;
+- (void)_placeholderImageForStyle:(long long)arg1 completion:(id /* block */)arg2;
 - (void)_setShouldProcessLowPriorityRequests:(bool)arg1;
 - (void)_updateShouldProcessHighPriorityRequestsWithFastScrolling:(bool)arg1;
 - (void)beginPassDeletionTestWithTestName:(id)arg1;
@@ -64,9 +68,8 @@
 - (id)existingGroupsController;
 - (void)failedTestWithReason:(id)arg1;
 - (void)findApps;
-- (void)generatePlaceholderImages;
 - (void)imageForPass:(id)arg1 stacked:(bool)arg2 synchronously:(bool)arg3 placeholder:(id /* block */)arg4 completion:(id /* block */)arg5;
-- (id)initWithStyle:(long long)arg1;
+- (id)initWithStyle:(long long)arg1 placeholders:(id)arg2;
 - (void)loadContentAndImageSetFromExistingPassForPass:(id)arg1;
 - (id)mostRecentPassInGroup:(id)arg1;
 - (void)moveHighPriorityToLowPriorityWithCacheKey:(id)arg1;
@@ -76,6 +79,7 @@
 - (void)passedTest;
 - (long long)performanceTest;
 - (id)performanceTestName;
+- (id)placeholders;
 - (void)preemptivelyCacheImagesForPass:(id)arg1 stacked:(bool)arg2;
 - (void)processCacheRequest:(id)arg1;
 - (void)removeRequestsWithCacheKey:(id)arg1;
@@ -94,6 +98,7 @@
 - (void)setExistingGroupsController:(id)arg1;
 - (void)setPerformanceTest:(long long)arg1;
 - (void)setPerformanceTestName:(id)arg1;
+- (void)setPlaceholders:(id)arg1;
 - (void)setTestIteration:(long long)arg1;
 - (void)showNoPassesView:(bool)arg1;
 - (void)startedTestWithName:(id)arg1;

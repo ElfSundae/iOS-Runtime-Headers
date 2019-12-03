@@ -21,6 +21,7 @@
 @property (nonatomic, readonly) HMFHTTPServer *server;
 @property (readonly) Class superclass;
 
++ (id)maximumSupportedProtocolVersion;
 + (id)shortDescription;
 
 - (void).cxx_destruct;

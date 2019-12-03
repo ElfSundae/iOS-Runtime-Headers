@@ -4,6 +4,7 @@
 
 @interface NSNotification : NSObject <NSCoding, NSCopying>
 
+@property (nonatomic, readonly) bool _sf_perSitePreferenceNotificationWasSentFromAnotherProcess;
 @property (readonly, copy) NSString *name;
 @property (readonly, retain) id object;
 @property (nonatomic, readonly) _MRNowPlayingPlayerPathProtobuf *playerPath;
@@ -29,13 +30,21 @@
 - (id)replacementObjectForPortCoder:(id)arg1;
 - (id)userInfo;
 
-// Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
+// Image: /System/Library/Frameworks/SafariServices.framework/SafariServices
 
-- (id)pu_screen;
+- (bool)_sf_perSitePreferenceNotificationWasSentFromAnotherProcess;
 
 // Image: /System/Library/PrivateFrameworks/AvatarUI.framework/AvatarUI
 
 - (id)_avtui_changedRecordIdentifiers;
+
+// Image: /System/Library/PrivateFrameworks/BusinessChatService.framework/BusinessChatService
+
+- (id)error;
+
+// Image: /System/Library/PrivateFrameworks/HealthRecordsUI.framework/HealthRecordsUI
+
++ (id)OAuthCompletionNotification;
 
 // Image: /System/Library/PrivateFrameworks/MediaRemote.framework/MediaRemote
 

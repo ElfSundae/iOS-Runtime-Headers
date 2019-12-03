@@ -15,6 +15,7 @@
 - (void).cxx_destruct;
 - (id)fileAsset;
 - (id)initWithFileAsset:(id)arg1 sourceItemIdentifiers:(id)arg2;
+- (id)mediaLibraryForItemIdentifiers:(id)arg1;
 - (void)performWithResponseHandler:(id /* block */)arg1;
 - (void)setFileAsset:(id)arg1;
 - (void)setSourceItemIdentifiers:(id)arg1;

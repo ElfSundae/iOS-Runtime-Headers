@@ -19,9 +19,6 @@
 @property (readonly) Class superclass;
 @property (getter=isUnavailable, nonatomic) bool unavailable;
 
-+ (long long)flashModeForTorchMode:(long long)arg1;
-+ (long long)torchModeForFlashMode:(long long)arg1;
-
 - (void).cxx_destruct;
 - (void)_commonCAMFlashButtonInitialization;
 - (id)_currentGlyphImageForAccessibilityHUD:(bool)arg1;

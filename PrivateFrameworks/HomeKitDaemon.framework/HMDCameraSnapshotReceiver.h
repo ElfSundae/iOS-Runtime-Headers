@@ -7,7 +7,7 @@
     NSObject<OS_dispatch_queue> * _delegateQueue;
     NSDictionary * _options;
     HMDCameraResidentMessageHandler * _residentMessageHandler;
-    HMDCameraSessionID * _sessionID;
+    HMDCameraSnapshotSessionID * _sessionID;
     HMDSnapshotFile * _snapshotFile;
     HMDCameraSnapshotMetrics * _snapshotMetrics;
     HMDSnapshotRequestHandler * _snapshotRequestHandler;
@@ -22,7 +22,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSDictionary *options;
 @property (nonatomic, readonly) HMDCameraResidentMessageHandler *residentMessageHandler;
-@property (nonatomic, readonly) HMDCameraSessionID *sessionID;
+@property (nonatomic, readonly) HMDCameraSnapshotSessionID *sessionID;
 @property (nonatomic, retain) HMDSnapshotFile *snapshotFile;
 @property (nonatomic, retain) HMDCameraSnapshotMetrics *snapshotMetrics;
 @property (nonatomic, readonly) HMDSnapshotRequestHandler *snapshotRequestHandler;

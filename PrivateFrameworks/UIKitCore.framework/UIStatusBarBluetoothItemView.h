@@ -7,7 +7,6 @@
     bool  _shouldAnimateConnection;
 }
 
-- (void)_blinkAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (id)accessibilityHUDRepresentation;
 - (double)alphaForConnected:(bool)arg1;
 - (id)contentsImage;

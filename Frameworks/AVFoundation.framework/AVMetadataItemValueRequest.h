@@ -13,7 +13,6 @@
 - (id)dataType;
 - (void)dealloc;
 - (id)error;
-- (void)finalize;
 - (id)initWithMetadataItem:(id)arg1;
 - (id)metadataItem;
 - (void)respondWithError:(id)arg1;

@@ -13,12 +13,17 @@
 @property (retain) <AFServiceHelper> *serviceHelper;
 
 - (void).cxx_destruct;
+- (void)_executeRemoteCommand:(id)arg1 peerInfo:(id)arg2 completion:(id /* block */)arg3;
+- (void)cancelOperationsForRequestID:(id)arg1;
 - (id)commandQueuer;
 - (void)executeCommand:(id)arg1 completion:(id /* block */)arg2;
 - (void)executeCommand:(id)arg1 peerInfo:(id)arg2 completion:(id /* block */)arg3;
 - (id)initWithClientLiteWithConnectionName:(id)arg1;
 - (id)initWithServiceHelper:(id)arg1 withConnectionName:(id)arg2;
 - (id)queue;
+- (void)rebootScripter;
+- (void)resetScriptExecutorCache;
+- (void)runMaintenanceWithCompletion:(id /* block */)arg1;
 - (id)serviceHelper;
 - (void)setCommandQueuer:(id)arg1;
 - (void)setQueue:(id)arg1;

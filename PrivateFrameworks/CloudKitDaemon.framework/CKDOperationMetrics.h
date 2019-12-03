@@ -9,10 +9,12 @@
     unsigned long long  _assetsUploadedFileSize;
     unsigned long long  _bytesDownloaded;
     unsigned long long  _bytesUploaded;
+    NSMutableDictionary * _chunkCountByChunkProfile;
     unsigned long long  _connections;
     unsigned long long  _connectionsCreated;
     double  _duration;
     double  _executing;
+    NSMutableDictionary * _fileCountByChunkProfile;
     double  _queueing;
     NSMutableArray * _ranges;
     unsigned long long  _recordsDeleted;
@@ -23,6 +25,7 @@
     NSMutableSet * _requestUUIDs;
     unsigned long long  _retries;
     NSDate * _startDate;
+    NSMutableDictionary * _totalBytesByChunkProfile;
 }
 
 @property unsigned long long assetsDownloaded;
@@ -31,12 +34,14 @@
 @property unsigned long long assetsUploadedFileSize;
 @property unsigned long long bytesDownloaded;
 @property unsigned long long bytesUploaded;
+@property (nonatomic, retain) NSMutableDictionary *chunkCountByChunkProfile;
 @property unsigned long long connections;
 @property unsigned long long connectionsCreated;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property double duration;
 @property double executing;
+@property (nonatomic, retain) NSMutableDictionary *fileCountByChunkProfile;
 @property (readonly) unsigned long long hash;
 @property double queueing;
 @property (nonatomic, retain) NSMutableArray *ranges;
@@ -50,6 +55,7 @@
 @property unsigned long long retries;
 @property (retain) NSDate *startDate;
 @property (readonly) Class superclass;
+@property (nonatomic, retain) NSMutableDictionary *totalBytesByChunkProfile;
 
 + (bool)supportsSecureCoding;
 
@@ -65,6 +71,7 @@
 - (unsigned long long)assetsUploadedFileSize;
 - (unsigned long long)bytesDownloaded;
 - (unsigned long long)bytesUploaded;
+- (id)chunkCountByChunkProfile;
 - (unsigned long long)connections;
 - (unsigned long long)connectionsCreated;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -72,6 +79,7 @@
 - (double)duration;
 - (void)encodeWithCoder:(id)arg1;
 - (double)executing;
+- (id)fileCountByChunkProfile;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)newRangeWithOperationState:(unsigned long long)arg1 startDate:(id)arg2 duration:(double)arg3;
@@ -91,10 +99,12 @@
 - (void)setAssetsUploadedFileSize:(unsigned long long)arg1;
 - (void)setBytesDownloaded:(unsigned long long)arg1;
 - (void)setBytesUploaded:(unsigned long long)arg1;
+- (void)setChunkCountByChunkProfile:(id)arg1;
 - (void)setConnections:(unsigned long long)arg1;
 - (void)setConnectionsCreated:(unsigned long long)arg1;
 - (void)setDuration:(double)arg1;
 - (void)setExecuting:(double)arg1;
+- (void)setFileCountByChunkProfile:(id)arg1;
 - (void)setQueueing:(double)arg1;
 - (void)setRanges:(id)arg1;
 - (void)setRecordsDeleted:(unsigned long long)arg1;
@@ -104,6 +114,8 @@
 - (void)setRequestOperationCountsByType:(id)arg1;
 - (void)setRetries:(unsigned long long)arg1;
 - (void)setStartDate:(id)arg1;
+- (void)setTotalBytesByChunkProfile:(id)arg1;
 - (id)startDate;
+- (id)totalBytesByChunkProfile;
 
 @end

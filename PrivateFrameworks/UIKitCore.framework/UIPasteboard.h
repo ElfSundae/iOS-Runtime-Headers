@@ -6,6 +6,7 @@
 
 @property (nonatomic, copy) NSURL *URL;
 @property (nonatomic, copy) NSArray *URLs;
+@property (nonatomic, readonly) long long _changeCountIgnoringPinningActivity;
 @property (nonatomic, readonly, copy) NSArray *availableTypes;
 @property (nonatomic, readonly) long long changeCount;
 @property (nonatomic, copy) UIColor *color;
@@ -27,8 +28,10 @@
 
 // Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 
++ (void)_clearPinnedItemProvidersForPasteboardNamed:(id)arg1;
 + (id)_pasteboardWithName:(id)arg1 create:(bool)arg2;
 + (id)_pasteboardWithUniqueName;
++ (void)_pinItemProviders:(id)arg1 forPasteboardNamed:(id)arg2 withExpirationDate:(id)arg3;
 + (id)generalPasteboard;
 + (id)pasteboardWithName:(id)arg1 create:(bool)arg2;
 + (id)pasteboardWithUniqueName;
@@ -36,7 +39,10 @@
 
 - (id)URL;
 - (id)URLs;
+- (long long)_changeCountIgnoringPinningActivity;
+- (void)_clearPinnedItemProviders;
 - (bool)_hasStrings;
+- (void)_pinItemProviders:(id)arg1 expirationDate:(id)arg2;
 - (void)addItems:(id)arg1;
 - (id)availableTypes;
 - (bool)canInstantiateObjectsOfClass:(Class)arg1;
@@ -121,13 +127,6 @@
 - (bool)__ck_canCreateComposition;
 - (id)__ck_composition;
 - (id)__ck_mediaObjectManager;
-
-// Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
-
-- (id)pl_assetsInPhotoLibrary:(id)arg1;
-- (bool)pl_containsAssets;
-- (void)pl_setAsset:(id)arg1;
-- (void)pl_setAssets:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/SlideshowKit.framework/Frameworks/OpusFoundation.framework/OpusFoundation
 

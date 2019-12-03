@@ -71,7 +71,7 @@
 - (int)prepareForExecution;
 - (int)prepareForSubmissionWithWorkQueue:(id)arg1;
 - (id)preventionReasons;
-- (int)prewarm;
+- (int)prewarmUsingLimitedMemory:(bool)arg1;
 - (id)propagatable;
 - (void)propagateInferenceResultsToInferenceDictionary:(id)arg1 usingStorage:(id)arg2 propagationSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg3;
 - (int)submitForSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 usingStorage:(id)arg2 withSubmissionTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg3 workQueue:(id)arg4 completionHandler:(id /* block */)arg5;

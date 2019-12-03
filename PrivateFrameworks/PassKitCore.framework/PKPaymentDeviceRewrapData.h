@@ -3,26 +3,22 @@
  */
 
 @interface PKPaymentDeviceRewrapData : NSObject <NSSecureCoding> {
-    PKSecureElementCertificateSet * _certificates;
-    NSString * _deviceIdentifier;
-    NSString * _kextBlacklistVersion;
+    NSData * _platformData;
+    NSData * _platformDataSignature;
 }
 
-@property (nonatomic, copy) PKSecureElementCertificateSet *certificates;
-@property (nonatomic, copy) NSString *deviceIdentifier;
-@property (nonatomic, copy) NSString *kextBlacklistVersion;
+@property (nonatomic, copy) NSData *platformData;
+@property (nonatomic, copy) NSData *platformDataSignature;
 
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
-- (id)certificates;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (id)deviceIdentifier;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)kextBlacklistVersion;
-- (void)setCertificates:(id)arg1;
-- (void)setDeviceIdentifier:(id)arg1;
-- (void)setKextBlacklistVersion:(id)arg1;
+- (id)platformData;
+- (id)platformDataSignature;
+- (void)setPlatformData:(id)arg1;
+- (void)setPlatformDataSignature:(id)arg1;
 
 @end

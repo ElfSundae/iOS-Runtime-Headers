@@ -7,7 +7,6 @@
     bool  _canSendFetchCompletionSynchronously;
     id /* block */  _fetchCompletionBlock;
     NSObject<OS_dispatch_queue> * _fetchCompletionQueue;
-    NSObject<OS_dispatch_semaphore> * _finishedSemaphore;
     double  _maximumCachedAge;
     FCFetchOperationResult * _result;
     bool  _shouldFailOnMissingObjects;
@@ -47,7 +46,6 @@
 - (void)setWifiOnly:(bool)arg1;
 - (bool)shouldFailOnMissingObjects;
 - (void)takeInputsFromFetchOperation:(id)arg1;
-- (bool)waitUntilFinishedWithTimeout:(double)arg1;
 - (bool)wifiOnly;
 
 @end

@@ -23,6 +23,7 @@
 + (bool)localAuthenticationAvailable;
 
 - (void).cxx_destruct;
+- (void)_handleDialogFromError:(id)arg1;
 - (id)_parentViewController;
 - (void)_performRemoteAuthenticationWithCompletion:(id /* block */)arg1;
 - (long long)_responseTypeForError:(id)arg1;

@@ -8,6 +8,8 @@
     NSExpression * _trueExpression;
 }
 
+// Image: /System/Library/Frameworks/Foundation.framework/Foundation
+
 + (bool)supportsSecureCoding;
 
 - (id)_expressionWithSubstitutionVariables:(id)arg1;
@@ -24,5 +26,9 @@
 - (id)predicate;
 - (id)predicateFormat;
 - (id)trueExpression;
+
+// Image: /System/Library/Frameworks/CoreData.framework/CoreData
+
+- (id)_keypathsForDerivedPropertyValidation:(id*)arg1;
 
 @end

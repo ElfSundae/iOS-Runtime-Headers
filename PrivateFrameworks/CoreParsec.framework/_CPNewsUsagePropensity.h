@@ -3,17 +3,10 @@
  */
 
 @interface _CPNewsUsagePropensity : PBCodable <NSSecureCoding, _CPNewsUsagePropensity> {
-    long long  _collectionEndTimestamp;
-    long long  _collectionStartTimestamp;
-    int  _configuredLookbackTimeInDays;
     float  _other;
     int  _totalEngagements;
-    int  _totalSessions;
 }
 
-@property (nonatomic) long long collectionEndTimestamp;
-@property (nonatomic) long long collectionStartTimestamp;
-@property (nonatomic) int configuredLookbackTimeInDays;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -21,11 +14,7 @@
 @property (nonatomic) float other;
 @property (readonly) Class superclass;
 @property (nonatomic) int totalEngagements;
-@property (nonatomic) int totalSessions;
 
-- (long long)collectionEndTimestamp;
-- (long long)collectionStartTimestamp;
-- (int)configuredLookbackTimeInDays;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (id)initWithDictionary:(id)arg1;
@@ -34,15 +23,9 @@
 - (id)jsonData;
 - (float)other;
 - (bool)readFrom:(id)arg1;
-- (bool)requiresQueryId;
-- (void)setCollectionEndTimestamp:(long long)arg1;
-- (void)setCollectionStartTimestamp:(long long)arg1;
-- (void)setConfiguredLookbackTimeInDays:(int)arg1;
 - (void)setOther:(float)arg1;
 - (void)setTotalEngagements:(int)arg1;
-- (void)setTotalSessions:(int)arg1;
 - (int)totalEngagements;
-- (int)totalSessions;
 - (void)writeTo:(id)arg1;
 
 @end

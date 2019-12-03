@@ -115,6 +115,10 @@
 - (void)_handleOutputDevicesUpdatedMessage:(id)arg1;
 - (void)_handlePlaybackQueueRequest:(void*)arg1 forPlayer:(void*)arg2 completion:(id /* block */)arg3;
 - (void)_handlePlaybackQueueResponse:(id)arg1 completion:(id /* block */)arg2;
+- (void)_handlePlaybackSessionMigrateBeginRequest:(id)arg1 forPlayerPath:(id)arg2 completion:(id /* block */)arg3;
+- (void)_handlePlaybackSessionMigrateEndRequest:(id)arg1 error:(id)arg2 forPlayerPath:(id)arg3 completion:(id /* block */)arg4;
+- (void)_handlePlaybackSessionMigrateRequest:(id)arg1 request:(id)arg2 forPlayerPath:(id)arg3 completion:(id /* block */)arg4;
+- (void)_handlePlaybackSessionRequest:(void*)arg1 forPlayerPath:(void*)arg2 completion:(id /* block */)arg3;
 - (void)_handlePresentRouteAuthorizationStatusMessage:(id)arg1;
 - (void)_handlePromptForRouteAuthorizationMessage:(id)arg1;
 - (void)_handleRemoteCommand:(unsigned int)arg1 withOptions:(id)arg2 playerPath:(void*)arg3 completion:(id /* block */)arg4;
@@ -122,6 +126,7 @@
 - (void)_handleRemovePlayerMessage:(id)arg1;
 - (void)_handleSetArtworkMessage:(id)arg1;
 - (void)_handleSetConnectionStateMessage:(id)arg1;
+- (void)_handleSetDefaultSupportedCommandsMessage:(id)arg1;
 - (void)_handleSetNowPlayingClientMessage:(id)arg1;
 - (void)_handleSetNowPlayingPlayerMessage:(id)arg1;
 - (void)_handleSetStateMessage:(id)arg1;
@@ -143,8 +148,9 @@
 - (id)_onWorkerQueue_initializeConnectionWithOptions:(unsigned int)arg1;
 - (id)_onWorkerQueue_loadDeviceInfo;
 - (id)_onWorkerQueue_openSecuritySession;
+- (id)_onWorkerQueue_reRegisterCustomOrigin;
 - (id)_onWorkerQueue_setupCustomOrigin;
-- (void)_onWorkerQueue_syncClientState;
+- (id)_onWorkerQueue_syncClientState;
 - (void)_transportDeviceInfoDidChangeNotification:(id)arg1;
 - (void)_updateNowPlayingInfo;
 - (id)clientConnection;

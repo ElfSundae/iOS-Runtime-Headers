@@ -93,7 +93,9 @@
 - (id)cellStyleOfRowAtIndex:(struct TSUModelRowIndex { unsigned int x1; })arg1 isDefault:(out bool*)arg2;
 - (id)cellStyleOfSummaryLabelRowAtLevel:(unsigned char)arg1 isDefault:(out bool*)arg2;
 - (id)cellStyleOfSummaryRowAtLevel:(unsigned char)arg1 isDefault:(out bool*)arg2;
+- (id)characterFillAtCellCoord:(struct TSUModelCellCoord { struct TSUCellCoord { unsigned int x_1_1_1; unsigned short x_1_1_2; bool x_1_1_3; bool x_1_1_4; } x1; })arg1 optionalCell:(id)arg2;
 - (id)columnRowUIDMap;
+- (void)copyPasteboardCustomFormatsFromTableModel:(id)arg1;
 - (id)currentState;
 - (id)dataStore;
 - (id)defaultCellStyleForCellCoord:(struct TSUModelCellCoord { struct TSUCellCoord { unsigned int x_1_1_1; unsigned short x_1_1_2; bool x_1_1_3; bool x_1_1_4; } x1; })arg1;
@@ -106,7 +108,6 @@
 - (void)didRemoveRowUID:(const struct UUIDData<TSP::UUIDData> { union { unsigned char x_1_1_1[16]; struct { unsigned char x_2_2_1; unsigned char x_2_2_2; unsigned char x_2_2_3; unsigned char x_2_2_4; unsigned char x_2_2_5; unsigned char x_2_2_6; unsigned char x_2_2_7; unsigned char x_2_2_8; unsigned char x_2_2_9; unsigned char x_2_2_10; unsigned char x_2_2_11; unsigned char x_2_2_12; unsigned char x_2_2_13; unsigned char x_2_2_14; unsigned char x_2_2_15; unsigned char x_2_2_16; } x_1_1_2; struct { unsigned long long x_3_2_1; unsigned long long x_3_2_2; } x_1_1_3; } x1; }*)arg1 fromGroup:(id)arg2;
 - (void)endOfGroupingChangesBatch;
 - (void)enumerateDataStoreCellsWithBlock:(id /* block */)arg1;
-- (id)fontColorAtCellCoord:(struct TSUModelCellCoord { struct TSUCellCoord { unsigned int x_1_1_1; unsigned short x_1_1_2; bool x_1_1_3; bool x_1_1_4; } x1; })arg1 optionalCell:(id)arg2;
 - (id)formatAtCellCoord:(struct TSUModelCellCoord { struct TSUCellCoord { unsigned int x_1_1_1; unsigned short x_1_1_2; bool x_1_1_3; bool x_1_1_4; } x1; })arg1 formatIsExplicitOut:(bool*)arg2;
 - (struct TSCEFormula { struct TSCEASTNodeArray {} *x1; struct TSCEFormulaTranslationFlags { unsigned char x_2_1_1; } x2; struct UUIDData<TSP::UUIDData> { union { unsigned char x_1_2_1[16]; struct { unsigned char x_2_3_1; unsigned char x_2_3_2; unsigned char x_2_3_3; unsigned char x_2_3_4; unsigned char x_2_3_5; unsigned char x_2_3_6; unsigned char x_2_3_7; unsigned char x_2_3_8; unsigned char x_2_3_9; unsigned char x_2_3_10; unsigned char x_2_3_11; unsigned char x_2_3_12; unsigned char x_2_3_13; unsigned char x_2_3_14; unsigned char x_2_3_15; unsigned char x_2_3_16; } x_1_2_2; struct { unsigned long long x_3_3_1; unsigned long long x_3_3_2; } x_1_2_3; } x_3_1_1; } x3; struct UUIDData<TSP::UUIDData> { union { unsigned char x_1_2_1[16]; struct { unsigned char x_2_3_1; unsigned char x_2_3_2; unsigned char x_2_3_3; unsigned char x_2_3_4; unsigned char x_2_3_5; unsigned char x_2_3_6; unsigned char x_2_3_7; unsigned char x_2_3_8; unsigned char x_2_3_9; unsigned char x_2_3_10; unsigned char x_2_3_11; unsigned char x_2_3_12; unsigned char x_2_3_13; unsigned char x_2_3_14; unsigned char x_2_3_15; unsigned char x_2_3_16; } x_1_2_2; struct { unsigned long long x_3_3_1; unsigned long long x_3_3_2; } x_1_2_3; } x_4_1_1; } x4; }*)formulaAtCellCoord:(struct TSUModelCellCoord { struct TSUCellCoord { unsigned int x_1_1_1; unsigned short x_1_1_2; bool x_1_1_3; bool x_1_1_4; } x1; })arg1;
 - (int)getCell:(id)arg1 atCellCoord:(struct TSUModelCellCoord { struct TSUCellCoord { unsigned int x_1_1_1; unsigned short x_1_1_2; bool x_1_1_3; bool x_1_1_4; } x1; })arg2;
@@ -120,6 +121,7 @@
 - (unsigned long long)labelRowVisibilityAtCategoryLevel:(unsigned char)arg1;
 - (struct vector<int, std::__1::allocator<int> > { int *x1; int *x2; struct __compressed_pair<int *, std::__1::allocator<int> > { int *x_3_1_1; } x3; }*)labelRowVisibilityList;
 - (void)loadFromUnarchiver:(id)arg1;
+- (void)makePasteboardCustomFormatList;
 - (id)metadataForRowIndex:(struct TSUModelRowIndex { unsigned int x1; })arg1 hidingAction:(unsigned char)arg2;
 - (bool)needsFormulaReset;
 - (id)newCell;

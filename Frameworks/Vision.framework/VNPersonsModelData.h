@@ -5,6 +5,7 @@
 @interface VNPersonsModelData : NSObject <VNPersonsModelDataSource, VNPersonsModelFaceModelDataProvider> {
     NSMutableIndexSet * _availablePersonSerialNumbers;
     <VNPersonsModelDataDelegate> * _delegate;
+    unsigned long long  _faceprintRequestRevision;
     NSDate * _lastModificationDate;
     unsigned long long  _maximumIdentities;
     NSMutableDictionary * _personUniqueIdentifierToSerialNumberMapping;
@@ -15,6 +16,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <VNPersonsModelDataDelegate> *delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) unsigned long long faceprintRequestRevision;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSDate *lastModificationDate;
 @property (readonly) Class superclass;
@@ -28,7 +30,7 @@
 - (void)_removeExistingFaceObservations:(id)arg1 fromPersonWithUniqueIdentifier:(id)arg2;
 - (void)_removePersonWithUniqueIdentifier:(id)arg1;
 - (id)_requestNewIdentitySerialNumberAndReturnError:(id*)arg1;
-- (id)_uniqueFaceObservationsWithRegistrationState:(bool)arg1 forFaceObservations:(id)arg2 ofPersonWithUniqueIdentifier:(id)arg3 error:(id*)arg4;
+- (id)_uniqueFaceObservationsWithRegistrationState:(bool)arg1 forFaceObservations:(id)arg2 withExpectedFaceprintRequestRevision:(unsigned long long)arg3 ofPersonWithUniqueIdentifier:(id)arg4 error:(id*)arg5;
 - (bool)addFaceObservations:(id)arg1 toPersonWithUniqueIdentifier:(id)arg2 error:(id*)arg3;
 - (id)delegate;
 - (id)faceModelFaceObservationAtIndex:(unsigned long long)arg1 forPersonAtIndex:(unsigned long long)arg2;
@@ -36,6 +38,7 @@
 - (unsigned long long)faceModelNumberOfFaceObservationsForPersonAtIndex:(unsigned long long)arg1;
 - (unsigned long long)faceModelPersonsCount;
 - (id)faceModelUniqueIdentifierOfPersonAtIndex:(unsigned long long)arg1;
+- (unsigned long long)faceprintRequestRevision;
 - (id)initWithConfiguration:(id)arg1;
 - (id)lastModificationDate;
 - (unsigned long long)numberOfPersonsInPersonsModel:(id)arg1;

@@ -7,7 +7,6 @@
 @property (nonatomic, retain) NSSet *assets;
 @property (nonatomic, retain) NSString *path;
 
-- (id)filePathWithDocument:(id)arg1;
 - (id)fileURLWithDocument:(id)arg1;
 - (id)name;
 - (void)setName:(id)arg1;

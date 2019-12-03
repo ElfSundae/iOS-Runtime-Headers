@@ -3,10 +3,12 @@
  */
 
 @interface _INPBGetRideStatusIntent : PBCodable <NSCopying, NSSecureCoding, _INPBGetRideStatusIntent> {
+    bool  __encodeLegacyGloryData;
     struct { }  _has;
     _INPBIntentMetadata * _intentMetadata;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool hasIntentMetadata;
@@ -14,11 +16,17 @@
 @property (nonatomic, retain) _INPBIntentMetadata *intentMetadata;
 @property (readonly) Class superclass;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasIntentMetadata;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)intentMetadata;
 - (bool)isEqual:(id)arg1;
 - (bool)readFrom:(id)arg1;

@@ -13,6 +13,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) bool outputObscuredDueToInsufficientExternalProtection;
 @property (nonatomic) bool preventsCapture;
+@property (nonatomic) bool preventsDisplaySleepDuringVideoPlayback;
 @property (getter=isReadyForMoreMediaData, readonly) bool readyForMoreMediaData;
 @property (nonatomic, readonly) long long status;
 @property (readonly) Class superclass;
@@ -25,6 +26,8 @@
 
 - (void)_addAnimationsForContentLayer:(id)arg1 size:(struct CGSize { double x1; double x2; })arg2 gravity:(id)arg3;
 - (void)_addFigVideoQueueListeners;
+- (void)_callOldPrerollCompletionHandlerWithSuccess:(bool)arg1 andSetNewPrerollCompletionHandler:(id /* block */)arg2 forRequestID:(int)arg3;
+- (void)_completedDecodeForPrerollForRequestID:(int)arg1;
 - (int)_createVideoQueue;
 - (void)_didFinishSuspension:(id)arg1;
 - (void)_flushComplete;
@@ -47,19 +50,25 @@
 - (void)dealloc;
 - (void)enqueueSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1;
 - (id)error;
-- (void)finalize;
+- (void)expectMinimumUpcomingSampleBufferPresentationTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
+- (void)expectMonotonicallyIncreasingUpcomingSampleBufferPresentationTimes;
 - (void)flush;
 - (void)flushAndRemoveImage;
 - (void)flushWithRemovalOfDisplayedImage:(bool)arg1 completionHandler:(id /* block */)arg2;
 - (id)init;
 - (bool)isReadyForMoreMediaData;
 - (bool)outputObscuredDueToInsufficientExternalProtection;
+- (void)prerollDecodeWithCompletionHandler:(id /* block */)arg1;
 - (bool)preventsCapture;
+- (bool)preventsDisplaySleepDuringVideoPlayback;
 - (void)requestMediaDataWhenReadyOnQueue:(id)arg1 usingBlock:(id /* block */)arg2;
+- (void)resetUpcomingSampleBufferPresentationTimeExpectations;
 - (void)setBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setControlTimebase:(struct OpaqueCMTimebase { }*)arg1;
 - (void)setPreventsCapture:(bool)arg1;
+- (void)setPreventsDisplaySleepDuringVideoPlayback:(bool)arg1;
 - (bool)setRenderSynchronizer:(id)arg1 error:(id*)arg2;
+- (bool)setUpcomingPresentationTimeExpectations:(int)arg1 minimumPresentationTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2;
 - (void)setVideoGravity:(id)arg1;
 - (long long)status;
 - (void)stopRequestingMediaData;

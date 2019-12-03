@@ -23,7 +23,7 @@
 - (void)_setFinished:(bool)arg1;
 - (void)_setRemoteCancellationHandler:(id)arg1;
 - (id)callbackQueue;
-- (oneway void)cancel;
+- (void)cancel;
 - (void)completedWithResult:(id)arg1 error:(id)arg2;
 - (void)dealloc;
 - (id)description;
@@ -31,14 +31,16 @@
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (id /* block */)finishedBlock;
 - (id)init;
-- (oneway void)invalidate;
+- (void)invalidate;
 - (bool)isExecuting;
 - (bool)isFinished;
 - (id)operationDescription;
 - (void)operationDidProgressWithInfo:(id)arg1 error:(id)arg2 completionHandler:(id /* block */)arg3;
+- (id)proxifiedDescription;
 - (id)remoteOperation;
+- (void)resetRemoteOperation;
 - (void)setCallbackQueue:(id)arg1;
-- (oneway void)setCancellationHandler:(id)arg1;
+- (void)setCancellationHandler:(id)arg1;
 - (void)setFinishedBlock:(id /* block */)arg1;
 - (void)setRemoteOperation:(id)arg1;
 - (void)start;

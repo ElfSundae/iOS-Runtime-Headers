@@ -4,6 +4,4 @@
 
 @interface PHVisionAnalysisUtilities : NSObject
 
-+ (id)lastCompletePrefetchDate;
-
 @end

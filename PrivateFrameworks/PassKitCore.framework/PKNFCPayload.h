@@ -5,10 +5,12 @@
 @interface PKNFCPayload : NSObject <NSCopying, NSSecureCoding> {
     NSData * _encryptionPublicKeyData;
     NSString * _message;
+    bool  _requiresAuthentication;
 }
 
 @property (nonatomic, copy) NSData *encryptionPublicKeyData;
 @property (nonatomic, copy) NSString *message;
+@property (nonatomic) bool requiresAuthentication;
 
 + (bool)supportsSecureCoding;
 
@@ -23,7 +25,9 @@
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToPKNFCPayload:(id)arg1;
 - (id)message;
+- (bool)requiresAuthentication;
 - (void)setEncryptionPublicKeyData:(id)arg1;
 - (void)setMessage:(id)arg1;
+- (void)setRequiresAuthentication:(bool)arg1;
 
 @end

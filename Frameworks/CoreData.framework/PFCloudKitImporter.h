@@ -3,16 +3,18 @@
  */
 
 @interface PFCloudKitImporter : NSObject {
-    NSCloudKitMirroringDelegateMetadata * _metadata;
     PFCloudKitImporterOptions * _options;
     NSCloudKitMirroringImportRequest * _request;
+    unsigned long long  _totalImportedBytes;
+    CKServerChangeToken * _updatedDatabaseChangeToken;
     NSMutableArray * _workItemResults;
     NSArray * _workItems;
 }
 
-@property (nonatomic, readonly) NSCloudKitMirroringDelegateMetadata *metadata;
 @property (nonatomic, readonly, copy) PFCloudKitImporterOptions *options;
 @property (nonatomic, readonly) NSCloudKitMirroringImportRequest *request;
+@property (nonatomic, readonly) unsigned long long totalImportedBytes;
+@property (nonatomic, readonly) CKServerChangeToken *updatedDatabaseChangeToken;
 @property (nonatomic, readonly) NSArray *workItemResults;
 @property (nonatomic, readonly) NSArray *workItems;
 
@@ -21,11 +23,12 @@
 - (id)dequeueWorkItem;
 - (void)importIfNecessaryWithCompletion:(id /* block */)arg1;
 - (id)initWithOptions:(id)arg1 request:(id)arg2;
-- (id)metadata;
 - (id)options;
 - (void)processDatabaseImportContext:(id)arg1 completion:(id /* block */)arg2;
 - (void)processWorkItemsWithCompletion:(id /* block */)arg1;
 - (id)request;
+- (unsigned long long)totalImportedBytes;
+- (id)updatedDatabaseChangeToken;
 - (void)workItemFinished:(id)arg1 withResult:(id)arg2 completion:(id /* block */)arg3;
 - (id)workItemResults;
 - (id)workItems;

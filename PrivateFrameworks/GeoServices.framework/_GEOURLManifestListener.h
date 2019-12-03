@@ -4,7 +4,9 @@
 
 @interface _GEOURLManifestListener : NSObject {
     NSMutableArray * _handlers;
-    NSLock * _lock;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _lock;
     NSObject<OS_dispatch_source> * _timeoutTimer;
 }
 

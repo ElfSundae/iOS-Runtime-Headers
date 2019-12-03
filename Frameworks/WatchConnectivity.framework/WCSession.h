@@ -6,6 +6,7 @@
     long long  _activationState;
     NSDictionary * _applicationContext;
     NSOperationQueue * _backgroundWorkOperationQueue;
+    bool  _companionAppInstalled;
     bool  _complicationEnabled;
     bool  _connectionWasInterrupted;
     WCSessionUserInfoTransfer * _currentComplicationUserInfoTransfer;
@@ -36,6 +37,7 @@
 @property (nonatomic) long long activationState;
 @property (nonatomic, copy) NSDictionary *applicationContext;
 @property (readonly) NSOperationQueue *backgroundWorkOperationQueue;
+@property (getter=isCompanionAppInstalled, nonatomic) bool companionAppInstalled;
 @property (getter=isComplicationEnabled, nonatomic) bool complicationEnabled;
 @property (nonatomic) bool connectionWasInterrupted;
 @property (retain) WCSessionUserInfoTransfer *currentComplicationUserInfoTransfer;
@@ -117,6 +119,7 @@
 - (id)init;
 - (id)internalOutstandingFileTransfers;
 - (id)internalOutstandingUserInfoTransfers;
+- (bool)isCompanionAppInstalled;
 - (bool)isComplicationEnabled;
 - (bool)isEqual:(id)arg1;
 - (bool)isPaired;
@@ -173,6 +176,7 @@
 - (void)sendMessageData:(id)arg1 replyHandler:(id /* block */)arg2 errorHandler:(id /* block */)arg3;
 - (void)setActivationState:(long long)arg1;
 - (void)setApplicationContext:(id)arg1;
+- (void)setCompanionAppInstalled:(bool)arg1;
 - (void)setComplicationEnabled:(bool)arg1;
 - (void)setConnectionWasInterrupted:(bool)arg1;
 - (void)setCurrentComplicationUserInfoTransfer:(id)arg1;

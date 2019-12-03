@@ -5,6 +5,6 @@
 
 @required
 
-- (void)client_deliverActivityMoveStatistics:(NSArray *)arg1 exerciseStatistics:(NSArray *)arg2 standHoursInfo:(NSArray *)arg3 workouts:(NSArray *)arg4 query:(NSUUID *)arg5;
+- (void)client_deliverResult:(_HKActivityStatisticsQueryResult *)arg1 query:(NSUUID *)arg2;
 
 @end

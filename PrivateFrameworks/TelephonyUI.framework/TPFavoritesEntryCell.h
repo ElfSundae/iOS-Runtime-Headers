@@ -6,7 +6,6 @@
     NSString * _actionType;
     UIView * _avatarContentView;
     NSLayoutConstraint * _avatarContentViewHeightLayoutConstraint;
-    NSLayoutConstraint * _avatarContentViewWidthLayoutConstraint;
     CNAvatarViewController * _avatarViewController;
     UILabel * _contactNameLabel;
     NSLayoutConstraint * _contactNameLabelBaselineLayoutConstraint;
@@ -26,8 +25,6 @@
 @property (nonatomic, readonly) UIView *avatarContentView;
 @property (nonatomic, retain) NSLayoutConstraint *avatarContentViewHeightLayoutConstraint;
 @property (nonatomic, readonly) double avatarContentViewHeightLayoutConstraintConstant;
-@property (nonatomic, retain) NSLayoutConstraint *avatarContentViewWidthLayoutConstraint;
-@property (nonatomic, readonly) double avatarContentViewWidthLayoutConstraintConstant;
 @property (nonatomic, retain) CNAvatarViewController *avatarViewController;
 @property (nonatomic, retain) UILabel *contactNameLabel;
 @property (nonatomic, retain) NSLayoutConstraint *contactNameLabelBaselineLayoutConstraint;
@@ -54,8 +51,6 @@
 - (id)avatarContentView;
 - (id)avatarContentViewHeightLayoutConstraint;
 - (double)avatarContentViewHeightLayoutConstraintConstant;
-- (id)avatarContentViewWidthLayoutConstraint;
-- (double)avatarContentViewWidthLayoutConstraintConstant;
 - (id)avatarViewController;
 - (void)commonInit;
 - (id)contactNameLabel;
@@ -74,7 +69,6 @@
 - (id)secondaryVisualEffectView;
 - (void)setActionType:(id)arg1;
 - (void)setAvatarContentViewHeightLayoutConstraint:(id)arg1;
-- (void)setAvatarContentViewWidthLayoutConstraint:(id)arg1;
 - (void)setAvatarViewController:(id)arg1;
 - (void)setContactNameLabel:(id)arg1;
 - (void)setContactNameLabelBaselineLayoutConstraint:(id)arg1;

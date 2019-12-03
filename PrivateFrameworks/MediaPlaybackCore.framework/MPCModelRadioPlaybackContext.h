@@ -2,31 +2,31 @@
    Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
  */
 
-@interface MPCModelRadioPlaybackContext : MPPlaybackContext {
+@interface MPCModelRadioPlaybackContext : MPPlaybackContext <MPCPlaybackContextPrivateListeningOverridable, MPCPlaybackContextUserIdentityConsuming> {
     MPCModelRadioContentReference * _nowPlayingContentReference;
     MPCPlaybackRequestEnvironment * _playbackRequestEnvironment;
+    MPModelRadioStation * _radioStation;
     MPCModelRadioContentReference * _seedContentReference;
-    NSString * _stationHash;
-    long long  _stationID;
-    NSString * _stationName;
-    NSString * _stationStringID;
     NSURL * _stationURL;
+    ICUserIdentity * _userIdentity;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, copy) MPCModelRadioContentReference *nowPlayingContentReference;
 @property (nonatomic, copy) MPCPlaybackRequestEnvironment *playbackRequestEnvironment;
-@property (nonatomic, readonly) MPAVItem *prefixItem;
+@property (nonatomic, retain) MPModelRadioStation *radioStation;
 @property (nonatomic, copy) MPCModelRadioContentReference *seedContentReference;
-@property (nonatomic, copy) NSString *stationHash;
-@property (nonatomic) long long stationID;
-@property (nonatomic, copy) NSString *stationName;
-@property (nonatomic, copy) NSString *stationStringID;
 @property (nonatomic, copy) NSURL *stationURL;
+@property (readonly) Class superclass;
+@property (nonatomic, copy) ICUserIdentity *userIdentity;
 
 + (Class)queueFeederClass;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)descriptionComponents;
 - (void)encodeWithCoder:(id)arg1;
 - (void)getRemotePlaybackQueueRepresentationWithPlayerPath:(id)arg1 completion:(id /* block */)arg2;
@@ -34,20 +34,18 @@
 - (id)initWithCoder:(id)arg1;
 - (id)nowPlayingContentReference;
 - (id)playbackRequestEnvironment;
-- (id)prefixItem;
+- (id)radioStation;
+- (long long)repeatType;
 - (id)seedContentReference;
 - (void)setNowPlayingContentReference:(id)arg1;
 - (void)setPlaybackRequestEnvironment:(id)arg1;
+- (void)setPrivateListeningOverride:(id)arg1;
+- (void)setRadioStation:(id)arg1;
 - (void)setSeedContentReference:(id)arg1;
-- (void)setStationHash:(id)arg1;
-- (void)setStationID:(long long)arg1;
-- (void)setStationName:(id)arg1;
-- (void)setStationStringID:(id)arg1;
 - (void)setStationURL:(id)arg1;
-- (id)stationHash;
-- (long long)stationID;
-- (id)stationName;
-- (id)stationStringID;
+- (void)setUserIdentity:(id)arg1;
+- (long long)shuffleType;
 - (id)stationURL;
+- (id)userIdentity;
 
 @end

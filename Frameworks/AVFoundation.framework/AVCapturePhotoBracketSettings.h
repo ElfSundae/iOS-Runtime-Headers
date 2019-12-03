@@ -22,6 +22,7 @@
 - (void)setAutoDualCameraFusionEnabled:(bool)arg1;
 - (void)setAutoRedEyeReductionEnabled:(bool)arg1;
 - (void)setAutoStillImageStabilizationEnabled:(bool)arg1;
+- (void)setAutoVirtualDeviceFusionEnabled:(bool)arg1;
 - (void)setEV0PhotoDeliveryEnabled:(bool)arg1;
 - (void)setFlashMode:(long long)arg1;
 - (void)setHDRMode:(long long)arg1;

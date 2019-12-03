@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 - (void)_onQueue_doWorkIfNecessary;
 - (id)callbackQueue;
+- (void)dealloc;
 - (id)init;
 - (id)initWithQueue:(id)arg1;
 - (id)initWithQueue:(id)arg1 takeOutTransactions:(bool)arg2;

@@ -11,6 +11,7 @@
     NSMutableArray * _itemLayouts;
     id /* block */  _itemViewGenerator;
     _UIButtonBarLayout * _representativeLayout;
+    bool  _suppressSpacing;
     bool  _useGroupSizing;
 }
 
@@ -18,6 +19,7 @@
 @property (nonatomic, readonly) UIBarButtonItemGroup *group;
 @property (nonatomic, readonly) UILayoutGuide *groupSizeGuide;
 @property (nonatomic, copy) id /* block */ itemViewGenerator;
+@property (nonatomic) bool suppressSpacing;
 @property (nonatomic) bool useGroupSizing;
 
 - (void).cxx_destruct;
@@ -32,9 +34,9 @@
 - (void)_iterateConfiguredLayouts:(id /* block */)arg1;
 - (id)_newLayoutForBarButtonItem:(id)arg1 useGroupSizing:(bool)arg2;
 - (id)_representativeLayout;
-- (void)_updateGroupSizing;
 - (bool)compact;
 - (id)description;
+- (void)dirtyLayoutForPlainAppearanceChange:(bool)arg1 doneAppearanceChanged:(bool)arg2;
 - (id)group;
 - (id)groupSizeGuide;
 - (id)initWithLayoutMetrics:(id)arg1;
@@ -45,8 +47,10 @@
 - (double)minimumLayoutWidthGivenMinimumSpaceWidth:(double)arg1;
 - (void)setCompact:(bool)arg1;
 - (void)setItemViewGenerator:(id /* block */)arg1;
+- (void)setSuppressSpacing:(bool)arg1;
 - (void)setUseGroupSizing:(bool)arg1;
 - (bool)shouldHoriziontallyCenterView:(id)arg1;
+- (bool)suppressSpacing;
 - (bool)useGroupSizing;
 
 @end

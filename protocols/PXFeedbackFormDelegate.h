@@ -17,6 +17,7 @@
 @optional
 
 - (bool)shouldContinuePresentingFormAfterFeedback;
+- (void)userDidFinish:(bool)arg1;
 - (bool)wantsCustomFeedbackSection;
 - (bool)wantsPositiveFeedbackSection;
 

@@ -40,10 +40,14 @@
 @property (nonatomic, readonly) CLSActivity *runningActivity;
 @property (readonly) Class superclass;
 
+// Image: /System/Library/Frameworks/ClassKit.framework/ClassKit
+
 + (Class)endpointClass;
 + (bool)isAvailable;
 + (bool)isDashboardApp;
 + (bool)isPDTool;
++ (bool)isPrivateSearchAPIEnabled;
++ (bool)isSearchAPIEnabled;
 + (id)newDatastore;
 + (id)shared;
 
@@ -75,6 +79,7 @@
 - (void)awaitExecuteQuery:(id)arg1 completion:(id /* block */)arg2;
 - (id)cachedCurrentUser;
 - (id)cachedMainAppContext;
+- (void)canSearchRostersWithCompletion:(id /* block */)arg1;
 - (void)classesForPersonID:(id)arg1 role:(unsigned long long)arg2 completion:(id /* block */)arg3;
 - (void)completeAllAssignedActivitiesMatching:(id)arg1;
 - (void)contextsMatchingIdentifier:(id)arg1 completion:(id /* block */)arg2;
@@ -95,6 +100,7 @@
 - (void)executeQuery:(id)arg1;
 - (void)faultMainAppContext;
 - (bool)faultProcessor:(id)arg1 shouldFaultRelation:(id)arg2 fromObject:(struct NSObject { Class x1; }*)arg3;
+- (void)featureIsEnabled:(int)arg1 completion:(id /* block */)arg2;
 - (void)fetchAndCompleteAllAssignedActivitiesForContextPath:(id)arg1 withCompletion:(id /* block */)arg2;
 - (void)fetchTransparencyMessageInfoWithCompletion:(id /* block */)arg1;
 - (id)graph;
@@ -105,17 +111,23 @@
 - (bool)isAllowedToInsertObject:(id)arg1;
 - (bool)isAppClient;
 - (bool)isDashboardAPIEnabled;
+- (bool)isPrivateSearchAPIEnabled;
 - (bool)isRemovedObject:(id)arg1;
+- (bool)isSearchAPIEnabled;
+- (bool)isSearchAllowed;
 - (void)lock;
 - (id)mainAppContext;
 - (void)markObjectAsDeleted:(id)arg1;
+- (void)membersOfGroupWithIdentifier:(id)arg1 completion:(id /* block */)arg2;
 - (id)objectWithObjectID:(id)arg1;
+- (void)objectsMatching:(id)arg1 completion:(id /* block */)arg2;
 - (void)personsInClassWithClassID:(id)arg1 role:(unsigned long long)arg2 completion:(id /* block */)arg3;
 - (void)pruneDeletedObjectsWithCompletion:(id /* block */)arg1;
 - (void)publishHandout:(id)arg1 completion:(id /* block */)arg2;
 - (void)refreshAuthTreeWithCompletion:(id /* block */)arg1;
 - (void)refreshMainAppContext;
 - (void)registerDataObserver:(id)arg1;
+- (void)removeClass:(id)arg1;
 - (void)removeContext:(id)arg1;
 - (void)removeContextWithObjectID:(id)arg1;
 - (void)removeFavorite:(id)arg1;
@@ -126,6 +138,7 @@
 - (void)reset;
 - (id)runningActivities;
 - (id)runningActivity;
+- (void)saveClass:(id)arg1 completion:(id /* block */)arg2;
 - (void)saveObjects:(id)arg1 completion:(id /* block */)arg2;
 - (void)saveWithCompletion:(id /* block */)arg1;
 - (void)setCachedCurrentUser:(id)arg1;
@@ -133,6 +146,7 @@
 - (void)setEndpointConnection:(id)arg1;
 - (void)setMainAppContext:(id)arg1;
 - (void)setShouldSyncTeacherBrowsedContexts:(bool)arg1 completion:(id /* block */)arg2;
+- (bool)shouldPerformSearchAPIOperation:(id)arg1 completion:(id /* block */)arg2;
 - (void)shouldSyncTeacherBrowsedContextsWithCompletion:(id /* block */)arg1;
 - (id)syncDataServer:(id /* block */)arg1;
 - (void)syncFetchWithCompletion:(id /* block */)arg1;
@@ -140,5 +154,10 @@
 - (void)triggerProgressTransparencyMessageIfNeeded;
 - (void)unlock;
 - (id)utilityServer:(id /* block */)arg1;
+
+// Image: /System/Library/PrivateFrameworks/ContactsAutocomplete.framework/ContactsAutocomplete
+
+- (id)_cna_membersOfGroupWithIdentifier:(id)arg1;
+- (id)_cna_objectsMatching:(id)arg1;
 
 @end

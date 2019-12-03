@@ -4,6 +4,7 @@
 
 @interface HKMedicalCodingSystem : NSObject <NSCopying, NSSecureCoding> {
     NSString * _OID;
+    bool  _hasDisplayStrings;
     NSString * _identifier;
     NSString * _name;
     NSArray * _synonyms;
@@ -11,6 +12,7 @@
 }
 
 @property (nonatomic, copy) NSString *OID;
+@property (nonatomic) bool hasDisplayStrings;
 @property (nonatomic, copy) NSString *identifier;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSArray *synonyms;
@@ -19,6 +21,7 @@
 + (id)CVXSystem;
 + (id)FHIRAllergyIntoleranceCriticality;
 + (id)FHIRAllergyIntoleranceSeverity;
++ (id)FHIRAllergyIntoleranceStatus;
 + (id)FHIRConditionClinicalStatus;
 + (id)FHIRConditionVerificationStatus;
 + (id)FHIRDiagnosticReportStatus;
@@ -36,23 +39,28 @@
 + (id)RxNormCodeSystem;
 + (id)SNOMEDCodeSystem;
 + (id)UCUMSystem;
++ (id)adHocConceptSystem;
 + (id)codeSystemWithIdentifier:(id)arg1;
 + (id)externalCodeSystems;
 + (bool)supportsSecureCoding;
-+ (id)systemWithSystemDefinition:(struct { char *x1; char *x2; char *x3; char *x4; bool x5; })arg1;
++ (id)systemWithSystemDefinition:(struct { char *x1; char *x2; char *x3; char *x4; bool x5; bool x6; })arg1;
 + (id)textSystem;
 
 - (void).cxx_destruct;
 - (id)OID;
+- (long long)codingSystemOntologyIdentifier;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (bool)hasDisplayStrings;
+- (unsigned long long)hash;
 - (id)identifier;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithCustomIdentifier:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 name:(id)arg2 OID:(id)arg3 type:(unsigned long long)arg4 synonyms:(id)arg5;
+- (id)initWithIdentifier:(id)arg1 name:(id)arg2 OID:(id)arg3 type:(unsigned long long)arg4 synonyms:(id)arg5 hasDisplayStrings:(bool)arg6;
 - (bool)isEqual:(id)arg1;
 - (id)name;
+- (void)setHasDisplayStrings:(bool)arg1;
 - (void)setIdentifier:(id)arg1;
 - (void)setName:(id)arg1;
 - (void)setOID:(id)arg1;

@@ -34,11 +34,14 @@
 
 - (void).cxx_destruct;
 - (void)_setCloudAccessoryView:(bool)arg1;
+- (void)_setExplicitView:(bool)arg1;
+- (void)_updatePlayingArtworkIfNeeded;
 - (id)activityIndicatorView;
 - (id)artwork;
 - (id)artworkImageView;
 - (bool)container;
 - (bool)currentlyPlaying;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)explicitItemView;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (bool)isShowCloud;
@@ -61,5 +64,6 @@
 - (void)setShowExplicit:(bool)arg1;
 - (bool)shouldShowPlaybackProgress;
 - (bool)showActivityIndicator;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end

@@ -5,9 +5,8 @@
 @interface _GEONetworkDefaultsRemoteProxy : NSObject <_GEONetworkDefaultsServerProxy> {
     int  _configChangedToken;
     <_GEONetworkDefaultsServerProxyDelegate> * _delegate;
-    NSObject<OS_dispatch_queue> * _isolation;
+    geo_isolater * _isolation;
     NSMutableArray * _updateCompletionHandlers;
-    NSObject<OS_dispatch_queue> * _xpcQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;

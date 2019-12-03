@@ -19,6 +19,7 @@
     NSArray * _recipients;
     INMessage * _referencedMessage;
     INPerson * _sender;
+    NSString * _serviceName;
 }
 
 @property (readonly) INImage *_keyImage;
@@ -41,6 +42,7 @@
 @property (nonatomic, copy) NSArray *recipients;
 @property (nonatomic, readonly, copy) INMessage *referencedMessage;
 @property (nonatomic, copy) INPerson *sender;
+@property (nonatomic, readonly, copy) NSString *serviceName;
 @property (readonly) Class superclass;
 
 // Image: /System/Library/Frameworks/Intents.framework/Intents
@@ -71,7 +73,9 @@
 - (id)initWithIdentifier:(id)arg1 conversationIdentifier:(id)arg2 content:(id)arg3 dateSent:(id)arg4 sender:(id)arg5 recipients:(id)arg6 dateMessageWasLastRead:(id)arg7 numberOfAttachments:(id)arg8 messageType:(long long)arg9 messageEffectType:(long long)arg10;
 - (id)initWithIdentifier:(id)arg1 conversationIdentifier:(id)arg2 content:(id)arg3 dateSent:(id)arg4 sender:(id)arg5 recipients:(id)arg6 groupName:(id)arg7 dateMessageWasLastRead:(id)arg8 numberOfAttachments:(id)arg9 messageType:(long long)arg10 messageEffectType:(long long)arg11;
 - (id)initWithIdentifier:(id)arg1 conversationIdentifier:(id)arg2 content:(id)arg3 dateSent:(id)arg4 sender:(id)arg5 recipients:(id)arg6 groupName:(id)arg7 dateMessageWasLastRead:(id)arg8 numberOfAttachments:(id)arg9 messageType:(long long)arg10 messageEffectType:(long long)arg11 referencedMessage:(id)arg12;
+- (id)initWithIdentifier:(id)arg1 conversationIdentifier:(id)arg2 content:(id)arg3 dateSent:(id)arg4 sender:(id)arg5 recipients:(id)arg6 groupName:(id)arg7 dateMessageWasLastRead:(id)arg8 numberOfAttachments:(id)arg9 messageType:(long long)arg10 messageEffectType:(long long)arg11 referencedMessage:(id)arg12 serviceName:(id)arg13;
 - (id)initWithIdentifier:(id)arg1 conversationIdentifier:(id)arg2 content:(id)arg3 dateSent:(id)arg4 sender:(id)arg5 recipients:(id)arg6 groupName:(id)arg7 messageType:(long long)arg8;
+- (id)initWithIdentifier:(id)arg1 conversationIdentifier:(id)arg2 content:(id)arg3 dateSent:(id)arg4 sender:(id)arg5 recipients:(id)arg6 groupName:(id)arg7 messageType:(long long)arg8 serviceName:(id)arg9;
 - (id)initWithIdentifier:(id)arg1 conversationIdentifier:(id)arg2 content:(id)arg3 dateSent:(id)arg4 sender:(id)arg5 recipients:(id)arg6 messageType:(long long)arg7;
 - (bool)isEqual:(id)arg1;
 - (id)linkMetadata;
@@ -83,6 +87,7 @@
 - (id)recipients;
 - (id)referencedMessage;
 - (id)sender;
+- (id)serviceName;
 - (void)setFileExtension:(id)arg1;
 - (void)setLinkMetadata:(id)arg1;
 - (void)setLocationName:(id)arg1;

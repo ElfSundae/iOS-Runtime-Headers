@@ -5,6 +5,7 @@
 @interface PMLTrainingMock : NSObject <PMLTrainingProtocol> {
     NSArray * _collectedSessions;
     NSMutableArray * _internalCollectedSessions;
+    NSMutableDictionary * _lastTrainingFeaturizations;
 }
 
 @property (readonly) NSArray *collectedSessions;
@@ -22,10 +23,11 @@
 - (void)deleteSessionsWithDomainIdentifiers:(id)arg1 bundleID:(id)arg2;
 - (void)deleteSessionsWithIdentifiers:(id)arg1 bundleID:(id)arg2;
 - (id)init;
-- (bool)modelServerUpdateWithPayload:(id)arg1 error:(id*)arg2;
+- (id)lastTrainingFeaturizationForModelName:(id)arg1 andLocale:(id)arg2;
 - (id)planReceivedWithPayload:(id)arg1 error:(id*)arg2;
-- (void)trainWhile:(id /* block */)arg1;
+- (void)setSourceRecoverer:(id /* block */)arg1;
 - (void)trimDb;
+- (void)updateLastTrainingFeaturizationForModel:(id)arg1 andData:(id)arg2;
 - (void)updateSessionsAndLabelForModel:(id)arg1 block:(id /* block */)arg2;
 
 @end

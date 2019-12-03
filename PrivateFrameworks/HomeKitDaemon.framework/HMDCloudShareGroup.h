@@ -29,7 +29,9 @@
 + (id)shortDescription;
 
 - (void).cxx_destruct;
+- (void)_cloudRecordsForParentIDs:(id)arg1 recursive:(bool)arg2 completionHandler:(id /* block */)arg3;
 - (void)addCloudRecord:(id)arg1;
+- (void)allDescendentsCloudRecordsForParentID:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)backingStoreShareGroup;
 - (id)cache;
 - (id)cloudGroup;
@@ -42,6 +44,7 @@
 - (void)cloudRecordsForParentID:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)cloudZone;
 - (void)deleteCloudRecord:(id)arg1;
+- (void)deleteCloudRecordNames:(id)arg1;
 - (id)description;
 - (void)fetchCloudRecordMap:(id /* block */)arg1;
 - (id)identifier;
@@ -67,5 +70,6 @@
 - (void)shareOnlyUpdateCloudRecord:(id)arg1;
 - (id)shortDescription;
 - (void)updateCloudRecord:(id)arg1;
+- (void)updateCloudRecord:(id)arg1 completionHandler:(id /* block */)arg2;
 
 @end

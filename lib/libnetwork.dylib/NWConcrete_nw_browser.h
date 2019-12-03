@@ -4,23 +4,31 @@
 
 @interface NWConcrete_nw_browser : NSObject <OS_nw_browser> {
     NSObject<OS_nw_path_evaluator> * browse_evaluator;
-    id /* block */  cancel_handler;
+    NSObject<OS_nw_dictionary> * browse_flow_registrations;
+    id /* block */  browse_results_changed_handler;
+    NSObject<OS_xpc_object> * changes_map;
     NSObject<OS_dispatch_queue> * client_queue;
     NSObject<OS_nw_path> * current_browse_path;
+    char * description;
     NSObject<OS_nw_browse_descriptor> * descriptor;
-    int  dns_error;
-    struct _DNSServiceRef_t { } * dns_service;
-    struct _DNSServiceRef_t { } * dns_service_secondary_pointer;
-    NSObject<OS_nw_array> * endpoint_array;
-    void * internally_retained_object;
-    unsigned int  is_custom_browser;
-    unsigned int  is_nexus_only_browser;
+    NSObject<OS_xpc_object> * dns_ref_map;
+    bool  include_txt_record;
+    NWConcrete_nw_browser * internally_retained_object;
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
     }  lock;
+    unsigned int  log_id;
+    char * logging_description;
+    struct _DNSServiceRef_t { } * main_dns_ref;
+    NSObject<OS_nw_array> * new_results;
+    NSObject<OS_nw_array> * old_results;
     NSObject<OS_nw_parameters> * parameters;
     NSObject<OS_nw_array> * path_endpoint_array;
-    id /* block */  update_handler;
+    struct _DNSServiceRef_t { } * secondary_dns_ref;
+    int  state;
+    id /* block */  state_changed_handler;
+    NSObject<OS_nw_dictionary> * txt_record_map;
+    int  type;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -30,6 +38,8 @@
 
 - (void).cxx_destruct;
 - (void)dealloc;
+- (id)description;
 - (id)initWithDescriptor:(id)arg1 parameters:(id)arg2;
+- (id)redactedDescription;
 
 @end

@@ -46,6 +46,7 @@
 - (bool)isInMemoryCacheEnabled;
 - (bool)isTerminating;
 - (void)removeEntriesForKeyStrings:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)removeEntriesForKeyStringsNotIncludedIn:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)requestEntryForKeyString:(id)arg1;
 - (void)reset;
 - (void)savePendingChangesBeforeTearDown;

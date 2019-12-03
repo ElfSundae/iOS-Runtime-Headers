@@ -6,9 +6,9 @@
     GEORPAddress * _address;
     int  _addressType;
     struct { 
-        unsigned int addressType : 1; 
-        unsigned int placeType : 1; 
-    }  _has;
+        unsigned int has_addressType : 1; 
+        unsigned int has_placeType : 1; 
+    }  _flags;
     int  _placeType;
 }
 
@@ -18,6 +18,8 @@
 @property (nonatomic) bool hasAddressType;
 @property (nonatomic) bool hasPlaceType;
 @property (nonatomic) int placeType;
+
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsAddressType:(id)arg1;
@@ -37,6 +39,7 @@
 - (void)mergeFrom:(id)arg1;
 - (int)placeType;
 - (id)placeTypeAsString:(int)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAddress:(id)arg1;
 - (void)setAddressType:(int)arg1;

@@ -18,13 +18,15 @@
 
 - (void).cxx_destruct;
 - (void)_registerForMessages;
+- (bool)_shouldFilterAccessoryProfile:(id)arg1;
 - (void)addAdvertisement:(id)arg1;
 - (id)advertisement;
 - (id)assistantObject;
-- (void)configure:(id)arg1 msgDispatcher:(id)arg2 accessoryConfigureGroup:(id)arg3;
+- (void)configureWithHome:(id)arg1 msgDispatcher:(id)arg2 configurationTracker:(id)arg3;
 - (id)dumpSimpleState;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
+- (void)handleRoomChanged:(id)arg1;
 - (void)handleRoomNameChanged:(id)arg1;
 - (void)handleUpdatedAdvertisement:(id)arg1;
 - (void)handleUpdatedMinimumUserPrivilege:(long long)arg1;

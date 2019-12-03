@@ -12,7 +12,7 @@
 @property (nonatomic, retain) INFSentenceContext *context;
 @property (nonatomic, retain) INFSentenceToken *originalToken;
 @property (nonatomic, copy) NSString *placeholderName;
-@property (getter=isResolved) bool resolved;
+@property (getter=isResolved, nonatomic) bool resolved;
 
 + (id)sentenceResolvedTokenWithOriginalToken:(id)arg1 placeholderName:(id)arg2;
 

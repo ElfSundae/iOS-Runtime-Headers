@@ -6,6 +6,7 @@
     NWConcrete_nw_protocol_definition * definition;
     void * handle;
     NSObject<OS_xpc_object> * legacy_parameters;
+    unsigned short  log_id_num;
     char * log_id_str;
     struct nw_protocol { unsigned char x1[16]; struct nw_protocol_identifier {} *x2; struct nw_protocol_callbacks {} *x3; struct nw_protocol {} *x4; void *x5; struct nw_protocol {} *x6; void *x7; } * protocol_handle;
 }

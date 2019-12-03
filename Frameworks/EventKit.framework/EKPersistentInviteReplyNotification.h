@@ -2,21 +2,31 @@
    Image: /System/Library/Frameworks/EventKit.framework/EventKit
  */
 
-@interface EKPersistentInviteReplyNotification : EKPersistentObject
+@interface EKPersistentInviteReplyNotification : EKPersistentNotification
 
 + (id)defaultPropertiesToLoad;
++ (Class)meltedClass;
 + (id)relations;
 
 - (bool)alerted;
-- (id)calendar;
-- (id)calendarName;
 - (id)creationDate;
 - (int)entityType;
+- (id)inReplyTo;
 - (id)inviteReplyCalendar;
-- (id)shareeAddressURL;
+- (void)setCreationDate:(id)arg1;
+- (void)setInReplyTo:(id)arg1;
+- (void)setInviteReplyCalendar:(id)arg1;
+- (void)setShareeDisplayName:(id)arg1;
+- (void)setShareeFirstName:(id)arg1;
+- (void)setShareeLastName:(id)arg1;
+- (void)setShareeStatus:(unsigned long long)arg1;
+- (void)setShareeURL:(id)arg1;
+- (void)setSummary:(id)arg1;
 - (id)shareeDisplayName;
 - (id)shareeFirstName;
 - (id)shareeLastName;
-- (unsigned long long)status;
+- (unsigned long long)shareeStatus;
+- (id)shareeURL;
+- (id)summary;
 
 @end

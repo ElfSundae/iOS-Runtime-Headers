@@ -8,7 +8,7 @@
     unsigned int  _allowsTVOutInBackground;
     unsigned int  _allowsWirelessPlayback;
     unsigned int  _alwaysAllowHidingControlsOverlay;
-    int  _artworkImageStyle;
+    long long  _artworkImageStyle;
     unsigned int  _attemptAutoPlayWhenControlsHidden;
     unsigned long long  _backgroundTaskId;
     MPVideoBackgroundView * _backgroundView;
@@ -41,7 +41,7 @@
 @property (nonatomic) bool allowsTVOutInBackground;
 @property (nonatomic) bool allowsWirelessPlayback;
 @property (nonatomic) bool alwaysAllowHidingControlsOverlay;
-@property (nonatomic) int artworkImageStyle;
+@property (nonatomic) long long artworkImageStyle;
 @property (nonatomic, readonly) UIView *artworkImageView;
 @property (nonatomic) bool attemptAutoPlayWhenControlsHidden;
 @property (nonatomic) bool autoPlayWhenLikelyToKeepUp;
@@ -124,7 +124,7 @@
 - (bool)allowsTVOutInBackground;
 - (bool)allowsWirelessPlayback;
 - (bool)alwaysAllowHidingControlsOverlay;
-- (int)artworkImageStyle;
+- (long long)artworkImageStyle;
 - (id)artworkImageView;
 - (bool)attemptAutoPlayWhenControlsHidden;
 - (bool)autoPlayWhenLikelyToKeepUp;
@@ -146,7 +146,7 @@
 - (bool)disableControlsAutohide;
 - (unsigned long long)disabledParts;
 - (unsigned long long)disabledPartsForProposedParts:(unsigned long long)arg1;
-- (int)displayArtworkImageStyle;
+- (long long)displayArtworkImageStyle;
 - (bool)displayPlaybackErrorAlerts;
 - (void)displayVideoView;
 - (void)displayVideoViewOnScreen;
@@ -178,7 +178,7 @@
 - (void)setAllowsTVOutInBackground:(bool)arg1;
 - (void)setAllowsWirelessPlayback:(bool)arg1;
 - (void)setAlwaysAllowHidingControlsOverlay:(bool)arg1;
-- (void)setArtworkImageStyle:(int)arg1;
+- (void)setArtworkImageStyle:(long long)arg1;
 - (void)setAttemptAutoPlayWhenControlsHidden:(bool)arg1;
 - (void)setAutoPlayWhenLikelyToKeepUp:(bool)arg1;
 - (void)setBackstopColor:(id)arg1;

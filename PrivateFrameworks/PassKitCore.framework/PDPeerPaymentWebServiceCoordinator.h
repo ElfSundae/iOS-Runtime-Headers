@@ -80,7 +80,9 @@
 - (id)pushNotificationTopics;
 - (void)receivedPeerPaymentMessage:(id)arg1;
 - (void)registerDeviceWithCompletion:(id /* block */)arg1;
+- (void)registerDeviceWithForceReregister:(bool)arg1 completion:(id /* block */)arg2;
 - (void)registerDeviceWithRegistrationURL:(id)arg1 pushToken:(id)arg2 completion:(id /* block */)arg3;
+- (void)registerDeviceWithRegistrationURL:(id)arg1 pushToken:(id)arg2 forceReregister:(bool)arg3 completion:(id /* block */)arg4;
 - (void)registerObserver:(id)arg1;
 - (void)registrationStatusWithCompletion:(id /* block */)arg1;
 - (void)resetApplePayManateeViewWithCompletion:(id /* block */)arg1;

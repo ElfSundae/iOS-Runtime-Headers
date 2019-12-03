@@ -12,8 +12,8 @@
 
 + (id)pane;
 
+- (void).cxx_destruct;
 - (int)activePane;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 - (int)paneState;

@@ -14,6 +14,10 @@
     bool  _canContributeToCloudSharedAlbum;
     bool  _canShowCloudComments;
     NSString * _cloudGUID;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _datesLock;
+    bool  _didFetchDates;
     NSDate * _endDate;
     NSURL * _groupURL;
     bool  _hasUnseenContentBoolValue;
@@ -30,6 +34,7 @@
     bool  _isStandInCollection;
     NSArray * _localizedLocationNames;
     NSString * _localizedTitle;
+    NSManagedObjectID * _parentFolderObjectID;
     int  _pendingItemsCount;
     int  _pendingItemsType;
     int  _plAlbumKind;
@@ -41,6 +46,7 @@
     NSString * _titleFontName;
     NSString * _transientIdentifier;
     NSString * _transientSubtitle;
+    PLQuery * _userQuery;
 }
 
 @property (getter=_canShowCloudComments, setter=_setCanShowCloudComments:, nonatomic) bool _canShowCloudComments;
@@ -59,17 +65,25 @@
 @property (nonatomic, readonly) bool canShowAvalancheStacks;
 @property (nonatomic, readonly) bool canShowComments;
 @property (nonatomic, readonly) NSString *cloudGUID;
+@property (nonatomic, readonly) NSDate *cls_localEndDate;
+@property (nonatomic, readonly) NSDateComponents *cls_localEndDateComponents;
+@property (nonatomic, readonly) NSDate *cls_localStartDate;
+@property (nonatomic, readonly) NSDateComponents *cls_localStartDateComponents;
+@property (nonatomic, readonly) NSDate *cls_universalEndDate;
+@property (nonatomic, readonly) NSDate *cls_universalStartDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) NSDate *endDate;
-@property (nonatomic, readonly) NSDateComponents *endDateComponents;
 @property (nonatomic, readonly) unsigned long long estimatedAssetCount;
 @property (nonatomic, readonly) NSURL *groupURL;
 @property (nonatomic, readonly) bool hasUnseenContentBoolValue;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSString *importSessionID;
+@property (nonatomic, readonly) bool isAggregation;
 @property (nonatomic, readonly) bool isCameraRoll;
 @property (nonatomic, readonly) bool isCloudSharedAlbum;
+@property (nonatomic, readonly) bool isEnriched;
+@property (nonatomic, readonly) bool isEnrichmentComplete;
 @property (nonatomic, readonly) bool isLastImportedAlbum;
 @property (nonatomic, readonly) bool isLibrary;
 @property (nonatomic, readonly) bool isMultipleContributorCloudSharedAlbum;
@@ -78,48 +92,74 @@
 @property (nonatomic, readonly) bool isPendingPhotoStreamAlbum;
 @property (nonatomic, readonly) bool isPhotoStreamCollection;
 @property (nonatomic, readonly) bool isPlacesAlbum;
+@property (nonatomic, readonly) bool isRecent;
 @property (nonatomic, readonly) bool isSmartCollection;
 @property (nonatomic, readonly) bool isStandInCollection;
 @property (nonatomic, readonly) bool isTrashBin;
+@property (nonatomic, readonly) bool isUserSmartAlbum;
 @property (nonatomic, readonly) bool keyAssetsAtEnd;
-@property (nonatomic, readonly) NSDate *localEndDate;
 @property (nonatomic, readonly) NSString *localIdentifier;
-@property (nonatomic, readonly) NSDate *localStartDate;
+@property (nonatomic, readonly) NSString *localizedDateDescription;
+@property (nonatomic, readonly) NSString *localizedDebugDescription;
 @property (nonatomic, readonly) NSArray *localizedLocationNames;
+@property (nonatomic, readonly) NSString *localizedSmartDescription;
 @property (nonatomic, readonly) NSString *localizedSubtitle;
 @property (nonatomic, readonly) NSString *localizedTitle;
 @property (nonatomic, readonly) int pendingItemsCount;
 @property (nonatomic, readonly) int pendingItemsType;
 @property (nonatomic, readonly) int plAlbumKind;
-@property (nonatomic, readonly, copy) NSString *px_estimatedAssetsCountLocalizedString;
+@property (nonatomic, readonly) double promotionScore;
+@property (nonatomic, readonly) bool px_canRearrangeContent;
+@property (nonatomic, readonly) unsigned short px_curationType;
+@property (nonatomic, readonly) unsigned long long px_estimatedCuratedAssetsCount;
+@property (nonatomic, readonly) unsigned short px_highlightEnrichmentState;
+@property (nonatomic, readonly) long long px_highlightKind;
 @property (nonatomic, readonly) bool px_isAllPhotosSmartAlbum;
+@property (nonatomic, readonly) bool px_isCloudMultipleContributorsEnabled;
 @property (nonatomic, readonly) bool px_isFavoriteMemoriesSmartFolder;
 @property (nonatomic, readonly) bool px_isFavoritesSmartAlbum;
 @property (nonatomic, readonly) bool px_isFolder;
 @property (nonatomic, readonly) bool px_isHiddenSmartAlbum;
+@property (nonatomic, readonly) bool px_isImportHistoryCollection;
+@property (nonatomic, readonly) bool px_isImportSessionCollection;
 @property (nonatomic, readonly) bool px_isImportedAlbum;
 @property (nonatomic, readonly) bool px_isMacSyncedAlbum;
 @property (nonatomic, readonly) bool px_isMacSyncedEventsFolder;
 @property (nonatomic, readonly) bool px_isMacSyncedFacesFolder;
 @property (nonatomic, readonly) bool px_isMediaTypeSmartAlbum;
+@property (nonatomic, readonly) bool px_isMediaTypesFolder;
 @property (nonatomic, readonly) bool px_isMemoriesVirtualCollection;
+@property (nonatomic, readonly) bool px_isMomentsVirtualCollection;
 @property (nonatomic, readonly) bool px_isMyPhotoStreamAlbum;
 @property (nonatomic, readonly) bool px_isOwnedSharedAlbum;
 @property (nonatomic, readonly) bool px_isPeopleVirtualCollection;
-@property (nonatomic, readonly) bool px_isPlacesVirtualCollection;
+@property (nonatomic, readonly) bool px_isPhotosVirtualCollection;
+@property (nonatomic, readonly) bool px_isPlacesSmartAlbum;
+@property (nonatomic, readonly) bool px_isProject;
+@property (nonatomic, readonly) bool px_isProjectsFolder;
 @property (nonatomic, readonly) bool px_isRecentlyAddedSmartAlbum;
 @property (nonatomic, readonly) bool px_isRecentlyDeletedSmartAlbum;
+@property (nonatomic, readonly) bool px_isRecentlyEditedSmartAlbum;
+@property (nonatomic, readonly) bool px_isRecentsSmartAlbum;
+@property (nonatomic, readonly) bool px_isRegularAlbum;
+@property (nonatomic, readonly) bool px_isRegularFolder;
+@property (nonatomic, readonly) bool px_isRootSmartAlbum;
+@property (nonatomic, readonly) bool px_isScreenRecordingsSmartAlbum;
+@property (nonatomic, readonly) bool px_isSharedActivityVirtualCollection;
 @property (nonatomic, readonly) bool px_isSharedAlbum;
+@property (nonatomic, readonly) bool px_isSharedAlbumsFolder;
 @property (nonatomic, readonly) bool px_isSmartAlbum;
 @property (nonatomic, readonly) bool px_isSmartFolder;
 @property (nonatomic, readonly) bool px_isStandInAlbum;
-@property (nonatomic, readonly) bool px_isVirtualCollection;
+@property (nonatomic, readonly) bool px_isTopLevelFolder;
+@property (nonatomic, readonly) bool px_isTransientPlacesCollection;
+@property (nonatomic, readonly) bool px_isUserCreated;
+@property (nonatomic, readonly) bool px_isUserSmartAlbum;
 @property (nonatomic, readonly) bool px_supportsFastCuration;
 @property (nonatomic, readonly) PHQuery *query;
 @property (nonatomic, readonly) bool shouldDeleteWhenEmpty;
 @property (nonatomic, readonly, copy) id /* block */ sortingComparator;
 @property (nonatomic, readonly) NSDate *startDate;
-@property (nonatomic, readonly) NSDateComponents *startDateComponents;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSString *title;
 @property (nonatomic, readonly) long long titleCategory;
@@ -127,8 +167,7 @@
 @property (nonatomic, readonly) unsigned long long titleFontNameHash;
 @property (nonatomic, readonly) NSString *transientIdentifier;
 @property (nonatomic, readonly) NSString *transientSubtitle;
-@property (nonatomic, readonly) NSDate *universalEndDate;
-@property (nonatomic, readonly) NSDate *universalStartDate;
+@property (nonatomic, retain) PLQuery *userQuery;
 
 // Image: /System/Library/Frameworks/Photos.framework/Photos
 
@@ -139,6 +178,7 @@
 + (id)entityKeyMap;
 + (id)fetchAssetCollectionsContainingAsset:(id)arg1 withType:(long long)arg2 options:(id)arg3;
 + (id)fetchAssetCollectionsContainingAssets:(id)arg1 withType:(long long)arg2 options:(id)arg3;
++ (id)fetchAssetCollectionsForReferences:(id)arg1 photoLibrary:(id)arg2;
 + (id)fetchAssetCollectionsWithALAssetGroupURLs:(id)arg1 options:(id)arg2;
 + (id)fetchAssetCollectionsWithCloudIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchAssetCollectionsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
@@ -147,9 +187,11 @@
 + (id)fetchAssetCollectionsWithType:(long long)arg1 subtype:(long long)arg2 options:(id)arg3;
 + (id)fetchMomentsBackingMemory:(id)arg1 options:(id)arg2;
 + (id)fetchMomentsBackingSuggestion:(id)arg1 options:(id)arg2;
++ (id)fetchMomentsInHighlight:(id)arg1 options:(id)arg2;
 + (id)fetchMomentsInMomentList:(id)arg1 options:(id)arg2;
 + (id)fetchMomentsWithOptions:(id)arg1;
-+ (id)fetchSharingSuggestionsWithOptions:(id)arg1;
++ (id)fetchPhotosHighlightsContainingMoments:(id)arg1 options:(id)arg2;
++ (id)fetchPhotosHighlightsContainingMomentsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchSuggestedContributionsForAssetsFetchResult:(id)arg1 options:(id)arg2;
 + (id)fetchSuggestedContributionsForAssetsMetadata:(id)arg1 options:(id)arg2;
 + (id)fetchSuggestedContributionsForCMMPhotoLibrary:(id)arg1 options:(id)arg2;
@@ -160,11 +202,10 @@
 + (id)identifierCode;
 + (id)managedEntityName;
 + (bool)managedObjectSupportsTrashedState;
-+ (id)pl_PHAssetCollectionForAssetContainer:(id)arg1;
-+ (id)pl_PHAssetCollectionForAssetContainer:(id)arg1 includeTrash:(bool)arg2;
++ (id)pl_PHAssetCollectionForAssetContainer:(id)arg1 photoLibrary:(id)arg2;
++ (id)pl_PHAssetCollectionForAssetContainer:(id)arg1 photoLibrary:(id)arg2 includeTrash:(bool)arg3;
 + (id)posterImageForAssetCollection:(id)arg1;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
-+ (id)sharingSuggestionWithRandomPick:(bool)arg1 fallbackToRecentMoments:(bool)arg2 needsNotification:(bool)arg3;
 + (long long)titleCategoryForTitleFontName:(id)arg1;
 + (id)titleFontNameForTitleCategory:(long long)arg1;
 + (unsigned long long)titleFontNameHashFromDate:(id)arg1;
@@ -176,11 +217,14 @@
 + (id)transientAssetCollectionWithAssetFetchResult:(id)arg1 title:(id)arg2 identifier:(id)arg3;
 + (id)transientAssetCollectionWithAssetFetchResult:(id)arg1 title:(id)arg2 subtitle:(id)arg3 titleFontName:(id)arg4;
 + (id)transientAssetCollectionWithAssets:(id)arg1 title:(id)arg2;
-+ (id)transientAssetCollectionWithAssets:(id)arg1 title:(id)arg2 identifier:(id)arg3;
++ (id)transientAssetCollectionWithAssets:(id)arg1 title:(id)arg2 identifier:(id)arg3 photoLibrary:(id)arg4;
 
 - (void).cxx_destruct;
 - (bool)_canShowCloudComments;
+- (id)_fetchAggregateDatesForSmartAlbum;
+- (void)_fetchDatesIfNeeded;
 - (void)_setCanShowCloudComments:(bool)arg1;
+- (bool)_shouldFetchDatesIfNeeded;
 - (unsigned long long)approximateCount;
 - (id)approximateLocation;
 - (unsigned long long)approximatePhotosCount;
@@ -200,6 +244,7 @@
 - (unsigned long long)collectionFixedOrderPriority;
 - (bool)collectionHasFixedOrder;
 - (id)description;
+- (id)effectiveCustomSortKey;
 - (id)endDate;
 - (unsigned long long)estimatedAssetCount;
 - (unsigned long long)estimatedPhotosCount;
@@ -211,8 +256,10 @@
 - (id)initTransientWithAssets:(id)arg1 orFetchResult:(id)arg2 title:(id)arg3 identifier:(id)arg4;
 - (id)initTransientWithAssets:(id)arg1 orFetchResult:(id)arg2 title:(id)arg3 identifier:(id)arg4 albumKind:(int)arg5;
 - (id)initTransientWithAssets:(id)arg1 orFetchResult:(id)arg2 title:(id)arg3 identifier:(id)arg4 albumKind:(int)arg5 subtype:(long long)arg6;
-- (id)initTransientWithAssets:(id)arg1 orFetchResult:(id)arg2 title:(id)arg3 subtitle:(id)arg4 titleFontName:(id)arg5 identifier:(id)arg6 albumKind:(int)arg7 subtype:(long long)arg8;
+- (id)initTransientWithAssets:(id)arg1 orFetchResult:(id)arg2 title:(id)arg3 subtitle:(id)arg4 titleFontName:(id)arg5 identifier:(id)arg6 albumKind:(int)arg7 subtype:(long long)arg8 photoLibrary:(id)arg9;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
+- (bool)isAlbumContentSort;
+- (bool)isAlbumContentTitleSort;
 - (bool)isCameraRoll;
 - (bool)isCloudSharedAlbum;
 - (bool)isLastImportedAlbum;
@@ -226,16 +273,20 @@
 - (bool)isSmartCollection;
 - (bool)isStandInCollection;
 - (bool)isTrashBin;
+- (bool)isUserSmartAlbum;
 - (bool)keyAssetsAtEnd;
 - (id)localizedLocationNames;
 - (id)localizedSharedByLabelAllowsEmail:(bool)arg1;
 - (id)localizedSubtitle;
 - (id)localizedTitle;
+- (id)objectReference;
+- (id)parentFolderID;
 - (int)pendingItemsCount;
 - (int)pendingItemsType;
 - (int)plAlbumKind;
 - (id)pl_assetContainer;
 - (id)query;
+- (void)setUserQuery:(id)arg1;
 - (bool)shouldDeleteWhenEmpty;
 - (id /* block */)sortingComparator;
 - (id)startDate;
@@ -245,16 +296,23 @@
 - (unsigned long long)titleFontNameHash;
 - (id)transientIdentifier;
 - (id)transientSubtitle;
+- (id)userQuery;
 
-// Image: /System/Library/PrivateFrameworks/PhotoAnalysis.framework/Frameworks/PhotosGraph.framework/Frameworks/MediaMiningKit.framework/MediaMiningKit
+// Image: /System/Library/PrivateFrameworks/MediaMiningKit.framework/MediaMiningKit
 
-- (id)_getLocation;
-- (id)endDateComponents;
-- (id)localEndDate;
-- (id)localStartDate;
-- (id)startDateComponents;
-- (id)universalEndDate;
-- (id)universalStartDate;
+- (id)_fetchFirstAssetSortedByCreationDateAscending:(bool)arg1;
+- (id)_legacyLocalEndDate;
+- (id)_legacyLocalEndDateComponents;
+- (id)_legacyLocalStartDate;
+- (id)_legacyLocalStartDateComponents;
+- (id)_legacyUniversalEndDate;
+- (id)_legacyUniversalStartDate;
+- (id)cls_localEndDate;
+- (id)cls_localEndDateComponents;
+- (id)cls_localStartDate;
+- (id)cls_localStartDateComponents;
+- (id)cls_universalEndDate;
+- (id)cls_universalStartDate;
 
 // Image: /System/Library/PrivateFrameworks/PhotoAnalysis.framework/PhotoAnalysis
 
@@ -262,29 +320,65 @@
 
 // Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
 
++ (id)px_completeMyMomentVirtualCollection;
 + (id)px_importHistoryAssetCollection;
 + (id)px_mediaTypeSmartAlbumSubtypes;
++ (id)px_memoriesVirtualCollection;
++ (id)px_momentsVirtualCollection;
 + (id)px_otherAlbumsSubtypes;
++ (id)px_peopleVirtualCollection;
++ (id)px_photosVirtualCollection;
++ (id)px_searchResultsVirtualCollection;
++ (id)px_sharedActivityVirtualCollection;
 + (id)px_smartAlbumWithSubtype:(long long)arg1;
 
 - (long long)aggregateMediaType;
+- (bool)isAggregation;
+- (bool)isEnriched;
+- (bool)isEnrichmentComplete;
+- (bool)isRecent;
+- (id)localizedDateDescription;
+- (id)localizedDateDescriptionWithOptions:(unsigned long long)arg1;
+- (id)localizedDebugDescription;
+- (id)localizedSmartDescription;
+- (double)promotionScore;
 - (bool)px_allowsAssetsDrop;
-- (id)px_estimatedAssetsCountLocalizedString;
+- (bool)px_allowsImplicitSelectionForProjectOrSharingAction;
+- (unsigned short)px_curationType;
+- (id)px_debugDictionary;
+- (unsigned long long)px_estimatedCuratedAssetsCount;
+- (bool)px_fetchContainsAnyAssets;
+- (bool)px_fetchIsEmpty;
+- (unsigned short)px_highlightEnrichmentState;
+- (long long)px_highlightKind;
 - (bool)px_isAllPhotosSmartAlbum;
+- (bool)px_isCloudMultipleContributorsEnabled;
 - (bool)px_isFavoritesSmartAlbum;
 - (bool)px_isHiddenSmartAlbum;
+- (bool)px_isImportHistoryCollection;
+- (bool)px_isImportSessionCollection;
 - (bool)px_isImportedAlbum;
 - (bool)px_isMacSyncedAlbum;
 - (bool)px_isMediaTypeSmartAlbum;
+- (bool)px_isMemoriesVirtualCollection;
+- (bool)px_isMomentsVirtualCollection;
 - (bool)px_isMyPhotoStreamAlbum;
 - (bool)px_isOwnedSharedAlbum;
-- (bool)px_isPlacesVirtualCollection;
+- (bool)px_isPeopleVirtualCollection;
+- (bool)px_isPhotosVirtualCollection;
+- (bool)px_isPlacesSmartAlbum;
 - (bool)px_isRecentlyAddedSmartAlbum;
 - (bool)px_isRecentlyDeletedSmartAlbum;
+- (bool)px_isRecentlyEditedSmartAlbum;
+- (bool)px_isRecentsSmartAlbum;
+- (bool)px_isRegularAlbum;
+- (bool)px_isRootSmartAlbum;
+- (bool)px_isScreenRecordingsSmartAlbum;
+- (bool)px_isSharedActivityVirtualCollection;
 - (bool)px_isSharedAlbum;
 - (bool)px_isSmartAlbum;
 - (bool)px_isStandInAlbum;
-- (bool)px_isUserCreated;
+- (bool)px_isUserSmartAlbum;
 - (bool)px_shouldUseFacesRectForSmartCropping;
 - (bool)px_supportsFastCuration;
 

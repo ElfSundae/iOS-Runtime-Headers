@@ -9,7 +9,7 @@
 
 @property (nonatomic, retain) id participant;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)displayString;
 - (unsigned long long)hash;
 - (id)initWithComposeRecipient:(id)arg1;

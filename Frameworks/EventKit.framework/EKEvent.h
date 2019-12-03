@@ -20,6 +20,7 @@
 }
 
 @property (nonatomic, readonly) NSString *UUID;
+@property (nonatomic, copy) NSSet *actions;
 @property (getter=isAllDay, nonatomic) bool allDay;
 @property (nonatomic, readonly) bool allowsAvailabilityModifications;
 @property (nonatomic, readonly) bool allowsParticipationStatusModifications;
@@ -55,6 +56,7 @@
 @property (nonatomic) int externalTrackingStatus;
 @property (nonatomic, readonly) NSURL *externalURL;
 @property (nonatomic) bool firedTTL;
+@property (nonatomic, readonly) bool hasAttachmentChanges;
 @property (nonatomic, readonly) bool hasPredictedLocation;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) NSDate *initialEndDate;
@@ -78,12 +80,14 @@
 @property bool ipsos_timeNeedsMeridianGuess;
 @property unsigned long long ipsos_usedBubblesCount;
 @property bool ipsos_usesDefaultClassificationTypeStartTime;
+@property (nonatomic) bool isAlerted;
 @property (nonatomic, readonly) bool isAllDayDirty;
 @property (nonatomic, readonly) bool isDetached;
 @property (nonatomic, readonly) bool isEditable;
 @property (nonatomic, readonly) bool isEndDateDirty;
 @property (nonatomic, readonly) bool isMaster;
 @property (nonatomic) bool isPhantom;
+@property (nonatomic, readonly) bool isPrivateEventSharedToMe;
 @property (nonatomic, readonly) bool isSignificantlyDetached;
 @property (nonatomic, readonly) bool isSignificantlyDetachedIgnoringParticipation;
 @property (nonatomic, readonly) bool isStartDateDirty;
@@ -111,6 +115,7 @@
 @property (nonatomic, readonly) EKStructuredLocation *preferredLocationWithoutPrediction;
 @property (nonatomic) long long privacyLevel;
 @property (nonatomic, retain) NSDate *proposedStartDate;
+@property (nonatomic, copy) NSString *recurrenceSet;
 @property (nonatomic) bool requiresDetachDueToSnoozedAlarm;
 @property (nonatomic, readonly) bool responseMustApplyToAll;
 @property (nonatomic, readonly) NSString *sendersEmail;
@@ -138,6 +143,7 @@
 + (long long)_eventAvailabilityForParticipantStatus:(long long)arg1 supportedEventAvailabilities:(unsigned long long)arg2 isAllDayEvent:(bool)arg3;
 + (id)_locationStringForLocations:(id)arg1;
 + (id)eventWithEventStore:(id)arg1;
++ (id)externalUriScheme;
 + (Class)frozenClass;
 + (id)generateUniqueIDWithEvent:(id)arg1 originalEvent:(id)arg2 calendar:(id)arg3;
 + (id)knownKeysToSkipForFutureChanges;
@@ -168,13 +174,16 @@
 - (void)_detachWithStartDate:(id)arg1 newStartDate:(id)arg2 future:(bool)arg3;
 - (id)_detectConferenceURL;
 - (id)_effectiveTimeZone;
+- (struct { int x1; BOOL x2; BOOL x3; BOOL x4; BOOL x5; double x6; })_endDateGrForTimeZone:(id)arg1;
 - (bool)_eventIsTheOnlyRemainingOccurrence;
 - (bool)_fetchedEventIsConflict:(id)arg1 forStartDate:(id)arg2 endDate:(id)arg3;
 - (void)_filterExceptionDates;
+- (id)_firstNonConferenceRoomLocationTitle;
 - (id)_generateNewUniqueID;
-- (struct { int x1; BOOL x2; BOOL x3; BOOL x4; BOOL x5; double x6; })_gregorianDateCorrectedForTimeZoneFromCalendarDate:(id)arg1 orNSDate:(id)arg2;
+- (struct { int x1; BOOL x2; BOOL x3; BOOL x4; BOOL x5; double x6; })_gregorianDateCorrectedForTimeZone:(id)arg1 fromCalendarDate:(id)arg2 orNSDate:(id)arg3;
 - (bool)_hasChangesForConferenceURLDetection;
 - (bool)_hasExternalIDOrDeliverySource;
+- (unsigned int)_invitationChangedPropertyFlags;
 - (bool)_invitationChangedPropertyForFlag:(unsigned int)arg1;
 - (bool)_isAllDay;
 - (bool)_isInitialOccurrenceDate:(id)arg1;
@@ -191,9 +200,14 @@
 - (bool)_reset;
 - (void)_sendModifiedNote;
 - (void)_setInvitationChangedProperty:(bool)arg1 forFlag:(unsigned int)arg2;
+- (void)_setInvitationStatusAlertedIfNecessary;
+- (void)_setInvitationStatusUnalertedIfNecessary;
 - (void)_setStartDate:(id)arg1 andClearProposedTimes:(bool)arg2;
+- (bool)_shouldAlertInviteeDeclines;
 - (bool)_shouldCancelInsteadOfDeleteWithSpan:(long long)arg1;
 - (bool)_shouldDeclineInsteadOfDelete;
+- (bool)_shouldPreserveFutureWhenSlicingWithStartDate:(id)arg1 newStartDate:(id)arg2;
+- (struct { int x1; BOOL x2; BOOL x3; BOOL x4; BOOL x5; double x6; })_startDateGrForTimeZone:(id)arg1;
 - (id)_travelTimeInternalDescription;
 - (void)_updateConferenceURL;
 - (id)_updateMasterDate:(id)arg1 forChangeToOccurrenceDate:(id)arg2 fromOriginalOccurrenceDate:(id)arg3;
@@ -207,6 +221,7 @@
 - (bool)_validateDurationConstrainedToRecurrenceInterval;
 - (void)_willCommit;
 - (id)actions;
+- (void)addEventAction:(id)arg1;
 - (bool)allowsAlarmModifications;
 - (bool)allowsAttendeesModifications;
 - (bool)allowsAvailabilityModifications;
@@ -225,6 +240,7 @@
 - (bool)automaticLocationGeocodingAllowed;
 - (long long)availability;
 - (id)birthdayContactIdentifier;
+- (id)birthdayContactName;
 - (long long)birthdayPersonID;
 - (id)birthdayPersonUniqueID;
 - (unsigned long long)cachedJunkStatus;
@@ -247,7 +263,9 @@
 - (void)confirmPredictedLocation:(id)arg1;
 - (bool)conformsToRecurrenceRules:(id)arg1;
 - (bool)couldBeJunk;
+- (unsigned long long)countOfAttendeeProposedTimes;
 - (bool)dateChanged;
+- (id)defaultAlarms;
 - (id)description;
 - (void)dismissAcceptedProposeNewTimeNotification;
 - (double)duration;
@@ -263,6 +281,7 @@
 - (id)externalURI;
 - (id)externalURL;
 - (bool)firedTTL;
+- (bool)hasAttachmentChanges;
 - (bool)hasAttendeeProposedTimes;
 - (bool)hasPredictedLocation;
 - (bool)hasSelfAttendee;
@@ -275,6 +294,7 @@
 - (id)initialEndDate;
 - (id)initialStartDate;
 - (unsigned long long)invitationStatus;
+- (bool)isAlerted;
 - (bool)isAllDay;
 - (bool)isAllDayDirty;
 - (bool)isDetached;
@@ -285,6 +305,7 @@
 - (bool)isInvitation;
 - (bool)isMaster;
 - (bool)isPhantom;
+- (bool)isPrivateEventSharedToMe;
 - (bool)isProposedTimeEvent;
 - (bool)isSignificantlyDetached;
 - (bool)isSignificantlyDetachedIgnoringParticipation;
@@ -299,9 +320,11 @@
 - (id)locationWithoutPrediction;
 - (id)locations;
 - (id)locationsWithoutPrediction;
+- (id)lunarCalendarString;
 - (void)markAsCommitted;
 - (void)markAsSaved;
 - (void)markEventAsAttendeeForward;
+- (id)masterEvent;
 - (bool)needsOccurrenceCacheUpdate;
 - (id)occurrenceDate;
 - (id)occurrenceEndDate;
@@ -323,8 +346,10 @@
 - (id)proposedStartDate;
 - (void)rebase;
 - (id)recurrenceRule;
+- (id)recurrenceSet;
 - (bool)refresh;
 - (void)rejectPredictedLocation;
+- (void)removeEventAction:(id)arg1;
 - (bool)removeWithSpan:(long long)arg1 error:(id*)arg2;
 - (bool)requiresDetach;
 - (bool)requiresDetachDueToSnoozedAlarm;
@@ -337,12 +362,14 @@
 - (id)sendersEmail;
 - (id)sendersPhoneNumber;
 - (bool)serverSupportedProposeNewTime;
+- (void)setActions:(id)arg1;
 - (void)setAllDay:(bool)arg1;
 - (void)setAttendeeComment:(bool)arg1;
 - (void)setAttendeeDeclinedStartDate:(bool)arg1;
 - (void)setAttendeeProposedStartDate:(bool)arg1;
 - (void)setAttendeeStatus:(bool)arg1;
 - (void)setAvailability:(long long)arg1;
+- (void)setBirthdayContact:(id)arg1;
 - (void)setCachedJunkStatus:(unsigned long long)arg1;
 - (void)setClearModifiedFlags:(int)arg1;
 - (void)setConferenceURL:(id)arg1;
@@ -352,6 +379,7 @@
 - (void)setExternalTrackingStatus:(int)arg1;
 - (void)setFiredTTL:(bool)arg1;
 - (void)setInvitationStatus:(unsigned long long)arg1;
+- (void)setIsAlerted:(bool)arg1;
 - (void)setIsJunk:(bool)arg1 shouldSave:(bool)arg2;
 - (void)setIsPhantom:(bool)arg1;
 - (void)setJunkStatus:(unsigned long long)arg1;
@@ -359,6 +387,7 @@
 - (void)setLocationPredictionAllowed:(bool)arg1;
 - (void)setLocationPredictionState:(long long)arg1;
 - (void)setLocations:(id)arg1;
+- (void)setLunarCalendarString:(id)arg1;
 - (void)setNeedsOccurrenceCacheUpdate:(bool)arg1;
 - (void)setNotes:(id)arg1;
 - (void)setNotesCommon:(id)arg1;
@@ -375,6 +404,7 @@
 - (void)setPrivacyLevel:(long long)arg1;
 - (void)setProposedStartDate:(id)arg1;
 - (void)setRecurrenceRule:(id)arg1;
+- (void)setRecurrenceSet:(id)arg1;
 - (void)setRequiresDetachDueToSnoozedAlarm:(bool)arg1;
 - (void)setResponseComment:(id)arg1;
 - (void)setStartDate:(id)arg1;
@@ -402,6 +432,7 @@
 - (long long)status;
 - (id)structuredLocation;
 - (id)suggestionInfo;
+- (bool)supportsAddingAttachments;
 - (bool)supportsJunkReporting;
 - (bool)timeChanged;
 - (id)title;
@@ -412,8 +443,10 @@
 - (double)travelTime;
 - (id)uniqueId;
 - (void)updateConferenceURLIfNeeded;
+- (void)updateEndDateForDate:(id)arg1;
 - (bool)updateEventToEvent:(id)arg1;
 - (bool)updateEventToEvent:(id)arg1 commit:(bool)arg2;
+- (void)updateStartDateForDate:(id)arg1;
 - (bool)updateWithGeocodedMapItemAndSaveWithCommit:(id)arg1 eventStore:(id)arg2 error:(id*)arg3;
 - (bool)validate:(id*)arg1;
 - (bool)validateRecurrenceRule:(id)arg1 error:(id*)arg2;
@@ -472,7 +505,7 @@
 - (void)setIpsos_usedBubblesCount:(unsigned long long)arg1;
 - (void)setIpsos_usesDefaultClassificationTypeStartTime:(bool)arg1;
 
-// Image: /System/Library/PrivateFrameworks/PhotoAnalysis.framework/Frameworks/PhotosGraph.framework/Frameworks/MediaMiningKit.framework/MediaMiningKit
+// Image: /System/Library/PrivateFrameworks/MediaMiningKit.framework/MediaMiningKit
 
 - (bool)isBirthday;
 - (bool)organizedByMe;

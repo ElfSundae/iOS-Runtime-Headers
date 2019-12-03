@@ -7,9 +7,7 @@
     NSError * _error;
     bool  _finished;
     NSObject<OS_dispatch_group> * _group;
-    struct os_unfair_lock_s { 
-        unsigned int _os_unfair_lock_opaque; 
-    }  _lock;
+    NFUnfairLock * _lock;
 }
 
 @property (nonatomic, retain) FCForYouCatchUpCondition *condition;
@@ -20,13 +18,11 @@
 
 - (void).cxx_destruct;
 - (void)_possiblyFinishWithError:(id)arg1;
-- (id)_waitWithTimeoutTime:(unsigned long long)arg1;
 - (void)cancel;
 - (id)condition;
 - (id)init;
+- (void)notifyWithCompletion:(id /* block */)arg1;
 - (void)setCondition:(id)arg1;
 - (void)signalWithError:(id)arg1;
-- (id)wait;
-- (id)waitWithTimeoutInterval:(double)arg1;
 
 @end

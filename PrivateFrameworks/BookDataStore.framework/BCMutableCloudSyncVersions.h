@@ -8,7 +8,6 @@
     NSPersistentHistoryToken * _historyToken;
     long long  _historyTokenOffset;
     long long  _localVersion;
-    NSData * _rawHistoryToken;
     long long  _syncVersion;
 }
 
@@ -17,7 +16,6 @@
 @property (nonatomic, copy) NSPersistentHistoryToken *historyToken;
 @property (nonatomic) long long historyTokenOffset;
 @property (nonatomic) long long localVersion;
-@property (nonatomic, copy) NSData *rawHistoryToken;
 @property (nonatomic) long long syncVersion;
 
 + (bool)supportsSecureCoding;
@@ -32,13 +30,11 @@
 - (id)initWithCloudSyncVersions:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (long long)localVersion;
-- (id)rawHistoryToken;
 - (void)setCloudVersion:(long long)arg1;
 - (void)setDataType:(id)arg1;
 - (void)setHistoryToken:(id)arg1;
 - (void)setHistoryTokenOffset:(long long)arg1;
 - (void)setLocalVersion:(long long)arg1;
-- (void)setRawHistoryToken:(id)arg1;
 - (void)setSyncVersion:(long long)arg1;
 - (long long)syncVersion;
 

@@ -7,6 +7,7 @@
 + (id)ACKTracker;
 + (id)FTMessageDelivery_oversized;
 + (id)GDR;
++ (id)GDR_oversized;
 + (id)IDSService;
 + (id)IDSService_oversized;
 + (id)IMMacNotificationCenterManager;
@@ -25,6 +26,7 @@
 + (id)deviceHeartbeat;
 + (id)deviceIDMap;
 + (id)deviceState;
++ (id)dill;
 + (id)engram;
 + (id)healthDebug;
 + (id)healthDebugging;
@@ -51,11 +53,14 @@
 + (id)registration;
 + (id)registrationAuthKit;
 + (id)registrationListener;
++ (id)registration_oversized;
 + (id)reloadAccounts;
 + (id)serverBag;
++ (id)signInController;
 + (id)sms;
 + (id)sub_services;
 + (id)sysdiagnose_oversized;
++ (id)timing;
 + (id)uniqueID;
 + (id)voicemailSync;
 + (id)warning;

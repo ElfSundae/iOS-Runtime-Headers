@@ -21,7 +21,7 @@
 - (void).cxx_destruct;
 - (double)delay;
 - (bool)eventDeliveryScheduled;
-- (void)eventDidOccur;
+- (void)eventDidOccur:(id /* block */)arg1;
 - (id /* block */)eventHandler;
 - (id)eventLabel;
 - (id)initWithDelay:(double)arg1 queue:(id)arg2 logger:(id)arg3;

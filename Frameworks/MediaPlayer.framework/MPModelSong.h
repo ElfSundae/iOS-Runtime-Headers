@@ -16,6 +16,7 @@
 @property (nonatomic, retain) MPModelComposer *composer;
 @property (nonatomic, copy) NSString *copyrightText;
 @property (nonatomic) long long discNumber;
+@property (nonatomic, readonly, copy) NSDate *downloadedDate;
 @property (nonatomic) double duration;
 @property (getter=isExplicitSong, nonatomic) bool explicitSong;
 @property (nonatomic, retain) MPGaplessInfo *gaplessInfo;
@@ -26,13 +27,13 @@
 @property (nonatomic, retain) MPModelHomeSharingAsset *homeSharingAsset;
 @property (nonatomic) long long keepLocalEnableState;
 @property (nonatomic) long long keepLocalManagedStatus;
+@property (nonatomic, readonly, copy) NSDate *lastDevicePlaybackDate;
 @property (getter=isLibraryAddEligible, nonatomic) bool libraryAddEligible;
 @property (getter=isLibraryAdded, nonatomic) bool libraryAdded;
 @property (nonatomic, copy) NSDate *libraryAddedDate;
 @property (nonatomic, retain) MPModelFileAsset *localFileAsset;
 @property (nonatomic, retain) MPModelLyrics *lyrics;
 @property (nonatomic, retain) MPModelPlaybackPosition *playbackPosition;
-@property (nonatomic) bool shouldExcludeFromShuffle;
 @property (nonatomic) bool shouldShowComposer;
 @property (nonatomic, retain) MPModelStoreAsset *storeAsset;
 @property (nonatomic, copy) NSString *title;
@@ -57,6 +58,7 @@
 + (id)__composer_KEY;
 + (id)__copyrightText_KEY;
 + (id)__discNumber_KEY;
++ (id)__downloadedDate_KEY;
 + (id)__duration_KEY;
 + (id)__explicitSong_KEY;
 + (id)__gaplessInfo_KEY;
@@ -67,13 +69,13 @@
 + (id)__homeSharingAsset_KEY;
 + (id)__keepLocalEnableState_KEY;
 + (id)__keepLocalManagedStatus_KEY;
++ (id)__lastDevicePlaybackDate_KEY;
 + (id)__libraryAddEligible_KEY;
 + (id)__libraryAddedDate_KEY;
 + (id)__libraryAdded_KEY;
 + (id)__localFileAsset_KEY;
 + (id)__lyrics_KEY;
 + (id)__playbackPosition_KEY;
-+ (id)__shouldExcludeFromShuffle_KEY;
 + (id)__shouldShowComposer_KEY;
 + (id)__storeAsset_KEY;
 + (id)__title_KEY;
@@ -89,8 +91,6 @@
 + (id)requiredLibraryAddStatusObservationProperties;
 + (id)requiredLibraryRemovalProperties;
 + (id)requiredStoreLibraryPersonalizationProperties;
-+ (id)storeItemMetadataRequestItemIdentifierForIdentifiers:(id)arg1;
-+ (bool)storeItemMetadataRequestNeedsPersonalizationForIdentifiers:(id)arg1;
 + (bool)supportsKeepLocalStatusObservation;
 + (bool)supportsLibraryAddStatusObservation;
 + (bool)supportsLibraryRemoval;
@@ -108,10 +108,9 @@
 // Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
 
 + (id)mpc_remotePlaybackQueueRequiredProperties;
-+ (id)mqf_requiredPlaybackProperties;
++ (id)mqf_requiredItemPlaybackProperties;
 
 - (id)MPC_modelObjectWithStoreFrontLocalEquivalentModelObject:(id)arg1;
-- (id)_radioStationMatchMetadata;
 - (id)mpc_protoItemRepresentation;
 - (id)mpc_radioContentReference;
 - (void)mqf_configurePlaybackItemMetadata:(id)arg1;

@@ -14,7 +14,7 @@
 @property (nonatomic, readonly) bool HTMLInputElementIsUserEdited;
 @property (nonatomic, readonly) WKWebProcessPlugInNodeHandle *HTMLTableCellElementCellAbove;
 @property (nonatomic, readonly) bool HTMLTextAreaElementIsUserEdited;
-@property (readonly) /* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*_apiObject;
+@property (readonly) struct Object { int (**x1)(); id x2; }*_apiObject;
 @property (readonly) /* Warning: unhandled struct encoding: '{InjectedBundleNodeHandle=^^?@{Ref<WebCore::Node' */ struct *_nodeHandle; /* unknown property attribute:  WTF::DumbPtrTraits<WebCore::Node> >=^{Node}}} */
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -30,8 +30,8 @@
 - (bool)HTMLInputElementIsUserEdited;
 - (id)HTMLTableCellElementCellAbove;
 - (bool)HTMLTextAreaElementIsUserEdited;
-- (/* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*)_apiObject;
-- (struct InjectedBundleNodeHandle { int (**x1)(); id x2; /* Warning: Unrecognized filer type: 'R' using 'void*' */ void*x3; void*x4; float x5; void*x6; void*x7; void*x8; unsigned int x9/* : ? */; unsigned char x10; out const void*x11; SEL x12; SEL x13; inout out double x14; void*x15; void*x16; void*x17; void*x18; void*x19; void*x20; SEL x21; SEL x22; long doublex23; void*x24; void*x25; unsigned int x26/* : ? */; void*x27; void*x28; const void*x29; const void*x30; int x31; void*x32; short x33; void*x34; void*x35; void*x36; unsigned int x37/* : ? */; unsigned char x38; out const void*x39; SEL x40; SEL x41; inout out double x42; void*x43; void*x44; void*x45; void*x46; void*x47; struct Node {} *x48; }*)_nodeHandle;
+- (struct Object { int (**x1)(); id x2; }*)_apiObject;
+- (struct InjectedBundleNodeHandle { int (**x1)(); id x2; struct Ref<WebCore::Node, WTF::DumbPtrTraits<WebCore::Node> > { struct Node {} *x_3_1_1; } x3; }*)_nodeHandle;
 - (void)dealloc;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })elementBounds;
 - (id)frame;

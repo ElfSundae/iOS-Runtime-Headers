@@ -52,6 +52,6 @@
 - (bool)shouldTryRenewingCredential;
 - (bool)shouldTurnModalOnBadPassword;
 - (bool)shouldUseOpportunisticSockets;
-- (void)webLoginRequestedAtURL:(void *)arg1 reasonString:(void *)arg2 completionBlock:(void *)arg3; // needs 3 arg types, found 8: NSURL *, NSString *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, int, void*
+- (void)webLoginRequestedAtURL:(void *)arg1 reasonString:(void *)arg2 inQueue:(void *)arg3 completionBlock:(void *)arg4; // needs 4 arg types, found 9: NSURL *, NSString *, NSObject<OS_dispatch_queue> *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, int, void*
 
 @end

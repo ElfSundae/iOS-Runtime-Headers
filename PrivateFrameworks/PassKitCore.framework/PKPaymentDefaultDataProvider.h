@@ -7,6 +7,7 @@
     NSLock * _delegateLock;
     NSHashTable * _delegates;
     PKPaymentService * _paymentService;
+    PKPaymentWebService * _paymentWebService;
     NSObject<OS_dispatch_queue> * _replyQueue;
     PKSecureElement * _secureElement;
 }
@@ -21,6 +22,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) bool isDeviceInRestrictedMode;
 @property (nonatomic, readonly) bool isPaymentHandoffDisabled;
+@property (nonatomic, readonly) PKPaymentWebService *paymentWebService;
 @property (nonatomic, readonly) NSString *secureElementIdentifier;
 @property (nonatomic, readonly) bool secureElementIsProductionSigned;
 @property (readonly) Class superclass;
@@ -48,6 +50,8 @@
 - (id)expressPassesInformationWithCardType:(long long)arg1;
 - (id)init;
 - (id)initWithPaymentService:(id)arg1 secureElement:(id)arg2;
+- (void)installmentPlansWithTransactionReferenceIdentifier:(id)arg1 completion:(id /* block */)arg2;
+- (void)installmentTransactionsForInstallmentPlanIdentifier:(id)arg1 completion:(id /* block */)arg2;
 - (bool)isDeviceInRestrictedMode;
 - (bool)isPaymentHandoffDisabled;
 - (void)mapsMerchantsWithCompletion:(id /* block */)arg1;
@@ -61,6 +65,7 @@
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didRemoveTransactionWithIdentifier:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithTransitPassProperties:(id)arg2;
+- (id)paymentWebService;
 - (void)pendingTransactionsForPaymentPassWithUniqueIdentifier:(id)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 startDate:(id)arg4 endDate:(id)arg5 limit:(long long)arg6 completion:(id /* block */)arg7;
 - (void)removeDelegate:(id)arg1;
 - (void)removeExpressPassWithUniqueIdentifier:(id)arg1 completion:(id /* block */)arg2;
@@ -77,6 +82,7 @@
 - (void)submitTransactionAnswerForTransaction:(id)arg1 questionType:(unsigned long long)arg2 answer:(id)arg3 completion:(id /* block */)arg4;
 - (bool)supportsExpressForAutomaticSelectionTechnologyType:(long long)arg1;
 - (bool)supportsInAppPaymentsForPass:(id)arg1;
+- (bool)supportsLowPowerExpressMode;
 - (bool)supportsMessagesForPass:(id)arg1;
 - (bool)supportsNotificationsForPass:(id)arg1;
 - (bool)supportsTransactionsForPass:(id)arg1;
@@ -84,7 +90,7 @@
 - (void)transactionWithReferenceIdentifier:(id)arg1 completion:(id /* block */)arg2;
 - (void)transactionWithServiceIdentifier:(id)arg1 completion:(id /* block */)arg2;
 - (id)transactionsAppLaunchTokenForPassWithUniqueIdentifier:(id)arg1;
-- (void)transactionsForPaymentPassWithUniqueIdentifier:(id)arg1 matchingMapsMerchantIdentifier:(unsigned long long)arg2 orMapsBrandIdentifier:(unsigned long long)arg3 orMerchantCleanName:(id)arg4 withTransactionSource:(unsigned long long)arg5 withBackingData:(unsigned long long)arg6 limit:(long long)arg7 completion:(id /* block */)arg8;
+- (void)transactionsForPaymentPassWithUniqueIdentifier:(id)arg1 matchingMerchant:(id)arg2 withTransactionSource:(unsigned long long)arg3 withBackingData:(unsigned long long)arg4 limit:(long long)arg5 completion:(id /* block */)arg6;
 - (void)transactionsForPaymentPassWithUniqueIdentifier:(id)arg1 withMapsIdentifier:(unsigned long long)arg2 withTransactionSource:(unsigned long long)arg3 withBackingData:(unsigned long long)arg4 limit:(long long)arg5 completion:(id /* block */)arg6;
 - (void)transactionsForPaymentPassWithUniqueIdentifier:(id)arg1 withPeerPaymentCounterpartHandle:(id)arg2 withTransactionSource:(unsigned long long)arg3 withBackingData:(unsigned long long)arg4 limit:(long long)arg5 completion:(id /* block */)arg6;
 - (void)transactionsForPaymentPassWithUniqueIdentifier:(id)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 limit:(long long)arg4 completion:(id /* block */)arg5;

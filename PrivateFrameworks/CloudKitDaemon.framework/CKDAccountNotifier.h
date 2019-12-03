@@ -20,8 +20,8 @@
 - (void)dealloc;
 - (id)init;
 - (id)notificationHandlers;
-- (void)postAccountChangedNotification:(id)arg1;
 - (void)postAccountChangedNotificationToClients;
+- (void)postAccountChangedNotificationWithAccountID:(id)arg1 changeType:(long long)arg2;
 - (void)registerObserver:(id)arg1 forAccountChangeNotification:(id /* block */)arg2;
 - (void)setAccountChangeHandlerQueue:(id)arg1;
 - (void)setAccountChangedToken:(int)arg1;

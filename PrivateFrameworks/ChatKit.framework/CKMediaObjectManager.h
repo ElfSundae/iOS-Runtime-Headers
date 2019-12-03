@@ -22,7 +22,6 @@
 - (id)UTITypes;
 - (id)allUTITypes;
 - (Class)classForFilename:(id)arg1;
-- (Class)classForFilename:(id)arg1 fileURL:(id)arg2;
 - (Class)classForUTIType:(id)arg1;
 - (id)classes;
 - (void)dealloc;

@@ -27,6 +27,7 @@
 - (id)initWithWriter:(id)arg1 pixelFormatFlags:(unsigned int)arg2;
 - (id)initWithWriter:(id)arg1 pixelFormatFlags:(unsigned int)arg2 colorManagement:(bool)arg3;
 - (id)pixelAttrs;
+- (bool)pixelBuffer:(struct __CVBuffer { }*)arg1 conformsToImage:(id)arg2;
 - (struct __CVBuffer { }*)pixelBufferFromImage:(id)arg1;
 - (struct __CVBuffer { }*)pixelBufferFromImage:(id)arg1 withAttachFrom:(struct __CVBuffer { }*)arg2;
 - (unsigned int)pixelFormat;

@@ -10,7 +10,7 @@
     long long  _remainingTaskCount;
 }
 
-@property (readonly) id /* block */ completionBlock;
+@property (readonly, copy) id /* block */ completionBlock;
 @property (readonly) NSCondition *conditionLock;
 @property (retain) NSArray *errors;
 @property (readonly) NSString *label;

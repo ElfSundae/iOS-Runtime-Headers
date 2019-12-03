@@ -3,9 +3,11 @@
  */
 
 @interface CPLEngineForceSyncTask : CPLForceSyncTask <CPLEngineSyncTaskDelegate> {
+    bool  _bypassForceSyncLimitations;
     CPLEngineSyncTask * _currentTask;
     <CPLEngineForceSyncTaskDelegate> * _delegate;
     CPLEngineLibrary * _engineLibrary;
+    CPLSyncSession * _fakeSession;
     CPLScopeFilter * _filter;
     CPLMinglePulledChangesTask * _mingleTask;
     CPLPullFromTransportTask * _pullTask;
@@ -15,6 +17,7 @@
     id /* block */  _taskDidFinishWithErrorBlock;
 }
 
+@property (nonatomic) bool bypassForceSyncLimitations;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <CPLEngineForceSyncTaskDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -29,6 +32,8 @@
 - (void)_dispatchPullTask;
 - (void)_dispatchPushTask;
 - (void)_dispatchSyncTask:(id)arg1;
+- (void)_finishWithError:(id)arg1;
+- (bool)bypassForceSyncLimitations;
 - (void)cancelTask;
 - (id)delegate;
 - (id)engineLibrary;
@@ -36,6 +41,7 @@
 - (id)initWithScopeIdentifiers:(id)arg1 engineLibrary:(id)arg2 filter:(id)arg3 delegate:(id)arg4;
 - (void)launch;
 - (void)reallyCancel;
+- (void)setBypassForceSyncLimitations:(bool)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setEngineLibrary:(id)arg1;
 - (void)setFilter:(id)arg1;

@@ -54,7 +54,6 @@
 - (void)_play;
 - (void)_preroll;
 - (bool)_readyToPerformRequest;
-- (void)_resetRequestState;
 - (void)_seekToTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (void)_showPausedView;
 - (void)_stopObservingPlayerItem;
@@ -75,6 +74,7 @@
 - (void)prepareNextQueuedVideo;
 - (void)preroll;
 - (void)queueVideo:(id)arg1;
+- (void)resetRequestState;
 - (void)seekToTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (void)seekToTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 tolerance:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2;
 - (void)setDelegate:(id)arg1;

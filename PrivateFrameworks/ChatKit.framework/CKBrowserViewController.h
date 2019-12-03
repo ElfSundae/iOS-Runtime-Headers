@@ -29,6 +29,7 @@
 @property (nonatomic) long long currentBrowserConsumer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (getter=isDismissing, nonatomic, readonly) bool dismissing;
 @property (nonatomic) UIView *dragTargetView;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } horizontalSwipeExclusionRect;
@@ -79,6 +80,7 @@
 - (id)initWithBalloonPlugin:(id)arg1;
 - (id)initWithBalloonPlugin:(id)arg1 dataSource:(id)arg2;
 - (id)initWithBalloonPlugin:(id)arg1 pluginPayloads:(id)arg2;
+- (bool)isDismissing;
 - (bool)isLoaded;
 - (bool)isPrimaryViewController;
 - (bool)isTransitioningToExpandedPresentation;

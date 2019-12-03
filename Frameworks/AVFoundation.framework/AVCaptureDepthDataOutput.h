@@ -11,6 +11,7 @@
 @property (nonatomic, readonly) <AVCaptureDepthDataOutputDelegate> *delegate;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *delegateCallbackQueue;
 @property (nonatomic, readonly) id delegateOverride;
+@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *delegateOverrideCallbackQueue;
 @property (readonly, copy) NSString *description;
 @property (getter=isFilteringEnabled, nonatomic) bool filteringEnabled;
 @property (readonly) unsigned long long hash;
@@ -30,12 +31,13 @@
 - (bool)appliesMirroringWithPhysicalFlipForConnection:(id)arg1;
 - (bool)appliesOrientationWithPhysicalRotationForConnection:(id)arg1;
 - (void)attachSafelyToFigCaptureSession:(struct OpaqueFigCaptureSession { }*)arg1;
-- (bool)canAddConnectionForMediaType:(id)arg1;
+- (bool)canAddConnection:(id)arg1 failureReason:(id*)arg2;
 - (id)connectionMediaTypes;
 - (void)dealloc;
 - (id)delegate;
 - (id)delegateCallbackQueue;
 - (id)delegateOverride;
+- (id)delegateOverrideCallbackQueue;
 - (void)detachSafelyFromFigCaptureSession:(struct OpaqueFigCaptureSession { }*)arg1;
 - (id)init;
 - (bool)isFilteringEnabled;

@@ -68,6 +68,7 @@
 @property (nonatomic, readonly) CPLStatus *syncStatus;
 @property (nonatomic, copy) NSString *userOverride;
 
++ (id)descriptionForProvideContentResult:(unsigned long long)arg1;
 + (id)platformImplementationProtocol;
 + (id)stateDescriptionForState:(unsigned long long)arg1;
 + (void)useCloudPhotoDaemonImplementation;
@@ -101,10 +102,9 @@
 - (void)blockEngineElement:(id)arg1;
 - (void)boostPriorityForScopeWithIdentifier:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)checkHasBackgroundDownloadOperationsWithCompletionHandler:(id /* block */)arg1;
+- (void)checkResourcesAreSafeToPrune:(id)arg1 checkServerIfNecessary:(bool)arg2 completionHandler:(id /* block */)arg3;
 - (id)clientLibraryBaseURL;
 - (void)closeWithCompletionHandler:(id /* block */)arg1;
-- (void)cloudCacheGetDescriptionForRecordWithIdentifier:(id)arg1 completionHandler:(id /* block */)arg2;
-- (void)cloudCacheGetDescriptionForRecordWithIdentifier:(id)arg1 related:(bool)arg2 completionHandler:(id /* block */)arg3;
 - (void)cloudCacheGetDescriptionForRecordWithScopedIdentifier:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)cloudCacheGetDescriptionForRecordWithScopedIdentifier:(id)arg1 related:(bool)arg2 completionHandler:(id /* block */)arg3;
 - (id)cloudLibraryResourceStorageURL;
@@ -133,7 +133,6 @@
 - (id)forceSyncDelegate;
 - (void)forceSynchronizingScopeWithIdentifiers:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)getChangedStatusesWithCompletionHandler:(id /* block */)arg1;
-- (void)getCloudCacheForRecordWithIdentifier:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)getCloudCacheForRecordWithScopedIdentifier:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)getCloudIdentifiersForLocalIdentifiers:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)getCloudScopedIdentifiersForLocalScopedIdentifiers:(id)arg1 completionHandler:(id /* block */)arg2;
@@ -147,6 +146,7 @@
 - (void)getStatusForRecordsWithIdentifiers:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)getStatusForRecordsWithScopedIdentifiers:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)getStatusesForScopesWithIdentifiers:(id)arg1 includeStorages:(bool)arg2 completionHandler:(id /* block */)arg3;
+- (void)getStreamingURLForResource:(id)arg1 intent:(unsigned long long)arg2 hints:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)getSystemBudgetsWithCompletionHandler:(id /* block */)arg1;
 - (id)initForManagement;
 - (id)initWithClientLibraryBaseURL:(id)arg1 cloudLibraryStateStorageURL:(id)arg2 cloudLibraryResourceStorageURL:(id)arg3 libraryIdentifier:(id)arg4;
@@ -165,6 +165,9 @@
 - (void)openWithCompletionHandler:(id /* block */)arg1;
 - (id)owner;
 - (id)platformObject;
+- (void)provideCloudResource:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)provideLibraryInfoForScopeWithIdentifier:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)provideRecordWithCloudScopeIdentifier:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)publishMomentShare:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)publishResource:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)queryUserIdentitiesWithParticipants:(id)arg1 completionHandler:(id /* block */)arg2;

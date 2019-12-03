@@ -25,6 +25,7 @@
 @property (nonatomic, readonly) NSNumber *previewFrameHeight;
 @property (nonatomic, readonly) NSString *previewFrameURLFormat;
 @property (nonatomic, readonly) NSNumber *previewFrameWidth;
+@property (nonatomic, readonly) NSString *ratingDomain;
 @property (nonatomic, readonly) NSString *ratingName;
 @property (nonatomic, readonly) NSString *ratingSystem;
 @property (nonatomic, readonly) NSNumber *ratingValue;
@@ -63,6 +64,7 @@
 - (id)previewFrameHeight;
 - (id)previewFrameURLFormat;
 - (id)previewFrameWidth;
+- (id)ratingDomain;
 - (id)ratingName;
 - (id)ratingSystem;
 - (id)ratingValue;

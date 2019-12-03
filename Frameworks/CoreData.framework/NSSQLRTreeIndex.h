@@ -9,10 +9,10 @@
 @property (nonatomic, readonly, retain) NSString *tableName;
 
 - (id)bulkUpdateStatementsForStore:(id)arg1;
-- (id)createStatementsForStore:(id)arg1;
 - (void)dealloc;
 - (id)dropStatementsForStore:(id)arg1;
 - (void)generateSQLStrings;
+- (id)generateStatementsForStore:(id)arg1;
 - (id)initForIndexDescription:(id)arg1 sqlEntity:(id)arg2;
 - (id)tableName;
 

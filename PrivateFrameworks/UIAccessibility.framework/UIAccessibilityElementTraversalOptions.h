@@ -3,6 +3,7 @@
  */
 
 @interface UIAccessibilityElementTraversalOptions : NSObject {
+    NSArray * _allowedViewsForTraversal;
     long long  _direction;
     bool  _forSpeakScreen;
     bool  _ignoreObscuresScreen;
@@ -19,6 +20,7 @@
     bool  _sorted;
 }
 
+@property (nonatomic, retain) NSArray *allowedViewsForTraversal;
 @property (nonatomic) long long direction;
 @property (nonatomic) bool forSpeakScreen;
 @property (nonatomic) bool ignoreObscuresScreen;
@@ -41,6 +43,7 @@
 + (id)voiceOverOptionsIncludingElementsFromOpaqueProviders:(bool)arg1;
 
 - (void).cxx_destruct;
+- (id)allowedViewsForTraversal;
 - (id)description;
 - (long long)direction;
 - (bool)forSpeakScreen;
@@ -51,6 +54,7 @@
 - (bool)includeWindowlessViews;
 - (id)init;
 - (id /* block */)leafNodePredicate;
+- (void)setAllowedViewsForTraversal:(id)arg1;
 - (void)setDirection:(long long)arg1;
 - (void)setForSpeakScreen:(bool)arg1;
 - (void)setIgnoreObscuresScreen:(bool)arg1;

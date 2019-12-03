@@ -12,7 +12,6 @@
 - (void)_prepareForContainerTransition:(id)arg1;
 - (void)_presentSearchControllerIfNecessary;
 - (bool)_transitionsChildViewControllers;
-- (void)_updateSearchControllerIfNecessary;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSearchController:(id)arg1;
@@ -20,6 +19,5 @@
 - (void)setSearchController:(id)arg1;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidLoad;
-- (void)viewWillAppear:(bool)arg1;
 
 @end

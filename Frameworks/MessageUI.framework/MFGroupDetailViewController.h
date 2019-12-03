@@ -10,8 +10,8 @@
 @property (nonatomic) <MFGroupDetailViewControllerDelegate> *delegate;
 @property (nonatomic, retain) MFRecentComposeRecipientGroup *group;
 
+- (void).cxx_destruct;
 - (void)_removeButtonTapped:(id)arg1;
-- (void)dealloc;
 - (id)delegate;
 - (id)group;
 - (id)initWithStyle:(long long)arg1;

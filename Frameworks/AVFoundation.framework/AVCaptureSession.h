@@ -8,6 +8,7 @@
 
 @property (nonatomic) bool automaticallyConfiguresApplicationAudioSession;
 @property (nonatomic) bool automaticallyConfiguresCaptureDeviceForWideColor;
+@property (nonatomic, readonly) NSArray *connections;
 @property (nonatomic, readonly) NSArray *inputs;
 @property (getter=isInterrupted, nonatomic, readonly) bool interrupted;
 @property (nonatomic, readonly) struct OpaqueCMClock { }*masterClock;
@@ -89,12 +90,17 @@
 - (bool)canSetSessionPreset:(id)arg1;
 - (void)cancelForegroundAutoResumeAfterDate:(id)arg1;
 - (void)commitConfiguration;
+- (id)connections;
 - (void)dealloc;
 - (id)description;
+- (void)handleVideoInputDevice:(id)arg1 activeDepthDataFormatChanged:(id)arg2;
+- (void)handleVideoInputDevice:(id)arg1 activeFormatChanged:(id)arg2;
+- (void)informSessionMembersOfChangedActiveFormat:(id)arg1 forDevice:(id)arg2;
 - (id)init;
 - (id)inputs;
 - (bool)isBeingConfigured;
 - (bool)isInterrupted;
+- (bool)isOverCost:(id*)arg1;
 - (bool)isRunning;
 - (struct OpaqueCMClock { }*)masterClock;
 - (bool)notifiesOnMainThread;

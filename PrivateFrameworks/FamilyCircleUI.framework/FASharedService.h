@@ -9,7 +9,10 @@
     NSString * _iconURLString;
     NSString * _iconURLStringx2;
     NSString * _iconURLStringx3;
+    bool  _isDefault;
+    bool  _isSeparator;
     NSString * _name;
+    NSNumber * _order;
     NSString * _subLabel;
 }
 
@@ -19,7 +22,10 @@
 @property (nonatomic, readonly) NSString *iconURLString;
 @property (nonatomic, readonly) NSString *iconURLStringx2;
 @property (nonatomic, readonly) NSString *iconURLStringx3;
+@property (nonatomic, readonly) bool isDefault;
+@property (nonatomic, readonly) bool isSeparator;
 @property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly) NSNumber *order;
 @property (nonatomic, readonly) NSString *subLabel;
 
 - (void).cxx_destruct;
@@ -30,9 +36,12 @@
 - (id)iconURLStringx2;
 - (id)iconURLStringx3;
 - (id)initWithDictionary:(id)arg1;
+- (bool)isDefault;
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToSharedService:(id)arg1;
+- (bool)isSeparator;
 - (id)name;
+- (id)order;
 - (id)subLabel;
 
 @end

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PersonalizationPortrait.framework/PersonalizationPortrait
  */
 
-@interface PPEventClient : NSObject {
+@interface PPEventClient : NSObject <PPEventClientProtocol> {
     PPXPCClientHelper * _clientHelper;
     PPXPCClientPipelinedBatchQueryManager * _queryManager;
 }
@@ -21,6 +21,7 @@
 - (void)interactionSummaryMetricsBatch:(id)arg1 isLast:(bool)arg2 error:(id)arg3 queryId:(unsigned long long)arg4 completion:(id /* block */)arg5;
 - (bool)interactionSummaryMetricsWithError:(id*)arg1 handleBatch:(id /* block */)arg2;
 - (void)logEventInteractionForEventWithEventIdentifier:(id)arg1 interface:(unsigned short)arg2 actionType:(unsigned short)arg3;
+- (void)registerFeedback:(id)arg1 completion:(id /* block */)arg2;
 - (bool)resolveEventNameRecordChanges:(id)arg1 client:(id)arg2 error:(id*)arg3 handleBatch:(id /* block */)arg4;
 - (bool)sendRTCLogsWithError:(id*)arg1;
 

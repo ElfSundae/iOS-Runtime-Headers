@@ -28,6 +28,7 @@
     bool  _showsDesignator;
     bool  _showsNumbers;
     CLKUITimeLabelStyle * _style;
+    UIColor * _textColor;
     CLKTimeFormatter * _timeFormatter;
     NSString * _timeText;
 }

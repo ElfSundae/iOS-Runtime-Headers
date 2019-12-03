@@ -11,7 +11,7 @@
 
 @property (nonatomic, retain) NSMutableArray *cameraFiles;
 @property (nonatomic) bool canCancel;
-@property (nonatomic, readonly) id /* block */ completion;
+@property (nonatomic, readonly, copy) id /* block */ completion;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *serializer;
 
 - (void).cxx_destruct;

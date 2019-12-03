@@ -7,16 +7,16 @@
     CKDatabase * _database;
     PFCloudKitStoreMonitor * _monitor;
     NSCloudKitMirroringDelegateOptions * _options;
+    CKRecordZone * _recordZone;
     NSObject<OS_dispatch_queue> * _workQueue;
-    CKRecordZone * _zone;
 }
 
 @property (nonatomic, readonly) NSURL *assetStorageURL;
 @property (nonatomic, readonly) CKDatabase *database;
 @property (nonatomic, readonly) PFCloudKitStoreMonitor *monitor;
 @property (nonatomic, readonly) NSCloudKitMirroringDelegateOptions *options;
+@property (nonatomic, readonly) CKRecordZone *recordZone;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *workQueue;
-@property (nonatomic, readonly) CKRecordZone *zone;
 
 - (id)assetStorageURL;
 - (id)copy;
@@ -25,7 +25,7 @@
 - (id)initWithOptions:(id)arg1 monitor:(id)arg2 assetStorageURL:(id)arg3 workQueue:(id)arg4 zone:(id)arg5 andDatabase:(id)arg6;
 - (id)monitor;
 - (id)options;
+- (id)recordZone;
 - (id)workQueue;
-- (id)zone;
 
 @end

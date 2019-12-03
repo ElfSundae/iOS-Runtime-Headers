@@ -32,6 +32,8 @@
 - (void)setDarkened:(bool)arg1 animated:(bool)arg2 completion:(id /* block */)arg3;
 - (void)setProgressValue:(double)arg1;
 - (void)setProgressValue:(double)arg1 animated:(bool)arg2 completion:(id /* block */)arg3;
+- (void)setRingColor:(id)arg1;
+- (void)setShadowColor:(id)arg1;
 - (void)setSpinning:(bool)arg1;
 
 @end

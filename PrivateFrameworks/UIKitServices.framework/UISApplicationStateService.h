@@ -2,13 +2,13 @@
    Image: /System/Library/PrivateFrameworks/UIKitServices.framework/UIKitServices
  */
 
-@interface UISApplicationStateService : NSObject <UISApplicationStateServerDelegate> {
+@interface UISApplicationStateService : NSObject <BSServiceConnectionListenerDelegate, UISApplicationStateXPCServerInterface> {
     FBSSerialQueue * _calloutQueue;
     <UISApplicationStateServiceDelegate> * _delegate;
     struct { 
         unsigned int delegateDataSourceForApplicationBundleIdentifier : 1; 
     }  _delegateFlags;
-    UISApplicationStateServer * _server;
+    BSServiceConnectionListener * _listener;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -19,16 +19,20 @@
 
 - (void).cxx_destruct;
 - (id)_dataSourceForApplicationBundleIdentifier:(id)arg1;
-- (bool)_isClientAuthorized:(id)arg1 forApplicationBundleIdentifier:(id)arg2;
-- (id)client:(id)arg1 getBadgeValueForApplication:(id)arg2;
-- (double)client:(id)arg1 getNextWakeIntervalSinceReferenceDateForApplication:(id)arg2;
-- (bool)client:(id)arg1 getUsesBackgroundNetworkForApplication:(id)arg2;
-- (void)client:(id)arg1 setBadgeValue:(id)arg2 forApplication:(id)arg3;
-- (void)client:(id)arg1 setMinimumBackgroundFetchInterval:(double)arg2 forApplication:(id)arg3;
-- (void)client:(id)arg1 setNextWakeIntervalSinceReferenceDate:(double)arg2 forApplication:(id)arg3;
-- (void)client:(id)arg1 setUsesBackgroundNetwork:(bool)arg2 forApplication:(id)arg3;
+- (bool)_isCurrentConnectionAuthorizedForApplicationBundleIdentifier:(id)arg1 description:(id)arg2;
+- (bool)_isCurrentConnectionAuthorizedForApplicationBundleIdentifier:(id)arg1 description:(id)arg2 legacyEntitlement:(id)arg3;
+- (id)_operatingBundleIdentifier;
+- (void)badgeValueWithCompletion:(id /* block */)arg1;
 - (id)delegate;
+- (id)init;
 - (id)initWithCalloutQueue:(id)arg1;
+- (void)listener:(id)arg1 didReceiveConnection:(id)arg2 withContext:(id)arg3;
+- (void)nextWakeIntervalSinceReferenceDateWithCompletion:(id /* block */)arg1;
+- (oneway void)setBadgeValue:(id)arg1;
 - (void)setDelegate:(id)arg1;
+- (oneway void)setMinimumBackgroundFetchInterval:(id)arg1;
+- (oneway void)setNextWakeIntervalSinceReferenceDate:(id)arg1;
+- (oneway void)setUsesBackgroundNetwork:(id)arg1;
+- (void)usesBackgroundNetworkWithCompletion:(id /* block */)arg1;
 
 @end

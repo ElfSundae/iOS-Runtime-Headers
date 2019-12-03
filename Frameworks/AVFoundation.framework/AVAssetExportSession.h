@@ -35,6 +35,8 @@
 - (void)determineCompatibleFileTypesWithCompletionHandler:(id /* block */)arg1;
 - (id)directoryForTemporaryFiles;
 - (id)error;
+- (void)estimateMaximumDurationWithCompletionHandler:(id /* block */)arg1;
+- (void)estimateOutputFileLengthWithCompletionHandler:(id /* block */)arg1;
 - (long long)estimatedOutputFileLength;
 - (void)exportAsynchronouslyWithCompletionHandler:(id /* block */)arg1;
 - (long long)fileLengthLimit;

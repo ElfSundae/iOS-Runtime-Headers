@@ -22,7 +22,7 @@
 - (double)_bottomMarginForTextFields;
 - (void)_returnKeyPressedInTextField:(id)arg1;
 - (void)_updatePreferredContentSize;
-- (id)addTextFieldWithPlaceholder:(id)arg1 isSecure:(bool)arg2;
+- (id)addTextFieldWithPlaceholder:(id)arg1;
 - (bool)collectionView:(id)arg1 canFocusItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
@@ -38,6 +38,7 @@
 - (void)setTextFieldsCanBecomeFirstResponder:(bool)arg1;
 - (void)setVisualStyle:(id)arg1;
 - (id)textFieldAtIndex:(long long)arg1;
+- (id)textFieldContainerViews;
 - (id)textFields;
 - (bool)textFieldsCanBecomeFirstResponder;
 - (void)updateTextFieldStyle;

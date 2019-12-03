@@ -10,6 +10,7 @@
 
 - (void).cxx_destruct;
 - (id)image;
+- (bool)isAccessibilityElement;
 - (id)repeatingImage;
 - (void)setImage:(id)arg1;
 - (void)setRepeatingImage:(id)arg1;

@@ -57,6 +57,7 @@
 @property (nonatomic, readonly, copy) NSString *volumeControlLabel;
 @property (nonatomic, retain) MPVolumeController *volumeController;
 @property (nonatomic, retain) UIImage *volumeWarningTrackImage;
+@property (nonatomic, readonly) UIWindowScene *windowSceneForVolumeDisplay;
 
 - (void).cxx_destruct;
 - (void)_applicationDidEnterBackgroundNotification:(id)arg1;
@@ -64,6 +65,7 @@
 - (void)_beginBlinkingWarningView;
 - (void)_blinkWarningView;
 - (void)_commitVolumeChange;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (void)_endBlinkingWarningView;
 - (void)_endTracking;
 - (bool)_isOffScreen;
@@ -122,6 +124,7 @@
 - (id)thumbView;
 - (id)trackLayoutGuide;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })trackRectForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (void)updateVolume;
 - (id)volumeAudioCategory;
 - (id)volumeControlLabel;
 - (id)volumeController;
@@ -133,5 +136,6 @@
 - (void)volumeController:(id)arg1 volumeValueDidChange:(float)arg2;
 - (void)volumeController:(id)arg1 volumeWarningStateDidChange:(long long)arg2;
 - (id)volumeWarningTrackImage;
+- (id)windowSceneForVolumeDisplay;
 
 @end

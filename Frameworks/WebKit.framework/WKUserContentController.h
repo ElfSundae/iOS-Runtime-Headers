@@ -10,7 +10,7 @@
     }  _userContentControllerProxy;
 }
 
-@property (readonly) /* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*_apiObject;
+@property (readonly) struct Object { int (**x1)(); id x2; }*_apiObject;
 @property (nonatomic, readonly, copy) NSArray *_userStyleSheets;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -24,7 +24,7 @@
 - (void)_addUserContentFilter:(id)arg1;
 - (void)_addUserScriptImmediately:(id)arg1;
 - (void)_addUserStyleSheet:(id)arg1;
-- (/* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*)_apiObject;
+- (struct Object { int (**x1)(); id x2; }*)_apiObject;
 - (void)_removeAllScriptMessageHandlersAssociatedWithUserContentWorld:(id)arg1;
 - (void)_removeAllUserContentFilters;
 - (void)_removeAllUserScriptsAssociatedWithUserContentWorld:(id)arg1;

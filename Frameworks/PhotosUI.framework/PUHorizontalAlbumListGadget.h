@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUHorizontalAlbumListGadget : PXHorizontalCollectionGadget <PLNavigableCollectionContainer, PUCloudSharedAlbumViewControllerDelegate, PUStackedAlbumTransitionDelegate> {
+@interface PUHorizontalAlbumListGadget : PXHorizontalCollectionGadget <PUCloudSharedAlbumViewControllerDelegate, PUStackedAlbumTransitionDelegate, PXNavigableCollectionContainer> {
     PUAlbumDropSessionController * _dropSessionController;
     PUPhotoPinchGestureRecognizer * _pinchGestureRecognizer;
     PUAlbumsGadgetProvider * _provider;
@@ -26,7 +26,6 @@
 - (void)_handlePinch:(id)arg1;
 - (void)_navigateToCollection:(id)arg1 animated:(bool)arg2 interactive:(bool)arg3 completion:(id /* block */)arg4;
 - (void)_updateCollectionViewLayout;
-- (const struct __CFString { }*)accessoryButtonEventTrackerKey;
 - (id)accessoryButtonTitle;
 - (unsigned long long)accessoryButtonType;
 - (id)albumListViewControllerSpec;

@@ -18,7 +18,10 @@
 - (id)_newModularSmallLunarTemplate;
 - (id)_newModularSmallTemplate;
 - (id)_newSignatureCircularTemplate;
+- (id)_newSignatureCornerTemplate;
+- (id)_newSimpleTextTemplate;
 - (id)_newSmallFlatUtilitarianTemplate;
+- (id)_simpleTextShortDateProvider;
 - (bool)lunar;
 - (void)setLunar:(bool)arg1;
 - (id)templateForComplicationFamily:(long long)arg1;

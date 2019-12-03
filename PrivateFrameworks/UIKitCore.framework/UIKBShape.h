@@ -3,7 +3,7 @@
  */
 
 @interface UIKBShape : NSObject <NSCoding, NSCopying> {
-    int  m_concaveCorner;
+    unsigned long long  m_concaveCorner;
     struct CGSize { 
         double width; 
         double height; 
@@ -34,7 +34,7 @@
     unsigned long long  m_uid;
 }
 
-@property (nonatomic) int concaveCorner;
+@property (nonatomic) unsigned long long concaveCorner;
 @property (nonatomic) struct CGSize { double x1; double x2; } concaveCornerOffset;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } frame;
 @property (nonatomic, retain) UIKBGeometry *geometry;
@@ -52,7 +52,7 @@
 - (void)addRectFrom:(id)arg1 mergeActionFactors:(id)arg2;
 - (void)addRectFrom:(id)arg1 widthFraction:(double)arg2 heightFraction:(double)arg3 adjustOriginXFactor:(double)arg4 adjustOriginYFactor:(double)arg5;
 - (void)addRectFrom:(id)arg1 widthFraction:(double)arg2 heightFraction:(double)arg3 adjustOriginXFactor:(double)arg4 adjustOriginYFactor:(double)arg5 absoluteOriginFactors:(bool)arg6;
-- (int)concaveCorner;
+- (unsigned long long)concaveCorner;
 - (struct CGSize { double x1; double x2; })concaveCornerOffset;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -64,7 +64,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithGeometry:(id)arg1 frame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 paddedFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3;
-- (id)initWithGeometry:(id)arg1 frame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 paddedFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3 concaveCorner:(int)arg4 concaveCornerOffset:(struct CGSize { double x1; double x2; })arg5;
+- (id)initWithGeometry:(id)arg1 frame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 paddedFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3 concaveCorner:(unsigned long long)arg4 concaveCornerOffset:(struct CGSize { double x1; double x2; })arg5;
 - (bool)isEmpty;
 - (bool)isEqual:(id)arg1;
 - (void)makeLikeOther:(id)arg1;
@@ -73,7 +73,7 @@
 - (void)scaleIfNeeded:(double)arg1 onlyYAxis:(bool)arg2;
 - (void)scaleWidth:(double)arg1;
 - (bool)scaled;
-- (void)setConcaveCorner:(int)arg1;
+- (void)setConcaveCorner:(unsigned long long)arg1;
 - (void)setConcaveCornerOffset:(struct CGSize { double x1; double x2; })arg1;
 - (void)setConcaveCornerSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;

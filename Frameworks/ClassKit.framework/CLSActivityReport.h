@@ -5,6 +5,7 @@
 @interface CLSActivityReport : CLSReportItem <NSCopying, NSSecureCoding> {
     NSArray * _additionalReportItems;
     NSString * _contextID;
+    NSString * _contextStableObjectID;
     NSString * _contextTitle;
     NSString * _contextTopic;
     long long  _contextType;
@@ -15,6 +16,7 @@
 
 @property (nonatomic, copy) NSArray *additionalReportItems;
 @property (nonatomic, copy) NSString *contextID;
+@property (nonatomic, copy) NSString *contextStableObjectID;
 @property (nonatomic, copy) NSString *contextTitle;
 @property (nonatomic, copy) NSString *contextTopic;
 @property (nonatomic) long long contextType;
@@ -29,6 +31,7 @@
 - (id)additionalReportItems;
 - (long long)compare:(id)arg1;
 - (id)contextID;
+- (id)contextStableObjectID;
 - (id)contextTitle;
 - (id)contextTopic;
 - (long long)contextType;
@@ -42,6 +45,7 @@
 - (void)scalarMultiply:(double)arg1;
 - (void)setAdditionalReportItems:(id)arg1;
 - (void)setContextID:(id)arg1;
+- (void)setContextStableObjectID:(id)arg1;
 - (void)setContextTitle:(id)arg1;
 - (void)setContextTopic:(id)arg1;
 - (void)setContextType:(long long)arg1;

@@ -25,6 +25,8 @@
     NSMutableArray * _mutableConferenceRoomSearchResults;
     NSObject<OS_dispatch_queue> * _recentsQueue;
     NSMutableArray * _recentsSearchResults;
+    unsigned long long  _supportedSearchTypes;
+    NSArray * _textualSearchResults;
     NSCharacterSet * _whitespaceAndNewlineCharacterSet;
 }
 
@@ -41,15 +43,20 @@
 @property (nonatomic, readonly) NSArray *mapCompletionSearchResults;
 @property (nonatomic, readonly) NSArray *recentsSearchResults;
 @property (readonly) Class superclass;
+@property (nonatomic) unsigned long long supportedSearchTypes;
+@property (nonatomic, readonly) NSArray *textualSearchResults;
 
 - (void).cxx_destruct;
 - (void)_addDiscoveredConferenceRooms:(id)arg1;
 - (void)_handleAvailabilityResults:(id)arg1 forOperation:(id)arg2;
 - (void)_processDirectorySearchResultSet:(id)arg1 forOperation:(id)arg2;
 - (void)_updateContactsSearchWithResults:(id)arg1 forToken:(id)arg2;
+- (void)addConferenceRoomToRecents:(id)arg1 fromSource:(id)arg2;
 - (void)addLocationToRecents:(id)arg1 addressString:(id)arg2;
+- (id)availabilityRequestForConferenceRooms:(id)arg1 duringEvent:(id)arg2 resultsBlock:(id /* block */)arg3 completionBlock:(id /* block */)arg4;
 - (void)beginSearchForTerm:(id)arg1;
 - (void)cancelSearch;
+- (void)completerDidFail:(id)arg1 error:(id)arg2;
 - (void)completerDidUpdateResults:(id)arg1 finished:(bool)arg2;
 - (id)conferenceRoomSearchResults;
 - (id)contactsSearchResults;
@@ -77,7 +84,12 @@
 - (void)selectMapSearchCompletion:(id)arg1;
 - (void)setCurrentLocation:(id)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setSupportedSearchTypes:(unsigned long long)arg1;
+- (id)splitEventLocations:(id)arg1;
 - (void)stopUpdatingLocation;
+- (unsigned long long)supportedSearchTypes;
+- (id)textualSearchResults;
+- (void)updateConferenceRoomAvailability:(id)arg1 duringEvent:(id)arg2 completionBlock:(id /* block */)arg3;
 - (void)updateContacts:(id)arg1;
 - (void)updateEventLocations:(id)arg1;
 - (void)updateRecents:(id)arg1;

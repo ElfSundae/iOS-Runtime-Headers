@@ -4,6 +4,7 @@
 
 @interface _MRAVOutputDeviceDescriptorProtobuf : PBCodable <NSCopying> {
     float  _batteryLevel;
+    NSString * _bluetoothID;
     bool  _canAccessAppleMusic;
     bool  _canAccessRemoteAssets;
     bool  _canAccessiCloudMusicLibrary;
@@ -72,6 +73,7 @@
 }
 
 @property (nonatomic) float batteryLevel;
+@property (nonatomic, retain) NSString *bluetoothID;
 @property (nonatomic) bool canAccessAppleMusic;
 @property (nonatomic) bool canAccessRemoteAssets;
 @property (nonatomic) bool canAccessiCloudMusicLibrary;
@@ -84,6 +86,7 @@
 @property (nonatomic) bool groupContainsGroupLeader;
 @property (nonatomic, retain) NSString *groupID;
 @property (nonatomic) bool hasBatteryLevel;
+@property (nonatomic, readonly) bool hasBluetoothID;
 @property (nonatomic) bool hasCanAccessAppleMusic;
 @property (nonatomic) bool hasCanAccessRemoteAssets;
 @property (nonatomic) bool hasCanAccessiCloudMusicLibrary;
@@ -150,6 +153,7 @@
 - (int)StringAsDeviceSubType:(id)arg1;
 - (int)StringAsDeviceType:(id)arg1;
 - (float)batteryLevel;
+- (id)bluetoothID;
 - (bool)canAccessAppleMusic;
 - (bool)canAccessRemoteAssets;
 - (bool)canAccessiCloudMusicLibrary;
@@ -168,6 +172,7 @@
 - (bool)groupContainsGroupLeader;
 - (id)groupID;
 - (bool)hasBatteryLevel;
+- (bool)hasBluetoothID;
 - (bool)hasCanAccessAppleMusic;
 - (bool)hasCanAccessRemoteAssets;
 - (bool)hasCanAccessiCloudMusicLibrary;
@@ -227,6 +232,7 @@
 - (bool)readFrom:(id)arg1;
 - (bool)requiresAuthorization;
 - (void)setBatteryLevel:(float)arg1;
+- (void)setBluetoothID:(id)arg1;
 - (void)setCanAccessAppleMusic:(bool)arg1;
 - (void)setCanAccessRemoteAssets:(bool)arg1;
 - (void)setCanAccessiCloudMusicLibrary:(bool)arg1;

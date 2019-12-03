@@ -2,24 +2,28 @@
    Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
  */
 
-@interface REElementCoordinator : RERelevanceEngineSubsystem {
+@interface REElementCoordinator : RERelevanceEngineSubsystem <REElementCoordinatorProperties> {
+    NSObject<OS_dispatch_queue> * _callbackQueue;
     NSMutableDictionary * _displayElements;
     REObserverStore * _observers;
     bool  _performingBatch;
     NSMutableArray * _updates;
 }
 
+@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *callbackQueue;
+@property (nonatomic, readonly) NSDictionary *displayElements;
 @property (nonatomic, readonly) unsigned long long numberOfObservers;
 
 + (id)applicationPrewarmIdentifiers;
 
 - (void).cxx_destruct;
 - (void)_enqueueOrPerformOperation:(id)arg1;
+- (void)_enumerateValidObservers:(id /* block */)arg1;
 - (void)_performOperation:(id)arg1 toObserver:(id)arg2;
 - (void)_performOperationsToDisplayElements:(id)arg1;
 - (void)_performOperationsToDisplayElements:(id)arg1 toSection:(id)arg2;
 - (void)addObserver:(id)arg1;
-- (void)collectLoggableState:(id /* block */)arg1;
+- (id)callbackQueue;
 - (void)dealloc;
 - (void)didAddObserver:(id)arg1;
 - (void)didRemoveObserver:(id)arg1;

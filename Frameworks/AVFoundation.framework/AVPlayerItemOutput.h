@@ -15,7 +15,6 @@
 - (void)_setTimebase:(struct OpaqueCMTimebase { }*)arg1;
 - (id)_weakReference;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })itemTimeForHostTime:(double)arg1;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })itemTimeForMachAbsoluteTime:(long long)arg1;

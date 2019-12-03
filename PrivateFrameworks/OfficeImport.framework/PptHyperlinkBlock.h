@@ -7,6 +7,7 @@
     ESDObject * mTxInteractiveInfoAtomHolder;
 }
 
+- (void).cxx_destruct;
 - (id)interactiveInfoContainerHolder;
 - (void)setInteractiveInfoContainerHolder:(id)arg1;
 - (void)setTxInteractiveInfoAtomHolder:(id)arg1;

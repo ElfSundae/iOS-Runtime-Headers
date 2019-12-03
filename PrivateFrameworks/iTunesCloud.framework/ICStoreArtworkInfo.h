@@ -12,6 +12,7 @@
 }
 
 @property (nonatomic, readonly, copy) NSURL *artworkURL;
+@property (nonatomic, readonly) struct CGSize { double x1; double x2; } originalSize;
 @property (nonatomic, readonly, copy) NSArray *responseArray;
 @property (nonatomic, readonly, copy) NSDictionary *responseDictionary;
 @property (nonatomic, readonly) ICStoreArtworkSizeInfo *sizeInfo;
@@ -20,7 +21,6 @@
 
 - (void).cxx_destruct;
 - (bool)_hasOriginalSize;
-- (struct CGSize { double x1; double x2; })_originalSize;
 - (void)_sortResponseArray;
 - (void)_sortSupportedSizesArray;
 - (id)artworkURL;
@@ -32,6 +32,7 @@
 - (id)initWithArtworkResponseDictionary:(id)arg1;
 - (id)initWithArtworkResponseValue:(id)arg1;
 - (id)initWithArtworkURL:(id)arg1;
+- (struct CGSize { double x1; double x2; })originalSize;
 - (id)responseArray;
 - (id)responseDictionary;
 - (void)setSortedResponseArray:(id)arg1;

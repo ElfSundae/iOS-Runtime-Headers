@@ -102,6 +102,7 @@
 - (bool)_resetCompleteSyncStateIncludingIDMappingWithCause:(id)arg1 scope:(id)arg2 error:(id*)arg3;
 - (bool)_resetCompleteSyncStateWithCause:(id)arg1 scope:(id)arg2 error:(id*)arg3;
 - (id)_resetEventsDescriptions;
+- (id)_resetEventsJSON;
 - (bool)_resetGlobalStateWithError:(id*)arg1;
 - (bool)_resetLocalSyncStateWithCause:(id)arg1 scope:(id)arg2 date:(id)arg3 error:(id*)arg4;
 - (bool)_resetSyncAnchorWithCause:(id)arg1 scope:(id)arg2 error:(id*)arg3;
@@ -129,6 +130,7 @@
 - (id)createNewLibraryVersion;
 - (void)dealloc;
 - (id)derivativesCache;
+- (id)derivativesFilter;
 - (id)description;
 - (id)disabledFeatures;
 - (id)downloadQueue;
@@ -137,6 +139,7 @@
 - (bool)forceApplyPendingChangeSessionUpdateWithError:(id*)arg1;
 - (void)getStatusDictionaryWithCompletionHandler:(id /* block */)arg1;
 - (void)getStatusWithCompletionHandler:(id /* block */)arg1;
+- (bool)hasPendingChangeSessionUpdate;
 - (bool)hasPendingResetSync;
 - (id)idMapping;
 - (id)initWithEngineLibrary:(id)arg1;
@@ -147,6 +150,7 @@
 - (id)libraryCreationDate;
 - (unsigned long long)libraryOptions;
 - (id)libraryVersion;
+- (id)localResourceForCloudResource:(id)arg1 recordClass:(Class*)arg2;
 - (void)noteInvalidRecordScopedIdentifiersInPushSession:(id)arg1;
 - (void)noteOtherResetEvent:(id)arg1 cause:(id)arg2;
 - (void)noteResetSyncFinished;
@@ -181,6 +185,7 @@
 - (id)storages;
 - (bool)storeChangeSessionUpdate:(id)arg1 error:(id*)arg2;
 - (bool)storeClientIsInSyncWithClientCacheWithError:(id*)arg1;
+- (bool)storeDerivativesFilter:(id)arg1 error:(id*)arg2;
 - (bool)storeLastQuarantineCountReportDate:(id)arg1 error:(id*)arg2;
 - (bool)storeLibraryVersion:(id)arg1 withError:(id*)arg2;
 - (bool)storeUserIdentifier:(id)arg1 error:(id*)arg2;
@@ -189,6 +194,7 @@
 - (bool)updateDisabledFeatures:(id)arg1 didReset:(bool*)arg2 error:(id*)arg3;
 - (bool)updateLibraryOptions:(unsigned long long)arg1 error:(id*)arg2;
 - (id)userIdentifier;
+- (void)wipeStoreAtNextOpeningWithReason:(id)arg1 completionBlock:(id /* block */)arg2;
 - (void)writeTransactionDidFail;
 - (void)writeTransactionDidSucceed;
 

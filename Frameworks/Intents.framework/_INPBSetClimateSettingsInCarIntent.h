@@ -3,6 +3,7 @@
  */
 
 @interface _INPBSetClimateSettingsInCarIntent : PBCodable <NSCopying, NSSecureCoding, _INPBSetClimateSettingsInCarIntent> {
+    bool  __encodeLegacyGloryData;
     int  _airCirculationMode;
     _INPBDataString * _carName;
     int  _climateZone;
@@ -28,6 +29,7 @@
     _INPBTemperature * _temperature;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic) int airCirculationMode;
 @property (nonatomic, retain) _INPBDataString *carName;
 @property (nonatomic) int climateZone;
@@ -59,11 +61,15 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) _INPBTemperature *temperature;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (int)StringAsAirCirculationMode:(id)arg1;
 - (int)StringAsClimateZone:(id)arg1;
 - (int)StringAsRelativeFanSpeedSetting:(id)arg1;
 - (int)StringAsRelativeTemperatureSetting:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (int)airCirculationMode;
 - (id)airCirculationModeAsString:(int)arg1;
 - (id)carName;
@@ -75,6 +81,7 @@
 - (bool)enableAutoMode;
 - (bool)enableClimateControl;
 - (bool)enableFan;
+- (void)encodeWithCoder:(id)arg1;
 - (id)fanSpeedIndex;
 - (id)fanSpeedPercentage;
 - (bool)hasAirCirculationMode;
@@ -91,6 +98,7 @@
 - (bool)hasRelativeTemperatureSetting;
 - (bool)hasTemperature;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)intentMetadata;
 - (bool)isEqual:(id)arg1;
 - (bool)readFrom:(id)arg1;

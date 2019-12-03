@@ -26,14 +26,8 @@
 @property (nonatomic, retain) TSTMutableStrokeLayer *spillMajorStrokeLayer;
 @property (nonatomic, retain) TSTMutableStrokeLayer *spillMinorStrokeLayer;
 
-+ (double)maxWidthForLeftStrokes:(id)arg1 mergedWithRightStrokes:(id)arg2 atRowIndex:(long long)arg3;
-+ (double)maxWidthForLeftStrokes:(id)arg1 mergedWithRightStrokes:(id)arg2 inRange:(struct TSTSimpleRange { long long x1; unsigned long long x2; })arg3 cachedMax:(double)arg4;
-+ (double)maxWidthForTopStrokes:(id)arg1 mergedWithBottomStrokes:(id)arg2 atColumnIndex:(long long)arg3;
-+ (double)maxWidthForTopStrokes:(id)arg1 mergedWithBottomStrokes:(id)arg2 inRange:(struct TSTSimpleRange { long long x1; unsigned long long x2; })arg3 cachedMax:(double)arg4;
 + (id)mergeLeftStrokes:(id)arg1 withRightStrokes:(id)arg2;
 + (id)mergeTopStrokes:(id)arg1 withBottomStrokes:(id)arg2;
-+ (double)p_maxWidthForMajorStrokes:(id)arg1 mergedWithMinorStrokes:(id)arg2 atIndex:(long long)arg3;
-+ (double)p_maxWidthForMajorStrokes:(id)arg1 mergedWithMinorStrokes:(id)arg2 inRange:(struct TSTSimpleRange { long long x1; unsigned long long x2; })arg3 cachedMax:(double)arg4;
 
 - (void).cxx_destruct;
 - (id)clearedMajorStrokeLayer;
@@ -50,7 +44,7 @@
 - (void)invalidateSpillStrokes;
 - (void)lockForRead;
 - (void)lockForWrite;
-- (double)p_maxWidthOfStrokesInRange:(struct TSTSimpleRange { long long x1; unsigned long long x2; })arg1 cachedMax:(double)arg2;
+- (double)maxWidthOfStrokesInRange:(struct TSTSimpleRange { long long x1; unsigned long long x2; })arg1 cachedMax:(double)arg2;
 - (id)p_strokeLayerEnumeration;
 - (double)p_widthOfStrokesAtIndex:(long long)arg1;
 - (id)portalledStrokeLayer;

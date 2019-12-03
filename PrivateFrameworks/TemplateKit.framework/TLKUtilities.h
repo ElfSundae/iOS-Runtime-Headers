@@ -4,12 +4,17 @@
 
 @interface TLKUtilities : NSObject
 
-+ (id)buttonColorForStyle:(unsigned long long)arg1;
 + (bool)deviceSupportsRotation;
++ (void)dispatchAsyncIfNecessary:(id /* block */)arg1;
 + (void)dispatchMainIfNecessary:(id /* block */)arg1;
 + (double)onePixelForCurrentScreenResolution;
++ (void)performAnimatableChanges:(id /* block */)arg1;
++ (void)performAnimatableChanges:(id /* block */)arg1 animated:(bool)arg2;
++ (void)performAnimatableChanges:(id /* block */)arg1 animated:(bool)arg2 completion:(id /* block */)arg3;
++ (bool)recursivelyCheckIfSubviewTapped:(id)arg1 forTappedView:(id)arg2;
 + (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })standardInsets;
 + (double)standardTableCellContentInset;
-+ (id)vibrantButtonColorForStyle:(unsigned long long)arg1;
++ (id)testImageWithSize:(struct CGSize { double x1; double x2; })arg1;
++ (id)testImageWithSize:(struct CGSize { double x1; double x2; })arg1 text:(id)arg2;
 
 @end

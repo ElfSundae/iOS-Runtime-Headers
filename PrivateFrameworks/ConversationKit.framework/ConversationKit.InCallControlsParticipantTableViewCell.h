@@ -6,16 +6,10 @@
     void avatarView;
     void callDelegate;
     void cameraIcon;
-    void constraintsForCameraIconVisibleState;
-    void constraintsForRingButtonVisibleState;
     void delegate;
-    void isAccessiblityConstraintsEnabled;
     void nameLabel;
-    void nameLabelFirstBaselineLayoutConstraint;
     void ringButton;
     void subtitleLabel;
-    void subtitleLabelFirstBaselineLayoutConstraint;
-    void subtitleLabelLastBaselineLayoutConstraint;
 }
 
 @property (nonatomic, readonly) _TtC15ConversationKit19InCallControlButton *ringButton;
@@ -24,7 +18,7 @@
 - (void)didTapRing:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (void)layoutSubviews;
 - (id)ringButton;
-- (void)traitCollectionDidChange:(id)arg1;
 
 @end

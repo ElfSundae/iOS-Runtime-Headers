@@ -29,7 +29,7 @@
         double right; 
     }  _margins;
     double  _maxTitleWidth;
-    double  _sectionBorderWidth;
+    bool  _preferredAttributesCached;
     int  _sectionLocation;
     UIColor * _separatorColor;
     UIVisualEffect * _separatorEffect;
@@ -62,7 +62,7 @@
 @property (nonatomic) bool layoutMarginsFollowReadableWidth;
 @property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } margins;
 @property (nonatomic) double maxTitleWidth;
-@property (nonatomic) double sectionBorderWidth;
+@property (nonatomic) bool preferredAttributesCached;
 @property (nonatomic) int sectionLocation;
 @property (nonatomic, copy) UIColor *separatorColor;
 @property (nonatomic, retain) UIVisualEffect *separatorEffect;
@@ -95,7 +95,7 @@
 - (bool)layoutMarginsFollowReadableWidth;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })margins;
 - (double)maxTitleWidth;
-- (double)sectionBorderWidth;
+- (bool)preferredAttributesCached;
 - (int)sectionLocation;
 - (id)separatorColor;
 - (id)separatorEffect;
@@ -118,7 +118,7 @@
 - (void)setLayoutMarginsFollowReadableWidth:(bool)arg1;
 - (void)setMargins:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setMaxTitleWidth:(double)arg1;
-- (void)setSectionBorderWidth:(double)arg1;
+- (void)setPreferredAttributesCached:(bool)arg1;
 - (void)setSectionLocation:(int)arg1;
 - (void)setSeparatorColor:(id)arg1;
 - (void)setSeparatorEffect:(id)arg1;

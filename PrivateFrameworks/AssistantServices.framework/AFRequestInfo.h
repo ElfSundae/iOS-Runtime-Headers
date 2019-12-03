@@ -21,6 +21,7 @@
     NSNumber * _originalRank;
     NSNumber * _originalScore;
     NSString * _previousUtterance;
+    AFRequestCompletionOptions * _requestCompletionOptions;
     NSString * _sessionId;
     AFSpeechRequestOptions * _speechRequestOptions;
     SAStartLocalRequest * _startLocalRequest;
@@ -29,6 +30,7 @@
     unsigned long long  _timestamp;
     struct NSUUID { Class x1; } * _turnIdentifier;
     NSString * _utteranceSource;
+    NSUUID * _uuid;
 }
 
 @property (nonatomic) long long activationEvent;
@@ -49,6 +51,7 @@
 @property (nonatomic, copy) NSNumber *originalRank;
 @property (nonatomic, copy) NSNumber *originalScore;
 @property (nonatomic, copy) NSString *previousUtterance;
+@property (nonatomic, copy) AFRequestCompletionOptions *requestCompletionOptions;
 @property (nonatomic, copy) NSString *sessionId;
 @property (nonatomic, copy) AFSpeechRequestOptions *speechRequestOptions;
 @property (nonatomic, copy) SAStartLocalRequest *startLocalRequest;
@@ -57,6 +60,7 @@
 @property (nonatomic, readonly) unsigned long long timestamp;
 @property (nonatomic, copy) NSUUID *turnIdentifier;
 @property (nonatomic, copy) NSString *utteranceSource;
+@property (nonatomic, readonly) NSUUID *uuid;
 
 // Image: /System/Library/PrivateFrameworks/AssistantServices.framework/AssistantServices
 
@@ -88,6 +92,7 @@
 - (id)originalRank;
 - (id)originalScore;
 - (id)previousUtterance;
+- (id)requestCompletionOptions;
 - (bool)requiresUserInteraction;
 - (id)sessionId;
 - (void)setActivationEvent:(long long)arg1;
@@ -108,6 +113,7 @@
 - (void)setOriginalRank:(id)arg1;
 - (void)setOriginalScore:(id)arg1;
 - (void)setPreviousUtterance:(id)arg1;
+- (void)setRequestCompletionOptions:(id)arg1;
 - (void)setSessionId:(id)arg1;
 - (void)setSpeechRequestOptions:(id)arg1;
 - (void)setStartLocalRequest:(id)arg1;
@@ -122,6 +128,7 @@
 - (unsigned long long)timestamp;
 - (struct NSUUID { Class x1; }*)turnIdentifier;
 - (id)utteranceSource;
+- (id)uuid;
 
 // Image: /System/Library/PrivateFrameworks/AssistantUI.framework/AssistantUI
 

@@ -38,6 +38,7 @@
 - (bool)_doesAnyRecordZoneIDHavePendingArchivedRecords:(long long)arg1;
 - (void)_fetchArchivedRecordsIfNeeded:(bool)arg1 currentBatchCount:(long long)arg2 maxNumberOfBatches:(long long)arg3 WithCompletionBlock:(id /* block */)arg4;
 - (void)_fetchMessageZoneChangesSyncType:(long long)arg1 currentBatchCount:(long long)arg2 maxNumberOfBatches:(long long)arg3 completionBlock:(id /* block */)arg4;
+- (void)_hasMarkedAllMessagesAsNeedingSync;
 - (bool)_isCoreDuetSyncForMaxBatchCount:(long long)arg1;
 - (bool)_isDiskSpaceAvailableForSyncType:(long long)arg1 currentBatchCount:(long long)arg2;
 - (bool)_isValidCKRecordToSync:(id)arg1;
@@ -49,6 +50,7 @@
 - (bool)_messageZoneCreated;
 - (id)_messageZoneID;
 - (void)_migrateSyncTokens;
+- (void)_needsToMarkAllMessagesAsNeedingSync;
 - (void)_noteSyncEnded;
 - (long long)_numberOfBatchesOfMessagesToFetchInInitialSync;
 - (unsigned long long)_numberOfMessagesToUpload;
@@ -73,13 +75,12 @@
 - (bool)_shouldFetchArchivedRecords:(id)arg1;
 - (bool)_shouldMarkAllMessagesAsNeedingSync;
 - (id)_syncOperationGroupName;
-- (void)_updateAllMessagesAsNotNeedingReUpload;
 - (void)_updateDeviceConditionsToCheckIfNeededForCurrentBatchCount:(long long)arg1 maxBatchCount:(long long)arg2;
 - (void)_writeDirtyMessagesToCloudKitWithCompletion:(id /* block */)arg1;
 - (id)activity;
 - (id)archivedRecordSyncToken;
 - (id)ckQueue;
-- (void)clearLocalSyncState;
+- (void)clearLocalSyncState:(unsigned long long)arg1;
 - (void)dealloc;
 - (void)deleteMessageSyncToken;
 - (void)deleteMessagesZone;

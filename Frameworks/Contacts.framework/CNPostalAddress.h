@@ -15,7 +15,6 @@
 }
 
 @property (nonatomic, copy) NSString *ISOCountryCode;
-@property (nonatomic, readonly) NSMutableDictionary *addressDictionary;
 @property (nonatomic, copy) NSString *city;
 @property (nonatomic, copy) NSString *country;
 @property (readonly, copy) NSString *debugDescription;
@@ -69,14 +68,19 @@
 
 // Image: /System/Library/Frameworks/ContactsUI.framework/ContactsUI
 
-+ (id)addressFormatsDictionary;
-+ (id)defaultCountryCode;
 + (id)localizedAddressFormatDictionaryForCountryCode:(id)arg1;
-+ (id)localizedCountryNameForCountryCode:(id)arg1;
-+ (id)postalAddressWithDictionary:(id)arg1;
 
-- (id)addressDictionary;
-- (id)keyboardSettingsForAddressPart:(id)arg1;
+// Image: /System/Library/PrivateFrameworks/CalendarFoundation.framework/CalendarFoundation
+
+- (id)CalLocation;
+- (id)formattedAddressString;
+- (id)formattedAddressStrings;
+
+// Image: /System/Library/PrivateFrameworks/CoreSuggestionsInternals.framework/CoreSuggestionsInternals
+
++ (id)fromSchema:(id)arg1;
+
+- (id)schema;
 
 // Image: /System/Library/PrivateFrameworks/PassKitCore.framework/PassKitCore
 

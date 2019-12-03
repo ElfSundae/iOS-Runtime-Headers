@@ -6,18 +6,33 @@
     CPSearchMatcher * _citySearchMatcher;
     NSRecursiveLock * _databaseAccessRecursiveLock;
     struct sqlite3 { } * _db;
+    ALSCGreenClient * _greenClient;
+    bool  _greenKey1ValueCache;
+    bool  _greenKey2ValueCache;
+    bool  _greenKey3ValueCache;
+    NSDate * _greenKeyValueCacheExpirationDate;
     struct sqlite3 { } * _localizedDb;
 }
 
 @property (readonly) CPSearchMatcher *citySearchMatcher;
 
++ (id)_displayStringForTaiwanRegionWithKey2Value:(bool)arg1;
 + (id)_localeDictionaryFromSQLRow:(char **)arg1;
++ (id)displayStringForHongKongSAR;
++ (id)displayStringForHongKongSARChina;
++ (id)displayStringForMacaoSAR;
++ (id)displayStringForMacaoSARChina;
++ (id)displayStringForTaiwanRegion;
 + (struct __CFArray { }*)legacyCityForCity:(id)arg1;
 + (id)newCitiesByIdentifierMap:(id)arg1;
 + (id)sharedManager;
 
+- (id)_cityForClassicIdentifier:(id)arg1 commaSearchOptions:(unsigned long long)arg2;
 - (id)_cityForTimeZone:(id)arg1 localeCode:(id)arg2;
 - (id)_defaultCityForTimeZone:(id)arg1 localeCode:(id)arg2;
+- (void)_whileDatabaseLocked_ensureGreenKeyValueCaches;
+- (id)_whileDatabaseLocked_localeCodesMatchingQualifier:(id)arg1;
+- (void)_whileDatabaseLocked_modifyCityForGreen:(id)arg1;
 - (id)allCities;
 - (id)allLocales;
 - (id)bestCityForLegacyCity:(struct __CFArray { }*)arg1;

@@ -10,7 +10,8 @@
 @property (nonatomic, readonly, copy) NSArray *originalRequests;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } regionOfInterest;
 
-+ (id)compoundRequestsForOriginalRequests:(id)arg1;
++ (id)compoundRequestProcessingDeviceFromOriginalRequestsProcessingDevice:(id)arg1;
++ (id)compoundRequestsForOriginalRequests:(id)arg1 withPerformingContext:(id)arg2 error:(id*)arg3;
 + (bool)warmUpRequestPerformer:(id)arg1 error:(id*)arg2;
 
 - (void).cxx_destruct;
@@ -23,6 +24,7 @@
 - (id)originalRequests;
 - (void)recordWarningsInOriginalRequests;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })regionOfInterest;
+- (id /* block */)resultsSortingComparator;
 - (id)sequencedRequestPreviousObservationsKey;
 - (bool)usesCPUOnly;
 - (bool)warmUpRequestPerformer:(id)arg1 error:(id*)arg2;

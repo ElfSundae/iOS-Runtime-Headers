@@ -3,7 +3,7 @@
  */
 
 @interface WKScrollViewDelegateForwarder : NSObject <UIScrollViewDelegate> {
-    /* Warning: unhandled struct encoding: '{WeakObjCPtr<id<UIScrollViewDelegate> >="m_weakReference"@}' */ struct WeakObjCPtr<id<UIScrollViewDelegate> > { 
+    struct WeakObjCPtr<id<UIScrollViewDelegate> > { 
         id m_weakReference; 
     }  _externalDelegate;
     WKWebView * _internalDelegate;

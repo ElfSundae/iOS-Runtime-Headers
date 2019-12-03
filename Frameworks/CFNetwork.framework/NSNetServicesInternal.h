@@ -13,7 +13,6 @@
 
 - (void)copyScheduledRunLoop:(struct __CFRunLoop {}**)arg1 andMode:(const struct __CFString {}**)arg2;
 - (void)dealloc;
-- (void)finalize;
 - (id)listener;
 - (id)monitors;
 - (void)setListener:(id)arg1;

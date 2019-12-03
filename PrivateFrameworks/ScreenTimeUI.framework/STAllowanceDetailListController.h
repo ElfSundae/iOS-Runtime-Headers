@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/ScreenTimeUI.framework/ScreenTimeUI
  */
 
-@interface STAllowanceDetailListController : PSListController <STAllowanceSetupListControllerDelegate, STCustomizeDaysListControllerDelegate, STUIDateTimePickerCellDelegate> {
+@interface STAllowanceDetailListController : PSListController <STCustomizeDaysListControllerDelegate, STUIDateTimePickerCellDelegate> {
     STAllowance * _allowance;
     NSArray * _budgetedItemSpecifiers;
     NSObject<STRootViewModelCoordinator> * _coordinator;
@@ -42,11 +42,12 @@
 - (void).cxx_destruct;
 - (id)_allowanceEnabled:(id)arg1;
 - (id)_askForMoreTime:(id)arg1;
+- (id)_categoryDetailText:(id)arg1;
+- (void)_editListButtonPressed:(id)arg1;
 - (void)_setAllowanceEnabled:(id)arg1 specifier:(id)arg2;
 - (void)_setAskForMoreTime:(id)arg1 specifier:(id)arg2;
+- (void)_showOrHidePickerSpecifierForSpecifier:(id)arg1 highlight:(bool)arg2;
 - (id)allowance;
-- (void)allowanceSetupListController:(id)arg1 didSelectAllowanceIdentifiers:(id)arg2;
-- (void)allowanceSetupListControllerDidCancel:(id)arg1;
 - (id)atEndOfLimitFooterText;
 - (id)budgetTime;
 - (id)budgetedItemSpecifiers;
@@ -64,7 +65,6 @@
 - (id)delegate;
 - (void)deleteAllowance:(id)arg1;
 - (bool)didDeleteAllowance;
-- (void)editApps:(id)arg1;
 - (bool)hasSetBudgetTime;
 - (bool)hasSetBudgetTimeOrCustomSchedule;
 - (id)initWithCoordinator:(id)arg1;
@@ -89,7 +89,6 @@
 - (bool)shouldShowCompatibilityAlert;
 - (void)showCustomizeDaysController:(id)arg1;
 - (void)showOrHideCustomizeDaysSpecifier;
-- (void)showPickerSpecifierForSpecifier:(id)arg1 highlight:(bool)arg2;
 - (id)specifiers;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

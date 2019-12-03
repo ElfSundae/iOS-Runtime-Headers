@@ -8,7 +8,7 @@
     UITextView * _footerTextView;
     NSMutableArray * _horizontalPaddingConstraints;
     NSLayoutConstraint * _imageSpacingConstraint;
-    UIImageView * _imageView;
+    VTUITurnOnSiriImageView * _imageView;
     UIView * _imageViewContainer;
     NSLayoutConstraint * _imageViewHeightCapConstraint;
     NSLayoutConstraint * _imageViewHeightMinimumConstraint;
@@ -46,6 +46,6 @@
 - (void)prepareForLastTimeShown;
 - (void)setStateViewDelegate:(id)arg1;
 - (id)stateViewDelegate;
-- (bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3;
+- (bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3 interaction:(long long)arg4;
 
 @end

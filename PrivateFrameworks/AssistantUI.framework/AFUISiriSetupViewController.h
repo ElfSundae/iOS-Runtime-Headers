@@ -2,10 +2,12 @@
    Image: /System/Library/PrivateFrameworks/AssistantUI.framework/AssistantUI
  */
 
-@interface AFUISiriSetupViewController : UIViewController <VTUITurnOnSiriViewDelegate> {
+@interface AFUISiriSetupViewController : UIViewController <VTUISiriDataSharingOptInPresentationDelegate, VTUITurnOnSiriViewDelegate> {
     _UIBackdropView * _backdropView;
     bool  _backdropViewVisible;
     UIView * _contentView;
+    VTUISiriDataSharingOptInPresenter * _dataSharingOptInPresenter;
+    OBWelcomeController * _dataSharingOptInViewController;
     <AFUISiriSetupViewControllerDelegate> * _delegate;
     bool  _lastTimeShown;
     VTUITurnOnSiriView * _setupView;
@@ -28,11 +30,15 @@
 - (void)_addStatusBar;
 - (void)_continueTapped:(id)arg1;
 - (void)_laterTapped:(id)arg1;
+- (void)_presentDataSharingOptInViewController;
 - (void)_removeStatusBar;
 - (void)_setStatusBar:(id)arg1;
+- (bool)_siriDataSharingOptInFeatureFlagEnabled;
 - (id)_statusBar;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_statusBarFrame;
 - (void)aboutSelectedInTurnOnSiriView:(id)arg1;
+- (void)animatedAppearanceWithFactory:(id)arg1 completion:(id /* block */)arg2;
+- (void)animatedDisappearanceWithFactory:(id)arg1 completion:(id /* block */)arg2;
 - (id)delegate;
 - (id)dimBackdropSettings;
 - (id)init;
@@ -41,10 +47,13 @@
 - (void)loadView;
 - (void)setBackdropVisible:(bool)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setFluidDismissalState:(id)arg1;
 - (void)setLastTimeShown:(bool)arg1;
 - (void)setSiriSetupView:(id)arg1;
 - (void)setVisible:(bool)arg1;
 - (bool)shouldAutorotate;
+- (void)siriDataSharingOptInRequestsDismissalFromPresenter:(id)arg1;
+- (void)siriDataSharingOptInViewControllerDidDismissFromPresenter:(id)arg1;
 - (id)siriSetupView;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidAppear:(bool)arg1;

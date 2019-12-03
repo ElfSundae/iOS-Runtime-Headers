@@ -7,6 +7,7 @@
     NSNumber * _activeLockerAccountDSID;
     <ICUserIdentityStoreBackendDelegate> * _delegate;
     NSMutableDictionary * _identityProperties;
+    ICLocalStoreAccountProperties * _localStoreAccountProperties;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -17,6 +18,7 @@
 
 + (void)setDefaultActiveAccountDSID:(id)arg1;
 + (void)setDefaultActiveLockerAccountDSID:(id)arg1;
++ (void)setDefaultStorefrontIdentifier:(id)arg1;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -30,10 +32,13 @@
 - (void)identityPropertiesForPrimaryICloudAccountWithCompletion:(id /* block */)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (void)localStoreAccountPropertiesWithCompletion:(id /* block */)arg1;
+- (id)localStoreAccountPropertiesWithError:(id*)arg1;
 - (void)removeIdentityForDSID:(id)arg1 completion:(id /* block */)arg2;
 - (void)replaceIdentityProperties:(id)arg1 forDSID:(id)arg2 completion:(id /* block */)arg3;
 - (void)setDelegate:(id)arg1;
 - (void)setIdentityProperties:(id)arg1 forDSID:(id)arg2 completion:(id /* block */)arg3;
+- (void)setLocalStoreAccountProperties:(id)arg1 completion:(id /* block */)arg2;
 - (void)synchronize;
 - (void)updateActiveAccountDSID:(id)arg1 completion:(id /* block */)arg2;
 - (void)updateActiveLockerAccountDSID:(id)arg1 completion:(id /* block */)arg2;

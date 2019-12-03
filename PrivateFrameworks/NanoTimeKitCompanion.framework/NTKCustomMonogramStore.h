@@ -10,7 +10,6 @@
 
 - (void).cxx_destruct;
 - (id)_customMonogramFromPrefs;
-- (void)_handlePrefsChanged;
 - (void)_notifyClientsOfChange;
 - (id)customMonogram;
 - (void)dealloc;

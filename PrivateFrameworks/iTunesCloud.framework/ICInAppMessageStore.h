@@ -4,12 +4,13 @@
 
 @interface ICInAppMessageStore : NSObject {
     NSObject<OS_dispatch_queue> * _accessQueue;
+    NSMutableDictionary * _applicationPropertyCache;
     NSObject<OS_dispatch_queue> * _callbackQueue;
     NSString * _filePath;
+    NSMutableDictionary * _globalPropertyCache;
     NSMutableDictionary * _messageEntryCache;
     NSMutableDictionary * _messageMetadataCache;
     NSMutableArray * _pendingEvents;
-    NSMutableDictionary * _propertyCache;
 }
 
 - (void).cxx_destruct;
@@ -18,12 +19,14 @@
 - (void)_load;
 - (void)addMessageEntry:(id)arg1 completion:(id /* block */)arg2;
 - (void)addPendingMessageEvent:(id)arg1 completion:(id /* block */)arg2;
+- (void)allApplicationStorePropertiesWithCompletion:(id /* block */)arg1;
 - (void)allStorePropertiesWithCompletion:(id /* block */)arg1;
 - (void)getAllMessageEntriesForBundleIdentifier:(id)arg1 completion:(id /* block */)arg2;
 - (void)getAllMessageEntriesWithCompletion:(id /* block */)arg1;
 - (void)getAllMetadataForBundleIdentifier:(id)arg1 completion:(id /* block */)arg2;
 - (void)getMessageEntryWithIdentifier:(id)arg1 bundleIdentifier:(id)arg2 completion:(id /* block */)arg3;
 - (void)getMetadataForMessageIdentifier:(id)arg1 bundleIdentifier:(id)arg2 completion:(id /* block */)arg3;
+- (void)getStorePropertyForKey:(id)arg1 bundleIdentifier:(id)arg2 completion:(id /* block */)arg3;
 - (void)getStorePropertyForKey:(id)arg1 completion:(id /* block */)arg2;
 - (id)init;
 - (id)initWithFilePath:(id)arg1;
@@ -37,6 +40,7 @@
 - (void)resetStoreWithCompletion:(id /* block */)arg1;
 - (void)updateMessageEntry:(id)arg1 completion:(id /* block */)arg2;
 - (void)updateMetadata:(id)arg1 messageIdentifier:(id)arg2 bundleIdentifier:(id)arg3 completion:(id /* block */)arg4;
+- (void)updateStoreProperty:(id)arg1 forKey:(id)arg2 bundleIdentifier:(id)arg3 completion:(id /* block */)arg4;
 - (void)updateStoreProperty:(id)arg1 forKey:(id)arg2 completion:(id /* block */)arg3;
 
 @end

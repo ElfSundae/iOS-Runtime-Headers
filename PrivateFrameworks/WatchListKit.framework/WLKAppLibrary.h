@@ -38,6 +38,7 @@
 - (id)init;
 - (id)installedAppBundleIdentifiers;
 - (id)installedAppProxies;
+- (bool)isTVAppInstalled;
 - (id)localizedNameForBundle:(id)arg1;
 - (id)refresh;
 - (id)subscribedAppBundleIdentifiers;

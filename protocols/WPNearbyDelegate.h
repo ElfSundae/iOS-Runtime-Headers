@@ -9,7 +9,6 @@
 
 @optional
 
-- (void)nearby:(WPNearby *)arg1 didConnectToPeer:(NSUUID *)arg2 error:(NSError *)arg3;
 - (void)nearby:(WPNearby *)arg1 didConnectToPeer:(NSUUID *)arg2 transport:(long long)arg3 error:(NSError *)arg4;
 - (void)nearby:(WPNearby *)arg1 didDeferAdvertisingType:(long long)arg2;
 - (void)nearby:(WPNearby *)arg1 didDisconnectFromPeer:(NSUUID *)arg2 error:(NSError *)arg3;
@@ -25,6 +24,7 @@
 - (void)nearby:(WPNearby *)arg1 didStartScanningForType:(long long)arg2;
 - (void)nearby:(WPNearby *)arg1 didStartTrackingPeer:(NSUUID *)arg2 type:(long long)arg3 error:(NSError *)arg4;
 - (void)nearby:(WPNearby *)arg1 didStopAdvertisingType:(long long)arg2;
+- (void)nearby:(WPNearby *)arg1 didStopAdvertisingType:(long long)arg2 withError:(NSError *)arg3;
 - (void)nearby:(WPNearby *)arg1 didStopScanningForType:(long long)arg2;
 - (void)nearby:(WPNearby *)arg1 didStopTrackingPeer:(NSUUID *)arg2 type:(long long)arg3;
 - (void)nearbyDidChangeBluetoothBandwidthState:(WPNearby *)arg1;

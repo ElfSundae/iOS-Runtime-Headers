@@ -3,8 +3,9 @@
  */
 
 @interface _UIKeyboardArbiter_ForSpringBoard : NSObject <_UIKeyboardArbiterLink> {
-    SBUIScene * _scene;
-    SBUIWorkspace * _workspace;
+    FBSSceneClientSettings * _clientSettings;
+    NSObject<OS_dispatch_queue> * _queue;
+    FBSScene * _scene;
     _UIKeyboardArbiter * owner;
 }
 
@@ -19,6 +20,7 @@
 + (void)launch;
 
 - (void).cxx_destruct;
+- (id)_createSceneWithIdentifier:(id)arg1 initialClientSettings:(id)arg2;
 - (void)attach:(id)arg1;
 - (void)connectWithQueue:(id)arg1;
 - (void)createSceneWithCompletion:(id /* block */)arg1;

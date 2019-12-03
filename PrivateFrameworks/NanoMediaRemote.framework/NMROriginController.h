@@ -3,7 +3,6 @@
  */
 
 @interface NMROriginController : NSObject <NMROriginCommandHandler, NMROriginObserver, NMROriginObserverDelegate> {
-    NSObject<OS_dispatch_queue> * _commandHandlerAccessQueue;
     <NMROriginObserverDelegate> * _delegate;
     bool  _hasPendingElapsedTimeChange;
     bool  _hasPendingNowPlayingApplicationBundleIdentifierChange;
@@ -17,6 +16,7 @@
     <NMROriginCommandHandler> * _originCommandHandler;
     <NMROriginObserver> * _originObserver;
     bool  _shouldObserveArtwork;
+    bool  _shouldObserveLibraryAddStatus;
     bool  _shouldObservePlaybackQueue;
 }
 
@@ -30,6 +30,7 @@
 @property (nonatomic, retain) <NMROriginObserver> *originObserver;
 @property (nonatomic, readonly) NMRPlaybackQueue *playbackQueue;
 @property (nonatomic) bool shouldObserveArtwork;
+@property (nonatomic) bool shouldObserveLibraryAddStatus;
 @property (nonatomic) bool shouldObservePlaybackQueue;
 @property (readonly) Class superclass;
 
@@ -57,13 +58,15 @@
 - (void)originObserver:(id)arg1 didUpdateSupportedCommandsForOrigin:(id)arg2;
 - (void)originObserver:(id)arg1 didUpdateTimestampForOrigin:(id)arg2;
 - (id)playbackQueue;
-- (void)sendMediaRemoteCommand:(unsigned int)arg1 options:(id)arg2 launchApp:(bool)arg3;
+- (void)sendMediaRemoteCommand:(unsigned int)arg1 options:(id)arg2 launchApp:(bool)arg3 completion:(id /* block */)arg4;
 - (void)setDelegate:(id)arg1;
 - (void)setOriginCommandHandler:(id)arg1;
 - (void)setOriginObserver:(id)arg1;
 - (void)setShouldObserveArtwork:(bool)arg1;
+- (void)setShouldObserveLibraryAddStatus:(bool)arg1;
 - (void)setShouldObservePlaybackQueue:(bool)arg1;
 - (bool)shouldObserveArtwork;
+- (bool)shouldObserveLibraryAddStatus;
 - (bool)shouldObservePlaybackQueue;
 - (void)updateNowPlayingStateWithCompletion:(id /* block */)arg1;
 

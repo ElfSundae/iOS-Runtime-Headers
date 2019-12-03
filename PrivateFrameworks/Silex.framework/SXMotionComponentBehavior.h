@@ -9,8 +9,6 @@
 @property (nonatomic, readonly) bool vertical;
 @property (nonatomic, readonly) bool windowed;
 
-+ (id)typeString;
-
 - (Class)handlerClassForComponent:(id)arg1;
 
 @end

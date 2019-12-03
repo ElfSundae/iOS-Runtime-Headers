@@ -20,7 +20,8 @@
 @property (nonatomic, retain) NSURL *storeURL;
 
 + (bool)isDataProtectionError:(id)arg1;
-+ (id)newManagedObjectModel;
++ (id)managedObjectModel;
++ (id)oldManagedObjectModel;
 + (id)standardStoreOptions;
 
 - (void).cxx_destruct;
@@ -29,10 +30,12 @@
 - (id)backupsDirectoryURL;
 - (unsigned long long)fakeFreeDiskSpace;
 - (id)initWithStoreURL:(id)arg1 storeType:(id)arg2 options:(id)arg3 mergePolicy:(id)arg4;
+- (id)initWithStoreURL:(id)arg1 storeType:(id)arg2 options:(id)arg3 mergePolicy:(id)arg4 managedObjectModel:(id)arg5;
 - (bool)isReadOnly;
 - (bool)isTooLowOnDiskSpace;
 - (bool)loadPersistentStore:(id*)arg1;
 - (id)mergePolicy;
+- (bool)migrateFromOldDataModel;
 - (id)newBackgroundContext;
 - (void)setAbortAfterReplacingDatabase:(bool)arg1;
 - (void)setFakeFreeDiskSpace:(unsigned long long)arg1;
@@ -45,5 +48,6 @@
 - (id)storeType;
 - (id)storeURL;
 - (void)vacuumStore;
+- (void)vacuumStoreWithCompletionHandler:(id /* block */)arg1;
 
 @end

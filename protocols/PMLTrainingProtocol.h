@@ -10,10 +10,11 @@
 - (void)deleteSessionsWithBundleID:(NSString *)arg1;
 - (void)deleteSessionsWithDomainIdentifiers:(NSArray *)arg1 bundleID:(NSString *)arg2;
 - (void)deleteSessionsWithIdentifiers:(NSArray *)arg1 bundleID:(NSString *)arg2;
-- (bool)modelServerUpdateWithPayload:(NSData *)arg1 error:(id*)arg2;
+- (_PASTuple2 *)lastTrainingFeaturizationForModelName:(NSString *)arg1 andLocale:(NSString *)arg2;
 - (NSDictionary *)planReceivedWithPayload:(NSData *)arg1 error:(id*)arg2;
-- (void)trainWhile:(void *)arg1; // needs 1 arg types, found 5: id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, bool, id /* block */, void*
+- (void)setSourceRecoverer:(void *)arg1; // needs 1 arg types, found 6: id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, id, id /* block */, NSData *, void*
 - (void)trimDb;
-- (void)updateSessionsAndLabelForModel:(void *)arg1 block:(void *)arg2; // needs 2 arg types, found 15: PMLSessionDescriptor *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, long long, NSData *, id /* block */, void*, void, id /* block */, long long, PMLSparseVector *, void*, void*
+- (void)updateLastTrainingFeaturizationForModel:(PMLSessionDescriptor *)arg1 andData:(NSData *)arg2;
+- (void)updateSessionsAndLabelForModel:(void *)arg1 block:(void *)arg2; // needs 2 arg types, found 16: PMLSessionDescriptor *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, long long, NSData *, id /* block */, void*, void, id /* block */, long long, PMLSparseVector *, PMLSessionDescriptor *, void*, void*
 
 @end

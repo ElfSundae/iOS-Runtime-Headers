@@ -16,7 +16,7 @@
     struct Lock { 
         struct Atomic<unsigned char> { 
             struct atomic<unsigned char> { 
-                unsigned char __a_; 
+                _Atomic unsigned char __a_; 
             } value; 
         } m_byte; 
     }  _dataTasksLock;
@@ -52,12 +52,12 @@
 @property (retain) <NSURLSessionTaskDelegate> *delegate;
 @property (readonly, retain) NSOperationQueue *delegateQueue;
 @property (readonly) bool didPassCORSAccessChecks;
-@property (readonly) struct PlatformMediaResourceLoader { int (**x1)(); struct atomic<unsigned int> { unsigned int x_2_1_1; } x2; }*loader;
+@property (readonly) struct PlatformMediaResourceLoader { int (**x1)(); struct atomic<unsigned int> { _Atomic unsigned int x_2_1_1; } x2; }*loader;
 @property (copy) NSString *sessionDescription;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)addDelegateOperation:(struct Function<void ()>={unique_ptr<WTF::Function<void ()>::CallableWrapperBase, std::__1::default_delete<WTF::Function<void ()>::CallableWrapperBase> >={__compressed_pair<WTF::Function<void ()>::CallableWrapperBase *, std::__1::default_delete<WTF::Function<void ()>::CallableWrapperBase> >=^{CallableWrapperBase {}*)arg1;
+- (void)addDelegateOperation:(struct Function<void ()>={unique_ptr<WTF::Detail::CallableWrapperBase<void>, std::__1::default_delete<WTF::Detail::CallableWrapperBase<void> > >={__compressed_pair<WTF::Detail::CallableWrapperBase<void> *, std::__1::default_delete<WTF::Detail::CallableWrapperBase<void> > >=^{CallableWrapperBase<void> {}*)arg1;
 - (id)configuration;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dataTaskWithRequest:(id)arg1;
@@ -73,10 +73,10 @@
 - (void)flushWithCompletionHandler:(id /* block */)arg1;
 - (void)getAllTasksWithCompletionHandler:(id /* block */)arg1;
 - (void)getTasksWithCompletionHandler:(id /* block */)arg1;
-- (id)initWithResourceLoader:(struct PlatformMediaResourceLoader { int (**x1)(); struct atomic<unsigned int> { unsigned int x_2_1_1; } x2; }*)arg1 delegate:(id)arg2 delegateQueue:(id)arg3;
+- (id)initWithResourceLoader:(struct PlatformMediaResourceLoader { int (**x1)(); struct atomic<unsigned int> { _Atomic unsigned int x_2_1_1; } x2; }*)arg1 delegate:(id)arg2 delegateQueue:(id)arg3;
 - (void)invalidateAndCancel;
 - (bool)isKindOfClass:(Class)arg1;
-- (struct PlatformMediaResourceLoader { int (**x1)(); struct atomic<unsigned int> { unsigned int x_2_1_1; } x2; }*)loader;
+- (struct PlatformMediaResourceLoader { int (**x1)(); struct atomic<unsigned int> { _Atomic unsigned int x_2_1_1; } x2; }*)loader;
 - (void)resetWithCompletionHandler:(id /* block */)arg1;
 - (id)sessionDescription;
 - (void)setDelegate:(id)arg1;
@@ -89,6 +89,6 @@
 - (id)uploadTaskWithRequest:(id)arg1 fromData:(id)arg2;
 - (id)uploadTaskWithRequest:(id)arg1 fromFile:(id)arg2;
 - (id)uploadTaskWithStreamedRequest:(id)arg1;
-- (bool)wouldTaintOrigin:(const struct SecurityOrigin { struct atomic<unsigned int> { unsigned int x_1_1_1; } x1; struct SecurityOriginData { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_3_1; } x_1_2_1; } x_2_1_1; struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_3_1; } x_2_2_1; } x_2_1_2; struct Optional<unsigned short> { bool x_3_2_1; union constexpr_storage_t<unsigned short> { unsigned char x_2_3_1; unsigned short x_2_3_2; } x_3_2_2; } x_2_1_3; } x2; struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_2_1; } x_3_1_1; } x3; struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_2_1; } x_4_1_1; } x4; bool x5; bool x6; bool x7; bool x8; int x9; bool x10; bool x11; bool x12; bool x13; }*)arg1;
+- (bool)wouldTaintOrigin:(const struct SecurityOrigin { struct atomic<unsigned int> { _Atomic unsigned int x_1_1_1; } x1; struct SecurityOriginData { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_3_1; } x_1_2_1; } x_2_1_1; struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_3_1; } x_2_2_1; } x_2_1_2; struct Optional<unsigned short> { bool x_3_2_1; union constexpr_storage_t<unsigned short> { unsigned char x_2_3_1; unsigned short x_2_3_2; } x_3_2_2; } x_2_1_3; } x2; struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_2_1; } x_3_1_1; } x3; struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_2_1; } x_4_1_1; } x4; bool x5; bool x6; bool x7; bool x8; int x9; bool x10; bool x11; bool x12; bool x13; }*)arg1;
 
 @end

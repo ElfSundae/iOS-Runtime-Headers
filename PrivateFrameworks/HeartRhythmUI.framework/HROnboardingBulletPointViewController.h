@@ -4,6 +4,7 @@
 
 @interface HROnboardingBulletPointViewController : HROnboardingBaseViewController <HRStackedButtonViewDelegate> {
     UILabel * _bodyLabel;
+    NSHashTable * _bulletPointBodyLabels;
     UIStackView * _bulletPointsView;
     NSLayoutConstraint * _contentViewBottomConstraint;
     UIView * _lastBulletPointView;
@@ -13,6 +14,7 @@
 
 @property (nonatomic, retain) UILabel *bodyLabel;
 @property (nonatomic, readonly) NSString *bodyString;
+@property (nonatomic, retain) NSHashTable *bulletPointBodyLabels;
 @property (nonatomic, readonly) NSArray *bulletPoints;
 @property (nonatomic, retain) UIStackView *bulletPointsView;
 @property (nonatomic, readonly) NSString *buttonTitleString;
@@ -25,22 +27,22 @@
 - (void).cxx_destruct;
 - (void)_adjustButtonFooterViewLocationForViewContentHeight;
 - (id)_bodyFont;
-- (id)_bodyFontTextStyle;
-- (double)_bodyTextLastBaselineToCannotDoHeaderFirstBaseline;
-- (id)_boldBodyFont;
+- (id)_boldSubheadlineFont;
 - (struct CGSize { double x1; double x2; })_bulletImageSize;
 - (double)_cannotDoHeaderLastBaselineToCannotDoBodyFirstBaseline;
 - (void)_setUpButtonFooterView;
 - (void)_setupBulletPointViews;
-- (double)_titleLastBaselineToBodyFirstBaseline;
+- (id)_subheadlineFont;
 - (id)bodyLabel;
 - (id)bodyString;
+- (id)bulletPointBodyLabels;
 - (id)bulletPoints;
 - (id)bulletPointsView;
 - (id)buttonTitleString;
 - (id)contentViewBottomConstraint;
 - (id)lastBulletPointView;
 - (void)setBodyLabel:(id)arg1;
+- (void)setBulletPointBodyLabels:(id)arg1;
 - (void)setBulletPointsView:(id)arg1;
 - (void)setContentViewBottomConstraint:(id)arg1;
 - (void)setLastBulletPointView:(id)arg1;
@@ -52,7 +54,9 @@
 - (void)stackedButtonView:(id)arg1 didTapButtonAtIndex:(long long)arg2;
 - (id)titleLabel;
 - (id)titleString;
+- (void)updateUserInterfaceForStyle:(long long)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(bool)arg1;
 
 @end

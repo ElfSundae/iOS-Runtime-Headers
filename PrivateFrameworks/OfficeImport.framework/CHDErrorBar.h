@@ -16,7 +16,7 @@
 
 + (id)errorBarWithChart:(id)arg1;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (int)direction;
 - (id)graphicProperties;

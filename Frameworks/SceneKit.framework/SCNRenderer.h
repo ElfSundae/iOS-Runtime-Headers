@@ -105,6 +105,7 @@
     SCNRenderer * _snapshotRenderer;
     double  _statisticsTimeStamp;
     SCNTechnique * _technique;
+    unsigned int  _temporalAntialiasingEnabled;
     SCNRendererTransitionContext * _transitionContext;
     NSArray * _viewPoints;
     bool  _watchAppInForeground;
@@ -118,6 +119,7 @@
 @property (nonatomic, readonly) <MTLCommandQueue> *commandQueue;
 @property (nonatomic, readonly) void*context;
 @property (nonatomic, readonly) <MTLRenderCommandEncoder> *currentRenderCommandEncoder;
+@property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } currentViewport;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) unsigned long long debugOptions;
 @property (nonatomic) <SCNSceneRendererDelegate> *delegate;
@@ -138,6 +140,8 @@
 @property (nonatomic, readonly) unsigned long long stencilPixelFormat;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) SCNTechnique *technique;
+@property (getter=isTemporalAntialiasingEnabled, nonatomic) bool temporalAntialiasingEnabled;
+@property (nonatomic) bool usesReverseZ;
 
 + (id)rendererWithContext:(id)arg1 options:(id)arg2;
 + (id)rendererWithDevice:(id)arg1 options:(id)arg2;
@@ -151,6 +155,7 @@
 - (id)_authoringEnvironment;
 - (struct CGSize { double x1; double x2; })_backingSize;
 - (void)_beginFrame;
+- (void)_c3dBackgroundColorDidChange;
 - (void)_clearBackBuffer;
 - (bool)_collectCompilationErrors;
 - (id)_compilationErrors;
@@ -162,6 +167,7 @@
 - (id)_copyRenderGraphDescription;
 - (void)_createOffscreenFramebufferIfNeeded;
 - (void)_createPrepareFramebufferIfNeeded;
+- (struct CGImage { }*)_createSnapshotAtTime:(double)arg1 withSize:(struct CGSize { double x1; double x2; })arg2 antialiasingMode:(unsigned long long)arg3;
 - (id)_defaultPOVForScene:(id)arg1;
 - (void)_deleteGLFramebuffer;
 - (void)_didRenderScene:(id)arg1;
@@ -176,6 +182,7 @@
 - (bool)_drawSceneWithNewRenderer:(struct __C3DScene { }*)arg1;
 - (void)_drawWithJitteringPresentationMode;
 - (void)_drawableSafeAreaInsets;
+- (bool)_enableARMode;
 - (bool)_enablesDeferredShading;
 - (void)_endFrame;
 - (struct __C3DEngineContext { }*)_engineContext;
@@ -185,6 +192,7 @@
 - (bool)_installContext;
 - (void)_installGLContextAndSetViewport;
 - (void)_installViewport;
+- (void)_interfaceOrientationDidChange;
 - (void)_invalidateFramebuffer;
 - (bool)_isNodeInsideFrustum:(id)arg1 withPointOfView:(id)arg2 viewport:(struct SCNVector4 { float x1; float x2; float x3; float x4; })arg3;
 - (void)_jitterAtStep:(unsigned long long)arg1 updateMainFramebuffer:(bool)arg2 redisplay:(bool)arg3 jitterer:(id)arg4;
@@ -214,10 +222,9 @@
 - (void)_renderAtTime:(double)arg1;
 - (void)_renderAtTime:(double)arg1 viewport:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 encoder:(id)arg3 passDescriptor:(id)arg4 commandQueue:(id)arg5 commandBuffer:(id)arg6;
 - (id)_renderContextMetal;
-- (bool)_renderGraphEnabled;
 - (void)_renderGraphFrameRecordingAtPath:(id)arg1 withCompletion:(id /* block */)arg2;
 - (void)_renderSceneWithEngineContext:(struct __C3DEngineContext { }*)arg1 sceneTime:(double)arg2;
-- (struct __C3DRendererContext { struct __CFRuntimeBase { unsigned long long x_1_1_1; unsigned long long x_1_1_2; } x1; int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; float x7; unsigned int x8; struct __C3DTexture {} *x9; struct __C3DStack {} *x10; void *x11; bool x12; bool x13; bool x14; bool x15; bool x16; struct __CFDictionary {} *x17; unsigned int x18; struct __CFDictionary {} *x19; struct __CFDictionary {} *x20; struct __CFDictionary {} *x21; struct C3DColor4 { union { float x_1_2_1[4]; struct { float x_2_3_1; float x_2_3_2; float x_2_3_3; float x_2_3_4; } x_1_2_2; } x_22_1_1; } x22; void *x23; long long x24; struct __C3DFXProgramObject {} *x25; struct __C3DEngineStats { unsigned int x_26_1_1; unsigned int x_26_1_2; unsigned int x_26_1_3; unsigned int x_26_1_4; unsigned int x_26_1_5; unsigned int x_26_1_6; unsigned int x_26_1_7; unsigned int x_26_1_8; unsigned int x_26_1_9; unsigned int x_26_1_10; unsigned int x_26_1_11; unsigned int x_26_1_12; unsigned int x_26_1_13; unsigned int x_26_1_14; unsigned int x_26_1_15; unsigned int x_26_1_16; unsigned int x_26_1_17; unsigned int x_26_1_18; unsigned int x_26_1_19; unsigned int x_26_1_20; unsigned int x_26_1_21; unsigned int x_26_1_22; unsigned int x_26_1_23; unsigned int x_26_1_24; double x_26_1_25; double x_26_1_26; double x_26_1_27; double x_26_1_28; double x_26_1_29; double x_26_1_30; double x_26_1_31; double x_26_1_32; double x_26_1_33; double x_26_1_34; double x_26_1_35; double x_26_1_36; double x_26_1_37; double x_26_1_38; double x_26_1_39; unsigned int x_26_1_40; unsigned int x_26_1_41; unsigned int x_26_1_42; unsigned int x_26_1_43; unsigned int x_26_1_44; unsigned int x_26_1_45; unsigned int x_26_1_46; unsigned int x_26_1_47; } x26; }*)_rendererContextGL;
+- (struct __C3DRendererContext { struct __CFRuntimeBase { unsigned long long x_1_1_1; _Atomic unsigned long long x_1_1_2; } x1; int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; float x7; unsigned int x8; struct __C3DTexture {} *x9; struct __C3DStack {} *x10; void *x11; bool x12; bool x13; bool x14; bool x15; bool x16; struct __CFDictionary {} *x17; unsigned int x18; struct __CFDictionary {} *x19; struct __CFDictionary {} *x20; struct __CFDictionary {} *x21; struct C3DColor4 { union { float x_1_2_1[4]; struct { float x_2_3_1; float x_2_3_2; float x_2_3_3; float x_2_3_4; } x_1_2_2; } x_22_1_1; } x22; void *x23; long long x24; struct __C3DFXProgramObject {} *x25; struct __C3DEngineStats { unsigned int x_26_1_1; unsigned int x_26_1_2; unsigned int x_26_1_3; unsigned int x_26_1_4; unsigned int x_26_1_5; unsigned int x_26_1_6; unsigned int x_26_1_7; unsigned int x_26_1_8; unsigned int x_26_1_9; unsigned int x_26_1_10; unsigned int x_26_1_11; unsigned int x_26_1_12; unsigned int x_26_1_13; unsigned int x_26_1_14; unsigned int x_26_1_15; unsigned int x_26_1_16; unsigned int x_26_1_17; unsigned int x_26_1_18; unsigned int x_26_1_19; unsigned int x_26_1_20; unsigned int x_26_1_21; unsigned int x_26_1_22; unsigned int x_26_1_23; unsigned int x_26_1_24; double x_26_1_25; double x_26_1_26; double x_26_1_27; double x_26_1_28; double x_26_1_29; double x_26_1_30; double x_26_1_31; double x_26_1_32; double x_26_1_33; double x_26_1_34; double x_26_1_35; double x_26_1_36; double x_26_1_37; double x_26_1_38; double x_26_1_39; unsigned int x_26_1_40; unsigned int x_26_1_41; unsigned int x_26_1_42; unsigned int x_26_1_43; unsigned int x_26_1_44; unsigned int x_26_1_45; unsigned int x_26_1_46; unsigned int x_26_1_47; } x26; }*)_rendererContextGL;
 - (id)_renderingQueue;
 - (void)_resolveAndDiscardGL;
 - (void)_runningInExtension;
@@ -229,6 +236,7 @@
 - (void)_setSceneTime:(double)arg1;
 - (void)_setupOffscreenRendererWithSize:(struct CGSize { double x1; double x2; })arg1;
 - (id)_setupSKRendererIfNeeded;
+- (bool)_shouldDelegateARCompositing;
 - (bool)_showsAuthoringEnvironment;
 - (void)_stop;
 - (double)_superSamplingFactor;
@@ -243,6 +251,7 @@
 - (struct SCNVector4 { float x1; float x2; float x3; float x4; })_viewport;
 - (void)_willRenderScene:(id)arg1;
 - (void)_writeSubdivCacheForHash:(id)arg1 dataProvider:(id /* block */)arg2;
+- (void)adjustViewportForRendering;
 - (id)audioEngine;
 - (id)audioEnvironmentNode;
 - (id)audioListener;
@@ -258,6 +267,7 @@
 - (id)currentRenderCommandEncoder;
 - (id)currentRenderPassDescriptor;
 - (double)currentTime;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })currentViewport;
 - (void)dealloc;
 - (unsigned long long)debugOptions;
 - (id)delegate;
@@ -273,6 +283,7 @@
 - (bool)isJitteringEnabled;
 - (bool)isNodeInsideFrustum:(id)arg1 withPointOfView:(id)arg2;
 - (bool)isPlaying;
+- (bool)isTemporalAntialiasingEnabled;
 - (bool)jitteringEnabled;
 - (void)lock;
 - (bool)loops;
@@ -295,8 +306,11 @@
 - (void)renderAtTime:(double)arg1 viewport:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 commandBuffer:(id)arg3 passDescriptor:(id)arg4;
 - (void)renderAtTime:(double)arg1 viewport:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 encoder:(id)arg3 passDescriptor:(id)arg4 commandQueue:(id)arg5;
 - (bool)renderMovieToURL:(id)arg1 size:(struct CGSize { double x1; double x2; })arg2 antialiasingMode:(unsigned long long)arg3 attributes:(id)arg4 error:(id*)arg5;
+- (void)renderWithCommandBuffer:(id)arg1 viewPoints:(id)arg2;
+- (void)renderWithViewpoints:(id)arg1 events:(id)arg2;
 - (void)renderWithViewport:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 commandBuffer:(id)arg2 passDescriptor:(id)arg3;
 - (unsigned long long)renderingAPI;
+- (void)resolvedBackgroundColorDidChange;
 - (id)scene;
 - (double)sceneTime;
 - (void)setAudioListener:(id)arg1;
@@ -321,6 +335,8 @@
 - (void)setSceneTime:(double)arg1;
 - (void)setShowsStatistics:(bool)arg1;
 - (void)setTechnique:(id)arg1;
+- (void)setTemporalAntialiasingEnabled:(bool)arg1;
+- (void)setUsesReverseZ:(bool)arg1;
 - (void)set_antialiasingMode:(unsigned long long)arg1;
 - (void)set_aspectRatio:(double)arg1;
 - (void)set_collectCompilationErrors:(bool)arg1;
@@ -328,13 +344,14 @@
 - (void)set_deltaTime:(double)arg1;
 - (void)set_disableLinearRendering:(bool)arg1;
 - (void)set_drawableSafeAreaInsets;
+- (void)set_enableARMode:(bool)arg1;
 - (void)set_enablesDeferredShading:(bool)arg1;
 - (void)set_nextFrameTime:(double)arg1;
 - (void)set_preparePixelFormat:(unsigned long long)arg1;
 - (void)set_privateRendererShouldForwardSceneRendererDelegationMessagesToOwner:(bool)arg1;
 - (void)set_recordWithoutExecute:(bool)arg1;
-- (void)set_renderGraphEnabled:(bool)arg1;
 - (void)set_screenTransform:(struct SCNMatrix4 { float x1; float x2; float x3; float x4; float x5; float x6; float x7; float x8; float x9; float x10; float x11; float x12; float x13; float x14; float x15; float x16; })arg1;
+- (void)set_shouldDelegateARCompositing:(bool)arg1;
 - (void)set_showsAuthoringEnvironment:(bool)arg1;
 - (void)set_superSamplingFactor:(double)arg1;
 - (void)set_systemTime:(double)arg1;
@@ -346,12 +363,14 @@
 - (id)snapshotRendererWithSize:(struct CGSize { double x1; double x2; })arg1;
 - (unsigned long long)stencilPixelFormat;
 - (id)technique;
+- (bool)temporalAntialiasingEnabled;
 - (void)unlock;
 - (struct SCNVector3 { float x1; float x2; float x3; })unprojectPoint:(struct SCNVector3 { float x1; float x2; float x3; })arg1;
 - (void)updateAndDrawStatisticsIfNeeded;
 - (void)updateAtTime:(double)arg1;
 - (void)updateCurrentTimeIfPlayingWithSystemTime:(double)arg1;
 - (void)updateProbes:(id)arg1 atTime:(double)arg2;
-- (void)viewportWithLetterboxingIfNeeded;
+- (bool)usesReverseZ;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })viewport;
 
 @end

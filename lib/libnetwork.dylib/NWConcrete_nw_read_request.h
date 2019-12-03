@@ -5,6 +5,7 @@
 @interface NWConcrete_nw_read_request : NSObject <OS_nw_read_request> {
     char * buffer;
     id /* block */  buffer_completion;
+    NWConcrete_nw_connection * connection;
     NSObject<OS_nw_content_context> * context;
     NSObject<OS_dispatch_data> * data;
     id /* block */  data_completion;
@@ -15,7 +16,9 @@
     unsigned long long  min;
     NWConcrete_nw_read_request * next;
     unsigned long long  progress;
+    unsigned int  qos_class;
     NSObject<OS_nw_array> * read_array;
+    NSObject<OS_nw_content_context> * repliable_message;
     unsigned int  reported;
     int  variant;
 }

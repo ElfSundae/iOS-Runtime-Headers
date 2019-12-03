@@ -14,7 +14,7 @@
 @property (nonatomic, readonly) NSMutableSet *observerBlocks;
 @property (nonatomic, readonly) double throttleInterval;
 @property (nonatomic, retain) <NAScheduler> *updateScheduler;
-@property (nonatomic, retain) id value;
+@property (nonatomic, readonly) id value;
 @property (nonatomic, retain) <NACancelable> *valueUpdateCancelationToken;
 
 - (void).cxx_destruct;
@@ -30,6 +30,7 @@
 - (id)observerBlocks;
 - (void)setUpdateScheduler:(id)arg1;
 - (void)setValue:(id)arg1;
+- (void)setValue:(id)arg1 notifyObservers:(bool)arg2;
 - (void)setValueUpdateCancelationToken:(id)arg1;
 - (double)throttleInterval;
 - (id)updateScheduler;

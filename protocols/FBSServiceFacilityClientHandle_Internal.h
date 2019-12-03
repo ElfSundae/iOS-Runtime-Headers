@@ -5,6 +5,7 @@
 
 @required
 
-- (NSObject<OS_xpc_object> *)connection;
+- (<BSXPCServiceConnectionMessaging> *)clientHandle_messageBuilder;
+- (NSString *)prettyProcessDescription;
 
 @end

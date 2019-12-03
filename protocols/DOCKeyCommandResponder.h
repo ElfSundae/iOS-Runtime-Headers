@@ -5,6 +5,7 @@
 
 @required
 
+- (void)dismissingKeyCommandWasPerformed:(UIKeyCommand *)arg1;
 - (void)keyCommandWasPerformed:(UIKeyCommand *)arg1;
 
 @end

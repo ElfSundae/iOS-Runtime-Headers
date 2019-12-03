@@ -10,16 +10,15 @@
     unsigned int  _feedbackBlockId;
     NSNumber * _fileIdentifier;
     NSString * _filename;
+    bool  _hasCommunicationContent;
     float  _l2score;
     NSDate * _lastUsedDate;
     NSString * _launchString;
     NSNumber * _parentFileIdentifier;
+    unsigned long long  _predictionsFeedbackActionType;
     NSString * _protectionClass;
     PRSRankingItem * _rankingItem;
-    struct ranking_index_score_t { 
-        unsigned long long lsb; 
-        unsigned long long msb; 
-    }  _score;
+    /* Warning: Unrecognized filer type: 'T' using 'void*' */ void* _score;
     NSData * _suggestionsFeedbackData;
     NSString * _userActivityType;
 }
@@ -30,13 +29,15 @@
 @property (nonatomic) unsigned int feedbackBlockId;
 @property (nonatomic, retain) NSNumber *fileIdentifier;
 @property (nonatomic, retain) NSString *filename;
+@property (nonatomic) bool hasCommunicationContent;
 @property (nonatomic) float l2score;
 @property (nonatomic, retain) NSDate *lastUsedDate;
 @property (nonatomic, retain) NSString *launchString;
 @property (nonatomic, retain) NSNumber *parentFileIdentifier;
+@property (nonatomic) unsigned long long predictionsFeedbackActionType;
 @property (nonatomic, retain) NSString *protectionClass;
 @property (retain) PRSRankingItem *rankingItem;
-@property (nonatomic) struct ranking_index_score_t { unsigned long long x1; unsigned long long x2; } score;
+@property (nonatomic) /* Warning: Unrecognized filer type: 'T' using 'void*' */ void*score;
 @property (nonatomic, retain) NSData *suggestionsFeedbackData;
 @property (nonatomic, retain) NSString *userActivityType;
 
@@ -44,7 +45,6 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
-- (long long)compare:(id)arg1;
 - (id)contentURL;
 - (id)debugDescription;
 - (id)documentIdentifier;
@@ -53,6 +53,7 @@
 - (unsigned int)feedbackBlockId;
 - (id)fileIdentifier;
 - (id)filename;
+- (bool)hasCommunicationContent;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (float)l2score;
@@ -60,23 +61,26 @@
 - (id)launchString;
 - (id)objectForFeedback;
 - (id)parentFileIdentifier;
+- (unsigned long long)predictionsFeedbackActionType;
 - (id)protectionClass;
 - (id)punchout;
 - (id)rankingItem;
-- (struct ranking_index_score_t { unsigned long long x1; unsigned long long x2; })score;
+- (/* Warning: Unrecognized filer type: 'T' using 'void*' */ void*)score;
 - (void)setContentURL:(id)arg1;
 - (void)setDocumentIdentifier:(id)arg1;
 - (void)setDuplicatedItems:(id)arg1;
 - (void)setFeedbackBlockId:(unsigned int)arg1;
 - (void)setFileIdentifier:(id)arg1;
 - (void)setFilename:(id)arg1;
+- (void)setHasCommunicationContent:(bool)arg1;
 - (void)setL2score:(float)arg1;
 - (void)setLastUsedDate:(id)arg1;
 - (void)setLaunchString:(id)arg1;
 - (void)setParentFileIdentifier:(id)arg1;
+- (void)setPredictionsFeedbackActionType:(unsigned long long)arg1;
 - (void)setProtectionClass:(id)arg1;
 - (void)setRankingItem:(id)arg1;
-- (void)setScore:(struct ranking_index_score_t { unsigned long long x1; unsigned long long x2; })arg1;
+- (void)setScore:(/* Warning: Unrecognized filer type: 'T' using 'void*' */ void*)arg1;
 - (void)setSuggestionsFeedbackData:(id)arg1;
 - (void)setUrl:(id)arg1;
 - (void)setUserActivityType:(id)arg1;

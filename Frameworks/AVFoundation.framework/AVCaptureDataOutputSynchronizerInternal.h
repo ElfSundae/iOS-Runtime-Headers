@@ -3,11 +3,10 @@
  */
 
 @interface AVCaptureDataOutputSynchronizerInternal : NSObject {
-    NSObject<OS_dispatch_queue> * dataOutputQueue;
     NSArray * dataOutputs;
     NSArray * dataOutputsStorage;
     struct OpaqueFigSimpleMutex { } * dataOutputsStorageMutex;
-    AVWeakReferencingDelegateStorage * delegateStorage;
+    AVCaptureDataOutputDelegateCallbackHelper * delegateCallbackHelper;
     int  masterSynchronizedDataQueueMaxDepth;
     bool  synchronizingVideoAndDepth;
     bool  synchronizingVideoAndVisionData;

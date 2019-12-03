@@ -16,6 +16,7 @@
 + (void)_postParticipantScreenAttributesChangeNotification:(id)arg1 cameraChanged:(bool)arg2 orientationChanged:(bool)arg3 aspectChanged:(bool)arg4 cameraWillSwitch:(bool)arg5 camera:(unsigned int)arg6 orentation:(unsigned int)arg7 aspect:(struct CGSize { double x1; double x2; })arg8;
 + (bool)_useMultipleAVConference;
 
+- (void).cxx_destruct;
 - (void)_avChatDealloc:(id)arg1;
 - (id)_avChatForConference:(id)arg1;
 - (id)_avChatForConference:(id)arg1 callID:(long long)arg2 errorString:(id)arg3;

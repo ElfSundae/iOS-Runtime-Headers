@@ -13,14 +13,19 @@
 @property (nonatomic, retain) FKFriendsManager *sosFriendsManager;
 
 - (void).cxx_destruct;
+- (id)_fetchMedicalID;
 - (id)_medicalIDURL;
 - (id)_medicalIDURLWithDirectoryPath:(id)arg1;
 - (bool)_migrateMedicalIDLocationIfNecessary:(id*)arg1;
+- (bool)_persistMedicalIDData:(id)arg1 syncProvenance:(id)arg2 error:(id*)arg3;
+- (bool)_persistMedicalIDDataFileToDisk:(id)arg1 error:(id*)arg2;
 - (id)_unarchiveMedicalIDDataWithRawData:(id)arg1;
 - (void)_updateShowMedicalIdOnWatch:(bool)arg1;
 - (void)badgeHealthAppForEmergencyContactConsolidationWithCompletion:(id /* block */)arg1;
 - (bool)deleteMedicalIDDataWithError:(id*)arg1;
+- (id)fetchMedicalIDIfExists;
 - (id)initWithProfile:(id)arg1;
+- (bool)isDateSavedEarlierForMedicalID:(id)arg1 originalMedicalID:(id)arg2;
 - (id)medicalIDDataCreateIfNecessary:(bool)arg1;
 - (id)medicalIDEmergencyContacts;
 - (bool)obliterateMedicalIDDataWithReason:(id)arg1 error:(id*)arg2;
@@ -30,6 +35,9 @@
 - (void)setQueue:(id)arg1;
 - (void)setSosFriendsManager:(id)arg1;
 - (id)sosFriendsManager;
+- (id)unitTest_medicalIDData;
+- (bool)unitTest_persistMedicalIDData:(id)arg1;
 - (bool)updateMedicalIDData:(id)arg1 error:(id*)arg2;
+- (bool)updateMedicalIDData:(id)arg1 syncProvenance:(long long)arg2 error:(id*)arg3;
 
 @end

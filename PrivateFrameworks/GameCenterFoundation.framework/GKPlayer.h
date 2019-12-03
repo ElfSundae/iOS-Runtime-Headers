@@ -9,10 +9,15 @@
 }
 
 @property (nonatomic, copy) NSString *alias;
+@property (nonatomic, readonly) long long avatarType;
 @property (nonatomic, readonly) NSString *cacheKey;
+@property (nonatomic, retain) CNContact *contact;
 @property (nonatomic, readonly) NSString *displayName;
 @property (nonatomic, readonly) NSString *firstName;
-@property (nonatomic, readonly) NSString *friendLevel;
+@property (nonatomic, readonly) NSNumber *friendBiDirectional;
+@property (nonatomic, readonly) NSNumber *friendLevel;
+@property (nonatomic, readonly) NSNumber *friendPlayedNearby;
+@property (nonatomic, readonly) NSNumber *friendPlayedWith;
 @property (nonatomic, retain) NSArray *friends;
 @property (nonatomic, readonly, retain) NSString *gamePlayerID;
 @property (nonatomic, readonly) NSString *guestIdentifier;
@@ -28,6 +33,7 @@
 @property (nonatomic, readonly) NSDate *lastPlayedDate;
 @property (nonatomic, readonly) GKGame *lastPlayedGame;
 @property (getter=isLoaded, nonatomic, readonly) bool loaded;
+@property (nonatomic, retain) NSArray *monogramComponents;
 @property (nonatomic) unsigned long long numberOfFriends;
 @property (nonatomic, retain) NSString *playerID;
 @property (nonatomic, retain) NSString *reason;
@@ -52,6 +58,7 @@
 + (bool)instancesRespondToSelector:(SEL)arg1;
 + (void)loadCompletePlayersForPlayers:(id)arg1 completionHandler:(id /* block */)arg2;
 + (void)loadPlayersForIdentifiers:(id)arg1 withCompletionHandler:(id /* block */)arg2;
++ (void)loadPlayersForIdentifiersPrivate:(id)arg1 withCompletionHandler:(id /* block */)arg2;
 + (void)loadPlayersForLegacyIdentifiers:(id)arg1 withCompletionHandler:(id /* block */)arg2;
 + (id)playerFromPlayerID:(id)arg1;
 + (bool)supportsSecureCoding;
@@ -59,6 +66,7 @@
 
 - (void)_postChangeNotification;
 - (id)alias;
+- (long long)avatarType;
 - (id)cacheKey;
 - (void)dealloc;
 - (id)description;
@@ -68,7 +76,10 @@
 - (id)emails;
 - (void)encodeWithCoder:(id)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
+- (id)friendBiDirectional;
 - (id)friendLevel;
+- (id)friendPlayedNearby;
+- (id)friendPlayedWith;
 - (id)friends;
 - (id)gamePlayerID;
 - (bool)hasPhoto;
@@ -95,7 +106,11 @@
 - (void)postChangeNotification;
 - (id)referenceKey;
 - (bool)respondsToSelector:(SEL)arg1;
+- (bool)scopedIDsArePersistent;
+- (void)setFriendBiDirectional:(id)arg1;
 - (void)setFriendLevel:(id)arg1;
+- (void)setFriendPlayedNearby:(id)arg1;
+- (void)setFriendPlayedWith:(id)arg1;
 - (void)setFriends:(id)arg1;
 - (void)setInternal:(id)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
@@ -108,17 +123,28 @@
 
 // Image: /System/Library/PrivateFrameworks/GameCenterUI.framework/GameCenterUI
 
++ (id)monogramQueue;
 + (void)preloadImagesForPlayers:(id)arg1 size:(long long)arg2;
 + (long long)sizeForPhotoSize:(long long)arg1;
 
 - (void)_loadPhotoForSize:(long long)arg1 withCompletionHandler:(id /* block */)arg2;
-- (id)cacheKeyForType:(unsigned char)arg1;
-- (id)imageSourceForPlaceholders;
-- (id)imageURLForPhotoSizeList;
+- (void)_playerAvatarWithSize:(long long)arg1 useUIImage:(bool)arg2 completionHandler:(id /* block */)arg3;
+- (id)avatarImageRenderer;
+- (void)clearInMemoryCachedAvatars;
+- (id)contact;
+- (void)displayNameComponentsWithHandler:(id /* block */)arg1;
+- (id)initWithContact:(id)arg1;
 - (void)loadPhotoForSize:(long long)arg1 withCompletionHandler:(id /* block */)arg2;
+- (void)loadPlayerContactForAvatarControllerWithImageSize:(long long)arg1 handler:(id /* block */)arg2;
+- (void)monogramImageWithPhotoSize:(long long)arg1 handler:(id /* block */)arg2;
+- (void)mutableContactFromDisplayNameComponentsWithHandler:(id /* block */)arg1;
 - (id)photoURLForSize:(long long)arg1;
-- (id)placeholderImage;
-- (id)placeholderImageForType:(unsigned char)arg1;
-- (id)placeholderImageSelected;
+- (id)placeholderImageWithPhotoSize:(long long)arg1;
+- (void)playerAvatarDataWithSize:(long long)arg1 completionHandler:(id /* block */)arg2;
+- (void)playerAvatarImageWithSize:(long long)arg1 completionHandler:(id /* block */)arg2;
+- (void)renderMonogramImageWithPhotoSize:(long long)arg1 monogramString:(id)arg2 handler:(id /* block */)arg3;
+- (id)renderingScopeForPhotoSize:(long long)arg1;
+- (void)setContact:(id)arg1;
+- (void)stringForMonogramWithHandler:(id /* block */)arg1;
 
 @end

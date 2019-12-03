@@ -5,7 +5,7 @@
 @interface SBSoundDefaults : SBAbstractSpringBoardDefaultDomain
 
 @property (nonatomic, retain) NSString *calendarAlarmPath;
-@property (nonatomic, readonly) bool playSoundOnBasebandReset;
+@property (nonatomic, readonly) bool debugEUVolumeLimit;
 @property (nonatomic, readonly) bool playSoundOnDeviceWake;
 @property (getter=isRingerMuted, nonatomic) bool ringerMuted;
 @property (nonatomic, readonly) bool vibrateWhenRinging;

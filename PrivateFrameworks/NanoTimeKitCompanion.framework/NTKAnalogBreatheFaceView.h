@@ -13,14 +13,12 @@
 - (void).cxx_destruct;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyVideoPlayerTransform;
-- (void)_backlightDidTurnOff;
 - (id)_complicationsForegroundColor;
 - (id)_complicationsPlatterColor;
-- (void)_configureReusableTimeView:(id)arg1;
+- (void)_configureTimeView:(id)arg1;
 - (void)_customizeVideoPlayerOnSetup;
 - (void)_faceViewWasTapped;
 - (void)_handleEitherScreenWake;
-- (void)_prepareTimeViewForReuse:(id)arg1;
 - (void)_releaseBacklightAssertion;
 - (bool)_shouldAnimateComplicationsOnTap;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
@@ -29,6 +27,7 @@
 - (void)_updateDialSize;
 - (unsigned long long)currentVideoStyle;
 - (void)customizeFaceViewForListing:(id)arg1 changeEvent:(unsigned long long)arg2 animated:(bool)arg3;
+- (void)handleScreenBlanked;
 - (id)imageForEditOption:(id)arg1;
 - (void)setCurrentVideoStyle:(unsigned long long)arg1;
 - (void)setupDataSources;

@@ -10,7 +10,7 @@
         struct __compressed_pair<TSTStrokeLayerRun *, std::__1::allocator<TSTStrokeLayerRun> > { 
             struct TSTStrokeLayerRun {} *__value_; 
         } __end_cap_; 
-    }  mStrokeRuns;
+    }  _strokeRuns;
 }
 
 @property (nonatomic) unsigned int columnOrRowIndex;
@@ -39,7 +39,6 @@
 - (void)p_mergeStrokeRunsAtPosition:(unsigned long long)arg1;
 - (void)p_removeRange:(struct TSTSimpleRange { long long x1; unsigned long long x2; })arg1;
 - (void)p_setStroke:(id)arg1 inRange:(struct TSTSimpleRange { long long x1; unsigned long long x2; })arg2 order:(int)arg3;
-- (void)p_setStrokeRuns:(struct vector<TSTStrokeLayerRun, std::__1::allocator<TSTStrokeLayerRun> > { struct TSTStrokeLayerRun {} *x1; struct TSTStrokeLayerRun {} *x2; struct __compressed_pair<TSTStrokeLayerRun *, std::__1::allocator<TSTStrokeLayerRun> > { struct TSTStrokeLayerRun {} *x_3_1_1; } x3; })arg1;
 - (void)replaceStrokeLayerAtIndex:(unsigned long long)arg1 withObject:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)setColumnOrRowIndex:(unsigned int)arg1;

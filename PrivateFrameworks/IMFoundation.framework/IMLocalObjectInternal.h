@@ -19,6 +19,7 @@
     NSObject<OS_dispatch_queue> * _queue;
     struct __CFRunLoopSource { } * _runloopSource;
     id  _target;
+    bool  _wasInterrupted;
     NSArray * _whitelistedClasses;
 }
 

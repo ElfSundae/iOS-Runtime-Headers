@@ -17,6 +17,7 @@
 - (id)initWithStyle:(long long)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)playerController;
+- (void)playerControllerMediaSelectionChanged:(id)arg1;
 - (void)setPlayerController:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

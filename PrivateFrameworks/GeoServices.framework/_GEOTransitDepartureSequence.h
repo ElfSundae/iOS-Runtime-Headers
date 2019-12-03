@@ -48,5 +48,6 @@
 - (unsigned long long)numberOfDeparturesAfterDate:(id)arg1;
 - (id)operatingHours;
 - (id)operatingHoursForDate:(id)arg1 inTimeZone:(id)arg2;
+- (unsigned long long)stopId;
 
 @end

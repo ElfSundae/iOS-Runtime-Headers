@@ -5,7 +5,7 @@
 @interface AVFigAssetInspectorLoader : AVAssetInspectorLoader {
     NSURL * _URL;
     AVAssetInspector * _assetInspector;
-    long long  _assetInspectorOnce;
+    AVDispatchOnce * _assetInspectorOnce;
     NSObject<OS_dispatch_queue> * _completionHandlerQueue;
     struct OpaqueFigAsset { } * _figAsset;
     int  _figAssetCreationStatus;
@@ -17,7 +17,9 @@
     AVWeakReference * _weakReferenceToAsset;
 }
 
++ (id)_figAssetMediaSelectionPropertiesArray;
 + (id)_figAssetPropertiesForKeys;
++ (id)_figAssetTrackMediaSelectionPropertiesArray;
 + (id)_figAssetTrackPropertiesForKeys;
 + (void)_mapAssetKeys:(id)arg1 toFigAssetPropertySet:(id)arg2 figAssetTrackPropertySet:(id)arg3 callerName:(id)arg4;
 
@@ -37,6 +39,7 @@
 - (void)_removeFigAssetNotifications;
 - (void)_setFragmentMindingInterval:(double)arg1;
 - (void)_setIsAssociatedWithFragmentMinder:(bool)arg1;
+- (long long)_statusOfValueForKey:(id)arg1 error:(id*)arg2 firstNonLoadedDependencyKey:(id*)arg3;
 - (id)asset;
 - (id)assetInspector;
 - (void)cancelLoading;
@@ -45,7 +48,8 @@
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })duration;
 - (id)figChapterGroupInfo;
 - (id)figChapters;
-- (void)finalize;
+- (long long)firstFragmentSequenceNumber;
+- (long long)fragmentCount;
 - (bool)hasProtectedContent;
 - (id)initWithFigAsset:(struct OpaqueFigAsset { }*)arg1 forAsset:(id)arg2;
 - (id)initWithURL:(id)arg1 figAssetCreationFlags:(unsigned long long)arg2 figAssetCreationOptions:(id)arg3 forAsset:(id)arg4;

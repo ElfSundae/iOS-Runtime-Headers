@@ -10,8 +10,8 @@
 
 - (void).cxx_destruct;
 - (id /* block */)_mapkit_themeColorProvider;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)didMoveToWindow;
+- (void)infoCardThemeChanged;
 - (void)set_mapkit_themeColorProvider:(id /* block */)arg1;
-- (void)willMoveToWindow:(id)arg1;
 
 @end

@@ -6,6 +6,7 @@
     id /* block */  _candidateHandler;
     <TIClientProxy> * _clientProxy;
     bool  _didCallHandler;
+    TIKeyboardInputManagerBase * _inputManager;
     TIKeyboardState * _keyboardState;
     <TIKeyboardInputManagerLogging> * _logger;
     TICandidateRequestToken * _requestToken;
@@ -25,7 +26,7 @@
 - (id)clientProxy;
 - (void)close;
 - (void)dealloc;
-- (id)initWithClientProxy:(id)arg1 keyboardState:(id)arg2 requestToken:(id)arg3 logger:(id)arg4 candidateHandler:(id /* block */)arg5;
+- (id)initWithClientProxy:(id)arg1 keyboardState:(id)arg2 requestToken:(id)arg3 logger:(id)arg4 inputManager:(id)arg5 candidateHandler:(id /* block */)arg6;
 - (id)keyboardState;
 - (id)logger;
 - (void)open;

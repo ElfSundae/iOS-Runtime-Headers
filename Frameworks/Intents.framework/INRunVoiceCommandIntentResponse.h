@@ -2,9 +2,7 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface INRunVoiceCommandIntentResponse : INIntentResponse <INRunVoiceCommandIntentResponseExport> {
-    _INPBRunVoiceCommandIntentResponse * _responseMessagePBRepresentation;
-}
+@interface INRunVoiceCommandIntentResponse : INIntentResponse <INRunVoiceCommandIntentResponseExport>
 
 @property (nonatomic, copy) NSString *appBundleId;
 @property (nonatomic, readonly) long long code;
@@ -17,6 +15,7 @@
 @property (nonatomic, copy) NSNumber *interstitialDisabled;
 @property (nonatomic, copy) NSString *localizedAppName;
 @property (nonatomic, copy) NSDictionary *parameters;
+@property (nonatomic, copy) NSNumber *prefersExecutionOnCompanion;
 @property (nonatomic, copy) NSString *responseTemplate;
 @property (nonatomic, copy) NSArray *steps;
 @property (readonly) Class superclass;
@@ -32,11 +31,10 @@
 + (int)_typeFromCode:(long long)arg1;
 + (bool)supportsSecureCoding;
 
-- (void).cxx_destruct;
+- (long long)_codeWithName:(id)arg1;
 - (id)_dictionaryRepresentation;
 - (id)_initWithCode:(long long)arg1 userActivity:(id)arg2;
 - (long long)_intentResponseCode;
-- (id)_responseMessagePBRepresentation;
 - (id)appBundleId;
 - (long long)code;
 - (id)continueRunning;
@@ -50,6 +48,7 @@
 - (id)interstitialDisabled;
 - (id)localizedAppName;
 - (id)parameters;
+- (id)prefersExecutionOnCompanion;
 - (id)propertiesByName;
 - (id)responseTemplate;
 - (void)setAppBundleId:(id)arg1;
@@ -59,6 +58,7 @@
 - (void)setInterstitialDisabled:(id)arg1;
 - (void)setLocalizedAppName:(id)arg1;
 - (void)setParameters:(id)arg1;
+- (void)setPrefersExecutionOnCompanion:(id)arg1;
 - (void)setPropertiesByName:(id)arg1;
 - (void)setResponseTemplate:(id)arg1;
 - (void)setSteps:(id)arg1;

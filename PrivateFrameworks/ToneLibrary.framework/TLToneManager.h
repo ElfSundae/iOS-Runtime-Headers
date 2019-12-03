@@ -70,7 +70,7 @@
 - (id)_installedTones;
 - (unsigned long long)_installedTonesSize;
 - (void)_loadAlertToneInfo;
-- (void)_loadITunesRingtoneInfoPlistAtPath:(id)arg1;
+- (bool)_loadITunesRingtoneInfoPlistAtPath:(id)arg1;
 - (void)_loadToneIdentifierAliasMap;
 - (id)_localizedNameOfToneWithIdentifier:(id)arg1;
 - (int)_lockManifestAtPath:(id)arg1;
@@ -86,6 +86,8 @@
 - (long long)_removeOrphanedManifestEntriesReturningFilePathsForFoundOrphans:(id*)arg1;
 - (id)_removeOrphanedPlistEntriesInManifestAtPath:(id)arg1 mediaDirectory:(id)arg2;
 - (bool)_removeToneFromManifestAtPath:(id)arg1 fileName:(id)arg2;
+- (bool)_removeToneWithIdentifier:(id)arg1;
+- (bool)_removeToneWithIdentifier:(id)arg1 orSyncIdentifier:(id)arg2;
 - (bool)_removeToneWithSyncIdentifier:(id)arg1;
 - (bool)_removeTonesFromManifestAtPath:(id)arg1 fileNames:(id)arg2 shouldSkipReload:(bool)arg3 alreadyLockedManifest:(bool)arg4 removedEntries:(id*)arg5;
 - (id)_rootDirectory;
@@ -140,7 +142,7 @@
 
 // Image: /System/Library/PrivateFrameworks/BulletinBoard.framework/BulletinBoard
 
-- (bool)_bb_isToneEnabledForAlertType:(long long)arg1 topic:(id)arg2;
+- (bool)bb_isToneEnabledForAlertType:(long long)arg1 topic:(id)arg2;
 - (bool)bb_isToneEnabledForSectionInfo:(id)arg1;
 
 @end

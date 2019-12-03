@@ -19,6 +19,7 @@
 - (bool)isEqualForContact:(id)arg1 other:(id)arg2;
 - (bool)isEqualIgnoringIdentifiersForContact:(id)arg1 other:(id)arg2;
 - (id)nilValue;
+- (void)resetGuardianManagedValueOnContact:(id)arg1;
 - (bool)setABValue:(void*)arg1 onABPerson:(void*)arg2 error:(struct __CFError {}**)arg3;
 - (void)setCNValue:(id)arg1 onContact:(id)arg2;
 - (Class)valueClass;

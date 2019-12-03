@@ -27,6 +27,7 @@
     NSMutableDictionary * _aspectRatioByIndexPath;
     PUBrowsingSession * _browsingSession;
     NSString * _contentScrubbingIdentifier;
+    bool  _currentDragBeganOnContent;
     <PUScrubberViewDelegate> * _delegate;
     struct { 
         bool respondsToShouldIgnoreHitTestWithEvent; 
@@ -62,6 +63,7 @@
 @property (setter=_setUseSmoothingTransitionCoordinator:, nonatomic) bool _useSmoothingTransitionCoordinator;
 @property (setter=_setVideoScrubberController:, nonatomic, retain) PXVideoScrubberController *_videoScrubberController;
 @property (nonatomic, retain) PUBrowsingSession *browsingSession;
+@property (nonatomic) bool currentDragBeganOnContent;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <PUScrubberViewDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -139,6 +141,7 @@
 - (id)_videoScrubberController;
 - (void)beginPreviewing;
 - (id)browsingSession;
+- (bool)currentDragBeganOnContent;
 - (void)dealloc;
 - (id)delegate;
 - (void)endPreviewing;
@@ -158,6 +161,7 @@
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint { double x1; double x2; })arg2 targetContentOffset:(inout struct CGPoint { double x1; double x2; }*)arg3;
 - (void)setBrowsingSession:(id)arg1;
+- (void)setCurrentDragBeganOnContent:(bool)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setIsForPreview:(bool)arg1;
 - (void)setType:(long long)arg1;

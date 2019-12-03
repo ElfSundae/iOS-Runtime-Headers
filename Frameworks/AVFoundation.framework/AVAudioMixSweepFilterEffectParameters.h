@@ -15,7 +15,6 @@
 
 - (float)bypassThreshold;
 - (void)dealloc;
-- (void)finalize;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithMinimumCutOffFrequency:(unsigned int)arg1 maximumCutOffFrequency:(unsigned int)arg2 bypassThreshold:(float)arg3 sweepValue:(float)arg4;

@@ -2,14 +2,19 @@
    Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
  */
 
-@interface HMDHAPAccessoryTransaction : HMDAccessoryTransaction
+@interface HMDHAPAccessoryTransaction : HMDAccessoryTransaction {
+    NSDictionary * _cameraClipCloudZoneUUIDByRecordingServiceUUID;
+    HAPAccessory * _hapAccessoryLocal;
+}
 
 @property (nonatomic, retain) NSNumber *accessoryFlags;
 @property (nonatomic, retain) NSData *accessorySetupHash;
 @property (nonatomic, retain) NSString *bridgeUUID;
 @property (nonatomic, retain) NSData *broadcastKey;
+@property (nonatomic, retain) NSDictionary *cameraClipCloudZoneUUIDByRecordingServiceUUID;
 @property (nonatomic, retain) NSNumber *certificationStatus;
 @property (nonatomic, retain) HMFConnectivityInfo *connectivityInfo;
+@property (nonatomic, retain) HAPAccessory *hapAccessoryLocal;
 @property (nonatomic, retain) NSNumber *hardwareSupport;
 @property (nonatomic, retain) NSNumber *keyUpdatedStateNumber;
 @property (nonatomic, retain) NSDate *keyUpdatedTime;
@@ -25,6 +30,11 @@
 
 + (id)properties;
 
+- (void).cxx_destruct;
+- (id)cameraClipCloudZoneUUIDByRecordingServiceUUID;
 - (id)dependentUUIDs;
+- (id)hapAccessoryLocal;
+- (void)setCameraClipCloudZoneUUIDByRecordingServiceUUID:(id)arg1;
+- (void)setHapAccessoryLocal:(id)arg1;
 
 @end

@@ -2,22 +2,27 @@
    Image: /System/Library/PrivateFrameworks/MetalTools.framework/MetalTools
  */
 
-@interface MTLToolsRenderPipelineState : MTLToolsObject <MTLRenderPipelineState>
+@interface MTLToolsRenderPipelineState : MTLToolsObject <MTLRenderPipelineStateSPI>
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) <MTLDevice> *device;
+@property (nonatomic, readonly, retain) MTLDebugInstrumentationData *fragmentDebugInstrumentationData;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long imageblockSampleLength;
 @property (readonly) NSString *label;
 @property (readonly) unsigned long long maxTotalThreadsPerThreadgroup;
+@property (nonatomic) unsigned long long resourceIndex;
 @property (readonly) Class superclass;
 @property (readonly) bool supportIndirectCommandBuffers;
 @property (readonly) bool threadgroupSizeMatchesTileSize;
+@property (readonly) unsigned long long uniqueIdentifier;
+@property (nonatomic, readonly, retain) MTLDebugInstrumentationData *vertexDebugInstrumentationData;
 
 - (void)acceptVisitor:(id)arg1;
 - (void)dealloc;
 - (id)device;
+- (id)fragmentDebugInstrumentationData;
 - (unsigned int)getFragmentShaderTelemetryID;
 - (unsigned int)getVertexShaderTelemetryID;
 - (unsigned long long)imageblockMemoryLengthForDimensions:(struct { unsigned long long x1; unsigned long long x2; unsigned long long x3; })arg1;
@@ -30,5 +35,6 @@
 - (bool)supportIndirectCommandBuffers;
 - (bool)threadgroupSizeMatchesTileSize;
 - (unsigned long long)uniqueIdentifier;
+- (id)vertexDebugInstrumentationData;
 
 @end

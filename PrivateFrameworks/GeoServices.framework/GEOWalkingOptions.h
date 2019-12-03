@@ -9,16 +9,21 @@
         unsigned long long size; 
     }  _avoidedModes;
     struct { 
-        unsigned int preferredSpeed : 1; 
-    }  _has;
+        unsigned int has_preferredSpeed : 1; 
+    }  _flags;
     double  _preferredSpeed;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic, readonly) int*avoidedModes;
 @property (nonatomic, readonly) unsigned long long avoidedModesCount;
 @property (nonatomic) bool hasPreferredSpeed;
 @property (nonatomic) double preferredSpeed;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
+- (void).cxx_destruct;
 - (int)StringAsAvoidedModes:(id)arg1;
 - (void)addAvoidedMode:(int)arg1;
 - (int)avoidedModeAtIndex:(unsigned long long)arg1;
@@ -26,6 +31,7 @@
 - (id)avoidedModesAsString:(int)arg1;
 - (unsigned long long)avoidedModesCount;
 - (void)clearAvoidedModes;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -36,10 +42,12 @@
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (double)preferredSpeed;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAvoidedModes:(int*)arg1 count:(unsigned long long)arg2;
 - (void)setHasPreferredSpeed:(bool)arg1;
 - (void)setPreferredSpeed:(double)arg1;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 
 @end

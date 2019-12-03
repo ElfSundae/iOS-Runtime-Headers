@@ -12,6 +12,8 @@
 @property (nonatomic, readonly) unsigned char basePlaces;
 @property (nonatomic, readonly) bool baseUseMinusSign;
 
++ (id)defaultHexadecimalFormat;
+
 - (id)asBaseFormat;
 - (unsigned char)base;
 - (unsigned char)basePlaces;

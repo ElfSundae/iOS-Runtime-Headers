@@ -5,7 +5,7 @@
 @interface CMPocketStateManager : NSObject {
     <CMPocketStateDelegate> * _delegate;
     int  fCachedState;
-    /* Warning: unhandled struct encoding: '{Dispatcher=^^?@}' */ struct Dispatcher { int (**x1)(); id x2; } * fDispatcher;
+    struct Dispatcher { int (**x1)(); id x2; } * fDispatcher;
     double  fMaxMonitorTime;
     NSObject<OS_dispatch_queue> * fPrivateQueue;
     NSMutableArray * fQueryBlocks;
@@ -13,6 +13,8 @@
 }
 
 @property (nonatomic) <CMPocketStateDelegate> *delegate;
+
+// Image: /System/Library/Frameworks/CoreMotion.framework/CoreMotion
 
 + (bool)isPocketStateAvailable;
 
@@ -28,5 +30,9 @@
 - (void)queryStateOntoQueue:(id)arg1 withTimeout:(double)arg2 andHandler:(id /* block */)arg3;
 - (void)setDelegate:(id)arg1;
 - (long long)translateInternalState:(int)arg1;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoard.framework/SpringBoard
+
++ (bool)_sb_isScreenObscuredInPocketState:(long long)arg1;
 
 @end

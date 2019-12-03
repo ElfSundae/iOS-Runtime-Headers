@@ -33,7 +33,7 @@
 - (bool)adjustRangesByDelta:(long long)arg1;
 - (id)attachmentAtCharIndex:(unsigned long long)arg1;
 - (id)attachmentOrFootnoteAtCharIndex:(unsigned long long)arg1;
-- (void)attributesAtCharIndex:(unsigned long long)arg1 attributesOfInterest:(bool)arg2 attributesTable:(/* Warning: unhandled array encoding: '[19@]' */ id)arg3 effectiveRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; }*)arg4;
+- (void)attributesAtCharIndex:(unsigned long long)arg1 attributesOfInterest:(bool)arg2 attributesTable:(id)arg3 effectiveRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; }*)arg4;
 - (unsigned long long)charIndexMappedFromStorage:(unsigned long long)arg1;
 - (unsigned long long)charIndexMappedToStorage:(unsigned long long)arg1;
 - (unsigned long long)charIndexRemappedFromStorage:(unsigned long long)arg1;

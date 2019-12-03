@@ -5,7 +5,6 @@
 
 @required
 
-- (bool)alwaysForceCellular;
 - (id /* block */)block:(void *)arg1; // needs 1 arg types, found 9: id /* block */, NSURLResponse *, long long, NSData *, NSError *, NSDictionary *, void*, id, SEL
 - (NSString *)bundleIdentifierForDataUsage;
 - (void)cancel;
@@ -17,7 +16,6 @@
 - (void)load;
 - (NSURLRequest *)request;
 - (bool)requireIDSHost;
-- (void)setAlwaysForceCellular:(bool)arg1;
 - (void)setBlock:(void *)arg1; // needs 1 arg types, found 10: id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSURLResponse *, long long, NSData *, NSError *, NSDictionary *, void*
 - (void)setBundleIdentifierForDataUsage:(NSString *)arg1;
 - (void)setConcurrentConnections:(int)arg1;

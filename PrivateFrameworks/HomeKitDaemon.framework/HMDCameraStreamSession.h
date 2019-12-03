@@ -4,7 +4,7 @@
 
 @interface HMDCameraStreamSession : HMFObject <HMFLogging> {
     HMDCameraProtocolParameters * _protocolParameters;
-    HMDCameraSessionID * _sessionID;
+    HMDCameraStreamSessionID * _sessionID;
     HMDStreamingCapabilities * _streamingCapabilities;
     HMDStreamingManager * _streamingManager;
     HMDCameraVideoTierParameters * _videoTierParameters;
@@ -14,7 +14,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) HMDCameraProtocolParameters *protocolParameters;
-@property (nonatomic, readonly) HMDCameraSessionID *sessionID;
+@property (nonatomic, readonly) HMDCameraStreamSessionID *sessionID;
 @property (nonatomic, readonly) HMDStreamingCapabilities *streamingCapabilities;
 @property (nonatomic, retain) HMDStreamingManager *streamingManager;
 @property (readonly) Class superclass;

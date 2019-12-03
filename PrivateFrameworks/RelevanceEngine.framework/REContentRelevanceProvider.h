@@ -18,6 +18,7 @@
 - (id)init;
 - (id)initWithContent:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
+- (id)initWithKeywords:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)keywords;
 

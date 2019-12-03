@@ -9,7 +9,7 @@
     CKContainerID * _containerID;
     CKServerChangeToken * _currentServerChangeToken;
     int  _deviceCount;
-    CKEncryptedDate * _encryptedLastZoneishPCSRollDate;
+    NSArray * _invitedKeysToRemove;
     long long  _metadataQuotaUsage;
     bool  _needsZoneishPCSRolled;
     NSData * _pcsKeyID;
@@ -17,6 +17,7 @@
     NSData * _protectionData;
     NSString * _protectionEtag;
     bool  _serializeProtectionData;
+    CKReference * _share;
     CKRecordZoneID * _zoneID;
     bool  _zoneKeyRollAllowed;
     NSString * _zonePCSLastModifierDevice;
@@ -32,7 +33,7 @@
 @property (nonatomic, retain) CKServerChangeToken *currentServerChangeToken;
 @property (nonatomic, readonly) NSData *currentServerContinuationToken;
 @property (nonatomic) int deviceCount;
-@property (nonatomic, retain) CKEncryptedDate *encryptedLastZoneishPCSRollDate;
+@property (nonatomic, retain) NSArray *invitedKeysToRemove;
 @property (nonatomic) long long metadataQuotaUsage;
 @property (nonatomic) bool needsZoneishPCSRolled;
 @property (nonatomic, retain) NSData *pcsKeyID;
@@ -40,6 +41,7 @@
 @property (nonatomic, retain) NSData *protectionData;
 @property (nonatomic, retain) NSString *protectionEtag;
 @property (nonatomic) bool serializeProtectionData;
+@property (nonatomic, retain) CKReference *share;
 @property (nonatomic, retain) CKRecordZoneID *zoneID;
 @property (nonatomic) bool zoneKeyRollAllowed;
 @property (nonatomic) struct _OpaquePCSShareProtection { }*zonePCS;
@@ -69,10 +71,10 @@
 - (id)description;
 - (int)deviceCount;
 - (void)encodeWithCoder:(id)arg1;
-- (id)encryptedLastZoneishPCSRollDate;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithZoneID:(id)arg1;
 - (id)initWithZoneName:(id)arg1;
+- (id)invitedKeysToRemove;
 - (long long)metadataQuotaUsage;
 - (bool)needsZoneishPCSRolled;
 - (id)pcsKeyID;
@@ -86,7 +88,7 @@
 - (void)setContainerID:(id)arg1;
 - (void)setCurrentServerChangeToken:(id)arg1;
 - (void)setDeviceCount:(int)arg1;
-- (void)setEncryptedLastZoneishPCSRollDate:(id)arg1;
+- (void)setInvitedKeysToRemove:(id)arg1;
 - (void)setMetadataQuotaUsage:(long long)arg1;
 - (void)setNeedsZoneishPCSRolled:(bool)arg1;
 - (void)setPcsKeyID:(id)arg1;
@@ -94,12 +96,14 @@
 - (void)setProtectionData:(id)arg1;
 - (void)setProtectionEtag:(id)arg1;
 - (void)setSerializeProtectionData:(bool)arg1;
+- (void)setShare:(id)arg1;
 - (void)setZoneID:(id)arg1;
 - (void)setZoneKeyRollAllowed:(bool)arg1;
 - (void)setZonePCSLastModifierDevice:(id)arg1;
 - (void)setZonePCSModificationDate:(id)arg1;
 - (void)setZoneishKeyID:(id)arg1;
 - (void)setZoneishProtectionData:(id)arg1;
+- (id)share;
 - (id)zoneID;
 - (bool)zoneKeyRollAllowed;
 - (id)zonePCSLastModifierDevice;

@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
  */
 
-@interface MPModelLibraryRequest : MPModelRequest <MPCModelPlaybackRequesting, MPCModelRequestRTCReporting, MPModelRequestDetailedKeepLocalStatusRequesting> {
+@interface MPModelLibraryRequest : MPModelRequest <MPCModelPlaybackRequest, MPCModelRequestRTCReporting, MPModelRequestDetailedKeepLocalStatusRequesting> {
     NSArray * _allowedItemIdentifiers;
     NSArray * _allowedSectionIdentifiers;
     struct _NSRange { 
@@ -25,9 +25,9 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) MPMediaQuery *legacyMediaQuery;
 @property (nonatomic, retain) MPMediaLibrary *mediaLibrary;
-@property (nonatomic, readonly) MPSectionedCollection *playbackSourceModelObjects;
 @property (nonatomic, readonly, copy) NSString *rtcReportingPlayQueueSourceIdentifier;
 @property (nonatomic, copy) NSArray *scopedContainers;
+@property (nonatomic) bool shouldBatchResultsWithPlaceholderObjects;
 @property (readonly) Class superclass;
 @property (nonatomic) bool wantsDetailedKeepLocalRequestableResponse;
 
@@ -64,7 +64,5 @@
 // Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
 
 - (id)rtcReportingPlayQueueSourceIdentifier;
-- (void)setShouldExcludeNonShuffleItems:(bool)arg1;
-- (bool)shouldExcludeNonShuffleItems;
 
 @end

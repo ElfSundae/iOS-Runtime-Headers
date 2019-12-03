@@ -7,6 +7,7 @@
     UILabel * _detailLabel;
 }
 
+@property (nonatomic, copy) NSString *groupName;
 @property (nonatomic, copy) NSString *subtitle;
 @property (nonatomic, copy) NSString *title;
 
@@ -15,9 +16,13 @@
 
 - (void).cxx_destruct;
 - (void)_fontSizeDidChange;
+- (id)_traitCollectionAdjustedIfNeeded;
+- (void)_updateLabelFonts;
+- (id)groupName;
 - (id)init;
 - (id)initWithReuseIdentifier:(id)arg1;
 - (void)layoutSubviews;
+- (void)setGroupName:(id)arg1;
 - (void)setSubtitle:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (id)subtitle;

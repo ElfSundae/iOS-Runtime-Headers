@@ -14,13 +14,23 @@
 - (double)lastSuccessfulKeepAliveInterval;
 - (double)maximumKeepAliveInterval;
 - (bool)minimumIntervalFallbackEnabled;
+- (double)minimumIntervalFallbackStateTimeout;
 - (double)minimumKeepAliveInterval;
 - (void)processNextAction:(int)arg1;
+- (double)serverStatsExpectedKeepAliveInterval;
+- (double)serverStatsMaxKeepAliveInterval;
+- (double)serverStatsMinKeepAliveInterval;
 - (void)setIsServerOriginatedKeepAlive:(bool)arg1;
 - (void)setLastSuccessfulKeepAliveInterval:(double)arg1;
 - (void)setMaximumKeepAliveInterval:(double)arg1;
 - (void)setMinimumIntervalFallbackEnabled:(bool)arg1;
+- (void)setMinimumIntervalFallbackStateTimeout:(double)arg1;
 - (void)setMinimumKeepAliveInterval:(double)arg1;
+- (void)setServerStatsExpectedKeepAliveInterval:(double)arg1;
+- (void)setServerStatsMaxKeepAliveInterval:(double)arg1;
+- (void)setServerStatsMinKeepAliveInterval:(double)arg1;
+- (void)setUsingServerStatsAggressively:(bool)arg1;
 - (bool)useIntervalIfImprovement:(double)arg1;
+- (bool)usingServerStatsAggressively;
 
 @end

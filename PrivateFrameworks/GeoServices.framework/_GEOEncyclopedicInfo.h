@@ -12,6 +12,7 @@
 @property (nonatomic, readonly) GEOMapItemAttribution *encyclopedicAttribution;
 @property (nonatomic, readonly) NSArray *factoids;
 @property (nonatomic, readonly) bool hasPairOfFactoids;
+@property (nonatomic, readonly) bool hasStandAloneFactoids;
 @property (nonatomic, readonly) bool hasTextBlock;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
@@ -22,6 +23,7 @@
 - (id)encyclopedicAttribution;
 - (id)factoids;
 - (bool)hasPairOfFactoids;
+- (bool)hasStandAloneFactoids;
 - (bool)hasTextBlock;
 - (id)initWithPlaceData:(id)arg1 attributionMap:(id)arg2;
 - (id)textBlockText;

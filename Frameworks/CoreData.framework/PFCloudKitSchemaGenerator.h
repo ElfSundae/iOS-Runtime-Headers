@@ -8,8 +8,8 @@
     NSManagedObjectContext * _managedObjectContext;
     NSCloudKitMirroringDelegateOptions * _mirroringOptions;
     NSManagedObjectModel * _model;
+    CKRecordZone * _recordZone;
     NSPersistentStore * _store;
-    CKRecordZone * _zone;
 }
 
 @property (nonatomic, readonly) NSString *configurationName;
@@ -17,10 +17,10 @@
 @property (nonatomic, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, readonly) NSCloudKitMirroringDelegateOptions *mirroringOptions;
 @property (nonatomic, readonly) NSManagedObjectModel *model;
+@property (nonatomic, readonly) CKRecordZone *recordZone;
 @property (nonatomic, readonly) NSPersistentStore *store;
-@property (nonatomic, readonly) CKRecordZone *zone;
 
-+ (id)newRepresentativeRecordForStaticFieldsInEntity:(id)arg1;
++ (id)newRepresentativeRecordForStaticFieldsInEntity:(id)arg1 inZoneWithID:(id)arg2;
 + (id)representativeValueFor:(id)arg1;
 
 - (void).cxx_destruct;
@@ -32,11 +32,11 @@
 - (id)managedObjectContext;
 - (id)mirroringOptions;
 - (id)model;
-- (id)newRepresentativeRecords;
+- (id)newRepresentativeRecords:(id*)arg1;
 - (void)populateRelationshipsOnObject:(id)arg1 withCache:(id)arg2;
 - (void)populateValuesOnObject:(id)arg1;
+- (id)recordZone;
 - (id)representativeObjectForEntity:(id)arg1 withManagedObjectContext:(id)arg2 cache:(id)arg3 populate:(bool)arg4;
 - (id)store;
-- (id)zone;
 
 @end

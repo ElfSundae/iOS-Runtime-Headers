@@ -59,7 +59,6 @@
     bool  _needsVideoRestart;
     long long  _networkCheckResult;
     NSMutableArray * _participants;
-    IMPair * _pendingPreemptiveRelayInitate;
     long long  _pingTestResult;
     NSDictionary * _pingTestResults;
     struct CGSize { 
@@ -86,9 +85,9 @@
 @property (setter=_setConnectionStarted:, nonatomic) bool _connectionStarted;
 @property (setter=_setConnectionType:, nonatomic) int _connectionType;
 @property (nonatomic, readonly) NSNumber *_currentNatType;
-@property (readonly, retain) NSDictionary *_extraServerContext;
+@property (readonly) NSDictionary *_extraServerContext;
 @property (setter=_setFrontCameraCaptureTime:, nonatomic, retain) NSNumber *_frontCameraCaptureTime;
-@property (nonatomic, readonly, retain) NSArray *_imHandles;
+@property (nonatomic, readonly) NSArray *_imHandles;
 @property (setter=_setInterruptionBegan:, nonatomic, retain) NSDate *_interruptionBegan;
 @property (setter=_setIsAudioInterrupted:, nonatomic) bool _isAudioInterrupted;
 @property (nonatomic, readonly) bool _isProxy;
@@ -105,7 +104,7 @@
 @property (nonatomic, readonly) NSNumber *_remoteNatType;
 @property (setter=_setRemoteNetworkConnectionType:, nonatomic) unsigned long long _remoteNetworkConnectionType;
 @property (nonatomic, readonly) bool _usesRelay;
-@property (nonatomic, readonly, retain) IMAccount *account;
+@property (nonatomic, readonly) IMAccount *account;
 @property (setter=_setAirplaneModeEnabled:, nonatomic) bool airplaneModeEnabled;
 @property (setter=_setCallerProperties:, nonatomic, retain) NSDictionary *callerProperties;
 @property (nonatomic) unsigned int cameraOrientation;
@@ -116,9 +115,9 @@
 @property (setter=setDataDownloaded:, nonatomic, retain) NSNumber *dataDownloaded;
 @property (setter=setDataRate:, nonatomic, retain) NSNumber *dataRate;
 @property (setter=setDataUploaded:, nonatomic, retain) NSNumber *dataUploaded;
-@property (nonatomic, readonly, retain) NSDate *dateConnected;
-@property (nonatomic, readonly, retain) NSDate *dateCreated;
-@property (nonatomic, readonly, retain) NSDate *dateEnded;
+@property (nonatomic, readonly) NSDate *dateConnected;
+@property (nonatomic, readonly) NSDate *dateCreated;
+@property (nonatomic, readonly) NSDate *dateEnded;
 @property (nonatomic, readonly) bool didRemoteMute;
 @property (setter=_setDidRemoteMute:, nonatomic) bool didRemoteMute;
 @property (nonatomic, readonly) bool didRemotePause;
@@ -127,8 +126,8 @@
 @property (nonatomic, readonly) unsigned int endedReason;
 @property (setter=_setFirstFrameTimeoutTimer:, nonatomic, retain) NSTimer *firstFrameTimeoutTimer;
 @property (nonatomic, readonly) bool hasReceivedFirstFrame;
-@property (nonatomic, readonly, retain) IMHandle *initiatorIMHandle;
-@property (nonatomic, readonly, retain) IMAVChatParticipant *initiatorParticipant;
+@property (nonatomic, readonly) IMHandle *initiatorIMHandle;
+@property (nonatomic, readonly) IMAVChatParticipant *initiatorParticipant;
 @property (nonatomic) double invitationTimeoutTime;
 @property (setter=_setInviteTimeoutTimer:, nonatomic, retain) NSTimer *inviteTimeoutTimer;
 @property (setter=_setInviteTimeoutTimerStart:, nonatomic, retain) NSDate *inviteTimeoutTimerStart;
@@ -143,16 +142,16 @@
 @property (nonatomic, readonly) bool isUsingWifi;
 @property (nonatomic, readonly) bool isVideo;
 @property (setter=_setLandscapeAspectRatios:, nonatomic) struct CGSize { double x1; double x2; } landscapeAspectRatios;
-@property (nonatomic, readonly, retain) IMAVChatParticipant *localParticipant;
+@property (nonatomic, readonly) IMAVChatParticipant *localParticipant;
 @property (nonatomic) void*localVideoBackLayer;
 @property (nonatomic) void*localVideoLayer;
 @property (nonatomic) bool mayRequireBreakBeforeMake;
 @property (setter=_setMetadataFinalized:, nonatomic) bool metadataFinalized;
-@property (nonatomic, readonly, retain) IMHandle *otherIMHandle;
-@property (nonatomic, readonly, retain) NSArray *participants;
+@property (nonatomic, readonly) IMHandle *otherIMHandle;
+@property (nonatomic, readonly) NSArray *participants;
 @property (setter=_setPortraitAspectRatios:, nonatomic) struct CGSize { double x1; double x2; } portraitAspectRatios;
 @property (getter=isRelayed, nonatomic) bool relayed;
-@property (nonatomic, readonly, retain) NSArray *remoteParticipants;
+@property (nonatomic, readonly) NSArray *remoteParticipants;
 @property (nonatomic, readonly) unsigned int sessionID;
 @property (nonatomic, readonly) unsigned int state;
 @property (getter=isTerminating, setter=_setTerminating:, nonatomic) bool terminating;
@@ -196,6 +195,7 @@
 + (void)setDefaultInvitationTimeoutTime:(double)arg1;
 + (int)systemSupportsNewOutgoingConferenceTo:(id)arg1 isVideo:(bool)arg2;
 
+- (void).cxx_destruct;
 - (id)GUID;
 - (void)__responseToVCInvite:(id)arg1;
 - (void)__sendEndCallMetricToAWDWithReason:(unsigned int)arg1 andError:(int)arg2;

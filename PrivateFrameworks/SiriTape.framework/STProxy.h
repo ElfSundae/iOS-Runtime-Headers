@@ -3,6 +3,7 @@
  */
 
 @interface STProxy : NSObject {
+    <STAceObjectHandler> * _aceObjectHandler;
     bool  _autoExit;
     NSString * _previousAccountIdentifier;
     STProxySocketDelegate * _proxySocketDelegate;
@@ -15,6 +16,7 @@
     bool  _useSpeechLogs;
 }
 
+@property (nonatomic, retain) <STAceObjectHandler> *aceObjectHandler;
 @property (nonatomic, retain) NSString *previousAccountIdentifier;
 
 + (id)sharedServer;
@@ -22,7 +24,8 @@
 - (void).cxx_destruct;
 - (void)_loadSpeechLogsFromURL:(id)arg1;
 - (void)_sendNextSpeechRequest;
-- (void)_startProxyWithActiveServerURL:(id)arg1 isRecording:(bool)arg2 replayFileURL:(id)arg3;
+- (void)_startProxyWithActiveServerURL:(id)arg1 handler:(id)arg2 replayFileURL:(id)arg3;
+- (id)aceObjectHandler;
 - (void)addObserverActionForType:(long long)arg1 withBlock:(id /* block */)arg2;
 - (void)addReplayCompletion:(id /* block */)arg1;
 - (void)dealloc;
@@ -31,10 +34,12 @@
 - (id)init;
 - (void)observeAndLogClientFlowPerformanceMetrics;
 - (id)previousAccountIdentifier;
+- (void)setAceObjectHandler:(id)arg1;
 - (void)setPreviousAccountIdentifier:(id)arg1;
+- (void)startProxyRecordingWithActiveServerURL:(id)arg1;
 - (void)startProxyServerWithReplayFileURL:(id)arg1;
 - (void)startProxyServerWithReplayFileURL:(id)arg1 speechLogURL:(id)arg2;
-- (void)startProxyWithActiveServerURL:(id)arg1 isRecording:(bool)arg2;
+- (void)startProxyWithActiveServerURL:(id)arg1 handler:(id)arg2;
 - (void)updateLocalScriptsForReplayFile:(id)arg1 withCompletion:(id /* block */)arg2;
 
 @end

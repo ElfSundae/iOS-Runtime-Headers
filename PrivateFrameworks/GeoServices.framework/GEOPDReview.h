@@ -4,9 +4,26 @@
 
 @interface GEOPDReview : PBCodable <NSCopying> {
     struct { 
-        unsigned int reviewTime : 1; 
-    }  _has;
+        unsigned int has_reviewTime : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_rating : 1; 
+        unsigned int read_reviewId : 1; 
+        unsigned int read_reviewer : 1; 
+        unsigned int read_snippets : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_rating : 1; 
+        unsigned int wrote_reviewId : 1; 
+        unsigned int wrote_reviewTime : 1; 
+        unsigned int wrote_reviewer : 1; 
+        unsigned int wrote_snippets : 1; 
+    }  _flags;
     GEOPDRating * _rating;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     NSString * _reviewId;
     double  _reviewTime;
     GEOPDUser * _reviewer;
@@ -25,14 +42,21 @@
 @property (nonatomic, retain) NSMutableArray *snippets;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
 + (id)reviewsForPlaceData:(id)arg1;
 + (Class)snippetType;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsSnippet:(id)arg1;
 - (id)_bestSnippet;
 - (id)_bestSnippetLocale;
+- (void)_readRating;
+- (void)_readReviewId;
+- (void)_readReviewer;
+- (void)_readSnippets;
 - (void)addSnippet:(id)arg1;
 - (void)clearSnippets;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -42,9 +66,12 @@
 - (bool)hasReviewTime;
 - (bool)hasReviewer;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)rating;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)reviewId;
 - (double)reviewTime;

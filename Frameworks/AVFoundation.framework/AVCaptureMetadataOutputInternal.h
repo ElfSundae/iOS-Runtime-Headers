@@ -3,14 +3,12 @@
  */
 
 @interface AVCaptureMetadataOutputInternal : NSObject {
-    AVWeakReferencingDelegateStorage * delegateOverrideStorage;
-    AVWeakReferencingDelegateStorage * delegateStorage;
+    AVCaptureDataOutputDelegateCallbackHelper * delegateCallbackHelper;
+    long long  faceTrackingMaxFaces;
     bool  faceTrackingMetadataObjectTypesAvailable;
-    struct localQueueOpaque { } * localQueue;
+    bool  faceTrackingUsesFaceRecognition;
     NSArray * metadataObjectTypes;
-    NSObject<OS_dispatch_queue> * objectQueue;
     bool  offlineVideoStabilizationMotionMetadataObjectTypesAvailable;
-    struct OpaqueFigSimpleMutex { } * queueMutex;
     struct CGRect { 
         struct CGPoint { 
             double x; 
@@ -21,7 +19,6 @@
             double height; 
         } size; 
     }  rectOfInterest;
-    struct remoteQueueReceiverOpaque { } * remoteQueueReceiver;
     AVWeakReference * weakReference;
 }
 

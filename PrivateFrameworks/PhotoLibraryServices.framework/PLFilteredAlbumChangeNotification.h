@@ -20,12 +20,12 @@
 
 + (id)notificationForDerivedObject:(id)arg1 priorChangeState:(id)arg2 forBackingObjectNotification:(id)arg3;
 
+- (void).cxx_destruct;
 - (id)_changedObjects;
 - (id)_diffDescription;
 - (bool)_getOldSet:(id*)arg1 newSet:(id*)arg2;
 - (id)album;
 - (bool)countDidChange;
-- (void)dealloc;
 - (id)description;
 - (id)filteredIndexes;
 - (id)indexMapper;

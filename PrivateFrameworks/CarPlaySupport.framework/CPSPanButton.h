@@ -3,27 +3,28 @@
  */
 
 @interface CPSPanButton : UIButton <UIGestureRecognizerDelegate> {
-    CALayer * _backgroundLayer;
+    UIView * _backgroundView;
     long long  _direction;
 }
 
-@property (nonatomic, retain) CALayer *backgroundLayer;
+@property (nonatomic, retain) UIView *backgroundView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) long long direction;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)_backgroundColor;
-+ (id)_focusedBackgroundColor;
++ (id)dynamicBackgroundColor;
 
 - (void).cxx_destruct;
-- (id)backgroundLayer;
+- (void)_setupPanImages;
+- (void)_updateColors;
+- (id)backgroundView;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (long long)direction;
 - (id)initWithDirection:(long long)arg1;
 - (void)layoutSubviews;
-- (void)setBackgroundLayer:(id)arg1;
+- (void)setBackgroundView:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 
 @end

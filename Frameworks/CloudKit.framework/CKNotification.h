@@ -16,6 +16,7 @@
     long long  _notificationType;
     NSString * _soundName;
     NSString * _subscriptionID;
+    CKRecordID * _subscriptionOwnerUserRecordID;
     NSString * _subtitle;
     NSArray * _subtitleLocalizationArgs;
     NSString * _subtitleLocalizationKey;
@@ -37,6 +38,7 @@
 @property (nonatomic) long long notificationType;
 @property (nonatomic, copy) NSString *soundName;
 @property (nonatomic, copy) NSString *subscriptionID;
+@property (nonatomic, copy) CKRecordID *subscriptionOwnerUserRecordID;
 @property (nonatomic, copy) NSString *subtitle;
 @property (nonatomic, copy) NSArray *subtitleLocalizationArgs;
 @property (nonatomic, copy) NSString *subtitleLocalizationKey;
@@ -81,6 +83,7 @@
 - (void)setNotificationType:(long long)arg1;
 - (void)setSoundName:(id)arg1;
 - (void)setSubscriptionID:(id)arg1;
+- (void)setSubscriptionOwnerUserRecordID:(id)arg1;
 - (void)setSubtitle:(id)arg1;
 - (void)setSubtitleLocalizationArgs:(id)arg1;
 - (void)setSubtitleLocalizationKey:(id)arg1;
@@ -89,6 +92,7 @@
 - (void)setTitleLocalizationKey:(id)arg1;
 - (id)soundName;
 - (id)subscriptionID;
+- (id)subscriptionOwnerUserRecordID;
 - (id)subtitle;
 - (id)subtitleLocalizationArgs;
 - (id)subtitleLocalizationKey;

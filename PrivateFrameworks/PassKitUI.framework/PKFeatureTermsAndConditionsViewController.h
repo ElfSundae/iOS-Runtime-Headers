@@ -33,6 +33,7 @@
 - (void)_showTermsSpinner:(bool)arg1 objectModel:(id)arg2;
 - (long long)context;
 - (void)dismissViewControllerWithCompletion:(id /* block */)arg1;
+- (id)displayTitle;
 - (void)htmlTermsDataWithCompletion:(id /* block */)arg1;
 - (id)initWithSetupDelegate:(id)arg1 context:(long long)arg2;
 - (void)initalTermsDataWithCompletion:(id /* block */)arg1;

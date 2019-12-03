@@ -9,7 +9,6 @@
     NSDictionary * _edgeSets;
     NSNumber * _enabled;
     bool  _ignoreInvalidCerts;
-    unsigned int  _lastFailureReason;
     NSNumber * _persistMetrics;
     NSDate * _resurrectionDate;
     NSNumber * _timestamp;
@@ -33,7 +32,6 @@
 @property (copy) NSNumber *enabled;
 @property bool ignoreInvalidCerts;
 @property (readonly) bool isDead;
-@property unsigned int lastFailureReason;
 @property (copy) NSNumber *persistMetrics;
 @property (copy) NSDate *resurrectionDate;
 @property (readonly) NSNumber *timestamp;
@@ -65,16 +63,16 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateEdgeSetsWithBlock:(id /* block */)arg1;
 - (bool)evaluateEnableRatios;
-- (id)getCurrentOnRampForAppRule:(id)arg1;
+- (id)getCurrentKeyBagForAppRule:(id)arg1;
 - (id)getEdgeSetForAppRule:(id)arg1;
 - (id)getEdgeSetForSigningIdentifier:(id)arg1;
 - (bool)ignoreInvalidCerts;
+- (void)incrementSessionCountersOnFirstLaunch;
 - (id)initFromKeychain;
 - (id)initFromTLVs:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTimestamp:(id)arg1 fromDictionary:(id)arg2 waldoSource:(long long)arg3;
 - (bool)isDead;
-- (unsigned int)lastFailureReason;
 - (id)loadBuiltinAppRulesFromDisk;
 - (void)merge:(id)arg1;
 - (id)persistMetrics;
@@ -87,7 +85,6 @@
 - (void)setEdgeSets:(id)arg1;
 - (void)setEnabled:(id)arg1;
 - (void)setIgnoreInvalidCerts:(bool)arg1;
-- (void)setLastFailureReason:(unsigned int)arg1;
 - (void)setPersistMetrics:(id)arg1;
 - (void)setResurrectionDate:(id)arg1;
 - (void)setWaldoEnabled:(id)arg1;

@@ -9,6 +9,7 @@
 
 @optional
 
+- (bool)isCarPlayCanvasActive;
 - (void)templateDidAppear:(CPTemplate *)arg1 animated:(bool)arg2;
 - (void)templateDidDisappear:(CPTemplate *)arg1 animated:(bool)arg2;
 - (void)templateDidDismiss:(CPTemplate *)arg1;

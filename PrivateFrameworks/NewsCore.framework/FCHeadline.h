@@ -11,6 +11,7 @@
     long long  _backendArticleVersion;
     NSData * _backingArticleRecordData;
     NSArray * _blockedStorefrontIDs;
+    long long  _bodyTextLength;
     bool  _boundToContext;
     bool  _bundlePaid;
     NSString * _callToActionText;
@@ -99,6 +100,7 @@
     unsigned long long  _topStoryType;
     NSArray * _topicIDs;
     NSArray * _topics;
+    bool  _useTransparentNavigationBar;
     bool  _usesImageOnTopLayout;
     NSString * _videoCallToActionTitle;
     NSURL * _videoCallToActionURL;
@@ -116,6 +118,7 @@
 @property (nonatomic, readonly) long long backendArticleVersion;
 @property (nonatomic, readonly) NSData *backingArticleRecordData;
 @property (nonatomic, readonly, copy) NSArray *blockedStorefrontIDs;
+@property (nonatomic, readonly) long long bodyTextLength;
 @property (getter=isBoundToContext, nonatomic, readonly) bool boundToContext;
 @property (getter=isBundlePaid, nonatomic) bool bundlePaid;
 @property (nonatomic, copy) NSString *callToActionText;
@@ -154,6 +157,7 @@
 @property (nonatomic, copy) NSString *identifier;
 @property (nonatomic, readonly) bool isBlockedExplicitContent;
 @property (nonatomic, readonly) bool isDraft;
+@property (nonatomic, readonly) bool isFeatured;
 @property (nonatomic, readonly) bool isLocalDraft;
 @property (nonatomic, readonly) bool isTopStory;
 @property (getter=isIssueOnly, nonatomic, readonly) bool issueOnly;
@@ -217,6 +221,7 @@
 @property (nonatomic) unsigned long long topStoryType;
 @property (nonatomic, copy) NSArray *topicIDs;
 @property (nonatomic, readonly, copy) NSArray *topics;
+@property (nonatomic, readonly) bool useTransparentNavigationBar;
 @property (nonatomic) bool usesImageOnTopLayout;
 @property (nonatomic, readonly, copy) NSString *versionIdentifier;
 @property (nonatomic, readonly, copy) NSString *videoCallToActionTitle;
@@ -240,6 +245,7 @@
 - (long long)backendArticleVersion;
 - (id)backingArticleRecordData;
 - (id)blockedStorefrontIDs;
+- (long long)bodyTextLength;
 - (id)callToActionText;
 - (bool)canBePurchased;
 - (id)clusterID;
@@ -392,6 +398,7 @@
 - (unsigned long long)topStoryType;
 - (id)topicIDs;
 - (id)topics;
+- (bool)useTransparentNavigationBar;
 - (bool)usesImageOnTopLayout;
 - (id)versionIdentifier;
 - (id)videoCallToActionTitle;

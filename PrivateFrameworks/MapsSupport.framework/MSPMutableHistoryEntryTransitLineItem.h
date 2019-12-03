@@ -9,6 +9,8 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) <GEOTransitLineItem> *lineItem;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) bool tracksRAPReportingOnly;
+@property (nonatomic, readonly, copy) NSDate *usageDate;
 
 + (Class)immutableObjectClass;
 + (id)immutableObjectProtocol;

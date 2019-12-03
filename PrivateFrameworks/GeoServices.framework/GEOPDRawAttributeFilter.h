@@ -10,11 +10,13 @@
 @property (nonatomic, retain) NSMutableArray *keys;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
 + (Class)keyType;
 
 - (void).cxx_destruct;
 - (void)addKey:(id)arg1;
 - (void)clearKeys;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -25,6 +27,7 @@
 - (id)keys;
 - (unsigned long long)keysCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setKeys:(id)arg1;
 - (id)unknownFields;

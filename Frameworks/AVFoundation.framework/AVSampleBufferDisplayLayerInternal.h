@@ -24,15 +24,27 @@
     NSMutableArray * flushCallbacks;
     bool  isRequestingMediaData;
     AVMediaDataRequester * mediaDataRequester;
+    struct { 
+        long long value; 
+        int timescale; 
+        unsigned int flags; 
+        long long epoch; 
+    }  minimumUpcomingPTS;
     bool  outputObscured;
+    id /* block */  pendingPrerollCompleteCallback;
+    int  pendingPrerollRequestID;
     struct CGSize { 
         double width; 
         double height; 
     }  presentationSize;
+    bool  preventsDisplaySleepDuringVideoPlayback;
+    NSObject<OS_dispatch_queue> * queueForCallingPrerollCompleteCallback;
+    NSObject<OS_dispatch_queue> * queueForProtectingPrerollCompleteCallback;
     struct OpaqueCMTimebase { } * readOnlyRenderingTimebase;
     struct OpaqueCMTimebase { } * readOnlyVideoQueueTimebase;
     NSObject<OS_dispatch_queue> * serialQueue;
     long long  status;
+    int  upcomingPTSExpectation;
     NSString * videoGravity;
     struct OpaqueFigVideoQueue { } * videoQueue;
     AVWeakReference * weakReferenceToSelf;

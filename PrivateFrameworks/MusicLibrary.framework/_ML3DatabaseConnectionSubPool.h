@@ -29,6 +29,7 @@
 - (void).cxx_destruct;
 - (void)_handleDatabaseDeletion;
 - (void)checkInConnection:(id)arg1;
+- (void)checkInConnection:(id)arg1 returnToPool:(bool)arg2;
 - (id)checkoutConnection:(bool*)arg1;
 - (void)closeConnectionsAndWaitForBusyConnections:(bool)arg1;
 - (unsigned long long)connectionsJournalingMode;

@@ -4,6 +4,7 @@
 
 @interface VUIPlaybackManager : NSObject <AVPlayerViewControllerDelegatePrivate, VUINowPlayingFeatureMonitorDelegate, VideosExtrasContextDelegate> {
     VUIPlayer * _activePlayer;
+    AVExternalPlaybackController * _avExternalPlaybackController;
     AVPlayerViewController * _avPlayerViewController;
     VUIPlayer * _backgroundAudioPlayer;
     long long  _dismissalOperation;
@@ -27,6 +28,7 @@
 }
 
 @property (nonatomic) VUIPlayer *activePlayer;
+@property (nonatomic, retain) AVExternalPlaybackController *avExternalPlaybackController;
 @property (nonatomic, retain) AVPlayerViewController *avPlayerViewController;
 @property (nonatomic, retain) VUIPlayer *backgroundAudioPlayer;
 @property (nonatomic, readonly) NSObject<TVPMediaItem> *currentMediaItem;
@@ -39,6 +41,7 @@
 @property (nonatomic, retain) VideosExtrasPresenter *extrasPresenter;
 @property (nonatomic, retain) VUINowPlayingFeatureMonitor *featureMonitor;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool isFullscreenPlaybackUIBeingShown;
 @property (nonatomic, readonly) bool isPIPing;
 @property (nonatomic, readonly) bool isPlaybackUIBeingShown;
 @property (nonatomic, retain) VUIVideoAdvisoryLogoImageDownloader *logoImageDownloader;
@@ -56,7 +59,6 @@
 @property (readonly) Class superclass;
 
 + (void)_performRatingAndAgeVerificationWithMediaItem:(id)arg1 presentingController:(id)arg2 completion:(id /* block */)arg3;
-+ (id)_playlistForIKMediaElements:(id)arg1 isExtrasContent:(bool)arg2;
 + (void)_presentCantPlaybackOverCellularAlertControllerWithMediaItem:(id)arg1 presentingViewController:(id)arg2 completionHandler:(id /* block */)arg3;
 + (void)_presentCellularPlaybackIsDisabledAlertControllerWithPresentingViewController:(id)arg1 completionHandler:(id /* block */)arg2;
 + (void)_presentStartingPlaybackWindowWarningWithRentalMediaItem:(id)arg1 presentingViewController:(id)arg2 completionHandler:(id /* block */)arg3;
@@ -64,14 +66,7 @@
 + (bool)_shouldWarnAboutPlaybackQualityForRentalMediaItem:(id)arg1;
 + (bool)_shouldWarnStartingRentalPlaybackWindowWithMediaItem:(id)arg1;
 + (void)_showCellularPlaybackQualityOptionsForRentalMediaItem:(id)arg1 presentingViewController:(id)arg2 completionHandler:(id /* block */)arg3;
-+ (id)_storeAuxMediaItemForIKMediaElement:(id)arg1 isExtrasContent:(bool)arg2;
-+ (id)_storeMediaItemsForAdamID:(long long)arg1 IKMediaElement:(id)arg2;
 + (void)_verifyMediaItemIsPlayableOnCellular:(id)arg1 presentingViewController:(id)arg2 completionHandler:(id /* block */)arg3;
-+ (id)mediaItemForMPMediaItem:(id)arg1;
-+ (id)playlistForIKMediaElements:(id)arg1;
-+ (id)playlistForIKPlaylistElement:(id)arg1;
-+ (id)playlistForMPMediaItems:(id)arg1;
-+ (id)playlistForVUIMediaItems:(id)arg1;
 + (void)preflightPlaybackWithMediaItem:(id)arg1 presentingViewController:(id)arg2 completionHandler:(id /* block */)arg3;
 + (id)sharedInstance;
 
@@ -84,11 +79,13 @@
 - (void)_applicationDidEnterBackground:(id)arg1;
 - (void)_applicationWillEnterForeground:(id)arg1;
 - (void)_applicationWillResignActive:(id)arg1;
+- (void)_avPlayerViewControllerPresentationDidTimeout;
 - (void)_configureStillWatchingFeatureMonitoringIfLivePlayback;
 - (void)_currentMediaItemDidChange:(id)arg1;
 - (void)_downloadRatingImageIfAvailable:(id)arg1;
+- (void)_externalPlaybackTypeDidChange:(id)arg1;
 - (void)_handleTapGesture:(id)arg1;
-- (bool)_isiPhone;
+- (void)_networkReachbilityDidChange:(id)arg1;
 - (void)_notifyAVPlayerViewControllerDisplaySize;
 - (void)_playbackErrorDidOccur:(id)arg1;
 - (void)_playbackStateDidChange:(id)arg1;
@@ -102,12 +99,13 @@
 - (void)_showTVRating:(bool)arg1 withImage:(id)arg2 animated:(bool)arg3;
 - (void)_skipButtonTapped:(id)arg1;
 - (id)_stillWatchingAlertDurationOverride;
-- (void)_updateAVPlayerViewControllerWithActiveAVPlayer;
 - (void)_updateRequiresLinearPlayback;
 - (void)_updateRollsInfoFromMainPlayersCurrentMediaItem;
+- (void)_updateStopWhenBackgroundedFeatureForApplicationState:(long long)arg1 isFullScreen:(bool)arg2;
 - (void)_updateTimeBoundFeature:(id)arg1 animated:(bool)arg2;
 - (void)_updateTimeTriggeredFeature:(id)arg1 animated:(bool)arg2;
 - (id)activePlayer;
+- (id)avExternalPlaybackController;
 - (id)avPlayerViewController;
 - (id)backgroundAudioPlayer;
 - (id)currentMediaItem;
@@ -129,6 +127,7 @@
 - (id)featureMonitor;
 - (void)featureMonitor:(id)arg1 featureDidChangeState:(id)arg2 animated:(bool)arg3;
 - (id)init;
+- (bool)isFullscreenPlaybackUIBeingShown;
 - (bool)isPIPing;
 - (bool)isPlaybackUIBeingShown;
 - (id)logoImageDownloader;
@@ -151,6 +150,7 @@
 - (bool)requiresLinearPlayback;
 - (id)routingController;
 - (void)setActivePlayer:(id)arg1;
+- (void)setAvExternalPlaybackController:(id)arg1;
 - (void)setAvPlayerViewController:(id)arg1;
 - (void)setBackgroundAudioPlayer:(id)arg1;
 - (void)setDismissalOperation:(long long)arg1;

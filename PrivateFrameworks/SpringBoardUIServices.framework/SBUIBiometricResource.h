@@ -3,27 +3,30 @@
  */
 
 @interface SBUIBiometricResource : NSObject <BSDescriptionProviding, SBFMobileKeyBagObserver, SBUIBiometricResource, _SBUIBiometricKitInterfaceDelegate> {
+    NSMutableOrderedSet * _HIDEventsOnlyFingerDetectAssertions;
     <SBUIBiometricAuthenticationPolicy> * _authPolicy;
     <SBUIBiometricAuthenticationPolicy> * _authenticationPolicy;
     _SBUIBiometricKitInterface * _biometricInterface;
     Class  _bkMatchPearlOperationClass;
     NSMutableOrderedSet * _faceDetectAssertions;
-    NSMutableOrderedSet * _fingerDetectAssertions;
     bool  _hasMesaHardware;
     bool  _hasPearlHardware;
     bool  _isAuthenticated;
+    bool  _isBackgroundFingerDetectionEnabled;
     bool  _isFaceDetectionEnabled;
-    bool  _isFingerDetectionEnabled;
     bool  _isFingerDetectionEnabledThroughHIDChannel;
+    bool  _isForegroundFingerDetectionEnabled;
     bool  _isMatchingAllowed;
     bool  _isMatchingEnabled;
     bool  _isPresenceDetectionAllowed;
     SBFMobileKeyBag * _keybag;
     unsigned long long  _lastEvent;
     NSMutableOrderedSet * _matchAssertions;
+    NSMutableOrderedSet * _normalFingerDetectAssertions;
     NSHashTable * _observers;
     MCProfileConnection * _profileConnection;
     bool  _screenIsOn;
+    bool  _shouldSendFaceOutOfViewNotification;
     bool  _shouldSendFingerOffNotification;
     NSMutableOrderedSet * _simulatedLockoutAssertions;
     SBFCredentialSet * _unlockCredentialSet;
@@ -39,6 +42,7 @@
 @property (getter=isFingerOn, nonatomic, readonly) bool fingerOn;
 @property (nonatomic, readonly) bool hasBiometricAuthenticationCapabilityEnabled;
 @property (nonatomic, readonly) bool hasEnrolledIdentities;
+@property (nonatomic, readonly) bool hasMesaSupport;
 @property (nonatomic, readonly) bool hasPearlSupport;
 @property (readonly) unsigned long long hash;
 @property (getter=_keybagInterface, setter=_setKeybagInterface:, nonatomic, retain) SBFMobileKeyBag *keybagInterface;
@@ -56,7 +60,7 @@
 - (void)_activateFingerDetectAssertion:(id)arg1;
 - (void)_activateMatchAssertion:(id)arg1;
 - (void)_addFaceDetectionWantedAssertion:(id)arg1;
-- (void)_addFingerDetectionWantedAssertion:(id)arg1;
+- (void)_addFingerDetectionWantedAssertion:(id)arg1 HIDEventsOnly:(bool)arg2;
 - (void)_addMatchingAssertion:(id)arg1;
 - (void)_addSimulatedLockoutAssertion:(id)arg1;
 - (id)_biometricKitInterface;
@@ -64,6 +68,7 @@
 - (void)_deactivateAllPearlAssertions;
 - (void)_deactivateAssertion:(id)arg1;
 - (void)_deviceWillWake;
+- (void)_forceBioLockout;
 - (id)_keybagInterface;
 - (void)_matchingAllowedStateMayHaveChangedForReason:(id)arg1;
 - (void)_notifyObserversOfEvent:(unsigned long long)arg1;
@@ -76,7 +81,7 @@
 - (void)_reevaluateFingerDetection;
 - (void)_reevaluateMatching;
 - (void)_removeFaceDetectionWantedAssertion:(id)arg1;
-- (void)_removeFingerDetectionWantedAssertion:(id)arg1;
+- (void)_removeFingerDetectionWantedAssertion:(id)arg1 HIDEventsOnly:(bool)arg2;
 - (void)_removeMatchingAssertion:(id)arg1;
 - (void)_removeSimulatedLockoutAssertion:(id)arg1;
 - (void)_setAuthenticated:(bool)arg1;
@@ -86,6 +91,7 @@
 - (void)_updateHandlersForEvent:(unsigned long long)arg1;
 - (id)acquireFaceDetectionWantedAssertionForReason:(id)arg1;
 - (id)acquireFingerDetectionWantedAssertionForReason:(id)arg1;
+- (id)acquireFingerDetectionWantedAssertionForReason:(id)arg1 HIDEventsOnly:(bool)arg2;
 - (id)acquireMatchingAssertionWithMode:(unsigned long long)arg1 reason:(id)arg2;
 - (id)acquireSimulatedLockoutAssertionWithLockoutState:(unsigned long long)arg1 forReason:(id)arg2;
 - (void)addObserver:(id)arg1;
@@ -99,6 +105,7 @@
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (bool)hasBiometricAuthenticationCapabilityEnabled;
 - (bool)hasEnrolledIdentities;
+- (bool)hasMesaSupport;
 - (bool)hasPearlSupport;
 - (id)init;
 - (id)initWithBiometricKitInterface:(id)arg1;

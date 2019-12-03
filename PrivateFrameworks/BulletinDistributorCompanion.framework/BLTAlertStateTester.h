@@ -10,8 +10,9 @@
 
 - (void).cxx_destruct;
 - (unsigned long long)_blockingReasonForSectionInfo:(id)arg1;
+- (bool)isScreenTimeBlockedForBundleIdentifier:(id)arg1;
 - (id /* block */)sectionInfoRetriever;
 - (void)setSectionInfoRetriever:(id /* block */)arg1;
-- (unsigned long long)willNanoPresentNotificationForSectionInfo:(id)arg1 subsectionIDs:(id)arg2 isWristDetectDisabled:(bool)arg3 hasSectionIDOptedOutOfCoordination:(bool)arg4;
+- (unsigned long long)willNanoPresentNotificationForSectionInfo:(id)arg1 subsectionIDs:(id)arg2 isWristDetectDisabled:(bool)arg3 hasSectionIDOptedOutOfCoordination:(bool)arg4 hasSectionIDOptedForwardOnly:(bool)arg5;
 
 @end

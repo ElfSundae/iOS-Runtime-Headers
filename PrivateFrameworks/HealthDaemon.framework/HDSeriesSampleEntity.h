@@ -11,7 +11,7 @@
 
 + (long long)_insertionEra;
 + (id)additionalPredicateForEnumeration;
-+ (const struct { id x1; unsigned char x2; }*)columnDefinitionsWithCount:(unsigned long long*)arg1;
++ (const struct { id x1; id x2; unsigned char x3; }*)columnDefinitionsWithCount:(unsigned long long*)arg1;
 + (id)databaseTable;
 + (bool)deleteSeriesWithID:(id)arg1 deleteHFDData:(bool)arg2 insertDeletedObject:(bool)arg3 profile:(id)arg4 database:(id)arg5 error:(id*)arg6;
 + (id)entityEncoderForProfile:(id)arg1 database:(id)arg2 purpose:(long long)arg3 authorizationFilter:(id /* block */)arg4;

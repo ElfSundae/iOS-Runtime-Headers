@@ -2,32 +2,20 @@
    Image: /System/Library/PrivateFrameworks/WelcomeKitCore.framework/WelcomeKitCore
  */
 
-@interface WLMigrator : NSObject <WLDataMigratorProtocol, WLMigrationWebServiceDelegate> {
-    WLDeviceAuthentication * _auth;
+@interface WLMigrator : NSObject <WLDataMigratorProtocol, WLMigrationDataCoordinatorDelegate> {
     NSString * _connectionKey;
-    unsigned long long  _dataTypes;
-    <WLDataMigrationDelegate> * _delegate;
-    double  _lastProgressSentToAndroidDevice;
-    NSMutableArray * _migrators;
-    double  _progress;
-    NSLock * _progressLock;
-    NSString * _progressString;
-    WLProgressWebService * _progressWebService;
-    bool  _shouldSendProgressToDevice;
-    WLSourceDevice * _sourceDevice;
 }
 
-@property (nonatomic, readonly) WLDeviceAuthentication *auth;
 @property (nonatomic, readonly) NSString *connectionKey;
-@property (nonatomic, readonly) unsigned long long dataTypes;
-@property (nonatomic, retain) <WLDataMigrationDelegate> *delegate;
-@property (nonatomic, readonly, retain) WLSourceDevice *sourceDevice;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)_aggdStringForContentTypeToStatsMap:(id)arg1 aggregateStatistics:(id)arg2 metadata:(id)arg3 allowAllFields:(bool)arg4;
-+ (id)_aggdStringForStatistics:(id)arg1 allowAllFields:(bool)arg2;
++ (id)_aggdStringForStatistics:(id)arg1 allowAllFields:(bool)arg2 confirmSelected:(bool)arg3;
 + (unsigned long long)_bucketedUnsignedInteger:(unsigned long long)arg1;
 + (unsigned long long)_bytesFreeOnDevice;
-+ (void)_cleanUpAfterFinalizeMigratableAppsWithCompletion:(id /* block */)arg1;
 + (id)_dataTypesAndSizesXMLDataFromMap:(id)arg1;
 + (id)_deviceType;
 + (void)_parseDataTypesXMLData:(id)arg1 completion:(id /* block */)arg2;
@@ -37,40 +25,38 @@
 + (id)_systemVersion;
 + (id)_unselectedContentTypeAggdString;
 + (id)_unsupportedContentTypeAggdString;
-+ (void)finalizeMigratableAppsWithCompletion:(id /* block */)arg1;
++ (void)setStashDataLocally:(bool)arg1;
++ (bool)stashDataLocally;
 
 - (void).cxx_destruct;
-- (void)_deleteDownloadsPath;
-- (id)_downloadData;
-- (id)_fetchAccountsAndSummaries;
-- (id)_importData;
-- (void)_incrementProgressBy:(double)arg1;
-- (void)_logMigratorAndAggregateStatistics:(id)arg1 metadata:(id)arg2;
-- (void)_performMigration;
-- (double)_progressIncrementForImportedSummary:(id)arg1 summaries:(id)arg2 accounts:(id)arg3 migrator:(id)arg4;
-- (id)_selectDataTypes;
-- (void)_selectFromDataTypeToSizeMap:(id)arg1 completion:(id /* block */)arg2;
-- (void)_setProgressTo:(double)arg1 string:(id)arg2;
-- (void)_setProgressToSegmentsDownloaded:(unsigned long long)arg1 ofExpectedSegments:(unsigned long long)arg2;
-- (bool)_shouldDelayBetweenMigrationSteps;
+- (void)_cleanUpAfterFinalizeMigratableAppsWithSQLController:(id)arg1 completion:(id /* block */)arg2;
+- (void)_deleteDownloadsPath:(id)arg1;
+- (void)_didFinishDownloadingSegmentOfSize:(unsigned long long)arg1 expectedSize:(unsigned long long)arg2 migratorEstimatesItemSizes:(bool)arg3 endDate:(id)arg4 context:(id)arg5;
+- (id)_downloadDataWithContext:(id)arg1;
+- (id)_fetchAccountsAndSummariesWithContext:(id)arg1;
+- (void)_finishMigrationWithError:(id)arg1 context:(id)arg2 completion:(id /* block */)arg3;
+- (id)_importDataWithContext:(id)arg1;
+- (void)_incrementProgressBy:(double)arg1 context:(id)arg2;
+- (void)_logMigratorAndAggregateStatisticsWithContext:(id)arg1;
+- (void)_prepareMetadata:(id)arg1 usingRetryPolicies:(bool)arg2 allowContinuationFromAnotherDevice:(bool)arg3;
+- (double)_progressIncrementForImportedSummary:(id)arg1 summaries:(id)arg2 accounts:(id)arg3 migrators:(id)arg4;
+- (void)_reportTimeEstimatesWithContext:(id)arg1;
+- (id)_selectDataTypesWithContext:(id)arg1;
+- (void)_selectFromDataTypeToSizeMap:(id)arg1 device:(id)arg2 completion:(id /* block */)arg3;
+- (void)_setProgressTo:(double)arg1 context:(id)arg2;
+- (bool)_shouldForceDownloadError;
 - (bool)_shouldTerminateMigrationOnError;
-- (void)_updateProgressOnAndroidDevice_progressLocked;
-- (id)auth;
-- (void)cancelMigrationWithReply:(id /* block */)arg1;
+- (void)_startMigrationWithSourceDevice:(id)arg1 usingRetryPolicies:(bool)arg2 delegate:(id)arg3 remoteDeviceDataSource:(id)arg4 dataCoordinatorDelegate:(id)arg5 didFinishMigrationContextSetupBlock:(id /* block */)arg6 completion:(id /* block */)arg7;
+- (void)_updateSourceWithProgress:(double)arg1 context:(id)arg2 completion:(id /* block */)arg3;
 - (void)connectionDidEnd;
 - (id)connectionKey;
-- (unsigned long long)dataTypes;
+- (id)databaseParentPathForMigrationDataCoordinator:(id)arg1 sqlController:(id)arg2;
 - (void)dealloc;
-- (id)delegate;
-- (id)downloadsPath;
+- (id)downloadsParentPathForMigrationDataCoordinator:(id)arg1;
+- (void)finalizeMigratableAppsWithCompletion:(id /* block */)arg1;
 - (id)init;
-- (id)initWithSourceDevice:(id)arg1 dataTypes:(unsigned long long)arg2 delegate:(id)arg3 connectionKey:(id)arg4;
-- (void)invalidateWithError:(id)arg1;
-- (void)migrator:(id)arg1 didImportRecordCount:(unsigned long long)arg2;
-- (bool)migrator:(id)arg1 shouldTerminateFetchWithError:(id)arg2;
-- (bool)migratorShouldPauseBeforeRequest:(id)arg1;
-- (void)setDelegate:(id)arg1;
-- (id)sourceDevice;
-- (void)startMigration;
+- (id)initWithConnectionKey:(id)arg1;
+- (bool)migrationDataCoordinator:(id)arg1 shouldTerminateFetchWithError:(id)arg2;
+- (void)startMigrationWithSourceDevice:(id)arg1 usingRetryPolicies:(bool)arg2 delegate:(id)arg3 completion:(id /* block */)arg4;
 
 @end

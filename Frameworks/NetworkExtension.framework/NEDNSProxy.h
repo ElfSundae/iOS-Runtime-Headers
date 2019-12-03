@@ -5,10 +5,12 @@
 @interface NEDNSProxy : NSObject <NEConfigurationValidating, NEPrettyDescription, NSCopying, NSSecureCoding> {
     bool  _enabled;
     NEDNSProxyProviderProtocol * _protocol;
+    NSArray * _settings;
 }
 
 @property (getter=isEnabled) bool enabled;
 @property (copy) NEDNSProxyProviderProtocol *protocol;
+@property (copy) NSArray *settings;
 
 + (bool)supportsSecureCoding;
 
@@ -24,5 +26,7 @@
 - (id)protocol;
 - (void)setEnabled:(bool)arg1;
 - (void)setProtocol:(id)arg1;
+- (void)setSettings:(id)arg1;
+- (id)settings;
 
 @end

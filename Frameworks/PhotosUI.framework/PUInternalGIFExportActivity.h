@@ -2,12 +2,12 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUInternalGIFExportActivity : PUActivity
+@interface PUInternalGIFExportActivity : PXActivity
 
 + (long long)activityCategory;
 
 - (id)_asset;
-- (id)activityImage;
+- (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;
 - (bool)canPerformWithActivityItems:(id)arg1;

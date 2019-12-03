@@ -11,6 +11,7 @@
     bool  isDTLSEnabled;
     bool  isDuplexAudioOnly;
     bool  isDuplexVideoOnly;
+    bool  isHalfDuplexAudio;
     bool  isKeyExchangeEnabled;
     bool  isRelayEnabled;
     bool  isRelayForced;
@@ -30,6 +31,7 @@
 @property bool isDTLSEnabled;
 @property bool isDuplexAudioOnly;
 @property bool isDuplexVideoOnly;
+@property bool isHalfDuplexAudio;
 @property bool isKeyExchangeEnabled;
 @property bool isRelayEnabled;
 @property bool isRelayForced;
@@ -59,6 +61,7 @@
 - (bool)isDTLSEnabled;
 - (bool)isDuplexAudioOnly;
 - (bool)isDuplexVideoOnly;
+- (bool)isHalfDuplexAudio;
 - (bool)isKeyExchangeEnabled;
 - (bool)isRelayEnabled;
 - (bool)isRelayForced;
@@ -77,6 +80,7 @@
 - (void)setIsDTLSEnabled:(bool)arg1;
 - (void)setIsDuplexAudioOnly:(bool)arg1;
 - (void)setIsDuplexVideoOnly:(bool)arg1;
+- (void)setIsHalfDuplexAudio:(bool)arg1;
 - (void)setIsKeyExchangeEnabled:(bool)arg1;
 - (void)setIsRelayEnabled:(bool)arg1;
 - (void)setIsRelayForced:(bool)arg1;

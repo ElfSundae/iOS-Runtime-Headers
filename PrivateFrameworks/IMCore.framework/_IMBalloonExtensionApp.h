@@ -11,8 +11,8 @@
 @property (nonatomic, retain) LSPlugInKitProxy *proxy;
 
 - (void).cxx_destruct;
+- (id)applicationType;
 - (id)extension;
-- (id)extensionConnection;
 - (id)initWithPluginBundle:(id)arg1 extension:(id)arg2;
 - (id)initWithPluginBundle:(id)arg1 extension:(id)arg2 pluginKitProxyClass:(Class)arg3 proxy:(id)arg4;
 - (id)initWithPluginBundle:(id)arg1 pluginKitProxy:(id)arg2 extension:(id)arg3;
@@ -23,10 +23,11 @@
 - (id)itemID;
 - (id)plugin;
 - (id)proxy;
-- (id)proxyWithErrorHandle:(id /* block */)arg1;
 - (void)setExtension:(id)arg1;
 - (void)setIsEnabled:(bool)arg1;
 - (void)setProxy:(id)arg1;
+- (bool)showInBrowser;
+- (bool)showableInBrowser;
 - (id)version;
 
 @end

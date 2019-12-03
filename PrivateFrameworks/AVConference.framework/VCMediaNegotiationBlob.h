@@ -11,13 +11,16 @@
     unsigned int  _basebandCodecSampleRate;
     unsigned int  _blobVersion;
     VCMediaNegotiationBlobCaptionsSettings * _captionsSettings;
+    VCMediaNegotiationFaceTimeSettings * _faceTimeSettings;
     struct { 
         unsigned int ntpTime : 1; 
         unsigned int basebandCodecSampleRate : 1; 
         unsigned int blobVersion : 1; 
+        unsigned int mediaControlInfoVersion : 1; 
         unsigned int allowDynamicMaxBitrate : 1; 
         unsigned int allowsContentsChangeWithAspectPreservation : 1; 
     }  _has;
+    unsigned int  _mediaControlInfoVersion;
     VCMediaNegotiationBlobMomentsSettings * _momentsSettings;
     NSMutableArray * _multiwayAudioStreams;
     NSMutableArray * _multiwayVideoStreams;
@@ -35,6 +38,7 @@
 @property (nonatomic) unsigned int basebandCodecSampleRate;
 @property (nonatomic) unsigned int blobVersion;
 @property (nonatomic, retain) VCMediaNegotiationBlobCaptionsSettings *captionsSettings;
+@property (nonatomic, retain) VCMediaNegotiationFaceTimeSettings *faceTimeSettings;
 @property (nonatomic) bool hasAllowDynamicMaxBitrate;
 @property (nonatomic) bool hasAllowsContentsChangeWithAspectPreservation;
 @property (nonatomic, readonly) bool hasAudioSettings;
@@ -42,11 +46,14 @@
 @property (nonatomic) bool hasBasebandCodecSampleRate;
 @property (nonatomic) bool hasBlobVersion;
 @property (nonatomic, readonly) bool hasCaptionsSettings;
+@property (nonatomic, readonly) bool hasFaceTimeSettings;
+@property (nonatomic) bool hasMediaControlInfoVersion;
 @property (nonatomic, readonly) bool hasMomentsSettings;
 @property (nonatomic) bool hasNtpTime;
 @property (nonatomic, readonly) bool hasScreenSettings;
 @property (nonatomic, readonly) bool hasUserAgent;
 @property (nonatomic, readonly) bool hasVideoSettings;
+@property (nonatomic) unsigned int mediaControlInfoVersion;
 @property (nonatomic, retain) VCMediaNegotiationBlobMomentsSettings *momentsSettings;
 @property (nonatomic, retain) NSMutableArray *multiwayAudioStreams;
 @property (nonatomic, retain) NSMutableArray *multiwayVideoStreams;
@@ -80,6 +87,7 @@
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)faceTimeSettings;
 - (bool)hasAllowDynamicMaxBitrate;
 - (bool)hasAllowsContentsChangeWithAspectPreservation;
 - (bool)hasAudioSettings;
@@ -87,6 +95,8 @@
 - (bool)hasBasebandCodecSampleRate;
 - (bool)hasBlobVersion;
 - (bool)hasCaptionsSettings;
+- (bool)hasFaceTimeSettings;
+- (bool)hasMediaControlInfoVersion;
 - (bool)hasMomentsSettings;
 - (bool)hasNtpTime;
 - (bool)hasScreenSettings;
@@ -94,6 +104,7 @@
 - (bool)hasVideoSettings;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
+- (unsigned int)mediaControlInfoVersion;
 - (void)mergeFrom:(id)arg1;
 - (id)momentsSettings;
 - (id)multiwayAudioStreams;
@@ -119,11 +130,14 @@
 - (void)setBasebandCodecSampleRate:(unsigned int)arg1;
 - (void)setBlobVersion:(unsigned int)arg1;
 - (void)setCaptionsSettings:(id)arg1;
+- (void)setFaceTimeSettings:(id)arg1;
 - (void)setHasAllowDynamicMaxBitrate:(bool)arg1;
 - (void)setHasAllowsContentsChangeWithAspectPreservation:(bool)arg1;
 - (void)setHasBasebandCodecSampleRate:(bool)arg1;
 - (void)setHasBlobVersion:(bool)arg1;
+- (void)setHasMediaControlInfoVersion:(bool)arg1;
 - (void)setHasNtpTime:(bool)arg1;
+- (void)setMediaControlInfoVersion:(unsigned int)arg1;
 - (void)setMomentsSettings:(id)arg1;
 - (void)setMultiwayAudioStreams:(id)arg1;
 - (void)setMultiwayVideoStreams:(id)arg1;

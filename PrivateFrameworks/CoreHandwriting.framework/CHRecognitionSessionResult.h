@@ -5,13 +5,19 @@
 @interface CHRecognitionSessionResult : NSObject <NSCopying> {
     NSDictionary * __recognitionResultsByGroupID;
     long long  __transcriptionCapability;
+    CHStrokeClutterFilter * _clutterFilter;
     struct { 
+        double strokeClutterFilteringDuration; 
+        double strokeClassificationDuration; 
         double groupingDuration; 
         double recognitionDuration; 
         double totalDuration; 
     }  _generationDuration;
     NSArray * _locales;
+    NSArray * _orderedStrokeIdentifiers;
     NSArray * _preferredLocales;
+    long long  _recognitionEnvironment;
+    CHStrokeClassificationResult * _strokeClassificationResult;
     CHStrokeGroupingResult * _strokeGroupingResult;
     <CHStrokeProviderVersion> * _strokeProviderVersion;
 }
@@ -20,10 +26,14 @@
 @property (nonatomic, readonly) long long _transcriptionCapability;
 @property (nonatomic, readonly) NSString *allResultsDebugDescription;
 @property (nonatomic, readonly) NSArray *allResultsDebugDescriptionByGroup;
-@property (nonatomic, readonly) struct { double x1; double x2; double x3; } generationDuration;
+@property (nonatomic, readonly, retain) CHStrokeClutterFilter *clutterFilter;
+@property (nonatomic, readonly) struct { double x1; double x2; double x3; double x4; double x5; } generationDuration;
 @property (nonatomic, readonly) NSString *highConfidenceDebugDescription;
 @property (nonatomic, readonly, copy) NSArray *locales;
+@property (nonatomic, readonly, retain) NSArray *orderedStrokeIdentifiers;
 @property (nonatomic, readonly, copy) NSArray *preferredLocales;
+@property (nonatomic, readonly) long long recognitionEnvironment;
+@property (nonatomic, readonly, retain) CHStrokeClassificationResult *strokeClassificationResult;
 @property (nonatomic, readonly, retain) CHStrokeGroupingResult *strokeGroupingResult;
 @property (nonatomic, readonly, retain) <CHStrokeProviderVersion> *strokeProviderVersion;
 
@@ -33,17 +43,21 @@
 - (id)allResultsDebugDescription;
 - (id)allResultsDebugDescriptionByGroup;
 - (id)allResultsDebugDescriptionWithGroupHeaderBlock:(id /* block */)arg1;
+- (id)clutterFilter;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)debugDescription;
 - (id)description;
-- (struct { double x1; double x2; double x3; })generationDuration;
+- (struct { double x1; double x2; double x3; double x4; double x5; })generationDuration;
 - (id)highConfidenceDebugDescription;
 - (id)init;
-- (id)initWithStrokeProviderVersion:(id)arg1 locales:(id)arg2 preferredLocales:(id)arg3 strokeGroupingResult:(id)arg4 recognitionResults:(id)arg5 generationDuration:(struct { double x1; double x2; double x3; })arg6;
+- (id)initWithStrokeProviderVersion:(id)arg1 orderedStrokeIdentifiers:(id)arg2 locales:(id)arg3 preferredLocales:(id)arg4 clutterFilter:(id)arg5 strokeClassificationResult:(id)arg6 strokeGroupingResult:(id)arg7 recognitionResults:(id)arg8 inlineContinuousModeResults:(id)arg9 generationDuration:(struct { double x1; double x2; double x3; double x4; double x5; })arg10 recognitionEnvironment:(long long)arg11;
 - (id)locales;
+- (id)orderedStrokeIdentifiers;
 - (id)preferredLocales;
+- (long long)recognitionEnvironment;
 - (id)recognitionResultForStrokeGroupIdentifier:(long long)arg1;
+- (id)strokeClassificationResult;
 - (id)strokeGroupingResult;
 - (id)strokeProviderVersion;
 

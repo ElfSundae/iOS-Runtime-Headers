@@ -2,16 +2,23 @@
    Image: /System/Library/PrivateFrameworks/Widgets.framework/Widgets
  */
 
-@interface WGShortLookStyleButton : UIControl {
+@interface WGShortLookStyleButton : UIControl <MTMaterialGrouping> {
     bool  _backgroundBlurred;
     MTMaterialView * _backgroundView;
-    double  _dimension;
     BSUIFontProvider * _fontProvider;
+    struct CGSize { 
+        double width; 
+        double height; 
+    }  _size;
     UILabel * _titleLabel;
 }
 
 @property (getter=isBackgroundBlurred, nonatomic) bool backgroundBlurred;
-@property (nonatomic, retain) NSString *groupName;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, copy) NSString *materialGroupNameBase;
+@property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *title;
 
 - (void).cxx_destruct;
@@ -19,18 +26,24 @@
 - (void)_configureBackgroundViewIfNecessary;
 - (void)_configureMaskIfNecessary;
 - (void)_configureTitleLabelIfNecessary;
-- (double)_dimension;
 - (id)_fontProvider;
 - (void)_layoutTitleLabel;
-- (double)_minimumScaleFactorForFont:(id)arg1;
 - (void)_setBackgroundViewCornerRadius:(double)arg1;
+- (struct CGSize { double x1; double x2; })_size;
+- (void)_updateHighlight;
 - (void)_updateTitleLabelFont;
-- (id)groupName;
+- (void)_updateTouchInsetsIfNecessary;
+- (id)fontForTitle:(id)arg1;
+- (bool)gestureRecognizerShouldBegin:(id)arg1;
+- (struct CGSize { double x1; double x2; })intrinsicContentSize;
 - (void)invalidateCachedGeometry;
 - (bool)isBackgroundBlurred;
 - (void)layoutSubviews;
+- (id)materialGroupNameBase;
+- (bool)pointInside:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
 - (void)setBackgroundBlurred:(bool)arg1;
-- (void)setGroupName:(id)arg1;
+- (void)setHighlighted:(bool)arg1;
+- (void)setMaterialGroupNameBase:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (id)title;

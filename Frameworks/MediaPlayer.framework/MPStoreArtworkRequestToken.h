@@ -3,6 +3,7 @@
  */
 
 @interface MPStoreArtworkRequestToken : NSObject <MPArtworkDataSourceVisualIdenticality, NSSecureCoding> {
+    NSArray * _artworkInfoEntries;
     NSURL * _artworkURL;
     NSString * _cropStyle;
     NSArray * _lookupItemArtworks;
@@ -10,6 +11,7 @@
     NSString * _sourceEditorialArtworkKind;
 }
 
+@property (nonatomic, copy) NSArray *artworkInfoEntries;
 @property (nonatomic, copy) NSURL *artworkURL;
 @property (nonatomic, copy) NSString *cropStyle;
 @property (readonly, copy) NSString *debugDescription;
@@ -23,6 +25,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)artworkInfoEntries;
 - (id)artworkURL;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)cropStyle;
@@ -31,6 +34,7 @@
 - (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)lookupItemArtworks;
+- (void)setArtworkInfoEntries:(id)arg1;
 - (void)setArtworkURL:(id)arg1;
 - (void)setCropStyle:(id)arg1;
 - (void)setLookupItemArtworks:(id)arg1;

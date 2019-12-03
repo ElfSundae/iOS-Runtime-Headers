@@ -3,6 +3,7 @@
  */
 
 @interface _INPBPayBillIntentResponse : PBCodable <NSCopying, NSSecureCoding, _INPBPayBillIntentResponse> {
+    bool  __encodeLegacyGloryData;
     _INPBBillDetailsValue * _billDetails;
     _INPBFinancialAccountValue * _fromAccount;
     struct { }  _has;
@@ -11,6 +12,7 @@
     _INPBDateTimeRange * _transactionScheduledDate;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic, retain) _INPBBillDetailsValue *billDetails;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -26,10 +28,15 @@
 @property (nonatomic, retain) _INPBString *transactionNote;
 @property (nonatomic, retain) _INPBDateTimeRange *transactionScheduledDate;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)billDetails;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (id)fromAccount;
 - (bool)hasBillDetails;
 - (bool)hasFromAccount;
@@ -37,6 +44,7 @@
 - (bool)hasTransactionNote;
 - (bool)hasTransactionScheduledDate;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setBillDetails:(id)arg1;

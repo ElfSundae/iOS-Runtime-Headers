@@ -3,9 +3,8 @@
  */
 
 @interface BKSProcessAssertion : BKSAssertion {
-    NSString * _bundleIdentifier;
     unsigned int  _flags;
-    int  _pid;
+    RBSAssertion * _mediaPlaybackHackAssertion;
     unsigned int  _reason;
 }
 
@@ -14,12 +13,13 @@
 
 + (id)NameForReason:(unsigned int)arg1;
 
-- (id)_clientQueue_createEvent;
-- (id)_clientQueue_destroyEvent;
-- (id)_clientQueue_updateEvent;
+- (void).cxx_destruct;
+- (unsigned long long)_legacyFlagsForFlags:(unsigned int)arg1;
+- (unsigned long long)_legacyReasonForReason:(unsigned int)arg1;
+- (bool)acquire;
+- (void)assertion:(id)arg1 didInvalidateWithError:(id)arg2;
 - (void)dealloc;
 - (unsigned int)flags;
-- (id)init;
 - (id)initWithBundleIdentifier:(id)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4;
 - (id)initWithBundleIdentifier:(id)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4 withHandler:(id /* block */)arg5;
 - (id)initWithBundleIdentifier:(id)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4 withHandler:(id /* block */)arg5 acquire:(bool)arg6;
@@ -27,6 +27,7 @@
 - (id)initWithPID:(int)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4;
 - (id)initWithPID:(int)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4 withHandler:(id /* block */)arg5;
 - (id)initWithPID:(int)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4 withHandler:(id /* block */)arg5 acquire:(bool)arg6;
+- (void)invalidate;
 - (unsigned int)reason;
 - (void)setFlags:(unsigned int)arg1;
 

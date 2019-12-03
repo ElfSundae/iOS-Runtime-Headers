@@ -22,8 +22,11 @@
 @property (nonatomic, copy) NSDateComponents *releaseDateComponents;
 @property (nonatomic, readonly) long long seasonNumber;
 @property (nonatomic, copy) NSURL *shareURL;
+@property (nonatomic, copy) NSURL *streamURL;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic) float userRating;
+
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
 
 + (id)__artworkCatalogBlock_KEY;
 + (id)__author_KEY;
@@ -40,6 +43,7 @@
 + (id)__releaseDateComponents_KEY;
 + (id)__seasonNumber_KEY;
 + (id)__shareURL_KEY;
++ (id)__streamURL_KEY;
 + (id)__title_KEY;
 + (id)__userRating_KEY;
 + (id)kindWithVariants:(unsigned long long)arg1;
@@ -50,5 +54,9 @@
 - (id)commentText;
 - (id)humanDescription;
 - (void)setCommentText:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
++ (id)mqf_requiredItemPlaybackProperties;
 
 @end

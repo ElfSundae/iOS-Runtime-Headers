@@ -39,8 +39,11 @@
 - (void)_detectReaderAvailabilityAfterSameDocumentNavigation;
 - (void)_setUpReaderActivityListenerProxy;
 - (void)_setUpReaderControllerInterface;
+- (void)activateFont:(id)arg1;
 - (void)articleContentDidChange;
 - (long long)cachedReaderTopScrollOffset;
+- (void)checkReaderAvailability;
+- (void)collectArticleContent;
 - (void)collectReaderContentForMail;
 - (void)collectReadingListItemInfoWithBookmarkID:(id)arg1;
 - (void)didCreateReaderPageContextHandle:(id)arg1;
@@ -62,16 +65,15 @@
 - (void)setConfiguration:(id)arg1;
 - (void)setInitalArticleScrollPositionAsDictionary:(id)arg1;
 - (void)setReaderInitialTopScrollOffset:(long long)arg1 configuration:(id)arg2 isViewingArchive:(bool)arg3;
+- (void)setReaderIsActive:(bool)arg1;
 - (void)setReaderPageController:(id)arg1;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 didCommitLoadForFrame:(id)arg2;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 didFinishDocumentLoadForFrame:(id)arg2;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 didFinishLoadForFrame:(id)arg2;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 didSameDocumentNavigation:(long long)arg2 forFrame:(id)arg3;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 didStartProvisionalLoadForFrame:(id)arg2;
-- (id)webProcessPlugInBrowserContextController:(id)arg1 frame:(id)arg2 willSendRequestForResource:(unsigned long long)arg3 request:(id)arg4 redirectResponse:(id)arg5;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 globalObjectIsAvailableForFrame:(id)arg2 inScriptWorld:(id)arg3;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 renderingProgressDidChange:(unsigned long long)arg2;
 - (void)willDestroyBrowserContextController:(id)arg1;
-- (void)willHideReader;
 
 @end

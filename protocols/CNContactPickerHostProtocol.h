@@ -6,6 +6,7 @@
 @required
 
 - (void)pickerDidCancel;
+- (void)pickerDidSelectAddNewContact;
 - (void)pickerDidSelectContact:(CNContact *)arg1 property:(CNContactProperty *)arg2;
 - (void)pickerDidSelectContacts:(NSArray *)arg1 properties:(NSArray *)arg2;
 

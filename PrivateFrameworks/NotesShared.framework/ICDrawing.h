@@ -61,7 +61,7 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })calculateCommandBounds;
 - (bool)canChangeTransientOrientation;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })commandBounds;
-- (struct ICDrawingCommandID { unsigned int x1; id x2; })commandIDForNewCommand;
+- (struct ICDrawingCommandID { unsigned int x1; id x2; unsigned int x3; })commandIDForNewCommand;
 - (id)commands;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })fullBounds;

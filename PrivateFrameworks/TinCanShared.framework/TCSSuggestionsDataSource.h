@@ -4,7 +4,6 @@
 
 @interface TCSSuggestionsDataSource : NSObject <TCSSuggestionsObserver> {
     <TCSSuggestionsDataSourceDelegate> * _delegate;
-    int  _firstUnlockToken;
     NSArray * _suggestedContacts;
     TCSSuggestions * _suggestions;
 }

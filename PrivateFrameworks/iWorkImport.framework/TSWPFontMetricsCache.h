@@ -41,11 +41,11 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
-- (struct { double x1; double x2; double x3; double x4; double x5; double x6; double x7; })fontHeightInfoForFont:(struct __CTFont { }*)arg1;
+- (struct TSWPFontHeightInfo { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; })fontHeightInfoForFont:(struct __CTFont { }*)arg1;
 - (id)init;
-- (void)p_addEntryForFont:(struct __CTFont { }*)arg1 heightInfo:(const struct { double x1; double x2; double x3; double x4; double x5; double x6; double x7; }*)arg2 widths:(unsigned long long)arg3;
-- (bool)p_findEntryForFont:(struct __CTFont { }*)arg1 outHeightInfo:(out struct { double x1; double x2; double x3; double x4; double x5; double x6; double x7; }*)arg2 outWidths:(out unsigned long long*)arg3 outCollision:(out bool*)arg4;
-- (struct { double x1; double x2; double x3; double x4; double x5; double x6; double x7; })p_fontHeightInfoForFont:(struct __CTFont { }*)arg1 outWidths:(out unsigned long long*)arg2;
+- (void)p_addEntryForFont:(struct __CTFont { }*)arg1 heightInfo:(const struct TSWPFontHeightInfo { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; }*)arg2 widths:(unsigned long long)arg3;
+- (bool)p_findEntryForFont:(struct __CTFont { }*)arg1 outHeightInfo:(out struct TSWPFontHeightInfo { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; }*)arg2 outWidths:(out unsigned long long*)arg3 outCollision:(out bool*)arg4;
+- (struct TSWPFontHeightInfo { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; })p_fontHeightInfoForFont:(struct __CTFont { }*)arg1 outWidths:(out unsigned long long*)arg2;
 - (unsigned long long)supportedFractionalWidthsForFont:(struct __CTFont { }*)arg1;
 
 @end

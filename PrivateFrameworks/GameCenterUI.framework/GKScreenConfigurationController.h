@@ -13,8 +13,8 @@
 + (double)_scaleForCurrentDisplayConfiguration;
 + (id)sharedController;
 
+- (void).cxx_destruct;
 - (void)_screensDidChange:(id)arg1;
-- (void)dealloc;
 - (id)emitter;
 - (double)greatestScreenScale;
 - (id)init;

@@ -29,7 +29,7 @@
 + (void)makePersistentImageCache:(out id*)arg1 volatileImageCache:(out id*)arg2 withEnvironment:(id)arg3;
 
 - (void).cxx_destruct;
-- (id /* block */)_providerForAvatar:(id)arg1 scope:(id)arg2;
+- (id /* block */)_providerForAvatar:(id)arg1 forRecord:(id)arg2 scope:(id)arg3 usingCache:(bool)arg4;
 - (id /* block */)_providerForRecord:(id)arg1 scope:(id)arg2;
 - (bool)allowPreFlight;
 - (id)avatarRenderer;
@@ -41,6 +41,7 @@
 - (id)initWithPersistentCache:(id)arg1 volatileCache:(id)arg2 renderingQueue:(id)arg3 callbackQueue:(id)arg4 configurationRenderer:(id)arg5 avatarRenderer:(id)arg6 allowPreFlight:(bool)arg7 environment:(id)arg8;
 - (id)logger;
 - (id)peristentCache;
+- (id /* block */)providerForAvatar:(id)arg1 forRecord:(id)arg2 scope:(id)arg3 usingCache:(bool)arg4;
 - (id /* block */)providerForRecord:(id)arg1 scope:(id)arg2;
 - (id)renderingScheduler;
 - (id)volatileCache;

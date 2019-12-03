@@ -6,28 +6,36 @@
     NSArray * _UTITypes;
     NSArray * _attachments;
     NSString * _body;
+    NSString * _chatGUID;
     NSArray * _cloudPhotoIDs;
     NSArray * _contentText;
     NSArray * _contentURLs;
     unsigned long long  _currentAttachedAudioCount;
     unsigned long long  _currentAttachedImageCount;
     unsigned long long  _currentAttachedVideoCount;
+    NSString * _groupName;
+    id  _internal;
     MSMessage * _message;
     <MFMessageComposeViewControllerDelegate> * _messageComposeDelegate;
     NSArray * _photoIDs;
     NSArray * _recipients;
+    NSString * _shareSheetSessionID;
     NSString * _subject;
 }
 
 @property (nonatomic, readonly, copy) NSArray *attachments;
 @property (nonatomic, copy) NSString *body;
+@property (nonatomic, copy) NSString *chatGUID;
 @property (nonatomic) unsigned long long currentAttachedAudioCount;
 @property (nonatomic) unsigned long long currentAttachedImageCount;
 @property (nonatomic) unsigned long long currentAttachedVideoCount;
+@property (nonatomic, copy) NSString *groupName;
 @property (nonatomic, copy) MSMessage *message;
 @property (nonatomic) <MFMessageComposeViewControllerDelegate> *messageComposeDelegate;
 @property (nonatomic, copy) NSArray *recipients;
 @property (nonatomic, copy) NSString *subject;
+
+// Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
 
 + (bool)_canSendText;
 + (id)_chatKitBundle;
@@ -44,9 +52,11 @@
 + (bool)isMMSEnabled;
 + (bool)isSupportedAttachmentUTI:(id)arg1;
 + (bool)isiMessageEnabled;
++ (id)log;
 + (double)maxTrimDurationForAudio;
 + (double)maxTrimDurationForVideo;
 
+- (void).cxx_destruct;
 - (id)UTITypes;
 - (id)_MIMETypeForURL:(id)arg1;
 - (id)_contentTypeForMIMEType:(id)arg1;
@@ -64,6 +74,7 @@
 - (bool)automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers;
 - (id)body;
 - (bool)canAddAttachmentURL:(id)arg1;
+- (id)chatGUID;
 - (id)cloudPhotoIDs;
 - (id)contentText;
 - (id)contentURLs;
@@ -72,27 +83,35 @@
 - (unsigned long long)currentAttachedVideoCount;
 - (void)dealloc;
 - (void)disableUserAttachments;
+- (id)groupName;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)insertSharedItemAndReturnEntryViewFrame:(id)arg1 withAlternateFilename:(id)arg2 completion:(id /* block */)arg3;
 - (id)message;
 - (id)messageComposeDelegate;
 - (id)mutableAttachmentURLs;
 - (id)photoIDs;
 - (id)recipients;
 - (void)setBody:(id)arg1;
+- (void)setChatGUID:(id)arg1;
 - (void)setCloudPhotoIDs:(id)arg1;
 - (void)setContentText:(id)arg1;
 - (void)setContentURLs:(id)arg1;
 - (void)setCurrentAttachedAudioCount:(unsigned long long)arg1;
 - (void)setCurrentAttachedImageCount:(unsigned long long)arg1;
 - (void)setCurrentAttachedVideoCount:(unsigned long long)arg1;
+- (void)setGroupName:(id)arg1;
 - (void)setMessage:(id)arg1;
 - (void)setMessageComposeDelegate:(id)arg1;
 - (void)setModalPresentationStyle:(long long)arg1;
 - (void)setPhotoIDs:(id)arg1;
 - (void)setRecipients:(id)arg1;
+- (void)setShareSheetSessionID:(id)arg1;
 - (void)setSubject:(id)arg1;
 - (void)setUTITypes:(id)arg1;
+- (id)shareSheetSessionID;
+- (void)showSharedItemInEntryView;
 - (void)smsComposeControllerCancelled:(id)arg1;
+- (void)smsComposeControllerEntryViewContentInserted:(id)arg1;
 - (void)smsComposeControllerSendStarted:(id)arg1;
 - (void)smsComposeControllerShouldSendMessageWithText:(id)arg1 toRecipients:(id)arg2 completion:(id /* block */)arg3;
 - (id)subject;
@@ -100,5 +119,10 @@
 - (void)viewDidLoad;
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;
+
+// Image: /System/Library/PrivateFrameworks/GameCenterUI.framework/GameCenterUI
+
+- (void)setGameCenterModeWithPickerBlock:(id /* block */)arg1;
+- (void)setGameCenterPickedHandles:(id)arg1 playerNames:(id)arg2;
 
 @end

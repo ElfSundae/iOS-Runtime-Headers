@@ -3,15 +3,17 @@
  */
 
 @interface PSUIPearlPasscodeController : PSUIBiometricController <BFFPasscodeViewControllerDelegate, BKUIPearlEnrollControllerDelegate, LAUIDelegate> {
-    PSPearlAttentionGroupController * _attentionGroupController;
+    PSUIPearlAttentionGroupController * _attentionGroupController;
     LAContext * _authContext;
+    PSSpecifier * _currentlyPresentingPearlEnrollSpecifier;
     PSEnrollmentNavigationController * _enrollFaceController;
     PSSpecifier * _enrollFaceSpecifier;
     OBPrivacyPresenter * _presenter;
 }
 
-@property (nonatomic, retain) PSPearlAttentionGroupController *attentionGroupController;
+@property (nonatomic, retain) PSUIPearlAttentionGroupController *attentionGroupController;
 @property (nonatomic, retain) LAContext *authContext;
+@property (retain) PSSpecifier *currentlyPresentingPearlEnrollSpecifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) PSEnrollmentNavigationController *enrollFaceController;
@@ -26,6 +28,7 @@
 - (void)backgrounded:(id)arg1;
 - (id)biometricLogo;
 - (id)biometricTableViewHeader;
+- (id)currentlyPresentingPearlEnrollSpecifier;
 - (void)dealloc;
 - (void)deleteAllIdentities;
 - (void)enroll:(id)arg1;
@@ -52,6 +55,7 @@
 - (void)setAttentionGroupController:(id)arg1;
 - (void)setAuthContext:(id)arg1;
 - (void)setBiometricUnlockEnabled:(id)arg1 specifier:(id)arg2;
+- (void)setCurrentlyPresentingPearlEnrollSpecifier:(id)arg1;
 - (void)setEnrollFaceController:(id)arg1;
 - (void)setEnrollFaceSpecifier:(id)arg1;
 - (void)setPresenter:(id)arg1;

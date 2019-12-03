@@ -7,16 +7,19 @@
     PKDynamicProvisioningPageContent * _currentPage;
     unsigned long long  _featureIdentifier;
     UIImage * _heroImage;
+    PKPaymentInstallmentConfiguration * _installmentConfiguration;
     bool  _isMainFeatureOnboardingPage;
     <PKSetupFlowControllerProtocol> * _parentFlowController;
     PKPaymentSetupProduct * _paymentSetupProduct;
     PKPaymentProvisioningController * _provisioningController;
     <PKPaymentSetupViewControllerDelegate> * _setupDelegate;
+    bool  _useCompactLayout;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, retain) PKPaymentInstallmentConfiguration *installmentConfiguration;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -31,8 +34,10 @@
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (void)explanationViewDidSelectSetupLater:(id)arg1;
 - (id)initWithParentFlowController:(id)arg1 setupDelegate:(id)arg2 context:(long long)arg3 featureIdentifier:(unsigned long long)arg4 provisoningController:(id)arg5 paymentSetupProduct:(id)arg6 currentPage:(id)arg7;
+- (id)installmentConfiguration;
 - (id)paymentSetupMarker;
 - (void)preflightWithCompletion:(id /* block */)arg1;
+- (void)setInstallmentConfiguration:(id)arg1;
 - (void)terminateSetupFlow;
 - (void)viewDidLoad;
 

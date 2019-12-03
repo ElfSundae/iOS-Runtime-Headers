@@ -4,13 +4,15 @@
 
 @interface GEORPProblemOptInResponse : PBCodable <NSCopying> {
     struct { 
-        unsigned int statusCode : 1; 
-    }  _has;
+        unsigned int has_statusCode : 1; 
+    }  _flags;
     int  _statusCode;
 }
 
 @property (nonatomic) bool hasStatusCode;
 @property (nonatomic) int statusCode;
+
++ (bool)isValid:(id)arg1;
 
 - (int)StringAsStatusCode:(id)arg1;
 - (void)copyTo:(id)arg1;
@@ -21,6 +23,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasStatusCode:(bool)arg1;
 - (void)setStatusCode:(int)arg1;

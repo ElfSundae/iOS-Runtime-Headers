@@ -16,10 +16,12 @@
 
 - (void).cxx_destruct;
 - (void)_clearState;
+- (bool)_enumerateLinesInCurrentEntryWithBlock:(id /* block */)arg1;
 - (id)_getDataForCurrentEntryWithBufferingWithMaxSizeBytes:(unsigned long long)arg1;
 - (id)_getDataForCurrentEntryWithSize:(unsigned long long)arg1;
 - (void)_logError:(id)arg1;
 - (void)enumerateEntriesUsingBlock:(id /* block */)arg1;
+- (bool)enumerateLinesInCurrentEntryWithError:(id*)arg1 block:(id /* block */)arg2;
 - (id)getDataForCurrentEntry;
 - (id)getDataForCurrentEntryWithMaxSizeBytes:(unsigned long long)arg1;
 - (id)initWithData:(id)arg1;

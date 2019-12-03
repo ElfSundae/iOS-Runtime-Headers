@@ -5,16 +5,22 @@
 @interface EKDirectoryRecord : NSObject {
     NSString * _displayName;
     NSString * _preferredAddress;
+    NSString * _principalPath;
 }
 
 @property (nonatomic, retain) NSString *displayName;
 @property (nonatomic, retain) NSString *preferredAddress;
+@property (nonatomic, copy) NSString *principalPath;
+@property (readonly) NSDictionary *userInfo;
 
 - (void).cxx_destruct;
 - (id)description;
 - (id)displayName;
 - (id)preferredAddress;
+- (id)principalPath;
 - (void)setDisplayName:(id)arg1;
 - (void)setPreferredAddress:(id)arg1;
+- (void)setPrincipalPath:(id)arg1;
+- (id)userInfo;
 
 @end

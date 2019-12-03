@@ -9,4 +9,6 @@
 @property (nonatomic, retain) NSString *identifier;
 @property (nonatomic, retain) NSSet *operations;
 
++ (id)entityPath;
+
 @end

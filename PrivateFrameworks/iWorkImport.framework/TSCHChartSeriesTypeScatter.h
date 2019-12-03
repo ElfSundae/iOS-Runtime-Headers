@@ -22,6 +22,7 @@
 - (bool)supportsSymbolFillForSymbolType:(int)arg1;
 - (bool)supportsValueLabelsAxisOption;
 - (bool)supportsValueLabelsSeriesName;
+- (id)userInterfaceName;
 - (unsigned long long)valueDimensions;
 
 @end

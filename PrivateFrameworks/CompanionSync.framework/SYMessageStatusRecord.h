@@ -20,6 +20,7 @@
 - (id)debugDescription;
 - (id)description;
 - (bool)deviceACKReceived;
+- (id)initFiller;
 - (id)initWithMessageID:(id)arg1;
 - (bool)isComplete;
 - (id)messageID;

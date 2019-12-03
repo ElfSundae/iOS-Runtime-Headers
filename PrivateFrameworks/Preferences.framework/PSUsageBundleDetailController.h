@@ -9,7 +9,6 @@
 
 - (bool)canBeShownFromSuspendedState;
 - (void)loadView;
-- (bool)needsToShowToolbarInPrefsAppRoot;
 - (id)size:(id)arg1;
 - (id)sizeForSpecifier:(id)arg1;
 - (id)specifiers;

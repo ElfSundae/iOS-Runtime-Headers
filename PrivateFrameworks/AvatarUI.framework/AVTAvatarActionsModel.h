@@ -3,6 +3,7 @@
  */
 
 @interface AVTAvatarActionsModel : NSObject <AVTAvatarEditorViewControllerDelegate> {
+    bool  _allowCreate;
     AVTAvatarRecord * _avatarRecord;
     AVTViewSessionProvider * _avtViewSessionProvider;
     bool  _buttonsDisabled;
@@ -13,6 +14,7 @@
     bool  _isCreatingAvatar;
 }
 
+@property (nonatomic, readonly) bool allowCreate;
 @property (nonatomic, retain) AVTAvatarRecord *avatarRecord;
 @property (nonatomic, readonly) AVTViewSessionProvider *avtViewSessionProvider;
 @property (nonatomic) bool buttonsDisabled;
@@ -30,25 +32,26 @@
 + (bool)actionIsDestructive:(long long)arg1;
 + (id)buttonForActionType:(long long)arg1 withActionBlock:(id /* block */)arg2;
 + (id)localizedTitleForActionType:(long long)arg1;
++ (unsigned long long)maximumNumberOfButtons;
 
 - (void).cxx_destruct;
+- (bool)allowCreate;
 - (void)avatarEditorViewController:(id)arg1 didFinishWithAvatarRecord:(id)arg2;
 - (void)avatarEditorViewControllerDidCancel:(id)arg1;
 - (id)avatarRecord;
 - (id)avtViewSessionProvider;
 - (bool)buttonsDisabled;
 - (bool)canPerformActionType:(long long)arg1;
-- (id)createBarButtonItem;
 - (id)currentInlineActionButtons;
 - (id)dataSource;
 - (id)delegate;
-- (void)didTapCreateNew:(id)arg1;
+- (void)didTapCreateNew;
 - (void)didTapDelete;
 - (void)didTapDuplicate;
 - (void)didTapEdit;
 - (id)environment;
 - (id)generateInlineActionButtons;
-- (id)initWithAvatarRecord:(id)arg1 dataSource:(id)arg2 avtViewSessionProvider:(id)arg3 environment:(id)arg4;
+- (id)initWithAvatarRecord:(id)arg1 dataSource:(id)arg2 avtViewSessionProvider:(id)arg3 environment:(id)arg4 allowCreate:(bool)arg5;
 - (id)inlineActionButtons;
 - (bool)isCreatingAvatar;
 - (void)presentEditor:(id)arg1 forCreating:(bool)arg2;

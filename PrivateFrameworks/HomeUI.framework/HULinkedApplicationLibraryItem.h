@@ -3,17 +3,17 @@
  */
 
 @interface HULinkedApplicationLibraryItem : HULinkedApplicationItem <NSCopying> {
-    SSSoftwareLibraryItem * _libraryItem;
+    LSApplicationProxy * _applicationProxy;
 }
 
-@property (nonatomic, readonly) SSSoftwareLibraryItem *libraryItem;
+@property (nonatomic, readonly) LSApplicationProxy *applicationProxy;
 
 - (void).cxx_destruct;
 - (id)_subclass_updateWithOptions:(id)arg1;
+- (id)applicationProxy;
 - (id)bundleIdentifier;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)init;
-- (id)initWithLibraryItem:(id)arg1;
-- (id)libraryItem;
+- (id)initWithApplicationProxy:(id)arg1;
 
 @end

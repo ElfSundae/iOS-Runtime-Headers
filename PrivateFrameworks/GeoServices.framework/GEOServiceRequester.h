@@ -4,12 +4,14 @@
 
 @interface GEOServiceRequester : NSObject {
     NSMapTable * _pendingRequests;
-    NSLock * _pendingRequestsLock;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _pendingRequestsLock;
 }
 
 - (void).cxx_destruct;
 - (void)_cancelRequest:(id)arg1;
-- (void)_startWithRequest:(id)arg1 traits:(id)arg2 auditToken:(id)arg3 config:(id)arg4 completionHandler:(id /* block */)arg5;
+- (void)_startWithRequest:(id)arg1 traits:(id)arg2 auditToken:(id)arg3 config:(id)arg4 throttleToken:(id)arg5 completionHandler:(id /* block */)arg6;
 - (id)_validateResponse:(id)arg1;
 - (id)init;
 

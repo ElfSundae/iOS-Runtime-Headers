@@ -2,24 +2,11 @@
    Image: /System/Library/Frameworks/AVKit.framework/AVKit
  */
 
-@interface AVPlayerViewControllerContentView : UIView <AVCaptureViewConfiguring, AVContentTransitioning> {
+@interface AVPlayerViewControllerContentView : UIView <AVScrollViewObserverContentView> {
     UIImageView * _audioOnlyIndicatorView;
     NSString * _automaticVideoGravity;
-    bool  _backdropCaptureViewHidden;
-    struct CGRect { 
-        struct CGPoint { 
-            double x; 
-            double y; 
-        } origin; 
-        struct CGSize { 
-            double width; 
-            double height; 
-        } size; 
-    }  _boundsForLastLayoutSubviews;
+    AVCABackdropLayerView * _backdropLayerView;
     bool  _canAutomaticallyZoomLetterboxVideos;
-    NSString * _captureGroupName;
-    _UIVisualEffectBackdropView * _captureView;
-    AVPlayerContentTransitioningView * _contentTransitioningView;
     <AVPlayerViewControllerContentViewDelegate> * _delegate;
     struct UIEdgeInsets { 
         double top; 
@@ -33,27 +20,29 @@
     UIView * _iAdPreRollView;
     UIView * _interactiveContentOverlayView;
     bool  _needsInitialLayout;
+    UIView<AVPlaybackContentContainer> * _playbackContentContainerView;
     AVPlaybackControlsView * _playbackControlsView;
     __AVPlayerLayerView * _playerLayerView;
+    AVScrollViewObserver * _scrollingObserver;
+    bool  _shouldLoadPlaybackControlsHint;
     AVStyleSheet * _styleSheet;
     bool  _styleSheetShouldUseCompactFullScreenItemSize;
     NSMutableDictionary * _targetVideoGravities;
     AVTurboModePlaybackControlsPlaceholderView * _turboModePlaybackControlsPlaceholderView;
     UIImageView * _unsupportedContentIndicatorView;
+    struct UIEdgeInsets { 
+        double top; 
+        double left; 
+        double bottom; 
+        double right; 
+    }  _videoContentInset;
 }
 
-@property (nonatomic, readonly) AVPlayerLayerAndContentOverlayContainerView *activeContentView;
 @property (nonatomic, readonly) UIImageView *audioOnlyIndicatorView;
 @property (nonatomic, readonly) UIImageView *audioOnlyIndicatorViewIfLoaded;
 @property (nonatomic, copy) NSString *automaticVideoGravity;
-@property (nonatomic) bool backdropCaptureViewHidden;
-@property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } boundsForLastLayoutSubviews;
+@property (nonatomic, readonly) AVCABackdropLayerView *backdropLayerView;
 @property (nonatomic) bool canAutomaticallyZoomLetterboxVideos;
-@property (nonatomic, readonly) NSString *captureGroupName;
-@property (nonatomic, readonly) _UIVisualEffectBackdropView *captureView;
-@property (nonatomic) <AVContentTransitioningDelegate> *contentTransitioningDelegate;
-@property (nonatomic, readonly) AVPlayerContentTransitioningView *contentTransitioningView;
-@property (nonatomic, readonly) UIPanGestureRecognizer *contentTransitioningViewGestureRecognizer;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <AVPlayerViewControllerContentViewDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -65,51 +54,46 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) UIView *iAdPreRollView;
 @property (nonatomic, readonly) UIView *iAdPreRollViewIfLoaded;
-@property (nonatomic, readonly) UIView *interactiveContentOverlayView;
+@property (getter=isInAWindowAndNotScrolling, nonatomic, readonly) bool inAWindowAndNotScrolling;
+@property (nonatomic, retain) UIView *interactiveContentOverlayView;
 @property (nonatomic, readonly) bool isCoveringWindow;
-@property (nonatomic, readonly) bool isDescendantOfNonPagingScrollView;
-@property (nonatomic, readonly) unsigned long long layoutClass;
+@property (nonatomic, readonly) NSNumber *layoutClass;
 @property (nonatomic) bool needsInitialLayout;
+@property (nonatomic, retain) UIView<AVPlaybackContentContainer> *playbackContentContainerView;
 @property (nonatomic, readonly) AVPlaybackControlsView *playbackControlsView;
-@property (nonatomic, readonly) UIView *playerLayerAndContentOverlayContainerView;
 @property (nonatomic, retain) __AVPlayerLayerView *playerLayerView;
+@property (getter=isScrolling, nonatomic, readonly) bool scrolling;
+@property (nonatomic, readonly) AVScrollViewObserver *scrollingObserver;
+@property (getter=isScrollingQuickly, nonatomic, readonly) bool scrollingQuickly;
+@property (nonatomic) bool shouldLoadPlaybackControlsHint;
 @property (nonatomic, retain) AVStyleSheet *styleSheet;
 @property (nonatomic) bool styleSheetShouldUseCompactFullScreenItemSize;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSMutableDictionary *targetVideoGravities;
-@property (nonatomic, readonly) long long transitionDirection;
-@property (getter=isTransitionInteractive, nonatomic, readonly) bool transitionInteractive;
-@property (nonatomic, readonly) double transitionProgress;
-@property (nonatomic, readonly) long long transitionState;
-@property (nonatomic, readonly) AVPlayerLayerAndContentOverlayContainerView *transitioningContentView;
 @property (nonatomic, readonly) AVTurboModePlaybackControlsPlaceholderView *turboModePlaybackControlsPlaceholderView;
 @property (nonatomic, readonly) UIImageView *unsupportedContentIndicatorView;
 @property (nonatomic, readonly) UIImageView *unsupportedContentIndicatorViewIfLoaded;
+@property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } videoContentInset;
 
 - (void).cxx_destruct;
 - (void)_applyVideoGravityIfNeeded:(long long)arg1;
 - (void)_insertPlaybackControlsOrPlaceholderView:(id)arg1;
 - (bool)_isBeingTransitionedToOrFromFullScreen;
 - (void)_loadTurboModePlaybackControlsPlaceholderViewIfNeeded;
+- (void)_loadTurboOrFullPlaybackControlsIfNeeded;
 - (id)_mediaTimingFunctionForCurrentAnimationCurve;
-- (void)_updatePlayerLayerAndContentOverlayContainerViewLayoutMarginsForVideoGravity:(long long)arg1;
 - (void)_updateStyleSheet;
+- (void)_updateVideoContentInsetForVideoGravity:(long long)arg1;
 - (void)_updateVideoGravityDuringLayoutSubviewsAndAssertThatIfYouBreakThisMethodYouOwnThisMethod;
-- (id)activeContentView;
-- (void)addPlayerLayerAndContentOverlayContainerViewIfNeeded;
+- (void)addPlaybackContentContainerViewIfNeeded;
 - (id)audioOnlyIndicatorView;
 - (id)audioOnlyIndicatorViewIfLoaded;
 - (id)automaticVideoGravity;
-- (bool)backdropCaptureViewHidden;
-- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })boundsForLastLayoutSubviews;
+- (id)avkit_backdropGroupLeader;
+- (bool)avkit_hasFullScreenLayoutClass;
+- (void)avkit_needsUpdateBackdropCaptureViewHidden;
+- (id)backdropLayerView;
 - (bool)canAutomaticallyZoomLetterboxVideos;
-- (bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
-- (id)captureGroupName;
-- (id)captureView;
-- (void)configureBackdropView:(id)arg1;
-- (id)contentTransitioningDelegate;
-- (id)contentTransitioningView;
-- (id)contentTransitioningViewGestureRecognizer;
 - (void)dealloc;
 - (id)delegate;
 - (void)didMoveToSuperview;
@@ -121,50 +105,49 @@
 - (id)externalPlaybackIndicatorViewIfLoaded;
 - (id)iAdPreRollView;
 - (id)iAdPreRollViewIfLoaded;
-- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 playerLayerView:(id)arg2 targetVideoGravities:(id)arg3;
+- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 playbackContentContainerView:(id)arg2 targetVideoGravities:(id)arg3;
 - (id)interactiveContentOverlayView;
 - (bool)isCoveringWindow;
-- (bool)isDescendantOfNonPagingScrollView;
-- (bool)isTransitionInteractive;
+- (bool)isInAWindowAndNotScrolling;
+- (bool)isScrolling;
+- (bool)isScrollingQuickly;
 - (bool)isViewDescendantOfPlaybackControlsSubview:(id)arg1;
-- (unsigned long long)layoutClass;
+- (id)layoutClass;
 - (void)layoutSubviews;
 - (void)loadPlaybackControlsViewIfNeeded;
 - (bool)needsInitialLayout;
-- (void)performTransition:(long long)arg1;
+- (id)playbackContentContainerView;
 - (id)playbackControlsView;
-- (id)playerLayerAndContentOverlayContainerView;
 - (id)playerLayerView;
-- (void)playerLayerViewDidChange;
+- (void)removeTurboModePlaybackControlsPlaceholderViewIfNeeded;
+- (void)scrollViewObserverValuesDidChange:(id)arg1;
+- (id)scrollingObserver;
 - (void)setAutomaticVideoGravity:(id)arg1;
-- (void)setBackdropCaptureViewHidden:(bool)arg1;
-- (void)setBoundsForLastLayoutSubviews:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setCanAutomaticallyZoomLetterboxVideos:(bool)arg1;
-- (void)setContentTransitioningDelegate:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setEdgeInsetsForLetterboxedContent:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setExternalPlaybackIndicatorSubtitle:(id)arg1;
 - (void)setExternalPlaybackIndicatorTitle:(id)arg1;
 - (void)setExternalPlaybackIndicatorTitle:(id)arg1 subtitle:(id)arg2;
+- (void)setInteractiveContentOverlayView:(id)arg1;
 - (void)setNeedsInitialLayout:(bool)arg1;
+- (void)setPlaybackContentContainerView:(id)arg1;
 - (void)setPlayerLayerView:(id)arg1;
+- (void)setShouldLoadPlaybackControlsHint:(bool)arg1;
 - (void)setShowsAudioOnlyIndicator:(bool)arg1;
 - (void)setShowsExternalPlaybackIndicator:(bool)arg1;
 - (void)setShowsUnsupportedContentIndicator:(bool)arg1;
 - (void)setStyleSheet:(id)arg1;
 - (void)setStyleSheetShouldUseCompactFullScreenItemSize:(bool)arg1;
 - (void)setTargetVideoGravity:(id)arg1 forLayoutClass:(unsigned long long)arg2;
-- (void)setVideoGravityForTransitioningContent:(id)arg1;
+- (void)setVideoContentInset:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
+- (bool)shouldLoadPlaybackControlsHint;
 - (id)styleSheet;
 - (bool)styleSheetShouldUseCompactFullScreenItemSize;
 - (id)targetVideoGravities;
-- (long long)transitionDirection;
-- (double)transitionProgress;
-- (long long)transitionState;
-- (id)transitioningContentView;
 - (id)turboModePlaybackControlsPlaceholderView;
 - (id)unsupportedContentIndicatorView;
 - (id)unsupportedContentIndicatorViewIfLoaded;
-- (void)updateBackdropCaptureViewHidden;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })videoContentInset;
 
 @end

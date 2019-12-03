@@ -11,8 +11,6 @@
     NSObject<OS_dispatch_queue> * _currentNetworkQueue;
     struct __WiFiDeviceClient { } * _device;
     NSArray * _deviceScanChannels;
-    bool  _deviceSupportsHS20;
-    bool  _deviceSupportsWAPI;
     NSOperationQueue * _gasQueue;
     bool  _hasNoGatewayIP;
     NSString * _interfaceName;
@@ -25,6 +23,7 @@
     NSOperationQueue * _scanQueue;
     NSObject<OS_dispatch_queue> * _scanQueueDispatchQueue;
     bool  _scanning;
+    WFClient * _wifiClient;
 }
 
 @property (nonatomic, retain) NSRunLoop *callbackRunLoop;
@@ -35,8 +34,6 @@
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *currentNetworkQueue;
 @property (nonatomic) struct __WiFiDeviceClient { }*device;
 @property (nonatomic, retain) NSArray *deviceScanChannels;
-@property bool deviceSupportsHS20;
-@property bool deviceSupportsWAPI;
 @property (nonatomic, retain) NSOperationQueue *gasQueue;
 @property (nonatomic) bool hasNoGatewayIP;
 @property (nonatomic, copy) NSString *interfaceName;
@@ -49,12 +46,12 @@
 @property (nonatomic, retain) NSOperationQueue *scanQueue;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *scanQueueDispatchQueue;
 @property bool scanning;
+@property (nonatomic) WFClient *wifiClient;
 
 - (void).cxx_destruct;
-- (void)_currentNetworkDidChange;
+- (void)_currentNetworkDidChangeWithReason:(unsigned long long)arg1 previousNetwork:(id)arg2;
 - (id)_debugLQMString:(id)arg1;
 - (void)_hostAPStateDidChange:(id)arg1;
-- (bool)_isNetworkRestrictionActive;
 - (void)_linkChangedWithInfo:(id)arg1;
 - (void)_linkQualityChanged:(id)arg1;
 - (void)_resetCurrentNetworkStates;
@@ -62,13 +59,14 @@
 - (void)_startScanOperation:(id)arg1;
 - (void)_stopMonitoringWiFiEvents;
 - (void)_updateCurrentNetworkWithNetwork:(struct __WiFiNetwork { }*)arg1 callback:(id /* block */)arg2;
-- (void)_updateDeviceProperties;
+- (void)_updateCurrentNetworkWithNetwork:(struct __WiFiNetwork { }*)arg1 forceUpdateNetwork:(bool)arg2 callback:(id /* block */)arg3 userInfo:(id)arg4;
 - (void)_wifiManagerRestarted:(id)arg1;
 - (void)_wifiScanComplete:(id)arg1 error:(int)arg2;
 - (void)asyncAssociateToNetwork:(id)arg1 password:(id)arg2 reply:(id /* block */)arg3;
 - (void)asyncAssociateToNetwork:(id)arg1 profile:(id)arg2 reply:(id /* block */)arg3;
 - (void)asyncCurrentNetwork:(id /* block */)arg1;
 - (void)asyncGASQueryForNetworks:(id)arg1 elements:(unsigned long long)arg2 reply:(id /* block */)arg3;
+- (void)asyncHS20Supported:(id /* block */)arg1;
 - (void)asyncScanRequest:(id)arg1 reply:(id /* block */)arg2;
 - (id)callbackRunLoop;
 - (id)callbackThread;
@@ -80,12 +78,8 @@
 - (void)dealloc;
 - (struct __WiFiDeviceClient { }*)device;
 - (id)deviceScanChannels;
-- (bool)deviceSupportsHS20;
-- (bool)deviceSupportsWAPI;
 - (void)disassociateFromCarPlayUserConfiguredNetwork;
 - (void)disassociateFromCurrentNetwork;
-- (id)filterScanResultsForRestrictedNetworks:(id)arg1;
-- (void)finalize;
 - (id)gasQueue;
 - (bool)hasNoGatewayIP;
 - (id)initWithDevice:(struct __WiFiDeviceClient { }*)arg1;
@@ -109,8 +103,6 @@
 - (void)setCurrentNetworkQueue:(id)arg1;
 - (void)setDevice:(struct __WiFiDeviceClient { }*)arg1;
 - (void)setDeviceScanChannels:(id)arg1;
-- (void)setDeviceSupportsHS20:(bool)arg1;
-- (void)setDeviceSupportsWAPI:(bool)arg1;
 - (void)setGasQueue:(id)arg1;
 - (void)setHasNoGatewayIP:(bool)arg1;
 - (void)setInterfaceName:(id)arg1;
@@ -123,7 +115,7 @@
 - (void)setScanQueue:(id)arg1;
 - (void)setScanQueueDispatchQueue:(id)arg1;
 - (void)setScanning:(bool)arg1;
-- (bool)supportsHS20;
-- (bool)supportsWAPI;
+- (void)setWifiClient:(id)arg1;
+- (id)wifiClient;
 
 @end

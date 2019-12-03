@@ -7,10 +7,11 @@
 
 + (bool)canGenerateUUIDWithoutEntitlements;
 
+- (id /* block */)concurrentWorkBlock:(void *)arg1; // needs 1 arg types, found 4: id /* block */, void*, id, SEL
 - (NSManagedObject *)createManagedObjectForInsertIntoPhotoLibrary:(PLPhotoLibrary *)arg1 error:(id*)arg2;
-- (PHChangeRequestHelper *)helper;
+- (void)finalizeRequestWithBatchSuccess:(bool)arg1;
 - (id)initForNewObject;
-- (bool)isNew;
+- (bool)isNewRequest;
 - (void)performTransactionCompletionHandlingInPhotoLibrary:(PLPhotoLibrary *)arg1;
 - (bool)validateInsertIntoPhotoLibrary:(PLPhotoLibrary *)arg1 error:(id*)arg2;
 

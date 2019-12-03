@@ -10,8 +10,8 @@
 
 @property (nonatomic, copy) id /* block */ transmogrifier;
 
+- (void).cxx_destruct;
 - (id)copyMessages;
-- (void)dealloc;
 - (id)init;
 - (id)messages;
 - (void)newMessagesAvailable:(id)arg1;

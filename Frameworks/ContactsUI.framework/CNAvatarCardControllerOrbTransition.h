@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/ContactsUI.framework/ContactsUI
  */
 
-@interface CNAvatarCardControllerOrbTransition : NSObject <_UIPreviewInteractionViewControllerTransition> {
+@interface CNAvatarCardControllerOrbTransition : NSObject <_UIClickPresentationTransition> {
     CNAvatarCardViewController * _cardViewController;
     <CNAvatarCardControllerOrbTransitionDelegate> * _delegate;
     struct CGAffineTransform { 
@@ -36,9 +36,11 @@
         } size; 
     }  _sourceRect;
     UIView * _sourceView;
+    UIVisualEffectView * _visualEffectView;
 }
 
 @property (nonatomic) CNAvatarCardViewController *cardViewController;
+@property (nonatomic, readonly) UIViewPropertyAnimator *customAnimator;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <CNAvatarCardControllerOrbTransitionDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -49,9 +51,11 @@
 @property (nonatomic) double highlightViewToAlpha;
 @property (nonatomic) UIView *highlightedView;
 @property (nonatomic) bool isDismissing;
+@property (nonatomic, copy) UITargetedPreview *sourcePreview;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } sourceRect;
 @property (nonatomic) UIView *sourceView;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) UIVisualEffectView *visualEffectView;
 
 - (void).cxx_destruct;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_sourceRectInContainerView:(id)arg1;
@@ -62,7 +66,7 @@
 - (id)headerView;
 - (double)highlightViewToAlpha;
 - (id)highlightedView;
-- (id)initWithCardViewController:(id)arg1 headerView:(id)arg2 sourceView:(id)arg3 highlightedView:(id)arg4 sourceRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg5 isDismissing:(bool)arg6;
+- (id)initWithCardViewController:(id)arg1 headerView:(id)arg2 sourceView:(id)arg3 highlightedView:(id)arg4 sourceRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg5 backgroundVisualEffectView:(id)arg6 isDismissing:(bool)arg7;
 - (bool)isDismissing;
 - (void)performTransitionFromView:(id)arg1 toView:(id)arg2 containerView:(id)arg3;
 - (void)prepareTransitionFromView:(id)arg1 toView:(id)arg2 containerView:(id)arg3;
@@ -80,5 +84,6 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })sourceRect;
 - (id)sourceView;
 - (void)transitionDidEnd:(bool)arg1;
+- (id)visualEffectView;
 
 @end

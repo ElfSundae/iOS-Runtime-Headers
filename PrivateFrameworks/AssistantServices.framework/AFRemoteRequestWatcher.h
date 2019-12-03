@@ -19,6 +19,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_dispatchSpeechRequestOptions:(id)arg1;
 - (void)_setupRequestListener;
 - (void)_setupSpeechRequestListener;
 - (void)dealloc;

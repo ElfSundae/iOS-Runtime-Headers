@@ -11,5 +11,6 @@
 + (id)initWithContentsOfFile:(id)arg1;
 + (id)initWithData:(id)arg1;
 + (id)initWithImageSourceRef:(struct CGImageSource { }*)arg1;
++ (id)initWithUIImage:(id)arg1;
 
 @end

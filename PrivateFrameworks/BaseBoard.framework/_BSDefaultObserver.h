@@ -3,7 +3,7 @@
  */
 
 @interface _BSDefaultObserver : NSObject <BSDefaultObserver> {
-    unsigned int  _debounceCounter;
+    _Atomic unsigned int  _debounceCounter;
     BSAbstractDefaultDomain * _defaults;
     NSArray * _defaultsToObserve;
     id /* block */  _fireBlock;

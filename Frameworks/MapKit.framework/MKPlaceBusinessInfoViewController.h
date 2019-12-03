@@ -17,9 +17,13 @@
 + (bool)mapItemHasBusinessInfoToDisplay:(id)arg1;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
+- (id)_imageForApplePay;
+- (id)_stringForAmenity:(int)arg1;
 - (void)_updateBusinessInfo;
+- (id)infoCardChildPossibleActions;
 - (id)infoCardChildUnactionableUIElements;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (id)mapItem;
 - (void)setMapItem:(id)arg1;
 - (void)viewDidLoad;

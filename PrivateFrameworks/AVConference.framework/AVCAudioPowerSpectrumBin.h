@@ -14,7 +14,7 @@
 
 + (bool)supportsSecureCoding;
 
-- (void)assign:(id)arg1;
+- (void)assign:(const struct _VCAudioPowerSpectrumEntry { struct _VCRange { float x_1_1_1; float x_1_1_2; } x1; float x2; }*)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (float)maxFrequency;

@@ -9,7 +9,7 @@
     NSArray * _balloonFilters;
     double  _contentAlpha;
     unsigned long long  _direction;
-    UIColor * _textColor;
+    struct UIColor { Class x1; } * _textColor;
     CAFilter * _textCompositingFilter;
     long long  _type;
 }
@@ -38,10 +38,10 @@
 - (void)setBalloonFilters:(id)arg1;
 - (void)setContentAlpha:(double)arg1;
 - (void)setDirection:(unsigned long long)arg1;
-- (void)setTextColor:(id)arg1;
+- (void)setTextColor:(struct UIColor { Class x1; }*)arg1;
 - (void)setTextCompositingFilter:(id)arg1;
 - (void)setType:(long long)arg1;
-- (id)textColor;
+- (struct UIColor { Class x1; }*)textColor;
 - (id)textCompositingFilter;
 - (long long)type;
 

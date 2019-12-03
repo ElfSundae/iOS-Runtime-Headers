@@ -10,7 +10,6 @@
     LoadingViewController * _loadingViewController;
     long long  _orientation;
     UIWebClip * _webClip;
-    UIWindow * _window;
 }
 
 @property (readonly, copy) NSString *debugDescription;

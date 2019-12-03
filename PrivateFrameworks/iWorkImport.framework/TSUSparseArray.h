@@ -10,6 +10,8 @@
 
 @property (readonly) unsigned long long count;
 
++ (id)array;
+
 - (void)clear;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned long long)count;
@@ -19,8 +21,10 @@
 - (bool)hasObjectForKey:(unsigned long long)arg1;
 - (void)increaseDepth;
 - (unsigned long long)maxIndexForCurrentDepth;
+- (id)objectAtIndexedSubscript:(unsigned long long)arg1;
 - (id)objectForKey:(unsigned long long)arg1;
 - (void)removeObjectForKey:(unsigned long long)arg1;
+- (void)setObject:(id)arg1 atIndexedSubscript:(unsigned long long)arg2;
 - (void)setObject:(id)arg1 forKey:(unsigned long long)arg2;
 
 @end

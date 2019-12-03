@@ -6,15 +6,20 @@
     bool  _isPendingTotal;
     NSLayoutConstraint * _labelBaselineConstraint;
     long long  _labelNumberOfLines;
+    NSLayoutConstraint * _labelValueRelationConstraint;
+    NSLayoutConstraint * _labelValueRelationLargeTextConstraint;
     UILabel * _labelView;
     PKPaymentAuthorizationLayout * _layout;
     NSLayoutConstraint * _leftMarginConstraint;
     bool  _processing;
     UIActivityIndicatorView * _processingIndicator;
     NSLayoutConstraint * _rightMarginConstraint;
+    NSLayoutConstraint * _rightMarginLargeTextConstraint;
     UIView * _separatorView;
     bool  _showsBoldValueText;
     long long  _style;
+    NSLayoutConstraint * _valueBaselineConstraint;
+    NSLayoutConstraint * _valueBaselineLargeTextConstraint;
     UILabel * _valueView;
 }
 

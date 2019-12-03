@@ -10,6 +10,7 @@
 
 + (void)initialize;
 
+- (void)_attachPortraitLightingEffectMetadataToDepthMetadata:(id)arg1;
 - (int)_loadAndConfigureSDOFRenderering;
 - (void)dealloc;
 - (void)didSelectFormat:(id)arg1 forInput:(id)arg2;

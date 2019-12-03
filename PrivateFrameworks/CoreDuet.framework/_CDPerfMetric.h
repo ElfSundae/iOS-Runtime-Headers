@@ -3,10 +3,20 @@
  */
 
 @interface _CDPerfMetric : NSObject {
-    NSDictionary * _dictionary;
+    unsigned long long  _count;
+    unsigned long long  _errorCount;
     _CDPerfMetricFamily * _family;
+    double  _lastElapsedTime;
+    unsigned long long  _lastResultCount;
+    double  _lastUpdateTime;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _lock;
+    double  _maximumElapsedTime;
+    double  _minimumElapsedTime;
     NSString * _name;
     NSString * _string;
+    double  _totalElapsedTime;
 }
 
 @property (readonly) double averageElapsedTime;
@@ -20,19 +30,16 @@
 @property (readonly) double minimumElapsedTime;
 @property (readonly) NSString *name;
 @property (readonly) NSString *string;
+@property (readonly) double totalElapsedTime;
 
 + (id)perfMetricForFetchRequest:(id)arg1 type:(id)arg2;
 
 - (void).cxx_destruct;
-- (id)_histogramWithIndex:(unsigned long long)arg1;
-- (id)_stringWithIndex:(unsigned long long)arg1;
-- (unsigned long long)_unsignedIntegerCounterWithIndex:(unsigned long long)arg1;
 - (double)averageElapsedTime;
 - (unsigned long long)count;
-- (id)elapsedTimeHistogram;
 - (unsigned long long)errorCount;
 - (id)family;
-- (id)initWithName:(id)arg1 string:(id)arg2 family:(id)arg3 dictionary:(id)arg4;
+- (id)initWithName:(id)arg1 string:(id)arg2 family:(id)arg3;
 - (double)lastElapsedTime;
 - (unsigned long long)lastResultCount;
 - (id)lastUpdate;
@@ -40,5 +47,6 @@
 - (double)minimumElapsedTime;
 - (id)name;
 - (id)string;
+- (double)totalElapsedTime;
 
 @end

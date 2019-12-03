@@ -68,8 +68,8 @@
 - (void)deactivate;
 - (void)dealloc;
 - (id)device;
-- (void)didTouchDown;
-- (void)didTouchUpInside;
+- (void)didTouchDownInView:(id)arg1;
+- (void)didTouchUpInsideView:(id)arg1;
 - (long long)effectiveFaceDataMode;
 - (void)enumerateDisplayWrappersWithBlock:(id /* block */)arg1;
 - (void)handleFaceDefaultsChanged;
@@ -78,6 +78,7 @@
 - (id /* block */)invalidationHandler;
 - (bool)isFaceZooming;
 - (id)legacyDisplay;
+- (void)notifyDelegateOnTimelineChangeWithTritiumUpdatePriority:(long long)arg1;
 - (id)pauseDate;
 - (void)performBackgroundDataRefresh;
 - (void)performTapAction;

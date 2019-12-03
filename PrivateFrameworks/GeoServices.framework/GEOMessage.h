@@ -7,6 +7,7 @@
     GEOPeer * _peer;
     GEOApplicationAuditToken * _preferredAuditToken;
     NSProgress * _progressToMirrorOverXPC;
+    GEODataRequestThrottlerToken * _throttleToken;
     NSDictionary * _userInfo;
     NSObject<OS_xpc_object> * _xpcMessage;
 }
@@ -14,7 +15,8 @@
 @property (nonatomic, readonly) NSString *messageName;
 @property (nonatomic, readonly) GEOPeer *peer;
 @property (nonatomic, readonly) GEOApplicationAuditToken *preferredAuditToken;
-@property (readonly) NSProgress *progress;
+@property (nonatomic, readonly) NSProgress *progress;
+@property (nonatomic, readonly) GEODataRequestThrottlerToken *throttleToken;
 @property (nonatomic, readonly) NSDictionary *userInfo;
 
 - (void).cxx_destruct;
@@ -25,6 +27,7 @@
 - (id)progress;
 - (void)sendReply:(id)arg1;
 - (void)sendReplyWithXPCUserInfo:(id)arg1;
+- (id)throttleToken;
 - (id)userInfo;
 
 @end

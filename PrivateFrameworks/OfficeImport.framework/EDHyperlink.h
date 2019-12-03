@@ -14,7 +14,7 @@
 
 + (id)hyperlink;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)descriptionText;
 - (id)dosPath;

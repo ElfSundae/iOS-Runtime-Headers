@@ -9,6 +9,7 @@
     UIColor * _contactHeaderBackgroundColor;
     UIColor * _contactHeaderDropShadowColor;
     UIColor * _disabledTextColor;
+    UIColor * _groupedBackgroundColor;
     UIColor * _headerBackgroundColor;
     UIColor * _highlightedTextColor;
     long long  _inlineActionsViewStyle;
@@ -19,10 +20,17 @@
     UIColor * _readOnlyTextColor;
     UIColor * _searchBarBackgroundColor;
     UIColor * _sectionBackgroundColor;
+    UIColor * _sectionHeaderTextColor;
     UIColor * _sectionIndexBackgroundColor;
     UIColor * _selectedCellBackgroundColor;
     long long  _separatorBackdropOverlayBlendMode;
     UIColor * _separatorColor;
+    struct UIEdgeInsets { 
+        double top; 
+        double left; 
+        double bottom; 
+        double right; 
+    }  _separatorInset;
     long long  _separatorStyle;
     bool  _shouldPresentInCurrentContext;
     UIColor * _suggestedLabelTextColor;
@@ -45,6 +53,7 @@
 @property (nonatomic, retain) UIColor *contactHeaderBackgroundColor;
 @property (nonatomic, retain) UIColor *contactHeaderDropShadowColor;
 @property (nonatomic, retain) UIColor *disabledTextColor;
+@property (nonatomic, retain) UIColor *groupedBackgroundColor;
 @property (nonatomic, retain) UIColor *headerBackgroundColor;
 @property (nonatomic, retain) UIColor *highlightedTextColor;
 @property (nonatomic) long long inlineActionsViewStyle;
@@ -55,10 +64,12 @@
 @property (nonatomic, retain) UIColor *readOnlyTextColor;
 @property (nonatomic, retain) UIColor *searchBarBackgroundColor;
 @property (nonatomic, retain) UIColor *sectionBackgroundColor;
+@property (nonatomic, retain) UIColor *sectionHeaderTextColor;
 @property (nonatomic, retain) UIColor *sectionIndexBackgroundColor;
 @property (nonatomic, retain) UIColor *selectedCellBackgroundColor;
 @property (nonatomic) long long separatorBackdropOverlayBlendMode;
 @property (nonatomic, retain) UIColor *separatorColor;
+@property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } separatorInset;
 @property (nonatomic) long long separatorStyle;
 @property (nonatomic) bool shouldPresentInCurrentContext;
 @property (nonatomic, retain) UIColor *suggestedLabelTextColor;
@@ -80,7 +91,6 @@
 + (id)faceTimeStyle;
 + (void)setCurrentStyle:(id)arg1;
 + (id)siriStyle;
-+ (id)starkStyle;
 + (bool)supportsSecureCoding;
 + (id)testStyle;
 + (id)watchStyle;
@@ -94,6 +104,7 @@
 - (id)contactHeaderDropShadowColor;
 - (id)disabledTextColor;
 - (void)encodeWithCoder:(id)arg1;
+- (id)groupedBackgroundColor;
 - (id)headerBackgroundColor;
 - (id)highlightedTextColor;
 - (id)init;
@@ -106,10 +117,12 @@
 - (id)readOnlyTextColor;
 - (id)searchBarBackgroundColor;
 - (id)sectionBackgroundColor;
+- (id)sectionHeaderTextColor;
 - (id)sectionIndexBackgroundColor;
 - (id)selectedCellBackgroundColor;
 - (long long)separatorBackdropOverlayBlendMode;
 - (id)separatorColor;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })separatorInset;
 - (long long)separatorStyle;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setBarStyle:(long long)arg1;
@@ -117,6 +130,7 @@
 - (void)setContactHeaderBackgroundColor:(id)arg1;
 - (void)setContactHeaderDropShadowColor:(id)arg1;
 - (void)setDisabledTextColor:(id)arg1;
+- (void)setGroupedBackgroundColor:(id)arg1;
 - (void)setHeaderBackgroundColor:(id)arg1;
 - (void)setHighlightedTextColor:(id)arg1;
 - (void)setInlineActionsViewStyle:(long long)arg1;
@@ -127,10 +141,12 @@
 - (void)setReadOnlyTextColor:(id)arg1;
 - (void)setSearchBarBackgroundColor:(id)arg1;
 - (void)setSectionBackgroundColor:(id)arg1;
+- (void)setSectionHeaderTextColor:(id)arg1;
 - (void)setSectionIndexBackgroundColor:(id)arg1;
 - (void)setSelectedCellBackgroundColor:(id)arg1;
 - (void)setSeparatorBackdropOverlayBlendMode:(long long)arg1;
 - (void)setSeparatorColor:(id)arg1;
+- (void)setSeparatorInset:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setSeparatorStyle:(long long)arg1;
 - (void)setShouldPresentInCurrentContext:(bool)arg1;
 - (void)setSuggestedLabelTextColor:(id)arg1;

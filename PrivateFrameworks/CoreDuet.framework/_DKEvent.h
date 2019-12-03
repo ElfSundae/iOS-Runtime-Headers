@@ -3,6 +3,7 @@
  */
 
 @interface _DKEvent : _DKObject <DKPeriodType, _DKHasComparableValue, _DKHasPrimaryValue, _DKProtobufConverting> {
+    long long  _compatibilityVersion;
     double  _confidence;
     NSDate * _endDate;
     NSDictionary * _metadata;
@@ -13,6 +14,7 @@
     _DKObject * _value;
 }
 
+@property long long compatibilityVersion;
 @property double confidence;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -27,6 +29,14 @@
 @property (retain) _DKEventStream *stream;
 @property (readonly) Class superclass;
 @property (retain) NSTimeZone *timeZone;
+@property (nonatomic, readonly) TPSAnalyticsEvent *tps_analyticsEvent;
+@property (nonatomic, readonly) NSString *tps_bundleIdentifier;
+@property (nonatomic, readonly) NSString *tps_contentIdentifier;
+@property (nonatomic, readonly) NSString *tps_context;
+@property (nonatomic, readonly) unsigned long long tps_displayType;
+@property (nonatomic, readonly) NSArray *tps_eligibleContext;
+@property (nonatomic, readonly) long long tps_ineligibleReason;
+@property (nonatomic, readonly) long long tps_state;
 @property (retain) _DKObject *value;
 
 // Image: /System/Library/PrivateFrameworks/CoreDuet.framework/CoreDuet
@@ -66,6 +76,7 @@
 - (void).cxx_destruct;
 - (bool)boolValue;
 - (long long)compareValue:(id)arg1;
+- (long long)compatibilityVersion;
 - (double)confidence;
 - (bool)copyToManagedObject:(id)arg1;
 - (id)description;
@@ -85,8 +96,8 @@
 - (id)metadataFromStructuredMetadata:(id)arg1;
 - (id)metadataFromStructuredMetadata:(id)arg1 cache:(id)arg2;
 - (id)primaryValue;
-- (id)relevantAction;
 - (id)relevantShortcut;
+- (void)setCompatibilityVersion:(long long)arg1;
 - (void)setConfidence:(double)arg1;
 - (void)setEndDate:(id)arg1;
 - (void)setMetadata:(id)arg1;
@@ -103,6 +114,10 @@
 - (id)toPBCodable;
 - (id)value;
 
+// Image: /System/Library/PrivateFrameworks/AppPredictionInternal.framework/AppPredictionInternal
+
+- (id)atx_convertToLocationVisitEvent;
+
 // Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
 
 - (id)shortDescription;
@@ -110,5 +125,32 @@
 // Image: /System/Library/PrivateFrameworks/KnowledgeMonitor.framework/KnowledgeMonitor
 
 - (double)duration;
+
+// Image: /System/Library/PrivateFrameworks/MediaMiningKit.framework/MediaMiningKit
+
+- (id)cls_album;
+- (id)cls_artist;
+- (id)cls_durationInSeconds;
+- (id)cls_genre;
+- (id)cls_identifier;
+- (id)cls_title;
+
+// Image: /System/Library/PrivateFrameworks/PowerUI.framework/PowerUI
+
+- (double)duration;
+- (bool)includesDate:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/Tips.framework/Tips
+
++ (id)_eventWithContentIdentifier:(id)arg1 bundleIdentifier:(id)arg2 displayType:(unsigned long long)arg3 eligibleContext:(id)arg4 context:(id)arg5 state:(long long)arg6 reason:(long long)arg7 event:(id)arg8 date:(id)arg9;
+
+- (id)tps_analyticsEvent;
+- (id)tps_bundleIdentifier;
+- (id)tps_contentIdentifier;
+- (id)tps_context;
+- (unsigned long long)tps_displayType;
+- (id)tps_eligibleContext;
+- (long long)tps_ineligibleReason;
+- (long long)tps_state;
 
 @end

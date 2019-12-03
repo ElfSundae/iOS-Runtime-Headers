@@ -18,15 +18,18 @@
         BOOL __opaque[56]; 
     }  _handlerLock;
     id /* block */  _makeEmptyBox;
+    const char * _name;
     int  _outstanding;
     NSObject<OS_dispatch_queue> * _queue;
     NSObject<OS_dispatch_source> * _source;
+    NSObject<OS_os_transaction> * _transaction;
 }
 
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
-- (id)initWithBoxMaker:(id /* block */)arg1 handler:(id /* block */)arg2 qos:(unsigned int)arg3;
+- (id)initWithName:(const char *)arg1 boxMaker:(id /* block */)arg2 handler:(id /* block */)arg3 qos:(unsigned int)arg4;
+- (void)typeCheckingSink:(id)arg1;
 - (void)updateBox:(id /* block */)arg1;
 - (void)updateBox:(id /* block */)arg1 delay:(double)arg2;
 - (void)wait;

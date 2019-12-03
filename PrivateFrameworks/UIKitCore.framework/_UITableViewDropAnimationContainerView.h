@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface _UITableViewDropAnimationContainerView : UIView {
+@interface _UITableViewDropAnimationContainerView : _UITableViewContainerView {
     struct CGPoint { 
         double x; 
         double y; 

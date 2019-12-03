@@ -10,6 +10,8 @@
     long long  _category;
     SKUIClientContext * _clientContext;
     SUClientInterface * _clientInterface;
+    UIViewController * _embeddedViewController;
+    bool  _finishedLoading;
     NSString * _initialCode;
     NSOperationQueue * _operationQueue;
     SKUIRedeemConfiguration * _redeemConfiguration;
@@ -23,6 +25,8 @@
 @property (nonatomic, readonly) long long category;
 @property (nonatomic, retain) SKUIClientContext *clientContext;
 @property (nonatomic, retain) SUClientInterface *clientInterface;
+@property (nonatomic, retain) UIViewController *embeddedViewController;
+@property (nonatomic) bool finishedLoading;
 @property (nonatomic, copy) NSString *initialCode;
 @property (nonatomic, retain) NSOperationQueue *operationQueue;
 @property (nonatomic, retain) SKUIRedeemConfiguration *redeemConfiguration;
@@ -47,6 +51,9 @@
 - (long long)category;
 - (id)clientContext;
 - (id)clientInterface;
+- (void)clientInterfaceDidFinishLoading:(id)arg1;
+- (id)embeddedViewController;
+- (bool)finishedLoading;
 - (id)initWithRedeemCategory:(long long)arg1;
 - (id)initialCode;
 - (void)loadView;
@@ -58,6 +65,8 @@
 - (void)setCameraRedeemVisible:(bool)arg1;
 - (void)setClientContext:(id)arg1;
 - (void)setClientInterface:(id)arg1;
+- (void)setEmbeddedViewController:(id)arg1;
+- (void)setFinishedLoading:(bool)arg1;
 - (void)setInitialCode:(id)arg1;
 - (void)setOperationQueue:(id)arg1;
 - (void)setRedeemConfiguration:(id)arg1;

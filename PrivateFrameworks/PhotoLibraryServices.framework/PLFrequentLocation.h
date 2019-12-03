@@ -27,6 +27,8 @@
 - (id)dateInterval;
 - (id)description;
 - (id)initWithDateInterval:(id)arg1 centroid:(id)arg2 items:(id)arg3;
+- (bool)isSimilarToFrequentLocation:(id)arg1;
+- (bool)isWithinDistance:(double)arg1 toCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg2;
 - (id)items;
 
 @end

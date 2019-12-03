@@ -15,18 +15,19 @@
 + (id)interfaceWithProtocol:(id)arg1;
 + (id)signatureForBlock:(id)arg1;
 
+- (const struct _xpc_type_s { }*)XPCTypeForSelector:(SEL)arg1 argumentIndex:(unsigned long long)arg2 ofReply:(bool)arg3;
 - (id)_allowedClassesForSelector:(SEL)arg1 reply:(bool)arg2;
 - (Class)_customSubclass;
 - (id)_generateAndCacheMethodSignatureForRemoteSelector:(SEL)arg1;
 - (bool)_hasProxiesInArgumentsOfSelector:(SEL)arg1;
 - (bool)_hasProxiesInReplyBlockArgumentsOfSelector:(SEL)arg1;
 - (id)_interfaceForArgument:(unsigned long long)arg1 ofSelector:(SEL)arg2 reply:(bool)arg3;
-- (void)_methodSignature:(id*)arg1 allowedClasses:(id*)arg2 forSelector:(SEL)arg3 isReply:(bool)arg4;
 - (id)_methodSignatureForRemoteSelector:(SEL)arg1;
 - (id)_methodSignatureForReplyBlockOfSelector:(SEL)arg1;
 - (unsigned long long)_remoteVersion;
 - (unsigned long long)_respondsToRemoteSelector:(SEL)arg1;
 - (Class)_returnClassForSelector:(SEL)arg1;
+- (bool)_selectorIsAllowed:(SEL)arg1 isReply:(bool)arg2 methodSignature:(id*)arg3 allowedClasses:(id*)arg4;
 - (Class)classForSelector:(SEL)arg1 argumentIndex:(unsigned long long)arg2 ofReply:(bool)arg3;
 - (id)classesForSelector:(SEL)arg1 argumentIndex:(unsigned long long)arg2 ofReply:(bool)arg3;
 - (void)dealloc;
@@ -41,6 +42,7 @@
 - (void)setProtocol:(id)arg1;
 - (void)setReplyBlockSignature:(id)arg1 forSelector:(SEL)arg2;
 - (void)setVersion:(unsigned long long)arg1 forSelector:(SEL)arg2;
+- (void)setXPCType:(struct _xpc_type_s { }*)arg1 forSelector:(SEL)arg2 argumentIndex:(unsigned long long)arg3 ofReply:(bool)arg4;
 - (void)set_remoteVersion:(unsigned long long)arg1;
 - (unsigned long long)version;
 - (unsigned long long)versionForSelector:(SEL)arg1;
@@ -60,6 +62,10 @@
 + (id)cx_callDirectoryProviderVendorInterface;
 + (id)cx_providerHostInterface;
 + (id)cx_providerVendorInterface;
++ (id)cx_voicemailControllerHostInterface;
++ (id)cx_voicemailControllerVendorInterface;
++ (id)cx_voicemailProviderHostInterface;
++ (id)cx_voicemailProviderVendorInterface;
 
 - (id)_cx_callControllerAllowedClasses;
 - (id)_cx_callDirectoryManagerAllowedClasses;
@@ -69,13 +75,15 @@
 - (void)_cx_setAllowedClassesForCallControllerVendorProtocol;
 - (void)_cx_setAllowedClassesForCallDirectoryManagerDefaultHostProtocol;
 - (void)_cx_setAllowedClassesForCallDirectoryProviderHostProtocol;
+- (void)_cx_setAllowedClassesForVoicemailControllerHostProtocol;
+- (void)_cx_setAllowedClassesForVoicemailControllerVendorProtocol;
+- (id)_cx_voicemailControllerAllowedClasses;
+- (id)_cx_voicemailProviderAllowedClasses;
 - (id)cx_allowedClasses;
 - (void)cx_setAllowedClassesForProviderHostProtocol;
 - (void)cx_setAllowedClassesForProviderVendorProtocol;
-
-// Image: /System/Library/Frameworks/CoreServices.framework/CoreServices
-
-- (void)ls_setArgumentClasses:(id)arg1 replyClasses:(id)arg2 forSelector:(SEL)arg3;
+- (void)cx_setAllowedClassesForVoicemailProviderHostProtocol;
+- (void)cx_setAllowedClassesForVoicemailProviderVendorProtocol;
 
 // Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
 
@@ -118,5 +126,9 @@
 // Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
 
 + (id)geo_MapsPushDaemonFromGeodInterface;
+
+// Image: /System/Library/PrivateFrameworks/IconServices.framework/IconServices
+
+- (void)ls_setArgumentClasses:(id)arg1 replyClasses:(id)arg2 forSelector:(SEL)arg3;
 
 @end

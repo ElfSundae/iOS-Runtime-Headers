@@ -30,6 +30,7 @@
 - (id)name;
 - (bool)openWithError:(id*)arg1;
 - (id)platformObject;
+- (id)redactedDescription;
 - (unsigned long long)scopeType;
 - (id)status;
 - (id)statusDictionary;

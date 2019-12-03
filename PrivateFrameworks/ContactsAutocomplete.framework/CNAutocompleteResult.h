@@ -14,6 +14,7 @@
     NSString * _lastSendingAddress;
     id /* block */  _membersProvider;
     CNAutocompleteNameComponents * _nameComponents;
+    NSNumber * _recentsIdentifier;
     long long  _resultType;
     unsigned long long  _sourceType;
     NSDictionary * _userInfo;
@@ -33,6 +34,7 @@
 @property (copy) NSString *lastSendingAddress;
 @property (nonatomic, copy) id /* block */ membersProvider;
 @property (copy) CNAutocompleteNameComponents *nameComponents;
+@property (nonatomic, retain) NSNumber *recentsIdentifier;
 @property long long resultType;
 @property unsigned long long sourceType;
 @property (copy) NSDictionary *userInfo;
@@ -78,6 +80,7 @@
 - (id)members:(id*)arg1;
 - (id /* block */)membersProvider;
 - (id)nameComponents;
+- (id)recentsIdentifier;
 - (long long)resultType;
 - (id)resultTypeDescription;
 - (void)setContactProvider:(id /* block */)arg1;
@@ -89,6 +92,7 @@
 - (void)setLastSendingAddress:(id)arg1;
 - (void)setMembersProvider:(id /* block */)arg1;
 - (void)setNameComponents:(id)arg1;
+- (void)setRecentsIdentifier:(id)arg1;
 - (void)setResultType:(long long)arg1;
 - (void)setSourceType:(unsigned long long)arg1;
 - (void)setUserInfo:(id)arg1;

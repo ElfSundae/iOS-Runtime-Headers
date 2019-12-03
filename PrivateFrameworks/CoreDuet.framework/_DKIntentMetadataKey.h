@@ -4,6 +4,8 @@
 
 @interface _DKIntentMetadataKey : NSObject
 
++ (id)derivedIntentIdentifier;
++ (id)direction;
 + (id)donatedBySiri;
 + (id)intentClass;
 + (id)intentHandlingStatus;

@@ -19,6 +19,7 @@
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
     }  _lock;
+    bool  _lock_allowsUnknown;
     int  _lock_attachment;
     FBSDisplayConfiguration * _lock_configuration;
     unsigned int  _lock_debounceToken;
@@ -27,6 +28,7 @@
     bool  _observing;
 }
 
+@property (nonatomic) bool allowsUnknown;
 @property (nonatomic, readonly, copy) FBSDisplayConfiguration *connectedConfiguration;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -43,6 +45,7 @@
 - (void)_lock_setConfiguration:(id)arg1;
 - (id)_lock_setReportedConfiguration:(id)arg1;
 - (void)_lock_update;
+- (bool)allowsUnknown;
 - (id)connectedConfiguration;
 - (void)dealloc;
 - (id)debugDescription;
@@ -55,6 +58,7 @@
 - (id)initWithNonMainDisplay:(id)arg1 monitor:(id)arg2;
 - (void)invalidate;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
+- (void)setAllowsUnknown:(bool)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 

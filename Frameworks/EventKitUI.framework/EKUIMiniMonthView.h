@@ -8,7 +8,7 @@
 
 @property (nonatomic, retain) NSDateComponents *dateComponents;
 
-+ (double)heightForInterfaceOrientation:(long long)arg1;
++ (double)heightForInterfaceOrientation:(long long)arg1 windowSize:(struct CGSize { double x1; double x2; })arg2 heightSizeClass:(long long)arg3;
 
 - (void).cxx_destruct;
 - (double)_gridOfDaysHeightAdjustment;

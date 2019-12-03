@@ -4,11 +4,8 @@
 
 @interface MDLMatrix4x4Array : NSObject <NSCopying> {
     struct VtValue { 
-        struct aligned_storage_imp<8, 8> { 
-            union data_t { 
-                BOOL buf[8]; 
-                struct a8 { } align_; 
-            } data_; 
+        struct type { 
+            unsigned char __lx[8]; 
         } _storage; 
         struct TfPointerAndBits<const VtValue::_TypeInfo> { 
             struct _TypeInfo {} *_ptrAndBits; 
@@ -24,7 +21,7 @@
 - (void).cxx_destruct;
 - (void)clear;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (struct VtValue { struct aligned_storage_imp<8, 8> { union data_t { BOOL x_1_2_1[8]; struct a8 { } x_1_2_2; } x_1_1_1; } x1; struct TfPointerAndBits<const VtValue::_TypeInfo> { struct _TypeInfo {} *x_2_1_1; } x2; })defaultVtValue;
+- (struct VtValue { struct type { unsigned char x_1_1_1[8]; } x1; struct TfPointerAndBits<const VtValue::_TypeInfo> { struct _TypeInfo {} *x_2_1_1; } x2; })defaultVtValue;
 - (unsigned long long)elementCount;
 - (unsigned long long)getDouble4x4Array:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; }*)arg1 maxCount:(unsigned long long)arg2;
 - (unsigned long long)getFloat4x4Array:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; }*)arg1 maxCount:(unsigned long long)arg2;

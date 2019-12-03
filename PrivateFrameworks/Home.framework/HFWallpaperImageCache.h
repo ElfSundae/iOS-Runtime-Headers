@@ -4,11 +4,12 @@
 
 @interface HFWallpaperImageCache : NSObject {
     BSUIMappedImageCache * _imageCache;
+    <HMFLocking> * _lock;
     <HFProcessedWallpaperSource> * _processedWallpaperSource;
 }
 
 @property (nonatomic, retain) BSUIMappedImageCache *imageCache;
-@property (nonatomic, retain) <HFProcessedWallpaperSource> *processedWallpaperSource;
+@property (retain) <HFProcessedWallpaperSource> *processedWallpaperSource;
 @property (nonatomic, readonly) NSArray *supportedProcessedVariants;
 
 - (void).cxx_destruct;

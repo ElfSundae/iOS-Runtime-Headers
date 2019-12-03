@@ -10,12 +10,14 @@
 @property (nonatomic, retain) NSMutableArray *roadAccessPoints;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
 + (id)roadAccessInfoForPlaceData:(id)arg1;
 + (Class)roadAccessPointType;
 
 - (void).cxx_destruct;
 - (void)addRoadAccessPoint:(id)arg1;
 - (void)clearRoadAccessPoints;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -23,6 +25,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)roadAccessPointAtIndex:(unsigned long long)arg1;
 - (id)roadAccessPoints;

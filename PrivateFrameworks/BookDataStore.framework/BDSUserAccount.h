@@ -66,6 +66,7 @@
 - (bool)cachedIsPrimaryAccountManagedAppleID;
 - (bool)cachedIsUserSignedInToiCloud;
 - (void)dealloc;
+- (id)description;
 - (id)init;
 - (id)prewarmQueue;
 - (void)setAccountStore:(id)arg1;

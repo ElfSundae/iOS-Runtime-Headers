@@ -9,6 +9,7 @@
 
 @property (nonatomic, readonly) NSArray *availableMediaTypes;
 @property (nonatomic, readonly) AVAssetWriterConfigurationState *configurationState;
+@property <AVAssetWriterDelegate> *delegate;
 @property (nonatomic, copy) NSURL *directoryForTemporaryFiles;
 @property (nonatomic, readonly) NSError *error;
 @property (nonatomic, readonly) NSArray *inputGroups;
@@ -40,11 +41,13 @@
 - (void)cancelWriting;
 - (id)configurationState;
 - (void)dealloc;
+- (id)delegate;
 - (id)directoryForTemporaryFiles;
 - (void)endSessionAtSourceTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (id)error;
 - (void)finishWriting;
 - (void)finishWritingWithCompletionHandler:(id /* block */)arg1;
+- (void)flush;
 - (id)init;
 - (id)initWithConfigurationState:(id)arg1;
 - (id)inputGroups;
@@ -58,6 +61,7 @@
 - (float)preferredRate;
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })preferredTransform;
 - (float)preferredVolume;
+- (void)setDelegate:(id)arg1;
 - (void)setDirectoryForTemporaryFiles:(id)arg1;
 - (void)setMetadata:(id)arg1;
 - (void)setMovieFragmentInterval:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;

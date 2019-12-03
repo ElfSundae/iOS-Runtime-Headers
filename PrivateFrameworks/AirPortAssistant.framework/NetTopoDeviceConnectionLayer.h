@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/AirPortAssistant.framework/AirPortAssistant
  */
 
-@interface NetTopoDeviceConnectionLayer : NetTopoObjectLayer {
+@interface NetTopoDeviceConnectionLayer : NetTopoObjectLayer <CALayerDelegate> {
     struct CGPath { } * _arrowhead;
     struct CGColor { } * _clearColor;
     CAShapeLayer * _connectionLineLayer;
@@ -34,9 +34,13 @@
 @property (nonatomic, readonly) unsigned long long connectionMedium;
 @property (nonatomic) unsigned long long connectionMediumFallback;
 @property (nonatomic) unsigned long long connectionStyle;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) struct CGPoint { double x1; double x2; } downstreamConnectionPoint;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) struct CGPath { }*hitTestPath;
 @property (nonatomic) struct CGPoint { double x1; double x2; } siblingMergePoint;
+@property (readonly) Class superclass;
 @property (nonatomic) struct CGPoint { double x1; double x2; } upstreamConnectionPoint;
 @property (nonatomic) unsigned long long upstreamConnectionSide;
 @property (nonatomic) unsigned long long upstreamDeviceSpatialRelationship;

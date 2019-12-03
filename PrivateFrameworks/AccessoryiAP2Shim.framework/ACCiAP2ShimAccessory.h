@@ -10,6 +10,9 @@
     unsigned int  _featureTypeMask;
     NSString * _firmwareVersion;
     NSString * _hardwareVersion;
+    NSString * _keyAccessoryUID;
+    NSString * _keyConnectionID;
+    NSString * _keyTag;
     NSString * _manufacturer;
     NSString * _model;
     NSString * _name;
@@ -23,6 +26,9 @@
 @property (readonly) unsigned int featureTypeMask;
 @property (retain) NSString *firmwareVersion;
 @property (retain) NSString *hardwareVersion;
+@property (readonly) NSString *keyAccessoryUID;
+@property (readonly) NSString *keyConnectionID;
+@property (readonly) NSString *keyTag;
 @property (retain) NSString *manufacturer;
 @property (retain) NSString *model;
 @property (retain) NSString *name;
@@ -40,7 +46,10 @@
 - (unsigned int)featureTypeMask;
 - (id)firmwareVersion;
 - (id)hardwareVersion;
-- (id)initWithUID:(id)arg1 features:(unsigned int)arg2;
+- (id)initWithUID:(id)arg1 keyTag:(id)arg2 features:(unsigned int)arg3;
+- (id)keyAccessoryUID;
+- (id)keyConnectionID;
+- (id)keyTag;
 - (id)manufacturer;
 - (id)model;
 - (id)name;

@@ -5,7 +5,7 @@
 @interface MPTimeMarker : NSObject {
     double  _duration;
     unsigned long long  _index;
-    int  _markerType;
+    long long  _markerType;
     NSDictionary * _metadata;
     double  _time;
     NSString * _title;
@@ -16,7 +16,7 @@
 @property (nonatomic) double duration;
 @property (nonatomic, readonly) bool hasArtworkAtPlaybackTime;
 @property (nonatomic) unsigned long long index;
-@property (nonatomic, readonly) int markerType;
+@property (nonatomic, readonly) long long markerType;
 @property (nonatomic, readonly) double maxTime;
 @property (nonatomic, retain) NSDictionary *metadata;
 @property (nonatomic) double time;
@@ -29,8 +29,8 @@
 - (double)duration;
 - (bool)hasArtworkAtPlaybackTime;
 - (unsigned long long)index;
-- (id)initWithMarkerType:(int)arg1;
-- (int)markerType;
+- (id)initWithMarkerType:(long long)arg1;
+- (long long)markerType;
 - (double)maxTime;
 - (id)metadata;
 - (void)setDuration:(double)arg1;

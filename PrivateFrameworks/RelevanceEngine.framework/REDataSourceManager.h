@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
  */
 
-@interface REDataSourceManager : RERelevanceEngineSubsystem <RELoggable> {
+@interface REDataSourceManager : RERelevanceEngineSubsystem <REDataSourceManagerProperties> {
     NSSet * _availableDataSourceIdentifiers;
     bool  _completedFirstElementLoad;
     NSSet * _currentDataSourceIdentifiers;
@@ -16,20 +16,21 @@
     NSDictionary * _identifierApplicationIdentifierMap;
     NSDictionary * _identifierDataSourceMap;
     NSDictionary * _identifierOperatingSystemVersionMap;
+    bool  _ignoreAppInstallation;
     REDataSourceLoader * _loader;
     bool  _locationAllowed;
+    NSDictionary * _unmanagedDataSourcesMap;
 }
 
 @property (retain) NSSet *availableDataSourceIdentifiers;
 @property (getter=hasCompletedFirstElementLoad, nonatomic, readonly) bool completedFirstElementLoad;
 @property (retain) NSSet *currentDataSourceIdentifiers;
 @property (retain) NSArray *currentDataSources;
-@property (readonly, copy) NSString *debugDescription;
+@property (nonatomic, readonly) NSArray *dataSourceControllers;
 @property (nonatomic, readonly) <REDataSourceManagerObserver> *delegate;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) NSSet *disabledDataSources;
 @property (nonatomic, readonly) REDataSourceLoader *loader;
-@property (readonly) Class superclass;
+@property (nonatomic, readonly) NSSet *unrestirctedDataSourceIdentifiers;
 
 + (bool)_isPrioritizedDataSourceClass:(Class)arg1;
 + (id)_prioritizedDataSourceClasses;
@@ -44,11 +45,12 @@
 - (void)_updatePreferences;
 - (id)availableDataSourceIdentifiers;
 - (Class)classForDataSourceIdentifier:(id)arg1;
-- (void)collectLoggableState:(id /* block */)arg1;
 - (id)currentDataSourceIdentifiers;
 - (id)currentDataSources;
+- (id)dataSourceControllers;
 - (void)dealloc;
 - (id)delegate;
+- (id)disabledDataSources;
 - (id)elementGroupForIdentifier:(id)arg1;
 - (void)enumerateElementDataSourceControllers:(id /* block */)arg1;
 - (bool)hasCompletedFirstElementLoad;
@@ -60,5 +62,6 @@
 - (void)setAvailableDataSourceIdentifiers:(id)arg1;
 - (void)setCurrentDataSourceIdentifiers:(id)arg1;
 - (void)setCurrentDataSources:(id)arg1;
+- (id)unrestirctedDataSourceIdentifiers;
 
 @end

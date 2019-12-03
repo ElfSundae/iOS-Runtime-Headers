@@ -4,13 +4,13 @@
 
 @interface GEOLogMsgEventLogFramework : PBCodable <NSCopying> {
     struct { 
-        unsigned int messageSize : 1; 
-        unsigned int messageCount : 1; 
-        unsigned int messageType : 1; 
-        unsigned int metricState : 1; 
-        unsigned int metricType : 1; 
-        unsigned int purgeReason : 1; 
-    }  _has;
+        unsigned int has_messageSize : 1; 
+        unsigned int has_messageCount : 1; 
+        unsigned int has_messageType : 1; 
+        unsigned int has_metricState : 1; 
+        unsigned int has_metricType : 1; 
+        unsigned int has_purgeReason : 1; 
+    }  _flags;
     NSMutableArray * _logFrameworkItems;
     unsigned int  _messageCount;
     unsigned long long  _messageSize;
@@ -34,6 +34,7 @@
 @property (nonatomic) int metricType;
 @property (nonatomic) int purgeReason;
 
++ (bool)isValid:(id)arg1;
 + (Class)logFrameworkItemType;
 
 - (void).cxx_destruct;
@@ -69,6 +70,7 @@
 - (id)metricTypeAsString:(int)arg1;
 - (int)purgeReason;
 - (id)purgeReasonAsString:(int)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasMessageCount:(bool)arg1;
 - (void)setHasMessageSize:(bool)arg1;

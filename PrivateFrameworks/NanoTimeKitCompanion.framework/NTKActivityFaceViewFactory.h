@@ -34,10 +34,9 @@
 @property (nonatomic) bool showsLockedContent;
 @property (readonly) Class superclass;
 
-+ (void)_purgeGLContexts;
-+ (void)initialize;
 + (id)prelaunchApplicationIdentifiers;
 + (void)prewarmForDevice:(id)arg1;
++ (id)sharedRingsViewRenderer;
 + (bool)userActiveEnergyIsCalories;
 + (id)userActiveEnergyUnit;
 

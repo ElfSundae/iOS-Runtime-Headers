@@ -6,6 +6,7 @@
 
 @property (nonatomic, retain) HMDAccountHandle *accountHandle;
 @property (nonatomic, retain) HMDAccountIdentifier *accountIdentifier;
+@property (nonatomic, retain) NSNumber *camerasAccessLevel;
 @property (nonatomic, retain) NSString *changeTag;
 @property (nonatomic, retain) NSDictionary *pairingIdentity;
 @property (nonatomic, retain) NSNumber *presenceAuthorizationStatus;

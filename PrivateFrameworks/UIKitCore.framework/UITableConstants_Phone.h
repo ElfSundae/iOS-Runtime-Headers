@@ -6,6 +6,4 @@
 
 + (id)sharedConstants;
 
-- (bool)useOffWhiteEtchedLook;
-
 @end

@@ -39,21 +39,23 @@
 + (id)serviceViewControllerInterface;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)_errorHandlingServiceViewControllerProxy;
 - (void)_queryRepresentedPropertiesWithCompletion:(id /* block */)arg1;
 - (void)_setRequestInfo:(id)arg1;
 - (void)_updateExtensionContextStateWithCompletion:(id /* block */)arg1;
 - (id)activeExtension;
 - (id)configuration;
-- (void)configureForParameters:(id)arg1 ofInteraction:(id)arg2 context:(unsigned long long)arg3 completion:(id /* block */)arg4;
 - (void)configureForParameters:(id)arg1 ofInteraction:(id)arg2 interactiveBehavior:(unsigned long long)arg3 context:(unsigned long long)arg4 completion:(id /* block */)arg5;
 - (void)configureWithInteraction:(id)arg1 context:(unsigned long long)arg2 completion:(id /* block */)arg3;
 - (void)configureWithInteraction:(id)arg1 context:(unsigned long long)arg2 errorHandlingCompletion:(id /* block */)arg3;
 - (id)currentRequestIdentifier;
 - (id)delegate;
+- (void)desiresInteractivity:(id /* block */)arg1;
 - (id)disconnect;
 - (id)extensionHostContext;
 - (void)extensionHostContext:(id)arg1 wantsToHandleIntent:(id)arg2;
+- (void)extensionHostContextWillBeginEditing:(id)arg1;
 - (bool)needsStateUpdate;
 - (struct CGSize { double x1; double x2; })preferredContentSize;
 - (void)requestCancellation;

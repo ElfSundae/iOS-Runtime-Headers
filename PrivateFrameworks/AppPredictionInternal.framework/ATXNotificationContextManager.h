@@ -5,7 +5,7 @@
 @interface ATXNotificationContextManager : NSObject {
     _ATXAppLaunchHistogram * _appHistory;
     ATXNotificationsContentAnalyzer * _contentanalyzer;
-    _ATXLocationManagerWrapper * _locationmanager;
+    ATXLocationManager * _locationmanager;
     _ATXMotionManagerWrapper * _motionmanager;
     _ATXAppLaunchCategoricalHistogram * _notificationsHistory;
 }

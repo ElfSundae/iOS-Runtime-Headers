@@ -4,7 +4,7 @@
 
 @interface WKFormInputSession : NSObject <_WKFormInputSession> {
     bool  _accessoryViewShouldNotShow;
-    /* Warning: unhandled struct encoding: '{WeakObjCPtr<WKContentView>="m_weakReference"@}' */ struct WeakObjCPtr<WKContentView> { 
+    struct WeakObjCPtr<WKContentView> { 
         id m_weakReference; 
     }  _contentView;
     struct RetainPtr<UIView> { 

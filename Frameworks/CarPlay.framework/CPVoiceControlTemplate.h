@@ -12,7 +12,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (nonatomic, retain) <CPVoiceTemplateProviding> *templateProvider;
+@property (nonatomic, retain) NAFuture *templateProviderFuture;
 @property (nonatomic, readonly, copy) NSArray *voiceControlStates;
 
 + (bool)supportsSecureCoding;

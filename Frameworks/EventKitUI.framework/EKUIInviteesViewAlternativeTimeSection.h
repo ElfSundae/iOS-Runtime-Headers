@@ -16,6 +16,7 @@
     unsigned long long  _reuseIdentifierVersion;
     NSMutableSet * _rowsShowingAllParticipants;
     bool  _searchExhausted;
+    bool  _searcherHasError;
     id /* block */  _showMoreAlternativeTimesTapped;
     id /* block */  _showPreviewOfEventAtTime;
     id /* block */  _tableViewCellHook;
@@ -40,6 +41,7 @@
 @property (nonatomic) unsigned long long reuseIdentifierVersion;
 @property (nonatomic, retain) NSMutableSet *rowsShowingAllParticipants;
 @property (nonatomic) bool searchExhausted;
+@property (nonatomic) bool searcherHasError;
 @property (nonatomic, readonly) NSArray *searcherTimeSlots;
 @property (nonatomic, readonly) bool searchingForMoreTimes;
 @property (nonatomic, copy) id /* block */ showMoreAlternativeTimesTapped;
@@ -53,6 +55,7 @@
 - (bool)_isConflictSearchRow:(long long)arg1;
 - (bool)_isValidRow:(long long)arg1;
 - (unsigned long long)_numberOfTimeSlotsShown;
+- (id)actionsForRow:(id)arg1;
 - (id)alternativeTimes;
 - (bool)availabilityRequestInProgress;
 - (id)availabilitySearcher;
@@ -85,6 +88,7 @@
 - (id)rowsShowingAllParticipants;
 - (bool)searchExhausted;
 - (void)searchForMoreTimes;
+- (bool)searcherHasError;
 - (id)searcherTimeSlots;
 - (bool)searchingForMoreTimes;
 - (bool)sectionShouldBeShown;
@@ -102,6 +106,7 @@
 - (void)setReuseIdentifierVersion:(unsigned long long)arg1;
 - (void)setRowsShowingAllParticipants:(id)arg1;
 - (void)setSearchExhausted:(bool)arg1;
+- (void)setSearcherHasError:(bool)arg1;
 - (void)setShowMoreAlternativeTimesTapped:(id /* block */)arg1;
 - (void)setShowPreviewOfEventAtTime:(id /* block */)arg1;
 - (void)setTableViewCellHook:(id /* block */)arg1;

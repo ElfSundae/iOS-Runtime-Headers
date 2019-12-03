@@ -3,6 +3,7 @@
  */
 
 @interface CKDModifyRecordsOperation : CKDDatabaseOperation {
+    NSDictionary * _assetUUIDToExpectedProperties;
     bool  _atomic;
     CKDRecordCache * _cache;
     NSData * _cachedUserBoundaryKeyData;
@@ -15,14 +16,18 @@
     NSMapTable * _handlersByAssetNeedingRecordFetch;
     NSDictionary * _handlersByRecordID;
     bool  _haveOutstandingHandlers;
+    bool  _markAsParticipantNeedsNewInvitationToken;
     NSMutableDictionary * _modifyHandlersByZoneID;
     NSObject<OS_dispatch_queue> * _modifyRecordsQueue;
+    bool  _originatingFromDaemon;
+    NSDictionary * _packageUUIDToExpectedProperties;
     NSDictionary * _parentsByRecordID;
     NSDictionary * _pluginFieldsForRecordDeletesByID;
     NSArray * _recordIDsToDelete;
     NSDictionary * _recordIDsToDeleteToEtags;
     id /* block */  _recordsInFlightBlock;
     NSArray * _recordsToSave;
+    bool  _requestNeedsUserPublicKeys;
     bool  _retriedRecords;
     bool  _retryPCSFailures;
     int  _saveAttempts;
@@ -32,11 +37,14 @@
     bool  _shouldModifyRecordsInDatabase;
     bool  _shouldOnlySaveAssetContent;
     bool  _shouldReportRecordsInFlight;
+    C2RequestOptions * _streamingAssetRequestOptions;
     CKDProtocolTranslator * _translator;
     bool  _trustProtectionData;
     id /* block */  _uploadCompletionBlock;
+    NSArray * _userPublicKeys;
 }
 
+@property (nonatomic, retain) NSDictionary *assetUUIDToExpectedProperties;
 @property (nonatomic) bool atomic;
 @property (nonatomic, retain) CKDRecordCache *cache;
 @property (nonatomic, copy) NSData *cachedUserBoundaryKeyData;
@@ -49,8 +57,11 @@
 @property (nonatomic, retain) NSDictionary *handlersByRecordID;
 @property (nonatomic, readonly) bool hasDecryptOperation;
 @property (nonatomic) bool haveOutstandingHandlers;
+@property (nonatomic) bool markAsParticipantNeedsNewInvitationToken;
 @property (nonatomic, retain) NSMutableDictionary *modifyHandlersByZoneID;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *modifyRecordsQueue;
+@property (nonatomic) bool originatingFromDaemon;
+@property (nonatomic, retain) NSDictionary *packageUUIDToExpectedProperties;
 @property (nonatomic, retain) NSDictionary *parentsByRecordID;
 @property (nonatomic, retain) NSDictionary *pluginFieldsForRecordDeletesByID;
 @property (nonatomic, readonly) CKDDecryptRecordsOperation *recordDecryptOperation;
@@ -58,6 +69,7 @@
 @property (nonatomic, retain) NSDictionary *recordIDsToDeleteToEtags;
 @property (nonatomic, copy) id /* block */ recordsInFlightBlock;
 @property (nonatomic, retain) NSArray *recordsToSave;
+@property (nonatomic) bool requestNeedsUserPublicKeys;
 @property (nonatomic) bool retriedRecords;
 @property (nonatomic) bool retryPCSFailures;
 @property (nonatomic) int saveAttempts;
@@ -67,9 +79,11 @@
 @property (nonatomic) bool shouldModifyRecordsInDatabase;
 @property (nonatomic) bool shouldOnlySaveAssetContent;
 @property (nonatomic) bool shouldReportRecordsInFlight;
-@property (nonatomic, readonly) CKDProtocolTranslator *translator;
+@property (nonatomic, copy) C2RequestOptions *streamingAssetRequestOptions;
+@property (nonatomic, retain) CKDProtocolTranslator *translator;
 @property (nonatomic) bool trustProtectionData;
 @property (nonatomic, copy) id /* block */ uploadCompletionBlock;
+@property (nonatomic, retain) NSArray *userPublicKeys;
 
 + (bool)_claimPackagesInRecord:(id)arg1 error:(id*)arg2;
 + (long long)isPredominatelyDownload;
@@ -89,6 +103,7 @@
 - (void)_fetchSharePCSData;
 - (void)_fetchShareParticipants;
 - (void)_fetchUserBoundaryKey;
+- (void)_fetchUserPublicKeys;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_handleDecryptionFailure:(id)arg1 forRecordID:(id)arg2;
 - (void)_handleRecordDeleted:(id)arg1 handler:(id)arg2 responseCode:(id)arg3;
@@ -111,7 +126,9 @@
 - (void)_uploadAssets;
 - (void)_verifyRecordEncryption;
 - (id)activityCreate;
+- (id)analyticsPayload;
 - (void)assetArrayByRecordID:(id)arg1 didFetchRecord:(id)arg2 recordID:(id)arg3 error:(id)arg4;
+- (id)assetUUIDToExpectedProperties;
 - (bool)atomic;
 - (id)cache;
 - (id)cachedUserBoundaryKeyData;
@@ -130,9 +147,12 @@
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
 - (bool)makeStateTransition;
+- (bool)markAsParticipantNeedsNewInvitationToken;
 - (id)modifyHandlersByZoneID;
 - (id)modifyRecordsQueue;
 - (id)nameForState:(unsigned long long)arg1;
+- (bool)originatingFromDaemon;
+- (id)packageUUIDToExpectedProperties;
 - (id)parentsByRecordID;
 - (id)pluginFieldsForRecordDeletesByID;
 - (id)recordDecryptOperation;
@@ -140,6 +160,8 @@
 - (id)recordIDsToDeleteToEtags;
 - (id /* block */)recordsInFlightBlock;
 - (id)recordsToSave;
+- (bool)requestNeedsUserPublicKeys;
+- (id)requestedFieldsByRecordIDForRecords:(id)arg1;
 - (bool)retriedRecords;
 - (bool)retryPCSFailures;
 - (int)saveAttempts;
@@ -147,6 +169,7 @@
 - (id /* block */)saveCompletionBlock;
 - (long long)savePolicy;
 - (id /* block */)saveProgressBlock;
+- (void)setAssetUUIDToExpectedProperties:(id)arg1;
 - (void)setAtomic:(bool)arg1;
 - (void)setCache:(id)arg1;
 - (void)setCachedUserBoundaryKeyData:(id)arg1;
@@ -158,14 +181,18 @@
 - (void)setHandlersByAssetNeedingRecordFetch:(id)arg1;
 - (void)setHandlersByRecordID:(id)arg1;
 - (void)setHaveOutstandingHandlers:(bool)arg1;
+- (void)setMarkAsParticipantNeedsNewInvitationToken:(bool)arg1;
 - (void)setModifyHandlersByZoneID:(id)arg1;
 - (void)setModifyRecordsQueue:(id)arg1;
+- (void)setOriginatingFromDaemon:(bool)arg1;
+- (void)setPackageUUIDToExpectedProperties:(id)arg1;
 - (void)setParentsByRecordID:(id)arg1;
 - (void)setPluginFieldsForRecordDeletesByID:(id)arg1;
 - (void)setRecordIDsToDelete:(id)arg1;
 - (void)setRecordIDsToDeleteToEtags:(id)arg1;
 - (void)setRecordsInFlightBlock:(id /* block */)arg1;
 - (void)setRecordsToSave:(id)arg1;
+- (void)setRequestNeedsUserPublicKeys:(bool)arg1;
 - (void)setRetriedRecords:(bool)arg1;
 - (void)setRetryPCSFailures:(bool)arg1;
 - (void)setSaveAttempts:(int)arg1;
@@ -175,13 +202,18 @@
 - (void)setShouldModifyRecordsInDatabase:(bool)arg1;
 - (void)setShouldOnlySaveAssetContent:(bool)arg1;
 - (void)setShouldReportRecordsInFlight:(bool)arg1;
+- (void)setStreamingAssetRequestOptions:(id)arg1;
+- (void)setTranslator:(id)arg1;
 - (void)setTrustProtectionData:(bool)arg1;
 - (void)setUploadCompletionBlock:(id /* block */)arg1;
+- (void)setUserPublicKeys:(id)arg1;
 - (bool)shouldModifyRecordsInDatabase;
 - (bool)shouldOnlySaveAssetContent;
 - (bool)shouldReportRecordsInFlight;
+- (id)streamingAssetRequestOptions;
 - (id)translator;
 - (bool)trustProtectionData;
 - (id /* block */)uploadCompletionBlock;
+- (id)userPublicKeys;
 
 @end

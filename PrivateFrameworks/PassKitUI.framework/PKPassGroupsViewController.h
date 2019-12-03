@@ -2,31 +2,22 @@
    Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
  */
 
-@interface PKPassGroupsViewController : UIViewController <PKAccountServiceAccountResolutionControllerDelegate, PKDiscoveryDataSourceDelegate, PKForegroundActiveArbiterObserver, PKGroupsControllerDelegate, PKPGSVFooterViewDelegate, PKPGSVSectionHeaderViewDelegate, PKPGSVSectionSubheaderDelegate, PKPassGroupStackViewDatasource, PKPassGroupStackViewDelegate, PKPassPersonalizationViewControllerDelegate, PKPaymentServiceDelegate, PKPaymentSetupDelegate, PKPeerPaymentAccountResolutionControllerDelegate, PKPerformActionViewControllerDelegate, UIScrollViewDelegate> {
+@interface PKPassGroupsViewController : UIViewController <PKAccountServiceAccountResolutionControllerDelegate, PKDiscoveryDataSourceDelegate, PKForegroundActiveArbiterObserver, PKGroupsControllerDelegate, PKPGSVFooterViewDelegate, PKPGSVSectionHeaderViewDelegate, PKPGSVSectionSubheaderDelegate, PKPassGroupStackViewDatasource, PKPassGroupStackViewDelegate, PKPassPersonalizationViewControllerDelegate, PKPaymentServiceDelegate, PKPaymentSetupDelegate, PKPeerPaymentAccountResolutionControllerDelegate, PKPerformActionViewControllerDelegate, UIScrollViewDelegate, _PKUIKVisibilityBackdropViewDelegate> {
     PKAccountServiceAccountResolutionController * _accountServiceAccountResolutionController;
     NSTimer * _allowDimmingTimer;
-    long long  _backdropStyle;
     bool  _backgroundMode;
     NSMutableArray * _blocksQueuedForUpdateCompletion;
     PKDiscoveryDataSource * _discoveryDataSource;
     PKDiscoveryGalleryView * _discoveryGalleryView;
     int  _expressTransactionNotificationObserver;
     bool  _externalModalPresentationAllowed;
-    _UIBackdropView * _footerBackground;
-    struct { 
-        double visibility; 
-        double visibilityAnimationTarget; 
-        unsigned int animationCounter; 
-    }  _footerBackgroundVisibility;
+    _PKUIKVisibilityBackdropView * _footerBackground;
+    double  _footerBackgroundVisibility;
     PKPassGroupStackView * _groupStackView;
     PKGroupsController * _groupsController;
     bool  _handleFieldDetection;
-    _UIBackdropView * _headerBackground;
-    struct { 
-        double visibility; 
-        double visibilityAnimationTarget; 
-        unsigned int animationCounter; 
-    }  _headerBackgroundVisibility;
+    _PKUIKVisibilityBackdropView * _headerBackground;
+    double  _headerBackgroundVisibility;
     bool  _inFailForward;
     bool  _inField;
     unsigned long long  _instanceFooterSuppressionCounter;
@@ -42,9 +33,9 @@
     bool  _persistentCardEmulationQueued;
     long long  _presentationState;
     bool  _reloadingPasses;
+    bool  _showingFieldDetectEducation;
     long long  _style;
     unsigned long long  _suppressedContent;
-    bool  _updatingBackdropSettings;
     bool  _viewAppeared;
     bool  _viewAppearedBefore;
     bool  _welcomeStateEnabled;
@@ -60,6 +51,7 @@
 @property (readonly) unsigned long long hash;
 @property bool passesAreOutdated;
 @property (nonatomic, readonly) bool presentingPass;
+@property (getter=isShowingFieldDetectEducation) bool showingFieldDetectEducation;
 @property (nonatomic, readonly) long long style;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long suppressedContent;
@@ -72,13 +64,12 @@
 + (bool)isPerformingAction;
 
 - (void).cxx_destruct;
-- (void)_accessBackgroundStateForType:(long long)arg1 withHandler:(id /* block */)arg2;
-- (void)_accessibilitySettingsDidChange:(id)arg1;
 - (id)_appleCardUpsellAlertWithAccount:(id)arg1;
 - (void)_applyPresentationState;
 - (id)_barcodePassDetailsViewControllerForBarcodePass:(id)arg1;
 - (void)_beginSuppressingInstanceFooter;
 - (bool)_canPerformExternalModalPresentation;
+- (bool)_canShowWhileLocked;
 - (void)_clearPassViewedNotificationTimer;
 - (void)_endSuppressingInstanceFooterWithContext:(id)arg1;
 - (void)_handleChildViewControllerRequestingServiceMode:(id)arg1;
@@ -105,13 +96,10 @@
 - (void)_resetToRootAnimated:(bool)arg1 completion:(id /* block */)arg2;
 - (void)_setupItemForExpressUpgradeMarket:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)_startPassViewedNotificationTimer;
-- (void)_updateBackdropSettings;
-- (void)_updateBackgroundType:(long long)arg1 toVisibility:(double)arg2 animated:(bool)arg3;
 - (void)_updateFooterSuppressionAnimated:(bool)arg1;
 - (void)_updateFooterSuppressionWithContext:(id)arg1;
 - (void)_updatePeerPaymentAccount;
 - (void)_warnFailForward;
-- (void)accountServiceAccountResolutionController:(id)arg1 requestsDismissCurrentViewControllerAnimated:(bool)arg2;
 - (void)accountServiceAccountResolutionController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(bool)arg3;
 - (void)addVASPassWithIdentifier:(id)arg1;
 - (void)allowIdleTimer;
@@ -159,6 +147,7 @@
 - (void)invalidate;
 - (bool)isExternalModalPresentationAllowed;
 - (bool)isInField;
+- (bool)isShowingFieldDetectEducation;
 - (bool)isWelcomeStateEnabled;
 - (void)loadView;
 - (unsigned long long)numberOfGroups;
@@ -188,6 +177,8 @@
 - (void)presentGroupTable;
 - (void)presentGroupTableAnimated:(bool)arg1;
 - (void)presentInitialState;
+- (void)presentInstallmentPlanWithIdentifier:(id)arg1 forAccountIdentifier:(id)arg2 completion:(id /* block */)arg3;
+- (void)presentInstallmentPlansForFeature:(unsigned long long)arg1 completion:(id /* block */)arg2;
 - (void)presentOffscreenAnimated:(bool)arg1 split:(bool)arg2 withCompletionHandler:(id /* block */)arg3;
 - (void)presentOffscreenAnimated:(bool)arg1 withCompletionHandler:(id /* block */)arg2;
 - (void)presentOnscreen:(bool)arg1 withCompletionHandler:(id /* block */)arg2;
@@ -205,6 +196,7 @@
 - (void)presentPeerPaymentSetupWithCurrencyAmount:(id)arg1 flowState:(unsigned long long)arg2 senderAddress:(id)arg3;
 - (void)presentPeerPaymentTermsAcceptance;
 - (void)presentPeerPaymentTopUp;
+- (void)presentPeerPaymentVerifyIdentity;
 - (void)presentPileOffscreen;
 - (void)presentSpendingSummaryForPassUniqueIdentifier:(id)arg1 type:(unsigned long long)arg2 unit:(unsigned long long)arg3 animated:(bool)arg4 completion:(id /* block */)arg5;
 - (void)presentTransactionDetailsForTransactionWithIdentifier:(id)arg1;
@@ -222,11 +214,13 @@
 - (void)setExternalModalPresentationAllowed:(bool)arg1;
 - (void)setHandleFieldDetection:(bool)arg1;
 - (void)setPassesAreOutdated:(bool)arg1;
+- (void)setShowingFieldDetectEducation:(bool)arg1;
 - (void)setSuppressedContent:(unsigned long long)arg1;
 - (void)setTableModalPresentationEnabled:(bool)arg1 animated:(bool)arg2;
 - (void)setWelcomeStateEnabled:(bool)arg1;
 - (bool)shouldAutorotate;
 - (void)shouldUpdateSectionSubheaderView:(id)arg1;
+- (void)showStatementForIdentifier:(id)arg1 passUniqueIdentifier:(id)arg2 animated:(bool)arg3 completion:(id /* block */)arg4;
 - (void)startPaymentPreflight:(id)arg1 withPaymentSetupMode:(long long)arg2 referrerIdentifier:(id)arg3 paymentNetwork:(id)arg4 transitNetworkIdentifier:(id)arg5 allowedFeatureIdentifiers:(id)arg6;
 - (long long)style;
 - (unsigned long long)supportedInterfaceOrientations;
@@ -242,5 +236,6 @@
 - (void)viewTapped:(id)arg1;
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillLayoutSubviews;
+- (long long)visibilityBackdropView:(id)arg1 preferredStyleForTraitCollection:(id)arg2;
 
 @end

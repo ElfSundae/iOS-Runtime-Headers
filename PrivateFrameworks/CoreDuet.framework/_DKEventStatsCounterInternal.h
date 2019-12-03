@@ -3,13 +3,17 @@
  */
 
 @interface _DKEventStatsCounterInternal : NSObject {
+    unsigned long long * _counters;
     NSString * _domain;
     NSString * _eventName;
     PETEventTracker * _eventTracker;
     NSString * _eventType;
     bool  _hasResult;
     bool  _hasType;
-    struct XSPerfCollection { struct _opaque_pthread_mutex_t { long long x_1_1_1; BOOL x_1_1_2[56]; } x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned short x5; struct XSPerfCounter {} *x6; struct XSPerfMetric {} *x7; struct XSPerfString {} *x8; char *x9; } * _stats;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _lock;
+    unsigned long long  _numCounters;
     NSArray * _typeValues;
 }
 
@@ -27,7 +31,7 @@
 - (id)eventTracker;
 - (id)eventType;
 - (void)incrementCountByNumber:(unsigned long long)arg1 typeValue:(id)arg2 success:(bool)arg3;
-- (unsigned long long)indexOfTypeValue:(id)arg1 success:(bool)arg2;
+- (long long)indexOfTypeValue:(id)arg1 success:(bool)arg2;
 - (id)initWithCollectionName:(id)arg1 eventName:(id)arg2 eventType:(id)arg3 eventTypePossibleValues:(id)arg4 hasResult:(bool)arg5;
 - (id)initWithCollectionName:(id)arg1 eventName:(id)arg2 eventType:(id)arg3 eventTypePossibleValues:(id)arg4 hasResult:(bool)arg5 scalar:(bool)arg6;
 - (id)typeValues;

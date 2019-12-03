@@ -40,7 +40,7 @@
 @property (nonatomic, readonly) UIView *textInputView;
 
 - (void)beginFloatingCursorAtPoint:(struct CGPoint { double x1; double x2; })arg1;
-- (bool)beginLoupeGestureAtPoint:(struct CGPoint { double x1; double x2; })arg1;
+- (bool)beginLoupeGestureAtPoint:(struct CGPoint { double x1; double x2; })arg1 translation:(struct CGPoint { double x1; double x2; })arg2;
 - (void)beginLoupeMagnifierAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)beginRangedMagnifierAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)beginSelection;
@@ -57,7 +57,7 @@
 - (bool)cursorPositionIsContainedByRange:(id)arg1;
 - (void)dealloc;
 - (void)endFloatingCursor;
-- (void)endLoupeGestureAtPoint:(struct CGPoint { double x1; double x2; })arg1;
+- (void)endLoupeGestureAtPoint:(struct CGPoint { double x1; double x2; })arg1 translation:(struct CGPoint { double x1; double x2; })arg2;
 - (void)endLoupeMagnifierAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)endRangedMagnifierAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)endSelection;
@@ -77,6 +77,7 @@
 - (void)selectPositionAtPoint:(struct CGPoint { double x1; double x2; })arg1 executionContext:(id)arg2;
 - (void)selectTextWithGranularity:(long long)arg1 atPoint:(struct CGPoint { double x1; double x2; })arg2 completionHandler:(id /* block */)arg3;
 - (void)selectTextWithGranularity:(long long)arg1 atPoint:(struct CGPoint { double x1; double x2; })arg2 executionContext:(id)arg3;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })selectedRectInLineWithPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (id)selectionBase;
 - (void)selectionDidChange;
 - (long long)selectionGranularity;
@@ -85,6 +86,7 @@
 - (void)setCursorPosition:(id)arg1;
 - (void)setInitialSelection:(id)arg1;
 - (void)setRangedSelectionShouldShowGrabbers:(bool)arg1;
+- (void)setSelectedTextRange:(id)arg1;
 - (void)setSelectionBase:(id)arg1;
 - (void)setSelectionGranularity:(long long)arg1;
 - (void)showSelectionCommands;
@@ -94,15 +96,18 @@
 - (void)updateFloatingCursorAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)updateGestureRecognizers;
 - (void)updateImmediateSelectionWithExtentAtBoundary:(long long)arg1 inDirection:(long long)arg2 executionContext:(id)arg3;
-- (void)updateLoupeGestureAtPoint:(struct CGPoint { double x1; double x2; })arg1;
+- (void)updateLoupeGestureAtPoint:(struct CGPoint { double x1; double x2; })arg1 translation:(struct CGPoint { double x1; double x2; })arg2 velocity:(struct CGPoint { double x1; double x2; })arg3;
 - (void)updateLoupeMagnifierAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)updateRangedMagnifierAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)updateSelectionRects;
 - (void)updateSelectionWithExtentAtBoundary:(long long)arg1 inDirection:(long long)arg2 executionContext:(id)arg3;
 - (void)updateSelectionWithExtentAtBoundary:(long long)arg1 inDirection:(long long)arg2 relativeToSelection:(id)arg3 executionContext:(id)arg4;
+- (void)updateSelectionWithExtentPoint:(struct CGPoint { double x1; double x2; })arg1 andExtentPosition:(id)arg2 executionContext:(id)arg3;
 - (void)updateSelectionWithExtentPoint:(struct CGPoint { double x1; double x2; })arg1 executionContext:(id)arg2;
 - (void)updateSelectionWithExtentPoint:(struct CGPoint { double x1; double x2; })arg1 withBoundary:(long long)arg2 executionContext:(id)arg3;
 - (void)updateSelectionWithExtentPosition:(id)arg1 executionContext:(id)arg2;
+- (void)willBeginFloatingCursor:(bool)arg1;
+- (void)willBeginHighlighterGesture;
 - (void)willHandoffLoupeMagnifier;
 
 @end

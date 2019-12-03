@@ -17,8 +17,8 @@
 + (id)callbackQueue;
 + (id)defaultWorkspace;
 + (id)progressQueue;
-+ (id)workspaceObserverProxy;
 
+- (void).cxx_destruct;
 - (id)URLOverrideForNewsURL:(id)arg1;
 - (id)URLOverrideForURL:(id)arg1;
 - (void)_LSClearSchemaCaches;
@@ -53,12 +53,10 @@
 - (void)clearCreatedProgressForBundleID:(id)arg1;
 - (id)createDeviceIdentifierWithVendorName:(id)arg1 bundleIdentifier:(id)arg2;
 - (id)createdInstallProgresses;
-- (void)dealloc;
 - (id)deviceIdentifierForAdvertising;
 - (id)deviceIdentifierForVendor;
 - (id)directionsApplications;
 - (bool)downgradeApplicationToPlaceholder:(id)arg1 withOptions:(id)arg2 error:(id*)arg3;
-- (void)enumerateApplicationsForSiriWithBlock:(id /* block */)arg1;
 - (void)enumerateApplicationsOfType:(unsigned long long)arg1 block:(id /* block */)arg2;
 - (void)enumerateApplicationsOfType:(unsigned long long)arg1 legacySPI:(bool)arg2 block:(id /* block */)arg3;
 - (void)enumerateBundlesOfType:(unsigned long long)arg1 block:(id /* block */)arg2;
@@ -81,17 +79,20 @@
 - (bool)isApplicationAvailableToOpenURL:(id)arg1 error:(id*)arg2;
 - (bool)isApplicationAvailableToOpenURL:(id)arg1 includePrivateURLSchemes:(bool)arg2 error:(id*)arg3;
 - (bool)isApplicationAvailableToOpenURLCommon:(id)arg1 includePrivateURLSchemes:(bool)arg2 error:(id*)arg3;
+- (bool)isVersion:(id)arg1 greaterThanOrEqualToVersion:(id)arg2;
 - (id)legacyApplicationProxiesListWithType:(unsigned long long)arg1;
-- (bool)ls_injectUTTypeWithDeclaration:(id)arg1 inDatabase:(void*)arg2 error:(id*)arg3;
+- (bool)ls_injectUTTypeWithDeclaration:(id)arg1 inDatabase:(id)arg2 error:(id*)arg3;
 - (void)ls_resetTestingDatabase;
 - (void*)ls_testWithCleanDatabaseWithError:(id*)arg1;
 - (id)machOUUIDsForBundleIdentifiers:(id)arg1 error:(id*)arg2;
 - (id)observedInstallProgresses;
 - (id)observerProxy;
 - (bool)openApplicationWithBundleID:(id)arg1;
+- (void)openApplicationWithBundleIdentifier:(id)arg1 configuration:(id)arg2 completionHandler:(id /* block */)arg3;
 - (bool)openSensitiveURL:(id)arg1 withOptions:(id)arg2;
 - (bool)openSensitiveURL:(id)arg1 withOptions:(id)arg2 error:(id*)arg3;
 - (bool)openURL:(id)arg1;
+- (void)openURL:(id)arg1 configuration:(id)arg2 completionHandler:(id /* block */)arg3;
 - (bool)openURL:(id)arg1 withOptions:(id)arg2;
 - (bool)openURL:(id)arg1 withOptions:(id)arg2 error:(id*)arg3;
 - (void)openUserActivity:(id)arg1 withApplicationProxy:(id)arg2 completionHandler:(id /* block */)arg3;
@@ -102,6 +103,7 @@
 - (id)operationToOpenResource:(id)arg1 usingApplication:(id)arg2 uniqueDocumentIdentifier:(id)arg3 userInfo:(id)arg4;
 - (id)operationToOpenResource:(id)arg1 usingApplication:(id)arg2 uniqueDocumentIdentifier:(id)arg3 userInfo:(id)arg4 delegate:(id)arg5;
 - (id)operationToOpenResource:(id)arg1 usingApplication:(id)arg2 userInfo:(id)arg3;
+- (id)optionsFromOpenConfiguration:(id)arg1;
 - (id)placeholderApplications;
 - (void)placeholderInstalledForIdentifier:(id)arg1 filterDowngrades:(bool)arg2;
 - (id)pluginsMatchingQuery:(id)arg1 applyFilter:(id /* block */)arg2;
@@ -113,15 +115,15 @@
 - (bool)registerApplication:(id)arg1;
 - (bool)registerApplicationDictionary:(id)arg1;
 - (bool)registerApplicationDictionary:(id)arg1 withObserverNotification:(int)arg2;
-- (bool)registerBundleWithInfo:(id)arg1 options:(id)arg2 type:(unsigned long long)arg3 progress:(id)arg4;
 - (bool)registerPlugin:(id)arg1;
 - (id)remoteObserver;
 - (void)removeDeviceIdentifierForVendorName:(id)arg1 bundleIdentifier:(id)arg2;
 - (void)removeObserver:(id)arg1;
 - (id)removedSystemApplications;
 - (bool)restoreSystemApplication:(id)arg1;
-- (void)scanForApplicationStateChangesFromRank:(id)arg1 toRank:(id)arg2;
-- (void)scanForApplicationStateChangesWithWhitelist:(id)arg1;
+- (id)scanForApplicationStateChangesFromRank:(id)arg1 toRank:(id)arg2;
+- (id)scanForApplicationStateChangesWithWhitelist:(id)arg1;
+- (id)scanForForDeletableSystemApps;
 - (void)sendApplicationStateChangedNotificationsFor:(id)arg1;
 - (id)syncObserverProxy;
 - (bool)uninstallApplication:(id)arg1 withOptions:(id)arg2;
@@ -139,6 +141,8 @@
 
 - (void)_sf_openURL:(id)arg1 inApplication:(id)arg2 withOptions:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)_sf_openURL:(id)arg1 withOptions:(id)arg2 completionHandler:(id /* block */)arg3;
+- (bool)_sf_shouldOverrideiCloudSharingURL:(id)arg1 withAppRedirectURL:(id)arg2 referrerURL:(id)arg3 loadedUsingDesktopUserAgent:(bool)arg4;
+- (void)_sf_tryOpeningURLInDefaultApp:(id)arg1 isContentManaged:(bool)arg2 completionHandler:(id /* block */)arg3;
 
 // Image: /System/Library/PrivateFrameworks/ManagedConfigurationUI.framework/ManagedConfigurationUI
 

@@ -5,6 +5,7 @@
 @interface CFXMediaItem : NSObject {
     NSURL * _adjustedAssetURL;
     bool  _adjustmentsDataWasSet;
+    long long  _cameraMode;
     JTClip * _clip;
     bool  _initializedWithoutSettingAllProperties;
     NSURL * _originalAssetURL;
@@ -14,6 +15,7 @@
 @property (nonatomic, copy) NSURL *adjustedAssetURL;
 @property (nonatomic, copy) NSData *adjustmentsData;
 @property (nonatomic) bool adjustmentsDataWasSet;
+@property (nonatomic, readonly) long long cameraMode;
 @property (nonatomic, readonly) JTClip *clip;
 @property (nonatomic) bool initializedWithoutSettingAllProperties;
 @property (nonatomic, copy) NSURL *originalAssetURL;
@@ -22,12 +24,12 @@
 - (void).cxx_destruct;
 - (id)adjustedAssetURL;
 - (id)adjustmentsData;
-- (id)adjustmentsDataClassWhitelist;
 - (bool)adjustmentsDataWasSet;
+- (long long)cameraMode;
 - (id)clip;
-- (void)createClipForMediaType:(long long)arg1 assetURL:(id)arg2 effectStack:(id)arg3;
+- (void)createClipForMediaType:(long long)arg1 assetURL:(id)arg2 cameraMode:(long long)arg3 effectStack:(id)arg4;
 - (id)init;
-- (id)initWithClip:(id)arg1 originalAssetURL:(id)arg2;
+- (id)initWithCameraMode:(long long)arg1 clip:(id)arg2 originalAssetURL:(id)arg3;
 - (id)initWithType:(long long)arg1 originalAssetURL:(id)arg2 adjustmentsData:(id)arg3;
 - (bool)initializedWithoutSettingAllProperties;
 - (id)originalAssetURL;

@@ -3,7 +3,7 @@
  */
 
 @interface AMSMetricsLoadURLContext : NSObject {
-    <AMSMetricsBagContract> * _bagContract;
+    <AMSBagProtocol> * _bag;
     NSDictionary * _decodedResponseBody;
     NSError * _error;
     AMSProcessInfo * _processInfo;
@@ -13,7 +13,7 @@
     NSURLSessionTaskMetrics * _taskMetrics;
 }
 
-@property (nonatomic, retain) <AMSMetricsBagContract> *bagContract;
+@property (nonatomic, retain) <AMSBagProtocol> *bag;
 @property (nonatomic, retain) NSDictionary *decodedResponseBody;
 @property (nonatomic, retain) NSError *error;
 @property (nonatomic, retain) AMSProcessInfo *processInfo;
@@ -23,6 +23,7 @@
 @property (nonatomic, retain) NSURLSessionTaskMetrics *taskMetrics;
 
 - (void).cxx_destruct;
+- (id)bag;
 - (id)bagContract;
 - (id)decodedResponseBody;
 - (id)error;
@@ -31,6 +32,7 @@
 - (id)processInfo;
 - (id)responseBody;
 - (id)session;
+- (void)setBag:(id)arg1;
 - (void)setBagContract:(id)arg1;
 - (void)setDecodedResponseBody:(id)arg1;
 - (void)setError:(id)arg1;

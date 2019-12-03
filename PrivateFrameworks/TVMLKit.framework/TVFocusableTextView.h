@@ -8,6 +8,7 @@
     UITextView * _auxilliaryTextView;
     UIColor * _backgroundColor;
     UIVisualEffectView * _backgroundView;
+    long long  _descriptionTextAlignment;
     UIColor * _descriptionTextColor;
     UIColor * _descriptionTextHighlightColor;
     UITextView * _descriptionTextView;
@@ -42,6 +43,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) NSAttributedString *descriptionText;
+@property (nonatomic) long long descriptionTextAlignment;
 @property (nonatomic, retain) UIColor *descriptionTextColor;
 @property (nonatomic, retain) UIColor *descriptionTextHighlightColor;
 @property (nonatomic, retain) UITextView *descriptionTextView;
@@ -82,6 +84,7 @@
 - (id)backgroundView;
 - (bool)canBecomeFocused;
 - (id)descriptionText;
+- (long long)descriptionTextAlignment;
 - (id)descriptionTextColor;
 - (id)descriptionTextHighlightColor;
 - (id)descriptionTextView;
@@ -115,6 +118,7 @@
 - (void)setBackgroundColor:(id)arg1;
 - (void)setBackgroundView:(id)arg1;
 - (void)setDescriptionText:(id)arg1;
+- (void)setDescriptionTextAlignment:(long long)arg1;
 - (void)setDescriptionTextColor:(id)arg1;
 - (void)setDescriptionTextHighlightColor:(id)arg1;
 - (void)setDescriptionTextView:(id)arg1;

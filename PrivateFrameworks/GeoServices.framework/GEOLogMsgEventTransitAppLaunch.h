@@ -6,8 +6,21 @@
     NSString * _bundleIdentifier;
     GEOLatLng * _destination;
     struct { 
-        unsigned int timestamp : 1; 
-    }  _has;
+        unsigned int has_timestamp : 1; 
+        unsigned int read_bundleIdentifier : 1; 
+        unsigned int read_destination : 1; 
+        unsigned int read_source : 1; 
+        unsigned int wrote_bundleIdentifier : 1; 
+        unsigned int wrote_destination : 1; 
+        unsigned int wrote_source : 1; 
+        unsigned int wrote_timestamp : 1; 
+    }  _flags;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     GEOLatLng * _source;
     double  _timestamp;
 }
@@ -21,7 +34,12 @@
 @property (nonatomic, retain) GEOLatLng *source;
 @property (nonatomic) double timestamp;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_readBundleIdentifier;
+- (void)_readDestination;
+- (void)_readSource;
 - (id)bundleIdentifier;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -33,8 +51,11 @@
 - (bool)hasSource;
 - (bool)hasTimestamp;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setBundleIdentifier:(id)arg1;
 - (void)setDestination:(id)arg1;

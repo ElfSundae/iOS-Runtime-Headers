@@ -3,7 +3,7 @@
  */
 
 @interface SGName : SGObject {
-    unsigned long long  _extractionType;
+    SGExtractionInfo * _extractionInfo;
     NSString * _firstName;
     NSString * _fullName;
     NSString * _lastName;
@@ -12,7 +12,7 @@
     NSString * _suffix;
 }
 
-@property (nonatomic, readonly) unsigned long long extractionType;
+@property (nonatomic, readonly) SGExtractionInfo *extractionInfo;
 @property (nonatomic, readonly) NSString *firstName;
 @property (nonatomic, readonly) NSString *fullName;
 @property (nonatomic, readonly) NSString *lastName;
@@ -28,13 +28,13 @@
 - (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)extractionType;
+- (id)extractionInfo;
 - (id)firstName;
 - (id)fullName;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFirstName:(id)arg1 middleName:(id)arg2 lastName:(id)arg3 fullName:(id)arg4 prefix:(id)arg5 suffix:(id)arg6 recordId:(id)arg7 origin:(id)arg8;
-- (id)initWithFirstName:(id)arg1 middleName:(id)arg2 lastName:(id)arg3 fullName:(id)arg4 prefix:(id)arg5 suffix:(id)arg6 recordId:(id)arg7 origin:(id)arg8 extractionType:(unsigned long long)arg9;
+- (id)initWithFirstName:(id)arg1 middleName:(id)arg2 lastName:(id)arg3 fullName:(id)arg4 prefix:(id)arg5 suffix:(id)arg6 recordId:(id)arg7 origin:(id)arg8 extractionInfo:(id)arg9;
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToName:(id)arg1;
 - (id)lastName;

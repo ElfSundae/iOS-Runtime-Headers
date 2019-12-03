@@ -2,13 +2,16 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXCPLStatus : PXObservable <CPLStatusDelegate> {
+@interface PXCPLStatus : PXObservable <CPLStatusDelegate, PXAssetCountObserverDelegate> {
     CPLStatus * _cplStatus;
     id /* block */  _handler;
     bool  _isUpdating;
     double  _lastUpdate;
     unsigned long long  _needsUpdate;
-    PLPhotoLibrary * _photoLibrary;
+    unsigned long long  _numberOfReferencedItems;
+    PXAssetCountObserver * _numberOfReferencedItemsObserver;
+    PHPhotoLibrary * _ph_photoLibrary;
+    PLPhotoLibrary * _pl_photoLibrary;
     NSObject<OS_dispatch_queue> * _serialUpdateQueue;
     PXCPLState * _state;
     NSProgress * _syncProgress;
@@ -28,16 +31,17 @@
 - (id)_initWithInitialSynchronousUpdateType:(unsigned long long)arg1;
 - (id)_initWithInitialUpdateType:(unsigned long long)arg1 isSynchronous:(bool)arg2;
 - (void)_performUpdate;
+- (void)_powerStateDidChange:(id)arg1;
 - (void)_schedulePendingUpdates;
 - (void)_scheduleUpdateForType:(unsigned long long)arg1;
 - (void)_setSyncProgress:(id)arg1;
 - (void)_subscribeToSyncProgress;
 - (void)_unsubscribeFromSyncProgress;
-- (id)_updateState:(id)arg1 requestedTypes:(unsigned long long)arg2 failedTypes:(unsigned long long*)arg3;
+- (id)_updateState:(id)arg1 requestedTypes:(unsigned long long)arg2;
+- (void)assetCountObserver:(id)arg1 didChangeNumberOfAssets:(long long)arg2;
 - (void)dealloc;
 - (id /* block */)handler;
 - (id)init;
-- (id)mutableChangeObject;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (void)setHandler:(id /* block */)arg1;
 - (void)setState:(id)arg1;

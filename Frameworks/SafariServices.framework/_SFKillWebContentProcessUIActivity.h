@@ -9,8 +9,7 @@
 @property (nonatomic) <_SFKillWebContentProcessUIActivityDelegate> *webProcessDelegate;
 
 - (void).cxx_destruct;
-- (id)_beforeActivity;
-- (id)activityImage;
+- (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;
 - (bool)canPerformWithActivityItems:(id)arg1;

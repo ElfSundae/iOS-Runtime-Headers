@@ -4,8 +4,10 @@
 
 @interface AVTRenderer : SCNRenderer <SCNSceneRendererDelegate, _SCNSceneRendererDelegateSPI> {
     unsigned long long  _antialiasingMode;
+    AVTARMaskRenderer * _arMaskRenderer;
+    SCNTechnique * _arMaskTechnique;
+    struct __CVMetalTextureCache { } * _arMaskTextureCache;
     bool  _arMode;
-    SCNTechnique * _arTechnique;
     AVTAvatar * _avatar;
     SCNNode * _avatarNode;
     bool  _enableDepthMask;
@@ -13,10 +15,7 @@
     AVTFaceTracker * _faceTracker;
     <SCNSceneRendererDelegate> * _fwdDelegate;
     NSLock * _lock;
-    AVTARMaskRenderer * _maskRenderer;
     bool  _pauseSimulation;
-    NSObject<OS_dispatch_queue> * _preloadQueue;
-    struct __CVMetalTextureCache { } * _textureCache;
 }
 
 @property (nonatomic) bool arMode;
@@ -69,6 +68,7 @@
 - (void)setEnableDepthMask:(bool)arg1 withFlippedDepth:(bool)arg2;
 - (void)setFaceTracker:(id)arg1;
 - (void)setPauseSimulation:(bool)arg1;
+- (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (id)transitionTexture;
 
 @end

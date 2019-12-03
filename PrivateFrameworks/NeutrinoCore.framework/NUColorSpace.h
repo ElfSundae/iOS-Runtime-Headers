@@ -7,8 +7,10 @@
 }
 
 @property (nonatomic, readonly) struct CGColorSpace { }*CGColorSpace;
+@property (nonatomic, readonly) NSString *name;
 
 + (id)_loadICCProfileDataWithIdentifier:(id)arg1;
++ (struct CGColorSpace { }*)_newLinearWideGamutColorSpace;
 + (id)adobeRGBColorSpace;
 + (id)colorSpaceFromColorPrimaries:(id)arg1 transferFunction:(id)arg2 yccMatrix:(id)arg3;
 + (id)colorSpaceFromVideoColorProperties:(id)arg1;
@@ -17,6 +19,7 @@
 + (id)genericGrayColorSpace;
 + (id)genericRGBColorSpace;
 + (id)genericRGBLinearColorSpace;
++ (id)linearWideGamutColorSpace;
 + (id)sRGBColorSpace;
 + (id)sRGBLinearColorSpace;
 + (id)workingColorSpace;
@@ -29,5 +32,7 @@
 - (id)initWithCGColorSpace:(struct CGColorSpace { }*)arg1;
 - (id)initWithICCProfileData:(id)arg1;
 - (bool)isEqual:(id)arg1;
+- (id)name;
+- (void)nu_updateDigest:(id)arg1;
 
 @end

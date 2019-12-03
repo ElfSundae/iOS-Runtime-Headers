@@ -63,6 +63,7 @@
 - (id)interfaceLookup;
 - (id)invocationQueue;
 - (void)loadRemoteImageDataForClientForURL:(id)arg1 reply:(id /* block */)arg2;
+- (oneway void)localPlayerAcceptedCustomTournamentInvite;
 - (id)localizedMessageFromDictionary:(id)arg1 forBundleID:(id)arg2;
 - (id)networkActivityIndicatorDelegate;
 - (oneway void)processQuickAction:(id)arg1;

@@ -22,6 +22,7 @@
         unsigned int hasVideo : 1; 
     }  _has;
     bool  _hasVideo;
+    NSString * _hlsPlaylistURL;
     NSString * _lyrics;
     int  _lyricsChecksum;
     MIPPlaybackInfo * _playbackInfo;
@@ -46,12 +47,14 @@
 @property (nonatomic) bool hasGeniusId;
 @property (nonatomic, readonly) bool hasGenre;
 @property (nonatomic) bool hasHasVideo;
+@property (nonatomic, readonly) bool hasHlsPlaylistURL;
 @property (nonatomic, readonly) bool hasLyrics;
 @property (nonatomic) bool hasLyricsChecksum;
 @property (nonatomic, readonly) bool hasPlaybackInfo;
 @property (nonatomic) bool hasTrackNumber;
 @property (nonatomic) bool hasUserRating;
 @property (nonatomic) bool hasVideo;
+@property (nonatomic, retain) NSString *hlsPlaylistURL;
 @property (nonatomic, retain) NSString *lyrics;
 @property (nonatomic) int lyricsChecksum;
 @property (nonatomic, retain) MIPPlaybackInfo *playbackInfo;
@@ -80,6 +83,7 @@
 - (bool)hasGeniusId;
 - (bool)hasGenre;
 - (bool)hasHasVideo;
+- (bool)hasHlsPlaylistURL;
 - (bool)hasLyrics;
 - (bool)hasLyricsChecksum;
 - (bool)hasPlaybackInfo;
@@ -87,6 +91,7 @@
 - (bool)hasUserRating;
 - (bool)hasVideo;
 - (unsigned long long)hash;
+- (id)hlsPlaylistURL;
 - (bool)isEqual:(id)arg1;
 - (id)lyrics;
 - (int)lyricsChecksum;
@@ -110,6 +115,7 @@
 - (void)setHasTrackNumber:(bool)arg1;
 - (void)setHasUserRating:(bool)arg1;
 - (void)setHasVideo:(bool)arg1;
+- (void)setHlsPlaylistURL:(id)arg1;
 - (void)setLyrics:(id)arg1;
 - (void)setLyricsChecksum:(int)arg1;
 - (void)setPlaybackInfo:(id)arg1;

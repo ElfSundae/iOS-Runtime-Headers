@@ -3,7 +3,7 @@
  */
 
 @interface GEOSearchAttributionManifestVersionMigrator : NSObject <GEOActiveTileGroupMigrator> {
-    NSObject<OS_dispatch_queue> * _isolationQueue;
+    geo_isolater * _isolater;
     GEOResourceManifestConfiguration * _manifestConfiguration;
     NSMutableArray * _runningTasks;
 }

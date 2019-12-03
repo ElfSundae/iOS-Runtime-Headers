@@ -12,9 +12,9 @@
 @property (nonatomic) long long kind;
 @property (nonatomic, retain) id object;
 
++ (id)decodableClasses;
 + (id)failableWithError:(id)arg1;
 + (id)failableWithObject:(id)arg1;
-+ (Class)objectClass;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;

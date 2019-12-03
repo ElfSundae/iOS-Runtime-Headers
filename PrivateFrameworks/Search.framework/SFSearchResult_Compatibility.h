@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/Search.framework/Search
  */
 
-@interface SFSearchResult_Compatibility : SFSearchResult_SpotlightExtras <NSCopying>
+@interface SFSearchResult_Compatibility : SFSearchResult_SpotlightExtras
 
 @property (nonatomic, retain) NSString *compatibilityTitle;
 @property (nonatomic, retain) NSString *externalIdentifier;

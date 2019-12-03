@@ -9,6 +9,8 @@
     unsigned long long  _originalFilesize;
     long long  _originalHeight;
     long long  _originalWidth;
+    NSTimeZone * _timeZone;
+    long long  _timeZoneOffset;
 }
 
 @property (nonatomic, readonly) NSString *originalAssetsUUID;
@@ -17,6 +19,8 @@
 @property (nonatomic, readonly) unsigned long long originalFilesize;
 @property (nonatomic, readonly) long long originalHeight;
 @property (nonatomic, readonly) long long originalWidth;
+@property (nonatomic, readonly) NSTimeZone *timeZone;
+@property (nonatomic, readonly) long long timeZoneOffset;
 
 + (id)propertiesToFetch;
 + (id)propertySetName;
@@ -29,5 +33,7 @@
 - (unsigned long long)originalFilesize;
 - (long long)originalHeight;
 - (long long)originalWidth;
+- (id)timeZone;
+- (long long)timeZoneOffset;
 
 @end

@@ -3,19 +3,9 @@
  */
 
 @interface ARFaceLightEstimationTechnique : ARTechnique {
-    bool  _cameraTransformAvailable;
     NSObject<OS_dispatch_semaphore> * _estimatingSemaphore;
-    struct FLEOptions { 
-        float smoothingAlpha; 
-        float lightIntensityMinimumConstraint; 
-        bool ransacEnabled; 
-        bool chromaEnabled; 
-        int ransacMinSampleSet; 
-        float ransacErrorThreshold; 
-        bool darkBehindHead; 
-    }  _faceLightEstimationOptions;
     struct FacialLightEstimation { 
-        struct Matrix<float, 0, 1> { 
+        struct Matrix<float, 0, 1, false> { 
             float *m_data; 
             unsigned long long m_capacity; 
             unsigned int m_rows; 
@@ -34,7 +24,7 @@
                 int *__value_; 
             } __end_cap_; 
         } m_sampleIndices_all; 
-        struct Matrix<float, 0, 0> { 
+        struct Matrix<float, 0, 0, false> { 
             float *m_data; 
             unsigned long long m_capacity; 
             unsigned int m_rows; 
@@ -44,15 +34,15 @@
             struct PrecomputedFaceData {} *__ptr_; 
             struct __shared_weak_count {} *__cntrl_; 
         } m_precomputedFaceData; 
-        struct ExponentialSmoother<cva::Matrix<float, 9, 1> > { 
-            struct optional<cva::Matrix<float, 9, 1> > { 
-                bool m_initialized; 
-                struct aligned_storage<cva::Matrix<float, 9, 1> > { 
-                    union dummy_u { 
-                        BOOL data[36]; 
-                        struct a4 { } aligner_; 
-                    } dummy_; 
-                } m_storage; 
+        struct ExponentialSmoother<cva::Matrix<float, 9, 1, false> > { 
+            struct optional<cva::Matrix<float, 9, 1, false> > { 
+                union { 
+                    BOOL __null_state_; 
+                    struct Matrix<float, 9, 1, false> { 
+                        float m_data[9]; 
+                    } __val_; 
+                } ; 
+                bool __engaged_; 
             } state; 
         } m_smoother; 
         struct vector<unsigned long, std::__1::allocator<unsigned long> > { 
@@ -63,25 +53,18 @@
             } __end_cap_; 
         } m_inliers; 
     }  _faceLightEstimator;
-    struct { 
-        /* Warning: Unrecognized filer type: ']' using 'void*' */ void*columns[4]; 
-    }  _lastCameraTransform;
-    ARFaceTrackingData * _lastFaceData;
     ARDirectionalLightEstimate * _lastLightEstimate;
     NSObject<OS_dispatch_queue> * _lightEstimationQueue;
     float  _lightIntensity;
-    struct __CVBuffer { } * _pixelBufferRef;
     NSObject<OS_dispatch_semaphore> * _resultSemaphore;
     float  _shSmoothingAlpha;
     struct ExponentialSmoother<float> { 
         struct optional<float> { 
-            bool m_initialized; 
-            struct aligned_storage<float> { 
-                union dummy_u { 
-                    BOOL data[4]; 
-                    struct a4 { } aligner_; 
-                } dummy_; 
-            } m_storage; 
+            union { 
+                BOOL __null_state_; 
+                float __val_; 
+            } ; 
+            bool __engaged_; 
         } state; 
     }  _smoother;
     float  _temperature;

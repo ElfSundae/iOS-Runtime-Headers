@@ -15,7 +15,7 @@
 @property (nonatomic, readonly) NSError *error;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSMapTable *inputOperations;
-@property (nonatomic, readonly) NSArray *inputsProtocols;
+@property (nonatomic, readonly) NSArray *inputProtocols;
 @property (nonatomic, copy) id /* block */ invalidationHandler;
 @property (nonatomic, readonly) NSArray *invalidationObservers;
 @property (nonatomic, retain) MPCStoreLibraryPersonalizationMiddleware *middleware;
@@ -27,7 +27,7 @@
 - (void)execute;
 - (id)initWithMiddleware:(id)arg1 playerRequest:(id)arg2;
 - (struct NSMapTable { Class x1; }*)inputOperations;
-- (id)inputsProtocols;
+- (id)inputProtocols;
 - (id /* block */)invalidationHandler;
 - (id)invalidationObservers;
 - (id)middleware;

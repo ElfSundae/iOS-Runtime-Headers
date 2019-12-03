@@ -14,6 +14,7 @@
     double  _ppt_delay;
     bool  _ppt_presentComposeRecipientView;
     bool  _ppt_scrollComposeRecipientsView;
+    bool  _publishOriginals;
     PXCMMSendBackSuggestionSource * _sendBackSuggestionSource;
     unsigned long long  _sourceType;
     PXCMMViewModel * _viewModel;
@@ -27,7 +28,7 @@
 @property (nonatomic, readonly) NSDictionary *diagnosticDictionary;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) bool hideActionMenu;
-@property (nonatomic, readonly) <PXImportStatusManager> *importStatusManager;
+@property (nonatomic, readonly) <PXAssetImportStatusManager> *importStatusManager;
 @property (nonatomic, readonly) PXUIMediaProvider *mediaProvider;
 @property (nonatomic, readonly) NSSet *notificationSuppressionContexts;
 @property (nonatomic, readonly) PXCMMPeopleSuggestionsDataSourceManager *peopleSuggestionsDataSourceManager;
@@ -36,6 +37,7 @@
 @property (nonatomic) double ppt_delay;
 @property (nonatomic, readonly) bool ppt_presentComposeRecipientView;
 @property (nonatomic, readonly) bool ppt_scrollComposeRecipientsView;
+@property (nonatomic, readonly) bool publishOriginals;
 @property (nonatomic, readonly) PXCMMSendBackSuggestionSource *sendBackSuggestionSource;
 @property (nonatomic, readonly) unsigned long long sourceType;
 @property (readonly) Class superclass;
@@ -46,7 +48,6 @@
 - (void).cxx_destruct;
 - (id)actionManager;
 - (unsigned long long)activityType;
-- (id)assetsProgressListenerWithPresentationStyle:(long long)arg1;
 - (id)dataSourceManager;
 - (id)diagnosticDictionary;
 - (bool)hideActionMenu;
@@ -54,6 +55,7 @@
 - (id)init;
 - (id)initWithContext:(id)arg1;
 - (id)mediaProvider;
+- (id)momentShareStatusPresentationWithPresentationStyle:(long long)arg1;
 - (id)notificationSuppressionContexts;
 - (id)peopleSuggestionsDataSourceManager;
 - (id)peopleSuggestionsMediaProvider;
@@ -61,6 +63,7 @@
 - (double)ppt_delay;
 - (bool)ppt_presentComposeRecipientView;
 - (bool)ppt_scrollComposeRecipientsView;
+- (bool)publishOriginals;
 - (id)sendBackSuggestionSource;
 - (void)setPpt_delay:(double)arg1;
 - (unsigned long long)sourceType;

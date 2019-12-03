@@ -6,8 +6,8 @@
     NSMutableArray * _attributes;
     unsigned long long  _customIconId;
     struct { 
-        unsigned int customIconId : 1; 
-    }  _has;
+        unsigned int has_customIconId : 1; 
+    }  _flags;
     PBUnknownFields * _unknownFields;
 }
 
@@ -19,6 +19,7 @@
 + (Class)attributeType;
 + (id)attributesForTransitLine:(id)arg1;
 + (id)attributesForTransitSystem:(id)arg1;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (void)addAttribute:(id)arg1;
@@ -26,6 +27,7 @@
 - (id)attributes;
 - (unsigned long long)attributesCount;
 - (void)clearAttributes;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned long long)customIconId;
@@ -36,6 +38,7 @@
 - (id)initWithGEOFeatureStyleAttributes:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAttributes:(id)arg1;
 - (void)setCustomIconId:(unsigned long long)arg1;

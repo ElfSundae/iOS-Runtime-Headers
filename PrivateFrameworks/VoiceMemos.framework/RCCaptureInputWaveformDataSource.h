@@ -2,8 +2,9 @@
    Image: /System/Library/PrivateFrameworks/VoiceMemos.framework/VoiceMemos
  */
 
-@interface RCCaptureInputWaveformDataSource : RCWaveformDataSource <AVCaptureAudioDataOutputSampleBufferDelegate> {
+@interface RCCaptureInputWaveformDataSource : RCWaveformDataSource <AVCaptureAudioDataOutputSampleBufferDelegate, RCWaveformDataSourceObserver> {
     RCWaveform * _baseWaveform;
+    RCCompositionWaveformDataSource * _baseWaveformDataSource;
     bool  _canUpdateCaptureComposition;
     NSArray * _captureInitialDecomposedFragments;
     double  _captureInsertionDurationInComposition;
@@ -19,6 +20,7 @@
 }
 
 @property (nonatomic, readonly) RCWaveform *baseWaveform;
+@property (nonatomic, readonly) RCCompositionWaveformDataSource *baseWaveformDataSource;
 @property (nonatomic, readonly) bool canUpdateCaptureComposition;
 @property (nonatomic, readonly) NSArray *captureInitialDecomposedFragments;
 @property (nonatomic, readonly) double captureInsertionDurationInComposition;
@@ -48,7 +50,9 @@
 - (bool)appendAveragePowerLevelsByDigestingCapturedSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1;
 - (void)appendAveragePowerLevelsByDigestingWaveformSegment:(id)arg1;
 - (id)baseWaveform;
+- (id)baseWaveformDataSource;
 - (bool)canUpdateCaptureComposition;
+- (void)cancelLoading;
 - (id)captureInitialDecomposedFragments;
 - (double)captureInsertionDurationInComposition;
 - (double)captureInsertionTimeInComposition;
@@ -73,7 +77,11 @@
 - (double)updatedCapturedFragmentDuration;
 - (bool)waitUntilFinished;
 - (bool)waitUntilFinishedWithFinalizedDestinationFragmentDuration:(double)arg1;
+- (void)waveformDataSource:(id)arg1 didLoadWaveformSegment:(id)arg2;
+- (void)waveformDataSourceDidFinishLoading:(id)arg1;
+- (void)waveformDataSourceRequiresUpdate:(id)arg1;
 - (void)waveformGeneratorDidFinishLoading:(id)arg1 error:(id)arg2;
 - (id)waveformSegmentsInTimeRange:(struct { double x1; double x2; })arg1;
+- (id)waveformSegmentsIntersectingTimeRange:(struct { double x1; double x2; })arg1;
 
 @end

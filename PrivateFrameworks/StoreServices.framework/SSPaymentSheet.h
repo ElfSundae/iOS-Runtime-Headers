@@ -5,6 +5,7 @@
 @interface SSPaymentSheet : NSObject <NSCopying> {
     NSString * _accountHeader;
     NSString * _accountName;
+    bool  _applePayClassic;
     NSString * _buyParams;
     long long  _confirmationTitleType;
     NSString * _countryCode;
@@ -29,6 +30,8 @@
     NSString * _salableIconURLString;
     NSArray * _salableInfo;
     NSAttributedString * _salableInfoLabel;
+    bool  _shouldShowCardPicker;
+    bool  _shouldSuppressPrice;
     bool  _shouldUppercaseText;
     NSString * _storeName;
     NSString * _title;
@@ -37,6 +40,7 @@
 
 @property (copy) NSString *accountHeader;
 @property (copy) NSString *accountName;
+@property (getter=isApplePayClassic) bool applePayClassic;
 @property (readonly, copy) NSString *buyParams;
 @property long long confirmationTitleType;
 @property (copy) NSString *countryCode;
@@ -60,6 +64,8 @@
 @property (copy) NSString *salableIconURLString;
 @property (copy) NSArray *salableInfo;
 @property (readonly, copy) NSAttributedString *salableInfoLabel;
+@property bool shouldShowCardPicker;
+@property bool shouldSuppressPrice;
 @property bool shouldUppercaseText;
 @property (copy) NSString *storeName;
 @property (copy) NSString *title;
@@ -105,6 +111,7 @@
 - (id)initWithServerResponse:(id)arg1 buyParams:(id)arg2;
 - (id)initWithXPCEncoding:(id)arg1;
 - (id)inlineImages;
+- (bool)isApplePayClassic;
 - (id)merchantSession;
 - (id)message;
 - (long long)payeeType;
@@ -120,6 +127,7 @@
 - (id)salableInfoLabel;
 - (void)setAccountHeader:(id)arg1;
 - (void)setAccountName:(id)arg1;
+- (void)setApplePayClassic:(bool)arg1;
 - (void)setConfirmationTitleType:(long long)arg1;
 - (void)setCountryCode:(id)arg1;
 - (void)setCurrencyCode:(id)arg1;
@@ -137,10 +145,14 @@
 - (void)setSalableIconType:(long long)arg1;
 - (void)setSalableIconURLString:(id)arg1;
 - (void)setSalableInfo:(id)arg1;
+- (void)setShouldShowCardPicker:(bool)arg1;
+- (void)setShouldSuppressPrice:(bool)arg1;
 - (void)setShouldUppercaseText:(bool)arg1;
 - (void)setStoreName:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (void)setTitleType:(long long)arg1;
+- (bool)shouldShowCardPicker;
+- (bool)shouldSuppressPrice;
 - (bool)shouldUppercaseText;
 - (id)storeName;
 - (id)title;

@@ -5,17 +5,17 @@
 
 @required
 
-- (void)coreDAVLogDiagnosticMessage:(NSString *)arg1 atLevel:(long long)arg2;
-- (long long)coreDAVLogLevel;
 - (void)coreDAVLogTransmittedDataPartial:(NSData *)arg1;
-- (long long)coreDAVOutputLevel;
 - (void)coreDAVTransmittedDataFinished;
 - (bool)shouldLogTransmittedData;
 
 @optional
 
+- (void)coreDAVLogDiagnosticMessage:(NSString *)arg1 atLevel:(long long)arg2;
+- (long long)coreDAVLogLevel;
 - (void)coreDAVLogRequestBody:(NSData *)arg1;
 - (void)coreDAVLogResponseBody:(NSData *)arg1;
-- (void)triggerOSLogFault;
+- (long long)coreDAVOutputLevel;
+- (NSObject<OS_os_log> *)logHandle;
 
 @end

@@ -6,6 +6,7 @@
     ARCamera * _currentCamera;
     NSArray * _detectedImages;
     bool  _detectionOnly;
+    bool  _predicted;
     bool  _providesWorldTrackingCameraPose;
 }
 
@@ -15,6 +16,7 @@
 @property (nonatomic, copy) NSArray *detectedImages;
 @property (nonatomic) bool detectionOnly;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) bool predicted;
 @property (nonatomic) bool providesWorldTrackingCameraPose;
 @property (readonly) Class superclass;
 
@@ -29,10 +31,12 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
+- (bool)predicted;
 - (bool)providesWorldTrackingCameraPose;
 - (void)setCurrentCamera:(id)arg1;
 - (void)setDetectedImages:(id)arg1;
 - (void)setDetectionOnly:(bool)arg1;
+- (void)setPredicted:(bool)arg1;
 - (void)setProvidesWorldTrackingCameraPose:(bool)arg1;
 
 @end

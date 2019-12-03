@@ -40,6 +40,7 @@
 - (void)setDelegate:(id)arg1;
 - (void)setIsFaceTimeAudioAvailable:(bool)arg1;
 - (void)tintColorDidChange;
+- (void)updateHorizontalTouchAreas;
 - (id)variableConstraints;
 
 @end

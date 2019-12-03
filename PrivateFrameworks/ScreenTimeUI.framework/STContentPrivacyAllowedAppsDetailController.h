@@ -13,7 +13,7 @@
 - (void)_addBooleanAppSpecifier:(id)arg1 configuration:(id)arg2 key:(id)arg3 bundleID:(id)arg4;
 - (id)coordinator;
 - (void)dealloc;
-- (id)defaultSwitchSpecifierWithConfiguration:(id)arg1 key:(id)arg2 label:(id)arg3 icon:(id)arg4;
+- (id)defaultSwitchSpecifierWithConfiguration:(id)arg1 key:(id)arg2 fallbackLabel:(id)arg3 icon:(id)arg4;
 - (id)getItemSpecifierValue:(id)arg1;
 - (id)init;
 - (id)nameForInstalledSystemApp:(id)arg1;

@@ -44,6 +44,7 @@
 - (id)_formatValue:(id)arg1;
 - (void)_generateWheelValues;
 - (void)_setupConstraints;
+- (void)_updateUIToReachable;
 - (bool)canBeHighlighted;
 - (id)customValues;
 - (id)delegate;

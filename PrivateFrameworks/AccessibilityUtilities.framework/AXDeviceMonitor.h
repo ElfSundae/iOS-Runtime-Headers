@@ -11,13 +11,17 @@
 
 @property (nonatomic) <AXDeviceMonitorDelegate> *delegate;
 
++ (id)bluetoothKeyboardDevices;
+
 - (void).cxx_destruct;
+- (void)_commonInitWithRunLoop:(id)arg1;
 - (void)begin;
 - (id)copyDevices;
 - (void)dealloc;
 - (id)delegate;
 - (void)informDelegate;
 - (id)initWithMatchingDictionary:(id)arg1 callbackRunLoop:(id)arg2;
+- (id)initWithMatchingMultiple:(id)arg1 callbackRunLoop:(id)arg2;
 - (void)invalidate;
 - (void)setDelegate:(id)arg1;
 

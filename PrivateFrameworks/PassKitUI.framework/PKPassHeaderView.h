@@ -4,6 +4,7 @@
 
 @interface PKPassHeaderView : UIView {
     <PKPassHeaderViewDelegate> * _delegate;
+    bool  _expiredPass;
     UIImageView * _maskShadow;
     PKPass * _pass;
     <PKPassLibraryDataProvider> * _passLibraryOverride;
@@ -24,6 +25,7 @@
 }
 
 @property (nonatomic) <PKPassHeaderViewDelegate> *delegate;
+@property (nonatomic) bool expiredPass;
 @property (nonatomic, readonly) PKPass *pass;
 @property (nonatomic, retain) <PKPassLibraryDataProvider> *passLibraryOverride;
 @property (nonatomic, readonly) PKPassView *passView;
@@ -45,6 +47,7 @@
 - (void)_updateTextContent;
 - (void)dealloc;
 - (id)delegate;
+- (bool)expiredPass;
 - (id)initWithPass:(id)arg1;
 - (id)initWithPass:(id)arg1 rendererState:(id)arg2;
 - (bool)isSmall;
@@ -59,6 +62,7 @@
 - (id)rendererState;
 - (id)secondaryTextColor;
 - (void)setDelegate:(id)arg1;
+- (void)setExpiredPass:(bool)arg1;
 - (void)setPassLibraryOverride:(id)arg1;
 - (void)setPeerPaymentAccount:(id)arg1;
 - (void)setPrimaryTextColor:(id)arg1;

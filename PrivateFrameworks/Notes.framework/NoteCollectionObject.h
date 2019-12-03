@@ -7,10 +7,12 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool isAllNotesContainer;
 @property (readonly) Class superclass;
 
 - (id)basicAccountIdentifier;
 - (id)collectionInfo;
+- (bool)isAllNotesContainer;
 - (id)noteVisibilityTestingForSearchingAccount;
 - (id)predicateForNotes;
 - (id)predicateForSearchableAttachments;

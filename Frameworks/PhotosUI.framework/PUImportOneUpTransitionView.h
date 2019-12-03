@@ -16,7 +16,7 @@
         } size; 
     }  _initialFrame;
     double  _initialPhotoViewAlpha;
-    PUImportMediaProvider * _mediaProvider;
+    PXImportMediaProvider * _mediaProvider;
     UIImage * _startingImage;
     struct CGRect { 
         struct CGPoint { 
@@ -35,7 +35,7 @@
 @property (nonatomic, readonly) NSArray *badgeViewOffsetConstraints;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } initialFrame;
 @property (nonatomic) double initialPhotoViewAlpha;
-@property (nonatomic, retain) PUImportMediaProvider *mediaProvider;
+@property (nonatomic, retain) PXImportMediaProvider *mediaProvider;
 @property (nonatomic, retain) UIImage *startingImage;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } targetFrame;
 @property (nonatomic) double targetPhotoViewAlpha;

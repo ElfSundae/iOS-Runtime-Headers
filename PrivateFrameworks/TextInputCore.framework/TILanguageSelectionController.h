@@ -39,6 +39,9 @@
 
 + (id)inferInputModeForLanguage:(id)arg1 enabled:(id)arg2;
 + (id)inferSecondaryInputModeForPrimary:(id)arg1 enabled:(id)arg2;
++ (id)inferSecondaryInputModeForPrimary:(id)arg1 enabled:(id)arg2 enabledExcludingPreferredLanguages:(id)arg3;
++ (id)inputModeForLanguageIdentifier:(id)arg1;
++ (id)inputModesForLanguageIdentifiers:(id)arg1;
 + (id)multilingualInputModesForInputModes:(id)arg1;
 + (void)reportTypedTokens:(const struct vector<TITokenID, std::__1::allocator<TITokenID> > { struct TITokenID {} *x1; struct TITokenID {} *x2; struct __compressed_pair<TITokenID *, std::__1::allocator<TITokenID> > { struct TITokenID {} *x_3_1_1; } x3; }*)arg1 activeInputModes:(id)arg2;
 + (id)sharedLanguageLikelihoodModel;
@@ -58,6 +61,7 @@
 - (void)feedBufferedTokenStringsToModel;
 - (id)fetchPreferredSecondaryInputMode;
 - (id)fetchUserEnabledInputModes;
+- (id)fetchUserEnabledInputModesExcludingPreferredLanguages;
 - (void)flushBuffer;
 - (id)inferredSecondaryInputMode;
 - (id)init;

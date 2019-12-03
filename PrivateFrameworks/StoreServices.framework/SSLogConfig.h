@@ -44,6 +44,7 @@
 + (id)sharedAccountsMigrationConfig;
 + (id)sharedAccountsMigrationConfigOversize;
 + (id)sharedAccountsStorefrontConfig;
++ (id)sharedAskPermissionExtensionConfig;
 + (id)sharedBagCacheConfig;
 + (id)sharedBagConfig;
 + (id)sharedConfig;

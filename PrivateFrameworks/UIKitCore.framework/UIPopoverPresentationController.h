@@ -3,11 +3,14 @@
  */
 
 @interface UIPopoverPresentationController : UIPresentationController <UIDimmingViewDelegate, UIGestureRecognizerDelegatePrivate> {
+    bool  __allowsSourceViewInDifferentWindowThanInitialPresentationViewController;
     bool  __centersPopoverIfSourceViewNotSet;
     double  __dimmingViewTopEdgeInset;
     bool  __ignoreBarButtonItemSiblings;
     bool  __shouldHideArrow;
+    bool  __softAssertWhenNoSourceViewOrBarButtonItemSpecified;
     UIColor * _arrowBackgroundColor;
+    bool  _backgroundBlurDisabled;
     UIColor * _backgroundColor;
     bool  _canOverlapSourceViewRect;
     UIViewController * _contentViewController;
@@ -65,13 +68,15 @@
     UIView * _presentingView;
     UIPopoverPresentationController * _retainedSelf;
     bool  _retainsSelfWhilePresented;
-    _UIMirrorNinePatchView * _shadowImageView;
+    _UICutoutShadowView * _shadowView;
     bool  _shouldDisableInteractionDuringTransitions;
     bool  _showsOrientationMarker;
     bool  _showsPresentationArea;
     bool  _showsTargetRect;
     unsigned long long  _slideTransitionCount;
     UIViewController * _slidingViewController;
+    UIView * _sourceOverlayView;
+    NSArray * _sourceOverlayViewConstraints;
     id  _target;
     UIBarButtonItem * _targetBarButtonItem;
     struct CGRect { 
@@ -94,12 +99,14 @@
             double height; 
         } size; 
     }  _targetRectInEmbeddingView;
+    UIView * _targetRectView;
     unsigned long long  _toViewAutoResizingMask;
     bool  _useSourceViewBoundsAsSourceRect;
     UIPanGestureRecognizer * _vendedGestureRecognizer;
     unsigned int  draggingChildScrollViewCount;
 }
 
+@property (setter=_setAllowsSourceViewInDifferentWindowThanInitialPresentationViewController:, nonatomic) bool _allowsSourceViewInDifferentWindowThanInitialPresentationViewController;
 @property (getter=_arrowOffset, setter=_setArrowOffset:, nonatomic) double _arrowOffset;
 @property (getter=_centersPopoverIfSourceViewNotSet, setter=_setCentersPopoverIfSourceViewNotSet:, nonatomic) bool _centersPopoverIfSourceViewNotSet;
 @property (setter=_setDimmingViewTopEdgeInset:, nonatomic) double _dimmingViewTopEdgeInset;
@@ -107,6 +114,7 @@
 @property (setter=_setIgnoresKeyboardNotifications:, nonatomic) bool _ignoresKeyboardNotifications;
 @property (setter=_setPopoverBackgroundStyle:, nonatomic) long long _popoverBackgroundStyle;
 @property (getter=_shouldHideArrow, setter=_setShouldHideArrow:, nonatomic) bool _shouldHideArrow;
+@property (setter=_setSoftAssertWhenNoSourceViewOrBarButtonItemSpecified:, nonatomic) bool _softAssertWhenNoSourceViewOrBarButtonItemSpecified;
 @property (nonatomic, readonly) unsigned long long arrowDirection;
 @property (nonatomic, copy) UIColor *backgroundColor;
 @property (nonatomic, retain) UIBarButtonItem *barButtonItem;
@@ -131,9 +139,12 @@
 @property (nonatomic) bool showsOrientationMarker;
 @property (nonatomic) bool showsPresentationArea;
 @property (nonatomic) bool showsTargetRect;
+@property (getter=_sourceOverlayView, setter=_setSourceOverlayView:, nonatomic, retain) UIView *sourceOverlayView;
+@property (getter=_sourceOverlayViewConstraints, setter=_setSourceOverlayViewConstraints:, nonatomic, retain) NSArray *sourceOverlayViewConstraints;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } sourceRect;
 @property (nonatomic, retain) UIView *sourceView;
 @property (readonly) Class superclass;
+@property (getter=_targetRectView, setter=_setTargetRectView:, nonatomic, retain) UIView *targetRectView;
 
 + (bool)_alwaysAllowPopoverPresentations;
 + (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_defaultPopoverLayoutMarginsForPopoverControllerStyle:(long long)arg1 andContentViewController:(id)arg2;
@@ -143,19 +154,18 @@
 + (bool)_showTargetRectPref;
 
 - (void).cxx_destruct;
-- (void)_adjustPopoverForNewContentSizeFromViewController:(id)arg1 allowShrink:(bool)arg2;
-- (bool)_alwaysAdaptToFullscreenForTraitCollection:(id)arg1;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_additionalSafeAreaInsets;
+- (bool)_allowsSourceViewInDifferentWindowThanInitialPresentationViewController;
 - (double)_arrowOffset;
 - (bool)_attemptsToAvoidKeyboard;
+- (bool)_backgroundBlurDisabled;
 - (id)_backgroundView;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_baseContentInsetsWithLeftMargin:(double*)arg1 rightMargin:(double*)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_calculateContainingFrame;
 - (struct CGPoint { double x1; double x2; })_centerPointForScale:(double)arg1 frame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 anchor:(struct CGPoint { double x1; double x2; })arg3;
 - (bool)_centersPopoverIfSourceViewNotSet;
 - (void)_clearCachedPopoverContentSize;
-- (void)_commonPresentPopoverFromRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 inView:(id)arg2 permittedArrowDirections:(unsigned long long)arg3 animated:(bool)arg4;
 - (id /* block */)_completionBlockForDismissalWhenNotifyingDelegate:(bool)arg1;
-- (void)_containedViewControllerModalStateChanged;
 - (struct CGSize { double x1; double x2; })_currentPopoverContentSize;
 - (Class)_defaultChromeViewClass;
 - (long long)_defaultPresentationStyleForTraitCollection:(id)arg1;
@@ -163,8 +173,10 @@
 - (double)_dimmingViewTopEdgeInset;
 - (void)_dismissPopoverAnimated:(bool)arg1 stateOnly:(bool)arg2 notifyDelegate:(bool)arg3;
 - (double)_dismissalAnimationDuration;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_effectivePopoverLayoutMargins;
 - (bool)_embedsInView;
 - (id)_exceptionStringForNilSourceViewOrBarButtonItem;
+- (bool)_fallbackShouldDismiss;
 - (bool)_forcesPreferredAnimationControllers;
 - (bool)_ignoreBarButtonItemSiblings;
 - (bool)_ignoresKeyboardNotifications;
@@ -180,12 +192,9 @@
 - (id)_layoutInfoFromLayoutInfo:(id)arg1 forCurrentKeyboardStateAndHostingWindow:(id)arg2;
 - (bool)_manuallyHandlesContentViewControllerAppearanceCalls;
 - (void)_moveAwayFromTheKeyboard:(id)arg1;
-- (void)_newViewControllerWasPushed:(id)arg1;
-- (void)_newViewControllerWillBePushed:(id)arg1;
 - (id)_passthroughViews;
 - (void)_performHierarchyCheckOnViewController:(id)arg1;
 - (long long)_popoverBackgroundStyle;
-- (bool)_popoverBackgroundViewWantsDefaultContentAppearance;
 - (long long)_popoverControllerStyle;
 - (id)_popoverHostingWindow;
 - (bool)_popoverIsDismissingBecauseDimmingViewWasTapped;
@@ -199,12 +208,17 @@
 - (int)_presentationState;
 - (id)_presentationView;
 - (id)_presentingView;
+- (void)_realSourceViewDidChangeFromView:(id)arg1 toView:(id)arg2;
 - (void)_resetSlideTransitionCount;
 - (bool)_retainsSelfWhilePresented;
 - (void)_scrollViewDidEndDragging:(id)arg1;
 - (void)_scrollViewWillBeginDragging:(id)arg1;
 - (void)_sendDelegateWillRepositionToRect;
+- (void)_sendFallbackDidDismiss;
+- (void)_sendFallbackWillDismiss;
+- (void)_setAllowsSourceViewInDifferentWindowThanInitialPresentationViewController:(bool)arg1;
 - (void)_setArrowOffset:(double)arg1;
+- (void)_setBackgroundBlurDisabled:(bool)arg1;
 - (void)_setCentersPopoverIfSourceViewNotSet:(bool)arg1;
 - (void)_setContentViewController:(id)arg1 animated:(bool)arg2;
 - (void)_setContentViewController:(id)arg1 backgroundStyle:(long long)arg2 animated:(bool)arg3;
@@ -221,28 +235,34 @@
 - (void)_setRetainsSelfWhilePresented:(bool)arg1;
 - (void)_setShouldDisableInteractionDuringTransitions:(bool)arg1;
 - (void)_setShouldHideArrow:(bool)arg1;
+- (void)_setSoftAssertWhenNoSourceViewOrBarButtonItemSpecified:(bool)arg1;
+- (void)_setSourceOverlayView:(id)arg1;
+- (void)_setSourceOverlayViewConstraints:(id)arg1;
+- (void)_setTargetRectView:(id)arg1;
 - (bool)_shouldDisableInteractionDuringTransitions;
 - (bool)_shouldHideArrow;
 - (bool)_shouldKeepCurrentFirstResponder;
 - (bool)_shouldOccludeDuringPresentation;
+- (bool)_shouldPopoverContentExtendOverArrowForViewController:(id)arg1 backgroundViewClass:(Class)arg2;
 - (bool)_shouldPresentedViewControllerControlStatusBarAppearance;
 - (unsigned long long)_slideTransitionCount;
-- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_sourceRect;
+- (bool)_softAssertWhenNoSourceViewOrBarButtonItemSpecified;
+- (id)_sourceOverlayView;
+- (id)_sourceOverlayViewConstraints;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_sourceRectInContainerView;
-- (id)_sourceView;
 - (void)_startWatchingForKeyboardNotificationsIfNecessary;
-- (void)_startWatchingForNavigationControllerNotifications:(id)arg1;
 - (void)_startWatchingForScrollViewNotifications;
 - (void)_stopWatchingForKeyboardNotifications;
-- (void)_stopWatchingForNavigationControllerNotifications:(id)arg1;
 - (void)_stopWatchingForNotifications;
 - (void)_stopWatchingForScrollViewNotifications;
+- (id)_targetRectView;
 - (void)_transitionFromDidEnd;
 - (void)_transitionFromViewController:(id)arg1 toViewController:(id)arg2 animated:(bool)arg3;
 - (void)_transitionFromWillBegin;
 - (void)_transitionToDidEnd;
 - (void)_transitionToWillBegin;
 - (void)_updateShadowFrame;
+- (void)_updateSourceOverlayViewConstraints;
 - (id)arrowBackgroundColor;
 - (unsigned long long)arrowDirection;
 - (id)backgroundColor;
@@ -294,10 +314,10 @@
 - (void)setShowsTargetRect:(bool)arg1;
 - (void)set_ignoreBarButtonItemSiblings:(bool)arg1;
 - (bool)shouldPresentInFullscreen;
-- (bool)shouldRemovePresentersView;
 - (bool)showsOrientationMarker;
 - (bool)showsPresentationArea;
 - (bool)showsTargetRect;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
 
 @end

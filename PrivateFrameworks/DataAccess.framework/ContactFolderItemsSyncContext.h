@@ -5,14 +5,19 @@
 @interface ContactFolderItemsSyncContext : NSObject {
     int  _abGroupChangeId;
     int  _abPersonChangeId;
+    CNChangeHistoryAnchor * _cnChangeAnchor;
 }
 
 @property (nonatomic) int abGroupChangeId;
 @property (nonatomic) int abPersonChangeId;
+@property (nonatomic, retain) CNChangeHistoryAnchor *cnChangeAnchor;
 
+- (void).cxx_destruct;
 - (int)abGroupChangeId;
 - (int)abPersonChangeId;
+- (id)cnChangeAnchor;
 - (void)setAbGroupChangeId:(int)arg1;
 - (void)setAbPersonChangeId:(int)arg1;
+- (void)setCnChangeAnchor:(id)arg1;
 
 @end

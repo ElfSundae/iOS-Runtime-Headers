@@ -28,6 +28,7 @@
 @property (nonatomic, readonly) double vibrationRecorderProgressToolbarVerticalOffset;
 @property (nonatomic, readonly) double vibrationRecorderProgressViewAccessibilityAdditionalHeight;
 @property (nonatomic, readonly) double vibrationRecorderProgressViewDotHorizontalInset;
+@property (nonatomic, readonly) UIColor *vibrationRecorderProgressViewDotTintColor;
 @property (nonatomic, readonly) double vibrationRecorderProgressViewHeight;
 @property (nonatomic, readonly) double vibrationRecorderProgressViewHorizontalOffsetFromEdge;
 @property (nonatomic, readonly) UIImage *vibrationRecorderProgressViewResizableDotImage;
@@ -41,9 +42,8 @@
 
 - (void).cxx_destruct;
 - (id)_bundle;
-- (id)_cachedImageForPropertyWithSelector:(SEL)arg1 size:(struct CGSize { double x1; double x2; })arg2 opaque:(bool)arg3 withDrawingBlock:(id /* block */)arg4;
 - (id)_cachedImageWithName:(id)arg1 forPropertyWithSelector:(SEL)arg2;
-- (id)_cachedResizableImageForPropertyWithSelector:(SEL)arg1 capInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg2 size:(struct CGSize { double x1; double x2; })arg3 opaque:(bool)arg4 withDrawingBlock:(id /* block */)arg5;
+- (id)_cachedResizableImageForPropertyWithSelector:(SEL)arg1 capInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg2 size:(struct CGSize { double x1; double x2; })arg3 imageRenderingMode:(long long)arg4 withDrawingActions:(id /* block */)arg5;
 - (id)_cachedStyleObjectForPropertyWithSelector:(SEL)arg1;
 - (void)_didReceiveMemoryWarning:(id)arg1;
 - (void)_setCachedStyleObject:(id)arg1 forPropertyWithSelector:(SEL)arg2;
@@ -66,6 +66,7 @@
 - (double)vibrationRecorderProgressToolbarVerticalOffset;
 - (double)vibrationRecorderProgressViewAccessibilityAdditionalHeight;
 - (double)vibrationRecorderProgressViewDotHorizontalInset;
+- (id)vibrationRecorderProgressViewDotTintColor;
 - (double)vibrationRecorderProgressViewHeight;
 - (double)vibrationRecorderProgressViewHorizontalOffsetFromEdge;
 - (id)vibrationRecorderProgressViewResizableDotImage;

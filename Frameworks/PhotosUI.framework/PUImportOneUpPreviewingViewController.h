@@ -3,13 +3,13 @@
  */
 
 @interface PUImportOneUpPreviewingViewController : UIViewController {
-    PUImportItemViewModel * _importItemViewModel;
-    PUImportMediaProvider * _mediaProvider;
+    PXImportItemViewModel * _importItemViewModel;
+    PXImportMediaProvider * _mediaProvider;
     PUImportOneUpTransitionView * _previewView;
 }
 
-@property (nonatomic, retain) PUImportItemViewModel *importItemViewModel;
-@property (nonatomic, retain) PUImportMediaProvider *mediaProvider;
+@property (nonatomic, retain) PXImportItemViewModel *importItemViewModel;
+@property (nonatomic, retain) PXImportMediaProvider *mediaProvider;
 @property (nonatomic, retain) PUImportOneUpTransitionView *previewView;
 
 - (void).cxx_destruct;

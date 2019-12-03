@@ -10,7 +10,8 @@
     CLLocation * _geoLocation;
     bool  _geocodedEventEncountered;
     CalGeocoder * _geocoder;
-    GEORouteHypothesizer * _hypothesizer;
+    <CALNRouteHypothesizer> * _hypothesizer;
+    <CALNRouteHypothesizerProvider> * _hypothesizerProvider;
     bool  _hypothesizerSentAtLeastOneHypothesis;
     EKTravelEngineHypothesis * _latestHypothesis;
     NSData * _mapKitHandle;
@@ -29,7 +30,8 @@
 @property (nonatomic, retain) CLLocation *geoLocation;
 @property (nonatomic) bool geocodedEventEncountered;
 @property (nonatomic, retain) CalGeocoder *geocoder;
-@property (nonatomic, retain) GEORouteHypothesizer *hypothesizer;
+@property (nonatomic, retain) <CALNRouteHypothesizer> *hypothesizer;
+@property (nonatomic, readonly) <CALNRouteHypothesizerProvider> *hypothesizerProvider;
 @property (nonatomic) bool hypothesizerSentAtLeastOneHypothesis;
 @property (nonatomic, retain) EKTravelEngineHypothesis *latestHypothesis;
 @property (nonatomic, retain) NSData *mapKitHandle;
@@ -84,8 +86,9 @@
 - (id)geocoder;
 - (void)handleBTAJob:(id)arg1 named:(const char *)arg2;
 - (id)hypothesizer;
+- (id)hypothesizerProvider;
 - (bool)hypothesizerSentAtLeastOneHypothesis;
-- (id)init;
+- (id)initWithRouteHypothesizerProvider:(id)arg1;
 - (id)latestHypothesis;
 - (id)mapKitHandle;
 - (double)maximumTravelDurationEncountered;

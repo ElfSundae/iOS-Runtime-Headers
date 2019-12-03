@@ -2,27 +2,25 @@
    Image: /System/Library/PrivateFrameworks/TelephonyPreferences.framework/TelephonyPreferences
  */
 
-@interface TPSTelephonyController : NSObject <CoreTelephonyClientDelegate> {
+@interface TPSTelephonyController : TPSController <CoreTelephonyClientDelegate> {
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
     }  _accessorLock;
-    struct os_unfair_lock_s { 
-        unsigned int _os_unfair_lock_opaque; 
-    }  _delegateLock;
-    NSMapTable * _delegateToQueue;
+    NSOrderedSet * _activeSubscriptions;
     NSObject<OS_dispatch_queue> * _serialDispatchQueue;
+    CTXPCServiceSubscriptionInfo * _subscriptionInfo;
     NSOrderedSet * _subscriptions;
     NSDictionary * _systemCapabilities;
     CoreTelephonyClient * _telephonyClient;
 }
 
 @property (nonatomic) struct os_unfair_lock_s { unsigned int x1; } accessorLock;
+@property (nonatomic, copy) NSOrderedSet *activeSubscriptions;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) struct os_unfair_lock_s { unsigned int x1; } delegateLock;
-@property (nonatomic, readonly) NSMapTable *delegateToQueue;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *serialDispatchQueue;
+@property (nonatomic, retain) CTXPCServiceSubscriptionInfo *subscriptionInfo;
 @property (nonatomic, copy) NSOrderedSet *subscriptions;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSDictionary *systemCapabilities;
@@ -30,21 +28,19 @@
 
 - (void).cxx_destruct;
 - (struct os_unfair_lock_s { unsigned int x1; })accessorLock;
-- (void)addDelegate:(id)arg1 queue:(id)arg2;
+- (id)activeSubscriptions;
 - (void)context:(id)arg1 capabilitiesChanged:(id)arg2;
-- (struct os_unfair_lock_s { unsigned int x1; })delegateLock;
-- (id)delegateToQueue;
-- (id)fetchSubscriptions;
+- (id)fetchSubscriptionInfo;
 - (id)fetchSystemCapabilitiesForSubscriptions:(id)arg1;
 - (id)init;
 - (void)performAtomicAccessorBlock:(id /* block */)arg1;
-- (void)performAtomicDelegateBlock:(id /* block */)arg1;
-- (void)removeDelegate:(id)arg1;
 - (id)serialDispatchQueue;
 - (void)setAccessorLock:(struct os_unfair_lock_s { unsigned int x1; })arg1;
-- (void)setDelegateLock:(struct os_unfair_lock_s { unsigned int x1; })arg1;
+- (void)setActiveSubscriptions:(id)arg1;
+- (void)setSubscriptionInfo:(id)arg1;
 - (void)setSubscriptions:(id)arg1;
 - (void)setSystemCapabilities:(id)arg1;
+- (id)subscriptionInfo;
 - (void)subscriptionInfoDidChange;
 - (id)subscriptions;
 - (bool)supportsCellularNetworkSelectionForSubscriptionContext:(id)arg1;

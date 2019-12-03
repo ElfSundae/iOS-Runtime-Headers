@@ -3,6 +3,7 @@
  */
 
 @interface _INPBSearchForMessagesIntent : PBCodable <NSCopying, NSSecureCoding, _INPBSearchForMessagesIntent> {
+    bool  __encodeLegacyGloryData;
     struct { 
         int *list; 
         unsigned long long count; 
@@ -22,6 +23,7 @@
     _INPBDataStringList * _speakableGroupName;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic, readonly) int*attributes;
 @property (nonatomic, readonly) unsigned long long attributesCount;
 @property (nonatomic, retain) _INPBStringList *content;
@@ -51,8 +53,12 @@
 @property (nonatomic, retain) _INPBDataStringList *speakableGroupName;
 @property (readonly) Class superclass;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (int)StringAsAttributes:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (void)addAttribute:(int)arg1;
 - (int)attributeAtIndex:(unsigned long long)arg1;
 - (int*)attributes;
@@ -63,7 +69,9 @@
 - (id)conversationIdentifier;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dateTimeRange;
+- (void)dealloc;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (id)groupName;
 - (bool)hasContent;
 - (bool)hasConversationIdentifier;
@@ -78,6 +86,7 @@
 - (bool)hasSpeakableGroupName;
 - (unsigned long long)hash;
 - (id)identifier;
+- (id)initWithCoder:(id)arg1;
 - (id)intentMetadata;
 - (bool)isEqual:(id)arg1;
 - (id)notificationIdentifier;

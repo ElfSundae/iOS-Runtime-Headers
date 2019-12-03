@@ -10,7 +10,7 @@
 
 + (id)transactionReason:(id)arg1;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)reason;
 - (void)setReason:(id)arg1;
 

@@ -13,7 +13,7 @@
 - (void)_setting:(id)arg1 didAddConstraint:(id)arg2;
 - (void)_setting:(id)arg1 didRemoveConstraint:(id)arg2;
 - (void)addItem:(id)arg1 completionHandler:(id /* block */)arg2;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (id)initWithInternal:(id)arg1;
 - (id)initWithKey:(id)arg1 properties:(unsigned long long)arg2 value:(id)arg3;
 - (id)itemValueClasses;

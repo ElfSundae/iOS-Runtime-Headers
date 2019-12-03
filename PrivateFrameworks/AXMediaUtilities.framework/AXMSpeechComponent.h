@@ -17,9 +17,9 @@
 + (bool)isSupported;
 
 - (void).cxx_destruct;
-- (bool)canHandleRequest:(id)arg1 options:(id)arg2;
+- (bool)canHandleRequest:(id)arg1;
 - (id /* block */)currentRequestCompletionBlock;
-- (void)handleRequest:(id)arg1 options:(id)arg2 completion:(id /* block */)arg3;
+- (void)handleRequest:(id)arg1 completion:(id /* block */)arg2;
 - (id)init;
 - (void)setCurrentRequestCompletionBlock:(id /* block */)arg1;
 - (void)setSynthesizer:(id)arg1;

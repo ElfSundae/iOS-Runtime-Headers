@@ -7,6 +7,13 @@
 
 - (NSString *)audioRoutingIdentifier;
 - (NSURL *)audioURL;
+- (unsigned long long)inEar;
 - (bool)playingSound;
+- (bool)updateAudioAsset:(id <FMDAsset>)arg1;
+- (bool)updatePlaybackChannels:(NSArray *)arg1;
+
+@optional
+
+- (bool)shouldStopSoundNow;
 
 @end

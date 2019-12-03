@@ -32,6 +32,7 @@
 - (void)_setError:(id)arg1;
 - (void)_setPurchase:(id)arg1;
 - (void)_setResponseMetrics:(id)arg1;
+- (void)_setSuccess:(bool)arg1;
 - (void)_setTransactionIDs:(id)arg1;
 - (bool)cancelsPurchaseBatch;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

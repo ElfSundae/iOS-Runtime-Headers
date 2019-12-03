@@ -20,7 +20,8 @@
 - (void)_configureForRelevanceEngine:(id)arg1;
 - (void)_didBecomeCurrent;
 - (void)_didResignCurrent;
-- (void)_trainWithElement:(id)arg1 isPositiveEvent:(bool)arg2 interaction:(id)arg3;
+- (void)_trainElement:(id)arg1 isPositiveEvent:(bool)arg2 interaction:(id)arg3;
+- (void)_trainElementWithIdentifier:(id)arg1 isPositiveEvent:(bool)arg2 interaction:(id)arg3;
 - (bool)_wantsAutomaticRemoteContextForwarding;
 - (void)_willBecomeCurrent;
 - (void)_willResignCurrent;
@@ -39,5 +40,6 @@
 - (void)setCachedAttributeContext:(id)arg1;
 - (void)setRemoteContext:(id)arg1;
 - (void)trainWithElement:(id)arg1 isPositiveEvent:(bool)arg2 interaction:(id)arg3;
+- (void)trainWithUnmanagedElement:(id)arg1 isPositiveEvent:(bool)arg2 interaction:(id)arg3;
 
 @end

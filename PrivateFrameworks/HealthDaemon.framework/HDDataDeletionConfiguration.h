@@ -7,7 +7,6 @@
     bool  _failIfNotFound;
     bool  _generateDeletedObjects;
     bool  _notifyObservers;
-    HDSQLitePredicate * _predicate;
     id /* block */  _recursiveDeleteAuthorizationBlock;
     NSString * _restrictedSourceBundleIdentifier;
     bool  _secureDelete;
@@ -17,7 +16,6 @@
 @property (nonatomic) bool failIfNotFound;
 @property (nonatomic) bool generateDeletedObjects;
 @property (nonatomic) bool notifyObservers;
-@property (nonatomic, copy) HDSQLitePredicate *predicate;
 @property (nonatomic, copy) id /* block */ recursiveDeleteAuthorizationBlock;
 @property (nonatomic, copy) NSString *restrictedSourceBundleIdentifier;
 @property (nonatomic) bool secureDelete;
@@ -33,7 +31,6 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (bool)notifyObservers;
-- (id)predicate;
 - (id /* block */)recursiveDeleteAuthorizationBlock;
 - (id)restrictedSourceBundleIdentifier;
 - (bool)secureDelete;
@@ -41,7 +38,6 @@
 - (void)setFailIfNotFound:(bool)arg1;
 - (void)setGenerateDeletedObjects:(bool)arg1;
 - (void)setNotifyObservers:(bool)arg1;
-- (void)setPredicate:(id)arg1;
 - (void)setRecursiveDeleteAuthorizationBlock:(id /* block */)arg1;
 - (void)setRestrictedSourceBundleIdentifier:(id)arg1;
 - (void)setSecureDelete:(bool)arg1;

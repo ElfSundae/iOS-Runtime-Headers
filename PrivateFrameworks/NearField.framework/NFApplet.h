@@ -22,6 +22,7 @@
     NSString * _packageIdentifier;
     NSArray * _referencedAppIDs;
     NSString * _seIdentifier;
+    NSData * _typeFSystemCode;
 }
 
 @property (nonatomic, readonly) unsigned char activationState;
@@ -38,6 +39,7 @@
 @property (nonatomic, readonly) unsigned char lifecycleState;
 @property (nonatomic, readonly) NSArray *referencedApps;
 @property (nonatomic, readonly) NSString *seIdentifier;
+@property (nonatomic, readonly) unsigned char supportedTypeFSystem;
 
 + (bool)supportsSecureCoding;
 
@@ -77,5 +79,6 @@
 - (id)referencedApps;
 - (id)seIdentifier;
 - (void)setAppletCollection:(id)arg1;
+- (unsigned char)supportedTypeFSystem;
 
 @end

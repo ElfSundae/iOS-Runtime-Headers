@@ -5,7 +5,9 @@
 
 @required
 
+- (<GEOServerConditionalString> *)alternativeString;
 - (NSArray *)formatStrings;
+- (NSArray *)formatStyles;
 - (NSArray *)formatTokens;
 - (NSArray *)separators;
 

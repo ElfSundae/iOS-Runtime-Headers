@@ -21,7 +21,6 @@
 - (unsigned long long)hash;
 - (id)identifier;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 policyTypes:(id)arg2;
 - (id)initWithIdentifier:(id)arg1 policyTypes:(id)arg2 callback:(id /* block */)arg3;
 - (bool)isEqual:(id)arg1;
 - (id)policyTypes;

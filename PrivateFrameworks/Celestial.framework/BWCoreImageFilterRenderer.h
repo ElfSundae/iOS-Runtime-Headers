@@ -22,7 +22,6 @@
 @property (nonatomic, readonly) bool usingDepth;
 
 + (void)initialize;
-+ (void)prePrewarm;
 + (void)prewarm;
 
 - (void)_renderUsingParameters:(id)arg1 inputPixelBuffer:(struct __CVBuffer { }*)arg2 inputSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg3 originalPixelBuffer:(struct __CVBuffer { }*)arg4 processedPixelBuffer:(struct __CVBuffer { }*)arg5 prewarming:(bool)arg6 completionHandler:(id /* block */)arg7;

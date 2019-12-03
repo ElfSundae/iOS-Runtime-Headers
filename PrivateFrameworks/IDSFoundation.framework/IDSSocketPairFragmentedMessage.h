@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/IDSFoundation.framework/IDSFoundation
  */
 
-@interface IDSSocketPairFragmentedMessage : IDSSocketPairMessage {
+@interface IDSSocketPairFragmentedMessage : IDSSocketPairMessage <IDSSocketPairMessage> {
     NSData * _data;
     unsigned int  _fragmentIndex;
     unsigned int  _fragmentedMessageID;
@@ -11,9 +11,16 @@
 }
 
 @property (nonatomic, readonly) NSData *data;
+@property (nonatomic, readonly) bool expectsPeerResponse;
+@property (nonatomic, retain) NSDate *expiryDate;
 @property (nonatomic, readonly) unsigned int fragmentIndex;
 @property (nonatomic, readonly) unsigned int fragmentedMessageID;
+@property (nonatomic, readonly) NSString *messageUUID;
+@property (nonatomic, readonly) NSString *peerResponseIdentifier;
+@property (nonatomic) unsigned int sequenceNumber;
+@property (nonatomic) unsigned short streamID;
 @property (nonatomic, readonly) unsigned int totalFragmentCount;
+@property (nonatomic, readonly) bool wantsAppAck;
 
 + (id)createMessageFragmentsFromOriginalMessage:(id)arg1 withFragmentedMessageID:(unsigned int)arg2 fragmentSize:(unsigned int)arg3;
 + (id)createOriginalMessageFromFragmentedMessages:(id)arg1;

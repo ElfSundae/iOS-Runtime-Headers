@@ -4,8 +4,6 @@
 
 @interface _NSConstantNumberBool : _NSConstantNumber
 
-+ (void)load;
-
 - (bool)boolValue;
 - (BOOL)charValue;
 - (struct { unsigned int x1 : 8; unsigned int x2 : 4; unsigned int x3 : 1; unsigned int x4 : 1; unsigned int x5 : 18; unsigned short x6[8]; })decimalValue;

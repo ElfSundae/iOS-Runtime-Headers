@@ -7,7 +7,7 @@
     OISFUZipArchive * mZipArchive;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)entryWithName:(id)arg1 cacheResult:(bool)arg2;
 - (id)initWithZipArchive:(id)arg1;
 

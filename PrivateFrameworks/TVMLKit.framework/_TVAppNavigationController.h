@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/TVMLKit.framework/TVMLKit
  */
 
-@interface _TVAppNavigationController : UINavigationController <IKAppNavigationController, TVAppRootViewController, UIGestureRecognizerDelegate, UINavigationControllerDelegate> {
+@interface _TVAppNavigationController : UINavigationController <IKAppNavigationController, TVAppRootViewController, UIGestureRecognizerDelegate, UINavigationControllerDelegate, _TVApplicationInspectorDocumentProvider> {
     struct { 
         unsigned int shouldOverrideModalBehaviorForPlaybackDocument : 1; 
         unsigned int shouldIgnoreDismissal : 1; 
@@ -70,8 +70,6 @@
 - (void)popToRootDocument;
 - (id)popToRootDocument:(bool)arg1;
 - (id)popToRootViewControllerAnimated:(bool)arg1;
-- (void)presentConfirmation:(id)arg1 options:(id)arg2;
-- (void)presentConfirmationViewController:(id)arg1 preferredContentSize:(struct CGSize { double x1; double x2; })arg2;
 - (void)presentModal:(id)arg1 options:(id)arg2;
 - (id)presentedModalViewController;
 - (void)pushDocument:(id)arg1 options:(id)arg2;

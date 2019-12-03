@@ -10,7 +10,7 @@
     bool  _dismissDelegateCalled;
     unsigned long long  _documentPickerMode;
     bool  _ignoreApplicationEntitlementForImport;
-    bool  _sourceIsManaged;
+    bool  _isContentManaged;
     NSURL * _uploadURL;
     <UIDocumentMenuDelegate> * _weak_delegate;
 }
@@ -25,6 +25,7 @@
 @property (nonatomic) bool dismissDelegateCalled;
 @property (nonatomic) unsigned long long documentPickerMode;
 @property (readonly) unsigned long long hash;
+@property (getter=_isContentManaged, setter=_setIsContentManaged:, nonatomic) bool isContentManaged;
 @property (getter=_remoteViewController, nonatomic, readonly, retain) _UIDocumentPickerRemoteViewController *remoteViewController;
 @property (getter=_sourceIsManaged, setter=_setSourceIsManaged:, nonatomic) bool sourceIsManaged;
 @property (readonly) Class superclass;
@@ -40,9 +41,11 @@
 - (void)_displayLocationsMenuFromRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (bool)_ignoreApplicationEntitlementForImport;
 - (id)_initIgnoringApplicationEntitlementForImportOfTypes:(id)arg1;
+- (bool)_isContentManaged;
 - (id)_remoteViewController;
 - (void)_setChildViewController:(id)arg1;
 - (void)_setIgnoreApplicationEntitlementForImport:(bool)arg1;
+- (void)_setIsContentManaged:(bool)arg1;
 - (void)_setSourceIsManaged:(bool)arg1;
 - (bool)_sourceIsManaged;
 - (void)_stitchFileCreationAtURL:(id)arg1;

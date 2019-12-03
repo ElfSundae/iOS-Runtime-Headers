@@ -9,6 +9,7 @@
     NSArray * _certificates;
     NSString * _coreIDVNextStepToken;
     unsigned long long  _featureIdentifier;
+    bool  _isInstallment;
     NSString * _previousContextIdentifier;
 }
 
@@ -18,6 +19,7 @@
 @property (nonatomic, copy) NSArray *certificates;
 @property (nonatomic, copy) NSString *coreIDVNextStepToken;
 @property (nonatomic) unsigned long long featureIdentifier;
+@property (nonatomic) bool isInstallment;
 @property (nonatomic, copy) NSString *previousContextIdentifier;
 
 + (bool)supportsSecureCoding;
@@ -32,6 +34,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)featureIdentifier;
 - (id)initWithCoder:(id)arg1;
+- (bool)isInstallment;
 - (id)previousContextIdentifier;
 - (void)setActionIdentifier:(id)arg1;
 - (void)setApplicationIdentifier:(id)arg1;
@@ -39,6 +42,7 @@
 - (void)setCertificates:(id)arg1;
 - (void)setCoreIDVNextStepToken:(id)arg1;
 - (void)setFeatureIdentifier:(unsigned long long)arg1;
+- (void)setIsInstallment:(bool)arg1;
 - (void)setPreviousContextIdentifier:(id)arg1;
 
 @end

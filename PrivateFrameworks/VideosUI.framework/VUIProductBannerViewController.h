@@ -2,12 +2,10 @@
    Image: /System/Library/PrivateFrameworks/VideosUI.framework/VideosUI
  */
 
-@interface VUIProductBannerViewController : UIViewController <VUIProductUberBackgroundInterface> {
+@interface VUIProductBannerViewController : UIViewController <TVAppTemplateImpressionable, VUIProductUberBackgroundInterface> {
     VUIProductBannerView * _bannerView;
-    long long  _overrideInterfaceStyle;
     VUIProductUberBackgroundView * _uberBackgroundView;
     IKViewElement * _viewElement;
-    UIView * _whiteBackgroundView;
 }
 
 @property (nonatomic, retain) VUIProductBannerView *bannerView;
@@ -15,38 +13,29 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) bool isUberLayoutActive;
-@property (nonatomic) long long overrideInterfaceStyle;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } size;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) double topThreshold;
 @property (nonatomic, retain) VUIProductUberBackgroundView *uberBackgroundView;
-@property (nonatomic, readonly) long long uberLayoutInterfaceStyle;
 @property (nonatomic, retain) IKViewElement *viewElement;
-@property (nonatomic, retain) UIView *whiteBackgroundView;
 
 - (void).cxx_destruct;
 - (void)_configureViewSubviews;
 - (id)bannerView;
+- (id)impressionableElementsContainedInDocument:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (bool)isUberLayoutActive;
 - (void)loadView;
-- (long long)overrideInterfaceStyle;
 - (void)setBannerOpacity:(double)arg1;
 - (void)setBannerView:(id)arg1;
-- (void)setOverrideInterfaceStyle:(long long)arg1;
 - (void)setUberBackgroundView:(id)arg1;
 - (void)setUberImageOffset:(double)arg1;
 - (void)setViewElement:(id)arg1;
-- (void)setWhiteBackgroundView:(id)arg1;
-- (void)setWhiteBannerOpacity:(double)arg1;
 - (struct CGSize { double x1; double x2; })size;
 - (double)topThreshold;
-- (id)traitCollection;
 - (id)uberBackgroundView;
-- (long long)uberLayoutInterfaceStyle;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (id)viewElement;
-- (id)whiteBackgroundView;
 
 @end

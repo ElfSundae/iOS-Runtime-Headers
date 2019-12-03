@@ -32,11 +32,13 @@
 - (id)deviceName;
 - (id /* block */)getZeroTimestampBlock;
 - (id)initWithDeviceUID:(id)arg1 underlyingDevice:(id)arg2 plugin:(id)arg3;
+- (unsigned int)inputLatency;
 - (unsigned int)inputSafetyOffset;
 - (bool)isHidden;
 - (id)manufacturerName;
 - (id)modelName;
 - (id)modelUID;
+- (unsigned int)outputLatency;
 - (unsigned int)outputSafetyOffset;
 - (int)performStopIO;
 - (bool)requestConfigurationChangeForDevice:(id)arg1 withBlock:(id /* block */)arg2;

@@ -38,6 +38,7 @@
 @property (nonatomic, retain) UILabel *skipLabel;
 @property (nonatomic, retain) ADVolumeSlider *volumeSlider;
 
+- (void).cxx_destruct;
 - (void)_accumulateViewingTime;
 - (void)_actionButtonTapped:(id)arg1;
 - (void)_pauseButtonTapped:(id)arg1;

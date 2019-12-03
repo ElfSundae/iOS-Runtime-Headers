@@ -21,14 +21,13 @@
     GEOETARoute * _liveETARoute;
     bool  _needReroute;
     GEOLocation * _originLocation;
-    NSObject<OS_dispatch_queue> * _requestIsolationQueue;
+    geo_isolater * _requestIsolater;
     NSMutableArray * _rerouteEntries;
     GEOComposedRoute * _route;
     GEORouteAttributes * _routeAttributes;
     GEORouteMatch * _routeMatch;
     GEOComposedWaypoint * _source;
     NSString * _traceName;
-    <GEOTTLTraceRecorder> * _traceRecorder;
     GEOMapServiceTraits * _traits;
     int  _transportType;
     double  _travelScore;
@@ -51,10 +50,8 @@
 + (id)monitorWithSource:(id)arg1 toDestination:(id)arg2 transportType:(int)arg3 arrivalDate:(id)arg4 traceName:(id)arg5 traits:(id)arg6;
 + (id)serverFormattedStringFormatter;
 + (void)setServerFormattedStringFormatter:(id)arg1;
-+ (void)setTTLTraceRecorderFactory:(id)arg1;
 + (void)setUserPreferencesProvider:(id)arg1;
 + (bool)supportsSecureCoding;
-+ (id)ttlTraceRecorderFactory;
 + (id)userPreferencesProvider;
 
 - (void).cxx_destruct;
@@ -67,7 +64,6 @@
 - (bool)_isNavigatingToDestination;
 - (void)_recalculateETAWithRouteMatch:(id)arg1;
 - (void)_recievedRouteResponse:(id)arg1 forLocation:(id)arg2 isReroute:(bool)arg3;
-- (void)_recordTraceForEvent:(long long)arg1 parameters:(id)arg2;
 - (void)_requestNewRouteFromLocation:(id)arg1 usualRouteData:(id)arg2;
 - (void)_routeRequestFailed:(id)arg1;
 - (void)_showDebugAlert;

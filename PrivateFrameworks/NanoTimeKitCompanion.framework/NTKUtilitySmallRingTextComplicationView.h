@@ -9,7 +9,6 @@
 @property (nonatomic, readonly) NTKColoringLabel *label;
 
 + (bool)handlesComplicationTemplate:(id)arg1;
-+ (void)load;
 
 - (void).cxx_destruct;
 - (void)_enumerateColoringViewsWithBlock:(id /* block */)arg1;

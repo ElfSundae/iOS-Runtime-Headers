@@ -66,6 +66,7 @@
 - (TSDLayout *)parentLayoutForInlineAttachments;
 - (bool)pushAscendersIntoColumn;
 - (double)reservedWidthWhenTruncating;
+- (void)scaleTextPercentDidChange:(unsigned long long)arg1;
 - (void)setAnchoredDrawablesForRelayout:(NSMutableArray *)arg1;
 - (bool)shouldHyphenate;
 - (bool)siblingTargetIsManipulatingDrawable:(TSDDrawableInfo *)arg1;

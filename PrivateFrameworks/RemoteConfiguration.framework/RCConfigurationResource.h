@@ -49,7 +49,7 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
-- (bool)isExpiredWithFallbackMaxAge:(double)arg1 allowedToReachEndpoint:(bool)arg2;
+- (bool)isExpiredWithMaxTTL:(double)arg1 allowedToReachEndpoint:(bool)arg2;
 - (id)lastFetchedDate;
 - (id)lastModifiedFallbackString;
 - (id)lastModifiedString;

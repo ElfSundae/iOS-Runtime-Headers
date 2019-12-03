@@ -2,47 +2,40 @@
    Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
  */
 
-@interface RERelevanceEngineConfiguration : NSObject <NSCopying, NSMutableCopying, REIndentedDescription> {
-    bool  _allowsRemoteTraining;
-    bool  _allowsUpdatingModelFile;
-    NSURL * _baseModelFileURL;
-    REDataSourceLoader * _dataSourceLoader;
-    REFeatureSet * _featureSet;
-    bool  _ignoreDeviceLockState;
-    NSMutableArray * _interactionDescriptions;
-    RELocationManager * _locationManager;
-    NSURL * _modelFileURL;
-    unsigned long long  _modelStorageBehavior;
-    NSString * _preferenceDomain;
-    NSMutableArray * _sectionDescriptions;
-    unsigned long long  _trainingBehavior;
-    bool  _wantsBackup;
-    bool  _wantsImmutableContent;
+@interface RERelevanceEngineConfiguration : NSObject <NSCopying, NSMutableCopying, REAutomaticExportedInterface> {
+    NSMutableDictionary * _values;
 }
 
+@property (nonatomic, readonly) bool allowsDiagnosticExtension;
 @property (nonatomic, readonly) bool allowsRemoteTraining;
 @property (nonatomic, readonly) bool allowsUpdatingModelFile;
 @property (nonatomic, readonly, copy) NSURL *baseModelFileURL;
 @property (nonatomic, readonly, copy) REDataSourceLoader *dataSourceLoader;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *engineQueue;
 @property (nonatomic, readonly) bool ignoreDeviceLockState;
+@property (nonatomic, readonly) bool ignoresInstalledApplications;
 @property (nonatomic, readonly, copy) NSArray *interactionDescriptors;
 @property (nonatomic, readonly) RELocationManager *locationManager;
+@property (nonatomic, readonly) <RERelevanceEngineMetricsRecorder> *metricsRecorder;
 @property (nonatomic, readonly, copy) NSURL *modelFileURL;
 @property (nonatomic, readonly) unsigned long long modelStorageBehavior;
+@property (nonatomic, readonly) unsigned long long modelVersion;
+@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *observerQueue;
 @property (nonatomic, readonly) NSString *preferenceDomain;
 @property (nonatomic, readonly, copy) REFeatureSet *primaryFeatures;
+@property (nonatomic, readonly, copy) RERelevanceProviderManagerLoader *relevanceProviderManagerLoader;
 @property (nonatomic, readonly, copy) NSArray *sectionDescriptors;
-@property (readonly) Class superclass;
 @property (nonatomic, readonly) unsigned long long trainingBehavior;
 @property (nonatomic, readonly) bool wantsBackup;
 @property (nonatomic, readonly) bool wantsImmutableContent;
 
++ (id)_defaultModelFileURL;
 + (id)defaultConfiguration;
++ (id)defaultUpNextConfiguration;
++ (id)sampleUpNextConfiguration;
 
 - (void).cxx_destruct;
+- (bool)allowsDiagnosticExtension;
 - (bool)allowsRemoteTraining;
 - (bool)allowsUpdatingModelFile;
 - (id)baseModelFileURL;
@@ -50,19 +43,28 @@
 - (id)dataSourceLoader;
 - (id)description;
 - (id)descriptionWithIndent:(unsigned long long)arg1;
+- (id)engineQueue;
 - (unsigned long long)hash;
 - (bool)ignoreDeviceLockState;
-- (id)initWithModelFileURL:(id)arg1 baseModelFileURL:(id)arg2 allowsUpdatingModelFile:(bool)arg3 dataSourceLoader:(id)arg4 trainingBehavior:(unsigned long long)arg5 modelStorageBehavior:(unsigned long long)arg6 sectionDescriptions:(id)arg7 locationManager:(id)arg8 featureSet:(id)arg9 wantsImmutableContent:(bool)arg10 preferenceDomain:(id)arg11 interactionDescriptions:(id)arg12 allowsRemoteTraining:(bool)arg13 wantsBackup:(bool)arg14 ignoreDeviceLockState:(bool)arg15;
+- (bool)ignoresInstalledApplications;
+- (id)init;
+- (id)initWithDictionary:(id)arg1;
 - (id)interactionDescriptors;
 - (bool)isEqual:(id)arg1;
 - (id)locationManager;
+- (id)metricsRecorder;
 - (id)modelFileURL;
 - (unsigned long long)modelStorageBehavior;
+- (unsigned long long)modelVersion;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
+- (id)observerQueue;
 - (id)preferenceDomain;
 - (id)primaryFeatures;
+- (id)relevanceProviderManagerLoader;
 - (id)sectionDescriptors;
+- (void)setValue:(id)arg1 forKey:(id)arg2 ofClass:(Class)arg3;
 - (unsigned long long)trainingBehavior;
+- (id)valueForKey:(id)arg1 ofClass:(Class)arg2 defaultValue:(id)arg3;
 - (bool)wantsBackup;
 - (bool)wantsImmutableContent;
 

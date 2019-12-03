@@ -8,19 +8,24 @@
         long long __sig; 
         BOOL __opaque[56]; 
     }  _enqueueLock;
+    unsigned int  _enqueuedFrameCount;
     struct OpaqueFigImageQueue { } * _figQueue;
     unsigned int  _frameRate;
     bool  _imageQueueProtected;
+    bool  _isLowLatencyEnabled;
     unsigned int  _slot;
     long long  _streamToken;
 }
 
 @property unsigned int frameRate;
 @property bool imageQueueProtected;
+@property (getter=isLowLatencyEnabled, nonatomic) bool lowLatencyEnabled;
 @property long long streamToken;
 
 + (id)drawingContext;
 
+- (void)copyPerformanceDictionary:(const struct __CFDictionary {}**)arg1;
+- (void)createAndCopyLatencyStatsDictionary:(const struct __CFDictionary {}**)arg1;
 - (void)dealloc;
 - (bool)enqueueFrame:(struct __CVBuffer { }*)arg1 atTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2;
 - (unsigned int)frameRate;
@@ -28,9 +33,11 @@
 - (bool)imageQueueProtected;
 - (id)initWithFrameRate:(unsigned char)arg1;
 - (id)initWithFrameRate:(unsigned char)arg1 imageQueueProtected:(bool)arg2;
+- (bool)isLowLatencyEnabled;
 - (void)pause;
 - (void)setFrameRate:(unsigned int)arg1;
 - (void)setImageQueueProtected:(bool)arg1;
+- (void)setLowLatencyEnabled:(bool)arg1;
 - (void)setStreamToken:(long long)arg1;
 - (unsigned int)setVideoDestination:(id)arg1;
 - (void)start;

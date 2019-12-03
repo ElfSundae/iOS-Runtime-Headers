@@ -17,13 +17,14 @@
     IMPowerAssertion * _powerAssertion;
 }
 
-@property (nonatomic, readonly, retain) NSArray *_FTCalls;
+@property (nonatomic, readonly) NSArray *_FTCalls;
 @property (nonatomic, readonly) unsigned int callState;
-@property (nonatomic, readonly, retain) NSArray *calls;
+@property (nonatomic, readonly) NSArray *calls;
 @property (nonatomic, readonly) bool hasActiveCall;
 
 + (id)sharedInstance;
 
+- (void).cxx_destruct;
 - (id)_FTCalls;
 - (id)_activeAudioCall;
 - (id)_activeFaceTimeCall;
@@ -53,7 +54,6 @@
 - (void)_updateOverallChatState;
 - (unsigned int)callState;
 - (id)calls;
-- (void)dealloc;
 - (bool)hasActiveCall;
 - (id)init;
 

@@ -30,8 +30,8 @@
 - (void)dealloc;
 - (id)description;
 - (bool)disableColorMatching;
+- (id)effectiveLoudnessInfo;
 - (id)fallbackTrack;
-- (void)finalize;
 - (float)hapticVolume;
 - (unsigned long long)hash;
 - (bool)isEnabled;

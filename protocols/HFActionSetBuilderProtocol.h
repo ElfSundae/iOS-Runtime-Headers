@@ -7,7 +7,9 @@
 
 - (NSArray *)actions;
 - (void)addAction:(HFActionBuilder *)arg1;
+- (NAFuture *)deleteActionSet;
 - (bool)isAffectedByEndEvents;
+- (HFMediaPlaybackActionBuilder *)mediaAction;
 - (void)removeAction:(HFActionBuilder *)arg1;
 - (void)removeAllActions;
 - (bool)requiresDeviceUnlock;

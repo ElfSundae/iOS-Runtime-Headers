@@ -68,6 +68,14 @@
             float m44; 
             float m45; 
         } color_matrix; 
+        struct CGAffineTransform { 
+            double a; 
+            double b; 
+            double c; 
+            double d; 
+            double tx; 
+            double ty; 
+        } affine_transform; 
     }  _u;
 }
 

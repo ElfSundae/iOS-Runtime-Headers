@@ -5,24 +5,29 @@
 @interface ASDIAPInfo : NSObject <NSCopying, NSMutableCopying, NSSecureCoding> {
     NSNumber * _adamId;
     NSNumber * _appAdamId;
-    NSNumber * _expirationTimestamp;
+    bool  _autoRenewStatus;
+    NSDate * _expirationDate;
     bool  _hasUsedFreeOffer;
     bool  _hasUsedIntroPricingOffer;
-    NSNumber * _lastModifiedTimestamp;
-    NSNumber * _purchaseTimestamp;
+    NSDate * _lastModifiedDate;
+    NSDate * _purchaseDate;
     NSString * _subscriptionFamilyId;
     unsigned char  _type;
 }
 
-@property (nonatomic, readonly) NSNumber *adamId;
-@property (nonatomic, readonly) NSNumber *appAdamId;
+@property (nonatomic, retain) NSNumber *adamId;
+@property (nonatomic, retain) NSNumber *appAdamId;
+@property (nonatomic) bool autoRenewStatus;
+@property (nonatomic, retain) NSDate *expirationDate;
 @property (nonatomic, readonly) NSNumber *expirationTimestamp;
-@property (nonatomic, readonly) bool hasUsedFreeOffer;
-@property (nonatomic, readonly) bool hasUsedIntroPricingOffer;
+@property (nonatomic) bool hasUsedFreeOffer;
+@property (nonatomic) bool hasUsedIntroPricingOffer;
+@property (nonatomic, retain) NSDate *lastModifiedDate;
 @property (nonatomic, readonly) NSNumber *lastModifiedTimestamp;
+@property (nonatomic, retain) NSDate *purchaseDate;
 @property (nonatomic, readonly) NSNumber *purchaseTimestamp;
-@property (nonatomic, readonly) NSString *subscriptionFamilyId;
-@property (nonatomic, readonly) unsigned char type;
+@property (nonatomic, retain) NSString *subscriptionFamilyId;
+@property (nonatomic) unsigned char type;
 
 + (bool)supportsSecureCoding;
 
@@ -30,18 +35,32 @@
 - (id)_newCopyWithClass:(Class)arg1 zone:(struct _NSZone { }*)arg2;
 - (id)adamId;
 - (id)appAdamId;
+- (bool)autoRenewStatus;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)expirationDate;
 - (id)expirationTimestamp;
 - (bool)hasUsedFreeOffer;
 - (bool)hasUsedIntroPricingOffer;
 - (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToIAPInfo:(id)arg1;
+- (id)lastModifiedDate;
 - (id)lastModifiedTimestamp;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
+- (id)purchaseDate;
 - (id)purchaseTimestamp;
+- (void)setAdamId:(id)arg1;
+- (void)setAppAdamId:(id)arg1;
+- (void)setAutoRenewStatus:(bool)arg1;
+- (void)setExpirationDate:(id)arg1;
+- (void)setHasUsedFreeOffer:(bool)arg1;
+- (void)setHasUsedIntroPricingOffer:(bool)arg1;
+- (void)setLastModifiedDate:(id)arg1;
+- (void)setPurchaseDate:(id)arg1;
+- (void)setSubscriptionFamilyId:(id)arg1;
+- (void)setType:(unsigned char)arg1;
 - (id)subscriptionFamilyId;
 - (unsigned char)type;
 

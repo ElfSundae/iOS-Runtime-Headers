@@ -24,6 +24,8 @@
 - (bool)prefersLikelyDestinationsOverCurrentRoutingSession;
 - (void)startRoutingSessionForHighConfidenceExternalDestinationIfPresentWithCompletionHandler:(id /* block */)arg1;
 - (bool)startRoutingSessionWithOutputDeviceDescriptions:(id)arg1 error:(id*)arg2;
+- (bool)startSuppressingLikelyDestinationsUntilNextPlayEventAndReturnError:(id*)arg1;
+- (bool)stopSuppressingLikelyDestinationsAndReturnError:(id*)arg1;
 - (void)updateCurrentRoutingSessionFromLikelyDestinationsWithCompletionHandler:(id /* block */)arg1;
 
 @end

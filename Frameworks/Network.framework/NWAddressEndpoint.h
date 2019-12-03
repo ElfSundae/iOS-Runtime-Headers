@@ -20,5 +20,6 @@
 - (id)addressString;
 - (id)addressStringNoPort;
 - (id)descriptionWithIndent:(int)arg1 showFullContent:(bool)arg2;
+- (id)ethernetAddress;
 
 @end

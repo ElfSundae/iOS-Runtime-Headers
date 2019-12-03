@@ -9,6 +9,7 @@
 
 + (bool)mapIdentifier:(id)arg1 state:(id)arg2;
 
+- (void).cxx_destruct;
 - (id)initWithState:(id)arg1;
 - (void)map;
 - (void)mapBaseStyleFromPoint:(id)arg1 shape:(id)arg2;

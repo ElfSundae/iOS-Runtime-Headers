@@ -28,8 +28,10 @@
 - (void)setPunchoutPickerDismissText:(NSString *)arg1;
 - (void)setPunchoutPickerTitle:(NSString *)arg1;
 - (void)setSeparatorStyle:(int)arg1;
+- (void)setThumbnail:(_SFPBImage *)arg1;
 - (void)setTitle:(_SFPBRichText *)arg1;
 - (void)setType:(NSString *)arg1;
+- (_SFPBImage *)thumbnail;
 - (_SFPBRichText *)title;
 - (NSString *)type;
 

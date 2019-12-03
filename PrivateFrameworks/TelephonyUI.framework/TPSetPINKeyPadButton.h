@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/TelephonyUI.framework/TelephonyUI
  */
 
-@interface TPSetPINKeyPadButton : TPSimpleNumberPadButton
+@interface TPSetPINKeyPadButton : TPNumberPadDynamicButton
 
 + (double)outerCircleDiameter;
 

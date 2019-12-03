@@ -14,8 +14,6 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) bool wideColorSpace;
 
-+ (id)typeString;
-
 - (id)description;
 - (double)heightForImageWidth:(double)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFills:(struct CGSize { double x1; double x2; })arg1;

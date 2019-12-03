@@ -8,6 +8,7 @@
     SXContext * _context;
     FCFlintManifest * _flintManifest;
     FCFlintResourceManager * _flintResourceManager;
+    <FCHeadlineProviding> * _headline;
     <SXHost> * _host;
     NSOperationQueue * _imageDecodingQueue;
     <NUArticleResourceURLTranslator> * _resourceURLTranslator;
@@ -21,6 +22,7 @@
 @property (nonatomic, readonly) FCFlintManifest *flintManifest;
 @property (nonatomic, readonly) FCFlintResourceManager *flintResourceManager;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) <FCHeadlineProviding> *headline;
 @property (nonatomic, readonly) <SXHost> *host;
 @property (nonatomic, readonly) NSOperationQueue *imageDecodingQueue;
 @property (nonatomic, readonly) <NUArticleResourceURLTranslator> *resourceURLTranslator;
@@ -34,9 +36,10 @@
 - (void)fileURLForURL:(id)arg1 onCompletion:(id /* block */)arg2 onError:(id /* block */)arg3;
 - (id)flintManifest;
 - (id)flintResourceManager;
+- (id)headline;
 - (id)host;
 - (id)imageDecodingQueue;
-- (id)initWithFlintManifest:(id)arg1 flintResourceManager:(id)arg2 host:(id)arg3 resourceURLTranslator:(id)arg4;
+- (id)initWithFlintManifest:(id)arg1 flintResourceManager:(id)arg2 host:(id)arg3 resourceURLTranslator:(id)arg4 headline:(id)arg5;
 - (id)loadContextWithCompletion:(id /* block */)arg1;
 - (id /* block */)loadImagesForImageRequest:(id)arg1 completionBlock:(id /* block */)arg2;
 - (id)resourceURLTranslator;

@@ -2,7 +2,8 @@
    Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
  */
 
-@interface CKDURLRequest : NSObject <C2RequestDelegate, CKDFlowControllable, CKDProtobufMessageSigningDelegate, CKDZoneGatekeeperWaiter> {
+@interface CKDURLRequest : NSObject <C2RequestDelegate, CKDFlowControllable, CKDZoneGatekeeperWaiter> {
+    <CKDAccountAccessInfoProvider> * _accountAccessInfoProvider;
     <CKDAccountInfoProvider> * _accountInfoProvider;
     bool  _allowAutomaticRedirects;
     <CKDURLRequestAuthRetryDelegate> * _authRetryDelegate;
@@ -14,6 +15,7 @@
     NSDictionary * _clientProvidedAdditionalHeaderValues;
     NSString * _cloudKitAuthToken;
     id /* block */  _completionBlock;
+    <CKDContextInfoProvider> * _contextInfoProvider;
     NSMutableDictionary * _countsByRequestOperationType;
     NSDate * _dateRequestWentOut;
     NSString * _deviceID;
@@ -33,11 +35,6 @@
     bool  _isHandlingAuthRetry;
     bool  _isWaitingOnAuthRenew;
     NSObject<OS_dispatch_queue> * _lifecycleQueue;
-    struct CC_SHA256state_st { 
-        unsigned int count[2]; 
-        unsigned int hash[8]; 
-        unsigned int wbuf[16]; 
-    }  _mescalTxSignature;
     CKDOperationMetrics * _metrics;
     <CKDURLRequestMetricsDelegate> * _metricsDelegate;
     bool  _needsAuthRetry;
@@ -60,7 +57,6 @@
     NSString * _serverProvidedAutoSysdiagnoseCollectionReason;
     CKDTapToRadarRequest * _serverProvidedTapToRadarRequest;
     CKDProtobufStreamWriter * _streamWriter;
-    CKTimeLogger * _timeLogger;
     NSDictionary * _timingData;
     CKDTrafficLogger * _trafficLogger;
     CKDProtocolTranslator * _translator;
@@ -71,6 +67,7 @@
 }
 
 @property (nonatomic, readonly) NSString *acceptContentType;
+@property (nonatomic, retain) <CKDAccountAccessInfoProvider> *accountAccessInfoProvider;
 @property (nonatomic, retain) <CKDAccountInfoProvider> *accountInfoProvider;
 @property (nonatomic, readonly) NSDictionary *additionalHeaderValues;
 @property (nonatomic) bool allowAutomaticRedirects;
@@ -80,7 +77,6 @@
 @property (nonatomic, readonly) NSString *authPromptReason;
 @property (nonatomic) <CKDURLRequestAuthRetryDelegate> *authRetryDelegate;
 @property (nonatomic, retain) NSString *automatedDeviceGroup;
-@property (nonatomic, readonly) bool automaticallyRetryNetworkFailures;
 @property (retain) C2RequestOptions *c2RequestOptions;
 @property (nonatomic) long long cachedPartitionType;
 @property (nonatomic) long long cachedServerType;
@@ -88,7 +84,7 @@
 @property (nonatomic, retain) NSDictionary *clientProvidedAdditionalHeaderValues;
 @property (nonatomic, retain) NSString *cloudKitAuthToken;
 @property (nonatomic, copy) id /* block */ completionBlock;
-@property (nonatomic, readonly) CKDClientContext *context;
+@property (nonatomic, retain) <CKDContextInfoProvider> *contextInfoProvider;
 @property (nonatomic, retain) NSMutableDictionary *countsByRequestOperationType;
 @property (nonatomic, readonly) long long databaseScope;
 @property (retain) NSDate *dateRequestWentOut;
@@ -97,7 +93,7 @@
 @property (nonatomic, copy) NSString *deviceID;
 @property (nonatomic) bool didReceiveResponseBodyData;
 @property (nonatomic) bool didRetryAuth;
-@property (nonatomic, readonly) unsigned long long discretionaryNetworkBehavior;
+@property (nonatomic, readonly) unsigned long long duetPreClearedMode;
 @property (retain) NSError *error;
 @property (nonatomic, readonly) bool expectsResponseBody;
 @property (nonatomic, retain) NSDictionary *fakeResponseOperationResultByItemID;
@@ -142,6 +138,8 @@
 @property (nonatomic, copy) id /* block */ requestProgressBlock;
 @property (nonatomic, retain) NSDictionary *requestProperties;
 @property (nonatomic, readonly) NSString *requestUUID;
+@property (nonatomic, readonly) bool resolvedAutomaticallyRetryNetworkFailures;
+@property (nonatomic, readonly) unsigned long long resolvedDiscretionaryNetworkBehavior;
 @property (retain) NSHTTPURLResponse *response;
 @property (nonatomic, retain) CKDResponseBodyParser *responseBodyParser;
 @property (nonatomic, readonly) NSDictionary *responseHeaders;
@@ -159,7 +157,6 @@
 @property (nonatomic, readonly) NSString *sourceApplicationSecondaryIdentifier;
 @property (nonatomic, readonly) CKDProtobufStreamWriter *streamWriter;
 @property (readonly) Class superclass;
-@property (nonatomic, retain) CKTimeLogger *timeLogger;
 @property (nonatomic, retain) NSDictionary *timingData;
 @property (nonatomic, retain) CKDTrafficLogger *trafficLogger;
 @property (nonatomic, retain) CKDProtocolTranslator *translator;
@@ -184,14 +181,12 @@
 - (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(id /* block */)arg5;
 - (id)_CFNetworkTaskIdentifierString;
 - (void)_acquireZoneGates;
-- (void)_addRequestHeadersToTransmittedSignature:(id)arg1;
 - (void)_authTokenWithCompletionHandler:(id /* block */)arg1;
 - (id)_errorFromHTTPResponse:(id)arg1;
 - (void)_fetchContainerScopedUserID;
 - (void)_fetchDeviceID;
 - (void)_finishOnLifecycleQueueWithError:(id)arg1;
 - (void)_handleAuthFailure;
-- (void)_handleBadPasswordResponse;
 - (long long)_handlePlistResult:(id)arg1;
 - (long long)_handleServerJSONResult:(id)arg1;
 - (long long)_handleServerProtobufResult:(id)arg1 rawData:(id)arg2;
@@ -206,7 +201,6 @@
 - (void)_registerRequestOperationTypesForOperations:(id)arg1;
 - (void)_renewAuthTokenWithCompletionHandler:(id /* block */)arg1;
 - (void)_setupConfiguration;
-- (void)_setupMescal;
 - (void)_setupPrivateDatabaseURL;
 - (void)_setupPublicDatabaseURL;
 - (void)_tearDownStreamWriter;
@@ -214,6 +208,7 @@
 - (id)_wrapErrorIfNecessary:(id)arg1;
 - (id /* block */)_xmlObjectParsedBlock;
 - (id)acceptContentType;
+- (id)accountAccessInfoProvider;
 - (id)accountInfoProvider;
 - (id)additionalHeaderValues;
 - (bool)allowAutomaticRedirects;
@@ -225,7 +220,6 @@
 - (id)authPromptReason;
 - (id)authRetryDelegate;
 - (id)automatedDeviceGroup;
-- (bool)automaticallyRetryNetworkFailures;
 - (id)c2RequestOptions;
 - (long long)cachedPartitionType;
 - (long long)cachedServerType;
@@ -234,7 +228,7 @@
 - (id)clientProvidedAdditionalHeaderValues;
 - (id)cloudKitAuthToken;
 - (id /* block */)completionBlock;
-- (id)context;
+- (id)contextInfoProvider;
 - (id)countsByRequestOperationType;
 - (id)createAssetAuthorizeGetRequestOptionsHeaderInfoWithKey:(id)arg1 value:(id)arg2;
 - (long long)databaseScope;
@@ -246,7 +240,7 @@
 - (id)deviceIdentifier;
 - (bool)didReceiveResponseBodyData;
 - (bool)didRetryAuth;
-- (unsigned long long)discretionaryNetworkBehavior;
+- (unsigned long long)duetPreClearedMode;
 - (id)error;
 - (Class)expectedResponseClass;
 - (bool)expectsResponseBody;
@@ -255,7 +249,6 @@
 - (void)finishWithError:(id)arg1;
 - (id)flowControlKey;
 - (id)generateRequestOperations;
-- (void)generateSignature:(id /* block */)arg1;
 - (bool)hasRequestBody;
 - (bool)haveCachedPartitionType;
 - (bool)haveCachedServerType;
@@ -297,7 +290,6 @@
 - (id)protobufOperationName;
 - (long long)qualityOfService;
 - (id)redirectHistory;
-- (void)reportStatusWithError:(id)arg1;
 - (id)request;
 - (id)requestBodyStream;
 - (id)requestContentType;
@@ -320,9 +312,10 @@
 - (bool)requiresAppPartitionURL;
 - (bool)requiresConfiguration;
 - (bool)requiresDeviceID;
-- (bool)requiresSignature;
 - (bool)requiresTokenRegistration;
 - (bool)requiresUserPartitionURL;
+- (bool)resolvedAutomaticallyRetryNetworkFailures;
+- (unsigned long long)resolvedDiscretionaryNetworkBehavior;
 - (id)response;
 - (id)responseBodyParser;
 - (id)responseHeaders;
@@ -335,6 +328,7 @@
 - (id)serverProvidedAutoSysdiagnoseCollectionReason;
 - (id)serverProvidedTapToRadarRequest;
 - (long long)serverType;
+- (void)setAccountAccessInfoProvider:(id)arg1;
 - (void)setAccountInfoProvider:(id)arg1;
 - (void)setAllowAutomaticRedirects:(bool)arg1;
 - (void)setAuthRetryDelegate:(id)arg1;
@@ -346,6 +340,7 @@
 - (void)setClientProvidedAdditionalHeaderValues:(id)arg1;
 - (void)setCloudKitAuthToken:(id)arg1;
 - (void)setCompletionBlock:(id /* block */)arg1;
+- (void)setContextInfoProvider:(id)arg1;
 - (void)setCountsByRequestOperationType:(id)arg1;
 - (void)setDateRequestWentOut:(id)arg1;
 - (void)setDeviceID:(id)arg1;
@@ -376,7 +371,6 @@
 - (void)setServerProvidedAutoBugCaptureReason:(id)arg1;
 - (void)setServerProvidedAutoSysdiagnoseCollectionReason:(id)arg1;
 - (void)setServerProvidedTapToRadarRequest:(id)arg1;
-- (void)setTimeLogger:(id)arg1;
 - (void)setTimingData:(id)arg1;
 - (void)setTrafficLogger:(id)arg1;
 - (void)setTranslator:(id)arg1;
@@ -391,13 +385,11 @@
 - (id)streamWriter;
 - (void)tearDownResources;
 - (void)tearDownResourcesAndReleaseTheZoneLocks;
-- (id)timeLogger;
 - (double)timeoutIntervalForRequest;
 - (double)timeoutIntervalForResource;
 - (id)timingData;
 - (id)trafficLogger;
 - (id)translator;
-- (void)updateSignatureWithTransmittedBytes:(id)arg1;
 - (id)url;
 - (id)urlSession;
 - (id)urlSessionTask;

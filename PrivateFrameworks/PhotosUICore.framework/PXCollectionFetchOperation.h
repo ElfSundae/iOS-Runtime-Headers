@@ -14,6 +14,8 @@
 @property (nonatomic, retain) PHFetchOptions *fetchOptions;
 @property (nonatomic, retain) PHFetchResult *outputFetchResult;
 
++ (id)fetchOperationWithCollection:(id)arg1 delegate:(id)arg2;
+
 - (void).cxx_destruct;
 - (id)collection;
 - (id)delegate;

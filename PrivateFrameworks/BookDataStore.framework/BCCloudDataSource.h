@@ -5,16 +5,14 @@
 @interface BCCloudDataSource : NSObject <BDSCloudKitSupportSignOutDeleteWithoutInstance> {
     NSManagedObjectContext * _managedObjectContext;
     NSManagedObjectModel * _managedObjectModel;
-    NSPersistentStore * _persistentStore;
     NSPersistentStoreCoordinator * _persistentStoreCoordinator;
-    NSString * _persistentStorePath;
+    bool  _setupPersistentStore;
 }
 
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) NSManagedObjectModel *managedObjectModel;
-@property (nonatomic, retain) NSPersistentStore *persistentStore;
 @property (nonatomic, retain) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-@property (nonatomic, copy) NSString *persistentStorePath;
+@property (nonatomic) bool setupPersistentStore;
 
 + (id)_persistentStoreDirectory;
 + (void)deleteCloudDataWithCompletion:(id /* block */)arg1;
@@ -22,18 +20,18 @@
 - (void).cxx_destruct;
 - (void)_createPersistentStoreDirectory;
 - (void)_logIfError:(id)arg1 operation:(id)arg2;
-- (id)_persistentStoreCoordinatorOptions;
-- (void)_setupPersistentStoreCoordinator;
+- (id)_persistentStoreOptions;
+- (void)_setupManagedObjectContextWithCoordinator:(id)arg1;
+- (void)_setupPersistentStoreCoordinatorWithPath:(id)arg1;
 - (id)initWithManagedObjectModel:(id)arg1 persistentStorePath:(id)arg2;
+- (id)initWithPersistentStoreCoordinator:(id)arg1;
 - (id)managedObjectContext;
 - (id)managedObjectModel;
-- (id)persistentStore;
 - (id)persistentStoreCoordinator;
-- (id)persistentStorePath;
 - (void)setManagedObjectContext:(id)arg1;
 - (void)setManagedObjectModel:(id)arg1;
-- (void)setPersistentStore:(id)arg1;
 - (void)setPersistentStoreCoordinator:(id)arg1;
-- (void)setPersistentStorePath:(id)arg1;
+- (void)setSetupPersistentStore:(bool)arg1;
+- (bool)setupPersistentStore;
 
 @end

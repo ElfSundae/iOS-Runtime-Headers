@@ -14,6 +14,7 @@
     <CNContactInlineActionsViewControllerDelegate> * _delegate;
     bool  _displaysTitles;
     bool  _displaysUnavailableActionTypes;
+    CNUIContactsEnvironment * _environment;
     <CNSchedulerProvider> * _schedulerProvider;
     NSArray * _supportedActionTypes;
     NSArray * _tokens;
@@ -34,6 +35,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) bool displaysTitles;
 @property (nonatomic) bool displaysUnavailableActionTypes;
+@property (nonatomic, retain) CNUIContactsEnvironment *environment;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) <CNUIObjectViewControllerDelegate> *objectViewControllerDelegate;
 @property (nonatomic, retain) <CNSchedulerProvider> *schedulerProvider;
@@ -54,6 +56,7 @@
 - (id)actionsControllerPresentation;
 - (id)actionsView;
 - (id)allModelsObservable;
+- (void)checkinLaunchTasksForUndiscoverableActionsForContact:(id)arg1;
 - (id)contact;
 - (void)contactActionsController:(id)arg1 didSelectAction:(id)arg2;
 - (void)dealloc;
@@ -66,8 +69,9 @@
 - (void)displayAllSupportedTypesDisabled;
 - (bool)displaysTitles;
 - (bool)displaysUnavailableActionTypes;
+- (id)environment;
 - (id)existingActionItemForType:(id)arg1;
-- (id)initWithActionListDataSource:(id)arg1;
+- (id)initWithActionListDataSource:(id)arg1 environment:(id)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;
 - (id)makeActionItemForType:(id)arg1;
@@ -89,6 +93,7 @@
 - (void)setDelegate:(id)arg1;
 - (void)setDisplaysTitles:(bool)arg1;
 - (void)setDisplaysUnavailableActionTypes:(bool)arg1;
+- (void)setEnvironment:(id)arg1;
 - (void)setObjectViewControllerDelegate:(id)arg1;
 - (void)setSchedulerProvider:(id)arg1;
 - (void)setSupportedActionTypes:(id)arg1;

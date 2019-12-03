@@ -2,37 +2,50 @@
    Image: /System/Library/PrivateFrameworks/NanoMediaRemote.framework/NanoMediaRemote
  */
 
-@interface NMROriginManager : NSObject {
+@interface NMROriginManager : NSObject <MPAVRoutingControllerDelegate> {
     NSNumber * _activeOriginIdentifier;
-    NSNumber * _companionOriginIdentifier;
+    struct __CFArray { } * _availableOriginRefs;
+    NSOrderedSet * _availableOrigins;
+    NSDictionary * _availableOriginsByDeviceIdentifier;
+    NSDictionary * _availableOriginsByOriginIdentifier;
+    BKSProcessAssertion * _endpointDiscoveryProcessAssertion;
+    MPAVRoutingController * _endpointRoutingController;
+    NSMutableSet * _lastAvailableEndpointRouteUIDs;
     NSNumber * _localOriginIdentifier;
-    NSOrderedSet * _originIdentifiers;
-    NSMutableDictionary * _origins;
     NSObject<OS_dispatch_queue> * _serialQueue;
 }
 
 @property (nonatomic, readonly) NMROrigin *activeOrigin;
 @property (nonatomic, readonly) NSArray *availableOrigins;
 @property (nonatomic, readonly) NMROrigin *companionOrigin;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NMROrigin *localOrigin;
+@property (readonly) Class superclass;
 
 + (id)sharedManager;
 
 - (void).cxx_destruct;
+- (void)_forgetDiscoveredEndpoints;
 - (void)_handleDeviceInfoDidChangeNotification:(id)arg1;
-- (unsigned long long)_orderForOriginIdentifier:(id)arg1;
+- (void)_handleMediaRemoteActiveOriginDidChangeNotification:(id)arg1;
+- (void)_handleMediaRemoteAvailableOriginsDidChangeNotification:(id)arg1;
+- (bool)_isEndpointDiscoveryEnabled;
+- (void)_onQueue_updateActiveOriginIdentifier:(id)arg1;
+- (void)_onQueue_updateAvailableOrigins;
 - (id)_originFromTestOptions:(id)arg1;
-- (id)_originWithMROriginRef:(void*)arg1;
-- (void)_updateActiveOrigin;
-- (void)_updateAvailableOrigins;
-- (void)_updateLocalOrigin;
+- (void)_setEndpointDiscoveryEnabled:(bool)arg1;
+- (void)_updateMediaRemoteAvailableAndActiveOrigins;
+- (void)_updateMediaRemoteLocalOrigin;
 - (id)activeOrigin;
 - (id)availableOrigins;
 - (id)companionOrigin;
 - (void)dealloc;
-- (id)deltaFromOrigins:(id)arg1;
 - (id)init;
 - (id)localOrigin;
+- (id)originWithDeviceIdentifier:(id)arg1;
 - (id)originWithUniqueIdentifier:(id)arg1;
+- (void)routingControllerAvailableRoutesDidChange:(id)arg1;
 
 @end

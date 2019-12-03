@@ -13,6 +13,7 @@
 @property (nonatomic, retain) IMBalloonPluginDataSource *datasource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) <CKPluginEntryViewControllerDelegate> *entryViewDelegate;
 @property (readonly) unsigned long long hash;
 @property (readonly) bool loadedContentView;
 @property (nonatomic, retain) IMBalloonPlugin *plugin;

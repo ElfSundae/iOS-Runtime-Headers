@@ -24,6 +24,7 @@
 - (id)average;
 - (double)averageAsPercentageOfMax;
 - (id)dataPoints;
+- (id)initEmptyDataSetWithTimePeriod:(unsigned long long)arg1 referenceDate:(id)arg2;
 - (id)initWithTimePeriod:(unsigned long long)arg1 itemType:(unsigned long long)arg2 total:(id)arg3 max:(id)arg4 average:(id)arg5 averageAsPercentageOfMax:(double)arg6 dataPoints:(id)arg7;
 - (unsigned long long)itemType;
 - (id)max;

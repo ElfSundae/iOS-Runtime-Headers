@@ -6,11 +6,13 @@
     id /* block */  _handler;
     NSMutableArray * _registeredOptions;
     NSMutableArray * _registeredSubcommands;
+    NSMutableSet * _requiredOptions;
 }
 
 @property (nonatomic, readonly) id /* block */ handler;
 @property (nonatomic, readonly) NSMutableArray *registeredOptions;
 @property (nonatomic, readonly) NSMutableArray *registeredSubcommands;
+@property (nonatomic, retain) NSMutableSet *requiredOptions;
 
 + (id)boolValueForArgument:(id)arg1 error:(id*)arg2;
 + (id)enumValueForArgument:(id)arg1 withMapping:(id)arg2 error:(id*)arg3;
@@ -31,6 +33,8 @@
 - (void)registerSubcommand:(id)arg1;
 - (id)registeredOptions;
 - (id)registeredSubcommands;
+- (id)requiredOptions;
+- (void)setRequiredOptions:(id)arg1;
 - (id)subcommandLongHelp;
 
 @end

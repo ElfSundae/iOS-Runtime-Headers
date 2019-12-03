@@ -47,7 +47,7 @@
 - (void)_finishWithError:(id)arg1;
 - (void)_finishWithSupportedProviders:(id)arg1;
 - (id)_privacyServiceWithErrorHandler:(id /* block */)arg1;
-- (void)_promptForPrivacyWithDisplayNameIfRequired:(id)arg1 providerID:(id)arg2 allowUI:(bool)arg3;
+- (void)_promptForPrivacyWithDisplayNameIfRequired:(id)arg1 providerID:(id)arg2 providerIsSupported:(bool)arg3 allowUI:(bool)arg4;
 - (id)auditToken;
 - (id)availabilityInfoCenter;
 - (id)bag;

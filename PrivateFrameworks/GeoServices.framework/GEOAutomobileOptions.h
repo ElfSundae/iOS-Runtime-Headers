@@ -4,13 +4,14 @@
 
 @interface GEOAutomobileOptions : PBCodable <NSCopying> {
     struct { 
-        unsigned int trafficType : 1; 
-        unsigned int includeHistoricTravelTime : 1; 
-        unsigned int includeStaticTravelTime : 1; 
-    }  _has;
+        unsigned int has_trafficType : 1; 
+        unsigned int has_includeHistoricTravelTime : 1; 
+        unsigned int has_includeStaticTravelTime : 1; 
+    }  _flags;
     bool  _includeHistoricTravelTime;
     bool  _includeStaticTravelTime;
     int  _trafficType;
+    PBUnknownFields * _unknownFields;
     GEOUserPreferences * _userPreferences;
 }
 
@@ -21,10 +22,14 @@
 @property (nonatomic) bool includeHistoricTravelTime;
 @property (nonatomic) bool includeStaticTravelTime;
 @property (nonatomic) int trafficType;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic, retain) GEOUserPreferences *userPreferences;
+
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsTrafficType:(id)arg1;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -38,6 +43,7 @@
 - (bool)includeStaticTravelTime;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasIncludeHistoricTravelTime:(bool)arg1;
 - (void)setHasIncludeStaticTravelTime:(bool)arg1;
@@ -48,6 +54,7 @@
 - (void)setUserPreferences:(id)arg1;
 - (int)trafficType;
 - (id)trafficTypeAsString:(int)arg1;
+- (id)unknownFields;
 - (id)userPreferences;
 - (void)writeTo:(id)arg1;
 

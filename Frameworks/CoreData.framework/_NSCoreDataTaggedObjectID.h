@@ -16,7 +16,6 @@
 + (void)setObjectStoreIdentifier:(id)arg1;
 
 - (bool)_isPersistentStoreAlive;
-- (id)_referenceData;
 - (long long)_referenceData64;
 - (id)_retainedURIString;
 - (id)_storeIdentifier;

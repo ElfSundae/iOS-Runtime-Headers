@@ -14,7 +14,7 @@
     }  _has;
     unsigned int  _iconAttributeKey;
     unsigned int  _iconAttributeValue;
-    long long  _iconType;
+    int  _iconType;
     PBUnknownFields * _unknownFields;
 }
 
@@ -34,13 +34,13 @@
 @property (nonatomic) unsigned int iconAttributeKey;
 @property (nonatomic, readonly) unsigned int iconAttributeValue;
 @property (nonatomic) unsigned int iconAttributeValue;
-@property (nonatomic, readonly) long long iconType;
-@property (nonatomic) long long iconType;
+@property (nonatomic, readonly) int iconType;
+@property (nonatomic) int iconType;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 - (void).cxx_destruct;
-- (long long)StringAsIconType:(id)arg1;
+- (int)StringAsIconType:(id)arg1;
 - (unsigned int)cartoID;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -55,8 +55,8 @@
 - (unsigned long long)hash;
 - (unsigned int)iconAttributeKey;
 - (unsigned int)iconAttributeValue;
-- (long long)iconType;
-- (id)iconTypeAsString:(long long)arg1;
+- (int)iconType;
+- (id)iconTypeAsString:(int)arg1;
 - (id)initWithIcon:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
@@ -70,7 +70,7 @@
 - (void)setHasIconType:(bool)arg1;
 - (void)setIconAttributeKey:(unsigned int)arg1;
 - (void)setIconAttributeValue:(unsigned int)arg1;
-- (void)setIconType:(long long)arg1;
+- (void)setIconType:(int)arg1;
 - (id)unknownFields;
 - (void)writeTo:(id)arg1;
 

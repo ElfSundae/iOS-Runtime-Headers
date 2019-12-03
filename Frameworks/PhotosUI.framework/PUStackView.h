@@ -168,6 +168,7 @@
 - (struct CGSize { double x1; double x2; })stackSize;
 - (unsigned long long)style;
 - (struct CGPoint { double x1; double x2; })topLeftCornerOfFrontStackItem;
+- (void)traitCollectionDidChange:(id)arg1;
 - (bool)wouldCoverAllItemsInStackView:(id)arg1;
 
 @end

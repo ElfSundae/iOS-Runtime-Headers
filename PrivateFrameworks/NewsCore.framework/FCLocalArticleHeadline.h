@@ -50,6 +50,7 @@
 - (struct CGSize { double x1; double x2; })thumbnailSize;
 - (id)title;
 - (id)topicIDs;
+- (bool)useTransparentNavigationBar;
 - (double)videoDuration;
 - (id)videoURL;
 - (bool)webEmbedsEnabled;

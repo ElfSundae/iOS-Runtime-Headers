@@ -14,15 +14,18 @@
     NSString * _directory;
     NSMapTable * _inProgressResourceDownloads;
     NSMutableArray * _loadedResources;
+    NSObject<OS_os_log> * _log;
     unsigned long long  _maxConcurrentLoads;
     long long  _numberOfCopiesInProgress;
-    long long  _numberOfDownloadsInProgress;
+    unsigned long long  _numberOfDownloadsInProgress;
     GEOPowerAssertion * _powerAssertion;
+    bool  _preferDirectNetworking;
     GEOReportedProgress * _progress;
     NSURL * _proxyURL;
     bool  _requiresWiFi;
     NSArray * _resourceInfos;
     NSMutableArray * _resourcesToLoad;
+    unsigned long long  _signpostID;
     NSObject<OS_dispatch_queue> * _workQueue;
 }
 
@@ -30,6 +33,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) bool preferDirectNetworking;
 @property (readonly) NSProgress *progress;
 @property (nonatomic) bool requiresWiFi;
 @property (readonly) Class superclass;
@@ -45,10 +49,13 @@
 - (void)_writeResourceToDisk:(id)arg1 withData:(id)arg2 checksum:(id)arg3 completionHandler:(id /* block */)arg4 callbackQueue:(id)arg5;
 - (id)auditToken;
 - (void)cancel;
-- (id)initWithTargetDirectory:(id)arg1 baseURL:(id)arg2 proxyURL:(id)arg3 resources:(id)arg4 maximumConcurrentLoads:(unsigned long long)arg5 additionalDirectoryToConsider:(id)arg6;
+- (id)init;
+- (id)initWithTargetDirectory:(id)arg1 baseURL:(id)arg2 proxyURL:(id)arg3 resources:(id)arg4 maximumConcurrentLoads:(unsigned long long)arg5 additionalDirectoryToConsider:(id)arg6 log:(id)arg7 signpostID:(unsigned long long)arg8;
+- (bool)preferDirectNetworking;
 - (id)progress;
 - (bool)requiresWiFi;
 - (void)setAuditToken:(id)arg1;
+- (void)setPreferDirectNetworking:(bool)arg1;
 - (void)setRequiresWiFi:(bool)arg1;
 - (void)startWithCompletionHandler:(id /* block */)arg1 callbackQueue:(id)arg2;
 

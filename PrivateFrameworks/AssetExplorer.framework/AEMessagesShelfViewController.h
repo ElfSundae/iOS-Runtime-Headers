@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/AssetExplorer.framework/AssetExplorer
  */
 
-@interface AEMessagesShelfViewController : UIViewController <AEMessagesShelfLayoutDelegate, CKPluginEntryViewController, PUAssetExplorerReviewScreenViewControllerDelegate, PXAssetsSceneDelegate, PXChangeObserver, PXReusableObjectPoolDelegate, PXTileSource, PXTilingControllerScrollDelegate, PXTilingControllerTransitionDelegate, UIGestureRecognizerDelegate> {
+@interface AEMessagesShelfViewController : UIViewController <AEMessagesShelfLayoutDelegate, AEPluginEntryViewController, CKPluginEntryViewController, PUAssetExplorerReviewScreenViewControllerDelegate, PXAssetsSceneDelegate, PXChangeObserver, PXReusableObjectPoolDelegate, PXTileSource, PXTilingControllerScrollDelegate, PXTilingControllerTransitionDelegate, UIGestureRecognizerDelegate> {
     PUReviewDataSource * __dataSource;
     long long  __indexToScrollTo;
     PUReviewAssetsDataSourceManager * __internalReviewDataSourceManager;
@@ -15,6 +15,8 @@
     NSMutableSet * __tilesInUse;
     PXTilingController * __tilingController;
     AEWrappedDataSourceManager * __wrappedDataSourceManager;
+    <CKPluginEntryViewControllerDelegate> * _entryViewDelegate;
+    PUAssetExplorerReviewScreenViewController * _presentedReviewController;
 }
 
 @property (nonatomic, readonly) PUReviewDataSource *_dataSource;
@@ -31,8 +33,10 @@
 @property (nonatomic, readonly) AEWrappedDataSourceManager *_wrappedDataSourceManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) <CKPluginEntryViewControllerDelegate> *entryViewDelegate;
 @property (readonly) unsigned long long hash;
 @property (readonly) bool loadedContentView;
+@property (nonatomic, retain) PUAssetExplorerReviewScreenViewController *presentedReviewController;
 @property (readonly) Class superclass;
 @property (readonly) bool wantsClearButton;
 @property (readonly) bool wantsEdgeToEdgeLayout;
@@ -40,12 +44,14 @@
 - (void).cxx_destruct;
 - (id)_currentAssetsDataSource;
 - (id)_dataSource;
+- (void)_dismissPresentedReviewController:(id)arg1 animated:(bool)arg2;
 - (void)_immediatelyGenerateAndStagePackageFromReviewAsset:(id)arg1 suppressLivePhoto:(bool)arg2 mediaOrigin:(long long)arg3;
 - (long long)_indexToScrollTo;
 - (id)_internalReviewDataSourceManager;
 - (id)_internalReviewMediaProvider;
 - (id)_packageTransport;
 - (void)_presentReviewForAssetReference:(id)arg1;
+- (void)_presentReviewViewController:(id)arg1;
 - (void)_removeFromShelf:(id)arg1;
 - (id)_roundedCornerOverlayFillColor;
 - (id)_sceneController;
@@ -67,6 +73,7 @@
 - (void*)checkOutTileForIdentifier:(struct PXTileIdentifier { unsigned long long x1; unsigned long long x2[10]; })arg1 layout:(id)arg2;
 - (id)contentAssetReferenceAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)dealloc;
+- (id)entryViewDelegate;
 - (id)framesOfVisibleContentViewInCoordinateSpace:(id)arg1;
 - (bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)handleTap:(id)arg1;
@@ -74,11 +81,15 @@
 - (double)layout:(id)arg1 aspectRatioForItemAtIndexPath:(struct PXSimpleIndexPath { unsigned long long x1; long long x2; long long x3; long long x4; })arg2;
 - (long long)layout:(id)arg1 irisToggleStateForItemAtIndexPath:(struct PXSimpleIndexPath { unsigned long long x1; long long x2; long long x3; long long x4; })arg2;
 - (double)layout:(id)arg1 itemAtIndexPathDuration:(struct PXSimpleIndexPath { unsigned long long x1; long long x2; long long x3; long long x4; })arg2;
+- (bool)layout:(id)arg1 itemAtIndexPathIsAnimatedImage:(struct PXSimpleIndexPath { unsigned long long x1; long long x2; long long x3; long long x4; })arg2;
 - (bool)layout:(id)arg1 itemAtIndexPathIsLoop:(struct PXSimpleIndexPath { unsigned long long x1; long long x2; long long x3; long long x4; })arg2;
 - (bool)layout:(id)arg1 itemAtIndexPathIsVideo:(struct PXSimpleIndexPath { unsigned long long x1; long long x2; long long x3; long long x4; })arg2;
 - (bool)layoutShouldShowVideoDuration:(id)arg1;
 - (void)loadView;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void*)arg3;
+- (id)presentedReviewController;
+- (void)setEntryViewDelegate:(id)arg1;
+- (void)setPresentedReviewController:(id)arg1;
 - (void)set_roundedCornerOverlayFillColor:(id)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (struct CGPoint { double x1; double x2; })tilingController:(id)arg1 initialVisibleOriginForLayout:(id)arg2;

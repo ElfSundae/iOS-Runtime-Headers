@@ -8,8 +8,6 @@
 
 @property (nonatomic, readonly, copy) NSDateInterval *dateInterval;
 
-// Image: /System/Library/PrivateFrameworks/DoNotDisturb.framework/DoNotDisturb
-
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -22,12 +20,5 @@
 - (bool)isActiveForDate:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (unsigned long long)lifetimeType;
-
-// Image: /System/Library/PrivateFrameworks/DoNotDisturbServer.framework/DoNotDisturbServer
-
-+ (id)dnds_lifetimeForScheduleSettings:(id)arg1 date:(id)arg2 calendar:(id)arg3;
-+ (id)dnds_lifetimeUntilEndOfScheduleForScheduleSettings:(id)arg1 startDate:(id)arg2 calendar:(id)arg3;
-
-- (id)dnds_nextLifetimeForScheduleSettings:(id)arg1 calendar:(id)arg2;
 
 @end

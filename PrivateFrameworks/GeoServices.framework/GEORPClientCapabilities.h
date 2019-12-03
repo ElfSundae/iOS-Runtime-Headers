@@ -4,12 +4,12 @@
 
 @interface GEORPClientCapabilities : PBCodable <NSCopying> {
     struct { 
-        unsigned int transitMarketSupport : 1; 
-        unsigned int hasConstrainedProblemStatusSize : 1; 
-        unsigned int hasFeatureHandle : 1; 
-        unsigned int hasNoOptInRequest : 1; 
-        unsigned int hasSupportForIdsBasedNotifications : 1; 
-    }  _has;
+        unsigned int has_transitMarketSupport : 1; 
+        unsigned int has_hasConstrainedProblemStatusSize : 1; 
+        unsigned int has_hasFeatureHandle : 1; 
+        unsigned int has_hasNoOptInRequest : 1; 
+        unsigned int has_hasSupportForIdsBasedNotifications : 1; 
+    }  _flags;
     bool  _hasConstrainedProblemStatusSize;
     bool  _hasFeatureHandle;
     bool  _hasNoOptInRequest;
@@ -28,6 +28,8 @@
 @property (nonatomic) bool hasTransitMarketSupport;
 @property (nonatomic) int transitMarketSupport;
 
++ (bool)isValid:(id)arg1;
+
 - (int)StringAsTransitMarketSupport:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -45,6 +47,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasConstrainedProblemStatusSize:(bool)arg1;
 - (void)setHasFeatureHandle:(bool)arg1;

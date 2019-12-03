@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
  */
 
-@interface SXClippingLayer : CALayer {
+@interface SXClippingLayer : SXLayer {
     unsigned long long  _clippingMode;
     struct CGRect { 
         struct CGPoint { 

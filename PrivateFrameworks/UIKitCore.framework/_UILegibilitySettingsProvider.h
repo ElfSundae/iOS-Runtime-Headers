@@ -69,16 +69,8 @@
 - (void)setNextChangeBarrier:(double)arg1;
 - (id)settings;
 
-// Image: /System/Library/PrivateFrameworks/CameraKit.framework/CameraKit
-
-- (void)pl_primeForUseWithCameraOverlays;
-
 // Image: /System/Library/PrivateFrameworks/CameraUI.framework/CameraUI
 
 - (void)cam_primeForUseWithCameraOverlays;
-
-// Image: /System/Library/PrivateFrameworks/PhotoLibrary.framework/PhotoLibrary
-
-- (void)pl_primeForUseWithCameraOverlays;
 
 @end

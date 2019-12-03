@@ -5,8 +5,8 @@
 @interface VNEspressoHelpers : NSObject
 
 + (struct __CVBuffer { }*)createCVPixelBufferWithPixelFormat:(unsigned int)arg1 fromImageInEspressoBuffer:(const struct { void *x1; void *x2; unsigned long long x3[4]; unsigned long long x4[4]; unsigned long long x5; unsigned long long x6; unsigned long long x7; unsigned long long x8; unsigned long long x9; unsigned long long x10; unsigned long long x11; unsigned long long x12; unsigned long long x13; unsigned long long x14; int x15; }*)arg2 error:(id*)arg3;
-+ (bool)createSingleNetworkPlanFromResourceName:(id)arg1 usingProcessingDevice:(id)arg2 lowPriorityMode:(bool)arg3 espressoContext:(void**)arg4 espressoPlan:(void**)arg5 espressoNetwork:(struct { void *x1; int x2; }*)arg6 error:(id*)arg7;
-+ (bool)createSingleNetworkPlanFromResourceName:(id)arg1 usingProcessingDevice:(id)arg2 lowPriorityMode:(bool)arg3 explicitNetworkLayersStorageType:(int)arg4 espressoContext:(void**)arg5 espressoPlan:(void**)arg6 espressoNetwork:(struct { void *x1; int x2; }*)arg7 error:(id*)arg8;
++ (bool)createSingleNetworkPlanFromResourceName:(id)arg1 usingProcessingDevice:(id)arg2 lowPriorityMode:(bool)arg3 inputBlobNames:(id)arg4 outputBlobNames:(id)arg5 espressoContext:(void**)arg6 espressoPlan:(void**)arg7 espressoNetwork:(struct { void *x1; int x2; }*)arg8 error:(id*)arg9;
++ (bool)createSingleNetworkPlanFromResourceName:(id)arg1 usingProcessingDevice:(id)arg2 lowPriorityMode:(bool)arg3 inputBlobNames:(id)arg4 outputBlobNames:(id)arg5 explicitNetworkLayersStorageType:(int)arg6 espressoContext:(void**)arg7 espressoPlan:(void**)arg8 espressoNetwork:(struct { void *x1; int x2; }*)arg9 error:(id*)arg10;
 + (bool)enableMontrealAndReturnError:(id*)arg1;
 + (int)espressoDeviceIDForMetalDevice:(id)arg1;
 + (bool)feedForwardEspressoBufferForNetwork:(struct { void *x1; int x2; }*)arg1 fromBufferWithName:(id)arg2 toBufferWithName:(id)arg3 firstFrame:(bool)arg4 error:(id*)arg5;

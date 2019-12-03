@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/NeutrinoCore.framework/NeutrinoCore
  */
 
-@interface NUGeometrySpaceMap : NSObject <NSCopying, NUSpaceMapping> {
+@interface NUGeometrySpaceMap : NSObject <NSCopying, NUTaggedSpaceMapping> {
     NSMutableDictionary * _spaces;
 }
 

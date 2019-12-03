@@ -12,7 +12,7 @@
 @property (getter=isAnchoredToText, nonatomic, readonly) bool anchoredToText;
 @property (getter=isAttachedToBodyText, nonatomic, readonly) bool attachedToBodyText;
 @property (nonatomic, readonly) TPBodyInfo *bodyInfo;
-@property (nonatomic, readonly) NSArray *childInfos;
+@property (nonatomic, readonly, copy) NSArray *childInfos;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) TPDocumentRoot *documentRoot;
@@ -20,6 +20,7 @@
 @property (nonatomic, copy) TSDInfoGeometry *geometry;
 @property (readonly) unsigned long long hash;
 @property (getter=isInlineWithText, nonatomic, readonly) bool inlineWithText;
+@property (nonatomic, readonly) bool isMaster;
 @property (nonatomic, readonly) <TPPageLayoutInfoProvider> *layoutInfoProvider;
 @property (nonatomic) bool matchesObjectPlaceholderGeometry;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;

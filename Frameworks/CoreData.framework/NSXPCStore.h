@@ -57,9 +57,10 @@
 - (void)disconnect;
 - (id)entityForEntityDescription:(id)arg1;
 - (id)executeBatchDeleteRequest:(id)arg1 withContext:(id)arg2 error:(id*)arg3;
+- (id)executeBatchInsertRequest:(id)arg1 withContext:(id)arg2 error:(id*)arg3;
+- (id)executeBatchUpdateRequest:(id)arg1 withContext:(id)arg2 error:(id*)arg3;
 - (id)executeFetchRequest:(id)arg1 withContext:(id)arg2 error:(id*)arg3;
 - (id)executePersistentHistoryRequest:(id)arg1 withContext:(id)arg2 error:(id*)arg3;
-- (id)executePullChangesRequest:(id)arg1 withContext:(id)arg2 error:(id*)arg3;
 - (id)executeRequest:(id)arg1 withContext:(id)arg2 error:(id*)arg3;
 - (id)executeSaveRequest:(id)arg1 withContext:(id)arg2 error:(id*)arg3;
 - (id)fileBackedFuturesDirectory;

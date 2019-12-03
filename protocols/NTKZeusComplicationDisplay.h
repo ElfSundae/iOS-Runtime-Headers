@@ -7,7 +7,9 @@
 
 - (void)applyPalette:(NTKZeusColorPalette *)arg1;
 - (void)applyTransitionFraction:(double)arg1 fromPalette:(NTKZeusColorPalette *)arg2 toPalette:(NTKZeusColorPalette *)arg3;
+- (bool)legibilityEnabled;
 - (NTKZeusColorPalette *)palette;
+- (void)setLegibilityEnabled:(bool)arg1;
 - (void)setStyle:(unsigned long long)arg1;
 - (unsigned long long)style;
 

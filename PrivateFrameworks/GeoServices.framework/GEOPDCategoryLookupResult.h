@@ -5,6 +5,20 @@
 @interface GEOPDCategoryLookupResult : PBCodable <NSCopying> {
     GEOPDCategoryInformation * _categoryInfo;
     GEOPDCategoryLookupParameters * _categoryLookupParam;
+    struct { 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_categoryInfo : 1; 
+        unsigned int read_categoryLookupParam : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_categoryInfo : 1; 
+        unsigned int wrote_categoryLookupParam : 1; 
+    }  _flags;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     PBUnknownFields * _unknownFields;
 }
 
@@ -14,9 +28,14 @@
 @property (nonatomic, readonly) bool hasCategoryLookupParam;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_readCategoryInfo;
+- (void)_readCategoryLookupParam;
 - (id)categoryInfo;
 - (id)categoryLookupParam;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -24,8 +43,11 @@
 - (bool)hasCategoryInfo;
 - (bool)hasCategoryLookupParam;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setCategoryInfo:(id)arg1;
 - (void)setCategoryLookupParam:(id)arg1;

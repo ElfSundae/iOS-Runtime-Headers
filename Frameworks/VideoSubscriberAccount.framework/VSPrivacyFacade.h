@@ -18,7 +18,7 @@
 @property (nonatomic, retain) VSPrivacyVoucherLockbox *voucherLockbox;
 
 - (void).cxx_destruct;
-- (void)_promptForAccessUsingAuditToken:(struct { unsigned int x1[8]; })arg1 processIdentifier:(int)arg2 identityProviderDisplayName:(id)arg3 completionHandler:(id /* block */)arg4;
+- (void)_promptForAccessUsingAuditToken:(struct { unsigned int x1[8]; })arg1 processIdentifier:(int)arg2 identityProviderDisplayName:(id)arg3 providerIsSupported:(bool)arg4 completionHandler:(id /* block */)arg5;
 - (id)_voucherForProcess:(int)arg1 providerID:(id)arg2;
 - (id)init;
 - (id)initWithService:(id)arg1 voucherLockbox:(id)arg2;
@@ -28,7 +28,7 @@
 - (id)knownAppBundles;
 - (void)preflightCheckForProcessIdentifier:(int)arg1 withCompletionHandler:(id /* block */)arg2;
 - (id)privateQueue;
-- (void)requestAccessForAuditToken:(struct { unsigned int x1[8]; })arg1 processIdentifier:(int)arg2 identityProviderDisplayName:(id)arg3 identityProviderID:(id)arg4 allowUI:(bool)arg5 completionHandler:(id /* block */)arg6;
+- (void)requestAccessForAuditToken:(struct { unsigned int x1[8]; })arg1 processIdentifier:(int)arg2 identityProviderDisplayName:(id)arg3 providerIsSupported:(bool)arg4 identityProviderID:(id)arg5 allowUI:(bool)arg6 completionHandler:(id /* block */)arg7;
 - (bool)reset;
 - (id)service;
 - (bool)setAccessGranted:(bool)arg1 forAuditToken:(struct { unsigned int x1[8]; })arg2;

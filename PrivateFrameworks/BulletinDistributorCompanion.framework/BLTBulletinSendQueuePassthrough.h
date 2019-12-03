@@ -10,7 +10,7 @@
 
 - (void).cxx_destruct;
 - (id)delegate;
-- (void)handleFileURL:(id)arg1;
+- (bool)handleFileURL:(id)arg1;
 - (void)queuePending;
 - (void)sendNow;
 - (void)sendRequest:(id)arg1 type:(unsigned short)arg2 didSend:(id /* block */)arg3 didQueue:(id /* block */)arg4;

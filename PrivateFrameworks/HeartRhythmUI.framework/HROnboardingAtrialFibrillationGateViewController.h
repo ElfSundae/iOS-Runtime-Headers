@@ -69,7 +69,6 @@
 - (id)_ageEntryTitleFont;
 - (double)_ageEntryTopSeparatorToFirstBaseline;
 - (id)_bodyFont;
-- (double)_bodyLastBaselineToAgeEntryTop;
 - (id)_dateOfBirthDatePicker;
 - (void)_dateOfBirthTapped:(id)arg1;
 - (void)_datePickerValueChanged:(id)arg1;
@@ -88,7 +87,6 @@
 - (void)_setUpBirthdayEntryView;
 - (void)_setUpButtonFooterView;
 - (void)_setUpDiagnosisRowWithTitle:(id)arg1 value:(bool)arg2;
-- (double)_titleLastBaselineToBodyFirstBaseline;
 - (void)_updateButtonState;
 - (void)_updateDateOfBirthDisplay;
 - (id)ageIneligiblePromptAckButtonString;

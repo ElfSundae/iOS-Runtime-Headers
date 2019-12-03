@@ -10,7 +10,7 @@
     }  _frameInfo;
 }
 
-@property (readonly) /* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*_apiObject;
+@property (readonly) struct Object { int (**x1)(); id x2; }*_apiObject;
 @property (nonatomic, readonly) _WKFrameHandle *_handle;
 @property (nonatomic, readonly, copy) NSString *_sf_titleForJavaScriptDialog;
 @property (readonly, copy) NSString *debugDescription;
@@ -24,7 +24,7 @@
 
 // Image: /System/Library/Frameworks/WebKit.framework/WebKit
 
-- (/* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*)_apiObject;
+- (struct Object { int (**x1)(); id x2; }*)_apiObject;
 - (id)_handle;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;

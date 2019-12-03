@@ -3,6 +3,7 @@
  */
 
 @interface _INPBSetMessageAttributeIntent : PBCodable <NSCopying, NSSecureCoding, _INPBSetMessageAttributeIntent> {
+    bool  __encodeLegacyGloryData;
     int  _attribute;
     struct { 
         unsigned int attribute : 1; 
@@ -11,6 +12,7 @@
     _INPBIntentMetadata * _intentMetadata;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic) int attribute;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -22,20 +24,26 @@
 @property (nonatomic, retain) _INPBIntentMetadata *intentMetadata;
 @property (readonly) Class superclass;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (int)StringAsAttribute:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (void)addIdentifier:(id)arg1;
 - (int)attribute;
 - (id)attributeAsString:(int)arg1;
 - (void)clearIdentifiers;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasAttribute;
 - (bool)hasIntentMetadata;
 - (unsigned long long)hash;
 - (id)identifierAtIndex:(unsigned long long)arg1;
 - (id)identifiers;
 - (unsigned long long)identifiersCount;
+- (id)initWithCoder:(id)arg1;
 - (id)intentMetadata;
 - (bool)isEqual:(id)arg1;
 - (bool)readFrom:(id)arg1;

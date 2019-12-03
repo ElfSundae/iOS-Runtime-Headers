@@ -4,6 +4,7 @@
 
 @interface MTTimerScheduler : NSObject <MTAgentDiagnosticDelegate, MTAgentNotificationListener, MTScheduledListDelegate, MTTimerObserver> {
     id /* block */  _currentDateProvider;
+    <MTPersistence> * _defaults;
     <MTTimerSchedulerDelegate> * _delegate;
     <MTNotificationCenter> * _notificationCenter;
     MTScheduledList * _scheduledTimers;
@@ -15,6 +16,7 @@
 
 @property (nonatomic, readonly, copy) id /* block */ currentDateProvider;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic, retain) <MTPersistence> *defaults;
 @property (nonatomic) <MTTimerSchedulerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -42,13 +44,14 @@
 - (void)_queue_unscheduleTimers:(id)arg1;
 - (void)_queue_updatePersistentTimerForNextTimerWithCompletion:(id /* block */)arg1;
 - (id /* block */)currentDateProvider;
+- (id)defaults;
 - (id)delegate;
 - (id)gatherDiagnostics;
-- (void)handleNotification:(id)arg1;
-- (bool)handlesNotification:(id)arg1;
+- (void)handleNotification:(id)arg1 ofType:(long long)arg2 completion:(id /* block */)arg3;
+- (bool)handlesNotification:(id)arg1 ofType:(long long)arg2;
 - (id)initWithStorage:(id)arg1 notificationCenter:(id)arg2;
-- (id)initWithStorage:(id)arg1 notificationCenter:(id)arg2 scheduler:(id)arg3;
-- (id)initWithStorage:(id)arg1 notificationCenter:(id)arg2 scheduler:(id)arg3 schedulingDelegate:(id)arg4 taskScheduler:(id)arg5 currentDateProvider:(id /* block */)arg6;
+- (id)initWithStorage:(id)arg1 notificationCenter:(id)arg2 scheduler:(id)arg3 defaults:(id)arg4;
+- (id)initWithStorage:(id)arg1 notificationCenter:(id)arg2 scheduler:(id)arg3 defaults:(id)arg4 schedulingDelegate:(id)arg5 taskScheduler:(id)arg6 currentDateProvider:(id /* block */)arg7;
 - (id)nextTimer;
 - (void)nextTimerDidChange:(id)arg1;
 - (id)nextTriggerDate;
@@ -61,6 +64,7 @@
 - (id)scheduledTimers;
 - (id)schedulingDelegate;
 - (id)serializer;
+- (void)setDefaults:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setNotificationCenter:(id)arg1;
 - (void)setSerializer:(id)arg1;

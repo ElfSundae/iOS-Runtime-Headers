@@ -234,10 +234,29 @@
 + (id)hk_heartRateNumberFormatter;
 + (id)hk_percentNumberFormatter;
 
-// Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
+// Image: /System/Library/Frameworks/PencilKit.framework/PencilKit
 
-+ (id)mf_formatInteger:(long long)arg1 withGrouping:(bool)arg2;
-+ (id)mf_formatUnsignedInteger:(unsigned long long)arg1 withGrouping:(bool)arg2;
++ (id)pkaxLocalizedDouble:(double)arg1;
++ (id)pkaxLocalizedDouble:(double)arg1 maximumNumberOfDigitsAfterDecimalSeparator:(unsigned long long)arg2;
++ (id)pkaxLocalizedNumber:(id)arg1;
++ (id)pkaxLocalizedNumber:(id)arg1 maximumNumberOfDigitsAfterDecimalSeparator:(unsigned long long)arg2;
++ (id)pkaxLocalizedNumber:(id)arg1 numberStyle:(unsigned long long)arg2;
++ (id)pkaxLocalizedNumber:(id)arg1 numberStyle:(unsigned long long)arg2 maximumNumberOfDigitsAfterDecimalSeparator:(unsigned long long)arg3;
++ (id)pkaxLocalizedPercentage:(double)arg1;
++ (id)pkaxLocalizedPercentage:(double)arg1 maximumNumberOfDigitsAfterDecimalSeparator:(unsigned long long)arg2;
++ (id)pkaxLocalizedUnsignedInteger:(unsigned long long)arg1;
+
+// Image: /System/Library/Frameworks/VisionKit.framework/VisionKit
+
++ (id)dcaxLocalizedDouble:(double)arg1;
++ (id)dcaxLocalizedDouble:(double)arg1 maximumNumberOfDigitsAfterDecimalSeparator:(unsigned long long)arg2;
++ (id)dcaxLocalizedNumber:(id)arg1;
++ (id)dcaxLocalizedNumber:(id)arg1 maximumNumberOfDigitsAfterDecimalSeparator:(unsigned long long)arg2;
++ (id)dcaxLocalizedNumber:(id)arg1 numberStyle:(unsigned long long)arg2;
++ (id)dcaxLocalizedNumber:(id)arg1 numberStyle:(unsigned long long)arg2 maximumNumberOfDigitsAfterDecimalSeparator:(unsigned long long)arg3;
++ (id)dcaxLocalizedPercentage:(double)arg1;
++ (id)dcaxLocalizedPercentage:(double)arg1 maximumNumberOfDigitsAfterDecimalSeparator:(unsigned long long)arg2;
++ (id)dcaxLocalizedUnsignedInteger:(unsigned long long)arg1;
 
 // Image: /System/Library/PrivateFrameworks/CalendarFoundation.framework/CalendarFoundation
 
@@ -255,6 +274,11 @@
 + (id)dcaxLocalizedPercentage:(double)arg1 maximumNumberOfDigitsAfterDecimalSeparator:(unsigned long long)arg2;
 + (id)dcaxLocalizedUnsignedInteger:(unsigned long long)arg1;
 
+// Image: /System/Library/PrivateFrameworks/EmailFoundation.framework/EmailFoundation
+
++ (id)ef_formatInteger:(long long)arg1 withGrouping:(bool)arg2;
++ (id)ef_formatUnsignedInteger:(unsigned long long)arg1 withGrouping:(bool)arg2;
+
 // Image: /System/Library/PrivateFrameworks/GameCenterFoundation.framework/GameCenterFoundation
 
 + (id)gkRankFormatter;
@@ -266,20 +290,17 @@
 - (bool)returnsUnitWithValueForDisplay;
 - (id)stringFromNumber:(id)arg1 displayType:(id)arg2 unitController:(id)arg3;
 
-// Image: /System/Library/PrivateFrameworks/PencilKit.framework/PencilKit
+// Image: /System/Library/PrivateFrameworks/NanoWeatherComplicationsCompanion.framework/NanoWeatherComplicationsCompanion
 
-+ (id)pkaxLocalizedDouble:(double)arg1;
-+ (id)pkaxLocalizedDouble:(double)arg1 maximumNumberOfDigitsAfterDecimalSeparator:(unsigned long long)arg2;
-+ (id)pkaxLocalizedNumber:(id)arg1;
-+ (id)pkaxLocalizedNumber:(id)arg1 maximumNumberOfDigitsAfterDecimalSeparator:(unsigned long long)arg2;
-+ (id)pkaxLocalizedNumber:(id)arg1 numberStyle:(unsigned long long)arg2;
-+ (id)pkaxLocalizedNumber:(id)arg1 numberStyle:(unsigned long long)arg2 maximumNumberOfDigitsAfterDecimalSeparator:(unsigned long long)arg3;
-+ (id)pkaxLocalizedPercentage:(double)arg1;
-+ (id)pkaxLocalizedPercentage:(double)arg1 maximumNumberOfDigitsAfterDecimalSeparator:(unsigned long long)arg2;
-+ (id)pkaxLocalizedUnsignedInteger:(unsigned long long)arg1;
++ (id)nwm_airQualityIndexNumberFormatter;
++ (id)nwm_ultravioletIndexNumberFormatter;
 
 // Image: /System/Library/PrivateFrameworks/SiriUI.framework/SiriUI
 
 + (id)siriui_localizedStringFromNumber:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoardFoundation.framework/SpringBoardFoundation
+
++ (id)sbf_cachedDecimalNumberFormatter;
 
 @end

@@ -18,7 +18,7 @@
 - (bool)isNumber;
 - (int)isOperatorPaddingRequired;
 - (bool)isSpaceLike;
-- (struct Schemata { int (**x1)(); int x2; id x3; })layoutSchemata;
+- (struct Schemata { int (**x1)(); int x2; id x3; id x4; })layoutSchemata;
 - (id)layoutStyleNode;
 - (id)operatorCore;
 - (id)parent;

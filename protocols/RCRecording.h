@@ -9,6 +9,7 @@
 - (AVAsset *)avAsset;
 - (NSString *)customLabel;
 - (NSDate *)date;
+- (bool)downloading;
 - (double)duration;
 - (bool)editing;
 - (bool)evicted;
@@ -20,6 +21,8 @@
 - (NSString *)path;
 - (bool)pendingRestore;
 - (bool)playable;
+- (bool)recordedOnWatch;
+- (void)setRecordedOnWatch:(bool)arg1;
 - (bool)synced;
 - (NSString *)title;
 - (NSString *)titleDisallowingEmptyString;

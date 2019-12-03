@@ -32,7 +32,8 @@
 - (void)attemptDirectConnectionToAddress:(id)arg1;
 - (int)createListenerSocketOnPort:(unsigned long long)arg1;
 - (void)deviceDiscoverySocketHandler:(id)arg1 didFailToHandshakeWithSourceDevice:(id)arg2 error:(id)arg3;
-- (void)deviceDiscoverySocketHandler:(id)arg1 didFinishHandshakeWithSourceDevice:(id)arg2;
+- (void)deviceDiscoverySocketHandler:(id)arg1 didFinishHandshakeWithSourceDevice:(id)arg2 priorConnectionFailureReasons:(id)arg3;
+- (void)importLocalContent;
 - (id)init;
 - (id)listenForConnectionOnSocket:(int)arg1 withConnectionHandler:(id /* block */)arg2;
 - (void)setNextIncomingConnectionHandler:(id /* block */)arg1;
@@ -40,5 +41,6 @@
 - (void)startWiFiAndDeviceDiscoveryWithCompletion:(id /* block */)arg1;
 - (void)stopDeviceDiscoveryWithCompletion:(id /* block */)arg1;
 - (void)stopWiFiAndDeviceDiscoveryWithCompletion:(id /* block */)arg1;
+- (bool)supportsLocalImport;
 
 @end

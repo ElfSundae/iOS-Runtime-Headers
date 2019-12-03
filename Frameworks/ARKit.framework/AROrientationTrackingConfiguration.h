@@ -8,6 +8,7 @@
 
 + (id)new;
 + (id)supportedVideoFormats;
++ (bool)supportsFrameSemantics:(unsigned long long)arg1;
 
 - (id)description;
 - (id)init;

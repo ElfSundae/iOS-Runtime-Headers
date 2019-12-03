@@ -20,6 +20,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)_commandIdentifierForWorkflowController:(id)arg1;
 - (void)_handleCardCommand:(id)arg1 reply:(id /* block */)arg2;
 - (void)_releaseWorkflowController:(id)arg1;

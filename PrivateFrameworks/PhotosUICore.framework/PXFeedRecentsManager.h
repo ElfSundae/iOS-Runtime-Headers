@@ -9,14 +9,14 @@
     <PXFeedRecentsManagerDelegate> * _delegate;
     NSMutableArray * _pendingAssetsChangeNotifications;
     NSMutableArray * _pendingFeedEntriesChangeNotifications;
-    PLPhotoLibrary * _photoLibrary;
+    PHPhotoLibrary * _photoLibrary;
 }
 
 @property (setter=_setCachedRecentAssets:, nonatomic, copy) NSOrderedSet *_cachedRecentAssets;
 @property (setter=_setCachedRecentPHAssets:, nonatomic, copy) NSArray *_cachedRecentPHAssets;
 @property (setter=_setCount:, nonatomic) long long count;
 @property (nonatomic) <PXFeedRecentsManagerDelegate> *delegate;
-@property (setter=_setPhotoLibrary:, nonatomic, retain) PLPhotoLibrary *photoLibrary;
+@property (setter=_setPhotoLibrary:, nonatomic, retain) PHPhotoLibrary *photoLibrary;
 @property (nonatomic, readonly, copy) NSOrderedSet *recentAssets;
 @property (nonatomic, readonly, copy) NSArray *recentPHAssets;
 

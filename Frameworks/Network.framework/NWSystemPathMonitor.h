@@ -19,7 +19,7 @@
 @property (retain) BKSApplicationStateMonitor *applicationMonitor;
 @property (getter=isEthernetPrimary, nonatomic) bool ethernetPrimary;
 @property struct tcp_connection_fallback_watch_s { }*fallbackWatcher;
-@property NSObject<OS_dispatch_source> *mptcpWatcher;
+@property (retain) NSObject<OS_dispatch_source> *mptcpWatcher;
 @property (retain) NSMutableDictionary *perAppVPNEvaluators;
 @property (retain) NWPathEvaluator *primaryEvaluator;
 @property (retain) NSObject<OS_dispatch_source> *smoothingTimer;

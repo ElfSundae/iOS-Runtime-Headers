@@ -8,6 +8,7 @@
     NSMutableArray * __alongsideCompletions;
     NSMutableArray * __interactiveChangeHandlers;
     _UIViewControllerTransitionContext * __mainContext;
+    NSMutableArray * __systemAlongsideAnimations;
 }
 
 @property (setter=_setAlongsideAnimationViews:, nonatomic, retain) NSMutableArray *_alongsideAnimationViews;
@@ -15,6 +16,7 @@
 @property (setter=_setAlongsideCompletions:, nonatomic, retain) NSMutableArray *_alongsideCompletions;
 @property (setter=_setInteractiveChangeHandlers:, nonatomic, retain) NSMutableArray *_interactiveChangeHandlers;
 @property (setter=_setMainContext:, nonatomic) _UIViewControllerTransitionContext *_mainContext;
+@property (setter=_setSystemAlongsideAnimations:, nonatomic, retain) NSMutableArray *_systemAlongsideAnimations;
 @property (getter=isAnimated, nonatomic, readonly) bool animated;
 @property (getter=isCancelled, nonatomic, readonly) bool cancelled;
 @property (nonatomic, readonly) long long completionCurve;
@@ -38,7 +40,7 @@
 - (id)_alongsideAnimations:(bool)arg1;
 - (id)_alongsideCompletions;
 - (id)_alongsideCompletions:(bool)arg1;
-- (bool)_animateAlongsideTransitionInView:(id)arg1 systemCompletion:(bool)arg2 animation:(id /* block */)arg3 completion:(id /* block */)arg4;
+- (bool)_animateAlongsideTransitionInView:(id)arg1 systemAnimation:(bool)arg2 systemCompletion:(bool)arg3 animation:(id /* block */)arg4 completion:(id /* block */)arg5;
 - (void)_applyBlocks:(id)arg1 releaseBlocks:(id /* block */)arg2;
 - (id)_interactiveChangeHandlers;
 - (id)_interactiveChangeHandlers:(bool)arg1;
@@ -48,6 +50,9 @@
 - (void)_setAlongsideCompletions:(id)arg1;
 - (void)_setInteractiveChangeHandlers:(id)arg1;
 - (void)_setMainContext:(id)arg1;
+- (void)_setSystemAlongsideAnimations:(id)arg1;
+- (id)_systemAlongsideAnimations;
+- (id)_systemAlongsideAnimations:(bool)arg1;
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })affineTransform;
 - (bool)animateAlongsideTransition:(id /* block */)arg1 completion:(id /* block */)arg2;
 - (bool)animateAlongsideTransitionInView:(id)arg1 animation:(id /* block */)arg2 completion:(id /* block */)arg3;

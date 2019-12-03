@@ -4,7 +4,7 @@
 
 @interface MBApp : MBContainer
 
-@property (nonatomic, retain) NSString *bundleDir;
+@property (nonatomic, readonly) NSString *bundleDir;
 @property (nonatomic, readonly) NSString *bundleID;
 @property (nonatomic, readonly) NSString *bundleVersion;
 @property (nonatomic, readonly) NSArray *containers;
@@ -36,7 +36,7 @@
 - (bool)isPlaceholder;
 - (bool)isSystemApp;
 - (id)placeholderDomainWithCache:(id)arg1;
-- (id)placeholderDomainZipWithCache:(id)arg1;
+- (id)placeholderDomainZip;
 - (id)plugins;
 - (void)setBundleDir:(id)arg1;
 

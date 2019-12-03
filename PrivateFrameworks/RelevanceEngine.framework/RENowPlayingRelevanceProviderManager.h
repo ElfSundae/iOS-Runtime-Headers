@@ -2,18 +2,20 @@
    Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
  */
 
-@interface RENowPlayingRelevanceProviderManager : RERelevanceProviderManager {
+@interface RENowPlayingRelevanceProviderManager : RERelevanceProviderManager <RENowPlayingRelevanceProviderManagerProperties> {
     unsigned long long  _state;
 }
+
+@property (nonatomic, readonly) unsigned long long state;
 
 + (id)_features;
 + (Class)_relevanceProviderClass;
 
 - (void)_updatePlaybackState;
 - (id)_valueForProvider:(id)arg1 feature:(id)arg2;
-- (void)collectLoggableState:(id /* block */)arg1;
 - (id)initWithQueue:(id)arg1;
 - (void)pause;
 - (void)resume;
+- (unsigned long long)state;
 
 @end

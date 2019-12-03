@@ -8,7 +8,7 @@
 
 @property (nonatomic, readonly) NSMutableDictionary *replacedFontMap;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (id)replacedFontMap;
 

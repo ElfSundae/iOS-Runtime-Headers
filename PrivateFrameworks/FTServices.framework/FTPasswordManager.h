@@ -28,9 +28,11 @@
 - (id)_keychainAuthTokenForUsername:(id)arg1 service:(id)arg2;
 - (id)_keychainPasswordForUsername:(id)arg1 service:(id)arg2;
 - (id)_profileIDForUsername:(id)arg1 inStore:(id)arg2;
+- (void)_renewCredentialsIfPossibleForAccount:(id)arg1 username:(id)arg2 inServiceIdentifier:(id)arg3 originalInServiceIdentifier:(id)arg4 serviceName:(id)arg5 failIfNotSilent:(bool)arg6 renewHandler:(id /* block */)arg7 shortCircuitCompletionBlock:(id /* block */)arg8;
 - (void)_setKeychainAuthToken:(id)arg1 forUsername:(id)arg2 service:(id)arg3;
 - (void)_setKeychainPassword:(id)arg1 forUsername:(id)arg2 service:(id)arg3;
 - (bool)_shouldForceSilentOnlyAuthForUsername:(id)arg1 serviceIdentifier:(id)arg2;
+- (void)_updateStatus:(id)arg1 onAccount:(id)arg2;
 - (bool)_usernameHasCorrespondingIdMSAccount:(id)arg1;
 - (id)acAccountWithProfileID:(id)arg1 username:(id)arg2 accountStore:(id)arg3;
 - (double)authTokenGracePeriod;
@@ -48,6 +50,7 @@
 - (void)requestAuthTokenForProfileID:(id)arg1 username:(id)arg2 service:(id)arg3 badPassword:(bool)arg4 showForgotPassword:(bool)arg5 failIfNotSilent:(bool)arg6 outRequestID:(id*)arg7 completionBlock:(id /* block */)arg8;
 - (void)requestAuthTokenForProfileID:(id)arg1 username:(id)arg2 service:(id)arg3 badPassword:(bool)arg4 showForgotPassword:(bool)arg5 outRequestID:(id*)arg6 completionBlock:(id /* block */)arg7;
 - (void)requestPasswordForUsername:(id)arg1 service:(id)arg2 badPassword:(bool)arg3 showForgotPassword:(bool)arg4 shouldRememberPassword:(bool)arg5 outRequestID:(id*)arg6 completionBlock:(id /* block */)arg7;
+- (void)setAccountStatus:(id)arg1 forProfileID:(id)arg2 username:(id)arg3 service:(id)arg4;
 - (void)setAuthTokenForProfileID:(id)arg1 username:(id)arg2 service:(id)arg3 authToken:(id)arg4 selfHandle:(id)arg5 accountStatus:(id)arg6 outRequestID:(id*)arg7 completionBlock:(id /* block */)arg8;
 - (void)setAuthTokenForProfileID:(id)arg1 username:(id)arg2 service:(id)arg3 authToken:(id)arg4 selfHandle:(id)arg5 outRequestID:(id*)arg6 completionBlock:(id /* block */)arg7;
 - (void)setHandlesForProfileID:(id)arg1 username:(id)arg2 service:(id)arg3 handles:(id)arg4;

@@ -9,6 +9,7 @@
     NSObject<OS_dispatch_queue> * _databaseQueue;
     CKRecordZone * _recordZone;
     CKRecordZoneID * _recordZoneID;
+    bool  _useManateeContainer;
 }
 
 - (void).cxx_destruct;
@@ -28,9 +29,10 @@
 - (void)_saveRecords:(id)arg1 withCompletion:(id /* block */)arg2;
 - (void)_scheduleOperation:(id)arg1;
 - (bool)_shouldTryToResetRecordZoneForError:(id)arg1;
+- (void)deleteHistoryZoneWithCompletion:(id /* block */)arg1;
 - (void)fetchNumberOfDevicesInSyncCircleWithCompletion:(id /* block */)arg1;
 - (void)fetchRecordsWithServerChangeTokenData:(id)arg1 completion:(id /* block */)arg2;
-- (id)initWithConfiguration:(id)arg1;
+- (id)initWithConfiguration:(id)arg1 useManateeContainer:(bool)arg2;
 - (void)initializePushNotifications:(id /* block */)arg1;
 - (void)replayPersistedLongLivedSaveOperationWithID:(id)arg1 completion:(id /* block */)arg2;
 - (void)saveCloudHistoryVisits:(id)arg1 tombstones:(id)arg2 longLivedOperationPersistenceCompletion:(id /* block */)arg3 completion:(id /* block */)arg4;

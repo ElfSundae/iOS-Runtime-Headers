@@ -9,6 +9,7 @@
     <HKCurrentTimeViewDelegate> * _delegate;
     bool  _disableControls;
     HKCurrentTimeChevronButton * _nextTimeIndexButton;
+    bool  _omitPrevNextButtons;
     HKCurrentTimeChevronButton * _previousTimeIndexButton;
 }
 
@@ -17,6 +18,7 @@
 @property (nonatomic) <HKCurrentTimeViewDelegate> *delegate;
 @property (nonatomic) bool disableControls;
 @property (nonatomic) bool nextTimeButtonEnabled;
+@property (nonatomic) bool omitPrevNextButtons;
 @property (nonatomic) bool previousTimeButtonEnabled;
 
 - (void).cxx_destruct;
@@ -34,6 +36,7 @@
 - (bool)currentTimeButtonEnabled;
 - (void)currentTimeButtonTapped:(id)arg1;
 - (id)currentTimeString;
+- (void)dealloc;
 - (id)delegate;
 - (bool)disableControls;
 - (id)initWithCoder:(id)arg1;
@@ -41,6 +44,7 @@
 - (id)initWithWideHorizontalMargin:(bool)arg1;
 - (bool)nextTimeButtonEnabled;
 - (void)nextTimeIndexButtonTapped:(id)arg1;
+- (bool)omitPrevNextButtons;
 - (bool)previousTimeButtonEnabled;
 - (void)previousTimeIndexButtonTapped:(id)arg1;
 - (void)setCurrentTimeButtonEnabled:(bool)arg1;
@@ -48,6 +52,7 @@
 - (void)setDelegate:(id)arg1;
 - (void)setDisableControls:(bool)arg1;
 - (void)setNextTimeButtonEnabled:(bool)arg1;
+- (void)setOmitPrevNextButtons:(bool)arg1;
 - (void)setPreviousTimeButtonEnabled:(bool)arg1;
 - (void)setupViewWithWideHorizontalMargin:(bool)arg1;
 

@@ -6,29 +6,35 @@
     bool  _buttonEnabled;
     id /* block */  _buttonLongPressCallback;
     id /* block */  _buttonTappedCallback;
-    CNContactInlineActionsViewController * _contactVC;
     UIImage * _defaultImage;
     UIImage * _disabledImage;
+    UIVisualEffect * _disabledVibrancyEffect;
     UIImage * _image;
     UIButton * _imageButton;
     long long  _joinButtonStyle;
     NSString * _text;
     UILabel * _textLabel;
+    UIVisualEffect * _vibrancyEffect;
+    UIVisualEffectView * _vibrancyView;
     bool  _wantsLongPress;
+    bool  _wantsVibrancy;
 }
 
 @property (getter=isButtonEnabled, nonatomic) bool buttonEnabled;
 @property (nonatomic, copy) id /* block */ buttonLongPressCallback;
 @property (nonatomic, copy) id /* block */ buttonTappedCallback;
-@property (nonatomic, retain) CNContactInlineActionsViewController *contactVC;
 @property (nonatomic, retain) UIImage *defaultImage;
 @property (nonatomic, retain) UIImage *disabledImage;
+@property (nonatomic, retain) UIVisualEffect *disabledVibrancyEffect;
 @property (nonatomic, retain) UIImage *image;
 @property (nonatomic, retain) UIButton *imageButton;
 @property (nonatomic) long long joinButtonStyle;
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic, retain) UILabel *textLabel;
+@property (nonatomic, retain) UIVisualEffect *vibrancyEffect;
+@property (nonatomic, retain) UIVisualEffectView *vibrancyView;
 @property (nonatomic) bool wantsLongPress;
+@property (nonatomic) bool wantsVibrancy;
 
 - (void).cxx_destruct;
 - (void)_buttonLongPressed:(id)arg1;
@@ -36,9 +42,9 @@
 - (void)_setupImageButton;
 - (id /* block */)buttonLongPressCallback;
 - (id /* block */)buttonTappedCallback;
-- (id)contactVC;
 - (id)defaultImage;
 - (id)disabledImage;
+- (id)disabledVibrancyEffect;
 - (id)image;
 - (id)imageButton;
 - (id)initWithImage:(id)arg1 disabledImage:(id)arg2 text:(id)arg3 wantsLongPress:(bool)arg4;
@@ -50,17 +56,23 @@
 - (void)setButtonEnabled:(bool)arg1;
 - (void)setButtonLongPressCallback:(id /* block */)arg1;
 - (void)setButtonTappedCallback:(id /* block */)arg1;
-- (void)setContactVC:(id)arg1;
 - (void)setDefaultImage:(id)arg1;
 - (void)setDisabledImage:(id)arg1;
+- (void)setDisabledVibrancyEffect:(id)arg1;
 - (void)setImage:(id)arg1;
 - (void)setImageButton:(id)arg1;
 - (void)setJoinButtonStyle:(long long)arg1;
 - (void)setText:(id)arg1;
 - (void)setTextLabel:(id)arg1;
+- (void)setVibrancyEffect:(id)arg1;
+- (void)setVibrancyView:(id)arg1;
 - (void)setWantsLongPress:(bool)arg1;
+- (void)setWantsVibrancy:(bool)arg1;
 - (id)text;
 - (id)textLabel;
+- (id)vibrancyEffect;
+- (id)vibrancyView;
 - (bool)wantsLongPress;
+- (bool)wantsVibrancy;
 
 @end

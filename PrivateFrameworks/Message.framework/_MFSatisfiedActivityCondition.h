@@ -4,7 +4,7 @@
 
 @interface _MFSatisfiedActivityCondition : NSObject <MFActivityCondition>
 
-@property (nonatomic, readonly) MFObservable *conditionsObservable;
+@property (nonatomic, readonly) EFObservable *conditionsObservable;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

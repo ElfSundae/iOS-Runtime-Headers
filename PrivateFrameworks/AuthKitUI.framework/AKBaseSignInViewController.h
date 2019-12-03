@@ -17,6 +17,7 @@
 @property (nonatomic) bool usesDarkMode;
 
 - (void).cxx_destruct;
+- (void)_authenticateWithContext:(id)arg1;
 - (void)_beginAuthenticationIfPossibleWithOption:(unsigned long long)arg1 withUsername:(id)arg2 password:(id)arg3;
 - (bool)_canBeginAuthenticationWithOption:(unsigned long long)arg1;
 - (void)_hidebusyWorkUI;

@@ -18,6 +18,8 @@
 @property (nonatomic) float localVolume;
 @property (nonatomic) unsigned int localVolumeControlCapabilities;
 
++ (id)sharedOutputContextController;
+
 - (void).cxx_destruct;
 - (void)_handleLocalDeviceVolumeControlCapabilitiesDidChangeNotification:(id)arg1;
 - (void)_handleLocalDeviceVolumeDidChangeNotification:(id)arg1;

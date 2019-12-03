@@ -3,9 +3,13 @@
  */
 
 @interface CKModifyRecordsOperationInfo : CKDatabaseOperationInfo <NSSecureCoding> {
+    NSDictionary * _assetUUIDToExpectedProperties;
     bool  _atomic;
     NSData * _clientChangeTokenData;
     NSDictionary * _conflictLosersToResolveByRecordID;
+    bool  _markAsParticipantNeedsNewInvitationToken;
+    bool  _originatingFromDaemon;
+    NSDictionary * _packageUUIDToExpectedProperties;
     NSDictionary * _pluginFieldsForRecordDeletesByID;
     NSArray * _recordIDsToDelete;
     NSDictionary * _recordIDsToDeleteToEtags;
@@ -13,11 +17,16 @@
     long long  _savePolicy;
     bool  _shouldOnlySaveAssetContent;
     bool  _shouldReportRecordsInFlight;
+    bool  _shouldSkipPCSRetryBehavior;
 }
 
+@property (nonatomic, copy) NSDictionary *assetUUIDToExpectedProperties;
 @property (nonatomic) bool atomic;
 @property (nonatomic, retain) NSData *clientChangeTokenData;
 @property (nonatomic, retain) NSDictionary *conflictLosersToResolveByRecordID;
+@property (nonatomic) bool markAsParticipantNeedsNewInvitationToken;
+@property (nonatomic) bool originatingFromDaemon;
+@property (nonatomic, copy) NSDictionary *packageUUIDToExpectedProperties;
 @property (nonatomic, copy) NSDictionary *pluginFieldsForRecordDeletesByID;
 @property (nonatomic, retain) NSArray *recordIDsToDelete;
 @property (nonatomic, copy) NSDictionary *recordIDsToDeleteToEtags;
@@ -25,25 +34,34 @@
 @property (nonatomic) long long savePolicy;
 @property (nonatomic) bool shouldOnlySaveAssetContent;
 @property (nonatomic) bool shouldReportRecordsInFlight;
+@property (nonatomic) bool shouldSkipPCSRetryBehavior;
 
 // Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
 
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)assetUUIDToExpectedProperties;
 - (bool)atomic;
 - (id)clientChangeTokenData;
 - (id)conflictLosersToResolveByRecordID;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (bool)markAsParticipantNeedsNewInvitationToken;
+- (bool)originatingFromDaemon;
+- (id)packageUUIDToExpectedProperties;
 - (id)pluginFieldsForRecordDeletesByID;
 - (id)recordIDsToDelete;
 - (id)recordIDsToDeleteToEtags;
 - (id)recordsToSave;
 - (long long)savePolicy;
+- (void)setAssetUUIDToExpectedProperties:(id)arg1;
 - (void)setAtomic:(bool)arg1;
 - (void)setClientChangeTokenData:(id)arg1;
 - (void)setConflictLosersToResolveByRecordID:(id)arg1;
+- (void)setMarkAsParticipantNeedsNewInvitationToken:(bool)arg1;
+- (void)setOriginatingFromDaemon:(bool)arg1;
+- (void)setPackageUUIDToExpectedProperties:(id)arg1;
 - (void)setPluginFieldsForRecordDeletesByID:(id)arg1;
 - (void)setRecordIDsToDelete:(id)arg1;
 - (void)setRecordIDsToDeleteToEtags:(id)arg1;
@@ -51,8 +69,10 @@
 - (void)setSavePolicy:(long long)arg1;
 - (void)setShouldOnlySaveAssetContent:(bool)arg1;
 - (void)setShouldReportRecordsInFlight:(bool)arg1;
+- (void)setShouldSkipPCSRetryBehavior:(bool)arg1;
 - (bool)shouldOnlySaveAssetContent;
 - (bool)shouldReportRecordsInFlight;
+- (bool)shouldSkipPCSRetryBehavior;
 
 // Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
 

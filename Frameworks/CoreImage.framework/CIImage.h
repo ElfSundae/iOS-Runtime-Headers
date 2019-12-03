@@ -14,12 +14,19 @@
 @property (nonatomic, readonly) struct __CVBuffer { }*pixelBuffer;
 @property (nonatomic, readonly) AVPortraitEffectsMatte *portraitEffectsMatte;
 @property (readonly) NSDictionary *properties;
+@property (nonatomic, readonly) AVSemanticSegmentationMatte *semanticSegmentationMatte;
 @property (readonly) NSURL *url;
 
 // Image: /System/Library/Frameworks/CoreImage.framework/CoreImage
 
++ (id)blackImage;
++ (id)blueImage;
++ (id)clearImage;
 + (id)clearImage:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
++ (id)cyanImage;
 + (id)emptyImage;
++ (id)grayImage;
++ (id)greenImage;
 + (id)imageForRenderingWithMPS:(id)arg1 orNonMPS:(id)arg2;
 + (id)imageForRenderingWithMetal:(id)arg1 orNonMetal:(id)arg2;
 + (id)imageForRenderingWithMetalContext:(id)arg1 orOpenGLContextUsingMetal:(id)arg2 orNonMetalContext:(id)arg3;
@@ -30,6 +37,7 @@
 + (id)imageWithBitmapData:(id)arg1 bytesPerRow:(unsigned long long)arg2 size:(struct CGSize { double x1; double x2; })arg3 format:(int)arg4 options:(id)arg5;
 + (id)imageWithCGImage:(struct CGImage { }*)arg1;
 + (id)imageWithCGImage:(struct CGImage { }*)arg1 options:(id)arg2;
++ (id)imageWithCGImageSource:(struct CGImageSource { }*)arg1 index:(unsigned long long)arg2 options:(id)arg3;
 + (id)imageWithCGLayer:(struct CGLayer { }*)arg1;
 + (id)imageWithCGLayer:(struct CGLayer { }*)arg1 options:(id)arg2;
 + (id)imageWithCVImageBuffer:(struct __CVBuffer { }*)arg1;
@@ -55,19 +63,26 @@
 + (id)imageWithPortaitEffectsMatte:(id)arg1 options:(id)arg2;
 + (id)imageWithPortraitEffectsMatte:(id)arg1;
 + (id)imageWithPortraitEffectsMatte:(id)arg1 options:(id)arg2;
++ (id)imageWithSemanticSegmentationMatte:(id)arg1;
++ (id)imageWithSemanticSegmentationMatte:(id)arg1 options:(id)arg2;
 + (id)imageWithTexture:(unsigned int)arg1 size:(struct CGSize { double x1; double x2; })arg2 flipped:(bool)arg3 colorSpace:(struct CGColorSpace { }*)arg4;
 + (id)imageWithTexture:(unsigned int)arg1 size:(struct CGSize { double x1; double x2; })arg2 flipped:(bool)arg3 options:(id)arg4;
 + (id)imageWithTexture:(unsigned int)arg1 size:(struct CGSize { double x1; double x2; })arg2 options:(id)arg3;
++ (id)imageWithYCCImage:(id)arg1 matrix:(int)arg2 fullRange:(bool)arg3 colorSpace:(struct CGColorSpace { }*)arg4;
 + (id)imageWithYImage:(id)arg1 CrCbImage:(id)arg2 CrCbScale:(int)arg3 matrix:(int)arg4 fullRange:(bool)arg5 colorSpace:(struct CGColorSpace { }*)arg6;
 + (id)imageYCC444:(id)arg1 matrix:(int)arg2 fullRange:(bool)arg3 colorSpace:(struct CGColorSpace { }*)arg4;
++ (id)magentaImage;
 + (id)noiseImage;
 + (id)noiseImageNearest;
 + (id)noiseImagePadded;
 + (id)nullImage;
++ (id)redImage;
 + (id)smartColorAdjustmentsForValue:(double)arg1 andStatistics:(id)arg2;
 + (id)smartToneAdjustmentsForValue:(double)arg1 andStatistics:(id)arg2;
 + (id)smartToneAdjustmentsForValue:(double)arg1 localLightAutoValue:(double)arg2 andStatistics:(id)arg3;
 + (bool)supportsSecureCoding;
++ (id)whiteImage;
++ (id)yellowImage;
 
 - (struct CGImage { }*)CGImage;
 - (id)TIFFRepresentation;
@@ -93,15 +108,18 @@
 - (struct CGImage { }*)_originalCGImage;
 - (struct __CVBuffer { }*)_originalCVPixelBuffer;
 - (id)_pdfDataRepresentation;
+- (struct __CVBuffer { }*)_pixelBufferFromAuxProps:(struct __CFDictionary { }*)arg1;
 - (id)_scaleImageToMaxDimension:(unsigned int)arg1;
 - (void)_setOriginalCGImage:(struct CGImage { }*)arg1 options:(id)arg2;
 - (void)_setOriginalCVPixelBuffer:(struct __CVBuffer { }*)arg1 options:(id)arg2;
 - (id)autoAdjustmentFilters;
 - (id)autoAdjustmentFiltersWithImageProperties:(id)arg1 options:(id)arg2;
 - (id)autoAdjustmentFiltersWithOptions:(id)arg1;
+- (id)autoPerspectiveFilterWithOptions:(id)arg1;
+- (id)autoPerspectiveResultWithOptions:(id)arg1;
 - (id)autoRedEyeFilterWithFeatures:(id)arg1 imageProperties:(id)arg2 options:(id)arg3;
 - (id)autoRedEyeFilterWithFeatures:(id)arg1 options:(id)arg2;
-- (id)autoRotateFilterFFT:(id)arg1 image:(struct CGImage { }*)arg2 inputRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3;
+- (id)autoRotateFilterFFT:(id)arg1 image:(struct CGImage { }*)arg2 inputRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3 minTiltAngle:(float)arg4 maxTiltAngle:(float)arg5 detectVerticalLines:(bool)arg6 thrVertAngle:(float)arg7 thrDomAngleDiff:(float)arg8;
 - (bool)cacheHint;
 - (struct CGPoint { double x1; double x2; })calcIntersection:(struct CGPoint { double x1; double x2; })arg1 slope1:(struct CGPoint { double x1; double x2; })arg2 pt2:(struct CGPoint { double x1; double x2; })arg3 slope2:(struct CGPoint { double x1; double x2; })arg4;
 - (struct CGColorSpace { }*)colorSpace;
@@ -115,7 +133,7 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })extent;
 - (id)filteredImage:(id)arg1 keysAndValues:(id)arg2;
 - (void)finalize;
-- (id)getAutoRotateFilter:(id)arg1 ciImage:(id)arg2 rgbRows:(id)arg3 inputRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg4 rotateCropRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg5;
+- (id)getAutoRotateFilter:(id)arg1 ciImage:(id)arg2 inputRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3 rotateCropRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg4 minTiltAngle:(float)arg5 maxTiltAngle:(float)arg6 detectVerticalLines:(bool)arg7 thrVertAngle:(float)arg8 thrDomAngleDiff:(float)arg9;
 - (void)getAutocropRect:(id)arg1 rotateXfrm:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg2 inputImageRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3 clipRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg4;
 - (id)imageByApplyingCGOrientation:(unsigned int)arg1;
 - (id)imageByApplyingFilter:(id)arg1;
@@ -187,6 +205,8 @@
 - (id)initWithPortaitEffectsMatte:(id)arg1 options:(id)arg2;
 - (id)initWithPortraitEffectsMatte:(id)arg1;
 - (id)initWithPortraitEffectsMatte:(id)arg1 options:(id)arg2;
+- (id)initWithSemanticSegmentationMatte:(id)arg1;
+- (id)initWithSemanticSegmentationMatte:(id)arg1 options:(id)arg2;
 - (id)initWithTexture:(unsigned int)arg1 size:(struct CGSize { double x1; double x2; })arg2 flipped:(bool)arg3 colorSpace:(struct CGColorSpace { }*)arg4;
 - (id)initWithTexture:(unsigned int)arg1 size:(struct CGSize { double x1; double x2; })arg2 flipped:(bool)arg3 options:(id)arg4;
 - (id)initWithTexture:(unsigned int)arg1 size:(struct CGSize { double x1; double x2; })arg2 options:(id)arg3;
@@ -203,6 +223,7 @@
 - (void)printTree;
 - (id)properties;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })regionOfInterestForImage:(id)arg1 inRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
+- (id)semanticSegmentationMatte;
 - (void)setCacheHint:(bool)arg1;
 - (void)setUserInfo:(id)arg1;
 - (void)setValue:(id)arg1 forKeyPath:(id)arg2;
@@ -219,20 +240,21 @@
 
 // Image: /System/Library/CoreServices/RawCamera.bundle/RawCamera
 
-- (id)_RAW_match_ColorSpace_to_WorkingSpace:(struct CGColorSpace { }*)arg1;
-- (id)_RAW_match_WorkingSpace_to_ColorSpace:(struct CGColorSpace { }*)arg1;
-- (id)_RAW_premultiply;
-- (id)_RAW_unpremultiply;
 - (id)rcApplyFilters:(id)arg1;
 - (id)rcApplyFilters:(id)arg1 withScaleFactor:(double)arg2;
 
+// Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
+
+- (id)pu_imageWithPerspectiveTransform:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[3]; })arg1;
+- (id)pu_imageWithPerspectiveTransform:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[3]; })arg1 extent:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
+
 // Image: /System/Library/PrivateFrameworks/AXMediaUtilities.framework/AXMediaUtilities
 
-- (long long)_imageOrientationForInterfaceOrientation:(long long)arg1 displayOrientation:(long long)arg2;
-- (long long)_imageOrientationForInterfaceOrientation:(long long)arg1 isMirrored:(bool)arg2;
-- (id)rotatedImageWithInterfaceOrientation:(long long)arg1 displayOrientation:(long long)arg2 appliedImageOrientation:(long long*)arg3;
-- (id)rotatedImageWithInterfaceOrientation:(long long)arg1 isMirrored:(bool)arg2 appliedImageOrientation:(long long*)arg3;
-- (void)saveToURL:(id)arg1 withOrientation:(long long)arg2 diagnostics:(id)arg3;
+- (unsigned int)_imageOrientationForInterfaceOrientation:(long long)arg1 displayOrientation:(long long)arg2;
+- (unsigned int)_imageOrientationForInterfaceOrientation:(long long)arg1 isMirrored:(bool)arg2;
+- (id)rotatedImageWithInterfaceOrientation:(long long)arg1 displayOrientation:(long long)arg2 appliedImageOrientation:(unsigned int*)arg3;
+- (id)rotatedImageWithInterfaceOrientation:(long long)arg1 isMirrored:(bool)arg2 appliedImageOrientation:(unsigned int*)arg3;
+- (void)saveToURL:(id)arg1 withOrientation:(unsigned int)arg2 diagnostics:(id)arg3;
 - (void)writeImageInAllOrientationsToDirectoryAtURL:(id)arg1 diagnostics:(id)arg2;
 
 // Image: /System/Library/PrivateFrameworks/BarcodeSupport.framework/BarcodeSupport
@@ -243,12 +265,9 @@
 
 - (id)bluredImageWithFlippedXAxis:(bool)arg1;
 
-// Image: /System/Library/PrivateFrameworks/PhotoEditSupport.framework/PhotoEditSupport
+// Image: /System/Library/PrivateFrameworks/NeutrinoCore.framework/NeutrinoCore
 
-- (id)bl_imageFromAlphaChannel;
-- (id)bl_imageToAlphaChannel;
-- (id)bl_moveAlphaToBlue;
-- (id)bl_moveBlueToAlpha;
+- (void)nu_updateDigest:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 

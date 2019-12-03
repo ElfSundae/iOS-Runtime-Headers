@@ -12,7 +12,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithChart:(id)arg1;
 - (bool)isSmooth;
 - (id)marker;

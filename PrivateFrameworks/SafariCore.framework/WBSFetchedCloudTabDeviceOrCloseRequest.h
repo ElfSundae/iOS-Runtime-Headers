@@ -15,6 +15,7 @@
 - (void).cxx_destruct;
 - (id)deviceOrCloseRequestDictionary;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUUIDString:(id)arg1 deviceOrCloseRequestDictionary:(id)arg2;
 - (id)uuidString;

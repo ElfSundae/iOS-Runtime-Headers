@@ -18,8 +18,8 @@
 
 + (id)trendline;
 
+- (void).cxx_destruct;
 - (double)backward;
-- (void)dealloc;
 - (id)defaultNameWithSeriesName:(id)arg1;
 - (id)description;
 - (double)forward;

@@ -48,6 +48,7 @@
     unsigned long long  _finishStartTicks;
     int  _finishState;
     bool  _hasExistingHomePod;
+    bool  _hasMultipleUsers;
     NSString * _homeKitSelectedRoomName;
     SFDeviceOperationHomeKitSetup * _homeKitSetupOperation;
     double  _homeKitSetupSecs;
@@ -66,7 +67,13 @@
     bool  _liveOn;
     bool  _locationDecided;
     bool  _locationEnabled;
+    bool  _lpcAligned;
+    int  _lpcAlignmentState;
+    bool  _lpcPlayAgain;
+    bool  _lpcSkip;
     double  _mediaSystemWaitSecs;
+    int  _multiUserEnableState;
+    int  _multiUserEnableStepState;
     unsigned int  _pairSetupFlags;
     double  _pairSetupSecs;
     int  _pairSetupState;
@@ -82,6 +89,8 @@
     int  _preAuthState;
     bool  _prefBonjourTest;
     bool  _prefForceSiriGreeting;
+    bool  _prefLEDPasscodeEnabled;
+    bool  _prefMultiUser;
     bool  _prefStereoPairEnabled;
     bool  _prefStereoWait;
     int  _preflightAppleMusicState;
@@ -109,13 +118,19 @@
     id /* block */  _promptToInstallHomeAppHandler;
     id /* block */  _promptToShareSettingsHandler;
     int  _proxSetupActiveToken;
+    int  _recognizeVoiceEnabled;
+    int  _recognizeVoiceState;
+    int  _recognizeVoiceStepState;
     SFSession * _sfSession;
     bool  _sfSessionSecured;
     int  _sfSessionState;
     bool  _shareSettingsAgreed;
     int  _shareSettingsState;
+    int  _siriDataSharing;
     bool  _siriEnabled;
     unsigned int  _siriFlags;
+    bool  _siriForEveryoneAnswered;
+    int  _siriForEveryoneState;
     NSArray * _siriLanguageCodes;
     long long  _siriLanguageIndex;
     bool  _siriLanguagePicked;
@@ -150,9 +165,11 @@
     unsigned long long  _trSetupConfigurationStartTicks;
     int  _trSetupConfigurationState;
     NSSet * _trUnauthServices;
+    double  _wifiBonjourTestSecs;
     SFDeviceOperationWiFiSetup * _wifiSetupOperation;
     double  _wifiSetupSecs;
     int  _wifiSetupState;
+    double  _wifiSetupStepSecs;
 }
 
 @property (nonatomic, copy) NSDictionary *additionalMetrics;
@@ -160,6 +177,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *dispatchQueue;
+@property (nonatomic, readonly) bool hasMultipleUsers;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool liveOn;
 @property (nonatomic) bool pauseAfterPreAuth;
@@ -186,6 +204,7 @@
 @property (nonatomic, copy) id /* block */ promptToShareSettingsHandler;
 @property (nonatomic, readonly) HMHome *selectedHome;
 @property (nonatomic, readonly) NSString *selectedSiriLanguage;
+@property (nonatomic, readonly) bool siriDataSharingEnabled;
 @property (nonatomic, readonly) unsigned char stereoCounterpartColor;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long testFlags;
@@ -196,6 +215,7 @@
 - (void)_cleanup;
 - (void)_cleanupSession;
 - (void)_handlePeerEvent:(id)arg1 flags:(unsigned int)arg2;
+- (id)_homeKitFindSettingsWithKeyPath:(id)arg1 group:(id)arg2;
 - (void)_homeKitUpdateiCloudSwitchState:(bool)arg1;
 - (void)_invalidate;
 - (void)_logMetrics;
@@ -204,6 +224,7 @@
 - (void)_preflightAppleMusic;
 - (void)_preflightAppleMusicCompleted:(int)arg1;
 - (void)_promptForPINWithFlags:(unsigned int)arg1 throttleSeconds:(int)arg2;
+- (bool)_recognizeVoiceAlreadyEnabled;
 - (void)_reportError:(id)arg1 label:(id)arg2;
 - (void)_run;
 - (int)_runAppleMusic;
@@ -222,13 +243,17 @@
 - (int)_runBasicConfig;
 - (void)_runBasicConfigReceiveResponse:(id)arg1 error:(id)arg2;
 - (void)_runBasicConfigSendRequest;
-- (int)_runCDPSetup;
+- (int)_runCDPSetup:(bool)arg1;
 - (int)_runCheckAccount;
 - (void)_runFinishRequest;
 - (void)_runFinishResponse:(id)arg1 error:(id)arg2;
 - (int)_runFinishStart;
 - (int)_runHomeKitSetup;
 - (int)_runHomeKitUserInput;
+- (int)_runLEDPassCodeAlignment;
+- (int)_runMultiUserEnable;
+- (void)_runMultiUserEnableEnableSettingStart:(id)arg1 privateSettings:(bool)arg2;
+- (void)_runMultiUserEnableHome;
 - (int)_runPairSetup;
 - (int)_runPersonalRequests;
 - (int)_runPreAuth;
@@ -238,8 +263,14 @@
 - (int)_runPreflightWiFi;
 - (int)_runPreflightiCloud;
 - (int)_runPreflightiTunes;
+- (int)_runRecognizeVoice;
+- (void)_runRecognizeVoiceCheckLanguageResponse:(id)arg1 error:(id)arg2;
+- (void)_runRecognizeVoiceCheckLanguageStart;
+- (void)_runRecognizeVoiceCheckVoiceProfileResponse:(bool)arg1 error:(id)arg2;
+- (void)_runRecognizeVoiceCheckVoiceProfileStart;
 - (int)_runSFSessionStart;
 - (int)_runShareSettings;
+- (int)_runSiriForEveryone;
 - (int)_runSiriLanguage;
 - (int)_runSiriPasscode;
 - (void)_runSiriPasscodeInitRequest;
@@ -265,6 +296,7 @@
 - (void)dealloc;
 - (void)disconnect;
 - (id)dispatchQueue;
+- (bool)hasMultipleUsers;
 - (void)homeAppInstallChoice:(bool)arg1;
 - (void)homeKitReselectHome;
 - (void)homeKitSelectHome:(id)arg1;
@@ -272,6 +304,7 @@
 - (void)homeiCloudEnable;
 - (id)init;
 - (void)invalidate;
+- (void)ledPasscodeMatched;
 - (bool)liveOn;
 - (void)locationEnable:(bool)arg1;
 - (void)pairSetupTryPIN:(id)arg1;
@@ -300,6 +333,7 @@
 - (id /* block */)promptForiTunesSignInHandler;
 - (id /* block */)promptToInstallHomeAppHandler;
 - (id /* block */)promptToShareSettingsHandler;
+- (void)recognizeVoiceAnswered:(bool)arg1;
 - (id)selectedHome;
 - (id)selectedSiriLanguage;
 - (void)setAdditionalMetrics:(id)arg1;
@@ -330,7 +364,9 @@
 - (void)setTestFlags:(unsigned long long)arg1;
 - (void)setTouchRemoteEnabled:(bool)arg1;
 - (void)shareSettingsAgreed;
+- (bool)siriDataSharingEnabled;
 - (void)siriEnable;
+- (void)siriForEveryoneAnswered;
 - (void)siriLanguagePicked:(long long)arg1;
 - (void)skipAudioPasscode;
 - (void)skipiTunesSignIn;

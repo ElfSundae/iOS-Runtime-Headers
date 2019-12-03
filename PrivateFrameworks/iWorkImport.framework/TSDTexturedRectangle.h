@@ -108,6 +108,7 @@
 - (struct CGPoint { double x1; double x2; })originalPosition;
 - (struct CGColorSpace { }*)p_colorSpace;
 - (struct CGImage { }*)p_newImageAndBufferWithAngle:(double)arg1 scale:(double)arg2 offset:(struct CGPoint { double x1; double x2; })arg3;
+- (char *)p_setupTextureDataWithSize:(struct CGSize { double x1; double x2; })arg1 isBGRA:(bool)arg2;
 - (id)parent;
 - (id)parentLayer;
 - (void)releaseSingleTexture;

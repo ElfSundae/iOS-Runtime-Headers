@@ -2,18 +2,22 @@
    Image: /System/Library/Frameworks/CoreLocation.framework/CoreLocation
  */
 
-@interface CLLocationManager : NSObject {
+@interface CLLocationManager : NSObject <HMDCLLocationManager> {
     id  _internal;
 }
 
 @property (nonatomic) long long activityType;
 @property (nonatomic) bool allowsAlteredAccessoryLocations;
 @property (nonatomic) bool allowsBackgroundLocationUpdates;
+@property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) <HMDCLLocationManagerDelegate> *delegate;
 @property (nonatomic) <CLLocationManagerDelegate> *delegate;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) double desiredAccuracy;
 @property (nonatomic) double distanceFilter;
 @property (getter=isDynamicAccuracyReductionEnabled, nonatomic) bool dynamicAccuracyReductionEnabled;
 @property (nonatomic, readonly) double expectedGpsUpdateInterval;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) CLHeading *heading;
 @property (nonatomic, readonly) bool headingAvailable;
 @property (nonatomic) double headingFilter;
@@ -28,26 +32,32 @@
 @property (nonatomic, readonly) double maximumRegionMonitoringDistance;
 @property (nonatomic, readonly, copy) NSSet *monitoredRegions;
 @property (nonatomic) bool pausesLocationUpdatesAutomatically;
-@property (getter=isPersistentMonitoringEnabled, nonatomic) bool persistentMonitoringEnabled;
 @property (nonatomic) bool privateMode;
 @property (nonatomic, copy) NSString *purpose;
+@property (nonatomic, readonly, copy) NSSet *rangedBeaconConstraints;
 @property (nonatomic, readonly, copy) NSSet *rangedRegions;
 @property (nonatomic) bool showsBackgroundLocationIndicator;
+@property (readonly) Class superclass;
 @property (nonatomic) bool supportInfo;
 
 // Image: /System/Library/Frameworks/CoreLocation.framework/CoreLocation
 
++ (id)_applyArchivedAuthorizationDecisions:(id)arg1;
++ (id)_archivedAuthorizationDecisionsWithError:(id*)arg1;
 + (int)_authorizationStatus;
 + (int)_authorizationStatusForBundleIdentifier:(id)arg1 bundle:(id)arg2;
-+ (int)_regionMonitoringAuthorizationStatusForBundleIdentifier:(id)arg1 bundle:(id)arg2;
++ (bool)_checkAndExerciseAuthorizationForBundle:(id)arg1 error:(id*)arg2;
++ (bool)_checkAndExerciseAuthorizationForBundleID:(id)arg1 error:(id*)arg2;
 + (unsigned long long)activeLocationServiceTypesForLocationDictionary:(id)arg1;
 + (bool)advertiseAsBeacon:(id)arg1 withPower:(id)arg2;
 + (unsigned long long)allowableAuthorizationForLocationDictionary:(id)arg1;
++ (bool)authorizationPromptMapDisplayEnabled;
 + (int)authorizationStatus;
 + (int)authorizationStatusForBundle:(id)arg1;
 + (int)authorizationStatusForBundleIdentifier:(id)arg1;
 + (bool)backgroundIndicatorEnabledForLocationDictionary:(id)arg1;
 + (bool)bundleSupported:(id)arg1;
++ (bool)correctiveCompensationStatusForLocationDictionary:(id)arg1;
 + (id)dateLocationLastUsedForLocationDictionary:(id)arg1;
 + (bool)deferredLocationUpdatesAvailable;
 + (void)dumpDiagnosticFilesWithHandler:(id /* block */)arg1;
@@ -58,7 +68,6 @@
 + (bool)headingAvailable;
 + (bool)isEntityAuthorizedForLocationDictionary:(id)arg1;
 + (bool)isLocationActiveForLocationDictionary:(id)arg1;
-+ (bool)isMicroLocationAvailable;
 + (bool)isMonitoringAvailableForClass:(Class)arg1;
 + (bool)isPeerRangingAvailable;
 + (bool)isRangingAvailable;
@@ -67,35 +76,47 @@
 + (bool)locationServicesEnabled:(bool)arg1;
 + (bool)mapCorrectionAvailable;
 + (unsigned long long)primaryEntityClassForLocationDictionary:(id)arg1;
-+ (int)regionMonitoringAuthorizationStatusForBundle:(id)arg1;
-+ (int)regionMonitoringAuthorizationStatusForBundleIdentifier:(id)arg1;
 + (bool)regionMonitoringAvailable;
 + (bool)regionMonitoringEnabled;
++ (id)setAuthorizationPromptMapDisplayEnabled:(bool)arg1;
 + (void)setAuthorizationStatus:(bool)arg1 forBundle:(id)arg2;
 + (void)setAuthorizationStatus:(bool)arg1 forBundleIdentifier:(id)arg2;
 + (void)setAuthorizationStatusByType:(int)arg1 forBundle:(id)arg2;
 + (void)setAuthorizationStatusByType:(int)arg1 forBundleIdentifier:(id)arg2;
++ (void)setAuthorizationStatusByType:(int)arg1 withCorrectiveCompensation:(int)arg2 forBundle:(id)arg3;
++ (void)setAuthorizationStatusByType:(int)arg1 withCorrectiveCompensation:(int)arg2 forBundleIdentifier:(id)arg3;
 + (void)setBackgroundIndicatorEnabled:(bool)arg1 forBundle:(id)arg2;
 + (void)setBackgroundIndicatorEnabled:(bool)arg1 forBundleIdentifier:(id)arg2;
 + (void)setBackgroundIndicatorEnabled:(bool)arg1 forLocationDictionary:(id)arg2;
 + (void)setDefaultEffectiveBundle:(id)arg1;
 + (void)setDefaultEffectiveBundleIdentifier:(id)arg1;
 + (void)setEntityAuthorization:(unsigned long long)arg1 forLocationDictionary:(id)arg2;
++ (void)setEntityAuthorization:(unsigned long long)arg1 withCorrectiveCompensation:(bool)arg2 forLocationDictionary:(id)arg3;
 + (void)setEntityAuthorized:(bool)arg1 forLocationDictionary:(id)arg2;
 + (void)setLocationServicesEnabled:(bool)arg1;
 + (void)setStatusBarIconEnabled:(bool)arg1 forLocationEntityClass:(unsigned long long)arg2;
++ (void)setTemporaryAuthorizationGranted:(bool)arg1 forBundle:(id)arg2;
++ (void)setTemporaryAuthorizationGranted:(bool)arg1 forBundleIdentifier:(id)arg2;
 + (id)sharedManager;
 + (bool)shutdownDaemon;
 + (bool)significantLocationChangeMonitoringAvailable;
 
+- (void)_fetchPlaceInferencesWithFidelityPolicy:(unsigned long long)arg1 handler:(id /* block */)arg2;
+- (id)_initWithDelegate:(id)arg1 onQueue:(id)arg2;
+- (bool)_isGroundAltitudeEnabled;
+- (void)_setGroundAltitudeEnabled:(bool)arg1;
 - (void)_startLeechingVisits;
 - (void)_startMonitoringSignificantLocationChangesOfDistance:(double)arg1 withPowerBudget:(int)arg2;
+- (void)_updateARSessionState:(unsigned long long)arg1;
+- (void)_updateLSLHeadingEstimation:(id)arg1;
+- (void)_updateVIOEstimation:(id)arg1;
 - (long long)activityType;
 - (void)allowDeferredLocationUpdatesUntilTraveled:(double)arg1 timeout:(double)arg2;
 - (bool)allowsAlteredAccessoryLocations;
 - (bool)allowsBackgroundLocationUpdates;
 - (id)appsUsingLocation;
 - (id)appsUsingLocationWithDetails;
+- (void)callPlaceInferenceHandlerWithResult:(id)arg1 error:(id)arg2;
 - (void)dealloc;
 - (id)delegate;
 - (double)desiredAccuracy;
@@ -109,13 +130,14 @@
 - (int)headingOrientation;
 - (id)init;
 - (id)initWithEffectiveBundle:(id)arg1;
+- (id)initWithEffectiveBundle:(id)arg1 delegate:(id)arg2 onQueue:(id)arg3;
 - (id)initWithEffectiveBundleIdentifier:(id)arg1;
-- (id)initWithEffectiveBundleIdentifier:(id)arg1 bundle:(id)arg2;
+- (id)initWithEffectiveBundleIdentifier:(id)arg1 bundle:(id)arg2 delegate:(id)arg3 silo:(id)arg4;
+- (id)initWithEffectiveBundleIdentifier:(id)arg1 delegate:(id)arg2 onQueue:(id)arg3;
 - (struct __CLClient { }*)internalClient;
 - (bool)isDynamicAccuracyReductionEnabled;
 - (bool)isLocationServicesPreferencesDialogEnabled;
 - (bool)isMatchInfoEnabled;
-- (bool)isPersistentMonitoringEnabled;
 - (id)location;
 - (bool)locationServicesApproved;
 - (bool)locationServicesAvailable;
@@ -133,10 +155,11 @@
 - (void)onClientEventInterrupted:(id)arg1;
 - (void)onClientEventLocation:(id)arg1 forceMapMatching:(bool)arg2 type:(id)arg3;
 - (void)onClientEventLocationUnavailable:(id)arg1;
-- (void)onClientEventMicroLocation:(id)arg1;
 - (void)onClientEventPeerRanging:(id)arg1;
 - (void)onClientEventPeerRangingError:(id)arg1;
 - (void)onClientEventPeerRangingRequestProcessed:(id)arg1;
+- (void)onClientEventPlaceInferenceError:(id)arg1;
+- (void)onClientEventPlaceInferenceResult:(id)arg1;
 - (void)onClientEventRanging:(id)arg1;
 - (void)onClientEventRangingError:(id)arg1;
 - (void)onClientEventRegion:(id)arg1;
@@ -154,10 +177,10 @@
 - (bool)pausesLocationUpdatesAutomatically;
 - (bool)privateMode;
 - (id)purpose;
+- (id)rangedBeaconConstraints;
 - (id)rangedRegions;
 - (void)registerAsLocationClient;
 - (void)requestAlwaysAuthorization;
-- (void)requestCurrentMicroLocation;
 - (void)requestLocation;
 - (void)requestRangingToPeers:(id)arg1 timeoutSeconds:(double)arg2;
 - (void)requestStateForRegion:(id)arg1;
@@ -179,7 +202,6 @@
 - (void)setLocationServicesPreferencesDialogEnabled:(bool)arg1;
 - (void)setMatchInfoEnabled:(bool)arg1;
 - (void)setPausesLocationUpdatesAutomatically:(bool)arg1;
-- (void)setPersistentMonitoringEnabled:(bool)arg1;
 - (void)setPrivateMode:(bool)arg1;
 - (void)setPurpose:(id)arg1;
 - (void)setShowsBackgroundLocationIndicator:(bool)arg1;
@@ -191,14 +213,13 @@
 - (void)startMonitoringSignificantLocationChanges;
 - (void)startMonitoringVisits;
 - (void)startRangingBeaconsInRegion:(id)arg1;
+- (void)startRangingBeaconsSatisfyingConstraint:(id)arg1;
 - (void)startRangingFromPeers:(id)arg1;
 - (void)startRangingToPeers:(id)arg1 intervalSeconds:(unsigned long long)arg2;
 - (void)startTechStatusUpdates;
 - (void)startUpdatingHeading;
 - (void)startUpdatingLocation;
 - (void)startUpdatingLocationWithPrompt;
-- (void)startUpdatingMicroLocation;
-- (void)startUpdatingMicroLocationForLocationOfInterest:(id)arg1;
 - (void)startUpdatingVehicleHeading;
 - (void)startUpdatingVehicleSpeed;
 - (void)stopAppStatusUpdates;
@@ -206,12 +227,12 @@
 - (void)stopMonitoringSignificantLocationChanges;
 - (void)stopMonitoringVisits;
 - (void)stopRangingBeaconsInRegion:(id)arg1;
+- (void)stopRangingBeaconsSatisfyingConstraint:(id)arg1;
 - (void)stopRangingFromPeers:(id)arg1;
 - (void)stopRangingToPeers:(id)arg1;
 - (void)stopTechStatusUpdates;
 - (void)stopUpdatingHeading;
 - (void)stopUpdatingLocation;
-- (void)stopUpdatingMicroLocation;
 - (void)stopUpdatingVehicleHeading;
 - (void)stopUpdatingVehicleSpeed;
 - (bool)supportInfo;
@@ -228,10 +249,6 @@
 + (id)referenceFrameDescription:(int)arg1;
 + (id)regionDescription:(id)arg1;
 + (id)regionStateDescription:(long long)arg1;
-
-// Image: /System/Library/PrivateFrameworks/AssistantServices.framework/AssistantServices
-
-+ (id)_af_createSiriLocationManagerWithSetupBlock:(id /* block */)arg1;
 
 // Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
 

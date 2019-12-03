@@ -56,8 +56,8 @@
 - (id)readBookmarks;
 - (id)readHistory;
 - (id)readPins;
+- (void)service:(id)arg1 didSwitchFromPairingID:(id)arg2 toPairingID:(id)arg3;
 - (bool)service:(id)arg1 startSession:(id)arg2 error:(id*)arg3;
-- (void)serviceDidPairDevice:(id)arg1;
 - (void)setDroppedPin:(id)arg1;
 - (void)setNeedsFullSync;
 - (void)syncSession:(id)arg1 applyChanges:(id)arg2 completion:(id /* block */)arg3;

@@ -10,9 +10,11 @@
 @property (nonatomic, readonly) NSString *adamID;
 @property (nonatomic, readonly) NSNumber *contentRating;
 @property (nonatomic, readonly) NSString *extrasURLString;
+@property (nonatomic, readonly) bool isEntitledToPlay;
 @property (nonatomic, readonly) bool isLightTheme;
 @property (nonatomic, readonly) NSString *loadingImage;
 @property (nonatomic, readonly) NSString *previewURLString;
+@property (nonatomic, readonly) NSURL *tvAppDeeplinkURL;
 
 - (void).cxx_destruct;
 - (id)actionParams;
@@ -21,9 +23,11 @@
 - (id)extrasURLString;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithMediaItem:(id)arg1;
+- (bool)isEntitledToPlay;
 - (bool)isLightTheme;
 - (id)loadingImage;
 - (id)previewURLString;
 - (void)setActionParams:(id)arg1;
+- (id)tvAppDeeplinkURL;
 
 @end

@@ -9,6 +9,7 @@
 @property (nonatomic, retain) _UIStatusBarStringView *buildVersionView;
 
 - (void).cxx_destruct;
+- (void)_create_buildVersionView;
 - (id)buildVersionView;
 - (bool)canEnableDisplayItem:(id)arg1 fromData:(id)arg2;
 - (bool)needsUpdate;

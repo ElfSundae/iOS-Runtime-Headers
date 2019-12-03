@@ -3,7 +3,7 @@
  */
 
 @interface NSMetadataQueryResultGroup : NSObject {
-    /* Warning: unhandled array encoding: '[9@]' */ id  _private;
+    id  _private;
     unsigned long long  _private2;
     void * _reserved;
 }

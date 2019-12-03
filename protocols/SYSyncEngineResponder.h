@@ -5,6 +5,7 @@
 
 @required
 
+- (void)currentDeviceConnectionChanged:(bool)arg1;
 - (void)currentDeviceProximityChanged:(bool)arg1;
 - (void)deliveredMessageWithID:(NSString *)arg1 context:(NSDictionary *)arg2;
 - (void)enqueuedMessageWithID:(NSString *)arg1 context:(NSDictionary *)arg2;

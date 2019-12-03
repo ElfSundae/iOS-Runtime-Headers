@@ -4,6 +4,10 @@
 
 @interface IDSSession : NSObject {
     _IDSSession * _internal;
+    NSString * _uniqueID;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _uniqueIDLock;
 }
 
 @property (nonatomic, readonly) NSString *destination;
@@ -13,6 +17,7 @@
 @property (nonatomic, readonly) unsigned int sessionEndedReason;
 @property (nonatomic, readonly) NSString *sessionID;
 @property (nonatomic, readonly) int socket;
+@property (nonatomic, retain) NSString *uniqueID;
 
 // Image: /System/Library/PrivateFrameworks/IDS.framework/IDS
 
@@ -39,6 +44,7 @@
 - (long long)invitationTimeOut;
 - (bool)isAudioEnabled;
 - (bool)isMuted;
+- (void)reconnectSession;
 - (void)sendAllocationRequest:(id)arg1;
 - (bool)sendData:(id)arg1 error:(id*)arg2;
 - (void)sendInvitation;
@@ -55,9 +61,11 @@
 - (void)setIsMuted:(bool)arg1;
 - (void)setPreferences:(id)arg1;
 - (void)setStreamPreferences:(id)arg1;
+- (void)setUniqueID:(id)arg1;
 - (bool)shouldUseSocketForTransport;
 - (int)socket;
 - (unsigned int)state;
+- (id)uniqueID;
 
 // Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
 

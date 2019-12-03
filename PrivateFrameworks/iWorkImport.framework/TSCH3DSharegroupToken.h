@@ -5,10 +5,12 @@
 @interface TSCH3DSharegroupToken : NSObject
 
 + (id)animation;
++ (id)glExport;
 + (id)interactiveCanvas;
 + (id)sharegroupPool;
 
 - (bool)canBeCreatedFromOtherThread;
+- (bool)forceGL;
 - (bool)hasInterestForDiscreteGraphics;
 - (bool)isOneShot;
 - (bool)mustRunOnMainThread;

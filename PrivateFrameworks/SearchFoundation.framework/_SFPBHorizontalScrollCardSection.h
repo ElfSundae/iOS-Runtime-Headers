@@ -8,6 +8,7 @@
     NSArray * _cardSections;
     bool  _hasBottomPadding;
     bool  _hasTopPadding;
+    unsigned long long  _numberOfRows;
     NSArray * _punchoutOptions;
     NSString * _punchoutPickerDismissText;
     NSString * _punchoutPickerTitle;
@@ -24,6 +25,7 @@
 @property (nonatomic) bool hasTopPadding;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
+@property (nonatomic) unsigned long long numberOfRows;
 @property (nonatomic, copy) NSArray *punchoutOptions;
 @property (nonatomic, copy) NSString *punchoutPickerDismissText;
 @property (nonatomic, copy) NSString *punchoutPickerTitle;
@@ -50,6 +52,7 @@
 - (id)initWithJSON:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)jsonData;
+- (unsigned long long)numberOfRows;
 - (id)punchoutOptions;
 - (id)punchoutOptionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)punchoutOptionsCount;
@@ -62,6 +65,7 @@
 - (void)setCardSections:(id)arg1;
 - (void)setHasBottomPadding:(bool)arg1;
 - (void)setHasTopPadding:(bool)arg1;
+- (void)setNumberOfRows:(unsigned long long)arg1;
 - (void)setPunchoutOptions:(id)arg1;
 - (void)setPunchoutPickerDismissText:(id)arg1;
 - (void)setPunchoutPickerTitle:(id)arg1;

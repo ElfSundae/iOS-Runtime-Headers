@@ -42,6 +42,7 @@
 @property (readonly) NSString *logPath;
 @property (readonly) NSString *modelCode;
 @property (readonly) NSString *osTrain;
+@property (readonly) NSString *productName;
 @property (readonly) NSString *productNameVersionBuildString;
 @property (readonly) NSString *productVersion;
 @property (readonly) NSString *releaseType;
@@ -61,14 +62,18 @@
 - (id)description;
 - (id)experimentGroup;
 - (id)identifier;
+- (id)init:(id)arg1 fromMetadata:(id)arg2;
 - (id)initFromPath:(id)arg1;
 - (id)internalKey;
+- (bool)isConfigEnabled:(id)arg1;
+- (bool)isFile:(id)arg1 validForSubmission:(id)arg2 reasonableSize:(long long)arg3 to:(id)arg4 internalTypes:(id)arg5 result:(const char **)arg6;
 - (bool)isInternalBridge;
 - (bool)isProxy;
 - (id)logPath;
 - (id)metadata;
 - (id)modelCode;
 - (id)osTrain;
+- (id)productName;
 - (id)productNameVersionBuildString;
 - (id)productVersion;
 - (id)releaseType;
@@ -76,5 +81,6 @@
 - (id)systemId;
 - (id)targetAudience;
 - (id)uiCountryCode;
+- (bool)usesLegacySubmission:(id)arg1;
 
 @end

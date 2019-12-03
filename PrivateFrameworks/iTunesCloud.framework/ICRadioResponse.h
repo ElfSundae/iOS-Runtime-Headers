@@ -12,6 +12,7 @@
 @property (nonatomic, readonly, copy) NSDate *expirationDate;
 @property (nonatomic, readonly, copy) NSDictionary *responseDictionary;
 @property (nonatomic, readonly, copy) NSError *serverError;
+@property (nonatomic, readonly) long long version;
 
 - (void).cxx_destruct;
 - (id)contentDictionary;
@@ -21,5 +22,6 @@
 - (id)initWithURLResponse:(id)arg1;
 - (id)responseDictionary;
 - (id)serverError;
+- (long long)version;
 
 @end

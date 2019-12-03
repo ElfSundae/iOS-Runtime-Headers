@@ -38,8 +38,10 @@
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (bool)hasMediaEntityType;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProtobuf:(id)arg1;
+- (bool)isEqual:(id)arg1;
 - (id)jsonData;
 - (int)mediaEntityType;
 - (id)persistentID;

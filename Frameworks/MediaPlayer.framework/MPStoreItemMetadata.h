@@ -10,6 +10,7 @@
     NSNumber * _hasSubscriptionOffer;
     NSArray * _overrideChildStorePlatformDictionaries;
     MPStoreItemMetadata * _parentStoreItemMetadata;
+    NSDictionary * _storeMusicAPIDictionary;
     NSDictionary * _storePlatformDictionary;
 }
 
@@ -52,6 +53,7 @@
 @property (nonatomic, readonly) bool hasLyrics;
 @property (nonatomic, readonly) bool hasSocialPosts;
 @property (nonatomic, readonly) bool hasSubscriptionOffer;
+@property (nonatomic, readonly) bool hasTimeSyncedLyrics;
 @property (nonatomic, readonly, copy) NSString *iTunesBrandType;
 @property (nonatomic, readonly) bool isChart;
 @property (nonatomic, readonly) bool isPreorder;
@@ -72,6 +74,7 @@
 @property (nonatomic, readonly, copy) NSNumber *popularity;
 @property (getter=isPrivatePerson, nonatomic, readonly) bool privatePerson;
 @property (nonatomic, readonly) long long purchasedAdamID;
+@property (nonatomic, readonly, copy) NSString *radioStationProviderName;
 @property (nonatomic, readonly) long long radioStationTypeID;
 @property (nonatomic, readonly, copy) NSDate *releaseDate;
 @property (nonatomic, readonly) long long seasonNumber;
@@ -100,6 +103,7 @@
 
 - (void).cxx_destruct;
 - (id)URL;
+- (id)_musicAPIDateFormatter;
 - (id)_storePlatformLastModifiedDateFormatter;
 - (id)_storePlatformReleaseDateFormatter;
 - (id)artistName;
@@ -150,9 +154,11 @@
 - (bool)hasMetadataForRequestReason:(unsigned long long)arg1;
 - (bool)hasSocialPosts;
 - (bool)hasSubscriptionOffer;
+- (bool)hasTimeSyncedLyrics;
 - (id)iTunesBrandType;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDownloadAssetDictionary:(id)arg1;
+- (id)initWithStoreMusicAPIDictionary:(id)arg1;
 - (id)initWithStorePlatformDictionary:(id)arg1;
 - (id)initWithStorePlatformDictionary:(id)arg1 expirationDate:(id)arg2;
 - (id)initWithStorePlatformDictionary:(id)arg1 parentStoreItemMetadata:(id)arg2;
@@ -187,6 +193,7 @@
 - (id)playlistType;
 - (id)popularity;
 - (long long)purchasedAdamID;
+- (id)radioStationProviderName;
 - (long long)radioStationTypeID;
 - (id)releaseDate;
 - (long long)seasonNumber;

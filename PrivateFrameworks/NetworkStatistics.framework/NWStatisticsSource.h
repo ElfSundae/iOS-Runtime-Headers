@@ -48,14 +48,14 @@
 
 - (void).cxx_destruct;
 - (id)_currentSnapshot;
-- (bool)_handleDescriptor:(void*)arg1 length:(unsigned long long)arg2;
+- (bool)_handleDescriptor:(void*)arg1 length:(unsigned long long)arg2 events:(unsigned long long)arg3;
 - (const struct nstat_counts { unsigned long long x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; unsigned long long x5; unsigned long long x6; unsigned long long x7; unsigned long long x8; unsigned long long x9; unsigned long long x10; unsigned int x11; unsigned int x12; unsigned int x13; unsigned int x14; unsigned int x15; unsigned int x16; unsigned int x17; unsigned int x18; }*)_nstat_counts;
 - (unsigned long long)countsSeqno;
 - (id)currentSnapshot;
 - (id)delegate;
 - (unsigned long long)descriptorSeqno;
 - (bool)handleCounts:(const struct nstat_counts { unsigned long long x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; unsigned long long x5; unsigned long long x6; unsigned long long x7; unsigned long long x8; unsigned long long x9; unsigned long long x10; unsigned int x11; unsigned int x12; unsigned int x13; unsigned int x14; unsigned int x15; unsigned int x16; unsigned int x17; unsigned int x18; }*)arg1;
-- (int)handleDescriptor:(void*)arg1 length:(unsigned long long)arg2;
+- (int)handleDescriptor:(void*)arg1 length:(unsigned long long)arg2 events:(unsigned long long)arg3;
 - (bool)handleMessage:(struct nstat_msg_hdr { unsigned long long x1; unsigned int x2; unsigned short x3; unsigned short x4; }*)arg1 length:(long long)arg2;
 - (id)init;
 - (id)initWithManager:(id)arg1 source:(unsigned long long)arg2 provider:(unsigned int)arg3;

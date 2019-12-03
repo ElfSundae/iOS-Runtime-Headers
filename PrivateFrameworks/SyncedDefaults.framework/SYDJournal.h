@@ -3,9 +3,9 @@
  */
 
 @interface SYDJournal : NSObject {
-    NSMutableDictionary * journal;
-    bool  readonly;
-    NSMutableDictionary * store;
+    NSMutableDictionary * _journal;
+    bool  _readonly;
+    NSMutableDictionary * _store;
 }
 
 - (void).cxx_destruct;

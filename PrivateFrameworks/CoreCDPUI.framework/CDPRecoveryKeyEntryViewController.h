@@ -27,5 +27,6 @@
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(bool)arg1;
+- (void)viewWillLayoutSubviews;
 
 @end

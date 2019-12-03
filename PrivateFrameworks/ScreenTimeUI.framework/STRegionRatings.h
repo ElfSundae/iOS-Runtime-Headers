@@ -6,6 +6,7 @@
     NSDictionary * _ratingsPlist;
 }
 
+@property (readonly, copy) NSArray *localizedRegionAndCodePairs;
 @property (readonly, copy) NSDictionary *localizedRegionsByCode;
 @property (readonly, copy) NSString *preferredRegion;
 @property (readonly) NSDictionary *ratingsPlist;
@@ -19,6 +20,7 @@
 - (id)init;
 - (id)localizedAppRatingsForRegion:(id)arg1;
 - (id)localizedMovieRatingsForRegion:(id)arg1;
+- (id)localizedRegionAndCodePairs;
 - (id)localizedRegionsByCode;
 - (id)localizedStringForAppRatingLabel:(id)arg1;
 - (id)localizedTVRatingsForRegion:(id)arg1;

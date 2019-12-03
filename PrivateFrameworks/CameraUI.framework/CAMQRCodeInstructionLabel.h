@@ -14,8 +14,6 @@
 + (bool)shouldDisplayInstructionForMRCResults:(id)arg1 devicePosition:(long long)arg2;
 
 - (void).cxx_destruct;
-- (double)_backgroundAlpha;
-- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_textInsets;
 - (void)_updateTextWithPriorMRCResults:(id)arg1;
 - (long long)devicePosition;
 - (id)mrcResults;

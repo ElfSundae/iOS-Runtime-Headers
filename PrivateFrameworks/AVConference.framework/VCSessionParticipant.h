@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/AVConference.framework/AVConference
  */
 
-@interface VCSessionParticipant : VCObject <VCAudioIODelegate, VCAudioIOSink, VCAudioIOSource, VCAudioPowerSpectrumSourceDelegate, VCConnectionChangedHandler, VCMediaStreamDelegate, VCRedundancyControllerDelegate, VCSecurityEventHandler> {
+@interface VCSessionParticipant : VCObject <VCAudioIODelegate, VCAudioIOSink, VCAudioPowerSpectrumSourceDelegate, VCConnectionChangedHandler, VCMediaStreamDelegate, VCRedundancyControllerDelegate, VCSecurityEventHandler> {
     bool  _audioEnabled;
     VCAudioIO * _audioIO;
     bool  _audioIOStateChangeInProgress;
@@ -23,9 +23,9 @@
         } time; 
     }  _creationTime;
     id  _delegate;
+    int  _deviceRole;
     NSString * _idsDestination;
     unsigned long long  _idsParticipantID;
-    bool  _isContinuity;
     bool  _isMuted;
     bool  _localOnWiFi;
     NSData * _mediaBlobCompressed;
@@ -38,16 +38,14 @@
     NSMutableSet * _pausedVideoStreams;
     NSMutableSet * _pausingAudioStreams;
     NSMutableSet * _pausingVideoStreams;
-    VCAudioPowerSpectrumSource * _powerSpectrumSource;
     int  _processId;
-    unsigned int  _pullAudioSamplesCount;
     id  _reportingAgentWeak;
     NSMutableSet * _resumingAudioStreams;
     NSMutableSet * _resumingVideoStreams;
     NSMutableSet * _runningAudioStreams;
     NSMutableSet * _runningVideoStreams;
     NSString * _sessionUUID;
-    struct opaqueVCAudioBufferList { } * _sourceBuffer;
+    unsigned long long  _spatialAudioSourceID;
     NSMutableSet * _startingAudioStreams;
     NSMutableSet * _startingVideoStreams;
     unsigned int  _state;
@@ -87,6 +85,7 @@
 @property (nonatomic, readonly) NSData *opaqueData;
 @property (nonatomic, readonly) long long participantVideoToken;
 @property (nonatomic) struct opaqueRTCReporting { }*reportingAgent;
+@property (nonatomic, readonly) unsigned long long spatialAudioSourceID;
 @property (nonatomic, retain) AVCStatisticsCollector *statisticsCollector;
 @property (nonatomic) <VCSessionParticipantStreamDelegate> *streamDelegate;
 @property (readonly) Class superclass;
@@ -113,8 +112,8 @@
 - (void)collectAudioChannelMetrics:(struct { unsigned int x1; unsigned int x2; double x3; }*)arg1;
 - (void)collectVideoChannelMetrics:(struct { unsigned int x1; unsigned int x2; double x3; }*)arg1;
 - (void)completeStreamSetup:(id)arg1;
-- (bool)configureAudioIOWithContinuity:(bool)arg1;
-- (bool)configureWithIsContinuity:(bool)arg1;
+- (bool)configureAudioIOWithDeviceRole:(int)arg1;
+- (bool)configureWithDeviceRole:(int)arg1;
 - (void)createRedundancyControllers;
 - (union tagNTP { unsigned long long x1; struct { unsigned int x_2_1_1; unsigned int x_2_1_2; } x2; })creationTime;
 - (void)dealloc;
@@ -122,6 +121,7 @@
 - (id)description;
 - (void)didResumeAudioIO:(id)arg1;
 - (void)didSuspendAudioIO:(id)arg1;
+- (void)didUpdateBasebandCodec:(const struct _VCRemoteCodecInfo { unsigned int x1; double x2; }*)arg1;
 - (void)dispatchedSetAudioEnabled:(bool)arg1;
 - (void)dispatchedSetAudioPaused:(bool)arg1;
 - (void)dispatchedSetVideoEnabled:(bool)arg1;
@@ -148,6 +148,9 @@
 - (bool)isVideoPaused;
 - (bool)isVideoStream:(id)arg1;
 - (id)mediaNegotiator;
+- (void)onDidResumeAudioStream:(id)arg1;
+- (void)onPauseAudioStreams;
+- (void)onStartAudioIO;
 - (id)opaqueData;
 - (char *)participantStateToString:(unsigned int)arg1;
 - (long long)participantVideoToken;
@@ -182,6 +185,8 @@
 - (bool)setVolume:(float)arg1;
 - (void)setupNetworkAddressesForMediaConfig:(id)arg1;
 - (bool)shouldStartAudioIO;
+- (unsigned long long)spatialAudioSourceID;
+- (void)spatialAudioSourceIDChanged:(unsigned long long)arg1;
 - (void)start;
 - (void)startAudioDump;
 - (void)startAudioIO;
@@ -198,7 +203,8 @@
 - (id)streamsToString;
 - (id)supportedAudioRules;
 - (void)tearDown;
-- (bool)updateConfigurationWithIsContinuity:(bool)arg1;
+- (void)updateAudioSpectrumState;
+- (bool)updateConfigurationWithDeviceRole:(int)arg1;
 - (void)updateVideoPaused:(bool)arg1;
 - (id)uuid;
 - (void)vcMediaStream:(id)arg1 didPauseStream:(bool)arg2 error:(id)arg3;

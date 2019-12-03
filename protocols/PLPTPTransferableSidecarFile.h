@@ -12,5 +12,6 @@
 - (NSDate *)modificationDate;
 - (NSManagedObjectID *)objectID;
 - (long long)ptpTrashedState;
+- (unsigned int)resourceType;
 
 @end

@@ -27,8 +27,11 @@
 - (id)init;
 - (id)initWithQueue:(id)arg1;
 - (id)internalQueue;
+- (void)listBackupsOfType:(unsigned long long)arg1 timeout:(long long)arg2 completionHandler:(id /* block */)arg3;
+- (void)listBackupsOfType:(unsigned long long)arg1 withSynchronousCompletionHandler:(id /* block */)arg2;
 - (void)listBackupsWithCompletionHandler:(id /* block */)arg1;
 - (void)listBackupsWithSynchronousCompletionHandler:(id /* block */)arg1;
+- (void)listBackupsWithTimeout:(long long)arg1 completionHandler:(id /* block */)arg2;
 - (id)restoreFromBackup:(id)arg1 forDevice:(id)arg2;
 - (void)restoreFromBackup:(id)arg1 forDevice:(id)arg2 completionHandler:(id /* block */)arg3;
 - (id)restoreFromDevice:(id)arg1 forDevice:(id)arg2;

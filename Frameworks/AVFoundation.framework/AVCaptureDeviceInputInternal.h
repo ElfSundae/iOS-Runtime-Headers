@@ -6,10 +6,19 @@
     bool  builtInMicrophoneStereoAudioCaptureEnabled;
     AVCaptureDevice * device;
     <AVCallbackCancellation> * deviceOpenCallbackInvoker;
+    float  maxGainOverride;
+    NSArray * multiCamPorts;
+    float  portraitLightingEffectStrength;
     NSArray * ports;
     bool  ready;
     float  simulatedAperture;
     bool  unifiedAutoExposureDefaultsEnabled;
+    struct { 
+        long long value; 
+        int timescale; 
+        unsigned int flags; 
+        long long epoch; 
+    }  videoMinFrameDurationOverride;
     bool  visionDataDeliveryEnabled;
     AVWeakReference * weakReference;
 }

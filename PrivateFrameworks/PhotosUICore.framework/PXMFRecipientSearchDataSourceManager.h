@@ -7,7 +7,7 @@
     PXIDSAddressQueryController * _addressQueryController;
     NSMutableArray * _autocompleteSearchResults;
     NSObject<OS_dispatch_queue> * _creationQueue;
-    unsigned int  _currentAtomicSearchTaskID;
+    _Atomic unsigned int  _currentAtomicSearchTaskID;
     NSNumber * _currentSearchTaskID;
     MFContactsSearchManager * _searchManager;
     NSDictionary * _searchResultsByDestination;

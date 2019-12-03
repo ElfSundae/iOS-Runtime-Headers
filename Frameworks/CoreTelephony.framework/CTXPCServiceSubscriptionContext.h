@@ -2,7 +2,8 @@
    Image: /System/Library/Frameworks/CoreTelephony.framework/CoreTelephony
  */
 
-@interface CTXPCServiceSubscriptionContext : NSObject <NSCopying, NSSecureCoding, TUTelephonySubscription, VMTelephonySubscription> {
+@interface CTXPCServiceSubscriptionContext : NSObject <IDSCTSIM, NSCopying, NSSecureCoding, TPSTelephonySubscription, TUTelephonySubscription, VMTelephonySubscription> {
+    bool  _isSimGood;
     bool  _isSimPresent;
     NSString * _label;
     NSString * _labelID;
@@ -13,9 +14,11 @@
     NSUUID * _uuid;
 }
 
+@property (nonatomic, readonly) NSString *SIMIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) bool isSimGood;
 @property (nonatomic) bool isSimPresent;
 @property (nonatomic, readonly) NSString *label;
 @property (nonatomic, retain) NSString *label;
@@ -23,6 +26,7 @@
 @property (nonatomic, retain) NSString *labelID;
 @property (nonatomic, readonly) NSString *phoneNumber;
 @property (nonatomic, retain) NSString *phoneNumber;
+@property (nonatomic, readonly) unsigned long long slot;
 @property (nonatomic, readonly) long long slotID;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly, copy) NSString *tps_isoCountryCode;
@@ -39,6 +43,7 @@
 
 // Image: /System/Library/Frameworks/CoreTelephony.framework/CoreTelephony
 
++ (id)contextWithServiceDescriptor:(id)arg1;
 + (id)contextWithSlot:(long long)arg1;
 + (id)contextWithUUID:(id)arg1;
 + (bool)supportsSecureCoding;
@@ -53,10 +58,12 @@
 - (id)initWithUUID:(id)arg1;
 - (id)initWithUUID:(id)arg1 andSlot:(long long)arg2;
 - (bool)isEqual:(id)arg1;
+- (bool)isSimGood;
 - (bool)isSimPresent;
 - (id)label;
 - (id)labelID;
 - (id)phoneNumber;
+- (void)setIsSimGood:(bool)arg1;
 - (void)setIsSimPresent:(bool)arg1;
 - (void)setLabel:(id)arg1;
 - (void)setLabelID:(id)arg1;
@@ -67,6 +74,11 @@
 - (id)userDataPreferred;
 - (id)userDefaultVoice;
 - (id)uuid;
+
+// Image: /System/Library/PrivateFrameworks/IDSFoundation.framework/IDSFoundation
+
+- (id)SIMIdentifier;
+- (unsigned long long)slot;
 
 // Image: /System/Library/PrivateFrameworks/TelephonyPreferences.framework/TelephonyPreferences
 

@@ -19,8 +19,10 @@
 - (id)newCaptureScopeWithDevice:(id)arg1;
 - (void)setDefaultCaptureScope:(id)arg1;
 - (void)startCaptureWithCommandQueue:(id)arg1;
+- (bool)startCaptureWithDescriptor:(id)arg1 error:(id*)arg2;
 - (void)startCaptureWithDevice:(id)arg1;
 - (void)startCaptureWithScope:(id)arg1;
 - (void)stopCapture;
+- (bool)supportsDestination:(long long)arg1;
 
 @end

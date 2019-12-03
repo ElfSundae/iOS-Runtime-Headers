@@ -3,7 +3,7 @@
  */
 
 @interface HMDCameraSnapshotManager : HMFObject <HMDCameraSnapshotLocalDelegate, HMDCameraSnapshotRemoteRelayReceiverDelegate, HMDCameraSnapshotRemoteRelaySenderDelegate, HMDCameraSnapshotRemoteRelayStreamDelegate, HMDCameraSnapshotRemoteStreamReceiverDelegate, HMDCameraSnapshotRemoteStreamSenderDelegate, HMDCameraStreamSnapshotHandlerDelegate, HMDHomeMessageReceiver, HMFLogging, HMFTimerDelegate> {
-    HMDAccessory * _accessory;
+    HMDHAPAccessory * _accessory;
     HMDSnapshotLocalSession * _currentLocalSession;
     NSMutableDictionary * _currentRemoteSessions;
     NSString * _imageCacheDirectory;
@@ -23,7 +23,7 @@
     NSObject<OS_dispatch_queue> * _workQueue;
 }
 
-@property (nonatomic, readonly) HMDAccessory *accessory;
+@property (nonatomic, readonly) HMDHAPAccessory *accessory;
 @property (nonatomic, retain) HMDSnapshotLocalSession *currentLocalSession;
 @property (nonatomic, retain) NSMutableDictionary *currentRemoteSessions;
 @property (readonly, copy) NSString *debugDescription;
@@ -54,6 +54,7 @@
 + (id)logCategory;
 
 - (void).cxx_destruct;
+- (id)_createSnapshotSessionIDWithMessage:(id)arg1 error:(id*)arg2;
 - (void)_endSession:(id)arg1 error:(id)arg2;
 - (id)_findSessionWithID:(id)arg1;
 - (void)_handleCreateSnapshotFromBulletinContext:(id)arg1;
@@ -63,17 +64,16 @@
 - (void)_handleSnapshotRequest:(id)arg1;
 - (void)_handleSnapshotSendFailure:(id)arg1;
 - (void)_issueGetSnapshot:(id)arg1;
-- (void)_message:(id)arg1 errored:(long long)arg2;
 - (void)_removeAllPendingRequests:(id)arg1;
 - (void)_sendRemoteResponse:(id)arg1 sessionID:(id)arg2;
 - (void)_sendResponse:(id)arg1 error:(id)arg2 sessionID:(id)arg3;
-- (void)_sendSnapshotRequestLocal:(id)arg1;
-- (void)_sendSnapshotRequestRelayInitiator:(id)arg1;
-- (void)_sendSnapshotRequestRelayReceiver:(id)arg1;
-- (void)_sendSnapshotRequestRelayStream:(id)arg1;
-- (void)_sendSnapshotRequestStreamInitiator:(id)arg1;
-- (void)_sendSnapshotRequestStreamReceiver:(id)arg1;
-- (void)_sendStreamSnapshotRequest:(id)arg1;
+- (void)_sendSnapshotRequestLocal:(id)arg1 snapshotSessionID:(id)arg2;
+- (void)_sendSnapshotRequestRelayInitiator:(id)arg1 snapshotSessionID:(id)arg2;
+- (void)_sendSnapshotRequestRelayReceiver:(id)arg1 snapshotSessionID:(id)arg2;
+- (void)_sendSnapshotRequestRelayStream:(id)arg1 snapshotSessionID:(id)arg2;
+- (void)_sendSnapshotRequestStreamInitiator:(id)arg1 snapshotSessionID:(id)arg2;
+- (void)_sendSnapshotRequestStreamReceiver:(id)arg1 snapshotSessionID:(id)arg2;
+- (void)_sendStreamSnapshotRequest:(id)arg1 snapshotSessionID:(id)arg2;
 - (void)_startedGettingImageFor:(id)arg1 error:(id)arg2;
 - (id)accessory;
 - (id)currentLocalSession;
@@ -81,6 +81,7 @@
 - (void)dealloc;
 - (id)getMostRecentSnapshotRequest;
 - (void)handleAccessoryIsNotReachable:(id)arg1;
+- (void)handleCameraSettingsDidChangeNotification:(id)arg1;
 - (id)imageCacheDirectory;
 - (id)initWithAccessory:(id)arg1 workQueue:(id)arg2 streamSnapshotHandler:(id)arg3 uniqueIdentifier:(id)arg4 logID:(id)arg5 msgDispatcher:(id)arg6 networkMonitor:(id)arg7 residentMessageHandler:(id)arg8;
 - (id)logID;
@@ -88,7 +89,6 @@
 - (id)messageReceiveQueue;
 - (id)messageReceiverChildren;
 - (id)messageTargetUUID;
-- (void)monitorForEventsForServices:(id)arg1;
 - (id)monitorServicesManager;
 - (id)msgDispatcher;
 - (id)networkMonitor;

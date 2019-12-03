@@ -7,6 +7,7 @@
 @property (nonatomic) unsigned int columnOrRowIndex;
 
 - (void)appendStroke:(id)arg1 inRange:(struct TSTSimpleRange { long long x1; unsigned long long x2; })arg2 order:(int)arg3;
+- (void)applyStroke:(id)arg1 atIndexes:(id)arg2 order:(int)arg3 applyStroke:(id)arg4 atIndexes:(id)arg5 order:(int)arg6 applyStroke:(id)arg7 atIndexes:(id)arg8 order:(int)arg9 applyStroke:(id)arg10 atIndexes:(id)arg11 order:(int)arg12 applyStroke:(id)arg13 atIndexes:(id)arg14 order:(int)arg15;
 - (void)flattenStrokeOrder;
 - (bool)hasStrokeInRange:(struct TSTSimpleRange { long long x1; unsigned long long x2; })arg1;
 - (void)insertSpaceAtRange:(struct TSTSimpleRange { long long x1; unsigned long long x2; })arg1;

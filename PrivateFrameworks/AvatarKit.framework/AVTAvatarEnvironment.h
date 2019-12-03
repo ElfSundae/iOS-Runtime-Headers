@@ -17,7 +17,7 @@
 
 @property (nonatomic, readonly) SCNNode *defaultPointOfView;
 @property (nonatomic, readonly) SCNNode *environmentNode;
-@property (readonly) bool faceIsFullyVisible;
+@property (nonatomic, readonly) bool faceIsFullyVisible;
 @property (nonatomic) float fadeFactor;
 @property (nonatomic) bool showReticle;
 

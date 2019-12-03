@@ -22,6 +22,7 @@
 - (void).cxx_destruct;
 - (bool)_enumerateOneTransactionWithBlock:(id /* block */)arg1;
 - (bool)_hasMoreTransactions;
+- (id)_safeTransactionAtIndex:(unsigned long long)arg1;
 - (id)context;
 - (unsigned long long)count;
 - (void)enumerateRemainingTransactionsWithBlock:(id /* block */)arg1;

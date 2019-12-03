@@ -32,6 +32,8 @@
 - (bool)isEqual:(id)arg1;
 - (id)localizedDetailText;
 - (id)localizedKeylineLabelText;
+- (id)localizedRichDetailText;
+- (id)localizedRichKeylineLabelText;
 - (id)shortName;
 - (bool)snapshotContext:(id)arg1 isStaleRelativeToContext:(id)arg2;
 

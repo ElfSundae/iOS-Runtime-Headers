@@ -5,6 +5,8 @@
 @interface HFCharacteristicValueTransaction : NSObject {
     NSDictionary * _actionSetErrorsKeyedByUUID;
     NSMutableSet * _actionSetsToExecute;
+    NSError * _actionsError;
+    NSMutableSet * _actionsToExecute;
     NSMutableSet * _characteristicsToRead;
     NSMutableArray * _clientReasonsStack;
     NAFuture * _commitFuture;
@@ -21,6 +23,8 @@
 
 @property (nonatomic, retain) NSDictionary *actionSetErrorsKeyedByUUID;
 @property (nonatomic, retain) NSMutableSet *actionSetsToExecute;
+@property (nonatomic, retain) NSError *actionsError;
+@property (nonatomic, retain) NSMutableSet *actionsToExecute;
 @property (nonatomic, retain) NSMutableSet *characteristicsToRead;
 @property (nonatomic, retain) NSMutableArray *clientReasonsStack;
 @property (nonatomic, retain) NAFuture *commitFuture;
@@ -37,6 +41,8 @@
 - (void).cxx_destruct;
 - (id)actionSetErrorsKeyedByUUID;
 - (id)actionSetsToExecute;
+- (id)actionsError;
+- (id)actionsToExecute;
 - (id)characteristicsToRead;
 - (id)clientReasonsStack;
 - (id)commitFuture;
@@ -51,6 +57,8 @@
 - (id)readPolicy;
 - (void)setActionSetErrorsKeyedByUUID:(id)arg1;
 - (void)setActionSetsToExecute:(id)arg1;
+- (void)setActionsError:(id)arg1;
+- (void)setActionsToExecute:(id)arg1;
 - (void)setCharacteristicsToRead:(id)arg1;
 - (void)setClientReasonsStack:(id)arg1;
 - (void)setCommitFuture:(id)arg1;

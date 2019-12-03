@@ -2,10 +2,9 @@
    Image: /System/Library/Frameworks/Metal.framework/Metal
  */
 
-@interface MTLIOAccelFence : NSObject <MTLFence> {
+@interface MTLIOAccelFence : _MTLObjectWithLabel <MTLFence> {
     MTLIOAccelDevice<MTLDevice> * _device;
     unsigned int  _fenceIndex;
-    NSString * _label;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -18,7 +17,5 @@
 - (void)dealloc;
 - (id)device;
 - (id)initWithDevice:(id)arg1 fenceIndex:(unsigned int)arg2;
-- (id)label;
-- (void)setLabel:(id)arg1;
 
 @end

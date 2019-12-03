@@ -5,6 +5,6 @@
 
 @required
 
-- (void)setTime:(double)arg1;
+- (void)setStopwatchState:(long long)arg1 elapsedTime:(double)arg2 shouldPauseTextCountdown:(bool)arg3 timeTravelDate:(NSDate *)arg4;
 
 @end

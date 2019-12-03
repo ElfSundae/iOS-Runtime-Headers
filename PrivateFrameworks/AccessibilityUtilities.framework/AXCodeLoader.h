@@ -6,10 +6,11 @@
     NSMutableSet * _accessibilityCodeItems;
     id /* block */  _beginTrackingCompletion;
     NSObject<OS_dispatch_queue> * _beginTrackingCompletionQueue;
-    unsigned int  _currentPlatform;
+    NSString * _currentPlatformKey;
     id /* block */  _didLoadAccessibilityCodeItemBlock;
     NSObject<OS_dispatch_source> * _dyldImageActivityCoalesceTimer;
     <AXImageMonitor> * _imageMonitor;
+    bool  _initialLoadHasFinished;
     bool  _initialLoadHasOccurred;
     NSObject<OS_dispatch_source> * _loadAccessibilityCodeItemsSource;
     id /* block */  _loadEventDidOccurBlock;
@@ -26,6 +27,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, copy) id /* block */ didLoadAccessibilityCodeItemBlock;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool isInitialLoadFinished;
 @property (nonatomic, readonly) bool isTrackingLoadedCodeItems;
 @property (nonatomic, copy) id /* block */ loadEventDidOccurBlock;
 @property (nonatomic, copy) id /* block */ loadEventWillOccurBlock;
@@ -38,7 +40,7 @@
 
 - (void).cxx_destruct;
 - (id)_accessibilityBundleMapURLs;
-- (id)_accessibilityCodeItemMatchingName:(id)arg1 type:(long long)arg2;
+- (id)_accessibilityCodeItemMatchingName:(id)arg1 type:(long long)arg2 path:(id)arg3;
 - (void)_addTrackedCodeItem:(id)arg1;
 - (void)_associateAccessibilityCodeItemWithLoadedCodeItem:(id)arg1;
 - (void)_associateAccessibilityCodeItemsWithAllTrackedCodeItems;
@@ -58,11 +60,13 @@
 - (id /* block */)_validShouldLoadAccessibilityCodeItemBlock;
 - (id)accessibilityCodeItemDefinitions;
 - (void)beginTrackingLoadedCodeItemsWithMode:(long long)arg1 completion:(id /* block */)arg2 targetQueue:(id)arg3;
+- (id)codeItemForBundle:(id)arg1;
 - (id /* block */)didLoadAccessibilityCodeItemBlock;
 - (void)endTrackingLoadedCodeItemsWithCompletion:(id /* block */)arg1 targetQueue:(id)arg2;
 - (void)imageMonitor:(id)arg1 didAddImage:(id)arg2;
 - (id)init;
 - (id)initWithImageMonitor:(id)arg1;
+- (bool)isInitialLoadFinished;
 - (bool)isTrackingLoadedCodeItems;
 - (void)iterateInitialImageListForImageMonitor:(id)arg1;
 - (id /* block */)loadEventDidOccurBlock;

@@ -8,9 +8,9 @@
 - (bool)allowHotPocketDuringTransition;
 - (CCUIAnimationBatch *)animationBatchForTransitionState:(CCUIOverlayTransitionState *)arg1 previousTransitionState:(CCUIOverlayTransitionState *)arg2;
 - (bool)backdropViewShouldUseAlphaTransformer;
-- (unsigned long long)backgroundMaterialOptions;
 - (unsigned long long)finalTransitionTypeForState:(CCUIOverlayTransitionState *)arg1 gestureTranslation:(struct CGPoint { double x1; double x2; })arg2 gestureVelocity:(struct CGPoint { double x1; double x2; })arg3;
 - (bool)isPanDismissalAvailable;
+- (bool)isZoomEnabled;
 - (void)layoutViews;
 - (<CCUIOverlayMetricsProvider> *)metricsProvider;
 - (void)setMetricsProvider:(id <CCUIOverlayMetricsProvider>)arg1;

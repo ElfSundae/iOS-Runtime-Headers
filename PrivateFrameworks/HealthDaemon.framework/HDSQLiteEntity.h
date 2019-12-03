@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon
  */
 
-@interface HDSQLiteEntity : NSObject <HDSQLiteEntity> {
+@interface HDSQLiteEntity : NSObject <HDSQLiteEntity, NSCopying> {
     long long  _persistentID;
 }
 
@@ -24,10 +24,10 @@
 + (id)allDatabaseColumnNames;
 + (id)anyInDatabase:(id)arg1 predicate:(id)arg2 error:(id*)arg3;
 + (id)checkConstraints;
-+ (const struct { id x1; unsigned char x2; }*)columnDefinitionsWithCount:(unsigned long long*)arg1;
-+ (id)columnsDefinition;
++ (const struct { id x1; id x2; unsigned char x3; }*)columnDefinitionsWithCount:(unsigned long long*)arg1;
 + (id)countDistinctForProperty:(id)arg1 predicate:(id)arg2 database:(id)arg3 error:(id*)arg4;
 + (id)countValueForProperty:(id)arg1 predicate:(id)arg2 database:(id)arg3 error:(id*)arg4;
++ (id)createTableSQL;
 + (id)databaseName;
 + (id)databaseTable;
 + (bool)deleteEntitiesInDatabase:(id)arg1 predicate:(id)arg2 error:(id*)arg3;
@@ -40,8 +40,8 @@
 + (id)entityWithPersistentID:(id)arg1;
 + (void)enumerateColumnsWithBlock:(id /* block */)arg1;
 + (bool)enumerateEntitiesInDatabase:(id)arg1 predicate:(id)arg2 error:(id*)arg3 enumerationHandler:(id /* block */)arg4;
-+ (bool)enumerateQueryResultsFromColumns:(id)arg1 properties:(id)arg2 predicate:(id)arg3 groupBy:(id)arg4 orderingProperties:(id)arg5 limit:(long long)arg6 database:(id)arg7 error:(id*)arg8 enumerationHandler:(id /* block */)arg9;
-+ (id)firstInDatabase:(id)arg1 predicate:(id)arg2 orderingProperties:(id)arg3 orderingDirections:(id)arg4 error:(id*)arg5;
++ (bool)enumerateQueryResultsFromColumns:(id)arg1 properties:(id)arg2 predicate:(id)arg3 groupBy:(id)arg4 orderingTerms:(id)arg5 limit:(long long)arg6 database:(id)arg7 error:(id*)arg8 enumerationHandler:(id /* block */)arg9;
++ (id)firstInDatabase:(id)arg1 predicate:(id)arg2 orderingTerms:(id)arg3 error:(id*)arg4;
 + (id)foreignKeys;
 + (id)indices;
 + (id)insertOrReplaceEntity:(bool)arg1 database:(id)arg2 properties:(id)arg3 error:(id*)arg4 bindingHandler:(id /* block */)arg5;
@@ -50,11 +50,13 @@
 + (id)joinClausesForProperty:(id)arg1;
 + (id)maxPersistentIDWithPredicate:(id)arg1 database:(id)arg2 error:(id*)arg3;
 + (id)maxValueForProperty:(id)arg1 predicate:(id)arg2 database:(id)arg3 error:(id*)arg4;
++ (id)orderingTermForSortDescriptor:(id)arg1;
 + (id)privateSubEntities;
 + (id)propertyValueForAnyInDatabase:(id)arg1 property:(id)arg2 predicate:(id)arg3 error:(id*)arg4;
 + (id)queryWithDatabase:(id)arg1 predicate:(id)arg2;
-+ (id)queryWithDatabase:(id)arg1 predicate:(id)arg2 limit:(unsigned long long)arg3 orderingProperties:(id)arg4 orderingDirections:(id)arg5 groupBy:(id)arg6;
++ (id)queryWithDatabase:(id)arg1 predicate:(id)arg2 limit:(unsigned long long)arg3 orderingTerms:(id)arg4 groupBy:(id)arg5;
 + (id)tableAliases;
++ (id)uniquedColumns;
 + (bool)updateProperties:(id)arg1 predicate:(id)arg2 database:(id)arg3 error:(id*)arg4 bindingHandler:(id /* block */)arg5;
 + (id)updateSQLForProperties:(id)arg1 predicate:(id)arg2;
 + (id)updateSQLForPropertiesOnEntity:(id)arg1;
@@ -62,13 +64,16 @@
 - (id)UUIDForProperty:(id)arg1 database:(id)arg2;
 - (bool)_deleteRowFromTable:(id)arg1 usingColumn:(id)arg2 database:(id)arg3;
 - (bool)booleanForProperty:(id)arg1 database:(id)arg2;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dateForProperty:(id)arg1 database:(id)arg2;
 - (bool)deleteFromDatabase:(id)arg1 error:(id*)arg2;
 - (id)description;
 - (bool)existsInDatabase:(id)arg1;
 - (bool)getValuesForProperties:(id)arg1 database:(id)arg2 error:(id*)arg3 handler:(id /* block */)arg4;
 - (bool)getValuesForProperties:(id)arg1 database:(id)arg2 handler:(id /* block */)arg3;
+- (unsigned long long)hash;
 - (id)initWithPersistentID:(long long)arg1;
+- (bool)isEqual:(id)arg1;
 - (id)numberForProperty:(id)arg1 database:(id)arg2;
 - (long long)persistentID;
 - (id)stringForProperty:(id)arg1 database:(id)arg2;

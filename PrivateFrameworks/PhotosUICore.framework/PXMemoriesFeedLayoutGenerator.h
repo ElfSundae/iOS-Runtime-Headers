@@ -9,7 +9,7 @@
 
 @property (nonatomic) bool includeDateHeader;
 @property (nonatomic) bool isFirstHeader;
-@property (nonatomic, readonly, copy) PXMemoriesFeedLayoutMetrics *metrics;
+@property (nonatomic, copy) PXMemoriesFeedLayoutMetrics *metrics;
 
 - (bool)includeDateHeader;
 - (id)initWithMetrics:(id)arg1;

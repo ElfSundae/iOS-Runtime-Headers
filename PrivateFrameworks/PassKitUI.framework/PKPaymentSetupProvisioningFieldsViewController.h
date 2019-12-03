@@ -9,6 +9,7 @@
     PKPaymentSetupFooterView * _cardDetailsFooterView;
     id /* block */  _continueActionHandler;
     bool  _hideSetupLaterButton;
+    PKPasscodeUpgradeFlowController * _passcodeUpgradeFlowController;
     PKPaymentProvisioningController * _paymentProvisioningController;
     bool  _termsPresented;
     RemoteUIController * _termsUIController;
@@ -53,6 +54,7 @@
 - (void)addDifferentCard:(id)arg1;
 - (id /* block */)continueActionHandler;
 - (void)dealloc;
+- (void)declineTerms;
 - (id)defaultFields;
 - (id)defaultHeaderViewSubTitle;
 - (id)defaultHeaderViewTitle;
@@ -72,6 +74,7 @@
 - (id)newPaymentRequirementsRequest;
 - (id)paymentProvisioningController;
 - (void)performNextActionForProvisioningState:(long long)arg1 withCompletion:(id /* block */)arg2;
+- (void)performPasscodeUpgradeIfNeeded:(bool)arg1 completion:(id /* block */)arg2;
 - (void)presentVerificationViewController:(id)arg1 animated:(bool)arg2;
 - (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(unsigned long long*)arg3;
 - (void)requestEligibility:(id)arg1 withCompletionHandler:(id /* block */)arg2;
@@ -79,6 +82,7 @@
 - (void)requestRequirements:(id)arg1 withCompletionHandler:(id /* block */)arg2;
 - (void)resetAllFieldsAndProvisioningState;
 - (void)resetProvisioningState;
+- (void)resetRightBarButtonState;
 - (void)setContinueActionHandler:(id /* block */)arg1;
 - (void)setHideSetupLaterButton:(bool)arg1;
 - (void)setNotificationTextInFooterView:(id)arg1;

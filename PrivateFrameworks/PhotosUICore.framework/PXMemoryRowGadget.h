@@ -19,9 +19,9 @@
     NSMutableDictionary * _viewControllerEntries;
 }
 
-@property (nonatomic, readonly) const struct __CFString { }*accessoryButtonEventTrackerKey;
 @property (nonatomic, readonly) NSString *accessoryButtonTitle;
 @property (nonatomic, readonly) unsigned long long accessoryButtonType;
+@property (nonatomic, readonly) Class collectionViewItemClass;
 @property (nonatomic) unsigned long long currentNumberOfColumns;
 @property (nonatomic, retain) <PXUIViewControllerZoomTransitionEndPoint> *currentTransitionEndPoint;
 @property (nonatomic) long long currentVisibility;
@@ -53,6 +53,7 @@
 - (long long)_columnSpanForRowType:(unsigned long long)arg1;
 - (void)_configureMetricsForMultiRow:(id)arg1 dataSourceRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (void)_configureMetricsForSingleRow:(id)arg1 dataSourceRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
+- (void)_contentSizeCategoryDidChangeNotification:(id)arg1;
 - (void)_dismissIfNeeded;
 - (void)_fillViewControllerEntryForRowType:(unsigned long long)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_frameForRowType:(unsigned long long)arg1 inRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
@@ -65,7 +66,6 @@
 - (void)_updateScrollingBehaviorForRowType:(unsigned long long)arg1;
 - (void)_updateScrollingBehaviorIfNeeded;
 - (void)_updateVisibilityIfNeeded;
-- (const struct __CFString { }*)accessoryButtonEventTrackerKey;
 - (id)accessoryButtonTitle;
 - (unsigned long long)accessoryButtonType;
 - (struct NSObject { Class x1; }*)contentViewController;
@@ -87,6 +87,7 @@
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void*)arg3;
 - (long long)priority;
 - (bool)px_canPerformZoomTransitionWithDetailViewController:(id)arg1;
+- (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint { double x1; double x2; })arg1 inCoordinateSpace:(id)arg2;
 - (id)px_endPointForTransition:(id)arg1;
 - (void)setCurrentNumberOfColumns:(unsigned long long)arg1;
 - (void)setCurrentTransitionEndPoint:(id)arg1;
@@ -98,7 +99,7 @@
 - (void)setViewControllerEntries:(id)arg1;
 - (id)showAllMemoriesFeedAnimated:(bool)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
-- (void)userDidSelectAccessoryButton:(id)arg1;
+- (void)userDidSelectAccessoryButton:(struct NSObject { Class x1; }*)arg1;
 - (id)viewControllerEntries;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;

@@ -16,7 +16,6 @@
 @property (nonatomic, copy) NWEndpoint *replacementEndpoint;
 @property (nonatomic) bool tfo;
 @property (nonatomic) bool tfoNoCookie;
-@property (nonatomic) bool useTFOHeuristics;
 
 - (void).cxx_destruct;
 - (void)appendProtocol:(id)arg1 atLevel:(int)arg2;
@@ -27,6 +26,7 @@
 - (bool)disablePathFallback;
 - (void)disableProtocol:(struct nw_protocol_identifier { BOOL x1[32]; int x2; int x3; }*)arg1;
 - (unsigned long long)fallbackMode;
+- (bool)fastOpenForceEnable;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCTransform:(id)arg1;
@@ -40,6 +40,7 @@
 - (void)setDataMode:(int)arg1;
 - (void)setDisablePathFallback:(bool)arg1;
 - (void)setFallbackMode:(unsigned long long)arg1;
+- (void)setFastOpenForceEnable:(bool)arg1;
 - (void)setInternalTransform:(id)arg1;
 - (void)setMultipathService:(int)arg1;
 - (void)setNoProxy:(bool)arg1;
@@ -47,9 +48,7 @@
 - (void)setReplacementEndpoint:(id)arg1;
 - (void)setTfo:(bool)arg1;
 - (void)setTfoNoCookie:(bool)arg1;
-- (void)setUseTFOHeuristics:(bool)arg1;
 - (bool)tfo;
 - (bool)tfoNoCookie;
-- (bool)useTFOHeuristics;
 
 @end

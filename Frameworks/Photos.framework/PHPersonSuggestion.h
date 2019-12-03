@@ -21,6 +21,7 @@
 @property (readonly) NSString *px_displayName;
 @property (readonly) NSDate *px_keyPhotoDate;
 @property (readonly) NSString *px_localIdentifier;
+@property (readonly) NSString *px_localizedName;
 @property (readonly) Class superclass;
 
 // Image: /System/Library/Frameworks/Photos.framework/Photos
@@ -42,6 +43,7 @@
 - (id)px_displayName;
 - (id)px_keyPhotoDate;
 - (id)px_localIdentifier;
+- (id)px_localizedName;
 - (void)requestFaceTileImageWithTargetSize:(struct CGSize { double x1; double x2; })arg1 cropFactor:(unsigned long long)arg2 style:(unsigned long long)arg3 cacheResult:(bool)arg4 boundFaceRect:(bool)arg5 completionBlock:(id /* block */)arg6;
 
 @end

@@ -5,6 +5,7 @@
 @interface BrightnessSystemClientInternal : NSObject {
     NSMutableArray * _clientProperties;
     NSXPCConnection * _connection;
+    NSObject<OS_os_log> * _logHandle;
     id  _remote;
     bool  copyPropertyForKeyCompleted;
     NSCondition * copyPropertyForKeyWaitCondition;

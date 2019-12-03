@@ -9,6 +9,7 @@
     bool  _onDemandEnabled;
     NSArray * _onDemandRules;
     NEVPNProtocol * _protocol;
+    long long  _tunnelType;
 }
 
 @property (getter=isDisconnectOnDemandEnabled, nonatomic) bool disconnectOnDemandEnabled;
@@ -17,13 +18,13 @@
 @property (getter=isOnDemandEnabled) bool onDemandEnabled;
 @property (copy) NSArray *onDemandRules;
 @property (copy) NEVPNProtocol *protocol;
+@property long long tunnelType;
 
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (bool)checkValidityAndCollectErrors:(id)arg1;
 - (id)copyLegacyDictionary;
-- (id)copyProfileDictionaryWithCertificateUUID:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;
@@ -43,5 +44,7 @@
 - (void)setOnDemandEnabled:(bool)arg1;
 - (void)setOnDemandRules:(id)arg1;
 - (void)setProtocol:(id)arg1;
+- (void)setTunnelType:(long long)arg1;
+- (long long)tunnelType;
 
 @end

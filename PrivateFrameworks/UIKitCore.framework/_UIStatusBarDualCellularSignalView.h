@@ -23,6 +23,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long iconSize;
 @property (nonatomic, readonly) long long overriddenVerticalAlignment;
+@property (nonatomic, readonly) bool prefersBaselineAlignment;
 @property (readonly) Class superclass;
 @property (readonly) _UIStatusBarCellularSignalView *topSignalView;
 @property (nonatomic, retain) NSLayoutConstraint *verticalInterspaceConstraint;

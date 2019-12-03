@@ -10,15 +10,17 @@
     }  _urlSchemeTask;
 }
 
-@property (readonly) /* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*_apiObject;
+@property (readonly) struct Object { int (**x1)(); id x2; }*_apiObject;
+@property (nonatomic, readonly) bool _requestOnlyIfCached;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) NSURLRequest *request;
 @property (readonly) Class superclass;
 
-- (/* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*)_apiObject;
+- (struct Object { int (**x1)(); id x2; }*)_apiObject;
 - (void)_didPerformRedirection:(id)arg1 newRequest:(id)arg2;
+- (bool)_requestOnlyIfCached;
 - (void)dealloc;
 - (void)didFailWithError:(id)arg1;
 - (void)didFinish;

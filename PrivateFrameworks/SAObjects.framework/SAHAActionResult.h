@@ -6,6 +6,8 @@
 
 @property (nonatomic, retain) SAHAEntity *entity;
 @property (nonatomic, copy) NSString *outcome;
+@property (nonatomic, copy) NSArray *relatedEntityIds;
+@property (nonatomic, copy) NSString *requestActionId;
 @property (nonatomic, copy) NSString *resultAttribute;
 @property (nonatomic, retain) SAHAAttributeValue *resultValue;
 
@@ -18,10 +20,14 @@
 - (id)entity;
 - (id)groupIdentifier;
 - (id)outcome;
+- (id)relatedEntityIds;
+- (id)requestActionId;
 - (id)resultAttribute;
 - (id)resultValue;
 - (void)setEntity:(id)arg1;
 - (void)setOutcome:(id)arg1;
+- (void)setRelatedEntityIds:(id)arg1;
+- (void)setRequestActionId:(id)arg1;
 - (void)setResultAttribute:(id)arg1;
 - (void)setResultValue:(id)arg1;
 

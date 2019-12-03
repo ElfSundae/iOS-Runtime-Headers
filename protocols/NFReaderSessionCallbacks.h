@@ -10,7 +10,7 @@
 @optional
 
 - (void)didDetectExternalReaderWithNotification:(NFFieldNotification *)arg1;
-- (void)didDetectNDEFMessages:(NSArray *)arg1 fromTags:(NSArray *)arg2;
+- (void)didDetectNDEFMessages:(void *)arg1 fromTags:(void *)arg2 updateUICallback:(void *)arg3; // needs 3 arg types, found 8: NSArray *, NSArray *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, long long, void*
 - (void)didDetectTags:(NSArray *)arg1;
 
 @end

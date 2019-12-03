@@ -3,6 +3,7 @@
  */
 
 @interface ICIAMApplicationMessage : PBCodable <NSCopying> {
+    int  _assetPrefetchStrategy;
     bool  _carousel;
     NSMutableArray * _contentPages;
     double  _endDate;
@@ -10,6 +11,7 @@
     struct { 
         unsigned int endDate : 1; 
         unsigned int startDate : 1; 
+        unsigned int assetPrefetchStrategy : 1; 
         unsigned int globalPresentationPolicyGroup : 1; 
         unsigned int maximumDisplays : 1; 
         unsigned int messageType : 1; 
@@ -19,6 +21,7 @@
         unsigned int hasCloseButton : 1; 
     }  _has;
     bool  _hasCloseButton;
+    ICIAMMetricEvent * _holdoutEvent;
     NSString * _identifier;
     int  _maximumDisplays;
     int  _messageType;
@@ -31,15 +34,18 @@
     NSString * _webArchiveURL;
 }
 
+@property (nonatomic) int assetPrefetchStrategy;
 @property (nonatomic) bool carousel;
 @property (nonatomic, retain) NSMutableArray *contentPages;
 @property (nonatomic) double endDate;
 @property (nonatomic) int globalPresentationPolicyGroup;
+@property (nonatomic) bool hasAssetPrefetchStrategy;
 @property (nonatomic) bool hasCarousel;
 @property (nonatomic) bool hasCloseButton;
 @property (nonatomic) bool hasEndDate;
 @property (nonatomic) bool hasGlobalPresentationPolicyGroup;
 @property (nonatomic) bool hasHasCloseButton;
+@property (nonatomic, readonly) bool hasHoldoutEvent;
 @property (nonatomic, readonly) bool hasIdentifier;
 @property (nonatomic) bool hasMaximumDisplays;
 @property (nonatomic) bool hasMessageType;
@@ -49,6 +55,7 @@
 @property (nonatomic) bool hasStartDate;
 @property (nonatomic, readonly) bool hasTemplateURL;
 @property (nonatomic, readonly) bool hasWebArchiveURL;
+@property (nonatomic, retain) ICIAMMetricEvent *holdoutEvent;
 @property (nonatomic, retain) NSString *identifier;
 @property (nonatomic) int maximumDisplays;
 @property (nonatomic) int messageType;
@@ -64,11 +71,14 @@
 + (Class)targetType;
 
 - (void).cxx_destruct;
+- (int)StringAsAssetPrefetchStrategy:(id)arg1;
 - (int)StringAsGlobalPresentationPolicyGroup:(id)arg1;
 - (int)StringAsMessageType:(id)arg1;
 - (int)StringAsModalPresentationStyle:(id)arg1;
 - (void)addContentPages:(id)arg1;
 - (void)addTarget:(id)arg1;
+- (int)assetPrefetchStrategy;
+- (id)assetPrefetchStrategyAsString:(int)arg1;
 - (bool)carousel;
 - (void)clearContentPages;
 - (void)clearTargets;
@@ -82,11 +92,13 @@
 - (double)endDate;
 - (int)globalPresentationPolicyGroup;
 - (id)globalPresentationPolicyGroupAsString:(int)arg1;
+- (bool)hasAssetPrefetchStrategy;
 - (bool)hasCarousel;
 - (bool)hasCloseButton;
 - (bool)hasEndDate;
 - (bool)hasGlobalPresentationPolicyGroup;
 - (bool)hasHasCloseButton;
+- (bool)hasHoldoutEvent;
 - (bool)hasIdentifier;
 - (bool)hasMaximumDisplays;
 - (bool)hasMessageType;
@@ -97,6 +109,7 @@
 - (bool)hasTemplateURL;
 - (bool)hasWebArchiveURL;
 - (unsigned long long)hash;
+- (id)holdoutEvent;
 - (id)identifier;
 - (bool)isEqual:(id)arg1;
 - (int)maximumDisplays;
@@ -108,10 +121,12 @@
 - (int)priority;
 - (bool)readFrom:(id)arg1;
 - (id)rule;
+- (void)setAssetPrefetchStrategy:(int)arg1;
 - (void)setCarousel:(bool)arg1;
 - (void)setContentPages:(id)arg1;
 - (void)setEndDate:(double)arg1;
 - (void)setGlobalPresentationPolicyGroup:(int)arg1;
+- (void)setHasAssetPrefetchStrategy:(bool)arg1;
 - (void)setHasCarousel:(bool)arg1;
 - (void)setHasCloseButton:(bool)arg1;
 - (void)setHasEndDate:(bool)arg1;
@@ -122,6 +137,7 @@
 - (void)setHasModalPresentationStyle:(bool)arg1;
 - (void)setHasPriority:(bool)arg1;
 - (void)setHasStartDate:(bool)arg1;
+- (void)setHoldoutEvent:(id)arg1;
 - (void)setIdentifier:(id)arg1;
 - (void)setMaximumDisplays:(int)arg1;
 - (void)setMessageType:(int)arg1;

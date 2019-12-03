@@ -3,12 +3,19 @@
  */
 
 @interface CLKUIMetalAtlas : CLKUIAtlas {
+    NSObject<OS_dispatch_queue> * _loaderQueue;
+    <MTLTexture> * _loaderQueue_prewarmedTexture;
+    unsigned long long  _mainQueue_prewarmState;
     <MTLTexture> * _texture;
 }
 
++ (id)_createMTLTextureWithBacking:(id)arg1 device:(id)arg2 encoder:(id)arg3;
+
 - (void).cxx_destruct;
-- (void)bind:(id)arg1 slot:(unsigned int)arg2;
+- (void)bind:(id)arg1 slot:(unsigned long long)arg2;
+- (void)dealloc;
 - (id)initWithUuid:(id)arg1;
+- (void)prewarm;
 - (void)purge;
 
 @end

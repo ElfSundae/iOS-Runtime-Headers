@@ -10,7 +10,7 @@
 
 @property (nonatomic) SEL selector;
 @property (nonatomic) id target;
-@property (readonly) NSTimer *timer;
+@property (nonatomic, readonly) NSTimer *timer;
 
 + (id)scheduledTimerWithTimeInterval:(double)arg1 target:(id)arg2 selector:(SEL)arg3;
 

@@ -5,6 +5,7 @@
 @interface IMFMFSession : NSObject <FMFSessionDelegate> {
     FMFDevice * _activeDevice;
     NSString * _establishingAccountID;
+    unsigned long long  _fmfProvisionedState;
     FMFSession * _session;
 }
 
@@ -13,6 +14,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool disableLocationSharing;
 @property (nonatomic, retain) NSString *establishingAccountID;
+@property (nonatomic) unsigned long long fmfProvisionedState;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) bool restrictLocationSharing;
 @property (nonatomic, retain) FMFSession *session;
@@ -22,6 +24,8 @@
 
 - (void).cxx_destruct;
 - (Class)__FMFSessionClass;
+- (id)_accountStore;
+- (void)_accountStoreDidChangeNotification:(id)arg1;
 - (id)_bestAccountForAddresses:(id)arg1;
 - (id)_callerIDForChat:(id)arg1;
 - (void)_postNotification:(id)arg1 object:(id)arg2 userInfo:(id)arg3;
@@ -51,10 +55,12 @@
 - (bool)fmfHandleIsFollowingMyLocation:(id)arg1;
 - (bool)fmfHandleIsSharingLocationWithMe:(id)arg1;
 - (id)fmfHandlesForChat:(id)arg1;
+- (unsigned long long)fmfProvisionedState;
 - (void)friendshipRequestReceived:(id)arg1;
 - (void)friendshipWasRemoved:(id)arg1;
 - (bool)handleIsFollowingMyLocation:(id)arg1;
 - (bool)handleIsSharingLocationWithMe:(id)arg1;
+- (bool)imIsProvisionedForLocationSharing;
 - (id)init;
 - (id)locationForFMFHandle:(id)arg1;
 - (id)locationForHandle:(id)arg1;
@@ -67,6 +73,7 @@
 - (id)session;
 - (void)setActiveDevice:(id)arg1;
 - (void)setEstablishingAccountID:(id)arg1;
+- (void)setFmfProvisionedState:(unsigned long long)arg1;
 - (void)setSession:(id)arg1;
 - (void)startSharingWithChat:(id)arg1 untilDate:(id)arg2;
 - (void)startSharingWithHandle:(id)arg1 inChat:(id)arg2 untilDate:(id)arg3;

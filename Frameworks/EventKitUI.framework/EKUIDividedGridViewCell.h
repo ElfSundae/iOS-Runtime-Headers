@@ -20,6 +20,7 @@
 - (id)initWithBackgroundColor:(id)arg1;
 - (id)label;
 - (bool)selected;
+- (id)selectedTextColor;
 - (void)setLabel:(id)arg1;
 - (void)setSelected:(bool)arg1;
 - (void)setViewController:(id)arg1;

@@ -12,6 +12,8 @@
 + (id)eventStream;
 
 - (void).cxx_destruct;
+- (void)deactivate;
+- (void)dealloc;
 - (id)init;
 - (void)onAudioRouteChangeNotification:(id)arg1;
 - (void)start;

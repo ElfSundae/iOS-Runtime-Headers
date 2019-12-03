@@ -10,6 +10,7 @@
     MFLibraryMessage * _message;
     NSString * _part;
     bool  _partial;
+    bool  _relaxDataProtection;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -17,11 +18,11 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (long long)appendData:(id)arg1;
 - (id)data;
-- (void)dealloc;
 - (void)done;
-- (id)initWithLibrary:(id)arg1 message:(id)arg2 part:(id)arg3 partial:(bool)arg4 incomplete:(bool)arg5 compressionQueue:(id)arg6;
+- (id)initWithLibrary:(id)arg1 message:(id)arg2 part:(id)arg3 partial:(bool)arg4 incomplete:(bool)arg5 relaxDataProtection:(bool)arg6 compressionQueue:(id)arg7;
 - (id)pathForStorage;
 
 @end

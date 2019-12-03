@@ -15,11 +15,9 @@
 - (id)copyForTransitionOut;
 - (id)copyForTransitionToEffect:(id)arg1;
 - (id)description;
-- (bool)hasTransform;
 - (id)initWithSourceEntry:(id)arg1 destinationEntry:(id)arg2;
 - (bool)isSameTypeOfEffect:(id)arg1;
 - (void)removeEffectFromView:(id)arg1;
 - (bool)shouldAnimateProperty:(id)arg1;
-- (bool)shouldManageCornerRadius;
 
 @end

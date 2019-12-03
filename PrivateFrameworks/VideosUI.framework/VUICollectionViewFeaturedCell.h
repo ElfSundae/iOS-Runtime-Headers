@@ -4,13 +4,11 @@
 
 @interface VUICollectionViewFeaturedCell : UICollectionViewCell {
     VUICollectionViewFeaturedView * _featuredView;
-    VUIButton * _focusableButton;
     TVImageLayout * _imageLayout;
     IKViewElement * _viewElement;
 }
 
 @property (nonatomic, retain) VUICollectionViewFeaturedView *featuredView;
-@property (nonatomic, retain) VUIButton *focusableButton;
 @property (nonatomic, retain) TVImageLayout *imageLayout;
 @property (nonatomic, retain) IKViewElement *viewElement;
 
@@ -19,11 +17,9 @@
 
 - (void).cxx_destruct;
 - (id)featuredView;
-- (id)focusableButton;
 - (id)imageLayout;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setFeaturedView:(id)arg1;
-- (void)setFocusableButton:(id)arg1;
 - (void)setImageLayout:(id)arg1;
 - (void)setViewElement:(id)arg1;
 - (id)viewElement;

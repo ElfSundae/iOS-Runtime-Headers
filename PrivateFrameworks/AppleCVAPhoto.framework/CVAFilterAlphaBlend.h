@@ -14,7 +14,7 @@
 - (void).cxx_destruct;
 - (void)alphaBlendPixelBuffer:(struct RetainPtr<__CVBuffer *> { void *x1; })arg1 inPixelBufferSecond:(struct RetainPtr<__CVBuffer *> { void *x1; })arg2 outPixelBuffer:(struct RetainPtr<__CVBuffer *> { void *x1; })arg3 alpha:(float)arg4 callbackQueue:(id)arg5 callback:(id /* block */)arg6;
 - (void)encodeAlphaBlendToCommandBuffer:(id)arg1 inTexFirst:(id)arg2 inTexSecond:(id)arg3 outTex:(id)arg4 alpha:(float)arg5;
-- (struct pair<id<MTLTexture>, id<MTLTexture> > { id x1; })getTexturePlanesFromPixelBuffer:(struct __CVBuffer { }*)arg1 usage:(unsigned long long)arg2;
-- (id)initWithMetalContext:(struct CVAPhotoMetalContext { id x1; id x2; struct unique_ptr<CVAPerfEndTimeProfilerSet, std::__1::default_delete<CVAPerfEndTimeProfilerSet> > { struct __compressed_pair<CVAPerfEndTimeProfilerSet *, std::__1::default_delete<CVAPerfEndTimeProfilerSet> > { struct CVAPerfEndTimeProfilerSet {} *x_1_2_1; } x_3_1_1; } x3; bool x4; }*)arg1;
+- (struct pair<id<MTLTexture>, id<MTLTexture> > { id x1; id x2; })getTexturePlanesFromPixelBuffer:(struct __CVBuffer { }*)arg1 usage:(unsigned long long)arg2;
+- (id)initWithMetalContext:(struct CVAPhotoMetalContext { id x1; id x2; id x3; id x4; struct unique_ptr<CVAPerfEndTimeProfilerSet, std::__1::default_delete<CVAPerfEndTimeProfilerSet> > { struct __compressed_pair<CVAPerfEndTimeProfilerSet *, std::__1::default_delete<CVAPerfEndTimeProfilerSet> > { struct CVAPerfEndTimeProfilerSet {} *x_1_2_1; } x_5_1_1; } x5; bool x6; }*)arg1;
 
 @end

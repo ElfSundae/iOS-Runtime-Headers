@@ -2,10 +2,12 @@
    Image: /System/Library/PrivateFrameworks/MaterialKit.framework/MaterialKit
  */
 
-@interface MTLumaDodgePillSettings : _UISettings {
+@interface MTLumaDodgePillSettings : PTSettings {
     MTLumaDodgePillStyleSettings * _blackSettings;
     double  _brightLumaThreshold;
     double  _colorAddWhiteness;
+    long long  _cornerMask;
+    double  _cornerRadius;
     double  _darkLumaThreshold;
     double  _edgeSpacing;
     MTLumaDodgePillStyleSettings * _graySettings;
@@ -21,6 +23,8 @@
 @property (nonatomic, retain) MTLumaDodgePillStyleSettings *blackSettings;
 @property (nonatomic) double brightLumaThreshold;
 @property (nonatomic) double colorAddWhiteness;
+@property (nonatomic) long long cornerMask;
+@property (nonatomic) double cornerRadius;
 @property (nonatomic) double darkLumaThreshold;
 @property (nonatomic) double edgeSpacing;
 @property (nonatomic, retain) MTLumaDodgePillStyleSettings *graySettings;
@@ -39,6 +43,8 @@
 - (id)blackSettings;
 - (double)brightLumaThreshold;
 - (double)colorAddWhiteness;
+- (long long)cornerMask;
+- (double)cornerRadius;
 - (double)darkLumaThreshold;
 - (double)edgeSpacing;
 - (id)graySettings;
@@ -50,6 +56,8 @@
 - (void)setBlackSettings:(id)arg1;
 - (void)setBrightLumaThreshold:(double)arg1;
 - (void)setColorAddWhiteness:(double)arg1;
+- (void)setCornerMask:(long long)arg1;
+- (void)setCornerRadius:(double)arg1;
 - (void)setDarkLumaThreshold:(double)arg1;
 - (void)setDefaultValues;
 - (void)setEdgeSpacing:(double)arg1;
@@ -62,7 +70,6 @@
 - (void)setThinSettings:(id)arg1;
 - (void)setWhiteSettings:(id)arg1;
 - (id)thinSettings;
-- (void)updateWithSettingsFromArchive:(id)arg1;
 - (id)whiteSettings;
 
 @end

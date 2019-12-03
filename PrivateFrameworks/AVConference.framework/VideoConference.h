@@ -9,11 +9,11 @@
     int  _deviceRole;
     VCAudioPowerSpectrumSource * _inputAudioPowerSpectrumSource;
     long long  _inputAudioPowerSpectrumToken;
-    FFTMeter * _inputFFTMeter;
+    struct opaqueVCFFTMeter { } * _inputFFTMeter;
     bool  _isWarmedUp;
     VCAudioPowerSpectrumSource * _outputAudioPowerSpectrumSource;
     long long  _outputAudioPowerSpectrumToken;
-    FFTMeter * _outputFFTMeter;
+    struct opaqueVCFFTMeter { } * _outputFFTMeter;
     VCAudioPowerLevelMonitor * _remoteAudioPowerLevelMonitor;
     struct opaqueVCAudioBufferList { } * _sinkBuffer;
     struct opaqueVCAudioBufferList { } * _sinkBufferMix;
@@ -181,7 +181,7 @@
 - (void)cleanupSession:(id)arg1 withDelay:(unsigned long long)arg2;
 - (id)clientCaptureRule;
 - (id)conferenceCaptureRule;
-- (bool)conferenceMatchesSourceDestinationInfo:(struct tagVCSourceDestinationInfo { int x1; union { struct { struct tagIPPORT { int x_1_3_1; BOOL x_1_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_1_3_3; unsigned short x_1_3_4; } x_1_2_1; struct tagIPPORT { int x_2_3_1; BOOL x_2_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_2_3_3; unsigned short x_2_3_4; } x_1_2_2; struct { bool x_3_3_1; unsigned short x_3_3_2; } x_1_2_3; } x_2_1_1; struct { int x_2_2_1; struct tagIPPORT { int x_2_3_1; BOOL x_2_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_2_3_3; unsigned short x_2_3_4; } x_2_2_2; } x_2_1_2; struct { unsigned int x_3_2_1; struct { BOOL x_2_3_1; unsigned short x_2_3_2; unsigned short x_2_3_3; unsigned char x_2_3_4; } x_3_2_2; } x_2_1_3; } x2; struct tagVCSourceDestinationInfo {} *x3; }*)arg1;
+- (bool)conferenceMatchesSourceDestinationInfo:(struct tagVCSourceDestinationInfo { int x1; union { struct { struct tagIPPORT { int x_1_3_1; BOOL x_1_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_1_3_3; unsigned short x_1_3_4; } x_1_2_1; struct tagIPPORT { int x_2_3_1; BOOL x_2_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_2_3_3; unsigned short x_2_3_4; } x_1_2_2; struct { bool x_3_3_1; unsigned short x_3_3_2; } x_1_2_3; } x_2_1_1; struct { int x_2_2_1; struct tagIPPORT { int x_2_3_1; BOOL x_2_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_2_3_3; unsigned short x_2_3_4; } x_2_2_2; } x_2_1_2; struct { unsigned int x_3_2_1; struct { BOOL x_2_3_1; unsigned short x_2_3_2; unsigned short x_2_3_3; unsigned char x_2_3_4; } x_3_2_2; } x_2_1_3; struct { id x_4_2_1; } x_2_1_4; } x2; struct tagVCSourceDestinationInfo {} *x3; void *x4; }*)arg1;
 - (int)conferenceOperatingMode;
 - (float)conferenceVolume;
 - (void)connectionBlobForParticipantID:(id)arg1 callID:(unsigned int)arg2 block:(id /* block */)arg3 queue:(id)arg4 caller:(id)arg5;
@@ -197,6 +197,7 @@
 - (void)didReceiveCaptions:(id)arg1 remoteClient:(unsigned int)arg2;
 - (void)didResumeAudioIO:(id)arg1;
 - (void)didSuspendAudioIO:(id)arg1;
+- (void)didUpdateBasebandCodec:(const struct _VCRemoteCodecInfo { unsigned int x1; double x2; }*)arg1;
 - (bool)disableVAD;
 - (int)downstreamBandwidth;
 - (void)forceNoICE:(bool)arg1;
@@ -207,6 +208,7 @@
 - (bool)hasSessionWaitingForSIPInvite;
 - (id)initWithClientPid:(int)arg1;
 - (unsigned int)initializeNewCallWithDeviceRole:(int)arg1;
+- (unsigned int)initializeNewCallWithDeviceRole:(int)arg1 reportingHierarchyToken:(id)arg2;
 - (bool)initiateResolutionChangeToWidth:(int)arg1 height:(int)arg2 rate:(int)arg3;
 - (long long)inputAudioPowerSpectrumToken;
 - (float)inputMeterLevel;
@@ -233,12 +235,12 @@
 - (bool)matchesCallID:(unsigned int)arg1;
 - (bool)matchesOpenSessionForParticipantID:(id)arg1;
 - (bool)matchesParticipantID:(id)arg1;
-- (void)moments:(id)arg1 shouldProcessRequest:(id)arg2;
+- (void)moments:(id)arg1 shouldProcessRequest:(id)arg2 recipientID:(id)arg3;
 - (unsigned int)momentsCapabilitiesWithNegotiationBlobMomentsSettings_Capabilities:(int)arg1;
 - (int)natType;
 - (int)natTypeForCallSessions:(const char *)arg1;
 - (double)networkQualityForCallID:(unsigned int)arg1;
-- (id)newSessionWithDeviceRole:(int)arg1;
+- (id)newSessionWithDeviceRole:(int)arg1 reportingHierarchyToken:(id)arg2;
 - (void)notifyDelegateOfLocalVariablesChange;
 - (bool)onCaptureFrame:(struct opaqueCMSampleBuffer { }*)arg1 frameTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2 droppedFrames:(int)arg3 cameraStatusBits:(unsigned char)arg4;
 - (id)openSessionForParticipant:(id)arg1;
@@ -298,7 +300,7 @@
 - (void)session:(id)arg1 remoteCallingModeChanged:(unsigned int)arg2 withCallID:(unsigned int)arg3;
 - (void)session:(id)arg1 remoteMediaStalled:(bool)arg2;
 - (void)session:(id)arg1 sendRelayResponse:(id)arg2;
-- (void)session:(id)arg1 setMomentsCapabilities:(int)arg2;
+- (void)session:(id)arg1 setMomentsCapabilities:(int)arg2 imageType:(int)arg3 videoCodec:(int)arg4;
 - (void)session:(id)arg1 setRemoteBasebandCodecType:(unsigned int)arg2 sampleRate:(double)arg3;
 - (void)session:(id)arg1 startAudioWithFarEndVersionInfo:(struct VoiceIOFarEndVersionInfo { unsigned char x1[64]; unsigned char x2[64]; unsigned int x3; }*)arg2 internalFormat:(struct AudioStreamBasicDescription { double x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; })arg3 internalSamplesPerFrame:(unsigned int)arg4 completionHandler:(id /* block */)arg5;
 - (bool)session:(id)arg1 startVideoReceive:(id*)arg2;
@@ -309,7 +311,7 @@
 - (void)session:(id)arg1 withCallID:(unsigned int)arg2 videoIsDegraded:(bool)arg3 isRemote:(bool)arg4;
 - (id)sessionForIncomingParticipantID:(id)arg1;
 - (id)sessionForParticipantID:(id)arg1;
-- (id)sessionForSourceDestinationInfo:(struct tagVCSourceDestinationInfo { int x1; union { struct { struct tagIPPORT { int x_1_3_1; BOOL x_1_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_1_3_3; unsigned short x_1_3_4; } x_1_2_1; struct tagIPPORT { int x_2_3_1; BOOL x_2_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_2_3_3; unsigned short x_2_3_4; } x_1_2_2; struct { bool x_3_3_1; unsigned short x_3_3_2; } x_1_2_3; } x_2_1_1; struct { int x_2_2_1; struct tagIPPORT { int x_2_3_1; BOOL x_2_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_2_3_3; unsigned short x_2_3_4; } x_2_2_2; } x_2_1_2; struct { unsigned int x_3_2_1; struct { BOOL x_2_3_1; unsigned short x_2_3_2; unsigned short x_2_3_3; unsigned char x_2_3_4; } x_3_2_2; } x_2_1_3; } x2; struct tagVCSourceDestinationInfo {} *x3; }*)arg1;
+- (id)sessionForSourceDestinationInfo:(struct tagVCSourceDestinationInfo { int x1; union { struct { struct tagIPPORT { int x_1_3_1; BOOL x_1_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_1_3_3; unsigned short x_1_3_4; } x_1_2_1; struct tagIPPORT { int x_2_3_1; BOOL x_2_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_2_3_3; unsigned short x_2_3_4; } x_1_2_2; struct { bool x_3_3_1; unsigned short x_3_3_2; } x_1_2_3; } x_2_1_1; struct { int x_2_2_1; struct tagIPPORT { int x_2_3_1; BOOL x_2_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_2_3_3; unsigned short x_2_3_4; } x_2_2_2; } x_2_1_2; struct { unsigned int x_3_2_1; struct { BOOL x_2_3_1; unsigned short x_2_3_2; unsigned short x_2_3_3; unsigned char x_2_3_4; } x_3_2_2; } x_2_1_3; struct { id x_4_2_1; } x_2_1_4; } x2; struct tagVCSourceDestinationInfo {} *x3; void *x4; }*)arg1;
 - (bool)setActive:(bool)arg1;
 - (void)setBWEOptions:(bool)arg1 UseNewBWEMode:(bool)arg2 FakeLargeFrameMode:(bool)arg3 ProbingSenderLog:(bool)arg4;
 - (void)setCallReport:(unsigned int)arg1 withReport:(id)arg2;

@@ -10,8 +10,8 @@
 
 + (id)textBox;
 
+- (void).cxx_destruct;
 - (id)alignmentInfo;
-- (void)dealloc;
 - (id)description;
 - (id)protection;
 - (void)setAlignmentInfo:(id)arg1;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
  */
 
-@interface HMDMediaSystemSymptomHandler : HMFObject <HMDHomeMessageReceiver, HMFLogging, NSSecureCoding> {
+@interface HMDMediaSystemSymptomHandler : HMFObject <HMFLogging, NSSecureCoding> {
     struct NSDictionary { Class x1; } * _currentSymptoms;
     HMDMediaSystem * _mediaSystem;
     HMFMessageDispatcher * _msgDispatcher;
@@ -10,21 +10,17 @@
     NSObject<OS_dispatch_queue> * _workQueue;
 }
 
-@property (nonatomic, retain) NSDictionary *currentSymptoms;
+@property (nonatomic, copy) NSDictionary *currentSymptoms;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) HMDMediaSystem *mediaSystem;
 @property (nonatomic, readonly) NSSet *mergedSymptoms;
-@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *messageReceiveQueue;
-@property (readonly, copy) NSSet *messageReceiverChildren;
-@property (nonatomic, readonly) NSUUID *messageTargetUUID;
 @property (nonatomic, retain) HMFMessageDispatcher *msgDispatcher;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSUUID *uuid;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *workQueue;
 
-+ (bool)hasMessageReceiverChildren;
 + (id)logCategory;
 + (bool)supportsSecureCoding;
 
@@ -43,8 +39,6 @@
 - (id)logIdentifier;
 - (id)mediaSystem;
 - (id)mergedSymptoms;
-- (id)messageReceiveQueue;
-- (id)messageTargetUUID;
 - (id)msgDispatcher;
 - (void)refreshCurrentDeviceSymptoms;
 - (void)setCurrentSymptoms:(struct NSDictionary { Class x1; }*)arg1;

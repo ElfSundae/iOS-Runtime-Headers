@@ -4,9 +4,9 @@
 
 @interface GEOStyleAttribute : PBCodable <NSCopying> {
     struct { 
-        unsigned int key : 1; 
-        unsigned int value : 1; 
-    }  _has;
+        unsigned int has_key : 1; 
+        unsigned int has_value : 1; 
+    }  _flags;
     unsigned int  _key;
     PBUnknownFields * _unknownFields;
     unsigned int  _value;
@@ -18,7 +18,10 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic) unsigned int value;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -29,6 +32,7 @@
 - (bool)isEqual:(id)arg1;
 - (unsigned int)key;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasKey:(bool)arg1;
 - (void)setHasValue:(bool)arg1;

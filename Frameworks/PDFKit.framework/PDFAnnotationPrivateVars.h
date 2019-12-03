@@ -19,7 +19,7 @@
         double x; 
         double y; 
     }  endPoint;
-    bool  export;
+    NSMutableDictionary * internalPDFAnnotationDictionary;
     bool  isFullyConstructed;
     bool  isHighlighted;
     bool  isSelected;
@@ -38,6 +38,7 @@
     bool  popupDrawCloseWidget;
     bool  popupDrawText;
     NSArray * quadPoints;
+    NSIndexSet * quadPointsIndexSet;
     bool  restoreLinePoints;
     bool  restoreQuadPoints;
     struct CGPDFForm { } * rolloverAppearance;
@@ -45,6 +46,7 @@
     bool  saveAppearance;
     double  scaleFactor;
     bool  shouldBurnIn;
+    bool  shouldExport;
     struct CGPDFDictionary { } * sourceDictionary;
     struct CGPoint { 
         double x; 

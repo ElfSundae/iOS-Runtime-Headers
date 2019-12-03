@@ -5,22 +5,33 @@
 
 @required
 
-- (bool)answered;
+- (<ECMailAccount> *)account;
+- (NSArray *)bcc;
+- (NSString *)bestAlternativePart:(bool*)arg1;
+- (<ECMimePart> *)bodyPart;
 - (NSArray *)cc;
 - (long long)conversationID;
-- (bool)conversationMuted;
-- (bool)conversationVIP;
 - (NSDate *)dateReceived;
-- (bool)flagged;
+- (NSDate *)dateSent;
+- (NSUUID *)documentID;
+- (ECMessageFlags *)flags;
 - (NSArray *)from;
-- (bool)junk;
+- (<ECMessageHeaders> *)headers;
+- (NSDictionary *)headersDictionary;
+- (bool)isPartOfExistingThread;
+- (bool)isServerSearchResult;
+- (NSSet *)labels;
+- (ECAngleBracketIDHash *)listIDHash;
 - (NSArray *)listUnsubscribe;
 - (<ECMailbox> *)mailbox;
-- (<ECMimePart> *)messageBody;
+- (NSString *)messageIDHeader;
+- (ECAngleBracketIDHash *)messageIDHeaderHash;
+- (unsigned long long)numberOfAttachments;
 - (NSString *)persistentID;
+- (NSArray *)references;
 - (NSString *)remoteID;
-- (bool)senderVIP;
-- (NSString *)subject;
+- (NSArray *)senders;
+- (ECSubject *)subject;
 - (NSArray *)to;
 
 @end

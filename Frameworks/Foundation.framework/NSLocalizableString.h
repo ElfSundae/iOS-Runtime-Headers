@@ -11,6 +11,7 @@
 @property (readonly, copy) NSString *stringsFileKey;
 
 + (id)localizableStringWithStringsFileKey:(id)arg1 developmentLanguageString:(id)arg2;
++ (bool)supportsSecureCoding;
 
 - (id)awakeAfterUsingCoder:(id)arg1;
 - (unsigned short)characterAtIndex:(unsigned long long)arg1;

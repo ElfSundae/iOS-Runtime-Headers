@@ -22,5 +22,6 @@
 - (bool)shouldRespondToInitialPassDescription;
 - (void)startPassAnalysis;
 - (long long)status;
+- (void)stopRequestingMediaData;
 
 @end

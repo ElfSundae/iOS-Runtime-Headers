@@ -14,13 +14,12 @@
     PETScalarEventTracker * _heroAppSuggestion;
     PETScalarEventTracker * _mmAppSuggestion;
     NSString * _mostRecentNowPlayingApp;
-    RTPredictedApplication * _mostRecentNowPlayingPrediction;
-    RTPredictedApplication * _mostRecentPrediction;
+    PMMPredictionItem * _mostRecentNowPlayingPrediction;
+    PMMPredictionItem * _mostRecentPrediction;
     PMMMusicStateProcessor * _musicStateProcessor;
     PMMAppsSettingsMonitor * _myAppsSettingsMonitor;
     NSObject<OS_dispatch_queue> * _nowPlayingStatusQueue;
     NSObject<OS_dispatch_queue> * _queue;
-    RTRoutineManager * _routineManager;
     bool  _unlockedSinceBoot;
 }
 
@@ -36,13 +35,12 @@
 @property (nonatomic, retain) PETScalarEventTracker *heroAppSuggestion;
 @property (nonatomic, retain) PETScalarEventTracker *mmAppSuggestion;
 @property (nonatomic, retain) NSString *mostRecentNowPlayingApp;
-@property (nonatomic, retain) RTPredictedApplication *mostRecentNowPlayingPrediction;
-@property (nonatomic, retain) RTPredictedApplication *mostRecentPrediction;
+@property (nonatomic, retain) PMMPredictionItem *mostRecentNowPlayingPrediction;
+@property (nonatomic, retain) PMMPredictionItem *mostRecentPrediction;
 @property (nonatomic, retain) PMMMusicStateProcessor *musicStateProcessor;
 @property (nonatomic, retain) PMMAppsSettingsMonitor *myAppsSettingsMonitor;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *nowPlayingStatusQueue;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *queue;
-@property (nonatomic, retain) RTRoutineManager *routineManager;
 @property (readonly) Class superclass;
 @property (nonatomic) bool unlockedSinceBoot;
 
@@ -53,10 +51,12 @@
 + (bool)_predictionPopulatesStark:(id)arg1;
 + (bool)bundleSupportsINPlayMediaIntentForBundleId:(id)arg1 fromUnitTest:(bool)arg2;
 + (id)getHighestConfidencePredictionForNowPlayingConsumerFromPredictions:(id)arg1 fromUnitTest:(bool)arg2;
++ (long long)pmmReasonToDECReason:(long long)arg1;
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
 - (void)_clearAllRecommendations;
+- (void)_clearAllRecommendationsExceptAppPredictions;
 - (void)_handleNowPlayingInfoDidChange;
 - (void)_notifyAppPredictionAboutMMUpdate:(id)arg1;
 - (id)_publishPredictionWithPredictedApplication:(id)arg1 fromUnitTest:(bool)arg2;
@@ -76,25 +76,21 @@
 - (void)fetchMediaRemoteNowPlayingApplicationBundleId:(id /* block */)arg1;
 - (void)fetchMediaRemoteNowPlayingApplicationPlaybackState:(id /* block */)arg1;
 - (void)handleNowPlayingInfoDidChange;
-- (void)handlePredictedApplications:(id)arg1 error:(id)arg2;
+- (void)handlePredictedApplications:(id)arg1;
 - (id)heroAppSuggestion;
 - (id)init;
 - (void)logPrediction:(id)arg1 predictionSource:(unsigned long long)arg2 mmReason:(long long)arg3 decReason:(long long)arg4 reasonSingle:(long long)arg5 reasonMetadata:(id)arg6;
-- (id)metadataForPredictionApplication:(id)arg1;
 - (id)mmAppSuggestion;
 - (id)mostRecentNowPlayingApp;
 - (id)mostRecentNowPlayingPrediction;
 - (id)mostRecentPrediction;
 - (id)musicStateProcessor;
 - (id)myAppsSettingsMonitor;
-- (id)notifyNonNowPlayingConsumersOfPredictionItem:(id)arg1 withPredictedApplication:(id)arg2;
-- (void)notifyNowPlayingConsumerOfPredictionItem:(id)arg1 withPredictedApplication:(id)arg2;
+- (id)notifyNonNowPlayingConsumersOfPredictionItem:(id)arg1;
+- (void)notifyNowPlayingConsumerOfPredictionItem:(id)arg1;
 - (id)nowPlayingStatusQueue;
 - (id)preprocessPrediction:(id)arg1 predictionSource:(unsigned long long)arg2 mmReason:(long long)arg3 decReason:(long long)arg4 reasonSingle:(long long)arg5 reasonMetadata:(id)arg6;
 - (id)queue;
-- (id)routineManager;
-- (long long)rtReasonToDECReason:(long long)arg1;
-- (long long)rtReasonToMMReason:(long long)arg1;
 - (void)setCtConnection:(id)arg1;
 - (void)setDataProtectionMonitor:(id)arg1;
 - (void)setDataProtectionStatus:(long long)arg1;
@@ -110,7 +106,6 @@
 - (void)setMyAppsSettingsMonitor:(id)arg1;
 - (void)setNowPlayingStatusQueue:(id)arg1;
 - (void)setQueue:(id)arg1;
-- (void)setRoutineManager:(id)arg1;
 - (void)setUnlockedSinceBoot:(bool)arg1;
 - (bool)unlockedSinceBoot;
 

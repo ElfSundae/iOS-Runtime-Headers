@@ -3,17 +3,20 @@
  */
 
 @interface MAMsuDownloadOptions : MADownloadOptions {
+    bool  _allowSameVersion;
     long long  _delayPeriod;
     NSString * _requestedProductVersion;
     bool  _supervised;
 }
 
+@property (nonatomic) bool allowSameVersion;
 @property (nonatomic) long long delayPeriod;
 @property (nonatomic, retain) NSString *requestedProductVersion;
 @property (nonatomic) bool supervised;
 
 + (bool)supportsSecureCoding;
 
+- (bool)allowSameVersion;
 - (void)dealloc;
 - (long long)delayPeriod;
 - (void)encodeWithCoder:(id)arg1;
@@ -21,6 +24,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)logOptions;
 - (id)requestedProductVersion;
+- (void)setAllowSameVersion:(bool)arg1;
 - (void)setDelayPeriod:(long long)arg1;
 - (void)setRequestedProductVersion:(id)arg1;
 - (void)setSupervised:(bool)arg1;

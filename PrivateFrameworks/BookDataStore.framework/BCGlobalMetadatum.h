@@ -20,8 +20,8 @@
 
 + (id)propertyIDKey;
 
-- (void)_configureFromMetadatum:(id)arg1;
-- (void)configureFromCloudData:(id)arg1;
+- (void)_configureFromMetadatum:(id)arg1 withMergers:(id)arg2;
+- (void)configureFromCloudData:(id)arg1 withMergers:(id)arg2;
 - (id)debugDescription;
 - (id)identifier;
 - (bool)isEqualExceptForDate:(id)arg1;

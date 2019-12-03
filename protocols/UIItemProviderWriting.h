@@ -11,6 +11,4 @@
 
 + (NSArray *)writableTypeIdentifiersForItemProvider;
 
-- (void)registerLoadHandlersToItemProvider:(UIItemProvider *)arg1;
-
 @end

@@ -10,7 +10,7 @@
     unsigned long long  _numberOfreachableMediaAccessory;
 }
 
-@property (nonatomic, retain) NSDate *date;
+@property (nonatomic, copy) NSDate *date;
 @property (nonatomic, retain) CLLocation *location;
 @property (nonatomic) unsigned long long numberOfReachableBTLEAccessory;
 @property (nonatomic) unsigned long long numberOfReachableIPAccessory;

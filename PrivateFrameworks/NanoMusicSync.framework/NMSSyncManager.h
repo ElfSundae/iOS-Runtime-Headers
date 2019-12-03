@@ -18,6 +18,7 @@
 + (id)_gizmoSyncStates;
 + (unsigned int)_mediaTypeForAssetType:(id)arg1;
 + (unsigned long long)_syncStateForProgressInfo:(id)arg1 session:(id)arg2;
++ (unsigned long long)_syncWaitingSubstateForProgressInfo:(id)arg1;
 + (id)sharedManager;
 
 - (void).cxx_destruct;
@@ -26,6 +27,7 @@
 - (unsigned long long)_aggregateAssetItemBytesAddedForMediaType:(unsigned int)arg1;
 - (id)_assetTypeForMediaType:(unsigned int)arg1;
 - (id)_defaultProgressInfoDict;
+- (id)_defaultSyncProgressInfoForAssetType:(id)arg1;
 - (unsigned long long)_estimatedAssetAggregateItemSizeInBytesWithQuery:(id)arg1;
 - (void)_handleSyncStateDidChangeNotification;
 - (void)_invokeOnMainThread:(id /* block */)arg1;
@@ -39,6 +41,7 @@
 - (id)_updateProgressInfoForAssetType:(id)arg1 assetItemsTotal:(long long)arg2 assetItemsSyncedForSyncSession:(long long)arg3 bytesToSyncTotal:(unsigned long long)arg4 bytesSyncedThisSyncSession:(unsigned long long)arg5;
 - (void)_updateSyncProgress;
 - (id)activeSyncSessionIdentifier;
+- (id)audiobooksProgressInfo;
 - (void)beginReceivingSyncProgressUpdates;
 - (void)dealloc;
 - (id)init;

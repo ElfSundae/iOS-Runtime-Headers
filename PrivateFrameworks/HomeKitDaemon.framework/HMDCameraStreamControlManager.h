@@ -6,7 +6,7 @@
     HMDAccessory * _accessory;
     <HMDCameraStreamControlManagerDelegate> * _delegate;
     NSObject<OS_dispatch_queue> * _delegateQueue;
-    HMDCameraSessionID * _sessionID;
+    HMDCameraStreamSessionID * _sessionID;
     NSNumber * _slotIdentifier;
     HMDService * _streamManagementService;
     HMDCameraStreamMetrics * _streamMetrics;
@@ -20,7 +20,7 @@
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *delegateQueue;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) HMDCameraSessionID *sessionID;
+@property (nonatomic, readonly) HMDCameraStreamSessionID *sessionID;
 @property (nonatomic, retain) NSNumber *slotIdentifier;
 @property (nonatomic, readonly) HMDService *streamManagementService;
 @property (nonatomic, readonly) HMDCameraStreamMetrics *streamMetrics;

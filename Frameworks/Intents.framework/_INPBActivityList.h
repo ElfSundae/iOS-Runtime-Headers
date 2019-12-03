@@ -3,11 +3,13 @@
  */
 
 @interface _INPBActivityList : PBCodable <NSCopying, NSSecureCoding, _INPBActivityList> {
+    bool  __encodeLegacyGloryData;
     NSArray * _activities;
     _INPBCondition * _condition;
     struct { }  _has;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic, copy) NSArray *activities;
 @property (nonatomic, readonly) unsigned long long activitiesCount;
 @property (nonatomic, retain) _INPBCondition *condition;
@@ -18,8 +20,11 @@
 @property (readonly) Class superclass;
 
 + (Class)activityType;
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)activities;
 - (unsigned long long)activitiesCount;
 - (id)activityAtIndex:(unsigned long long)arg1;
@@ -28,8 +33,10 @@
 - (id)condition;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasCondition;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setActivities:(id)arg1;

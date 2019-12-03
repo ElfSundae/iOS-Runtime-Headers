@@ -2,8 +2,9 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface UISegment : UIImageView {
+@interface UISegment : UIImageView <CAAnimationDelegate> {
     _UISegmentedControlAppearanceStorage * _appearanceStorage;
+    UIImageView * _backgroundView;
     NSString * _badgeValue;
     _UIBadgeView * _badgeView;
     long long  _barStyle;
@@ -18,7 +19,6 @@
     double  _requestedScaleFactor;
     unsigned long long  _rightSegmentState;
     struct { 
-        unsigned int style : 3; 
         unsigned int size : 2; 
         unsigned int selected : 1; 
         unsigned int highlighted : 1; 
@@ -30,7 +30,9 @@
         unsigned int wasSelected : 1; 
         unsigned int needsBackgroundAndContentViewUpdate : 1; 
         unsigned int usesAXTextSize : 1; 
+        unsigned int selectionIndicatorDragged : 1; 
     }  _segmentFlags;
+    UIImageView * _selectionImageView;
     double  _width;
 }
 
@@ -38,31 +40,40 @@
 @property (nonatomic, copy) NSString *badgeValue;
 @property (readonly) UIView *badgeView;
 @property int controlSize;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (getter=isMomentary) bool momentary;
+@property (nonatomic) unsigned int position;
 @property (nonatomic) double requestedScaleFactor;
 @property (getter=isSelected) bool selected;
+@property (readonly) Class superclass;
 
-+ (id)_backgroundImageWithStorage:(id)arg1 style:(long long)arg2 mini:(bool)arg3 state:(unsigned long long)arg4 position:(unsigned int)arg5 drawMode:(int*)arg6 defaultBlock:(id /* block */)arg7;
++ (id)_backgroundImageWithStorage:(id)arg1 mini:(bool)arg2 state:(unsigned long long)arg3 position:(unsigned int)arg4 drawMode:(unsigned int*)arg5 isCustom:(bool*)arg6 defaultBlock:(id /* block */)arg7;
 
 - (void).cxx_destruct;
 - (id)_attributedTextForState:(unsigned long long)arg1 selected:(bool)arg2;
 - (double)_barHeight;
+- (struct { double x1; double x2; })_baselineOffsetsAtSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)_commonSegmentInit;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_contentRectForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
-- (id)_currentOptionsStyleTextColor;
-- (id)_currentOptionsStyleTextShadowColor;
 - (id)_dividerImage;
 - (id)_dividerImageIsCustom:(bool*)arg1;
+- (id)_effectiveBackgroundTintColor;
+- (id)_effectiveBackgroundView;
 - (id)_effectiveContentView;
+- (bool)_effectiveDisableShadow;
+- (id)_effectiveSelectedSegmentTintColor;
 - (id)_encodableSubviews;
 - (id)_floatingContentView;
 - (void)_forceInfoDisplay;
 - (bool)_hasSelectedColor;
+- (struct CATransform3D { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; double x11; double x12; double x13; double x14; double x15; double x16; })_highlightSelectionInfoTransform;
 - (double)_idealWidth;
 - (id)_infoConstraints;
+- (void)_insertSelectionView;
 - (void)_invalidateInfoConstraints;
 - (bool)_isContainedInHostedFocusSystem;
-- (bool)_isInMiniBar;
 - (struct CGSize { double x1; double x2; })_maximumTextSize;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_paddingInsets;
 - (void)_populateArchivedSubviews:(id)arg1;
@@ -71,17 +82,23 @@
 - (id)_preferredConfigurationForFocusAnimation:(long long)arg1 inContext:(id)arg2;
 - (id)_segmentLabel;
 - (unsigned long long)_segmentState;
+- (Class)_segmentedControlClass;
 - (void)_setEnabledAppearance:(bool)arg1;
 - (void)_setHighlighted:(bool)arg1 animated:(bool)arg2;
 - (void)_setInfoConstraints:(id)arg1;
-- (bool)_shouldUsePadMomentaryAppearance;
+- (void)_setSelectionIndicatorDragged:(bool)arg1 animated:(bool)arg2;
+- (id)_stateTextAttibutes:(id)arg1 segmentState:(unsigned long long)arg2;
 - (id)_tintColorArchivingKey;
 - (void)_updateBackgroundAndContentViews;
 - (void)_updateBackgroundAndContentViewsIfNeeded;
 - (void)_updateFloatingContentControlState:(unsigned long long)arg1 context:(id)arg2 withAnimationCoordinator:(id)arg3 animated:(bool)arg4;
+- (void)_updateHighlight;
+- (void)_updateSelectionIndicator;
+- (void)_updateSelectionToTransform:(struct CATransform3D { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; double x11; double x12; double x13; double x14; double x15; double x16; })arg1 infoTransform:(struct CATransform3D { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; double x11; double x12; double x13; double x14; double x15; double x16; })arg2 hideSelection:(bool)arg3 shouldAnimate:(bool)arg4;
 - (void)_updateTextColors;
 - (void)animateAdd:(bool)arg1;
 - (void)animateRemoveForWidth:(double)arg1;
+- (void)animationDidStop:(id)arg1 finished:(bool)arg2;
 - (id)badgeValue;
 - (id)badgeView;
 - (bool)canBecomeFocused;
@@ -95,14 +112,17 @@
 - (id)hitTest:(struct CGPoint { double x1; double x2; })arg1 forEvent:(struct __GSEvent { }*)arg2;
 - (id)hitTest:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithInfo:(id)arg1 style:(long long)arg2 size:(int)arg3 barStyle:(long long)arg4 tintColor:(id)arg5 appearanceStorage:(id)arg6 position:(unsigned int)arg7 autosizeText:(bool)arg8;
+- (id)initWithInfo:(id)arg1 size:(int)arg2 barStyle:(long long)arg3 tintColor:(id)arg4 appearanceStorage:(id)arg5 position:(unsigned int)arg6 autosizeText:(bool)arg7;
 - (void)insertDividerView;
 - (bool)isHighlighted;
 - (bool)isMomentary;
 - (bool)isSelected;
+- (bool)isSelectionIndicatorDragged;
 - (id)label;
 - (void)layoutSubviews;
 - (id)objectValue;
+- (unsigned int)position;
+- (void)removeFromSuperview;
 - (double)requestedScaleFactor;
 - (void)setAutosizeText:(bool)arg1;
 - (void)setBadgeValue:(id)arg1;
@@ -119,6 +139,8 @@
 - (void)setPosition:(unsigned int)arg1;
 - (void)setRequestedScaleFactor:(double)arg1;
 - (void)setSelected:(bool)arg1;
+- (void)setSelected:(bool)arg1 highlighted:(bool)arg2;
+- (void)setSelectionIndicatorDragged:(bool)arg1;
 - (void)setShowDivider:(bool)arg1;
 - (void)setTintColor:(id)arg1;
 - (void)setUsesAXTextSize:(bool)arg1;
@@ -128,7 +150,7 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateConstraints;
 - (void)updateDividerViewForChangedSegment:(id)arg1;
-- (void)updateForAppearance:(id)arg1 style:(int)arg2;
+- (void)updateForAppearance:(id)arg1;
 - (void)updateMasking;
 - (bool)useBlockyMagnificationInClassic;
 - (id)viewForLastBaselineLayout;

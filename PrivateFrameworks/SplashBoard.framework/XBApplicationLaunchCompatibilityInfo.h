@@ -6,6 +6,7 @@
     NSString * _bundleContainerPath;
     NSString * _bundleIdentifier;
     NSString * _bundlePath;
+    NSString * _defaultGroupIdentifier;
     XBLaunchInterface * _defaultInterface;
     NSArray * _launchInterfaces;
     bool  _launchesOpaque;
@@ -17,6 +18,7 @@
 @property (nonatomic, copy) NSString *bundleIdentifier;
 @property (nonatomic, copy) NSString *bundlePath;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic, copy) NSString *defaultGroupIdentifier;
 @property (nonatomic, readonly, copy) XBLaunchInterface *defaultLaunchInterface;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -34,6 +36,7 @@
 - (id)bundleContainerPath;
 - (id)bundleIdentifier;
 - (id)bundlePath;
+- (id)defaultGroupIdentifier;
 - (id)defaultLaunchInterface;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
@@ -49,6 +52,7 @@
 - (void)setBundleContainerPath:(id)arg1;
 - (void)setBundleIdentifier:(id)arg1;
 - (void)setBundlePath:(id)arg1;
+- (void)setDefaultGroupIdentifier:(id)arg1;
 - (void)setLaunchesOpaque:(bool)arg1;
 - (void)setSandboxPath:(id)arg1;
 

@@ -3,20 +3,21 @@
  */
 
 @interface STTextTangierCanvasViewController : TSWPiOSCanvasViewController {
-    NSArray * _installedGestureRecognizers;
+    bool  _selectionEnabled;
 }
 
-@property (nonatomic, readonly) NSArray *installedGestureRecognizers;
+@property (nonatomic) bool selectionEnabled;
 
-- (void).cxx_destruct;
 - (id)actionForHyperlink:(id)arg1 inRep:(id)arg2 gesture:(id)arg3;
-- (id)backgroundColorForMagnifier;
+- (bool)canBecomeFirstResponder;
+- (bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)dealloc;
-- (id)installedGestureRecognizers;
+- (void)interactionDidEnd:(id)arg1;
 - (bool)interactionShouldBegin:(id)arg1 atPoint:(struct CGPoint { double x1; double x2; })arg2;
-- (void)setUpGestureDependenciesWithScrollView:(id)arg1;
-- (void)setUpGestureRecognizers;
+- (void)loadView;
+- (void)selectAll:(id)arg1;
+- (bool)selectionEnabled;
+- (void)setSelectionEnabled:(bool)arg1;
 - (id)targetForAction:(SEL)arg1 withSender:(id)arg2;
-- (void)viewDidAppear:(bool)arg1;
 
 @end

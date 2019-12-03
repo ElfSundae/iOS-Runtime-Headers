@@ -33,7 +33,7 @@
 - (double)stiffness;
 - (double)velocity;
 
-// Image: /System/Library/PrivateFrameworks/LinkPresentation.framework/LinkPresentation
+// Image: /System/Library/Frameworks/LinkPresentation.framework/LinkPresentation
 
 + (id)_lp_springWithMass:(double)arg1 stiffness:(double)arg2 damping:(double)arg3;
 

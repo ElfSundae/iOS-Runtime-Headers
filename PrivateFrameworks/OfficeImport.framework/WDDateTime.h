@@ -2,18 +2,14 @@
    Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
  */
 
-@interface WDDateTime : WDRun {
+@interface WDDateTime : WDRunWithCharacterProperties {
     NSDate * mDate;
-    WDCharacterProperties * mProperties;
 }
 
-- (void)clearProperties;
+- (void).cxx_destruct;
 - (id)date;
-- (void)dealloc;
 - (id)description;
 - (id)initWithParagraph:(id)arg1 date:(id)arg2;
-- (id)properties;
 - (int)runType;
-- (void)setProperties:(id)arg1;
 
 @end

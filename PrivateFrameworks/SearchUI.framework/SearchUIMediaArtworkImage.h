@@ -14,8 +14,10 @@
 
 - (void).cxx_destruct;
 - (Class)classForCoder;
+- (unsigned long long)hash;
 - (id)initWithSFImage:(id)arg1;
 - (id)initWithSpotlightIdentifier:(id)arg1;
+- (bool)isEqual:(id)arg1;
 - (void)loadImageWithCompletionHandler:(id /* block */)arg1;
 - (long long)mediaEntityType;
 - (id)persistentID;

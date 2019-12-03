@@ -32,9 +32,9 @@
 - (id)repeatPreventionCleanupTimer;
 - (id)repeatPreventionRecords;
 - (void)resetRepeatPreventionHistory;
-- (id)sendProtobufData:(id)arg1 type:(unsigned long long)arg2 priority:(unsigned long long)arg3 repeatPreventionId:(id)arg4 shortTimeout:(bool)arg5 allowCloudDelivery:(bool)arg6;
-- (id)sendProtobufData:(id)arg1 type:(unsigned long long)arg2 priority:(unsigned long long)arg3 shortTimeout:(bool)arg4 allowCloudDelivery:(bool)arg5;
+- (id)sendProtobufData:(id)arg1 type:(unsigned long long)arg2 priority:(unsigned long long)arg3 repeatPreventionId:(id)arg4 timeoutCategory:(unsigned long long)arg5 allowCloudDelivery:(bool)arg6;
 - (id)sendProtobufData:(id)arg1 type:(unsigned long long)arg2 priority:(unsigned long long)arg3 timeout:(double)arg4 allowCloudDelivery:(bool)arg5;
+- (id)sendProtobufData:(id)arg1 type:(unsigned long long)arg2 priority:(unsigned long long)arg3 timeoutCategory:(unsigned long long)arg4 allowCloudDelivery:(bool)arg5;
 - (id)serviceQueue;
 - (id)serviceTransport;
 - (void)setIdsServiceName:(id)arg1;

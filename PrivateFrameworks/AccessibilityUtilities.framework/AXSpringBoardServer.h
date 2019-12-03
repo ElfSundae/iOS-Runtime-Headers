@@ -7,6 +7,7 @@
     NSMutableArray * _actionHandlers;
     id /* block */  _currentAlertHandler;
     NSMutableDictionary * _reachabilityHandlers;
+    bool  _shouldFocusNonExclusiveSystemUI;
 }
 
 @property (nonatomic, retain) AXAccessQueue *accessQueue;
@@ -15,7 +16,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool isGuidedAccessActive;
 @property (nonatomic, retain) NSMutableDictionary *reachabilityHandlers;
+@property (nonatomic) bool shouldFocusNonExclusiveSystemUI;
 @property (readonly) Class superclass;
 
 + (id)server;
@@ -33,7 +36,8 @@
 - (bool)_isSystemAppFrontmostExcludingSiri:(bool)arg1;
 - (void)_isSystemAppFrontmostExcludingSiri:(bool)arg1 completion:(id /* block */)arg2;
 - (id)_messageForMediaPlayingQueryForBundleID:(id)arg1;
-- (void)_sendRemoteViewIPCMessage:(long long)arg1 withRemoteViewType:(long long)arg2 withData:(id)arg3;
+- (id)_payloadForRemoteViewType:(long long)arg1 data:(id)arg2;
+- (void)_sendRemoteViewIPCMessage:(int)arg1 withRemoteViewType:(long long)arg2 withData:(id)arg3;
 - (id)_serviceName;
 - (bool)_shouldDispatchLocally;
 - (bool)_shouldValidateEntitlements;
@@ -56,7 +60,9 @@
 - (void)cleanupAlertHandler;
 - (void)copyStringToPasteboard:(id)arg1;
 - (id /* block */)currentAlertHandler;
+- (void)didPotentiallyDismissNonExclusiveSystemUI;
 - (void)dismissAppSwitcher;
+- (bool)dismissBuddyIfNecessary;
 - (bool)dismissSiri;
 - (id)focusedAppPID;
 - (id)focusedAppProcess;
@@ -67,12 +73,14 @@
 - (bool)hasActiveOrPendingCallOrFaceTime;
 - (void)hideAlert;
 - (void)hideNotificationCenter;
-- (void)hideRemoteView:(long long)arg1 withData:(id)arg2;
+- (void)hideRemoteView:(long long)arg1;
 - (id)init;
 - (id)installedApps;
 - (bool)isAppSwitcherVisible;
 - (bool)isControlCenterVisible;
+- (bool)isDarkModeActive;
 - (bool)isDockVisible;
+- (bool)isGuidedAccessActive;
 - (bool)isInspectorMinimized;
 - (bool)isMagnifierVisible;
 - (void)isMagnifierVisibleWithCompletion:(id /* block */)arg1;
@@ -81,6 +89,7 @@
 - (bool)isMediaPlayingForApp:(id)arg1;
 - (void)isMediaPlayingForApp:(id)arg1 completionHandler:(id /* block */)arg2;
 - (bool)isMultiTaskingActive;
+- (bool)isNonExclusiveSystemUIFocusable;
 - (bool)isNotificationCenterVisible;
 - (bool)isNotificationVisible;
 - (bool)isNowPlayingUIVisible;
@@ -94,12 +103,17 @@
 - (bool)isScreenSaverVisible;
 - (bool)isScreenshotWindowVisible;
 - (bool)isSettingsAppFrontmost;
+- (bool)isShowingAXAlert;
 - (bool)isShowingHomescreen;
+- (bool)isShowingNonSystemApp;
+- (bool)isShowingRemoteView:(long long)arg1;
 - (bool)isSideSwitchUsedForOrientation;
 - (bool)isSiriTalkingOrListening;
 - (bool)isSiriVisible;
 - (bool)isSoftwareUpdateUIVisible;
 - (bool)isSpeakThisTemporarilyDisabled;
+- (bool)isSpotlightVisible;
+- (bool)isStatusBarNativeFocusable;
 - (bool)isSyncingRestoringResettingOrUpdating;
 - (bool)isSystemAppFrontmost;
 - (void)isSystemAppFrontmost:(id /* block */)arg1;
@@ -113,8 +127,10 @@
 - (id)medusaApps;
 - (void)openAppSwitcher;
 - (void)openAssistiveTouchCustomGestureCreation;
+- (void)openCommandAndControlCommands;
+- (void)openCommandAndControlSettings;
+- (void)openCommandAndControlVocabulary;
 - (void)openSCATCustomGestureCreation;
-- (bool)openSiri;
 - (void)openVoiceControl;
 - (void)pauseMedia;
 - (void)pauseMediaForApp:(id)arg1;
@@ -143,6 +159,7 @@
 - (void)setAccessQueue:(id)arg1;
 - (void)setActionHandlers:(id)arg1;
 - (void)setCancelGestureActivation:(unsigned long long)arg1 cancelEnabled:(bool)arg2;
+- (void)setCaptionPanelContextId:(unsigned int)arg1;
 - (void)setCurrentAlertHandler:(id /* block */)arg1;
 - (void)setDockIconActivationMode:(unsigned long long)arg1;
 - (void)setHearingAidControlVisible:(bool)arg1;
@@ -151,23 +168,27 @@
 - (void)setReachabilityActive:(bool)arg1;
 - (void)setReachabilityEnabled:(bool)arg1;
 - (void)setReachabilityHandlers:(id)arg1;
+- (void)setShouldFocusNonExclusiveSystemUI:(bool)arg1;
 - (void)setShowSpeechPlaybackControls:(bool)arg1;
-- (void)setSiriIsTalking:(bool)arg1;
 - (void)setVolume:(double)arg1;
-- (void)showAlert:(long long)arg1 withHandler:(id /* block */)arg2;
-- (void)showAlert:(long long)arg1 withHandler:(id /* block */)arg2 withData:(id)arg3;
+- (bool)shouldFocusNonExclusiveSystemUI;
+- (void)showAlert:(int)arg1 withHandler:(id /* block */)arg2;
+- (void)showAlert:(int)arg1 withHandler:(id /* block */)arg2 withData:(id)arg3;
 - (bool)showControlCenter:(bool)arg1;
 - (void)showNotificationCenter;
 - (bool)showNotificationCenter:(bool)arg1;
 - (void)showRemoteView:(long long)arg1 withData:(id)arg2;
 - (void)simulateEdgePressHaptics;
+- (id)splashImageForAppWithBundleIdentifier:(id)arg1;
 - (void)startHearingAidServer;
 - (void)systemAppInfoWithQuery:(unsigned long long)arg1 completion:(id /* block */)arg2;
 - (void)takeScreenshot;
+- (bool)toggleDarkMode;
 - (void)toggleDock;
 - (bool)toggleIncomingCall;
 - (void)toggleNotificationCenter;
 - (void)toggleReachability;
+- (void)toggleSpotlight;
 - (int)topEventPidOverride;
 - (void)unlockDevice;
 - (void)userEventOccurred;

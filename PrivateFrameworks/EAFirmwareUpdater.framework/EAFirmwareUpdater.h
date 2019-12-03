@@ -9,6 +9,7 @@
     NSString * _bootloaderProtocol;
     NSArray * _buildIdentities;
     bool  _byteEscape;
+    bool  _closeEASession;
     NSNumber * _cumulativeBytesDownloaded;
     NSNumber * _cumulativeCloak;
     NSNumber * _cumulativeCloakTime;
@@ -20,9 +21,11 @@
     NSString * _deviceClass;
     NSDictionary * _deviceOptions;
     NSObject<OS_dispatch_queue> * _eaNotificationDispatchQueue;
+    bool  _excludeUniqueAccessoryCheck;
     NSString * _firmwareBundleFilename;
     NSURL * _firmwareBundleURL;
     bool  _firmwareUpdateComplete;
+    bool  _firmwareUpdateIsUrgent;
     NSString * _firmwareVersionAvailable;
     unsigned long long  _firmwareVersionMajor;
     unsigned long long  _firmwareVersionMinor;
@@ -41,6 +44,7 @@
     NSString * _multiAssetAppProtocol;
     NSString * _multiassetAppProtocol;
     NSMutableData * _outputData;
+    bool  _overrideProtocol;
     id /* block */  _personalizationRequestHandler;
     id /* block */  _progressHandler;
     NSString * _protocolString;
@@ -51,6 +55,7 @@
     EASession * _session;
     bool  _skipDFUMode;
     bool  _skipReconnect;
+    bool  _skipVersionCheck;
     NSNumber * _totalBytesForCompleteUpdate;
     NSString * _transportType;
     NSString * _updateBundleFilename;
@@ -63,6 +68,7 @@
 @property (nonatomic, retain) NSString *appProtocol;
 @property (nonatomic, copy) id /* block */ applyCompletion;
 @property (nonatomic, retain) NSString *bootloaderProtocol;
+@property (nonatomic) bool closeEASession;
 @property (nonatomic, retain) NSNumber *cumulativeCloak;
 @property (nonatomic, retain) NSNumber *cumulativeProgressPercent;
 @property (nonatomic, retain) NSNumber *cumulativeTimeTaken;
@@ -70,6 +76,7 @@
 @property (nonatomic, retain) NSNumber *currentSessionTimeTaken;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) bool excludeUniqueAccessoryCheck;
 @property (nonatomic, retain) NSString *firmwareBundleFilename;
 @property (nonatomic, retain) NSURL *firmwareBundleURL;
 @property (nonatomic, retain) NSString *firmwareVersionAvailable;
@@ -78,6 +85,7 @@
 @property (nonatomic) bool isMultiAssetSession;
 @property (nonatomic, copy) NSDictionary *manifestIDs;
 @property (nonatomic, retain) NSString *multiAssetAppProtocol;
+@property (nonatomic) bool overrideProtocol;
 @property (nonatomic, retain) NSString *protocolString;
 @property (nonatomic, retain) NSNumber *resumeCount;
 @property (nonatomic, retain) NSNumber *resumedFromPercentNum;
@@ -90,6 +98,8 @@
 + (id)appProtocolStringWithEAID:(id)arg1;
 + (id)bootloaderProtocolStringWithEAID:(id)arg1;
 + (id)findAccessoryWithProtocolString:(id)arg1 serialNum:(id)arg2;
++ (id)getEAFirmwareRevisionActive:(id)arg1 forProtocol:(id)arg2;
++ (id)getEAFirmwareRevisionPending:(id)arg1 forProtocol:(id)arg2;
 + (id)multiAssetAppProtocolStringWithEAID:(id)arg1;
 
 - (void)_accessoryDidConnect:(id)arg1;
@@ -100,6 +110,7 @@
 - (id)applyFirmware:(id /* block */)arg1 progress:(id /* block */)arg2 update:(id /* block */)arg3 personalization:(id /* block */)arg4;
 - (id)assetWithMaxVersion:(id)arg1;
 - (id)bootloaderProtocol;
+- (bool)closeEASession;
 - (void)closeSession;
 - (id)createEndOfUpdateEventDict:(id)arg1 error:(id)arg2;
 - (id)cumulativeCloak;
@@ -108,6 +119,7 @@
 - (id)currentFirmwareVersionOnAcc;
 - (id)currentSessionTimeTaken;
 - (void)dealloc;
+- (bool)excludeUniqueAccessoryCheck;
 - (bool)findAccessory;
 - (id)firmwareBundleFilename;
 - (id)firmwareBundleURL;
@@ -117,17 +129,20 @@
 - (bool)forceSilentUpdate;
 - (id)getDeviceClassName;
 - (unsigned char)getPersonalizationID;
+- (unsigned int)getWhitelistedPersonalizationFields;
 - (void)handleFirmwareUpdateStatus:(id)arg1;
 - (void)handleInputData;
 - (void)handleSessionError:(unsigned int)arg1 message:(id)arg2;
-- (id)initWithDeviceClass:(id)arg1 assetType:(id)arg2 skipDFU:(bool)arg3 byteEscape:(bool)arg4 skipReconnect:(bool)arg5 options:(id)arg6 serialNum:(id)arg7;
+- (id)initWithDeviceClass:(id)arg1 assetType:(id)arg2 skipDFU:(bool)arg3 byteEscape:(bool)arg4 skipReconnect:(bool)arg5 skipVersionCheck:(bool)arg6 options:(id)arg7 serialNum:(id)arg8;
 - (bool)isMultiAssetSession;
 - (bool)isRestartRequired;
+- (bool)isSleepWakeRequired;
+- (bool)isUrgentUpdate;
 - (void)logStatusString:(id)arg1;
 - (id)manifestIDs;
 - (id)multiAssetAppProtocol;
 - (id)openSession;
-- (id)overrideQueryPredicateFromDict:(id)arg1;
+- (bool)overrideProtocol;
 - (void)personalizationResponse:(id)arg1 error:(id)arg2;
 - (void)processPersonalizationInfoFromAccessory:(id)arg1;
 - (id)protocolString;
@@ -141,19 +156,23 @@
 - (void)setAppProtocol:(id)arg1;
 - (void)setApplyCompletion:(id /* block */)arg1;
 - (void)setBootloaderProtocol:(id)arg1;
+- (void)setCloseEASession:(bool)arg1;
 - (void)setCumulativeCloak:(id)arg1;
 - (void)setCumulativeProgressPercent:(id)arg1;
 - (void)setCumulativeTimeTaken:(id)arg1;
 - (void)setCurrentFirmwareVersionOnAcc:(id)arg1;
 - (void)setCurrentSessionTimeTaken:(id)arg1;
+- (void)setExcludeUniqueAccessoryCheck:(bool)arg1;
 - (void)setFirmwareBundle:(id)arg1 withManifest:(id)arg2;
 - (void)setFirmwareBundleFilename:(id)arg1;
 - (void)setFirmwareBundleURL:(id)arg1;
+- (void)setFirmwareImage:(id)arg1;
 - (void)setFirmwareVersionAvailable:(id)arg1;
 - (void)setForceSilentUpdate:(bool)arg1;
 - (void)setIsMultiAssetSession:(bool)arg1;
 - (void)setManifestIDs:(id)arg1;
 - (void)setMultiAssetAppProtocol:(id)arg1;
+- (void)setOverrideProtocol:(bool)arg1;
 - (void)setProtocolString:(id)arg1;
 - (void)setResumeCount:(id)arg1;
 - (void)setResumedFromPercentNum:(id)arg1;
@@ -171,6 +190,7 @@
 - (void)updateComplete:(id)arg1 error:(id)arg2;
 - (void)updateProgress:(double)arg1;
 - (bool)updateRequiresPersonalization;
+- (bool)updateRequiresSuperBinary;
 - (id)validateAsset;
 - (id)validateAssetAttributes:(id)arg1;
 - (id)writeData:(id)arg1;

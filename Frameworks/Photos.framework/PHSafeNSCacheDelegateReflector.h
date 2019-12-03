@@ -4,7 +4,9 @@
 
 @interface PHSafeNSCacheDelegateReflector : NSObject <NSCacheDelegate> {
     NSMapTable * _delegegatesByCache;
-    NSLock * _lock;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _lock;
 }
 
 @property (readonly, copy) NSString *debugDescription;

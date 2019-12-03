@@ -30,6 +30,12 @@
             double height; 
         } size; 
     }  _initialBounds;
+    struct UIEdgeInsets { 
+        double top; 
+        double left; 
+        double bottom; 
+        double right; 
+    }  _initialLayoutMargins;
     NSObject<OS_dispatch_queue> * _remoteViewControllerProxyQueue;
     bool  _snapshotTimestampsEnabled;
     UIScrollViewDelayedTouchesBeganGestureRecognizer * _touchDelayGestureRecognizer;
@@ -45,6 +51,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (getter=_initialLayoutMargins, setter=_setInitialLayoutMargins:, nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } initialLayoutMargins;
 @property (readonly) Class superclass;
 @property (getter=_visibilityState, setter=_setVisibilityState:, nonatomic) long long visibilityState;
 @property (getter=_widgetIdentifier, nonatomic, copy) NSString *widgetIdentifier;
@@ -60,6 +67,7 @@
 - (void)__requestEncodedLayerTreeToURL:(id)arg1 withCodingImageFormat:(id)arg2 withReplyHandler:(id /* block */)arg3;
 - (void)__setActiveDisplayMode:(long long)arg1;
 - (void)__setMaximumSize:(struct CGSize { double x1; double x2; })arg1 forDisplayMode:(long long)arg2;
+- (void)__updateLayoutMargins:(id)arg1;
 - (void)__updateVisibilityState:(long long)arg1;
 - (void)__updateVisibleFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 withReplyHandler:(id /* block */)arg2;
 - (long long)_clientLargestSupportedDisplayMode;
@@ -75,6 +83,7 @@
 - (double)_effectiveHeightForRequestedHeight:(double)arg1;
 - (void)_encodeLayerTreeToURL:(id)arg1 withCodingImageFormat:(id)arg2 withReplyHandler:(id /* block */)arg3;
 - (void)_enqueueProxyRequest:(id /* block */)arg1;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_initialLayoutMargins;
 - (void)_notifyContentProvidingViewControllerOfActiveDisplayModeChange;
 - (void)_performUpdateWithCompletionHandler:(id /* block */)arg1;
 - (void)_processInputItems:(id)arg1 initialActiveDisplayMode:(long long*)arg2;
@@ -84,6 +93,7 @@
 - (void)_setClientMarginInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)_setContentProvidingViewController:(id)arg1;
 - (void)_setContentView:(id)arg1;
+- (void)_setInitialLayoutMargins:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)_setMaximumWidth:(double)arg1 forDisplayMode:(long long)arg2;
 - (void)_setVisibilityState:(long long)arg1;
 - (void)_setVisibilityState:(long long)arg1 force:(bool)arg2;

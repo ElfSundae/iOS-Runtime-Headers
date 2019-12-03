@@ -4,9 +4,9 @@
 
 @interface GEOLogMsgStatePairedDevice : PBCodable <NSCopying> {
     struct { 
-        unsigned int type : 1; 
-        unsigned int isConnected : 1; 
-    }  _has;
+        unsigned int has_type : 1; 
+        unsigned int has_isConnected : 1; 
+    }  _flags;
     bool  _isConnected;
     GEOLogMsgStateDeviceIdentifier * _pairedDeviceIdentifier;
     int  _type;
@@ -18,6 +18,8 @@
 @property (nonatomic) bool isConnected;
 @property (nonatomic, retain) GEOLogMsgStateDeviceIdentifier *pairedDeviceIdentifier;
 @property (nonatomic) int type;
+
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
@@ -33,6 +35,7 @@
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)pairedDeviceIdentifier;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasIsConnected:(bool)arg1;
 - (void)setHasType:(bool)arg1;

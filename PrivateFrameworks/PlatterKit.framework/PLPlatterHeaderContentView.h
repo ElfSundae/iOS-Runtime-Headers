@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PlatterKit.framework/PlatterKit
  */
 
-@interface PLPlatterHeaderContentView : UIView <BSUIDateLabelDelegate, MTVibrantStylingProviderObserving, MTVibrantStylingRequiring, PLContentSizeCategoryAdjusting> {
+@interface PLPlatterHeaderContentView : UIView <BSUIDateLabelDelegate, MTVisualStylingRequiring, PLContentSizeCategoryAdjusting> {
     bool  _adjustsFontForContentSizeCategory;
     NSDate * _date;
     bool  _dateAllDay;
@@ -11,7 +11,6 @@
     BSUIFontProvider * _fontProvider;
     bool  _hasUpdatedContent;
     bool  _heedsHorizontalLayoutMargins;
-    UIImageView * _iconButtonShadow;
     NSArray * _iconButtons;
     PLPlatterHeaderContentViewLayoutManager * _layoutManager;
     NSString * _preferredContentSizeCategory;
@@ -21,7 +20,7 @@
     UIButton * _utilityButton;
     double  _utilityButtonHorizontalLayoutReference;
     UIView * _utilityView;
-    MTVibrantStylingProvider * _vibrantStylingProvider;
+    MTVisualStylingProvider * _visualStylingProvider;
 }
 
 @property (nonatomic) bool adjustsFontForContentSizeCategory;
@@ -42,6 +41,7 @@
 @property (getter=_iconTrailingPadding, nonatomic, readonly) double iconTrailingPadding;
 @property (nonatomic, copy) NSArray *icons;
 @property (nonatomic, copy) NSString *preferredContentSizeCategory;
+@property (nonatomic, readonly, copy) NSArray *requiredVisualStyleCategories;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSTimeZone *timeZone;
 @property (nonatomic, copy) NSString *title;
@@ -52,12 +52,15 @@
 @property (nonatomic, readonly) UIButton *utilityButton;
 @property (getter=_utilityButtonHorizontalLayoutReference, setter=_setUtilityButtonHorizontalLayoutReference:, nonatomic) double utilityButtonHorizontalLayoutReference;
 @property (nonatomic, retain) UIView *utilityView;
-@property (nonatomic, retain) MTVibrantStylingProvider *vibrantStylingProvider;
+
++ (id)_titleLabelFontFromFontProvider:(id)arg1;
++ (double)contentBaselineToBoundsBottomWithWidth:(double)arg1 scale:(double)arg2;
 
 - (void).cxx_destruct;
 - (id)_attributedStringForTitle:(id)arg1;
 - (void)_configureDateLabel;
 - (void)_configureDateLabelIfNecessary;
+- (void)_configureIconButton:(id)arg1 withIcon:(id)arg2;
 - (void)_configureIconButtonsForIcons:(id)arg1;
 - (void)_configureTitleLabel:(id)arg1;
 - (void)_configureUtilityButton;
@@ -93,7 +96,7 @@
 - (void)_updateTextAttributesForTitleLabel:(id)arg1;
 - (id)_updateTitleAttributesForAttributedString:(id)arg1;
 - (void)_updateUtilityButtonFont;
-- (void)_updateUtilityButtonVibrantStyling;
+- (void)_updateUtilityButtonVisualStyling;
 - (bool)_usesLargeTextLayout;
 - (id)_utilityButton;
 - (double)_utilityButtonHorizontalLayoutReference;
@@ -112,6 +115,7 @@
 - (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
 - (id)preferredContentSizeCategory;
+- (id)requiredVisualStyleCategories;
 - (void)setAdjustsFontForContentSizeCategory:(bool)arg1;
 - (void)setDate:(id)arg1;
 - (void)setDateAllDay:(bool)arg1;
@@ -122,14 +126,14 @@
 - (void)setTimeZone:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (void)setUtilityView:(id)arg1;
-- (void)setVibrantStylingProvider:(id)arg1;
+- (void)setVisualStylingProvider:(id)arg1;
+- (void)setVisualStylingProvider:(id)arg1 forCategory:(long long)arg2;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (id)timeZone;
 - (id)title;
-- (void)traitCollectionDidChange:(id)arg1;
 - (id)utilityButton;
 - (id)utilityView;
-- (void)vibrantStylingDidChangeForProvider:(id)arg1;
-- (id)vibrantStylingProvider;
+- (id)visualStylingProvider;
+- (id)visualStylingProviderForCategory:(long long)arg1;
 
 @end

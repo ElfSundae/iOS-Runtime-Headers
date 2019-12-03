@@ -8,8 +8,8 @@
     bool  _isVideo;
 }
 
-@property (nonatomic) NSLayoutConstraint *constraintHeight;
-@property (nonatomic) NSLayoutConstraint *constraintWidth;
+@property (nonatomic, retain) NSLayoutConstraint *constraintHeight;
+@property (nonatomic, retain) NSLayoutConstraint *constraintWidth;
 @property (nonatomic) bool isVideo;
 
 + (id)bundleForLocalizedString;
@@ -18,6 +18,7 @@
 + (id)localizedAdMarkerText;
 + (id)localizedLearnMoreText;
 
+- (void).cxx_destruct;
 - (id)accessibilityElements;
 - (id)accessibilityLabel;
 - (id)constraintHeight;

@@ -4,6 +4,7 @@
 
 @interface PHAssetMediaAnalysisProperties : PHAssetPropertySet {
     float  _activityScore;
+    short  _audioClassification;
     float  _autoplaySuggestionScore;
     struct { 
         long long value; 
@@ -11,6 +12,16 @@
         unsigned int flags; 
         long long epoch; 
     }  _bestKeyFrameTime;
+    struct CGRect { 
+        struct CGPoint { 
+            double x; 
+            double y; 
+        } origin; 
+        struct CGSize { 
+            double width; 
+            double height; 
+        } size; 
+    }  _bestPlaybackRect;
     struct { 
         struct { 
             long long value; 
@@ -34,8 +45,10 @@
 }
 
 @property (nonatomic, readonly) float activityScore;
+@property (nonatomic, readonly) short audioClassification;
 @property (nonatomic, readonly) float autoplaySuggestionScore;
 @property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } bestKeyFrameTime;
+@property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } bestPlaybackRect;
 @property (nonatomic, readonly) struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; } bestVideoTimeRange;
 @property (nonatomic, readonly) float blurrinessScore;
 @property (nonatomic, readonly) float exposureScore;
@@ -51,8 +64,10 @@
 
 - (void).cxx_destruct;
 - (float)activityScore;
+- (short)audioClassification;
 - (float)autoplaySuggestionScore;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })bestKeyFrameTime;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })bestPlaybackRect;
 - (struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; })bestVideoTimeRange;
 - (float)blurrinessScore;
 - (float)exposureScore;

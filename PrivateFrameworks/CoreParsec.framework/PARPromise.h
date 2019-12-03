@@ -3,7 +3,7 @@
  */
 
 @interface PARPromise : NSObject {
-    bool  _fulfilled;
+    _Atomic bool  _fulfilled;
     FutureValue * _futureValue;
 }
 

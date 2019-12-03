@@ -36,19 +36,23 @@
 + (id)_dcimDirectoryForFileURL:(id)arg1;
 + (bool)_lightweightReimportCacheDirectoryExists;
 + (id)_lightweightReimportPhotoCloudSharingAlbumInfoForAlbumWithCloudGUID:(id)arg1 cloudPersonID:(id)arg2;
++ (void)assetsdProcessMetadataForAssetCollections:(id)arg1 inAlbum:(id)arg2 personID:(id)arg3 info:(id)arg4 libraryServicesManager:(id)arg5;
 + (void)deleteCloudSharedAssetsWithCloudGUIDs:(id)arg1 info:(id)arg2;
 + (void)downloadPendingAssetsForPersonID:(id)arg1 info:(id)arg2;
-+ (id)nextDCIMSaveFileURLForCloudPersonID:(id)arg1 cloudAlbumGUID:(id)arg2 fileExtension:(id)arg3;
++ (id)newCloudSharedAssetSaveJobFromAProcessThatIsNotAssetsd;
++ (id)nextDCIMSaveFileURLForCloudPersonID:(id)arg1 cloudAlbumGUID:(id)arg2 fileExtension:(id)arg3 assetUUID:(id)arg4;
 + (id)pathForInFlightAssetCollectionWithGUID:(id)arg1 mediaAssetType:(unsigned long long)arg2;
-+ (id)placeholderImageProperties;
 + (void)processMetadataForAssetCollections:(id)arg1 inAlbum:(id)arg2 personID:(id)arg3 info:(id)arg4;
 + (void)replaceRecentlyUploadedOriginalWithDerivativeForCollection:(id)arg1 inAlbum:(id)arg2 personID:(id)arg3;
 + (void)saveCloudSharedAssetAtPath:(id)arg1 forAssetCollection:(id)arg2 mediaAssetType:(unsigned long long)arg3 albumGUID:(id)arg4 personID:(id)arg5 info:(id)arg6 shouldPrioritize:(bool)arg7;
 
+- (void).cxx_destruct;
 - (void)_addDownloadNotification:(id)arg1;
 - (id)_createPlaceHolderInSharedAlbum:(id)arg1;
+- (id)_highPriorityOperationQueue;
 - (void)_incrementDerivativesCount:(long long)arg1 thumbnailsCount:(long long)arg2;
 - (unsigned long long)_insertionIndexForAsset:(id)arg1 inAlbum:(id)arg2;
+- (id)_lowPriorityOperationQueue;
 - (bool)_parseISO6709String:(id)arg1 outLatitude:(double*)arg2 outLongitude:(double*)arg3;
 - (void)_performSaveTransactionAndWaitOnLibrary:(id)arg1 transaction:(id /* block */)arg2 completion:(id /* block */)arg3;
 - (void)_prefetchLimitForDerivatives:(long long*)arg1 thumbnails:(long long*)arg2;
@@ -75,8 +79,8 @@
 - (void)executeDaemonOperationReplaceRecentlyUploadedOriginalJobType;
 - (void)executeDaemonOperationSaveAssetJobType;
 - (void)executeDaemonOperationSaveAssetMetadataForCollectionsJobType;
-- (id)init;
-- (id)initFromXPCObject:(id)arg1 connection:(id)arg2;
+- (id)initFromXPCObject:(id)arg1 libraryServicesManager:(id)arg2;
+- (id)initWithAssetsdClient:(id)arg1;
 - (bool)isPhotoIris;
 - (bool)isProcessingThumbnail;
 - (bool)isVideo;
@@ -97,5 +101,6 @@
 - (void)setIsVideo:(bool)arg1;
 - (void)setJobType:(long long)arg1;
 - (void)setMstreamdInfoDictionary:(id)arg1;
+- (void)setupSaveAssetMetadataForCollectionsJobForAssetCollections:(id)arg1 album:(id)arg2 personID:(id)arg3 info:(id)arg4;
 
 @end

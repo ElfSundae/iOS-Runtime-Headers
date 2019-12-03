@@ -2,18 +2,13 @@
    Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
  */
 
-@interface TSPDocumentResourceRequest : NSObject <TSPDocumentResourceFileURLProvider, TSUResourceRequest> {
+@interface TSPDocumentResourceRequest : NSObject <TSUResourceFileURLProvider, TSUResourceRequest, TSUResourceRequestObservable> {
     NSObject<OS_dispatch_queue> * _accessQueue;
-    NSMutableArray * _accessQueue_deferredResourceAccessBlocks;
-    NSMutableDictionary * _accessQueue_documentResourceLocalURLs;
-    NSMutableDictionary * _accessQueue_documentResourceRemoteURLs;
-    NSObject<OS_dispatch_group> * _accessQueue_downloadGroup;
-    struct { 
-        unsigned int isResourcesAvailable : 1; 
-    }  _accessQueue_flags;
+    <TSUResourceRequest> * _accessQueue_backingResourceRequest;
     TSPDocumentResourceCache * _documentResourceCache;
     NSSet * _documentResourceInfos;
-    NSProgress * _progress;
+    TSUObserverNotifier * _observerNotifier;
+    NSSet * _tags;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -25,17 +20,21 @@
 @property (readonly) NSSet *tags;
 
 - (void).cxx_destruct;
-- (void)accessQueue_conditionallyBeginAccessingResourcesWithCompletionQueue:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)addObserver:(id)arg1;
 - (void)conditionallyBeginAccessingResourcesWithCompletionQueue:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)description;
 - (unsigned long long)estimatedDownloadSize;
-- (id)fileURLForDocumentResourceInfo:(id)arg1;
+- (id)fileURLForResourceInfo:(id)arg1;
 - (id)init;
 - (id)initWithDocumentResourceInfos:(id)arg1 documentResourceCache:(id)arg2;
+- (id)initWithDocumentResourceInfos:(id)arg1 tags:(id)arg2 documentResourceCache:(id)arg3;
+- (id)newBackingResourceRequestForDocumentResourceInfos:(id)arg1 documentResourceCache:(id)arg2;
 - (void)performResourceAccessAsynchronouslyUsingQueue:(id)arg1 block:(id /* block */)arg2;
 - (void)performResourceAccessUsingQueue:(id)arg1 block:(id /* block */)arg2;
 - (id)progress;
 - (id)remoteURLForDocumentResourceInfo:(id)arg1;
+- (void)removeObserver:(id)arg1;
 - (id)tags;
+- (id)urlForResourceInfo:(id)arg1;
 
 @end

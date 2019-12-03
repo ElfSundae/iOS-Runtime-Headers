@@ -7,6 +7,7 @@
     NSXPCConnection * _connection;
     NSUUID * _deviceUUID;
     bool  _hasLoaded;
+    NSMutableArray * _loadCallbacks;
     NSMutableDictionary * _localizeableSampleDataTemplates;
     NSHashTable * _observers;
     NSLock * _observersLock;
@@ -45,6 +46,7 @@
 - (bool)hasLoaded;
 - (id)initWithCollectionIdentifier:(id)arg1 deviceUUID:(id)arg2;
 - (void)loadFullCollectionWithLocalizableSampleTemplates:(id)arg1 seqId:(id)arg2;
+- (void)performAfterLoad:(id /* block */)arg1;
 - (void)removeAllComplicationsExceptThoseWithClientIdentifiers:(id)arg1;
 - (void)removeComplicationForClientIdentifier:(id)arg1;
 - (void)removeComplicationForClientIdentifier:(id)arg1 seqId:(id)arg2;

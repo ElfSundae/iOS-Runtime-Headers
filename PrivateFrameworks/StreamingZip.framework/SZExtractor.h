@@ -44,9 +44,11 @@
 - (void).cxx_destruct;
 - (void)_invalidateObject;
 - (bool)_isValidObject;
+- (void)_prepareForExtractionSynchronously:(bool)arg1 withCompletionBlock:(id /* block */)arg2;
 - (void)_prepareForLocalExtraction:(id /* block */)arg1;
-- (void)_prepareForRemoteExtraction:(id /* block */)arg1;
+- (void)_prepareForRemoteExtractionSynchronously:(bool)arg1 withCompletionBlock:(id /* block */)arg2;
 - (void)_setUpWithPath:(id)arg1 options:(id)arg2;
+- (void)_suspendStreamWithCompletionBlockSynchronously:(bool)arg1 completion:(id /* block */)arg2;
 - (bool)_synchronouslyPrepareForExtractionAtOffset:(unsigned long long*)arg1;
 - (bool)consumeExtractedDataIfNeeded;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

@@ -5,17 +5,13 @@
 @interface AVExternalPlaybackController : NSObject {
     id /* block */  _clientCompletionHandler;
     MPMediaControls * _mediaControls;
-    UIViewController * _pickerViewController;
 }
-
-@property (readonly) UIViewController *pickerViewController;
 
 + (id)externalPlaybackStateDescriptionForState:(long long)arg1;
 
 - (void).cxx_destruct;
 - (void)_invokeClientCompletionHandlerWithPlaybackState:(long long)arg1;
-- (id)pickerViewController;
 - (void)willBeginPlaybackFromAppWithBundleID:(id)arg1 completionHandler:(id /* block */)arg2;
-- (void)willBeginPlaybackFromAppWithBundleID:(id)arg1 pickerPresentationViewController:(id)arg2 completionHandler:(id /* block */)arg3;
+- (void)willBeginPlaybackWithCompletionHandler:(id /* block */)arg1;
 
 @end

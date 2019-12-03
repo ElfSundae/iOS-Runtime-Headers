@@ -2,39 +2,31 @@
    Image: /System/Library/PrivateFrameworks/ScreenTimeUI.framework/ScreenTimeUI
  */
 
-@interface STTimeAllowancesViewModelCoordinator : NSObject <RMGroupFetchedResultsControllerDelegate, STTimeAllowancesViewModelCoordinator> {
-    RMAskForTimeClient * _askForTimeClient;
-    RMGroupFetchedResultsController * _groupFetchResultsController;
+@interface STTimeAllowancesViewModelCoordinator : NSObject <STGroupFetchedResultsControllerDelegate, STTimeAllowancesViewModelCoordinator> {
+    STAskForTimeClient * _askForTimeClient;
+    STGroupFetchedResultsController * _groupFetchResultsController;
     NSString * _organizationIdentifier;
-    <RMPersistenceControllerProtocol> * _persistenceController;
+    <STPersistenceControllerProtocol> * _persistenceController;
     NSNumber * _userDSID;
     NSManagedObjectID * _userObjectID;
     STTimeAllowancesViewModel * _viewModel;
 }
 
-@property (nonatomic, readonly) RMAskForTimeClient *askForTimeClient;
+@property (nonatomic, readonly) STAskForTimeClient *askForTimeClient;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, readonly) RMGroupFetchedResultsController *groupFetchResultsController;
+@property (nonatomic, readonly) STGroupFetchedResultsController *groupFetchResultsController;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSString *organizationIdentifier;
-@property (nonatomic, readonly) <RMPersistenceControllerProtocol> *persistenceController;
+@property (nonatomic, readonly) <STPersistenceControllerProtocol> *persistenceController;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSNumber *userDSID;
 @property (nonatomic, copy) NSManagedObjectID *userObjectID;
 @property (readonly) STTimeAllowancesViewModel *viewModel;
 
 - (void).cxx_destruct;
-- (id)_alwaysAllowActivationIdentifier;
-- (id)_alwaysAllowConfigurationIdentifier;
-- (id)_bedtimeActivationIdentifier;
-- (id)_bedtimeConfigurationIdentifier;
-- (id)_budgetConfigurationIdentifier;
-- (void)_deleteActivationWithIdentifier:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)_iCloudAccountPredicate;
-- (bool)_isPersonalOrganization;
-- (void)_registerForPersistenceStoreNotifications;
-- (void)_saveActivationDictionary:(id)arg1 configurationDictionaries:(id)arg2 completionHandler:(id /* block */)arg3;
+- (void)_registerForPersistentStoreNotifications;
 - (id)askForTimeClient;
 - (void)deleteAllowance:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)groupFetchResultsController;

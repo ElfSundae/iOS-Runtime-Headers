@@ -30,6 +30,7 @@
 @property (nonatomic, readonly) long long state;
 @property (nonatomic, readonly) long long targetState;
 @property (nonatomic, readonly) double topBarHeight;
+@property (getter=isTrackingDrag, nonatomic, readonly) bool trackingDrag;
 
 - (void).cxx_destruct;
 - (double)_bottomBarOffsetForTopBarHeight:(double)arg1;
@@ -53,6 +54,7 @@
 - (void)endScrolling;
 - (id)init;
 - (bool)isSendingOutputsDidChange;
+- (bool)isTrackingDrag;
 - (double)minimumTopBarHeight;
 - (void)performBatchUpdates:(id /* block */)arg1;
 - (void)setBottomBarOffset:(double)arg1 forState:(long long)arg2;

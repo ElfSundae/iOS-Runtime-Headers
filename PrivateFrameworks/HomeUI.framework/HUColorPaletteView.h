@@ -30,6 +30,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) <HUQuickControlColorPaletteViewInteractionDelegate> *interactionDelegate;
 @property (nonatomic, copy) HUQuickControlColorViewProfile *profile;
+@property (nonatomic) unsigned long long reachabilityState;
 @property (nonatomic, retain) id secondaryValue;
 @property (nonatomic, retain) HFColorPaletteColor *selectedColor;
 @property (nonatomic, retain) NSNumber *selectedColorBiasIndex;

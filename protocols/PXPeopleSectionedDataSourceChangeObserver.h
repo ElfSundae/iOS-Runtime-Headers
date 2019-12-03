@@ -6,6 +6,6 @@
 @required
 
 - (void)peopleSectionedDataSource:(PXPeopleSectionedDataSource *)arg1 didApplyIncrementalChanges:(NSArray *)arg2;
-- (void)peopleSectionedDataSourceMembersChanged:(PXPeopleSectionedDataSource *)arg1;
+- (void)peopleSectionedDataSourceMembersChangedNonIncrementally:(PXPeopleSectionedDataSource *)arg1;
 
 @end

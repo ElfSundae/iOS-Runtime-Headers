@@ -16,7 +16,7 @@
 @property (nonatomic) bool showsThumb;
 
 + (double)_spacingAdjustmentFontSize;
-+ (id)timeMarkerFont;
++ (id)timeMarkerFontForSizeClass:(long long)arg1;
 
 - (void).cxx_destruct;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_lineFrame;
@@ -26,6 +26,7 @@
 - (id)currentTimeLabel;
 - (void)drawRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 sizeClass:(long long)arg2;
 - (void)invalidateFonts;
 - (double)markerMidHeight;
 - (double)markerWidth;

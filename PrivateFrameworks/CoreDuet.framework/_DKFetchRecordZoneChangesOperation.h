@@ -6,6 +6,4 @@
 
 + (bool)_removesDependenciesAfterFinish;
 
-- (void)main;
-
 @end

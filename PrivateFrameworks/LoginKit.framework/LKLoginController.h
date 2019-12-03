@@ -27,5 +27,6 @@
 - (void)saveClassConfiguration:(id)arg1 withCompletionHandler:(id /* block */)arg2;
 - (void)setCompletionHandler:(id /* block */)arg1;
 - (void)setConnection:(id)arg1;
+- (void)updateGlobalDefaultsValue:(id)arg1 forKey:(id)arg2 completionHandler:(id /* block */)arg3;
 
 @end

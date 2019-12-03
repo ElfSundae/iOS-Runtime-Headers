@@ -8,6 +8,8 @@
 }
 
 @property (nonatomic, retain) HFEventBuilder<HFLocationEventBuilder> *eventBuilder;
+@property (nonatomic, readonly) bool isCustomLocationTrigger;
+@property (nonatomic, readonly) bool locationCanBeEdited;
 @property (nonatomic, retain) NSSet *stagedEvents;
 
 + (Class)homeKitRepresentationClass;
@@ -20,6 +22,8 @@
 - (id)commitEditTrigger;
 - (id)eventBuilder;
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2 context:(id)arg3;
+- (bool)isCustomLocationTrigger;
+- (bool)locationCanBeEdited;
 - (id)naturalLanguageNameOfType:(unsigned long long)arg1;
 - (bool)requiresConfirmationToRun;
 - (bool)requiresFMFDeviceToRun;

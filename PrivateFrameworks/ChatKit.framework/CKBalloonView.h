@@ -30,13 +30,15 @@
         double right; 
     }  _textAlignmentInsets;
     bool  _useLargeAsset;
+    long long  _userInterfaceLevel;
+    long long  _userInterfaceStyle;
     bool  _wantsSkinnyMask;
 }
 
 @property (nonatomic) bool animationPaused;
 @property (nonatomic, retain) CABackdropLayer *backdropFilterLayer;
 @property (nonatomic) unsigned long long balloonCorners;
-@property (nonatomic) struct CKBalloonDescriptor_t { BOOL x1; BOOL x2; BOOL x3; BOOL x4; unsigned long long x5; BOOL x6; bool x7; bool x8; bool x9; } balloonDescriptor;
+@property (nonatomic) struct CKBalloonDescriptor_t { BOOL x1; BOOL x2; BOOL x3; BOOL x4; unsigned long long x5; BOOL x6; long long x7; long long x8; bool x9; bool x10; bool x11; } balloonDescriptor;
 @property (nonatomic) BOOL balloonShape;
 @property (nonatomic) BOOL balloonTailShape;
 @property (nonatomic) bool canUseOpaqueMask;
@@ -65,6 +67,8 @@
 @property (nonatomic, retain) UITapGestureRecognizer *tapGestureRecognizer;
 @property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } textAlignmentInsets;
 @property (nonatomic) bool useLargeAsset;
+@property (nonatomic) long long userInterfaceLevel;
+@property (nonatomic) long long userInterfaceStyle;
 @property (nonatomic) bool wantsSkinnyMask;
 
 - (void).cxx_destruct;
@@ -74,7 +78,7 @@
 - (void)attachInvisibleInkEffectView;
 - (id)backdropFilterLayer;
 - (unsigned long long)balloonCorners;
-- (struct CKBalloonDescriptor_t { BOOL x1; BOOL x2; BOOL x3; BOOL x4; unsigned long long x5; BOOL x6; bool x7; bool x8; bool x9; })balloonDescriptor;
+- (struct CKBalloonDescriptor_t { BOOL x1; BOOL x2; BOOL x3; BOOL x4; unsigned long long x5; BOOL x6; long long x7; long long x8; bool x9; bool x10; bool x11; })balloonDescriptor;
 - (BOOL)balloonShape;
 - (BOOL)balloonTailShape;
 - (bool)canUseOpaqueMask;
@@ -113,13 +117,15 @@
 - (BOOL)orientation;
 - (id)overlay;
 - (id)overlayColor;
+- (void)prepareForAcknowledgementDismissal;
+- (void)prepareForAcknowledgementDisplay;
 - (void)prepareForDisplay;
 - (void)prepareForDisplayIfNeeded;
 - (void)prepareForReuse;
 - (void)setAnimationPaused:(bool)arg1;
 - (void)setBackdropFilterLayer:(id)arg1;
 - (void)setBalloonCorners:(unsigned long long)arg1;
-- (void)setBalloonDescriptor:(struct CKBalloonDescriptor_t { BOOL x1; BOOL x2; BOOL x3; BOOL x4; unsigned long long x5; BOOL x6; bool x7; bool x8; bool x9; })arg1;
+- (void)setBalloonDescriptor:(struct CKBalloonDescriptor_t { BOOL x1; BOOL x2; BOOL x3; BOOL x4; unsigned long long x5; BOOL x6; long long x7; long long x8; bool x9; bool x10; bool x11; })arg1;
 - (void)setBalloonShape:(BOOL)arg1;
 - (void)setBalloonTailShape:(BOOL)arg1;
 - (void)setCanUseOpaqueMask:(bool)arg1;
@@ -142,14 +148,19 @@
 - (void)setTapGestureRecognizer:(id)arg1;
 - (void)setTextAlignmentInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setUseLargeAsset:(bool)arg1;
+- (void)setUserInterfaceLevel:(long long)arg1;
+- (void)setUserInterfaceStyle:(long long)arg1;
 - (void)setWantsSkinnyMask:(bool)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1 textAlignmentInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; }*)arg2;
 - (void)tapGestureRecognized:(id)arg1;
 - (id)tapGestureRecognizer;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })textAlignmentInsets;
+- (void)updateBalloonForTraitCollection:(id)arg1;
 - (void)updateRasterizationForInvisibleInkEffect;
 - (bool)useLargeAsset;
+- (long long)userInterfaceLevel;
+- (long long)userInterfaceStyle;
 - (bool)wantsSkinnyMask;
 
 @end

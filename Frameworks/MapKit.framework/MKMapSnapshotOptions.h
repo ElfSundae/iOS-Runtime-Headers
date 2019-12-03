@@ -6,6 +6,12 @@
     NSArray * _annotationViews;
     MKMapCamera * _camera;
     NSArray * _customFeatureAnnotations;
+    struct UIEdgeInsets { 
+        double top; 
+        double left; 
+        double bottom; 
+        double right; 
+    }  _edgeInsets;
     struct { 
         struct { 
             double x; 
@@ -18,6 +24,7 @@
     }  _mapRect;
     unsigned long long  _mapType;
     int  _mode;
+    MKPointOfInterestFilter * _pointOfInterestFilter;
     struct { 
         struct CLLocationCoordinate2D { 
             double latitude; 
@@ -29,17 +36,20 @@
         } span; 
     }  _region;
     bool  _rendersInBackground;
-    double  _scale;
+    VKRouteContext * _routeContext;
+    <VKRouteOverlay> * _routeOverlay;
     unsigned char  _searchResultsType;
+    bool  _showsAppleLogo;
     bool  _showsBuildings;
     bool  _showsNightMode;
     bool  _showsPointLabels;
-    bool  _showsPointsOfInterest;
     bool  _showsVenues;
+    unsigned long long  _signpostId;
     struct CGSize { 
         double width; 
         double height; 
     }  _size;
+    UITraitCollection * _traitCollection;
     bool  _useSnapshotService;
     bool  _usingRect;
 }
@@ -47,18 +57,25 @@
 @property (nonatomic, copy) NSArray *annotationViews;
 @property (nonatomic, copy) MKMapCamera *camera;
 @property (getter=_customFeatureAnnotations, setter=_setCustomFeatureAnnotations:, nonatomic, copy) NSArray *customFeatureAnnotations;
+@property (getter=_edgeInsets, setter=_setEdgeInsets:, nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } edgeInsets;
 @property (nonatomic) struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; } mapRect;
 @property (nonatomic) unsigned long long mapType;
+@property (nonatomic, copy) MKPointOfInterestFilter *pointOfInterestFilter;
 @property (nonatomic) struct { struct CLLocationCoordinate2D { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; } region;
 @property (getter=_rendersInBackground, setter=_setRendersInBackground:, nonatomic) bool rendersInBackground;
+@property (getter=_routeContext, setter=_setRouteContext:, nonatomic, retain) VKRouteContext *routeContext;
+@property (getter=_routeOverlay, setter=_setRouteOverlay:, nonatomic, retain) <VKRouteOverlay> *routeOverlay;
 @property (nonatomic) double scale;
 @property (getter=_searchResultsType, setter=_setSearchResultsType:, nonatomic) unsigned char searchResultsType;
+@property (getter=_showsAppleLogo, setter=_setShowsAppleLogo:, nonatomic) bool showsAppleLogo;
 @property (nonatomic) bool showsBuildings;
 @property (getter=_showsNightMode, setter=_setShowsNightMode:, nonatomic) bool showsNightMode;
 @property (getter=_showsPointLabels, setter=_setShowsPointLabels:, nonatomic) bool showsPointLabels;
 @property (nonatomic) bool showsPointsOfInterest;
 @property (getter=_showsVenues, setter=_setShowsVenues:, nonatomic) bool showsVenues;
+@property (nonatomic) unsigned long long signpostId;
 @property (nonatomic) struct CGSize { double x1; double x2; } size;
+@property (nonatomic, copy) UITraitCollection *traitCollection;
 @property (getter=_useSnapshotService, setter=_setUseSnapshotService:, nonatomic) bool useSnapshotService;
 @property (nonatomic, readonly) bool usingRect;
 
@@ -66,18 +83,27 @@
 
 - (void).cxx_destruct;
 - (id)_customFeatureAnnotations;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_edgeInsets;
 - (bool)_rendersInBackground;
+- (id)_routeContext;
+- (id)_routeOverlay;
 - (unsigned char)_searchResultsType;
 - (void)_setCustomFeatureAnnotations:(id)arg1;
+- (void)_setEdgeInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)_setRendersInBackground:(bool)arg1;
+- (void)_setRouteContext:(id)arg1;
+- (void)_setRouteOverlay:(id)arg1;
 - (void)_setSearchResultsType:(unsigned char)arg1;
+- (void)_setShowsAppleLogo:(bool)arg1;
 - (void)_setShowsNightMode:(bool)arg1;
 - (void)_setShowsPointLabels:(bool)arg1;
 - (void)_setShowsVenues:(bool)arg1;
 - (void)_setUseSnapshotService:(bool)arg1;
+- (bool)_showsAppleLogo;
 - (bool)_showsNightMode;
 - (bool)_showsPointLabels;
 - (bool)_showsVenues;
+- (void)_updateShouldUseSnapshotService;
 - (bool)_useSnapshotService;
 - (id)annotationViews;
 - (id)camera;
@@ -88,20 +114,26 @@
 - (bool)isEqual:(id)arg1;
 - (struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })mapRect;
 - (unsigned long long)mapType;
+- (id)pointOfInterestFilter;
 - (struct { struct CLLocationCoordinate2D { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })region;
 - (double)scale;
 - (void)setAnnotationViews:(id)arg1;
 - (void)setCamera:(id)arg1;
 - (void)setMapRect:(struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setMapType:(unsigned long long)arg1;
+- (void)setPointOfInterestFilter:(id)arg1;
 - (void)setRegion:(struct { struct CLLocationCoordinate2D { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setScale:(double)arg1;
 - (void)setShowsBuildings:(bool)arg1;
 - (void)setShowsPointsOfInterest:(bool)arg1;
+- (void)setSignpostId:(unsigned long long)arg1;
 - (void)setSize:(struct CGSize { double x1; double x2; })arg1;
+- (void)setTraitCollection:(id)arg1;
 - (bool)showsBuildings;
 - (bool)showsPointsOfInterest;
+- (unsigned long long)signpostId;
 - (struct CGSize { double x1; double x2; })size;
+- (id)traitCollection;
 - (bool)usingRect;
 
 @end

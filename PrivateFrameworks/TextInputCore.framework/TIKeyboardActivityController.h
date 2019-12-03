@@ -35,6 +35,7 @@
 - (unsigned long long)activityState;
 - (void)addActivityObserver:(id)arg1;
 - (id)appMonitor;
+- (bool)atexitHandler;
 - (void)backgroundActivityAssertionsDidChange;
 - (bool)canGoEarlyClean;
 - (id)createMemoryPressureSource;

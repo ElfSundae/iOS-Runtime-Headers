@@ -5,6 +5,6 @@
 
 @required
 
-- (void)captureController:(CUCaptureController *)arg1 didOutputFaceResults:(NSArray *)arg2;
+- (void)captureController:(CUCaptureController *)arg1 didOutputFaceResults:(NSArray *)arg2 bodyResults:(NSArray *)arg3;
 
 @end

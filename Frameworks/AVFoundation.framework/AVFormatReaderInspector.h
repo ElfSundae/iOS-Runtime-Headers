@@ -21,7 +21,8 @@
 - (bool)containsFragments;
 - (void)dealloc;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })duration;
-- (void)finalize;
+- (long long)firstFragmentSequenceNumber;
+- (long long)fragmentCount;
 - (unsigned long long)hash;
 - (id)initWithFormatReader:(struct OpaqueFigFormatReader { }*)arg1;
 - (bool)isComposable;
@@ -30,6 +31,7 @@
 - (bool)isReadable;
 - (id)lyrics;
 - (id)metadataForFormat:(id)arg1;
+- (struct { long long x1; int x2; unsigned int x3; long long x4; })minimumTimeOffsetFromLive;
 - (struct CGSize { double x1; double x2; })naturalSize;
 - (int)naturalTimeScale;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })overallDurationHint;

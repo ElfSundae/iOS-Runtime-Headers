@@ -28,13 +28,13 @@
 
 + (id)seriesWithChart:(id)arg1;
 
+- (void).cxx_destruct;
 - (unsigned long long)categoryCount;
 - (id)categoryData;
 - (id)chart;
 - (id)chartType;
 - (void)clearBackPointers;
 - (id)dataValuePropertiesCollection;
-- (void)dealloc;
 - (id)defaultDataLabel;
 - (id)defaultSeriesNameForIndex:(unsigned long long)arg1;
 - (id)description;

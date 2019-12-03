@@ -3,21 +3,18 @@
  */
 
 @interface WLKBasicMovieMetadata : WLKBasicContentMetadata {
-    WLKMovieContentRating * _contentRating;
     double  _duration;
     NSDate * _releaseDate;
     WLKRottenTomatoesRating * _rottenTomatoesRating;
     NSString * _studio;
 }
 
-@property (nonatomic, readonly) WLKMovieContentRating *contentRating;
 @property (nonatomic, readonly) double duration;
 @property (nonatomic, readonly) NSDate *releaseDate;
 @property (nonatomic, readonly) WLKRottenTomatoesRating *rottenTomatoesRating;
 @property (nonatomic, readonly, copy) NSString *studio;
 
 - (void).cxx_destruct;
-- (id)contentRating;
 - (double)duration;
 - (id)initWithDictionary:(id)arg1;
 - (id)releaseDate;

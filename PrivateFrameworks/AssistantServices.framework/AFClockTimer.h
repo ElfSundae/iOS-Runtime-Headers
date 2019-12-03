@@ -14,6 +14,7 @@
     NSUUID * _timerID;
     NSURL * _timerURL;
     NSString * _title;
+    long long  _type;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -33,6 +34,7 @@
 @property (nonatomic, readonly, copy) NSUUID *timerID;
 @property (nonatomic, readonly, copy) NSURL *timerURL;
 @property (nonatomic, readonly, copy) NSString *title;
+@property (nonatomic, readonly) long long type;
 
 + (id)newWithBuilder:(id /* block */)arg1;
 + (bool)supportsSecureCoding;
@@ -49,7 +51,7 @@
 - (id)firedDate;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithTimerID:(id)arg1 timerURL:(id)arg2 isFiring:(bool)arg3 title:(id)arg4 state:(long long)arg5 duration:(double)arg6 fireTimeInterval:(double)arg7 fireDate:(id)arg8 firedDate:(id)arg9 dismissedDate:(id)arg10 lastModifiedDate:(id)arg11;
+- (id)initWithTimerID:(id)arg1 timerURL:(id)arg2 isFiring:(bool)arg3 title:(id)arg4 state:(long long)arg5 duration:(double)arg6 type:(long long)arg7 fireTimeInterval:(double)arg8 fireDate:(id)arg9 firedDate:(id)arg10 dismissedDate:(id)arg11 lastModifiedDate:(id)arg12;
 - (bool)isEqual:(id)arg1;
 - (bool)isFiring;
 - (id)itemID;
@@ -60,5 +62,6 @@
 - (id)timerID;
 - (id)timerURL;
 - (id)title;
+- (long long)type;
 
 @end

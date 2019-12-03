@@ -20,7 +20,6 @@
 - (bool)isEqual:(id)arg1;
 - (void)moveGlyphsFromRange:(struct { long long x1; long long x2; })arg1 toIndex:(long long)arg2;
 - (struct CGPoint { double x1; double x2; })originAtIndex:(long long)arg1;
-- (const struct CGPoint { double x1; double x2; }*)origins;
 - (void)popGlyphAtIndex:(long long)arg1;
 - (void)puntStringIndicesInRange:(struct { long long x1; long long x2; })arg1 by:(long long)arg2;
 - (void)pushGlyphAtIndex:(long long)arg1;

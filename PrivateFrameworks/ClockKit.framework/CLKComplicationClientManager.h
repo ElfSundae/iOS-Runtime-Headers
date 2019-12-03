@@ -35,6 +35,7 @@
 - (id /* block */)clientRegistrationHandler;
 - (id /* block */)clientUnregistrationHandler;
 - (id)clientsByIdentifier;
+- (void)dealloc;
 - (void)enumerateClientsWithBlock:(id /* block */)arg1;
 - (id)init;
 - (bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;

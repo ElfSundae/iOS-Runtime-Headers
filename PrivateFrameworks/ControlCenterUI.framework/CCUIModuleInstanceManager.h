@@ -7,6 +7,7 @@
     NSSet * _enabledModuleIdentifiers;
     NSMutableDictionary * _moduleInstanceByIdentifier;
     NSHashTable * _observers;
+    NSObject<OS_dispatch_queue> * _queue;
     CCSModuleRepository * _repository;
     <CCUIControlCenterSystemAgent> * _systemAgent;
 }
@@ -26,16 +27,18 @@
 - (void).cxx_destruct;
 - (id)_initWithSystemAgent:(id)arg1 repository:(id)arg2;
 - (id)_instantiateModuleWithMetadata:(id)arg1;
+- (id)_loadBundlesForModuleMetadata:(id)arg1;
+- (void)_loadBundlesForModuleMetadata:(id)arg1 withCompletionHandler:(id /* block */)arg2;
 - (void)_runBlockOnObservers:(id /* block */)arg1;
 - (void)_updateModuleInstances;
 - (void)addObserver:(id)arg1;
 - (void)contentModuleContext:(id)arg1 didUpdateHomeGestureDismissalAllowed:(bool)arg2;
 - (void)contentModuleContext:(id)arg1 enqueueStatusUpdate:(id)arg2;
 - (id)contextDelegate;
-- (void)didUpdatePreferredSizeForContentModuleContext:(id)arg1;
 - (void)dismissControlCenterForContentModuleContext:(id)arg1;
 - (void)dismissExpandedViewForContentModuleContext:(id)arg1;
 - (id)enabledModuleIdentifiers;
+- (bool)loadModuleWithBundleIdentifier:(id)arg1;
 - (void)loadableModulesChangedForModuleRepository:(id)arg1;
 - (id)moduleInstances;
 - (void)removeObserver:(id)arg1;

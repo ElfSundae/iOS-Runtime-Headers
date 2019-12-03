@@ -16,24 +16,33 @@
 + (id)dataBundle;
 + (unsigned int)encodingForOrthographyIndex:(unsigned long long)arg1;
 + (id)fallbackLocalizationForLanguage:(id)arg1;
-+ (void)getCodesForLanguage:(id)arg1 languageCode:(char *)arg2 languageDialect:(char *)arg3 languageMode:(char *)arg4;
++ (void)getCodesForLanguage:(id)arg1 languageCode:(char *)arg2 languageDialect:(char *)arg3 languageMode:(char *)arg4 orthographyIndex:(unsigned long long*)arg5 encoding:(unsigned int*)arg6;
 + (id)languageWithIdentifier:(id)arg1;
 + (id)localizationForLanguage:(id)arg1;
 + (id)localizationsForLanguage:(id)arg1;
++ (unsigned long long)orthographyIndexForForOtherLanguage:(id)arg1;
 + (unsigned long long)orthographyIndexForLanguageCode:(unsigned char)arg1;
 
-- (unsigned char)accents;
+- (const char *)accents;
 - (void)dealloc;
 - (unsigned int)encoding;
 - (id)fallbackLocalization;
 - (id)identifier;
 - (id)initWithIdentifier:(id)arg1;
+- (bool)isArabic;
+- (bool)isBulgarian;
+- (bool)isCzech;
 - (bool)isDanish;
 - (bool)isDutch;
 - (bool)isEnglish;
 - (bool)isFinnish;
 - (bool)isFrench;
 - (bool)isGerman;
+- (bool)isGreek;
+- (bool)isHebrew;
+- (bool)isHindi;
+- (bool)isHungarian;
+- (bool)isIndonesian;
 - (bool)isItalian;
 - (bool)isKorean;
 - (bool)isNorwegian;
@@ -42,13 +51,16 @@
 - (bool)isRussian;
 - (bool)isSpanish;
 - (bool)isSwedish;
+- (bool)isThai;
 - (bool)isTurkish;
+- (bool)isUkrainian;
+- (bool)isVietnamese;
 - (unsigned char)languageCode;
 - (unsigned char)languageDialect;
 - (unsigned char)languageMode;
 - (id)localization;
-- (unsigned char)oneLetterWords;
+- (const char *)oneLetterWords;
 - (unsigned long long)orthographyIndex;
-- (unsigned char)twoLetterWords;
+- (const char *)twoLetterWords;
 
 @end

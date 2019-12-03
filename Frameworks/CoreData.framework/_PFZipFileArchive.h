@@ -17,8 +17,6 @@
     NSString * _path;
     NSDictionary * _properties;
     id  _provider;
-    void * _reserved;
-    void * _reserved2;
     struct __zFlags { 
         unsigned int providerSuppliesContents : 1; 
         unsigned int providerSuppliesStreams : 1; 

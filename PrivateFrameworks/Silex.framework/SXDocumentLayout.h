@@ -19,6 +19,7 @@
 @property (nonatomic, readonly) long long width;
 
 - (unsigned long long)columns;
+- (id)description;
 - (long long)gutter;
 - (id)initWithWidth:(long long)arg1 margin:(long long)arg2 gutter:(long long)arg3 columns:(unsigned long long)arg4;
 - (long long)margin;

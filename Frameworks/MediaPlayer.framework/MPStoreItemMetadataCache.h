@@ -14,6 +14,7 @@
 - (long long)count;
 - (id)initWithCacheSize:(long long)arg1;
 - (id)metadataForItemIdentifier:(id)arg1;
+- (id)metadataForItemIdentifier:(id)arg1 ignoreExpiration:(bool)arg2;
 - (void)removeExpiredMetadata;
 
 @end

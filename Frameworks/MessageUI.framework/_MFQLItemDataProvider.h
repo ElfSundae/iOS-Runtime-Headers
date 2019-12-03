@@ -13,7 +13,7 @@
 @property (nonatomic, readonly) QLItem *item;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithData:(id)arg1 contentType:(id)arg2;
 - (id)item;
 - (id)provideDataForItem:(id)arg1;

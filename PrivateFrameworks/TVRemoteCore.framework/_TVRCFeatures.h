@@ -5,6 +5,7 @@
 @interface _TVRCFeatures : NSObject
 
 + (bool)isWakeToRemoteOnLockScreenDisabled;
++ (bool)nearbyDevicesEnabled;
 + (bool)rapportEnabled;
 
 @end

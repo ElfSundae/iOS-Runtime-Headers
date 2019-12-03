@@ -13,6 +13,7 @@
     NSLocale * _locale;
     <NSObject> * _preferencesObserver;
     NSOperationQueue * _queue;
+    bool  _supportsOnDeviceRecognition;
 }
 
 @property (getter=_isAvailableForForcedOfflineRecognition, nonatomic, readonly) bool _availableForForcedOfflineRecognition;
@@ -25,6 +26,7 @@
 @property (nonatomic, readonly, copy) NSLocale *locale;
 @property (nonatomic, retain) NSOperationQueue *queue;
 @property (readonly) Class superclass;
+@property (nonatomic) bool supportsOnDeviceRecognition;
 
 + (void)_fetchSupportedForcedOfflineLocalesWithCompletion:(id /* block */)arg1;
 + (long long)authorizationStatus;
@@ -53,5 +55,7 @@
 - (void)setDefaultTaskHint:(long long)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setQueue:(id)arg1;
+- (void)setSupportsOnDeviceRecognition:(bool)arg1;
+- (bool)supportsOnDeviceRecognition;
 
 @end

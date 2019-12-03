@@ -21,6 +21,7 @@
 - (unsigned long long)_advancePresentationStateFromFadeOut;
 - (unsigned long long)_advancePresentationStateFromPresenting;
 - (unsigned long long)_advancePresentationStateFromReady;
+- (bool)_canShowWhileLocked;
 - (void)_fadeInStatusLabel:(id)arg1;
 - (void)_fadeOutStatusLabel:(id)arg1;
 - (void)_notifyDelegateDidFinishStatusUpdates;

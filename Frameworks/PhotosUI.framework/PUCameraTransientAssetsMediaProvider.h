@@ -6,7 +6,7 @@
     NSObject<OS_dispatch_queue> * __livePhotoRequestQueue;
     NSMutableDictionary * __livePhotoRequestsByRequestID;
     <PUTransientImageManager> * __transientImageManager;
-    int  _latestRequestId;
+    _Atomic int  _latestRequestId;
     id /* block */  _supplementaryLivePhotoImageSource;
 }
 

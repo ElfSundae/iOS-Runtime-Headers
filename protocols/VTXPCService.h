@@ -19,8 +19,10 @@
 - (oneway void)notifyVoiceTriggeredSiriSessionCancelled:(NSString *)arg1;
 - (oneway void)queryLastTriggerEventTypeWithReply:(void *)arg1; // needs 1 arg types, found 6: id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, unsigned char, void*
 - (oneway void)requestAudioCapture:(double)arg1;
+- (oneway void)requestCurrentBuiltInRTModelDictionaryWithReply:(void *)arg1; // needs 1 arg types, found 6: id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSDictionary *, void*
 - (oneway void)requestCurrentVoiceTriggerAssetDictionaryWithReply:(void *)arg1; // needs 1 arg types, found 6: id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSDictionary *, void*
 - (oneway void)resetAssertions;
+- (oneway void)setCurrentBuiltInRTModelDictionary:(NSDictionary *)arg1;
 - (oneway void)setPhraseSpotterBypassing:(bool)arg1 timeout:(double)arg2 timestamp:(double)arg3;
 - (oneway void)setRaiseToSpeakBypassing:(bool)arg1 timeout:(double)arg2 timestamp:(double)arg3;
 

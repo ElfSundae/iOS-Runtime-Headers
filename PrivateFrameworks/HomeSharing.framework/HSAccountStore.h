@@ -4,13 +4,13 @@
 
 @interface HSAccountStore : NSObject {
     int  _defaultsDidChangeToken;
-    SSURLConnectionRequest * _groupIDRequest;
+    ICURLRequest * _groupIDRequest;
     NSObject<OS_dispatch_queue> * _queue;
 }
 
 @property (nonatomic, copy) NSString *appleID;
 @property (nonatomic, copy) NSString *groupID;
-@property (nonatomic, retain) SSURLConnectionRequest *groupIDRequest;
+@property (nonatomic, retain) ICURLRequest *groupIDRequest;
 @property (nonatomic, copy) NSString *password;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *queue;
 

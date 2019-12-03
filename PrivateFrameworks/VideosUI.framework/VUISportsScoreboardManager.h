@@ -3,18 +3,16 @@
  */
 
 @interface VUISportsScoreboardManager : NSObject {
-    NSMutableArray * _jsContextDictionaryArgument;
-    NSArray * _scoreData;
     long long  _scoreboardUpdateInterval;
     NSTimer * _scoreboardUpdateTimer;
     NSMutableDictionary * _sportsEventsById;
+    bool  _updateInProgress;
 }
 
-@property (nonatomic, retain) NSMutableArray *jsContextDictionaryArgument;
-@property (nonatomic, retain) NSArray *scoreData;
 @property (nonatomic) long long scoreboardUpdateInterval;
 @property (nonatomic, retain) NSTimer *scoreboardUpdateTimer;
 @property (nonatomic, retain) NSMutableDictionary *sportsEventsById;
+@property (nonatomic) bool updateInProgress;
 
 + (void)registerDelegate:(id)arg1 canonicalId:(id)arg2;
 + (id)sharedInstance;
@@ -23,20 +21,18 @@
 - (void).cxx_destruct;
 - (void)_getScoreboardUpdates;
 - (void)_invalidateTimer;
-- (void)_prepareJSContextDictionaryArgument;
+- (id)_prepareJSContextDictionaryArgument;
 - (void)_resetTimer;
-- (void)_updateScores;
+- (void)_updateScores:(id)arg1;
 - (void)_updateTimer;
 - (id)init;
-- (id)jsContextDictionaryArgument;
-- (id)scoreData;
 - (long long)scoreboardUpdateInterval;
 - (id)scoreboardUpdateTimer;
-- (void)setJsContextDictionaryArgument:(id)arg1;
-- (void)setScoreData:(id)arg1;
 - (void)setScoreboardUpdateInterval:(long long)arg1;
 - (void)setScoreboardUpdateTimer:(id)arg1;
 - (void)setSportsEventsById:(id)arg1;
+- (void)setUpdateInProgress:(bool)arg1;
 - (id)sportsEventsById;
+- (bool)updateInProgress;
 
 @end

@@ -4,7 +4,6 @@
 
 @interface ADPrerollController : NSObject <ADPlayerDelegate, ADPrerollViewDelegate> {
     ADPlayer * _adPlayer;
-    AVPlayerViewController * _avPlayerViewController;
     id /* block */  _completionHandler;
     bool  _isObservingThirdPartyAVPlayer;
     MPMoviePlayerController * _moviePlayerController;
@@ -14,7 +13,6 @@
 }
 
 @property (nonatomic, retain) ADPlayer *adPlayer;
-@property (nonatomic) AVPlayerViewController *avPlayerViewController;
 @property (nonatomic, copy) id /* block */ completionHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -26,6 +24,7 @@
 @property (nonatomic, readonly) unsigned long long type;
 @property (nonatomic, retain) ADPrerollView *view;
 
+- (void).cxx_destruct;
 - (void)_addAccessibilityIdentifier:(id)arg1;
 - (id)_advertisementView;
 - (void)_appWillResignActive;
@@ -42,13 +41,11 @@
 - (void)adPlayerDidTimeout:(id)arg1;
 - (void)adPlayerFailedToLoadAsset:(id)arg1;
 - (void)adPlayerFailedToPlayWithUnknownError:(id)arg1;
-- (id)avPlayerViewController;
 - (void)cancel;
 - (id /* block */)completionHandler;
 - (void)dealloc;
 - (void)doneButtonPressed;
 - (id)init;
-- (id)initWithAVPlayerViewController:(id)arg1;
 - (id)initWithMoviePlayerController:(id)arg1;
 - (bool)isObservingThirdPartyAVPlayer;
 - (id)moviePlayerController;
@@ -59,7 +56,6 @@
 - (bool)prerollViewRequestsEmbeddedStatus;
 - (void)privacyButtonPressed;
 - (void)setAdPlayer:(id)arg1;
-- (void)setAvPlayerViewController:(id)arg1;
 - (void)setCompletionHandler:(id /* block */)arg1;
 - (void)setIsObservingThirdPartyAVPlayer:(bool)arg1;
 - (void)setMoviePlayerController:(id)arg1;

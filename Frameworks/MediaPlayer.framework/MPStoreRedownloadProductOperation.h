@@ -3,11 +3,11 @@
  */
 
 @interface MPStoreRedownloadProductOperation : NSOperation {
-    SSVLoadURLOperation * _URLOperation;
     NSObject<OS_dispatch_queue> * _accessQueue;
     NSString * _buyParameters;
     unsigned long long  _endpointType;
     MPStoreRedownloadProductResponse * _redownloadProductResponse;
+    ICMediaRedownloadRequest * _redownloadRequest;
     NSString * _requestingBundleIdentifier;
     NSString * _requestingBundleVersion;
     NSError * _responseError;

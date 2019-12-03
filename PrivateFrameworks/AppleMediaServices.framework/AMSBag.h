@@ -13,6 +13,46 @@
 @property (nonatomic, readonly) AMSBagValue *apsAllowedProductTypes;
 @property (nonatomic, readonly) AMSBagValue *apsEnabledPatterns;
 @property (nonatomic, readonly) AMSBagValue *apsSamplingPercent;
+@property (nonatomic, readonly) AMSBagValue *bu_addFundsURL;
+@property (nonatomic, readonly) AMSBagValue *bu_appAnalyticsURL;
+@property (nonatomic, readonly) AMSBagValue *bu_booksISBNURL;
+@property (nonatomic, readonly) AMSBagValue *bu_booksMediaAPIHost;
+@property (nonatomic, readonly) AMSBagValue *bu_booksMediaAPIPreviewHost;
+@property (nonatomic, readonly) AMSBagValue *bu_booksTabs;
+@property (nonatomic, readonly) AMSBagValue *bu_countryCode;
+@property (nonatomic, readonly) AMSBagValue *bu_currencyCode;
+@property (nonatomic, readonly) AMSBagValue *bu_dtPurchasesPages;
+@property (nonatomic, readonly) AMSBagValue *bu_forgottenPassword;
+@property (nonatomic, readonly) AMSBagValue *bu_isAudiobooksStoreEnabled;
+@property (nonatomic, readonly) AMSBagValue *bu_isBooksStoreEnabled;
+@property (nonatomic, readonly) AMSBagValue *bu_ixStoreSheet;
+@property (nonatomic, readonly) AMSBagValue *bu_ixStoreSheetBooks;
+@property (nonatomic, readonly) AMSBagValue *bu_jsAppURL;
+@property (nonatomic, readonly) AMSBagValue *bu_language;
+@property (nonatomic, readonly) AMSBagValue *bu_languageTag;
+@property (nonatomic, readonly) AMSBagValue *bu_libraryLink;
+@property (nonatomic, readonly) AMSBagValue *bu_mediaAPITokenProviderURL;
+@property (nonatomic, readonly) AMSBagValue *bu_metrics;
+@property (nonatomic, readonly) AMSBagValue *bu_p2LaunchAudioBookStorePathPatterns;
+@property (nonatomic, readonly) AMSBagValue *bu_p2LaunchEbookstoreHostPatterns;
+@property (nonatomic, readonly) AMSBagValue *bu_p2LaunchEbookstorePathPatterns;
+@property (nonatomic, readonly) AMSBagValue *bu_p2ServiceTermsURL;
+@property (nonatomic, readonly) AMSBagValue *bu_privacyAcknowledgementURL;
+@property (nonatomic, readonly) AMSBagValue *bu_processRedirectURL;
+@property (nonatomic, readonly) AMSBagValue *bu_purchaseDAAP;
+@property (nonatomic, readonly) AMSBagValue *bu_readingGoalShareURL;
+@property (nonatomic, readonly) AMSBagValue *bu_resetAndRedirectURL;
+@property (nonatomic, readonly) AMSBagValue *bu_saveUserReviewURL;
+@property (nonatomic, readonly) AMSBagValue *bu_searchHints;
+@property (nonatomic, readonly) AMSBagValue *bu_signSAPRequest;
+@property (nonatomic, readonly) AMSBagValue *bu_signSAPSetup;
+@property (nonatomic, readonly) AMSBagValue *bu_signSAPSetupCert;
+@property (nonatomic, readonly) AMSBagValue *bu_storeFront;
+@property (nonatomic, readonly) AMSBagValue *bu_trendingSearches;
+@property (nonatomic, readonly) AMSBagValue *bu_trustedDomains;
+@property (nonatomic, readonly) AMSBagValue *bu_userRateContentURL;
+@property (nonatomic, readonly) AMSBagValue *bu_userReviewSortOptions;
+@property (nonatomic, readonly) AMSBagValue *bu_writeUserReviewURL;
 @property (nonatomic, retain) <AMSBagDataSourceProtocol> *dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -44,9 +84,12 @@
 + (id)bagCache;
 + (id)bagCacheAccessQueue;
 + (id)bagForProfile:(id)arg1 profileVersion:(id)arg2;
++ (id)bagForProfile:(id)arg1 profileVersion:(id)arg2 processInfo:(id)arg3;
++ (id)internalBag;
 
 - (void).cxx_destruct;
 - (id)URLForKey:(id)arg1;
+- (id)URLForKey:(id)arg1 account:(id)arg2;
 - (id)arrayForKey:(id)arg1;
 - (id)boolForKey:(id)arg1;
 - (void)createSnapshotWithCompletion:(id /* block */)arg1;
@@ -64,9 +107,67 @@
 - (void)setDataSource:(id)arg1;
 - (id)stringForKey:(id)arg1;
 
+// Image: /System/Library/Frameworks/VideoSubscriberAccount.framework/VideoSubscriberAccount
+
++ (id)vs_defaultBag;
+
 // Image: /System/Library/PrivateFrameworks/AdID.framework/AdID
 
 + (id)defaultBag;
+
+// Image: /System/Library/PrivateFrameworks/AppleMediaServicesUI.framework/AppleMediaServicesUI
+
++ (id)amsui_internalBag;
+
+// Image: /System/Library/PrivateFrameworks/BookUtility.framework/BookUtility
+
++ (id)_defaultValueDictionary;
++ (id)_keySetWithDictionary:(id)arg1;
++ (void)bu_audiobookStoreIsAvailable:(id /* block */)arg1;
++ (id)bu_defaultBag;
++ (id)bu_defaultBagKeysDictionary;
++ (void)bu_registerKeySetToDefaultBag:(id)arg1;
+
+- (id)bu_addFundsURL;
+- (id)bu_appAnalyticsURL;
+- (id)bu_booksISBNURL;
+- (id)bu_booksMediaAPIHost;
+- (id)bu_booksMediaAPIPreviewHost;
+- (id)bu_booksTabs;
+- (id)bu_countryCode;
+- (id)bu_currencyCode;
+- (id)bu_dtPurchasesPages;
+- (id)bu_forgottenPassword;
+- (id)bu_isAudiobooksStoreEnabled;
+- (id)bu_isBooksStoreEnabled;
+- (id)bu_ixStoreSheet;
+- (id)bu_ixStoreSheetBooks;
+- (id)bu_jsAppURL;
+- (id)bu_language;
+- (id)bu_languageTag;
+- (id)bu_libraryLink;
+- (id)bu_mediaAPITokenProviderURL;
+- (id)bu_metrics;
+- (id)bu_p2LaunchAudioBookStorePathPatterns;
+- (id)bu_p2LaunchEbookstoreHostPatterns;
+- (id)bu_p2LaunchEbookstorePathPatterns;
+- (id)bu_p2ServiceTermsURL;
+- (id)bu_privacyAcknowledgementURL;
+- (id)bu_processRedirectURL;
+- (id)bu_purchaseDAAP;
+- (id)bu_readingGoalShareURL;
+- (id)bu_resetAndRedirectURL;
+- (id)bu_saveUserReviewURL;
+- (id)bu_searchHints;
+- (id)bu_signSAPRequest;
+- (id)bu_signSAPSetup;
+- (id)bu_signSAPSetupCert;
+- (id)bu_storeFront;
+- (id)bu_trendingSearches;
+- (id)bu_trustedDomains;
+- (id)bu_userRateContentURL;
+- (id)bu_userReviewSortOptions;
+- (id)bu_writeUserReviewURL;
 
 // Image: /System/Library/PrivateFrameworks/MetricsKit.framework/MetricsKit
 

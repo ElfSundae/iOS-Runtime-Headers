@@ -13,6 +13,7 @@
     NSSet * _hapCharacteristicTuples;
     id  _lastKnownValue;
     NSDate * _lastKnownValueUpdateTime;
+    <HMFLocking> * _lock;
     NSDate * _notificationEnabledTime;
     bool  _notificationRegisteredWithRemoteGateway;
     NSMutableSet * _notificationRegistrations;
@@ -49,6 +50,7 @@
 @property (nonatomic, readonly, copy) NSString *type;
 @property (nonatomic, readonly, copy) id value;
 
++ (id /* block */)sortComparatorForCharacteristicDictionary;
 + (bool)supportsSecureCoding;
 + (bool)value:(id)arg1 differentThan:(id)arg2;
 
@@ -73,6 +75,7 @@
 - (id)getCharacteristicDictionary;
 - (id)hapCharacteristicTupleWithIdentifier:(id)arg1 linkType:(long long)arg2;
 - (id)hapCharacteristicTuples;
+- (id)init;
 - (id)initWithCharacteristic:(id)arg1 service:(id)arg2 accessory:(id)arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)instanceID;

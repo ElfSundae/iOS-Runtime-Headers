@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 - (id)_init;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)expirationDate;
 - (id)initWithCoder:(id)arg1;

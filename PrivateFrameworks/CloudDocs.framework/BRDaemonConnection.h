@@ -28,7 +28,7 @@
 - (void)_setupAndResume;
 - (id)initUsingUserLocalDaemon;
 - (id)initUsingUserLocalDaemonTokenService;
-- (/* Warning: unhandled struct encoding: '{BRXPCSyncProxy=#@@@}' */ struct BRXPCSyncProxy { Class x1; id x2; id x3; }*)newSyncProxy;
-- (/* Warning: unhandled struct encoding: '{BRXPCSyncProxy=#@@@}' */ struct BRXPCSyncProxy { Class x1; id x2; id x3; }*)newSyncTokenProxy;
+- (struct BRXPCSyncProxy { Class x1; id x2; id x3; id x4; }*)newSyncProxy;
+- (struct BRXPCSyncProxy { Class x1; id x2; id x3; id x4; }*)newSyncTokenProxy;
 
 @end

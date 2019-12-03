@@ -12,11 +12,15 @@
     NSString * _deviceModel;
     unsigned int  _fairPlayDeviceType;
     NSString * _hardwarePlatform;
+    NSNumber * _has1080pCapabilityValue;
+    NSNumber * _has720pCapabilityValue;
     NSNumber * _hasCellularDataCapabilityNumber;
     struct atomic_flag { 
-        bool _Value; 
+        _Atomic bool _Value; 
     }  _hasRegisteredForNameNotifications;
     NSNumber * _hasTelephonyCapabilityNumber;
+    NSNumber * _hasWAPICapabilityValue;
+    NSNumber * _hasWiFiCapabilityValue;
     NSNumber * _isInternalBuildNumber;
     struct CGSize { 
         double width; 
@@ -25,8 +29,10 @@
     NSString * _name;
     struct MGNotificationTokenStruct { } * _nameNotificationToken;
     NSString * _pairedDeviceGUID;
+    NSString * _pairedDeviceMediaGUID;
     NSString * _productVersion;
     NSString * _rawDeviceModel;
+    NSNumber * _screenClassValue;
     NSString * _serialNumber;
     NSString * _systemReleaseType;
 }
@@ -39,8 +45,12 @@
 @property (nonatomic, readonly, copy) NSString *deviceModel;
 @property (nonatomic, readonly) unsigned int fairPlayDeviceType;
 @property (nonatomic, readonly, copy) NSString *hardwarePlatform;
+@property (nonatomic, readonly) bool has1080pCapability;
+@property (nonatomic, readonly) bool has720pCapability;
 @property (nonatomic, readonly) bool hasCellularDataCapability;
 @property (nonatomic, readonly) bool hasTelephonyCapability;
+@property (nonatomic, readonly) bool hasWAPICapability;
+@property (nonatomic, readonly) bool hasWiFiCapability;
 @property (getter=isInternalBuild, nonatomic, readonly) bool internalBuild;
 @property (nonatomic, readonly) bool isAppleTV;
 @property (nonatomic, readonly) bool isAudioAccessory;
@@ -49,18 +59,24 @@
 @property (nonatomic, readonly) bool isIPod;
 @property (nonatomic, readonly) bool isWatch;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } mainScreenSize;
+@property (getter=isMultiUserDevice, nonatomic, readonly) bool multiUserDevice;
 @property (nonatomic, readonly, copy) NSString *name;
 @property (nonatomic, readonly, copy) NSString *pairedDeviceGUID;
+@property (nonatomic, readonly, copy) NSString *pairedDeviceMediaGUID;
 @property (nonatomic, readonly, copy) NSString *productPlatform;
 @property (nonatomic, readonly, copy) NSString *productVersion;
 @property (nonatomic, readonly, copy) NSString *rawDeviceModel;
+@property (nonatomic, readonly) int screenClass;
 @property (nonatomic, readonly, copy) NSString *serialNumber;
 @property (nonatomic, readonly, copy) NSString *systemReleaseType;
+
+// Image: /System/Library/PrivateFrameworks/iTunesCloud.framework/iTunesCloud
 
 + (id)currentDeviceInfo;
 + (id)defaultInfo;
 
 - (void).cxx_destruct;
+- (id)_activePairedDevice;
 - (int)_gestaltDeviceClass;
 - (id)_init;
 - (id)buildVersion;
@@ -72,8 +88,12 @@
 - (id)deviceModel;
 - (unsigned int)fairPlayDeviceType;
 - (id)hardwarePlatform;
+- (bool)has1080pCapability;
+- (bool)has720pCapability;
 - (bool)hasCellularDataCapability;
 - (bool)hasTelephonyCapability;
+- (bool)hasWAPICapability;
+- (bool)hasWiFiCapability;
 - (bool)isAppleTV;
 - (bool)isAudioAccessory;
 - (bool)isIPad;
@@ -84,10 +104,16 @@
 - (struct CGSize { double x1; double x2; })mainScreenSize;
 - (id)name;
 - (id)pairedDeviceGUID;
+- (id)pairedDeviceMediaGUID;
 - (id)productPlatform;
 - (id)productVersion;
 - (id)rawDeviceModel;
+- (int)screenClass;
 - (id)serialNumber;
 - (id)systemReleaseType;
+
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
+- (bool)isMultiUserDevice;
 
 @end

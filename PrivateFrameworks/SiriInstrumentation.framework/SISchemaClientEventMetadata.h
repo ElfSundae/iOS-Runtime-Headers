@@ -2,40 +2,38 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaClientEventMetadata : PBCodable <NSCopying> {
+@interface SISchemaClientEventMetadata : PBCodable <NSSecureCoding, SISchemaClientEventMetadata> {
     long long  _eventGeneratedRelativeToBootTimeTimestampNs;
     NSString * _eventGeneratedTimestampRefId;
-    struct { 
-        unsigned int eventGeneratedRelativeToBootTimeTimestampNs : 1; 
-    }  _has;
+    NSData * _siriDeviceID;
     NSData * _turnID;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) long long eventGeneratedRelativeToBootTimeTimestampNs;
-@property (nonatomic, retain) NSString *eventGeneratedTimestampRefId;
-@property (nonatomic) bool hasEventGeneratedRelativeToBootTimeTimestampNs;
-@property (nonatomic, readonly) bool hasEventGeneratedTimestampRefId;
-@property (nonatomic, readonly) bool hasTurnID;
-@property (nonatomic, retain) NSData *turnID;
+@property (nonatomic, copy) NSString *eventGeneratedTimestampRefId;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) NSData *jsonData;
+@property (nonatomic, copy) NSData *siriDeviceID;
+@property (readonly) Class superclass;
+@property (nonatomic, copy) NSData *turnID;
 
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
 - (long long)eventGeneratedRelativeToBootTimeTimestampNs;
 - (id)eventGeneratedTimestampRefId;
-- (bool)hasEventGeneratedRelativeToBootTimeTimestampNs;
-- (bool)hasEventGeneratedTimestampRefId;
-- (bool)hasTurnID;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (bool)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
+- (id)jsonData;
 - (bool)readFrom:(id)arg1;
 - (void)setEventGeneratedRelativeToBootTimeTimestampNs:(long long)arg1;
 - (void)setEventGeneratedTimestampRefId:(id)arg1;
-- (void)setHasEventGeneratedRelativeToBootTimeTimestampNs:(bool)arg1;
+- (void)setSiriDeviceID:(id)arg1;
 - (void)setTurnID:(id)arg1;
+- (id)siriDeviceID;
 - (id)turnID;
 - (void)writeTo:(id)arg1;
 

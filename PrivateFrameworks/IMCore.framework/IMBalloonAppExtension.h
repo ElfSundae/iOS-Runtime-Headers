@@ -26,7 +26,6 @@
 - (id)_initWithPluginBundle:(id)arg1 extension:(id)arg2 pluginKitProxyClass:(Class)arg3;
 - (bool)canSendDataPayloads;
 - (id)extension;
-- (id)extensionConnection;
 - (id)initWithPluginBundle:(id)arg1 appBundle:(id)arg2;
 - (id)initWithPluginBundle:(id)arg1 extension:(id)arg2;
 - (id)initWithPluginBundle:(id)arg1 pluginKitProxy:(id)arg2 extension:(id)arg3;
@@ -35,7 +34,6 @@
 - (id)itemID;
 - (id)plugin;
 - (id)proxy;
-- (id)proxyWithErrorHandle:(id /* block */)arg1;
 - (id)requestIdentifier;
 - (void)setCanSendDataPayloads:(bool)arg1;
 - (void)setProxy:(id)arg1;
@@ -47,10 +45,20 @@
 // Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
 
 - (id)__ck_breadcrumbImage;
-- (id)__ck_browserImage;
-- (void)__ck_prefetchBrowserImage;
+- (id)__ck_browserImageForInterfaceStyle:(long long)arg1;
+- (void)__ck_prefetchBrowserImageForInterfaceStyle:(long long)arg1;
 - (id)__ck_statusImage;
 - (id)_adamID;
+- (id)_appIconFromFileURL:(id)arg1;
+- (void)_checkForIconUpdates:(id)arg1 interfaceStyle:(long long)arg2;
+- (id)_generateCacheImageForInterfaceStyle:(long long)arg1;
+- (void)_generateIconsFirstTimeForInterfaceStyle:(long long)arg1;
+- (id)_generatePlaceholderImageForInterfaceStyle:(long long)arg1;
+- (id)_iconPathOnDisk:(id)arg1;
+- (void)_saveIconToURL:(id)arg1 toURL:(id)arg2;
+- (id)_validProxy;
+- (id)cacheKeyForInterfaceStyle:(long long)arg1;
 - (id)containingBundleIdentifier;
+- (id)placeholderImageForInterfaceStyle:(long long)arg1;
 
 @end

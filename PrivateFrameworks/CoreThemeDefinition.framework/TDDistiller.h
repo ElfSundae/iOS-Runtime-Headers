@@ -76,6 +76,7 @@
 - (bool)distillCustomColors;
 - (bool)distillCustomFontSizes;
 - (bool)distillCustomFonts;
+- (bool)distillLocalizationss;
 - (bool)distillNamedElements;
 - (bool)distillRenditions;
 - (bool)distillThemeAppearances;

@@ -25,6 +25,7 @@
 - (id)init;
 - (id)initWithName:(id)arg1;
 - (bool)isCancelled;
+- (id)map:(id /* block */)arg1;
 - (id)name;
 - (id)recover:(id /* block */)arg1;
 - (id)run;

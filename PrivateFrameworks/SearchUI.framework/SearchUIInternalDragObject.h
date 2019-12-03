@@ -2,13 +2,13 @@
    Image: /System/Library/PrivateFrameworks/SearchUI.framework/SearchUI
  */
 
-@interface SearchUIInternalDragObject : NSObject <UIItemProviderWriting> {
-    <SearchUIDragObject> * _dragObject;
+@interface SearchUIInternalDragObject : NSObject <NSItemProviderWriting> {
+    SearchUIRowModel * _dragObject;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (retain) <SearchUIDragObject> *dragObject;
+@property (retain) SearchUIRowModel *dragObject;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly, copy) NSArray *writableTypeIdentifiersForItemProvider;

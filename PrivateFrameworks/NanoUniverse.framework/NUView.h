@@ -6,7 +6,7 @@
     NSBundle * _bundle;
     <NUViewDelegate> * _delegate;
     CLKDevice * _device;
-    NUGLQuad * _quad;
+    NUMetalQuad * _quad;
     CLKUIQuadView * _quadView;
     CLKUIResourceProviderKey * _resourceProviderKey;
     NUResources * _resources;
@@ -22,11 +22,12 @@
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)delegate;
-- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 options:(unsigned long long)arg2;
+- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)layoutSubviews;
 - (id)provideAtlasBacking:(id)arg1;
+- (id)quadView;
 - (void)quadViewWillDisplay:(id)arg1 forTime:(double)arg2;
-- (void)renderSynchronouslyWithImageQueueDiscard:(bool)arg1;
+- (void)renderSynchronouslyWithImageQueueDiscard:(bool)arg1 inGroup:(id)arg2;
 - (id)resourceProviderKey;
 - (id)scene;
 - (void)setAnimationFrameInterval:(int)arg1;

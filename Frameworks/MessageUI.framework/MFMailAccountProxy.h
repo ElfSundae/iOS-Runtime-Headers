@@ -20,11 +20,11 @@
 @property (nonatomic, readonly) NSString *uniqueID;
 @property (nonatomic, readonly) NSString *username;
 
+- (void).cxx_destruct;
 - (id)_emailAddressesAndAliases;
 - (id)_initWithProperties:(id)arg1;
 - (bool)_isActive;
 - (bool)_isRestricted;
-- (void)dealloc;
 - (id)emailAddresses;
 - (id)firstEmailAddress;
 - (id)fromEmailAddresses;

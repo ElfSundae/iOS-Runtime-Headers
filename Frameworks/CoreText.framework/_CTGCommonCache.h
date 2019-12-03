@@ -4,7 +4,7 @@
 
 @interface _CTGCommonCache : NSObject {
     struct type { 
-        unsigned char __lx[216]; 
+        unsigned char __lx[16]; 
     }  _cacheBytes;
 }
 

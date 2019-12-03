@@ -13,29 +13,17 @@
     NSObject<OS_dispatch_queue> * _deviceQueue;
     int  _deviceUsageCount;
     NSObject<OS_dispatch_queue> * _notificationQueue;
+    NSMutableArray * _registeredDeviceClients;
     NSMutableArray * _streamsControlledByOtherClients;
     NSMutableArray * _victimizedDeviceClients;
 }
 
-+ (bool)activeDeviceEquals:(struct OpaqueFigCaptureDevice { }*)arg1;
-+ (struct OpaqueFigCaptureDevice { }*)copyDefaultVideoDeviceWithStealingBehavior:(int)arg1 forPID:(int)arg2 clientIDOut:(int*)arg3 withDeviceAvailabilityChangedHandler:(id /* block */)arg4;
-+ (struct OpaqueFigCaptureStream { }*)copyStreamForFlashlightWithPosition:(int)arg1 deviceType:(int)arg2 forDevice:(struct OpaqueFigCaptureDevice { }*)arg3;
-+ (struct OpaqueFigCaptureStream { }*)copyStreamWithPosition:(int)arg1 deviceType:(int)arg2 forDevice:(struct OpaqueFigCaptureDevice { }*)arg3;
-+ (struct OpaqueFigCaptureStream { }*)copyStreamWithPosition:(int)arg1 deviceType:(int)arg2 forDevice:(struct OpaqueFigCaptureDevice { }*)arg3 errOut:(int*)arg4;
-+ (id)copyStreamsWithPositions:(id)arg1 deviceTypes:(id)arg2 forDevice:(struct OpaqueFigCaptureDevice { }*)arg3;
-+ (id)copyStreamsWithPositions:(id)arg1 deviceTypes:(id)arg2 forDevice:(struct OpaqueFigCaptureDevice { }*)arg3 errOut:(int*)arg4;
 + (void)initialize;
-+ (void)invalidateVideoDevice:(struct OpaqueFigCaptureDevice { }*)arg1 forPID:(int)arg2;
-+ (void)prewarmDefaultVideoDeviceForPID:(int)arg1 completionHandler:(id /* block */)arg2;
-+ (void)resumeSystemPressuredDevice;
-+ (id)sharedInstance;
-+ (void)shutDownSystemPressuredDevice:(struct OpaqueFigCaptureDevice { }*)arg1;
-+ (float)structuredLightProjectorStandbyTemperatureWithError:(int*)arg1;
-+ (void)takeBackFlashlightDevice:(struct OpaqueFigCaptureDevice { }*)arg1 forPID:(int)arg2;
-+ (void)takeBackVideoDevice:(struct OpaqueFigCaptureDevice { }*)arg1 forPID:(int)arg2 requestDeviceWhenAvailableAgain:(bool)arg3 informOtherClients:(bool)arg4;
-+ (void)unregisterCallbacksForClient:(int)arg1;
++ (id)sharedCaptureDeviceVendor;
 + (bool)videoCaptureDeviceFirmwareIsLoaded;
 
+- (struct OpaqueFigCaptureStream { }*)_copyStreamWithPosition:(int)arg1 deviceType:(int)arg2 forDevice:(struct OpaqueFigCaptureDevice { }*)arg3 requestControl:(bool)arg4 error:(int*)arg5;
+- (id)_copyStreamsWithPositions:(id)arg1 deviceTypes:(id)arg2 forDevice:(struct OpaqueFigCaptureDevice { }*)arg3 requestControl:(bool)arg4 error:(int*)arg5;
 - (void)_createDevice:(const char *)arg1 clientPID:(int)arg2;
 - (void)_deviceAvailabilityChangedForClient:(id)arg1 available:(bool)arg2 postNotification:(bool)arg3 reason:(int)arg4;
 - (void)_dumpInventory;
@@ -50,7 +38,7 @@
 - (id)_popLatestVictimizedDeviceClient;
 - (void)_registerForDeviceNotifications:(struct OpaqueFigCaptureDevice { }*)arg1;
 - (void)_registerForStreamNotifications:(struct OpaqueFigCaptureStream { }*)arg1;
-- (void)_registerNewDeviceClientForPID:(int)arg1 clientIDOut:(int*)arg2 deviceAvailabilityChangedHandler:(id /* block */)arg3;
+- (id)_registeredDeviceClientWithID:(int)arg1;
 - (void)_releaseDevice;
 - (void)_relinquishControlOfStreams;
 - (void)_removeDeviceClient;
@@ -61,18 +49,20 @@
 - (void)_unregisterForDeviceNotifications:(struct OpaqueFigCaptureDevice { }*)arg1;
 - (void)_unregisterFromStreamNotifications:(struct OpaqueFigCaptureStream { }*)arg1;
 - (bool)activeDeviceEquals:(struct OpaqueFigCaptureDevice { }*)arg1;
-- (struct OpaqueFigCaptureDevice { }*)copyDefaultVideoDeviceWithStealingBehavior:(int)arg1 forPID:(int)arg2 clientIDOut:(int*)arg3 withDeviceAvailabilityChangedHandler:(id /* block */)arg4;
-- (struct OpaqueFigCaptureStream { }*)copyStreamWithPosition:(int)arg1 deviceType:(int)arg2 forDevice:(struct OpaqueFigCaptureDevice { }*)arg3 requestControl:(bool)arg4 errOut:(int*)arg5;
-- (id)copyStreamsWithPositions:(id)arg1 deviceTypes:(id)arg2 forDevice:(struct OpaqueFigCaptureDevice { }*)arg3 requestControl:(bool)arg4 errOut:(int*)arg5;
+- (struct OpaqueFigCaptureDevice { }*)copyDeviceForClient:(int)arg1;
+- (struct OpaqueFigCaptureStream { }*)copyStreamForFlashlightWithPosition:(int)arg1 deviceType:(int)arg2 forDevice:(struct OpaqueFigCaptureDevice { }*)arg3;
+- (struct OpaqueFigCaptureStream { }*)copyStreamWithPosition:(int)arg1 deviceType:(int)arg2 forDevice:(struct OpaqueFigCaptureDevice { }*)arg3 error:(int*)arg4;
+- (id)copyStreamsWithPositions:(id)arg1 deviceTypes:(id)arg2 forDevice:(struct OpaqueFigCaptureDevice { }*)arg3 error:(int*)arg4;
 - (void)dealloc;
 - (id)initWithDeviceCreateFunction:(int (*)arg1;
 - (void)invalidateVideoDevice:(struct OpaqueFigCaptureDevice { }*)arg1 forPID:(int)arg2;
-- (void)prewarmDefaultVideoDeviceForPID:(int)arg1 withCompletionHandler:(id /* block */)arg2;
+- (void)prewarmDefaultVideoDeviceForPID:(int)arg1 completionHandler:(id /* block */)arg2;
+- (int)registerClientWithPID:(int)arg1 stealingBehavior:(int)arg2 deviceSharingWithOtherClientsAllowed:(bool)arg3 deviceAvailabilityChangedHandler:(id /* block */)arg4;
 - (void)resumeSystemPressuredDevice;
+- (void)setDeviceReleaseBehavior:(int)arg1 forClient:(int)arg2;
 - (void)shutDownSystemPressuredDevice:(struct OpaqueFigCaptureDevice { }*)arg1;
 - (float)structuredLightProjectorStandbyTemperatureWithError:(int*)arg1;
-- (void)takeBackFlashlightDevice:(struct OpaqueFigCaptureDevice { }*)arg1 forPID:(int)arg2;
-- (void)takeBackVideoDevice:(struct OpaqueFigCaptureDevice { }*)arg1 forPID:(int)arg2 requestDeviceWhenAvailableAgain:(bool)arg3 informOtherClients:(bool)arg4;
+- (void)takeBackDevice:(struct OpaqueFigCaptureDevice { }*)arg1 forClient:(int)arg2;
 - (void)unregisterCallbacksForClient:(int)arg1;
 
 @end

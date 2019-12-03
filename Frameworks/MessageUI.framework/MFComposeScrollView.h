@@ -12,9 +12,9 @@
 @property (nonatomic) bool shouldScrollToFirstResponder;
 @property (nonatomic) bool subviewsDisabled;
 
+- (void).cxx_destruct;
 - (bool)_scrollsToMakeFirstResponderVisible;
 - (void)beginBlockingScroll;
-- (void)dealloc;
 - (void)didAddSubview:(id)arg1;
 - (void)disableSubview:(id)arg1;
 - (void)enableSubview:(id)arg1;

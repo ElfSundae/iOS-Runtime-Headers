@@ -3,17 +3,19 @@
  */
 
 @interface MPMediaLibraryArtwork : NSObject {
-    NSObject<OS_dispatch_queue> * _accessQueue;
     ML3Artwork * _artwork;
     MPMediaLibraryArtworkRequest * _artworkRequest;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _stateLock;
     NSArray * _validSizes;
 }
 
-@property (nonatomic, retain) NSObject<OS_dispatch_queue> *accessQueue;
 @property (nonatomic, retain) ML3Artwork *artwork;
 @property (nonatomic) MPMediaLibraryArtworkRequest *artworkRequest;
 @property (nonatomic, copy) NSDictionary *effectsMetadata;
 @property (nonatomic, readonly, copy) NSURL *originalFileURL;
+@property (nonatomic, readonly) struct os_unfair_lock_s { unsigned int x1; } stateLock;
 @property (nonatomic, readonly) NSArray *validSizes;
 
 + (bool)artworkExistsForRequest:(id)arg1;
@@ -24,7 +26,6 @@
 + (bool)needsToFetchArtworkForRequest:(id)arg1;
 
 - (void).cxx_destruct;
-- (id)accessQueue;
 - (id)artwork;
 - (id)artworkRequest;
 - (id)effectsMetadata;
@@ -34,10 +35,10 @@
 - (id)init;
 - (bool)isEqual:(id)arg1;
 - (id)originalFileURL;
-- (void)setAccessQueue:(id)arg1;
 - (void)setArtwork:(id)arg1;
 - (void)setArtworkRequest:(id)arg1;
 - (void)setEffectsMetadata:(id)arg1;
+- (struct os_unfair_lock_s { unsigned int x1; })stateLock;
 - (id)validSizes;
 
 @end

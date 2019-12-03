@@ -36,7 +36,6 @@
 
 + (double)atomLineHeight;
 + (id)defaultLabelFont;
-+ (id)defaultLabelTextColor;
 + (id)primaryLabelFont;
 + (double)spaceBetweenColonAndFirstAtomNaturalEdge;
 

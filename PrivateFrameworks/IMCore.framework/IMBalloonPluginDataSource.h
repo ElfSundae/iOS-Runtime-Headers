@@ -5,6 +5,7 @@
 @interface IMBalloonPluginDataSource : NSObject {
     NSURL * _URLToOpenOnTapAction;
     NSString * __imMessageGUID;
+    bool  _allowedByScreenTime;
     NSArray * _attachmentGUIDs;
     NSString * _bundleID;
     IMChat * _chat;
@@ -30,6 +31,7 @@
 @property (nonatomic, readonly) NSURL *URLToOpenOnTapAction;
 @property (nonatomic, retain) NSString *_imMessageGUID;
 @property (nonatomic, readonly) NSArray *allPayloads;
+@property (nonatomic) bool allowedByScreenTime;
 @property (nonatomic, retain) NSArray *attachmentGUIDs;
 @property (nonatomic, readonly, retain) NSString *bundleID;
 @property (nonatomic, retain) IMChat *chat;
@@ -65,6 +67,7 @@
 
 // Image: /System/Library/PrivateFrameworks/IMCore.framework/IMCore
 
++ (id)individualPreviewSummaryForPluginPayload:(id)arg1;
 + (id)previewSummary;
 + (id)previewSummaryForPluginBundle:(id)arg1;
 + (id)previewSummaryForPluginPayload:(id)arg1 withBundleID:(id)arg2 previewAttachmentURL:(id*)arg3 previewAttachmentUTI:(id*)arg4;
@@ -85,10 +88,12 @@
 - (void)_updateTemporaryAttachmentURLsForPluginPayload;
 - (unsigned long long)_updateWithPluginPayload:(id)arg1 messageID:(long long)arg2 messageGUID:(id)arg3;
 - (id)allPayloads;
+- (bool)allowedByScreenTime;
 - (id)attachmentGUIDs;
 - (void)beginShowingLastConsumedBreadcrumbForOutgoingPayload:(id)arg1;
 - (id)bundleID;
 - (id)chat;
+- (void)checkForAllowedByScreenTime;
 - (id)consumedPayloads;
 - (id)dataDetectedResult;
 - (void)datasourceWasMovedToNewGuid:(id)arg1;
@@ -128,6 +133,7 @@
 - (void)sendPayload:(id)arg1;
 - (void)sendPayload:(id)arg1 attachments:(id)arg2;
 - (id)sessionGUID;
+- (void)setAllowedByScreenTime:(bool)arg1;
 - (void)setAttachmentGUIDs:(id)arg1;
 - (void)setChat:(id)arg1;
 - (void)setConsumedPayloads:(id)arg1;

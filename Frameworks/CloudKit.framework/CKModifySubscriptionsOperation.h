@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
  */
 
-@interface CKModifySubscriptionsOperation : CKDatabaseOperation <MSPCloudRequest> {
+@interface CKModifySubscriptionsOperation : CKDatabaseOperation {
     NSMutableArray * _deletedSubscriptionIDs;
     id /* block */  _modifySubscriptionsCompletionBlock;
     NSMutableArray * _savedSubscriptions;
@@ -12,20 +12,13 @@
     NSArray * _subscriptionsToSave;
 }
 
-@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, retain) NSMutableArray *deletedSubscriptionIDs;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, copy) id /* block */ modifySubscriptionsCompletionBlock;
 @property (nonatomic, retain) NSMutableArray *savedSubscriptions;
-@property (nonatomic, readonly) bool shouldEnqueueDependenciesWhenPerformingAsCloudRequest;
 @property (nonatomic, retain) NSMutableDictionary *subscriptionErrors;
 @property (nonatomic, copy) NSArray *subscriptionIDsToDelete;
 @property (nonatomic, retain) NSMutableDictionary *subscriptionsBySubscriptionIDs;
 @property (nonatomic, copy) NSArray *subscriptionsToSave;
-@property (readonly) Class superclass;
-
-// Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
 
 - (void).cxx_destruct;
 - (bool)CKOperationShouldRun:(id*)arg1;
@@ -52,11 +45,5 @@
 - (id)subscriptionIDsToDelete;
 - (id)subscriptionsBySubscriptionIDs;
 - (id)subscriptionsToSave;
-
-// Image: /System/Library/PrivateFrameworks/MapsSupport.framework/MapsSupport
-
-- (void)addCloudAccessCompletionBlock:(id /* block */)arg1;
-- (unsigned long long)maximumRetries;
-- (void)setNetworkBehaviorIsDiscretionary:(bool)arg1;
 
 @end

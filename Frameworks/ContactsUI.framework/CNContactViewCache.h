@@ -7,25 +7,27 @@
     CNCache * _cachedContainers;
     CNCache * _cachedPolicies;
     CNContactStore * _contactStore;
-    CNUIGeminiDataSource * _geminiDataSource;
 }
 
 @property (nonatomic, retain) CNCache *cachedAccounts;
 @property (nonatomic, retain) CNCache *cachedContainers;
 @property (nonatomic, retain) CNCache *cachedPolicies;
 @property (nonatomic, retain) CNContactStore *contactStore;
-@property (nonatomic, retain) CNUIGeminiDataSource *geminiDataSource;
+
++ (bool)isCandidatePolicy:(id)arg1 ofContactInCandidateContainerWithType:(long long)arg2 preferredOverPolicy:(id)arg3 ofContactInContainerWithType:(long long)arg4;
++ (bool)shouldIgnorePolicyOfContactInGuarianRestrictedContainer:(id)arg1;
 
 - (void).cxx_destruct;
 - (id)_accountForContact:(id)arg1;
-- (id)_containerForContact:(id)arg1;
 - (id)_policyForContact:(id)arg1;
 - (id)accountForContact:(id)arg1;
+- (id)bestPolicyForContact:(id)arg1;
 - (id)cachedAccounts;
 - (id)cachedContainers;
 - (id)cachedPolicies;
 - (id)contactStore;
-- (id)geminiDataSource;
+- (id)containerForContact:(id)arg1;
+- (id)defaultContainerPolicy;
 - (id)nts_lazyContactStore;
 - (id)policyForContact:(id)arg1;
 - (id)policyForDefaultContainer;
@@ -34,6 +36,5 @@
 - (void)setCachedContainers:(id)arg1;
 - (void)setCachedPolicies:(id)arg1;
 - (void)setContactStore:(id)arg1;
-- (void)setGeminiDataSource:(id)arg1;
 
 @end

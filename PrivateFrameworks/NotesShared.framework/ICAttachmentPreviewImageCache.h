@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
  */
 
-@interface ICAttachmentPreviewImageCache : ICCache
+@interface ICAttachmentPreviewImageCache : ICThumbnailDataCache
 
 - (void)attachmentPreviewImagesDidUpdate:(id)arg1;
 - (void)dealloc;

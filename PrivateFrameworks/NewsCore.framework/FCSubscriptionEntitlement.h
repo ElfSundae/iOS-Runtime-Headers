@@ -6,6 +6,7 @@
     NSNumber * _appAdamID;
     NSString * _chargeCurrencyCode;
     NSNumber * _inAppAdamID;
+    bool  _isAmplifyUser;
     bool  _isPurchaser;
     bool  _isTrialPeriod;
     bool  _newsAppPurchase;
@@ -14,6 +15,7 @@
 @property (nonatomic, readonly) NSNumber *appAdamID;
 @property (nonatomic, readonly) NSString *chargeCurrencyCode;
 @property (nonatomic, readonly) NSNumber *inAppAdamID;
+@property (nonatomic, readonly) bool isAmplifyUser;
 @property (nonatomic, readonly) bool isPurchaser;
 @property (nonatomic, readonly) bool isTrialPeriod;
 @property (getter=isNewsAppPurchase, nonatomic, readonly) bool newsAppPurchase;
@@ -23,8 +25,8 @@
 - (id)chargeCurrencyCode;
 - (id)description;
 - (id)inAppAdamID;
-- (id)initWithAppAdamID:(id)arg1 inAppAdamID:(id)arg2 chargeCurrencyCode:(id)arg3 newsAppPurchase:(bool)arg4;
-- (id)initWithAppAdamID:(id)arg1 inAppAdamID:(id)arg2 chargeCurrencyCode:(id)arg3 newsAppPurchase:(bool)arg4 isTrailPeriod:(bool)arg5 isPurchaser:(bool)arg6;
+- (id)initWithAppAdamID:(id)arg1 inAppAdamID:(id)arg2 chargeCurrencyCode:(id)arg3 newsAppPurchase:(bool)arg4 isTrailPeriod:(bool)arg5 isPurchaser:(bool)arg6 isAmplifyUser:(bool)arg7;
+- (bool)isAmplifyUser;
 - (bool)isNewsAppPurchase;
 - (bool)isPurchaser;
 - (bool)isTrialPeriod;

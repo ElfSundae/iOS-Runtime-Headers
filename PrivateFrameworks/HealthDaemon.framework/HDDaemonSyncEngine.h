@@ -3,10 +3,9 @@
  */
 
 @interface HDDaemonSyncEngine : NSObject <HDSyncEngine> {
+    HDDaemonSyncEntityManager * _entityManager;
     HDProfile * _profile;
     NSObject<OS_dispatch_queue> * _queue;
-    NSArray * _queue_allOrderedSyncEntities;
-    NSDictionary * _queue_allSyncEntitiesByIdentifier;
     id /* block */  _unitTest_didCompleteReadTransaction;
 }
 
@@ -23,27 +22,26 @@
 - (void).cxx_destruct;
 - (bool)_applySyncChange:(id)arg1 entity:(Class)arg2 store:(id)arg3 error:(id*)arg4;
 - (bool)_performSyncSession:(id)arg1 error:(id*)arg2;
-- (void)_queue_loadSyncEntities;
-- (long long)_receivedAnchorForEntityIdentifier:(id)arg1 store:(id)arg2 error:(id*)arg3;
 - (void)_resetStore:(id)arg1;
 - (long long)_sendChanges:(id)arg1 session:(id)arg2 error:(id*)arg3;
-- (bool)_setReceivedAnchor:(long long)arg1 forEntityClass:(Class)arg2 store:(id)arg3 error:(id*)arg4;
 - (id)_syncAnchorMapForSyncEntityClass:(Class)arg1 session:(id)arg2 error:(id*)arg3;
-- (long long)_synchronizeSyncEntityClass:(Class)arg1 session:(id)arg2 predicate:(id)arg3 startAnchor:(long long*)arg4 finalAnchor:(long long)arg5 postTransactionBlocks:(id)arg6 error:(id*)arg7;
-- (bool)_transactionDidEndForSession:(id)arg1 error:(id*)arg2;
+- (long long)_synchronizeSyncEntityClass:(Class)arg1 session:(id)arg2 startAnchor:(long long*)arg3 finalAnchor:(long long)arg4 postTransactionBlocks:(id)arg5 error:(id*)arg6;
 - (long long)_validateAnchorsForSyncChange:(id)arg1 store:(id)arg2 error:(id*)arg3;
 - (bool)_validateSequenceNumberForSyncChange:(id)arg1 store:(id)arg2 error:(id*)arg3;
 - (id)allOrderedSyncEntities;
 - (id)allSyncEntitiesByIdentifier;
 - (bool)applyAcknowledgedAnchorMap:(id)arg1 forStore:(id)arg2 resetNext:(bool)arg3 resetInvalid:(bool)arg4 error:(id*)arg5;
 - (bool)applySyncChange:(id)arg1 forStore:(id)arg2 error:(id*)arg3;
+- (bool)generateSyncObjectsForSession:(id)arg1 entity:(Class)arg2 syncAnchorRange:(struct HDSyncAnchorRange { long long x1; long long x2; })arg3 messageHandler:(id)arg4 error:(id*)arg5;
 - (bool)getReceivedAnchorMap:(id)arg1 forStore:(id)arg2 error:(id*)arg3;
 - (id)initWithProfile:(id)arg1;
+- (long long)nextSyncAnchorForEntity:(Class)arg1 session:(id)arg2 startSyncAnchor:(long long)arg3 error:(id*)arg4;
 - (bool)performSyncSession:(id)arg1 error:(id*)arg2;
 - (id)profile;
 - (id)queue;
 - (void)resetAnchorsWithFailedChanges:(id)arg1 store:(id)arg2;
 - (void)resetStore:(id)arg1;
+- (long long)session:(id)arg1 requiresSyncWithAnchors:(id)arg2 error:(id*)arg3;
 - (void)setProfile:(id)arg1;
 - (void)setQueue:(id)arg1;
 - (void)setUnitTest_didCompleteReadTransaction:(id /* block */)arg1;

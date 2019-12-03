@@ -12,6 +12,7 @@
     PSSpecifier * _faceTimeEnabledGroupSpecifier;
     PSSpecifier * _faceTimeEnabledSpecifier;
     NSArray * _faceTimePhotosGroupSpecifiers;
+    bool  _hideAppleIDLogin;
     NSArray * _receiveRelayCallsGroupSpecifiers;
     NSArray * _replyWithMessageGroupSpecifiers;
     struct { 
@@ -21,12 +22,15 @@
         unsigned int showEnableSwitch : 1; 
         unsigned int refreshingCallerIdValues : 1; 
     }  _settingsFlags;
+    bool  _showDeviceAliases;
     bool  _showReceiveRelayCalls;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) bool hideAppleIDLogin;
+@property (nonatomic) bool showDeviceAliases;
 @property (nonatomic) bool showEnableSwitch;
 @property (nonatomic, readonly) bool showReceiveRelayCalls;
 @property (readonly) Class superclass;
@@ -69,6 +73,7 @@
 - (void)_showAuthKitSignInIfNecessary;
 - (void)_showLocaleChooserWithAccount:(id)arg1;
 - (void)_showPrivacySheet:(id)arg1;
+- (void)_showRemoveAlertForAlias:(id)arg1 specifier:(id)arg2;
 - (void)_showSignInController;
 - (void)_showViewAccountControllerForAccount:(id)arg1;
 - (id)_specifierIdentifierForAccount:(id)arg1;
@@ -96,6 +101,7 @@
 - (id)createSpecifierForCallerIdAlias:(id)arg1;
 - (id)customTitle;
 - (void)dealloc;
+- (void)doneButtonTapped:(id)arg1;
 - (void)firstRunController:(id)arg1 finishedWithState:(unsigned long long)arg2;
 - (void)firstRunControllerDidFinish:(id)arg1 finished:(bool)arg2;
 - (void)formSheetViewDidDisappear;
@@ -107,6 +113,7 @@
 - (long long)groupIdForSpecifier:(id)arg1;
 - (long long)groupIdForSpecifierId:(id)arg1;
 - (void)handleCallStatusChanged;
+- (bool)hideAppleIDLogin;
 - (long long)indexOfLastSpecifierInGroup:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (bool)isiMessageCallerIDNonDefault;
@@ -133,7 +140,9 @@
 - (void)setFaceTimeEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setFaceTimeEnabled:(id)arg1 specifier:(id)arg2 animated:(bool)arg3;
 - (void)setFaceTimePhotosEnabled:(id)arg1 specifier:(id)arg2;
+- (void)setHideAppleIDLogin:(bool)arg1;
 - (void)setReceiveRelayedCallsEnabled:(id)arg1 specifier:(id)arg2;
+- (void)setShowDeviceAliases:(bool)arg1;
 - (void)setShowEnableSwitch:(bool)arg1;
 - (bool)shouldReloadSpecifiersOnResume;
 - (bool)shouldShowBlacklistSettings;
@@ -144,11 +153,13 @@
 - (bool)shouldShowReceiveRelayCalls;
 - (bool)shouldShowReceiveThumperCalls;
 - (bool)shouldShowReplyWithMessage;
+- (bool)shouldShowSiriSpecifiers;
 - (bool)showAccounts:(bool)arg1 animated:(bool)arg2;
 - (bool)showAliases:(bool)arg1 animated:(bool)arg2;
 - (void)showAllSettings:(bool)arg1 animated:(bool)arg2;
 - (void)showBlacklistSettings:(bool)arg1 animated:(bool)arg2;
 - (bool)showCallerId:(bool)arg1 animated:(bool)arg2;
+- (bool)showDeviceAliases;
 - (bool)showEnableSwitch;
 - (void)showFaceTimePhotosSettings:(bool)arg1 animated:(bool)arg2;
 - (bool)showReceiveRelayCalls;
@@ -169,6 +180,7 @@
 - (void)viewAccountControllerDidFinish:(id)arg1 withAppleId:(id)arg2;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidDisappear:(bool)arg1;
+- (void)viewDidLoad;
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;

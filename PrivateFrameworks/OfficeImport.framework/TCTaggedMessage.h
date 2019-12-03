@@ -12,7 +12,7 @@
 
 + (id)taggedMessageWithMessageText:(id)arg1;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithMessageText:(id)arg1;
 - (int)messageTag;
 - (id)messageText;

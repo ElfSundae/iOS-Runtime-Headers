@@ -4,9 +4,8 @@
 
 @interface SGModelRules : NSObject
 
-+ (bool)areModelsAvailableForObjective:(unsigned long long)arg1 inLanguage:(id)arg2;
-+ (void)enumModelsAvailableForMode:(unsigned long long)arg1 objective:(unsigned long long)arg2 language:(id)arg3 withBlock:(id /* block */)arg4;
-+ (id)modelsAvailabeForMode:(unsigned long long)arg1 objective:(unsigned long long)arg2 language:(id)arg3;
-+ (id)rules;
++ (id)_modelsAvailabeForMode:(unsigned long long)arg1 objective:(unsigned long long)arg2 language:(id)arg3;
++ (void)loadPredictionModelForObjective:(unsigned long long)arg1 language:(id)arg2 withBlock:(id /* block */)arg3;
++ (bool)shouldCollectTrainingDataForObjective:(unsigned long long)arg1 language:(id)arg2;
 
 @end

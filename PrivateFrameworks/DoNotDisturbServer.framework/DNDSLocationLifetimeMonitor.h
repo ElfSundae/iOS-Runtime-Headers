@@ -10,6 +10,7 @@
     bool  _hasActiveLifetimes;
     CLLocationManager * _locationManager;
     NSObject<OS_dispatch_queue> * _queue;
+    bool  _regionEntered;
 }
 
 @property (nonatomic, readonly, copy) NSArray *activeLifetimeAssertionUUIDs;
@@ -21,7 +22,6 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_allRelevantAssertions;
 - (void)_queue_beginMonitoringCurrentLocation;
 - (void)_queue_geofenceLocation:(id)arg1;
 - (void)_queue_refreshMonitor;
@@ -31,7 +31,7 @@
 - (id)dataSource;
 - (id)delegate;
 - (id)init;
-- (void)locationManager:(id)arg1 didExitRegion:(id)arg2;
+- (void)locationManager:(id)arg1 didDetermineState:(long long)arg2 forRegion:(id)arg3;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
 - (void)locationManager:(id)arg1 monitoringDidFailForRegion:(id)arg2 withError:(id)arg3;

@@ -23,6 +23,7 @@
 - (void)dealloc;
 - (void)deleteCharactersInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)fastestEncoding;
 - (id)formatConfiguration;
 - (void)getCharacters:(unsigned short*)arg1 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (id)initWithCoder:(id)arg1;

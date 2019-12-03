@@ -18,6 +18,7 @@
 
 - (void).cxx_destruct;
 - (id)biometryEnabled;
+- (id)description;
 - (id)dictionary;
 - (id)identificationEnabled;
 - (id)initWithDictionary:(id)arg1;

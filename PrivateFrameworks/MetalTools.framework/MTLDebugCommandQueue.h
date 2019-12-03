@@ -6,5 +6,6 @@
 
 - (id)commandBuffer;
 - (id)commandBufferWithUnretainedReferences;
+- (void)insertDebugCaptureBoundary;
 
 @end

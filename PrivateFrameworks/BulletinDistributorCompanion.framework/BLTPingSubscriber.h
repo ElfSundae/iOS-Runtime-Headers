@@ -20,6 +20,7 @@
 
 - (void).cxx_destruct;
 - (void)_subscribeToSectionID:(id)arg1 pingHandler:(id)arg2 ackType:(unsigned long long)arg3 forFullBulletins:(bool)arg4;
+- (void)_subscribeToSectionID:(id)arg1 pingHandler:(id)arg2 ackType:(unsigned long long)arg3 forFullBulletins:(bool)arg4 forNotifications:(bool)arg5;
 - (void)dealloc;
 - (void)getWillNanoPresentNotificationForSectionID:(id)arg1 completion:(id /* block */)arg2;
 - (void)getWillNanoPresentNotificationForSectionID:(id)arg1 subsectionIDs:(id)arg2 completion:(id /* block */)arg3;
@@ -37,9 +38,14 @@
 - (id)service;
 - (void)setPingHandlers:(id)arg1;
 - (void)setService:(id)arg1;
+- (void)subscribeToSectionID:(id)arg1 withBulletinAckForwardForAnyConnectionHandler:(id /* block */)arg2;
 - (void)subscribeToSectionID:(id)arg1 withBulletinAckForwardHandler:(id /* block */)arg2;
 - (void)subscribeToSectionID:(id)arg1 withBulletinAckHandler:(id /* block */)arg2;
 - (void)subscribeToSectionID:(id)arg1 withBulletinHandler:(id /* block */)arg2;
+- (void)subscribeToSectionID:(id)arg1 withNotificationAckForwardForAnyConnectionHandler:(id /* block */)arg2;
+- (void)subscribeToSectionID:(id)arg1 withNotificationAckForwardHandler:(id /* block */)arg2;
+- (void)subscribeToSectionID:(id)arg1 withNotificationAckHandler:(id /* block */)arg2;
+- (void)subscribeToSectionID:(id)arg1 withNotificationHandler:(id /* block */)arg2;
 - (void)subscribeToSectionID:(id)arg1 withPingAckForwardHandler:(id /* block */)arg2;
 - (void)subscribeToSectionID:(id)arg1 withPingAckHandler:(id /* block */)arg2;
 - (void)subscribeToSectionID:(id)arg1 withPingHandler:(id /* block */)arg2;

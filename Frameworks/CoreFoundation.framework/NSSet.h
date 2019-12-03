@@ -2,21 +2,28 @@
    Image: /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
  */
 
-@interface NSSet : NSObject <NSCopying, NSFastEnumeration, NSMutableCopying, NSSecureCoding, PQLBindable, _SetOperable>
+@interface NSSet : NSObject <HKUUIDCollection, HMFObject, NSCopying, NSFastEnumeration, NSMutableCopying, NSSecureCoding, PQLBindable, _SetOperable>
 
 @property (nonatomic, readonly, copy) NSArray *allObjects;
+@property (nonatomic, readonly, copy) NSArray *attributeDescriptions;
 @property (nonatomic, readonly) long long count;
 @property (readonly) unsigned long long count;
 @property (nonatomic, readonly, copy) NSString *crk_stableDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) NSSet *ef_flatten;
+@property (nonatomic, readonly) NSSet *ef_notEmpty;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy) NSString *hmbDescription;
 @property (getter=hmf_isEmpty, readonly) bool hmf_empty;
+@property (readonly, copy) NSString *privateDescription;
+@property (readonly, copy) NSString *propertyDescription;
+@property (readonly, copy) NSString *shortDescription;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) NSSet *wf_combinations;
 
 // Image: /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
 
-+ (id)_alloc;
 + (id)allocWithZone:(struct _NSZone { }*)arg1;
 + (id)newSetWithObjects:(const id*)arg1 count:(unsigned long long)arg2;
 + (id)set;
@@ -43,7 +50,7 @@
 - (bool)containsObject:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned long long)count;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (unsigned long long)countForObject:(id)arg1;
 - (id)description;
 - (id)descriptionWithLocale:(id)arg1;
@@ -96,6 +103,8 @@
 
 + (id)setWithTrackedSet:(id)arg1;
 
+- (id)ac_map:(id /* block */)arg1;
+- (id)ac_mapNullable:(id /* block */)arg1;
 - (id)initWithTrackedSet:(id)arg1;
 
 // Image: /System/Library/Frameworks/ClassKit.framework/ClassKit
@@ -105,14 +114,6 @@
 // Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
 
 - (void)CKAssignToContainerWithID:(id)arg1;
-
-// Image: /System/Library/Frameworks/CoreLocation.framework/CoreLocation
-
-- (void)cl_json_serializeValue:(struct value_ostream { bool x1; struct ostream {} *x2; }*)arg1;
-
-// Image: /System/Library/Frameworks/CoreMotion.framework/CoreMotion
-
-- (void)cl_json_serializeValue:(struct value_ostream { bool x1; struct ostream {} *x2; }*)arg1;
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
@@ -142,16 +143,18 @@
 // Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
 
 + (id)hk_setByUnioningSet:(id)arg1 otherSet:(id)arg2;
++ (id)hk_typesForArrayOf:(Class)arg1;
++ (id)hk_typesForDictionaryMapping:(Class)arg1 to:(Class)arg2;
++ (id)hk_typesForSetOf:(Class)arg1;
 
+- (id)hk_dataForAllUUIDs;
+- (bool)hk_enumerateUUIDsWithError:(id*)arg1 block:(id /* block */)arg2;
 - (id)hk_filter:(id /* block */)arg1;
 - (id)hk_firstSortedObjectWithComparison:(id /* block */)arg1;
 - (id)hk_intersection:(id)arg1;
 - (id)hk_map:(id /* block */)arg1;
+- (id)hk_mapToDictionary:(id /* block */)arg1;
 - (id)hk_minus:(id)arg1;
-
-// Image: /System/Library/Frameworks/MapKit.framework/MapKit
-
-- (void)_mapkit_makeObjectsPerformSelector:(SEL)arg1 withObject:(id)arg2;
 
 // Image: /System/Library/Frameworks/Photos.framework/Photos
 
@@ -162,6 +165,12 @@
 - (id)CAMLType;
 - (void)encodeWithCAMLWriter:(id)arg1;
 
+// Image: /System/Library/Frameworks/VisionKit.framework/VisionKit
+
+- (bool)dc_containsObjectPassingTest:(id /* block */)arg1;
+- (id)dc_objectPassingTest:(id /* block */)arg1;
+- (id)dc_objectsOfClass:(Class)arg1;
+
 // Image: /System/Library/PrivateFrameworks/AXCoreUtilities.framework/AXCoreUtilities
 
 - (id)ax_filteredSetUsingBlock:(id /* block */)arg1;
@@ -170,11 +179,15 @@
 
 // Image: /System/Library/PrivateFrameworks/AccessibilitySharedSupport.framework/AccessibilitySharedSupport
 
-- (id)makeObjectsRespondToSelector:(SEL)arg1;
+- (id)ax_makeObjectsRespondToSelector:(SEL)arg1;
 
 // Image: /System/Library/PrivateFrameworks/ActivityAchievements.framework/ActivityAchievements
 
 - (id)intersectSet:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/ActivitySharing.framework/ActivitySharing
+
+- (id)as_autoreleasingCompactMap:(id /* block */)arg1;
 
 // Image: /System/Library/PrivateFrameworks/AppleAccount.framework/AppleAccount
 
@@ -183,6 +196,9 @@
 
 // Image: /System/Library/PrivateFrameworks/AppleMediaServices.framework/AppleMediaServices
 
++ (id)ams_JSONClasses;
++ (id)ams_PLISTClasses;
+
 - (id)ams_filterUsingTest:(id /* block */)arg1;
 - (id)ams_firstObjectPassingTest:(id /* block */)arg1;
 - (id)ams_mapWithTransform:(id /* block */)arg1;
@@ -190,10 +206,17 @@
 
 // Image: /System/Library/PrivateFrameworks/BaseBoard.framework/BaseBoard
 
+- (id)bs_compactMap:(id /* block */)arg1;
 - (bool)bs_containsObjectPassingTest:(id /* block */)arg1;
 - (void)bs_each:(id /* block */)arg1;
 - (id)bs_filter:(id /* block */)arg1;
+- (id)bs_firstObjectPassingTest:(id /* block */)arg1;
 - (id)bs_map:(id /* block */)arg1;
+- (id)bs_reduce:(id)arg1 block:(id /* block */)arg2;
+
+// Image: /System/Library/PrivateFrameworks/CDDataAccess.framework/CDDataAccess
+
+- (id)DACompactDescription;
 
 // Image: /System/Library/PrivateFrameworks/CalDAV.framework/CalDAV
 
@@ -218,17 +241,27 @@
 
 - (id)crk_mapUsingBlock:(id /* block */)arg1;
 - (id)crk_setByAddingSet:(id)arg1;
+- (id)crk_setByIntersectingSet:(id)arg1;
 - (id)crk_setBySubtractingSet:(id)arg1;
 - (id)crk_stableDescription;
+- (id)setByCombiningWithSet:(id)arg1 operation:(SEL)arg2;
 - (id)setByIntersectingSet:(id)arg1;
 - (id)setBySubtractingSet:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/ContactsFoundation.framework/ContactsFoundation
 
 - (bool)_cn_any:(id /* block */)arg1;
+- (id)_cn_filter:(id /* block */)arg1;
 - (id)_cn_firstObjectPassingTest:(id /* block */)arg1;
 - (id)_cn_indexBy:(id /* block */)arg1;
 - (id)_cn_map:(id /* block */)arg1;
+
+// Image: /System/Library/PrivateFrameworks/ContentKit.framework/ContentKit
+
+- (id)mapAndFilterObjectsUsingBlock:(id /* block */)arg1;
+- (id)mapObjectsUsingBlock:(id /* block */)arg1;
+- (id)wf_combinations;
+- (id)wf_combinationsWithRepetitionsOfSize:(unsigned long long)arg1;
 
 // Image: /System/Library/PrivateFrameworks/DataAccess.framework/DataAccess
 
@@ -246,6 +279,19 @@
 - (bool)dc_containsObjectPassingTest:(id /* block */)arg1;
 - (id)dc_objectPassingTest:(id /* block */)arg1;
 - (id)dc_objectsOfClass:(Class)arg1;
+
+// Image: /System/Library/PrivateFrameworks/EmailFoundation.framework/EmailFoundation
+
+- (bool)ef_all:(id /* block */)arg1;
+- (bool)ef_any:(id /* block */)arg1;
+- (id)ef_anyPassingTest:(id /* block */)arg1;
+- (id)ef_compactMap:(id /* block */)arg1;
+- (unsigned long long)ef_countObjectsPassingTest:(id /* block */)arg1;
+- (id)ef_filter:(id /* block */)arg1;
+- (id)ef_flatMap:(id /* block */)arg1;
+- (id)ef_flatten;
+- (id)ef_notEmpty;
+- (id)ef_partition:(id /* block */)arg1;
 
 // Image: /System/Library/PrivateFrameworks/FMCoreLite.framework/FMCoreLite
 
@@ -276,24 +322,35 @@
 
 // Image: /System/Library/PrivateFrameworks/HMFoundation.framework/HMFoundation
 
++ (id)shortDescription;
+
 - (id)hmf_addedObjectsFromSet:(id)arg1;
 - (id)hmf_commonObjectsFromSet:(id)arg1;
 - (bool)hmf_isEmpty;
 - (id)hmf_removedObjectsFromSet:(id)arg1;
+- (id)privateDescription;
 - (id)shortDescription;
 
 // Image: /System/Library/PrivateFrameworks/Home.framework/Home
 
+- (id)hf_appleTVMediaProfiles;
+- (id)hf_homePodMediaProfiles;
 - (id)hf_prettyDescription;
+
+// Image: /System/Library/PrivateFrameworks/HomeKitBackingStore.framework/HomeKitBackingStore
+
+- (id)hmbDescription;
 
 // Image: /System/Library/PrivateFrameworks/IMFoundation.framework/IMFoundation
 
+- (id)__imDeepCopy;
 - (void)__imForEach:(id /* block */)arg1;
 - (id)__imSetByApplyingBlock:(id /* block */)arg1;
 
-// Image: /System/Library/PrivateFrameworks/IMSharedUtilities.framework/Frameworks/XCTest.framework/XCTest
+// Image: /System/Library/PrivateFrameworks/IntentsFoundation.framework/IntentsFoundation
 
-- (id)xct_setByApplyingBlock:(id /* block */)arg1;
+- (id)if_compactMap:(id /* block */)arg1;
+- (id)if_map:(id /* block */)arg1;
 
 // Image: /System/Library/PrivateFrameworks/MediaRemote.framework/MediaRemote
 
@@ -302,18 +359,6 @@
 // Image: /System/Library/PrivateFrameworks/Memories.framework/Memories
 
 - (id)mutableDeepCopy;
-
-// Image: /System/Library/PrivateFrameworks/Message.framework/Message
-
-- (bool)mf_all:(id /* block */)arg1;
-- (bool)mf_any:(id /* block */)arg1;
-- (id)mf_anyPassingTest:(id /* block */)arg1;
-- (unsigned long long)mf_countObjectsPassingTest:(id /* block */)arg1;
-- (id)mf_filter:(id /* block */)arg1;
-- (id)mf_flatMap:(id /* block */)arg1;
-- (id)mf_flatten;
-- (id)mf_map:(id /* block */)arg1;
-- (id)mf_partition:(id /* block */)arg1;
 
 // Image: /System/Library/PrivateFrameworks/NanoPassKit.framework/NanoPassKit
 
@@ -333,6 +378,7 @@
 - (id)na_flatMap:(id /* block */)arg1;
 - (id)na_map:(id /* block */)arg1;
 - (id)na_reduceWithInitialValue:(id)arg1 reducer:(id /* block */)arg2;
+- (bool)na_safeContainsObject:(id)arg1;
 - (id)na_setByDiffingWithSet:(id)arg1;
 - (id)na_setByFlattening;
 - (id)na_setByIntersectingWithSet:(id)arg1;
@@ -366,9 +412,11 @@
 
 // Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
 
-- (bool)containsObjectPassingTest:(id /* block */)arg1;
-- (id)objectPassingTest:(id /* block */)arg1;
-- (id)objectsOfClass:(Class)arg1;
+- (id)ic_compactMap:(id /* block */)arg1;
+- (bool)ic_containsObjectPassingTest:(id /* block */)arg1;
+- (id)ic_map:(id /* block */)arg1;
+- (id)ic_objectPassingTest:(id /* block */)arg1;
+- (id)ic_objectsOfClass:(Class)arg1;
 
 // Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
 
@@ -379,13 +427,15 @@
 - (bool)tsu_containsObjectIdenticalTo:(id)arg1;
 - (bool)tsu_isHomogeneousForClass:(Class)arg1;
 - (id)tsu_onlyObject;
+- (id)tsu_setByIntersectingSet:(id)arg1;
 - (id)tsu_setByMappingObjectsUsingBlock:(id /* block */)arg1;
+- (id)tsu_setBySubtractingSet:(id)arg1;
 - (id)tsu_sortedArray;
 
 // Image: /System/Library/PrivateFrameworks/PassKitCore.framework/PassKitCore
 
 - (id)pk_setByApplyingBlock:(id /* block */)arg1;
-- (id)setByRemovingObject:(id)arg1;
+- (id)pk_setByRemovingObject:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
 
@@ -405,7 +455,10 @@
 
 // Image: /System/Library/PrivateFrameworks/SafariCore.framework/SafariCore
 
+- (id)safari_anyObjectPassingTest:(id /* block */)arg1;
 - (id)safari_arrayByMappingObjectsUsingBlock:(id /* block */)arg1;
+- (id)safari_mapAndFilterObjectsUsingBlock:(id /* block */)arg1;
+- (id)safari_setByRemovingObject:(id)arg1;
 - (id)safari_shortestURL;
 - (id)safari_smallestObject:(id /* block */)arg1;
 
@@ -413,6 +466,11 @@
 
 - (bool)containsObjectClass:(id)arg1;
 - (id)scrc_deepMutableCopyWithZone:(struct _NSZone { }*)arg1;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoardHome.framework/SpringBoardHome
+
+- (id)sbh_diffWithSet:(id)arg1;
+- (id)sbh_map:(id /* block */)arg1;
 
 // Image: /System/Library/PrivateFrameworks/TSUtility.framework/TSUtility
 
@@ -443,7 +501,15 @@
 - (id)adhocNetworks;
 - (id)infrastructureNetworks;
 - (id)instantHotspotNetworks;
+- (id)knownNetworks;
+- (id)popularNetworks;
 - (id)unconfiguredNetworks;
+
+// Image: /System/Library/PrivateFrameworks/WiFiPolicy.framework/WiFiPolicy
+
+- (id)bssidPredicate;
+- (id)reformatBSSIDs;
+- (id)tilePredicate;
 
 // Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
 
@@ -454,8 +520,10 @@
 
 - (id)tsp_initWithProtobufStringArray:(const struct RepeatedPtrField<std::__1::basic_string<char> > { struct Arena {} *x1; int x2; int x3; struct Rep {} *x4; }*)arg1;
 - (void)tsp_saveToProtobufStringArray:(struct RepeatedPtrField<std::__1::basic_string<char> > { struct Arena {} *x1; int x2; int x3; struct Rep {} *x4; }*)arg1;
+- (id)tsp_sortedArray;
 - (bool)tss_containsStyleOrVariationOfStyle:(id)arg1;
 - (bool)tss_hasVariations;
+- (bool)tsu_containsKindOfClass:(Class)arg1;
 - (bool)tsu_containsObjectIdenticalTo:(id)arg1;
 - (bool)tsu_isHomogeneousForClass:(Class)arg1;
 - (id)tsu_onlyObject;

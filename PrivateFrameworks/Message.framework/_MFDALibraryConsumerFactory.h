@@ -14,8 +14,8 @@
 @property (nonatomic, retain) MFMessage *message;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)dataConsumerForPart:(id)arg1;
-- (void)dealloc;
 - (id)library;
 - (id)message;
 - (void)setLibrary:(id)arg1;

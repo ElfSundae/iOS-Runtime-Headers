@@ -6,11 +6,22 @@
     NSArray * _deviceTypes;
     NSArray * _devices;
     NSString * _mediaType;
-    long long * _position;
+    long long  _position;
+    NSArray * _supportedMultiCamDeviceSets;
 }
 
 @property (nonatomic, readonly) NSArray *devices;
+@property (nonatomic, readonly) NSArray *supportedMultiCamDeviceSets;
 
++ (id)allAudioDeviceTypes;
++ (id)allAudioDevices;
++ (id)allDeviceTypes;
++ (id)allDevices;
++ (id)allSupportedMultiCamDeviceSets;
++ (id)allVideoDeviceTypes;
++ (id)allVideoDevices;
++ (id)allVirtualDeviceTypes;
++ (id)allVirtualDevices;
 + (id)discoverySessionWithDeviceTypes:(id)arg1 mediaType:(id)arg2 position:(long long)arg3;
 
 - (id)_initWithDeviceTypes:(id)arg1 mediaType:(id)arg2 position:(long long)arg3;
@@ -18,5 +29,6 @@
 - (id)description;
 - (id)devices;
 - (id)init;
+- (id)supportedMultiCamDeviceSets;
 
 @end

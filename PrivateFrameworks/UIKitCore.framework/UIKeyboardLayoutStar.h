@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface UIKeyboardLayoutStar : UIKeyboardLayout <UIKBEmojiHitTestResponder, UIKeyboardHandBiasTransitionCoordinatorDelegate, UIKeyboardPinchGestureRecognizerDelegate> {
+@interface UIKeyboardLayoutStar : UIKeyboardLayout <UIKBEmojiHitTestResponder, UIKBResizingKeyplaneCoordinatorCoordinatorDelegate, UIKeyboardHandBiasTransitionCoordinatorDelegate, UIKeyboardPinchGestureRecognizerDelegate, UIKeyboardTypingStyleEstimatorDelegate> {
     NSMutableSet * _accentInfo;
     UIKBTree * _activeKey;
     NSMutableDictionary * _activeKeyplaneTransitions;
@@ -43,6 +43,7 @@
     UIKBTree * _inactiveLanguageIndicator;
     double  _initialSplitProgress;
     bool  _inputTraitsPreventInitialReuse;
+    bool  _isContinuousPathUnderway;
     bool  _isOutOfBounds;
     bool  _isRebuilding;
     bool  _isTrackpadMode;
@@ -53,6 +54,7 @@
     NSMutableDictionary * _keyboards;
     UIKBTree * _keyplane;
     NSString * _keyplaneName;
+    UIView * _keyplaneTransformationAreaView;
     NSMutableSet * _keyplaneTransformations;
     UIKBKeyplaneView * _keyplaneView;
     NSMutableSet * _keysUnderIndicator;
@@ -74,6 +76,7 @@
     UIKBTree * _multitapKey;
     bool  _muteNextKeyClickSound;
     UIKBRenderConfig * _passcodeRenderConfig;
+    UIImageView * _pathEffectGlowView;
     bool  _pendingDictationReload;
     UIKeyboardPinchGestureRecognizer * _pinchGestureRecognizer;
     NSString * _preRotateKeyplaneName;
@@ -81,12 +84,15 @@
     bool  _preRotateTrackpadMode;
     NSString * _preTouchKeyplaneName;
     int  _preferredTrackingChangeCount;
+    NSDate * _prevProgressiveCandidateRequestTime;
     double  _prevTouchDownTime;
     NSDate * _prevTouchMoreKeyTime;
     double  _prevTouchUpFinishedTime;
     double  _prevTouchUpTime;
     unsigned long long  _prevUpActions;
+    NSTimer * _progressiveCandidateUpdateTimer;
     UIKBRenderConfig * _renderConfig;
+    UIKBResizingKeyplaneCoordinator * _resizingKeyplaneCoordinator;
     SEL  _returnAction;
     SEL  _returnLongAction;
     id  _returnTarget;
@@ -107,6 +113,7 @@
     int  _shiftTrackingChangeCount;
     bool  _showDictationKey;
     bool  _showIntlKey;
+    bool  _showsPunctuationKeysOnPrimaryKeyplane;
     UISelectionFeedbackGenerator * _slideBehaviour;
     SEL  _spaceAction;
     SEL  _spaceLongAction;
@@ -160,17 +167,24 @@
 + (id)sharedRivenKeyplaneGenerator;
 
 - (void)_addExtraControlKeysIfNecessary;
+- (void)_addResizeTransformationIfNecessary;
+- (bool)_allowContinuousPathUI;
 - (bool)_allowPaddle;
+- (bool)_allowStartingContinuousPathForTouchInfo:(id)arg1;
 - (id)_appendingSecondaryStringToVariantsTop:(id)arg1 secondaryString:(id)arg2 withDirection:(id)arg3;
 - (void)_autoSplit:(id)arg1;
+- (bool)_continuousPathModalPunctuationPlaneEnabled;
+- (bool)_continuousPathSpotlightEffectEnabled;
 - (id)_currentKeyplaneTransformationContext;
 - (void)_didChangeKeyplaneWithContext:(id)arg1;
 - (void)_didTapBiasEscapeButton:(id)arg1;
+- (void)_gestureRecognizerFailed:(id)arg1;
 - (bool)_handRestRecognizerCancelShouldBeEnd;
 - (bool)_handleTouchForEmojiInputView;
 - (id)_keyboardLongPressInteractionRegions;
 - (id)_keyplaneVariantsKeyForString:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_paddedKeyUnionFrame;
+- (id)_pathEffectView;
 - (bool)_pointAllowedInStaticHitBuffer:(struct CGPoint { double x1; double x2; })arg1;
 - (void)_recordKeystrokeStatisticForKeyPress;
 - (void)_setBiasEscapeButtonVisible:(bool)arg1;
@@ -179,13 +193,17 @@
 - (bool)_shouldInheritScreenScaleAsContentScaleFactor;
 - (bool)_stringContainsCurrencyCharacters:(id)arg1;
 - (void)_swapGlobeAndMoreKeysIfNecessary;
+- (void)_transformFloatingKeyboardIfNecessary;
+- (void)_transitionToContinuousPathState:(long long)arg1 forTouchInfo:(id)arg2;
 - (void)_updateSupplementaryKeys;
 - (id)_variantsByAppendingDualStringKey:(id)arg1 toVariants:(id)arg2;
+- (id)_variantsOfCurrencyKey:(id)arg1 language:(id)arg2;
 - (void)accessibilitySensitivityChanged;
 - (id)activationIndicatorView;
 - (id)activeKey;
 - (id)activeMultitapCompleteKey;
 - (id)activeTouchInfoForShift;
+- (void)addContinuousPathPoint:(struct CGPoint { double x1; double x2; })arg1 withTimestamp:(double)arg2;
 - (bool)allKeyplanesHaveSameHeight;
 - (void)annotateKeysWithDeveloperPunctuation;
 - (void)annotateWriteboardDisplayTypeHintForKeyIfNeeded;
@@ -209,6 +227,7 @@
 - (void)changeToKeyplane:(id)arg1;
 - (void)cleanupPreviousKeyboardWithNewInputTraits:(id)arg1;
 - (void)clearAllTouchInfo;
+- (void)clearContinuousPathView;
 - (void)clearHandwritingStrokesIfNeededAndNotify:(bool)arg1;
 - (void)clearInfoForTouch:(id)arg1;
 - (void)clearInfoForTouch:(id)arg1 forResting:(bool)arg2;
@@ -238,6 +257,7 @@
 - (long long)defaultSelectedVariantIndexForKey:(id)arg1 withActions:(unsigned long long)arg2;
 - (void)deleteHandwritingStrokesAtIndexes:(id)arg1;
 - (bool)diacriticForwardCompose;
+- (void)didBeginContinuousPath;
 - (void)didClearInput;
 - (void)didDetectPinchWithSeparation:(double)arg1;
 - (void)didEndIndirectSelectionGesture;
@@ -253,9 +273,8 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })dragGestureRectInView:(id)arg1;
 - (id)emojiKeyManager;
 - (void)endMultitapForKey:(id)arg1;
-- (void)fadeMenu:(id)arg1 forKey:(id)arg2;
-- (void)fadeMenu:(id)arg1 forKey:(id)arg2 withDelay:(double)arg3;
 - (void)fadeWithInvocation:(id)arg1;
+- (void)finishContinuousPathView;
 - (void)finishHandBiasTransitionWithFinalBias:(long long)arg1;
 - (void)finishSliderBehaviorFeedback;
 - (void)finishSplitTransition;
@@ -263,7 +282,7 @@
 - (void)finishSplitTransitionWithProgress:(double)arg1;
 - (void)finishSplitWithCompletion:(id /* block */)arg1;
 - (id)flickPopupStringForKey:(id)arg1 withString:(id)arg2;
-- (id)flickStringForInputKey:(id)arg1 direction:(int)arg2;
+- (id)flickStringForInputKey:(id)arg1 direction:(long long)arg2;
 - (void)flushKeyCache:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })frameForKeyWithRepresentedString:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })frameForKeylayoutName:(id)arg1;
@@ -293,14 +312,14 @@
 - (void)handlePopupView;
 - (void)handlePopupView:(id)arg1;
 - (SEL)handlerForNotification:(id)arg1;
-- (bool)handwritingPlane;
 - (bool)hasAccentKey;
+- (bool)hasActiveContinuousPathInput;
 - (bool)hasCandidateKeys;
-- (void)hideMenu:(id)arg1 forKey:(id)arg2;
 - (id)highlightedVariantListForStylingKey:(id)arg1;
 - (double)hitBuffer;
 - (id)hitTest:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
 - (id)hostViewForHandBiasTransition:(id)arg1;
+- (id)hostViewForResizingKeyplane:(id)arg1;
 - (bool)ignoreWriteboard;
 - (bool)ignoresShiftState;
 - (void)incrementPunctuationIfNeeded:(id)arg1;
@@ -314,10 +333,16 @@
 - (bool)is10KeyRendering;
 - (bool)isAlphabeticPlane;
 - (bool)isDeadkeyInput:(id)arg1;
+- (bool)isDeveloperGestureKeybaord;
 - (bool)isEmojiKeyplane;
+- (bool)isGeometricShiftOrMoreKeyForTouch:(id)arg1;
+- (bool)isHandwritingPlane;
+- (bool)isKanaPlane;
 - (bool)isKeyScriptSwitchKey:(id)arg1;
 - (bool)isLongPressedKey:(id)arg1;
 - (bool)isMultitapKey:(id)arg1;
+- (bool)isResized;
+- (bool)isResizing;
 - (bool)isRotating;
 - (bool)isShiftKeyBeingHeld;
 - (bool)isShiftKeyPlaneChooser;
@@ -342,9 +367,12 @@
 - (id)keyplaneNameForRevertAfterTouch;
 - (id)keyplaneNamed:(id)arg1;
 - (unsigned long long)keyplaneShiftState;
+- (bool)keyplaneSupportsResizingGesture;
+- (bool)keyplaneUsesResizingOffset;
 - (double)lastTouchDownTimestamp;
 - (double)lastTouchUpTimestamp;
 - (double)lastTwoFingerTapTimestamp;
+- (void)layoutSubviews;
 - (id)layoutTag;
 - (id)localizedInputKey;
 - (id)localizedInputMode;
@@ -360,7 +388,7 @@
 - (void)performHitTestForTouchInfo:(id)arg1 touchStage:(int)arg2 executionContextPassingUIKBTree:(id)arg3;
 - (bool)performReturnAction;
 - (bool)performSpaceAction;
-- (bool)pinchCanBeginWithTouches:(id)arg1;
+- (bool)pinchCanBeginWithTouches:(id)arg1 andScale:(double)arg2;
 - (bool)pinchDetected;
 - (void)pinchDidConsumeTouch:(id)arg1;
 - (void)pinchHandler:(id)arg1;
@@ -373,6 +401,7 @@
 - (void)populateFlickPopupsForKey:(id)arg1;
 - (id)popupKeyViews;
 - (id)preTouchKeyplaneName;
+- (void)prepareForFloatingTransition:(bool)arg1;
 - (void)prepareForSplitTransition;
 - (void)prepareSliderBehaviorFeedback;
 - (id)prepareTransition:(id)arg1 forTargetHandBias:(long long)arg2 coordinator:(id)arg3;
@@ -384,6 +413,7 @@
 - (void)refreshForRivenPreferences;
 - (void)refreshGhostKeyState;
 - (void)relayoutForWriteboardKey;
+- (void)reloadCurrentKeyplane;
 - (void)removeFromSuperview;
 - (id)renderConfig;
 - (struct CGImage { }*)renderedImageWithStateFallbacksForToken:(id)arg1;
@@ -391,6 +421,7 @@
 - (struct CGImage { }*)renderedKeyplaneWithToken:(id)arg1 split:(bool)arg2;
 - (void)resetHRRLayoutState;
 - (void)resetPanAlternativesForEndedTouch:(id)arg1;
+- (void)resizeKeyplaneAndRedraw:(bool)arg1;
 - (void)restoreDefaultsForAllKeys;
 - (void)restoreDefaultsForKey:(id)arg1;
 - (void)setAction:(SEL)arg1 forKey:(id)arg2;
@@ -440,27 +471,31 @@
 - (bool)shouldCommitPrecedingTouchesForTouchDownWithActions:(unsigned long long)arg1;
 - (bool)shouldDeactivateWithoutWindow;
 - (bool)shouldHitTestKey:(id)arg1;
+- (bool)shouldIgnoreDistantKey;
 - (bool)shouldMatchCaseForDomainKeys;
 - (bool)shouldMergeAssistantBarWithKeyboardLayout;
 - (bool)shouldMergeKey:(id)arg1;
 - (bool)shouldPreventInputManagerHitTestingForKey:(id)arg1;
 - (bool)shouldRetestKey:(id)arg1 withKeyplane:(id)arg2;
 - (bool)shouldRetestTouchDraggedFromKey:(id)arg1;
+- (bool)shouldRetestTouchUp:(id)arg1;
 - (bool)shouldSendStringForFlick:(id)arg1;
 - (bool)shouldSendTouchUpToInputManager:(id)arg1;
 - (bool)shouldShowDictationKey;
 - (bool)shouldShowGestureKeyboardIntroduction;
 - (bool)shouldShowIndicator;
+- (bool)shouldShowInternationalMenuForKey:(id)arg1;
 - (bool)shouldSkipResponseToGlobeKey:(id)arg1 atPoint:(struct CGPoint { double x1; double x2; })arg2;
 - (bool)shouldUseDefaultShiftStateFromLayout;
 - (bool)shouldYieldToControlCenterForFlickWithInitialPoint:(struct CGPoint { double x1; double x2; })arg1 finalPoint:(struct CGPoint { double x1; double x2; })arg2;
-- (void)showFlickView:(int)arg1 withKey:(id)arg2 flickString:(id)arg3;
+- (void)showFlickView:(long long)arg1 withKey:(id)arg2 flickString:(id)arg3;
 - (bool)showGestureKeyboardIntroductionIfNeeded;
 - (void)showKeyboardWithInputTraits:(id)arg1 screenTraits:(id)arg2 splitTraits:(id)arg3;
 - (void)showMenu:(id)arg1 forKey:(id)arg2;
 - (void)showPopupVariantsForKey:(id)arg1;
-- (void)showPopupView:(int)arg1 withKey:(id)arg2 popupInfo:(id)arg3 force:(bool)arg4;
+- (void)showPopupView:(long long)arg1 withKey:(id)arg2 popupInfo:(id)arg3 force:(bool)arg4;
 - (void)showSplitTransitionView:(bool)arg1;
+- (bool)showsDedicatedEmojiKeyAlongsideGlobeButton;
 - (bool)showsDictationKey;
 - (bool)showsInternationalKey;
 - (id)simulateTouch:(struct CGPoint { double x1; double x2; })arg1;
@@ -481,6 +516,7 @@
 - (bool)stretchKeyboardToFit;
 - (bool)stretchKeyboardToFitKeyplane:(id)arg1;
 - (bool)supportStylingWithKey:(id)arg1;
+- (bool)supportsContinuousPath;
 - (bool)supportsEmoji;
 - (void)swipeDetected:(id)arg1;
 - (id)synthesizeTouchUpEventForKey:(id)arg1;
@@ -492,13 +528,19 @@
 - (void)touchChanged:(id)arg1 executionContext:(id)arg2;
 - (void)touchDown:(id)arg1 executionContext:(id)arg2;
 - (void)touchDownWithKey:(id)arg1 atPoint:(struct CGPoint { double x1; double x2; })arg2 executionContext:(id)arg3;
+- (void)touchDragged:(id)arg1;
 - (void)touchDragged:(id)arg1 executionContext:(id)arg2;
 - (id)touchInfoForKey:(id)arg1;
 - (void)touchMultitapTimer;
 - (bool)touchPassesDragThreshold:(id)arg1;
 - (void)touchUp:(id)arg1 executionContext:(id)arg2;
+- (void)traitCollectionDidChange;
+- (void)transitionToModalContinuousPathKeyplane;
+- (void)transitionToPunctuationKeysVisible:(bool)arg1;
 - (void)triggerSpaceKeyplaneSwitchIfNecessary;
+- (void)typingStyleEstimator:(id)arg1 didChangeTypingStyleEstimate:(unsigned long long)arg2;
 - (void)uninstallGestureRecognizers;
+- (id)unprocessedTouchEventsForTouchInfo:(id)arg1 touchStage:(int)arg2 forcedKeyCode:(int)arg3;
 - (unsigned long long)upActionFlagsForKey:(id)arg1;
 - (void)upActionShift;
 - (void)updateAutolocalizedKeysForKeyplane:(id)arg1;

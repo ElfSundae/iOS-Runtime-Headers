@@ -4,6 +4,7 @@
 
 @interface FMFLocationSharingViewController : PSListController <FMFSessionDelegateInternal> {
     NSArray * _allFollowersHandles;
+    bool  _areMeDeviceInfoLoaded;
     bool  _areSpecifiersLoaded;
     NSArray * _deviceSpecifiers;
     NSMutableDictionary * _dsidToFamilyPhoto;
@@ -13,14 +14,19 @@
     NSArray * _followersSpecifiers;
     UIAlertController * _genericErrorAlert;
     NSArray * _hashedFamilyDsids;
+    bool  _isAccessibilitySize;
+    bool  _isFindMyDeviceOn;
     bool  _isMyLocationEnabled;
     FMFHandle * _lastSelectedHandle;
+    bool  _meDeviceChangePending;
+    NSSet * _meDevices;
     NSObject<OS_dispatch_queue> * _specifiersQueue;
     bool  _useFamilyCirclePhotos;
     bool  _useFamilyCirclePhotosLoaded;
 }
 
 @property (nonatomic, retain) NSArray *allFollowersHandles;
+@property (nonatomic) bool areMeDeviceInfoLoaded;
 @property (nonatomic) bool areSpecifiersLoaded;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -33,8 +39,12 @@
 @property (nonatomic, retain) UIAlertController *genericErrorAlert;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSArray *hashedFamilyDsids;
+@property (nonatomic) bool isAccessibilitySize;
+@property (nonatomic) bool isFindMyDeviceOn;
 @property (nonatomic) bool isMyLocationEnabled;
 @property (nonatomic, retain) FMFHandle *lastSelectedHandle;
+@property (nonatomic) bool meDeviceChangePending;
+@property (nonatomic, retain) NSSet *meDevices;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *specifiersQueue;
 @property (readonly) Class superclass;
 @property (nonatomic) bool useFamilyCirclePhotos;
@@ -42,6 +52,9 @@
 
 - (void).cxx_destruct;
 - (id)_defaultSpecifiers;
+- (void)_findMyDeviceSpecifierWasTapped:(id)arg1;
+- (id)_findMyDeviceSpecifiers;
+- (id)_findMyDeviceStatus:(id)arg1;
 - (id)_followerHandleWithHashedDSID:(id)arg1;
 - (bool)_isFamilyMemberAFollower:(id)arg1;
 - (bool)_isHandleAFollower:(id)arg1;
@@ -60,6 +73,7 @@
 - (void)addShareActionToContactViewController:(id)arg1;
 - (id)allFollowersHandles;
 - (id)allHandlesMatchingABCardForSelectedHandle:(id)arg1;
+- (bool)areMeDeviceInfoLoaded;
 - (bool)areSpecifiersLoaded;
 - (void)contactStoreDidChange:(id)arg1;
 - (void)dealloc;
@@ -82,8 +96,12 @@
 - (id)hashedFamilyDsids;
 - (id)identifierForHandle:(id)arg1;
 - (id)init;
+- (bool)isAccessibilitySize;
+- (bool)isFindMyDeviceOn;
 - (bool)isMyLocationEnabled;
 - (id)lastSelectedHandle;
+- (bool)meDeviceChangePending;
+- (id)meDevices;
 - (id)monogramForHandle:(id)arg1;
 - (void)networkReachabilityUpdated:(bool)arg1;
 - (bool)noMeDeviceSelected:(id)arg1;
@@ -92,7 +110,9 @@
 - (void)reloadSpecifiersOnMainQueue;
 - (void)removeFollower:(id)arg1;
 - (id)reverseString:(id)arg1;
+- (void)saveActiveDeviceSelection;
 - (void)setAllFollowersHandles:(id)arg1;
+- (void)setAreMeDeviceInfoLoaded:(bool)arg1;
 - (void)setAreSpecifiersLoaded:(bool)arg1;
 - (void)setDeviceSpecifiers:(id)arg1;
 - (void)setDsidToFamilyPhoto:(id)arg1;
@@ -102,8 +122,12 @@
 - (void)setFollowersSpecifiers:(id)arg1;
 - (void)setGenericErrorAlert:(id)arg1;
 - (void)setHashedFamilyDsids:(id)arg1;
+- (void)setIsAccessibilitySize:(bool)arg1;
+- (void)setIsFindMyDeviceOn:(bool)arg1;
 - (void)setIsMyLocationEnabled:(bool)arg1;
 - (void)setLastSelectedHandle:(id)arg1;
+- (void)setMeDeviceChangePending:(bool)arg1;
+- (void)setMeDevices:(id)arg1;
 - (void)setSpecifiersQueue:(id)arg1;
 - (void)setUseFamilyCirclePhotos:(bool)arg1;
 - (void)setUseFamilyCirclePhotosLoaded:(bool)arg1;
@@ -112,6 +136,8 @@
 - (id)specifiers;
 - (id)specifiersQueue;
 - (id)stringByKeepingCharacterSet:(id)arg1 inString:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateFindMyDeviceStatus;
 - (bool)useFamilyCirclePhotos;
 - (bool)useFamilyCirclePhotosLoaded;
 - (void)viewDidAppear:(bool)arg1;

@@ -8,6 +8,7 @@
     MTMaterialView * _increaseBackground;
     MPButton * _increaseButton;
     NSBundle * _mediaControlsBundle;
+    MTVisualStylingProvider * _visualStylingProvider;
     MPVolumeController * _volumeController;
 }
 
@@ -16,6 +17,7 @@
 @property (nonatomic, retain) MTMaterialView *increaseBackground;
 @property (nonatomic, retain) MPButton *increaseButton;
 @property (nonatomic, retain) NSBundle *mediaControlsBundle;
+@property (nonatomic, retain) MTVisualStylingProvider *visualStylingProvider;
 @property (nonatomic, retain) MPVolumeController *volumeController;
 
 - (void).cxx_destruct;
@@ -37,8 +39,9 @@
 - (void)setIncreaseBackground:(id)arg1;
 - (void)setIncreaseButton:(id)arg1;
 - (void)setMediaControlsBundle:(id)arg1;
+- (void)setVisualStylingProvider:(id)arg1;
 - (void)setVolumeController:(id)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
+- (id)visualStylingProvider;
 - (id)volumeController;
 
 @end

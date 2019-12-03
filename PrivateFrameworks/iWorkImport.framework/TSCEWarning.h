@@ -10,14 +10,14 @@
 @property (nonatomic) bool ignored;
 @property (nonatomic, retain) NSDictionary *metadata;
 
-+ (void)reportAutomaticUnitConversionWarningInContext:(/* Warning: unhandled struct encoding: '{TSCEWarningReportingContext=BB@}' */ struct TSCEWarningReportingContext { bool x1; bool x2; id x3; }*)arg1;
-+ (void)reportBoolToNumberConversionWarningInContext:(/* Warning: unhandled struct encoding: '{TSCEWarningReportingContext=BB@}' */ struct TSCEWarningReportingContext { bool x1; bool x2; id x3; }*)arg1;
-+ (void)reportComparisonWarningInContext:(/* Warning: unhandled struct encoding: '{TSCEWarningReportingContext=BB@}' */ struct TSCEWarningReportingContext { bool x1; bool x2; id x3; }*)arg1 leftType:(int)arg2 rightType:(int)arg3;
-+ (void)reportDayOutOfRangeWarningInContext:(/* Warning: unhandled struct encoding: '{TSCEWarningReportingContext=BB@}' */ struct TSCEWarningReportingContext { bool x1; bool x2; id x3; }*)arg1;
-+ (void)reportLossOfUnitsWarningInContext:(/* Warning: unhandled struct encoding: '{TSCEWarningReportingContext=BB@}' */ struct TSCEWarningReportingContext { bool x1; bool x2; id x3; }*)arg1;
-+ (void)reportMismatchedSizesWarningInContext:(/* Warning: unhandled struct encoding: '{TSCEWarningReportingContext=BB@}' */ struct TSCEWarningReportingContext { bool x1; bool x2; id x3; }*)arg1;
-+ (void)reportMonthOutOfRangeWarningInContext:(/* Warning: unhandled struct encoding: '{TSCEWarningReportingContext=BB@}' */ struct TSCEWarningReportingContext { bool x1; bool x2; id x3; }*)arg1;
-+ (void)reportNonNumericCellWarningInContext:(/* Warning: unhandled struct encoding: '{TSCEWarningReportingContext=BB@}' */ struct TSCEWarningReportingContext { bool x1; bool x2; id x3; }*)arg1 reference:(id)arg2;
++ (void)reportAutomaticUnitConversionWarningInContext:(struct TSCEWarningReportingContext { bool x1; bool x2; id x3; }*)arg1;
++ (void)reportBoolToNumberConversionWarningInContext:(struct TSCEWarningReportingContext { bool x1; bool x2; id x3; }*)arg1;
++ (void)reportComparisonWarningInContext:(struct TSCEWarningReportingContext { bool x1; bool x2; id x3; }*)arg1 leftType:(int)arg2 rightType:(int)arg3;
++ (void)reportDayOutOfRangeWarningInContext:(struct TSCEWarningReportingContext { bool x1; bool x2; id x3; }*)arg1;
++ (void)reportLossOfUnitsWarningInContext:(struct TSCEWarningReportingContext { bool x1; bool x2; id x3; }*)arg1;
++ (void)reportMismatchedSizesWarningInContext:(struct TSCEWarningReportingContext { bool x1; bool x2; id x3; }*)arg1;
++ (void)reportMonthOutOfRangeWarningInContext:(struct TSCEWarningReportingContext { bool x1; bool x2; id x3; }*)arg1;
++ (void)reportNonNumericCellWarningInContext:(struct TSCEWarningReportingContext { bool x1; bool x2; id x3; }*)arg1 reference:(id)arg2;
 + (bool)setHasVisibleWarnings:(id)arg1;
 
 - (void).cxx_destruct;

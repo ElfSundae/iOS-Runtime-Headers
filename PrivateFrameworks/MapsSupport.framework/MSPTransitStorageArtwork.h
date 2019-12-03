@@ -4,8 +4,8 @@
 
 @interface MSPTransitStorageArtwork : PBCodable <GEOTransitArtworkDataSource, NSCopying> {
     NSString * _accessibilityText;
-    long long  _artworkSourceType;
-    long long  _artworkUseType;
+    int  _artworkSourceType;
+    int  _artworkUseType;
     struct { 
         unsigned int artworkSourceType : 1; 
         unsigned int artworkUseType : 1; 
@@ -20,10 +20,10 @@
 
 @property (nonatomic, readonly) NSString *accessibilityText;
 @property (nonatomic, retain) NSString *accessibilityText;
-@property (nonatomic) long long artworkSourceType;
-@property (nonatomic, readonly) long long artworkSourceType;
-@property (nonatomic, readonly) long long artworkUseType;
-@property (nonatomic) long long artworkUseType;
+@property (nonatomic, readonly) int artworkSourceType;
+@property (nonatomic) int artworkSourceType;
+@property (nonatomic, readonly) int artworkUseType;
+@property (nonatomic) int artworkUseType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool hasAccessibilityText;
@@ -43,16 +43,17 @@
 @property (nonatomic, retain) MSPTransitStorageShield *shield;
 @property (nonatomic, readonly) <GEOTransitShieldDataSource> *shieldDataSource;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) <GEOTransitTextDataSource> *textDataSource;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 - (void).cxx_destruct;
-- (long long)StringAsArtworkSourceType:(id)arg1;
-- (long long)StringAsArtworkUseType:(id)arg1;
+- (int)StringAsArtworkSourceType:(id)arg1;
+- (int)StringAsArtworkUseType:(id)arg1;
 - (id)accessibilityText;
-- (long long)artworkSourceType;
-- (id)artworkSourceTypeAsString:(long long)arg1;
-- (long long)artworkUseType;
-- (id)artworkUseTypeAsString:(long long)arg1;
+- (int)artworkSourceType;
+- (id)artworkSourceTypeAsString:(int)arg1;
+- (int)artworkUseType;
+- (id)artworkUseTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -75,8 +76,8 @@
 - (void)mergeFrom:(id)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAccessibilityText:(id)arg1;
-- (void)setArtworkSourceType:(long long)arg1;
-- (void)setArtworkUseType:(long long)arg1;
+- (void)setArtworkSourceType:(int)arg1;
+- (void)setArtworkUseType:(int)arg1;
 - (void)setHasArtworkSourceType:(bool)arg1;
 - (void)setHasArtworkUseType:(bool)arg1;
 - (void)setHasHasRoutingIncidentBadge:(bool)arg1;
@@ -86,6 +87,7 @@
 - (void)setShield:(id)arg1;
 - (id)shield;
 - (id)shieldDataSource;
+- (id)textDataSource;
 - (id)unknownFields;
 - (void)writeTo:(id)arg1;
 

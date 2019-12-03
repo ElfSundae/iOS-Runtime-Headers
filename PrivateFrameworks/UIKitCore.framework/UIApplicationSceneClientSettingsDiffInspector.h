@@ -5,9 +5,11 @@
 @interface UIApplicationSceneClientSettingsDiffInspector : FBSSceneClientSettingsDiffInspector
 
 - (void)_observeOtherSetting:(unsigned long long)arg1 withBlock:(id /* block */)arg2;
+- (void)observeActivationConditionsDataWithBlock:(id /* block */)arg1;
 - (void)observeAudioCategoriesDisablingVolumeHUDWithBlock:(id /* block */)arg1;
 - (void)observeBackgroundStyleWithBlock:(id /* block */)arg1;
 - (void)observeBrightnessLevelWithBlock:(id /* block */)arg1;
+- (void)observeCanvasTitleWithBlock:(id /* block */)arg1;
 - (void)observeCompatibilityModeWithBlock:(id /* block */)arg1;
 - (void)observeControlCenterAmbiguousActivationMargin:(id /* block */)arg1;
 - (void)observeControlCenterRevealModeWithBlock:(id /* block */)arg1;
@@ -24,9 +26,13 @@
 - (void)observeNotificationCenterRevealModeWithBlock:(id /* block */)arg1;
 - (void)observeProximityDetectionModesWithBlock:(id /* block */)arg1;
 - (void)observeReachabilitySupportedWithBlock:(id /* block */)arg1;
+- (void)observeSceneActivationBiasWithBlock:(id /* block */)arg1;
 - (void)observeScreenEdgesDeferringSystemGesturesWithBlock:(id /* block */)arg1;
+- (void)observeStatusBarAlphaWithBlock:(id /* block */)arg1;
 - (void)observeStatusBarContextIDWithBlock:(id /* block */)arg1;
 - (void)observeStatusBarHiddenWithBlock:(id /* block */)arg1;
+- (void)observeStatusBarModernStyleWithBlock:(id /* block */)arg1;
+- (void)observeStatusBarPartStylesWithBlock:(id /* block */)arg1;
 - (void)observeStatusBarStyleWithBlock:(id /* block */)arg1;
 - (void)observeSupportedInterfaceOrientationsWithBlock:(id /* block */)arg1;
 - (void)observeUserInterfaceStyleWithBlock:(id /* block */)arg1;

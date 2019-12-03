@@ -7,7 +7,7 @@
     <HDIDSMessageCenterDelegate> * _delegate;
     NSMutableDictionary * _errorHandlers;
     NSObject<OS_dispatch_source> * _expireTimer;
-    int  _invalidated;
+    _Atomic bool  _invalidated;
     double  _nextExpireTimerFireDate;
     NSUUID * _pairingUUID;
     NSMutableDictionary * _pbMapping;

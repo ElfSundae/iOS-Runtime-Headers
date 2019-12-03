@@ -4,13 +4,11 @@
 
 @interface SPSearchQuery : NSObject <NSCopying> {
     double  _cancellationTime;
-    bool  _cancelled;
+    _Atomic bool  _cancelled;
     long long  _contentFilters;
     unsigned long long  _creationStamp;
     double  _creationTime;
     double  _currentTime;
-    NSDictionary * _dictationResponse;
-    bool  _dictationStable;
     NSArray * _disabledApps;
     NSArray * _disabledBundles;
     NSArray * _disabledDomains;
@@ -18,7 +16,8 @@
     bool  _finished;
     bool  _grouped;
     bool  _infinitePatience;
-    bool  _internal;
+    bool  _internalDebug;
+    bool  _internalValidation;
     bool  _isPasscodeLocked;
     bool  _isWideScreen;
     NSString * _keyboardLanguage;
@@ -30,6 +29,7 @@
     bool  _promoteParsecResults;
     unsigned long long  _queryID;
     unsigned long long  _queryIdent;
+    double  _scaleFactor;
     NSArray * _searchDomains;
     NSArray * _searchEntities;
     NSString * _searchString;
@@ -43,8 +43,6 @@
 @property (nonatomic, readonly) unsigned long long creationStamp;
 @property (nonatomic, readonly) double creationTime;
 @property (nonatomic, readonly) double currentTime;
-@property (nonatomic, retain) NSDictionary *dictationResponse;
-@property (nonatomic) bool dictationStable;
 @property (nonatomic, retain) NSArray *disabledApps;
 @property (nonatomic, retain) NSArray *disabledBundles;
 @property (nonatomic, readonly) NSArray *disabledDomains;
@@ -52,7 +50,8 @@
 @property (nonatomic) bool grouped;
 @property (nonatomic, readonly) bool hasMarkedText;
 @property (nonatomic) bool infinitePatience;
-@property (nonatomic) bool internal;
+@property (nonatomic) bool internalDebug;
+@property (nonatomic) bool internalValidation;
 @property (nonatomic, readonly) bool isPasscodeLocked;
 @property (nonatomic) bool isWideScreen;
 @property (nonatomic, readonly) NSString *keyboardLanguage;
@@ -63,6 +62,7 @@
 @property (nonatomic) bool promoteLocalResults;
 @property (nonatomic) bool promoteParsecResults;
 @property (nonatomic) unsigned long long queryIdent;
+@property (nonatomic, readonly) double scaleFactor;
 @property (nonatomic, readonly) NSArray *searchDomains;
 @property (nonatomic, readonly) NSArray *searchEntities;
 @property (nonatomic, readonly) NSString *searchString;
@@ -77,8 +77,6 @@
 - (unsigned long long)creationStamp;
 - (double)creationTime;
 - (double)currentTime;
-- (id)dictationResponse;
-- (bool)dictationStable;
 - (id)disabledApps;
 - (id)disabledBundles;
 - (id)disabledDomains;
@@ -90,7 +88,8 @@
 - (bool)infinitePatience;
 - (id)initWithQuery:(id)arg1 domains:(id)arg2;
 - (id)initWithSearchQueryContext:(id)arg1;
-- (bool)internal;
+- (bool)internalDebug;
+- (bool)internalValidation;
 - (bool)isEqual:(id)arg1;
 - (bool)isPasscodeLocked;
 - (bool)isWideScreen;
@@ -102,17 +101,17 @@
 - (bool)promoteLocalResults;
 - (bool)promoteParsecResults;
 - (unsigned long long)queryIdent;
+- (double)scaleFactor;
 - (id)searchDomains;
 - (id)searchEntities;
 - (id)searchString;
 - (void)setContentFilters:(long long)arg1;
-- (void)setDictationResponse:(id)arg1;
-- (void)setDictationStable:(bool)arg1;
 - (void)setDisabledApps:(id)arg1;
 - (void)setDisabledBundles:(id)arg1;
 - (void)setGrouped:(bool)arg1;
 - (void)setInfinitePatience:(bool)arg1;
-- (void)setInternal:(bool)arg1;
+- (void)setInternalDebug:(bool)arg1;
+- (void)setInternalValidation:(bool)arg1;
 - (void)setIsWideScreen:(bool)arg1;
 - (void)setMaxCount:(long long)arg1;
 - (void)setNoTokenize:(bool)arg1;

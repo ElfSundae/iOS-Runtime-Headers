@@ -15,9 +15,10 @@
 @property (readonly) Class superclass;
 
 + (void)beginListening;
++ (id)serviceQueue;
 
+- (void).cxx_destruct;
 - (id)databaseQueue;
-- (void)dealloc;
 - (id)initWithQueue:(id)arg1;
 - (bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (id)serialQueue;

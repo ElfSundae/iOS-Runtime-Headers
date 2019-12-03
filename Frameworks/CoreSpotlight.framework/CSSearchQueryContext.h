@@ -21,11 +21,14 @@
     NSString * _keyboardLanguage;
     NSArray * _markedTextArray;
     long long  _maxCount;
+    NSArray * _mountPoints;
     NSArray * _preferredLanguages;
     NSArray * _protectionClasses;
+    unsigned int  _qos;
     long long  _queryID;
     NSArray * _rankingQueries;
     int  _rankingType;
+    NSArray * _scopes;
     long long  _strongRankingQueryCount;
     NSString * _userQuery;
 }
@@ -45,6 +48,7 @@
 @property (nonatomic, copy) NSArray *filterQueries;
 @property (nonatomic, retain) NSString *filterQuery;
 @property (nonatomic) unsigned char flags;
+@property (nonatomic) bool fsOnly;
 @property (nonatomic) /* Warning: Unrecognized filer type: 'T' using 'void*' */ void*fuzzyMask;
 @property (nonatomic) /* Warning: Unrecognized filer type: 'T' using 'void*' */ void*fuzzyMatch;
 @property (nonatomic) bool grouped;
@@ -54,12 +58,16 @@
 @property (nonatomic) bool lowPriority;
 @property (nonatomic, retain) NSArray *markedTextArray;
 @property (nonatomic) long long maxCount;
+@property (nonatomic, retain) NSArray *mountPoints;
 @property (nonatomic, copy) NSDictionary *options;
+@property (nonatomic) bool parseUserQuery;
 @property (nonatomic, retain) NSArray *preferredLanguages;
 @property (nonatomic, retain) NSArray *protectionClasses;
+@property (nonatomic) unsigned int qos;
 @property (nonatomic) long long queryID;
 @property (nonatomic, retain) NSArray *rankingQueries;
 @property (nonatomic) int rankingType;
+@property (nonatomic, retain) NSArray *scopes;
 @property (nonatomic) long long strongRankingQueryCount;
 @property (nonatomic, retain) NSString *userQuery;
 
@@ -85,11 +93,13 @@
 - (id)filterQueries;
 - (id)filterQuery;
 - (unsigned char)flags;
+- (bool)fsOnly;
 - (/* Warning: Unrecognized filer type: 'T' using 'void*' */ void*)fuzzyMask;
 - (/* Warning: Unrecognized filer type: 'T' using 'void*' */ void*)fuzzyMatch;
 - (bool)grouped;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithQoS:(unsigned int)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 - (bool)internal;
 - (id)keyboardLanguage;
@@ -97,12 +107,16 @@
 - (bool)lowPriority;
 - (id)markedTextArray;
 - (long long)maxCount;
+- (id)mountPoints;
 - (id)options;
+- (bool)parseUserQuery;
 - (id)preferredLanguages;
 - (id)protectionClasses;
+- (unsigned int)qos;
 - (long long)queryID;
 - (id)rankingQueries;
 - (int)rankingType;
+- (id)scopes;
 - (void)setAttribute:(bool)arg1;
 - (void)setBundleIDs:(id)arg1;
 - (void)setClientBundleID:(id)arg1;
@@ -118,6 +132,7 @@
 - (void)setFilterQueries:(id)arg1;
 - (void)setFilterQuery:(id)arg1;
 - (void)setFlags:(unsigned char)arg1;
+- (void)setFsOnly:(bool)arg1;
 - (void)setFuzzyMask:(/* Warning: Unrecognized filer type: 'T' using 'void*' */ void*)arg1;
 - (void)setFuzzyMatch:(/* Warning: Unrecognized filer type: 'T' using 'void*' */ void*)arg1;
 - (void)setGrouped:(bool)arg1;
@@ -127,12 +142,16 @@
 - (void)setLowPriority:(bool)arg1;
 - (void)setMarkedTextArray:(id)arg1;
 - (void)setMaxCount:(long long)arg1;
+- (void)setMountPoints:(id)arg1;
 - (void)setOptions:(id)arg1;
+- (void)setParseUserQuery:(bool)arg1;
 - (void)setPreferredLanguages:(id)arg1;
 - (void)setProtectionClasses:(id)arg1;
+- (void)setQos:(unsigned int)arg1;
 - (void)setQueryID:(long long)arg1;
 - (void)setRankingQueries:(id)arg1;
 - (void)setRankingType:(int)arg1;
+- (void)setScopes:(id)arg1;
 - (void)setStrongRankingQueryCount:(long long)arg1;
 - (void)setUserQuery:(id)arg1;
 - (long long)strongRankingQueryCount;

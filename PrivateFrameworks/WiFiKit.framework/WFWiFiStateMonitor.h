@@ -4,6 +4,8 @@
 
 @interface WFWiFiStateMonitor : NSObject {
     bool  _associatedToCarPlayOnly;
+    NSRunLoop * _callbackRunLoop;
+    NSThread * _callbackThread;
     WFClient * _client;
     WFNetworkScanRecord * _currentNetwork;
     id /* block */  _handler;
@@ -14,11 +16,13 @@
 }
 
 @property bool associatedToCarPlayOnly;
+@property NSRunLoop *callbackRunLoop;
+@property (nonatomic, retain) NSThread *callbackThread;
 @property (nonatomic, retain) WFClient *client;
 @property (nonatomic, retain) WFNetworkScanRecord *currentNetwork;
 @property (copy) id /* block */ handler;
 @property (retain) NSObject<OS_dispatch_queue> *internalQueue;
-@property (nonatomic, retain) WFLinkQuality *linkQuality;
+@property (nonatomic, copy) WFLinkQuality *linkQuality;
 @property bool monitoring;
 @property (nonatomic) long long state;
 
@@ -31,9 +35,14 @@
 - (void)_linkQualityDidChange:(id)arg1;
 - (void)_notifyStateChanged:(long long)arg1 newState:(long long)arg2;
 - (void)_powerStateDidChange:(id)arg1;
+- (void)_registerInterfaceObserversForInterface:(id)arg1;
+- (void)_runManagerCallbackThread;
+- (void)_spawnManagerCallbackThread;
 - (void)_updateState;
 - (void)_updateState:(id /* block */)arg1;
 - (bool)associatedToCarPlayOnly;
+- (id)callbackRunLoop;
+- (id)callbackThread;
 - (id)client;
 - (id)currentNetwork;
 - (void)dealloc;
@@ -44,6 +53,8 @@
 - (id)linkQuality;
 - (bool)monitoring;
 - (void)setAssociatedToCarPlayOnly:(bool)arg1;
+- (void)setCallbackRunLoop:(id)arg1;
+- (void)setCallbackThread:(id)arg1;
 - (void)setClient:(id)arg1;
 - (void)setCurrentNetwork:(id)arg1;
 - (void)setHandler:(id /* block */)arg1;

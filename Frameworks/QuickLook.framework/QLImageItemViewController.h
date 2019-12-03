@@ -19,10 +19,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (bool)shouldBeRemoteForContentType:(id)arg1;
-+ (id)supportedContentTypes;
-+ (Class)transformerClass;
-
 - (void).cxx_destruct;
 - (void)animationTimerFired:(double)arg1;
 - (id)draggableView;

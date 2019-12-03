@@ -6,8 +6,8 @@
     NSSet * _deletedObjects;
     unsigned long long  _flags;
     NSSet * _insertedObjects;
+    NSNotification * _mutatedObjectIDsNotification;
     NSSet * _optimisticallyLockedObjects;
-    void * _reserved1;
     NSSet * _updatedObjects;
 }
 
@@ -18,8 +18,10 @@
 
 + (void)initialize;
 
+- (id)_changedObjectIDsNotification;
 - (BOOL)_retryHandlerCount;
 - (bool)_secureOperation;
+- (void)_setChangedObjectIDsNotification:(id)arg1;
 - (void)_setRetryHandlerCount:(BOOL)arg1;
 - (void)_setSecureOperation:(bool)arg1;
 - (void)dealloc;

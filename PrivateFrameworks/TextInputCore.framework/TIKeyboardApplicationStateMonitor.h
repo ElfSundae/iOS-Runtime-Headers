@@ -8,6 +8,8 @@
     double  _activeAppStartTime;
     double  _activeKeyboardStartTime;
     NSLock * _activeStateDataLock;
+    double  _appActivityKeyboardUsageFractionThreshold;
+    double  _appActivityTimeDurationThreshold;
     NSDictionary * _applicationStateDatabase;
     BKSApplicationStateMonitor * _applicationStateMonitor;
     NSLock * _databaseInUseLock;
@@ -15,6 +17,7 @@
     NSMutableSet * _foregroundApps;
     NSMutableSet * _imSuppressingBundleIDs;
     NSMutableArray * _keyboardUsageTimes;
+    NSDate * _timeOfLastFlushToDisk;
     NSCalendar * _utcCalendar;
 }
 
@@ -30,6 +33,7 @@
 @property (nonatomic, retain) NSMutableSet *foregroundApps;
 @property (nonatomic, retain) NSMutableSet *imSuppressingBundleIDs;
 @property (nonatomic, retain) NSMutableArray *keyboardUsageTimes;
+@property (nonatomic, retain) NSDate *timeOfLastFlushToDisk;
 @property (nonatomic, retain) NSCalendar *utcCalendar;
 
 - (void).cxx_destruct;
@@ -45,11 +49,13 @@
 - (id)databaseLocation;
 - (void)dealloc;
 - (id)delegate;
+- (bool)flushPendingChangesToDisk;
 - (id)foregroundApps;
 - (void)handleApplicationStateChange:(id)arg1;
 - (bool)ignoreAppExtension:(id)arg1;
 - (id)imSuppressingBundleIDs;
 - (id)init;
+- (id)initWithAppActivityTimeDurationThreshold:(double)arg1 keyboardUsageFractionThreshold:(double)arg2;
 - (void)keyboardInUse;
 - (void)keyboardNoLongerInUse;
 - (id)keyboardUsageTimes;
@@ -66,8 +72,11 @@
 - (void)setForegroundApps:(id)arg1;
 - (void)setImSuppressingBundleIDs:(id)arg1;
 - (void)setKeyboardUsageTimes:(id)arg1;
+- (void)setTimeOfLastFlushToDisk:(id)arg1;
 - (void)setUtcCalendar:(id)arg1;
 - (void)startANewKeyboardActivity:(id)arg1;
+- (bool)threadUnsafeFlushChangesToDiskWithImmediacy:(bool)arg1;
+- (id)timeOfLastFlushToDisk;
 - (id)utcCalendar;
 
 @end

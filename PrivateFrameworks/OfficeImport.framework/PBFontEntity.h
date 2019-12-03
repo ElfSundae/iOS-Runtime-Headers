@@ -9,8 +9,8 @@
     int  mType;
 }
 
+- (void).cxx_destruct;
 - (int)charSet;
-- (void)dealloc;
 - (id)faceName;
 - (int)family;
 - (id)initWithName:(id)arg1 charSet:(int)arg2 type:(int)arg3 family:(int)arg4;

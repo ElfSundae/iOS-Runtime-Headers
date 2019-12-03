@@ -8,6 +8,4 @@
 @property (nonatomic, readonly) NSString *campaignIdentifier;
 @property (nonatomic, readonly) NSString *productIdentifier;
 
-+ (id)typeString;
-
 @end

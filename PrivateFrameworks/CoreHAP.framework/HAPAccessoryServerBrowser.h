@@ -17,7 +17,7 @@
 - (id)initWithQueue:(id)arg1;
 - (id)keyStore;
 - (long long)linkType;
-- (void)matchAccessoryServerWithSetupID:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)matchAccessoryServerWithSetupID:(id)arg1 serverIdentifier:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 - (void)setKeyStore:(id)arg1;
 - (void)setWorkQueue:(id)arg1;

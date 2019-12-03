@@ -5,11 +5,11 @@
 @interface GEOPDETA : PBCodable <NSCopying> {
     unsigned int  _distance;
     struct { 
-        unsigned int distance : 1; 
-        unsigned int historicTravelTime : 1; 
-        unsigned int time : 1; 
-        unsigned int transportType : 1; 
-    }  _has;
+        unsigned int has_distance : 1; 
+        unsigned int has_historicTravelTime : 1; 
+        unsigned int has_time : 1; 
+        unsigned int has_transportType : 1; 
+    }  _flags;
     unsigned int  _historicTravelTime;
     GEORouteTrafficDetail * _routeTrafficDetail;
     unsigned int  _time;
@@ -29,8 +29,11 @@
 @property (nonatomic) int transportType;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsTransportType:(id)arg1;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -45,6 +48,7 @@
 - (unsigned int)historicTravelTime;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)routeTrafficDetail;
 - (void)setDistance:(unsigned int)arg1;

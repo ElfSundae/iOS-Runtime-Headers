@@ -60,6 +60,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (bool)isDisabled;
+- (bool)isEmpty;
 - (bool)isEqual:(id)arg1;
 - (id)isOrganDonor;
 - (id)medicalConditions;
@@ -93,6 +94,7 @@
 + (id)contactKeysToLoadForMedicalID;
 
 - (id)_contactKeysToFetch;
+- (bool)_updateExistingEmergencyContacts;
 - (bool)_updateIdentifierByPhoneNumberForEmergencyContact:(id)arg1 contactStore:(id)arg2;
 - (void)loadDataFromCNContact:(id)arg1;
 - (bool)updateEmergencyContacts;

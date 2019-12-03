@@ -2,18 +2,21 @@
    Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
  */
 
-@interface MPCMediaRemoteMiddleware : NSObject <MPCPlayerResponseBuilder, MPMiddleware> {
+@interface MPCMediaRemoteMiddleware : NSObject <MPCPlayerResponseBuilder, MPCPlayerSessionResponseBuilder, MPCResponseMediaRemoteControllerChaining, MPMiddleware, _MPCStateDumpPropertyListTransformable> {
     MPCMediaRemoteController * _controller;
+    MPCFuture * _controllerFuture;
     NSArray * _invalidationObservers;
     long long  _playerState;
     NSIndexPath * _playingIndexPath;
     MPSectionedCollection * _queueContentItems;
     NSString * _queueIdentifier;
     MPSectionedCollection * _queueModelObjects;
+    bool  _skippedMetadata;
     <MPCSupportedCommands> * _supportedCommands;
 }
 
 @property (nonatomic, retain) MPCMediaRemoteController *controller;
+@property (nonatomic, retain) MPCFuture *controllerFuture;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -23,18 +26,22 @@
 @property (nonatomic, retain) MPSectionedCollection *queueContentItems;
 @property (nonatomic, copy) NSString *queueIdentifier;
 @property (nonatomic, retain) MPSectionedCollection *queueModelObjects;
+@property (nonatomic, readonly) bool skippedMetadata;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) <MPCSupportedCommands> *supportedCommands;
 
 - (void).cxx_destruct;
 - (float)_playbackRateForContentItem:(id)arg1;
+- (id)_stateDumpObject;
 - (id)_supportedCommands:(unsigned int)arg1 infoValueForKey:(id)arg2;
 - (id)controller;
 - (id)controller:(id)arg1 chain:(id)arg2;
+- (id)controllerFuture;
 - (id)init;
 - (id)invalidationObservers;
 - (id)operationsForPlayerRequest:(id)arg1;
 - (id)operationsForRequest:(id)arg1;
+- (id)operationsForSessionRequest:(id)arg1;
 - (bool)playerCommandEnabled:(bool)arg1 command:(unsigned int)arg2 chain:(id)arg3;
 - (id)playerCommandOptionValue:(id)arg1 forKey:(id)arg2 command:(unsigned int)arg3 chain:(id)arg4;
 - (bool)playerCommandSupported:(bool)arg1 command:(unsigned int)arg2 chain:(id)arg3;
@@ -44,6 +51,7 @@
 - (long long)playerItemEditingStyleFlags:(long long)arg1 atIndexPath:(id)arg2 chain:(id)arg3;
 - (bool)playerItemIsPlaceholder:(bool)arg1 atIndexPath:(id)arg2 chain:(id)arg3;
 - (id)playerItemLanguageOptionGroups:(id)arg1 atIndexPath:(id)arg2 chain:(id)arg3;
+- (id)playerItemLocalizedDurationString:(id)arg1 atIndexPath:(id)arg2 chain:(id)arg3;
 - (long long)playerLastChangeDirection:(long long)arg1 chain:(id)arg2;
 - (id)playerModelObject:(id)arg1 propertySet:(id)arg2 atIndexPath:(id)arg3 chain:(id)arg4;
 - (unsigned long long)playerNumberOfItems:(unsigned long long)arg1 inSection:(unsigned long long)arg2 chain:(id)arg3;
@@ -55,12 +63,16 @@
 - (long long)playerState;
 - (long long)playerState:(long long)arg1 chain:(id)arg2;
 - (long long)playerUpNextItemCount:(long long)arg1 chain:(id)arg2;
-- (id)playerVideoView:(id)arg1 chain:(id)arg2;
 - (id)playingIndexPath;
 - (id)queueContentItems;
 - (id)queueIdentifier;
 - (id)queueModelObjects;
+- (id)sessionMetadataObject:(id)arg1 atIndexPath:(id)arg2 chain:(id)arg3;
+- (long long)sessionNumberOfPlayerPaths:(long long)arg1 chain:(id)arg2;
+- (long long)sessionNumberOfSessions:(long long)arg1 forPlayerPathAtIndex:(long long)arg2 chain:(id)arg3;
+- (id)sessionPlayerPath:(id)arg1 atIndex:(long long)arg2 chain:(id)arg3;
 - (void)setController:(id)arg1;
+- (void)setControllerFuture:(id)arg1;
 - (void)setInvalidationObservers:(id)arg1;
 - (void)setPlayerState:(long long)arg1;
 - (void)setPlayingIndexPath:(id)arg1;
@@ -68,6 +80,7 @@
 - (void)setQueueIdentifier:(id)arg1;
 - (void)setQueueModelObjects:(id)arg1;
 - (void)setSupportedCommands:(id)arg1;
+- (bool)skippedMetadata;
 - (id)supportedCommands;
 - (id)tracklistUniqueIdentifier:(id)arg1 chain:(id)arg2;
 

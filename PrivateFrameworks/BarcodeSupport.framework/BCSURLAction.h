@@ -6,6 +6,8 @@
     NSArray * _appLinks;
     NSURL * _appStoreSearchURLForUnsupportedScheme;
     LSApplicationProxy * _applicationProxy;
+    CTCellularPlanManagerCameraScanAction * _cellularPlanAction;
+    CoreTelephonyClient * _coreTelephonyClient;
     bool  _deviceDataIsUnavailable;
     bool  _hasPreferredAppLink;
     SecureChannelAction * _scAction;
@@ -19,15 +21,16 @@
 - (void).cxx_destruct;
 - (id)_actionDescriptionForURL:(id)arg1 application:(id)arg2 shouldShowHostNameForSafariURL:(bool)arg3;
 - (id)_actionDescriptionWithoutTargetApplicationForURL:(id)arg1;
+- (bool)_hasCellularPlanAction;
 - (bool)_hasSecureChannelAction;
-- (bool)_isCodeFromQRScannerInCamera;
+- (bool)_isCodeFromQRScanner;
 - (void)_resolveTargetApplicationForURL:(id)arg1 completionHandler:(id /* block */)arg2;
 - (bool)_shouldBlockHandlingURL:(id)arg1;
 - (bool)_shouldOpenInAppForAppLink:(id)arg1;
 - (bool)_tryDetermineActionabilityForSpecialCodesFromQRScannerWithCompletionHandler:(id /* block */)arg1;
 - (id)actionPickerItems;
 - (unsigned long long)appLinkCount;
-- (bool)canSkipUnlock;
+- (id)appLinks;
 - (id)debugDescriptionExtraInfoDictionary;
 - (id)defaultActionTargetApplicationBundleIdentifier;
 - (void)determineActionabilityWithCompletionHandler:(id /* block */)arg1;

@@ -32,6 +32,7 @@
 
 + (Class)layerClass;
 
+- (void).cxx_destruct;
 - (void)_firePassiveWatchingTimer:(id)arg1;
 - (bool)_layoutForExpandedSize;
 - (void)_privacyButtonWasTapped;
@@ -47,7 +48,6 @@
 - (void)bottomBarPauseButtonTapped:(id)arg1;
 - (void)bottomBarPlayButtonTapped:(id)arg1;
 - (void)bottomBarSkipButtonTapped:(id)arg1;
-- (void)dealloc;
 - (id)delegate;
 - (void)displayAsPaused:(bool)arg1;
 - (void)enablePrivacyButton;

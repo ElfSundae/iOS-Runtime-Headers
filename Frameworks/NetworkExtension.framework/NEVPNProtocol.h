@@ -11,6 +11,7 @@
     bool  _disconnectOnUserSwitch;
     bool  _disconnectOnWake;
     int  _disconnectOnWakeTimeout;
+    bool  _excludeLocalNetworks;
     NSUUID * _identifier;
     NEIdentityKeychainItem * _identity;
     NSData * _identityDataHash;
@@ -18,6 +19,7 @@
     NSData * _identityDataInternal;
     NSString * _identityDataPassword;
     NEKeychainItem * _identityDataPasswordKeychainItem;
+    bool  _includeAllNetworks;
     NSString * _keychainAccessGroup;
     long long  _keychainDomain;
     NSString * _passwordEncryption;
@@ -37,6 +39,7 @@
 @property bool disconnectOnUserSwitch;
 @property bool disconnectOnWake;
 @property int disconnectOnWakeTimeout;
+@property bool excludeLocalNetworks;
 @property (copy) NSUUID *identifier;
 @property (retain) NEIdentityKeychainItem *identity;
 @property (copy) NSData *identityData;
@@ -47,6 +50,7 @@
 @property (copy) NEKeychainItem *identityDataPasswordKeychainItem;
 @property (copy) NSData *identityReference;
 @property (copy) NSData *identityReferenceInternal;
+@property bool includeAllNetworks;
 @property (retain) NSString *keychainAccessGroup;
 @property long long keychainDomain;
 @property (copy) NSString *passwordEncryption;
@@ -77,6 +81,7 @@
 - (bool)disconnectOnWake;
 - (int)disconnectOnWakeTimeout;
 - (void)encodeWithCoder:(id)arg1;
+- (bool)excludeLocalNetworks;
 - (id)identifier;
 - (id)identity;
 - (id)identityData;
@@ -87,6 +92,7 @@
 - (id)identityDataPasswordKeychainItem;
 - (id)identityReference;
 - (id)identityReferenceInternal;
+- (bool)includeAllNetworks;
 - (void)initDisconnectOptions:(id)arg1;
 - (id)initFromLegacyDictionary:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -110,6 +116,7 @@
 - (void)setDisconnectOnUserSwitch:(bool)arg1;
 - (void)setDisconnectOnWake:(bool)arg1;
 - (void)setDisconnectOnWakeTimeout:(int)arg1;
+- (void)setExcludeLocalNetworks:(bool)arg1;
 - (void)setIdentifier:(id)arg1;
 - (void)setIdentity:(id)arg1;
 - (void)setIdentityData:(id)arg1;
@@ -120,6 +127,7 @@
 - (void)setIdentityDataPasswordKeychainItem:(id)arg1;
 - (void)setIdentityReference:(id)arg1;
 - (void)setIdentityReferenceInternal:(id)arg1;
+- (void)setIncludeAllNetworks:(bool)arg1;
 - (void)setKeychainAccessGroup:(id)arg1;
 - (void)setKeychainDomain:(long long)arg1;
 - (void)setPasswordEncryption:(id)arg1;

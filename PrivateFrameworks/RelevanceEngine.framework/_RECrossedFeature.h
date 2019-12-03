@@ -2,29 +2,25 @@
    Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
  */
 
-@interface _RECrossedFeature : REFeature <REIndentedDescription> {
+@interface _RECrossedFeature : REFeature {
     unsigned long long  _bitCount;
     REFeatureSet * _dependentFeatures;
     unsigned long long  _featureType;
     NSArray * _features;
+    unsigned long long  _hash;
     NSString * _name;
-    REFeatureSet * _rootFeatures;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) NSArray *features;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (long long)_bitCount;
+- (void)_computeHash;
 - (id)_dependentFeatures;
 - (void)_replaceDependentFeature:(id)arg1 withFeature:(id)arg2;
 - (id)_rootFeatures;
+- (void)_updateFeaturesArray;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (id)description;
-- (id)descriptionWithIndent:(unsigned long long)arg1;
 - (unsigned long long)featureType;
 - (id)features;
 - (unsigned long long)hash;

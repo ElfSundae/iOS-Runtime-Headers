@@ -13,6 +13,7 @@
     bool  _isFailedRecurringPayment;
     NSDateFormatter * _localCancellationDateFormatter;
     NSDateFormatter * _localTimeFormatter;
+    NSNumberFormatter * _localizedDayNumberFormatter;
     PKAccountPayment * _payment;
     bool  _paymentAmountPending;
     NSDate * _paymentDueDate;
@@ -45,6 +46,7 @@
 - (long long)_numberOfRecurringPaymentDetailsRows;
 - (id)_paymentAmountToDisplay;
 - (long long)_recurringPaymentDetailsRowTypeForRowAtIndex:(long long)arg1;
+- (void)_reportEventForPassIfNecessary:(id)arg1;
 - (id)_reuseIdentifierForSection:(unsigned long long)arg1;
 - (bool)_showRecurringDay;
 - (bool)_showRecurringDetailsAmount;
@@ -56,6 +58,7 @@
 - (id)_tableView:(id)arg1 recurringPaymentUpcomingPaymentCellForPaymentDetailsRowAtIndexPath:(id)arg2;
 - (id)delegate;
 - (id)initWithAccount:(id)arg1 payment:(id)arg2 paymentWebService:(id)arg3 detailViewStyle:(long long)arg4;
+- (void)scrollViewDidScroll:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (bool)shouldMapSection:(unsigned long long)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
@@ -65,6 +68,9 @@
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
+- (void)viewDidAppear:(bool)arg1;
+- (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLoad;
+- (void)viewWillLayoutSubviews;
 
 @end

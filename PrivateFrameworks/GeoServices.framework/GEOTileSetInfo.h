@@ -5,10 +5,10 @@
 @interface GEOTileSetInfo : PBCodable <NSCopying> {
     unsigned int  _count;
     struct { 
-        unsigned int count : 1; 
-        unsigned int style : 1; 
-        unsigned int zoom : 1; 
-    }  _has;
+        unsigned int has_count : 1; 
+        unsigned int has_style : 1; 
+        unsigned int has_zoom : 1; 
+    }  _flags;
     int  _style;
     unsigned int  _zoom;
 }
@@ -19,6 +19,8 @@
 @property (nonatomic) bool hasZoom;
 @property (nonatomic) int style;
 @property (nonatomic) unsigned int zoom;
+
++ (bool)isValid:(id)arg1;
 
 - (int)StringAsStyle:(id)arg1;
 - (void)copyTo:(id)arg1;
@@ -32,6 +34,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setCount:(unsigned int)arg1;
 - (void)setHasCount:(bool)arg1;

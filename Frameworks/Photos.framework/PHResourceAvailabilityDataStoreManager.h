@@ -4,7 +4,7 @@
 
 @interface PHResourceAvailabilityDataStoreManager : NSObject {
     <PLResourceDataStore> * _dataStore;
-    bool  _isCancelled;
+    _Atomic bool  _isCancelled;
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
     }  _lock;

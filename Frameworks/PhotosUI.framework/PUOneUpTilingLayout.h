@@ -70,6 +70,7 @@
         double width; 
         double height; 
     }  _progressIndicatorSize;
+    bool  _shouldHideMainContent;
     bool  _shouldPinContentToTop;
     long long  _tileInitialContentMode;
     UITraitCollection * _traitCollection;
@@ -97,6 +98,7 @@
 @property (nonatomic, retain) PUParallaxComputer *parallaxComputer;
 @property (nonatomic) struct CGSize { double x1; double x2; } playButtonSize;
 @property (nonatomic) struct CGSize { double x1; double x2; } progressIndicatorSize;
+@property (nonatomic) bool shouldHideMainContent;
 @property (nonatomic) bool shouldPinContentToTop;
 @property (nonatomic) long long tileInitialContentMode;
 @property (nonatomic, retain) UITraitCollection *traitCollection;
@@ -169,6 +171,7 @@
 - (void)setParallaxComputer:(id)arg1;
 - (void)setPlayButtonSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setProgressIndicatorSize:(struct CGSize { double x1; double x2; })arg1;
+- (void)setShouldHideMainContent:(bool)arg1;
 - (void)setShouldPinContentToTop:(bool)arg1;
 - (void)setTileInitialContentMode:(long long)arg1;
 - (void)setTraitCollection:(id)arg1;
@@ -182,6 +185,7 @@
 - (void)setUseVerticalReviewScreenControlBarLayout:(bool)arg1;
 - (void)setVisibleRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setWindowInterfaceOrientation:(long long)arg1;
+- (bool)shouldHideMainContent;
 - (bool)shouldPinContentToTop;
 - (struct CGSize { double x1; double x2; })sizeForSection:(long long)arg1 numberOfItems:(long long)arg2;
 - (long long)tileInitialContentMode;

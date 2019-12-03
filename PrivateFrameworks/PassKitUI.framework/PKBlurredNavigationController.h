@@ -3,7 +3,7 @@
  */
 
 @interface PKBlurredNavigationController : UINavigationController <PKObservableContentContainer> {
-    _UIBackdropView * _backdropView;
+    UIVisualEffectView * _backdropView;
     NSHashTable * _observers;
     NSLock * _observersLock;
 }

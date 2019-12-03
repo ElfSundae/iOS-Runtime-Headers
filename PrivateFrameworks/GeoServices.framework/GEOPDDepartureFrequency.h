@@ -6,13 +6,13 @@
     unsigned int  _displayDepartureFrequency;
     unsigned int  _earliestDepartureTime;
     struct { 
-        unsigned int displayDepartureFrequency : 1; 
-        unsigned int earliestDepartureTime : 1; 
-        unsigned int latestDepartureTime : 1; 
-        unsigned int maxDepartureFrequency : 1; 
-        unsigned int minDepartureFrequency : 1; 
-        unsigned int isEstimated : 1; 
-    }  _has;
+        unsigned int has_displayDepartureFrequency : 1; 
+        unsigned int has_earliestDepartureTime : 1; 
+        unsigned int has_latestDepartureTime : 1; 
+        unsigned int has_maxDepartureFrequency : 1; 
+        unsigned int has_minDepartureFrequency : 1; 
+        unsigned int has_isEstimated : 1; 
+    }  _flags;
     bool  _isEstimated;
     unsigned int  _latestDepartureTime;
     unsigned int  _maxDepartureFrequency;
@@ -46,7 +46,10 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -75,6 +78,7 @@
 - (void)mergeFrom:(id)arg1;
 - (unsigned int)minDepartureFrequency;
 - (long long)minFrequency;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setDisplayDepartureFrequency:(unsigned int)arg1;
 - (void)setEarliestDepartureTime:(unsigned int)arg1;

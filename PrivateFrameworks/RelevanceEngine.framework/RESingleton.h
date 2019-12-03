@@ -9,4 +9,6 @@
 + (void)_incrementSingletonCache;
 + (id)sharedInstance;
 
+- (id)_init;
+
 @end

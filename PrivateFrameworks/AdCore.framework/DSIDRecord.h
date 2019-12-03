@@ -6,6 +6,7 @@
     NSMutableDictionary * _ADIDRecords;
     NSString * _DSID;
     NSString * _IDFA;
+    bool  _accountAgeUnknown;
     bool  _accountIsT13;
     bool  _accountIsU13;
     bool  _accountIsU18;
@@ -14,6 +15,7 @@
     NSString * _iAdIDBeforeReset;
     NSString * _iCloudDSID;
     bool  _isActiveRecord;
+    bool  _isDPIDManatee;
     bool  _isPlaceholderAccount;
     bool  _isRestrictedByEU_GDPR;
     long long  _lastJingleAccountStatus;
@@ -33,6 +35,7 @@
 @property (retain) NSMutableDictionary *ADIDRecords;
 @property (nonatomic, retain) NSString *DSID;
 @property (nonatomic, retain) NSString *IDFA;
+@property (nonatomic) bool accountAgeUnknown;
 @property (nonatomic) bool accountIsT13;
 @property (nonatomic) bool accountIsU13;
 @property (nonatomic) bool accountIsU18;
@@ -41,6 +44,7 @@
 @property (nonatomic, retain) NSString *iAdIDBeforeReset;
 @property (nonatomic, retain) NSString *iCloudDSID;
 @property (nonatomic, readonly) bool isActiveRecord;
+@property (nonatomic) bool isDPIDManatee;
 @property (nonatomic) bool isPlaceholderAccount;
 @property (nonatomic, readonly) bool isRestrictedByApple;
 @property (nonatomic, readonly) bool isRestrictedByEU_GDPR;
@@ -64,6 +68,7 @@
 - (id)ADIDRecords;
 - (id)DSID;
 - (id)IDFA;
+- (bool)accountAgeUnknown;
 - (bool)accountIsT13;
 - (bool)accountIsU13;
 - (bool)accountIsU18;
@@ -79,6 +84,7 @@
 - (id)idForClientType:(long long)arg1;
 - (id)initWithDSID:(id)arg1 serializedRecord:(id)arg2 version:(int)arg3;
 - (bool)isActiveRecord;
+- (bool)isDPIDManatee;
 - (bool)isPlaceholderAccount;
 - (bool)isRestrictedByApple;
 - (bool)isRestrictedByEU_GDPR;
@@ -96,6 +102,7 @@
 - (id)segmentData;
 - (int)segmentDataTimestamp;
 - (void)setADIDRecords:(id)arg1;
+- (void)setAccountAgeUnknown:(bool)arg1;
 - (void)setAccountIsT13:(bool)arg1;
 - (void)setAccountIsU13:(bool)arg1;
 - (void)setAccountIsU18:(bool)arg1;
@@ -106,6 +113,7 @@
 - (void)setICloudDSID:(id)arg1;
 - (void)setID:(id)arg1 forClientType:(long long)arg2;
 - (void)setIDFA:(id)arg1;
+- (void)setIsDPIDManatee:(bool)arg1;
 - (void)setIsPlaceholderAccount:(bool)arg1;
 - (void)setLastJingleAccountStatus:(long long)arg1;
 - (void)setLastJingleLimitAdTrackingResponse:(long long)arg1;

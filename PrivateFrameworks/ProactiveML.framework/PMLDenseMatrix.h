@@ -3,7 +3,7 @@
  */
 
 @interface PMLDenseMatrix : NSObject {
-    PMLMutableDenseVector * _data;
+    PMLDenseVector * _data;
     unsigned long long  _numberOfColumns;
     unsigned long long  _numberOfRows;
 }
@@ -19,7 +19,6 @@
 - (id)initWithData:(id)arg1 numberOfRows:(unsigned long long)arg2 numberOfColumns:(unsigned long long)arg3;
 - (unsigned long long)numberOfColumns;
 - (unsigned long long)numberOfRows;
-- (void)processValuesInPlaceWithBlock:(id /* block */)arg1;
-- (float*)values;
+- (const float*)values;
 
 @end

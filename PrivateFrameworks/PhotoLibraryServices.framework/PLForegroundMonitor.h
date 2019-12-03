@@ -12,6 +12,8 @@
 @property (nonatomic) <PLForegroundMonitorDelegate> *delegate;
 
 - (void).cxx_destruct;
+- (void)_applicationChangeToBG:(id)arg1;
+- (void)_applicationChangeToFG:(id)arg1;
 - (void)_handleApplicationStateMonitorNotificationWithUserInfo:(id)arg1;
 - (void)_locked_applicationDidMoveToBackground:(id)arg1;
 - (void)_locked_applicationDidMoveToForeground:(id)arg1;

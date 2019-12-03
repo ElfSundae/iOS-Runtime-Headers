@@ -9,6 +9,10 @@
     bool  _canUseCurvedText;
     NTKFaceColorScheme * _colorScheme;
     CLKComplicationTemplate * _complicationTemplate;
+    double  _computedForegroundAlpha;
+    UIColor * _computedForegroundColor;
+    double  _computedForegroundImageAlpha;
+    UIColor * _computedPlatterColor;
     CLKDevice * _device;
     bool  _editing;
     double  _editingRotationAngle;
@@ -91,6 +95,12 @@
 - (void)_applyColorScheme:(id)arg1;
 - (void)_applyForegroundAlpha;
 - (id)_backgroundPlatterImage;
+- (void)_computeForegroundAlpha;
+- (void)_computeForegroundColor;
+- (void)_computeForegroundImageAlpha;
+- (void)_computePlatterColor;
+- (id)_computedForegroundColor;
+- (id)_computedPlatterColor;
 - (void)_enumerateColoringStackedImagesViewsWithBlock:(id /* block */)arg1;
 - (void)_enumerateColoringViewsWithBlock:(id /* block */)arg1;
 - (id)_newCurvedHighlightView;
@@ -109,9 +119,13 @@
 - (void)_updateContentForEditingChange;
 - (void)_updateContentForMaxSizeChange;
 - (void)_updateForTemplateChange;
+- (void)_updateForegroundAlpha;
+- (void)_updateForegroundColor;
+- (void)_updateForegroundImageAlpha;
 - (void)_updateImageViewAlpha:(id)arg1;
 - (void)_updateImageViewColor:(id)arg1;
 - (void)_updateLabelsForFontChange;
+- (void)_updatePlatterColor;
 - (double)_widthThatFits;
 - (id)accentColor;
 - (bool)alwaysEnforcePlatterInset;
@@ -132,6 +146,7 @@
 - (double)foregroundImageAlpha;
 - (id)highlightView;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (bool)isPlacementForTopBezelComplication;
 - (void)layoutLabelVertically:(id)arg1;
 - (void)layoutSubviews;
 - (struct CGSize { double x1; double x2; })maxSize;

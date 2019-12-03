@@ -12,7 +12,6 @@
 
 + (unsigned long long)cachedSaltedIndex:(unsigned long long)arg1;
 + (id)decDeviceId;
-+ (void)decDeviceIdWithReply:(id /* block */)arg1;
 + (unsigned long long)incrementalSaltedIndex:(unsigned long long)arg1;
 + (unsigned char)indexForDevice;
 + (void)initialize;

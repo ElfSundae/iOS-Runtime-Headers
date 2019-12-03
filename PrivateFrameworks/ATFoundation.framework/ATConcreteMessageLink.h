@@ -63,7 +63,7 @@
 - (void)_processIncomingRequest:(id)arg1;
 - (void)_processIncomingResponse:(id)arg1;
 - (bool)_sendMessage:(id)arg1 error:(id*)arg2;
-- (void)_stopWriter:(id)arg1 withStreamError:(bool)arg2 forMessageId:(unsigned int)arg3 type:(int)arg4;
+- (void)_stopWriter:(id)arg1 byInjectingStreamError:(struct { long long x1; int x2; }*)arg2 forMessageId:(unsigned int)arg3 type:(int)arg4;
 - (void)addKeepAliveException;
 - (void)addObserver:(id)arg1;
 - (void)addRequestHandler:(id)arg1 forDataClass:(id)arg2;

@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
  */
 
-@interface MPSectionedIdentifierListEntry : NSObject <MPSectionedIdentifierListEnumerationResult> {
+@interface MPSectionedIdentifierListEntry : NSObject <MPSectionedIdentifierListEnumerationResult, NSSecureCoding, _MPSectionedIdentifierListEncodableNextEntriesProviding> {
     long long  _branchDepth;
     bool  _dataSourceRemoved;
     NSString * _hostedSectionIdentifier;
@@ -19,22 +19,30 @@
 @property (nonatomic, readonly) long long entryType;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSString *hostedSectionIdentifier;
-@property (nonatomic, readonly) NSMutableArray *nextEntries;
+@property (nonatomic, readonly) NSArray *nextEntries;
 @property (nonatomic, readonly) MPSectionedIdentifierListEntryPositionKey *positionKey;
 @property (nonatomic) MPSectionedIdentifierListEntry *previousEntry;
 @property (nonatomic, readonly) NSString *sectionIdentifier;
 @property (readonly) Class superclass;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
-- (void)addBranch:(id)arg1;
+- (void)addBranch:(id)arg1 forceBranchDepthIncrease:(bool)arg2;
+- (void)addNextEntry:(id)arg1;
 - (long long)branchDepth;
+- (id)description;
+- (id)encodableNextEntriesWithExclusiveAccessToken:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (long long)entryType;
 - (id)hostedSectionIdentifier;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithPositionKey:(id)arg1 sectionIdentifier:(id)arg2;
 - (bool)isDataSourceRemoved;
 - (id)itemResult;
 - (id)nextEntries;
 - (id)positionKey;
+- (void)prepareForDealloc;
 - (id)previousEntry;
 - (id)sectionIdentifier;
 - (void)setBranchDepth:(long long)arg1;

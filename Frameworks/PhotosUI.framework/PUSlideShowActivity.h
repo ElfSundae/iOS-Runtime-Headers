@@ -2,9 +2,9 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUSlideShowActivity : PUActivity
+@interface PUSlideShowActivity : PXActivity
 
-- (id)_activityBundleImageConfiguration;
+- (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;
 - (bool)canPerformWithActivityItems:(id)arg1;

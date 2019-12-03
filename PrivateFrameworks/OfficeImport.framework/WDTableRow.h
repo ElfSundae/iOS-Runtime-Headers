@@ -9,12 +9,14 @@
     WDTable * mTable;
 }
 
+@property (readonly) WDTable *table;
+
+- (void).cxx_destruct;
 - (id)addCell;
 - (id)addCellWithIndex:(unsigned long long)arg1;
 - (id)cellAt:(unsigned long long)arg1;
 - (unsigned long long)cellCount;
 - (id)cellIterator;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)index;
 - (id)initWithTable:(id)arg1 at:(unsigned long long)arg2;

@@ -22,7 +22,7 @@
 @property (nonatomic, retain) UIColor *platterColor;
 @property (nonatomic, copy) id /* block */ platterColorProviderBlock;
 
-+ (void)_genericComplicationAnimationWithDuration:(double)arg1 applier:(id /* block */)arg2;
++ (id)_genericComplicationAnimationWithDuration:(double)arg1 applier:(id /* block */)arg2;
 
 - (void).cxx_destruct;
 - (double)alpha;
@@ -32,6 +32,7 @@
 - (void)cleanupAfterEditingForFaceView:(id)arg1;
 - (void)configureComplicationView:(id)arg1 forSlot:(id)arg2 faceView:(id)arg3;
 - (double)contentSpecificAnimationDuration;
+- (id)createComplicationContentSpecificAttributesAnimationWithAttributes:(unsigned long long)arg1 faceView:(id)arg2 forSlots:(id)arg3;
 - (id)detachedComplicationDisplaysForFaceView:(id)arg1;
 - (id)device;
 - (bool)fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2 faceView:(id)arg3;

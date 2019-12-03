@@ -31,8 +31,6 @@
 @property (nonatomic, readonly) unsigned long long screenAvailability;
 @property (readonly) Class superclass;
 
-// Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
-
 + (struct __CFString { }*)_keyForScreenRequestOrigin:(long long)arg1;
 + (id)sharedInstance;
 
@@ -63,7 +61,7 @@
 - (void)_setRouteObserverRegistry:(id)arg1;
 - (void)_setScreenDetector:(id)arg1;
 - (bool)_shouldIgnoreScreen:(id)arg1;
-- (void)_updateScreenContentAnimated:(bool)arg1;
+- (void)_updateScreenContentWithShouldTryToFindAvailableScreen:(bool)arg1;
 - (void)airPlayRouteObserverRegistryRouteAvailabilityChanged:(id)arg1 forRouteObserver:(id)arg2;
 - (id)debugDescription;
 - (id)init;
@@ -79,9 +77,5 @@
 - (void)screenDetector:(id)arg1 didLoseScreen:(id)arg2;
 - (void)unregisterContentProvider:(id)arg1;
 - (void)unregisterRouteObserver:(id)arg1;
-
-// Image: /System/Library/PrivateFrameworks/Memories.framework/Memories
-
-- (bool)pu_hasAvailableRoute;
 
 @end

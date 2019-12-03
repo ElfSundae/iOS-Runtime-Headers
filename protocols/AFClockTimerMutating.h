@@ -16,5 +16,6 @@
 - (void)setTimerID:(NSUUID *)arg1;
 - (void)setTimerURL:(NSURL *)arg1;
 - (void)setTitle:(NSString *)arg1;
+- (void)setType:(long long)arg1;
 
 @end

@@ -23,9 +23,11 @@
 + (id)highlightedEffectsForStudioStyle;
 + (id)normalEffectsForARDarkStyle;
 + (id)normalEffectsForARStyle;
++ (id)normalEffectsForDarkModeStyle;
 + (id)normalEffectsForStudioStyle;
 + (id)selectedEffects;
 + (id)selectedEffectsForARDarkStyle;
++ (id)selectedEffectsForDarkModeStyle;
 
 - (long long)backgroundStyle;
 - (long long)controlStyle;

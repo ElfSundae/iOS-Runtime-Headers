@@ -4,6 +4,7 @@
 
 @interface SXEmbedVideoComponentView : SXMediaComponentView <SXViewportChangeListener, WKNavigationDelegate, WKNavigationDelegatePrivate, WKUIDelegate> {
     <SXComponentActionHandler> * _actionHandler;
+    WKWebsiteDataStore * _dataStore;
     bool  _isPresentingFullscreen;
     SXWebCrashRetryThrottler * _webCrashRetryThrottler;
     WKWebView * _webView;
@@ -11,6 +12,7 @@
 }
 
 @property (nonatomic, readonly) <SXComponentActionHandler> *actionHandler;
+@property (nonatomic, readonly) WKWebsiteDataStore *dataStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -30,11 +32,14 @@
 - (bool)allowHierarchyRemoval;
 - (unsigned long long)analyticsMediaType;
 - (unsigned long long)analyticsVideoType;
+- (id)dataStore;
+- (void)discardContents;
 - (void)handleError:(id)arg1;
-- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 analyticsReporting:(id)arg5 appStateMonitor:(id)arg6 actionHandler:(id)arg7;
+- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 analyticsReporting:(id)arg5 appStateMonitor:(id)arg6 actionHandler:(id)arg7 websiteDataStore:(id)arg8;
 - (void)initializeWebViewWithURL:(id)arg1;
 - (bool)isPresentingFullscreen;
 - (void)presentComponentWithChanges:(struct { bool x1; bool x2; })arg1;
+- (void)renderContents;
 - (void)setIsPresentingFullscreen:(bool)arg1;
 - (void)setWebCrashRetryThrottler:(id)arg1;
 - (void)setWebView:(id)arg1;
@@ -43,7 +48,6 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })transitionContentFrame;
 - (void)updateWebViewToWidth:(double)arg1;
 - (void)viewport:(id)arg1 appearStateChangedFromState:(unsigned long long)arg2;
-- (void)visibilityStateDidChangeFromState:(long long)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })visibleFrame;
 - (id)webCrashRetryThrottler;
 - (id)webView;

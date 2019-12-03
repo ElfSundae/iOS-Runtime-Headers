@@ -16,6 +16,7 @@
     }  _lastTrackedBBox;
     NSString * _level;
     unsigned long long  _requestRevision;
+    unsigned int  _trackedFrameCVPixelBufferFormat;
     long long  _trackedFrameNumber;
     struct shared_ptr<vision::mod::ObjectTrackerAbstract> { 
         struct ObjectTrackerAbstract {} *__ptr_; 
@@ -28,13 +29,14 @@
 @property struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } lastTrackedBBox;
 @property (readonly) NSString *level;
 @property (nonatomic, readonly) unsigned long long requestRevision;
+@property unsigned int trackedFrameCVPixelBufferFormat;
 @property long long trackedFrameNumber;
 
 + (long long)VNTrackerOptionToTrackerType:(id)arg1;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (struct ObjectTrackerAbstract { int (**x1)(); struct ObjectDetectorAbstract {} *x2; struct shared_ptr<vision::mod::ObjectTrackerOptions> { struct ObjectTrackerOptions {} *x_3_1_1; struct __shared_weak_count {} *x_3_1_2; } x3; }*)_createTrackerWithLevel:(id)arg1 options:(struct ObjectTrackerOptions { int (**x1)(); id x2; }*)arg2 error:(id*)arg3;
+- (struct ObjectTrackerAbstract { int (**x1)(); struct ObjectDetectorAbstract {} *x2; struct shared_ptr<vision::mod::ObjectTrackerOptions> { struct ObjectTrackerOptions {} *x_3_1_1; struct __shared_weak_count {} *x_3_1_2; } x3; }*)_createTrackerWithLevel:(id)arg1 options:(struct ObjectTrackerOptions { int (**x1)(); id x2; int x3; }*)arg2 error:(id*)arg3;
 - (id)_parseInputObservations:(id)arg1 imageBuffer:(id)arg2 error:(id*)arg3;
 - (id)_postProcessTrackingResults:(id)arg1 trackerResults:(id)arg2 error:(id*)arg3;
 - (bool)_updateTrackerWithModifiedBBoxForImageBuffer:(id)arg1 error:(id*)arg2;
@@ -47,9 +49,11 @@
 - (unsigned long long)requestRevision;
 - (bool)reset:(id*)arg1;
 - (void)setLastTrackedBBox:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (void)setTrackedFrameCVPixelBufferFormat:(unsigned int)arg1;
 - (void)setTrackedFrameNumber:(long long)arg1;
 - (id)setTrackedObjects:(id)arg1 inFrame:(id)arg2 error:(id*)arg3;
 - (id)trackInFrame:(id)arg1 error:(id*)arg2;
+- (unsigned int)trackedFrameCVPixelBufferFormat;
 - (long long)trackedFrameNumber;
 
 @end

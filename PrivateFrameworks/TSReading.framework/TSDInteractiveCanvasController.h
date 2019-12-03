@@ -220,8 +220,6 @@
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } visibleUnscaledRectForScrollingAutomatically;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } visibleUnscaledRectValidWhileZooming;
 
-// Image: /System/Library/PrivateFrameworks/TSReading.framework/TSReading
-
 + (id)keyPathsForValuesAffectingCurrentViewScale;
 + (id)keyPathsForValuesAffectingDocumentRoot;
 + (id)keyPathsForValuesAffectingEditorController;
@@ -686,14 +684,5 @@
 - (void)zoomToCurrentSelection;
 - (bool)zoomToFitRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 outset:(bool)arg2 fitWidthOnly:(bool)arg3 centerHorizontally:(bool)arg4 centerVertically:(bool)arg5 animated:(bool)arg6;
 - (void)zoomWithAnimationToUnscaledRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
-
-// Image: /System/Library/PrivateFrameworks/SilexText.framework/SilexText
-
-- (void)disableAllGestures;
-- (void)disableGestureKinds:(id)arg1;
-- (void)disableNormalGestures;
-- (void)enableGestureKinds:(id)arg1;
-- (id)gestureRecognizerWithKind:(id)arg1;
-- (id)gestureWithKind:(id)arg1;
 
 @end

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface UITouch : NSObject <_UIResponderForwardable> {
+@interface UITouch : NSObject <ASVTouch, _UIResponderForwardable> {
     <_UITouchPhaseChangeDelegate> * __phaseChangeDelegate;
     UIWindow * __windowServerHitTestWindow;
     double  _altitudeAngle;
@@ -63,6 +63,7 @@
         unsigned int _didDispatchAsEnded : 1; 
     }  _touchFlags;
     unsigned int  _touchIdentifier;
+    _UITouchPredictor * _touchPredictor;
     long long  _type;
     UIView * _view;
     UIView * _warpedIntoView;
@@ -105,13 +106,17 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double initialTouchTimestamp;
 @property (nonatomic) bool isTap;
+@property (nonatomic, readonly) void location;
 @property (nonatomic) double majorRadius;
 @property (nonatomic) double majorRadiusTolerance;
 @property (nonatomic, readonly) double maximumPossibleForce;
+@property (nonatomic, readonly) long long phase;
 @property (nonatomic) long long phase;
+@property (nonatomic, readonly) void previousLocation;
 @property (nonatomic) bool sentTouchesEnded;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long tapCount;
+@property (nonatomic, readonly) double timestamp;
 @property (nonatomic) double timestamp;
 @property (setter=_setType:, nonatomic) long long type;
 @property (nonatomic, retain) UIView *view;
@@ -130,8 +135,8 @@
 - (void)_clonePropertiesToTouch:(id)arg1;
 - (long long)_compareIndex:(id)arg1;
 - (void)_computeAzimuthAngleInWindow;
+- (bool)_currentlyPredictingTouches;
 - (struct CGSize { double x1; double x2; })_displacement;
-- (double)_distanceFrom:(id)arg1 inView:(id)arg2;
 - (unsigned long long)_edgeAim;
 - (bool)_edgeForceActive;
 - (bool)_edgeForcePending;
@@ -159,6 +164,7 @@
 - (float)_pathMajorRadius;
 - (id)_phaseChangeDelegate;
 - (id)_phaseDescription;
+- (id)_predictedTouchesWithEvent:(id)arg1;
 - (double)_pressure;
 - (struct CGPoint { double x1; double x2; })_previousLocationInSceneReferenceSpace;
 - (struct CGPoint { double x1; double x2; })_previousLocationInWindow:(id)arg1;
@@ -199,9 +205,11 @@
 - (double)_standardForceAmount;
 - (bool)_supportsForce;
 - (unsigned int)_touchIdentifier;
+- (id)_touchPredictor;
 - (double)_unclampedForce;
 - (void)_updateMovementMagnitudeForLocation:(struct CGPoint { double x1; double x2; })arg1;
 - (void)_updateMovementMagnitudeFromLocation:(struct CGPoint { double x1; double x2; })arg1 toLocation:(struct CGPoint { double x1; double x2; })arg2;
+- (void)_updatePredictionsWithCoalescedTouches:(id)arg1;
 - (void)_updateWithChildEvent:(struct __IOHIDEvent { }*)arg1;
 - (bool)_wantsForwardingFromResponder:(id)arg1 toNextResponder:(id)arg2 withEvent:(id)arg3;
 - (void)_willBeDispatchedAsEnded;
@@ -252,6 +260,11 @@
 - (id)warpedIntoView;
 - (id)window;
 
+// Image: /System/Library/Frameworks/PencilKit.framework/PencilKit
+
+- (struct CGPoint { double x1; double x2; })PK_locationInView:(id)arg1;
+- (struct CGPoint { double x1; double x2; })PK_preciseLocationInView:(id)arg1;
+
 // Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
 
 - (struct CGPoint { double x1; double x2; })pu_locationInPresentationLayerOfView:(id)arg1;
@@ -260,5 +273,10 @@
 
 - (struct CGPoint { double x1; double x2; })locationInNode:(id)arg1;
 - (struct CGPoint { double x1; double x2; })previousLocationInNode:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/AssetViewer.framework/AssetViewer
+
+- (void)location;
+- (void)previousLocation;
 
 @end

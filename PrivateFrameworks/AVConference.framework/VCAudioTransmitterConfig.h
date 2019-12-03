@@ -5,8 +5,10 @@
 @interface VCAudioTransmitterConfig : NSObject {
     struct tagHANDLE { int x1; } * _afrcHandle;
     bool  _allowAudioSwitching;
+    bool  _alwaysOnAudioRedundancyEnabled;
     NSMutableArray * _audioPayloads;
     int  _bundlingScheme;
+    bool  _cellularAllowRedLowBitratesEnabled;
     VCAudioPayload * _chosenAudioPayload;
     VCAudioPayload * _chosenDTXPayload;
     int  _chosenRedPayloadType;
@@ -27,6 +29,7 @@
     }  _inputFormat;
     bool  _isUseCaseWatchContinuity;
     unsigned int  _maxIDSStreamIdCount;
+    unsigned char  _mediaControlInfoVersion;
     struct tagHANDLE { int x1; } * _mediaQueue;
     bool  _needsPacketThread;
     int  _operatingMode;
@@ -47,12 +50,15 @@
     bool  _transmitROC;
     VCTransportSession * _transportSession;
     bool  _useRateControl;
+    bool  _wifiAllowRedLowBitratesEnabled;
 }
 
 @property (nonatomic) struct tagHANDLE { int x1; }*afrcHandle;
 @property (nonatomic) bool allowAudioSwitching;
+@property (nonatomic) bool alwaysOnAudioRedundancyEnabled;
 @property (nonatomic, retain) NSMutableArray *audioPayloads;
 @property (nonatomic) int bundlingScheme;
+@property (nonatomic) bool cellularAllowRedLowBitratesEnabled;
 @property (nonatomic, retain) VCAudioPayload *chosenAudioPayload;
 @property (nonatomic, retain) VCAudioPayload *chosenDTXPayload;
 @property (nonatomic) int chosenRedPayloadType;
@@ -63,6 +69,7 @@
 @property (nonatomic) struct AudioStreamBasicDescription { double x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; } inputFormat;
 @property (nonatomic) bool isUseCaseWatchContinuity;
 @property (nonatomic) unsigned int maxIDSStreamIdCount;
+@property (nonatomic) unsigned char mediaControlInfoVersion;
 @property (nonatomic) struct tagHANDLE { int x1; }*mediaQueue;
 @property (nonatomic) bool needsPacketThread;
 @property (nonatomic) int operatingMode;
@@ -83,11 +90,14 @@
 @property (nonatomic) bool transmitROC;
 @property (nonatomic, retain) VCTransportSession *transportSession;
 @property (nonatomic) bool useRateControl;
+@property (nonatomic) bool wifiAllowRedLowBitratesEnabled;
 
 - (struct tagHANDLE { int x1; }*)afrcHandle;
 - (bool)allowAudioSwitching;
+- (bool)alwaysOnAudioRedundancyEnabled;
 - (id)audioPayloads;
 - (int)bundlingScheme;
+- (bool)cellularAllowRedLowBitratesEnabled;
 - (id)chosenAudioPayload;
 - (id)chosenDTXPayload;
 - (int)chosenRedPayloadType;
@@ -101,6 +111,7 @@
 - (bool)isRedEnabled;
 - (bool)isUseCaseWatchContinuity;
 - (unsigned int)maxIDSStreamIdCount;
+- (unsigned char)mediaControlInfoVersion;
 - (struct tagHANDLE { int x1; }*)mediaQueue;
 - (bool)needsPacketThread;
 - (int)operatingMode;
@@ -114,8 +125,10 @@
 - (bool)sendActiveVoiceOnly;
 - (void)setAfrcHandle:(struct tagHANDLE { int x1; }*)arg1;
 - (void)setAllowAudioSwitching:(bool)arg1;
+- (void)setAlwaysOnAudioRedundancyEnabled:(bool)arg1;
 - (void)setAudioPayloads:(id)arg1;
 - (void)setBundlingScheme:(int)arg1;
+- (void)setCellularAllowRedLowBitratesEnabled:(bool)arg1;
 - (void)setChosenAudioPayload:(id)arg1;
 - (void)setChosenDTXPayload:(id)arg1;
 - (void)setChosenRedPayloadType:(int)arg1;
@@ -126,6 +139,7 @@
 - (void)setInputFormat:(struct AudioStreamBasicDescription { double x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; })arg1;
 - (void)setIsUseCaseWatchContinuity:(bool)arg1;
 - (void)setMaxIDSStreamIdCount:(unsigned int)arg1;
+- (void)setMediaControlInfoVersion:(unsigned char)arg1;
 - (void)setMediaQueue:(struct tagHANDLE { int x1; }*)arg1;
 - (void)setNeedsPacketThread:(bool)arg1;
 - (void)setOperatingMode:(int)arg1;
@@ -146,6 +160,7 @@
 - (void)setTransmitROC:(bool)arg1;
 - (void)setTransportSession:(id)arg1;
 - (void)setUseRateControl:(bool)arg1;
+- (void)setWifiAllowRedLowBitratesEnabled:(bool)arg1;
 - (id)statisticsCollector;
 - (id)streamIDs;
 - (id)supportedNumRedundantPayload;
@@ -154,5 +169,6 @@
 - (bool)transmitROC;
 - (id)transportSession;
 - (bool)useRateControl;
+- (bool)wifiAllowRedLowBitratesEnabled;
 
 @end

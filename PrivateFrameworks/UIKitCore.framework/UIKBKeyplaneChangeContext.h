@@ -3,6 +3,7 @@
  */
 
 @interface UIKBKeyplaneChangeContext : NSObject {
+    bool  _isSecureTextEntry;
     bool  _selfSizingChanged;
     struct CGSize { 
         double width; 
@@ -13,6 +14,7 @@
     bool  _updateAssistantView;
 }
 
+@property (nonatomic) bool isSecureTextEntry;
 @property (nonatomic) bool selfSizingChanged;
 @property (nonatomic) struct CGSize { double x1; double x2; } size;
 @property (nonatomic, readonly) bool sizeDidChange;
@@ -22,7 +24,9 @@
 + (id)keyplaneChangeContext;
 + (id)keyplaneChangeContextWithSize:(struct CGSize { double x1; double x2; })arg1;
 
+- (bool)isSecureTextEntry;
 - (bool)selfSizingChanged;
+- (void)setIsSecureTextEntry:(bool)arg1;
 - (void)setSelfSizingChanged:(bool)arg1;
 - (void)setSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setSplitWidthsChanged:(bool)arg1;

@@ -23,6 +23,6 @@
 - (void)accessoryBrowser:(HMDAccessoryBrowser *)arg1 didUpdateReachability:(bool)arg2 forBTLEAccessoriesWithServerIdentifier:(NSString *)arg3;
 - (void)accessoryBrowser:(HMDAccessoryBrowser *)arg1 discoveryFailedWithError:(NSError *)arg2 accessoryServer:(NSString *)arg3 linkType:(long long)arg4;
 - (void)accessoryBrowser:(HMDAccessoryBrowser *)arg1 identifier:(NSString *)arg2 reachable:(bool)arg3;
-- (void)accessoryBrowser:(void *)arg1 setupID:(void *)arg2 isPairedWithCompletionHandler:(void *)arg3; // needs 3 arg types, found 8: HMDAccessoryBrowser *, NSString *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, void*
+- (void)accessoryBrowser:(void *)arg1 setupID:(void *)arg2 serverIdentifier:(void *)arg3 isPairedWithCompletionHandler:(void *)arg4; // needs 4 arg types, found 9: HMDAccessoryBrowser *, NSString *, NSString *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, void*
 
 @end

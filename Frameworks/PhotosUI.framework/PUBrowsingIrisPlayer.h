@@ -3,7 +3,6 @@
  */
 
 @interface PUBrowsingIrisPlayer : PUViewModel <ISChangeObserver, PXVideoScrubberControllerTarget> {
-    int  __currentFrameCuratorRequstID;
     long long  __currentUnloadRequestId;
     PHLivePhoto * __livePhoto;
     NSMutableSet * __livePhotoLoadingDisablingReasons;
@@ -41,7 +40,6 @@
     id /* block */  statusChangeHandler;
 }
 
-@property (setter=_setCurrentFrameCuratorRequestID:, nonatomic) int _currentFrameCuratorRequstID;
 @property (setter=_setCurrentUnloadRequestId:, nonatomic) long long _currentUnloadRequestId;
 @property (setter=_setLivePhoto:, nonatomic, retain) PHLivePhoto *_livePhoto;
 @property (nonatomic, retain) NSMutableSet *_livePhotoLoadingDisablingReasons;
@@ -75,7 +73,6 @@
 - (void).cxx_destruct;
 - (void)_cancelAllRequests;
 - (long long)_contentMode;
-- (int)_currentFrameCuratorRequstID;
 - (long long)_currentUnloadRequestId;
 - (void)_handleLivePhotoResult:(id)arg1 info:(id)arg2 requestID:(int)arg3;
 - (void)_handlePeriodicObserverWithTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
@@ -96,7 +93,6 @@
 - (id /* block */)_seekCompletionHandler;
 - (void)_setAVPlayer:(id)arg1;
 - (void)_setAvPlayer:(id)arg1;
-- (void)_setCurrentFrameCuratorRequestID:(int)arg1;
 - (void)_setCurrentUnloadRequestId:(long long)arg1;
 - (void)_setCurrentlyDisplayedTimes:(id)arg1;
 - (void)_setLivePhoto:(id)arg1;

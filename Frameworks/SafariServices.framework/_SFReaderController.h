@@ -39,6 +39,7 @@
 - (void)_performActionsDelayedUntilReaderWebViewIsReadyDidTimeout:(id)arg1;
 - (bool)_readerWebViewIsReady;
 - (void)_saveConfigurationAndSendToWebProcess;
+- (void)_sendReaderAvailabilityNotificationForReason:(long long)arg1;
 - (void)_setUpReaderActivityListener;
 - (void)_updateJavaScriptEnabled;
 - (id)_webView:(id)arg1 actionsForElement:(id)arg2 defaultActions:(id)arg3;
@@ -50,13 +51,16 @@
 - (bool)_webView:(id)arg1 performDataInteractionOperationWithItemProviders:(id)arg2;
 - (id)_webView:(id)arg1 previewViewControllerForURL:(id)arg2 defaultActions:(id)arg3 elementInfo:(id)arg4;
 - (unsigned long long)_webView:(id)arg1 willUpdateDataInteractionOperationToOperation:(unsigned long long)arg2 forSession:(id)arg3;
+- (void)activateFont:(id)arg1;
 - (void)activateReader;
 - (id)articleText;
 - (bool)canDecreaseReaderTextSize;
 - (bool)canIncreaseReaderTextSize;
+- (void)checkReaderAvailability;
 - (void)clearAvailability;
 - (void)clearReaderWebView;
 - (void)clearUnusedReaderResourcesSoon;
+- (void)collectArticleContent;
 - (void)collectReaderContentForMailWithCompletion:(id /* block */)arg1;
 - (void)collectReadingListInfoWithBookmarkID:(int)arg1 completionHandler:(id /* block */)arg2;
 - (id)configurationManager;
@@ -67,10 +71,12 @@
 - (void)dealloc;
 - (void)decreaseReaderTextSize;
 - (id)delegate;
+- (void)didCollectArticleContent:(id)arg1;
 - (void)didCollectReaderContentForMail:(id)arg1;
 - (void)didCollectReadingListItemInfo:(id)arg1 bookmarkID:(id)arg2;
 - (void)didCreateReaderWebView:(id)arg1;
 - (void)didDetermineReaderAvailability:(bool)arg1 dueToSameDocumentNavigation:(bool)arg2;
+- (void)didDetermineReaderAvailabilityForDynamicCheck:(bool)arg1;
 - (void)didFinishPresentationUpdateAfterTransitioningToReader;
 - (void)didPrepareReaderContentForPrinting:(id)arg1;
 - (void)didSetReaderConfiguration:(id)arg1;
@@ -97,6 +103,7 @@
 - (void)setReaderFont:(id)arg1;
 - (void)setReaderInitialTopScrollOffset:(long long)arg1 configuration:(id)arg2 isViewingArchive:(bool)arg3;
 - (void)setReaderInitialTopScrollOffset:(long long)arg1 configuration:(id)arg2 isViewingArchive:(bool)arg3 scrollOffsetDictionary:(id)arg4;
+- (void)setReaderIsActive:(bool)arg1;
 - (void)setReaderLanguageTag:(id)arg1;
 - (void)setReaderTheme:(long long)arg1 forAppearance:(long long)arg2;
 - (void)setUpReaderWebViewIfNeededAndPerformBlock:(id /* block */)arg1;
@@ -106,6 +113,5 @@
 - (id)webView;
 - (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(id /* block */)arg3;
 - (id)webViewUIDelegate;
-- (void)willHideReader;
 
 @end

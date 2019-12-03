@@ -12,6 +12,7 @@
 - (bool)hasBottomPadding;
 - (bool)hasTopPadding;
 - (NSData *)jsonData;
+- (unsigned long long)numberOfRows;
 - (NSArray *)punchoutOptions;
 - (NSString *)punchoutPickerDismissText;
 - (NSString *)punchoutPickerTitle;
@@ -21,6 +22,7 @@
 - (void)setCardSections:(NSArray *)arg1;
 - (void)setHasBottomPadding:(bool)arg1;
 - (void)setHasTopPadding:(bool)arg1;
+- (void)setNumberOfRows:(unsigned long long)arg1;
 - (void)setPunchoutOptions:(NSArray *)arg1;
 - (void)setPunchoutPickerDismissText:(NSString *)arg1;
 - (void)setPunchoutPickerTitle:(NSString *)arg1;

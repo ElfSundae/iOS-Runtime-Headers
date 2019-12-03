@@ -5,12 +5,12 @@
 @interface NEVPNApp : NEVPN {
     NSArray * _appRules;
     bool  _noRestriction;
-    long long  _tunnelType;
+    bool  _restrictDomains;
 }
 
 @property (copy) NSArray *appRules;
 @property bool noRestriction;
-@property long long tunnelType;
+@property bool restrictDomains;
 
 + (bool)supportsSecureCoding;
 
@@ -31,9 +31,10 @@
 - (bool)installSigningIdentifiersWithFlowDivertControlSocket:(int)arg1;
 - (bool)noRestriction;
 - (bool)removeAppRuleByID:(id)arg1;
+- (bool)restrictDomains;
 - (void)setAppRules:(id)arg1;
 - (void)setNoRestriction:(bool)arg1;
-- (void)setTunnelType:(long long)arg1;
-- (long long)tunnelType;
+- (void)setRestrictDomains:(bool)arg1;
+- (void)updateAppRulesForUID:(unsigned int)arg1;
 
 @end

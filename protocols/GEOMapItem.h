@@ -5,9 +5,9 @@
 
 @required
 
-- (bool)_acceptsApplePay;
 - (NSArray *)_additionalPlaceInfos;
 - (int)_addressGeocodeAccuracy;
+- (NSArray *)_amenities;
 - (<GEOAnnotatedItemList> *)_annotatedItemList;
 - (double)_areaInMeters;
 - (GEOMapRegion *)_arrivalMapRegionForTransportType:(int)arg1;
@@ -22,31 +22,27 @@
 - (GEOPDBusinessClaim *)_businessClaim;
 - (NSArray *)_businessHours;
 - (NSString *)_businessURL;
-- (NSArray *)_childPlaces;
+- (NSArray *)_childItems;
 - (GEOMapItemClientAttributes *)_clientAttributes;
 - (GEOMapItemContainedPlace *)_containedPlace;
 - (unsigned long long)_customIconID;
 - (NSString *)_disambiguationName;
+- (bool)_enableRAPLightweightFeedback;
 - (<GEOEncyclopedicInfo> *)_encyclopedicInfo;
 - (GEORestaurantFeaturesLink *)_featureLink;
 - (GEOPDFlyover *)_flyover;
 - (NSString *)_flyoverAnnouncementMessage;
-- (bool)_goodForKids;
-- (bool)_hasAcceptsApplePayAmenity;
+- (unsigned long long)_groundViewLocationId;
 - (bool)_hasAnyAmenities;
 - (bool)_hasAreaInMeters;
 - (bool)_hasBrandMUID;
 - (bool)_hasBusinessClaim;
 - (bool)_hasBusinessHours;
 - (bool)_hasCurrentOperatingHours;
-- (bool)_hasDelivery;
-- (bool)_hasDeliveryAmenity;
 - (bool)_hasEncyclopedicInfo;
 - (bool)_hasFeatureLink;
 - (bool)_hasFlyover;
-- (bool)_hasGenderNeutralRestroom;
-- (bool)_hasGenderNeutralRestroomAmenity;
-- (bool)_hasGoodForKidsAmenity;
+- (bool)_hasGroundViewLocationId;
 - (bool)_hasLinkedServices;
 - (bool)_hasLocalizedCategoryNamesForType:(unsigned int)arg1;
 - (bool)_hasMUID;
@@ -54,7 +50,6 @@
 - (bool)_hasPriceRange;
 - (bool)_hasResolvablePartialInformation;
 - (bool)_hasResultProviderID;
-- (bool)_hasTakesReservationsAmenity;
 - (bool)_hasTelephone;
 - (bool)_hasTransit;
 - (bool)_hasUserRatingScore;
@@ -69,8 +64,10 @@
 - (NSArray *)_linkedServices;
 - (NSArray *)_localizedCategoryNamesForType:(unsigned int)arg1;
 - (<GEOMapItem> *)_mapItemByStrippingOptionalData;
+- (NSString *)_mapsCategoryId;
 - (GEOMessageLink *)_messageLink;
 - (unsigned long long)_muid;
+- (GEOMuninViewState *)_muninViewState;
 - (bool)_needsAttribution;
 - (float)_normalizedUserRatingScore;
 - (unsigned long long)_openingHoursOptions;
@@ -79,18 +76,22 @@
 - (NSArray *)_photos;
 - (GEOMapItemPhotosAttribution *)_photosAttribution;
 - (GEOPlace *)_place;
+- (NSArray *)_placeCollections;
 - (GEOPDPlace *)_placeData;
 - (NSData *)_placeDataAsData;
 - (int)_placeDisplayStyle;
 - (int)_placeDisplayType;
+- (GEOPlaceResult *)_placeResult;
 - (int)_placeType;
 - (GEOPlacecardLayoutConfiguration *)_placecardLayoutConfiguration;
+- (NSString *)_poiCategory;
 - (NSString *)_poiPinpointURLString;
 - (NSString *)_poiSurveyURLString;
 - (GEOPriceDescription *)_priceDescription;
 - (unsigned int)_priceRange;
 - (NSURL *)_providerURL;
 - (NSArray *)_quickLinks;
+- (GEORelatedPlaceList *)_relatedPlaceList;
 - (bool)_responseStatusIsIncomplete;
 - (int)_resultProviderID;
 - (unsigned int)_resultSnippetDistanceDisplayThreshold;
@@ -99,13 +100,16 @@
 - (GEOMapItemReviewsAttribution *)_reviewsAttribution;
 - (NSArray *)_roadAccessPoints;
 - (unsigned int)_sampleSizeForUserRatingScore;
+- (bool)_showSuggestAnEditButton;
 - (NSString *)_spokenAddressForLocale:(NSString *)arg1;
+- (GEOStorefrontInfo *)_storefrontInfo;
+- (GEOStorefrontPresentationInfo *)_storefrontPresentationInfo;
 - (GEOFeatureStyleAttributes *)_styleAttributes;
-- (bool)_takesReservations;
 - (NSString *)_telephone;
 - (NSArray *)_tips;
 - (<GEOTransitAttribution> *)_transitAttribution;
 - (<GEOMapItemTransitInfo> *)_transitInfo;
+- (<GEOTransitVehiclePosition> *)_transitVehiclePosition;
 - (NSString *)_vendorID;
 - (int)_venueFeatureType;
 - (<GEOMapItemVenueInfo> *)_venueInfo;
@@ -141,6 +145,8 @@
 - (NSData *)externalTransitStationCode;
 - (GEOAddress *)geoAddress;
 - (GEOMapRegion *)geoFenceMapRegion;
+- (GEOMapRegion *)geoFenceMapRegionOrNil;
+- (bool)hasAmenityType:(int)arg1;
 - (bool)hasDisplayMaxZoom;
 - (bool)hasDisplayMinZoom;
 - (bool)hasExpiredComponents;
@@ -149,6 +155,7 @@
 - (bool)isEqualToMapItem:(id <GEOMapItem>)arg1;
 - (bool)isEventAllDay;
 - (bool)isValid;
+- (void)iterateGroundViewsWithBlock:(void *)arg1; // needs 1 arg types, found 10: id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, double, double, NSString *, NSString *, NSString *, void*
 - (NSString *)name;
 - (int)referenceFrame;
 - (NSString *)secondaryName;
@@ -158,6 +165,7 @@
 - (NSArray *)spatialMappedPlaceCategories;
 - (NSString *)spokenNameForLocale:(NSString *)arg1;
 - (NSTimeZone *)timezone;
+- (bool)valueForAmenityType:(int)arg1;
 - (long long)venueCapacity;
 - (NSString *)weatherDisplayName;
 

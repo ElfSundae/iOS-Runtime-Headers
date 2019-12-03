@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXCMMWorkflowCoordinator : NSObject <PXCMMActionControllerDelegate, PXCMMActionPerformerDelegate, PXCMMViewControllerDelegate> {
+@interface PXCMMWorkflowCoordinator : NSObject <PXCMMActionControllerDelegate, PXCMMActionPerformerDelegate, PXCMMViewControllerDelegate, PXCMMWorkflowPresenting> {
     <PXCMMWorkflowCoordinatorDelegate> * _delegate;
     UINavigationController * _navigationController;
     PXCMMViewController * _rootWorkflowViewController;
@@ -48,6 +48,7 @@
 - (void)didCancelCompleteMyMomentViewController:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)startPreloadingTasksForCompleteMyMomentViewController:(id)arg1;
+- (struct NSObject { Class x1; }*)workflowViewControllerWithContext:(id)arg1;
 - (id)workflowViewControllerWithContext:(id)arg1 embedInNavigationControllerOfClass:(Class)arg2;
 
 @end

@@ -3,7 +3,7 @@
  */
 
 @interface STGroupSpecifierProvider : NSObject <UITableViewDelegate> {
-    <STGroupSpecifierProviderDelegate> * _delegate;
+    UIViewController<STGroupSpecifierProviderDelegate> * _delegate;
     PSSpecifier * _groupSpecifier;
     bool  _invalid;
     bool  _isHidden;
@@ -11,12 +11,13 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) <STGroupSpecifierProviderDelegate> *delegate;
+@property (nonatomic) UIViewController<STGroupSpecifierProviderDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) PSSpecifier *groupSpecifier;
 @property (readonly) unsigned long long hash;
 @property bool invalid;
 @property (nonatomic) bool isHidden;
+@property (readonly) NSMutableArray *mutableSpecifiers;
 @property (retain) NSMutableArray *privateSpecifiers;
 @property (nonatomic, readonly, copy) NSArray *specifiers;
 @property (readonly) Class superclass;
@@ -42,6 +43,7 @@
 - (void)presentViewController:(id)arg1 animated:(bool)arg2;
 - (void)presentViewController:(id)arg1 animated:(bool)arg2 completion:(id /* block */)arg3;
 - (id)privateSpecifiers;
+- (void)reloadSectionHeaderFootersWithAnimation:(long long)arg1;
 - (void)reloadSpecifier:(id)arg1 animated:(bool)arg2;
 - (void)removeSpecifiersAtIndexes:(id)arg1;
 - (void)replaceObjectInSpecifiersAtIndex:(unsigned long long)arg1 withObject:(id)arg2;
@@ -53,7 +55,7 @@
 - (void)setPrivateSpecifiers:(id)arg1;
 - (void)showConfirmationViewForSpecifier:(id)arg1;
 - (void)showController:(id)arg1 animated:(bool)arg2;
-- (void)showPINSheet:(id)arg1;
+- (void)showPINSheet:(id)arg1 completion:(id /* block */)arg2;
 - (void)showStoreDemoAlert;
 - (id)specifiers;
 - (id)specifiersAtIndexes:(id)arg1;

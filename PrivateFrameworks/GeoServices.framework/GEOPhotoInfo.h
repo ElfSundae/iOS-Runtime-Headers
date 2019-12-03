@@ -4,8 +4,8 @@
 
 @interface GEOPhotoInfo : PBCodable <NSCopying> {
     struct { 
-        unsigned int size : 1; 
-    }  _has;
+        unsigned int has_size : 1; 
+    }  _flags;
     int  _size;
     PBUnknownFields * _unknownFields;
     NSString * _url;
@@ -17,8 +17,11 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic, retain) NSString *url;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsSize:(id)arg1;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -29,6 +32,7 @@
 - (id)initWithPlaceDataPhotoContent:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasSize:(bool)arg1;
 - (void)setSize:(int)arg1;

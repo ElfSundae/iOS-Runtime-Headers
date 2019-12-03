@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MapKit.framework/MapKit
  */
 
-@interface MKPlaceAttributionViewController : MKPlaceSectionViewController <MKModuleViewControllerProtocol, MKPlaceAttributionCellDelegate, MKStackingViewControllerFixedHeightAware, _MKInfoCardChildViewControllerAnalyticsDelegate> {
+@interface MKPlaceAttributionViewController : MKPlaceSectionViewController <MKModuleViewControllerProtocol, MKPlaceAttributionCellDelegate, MKStackingViewControllerFixedHeightAware> {
     <_MKInfoCardAnalyticsDelegate> * _analyticsDelegate;
     _MKMapItemAttribution * _attribution;
     MKPlaceAttributionCell * _attributionCell;
@@ -14,7 +14,7 @@
 
 @property (nonatomic) <_MKInfoCardAnalyticsDelegate> *analyticsDelegate;
 @property (nonatomic, retain) _MKMapItemAttribution *attribution;
-@property (retain) MKPlaceAttributionCell *attributionCell;
+@property (nonatomic, retain) MKPlaceAttributionCell *attributionCell;
 @property (nonatomic, copy) NSAttributedString *attributionString;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -25,12 +25,13 @@
 @property (nonatomic, copy) NSArray *urlStrings;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)analyticsDelegate;
 - (id)attribution;
 - (id)attributionCell;
 - (id)attributionString;
 - (id)infoAttributionString;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (void)loadView;
 - (id)mapItem;
 - (void)openURL;

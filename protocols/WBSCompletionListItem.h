@@ -7,6 +7,7 @@
 
 - (unsigned long long)engagementDestination;
 - (NSString *)parsecDomainIdentifier;
+- (long long)parsecQueryID;
 - (SFSearchResult *)sfSearchResultValue;
 
 @optional

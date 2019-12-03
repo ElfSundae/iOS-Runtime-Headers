@@ -17,7 +17,6 @@
 - (id)contentType;
 - (void)dealloc;
 - (id)description;
-- (void)finalize;
 - (id)init;
 - (id)initWithLoadingRequest:(id)arg1 allowedContentTypes:(id)arg2;
 - (bool)isByteRangeAccessSupported;

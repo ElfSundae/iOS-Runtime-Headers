@@ -14,6 +14,7 @@
     NSString * _title;
     UILabel * _titleLabel;
     bool  _useAlternateBackground;
+    MTVisualStylingProvider * _visualStylingProvider;
 }
 
 @property (nonatomic, retain) CCUIRoundButton *buttonView;
@@ -33,9 +34,11 @@
 - (void)_layoutLabels;
 - (void)_setupLabelsBounds;
 - (bool)_shouldUseLargeTextLayout;
+- (void)_updateVisualStylingOfLabel:(id)arg1;
 - (void)buttonTapped:(id)arg1;
 - (id)buttonView;
 - (void)dealloc;
+- (void)didMoveToWindow;
 - (id)glyphImage;
 - (id)glyphPackageDescription;
 - (id)glyphState;

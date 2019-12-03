@@ -10,19 +10,17 @@
     NSMutableDictionary * _historicalHandlerMap;
     NSMutableDictionary * _instantHandlerMap;
     NSMutableSet * _lazyMonitorNames;
-    NSArray * _monitorManagers;
     NSObject<OS_dispatch_queue> * _monitorWorkQueue;
     NSMutableDictionary * _monitors;
     NSMutableSet * _shutdownHandlingMonitors;
 }
 
-+ (id)monitorManagerForEventStreams:(id)arg1;
++ (id)monitorManagerForEventStreams:(id)arg1 domain:(unsigned long long)arg2;
 
 - (void).cxx_destruct;
 - (void)_addMonitor:(id)arg1 forStreamName:(id)arg2;
 - (id)_allMonitors;
 - (id)_allStreamNames;
-- (id)_createMonitorManagers;
 - (id)_currentEventForStreamName:(id)arg1;
 - (bool)_hasMonitorForStreamName:(id)arg1;
 - (id)_lastUpdateForStreamName:(id)arg1;
@@ -39,10 +37,10 @@
 - (void)deliverNotificationEvent:(id)arg1;
 - (void)handleShutdownNotification;
 - (bool)hasMonitor:(id)arg1;
-- (id)init;
-- (id)initWithEventStreams:(id)arg1;
+- (id)initWithEventStreams:(id)arg1 domain:(unsigned long long)arg2;
 - (id)lastUpdate;
 - (id)lastUpdateForStream:(id)arg1;
+- (void)loadMonitorManagers;
 - (void)populateCurrentValueForStreamName:(id)arg1;
 - (void)removeMonitor:(id)arg1;
 - (void)setHistoricalDeletingHandler:(id /* block */)arg1;

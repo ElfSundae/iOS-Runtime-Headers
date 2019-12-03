@@ -22,7 +22,6 @@
 - (void)dealloc;
 - (id)delegate;
 - (id)delegateQueue;
-- (void)finalize;
 - (id)init;
 - (id)initWithDependencyFactory:(id)arg1 mediaSubtypesForNativeRepresentation:(id)arg2;
 - (id)initWithMediaSubtypesForNativeRepresentation:(id)arg1;

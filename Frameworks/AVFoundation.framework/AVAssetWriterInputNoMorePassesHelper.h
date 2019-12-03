@@ -19,5 +19,6 @@
 - (struct __CVPixelBufferPool { }*)pixelBufferPool;
 - (void)requestMediaDataWhenReadyOnQueue:(id)arg1 usingBlock:(id /* block */)arg2;
 - (long long)status;
+- (void)stopRequestingMediaData;
 
 @end

@@ -5,6 +5,9 @@
 @interface PKDashboardBalanceSummaryItemPresenter : NSObject <PKDashboardItemPresenter, QLPreviewControllerDataSource, QLPreviewControllerDelegate, QLPreviewItemDataProvider> {
     long long  _cellStyle;
     PKDashboardButtonCollectionViewCell * _downloadPDFCell;
+    PKDashboardButtonCollectionViewCell * _exportStatementDataCell;
+    NSData * _exportedStatementData;
+    QLItem * _exportedStatementDataItem;
     NSDateFormatter * _formatterMonth;
     NSDateFormatter * _formatterMonthAndDay;
     NSDateFormatter * _formatterMonthDayYear;
@@ -27,13 +30,19 @@
 - (void).cxx_destruct;
 - (void)_configureCell:(id)arg1 forItem:(id)arg2 inCollectionView:(id)arg3 forIndexPath:(id)arg4 forSizing:(bool)arg5;
 - (void)_configureDailyCashCell:(id)arg1 forItem:(id)arg2;
+- (void)_configureExportStatementDataCell:(id)arg1 forItem:(id)arg2;
+- (void)_configureInstallmentBalanceCell:(id)arg1 forItem:(id)arg2;
 - (void)_configureInterestCell:(id)arg1 forItem:(id)arg2;
 - (void)_configurePaymentsAndCreditsCell:(id)arg1 forItem:(id)arg2;
 - (void)_configureSpendingCell:(id)arg1 forItem:(id)arg2;
 - (void)_configureStatementBalanceCell:(id)arg1 forItem:(id)arg2;
 - (void)_configureStatementCell:(id)arg1 forItem:(id)arg2;
 - (void)_configureStatementDownloadCell:(id)arg1 forItem:(id)arg2;
+- (void)_configureTotalBalanceCell:(id)arg1 forItem:(id)arg2;
 - (void)_downloadAndPresentStatementForItem:(id)arg1 inCollectionView:(id)arg2;
+- (void)_downloadExportedStatementDataForItem:(id)arg1 withFileFormat:(id)arg2 inCollectionView:(id)arg3;
+- (id)_readableFileTypeForFormat:(id)arg1 feature:(unsigned long long)arg2;
+- (void)_selectFileFormatForExportedStatementDataForItem:(id)arg1 inCollectionView:(id)arg2;
 - (bool)_shouldInset;
 - (id)_statementCellTitleForItem:(id)arg1;
 - (bool)_statementIsFromMonthPriorToSummaryForItem:(id)arg1;

@@ -8,14 +8,14 @@
     double  _currentTimestamp;
     double  _eventTimestamp;
     struct { 
-        unsigned int sessionID : 1; 
-        unsigned int currentTimestamp : 1; 
-        unsigned int eventTimestamp : 1; 
-        unsigned int travelDuration : 1; 
-        unsigned int actionType : 1; 
-        unsigned int alertType : 1; 
-        unsigned int travelState : 1; 
-    }  _has;
+        unsigned int has_sessionID : 1; 
+        unsigned int has_currentTimestamp : 1; 
+        unsigned int has_eventTimestamp : 1; 
+        unsigned int has_travelDuration : 1; 
+        unsigned int has_actionType : 1; 
+        unsigned int has_alertType : 1; 
+        unsigned int has_travelState : 1; 
+    }  _flags;
     struct GEOSessionID { 
         unsigned long long _high; 
         unsigned long long _low; 
@@ -38,6 +38,8 @@
 @property (nonatomic) struct GEOSessionID { unsigned long long x1; unsigned long long x2; } sessionID;
 @property (nonatomic) double travelDuration;
 @property (nonatomic) int travelState;
+
++ (bool)isValid:(id)arg1;
 
 - (int)StringAsActionType:(id)arg1;
 - (int)StringAsAlertType:(id)arg1;
@@ -62,6 +64,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (struct GEOSessionID { unsigned long long x1; unsigned long long x2; })sessionID;
 - (void)setActionType:(int)arg1;

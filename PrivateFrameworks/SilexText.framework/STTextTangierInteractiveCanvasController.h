@@ -23,16 +23,11 @@
 + (void)createCanvasWithDelegate:(id)arg1 outICC:(id*)arg2 outLayerHost:(id*)arg3 iccClass:(Class)arg4 layerHostClass:(Class)arg5;
 
 - (void).cxx_destruct;
-- (id)_gestureHitLink:(id)arg1 wpRep:(id*)arg2;
-- (bool)canHandleGesture:(id)arg1;
 - (id)closestRepToPoint:(struct CGPoint { double x1; double x2; })arg1 forStorage:(id)arg2;
 - (id)dataSource;
 - (void)didBeginEditingText;
 - (void)endUISession;
-- (id)extraMenuItems;
 - (bool)forceLayoutAndRenderOnThread;
-- (id)gestureWithKind:(id)arg1;
-- (bool)handleGesture:(id)arg1;
 - (id)hitRep:(struct CGPoint { double x1; double x2; })arg1 withGesture:(id)arg2 passingTest:(id /* block */)arg3;
 - (id)i_topLevelLayersForTiling;
 - (bool)isScrolling;
@@ -57,7 +52,6 @@
 - (void)setSelection:(id)arg1 onModel:(id)arg2 withFlags:(unsigned long long)arg3;
 - (void)setStartedEditing:(bool)arg1;
 - (bool)startedEditing;
-- (bool)tappedOnHyperlink:(id)arg1;
 - (void)teardown;
 - (id)topLevelRepsForHitTesting;
 

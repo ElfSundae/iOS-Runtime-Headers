@@ -17,8 +17,10 @@
     bool  _installUniversalVariant;
     bool  _isBackgroundUpdate;
     bool  _isCompatibilityUpdate;
+    bool  _isDSIDLess;
     bool  _isRedownload;
     bool  _isRefresh;
+    bool  _isUpdate;
     NSNumber * _itemID;
     NSString * _itemName;
     NSNumber * _ownerDSID;
@@ -47,8 +49,10 @@
 @property (nonatomic) bool installUniversalVariant;
 @property (nonatomic) bool isBackgroundUpdate;
 @property (nonatomic) bool isCompatibilityUpdate;
+@property (nonatomic) bool isDSIDLess;
 @property (nonatomic) bool isRedownload;
 @property (nonatomic) bool isRefresh;
+@property (nonatomic) bool isUpdate;
 @property (nonatomic, copy) NSNumber *itemID;
 @property (nonatomic, copy) NSString *itemName;
 @property (nonatomic, copy) NSNumber *ownerDSID;
@@ -86,8 +90,10 @@
 - (bool)installUniversalVariant;
 - (bool)isBackgroundUpdate;
 - (bool)isCompatibilityUpdate;
+- (bool)isDSIDLess;
 - (bool)isRedownload;
 - (bool)isRefresh;
+- (bool)isUpdate;
 - (id)itemID;
 - (id)itemName;
 - (id)ownerDSID;
@@ -112,8 +118,10 @@
 - (void)setInstallUniversalVariant:(bool)arg1;
 - (void)setIsBackgroundUpdate:(bool)arg1;
 - (void)setIsCompatibilityUpdate:(bool)arg1;
+- (void)setIsDSIDLess:(bool)arg1;
 - (void)setIsRedownload:(bool)arg1;
 - (void)setIsRefresh:(bool)arg1;
+- (void)setIsUpdate:(bool)arg1;
 - (void)setItemID:(id)arg1;
 - (void)setItemName:(id)arg1;
 - (void)setOwnerDSID:(id)arg1;

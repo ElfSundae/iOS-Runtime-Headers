@@ -16,7 +16,9 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)fingerIdentifiersAtEventIndex:(unsigned long long)arg1;
 - (double)forceForFingerIdentifier:(id)arg1 atEventIndex:(unsigned long long)arg2;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (bool)isEqual:(id)arg1;
 - (unsigned long long)numberOfEvents;
 - (struct CGPoint { double x1; double x2; })pointForFingerIdentifier:(id)arg1 atEventIndex:(unsigned long long)arg2;
 - (double)timeAtEventIndex:(unsigned long long)arg1;

@@ -8,6 +8,7 @@
 }
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)flightInfoView;
 - (id)initWithStyle:(unsigned long long)arg1;
 - (void)loadView;

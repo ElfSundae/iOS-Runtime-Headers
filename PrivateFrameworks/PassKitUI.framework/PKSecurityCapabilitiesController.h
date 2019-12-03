@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
  */
 
-@interface PKSecurityCapabilitiesController : NSObject <AAUIDeviceToDeviceEncryptionHelperDelegate> {
+@interface PKSecurityCapabilitiesController : NSObject <CDPUIDeviceToDeviceEncryptionHelperDelegate> {
     AKAppleIDAuthenticationContext * _authContext;
     PKCloudStoreService * _cloudService;
     long long  _context;

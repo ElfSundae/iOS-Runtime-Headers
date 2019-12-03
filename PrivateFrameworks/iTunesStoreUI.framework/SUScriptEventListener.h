@@ -13,8 +13,8 @@
 @property (copy) NSString *name;
 @property bool shouldUseCapture;
 
+- (void).cxx_destruct;
 - (id)callback;
-- (void)dealloc;
 - (id)init;
 - (id)name;
 - (void)setCallback:(id)arg1;

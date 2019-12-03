@@ -7,12 +7,15 @@
 
 - (long long)chipId;
 - (long long)deviceClass;
+- (bool)hasAppleNeuralEngine;
 - (bool)isDeviceLargeScreen;
+- (bool)isSecondDisplaySupportEnabled;
 - (unsigned int)maxActiveVideoDecoders;
 - (unsigned int)maxActiveVideoEncoders;
 - (int)screenHeight;
 - (int)screenWidth;
 - (bool)supportHEVC;
+- (bool)supportsHEIFEncoding;
 - (bool)useSoftFramerateSwitching;
 - (bool)vcpSupportsHEVCEncoder;
 - (long long)videoEncoderType;

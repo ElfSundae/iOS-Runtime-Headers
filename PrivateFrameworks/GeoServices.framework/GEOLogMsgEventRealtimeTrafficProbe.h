@@ -9,6 +9,8 @@
 @property (nonatomic, readonly) bool hasLocationCollection;
 @property (nonatomic, retain) NSData *locationCollection;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -19,6 +21,7 @@
 - (bool)isEqual:(id)arg1;
 - (id)locationCollection;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setLocationCollection:(id)arg1;
 - (void)writeTo:(id)arg1;

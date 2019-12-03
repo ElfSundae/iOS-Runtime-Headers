@@ -33,9 +33,10 @@
 - (void).cxx_destruct;
 - (void)_calculateMessagesProximityAndDownloadResourcesIfNeeded:(id)arg1;
 - (void)_incrementNumberOfDisplayForMessageEntry:(id)arg1;
-- (void)_presentThroughApplicationContextViewController:(id)arg1 completion:(id /* block */)arg2;
 - (void)_reevaluateMessages:(id)arg1;
 - (void)_reportDisplayToITunesCloudManagerWithEventIdentifier:(id)arg1;
+- (void)_reportMetricsEvent:(id)arg1;
+- (void)_updateLastDisplayTime;
 - (void)_updateMessagesByMonitoredKeys;
 - (void)addVisibleViewController:(id)arg1;
 - (id)allMessageEntriesWithoutDuplicates:(id)arg1;
@@ -47,7 +48,6 @@
 - (id)messageEntriesByRealKeyCorrespondingToEvent:(id)arg1;
 - (id)messagesToReevaluate:(id)arg1 forEvent:(id)arg2;
 - (id)metricsDelegate;
-- (void)presentViewController:(id)arg1 forPresentationCoordinator:(id)arg2 completion:(id /* block */)arg3;
 - (void)receiveEvent:(id)arg1;
 - (id)registeredMessageEntries;
 - (id)registeredMetadataEntries;

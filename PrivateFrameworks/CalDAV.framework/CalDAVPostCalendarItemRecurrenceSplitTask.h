@@ -49,6 +49,7 @@
 - (id)previousETag;
 - (id)previousScheduleTag;
 - (id)recurrenceDate;
+- (id)requestBody;
 - (id)resourceURL;
 - (void)setCreatedResponseItem:(id)arg1;
 - (void)setIsAllDay:(bool)arg1;

@@ -2,10 +2,9 @@
    Image: /System/Library/PrivateFrameworks/SIMSetupSupport.framework/SIMSetupSupport
  */
 
-@interface TSAddCellularPlanViewController : BFFSplashController <TSSetupFlowItem, UINavigationControllerDelegate> {
+@interface TSAddCellularPlanViewController : OBWelcomeController <TSSetupFlowItem, UINavigationControllerDelegate> {
     bool  _allowDismiss;
     <TSSIMSetupFlowDelegate> * _delegate;
-    bool  _showAddPlan;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -16,8 +15,9 @@
 
 - (void).cxx_destruct;
 - (void)_cancelButtonTapped;
+- (void)_doneButtonTapped;
 - (id)delegate;
-- (id)initShowAddPlan:(bool)arg1 allowDismiss:(bool)arg2;
+- (id)initWithType:(unsigned long long)arg1 allowDismiss:(bool)arg2;
 - (void)setDelegate:(id)arg1;
 - (void)viewDidLoad;
 

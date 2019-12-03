@@ -26,6 +26,7 @@
 @property (readonly) float variation;
 
 + (id)colorPresetWithName:(id)arg1 category:(long long)arg2;
++ (id)colorPresetWithName:(id)arg1 category:(long long)arg2 colorIndex:(unsigned long long)arg3 variation:(float)arg4;
 + (id)colorPresetWithName:(id)arg1 category:(long long)arg2 variation:(float)arg3;
 + (id)secondaryColorPresetWithName:(id)arg1 category:(long long)arg2 variation:(float)arg3;
 
@@ -33,12 +34,14 @@
 - (long long)category;
 - (id)colorPresetWithVariation:(float)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)derivedCategoriesNames;
 - (id)derivedColor;
 - (id)derivedColorNameForPresetCategory:(long long)arg1;
 - (id)description;
 - (void)didMutate;
 - (id)gradientLayerForNaturalColorWithSkinColor:(id)arg1;
 - (id)gradientLayerWithRangeMin:(float)arg1 max:(float)arg2;
+- (id)gradientLayerWithRangeMin:(float)arg1 max:(float)arg2 withSkinColor:(id)arg3;
 - (id)initWithCategory:(long long)arg1 description:(id)arg2;
 - (bool)isEqual:(id)arg1;
 - (bool)isNatural;
@@ -49,8 +52,10 @@
 - (struct UIColor { Class x1; }*)previewAccentColor;
 - (struct UIColor { Class x1; }*)previewColor;
 - (void)renderColorIntoCALayer:(id)arg1;
+- (void)renderColorIntoCALayer:(id)arg1 withSkinColor:(id)arg2;
 - (void)renderNaturalSkinColorIntoCALayer:(id)arg1 withSkinColor:(id)arg2;
 - (void)setDerivedColors:(id)arg1;
+- (bool)shouldBlendWithSkinColor;
 - (struct UIImage { Class x1; }*)thumbnail;
 - (void)updateMaterialsIfNeeded;
 - (float)variation;

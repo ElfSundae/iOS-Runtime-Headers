@@ -13,6 +13,7 @@
     bool  _shortUnits;
     NSArray * _templateSeries;
     NSTimeZone * _timeZone;
+    bool  _uppercase;
 }
 
 @property (nonatomic) bool allowsNarrowUnits;
@@ -23,6 +24,7 @@
 @property (nonatomic) bool narrowStandaloneWeekdayDay;
 @property (nonatomic) bool shortUnits;
 @property (nonatomic, retain) NSTimeZone *timeZone;
+@property (nonatomic) bool uppercase;
 
 + (bool)supportsSecureCoding;
 + (id)textProviderWithDate:(id)arg1 units:(unsigned long long)arg2;
@@ -55,7 +57,9 @@
 - (void)setNarrowStandaloneWeekdayDay:(bool)arg1;
 - (void)setShortUnits:(bool)arg1;
 - (void)setTimeZone:(id)arg1;
+- (void)setUppercase:(bool)arg1;
 - (bool)shortUnits;
 - (id)timeZone;
+- (bool)uppercase;
 
 @end

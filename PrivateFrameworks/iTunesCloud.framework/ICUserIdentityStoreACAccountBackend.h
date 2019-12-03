@@ -26,9 +26,12 @@
 
 - (void).cxx_destruct;
 - (void)_accountStoreDidChangeNotification:(id)arg1;
+- (void)_activeStoreAccountWithCompletion:(id /* block */)arg1;
 - (void)_allStoreAccountsWithCompletion:(id /* block */)arg1;
 - (void)_applyIdentityProperties:(id)arg1 toAccount:(id)arg2;
+- (void)_applyLocalStoreAccountProperties:(id)arg1 toAccount:(id)arg2;
 - (void)_handleITunesStoreAccountsChanged;
+- (id)_newLocalStoreAccountPropertiesFromAccount:(id)arg1;
 - (id)_newUserIdentityPropertiesForAccount:(id)arg1;
 - (id)_primaryICloudAccountIdentityProperties;
 - (void)_storeAccountForDSID:(id)arg1 completion:(id /* block */)arg2;
@@ -45,10 +48,13 @@
 - (id)init;
 - (id)initWithACAccountStore:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)localStoreAccountPropertiesWithCompletion:(id /* block */)arg1;
+- (id)localStoreAccountPropertiesWithError:(id*)arg1;
 - (void)removeIdentityForDSID:(id)arg1 completion:(id /* block */)arg2;
 - (void)replaceIdentityProperties:(id)arg1 forDSID:(id)arg2 completion:(id /* block */)arg3;
 - (void)setDelegate:(id)arg1;
 - (void)setIdentityProperties:(id)arg1 forDSID:(id)arg2 completion:(id /* block */)arg3;
+- (void)setLocalStoreAccountProperties:(id)arg1 completion:(id /* block */)arg2;
 - (void)synchronize;
 - (void)updateActiveAccountDSID:(id)arg1 completion:(id /* block */)arg2;
 - (void)updateActiveLockerAccountDSID:(id)arg1 completion:(id /* block */)arg2;

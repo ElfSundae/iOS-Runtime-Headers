@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXOverlayBadgeUIViewTile : UIView <PXAssetTile, PXChangeObserver, PXOverlayBadgeTile, PXReusableObject, PXUIViewBasicTile> {
+@interface PXOverlayBadgeUIViewTile : UIView <PXChangeObserver, PXOverlayBadgeTile, PXReusableObject, PXUIViewBasicTile> {
     unsigned long long  __badgeOptions;
     PXUIAssetBadgeView * __badgeView;
     PXAssetBadgeManager * _badgeManager;

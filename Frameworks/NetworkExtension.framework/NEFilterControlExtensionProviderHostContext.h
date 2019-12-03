@@ -2,11 +2,8 @@
    Image: /System/Library/Frameworks/NetworkExtension.framework/NetworkExtension
  */
 
-@interface NEFilterControlExtensionProviderHostContext : NEFilterExtensionProviderHostContext <NEFilterControlExtensionProviderHostProtocol, NEFilterControlExtensionProviderProtocol> {
-    <NEFilterControlExtensionProviderHostDelegate> * _control_delegate;
-}
+@interface NEFilterControlExtensionProviderHostContext : NEFilterExtensionProviderHostContext <NEFilterControlExtensionProviderHostProtocol, NEFilterControlExtensionProviderProtocol>
 
-@property <NEFilterControlExtensionProviderHostDelegate> *control_delegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -15,14 +12,10 @@
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
 
-- (void).cxx_destruct;
-- (id)control_delegate;
 - (void)handleNewFlow:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)handleReport:(id)arg1;
 - (void)notifyRulesChanged;
 - (void)provideRemediationMap:(id)arg1;
 - (void)provideURLAppendStringMap:(id)arg1;
-- (void)setControl_delegate:(id)arg1;
-- (void)startedWithError:(id)arg1;
 
 @end

@@ -34,6 +34,7 @@
 - (id)init;
 - (void)noteAccountDeleted;
 - (void)presentContinuityPaymentInterfaceWithRequestIdentifier:(id)arg1 completion:(id /* block */)arg2;
+- (void)promptDetailsForVirtualCard:(id)arg1 showNotification:(bool)arg2 completion:(id /* block */)arg3;
 - (id)remoteDevices;
 - (void)requestInstrumentThumbnail:(id)arg1 forRemoteDevice:(id)arg2 size:(struct CGSize { double x1; double x2; })arg3 completion:(id /* block */)arg4;
 - (void)sendPayment:(id)arg1 forRemotePaymentRequest:(id)arg2 completion:(id /* block */)arg3;

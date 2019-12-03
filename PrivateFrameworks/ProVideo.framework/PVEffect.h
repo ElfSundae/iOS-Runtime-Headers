@@ -27,7 +27,8 @@
     bool  _isInInteractiveMode;
     bool  _isPreview;
     bool  _isRecording;
-    struct atomic<unsigned int> { unsigned int x1; } * _loadCount;
+    struct atomic<unsigned int> { _Atomic unsigned int x1; } * _loadCount;
+    bool  _shouldDisableFadeOut;
     bool  _useLocalLoopTime;
 }
 
@@ -38,6 +39,7 @@
 @property (nonatomic) bool isInInteractiveMode;
 @property (nonatomic) bool isPreview;
 @property (nonatomic) bool isRecording;
+@property (nonatomic) bool shouldDisableFadeOut;
 @property (nonatomic) bool useLocalLoopTime;
 
 // Image: /System/Library/PrivateFrameworks/ProVideo.framework/ProVideo
@@ -65,6 +67,9 @@
 + (id)effectTypeForEffectID:(id)arg1;
 + (void)ensureEffectsRegistered;
 + (id)firstRegisteredEffectIDContainingSubstring:(id)arg1;
++ (void)handleApplicationDidReceiveMemoryWarning;
++ (void)handleApplicationWillTerminate;
++ (void)handleCleanupEffectsCache;
 + (void)initEffectRegistry;
 + (void)initEffectRegistryWithHostDelegate:(id)arg1;
 + (bool)isInteractiveMode;
@@ -134,10 +139,10 @@
 - (int)orientation;
 - (int)origin;
 - (struct CGSize { double x1; double x2; })outputSize;
-- (struct HGRef<HGNode> { struct HGNode {} *x1; })previewHGNodeForTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 inputHGNode:(struct HGRef<HGNode> { struct HGNode {} *x1; })arg2 outputSize:(struct CGSize { double x1; double x2; })arg3 renderer:(struct HGRenderer { int (**x1)(); unsigned int x2; struct HGNode {} *x3; struct HGBitmap {} *x4; struct HGRendererTextureUnit { struct HGBitmap {} *x_5_1_1; struct HGTransform {} *x_5_1_2; int x_5_1_3; } x5[8]; struct vector<DepthBufferManager *, std::__1::allocator<DepthBufferManager *> > { struct DepthBufferManager {} **x_6_1_1; struct DepthBufferManager {} **x_6_1_2; struct __compressed_pair<DepthBufferManager **, std::__1::allocator<DepthBufferManager *> > { struct DepthBufferManager {} **x_3_2_1; } x_6_1_3; } x6; struct vector<HGExecutionUnit *, std::__1::allocator<HGExecutionUnit *> > { struct HGExecutionUnit {} **x_7_1_1; struct HGExecutionUnit {} **x_7_1_2; struct __compressed_pair<HGExecutionUnit **, std::__1::allocator<HGExecutionUnit *> > { struct HGExecutionUnit {} **x_3_2_1; } x_7_1_3; } x7; struct HGExecutionData {} *x8; struct HGSyncData {} *x9; struct _opaque_pthread_rwlock_t { long long x_10_1_1; BOOL x_10_1_2[192]; } x10; struct _opaque_pthread_mutex_t { long long x_11_1_1; BOOL x_11_1_2[56]; } x11; struct HGLUTCacheManager {} *x12; }*)arg4;
+- (struct HGRef<HGNode> { struct HGNode {} *x1; })previewHGNodeForTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 inputHGNode:(struct HGRef<HGNode> { struct HGNode {} *x1; })arg2 outputSize:(struct CGSize { double x1; double x2; })arg3 renderer:(struct HGRenderer { int (**x1)(); struct atomic<unsigned int> { _Atomic unsigned int x_2_1_1; } x2; struct HGNode {} *x3; struct HGBitmap {} *x4; struct HGRendererTextureUnit { struct HGBitmap {} *x_5_1_1; struct HGTransform {} *x_5_1_2; int x_5_1_3; } x5[8]; struct vector<DepthBufferManager *, std::__1::allocator<DepthBufferManager *> > { struct DepthBufferManager {} **x_6_1_1; struct DepthBufferManager {} **x_6_1_2; struct __compressed_pair<DepthBufferManager **, std::__1::allocator<DepthBufferManager *> > { struct DepthBufferManager {} **x_3_2_1; } x_6_1_3; } x6; struct vector<HGExecutionUnit *, std::__1::allocator<HGExecutionUnit *> > { struct HGExecutionUnit {} **x_7_1_1; struct HGExecutionUnit {} **x_7_1_2; struct __compressed_pair<HGExecutionUnit **, std::__1::allocator<HGExecutionUnit *> > { struct HGExecutionUnit {} **x_3_2_1; } x_7_1_3; } x7; struct HGExecutionData {} *x8; struct HGSyncData {} *x9; struct _opaque_pthread_rwlock_t { long long x_10_1_1; BOOL x_10_1_2[192]; } x10; struct _opaque_pthread_mutex_t { long long x_11_1_1; BOOL x_11_1_2[56]; } x11; }*)arg4;
+- (float)proxyRenderScale;
 - (void)releaseEffect;
 - (void)releaseResources;
-- (void)resetToDefaultTranscription;
 - (void)resetToDefaultTranscriptionForLocaleID:(id)arg1;
 - (bool)resourcesAreReady;
 - (void)setConformToInputAspect:(bool)arg1;
@@ -148,9 +153,11 @@
 - (void)setIsInInteractiveMode:(bool)arg1;
 - (void)setIsPreview:(bool)arg1;
 - (void)setIsRecording:(bool)arg1;
+- (void)setShouldDisableFadeOut:(bool)arg1;
 - (void)setTopLevelGroupTransform:(id)arg1;
 - (void)setTranscriptionText:(id)arg1;
 - (void)setUseLocalLoopTime:(bool)arg1;
+- (bool)shouldDisableFadeOut;
 - (bool)shouldRenderPreviewAtPosterTime;
 - (bool)supportsExtendedRangeInputs;
 - (bool)supportsFlippingText;

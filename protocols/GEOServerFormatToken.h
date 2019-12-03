@@ -6,6 +6,7 @@
 @required
 
 - (<GEOTransitArtworkDataSource> *)artworkValue;
+- (<GEOServerFormatTokenCountdownValue> *)countdownValue;
 - (<GEOServerFormatTokenPriceValue> *)priceValue;
 - (NSString *)stringValue;
 - (NSArray *)timeStampValues;

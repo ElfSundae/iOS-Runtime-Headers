@@ -58,6 +58,7 @@
     short  mZoomPercentage;
 }
 
+- (void).cxx_destruct;
 - (void)addChangeTrackingEditAtDate:(id)arg1 authorIndex:(int)arg2;
 - (void)addCitation:(id)arg1 forID:(id)arg2;
 - (id)addImageBulletText;
@@ -79,7 +80,6 @@
 - (id)citationTable;
 - (id)colorMap;
 - (id)creationDate;
-- (void)dealloc;
 - (unsigned short)defaultTabWidth;
 - (id)description;
 - (id)documentBackground;

@@ -14,6 +14,9 @@
 @property (nonatomic) bool showsCandidateBar;
 @property (nonatomic) bool showsCandidateInline;
 
++ (id)activeInstance;
++ (id)sharedInstance;
+
 - (bool)_isAutomaticKeyboard;
 - (void)activate;
 - (bool)caretBlinks;

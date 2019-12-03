@@ -16,6 +16,7 @@
 - (id)configurationInfoForViewingAccount:(id)arg1;
 - (Class)controllerClassForCreatingAccountWithType:(id)arg1;
 - (id)init;
+- (bool)setDelegate:(id)arg1 forSignInController:(id)arg2 forAccountWithType:(id)arg3;
 - (Class)viewControllerClassForCreatingAccountWithType:(id)arg1;
 - (Class)viewControllerClassForViewingAccount:(id)arg1;
 

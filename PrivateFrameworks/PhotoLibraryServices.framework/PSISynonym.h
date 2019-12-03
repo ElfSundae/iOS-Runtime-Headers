@@ -12,9 +12,9 @@
 @property (nonatomic, readonly) unsigned long long owningGroupId;
 @property (nonatomic, readonly) NSString *text;
 
+- (void).cxx_destruct;
 - (unsigned long long)category;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (id)identifier;

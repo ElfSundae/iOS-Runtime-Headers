@@ -33,7 +33,7 @@
     bool  _isSerialized;
     bool  _isSlideBuildable;
     KNAnimatedSlideModel * _model;
-    NSMutableSet * _movieControllers;
+    NSArray * _movieControllers;
     bool  _playsAutomaticTransitions;
     bool  _sInDelayBeforeActiveTransition;
     KNPlaybackSession * _session;
@@ -46,10 +46,13 @@
     bool  _transitionHasFinishedCallbackPending;
     double  _transitionStartTime;
     bool  _triggerQueued;
+    bool  _wasMetalLayerActiveWhenPaused;
 }
 
 @property (nonatomic, readonly, copy) NSMutableSet *activeAnimatedBuilds;
+@property (nonatomic, readonly) NSSet *activeMovieHosts;
 @property (nonatomic, readonly) NSArray *allInfos;
+@property (nonatomic, readonly) NSArray *allInfosIncludingAudio;
 @property (nonatomic, readonly) unsigned long long buildEventCount;
 @property (nonatomic, readonly) TSDCanvas *canvas;
 @property (retain) NSLock *canvasLock;
@@ -66,9 +69,9 @@
 @property (nonatomic, readonly) bool isInDelayBeforeActiveTransition;
 @property (nonatomic, readonly) bool isNonAmbientAnimationActive;
 @property (nonatomic, readonly) bool isNonAmbientAnimationAnimating;
-@property (readonly) bool isPlayingMovies;
+@property (readonly) bool isPlayingMoviesWithMovieControllers;
 @property (nonatomic, readonly) KNAnimatedSlideModel *model;
-@property (readonly) NSSet *movieControllers;
+@property (readonly) NSArray *movieControllers;
 @property (nonatomic, readonly) NSSet *movieRenderers;
 @property (nonatomic, readonly) KNAnimatedSlideView *nextASV;
 @property (nonatomic) bool playsAutomaticTransitions;
@@ -83,12 +86,15 @@
 @property (nonatomic) bool triggerQueued;
 
 + (void)initialize;
++ (id)keyPathsForValuesAffectingActiveMovieHosts;
 + (void)registerUserDefaults;
 
 - (void).cxx_destruct;
 - (id)activeAnimatedBuilds;
+- (id)activeMovieHosts;
 - (void)addActiveAnimatedBuild:(id)arg1;
 - (id)allInfos;
+- (id)allInfosIncludingAudio;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })boundingRectOnCanvasForInfo:(id)arg1;
 - (unsigned long long)buildEventCount;
 - (void)buildHasFinishedAnimating:(id)arg1;
@@ -120,7 +126,7 @@
 - (bool)isInfoAKeynoteMasterObject:(id)arg1;
 - (bool)isNonAmbientAnimationActive;
 - (bool)isNonAmbientAnimationAnimating;
-- (bool)isPlayingMovies;
+- (bool)isPlayingMoviesWithMovieControllers;
 - (bool)isPrintingCanvas;
 - (bool)isRenderingForKPF;
 - (id)model;

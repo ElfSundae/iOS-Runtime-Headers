@@ -4,12 +4,12 @@
 
 @interface MFSqliteMessageIDStore : NSObject {
     MFMailMessageLibrary * _library;
-    int  _mailboxRowid;
+    long long  _mailboxRowid;
     NSString * _url;
 }
 
-- (void)_loadMailboxRowidIfNecessary:(struct sqlite3 { }*)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
+- (void)_loadMailboxRowidIfNecessary:(id)arg1;
 - (void)deleteAllUIDs;
 - (void)deleteUIDsNotInArray:(id)arg1;
 - (unsigned long long)flagsForUID:(id)arg1;

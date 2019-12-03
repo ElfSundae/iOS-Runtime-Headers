@@ -4,8 +4,6 @@
 
 @interface __NSUnrecognizedTaggedPointer : NSObject
 
-+ (void)load;
-
 - (id)autorelease;
 - (oneway void)release;
 - (id)retain;

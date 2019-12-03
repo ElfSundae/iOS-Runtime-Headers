@@ -67,6 +67,7 @@
 @property (nonatomic, retain) NSDictionary *attributionInfo;
 @property (nonatomic) unsigned long long averageTransferRate;
 @property (nonatomic, readonly) bool canBeAccepted;
+@property (nonatomic, readonly) bool canMarkPurgable;
 @property (nonatomic, retain) NSString *cloudKitRecordID;
 @property (nonatomic, retain) NSData *cloudKitServerChangeTokenBlob;
 @property (nonatomic) long long cloudKitSyncState;
@@ -82,12 +83,14 @@
 @property (nonatomic) unsigned short hfsFlags;
 @property (nonatomic) unsigned int hfsType;
 @property (nonatomic) bool hideAttachment;
+@property (nonatomic, readonly) bool isAnimojiV2;
 @property (nonatomic, readonly) bool isAutoloopVideo;
 @property (nonatomic) bool isAuxImage;
 @property (nonatomic) bool isAuxVideo;
 @property (nonatomic) bool isContact;
 @property (nonatomic) bool isDirectory;
 @property (nonatomic, readonly) bool isFinished;
+@property (nonatomic, readonly) bool isHEVCWithAlphaVideo;
 @property (nonatomic) bool isIncoming;
 @property (nonatomic) bool isLocation;
 @property (nonatomic, readonly) bool isOpusAudioMessage;
@@ -116,6 +119,7 @@
 @property (nonatomic, retain) NSString *transferredFilename;
 @property (nonatomic, retain) NSString *type;
 @property (nonatomic, retain) NSDictionary *userInfo;
+@property (nonatomic, readonly) bool wantsAlphaRemoved;
 @property (setter=setRegisteredAsStandalone:, nonatomic) bool wasRegisteredAsStandalone;
 
 // Image: /System/Library/PrivateFrameworks/IMSharedUtilities.framework/IMSharedUtilities
@@ -130,9 +134,11 @@
 - (void)_clear;
 - (id)_dictionaryRepresentation;
 - (id)_initWithGUID:(id)arg1 filename:(id)arg2 isDirectory:(bool)arg3 localURL:(id)arg4 account:(id)arg5 otherPerson:(id)arg6 totalBytes:(unsigned long long)arg7 hfsType:(unsigned int)arg8 hfsCreator:(unsigned int)arg9 hfsFlags:(unsigned short)arg10 isIncoming:(bool)arg11;
+- (bool)_isCloudKitEnabled;
 - (unsigned long long)_lastAveragedBytes;
 - (double)_lastAveragedInterval;
 - (double)_lastUpdatedInterval;
+- (bool)_missingAttachmentCanBeDownloadedFromCloudKit;
 - (bool)_needsWrapper;
 - (void)_setAccount:(id)arg1 otherPerson:(id)arg2;
 - (void)_setAveragedTransferRate:(unsigned long long)arg1 lastAveragedInterval:(double)arg2 lastAveragedBytes:(unsigned long long)arg3;
@@ -149,6 +155,7 @@
 - (void)_setStartDate:(id)arg1;
 - (void)_setTransferDataURL:(id)arg1;
 - (void)_setTransferState:(long long)arg1;
+- (void)_swizzleTransferStateIfMissingAttachmentCanBeDownloadedFromCloudKit;
 - (bool)_updateWithDictionaryRepresentation:(id)arg1;
 - (id)accountID;
 - (bool)appMessageFallbackImage;
@@ -156,6 +163,7 @@
 - (id)attributionInfo;
 - (unsigned long long)averageTransferRate;
 - (bool)canBeAccepted;
+- (bool)canMarkPurgable;
 - (id)cloudKitRecordID;
 - (id)cloudKitServerChangeTokenBlob;
 - (long long)cloudKitSyncState;
@@ -174,12 +182,14 @@
 - (unsigned int)hfsType;
 - (bool)hideAttachment;
 - (id)init;
+- (bool)isAnimojiV2;
 - (bool)isAutoloopVideo;
 - (bool)isAuxImage;
 - (bool)isAuxVideo;
 - (bool)isContact;
 - (bool)isDirectory;
 - (bool)isFinished;
+- (bool)isHEVCWithAlphaVideo;
 - (bool)isIncoming;
 - (bool)isLocation;
 - (bool)isOpusAudioMessage;
@@ -247,11 +257,12 @@
 - (id)transferredFilename;
 - (id)type;
 - (id)userInfo;
+- (bool)wantsAlphaRemoved;
 - (bool)wasRegisteredAsStandalone;
 
 // Image: /System/Library/PrivateFrameworks/IMDaemonCore.framework/IMDaemonCore
 
-+ (bool)_recordIsValid:(id)arg1;
++ (bool)_recordIsInvalid:(id)arg1;
 + (id)_recordType;
 + (bool)attachmentRecordHasAsset:(id)arg1;
 + (id)md5HashForRecord:(id)arg1;

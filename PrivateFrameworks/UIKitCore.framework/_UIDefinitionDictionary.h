@@ -4,16 +4,18 @@
 
 @interface _UIDefinitionDictionary : NSObject {
     bool  _activated;
+    MAAsset * _assetToUpgrade;
     NSString * _definitionLanguage;
     struct __DCSDictionary { } * _dictionary;
-    ASAsset * _rawAsset;
+    MAAsset * _rawAsset;
 }
 
 @property bool activated;
+@property (retain) MAAsset *assetToUpgrade;
 @property (readonly) NSString *definitionLanguage;
 @property (readonly) NSString *localizedDictionaryName;
 @property (readonly) NSString *localizedLanguageName;
-@property (readonly) ASAsset *rawAsset;
+@property (readonly) MAAsset *rawAsset;
 
 + (id)_normalizedLanguageStringForLanguageCode:(id)arg1;
 
@@ -26,6 +28,9 @@
 - (bool)_isTTYDictionary;
 - (id)_shortHTMLDefinitionForTerm:(id)arg1;
 - (bool)activated;
+- (bool)assetIsDeletable;
+- (bool)assetIsLocal;
+- (id)assetToUpgrade;
 - (void)dealloc;
 - (id)definitionLanguage;
 - (id)description;
@@ -34,5 +39,7 @@
 - (id)localizedLanguageName;
 - (id)rawAsset;
 - (void)setActivated:(bool)arg1;
+- (void)setAssetToUpgrade:(id)arg1;
+- (void)updateAsset;
 
 @end

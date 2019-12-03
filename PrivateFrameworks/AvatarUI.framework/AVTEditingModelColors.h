@@ -11,7 +11,7 @@
 @property (nonatomic, retain) AVTAvatarColorVariationStore *variationStore;
 
 + (id)buildAllColors;
-+ (void)createColorsForPaletteCategory:(long long)arg1 inCache:(id)arg2;
++ (void)createColorsForPaletteCategory:(long long)arg1 inCache:(id)arg2 withDerivedPaletteCategories:(id)arg3;
 
 - (void).cxx_destruct;
 - (id)colorForSettingKind:(struct { long long x1; long long x2; })arg1 identifier:(id)arg2;

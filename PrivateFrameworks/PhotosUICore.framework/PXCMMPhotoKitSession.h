@@ -6,6 +6,7 @@
     PHAsset * _anchorAsset;
     PXCMMPhotoKitImportStatusManager * _cmmImportStatusManager;
     PHMomentShare * _momentShare;
+    PXPhotoKitMomentShareStatus * _momentShareStatus;
     PHMomentShare * _originatingMomentShare;
     PHSuggestion * _suggestion;
 }
@@ -18,13 +19,13 @@
 
 - (void).cxx_destruct;
 - (id)anchorAsset;
-- (id)assetsProgressListenerWithPresentationStyle:(long long)arg1;
 - (id)description;
 - (id)diagnosticDictionary;
 - (id)importStatusManager;
 - (id)initWithContext:(id)arg1;
 - (id)initWithPhotoKitContext:(id)arg1;
 - (id)momentShare;
+- (id)momentShareStatusPresentationWithPresentationStyle:(long long)arg1;
 - (id)notificationSuppressionContexts;
 - (id)originatingMomentShare;
 - (void)setAnchorAsset:(id)arg1;

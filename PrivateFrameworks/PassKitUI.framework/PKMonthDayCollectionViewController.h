@@ -5,6 +5,7 @@
 @interface PKMonthDayCollectionViewController : UICollectionViewController <UICollectionViewDelegateFlowLayout> {
     NSCalendar * _calendar;
     <PKMonthDayCollectionViewControllerDelegate> * _dayDelegate;
+    NSNumberFormatter * _dayFormatter;
     long long  _dayNumber;
     long long  _maximumDayNumber;
     long long  _minimumDayNumber;
@@ -37,13 +38,13 @@
 - (long long)maximumDayNumber;
 - (long long)minimumDayNumber;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
-- (struct CGSize { double x1; double x2; })preferredContentSize;
 - (id)selectedDate;
 - (void)setDayDelegate:(id)arg1;
 - (void)setDayNumber:(long long)arg1;
 - (void)setMaximumDayNumber:(long long)arg1;
 - (void)setMinimumDayNumber:(long long)arg1;
 - (void)setTimeZone:(id)arg1;
+- (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (id)timeZone;
 - (void)viewDidLoad;
 

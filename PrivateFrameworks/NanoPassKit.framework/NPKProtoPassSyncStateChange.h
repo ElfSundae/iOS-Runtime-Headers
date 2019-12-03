@@ -3,6 +3,7 @@
  */
 
 @interface NPKProtoPassSyncStateChange : PBCodable <NSCopying> {
+    NSData * _baseManifestHashForPartialUpdate;
     NPKProtoCatalog * _catalog;
     int  _changeType;
     NSData * _changeUUID;
@@ -14,13 +15,16 @@
     NSData * _passData;
     unsigned int  _passSegmentIndex;
     unsigned int  _passSegmentTotal;
+    NSMutableArray * _remoteAssetsForPartialUpdates;
     NPKProtoPassSyncStateItem * _syncStateItem;
     NSString * _uniqueID;
 }
 
+@property (nonatomic, retain) NSData *baseManifestHashForPartialUpdate;
 @property (nonatomic, retain) NPKProtoCatalog *catalog;
 @property (nonatomic) int changeType;
 @property (nonatomic, retain) NSData *changeUUID;
+@property (nonatomic, readonly) bool hasBaseManifestHashForPartialUpdate;
 @property (nonatomic, readonly) bool hasCatalog;
 @property (nonatomic, readonly) bool hasLastKnownReconciledPassSyncStateHash;
 @property (nonatomic, readonly) bool hasPassData;
@@ -31,19 +35,26 @@
 @property (nonatomic, retain) NSData *passData;
 @property (nonatomic) unsigned int passSegmentIndex;
 @property (nonatomic) unsigned int passSegmentTotal;
+@property (nonatomic, retain) NSMutableArray *remoteAssetsForPartialUpdates;
 @property (nonatomic, retain) NPKProtoPassSyncStateItem *syncStateItem;
 @property (nonatomic, retain) NSString *uniqueID;
 
++ (Class)remoteAssetsForPartialUpdateType;
+
 - (void).cxx_destruct;
 - (int)StringAsChangeType:(id)arg1;
+- (void)addRemoteAssetsForPartialUpdate:(id)arg1;
+- (id)baseManifestHashForPartialUpdate;
 - (id)catalog;
 - (int)changeType;
 - (id)changeTypeAsString:(int)arg1;
 - (id)changeUUID;
+- (void)clearRemoteAssetsForPartialUpdates;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (bool)hasBaseManifestHashForPartialUpdate;
 - (bool)hasCatalog;
 - (bool)hasLastKnownReconciledPassSyncStateHash;
 - (bool)hasPassData;
@@ -59,6 +70,10 @@
 - (unsigned int)passSegmentIndex;
 - (unsigned int)passSegmentTotal;
 - (bool)readFrom:(id)arg1;
+- (id)remoteAssetsForPartialUpdateAtIndex:(unsigned long long)arg1;
+- (id)remoteAssetsForPartialUpdates;
+- (unsigned long long)remoteAssetsForPartialUpdatesCount;
+- (void)setBaseManifestHashForPartialUpdate:(id)arg1;
 - (void)setCatalog:(id)arg1;
 - (void)setChangeType:(int)arg1;
 - (void)setChangeUUID:(id)arg1;
@@ -68,6 +83,7 @@
 - (void)setPassData:(id)arg1;
 - (void)setPassSegmentIndex:(unsigned int)arg1;
 - (void)setPassSegmentTotal:(unsigned int)arg1;
+- (void)setRemoteAssetsForPartialUpdates:(id)arg1;
 - (void)setSyncStateItem:(id)arg1;
 - (void)setUniqueID:(id)arg1;
 - (id)syncStateItem;

@@ -15,6 +15,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property struct { long long x1; long long x2; } point;
+@property (readonly) <NURenderStatistics> *statistics;
 @property (readonly) Class superclass;
 
 - (struct CGColor { }*)color;

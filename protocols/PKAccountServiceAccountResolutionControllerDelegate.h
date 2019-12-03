@@ -5,7 +5,6 @@
 
 @required
 
-- (void)accountServiceAccountResolutionController:(PKAccountServiceAccountResolutionController *)arg1 requestsDismissCurrentViewControllerAnimated:(bool)arg2;
 - (void)accountServiceAccountResolutionController:(PKAccountServiceAccountResolutionController *)arg1 requestsPresentViewController:(UIViewController *)arg2 animated:(bool)arg3;
 
 @end

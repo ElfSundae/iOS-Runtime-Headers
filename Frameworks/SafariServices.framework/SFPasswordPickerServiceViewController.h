@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/SafariServices.framework/SafariServices
  */
 
-@interface SFPasswordPickerServiceViewController : SFPasswordServiceViewController <SFCredentialProviderExtensionManagerObserver, SFPasswordPickerServiceViewControllerProtocol, _ASCredentialListViewControllerDelegate, _ASPasswordCredentialAuthenticationViewControllerDelegate, _SFAuthenticationClient, _SFAuthenticationContextDelegate> {
+@interface SFPasswordPickerServiceViewController : SFPasswordServiceViewController <SFCredentialProviderExtensionManagerObserver, SFPasswordPickerServiceViewControllerProtocol, UIPresentationControllerDelegatePrivate, _ASCredentialListViewControllerDelegate, _ASPasswordCredentialAuthenticationViewControllerDelegate, _SFAuthenticationClient, _SFAuthenticationContextDelegate> {
     double  _authenticationGracePeriod;
     _SFAuthenticationContext * _context;
     _ASPasswordCredentialAuthenticationViewController * _externalCredentialViewController;
@@ -45,8 +45,9 @@
 - (bool)displayMessageAsTitleForContext:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)passcodePromptForContext:(id)arg1;
-- (void)passwordCredentialAuthenticationViewController:(id)arg1 didFinishWithCredential:(id)arg2 completion:(id /* block */)arg3;
+- (void)passwordCredentialAuthenticationViewController:(id)arg1 didFinishWithCredential:(id)arg2 error:(id)arg3 completion:(id /* block */)arg4;
 - (void)presentUIForPasswordCredentialAuthenticationViewController:(id)arg1;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (void)setAuthenticationGracePeriod:(double)arg1;
 - (void)setExternallyVerifiedAndApprovedSharedWebCredentialsDomains:(id)arg1;
 - (void)setRemoteAppID:(id)arg1;

@@ -3,34 +3,38 @@
  */
 
 @interface CHStrokeGroupRecognitionResult : NSObject <NSCopying> {
-    NSDictionary * __languageFitnessByLocale;
-    NSDictionary * __recognitionResultsByLocale;
+    NSDictionary * _errorsByLocale;
     CHDrawing * _inputDrawing;
     NSArray * _inputDrawingCutPoints;
     NSArray * _inputStrokeIdentifiers;
+    NSDictionary * _languageFitnessByLocale;
+    NSDictionary * _recognitionResultsByLocale;
 }
 
-@property (nonatomic, readonly, copy) NSDictionary *_languageFitnessByLocale;
-@property (nonatomic, readonly, copy) NSDictionary *_recognitionResultsByLocale;
+@property (nonatomic, readonly, copy) NSDictionary *errorsByLocale;
 @property (nonatomic, readonly, retain) CHDrawing *inputDrawing;
 @property (nonatomic, readonly, copy) NSArray *inputDrawingCutPoints;
 @property (nonatomic, readonly, copy) NSArray *inputStrokeIdentifiers;
+@property (nonatomic, readonly, copy) NSDictionary *languageFitnessByLocale;
+@property (nonatomic, readonly, copy) NSDictionary *recognitionResultsByLocale;
 
-+ (id)sortedLocales:(id)arg1 byLanguageFitness:(id)arg2;
++ (id)filteredResultsByLocale:(id)arg1 usingLanguageFitness:(id)arg2;
++ (id)sortedLocales:(id)arg1 usingLanguageFitness:(id)arg2;
 
-- (id)_languageFitnessByLocale;
-- (id)_recognitionResultsByLocale;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)description;
-- (id)highConfidenceTextForSessionResult:(id)arg1 rejectionRate:(double*)arg2;
+- (id)errorsByLocale;
+- (id)highConfidenceTextForSessionResult:(id)arg1 rejectionRate:(double*)arg2 doesContainUnfilteredMultiLocaleResults:(bool*)arg3;
 - (id)init;
-- (id)initWithResultsByLocale:(id)arg1 languageFitnessByLocale:(id)arg2 inputStrokeIdentifiers:(id)arg3;
-- (id)initWithResultsByLocale:(id)arg1 languageFitnessByLocale:(id)arg2 inputStrokeIdentifiers:(id)arg3 inputDrawing:(id)arg4 inputDrawingCutPoints:(id)arg5;
+- (id)initWithResultsByLocale:(id)arg1 errorsByLocale:(id)arg2 languageFitnessByLocale:(id)arg3 inputStrokeIdentifiers:(id)arg4;
+- (id)initWithResultsByLocale:(id)arg1 errorsByLocale:(id)arg2 languageFitnessByLocale:(id)arg3 inputStrokeIdentifiers:(id)arg4 inputDrawing:(id)arg5 inputDrawingCutPoints:(id)arg6;
 - (id)inputDrawing;
 - (id)inputDrawingCutPoints;
 - (id)inputStrokeIdentifiers;
-- (float)languageFitnessForLocale:(id)arg1;
-- (id)recognitionResultsForLocale:(id)arg1;
+- (id)languageFitnessByLocale;
+- (double)languageFitnessForLocale:(id)arg1;
+- (id)localesSortedByLanguageFitness:(id)arg1;
+- (id)recognitionResultsByLocale;
 
 @end

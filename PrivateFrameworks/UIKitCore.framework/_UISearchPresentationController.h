@@ -46,10 +46,19 @@
 + (bool)shouldExciseSearchBar:(id)arg1 duringPresentationWithPresenter:(id)arg2;
 
 - (id)_constraintCopyOfConstraint:(id)arg1 replaceItem:(id)arg2 withItem:(id)arg3;
+- (void)_dismissalTransitionWithSearchBarHostedByNavBarDidEnd:(bool)arg1;
+- (void)_dismissalTransitionWithSearchBarHostedByNavBarWillBegin;
+- (void)_dismissalTransitionWithSearchBarNotHostedByNavBarDidEnd:(bool)arg1;
+- (void)_dismissalTransitionWithSearchBarNotHostedByNavBarWillBegin;
 - (void)_exciseSearchBarFromCurrentContext;
+- (bool)_inheritsPresentingViewControllerThemeLevel;
 - (void)_layoutPresentationWithSize:(struct CGSize { double x1; double x2; })arg1 transitionCoordinator:(id)arg2;
 - (void)_placeSearchBarBackIntoOriginalContext;
 - (id)_presentationControllerForTraitCollection:(id)arg1;
+- (void)_presentationTransitionWithSearchBarHostedByNavBarDidEnd:(bool)arg1;
+- (void)_presentationTransitionWithSearchBarHostedByNavBarWillBegin;
+- (void)_presentationTransitionWithSearchBarNotHostedByNavBarDidEnd:(bool)arg1;
+- (void)_presentationTransitionWithSearchBarNotHostedByNavBarWillBegin;
 - (id)_presentedViewControllerForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (bool)_shouldDisableInteractionDuringTransitions;
 - (bool)_shouldKeepCurrentFirstResponder;
@@ -87,7 +96,6 @@
 - (void)setContentVisible:(bool)arg1;
 - (bool)shouldAccountForStatusBar;
 - (bool)shouldPresentInFullscreen;
-- (bool)shouldRemovePresentersView;
 - (void)showBackgroundObscuringView;
 - (double)statusBarAdjustment;
 - (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
  */
 
-@interface _GEOTransitSystem : NSObject <GEOTransitSystem> {
+@interface _GEOTransitSystem : NSObject <GEOTransitSystem, NSSecureCoding> {
     GEOPBTransitSystem * _system;
 }
 
@@ -15,8 +15,12 @@
 @property (nonatomic, readonly) GEOStyleAttributes *styleAttributes;
 @property (readonly) Class superclass;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (id)artwork;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithSystem:(id)arg1;
 - (unsigned long long)muid;
 - (id)name;

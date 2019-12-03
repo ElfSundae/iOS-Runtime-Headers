@@ -5,10 +5,12 @@
 @interface ATXAVRouteInfo : NSObject <NSSecureCoding> {
     NSString * _deviceID;
     NSString * _deviceName;
+    bool  _isExternalRoute;
 }
 
 @property (nonatomic, readonly) NSString *deviceID;
 @property (nonatomic, readonly) NSString *deviceName;
+@property (nonatomic, readonly) bool isExternalRoute;
 
 + (bool)supportsSecureCoding;
 
@@ -17,6 +19,7 @@
 - (id)deviceName;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDeviceName:(id)arg1 deviceID:(id)arg2;
+- (id)initWithDeviceName:(id)arg1 deviceID:(id)arg2 isExternalRoute:(bool)arg3;
+- (bool)isExternalRoute;
 
 @end

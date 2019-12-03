@@ -20,9 +20,9 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, copy) id /* block */ finalCompletionHandler;
 @property (readonly) unsigned long long hash;
-@property (getter=isPeerAvailable, readonly) bool peerAvailable;
 @property (readonly) Class superclass;
 
++ (bool)isPeerAvailable;
 + (id)logCategory;
 
 - (void).cxx_destruct;
@@ -46,7 +46,6 @@
 - (void)dealloc;
 - (id /* block */)finalCompletionHandler;
 - (id)initWithHomeManager:(id)arg1;
-- (bool)isPeerAvailable;
 - (id)logIdentifier;
 - (void)resetConfig;
 - (void)setBroadcastFailure:(bool)arg1;

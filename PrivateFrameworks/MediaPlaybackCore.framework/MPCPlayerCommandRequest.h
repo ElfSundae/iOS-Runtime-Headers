@@ -21,8 +21,8 @@
 - (void).cxx_destruct;
 - (unsigned int)command;
 - (id)controller;
+- (id)initWithMediaRemoteCommand:(unsigned int)arg1 options:(id)arg2 controller:(id)arg3 label:(id)arg4;
 - (id)initWithMediaRemoteCommand:(unsigned int)arg1 options:(id)arg2 playerPath:(id)arg3 label:(id)arg4;
-- (id)initWithMediaRemoteCommand:(unsigned int)arg1 options:(id)arg2 response:(id)arg3;
 - (id)label;
 - (id)options;
 - (id)playerPath;

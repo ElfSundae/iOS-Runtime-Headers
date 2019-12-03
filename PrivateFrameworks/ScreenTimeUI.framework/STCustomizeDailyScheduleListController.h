@@ -3,7 +3,7 @@
  */
 
 @interface STCustomizeDailyScheduleListController : PSListController <STUIDateTimePickerCellDelegate> {
-    RMBlueprintScheduleCustomDayItem * _dailySchedule;
+    STBlueprintScheduleCustomDayItem * _dailySchedule;
     PSSpecifier * _dailyScheduleGroupSpecifier;
     PSSpecifier * _endTimePickerSpecifier;
     PSSpecifier * _endTimeSpecifier;
@@ -14,7 +14,7 @@
     unsigned long long  _weekdayIndex;
 }
 
-@property (copy) RMBlueprintScheduleCustomDayItem *dailySchedule;
+@property (copy) STBlueprintScheduleCustomDayItem *dailySchedule;
 @property (readonly) PSSpecifier *dailyScheduleGroupSpecifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -34,6 +34,7 @@
 - (id)_getWeekdayEnabled:(id)arg1;
 - (void)_setWeekdayEnabled:(id)arg1 specifier:(id)arg2;
 - (id)_startTime:(id)arg1;
+- (void)_updateTimeSpecifierDetailTextLabelColors:(bool)arg1 selectedSpecifier:(id)arg2 unselectedSpecifier:(id)arg3;
 - (bool)canBeShownFromSuspendedState;
 - (id)dailySchedule;
 - (id)dailyScheduleGroupSpecifier;

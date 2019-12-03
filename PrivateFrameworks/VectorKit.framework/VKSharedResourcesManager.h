@@ -9,19 +9,20 @@
             BOOL __opaque[56]; 
         } __m_; 
     }  _lock;
+    VKSharedResources * _sharedResources;
     NSMapTable * _tilegroupIdentifierToResources;
 }
 
-+ (void)addResourceUser:(id)arg1;
-+ (id)defaultManifestConfiguration;
-+ (void)removeResourceUser:(id)arg1;
++ (void)addResourceUser;
++ (void)removeResourceUser;
 + (id)sharedManager;
-+ (id)sharedResourcesForConfiguration:(id)arg1;
++ (id)sharedResources;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dealloc;
+- (bool)hasResoruces;
 - (id)init;
-- (id)resourcesForConfiguration:(id)arg1;
+- (id)resources;
 
 @end

@@ -17,11 +17,11 @@
 + (void)cancelRequestForActionViewControllerForAdSpaceController:(id)arg1;
 + (void)requestActionViewControllerForAdSpace:(id)arg1;
 
+- (void).cxx_destruct;
 - (void)_remote_viewControllerCreatedForAdSpaceControllerWithIdentifier:(id)arg1;
 - (id)adSpace;
 - (void)clientApplicationCancelledAction;
 - (void)clientApplicationDidEnterBackground;
-- (void)dealloc;
 - (void)didSetAdSpace;
 - (void)dismiss;
 - (void)loadView;

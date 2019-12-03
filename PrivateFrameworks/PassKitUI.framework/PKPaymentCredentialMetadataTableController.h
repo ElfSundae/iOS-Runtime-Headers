@@ -3,6 +3,7 @@
  */
 
 @interface PKPaymentCredentialMetadataTableController : NSObject <UITableViewDataSource, UITableViewDelegate> {
+    long long  _cellStyle;
     NSArray * _metadata;
     long long  _setupContext;
 }
@@ -13,7 +14,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)initWithMetadata:(id)arg1 setupContext:(long long)arg2;
+- (id)initWithMetadata:(id)arg1 setupContext:(long long)arg2 cellStyle:(long long)arg3;
 - (bool)tableView:(id)arg1 canPerformAction:(SEL)arg2 forRowAtIndexPath:(id)arg3 withSender:(id)arg4;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;

@@ -7,6 +7,7 @@
     OBPrivacyCombinedController * _combinedController;
     bool  _darkMode;
     id /* block */  _dismissHandler;
+    NSString * _displayLanguage;
     long long  _modalPresentationStyle;
     id /* block */  _presentationCompletionHandler;
     struct UIViewController { Class x1; } * _presentedController;
@@ -21,6 +22,7 @@
 @property (retain) OBPrivacyCombinedController *combinedController;
 @property (nonatomic) bool darkMode;
 @property (copy) id /* block */ dismissHandler;
+@property (nonatomic, retain) NSString *displayLanguage;
 @property (nonatomic) long long modalPresentationStyle;
 @property (copy) id /* block */ presentationCompletionHandler;
 @property (retain) UIViewController *presentedController;
@@ -32,6 +34,8 @@
 
 // Image: /System/Library/PrivateFrameworks/OnBoardingKit.framework/OnBoardingKit
 
++ (id)presenterForPrivacySplashWithBundle:(id)arg1;
++ (id)presenterForPrivacySplashWithBundleAtPath:(id)arg1;
 + (id)presenterForPrivacySplashWithIdentifer:(id)arg1;
 + (id)presenterForPrivacySplashWithIdentifier:(id)arg1;
 + (id)presenterForPrivacyUnifiedAbout;
@@ -44,6 +48,7 @@
 - (bool)darkMode;
 - (void)dismiss;
 - (id /* block */)dismissHandler;
+- (id)displayLanguage;
 - (long long)modalPresentationStyle;
 - (void)present;
 - (void)presentInNavigationStack:(id)arg1;
@@ -55,6 +60,7 @@
 - (void)setCombinedController:(id)arg1;
 - (void)setDarkMode:(bool)arg1;
 - (void)setDismissHandler:(id /* block */)arg1;
+- (void)setDisplayLanguage:(id)arg1;
 - (void)setModalPresentationStyle:(long long)arg1;
 - (void)setPresentationCompletionHandler:(id /* block */)arg1;
 - (void)setPresentedController:(struct UIViewController { Class x1; }*)arg1;

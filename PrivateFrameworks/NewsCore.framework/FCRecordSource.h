@@ -15,7 +15,7 @@
     NSDictionary * _experimentalizedKeysByOriginalKey;
     FCFetchCoordinator * _fetchCoordinator;
     FCThreadSafeMutableDictionary * _fetchErrorsByKey;
-    NSObject<OS_dispatch_queue> * _initQueue;
+    NFUnfairLock * _initializationLock;
     FCKeyValueStore * _localStore;
     NSDictionary * _localizedExperimentalizedKeysByOriginalKey;
     NSDictionary * _localizedKeysByOriginalKey;
@@ -36,7 +36,7 @@
 @property (nonatomic, readonly) FCFetchCoordinator *fetchCoordinator;
 @property (nonatomic, readonly) FCThreadSafeMutableDictionary *fetchErrorsByKey;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) NSObject<OS_dispatch_queue> *initQueue;
+@property (nonatomic, retain) NFUnfairLock *initializationLock;
 @property (nonatomic, readonly) FCKeyValueStore *localStore;
 @property (nonatomic, readonly) NSArray *localizableExperimentalizableKeys;
 @property (nonatomic, readonly) NSArray *localizableKeys;
@@ -64,7 +64,7 @@
 - (id)_faultableRecordsWithIdentifiers:(id)arg1;
 - (id)_fetchErrorForKey:(id)arg1;
 - (id)_identifierFromCKRecordID:(id)arg1;
-- (void)_initStore;
+- (void)_initializeStore;
 - (id)_localizedExperimentalizedKeysByOriginalKeyForContentStoreFrontID:(id)arg1 experimentPostfix:(id)arg2;
 - (id)_localizedKeysByOriginalKeyForContentStoreFrontID:(id)arg1;
 - (id)_localizedLanguageSpecificKeysByOriginalKeyForContentStoreFrontID:(id)arg1 languageCode:(id)arg2;
@@ -95,9 +95,9 @@
 - (id)fetchOperationForRecordsWithIDs:(id)arg1 ignoreCacheForRecordIDs:(id)arg2;
 - (unsigned long long)highThresholdDataSizeLimit;
 - (id)init;
-- (id)initQueue;
 - (id)initWithContentDatabase:(id)arg1 contentDirectory:(id)arg2;
 - (id)initWithContentDatabase:(id)arg1 contentDirectory:(id)arg2 experimentalizableFieldsPostfix:(id)arg3 activeTreatmentID:(id)arg4;
+- (id)initializationLock;
 - (bool)isRecordStale:(id)arg1 withCachePolicy:(id)arg2;
 - (id)jsonEncodableObject;
 - (id)keyValueRepresentationOfRecord:(id)arg1;
@@ -116,7 +116,7 @@
 - (id)recordIDPrefix;
 - (id)recordType;
 - (id)saveRecords:(id)arg1;
-- (void)setInitQueue:(id)arg1;
+- (void)setInitializationLock:(id)arg1;
 - (id)storeFilename;
 - (unsigned long long)storeVersion;
 - (void)t_startOverridingExperimentalizableFieldsPostfix:(id)arg1 treatmentID:(id)arg2;

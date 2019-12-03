@@ -39,15 +39,17 @@
 @property (nonatomic, readonly) FCUserInfo *userInfo;
 
 - (void).cxx_destruct;
+- (id)_privateDataControllers;
 - (id)contentContext;
 - (id)init;
-- (id)initWithConfiguration:(id)arg1 context:(id)arg2 privateDataHostDirectory:(id)arg3 privateDataActionProvider:(id)arg4 encryptionDelegate:(id)arg5 networkBehaviorMonitor:(id)arg6 privateDataSyncingEnabled:(bool)arg7 iCloudAccountChanged:(bool)arg8;
-- (id)initWithConfiguration:(id)arg1 context:(id)arg2 privateDatabase:(id)arg3 privateDataDirectory:(id)arg4 privateDataActionProvider:(id)arg5 encryptionDelegate:(id)arg6 networkBehaviorMonitor:(id)arg7 privateDataSyncingEnabled:(bool)arg8 iCloudAccountChanged:(bool)arg9;
+- (id)initWithConfiguration:(id)arg1 context:(id)arg2 privateDataHostDirectory:(id)arg3 privateDataActionProvider:(id)arg4 encryptionDelegate:(id)arg5 networkBehaviorMonitor:(id)arg6 privateDataSyncingEnabled:(bool)arg7;
+- (id)initWithConfiguration:(id)arg1 context:(id)arg2 privateDatabase:(id)arg3 privateDataDirectory:(id)arg4 privateDataActionProvider:(id)arg5 encryptionDelegate:(id)arg6 networkBehaviorMonitor:(id)arg7 privateDataSyncingEnabled:(bool)arg8;
 - (id)internalPrivateDataContext;
 - (bool)isPrivateDataSyncingEnabled;
 - (id)issueReadingHistory;
 - (id)networkBehaviorMonitor;
 - (id)personalizationData;
+- (void)preparePrivateDataControllersForUse;
 - (id)privateChannelMembershipController;
 - (id)privateDataDirectory;
 - (id)privatePushNotificationHandler;

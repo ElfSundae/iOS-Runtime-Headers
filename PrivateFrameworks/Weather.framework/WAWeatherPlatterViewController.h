@@ -4,6 +4,7 @@
 
 @interface WAWeatherPlatterViewController : UIViewController <WFTemperatureUnitObserver> {
     WFURLComponents * _URLComponents;
+    UIView * _backgroundView;
     NSURL * _commitURL;
     NSMutableArray * _constraints;
     UIView * _dividerLineView;
@@ -12,9 +13,11 @@
     NSArray * _hourlyForecastViews;
     WATodayModel * _model;
     long long  _status;
+    double  _viewWidth;
 }
 
 @property (nonatomic, retain) WFURLComponents *URLComponents;
+@property (nonatomic, retain) UIView *backgroundView;
 @property (nonatomic, copy) NSURL *commitURL;
 @property (nonatomic, retain) NSMutableArray *constraints;
 @property (readonly, copy) NSString *debugDescription;
@@ -27,6 +30,7 @@
 @property (nonatomic, retain) WATodayModel *model;
 @property (nonatomic) long long status;
 @property (readonly) Class superclass;
+@property (nonatomic) double viewWidth;
 
 - (void).cxx_destruct;
 - (id)URLComponents;
@@ -35,6 +39,7 @@
 - (void)_kickoffLoadingWithLocation:(id)arg1 orPerhapsALocationString:(id)arg2;
 - (void)_updateStatus:(long long)arg1;
 - (void)_updateViewContent;
+- (id)backgroundView;
 - (id)commitURL;
 - (id)constraints;
 - (id)dividerLineView;
@@ -47,6 +52,7 @@
 - (id)initWithURL:(id)arg1;
 - (id)initWithURLComponents:(id)arg1;
 - (id)model;
+- (void)setBackgroundView:(id)arg1;
 - (void)setCommitURL:(id)arg1;
 - (void)setConstraints:(id)arg1;
 - (void)setDividerLineView:(id)arg1;
@@ -56,8 +62,17 @@
 - (void)setModel:(id)arg1;
 - (void)setStatus:(long long)arg1;
 - (void)setURLComponents:(id)arg1;
+- (void)setViewWidth:(double)arg1;
+- (void)setupBackgroundView;
+- (void)setupConstraints;
+- (void)setupDividerView;
+- (void)setupHeaderView;
+- (void)setupHourlyForecast;
 - (long long)status;
 - (void)temperatureUnitObserver:(id)arg1 didChangeTemperatureUnitTo:(int)arg2;
+- (void)updateViewConstraints;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (double)viewWidth;
 
 @end

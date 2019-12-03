@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CameraUI.framework/CameraUI
  */
 
-@interface CAMFilterNameBadge : CAMBadgeTextView {
+@interface CAMFilterNameBadge : CEKBadgeTextView {
     long long  _filterType;
 }
 

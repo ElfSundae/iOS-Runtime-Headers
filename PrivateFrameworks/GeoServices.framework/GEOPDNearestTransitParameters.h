@@ -4,9 +4,9 @@
 
 @interface GEOPDNearestTransitParameters : PBCodable <NSCopying> {
     struct { 
-        unsigned int lineMuid : 1; 
-        unsigned int isTransitOnly : 1; 
-    }  _has;
+        unsigned int has_lineMuid : 1; 
+        unsigned int has_isTransitOnly : 1; 
+    }  _flags;
     bool  _isTransitOnly;
     unsigned long long  _lineMuid;
     PBUnknownFields * _unknownFields;
@@ -18,7 +18,10 @@
 @property (nonatomic) unsigned long long lineMuid;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -30,6 +33,7 @@
 - (bool)isTransitOnly;
 - (unsigned long long)lineMuid;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasIsTransitOnly:(bool)arg1;
 - (void)setHasLineMuid:(bool)arg1;

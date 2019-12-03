@@ -5,12 +5,16 @@
 @interface BFFSetupAssistantDeviceToDeviceMigrationSuccess : PBCodable <NSCopying> {
     int  _connectionType;
     struct { 
+        unsigned int numberOfFilesTransferred : 1; 
         unsigned int restoreDuration : 1; 
         unsigned int size : 1; 
         unsigned int timestamp : 1; 
         unsigned int transferDuration : 1; 
         unsigned int connectionType : 1; 
+        unsigned int inAppleStore : 1; 
     }  _has;
+    bool  _inAppleStore;
+    unsigned long long  _numberOfFilesTransferred;
     unsigned long long  _restoreDuration;
     unsigned long long  _size;
     NSString * _sourceDeviceModel;
@@ -23,6 +27,8 @@
 
 @property (nonatomic) int connectionType;
 @property (nonatomic) bool hasConnectionType;
+@property (nonatomic) bool hasInAppleStore;
+@property (nonatomic) bool hasNumberOfFilesTransferred;
 @property (nonatomic) bool hasRestoreDuration;
 @property (nonatomic) bool hasSize;
 @property (nonatomic, readonly) bool hasSourceDeviceModel;
@@ -31,6 +37,8 @@
 @property (nonatomic, readonly) bool hasTargetDeviceProductVersion;
 @property (nonatomic) bool hasTimestamp;
 @property (nonatomic) bool hasTransferDuration;
+@property (nonatomic) bool inAppleStore;
+@property (nonatomic) unsigned long long numberOfFilesTransferred;
 @property (nonatomic) unsigned long long restoreDuration;
 @property (nonatomic) unsigned long long size;
 @property (nonatomic, retain) NSString *sourceDeviceModel;
@@ -47,6 +55,8 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (bool)hasConnectionType;
+- (bool)hasInAppleStore;
+- (bool)hasNumberOfFilesTransferred;
 - (bool)hasRestoreDuration;
 - (bool)hasSize;
 - (bool)hasSourceDeviceModel;
@@ -56,16 +66,22 @@
 - (bool)hasTimestamp;
 - (bool)hasTransferDuration;
 - (unsigned long long)hash;
+- (bool)inAppleStore;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (unsigned long long)numberOfFilesTransferred;
 - (bool)readFrom:(id)arg1;
 - (unsigned long long)restoreDuration;
 - (void)setConnectionType:(int)arg1;
 - (void)setHasConnectionType:(bool)arg1;
+- (void)setHasInAppleStore:(bool)arg1;
+- (void)setHasNumberOfFilesTransferred:(bool)arg1;
 - (void)setHasRestoreDuration:(bool)arg1;
 - (void)setHasSize:(bool)arg1;
 - (void)setHasTimestamp:(bool)arg1;
 - (void)setHasTransferDuration:(bool)arg1;
+- (void)setInAppleStore:(bool)arg1;
+- (void)setNumberOfFilesTransferred:(unsigned long long)arg1;
 - (void)setRestoreDuration:(unsigned long long)arg1;
 - (void)setSize:(unsigned long long)arg1;
 - (void)setSourceDeviceModel:(id)arg1;

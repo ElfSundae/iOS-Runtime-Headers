@@ -20,6 +20,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_layoutContentUnavailableView;
 - (id)accessoryContentViewControllerDelegate;
 - (bool)contentAreaContainsPoint:(struct CGPoint { double x1; double x2; })arg1 inCoordinateSpace:(id)arg2;

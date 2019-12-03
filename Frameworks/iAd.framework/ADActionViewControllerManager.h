@@ -10,9 +10,9 @@
 
 + (id)sharedManager;
 
+- (void).cxx_destruct;
 - (void)actionViewController:(id)arg1 dismissForIdentifier:(id)arg2;
 - (void)cancelRequestForActionViewControllerForAdSpace:(id)arg1;
-- (void)dealloc;
 - (id)init;
 - (void)requestActionViewControllerForAdSpace:(id)arg1;
 - (id)servingAdSpaces;

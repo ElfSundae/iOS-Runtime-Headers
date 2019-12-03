@@ -3,16 +3,18 @@
  */
 
 @interface CARAutomaticDNDStatus : NSObject {
-    NSObject<OS_dispatch_queue> * _automaticDNDQueue;
     unsigned long long  _cachedAutomaticDNDActiveState;
+    NSXPCConnection * _connection;
     id /* block */  _exitConfirmationChangeObserver;
     id /* block */  _statusChangeObserver;
 }
 
-@property (nonatomic, retain) NSObject<OS_dispatch_queue> *automaticDNDQueue;
 @property (nonatomic, readonly) unsigned long long cachedAutomaticDNDActiveState;
+@property (nonatomic, retain) NSXPCConnection *connection;
 @property (nonatomic, copy) id /* block */ exitConfirmationChangeObserver;
 @property (nonatomic, copy) id /* block */ statusChangeObserver;
+
++ (id)automaticDNDQueue;
 
 - (void).cxx_destruct;
 - (void)_completeDNDBuddyWithOption:(unsigned long long)arg1 withReply:(id /* block */)arg2;
@@ -21,14 +23,16 @@
 - (void)_notifyExitConfirmationActive:(bool)arg1;
 - (void)_performCARPreferencesBlock:(id /* block */)arg1 forReading:(bool)arg2;
 - (void)_resetUserDNDSettingsWithReply:(id /* block */)arg1;
+- (void)_setupConnection;
 - (void)_xpcFetchWithServiceBlock:(id /* block */)arg1 errorHandler:(id /* block */)arg2;
 - (void)allowedAutoReplyAudience:(id /* block */)arg1;
 - (void)autoReplyMessageWithReply:(id /* block */)arg1;
 - (id)automaticDNDInternalAutoReplyWhitelist;
-- (id)automaticDNDQueue;
 - (unsigned long long)automaticDNDTriggeringMethod;
 - (unsigned long long)cachedAutomaticDNDActiveState;
+- (id)connection;
 - (void)dealloc;
+- (void)disableDNDUntilEndOfDriveWithContext:(id)arg1 reply:(id /* block */)arg2;
 - (void)disableDNDUntilEndOfDriveWithReply:(id /* block */)arg1;
 - (id)disableTimerTimestamp;
 - (id /* block */)exitConfirmationChangeObserver;
@@ -49,6 +53,7 @@
 - (void)outputOfDiagnosticUtilityWithReply:(id /* block */)arg1;
 - (bool)platformSupportsSendingAutoReplies;
 - (bool)platformSupportsUrgentMessages;
+- (void)setActivateWithCarPlay:(bool)arg1;
 - (void)setAllowedAutoReplyAudience:(unsigned long long)arg1 reply:(id /* block */)arg2;
 - (void)setAutoReplyMessage:(id)arg1 reply:(id /* block */)arg2;
 - (void)setAutomaticDNDActive:(bool)arg1 withReply:(id /* block */)arg2;
@@ -57,10 +62,10 @@
 - (void)setAutomaticDNDInternalForceOverrideEnabledPreference:(bool)arg1;
 - (void)setAutomaticDNDInternalShowGeofencingAlertsEnabledPreference:(bool)arg1;
 - (void)setAutomaticDNDInternalShowUserAlertsEnabledPreference:(bool)arg1;
-- (void)setAutomaticDNDQueue:(id)arg1;
 - (void)setAutomaticDNDTriggerPreference:(unsigned long long)arg1 withReply:(id /* block */)arg2;
 - (void)setAutomaticDNDTriggeringMethod:(unsigned long long)arg1;
 - (void)setCompletedFirstRidePreference:(bool)arg1;
+- (void)setConnection:(id)arg1;
 - (void)setDisableTimerTimestamp:(id)arg1;
 - (void)setExitConfirmationChangeObserver:(id /* block */)arg1;
 - (void)setFirstBuddyPresentationFirstMoment:(id)arg1;
@@ -69,6 +74,7 @@
 - (void)setOptedOutOfAutomaticDND:(bool)arg1;
 - (void)setStartedFirstRidePreference:(bool)arg1;
 - (void)setStatusChangeObserver:(id /* block */)arg1;
+- (bool)shouldActivateWithCarPlay;
 - (bool)shouldEnforceInternalWhitelist;
 - (id /* block */)statusChangeObserver;
 

@@ -6,7 +6,7 @@
     NSMutableArray * _entities;
     NSObject<OS_dispatch_queue> * _entitiesQueue;
     Class  _entityClass;
-    MPWeakRef * _libraryWeakRef;
+    MPMediaLibrary * _library;
     MPMediaQueryCriteria * _queryCriteria;
     <MPMediaLibraryResultSet> * _resultSet;
     long long  _revision;

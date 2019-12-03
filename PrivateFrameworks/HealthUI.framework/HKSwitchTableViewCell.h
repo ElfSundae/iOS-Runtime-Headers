@@ -15,7 +15,7 @@
 @property (nonatomic) bool adjustsFontSizeToFitWidth;
 @property (nonatomic) bool centersIcon;
 @property (nonatomic) <HKSwitchTableViewCellDelegate> *delegate;
-@property (nonatomic, retain) NSString *displayText;
+@property (nonatomic, copy) NSString *displayText;
 @property (getter=isEnabled, nonatomic) bool enabled;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } iconSize;
 @property (getter=isOn, nonatomic) bool on;

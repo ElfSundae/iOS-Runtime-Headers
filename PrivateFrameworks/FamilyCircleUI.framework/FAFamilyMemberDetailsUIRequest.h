@@ -11,12 +11,12 @@
 @property (nonatomic, copy) NSString *memberEmail;
 
 - (void).cxx_destruct;
+- (id)_endpoint;
+- (id)_queryString;
 - (bool)isUserInitiated;
 - (id)memberDSID;
 - (id)memberEmail;
 - (void)setMemberDSID:(id)arg1;
 - (void)setMemberEmail:(id)arg1;
-- (id)urlRequest;
-- (id)urlString;
 
 @end

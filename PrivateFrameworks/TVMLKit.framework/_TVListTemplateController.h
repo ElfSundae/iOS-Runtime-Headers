@@ -50,5 +50,6 @@
 - (void)setPreviewViewController:(id)arg1;
 - (void)updateWithViewElement:(id)arg1;
 - (void)viewDidAppear:(bool)arg1;
+- (void)viewWillAppear:(bool)arg1;
 
 @end

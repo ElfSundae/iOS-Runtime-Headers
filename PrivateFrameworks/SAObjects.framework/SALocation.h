@@ -29,8 +29,6 @@
 @property (nonatomic, copy) NSNumber *travelDistance;
 @property (nonatomic, copy) NSNumber *travelTime;
 
-// Image: /System/Library/PrivateFrameworks/SAObjects.framework/SAObjects
-
 + (id)location;
 + (id)locationWithDictionary:(id)arg1 context:(id)arg2;
 
@@ -76,15 +74,5 @@
 - (id)timezoneId;
 - (id)travelDistance;
 - (id)travelTime;
-
-// Image: /System/Library/PrivateFrameworks/AssistantUI.framework/AssistantUI
-
-- (id)afui_coreLocationRepresentation;
-- (id)afui_mapKitAddressDictionaryRepresentation;
-
-// Image: /System/Library/PrivateFrameworks/SiriUI.framework/SiriUI
-
-- (id)siriui_coreLocationRepresentation;
-- (id)siriui_mapKitAddressDictionaryRepresentation;
 
 @end

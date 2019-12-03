@@ -13,6 +13,7 @@
         double bottom; 
         double right; 
     }  _padding;
+    bool  _useNewImplementation;
     bool  _useSaliency;
 }
 
@@ -21,6 +22,7 @@
 @property (nonatomic) unsigned long long lowerItemCountThreshold;
 @property (nonatomic) unsigned long long numberOfColumns;
 @property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } padding;
+@property (nonatomic) bool useNewImplementation;
 @property (nonatomic) bool useSaliency;
 
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -35,7 +37,9 @@
 - (void)setLowerItemCountThreshold:(unsigned long long)arg1;
 - (void)setNumberOfColumns:(unsigned long long)arg1;
 - (void)setPadding:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
+- (void)setUseNewImplementation:(bool)arg1;
 - (void)setUseSaliency:(bool)arg1;
+- (bool)useNewImplementation;
 - (bool)useSaliency;
 
 @end

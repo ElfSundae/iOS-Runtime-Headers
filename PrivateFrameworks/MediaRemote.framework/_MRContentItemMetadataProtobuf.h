@@ -5,10 +5,12 @@
 @interface _MRContentItemMetadataProtobuf : PBCodable <NSCopying> {
     NSString * _albumArtistName;
     NSString * _albumName;
+    NSString * _albumYear;
     NSData * _appMetricsData;
     bool  _artworkAvailable;
     int  _artworkDataHeightDeprecated;
     int  _artworkDataWidthDeprecated;
+    NSString * _artworkFileURL;
     NSString * _artworkIdentifier;
     NSString * _artworkMIMEType;
     NSString * _artworkURL;
@@ -105,6 +107,7 @@
     bool  _languageOptionsAvailable;
     long long  _legacyUniqueIdentifier;
     NSString * _localizedContentRating;
+    NSString * _localizedDurationString;
     bool  _lyricsAvailable;
     NSString * _lyricsURL;
     int  _mediaSubType;
@@ -137,10 +140,12 @@
 
 @property (nonatomic, retain) NSString *albumArtistName;
 @property (nonatomic, retain) NSString *albumName;
+@property (nonatomic, retain) NSString *albumYear;
 @property (nonatomic, retain) NSData *appMetricsData;
 @property (nonatomic) bool artworkAvailable;
 @property (nonatomic) int artworkDataHeightDeprecated;
 @property (nonatomic) int artworkDataWidthDeprecated;
+@property (nonatomic, retain) NSString *artworkFileURL;
 @property (nonatomic, retain) NSString *artworkIdentifier;
 @property (nonatomic, retain) NSString *artworkMIMEType;
 @property (nonatomic, retain) NSString *artworkURL;
@@ -168,10 +173,12 @@
 @property (nonatomic, retain) NSString *genre;
 @property (nonatomic, readonly) bool hasAlbumArtistName;
 @property (nonatomic, readonly) bool hasAlbumName;
+@property (nonatomic, readonly) bool hasAlbumYear;
 @property (nonatomic, readonly) bool hasAppMetricsData;
 @property (nonatomic) bool hasArtworkAvailable;
 @property (nonatomic) bool hasArtworkDataHeightDeprecated;
 @property (nonatomic) bool hasArtworkDataWidthDeprecated;
+@property (nonatomic, readonly) bool hasArtworkFileURL;
 @property (nonatomic, readonly) bool hasArtworkIdentifier;
 @property (nonatomic, readonly) bool hasArtworkMIMEType;
 @property (nonatomic, readonly) bool hasArtworkURL;
@@ -217,6 +224,7 @@
 @property (nonatomic) bool hasLanguageOptionsAvailable;
 @property (nonatomic) bool hasLegacyUniqueIdentifier;
 @property (nonatomic, readonly) bool hasLocalizedContentRating;
+@property (nonatomic, readonly) bool hasLocalizedDurationString;
 @property (nonatomic) bool hasLyricsAvailable;
 @property (nonatomic, readonly) bool hasLyricsURL;
 @property (nonatomic) bool hasMediaSubType;
@@ -265,6 +273,7 @@
 @property (nonatomic) bool languageOptionsAvailable;
 @property (nonatomic) long long legacyUniqueIdentifier;
 @property (nonatomic, retain) NSString *localizedContentRating;
+@property (nonatomic, retain) NSString *localizedDurationString;
 @property (nonatomic) bool lyricsAvailable;
 @property (nonatomic, retain) NSString *lyricsURL;
 @property (nonatomic) int mediaSubType;
@@ -301,10 +310,12 @@
 - (id)_initWithData:(id)arg1;
 - (id)albumArtistName;
 - (id)albumName;
+- (id)albumYear;
 - (id)appMetricsData;
 - (bool)artworkAvailable;
 - (int)artworkDataHeightDeprecated;
 - (int)artworkDataWidthDeprecated;
+- (id)artworkFileURL;
 - (id)artworkIdentifier;
 - (id)artworkMIMEType;
 - (id)artworkURL;
@@ -336,10 +347,12 @@
 - (id)genre;
 - (bool)hasAlbumArtistName;
 - (bool)hasAlbumName;
+- (bool)hasAlbumYear;
 - (bool)hasAppMetricsData;
 - (bool)hasArtworkAvailable;
 - (bool)hasArtworkDataHeightDeprecated;
 - (bool)hasArtworkDataWidthDeprecated;
+- (bool)hasArtworkFileURL;
 - (bool)hasArtworkIdentifier;
 - (bool)hasArtworkMIMEType;
 - (bool)hasArtworkURL;
@@ -385,6 +398,7 @@
 - (bool)hasLanguageOptionsAvailable;
 - (bool)hasLegacyUniqueIdentifier;
 - (bool)hasLocalizedContentRating;
+- (bool)hasLocalizedDurationString;
 - (bool)hasLyricsAvailable;
 - (bool)hasLyricsURL;
 - (bool)hasMediaSubType;
@@ -435,6 +449,7 @@
 - (bool)languageOptionsAvailable;
 - (long long)legacyUniqueIdentifier;
 - (id)localizedContentRating;
+- (id)localizedDurationString;
 - (bool)lyricsAvailable;
 - (id)lyricsURL;
 - (int)mediaSubType;
@@ -459,10 +474,12 @@
 - (id)serviceIdentifier;
 - (void)setAlbumArtistName:(id)arg1;
 - (void)setAlbumName:(id)arg1;
+- (void)setAlbumYear:(id)arg1;
 - (void)setAppMetricsData:(id)arg1;
 - (void)setArtworkAvailable:(bool)arg1;
 - (void)setArtworkDataHeightDeprecated:(int)arg1;
 - (void)setArtworkDataWidthDeprecated:(int)arg1;
+- (void)setArtworkFileURL:(id)arg1;
 - (void)setArtworkIdentifier:(id)arg1;
 - (void)setArtworkMIMEType:(id)arg1;
 - (void)setArtworkURL:(id)arg1;
@@ -557,6 +574,7 @@
 - (void)setLanguageOptionsAvailable:(bool)arg1;
 - (void)setLegacyUniqueIdentifier:(long long)arg1;
 - (void)setLocalizedContentRating:(id)arg1;
+- (void)setLocalizedDurationString:(id)arg1;
 - (void)setLyricsAvailable:(bool)arg1;
 - (void)setLyricsURL:(id)arg1;
 - (void)setMediaSubType:(int)arg1;

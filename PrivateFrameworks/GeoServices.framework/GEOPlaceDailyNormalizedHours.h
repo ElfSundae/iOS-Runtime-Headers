@@ -12,11 +12,11 @@
 }
 
 @property (nonatomic) double closingSoonThresholdSeconds;
-@property (readonly) NSArray *localTimeIntervals;
-@property (readonly) bool openFromMidnight;
-@property (readonly) bool openToMidnight;
+@property (nonatomic, readonly) NSArray *localTimeIntervals;
+@property (nonatomic, readonly) bool openFromMidnight;
+@property (nonatomic, readonly) bool openToMidnight;
 @property (nonatomic) double openingSoonThresholdSeconds;
-@property (readonly) long long weekday;
+@property (nonatomic, readonly) long long weekday;
 
 + (id)dailyNormalizedHoursForWeekday:(long long)arg1 timeIntervals:(id)arg2 closingThreshold:(double)arg3 openingThreshold:(double)arg4 openToMidnight:(bool)arg5 openFromMidnight:(bool)arg6;
 + (long long)getWeekdayForDate:(id)arg1 inNormalizedHours:(id)arg2 timeZone:(id)arg3;

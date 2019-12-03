@@ -22,11 +22,13 @@
 - (id)_initWithEntitlementValues:(id)arg1;
 - (id)_typesFromIdentifierArray:(id)arg1;
 - (id)applicationIdentifier;
+- (bool)arrayEntitlement:(id)arg1 containsString:(id)arg2;
 - (id)description;
 - (id)entitlementValues;
 - (bool)hasAccessEntitlementWithIdentifer:(id)arg1;
 - (bool)hasEntitlement:(id)arg1;
 - (bool)hasPrivateAccessEntitlementWithIdentifer:(id)arg1;
+- (bool)hasPrivateMetadataAccess;
 - (id)init;
 - (id)stringForEntitlement:(id)arg1;
 - (id)typesForReadAuthorizationOverride;

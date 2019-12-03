@@ -7,6 +7,7 @@
     bool  _isBlocked;
     NSBundle * bundle;
     <PROPlugInDelegate> * delegate;
+    bool  entirelyOutOfProcess;
     PROPlugInGroup * group;
     NSURL * helpURL;
     NSDictionary * infoDictionary;

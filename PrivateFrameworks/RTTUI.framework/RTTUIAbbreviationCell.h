@@ -16,6 +16,7 @@
 - (id)abbreviation;
 - (id)abbreviationText;
 - (id)accessibilityIdentifier;
+- (bool)accessibilityIgnoresInvertColors;
 - (id)accessibilityLabel;
 - (void)dealloc;
 - (id)hint;

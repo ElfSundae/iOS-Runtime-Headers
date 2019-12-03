@@ -9,5 +9,8 @@
 - (void)activityObservingApplicationDidEnterBackground;
 - (void)activityObservingApplicationDidFinishLaunching;
 - (void)activityObservingApplicationWillEnterForeground;
+- (void)activityObservingApplicationWindowDidBecomeBackground;
+- (void)activityObservingApplicationWindowDidBecomeForeground;
+- (void)activityObservingApplicationWindowWillBecomeForeground;
 
 @end

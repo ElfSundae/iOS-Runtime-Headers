@@ -26,7 +26,7 @@
 
 + (void)__Multithreading_Violation_AllThatIsLeftToUsIsHonor__;
 + (unsigned long long)__platformOptions;
-+ (id)_beginPowerAssertionWithAssert:(unsigned long long*)arg1;
++ (id)_beginPowerAssertionNamed:(id)arg1 withAssert:(unsigned long long*)arg2;
 + (Class)_classForPersistentStoreAtURL:(id)arg1;
 + (void)_endPowerAssertionWithAssert:(unsigned long long)arg1 andApp:(id)arg2;
 + (id)_metadataForPersistentStoreOfType:(id)arg1 URL:(id)arg2 options:(id)arg3 error:(id*)arg4;
@@ -76,7 +76,7 @@
 - (void)_copyMetadataFromStore:(id)arg1 toStore:(id)arg2 migrationManager:(id)arg3;
 - (bool)_destroyPersistentStoreAtURL:(id)arg1 withType:(id)arg2 error:(id*)arg3;
 - (bool)_destroyPersistentStoreAtURL:(id)arg1 withType:(id)arg2 options:(id)arg3 error:(id*)arg4;
-- (void)_doAddPersistentStoreWithDescription:(id)arg1 privateCopy:(id)arg2 completionHandler:(id /* block */)arg3;
+- (void)_doAddPersistentStoreWithDescription:(id)arg1 privateCopy:(id)arg2 completeOnMainThread:(bool)arg3 withHandler:(id /* block */)arg4;
 - (void)_doPreSaveAssignmentsForObjects:(id)arg1 intoStores:(id)arg2;
 - (id)_exceptionNoStoreSaveFailureForError:(id)arg1 recommendedFrame:(int*)arg2;
 - (id)_fetchAllInstancesFromStore:(id)arg1 intoContext:(id)arg2 underlyingException:(id*)arg3;
@@ -84,6 +84,7 @@
 - (void)_introspectLastErrorAndThrow;
 - (bool)_isRegisteredWithCloudKit;
 - (bool)_isRegisteredWithUbiquity;
+- (id)_lastOpenError;
 - (id)_newConflictRecordForObject:(id)arg1 andOriginalRow:(id)arg2 withContext:(id)arg3;
 - (id)_newObjectGraphStyleRecordForRow:(id)arg1 andObject:(id)arg2 withContext:(id)arg3;
 - (id)_newOrderedRelationshipInformationForRelationship:(id)arg1 forObjectWithID:(id)arg2 withContext:(id)arg3 error:(id*)arg4;
@@ -94,15 +95,17 @@
 - (id)_qosClassOptions;
 - (id)_realStoreTypeForStoreWithType:(id)arg1 URL:(id)arg2 options:(id)arg3 error:(id*)arg4;
 - (bool)_refreshTriggerValuesInStore:(id)arg1 error:(id*)arg2;
-- (void)_removeAllPersistentStores;
+- (bool)_rekeyPersistentStoreAtURL:(id)arg1 type:(id)arg2 options:(id)arg3 withKey:(id)arg4 error:(id*)arg5;
+- (bool)_removeAllPersistentStores:(id*)arg1;
 - (bool)_removePersistentStore:(id)arg1;
 - (bool)_removePersistentStore:(id)arg1 error:(id*)arg2;
 - (id)_reopenQueryGenerationWithIdentifier:(id)arg1 inStoreWithIdentifier:(id)arg2 error:(id*)arg3;
+- (void)_repairIndiciesForStoreWithIdentifier:(id)arg1 synchronous:(bool)arg2;
 - (bool)_replacePersistentStoreAtURL:(id)arg1 destinationOptions:(id)arg2 withPersistentStoreFromURL:(id)arg3 sourceOptions:(id)arg4 storeType:(id)arg5 error:(id*)arg6;
 - (id)_retainedAllMigratedObjectsInStore:(id)arg1 toStore:(id)arg2;
 - (id)_retainedChangeTokenFromStores:(id)arg1;
 - (id)_retainedCurrentChangeTrackingToken;
-- (id)_retainedCurrentQueryGeneration;
+- (id)_retainedCurrentQueryGeneration:(id)arg1;
 - (id)_retainedIdentifierFromStores:(id)arg1;
 - (id)_retainedPersistentStores;
 - (id)_routableStoresForContext:(id)arg1 fromStores:(id)arg2;
@@ -114,12 +117,14 @@
 - (void)_setQosClassOptions:(unsigned int)arg1;
 - (void)_setXPCBundleIdentifier:(id)arg1;
 - (void)_setXPCProcessName:(id)arg1;
+- (Class)_storeClassForStoreWithType:(id)arg1 URL:(id)arg2 options:(id)arg3;
 - (bool)_validateQueryGeneration:(id)arg1 error:(id*)arg2;
 - (id)_xpcBundleIdentifier;
 - (id)_xpcProcessName;
 - (void)addPersistentStoreWithDescription:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)addPersistentStoreWithType:(id)arg1 configuration:(id)arg2 URL:(id)arg3 options:(id)arg4 error:(id*)arg5;
 - (id)currentPersistentHistoryTokenFromStores:(id)arg1;
+- (id)currentQueryGenerationTokenFromStores:(id)arg1;
 - (void)dealloc;
 - (bool)destroyPersistentStoreAtURL:(id)arg1 withType:(id)arg2 options:(id)arg3 error:(id*)arg4;
 - (id)executeRequest:(id)arg1 withContext:(id)arg2 error:(id*)arg3;

@@ -19,10 +19,10 @@
 @property (nonatomic, readonly) bool forceDelete;
 @property (nonatomic, readonly) bool orphaned;
 @property (nonatomic) HMDCloudChangeNode *parent;
-@property (nonatomic, retain) NSUUID *parentUuid;
-@property (nonatomic, retain) NSString *recordName;
-@property (nonatomic, retain) NSString *type;
-@property (nonatomic, retain) NSUUID *uuid;
+@property (nonatomic, copy) NSUUID *parentUuid;
+@property (nonatomic, copy) NSString *recordName;
+@property (nonatomic, copy) NSString *type;
+@property (nonatomic, copy) NSUUID *uuid;
 
 + (id)shortDescription;
 

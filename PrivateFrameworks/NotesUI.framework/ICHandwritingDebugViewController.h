@@ -21,6 +21,7 @@
 @property (nonatomic, retain) UITextView *textView;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)activityIndicator;
 - (void)close;
 - (id)drawings;
@@ -33,7 +34,6 @@
 - (void)setHandwritingDebugDelegate:(id)arg1;
 - (void)setRecognitionQueue:(id)arg1;
 - (void)setTextView:(id)arg1;
-- (void)tapToRadar:(id)arg1;
 - (id)textView;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(bool)arg1;

@@ -23,6 +23,8 @@
 
 @optional
 
+- (long long)bodyTextLength;
 - (bool)isBundlePaid;
+- (bool)isFeatured;
 
 @end

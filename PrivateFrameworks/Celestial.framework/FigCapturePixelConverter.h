@@ -12,6 +12,8 @@
     struct OpaqueVTPixelTransferSession { } * _transferSession;
 }
 
+@property (nonatomic, readonly) BWVideoFormat *outputFormat;
+
 + (void)initialize;
 
 - (int)_buildBufferPool;
@@ -22,6 +24,7 @@
 - (void)dealloc;
 - (id)init;
 - (id)initWithPrefetchPool:(bool)arg1;
+- (id)outputFormat;
 - (int)updateOutputPixelFormat:(unsigned int)arg1 dimensions:(struct { int x1; int x2; })arg2 poolCapacity:(int)arg3 colorSpaceProperties:(int)arg4 alwaysUseHardwareForConversion:(bool)arg5;
 
 @end

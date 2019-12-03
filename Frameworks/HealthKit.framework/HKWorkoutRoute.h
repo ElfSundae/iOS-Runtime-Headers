@@ -21,7 +21,7 @@
 - (bool)_isSmoothed;
 - (bool)_requiresPrivateEntitlementForQueries;
 - (void)_setCodableWorkoutRoute:(id)arg1;
-- (id)_validateConfiguration;
+- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
 - (id)_validateSample;
 - (id)_valueDescription;
 

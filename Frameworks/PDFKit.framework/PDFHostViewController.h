@@ -11,18 +11,19 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)backgroundColor;
 + (void)createHostView:(id /* block */)arg1 forExtensionIdentifier:(id)arg2;
 + (id)exportedInterface;
 + (id)loadExtension:(id)arg1;
 + (id)serviceViewControllerInterface;
 
 - (void).cxx_destruct;
-- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_boundsInDocument;
+- (void)_appendPasswordUI;
 - (struct CGSize { double x1; double x2; })_documentViewSize;
 - (void)_endPDFViewRotationAnimated:(bool)arg1 withUpdate:(bool)arg2;
 - (void)_gestureInit;
-- (bool)_hasDraggableSelectionAtLocation:(struct CGPoint { double x1; double x2; })arg1;
 - (double)_hostScrollViewZoomScale;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_insetBoundsInDocument;
 - (bool)_isTouchingLollipopAtLocationOfFirstTouch:(struct CGPoint { double x1; double x2; })arg1;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_pdfViewInsets;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_pdfViewSafeAreaInsets;
@@ -31,7 +32,6 @@
 - (void)_setMinimumZoomScale:(double)arg1;
 - (void)_setupExtensionInterruptionBlock;
 - (unsigned long long)_typeForGestureRecognizer:(id)arg1;
-- (void)appendPasswordUI;
 - (void)beginPDFViewRotation;
 - (bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)cancelFindString;
@@ -64,16 +64,17 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (long long)pageCount;
 - (id)pageNumberIndicator;
+- (void)recievedSnapshotViewRect:(id)arg1;
 - (void)selectAll:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDocumentData:(id)arg1 withScrollView:(id)arg2;
 - (void)setHasSelection:(bool)arg1;
-- (void)setSelectionRects:(id)arg1;
 - (void)setTextSelectionPoints:(struct CGPoint { double x1; double x2; })arg1 right:(struct CGPoint { double x1; double x2; })arg2;
-- (void)setTextSelectionState:(int)arg1;
 - (void)setup;
 - (void)setupDocumentViewSize:(struct CGSize { double x1; double x2; })arg1;
+- (void)showSelectionRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)showTextSelectionMenu:(bool)arg1 selectionRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
+- (void)snapshotViewRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 snapshotWidth:(id)arg2 afterScreenUpdates:(bool)arg3 withResult:(id /* block */)arg4;
 - (void)updateAutoScaleFactor;
 - (void)updateCurrentPageIndex:(long long)arg1;
 - (void)updateDocumentIsLocked:(bool)arg1;

@@ -17,6 +17,7 @@
     unsigned int  _deactivationReasons;
     bool  _didBecomeHiddenWhileAuthorized;
     bool  _encounteredTerminalFailure;
+    long long  _faceIDState;
     bool  _fieldDetectShouldEmulateExpress;
     <UICoordinateSpace> * _fixedScreenCoordinateSpace;
     struct { 
@@ -35,7 +36,6 @@
     unsigned long long  _payStateTransitionCounter;
     PKPassPaymentPayStateView * _payStateView;
     PKPaymentService * _paymentService;
-    long long  _pearlState;
     PKPeerPaymentAccountResolutionController * _peerPaymentAccountResolutionController;
     PKPeerPaymentService * _peerPaymentService;
     bool  _pendingAutomaticAuthorization;
@@ -49,6 +49,7 @@
     bool  _pendingPerformAuthorization;
     NSNumber * _pendingPresentationContextState;
     LAUIPhysicalButtonView * _physicalButtonView;
+    bool  _presentationWasForFieldDetect;
     bool  _presentationWasForced;
     bool  _presentingPasscode;
     bool  _recognizing;
@@ -75,13 +76,15 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (bool)initialUserIntentAssumptionForPass:(id)arg1 context:(id)arg2 paymentService:(id)arg3;
-+ (bool)shouldAutomaticallyAuthorizeForPassType:(unsigned long long)arg1 withContext:(id)arg2;
++ (bool)initialUserIntentRequiredAssumptionForPass:(id)arg1 context:(id)arg2 paymentService:(id)arg3;
++ (bool)shouldAutomaticallyAuthorizeForPass:(id)arg1 withContext:(id)arg2;
++ (bool)userIntentPotentiallyRequiredForPass:(id)arg1 fieldDetect:(bool)arg2;
 
 - (void).cxx_destruct;
 - (void)_activateForPayment;
 - (void)_activateForPaymentWithApplication:(id)arg1;
 - (void)_activatePaymentApplication:(id)arg1 forPaymentPass:(id)arg2 withCompletion:(id /* block */)arg3;
+- (void)_addPasscodeButtonPressed:(id)arg1;
 - (void)_addTransitionCompletionHandler:(id /* block */)arg1;
 - (void)_applyLatestContentToViews;
 - (void)_applyPayState:(long long)arg1;
@@ -176,7 +179,7 @@
 - (void)_updateVASInfoViewSuppressedTransactionIfNecessary;
 - (void)authenticator:(id)arg1 didRequestUserAction:(long long)arg2;
 - (void)authenticator:(id)arg1 didTransitionToCoachingState:(long long)arg2;
-- (void)authenticator:(id)arg1 didTransitionToPearlState:(long long)arg2;
+- (void)authenticator:(id)arg1 didTransitionToFaceIDState:(long long)arg2;
 - (void)authenticatorDidEncounterFingerOff:(id)arg1;
 - (void)authenticatorDidEncounterFingerOn:(id)arg1;
 - (void)authenticatorDidEncounterMatchMiss:(id)arg1;
@@ -208,6 +211,7 @@
 - (void)layoutSubviews;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (void)payStateView:(id)arg1 revealingCheckmark:(bool)arg2;
+- (void)payStateViewDidUpdateLayout:(id)arg1;
 - (void)paymentApplicationView:(id)arg1 didSelectApplication:(id)arg2 completion:(id /* block */)arg3;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didEnableTransactionService:(bool)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveBalanceUpdate:(id)arg2;

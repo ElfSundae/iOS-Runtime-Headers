@@ -19,14 +19,14 @@
 + (Class)classForProtocolProperty:(id)arg1 withValue:(id)arg2;
 + (Class)classOverrideAtInitialization:(Class)arg1 type:(id)arg2;
 + (void)initialize;
-+ (void)initializeJSONObject;
-+ (void)initializeObject;
 + (id)jsonPropertyNameForObjCPropertyName:(id)arg1;
++ (void)lock;
 + (id /* block */)objectValueClassBlockForPropertyWithName:(id)arg1;
 + (id)propertyDefinitions;
 + (id)propertyHashTable;
 + (id)protocolPropertyDefinitions;
 + (id /* block */)purgeClassBlockForPropertyWithName:(id)arg1;
++ (void)unlock;
 + (id /* block */)valueClassBlockForPropertyWithName:(id)arg1;
 
 - (void).cxx_destruct;

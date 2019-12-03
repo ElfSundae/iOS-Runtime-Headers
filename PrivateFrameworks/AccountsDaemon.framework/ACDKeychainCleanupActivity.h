@@ -18,6 +18,7 @@
 - (void)_activityQueue_removeCredentialItem:(id)arg1 withCompletionHandler:(id /* block */)arg2;
 - (void)_activityQueue_removeExpiredCredentials;
 - (void)_activityQueue_unregisterActivity;
+- (bool)_removeExpiredCredentials;
 - (void)checkInIfNecessary;
 - (id)init;
 - (void)queueNonPersistentCredentialRemoval:(id)arg1;

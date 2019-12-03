@@ -43,7 +43,6 @@
 - (bool)shouldAllowEmailInAlbumSubtitle;
 - (bool)shouldHideEmptyCollections;
 - (bool)shouldShowAllPhotosItem;
-- (unsigned long long)supportedInterfaceOrientations;
 - (void)updateNavigationBarAnimated:(bool)arg1;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidLoad;

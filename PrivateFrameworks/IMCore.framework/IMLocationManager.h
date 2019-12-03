@@ -5,6 +5,7 @@
 @interface IMLocationManager : NSObject <CLLocationManagerDelegate, IMLocationManager> {
     NSError * _error;
     NSMutableArray * _handlers;
+    CLInUseAssertion * _inUseAssertion;
     NSDate * _locateStartTime;
     CLLocation * _location;
     CLLocationManager * _locationManager;
@@ -17,13 +18,16 @@
 @property (nonatomic, retain) NSError *error;
 @property (nonatomic, retain) NSMutableArray *handlers;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, retain) CLInUseAssertion *inUseAssertion;
 @property (nonatomic, retain) NSDate *locateStartTime;
 @property (nonatomic, retain) CLLocation *location;
 @property (nonatomic, readonly) bool locationAuthorizationDenied;
+@property (nonatomic, readonly) bool locationAuthorizationDetermined;
 @property (nonatomic, retain) CLLocationManager *locationManager;
 @property (nonatomic, retain) NSTimer *locationUpdateTimer;
 @property (readonly) Class superclass;
 
++ (Class)__CLInUseAssertionClass;
 + (Class)__CLLocationManagerClass;
 + (id)locationShifter;
 + (id)sharedInstance;
@@ -36,10 +40,12 @@
 - (void)dealloc;
 - (id)error;
 - (id)handlers;
+- (id)inUseAssertion;
 - (id)init;
 - (id)locateStartTime;
 - (id)location;
 - (bool)locationAuthorizationDenied;
+- (bool)locationAuthorizationDetermined;
 - (id)locationManager;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
@@ -47,11 +53,13 @@
 - (id)locationUpdateTimer;
 - (void)setError:(id)arg1;
 - (void)setHandlers:(id)arg1;
+- (void)setInUseAssertion:(id)arg1;
 - (void)setLocateStartTime:(id)arg1;
 - (void)setLocation:(id)arg1;
 - (void)setLocationManager:(id)arg1;
 - (void)setLocationUpdateTimer:(id)arg1;
 - (void)shiftedLocationWithLocation:(id)arg1 completion:(id /* block */)arg2;
+- (void)startUpdatingCurrentLocationWithForegroundAssertionForBundleIdentifier:(id)arg1 updateHandler:(id /* block */)arg2;
 - (void)startUpdatingCurrentLocationWithHandler:(id /* block */)arg1;
 
 @end

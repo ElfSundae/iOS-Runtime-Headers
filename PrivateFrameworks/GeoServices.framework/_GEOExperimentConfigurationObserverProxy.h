@@ -4,7 +4,9 @@
 
 @interface _GEOExperimentConfigurationObserverProxy : NSObject {
     NSHashTable * _observers;
-    NSLock * _observersLock;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _observersLock;
     NSObject<OS_dispatch_queue> * _queue;
 }
 

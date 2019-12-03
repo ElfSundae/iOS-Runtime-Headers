@@ -12,7 +12,6 @@
 
 - (id)inputDither;
 - (id)inputScale;
-- (id)kernel;
 - (id)outputImage;
 - (void)setInputDither:(id)arg1;
 - (void)setInputScale:(id)arg1;

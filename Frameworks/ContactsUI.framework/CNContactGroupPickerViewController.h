@@ -5,6 +5,7 @@
 @interface CNContactGroupPickerViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
     <CNContactGroupPickerDelegate> * _groupPickerDelegate;
     NSArray * _pickableGroups;
+    NSArray * _prohibitedPropertyKeys;
     UITableView * _tableView;
 }
 
@@ -12,10 +13,12 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) <CNContactGroupPickerDelegate> *groupPickerDelegate;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, retain) NSArray *prohibitedPropertyKeys;
 @property (readonly) Class superclass;
 
-+ (id)pickableGroupsWithPickedGroups:(id)arg1 policy:(id)arg2;
++ (id)pickableGroupsWithPickedGroups:(id)arg1 policy:(id)arg2 prohibitedPropertyKeys:(id)arg3;
 + (bool)propertiesLeftToPickWithPickedGroups:(id)arg1 policy:(id)arg2;
++ (bool)propertiesLeftToPickWithPickedGroups:(id)arg1 policy:(id)arg2 prohibitedPropertyKeys:(id)arg3;
 + (id)propertySections;
 
 - (void).cxx_destruct;
@@ -26,7 +29,9 @@
 - (id)initWithGroups:(id)arg1;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (id)prohibitedPropertyKeys;
 - (void)setGroupPickerDelegate:(id)arg1;
+- (void)setProhibitedPropertyKeys:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;

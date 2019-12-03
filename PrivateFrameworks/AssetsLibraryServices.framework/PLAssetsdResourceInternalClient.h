@@ -4,4 +4,9 @@
 
 @interface PLAssetsdResourceInternalClient : PLAssetsdBaseClient
 
+- (void)batchSaveAssetsWithJobDictionaries:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)prepareRevertToOriginalForAsset:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)purgeExpiredOutboundSharingAssetsWithCompletionHandler:(id /* block */)arg1;
+- (void)requestMasterThumbnailForAssetUUID:(id)arg1 completionHandler:(id /* block */)arg2;
+
 @end

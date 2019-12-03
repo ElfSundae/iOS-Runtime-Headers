@@ -25,6 +25,7 @@
     bool  _prefersRegularItemsVisible;
     NSTimer * _prefersRegularItemsVisibleTimer;
     bool  _scrubbing;
+    bool  _showsItemsWhenPaused;
     bool  _showsItemsWhileWaitingToPlay;
     bool  _statusBarAppearanceNeedsUpdate;
     bool  _transitionInProgress;
@@ -41,6 +42,7 @@
 @property (nonatomic, retain) AVPlayerController *playerController;
 @property (getter=isPopoverPresented, nonatomic) bool popoverPresented;
 @property (nonatomic, readonly) bool showsItemPreferingStatusBarVisible;
+@property (nonatomic) bool showsItemsWhenPaused;
 @property (nonatomic) bool showsItemsWhileWaitingToPlay;
 @property double volumeChangeHidePlaybackControlTimerInterval;
 
@@ -56,28 +58,30 @@
 - (void)_showItemsShownForVolumeChangeAndHideAfterDelay;
 - (void)_showRegularItems;
 - (void)_showRegularItemsAndHideAfterDelay;
-- (void)_showRegularItemsAndHideAfterDelayIfPlaying;
+- (void)_showRegularItemsAndHideAfterDelayIfPlaying:(bool)arg1;
 - (void)_startControllingVisibilityIfNeeded;
 - (void)_startTimerToHideItemsShownForVolumeChange;
 - (void)_startTimerToHideRegularItems;
 - (void)_startTimerToHideRegularItemsAfterDelay:(double)arg1 ifPlaying:(bool)arg2;
-- (void)_startTimerToHideRegularItemsIfPlaying;
 - (void)_stopInitiallyHidingItems;
 - (void)_stopInitiallyHidingItemsThatAreShownForVolumeChanges;
-- (void)_stopTimerToHideItemsShownForVolumeChangeIfPlaying;
-- (void)_stopTimerToHideRegularControlsIfPlaying;
+- (void)_stopTimerToHideItemsShownForVolumeChange;
+- (void)_stopTimerToHideRegularControls;
 - (void)_updateControlItemVisibilityIfNeeded;
 - (void)_updateVisibilityWithCompletionHandler:(id /* block */)arg1;
 - (bool)_userIsInteractingWithItems;
 - (void)activeAudioRouteOrSystemVolumeDidChange;
 - (double)animationDuration;
 - (void)beginHidingItemsForTransition;
+- (void)beginShowingItemsDueToIndirectUserInteraction;
 - (void)beginTrackingUserInteraction;
 - (bool)canHideItems;
 - (void)dealloc;
 - (id)delegate;
+- (void)didMoveOffScreen;
 - (void)endHidingItemsForTransition;
 - (void)endHidingItemsForTransitionAndShowImmediately:(bool)arg1;
+- (void)endShowingItemsDueToIndirectUserInteraction;
 - (void)endTrackingUserInteraction;
 - (void)flashPlaybackControlsWithDuration:(double)arg1;
 - (double)hideItemsQuicklyTimerInterval;
@@ -95,15 +99,18 @@
 - (void)setPictureInPictureActive:(bool)arg1;
 - (void)setPlayerController:(id)arg1;
 - (void)setPopoverPresented:(bool)arg1;
+- (void)setShowsItemsWhenPaused:(bool)arg1;
 - (void)setShowsItemsWhileWaitingToPlay:(bool)arg1;
 - (void)setVolumeChangeHidePlaybackControlTimerInterval:(double)arg1;
 - (bool)showsItemPreferingStatusBarVisible;
+- (bool)showsItemsWhenPaused;
 - (bool)showsItemsWhileWaitingToPlay;
 - (void)startControllingVisibilityOfItem:(id)arg1 visibilityBehaviorOptions:(long long)arg2;
 - (void)startHidingItemQuicklyWhenPlaybackBegins;
 - (void)stopControllingVisibilityOfItem:(id)arg1;
 - (void)stopHidingItemQuicklyWhenPlaybackBegins;
 - (void)toggleVisibility;
+- (long long)visibilityBehaviorOptionsOfItem:(id)arg1;
 - (double)volumeChangeHidePlaybackControlTimerInterval;
 
 @end

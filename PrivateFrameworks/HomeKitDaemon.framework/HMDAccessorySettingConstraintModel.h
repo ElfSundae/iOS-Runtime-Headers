@@ -4,8 +4,8 @@
 
 @interface HMDAccessorySettingConstraintModel : HMDBackingStoreModelObject
 
-@property (nonatomic, retain) NSNumber *type;
-@property (nonatomic, retain) NSData *value;
+@property (nonatomic, copy) NSNumber *type;
+@property (nonatomic, copy) NSData *value;
 
 + (id)properties;
 + (id)schemaHashRoot;

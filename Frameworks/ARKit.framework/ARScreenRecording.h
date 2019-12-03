@@ -4,20 +4,23 @@
 
 @interface ARScreenRecording : NSObject {
     UIViewController * _parentViewController;
+    RPScreenRecorder * _recorder;
     bool  _saveInPhotosLibrary;
 }
 
 @property (nonatomic, retain) UIViewController *parentViewController;
+@property (nonatomic, retain) RPScreenRecorder *recorder;
 @property (nonatomic) bool saveInPhotosLibrary;
 
 - (void).cxx_destruct;
-- (void)alertUserWithTitle:(id)arg1 message:(id)arg2;
 - (id)initWith:(id)arg1;
 - (id)parentViewController;
+- (id)recorder;
 - (bool)saveInPhotosLibrary;
 - (void)setParentViewController:(id)arg1;
+- (void)setRecorder:(id)arg1;
 - (void)setSaveInPhotosLibrary:(bool)arg1;
-- (void)start;
-- (void)stop;
+- (void)startRecordingWithHandler:(id /* block */)arg1;
+- (void)stopRecordingWithHandler:(id /* block */)arg1;
 
 @end

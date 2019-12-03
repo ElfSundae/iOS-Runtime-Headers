@@ -5,7 +5,7 @@
 @interface VUIPlistMediaDatabaseItem : VUIPlistMediaDatabaseEntity <NSCopying> {
     NSNumber * _HLSColorCapability;
     NSNumber * _colorCapability;
-    VUIContentRating * _contentRating;
+    _TVContentRating * _contentRating;
     VUIMediaItemCredits * _credits;
     NSString * _downloadState;
     NSNumber * _duration;
@@ -22,7 +22,7 @@
 
 @property (nonatomic, copy) NSNumber *HLSColorCapability;
 @property (nonatomic, copy) NSNumber *colorCapability;
-@property (nonatomic, copy) VUIContentRating *contentRating;
+@property (nonatomic, copy) _TVContentRating *contentRating;
 @property (nonatomic, copy) VUIMediaItemCredits *credits;
 @property (nonatomic, copy) NSString *downloadState;
 @property (nonatomic, copy) NSNumber *duration;

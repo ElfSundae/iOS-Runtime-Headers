@@ -40,6 +40,7 @@
 - (bool)isActiveUser;
 - (bool)isEqual:(id)arg1;
 - (bool)isValid;
+- (bool)isValidIgnoringExpiration;
 - (id)playActivityURL;
 - (id)requiredRequestKeyValuePairsDictionary;
 - (id)responseDictionary;

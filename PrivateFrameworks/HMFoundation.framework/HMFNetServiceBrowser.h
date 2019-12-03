@@ -5,14 +5,14 @@
 @interface HMFNetServiceBrowser : HMFObject <NSNetServiceBrowserDelegate> {
     id /* block */  _browseBlock;
     bool  _browsing;
-    NSHashTable * _cachedNetServices;
+    NSMutableOrderedSet * _cachedNetServices;
     NSObject<OS_dispatch_queue> * _clientQueue;
     <HMFNetServiceBrowserDelegate> * _delegate;
     NSString * _domain;
     NSNetServiceBrowser * _internal;
     HMFUnfairLock * _lock;
+    NSHashTable * _netServices;
     NSString * _serviceType;
-    bool  _shouldCache;
 }
 
 @property (nonatomic, copy) id /* block */ browseBlock;
@@ -55,7 +55,6 @@
 - (void)netServiceBrowser:(id)arg1 didRemoveService:(id)arg2 moreComing:(bool)arg3;
 - (void)netServiceBrowserDidStopSearch:(id)arg1;
 - (void)netServiceBrowserWillSearch:(id)arg1;
-- (void)removeNetServiceFromCache:(id)arg1;
 - (id)serviceType;
 - (void)setBrowseBlock:(id /* block */)arg1;
 - (void)setBrowsing:(bool)arg1;

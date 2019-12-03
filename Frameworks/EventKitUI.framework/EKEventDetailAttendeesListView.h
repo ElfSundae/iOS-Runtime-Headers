@@ -24,6 +24,8 @@
 }
 
 @property (nonatomic) double bottomSpacingForSpinner;
+@property (nonatomic, readonly) long long columnAItems;
+@property (nonatomic, readonly) long long columnBItems;
 @property (nonatomic) bool groupsNames;
 @property (getter=isHighlighted, nonatomic) bool highlighted;
 @property (nonatomic, retain) UIColor *highlightedTextColor;
@@ -42,12 +44,14 @@
 - (bool)_shouldAlwaysDrawSingleColumn;
 - (double)bottomSpacingForSpinner;
 - (double)calculatedHeight;
+- (long long)columnAItems;
+- (long long)columnBItems;
 - (void)contentSizeCategoryChanged;
 - (void)dealloc;
 - (void)drawNames:(id)arg1;
 - (void)drawRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)finalizeInviteNames;
-- (id)generateAttributedStringsFromNames:(id)arg1 glyph:(id)arg2 displayCount:(long long)arg3;
+- (id)generateAttributedStringsFromDisplayParticipants:(id)arg1 glyph:(id)arg2 displayCount:(long long)arg3;
 - (bool)groupsNames;
 - (id)highlightedTextColor;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
@@ -56,6 +60,7 @@
 - (void)layoutSubviews;
 - (double)maxColumnHeight;
 - (double)maxHeight;
+- (void)recalculateHeight;
 - (void)setBottomSpacingForSpinner:(double)arg1;
 - (void)setGroupsNames:(bool)arg1;
 - (void)setHighlighted:(bool)arg1;

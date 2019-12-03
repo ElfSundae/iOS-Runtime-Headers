@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/AVConference.framework/AVConference
  */
 
-@interface VCSessionParticipantLocal : VCSessionParticipant <VCSessionUplinkVideoStreamControllerDelegate, VCVideoCaptureClient> {
+@interface VCSessionParticipantLocal : VCSessionParticipant <VCMomentTransportDelegate, VCSessionUplinkVideoStreamControllerDelegate, VCVideoCaptureClient> {
     NSMutableDictionary * _activeUplinkAudioStreams;
     NSMutableSet * _audioPayloadTypes;
     unsigned char  _audioPriority;
@@ -34,8 +34,10 @@
     unsigned int  _lastSentAudioSampleTime;
     NSMutableSet * _localPublishedStreams;
     struct tagVCMediaQueue { } * _mediaQueue;
+    VCMoments * _moments;
     NSMutableArray * _peerSubscribedStreams;
     NSMutableDictionary * _pendingActiveUplinkVideoStreams;
+    VCAudioPowerSpectrumSource * _powerSpectrumSource;
     struct tagVCMemoryPool { struct { void *x_1_1_1; long long x_1_1_2; } x1; unsigned long long x2; } * _redundancyPool;
     bool  _shouldResize;
     int  _shouldUpdateActiveVideoStream;
@@ -45,7 +47,7 @@
     unsigned int  _uplinkBitrateCapWifi;
     VCSessionUplinkVideoStreamController * _uplinkVideoStreamController;
     NSMutableSet * _videoPayloadTypes;
-    unsigned char  _videoPriority;
+    _Atomic unsigned char  _videoPriority;
     struct opaqueCMSimpleQueue { } * _videoRedundancyChangeEventQueue;
     struct tagVCMemoryPool { struct { void *x_1_1_1; long long x_1_1_2; } x1; unsigned long long x2; } * _videoRedundancyPool;
     VCVideoRule * _videoRule;
@@ -62,6 +64,7 @@
 @property (nonatomic) bool encryptionInfoReceived;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct tagVCMediaQueue { }*mediaQueue;
+@property (nonatomic, readonly) VCMoments *moments;
 @property (nonatomic, copy) NSArray *peerSubscribedStreams;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned int uplinkBitrateCapCell;
@@ -69,6 +72,7 @@
 @property (nonatomic, readonly) NSSet *videoPayloadTypes;
 
 - (void)addCallInfoBlobToParticipantInfo:(id)arg1;
+- (bool)applyCachedMediaStreams:(id)arg1 toMultiwayConfig:(id)arg2;
 - (void)applyVideoEnabledSetting:(bool)arg1;
 - (id)audioPayloadTypes;
 - (id)audioRuleCollectionWithAudioStreamConfig:(id)arg1;
@@ -78,7 +82,7 @@
 - (id)clientCaptureRule;
 - (void)collectAudioChannelMetrics:(struct { unsigned int x1; unsigned int x2; double x3; }*)arg1;
 - (void)collectVideoChannelMetrics:(struct { unsigned int x1; unsigned int x2; double x3; }*)arg1;
-- (bool)computeMediaBlob;
+- (bool)configureAudioIOWithDeviceRole:(int)arg1;
 - (unsigned short)connectionStatsStreamID;
 - (bool)containsStreamWithIDSStreamID:(unsigned short)arg1;
 - (bool)containsStreamWithSSRC:(unsigned int)arg1;
@@ -103,12 +107,17 @@
 - (unsigned short)generateStreamID;
 - (id)getAudioDumpName;
 - (void)handleActiveConnectionChange:(id)arg1;
-- (id)initWithIDSDestination:(id)arg1 delegate:(id)arg2 processId:(int)arg3 sessionUUID:(id)arg4;
+- (id)initWithIDSDestination:(id)arg1 negotiationData:(id)arg2 delegate:(id)arg3 processId:(int)arg4 sessionUUID:(id)arg5;
+- (bool)initializeMediaNegotiator;
 - (void)initializeUplinkVideoStreamController;
 - (bool)isHighPriorityAudioWithPower:(float)arg1 voiceActive:(bool)arg2;
 - (struct tagVCMediaQueue { }*)mediaQueue;
-- (id)multiwayAudioStreamConfigs;
+- (id)moments;
+- (void)moments:(id)arg1 shouldProcessRequest:(id)arg2 recipientID:(id)arg3;
+- (id)multiwayAudioStreamNegotiatorConfigForStreamConfig:(id)arg1;
 - (id)multiwayVideoStreamConfigs;
+- (id)multiwayVideoStreamNegotiatorConfigForStreamConfig:(id)arg1 isSubstream:(bool)arg2;
+- (id)newMediaNegotiatorAudioConfiguration;
 - (bool)onCaptureFrame:(struct opaqueCMSampleBuffer { }*)arg1 frameTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2 droppedFrames:(int)arg3 cameraStatusBits:(unsigned char)arg4;
 - (id)peerSubscribedStreams;
 - (void)processAudioRedundancyChangeEvent;
@@ -130,12 +139,14 @@
 - (bool)setupAudioStreamWithConfiguration:(id)arg1;
 - (bool)setupAudioStreamWithConfiguration:(id)arg1 idsDestination:(id)arg2;
 - (bool)setupAudioStreamsWithConfigProvider:(id)arg1;
+- (bool)setupAudioStreamsWithConfigProvider:(id)arg1 mediaNegotiatorConfig:(id)arg2;
 - (void)setupEncodingModeWithVideoStreamConfig:(id)arg1;
 - (id)setupStreamRTP:(id)arg1;
 - (void)setupVideoStreamConfig:(id)arg1 initialConfiguration:(id)arg2;
 - (bool)setupVideoStreamWithConfiguration:(id)arg1;
 - (bool)setupVideoStreamWithConfiguration:(id)arg1 idsDestination:(id)arg2;
 - (bool)setupVideoStreamsWithConfigProvider:(id)arg1;
+- (bool)setupVideoStreamsWithConfigProvider:(id)arg1 mediaNegotiatorConfig:(id)arg2;
 - (void)sourceFrameRateDidChange:(unsigned int)arg1;
 - (void)start;
 - (void)startVoiceActivityDetection;
@@ -149,6 +160,8 @@
 - (void)updateActiveVideoStreamWithTargetBitrate:(unsigned int)arg1;
 - (void)updateActiveVoiceOnly;
 - (void)updateAudioPriorityWithSampleBuffer:(struct opaqueVCAudioBufferList { }*)arg1;
+- (void)updateMediaSettingsWithConfig:(id)arg1;
+- (void)updateMomentsCapabillities:(unsigned int)arg1 imageType:(int)arg2 videoCodec:(int)arg3;
 - (void)updatePayloadTypesWithConfigProvider:(id)arg1;
 - (void)updateStreamIDsWithActiveVideoStreams:(id)arg1;
 - (void)updateSupportedAudioRules:(id)arg1;

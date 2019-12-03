@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/ControlCenterUI.framework/ControlCenterUI
  */
 
-@interface CCUIModularControlCenterOverlayViewController : CCUIModularControlCenterViewController <CCUIOverlayMetricsProvider, CCUIOverlayViewProvider, CCUIScrollViewDelegate, CCUIStatusBarDelegate, CCUIStatusLabelViewControllerDelegate, UIGestureRecognizerDelegate> {
+@interface CCUIModularControlCenterOverlayViewController : CCUIModularControlCenterViewController <CCUIOverlayMetricsProvider, CCUIOverlayViewProvider, CCUIPPTSignpostListener, CCUIScrollViewDelegate, CCUIStatusBarDelegate, CCUIStatusLabelViewControllerDelegate, UIGestureRecognizerDelegate> {
     MTMaterialView * _backgroundView;
     NSHashTable * _blockingGestureRecognizers;
     CCUIFlickGestureRecognizer * _collectionViewDismissalFlickGesture;
@@ -17,6 +17,7 @@
     UITapGestureRecognizer * _headerPocketViewDismissalTapGesture;
     <CCUIHostStatusBarStyleProvider> * _hostStatusBarStyleProvider;
     CCUIStatusBarStyleSnapshot * _hostStatusBarStyleSnapshot;
+    FBSDisplayLayoutMonitor * _layoutMonitor;
     bool  _presentationPanGestureActive;
     <CCUIOverlayPresentationProvider> * _presentationProvider;
     unsigned long long  _presentationState;
@@ -50,12 +51,19 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) unsigned long long transitionState;
 
++ (void)_addBlockForSignpost:(unsigned long long)arg1 block:(id /* block */)arg2;
++ (id)_blocksBySignpost;
++ (id)_controlCenterBringupEventStream;
++ (id)_controlCenterDismissEventStream;
++ (void)_executeAndCleanupBlocksForAllSignposts;
++ (void)_executeBlocksForSignpost:(unsigned long long)arg1;
 + (id)_presentationProviderForDevice;
 
 - (void).cxx_destruct;
 - (unsigned long long)__supportedInterfaceOrientations;
 - (id)_beginDismissalAnimated:(bool)arg1 interactive:(bool)arg2;
 - (id)_beginPresentationAnimated:(bool)arg1 interactive:(bool)arg2;
+- (bool)_canShowWhileLocked;
 - (void)_cancelDismissalPanGestures;
 - (bool)_dismissalFlickGestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (bool)_dismissalFlickGestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
@@ -87,10 +95,13 @@
 - (void)_updateHotPocketAnimated:(bool)arg1;
 - (void)_updatePresentationForTransitionState:(id)arg1 withCompletionHander:(id /* block */)arg2;
 - (void)_updatePresentationForTransitionType:(unsigned long long)arg1 translation:(struct CGPoint { double x1; double x2; })arg2 interactive:(bool)arg3;
+- (void)_willDismissView;
+- (void)_willPresentView;
 - (void)beginPresentationWithLocation:(struct CGPoint { double x1; double x2; })arg1 translation:(struct CGPoint { double x1; double x2; })arg2 velocity:(struct CGPoint { double x1; double x2; })arg3;
 - (void)cancelPresentationWithLocation:(struct CGPoint { double x1; double x2; })arg1 translation:(struct CGPoint { double x1; double x2; })arg2 velocity:(struct CGPoint { double x1; double x2; })arg3;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })compactAvoidanceFrameForStatusBar:(id)arg1;
 - (id)compactTrailingStyleRequestForStatusBar:(id)arg1;
+- (void)didReceiveSignpost:(unsigned long long)arg1;
 - (void)dismissAnimated:(bool)arg1 withCompletionHandler:(id /* block */)arg2;
 - (void)dismissControlCenterForContentModuleContext:(id)arg1;
 - (void)endPresentationWithLocation:(struct CGPoint { double x1; double x2; })arg1 translation:(struct CGPoint { double x1; double x2; })arg2 velocity:(struct CGPoint { double x1; double x2; })arg3;
@@ -102,7 +113,9 @@
 - (bool)isReachabilityActive;
 - (void)moduleCollectionViewController:(id)arg1 didAddModuleContainerViewController:(id)arg2;
 - (void)moduleCollectionViewController:(id)arg1 willCloseExpandedModule:(id)arg2;
+- (void)moduleCollectionViewController:(id)arg1 willDismissViewController:(id)arg2;
 - (void)moduleCollectionViewController:(id)arg1 willOpenExpandedModule:(id)arg2;
+- (void)moduleCollectionViewController:(id)arg1 willPresentViewController:(id)arg2;
 - (void)moduleInstancesChangedForModuleInstanceManager:(id)arg1;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })overlayAdditionalEdgeInsets;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })overlayBackgroundFrame;
@@ -120,6 +133,8 @@
 - (unsigned long long)preferredScreenEdgesDeferringSystemGestures;
 - (void)presentAnimated:(bool)arg1 withCompletionHandler:(id /* block */)arg2;
 - (unsigned long long)presentationState;
+- (bool)runTest:(id)arg1 options:(id)arg2 delegate:(id)arg3;
+- (void)runTest:(id)arg1 subtests:(id)arg2 eventStream:(id)arg3 completionHandler:(id /* block */)arg4;
 - (bool)scrollView:(id)arg1 gestureRecognizerShouldBegin:(id)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)setHostStatusBarStyleProvider:(id)arg1;

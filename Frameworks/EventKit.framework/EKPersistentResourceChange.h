@@ -5,6 +5,7 @@
 @interface EKPersistentResourceChange : EKPersistentObject
 
 + (id)defaultPropertiesToLoad;
++ (Class)meltedClass;
 + (id)relations;
 
 - (bool)alerted;
@@ -20,6 +21,7 @@
 - (id)deleteCount;
 - (id)deletedTitle;
 - (int)entityType;
+- (id)notification;
 - (unsigned int)publicStatus;
 - (id)timestamp;
 - (id)updateCount;

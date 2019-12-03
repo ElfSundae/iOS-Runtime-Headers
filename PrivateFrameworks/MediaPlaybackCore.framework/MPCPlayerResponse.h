@@ -21,6 +21,7 @@
 
 - (void).cxx_destruct;
 - (id)_commandRequestForMediaRemoteCommand:(unsigned int)arg1;
+- (id)_stateDumpObject;
 - (id)controller;
 - (id)description;
 - (id)initWithRequest:(id)arg1 middleware:(id)arg2;

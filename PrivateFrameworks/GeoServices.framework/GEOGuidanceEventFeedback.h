@@ -8,15 +8,38 @@
     unsigned int  _enrouteNoticeIndex;
     unsigned int  _eventIndex;
     struct { 
-        unsigned int distanceToManeuver : 1; 
-        unsigned int duration : 1; 
-        unsigned int enrouteNoticeIndex : 1; 
-        unsigned int eventIndex : 1; 
-        unsigned int stepID : 1; 
-        unsigned int timeToManeuver : 1; 
-        unsigned int trafficSpeed : 1; 
-        unsigned int vehicleSpeed : 1; 
-    }  _has;
+        unsigned int has_distanceToManeuver : 1; 
+        unsigned int has_duration : 1; 
+        unsigned int has_enrouteNoticeIndex : 1; 
+        unsigned int has_eventIndex : 1; 
+        unsigned int has_stepID : 1; 
+        unsigned int has_timeToManeuver : 1; 
+        unsigned int has_trafficSpeed : 1; 
+        unsigned int has_vehicleSpeed : 1; 
+        unsigned int read_junctionViewGuidanceFeedback : 1; 
+        unsigned int read_routeID : 1; 
+        unsigned int read_signGuidanceFeedback : 1; 
+        unsigned int read_spokenGuidanceFeedback : 1; 
+        unsigned int wrote_junctionViewGuidanceFeedback : 1; 
+        unsigned int wrote_routeID : 1; 
+        unsigned int wrote_signGuidanceFeedback : 1; 
+        unsigned int wrote_spokenGuidanceFeedback : 1; 
+        unsigned int wrote_distanceToManeuver : 1; 
+        unsigned int wrote_duration : 1; 
+        unsigned int wrote_enrouteNoticeIndex : 1; 
+        unsigned int wrote_eventIndex : 1; 
+        unsigned int wrote_stepID : 1; 
+        unsigned int wrote_timeToManeuver : 1; 
+        unsigned int wrote_trafficSpeed : 1; 
+        unsigned int wrote_vehicleSpeed : 1; 
+    }  _flags;
+    GEOJunctionViewGuidanceFeedback * _junctionViewGuidanceFeedback;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     NSData * _routeID;
     GEOSignGuidanceFeedback * _signGuidanceFeedback;
     GEOSpokenGuidanceFeedback * _spokenGuidanceFeedback;
@@ -34,6 +57,7 @@
 @property (nonatomic) bool hasDuration;
 @property (nonatomic) bool hasEnrouteNoticeIndex;
 @property (nonatomic) bool hasEventIndex;
+@property (nonatomic, readonly) bool hasJunctionViewGuidanceFeedback;
 @property (nonatomic, readonly) bool hasRouteID;
 @property (nonatomic, readonly) bool hasSignGuidanceFeedback;
 @property (nonatomic, readonly) bool hasSpokenGuidanceFeedback;
@@ -41,6 +65,7 @@
 @property (nonatomic) bool hasTimeToManeuver;
 @property (nonatomic) bool hasTrafficSpeed;
 @property (nonatomic) bool hasVehicleSpeed;
+@property (nonatomic, retain) GEOJunctionViewGuidanceFeedback *junctionViewGuidanceFeedback;
 @property (nonatomic, retain) NSData *routeID;
 @property (nonatomic, retain) GEOSignGuidanceFeedback *signGuidanceFeedback;
 @property (nonatomic, retain) GEOSpokenGuidanceFeedback *spokenGuidanceFeedback;
@@ -49,8 +74,14 @@
 @property (nonatomic) int trafficSpeed;
 @property (nonatomic) float vehicleSpeed;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsTrafficSpeed:(id)arg1;
+- (void)_readJunctionViewGuidanceFeedback;
+- (void)_readRouteID;
+- (void)_readSignGuidanceFeedback;
+- (void)_readSpokenGuidanceFeedback;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -63,6 +94,7 @@
 - (bool)hasDuration;
 - (bool)hasEnrouteNoticeIndex;
 - (bool)hasEventIndex;
+- (bool)hasJunctionViewGuidanceFeedback;
 - (bool)hasRouteID;
 - (bool)hasSignGuidanceFeedback;
 - (bool)hasSpokenGuidanceFeedback;
@@ -71,8 +103,12 @@
 - (bool)hasTrafficSpeed;
 - (bool)hasVehicleSpeed;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
+- (id)junctionViewGuidanceFeedback;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)routeID;
 - (void)setDistanceToManeuver:(float)arg1;
@@ -87,6 +123,7 @@
 - (void)setHasTimeToManeuver:(bool)arg1;
 - (void)setHasTrafficSpeed:(bool)arg1;
 - (void)setHasVehicleSpeed:(bool)arg1;
+- (void)setJunctionViewGuidanceFeedback:(id)arg1;
 - (void)setRouteID:(id)arg1;
 - (void)setSignGuidanceFeedback:(id)arg1;
 - (void)setSpokenGuidanceFeedback:(id)arg1;

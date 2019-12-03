@@ -7,6 +7,7 @@
     NSArray * _assetsForOneUp;
     NSDate * _creationDate;
     NSString * _inboxModelTitle;
+    long long  _inboxModelType;
     bool  _seen;
     NSArray * _senderNames;
     long long  _type;
@@ -20,6 +21,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSString *inboxModelTitle;
+@property (nonatomic, readonly) long long inboxModelType;
 @property (nonatomic, readonly) NSString *keyCommentGUID;
 @property (nonatomic, readonly) NSArray *leftPreviewItems;
 @property (nonatomic, readonly) NSString *ownerEmail;
@@ -39,6 +41,7 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)creationDate;
 - (id)inboxModelTitle;
+- (long long)inboxModelType;
 - (bool)isSeen;
 - (id)leftPreviewItems;
 - (id)senderNames;

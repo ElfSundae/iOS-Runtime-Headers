@@ -11,8 +11,8 @@
     WDListDefinition * mNullListDefinition;
 }
 
+- (void).cxx_destruct;
 - (id)addDefinitionWithDefinitionId:(int)arg1 styleId:(id)arg2;
-- (void)dealloc;
 - (id)definitionWithDefinitionId:(int)arg1;
 - (id)definitionWithStyleId:(id)arg1;
 - (id)definitions;

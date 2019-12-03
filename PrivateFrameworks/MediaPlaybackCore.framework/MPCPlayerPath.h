@@ -4,6 +4,7 @@
 
 @interface MPCPlayerPath : NSObject <NSCopying, NSSecureCoding> {
     NSString * _bundleID;
+    NSString * _deviceUID;
     void * _mediaRemotePlayerPath;
     int  _pid;
     NSString * _playerID;
@@ -12,8 +13,11 @@
 }
 
 @property (nonatomic, readonly, copy) NSString *bundleID;
+@property (nonatomic, readonly) NSString *deviceUID;
+@property (getter=isFullyResolved, nonatomic, readonly) bool fullyResolved;
 @property (getter=isInProcess, nonatomic, readonly) bool inProcess;
 @property (nonatomic, readonly) void*mediaRemotePlayerPath;
+@property (nonatomic, readonly) void*origin;
 @property (nonatomic, readonly, copy) NSString *playerID;
 @property (nonatomic, readonly, copy) NSString *representedBundleDisplayName;
 @property (nonatomic, readonly, copy) NSString *representedBundleID;
@@ -23,27 +27,33 @@
 
 + (id)deviceActivePlayerPath;
 + (id)pathWithCustomOrigin:(void*)arg1 bundleID:(id)arg2 playerID:(id)arg3;
++ (id)pathWithDeviceUID:(id)arg1 bundleID:(id)arg2 pid:(int)arg3 playerID:(id)arg4;
++ (id)pathWithDeviceUIDs:(id)arg1 bundleID:(id)arg2 pid:(int)arg3 playerID:(id)arg4;
 + (id)pathWithRoute:(id)arg1 bundleID:(id)arg2 playerID:(id)arg3;
 + (id)pathWithRoute:(id)arg1 mediaRemotePlayerPath:(void*)arg2 isResolved:(bool)arg3;
 + (bool)supportsSecureCoding;
 + (id)systemMusicPathWithRoute:(id)arg1 playerID:(id)arg2;
-+ (id)unresolvablePathWithRoute:(id)arg1 bundleID:(id)arg2 playerID:(id)arg3;
 
 - (void).cxx_destruct;
 - (id)bundleID;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)description;
+- (id)deviceUID;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithDeviceUID:(id)arg1 bundleID:(id)arg2 pid:(int)arg3 playerID:(id)arg4;
 - (id)initWithRoute:(id)arg1 bundleID:(id)arg2 pid:(int)arg3 playerID:(id)arg4;
 - (id)initWithRoute:(id)arg1 bundleID:(id)arg2 playerID:(id)arg3;
 - (bool)isEqual:(id)arg1;
+- (bool)isFullyResolved;
 - (bool)isInProcess;
 - (bool)isResolved;
 - (bool)isSystemMusicPath;
 - (void*)mediaRemotePlayerPath;
+- (void*)origin;
+- (id)pathByAppendingPlayerIDSuffix:(id)arg1;
 - (id)playerID;
 - (id)representedBundleDisplayName;
 - (id)representedBundleID;

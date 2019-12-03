@@ -3,13 +3,11 @@
  */
 
 @interface UIInterfaceActionVisualStyleViewState : NSObject <NSCopying> {
-    bool  _isDark;
     UIScreen * _screen;
     UIColor * _tintColor;
     UITraitCollection * _traitCollection;
 }
 
-@property (nonatomic, readonly) bool isDark;
 @property (nonatomic, readonly) UIScreen *screen;
 @property (nonatomic, readonly) UIColor *tintColor;
 @property (nonatomic, readonly) UITraitCollection *traitCollection;
@@ -25,7 +23,6 @@
 - (id)description;
 - (id)init;
 - (id)initWithPropertiesFromTopLevelView:(id)arg1;
-- (bool)isDark;
 - (bool)isEqual:(id)arg1;
 - (id)screen;
 - (id)tintColor;

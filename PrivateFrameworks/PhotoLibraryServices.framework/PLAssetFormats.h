@@ -4,8 +4,8 @@
 
 @interface PLAssetFormats : NSObject
 
-+ (id)descriptionForImageFormat:(int)arg1;
-+ (id)descriptionForVideoFormat:(int)arg1;
-+ (struct CGSize { double x1; double x2; })sizeForFormat:(int)arg1;
++ (id)descriptionForImageFormat:(unsigned short)arg1;
++ (id)descriptionForVideoFormat:(unsigned short)arg1;
++ (struct CGSize { double x1; double x2; })sizeForFormat:(unsigned short)arg1;
 
 @end

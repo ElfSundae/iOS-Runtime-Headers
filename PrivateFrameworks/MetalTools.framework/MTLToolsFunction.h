@@ -47,8 +47,7 @@
 - (id)name;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id*)arg2;
-- (id)newIndirectArgumentEncoderWithBufferIndex:(unsigned long long)arg1;
-- (id)newIndirectArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id*)arg2;
+- (id)newFunctionWithPluginData:(id)arg1 bitcodeType:(unsigned char)arg2;
 - (long long)patchControlPointCount;
 - (unsigned long long)patchType;
 - (id)reflectionWithOptions:(unsigned long long)arg1;

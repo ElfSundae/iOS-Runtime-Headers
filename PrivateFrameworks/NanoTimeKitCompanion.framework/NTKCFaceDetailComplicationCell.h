@@ -7,6 +7,7 @@
     NTKComplication * _complication;
     bool  _dateSlot;
     bool  _enabled;
+    bool  _isRichSlot;
     NSString * _slot;
 }
 
@@ -14,6 +15,7 @@
 @property (nonatomic, retain) NTKComplication *complication;
 @property (nonatomic, readonly) bool dateSlot;
 @property (nonatomic) bool enabled;
+@property (nonatomic, readonly) bool isRichSlot;
 @property (nonatomic, readonly) NSString *slot;
 
 + (id)reuseIdentifier;
@@ -22,13 +24,16 @@
 - (id)_activeColor;
 - (id)_disabledColor;
 - (id)_inactiveColor;
+- (id)_traitCollectionAdjustedIfNeeded;
 - (void)_updateDetailText;
+- (void)_updateLabelFonts;
 - (void)_updateState;
 - (bool)active;
 - (id)complication;
 - (bool)dateSlot;
 - (bool)enabled;
-- (id)initWithSlot:(id)arg1 dateSlot:(bool)arg2 inFace:(id)arg3;
+- (id)initWithSlot:(id)arg1 dateSlot:(bool)arg2 isRichSlot:(bool)arg3 inFace:(id)arg4;
+- (bool)isRichSlot;
 - (double)rowHeight;
 - (void)setActive:(bool)arg1;
 - (void)setComplication:(id)arg1;

@@ -5,13 +5,13 @@
 @interface MTAlarmDataSource : NSObject {
     MTAlarmManager * _alarmManager;
     NSMutableArray * _alarms;
-    NSHashTable * _observers;
+    MTObserverStore * _observers;
     MTAlarm * _sleepAlarm;
 }
 
 @property (nonatomic, retain) MTAlarmManager *alarmManager;
 @property (nonatomic, retain) NSMutableArray *alarms;
-@property (nonatomic, retain) NSHashTable *observers;
+@property (nonatomic, retain) MTObserverStore *observers;
 @property (nonatomic, retain) MTAlarm *sleepAlarm;
 
 - (void).cxx_destruct;
@@ -37,6 +37,7 @@
 - (void)setObservers:(id)arg1;
 - (void)setSleepAlarm:(id)arg1;
 - (id)sleepAlarm;
+- (void)unregisterObserver:(id)arg1;
 - (id)updateAlarm:(id)arg1;
 
 @end

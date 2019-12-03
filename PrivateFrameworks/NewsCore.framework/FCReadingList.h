@@ -42,6 +42,7 @@
 - (void)addArticleToReadingList:(id)arg1;
 - (void)addArticleToReadingList:(id)arg1 eventInitiationLevel:(long long)arg2 origin:(unsigned long long)arg3;
 - (void)addObserver:(id)arg1;
+- (id)allKnownRecordNamesWithinRecordZoneWithID:(id)arg1;
 - (id)allNonConsumedArticleIDsInReadingList;
 - (id)allNonConsumedArticleIDsInReadingListForOfflineReading;
 - (id)allSortedArticleIDsInReadingList;
@@ -53,7 +54,7 @@
 - (void)enableDownloadingForOfflineReading;
 - (id)entriesByArticleID;
 - (void)expressInterestInOfflineArticlesWithCompletionHandler:(id /* block */)arg1;
-- (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordIDs:(id)arg2;
+- (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordNames:(id)arg2;
 - (id)initWithContext:(id)arg1 pushNotificationCenter:(id)arg2 storeDirectory:(id)arg3;
 - (bool)isArticleAvailableForOfflineReading:(id)arg1;
 - (bool)isArticleOnReadingList:(id)arg1;

@@ -7,7 +7,7 @@
     PUAssetViewModel * _assetViewModel;
     UIImageView * _errorView;
     UIActivityIndicatorView * _progressIndicatorView;
-    UIImageView * _successView;
+    UIView * _successView;
     struct { 
         unsigned long long needsUpdate; 
         unsigned long long updated; 

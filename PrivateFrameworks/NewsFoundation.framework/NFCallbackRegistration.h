@@ -19,6 +19,7 @@
 - (id)initWithCallbackStore:(id)arg1 privateContainer:(id)arg2;
 - (id)privateContainer;
 - (void)whenResolvingClass:(Class)arg1 scope:(id)arg2 callbackBlock:(id /* block */)arg3;
+- (void)whenResolvingKey:(id)arg1 scope:(id)arg2 callbackBlock:(id /* block */)arg3;
 - (void)whenResolvingProtocol:(id)arg1 scope:(id)arg2 callbackBlock:(id /* block */)arg3;
 - (void)whenUnsafeResolvingWithKey:(id)arg1 scope:(id)arg2 callbackBlock:(id /* block */)arg3;
 

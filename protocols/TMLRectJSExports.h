@@ -6,6 +6,7 @@
 @required
 
 - (TMLRect *)applyAffineTransform:(TMLAffineTransform *)arg1;
+- (TMLRect *)applyScale:(double)arg1;
 - (TMLRect *)atOrigin:(TMLPoint *)arg1;
 - (TMLRect *)atOriginX:(double)arg1 y:(double)arg2;
 - (double)height;

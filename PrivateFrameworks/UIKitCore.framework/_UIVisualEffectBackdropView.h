@@ -17,7 +17,6 @@
 - (bool)_shouldAnimatePropertyWithKey:(id)arg1;
 - (void)applyIdentityFilterEffects;
 - (void)applyRequestedFilterEffects;
-- (id)asBackdropView;
 - (id)backdropLayer;
 - (id)captureGroup;
 - (void)removeFromCurrentCaptureGroup;

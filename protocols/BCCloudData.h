@@ -6,7 +6,6 @@
 @required
 
 - (NSData *)ckSystemFields;
-- (CKRecord *)configuredRecordFromAttributes;
 - (bool)deletedFlag;
 - (long long)editGeneration;
 - (NSString *)identifier;

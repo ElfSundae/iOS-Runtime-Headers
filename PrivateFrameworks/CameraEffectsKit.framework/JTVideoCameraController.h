@@ -17,8 +17,9 @@
         /* Warning: Unrecognized filer type: ']' using 'void*' */ void*columns[3]; 
     }  _cameraDeviceIntrinsics_dataOutSynchQueue;
     double  _cameraDeviceMaxZoom_captureSessionQueue;
-    NSString * _cameraMode_captureSessionQueue;
-    NSString * _cameraMode_queryDataQueue;
+    long long  _cameraMode_captureSessionQueue;
+    long long  _cameraMode_queryDataQueue;
+    NSString * _cameraType_queryDataQueue;
     AVCaptureSession * _captureSession;
     NSObject<OS_dispatch_queue> * _captureSessionQueue;
     bool  _captureSessionRunning_queryDataQueue;
@@ -34,6 +35,8 @@
     AVCaptureDataOutputSynchronizer * _dataOutputSynchronizer_dataOutSynchQueue;
     AVCaptureDepthDataOutput * _depthOutput;
     bool  _hasValidFaceData_queryDataQueue;
+    bool  _isFlashScene_queryDataQueue;
+    bool  _isRecordingMovie_captureSessionQueue;
     NSObject<OS_dispatch_queue> * _livePlayerSourceQueue;
     NSMutableSet * _livePlayerSources;
     NSArray * _metadataFaceObjectsArray_dataOutSynchQueue;
@@ -47,7 +50,6 @@
     AVCapturePhotoOutput * _photoOutput;
     NSArray * _pvDetectedFacesArray_dataOutSynchQueue;
     NSObject<OS_dispatch_queue> * _queryDataQueue;
-    bool  _recordingMovieMode;
     bool  _runningARKit_dataOutSynchQueue;
     bool  _sessionRequiresFaceTracking_queryDataQueue;
     JTFaceAnchor * _stillImageFaceAnchor_queryDataQueue;
@@ -56,7 +58,6 @@
     NSObject<OS_dispatch_queue> * _videoDelegateQueue;
     NSMutableSet * _videoDelegates;
     AVCaptureVideoDataOutput * _videoOutput;
-    id /* block */  _zoomUpdatedBlock_captureSessionQueue;
 }
 
 @property (nonatomic, readonly) bool ARKitEnabled;
@@ -66,10 +67,11 @@
 @property (nonatomic) double cameraDeviceCurrentZoom_queryDataQueue;
 @property (nonatomic) struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[3]; } cameraDeviceIntrinsics_dataOutSynchQueue;
 @property (nonatomic) double cameraDeviceMaxZoom_captureSessionQueue;
-@property (nonatomic, readonly) NSString *cameraMode;
-@property (nonatomic, retain) NSString *cameraMode_captureSessionQueue;
-@property (nonatomic, retain) NSString *cameraMode_queryDataQueue;
+@property (nonatomic, readonly) long long cameraMode;
+@property (nonatomic) long long cameraMode_captureSessionQueue;
+@property (nonatomic) long long cameraMode_queryDataQueue;
 @property (nonatomic, readonly) bool cameraSessionRunning;
+@property (nonatomic, retain) NSString *cameraType_queryDataQueue;
 @property (nonatomic) bool captureSessionRunning_queryDataQueue;
 @property (nonatomic) long long captureVideoOrientation_dataOutSynchQueue;
 @property (nonatomic) long long captureVideoOrientation_metadataOutQueue;
@@ -85,6 +87,9 @@
 @property (nonatomic, readonly) bool hasValidFaceData;
 @property (nonatomic) bool hasValidFaceData_queryDataQueue;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool isFlashScene;
+@property (nonatomic) bool isFlashScene_queryDataQueue;
+@property (nonatomic) bool isRecordingMovie_captureSessionQueue;
 @property (nonatomic, retain) NSArray *metadataFaceObjectsArray_dataOutSynchQueue;
 @property (nonatomic, retain) NSArray *metadataTrackedFacesArray_dataOutSynchQueue;
 @property (nonatomic, retain) JTFaceAnchor *mostRecentFaceAnchor;
@@ -100,19 +105,18 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) VCPCaptureAnalysisSession *vcpAnalyzer;
 @property (nonatomic) double zoomFactor;
-@property (nonatomic, copy) id /* block */ zoomUpdatedBlock_captureSessionQueue;
 
-+ (bool)depthCapableDevice;
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
 - (bool)ARKitEnabled;
 - (id)JT_biggestDepthFormat:(id)arg1 ofTypeCaptureSessionQueue:(unsigned int)arg2;
+- (void)JT_calculateFrameRateRequiresLockCaptureSessionQueue:(bool)arg1;
 - (id)JT_cameraForPosition:(long long)arg1;
 - (bool)JT_cameraIsPearlCaptureSessionQueue;
-- (void)JT_configureCaptureForNonPearlCameraCaptureSessionQueue;
 - (bool)JT_configureCaptureSessionForPosition:(long long)arg1 errorCaptureSessionQueue:(id*)arg2;
-- (void)JT_configureDepthDataFormatForPearlCameraCaptureSessionQueue;
+- (void)JT_configureCaptureSessionPresetCaptureSessionQueue;
+- (void)JT_configureDepthCameraApplyZoomCaptureSessionQueue:(bool)arg1;
 - (void)JT_configureInternalMicToUseOmnidirectionalPatternCaptureSessionQueue;
 - (void)JT_configureMicForCameraPositionCaptureSessionQueue:(long long)arg1;
 - (id)JT_createPVFrameSetFromPixelBuffer:(struct __CVBuffer { }*)arg1 withMetadata:(id)arg2 timeInterval:(double)arg3;
@@ -127,10 +131,12 @@
 - (void)JT_notifyVideoDelegatesOfFrameSetDataOutSynchQueue:(id)arg1;
 - (void)JT_processMetadataObjectsMetadataOutQueue:(id)arg1;
 - (id)JT_processPixelBufferForFaceTransform:(struct __CVBuffer { }*)arg1 forNormalizedFaceRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 withRollAngle:(float)arg3 withTimestamp:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg4 andDuration:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg5 detectionOrientation:(long long)arg6 interfaceOrientation:(long long)arg7 needsMirroring:(bool)arg8;
+- (void)JT_rampToZoom:(double)arg1 rate:(double)arg2 durationCaptureSessionQueue:(double)arg3;
 - (void)JT_resetSessionCaptureSessionQueue;
 - (void)JT_resetVideoDataOutVideoSettingsCaptureSessionQueue;
-- (void)JT_setCaptureDevicePositionCaptureSessionQueue:(long long)arg1;
+- (void)JT_setCaptureDeviceType:(id)arg1 captureDevicePositionCaptureSessionQueue:(long long)arg2;
 - (void)JT_setIdealResolutionOnVideoDataOutVideoSettingsCaptureSessionQueue;
+- (void)JT_setIsFlashScene:(bool)arg1;
 - (void)JT_setMinFrameRate:(int)arg1 maxFrameRate:(int)arg2 requiresLockCaptureSessionQueue:(bool)arg3;
 - (void)JT_setPhotoOrientationFromInterfaceOrientationCaptureSessionQueue:(long long)arg1;
 - (void)JT_setSelfieExposurePointOfInterestFromFaceMetadataCaptureSessionQueue:(id)arg1;
@@ -150,11 +156,13 @@
 - (double)cameraDeviceCurrentZoom_queryDataQueue;
 - (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[3]; })cameraDeviceIntrinsics_dataOutSynchQueue;
 - (double)cameraDeviceMaxZoom_captureSessionQueue;
-- (id)cameraMode;
-- (id)cameraMode_captureSessionQueue;
-- (id)cameraMode_queryDataQueue;
+- (long long)cameraMode;
+- (long long)cameraMode_captureSessionQueue;
+- (long long)cameraMode_queryDataQueue;
 - (long long)cameraPosition;
 - (bool)cameraSessionRunning;
+- (id)cameraType;
+- (id)cameraType_queryDataQueue;
 - (void)captureOutput:(id)arg1 didFinishProcessingPhoto:(id)arg2 error:(id)arg3;
 - (void)captureOutput:(id)arg1 didOutputMetadataObjects:(id)arg2 fromConnection:(id)arg3;
 - (void)captureOutput:(id)arg1 didOutputSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg2 fromConnection:(id)arg3;
@@ -188,6 +196,9 @@
 - (bool)hasValidFaceData;
 - (bool)hasValidFaceData_queryDataQueue;
 - (id)init;
+- (bool)isFlashScene;
+- (bool)isFlashScene_queryDataQueue;
+- (bool)isRecordingMovie_captureSessionQueue;
 - (id)metadataFaceObjectsArray_dataOutSynchQueue;
 - (id)metadataTrackedFacesArray_dataOutSynchQueue;
 - (void)minFrameRate:(int*)arg1 maxFrameRate:(int*)arg2;
@@ -197,10 +208,10 @@
 - (void)notifyExternalImageData:(id)arg1 orientation:(long long)arg2 effectComposition:(id)arg3;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (void)preProcessFrameWithPixelBuffer:(struct __CVBuffer { }*)arg1 metadata:(id)arg2 timestamp:(double)arg3;
-- (void)prepareCameraForMode:(id)arg1 position:(long long)arg2;
+- (void)prepareCameraForMode:(long long)arg1 position:(long long)arg2;
 - (id)pvDetectedFacesArray_dataOutSynchQueue;
-- (void)rampToZoom:(float)arg1 rate:(float)arg2 withMainThreadUpdateMethod:(id /* block */)arg3;
-- (void)rampZoomStop;
+- (void)rampToZoom:(double)arg1 duration:(double)arg2;
+- (void)rampToZoom:(double)arg1 rate:(double)arg2;
 - (void)removeAudioRenderDelegate:(id)arg1 async:(bool)arg2;
 - (void)removeLivePlayerCameraSource:(id)arg1;
 - (void)removeVideoRenderDelegate:(id)arg1 async:(bool)arg2;
@@ -214,8 +225,9 @@
 - (void)setCameraDeviceCurrentZoom_queryDataQueue:(double)arg1;
 - (void)setCameraDeviceIntrinsics_dataOutSynchQueue:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[3]; })arg1;
 - (void)setCameraDeviceMaxZoom_captureSessionQueue:(double)arg1;
-- (void)setCameraMode_captureSessionQueue:(id)arg1;
-- (void)setCameraMode_queryDataQueue:(id)arg1;
+- (void)setCameraMode_captureSessionQueue:(long long)arg1;
+- (void)setCameraMode_queryDataQueue:(long long)arg1;
+- (void)setCameraType_queryDataQueue:(id)arg1;
 - (void)setCaptureSessionRunning_queryDataQueue:(bool)arg1;
 - (void)setCaptureTorchMode:(long long)arg1 completion:(id /* block */)arg2;
 - (void)setCaptureVideoOrientation_dataOutSynchQueue:(long long)arg1;
@@ -225,7 +237,10 @@
 - (void)setCurrentCameraPosition_dataOutSynchQueue:(long long)arg1;
 - (void)setCurrentCameraPosition_queryDataQueue:(long long)arg1;
 - (void)setCurrentlyTrackedFaceID:(id)arg1;
+- (void)setFFCZoom:(bool)arg1 completion:(id /* block */)arg2;
 - (void)setHasValidFaceData_queryDataQueue:(bool)arg1;
+- (void)setIsFlashScene_queryDataQueue:(bool)arg1;
+- (void)setIsRecordingMovie_captureSessionQueue:(bool)arg1;
 - (void)setMetadataFaceObjectsArray_dataOutSynchQueue:(id)arg1;
 - (void)setMetadataTrackedFacesArray_dataOutSynchQueue:(id)arg1;
 - (void)setMinFrameRate:(int)arg1 maxFrameRate:(int)arg2;
@@ -238,7 +253,6 @@
 - (void)setStillImageFaceAnchor_queryDataQueue:(id)arg1;
 - (void)setStillImageFrame_queryDataQueue:(id)arg1;
 - (void)setZoomFactor:(double)arg1;
-- (void)setZoomUpdatedBlock_captureSessionQueue:(id /* block */)arg1;
 - (void)startCameraSession:(id /* block */)arg1;
 - (void)startCameraSessionInPosition:(long long)arg1 completion:(id /* block */)arg2;
 - (id)stillImageFaceAnchor;
@@ -246,6 +260,7 @@
 - (id)stillImageFrame;
 - (id)stillImageFrame_queryDataQueue;
 - (void)stopCameraSession:(id /* block */)arg1;
+- (void)stopRampToZoom:(id /* block */)arg1;
 - (void)supportedFlashModes:(id /* block */)arg1;
 - (void)switchCamera:(id /* block */)arg1;
 - (void)switchCameraToPosition:(long long)arg1 completion:(id /* block */)arg2;
@@ -253,6 +268,5 @@
 - (id)vcpAnalyzer;
 - (void)videoAndAudioOutputSettings:(id /* block */)arg1;
 - (double)zoomFactor;
-- (id /* block */)zoomUpdatedBlock_captureSessionQueue;
 
 @end

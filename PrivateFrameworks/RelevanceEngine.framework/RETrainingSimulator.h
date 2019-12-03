@@ -20,6 +20,7 @@
 - (id)allElements;
 - (id)availableRelevanceEngines;
 - (void)createElementFromDescription:(id)arg1;
+- (id)encodedObjectAtPath:(id)arg1;
 - (id)initWithTargetProcess:(id)arg1 relevanceEngine:(id)arg2;
 - (bool)performCommand:(id)arg1 withOptions:(id)arg2;
 - (id)relevanceEngineName;

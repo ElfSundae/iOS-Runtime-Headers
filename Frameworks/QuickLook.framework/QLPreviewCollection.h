@@ -9,6 +9,7 @@
     long long  _currentItemIndex;
     bool  _fullScreen;
     bool  _hasTriggeredInteractiveTransitionAnimation;
+    NSString * _hostApplicationBundleIdentifier;
     bool  _isAvailable;
     bool  _isEditing;
     bool  _isTransitioningPage;
@@ -21,6 +22,7 @@
     UIPinchGestureRecognizer * _pinchGesture;
     QLPinchRotationTracker * _pinchRotationTracker;
     id /* block */  _prepareForInvalidationCompletionHandler;
+    bool  _previewCollectionIsPartOfViewHierarchy;
     struct _NSRange { 
         unsigned long long location; 
         unsigned long long length; 
@@ -45,6 +47,7 @@
 @property (nonatomic) bool fullScreen;
 @property bool hasTriggeredInteractiveTransitionAnimation;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, copy) NSString *hostApplicationBundleIdentifier;
 @property (nonatomic) bool isAvailable;
 @property (nonatomic) bool isEditing;
 @property (nonatomic) bool isTransitioningPage;
@@ -67,17 +70,23 @@
 
 - (void).cxx_destruct;
 - (void)_cleanAccessoryViewContainer;
+- (id)_defaultKeyCommands;
 - (void)_installGestures;
 - (bool)_isBeingDismissed;
 - (bool)_isVisible;
+- (bool)_itemViewControllerIsCurrentlyPresentedItemViewController:(id)arg1;
 - (void)_notifyHostPreviewCollectionIsReadyForInvalidationIfNeeded;
+- (id)_sandboxExtensionForEditedFileAtURL:(id)arg1;
+- (void)_setCurrentPreviewItemIndex:(long long)arg1 animated:(bool)arg2;
 - (void)_setUpTransitionDriverForPresenting:(bool)arg1 duration:(double)arg2;
 - (void)_tapGestureRecognized;
 - (void)_tearDownTransition:(bool)arg1;
+- (bool)_toggleFullscreenIfPossible;
 - (void)_updateAccessoryViewWithPreviewItemViewController:(id)arg1;
 - (void)_updateCanChangeCurrentPage;
 - (void)_updateFullscreen;
 - (void)_updateFullscreenBackgroundColor;
+- (void)_updateOverlay:(bool)arg1;
 - (void)_updateOverlayVisibility;
 - (void)_updatePreferredContentSize;
 - (void)_updatePreviewVisibility:(bool)arg1;
@@ -90,13 +99,15 @@
 - (void)configureWithNumberOfItems:(long long)arg1 currentPreviewItemIndex:(unsigned long long)arg2 itemProvider:(id)arg3 stateManager:(id)arg4;
 - (id)currentPreviewItemViewController;
 - (long long)dragDataOwnerForPreviewItemViewController:(id)arg1;
-- (void)expandContentOfPreviewItemViewController:(id)arg1;
+- (void)expandContentOfPreviewItemViewController:(id)arg1 unarchivedItemsURL:(id)arg2;
 - (bool)fullScreen;
 - (bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (bool)gestureRecognizerShouldBegin:(id)arg1;
 - (id)gestureTracker;
 - (bool)hasTriggeredInteractiveTransitionAnimation;
+- (id)hostApplicationBundleIdentifier;
 - (void)hostApplicationDidBecomeActive;
 - (void)hostApplicationDidEnterBackground:(bool)arg1;
 - (void)hostViewControlerTransitionToState:(unsigned long long)arg1 animated:(bool)arg2;
@@ -130,9 +141,11 @@
 - (void)previewItemViewController:(id)arg1 didFailWithError:(id)arg2;
 - (void)previewItemViewController:(id)arg1 hasUnsavedEdits:(bool)arg2;
 - (void)previewItemViewController:(id)arg1 wantsFullScreen:(bool)arg2;
+- (void)previewItemViewController:(id)arg1 wantsToForwardMessageToHost:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)previewItemViewController:(id)arg1 wantsToOpenURL:(id)arg2;
-- (void)previewItemViewController:(id)arg1 wantsToShowShareSheetWithPopoverTracker:(id)arg2 dismissCompletion:(id /* block */)arg3;
-- (void)previewItemViewControllerDidEditPreview:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)previewItemViewController:(id)arg1 wantsToShowShareSheetWithPopoverTracker:(id)arg2 customSharedURL:(id)arg3 dismissCompletion:(id /* block */)arg4;
+- (void)previewItemViewControllerDidChangeCurrentPreviewController:(id)arg1;
+- (void)previewItemViewControllerDidEditCopyOfPreviewItem:(id)arg1 editedCopy:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)previewItemViewControllerDidUpdatePreferredContentSize:(id)arg1;
 - (void)previewItemViewControllerDidUpdateTitle:(id)arg1;
 - (void)previewItemViewControllerWantsToDismissQuickLook:(id)arg1;
@@ -143,12 +156,15 @@
 - (void)previewItemViewControllerWantsUpdatePrinter:(id)arg1;
 - (id)rotationGesture;
 - (void)rotationOrPinchGestureRecognized:(id)arg1;
+- (void)saveCurrentPreviewEditsSynchronously:(bool)arg1 withCompletionHandler:(id /* block */)arg2;
 - (void)setAllowInteractiveTransitions:(bool)arg1;
 - (void)setAppearance:(id)arg1 animated:(bool)arg2;
 - (void)setCurrentPreviewItemIndex:(long long)arg1 animated:(bool)arg2;
 - (void)setFullScreen:(bool)arg1;
 - (void)setHasTriggeredInteractiveTransitionAnimation:(bool)arg1;
+- (void)setHostApplicationBundleIdentifier:(id)arg1;
 - (void)setIsAvailable:(bool)arg1;
+- (void)setIsContentManaged:(bool)arg1;
 - (void)setIsEditing:(bool)arg1;
 - (void)setIsTransitioningPage:(bool)arg1;
 - (void)setLoadingString:(id)arg1;
@@ -159,7 +175,6 @@
 - (void)setRemoteAccessoryContainer:(id)arg1;
 - (void)setRotationGesture:(id)arg1;
 - (void)setSlideGesture:(id)arg1;
-- (void)setSourceIsManaged:(bool)arg1;
 - (void)setStateManager:(id)arg1;
 - (void)setSwipeDownTracker:(id)arg1;
 - (void)setTransitionContext:(id)arg1;
@@ -182,5 +197,7 @@
 - (void)updateCurrentPreviewConfiguration;
 - (void)updateTransitionWithProgress:(double)arg1;
 - (void)viewDidAppear:(bool)arg1;
+- (void)viewDidDisappear:(bool)arg1;
+- (void)viewWillAppear:(bool)arg1;
 
 @end

@@ -27,11 +27,14 @@
 @property (nonatomic, retain) _TVRUIButtonPanelView *touchpadButtonPanel;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_createButtonPanelWithKeyboard;
 - (void)_createGenericControlButtonPanel;
 - (void)_createTouchpadButtonPanel;
 - (id)_createViewWithPrimaryButtonType:(long long)arg1 leftButtonTypes:(id)arg2 rightButtonTypes:(id)arg3;
+- (void)_transitionToButtonPanelAndCreateIfNeeded;
 - (void)_transitionToPanelView:(id)arg1;
+- (void)_transitionToTouchpadPanelAndCreateIfNeeded;
 - (id)backgroundView;
 - (id)buttonActionsDelegate;
 - (void)disableControls;
@@ -55,6 +58,7 @@
 - (id)siriHaptic;
 - (id)styleProvider;
 - (id)touchpadButtonPanel;
+- (void)transitonToViewForDeviceType:(long long)arg1;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
 

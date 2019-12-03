@@ -24,7 +24,6 @@
 - (unsigned long long)length;
 - (unsigned long long)location;
 - (bool)readFrom:(id)arg1;
-- (bool)requiresQueryId;
 - (void)setLength:(unsigned long long)arg1;
 - (void)setLocation:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;

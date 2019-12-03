@@ -25,24 +25,24 @@
 @property (nonatomic, retain) NSMutableDictionary *unitTestingPushTokens;
 
 + (id)sharedScheduler;
-+ (id)sharedSchedulerWithUnitTestingAccountInfoProvider:(id)arg1;
++ (id)sharedSchedulerWithUnitTestingContextInfoProvider:(id)arg1 accountInfoProvider:(id)arg2;
 
 - (void).cxx_destruct;
-- (void)_refreshApsToken:(id)arg1 appContainerTuple:(id)arg2 apsEnvironmentString:(id)arg3 darkWakeEnabled:(bool)arg4 isCKSystemService:(bool)arg5 completionBlock:(id /* block */)arg6;
-- (void)_removeApsToken:(id)arg1 appContainerTuple:(id)arg2 apsEnvironmentString:(id)arg3 darkWakeEnabled:(bool)arg4 isCKSystemService:(bool)arg5 completionBlock:(id /* block */)arg6;
+- (void)_handlePushToken:(id)arg1 forAppContainerAccountTuple:(id)arg2 applicationMetadata:(id)arg3 appContainerIntersectionMetadata:(id)arg4;
+- (void)_refreshApsToken:(id)arg1 appContainerAccountTuple:(id)arg2 apsEnvironmentString:(id)arg3 pushBundleIdentifier:(id)arg4 isCKSystemService:(bool)arg5 completionBlock:(id /* block */)arg6;
+- (void)_removeApsToken:(id)arg1 appContainerAccountTuple:(id)arg2 apsEnvironmentString:(id)arg3 pushBundleIdentifier:(id)arg4 isCKSystemService:(bool)arg5 completionBlock:(id /* block */)arg6;
 - (id)callbackBlocks;
 - (id)callbackTimers;
 - (bool)canRunGivenAvailabilityState:(unsigned long long)arg1;
 - (void)dealloc;
-- (void)ensureTokenRefreshForAppContainerTuple:(id)arg1 apsEnvironmentString:(id)arg2 darkWakeEnabled:(bool)arg3 isCKSystemService:(bool)arg4 completionBlock:(id /* block */)arg5;
+- (void)ensureTokenRefreshForAppContainerAccountTuple:(id)arg1 contextInfoProvider:(id)arg2 completionBlock:(id /* block */)arg3;
 - (void)forceTokenRefreshForAllClients;
 - (void)handlePublicPushTokenDidUpdate:(id)arg1;
-- (void)handlePushTokenDidUpdate:(id)arg1;
 - (id)init;
 - (id)initWithAccountInfoProvider:(id)arg1;
 - (id)operations;
 - (id)queue;
-- (void)refreshAllClientsNow;
+- (void)refreshAllClientsNow:(bool)arg1;
 - (void)registerTokenRefreshActivity;
 - (bool)schedulerIsAvailable;
 - (void)setCallbackBlocks:(id)arg1;
@@ -57,7 +57,7 @@
 - (void)tokenRefreshChanged;
 - (id)unitTestingAccountInfoProvider;
 - (id)unitTestingPushTokens;
-- (void)unregisterAllTokensWithCompletionHandler:(id /* block */)arg1;
-- (void)unregisterTokenForAppContainerTuple:(id)arg1;
+- (void)unregisterAllTokensForAccountID:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)unregisterTokenForAppContainerAccountTuple:(id)arg1;
 
 @end

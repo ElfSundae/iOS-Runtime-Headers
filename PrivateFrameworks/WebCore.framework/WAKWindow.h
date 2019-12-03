@@ -22,7 +22,7 @@
     struct Lock { 
         struct Atomic<unsigned char> { 
             struct atomic<unsigned char> { 
-                unsigned char __a_; 
+                _Atomic unsigned char __a_; 
             } value; 
         } m_byte; 
     }  _exposedScrollViewRectLock;
@@ -56,7 +56,7 @@
         double width; 
         double height; 
     }  _screenSize;
-    struct LegacyTileCache { id x1; /* Warning: Unrecognized filer type: 'R' using 'void*' */ void*x2; void*x3; void*x4; void*x5; int x6; in void*x7; void*x8; const void*x9; unsigned char x10; void*x11; unsigned int x12; void*x13; void*x14; void*x15; void*x16; void*x17; char *x18; void*x19; void*x20; void *x21; } * _tileCache;
+    struct LegacyTileCache { id x1; struct RetainPtr<CGImage *> { void *x_2_1_1; } x2; struct RetainPtr<LegacyTileCacheTombstone> { void *x_3_1_1; } x3; struct Optional<WebCore::FloatRect> { bool x_4_1_1; union constexpr_storage_t<WebCore::FloatRect> { unsigned char x_2_2_1; struct FloatRect { struct FloatPoint { float x_1_4_1; float x_1_4_2; } x_2_3_1; struct FloatSize { float x_2_4_1; float x_2_4_2; } x_2_3_2; } x_2_2_2; } x_4_1_2; } x4; struct IntSize { int x_5_1_1; int x_5_1_2; } x5; int x6; int x7; bool x8; bool x9; bool x10; bool x11; bool x12; bool x13; bool x14; bool x15; bool x16; bool x17; struct unique_ptr<WebCore::LegacyTileGrid, std::__1::default_delete<WebCore::LegacyTileGrid> > { struct __compressed_pair<WebCore::LegacyTileGrid *, std::__1::default_delete<WebCore::LegacyTileGrid> > { struct LegacyTileGrid {} *x_1_2_1; } x_18_1_1; } x18; struct unique_ptr<WebCore::LegacyTileGrid, std::__1::default_delete<WebCore::LegacyTileGrid> > { struct __compressed_pair<WebCore::LegacyTileGrid *, std::__1::default_delete<WebCore::LegacyTileGrid> > { struct LegacyTileGrid {} *x_1_2_1; } x_19_1_1; } x19; } * _tileCache;
     bool  _useOrientationDependentFontAntialiasing;
     bool  _visible;
 }
@@ -139,7 +139,7 @@
 - (void)setUseOrientationDependentFontAntialiasing:(bool)arg1;
 - (void)setVisible:(bool)arg1;
 - (void)setZoomedOutTileScale:(float)arg1;
-- (struct LegacyTileCache { id x1; /* Warning: Unrecognized filer type: 'R' using 'void*' */ void*x2; void*x3; void*x4; void*x5; int x6; in void*x7; void*x8; const void*x9; unsigned char x10; void*x11; unsigned int x12; void*x13; void*x14; void*x15; void*x16; void*x17; char *x18; void*x19; void*x20; void *x21; }*)tileCache;
+- (struct LegacyTileCache { id x1; struct RetainPtr<CGImage *> { void *x_2_1_1; } x2; struct RetainPtr<LegacyTileCacheTombstone> { void *x_3_1_1; } x3; struct Optional<WebCore::FloatRect> { bool x_4_1_1; union constexpr_storage_t<WebCore::FloatRect> { unsigned char x_2_2_1; struct FloatRect { struct FloatPoint { float x_1_4_1; float x_1_4_2; } x_2_3_1; struct FloatSize { float x_2_4_1; float x_2_4_2; } x_2_3_2; } x_2_2_2; } x_4_1_2; } x4; struct IntSize { int x_5_1_1; int x_5_1_2; } x5; int x6; int x7; bool x8; bool x9; bool x10; bool x11; bool x12; bool x13; bool x14; bool x15; bool x16; bool x17; struct unique_ptr<WebCore::LegacyTileGrid, std::__1::default_delete<WebCore::LegacyTileGrid> > { struct __compressed_pair<WebCore::LegacyTileGrid *, std::__1::default_delete<WebCore::LegacyTileGrid> > { struct LegacyTileGrid {} *x_1_2_1; } x_18_1_1; } x18; struct unique_ptr<WebCore::LegacyTileGrid, std::__1::default_delete<WebCore::LegacyTileGrid> > { struct __compressed_pair<WebCore::LegacyTileGrid *, std::__1::default_delete<WebCore::LegacyTileGrid> > { struct LegacyTileGrid {} *x_1_2_1; } x_19_1_1; } x19; }*)tileCache;
 - (bool)tilesOpaque;
 - (int)tilingDirection;
 - (int)tilingMode;

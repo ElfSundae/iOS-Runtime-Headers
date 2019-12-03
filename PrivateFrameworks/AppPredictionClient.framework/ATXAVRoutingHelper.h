@@ -4,6 +4,7 @@
 
 @interface ATXAVRoutingHelper : NSObject
 
-+ (void)setPendingRouteWithRouteDescription:(id)arg1 error:(id*)arg2;
++ (bool)setPendingRouteWithRouteDescription:(id)arg1 error:(id*)arg2;
++ (void)stopSuppressingRoutePrediction;
 
 @end

@@ -6,7 +6,7 @@
     NSDate * _signingTime;
 }
 
-@property (readonly) NSDate *signingTime;
+@property (readonly, retain) NSDate *signingTime;
 
 - (void).cxx_destruct;
 - (id)encodeAttributeWithError:(id*)arg1;

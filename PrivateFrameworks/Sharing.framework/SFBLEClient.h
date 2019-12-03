@@ -42,6 +42,7 @@
 - (void)nearby:(id)arg1 didSendData:(id)arg2 toPeer:(id)arg3 error:(id)arg4;
 - (void)nearby:(id)arg1 didStartAdvertisingType:(long long)arg2;
 - (void)nearby:(id)arg1 didStartScanningForType:(long long)arg2;
+- (void)nearby:(id)arg1 didStopAdvertisingType:(long long)arg2 withError:(id)arg3;
 - (void)nearbyDidChangeBluetoothBandwidthState:(id)arg1;
 - (void)nearbyDidUpdateState:(id)arg1;
 - (void)pairing:(id)arg1 failedToStartScanningWithError:(id)arg2;

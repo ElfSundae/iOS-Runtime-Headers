@@ -15,6 +15,7 @@
 @property (nonatomic) <NCNotificationDestinationDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) NCNotificationDestinationsRegistry *destinationsRegistry;
+@property (nonatomic, readonly) BSServiceConnectionEndpoint *endpoint;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, retain) NCNotificationCollapsingQueue *queue;
@@ -27,7 +28,7 @@
 - (void)_postEnqueuedNotificationRequestsCoalescingWith:(id)arg1;
 - (void)_postNextNotificationRequest;
 - (void)_postNextNotificationRequestPassingTest:(id /* block */)arg1;
-- (bool)_postNotificationRequest:(id)arg1 forCoalescedNotification:(id)arg2;
+- (bool)_postNotificationRequest:(id)arg1;
 - (void)_prepareDestinationsToReceiveCriticalNotificationRequest:(id)arg1;
 - (bool)_readyToReceiveForNotificationRequest:(id)arg1;
 - (bool)canReceiveNotificationRequest:(id)arg1;
@@ -52,14 +53,15 @@
 - (void)destinationDidBecomeReadyToReceiveNotifications:(id)arg1;
 - (id)destinationsForRequestDestinations:(id)arg1;
 - (id)destinationsRegistry;
+- (id)endpoint;
 - (id)identifier;
 - (id)init;
 - (id)initWithNotificationStore:(id)arg1;
 - (bool)isRegisteredDestination:(id)arg1;
-- (void)modifyNotificationRequest:(id)arg1 forCoalescedNotification:(id)arg2;
+- (void)modifyNotificationRequest:(id)arg1;
 - (id)notificationSectionSettingsForDestination:(id)arg1;
 - (id)notificationSectionSettingsForDestination:(id)arg1 forSectionIdentifier:(id)arg2;
-- (void)postNotificationRequest:(id)arg1 forCoalescedNotification:(id)arg2;
+- (void)postNotificationRequest:(id)arg1;
 - (id)queue;
 - (void)registerDestination:(id)arg1;
 - (void)setCoalescingRequest:(id)arg1;
@@ -72,6 +74,6 @@
 - (id)store;
 - (void)unregisterDestination:(id)arg1;
 - (void)updateNotificationSectionSettings:(id)arg1 previousSectionSettings:(id)arg2;
-- (void)withdrawNotificationRequest:(id)arg1 forCoalescedNotification:(id)arg2;
+- (void)withdrawNotificationRequest:(id)arg1;
 
 @end

@@ -4,6 +4,7 @@
 
 @interface _HDWorkoutCondensationConfiguration : NSObject {
     _HDWorkoutCondenserAnalyticsAccumulator * _analyticsAccumulator;
+    long long  _deletedSampleThreshold;
     long long  _maximumSeriesSize;
     long long  _minimumSeriesSize;
     double  _minimumWorkoutDuration;
@@ -12,17 +13,19 @@
 }
 
 @property (nonatomic, readonly) _HDWorkoutCondenserAnalyticsAccumulator *analyticsAccumulator;
+@property (nonatomic, readonly) long long deletedSampleThreshold;
 @property (nonatomic, readonly) long long maximumSeriesSize;
 @property (nonatomic, readonly) long long minimumSeriesSize;
 @property (nonatomic, readonly) double minimumWorkoutDuration;
 @property (nonatomic, readonly) HDSQLitePredicate *predicate;
 @property (nonatomic, readonly) HDProfile *profile;
 
-+ (id)configurationWithProfile:(id)arg1 minimumSeriesSize:(long long)arg2 maximumSeriesSize:(long long)arg3 analyticsAccumulator:(id)arg4 error:(id*)arg5;
++ (id)configurationWithProfile:(id)arg1 minimumSeriesSize:(long long)arg2 maximumSeriesSize:(long long)arg3 deletedSampleThreshold:(long long)arg4 analyticsAccumulator:(id)arg5 error:(id*)arg6;
 
 - (void).cxx_destruct;
 - (id)analyticsAccumulator;
-- (id)initWithProfile:(id)arg1 predicate:(id)arg2 minimumWorkoutDuration:(double)arg3 minimumSeriesSize:(long long)arg4 maximumSeriesSize:(long long)arg5 analyticsAccumulator:(id)arg6;
+- (long long)deletedSampleThreshold;
+- (id)initWithProfile:(id)arg1 predicate:(id)arg2 minimumWorkoutDuration:(double)arg3 minimumSeriesSize:(long long)arg4 maximumSeriesSize:(long long)arg5 deletedSampleThreshold:(long long)arg6 analyticsAccumulator:(id)arg7;
 - (long long)maximumSeriesSize;
 - (long long)minimumSeriesSize;
 - (double)minimumWorkoutDuration;

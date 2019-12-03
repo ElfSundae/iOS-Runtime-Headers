@@ -4,6 +4,7 @@
 
 @interface _UIViewAnimatablePropertyTransformer : NSObject {
     _UICompoundObjectMap * _capturedProperties;
+    NSObject<OS_dispatch_queue> * _lockingQueue;
     id /* block */  _modelValueChangedCallback;
     bool  _presentationValueCallbackRan;
     id /* block */  _presentationValueChangedCallback;
@@ -26,6 +27,7 @@
 - (id)initWithProgressAnimatableProperty:(id)arg1 modelValueSetter:(id /* block */)arg2 presentationValueSetter:(id /* block */)arg3;
 - (id /* block */)modelValueChangedCallback;
 - (void)modelValueUpdatedForProgress:(id)arg1;
+- (void)performWithLock:(id /* block */)arg1;
 - (id /* block */)presentationValueChangedCallback;
 - (void)presentationValueStabilizedForProgress:(id)arg1;
 - (void)presentationValueUpdatedForProgress:(id)arg1;

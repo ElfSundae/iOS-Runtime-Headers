@@ -9,6 +9,8 @@
     bool  _hasSetLastPlayEventTimeStamp;
     bool  _isReloadingWithPlaybackContext;
     bool  _isScrubbing;
+    NSString * _itemContentItemIDForLastPlayEventEndTime;
+    bool  _itemDidChangeWhenReloadingPlaybackContext;
     MPAVItem * _itemForCurrentTimeChange;
     double  _lastPlayEventEndTimeForCurrentItem;
     double  _lastPlayEventTimeStamp;
@@ -37,13 +39,15 @@
 - (void)_playerDidReloadWithPlaybackContextNotification:(id)arg1;
 - (void)_playerDidSetCurrentTimeNotification:(id)arg1;
 - (void)_playerItemDidChangeNotification:(id)arg1;
+- (void)_playerItemDidChangeWhenReloadingPlaybackContextNotification:(id)arg1;
 - (void)_playerItemWillChangeNotification:(id)arg1;
 - (void)_playerPlaybackStateDidChangeNotification:(id)arg1;
 - (void)_playerWillReloadWithPlaybackContextNotification:(id)arg1;
 - (void)_playerWillSetCurrentTimeNotification:(id)arg1;
 - (void)_reportPlaybackEndedForTimeoutWithItem:(id)arg1;
 - (void)_sendPlaybackEndNotification:(double)arg1 endTime:(double)arg2;
-- (void)_setLastPlayEventEndTimeForCurrentItem:(double)arg1;
+- (void)_sendPlaybackStartNotification;
+- (void)_setLastPlayEventEndTime:(double)arg1 forItemContentItemID:(id)arg2;
 - (void)dealloc;
 - (void)didHitPlaybackTimeoutEndingPlayback:(bool)arg1 withCurrentItem:(id)arg2;
 - (void)didTransitionItemForBan:(id)arg1;

@@ -11,6 +11,7 @@
 + (id)femtowatts;
 + (id)gigawatts;
 + (id)horsepower;
++ (void)initialize;
 + (id)kilowatts;
 + (id)megawatts;
 + (id)microwatts;

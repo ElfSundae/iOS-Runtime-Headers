@@ -24,7 +24,7 @@
 - (id)flows;
 - (id)infoForStorage:(id)arg1 selection:(id)arg2;
 - (id)init;
-- (id)itemWithIdentifier:(id)arg1 storage:(id)arg2 inItems:(id)arg3;
+- (id)itemWithIdentifier:(id)arg1 storage:(id)arg2 directLayerHost:(id)arg3 inItems:(id)arg4;
 - (id)layoutsByComponentIdentifier;
 - (id)previousFlows;
 - (void)setFlows:(id)arg1;

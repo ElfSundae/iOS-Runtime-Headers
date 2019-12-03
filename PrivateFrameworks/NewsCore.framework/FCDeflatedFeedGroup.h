@@ -14,6 +14,10 @@
 @property (nonatomic, readonly, copy) FCColor *cardBackgroundColor;
 @property (nonatomic, readonly) NSDate *creationDate;
 @property (nonatomic, readonly, copy) NSString *ctaText;
+@property (nonatomic, readonly, copy) FCColorGradient *darkStyleBackgroundGradient;
+@property (nonatomic, readonly, copy) FCColor *darkStyleCardBackgroundColor;
+@property (nonatomic, readonly, copy) FCColorGradient *darkStyleSauceGradient;
+@property (nonatomic, readonly, copy) FCColor *darkStyleTitleColor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly, copy) NTPBDiscoverMoreVideosInfo *discoverMoreVideosInfo;
@@ -45,6 +49,10 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)creationDate;
 - (id)ctaText;
+- (id)darkStyleBackgroundGradient;
+- (id)darkStyleCardBackgroundColor;
+- (id)darkStyleSauceGradient;
+- (id)darkStyleTitleColor;
 - (id)discoverMoreVideosInfo;
 - (id)edition;
 - (id)eyebrowText;

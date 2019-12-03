@@ -31,5 +31,6 @@
 - (void)setRenderState:(const struct RenderState { struct BlendState { bool x_1_1_1; int x_1_1_2; } x1; struct DepthState { bool x_2_1_1; bool x_2_1_2; } x2; bool x3; bool x4; bool x5; float x6; float x7; struct EnableClipDistances { struct array<bool, 8> { bool x_1_2_1[8]; } x_8_1_1; } x8; }*)arg1;
 - (void)texcoords:(id)arg1;
 - (void)updateRenderState;
+- (void)wipeActiveFramebuffer:(const struct tvec4<float> { union { float x_1_1_1; float x_1_1_2; float x_1_1_3; } x1; union { float x_2_1_1; float x_2_1_2; float x_2_1_3; } x2; union { float x_3_1_1; float x_3_1_2; float x_3_1_3; } x3; union { float x_4_1_1; float x_4_1_2; float x_4_1_3; } x4; }*)arg1;
 
 @end

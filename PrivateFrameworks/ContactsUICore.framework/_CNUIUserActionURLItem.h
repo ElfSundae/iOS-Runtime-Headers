@@ -18,6 +18,7 @@
 - (bool)isEqual:(id)arg1;
 - (bool)isSensitive;
 - (id)performActionWithContext:(id)arg1;
+- (id)performActionWithContext:(id)arg1 shouldCurateIfPerformed:(bool)arg2;
 - (id)url;
 
 @end

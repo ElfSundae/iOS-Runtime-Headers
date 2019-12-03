@@ -34,11 +34,6 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
-- (void)_handleAddedGroup:(id)arg1;
-- (void)_handleAddedSetting:(id)arg1;
-- (void)_handleRemovedGroup:(id)arg1;
-- (void)_handleRemovedSetting:(id)arg1;
-- (void)_registerNotificationHandlers;
 - (id)accessorySettings;
 - (void)addGroup:(id)arg1;
 - (void)addGroup:(id)arg1 toGroup:(id)arg2 completionHandler:(id /* block */)arg3;

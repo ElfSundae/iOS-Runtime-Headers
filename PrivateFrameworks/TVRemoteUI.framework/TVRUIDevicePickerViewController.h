@@ -11,13 +11,15 @@
     NSArray * _devices;
     _TVREventHaptic * _eventHaptic;
     _TVRUICubicSpringAnimator * _hideAnimator;
+    UIView * _nearbySectionTitleView;
+    NSArray * _nearbyUnpairedDevices;
     _TVRUICubicSpringAnimator * _showAnimator;
     <TVRUIStyleProvider> * _styleProvider;
     UITableView * _tableView;
     UIView * _tableViewBottomSeperator;
     UIView * _tableViewTopSeperator;
     UIView * _tableViewWrapper;
-    _TVRMaterialViewDropDownButton * _titleButton;
+    UIButton * _titleButton;
     UIView * _titleView;
 }
 
@@ -32,6 +34,8 @@
 @property (nonatomic, retain) _TVREventHaptic *eventHaptic;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) _TVRUICubicSpringAnimator *hideAnimator;
+@property (nonatomic, retain) UIView *nearbySectionTitleView;
+@property (nonatomic, retain) NSArray *nearbyUnpairedDevices;
 @property (nonatomic, retain) _TVRUICubicSpringAnimator *showAnimator;
 @property (nonatomic, retain) <TVRUIStyleProvider> *styleProvider;
 @property (readonly) Class superclass;
@@ -39,17 +43,23 @@
 @property (nonatomic, retain) UIView *tableViewBottomSeperator;
 @property (nonatomic, retain) UIView *tableViewTopSeperator;
 @property (nonatomic, retain) UIView *tableViewWrapper;
-@property (nonatomic, retain) _TVRMaterialViewDropDownButton *titleButton;
+@property (nonatomic, retain) UIButton *titleButton;
 @property (nonatomic, retain) UIView *titleView;
 
 - (void).cxx_destruct;
+- (bool)_accessibilityFontSizesEnabled;
 - (double)_calculatedContentHeight;
+- (bool)_canShowWhileLocked;
+- (double)_contentHeightForPreferredContentSizeCategory;
+- (double)_defaultCalculatedContentHeight;
 - (double)_expandedContentHeight;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_preferredTableViewFrameWhenExpanded:(bool)arg1;
+- (void)_processForUnpairedDevices:(id)arg1;
 - (void)_setupAnimators;
 - (void)_setupDeviceList;
 - (void)_setupDeviceTitleView;
 - (void)_sortAndReloadDevices;
+- (id)_titleViewForNearbySection;
 - (void)_toggleState;
 - (void)_updateTableFrame:(bool)arg1;
 - (double)baseHeight;
@@ -65,6 +75,9 @@
 - (id)hideAnimator;
 - (bool)isDevicePickerShowing;
 - (void)loadView;
+- (id)nearbySectionTitleView;
+- (id)nearbyUnpairedDevices;
+- (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)setBaseHeight:(double)arg1;
 - (void)setConnectedDeviceIndex:(id)arg1;
 - (void)setDelegate:(id)arg1;
@@ -73,6 +86,8 @@
 - (void)setDevices:(id)arg1;
 - (void)setEventHaptic:(id)arg1;
 - (void)setHideAnimator:(id)arg1;
+- (void)setNearbySectionTitleView:(id)arg1;
+- (void)setNearbyUnpairedDevices:(id)arg1;
 - (void)setShowAnimator:(id)arg1;
 - (void)setStyleProvider:(id)arg1;
 - (void)setTableView:(id)arg1;
@@ -86,8 +101,10 @@
 - (id)tableView;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (id)tableViewBottomSeperator;
 - (id)tableViewTopSeperator;
 - (id)tableViewWrapper;

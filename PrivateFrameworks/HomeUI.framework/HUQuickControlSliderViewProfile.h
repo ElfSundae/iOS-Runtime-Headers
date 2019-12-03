@@ -9,6 +9,7 @@
     unsigned long long  _preferredFillSection;
     HFNumberValueConstraints * _primaryValueConstraints;
     HFNumberValueConstraints * _secondaryValueConstraints;
+    bool  _showGrabbers;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -20,6 +21,7 @@
 @property (nonatomic) unsigned long long preferredFillSection;
 @property (nonatomic, retain) HFNumberValueConstraints *primaryValueConstraints;
 @property (nonatomic, retain) HFNumberValueConstraints *secondaryValueConstraints;
+@property (nonatomic) bool showGrabbers;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -38,5 +40,8 @@
 - (void)setPreferredFillSection:(unsigned long long)arg1;
 - (void)setPrimaryValueConstraints:(id)arg1;
 - (void)setSecondaryValueConstraints:(id)arg1;
+- (void)setShowGrabbers:(bool)arg1;
+- (bool)showGrabbers;
+- (bool)supportsTouchContinuation;
 
 @end

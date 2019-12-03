@@ -16,6 +16,7 @@
 - (id)initWithKey:(id)arg1;
 - (id)initWithStore:(id)arg1 key:(id)arg2;
 - (id)key;
+- (void)registerDefaultValue:(id)arg1;
 - (void)setValue:(id)arg1;
 - (id)store;
 - (id)value;

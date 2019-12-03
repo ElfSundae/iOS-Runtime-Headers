@@ -4,6 +4,7 @@
 
 @interface UIPressInfo : NSObject {
     unsigned long long  _clickCount;
+    unsigned int  _contextID;
     double  _force;
     unsigned long long  _gameControllerComponent;
     bool  _longClick;
@@ -14,6 +15,7 @@
 }
 
 @property (nonatomic) unsigned long long clickCount;
+@property (nonatomic) unsigned int contextID;
 @property (nonatomic) double force;
 @property (nonatomic) unsigned long long gameControllerComponent;
 @property (getter=isLongClick, nonatomic) bool longClick;
@@ -22,10 +24,11 @@
 @property (nonatomic) double timestamp;
 @property (nonatomic) long long type;
 
-+ (id)_keyboardPressInfoForType:(long long)arg1 isKeyDown:(bool)arg2 timestamp:(double)arg3;
++ (id)_keyboardPressInfoForType:(long long)arg1 isKeyDown:(bool)arg2 timestamp:(double)arg3 contextID:(unsigned int)arg4;
 
 - (id)_sourceDescription;
 - (unsigned long long)clickCount;
+- (unsigned int)contextID;
 - (id)description;
 - (double)force;
 - (unsigned long long)gameControllerComponent;
@@ -33,6 +36,7 @@
 - (bool)isLongClick;
 - (long long)phase;
 - (void)setClickCount:(unsigned long long)arg1;
+- (void)setContextID:(unsigned int)arg1;
 - (void)setForce:(double)arg1;
 - (void)setGameControllerComponent:(unsigned long long)arg1;
 - (void)setLongClick:(bool)arg1;

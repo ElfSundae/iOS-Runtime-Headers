@@ -2,11 +2,12 @@
    Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
  */
 
-@interface HMDResidentDevice : HMFObject <HMDBackingStoreObjectProtocol, HMFDumpState, HMFLogging, NSSecureCoding> {
+@interface HMDResidentDevice : HMFObject <HMDBackingStoreObjectProtocol, HMDDeviceControllerDelegate, HMFDumpState, HMFLogging, NSSecureCoding> {
     HMFUnfairLock * __lock;
     long long  _batteryState;
     bool  _confirmed;
     HMDDevice * _device;
+    HMDDeviceController * _deviceController;
     bool  _enabled;
     HMDHome * _home;
     NSUUID * _identifier;
@@ -31,8 +32,10 @@
 @property (nonatomic) HMDResidentDeviceManager *residentDeviceManager;
 @property (nonatomic, readonly) unsigned long long status;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) bool supportsMediaActions;
 @property (nonatomic, readonly) bool supportsMediaSystem;
 @property (nonatomic, readonly) bool supportsSharedEventTriggerActivation;
+@property (nonatomic, readonly) bool supportsShortcutActions;
 
 + (id)batteryStateAsString:(long long)arg1;
 + (id)logCategory;
@@ -40,9 +43,8 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
-- (void)__accountAdded:(id)arg1;
-- (void)__deviceAdded:(id)arg1;
 - (void)__deviceUpdated:(id)arg1;
+- (id)__initWithDeviceController:(id)arg1;
 - (void)_handleResidentDeviceUpdateConfirmed:(bool)arg1;
 - (void)_handleResidentDeviceUpdateEnabled:(bool)arg1;
 - (void)_residentDeviceModelUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
@@ -54,6 +56,8 @@
 - (id)description;
 - (id)descriptionWithPointer:(bool)arg1;
 - (id)device;
+- (id)deviceController;
+- (void)deviceController:(id)arg1 didUpdateDevice:(id)arg2;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
@@ -84,8 +88,10 @@
 - (void)setResidentDeviceManager:(id)arg1;
 - (id)shortDescription;
 - (unsigned long long)status;
+- (bool)supportsMediaActions;
 - (bool)supportsMediaSystem;
 - (bool)supportsSharedEventTriggerActivation;
+- (bool)supportsShortcutActions;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 

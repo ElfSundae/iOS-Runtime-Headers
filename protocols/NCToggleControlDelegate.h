@@ -5,9 +5,9 @@
 
 @optional
 
-- (UIView *)containerViewForToggleControlPreviewInteractionPresentedContent:(NCToggleControl *)arg1;
-- (void)toggleControlDidBeginPreviewInteraction:(NCToggleControl *)arg1;
-- (void)toggleControlDidDismssPreviewInteractionPresentedContent:(NCToggleControl *)arg1;
-- (void)toggleControlDidPresentPreviewInteractionPresentedContent:(NCToggleControl *)arg1;
+- (UIView *)containerViewForToggleControlClickInteractionPresentedContent:(NCToggleControl *)arg1;
+- (void)toggleControlDidBeginClickInteraction:(NCToggleControl *)arg1;
+- (void)toggleControlDidDismssClickInteractionPresentedContent:(NCToggleControl *)arg1;
+- (void)toggleControlDidPresentClickInteractionPresentedContent:(NCToggleControl *)arg1;
 
 @end

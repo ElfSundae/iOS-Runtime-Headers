@@ -4,13 +4,13 @@
 
 @interface CLKUIMetalResourceManager : CLKUIResourceManager {
     <MTLDevice> * _device;
-    NSMutableDictionary * _functionsByName;
-    <MTLLibrary> * _library;
+    <MTLTexture> * _nilTexture;
 }
 
-+ (id)functionWithName:(id)arg1;
++ (id)sharedCommandQueue;
 + (id)sharedDevice;
-+ (id)sharedLibrary;
++ (id)sharedMetalInstance;
++ (id)sharedNilTexture;
 
 - (void).cxx_destruct;
 - (id)_newAtlasForUuid:(id)arg1;

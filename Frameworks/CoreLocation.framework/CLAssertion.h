@@ -3,7 +3,7 @@
  */
 
 @interface CLAssertion : NSObject {
-    struct CLAssertionInternal { id x1; struct CLConnectionClient {} x2; } * _internal;
+    struct CLAssertionInternal { id x1; struct CLConnectionClient {} *x2; } * _internal;
 }
 
 - (void)dealloc;

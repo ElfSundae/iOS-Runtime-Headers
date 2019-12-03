@@ -8,6 +8,7 @@
     struct { 
         unsigned int ignoringTypingUpdates : 1; 
     }  _conversationFlags;
+    NSDate * _dateLastViewed;
     NSAttributedString * _groupName;
     bool  _hasLoadedAllMessages;
     bool  _isReportedAsSpam;
@@ -21,12 +22,14 @@
     NSString * _selectedLastAddressedHandle;
     NSString * _selectedLastAddressedSIMID;
     int  _wasDetectedAsSMSSpam;
+    int  _wasDetectedAsiMessageSpam;
 }
 
 @property (nonatomic, retain) NSNumber *businessConversation;
 @property (nonatomic, readonly) BOOL buttonColor;
 @property (nonatomic, readonly) bool canLeave;
 @property (nonatomic, retain) IMChat *chat;
+@property (nonatomic, retain) NSDate *dateLastViewed;
 @property (nonatomic, readonly) NSString *deviceIndependentID;
 @property (nonatomic, readonly) unsigned long long disclosureAtomStyle;
 @property (nonatomic) NSString *displayName;
@@ -75,6 +78,8 @@
 @property (nonatomic, readonly) unsigned long long unreadCount;
 @property (nonatomic, retain) CKComposition *unsentComposition;
 @property (nonatomic, readonly) int wasDetectedAsSMSSpam;
+@property (nonatomic, readonly) int wasDetectedAsSpam;
+@property (nonatomic, readonly) int wasDetectedAsiMessageSpam;
 
 + (bool)_iMessage_canAcceptMediaObjectType:(int)arg1 givenMediaObjects:(id)arg2;
 + (bool)_iMessage_canSendComposition:(id)arg1 lastAddressedHandle:(id)arg2 lastAddressedSIMID:(id)arg3 currentService:(id)arg4 forceSMS:(bool)arg5 error:(id*)arg6;
@@ -99,6 +104,7 @@
 + (bool)pinnedConversationsEnabled;
 
 - (void).cxx_destruct;
+- (bool)_allowedByScreenTime;
 - (void)_chatItemsDidChange:(id)arg1;
 - (void)_chatPropertiesChanged:(id)arg1;
 - (bool)_chatSupportsTypingIndicators;
@@ -133,6 +139,7 @@
 - (bool)containsHandleWithUID:(id)arg1;
 - (id)copyForPendingConversation;
 - (id)date;
+- (id)dateLastViewed;
 - (void)dealloc;
 - (void)deleteAllMessages;
 - (void)deleteAllMessagesAndRemoveGroup;
@@ -194,7 +201,9 @@
 - (id)name;
 - (bool)needsReload;
 - (bool)noAvailableServices;
+- (id)orderedContactsForAvatar3DTouchUIWithKeysToFetch:(id)arg1;
 - (id)orderedContactsForAvatarView;
+- (id)orderedContactsWithMaxCount:(unsigned long long)arg1 keysToFetch:(id)arg2;
 - (BOOL)outgoingBubbleColor;
 - (id)pendingEntities;
 - (id)pendingHandles;
@@ -209,6 +218,7 @@
 - (void)removeRecipientHandles:(id)arg1;
 - (void)resetCaches;
 - (void)resetNameCaches;
+- (void)resortMessagesIfNecessary;
 - (id)selectedLastAddressedHandle;
 - (id)selectedLastAddressedSIMID;
 - (BOOL)sendButtonColor;
@@ -219,6 +229,7 @@
 - (id)serviceDisplayName;
 - (void)setBusinessConversation:(id)arg1;
 - (void)setChat:(id)arg1;
+- (void)setDateLastViewed:(id)arg1;
 - (void)setDisplayName:(id)arg1;
 - (void)setForceMMS:(bool)arg1;
 - (void)setHasLoadedAllMessages:(bool)arg1;
@@ -253,8 +264,11 @@
 - (unsigned long long)unreadCount;
 - (id)unsentComposition;
 - (void)updateDisplayNameIfSMSSpam;
+- (void)updateLastViewedDate;
 - (void)updateUserActivity;
 - (int)wasDetectedAsSMSSpam;
+- (int)wasDetectedAsSpam;
+- (int)wasDetectedAsiMessageSpam;
 - (void)willBecomeInactive;
 
 @end

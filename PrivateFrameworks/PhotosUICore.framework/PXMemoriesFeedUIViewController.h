@@ -2,16 +2,15 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXMemoriesFeedUIViewController : UIViewController <PXActionPerformerDelegate, PXChangeObserver, PXMemoriesFeedViewControllerHelperDelegate, PXMemoriesOnboardingViewControllerDelegate, PXMemoriesUITileSourceDelegate, PXReusableObjectPoolDelegate, PXScrollViewControllerObserver, PXSectionedDataSourceManagerObserver, PXSettingsKeyObserver, PXTilingControllerZoomAnimationCoordinatorDelegate, PXUIViewControllerZoomTransitionEndPoint, PXUserInterfaceFeatureViewController, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, UIViewControllerPreviewingDelegate> {
+@interface PXMemoriesFeedUIViewController : UIViewController <PXAssetCollectionActionPerformerDelegate, PXChangeObserver, PXMemoriesFeedViewControllerHelperDelegate, PXMemoriesOnboardingViewControllerDelegate, PXMemoriesUITileSourceDelegate, PXReusableObjectPoolDelegate, PXScrollViewControllerObserver, PXSectionedDataSourceManagerObserver, PXSettingsKeyObserver, PXTilingControllerZoomAnimationCoordinatorDelegate, PXUIViewControllerZoomTransitionEndPoint, PXUserInterfaceFeatureViewController, UIContextMenuInteractionDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate> {
     _UIContentUnavailableView * __contentUnavailableView;
     PXPhotoAnalysisStatusController * __graphStatusController;
     PXMemoriesFeedViewControllerHelper * __helper;
-    UILongPressGestureRecognizer * __longPressRecognizer;
     unsigned long long  __memoriesStyle;
     PXMemoriesOnboardingUIViewController * __onboardingViewController;
-    <UIViewControllerPreviewing> * __previewingContext;
     UIBarButtonItem * __refreshBarButtonItem;
     PXUIScrollViewController * __scrollViewController;
+    PXPhotosDetailsContext * __selectedItemDetailsContext;
     PXUITapGestureRecognizer * __tapRecognizer;
     PXBasicUIViewTileAnimator * __tileAnimator;
     PXMemoriesUITileSource * __tileSource;
@@ -28,12 +27,11 @@
 @property (setter=_setContentUnavailableView:, nonatomic, retain) _UIContentUnavailableView *_contentUnavailableView;
 @property (nonatomic, readonly) PXPhotoAnalysisStatusController *_graphStatusController;
 @property (nonatomic, readonly) PXMemoriesFeedViewControllerHelper *_helper;
-@property (setter=_setLongPressRecognizer:, nonatomic, retain) UILongPressGestureRecognizer *_longPressRecognizer;
 @property (nonatomic, readonly) unsigned long long _memoriesStyle;
 @property (setter=_setOnboardingViewController:, nonatomic, retain) PXMemoriesOnboardingUIViewController *_onboardingViewController;
-@property (setter=_setPreviewingContext:, nonatomic, retain) <UIViewControllerPreviewing> *_previewingContext;
 @property (nonatomic, readonly) UIBarButtonItem *_refreshBarButtonItem;
 @property (nonatomic, readonly) PXUIScrollViewController *_scrollViewController;
+@property (setter=_setSelectedItemDetailsContext:, nonatomic, retain) PXPhotosDetailsContext *_selectedItemDetailsContext;
 @property (nonatomic, readonly) PXUITapGestureRecognizer *_tapRecognizer;
 @property (nonatomic, readonly) PXBasicUIViewTileAnimator *_tileAnimator;
 @property (nonatomic, readonly) PXMemoriesUITileSource *_tileSource;
@@ -52,37 +50,34 @@
 + (void)_setCurrentFeedViewController:(id)arg1;
 
 - (void).cxx_destruct;
-- (bool)_appAllowsSupressionOfAlerts;
 - (void)_applicationDidEnterBackground:(id)arg1;
 - (void)_applicationWillEnterForeground:(id)arg1;
 - (id)_contentUnavailableView;
 - (id)_graphStatusController;
-- (void)_handleScrollViewLongPress:(id)arg1;
 - (void)_handleScrollViewTap:(id)arg1;
 - (void)_handleSpecChange;
 - (void)_handleTouch:(id)arg1;
 - (id)_helper;
 - (void)_invalidateContentUnavailablePlaceholder;
 - (void)_invalidateNavigationItem;
-- (id)_longPressRecognizer;
 - (unsigned long long)_memoriesStyle;
 - (struct PXSimpleIndexPath { unsigned long long x1; long long x2; long long x3; long long x4; })_memoryIndexPathForViewController:(id)arg1;
 - (id)_memoryObjectReferenceForPhotosDetailsContext:(id)arg1;
+- (id)_memoryTileViewForLocation:(struct CGPoint { double x1; double x2; })arg1;
 - (void)_navigateToMemoryAtSectionObjectReference:(id)arg1;
 - (bool)_needsUpdate;
 - (id)_onboardingViewController;
 - (id)_photosDetailsContextForMemoryObjectReference:(id)arg1;
 - (void)_preloadFontSpecs;
-- (void)_presentActionsForMemoryReference:(id)arg1;
-- (id)_previewingContext;
+- (id)_previewActionMenusForInteraction:(id)arg1;
 - (id)_refreshBarButtonItem;
 - (void)_refreshBarButtonItemAction:(id)arg1;
 - (id)_scrollViewController;
+- (id)_selectedItemDetailsContext;
 - (void)_setContentUnavailableView:(id)arg1;
-- (void)_setLongPressRecognizer:(id)arg1;
 - (void)_setNeedsUpdate;
 - (void)_setOnboardingViewController:(id)arg1;
-- (void)_setPreviewingContext:(id)arg1;
+- (void)_setSelectedItemDetailsContext:(id)arg1;
 - (id)_showMemoryDetailsForContext:(id)arg1 animated:(bool)arg2;
 - (id)_sourceViewForMemoryActionsController;
 - (void)_startRefreshWithCompletion:(id /* block */)arg1;
@@ -94,12 +89,13 @@
 - (void)_updateBarAppearance;
 - (void)_updateContentUnavailablePlaceholderIfNeeded;
 - (void)_updateIfNeeded;
-- (void)_updateLongPressGestureRecognizer;
 - (void)_updateNavigationItemIfNeeded;
-- (void)_updatePreviewing;
 - (void)_updateScrollViewControllerContentInset;
 - (bool)actionPerformer:(id)arg1 dismissViewController:(struct NSObject { Class x1; }*)arg2 completionHandler:(id /* block */)arg3;
 - (bool)actionPerformer:(id)arg1 presentViewController:(struct NSObject { Class x1; }*)arg2;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint { double x1; double x2; })arg2;
+- (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
+- (void)contextMenuInteraction:(id)arg1 willCommitWithAnimator:(id)arg2;
 - (id)dataSourceManager;
 - (void)dealloc;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
@@ -113,6 +109,7 @@
 - (id)memoriesTileSource:(id)arg1 memoryToPreheatForIndexPath:(struct PXSimpleIndexPath { unsigned long long x1; long long x2; long long x3; long long x4; })arg2;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void*)arg3;
 - (void)playMiroMovieWithMemoryUUID:(id)arg1;
+- (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (id)ppt_memoriesDataSource;
 - (void)ppt_navigateToLatestMemoryAnimated:(bool)arg1;
 - (void)ppt_navigateToMemoryWithReference:(id)arg1 animated:(bool)arg2;
@@ -121,9 +118,7 @@
 - (id)preferredFocusEnvironments;
 - (void)prepareForInteractiveTransition:(id)arg1;
 - (void)prepareForPopoverPresentation:(id)arg1;
-- (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
-- (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint { double x1; double x2; })arg2;
-- (bool)pu_handleSecondTabTap;
+- (bool)pu_scrollToInitialPositionAnimated:(bool)arg1;
 - (bool)px_canPerformZoomTransitionWithDetailViewController:(id)arg1;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint { double x1; double x2; })arg1 inCoordinateSpace:(id)arg2;
 - (id)px_endPointForTransition:(id)arg1;

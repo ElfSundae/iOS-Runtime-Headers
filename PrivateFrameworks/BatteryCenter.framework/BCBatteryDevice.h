@@ -16,6 +16,7 @@
     bool  _internal;
     bool  _lowBattery;
     NSString * _matchIdentifier;
+    NSString * _modelNumber;
     NSString * _name;
     unsigned long long  _parts;
     long long  _percentCharge;
@@ -40,6 +41,7 @@
 @property (getter=isInternal, nonatomic) bool internal;
 @property (getter=isLowBattery, nonatomic) bool lowBattery;
 @property (nonatomic, readonly, copy) NSString *matchIdentifier;
+@property (nonatomic, copy) NSString *modelNumber;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic) unsigned long long parts;
 @property (nonatomic) long long percentCharge;
@@ -49,6 +51,8 @@
 @property (nonatomic) long long transportType;
 @property (nonatomic, readonly) long long vendor;
 @property (getter=isWirelesslyCharging, nonatomic) bool wirelesslyCharging;
+
+// Image: /System/Library/PrivateFrameworks/BatteryCenter.framework/BatteryCenter
 
 + (id)batteryDeviceWithIdentifier:(id)arg1 vendor:(long long)arg2 productIdentifier:(long long)arg3 parts:(unsigned long long)arg4 matchIdentifier:(id)arg5;
 + (bool)supportsSecureCoding;
@@ -75,6 +79,7 @@
 - (bool)isPowerSource;
 - (bool)isWirelesslyCharging;
 - (id)matchIdentifier;
+- (id)modelNumber;
 - (id)name;
 - (unsigned long long)parts;
 - (long long)percentCharge;
@@ -91,6 +96,7 @@
 - (void)setIdentifier:(id)arg1;
 - (void)setInternal:(bool)arg1;
 - (void)setLowBattery:(bool)arg1;
+- (void)setModelNumber:(id)arg1;
 - (void)setName:(id)arg1;
 - (void)setParts:(unsigned long long)arg1;
 - (void)setPercentCharge:(long long)arg1;
@@ -100,5 +106,9 @@
 - (void)setWirelesslyCharging:(bool)arg1;
 - (long long)transportType;
 - (long long)vendor;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoard.framework/SpringBoard
+
+- (bool)sb_supportsDetailedBatteryMetrics;
 
 @end

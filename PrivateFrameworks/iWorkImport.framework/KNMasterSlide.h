@@ -57,6 +57,7 @@
 - (id)childEnumerator;
 - (id)classicStylesheetRecord;
 - (bool)containsProperty:(int)arg1;
+- (id)defaultTagForDrawable:(id)arg1;
 - (id)description;
 - (void)flushClassicStylesheetRecord;
 - (void)generateObjectPlaceholderIfNecessary;
@@ -66,6 +67,7 @@
 - (void)insertBuildChunk:(id)arg1 afterChunk:(id)arg2 generateIdentifier:(bool)arg3;
 - (int)intValueForProperty:(int)arg1;
 - (bool)isEquivalentForCrossDocumentPasteMasterComparison:(id)arg1;
+- (bool)isMaster;
 - (bool)isMasterSlide;
 - (bool)isObjectVisible;
 - (bool)isThemeContent;
@@ -74,7 +76,6 @@
 - (id)nonPlaceholderObjects;
 - (id)objectForProperty:(int)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })objectRect;
-- (id)p_defaultTagForDrawable:(id)arg1;
 - (id)p_defaultThumbnailTextForPlaceholder:(id)arg1;
 - (id)packageLocator;
 - (id)referencedStyles;
@@ -91,11 +92,13 @@
 - (void)setThumbnailTextForTitlePlaceholder:(id)arg1;
 - (bool)slideObjectsLayerWithMaster;
 - (bool)supportsBuilds;
-- (id)tagsforNewPlaceholderInfos:(id)arg1;
+- (id)tagsForNewPlaceholderInfos:(id)arg1;
 - (id)thumbnailTextForBodyPlaceholder;
 - (id)thumbnailTextForPlaceholder:(id)arg1;
 - (id)thumbnailTextForTitlePlaceholder;
+- (id)unusedPlaceholderTagBasedOnTag:(id)arg1;
 - (void)updatePlaceholderText;
+- (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)wasAddedToTheme:(id)arg1;
 - (void)willBeAddedToTheme:(id)arg1;
 - (void)willBeRemovedFromDocumentRoot:(id)arg1;

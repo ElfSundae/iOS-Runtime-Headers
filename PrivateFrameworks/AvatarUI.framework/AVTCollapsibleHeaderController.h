@@ -105,6 +105,7 @@
 - (void)updateHeaderHeightToMatchScrollViewStateForScrollDirection:(unsigned long long)arg1 animated:(bool)arg2;
 - (void)updateHeaderSizeForGlobalHeaderHeight:(double)arg1;
 - (void)updateInsetsIfNeeded;
+- (void)updateMinHeight:(double)arg1 maxHeight:(double)arg2 animated:(bool)arg3;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })updatedScrollViewInsetsFromExistingInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 
 @end

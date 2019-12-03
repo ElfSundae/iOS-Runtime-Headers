@@ -3,6 +3,7 @@
  */
 
 @interface _INPBSearchForPhotosIntentResponse : PBCodable <NSCopying, NSSecureCoding, _INPBSearchForPhotosIntentResponse> {
+    bool  __encodeLegacyGloryData;
     NSString * _albumName;
     struct { 
         unsigned int searchResultsCount : 1; 
@@ -11,6 +12,7 @@
     int  _searchResultsCount;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic, copy) NSString *albumName;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -22,14 +24,20 @@
 @property (nonatomic) int searchResultsCount;
 @property (readonly) Class superclass;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)albumName;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasAlbumName;
 - (bool)hasLocationCreated;
 - (bool)hasSearchResultsCount;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)locationCreated;
 - (bool)readFrom:(id)arg1;

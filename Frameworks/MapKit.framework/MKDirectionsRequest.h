@@ -14,7 +14,6 @@
     bool  _includeTrafficIncidents;
     bool  _includeTravelTimes;
     bool  _includeZilchRoutePoints;
-    int  _requestMode;
     bool  _requestsAlternateRoutes;
     MKMapItem * _source;
     GEOTransitOptions * _transitOptions;
@@ -32,7 +31,6 @@
 @property (getter=_automobileOptions, setter=_setAutomobileOptions:, nonatomic, retain) GEOAutomobileOptions *automobileOptions;
 @property (nonatomic, retain) MKMapItem *destination;
 @property (getter=_includeDistanceInETA, setter=_setIncludeDistanceInETA:, nonatomic) bool includeDistanceInETA;
-@property (getter=_requestMode, setter=_setRequestMode:, nonatomic) int requestMode;
 @property (nonatomic, retain) MKMapItem *source;
 @property (getter=_transitOptions, setter=_setTransitOptions:, nonatomic, retain) GEOTransitOptions *transitOptions;
 @property (getter=_walkingOptions, setter=_setWalkingOptions:, nonatomic, retain) GEOWalkingOptions *walkingOptions;
@@ -58,11 +56,9 @@
 - (id)_mapkit_initWithSource:(id)arg1 destination:(id)arg2 transportType:(unsigned long long)arg3 arrivalDate:(id)arg4 includeTravelTimes:(bool)arg5 includeTrafficIncidents:(bool)arg6 includeEntryPoints:(bool)arg7 includeRoutePoints:(bool)arg8;
 - (id)_mapkit_initWithSource:(id)arg1 destination:(id)arg2 transportType:(unsigned long long)arg3 departureDate:(id)arg4;
 - (id)_mapkit_initWithSource:(id)arg1 destination:(id)arg2 transportType:(unsigned long long)arg3 departureDate:(id)arg4 includeTravelTimes:(bool)arg5 includeTrafficIncidents:(bool)arg6 includeEntryPoints:(bool)arg7 includeRoutePoints:(bool)arg8;
-- (int)_requestMode;
 - (void)_setAdditionalTransportTypesRequested:(id)arg1;
 - (void)_setAutomobileOptions:(id)arg1;
 - (void)_setIncludeDistanceInETA:(bool)arg1;
-- (void)_setRequestMode:(int)arg1;
 - (void)_setTransitOptions:(id)arg1;
 - (void)_setWalkingOptions:(id)arg1;
 - (id)_transitOptions;

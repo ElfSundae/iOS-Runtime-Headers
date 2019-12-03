@@ -48,6 +48,7 @@
     struct HGSynchronizable { int (**x1)(); struct _opaque_pthread_mutex_t { long long x_2_1_1; BOOL x_2_1_2[56]; } x2; struct _opaque_pthread_t {} *x3; unsigned long long x4; struct _opaque_pthread_cond_t { long long x_5_1_1; BOOL x_5_1_2[40]; } x5; } * _throttleLock;
     unsigned int  _throttleRequestHandling;
     bool  _thumbnailCompositing;
+    PVTaskTokenPool * _tokenPool;
     bool  _trackStats;
     struct HGSynchronizable { int (**x1)(); struct _opaque_pthread_mutex_t { long long x_2_1_1; BOOL x_2_1_2[56]; } x2; struct _opaque_pthread_t {} *x3; unsigned long long x4; struct _opaque_pthread_cond_t { long long x_5_1_1; BOOL x_5_1_2[40]; } x5; } * _trackerLock;
     AVVideoComposition * _videoComposition;
@@ -73,6 +74,9 @@
 @property (nonatomic, readonly) bool supportsWideColorSourceFrames;
 @property (nonatomic) bool thumbnailCompositing;
 @property (retain) PVVideoCompositingContext *videoCompositingContext;
+
++ (bool)flushOnFinalRelease;
++ (void)setFlushOnFinalRelease:(bool)arg1;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;

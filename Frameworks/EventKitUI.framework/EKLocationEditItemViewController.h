@@ -3,8 +3,10 @@
  */
 
 @interface EKLocationEditItemViewController : EKEditItemViewController <EKUILocationSearchModelDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate> {
+    NSMutableDictionary * _cachedConferenceRooms;
     EKCalendarItem * _calendarItem;
     bool  _needsSave;
+    bool  _onlyAllowConferenceRooms;
     bool  _onlyDisplayMapLocations;
     struct CGSize { 
         double width; 
@@ -24,6 +26,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool needsSave;
+@property (nonatomic) bool onlyAllowConferenceRooms;
 @property (nonatomic) bool onlyDisplayMapLocations;
 @property (nonatomic, retain) EKUIConferenceRoom *selectedConferenceRoom;
 @property (nonatomic, retain) EKStructuredLocation *selectedLocation;
@@ -33,8 +36,10 @@
 + (id)_sectionNameForSection:(unsigned long long)arg1;
 
 - (void).cxx_destruct;
-- (id)_cellForConferenceRoomRowInTableView:(id)arg1 indexPath:(id)arg2;
+- (id)_cellForConferenceRoom:(id)arg1 atIndexPath:(id)arg2;
+- (void)_setupConstraints;
 - (id)calendarItemForSearchModel:(id)arg1;
+- (id)conferenceRoomForRecent:(id)arg1;
 - (void)conferenceRoomSearchUpdated:(id)arg1;
 - (id)contactsImage;
 - (void)contactsSearchUpdated:(id)arg1;
@@ -42,7 +47,6 @@
 - (void)dealloc;
 - (void)eventsSearchUpdated:(id)arg1;
 - (void)frequentsSearchUpdated:(id)arg1;
-- (id)greyPinImage;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 styleProvider:(id)arg2;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 styleProvider:(id)arg2 calendarItem:(id)arg3 eventStore:(id)arg4;
 - (id)itemAtIndexPath:(id)arg1;
@@ -52,21 +56,24 @@
 - (void)mapSearchUpdated:(id)arg1;
 - (bool)needsSave;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (bool)onlyAllowConferenceRooms;
 - (bool)onlyDisplayMapLocations;
+- (id)pinImage;
 - (struct CGSize { double x1; double x2; })preferredContentSize;
 - (bool)presentModally;
 - (void)recentsSearchUpdated:(id)arg1;
-- (id)redPinImage;
 - (void)searchBar:(id)arg1 textDidChange:(id)arg2;
 - (void)searchBarSearchButtonClicked:(id)arg1;
 - (id)selectedConferenceRoom;
 - (id)selectedLocation;
 - (void)setNeedsSave:(bool)arg1;
+- (void)setOnlyAllowConferenceRooms:(bool)arg1;
 - (void)setOnlyDisplayMapLocations:(bool)arg1;
 - (void)setPreferredContentSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setSelectedConferenceRoom:(id)arg1;
 - (void)setSelectedLocation:(id)arg1;
 - (void)setStructuredLocation:(id)arg1;
+- (bool)shouldIncludeConferenceRoom:(id)arg1;
 - (bool)showingCurrentLocationRow;
 - (bool)showingTextRow;
 - (id)structuredLocation;
@@ -79,10 +86,9 @@
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (bool)tableView:(id)arg1 wantsHeaderForSection:(long long)arg2;
 - (id)title;
-- (void)updateViewConstraints;
 - (void)useAsString:(id)arg1;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidDisappear:(bool)arg1;
-- (void)viewWillAppear:(bool)arg1;
+- (void)viewDidLoad;
 
 @end

@@ -6,6 +6,7 @@
     CNContactPickerViewController * _contactPickerController;
     CNContactStore * _contactStore;
     bool  _didLayoutSubviews;
+    bool  _leftToRight;
     UILabel * _placeholderLabel;
     MFComposeRecipientView * _recipientView;
     SKUIGiftContactSearchController * _searchController;
@@ -18,6 +19,7 @@
 @property (nonatomic) bool didLayoutSubviews;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSString *label;
+@property (nonatomic) bool leftToRight;
 @property (nonatomic, copy) NSArray *recipientAddresses;
 @property (readonly) Class superclass;
 
@@ -43,6 +45,7 @@
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (id)label;
 - (void)layoutSubviews;
+- (bool)leftToRight;
 - (void)presentPeoplePickerPopover:(id)arg1 animated:(bool)arg2;
 - (void)presentSearchResultsPopover:(id)arg1 animated:(bool)arg2;
 - (id)recipientAddresses;
@@ -52,6 +55,7 @@
 - (void)setAttributedPlaceholder:(id)arg1;
 - (void)setDidLayoutSubviews:(bool)arg1;
 - (void)setLabel:(id)arg1;
+- (void)setLeftToRight:(bool)arg1;
 - (void)setRecipientAddresses:(id)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 

@@ -35,6 +35,7 @@
 - (void)setDeviceType:(id)arg1;
 - (void)setFrameworkVersion:(id)arg1;
 - (void)setOsVersion:(id)arg1;
+- (id)stringForCheckpoint;
 - (void)writeTo:(id)arg1;
 
 @end

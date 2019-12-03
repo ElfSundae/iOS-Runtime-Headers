@@ -8,11 +8,11 @@
     NSDictionary * _bindingKeysByPathString;
     IKJSDataItem * _dataItem;
     IKDOMElement * _domElement;
-    _IKDOMMutationRules * _mutationRules;
+    _IKDOMMutationRuleSet * _mutationRuleSet;
     IKDOMBindingController * _parent;
-    NSDictionary * _prototypesByType;
+    NSDictionary * _prototypeGroupsByType;
+    unsigned long long  _resolutionTarget;
     NSMutableArray * _scheduledUpdaters;
-    bool  _shouldResolveData;
     <IKDOMBindingStrategy> * _strategy;
     struct { 
         bool hasKeysAffectingChildren; 
@@ -30,15 +30,15 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) IKDOMElement *domElement;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) _IKDOMMutationRules *mutationRules;
+@property (nonatomic, readonly) _IKDOMMutationRuleSet *mutationRuleSet;
 @property (nonatomic, readonly) IKDOMBindingController *parent;
-@property (nonatomic, readonly) NSDictionary *prototypesByType;
-@property (nonatomic, readonly) bool shouldResolveData;
+@property (nonatomic, readonly) NSDictionary *prototypeGroupsByType;
+@property (nonatomic, readonly) unsigned long long resolutionTarget;
 @property (nonatomic, readonly) <IKDOMBindingStrategy> *strategy;
 @property (readonly) Class superclass;
 
 + (id)_parsedMutationRulesForDOMElement:(id)arg1;
-+ (id)_prototypesByTypeForDOMElement:(id)arg1;
++ (id)_prototypeGroupsByTypeForDOMElement:(id)arg1;
 + (id)domBindingControllerForDOMElement:(id)arg1;
 + (id)instantiateDOMElementForItem:(id)arg1 withPrototype:(id)arg2 parentDOMElement:(id)arg3 existingDOMElement:(id)arg4;
 + (id)parsedBindingForDOMElement:(id)arg1;
@@ -54,13 +54,13 @@
 - (void)dataObservable:(id)arg1 didChangePropertyPathWithString:(id)arg2 extraInfo:(id)arg3;
 - (void)dealloc;
 - (id)domElement;
-- (id)findPrototypeForType:(id)arg1;
+- (id)findPrototypeForDataItem:(id)arg1;
 - (id)initWithDOMElement:(id)arg1;
-- (id)mutationRules;
+- (id)mutationRuleSet;
 - (id)parent;
-- (id)prototypesByType;
+- (id)prototypeGroupsByType;
+- (unsigned long long)resolutionTarget;
 - (void)scheduleUpdateUsingPreUpdate:(id /* block */)arg1 update:(id /* block */)arg2;
-- (bool)shouldResolveData;
 - (id)strategy;
 
 @end

@@ -5,14 +5,12 @@
 @interface __NSPlaceholderArray : NSMutableArray
 
 + (id)allocWithZone:(struct _NSZone { }*)arg1;
-+ (id)immutablePlaceholder;
-+ (void)initialize;
-+ (id)mutablePlaceholder;
 
 - (id)_initByAdoptingBuffer:(id*)arg1 count:(unsigned long long)arg2 size:(unsigned long long)arg3;
 - (unsigned long long)count;
 - (void)dealloc;
 - (id)init;
+- (id)initWithArray:(id)arg1;
 - (id)initWithArray:(id)arg1 copyItems:(bool)arg2;
 - (id)initWithCapacity:(unsigned long long)arg1;
 - (id)initWithContentsOfFile:(id)arg1;

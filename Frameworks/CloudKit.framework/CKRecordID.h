@@ -10,6 +10,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy) NSString *hmbDescription;
 @property (nonatomic, retain) NSString *recordName;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) CKRecordZoneID *zoneID;
@@ -68,9 +69,15 @@
 // Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
 
 + (id)newFromSqliteStatement:(struct sqlite3_stmt { }*)arg1 atIndex:(int)arg2;
-+ (id)newFromSqliteValue:(struct sqlite3_value { }*)arg1;
 
 - (void)sqliteBind:(struct sqlite3_stmt { }*)arg1 index:(int)arg2;
+
+// Image: /System/Library/PrivateFrameworks/HomeKitBackingStore.framework/HomeKitBackingStore
+
++ (id)recordIDFromExternalID:(id)arg1 error:(id*)arg2;
+
+- (id)externalID:(id*)arg1;
+- (id)hmbDescription;
 
 // Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
 

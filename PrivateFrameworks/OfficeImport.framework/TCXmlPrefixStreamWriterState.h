@@ -10,8 +10,8 @@
 @property (nonatomic, copy) NSString *attributePrefix;
 @property (nonatomic, copy) NSString *elementPrefix;
 
+- (void).cxx_destruct;
 - (id)attributePrefix;
-- (void)dealloc;
 - (id)elementPrefix;
 - (void)setAttributePrefix:(id)arg1;
 - (void)setElementPrefix:(id)arg1;

@@ -5,6 +5,7 @@
 @interface PSSpecifier : NSObject {
     SEL  _buttonAction;
     SEL  _confirmationAction;
+    SEL  _confirmationAlternateAction;
     SEL  _confirmationCancelAction;
     SEL  _controllerLoadAction;
     NSString * _name;
@@ -35,6 +36,7 @@
 @property (nonatomic) SEL buttonAction;
 @property (nonatomic) long long cellType;
 @property (nonatomic) SEL confirmationAction;
+@property (nonatomic) SEL confirmationAlternateAction;
 @property (nonatomic) SEL confirmationCancelAction;
 @property (nonatomic) SEL controllerLoadAction;
 @property (nonatomic) Class detailControllerClass;
@@ -68,6 +70,7 @@
 - (SEL)buttonAction;
 - (long long)cellType;
 - (SEL)confirmationAction;
+- (SEL)confirmationAlternateAction;
 - (SEL)confirmationCancelAction;
 - (SEL)controllerLoadAction;
 - (id)description;
@@ -86,6 +89,7 @@
 - (id)objectForKeyedSubscript:(id)arg1;
 - (void)performButtonAction;
 - (void)performConfirmationAction;
+- (void)performConfirmationAlternateAction;
 - (void)performConfirmationCancelAction;
 - (void)performControllerLoadAction;
 - (id)performGetter;
@@ -97,6 +101,7 @@
 - (void)setButtonAction:(SEL)arg1;
 - (void)setCellType:(long long)arg1;
 - (void)setConfirmationAction:(SEL)arg1;
+- (void)setConfirmationAlternateAction:(SEL)arg1;
 - (void)setConfirmationCancelAction:(SEL)arg1;
 - (void)setControllerLoadAction:(SEL)arg1;
 - (void)setDetailControllerClass:(Class)arg1;
@@ -118,7 +123,6 @@
 - (void)setValues:(id)arg1 titles:(id)arg2;
 - (void)setValues:(id)arg1 titles:(id)arg2 shortTitles:(id)arg3;
 - (void)setValues:(id)arg1 titles:(id)arg2 shortTitles:(id)arg3 usingLocalizedTitleSorting:(bool)arg4;
-- (void)setVersionLabelEnabled:(bool)arg1;
 - (void)setWeakUserInfo:(id)arg1;
 - (void)setupIconImageWithBundle:(id)arg1;
 - (void)setupIconImageWithPath:(id)arg1;
@@ -129,7 +133,6 @@
 - (id)titleDictionary;
 - (id)userInfo;
 - (id)values;
-- (bool)versionLabelEnabled;
 - (id)weakUserInfo;
 
 // Image: /System/Library/PrivateFrameworks/Accessibility.framework/Frameworks/AccessibilityUIUtilities.framework/AccessibilityUIUtilities
@@ -142,8 +145,7 @@
 // Image: /System/Library/PrivateFrameworks/AccountsUI.framework/AccountsUI
 
 + (id)_bundle;
-+ (id)_dataclassIconCache;
-+ (id)_iconForDataclass:(id)arg1;
++ (id)acui_iconForDataclass:(id)arg1;
 + (id)acui_linkListCellSpecifierForDataclass:(id)arg1 target:(id)arg2 set:(SEL)arg3 get:(SEL)arg4 detail:(Class)arg5;
 + (id)acui_specifierForAppWithBundleID:(id)arg1 target:(id)arg2 set:(SEL)arg3 get:(SEL)arg4;
 + (id)acui_specifierForDataclass:(id)arg1 target:(id)arg2 set:(SEL)arg3 get:(SEL)arg4;
@@ -173,6 +175,17 @@
 // Image: /System/Library/PrivateFrameworks/ScreenTimeUI.framework/ScreenTimeUI
 
 + (id)st_emptyGroupSpecifier;
+
+// Image: /System/Library/PrivateFrameworks/Settings/SettingsUIKitPrivate.framework/SettingsUIKitPrivate
+
+- (long long)suikp_autoCapsType;
+- (long long)suikp_autoCorrectionType;
+- (long long)suikp_keyboardType;
+
+// Image: /System/Library/PrivateFrameworks/StorageSettings.framework/StorageSettings
+
+- (void)setVersionLabelEnabled:(bool)arg1;
+- (bool)versionLabelEnabled;
 
 // Image: /System/Library/PrivateFrameworks/TelephonyPreferences.framework/TelephonyPreferences
 

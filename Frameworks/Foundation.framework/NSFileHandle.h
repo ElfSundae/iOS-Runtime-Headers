@@ -6,6 +6,8 @@
 
 @property (readonly, copy) NSData *availableData;
 @property (readonly) unsigned long long offsetInFile;
+@property (nonatomic, readonly) NSString *pathname;
+@property (nonatomic, readonly) NSString *segmentName;
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
@@ -29,9 +31,11 @@
 - (void)_closeOnDealloc;
 - (id)availableData;
 - (Class)classForCoder;
+- (bool)closeAndReturnError:(out id*)arg1;
 - (void)closeFile;
 - (void)encodeWithCoder:(id)arg1;
 - (int)fileDescriptor;
+- (bool)getOffset:(out unsigned long long*)arg1 error:(out id*)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFileDescriptor:(int)arg1;
 - (id)initWithFileDescriptor:(int)arg1 closeOnDealloc:(bool)arg2;
@@ -41,24 +45,32 @@
 - (unsigned long long)offsetInFile;
 - (id)readDataOfLength:(unsigned long long)arg1;
 - (id)readDataToEndOfFile;
+- (id)readDataToEndOfFileAndReturnError:(out id*)arg1;
+- (id)readDataUpToLength:(unsigned long long)arg1 error:(out id*)arg2;
 - (id /* block */)readabilityHandler;
 - (unsigned long long)seekToEndOfFile;
+- (bool)seekToEndReturningOffset:(out unsigned long long*)arg1 error:(out id*)arg2;
 - (void)seekToFileOffset:(unsigned long long)arg1;
+- (bool)seekToOffset:(unsigned long long)arg1 error:(out id*)arg2;
 - (void)setReadabilityHandler:(id /* block */)arg1;
 - (void)setWriteabilityHandler:(id /* block */)arg1;
+- (bool)synchronizeAndReturnError:(out id*)arg1;
 - (void)synchronizeFile;
+- (bool)truncateAtOffset:(unsigned long long)arg1 error:(out id*)arg2;
 - (void)truncateFileAtOffset:(unsigned long long)arg1;
 - (void)writeData:(id)arg1;
+- (bool)writeData:(id)arg1 error:(out id*)arg2;
 - (id /* block */)writeabilityHandler;
-
-// Image: /Developer/Library/PrivateFrameworks/DVTInstrumentsUtilities.framework/DVTInstrumentsUtilities
-
-- (bool)xr_writeStringWithFormat:(id)arg1;
 
 // Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
 
 - (long long)hk_countLines;
 - (void)hk_readLinesInFile:(id /* block */)arg1;
+
+// Image: /System/Library/Frameworks/SensorKit.framework/SensorKit
+
+- (id)pathname;
+- (id)segmentName;
 
 // Image: /System/Library/PrivateFrameworks/AppleServiceToolkit.framework/AppleServiceToolkit
 
@@ -87,6 +99,10 @@
 
 - (void)ml_lock;
 - (void)ml_unlock;
+
+// Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
+
+- (void)writeBytes:(const void*)arg1 length:(unsigned long long)arg2;
 
 // Image: /System/Library/PrivateFrameworks/SpotlightServices.framework/SpotlightServices
 

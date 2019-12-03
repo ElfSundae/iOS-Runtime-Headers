@@ -69,7 +69,7 @@
 - (id)accessPointEntryName;
 - (id)accessPointExitName;
 - (void)addObserver:(id)arg1 withType:(unsigned char)arg2;
-- (void)addShareSections:(const struct { id x1; /* Warning: Unrecognized filer type: 'P' using 'void*' */ void*x2; out long x3; void*x4; long x5; int x6; in void*x7; unsigned char x8; out out const double x9; int x10; in void*x11; void*x12; void*x13; void*x14; unsigned int x15; float x16; }*)arg1 shareCount:(unsigned int)arg2;
+- (void)addShareSections:(const struct { id x1; struct PolylineCoordinate { unsigned int x_2_1_1; float x_2_1_2; } x2; struct PolylineCoordinate { unsigned int x_3_1_1; float x_3_1_2; } x3; }*)arg1 shareCount:(unsigned int)arg2;
 - (id)alternateRoutes;
 - (long long)currentLegIndex;
 - (long long)currentStepIndex;

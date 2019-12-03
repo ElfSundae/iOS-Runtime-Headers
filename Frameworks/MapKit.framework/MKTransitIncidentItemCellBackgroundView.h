@@ -22,7 +22,6 @@
 - (long long)position;
 - (void)setFillColor:(id)arg1;
 - (void)setPosition:(long long)arg1;
-- (void)setStrokColor:(id)arg1;
 - (void)setStrokeColor:(id)arg1;
 - (id)strokeColor;
 

@@ -7,8 +7,17 @@
     long long  _akSerializationPlatform;
     long long  _akSerializationVersion;
     id /* block */  _appearanceOverride;
+    struct CGPDFDocument { } * _appearanceOverridePDF;
     NSString * _author;
     AKAnnotation * _childAnnotation;
+    bool  _conformsToAKChildAnnotationProtocol;
+    bool  _conformsToAKFilledAnnotationProtocol;
+    bool  _conformsToAKFlippableAnnotationProtocol;
+    bool  _conformsToAKParentAnnotationProtocol;
+    bool  _conformsToAKRectangularAnnotationProtocol;
+    bool  _conformsToAKRotatableAnnotationProtocol;
+    bool  _conformsToAKStrokedAnnotationProtocol;
+    bool  _conformsToAKTextAnnotationProtocol;
     NSString * _customPlaceholderText;
     bool  _editsDisableAppearanceOverride;
     struct CGRect { 
@@ -21,6 +30,7 @@
             double height; 
         } size; 
     }  _initialDrawingBoundsForAppearanceOverride;
+    bool  _isBeingCopied;
     bool  _isDraggingHandle;
     bool  _isEdited;
     bool  _isEditingText;
@@ -32,6 +42,14 @@
     long long  _originalExifOrientation;
     double  _originalModelBaseScaleFactor;
     AKAnnotation * _parentAnnotation;
+    long long  _predConformsToAKChildAnnotationProtocol;
+    long long  _predConformsToAKFilledAnnotationProtocol;
+    long long  _predConformsToAKFlippableAnnotationProtocol;
+    long long  _predConformsToAKParentAnnotationProtocol;
+    long long  _predConformsToAKRectangularAnnotationProtocol;
+    long long  _predConformsToAKRotatableAnnotationProtocol;
+    long long  _predConformsToAKStrokedAnnotationProtocol;
+    long long  _predConformsToAKTextAnnotationProtocol;
     bool  _shouldUseAppearanceOverride;
     bool  _shouldUsePlaceholderText;
     bool  _textIsClipped;
@@ -52,6 +70,7 @@
 @property (readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } hitTestBounds;
 @property struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } initialDrawingBoundsForAppearanceOverride;
 @property (readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } integralDrawingBounds;
+@property bool isBeingCopied;
 @property bool isDraggingHandle;
 @property bool isEdited;
 @property bool isEditingText;
@@ -84,6 +103,14 @@
 - (id /* block */)appearanceOverride;
 - (id)author;
 - (id)childAnnotation;
+- (bool)conformsToAKChildAnnotationProtocol;
+- (bool)conformsToAKFilledAnnotationProtocol;
+- (bool)conformsToAKFlippableAnnotationProtocol;
+- (bool)conformsToAKParentAnnotationProtocol;
+- (bool)conformsToAKRectangularAnnotationProtocol;
+- (bool)conformsToAKRotatableAnnotationProtocol;
+- (bool)conformsToAKStrokedAnnotationProtocol;
+- (bool)conformsToAKTextAnnotationProtocol;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)customPlaceholderText;
 - (id)dataRepresentation;
@@ -98,6 +125,7 @@
 - (id)initWithCoder:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })initialDrawingBoundsForAppearanceOverride;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })integralDrawingBounds;
+- (bool)isBeingCopied;
 - (bool)isDraggingHandle;
 - (bool)isEdited;
 - (bool)isEditingText;
@@ -119,6 +147,7 @@
 - (void)setCustomPlaceholderText:(id)arg1;
 - (void)setEditsDisableAppearanceOverride:(bool)arg1;
 - (void)setInitialDrawingBoundsForAppearanceOverride:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (void)setIsBeingCopied:(bool)arg1;
 - (void)setIsDraggingHandle:(bool)arg1;
 - (void)setIsEdited:(bool)arg1;
 - (void)setIsEditingText:(bool)arg1;

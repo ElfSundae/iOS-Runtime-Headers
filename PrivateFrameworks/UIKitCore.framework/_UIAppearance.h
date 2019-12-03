@@ -7,11 +7,9 @@
     NSArray * _containerList;
     _UIAppearanceCustomizableClassInfo * _customizableClassInfo;
     NSMapTable * _invocationSources;
-    NSMutableDictionary * _resettableInvocations;
 }
 
 @property (nonatomic, readonly) _UIAppearanceCustomizableClassInfo *_customizableClassInfo;
-@property (setter=_setResettableInvocations:, nonatomic, retain) NSMutableDictionary *_resettableInvocations;
 
 + (void)_addWindow:(id)arg1 forSource:(id)arg2;
 + (id)_appearanceForClass:(Class)arg1 withContainerList:(id)arg2;
@@ -47,14 +45,10 @@
 - (bool)_isRecordingInvocations;
 - (bool)_isValidAppearanceForCustomizableObject:(id)arg1;
 - (void)_removeInvocationsForSource:(id)arg1;
-- (id)_resettableInvocations;
-- (id)_resettableInvocationsCreateIfNecessary;
-- (void)_setResettableInvocations:(id)arg1;
 - (id)_traitCollection;
 - (void)dealloc;
 - (id)description;
 - (void)forwardInvocation:(id)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
-- (void)updateResettableSelectorsWithInvocation:(id)arg1 removeSelector:(bool)arg2;
 
 @end

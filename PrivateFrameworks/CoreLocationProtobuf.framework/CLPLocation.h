@@ -43,6 +43,7 @@
     int  _motionActivityType;
     bool  _motionVehicleConnected;
     bool  _motionVehicleConnectedStateChanged;
+    CLPPipelineDiagnosticReport * _pipelineDiagnosticReport;
     int  _provider;
     CLPMotionActivity * _rawMotionActivity;
     CLPSatelliteReport * _satReport;
@@ -75,6 +76,7 @@
 @property (nonatomic) bool hasMotionActivityType;
 @property (nonatomic) bool hasMotionVehicleConnected;
 @property (nonatomic) bool hasMotionVehicleConnectedStateChanged;
+@property (nonatomic, readonly) bool hasPipelineDiagnosticReport;
 @property (nonatomic) bool hasProvider;
 @property (nonatomic, readonly) bool hasRawMotionActivity;
 @property (nonatomic, readonly) bool hasSatReport;
@@ -94,6 +96,7 @@
 @property (nonatomic) int motionActivityType;
 @property (nonatomic) bool motionVehicleConnected;
 @property (nonatomic) bool motionVehicleConnectedStateChanged;
+@property (nonatomic, retain) CLPPipelineDiagnosticReport *pipelineDiagnosticReport;
 @property (nonatomic) int provider;
 @property (nonatomic, retain) CLPMotionActivity *rawMotionActivity;
 @property (nonatomic, retain) CLPSatelliteReport *satReport;
@@ -137,6 +140,7 @@
 - (bool)hasMotionActivityType;
 - (bool)hasMotionVehicleConnected;
 - (bool)hasMotionVehicleConnectedStateChanged;
+- (bool)hasPipelineDiagnosticReport;
 - (bool)hasProvider;
 - (bool)hasRawMotionActivity;
 - (bool)hasSatReport;
@@ -160,6 +164,7 @@
 - (int)motionActivityType;
 - (bool)motionVehicleConnected;
 - (bool)motionVehicleConnectedStateChanged;
+- (id)pipelineDiagnosticReport;
 - (int)provider;
 - (id)rawMotionActivity;
 - (bool)readFrom:(id)arg1;
@@ -202,6 +207,7 @@
 - (void)setMotionActivityType:(int)arg1;
 - (void)setMotionVehicleConnected:(bool)arg1;
 - (void)setMotionVehicleConnectedStateChanged:(bool)arg1;
+- (void)setPipelineDiagnosticReport:(id)arg1;
 - (void)setProvider:(int)arg1;
 - (void)setRawMotionActivity:(id)arg1;
 - (void)setSatReport:(id)arg1;

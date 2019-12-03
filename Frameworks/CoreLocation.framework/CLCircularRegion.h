@@ -37,4 +37,11 @@
 - (id)attributeDescriptions;
 - (id)description;
 
+// Image: /System/Library/PrivateFrameworks/WiFiPolicy.framework/WiFiPolicy
+
+- (struct { struct CLLocationCoordinate2D { double x_1_1_1; double x_1_1_2; } x1; struct CLLocationCoordinate2D { double x_2_1_1; double x_2_1_2; } x2; struct CLLocationCoordinate2D { double x_3_1_1; double x_3_1_2; } x3; struct CLLocationCoordinate2D { double x_4_1_1; double x_4_1_2; } x4; })boundingBox;
+- (double)latitude;
+- (double)longitude;
+- (id)searchPredicateWithLatitudeKey:(id)arg1 longitudeKey:(id)arg2;
+
 @end

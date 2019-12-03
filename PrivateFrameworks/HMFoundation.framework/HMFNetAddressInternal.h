@@ -13,5 +13,6 @@
 - (void).cxx_destruct;
 - (unsigned long long)addressFamily;
 - (id)addressString;
+- (id)dataUsingEncoding:(unsigned long long)arg1;
 
 @end

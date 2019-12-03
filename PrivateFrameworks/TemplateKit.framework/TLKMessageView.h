@@ -12,10 +12,11 @@
 @property (nonatomic) unsigned long long messageServiceType;
 @property (nonatomic) unsigned long long messageStatus;
 @property (nonatomic, retain) NSString *messageText;
-@property (retain) CKTextBalloonView *textBalloonView;
+@property (nonatomic, retain) CKTextBalloonView *textBalloonView;
 
 - (void).cxx_destruct;
-- (id)init;
+- (void)_dynamicUserInterfaceTraitDidChange;
+- (void)didMoveToWindow;
 - (unsigned long long)messageServiceType;
 - (unsigned long long)messageStatus;
 - (id)messageText;
@@ -24,6 +25,9 @@
 - (void)setMessageStatus:(unsigned long long)arg1;
 - (void)setMessageText:(id)arg1;
 - (void)setTextBalloonView:(id)arg1;
+- (id)setupContentView;
 - (id)textBalloonView;
+- (void)tlk_updateForAppearance:(id)arg1;
+- (bool)usesDefaultInsets;
 
 @end

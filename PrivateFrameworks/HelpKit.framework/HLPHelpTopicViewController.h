@@ -21,6 +21,7 @@
     HLPHelpLocale * _locale;
     NSArray * _searchTerms;
     bool  _showTopicNameAsTitle;
+    bool  _supportsDarkMode;
     UIBarButtonItem * _tocBarButtonItem;
     NSCache * _topicCache;
     NSMutableArray * _topicHistory;
@@ -45,6 +46,7 @@
 @property (nonatomic, retain) NSArray *searchTerms;
 @property (nonatomic) bool showTopicNameAsTitle;
 @property (readonly) Class superclass;
+@property (nonatomic) bool supportsDarkMode;
 @property (nonatomic, retain) NSCache *topicCache;
 @property (nonatomic, retain) HLPHelpUsageController *usageController;
 @property (nonatomic, retain) WKWebView *webView;
@@ -87,6 +89,7 @@
 - (void)setLocale:(id)arg1;
 - (void)setSearchTerms:(id)arg1;
 - (void)setShowTopicNameAsTitle:(bool)arg1;
+- (void)setSupportsDarkMode:(bool)arg1;
 - (void)setTopicCache:(id)arg1;
 - (void)setURLSessionItem:(id)arg1;
 - (void)setUsageController:(id)arg1;
@@ -96,7 +99,9 @@
 - (void)showTableOfContent;
 - (bool)showTopicNameAsTitle;
 - (void)showWebViewDelay;
+- (bool)supportsDarkMode;
 - (id)topicCache;
+- (void)updateBackgroundColor;
 - (void)updateDoneButton;
 - (void)updateHTMLStringPath:(id)arg1 tag:(id)arg2 attribute:(id)arg3;
 - (void)updateNavigationButtons;

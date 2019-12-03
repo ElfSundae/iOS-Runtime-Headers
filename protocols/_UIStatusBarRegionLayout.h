@@ -14,7 +14,6 @@
 
 @optional
 
-- (UIView *)containerView;
 - (bool)mayFitDisplayItems:(NSArray *)arg1;
 
 @end

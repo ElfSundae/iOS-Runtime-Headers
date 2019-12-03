@@ -4,9 +4,8 @@
 
 @interface CBPeripheral : CBPeer {
     NSString * _BDAddress;
-    long long  _PID;
     NSNumber * _RSSI;
-    long long  _VID;
+    bool  _ancsAuthorized;
     NSMutableDictionary * _attributes;
     bool  _canSendWriteWithoutResponse;
     bool  _connectedToSystem;
@@ -33,13 +32,13 @@
     NSString * _name;
     NSArray * _services;
     long long  _state;
+    bool  _visibleInSettings;
     unsigned int  _writesPending;
 }
 
 @property (retain) NSString *BDAddress;
-@property long long PID;
 @property (retain) NSNumber *RSSI;
-@property long long VID;
+@property bool ancsAuthorized;
 @property bool canSendWriteWithoutResponse;
 @property (getter=isConnectedToSystem, nonatomic, readonly) bool connectedToSystem;
 @property (nonatomic) <CBPeripheralDelegate> *delegate;
@@ -48,13 +47,15 @@
 @property (retain) NSString *name;
 @property (retain) NSArray *services;
 @property long long state;
+@property (readonly) bool visibleInSettings;
 @property unsigned int writesPending;
+
+// Image: /System/Library/Frameworks/CoreBluetooth.framework/CoreBluetooth
 
 - (void).cxx_destruct;
 - (id)BDAddress;
-- (long long)PID;
 - (id)RSSI;
-- (long long)VID;
+- (bool)ancsAuthorized;
 - (id)attributeForHandle:(id)arg1;
 - (bool)canSendWriteWithoutResponse;
 - (void)dealloc;
@@ -89,7 +90,7 @@
 - (void)handleServicesDiscovered:(id)arg1;
 - (void)handleSuccessfulConnection:(id)arg1;
 - (void)handleTimeSyncResponse:(id)arg1;
-- (bool)hasTag:(id)arg1;
+- (void)handleVisibilityChanged:(id)arg1;
 - (id)initWithCentralManager:(id)arg1 info:(id)arg2;
 - (void)invalidateAllAttributes;
 - (bool)isConnected;
@@ -112,6 +113,7 @@
 - (void)sendMsg:(int)arg1 requiresConnected:(bool)arg2 args:(id)arg3;
 - (id)sendSyncMsg:(int)arg1 args:(id)arg2;
 - (id)services;
+- (void)setAncsAuthorized:(bool)arg1;
 - (void)setAttribute:(id)arg1 forHandle:(id)arg2;
 - (void)setBDAddress:(id)arg1;
 - (void)setBroadcastValue:(bool)arg1 forCharacteristic:(id)arg2;
@@ -121,18 +123,21 @@
 - (void)setName:(id)arg1;
 - (void)setNotifyValue:(bool)arg1 forCharacteristic:(id)arg2;
 - (void)setOrphan;
-- (void)setPID:(long long)arg1;
 - (void)setPeripheralName:(id)arg1;
 - (void)setRSSI:(id)arg1;
 - (void)setServices:(id)arg1;
 - (void)setState:(long long)arg1;
-- (void)setVID:(long long)arg1;
+- (void)setVisibleInSettings:(bool)arg1;
 - (void)setWritesPending:(unsigned int)arg1;
 - (long long)state;
-- (void)tag:(id)arg1;
-- (void)untag:(id)arg1;
+- (bool)visibleInSettings;
 - (void)writeValue:(id)arg1 forCharacteristic:(id)arg2 type:(long long)arg3;
 - (void)writeValue:(id)arg1 forDescriptor:(id)arg2;
 - (unsigned int)writesPending;
+
+// Image: /System/Library/PrivateFrameworks/HearingUtilities.framework/HearingUtilities
+
+- (void)axTag:(id)arg1;
+- (void)axUntag:(id)arg1;
 
 @end

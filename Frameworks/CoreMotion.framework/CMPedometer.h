@@ -41,6 +41,7 @@
 - (void)startPedometerUpdatesFromDate:(id)arg1 withHandler:(id /* block */)arg2;
 - (void)stopPedometerEventUpdates;
 - (void)stopPedometerUpdates;
+- (id)strideCalibrationDump;
 
 // Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon
 

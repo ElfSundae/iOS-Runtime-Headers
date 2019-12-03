@@ -5,8 +5,11 @@
 @interface HMDHomeModel : HMDBackingStoreModelObject
 
 @property (nonatomic, retain) NSString *defaultRoomUUID;
+@property (nonatomic, retain) NSNumber *hasAnyUserAcknowledgedCameraRecordingOnboarding;
 @property (nonatomic, retain) NSData *homeLocationData;
+@property (nonatomic, retain) NSNumber *multiUserEnabled;
 @property (nonatomic, retain) NSString *name;
+@property (nonatomic, retain) NSNumber *networkProtectionMode;
 @property (nonatomic, retain) NSString *ownerName;
 @property (nonatomic, retain) NSData *ownerPublicKey;
 @property (nonatomic, retain) NSString *ownerUUID;
@@ -14,7 +17,7 @@
 @property (nonatomic, retain) NSNumber *presenceAuthorizationStatus;
 @property (nonatomic, retain) NSNumber *presenceComputeStatus;
 @property (nonatomic, retain) NSString *primaryResidentUUID;
-@property (nonatomic, retain) HMDHomeKitVersion *sharedHomeSourceVersion;
+@property (nonatomic, copy) HMDHomeKitVersion *sharedHomeSourceVersion;
 
 + (id)properties;
 

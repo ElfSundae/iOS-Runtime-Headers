@@ -4,7 +4,7 @@
 
 @interface SearchUIMessageCardSectionView : SearchUICardSectionView
 
-@property (retain) TLKMessageView *contentView;
+@property (nonatomic, retain) TLKMessageView *contentView;
 
 + (bool)supportsRecyclingForCardSection:(id)arg1;
 

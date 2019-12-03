@@ -2,11 +2,10 @@
    Image: /System/Library/PrivateFrameworks/MediaRemote.framework/MediaRemote
  */
 
-@interface MRAVLightweightReconnaissanceSession : NSObject {
-    id  _endpointCallbackToken;
-}
+@interface MRAVLightweightReconnaissanceSession : NSObject
 
-- (void).cxx_destruct;
-- (void)searchForOutputDeviceUID:(id)arg1 timeout:(double)arg2 queue:(id)arg3 completion:(id /* block */)arg4;
+- (void)searchEndpointsForOutputDeviceUID:(id)arg1 timeout:(double)arg2 reason:(id)arg3 queue:(id)arg4 completion:(id /* block */)arg5;
+- (void)searchForLogicalOutputDeviceUID:(id)arg1 timeout:(double)arg2 reason:(id)arg3 queue:(id)arg4 completion:(id /* block */)arg5;
+- (void)searchForOutputDeviceUID:(id)arg1 timeout:(double)arg2 reason:(id)arg3 queue:(id)arg4 completion:(id /* block */)arg5;
 
 @end

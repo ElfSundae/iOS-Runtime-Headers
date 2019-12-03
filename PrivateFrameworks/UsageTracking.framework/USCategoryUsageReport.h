@@ -9,11 +9,10 @@
     NSArray * _webUsage;
 }
 
-@property (readonly, copy) NSArray *applicationUsage;
+@property (copy) NSArray *applicationUsage;
 @property (readonly, copy) NSString *categoryIdentifier;
 @property (readonly) double totalUsageTime;
 @property (readonly, copy) NSArray *webUsage;
-@property (readonly, copy) NSDictionary *webUsageByDomain;
 
 + (bool)supportsSecureCoding;
 
@@ -25,8 +24,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCategoryIdentifier:(id)arg1 totalUsageTime:(double)arg2 applicationUsage:(id)arg3 webUsage:(id)arg4;
 - (id)initWithCoder:(id)arg1;
+- (void)setApplicationUsage:(id)arg1;
 - (double)totalUsageTime;
 - (id)webUsage;
-- (id)webUsageByDomain;
 
 @end

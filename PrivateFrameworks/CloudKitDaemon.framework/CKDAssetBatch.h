@@ -10,6 +10,7 @@
     NSData * _authPutResponse;
     NSDictionary * _authPutResponseHeaders;
     bool  _isFailed;
+    bool  _useMMCSEncryptionV2;
 }
 
 @property (nonatomic, readonly) NSArray *allMMCSItems;
@@ -25,6 +26,7 @@
 @property (nonatomic) bool isFailed;
 @property (readonly) unsigned int size;
 @property (readonly) unsigned int sizeUpperBound;
+@property (nonatomic) bool useMMCSEncryptionV2;
 
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
@@ -56,7 +58,9 @@
 - (void)setAuthPutResponse:(id)arg1;
 - (void)setAuthPutResponseHeaders:(id)arg1;
 - (void)setIsFailed:(bool)arg1;
+- (void)setUseMMCSEncryptionV2:(bool)arg1;
 - (unsigned int)size;
 - (unsigned int)sizeUpperBound;
+- (bool)useMMCSEncryptionV2;
 
 @end

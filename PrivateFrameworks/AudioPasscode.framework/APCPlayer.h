@@ -3,6 +3,7 @@
  */
 
 @interface APCPlayer : NSObject {
+    unsigned long long  _callbackTimingMSec;
     AUPasscodeCodecConfiguration * _codecConfig;
     struct NSData { Class x1; } * _configurationData;
     NSObject<OS_dispatch_queue> * _dispatchQueue;
@@ -13,6 +14,7 @@
     APCPlayerEngine * _playerEngine;
 }
 
+@property (nonatomic) unsigned long long callbackTimingMSec;
 @property (nonatomic, readonly, copy) NSData *configurationData;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *dispatchQueue;
 @property (nonatomic, readonly) APCPlayerEmbedInfo *embeddingInfo;
@@ -25,6 +27,7 @@
 + (id)urlForCarrierAsset:(unsigned long long)arg1;
 
 - (void).cxx_destruct;
+- (unsigned long long)callbackTimingMSec;
 - (struct NSData { Class x1; }*)configurationData;
 - (id)createCompatibleConfigForCapabilites:(id)arg1;
 - (id)dispatchQueue;
@@ -38,6 +41,7 @@
 - (id)payload;
 - (float)preparePayload:(id)arg1 usingCarrierAsset:(unsigned long long)arg2 error:(id*)arg3;
 - (float)preparePayload:(id)arg1 usingCarrierAtURL:(id)arg2 error:(id*)arg3;
+- (void)setCallbackTimingMSec:(unsigned long long)arg1;
 - (void)setDispatchQueue:(id)arg1;
 - (bool)startSend;
 - (bool)startSendAtTime:(unsigned long long)arg1 withBeginning:(id /* block */)arg2;

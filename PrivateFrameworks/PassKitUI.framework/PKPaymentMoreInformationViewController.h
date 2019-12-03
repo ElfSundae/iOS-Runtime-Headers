@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
  */
 
-@interface PKPaymentMoreInformationViewController : PKViewController <UITextViewDelegate> {
+@interface PKPaymentMoreInformationViewController : UIViewController <UITextViewDelegate> {
     UIButton * _businessChatButton;
     NSString * _businessChatButtonTitle;
     PKBusinessChatController * _businessChatController;

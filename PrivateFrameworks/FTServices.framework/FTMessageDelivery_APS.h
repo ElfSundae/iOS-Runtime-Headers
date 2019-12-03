@@ -10,6 +10,7 @@
     NSMutableDictionary * _deathTimerMap;
     NSMutableArray * _enabledTopics;
     NSMutableDictionary * _ftMessageMap;
+    <FTMessageDeliveryAPSMobileNetworkManager> * _mobileNetworkManager;
     NSMutableDictionary * _retriesMap;
     NSMutableDictionary * _startDateMap;
     NSMutableDictionary * _timerMap;
@@ -66,7 +67,7 @@
 - (void)connection:(id)arg1 didSendOutgoingMessage:(id)arg2;
 - (void)dealloc;
 - (id)init;
-- (id)initWithAPSConnection:(id)arg1;
+- (id)initWithAPSConnection:(id)arg1 mobileNetworkManager:(id)arg2;
 - (void)invalidate;
 - (long long)maxLargeMessageSize;
 - (long long)maxMessageSize;

@@ -20,6 +20,8 @@
 + (id)eventStream;
 
 - (bool)areAssertionsPreventingRestart;
+- (void)deactivate;
+- (void)dealloc;
 - (bool)lastPreventingRestartAssertionsStatus;
 - (id)loadState;
 - (int)preventIdleSleepAssertionsToken;

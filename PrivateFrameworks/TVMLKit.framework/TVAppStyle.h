@@ -124,7 +124,8 @@
         } ; 
         bool isValueSet; 
     }  _padding;
-    NSMutableDictionary * _stylesMap;
+    NSString * _prototype;
+    NSMutableDictionary * _valuesByStyle;
     struct { 
         union { 
             struct UIEdgeInsets { 
@@ -150,10 +151,12 @@
 @property (nonatomic) struct { union { struct UIEdgeInsets { double x_1_2_1; double x_1_2_2; double x_1_2_3; double x_1_2_4; } x_1_1_1; double x_1_1_2; } x1; bool x2; } minHeight;
 @property (nonatomic) struct { union { struct UIEdgeInsets { double x_1_2_1; double x_1_2_2; double x_1_2_3; double x_1_2_4; } x_1_1_1; double x_1_1_2; } x1; bool x2; } minWidth;
 @property (nonatomic) struct { union { struct UIEdgeInsets { double x_1_2_1; double x_1_2_2; double x_1_2_3; double x_1_2_4; } x_1_1_1; double x_1_1_2; } x1; bool x2; } padding;
+@property (nonatomic, copy) NSString *prototype;
+@property (nonatomic, readonly) NSMutableDictionary *valuesByStyle;
 @property (nonatomic) struct { union { struct UIEdgeInsets { double x_1_2_1; double x_1_2_2; double x_1_2_3; double x_1_2_4; } x_1_1_1; double x_1_1_2; } x1; bool x2; } width;
 
 - (void).cxx_destruct;
-- (void)_setValue:(id)arg1 forStyleProperty:(id)arg2;
+- (void)_setValue:(id)arg1 forStyle:(id)arg2;
 - (id)backgroundColor;
 - (struct { union { struct UIEdgeInsets { double x_1_2_1; double x_1_2_2; double x_1_2_3; double x_1_2_4; } x_1_1_1; double x_1_1_2; } x1; bool x2; })borderRadius;
 - (struct { union { struct UIEdgeInsets { double x_1_2_1; double x_1_2_2; double x_1_2_3; double x_1_2_4; } x_1_1_1; double x_1_1_2; } x1; bool x2; })fontSize;
@@ -165,6 +168,7 @@
 - (struct { union { struct UIEdgeInsets { double x_1_2_1; double x_1_2_2; double x_1_2_3; double x_1_2_4; } x_1_1_1; double x_1_1_2; } x1; bool x2; })minHeight;
 - (struct { union { struct UIEdgeInsets { double x_1_2_1; double x_1_2_2; double x_1_2_3; double x_1_2_4; } x_1_1_1; double x_1_1_2; } x1; bool x2; })minWidth;
 - (struct { union { struct UIEdgeInsets { double x_1_2_1; double x_1_2_2; double x_1_2_3; double x_1_2_4; } x_1_1_1; double x_1_1_2; } x1; bool x2; })padding;
+- (id)prototype;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setBorderRadius:(struct { union { struct UIEdgeInsets { double x_1_2_1; double x_1_2_2; double x_1_2_3; double x_1_2_4; } x_1_1_1; double x_1_1_2; } x1; bool x2; })arg1;
 - (void)setFontSize:(struct { union { struct UIEdgeInsets { double x_1_2_1; double x_1_2_2; double x_1_2_3; double x_1_2_4; } x_1_1_1; double x_1_1_2; } x1; bool x2; })arg1;
@@ -176,8 +180,10 @@
 - (void)setMinHeight:(struct { union { struct UIEdgeInsets { double x_1_2_1; double x_1_2_2; double x_1_2_3; double x_1_2_4; } x_1_1_1; double x_1_1_2; } x1; bool x2; })arg1;
 - (void)setMinWidth:(struct { union { struct UIEdgeInsets { double x_1_2_1; double x_1_2_2; double x_1_2_3; double x_1_2_4; } x_1_1_1; double x_1_1_2; } x1; bool x2; })arg1;
 - (void)setPadding:(struct { union { struct UIEdgeInsets { double x_1_2_1; double x_1_2_2; double x_1_2_3; double x_1_2_4; } x_1_1_1; double x_1_1_2; } x1; bool x2; })arg1;
+- (void)setPrototype:(id)arg1;
 - (void)setWidth:(struct { union { struct UIEdgeInsets { double x_1_2_1; double x_1_2_2; double x_1_2_3; double x_1_2_4; } x_1_1_1; double x_1_1_2; } x1; bool x2; })arg1;
 - (id)valueForStyle:(id)arg1;
+- (id)valuesByStyle;
 - (struct { union { struct UIEdgeInsets { double x_1_2_1; double x_1_2_2; double x_1_2_3; double x_1_2_4; } x_1_1_1; double x_1_1_2; } x1; bool x2; })width;
 
 @end

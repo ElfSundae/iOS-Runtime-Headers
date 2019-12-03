@@ -4,13 +4,15 @@
 
 @interface GEOProactiveWidgetItem : PBCodable <NSCopying> {
     struct { 
-        unsigned int timeSinceStart : 1; 
-    }  _has;
+        unsigned int has_timeSinceStart : 1; 
+    }  _flags;
     int  _timeSinceStart;
 }
 
 @property (nonatomic) bool hasTimeSinceStart;
 @property (nonatomic) int timeSinceStart;
+
++ (bool)isValid:(id)arg1;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -20,6 +22,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasTimeSinceStart:(bool)arg1;
 - (void)setTimeSinceStart:(int)arg1;

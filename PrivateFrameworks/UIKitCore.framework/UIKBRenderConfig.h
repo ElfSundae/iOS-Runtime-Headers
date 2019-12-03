@@ -5,6 +5,7 @@
 @interface UIKBRenderConfig : NSObject <NSCopying> {
     double  _blurRadius;
     double  _blurSaturation;
+    _UIButtonBarButtonVisualProvider * _buttonBarVisualProvider;
     long long  _forceQuality;
     double  _keycapOpacity;
     bool  _lightKeyboard;
@@ -16,6 +17,7 @@
 @property (nonatomic, readonly) long long blurEffectStyle;
 @property (nonatomic) double blurRadius;
 @property (nonatomic) double blurSaturation;
+@property (nonatomic, readonly) _UIButtonBarButtonVisualProvider *buttonBarVisualProvider;
 @property (nonatomic) long long forceQuality;
 @property (nonatomic) double keycapOpacity;
 @property (nonatomic) bool lightKeyboard;
@@ -33,6 +35,7 @@
 - (long long)blurEffectStyle;
 - (double)blurRadius;
 - (double)blurSaturation;
+- (id)buttonBarVisualProvider;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (long long)forceQuality;

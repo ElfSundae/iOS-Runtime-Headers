@@ -17,7 +17,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_getBBSectionInfoExtendedProperties:(id)arg1 withCompletion:(id /* block */)arg2;
+- (void)_getUniversalSectionIDs:(id)arg1 sectionIDEnumerator:(id)arg2 completion:(id /* block */)arg3;
 - (void)_reloadSectionInfosWithCompletion:(id /* block */)arg1;
 - (void)_settingsGatewayReconnected:(id)arg1;
 - (void)dealloc;
@@ -28,6 +28,7 @@
 - (void)observer:(id)arg1 removeSection:(id)arg2;
 - (void)observer:(id)arg1 updateSectionInfo:(id)arg2;
 - (void)reloadWithCompletion:(id /* block */)arg1;
+- (id)sectionInfoForSectionID:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)updateSectionInfoBySectionIDs:(id)arg1 completion:(id /* block */)arg2;
 

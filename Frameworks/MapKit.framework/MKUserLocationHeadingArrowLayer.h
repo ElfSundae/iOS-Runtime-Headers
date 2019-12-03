@@ -3,9 +3,12 @@
  */
 
 @interface MKUserLocationHeadingArrowLayer : CAShapeLayer <MKUserLocationHeadingAnimatableIndicator, MKUserLocationHeadingIndicator> {
+    double  _baseHalfAngle;
+    double  _baseRadius;
     double  _headingRadians;
     double  _maxUncertaintyAngleToShowArrow;
-    MKUserLocationView * _userLocationView;
+    double  _tipRadius;
+    _MKPuckAnnotationView * _userLocationView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -13,7 +16,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double headingRadians;
 @property (readonly) Class superclass;
-@property (nonatomic, readonly) MKUserLocationView *userLocationView;
+@property (nonatomic, readonly) _MKPuckAnnotationView *userLocationView;
 
 - (void).cxx_destruct;
 - (id)_animationToSetVisible:(bool)arg1;

@@ -19,7 +19,7 @@
     }  _private;
 }
 
-- (const struct MTLTileRenderPipelineDescriptorPrivate { id x1; /* Warning: Unrecognized filer type: '?' using 'void*' */ void*x2; void*x3; unsigned long long x4; unsigned long long x5; void*x6; id x7; bool x8; unsigned long long x9; unsigned long long x10; id x11; }*)_descriptorPrivate;
+- (const struct MTLTileRenderPipelineDescriptorPrivate { id x1; union { unsigned long long x_2_1_1; unsigned long long x_2_1_2; } x2; id x3; id x4; bool x5; unsigned long long x6; unsigned long long x7; id x8; unsigned short x9; }*)_descriptorPrivate;
 - (id)colorAttachments;
 - (unsigned long long)colorSampleCount;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

@@ -29,7 +29,6 @@
 - (id)jsonData;
 - (bool)readFrom:(id)arg1;
 - (id)reason;
-- (bool)requiresQueryId;
 - (void)setCode:(double)arg1;
 - (void)setDomain:(id)arg1;
 - (void)setReason:(id)arg1;

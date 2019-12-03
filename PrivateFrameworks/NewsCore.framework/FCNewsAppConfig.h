@@ -28,6 +28,7 @@
 
 @property (nonatomic, readonly) NSDictionary *analyticsContentTypeConfigsByContentTypeByEnvironment;
 @property (nonatomic, readonly) long long analyticsEndpointMaxPayloadSize;
+@property (nonatomic, readonly) NSString *anfRenderingConfiguration;
 @property (nonatomic, readonly) long long appConfigRefreshRate;
 @property (nonatomic, readonly) double articleDiversificationSimilarityExpectationEnd;
 @property (nonatomic, readonly) double articleDiversificationSimilarityExpectationStart;
@@ -56,6 +57,7 @@
 @property (nonatomic, readonly) bool diversifyOptionalTopStories;
 @property (nonatomic, readonly) NSString *editorialChannelID;
 @property (nonatomic, readonly) NSString *editorialGemsSectionID;
+@property (nonatomic, readonly) long long emailSignupRequiredAppLaunchCount;
 @property (nonatomic, readonly) NSString *embedConfigurationAssetID;
 @property (nonatomic, readonly) bool enableBadgeInSpotlightTabBar;
 @property (nonatomic, readonly) long long endOfArticleMaxInaccessiblePaidArticleCount;
@@ -83,6 +85,7 @@
 @property (nonatomic, readonly) NSString *issueArticleRecirculationConfigJSON;
 @property (nonatomic, readonly) NSDictionary *languageConfigDictionary;
 @property (nonatomic, readonly) NSDate *lastModificationDate;
+@property (nonatomic, readonly) unsigned long long likeDislikeBehavior;
 @property (nonatomic, readonly) long long lowStorageThreshold;
 @property (nonatomic, readonly) NSString *magazinesConfigRecordID;
 @property (nonatomic, readonly) long long maxRetriesForDroppedFeeds;
@@ -90,6 +93,8 @@
 @property (nonatomic, readonly) long long maximumPaidSubscriptionGroupSizeiPad;
 @property (nonatomic, readonly) long long maximumPaidSubscriptionGroupSizeiPhone;
 @property (nonatomic, readonly) long long maximumTimesHeadlineInPaidSubscriptionGroup;
+@property (nonatomic, readonly) long long maximumTrendingGroupSizeiPad;
+@property (nonatomic, readonly) long long maximumTrendingGroupSizeiPhone;
 @property (nonatomic, readonly) NSArray *mediaSharingBlacklistedChannelIDs;
 @property (nonatomic, readonly) long long minimumDistanceBetweenImageOnTopTiles;
 @property (nonatomic, readonly) long long minimumDurationBetweenForYouGroupsWeekday;
@@ -176,6 +181,7 @@
 - (id)analyticsContentTypeConfigsByContentTypeByEnvironment;
 - (long long)analyticsEndpointMaxPayloadSize;
 - (id)analyticsEnvelopeContentTypeConfigsForEnvironment:(unsigned long long)arg1;
+- (id)anfRenderingConfiguration;
 - (long long)appConfigRefreshRate;
 - (double)articleDiversificationSimilarityExpectationEnd;
 - (double)articleDiversificationSimilarityExpectationStart;
@@ -204,6 +210,7 @@
 - (bool)diversifyOptionalTopStories;
 - (id)editorialChannelID;
 - (id)editorialGemsSectionID;
+- (long long)emailSignupRequiredAppLaunchCount;
 - (id)embedConfigurationAssetID;
 - (bool)enableBadgeInSpotlightTabBar;
 - (long long)endOfArticleMaxInaccessiblePaidArticleCount;
@@ -240,6 +247,7 @@
 - (id)jsonEncodableObject;
 - (id)languageConfigDictionary;
 - (id)lastModificationDate;
+- (unsigned long long)likeDislikeBehavior;
 - (id)localizedStorefrontID;
 - (long long)lowStorageThreshold;
 - (id)magazinesConfigRecordID;
@@ -248,6 +256,8 @@
 - (long long)maximumPaidSubscriptionGroupSizeiPad;
 - (long long)maximumPaidSubscriptionGroupSizeiPhone;
 - (long long)maximumTimesHeadlineInPaidSubscriptionGroup;
+- (long long)maximumTrendingGroupSizeiPad;
+- (long long)maximumTrendingGroupSizeiPhone;
 - (id)mediaSharingBlacklistedChannelIDs;
 - (long long)minimumDistanceBetweenImageOnTopTiles;
 - (long long)minimumDurationBetweenForYouGroupsWeekday;

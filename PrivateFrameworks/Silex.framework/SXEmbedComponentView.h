@@ -18,6 +18,7 @@
         double width; 
         double height; 
     }  _currentlyLayoutingForSize;
+    WKWebsiteDataStore * _dataStore;
     <SXEmbedType> * _embedConfiguration;
     SXEmbedResource * _embedResource;
     <SXEmbedService> * _embedService;
@@ -29,6 +30,7 @@
     bool  _isCurrentlyLoadingEmbedData;
     <SXLayoutInvalidator> * _layoutInvalidator;
     <SXReachabilityProvider> * _reachabilityProvider;
+    SXRelatedWebViewCache * _relatedWebViewCache;
     NFMultiDelegate * _scriptMessageHandler;
     NSString * _userScript;
     SXWebCrashRetryThrottler * _webCrashRetryThrottler;
@@ -42,6 +44,7 @@
 @property (nonatomic) struct CGSize { double x1; double x2; } currentLayoutSize;
 @property (nonatomic) struct CGSize { double x1; double x2; } currentViewportSize;
 @property (nonatomic) struct CGSize { double x1; double x2; } currentlyLayoutingForSize;
+@property (nonatomic, readonly) WKWebsiteDataStore *dataStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) <SXEmbedType> *embedConfiguration;
@@ -56,6 +59,7 @@
 @property (nonatomic) bool isCurrentlyLoadingEmbedData;
 @property (nonatomic, readonly) <SXLayoutInvalidator> *layoutInvalidator;
 @property (nonatomic, readonly) <SXReachabilityProvider> *reachabilityProvider;
+@property (nonatomic, readonly) SXRelatedWebViewCache *relatedWebViewCache;
 @property (nonatomic, readonly) NFMultiDelegate *scriptMessageHandler;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSString *userScript;
@@ -76,6 +80,7 @@
 - (struct CGSize { double x1; double x2; })currentLayoutSize;
 - (struct CGSize { double x1; double x2; })currentViewportSize;
 - (struct CGSize { double x1; double x2; })currentlyLayoutingForSize;
+- (id)dataStore;
 - (void)dealloc;
 - (void)discardContents;
 - (void)displayEmbedIfNeeded;
@@ -91,17 +96,21 @@
 - (void)handleError:(id)arg1;
 - (bool)hasLoadedEmbedData;
 - (bool)hasRegisteredScriptMessageHandlers;
-- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 reachabilityProvider:(id)arg5 embedService:(id)arg6 actionHandler:(id)arg7 layoutInvalidator:(id)arg8;
+- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 reachabilityProvider:(id)arg5 embedService:(id)arg6 actionHandler:(id)arg7 layoutInvalidator:(id)arg8 websiteDataStore:(id)arg9 relatedWebViewCache:(id)arg10;
 - (id)initialNavigation;
 - (double)initialScale;
 - (bool)isCurrentlyLoadingEmbedData;
 - (id)layoutInvalidator;
 - (void)layoutWebViewForSize:(struct CGSize { double x1; double x2; })arg1;
+- (void)loadComponent:(id)arg1;
 - (void)loadEmbedData;
 - (void)loadEmbedIfNeeded;
+- (void)loadWebView;
 - (void)loadWebViewIfNeeded;
 - (void)presentComponentWithChanges:(struct { bool x1; bool x2; })arg1;
+- (void)prewarmWebView;
 - (id)reachabilityProvider;
+- (id)relatedWebViewCache;
 - (void)reloadEmbed;
 - (void)removeScriptMessageHandlers;
 - (void)renderContents;

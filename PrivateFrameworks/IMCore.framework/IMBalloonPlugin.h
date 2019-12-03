@@ -44,6 +44,7 @@
 @property (nonatomic, readonly) unsigned long long presentationContexts;
 @property (nonatomic, readonly) bool shouldHideAppSwitcher;
 @property (nonatomic, readonly) bool showInBrowser;
+@property (nonatomic, readonly) bool showableInBrowser;
 @property (nonatomic, readonly) NSString *version;
 
 // Image: /System/Library/PrivateFrameworks/IMCore.framework/IMCore
@@ -101,7 +102,9 @@
 - (void)setPlugin:(id)arg1;
 - (void)setPluginLoaded:(bool)arg1;
 - (bool)shouldHideAppSwitcher;
+- (bool)shouldShowForRecipients:(id)arg1;
 - (bool)showInBrowser;
+- (bool)showableInBrowser;
 - (bool)supportsControllerReuse;
 - (void)unloadBundle;
 - (id)version;
@@ -111,10 +114,10 @@
 - (id)__ck_attributionInfo;
 - (id)__ck_badgeImage;
 - (id)__ck_breadcrumbImage;
-- (id)__ck_browserImage;
-- (id)__ck_browserImageGenerateSynchronously:(bool)arg1;
+- (id)__ck_browserImageForInterfaceStyle:(long long)arg1;
+- (id)__ck_browserImageGenerateSynchronously:(bool)arg1 interfaceStyle:(long long)arg2;
 - (id)__ck_browserImageName:(bool*)arg1;
-- (void)__ck_prefetchBrowserImage;
+- (void)__ck_prefetchBrowserImageForInterfaceStyle:(long long)arg1;
 - (id)__ck_statusImage;
 - (id)__ck_statusImageForTransport;
 - (id)__ck_statusJPEGImageDataForTransportWithCompressionFactor:(double)arg1;

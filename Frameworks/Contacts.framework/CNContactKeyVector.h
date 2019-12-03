@@ -12,18 +12,16 @@
 @property (readonly) Class superclass;
 
 + (id)freezeIfClassIsImmutable:(id)arg1;
-+ (unsigned long long)indexOfKey:(id)arg1;
 + (id)keyVector;
 + (id)keyVectorWithAllKeys;
 + (id)keyVectorWithKey:(id)arg1;
 + (id)keyVectorWithKeys:(id)arg1;
-+ (struct __CFDictionary { }*)propertyKeysToIndicesByPointer;
-+ (struct __CFDictionary { }*)propertyKeysToIndicesByValue;
 + (bool)supportsSecureCoding;
 
 - (long long*)_bitBuckets;
 - (void)_checkStorageSize;
 - (void)_cn_executeGetterForRepresentedKeys:(id /* block */)arg1;
+- (id)_cn_ignorableKeys;
 - (id)_cn_optionalKeys;
 - (id)_cn_requiredKeys;
 - (bool)containsAllKeys;
@@ -43,6 +41,7 @@
 - (id)keyVectorByAddingKey:(id)arg1;
 - (id)keyVectorByAddingKeys:(id)arg1;
 - (id)keyVectorByAddingKeysFromKeyVector:(id)arg1;
+- (id)keyVectorByRemovingKeysFromKeyVector:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 
 @end

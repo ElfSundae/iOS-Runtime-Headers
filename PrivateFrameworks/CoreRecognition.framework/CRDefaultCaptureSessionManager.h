@@ -76,6 +76,7 @@
 - (id)cameraMode;
 - (long long)cameraPosition;
 - (struct CGSize { double x1; double x2; })cameraResolution;
+- (void)cameraSessionWasInterrupted:(id)arg1;
 - (id)captureDeviceWithIdentifier:(id)arg1;
 - (id)captureDeviceWithPosition:(long long)arg1;
 - (id)captureSession;
@@ -86,6 +87,7 @@
 - (struct CGPoint { double x1; double x2; })convertCameraPoint:(struct CGPoint { double x1; double x2; })arg1 fromLayer:(id)arg2;
 - (struct CGPoint { double x1; double x2; })convertCameraPoint:(struct CGPoint { double x1; double x2; })arg1 toLayer:(id)arg2;
 - (struct CGPoint { double x1; double x2; })convertCameraPoint:(struct CGPoint { double x1; double x2; })arg1 toLayer:(id)arg2 flipped:(bool)arg3;
+- (struct CGPoint { double x1; double x2; })convertCameraPointOCR:(struct CGPoint { double x1; double x2; })arg1 toLayer:(id)arg2 flipped:(bool)arg3;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })convertCameraRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 fromLayer:(id)arg2;
 - (id)currentDeviceID;
 - (id)deviceInput;

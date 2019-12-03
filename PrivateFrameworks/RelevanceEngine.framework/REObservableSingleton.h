@@ -9,9 +9,9 @@
 @property (nonatomic, readonly) unsigned long long numberOfObservers;
 
 - (void).cxx_destruct;
+- (id)_init;
 - (void)addObserver:(id)arg1;
 - (void)enumerateObservers:(id /* block */)arg1;
-- (id)init;
 - (unsigned long long)numberOfObservers;
 - (void)removeObserver:(id)arg1;
 

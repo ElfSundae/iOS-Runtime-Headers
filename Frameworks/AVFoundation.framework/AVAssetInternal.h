@@ -8,7 +8,7 @@
     NSArray * availableChapterLanguages;
     NSArray * availableChapterLocales;
     NSArray * chapterGroupInfo;
-    long long  loadChapterInfoOnce;
+    AVDispatchOnce * loadChapterInfoOnce;
     <AVLoggingIdentifier> * loggingIdentifier;
     AVWeakReference * weakReference;
 }

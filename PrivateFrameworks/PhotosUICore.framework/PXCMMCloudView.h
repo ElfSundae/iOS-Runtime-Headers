@@ -14,6 +14,7 @@
     UIImageView * _graphicImageView;
     UIButton * _learnMoreButton;
     PXRoundedCornerOverlayView * _roundedCornerOverlayView;
+    unsigned long long  _style;
 }
 
 @property (nonatomic, readonly) UILabel *bodyLabel;
@@ -23,6 +24,7 @@
 @property (nonatomic, readonly) PXGradientView *graphicGradientView;
 @property (nonatomic, readonly) UIImageView *graphicImageView;
 @property (nonatomic, readonly) UIButton *learnMoreButton;
+@property (nonatomic, readonly) unsigned long long style;
 
 - (void).cxx_destruct;
 - (id)_constrainedFontForTextStyle:(id)arg1 maximumContentSizeCategory:(id)arg2;
@@ -37,12 +39,13 @@
 - (id)dismissButton;
 - (id)graphicGradientView;
 - (id)graphicImageView;
-- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 style:(unsigned long long)arg2;
 - (void)layoutSubviews;
 - (id)learnMoreButton;
 - (void)setDelegate:(id)arg1;
 - (void)setDisableDismissAction:(bool)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
+- (unsigned long long)style;
 - (void)traitCollectionDidChange:(id)arg1;
 
 @end

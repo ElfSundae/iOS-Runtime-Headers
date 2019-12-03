@@ -6,7 +6,7 @@
 
 + (void)_updateRowHeightForContentSizeCategory;
 + (id)hyphenatableStringForString:(id)arg1;
-+ (id)iconForBundleIdentifier:(id)arg1 withFormat:(int)arg2;
++ (id)iconForBundleIdentifier:(id)arg1;
 + (bool)isInternalBuild;
 + (id)preferredTraitCollectionForTraitCollection:(id)arg1;
 + (double)rowHeight;

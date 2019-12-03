@@ -17,7 +17,6 @@
 @property (readonly) NSString *displayName;
 @property (readonly) NSArray *handles;
 @property (readonly) unsigned long long hash;
-@property (readonly) NSString *idsCanonicalDestination;
 @property (readonly) NSArray *idsCanonicalDestinations;
 @property (readonly) NSString *isoCountryCode;
 @property (readonly) NSString *mostRecentCallInfo;
@@ -35,7 +34,6 @@
 - (id)displayName;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)handles;
-- (id)idsCanonicalDestination;
 - (id)idsCanonicalDestinations;
 - (id)init;
 - (id)initWithRecentCall:(id)arg1;

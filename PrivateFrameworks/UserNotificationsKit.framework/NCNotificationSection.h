@@ -3,20 +3,20 @@
  */
 
 @interface NCNotificationSection : NSObject {
-    NSMutableDictionary * _coalescedNotifications;
+    NSMutableDictionary * _requests;
 }
 
-@property (nonatomic, retain) NSMutableDictionary *coalescedNotifications;
-@property (nonatomic, readonly) unsigned long long notificationsCount;
+@property (nonatomic, readonly) unsigned long long notificationRequestsCount;
+@property (nonatomic, retain) NSMutableDictionary *requests;
 
 - (void).cxx_destruct;
-- (id)addNotificationRequest:(id)arg1;
-- (id)coalescedNotificationForThreadIdentifier:(id)arg1;
-- (id)coalescedNotifications;
+- (bool)addNotificationRequest:(id)arg1;
 - (id)init;
-- (unsigned long long)notificationsCount;
-- (id)removeNotificationRequest:(id)arg1;
-- (id)replaceNotificationRequest:(id)arg1;
-- (void)setCoalescedNotifications:(id)arg1;
+- (id)notificationRequestMatchingNotificationIdentifier:(id)arg1;
+- (unsigned long long)notificationRequestsCount;
+- (bool)removeNotificationRequest:(id)arg1;
+- (bool)replaceNotificationRequest:(id)arg1;
+- (id)requests;
+- (void)setRequests:(id)arg1;
 
 @end

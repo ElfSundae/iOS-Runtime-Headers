@@ -28,12 +28,12 @@
 
 + (id)tableWithResources:(id)arg1;
 
+- (void).cxx_destruct;
 - (id)columnFilters;
 - (id)dataAreaBorderDxf;
 - (unsigned long long)dataAreaBorderDxfIndex;
 - (id)dataAreaDxf;
 - (unsigned long long)dataAreaDxfIndex;
-- (void)dealloc;
 - (id)description;
 - (id)displayName;
 - (id)headerRowBorderDxf;

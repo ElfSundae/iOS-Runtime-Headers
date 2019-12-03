@@ -25,6 +25,7 @@
 - (void)_authenticatedRepairCloudDataProtectionStateWithCompletion:(id /* block */)arg1;
 - (void)_authenticatedShouldPerformRepairWithCompletion:(id /* block */)arg1;
 - (void)_confirmCDPEligibilityWithCompletion:(id /* block */)arg1;
+- (bool)_disableAsyncModeRequested;
 - (void)_disableCloudDataProtectionWithCompletion:(id /* block */)arg1;
 - (void)_enableKVSForAccount:(id)arg1 store:(id)arg2 completion:(id /* block */)arg3;
 - (void)_enableSecureBackupWithCircleJoinResult:(id)arg1 completion:(id /* block */)arg2;
@@ -35,6 +36,7 @@
 - (void)_handlePreflightError:(id)arg1 completion:(id /* block */)arg2;
 - (void)_handleRecoveryResetRequestWithCompletion:(id /* block */)arg1;
 - (void)_handleiCDPStatusCheckError:(id)arg1 completion:(id /* block */)arg2;
+- (bool)_isICloudKeychainDisabledByManagementProfile;
 - (void)_performInteractivelyAuthenticatedRepair:(id /* block */)arg1;
 - (void)_postRecoveryEnableSecureBackupWithContext:(id)arg1 completion:(id /* block */)arg2;
 - (id)_predicateForRecordUpgradeCheck;

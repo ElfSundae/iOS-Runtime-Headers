@@ -9,8 +9,8 @@
 
 @property (nonatomic) bool assertForCollisions;
 
+- (void).cxx_destruct;
 - (bool)assertForCollisions;
-- (void)dealloc;
 - (id)init;
 - (id)objectForKey1:(long long)arg1 key2:(long long)arg2;
 - (void)setAssertForCollisions:(bool)arg1;

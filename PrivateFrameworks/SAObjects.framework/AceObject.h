@@ -6,7 +6,7 @@
     NSString * _aceId;
     NSNumber * _deserializationDuration;
     NSMutableDictionary * _dict;
-    bool  _mutatingCommand;
+    NSNumber * _mutatingCommand;
     NSData * _plistData;
     NSString * _refId;
     NSNumber * _usefulnessScore;
@@ -46,8 +46,8 @@
 - (void)_deserializeFromPlistData;
 - (id)_dict;
 - (id)_initWithMutableDictionary:(id)arg1;
-- (id)_initWithPlistData:(id)arg1 aceId:(id)arg2 refId:(id)arg3;
 - (id)_initWithPlistData:(id)arg1 aceId:(id)arg2 refId:(id)arg3 usefulnessScore:(id)arg4 mutatingCommand:(id)arg5;
+- (bool)_isDeserialized;
 - (id)_serializedData;
 - (id)aceId;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

@@ -41,9 +41,10 @@
 - (id)description;
 - (id)documentLanguageProvider;
 - (id)fontAttributeConstructor;
-- (id)fontDescriptionsForTextStyle:(id)arg1 defaultTextStyles:(id)arg2;
-- (id)fontFaceForTextStyle:(id)arg1 defaultTextStyle:(id)arg2 fontDescriptions:(id)arg3;
-- (id)initWithString:(id)arg1 defaults:(id)arg2 smartFieldFactory:(id)arg3 dataSource:(id)arg4 documentLanguageProvider:(id)arg5 fontAttributesConstructor:(id)arg6;
+- (id)fontDescriptionsForTextStyleFontDescription:(id)arg1 defaultTextStyleFontDesciptions:(id)arg2;
+- (id)fontFaceForTextStyleFontDescription:(id)arg1 defaultTextStyleFontDescription:(id)arg2 fontAttributes:(id)arg3 fontSize:(long long)arg4;
+- (long long)fontSizeForTextStyle:(id)arg1;
+- (id)initWithString:(id)arg1 smartFieldFactory:(id)arg2 dataSource:(id)arg3 documentLanguageProvider:(id)arg4 fontAttributesConstructor:(id)arg5;
 - (id)insertedRangeOffsets;
 - (int)listLabelTypeForListType:(unsigned long long)arg1;
 - (int)listNumberTypeForListType:(unsigned long long)arg1;
@@ -54,10 +55,12 @@
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })rangeForRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })rangeInBounds:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 maxLength:(unsigned long long)arg2;
 - (id)rangesExcludedOfParagraphSpacing;
+- (long long)scaledFontSizeForFontSize:(long long)arg1;
 - (void)setDeletedRangeOffsets:(id)arg1;
 - (void)setInsertedRangeOffsets:(id)arg1;
 - (void)setRangesExcludedOfParagraphSpacing:(id)arg1;
 - (id)smartFieldFactory;
 - (id)string;
+- (void)transform:(id)arg1 forTextStyle:(id)arg2 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3;
 
 @end

@@ -6,15 +6,18 @@
     bool  _autoUpdateEnabled;
     unsigned long long  _skipsAllowed;
     unsigned long long  _type;
+    bool  _useDarkBoot;
 }
 
 @property (nonatomic, readonly) bool autoUpdateEnabled;
 @property (nonatomic) unsigned long long skipsAllowed;
 @property (nonatomic) unsigned long long type;
+@property (nonatomic, readonly) bool useDarkBoot;
 
 + (bool)supportsSecureCoding;
 
 - (void)_setAutoUpdateEnabled:(bool)arg1;
+- (void)_setDarkBoolEnabled:(bool)arg1;
 - (void)_setType:(unsigned long long)arg1;
 - (bool)autoUpdateEnabled;
 - (id)description;
@@ -28,5 +31,6 @@
 - (void)setType:(unsigned long long)arg1;
 - (unsigned long long)skipsAllowed;
 - (unsigned long long)type;
+- (bool)useDarkBoot;
 
 @end

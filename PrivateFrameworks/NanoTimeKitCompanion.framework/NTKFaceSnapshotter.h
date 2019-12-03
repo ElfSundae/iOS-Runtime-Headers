@@ -7,11 +7,14 @@
     NTKFaceSnapshottingWindow * _snapshotWindow;
 }
 
++ (id)defaultModernSnapshotOptions;
++ (id)renderSnapshotFromWindow:(id)arg1;
+
 - (void).cxx_destruct;
 - (void)_hideSnapshotWindow;
-- (id)_mainQueue_renderSnapshot;
 - (void)_mainQueue_takeSnapshotOfFace:(id)arg1 options:(id)arg2 completion:(id /* block */)arg3;
 - (void)_showSnapshotWindowForDevice:(id)arg1;
+- (void)dealloc;
 - (id)init;
 - (void)provideSnapshotOfFace:(id)arg1 completion:(id /* block */)arg2;
 - (void)provideSnapshotOfFace:(id)arg1 options:(id)arg2 completion:(id /* block */)arg3;

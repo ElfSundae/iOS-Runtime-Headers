@@ -5,7 +5,7 @@
 @interface PKPaymentPassTableCell : PSTableCell {
     UIControl * _actionButton;
     CALayer * _cardSnapshotMask;
-    UIView * _cardSnapshotView;
+    UIImageView * _cardSnapshotView;
     <PKPaymentPassTableCellDelegate> * _delegate;
     UILabel * _mainLabel;
     PKPaymentPass * _pass;
@@ -15,7 +15,8 @@
     bool  _showAddButton;
     bool  _showState;
     bool  _showSubTitle;
-    bool  _snapshotLoaded;
+    unsigned int  _snapshotCounter;
+    UIActivityIndicatorView * _snapshotSpinner;
     UIActivityIndicatorView * _spinner;
     UILabel * _subTextLabel;
 }
@@ -23,7 +24,7 @@
 @property (nonatomic, readonly) UIControl *actionButton;
 @property (nonatomic) <PKPaymentPassTableCellDelegate> *delegate;
 @property (nonatomic, readonly) UILabel *mainLabel;
-@property (nonatomic, retain) PKPaymentPass *pass;
+@property (nonatomic, readonly, retain) PKPaymentPass *pass;
 @property (nonatomic, readonly) PKPassFaceViewRendererState *rendererState;
 @property (nonatomic) bool showAddButton;
 @property (nonatomic) bool showSubTitle;
@@ -50,7 +51,7 @@
 - (id)pk_childrenForAppearance;
 - (id)rendererState;
 - (void)setDelegate:(id)arg1;
-- (void)setPass:(id)arg1;
+- (void)setPass:(id)arg1 passView:(id)arg2;
 - (void)setShowAddButton:(bool)arg1;
 - (void)setShowSubTitle:(bool)arg1;
 - (void)setSpecifier:(id)arg1;

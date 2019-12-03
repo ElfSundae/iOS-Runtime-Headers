@@ -4,13 +4,15 @@
 
 @interface GEOLogMsgStateTransit : PBCodable <NSCopying> {
     struct { 
-        unsigned int transitNotAvailableAdvisoryShowing : 1; 
-    }  _has;
+        unsigned int has_transitNotAvailableAdvisoryShowing : 1; 
+    }  _flags;
     bool  _transitNotAvailableAdvisoryShowing;
 }
 
 @property (nonatomic) bool hasTransitNotAvailableAdvisoryShowing;
 @property (nonatomic) bool transitNotAvailableAdvisoryShowing;
+
++ (bool)isValid:(id)arg1;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -20,6 +22,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasTransitNotAvailableAdvisoryShowing:(bool)arg1;
 - (void)setTransitNotAvailableAdvisoryShowing:(bool)arg1;

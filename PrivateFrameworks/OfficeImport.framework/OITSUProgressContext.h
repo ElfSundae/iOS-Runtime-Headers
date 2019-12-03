@@ -17,6 +17,7 @@
 - (double)currentPosition;
 - (id)currentStage;
 - (void)dealloc;
+- (id)description;
 - (void)endStage;
 - (id)init;
 - (void)nextSubStageWillTakeThisManyOfMySteps:(double)arg1;

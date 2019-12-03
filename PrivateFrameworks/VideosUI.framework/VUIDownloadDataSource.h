@@ -10,6 +10,7 @@
     NSArray * _downloadEntities;
     VUIMediaEntitiesFetchController * _downloadedEntitiesFetchController;
     NSMutableDictionary * _episodesDownloadingForShow;
+    NSMutableDictionary * _groupingByShowIdentifier;
     bool  _hasFetchedAllDownloadEntities;
     bool  _hasFetchedAllDownloadedEntities;
     NSArray * _localMediaItems;
@@ -27,23 +28,34 @@
 @property (nonatomic, retain) NSArray *downloadEntities;
 @property (nonatomic, retain) VUIMediaEntitiesFetchController *downloadedEntitiesFetchController;
 @property (nonatomic, retain) NSMutableDictionary *episodesDownloadingForShow;
+@property (nonatomic, retain) NSMutableDictionary *groupingByShowIdentifier;
 @property (nonatomic) bool hasFetchedAllDownloadEntities;
 @property (nonatomic) bool hasFetchedAllDownloadedEntities;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSArray *localMediaItems;
-@property (nonatomic, retain) VUIMediaLibrary *mediaLibrary;
+@property (nonatomic, readonly) VUIMediaLibrary *mediaLibrary;
 @property (nonatomic) bool performingRentalExpirationFetch;
 @property (nonatomic, retain) SSDownloadManager *sDownloadManager;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_addNotificationObservers;
-- (void)_coalesceActivelyDownloadingEntities:(id)arg1;
+- (id)_coalesceActiveDownloadEntitiesAndDownloadedEntities;
+- (id)_createDownloadEntitiesFromLatestDownloads:(id)arg1;
+- (id)_createGroupingByShowIdentifierWithLatestMediaEntityGroups:(id)arg1;
+- (bool)_doesEpisodeSet:(id)arg1 containMediaEntity:(id)arg2;
 - (id)_getActivelyDownloadingAdamIDs;
+- (id)_getDownloadEntityInDownloadEntities:(id)arg1 containingMediaEntity:(id)arg2;
+- (void)_handleDownloadingStateDidChange;
 - (void)_loadActiveDownloads;
 - (void)_loadDownloadedEntities;
+- (void)_notifyDelegatesDownloadsFetchCompletedWithChanges:(bool)arg1;
 - (void)_removeNotifcationObservers;
 - (void)_rentalsDidExpire;
+- (void)_sortDownloadEntitiesByTitle;
+- (void)_updateDownloadEntity:(id*)arg1 withLatestMediaEntity:(id)arg2;
+- (id)_upsertDownloadEntities:(id)arg1 withEpisodesDownloadingForShow:(id)arg2;
+- (void)_upsertEpisodesDownloadingForShowWithMediaEntity:(id)arg1;
 - (id)activeDownloadingEntitiesFetchController;
 - (id)activelyDownloadingAdamIds;
 - (id)activelyDownloadingMediaItems;
@@ -56,6 +68,7 @@
 - (void)downloadManagerDownloadsDidChange:(id)arg1;
 - (id)downloadedEntitiesFetchController;
 - (id)episodesDownloadingForShow;
+- (id)groupingByShowIdentifier;
 - (bool)hasFetchedAllDownloadEntities;
 - (bool)hasFetchedAllDownloadedEntities;
 - (id)initWithMediaLibrary:(id)arg1;
@@ -71,10 +84,10 @@
 - (void)setDownloadEntities:(id)arg1;
 - (void)setDownloadedEntitiesFetchController:(id)arg1;
 - (void)setEpisodesDownloadingForShow:(id)arg1;
+- (void)setGroupingByShowIdentifier:(id)arg1;
 - (void)setHasFetchedAllDownloadEntities:(bool)arg1;
 - (void)setHasFetchedAllDownloadedEntities:(bool)arg1;
 - (void)setLocalMediaItems:(id)arg1;
-- (void)setMediaLibrary:(id)arg1;
 - (void)setPerformingRentalExpirationFetch:(bool)arg1;
 - (void)setSDownloadManager:(id)arg1;
 

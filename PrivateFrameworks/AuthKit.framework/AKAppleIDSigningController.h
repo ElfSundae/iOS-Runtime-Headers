@@ -5,6 +5,7 @@
 @interface AKAppleIDSigningController : NSObject {
     AKAppleIDAuthenticationController * _authenticationController;
     NSXPCConnection * _connection;
+    bool  _isProxy;
     NSXPCListenerEndpoint * _listenerEndpoint;
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
@@ -13,6 +14,7 @@
 }
 
 @property (nonatomic, retain) AKAppleIDAuthenticationController *authenticationController;
+@property (nonatomic) bool isProxy;
 
 - (void).cxx_destruct;
 - (void)_additionalAbsintheHeadersForRequest:(id)arg1 completion:(id /* block */)arg2;
@@ -25,7 +27,9 @@
 - (void)dealloc;
 - (id)init;
 - (id)initWithDaemonXPCEndpoint:(id)arg1;
+- (bool)isProxy;
 - (void)setAuthenticationController:(id)arg1;
+- (void)setIsProxy:(bool)arg1;
 - (void)signaturesForData:(id)arg1 options:(id)arg2 completion:(id /* block */)arg3;
 - (void)signingHeadersForRequest:(id)arg1 completion:(id /* block */)arg2;
 

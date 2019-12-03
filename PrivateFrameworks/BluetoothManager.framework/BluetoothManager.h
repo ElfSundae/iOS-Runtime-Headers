@@ -35,6 +35,7 @@
 - (void)_connectabilityChanged;
 - (void)_connectedStatusChanged;
 - (void)_discoveryStateChanged;
+- (void)_notifyFirstDeviceUnlockCompleted;
 - (void)_pairedStatusChanged;
 - (void)_postNotification:(id)arg1;
 - (void)_postNotificationWithArray:(id)arg1;
@@ -64,7 +65,7 @@
 - (id)connectedDevices;
 - (id)connectingDevices;
 - (void)dealloc;
-- (struct BTDeviceImpl { }*)deviceFromIdentifier:(id)arg1;
+- (id)deviceFromIdentifier:(id)arg1;
 - (bool)devicePairingEnabled;
 - (bool)deviceScanningEnabled;
 - (bool)deviceScanningInProgress;
@@ -81,6 +82,7 @@
 - (id)localAddress;
 - (int)maskLocalDeviceEvents:(unsigned int)arg1;
 - (id)pairedDevices;
+- (id)pairedNonAppleHAEDevices;
 - (void)postNotification:(id)arg1;
 - (void)postNotificationName:(id)arg1 object:(id)arg2;
 - (void)postNotificationName:(id)arg1 object:(id)arg2 error:(id)arg3;

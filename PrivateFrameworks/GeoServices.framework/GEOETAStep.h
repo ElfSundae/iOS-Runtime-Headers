@@ -6,13 +6,14 @@
     unsigned int  _distanceRemaining;
     unsigned int  _expectedTime;
     struct { 
-        unsigned int distanceRemaining : 1; 
-        unsigned int expectedTime : 1; 
-        unsigned int stepID : 1; 
-        unsigned int zilchPointIndex : 1; 
-    }  _has;
+        unsigned int has_distanceRemaining : 1; 
+        unsigned int has_expectedTime : 1; 
+        unsigned int has_stepID : 1; 
+        unsigned int has_zilchPointIndex : 1; 
+    }  _flags;
     unsigned int  _stepID;
     GEOTimeCheckpoints * _timeCheckpoints;
+    PBUnknownFields * _unknownFields;
     int  _zilchPointIndex;
 }
 
@@ -25,9 +26,13 @@
 @property (nonatomic) bool hasZilchPointIndex;
 @property (nonatomic) unsigned int stepID;
 @property (nonatomic, retain) GEOTimeCheckpoints *timeCheckpoints;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic) int zilchPointIndex;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -42,6 +47,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setDistanceRemaining:(unsigned int)arg1;
 - (void)setExpectedTime:(unsigned int)arg1;
@@ -54,6 +60,7 @@
 - (void)setZilchPointIndex:(int)arg1;
 - (unsigned int)stepID;
 - (id)timeCheckpoints;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 - (int)zilchPointIndex;
 

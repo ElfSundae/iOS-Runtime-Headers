@@ -22,17 +22,15 @@
 @property (nonatomic) bool wantsProgress;
 
 - (void).cxx_destruct;
-- (id)_chooseVideoResourceWithManagedObjectContext:(id)arg1 canDownload:(bool*)arg2;
 - (void)_cplDownloadStatusNotification:(id)arg1;
+- (void)_loadAdjustmentInfoFromPath:(id)arg1 intoAdditionalInfo:(id)arg2;
 - (void)_resourceURLReceivedNotification:(id)arg1;
-- (short)_resourceVersionFromVideoRequestVersion:(long long)arg1 assetHasAdjustments:(bool)arg2;
-- (id)_videoChoosingResultsMatchingResourceVersion:(short)arg1 managedObjectContext:(id)arg2;
-- (unsigned int)_videoQualityLevelForRequest;
+- (void)abortClientSide;
 - (id)behaviorSpec;
 - (void)cancel;
 - (id)delegate;
-- (id)initWithAssetObjectID:(id)arg1 size:(struct CGSize { double x1; double x2; })arg2 behaviorSpec:(id)arg3;
-- (id)initWithPlistDictionary:(id)arg1;
+- (id)initWithPlistDictionary:(id)arg1 photoLibrary:(id)arg2;
+- (id)initWithTaskIdentifier:(id)arg1 assetObjectID:(id)arg2 size:(struct CGSize { double x1; double x2; })arg3 behaviorSpec:(id)arg4;
 - (id)plistDictionary;
 - (void)runDaemonSide;
 - (void)setDelegate:(id)arg1;

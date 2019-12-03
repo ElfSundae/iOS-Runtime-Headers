@@ -3,6 +3,7 @@
  */
 
 @interface _INPBPaymentMethodValue : PBCodable <NSCopying, NSSecureCoding, _INPBPaymentMethodValue> {
+    bool  __encodeLegacyGloryData;
     struct { 
         unsigned int type : 1; 
     }  _has;
@@ -13,6 +14,7 @@
     _INPBValueMetadata * _valueMetadata;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool hasIcon;
@@ -28,10 +30,15 @@
 @property (nonatomic) int type;
 @property (nonatomic, retain) _INPBValueMetadata *valueMetadata;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasIcon;
 - (bool)hasIdentificationHint;
 - (bool)hasName;
@@ -40,6 +47,7 @@
 - (unsigned long long)hash;
 - (id)icon;
 - (id)identificationHint;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)name;
 - (bool)readFrom:(id)arg1;

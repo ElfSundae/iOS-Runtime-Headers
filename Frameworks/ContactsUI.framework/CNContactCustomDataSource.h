@@ -5,6 +5,7 @@
 @interface CNContactCustomDataSource : NSObject <CNContactChangesObserver, CNContactDataSource> {
     NSMutableArray * _allContacts;
     bool  _autoUpdateContacts;
+    CNContactFormatter * _contactFormatterImpl;
     CNContactFilter * _filter;
     NSArray * _filteredContacts;
     NSMapTable * _identifiersToIndexes;
@@ -17,6 +18,7 @@
 @property (nonatomic) bool autoUpdateContacts;
 @property (nonatomic, readonly) bool canReload;
 @property (nonatomic, retain) CNContactFormatter *contactFormatter;
+@property (nonatomic, retain) CNContactFormatter *contactFormatterImpl;
 @property (nonatomic, readonly) NSDictionary *contactMatchInfos;
 @property (nonatomic, readonly) NSArray *contacts;
 @property (readonly, copy) NSString *debugDescription;
@@ -47,6 +49,8 @@
 - (bool)canReload;
 - (id)completeContactFromContact:(id)arg1 fromMainStoreOnly:(bool)arg2 keysToFetch:(id)arg3;
 - (void)contactDidChange:(id)arg1;
+- (id)contactFormatter;
+- (id)contactFormatterImpl;
 - (id)contactMatchInfos;
 - (id)contacts;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -67,6 +71,8 @@
 - (id)sections;
 - (void)setAllContacts:(id)arg1;
 - (void)setAutoUpdateContacts:(bool)arg1;
+- (void)setContactFormatter:(id)arg1;
+- (void)setContactFormatterImpl:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setFilter:(id)arg1;
 - (void)setFilteredContacts:(id)arg1;

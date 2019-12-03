@@ -2,15 +2,15 @@
    Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
  */
 
-@interface GEORouteHypothesisRequest : PBRequest <NSCopying> {
+@interface GEORouteHypothesisRequest : PBCodable <NSCopying> {
     double  _arrivalDate;
     GEOMapItemStorage * _destinationLocation;
     double  _expirationDate;
     struct { 
-        unsigned int arrivalDate : 1; 
-        unsigned int expirationDate : 1; 
-        unsigned int transportType : 1; 
-    }  _has;
+        unsigned int has_arrivalDate : 1; 
+        unsigned int has_expirationDate : 1; 
+        unsigned int has_transportType : 1; 
+    }  _flags;
     int  _transportType;
 }
 
@@ -22,6 +22,8 @@
 @property (nonatomic) bool hasExpirationDate;
 @property (nonatomic) bool hasTransportType;
 @property (nonatomic) int transportType;
+
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsTransportType:(id)arg1;
@@ -39,6 +41,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setArrivalDate:(double)arg1;
 - (void)setDestinationLocation:(id)arg1;

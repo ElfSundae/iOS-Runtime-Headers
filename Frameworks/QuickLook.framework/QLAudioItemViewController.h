@@ -5,10 +5,11 @@
 @interface QLAudioItemViewController : QLMediaItemViewController <UIGestureRecognizerDelegate> {
     QLOverlayPlayButton * _playButton;
     bool  _previewIsVisisble;
-    QLWaveformScrubberView * _scrubber;
+    QLVideoScrubberView * _scrubber;
     UIView * _scrubberContainer;
     UIScrollView * _scrubberContainerScrollView;
     double  _scrubberVerticalOffset;
+    QLWaveformScrubberViewProvider * _scrubberViewProvider;
     bool  _scrubbing;
     NSLayoutConstraint * _topScrubber;
 }
@@ -22,9 +23,6 @@
 @property (readonly) Class superclass;
 @property (retain) NSLayoutConstraint *topScrubber;
 
-+ (id)AV_indicatorBackgroundColor;
-+ (id)AV_indicatorForegroundColor;
-
 - (void).cxx_destruct;
 - (void)_tapRecognized:(id)arg1;
 - (id)accessoryView;
@@ -33,7 +31,6 @@
 - (bool)canPerformFirstTimeAppearanceActions:(unsigned long long)arg1;
 - (void)dealloc;
 - (void)didChangePlayingStatus;
-- (bool)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (void)performFirstTimeAppearanceActions:(unsigned long long)arg1;

@@ -8,10 +8,12 @@
 
 @property (nonatomic) <SSDittoHostViewControllerDelegate> *delegate;
 
++ (bool)__shouldHostRemoteTextEffectsWindow;
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)_serviceProxy;
 - (bool)becomeFirstResponder;
 - (id)delegate;

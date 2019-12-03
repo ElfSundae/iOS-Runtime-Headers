@@ -2,20 +2,11 @@
    Image: /System/Library/Frameworks/WebKit.framework/WebKit
  */
 
-@interface WKFormInputControl : NSObject <WKFormPeripheral> {
-    struct RetainPtr<id<WKFormControl> > { 
-        void *m_ptr; 
-    }  _control;
-}
+@interface WKFormInputControl : WKFormPeripheralBase
 
 @property (nonatomic, readonly) NSString *dateTimePickerCalendarType;
 
-- (id).cxx_construct;
-- (void).cxx_destruct;
-- (id)assistantView;
-- (void)beginEditing;
 - (id)dateTimePickerCalendarType;
-- (void)endEditing;
 - (id)initWithView:(id)arg1;
 
 @end

@@ -9,7 +9,7 @@
 }
 
 @property (nonatomic, readonly) <AVTUILogger> *logger;
-@property (nonatomic, readonly) AVTSnapshotBuilder *snapshotBuilder;
+@property (nonatomic, retain) AVTSnapshotBuilder *snapshotBuilder;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *snapshotBuilderQueue;
 
 - (void).cxx_destruct;
@@ -18,6 +18,7 @@
 - (id)initWithSnapshotBuilder:(id)arg1 lockProvider:(id /* block */)arg2 logger:(id)arg3;
 - (id)logger;
 - (id)nts_imageForAvatar:(id)arg1 scope:(id)arg2;
+- (void)setSnapshotBuilder:(id)arg1;
 - (id)snapshotBuilder;
 - (id)snapshotBuilderQueue;
 

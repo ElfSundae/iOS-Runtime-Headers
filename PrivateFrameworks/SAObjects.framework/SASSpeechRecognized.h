@@ -4,6 +4,7 @@
 
 @interface SASSpeechRecognized : SABaseClientBoundCommand
 
+@property (nonatomic, retain) SASAudioAnalytics *audioAnalytics;
 @property (nonatomic) bool eager;
 @property (nonatomic, copy) NSNumber *processedAudioDuration;
 @property (nonatomic, retain) SASRecognition *recognition;
@@ -17,6 +18,7 @@
 + (id)speechRecognized;
 + (id)speechRecognizedWithDictionary:(id)arg1 context:(id)arg2;
 
+- (id)audioAnalytics;
 - (bool)eager;
 - (id)encodedClassName;
 - (id)groupIdentifier;
@@ -26,6 +28,7 @@
 - (id)responseAlternatives;
 - (id)resultId;
 - (id)sessionId;
+- (void)setAudioAnalytics:(id)arg1;
 - (void)setEager:(bool)arg1;
 - (void)setProcessedAudioDuration:(id)arg1;
 - (void)setRecognition:(id)arg1;

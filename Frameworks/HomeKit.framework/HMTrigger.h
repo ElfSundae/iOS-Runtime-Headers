@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/HomeKit.framework/HomeKit
  */
 
-@interface HMTrigger : NSObject <HFStateDumpBuildable, HMFMessageReceiver, HMObjectMerge, NSSecureCoding> {
+@interface HMTrigger : NSObject <HFStateDumpBuildable, HFTriggerProtocol, HMFMessageReceiver, HMObjectMerge, NSSecureCoding> {
     _HMContext * _context;
     HMMutableArray * _currentActionSets;
     bool  _enabled;
@@ -18,11 +18,14 @@
 
 @property (nonatomic, readonly, copy) NSArray *actionSets;
 @property (nonatomic, readonly) _HMContext *context;
+@property (nonatomic, readonly) HMUser *creator;
+@property (nonatomic, readonly) HMDevice *creatorDevice;
 @property (nonatomic, retain) HMMutableArray *currentActionSets;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (getter=isEnabled, nonatomic) bool enabled;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool hf_isShortcutOwned;
 @property (nonatomic, readonly) bool hf_requiresConfirmationToRun;
 @property (nonatomic) HMHome *home;
 @property (nonatomic, copy) NSDate *lastFireDate;
@@ -42,7 +45,7 @@
 - (void).cxx_destruct;
 - (void)__configureWithContext:(id)arg1 home:(id)arg2;
 - (void)_addActionSet:(id)arg1 completionHandler:(id /* block */)arg2;
-- (void)_addActionSetWithCompletionHandler:(id /* block */)arg1;
+- (void)_addActionSetOfType:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)_enable:(bool)arg1 completionHandler:(id /* block */)arg2;
 - (void)_handleTriggerActivatedNotification:(id)arg1;
 - (void)_handleTriggerFired:(id)arg1;
@@ -59,6 +62,7 @@
 - (void)_updateName:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)actionSets;
 - (void)addActionSet:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)addActionSetOfType:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)addActionSetWithCompletionHandler:(id /* block */)arg1;
 - (bool)compatibleWithApp;
 - (id)context;
@@ -97,7 +101,11 @@
 + (id)hf_sanitizeTriggerName:(id)arg1 home:(id)arg2;
 
 - (id)hf_forceDisableReasons;
+- (bool)hf_isShortcutOwned;
+- (id)hf_naturalLanguageNameWithHome:(id)arg1 type:(unsigned long long)arg2;
 - (bool)hf_requiresConfirmationToRun;
+- (bool)hf_shouldDisplayTrigger;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
+- (unsigned long long)hf_triggerType;
 
 @end

@@ -64,9 +64,12 @@
 + (id)clientPackageDatabaseDirectory;
 + (void)destroyClientPackageWithDatabaseBasePath:(id)arg1 UUID:(id)arg2;
 + (void)gcPackagesInDirectory:(id)arg1 dbInUseBlock:(id /* block */)arg2;
-+ (id)packageInDaemonWithBundleIdentifier:(id)arg1 error:(id*)arg2;
++ (id)packageInClientWithBasePath:(id)arg1 error:(id*)arg2;
++ (id)packageInDaemonWithBasePath:(id)arg1 error:(id*)arg2;
++ (id)packageProcessBasePath;
 + (id)packageWithError:(id*)arg1;
 + (id)packageWithPackage:(id)arg1 error:(id*)arg2;
++ (id)stagingPathSuffixForCloudKitCachesDirectoryWithBundleIdentifier:(id)arg1;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -87,6 +90,7 @@
 - (id)assets;
 - (void)beginTransaction;
 - (bool)claimOwnershipWithError:(id*)arg1;
+- (id)clonedPackageInDaemonWithBasePath:(id)arg1 filesDuplicatedIntoDirectory:(id)arg2 error:(id*)arg3;
 - (void)close;
 - (id)databaseBasePath;
 - (void)dealloc;
@@ -120,6 +124,7 @@
 - (void)releaseDB;
 - (void)releaseDBWithRemove:(bool)arg1;
 - (void)removeDB;
+- (bool)removeDBAndDeleteFilesWithError:(id*)arg1;
 - (id)sectionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)sectionCount;
 - (void)setArchiverInfo:(id)arg1;

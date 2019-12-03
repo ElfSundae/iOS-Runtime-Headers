@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
  */
 
-@interface HMDCharacteristicWriteActionModel : HMDBackingStoreModelObject
+@interface HMDCharacteristicWriteActionModel : HMDActionModel
 
 @property (nonatomic, retain) NSString *accessory;
 @property (nonatomic, retain) NSNumber *characteristicID;

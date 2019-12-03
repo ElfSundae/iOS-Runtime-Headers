@@ -204,6 +204,7 @@
 - (id)segmentedBackdrop;
 - (unsigned long long)selectedIndex;
 - (long long)selectedMomentIndex;
+- (id)sendImage;
 - (id)sendMomentButton;
 - (void)setAccessibilityBackdropView:(id)arg1;
 - (void)setAccessibilityCloseBackgroundView:(id)arg1;

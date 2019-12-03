@@ -6,6 +6,8 @@
     NSString * _album;
     NSString * _artist;
     NSData * _artworkDataDigest;
+    NSString * _artworkURL;
+    NSData * _collectionInfoData;
     double  _duration;
     double  _elapsedTime;
     struct { 
@@ -13,6 +15,7 @@
         unsigned int elapsedTime : 1; 
         unsigned int radioStationIdentifier : 1; 
         unsigned int storeAdamID : 1; 
+        unsigned int storeSubscriptionAdamID : 1; 
         unsigned int timestamp : 1; 
         unsigned int uniqueIdentifier : 1; 
         unsigned int playbackRate : 1; 
@@ -28,6 +31,7 @@
     bool  _isAlwaysLive;
     bool  _isExplicitTrack;
     bool  _isMusicApp;
+    NSString * _mediaType;
     float  _playbackRate;
     float  _preferredPlaybackRate;
     NSString * _radioStationHash;
@@ -36,6 +40,7 @@
     int  _repeatMode;
     int  _shuffleMode;
     long long  _storeAdamID;
+    long long  _storeSubscriptionAdamID;
     double  _timestamp;
     NSString * _title;
     unsigned long long  _uniqueIdentifier;
@@ -44,17 +49,22 @@
 @property (nonatomic, retain) NSString *album;
 @property (nonatomic, retain) NSString *artist;
 @property (nonatomic, retain) NSData *artworkDataDigest;
+@property (nonatomic, retain) NSString *artworkURL;
+@property (nonatomic, retain) NSData *collectionInfoData;
 @property (nonatomic) double duration;
 @property (nonatomic) double elapsedTime;
 @property (nonatomic, readonly) bool hasAlbum;
 @property (nonatomic, readonly) bool hasArtist;
 @property (nonatomic, readonly) bool hasArtworkDataDigest;
+@property (nonatomic, readonly) bool hasArtworkURL;
+@property (nonatomic, readonly) bool hasCollectionInfoData;
 @property (nonatomic) bool hasDuration;
 @property (nonatomic) bool hasElapsedTime;
 @property (nonatomic) bool hasIsAdvertisement;
 @property (nonatomic) bool hasIsAlwaysLive;
 @property (nonatomic) bool hasIsExplicitTrack;
 @property (nonatomic) bool hasIsMusicApp;
+@property (nonatomic, readonly) bool hasMediaType;
 @property (nonatomic) bool hasPlaybackRate;
 @property (nonatomic) bool hasPreferredPlaybackRate;
 @property (nonatomic, readonly) bool hasRadioStationHash;
@@ -63,6 +73,7 @@
 @property (nonatomic) bool hasRepeatMode;
 @property (nonatomic) bool hasShuffleMode;
 @property (nonatomic) bool hasStoreAdamID;
+@property (nonatomic) bool hasStoreSubscriptionAdamID;
 @property (nonatomic) bool hasTimestamp;
 @property (nonatomic, readonly) bool hasTitle;
 @property (nonatomic) bool hasUniqueIdentifier;
@@ -70,6 +81,7 @@
 @property (nonatomic) bool isAlwaysLive;
 @property (nonatomic) bool isExplicitTrack;
 @property (nonatomic) bool isMusicApp;
+@property (nonatomic, retain) NSString *mediaType;
 @property (nonatomic) float playbackRate;
 @property (nonatomic) float preferredPlaybackRate;
 @property (nonatomic, retain) NSString *radioStationHash;
@@ -78,6 +90,7 @@
 @property (nonatomic) int repeatMode;
 @property (nonatomic) int shuffleMode;
 @property (nonatomic) long long storeAdamID;
+@property (nonatomic) long long storeSubscriptionAdamID;
 @property (nonatomic) double timestamp;
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic) unsigned long long uniqueIdentifier;
@@ -88,6 +101,8 @@
 - (id)album;
 - (id)artist;
 - (id)artworkDataDigest;
+- (id)artworkURL;
+- (id)collectionInfoData;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -97,12 +112,15 @@
 - (bool)hasAlbum;
 - (bool)hasArtist;
 - (bool)hasArtworkDataDigest;
+- (bool)hasArtworkURL;
+- (bool)hasCollectionInfoData;
 - (bool)hasDuration;
 - (bool)hasElapsedTime;
 - (bool)hasIsAdvertisement;
 - (bool)hasIsAlwaysLive;
 - (bool)hasIsExplicitTrack;
 - (bool)hasIsMusicApp;
+- (bool)hasMediaType;
 - (bool)hasPlaybackRate;
 - (bool)hasPreferredPlaybackRate;
 - (bool)hasRadioStationHash;
@@ -111,6 +129,7 @@
 - (bool)hasRepeatMode;
 - (bool)hasShuffleMode;
 - (bool)hasStoreAdamID;
+- (bool)hasStoreSubscriptionAdamID;
 - (bool)hasTimestamp;
 - (bool)hasTitle;
 - (bool)hasUniqueIdentifier;
@@ -120,6 +139,7 @@
 - (bool)isEqual:(id)arg1;
 - (bool)isExplicitTrack;
 - (bool)isMusicApp;
+- (id)mediaType;
 - (void)mergeFrom:(id)arg1;
 - (float)playbackRate;
 - (float)preferredPlaybackRate;
@@ -132,6 +152,8 @@
 - (void)setAlbum:(id)arg1;
 - (void)setArtist:(id)arg1;
 - (void)setArtworkDataDigest:(id)arg1;
+- (void)setArtworkURL:(id)arg1;
+- (void)setCollectionInfoData:(id)arg1;
 - (void)setDuration:(double)arg1;
 - (void)setElapsedTime:(double)arg1;
 - (void)setHasDuration:(bool)arg1;
@@ -146,12 +168,14 @@
 - (void)setHasRepeatMode:(bool)arg1;
 - (void)setHasShuffleMode:(bool)arg1;
 - (void)setHasStoreAdamID:(bool)arg1;
+- (void)setHasStoreSubscriptionAdamID:(bool)arg1;
 - (void)setHasTimestamp:(bool)arg1;
 - (void)setHasUniqueIdentifier:(bool)arg1;
 - (void)setIsAdvertisement:(bool)arg1;
 - (void)setIsAlwaysLive:(bool)arg1;
 - (void)setIsExplicitTrack:(bool)arg1;
 - (void)setIsMusicApp:(bool)arg1;
+- (void)setMediaType:(id)arg1;
 - (void)setPlaybackRate:(float)arg1;
 - (void)setPreferredPlaybackRate:(float)arg1;
 - (void)setRadioStationHash:(id)arg1;
@@ -160,12 +184,14 @@
 - (void)setRepeatMode:(int)arg1;
 - (void)setShuffleMode:(int)arg1;
 - (void)setStoreAdamID:(long long)arg1;
+- (void)setStoreSubscriptionAdamID:(long long)arg1;
 - (void)setTimestamp:(double)arg1;
 - (void)setTitle:(id)arg1;
 - (void)setUniqueIdentifier:(unsigned long long)arg1;
 - (int)shuffleMode;
 - (id)shuffleModeAsString:(int)arg1;
 - (long long)storeAdamID;
+- (long long)storeSubscriptionAdamID;
 - (double)timestamp;
 - (id)title;
 - (unsigned long long)uniqueIdentifier;

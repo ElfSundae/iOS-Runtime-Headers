@@ -58,6 +58,12 @@
 - (id)succinctDescriptionBuilder;
 - (id)title;
 
+// Image: /System/Library/PrivateFrameworks/SpringBoard.framework/SpringBoard
+
++ (id)defaultNotificationActionForSBAlertItem:(id)arg1;
++ (id)dismissNotificationActionForSBAlertItem:(id)arg1;
++ (id)revealWalletPassNotificationActionForCardItem:(id)arg1;
+
 // Image: /System/Library/PrivateFrameworks/UserNotificationsUIKit.framework/UserNotificationsUIKit
 
 + (id)_notificationActionForAction:(id)arg1 bulletin:(id)arg2 observer:(id)arg3;

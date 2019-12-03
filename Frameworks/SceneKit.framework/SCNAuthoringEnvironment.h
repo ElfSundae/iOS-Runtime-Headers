@@ -16,7 +16,7 @@
         unsigned int allocatedIndicesSize; 
         struct __C3DImage {} *textureImage; 
         struct __C3DTexture {} *texture; 
-        unsigned int drawMode; 
+        unsigned char drawMode; 
         bool orthographic; 
         bool clearDepthBuffer; 
         bool enableDepthTest; 
@@ -52,8 +52,8 @@
         short characterHeight_texture; 
         struct { /* ? */ } *symbolRects; 
     }  _boldTextInfo;
-    struct __C3DFXProgram { struct __C3DEntity { struct __CFRuntimeBase { unsigned long long x_1_2_1; unsigned long long x_1_2_2; } x_1_1_1; void *x_1_1_2; struct __CFString {} *x_1_1_3; struct __CFString {} *x_1_1_4; struct __CFDictionary {} *x_1_1_5; struct __C3DScene {} *x_1_1_6; long long x_1_1_7; } x1; int x2; unsigned int x3 : 1; unsigned int x4 : 1; struct __C3DFXProgramDelegate {} *x5; } * _colorAndTextureProgram;
-    struct __C3DFXProgram { struct __C3DEntity { struct __CFRuntimeBase { unsigned long long x_1_2_1; unsigned long long x_1_2_2; } x_1_1_1; void *x_1_1_2; struct __CFString {} *x_1_1_3; struct __CFString {} *x_1_1_4; struct __CFDictionary {} *x_1_1_5; struct __C3DScene {} *x_1_1_6; long long x_1_1_7; } x1; int x2; unsigned int x3 : 1; unsigned int x4 : 1; struct __C3DFXProgramDelegate {} *x5; } * _colorOnlyProgram;
+    struct __C3DFXProgram { struct __C3DEntity { struct __CFRuntimeBase { unsigned long long x_1_2_1; _Atomic unsigned long long x_1_2_2; } x_1_1_1; void *x_1_1_2; struct __CFString {} *x_1_1_3; struct __CFString {} *x_1_1_4; struct __CFDictionary {} *x_1_1_5; struct __C3DScene {} *x_1_1_6; long long x_1_1_7; } x1; int x2; unsigned int x3 : 1; unsigned int x4 : 1; struct __C3DFXProgramDelegate {} *x5; } * _colorAndTextureProgram;
+    struct __C3DFXProgram { struct __C3DEntity { struct __CFRuntimeBase { unsigned long long x_1_2_1; _Atomic unsigned long long x_1_2_2; } x_1_1_1; void *x_1_1_2; struct __CFString {} *x_1_1_3; struct __CFString {} *x_1_1_4; struct __CFDictionary {} *x_1_1_5; struct __C3DScene {} *x_1_1_6; long long x_1_1_7; } x1; int x2; unsigned int x3 : 1; unsigned int x4 : 1; struct __C3DFXProgramDelegate {} *x5; } * _colorOnlyProgram;
     unsigned int  _consoleLineCount;
     id  _delegate;
     struct __C3DRasterizerStates { } * _depthOffCullOffStates;
@@ -70,7 +70,7 @@
         unsigned int allocatedIndicesSize; 
         struct __C3DImage {} *textureImage; 
         struct __C3DTexture {} *texture; 
-        unsigned int drawMode; 
+        unsigned char drawMode; 
         bool orthographic; 
         bool clearDepthBuffer; 
         bool enableDepthTest; 
@@ -100,7 +100,7 @@
         unsigned int allocatedIndicesSize; 
         struct __C3DImage {} *textureImage; 
         struct __C3DTexture {} *texture; 
-        unsigned int drawMode; 
+        unsigned char drawMode; 
         bool orthographic; 
         bool clearDepthBuffer; 
         bool enableDepthTest; 
@@ -130,7 +130,7 @@
         unsigned int allocatedIndicesSize; 
         struct __C3DImage {} *textureImage; 
         struct __C3DTexture {} *texture; 
-        unsigned int drawMode; 
+        unsigned char drawMode; 
         bool orthographic; 
         bool clearDepthBuffer; 
         bool enableDepthTest; 
@@ -168,7 +168,7 @@
         unsigned int allocatedIndicesSize; 
         struct __C3DImage {} *textureImage; 
         struct __C3DTexture {} *texture; 
-        unsigned int drawMode; 
+        unsigned char drawMode; 
         bool orthographic; 
         bool clearDepthBuffer; 
         bool enableDepthTest; 
@@ -189,7 +189,7 @@
         NSMutableSet *_usedMeshElements; 
         NSMutableSet *_freeMeshElements; 
     }  _lightProbesInfo;
-    struct __C3DFXProgram { struct __C3DEntity { struct __CFRuntimeBase { unsigned long long x_1_2_1; unsigned long long x_1_2_2; } x_1_1_1; void *x_1_1_2; struct __CFString {} *x_1_1_3; struct __CFString {} *x_1_1_4; struct __CFDictionary {} *x_1_1_5; struct __C3DScene {} *x_1_1_6; long long x_1_1_7; } x1; int x2; unsigned int x3 : 1; unsigned int x4 : 1; struct __C3DFXProgramDelegate {} *x5; } * _lightProbesProgram;
+    struct __C3DFXProgram { struct __C3DEntity { struct __CFRuntimeBase { unsigned long long x_1_2_1; _Atomic unsigned long long x_1_2_2; } x_1_1_1; void *x_1_1_2; struct __CFString {} *x_1_1_3; struct __CFString {} *x_1_1_4; struct __CFDictionary {} *x_1_1_5; struct __C3DScene {} *x_1_1_6; long long x_1_1_7; } x1; int x2; unsigned int x3 : 1; unsigned int x4 : 1; struct __C3DFXProgramDelegate {} *x5; } * _lightProbesProgram;
     struct { 
         struct __C3DFXProgram {} *weakProgram; 
         unsigned int baseIndex; 
@@ -199,7 +199,7 @@
         unsigned int allocatedIndicesSize; 
         struct __C3DImage {} *textureImage; 
         struct __C3DTexture {} *texture; 
-        unsigned int drawMode; 
+        unsigned char drawMode; 
         bool orthographic; 
         bool clearDepthBuffer; 
         bool enableDepthTest; 
@@ -220,7 +220,7 @@
         NSMutableSet *_usedMeshElements; 
         NSMutableSet *_freeMeshElements; 
     }  _logsInfo;
-    struct __C3DFXProgram { struct __C3DEntity { struct __CFRuntimeBase { unsigned long long x_1_2_1; unsigned long long x_1_2_2; } x_1_1_1; void *x_1_1_2; struct __CFString {} *x_1_1_3; struct __CFString {} *x_1_1_4; struct __CFDictionary {} *x_1_1_5; struct __C3DScene {} *x_1_1_6; long long x_1_1_7; } x1; int x2; unsigned int x3 : 1; unsigned int x4 : 1; struct __C3DFXProgramDelegate {} *x5; } * _noColorProgram;
+    struct __C3DFXProgram { struct __C3DEntity { struct __CFRuntimeBase { unsigned long long x_1_2_1; _Atomic unsigned long long x_1_2_2; } x_1_1_1; void *x_1_1_2; struct __CFString {} *x_1_1_3; struct __CFString {} *x_1_1_4; struct __CFDictionary {} *x_1_1_5; struct __C3DScene {} *x_1_1_6; long long x_1_1_7; } x1; int x2; unsigned int x3 : 1; unsigned int x4 : 1; struct __C3DFXProgramDelegate {} *x5; } * _noColorProgram;
     struct { 
         struct { 
             struct __C3DImage {} *texture; 
@@ -245,7 +245,7 @@
         unsigned int allocatedIndicesSize; 
         struct __C3DImage {} *textureImage; 
         struct __C3DTexture {} *texture; 
-        unsigned int drawMode; 
+        unsigned char drawMode; 
         bool orthographic; 
         bool clearDepthBuffer; 
         bool enableDepthTest; 
@@ -275,7 +275,7 @@
         unsigned int allocatedIndicesSize; 
         struct __C3DImage {} *textureImage; 
         struct __C3DTexture {} *texture; 
-        unsigned int drawMode; 
+        unsigned char drawMode; 
         bool orthographic; 
         bool clearDepthBuffer; 
         bool enableDepthTest; 
@@ -402,7 +402,7 @@
         unsigned int allocatedIndicesSize; 
         struct __C3DImage {} *textureImage; 
         struct __C3DTexture {} *texture; 
-        unsigned int drawMode; 
+        unsigned char drawMode; 
         bool orthographic; 
         bool clearDepthBuffer; 
         bool enableDepthTest; 
@@ -428,7 +428,7 @@
     unsigned int  _timedRecordingBufferStart;
     double  _timedRecordingExpirationTime;
     NSMutableArray * _visibleManipulableItems;
-    struct __C3DFXProgram { struct __C3DEntity { struct __CFRuntimeBase { unsigned long long x_1_2_1; unsigned long long x_1_2_2; } x_1_1_1; void *x_1_1_2; struct __CFString {} *x_1_1_3; struct __CFString {} *x_1_1_4; struct __CFDictionary {} *x_1_1_5; struct __C3DScene {} *x_1_1_6; long long x_1_1_7; } x1; int x2; unsigned int x3 : 1; unsigned int x4 : 1; struct __C3DFXProgramDelegate {} *x5; } * _wireframeProgram;
+    struct __C3DFXProgram { struct __C3DEntity { struct __CFRuntimeBase { unsigned long long x_1_2_1; _Atomic unsigned long long x_1_2_2; } x_1_1_1; void *x_1_1_2; struct __CFString {} *x_1_1_3; struct __CFString {} *x_1_1_4; struct __CFDictionary {} *x_1_1_5; struct __C3DScene {} *x_1_1_6; long long x_1_1_7; } x1; int x2; unsigned int x3 : 1; unsigned int x4 : 1; struct __C3DFXProgramDelegate {} *x5; } * _wireframeProgram;
     void * _wireframeRenderer;
 }
 

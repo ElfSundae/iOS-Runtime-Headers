@@ -4,7 +4,6 @@
 
 @interface IDSBaseMessage : NSObject <NSCopying> {
     NSURL * _URLOverride;
-    bool  _alwaysForceCellular;
     APSOutgoingMessageCheckpointTrace * _apsdCheckpointTrace;
     NSDictionary * _cachedBody;
     NSDictionary * _clientInfo;
@@ -22,10 +21,14 @@
     bool  _httpDoNotDecodeData;
     bool  _ignoreMaxRetryCount;
     long long  _importanceLevel;
+    bool  _isMultipleAuthCertCapable;
+    NSNumber * _originalTimestamp;
+    NSNumber * _pushAckTimestamp;
     unsigned long long  _receivedByteCount;
     NSDate * _requestEnd;
     NSDate * _requestStart;
     NSDictionary * _responseAlert;
+    NSDictionary * _responseAlertInfo;
     NSDate * _responseReceived;
     NSNumber * _retryCount;
     unsigned long long  _sentByteCount;
@@ -57,7 +60,6 @@
 @property (readonly) NSDictionary *additionalQueryStringParameters;
 @property (readonly) bool allowDualDelivery;
 @property (readonly) bool allowsServerProvidedLenientAnisetteTimeout;
-@property bool alwaysForceCellular;
 @property (readonly) double anisetteHeadersTimeout;
 @property (retain) APSOutgoingMessageCheckpointTrace *apsdCheckpointTrace;
 @property (readonly) NSString *bagKey;
@@ -82,15 +84,18 @@
 @property bool ignoreMaxRetryCount;
 @property (readonly) bool ignoresNetworkConnectivity;
 @property long long importanceLevel;
+@property (nonatomic) bool isMultipleAuthCertCapable;
 @property (readonly) bool isValidMessage;
 @property (readonly) bool isWebTunnelMessage;
 @property (readonly) int maxTimeoutRetries;
 @property (readonly) NSDictionary *messageBody;
 @property (readonly) NSDictionary *messageBodyUsingCache;
 @property (readonly) NSDictionary *nonStandardMessageHeadersForOutgoingPush;
+@property (nonatomic, copy) NSNumber *originalTimestamp;
 @property (readonly) bool payloadCanBeLogged;
 @property (nonatomic, copy) NSMutableArray *privateKeyArray;
 @property (nonatomic, copy) NSMutableArray *publicKeyArray;
+@property (retain) NSNumber *pushAckTimestamp;
 @property (nonatomic, copy) NSData *pushCertificate;
 @property (nonatomic) struct __SecKey { }*pushPrivateKey;
 @property (nonatomic) struct __SecKey { }*pushPublicKey;
@@ -99,6 +104,7 @@
 @property (nonatomic, retain) NSDate *requestEnd;
 @property (nonatomic, retain) NSDate *requestStart;
 @property (readonly) NSArray *requiredKeys;
+@property (readonly) bool requiresPushTokenKeys;
 @property (copy) NSDictionary *responseAlertInfo;
 @property (readonly) long long responseCommand;
 @property (nonatomic, retain) NSDate *responseReceived;
@@ -156,7 +162,6 @@
 - (id)additionalQueryStringParameters;
 - (bool)allowDualDelivery;
 - (bool)allowsServerProvidedLenientAnisetteTimeout;
-- (bool)alwaysForceCellular;
 - (double)anisetteHeadersTimeout;
 - (id)apsdCheckpointTrace;
 - (id)bagKey;
@@ -189,6 +194,7 @@
 - (long long)importanceLevel;
 - (id)init;
 - (bool)isIDSMessage;
+- (bool)isMultipleAuthCertCapable;
 - (bool)isValidMessage;
 - (bool)isWebTunnelMessage;
 - (void)logFailureInfo;
@@ -197,9 +203,11 @@
 - (id)messageBodyDataOverride;
 - (id)messageBodyUsingCache;
 - (id)nonStandardMessageHeadersForOutgoingPush;
+- (id)originalTimestamp;
 - (bool)payloadCanBeLogged;
 - (id)privateKeyArray;
 - (id)publicKeyArray;
+- (id)pushAckTimestamp;
 - (id)pushCertificate;
 - (struct __SecKey { }*)pushPrivateKey;
 - (struct __SecKey { }*)pushPublicKey;
@@ -208,6 +216,7 @@
 - (id)requestEnd;
 - (id)requestStart;
 - (id)requiredKeys;
+- (bool)requiresPushTokenKeys;
 - (id)responseAlertInfo;
 - (long long)responseCommand;
 - (id)responseReceived;
@@ -218,7 +227,6 @@
 - (id)serverTimestampReceivedDate;
 - (id)service;
 - (id)serviceData;
-- (void)setAlwaysForceCellular:(bool)arg1;
 - (void)setApsdCheckpointTrace:(id)arg1;
 - (void)setCertDataArray:(id)arg1;
 - (void)setClientInfo:(id)arg1;
@@ -235,8 +243,11 @@
 - (void)setHttpDoNotDecodeData:(bool)arg1;
 - (void)setIgnoreMaxRetryCount:(bool)arg1;
 - (void)setImportanceLevel:(long long)arg1;
+- (void)setIsMultipleAuthCertCapable:(bool)arg1;
+- (void)setOriginalTimestamp:(id)arg1;
 - (void)setPrivateKeyArray:(id)arg1;
 - (void)setPublicKeyArray:(id)arg1;
+- (void)setPushAckTimestamp:(id)arg1;
 - (void)setPushCertificate:(id)arg1;
 - (void)setPushPrivateKey:(struct __SecKey { }*)arg1;
 - (void)setPushPublicKey:(struct __SecKey { }*)arg1;

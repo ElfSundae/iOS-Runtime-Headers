@@ -11,14 +11,14 @@
 }
 
 @property (readonly) NSArray *allSuggestions;
-@property bool changingState;
+@property (nonatomic) bool changingState;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool locationsAvailable;
-@property (retain) NSHashTable *observers;
+@property (nonatomic, retain) NSHashTable *observers;
 @property (nonatomic) unsigned long long state;
-@property (retain) NSMutableDictionary *suggestionsStorage;
+@property (nonatomic, retain) NSMutableDictionary *suggestionsStorage;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

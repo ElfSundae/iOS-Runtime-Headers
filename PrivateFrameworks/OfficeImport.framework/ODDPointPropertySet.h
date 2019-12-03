@@ -16,12 +16,12 @@
     NSString * mPresentationStyleLabel;
 }
 
+- (void).cxx_destruct;
 - (double)customOffsetX;
 - (double)customOffsetY;
 - (double)customScaleX;
 - (double)customScaleY;
 - (bool)customVerticalFlip;
-- (void)dealloc;
 - (id)description;
 - (id)layoutTypeId;
 - (id)presentationAssociatedId;

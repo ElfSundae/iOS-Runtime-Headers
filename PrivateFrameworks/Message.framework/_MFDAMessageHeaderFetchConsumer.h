@@ -18,8 +18,8 @@
 @property (nonatomic, readonly) bool succeeded;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)data;
-- (void)dealloc;
 - (id)error;
 - (void)handleResponse:(id)arg1 error:(id)arg2;
 - (void)setData:(id)arg1;

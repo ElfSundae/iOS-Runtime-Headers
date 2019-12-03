@@ -33,9 +33,11 @@
 - (void)setPerformer:(id)arg1;
 - (void)setProperties:(id)arg1;
 - (void)siriActionsPerformer:(id)arg1 didFailWithError:(id)arg2;
+- (bool)siriActionsPerformer:(id)arg1 wantsToDismissViewController:(id)arg2 animated:(bool)arg3 completion:(id /* block */)arg4;
 - (bool)siriActionsPerformer:(id)arg1 wantsToPresentViewController:(id)arg2;
 - (void)siriActionsPerformerDidSucceed:(id)arg1;
 - (id)siriActionsPerformerWantsAlertBackgroundImage:(id)arg1;
 - (id)siriActionsPerformerWantsBackgroundViewToBlur:(id)arg1;
+- (void)siriActionsPerformerWantsToSuppressDismissal:(id)arg1;
 
 @end

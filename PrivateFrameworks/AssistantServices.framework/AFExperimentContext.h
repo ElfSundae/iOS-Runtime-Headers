@@ -9,6 +9,7 @@
 @property (nonatomic, readonly) AFExperiment<AFExperimentForSiriVOXSounds> *experimentForSiriVOXSounds;
 @property (nonatomic, readonly) AFExperiment<AFExperimentForSiriVOXTapToSiriBehavior> *experimentForSiriVOXTapToSiriBehavior;
 @property (nonatomic, readonly, copy) NSDictionary *experimentsByConfigurationIdentifier;
+@property (nonatomic, readonly) AFExperiment<AFInvocationFeedbackExperiment> *invocationFeedbackExperiment;
 
 + (id)newWithBuilder:(id /* block */)arg1;
 + (bool)supportsSecureCoding;
@@ -24,6 +25,7 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithExperimentsByConfigurationIdentifier:(id)arg1;
+- (id)invocationFeedbackExperiment;
 - (bool)isEqual:(id)arg1;
 - (id)mutatedCopyWithMutator:(id /* block */)arg1;
 

@@ -6,17 +6,13 @@
     VNMPImageDescriptor * _descriptor;
     unsigned long long  _requestRevision;
     unsigned long long  _type;
-    unsigned long long  _version;
 }
 
 @property (nonatomic, retain) VNMPImageDescriptor *descriptor;
 @property (nonatomic, readonly) unsigned long long requestRevision;
 @property (nonatomic, readonly) unsigned long long serializedLength;
 @property (nonatomic) unsigned long long type;
-@property (nonatomic, readonly) unsigned long long version;
 
-+ (unsigned long long)currentVersion;
-+ (bool)isSerializedImageprintCompatibleWithCurrentVersion:(id)arg1;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -37,6 +33,5 @@
 - (void)setDescriptor:(id)arg1;
 - (void)setType:(unsigned long long)arg1;
 - (unsigned long long)type;
-- (unsigned long long)version;
 
 @end

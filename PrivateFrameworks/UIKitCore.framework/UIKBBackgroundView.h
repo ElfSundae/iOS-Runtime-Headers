@@ -50,7 +50,7 @@
             double height; 
         } size; 
     }  _splitRightRect;
-    int  _topCorners;
+    unsigned long long  _topCorners;
     int  _visualStyle;
 }
 

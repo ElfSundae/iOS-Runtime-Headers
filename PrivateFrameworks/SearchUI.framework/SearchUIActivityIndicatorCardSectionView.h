@@ -4,7 +4,7 @@
 
 @interface SearchUIActivityIndicatorCardSectionView : SearchUICardSectionView
 
-@property (retain) TLKActivityIndicatorView *contentView;
+@property (nonatomic, retain) TLKActivityIndicatorView *contentView;
 
 + (bool)supportsRecyclingForCardSection:(id)arg1;
 

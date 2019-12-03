@@ -4,9 +4,12 @@
 
 @interface CKMediaObject : NSObject <QLPreviewItem> {
     NSURL * _cachedHighQualityFileURL;
+    bool  _forceInlinePreviewGeneration;
     NSObject<OS_dispatch_group> * _highQualityFetchInProgressGroup;
     bool  _isFromMe;
+    unsigned long long  _oopPreviewRequestCount;
     bool  _suppressPreviewForUnknownSender;
+    UITraitCollection * _transcriptTraitCollection;
     <CKFileTransfer> * _transfer;
 }
 
@@ -18,6 +21,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly, copy) NSURL *fileURL;
 @property (nonatomic, readonly, copy) NSString *filename;
+@property (nonatomic) bool forceInlinePreviewGeneration;
 @property (nonatomic, readonly) bool generatePreviewOutOfProcess;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSObject<OS_dispatch_group> *highQualityFetchInProgressGroup;
@@ -25,12 +29,14 @@
 @property (nonatomic, readonly) int mediaType;
 @property (nonatomic, readonly, copy) NSString *mimeType;
 @property (nonatomic, readonly) bool needsAnimation;
+@property (nonatomic) unsigned long long oopPreviewRequestCount;
 @property (nonatomic, readonly, copy) NSString *previewFilenameExtension;
 @property (nonatomic, readonly) NSString *previewItemTitle;
 @property (nonatomic, readonly) NSURL *previewItemURL;
 @property (readonly) Class superclass;
 @property (nonatomic) bool suppressPreviewForUnknownSender;
 @property (nonatomic, readonly, copy) NSDictionary *transcoderUserInfo;
+@property (nonatomic, retain) UITraitCollection *transcriptTraitCollection;
 @property (nonatomic, retain) <CKFileTransfer> *transfer;
 @property (nonatomic, readonly, copy) NSString *transferGUID;
 @property (nonatomic, readonly) bool validatePreviewFormat;
@@ -44,12 +50,16 @@
 + (id)mediaClasses;
 + (bool)shouldScaleUpPreview;
 + (bool)shouldShadePreview;
++ (bool)shouldUseTranscoderGeneratedPreviewSize;
 
 - (void).cxx_destruct;
 - (id)ASTCDataFromImage:(id)arg1;
 - (id)JPEGDataFromImage:(id)arg1;
 - (id)UTIType;
+- (struct IMPreviewConstraints { double x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; double x3; bool x4; })_previewConstraintsForWidth:(double)arg1;
+- (id)_qlThumbnailGeneratorSharedGenerator;
 - (void)_sampleImageEdges:(id)arg1 usingRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 forMostlyWhitePixels:(unsigned long long*)arg3 otherPixels:(unsigned long long*)arg4;
+- (id)_transcodeControllerSharedInstance;
 - (Class)balloonViewClassForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (id)bbPreviewFillToSize:(struct CGSize { double x1; double x2; })arg1;
 - (struct CGSize { double x1; double x2; })bbSize;
@@ -70,13 +80,15 @@
 - (id)fileSizeString;
 - (id)fileURL;
 - (id)filename;
+- (bool)forceInlinePreviewGeneration;
+- (void)generateOOPPreviewForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (id)generatePreviewFromThumbnail:(id)arg1 width:(double)arg2 orientation:(BOOL)arg3;
 - (bool)generatePreviewOutOfProcess;
 - (id)generateThumbnailFillToSize:(struct CGSize { double x1; double x2; })arg1 contentAlignmentInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg2;
 - (id)generateThumbnailForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (id)highQualityFetchInProgressGroup;
 - (id)icon;
-- (id)initWithTransfer:(id)arg1 isFromMe:(bool)arg2 suppressPreview:(bool)arg3;
+- (id)initWithTransfer:(id)arg1 isFromMe:(bool)arg2 suppressPreview:(bool)arg3 forceInlinePreview:(bool)arg4;
 - (Class)inlineStickerBalloonViewClass;
 - (bool)isEqual:(id)arg1;
 - (bool)isFromMe;
@@ -86,6 +98,7 @@
 - (int)mediaType;
 - (id)mimeType;
 - (bool)needsAnimation;
+- (unsigned long long)oopPreviewRequestCount;
 - (id)pasteboardItem;
 - (Class)previewBalloonViewClass;
 - (id)previewCacheKeyWithOrientation:(BOOL)arg1;
@@ -94,12 +107,17 @@
 - (id)previewFilenameExtension;
 - (id)previewForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (id)previewItemURL;
+- (void)prewarmPreviewForWidth:(double)arg1 orientation:(BOOL)arg2;
+- (id)richIcon;
 - (void)savePreview:(id)arg1 toURL:(id)arg2 forOrientation:(BOOL)arg3;
 - (id)savedPreviewFromURL:(id)arg1 forOrientation:(BOOL)arg2;
 - (void)setCachedHighQualityFileURL:(id)arg1;
+- (void)setForceInlinePreviewGeneration:(bool)arg1;
 - (void)setHighQualityFetchInProgressGroup:(id)arg1;
 - (void)setIsFromMe:(bool)arg1;
+- (void)setOopPreviewRequestCount:(unsigned long long)arg1;
 - (void)setSuppressPreviewForUnknownSender:(bool)arg1;
+- (void)setTranscriptTraitCollection:(id)arg1;
 - (void)setTransfer:(id)arg1;
 - (bool)shouldBeQuickLooked;
 - (bool)shouldShowDisclosure;
@@ -107,8 +125,12 @@
 - (id)subtitle;
 - (bool)suppressPreviewForUnknownSender;
 - (id)title;
+- (struct CGSize { double x1; double x2; })transcoderGeneratedSizeForConstraints:(struct IMPreviewConstraints { double x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; double x3; bool x4; })arg1;
 - (bool)transcoderPreviewGenerationFailed;
 - (id)transcoderUserInfo;
+- (struct IMPreviewConstraints { double x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; double x3; bool x4; })transcodingPreviewConstraints;
+- (struct CGSize { double x1; double x2; })transcodingPreviewPxSize;
+- (id)transcriptTraitCollection;
 - (id)transfer;
 - (id)transferGUID;
 - (bool)validPreviewExistsAtURL:(id)arg1;

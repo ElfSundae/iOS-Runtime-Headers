@@ -5,11 +5,6 @@
 @interface VUIAccountSettingsConnectedAppsViewController : PSListController {
     PSSpecifier * _appGroup;
     NSArray * _appSpecifiers;
-    VideosSettingsController * _coreSettingsController;
-    int  _didChangeNotificationToken;
-    bool  _didCheckBags;
-    bool  _ignoreChanges;
-    NSArray * _permissionsSpecifiers;
 }
 
 - (void).cxx_destruct;
@@ -17,7 +12,6 @@
 - (void)_addPrivacyFooterToGroup:(id)arg1;
 - (long long)_alertStyle;
 - (id)_appGroupSpecifier;
-- (void)_checkSettingsAndReload;
 - (void)_loadAppGroup;
 - (void)_promptToDisableChannel:(id)arg1 withExternalID:(id)arg2;
 - (void)_promptToEnableChannel:(id)arg1 withExternalID:(id)arg2;
@@ -27,7 +21,6 @@
 - (void)_stopAppSpinner;
 - (void)_toggleSpecifier:(id)arg1 sender:(id)arg2;
 - (id)specifiers;
-- (void)viewDidAppear:(bool)arg1;
 - (void)viewDidLoad;
 
 @end

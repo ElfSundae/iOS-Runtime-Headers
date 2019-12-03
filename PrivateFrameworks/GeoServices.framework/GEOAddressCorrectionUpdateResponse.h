@@ -4,13 +4,15 @@
 
 @interface GEOAddressCorrectionUpdateResponse : PBCodable <NSCopying> {
     struct { 
-        unsigned int retryScheduleInDays : 1; 
-    }  _has;
+        unsigned int has_retryScheduleInDays : 1; 
+    }  _flags;
     unsigned int  _retryScheduleInDays;
 }
 
 @property (nonatomic) bool hasRetryScheduleInDays;
 @property (nonatomic) unsigned int retryScheduleInDays;
+
++ (bool)isValid:(id)arg1;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -20,6 +22,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (unsigned int)retryScheduleInDays;
 - (void)setHasRetryScheduleInDays:(bool)arg1;

@@ -11,7 +11,7 @@
 
 + (void)addConnectionToPoint:(id)arg1 order:(unsigned long long)arg2 array:(id*)arg3;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)init;
 - (id)propertySet;

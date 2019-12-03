@@ -4,15 +4,17 @@
 
 @interface MKActionRowItemView : UIView {
     MKPlaceCardActionItem * _actionRowItem;
+    UIView * _backgroundView;
     NSArray * _constraints;
     <MKActionRowItemViewDelegate> * _delegate;
     bool  _enabled;
     bool  _fullWidthMode;
-    _MKUILabel * _glyphLabel;
+    UIImageView * _glyphImageView;
     bool  _highlighted;
     _MKUILabel * _label;
     unsigned long long  _style;
     bool  _touched;
+    MKVibrantView * _vibrantView;
 }
 
 @property (nonatomic, retain) MKPlaceCardActionItem *actionRowItem;
@@ -37,10 +39,11 @@
 - (void)createConstraints;
 - (void)dealloc;
 - (id)delegate;
+- (void)didMoveToWindow;
 - (bool)enabled;
 - (bool)fullWidthMode;
 - (bool)highlighted;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (id)initWithActionRowItem:(id)arg1 style:(unsigned long long)arg2;
 - (void)layoutSubviews;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
@@ -50,10 +53,12 @@
 - (void)setFullWidthMode:(bool)arg1;
 - (void)setHighlighted:(bool)arg1;
 - (void)setTouched:(bool)arg1;
+- (void)tintColorDidChange;
 - (bool)touched;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)updateColor;
+- (void)updateImage;
 
 @end

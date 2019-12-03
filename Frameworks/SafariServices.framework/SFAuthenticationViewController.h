@@ -6,6 +6,7 @@
     NSString * _callbackURLScheme;
     id /* block */  _dismissCompletionHandler;
     _UIFallbackPresentationViewController * _fallbackPresentationViewController;
+    UIWindow * _presentationContextWindow;
     <SFAuthenticationViewControllerPresentationDelegate> * _presentationDelegate;
 }
 
@@ -21,7 +22,7 @@
 - (void)_restartServiceViewController;
 - (id /* block */)dismissCompletionHandler;
 - (void)dismissViewControllerAnimated:(bool)arg1 completion:(id /* block */)arg2;
-- (id)initWithURL:(id)arg1 callbackURLScheme:(id)arg2 usingEphemeralSession:(bool)arg3;
+- (id)initWithURL:(id)arg1 callbackURLScheme:(id)arg2 usingEphemeralSession:(bool)arg3 presentationContextWindow:(id)arg4;
 - (id)presentationDelegate;
 - (void)remoteViewController:(id)arg1 didDecideCookieSharingForURL:(id)arg2 shouldCancel:(bool)arg3;
 - (void)remoteViewController:(id)arg1 hostApplicationOpenURL:(id)arg2;

@@ -3,7 +3,6 @@
  */
 
 @interface UIDocumentPasswordView : UIView <UITextFieldDelegate> {
-    UIImageView * _iconView;
     UILabel * _label;
     UIDocumentPasswordField * _passwordTextField;
     NSObject<UIDocumentPasswordViewDelegate> * passwordDelegate;
@@ -17,7 +16,6 @@
 @property (readonly) Class superclass;
 
 - (bool)_canDrawContent;
-- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_iconRectForContainerRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)_labelFont;
 - (double)_labelHorizontalOffset;
 - (id)_labelTextColor;

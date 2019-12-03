@@ -11,6 +11,7 @@
 @property (getter=isANF, nonatomic, readonly) bool anf;
 @property (nonatomic, readonly, copy) NSString *articleID;
 @property (nonatomic, readonly) CKRecord *articleRecord;
+@property (nonatomic, readonly) long long bodyTextLength;
 @property (getter=isBundlePaid, nonatomic, readonly) bool bundlePaid;
 @property (nonatomic, readonly) bool canBePurchased;
 @property (nonatomic, readonly, copy) NSString *clusterID;
@@ -28,6 +29,7 @@
 @property (nonatomic, readonly) bool hasVideo;
 @property (readonly) unsigned long long hash;
 @property (getter=isHiddenFromAutoFavorites, nonatomic, readonly) bool hiddenFromAutoFavorites;
+@property (nonatomic, readonly) bool isFeatured;
 @property (nonatomic, readonly, copy) NSString *itemID;
 @property (nonatomic, readonly) long long minimumNewsVersion;
 @property (nonatomic, readonly) unsigned long long order;
@@ -50,6 +52,7 @@
 - (void).cxx_destruct;
 - (id)articleID;
 - (id)articleRecord;
+- (long long)bodyTextLength;
 - (bool)canBePurchased;
 - (id)clusterID;
 - (unsigned long long)contentType;

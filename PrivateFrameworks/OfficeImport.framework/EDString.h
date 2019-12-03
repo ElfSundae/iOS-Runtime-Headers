@@ -18,11 +18,12 @@
 + (id)edStringWithString:(id)arg1 runs:(id)arg2;
 + (id)string;
 
+- (void).cxx_destruct;
 - (void)appendString:(id)arg1;
 - (bool)areThereRuns;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
+- (id)firstFont;
 - (id)firstRunEffects;
 - (id)firstRunFont;
 - (unsigned long long)hash;

@@ -34,6 +34,7 @@
     RPIdentityDaemon * _identityDaemon;
     RPIdentity * _identityResolved;
     RPIdentity * _identityVerified;
+    NSObject<OS_dispatch_source> * _idleTimer;
     int  _internalState;
     bool  _invalidateCalled;
     bool  _invalidateDone;
@@ -45,7 +46,6 @@
     RPCompanionLinkDevice * _localDeviceInfo;
     unsigned long long  _mainAuthTagLength;
     CUPairingStream * _mainStream;
-    RPMetrics * _metrics;
     CUNetLinkManager * _netLinkManager;
     int  _pairSetupAuthType;
     unsigned int  _pairSetupFlags;
@@ -73,16 +73,20 @@
     NSData * _pskData;
     bool  _readRequested;
     id /* block */  _receivedEventHandler;
+    unsigned long long  _receivedFrameCountCurrent;
+    unsigned long long  _receivedFrameCountLast;
     id /* block */  _receivedRequestHandler;
     bool  _receivingHeader;
     <CUReadWriteRequestable> * _requestable;
     struct NSMutableDictionary { Class x1; } * _requests;
+    int  _retryCount;
     bool  _retryFired;
     unsigned long long  _retryTicks;
     NSObject<OS_dispatch_source> * _retryTimer;
     NSString * _selfAddrString;
     struct NSMutableArray { Class x1; } * _sendArray;
     id /* block */  _sessionStartHandler;
+    bool  _showPasswordCalled;
     id /* block */  _showPasswordHandler;
     NSObject<OS_dispatch_source> * _startTimer;
     int  _state;
@@ -127,7 +131,6 @@
 @property (nonatomic, copy) NSString *label;
 @property (nonatomic, readonly) int linkType;
 @property (nonatomic, retain) RPCompanionLinkDevice *localDeviceInfo;
-@property (nonatomic, retain) RPMetrics *metrics;
 @property (nonatomic, retain) CUNetLinkManager *netLinkManager;
 @property (nonatomic) unsigned int pairSetupFlags;
 @property (nonatomic, copy) id /* block */ pairVerifyCompletion;
@@ -175,11 +178,14 @@
 - (void)_clientRetryStart;
 - (void)_clientRun;
 - (void)_clientStartSession;
+- (void)_clientStarted;
 - (id)_identityProofDataClient;
 - (id)_identityProofDataServer;
 - (void)_identityProofsAdd:(id)arg1 update:(bool)arg2;
 - (void)_identityProofsVerify:(id)arg1;
 - (void)_identityProofsVerifyHomeKitSignature:(id)arg1 identifier:(id)arg2;
+- (void)_idleTimerFired;
+- (void)_idleTimerStart:(unsigned int)arg1 repeat:(unsigned int)arg2;
 - (void)_invalidate;
 - (void)_invalidateCore:(id)arg1;
 - (void)_invalidateWithError:(id)arg1;
@@ -264,7 +270,6 @@
 - (id)label;
 - (int)linkType;
 - (id)localDeviceInfo;
-- (id)metrics;
 - (id)netLinkManager;
 - (unsigned int)pairSetupFlags;
 - (id /* block */)pairVerifyCompletion;
@@ -287,6 +292,7 @@
 - (void)sendEncryptedRequestID:(id)arg1 request:(id)arg2 xpcID:(unsigned int)arg3 options:(id)arg4 responseHandler:(id /* block */)arg5;
 - (void)sendReachabilityProbe:(const char *)arg1;
 - (id /* block */)sessionStartHandler;
+- (void)sessionStopped:(id)arg1;
 - (void)setAppID:(id)arg1;
 - (void)setAppInfoSelf:(id)arg1;
 - (void)setAuthCompletionHandler:(id /* block */)arg1;
@@ -314,7 +320,6 @@
 - (void)setKeepAliveSeconds:(int)arg1;
 - (void)setLabel:(id)arg1;
 - (void)setLocalDeviceInfo:(id)arg1;
-- (void)setMetrics:(id)arg1;
 - (void)setNetLinkManager:(id)arg1;
 - (void)setPairSetupFlags:(unsigned int)arg1;
 - (void)setPairVerifyCompletion:(id /* block */)arg1;

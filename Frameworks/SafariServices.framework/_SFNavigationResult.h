@@ -4,7 +4,7 @@
 
 @interface _SFNavigationResult : NSObject {
     NSURL * _URL;
-    LSAppLink * _appLink;
+    WBSAppLink * _appLink;
     LSApplicationProxy * _externalApplication;
     long long  _externalApplicationCategory;
     bool  _loadWasUserDriven;
@@ -12,7 +12,7 @@
 }
 
 @property (nonatomic, readonly) NSURL *URL;
-@property (nonatomic, readonly) LSAppLink *appLink;
+@property (nonatomic, readonly) WBSAppLink *appLink;
 @property (nonatomic, readonly) bool appliesOneTimeUserInitiatedActionPolicy;
 @property (nonatomic, readonly) LSApplicationProxy *externalApplication;
 @property (nonatomic, readonly) long long externalApplicationCategory;
@@ -20,7 +20,7 @@
 @property (nonatomic) bool loadWasUserDriven;
 @property (nonatomic, readonly) long long type;
 
-+ (id)resultOfLoadingRequest:(id)arg1 isMainFrame:(bool)arg2 disallowRedirectToExternalApps:(bool)arg3 preferredApplicationBundleIdentifier:(id)arg4;
++ (id)resultOfLoadingRequest:(id)arg1 isMainFrame:(bool)arg2 disallowRedirectToExternalApps:(bool)arg3 preferredApplicationBundleIdentifier:(id)arg4 redirectDecisionHandler:(id /* block */)arg5;
 + (id)resultOfType:(long long)arg1 withURL:(id)arg2;
 + (id)resultWithAppLink:(id)arg1;
 + (id)resultWithRedirectToExternalURL:(id)arg1 preferredApplicationBundleIdentifier:(id)arg2;
@@ -35,7 +35,7 @@
 - (bool)isRedirectToAppleServices;
 - (bool)loadWasUserDriven;
 - (void)setLoadWasUserDriven:(bool)arg1;
-- (bool)shouldPromptWithPolicy:(long long)arg1 telephonyNavigationPolicy:(id)arg2 userAction:(id)arg3;
+- (bool)shouldPromptWithPolicy:(long long)arg1 telephonyNavigationPolicy:(id)arg2 userAction:(id)arg3 inBackground:(bool)arg4;
 - (long long)type;
 
 @end

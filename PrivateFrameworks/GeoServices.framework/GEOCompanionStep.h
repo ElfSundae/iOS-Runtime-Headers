@@ -8,20 +8,50 @@
     unsigned int  _endCoordinateIndex;
     GEOCompanionFerryStep * _ferryStep;
     struct { 
-        unsigned int distance : 1; 
-        unsigned int endCoordinateIndex : 1; 
-        unsigned int maneuverStartCoordinateIndex : 1; 
-        unsigned int startCoordinateIndex : 1; 
-        unsigned int stepID : 1; 
-        unsigned int time : 1; 
-    }  _has;
+        unsigned int has_distance : 1; 
+        unsigned int has_endCoordinateIndex : 1; 
+        unsigned int has_maneuverStartCoordinateIndex : 1; 
+        unsigned int has_startCoordinateIndex : 1; 
+        unsigned int has_stepID : 1; 
+        unsigned int has_time : 1; 
+        unsigned int read_driveStep : 1; 
+        unsigned int read_ferryStep : 1; 
+        unsigned int read_guidanceEvents : 1; 
+        unsigned int read_instructionWithAlternatives : 1; 
+        unsigned int read_listInstruction : 1; 
+        unsigned int read_roadName : 1; 
+        unsigned int read_updateID : 1; 
+        unsigned int read_walkStep : 1; 
+        unsigned int wrote_driveStep : 1; 
+        unsigned int wrote_ferryStep : 1; 
+        unsigned int wrote_guidanceEvents : 1; 
+        unsigned int wrote_instructionWithAlternatives : 1; 
+        unsigned int wrote_listInstruction : 1; 
+        unsigned int wrote_roadName : 1; 
+        unsigned int wrote_updateID : 1; 
+        unsigned int wrote_walkStep : 1; 
+        unsigned int wrote_distance : 1; 
+        unsigned int wrote_endCoordinateIndex : 1; 
+        unsigned int wrote_maneuverStartCoordinateIndex : 1; 
+        unsigned int wrote_startCoordinateIndex : 1; 
+        unsigned int wrote_stepID : 1; 
+        unsigned int wrote_time : 1; 
+    }  _flags;
+    NSMutableArray * _guidanceEvents;
     NSMutableArray * _instructionWithAlternatives;
     NSString * _listInstruction;
     unsigned int  _maneuverStartCoordinateIndex;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     NSString * _roadName;
     unsigned int  _startCoordinateIndex;
     unsigned int  _stepID;
     unsigned int  _time;
+    NSData * _updateID;
     GEOCompanionWalkStep * _walkStep;
 }
 
@@ -29,6 +59,7 @@
 @property (nonatomic, retain) GEOCompanionDriveStep *driveStep;
 @property (nonatomic) unsigned int endCoordinateIndex;
 @property (nonatomic, retain) GEOCompanionFerryStep *ferryStep;
+@property (nonatomic, retain) NSMutableArray *guidanceEvents;
 @property (nonatomic) bool hasDistance;
 @property (nonatomic, readonly) bool hasDriveStep;
 @property (nonatomic) bool hasEndCoordinateIndex;
@@ -39,6 +70,7 @@
 @property (nonatomic) bool hasStartCoordinateIndex;
 @property (nonatomic) bool hasStepID;
 @property (nonatomic) bool hasTime;
+@property (nonatomic, readonly) bool hasUpdateID;
 @property (nonatomic, readonly) bool hasWalkStep;
 @property (nonatomic, retain) NSMutableArray *instructionWithAlternatives;
 @property (nonatomic, retain) NSString *listInstruction;
@@ -47,12 +79,27 @@
 @property (nonatomic) unsigned int startCoordinateIndex;
 @property (nonatomic) unsigned int stepID;
 @property (nonatomic) unsigned int time;
+@property (nonatomic, retain) NSData *updateID;
 @property (nonatomic, retain) GEOCompanionWalkStep *walkStep;
 
++ (Class)guidanceEventType;
 + (Class)instructionWithAlternativesType;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsGuidanceEvent:(id)arg1;
+- (void)_addNoFlagsInstructionWithAlternatives:(id)arg1;
+- (void)_readDriveStep;
+- (void)_readFerryStep;
+- (void)_readGuidanceEvents;
+- (void)_readInstructionWithAlternatives;
+- (void)_readListInstruction;
+- (void)_readRoadName;
+- (void)_readUpdateID;
+- (void)_readWalkStep;
+- (void)addGuidanceEvent:(id)arg1;
 - (void)addInstructionWithAlternatives:(id)arg1;
+- (void)clearGuidanceEvents;
 - (void)clearInstructionWithAlternatives;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -63,6 +110,9 @@
 - (unsigned int)endCoordinateIndex;
 - (id)ferryStep;
 - (id)geoStep;
+- (id)guidanceEventAtIndex:(unsigned long long)arg1;
+- (id)guidanceEvents;
+- (unsigned long long)guidanceEventsCount;
 - (bool)hasDistance;
 - (bool)hasDriveStep;
 - (bool)hasEndCoordinateIndex;
@@ -73,8 +123,11 @@
 - (bool)hasStartCoordinateIndex;
 - (bool)hasStepID;
 - (bool)hasTime;
+- (bool)hasUpdateID;
 - (bool)hasWalkStep;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (id)initWithStep:(id)arg1 route:(id)arg2 stringFormatter:(id)arg3;
 - (id)instructionWithAlternatives;
 - (id)instructionWithAlternativesAtIndex:(unsigned long long)arg1;
@@ -84,12 +137,14 @@
 - (unsigned int)maneuverStartCoordinateIndex;
 - (id)maneuverStep;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)roadName;
 - (void)setDistance:(unsigned int)arg1;
 - (void)setDriveStep:(id)arg1;
 - (void)setEndCoordinateIndex:(unsigned int)arg1;
 - (void)setFerryStep:(id)arg1;
+- (void)setGuidanceEvents:(id)arg1;
 - (void)setHasDistance:(bool)arg1;
 - (void)setHasEndCoordinateIndex:(bool)arg1;
 - (void)setHasManeuverStartCoordinateIndex:(bool)arg1;
@@ -103,10 +158,12 @@
 - (void)setStartCoordinateIndex:(unsigned int)arg1;
 - (void)setStepID:(unsigned int)arg1;
 - (void)setTime:(unsigned int)arg1;
+- (void)setUpdateID:(id)arg1;
 - (void)setWalkStep:(id)arg1;
 - (unsigned int)startCoordinateIndex;
 - (unsigned int)stepID;
 - (unsigned int)time;
+- (id)updateID;
 - (id)walkStep;
 - (void)writeTo:(id)arg1;
 

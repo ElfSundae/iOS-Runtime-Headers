@@ -9,17 +9,16 @@
 
 @property (getter=isExplicitContentAllowed, nonatomic, readonly) bool explicitContentAllowed;
 @property (nonatomic) long long status;
-@property (nonatomic, copy) NSDate *verificationExpirationDate;
+@property (nonatomic, readonly) NSDate *verificationExpirationDate;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
-- (id)initWithUserProperties:(id)arg1;
+- (id)initWithExpirationDate:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)isExplicitContentAllowed;
 - (void)runAgeVerification;
 - (void)setStatus:(long long)arg1;
-- (void)setVerificationExpirationDate:(id)arg1;
 - (long long)status;
 - (id)verificationExpirationDate;
 

@@ -3,6 +3,8 @@
  */
 
 @interface MCEASAccountPayload : MCEmailAccountPayloadBase {
+    NSString * _OAuthSignInURL;
+    NSString * _OAuthTokenRequestURL;
     NSString * _accountDescription;
     NSString * _accountPersistentUUID;
     NSData * _certificatePersistentID;
@@ -12,6 +14,16 @@
     NSData * _embeddedCertificate;
     NSString * _embeddedCertificateName;
     NSString * _embeddedCertificatePassword;
+    NSNumber * _enableCalendarsNum;
+    NSNumber * _enableCalendarsUserOverridableNum;
+    NSNumber * _enableContactsNum;
+    NSNumber * _enableContactsUserOverridableNum;
+    NSNumber * _enableMailNum;
+    NSNumber * _enableMailUserOverridableNum;
+    NSNumber * _enableNotesNum;
+    NSNumber * _enableNotesUserOverridableNum;
+    NSNumber * _enableRemindersNum;
+    NSNumber * _enableRemindersUserOverridableNum;
     NSString * _hostname;
     NSNumber * _mailNumberOfPastDaysToSync;
     NSString * _password;
@@ -22,6 +34,8 @@
     NSString * _username;
 }
 
+@property (nonatomic, retain) NSString *OAuthSignInURL;
+@property (nonatomic, retain) NSString *OAuthTokenRequestURL;
 @property (nonatomic, readonly, retain) NSString *accountDescription;
 @property (nonatomic, copy) NSString *accountPersistentUUID;
 @property (nonatomic, retain) NSData *certificatePersistentID;
@@ -31,6 +45,16 @@
 @property (nonatomic, readonly, retain) NSData *embeddedCertificate;
 @property (nonatomic, readonly, retain) NSString *embeddedCertificateName;
 @property (nonatomic, copy) NSString *embeddedCertificatePassword;
+@property (nonatomic, readonly) bool enableCalendars;
+@property (nonatomic, readonly) bool enableCalendarsUserOverridable;
+@property (nonatomic, readonly) bool enableContacts;
+@property (nonatomic, readonly) bool enableContactsUserOverridable;
+@property (nonatomic, readonly) bool enableMail;
+@property (nonatomic, readonly) bool enableMailUserOverridable;
+@property (nonatomic, readonly) bool enableNotes;
+@property (nonatomic, readonly) bool enableNotesUserOverridable;
+@property (nonatomic, readonly) bool enableReminders;
+@property (nonatomic, readonly) bool enableRemindersUserOverridable;
 @property (nonatomic, readonly) bool hasCertificate;
 @property (nonatomic, readonly, retain) NSString *hostname;
 @property (nonatomic, readonly, retain) NSNumber *mailNumberOfPastDaysToSync;
@@ -46,6 +70,8 @@
 + (id)typeStrings;
 
 - (void).cxx_destruct;
+- (id)OAuthSignInURL;
+- (id)OAuthTokenRequestURL;
 - (id)accountDescription;
 - (id)accountPersistentUUID;
 - (id)certificatePersistentID;
@@ -57,6 +83,16 @@
 - (id)embeddedCertificate;
 - (id)embeddedCertificateName;
 - (id)embeddedCertificatePassword;
+- (bool)enableCalendars;
+- (bool)enableCalendarsUserOverridable;
+- (bool)enableContacts;
+- (bool)enableContactsUserOverridable;
+- (bool)enableMail;
+- (bool)enableMailUserOverridable;
+- (bool)enableNotes;
+- (bool)enableNotesUserOverridable;
+- (bool)enableReminders;
+- (bool)enableRemindersUserOverridable;
 - (bool)hasCertificate;
 - (id)hostname;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id*)arg3;
@@ -68,6 +104,8 @@
 - (void)setCertificatePersistentID:(id)arg1;
 - (void)setEmailAddress:(id)arg1;
 - (void)setEmbeddedCertificatePassword:(id)arg1;
+- (void)setOAuthSignInURL:(id)arg1;
+- (void)setOAuthTokenRequestURL:(id)arg1;
 - (void)setPassword:(id)arg1;
 - (void)setSyncDefaultFoldersOnly:(bool)arg1;
 - (void)setUseOAuth:(id)arg1;

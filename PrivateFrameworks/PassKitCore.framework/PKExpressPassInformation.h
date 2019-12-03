@@ -27,6 +27,7 @@
 - (id)_initForPaymentPass:(id)arg1 configuration:(id)arg2;
 - (long long)cardType;
 - (id)criteriaForPaymentApplicationIdentifier:(id)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateCriteriaWithHandler:(id /* block */)arg1;
 - (id)expressMode;

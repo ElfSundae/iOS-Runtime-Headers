@@ -53,6 +53,7 @@
 - (void)_updateFilterIntensityIfNeeded;
 - (void)_updateFilteredLayerIfNeeded;
 - (void)_updateIfNeeded;
+- (void)animateChangesWithDuration:(double)arg1;
 - (void)basePlayerUIView:(id)arg1 didChange:(unsigned long long)arg2 withAnimationDuration:(double)arg3;
 - (long long)contentType;
 - (id)filter;
@@ -71,6 +72,7 @@
 - (void)performChanges:(id /* block */)arg1;
 - (void)performChanges_Private:(id /* block */)arg1;
 - (void)prepareForReuse;
+- (void)removeFilterFromUnownedLayer:(id)arg1;
 - (void)setDisplayingVideoComplement:(bool)arg1;
 - (void)setEnabled:(bool)arg1;
 - (void)setFilteredLayer:(id)arg1;

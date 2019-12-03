@@ -2,9 +2,9 @@
    Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
  */
 
-@interface TSCH3DShaderEffects : NSObject {
+@interface TSCH3DShaderEffects : NSObject <NSCopying> {
     NSArray * mCacheList;
-    NSMutableArray * mSections;
+    NSMutableDictionary * mSections;
 }
 
 @property (nonatomic, readonly) NSSet *identifier;
@@ -15,6 +15,7 @@
 - (void)addEffectsFromArray:(id)arg1;
 - (void)addEffectsFromArray:(id)arg1 toSection:(int)arg2;
 - (void)addVariables:(id)arg1;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)effects;

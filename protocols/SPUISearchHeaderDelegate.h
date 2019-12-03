@@ -9,5 +9,6 @@
 - (void)dictationButtonPressed;
 - (void)didBeginEditing;
 - (void)queryContextDidChange:(SPSearchQueryContext *)arg1 fromSearchHeader:(SPUISearchHeader *)arg2 allowZKW:(bool)arg3;
+- (void)returnKeyPressed;
 
 @end

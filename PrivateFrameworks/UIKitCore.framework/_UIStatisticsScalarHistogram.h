@@ -4,10 +4,10 @@
 
 @interface _UIStatisticsScalarHistogram : NSObject {
     NSString * _baseKey;
-    NSArray * _bucketKeys;
     NSMutableSet * _children;
+    NSString * _keys;
     long long  _recordCount;
-    long long  _values;
+    unsigned long long  _values;
 }
 
 - (void).cxx_destruct;

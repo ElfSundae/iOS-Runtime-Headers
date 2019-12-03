@@ -32,7 +32,6 @@
     bool  _supportsWLAN;
     bool  _supportsWiFi;
     bool  _supportsiMessage;
-    bool  _wantsForcedCellularQueries;
 }
 
 @property (nonatomic, readonly) NSDictionary *CTNetworkInformation;
@@ -106,7 +105,6 @@
 @property (nonatomic, readonly) NSDictionary *telephonyCapabilities;
 @property (nonatomic, readonly) NSString *userAgentString;
 @property (nonatomic, readonly) bool wantsBreakBeforeMake;
-@property (nonatomic, readonly) bool wantsForcedCellularQueries;
 
 + (id)sharedInstance;
 
@@ -115,7 +113,6 @@
 - (bool)SIMInserted;
 - (void)_commCenterAlive;
 - (bool)_enoughPowerToSupportEffects;
-- (id)_forceWWANQueriesCarrierBundleValue;
 - (void)_handleCarrierSettingsChanged;
 - (void)_handlePotentialPhoneNumberRegistrationStateChanged;
 - (void)_handleSIMStatusChangedToStatus:(id)arg1;
@@ -137,7 +134,6 @@
 - (void)_updateCTNetworkDictionary:(id)arg1 key:(id)arg2 withTelephonyNetworkValue:(id)arg3 telephonyError:(id)arg4;
 - (void)_updateCapabilities;
 - (void)_updateManagedConfigurationSettings;
-- (bool)_wantsForcedCellularQueries;
 - (bool)accountModificationRestricted;
 - (bool)callingAvailable;
 - (bool)callingBlocked;
@@ -220,7 +216,6 @@
 - (id)telephonyCapabilities;
 - (id)userAgentString;
 - (bool)wantsBreakBeforeMake;
-- (bool)wantsForcedCellularQueries;
 - (bool)wifiAllowedForBundleId:(id)arg1;
 
 @end

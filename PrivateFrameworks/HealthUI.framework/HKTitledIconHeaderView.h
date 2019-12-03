@@ -14,6 +14,7 @@
 
 @property (nonatomic) bool centersSubtitle;
 @property (nonatomic, retain) UIImage *iconImage;
+@property (nonatomic, retain) UIColor *iconImageTint;
 @property (nonatomic, retain) UIImageView *iconImageView;
 @property (nonatomic, copy) NSString *subtitle;
 @property (nonatomic, retain) UILabel *subtitleLabel;
@@ -30,11 +31,13 @@
 - (double)_verticalOffsetForTitle;
 - (bool)centersSubtitle;
 - (id)iconImage;
+- (id)iconImageTint;
 - (id)iconImageView;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)layoutSubviews;
 - (void)setCentersSubtitle:(bool)arg1;
 - (void)setIconImage:(id)arg1;
+- (void)setIconImageTint:(id)arg1;
 - (void)setIconImageView:(id)arg1;
 - (void)setLayoutMarginsWithTableView:(id)arg1;
 - (void)setSubtitle:(id)arg1;

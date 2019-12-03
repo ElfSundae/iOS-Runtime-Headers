@@ -6,6 +6,7 @@
     NSMutableArray * _addDates;
     <FTMessageQueueDelegate> * _delegate;
     NSMutableArray * _queue;
+    CUTDeferredTaskQueue * _timeoutTask;
 }
 
 @property (retain) NSMutableArray *_addDates;

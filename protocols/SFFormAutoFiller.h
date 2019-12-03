@@ -21,7 +21,6 @@
 - (void)focusFormForStreamlinedLogin:(long long)arg1 inFrame:(SFFormAutoFillFrameHandle *)arg2;
 - (void)removeAutomaticPasswordElementsInFrame:(SFFormAutoFillFrameHandle *)arg1 focusedPasswordControlUniqueID:(NSString *)arg2 passwordControlUniqueIDs:(NSArray *)arg3;
 - (void)removeAutomaticPasswordVisualTreatmentInFrame:(SFFormAutoFillFrameHandle *)arg1 passwordControlUniqueIDs:(NSArray *)arg2;
-- (void)resumeLoadingAfterSavingFormData;
 - (void)setFormControls:(NSArray *)arg1 areAutoFilled:(bool)arg2 andClearField:(NSString *)arg3 inFrame:(SFFormAutoFillFrameHandle *)arg4;
 - (void)substitutePasswordElementsWithAutomaticPasswordElementsInFrame:(void *)arg1 formID:(void *)arg2 focusedPasswordControlUniqueID:(void *)arg3 passwordControlUniqueIDs:(void *)arg4 automaticPassword:(void *)arg5 blurAfterSubstitution:(void *)arg6 completionHandler:(void *)arg7; // needs 7 arg types, found 12: SFFormAutoFillFrameHandle *, long long, NSString *, NSArray *, NSString *, bool, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSArray *, void*
 

@@ -44,6 +44,7 @@
 
 - (void).cxx_destruct;
 - (void*)colorGaborDescriptor;
+- (void)dealloc;
 - (long long)descriptorId;
 - (void)encodeWithCoder:(id)arg1;
 - (long long)exifTimestamp;

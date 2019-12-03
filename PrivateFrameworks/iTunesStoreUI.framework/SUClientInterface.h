@@ -11,6 +11,8 @@
     UIColor * _darkKeyColor;
     <SUClientInterfaceDelegatePrivate> * _delegate;
     NSObject<OS_dispatch_queue> * _dispatchQueue;
+    bool  _financeInterruption;
+    NSString * _hostApplicationIdentifier;
     bool  _ignoreDefaultKeyboardNotifications;
     bool  _ignoresExpectedClientsProtocol;
     bool  _inAskToBuyApprovalFlow;
@@ -33,6 +35,8 @@
 @property (copy) NSString *clientIdentifier;
 @property (nonatomic, copy) UIColor *darkKeyColor;
 @property (nonatomic) <SUClientInterfaceDelegate> *delegate;
+@property (getter=isFinanceInterruption) bool financeInterruption;
+@property (copy) NSString *hostApplicationIdentifier;
 @property bool ignoreDefaultKeyboardNotifications;
 @property bool inAskToBuyApprovalFlow;
 @property (nonatomic, copy) UIColor *lightKeyColor;
@@ -73,9 +77,11 @@
 - (id)darkKeyColor;
 - (void)dealloc;
 - (id)delegate;
+- (id)hostApplicationIdentifier;
 - (bool)ignoreDefaultKeyboardNotifications;
 - (bool)inAskToBuyApprovalFlow;
 - (id)init;
+- (bool)isFinanceInterruption;
 - (id)lightKeyColor;
 - (id)localStoragePath;
 - (id)previewOverlay;
@@ -88,6 +94,8 @@
 - (void)setClientIdentifier:(id)arg1;
 - (void)setDarkKeyColor:(id)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setFinanceInterruption:(bool)arg1;
+- (void)setHostApplicationIdentifier:(id)arg1;
 - (void)setIgnoreDefaultKeyboardNotifications:(bool)arg1;
 - (void)setInAskToBuyApprovalFlow:(bool)arg1;
 - (void)setLightKeyColor:(id)arg1;

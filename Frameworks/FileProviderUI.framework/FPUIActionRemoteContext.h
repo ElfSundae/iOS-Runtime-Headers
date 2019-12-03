@@ -16,8 +16,8 @@
 + (id)_extensionAuxiliaryVendorProtocol;
 
 - (void).cxx_destruct;
-- (void)_cancelRequestWithError:(id)arg1;
-- (void)_completeRequest;
+- (void)_completeRequestWithUserInfo:(id)arg1 error:(id)arg2;
+- (void)_didEncounterError:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)_openExtensionURL:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)delegate;
 - (void)setDelegate:(id)arg1;

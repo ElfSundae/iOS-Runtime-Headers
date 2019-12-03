@@ -3,9 +3,27 @@
  */
 
 @interface GEOPDCategoryInformation : PBCodable <NSCopying> {
+    struct { 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_localizedMapsCategoryName : 1; 
+        unsigned int read_mapsCategoryId : 1; 
+        unsigned int read_mapsCategoryStyleAttributes : 1; 
+        unsigned int read_walletCategoryId : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_localizedMapsCategoryName : 1; 
+        unsigned int wrote_mapsCategoryId : 1; 
+        unsigned int wrote_mapsCategoryStyleAttributes : 1; 
+        unsigned int wrote_walletCategoryId : 1; 
+    }  _flags;
     GEOLocalizedString * _localizedMapsCategoryName;
     NSString * _mapsCategoryId;
     GEOStyleAttributes * _mapsCategoryStyleAttributes;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     PBUnknownFields * _unknownFields;
     NSString * _walletCategoryId;
 }
@@ -20,7 +38,14 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic, retain) NSString *walletCategoryId;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_readLocalizedMapsCategoryName;
+- (void)_readMapsCategoryId;
+- (void)_readMapsCategoryStyleAttributes;
+- (void)_readWalletCategoryId;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -30,11 +55,14 @@
 - (bool)hasMapsCategoryStyleAttributes;
 - (bool)hasWalletCategoryId;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)localizedMapsCategoryName;
 - (id)mapsCategoryId;
 - (id)mapsCategoryStyleAttributes;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setLocalizedMapsCategoryName:(id)arg1;
 - (void)setMapsCategoryId:(id)arg1;

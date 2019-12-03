@@ -42,6 +42,7 @@
 
 + (id)sharedEngine;
 
+- (void).cxx_destruct;
 - (void)_enablePolicyEngineWithReason:(id)arg1;
 - (void)adServingDaemonDidIdleDisablePolicyEngine;
 - (void)bannerView:(id)arg1 didFailToReceiveAdWithError:(id)arg2;
@@ -54,7 +55,6 @@
 - (bool)claimSharedMediaPlayerVideoAdWithError:(id*)arg1;
 - (id)currentSongData;
 - (id)currentStationData;
-- (void)dealloc;
 - (void)disablePolicyEngine;
 - (void)enablePolicyEngine;
 - (bool)enabled;

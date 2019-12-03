@@ -2,16 +2,20 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface UIRemoteKeyboardWindow : UITextEffectsWindow <_UIContextCustomBinding> {
+@interface UIRemoteKeyboardWindow : UITextEffectsWindow <_UIContextCustomBinding, _UIScreenBasedObject> {
     FBSScene * _activeScene;
     bool  _arePlaceholdersInitialised;
     FBSSceneLayer * _externalSceneLayer;
+    UIScreen * _intendedScreen;
+    NSDictionary * _perScreenOptions;
     bool  _resetRequired;
 }
 
-@property (nonatomic, readonly) struct { id x1; int x2; bool x3; bool x4; bool x5; bool x6; bool x7; bool x8; bool x9; bool x10; bool x11; bool x12; } _bindingDescription;
+@property (nonatomic, readonly) struct { id x1; bool x2; bool x3; bool x4; bool x5; bool x6; bool x7; bool x8; bool x9; bool x10; bool x11; bool x12; } _bindingDescription;
 @property (setter=_setBoundContext:, nonatomic) CAContext *_boundContext;
 @property (setter=_setContextBinder:, nonatomic) _UIContextBinder *_contextBinder;
+@property (readonly) UIScreen *_intendedScreen;
+@property (readonly) NSDictionary *_options;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -23,16 +27,21 @@
 - (bool)_alwaysGetsContexts;
 - (bool)_canIgnoreInteractionEvents;
 - (id)_initBasicWithScreen:(id)arg1 options:(id)arg2;
+- (id)_initWithScreen:(id)arg1 options:(id)arg2;
+- (id)_intendedScreen;
+- (bool)_isAlwaysKeyboardWindow;
 - (bool)_isFullscreen;
 - (bool)_isHostedInAnotherProcess;
 - (bool)_isTextEffectsWindowNotificationOwner;
 - (bool)_isWindowServerHostingManaged;
+- (id)_layerForCoordinateSpaceConversion;
 - (bool)_matchingOptions:(id)arg1;
+- (id)_options;
 - (long long)_orientationForClassicPresentation;
+- (long long)_orientationInSceneSpace;
 - (void)_resetScene;
 - (void)_setRotatableClient:(id)arg1 toOrientation:(long long)arg2 updateStatusBar:(bool)arg3 duration:(double)arg4 force:(bool)arg5 isRotating:(bool)arg6;
 - (bool)_usesWindowServerHitTesting;
-- (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })_viewTransformForInterfaceOrientation:(long long)arg1;
 - (bool)_wantsSceneAssociation;
 - (void)attachBindable;
 - (void)dealloc;

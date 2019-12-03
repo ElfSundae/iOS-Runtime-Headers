@@ -25,7 +25,6 @@
     }  _lockUpdate;
     NSArray * _months;
     NSString * _navTitle;
-    bool  _navigationBarOpaque;
     NSMutableDictionary * _nonVisibleIndicesToVCMapping;
     unsigned long long  _numberOfItems;
     PKPaymentPass * _paymentPass;
@@ -73,6 +72,7 @@
 - (id)_recoverUnusedVC;
 - (void)_reloadDataForVCAtIndex:(unsigned long long)arg1 swap:(bool)arg2;
 - (void)_reloadPendingVCs;
+- (void)_reportTappedButtonWithTag:(id)arg1;
 - (void)_retireVCForIndex:(unsigned long long)arg1;
 - (void)_scrollViewStoppedScrolling;
 - (double)_startOfItemAtIndex:(unsigned long long)arg1;
@@ -89,8 +89,6 @@
 - (id)initWithPaymentPass:(id)arg1 account:(id)arg2 fetcher:(id)arg3 weeks:(id)arg4 months:(id)arg5 type:(unsigned long long)arg6 unit:(unsigned long long)arg7 currentMonthTransactions:(id)arg8 upcomingScheduledPayments:(id)arg9;
 - (void)invalidatedSpendingSummaryOfType:(unsigned long long)arg1 startingWithDate:(id)arg2;
 - (void)invalidatedSummariesAvailable;
-- (double)pkui_preferredNavigationBarBackgroundOpacity;
-- (bool)pkui_prefersNavigationBarShadowHidden;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(bool)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
@@ -99,6 +97,8 @@
 - (void)setDelegate:(id)arg1;
 - (void)spendingSingleSummaryViewController:(id)arg1 changedSelection:(unsigned long long)arg2;
 - (void)spendingSingleSummaryViewController:(id)arg1 scrollViewDidScroll:(id)arg2;
+- (void)viewDidAppear:(bool)arg1;
+- (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
 

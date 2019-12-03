@@ -4,6 +4,7 @@
 
 @interface MPMusicPlayerController : NSObject <MPMediaPlayback, MPRequestResponseControllerDelegate, MPSystemMusicPlayerController, MPVolumeControllerDelegate> {
     NSObject<OS_dispatch_queue> * _accessQueue;
+    NSString * _clientIdentifier;
     bool  _hasPreparedToPlay;
     bool  _hasTracklistUIDChangedWhilePreparingToPlay;
     bool  _legacyClient;
@@ -19,6 +20,7 @@
     MPVolumeController * _volumeController;
 }
 
+@property (nonatomic, readonly, copy) NSString *clientIdentifier;
 @property (nonatomic) float currentPlaybackRate;
 @property (nonatomic) double currentPlaybackTime;
 @property (readonly, copy) NSString *debugDescription;
@@ -37,6 +39,8 @@
 @property (nonatomic) float volume;
 @property (nonatomic, retain) MPVolumeController *volumeController;
 
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
 + (bool)_isPlayerInstalled;
 + (id)applicationMusicPlayer;
 + (id)applicationQueuePlayer;
@@ -46,8 +50,7 @@
 + (id)systemMusicPlayer;
 
 - (void).cxx_destruct;
-- (id)_init;
-- (id)_mediaItemFromSong:(id)arg1;
+- (id)_initWithClientIdentifier:(id)arg1;
 - (void)_preflightRequestIfNeeded;
 - (void)_queueDidChangeWithResponse:(id)arg1;
 - (void)adjustLoadedQueueRangeToReverseCount:(long long)arg1 forwardCount:(long long)arg2;
@@ -55,6 +58,7 @@
 - (void)beginGeneratingPlaybackNotifications;
 - (void)beginSeekingBackward;
 - (void)beginSeekingForward;
+- (id)clientIdentifier;
 - (void)controller:(id)arg1 defersResponseReplacement:(id /* block */)arg2;
 - (unsigned long long)currentChapterIndex;
 - (float)currentPlaybackRate;
@@ -63,6 +67,7 @@
 - (void)endGeneratingPlaybackNotifications;
 - (void)endSeeking;
 - (unsigned long long)indexOfNowPlayingItem;
+- (id)initWithClientIdentifier:(id)arg1;
 - (bool)isGeniusAvailable;
 - (bool)isGeniusAvailableForSeedItems:(id)arg1;
 - (bool)isLegacyClient;
@@ -118,5 +123,10 @@
 - (id)volumeController;
 - (void)volumeController:(id)arg1 volumeValueDidChange:(float)arg2;
 - (void)willBeginLoadingRequestForController:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/SpeechRecognitionCommandAndControl.framework/SpeechRecognitionCommandAndControl
+
+- (bool)isPlayingOrInterrupted;
+- (void)playSomething;
 
 @end

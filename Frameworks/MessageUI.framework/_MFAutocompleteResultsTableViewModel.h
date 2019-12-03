@@ -10,8 +10,8 @@
 @property (nonatomic, readonly) unsigned long long numberOfNonEmptySections;
 @property (nonatomic) unsigned long long numberOfSections;
 
-- (/* Warning: unhandled struct encoding: '{?=@@@}' */ struct { id x1; id x2; })computeDiffForModel:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
+- (id)computeDiffForModel:(id)arg1;
 - (void)enumerateSections:(id /* block */)arg1;
 - (id)initWithNumberOfSections:(unsigned long long)arg1;
 - (unsigned long long)numberOfNonEmptySections;

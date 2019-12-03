@@ -14,10 +14,10 @@
         unsigned long long *sectionToIndex; 
     }  _currentMap;
     unsigned long long  _numberOfSections;
-    bool  _useRoundedInsetSections;
+    bool  _skipSetupForReadableContentGuide;
 }
 
-@property (nonatomic) bool useRoundedInsetSections;
+@property (nonatomic) bool skipSetupForReadableContentGuide;
 
 - (bool)_recomputeMappedSections;
 - (void)_swapBuffers;
@@ -31,7 +31,7 @@
 - (bool)isSectionMapped:(unsigned long long)arg1;
 - (unsigned long long)numberOfMappedSections;
 - (long long)numberOfSectionsInTableView:(id)arg1;
-- (bool)recomputeMappedSections;
+- (bool)recomputeMappedSectionsAndReloadSections:(id)arg1;
 - (bool)reloadData;
 - (void)reloadSection:(unsigned long long)arg1;
 - (void)reloadSections:(id)arg1;
@@ -39,12 +39,12 @@
 - (long long)rowAnimationForInsertingSection:(unsigned long long)arg1;
 - (long long)rowAnimationForReloadingSection:(unsigned long long)arg1;
 - (unsigned long long)sectionForIndex:(unsigned long long)arg1;
-- (void)setUseRoundedInsetSections:(bool)arg1;
+- (void)setSkipSetupForReadableContentGuide:(bool)arg1;
 - (bool)shouldMapSection:(unsigned long long)arg1;
+- (bool)skipSetupForReadableContentGuide;
 - (void)updateSectionVisibilityAndReloadIfNecessaryForAllSections;
 - (void)updateSectionVisibilityAndReloadIfNecessaryForSection:(unsigned long long)arg1;
 - (void)updateSectionVisibilityAndReloadIfNecessaryForSections:(id)arg1;
-- (bool)useRoundedInsetSections;
 - (void)viewDidLoad;
 
 @end

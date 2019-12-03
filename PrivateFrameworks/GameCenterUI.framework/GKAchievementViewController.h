@@ -8,6 +8,7 @@
 
 @property (nonatomic) <GKAchievementViewControllerDelegate> *achievementDelegate;
 
+- (void).cxx_destruct;
 - (id)achievementDelegate;
 - (void)dealloc;
 - (id)init;

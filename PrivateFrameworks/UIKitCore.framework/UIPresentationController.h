@@ -2,8 +2,9 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface UIPresentationController : NSObject <UIAppearanceContainer, UIContentContainer, UIFocusEnvironment, UIGestureRecognizerDelegate, UITraitEnvironment, _UIAppearanceContainer, _UIContentContainerInternal, _UITraitEnvironmentInternal> {
+@interface UIPresentationController : NSObject <UIAppearanceContainer, UIContentContainer, UIFocusEnvironment, UIGestureRecognizerDelegate, UITraitEnvironment, _UIAppearanceContainer, _UIContentContainerInternal, _UIFallbackEnvironment, _UIGeometryChangeObserver, _UITraitEnvironmentInternal> {
     id /* block */  __computeToEndFrameForCurrentTransition;
+    id /* block */  __containerSuperviewForCurrentTransition;
     UIView * __currentPresentationSuperview;
     id /* block */  __currentTransitionDidComplete;
     id /* block */  __customFromViewForCurrentTransition;
@@ -25,6 +26,7 @@
     <UIAdaptivePresentationControllerDelegate> * _delegate;
     SEL  _didEndSelector;
     bool  _didUpdateLayoutForStatusBarAndInterfaceOrientation;
+    UITraitCollection * _internalOverrideTraitCollection;
     bool  _isCurrentStateCancelled;
     bool  _isDisconnectedRoot;
     UITraitCollection * _lastNotifiedTraitCollection;
@@ -39,6 +41,7 @@
     UIView * _presentationView;
     UIViewController * _presentedViewController;
     UIViewController * _presentingViewController;
+    UIView * _realSourceView;
     bool  _shouldContinueTouchesOnTargetViewController;
     UIView * _snapshotOverlayView;
     struct CGRect { 
@@ -58,11 +61,15 @@
 }
 
 @property (nonatomic, copy) id /* block */ _computeToEndFrameForCurrentTransition;
-@property (getter=_currentPresentationSuperview, setter=_setCurrentPresentationSuperview:, nonatomic, retain) UIView *_currentPresentationSuperview;
+@property (nonatomic, copy) id /* block */ _containerSuperviewForCurrentTransition;
+@property (getter=_currentPresentationSuperview, setter=_setCurrentPresentationSuperview:, nonatomic) UIView *_currentPresentationSuperview;
 @property (nonatomic, copy) id /* block */ _currentTransitionDidComplete;
 @property (nonatomic, copy) id /* block */ _customFromViewForCurrentTransition;
 @property (nonatomic, copy) id /* block */ _customToViewForCurrentTransition;
 @property (nonatomic, copy) id /* block */ _fromViewForCurrentTransition;
+@property (nonatomic, readonly) bool _isPresentedInFullScreen;
+@property (nonatomic, readonly) bool _mayChildGrabPresentedViewControllerView;
+@property (nonatomic, readonly) <_UITraitEnvironmentInternal> *_parentTraitEnvironment;
 @property (getter=_preferredContentSize, setter=_setPreferredContentSize:, nonatomic) struct CGSize { double x1; double x2; } _preferredContentSize;
 @property (nonatomic, copy) id /* block */ _toViewForCurrentTransition;
 @property (nonatomic, copy) id /* block */ _transitionViewForCurrentTransition;
@@ -82,6 +89,7 @@
 @property (nonatomic, readonly) <UIFocusItemContainer> *focusItemContainer;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } frameOfPresentedViewInContainerView;
 @property (readonly) unsigned long long hash;
+@property (getter=_internalOverrideTraitCollection, setter=_setInternalOverrideTraitCollection:, nonatomic, copy) UITraitCollection *internalOverrideTraitCollection;
 @property (nonatomic) bool isCurrentStateCancelled;
 @property (nonatomic, copy) UITraitCollection *overrideTraitCollection;
 @property (nonatomic, readonly) <UIFocusEnvironment> *parentFocusEnvironment;
@@ -94,6 +102,7 @@
 @property (nonatomic, readonly) UIView *presentedView;
 @property (setter=_setPresentedViewController:, nonatomic, retain) UIViewController *presentedViewController;
 @property (setter=_setPresentingViewController:, nonatomic, retain) UIViewController *presentingViewController;
+@property (getter=_realSourceView, nonatomic, readonly) UIView *realSourceView;
 @property (getter=_shouldContinueTouchesOnTargetViewController, setter=_setShouldContinueTouchesOnTargetViewController:, nonatomic) bool shouldContinueTouchesOnTargetViewController;
 @property (nonatomic, readonly) bool shouldPresentInFullscreen;
 @property (nonatomic, readonly) bool shouldRemovePresentersView;
@@ -105,15 +114,20 @@
 
 // Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 
++ (bool)_allowsDeferredTransitions;
 + (bool)_preventsAppearanceProxyCustomization;
-+ (bool)_shouldPostPresentationControllerNotifications;
++ (void)_scheduleTransition:(id /* block */)arg1;
++ (bool)_shouldDeferTransitions;
 + (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_statusBarOverlapAndMarginInfoForView:(id)arg1;
++ (void)initialize;
 
 - (void).cxx_destruct;
 - (struct { long long x1; long long x2; })__sizeClassPair;
 - (id)_activePresentationController;
 - (id)_adaptiveTransitionContext;
 - (id)_adaptiveTransitionCoordinator;
+- (id)_adaptiveWillTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_additionalSafeAreaInsets;
 - (void)_adjustOrientationIfNecessaryInWindow:(id)arg1 forViewController:(id)arg2 preservingViewController:(id)arg3;
 - (id)_animatorForContainmentTransition;
 - (id)_appearanceContainer;
@@ -126,6 +140,11 @@
 - (id /* block */)_computeToEndFrameForCurrentTransition;
 - (void)_containedViewControllerModalStateChanged;
 - (bool)_containerIgnoresDirectTouchEvents;
+- (id /* block */)_containerSuperviewForCurrentTransition;
+- (void)_containerViewBoundsDidChange;
+- (void)_containerViewLayoutSubviews;
+- (void)_containerViewSafeAreaInsetsDidChange;
+- (void)_containerViewTraitCollectionDidChange;
 - (void)_containerViewWillLayoutSubviews;
 - (void)_coverWithSnapshot;
 - (id)_currentContextPresentationSuperview;
@@ -141,8 +160,9 @@
 - (void)_disableMenuPressForBackGesture;
 - (void)_dismissWithAnimationController:(id)arg1 interactionController:(id)arg2 target:(id)arg3 didEndSelector:(SEL)arg4;
 - (void)_enableOcclusion:(bool)arg1;
+- (bool)_fallbackShouldDismiss;
+- (id)_fallbackTraitCollection;
 - (id)_firstCurrentContextChildInWindow;
-- (struct CGSize { double x1; double x2; })_flipSize:(struct CGSize { double x1; double x2; })arg1;
 - (id)_focusMapContainer;
 - (bool)_forcesPreferredAnimationControllers;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_frameForChildContentContainer:(id)arg1;
@@ -150,13 +170,18 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_frameOfPresentedViewControllerViewInSuperview;
 - (id /* block */)_fromViewForCurrentTransition;
 - (id)_fullscreenPresentationSuperview;
+- (void)_geometryChanges:(id)arg1 forAncestor:(id)arg2;
 - (bool)_gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (bool)_gestureRecognizerShouldBegin:(id)arg1;
+- (bool)_inheritsPresentingViewControllerThemeLevel;
 - (void)_initViewHierarchyForPresentationSuperview:(id)arg1;
 - (id)_initialPresentationViewControllerForViewController:(id)arg1;
+- (id)_internalOverrideTraitCollection;
 - (bool)_isAdapted;
-- (bool)_isModalWhenContainedInPopover;
+- (bool)_isModal;
+- (bool)_isPresentedInFullScreen;
 - (bool)_keyboardShouldAnimateAlongsideForInteractiveTransitions;
+- (bool)_mayChildGrabPresentedViewControllerView;
 - (bool)_monitorsSystemLayoutFittingSize;
 - (void)_parent:(id)arg1 willTransitionToTraitCollection:(id)arg2 withTransitionCoordinator:(id)arg3;
 - (id)_parentPresentationController;
@@ -168,16 +193,27 @@
 - (id)_preferredAnimationControllerForDismissal;
 - (id)_preferredAnimationControllerForPresentation;
 - (struct CGSize { double x1; double x2; })_preferredContentSize;
+- (id)_preferredInteractionControllerForDismissal:(id)arg1;
+- (id)_preferredInteractionControllerForPresentation:(id)arg1;
+- (void)_prepareForWindowDeallocRecursively:(bool)arg1;
 - (void)_presentWithAnimationController:(id)arg1 interactionController:(id)arg2 target:(id)arg3 didEndSelector:(SEL)arg4;
 - (id)_presentationControllerForTraitCollection:(id)arg1;
 - (bool)_presentationPotentiallyUnderlapsStatusBar;
 - (id)_presentationView;
 - (id)_presentedViewControllerForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (bool)_preserveResponderAcrossWindows;
+- (id)_realSourceView;
+- (void)_realSourceViewDidChangeFromView:(id)arg1 toView:(id)arg2;
+- (void)_realSourceViewGeometryDidChange;
 - (void)_releaseSnapshot;
 - (id)_rootPresentingViewControllerForNestedPresentation;
 - (void)_sendDelegateWillPresentWithAdaptiveStyle:(long long)arg1 transitionCoordinator:(id)arg2;
-- (void)_sendPresentationControllerNotification:(id)arg1;
+- (void)_sendDidAttemptToDismiss;
+- (void)_sendDidDismiss;
+- (void)_sendFallbackDidDismiss;
+- (void)_sendFallbackWillDismiss;
+- (void)_sendPresentationControllerNotification:(id)arg1 userInfo:(id)arg2;
+- (void)_sendWillDismiss;
 - (void)_setAdaptiveTransitionContext:(id)arg1;
 - (void)_setAdaptiveTransitionCoordinator:(id)arg1;
 - (void)_setChangedPresentingViewControllerDuringAdaptation:(bool)arg1;
@@ -187,22 +223,26 @@
 - (void)_setCurrentPresentationSuperview:(id)arg1;
 - (void)_setCurrentTransitionController:(id)arg1;
 - (void)_setCustomViewForTouchContinuation:(id)arg1;
+- (void)_setInternalOverrideTraitCollection:(id)arg1;
+- (void)_setOverrideTraitCollection:(id)arg1 updatingPresentedViewControllerImmediately:(bool)arg2;
 - (void)_setPreferredContentSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)_setPresentationView:(id)arg1;
 - (void)_setPresentedViewController:(id)arg1;
 - (void)_setPresentingViewController:(id)arg1;
+- (void)_setRealSourceView:(id)arg1;
 - (void)_setShouldContinueTouchesOnTargetViewController:(bool)arg1;
-- (id)_sharedParent:(id)arg1 willTransitionToTraitCollection:(id)arg2 withTransitionCoordinator:(id)arg3;
 - (bool)_shouldAdaptFromTraitCollection:(id)arg1 toTraitCollection:(id)arg2;
 - (bool)_shouldContinueTouchesOnTargetViewController;
 - (bool)_shouldDisableInteractionDuringTransitions;
 - (bool)_shouldDisablePresentersAppearanceCallbacks;
+- (bool)_shouldDismiss;
 - (bool)_shouldGrabPresentersView;
 - (bool)_shouldKeepCurrentFirstResponder;
 - (bool)_shouldMakePresentedViewControllerFirstResponder;
 - (bool)_shouldOccludeDuringPresentation;
 - (bool)_shouldPresentedViewControllerControlStatusBarAppearance;
 - (bool)_shouldRespectDefinesPresentationContext;
+- (bool)_shouldRestoreFirstResponder;
 - (bool)_shouldSavePresentedViewControllerForStateRestoration;
 - (long long)_subclassPreferredFocusedViewPrioritizationType;
 - (void)_systemLayoutFittingSizeDidChangeForChildContentContainer:(id)arg1 childViewController:(id)arg2;
@@ -218,7 +258,9 @@
 - (bool)_transitioningTo;
 - (void)_transplantView:(id)arg1 toSuperview:(id)arg2;
 - (void)_transplantView:(id)arg1 toSuperview:(id)arg2 atIndex:(unsigned long long)arg3;
+- (void)_updateRealSourceView;
 - (void)_updateTraitsIfNecessary;
+- (id)_viewToIgnoreLayerTransformForViewFrameInWindowContentOverlayInsetsCalculation;
 - (id)_viewsParticipatingInNavigationControllerTransition;
 - (void)_willRunTransitionForCurrentStateDeferred:(bool)arg1;
 - (void)_window:(id)arg1 willTransitionToTraitCollection:(id)arg2 withTransitionCoordinator:(id)arg3;
@@ -266,6 +308,7 @@
 - (void)setSourceView:(id)arg1;
 - (void)setState:(long long)arg1;
 - (void)set_computeToEndFrameForCurrentTransition:(id /* block */)arg1;
+- (void)set_containerSuperviewForCurrentTransition:(id /* block */)arg1;
 - (void)set_currentTransitionDidComplete:(id /* block */)arg1;
 - (void)set_customFromViewForCurrentTransition:(id /* block */)arg1;
 - (void)set_customToViewForCurrentTransition:(id /* block */)arg1;
@@ -288,11 +331,10 @@
 - (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 
-// Image: /System/Library/PrivateFrameworks/News/TeaUI.framework/TeaUI
+// Image: /System/Library/PrivateFrameworks/TeaUI.framework/TeaUI
 
-- (void)ts_containerIgnoresDirectTouchEvents:(bool)arg1;
-
-// Image: /System/Library/PrivateFrameworks/Stocks/TeaUI.framework/TeaUI
++ (id)ts_dismissalTransitionDidEndNotification;
++ (id)ts_presentationTransitionDidEndNotification;
 
 - (void)ts_containerIgnoresDirectTouchEvents:(bool)arg1;
 

@@ -12,6 +12,7 @@
 
 - (unsigned long long)businessID;
 - (int)featureType;
+- (id)init;
 - (id)initWithBusinessID:(unsigned long long)arg1 featureType:(int)arg2;
 - (id)initWithLocatedInsideInfo:(id)arg1;
 

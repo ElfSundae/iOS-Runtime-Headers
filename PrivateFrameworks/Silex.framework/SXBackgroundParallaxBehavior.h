@@ -6,8 +6,6 @@
 
 @property (nonatomic, readonly) double amplitude;
 
-+ (id)typeString;
-
 - (Class)handlerClassForComponent:(id)arg1;
 
 @end

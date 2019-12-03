@@ -23,7 +23,6 @@
 @property (nonatomic, retain) NSMutableDictionary *completionBlocksForAssetFetchOperations;
 @property (nonatomic) unsigned long long deviceConditionsToCheck;
 @property (nonatomic, retain) NSMutableArray *downloadAssetsForTransferGUIDs;
-@property (nonatomic, retain) CKServerChangeToken *latestSyncToken;
 @property (nonatomic, copy) id /* block */ perTransferProgress;
 @property (nonatomic, retain) NSMutableDictionary *recordIDToTransferMap;
 @property (nonatomic, retain) IMDRecordZoneManager *recordZoneManager;
@@ -40,7 +39,7 @@
 - (bool)_attachmentZoneCreated;
 - (id)_attachmentZoneID;
 - (id)_attachmentZoneSalt;
-- (id)_changeTokenKey;
+- (id)_changeTokenKeyForSyncType:(long long)arg1;
 - (id)_ckUtilitiesInstance;
 - (id)_constructAttachmentRecordIDUsingTombStoneDictionary:(id)arg1;
 - (id)_copyRecordIDsToDeleteWithLimit:(unsigned long long)arg1;
@@ -55,6 +54,7 @@
 - (void)_fetchAttachmentZoneChangesShouldWriteBackChanges:(bool)arg1 desiredKeys:(long long)arg2 syncType:(long long)arg3 currentBatchCount:(long long)arg4 maxBatchCount:(long long)arg5 syncToken:(id)arg6 completionBlock:(id /* block */)arg7;
 - (void)_fetchAttachmentZoneRecords:(id)arg1 desiredKeys:(long long)arg2 useNonHSA2ManateeDatabase:(bool)arg3 completion:(id /* block */)arg4;
 - (bool)_fetchedAllChangesFromCloudKit;
+- (void)_hasMarkedAllAttachmentsAsNeedingSync;
 - (void)_kickOffAssetFetchForTransfersIfNeeded;
 - (bool)_kickOffWriteIfNeededForSyncType:(long long)arg1 completion:(id /* block */)arg2;
 - (void)_kickOffWriteOnCKQueueWithCompletion:(id /* block */)arg1;
@@ -62,6 +62,7 @@
 - (void)_markAttachmentWithROWIDAsSyncedWithCloudKit:(id)arg1;
 - (void)_markTransferAsNotBeingAbleToSyncUsingCKRecord:(id)arg1;
 - (void)_migrateSyncToken;
+- (void)_needsToMarkAllAttachmentsAsNeedingSync;
 - (unsigned long long)_numberOfAttachmentsToDownload;
 - (unsigned long long)_numberOfAttachmentsToWriteUp;
 - (long long)_numberOfBatchesOfAttachmentsToFetchInInitialSync;
@@ -76,17 +77,15 @@
 - (void)_processModifyRecordCompletion:(id)arg1 deletedRecordIDs:(id)arg2 error:(id)arg3 completionBlock:(id /* block */)arg4;
 - (void)_processRecordChanged:(id)arg1;
 - (void)_processRecordDeletion:(id)arg1;
-- (void)_processRecordZoneChangeTokenUpdated:(id)arg1 zoneID:(id)arg2 clienChangeToken:(id)arg3;
+- (void)_processRecordZoneChangeTokenUpdated:(id)arg1 zoneID:(id)arg2 clienChangeToken:(id)arg3 syncType:(long long)arg4;
 - (void)_processRecordZoneFetchCompletion:(id)arg1 zoneID:(id)arg2 clientChangeTokenData:(id)arg3 moreComing:(bool)arg4 shouldWriteBackChanges:(bool)arg5 desiredKeys:(long long)arg6 syncType:(long long)arg7 error:(id)arg8 currentBatchCount:(long long)arg9 maxBatchCount:(long long)arg10 completionBlock:(id /* block */)arg11;
 - (id)_recordIDsToProcessWithError:(id)arg1 error:(id)arg2;
 - (id)_recordKeyManagerSharedInstance;
 - (void)_removeTransferFromiCloudBackupWithGuid:(id)arg1;
 - (void)_resetAttachmentSyncStateForRecord:(id)arg1 toState:(long long)arg2;
-- (void)_resetSyncToken;
 - (void)_scheduleOperation:(id)arg1;
 - (bool)_shouldMarkAllAttachmentsAsNeedingSync;
 - (bool)_shouldMarkAttachmentsAsNeedingReupload;
-- (void)_updateAllAttachmentsAsNotNeedingReUpload;
 - (id)_updateAttachmentGUIDIfNeededAndReturnTransfersToForceMarkAsSync:(id)arg1 transfersToSyncRowIDs:(id)arg2;
 - (void)_updateDeviceConditionsToCheckIfNeededForCurrentBatchCount:(long long)arg1 maxBatchCount:(long long)arg2;
 - (void)_updateTransferUsingCKRecord:(id)arg1 wasFetched:(bool)arg2;
@@ -97,7 +96,7 @@
 - (id)activity;
 - (bool)assetDownloadInProgress;
 - (id)ckQueue;
-- (void)clearLocalSyncState;
+- (void)clearLocalSyncState:(unsigned long long)arg1;
 - (id)completionBlocksForAssetFetchOperations;
 - (void)dealloc;
 - (void)deleteAttachmentSyncToken;
@@ -112,7 +111,7 @@
 - (id)fileTransferCenter;
 - (id)init;
 - (id)initWithSyncTokenStore:(id)arg1;
-- (id)latestSyncToken;
+- (id)latestSyncTokenForSyncType:(long long)arg1;
 - (id /* block */)perTransferProgress;
 - (unsigned long long)purgedAttachmentsCountForChat:(id)arg1 services:(id)arg2;
 - (id)purgedAttachmentsForChat:(id)arg1 services:(id)arg2 limit:(long long)arg3;
@@ -124,7 +123,7 @@
 - (void)setCompletionBlocksForAssetFetchOperations:(id)arg1;
 - (void)setDeviceConditionsToCheck:(unsigned long long)arg1;
 - (void)setDownloadAssetsForTransferGUIDs:(id)arg1;
-- (void)setLatestSyncToken:(id)arg1;
+- (void)setLatestSyncToken:(id)arg1 forSyncType:(long long)arg2;
 - (void)setPerTransferProgress:(id /* block */)arg1;
 - (void)setRecordIDToTransferMap:(id)arg1;
 - (void)setRecordZoneManager:(id)arg1;

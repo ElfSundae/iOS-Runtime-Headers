@@ -21,6 +21,7 @@
 @property (nonatomic) unsigned long long resolvedRevision;
 
 - (void).cxx_destruct;
+- (id)_allPropertyNames;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (unsigned long long)detectionLevel;

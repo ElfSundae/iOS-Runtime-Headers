@@ -49,7 +49,6 @@
 - (bool)cached;
 - (void)cancel;
 - (id)category;
-- (id)coloredImage;
 - (id)defaultTitleForContext:(long long)arg1;
 - (id)description;
 - (bool)dismissesWithAnimation;

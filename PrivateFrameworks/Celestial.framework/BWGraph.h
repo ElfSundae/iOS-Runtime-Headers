@@ -7,11 +7,13 @@
     bool  _beingConfigured;
     bool  _classicRetainedBufferCount;
     NSObject<OS_dispatch_group> * _commitGroup;
+    unsigned int  _configurationQueuePriority;
     NSMutableArray * _connections;
     bool  _deferredNodePrepareCancelled;
     NSMutableArray * _deferredPreparePrioritySinks;
     NSMutableArray * _deferredStartSourceNodes;
     int  _errorStatus;
+    int  _graphStateTransitionTimeoutSeconds;
     bool  _haveStartedOrCancelledDeferredSourceNodes;
     long long  _inflightConfigurationID;
     BWMemoryPool * _memoryPool;
@@ -19,24 +21,23 @@
     NSMutableArray * _nodes;
     NSArray * _nodesToPrepareAfterGraphStart;
     NSMutableArray * _nodesToPrepareConcurrently;
+    NSObject<OS_dispatch_group> * _nonDeferredSourceNodesStartGroup;
     NSMutableArray * _outputsWithSharedPools;
     NSMutableDictionary * _outputsWithSharedPoolsForAttachedMedia;
-    bool  _prefetchesPixelBufferPools;
     bool  _running;
     NSMutableArray * _sinkNodes;
     NSString * _sourceDescription;
     NSMutableArray * _sourceNodes;
     NSObject<OS_dispatch_group> * _sourceNodesStartGroup;
+    NSObject<OS_dispatch_queue> * _sourceStartQueue;
     NSObject<OS_dispatch_group> * _startGroup;
     <BWGraphStatusDelegate> * _statusDelegate;
-    NSDictionary * _subgraphsByName;
     bool  _supportsLiveReconfiguration;
 }
 
 @property (nonatomic, readonly) bool deferredNodePrepareEnabled;
 @property int errorStatus;
 @property (nonatomic, retain) BWMemoryPool *memoryPool;
-@property (nonatomic) bool prefetchesPixelBufferPools;
 @property (nonatomic) <BWGraphStatusDelegate> *statusDelegate;
 @property (nonatomic, readonly) bool supportsLiveReconfiguration;
 
@@ -80,24 +81,22 @@
 - (void)enableDeferredStartForSourceNode:(id)arg1;
 - (int)errorStatus;
 - (id)init;
+- (id)initWithConfigurationQueuePriority:(unsigned int)arg1;
 - (id)memoryPool;
 - (id)modeDescription;
-- (bool)prefetchesPixelBufferPools;
+- (void)notifyWhenNonDeferredSourceNodesHaveStarted:(id /* block */)arg1;
 - (void)setApplicationID:(id)arg1;
 - (void)setErrorStatus:(int)arg1;
 - (void)setMemoryPool:(id)arg1;
 - (void)setModeDescription:(id)arg1;
-- (void)setPrefetchesPixelBufferPools:(bool)arg1;
 - (void)setSourceDescription:(id)arg1;
 - (void)setStatusDelegate:(id)arg1;
-- (void)setSubgraphsByName:(id)arg1;
 - (id)sourceDescription;
 - (bool)start:(id*)arg1;
 - (void)startDeferredNodePrepareIfNeededWithCompletionHandler:(id /* block */)arg1;
 - (void)startDeferredSourceNodesIfNeeded;
 - (id)statusDelegate;
 - (bool)stop:(id*)arg1;
-- (id)subgraphsByName;
 - (bool)supportsLiveReconfiguration;
 - (void)waitForStartOrCommitToComplete;
 

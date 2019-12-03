@@ -15,10 +15,10 @@
 - (void).cxx_destruct;
 - (bool)allowsCachingOfResults;
 - (void)applyConfigurationOfRequest:(id)arg1;
+- (id)description;
 - (unsigned long long)imageCropAndScaleOption;
 - (id)initWithModel:(id)arg1;
 - (id)initWithModel:(id)arg1 completionHandler:(id /* block */)arg2;
-- (id)initWithName:(id)arg1 options:(id)arg2 completionHandler:(id /* block */)arg3;
 - (bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id*)arg3;
 - (id)model;
 - (id)newDefaultRequestInstance;

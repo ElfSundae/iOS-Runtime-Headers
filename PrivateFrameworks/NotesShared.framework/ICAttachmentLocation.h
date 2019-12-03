@@ -12,7 +12,7 @@
 @property (nonatomic) bool placeUpdated;
 @property (readonly) Class superclass;
 
-+ (id)newAttachmentLocationWithContext:(id)arg1;
++ (id)newAttachmentLocationForAttachment:(id)arg1;
 
 - (id)formattedAddressWithoutAttachmentTitle;
 - (id)targetSearchIndexable;

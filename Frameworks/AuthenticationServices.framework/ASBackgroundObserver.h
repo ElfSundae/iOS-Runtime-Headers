@@ -11,8 +11,8 @@
 @property (nonatomic, readonly) UIViewController *viewController;
 
 - (void).cxx_destruct;
-- (void)_applicationDidEnterBackground:(id)arg1;
 - (void)_hostDidEnterBackground:(id)arg1;
+- (void)_sceneDidEnterBackground:(id)arg1;
 - (id /* block */)block;
 - (void)dealloc;
 - (id)initWithViewController:(id)arg1 block:(id /* block */)arg2;

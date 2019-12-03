@@ -15,6 +15,7 @@
 - (void)setNeedsUpdate;
 - (void)setScrollInfo:(PXTilingScrollInfo *)arg1;
 - (void)setUpdateDelegate:(id <PXTilingScrollControllerUpdateDelegate>)arg1;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })targetRect;
 - (<PXTilingScrollControllerUpdateDelegate> *)updateDelegate;
 - (void)updateIfNeeded;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })visibleRect;

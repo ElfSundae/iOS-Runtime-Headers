@@ -11,7 +11,7 @@
 @property (nonatomic, readonly, retain) NSString *_prettyDescription;
 @property (nonatomic, readonly, retain) NSString *_typeDescription;
 @property (nonatomic) short albumListType;
-@property (nonatomic, readonly, retain) NSMutableOrderedSet *albums;
+@property (nonatomic, readonly) NSMutableOrderedSet *albums;
 @property (nonatomic, readonly) unsigned long long albumsCount;
 @property (nonatomic, readonly, copy) id /* block */ albumsSortingComparator;
 @property (nonatomic, readonly) bool canEditAlbums;
@@ -51,7 +51,7 @@
 + (bool)isValidPathForPersistence:(id)arg1;
 + (bool)isValidTypeForPersistence:(short)arg1;
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
-+ (void)persistAlbumListUUIDs:(id)arg1 type:(short)arg2 allowsOverwrite:(bool)arg3;
++ (void)persistAlbumListUUIDs:(id)arg1 type:(short)arg2 pathManager:(id)arg3 allowsOverwrite:(bool)arg4;
 + (id)placesAlbumListInManagedObjectContext:(id)arg1;
 + (id)placesAlbumListInPhotoLibrary:(id)arg1;
 + (unsigned long long)priorityForAlbumKind:(int)arg1;
@@ -60,6 +60,7 @@
 + (id)scenesAlbumListInManagedObjectContext:(id)arg1;
 + (id)scenesAlbumListInPhotoLibrary:(id)arg1;
 
+- (void).cxx_destruct;
 - (id)_albumsCountFetchRequest;
 - (id)_prettyDescription;
 - (id)_typeDescription;
@@ -88,6 +89,9 @@
 - (bool)isFolder;
 - (bool)isRegisteredForChanges;
 - (bool)needsReordering;
+- (id)payloadForChangedKeys:(id)arg1;
+- (id)payloadID;
+- (id)payloadIDForTombstone:(id)arg1;
 - (void)preheatAlbumsAtIndexes:(id)arg1 forProperties:(id)arg2 relationships:(id)arg3;
 - (void)preheatAlbumsForProperties:(id)arg1 relationships:(id)arg2;
 - (void)registerDerivedAlbumList:(struct NSObject { Class x1; }*)arg1;

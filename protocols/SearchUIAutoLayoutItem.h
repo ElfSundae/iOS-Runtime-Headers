@@ -5,8 +5,8 @@
 
 @required
 
-- (UIView *)containingView;
-- (bool)isContainedByItem:(id <SearchUIAutoLayoutItem>)arg1;
-- (UIView *)view;
+- (UIView *)searchui_containingView;
+- (bool)searchui_isContainedByItem:(id <SearchUIAutoLayoutItem>)arg1;
+- (UIView *)searchui_view;
 
 @end

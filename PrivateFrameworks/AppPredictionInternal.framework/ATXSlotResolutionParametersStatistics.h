@@ -17,6 +17,8 @@
     double  _dayAndPrevLocationCount;
     double  _dayOfWeekCount;
     NSDate * _earliestOccurrenceTime;
+    double  _eightHourWindowCount;
+    double  _hourWindowCount;
     NSDate * _latestAppSessionStartDate;
     NSDate * _latestOccurrenceTime;
     double  _locationCount;
@@ -33,6 +35,7 @@
     double  _prevLocationAndLocationCount;
     double  _prevLocationAndMotionTypeCount;
     double  _prevLocationCount;
+    double  _thirtyMinuteWindowCount;
     double  _timeAndDayAndLocationCount;
     double  _timeAndDayCount;
     double  _timeAndLocationCount;
@@ -81,6 +84,9 @@
 
 + (double)_smoothedBudgetForTimeOfDay:(long long)arg1 currentTimeOfDay:(long long)arg2;
 + (double)_smoothedCountForCoarseTimeOfDay:(long long)arg1 currentTimeOfDay:(long long)arg2;
++ (double)_smoothedCountForEightHourWindow:(long long)arg1 currentTimeOfDay:(long long)arg2;
++ (double)_smoothedCountForHourWindow:(long long)arg1 currentTimeOfDay:(long long)arg2;
++ (double)_smoothedCountForThirtyMinuteWindow:(long long)arg1 currentTimeOfDay:(long long)arg2;
 + (double)_smoothedCountForTimeOfDay:(long long)arg1 currentTimeOfDay:(long long)arg2;
 + (double)smoothedRatio:(double)arg1 over:(double)arg2;
 

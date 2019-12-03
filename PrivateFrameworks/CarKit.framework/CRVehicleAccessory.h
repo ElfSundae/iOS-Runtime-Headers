@@ -3,28 +3,35 @@
  */
 
 @interface CRVehicleAccessory : NSObject {
+    NSString * _PPID;
     EAAccessory * _accessory;
     NSArray * _accessoryProtocols;
     NSString * _bluetoothAddress;
     NSData * _certificateSerialNumber;
     NSNumber * _connectionID;
+    bool  _supportsEnhancedIntegration;
     bool  _supportsUSBCarPlay;
     bool  _supportsWiredBluetoothPairing;
     bool  _supportsWirelessCarPlay;
+    NSString * _vehicleModelName;
     NSString * _vehicleName;
 }
 
+@property (nonatomic, retain) NSString *PPID;
 @property (nonatomic) EAAccessory *accessory;
 @property (nonatomic, retain) NSArray *accessoryProtocols;
 @property (nonatomic, retain) NSString *bluetoothAddress;
 @property (nonatomic, retain) NSData *certificateSerialNumber;
 @property (nonatomic, retain) NSNumber *connectionID;
+@property (nonatomic) bool supportsEnhancedIntegration;
 @property (nonatomic) bool supportsUSBCarPlay;
 @property (nonatomic) bool supportsWiredBluetoothPairing;
 @property (nonatomic) bool supportsWirelessCarPlay;
+@property (nonatomic, retain) NSString *vehicleModelName;
 @property (nonatomic, retain) NSString *vehicleName;
 
 - (void).cxx_destruct;
+- (id)PPID;
 - (bool)_updateName;
 - (id)accessory;
 - (id)accessoryProtocols;
@@ -44,13 +51,19 @@
 - (void)setBluetoothAddress:(id)arg1;
 - (void)setCertificateSerialNumber:(id)arg1;
 - (void)setConnectionID:(id)arg1;
+- (void)setPPID:(id)arg1;
+- (void)setSupportsEnhancedIntegration:(bool)arg1;
 - (void)setSupportsUSBCarPlay:(bool)arg1;
 - (void)setSupportsWiredBluetoothPairing:(bool)arg1;
 - (void)setSupportsWirelessCarPlay:(bool)arg1;
+- (void)setVehicleModelName:(id)arg1;
 - (void)setVehicleName:(id)arg1;
+- (bool)supportsEnhancedIntegration;
 - (bool)supportsUSBCarPlay;
 - (bool)supportsWiredBluetoothPairing;
 - (bool)supportsWirelessCarPlay;
+- (id)vehicleAccessoryInfoKeys;
+- (id)vehicleModelName;
 - (id)vehicleName;
 
 @end

@@ -2,43 +2,31 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaInvocation : PBCodable <NSCopying> {
-    struct { 
-        unsigned int invocationAction : 1; 
-        unsigned int invocationSource : 1; 
-    }  _has;
+@interface SISchemaInvocation : PBCodable <NSSecureCoding, SISchemaInvocation> {
     int  _invocationAction;
     int  _invocationSource;
     SISchemaViewContainer * _viewContainer;
 }
 
-@property (nonatomic) bool hasInvocationAction;
-@property (nonatomic) bool hasInvocationSource;
-@property (nonatomic, readonly) bool hasViewContainer;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) int invocationAction;
 @property (nonatomic) int invocationSource;
+@property (nonatomic, readonly) NSData *jsonData;
+@property (readonly) Class superclass;
 @property (nonatomic, retain) SISchemaViewContainer *viewContainer;
 
 - (void).cxx_destruct;
-- (int)StringAsInvocationAction:(id)arg1;
-- (int)StringAsInvocationSource:(id)arg1;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (bool)hasInvocationAction;
-- (bool)hasInvocationSource;
-- (bool)hasViewContainer;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (int)invocationAction;
-- (id)invocationActionAsString:(int)arg1;
 - (int)invocationSource;
-- (id)invocationSourceAsString:(int)arg1;
 - (bool)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
+- (id)jsonData;
 - (bool)readFrom:(id)arg1;
-- (void)setHasInvocationAction:(bool)arg1;
-- (void)setHasInvocationSource:(bool)arg1;
 - (void)setInvocationAction:(int)arg1;
 - (void)setInvocationSource:(int)arg1;
 - (void)setViewContainer:(id)arg1;

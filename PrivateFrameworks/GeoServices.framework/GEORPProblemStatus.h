@@ -6,13 +6,29 @@
     double  _creationDate;
     GEORPDetails * _details;
     struct { 
-        unsigned int creationDate : 1; 
-        unsigned int problemState : 1; 
-    }  _has;
+        unsigned int has_creationDate : 1; 
+        unsigned int has_problemState : 1; 
+        unsigned int read_details : 1; 
+        unsigned int read_notification : 1; 
+        unsigned int read_problemId : 1; 
+        unsigned int read_problemResolution : 1; 
+        unsigned int wrote_creationDate : 1; 
+        unsigned int wrote_details : 1; 
+        unsigned int wrote_notification : 1; 
+        unsigned int wrote_problemId : 1; 
+        unsigned int wrote_problemResolution : 1; 
+        unsigned int wrote_problemState : 1; 
+    }  _flags;
     GEORPNotification * _notification;
     NSString * _problemId;
     GEORPResolution * _problemResolution;
     int  _problemState;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
 }
 
 @property (nonatomic) double creationDate;
@@ -28,8 +44,14 @@
 @property (nonatomic, retain) GEORPResolution *problemResolution;
 @property (nonatomic) int problemState;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsProblemState:(id)arg1;
+- (void)_readDetails;
+- (void)_readNotification;
+- (void)_readProblemId;
+- (void)_readProblemResolution;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (double)creationDate;
@@ -43,6 +65,8 @@
 - (bool)hasProblemResolution;
 - (bool)hasProblemState;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)notification;
@@ -50,6 +74,7 @@
 - (id)problemResolution;
 - (int)problemState;
 - (id)problemStateAsString:(int)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setCreationDate:(double)arg1;
 - (void)setDetails:(id)arg1;

@@ -15,7 +15,7 @@
 - (void).cxx_destruct;
 - (id /* block */)block;
 - (bool)isEnabled;
-- (void)performWithCompletionHandler:(id /* block */)arg1;
+- (void)performWithStatusBar:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)setBlock:(id /* block */)arg1;
 - (void)setEnabled:(bool)arg1;
 

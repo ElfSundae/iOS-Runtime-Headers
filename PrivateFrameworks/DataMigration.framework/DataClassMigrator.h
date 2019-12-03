@@ -5,6 +5,8 @@
 @interface DataClassMigrator : NSObject {
     NSDictionary * _context;
     bool  _didUpgrade;
+    NSString * _restoredBackupBuildVersion;
+    NSString * _restoredBackupProductType;
     unsigned int  _userDataDisposition;
 }
 
@@ -13,6 +15,8 @@
 @property (nonatomic, readonly) bool didRestoreFromBackup;
 @property (nonatomic, readonly) bool didRestoreFromCloudBackup;
 @property (nonatomic) bool didUpgrade;
+@property (nonatomic, retain) NSString *restoredBackupBuildVersion;
+@property (nonatomic, retain) NSString *restoredBackupProductType;
 @property (nonatomic, readonly) bool shouldPreserveSettingsAfterRestore;
 @property (nonatomic) unsigned int userDataDisposition;
 @property (nonatomic, readonly) bool wasPasscodeSetInBackup;
@@ -21,16 +25,17 @@
 
 - (void).cxx_destruct;
 - (id)context;
-- (id)dataClassName;
 - (bool)didMigrateBackupFromDifferentDevice;
 - (bool)didRestoreFromBackup;
 - (bool)didRestoreFromCloudBackup;
 - (bool)didUpgrade;
-- (float)estimatedDuration;
-- (float)migrationProgress;
 - (bool)performMigration;
+- (id)restoredBackupBuildVersion;
+- (id)restoredBackupProductType;
 - (void)setContext:(id)arg1;
 - (void)setDidUpgrade:(bool)arg1;
+- (void)setRestoredBackupBuildVersion:(id)arg1;
+- (void)setRestoredBackupProductType:(id)arg1;
 - (void)setUserDataDisposition:(unsigned int)arg1;
 - (bool)shouldPreserveSettingsAfterRestore;
 - (unsigned int)userDataDisposition;

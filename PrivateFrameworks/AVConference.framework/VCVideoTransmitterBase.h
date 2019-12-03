@@ -18,6 +18,8 @@
         unsigned int flags; 
         long long epoch; 
     }  _latestSampleBufferTimestamp;
+    unsigned int  _targetBitrate;
+    unsigned int  _targetBitrateChangeCounter;
     unsigned int  _targetFramerate;
     unsigned int  _temporaryMaximumBitrate;
     unsigned int  _timestamp;
@@ -36,6 +38,8 @@
 @property double lastSentAudioHostTime;
 @property unsigned int lastSentAudioSampleTime;
 @property (readonly) Class superclass;
+@property (nonatomic) unsigned int targetBitrate;
+@property (nonatomic) unsigned int targetBitrateChangeCounter;
 
 - (void)collectChannelMetrics:(struct { unsigned int x1; unsigned int x2; double x3; }*)arg1 interval:(float)arg2;
 - (void)dealloc;
@@ -58,8 +62,12 @@
 - (void)setLastSentAudioHostTime:(double)arg1;
 - (void)setLastSentAudioSampleTime:(unsigned int)arg1;
 - (void)setStreamIDs:(unsigned short*)arg1 numOfStreamIDs:(unsigned char)arg2 repairedStreamIDs:(unsigned short*)arg3 numOfRepairedStreamIDs:(unsigned char)arg4;
+- (void)setTargetBitrate:(unsigned int)arg1;
+- (void)setTargetBitrateChangeCounter:(unsigned int)arg1;
 - (unsigned int)setTemporaryMaximumBitrate:(unsigned int)arg1;
 - (void)startVideo;
 - (void)stopVideo;
+- (unsigned int)targetBitrate;
+- (unsigned int)targetBitrateChangeCounter;
 
 @end

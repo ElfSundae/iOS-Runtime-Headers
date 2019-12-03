@@ -17,7 +17,7 @@
 + (void)initialize;
 
 - (void)dealloc;
-- (/* Warning: unhandled struct encoding: '{BWRenderListParameterNode={?=^{BWRenderListParameterNode}}@}' */ struct BWRenderListParameterNode { struct { struct BWRenderListParameterNode {} *x_1_1_1; } x1; id x2; }*)firstNode;
+- (struct BWRenderListParameterNode { struct { struct BWRenderListParameterNode {} *x_1_1_1; } x1; id x2; }*)firstNode;
 - (id)init;
 - (id)initWithParameterList:(struct BWRenderListParameterList { struct BWRenderListParameterNode {} *x1; }*)arg1;
 - (struct BWRenderListParameterList { struct BWRenderListParameterNode {} *x1; }*)parameterList;

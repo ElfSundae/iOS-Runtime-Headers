@@ -3,6 +3,7 @@
  */
 
 @interface PLPersistentHistoryChangeDistributor : NSObject {
+    PLCoreDataChangeMerger * _changeMerger;
     NSPersistentHistoryToken * _lastToken;
     NSObject<OS_dispatch_queue> * _notifyQueue;
     int  _notifyToken;
@@ -17,7 +18,7 @@
 - (void)distributeTransactions:(id)arg1;
 - (id)fetchTransactionsSinceLastToken;
 - (void)forceUserInterfaceReload;
-- (id)initWithPersistentStoreCoordinator:(id)arg1;
+- (id)initWithPersistentStoreCoordinator:(id)arg1 changeMerger:(id)arg2;
 - (id)localEventFromTransactions:(id)arg1;
 - (id)makeManagedObjectContext;
 - (void)startObservingRemoteNotifications;

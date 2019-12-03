@@ -15,8 +15,8 @@
 
 + (bool)supportsSecureCoding;
 
+- (void).cxx_destruct;
 - (id)data;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithAttachment:(id)arg1;
 - (id)initWithCoder:(id)arg1;

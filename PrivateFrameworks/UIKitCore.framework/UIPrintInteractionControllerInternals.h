@@ -23,6 +23,7 @@
     PKPrinter * _printer;
     UIPrintingProgress * _printingProgress;
     NSURL * _saveFileURL;
+    bool  _showPrintingProgress;
     bool  _supressNotifyDismissed;
     NSURL * _tempPreviewFileURL;
 }

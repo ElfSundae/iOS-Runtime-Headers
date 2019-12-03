@@ -24,8 +24,11 @@
 - (id)init;
 - (id)inputManagerForInputMode:(id)arg1 withKeyboardState:(id)arg2 class:(Class)arg3;
 - (id)interactingConnection;
+- (bool)isActiveInputManager:(id)arg1;
+- (void)jettisonAllActiveInputManagers;
 - (id)mostRecentlyRequested;
 - (void)reduceCacheToSize:(unsigned long long)arg1;
+- (void)registerMaintenanceActivity;
 - (id)resourceInputModes;
 - (void)setInteractingConnection:(id)arg1;
 - (void)setMostRecentlyRequested:(id)arg1;

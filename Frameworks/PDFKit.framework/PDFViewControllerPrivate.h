@@ -5,11 +5,13 @@
 @interface PDFViewControllerPrivate : NSObject {
     PDFAnnotation * activeAnnotation;
     bool  didPostPDFExtensionViewAnnotationLongPress;
+    UIMenuItem * highlightItem;
     double  longPressGestureStartTime;
+    PDFMarkupMenuView * markupMenuView;
     CALayer * marqueeEffect;
-    PDFSelection * textSelection;
-    int  textSelectionHandle;
-    int  textSelectionState;
+    UIMenuItem * showMarkupMenuItem;
+    unsigned long long  textSelectionMenu;
+    NSMutableArray * textSelectionMenuItems;
     PDFView * view;
     struct CGRect { 
         struct CGPoint { 

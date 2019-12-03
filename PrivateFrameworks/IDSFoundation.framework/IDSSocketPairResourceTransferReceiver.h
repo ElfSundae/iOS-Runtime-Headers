@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/IDSFoundation.framework/IDSFoundation
  */
 
-@interface IDSSocketPairResourceTransferReceiver : NSObject {
+@interface IDSSocketPairResourceTransferReceiver : NSObject <IDSSocketPairMessage> {
     bool  _compressed;
     bool  _done;
     bool  _expectsPeerResponse;
@@ -21,9 +21,15 @@
     bool  _wantsAppAck;
 }
 
-@property (nonatomic, readonly) NSDate *expiryDate;
+@property (nonatomic, readonly) NSData *data;
+@property (nonatomic, readonly) bool expectsPeerResponse;
+@property (nonatomic, retain) NSDate *expiryDate;
 @property (nonatomic, readonly) NSString *messageUUID;
+@property (nonatomic, readonly) NSString *peerResponseIdentifier;
+@property (nonatomic) unsigned int sequenceNumber;
+@property (nonatomic) unsigned short streamID;
 @property (nonatomic, readonly) unsigned long long totalBytesReceived;
+@property (nonatomic, readonly) bool wantsAppAck;
 
 + (id)incomingFilePath;
 + (id)incomingFilePathForMessageUUID:(id)arg1;
@@ -36,6 +42,7 @@
 - (id)finalizedMessageDictionaryIfDone;
 - (id)initWithMessage:(id)arg1 resumeResourceTransfers:(bool)arg2 receiverError:(unsigned char*)arg3;
 - (id)messageUUID;
+- (void)setExpiryDate:(id)arg1;
 - (unsigned long long)totalBytesReceived;
 - (bool)writeResourceData:(id)arg1;
 - (bool)writeResourceData:(id)arg1 resourceByteOffset:(unsigned long long)arg2;

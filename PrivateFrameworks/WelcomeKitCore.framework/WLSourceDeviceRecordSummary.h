@@ -5,6 +5,7 @@
 @interface WLSourceDeviceRecordSummary : NSObject {
     WLSourceDeviceAccount * _account;
     NSString * _dataFilePath;
+    bool  _didDownload;
     unsigned long long  _downloadSegmentCount;
     NSString * _identifier;
     unsigned long long  _itemSize;
@@ -17,6 +18,7 @@
 
 @property (nonatomic, retain) WLSourceDeviceAccount *account;
 @property (nonatomic, copy) NSString *dataFilePath;
+@property (nonatomic) bool didDownload;
 @property (nonatomic) unsigned long long downloadSegmentCount;
 @property (nonatomic, copy) NSString *identifier;
 @property (nonatomic) unsigned long long itemSize;
@@ -32,6 +34,7 @@
 - (void).cxx_destruct;
 - (id)account;
 - (id)dataFilePath;
+- (bool)didDownload;
 - (unsigned long long)downloadSegmentCount;
 - (id)identifier;
 - (id)initWithInfo:(id)arg1 account:(id)arg2;
@@ -41,6 +44,7 @@
 - (id)relativePath;
 - (void)setAccount:(id)arg1;
 - (void)setDataFilePath:(id)arg1;
+- (void)setDidDownload:(bool)arg1;
 - (void)setDownloadSegmentCount:(unsigned long long)arg1;
 - (void)setIdentifier:(id)arg1;
 - (void)setItemSize:(unsigned long long)arg1;

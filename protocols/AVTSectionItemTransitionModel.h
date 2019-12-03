@@ -6,8 +6,8 @@
 @required
 
 - (void)cleanupAfterTransition;
-- (UIView *)fromView;
+- (CALayer *)fromLayer;
 - (void)prepareForTransitionToImage:(UIImage *)arg1;
-- (UIView *)toView;
+- (CALayer *)toLayer;
 
 @end

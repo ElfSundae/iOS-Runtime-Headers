@@ -54,6 +54,7 @@
 - (void)setPrimaryState:(long long)arg1;
 - (void)setRenderingMode:(long long)arg1;
 - (void)setVibrancyEffect:(id)arg1;
+- (bool)shouldFlipForRTL;
 - (void)updateWithIconDescriptor:(id)arg1 displayStyle:(unsigned long long)arg2 animated:(bool)arg3;
 - (id)vibrancyEffect;
 - (bool)wantsManagedVibrancyEffect;

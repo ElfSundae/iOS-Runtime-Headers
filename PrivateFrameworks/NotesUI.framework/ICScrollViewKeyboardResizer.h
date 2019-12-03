@@ -29,6 +29,7 @@
 - (id)initWithDelegate:(id)arg1;
 - (bool)isAutoResizing;
 - (bool)isObservingKeyboardNotifications;
+- (void)reapplyInsets;
 - (id)scrollView;
 - (void)setAutoResizing:(bool)arg1;
 - (void)setDelegate:(id)arg1;

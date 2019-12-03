@@ -9,6 +9,7 @@
     BWPipelineStage * _pipelineStage;
     bool  _resumedByClient;
     bool  _resumedForEventsOnly;
+    bool  _stillImagePipelineStageInputHandlesMessages;
     bool  _suspended;
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 

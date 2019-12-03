@@ -9,6 +9,7 @@
     bool  _computeAndApplyAspectRatioCrop;
     float  _customFiltersLastUsedHorizontalRatio;
     float  _customFiltersLastUsedVerticalRatio;
+    bool  _enableFencing;
     BWInferenceVideoRequirement * _inputRequirement;
     float  _outputAspectRatio;
     NSArray * _outputRequirements;
@@ -34,7 +35,7 @@
 - (id)executable;
 - (int)executeOnSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 usingStorage:(id)arg2 withExecutionTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg3 completionHandler:(id /* block */)arg4;
 - (id)extractable;
-- (id)initWithInputRequirement:(id)arg1 outputRequirements:(id)arg2;
+- (id)initWithInputRequirement:(id)arg1 outputRequirements:(id)arg2 enableFencing:(bool)arg3;
 - (bool)mustExecuteWhenAllowed;
 - (id)newStorage;
 - (int)prepareForExecution;

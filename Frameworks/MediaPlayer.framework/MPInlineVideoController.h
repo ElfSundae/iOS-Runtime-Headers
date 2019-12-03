@@ -12,10 +12,8 @@
     bool  _allowsWirelessPlayback;
     UIWindow * _alternateTracksWindow;
     bool  _alwaysAllowHidingControlsOverlay;
-    int  _artworkImageStyle;
+    long long  _artworkImageStyle;
     bool  _attemptAutoPlayWhenControlsHidden;
-    long long  _audioOverlayStyle;
-    MPInlineAudioOverlay * _audioOverlayView;
     bool  _automaticallyHandleTransportControls;
     unsigned long long  _backgroundTaskId;
     MPVideoBackgroundView * _backgroundView;
@@ -80,9 +78,8 @@
 @property (nonatomic) bool allowsDetailScrubbing;
 @property (nonatomic) bool allowsWirelessPlayback;
 @property (nonatomic) bool alwaysAllowHidingControlsOverlay;
-@property (nonatomic) int artworkImageStyle;
+@property (nonatomic) long long artworkImageStyle;
 @property (nonatomic) bool attemptAutoPlayWhenControlsHidden;
-@property (nonatomic) long long audioOverlayStyle;
 @property (nonatomic) bool autoPlayWhenLikelyToKeepUp;
 @property (nonatomic) bool automaticallyHandleTransportControls;
 @property (nonatomic, readonly) UIView *backgroundView;
@@ -136,7 +133,6 @@
 - (bool)_canEnableAirPlayVideoRoutes;
 - (void)_cancelOverlayIdleTimer;
 - (void)_delayedShowLoadingIndicator;
-- (void)_destroyAudioOverlayView;
 - (void)_destroyVideoOverlayView;
 - (void)_destroyVideoSnapshotView;
 - (void)_doneWithChapters:(id)arg1;
@@ -201,9 +197,8 @@
 - (bool)allowsDetailScrubbing;
 - (bool)allowsWirelessPlayback;
 - (bool)alwaysAllowHidingControlsOverlay;
-- (int)artworkImageStyle;
+- (long long)artworkImageStyle;
 - (bool)attemptAutoPlayWhenControlsHidden;
-- (long long)audioOverlayStyle;
 - (bool)autoPlayWhenLikelyToKeepUp;
 - (bool)automaticallyHandleTransportControls;
 - (id)backgroundView;
@@ -252,9 +247,8 @@
 - (void)setAllowsDetailScrubbing:(bool)arg1;
 - (void)setAllowsWirelessPlayback:(bool)arg1;
 - (void)setAlwaysAllowHidingControlsOverlay:(bool)arg1;
-- (void)setArtworkImageStyle:(int)arg1;
+- (void)setArtworkImageStyle:(long long)arg1;
 - (void)setAttemptAutoPlayWhenControlsHidden:(bool)arg1;
-- (void)setAudioOverlayStyle:(long long)arg1;
 - (void)setAutoPlayWhenLikelyToKeepUp:(bool)arg1;
 - (void)setAutomaticallyHandleTransportControls:(bool)arg1;
 - (void)setBackstopColor:(id)arg1;

@@ -10,9 +10,26 @@
     }  _avoidedModes;
     GEOFareOptions * _fareOptions;
     struct { 
-        unsigned int prioritization : 1; 
-    }  _has;
+        unsigned int has_prioritization : 1; 
+        unsigned int has_routingBehavior : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_avoidedModes : 1; 
+        unsigned int read_fareOptions : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_avoidedModes : 1; 
+        unsigned int wrote_fareOptions : 1; 
+        unsigned int wrote_prioritization : 1; 
+        unsigned int wrote_routingBehavior : 1; 
+    }  _flags;
     int  _prioritization;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
+    int  _routingBehavior;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic, readonly) int*avoidedModes;
@@ -20,20 +37,27 @@
 @property (nonatomic, retain) GEOFareOptions *fareOptions;
 @property (nonatomic, readonly) bool hasFareOptions;
 @property (nonatomic) bool hasPrioritization;
-@property (nonatomic, readonly) bool hasSurchargeOption;
+@property (nonatomic) bool hasRoutingBehavior;
 @property (nonatomic) int prioritization;
-@property (nonatomic) bool showICFares;
-@property (nonatomic) int surchargeOption;
+@property (nonatomic) int routingBehavior;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
+
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsAvoidedModes:(id)arg1;
 - (int)StringAsPrioritization:(id)arg1;
+- (int)StringAsRoutingBehavior:(id)arg1;
+- (void)_addNoFlagsAvoidedMode:(int)arg1;
+- (void)_readAvoidedModes;
+- (void)_readFareOptions;
 - (void)addAvoidedMode:(int)arg1;
 - (int)avoidedModeAtIndex:(unsigned long long)arg1;
 - (int*)avoidedModes;
 - (id)avoidedModesAsString:(int)arg1;
 - (unsigned long long)avoidedModesCount;
 - (void)clearAvoidedModes;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -42,21 +66,25 @@
 - (id)fareOptions;
 - (bool)hasFareOptions;
 - (bool)hasPrioritization;
-- (bool)hasSurchargeOption;
+- (bool)hasRoutingBehavior;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (int)prioritization;
 - (id)prioritizationAsString:(int)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
+- (int)routingBehavior;
+- (id)routingBehaviorAsString:(int)arg1;
 - (void)setAvoidedModes:(int*)arg1 count:(unsigned long long)arg2;
 - (void)setFareOptions:(id)arg1;
 - (void)setHasPrioritization:(bool)arg1;
+- (void)setHasRoutingBehavior:(bool)arg1;
 - (void)setPrioritization:(int)arg1;
-- (void)setShowICFares:(bool)arg1;
-- (void)setSurchargeOption:(int)arg1;
-- (bool)showICFares;
-- (int)surchargeOption;
+- (void)setRoutingBehavior:(int)arg1;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -7,13 +7,16 @@
     NSLayoutConstraint * _editingDependentConstraint;
     UILayoutGuide * _firstLineLayoutGuide;
     NSTextAttachment * _unreadIndicatorAttachment;
+    UIColor * _unreadIndicatorColor;
 }
 
 @property (nonatomic, retain) NSArray *contentSizeCategoryDependentConstraints;
 @property (nonatomic, retain) NSLayoutConstraint *editingDependentConstraint;
 @property (nonatomic, retain) UILayoutGuide *firstLineLayoutGuide;
 @property (nonatomic, retain) NSTextAttachment *unreadIndicatorAttachment;
+@property (nonatomic, retain) UIColor *unreadIndicatorColor;
 
++ (double)cellHeight;
 + (id)hyphenationParagraphStyle;
 + (id)identifierForConversation:(id)arg1;
 
@@ -29,10 +32,11 @@
 - (void)setEditingDependentConstraint:(id)arg1;
 - (void)setFirstLineLayoutGuide:(id)arg1;
 - (void)setUnreadIndicatorAttachment:(id)arg1;
-- (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
+- (void)setUnreadIndicatorColor:(id)arg1;
 - (id)unreadIndicatorAttachment;
+- (id)unreadIndicatorColor;
 - (void)updateForEditing:(bool)arg1;
 - (void)updateFromLabelWithText:(id)arg1;
-- (void)updateUnreadIndicatorWithImage:(id)arg1;
+- (void)updateUnreadIndicatorWithImage:(id)arg1 tintColor:(id)arg2;
 
 @end

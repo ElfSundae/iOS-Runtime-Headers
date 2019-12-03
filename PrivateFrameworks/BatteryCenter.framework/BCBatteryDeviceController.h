@@ -14,16 +14,21 @@
     NSArray * _sortedDevices;
 }
 
+@property (getter=_chargeChangeHandlingDisabled, setter=_setChargeChangeHandlingDisabled:, nonatomic) bool chargeChangeHandlingDisabled;
 @property (nonatomic, readonly) NSArray *connectedDevices;
 @property (nonatomic, readonly) NSString *connectedDevicesDidChangeNotificationName;
+@property (getter=_sortedDevices, setter=_setSortedDevices:, nonatomic, retain) NSArray *sortedDevices;
+
+// Image: /System/Library/PrivateFrameworks/BatteryCenter.framework/BatteryCenter
 
 + (id)_glyphForBatteryDevice:(id)arg1;
-+ (id)_glyphForBatteryDeviceWithTransport:(long long)arg1 accessoryCategory:(unsigned long long)arg2 vendor:(long long)arg3 productIdentifier:(long long)arg4 parts:(unsigned long long)arg5;
++ (id)_glyphForBatteryDeviceWithTransport:(long long)arg1 accessoryCategory:(unsigned long long)arg2 vendor:(long long)arg3 productIdentifier:(long long)arg4 parts:(unsigned long long)arg5 modelNumber:(id)arg6;
 + (id)_internalBatteryDeviceGlyph;
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
 - (unsigned long long)_accessoryCategoryFromPowerSourceAccessoryCategory:(id)arg1 partType:(unsigned long long)arg2 transportType:(long long)arg3 vendor:(long long)arg4 productIdentifier:(long long)arg5;
+- (bool)_chargeChangeHandlingDisabled;
 - (id)_deviceByCoalescingDevice:(id)arg1;
 - (int)_displayChargePercentForCurrentCapacity:(id)arg1 andMaxCapacity:(id)arg2 updateZeroValue:(bool)arg3;
 - (void)_handleBatterySaverModeChanged:(int)arg1;
@@ -50,8 +55,11 @@
 - (void)_queue_removeDeviceChangeHandlerWithIdentifier:(id)arg1;
 - (void)_queue_setBatteryDevice:(id)arg1 forIdentifier:(id)arg2;
 - (void)_reenableChargeChangeHandling;
+- (void)_setChargeChangeHandlingDisabled:(bool)arg1;
+- (void)_setSortedDevices:(id)arg1;
 - (bool)_shouldCoalesceDevices:(id)arg1 minimumPercentCharge:(long long*)arg2;
 - (bool)_shouldConsiderDeviceWithPowerSourceDescription:(id)arg1;
+- (id)_sortedDevices;
 - (long long)_transportTypeFromPowerSourceTransportTypeString:(id)arg1;
 - (long long)_vendorFromPowerSourceDescriptionVendorIdentifier:(id)arg1 transportType:(long long)arg2;
 - (void)addDeviceChangeHandler:(id /* block */)arg1 withIdentifier:(id)arg2;
@@ -61,5 +69,9 @@
 - (void)dealloc;
 - (id)init;
 - (void)removeDeviceChangeHandlerWithIdentifier:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoard.framework/SpringBoard
+
+- (id)sb_deviceInternalBattery;
 
 @end

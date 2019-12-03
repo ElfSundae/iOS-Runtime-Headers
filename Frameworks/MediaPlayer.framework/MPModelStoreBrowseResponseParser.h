@@ -19,6 +19,7 @@
     MPModelStoreBrowseSectionBuilder * _sectionBuilder;
     NSDictionary * _storePlatformDataResults;
     NSSet * _unavailableContentIdentifiers;
+    ICUserIdentity * _userIdentity;
 }
 
 @property (nonatomic, readonly) MPSectionedCollection *additionalContentIdentifiers;
@@ -47,8 +48,8 @@
 - (id)allAdditionalContentIdentifiersNeedingLookup;
 - (id)changeDetails;
 - (id)contentItemBuilder;
-- (id)initWithPreviousParser:(id)arg1 additionalStoreItemMetadataResponse:(id)arg2 options:(struct { bool x1; bool x2; })arg3 sectionBuilder:(id)arg4 contentItemBuilder:(id)arg5;
-- (id)initWithRawResponseOutput:(id)arg1 options:(struct { bool x1; bool x2; })arg2 sectionBuilder:(id)arg3 contentItemBuilder:(id)arg4;
+- (id)initWithPreviousParser:(id)arg1 additionalStoreItemMetadataResponse:(id)arg2 options:(struct { bool x1; bool x2; })arg3 sectionBuilder:(id)arg4 contentItemBuilder:(id)arg5 userIdentity:(id)arg6;
+- (id)initWithRawResponseOutput:(id)arg1 options:(struct { bool x1; bool x2; })arg2 sectionBuilder:(id)arg3 contentItemBuilder:(id)arg4 userIdentity:(id)arg5;
 - (struct { bool x1; bool x2; })options;
 - (id)previousParser;
 - (id)rawResponseOutput;

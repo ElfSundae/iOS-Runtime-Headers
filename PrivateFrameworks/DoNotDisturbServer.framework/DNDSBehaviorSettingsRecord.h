@@ -14,6 +14,7 @@
 
 + (id)_recordWithEncodedInfo:(id)arg1 error:(id*)arg2;
 + (id)migrateDictionaryRepresentation:(id)arg1 fromVersionNumber:(unsigned long long)arg2 toVersionNumber:(unsigned long long)arg3;
++ (id)newWithDictionaryRepresentation:(id)arg1;
 
 - (void).cxx_destruct;
 - (id)_initWithInterruptionBehaviorSetting:(id)arg1;
@@ -23,7 +24,6 @@
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (id)init;
-- (id)initWithDictionaryRepresentation:(id)arg1;
 - (id)interruptionBehaviorSetting;
 - (bool)isEqual:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;

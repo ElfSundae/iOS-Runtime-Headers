@@ -4,10 +4,10 @@
 
 @interface GEOWiFiQualityFeedback : PBCodable <NSCopying> {
     struct { 
-        unsigned int maxValue : 1; 
-        unsigned int type : 1; 
-        unsigned int value : 1; 
-    }  _has;
+        unsigned int has_maxValue : 1; 
+        unsigned int has_type : 1; 
+        unsigned int has_value : 1; 
+    }  _flags;
     unsigned int  _maxValue;
     int  _type;
     unsigned int  _value;
@@ -19,6 +19,8 @@
 @property (nonatomic) unsigned int maxValue;
 @property (nonatomic) int type;
 @property (nonatomic) unsigned int value;
+
++ (bool)isValid:(id)arg1;
 
 - (int)StringAsType:(id)arg1;
 - (void)copyTo:(id)arg1;
@@ -32,6 +34,7 @@
 - (bool)isEqual:(id)arg1;
 - (unsigned int)maxValue;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasMaxValue:(bool)arg1;
 - (void)setHasType:(bool)arg1;

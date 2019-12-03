@@ -4,9 +4,9 @@
 
 @interface GEOPDPhotoContent : PBCodable <NSCopying> {
     struct { 
-        unsigned int height : 1; 
-        unsigned int width : 1; 
-    }  _has;
+        unsigned int has_height : 1; 
+        unsigned int has_width : 1; 
+    }  _flags;
     unsigned int  _height;
     PBUnknownFields * _unknownFields;
     NSString * _url;
@@ -21,8 +21,11 @@
 @property (nonatomic, retain) NSString *url;
 @property (nonatomic) unsigned int width;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (unsigned long long)_area;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -34,6 +37,7 @@
 - (unsigned int)height;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasHeight:(bool)arg1;
 - (void)setHasWidth:(bool)arg1;

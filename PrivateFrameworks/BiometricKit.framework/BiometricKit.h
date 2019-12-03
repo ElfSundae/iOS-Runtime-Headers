@@ -66,7 +66,7 @@
 - (void)appWillResignActive:(id)arg1;
 - (void)cancel;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (id)createMatchInfo:(id)arg1 withTopology:(const struct { short x1; short x2; short x3; struct { short x_4_1_1; short x_4_1_2; short x_4_1_3; } x4; struct { short x_5_1_1; short x_5_1_2; short x_5_1_3; short x_5_1_4; short x_5_1_5; short x_5_1_6; short x_5_1_7; unsigned char x_5_1_8[16]; unsigned char x_5_1_9[16]; short x_5_1_10; struct { struct { short x_1_3_1; short x_1_3_2; short x_1_3_3; } x_11_2_1; short x_11_2_2; short x_11_2_3; } x_5_1_11[300]; short x_5_1_12; short x_5_1_13; short x_5_1_14; short x_5_1_15; short x_5_1_16; short x_5_1_17; } x5; int x6; int x7; }*)arg2 withMatchImage:(struct { id x1; unsigned int x2; }*)arg3;
+- (id)createMatchInfo:(id)arg1 withTopology:(const struct { short x1; short x2; short x3; struct { short x_4_1_1; short x_4_1_2; short x_4_1_3; } x4; struct { short x_5_1_1; short x_5_1_2; short x_5_1_3; short x_5_1_4; short x_5_1_5; short x_5_1_6; short x_5_1_7; unsigned char x_5_1_8[16]; unsigned char x_5_1_9[16]; short x_5_1_10; struct { struct { short x_1_3_1; short x_1_3_2; short x_1_3_3; } x_11_2_1; short x_11_2_2; short x_11_2_3; } x_5_1_11[300]; short x_5_1_12; short x_5_1_13; short x_5_1_14; short x_5_1_15; short x_5_1_16; short x_5_1_17; } x5; int x6; int x7; }*)arg2 withMatchImage:(struct { id x1; unsigned int x2; unsigned int x3; }*)arg3;
 - (void)dealloc;
 - (id)delegate;
 - (int)detectFingerWithOptions:(id)arg1;
@@ -109,7 +109,7 @@
 - (id)getTemplateInfo:(id)arg1;
 - (void)homeButtonPressed:(unsigned long long)arg1;
 - (id)identities:(id)arg1;
-- (id)imageDictFromRawImageData:(struct { id x1; unsigned int x2; }*)arg1;
+- (id)imageDictFromRawImageData:(struct { id x1; unsigned int x2; unsigned int x3; }*)arg1;
 - (bool)inUse;
 - (id)init;
 - (bool)isDelegate;
@@ -123,7 +123,7 @@
 - (id)pullCalibrationData;
 - (id)pullCaptureBuffer;
 - (id)pullDebugImage:(bool)arg1 rotated:(bool)arg2;
-- (void)pullDebugImageData:(bool)arg1 rotated:(bool)arg2 target:(struct { id x1; unsigned int x2; }*)arg3;
+- (void)pullDebugImageData:(bool)arg1 rotated:(bool)arg2 target:(struct { id x1; unsigned int x2; unsigned int x3; }*)arg3;
 - (int)registerDSID:(unsigned long long)arg1 withAuthToken:(id)arg2;
 - (int)registerDSID:(unsigned long long)arg1 withOptions:(id)arg2;
 - (int)registerStoreToken:(id)arg1;

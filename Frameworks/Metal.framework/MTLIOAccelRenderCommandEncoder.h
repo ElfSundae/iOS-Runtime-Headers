@@ -30,12 +30,17 @@
 - (void)setStencilCleared;
 - (void)setStencilStoreAction:(unsigned long long)arg1;
 - (void)setStencilStoreActionOptions:(unsigned long long)arg1;
+- (void)setVertexAmplificationCount:(unsigned long long)arg1 viewMappings:(const struct { unsigned int x1; unsigned int x2; }*)arg2;
 - (void)textureBarrier;
 - (void)updateFence:(id)arg1 afterStages:(unsigned long long)arg2;
 - (void)useHeap:(id)arg1;
+- (void)useHeap:(id)arg1 stages:(unsigned long long)arg2;
 - (void)useHeaps:(const id*)arg1 count:(unsigned long long)arg2;
+- (void)useHeaps:(const id*)arg1 count:(unsigned long long)arg2 stages:(unsigned long long)arg3;
 - (void)useResource:(id)arg1 usage:(unsigned long long)arg2;
+- (void)useResource:(id)arg1 usage:(unsigned long long)arg2 stages:(unsigned long long)arg3;
 - (void)useResources:(const id*)arg1 count:(unsigned long long)arg2 usage:(unsigned long long)arg3;
+- (void)useResources:(const id*)arg1 count:(unsigned long long)arg2 usage:(unsigned long long)arg3 stages:(unsigned long long)arg4;
 - (void)waitForFence:(id)arg1 beforeStages:(unsigned long long)arg2;
 
 @end

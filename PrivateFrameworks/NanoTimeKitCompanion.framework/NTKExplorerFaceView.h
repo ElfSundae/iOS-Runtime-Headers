@@ -41,12 +41,11 @@
 - (double)_complicationAlphaForEditMode:(long long)arg1;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
-- (void)_configureReusableTimeView:(id)arg1;
+- (void)_configureTimeView:(id)arg1;
 - (double)_contentAlphaForEditMode:(long long)arg1;
 - (struct CGPoint { double x1; double x2; })_contentCenterOffset;
 - (double)_contentScaleForEditMode:(long long)arg1;
 - (void)_curvedComplicationCircleRadius:(double*)arg1 centerAngle:(double*)arg2 maxAngularWidth:(double*)arg3 circleCenter:(struct CGPoint { double x1; double x2; }*)arg4 interior:(bool*)arg5 forSlot:(id)arg6;
-- (id)_curvedPickerMaskForSlot:(id)arg1;
 - (double)_handAlphaForEditMode:(long long)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
@@ -59,6 +58,7 @@
 - (void)_loadLayoutRules;
 - (void)_loadSnapshotContentViews;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
+- (id)_pickerMaskForSlot:(id)arg1;
 - (void)_prepareForEditing;
 - (void)_prepareToZoomWithIconView:(id)arg1 minDiameter:(double)arg2 maxDiameter:(double)arg3;
 - (void)_setZoomFraction:(double)arg1 iconDiameter:(double)arg2;

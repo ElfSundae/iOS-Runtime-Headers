@@ -19,6 +19,7 @@
 - (id)debugDictionary;
 - (id)description;
 - (id)displayInfo;
+- (id)initForTesting;
 - (id)initWithType:(long long)arg1 title:(id)arg2 representedObject:(id)arg3 displayInfo:(id)arg4;
 - (long long)itemType;
 - (id)representedObject;

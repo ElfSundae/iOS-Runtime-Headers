@@ -3,24 +3,26 @@
  */
 
 @interface BWStillImageBravoDisparityNode : BWNode {
-    NSDictionary * _cameraInfoByPortType;
     FigCaptureStillImageSettings * _currentRequestedStillImageCaptureSettings;
     BWStillImageCaptureSettings * _currentResolvedStillImageCaptureSettings;
     int  _deliveredDisparityCount;
     struct opaqueCMFormatDescription { } * _disparityFormatDescription;
     BWNodeInput * _disparityFromReferenceFramesTelephotoFusedInput;
     FigDisparityGenerator * _disparityGenerator;
+    bool  _disparityInputIsRaw;
     unsigned long long  _disparityMapHeight;
     unsigned long long  _disparityMapWidth;
+    bool  _emitTeleFrame;
     bool  _emitWideFrame;
     BWNodeError * _errorForTele;
     BWNodeError * _errorForWide;
     int  _expectedDisparityCount;
+    BWStillImageNodeConfiguration * _nodeConfiguration;
     int  _processingMode;
+    NSDictionary * _sensorConfigurationsByPortType;
     bool  _shouldComputeDisparityWhenCalibrationFails;
     struct opaqueCMSampleBuffer { } * _teleSbuf;
     BWNodeInput * _telephotoInput;
-    NSDictionary * _telephotoSensorIDDictionary;
     BWNodeInput * _wideInput;
     struct opaqueCMSampleBuffer { } * _wideSbuf;
 }
@@ -34,11 +36,13 @@
 - (int)_OSStatusFromDisparityResult:(int)arg1;
 - (void)_clearCaptureRequestState;
 - (void)_computeDisparityForTeleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 wideBuffer:(struct opaqueCMSampleBuffer { }*)arg2 attachToOutputBuffer:(struct opaqueCMSampleBuffer { }*)arg3;
+- (void)_configureCurrentCaptureRequestStateWithRequestedStillImageCaptureSettings:(id)arg1 resolvedStillImageCaptureSettings:(id)arg2;
 - (void)_finishPendingProcessing;
 - (void)_handleError:(int)arg1 duringProcessingOfSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg2 fromInput:(id)arg3;
 - (int)_loadAndConfigureDisparityGenerator;
 - (void)_processBuffersForDisparityIfNecessary;
 - (void)_resolveProcessingMode;
+- (id)_sensorConfigurationWithPortraitTuningParameters;
 - (bool)attachesInputBracketToOutputSampleBuffer;
 - (void)configurationWithID:(long long)arg1 updatedFormat:(id)arg2 didBecomeLiveForInput:(id)arg3;
 - (void)dealloc;
@@ -46,7 +50,7 @@
 - (void)didSelectFormat:(id)arg1 forInput:(id)arg2 forAttachedMediaKey:(id)arg3;
 - (id)disparityFromReferenceFramesTelephotoFusedInput;
 - (void)handleNodeError:(id)arg1 forInput:(id)arg2;
-- (id)initWithTelephotoSensorIDDictionary:(id)arg1 cameraInfoByPortType:(id)arg2 disparityMapWidth:(unsigned long long)arg3 disparityMapHeight:(unsigned long long)arg4;
+- (id)initWithNodeConfiguration:(id)arg1 sensorConfigurationsByPortType:(id)arg2 disparityMapWidth:(unsigned long long)arg3 disparityMapHeight:(unsigned long long)arg4 outputDisparityBufferCount:(int)arg5;
 - (id)nodeSubType;
 - (id)nodeType;
 - (void)prepareForCurrentConfigurationToBecomeLive;

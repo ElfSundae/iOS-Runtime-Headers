@@ -4,7 +4,7 @@
 
 @interface PVQueue : NSObject {
     PVCanceler * _canceler;
-    int  _currentlyExecutingTasksCount;
+    _Atomic int  _currentlyExecutingTasksCount;
     bool  _isConcurrent;
     NSObject<OS_dispatch_queue> * _queue;
     bool  _terminating;

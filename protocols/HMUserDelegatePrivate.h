@@ -6,6 +6,7 @@
 @optional
 
 - (void)user:(HMUser *)arg1 didUpdateAssistantAccessControl:(HMAssistantAccessControl *)arg2 forHome:(HMHome *)arg3;
+- (void)user:(HMUser *)arg1 didUpdateMediaContentProfileAccessControl:(HMMediaContentProfileAccessControl *)arg2 forHome:(HMHome *)arg3;
 - (void)user:(HMUser *)arg1 didUpdatePairingIdentity:(HMFPairingIdentity *)arg2;
 
 @end

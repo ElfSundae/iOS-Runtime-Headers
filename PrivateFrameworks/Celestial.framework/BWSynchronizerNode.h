@@ -26,6 +26,7 @@
 + (void)initialize;
 
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })_getSyncedTimeForSourceTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
+- (struct opaqueCMSampleBuffer { }*)_newRetimedVideoSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 updatePTSSyncHistory:(bool)arg2;
 - (void)_synchronizeDetectedFaces:(id)arg1 metadata:(id)arg2 timescale:(int)arg3;
 - (void)_updatePTSSyncHistoryWithSourceTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 syncedTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2;
 - (void)dealloc;

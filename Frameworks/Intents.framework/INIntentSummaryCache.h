@@ -21,7 +21,7 @@
 - (void).cxx_destruct;
 - (struct NSMutableDictionary { Class x1; }*)allBundlesCache;
 - (void)applicationsDidInstall:(id)arg1;
-- (struct NSCache { Class x1; id x2; /* Warning: Unrecognized filer type: '5' using 'void*' */ void*x3; void *x4; void*x5; void *x6; }*)bundleCacheForBundleId:(id)arg1;
+- (struct NSCache { Class x1; id x2; void *x3[5]; void *x4; }*)bundleCacheForBundleId:(id)arg1;
 - (id)cachedSummaryForIntent:(id)arg1 languageCode:(id)arg2 creatingIfNeeded:(bool)arg3;
 - (void)dealloc;
 - (bool)getSubtitle:(id*)arg1 forIntent:(id)arg2 languageCode:(id)arg3;
@@ -30,7 +30,7 @@
 - (void)invalidateCache;
 - (void)invalidateCacheForBundleId:(id)arg1;
 - (id)resourceAccessQueue;
-- (void)setBundleCache:(struct NSCache { Class x1; id x2; /* Warning: Unrecognized filer type: '5' using 'void*' */ void*x3; void *x4; void*x5; void *x6; }*)arg1 forBundleId:(id)arg2;
+- (void)setBundleCache:(struct NSCache { Class x1; id x2; void *x3[5]; void *x4; }*)arg1 forBundleId:(id)arg2;
 - (void)setSubtitle:(id)arg1 forIntent:(id)arg2 languageCode:(id)arg3;
 - (void)setTitle:(id)arg1 forIntent:(id)arg2 languageCode:(id)arg3;
 - (void)startAutomaticInvalidation;

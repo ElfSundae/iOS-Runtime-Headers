@@ -12,7 +12,7 @@
 
 - (void).cxx_destruct;
 - (id)localizedStringForKey:(id)arg1;
-- (id)localizedStringForKey:(id)arg1 withCount:(id)arg2;
+- (id)localizedStringForKey:(id)arg1 withCounts:(id)arg2;
 - (id)overideLocDict;
 - (void)setOverideLocDict:(id)arg1;
 - (void)updateWithJSDictionary:(id)arg1;

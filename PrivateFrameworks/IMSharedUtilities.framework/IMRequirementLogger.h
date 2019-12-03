@@ -3,30 +3,27 @@
  */
 
 @interface IMRequirementLogger : NSObject {
-    NSString * _categoryOverride;
-    IMLoggerOutput * _logger;
+    const char * _categoryOverride;
+    unsigned char  _loggingLevel;
     bool  _throwFailures;
 }
 
-@property (retain) NSString *categoryOverride;
-@property (retain) IMLoggerOutput *logger;
-@property long long loggingLevel;
+@property const char *categoryOverride;
+@property unsigned char loggingLevel;
 @property bool throwFailures;
 
 + (void)__setSingleton__im:(id)arg1;
 + (id)__singleton__im;
 + (id)sharedInstance;
 
-- (void).cxx_destruct;
-- (id)categoryOverride;
+- (const char *)categoryOverride;
+- (void)dealloc;
 - (id)description;
 - (id)init;
-- (id)logger;
-- (long long)loggingLevel;
-- (void)requirementFailedForCategory:(const char *)arg1 description:(id)arg2 location:(struct IMFileLocation_t { char *x1; char *x2; char *x3; char *x4; int x5; }*)arg3;
-- (void)setCategoryOverride:(id)arg1;
-- (void)setLogger:(id)arg1;
-- (void)setLoggingLevel:(long long)arg1;
+- (unsigned char)loggingLevel;
+- (struct IMRequirementFailed_t { char *x1; bool x2; bool x3; unsigned char x4; })requirementDidFail:(const char *)arg1;
+- (void)setCategoryOverride:(const char *)arg1;
+- (void)setLoggingLevel:(unsigned char)arg1;
 - (void)setThrowFailures:(bool)arg1;
 - (bool)throwFailures;
 - (void)updateSettingsFromUserDefaults;

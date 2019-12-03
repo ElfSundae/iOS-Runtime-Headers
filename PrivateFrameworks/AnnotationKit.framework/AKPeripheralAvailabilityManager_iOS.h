@@ -9,6 +9,8 @@
 
 @property unsigned long long currentAvailability;
 
++ (bool)onlyDrawWithApplePencil;
+
 - (unsigned long long)currentAvailability;
 - (void)dealloc;
 - (id)init;

@@ -7,8 +7,7 @@
     bool  advanceWakeUpIntervalIsValid;
     long long  clientStateOnRequestedMediaDataChangeNotification;
     double  currentRate;
-    <AVPlayerItemOutputPullDelegate> * delegate;
-    NSObject<OS_dispatch_queue> * delegateQueue;
+    AVWeakReferencingDelegateStorage * delegateStorage;
     NSObject<OS_dispatch_source> * delegateWakeupSource;
     bool  immediateWakeUp;
     struct OpaqueVTPixelBufferConformer { } * pixelBufferConformer;

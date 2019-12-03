@@ -8,7 +8,7 @@
 }
 
 @property (copy) NSString *dataExtractor;
-@property (readonly) NSDictionary *options;
+@property (copy) NSDictionary *options;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -20,6 +20,7 @@
 - (id)newRenderJob;
 - (id)options;
 - (void)setDataExtractor:(id)arg1;
+- (void)setOptions:(id)arg1;
 - (void)submit:(id /* block */)arg1;
 
 @end

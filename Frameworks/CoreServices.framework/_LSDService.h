@@ -26,6 +26,7 @@
 + (id)synchronous:(bool)arg1 XPCProxyWithErrorHandler:(id /* block */)arg2;
 + (id)synchronousXPCProxyWithErrorHandler:(id /* block */)arg1;
 
+- (void).cxx_destruct;
 - (id)XPCListener;
 - (id)initWithXPCListener:(id)arg1;
 - (bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;

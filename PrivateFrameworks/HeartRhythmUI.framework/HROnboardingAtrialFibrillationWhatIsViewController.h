@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/HeartRhythmUI.framework/HeartRhythmUI
  */
 
-@interface HROnboardingAtrialFibrillationWhatIsViewController : HROnboardingLeadingAlignedExplanationViewController {
+@interface HROnboardingAtrialFibrillationWhatIsViewController : HROnboardingHeroExplanationViewController {
     HRVideoPlayerView * _videoPlayerView;
 }
 
@@ -13,6 +13,7 @@
 - (id)buttonTitleString;
 - (id)createHeroView;
 - (id)initForOnboarding:(bool)arg1;
+- (void)setUpUI;
 - (void)setVideoPlayerView:(id)arg1;
 - (long long)stackedButtonViewLastButtonMode;
 - (id)titleString;

@@ -26,6 +26,7 @@
 - (NSLayoutXAxisAnchor *)leftAnchor;
 - (NSISVariable *)nsli_boundsHeightVariable;
 - (NSISVariable *)nsli_boundsWidthVariable;
+- (bool)nsli_defaultResolvedValue:(double*)arg1 forSymbolicConstant:(NSString *)arg2 inConstraint:(NSLayoutConstraint *)arg3 error:(id*)arg4;
 - (NSISVariable *)nsli_heightVariable;
 - (NSISVariable *)nsli_minXVariable;
 - (NSISVariable *)nsli_minYVariable;

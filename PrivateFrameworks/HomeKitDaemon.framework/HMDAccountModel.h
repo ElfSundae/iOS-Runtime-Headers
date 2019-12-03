@@ -4,8 +4,9 @@
 
 @interface HMDAccountModel : HMDBackingStoreModelObject
 
-@property (nonatomic, retain) HMDAccountIdentifier *identifier;
+@property (nonatomic, copy) HMDAccountIdentifier *identifier;
 
 + (id)properties;
++ (id)schemaHashRoot;
 
 @end

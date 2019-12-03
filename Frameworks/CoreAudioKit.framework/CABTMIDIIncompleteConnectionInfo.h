@@ -12,6 +12,7 @@
 @property (nonatomic, retain) AMSBTLEPeripheral *peripheral;
 @property unsigned long long timeOutInterval;
 
+- (void)dealloc;
 - (id)initWithPeripheral:(id)arg1 isConnecting:(bool)arg2;
 - (bool)isConnecting;
 - (id)peripheral;

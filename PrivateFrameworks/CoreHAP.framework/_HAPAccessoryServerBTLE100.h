@@ -251,7 +251,7 @@
 - (void)setUnpairedIdentifyCompletionBlock:(id /* block */)arg1;
 - (void)setUnpairedIdentifyRequested:(bool)arg1;
 - (bool)startPairingRequested;
-- (void)startPairingWithConsentRequired:(bool)arg1;
+- (void)startPairingWithConsentRequired:(bool)arg1 config:(id)arg2 ownershipToken:(id)arg3;
 - (unsigned long long)state;
 - (bool)stopPairingWithError:(id*)arg1;
 - (bool)tryPairingPassword:(id)arg1 error:(id*)arg2;

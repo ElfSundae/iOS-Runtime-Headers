@@ -10,8 +10,8 @@
     WDList * mNullList;
 }
 
+- (void).cxx_destruct;
 - (id)addListWithListId:(int)arg1 listDefinitionId:(int)arg2;
-- (void)dealloc;
 - (id)description;
 - (id)initWithDocument:(id)arg1;
 - (id)listAt:(unsigned long long)arg1;

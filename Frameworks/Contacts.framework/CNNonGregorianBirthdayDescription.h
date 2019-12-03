@@ -33,6 +33,6 @@
 - (id)CNValueFromABSValue:(void*)arg1;
 - (bool)absPropertyID:(int*)arg1;
 - (unsigned int)absPropertyType;
-- (bool)isValidABSValue:(void*)arg1 error:(struct __CFError {}**)arg2;
+- (bool)convertABSValue:(void*)arg1 toCNValue:(id*)arg2 error:(struct __CFError {}**)arg3;
 
 @end

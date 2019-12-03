@@ -13,11 +13,12 @@
 + (id)_orderedValuesRestrictedByDevice:(id)arg1;
 + (id)_snapshotKeyForValue:(unsigned long long)arg1 forDevice:(id)arg2;
 + (id)optionWithFaceColor:(unsigned long long)arg1 forDevice:(id)arg2;
++ (bool)value:(long long)arg1 existsInDevice:(id)arg2;
 
 - (id)_valueToFaceBundleStringDict;
 - (unsigned long long)faceColor;
 - (bool)isEqual:(id)arg1;
-- (bool)optionExistsInOSVersion:(unsigned int)arg1;
+- (bool)optionExistsInDevice:(id)arg1;
 - (long long)swatchStyle;
 
 @end

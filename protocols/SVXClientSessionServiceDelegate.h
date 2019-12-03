@@ -7,7 +7,6 @@
 
 - (void)sessionService:(id <SVXClientSessionServicing>)arg1 didBecomeActiveWithActivationContext:(SVXActivationContext *)arg2;
 - (void)sessionService:(id <SVXClientSessionServicing>)arg1 didChangeStateFrom:(long long)arg2 to:(long long)arg3;
-- (void)sessionService:(id <SVXClientSessionServicing>)arg1 didNotStartSoundWithID:(long long)arg2 error:(NSError *)arg3;
 - (void)sessionService:(id <SVXClientSessionServicing>)arg1 didResignActiveWithDeactivationContext:(SVXDeactivationContext *)arg2;
 - (void)sessionService:(id <SVXClientSessionServicing>)arg1 didStartSoundWithID:(long long)arg2;
 - (void)sessionService:(id <SVXClientSessionServicing>)arg1 didStopSoundWithID:(long long)arg2 error:(NSError *)arg3;

@@ -6,6 +6,7 @@
     NSURL * _baseURL;
     NSURL * _bundleURL;
     <TKApplicationDelegate> * _delegate;
+    NSString * _overrideCachesDirectoryPath;
     bool  _ready;
     TKRepository * _repository;
 }
@@ -14,6 +15,7 @@
 @property (nonatomic, readonly) NSURL *bundleURL;
 @property (nonatomic, readonly) NSString *bundleVersion;
 @property (nonatomic) <TKApplicationDelegate> *delegate;
+@property (nonatomic, copy) NSString *overrideCachesDirectoryPath;
 @property (nonatomic, readonly) bool ready;
 @property (nonatomic, readonly) TKRepository *repository;
 
@@ -38,10 +40,12 @@
 - (id)loadView:(id)arg1;
 - (id)newErrorViewController:(id)arg1;
 - (id)newLoadingViewController;
+- (id)overrideCachesDirectoryPath;
 - (bool)ready;
 - (id)repository;
 - (void)setBaseURL:(id)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setOverrideCachesDirectoryPath:(id)arg1;
 - (id)viewPathForName:(id)arg1;
 
 @end

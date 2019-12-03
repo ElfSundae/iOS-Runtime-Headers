@@ -13,6 +13,7 @@
 - (id)_filteredProperty:(id)arg1;
 - (id)init;
 - (void)pickerDidCancel;
+- (void)pickerDidSelectAddNewContact;
 - (void)pickerDidSelectContact:(id)arg1 property:(id)arg2;
 - (void)pickerDidSelectContacts:(id)arg1 properties:(id)arg2;
 

@@ -35,7 +35,7 @@
 - (void)setEnabledSwitch:(id)arg1;
 - (void)setHighlighted:(bool)arg1 animated:(bool)arg2;
 - (void)setSelected:(bool)arg1 animated:(bool)arg2;
-- (void)setupAsTemplateLayoutCell:(bool)arg1;
+- (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (void)willTransitionToState:(unsigned long long)arg1;
 
 @end

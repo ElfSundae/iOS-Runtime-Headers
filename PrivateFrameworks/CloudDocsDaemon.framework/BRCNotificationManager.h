@@ -3,7 +3,7 @@
  */
 
 @interface BRCNotificationManager : NSObject <BRCModule> {
-    unsigned long long  _activeAliasQueries;
+    _Atomic unsigned long long  _activeAliasQueries;
     NSMutableSet * _additionalUpdatesItemRowID;
     NSObject<OS_dispatch_queue> * _cacheQueue;
     BRCXPCClient * _client;

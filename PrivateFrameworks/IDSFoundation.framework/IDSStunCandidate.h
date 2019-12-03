@@ -26,7 +26,8 @@
         unsigned char data[12]; 
     }  _prefix;
     unsigned long long  _priority;
-    unsigned long long  _radioAccessTechnology;
+    unsigned int  _radioAccessTechnology;
+    unsigned short  _remoteLinkFlags;
     long long  _transport;
     unsigned long long  _type;
 }
@@ -39,11 +40,12 @@
 @property (nonatomic) unsigned int mtu;
 @property (nonatomic) struct { int x1; unsigned char x2[12]; }*prefix;
 @property (nonatomic, readonly) unsigned long long priority;
-@property (nonatomic) unsigned long long radioAccessTechnology;
+@property (nonatomic) unsigned int radioAccessTechnology;
+@property (nonatomic) unsigned short remoteLinkFlags;
 @property (nonatomic, readonly) long long transport;
 @property (nonatomic, readonly) unsigned long long type;
 
-+ (id)candidateWithType:(unsigned long long)arg1 transport:(long long)arg2 radioAccessTechnology:(unsigned long long)arg3 mtu:(unsigned int)arg4 index:(int)arg5 address:(struct sockaddr { unsigned char x1; unsigned char x2; BOOL x3[14]; }*)arg6 external:(struct sockaddr { unsigned char x1; unsigned char x2; BOOL x3[14]; }*)arg7;
++ (id)candidateWithType:(unsigned long long)arg1 transport:(long long)arg2 radioAccessTechnology:(unsigned int)arg3 mtu:(unsigned int)arg4 index:(int)arg5 address:(struct sockaddr { unsigned char x1; unsigned char x2; BOOL x3[14]; }*)arg6 external:(struct sockaddr { unsigned char x1; unsigned char x2; BOOL x3[14]; }*)arg7;
 
 - (bool)active;
 - (const struct sockaddr { unsigned char x1; unsigned char x2; BOOL x3[14]; }*)address;
@@ -54,23 +56,26 @@
 - (bool)hasNATIPv4Address;
 - (bool)hasNATIPv4External;
 - (int)index;
-- (id)initWithType:(unsigned long long)arg1 transport:(long long)arg2 radioAccessTechnology:(unsigned long long)arg3 mtu:(unsigned int)arg4 index:(int)arg5 address:(struct sockaddr { unsigned char x1; unsigned char x2; BOOL x3[14]; }*)arg6 external:(struct sockaddr { unsigned char x1; unsigned char x2; BOOL x3[14]; }*)arg7;
+- (id)initWithType:(unsigned long long)arg1 transport:(long long)arg2 radioAccessTechnology:(unsigned int)arg3 mtu:(unsigned int)arg4 index:(int)arg5 address:(struct sockaddr { unsigned char x1; unsigned char x2; BOOL x3[14]; }*)arg6 external:(struct sockaddr { unsigned char x1; unsigned char x2; BOOL x3[14]; }*)arg7;
 - (bool)isCellularStunCandidate;
 - (bool)isCompatibleWithStunCandidate:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)isLinkLocalStunCandidate;
 - (bool)isRelayStunCandidate;
+- (bool)isSameNetworkType:(id)arg1;
 - (bool)isServerReflexiveStunCandidate;
 - (unsigned int)mtu;
 - (struct { int x1; unsigned char x2[12]; }*)prefix;
 - (unsigned long long)priority;
-- (unsigned long long)radioAccessTechnology;
+- (unsigned int)radioAccessTechnology;
+- (unsigned short)remoteLinkFlags;
 - (void)setActive:(bool)arg1;
 - (void)setExtIPDetectionStartTime:(double)arg1;
 - (void)setExternal:(struct sockaddr { unsigned char x1; unsigned char x2; BOOL x3[14]; }*)arg1;
 - (void)setMtu:(unsigned int)arg1;
 - (void)setPrefix:(struct { int x1; unsigned char x2[12]; }*)arg1;
-- (void)setRadioAccessTechnology:(unsigned long long)arg1;
+- (void)setRadioAccessTechnology:(unsigned int)arg1;
+- (void)setRemoteLinkFlags:(unsigned short)arg1;
 - (long long)transport;
 - (unsigned long long)type;
 - (void)updateTransport:(long long)arg1;

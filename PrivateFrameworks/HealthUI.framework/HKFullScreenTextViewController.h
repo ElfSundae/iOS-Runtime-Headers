@@ -6,7 +6,7 @@
     NSString * _detailText;
 }
 
-@property (nonatomic, retain) NSString *detailText;
+@property (nonatomic, copy) NSString *detailText;
 @property (readonly) UITextView *textView;
 
 - (void).cxx_destruct;

@@ -16,9 +16,9 @@
 
 + (id)tableStyleElementWithResources:(id)arg1;
 
+- (void).cxx_destruct;
 - (unsigned int)bandSize;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)differentialStyle;
 - (id)initWithResources:(id)arg1;

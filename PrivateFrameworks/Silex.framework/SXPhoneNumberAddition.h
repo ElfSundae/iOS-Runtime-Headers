@@ -6,8 +6,6 @@
 
 @property (nonatomic, readonly) NSString *phoneNumber;
 
-+ (id)typeString;
-
 - (id)action;
 
 @end

@@ -26,6 +26,8 @@
 - (bool)presentsFullscreenInViewService;
 - (bool)presentsQuickLookController;
 - (double)resumeToConversationListTimeInterval;
+- (double)searchLinkThumbnailWidth;
+- (double)searchPhotoThumbnailWidth;
 - (bool)shouldAlignRecipientGlyphsWithMargins;
 - (bool)shouldOnlyResumeToConversationListAfterTimeout;
 - (bool)shouldPopoverSuggestionsBanner;

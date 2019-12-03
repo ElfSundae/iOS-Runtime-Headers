@@ -4,8 +4,7 @@
 
 @interface TUGeoLocationMetadataWorker : NSObject
 
-+ (id)_lookupLocationsForDestinationIDs:(id)arg1 itemBlock:(id /* block */)arg2 completionBlock:(id /* block */)arg3;
-+ (id)lookupLocationsForDestinationIDs:(id)arg1;
-+ (void)lookupLocationsForDestinationIDs:(id)arg1 itemBlock:(id /* block */)arg2 completionBlock:(id /* block */)arg3;
++ (id)lookUpLocationsForDestinationIDs:(id)arg1;
++ (void)lookUpLocationsForDestinationIDs:(id)arg1 completion:(id /* block */)arg2;
 
 @end

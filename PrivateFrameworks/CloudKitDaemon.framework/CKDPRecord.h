@@ -25,7 +25,7 @@
     CKDPDateStatistics * _timeStatistics;
     NSMutableArray * _tombstonedPublicKeyIDs;
     CKDPRecordType * _type;
-    NSData * _zoneRecordProtectionInfoPublicKeyID;
+    NSData * _zoneishMasterKeyId;
 }
 
 @property (nonatomic, retain) CKDPRecordChainParent *chainParent;
@@ -50,7 +50,7 @@
 @property (nonatomic, readonly) bool hasStableUrl;
 @property (nonatomic, readonly) bool hasTimeStatistics;
 @property (nonatomic, readonly) bool hasType;
-@property (nonatomic, readonly) bool hasZoneRecordProtectionInfoPublicKeyID;
+@property (nonatomic, readonly) bool hasZoneishMasterKeyId;
 @property (nonatomic, retain) CKDPIdentifier *modifiedBy;
 @property (nonatomic, retain) NSString *modifiedByDevice;
 @property (nonatomic) int permission;
@@ -63,7 +63,7 @@
 @property (nonatomic, retain) CKDPDateStatistics *timeStatistics;
 @property (nonatomic, retain) NSMutableArray *tombstonedPublicKeyIDs;
 @property (nonatomic, retain) CKDPRecordType *type;
-@property (nonatomic, retain) NSData *zoneRecordProtectionInfoPublicKeyID;
+@property (nonatomic, retain) NSData *zoneishMasterKeyId;
 
 + (Class)conflictLoserEtagsType;
 + (Class)fieldsType;
@@ -116,7 +116,7 @@
 - (bool)hasStableUrl;
 - (bool)hasTimeStatistics;
 - (bool)hasType;
-- (bool)hasZoneRecordProtectionInfoPublicKeyID;
+- (bool)hasZoneishMasterKeyId;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
@@ -150,7 +150,7 @@
 - (void)setTimeStatistics:(id)arg1;
 - (void)setTombstonedPublicKeyIDs:(id)arg1;
 - (void)setType:(id)arg1;
-- (void)setZoneRecordProtectionInfoPublicKeyID:(id)arg1;
+- (void)setZoneishMasterKeyId:(id)arg1;
 - (id)shareId;
 - (id)shareInfo;
 - (id)stableUrl;
@@ -160,6 +160,6 @@
 - (unsigned long long)tombstonedPublicKeyIDsCount;
 - (id)type;
 - (void)writeTo:(id)arg1;
-- (id)zoneRecordProtectionInfoPublicKeyID;
+- (id)zoneishMasterKeyId;
 
 @end

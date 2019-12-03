@@ -10,6 +10,7 @@
     UIImage * _itemImage;
     SKUIGiftItemView * _itemView;
     SKUIGiftValidationResponse * _lastValidationResponse;
+    UIBarButtonItem * _nextButton;
     UIPopoverController * _peoplePickerPopover;
     UIPopoverController * _searchResultsPopover;
     UIView * _searchResultsView;
@@ -26,6 +27,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, retain) UIBarButtonItem *nextButton;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -53,6 +55,7 @@
 - (void)dealloc;
 - (id)initWithGift:(id)arg1 configuration:(id)arg2;
 - (void)loadView;
+- (id)nextButton;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)popoverControllerDidDismissPopover:(id)arg1;
 - (bool)popoverControllerShouldDismissPopover:(id)arg1;
@@ -60,6 +63,7 @@
 - (void)scrollViewDidEndScrollingAnimation:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint { double x1; double x2; })arg2 targetContentOffset:(inout struct CGPoint { double x1; double x2; }*)arg3;
+- (void)setNextButton:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 giftRecipientCell:(id)arg2 didUpdateSearchController:(id)arg3;

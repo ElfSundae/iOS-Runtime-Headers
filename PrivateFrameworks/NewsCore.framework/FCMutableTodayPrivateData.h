@@ -5,9 +5,7 @@
 @interface FCMutableTodayPrivateData : FCTodayPrivateData <FCMutableTodayPrivateData>
 
 @property (nonatomic, readonly, copy) NSSet *autoFavoriteTagIDs;
-@property (nonatomic, readonly, copy) NSString *bundleIAP;
-@property (nonatomic, readonly) FCBundleSubscription *bundleSubscription;
-@property (nonatomic, readonly) unsigned long long bundleSubscriptionState;
+@property (nonatomic, readonly, copy) FCBundleSubscription *bundleSubscription;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, readonly, copy) <FCDerivedPersonalizationData><NSCoding> *derivedPersonalizationData;
 @property (readonly, copy) NSString *description;
@@ -16,7 +14,7 @@
 @property (nonatomic, readonly, copy) NSSet *mutedTagIDs;
 @property (nonatomic, readonly, copy) NSNumber *onboardingVersion;
 @property (nonatomic, readonly, copy) NSSet *purchasedTagIDs;
-@property (nonatomic, readonly, copy) NSArray *rankedPersonalSubscribedTagIDs;
+@property (nonatomic, readonly, copy) NSArray *rankedAllSubscribedTagIDs;
 @property (nonatomic, readonly, copy) NSDictionary *recentlyReadHistoryItems;
 @property (nonatomic, readonly, copy) NSArray *recentlySeenHistoryItems;
 @property (readonly) Class superclass;
@@ -25,13 +23,12 @@
 - (id)init;
 - (id)initWithDictionary:(id)arg1;
 - (void)setAutoFavoriteTagIDs:(id)arg1;
-- (void)setBundleIAP:(id)arg1;
-- (void)setBundleSubscriptionState:(unsigned long long)arg1;
+- (void)setBundleSubscription:(id)arg1;
 - (void)setDerivedPersonalizationData:(id)arg1;
 - (void)setMutedTagIDs:(id)arg1;
 - (void)setOnboardingVersion:(id)arg1;
 - (void)setPurchasedTagIDs:(id)arg1;
-- (void)setRankedPersonalSubscribedTagIDs:(id)arg1;
+- (void)setRankedAllSubscribedTagIDs:(id)arg1;
 - (void)setRecentlyReadHistoryItems:(id)arg1;
 - (void)setRecentlySeenHistoryItems:(id)arg1;
 

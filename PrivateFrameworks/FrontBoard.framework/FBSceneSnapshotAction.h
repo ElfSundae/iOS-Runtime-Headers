@@ -3,7 +3,7 @@
  */
 
 @interface FBSceneSnapshotAction : FBSSceneSnapshotAction {
-    BKSProcessAssertion * _assertion;
+    RBSAssertion * _assertion;
     NSString * _sceneID;
 }
 

@@ -5,11 +5,29 @@
 @interface GEOPDETAFilter : PBCodable <NSCopying> {
     GEOAutomobileOptions * _automobileOptions;
     struct { 
-        unsigned int includeHistoricTravelTime : 1; 
-        unsigned int includeRouteTrafficDetail : 1; 
-    }  _has;
+        unsigned int has_includeHistoricTravelTime : 1; 
+        unsigned int has_includeRouteTrafficDetail : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_transportTypes : 1; 
+        unsigned int read_automobileOptions : 1; 
+        unsigned int read_transitOptions : 1; 
+        unsigned int read_walkingOptions : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_transportTypes : 1; 
+        unsigned int wrote_automobileOptions : 1; 
+        unsigned int wrote_transitOptions : 1; 
+        unsigned int wrote_walkingOptions : 1; 
+        unsigned int wrote_includeHistoricTravelTime : 1; 
+        unsigned int wrote_includeRouteTrafficDetail : 1; 
+    }  _flags;
     bool  _includeHistoricTravelTime;
     bool  _includeRouteTrafficDetail;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     GEOTransitOptions * _transitOptions;
     struct { 
         int *list; 
@@ -34,11 +52,19 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic, retain) GEOWalkingOptions *walkingOptions;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsTransportTypes:(id)arg1;
+- (void)_addNoFlagsTransportType:(int)arg1;
+- (void)_readAutomobileOptions;
+- (void)_readTransitOptions;
+- (void)_readTransportTypes;
+- (void)_readWalkingOptions;
 - (void)addTransportType:(int)arg1;
 - (id)automobileOptions;
 - (void)clearTransportTypes;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -52,8 +78,11 @@
 - (unsigned long long)hash;
 - (bool)includeHistoricTravelTime;
 - (bool)includeRouteTrafficDetail;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAutomobileOptions:(id)arg1;
 - (void)setHasIncludeHistoricTravelTime:(bool)arg1;

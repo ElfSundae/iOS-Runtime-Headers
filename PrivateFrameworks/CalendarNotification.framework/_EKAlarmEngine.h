@@ -31,10 +31,11 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)_clampFireDate:(id)arg1;
 + (id)_publisherBulletinIDForReminder:(id)arg1;
 + (id)_publisherBulletinIDForTask:(void*)arg1;
 + (id)_publisherBulletinIDForTaskUniqueIdentifier:(id)arg1;
++ (void)logUnexpectedRemindersCall:(const char *)arg1;
++ (bool)remindersNotificationsEnabled;
 + (id)requestedDarwinNotifications;
 + (id)sharedInstance;
 
@@ -85,7 +86,7 @@
 - (void)_updateWithForceForAlarmTable:(bool)arg1 forFences:(bool)arg2;
 - (void)_vehicleTriggerFired:(bool)arg1;
 - (void)dealloc;
-- (void)handleBTAJob:(id)arg1 named:(const char *)arg2;
+- (void)didRegisterForAlarms;
 - (void)handleDarwinNotification:(id)arg1;
 - (id)init;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
@@ -93,6 +94,7 @@
 - (void)locationManager:(id)arg1 didExitRegion:(id)arg2;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 monitoringDidFailForRegion:(id)arg2 withError:(id)arg3;
+- (void)receivedAlarmNamed:(id)arg1;
 - (void)start;
 
 @end

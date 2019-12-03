@@ -22,6 +22,7 @@
 - (unsigned long long)numberVisibleIndicesInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (void)setCount:(unsigned long long)arg1;
 - (void)setHidden:(bool)arg1 atIndex:(unsigned long long)arg2;
+- (void)setHidden:(bool)arg1 atIndexes:(id)arg2;
 - (void)setHidden:(bool)arg1 inRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (void)setVisibleIndexSet:(id)arg1;
 - (void)swapIndex:(unsigned long long)arg1 withIndex:(unsigned long long)arg2;

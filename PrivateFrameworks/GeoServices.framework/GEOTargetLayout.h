@@ -4,10 +4,10 @@
 
 @interface GEOTargetLayout : PBCodable <NSCopying> {
     struct { 
-        unsigned int layoutInfo : 1; 
-        unsigned int layoutStyle : 1; 
-        unsigned int uiTarget : 1; 
-    }  _has;
+        unsigned int has_layoutInfo : 1; 
+        unsigned int has_layoutStyle : 1; 
+        unsigned int has_uiTarget : 1; 
+    }  _flags;
     int  _layoutInfo;
     int  _layoutStyle;
     int  _uiTarget;
@@ -19,6 +19,8 @@
 @property (nonatomic) int layoutInfo;
 @property (nonatomic) int layoutStyle;
 @property (nonatomic) int uiTarget;
+
++ (bool)isValid:(id)arg1;
 
 - (int)StringAsLayoutInfo:(id)arg1;
 - (int)StringAsLayoutStyle:(id)arg1;
@@ -37,6 +39,7 @@
 - (int)layoutStyle;
 - (id)layoutStyleAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasLayoutInfo:(bool)arg1;
 - (void)setHasLayoutStyle:(bool)arg1;

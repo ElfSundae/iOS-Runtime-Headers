@@ -31,6 +31,7 @@
 - (id)_retainedURIString;
 - (void)_setPersistentStore:(id)arg1;
 - (id)_storeIdentifier;
+- (int)_temporaryIDCounter;
 - (void)dealloc;
 - (id)entity;
 - (void)finalize;

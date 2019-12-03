@@ -100,6 +100,10 @@
 - (id)valueForKeyPath:(id)arg1;
 - (id)valueForUndefinedKey:(id)arg1;
 
+// Image: /System/Library/Frameworks/LinkPresentation.framework/LinkPresentation
+
+- (id)_lp_copyWithBeginTime:(double)arg1;
+
 // Image: /System/Library/Frameworks/MapKit.framework/MapKit
 
 - (long long)_mapkit_ID;
@@ -123,10 +127,6 @@
 // Image: /System/Library/PrivateFrameworks/AuthKitUI.framework/AuthKitUI
 
 + (id)ak_jiggleAnimation;
-
-// Image: /System/Library/PrivateFrameworks/LinkPresentation.framework/LinkPresentation
-
-- (id)_lp_copyWithBeginTime:(double)arg1;
 
 // Image: /System/Library/PrivateFrameworks/LocalAuthenticationPrivateUI.framework/LocalAuthenticationPrivateUI
 
@@ -157,6 +157,10 @@
 - (id)TSD_valueForKeyPath:(id)arg1 atTime:(double)arg2;
 - (id)TSD_valueForKeyPath:(id)arg1 atTime:(double)arg2 animationCache:(id)arg3;
 - (void)p_getValue:(id*)arg1 animationPercent:(double*)arg2 atTime:(double)arg3 initialValue:(id)arg4;
+
+// Image: /System/Library/PrivateFrameworks/WorkflowUI.framework/WorkflowUI
+
+- (void)pop_applyDragCoefficient;
 
 // Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
 

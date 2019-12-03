@@ -6,6 +6,7 @@
     NSObject<OS_dispatch_queue> * _queue;
     <SYSyncEngineResponder> * _responder;
     SYService * _service;
+    NSObject<OS_os_transaction> * _transaction;
     NSObject<OS_os_activity> * _transportActivity;
 }
 
@@ -20,6 +21,7 @@
 @property (nonatomic, readonly) SYService *service;
 @property (nonatomic, readonly) PBCodable *stateForLogging;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) bool targetConnected;
 @property (nonatomic, readonly) bool targetIsNearby;
 @property (nonatomic, readonly) NSObject<OS_os_activity> *transportActivity;
 
@@ -28,6 +30,7 @@
 - (bool)buffersHandshake;
 - (bool)buffersSessions;
 - (id)cancelMessagesReturningFailures:(id)arg1;
+- (void)dealloc;
 - (void)endSession;
 - (void)enqueueSyncRequest:(id)arg1 withMessageID:(unsigned short)arg2 priority:(long long)arg3 options:(id)arg4 userContext:(id)arg5 callback:(id /* block */)arg6;
 - (id)initWithService:(id)arg1 queue:(id)arg2;
@@ -40,6 +43,7 @@
 - (void)setResponder:(id)arg1;
 - (id)stateForLogging;
 - (void)suspend;
+- (bool)targetConnected;
 - (bool)targetIsNearby;
 - (id)transportActivity;
 

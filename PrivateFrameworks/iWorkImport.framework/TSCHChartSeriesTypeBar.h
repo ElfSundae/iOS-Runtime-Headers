@@ -21,6 +21,7 @@
 - (bool)supportsRoundedCorners;
 - (bool)supportsSetGap;
 - (bool)useInBarGapCalculations;
+- (id)userInterfaceName;
 - (id)userInterfaceNameForLabelPosition:(id)arg1;
 - (unsigned long long)valueDimensions;
 

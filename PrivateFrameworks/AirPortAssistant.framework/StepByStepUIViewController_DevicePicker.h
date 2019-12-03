@@ -3,7 +3,6 @@
  */
 
 @interface StepByStepUIViewController_DevicePicker : StepByStepUIViewController <TableViewManagerDelegate> {
-    UIPopoverController * _popover;
     NSDictionary * _selectedDevice;
     bool  _showSingleBaseTopo;
     NSDictionary * _sourceBase;

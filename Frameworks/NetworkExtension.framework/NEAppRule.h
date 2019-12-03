@@ -29,6 +29,7 @@
 - (bool)checkValidityAndCollectErrors:(id)arg1;
 - (id)copyLegacyDictionary;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (void)dealloc;
 - (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initFromLegacyDictionary:(id)arg1;
@@ -39,6 +40,7 @@
 - (id)matchDomains;
 - (id)matchPath;
 - (id)matchSigningIdentifier;
+- (bool)matchesProcessWithAuditToken:(id)arg1;
 - (bool)noDivertDNS;
 - (bool)noRestriction;
 - (bool)overlapsWithRule:(id)arg1;

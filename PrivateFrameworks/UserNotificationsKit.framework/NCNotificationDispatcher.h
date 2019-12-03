@@ -7,6 +7,7 @@
     <NCAlertingController> * _alertingController;
     <NCNotificationDispatcherDelegate> * _delegate;
     NCNotificationDestinationsRegistry * _destinationsRegistry;
+    NCLayoutLoopDetector * _layoutDetector;
     NCNotificationStore * _notificationStore;
     NSMutableDictionary * _sectionSettings;
     NSHashTable * _sourceDelegates;
@@ -19,24 +20,20 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) NCNotificationDestinationsRegistry *destinationsRegistry;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, retain) NCLayoutLoopDetector *layoutDetector;
 @property (nonatomic, retain) NCNotificationStore *notificationStore;
 @property (nonatomic, retain) NSMutableDictionary *sectionSettings;
 @property (nonatomic, retain) NSHashTable *sourceDelegates;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_addNotificationRequestToLayoutsInProgress:(id)arg1;
 - (void)_clearUnsafeNotification:(id)arg1;
 - (void)_didPostNotificationRequest:(id)arg1;
 - (void)_didRemoveNotificationRequest:(id)arg1;
 - (bool)_isRegisteredDestination:(id)arg1;
-- (bool)_layoutsInProgressContainsNotificationRequest:(id)arg1;
-- (id)_notificationLayoutsInProgress;
 - (void)_performOperationForRequestDestinations:(id)arg1 block:(id /* block */)arg2;
 - (void)_registerAlertDestination:(id)arg1;
 - (void)_registerDestination:(id)arg1;
-- (void)_removeNotificationRequestFromLayoutsInProgress:(id)arg1;
-- (void)_setNotificationLayoutsInProgress:(id)arg1;
 - (bool)_shouldPostNotificationRequest:(id)arg1;
 - (void)_willPostNotificationRequest:(id)arg1;
 - (void)addDispatcherSourceDelegate:(id)arg1;
@@ -62,6 +59,7 @@
 - (id)destinationsRegistry;
 - (id)init;
 - (id)initWithAlertingController:(id)arg1;
+- (id)layoutDetector;
 - (void)modifyNotificationWithRequest:(id)arg1;
 - (id)notificationSectionSettingsForDestination:(id)arg1;
 - (id)notificationSectionSettingsForDestination:(id)arg1 forSectionIdentifier:(id)arg2;
@@ -76,6 +74,7 @@
 - (void)setDelegate:(id)arg1;
 - (void)setDestination:(id)arg1 enabled:(bool)arg2;
 - (void)setDestinationsRegistry:(id)arg1;
+- (void)setLayoutDetector:(id)arg1;
 - (void)setNotificationStore:(id)arg1;
 - (void)setSectionSettings:(id)arg1;
 - (void)setSourceDelegates:(id)arg1;

@@ -3,12 +3,10 @@
  */
 
 @interface MNHybridLocationProvider : NSObject <MNLocationProvider, MNLocationProviderDelegate> {
-    unsigned long long  _activeServices;
     MNCoreLocationProvider * _coreLocationProvider;
     <MNLocationProviderDelegate> * _delegate;
-    MNLeechedLocationProvider * _leechedLocationProvider;
+    double  _desiredAccuracy;
     unsigned long long  _mode;
-    bool  _shouldNotifyDelegate;
 }
 
 @property (nonatomic) long long activityType;
@@ -31,14 +29,12 @@
 @property (nonatomic) unsigned long long mode;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) double timeScale;
+@property (nonatomic, readonly) unsigned long long traceVersion;
 @property (nonatomic, readonly) bool usesCLMapCorrection;
 
 - (void).cxx_destruct;
-- (id)_activeLocationProvider;
-- (id)_inactiveLocationProvider;
-- (bool)_isSubscribedToService:(unsigned long long)arg1;
-- (void)_subscribeToService:(unsigned long long)arg1;
-- (void)_unsubscribeFromService:(unsigned long long)arg1;
+- (void)_setEffectiveAccuracy:(double)arg1;
+- (void)_sharedInit;
 - (long long)activityType;
 - (id /* block */)authorizationRequestBlock;
 - (int)authorizationStatus;
@@ -51,7 +47,8 @@
 - (double)expectedGpsUpdateInterval;
 - (int)headingOrientation;
 - (id)init;
-- (id)initWithMode:(unsigned long long)arg1;
+- (id)initWithEffectiveBundle:(id)arg1;
+- (id)initWithEffectiveBundleIdentifier:(id)arg1;
 - (bool)isLocationServicesPreferencesDialogEnabled;
 - (bool)isSimulation;
 - (bool)isTracePlayer;
@@ -90,6 +87,7 @@
 - (void)stopUpdatingVehicleHeading;
 - (void)stopUpdatingVehicleSpeed;
 - (double)timeScale;
+- (unsigned long long)traceVersion;
 - (bool)usesCLMapCorrection;
 
 @end

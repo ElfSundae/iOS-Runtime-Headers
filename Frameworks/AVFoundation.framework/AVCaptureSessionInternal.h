@@ -36,6 +36,7 @@
     bool  waitingForFigCaptureSessionToStart;
     bool  waitingForFigCaptureSessionToStop;
     AVWeakReference * weakReference;
+    bool  xctestAuthorizedToStealDevice;
 }
 
 @end

@@ -9,6 +9,8 @@
     id /* block */  _beginLyricsEventCallback;
     NSMutableDictionary * _commandHandlerBlocks;
     MSVMultiCallback * _createChildItemCallbacks;
+    MSVMultiCallback * _createItemForIdentifierCallbacks;
+    MSVMultiCallback * _createItemForIdentifierToken;
     MSVMultiCallback * _createItemForOffsetCallbacks;
     MSVMultiCallback * _createItemToken;
     MSVMultiCallback * _createPlaybackQueueForRequestCallbacks;
@@ -19,6 +21,10 @@
     MSVMultiCallback * _lyricsCallbacks;
     MSVMultiCallback * _metadataCallbacks;
     MSVMultiCallback * _metadataToken;
+    id /* block */  _playbackSessionCallback;
+    id /* block */  _playbackSessionMigrateBeginCallback;
+    id /* block */  _playbackSessionMigrateEndCallback;
+    id /* block */  _playbackSessionMigrateRequestCallback;
     _MRNowPlayingPlayerPathProtobuf * _playerPath;
     NSObject<OS_dispatch_queue> * _serialQueue;
     id /* block */  _videoThumbnailsCallback;
@@ -30,6 +36,7 @@
 @property (nonatomic, readonly) unsigned long long capabilities;
 @property (nonatomic, readonly, copy) NSArray *commandHandlerBlocks;
 @property (nonatomic, readonly) MSVMultiCallback *createChildItemCallbacks;
+@property (nonatomic, readonly) MSVMultiCallback *createItemForIdentifierCallbacks;
 @property (nonatomic, readonly) MSVMultiCallback *createItemForOffsetCallbacks;
 @property (nonatomic, readonly) MSVMultiCallback *createPlaybackQueueForRequestCallbacks;
 @property (nonatomic, copy) id /* block */ endLyricsEventCallback;
@@ -38,6 +45,10 @@
 @property (nonatomic, readonly) MSVMultiCallback *languageOptionsCallbacks;
 @property (nonatomic, readonly) MSVMultiCallback *lyricsCallbacks;
 @property (nonatomic, readonly) MSVMultiCallback *metadataCallbacks;
+@property (nonatomic, copy) id /* block */ playbackSessionCallback;
+@property (nonatomic, copy) id /* block */ playbackSessionMigrateBeginCallback;
+@property (nonatomic, copy) id /* block */ playbackSessionMigrateEndCallback;
+@property (nonatomic, copy) id /* block */ playbackSessionMigrateRequestCallback;
 @property (nonatomic, readonly) _MRNowPlayingPlayerPathProtobuf *playerPath;
 @property (nonatomic, copy) id /* block */ videoThumbnailsCallback;
 
@@ -50,6 +61,7 @@
 - (unsigned long long)capabilities;
 - (id)commandHandlerBlocks;
 - (id)createChildItemCallbacks;
+- (id)createItemForIdentifierCallbacks;
 - (id)createItemForOffsetCallbacks;
 - (id)createPlaybackQueueForRequestCallbacks;
 - (id /* block */)endLyricsEventCallback;
@@ -59,6 +71,10 @@
 - (id)languageOptionsCallbacks;
 - (id)lyricsCallbacks;
 - (id)metadataCallbacks;
+- (id /* block */)playbackSessionCallback;
+- (id /* block */)playbackSessionMigrateBeginCallback;
+- (id /* block */)playbackSessionMigrateEndCallback;
+- (id /* block */)playbackSessionMigrateRequestCallback;
 - (id)playerPath;
 - (void)registerNowPlayingInfoArtworkAssetCallback:(id)arg1;
 - (void)registerNowPlayingInfoAssetCallbacks:(id)arg1;
@@ -68,6 +84,10 @@
 - (void)setAudioAmplitudeSamplesCallback:(id /* block */)arg1;
 - (void)setBeginLyricsEventCallback:(id /* block */)arg1;
 - (void)setEndLyricsEventCallback:(id /* block */)arg1;
+- (void)setPlaybackSessionCallback:(id /* block */)arg1;
+- (void)setPlaybackSessionMigrateBeginCallback:(id /* block */)arg1;
+- (void)setPlaybackSessionMigrateEndCallback:(id /* block */)arg1;
+- (void)setPlaybackSessionMigrateRequestCallback:(id /* block */)arg1;
 - (void)setVideoThumbnailsCallback:(id /* block */)arg1;
 - (id /* block */)videoThumbnailsCallback;
 

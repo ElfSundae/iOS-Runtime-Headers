@@ -22,13 +22,15 @@
 + (id)attributedStringsCache;
 
 - (void).cxx_destruct;
+- (id)_chevronAttributedString;
+- (id)_chevronImage;
 - (id)_formattedAttributedString;
 - (void)_setNeedsLabelUpdate;
 - (id)_stringAtIndexForCombinedRecipientLists:(unsigned long long)arg1;
+- (id)_whitespaceStringWithWidth:(double)arg1;
 - (id)bccRecipients;
 - (id)ccRecipients;
 - (id)dataSource;
-- (void)dealloc;
 - (id)fromSenders;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)layoutSubviews;

@@ -5,7 +5,7 @@
 @interface NLFoundInAppsPlugin : NSObject <FIAPPlugin> {
     NSBundle * _FIAPBundle;
     Class  _FIAPResult;
-    DESRecordStore * _recordStore;
+    NSArray * _delegates;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -20,8 +20,6 @@
 - (void)deleteSpotlightReferencesWithBundleIdentifier:(id)arg1 uniqueIdentifiers:(id)arg2;
 - (id)identifier;
 - (id)init;
-- (bool)isSentMessage:(id)arg1;
-- (id)languageForText:(id)arg1;
 - (id)processSearchableItem:(id)arg1;
 
 @end

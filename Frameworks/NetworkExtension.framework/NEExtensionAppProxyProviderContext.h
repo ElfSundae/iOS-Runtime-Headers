@@ -23,7 +23,8 @@
 - (void)cancelWithError:(id)arg1;
 - (unsigned int)delegateInterfaceIndex;
 - (struct _NEFlowDirector { }*)director;
-- (void)flowDivertMatchAppRulesWithFlow:(unsigned int)arg1 pid:(int)arg2 uuid:(unsigned char)arg3 signingIdentifier:(struct __CFString { }*)arg4;
+- (id)extensionPoint;
+- (void)flowDivertMatchAppRulesWithFlow:(unsigned int)arg1 auditToken:(struct __CFData { }*)arg2 signingIdentifier:(struct __CFString { }*)arg3;
 - (void)flowDivertNewFlow:(struct _NEFlow { }*)arg1 completionHandler:(id /* block */)arg2;
 - (void)flowDivertOpenControlSocket;
 - (id)flowQueue;
@@ -36,6 +37,5 @@
 - (void)setInitialFlowDivertControlSocket:(id)arg1 extraValidation:(bool)arg2;
 - (void)startWithOptions:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)stopWithReason:(int)arg1;
-- (void)verifyAppWithPID:(long long)arg1 uuid:(id)arg2 matchesAppRule:(id)arg3 completionHandler:(id /* block */)arg4;
 
 @end

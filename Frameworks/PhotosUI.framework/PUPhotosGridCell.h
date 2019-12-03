@@ -19,7 +19,7 @@
     NSNumber * _progress;
     PUProgressIndicatorView * _progressIndicatorView;
     NSArray * _progressIndicatorViewConstraints;
-    UIImageView * _selectionBadgeImageView;
+    UIView * _selectionBadgeView;
     bool  _selectionBadgeVisible;
     UIView * _selectionOverlayView;
     PUPhotoView * _temporaryPhotoContentView;

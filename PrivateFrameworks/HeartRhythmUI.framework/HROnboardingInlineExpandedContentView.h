@@ -2,7 +2,11 @@
    Image: /System/Library/PrivateFrameworks/HeartRhythmUI.framework/HeartRhythmUI
  */
 
-@interface HROnboardingInlineExpandedContentView : UIView
+@interface HROnboardingInlineExpandedContentView : UIView {
+    long long  _currentUserInterfaceStyle;
+}
+
+@property (nonatomic) long long currentUserInterfaceStyle;
 
 + (id)_bodyFont;
 + (double)_bodyFontDistance;
@@ -25,5 +29,8 @@
 + (id)inconclusiveExpandedViewWithDelegate:(id)arg1;
 + (id)learnMoreAboutAtrialFibrillationExpandedView;
 + (id)sinusRhythmExpandedView;
+
+- (long long)currentUserInterfaceStyle;
+- (void)setCurrentUserInterfaceStyle:(long long)arg1;
 
 @end

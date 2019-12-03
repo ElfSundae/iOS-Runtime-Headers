@@ -111,6 +111,7 @@
 - (void)_beginSequenceWithReason:(id)arg1 completion:(id /* block */)arg2 updateHandler:(id /* block */)arg3;
 - (id)_brokenView;
 - (bool)_canInsertRemoteView:(id*)arg1;
+- (bool)_canShowWhileLocked;
 - (id)_cancelTouches;
 - (void)_captureLayerTree:(id /* block */)arg1;
 - (void)_captureSnapshotAndBeginDisappearanceTransitionForSequence:(id)arg1 completionHandler:(id /* block */)arg2;
@@ -149,6 +150,8 @@
 - (bool)_isEncodingLayerTree;
 - (bool)_isIgnoringParentAppearState;
 - (id)_lastUnanticipatedDisconnectionDate;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_layoutMargins;
+- (void)_layoutMarginsDidChange;
 - (void)_loadSnapshotViewFromDiskIfNecessary:(id /* block */)arg1;
 - (id)_lockedOutView;
 - (bool)_managingContainerIsVisible;
@@ -168,6 +171,7 @@
 - (id /* block */)_remoteViewControllerDisconnectionHandler;
 - (void)_removeAllSnapshotFilesDueToIssue:(bool)arg1;
 - (void)_removeAllSnapshotFilesForActiveDisplayMode;
+- (void)_removeAllSnapshotFilesInActiveDisplayModeForAllButActiveUserInterfaceStyle;
 - (void)_removeAllSnapshotFilesInActiveDisplayModeForContentSizeCategory:(id)arg1;
 - (void)_removeAllSnapshotFilesMatchingPredicate:(id)arg1 dueToIssue:(bool)arg2;
 - (void)_removeItemAsynchronouslyAtURL:(id)arg1;

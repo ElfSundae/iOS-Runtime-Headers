@@ -16,6 +16,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly) NSString *department;
 @property (readonly, copy) NSString *description;
+@property (readonly) NSString *downtimeWhitelist;
 @property (readonly) NSArray *emailAddresses;
 @property (readonly) NSString *firstName;
 @property (readonly) unsigned long long hash;
@@ -69,6 +70,7 @@
 - (id)cardDAVUID;
 - (id)companyName;
 - (id)department;
+- (id)downtimeWhitelist;
 - (id)emailAddresses;
 - (id)filterItems:(id)arg1 property:(id)arg2;
 - (id)firstName;

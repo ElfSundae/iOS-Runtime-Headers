@@ -12,6 +12,7 @@
     HKElectrocardiogramChartView * _graphView;
     HKRoundedHeaderView * _headerView;
     UIImageView * _heartImageView;
+    NSLayoutConstraint * _heartImageViewHeightConstraint;
     NSArray * _largeTextConstraints;
     bool  _onboarding;
     NSArray * _regularConstraints;
@@ -32,6 +33,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) HKRoundedHeaderView *headerView;
 @property (nonatomic, retain) UIImageView *heartImageView;
+@property (nonatomic, retain) NSLayoutConstraint *heartImageViewHeightConstraint;
 @property (nonatomic, retain) NSArray *largeTextConstraints;
 @property (getter=isOnboarding, nonatomic) bool onboarding;
 @property (nonatomic, retain) NSArray *regularConstraints;
@@ -55,6 +57,8 @@
 - (void).cxx_destruct;
 - (id)_cardBackgroundColor;
 - (id)_cardHeaderColor;
+- (id)_chevronColor;
+- (id)_graphBackgroundColor;
 - (bool)_isLayingOutForAccessibility;
 - (void)_setUpGraph;
 - (void)_setupConstraints;
@@ -74,6 +78,7 @@
 - (id)graphView;
 - (id)headerView;
 - (id)heartImageView;
+- (id)heartImageViewHeightConstraint;
 - (id)initWithSample:(id)arg1 dateCache:(id)arg2 onboarding:(bool)arg3;
 - (bool)isOnboarding;
 - (id)largeTextConstraints;
@@ -88,6 +93,7 @@
 - (void)setGraphView:(id)arg1;
 - (void)setHeaderView:(id)arg1;
 - (void)setHeartImageView:(id)arg1;
+- (void)setHeartImageViewHeightConstraint:(id)arg1;
 - (void)setLargeTextConstraints:(id)arg1;
 - (void)setOnboarding:(bool)arg1;
 - (void)setRegularConstraints:(id)arg1;

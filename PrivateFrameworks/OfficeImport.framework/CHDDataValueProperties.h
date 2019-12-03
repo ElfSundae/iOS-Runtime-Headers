@@ -16,9 +16,9 @@
 
 + (id)dataValueProperties;
 
+- (void).cxx_destruct;
 - (id)dataLabel;
 - (unsigned long long)dataValueIndex;
-- (void)dealloc;
 - (id)description;
 - (id)graphicProperties;
 - (id)init;

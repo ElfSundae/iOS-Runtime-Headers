@@ -16,6 +16,7 @@
     NSObject<OS_dispatch_queue> * _queue;
     unsigned long long  _registeredObserversCount;
     bool  _shouldObserveArtwork;
+    bool  _shouldObserveLibraryAddStatus;
     bool  _shouldObservePlaybackQueue;
 }
 
@@ -27,6 +28,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSArray *nowPlayingOrigins;
 @property (nonatomic) bool shouldObserveArtwork;
+@property (nonatomic) bool shouldObserveLibraryAddStatus;
 @property (nonatomic) bool shouldObservePlaybackQueue;
 @property (readonly) Class superclass;
 
@@ -36,12 +38,12 @@
 - (id)_evaluateActiveNowPlayingOriginForOrderedOrigins:(id)arg1;
 - (void)_evaluateNowPlayingOrigins;
 - (id)_evaluateNowPlayingOriginsFromOrigins:(id)arg1;
+- (void)_handleAvailableOriginsDidChangeNotification:(id)arg1;
 - (id)_nowPlayingStateForOrigin:(id)arg1;
 - (id)_originControllerForOrigin:(id)arg1;
 - (void)_removeOriginControllerWithOrigin:(id)arg1;
 - (void)_setupOriginControllers;
 - (void)_updateNowPlayingStateForOrigin:(id)arg1 completion:(id /* block */)arg2;
-- (void)_updateOriginControllers:(id)arg1;
 - (id)activeNowPlayingOrigin;
 - (void)addObserverDelegate:(id)arg1;
 - (void)beginObservingOrigins;
@@ -61,15 +63,17 @@
 - (void)originObserver:(id)arg1 didUpdateSupportedCommandsForOrigin:(id)arg2;
 - (void)originObserver:(id)arg1 didUpdateTimestampForOrigin:(id)arg2;
 - (id)playbackQueueForOrigin:(id)arg1;
-- (void)prepareLocalOriginObserverForNewPlaybackIntent;
 - (void)removeObserverDelegate:(id)arg1;
 - (void)sendMediaRemoteCommand:(unsigned int)arg1 toOrigin:(id)arg2 options:(id)arg3 launchApp:(bool)arg4;
+- (void)sendMediaRemoteCommand:(unsigned int)arg1 toOrigin:(id)arg2 options:(id)arg3 launchApp:(bool)arg4 completion:(id /* block */)arg5;
 - (void)setDelegate:(id)arg1;
 - (void)setOriginCommandHandler:(id)arg1 forOrigin:(id)arg2;
 - (void)setOriginObserver:(id)arg1 forOrigin:(id)arg2;
 - (void)setShouldObserveArtwork:(bool)arg1;
+- (void)setShouldObserveLibraryAddStatus:(bool)arg1;
 - (void)setShouldObservePlaybackQueue:(bool)arg1;
 - (bool)shouldObserveArtwork;
+- (bool)shouldObserveLibraryAddStatus;
 - (bool)shouldObservePlaybackQueue;
 - (void)updateNowPlayingStateForAllOriginsWithCompletion:(id /* block */)arg1;
 - (void)updateNowPlayingStateForOrigin:(id)arg1 completion:(id /* block */)arg2;

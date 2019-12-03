@@ -2,38 +2,49 @@
    Image: /System/Library/PrivateFrameworks/AssertionServices.framework/AssertionServices
  */
 
-@interface BKSAssertion : NSObject {
-    bool  _acquired;
+@interface BKSAssertion : NSObject <RBSAssertionObserving> {
     id /* block */  _acquisitionHandler;
-    <BKSAssertionClientProtocol> * _client;
-    NSObject<OS_dispatch_queue> * _clientQueue;
-    NSString * _identifier;
+    NSMutableArray * _attributes;
+    RBSAssertion * _internalAssertion;
     id /* block */  _invalidationHandler;
-    BSSignal * _invalidationSignal;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _lock;
     NSString * _name;
+    RBSTarget * _target;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, copy) id /* block */ invalidationHandler;
 @property (nonatomic, copy) NSString *name;
+@property (readonly) Class superclass;
 @property (nonatomic, readonly) bool valid;
 
-- (id)_clientQueue;
-- (bool)_clientQueue_acquireAssertion;
-- (bool)_clientQueue_acquired;
-- (id)_clientQueue_client;
-- (id)_clientQueue_createEvent;
-- (id)_clientQueue_destroyEvent;
-- (id)_clientQueue_identifier;
-- (void)_clientQueue_invalidate:(bool)arg1;
-- (id)_clientQueue_name;
-- (void)_clientQueue_updateAssertion;
-- (id)_clientQueue_updateEvent;
-- (id)_initWithClient:(id)arg1;
-- (id)_initWithClient:(id)arg1 name:(id)arg2;
-- (id)_initWithClient:(id)arg1 name:(id)arg2 handler:(id /* block */)arg3;
-- (void)_registerAssertionAndAcquire:(bool)arg1;
+- (void).cxx_destruct;
+- (void)_acquireAsynchronously;
+- (id /* block */)_acquisitionHandler;
+- (id)_attributes;
+- (unsigned long long)_bksErrorForRBSAssertionError:(unsigned long long)arg1;
+- (id)_initWithName:(id)arg1 handler:(id /* block */)arg2;
+- (id)_internalAssertion;
+- (void)_invalidateSynchronously:(bool)arg1;
+- (void)_lock:(id /* block */)arg1;
+- (id /* block */)_lock_acquisitionHandler;
+- (id)_lock_attributes;
+- (id)_lock_internalAssertion;
+- (id)_lock_name;
+- (void)_lock_reaquireAssertion;
+- (void)_lock_setAttributes:(id)arg1;
+- (void)_lock_setInternalAssertion:(id)arg1;
+- (void)_lock_setName:(id)arg1;
+- (void)_setAttributes:(id)arg1;
+- (void)_setTarget:(id)arg1;
+- (id)_target;
 - (bool)acquire;
-- (void)assertionDidInvalidate;
+- (void)assertion:(id)arg1 didInvalidateWithError:(id)arg2;
+- (void)assertionWillInvalidate:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)invalidate;

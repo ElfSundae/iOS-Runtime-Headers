@@ -10,9 +10,9 @@
 
 + (id)notificationWithChangedAssets:(id)arg1;
 
+- (void).cxx_destruct;
 - (id)_init;
 - (id)_initWithChangedObjects:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)name;
 - (id)object;

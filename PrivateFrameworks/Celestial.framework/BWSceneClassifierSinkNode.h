@@ -35,7 +35,7 @@
 - (void)dealloc;
 - (void)didReachEndOfDataForInput:(id)arg1;
 - (id)documentSceneConfidence;
-- (id)initWithCaptureDevice:(id)arg1 version:(struct { unsigned short x1; unsigned short x2; unsigned short x3; })arg2;
+- (id)initWithCaptureDevice:(id)arg1 version:(struct { unsigned short x1; unsigned short x2; unsigned short x3; })arg2 sinkID:(id)arg3;
 - (id)nodeSubType;
 - (id)petSceneConfidence;
 - (id)qrCodeSceneObserver;

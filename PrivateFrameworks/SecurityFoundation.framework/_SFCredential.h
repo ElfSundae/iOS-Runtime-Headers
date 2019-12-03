@@ -3,9 +3,12 @@
  */
 
 @interface _SFCredential : NSObject <NSCopying, NSSecureCoding> {
+    NSString * _accessGroup;
+    NSData * _changeToken;
     NSDate * _creationDate;
     NSDictionary * _customAttributes;
     NSString * _description;
+    int  _keyclass;
     NSString * _label;
     NSDate * _modificationDate;
     NSString * _persistentIdentifier;
@@ -13,8 +16,11 @@
     NSArray * _supplementaryServiceIdentifiers;
 }
 
+@property (getter=_accessGroup, setter=_setAccessGroup:, nonatomic, retain) NSString *accessGroup;
+@property (getter=_changeToken, setter=_setChangeToken:, nonatomic, retain) NSData *changeToken;
 @property (setter=_setCreationDate:, nonatomic, copy) NSDate *creationDate;
 @property (nonatomic, copy) NSDictionary *customAttributes;
+@property (getter=_keyclass, setter=_setKeyclass:, nonatomic) int keyclass;
 @property (nonatomic, copy) NSString *localizedDescription;
 @property (nonatomic, copy) NSString *localizedLabel;
 @property (setter=_setModificationDate:, nonatomic, copy) NSDate *modificationDate;
@@ -25,8 +31,14 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)_accessGroup;
+- (id)_changeToken;
 - (id)_initWithPrimaryServiceIdentifier:(id)arg1 supplementaryServiceIdentiifers:(id)arg2;
+- (int)_keyclass;
+- (void)_setAccessGroup:(id)arg1;
+- (void)_setChangeToken:(id)arg1;
 - (void)_setCreationDate:(id)arg1;
+- (void)_setKeyclass:(int)arg1;
 - (void)_setModificationDate:(id)arg1;
 - (void)_setPersistentIdentifier:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

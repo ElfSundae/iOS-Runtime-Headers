@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface _UITextDocumentInterface : UIInputViewControllerInterface <UITextDocumentProxy> {
+@interface _UITextDocumentInterface : UIInputViewControllerInterface <UITextDocumentProxy, UITextDocumentProxy_Private> {
     _UIInputViewControllerOutput * _controllerOutput;
     _UIInputViewControllerState * _controllerState;
     <_UITextDocumentInterfaceDelegate> * _delegate;
@@ -27,6 +27,8 @@
 @property (nonatomic) long long keyboardAppearance;
 @property (getter=_keyboardOutput, nonatomic, readonly) TIKeyboardOutput *keyboardOutput;
 @property (nonatomic) long long keyboardType;
+@property (nonatomic, readonly) NSString *markedText;
+@property (nonatomic, readonly) bool needsInputModeSwitchKey;
 @property (nonatomic, copy) UITextInputPasswordRules *passwordRules;
 @property (nonatomic) long long returnKeyType;
 @property (getter=isSecureTextEntry, nonatomic) bool secureTextEntry;
@@ -70,6 +72,7 @@
 - (bool)isSecureTextEntry;
 - (long long)keyboardAppearance;
 - (long long)keyboardType;
+- (id)markedText;
 - (bool)needsInputModeSwitchKey;
 - (long long)returnKeyType;
 - (id)selectedText;
@@ -77,10 +80,12 @@
 - (void)setControllerState:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setForwardingInterface:(id)arg1;
+- (void)setMarkedText:(id)arg1 selectedRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (long long)smartDashesType;
 - (long long)smartInsertDeleteType;
 - (long long)smartQuotesType;
 - (long long)spellCheckingType;
 - (id)textContentType;
+- (void)unmarkText;
 
 @end

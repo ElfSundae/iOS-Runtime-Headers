@@ -42,15 +42,6 @@
     unsigned int  _pairSetupFlags;
     struct PairingSessionPrivate { } * _pairSetupSession;
     unsigned int  _pairSetupXID;
-    NSMutableData * _pairTLSBuffer;
-    bool  _pairTLSClient;
-    id /* block */  _pairTLSCompletion;
-    bool  _pairTLSConfigured;
-    struct __SecIdentity { } * _pairTLSIdentity;
-    NSObject<OS_dispatch_queue> * _pairTLSQueue;
-    struct SSLContext { } * _pairTLSSession;
-    NSDate * _pairTLSStart;
-    bool  _pairTLSSuccess;
     NSDictionary * _pairVerifyACL;
     id /* block */  _pairVerifyCompletion;
     bool  _pairVerifyEnded;
@@ -78,6 +69,7 @@
     id /* block */  _sessionStartedHandler;
     SFTRSession * _sfTRSession;
     unsigned int  _sharingSourceVersion;
+    SDStatusMonitor * _statusMonitor;
     NSXPCListenerEndpoint * _testListenerEndpoint;
     double  _timeout;
     bool  _timeoutFired;
@@ -126,6 +118,7 @@
 @property (nonatomic) unsigned int sessionID;
 @property (nonatomic, copy) id /* block */ sessionStartedHandler;
 @property (nonatomic) unsigned int sharingSourceVersion;
+@property (nonatomic, retain) SDStatusMonitor *statusMonitor;
 @property (nonatomic, retain) NSXPCListenerEndpoint *testListenerEndpoint;
 @property (nonatomic) double timeout;
 @property (nonatomic, copy) id /* block */ timeoutHandler;
@@ -138,6 +131,8 @@
 - (void)_activateWithCompletion:(id /* block */)arg1;
 - (void)_activated;
 - (void)_activatedIfReady:(id)arg1;
+- (bool)_appleIDAddProof:(id)arg1 error:(id*)arg2;
+- (id)_appleIDVerifyProof:(id)arg1 error:(id*)arg2;
 - (void)_cleanup;
 - (void)_deregisterRequestID:(id)arg1;
 - (void)_ensureXPCStarted;
@@ -149,10 +144,6 @@
 - (void)_pairSetupCompleted:(int)arg1;
 - (void)_pairSetupTryPIN:(id)arg1;
 - (void)_pairSetupWithFlags:(unsigned int)arg1 completion:(id /* block */)arg2;
-- (void)_pairTLSCompleted:(int)arg1;
-- (int)_pairTLSEnsureConfigured;
-- (void)_pairTLSReceivedData:(id)arg1 type:(unsigned char)arg2;
-- (int)_pairTLSStart;
 - (void)_pairVerify:(id)arg1 start:(bool)arg2;
 - (void)_pairVerifyCompleted:(int)arg1;
 - (void)_pairVerifyWithFlags:(unsigned int)arg1 completion:(id /* block */)arg2;
@@ -161,7 +152,6 @@
 - (void)_sendFrameType:(unsigned char)arg1 object:(id)arg2;
 - (void)_sendRequestID:(id)arg1 options:(id)arg2 request:(id)arg3 responseHandler:(id /* block */)arg4;
 - (void)_sendRequestWithFlags:(unsigned int)arg1 object:(id)arg2 responseHandler:(id /* block */)arg3;
-- (void)_sendTLSEncryptedObject:(id)arg1;
 - (void)_sessionReceivedEncryptedData:(id)arg1 type:(unsigned char)arg2;
 - (bool)_sessionReceivedEvent:(id)arg1 flags:(unsigned int)arg2;
 - (void)_sessionReceivedObject:(id)arg1 flags:(unsigned int)arg2;
@@ -177,10 +167,9 @@
 - (void)_tearDownMessageSession;
 - (void)_tearDownTouchRemote;
 - (void)_timeoutTimerFired;
-- (id)_tlsCertificateChainFromTrust:(struct __SecTrust { }*)arg1;
-- (void)_tlsReceivedObjectWithLength:(unsigned long long)arg1;
-- (void)_tlsReceivedValidationRecordData:(id)arg1;
 - (void)activateWithCompletion:(id /* block */)arg1;
+- (void)appleIDAddProof:(id)arg1 dispatchQueue:(id)arg2 completion:(id /* block */)arg3;
+- (void)appleIDVerifyProof:(id)arg1 dispatchQueue:(id)arg2 completion:(id /* block */)arg3;
 - (long long)bluetoothState;
 - (id /* block */)bluetoothStateChangedHandler;
 - (void)dealloc;
@@ -205,9 +194,6 @@
 - (id)pairSetupACL;
 - (void)pairSetupTryPIN:(id)arg1;
 - (void)pairSetupWithFlags:(unsigned int)arg1 completion:(id /* block */)arg2;
-- (void)pairTLSClient:(bool)arg1 completion:(id /* block */)arg2;
-- (void)pairTLSReceivedData:(id)arg1 type:(unsigned char)arg2;
-- (void)pairTLSWithIdentity:(struct __SecIdentity { }*)arg1 asClient:(bool)arg2 completion:(id /* block */)arg3;
 - (id)pairVerifyACL;
 - (void)pairVerifyWithFlags:(unsigned int)arg1 completion:(id /* block */)arg2;
 - (bool)pairingContainsACL:(id)arg1;
@@ -232,7 +218,6 @@
 - (void)sendRequestID:(id)arg1 options:(id)arg2 request:(id)arg3 responseHandler:(id /* block */)arg4;
 - (void)sendRequestWithFlags:(unsigned int)arg1 object:(id)arg2 responseHandler:(id /* block */)arg3;
 - (void)sendResponse:(id)arg1;
-- (void)sendTLSEncryptedObject:(id)arg1;
 - (void)sendWithFlags:(unsigned int)arg1 object:(id)arg2;
 - (id)serviceIdentifier;
 - (unsigned char)serviceType;
@@ -281,12 +266,14 @@
 - (void)setSessionID:(unsigned int)arg1;
 - (void)setSessionStartedHandler:(id /* block */)arg1;
 - (void)setSharingSourceVersion:(unsigned int)arg1;
+- (void)setStatusMonitor:(id)arg1;
 - (void)setTestListenerEndpoint:(id)arg1;
 - (void)setTimeout:(double)arg1;
 - (void)setTimeoutHandler:(id /* block */)arg1;
 - (void)setTouchRemoteEnabled:(bool)arg1;
 - (void)setTrSession:(id)arg1;
 - (unsigned int)sharingSourceVersion;
+- (id)statusMonitor;
 - (id)testListenerEndpoint;
 - (double)timeout;
 - (id /* block */)timeoutHandler;

@@ -13,7 +13,7 @@
 
 @property (retain) NUImageGeometry *_geometry;
 @property (retain) <NUTextureImage> *_image;
-@property struct CGColor { }*debugColor;
+@property (retain) struct CGColor { }*debugColor;
 @property (retain) NUImageGeometry *geometry;
 @property (retain) <NUTextureImage> *image;
 

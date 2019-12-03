@@ -17,6 +17,7 @@
 @property (nonatomic, readonly) NSObject<OS_dispatch_source> *memoryMonitoringSource;
 
 + (void)initialize;
++ (void*)newAddressBookWithDelegateInfo:(id)arg1;
 + (void*)newAddressBookWithURL:(id)arg1;
 + (void*)newInMemoryAddressBook;
 
@@ -35,5 +36,6 @@
 - (void*)popAddressBook;
 - (void*)preparedAddressBook:(void*)arg1;
 - (void)pushAddressBook:(void*)arg1;
+- (id)resultWithInvalidatedAddressBook:(id /* block */)arg1;
 
 @end

@@ -25,15 +25,15 @@
 
 - (void).cxx_destruct;
 - (id)URLHandlingDelegate;
-- (void)_completeOrCancelTransaction:(bool)arg1;
+- (void)_completeOrCancelTransaction:(bool)arg1 withIntentIdentifier:(id)arg2 completion:(id /* block */)arg3;
 - (void)_connectExtensionWithRemoteViewControllerNeeded:(bool)arg1 Handler:(id /* block */)arg2;
 - (id)_errorForIntent:(id)arg1;
 - (id)_errorForIntentResponse:(id)arg1 withExpectResponseClass:(Class)arg2;
 - (id)_errorForIntentVendorContext:(id)arg1;
 - (id)_handleOrConfirmIntent:(id)arg1 expectResponseClass:(Class)arg2 isHandle:(bool)arg3 withCompletion:(id /* block */)arg4;
 - (void)cancel;
-- (void)cancelTransactionDueToTimeout;
-- (void)completeTransaction;
+- (void)cancelTransactionDueToTimeoutWithIntentIdentifier:(id)arg1 completion:(id /* block */)arg2;
+- (void)completeTransactionWithIntentIdentifier:(id)arg1 completion:(id /* block */)arg2;
 - (id)confirmIntent:(id)arg1 expectResponseClass:(Class)arg2 withCompletion:(id /* block */)arg3;
 - (void)connectExtensionWithHandler:(id /* block */)arg1;
 - (void)connectExtensionWithRemoteViewControllerNeeded:(bool)arg1 Handler:(id /* block */)arg2;

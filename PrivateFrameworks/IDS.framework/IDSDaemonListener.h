@@ -9,9 +9,11 @@
     NSString * _deviceIdentifier;
     NSHashTable * _handlers;
     bool  _hidingDisconnect;
+    IDSInternalQueueController * _internalQueueController;
     NSObject<OS_dispatch_queue> * _ivarQueue;
     bool  _postedSetupComplete;
     NSProtocolChecker * _protocol;
+    NSMutableDictionary * _serviceToActiveDeviceUniqueID;
     bool  _setupComplete;
     bool  _setupInfoComplete;
     NSMutableDictionary * _topicToAccountDictionaries;
@@ -68,8 +70,9 @@
 - (void)continuityDidStartAdvertisingOfType:(long long)arg1;
 - (void)continuityDidStartScanningForType:(long long)arg1;
 - (void)continuityDidStopAdvertisingOfType:(long long)arg1;
+- (void)continuityDidStopAdvertisingOfType:(long long)arg1 withError:(id)arg2;
 - (void)continuityDidStopScanningForType:(long long)arg1;
-- (void)continuityDidUpdateState:(long long)arg1;
+- (void)continuityDidUpdateStateToState:(long long)arg1;
 - (void)deactivatePairedDevices;
 - (id)dependentDevicesForAccount:(id)arg1;
 - (void)device:(id)arg1 nsuuidChanged:(id)arg2;
@@ -81,6 +84,7 @@
 - (void)forwardInvocation:(id)arg1;
 - (bool)hasPostedSetupComplete;
 - (id)init;
+- (id)initWithQueueController:(id)arg1 ivarQueue:(id)arg2;
 - (bool)isSetupComplete;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (void)refreshRegistrationForAccount:(id)arg1;
@@ -88,6 +92,7 @@
 - (void)removeHandler:(id)arg1;
 - (void)setupCompleteWithInfo:(id)arg1;
 - (void)switchActivePairedDevice:(id)arg1 forAccount:(id)arg2;
+- (void)updateAccount:(id)arg1 withAccountInfo:(id)arg2;
 - (void)xpcObject:(id)arg1 objectContext:(id)arg2;
 
 @end

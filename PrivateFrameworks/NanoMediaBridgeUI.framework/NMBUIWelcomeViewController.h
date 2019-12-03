@@ -9,7 +9,7 @@
     UIStackView * _contentView;
     <NMBUIOnboardingDataSource> * _dataSource;
     <NMBUIWelcomeViewControllerDelegate> * _delegate;
-    UIImageView * _iconImageView;
+    NMBUIImageView * _iconImageView;
     UIViewController * _presentingViewController;
     UILabel * _textLabel;
     UILabel * _titleLabel;

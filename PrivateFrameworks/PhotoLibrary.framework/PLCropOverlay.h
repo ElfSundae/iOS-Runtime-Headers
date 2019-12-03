@@ -21,6 +21,7 @@
     unsigned int  _cropRectIsVisible;
     PLCropOverlayCropView * _cropView;
     UIToolbar * _customToolbar;
+    NSString * _defaultCancelButtonTitle;
     NSString * _defaultOKButtonTitle;
     <PLCropOverlayDelegate> * _delegate;
     bool  _displayedInPopover;
@@ -47,6 +48,7 @@
 @property (nonatomic, readonly) UIButton *_cameraCancelButton;
 @property (nonatomic, retain) UIView *cameraBottomBar;
 @property (nonatomic, readonly) PLContactPhotoOverlay *contactPhotoOverlay;
+@property (nonatomic, copy) NSString *defaultCancelButtonTitle;
 @property (nonatomic, copy) NSString *defaultOKButtonTitle;
 @property (nonatomic) <PLCropOverlayDelegate> *delegate;
 @property (getter=isDisplayedInPopover, nonatomic) bool displayedInPopover;
@@ -58,7 +60,7 @@
 @property (nonatomic, readonly) PLCropOverlayWallpaperBottomBar *wallpaperBottomBar;
 
 - (void).cxx_destruct;
-- (void)_backgroundSavePhoto:(id)arg1;
+- (void)_backgroundSavePhoto:(id)arg1 cropRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 minimalCropDimension:(double)arg3;
 - (id)_bottomBar;
 - (id)_cameraCancelButton;
 - (void)_createCropView;
@@ -76,6 +78,7 @@
 - (void)_tappedBottomBarSetHomeButton;
 - (void)_tappedBottomBarSetLockButton;
 - (void)_updateCropRectInRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (void)_updateEditImageCancelButtonTitle;
 - (void)_updateEditImageDoneButtonTitle;
 - (void)_updateMotionToggle;
 - (void)_updateTitle;
@@ -92,6 +95,7 @@
 - (void)cropOverlayBottomBarPlayButtonClicked:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })cropRect;
 - (void)dealloc;
+- (id)defaultCancelButtonTitle;
 - (id)defaultOKButtonTitle;
 - (id)delegate;
 - (void)didCapturePhoto;
@@ -120,6 +124,7 @@
 - (void)setCancelButtonTitle:(id)arg1;
 - (void)setControlsAreVisible:(bool)arg1;
 - (void)setCropRectVisible:(bool)arg1 duration:(float)arg2;
+- (void)setDefaultCancelButtonTitle:(id)arg1;
 - (void)setDefaultOKButtonTitle:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDisplayedInPopover:(bool)arg1;

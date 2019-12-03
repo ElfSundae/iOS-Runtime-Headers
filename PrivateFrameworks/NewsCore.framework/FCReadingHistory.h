@@ -36,6 +36,7 @@
 
 - (void).cxx_destruct;
 - (void)_addHistoryItems:(id)arg1 addToStore:(bool)arg2;
+- (bool)_markArticle:(id)arg1 withLikingStatus:(unsigned long long)arg2;
 - (bool)_markArticleAsSeenWithArticleID:(id)arg1 articleVersion:(long long)arg2 historyItem:(id)arg3 modifiedHistoryFeaturesOut:(unsigned long long*)arg4;
 - (bool)_markArticleAsSeenWithHeadline:(id)arg1 historyItem:(id)arg2 modifiedHistoryFeaturesOut:(unsigned long long*)arg3;
 - (void)_modifyHistoryForArticleID:(id)arg1 withBlock:(id /* block */)arg2;
@@ -44,6 +45,7 @@
 - (id)_sortedReadingHistoryItemsWithMaxCount:(unsigned long long)arg1;
 - (void)addObserver:(id)arg1;
 - (id)allConsumedArticleIDs;
+- (id)allKnownRecordNamesWithinRecordZoneWithID:(id)arg1;
 - (id)allReadArticleIDs;
 - (id)allReadingHistoryItems;
 - (id)allSeenArticleIDs;
@@ -52,7 +54,7 @@
 - (bool)canHelpRestoreZoneName:(id)arg1;
 - (void)clearHistory;
 - (id)consumedArticleIDsForTagID:(id)arg1 fromTime:(id)arg2;
-- (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordIDs:(id)arg2;
+- (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordNames:(id)arg2;
 - (bool)hasArticleBeenConsumed:(id)arg1;
 - (bool)hasArticleBeenMarkedAsOffensive:(id)arg1;
 - (bool)hasArticleBeenRead:(id)arg1;
@@ -86,5 +88,7 @@
 - (unsigned long long)softMaxRecordCountWhenMigratingZoneName:(id)arg1;
 - (id)syncReadingHistoryItemRecords:(id)arg1 deletedArticleIDs:(id)arg2 didRemoveLastVisitedAt:(out bool*)arg3;
 - (bool)toggleArticleHasBeenMarkedAsOffensive:(id)arg1;
+- (bool)toggleDislikeForArticleWithID:(id)arg1;
+- (bool)toggleLikeForArticleWithID:(id)arg1;
 
 @end

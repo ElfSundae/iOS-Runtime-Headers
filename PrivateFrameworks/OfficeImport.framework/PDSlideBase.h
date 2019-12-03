@@ -19,12 +19,12 @@
 
 + (int)inheritedPlaceholderType:(int)arg1;
 
+- (void).cxx_destruct;
 - (void)addSlideNumberPlaceholder:(id)arg1;
 - (id)animation;
 - (id)background;
 - (id)colorMap;
 - (id)colorScheme;
-- (void)dealloc;
 - (id)defaultTableStyle;
 - (id)defaultTextListStyle;
 - (id)defaultTheme;

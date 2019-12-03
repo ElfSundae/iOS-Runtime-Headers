@@ -3,6 +3,7 @@
  */
 
 @interface _INPBFileProperty : PBCodable <NSCopying, NSSecureCoding, _INPBFileProperty> {
+    bool  __encodeLegacyGloryData;
     struct { 
         unsigned int name : 1; 
         unsigned int qualifier : 1; 
@@ -12,6 +13,7 @@
     _INPBFilePropertyValue * _value;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) bool hasName;
@@ -23,15 +25,21 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) _INPBFilePropertyValue *value;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (int)StringAsName:(id)arg1;
 - (int)StringAsQualifier:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasName;
 - (bool)hasQualifier;
 - (bool)hasValue;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (int)name;
 - (id)nameAsString:(int)arg1;

@@ -7,7 +7,7 @@
 }
 
 @property (nonatomic, readonly) <HFMediaProfileContainer> *mediaProfileContainer;
-@property (nonatomic, readonly) HFMediaProfileContainerSettingsValueManager *valueManager;
+@property (nonatomic, readonly) HFHomeKitSettingsValueManager *valueManager;
 
 + (Class)valueClass;
 

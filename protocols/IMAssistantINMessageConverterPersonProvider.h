@@ -6,5 +6,6 @@
 @required
 
 - (INPerson *)personFromSPIHandle:(IMSPIHandle *)arg1;
+- (INPerson *)personFromSPIHandle:(IMSPIHandle *)arg1 contact:(CNContact *)arg2;
 
 @end

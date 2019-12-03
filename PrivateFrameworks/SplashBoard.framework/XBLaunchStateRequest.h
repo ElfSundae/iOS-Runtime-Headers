@@ -3,6 +3,7 @@
  */
 
 @interface XBLaunchStateRequest : NSObject <BSXPCCoding, NSCopying> {
+    XBDisplayEdgeInsetsWrapper * _customSafeAreaInsets;
     FBSDisplayConfiguration * _displayConfiguration;
     NSString * _groupID;
     long long  _interfaceOrientation;
@@ -17,8 +18,10 @@
     }  _referenceSize;
     unsigned long long  _statusBarState;
     NSString * _urlSchemeName;
+    long long  _userInterfaceStyle;
 }
 
+@property (nonatomic, retain) XBDisplayEdgeInsetsWrapper *customSafeAreaInsets;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) FBSDisplayConfiguration *displayConfiguration;
@@ -31,9 +34,11 @@
 @property (nonatomic) unsigned long long statusBarState;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *urlSchemeName;
+@property (nonatomic) long long userInterfaceStyle;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)customSafeAreaInsets;
 - (id)description;
 - (id)displayConfiguration;
 - (void)encodeWithXPCDictionary:(id)arg1;
@@ -45,6 +50,7 @@
 - (id)launchInterfaceIdentifier;
 - (struct CGSize { double x1; double x2; })naturalSize;
 - (struct CGSize { double x1; double x2; })referenceSize;
+- (void)setCustomSafeAreaInsets:(id)arg1;
 - (void)setDisplayConfiguration:(id)arg1;
 - (void)setGroupID:(id)arg1;
 - (void)setInterfaceOrientation:(long long)arg1;
@@ -53,7 +59,9 @@
 - (void)setReferenceSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setStatusBarState:(unsigned long long)arg1;
 - (void)setUrlSchemeName:(id)arg1;
+- (void)setUserInterfaceStyle:(long long)arg1;
 - (unsigned long long)statusBarState;
 - (id)urlSchemeName;
+- (long long)userInterfaceStyle;
 
 @end

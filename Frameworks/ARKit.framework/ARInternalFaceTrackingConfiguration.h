@@ -3,9 +3,11 @@
  */
 
 @interface ARInternalFaceTrackingConfiguration : ARConfiguration {
+    long long  _maximumNumberOfTrackedFaces;
     bool  _useAlternativeResources;
 }
 
+@property (nonatomic) long long maximumNumberOfTrackedFaces;
 @property (nonatomic) bool useAlternativeResources;
 
 + (bool)isSupported;
@@ -13,14 +15,17 @@
 + (id)supportedVideoFormats;
 
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (void)createTechniquesWithParallelTechniques:(id)arg1 serialTechniques:(id)arg2;
+- (id)imageSensorSettings;
 - (id)init;
 - (bool)isEqual:(id)arg1;
+- (long long)maximumNumberOfTrackedFaces;
 - (id)renderingTechnique;
 - (void)setCameraPosition:(long long)arg1;
 - (void)setLightEstimationEnabled:(bool)arg1;
+- (void)setMaximumNumberOfTrackedFaces:(long long)arg1;
 - (void)setMirroredFrameOutput:(bool)arg1;
 - (void)setUseAlternativeResources:(bool)arg1;
-- (id)techniques;
 - (bool)useAlternativeResources;
 
 @end

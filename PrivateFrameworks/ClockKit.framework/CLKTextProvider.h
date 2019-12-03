@@ -4,11 +4,14 @@
 
 @interface CLKTextProvider : NSObject <NSCopying, NSSecureCoding> {
     struct NSNumber { Class x1; } * _30fpsTimerToken;
+    NSString * _accessibilityLabel;
     NSMutableDictionary * _cachesByKey;
     CLKTextProviderCache * _defaultCache;
     bool  _finalized;
+    bool  _ignoreUppercaseStyle;
     bool  _italicized;
     struct NSNumber { Class x1; } * _minuteTimerToken;
+    bool  _monospacedNumbers;
     unsigned long long  _nextUpdateToken;
     bool  _paused;
     NSMutableArray * _recentCacheKeys;
@@ -20,7 +23,10 @@
     bool  _useMonospacedNumbersForTimeTravel;
 }
 
+@property (nonatomic, copy) NSString *accessibilityLabel;
+@property (nonatomic) bool ignoreUppercaseStyle;
 @property (nonatomic) bool italicized;
+@property (nonatomic) bool monospacedNumbers;
 @property (nonatomic) bool paused;
 @property (nonatomic) long long shrinkTextPreference;
 @property (nonatomic) long long timeTravelUpdateFrequency;
@@ -47,6 +53,7 @@
 - (void)_localeChanged;
 - (id)_localizedTextProviderWithBundle:(id)arg1 forLocalization:(id)arg2;
 - (void)_maybeStartOrStopUpdates;
+- (id)_monospacedNumbers:(id)arg1;
 - (void)_pruneCacheKeysIfNecessary;
 - (id)_sessionAttributedTextForIndex:(unsigned long long)arg1 withStyle:(id)arg2;
 - (id)_sessionCacheKey;
@@ -57,6 +64,7 @@
 - (void)_update;
 - (long long)_updateFrequency;
 - (void)_validate;
+- (id)accessibilityLabel;
 - (id)attributedString;
 - (id)attributedTextAndSize:(struct CGSize { double x1; double x2; }*)arg1 forMaxWidth:(double)arg2 withStyle:(id)arg3 now:(id)arg4;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -66,15 +74,20 @@
 - (void)finalize;
 - (id)finalizedCopy;
 - (unsigned long long)hash;
+- (bool)ignoreUppercaseStyle;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)italicized;
 - (id)localizedTextProviderWithBundle:(id)arg1 forLocalization:(id)arg2;
 - (struct CGSize { double x1; double x2; })minimumSizeWithStyle:(id)arg1 now:(id)arg2;
+- (bool)monospacedNumbers;
 - (bool)paused;
 - (id)sessionAttributedTextForIndex:(unsigned long long)arg1 withStyle:(id)arg2;
+- (void)setAccessibilityLabel:(id)arg1;
+- (void)setIgnoreUppercaseStyle:(bool)arg1;
 - (void)setItalicized:(bool)arg1;
+- (void)setMonospacedNumbers:(bool)arg1;
 - (void)setPaused:(bool)arg1;
 - (void)setShrinkTextPreference:(long long)arg1;
 - (void)setTimeTravelUpdateFrequency:(long long)arg1;

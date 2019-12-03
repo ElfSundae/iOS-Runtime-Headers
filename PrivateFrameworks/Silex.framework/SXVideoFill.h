@@ -8,8 +8,6 @@
 @property (nonatomic, readonly) NSString *resourceIdentifier;
 @property (nonatomic, readonly) NSString *stillImageIdentifier;
 
-+ (id)typeString;
-
 - (bool)loopWithValue:(id)arg1 withType:(int)arg2;
 
 @end

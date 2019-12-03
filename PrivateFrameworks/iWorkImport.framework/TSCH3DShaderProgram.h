@@ -12,13 +12,16 @@
     NSMutableSet * mFunctionNames;
     NSMutableArray * mFunctions;
     bool  mIsLinked;
+    NSMutableDictionary * mLinkedInputVariables;
     NSMutableDictionary * mLinks;
     NSMutableArray * mOutcomeSection;
     NSMutableArray * mResolutionSection;
     NSMutableArray * mSections;
+    NSMutableArray * mSortedLinks;
     NSMutableArray * mStatementSection;
     NSMutableArray * mTemporarySection;
     TSCH3DOrderedDictionary * mTypeDeclarations;
+    NSMutableDictionary * mVariableToVertexAttributeLocation;
     TSCH3DVersion * mVersion;
     NSString * mVertex;
 }
@@ -26,7 +29,9 @@
 @property (nonatomic, readonly) unsigned long long attributeBindingsCount;
 @property (nonatomic, readonly) NSString *fragment;
 @property (nonatomic, copy) NSSet *interleavedAttributeVariables;
+@property (nonatomic, retain) NSMutableArray *sortedLinks;
 @property (nonatomic, readonly) unsigned long long textureBindingsCount;
+@property (nonatomic, retain) NSMutableDictionary *variableToVertexAttributeLocation;
 @property (nonatomic, copy) NSSet *variablesWithBackingResources;
 @property (nonatomic, readonly) TSCH3DVersion *version;
 @property (nonatomic, readonly) NSString *vertex;
@@ -172,8 +177,10 @@
 - (id)p_metalVertexInputLines;
 - (unsigned long long)p_vertexAttributeBindingsCount;
 - (unsigned long long)processSection:(id)arg1 accumulate:(id)arg2 conclusions:(id)arg3;
-- (/* Warning: unhandled struct encoding: '{pair<bool, TSCH3DShaderVariableLinkage *>=B@}' */ struct pair<bool, TSCH3DShaderVariableLinkage *> { bool x1; id x2; })resultLinkageOfVariable:(id)arg1;
+- (struct pair<bool, TSCH3DShaderVariableLinkage *> { bool x1; id x2; })resultLinkageOfVariable:(id)arg1;
 - (void)setInterleavedAttributeVariables:(id)arg1;
+- (void)setSortedLinks:(id)arg1;
+- (void)setVariableToVertexAttributeLocation:(id)arg1;
 - (void)setVariablesWithBackingResources:(id)arg1;
 - (id)sortedLinks;
 - (unsigned long long)textureBindingsCount;
@@ -183,6 +190,7 @@
 - (id)usedAttributeNameForVariable:(id)arg1;
 - (id)usedNameForVariable:(id)arg1 type:(struct TSCH3DShaderType { unsigned long long x1; })arg2 scope:(struct TSCH3DShaderVariableScopeType { unsigned long long x1; })arg3;
 - (id)usedUniformNameForVariable:(id)arg1;
+- (id)variableToVertexAttributeLocation;
 - (id)variablesWithBackingResources;
 - (id)version;
 - (id)vertex;

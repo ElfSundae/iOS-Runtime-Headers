@@ -20,10 +20,10 @@
 
 + (void)setPptChartGraphicPropertyDefaultBlock:(id)arg1;
 
+- (void).cxx_destruct;
 - (id)PXPresentationMLNamespace;
 - (id)cancelDelegate;
 - (id)commentAuthorIdToIndexMap;
-- (void)dealloc;
 - (id)init;
 - (bool)isCancelled;
 - (id)modelObjectForLocation:(id)arg1;

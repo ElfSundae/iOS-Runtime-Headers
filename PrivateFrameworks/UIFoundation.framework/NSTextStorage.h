@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UIFoundation.framework/UIFoundation
  */
 
-@interface NSTextStorage : NSMutableAttributedString {
+@interface NSTextStorage : NSMutableAttributedString <NSSecureCoding> {
     long long  _editedDelta;
     struct _NSRange { 
         unsigned long long location; 
@@ -17,6 +17,7 @@
     }  _flags;
     NSMutableArray * _layoutManagers;
     id  _sideData;
+    <NSTextStorageController> * _textStorageController;
 }
 
 @property (nonatomic, readonly) long long changeInLength;
@@ -75,6 +76,19 @@
 - (void)removeLayoutManager:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setEditedMask:(unsigned long long)arg1;
+- (void)setTextStorageController:(id)arg1;
+- (id)textStorageController;
+
+// Image: /System/Library/PrivateFrameworks/AppStoreKit.framework/AppStoreKit
+
+- (long long)writingDirectionOfLine:(long long)arg1 usingLayoutManager:(id)arg2 textContainer:(id)arg3;
+
+// Image: /System/Library/PrivateFrameworks/IMSharedUI.framework/IMSharedUI
+
++ (id)createLayoutTextStorage;
++ (id)defaultLayoutTextStorage;
+
+- (struct IMTextLayoutResults { struct CGSize { double x_1_1_1; double x_1_1_2; } x1; bool x2; })sizeForAttributedString:(id)arg1 maxWidth:(double)arg2;
 
 // Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 

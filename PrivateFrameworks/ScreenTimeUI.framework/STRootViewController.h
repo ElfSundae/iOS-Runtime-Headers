@@ -8,16 +8,16 @@
     bool  _shouldRefreshUsageData;
 }
 
-@property (nonatomic, readonly) STEnableScreenTimeGroupSpecifierProvider *enableScreenTimeGroupSpecifierProvider;
-@property (nonatomic, readonly) STScreenTimeGroupSpecifierProvider *screenTimeGroupSpecifierProvider;
+@property (readonly) STEnableScreenTimeGroupSpecifierProvider *enableScreenTimeGroupSpecifierProvider;
+@property (readonly) STScreenTimeGroupSpecifierProvider *screenTimeGroupSpecifierProvider;
 @property (nonatomic) bool shouldRefreshUsageData;
 
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)enableScreenTimeGroupSpecifierProvider;
+- (void)handleURL:(id)arg1 withCompletion:(id /* block */)arg2;
 - (id)initWithRootViewModelCoordinator:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
-- (bool)prepareHandlingURLForSpecifierID:(id)arg1 resourceDictionary:(id)arg2 animatePush:(bool*)arg3;
 - (id)screenTimeGroupSpecifierProvider;
 - (void)setShouldRefreshUsageData:(bool)arg1;
 - (bool)shouldRefreshUsageData;

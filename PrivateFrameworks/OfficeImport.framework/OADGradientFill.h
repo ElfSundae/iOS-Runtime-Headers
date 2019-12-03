@@ -15,9 +15,9 @@
 + (id)defaultProperties;
 + (id)stringForTileFlipMode:(int)arg1;
 
+- (void).cxx_destruct;
 - (bool)areStopsOverridden;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)firstStop;
 - (void)fixPropertiesForChangingParentPreservingEffectiveValues:(id)arg1;
 - (int)flipMode;

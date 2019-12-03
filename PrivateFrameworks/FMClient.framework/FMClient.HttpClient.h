@@ -3,11 +3,11 @@
  */
 
 @interface FMClient.HttpClient : NSObject <NSURLSessionDelegate> {
+    void $__lazy_storage_$_session;
     void authenticationChallengeHandler;
     void endpoint;
     void httpSuccessCodeMax;
     void httpSuccessCodeMin;
-    void session.storage;
     void statusCodeHandlerQueue;
     void statusCodeHandlers;
 }

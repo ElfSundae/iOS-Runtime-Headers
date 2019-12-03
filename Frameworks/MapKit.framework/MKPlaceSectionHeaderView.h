@@ -16,12 +16,10 @@
     NSLayoutConstraint * _iconHeightConstraint;
     NSLayoutConstraint * _iconWidthConstraint;
     NSString * _providerName;
-    _MKUILabel * _sectionHeaderLabel;
-    NSLayoutConstraint * _seeMoreBaselineConstraint;
+    MKVibrantLabel * _sectionHeaderLabel;
     _MKRightImageButton * _seeMoreButton;
     NSArray * _seeMoreButtonConstraints;
     NSString * _seeMoreButtonText;
-    NSLayoutConstraint * _seeMoreCenterYConstraint;
     bool  _showSeeMoreButton;
     id  _target;
     double  _width;
@@ -32,7 +30,7 @@
 @property (nonatomic, retain) UIImage *icon;
 @property (nonatomic) struct CGSize { double x1; double x2; } iconDisplaySize;
 @property (nonatomic, retain) NSString *providerName;
-@property (nonatomic, retain) _MKUILabel *sectionHeaderLabel;
+@property (nonatomic, retain) MKVibrantLabel *sectionHeaderLabel;
 @property (nonatomic, retain) _MKRightImageButton *seeMoreButton;
 @property (nonatomic, retain) NSArray *seeMoreButtonConstraints;
 @property (nonatomic, retain) NSString *seeMoreButtonText;
@@ -41,6 +39,7 @@
 @property (nonatomic, retain) NSString *title;
 
 - (void).cxx_destruct;
+- (void)_updateConstraints;
 - (SEL)action;
 - (id)constraints;
 - (void)contentSizeDidChange;

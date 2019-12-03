@@ -16,7 +16,9 @@
     NSDate * _lastRerouteDate;
     unsigned long long  _numThrottledReroutes;
     GEOLocation * _originLocation;
-    NSLock * _requestLock;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _requestLock;
     NSMutableArray * _rerouteEntries;
     GEOComposedRoute * _route;
     GEORouteAttributes * _routeAttributes;
@@ -63,7 +65,7 @@
 - (void)setDelegate:(id)arg1;
 - (void)setFeedback:(id)arg1;
 - (void)setIsNavd:(bool)arg1;
-- (void)startUpdatingFromLocation:(id)arg1 existingRoute:(id)arg2 usualRouteData:(id)arg3;
+- (void)startUpdatingFromLocation:(id)arg1 usualRouteData:(id)arg2;
 - (void)updateForLocation:(id)arg1;
 
 @end

@@ -17,5 +17,6 @@
 - (struct CGSize { double x1; double x2; })intrinsicContentSize;
 - (id)spinner;
 - (id)title;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end

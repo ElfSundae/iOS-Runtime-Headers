@@ -15,7 +15,8 @@
 - (void).cxx_destruct;
 - (id)delegate;
 - (void)dismissQuickLook;
-- (void)presentShareSheetWithPopoverTracker:(id)arg1 dismissCompletion:(id /* block */)arg2;
+- (void)forwardMessageToHostOfCustomViewController:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)presentShareSheetWithPopoverTracker:(id)arg1 customSharedURL:(id)arg2 dismissCompletion:(id /* block */)arg3;
 - (void)setDelegate:(id)arg1;
 - (void)setFullScreen:(bool)arg1;
 

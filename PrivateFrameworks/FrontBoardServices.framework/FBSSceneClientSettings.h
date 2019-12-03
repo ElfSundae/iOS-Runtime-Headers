@@ -2,7 +2,8 @@
    Image: /System/Library/PrivateFrameworks/FrontBoardServices.framework/FrontBoardServices
  */
 
-@interface FBSSceneClientSettings : NSObject <BSDescriptionProviding, NSCopying, NSMutableCopying> {
+@interface FBSSceneClientSettings : NSObject <BSDebugDescriptionProviding, BSXPCSecureCoding, NSCopying, NSMutableCopying> {
+    NSOrderedSet * _layers;
     NSSet * _occlusions;
     BSSettings * _otherSettings;
     long long  _preferredInterfaceOrientation;
@@ -13,6 +14,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly, copy) NSOrderedSet *layers;
 @property (nonatomic, readonly, copy) NSSet *occlusions;
 @property (nonatomic, readonly) long long preferredInterfaceOrientation;
 @property (nonatomic, readonly) double preferredLevel;
@@ -23,18 +25,25 @@
 
 + (bool)_isMutable;
 + (id)settings;
++ (bool)supportsBSXPCSecureCoding;
 
 - (void).cxx_destruct;
+- (id)_descriptionBuilderWithMultilinePrefix:(id)arg1 debug:(bool)arg2;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
+- (id)debugDescription;
+- (id)debugDescriptionWithMultilinePrefix:(id)arg1;
 - (id)description;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
+- (void)encodeWithBSXPCCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
+- (id)initWithBSXPCCoder:(id)arg1;
 - (id)initWithSettings:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
+- (id)layers;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (id)occlusions;
 - (id)otherSettings;
@@ -44,6 +53,10 @@
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 - (id)valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofSetting:(unsigned long long)arg3;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoard.framework/SpringBoard
+
+- (long long)sb_effectiveInterfaceOrientation;
 
 // Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 

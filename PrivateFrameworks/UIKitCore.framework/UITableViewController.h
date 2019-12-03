@@ -86,4 +86,9 @@
 - (void)_cnui_updateAccountsRefreshControl;
 - (void)refreshAccountsNow:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/HomeUI.framework/HomeUI
+
+- (id)hu_actionSheetWithTitle:(id)arg1 message:(id)arg2 indexPath:(id)arg3;
+- (id)hu_getSelectedCell;
+
 @end

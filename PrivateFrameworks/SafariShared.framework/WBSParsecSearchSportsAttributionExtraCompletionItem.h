@@ -5,6 +5,7 @@
 @interface WBSParsecSearchSportsAttributionExtraCompletionItem : WBSParsecModel <WBSCompletionListItem> {
     WBSParsecImageRepresentation * _imageRepresentation;
     NSString * _label;
+    long long  _parsecQueryID;
     NSURL * _url;
     SFSearchResult * sfSearchResultValue;
 }
@@ -17,6 +18,7 @@
 @property (nonatomic, readonly, copy) NSString *label;
 @property (nonatomic, readonly) NSString *lastSearchQuery;
 @property (nonatomic, readonly) NSString *parsecDomainIdentifier;
+@property (nonatomic, readonly) long long parsecQueryID;
 @property (nonatomic, readonly) SFSearchResult *sfSearchResultValue;
 @property (nonatomic, retain) WBSQuerySuggestion *siriSuggestion;
 @property (readonly) Class superclass;
@@ -30,6 +32,7 @@
 - (id)initWithDictionary:(id)arg1;
 - (id)label;
 - (id)parsecDomainIdentifier;
+- (long long)parsecQueryID;
 - (id)sfSearchResultValue;
 - (id)url;
 

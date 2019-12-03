@@ -10,13 +10,17 @@
 @property (nonatomic, retain) NSMutableDictionary *imageCache;
 @property (nonatomic, retain) CPBitmapStore *serializedCache;
 
-+ (id)letterpressedImageForImage:(id)arg1 tintColor:(id)arg2 scale:(double)arg3;
-+ (id)serializedCacheKeyForImageNamed:(id)arg1 tintColor:(id)arg2 scale:(double)arg3;
++ (id)imageWithLetterpressAlignmentInsetsForImage:(id)arg1;
++ (double)letterpressImagePadding;
++ (id)letterpressedImageForImage:(id)arg1 tintColor:(id)arg2 scale:(double)arg3 addAlignmentInsets:(bool)arg4 appearanceInfo:(id)arg5;
++ (id)serializedCacheKeyForImageNamed:(id)arg1 tintColor:(id)arg2 scale:(double)arg3 appearanceInfo:(id)arg4 version:(unsigned long long)arg5;
 + (id)sharedCache;
 
 - (void).cxx_destruct;
 - (id)imageCache;
-- (id)imageNamed:(id)arg1 tintColor:(id)arg2 version:(unsigned long long)arg3;
+- (id)imageNamed:(id)arg1 tintColor:(id)arg2 addAlignmentInsets:(bool)arg3 appearanceInfo:(id)arg4 version:(unsigned long long)arg5;
+- (id)imageNamed:(id)arg1 tintColor:(id)arg2 appearanceInfo:(id)arg3 version:(unsigned long long)arg4;
+- (id)imageWithCacheName:(id)arg1 tintColor:(id)arg2 addAlignmentInsets:(bool)arg3 appearanceInfo:(id)arg4 version:(unsigned long long)arg5 imageCreationBlock:(id /* block */)arg6;
 - (id)init;
 - (void)purge;
 - (id)serializedCache;

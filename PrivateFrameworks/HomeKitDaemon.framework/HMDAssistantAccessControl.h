@@ -39,8 +39,10 @@
 - (void).cxx_destruct;
 - (id)accessories;
 - (void)addAccessory:(id)arg1;
+- (id)assistantAccessControlModelWithRemovedAccessories:(id)arg1;
 - (unsigned long long)cachedHash;
 - (id)clientQueue;
+- (void)configure;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)handleRemovedAccessory:(id)arg1;
@@ -48,6 +50,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUser:(id)arg1;
+- (id)initWithUser:(id)arg1 accessories:(id)arg2 enabled:(bool)arg3;
 - (id)initWithUser:(id)arg1 model:(id)arg2;
 - (bool)isEnabled;
 - (bool)isEqual:(id)arg1;

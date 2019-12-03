@@ -6,7 +6,6 @@
 
 - (id)blue_sendButtonColor;
 - (id)entryFieldAudioRecordingBalloonColor;
-- (id)entryFieldBackgroundColor;
 - (id)entryFieldButtonColor;
 - (id)entryFieldCoverBorderColor;
 - (id)entryFieldCoverFillColor;

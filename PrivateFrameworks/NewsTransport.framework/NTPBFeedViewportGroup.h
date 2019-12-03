@@ -7,6 +7,10 @@
     NTPBColor * _cardBackgroundColor;
     NTPBDate * _creationDate;
     int  _ctaTextRef;
+    NTPBColorGradient * _darkStyleBackgroundGradient;
+    NTPBColor * _darkStyleCardBackgroundColor;
+    NTPBColorGradient * _darkStyleSauceGradient;
+    NTPBColor * _darkStyleTitleColor;
     NTPBDiscoverMoreVideosInfo * _discoverMoreVideosInfo;
     NTPBDate * _editionFeedEndDate;
     NTPBDate * _editionFeedStartDate;
@@ -45,6 +49,10 @@
 @property (nonatomic, retain) NTPBColor *cardBackgroundColor;
 @property (nonatomic, retain) NTPBDate *creationDate;
 @property (nonatomic) int ctaTextRef;
+@property (nonatomic, retain) NTPBColorGradient *darkStyleBackgroundGradient;
+@property (nonatomic, retain) NTPBColor *darkStyleCardBackgroundColor;
+@property (nonatomic, retain) NTPBColorGradient *darkStyleSauceGradient;
+@property (nonatomic, retain) NTPBColor *darkStyleTitleColor;
 @property (nonatomic, retain) NTPBDiscoverMoreVideosInfo *discoverMoreVideosInfo;
 @property (nonatomic, retain) NTPBDate *editionFeedEndDate;
 @property (nonatomic, retain) NTPBDate *editionFeedStartDate;
@@ -54,6 +62,10 @@
 @property (nonatomic, readonly) bool hasCardBackgroundColor;
 @property (nonatomic, readonly) bool hasCreationDate;
 @property (nonatomic) bool hasCtaTextRef;
+@property (nonatomic, readonly) bool hasDarkStyleBackgroundGradient;
+@property (nonatomic, readonly) bool hasDarkStyleCardBackgroundColor;
+@property (nonatomic, readonly) bool hasDarkStyleSauceGradient;
+@property (nonatomic, readonly) bool hasDarkStyleTitleColor;
 @property (nonatomic, readonly) bool hasDiscoverMoreVideosInfo;
 @property (nonatomic, readonly) bool hasEditionFeedEndDate;
 @property (nonatomic, readonly) bool hasEditionFeedStartDate;
@@ -102,6 +114,10 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)creationDate;
 - (int)ctaTextRef;
+- (id)darkStyleBackgroundGradient;
+- (id)darkStyleCardBackgroundColor;
+- (id)darkStyleSauceGradient;
+- (id)darkStyleTitleColor;
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
@@ -114,6 +130,10 @@
 - (bool)hasCardBackgroundColor;
 - (bool)hasCreationDate;
 - (bool)hasCtaTextRef;
+- (bool)hasDarkStyleBackgroundGradient;
+- (bool)hasDarkStyleCardBackgroundColor;
+- (bool)hasDarkStyleSauceGradient;
+- (bool)hasDarkStyleTitleColor;
 - (bool)hasDiscoverMoreVideosInfo;
 - (bool)hasEditionFeedEndDate;
 - (bool)hasEditionFeedStartDate;
@@ -152,6 +172,10 @@
 - (void)setCardBackgroundColor:(id)arg1;
 - (void)setCreationDate:(id)arg1;
 - (void)setCtaTextRef:(int)arg1;
+- (void)setDarkStyleBackgroundGradient:(id)arg1;
+- (void)setDarkStyleCardBackgroundColor:(id)arg1;
+- (void)setDarkStyleSauceGradient:(id)arg1;
+- (void)setDarkStyleTitleColor:(id)arg1;
 - (void)setDiscoverMoreVideosInfo:(id)arg1;
 - (void)setEditionFeedEndDate:(id)arg1;
 - (void)setEditionFeedStartDate:(id)arg1;

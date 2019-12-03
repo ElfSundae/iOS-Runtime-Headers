@@ -24,6 +24,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)_captureController;
 - (long long)_captureOrientation;
 - (void)_createMotionManagerIfNecessary;

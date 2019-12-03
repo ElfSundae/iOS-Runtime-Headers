@@ -3,7 +3,7 @@
  */
 
 @interface HDWorkoutSessionConfiguration : NSObject {
-    HDXPCClient * _client;
+    HDHealthStoreClient * _client;
     NSString * _clientApplicationIdentifier;
     NSString * _clientProcessBundleIdentifier;
     bool  _requiresCoreLocationAssertion;
@@ -12,7 +12,7 @@
     HKWorkoutConfiguration * _workoutConfiguration;
 }
 
-@property (nonatomic, readonly) HDXPCClient *client;
+@property (nonatomic, readonly) HDHealthStoreClient *client;
 @property (nonatomic, readonly, copy) NSString *clientApplicationIdentifier;
 @property (nonatomic, readonly, copy) NSString *clientProcessBundleIdentifier;
 @property (nonatomic, readonly) bool requiresCoreLocationAssertion;

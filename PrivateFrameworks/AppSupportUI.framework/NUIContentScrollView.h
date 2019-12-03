@@ -3,12 +3,16 @@
  */
 
 @interface NUIContentScrollView : UIScrollView {
+    bool  _canScrollDocumentViewHorizontally;
+    bool  _canScrollDocumentViewVertically;
     UIView * _documentView;
     long long  _horizontalAlignment;
     NUIMultilineSizingHelper * _multilineSizeHelper;
     long long  _verticalAlignment;
 }
 
+@property (nonatomic) bool canScrollDocumentViewHorizontally;
+@property (nonatomic) bool canScrollDocumentViewVertically;
 @property (nonatomic, retain) UIView *contentView;
 @property (nonatomic, retain) UIView *documentView;
 @property (nonatomic) long long horizontalAlignment;
@@ -22,6 +26,8 @@
 - (void)_prepareForSecondIntrinsicContentSizeCalculationWithLayoutEngineBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)_resetToBeginningOfDoublePass;
 - (void)_setInSecondConstraintsPass:(bool)arg1;
+- (bool)canScrollDocumentViewHorizontally;
+- (bool)canScrollDocumentViewVertically;
 - (id)contentView;
 - (id)documentView;
 - (long long)horizontalAlignment;
@@ -31,6 +37,8 @@
 - (struct CGSize { double x1; double x2; })intrinsicContentSize;
 - (bool)isLayoutSizeDependentOnPerpendicularAxis;
 - (void)layoutSubviews;
+- (void)setCanScrollDocumentViewHorizontally:(bool)arg1;
+- (void)setCanScrollDocumentViewVertically:(bool)arg1;
 - (void)setContentView:(id)arg1;
 - (void)setDocumentView:(id)arg1;
 - (void)setHorizontalAlignment:(long long)arg1;

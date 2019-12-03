@@ -21,12 +21,12 @@
 - (id)_beginMonitoringSettingsKeyPath:(id)arg1;
 - (void)_dumpAvailableLanguageOptionsWithReason:(id)arg1;
 - (id)_reloadLanguagesFromHomeKitNotifyingObservers:(bool)arg1;
-- (void)accessorySettingWasUpdated:(id)arg1 value:(id)arg2;
 - (void)addObserver:(id)arg1;
 - (id)availableLanguageOptions;
-- (id)initWithMediaProfileContainer:(id)arg1 keyPaths:(id)arg2 mode:(unsigned long long)arg3 updateHandler:(id /* block */)arg4;
-- (id)initWithMediaProfileContainer:(id)arg1 keyPaths:(id)arg2 updateHandler:(id /* block */)arg3;
-- (id)initWithMediaProfileContainer:(id)arg1 mode:(unsigned long long)arg2;
+- (void)homeKitSettingWasUpdated:(id)arg1 value:(id)arg2;
+- (id)initWithHomeKitSettingsVendor:(id)arg1 keyPaths:(id)arg2 mode:(unsigned long long)arg3 updateHandler:(id /* block */)arg4;
+- (id)initWithHomeKitSettingsVendor:(id)arg1 keyPaths:(id)arg2 updateHandler:(id /* block */)arg3;
+- (id)initWithHomeKitSettingsVendor:(id)arg1 mode:(unsigned long long)arg2;
 - (id)languageSettingFuture;
 - (id)observers;
 - (id)preferredOutputVoiceAccentOptionsForSelectedOption:(id)arg1;

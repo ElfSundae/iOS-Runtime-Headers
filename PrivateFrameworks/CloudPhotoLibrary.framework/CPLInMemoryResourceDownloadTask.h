@@ -11,8 +11,8 @@
 }
 
 @property (nonatomic, retain) CPLResource *cloudResource;
-@property (nonatomic, readonly) id /* block */ completionHandler;
-@property (nonatomic, readonly) id /* block */ launchHandler;
+@property (nonatomic, readonly, copy) id /* block */ completionHandler;
+@property (nonatomic, readonly, copy) id /* block */ launchHandler;
 
 + (id)failedTaskForResource:(id)arg1 error:(id)arg2 completionHandler:(id /* block */)arg3;
 

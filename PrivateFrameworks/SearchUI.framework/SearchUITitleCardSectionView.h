@@ -4,11 +4,11 @@
 
 @interface SearchUITitleCardSectionView : SearchUICardSectionView {
     NUIContainerBoxView * _containerView;
-    UILabel * _label;
+    TLKLabel * _label;
 }
 
-@property (retain) NUIContainerBoxView *containerView;
-@property (retain) UILabel *label;
+@property (nonatomic, retain) NUIContainerBoxView *containerView;
+@property (nonatomic, retain) TLKLabel *label;
 
 + (bool)supportsRecyclingForCardSection:(id)arg1;
 

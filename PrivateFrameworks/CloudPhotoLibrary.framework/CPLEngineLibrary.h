@@ -66,6 +66,7 @@
 - (void)_fillStatus:(id)arg1 forComponents:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)_fillStatusArray:(id)arg1 forComponents:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)_openNextComponent:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)_performBlockOnLibrary:(id /* block */)arg1;
 - (void)_performBlockWithLibrary:(bool)arg1 enumerateAttachedObjects:(id /* block */)arg2;
 - (void)_reportQuarantineCountIfNecessaryWithLastReportDate:(id)arg1;
 - (void)_setCurrentClosingComponentName:(id)arg1;
@@ -110,6 +111,9 @@
 - (void)openWithCompletionHandler:(id /* block */)arg1;
 - (id)owner;
 - (id)platformObject;
+- (void)provideCloudResource:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)provideLibraryInfoForScopeWithIdentifier:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)provideRecordWithCloudScopeIdentifier:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)reportLibraryCorrupted;
 - (void)reportQuarantineCountIfNecessary;
 - (void)reportRadar:(unsigned long long)arg1;
@@ -118,12 +122,13 @@
 - (id)scheduler;
 - (void)setConnectedToNetwork:(bool)arg1;
 - (void)setExitDeleteTime:(id)arg1;
-- (void)setHasCellularBudget:(bool)arg1 hasBatteryBudget:(bool)arg2 isBudgetValid:(bool)arg3;
+- (void)setHasCellularBudget:(bool)arg1 hasBatteryBudget:(bool)arg2 isConstrainedNetwork:(bool)arg3 isBudgetValid:(bool)arg4;
 - (void)setHasChangesToProcess:(bool)arg1;
 - (void)setICloudLibraryClientVersionTooOld:(bool)arg1;
 - (void)setICloudLibraryExists:(bool)arg1;
 - (void)setICloudLibraryHasBeenWiped:(bool)arg1;
 - (void)setIsExceedingQuota:(bool)arg1;
+- (void)setLowDiskSpace:(bool)arg1;
 - (void)setOwner:(id)arg1;
 - (void)startSyncSession;
 - (void)statusDidChange:(id)arg1;

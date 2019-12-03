@@ -7,8 +7,8 @@
     NSString * mText;
 }
 
+- (void).cxx_destruct;
 - (unsigned long long)characterCount;
-- (void)dealloc;
 - (id)init;
 - (bool)isEmpty;
 - (id)paragraphProperties;

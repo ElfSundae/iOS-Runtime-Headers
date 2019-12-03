@@ -44,7 +44,7 @@
 - (void)setDelegate:(id)arg1;
 - (void)setListener:(id)arg1;
 - (void)setMachServiceName:(id)arg1;
-- (void)subscribeToSectionID:(id)arg1 forFullBulletins:(bool)arg2 withAck:(bool)arg3;
+- (void)subscribeToSectionID:(id)arg1 forFullBulletins:(bool)arg2 withAck:(bool)arg3 ackAllowedOnLocalConnection:(bool)arg4;
 - (void)subscribeWithMachServiceName:(id)arg1;
 - (void)unsubscribeFromSectionID:(id)arg1;
 

@@ -13,6 +13,7 @@
 
 @property (getter=isCanceled, readonly) bool canceled;
 
+- (void).cxx_destruct;
 - (void)_callServicesMethod:(id)arg1 arguments:(id)arg2 callback:(id /* block */)arg3;
 - (void)_callServicesMethod:(id)arg1 arguments:(id)arg2 replyHandler:(id /* block */)arg3;
 - (id)_connection;

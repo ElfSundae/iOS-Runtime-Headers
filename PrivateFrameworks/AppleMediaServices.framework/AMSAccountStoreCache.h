@@ -8,8 +8,6 @@
 + (id)accountStoreForMediaType:(id)arg1;
 + (id)cache;
 + (id)cacheAccessQueue;
-+ (id)defaultMediaTypeForCurrentProcess;
 + (id)mediaTypeForAccountStore:(id)arg1;
-+ (id)mediaTypeForProcessInfo:(id)arg1;
 
 @end

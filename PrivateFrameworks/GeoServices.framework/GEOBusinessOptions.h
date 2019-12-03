@@ -5,14 +5,29 @@
 @interface GEOBusinessOptions : PBCodable <NSCopying> {
     NSMutableArray * _attributeKeys;
     struct { 
-        unsigned int maxBusinessResults : 1; 
-        unsigned int includeBusinessHours : 1; 
-        unsigned int includeCenter : 1; 
-    }  _has;
+        unsigned int has_maxBusinessResults : 1; 
+        unsigned int has_includeBusinessHours : 1; 
+        unsigned int has_includeCenter : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_attributeKeys : 1; 
+        unsigned int read_photoOptions : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_attributeKeys : 1; 
+        unsigned int wrote_photoOptions : 1; 
+        unsigned int wrote_maxBusinessResults : 1; 
+        unsigned int wrote_includeBusinessHours : 1; 
+        unsigned int wrote_includeCenter : 1; 
+    }  _flags;
     bool  _includeBusinessHours;
     bool  _includeCenter;
     int  _maxBusinessResults;
     NSMutableArray * _photoOptions;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     PBUnknownFields * _unknownFields;
 }
 
@@ -27,9 +42,14 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 + (Class)attributeKeyType;
++ (bool)isValid:(id)arg1;
 + (Class)photoOptionsType;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsAttributeKey:(id)arg1;
+- (void)_addNoFlagsPhotoOptions:(id)arg1;
+- (void)_readAttributeKeys;
+- (void)_readPhotoOptions;
 - (void)addAttributeKey:(id)arg1;
 - (void)addPhotoOptions:(id)arg1;
 - (id)attributeKeyAtIndex:(unsigned long long)arg1;
@@ -37,6 +57,7 @@
 - (unsigned long long)attributeKeysCount;
 - (void)clearAttributeKeys;
 - (void)clearPhotoOptions;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -47,12 +68,15 @@
 - (unsigned long long)hash;
 - (bool)includeBusinessHours;
 - (bool)includeCenter;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (int)maxBusinessResults;
 - (void)mergeFrom:(id)arg1;
 - (id)photoOptions;
 - (id)photoOptionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)photoOptionsCount;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAttributeKeys:(id)arg1;
 - (void)setHasIncludeBusinessHours:(bool)arg1;

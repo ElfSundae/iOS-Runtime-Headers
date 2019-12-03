@@ -8,6 +8,7 @@
     NSMutableArray * _relations;
 }
 
+@property (nonatomic, readonly) bool canBeEnabled;
 @property (getter=isEnabled, nonatomic, readonly) bool enabled;
 @property (nonatomic, readonly) _UIStatusBarDisplayItemPlacement *placement;
 @property (nonatomic, readonly) long long priority;
@@ -19,6 +20,7 @@
 
 - (void).cxx_destruct;
 - (bool)areRelationsFulfilled;
+- (bool)canBeEnabled;
 - (id)description;
 - (bool)isEnabled;
 - (id)placement;

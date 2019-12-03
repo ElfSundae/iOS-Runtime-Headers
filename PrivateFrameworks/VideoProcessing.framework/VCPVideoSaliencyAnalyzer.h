@@ -6,6 +6,7 @@
     NSArray * _activeRegions;
     NSMutableDictionary * _confidences;
     NSMutableArray * _detections;
+    NSMutableArray * _latestRegions;
     VCPImageSaliencyAnalyzer * _saliencyAnalyer;
     struct { 
         long long value; 
@@ -18,7 +19,13 @@
         int timescale; 
         unsigned int flags; 
         long long epoch; 
-    }  _timeLastProcess;
+    }  _timeLastDetection;
+    struct { 
+        long long value; 
+        int timescale; 
+        unsigned int flags; 
+        long long epoch; 
+    }  _timeLastTracking;
     NSMutableDictionary * _trackers;
 }
 
@@ -28,7 +35,6 @@
 - (int)finishAnalysisPass:(struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; })arg1;
 - (id)initWithTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg1;
 - (bool)isOutOfBoundary:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
-- (bool)locationChange:(id)arg1 landscape:(bool)arg2;
 - (id)pruneRegions:(id)arg1 withOverlapRatio:(float)arg2;
 - (id)results;
 - (float)updateConfidence:(float)arg1 prevBound:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 newBound:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3 width:(int)arg4 height:(int)arg5;

@@ -4,7 +4,6 @@
 
 @interface PLPlatterHeaderContentViewLayoutManager : NSObject {
     PLPlatterHeaderContentView * _headerContentView;
-    UILabel * _outgoingTitleLabel;
 }
 
 @property (nonatomic, readonly) double contentBaseline;
@@ -14,11 +13,14 @@
 @property (getter=_heedsHorizontalLayoutMargins, nonatomic, readonly) bool heedsHorizontalLayoutMargins;
 @property (getter=_iconButtons, nonatomic, readonly) NSArray *iconButtons;
 @property (getter=_layoutMargins, nonatomic, readonly) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } layoutMargins;
-@property (getter=_outgoingTitleLabel, nonatomic, readonly) UILabel *outgoingTitleLabel;
 @property (getter=_shouldReverseLayoutDirection, nonatomic, readonly) bool shouldReverseLayoutDirection;
 @property (getter=_titleLabel, nonatomic, readonly) UILabel *titleLabel;
 @property (getter=_utilityButton, nonatomic, readonly) UIButton *utilityButton;
 @property (getter=_utilityView, nonatomic, readonly) UIView *utilityView;
+
++ (double)_headerHeightWithFont:(id)arg1 forWidth:(double)arg2;
++ (double)_titleLabelBaselineOffsetWithFont:(id)arg1;
++ (double)contentBaselineToBoundsBottomWithFont:(id)arg1 boundsWidth:(double)arg2 scale:(double)arg3;
 
 - (void).cxx_destruct;
 - (id)_date;
@@ -27,7 +29,6 @@
 - (id)_iconButtons;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_layoutMargins;
 - (struct CGSize { double x1; double x2; })_measuringSizeForWidth:(double)arg1;
-- (id)_outgoingTitleLabel;
 - (bool)_shouldReverseLayoutDirection;
 - (id)_titleLabel;
 - (double)_titleLabelBaselineOffset;
@@ -38,6 +39,7 @@
 - (id)headerContentView;
 - (double)headerHeightForWidth:(double)arg1;
 - (id)initWithPlatterHeaderContentView:(id)arg1;
+- (void)invalidateCachedSizeInfo;
 - (void)layoutDateLabelWithScale:(double)arg1;
 - (void)layoutIconButtonsWithScale:(double)arg1;
 - (void)layoutTitleLabelWithTrailingXLimit:(double)arg1 scale:(double)arg2;

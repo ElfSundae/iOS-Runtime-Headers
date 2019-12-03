@@ -13,7 +13,6 @@
 }
 
 + (bool)handlesComplicationTemplate:(id)arg1;
-+ (void)load;
 
 - (void).cxx_destruct;
 - (void)_enumerateForegroundColoringViewsWithBlock:(id /* block */)arg1;

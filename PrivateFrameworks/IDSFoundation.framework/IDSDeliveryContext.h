@@ -9,6 +9,8 @@
     NSError * _deliveryError;
     NSString * _deviceID;
     NSArray * _displayIDs;
+    NSNumber * _endpointState;
+    NSNumber * _failureReason;
     long long  _idsResponseCode;
     NSNumber * _isDeviceBlackedOut;
     bool  _lastCall;
@@ -29,6 +31,8 @@
 @property (nonatomic, copy) NSError *deliveryError;
 @property (nonatomic, copy) NSString *deviceID;
 @property (nonatomic, copy) NSArray *displayIDs;
+@property (nonatomic, copy) NSNumber *endpointState;
+@property (nonatomic, copy) NSNumber *failureReason;
 @property (nonatomic) long long idsResponseCode;
 @property (nonatomic, copy) NSNumber *isDeviceBlackedOut;
 @property (nonatomic) bool lastCall;
@@ -43,12 +47,16 @@
 @property (nonatomic, copy) NSString *wpConnectionErrorDomain;
 @property (nonatomic, copy) NSDictionary *wpConnectionErrorUserInfo;
 
++ (long long)_endpointStateForServerDeliveryStatus:(id)arg1;
+
 - (void).cxx_destruct;
 - (id)apsdCheckpointTrace;
 - (id)currentAverageRTT;
 - (id)deliveryError;
 - (id)deviceID;
 - (id)displayIDs;
+- (id)endpointState;
+- (id)failureReason;
 - (long long)idsResponseCode;
 - (id)initWithError:(id)arg1;
 - (id)initWithResponseCode:(long long)arg1 deviceID:(id)arg2;
@@ -69,6 +77,8 @@
 - (void)setDeliveryError:(id)arg1;
 - (void)setDeviceID:(id)arg1;
 - (void)setDisplayIDs:(id)arg1;
+- (void)setEndpointState:(id)arg1;
+- (void)setFailureReason:(id)arg1;
 - (void)setIdsResponseCode:(long long)arg1;
 - (void)setIsDeviceBlackedOut:(id)arg1;
 - (void)setLastCall:(bool)arg1;

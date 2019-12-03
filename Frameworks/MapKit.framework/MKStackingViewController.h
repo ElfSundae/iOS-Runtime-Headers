@@ -30,6 +30,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (getter=isScrollEnabled, nonatomic) bool scrollEnabled;
+@property (nonatomic, readonly) UIScrollView *scrollView;
 @property (nonatomic) <MKStackingViewControllerDelegate> *stackingDelegate;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSArray *viewControllers;
@@ -59,6 +60,7 @@
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)removeOverlayViewAnimated:(bool)arg1;
 - (void)scrollToTopAnimated:(bool)arg1;
+- (id)scrollView;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(bool)arg2;
 - (void)scrollViewDidScroll:(id)arg1;

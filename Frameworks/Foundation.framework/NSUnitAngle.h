@@ -9,6 +9,7 @@
 + (id)baseUnit;
 + (id)degrees;
 + (id)gradians;
++ (void)initialize;
 + (id)radians;
 + (id)revolutions;
 

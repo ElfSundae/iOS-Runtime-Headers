@@ -23,6 +23,7 @@
 - (id)directoryServersSearchObservable;
 - (id)fetchRequest;
 - (id)initWithSearchProvider:(id)arg1 fetchRequest:(id)arg2 scheduler:(id)arg3;
+- (id)localExtensionSearchObservables;
 - (id)localSearchObservable;
 - (id)observableWithWrappedSearchProviderGetter:(id /* block */)arg1 name:(id)arg2;
 - (id)predictionsSearchObservableWithUnfilteredResultPromise:(id)arg1;

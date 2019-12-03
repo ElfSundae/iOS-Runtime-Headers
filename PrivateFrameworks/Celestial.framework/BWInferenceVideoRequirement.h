@@ -11,7 +11,6 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)description;
-- (id)init;
 - (id)initWithAttachedMediaKey:(id)arg1;
 - (id)initWithAttachedMediaKey:(id)arg1 videoFormat:(id)arg2;
 - (id)initWithVideoRequirement:(id)arg1;

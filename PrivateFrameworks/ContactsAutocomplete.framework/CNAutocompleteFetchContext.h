@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/ContactsAutocomplete.framework/ContactsAutocomplete
  */
 
-@interface CNAutocompleteFetchContext : NSObject <NSCopying> {
+@interface CNAutocompleteFetchContext : NSObject <NSCopying, NSSecureCoding> {
     NSArray * _bundleIdentifiers;
     NSDate * _date;
     NSString * _domainIdentifier;
@@ -26,13 +26,17 @@
 @property (copy) NSString *sendingAddressAccountIdentifier;
 @property (copy) NSString *title;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (id)bundleIdentifiers;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)date;
 - (id)description;
 - (id)domainIdentifier;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)isValid:(id*)arg1;
 - (id)locationUUID;

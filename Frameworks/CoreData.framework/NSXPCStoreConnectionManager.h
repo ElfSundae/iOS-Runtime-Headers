@@ -9,7 +9,6 @@
     unsigned long long  _maxConnections;
     NSObject<OS_dispatch_semaphore> * _poolCounter;
     NSObject<OS_dispatch_queue> * _processingQueue;
-    NSXPCStore * _store;
 }
 
 @property (nonatomic, readonly) NSArray *availableConnections;

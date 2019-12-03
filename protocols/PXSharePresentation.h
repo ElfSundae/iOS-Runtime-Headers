@@ -5,6 +5,7 @@
 
 @required
 
+- (<PXActivitySharingController> *)createActivitySharingControllerWithContext:(PXActivitySharingContext *)arg1;
 - (UIViewController *)createShareViewControllerWithFetchResult:(PHFetchResult *)arg1;
 
 @end

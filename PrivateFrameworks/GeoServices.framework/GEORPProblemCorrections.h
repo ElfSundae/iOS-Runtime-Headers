@@ -13,11 +13,40 @@
     bool  _delayed;
     GEORPDirectionsProblem * _directionsProblem;
     struct { 
-        unsigned int delayed : 1; 
-    }  _has;
+        unsigned int has_delayed : 1; 
+        unsigned int read_comments : 1; 
+        unsigned int read_correctedCoordinate : 1; 
+        unsigned int read_correctedFields : 1; 
+        unsigned int read_correctedFlags : 1; 
+        unsigned int read_correctedLabel : 1; 
+        unsigned int read_correctedMapLocation : 1; 
+        unsigned int read_correctedSearch : 1; 
+        unsigned int read_directionsProblem : 1; 
+        unsigned int read_merchantLookupCorrections : 1; 
+        unsigned int read_photoWithMetadatas : 1; 
+        unsigned int read_placeProblem : 1; 
+        unsigned int wrote_comments : 1; 
+        unsigned int wrote_correctedCoordinate : 1; 
+        unsigned int wrote_correctedFields : 1; 
+        unsigned int wrote_correctedFlags : 1; 
+        unsigned int wrote_correctedLabel : 1; 
+        unsigned int wrote_correctedMapLocation : 1; 
+        unsigned int wrote_correctedSearch : 1; 
+        unsigned int wrote_directionsProblem : 1; 
+        unsigned int wrote_merchantLookupCorrections : 1; 
+        unsigned int wrote_photoWithMetadatas : 1; 
+        unsigned int wrote_placeProblem : 1; 
+        unsigned int wrote_delayed : 1; 
+    }  _flags;
     GEORPMerchantLookupCorrections * _merchantLookupCorrections;
     NSMutableArray * _photoWithMetadatas;
     GEORPPlaceProblem * _placeProblem;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
 }
 
 @property (nonatomic, retain) NSString *comments;
@@ -44,9 +73,24 @@
 
 + (Class)correctedFieldType;
 + (Class)correctedFlagType;
++ (bool)isValid:(id)arg1;
 + (Class)photoWithMetadataType;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsCorrectedField:(id)arg1;
+- (void)_addNoFlagsCorrectedFlag:(id)arg1;
+- (void)_addNoFlagsPhotoWithMetadata:(id)arg1;
+- (void)_readComments;
+- (void)_readCorrectedCoordinate;
+- (void)_readCorrectedFields;
+- (void)_readCorrectedFlags;
+- (void)_readCorrectedLabel;
+- (void)_readCorrectedMapLocation;
+- (void)_readCorrectedSearch;
+- (void)_readDirectionsProblem;
+- (void)_readMerchantLookupCorrections;
+- (void)_readPhotoWithMetadatas;
+- (void)_readPlaceProblem;
 - (void)addCorrectedField:(id)arg1;
 - (void)addCorrectedFlag:(id)arg1;
 - (void)addPhotoWithMetadata:(id)arg1;
@@ -80,6 +124,8 @@
 - (bool)hasMerchantLookupCorrections;
 - (bool)hasPlaceProblem;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)merchantLookupCorrections;
 - (void)mergeFrom:(id)arg1;
@@ -87,6 +133,7 @@
 - (id)photoWithMetadatas;
 - (unsigned long long)photoWithMetadatasCount;
 - (id)placeProblem;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setComments:(id)arg1;
 - (void)setCorrectedCoordinate:(id)arg1;

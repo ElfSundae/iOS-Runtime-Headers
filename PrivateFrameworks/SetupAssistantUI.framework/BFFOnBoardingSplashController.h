@@ -2,8 +2,9 @@
    Image: /System/Library/PrivateFrameworks/SetupAssistantUI.framework/SetupAssistantUI
  */
 
-@interface BFFOnBoardingSplashController : BFFSplashController {
+@interface BFFOnBoardingSplashController : BFFSplashController <BYEnvironmentDependencyReceiver> {
     id /* block */  _completion;
+    <BYDeviceProvider> * _deviceProvider;
     bool  _extendBackgroundColorToNavigationBar;
     long long  _feature;
     bool  _movieShowing;
@@ -14,19 +15,25 @@
 }
 
 @property (nonatomic, copy) id /* block */ completion;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (nonatomic, retain) <BYDeviceProvider> *deviceProvider;
 @property bool extendBackgroundColorToNavigationBar;
 @property (nonatomic) long long feature;
+@property (readonly) unsigned long long hash;
 @property bool movieShowing;
 @property double placeholderDuration;
 @property (retain) NSDate *placeholderStartDate;
 @property (retain) NSString *preferenceKey;
+@property (readonly) Class superclass;
 @property (retain) NSDate *videoStartDate;
 
 + (id)cloudConfigSkipKey;
-+ (void)needsToRunForFeature:(long long)arg1 completion:(id /* block */)arg2;
++ (void)needsToRunForFeature:(long long)arg1 usingDeviceProvider:(id)arg2 completion:(id /* block */)arg3;
 
 - (void).cxx_destruct;
 - (id /* block */)completion;
+- (id)deviceProvider;
 - (bool)extendBackgroundColorToNavigationBar;
 - (long long)feature;
 - (id)initWithFeature:(long long)arg1;
@@ -38,6 +45,7 @@
 - (id)placeholderStartDate;
 - (id)preferenceKey;
 - (void)setCompletion:(id /* block */)arg1;
+- (void)setDeviceProvider:(id)arg1;
 - (void)setExtendBackgroundColorToNavigationBar:(bool)arg1;
 - (void)setFeature:(long long)arg1;
 - (void)setMovieShowing:(bool)arg1;

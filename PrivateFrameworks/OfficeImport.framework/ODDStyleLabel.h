@@ -6,7 +6,7 @@
     OADShapeStyle * mShapeStyle;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)setShapeStyle:(id)arg1;
 - (id)shapeStyle;
 

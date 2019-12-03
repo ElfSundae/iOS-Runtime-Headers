@@ -13,15 +13,18 @@
             double height; 
         } size; 
     }  _formerTextEffectsContentFrame;
-    bool  _hasIntrinsicContentSize;
     struct CGSize { 
         double width; 
         double height; 
     }  _intrinsicContentSize;
-    bool  _needsRemoteViewServiceBoundingPathUpdate;
-    bool  _observingBoundingPathChanges;
+    bool  _observingTextEffectsWindowRotation;
     _UIRemoteViewController * _remoteViewController;
-    bool  _remoteViewServiceBoundingPathUpdateScheduled;
+    struct { 
+        unsigned int hasIntrinsicContentSize : 1; 
+        unsigned int observingBoundingPathChanges : 1; 
+        unsigned int needsRemoteViewServiceBoundingPathUpdate : 1; 
+        unsigned int remoteViewServiceBoundingPathUpdateScheduled : 1; 
+    }  _sizeTrackingViewFlags;
     id  _textEffectsOperatorProxy;
     id  _viewControllerOperatorProxy;
 }
@@ -48,14 +51,18 @@
 - (bool)_needsTextEffectsUpdateToFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)_scrollToTopFromTouchAtScreenLocation:(struct CGPoint { double x1; double x2; })arg1 resultHandler:(id /* block */)arg2;
 - (void)_setNeedsRemoteViewServiceBoundingPathUpdate;
+- (void)_textEffectsWindowDidRotate:(id)arg1;
 - (void)_updateSceneGeometries:(id)arg1 forOrientation:(long long)arg2;
 - (void)_updateTextEffectsGeometries:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (void)_updateTextEffectsGeometries:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 textEffectsWindow:(id)arg2;
 - (void)_updateTextEffectsGeometriesImmediately;
 - (void)_willMoveToWindow:(id)arg1;
 - (bool)canBecomeFocused;
 - (void)dealloc;
 - (bool)isScrollEnabled;
 - (id)remoteViewController;
+- (void)setBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (void)setFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)updateIntrinsicContentSize:(struct CGSize { double x1; double x2; })arg1;
 
 @end

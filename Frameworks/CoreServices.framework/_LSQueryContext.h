@@ -12,14 +12,14 @@
 + (void)setSimulateLimitedMappingForXCTests:(bool)arg1;
 + (bool)simulateLimitedMappingForXCTests;
 
+- (void).cxx_destruct;
 - (id)_init;
-- (id)_resolveQueries:(id)arg1 cachingStrategy:(long long)arg2 XPCConnection:(id)arg3 error:(id*)arg4;
+- (id)_resolveQueries:(id)arg1 XPCConnection:(id)arg2 error:(id*)arg3;
 - (id)_resolver;
 - (void)clearCaches;
-- (void)dealloc;
 - (id)debugDescription;
 - (void)enumerateResolvedResultsOfQuery:(id)arg1 withBlock:(id /* block */)arg2;
 - (id)init;
-- (id)resolveQueries:(id)arg1 cachingStrategy:(long long)arg2 error:(id*)arg3;
+- (id)resolveQueries:(id)arg1 error:(id*)arg2;
 
 @end

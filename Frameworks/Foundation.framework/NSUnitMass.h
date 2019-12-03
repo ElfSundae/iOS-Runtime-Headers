@@ -12,6 +12,7 @@
 + (id)centigrams;
 + (id)decigrams;
 + (id)grams;
++ (void)initialize;
 + (id)kilograms;
 + (id)metricTons;
 + (id)micrograms;
@@ -29,5 +30,9 @@
 
 - (id)hk_equivalentBaseUnit;
 - (id)hk_equivalentUnitWithConstant:(double)arg1 coefficient:(double)arg2;
+
+// Image: /System/Library/Frameworks/Intents.framework/Intents
+
+- (id)_intents_stringRepresentation;
 
 @end

@@ -3,30 +3,26 @@
  */
 
 @interface FCPaidAccessChecker : NSObject <FCPaidAccessCheckerType> {
-    <FCBundleSubscriptionManagerType> * _bundleSubscriptionManager;
+    <FCBundleSubscriptionProviderType> * _bundleSubscriptionProvider;
     <FCCoreConfigurationManager> * _configurationManager;
-    FCPurchaseController * _purchaseController;
+    <FCPurchaseProviderType> * _purchaseProvider;
 }
 
-@property (nonatomic, readonly) <FCBundleSubscriptionManagerType> *bundleSubscriptionManager;
 @property (nonatomic, readonly) <FCBundleSubscriptionProviderType> *bundleSubscriptionProvider;
 @property (nonatomic, readonly) <FCCoreConfigurationManager> *configurationManager;
-@property (nonatomic, readonly) FCPurchaseController *purchaseController;
 @property (nonatomic, readonly) <FCPurchaseProviderType> *purchaseProvider;
 
 - (void).cxx_destruct;
 - (bool)_canGetALaCarteSubscriptionToChannel:(id)arg1;
 - (bool)_canGetBundleSubscriptionToChannel:(id)arg1;
-- (id)bundleSubscriptionManager;
 - (id)bundleSubscriptionProvider;
 - (bool)canGetAccessToItemPaid:(bool)arg1 bundlePaid:(bool)arg2 channel:(id)arg3;
 - (bool)canGetBundleSubscriptionToChannel:(id)arg1;
 - (bool)canGetSubscriptionToChannel:(id)arg1;
 - (id)configurationManager;
-- (id)initWithPurchaseController:(id)arg1 bundleSubscriptionManager:(id)arg2 configurationManager:(id)arg3;
+- (id)initWithPurchaseProvider:(id)arg1 bundleSubscriptionProvider:(id)arg2 configurationManager:(id)arg3;
 - (bool)isPreparedForUse;
 - (void)prepareForUseWithCompletion:(id /* block */)arg1;
-- (id)purchaseController;
 - (id)purchaseProvider;
 
 @end

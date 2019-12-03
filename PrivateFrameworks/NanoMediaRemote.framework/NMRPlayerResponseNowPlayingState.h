@@ -3,13 +3,10 @@
  */
 
 @interface NMRPlayerResponseNowPlayingState : NMRNowPlayingState <NSCopying> {
-    unsigned long long  _addStatus;
-    MPCPlayerResponse * _response;
+    MPCPlayerResponse * _playerResponse;
 }
 
-+ (bool)_isAddToLibraryCommandActiveFromAddStatus:(unsigned long long)arg1;
-+ (bool)_isAddToLibraryCommandEnabledFromAddStatus:(unsigned long long)arg1;
-+ (bool)isAddToLibraryCommandEqualBetweenAddStatus:(unsigned long long)arg1 andAddStatus:(unsigned long long)arg2;
+@property (nonatomic, readonly) MPCPlayerResponse *playerResponse;
 
 - (void).cxx_destruct;
 - (id)_nowPlayingRadioStation;
@@ -19,17 +16,16 @@
 - (id)applicationDisplayName;
 - (id)artist;
 - (id)artworkCatalog;
-- (id)artworkImageData;
 - (long long)banCommandPresentationStyle;
+- (id)collectionTitle;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (double)duration;
 - (double)elapsedTimeAtLastUpdate;
 - (double)fastForwardTimeInterval;
+- (bool)hasNowPlayingItem;
+- (bool)hasUpNextQueue;
 - (id)identifiers;
-- (id)initWithPlayerResponse:(id)arg1 libraryAddStatus:(unsigned long long)arg2;
-- (bool)isAddToLibraryActive;
-- (bool)isAddToLibraryCommandEnabled;
-- (bool)isAddToLibraryCommandSupported;
+- (id)initWithPlayerResponse:(id)arg1;
 - (bool)isAdvertisement;
 - (bool)isAlwaysLive;
 - (bool)isBanCommandEnabled;
@@ -42,7 +38,9 @@
 - (bool)isLikeCommandEnabled;
 - (bool)isLikeCommandSupported;
 - (bool)isLikedActive;
+- (bool)isNextTrackCommandEnabled;
 - (bool)isPlaybackRateCommandSupported;
+- (bool)isPreviousTrackCommandEnabled;
 - (bool)isRepeatModeCommandSupported;
 - (bool)isShuffleModeCommandSupported;
 - (bool)isSkipBackwardCommandEnabled;
@@ -54,11 +52,10 @@
 - (id)localizedBanTitle;
 - (id)localizedBookmarkTitle;
 - (id)localizedLikeTitle;
-- (id)nextTrackCommandEnabled;
 - (float)playbackRate;
 - (unsigned int)playbackState;
+- (id)playerResponse;
 - (float)preferredPlaybackRate;
-- (id)previousTrackCommandEnabled;
 - (id)radioStationHash;
 - (id)radioStationIdentifier;
 - (id)radioStationName;

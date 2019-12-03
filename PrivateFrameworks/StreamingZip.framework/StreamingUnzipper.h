@@ -8,6 +8,7 @@
     void * _decompressionOutputBuffer;
     double  _lastExtractionProgressSent;
     long long  _sandboxToken;
+    NSObject<OS_os_transaction> * _sessionTransaction;
     NSObject<OS_dispatch_queue> * inProcessDelegateQueue;
     <StreamingUnzipDelegateProtocol> * inProcessExtractorDelegate;
     NSXPCConnection * xpcConnection;
@@ -28,7 +29,7 @@
 - (void)finishStreamWithReply:(id /* block */)arg1;
 - (id)inProcessDelegateQueue;
 - (id)inProcessExtractorDelegate;
-- (id)init;
+- (id)initForClient:(id)arg1;
 - (void)setActiveDelegateMethods:(int)arg1;
 - (void)setInProcessDelegateQueue:(id)arg1;
 - (void)setInProcessExtractorDelegate:(id)arg1;

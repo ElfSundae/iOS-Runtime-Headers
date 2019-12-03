@@ -3,6 +3,7 @@
  */
 
 @interface CPSTripPreviewsCardView : UIView <CPSLinearFocusProviding> {
+    UIButton * _goButton;
     CPSCardPlatterView * _platterView;
     CPRouteChoice * _selectedRouteChoice;
     CPTrip * _selectedTrip;
@@ -13,6 +14,7 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) UIButton *goButton;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) CPSCardPlatterView *platterView;
 @property (nonatomic) CPRouteChoice *selectedRouteChoice;
@@ -24,6 +26,8 @@
 
 - (void).cxx_destruct;
 - (id)_linearFocusItems;
+- (void)_updateButtonColors;
+- (id)goButton;
 - (id)initWithTripDelegate:(id)arg1 trips:(id)arg2 textConfiguration:(id)arg3;
 - (void)notifyDidSelectRouteChoice:(id)arg1;
 - (id)platterView;
@@ -35,6 +39,7 @@
 - (id)setupGoButton;
 - (void)startTripButtonPressed:(id)arg1;
 - (id)textConfiguration;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)tripDelegate;
 - (id)trips;
 - (void)updateEstimates:(id)arg1 forTripIdentifier:(id)arg2;

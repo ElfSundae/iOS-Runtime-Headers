@@ -27,7 +27,6 @@
 + (bool)supportsSecureCoding;
 + (id)title;
 
-- (id)_prepareRectangleRequestOptions;
 - (struct CGPoint { double x1; double x2; })cameraOpticalOrigin;
 - (double)cameraPixelFocalLength;
 - (void)encodeWithCoder:(id)arg1;

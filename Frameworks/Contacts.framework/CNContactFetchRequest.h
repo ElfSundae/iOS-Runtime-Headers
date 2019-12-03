@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Contacts.framework/Contacts
  */
 
-@interface CNContactFetchRequest : NSObject <NSSecureCoding> {
+@interface CNContactFetchRequest : CNFetchRequest <NSSecureCoding> {
     bool  _allowsBatching;
     unsigned long long  _batchSize;
     bool  _disallowsEncodedFetch;
@@ -11,6 +11,7 @@
     bool  _onlyMainStore;
     NSPredicate * _predicate;
     bool  _rankSort;
+    bool  _shouldFailIfAccountNotYetSynced;
     long long  _sortOrder;
     bool  _unifyResults;
 }
@@ -23,6 +24,7 @@
 @property (nonatomic) bool onlyMainStore;
 @property (nonatomic, copy) NSPredicate *predicate;
 @property (nonatomic) bool rankSort;
+@property (nonatomic) bool shouldFailIfAccountNotYetSynced;
 @property (nonatomic) long long sortOrder;
 @property (nonatomic) bool unifyResults;
 
@@ -32,6 +34,7 @@
 - (bool)allowsBatching;
 - (unsigned long long)batchSize;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)description;
 - (bool)disallowsEncodedFetch;
 - (id)effectiveKeysToFetch;
 - (id)effectivePredicate;
@@ -53,8 +56,10 @@
 - (void)setOnlyMainStore:(bool)arg1;
 - (void)setPredicate:(id)arg1;
 - (void)setRankSort:(bool)arg1;
+- (void)setShouldFailIfAccountNotYetSynced:(bool)arg1;
 - (void)setSortOrder:(long long)arg1;
 - (void)setUnifyResults:(bool)arg1;
+- (bool)shouldFailIfAccountNotYetSynced;
 - (long long)sortOrder;
 - (bool)unifyResults;
 

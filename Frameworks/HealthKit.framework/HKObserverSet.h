@@ -12,13 +12,16 @@
     NSMapTable * _observerMap;
 }
 
+@property (readonly, copy) NSArray *allObservers;
 @property (readonly) unsigned long long count;
 
 - (void).cxx_destruct;
 - (void)_notifyObserver:(id)arg1 handler:(id /* block */)arg2;
 - (void)_registerObserver:(id)arg1 queue:(id)arg2;
+- (id)allObservers;
 - (unsigned long long)count;
 - (id)initWithName:(id)arg1 loggingCategory:(id)arg2;
+- (void)notifyObserver:(id)arg1 handler:(id /* block */)arg2;
 - (void)notifyObservers:(id /* block */)arg1;
 - (void)registerObserver:(id)arg1;
 - (void)registerObserver:(id)arg1 queue:(id)arg2;

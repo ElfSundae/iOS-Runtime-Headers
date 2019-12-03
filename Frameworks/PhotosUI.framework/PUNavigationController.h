@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUNavigationController : UINavigationController <PLDismissableViewController, UINavigationControllerDelegate> {
+@interface PUNavigationController : UINavigationController <PXForcedDismissableViewController, UINavigationControllerDelegate> {
     PUAbstractNavigationBanner * __banner;
     long long  __barStyle;
     UIViewController * __currentToolbarViewController;
@@ -31,6 +31,7 @@
 - (void).cxx_destruct;
 - (id)_banner;
 - (long long)_barStyle;
+- (bool)_canShowWhileLocked;
 - (void)_commonPUNavigationControllerInitialization;
 - (id)_currentToolbarViewController;
 - (id)_extendedToolbar;
@@ -42,10 +43,12 @@
 - (void)_setBarStyle:(long long)arg1;
 - (void)_setCurrentToolbarViewController:(id)arg1;
 - (void)_setCurrentToolbarViewController:(id)arg1 animated:(bool)arg2;
+- (void)_setNavigationBarHidden:(bool)arg1 edge:(unsigned long long)arg2 duration:(double)arg3;
 - (void)_setPalette:(id)arg1;
 - (void)_updateBarStyle;
 - (id)initWithNavigationBarClass:(Class)arg1 toolbarClass:(Class)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)initWithRootViewController:(id)arg1;
 - (id)navigationController:(id)arg1 animationControllerForOperation:(long long)arg2 fromViewController:(id)arg3 toViewController:(id)arg4;
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(bool)arg3;
 - (id)navigationController:(id)arg1 interactionControllerForAnimationController:(id)arg2;
@@ -65,5 +68,7 @@
 - (bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewController:(id)arg1 willSetupInitialBarsVisibilityOnViewWillAppearAnimated:(bool)arg2;
+- (void)viewDidAppear:(bool)arg1;
+- (void)viewWillDisappear:(bool)arg1;
 
 @end

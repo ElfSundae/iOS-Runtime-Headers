@@ -18,26 +18,31 @@
 @property (nonatomic) bool isReadonlyVolume;
 @property (nonatomic, retain) NSMutableDictionary *pathsByFileBaseName;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *pathsByFileBaseNameAccess;
-@property (nonatomic, retain) NSString *prefix;
 @property (nonatomic, retain) NSArray *urls;
 
 + (bool)treatAsReadonlyVolume:(id)arg1;
 
 - (void).cxx_destruct;
+- (id)assetsByProcessingItem:(id)arg1;
 - (id)baseNames;
 - (void)beginWork;
+- (bool)canReference;
 - (void)dealloc;
 - (void)dispatchAssetDataRequestAsync:(id)arg1 usingBlock:(id /* block */)arg2;
 - (void)endWork;
+- (unsigned long long)hash;
 - (id)initWithUrls:(id)arg1;
 - (bool)isAvailable;
+- (bool)isEqual:(id)arg1;
+- (bool)isEqualToImportUrlSource:(id)arg1;
 - (bool)isReadonlyVolume;
 - (id)name;
+- (id)path;
 - (id)pathsByFileBaseName;
 - (id)pathsByFileBaseNameAccess;
 - (id)prefix;
-- (id)processItem:(id)arg1 applyingBlock:(id /* block */)arg2;
 - (id)productKind;
+- (id)rootUrlOfUrls:(id)arg1;
 - (void)setBaseNames:(id)arg1;
 - (void)setIsReadonlyVolume:(bool)arg1;
 - (void)setPathsByFileBaseName:(id)arg1;
@@ -45,5 +50,6 @@
 - (void)setPrefix:(id)arg1;
 - (void)setUrls:(id)arg1;
 - (id)urls;
+- (id)volumePath;
 
 @end

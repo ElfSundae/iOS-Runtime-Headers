@@ -6,18 +6,20 @@
     NSUserDefaults * _defaults;
 }
 
-@property (nonatomic, retain) NSArray *autoDownloadedVoices;
 @property (nonatomic, retain) NSUserDefaults *defaults;
+@property (nonatomic, readonly) NSString *deviceUUID;
 @property (nonatomic, retain) NSDate *lastTTSRequestDate;
 
 + (id)defaultInstance;
 
 - (void).cxx_destruct;
-- (id)autoDownloadedVoices;
+- (id)autoDownloadedVoicesForClientID:(id)arg1;
 - (id)defaults;
+- (id)deviceUUID;
 - (id)initWithSuiteName:(id)arg1;
 - (id)lastTTSRequestDate;
-- (void)setAutoDownloadedVoices:(id)arg1;
+- (void)migrateDefaults;
+- (void)setAutoDownloadedVoices:(id)arg1 withClientID:(id)arg2;
 - (void)setDefaults:(id)arg1;
 - (void)setLastTTSRequestDate:(id)arg1;
 

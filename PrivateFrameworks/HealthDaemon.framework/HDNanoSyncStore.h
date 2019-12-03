@@ -16,6 +16,7 @@
     bool  _master;
     NRDevice * _nanoRegistryDevice;
     bool  _needsSyncOnUnlock;
+    NSSet * _obliteratedDatabaseUUIDs;
     NSArray * _orderedSyncEntities;
     HDNanoPairingEntity * _pairingEntity;
     NSMutableDictionary * _pendingRequestContexts;
@@ -32,9 +33,10 @@
 @property (nonatomic) <HDNanoSyncStoreDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) IDSDevice *device;
+@property (readonly, copy) HKNanoSyncPairedDeviceInfo *deviceInfo;
 @property (readonly, copy) NSString *deviceName;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) NSUUID *healthUUID;
+@property (nonatomic, copy) NSUUID *healthUUID;
 @property (nonatomic, retain) IDSDevice *identityServicesDevice;
 @property (getter=isInvalidated, readonly) bool invalidated;
 @property (readonly) NSDate *lastInactiveDate;
@@ -42,7 +44,8 @@
 @property (nonatomic, retain) NRDevice *nanoRegistryDevice;
 @property (readonly) NSUUID *nanoRegistryUUID;
 @property (nonatomic) bool needsSyncOnUnlock;
-@property (nonatomic, retain) NSUUID *persistentUUID;
+@property (nonatomic, readonly, copy) NSSet *obliteratedDatabaseUUIDs;
+@property (nonatomic, copy) NSUUID *persistentUUID;
 @property (nonatomic) HDProfile *profile;
 @property (readonly) int protocolVersion;
 @property (readonly, copy) NSString *remoteProductType;
@@ -59,7 +62,7 @@
 + (id)orderedSyncEntitiesForProfile:(id)arg1 protocolVersion:(int)arg2 companion:(bool)arg3;
 
 - (void).cxx_destruct;
-- (id)_initWithIdentityServicesDevice:(id)arg1 nanoRegistryDevice:(id)arg2 pairingEntity:(id)arg3 protocolVersion:(int)arg4 delegate:(id)arg5 profile:(id)arg6;
+- (id)_initWithIdentityServicesDevice:(id)arg1 nanoRegistryDevice:(id)arg2 pairingEntity:(id)arg3 obliteratedDatabaseUUIDs:(id)arg4 protocolVersion:(int)arg5 delegate:(id)arg6 profile:(id)arg7;
 - (void)_notifyIncomingSyncObservers;
 - (bool)_savePairingEntity;
 - (void)_setRestoreState:(long long)arg1;
@@ -92,10 +95,13 @@
 - (id)lastInactiveDate;
 - (id)nanoRegistryDevice;
 - (id)nanoRegistryUUID;
+- (id)nanoSyncStoreForProtocolVersion:(int)arg1;
 - (bool)needsSyncOnUnlock;
+- (id)obliteratedDatabaseUUIDs;
 - (id)orderedSyncEntities;
 - (id)pendingRequestContextForUUID:(id)arg1;
 - (id)persistentUUID;
+- (void)prepareForObliteration;
 - (id)profile;
 - (int)protocolVersion;
 - (id)remoteProductType;
@@ -123,6 +129,5 @@
 - (id)syncStoreIdentifier;
 - (long long)syncStoreType;
 - (bool)validatePairingUUIDsWithIncomingMessage:(id)arg1;
-- (bool)validateVersionWithIncomingMessage:(id)arg1;
 
 @end

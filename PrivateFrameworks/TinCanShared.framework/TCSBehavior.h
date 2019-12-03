@@ -3,31 +3,35 @@
  */
 
 @interface TCSBehavior : NSObject {
-    bool  _hasTelephonyCapability;
+    int  _firstUnlockToken;
     bool  _isAppleInternalInstall;
-    bool  _isM7Device;
     bool  _isM8Device;
+    bool  _isMobileKeyBagDisabledOrDeviceUnlockedSinceBoot;
+    NSString * _regionCode;
 }
 
-@property (nonatomic, readonly) bool hasTelephonyCapability;
 @property (nonatomic, readonly) bool isAppleInternalInstall;
-@property (nonatomic, readonly) bool isM7Device;
 @property (nonatomic, readonly) bool isM8Device;
+@property (nonatomic, readonly) bool isMobileKeyBagDisabledOrDeviceUnlockedSinceBoot;
+@property (nonatomic, readonly) NSString *regionCode;
 
-+ (bool)_hasTelephonyCapability;
 + (bool)_isAppleInternalInstall;
-+ (bool)_isM7Device;
 + (bool)_isM8Device;
-+ (bool)hasTelephonyCapability;
++ (bool)_isMobileKeyBagDisabledOrDeviceUnlockedSinceBoot;
++ (id)_regionCode;
 + (bool)isAppleInternalInstall;
-+ (bool)isM7Device;
 + (bool)isM8Device;
++ (bool)isMobileKeyBagDisabledOrDeviceUnlockedSinceBoot;
++ (id)regionCode;
 + (id)sharedBehavior;
 
-- (bool)hasTelephonyCapability;
+- (void).cxx_destruct;
+- (void)_handleDeviceFirstUnlock;
+- (void)dealloc;
 - (id)init;
 - (bool)isAppleInternalInstall;
-- (bool)isM7Device;
 - (bool)isM8Device;
+- (bool)isMobileKeyBagDisabledOrDeviceUnlockedSinceBoot;
+- (id)regionCode;
 
 @end

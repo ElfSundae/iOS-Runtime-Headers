@@ -2,9 +2,16 @@
    Image: /System/Library/PrivateFrameworks/ScreenTimeUI.framework/ScreenTimeUI
  */
 
-@interface STIntroContentPrivacyViewController : STIntroSplashViewController
+@interface STIntroContentPrivacyViewController : OBWelcomeController {
+    id /* block */  _continueHandler;
+}
 
-- (void)viewDidLayoutSubviews;
-- (void)viewDidLoad;
+@property (readonly, copy) id /* block */ continueHandler;
+
+- (void).cxx_destruct;
+- (void)_continue:(id)arg1;
+- (id /* block */)continueHandler;
+- (id)initWithContinueHandler:(id /* block */)arg1;
+- (void)loadView;
 
 @end

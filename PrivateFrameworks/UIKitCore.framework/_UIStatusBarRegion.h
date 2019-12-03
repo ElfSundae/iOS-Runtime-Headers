@@ -14,10 +14,12 @@
     UIView * _backgroundView;
     NSLayoutConstraint * _centerXConstraint;
     NSLayoutConstraint * _centerYConstraint;
+    UIView * _containerView;
     UIView * _contentView;
     NSSet * _dependentRegionIdentifiers;
     NSMutableIndexSet * _disablingTokens;
     NSOrderedSet * _displayItems;
+    _UIStatusBarRegion * _enabilityRegion;
     UIView * _frozenView;
     UIView * _highlightView;
     NSString * _identifier;
@@ -28,6 +30,7 @@
         double vertical; 
     }  _offset;
     bool  _offsetable;
+    long long  _overriddenStyle;
     _UIStatusBarStyleAttributes * _overriddenStyleAttributes;
     _UIStatusBar * _statusBar;
 }
@@ -48,6 +51,7 @@
 @property (nonatomic, retain) NSMutableIndexSet *disablingTokens;
 @property (nonatomic, readonly, copy) NSDictionary *displayItemAbsoluteFrames;
 @property (nonatomic, retain) NSOrderedSet *displayItems;
+@property (nonatomic) _UIStatusBarRegion *enabilityRegion;
 @property (getter=isEnabled, nonatomic, readonly) bool enabled;
 @property (nonatomic, readonly) NSArray *enabledDisplayItems;
 @property (getter=isFrozen, nonatomic) bool frozen;
@@ -61,12 +65,14 @@
 @property (nonatomic) struct UIOffset { double x1; double x2; } offset;
 @property (nonatomic) bool offsetable;
 @property (nonatomic, readonly) _UIStatusBarDisplayItem *overflowedDisplayItem;
+@property (nonatomic) long long overriddenStyle;
 @property (nonatomic, retain) _UIStatusBarStyleAttributes *overriddenStyleAttributes;
 @property (nonatomic) _UIStatusBar *statusBar;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_addSubview:(id)arg1 atBack:(bool)arg2;
+- (void)_overriddenStyleAttributesChanged;
 - (id)action;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })actionInsets;
 - (double)alpha;
@@ -82,8 +88,9 @@
 - (void)disableWithToken:(unsigned long long)arg1;
 - (id)disablingTokens;
 - (id)displayItemAbsoluteFrames;
-- (id)displayItemForHUDAtPoint:(struct CGPoint { double x1; double x2; })arg1 inCoordinateSpace:(id)arg2;
+- (id)displayItemForHUDAtLocation:(struct CGPoint { double x1; double x2; })arg1;
 - (id)displayItems;
+- (id)enabilityRegion;
 - (void)enableWithToken:(unsigned long long)arg1;
 - (id)enabledDisplayItems;
 - (id)frozenView;
@@ -98,6 +105,7 @@
 - (struct UIOffset { double x1; double x2; })offset;
 - (bool)offsetable;
 - (id)overflowedDisplayItem;
+- (long long)overriddenStyle;
 - (id)overriddenStyleAttributes;
 - (void)setAction:(id)arg1;
 - (void)setActionInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
@@ -109,6 +117,7 @@
 - (void)setDependentRegionIdentifiers:(id)arg1;
 - (void)setDisablingTokens:(id)arg1;
 - (void)setDisplayItems:(id)arg1;
+- (void)setEnabilityRegion:(id)arg1;
 - (void)setFrozen:(bool)arg1;
 - (void)setFrozenView:(id)arg1;
 - (void)setHighlightView:(id)arg1;
@@ -117,6 +126,7 @@
 - (void)setLayoutGuide:(id)arg1;
 - (void)setOffset:(struct UIOffset { double x1; double x2; })arg1;
 - (void)setOffsetable:(bool)arg1;
+- (void)setOverriddenStyle:(long long)arg1;
 - (void)setOverriddenStyleAttributes:(id)arg1;
 - (void)setStatusBar:(id)arg1;
 - (id)statusBar;

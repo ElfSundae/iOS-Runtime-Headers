@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
  */
 
-@interface PKPassbookSettingsController : NSObject <PKPaymentDataProviderDelegate, PKPaymentPassTableCellDelegate, PKPaymentServiceDelegate, PKPeerPaymentAccountResolutionControllerDelegate, PKSwitchSpinnerTableCellDelegate> {
+@interface PKPassbookSettingsController : NSObject <PKPaymentDataProviderDelegate, PKPaymentPassTableCellDelegate, PKPaymentServiceDelegate, PKPaymentVerificationControllerDelegate, PKPeerPaymentAccountResolutionControllerDelegate, PKSwitchSpinnerTableCellDelegate> {
     LAContext * _LAContext;
     PKAccountService * _accountService;
     PSSpecifier * _addCardButtonSpecifier;
@@ -49,6 +49,8 @@
     NSString * _provisioningPassIdentifier;
     bool  _registeringForPeerPayment;
     PKPaymentPreferenceCard * _unavailableCards;
+    PKPaymentVerificationController * _verificationController;
+    PKPaymentWebService * _webService;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -71,6 +73,7 @@
 - (id)_defaultShippingAddressSpecifier;
 - (id)_defaultsGroupSpecifiers;
 - (id)_displayableStringForLabeledValue:(id)arg1;
+- (id)_doubleClickSwitchSettingForSpecifier:(id)arg1;
 - (void)_expressPassDidChange;
 - (id)_fallbackExpressTransitFooterText;
 - (void)_fetchBalancesAndTransitPassPropertiesForPass:(id)arg1 withDataProvider:(id)arg2 completion:(id /* block */)arg3;
@@ -84,7 +87,7 @@
 - (id)_handoffSwitchSettingForSpecifier:(id)arg1;
 - (bool)_isPeerPaymentRegistered;
 - (id)_lockscreenSwitchGroupSpecifiers;
-- (id)_lockscreenSwitchSettingForSpecifier:(id)arg1;
+- (void)_openExpressTransitSettings:(id)arg1;
 - (void)_openPrivacyLink;
 - (id)_otherPassSpecifiers;
 - (id)_passSpecifiersForPasses:(id)arg1;
@@ -95,6 +98,7 @@
 - (void)_peerPaymentAccountDidChangeNotification:(id)arg1;
 - (id)_peerPaymentGroupSpecifiers;
 - (id)_peerPaymentSwitchSpecifier;
+- (void)_peerPaymentWebServiceDidChangeNotification:(id)arg1;
 - (void)_performPhoneToWatchProvisioningForPaymentPass:(id)arg1 withCompletion:(id /* block */)arg2;
 - (void)_presentFeatureNotEnabledForDemoForSpecifier:(id)arg1;
 - (void)_presentPaymentSetupViewController:(id)arg1 paymentPass:(id)arg2;
@@ -109,8 +113,8 @@
 - (void)_requestDelegatePresentViewController:(id)arg1;
 - (id)_restrictedModeSpecifier;
 - (void)_setCardAddProvisioningButtonEnabled:(bool)arg1 forPaymentPass:(id)arg2;
+- (void)_setDoubleClickSwitchSetting:(id)arg1 forSpecifier:(id)arg2;
 - (void)_setHandoffSwitchSetting:(id)arg1 forSpecifier:(id)arg2;
-- (void)_setLockscreenSwitchSetting:(id)arg1 forSpecifier:(id)arg2;
 - (id)_settingsSpecifiers;
 - (void)_showCardDetails:(id)arg1;
 - (void)_showDefaultContactEmailOptions:(id)arg1;
@@ -137,7 +141,7 @@
 - (void)dealloc;
 - (id)delegate;
 - (id)initWithDelegate:(id)arg1 dataSource:(id)arg2 context:(long long)arg3;
-- (void)openExpressTransitSettings:(id)arg1;
+- (void)openExpressTransitSettings:(id)arg1 withPassUniqueIdentifier:(id)arg2;
 - (void)openPaymentSetupWithMode:(long long)arg1 referrerIdentifier:(id)arg2 allowedFeatureIdentifiers:(id)arg3;
 - (void)openPeerPaymentSetupWithCurrenyAmount:(id)arg1 state:(unsigned long long)arg2 senderAddress:(id)arg3;
 - (id)passWithUniqueIdentifier:(id)arg1;
@@ -145,6 +149,7 @@
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithTransitPassProperties:(id)arg2;
 - (void)peerPaymentAccountResolutionController:(id)arg1 requestsDismissCurrentViewControllerAnimated:(bool)arg2;
 - (void)peerPaymentAccountResolutionController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(bool)arg3;
+- (void)presentVerificationViewController:(id)arg1 animated:(bool)arg2;
 - (void)refreshDefaultCard;
 - (void)refreshExpressTransitCard;
 - (void)refreshPasses;
@@ -154,5 +159,6 @@
 - (void)setDelegate:(id)arg1;
 - (id)specifiers;
 - (void)switchSpinnerCell:(id)arg1 hasToggledSwitch:(bool)arg2;
+- (void)verifyButtonPressedForPaymentPass:(id)arg1;
 
 @end

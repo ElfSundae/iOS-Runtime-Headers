@@ -6,6 +6,7 @@
     UIView * _accessoryView;
     UIActivityIndicatorView * _activityIndicator;
     UILabel * _coloredDescriptionLabel;
+    UIColor * _defaultDescriptionColor;
     UIVisualEffectView * _descriptionLabelEffectView;
     HUVisualEffectContainerView * _exclamationView;
     bool  _hasUpdatedUISinceLastReuse;
@@ -26,6 +27,7 @@
 @property (nonatomic, retain) UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, retain) UILabel *coloredDescriptionLabel;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic, retain) UIColor *defaultDescriptionColor;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) UIVisualEffectView *descriptionLabelEffectView;
 @property (nonatomic) bool disableContinuousIconAnimation;
@@ -64,6 +66,7 @@
 - (id)accessoryView;
 - (id)activityIndicator;
 - (id)coloredDescriptionLabel;
+- (id)defaultDescriptionColor;
 - (id)descriptionLabelEffectView;
 - (bool)disableContinuousIconAnimation;
 - (void)displayStyleDidChange;
@@ -82,6 +85,7 @@
 - (void)setAccessoryView:(id)arg1;
 - (void)setActivityIndicator:(id)arg1;
 - (void)setColoredDescriptionLabel:(id)arg1;
+- (void)setDefaultDescriptionColor:(id)arg1;
 - (void)setDescriptionLabelEffectView:(id)arg1;
 - (void)setDisableContinuousIconAnimation:(bool)arg1;
 - (void)setExclamationView:(id)arg1;

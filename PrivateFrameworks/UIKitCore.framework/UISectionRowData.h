@@ -4,7 +4,6 @@
 
 @interface UISectionRowData : NSObject <NSCopying> {
     unsigned long long  _arrayLength;
-    bool  _estimatesHeights;
     long long  _footerAlignment;
     double  _footerHeight;
     double  _footerOffset;
@@ -31,6 +30,7 @@
 - (long long)_rowForPoint:(struct CGPoint { double x1; double x2; })arg1 beginningWithRow:(long long)arg2 numberOfRows:(long long)arg3 extraHitSpaceBetweenRows:(double)arg4;
 - (long long)_rowForPoint:(struct CGPoint { double x1; double x2; })arg1 extraHitSpaceBetweenRows:(double)arg2;
 - (void)addOffset:(double)arg1 fromRow:(long long)arg2;
+- (void)allocateArraysWithCapacity:(unsigned long long)arg1 forSection:(long long)arg2;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (double)defaultSectionFooterHeight;
@@ -48,6 +48,8 @@
 - (void)refreshWithSection:(long long)arg1 tableView:(id)arg2 tableViewRowData:(id)arg3;
 - (int)sectionLocationForReorderedRow:(long long)arg1;
 - (int)sectionLocationForRow:(long long)arg1;
+- (void)setHeight:(double)arg1 forFooterInSection:(long long)arg2;
+- (void)setHeight:(double)arg1 forHeaderInSection:(long long)arg2;
 - (void)setHeight:(double)arg1 forRow:(long long)arg2 inSection:(long long)arg3;
 - (void)updateSectionHeightWithDelta:(double)arg1 section:(long long)arg2 updateFooterOffset:(bool)arg3;
 

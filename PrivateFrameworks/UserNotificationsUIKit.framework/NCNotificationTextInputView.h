@@ -2,22 +2,29 @@
    Image: /System/Library/PrivateFrameworks/UserNotificationsUIKit.framework/UserNotificationsUIKit
  */
 
-@interface NCNotificationTextInputView : UIView {
+@interface NCNotificationTextInputView : UIView <UITextViewDelegate> {
     NCNotificationAction * _action;
     UIButton * _button;
     <NCNotificationTextInputViewDelegate> * _delegate;
     UIStackView * _horizontalStack;
-    UITextField * _textField;
+    UITextView * _textView;
 }
 
 @property (nonatomic, retain) NCNotificationAction *action;
 @property (nonatomic, retain) UIButton *button;
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <NCNotificationTextInputViewDelegate> *delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, retain) UIStackView *horizontalStack;
-@property (nonatomic, retain) UITextField *textField;
+@property (readonly) Class superclass;
+@property (nonatomic, retain) UITextView *textView;
 
 - (void).cxx_destruct;
 - (void)_buttonPressed:(id)arg1;
+- (double)_maximumTextViewHeight;
+- (double)_textViewWidth;
+- (void)_updateForTextChange;
 - (id)action;
 - (bool)becomeFirstResponder;
 - (id)button;
@@ -37,7 +44,9 @@
 - (void)setDelegate:(id)arg1;
 - (void)setHorizontalStack:(id)arg1;
 - (void)setPlaceholder:(id)arg1;
-- (void)setTextField:(id)arg1;
-- (id)textField;
+- (void)setTextView:(id)arg1;
+- (id)textView;
+- (void)textViewDidChange:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end

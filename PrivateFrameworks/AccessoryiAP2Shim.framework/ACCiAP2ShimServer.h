@@ -3,8 +3,8 @@
  */
 
 @interface ACCiAP2ShimServer : NSObject {
-    NSMutableDictionary * _accessoryViaAccessoryUIDList;
     NSMutableDictionary * _accessoryViaConnectionIDList;
+    NSMutableDictionary * _accessoryViaKeyUIDList;
     NSLock * _clientLock;
     NSMutableDictionary * _clients;
     NSMutableDictionary * _delegateList;
@@ -21,8 +21,8 @@
     }  _serverFlags;
 }
 
-@property (nonatomic, retain) NSMutableDictionary *accessoryViaAccessoryUIDList;
 @property (nonatomic, retain) NSMutableDictionary *accessoryViaConnectionIDList;
+@property (nonatomic, retain) NSMutableDictionary *accessoryViaKeyUIDList;
 @property (readonly) NSLock *clientLock;
 @property (readonly) NSMutableDictionary *clients;
 @property (nonatomic, retain) NSMutableDictionary *delegateList;
@@ -47,18 +47,21 @@
 - (void)_addDelegate:(id)arg1;
 - (void)_attachAccessory:(id)arg1;
 - (void)_detachAccessory:(id)arg1;
-- (id)_findAccessoryForAccessoryUID:(id)arg1;
+- (id)_findAccessoryForAccessoryUID:(id)arg1 andKeyTag:(id)arg2;
 - (id)_findAccessoryForConnectionID:(unsigned int)arg1;
+- (id)_findAccessoryForConnectionID:(unsigned int)arg1 andKeyTag:(id)arg2;
 - (void)_iterateAccessories:(id /* block */)arg1;
 - (void)_iterateDelegates:(id /* block */)arg1;
 - (void)_pollForDeathAfterPromptCompletes;
 - (void)_removeAccessory:(id)arg1;
 - (void)_removeDelegate:(id)arg1;
+- (void)_resetServerState;
+- (void)_startServer;
 - (void)_stopServer;
 - (void)_takeClientAssertionsForAccessoryConnection;
 - (void)_takeClientAssertionsForAccessoryDisconnection;
-- (id)accessoryViaAccessoryUIDList;
 - (id)accessoryViaConnectionIDList;
+- (id)accessoryViaKeyUIDList;
 - (void)addAccessory:(id)arg1;
 - (unsigned int)addClientWithCapabilities:(unsigned int)arg1 auditToken:(struct { unsigned int x1[8]; })arg2 currentClientID:(unsigned int)arg3 xpcConnection:(id)arg4 eaProtocols:(id)arg5 notifyOfAlreadyConnectedAccessories:(bool)arg6 andBundleId:(id)arg7;
 - (void)addDelegate:(id)arg1;
@@ -66,8 +69,9 @@
 - (id)clients;
 - (void)dealloc;
 - (id)delegateList;
-- (id)findAccessoryForAccessoryUID:(id)arg1;
+- (id)findAccessoryForAccessoryUID:(id)arg1 andKeyTag:(id)arg2;
 - (id)findAccessoryForConnectionID:(unsigned int)arg1;
+- (id)findAccessoryForConnectionID:(unsigned int)arg1 andKeyTag:(id)arg2;
 - (id)findClientWithID:(unsigned int)arg1;
 - (id)findClientWithXPCConnection:(id)arg1;
 - (unsigned int)generateClientID;
@@ -95,8 +99,8 @@
 - (void)removeClientWithID:(unsigned int)arg1;
 - (void)removeDelegate:(id)arg1;
 - (struct __serverFlags { unsigned int x1 : 1; unsigned int x2 : 1; unsigned int x3 : 30; })serverFlags;
-- (void)setAccessoryViaAccessoryUIDList:(id)arg1;
 - (void)setAccessoryViaConnectionIDList:(id)arg1;
+- (void)setAccessoryViaKeyUIDList:(id)arg1;
 - (void)setDelegateList:(id)arg1;
 - (void)startServer;
 - (void)stopServer;

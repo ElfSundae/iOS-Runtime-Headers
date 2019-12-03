@@ -10,6 +10,7 @@
 @property (nonatomic, readonly) <AVCaptureVisionDataOutputDelegate> *delegate;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *delegateCallbackQueue;
 @property (nonatomic, readonly) id delegateOverride;
+@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *delegateOverrideCallbackQueue;
 @property (readonly, copy) NSString *description;
 @property (getter=isFeatureBinningEnabled, nonatomic) bool featureBinningEnabled;
 @property (getter=isFeatureOrientationAssignmentEnabled, nonatomic) bool featureOrientationAssignmentEnabled;
@@ -32,19 +33,20 @@
 - (void)_processSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1;
 - (void)_updateLocalQueue:(struct localQueueOpaque { }*)arg1;
 - (void)_updateRemoteQueue:(struct remoteQueueReceiverOpaque { }*)arg1;
-- (id)addConnection:(id)arg1 error:(id*)arg2;
 - (bool)appliesMirroringWithPhysicalFlipForConnection:(id)arg1;
 - (bool)appliesOrientationWithPhysicalRotationForConnection:(id)arg1;
 - (void)attachSafelyToFigCaptureSession:(struct OpaqueFigCaptureSession { }*)arg1;
-- (bool)canAddConnectionForMediaType:(id)arg1;
+- (bool)canAddConnection:(id)arg1 failureReason:(id*)arg2;
 - (id)connectionMediaTypes;
 - (void)dealloc;
 - (id)delegate;
 - (id)delegateCallbackQueue;
 - (id)delegateOverride;
+- (id)delegateOverrideCallbackQueue;
 - (void)detachSafelyFromFigCaptureSession:(struct OpaqueFigCaptureSession { }*)arg1;
 - (float)gaussianPyramidBaseOctaveDownscalingFactor;
 - (unsigned long long)gaussianPyramidOctavesCount;
+- (void)handleChangedActiveFormat:(id)arg1 forDevice:(id)arg2;
 - (id)init;
 - (bool)isFeatureBinningEnabled;
 - (bool)isFeatureOrientationAssignmentEnabled;
@@ -53,7 +55,6 @@
 - (unsigned long long)maxKeypointsCount;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })minBurstFrameDuration;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })minFrameDuration;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (void)removeConnection:(id)arg1;
 - (void)setDelegate:(id)arg1 callbackQueue:(id)arg2;
 - (void)setDelegateOverride:(id)arg1 delegateOverrideCallbackQueue:(id)arg2;

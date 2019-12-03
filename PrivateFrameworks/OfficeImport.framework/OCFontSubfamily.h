@@ -12,7 +12,7 @@
 
 + (id)fontSubfamilyWithName:(id)arg1 metadata:(id)arg2;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithName:(id)arg1 metadata:(id)arg2;
 - (id)metadata;
 - (id)name;

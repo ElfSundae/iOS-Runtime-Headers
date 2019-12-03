@@ -3,6 +3,7 @@
  */
 
 @interface UIKeyboardMotionSupport : NSObject <_UIScreenBasedObject> {
+    UIWindowScene * _canvas;
     <UISplitKeyboardSource> * _controller;
     UIScreen * _screen;
 }
@@ -16,10 +17,13 @@
 @property (readonly) Class superclass;
 
 + (id)supportForScreen:(id)arg1;
++ (id)supportForUIScene:(id)arg1;
 
 - (void)_connectController:(id)arg1;
 - (void)_disconnectingController:(id)arg1;
+- (id)_initWithCanvas:(id)arg1 options:(id)arg2;
 - (id)_initWithScreen:(id)arg1 options:(id)arg2;
+- (id)_intendedCanvas;
 - (id)_intendedScreen;
 - (bool)_matchingOptions:(id)arg1;
 - (id)_options;

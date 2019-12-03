@@ -10,10 +10,10 @@
 
 + (bool)isSupported;
 
-- (bool)canHandleRequest:(id)arg1 options:(id)arg2;
+- (bool)canHandleRequest:(id)arg1;
 - (long long)componentState;
 - (id)description;
-- (void)handleRequest:(id)arg1 options:(id)arg2 completion:(id /* block */)arg3;
+- (void)handleRequest:(id)arg1 completion:(id /* block */)arg2;
 - (id)init;
 - (void)setComponentState:(long long)arg1;
 - (void)transitionToState:(long long)arg1 completion:(id /* block */)arg2;

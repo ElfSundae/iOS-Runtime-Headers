@@ -3,16 +3,6 @@
  */
 
 @interface VUIErrorTemplateViewController : UIViewController {
-    NSMutableArray * _additionalLabels;
-    UIAlertController * _alertController;
-    NSArray * _buttonElements;
-    TVImageProxy * _imageProxy;
-    struct CGSize { 
-        double width; 
-        double height; 
-    }  _imageSize;
-    NSString * _message;
-    NSString * _title;
     IKViewElement * _viewElement;
 }
 

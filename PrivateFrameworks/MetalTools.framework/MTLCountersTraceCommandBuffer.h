@@ -33,6 +33,7 @@
 - (void)presentDrawable:(id)arg1;
 - (void)presentDrawable:(id)arg1 atTime:(double)arg2;
 - (id)renderCommandEncoder;
+- (id)resourceStateCommandEncoder;
 - (void)saveCommandBuffer:(const void*)arg1 queue:(id)arg2 profilingResults:(id)arg3;
 - (void)waitUntilCompleted;
 - (void)waitUntilScheduled;

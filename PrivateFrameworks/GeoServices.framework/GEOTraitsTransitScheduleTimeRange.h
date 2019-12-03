@@ -5,9 +5,9 @@
 @interface GEOTraitsTransitScheduleTimeRange : PBCodable <NSCopying> {
     double  _duration;
     struct { 
-        unsigned int duration : 1; 
-        unsigned int startTime : 1; 
-    }  _has;
+        unsigned int has_duration : 1; 
+        unsigned int has_startTime : 1; 
+    }  _flags;
     double  _startTime;
     PBUnknownFields * _unknownFields;
 }
@@ -18,7 +18,10 @@
 @property (nonatomic) double startTime;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -29,6 +32,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setDuration:(double)arg1;
 - (void)setHasDuration:(bool)arg1;

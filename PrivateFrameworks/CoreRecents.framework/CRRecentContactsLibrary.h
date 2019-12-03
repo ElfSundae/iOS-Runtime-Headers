@@ -10,12 +10,14 @@
 // Image: /System/Library/PrivateFrameworks/CoreRecents.framework/CoreRecents
 
 + (struct NSObject { Class x1; }*)_recentEventForGroupMembers:(id)arg1 displayName:(id)arg2 date:(id)arg3 weight:(id)arg4 metadata:(id)arg5 options:(unsigned long long)arg6;
++ (id)apiLogDescriptionOfEvent:(id)arg1;
 + (id)defaultInstance;
 + (struct NSObject { Class x1; }*)explicitGroupEventForGroupMembers:(id)arg1 displayName:(id)arg2 date:(id)arg3 metadata:(id)arg4 options:(unsigned long long)arg5;
 + (id /* block */)frecencyComparator;
 + (id /* block */)frecencyComparatorForSearch:(id)arg1 preferredKinds:(id)arg2 sendingAddress:(id)arg3;
 + (id /* block */)frecencyComparatorForSearch:(id)arg1 preferredKinds:(id)arg2 sendingAddress:(id)arg3 queryOptions:(unsigned long long)arg4;
 + (struct NSObject { Class x1; }*)groupMemberWithAddress:(id)arg1 displayName:(id)arg2 kind:(id)arg3;
++ (id)os_log;
 + (id /* block */)rankedFrecencyComparatorWithPreferredSources:(id)arg1;
 + (struct NSObject { Class x1; }*)recentEventForAddress:(id)arg1 displayName:(id)arg2 kind:(id)arg3 date:(id)arg4;
 + (id)recentEventForAddress:(id)arg1 displayName:(id)arg2 kind:(id)arg3 date:(id)arg4 metadata:(id)arg5;
@@ -45,11 +47,16 @@
 - (void)recordContactEvents:(id)arg1 recentsDomain:(id)arg2 sendingAddress:(id)arg3 source:(id)arg4 userInitiated:(bool)arg5;
 - (void)recordContactEvents:(id)arg1 recentsDomain:(id)arg2 sendingAddress:(id)arg3 userInitiated:(bool)arg4;
 - (bool)removeRecentContacts:(id)arg1 error:(out id*)arg2;
+- (bool)removeRecentContactsWithRecentIDs:(id)arg1 recentsDomain:(id)arg2 error:(out id*)arg3;
 - (void)requestRecentsUsingPredicate:(id)arg1 inDomains:(id)arg2 comparator:(id /* block */)arg3 queue:(id)arg4 completion:(id /* block */)arg5;
 - (void)setImplicitGroupThreshold:(unsigned long long)arg1 forDomain:(id)arg2;
 - (void)start;
 
 // Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
+
+- (void)recordContactEventsForHeaders:(id)arg1 recentsDomain:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/ContactsAutocompleteUI.framework/ContactsAutocompleteUI
 
 - (void)recordContactEventsForHeaders:(id)arg1 recentsDomain:(id)arg2;
 

@@ -3,6 +3,7 @@
  */
 
 @interface NSParagraphStyleExtraData : NSObject {
+    long long  _compositionLanguage;
     long long  _headerLevel;
     double  _hyphenationFactor;
     unsigned long long  _lineBoundsOptions;
@@ -12,6 +13,7 @@
     NSArray * _textBlocks;
     NSArray * _textLists;
     double  _tighteningFactor;
+    bool  _usesDefaultHyphenation;
 }
 
 @end

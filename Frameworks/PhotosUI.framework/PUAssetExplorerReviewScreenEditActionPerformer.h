@@ -5,12 +5,10 @@
 @interface PUAssetExplorerReviewScreenEditActionPerformer : PUAssetExplorerReviewScreenActionPerformer {
     <PUPhotoEditViewControllerSessionDelegate> * _photoDelegate;
     <PUReviewAssetProvider> * _reviewAssetProvider;
-    <PUVideoEditViewControllerSessionDelegate> * _videoDelegate;
 }
 
 @property (nonatomic) <PUPhotoEditViewControllerSessionDelegate> *photoDelegate;
 @property (nonatomic, retain) <PUReviewAssetProvider> *reviewAssetProvider;
-@property (nonatomic) <PUVideoEditViewControllerSessionDelegate> *videoDelegate;
 
 + (bool)canPerformOnAsset:(id)arg1 inAssetCollection:(id)arg2;
 + (bool)shouldEnableOnAsset:(id)arg1 inAssetCollection:(id)arg2;
@@ -22,7 +20,5 @@
 - (id)reviewAssetProvider;
 - (void)setPhotoDelegate:(id)arg1;
 - (void)setReviewAssetProvider:(id)arg1;
-- (void)setVideoDelegate:(id)arg1;
-- (id)videoDelegate;
 
 @end

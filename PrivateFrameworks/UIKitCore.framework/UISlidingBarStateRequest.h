@@ -20,6 +20,7 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (unsigned long long)hash;
+- (id)init;
 - (bool)isEqual:(id)arg1;
 - (double)leadingWidth;
 - (void)setLeadingWidth:(double)arg1;

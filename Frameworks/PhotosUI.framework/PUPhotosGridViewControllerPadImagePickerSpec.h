@@ -6,6 +6,6 @@
 
 - (bool)canCommitPreview;
 - (bool)displaysAvalancheStacks;
-- (int)thumbnailImageFormat;
+- (unsigned short)thumbnailImageFormat;
 
 @end

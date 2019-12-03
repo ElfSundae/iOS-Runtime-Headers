@@ -2,62 +2,48 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface UITargetedDragPreview : NSObject <NSCopying> {
+@interface UITargetedDragPreview : UITargetedPreview <_UIDragPreviewProvider> {
     NSDictionary * __springboardParameters;
-    bool  __springboardPlatterStyle;
-    bool  _defaultPreview;
+    bool  _didSetLiftAnchorPoint;
     _DUIPreview * _duiPreview;
+    _UIDraggingImageComponent * _imageComponent;
     struct CGPoint { 
         double x; 
         double y; 
     }  _liftAnchorPoint;
-    UIDragPreviewParameters * _parameters;
-    UIDragPreviewTarget * _target;
-    UIView * _view;
-    UIView * _viewToSnapshot;
+    bool  _preventAfterScreenUpdatesSnapshot;
 }
 
+@property (nonatomic, readonly) <_UIDragPreviewProvider> *_dragPreviewProvider;
 @property (nonatomic, readonly) _DUIPreview *_duiPreview;
 @property (nonatomic, readonly) id /* block */ _duiPreviewProvider;
 @property (nonatomic, copy) NSDictionary *_springboardParameters;
-@property (nonatomic) bool _springboardPlatterStyle;
+@property (readonly, copy) NSString *debugDescription;
 @property (getter=_isDefaultPreview, setter=_setDefaultPreview:, nonatomic) bool defaultPreview;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) struct CGPoint { double x1; double x2; } liftAnchorPoint;
-@property (nonatomic, readonly, copy) UIDragPreviewParameters *parameters;
-@property (nonatomic, readonly) struct CGSize { double x1; double x2; } size;
-@property (nonatomic, readonly) UIDragPreviewTarget *target;
-@property (nonatomic, readonly) UIView *view;
+@property (getter=_preventAfterScreenUpdatesSnapshot, setter=_setPreventAfterScreenUpdatesSnapshot:, nonatomic) bool preventAfterScreenUpdatesSnapshot;
+@property (readonly) Class superclass;
 @property (getter=_viewToSnapshot, setter=_setViewToSnapshot:, nonatomic) UIView *viewToSnapshot;
 
-+ (id)new;
 + (id)previewForURL:(id)arg1 target:(id)arg2;
 + (id)previewForURL:(id)arg1 title:(id)arg2 target:(id)arg3;
 
 - (void).cxx_destruct;
+- (id)_dragPreviewProvider;
 - (id)_duiPreview;
 - (id /* block */)_duiPreviewProvider;
-- (bool)_isDefaultPreview;
-- (void)_setDefaultPreview:(bool)arg1;
-- (void)_setViewToSnapshot:(id)arg1;
+- (bool)_preventAfterScreenUpdatesSnapshot;
+- (void)_setPreventAfterScreenUpdatesSnapshot:(bool)arg1;
+- (void)_setPreviewMode:(long long)arg1;
 - (id)_springboardParameters;
-- (bool)_springboardPlatterStyle;
-- (id)_untargetedPreview;
-- (id)_viewToSnapshot;
-- (bool)containsPoint:(struct CGPoint { double x1; double x2; })arg1 fromView:(id)arg2;
-- (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (id)init;
-- (id)initWithView:(id)arg1;
-- (id)initWithView:(id)arg1 parameters:(id)arg2;
+- (id)imageComponent;
 - (id)initWithView:(id)arg1 parameters:(id)arg2 target:(id)arg3;
 - (struct CGPoint { double x1; double x2; })liftAnchorPoint;
-- (id)parameters;
 - (id)retargetedPreviewWithTarget:(id)arg1;
 - (void)setLiftAnchorPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)set_springboardParameters:(id)arg1;
-- (void)set_springboardPlatterStyle:(bool)arg1;
-- (struct CGSize { double x1; double x2; })size;
-- (void)takeLiftLocation:(struct CGPoint { double x1; double x2; })arg1 fromView:(id)arg2;
-- (id)target;
-- (id)view;
+- (void)takeLiftAnchorPoint:(struct CGPoint { double x1; double x2; })arg1 fromView:(id)arg2;
 
 @end

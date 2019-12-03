@@ -11,10 +11,10 @@
 }
 
 @property int (*callback;
-@property (retain) NSThread *clientThread;
+@property NSThread *clientThread;
 @property void*context;
 @property bool iCloudSyncingEnabled;
-@property (retain) NSUbiquitousKeyValueStore *keyValueStore;
+@property NSUbiquitousKeyValueStore *keyValueStore;
 
 - (void)addToKVStore:(id)arg1;
 - (int (*)callback;
@@ -28,6 +28,7 @@
 - (void)initWithCallback:(int (*)arg1 callbackContext:(void*)arg2;
 - (id)keyValueStore;
 - (void)printCompleteKVStore;
+- (void)pruneKVSStore;
 - (void)queryKeychainSyncState;
 - (id)readCompleteKVStore;
 - (void)readStoreValueForKey:(id)arg1;
@@ -35,6 +36,7 @@
 - (void)relayCloudEvent:(id)arg1;
 - (void)relayKeychainSyncState:(id)arg1;
 - (void)relayMergeNetworks:(id)arg1;
+- (void)relayPruneKVSStore:(id)arg1;
 - (void)relayReadStoreValueAction:(id)arg1;
 - (void)removeFromKVStore:(id)arg1;
 - (void)setCallback:(int (*)arg1;

@@ -9,6 +9,7 @@
     long long  _aprIntentDonationPruningMethod;
     NSObject<OS_dispatch_queue> * _backgroundSaverQueue;
     NSMutableDictionary * _categoricalHistograms;
+    _ATXDataStore * _datastore;
     NSMutableDictionary * _histograms;
     int  _maxActionConfirmsRejectsActionCount;
     int  _maxAprConfirmsRejectsIntentCount;
@@ -27,6 +28,7 @@
 
 - (void).cxx_destruct;
 - (id)categoricalHistogramForLaunchType:(long long)arg1;
+- (void)exchangeDatastore:(id)arg1;
 - (int)getHistogramMaxCategoryCountFromAsset:(id)arg1;
 - (unsigned long long)getHistogramPruningMethodFromAsset:(id)arg1;
 - (id)histogramForLaunchType:(long long)arg1;

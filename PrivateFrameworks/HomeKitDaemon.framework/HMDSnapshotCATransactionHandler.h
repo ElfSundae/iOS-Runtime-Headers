@@ -8,7 +8,7 @@
     CAContext * _snapshotContext;
 }
 
-@property (nonatomic, readonly) BSPortDeathWatcher *backboardServicesWatcher;
+@property (nonatomic, retain) BSPortDeathWatcher *backboardServicesWatcher;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *clientQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -30,6 +30,7 @@
 - (struct CGImage { }*)createSnapshotCGImageRef:(id)arg1;
 - (void)deleteSlot:(id)arg1 filePath:(id)arg2;
 - (id)init;
+- (void)setBackboardServicesWatcher:(id)arg1;
 - (void)setSnapshotContext:(id)arg1;
 - (id)snapshotContext;
 

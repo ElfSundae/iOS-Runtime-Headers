@@ -9,7 +9,6 @@
     NSDictionary * _clientPreviewOptions;
     NSString * _contentType;
     unsigned long long  _editedFileBehavior;
-    NSURL * _editedFileURL;
     QLItem * _item;
     NSNumber * _itemSize;
     NSString * _password;
@@ -25,7 +24,6 @@
 @property (retain) NSDictionary *clientPreviewOptions;
 @property (retain) NSString *contentType;
 @property unsigned long long editedFileBehavior;
-@property (retain) NSURL *editedFileURL;
 @property (retain) QLItem *item;
 @property (retain) NSNumber *itemSize;
 @property (copy) NSString *password;
@@ -43,7 +41,6 @@
 - (id)clientPreviewOptions;
 - (id)contentType;
 - (unsigned long long)editedFileBehavior;
-- (id)editedFileURL;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
@@ -59,7 +56,6 @@
 - (void)setClientPreviewOptions:(id)arg1;
 - (void)setContentType:(id)arg1;
 - (void)setEditedFileBehavior:(unsigned long long)arg1;
-- (void)setEditedFileURL:(id)arg1;
 - (void)setItem:(id)arg1;
 - (void)setItemSize:(id)arg1;
 - (void)setPassword:(id)arg1;

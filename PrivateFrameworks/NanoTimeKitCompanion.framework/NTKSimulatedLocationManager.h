@@ -9,6 +9,7 @@
 - (id)init;
 - (id)previousLocation;
 - (struct NSString { Class x1; }*)startLocationUpdatesWithIdentifier:(id)arg1 handler:(id /* block */)arg2;
+- (struct NSString { Class x1; }*)startLocationUpdatesWithIdentifier:(id)arg1 wantsGroundElevation:(bool)arg2 handler:(id /* block */)arg3;
 - (void)stopLocationUpdatesForToken:(struct NSString { Class x1; }*)arg1;
 
 @end

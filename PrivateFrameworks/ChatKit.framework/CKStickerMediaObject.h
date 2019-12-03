@@ -7,6 +7,4 @@
 + (id)attachmentSummary:(unsigned long long)arg1;
 + (bool)shouldShadePreview;
 
-- (bool)generatePreviewOutOfProcess;
-
 @end

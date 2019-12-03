@@ -3,6 +3,7 @@
  */
 
 @interface _INPBNote : PBCodable <NSCopying, NSSecureCoding, _INPBNote> {
+    bool  __encodeLegacyGloryData;
     NSArray * _contents;
     _INPBDateTime * _createdDateTime;
     _INPBDataString * _groupName;
@@ -12,6 +13,7 @@
     _INPBDataString * _title;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic, copy) NSArray *contents;
 @property (nonatomic, readonly) unsigned long long contentsCount;
 @property (nonatomic, retain) _INPBDateTime *createdDateTime;
@@ -30,8 +32,11 @@
 @property (nonatomic, retain) _INPBDataString *title;
 
 + (Class)contentType;
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (void)addContent:(id)arg1;
 - (void)clearContents;
 - (id)contentAtIndex:(unsigned long long)arg1;
@@ -40,6 +45,7 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)createdDateTime;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (id)groupName;
 - (bool)hasCreatedDateTime;
 - (bool)hasGroupName;
@@ -48,6 +54,7 @@
 - (bool)hasTitle;
 - (unsigned long long)hash;
 - (id)identifier;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)modifiedDateTime;
 - (bool)readFrom:(id)arg1;

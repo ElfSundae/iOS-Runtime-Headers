@@ -26,7 +26,7 @@
 - (void)_dequeueActionRow;
 - (bool)_handleDidSelectActionRowForOption:(id)arg1;
 - (bool)_handleDidSelectOption:(id)arg1;
-- (id)_initWithTableView:(id)arg1 face:(id)arg2 inGallery:(bool)arg3 editOptionCollection:(id)arg4 faceView:(id)arg5;
+- (id)_initWithTableViewController:(id)arg1 face:(id)arg2 inGallery:(bool)arg3 editOptionCollection:(id)arg4 faceView:(id)arg5;
 - (void)_refreshActionRowContent;
 - (id)actionRow;
 - (id)collection;
@@ -35,7 +35,7 @@
 - (Class)editCellClass;
 - (void)faceDidChange;
 - (id)faceView;
-- (id)initWithTableView:(id)arg1 face:(id)arg2 inGallery:(bool)arg3 editOptionCollection:(id)arg4 faceView:(id)arg5;
+- (id)initWithTableViewController:(id)arg1 face:(id)arg2 inGallery:(bool)arg3 editOptionCollection:(id)arg4 faceView:(id)arg5;
 - (void)reloadActionRow;
 - (id)selectedOptions;
 - (void)setActionRow:(id)arg1;

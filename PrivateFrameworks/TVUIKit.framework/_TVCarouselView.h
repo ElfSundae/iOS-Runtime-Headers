@@ -28,6 +28,10 @@
     <TVCarouselViewDelegate> * _delegate;
     CADisplayLink * _displayLink;
     NSDate * _firstFocusChangeInInterval;
+    struct { 
+        bool layoutUpdateInProgress; 
+        bool firstLayoutPass; 
+    }  _flags;
     struct CGPoint { 
         double x; 
         double y; 
@@ -42,7 +46,6 @@
         double width; 
         double height; 
     }  _itemSize;
-    bool  _layoutUpdateInProgress;
     long long  _numFocusChangesInInterval;
     unsigned long long  _numberOfRealItemsForDataSource;
     double  _offsetChangePerSecond;
@@ -51,6 +54,7 @@
     NSDictionary * _previousCollectionToDatasourceIndexMap;
     double  _previousDisplayLinkTimestamp;
     unsigned long long  _scrollMode;
+    bool  _shouldScaleOnIdleFocus;
     double  _showcaseFactor;
     struct CGPoint { 
         double x; 
@@ -78,6 +82,7 @@
 @property (nonatomic) double previousDisplayLinkTimestamp;
 @property (nonatomic) unsigned long long scrollMode;
 @property (nonatomic, readonly) bool shouldBindRowsTogether;
+@property (nonatomic) bool shouldScaleOnIdleFocus;
 @property (nonatomic) double showcaseFactor;
 @property (readonly) Class superclass;
 @property (nonatomic) struct CGPoint { double x1; double x2; } targetContentOffset;
@@ -88,8 +93,8 @@
 
 - (void).cxx_destruct;
 - (void)_animatePagedCenteringAnimated:(bool)arg1 animations:(id /* block */)arg2 completion:(id /* block */)arg3;
+- (void)_applicationDidBecomeActiveNotification:(id)arg1;
 - (void)_applicationDidEnterBackgroundNotification:(id)arg1;
-- (void)_applicationWillEnterForegroundNotification:(id)arg1;
 - (bool)_canScrollCarouselView;
 - (id)_cellForItemAtIndex:(unsigned long long)arg1;
 - (long long)_centerCollectionViewCellIndex;
@@ -135,7 +140,6 @@
 - (void)dealloc;
 - (id)delegate;
 - (id)dequeueReusableCellWithReuseIdentifier:(id)arg1 forIndex:(unsigned long long)arg2;
-- (void)didMoveToSuperview;
 - (void)didMoveToWindow;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)displayLink;
@@ -178,9 +182,12 @@
 - (void)setPreviousDisplayLinkTimestamp:(double)arg1;
 - (void)setScrollMode:(unsigned long long)arg1;
 - (void)setSemanticContentAttribute:(long long)arg1;
+- (void)setShouldScaleOnIdleFocus:(bool)arg1;
 - (void)setShowcaseFactor:(double)arg1;
 - (void)setTargetContentOffset:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setUnitScrollDuration:(double)arg1;
+- (bool)shouldScaleOnIdleFocus;
+- (bool)shouldUpdateFocusInContext:(id)arg1;
 - (double)showcaseFactor;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (struct CGPoint { double x1; double x2; })targetContentOffset;
@@ -190,7 +197,6 @@
 
 // Image: /System/Library/PrivateFrameworks/TVMLKit.framework/TVMLKit
 
-- (void)layoutSubviews;
 - (id)rowMetricsForExpectedWidth:(double)arg1 firstItemRowIndex:(long long*)arg2;
 
 @end

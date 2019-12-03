@@ -3,7 +3,6 @@
  */
 
 @interface PCPersistentInterfaceManager : NSObject <CoreTelephonyClientDataDelegate, PCInterfaceMonitorDelegate> {
-    int  _WWANContextIdentifier;
     NSString * _WWANInterfaceName;
     struct __CFSet { } * _WiFiAutoAssociationDelegates;
     PCSimpleTimer * _WiFiAutoAssociationDisableTimer;
@@ -26,7 +25,6 @@
     bool  _isWakeOnWiFiSupported;
     double  _lastActivationTime;
     NSRecursiveLock * _lock;
-    bool  _shouldOverrideOnCallBehavior;
     struct __CFSet { } * _wakeOnWiFiDelegates;
     PCSimpleTimer * _wakeOnWiFiDisableTimer;
 }
@@ -37,6 +35,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) bool doesWWANInterfaceExist;
+@property (readonly) bool hasWWANStatusIndicator;
 @property (readonly) unsigned long long hash;
 @property (readonly) bool isInCall;
 @property (readonly) bool isInternetReachable;
@@ -100,6 +99,7 @@
 - (void)enableWakeOnWiFi:(bool)arg1 forDelegate:(id)arg2;
 - (void)enableWiFiAutoAssociation:(bool)arg1 forDelegate:(id)arg2;
 - (void)handleMachMessage:(void*)arg1;
+- (bool)hasWWANStatusIndicator;
 - (id)init;
 - (void)interfaceLinkQualityChanged:(id)arg1 previousLinkQuality:(int)arg2;
 - (void)interfaceReachabilityChanged:(id)arg1;

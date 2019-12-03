@@ -9,6 +9,7 @@
     bool  _includeAttachments;
     NSString * _referenceMessageId;
     unsigned long long  _sendingType;
+    NSString * _standaloneReferenceMessageId;
     NSString * _subject;
     NSArray * _to;
 }
@@ -19,6 +20,7 @@
 @property (nonatomic) bool includeAttachments;
 @property (nonatomic, retain) NSString *referenceMessageId;
 @property (nonatomic) unsigned long long sendingType;
+@property (nonatomic, retain) NSString *standaloneReferenceMessageId;
 @property (nonatomic, retain) NSString *subject;
 @property (nonatomic, retain) NSArray *to;
 
@@ -42,8 +44,10 @@
 - (void)setIncludeAttachments:(bool)arg1;
 - (void)setReferenceMessageId:(id)arg1;
 - (void)setSendingType:(unsigned long long)arg1;
+- (void)setStandaloneReferenceMessageId:(id)arg1;
 - (void)setSubject:(id)arg1;
 - (void)setTo:(id)arg1;
+- (id)standaloneReferenceMessageId;
 - (id)subject;
 - (id)to;
 

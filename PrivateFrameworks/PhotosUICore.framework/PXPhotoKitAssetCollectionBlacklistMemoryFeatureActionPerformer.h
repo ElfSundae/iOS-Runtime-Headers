@@ -9,7 +9,7 @@
 @property (nonatomic, retain) NSString *userResponse;
 
 + (bool)canPerformOnAssetCollection:(id)arg1 people:(id)arg2;
-+ (id)createPreviewActionGroupForAssetCollection:(id)arg1 mutableActionTypeToPreviewActionMap:(id)arg2 withHandler:(id /* block */)arg3;
++ (id)createActivityWithTitle:(id)arg1 actionType:(id)arg2 actionSystemImageName:(id)arg3;
 
 - (void).cxx_destruct;
 - (id)_memoryFeatureFromMemory:(id)arg1 forActionType:(id)arg2;

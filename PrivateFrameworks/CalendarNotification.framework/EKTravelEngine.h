@@ -13,6 +13,7 @@
     CLLocationManager * _locationManager;
     bool  _needsRefresh;
     PCPersistentTimer * _periodicRefreshTimer;
+    <CALNRouteHypothesizerProvider> * _routeHypothesizerProvider;
     bool  _running;
     NSObject<OS_dispatch_source> * _syncYieldTimer;
     EKTimedEventStorePurger * _timedEventStorePurger;
@@ -28,6 +29,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, copy) id /* block */ eventSignificantlyChangedBlock;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) <CALNRouteHypothesizerProvider> *routeHypothesizerProvider;
 @property (readonly) Class superclass;
 
 + (double)_periodicRefreshInterval;
@@ -35,6 +37,7 @@
 + (double)requestRefreshTimeInterval;
 + (id)requestedDarwinNotifications;
 + (id)travelEligibleEvents:(id)arg1 fromStartDate:(id)arg2 untilEndDate:(id)arg3;
++ (id)travelEligibleEventsInEventStore:(id)arg1;
 
 - (void).cxx_destruct;
 - (bool)_authorizedToAcquireLocation;
@@ -72,10 +75,11 @@
 - (id /* block */)eventSignificantlyChangedBlock;
 - (void)handleBTAJob:(id)arg1 named:(const char *)arg2;
 - (void)handleDarwinNotification:(id)arg1;
-- (id)init;
+- (id)initWithRouteHypothesizerProvider:(id)arg1;
 - (bool)isLocationManagerStatusAuthorized:(int)arg1;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
 - (void)requestHypothesisRefreshAtDate:(id)arg1 forEventWithExternalURL:(id)arg2;
+- (id)routeHypothesizerProvider;
 - (void)sendFeedbackForPostingLeaveByNotificationForEventWithExternalURL:(id)arg1;
 - (void)sendFeedbackForPostingLeaveNowNotificationForEventWithExternalURL:(id)arg1;
 - (void)setAdviceBlock:(id /* block */)arg1;

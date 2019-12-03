@@ -7,6 +7,7 @@
 }
 
 - (void).cxx_destruct;
+- (id)_propertyDescriptionString;
 - (void)addRecordWithTraitCollection:(id)arg1 addedObjects:(id)arg2 removedObjects:(id)arg3;
 - (void)applyRecordsMatchingTraitCollection:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

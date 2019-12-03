@@ -14,6 +14,7 @@
         } size; 
     }  _bounds;
     float  _confidence;
+    float  _faceQuality;
     bool  _leftEyeClosed;
     VNFaceObservation * _observation;
     bool  _rightEyeClosed;
@@ -24,6 +25,7 @@
 
 @property struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } bounds;
 @property float confidence;
+@property float faceQuality;
 @property bool leftEyeClosed;
 @property (retain) VNFaceObservation *observation;
 @property bool rightEyeClosed;
@@ -36,6 +38,7 @@
 - (float)confidence;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })faceBounds:(unsigned long long)arg1 height:(unsigned long long)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })faceBoundsWithTransform:(unsigned long long)arg1 height:(unsigned long long)arg2 transform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg3;
+- (float)faceQuality;
 - (unsigned long long)flagsForOrientation:(bool)arg1 width:(unsigned long long)arg2 height:(unsigned long long)arg3;
 - (id)init;
 - (bool)leftEyeClosed;
@@ -43,6 +46,7 @@
 - (bool)rightEyeClosed;
 - (void)setBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setConfidence:(float)arg1;
+- (void)setFaceQuality:(float)arg1;
 - (void)setLeftEyeClosed:(bool)arg1;
 - (void)setObservation:(id)arg1;
 - (void)setRightEyeClosed:(bool)arg1;

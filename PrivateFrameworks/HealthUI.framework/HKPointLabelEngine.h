@@ -3,6 +3,16 @@
  */
 
 @interface HKPointLabelEngine : NSObject {
+    struct CGRect { 
+        struct CGPoint { 
+            double x; 
+            double y; 
+        } origin; 
+        struct CGSize { 
+            double width; 
+            double height; 
+        } size; 
+    }  _boundingRegion;
     struct { 
         struct CGRect { 
             struct CGPoint { 
@@ -25,6 +35,7 @@
         double x; 
         double y; 
     }  _currentUntransformedPoint;
+    bool  _isLabelShiftingEnabled;
     bool  _lastRenderOverlapped;
     struct { 
         struct CGRect { 
@@ -52,9 +63,11 @@
     long long  _state;
 }
 
+@property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } boundingRegion;
 @property (nonatomic) struct { struct CGRect { struct CGPoint { double x_1_2_1; double x_1_2_2; } x_1_1_1; struct CGSize { double x_2_2_1; double x_2_2_2; } x_1_1_2; } x1; double x2; long long x3; } currentRenderingData;
 @property (nonatomic) struct CGPoint { double x1; double x2; } currentTransformedPoint;
 @property (nonatomic) struct CGPoint { double x1; double x2; } currentUntransformedPoint;
+@property (nonatomic) bool isLabelShiftingEnabled;
 @property (nonatomic) bool lastRenderOverlapped;
 @property (nonatomic) struct { struct CGRect { struct CGPoint { double x_1_2_1; double x_1_2_2; } x_1_1_1; struct CGSize { double x_2_2_1; double x_2_2_2; } x_1_1_2; } x1; double x2; long long x3; } previousRenderingData;
 @property (nonatomic) struct CGPoint { double x1; double x2; } previousTransformedPoint;
@@ -65,10 +78,12 @@
 - (void).cxx_destruct;
 - (struct { struct CGRect { struct CGPoint { double x_1_2_1; double x_1_2_2; } x_1_1_1; struct CGSize { double x_2_2_1; double x_2_2_2; } x_1_1_2; } x1; double x2; long long x3; })_computeRenderingDataForValue:(double)arg1 transformedPoint:(struct CGPoint { double x1; double x2; })arg2 previousSlope:(long long)arg3 nextSlope:(long long)arg4 previousOptions:(long long)arg5;
 - (long long)_slopeForPoint:(struct CGPoint { double x1; double x2; })arg1 otherPoint:(struct CGPoint { double x1; double x2; })arg2;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })boundingRegion;
 - (struct { struct CGRect { struct CGPoint { double x_1_2_1; double x_1_2_2; } x_1_1_1; struct CGSize { double x_2_2_1; double x_2_2_2; } x_1_1_2; } x1; double x2; long long x3; })currentRenderingData;
 - (struct CGPoint { double x1; double x2; })currentTransformedPoint;
 - (struct CGPoint { double x1; double x2; })currentUntransformedPoint;
-- (id)initWithLabelSizeBlock:(id /* block */)arg1;
+- (id)initWithBoundingRegion:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 isLabelShiftingEnabled:(bool)arg2 labelSizeBlock:(id /* block */)arg3;
+- (bool)isLabelShiftingEnabled;
 - (bool)lastRenderOverlapped;
 - (struct { struct CGRect { struct CGPoint { double x_1_2_1; double x_1_2_2; } x_1_1_1; struct CGSize { double x_2_2_1; double x_2_2_2; } x_1_1_2; } x1; double x2; long long x3; })previousRenderingData;
 - (struct CGPoint { double x1; double x2; })previousTransformedPoint;
@@ -79,6 +94,7 @@
 - (void)setCurrentRenderingData:(struct { struct CGRect { struct CGPoint { double x_1_2_1; double x_1_2_2; } x_1_1_1; struct CGSize { double x_2_2_1; double x_2_2_2; } x_1_1_2; } x1; double x2; long long x3; })arg1;
 - (void)setCurrentTransformedPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setCurrentUntransformedPoint:(struct CGPoint { double x1; double x2; })arg1;
+- (void)setIsLabelShiftingEnabled:(bool)arg1;
 - (void)setLastRenderOverlapped:(bool)arg1;
 - (void)setPreviousRenderingData:(struct { struct CGRect { struct CGPoint { double x_1_2_1; double x_1_2_2; } x_1_1_1; struct CGSize { double x_2_2_1; double x_2_2_2; } x_1_1_2; } x1; double x2; long long x3; })arg1;
 - (void)setPreviousTransformedPoint:(struct CGPoint { double x1; double x2; })arg1;

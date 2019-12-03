@@ -41,6 +41,8 @@
     IKColor * _ikBackgroundColor;
     UIView * _selectingView;
     struct TVShowcaseConfig { 
+        long long flavor; 
+        long long transition; 
         double inset; 
     }  _showcaseConfig;
     double  _showcaseFactor;
@@ -62,7 +64,7 @@
 @property (nonatomic, retain) UIView *headerView;
 @property (nonatomic, retain) IKColor *ikBackgroundColor;
 @property (nonatomic, readonly) bool shouldBindRowsTogether;
-@property (nonatomic) struct TVShowcaseConfig { double x1; } showcaseConfig;
+@property (nonatomic) struct TVShowcaseConfig { long long x1; long long x2; double x3; } showcaseConfig;
 @property (readonly) Class superclass;
 
 + (void)gradientConfigForCollection:(id)arg1 gradientMask:(long long)arg2 gradientLengths:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; }*)arg3 gradientInset:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; }*)arg4 gradientBoundsInset:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; }*)arg5;
@@ -70,10 +72,12 @@
 - (void).cxx_destruct;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_adjustedHeaderFrame;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_adjustedPadding;
+- (double)_adjustedShowcaseFactor;
 - (id)_collectionRowMetricsForExpectedWidth:(double)arg1 firstItemRowIndex:(long long*)arg2 forShowcase:(bool)arg3;
 - (id)_currentFooterView;
 - (id)_currentHeaderView;
 - (double)_showcaseContentScaleForExpectedWidth:(double)arg1;
+- (void)_updateGradientLayer;
 - (void)_updateSubviews;
 - (long long)collectionGradientMask;
 - (id)collectionView;
@@ -106,12 +110,13 @@
 - (void)setHeaderSelectionMargin:(double)arg1;
 - (void)setHeaderView:(id)arg1;
 - (void)setIkBackgroundColor:(id)arg1;
-- (void)setShowcaseConfig:(struct TVShowcaseConfig { double x1; })arg1;
+- (void)setShowcaseConfig:(struct TVShowcaseConfig { long long x1; long long x2; double x3; })arg1;
 - (void)setValue:(id)arg1 forTVViewStyle:(id)arg2;
 - (bool)shouldBindRowsTogether;
-- (struct TVShowcaseConfig { double x1; })showcaseConfig;
+- (struct TVShowcaseConfig { long long x1; long long x2; double x3; })showcaseConfig;
 - (id)showcaseRowMetricsForExpectedWidth:(double)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)tv_setShowcaseFactor:(double)arg1;
 
 @end

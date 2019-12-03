@@ -16,6 +16,7 @@
 - (bool)_fetchedAllChangesFromCloudKit;
 - (void)addSyncDebuggingInfoToDictionary:(id)arg1;
 - (id)ckUtilities;
+- (void)clearLocalSyncState:(unsigned long long)arg1;
 - (id)delegate;
 - (bool)isSyncing;
 - (bool)isUsingStingRay;

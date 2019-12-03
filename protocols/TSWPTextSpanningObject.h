@@ -11,6 +11,7 @@
 
 @optional
 
+- (void)migrateWithDocumentRoot:(TSKDocumentRoot *)arg1;
 - (bool)supportsDeepCopyForUndo;
 
 @end

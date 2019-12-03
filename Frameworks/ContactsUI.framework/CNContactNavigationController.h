@@ -4,6 +4,7 @@
 
 @interface CNContactNavigationController : UINavigationController <CNAccountsAndGroupsViewControllerDelegate, CNContactContentViewControllerDelegate, CNContactListViewControllerDelegate, CNContactListViewControllerDelegateInternal, CNContactViewControllerAddContactPresenter, CNContactViewControllerDelegate> {
     CNAccountsAndGroupsDataSource * _accountsAndGroupsDataSource;
+    CNAccountsAndGroupsViewController * _accountsAndGroupsViewController;
     CNUIUserActivityManager * _activityManager;
     UIKeyCommand * _addKeyCommand;
     bool  _allowsCanceling;
@@ -12,20 +13,25 @@
     bool  _allowsContactBlocking;
     bool  _allowsDone;
     <CNScheduler> * _backgroundScheduler;
+    CNContactListStyleApplier * _contactListStyleApplier;
     CNContactListViewController * _contactListViewController;
     CNContactStore * _contactStore;
     CNContactStyle * _contactStyle;
     UIAlertController * _facebookContactsAlertController;
     bool  _hasPendingShowCard;
+    bool  _hideGroupsButton;
     bool  _ignoresMapsData;
     long long  _leftButtonBehavior;
+    <CNScheduler> * _mainThreadScheduler;
     CNContactStoreDataSource * _nonServerDataSource;
     CNContactViewController * _presentedContactViewController;
+    NSArray * _prohibitedPropertyKeys;
     CNContactViewController * _reusableContactViewController;
     long long  _rightButtonBehavior;
 }
 
 @property (nonatomic, retain) CNAccountsAndGroupsDataSource *accountsAndGroupsDataSource;
+@property (nonatomic) CNAccountsAndGroupsViewController *accountsAndGroupsViewController;
 @property (nonatomic, retain) CNUIUserActivityManager *activityManager;
 @property (nonatomic, retain) UIKeyCommand *addKeyCommand;
 @property (nonatomic) bool allowsCanceling;
@@ -33,7 +39,8 @@
 @property (nonatomic) bool allowsCardEditing;
 @property (nonatomic) bool allowsContactBlocking;
 @property (nonatomic) bool allowsDone;
-@property (nonatomic, retain) <CNScheduler> *backgroundScheduler;
+@property (nonatomic, readonly) <CNScheduler> *backgroundScheduler;
+@property (nonatomic, retain) CNContactListStyleApplier *contactListStyleApplier;
 @property (nonatomic, retain) CNContactStore *contactStore;
 @property (nonatomic, retain) CNContactStyle *contactStyle;
 @property (nonatomic, readonly) <CNContactDataSource> *dataSource;
@@ -43,11 +50,14 @@
 @property (nonatomic) UIAlertController *facebookContactsAlertController;
 @property (nonatomic) bool hasPendingShowCard;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) bool hideGroupsButton;
 @property (nonatomic) bool hidesSearchableSources;
 @property (nonatomic) bool ignoresMapsData;
 @property (nonatomic) long long leftButtonBehavior;
+@property (nonatomic, readonly) <CNScheduler> *mainThreadScheduler;
 @property (nonatomic, retain) CNContactStoreDataSource *nonServerDataSource;
 @property (nonatomic) CNContactViewController *presentedContactViewController;
+@property (nonatomic, retain) NSArray *prohibitedPropertyKeys;
 @property (nonatomic, retain) CNContactViewController *reusableContactViewController;
 @property (nonatomic) long long rightButtonBehavior;
 @property (readonly) Class superclass;
@@ -57,6 +67,7 @@
 - (void).cxx_destruct;
 - (void)_cnui_presentViewController:(id)arg1 animated:(bool)arg2;
 - (id)accountsAndGroupsDataSource;
+- (id)accountsAndGroupsViewController;
 - (void)accountsAndGroupsViewControllerDidFinish:(id)arg1;
 - (id)activityManager;
 - (void)addContact:(id)arg1;
@@ -71,10 +82,13 @@
 - (void)applicationDidResume;
 - (id)backgroundScheduler;
 - (void)beginSearch:(id)arg1;
+- (bool)canAddContacts;
 - (bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)cancel:(id)arg1;
 - (void)cancelSearch:(id)arg1;
 - (void)checkForFacebookContactsWithDelay:(double)arg1 allowAlert:(bool)arg2;
+- (void)checkForInfoContentWithContext:(id)arg1;
+- (id)contactListStyleApplier;
 - (id)contactListViewController;
 - (bool)contactListViewController:(id)arg1 canSelectContact:(id)arg2;
 - (void)contactListViewController:(id)arg1 didSelectContact:(id)arg2;
@@ -88,8 +102,10 @@
 - (id)dataSource;
 - (void)dealloc;
 - (void)done:(id)arg1;
+- (void)executeAddContact;
 - (id)facebookContactsAlertController;
 - (bool)hasPendingShowCard;
+- (bool)hideGroupsButton;
 - (bool)hidesSearchableSources;
 - (bool)ignoresMapsData;
 - (id)initWithDataSource:(id)arg1;
@@ -98,6 +114,7 @@
 - (id)initWithDataSource:(id)arg1 environment:(id)arg2 allowsLargeTitles:(bool)arg3;
 - (bool)isPresentedContactViewControllerVisible;
 - (long long)leftButtonBehavior;
+- (id)mainThreadScheduler;
 - (id)nextResponderForContactListViewController:(id)arg1;
 - (id)nonServerDataSource;
 - (void)notifyOtherFacebookContactsAlertDidSelectAction;
@@ -107,6 +124,7 @@
 - (void)presentAddContactViewController:(id)arg1 animated:(bool)arg2;
 - (void)presentGroupsViewController:(id)arg1;
 - (id)presentedContactViewController;
+- (id)prohibitedPropertyKeys;
 - (id)reusableContactViewController;
 - (id)reuseableContactViewControllerConfiguredForContact:(id)arg1 mode:(long long)arg2;
 - (long long)rightButtonBehavior;
@@ -114,6 +132,7 @@
 - (void)selectNextContact:(id)arg1;
 - (void)selectPreviousContact:(id)arg1;
 - (void)setAccountsAndGroupsDataSource:(id)arg1;
+- (void)setAccountsAndGroupsViewController:(id)arg1;
 - (void)setActivityManager:(id)arg1;
 - (void)setAddKeyCommand:(id)arg1;
 - (void)setAllowsCanceling:(bool)arg1;
@@ -121,30 +140,39 @@
 - (void)setAllowsCardEditing:(bool)arg1;
 - (void)setAllowsContactBlocking:(bool)arg1;
 - (void)setAllowsDone:(bool)arg1;
-- (void)setBackgroundScheduler:(id)arg1;
+- (void)setContactListStyleApplier:(id)arg1;
 - (void)setContactStore:(id)arg1;
 - (void)setContactStyle:(id)arg1;
 - (void)setFacebookContactsAlertController:(id)arg1;
 - (void)setHasPendingShowCard:(bool)arg1;
+- (void)setHideGroupsButton:(bool)arg1;
 - (void)setHidesSearchableSources:(bool)arg1;
 - (void)setIgnoresMapsData:(bool)arg1;
 - (void)setLeftButtonBehavior:(long long)arg1;
 - (void)setNonServerDataSource:(id)arg1;
 - (void)setPresentedContactViewController:(id)arg1;
+- (void)setProhibitedPropertyKeys:(id)arg1;
 - (void)setReusableContactViewController:(id)arg1;
 - (void)setRightButtonBehavior:(long long)arg1;
 - (void)setShouldDisplayMeContactBanner:(bool)arg1;
 - (bool)shouldDisplayMeContactBanner;
+- (bool)shouldShowGroupsButton;
+- (bool)shouldShowLeftCancelAndRightAddButton;
+- (bool)shouldShowLeftCancelAndRightDoneButton;
+- (bool)shouldShowRightAddAndCancelButton;
+- (bool)shouldShowRightAddButton;
+- (bool)shouldShowRightCancelButton;
 - (void)showCardForContact:(id)arg1 animated:(bool)arg2;
 - (void)showCardForContact:(id)arg1 resetFilter:(bool)arg2 resetSearch:(bool)arg3 fallbackToFirstContact:(bool)arg4 scrollToContact:(bool)arg5 animated:(bool)arg6;
 - (void)showCardForContactAfterIndexPath:(id)arg1;
 - (void)showCardForContactBeforeIndexPath:(id)arg1;
 - (void)showCardForContactIfPossible:(id)arg1;
-- (void)showUnifiedCardForPerson:(void*)arg1;
+- (void)updateContactStyle:(id)arg1;
 - (void)updateLeftNavigationButtonAnimated:(bool)arg1;
 - (void)updateNavigationButtonsAnimated:(bool)arg1;
 - (void)updateNavigationButtonsInSearchMode:(bool)arg1;
 - (void)updateNavigationButtonsInSearchMode:(bool)arg1 animated:(bool)arg2;
+- (id)userActivityRepresentingCurrentlyDisplayedContact;
 - (void)viewWillAppear:(bool)arg1;
 
 @end

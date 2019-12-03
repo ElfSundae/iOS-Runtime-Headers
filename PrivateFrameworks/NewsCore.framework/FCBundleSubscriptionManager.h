@@ -17,7 +17,7 @@
 @property (nonatomic, retain) NFMutexLock *accessLock;
 @property (nonatomic, retain) <FCBundleChannelProviderType> *bundleChannelProvider;
 @property (nonatomic, readonly) <FCBundleEntitlementsProviderType> *bundleEntitlementsProvider;
-@property (nonatomic, readonly) FCBundleSubscription *bundleSubscription;
+@property (nonatomic, readonly, copy) FCBundleSubscription *bundleSubscription;
 @property (nonatomic, retain) FCBundleSubscriptionLookUpEntryManager *bundleSubscriptionLookupEntryManager;
 @property (nonatomic, retain) FCBundleSubscription *cachedSubscription;
 @property (nonatomic, readonly) <FCCoreConfigurationManager> *configurationManager;
@@ -33,7 +33,6 @@
 - (void).cxx_destruct;
 - (id)accessLock;
 - (void)activityObservingApplicationDidEnterBackground;
-- (void)activityObservingApplicationWillEnterForeground;
 - (void)addObserver:(id)arg1;
 - (id)bundleChannelProvider;
 - (void)bundleChannelProvider:(id)arg1 bundleChannelIDsDidChangeWithChannelIDs:(id)arg2;
@@ -54,6 +53,7 @@
 - (void)notifyObserversForExpiredStateWithSubscription:(id)arg1;
 - (void)notifyObserversForSubscribedStateWithSubscription:(id)arg1;
 - (id)observers;
+- (void)prepareForUseWithCompletion:(id /* block */)arg1;
 - (void)prewarmBundleTagIDsWithPurchaseID:(id)arg1;
 - (id)purchaseLookupRecordSource;
 - (void)refreshBundleSubscriptionWithCachePolicy:(unsigned long long)arg1 completion:(id /* block */)arg2;

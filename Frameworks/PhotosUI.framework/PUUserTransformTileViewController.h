@@ -3,7 +3,6 @@
  */
 
 @interface PUUserTransformTileViewController : PUTileViewController <PUUserTransformViewDelegate> {
-    PUDisplayTileTransform * __displayTileTransform;
     NSString * __identifier;
     struct CGRect { 
         struct CGPoint { 
@@ -22,26 +21,25 @@
         bool respondsToDidChangeIsUserInteracting; 
         bool respondsToShouldReceiveTouchAtLocationFromProvider; 
     }  _delegateFlags;
+    PUDisplayTileTransform * _displayTileTransform;
     bool  _userInteractionEnabled;
     PUUserTransformView * _userTransformView;
 }
 
-@property (setter=_setDisplayTileTransform:, nonatomic, retain) PUDisplayTileTransform *_displayTileTransform;
 @property (setter=_setIdentifier:, nonatomic, copy) NSString *_identifier;
 @property (setter=_setUntransformedContentFrame:, nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } _untransformedContentFrame;
 @property (nonatomic, retain) PUAssetReference *assetReference;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <PUUserTransformTileViewControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, retain) PUDisplayTileTransform *displayTileTransform;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (setter=setUserInteractionEnabled:, nonatomic) bool userInteractionEnabled;
 @property (setter=_setUserTransformView:, nonatomic, retain) PUUserTransformView *userTransformView;
 
 - (void).cxx_destruct;
-- (id)_displayTileTransform;
 - (id)_identifier;
-- (void)_setDisplayTileTransform:(id)arg1;
 - (void)_setIdentifier:(id)arg1;
 - (void)_setUntransformedContentFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)_setUserTransformView:(id)arg1;
@@ -56,10 +54,12 @@
 - (void)dealloc;
 - (id)delegate;
 - (void)didChangeAnimating;
+- (id)displayTileTransform;
 - (id)initWithReuseIdentifier:(id)arg1;
 - (id)loadView;
 - (void)setAssetReference:(id)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setDisplayTileTransform:(id)arg1;
 - (void)setUserInteractionEnabled:(bool)arg1;
 - (bool)userInteractionEnabled;
 - (id)userTransformView;

@@ -5,6 +5,7 @@
 @interface SAUISayIt : SABaseClientBoundCommand
 
 @property (nonatomic, retain) SAUIAudioData *audioData;
+@property (nonatomic, copy) NSString *audioDataUrl;
 @property (nonatomic) bool canUseServerTTS;
 @property (nonatomic, retain) <SAAceSerializable> *context;
 @property (nonatomic, copy) NSString *dialogIdentifier;
@@ -21,6 +22,7 @@
 + (id)sayItWithDictionary:(id)arg1 context:(id)arg2;
 
 - (id)audioData;
+- (id)audioDataUrl;
 - (bool)canUseServerTTS;
 - (id)context;
 - (id)dialogIdentifier;
@@ -33,6 +35,7 @@
 - (bool)repeatable;
 - (bool)requiresResponse;
 - (void)setAudioData:(id)arg1;
+- (void)setAudioDataUrl:(id)arg1;
 - (void)setCanUseServerTTS:(bool)arg1;
 - (void)setContext:(id)arg1;
 - (void)setDialogIdentifier:(id)arg1;

@@ -2,63 +2,82 @@
    Image: /System/Library/PrivateFrameworks/IDSFoundation.framework/IDSFoundation
  */
 
-@interface IDSEndpoint : NSObject <NSSecureCoding> {
+@interface IDSEndpoint : NSObject <NSCopying, NSSecureCoding> {
+    NSData * _KTLoggableData;
     IDSURI * _URI;
-    IDSAccountKeyHistory * _accountKeyHistory;
     NSString * _anonymizedSenderID;
     IDSEndpointCapabilities * _capabilities;
-    NSDictionary * _clientData;
-    IDSPublicDeviceIdentity * _devicePublicIdentity;
     NSDate * _expireDate;
-    IDSMPPublicLegacyIdentity * _publicMessageProtectionIdentity;
+    NSError * _identityContainerDeserializationError;
+    BOOL  _legacyVersion;
+    short  _ngmVersion;
+    IDSMPPublicDeviceIdentityContainer * _publicDeviceIdentityContainer;
     NSData * _pushToken;
+    double  _queryTimeInterval;
     NSDate * _refreshDate;
     NSString * _senderCorrelationIdentifier;
+    NSData * _serializedLegacyPublicIdentity;
+    NSData * _serializedNGMDeviceIdentity;
+    NSData * _serializedNGMDevicePrekey;
     NSData * _sessionToken;
     bool  _verifiedBusiness;
 }
 
-@property (nonatomic, readonly, retain) IDSURI *URI;
-@property (nonatomic, readonly) IDSAccountKeyHistory *accountKeyHistory;
+@property (nonatomic, readonly) NSData *KTLoggableData;
+@property (nonatomic, retain) IDSURI *URI;
 @property (nonatomic, readonly) NSString *anonymizedSenderID;
-@property (nonatomic, readonly, retain) IDSEndpointCapabilities *capabilities;
-@property (nonatomic, readonly) NSDictionary *clientData;
-@property (nonatomic, readonly, retain) IDSPublicDeviceIdentity *devicePublicIdentity;
+@property (nonatomic, retain) IDSEndpointCapabilities *capabilities;
 @property (nonatomic, readonly) NSDate *expireDate;
-@property (nonatomic, readonly, retain) IDSMPPublicLegacyIdentity *publicMessageProtectionIdentity;
-@property (nonatomic, readonly, retain) NSData *pushToken;
+@property (nonatomic, readonly) NSError *identityContainerDeserializationError;
+@property (nonatomic, readonly) BOOL legacyVersion;
+@property (nonatomic, readonly) short ngmVersion;
+@property (nonatomic, retain) IDSMPPublicDeviceIdentityContainer *publicDeviceIdentityContainer;
+@property (nonatomic, retain) NSData *pushToken;
+@property (nonatomic, readonly) double queryTimeInterval;
 @property (nonatomic, readonly) NSDate *refreshDate;
 @property (nonatomic, readonly) NSString *senderCorrelationIdentifier;
+@property (nonatomic, readonly) NSData *serializedLegacyPublicIdentity;
+@property (nonatomic, readonly) NSData *serializedNGMDeviceIdentity;
+@property (nonatomic, readonly) NSData *serializedNGMDevicePrekey;
+@property (nonatomic, readonly) NSData *serializedPublicLegacyIdentity;
 @property (nonatomic, readonly) NSData *sessionToken;
 @property (nonatomic, readonly) bool verifiedBusiness;
 
-+ (id)publicAccountIdentityFromKeyHistory:(id)arg1;
-+ (id)publicDeviceIdentityFromClientData:(id)arg1 accountPublicIdentity:(id)arg2;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)KTLoggableData;
 - (id)URI;
-- (id)accountKeyHistory;
 - (id)anonymizedSenderID;
 - (id)capabilities;
-- (id)clientData;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
-- (id)devicePublicIdentity;
 - (void)encodeWithCoder:(id)arg1;
 - (id)expireDate;
 - (unsigned long long)hash;
+- (id)identityContainerDeserializationError;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithURI:(id)arg1 clientData:(id)arg2 pushToken:(id)arg3 sessionToken:(id)arg4 expireDate:(id)arg5 refreshDate:(id)arg6 accountKeyHistory:(id)arg7;
-- (id)initWithURI:(id)arg1 clientData:(id)arg2 pushToken:(id)arg3 sessionToken:(id)arg4 expireDate:(id)arg5 refreshDate:(id)arg6 accountKeyHistory:(id)arg7 anonymizedSenderID:(id)arg8 verifiedBusiness:(bool)arg9 senderCorrelationIdentifier:(id)arg10;
-- (id)initWithURI:(id)arg1 clientData:(id)arg2 pushToken:(id)arg3 sessionToken:(id)arg4 expireDate:(id)arg5 refreshDate:(id)arg6 accountKeyHistory:(id)arg7 anonymizedSenderID:(id)arg8 verifiedBusiness:(bool)arg9 serializedPublicMessageProtectionIdentity:(id)arg10 senderCorrelationIdentifier:(id)arg11;
+- (id)initWithURI:(id)arg1 capabilities:(id)arg2 ngmVersion:(short)arg3 legacyVersion:(BOOL)arg4 KTLoggableData:(id)arg5 pushToken:(id)arg6 sessionToken:(id)arg7 expireDate:(id)arg8 refreshDate:(id)arg9 anonymizedSenderID:(id)arg10 verifiedBusiness:(bool)arg11 serializedPublicMessageProtectionIdentity:(id)arg12 senderCorrelationIdentifier:(id)arg13 queryTimeInterval:(double)arg14 serializedNGMDeviceIdentity:(id)arg15 serializedNGMDevicePrekey:(id)arg16;
+- (id)initWithURI:(id)arg1 clientData:(id)arg2 KTLoggableData:(id)arg3 pushToken:(id)arg4 sessionToken:(id)arg5 expireDate:(id)arg6 refreshDate:(id)arg7 anonymizedSenderID:(id)arg8 verifiedBusiness:(bool)arg9 serializedPublicMessageProtectionIdentity:(id)arg10 senderCorrelationIdentifier:(id)arg11 queryTimeInterval:(double)arg12 serializedNGMDeviceIdentity:(id)arg13 serializedNGMDevicePrekey:(id)arg14;
+- (id)initWithURI:(id)arg1 clientData:(id)arg2 pushToken:(id)arg3 sessionToken:(id)arg4 expireDate:(id)arg5 refreshDate:(id)arg6;
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToEndpoint:(id)arg1;
-- (id)publicMessageProtectionIdentity;
+- (BOOL)legacyVersion;
+- (short)ngmVersion;
+- (id)publicDeviceIdentityContainer;
 - (id)pushToken;
+- (double)queryTimeInterval;
 - (id)refreshDate;
 - (id)senderCorrelationIdentifier;
+- (id)serializedLegacyPublicIdentity;
+- (id)serializedNGMDeviceIdentity;
+- (id)serializedNGMDevicePrekey;
+- (id)serializedPublicLegacyIdentity;
 - (id)sessionToken;
+- (void)setCapabilities:(id)arg1;
+- (void)setPublicDeviceIdentityContainer:(id)arg1;
+- (void)setPushToken:(id)arg1;
+- (void)setURI:(id)arg1;
 - (bool)verifiedBusiness;
 
 @end

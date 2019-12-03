@@ -3,6 +3,7 @@
  */
 
 @interface TNSheet : TSPObject <TSCEResolverContainer, TSDDrawableContainerInfo, TSDMutableContainerInfo, TSKDocumentObject, TSKModel, TSWPHeaderFooterProvider, TSWPStorageParent> {
+    TSDLayoutController * _activeRootSearchLayoutController;
     int  _layoutDirection;
     double  _pageFooterInset;
     double  _pageHeaderInset;
@@ -28,12 +29,13 @@
     bool  mUsesSingleHeaderFooter;
 }
 
+@property (nonatomic, retain) TSDLayoutController *activeRootSearchLayoutController;
 @property (getter=isAnchoredToText, nonatomic, readonly) bool anchoredToText;
 @property (getter=isAttachedToBodyText, nonatomic, readonly) bool attachedToBodyText;
 @property (nonatomic, readonly) bool autoListRecognition;
 @property (nonatomic, readonly) bool autoListTermination;
 @property (nonatomic, readonly) double bodyWidth;
-@property (nonatomic, readonly) NSArray *childInfos;
+@property (nonatomic, copy) NSArray *childInfos;
 @property (nonatomic, readonly) NSArray *containedModels;
 @property (nonatomic) double contentScale;
 @property (nonatomic, readonly) long long contentWritingDirection;
@@ -49,6 +51,8 @@
 @property (nonatomic) bool inPortraitPageOrientation;
 @property (getter=isInlineWithText, nonatomic, readonly) bool inlineWithText;
 @property (nonatomic) bool isAutofitOn;
+@property (nonatomic, readonly) bool isMaster;
+@property (nonatomic, readonly) bool isTopmostContainerInfo;
 @property (nonatomic) int layoutDirection;
 @property (nonatomic) bool matchesObjectPlaceholderGeometry;
 @property (nonatomic, retain) NSString *name;
@@ -61,11 +65,11 @@
 @property (nonatomic, readonly) bool preventsChangeTracking;
 @property (nonatomic, readonly) bool preventsComments;
 @property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } printMargins;
+@property (nonatomic, readonly) NSArray *printableInfos;
 @property (nonatomic) bool showPageNumbers;
 @property long long startPageNumber;
 @property (nonatomic, readonly) bool storageChangesInvalidateWrap;
 @property (readonly) Class superclass;
-@property (nonatomic, readonly) bool supportsCollaborativeEditing;
 @property (nonatomic, readonly) bool supportsMultipleColumns;
 @property (nonatomic, readonly) bool textIsLinked;
 @property (nonatomic) bool usesSingleHeaderFooter;
@@ -74,6 +78,7 @@
 + (bool)needsObjectUUID;
 + (id)sheetForSelectionModel:(id)arg1 outIsPaginated:(bool*)arg2;
 
+- (id)activeRootSearchLayoutController;
 - (void)addChildInfo:(id)arg1;
 - (void)addRemappedTableName:(id)arg1;
 - (bool)autoListRecognition;
@@ -133,7 +138,7 @@
 - (int)layoutDirection;
 - (bool)layoutIsLeftToRight;
 - (bool)layoutIsRightToLeft;
-- (void)loadFromArchive:(const struct SheetArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_7_1_1; int x_7_1_2; int x_7_1_3; struct Rep {} *x_7_1_4; } x7; struct ArenaStringPtr { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > {} *x_8_1_1; } x8; struct EdgeInsetsArchive {} *x9; struct Reference {} *x10; struct Reference {} *x11; struct Reference {} *x12; bool x13; bool x14; bool x15; bool x16; float x17; int x18; int x19; float x20; float x21; bool x22; bool x23; int x24; }*)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const struct SheetArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_7_1_1; int x_7_1_2; int x_7_1_3; struct Rep {} *x_7_1_4; } x7; struct ArenaStringPtr { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > {} *x_8_1_1; } x8; struct EdgeInsetsArchive {} *x9; struct Reference {} *x10; struct Reference {} *x11; struct Reference {} *x12; bool x13; bool x14; bool x15; bool x16; float x17; int x18; int x19; float x20; float x21; bool x22; bool x23; int x24; }*)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)moveChildren:(id)arg1 toIndexes:(id)arg2;
 - (void)moveDrawables:(id)arg1 toIndexes:(id)arg2;
@@ -154,6 +159,7 @@
 - (bool)preventsChangeTracking;
 - (bool)preventsComments;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })printMargins;
+- (id)printableInfos;
 - (id)remappedTableNames;
 - (void)removeChildInfo:(id)arg1;
 - (void)removeContainedModel:(id)arg1;
@@ -166,8 +172,9 @@
 - (id)resolversMatchingPrefix:(id)arg1;
 - (void)rollbackNextUntitledResolverIndex:(unsigned int)arg1;
 - (unsigned int)saveNextUntitledResolverIndex;
-- (void)saveToArchive:(struct SheetArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_7_1_1; int x_7_1_2; int x_7_1_3; struct Rep {} *x_7_1_4; } x7; struct ArenaStringPtr { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > {} *x_8_1_1; } x8; struct EdgeInsetsArchive {} *x9; struct Reference {} *x10; struct Reference {} *x11; struct Reference {} *x12; bool x13; bool x14; bool x15; bool x16; float x17; int x18; int x19; float x20; float x21; bool x22; bool x23; int x24; }*)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(struct SheetArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_7_1_1; int x_7_1_2; int x_7_1_3; struct Rep {} *x_7_1_4; } x7; struct ArenaStringPtr { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > {} *x_8_1_1; } x8; struct EdgeInsetsArchive {} *x9; struct Reference {} *x10; struct Reference {} *x11; struct Reference {} *x12; bool x13; bool x14; bool x15; bool x16; float x17; int x18; int x19; float x20; float x21; bool x22; bool x23; int x24; }*)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
+- (void)setActiveRootSearchLayoutController:(id)arg1;
 - (void)setChildInfos:(id)arg1;
 - (void)setContentScale:(double)arg1;
 - (void)setGeometry:(id)arg1;

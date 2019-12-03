@@ -34,6 +34,11 @@
 - (void)postNotificationNameOnMainThread:(id)arg1 object:(id)arg2 userInfo:(id)arg3 waitUntilDone:(bool)arg4;
 - (void)postNotificationNameOnMainThreadHandler:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/BusinessChatService.framework/BusinessChatService
+
+- (void)postNotificationName:(id)arg1 object:(id)arg2 error:(id)arg3;
+- (void)postNotificationName:(id)arg1 object:(id)arg2 errorDomain:(id)arg3 errorCode:(long long)arg4 errorDescription:(id)arg5 localizedDescription:(id)arg6;
+
 // Image: /System/Library/PrivateFrameworks/IMFoundation.framework/IMFoundation
 
 - (void)__mainThreadPostNotification:(id)arg1;
@@ -42,6 +47,11 @@
 - (void)postNotificationName:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/Message.framework/Message
+
+- (id)mf_addImmediateObserver:(id)arg1 selector:(SEL)arg2 name:(id)arg3 object:(id)arg4;
+- (void)mf_removeObservers:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/MessageLegacy.framework/MessageLegacy
 
 - (id)mf_addImmediateObserver:(id)arg1 selector:(SEL)arg2 name:(id)arg3 object:(id)arg4;
 - (void)mf_removeObservers:(id)arg1;

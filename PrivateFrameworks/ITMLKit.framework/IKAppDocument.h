@@ -9,11 +9,11 @@
     NSError * _error;
     IKHeadElement * _headElement;
     NSString * _identifier;
+    long long  _implicitUpdatesStack;
     bool  _implicitlyUpdated;
     double  _impressionThreshold;
     double  _impressionViewablePercentage;
     NSMutableDictionary * _impressions;
-    bool  _isTrackingImplicitUpdates;
     bool  _isViewElementRegistryDirty;
     IKDOMDocument * _jsDocument;
     NSMutableDictionary * _mediaQueryCache;
@@ -57,6 +57,7 @@
 
 - (void).cxx_destruct;
 - (bool)_isUpdateAllowed;
+- (void)_resetImplicitUpdates;
 - (void)_setViewElementStylesDirtyForced:(bool)arg1;
 - (void)_updateWithXML:(id)arg1;
 - (id)_viewElementForNodeID:(unsigned long long)arg1;
@@ -65,6 +66,7 @@
 - (void)dealloc;
 - (id)debugDescription;
 - (id)delegate;
+- (void)dispatchDocumentCallback:(id)arg1 eventType:(unsigned long long)arg2;
 - (id)error;
 - (bool)evaluateStyleMediaQueryList:(id)arg1;
 - (id)headElement;
@@ -94,10 +96,13 @@
 - (void)onUpdate;
 - (void)onViewAttributesChangeWithArguments:(id)arg1 completion:(id /* block */)arg2;
 - (id)owner;
-- (void)performImplicitUpdates:(id /* block */)arg1;
+- (void)popTrackingImplictUpdates;
+- (void)pushTrackingImplictUpdates;
 - (void)recordImpressionsForViewElements:(id)arg1;
 - (id)recordedImpressions;
 - (id)recordedImpressions:(bool)arg1;
+- (void)recordedImpressions:(bool)arg1 completion:(id /* block */)arg2;
+- (void)recordedImpressionsMatching:(id)arg1 reset:(bool)arg2 completion:(id /* block */)arg3;
 - (id)requestLoader;
 - (id)retrieveJSElementForViewElement:(id)arg1 jsContext:(id)arg2;
 - (void)runTestWithName:(id)arg1 options:(id)arg2;

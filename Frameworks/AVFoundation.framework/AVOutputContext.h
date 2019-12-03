@@ -9,12 +9,11 @@
 @property (nonatomic, readonly) NSString *deviceName;
 @property (nonatomic, readonly) struct OpaqueFigRoutingContext { }*figRoutingContext;
 
-+ (id)allOutputContextImplClasses;
 + (id)auxiliaryOutputContext;
 + (id /* block */)commChannelUUIDCommunicationChannelManagerCreator;
-+ (id)currentRoutingContextFactory;
 + (id /* block */)defaultCommunicationChannelManagerCreator;
 + (Class)defaultOutputContextImplClass;
++ (id)defaultSharedOutputContext;
 + (id)iTunesAudioContext;
 + (void)initialize;
 + (id)outputContext;
@@ -28,8 +27,6 @@
 + (id)outputContextWithFigRoutingContextCreator:(id /* block */)arg1 volumeController:(struct OpaqueFigVolumeControllerState { }*)arg2;
 + (id)preferredOutputDevicesForAudioSession:(id)arg1;
 + (void)resetOutputDeviceForAllOutputContexts;
-+ (void)resetRoutingContextFactoryForQueue:(id)arg1;
-+ (void)setRoutingContextFactory:(id)arg1 forQueue:(id)arg2;
 + (id)sharedAudioPresentationOutputContext;
 + (id)sharedSystemAudioContext;
 + (id)sharedSystemScreenContext;
@@ -39,14 +36,15 @@
 - (void)addOutputDevice:(id)arg1;
 - (void)addOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(id /* block */)arg3;
 - (int)applicationProcessID;
-- (id)associatedAudioDeviceID;
 - (bool)canSetVolume;
 - (id)communicationChannelDelegate;
 - (id)contextID;
 - (void)dealloc;
+- (id)description;
 - (id)deviceName;
 - (void)encodeWithCoder:(id)arg1;
 - (struct OpaqueFigRoutingContext { }*)figRoutingContext;
+- (bool)getApplicationProcessID:(int*)arg1;
 - (unsigned long long)hash;
 - (id)impl;
 - (id)init;
@@ -74,6 +72,7 @@
 - (void)pausePlaybackOnAllOutputDevicesWithCompletionHandler:(id /* block */)arg1;
 - (bool)providesControlForAllVolumeFeatures;
 - (void)removeOutputDevice:(id)arg1;
+- (void)removeOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)setApplicationProcessID:(int)arg1;
 - (void)setCommunicationChannelDelegate:(id)arg1;
 - (bool)setOutputDevice:(id)arg1 forFeatures:(unsigned long long)arg2;
@@ -82,6 +81,7 @@
 - (void)setOutputDevices:(id)arg1;
 - (void)setOutputDevices:(id)arg1 options:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)setVolume:(float)arg1;
+- (bool)supportsMultipleBluetoothOutputDevices;
 - (bool)supportsMultipleOutputDevices;
 - (float)volume;
 

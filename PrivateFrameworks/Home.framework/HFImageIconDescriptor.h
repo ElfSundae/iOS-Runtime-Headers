@@ -5,6 +5,7 @@
 @interface HFImageIconDescriptor : NSObject <HFIconDescriptor> {
     NSString * _imageIdentifier;
     bool  _isDemoModeDescriptor;
+    bool  _shouldForceLTR;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -13,6 +14,7 @@
 @property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, readonly) NSString *imageIdentifier;
 @property (nonatomic) bool isDemoModeDescriptor;
+@property (nonatomic, readonly) bool shouldForceLTR;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -26,5 +28,6 @@
 - (bool)isDemoModeDescriptor;
 - (bool)isEqual:(id)arg1;
 - (void)setIsDemoModeDescriptor:(bool)arg1;
+- (bool)shouldForceLTR;
 
 @end

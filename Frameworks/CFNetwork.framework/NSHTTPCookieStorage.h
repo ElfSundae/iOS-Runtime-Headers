@@ -18,9 +18,7 @@
 + (id)_csff:(id)arg1;
 + (id)_csfi:(id)arg1;
 + (id)_groupContainerCookieStorages;
-+ (id)_groupContainerStoragesLock;
 + (void)_setSharedHTTPCookieStorage:(id)arg1;
-+ (id)_sharedCookieStorageLock;
 + (id)sharedCookieStorageForGroupContainerIdentifier:(id)arg1;
 + (id)sharedHTTPCookieStorage;
 

@@ -11,9 +11,15 @@
 
 @property (nonatomic, readonly) NSSet *allDrawables;
 @property (nonatomic, readonly) unsigned long long countOfAllDrawables;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) TPDocumentRoot *documentRoot;
 @property (nonatomic, readonly) bool hasAnyDrawables;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) unsigned long long maximumPageIndex;
+@property (nonatomic, readonly) NSIndexSet *pageIndexesOfPagesContainingDrawables;
+@property (readonly) Class superclass;
+@property (nonatomic, readonly) NSArray *swift_allDrawables;
 
 - (void).cxx_destruct;
 - (void)addDrawable:(id)arg1 toPageIndex:(unsigned long long)arg2 insertContext:(id)arg3;
@@ -34,11 +40,14 @@
 - (void)p_addDrawable:(id)arg1 toPageIndex:(unsigned long long)arg2;
 - (void)p_removeDrawable:(id)arg1;
 - (unsigned long long)pageIndexForDrawable:(id)arg1;
+- (id)pageIndexesOfPagesContainingDrawables;
 - (void)removeDrawable:(id)arg1;
 - (void)removeDrawable:(id)arg1 suppressDOLC:(bool)arg2;
 - (void)removeDrawables:(id)arg1;
 - (void)removeTagForDrawable:(id)arg1;
 - (void)saveToArchiver:(id)arg1;
+- (id)swift_allDrawables;
+- (id)swift_drawablesOnPageIndex:(unsigned long long)arg1;
 - (id)tagForDrawable:(id)arg1;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;

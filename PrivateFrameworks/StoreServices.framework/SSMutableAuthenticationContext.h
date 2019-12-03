@@ -24,6 +24,7 @@
 @property (nonatomic) bool forceDaemonAuthentication;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSString *initialPassword;
+@property (nonatomic, copy) NSString *logUUID;
 @property (nonatomic, copy) NSString *okButtonLabel;
 @property (nonatomic, copy) NSString *password;
 @property (nonatomic, copy) NSString *passwordEquivalentToken;
@@ -65,6 +66,7 @@
 - (void)setForceDaemonAuthentication:(bool)arg1;
 - (void)setHTTPHeaders:(id)arg1;
 - (void)setInitialPassword:(id)arg1;
+- (void)setLogUUID:(id)arg1;
 - (void)setOkButtonLabel:(id)arg1;
 - (void)setPassword:(id)arg1;
 - (void)setPasswordEquivalentToken:(id)arg1;

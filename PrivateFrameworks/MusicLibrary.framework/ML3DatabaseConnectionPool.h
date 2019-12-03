@@ -3,6 +3,7 @@
  */
 
 @interface ML3DatabaseConnectionPool : NSObject {
+    bool  _closed;
     unsigned long long  _connectionsJournalingMode;
     int  _connectionsProfilingLevel;
     NSString * _databasePath;
@@ -26,6 +27,7 @@
     _ML3DatabaseConnectionSubPool * _writersSubPool;
 }
 
+@property (getter=isClosed, nonatomic) bool closed;
 @property (nonatomic) unsigned long long connectionsJournalingMode;
 @property (nonatomic) int connectionsProfilingLevel;
 @property (nonatomic, readonly) NSString *databasePath;
@@ -54,12 +56,15 @@
 - (id)init;
 - (id)initWithDatabasePath:(id)arg1 maxReaders:(unsigned long long)arg2;
 - (id)initWithDatabasePath:(id)arg1 maxReaders:(unsigned long long)arg2 maxWriters:(unsigned long long)arg3;
+- (bool)isClosed;
 - (bool)isCurrentThreadConnectionInTransaction;
 - (bool)isLocked;
 - (void)lock;
+- (void)lockAndCloseAllConnectionsForTermination;
 - (unsigned long long)maxReaders;
 - (unsigned long long)maxWriters;
 - (id)readerConnection;
+- (void)setClosed:(bool)arg1;
 - (void)setConnectionsJournalingMode:(unsigned long long)arg1;
 - (void)setConnectionsProfilingLevel:(int)arg1;
 - (void)setDelegate:(id)arg1;

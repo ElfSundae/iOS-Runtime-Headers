@@ -7,6 +7,8 @@
     UIView * _avatarViewContainer;
     UIView * _bottomSeparator;
     NSArray * _constraintsPendingActivation;
+    CNContactListStyleApplier * _contactListStyleApplier;
+    CNContactStore * _contactStore;
     <CNContactListBannerViewDelegate> * _delegate;
     UIDragInteraction * _dragInteraction;
     UIView * _footnoteContainer;
@@ -24,6 +26,8 @@
 @property (nonatomic, readonly) UIView *avatarViewContainer;
 @property (nonatomic, readonly) UIView *bottomSeparator;
 @property (nonatomic, retain) NSArray *constraintsPendingActivation;
+@property (nonatomic, retain) CNContactListStyleApplier *contactListStyleApplier;
+@property (nonatomic, retain) CNContactStore *contactStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <CNContactListBannerViewDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -44,6 +48,7 @@
 
 - (void).cxx_destruct;
 - (void)activatePendingConstraints;
+- (void)applyStyle;
 - (id)avatarView;
 - (id)avatarViewContainer;
 - (id)bottomSeparator;
@@ -53,6 +58,8 @@
 - (void)cellWasSingleTapped:(id)arg1;
 - (void)configureDragInteraction;
 - (id)constraintsPendingActivation;
+- (id)contactListStyleApplier;
+- (id)contactStore;
 - (void)copy:(id)arg1;
 - (void)dealloc;
 - (id)delegate;
@@ -60,9 +67,7 @@
 - (id)dragInteraction;
 - (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
 - (id)footnoteContainer;
-- (id)footnoteFont;
 - (id)footnoteLabel;
-- (id)footnoteTextColor;
 - (id)footnoteTitleToTitleVerticalConstraint;
 - (id)footnoteTitleToValueHorizontalSpaceConstraint;
 - (id)footnoteValueLabel;
@@ -73,6 +78,8 @@
 - (void)menuDidHide:(id)arg1;
 - (void)setAvatarView:(id)arg1;
 - (void)setConstraintsPendingActivation:(id)arg1;
+- (void)setContactListStyleApplier:(id)arg1;
+- (void)setContactStore:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDragInteraction:(id)arg1;
 - (void)setFootnoteTitleToTitleVerticalConstraint:(id)arg1;

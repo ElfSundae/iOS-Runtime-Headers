@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
  */
 
-@interface MPCPlayerResponseItem : NSObject {
+@interface MPCPlayerResponseItem : NSObject <_MPCStateDumpPropertyListTransformable> {
     NSString * _contentItemIdentifier;
     struct { 
         double snapshotTime; 
@@ -17,6 +17,7 @@
     }  _duration;
     NSIndexPath * _indexPath;
     NSArray * _languageOptionGroups;
+    NSString * _localizedDurationString;
     MPModelGenericObject * _metadataObject;
     bool  _placeholder;
     MPCPlayerResponse * _response;
@@ -25,18 +26,24 @@
 }
 
 @property (nonatomic, readonly) NSString *contentItemIdentifier;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) struct { double x1; double x2; double x3; double x4; double x5; float x6; float x7; bool x8; bool x9; } duration;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSIndexPath *indexPath;
 @property (nonatomic, readonly) NSArray *languageOptionGroups;
+@property (nonatomic, readonly) NSString *localizedDurationString;
 @property (nonatomic, readonly) MPModelGenericObject *metadataObject;
 @property (getter=isPlaceholder, nonatomic, readonly) bool placeholder;
 @property (nonatomic, readonly) MPCPlayerResponse *response;
 @property (nonatomic, readonly) long long revision;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)_buildLanguageOptionGroups:(id)arg1 currentLanguageOptions:(id)arg2;
 - (unsigned long long)_determineSeekSupport;
 - (id)_feedbackCommandWithMediaRemoteCommand:(unsigned int)arg1;
+- (id)_stateDumpObject;
 - (id)contentItemIdentifier;
 - (id)dislikeCommand;
 - (struct { double x1; double x2; double x3; double x4; double x5; float x6; float x7; bool x8; bool x9; })duration;
@@ -45,6 +52,7 @@
 - (bool)isPlaceholder;
 - (id)languageOptionGroups;
 - (id)likeCommand;
+- (id)localizedDurationString;
 - (id)metadataObject;
 - (id)playbackRateCommand;
 - (id)rateCommand;

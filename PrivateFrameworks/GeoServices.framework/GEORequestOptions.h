@@ -4,10 +4,11 @@
 
 @interface GEORequestOptions : PBCodable <GEOSurchargeOption, NSCopying> {
     struct { 
-        unsigned int optionUsed : 1; 
-    }  _has;
+        unsigned int has_optionUsed : 1; 
+    }  _flags;
     int  _optionUsed;
     NSMutableArray * _requestOptions;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic) bool hasOptionUsed;
@@ -16,12 +17,15 @@
 @property (nonatomic, readonly) <GEOSurchargeType> *selectedSurchargeType;
 @property (nonatomic, readonly) unsigned long long selectedSurchargeTypeIndex;
 @property (nonatomic, readonly) NSArray *surchargeTypes;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
 + (Class)requestOptionType;
 
 - (void).cxx_destruct;
 - (void)addRequestOption:(id)arg1;
 - (void)clearRequestOptions;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -31,6 +35,7 @@
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (int)optionUsed;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)requestOptionAtIndex:(unsigned long long)arg1;
 - (id)requestOptions;
@@ -41,6 +46,7 @@
 - (void)setOptionUsed:(int)arg1;
 - (void)setRequestOptions:(id)arg1;
 - (id)surchargeTypes;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -118,6 +118,7 @@
 - (void)updateLocation;
 - (void)updateMetadata;
 - (id)userInfo;
+- (unsigned int)videoCodec;
 - (id)weakProject;
 
 @end

@@ -4,8 +4,13 @@
 
 @interface NSMethodSignature : NSObject {
     unsigned long long  _flags;
-    void * _private;
-    void * _reserved;
+    struct { 
+        struct NSMethodFrameArgInfo {} *retInfo; 
+        struct NSMethodFrameArgInfo {} *argInfo; 
+        unsigned int numArgs; 
+        unsigned int frameSize; 
+    }  _frameDescriptor;
+    NSString * _typeString;
 }
 
 @property (readonly) unsigned long long frameLength;
@@ -37,9 +42,17 @@
 - (const char *)methodReturnType;
 - (unsigned long long)numberOfArguments;
 
+// Image: /System/Library/Frameworks/FileProvider.framework/FileProvider
+
+- (unsigned long long)fp_indexOfLastArgumentWithType:(const char *)arg1;
+
 // Image: /System/Library/PrivateFrameworks/GameCenterFoundation.framework/GameCenterFoundation
 
 - (bool)_gkHasReplyBlock;
 - (bool)_gkTakesBlockAtIndex:(unsigned long long)arg1;
+
+// Image: /System/Library/PrivateFrameworks/Navigation.framework/Navigation
+
++ (id)_navigation_methodSignatureForEmptyMethod;
 
 @end

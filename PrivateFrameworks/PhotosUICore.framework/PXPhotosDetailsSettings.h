@@ -18,11 +18,7 @@
     bool  _allowZoomTransitions;
     double  _assetsWidgetPlaceholderAspectRatio;
     long long  _curationAlgorithm;
-    struct PXAssetBadgeInfo { 
-        unsigned long long badges; 
-        double duration; 
-        long long count; 
-    }  _debugBadgeInfo;
+    long long  _debugBadgeInfoType;
     double  _defaultPriorityWidgetsLoadingDelay;
     long long  _detailViewsToKeepLoaded;
     long long  _editorialLayoutActivityFeedItemCountThreshold;
@@ -31,7 +27,6 @@
     bool  _editorialLayoutEdit;
     long long  _editorialLayoutTargetRowsForChunk;
     bool  _enableDebugCurationBadge;
-    long long  _layoutWeight;
     bool  _loadAllWidgetsContentAfterDelay;
     bool  _loadAllWidgetsContentOnScroll;
     bool  _peopleWidgetDisableSocialGroup;
@@ -50,6 +45,7 @@
     bool  _showRelatedPeopleWidget;
     bool  _showRelatedWidget;
     bool  _showVariationsWidget;
+    bool  _useCuratedLibraryLayout;
 }
 
 @property (nonatomic) double addToTabDuration;
@@ -67,7 +63,7 @@
 @property (nonatomic) bool allowZoomTransitions;
 @property (nonatomic) double assetsWidgetPlaceholderAspectRatio;
 @property (nonatomic) long long curationAlgorithm;
-@property (nonatomic) struct PXAssetBadgeInfo { unsigned long long x1; double x2; long long x3; } debugBadgeInfo;
+@property (nonatomic) long long debugBadgeInfoType;
 @property (nonatomic) double defaultPriorityWidgetsLoadingDelay;
 @property (nonatomic) long long detailViewsToKeepLoaded;
 @property (nonatomic) long long editorialLayoutActivityFeedItemCountThreshold;
@@ -76,7 +72,6 @@
 @property (nonatomic) bool editorialLayoutEdit;
 @property (nonatomic) long long editorialLayoutTargetRowsForChunk;
 @property (nonatomic) bool enableDebugCurationBadge;
-@property (nonatomic) long long layoutWeight;
 @property (nonatomic) bool loadAllWidgetsContentAfterDelay;
 @property (nonatomic) bool loadAllWidgetsContentOnScroll;
 @property (nonatomic) bool peopleWidgetDisableSocialGroup;
@@ -95,9 +90,11 @@
 @property (nonatomic) bool showRelatedPeopleWidget;
 @property (nonatomic) bool showRelatedWidget;
 @property (nonatomic) bool showVariationsWidget;
+@property (nonatomic) bool useCuratedLibraryLayout;
 
 + (id)settingsControllerModule;
 + (id)sharedInstance;
++ (id)transientProperties;
 
 - (double)addToTabDuration;
 - (double)addToTabEndRotation;
@@ -115,6 +112,7 @@
 - (double)assetsWidgetPlaceholderAspectRatio;
 - (long long)curationAlgorithm;
 - (struct PXAssetBadgeInfo { unsigned long long x1; double x2; long long x3; })debugBadgeInfo;
+- (long long)debugBadgeInfoType;
 - (double)defaultPriorityWidgetsLoadingDelay;
 - (long long)detailViewsToKeepLoaded;
 - (long long)editorialLayoutActivityFeedItemCountThreshold;
@@ -123,7 +121,6 @@
 - (bool)editorialLayoutEdit;
 - (long long)editorialLayoutTargetRowsForChunk;
 - (bool)enableDebugCurationBadge;
-- (long long)layoutWeight;
 - (bool)loadAllWidgetsContentAfterDelay;
 - (bool)loadAllWidgetsContentOnScroll;
 - (id)parentSettings;
@@ -146,7 +143,7 @@
 - (void)setAllowZoomTransitions:(bool)arg1;
 - (void)setAssetsWidgetPlaceholderAspectRatio:(double)arg1;
 - (void)setCurationAlgorithm:(long long)arg1;
-- (void)setDebugBadgeInfo:(struct PXAssetBadgeInfo { unsigned long long x1; double x2; long long x3; })arg1;
+- (void)setDebugBadgeInfoType:(long long)arg1;
 - (void)setDefaultPriorityWidgetsLoadingDelay:(double)arg1;
 - (void)setDefaultValues;
 - (void)setDetailViewsToKeepLoaded:(long long)arg1;
@@ -156,7 +153,6 @@
 - (void)setEditorialLayoutEdit:(bool)arg1;
 - (void)setEditorialLayoutTargetRowsForChunk:(long long)arg1;
 - (void)setEnableDebugCurationBadge:(bool)arg1;
-- (void)setLayoutWeight:(long long)arg1;
 - (void)setLoadAllWidgetsContentAfterDelay:(bool)arg1;
 - (void)setLoadAllWidgetsContentOnScroll:(bool)arg1;
 - (void)setPeopleWidgetDisableSocialGroup:(bool)arg1;
@@ -175,6 +171,7 @@
 - (void)setShowRelatedPeopleWidget:(bool)arg1;
 - (void)setShowRelatedWidget:(bool)arg1;
 - (void)setShowVariationsWidget:(bool)arg1;
+- (void)setUseCuratedLibraryLayout:(bool)arg1;
 - (bool)showActionsWidget;
 - (bool)showAssetsWidget;
 - (bool)showDemoDynamicWidget;
@@ -187,5 +184,6 @@
 - (bool)showRelatedPeopleWidget;
 - (bool)showRelatedWidget;
 - (bool)showVariationsWidget;
+- (bool)useCuratedLibraryLayout;
 
 @end

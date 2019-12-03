@@ -4,8 +4,10 @@
 
 @interface NTKColorAnalogBackgroundView : UIView {
     CALayer * _circleLayer;
+    UIColor * _color;
     CLKDevice * _device;
     CALayer * _fullscreenLayer;
+    unsigned long long  _style;
     CALayer * _tickContainerLayer;
     NSArray * _tickLayers;
 }

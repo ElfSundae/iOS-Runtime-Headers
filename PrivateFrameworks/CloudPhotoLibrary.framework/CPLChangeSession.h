@@ -28,11 +28,13 @@
 - (void)beginSessionWithKnownLibraryVersion:(id)arg1 resetTracker:(id)arg2 completionHandler:(id /* block */)arg3;
 - (id)createSessionContext;
 - (void)dealloc;
+- (id)description;
 - (void)finalizeWithCompletionHandler:(id /* block */)arg1;
 - (id)init;
 - (id)initWithLibraryManager:(id)arg1;
 - (id)libraryManager;
 - (id)platformObject;
+- (id)redactedDescription;
 - (id)sessionIdentifier;
 - (id)sessionProgress;
 - (void)setState:(unsigned long long)arg1;

@@ -10,6 +10,7 @@
     ADInstallAttributionData * _installAttribution;
     NSString * _lineItem;
     NSString * _metadata;
+    ADOdmlResponse * _odmlResponse;
     NSString * _privacy;
     NSString * _templateType;
 }
@@ -21,6 +22,7 @@
 @property (nonatomic, readonly, copy) ADInstallAttributionData *installAttribution;
 @property (nonatomic, readonly, copy) NSString *lineItem;
 @property (nonatomic, readonly, copy) NSString *metadata;
+@property (nonatomic, readonly, copy) ADOdmlResponse *odmlResponse;
 @property (nonatomic, readonly, copy) NSString *privacy;
 @property (nonatomic, readonly, copy) NSString *templateType;
 
@@ -33,6 +35,7 @@
 - (id)installAttribution;
 - (id)lineItem;
 - (id)metadata;
+- (id)odmlResponse;
 - (id)privacy;
 - (id)templateType;
 

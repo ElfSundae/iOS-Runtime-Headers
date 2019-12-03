@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/HomeKit.framework/HomeKit
  */
 
-@interface HMSetupViewController : UIViewController <HMSetupRemoteHost> {
+@interface HMSetupViewController : UIViewController <HMSetupRemoteHost, _UIRemoteViewControllerContaining> {
     HMSetupAccessoryDescription * _accessoryDescription;
     _UIAsyncInvocation * _cancelServiceInvocation;
     bool  _cancelling;
@@ -14,18 +14,24 @@
     bool  _shouldPresentWhenLoaded;
 }
 
+@property (nonatomic, readonly) _UIRemoteViewController *_containedRemoteViewController;
 @property (nonatomic, retain) HMSetupAccessoryDescription *accessoryDescription;
 @property (nonatomic, retain) _UIAsyncInvocation *cancelServiceInvocation;
 @property (getter=isCancelling, nonatomic) bool cancelling;
 @property (nonatomic, copy) id /* block */ completionHandler;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (getter=isDisconnected, nonatomic) bool disconnected;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, retain) HMHome *home;
 @property (nonatomic, copy) id /* block */ loadHandler;
 @property (nonatomic, retain) HMSetupRemoteViewController *remoteViewController;
 @property (nonatomic) bool shouldPresentWhenLoaded;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_configureAndAddRemoteViewController;
+- (id)_containedRemoteViewController;
 - (void)_finishSetupWithInfo:(id)arg1 error:(id)arg2;
 - (void)_presentAsTopmostViewController;
 - (void)_requestRemoteViewController;

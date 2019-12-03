@@ -18,8 +18,11 @@
 - (id)_initWithServiceBroker:(id)arg1;
 - (id)adopt:(id)arg1;
 - (id)adoptableBundleIdentifiers;
+- (void)checkAutomaticDownloadQueue;
+- (void)checkPendingQueue;
 - (void)checkPreflightForItemIdentifier:(id)arg1 atURL:(id)arg2 withReplyHandler:(id /* block */)arg3;
 - (id)init;
+- (void)processPurchase:(id)arg1 withResponseHandler:(id /* block */)arg2;
 - (void)startPurchase:(id)arg1 withResultHandler:(id /* block */)arg2;
 
 @end

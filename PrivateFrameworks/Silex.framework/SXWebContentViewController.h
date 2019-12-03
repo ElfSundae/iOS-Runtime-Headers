@@ -17,6 +17,7 @@
     WKWebView * _webView;
 }
 
+@property (nonatomic) bool allowsRemoteInspection;
 @property (nonatomic, readonly) <SXWebContentContentRuleManager> *contentRuleManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -35,6 +36,7 @@
 @property (nonatomic, readonly) WKWebView *webView;
 
 - (void).cxx_destruct;
+- (bool)allowsRemoteInspection;
 - (id)contentRuleManager;
 - (id)documentStateReporter;
 - (id)errorReporter;
@@ -48,6 +50,7 @@
 - (id)navigationManager;
 - (id)reachabilityProvider;
 - (id)scriptsManager;
+- (void)setAllowsRemoteInspection:(bool)arg1;
 - (void)setLoader:(id)arg1;
 - (id)terminationManager;
 - (id)timeoutManager;

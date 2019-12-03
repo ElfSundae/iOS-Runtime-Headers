@@ -21,6 +21,7 @@
 - (void)setMetadataCache:(id)arg1;
 - (id)suggestionForDestinationID:(id)arg1;
 - (id)suggestionForSearchItem:(id)arg1;
+- (void)updateMetadataForCall:(id)arg1;
 - (void)updateMetadataForDestinationID:(id)arg1;
 - (void)updateMetadataForRecentCalls:(id)arg1;
 

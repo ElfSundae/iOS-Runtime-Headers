@@ -5,8 +5,27 @@
 @interface GEODrivingWalkingInstruction : PBCodable <NSCopying> {
     NSMutableArray * _continueCommands;
     GEOFormattedString * _distance;
+    struct { 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_continueCommands : 1; 
+        unsigned int read_distance : 1; 
+        unsigned int read_mergeCommands : 1; 
+        unsigned int read_normalCommands : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_continueCommands : 1; 
+        unsigned int wrote_distance : 1; 
+        unsigned int wrote_mergeCommands : 1; 
+        unsigned int wrote_normalCommands : 1; 
+    }  _flags;
     NSMutableArray * _mergeCommands;
     NSMutableArray * _normalCommands;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic, retain) NSMutableArray *continueCommands;
@@ -14,18 +33,28 @@
 @property (nonatomic, readonly) bool hasDistance;
 @property (nonatomic, retain) NSMutableArray *mergeCommands;
 @property (nonatomic, retain) NSMutableArray *normalCommands;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 + (Class)continueCommandType;
++ (bool)isValid:(id)arg1;
 + (Class)mergeCommandType;
 + (Class)normalCommandType;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsContinueCommand:(id)arg1;
+- (void)_addNoFlagsMergeCommand:(id)arg1;
+- (void)_addNoFlagsNormalCommand:(id)arg1;
+- (void)_readContinueCommands;
+- (void)_readDistance;
+- (void)_readMergeCommands;
+- (void)_readNormalCommands;
 - (void)addContinueCommand:(id)arg1;
 - (void)addMergeCommand:(id)arg1;
 - (void)addNormalCommand:(id)arg1;
 - (void)clearContinueCommands;
 - (void)clearMergeCommands;
 - (void)clearNormalCommands;
+- (void)clearUnknownFields:(bool)arg1;
 - (id)continueCommandAtIndex:(unsigned long long)arg1;
 - (id)continueCommands;
 - (unsigned long long)continueCommandsCount;
@@ -36,6 +65,8 @@
 - (id)distance;
 - (bool)hasDistance;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)mergeCommandAtIndex:(unsigned long long)arg1;
 - (id)mergeCommands;
@@ -44,11 +75,13 @@
 - (id)normalCommandAtIndex:(unsigned long long)arg1;
 - (id)normalCommands;
 - (unsigned long long)normalCommandsCount;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setContinueCommands:(id)arg1;
 - (void)setDistance:(id)arg1;
 - (void)setMergeCommands:(id)arg1;
 - (void)setNormalCommands:(id)arg1;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 
 @end

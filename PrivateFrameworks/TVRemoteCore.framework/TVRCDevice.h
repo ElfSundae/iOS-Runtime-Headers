@@ -13,6 +13,7 @@
 }
 
 @property (nonatomic, readonly) long long connectionState;
+@property (nonatomic, readonly) long long connectionType;
 @property (nonatomic) <TVRCDeviceDelegate> *delegate;
 @property (nonatomic, retain) _TVRCDeviceState *deviceState;
 @property (nonatomic, copy) NSString *identifier;
@@ -20,18 +21,20 @@
 @property (nonatomic, retain) TVRCKeyboardController *keyboardController;
 @property (nonatomic, readonly, copy) NSString *model;
 @property (nonatomic, copy) NSString *name;
+@property (getter=isPaired, nonatomic, readonly) bool paired;
 @property (nonatomic, readonly) unsigned long long pairingCapability;
 @property (nonatomic, readonly, copy) NSSet *supportedButtons;
 @property (nonatomic, readonly) bool supportsTouchEvents;
 @property (nonatomic, retain) TVRCVoiceRecorder *voiceRecorder;
 
 - (void).cxx_destruct;
-- (void)_deviceEncounteredAuthChallengeType:(long long)arg1 codeToEnterOnDevice:(id)arg2;
+- (void)_deviceEncounteredAuthChallengeType:(long long)arg1 attributes:(long long)arg2 codeToEnterOnDevice:(id)arg3;
 - (void)_deviceUpdatedState:(id)arg1;
 - (void)_disconnectDeviceDueToConnectionInterruption;
 - (void)_sendRTIDataPayload:(id)arg1;
 - (void)connect;
 - (long long)connectionState;
+- (long long)connectionType;
 - (bool)containsIdentifier:(id)arg1;
 - (void)dealloc;
 - (id)delegate;
@@ -43,6 +46,7 @@
 - (id)initWithDeviceIdentifier:(id)arg1;
 - (bool)isEqualToDevice:(id)arg1;
 - (bool)isInEditingSession;
+- (bool)isPaired;
 - (id)keyboardController;
 - (id)model;
 - (id)name;

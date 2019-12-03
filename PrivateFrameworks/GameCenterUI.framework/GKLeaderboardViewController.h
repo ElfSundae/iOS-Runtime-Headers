@@ -10,6 +10,7 @@
 @property (nonatomic) <GKLeaderboardViewControllerDelegate> *leaderboardDelegate;
 @property (nonatomic) long long timeScope;
 
+- (void).cxx_destruct;
 - (id)category;
 - (id)init;
 - (id)leaderboardDelegate;

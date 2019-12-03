@@ -3,19 +3,19 @@
  */
 
 @interface HDDataAggregationResult : NSObject {
-    NSArray * _aggregatedObjects;
-    <HDCollectedSensorDatum> * _lastSensorData;
-    NSArray * _remainingSensorData;
+    HDDataAggregationState * _aggregationState;
+    NSArray * _consumedSensorData;
+    id /* block */  _persistenceHandler;
 }
 
-@property (nonatomic, readonly, copy) NSArray *aggregatedObjects;
-@property (nonatomic, readonly, copy) <HDCollectedSensorDatum> *lastSensorData;
-@property (nonatomic, readonly, copy) NSArray *remainingSensorData;
+@property (nonatomic, readonly, copy) HDDataAggregationState *aggregationState;
+@property (nonatomic, readonly, copy) NSArray *consumedSensorData;
+@property (nonatomic, readonly, copy) id /* block */ persistenceHandler;
 
 - (void).cxx_destruct;
-- (id)aggregatedObjects;
-- (id)initWithAggregatedObjects:(id)arg1 remainingSensorData:(id)arg2 lastSensorData:(id)arg3;
-- (id)lastSensorData;
-- (id)remainingSensorData;
+- (id)aggregationState;
+- (id)consumedSensorData;
+- (id)initWithResultingAggregationState:(id)arg1 consumedSensorData:(id)arg2 persistenceHandler:(id /* block */)arg3;
+- (id /* block */)persistenceHandler;
 
 @end

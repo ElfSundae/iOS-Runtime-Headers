@@ -21,9 +21,11 @@
 }
 
 @property (nonatomic) bool isDialogSheet;
+@property (readonly) EDWorkbook *workbook;
 
 + (id)sheetWithWorkbook:(id)arg1;
 
+- (void).cxx_destruct;
 - (void)addDrawable:(id)arg1;
 - (void)applyProcessors;
 - (unsigned long long)commentCount;

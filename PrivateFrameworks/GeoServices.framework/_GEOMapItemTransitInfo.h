@@ -4,7 +4,12 @@
 
 @interface _GEOMapItemTransitInfo : NSObject <GEOMapItemTransitInfo> {
     NSMapTable * _cachedHeadSignsForLine;
+    GEOComposedRoute * _composedRoute;
     NSArray * _connections;
+    struct { 
+        double latitude; 
+        double longitude; 
+    }  _coordinate;
     NSArray * _departureSequences;
     NSString * _displayName;
     bool  _hasTransitIncidentComponent;
@@ -15,8 +20,10 @@
     NSTimeZone * _timeZone;
     GEOPDTransitInfo * _transitInfo;
     GEOPDTransitSchedule * _transitSchedule;
+    NSArray * _transitStops;
 }
 
+@property (nonatomic, readonly) GEOComposedRoute *composedRoute;
 @property (nonatomic, readonly) NSArray *connections;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, readonly) NSArray *departureSequences;
@@ -30,13 +37,18 @@
 @property (nonatomic, readonly) NSDate *lastFullScheduleValidDate;
 @property (nonatomic, readonly) NSArray *lines;
 @property (nonatomic, readonly) unsigned long long linesCount;
+@property (nonatomic, readonly) NSString *subtitle;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSArray *systems;
 @property (nonatomic, readonly) unsigned long long systemsCount;
+@property (nonatomic, readonly) double timeToLive;
+@property (nonatomic, readonly) NSString *title;
+@property (nonatomic, readonly) NSArray *transitTripStops;
 
 - (void).cxx_destruct;
 - (id)_departureSequencesForSystem:(id)arg1 excludingIncidentEntities:(id)arg2 ignoreDirectionFilter:(bool)arg3 direction:(id)arg4 validForDateFromBlock:(id /* block */)arg5;
 - (id)allSequencesForSystem:(id)arg1 direction:(id)arg2;
+- (id)composedRoute;
 - (id)connections;
 - (id)departureSequences;
 - (id)departureSequencesForSystem:(id)arg1 excludingIncidentEntities:(id)arg2 direction:(id)arg3 validForDateFromBlock:(id /* block */)arg4;
@@ -46,7 +58,7 @@
 - (id)headSignsForLine:(id)arg1;
 - (id)inactiveLinesForSystem:(id)arg1 relativeToDateFromBlock:(id /* block */)arg2 excludingIncidentEntities:(id)arg3;
 - (id)incidents;
-- (id)initWithTransitInfo:(id)arg1 schedule:(id)arg2 timeZone:(id)arg3 incidents:(id)arg4 hasTransitIncidentComponent:(bool)arg5 incidentExpirationDate:(id)arg6 providerID:(int)arg7;
+- (id)initWithTransitInfo:(id)arg1 schedule:(id)arg2 timeZone:(id)arg3 incidents:(id)arg4 hasTransitIncidentComponent:(bool)arg5 incidentExpirationDate:(id)arg6 providerID:(int)arg7 coordinate:(struct { double x1; double x2; })arg8 transitStops:(id)arg9 composedRoute:(id)arg10;
 - (bool)isTransitIncidentsTTLExpired;
 - (id)labelItems;
 - (id)lastFullScheduleValidDate;
@@ -54,9 +66,12 @@
 - (unsigned long long)linesCount;
 - (id)linesForSystem:(id)arg1;
 - (unsigned long long)numAdditionalDeparturesForSequence:(id)arg1;
-- (id)sequencesForSystem:(id)arg1 excludingIncidentEntities:(id)arg2 direction:(id)arg3 validForDateFromBlock:(id /* block */)arg4;
 - (id)serviceResumesDateForLine:(id)arg1 excludingIncidentEntities:(id)arg2 afterDate:(id)arg3 blocked:(out bool*)arg4;
+- (id)subtitle;
 - (id)systems;
 - (unsigned long long)systemsCount;
+- (double)timeToLive;
+- (id)title;
+- (id)transitTripStops;
 
 @end

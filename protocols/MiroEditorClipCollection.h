@@ -5,7 +5,7 @@
 
 @required
 
-- (MiroEditorClipCell *)cellForClip:(id <MiroClip>)arg1;
+- (MiroEditorClipCell *)cellForClipProvider:(PMClipProvider *)arg1;
 - (<MiroEditorClipCollectionDataSource> *)dataSource;
 - (<MiroEditorClipCollectionDelegate> *)delegate;
 - (NSIndexPath *)initialIndexPath;

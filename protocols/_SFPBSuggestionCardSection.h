@@ -33,8 +33,10 @@
 - (void)setScopedSearchSectionBundleIdentifier:(NSString *)arg1;
 - (void)setSeparatorStyle:(int)arg1;
 - (void)setSuggestionText:(_SFPBRichText *)arg1;
+- (void)setSuggestionType:(int)arg1;
 - (void)setType:(NSString *)arg1;
 - (_SFPBRichText *)suggestionText;
+- (int)suggestionType;
 - (NSString *)type;
 
 @end

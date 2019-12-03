@@ -3,6 +3,7 @@
  */
 
 @interface _INPBPair : PBCodable <NSCopying, NSSecureCoding, _INPBPair> {
+    bool  __encodeLegacyGloryData;
     struct { 
         unsigned int repeated : 1; 
     }  _has;
@@ -23,6 +24,7 @@
     bool  _repeated;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool hasKey;
@@ -71,8 +73,11 @@
 + (Class)pairStringValueType;
 + (Class)pairTemperatureValueType;
 + (Class)pairUrlValueType;
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (void)addPairCurrencyAmountValue:(id)arg1;
 - (void)addPairCustomObject:(id)arg1;
 - (void)addPairDataString:(id)arg1;
@@ -101,9 +106,11 @@
 - (void)clearPairUrlValues;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasKey;
 - (bool)hasRepeated;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)key;
 - (id)pairCurrencyAmountValueAtIndex:(unsigned long long)arg1;

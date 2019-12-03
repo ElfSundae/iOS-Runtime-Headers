@@ -3,7 +3,7 @@
  */
 
 @interface UIKBRenderGeometry : NSObject <NSCopying> {
-    int  _concaveCorner;
+    unsigned long long  _concaveCorner;
     struct CGSize { 
         double width; 
         double height; 
@@ -51,7 +51,7 @@
         double x; 
         double y; 
     }  _popupSource;
-    int  _roundRectCorners;
+    unsigned long long  _roundRectCorners;
     double  _roundRectRadius;
     NSValue * _splitLeftRect;
     NSValue * _splitRightRect;
@@ -68,7 +68,7 @@
     bool  _tallPopup;
 }
 
-@property (nonatomic) int concaveCorner;
+@property (nonatomic) unsigned long long concaveCorner;
 @property (nonatomic) struct CGSize { double x1; double x2; } concaveCornerOffset;
 @property (nonatomic) bool detachedVariants;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } displayFrame;
@@ -80,7 +80,7 @@
 @property (nonatomic, readonly) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } paddedInsets;
 @property (nonatomic) int popupBias;
 @property (nonatomic) struct CGPoint { double x1; double x2; } popupSource;
-@property (nonatomic) int roundRectCorners;
+@property (nonatomic) unsigned long long roundRectCorners;
 @property (nonatomic) double roundRectRadius;
 @property (nonatomic, retain) NSValue *splitLeftRect;
 @property (nonatomic, retain) NSValue *splitRightRect;
@@ -99,7 +99,7 @@
 - (void)applyInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)applyOffset:(struct CGPoint { double x1; double x2; })arg1;
 - (void)applyShadowInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
-- (int)concaveCorner;
+- (unsigned long long)concaveCorner;
 - (struct CGSize { double x1; double x2; })concaveCornerOffset;
 - (id)copyForFlickDirection:(long long)arg1 scale:(double)arg2;
 - (id)copyForPopupDirection:(long long)arg1 scale:(double)arg2;
@@ -122,9 +122,9 @@
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })paddedInsets;
 - (int)popupBias;
 - (struct CGPoint { double x1; double x2; })popupSource;
-- (int)roundRectCorners;
+- (unsigned long long)roundRectCorners;
 - (double)roundRectRadius;
-- (void)setConcaveCorner:(int)arg1;
+- (void)setConcaveCorner:(unsigned long long)arg1;
 - (void)setConcaveCornerOffset:(struct CGSize { double x1; double x2; })arg1;
 - (void)setDetachedVariants:(bool)arg1;
 - (void)setDisplayFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
@@ -134,7 +134,7 @@
 - (void)setPaddedFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setPopupBias:(int)arg1;
 - (void)setPopupSource:(struct CGPoint { double x1; double x2; })arg1;
-- (void)setRoundRectCorners:(int)arg1;
+- (void)setRoundRectCorners:(unsigned long long)arg1;
 - (void)setRoundRectRadius:(double)arg1;
 - (void)setSplitLeftRect:(id)arg1;
 - (void)setSplitRightRect:(id)arg1;

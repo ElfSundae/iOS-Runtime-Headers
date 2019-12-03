@@ -7,7 +7,6 @@
 }
 
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)mediatedPixelBufferAttributes;
 - (void)removeRequestedPixelBufferAttributesAttributesForKey:(id)arg1;

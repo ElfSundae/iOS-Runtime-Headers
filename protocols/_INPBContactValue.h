@@ -30,6 +30,7 @@
 - (bool)hasNamePrefix;
 - (bool)hasNameSuffix;
 - (bool)hasNickName;
+- (bool)hasPhonemeData;
 - (bool)hasPhoneticFirstName;
 - (bool)hasPhoneticLastName;
 - (bool)hasPhoneticMiddleName;
@@ -45,6 +46,7 @@
 - (NSString *)namePrefix;
 - (NSString *)nameSuffix;
 - (NSString *)nickName;
+- (NSString *)phonemeData;
 - (NSString *)phoneticFirstName;
 - (NSString *)phoneticLastName;
 - (NSString *)phoneticMiddleName;
@@ -66,6 +68,7 @@
 - (void)setNamePrefix:(NSString *)arg1;
 - (void)setNameSuffix:(NSString *)arg1;
 - (void)setNickName:(NSString *)arg1;
+- (void)setPhonemeData:(NSString *)arg1;
 - (void)setPhoneticFirstName:(NSString *)arg1;
 - (void)setPhoneticLastName:(NSString *)arg1;
 - (void)setPhoneticMiddleName:(NSString *)arg1;

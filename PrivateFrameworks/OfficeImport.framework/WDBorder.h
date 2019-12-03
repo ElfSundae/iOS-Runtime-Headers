@@ -11,9 +11,9 @@
     unsigned char  mWidth;
 }
 
+- (void).cxx_destruct;
 - (id)color;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (bool)frame;
 - (unsigned long long)hash;

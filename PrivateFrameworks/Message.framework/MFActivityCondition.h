@@ -3,7 +3,7 @@
  */
 
 @interface MFActivityCondition : NSObject <MFActivityCondition, MFActivityConditionBuilder> {
-    MFCancelationToken * _cancellationToken;
+    EFCancelationToken * _cancellationToken;
     long long  _maxThermalPressureLevel;
     float  _minBatteryLevel;
     bool  _requireExternalPower;
@@ -11,11 +11,11 @@
     bool  _requireScreenLocked;
     bool  _requireWiFi;
     bool  _satisfied;
-    <MFScheduler> * _scheduler;
+    <EFScheduler> * _scheduler;
 }
 
-@property (nonatomic, retain) MFCancelationToken *cancellationToken;
-@property (nonatomic, readonly) MFObservable *conditionsObservable;
+@property (nonatomic, retain) EFCancelationToken *cancellationToken;
+@property (nonatomic, readonly) EFObservable *conditionsObservable;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -26,7 +26,7 @@
 @property (nonatomic) bool requireScreenLocked;
 @property (nonatomic) bool requireWiFi;
 @property (getter=isSatisfied, nonatomic) bool satisfied;
-@property (nonatomic, retain) <MFScheduler> *scheduler;
+@property (nonatomic, retain) <EFScheduler> *scheduler;
 @property (readonly) Class superclass;
 
 + (id)alwaysSatisfiedCondition;

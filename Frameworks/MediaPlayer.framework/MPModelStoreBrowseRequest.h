@@ -8,6 +8,7 @@
     NSURL * _loadAdditionalContentURL;
     MPModelStoreBrowseResponse * _previousResponse;
     MPModelStoreBrowseResponse * _previousRetrievedNestedResponse;
+    long long  _requestEndpoint;
 }
 
 @property (nonatomic) long long domain;
@@ -15,6 +16,7 @@
 @property (nonatomic, copy) NSURL *loadAdditionalContentURL;
 @property (nonatomic, retain) MPModelStoreBrowseResponse *previousResponse;
 @property (nonatomic, retain) MPModelStoreBrowseResponse *previousRetrievedNestedResponse;
+@property (nonatomic) long long requestEndpoint;
 
 + (id)allSupportedItemProperties;
 + (id)allSupportedSectionProperties;
@@ -32,10 +34,12 @@
 - (id)newOperationWithResponseHandler:(id /* block */)arg1;
 - (id)previousResponse;
 - (id)previousRetrievedNestedResponse;
+- (long long)requestEndpoint;
 - (void)setDomain:(long long)arg1;
 - (void)setFilteringPolicy:(long long)arg1;
 - (void)setLoadAdditionalContentURL:(id)arg1;
 - (void)setPreviousResponse:(id)arg1;
 - (void)setPreviousRetrievedNestedResponse:(id)arg1;
+- (void)setRequestEndpoint:(long long)arg1;
 
 @end

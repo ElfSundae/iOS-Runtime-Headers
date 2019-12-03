@@ -19,11 +19,13 @@
     }  _delegateFlags;
     bool  _isAirplaneModeEnabled;
     bool  _isValid;
+    IKJSApplication * _jsApp;
     JSContext * _jsContext;
     IKJSFoundation * _jsFoundation;
     struct __CFRunLoop { } * _jsThreadRunLoop;
     struct __CFRunLoopSource { } * _jsThreadRunLoopSource;
     IKJSViewModelService * _jsViewModelService;
+    IKJSWeakMap * _jsWeakMap;
     NSObject<OS_dispatch_source> * _lowMemoryWarningSource;
     bool  _mescalPrimeEnabledForXHRRequests;
     unsigned long long  _mode;
@@ -40,7 +42,6 @@
     NSString * _responseScript;
     bool  _running;
     bool  _trusted;
-    NSThread * _validThread;
     IKViewElementRegistry * _viewElementRegistry;
     IKJSInspectorController * _webInspectorController;
 }
@@ -57,9 +58,11 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property bool isValid;
+@property (nonatomic, retain) IKJSApplication *jsApp;
 @property (nonatomic, retain) JSContext *jsContext;
 @property (nonatomic, retain) IKJSFoundation *jsFoundation;
 @property (nonatomic, retain) IKJSViewModelService *jsViewModelService;
+@property (nonatomic, retain) IKJSWeakMap *jsWeakMap;
 @property (nonatomic) bool mescalPrimeEnabledForXHRRequests;
 @property (nonatomic, readonly) NSNumber *metricsLoadURLSamplingPercentage;
 @property (nonatomic, readonly) NSNumber *metricsLoadURLSamplingPercentageCachedResponses;
@@ -139,9 +142,11 @@
 - (bool)isRunning;
 - (bool)isTrusted;
 - (bool)isValid;
+- (id)jsApp;
 - (id)jsContext;
 - (id)jsFoundation;
 - (id)jsViewModelService;
+- (id)jsWeakMap;
 - (void)launchAppWithOptions:(id)arg1;
 - (bool)mescalPrimeEnabledForXHRRequests;
 - (unsigned long long)mode;
@@ -165,9 +170,11 @@
 - (void)setCanAccessPendingQueue:(bool)arg1;
 - (void)setException:(id)arg1 withErrorMessage:(id)arg2;
 - (void)setIsValid:(bool)arg1;
+- (void)setJsApp:(id)arg1;
 - (void)setJsContext:(id)arg1;
 - (void)setJsFoundation:(id)arg1;
 - (void)setJsViewModelService:(id)arg1;
+- (void)setJsWeakMap:(id)arg1;
 - (void)setMescalPrimeEnabledForXHRRequests:(bool)arg1;
 - (void)setNextJSChecksum:(id)arg1;
 - (void)setPendingQueue:(id)arg1;

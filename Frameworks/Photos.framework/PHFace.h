@@ -31,15 +31,18 @@
     long long  _nameSource;
     NSString * _personUUID;
     double  _poseYaw;
+    double  _quality;
     long long  _qualityMeasure;
     bool  _rightEyeClosed;
     double  _rightEyeX;
     double  _rightEyeY;
+    double  _roll;
     double  _size;
     unsigned short  _smileType;
     long long  _sourceHeight;
     long long  _sourceWidth;
     int  _trainingType;
+    double  _yaw;
 }
 
 @property (nonatomic, readonly, copy) id adjustmentVersion;
@@ -77,17 +80,20 @@
 @property (nonatomic, readonly) NSString *personLocalIdentifier;
 @property (nonatomic, readonly) NSString *personUUID;
 @property (nonatomic) double poseYaw;
+@property (nonatomic, readonly) double quality;
 @property (nonatomic) long long qualityMeasure;
 @property (nonatomic, readonly) long long qualityMeasure;
 @property (getter=isRightEyeClosed, nonatomic, readonly) bool rightEyeClosed;
 @property (nonatomic, readonly) double rightEyeX;
 @property (nonatomic, readonly) double rightEyeY;
+@property (nonatomic, readonly) double roll;
 @property (nonatomic, readonly) double size;
 @property (nonatomic, readonly) unsigned short smileType;
 @property (nonatomic, readonly) long long sourceHeight;
 @property (nonatomic, readonly) long long sourceWidth;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) int trainingType;
+@property (nonatomic, readonly) double yaw;
 
 // Image: /System/Library/Frameworks/Photos.framework/Photos
 
@@ -100,16 +106,18 @@
 + (id)fetchFacesForPersonsAssociatedWithFaceGroupsContainingFacesWithClusterSequenceNumbers:(id)arg1 options:(id)arg2;
 + (id)fetchFacesGroupedByAssetLocalIdentifierForAssets:(id)arg1 options:(id)arg2;
 + (id)fetchFacesInAsset:(id)arg1 options:(id)arg2;
++ (id)fetchFacesInAssets:(id)arg1 options:(id)arg2;
 + (id)fetchFacesInFaceGroup:(id)arg1 options:(id)arg2;
 + (id)fetchFacesOnAssetWithFace:(id)arg1 options:(id)arg2;
 + (id)fetchFacesWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchFacesWithOptions:(id)arg1;
 + (id)fetchKeyFaceForFaceGroup:(id)arg1 options:(id)arg2;
 + (id)fetchKeyFaceForPerson:(id)arg1 options:(id)arg2;
-+ (id)fetchKeyFacesGroupedByPersonLocalIdentifierForPersonLocalIdentifiers:(id)arg1;
++ (id)fetchKeyFacesGroupedByPersonLocalIdentifierForPersonLocalIdentifiers:(id)arg1 fetchOptions:(id)arg2;
 + (id)fetchKeyFacesGroupedByPersons:(id)arg1;
 + (id)fetchRejectedFacesForPerson:(id)arg1 options:(id)arg2;
 + (id)fetchSingletonFacesWithOptions:(id)arg1;
++ (id)fetchSuggestedFacesForPerson:(id)arg1 options:(id)arg2;
 + (id)fetchType;
 + (id)identifierCode;
 + (id)managedEntityName;
@@ -160,9 +168,11 @@
 - (id)personLocalIdentifier;
 - (id)personUUID;
 - (double)poseYaw;
+- (double)quality;
 - (long long)qualityMeasure;
 - (double)rightEyeX;
 - (double)rightEyeY;
+- (double)roll;
 - (void)setFaceAlgorithmVersion:(long long)arg1;
 - (void)setPoseYaw:(double)arg1;
 - (double)size;
@@ -170,6 +180,7 @@
 - (long long)sourceHeight;
 - (long long)sourceWidth;
 - (int)trainingType;
+- (double)yaw;
 
 // Image: /System/Library/PrivateFrameworks/PhotoAnalysis.framework/PhotoAnalysis
 
@@ -182,7 +193,9 @@
 - (bool)photosFaceRepresentationIsLeftEyeClosed;
 - (bool)photosFaceRepresentationIsRightEyeClosed;
 - (id)photosFaceRepresentationLocalIdentifier;
+- (double)photosFaceRepresentationQuality;
 - (long long)photosFaceRepresentationQualityMeasure;
+- (double)photosFaceRepresentationRoll;
 - (double)photosFaceRepresentationSize;
 - (long long)photosFaceRepresentationSourceHeight;
 - (long long)photosFaceRepresentationSourceWidth;

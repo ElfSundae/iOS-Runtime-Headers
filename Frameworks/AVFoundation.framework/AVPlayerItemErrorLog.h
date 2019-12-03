@@ -17,7 +17,6 @@
 - (id)events;
 - (id)extendedLogData;
 - (unsigned long long)extendedLogDataStringEncoding;
-- (void)finalize;
 - (id)init;
 - (id)initWithLogArray:(id)arg1;
 

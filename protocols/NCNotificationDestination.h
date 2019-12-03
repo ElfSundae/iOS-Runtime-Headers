@@ -7,11 +7,12 @@
 
 - (bool)canReceiveNotificationRequest:(NCNotificationRequest *)arg1;
 - (<NCNotificationDestinationDelegate> *)delegate;
+- (BSServiceConnectionEndpoint *)endpoint;
 - (NSString *)identifier;
-- (void)modifyNotificationRequest:(NCNotificationRequest *)arg1 forCoalescedNotification:(NCCoalescedNotification *)arg2;
-- (void)postNotificationRequest:(NCNotificationRequest *)arg1 forCoalescedNotification:(NCCoalescedNotification *)arg2;
+- (void)modifyNotificationRequest:(NCNotificationRequest *)arg1;
+- (void)postNotificationRequest:(NCNotificationRequest *)arg1;
 - (void)setDelegate:(id <NCNotificationDestinationDelegate>)arg1;
-- (void)withdrawNotificationRequest:(NCNotificationRequest *)arg1 forCoalescedNotification:(NCCoalescedNotification *)arg2;
+- (void)withdrawNotificationRequest:(NCNotificationRequest *)arg1;
 
 @optional
 

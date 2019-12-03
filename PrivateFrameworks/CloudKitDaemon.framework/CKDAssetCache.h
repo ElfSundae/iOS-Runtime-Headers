@@ -48,6 +48,7 @@
 + (id)_sharedCachesQueue;
 + (id)assetCacheWithApplicationBundleID:(id)arg1 assetDirectoryContext:(id)arg2 didInit:(bool*)arg3 error:(id*)arg4;
 + (int)openFdForDownloadPath:(id)arg1 error:(id*)arg2;
++ (void)registerExpirationForAssetHandles;
 
 - (void).cxx_destruct;
 - (id)MMCS;
@@ -75,6 +76,7 @@
 - (void)cleanup;
 - (void)clearAssetCache;
 - (unsigned long long)clearForced:(bool)arg1;
+- (unsigned long long)countAssetCacheItems;
 - (id)dbPath;
 - (id)dbPool;
 - (void)dealloc;

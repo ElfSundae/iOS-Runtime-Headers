@@ -4,6 +4,7 @@
 
 @interface VUIAppDocumentCanonicalServiceViewController : VUIAppDocumentServiceViewController
 
+- (bool)automaticallyProvidesMediaController;
 - (bool)handleEvent:(id)arg1 targetResponder:(id)arg2 viewElement:(id)arg3 extraInfo:(id*)arg4;
 - (id)initWithDocumentServiceRequest:(id)arg1 loadImmediately:(bool)arg2 documentRef:(id)arg3 viewControllerIdentifier:(id)arg4;
 

@@ -7,6 +7,7 @@
 + (id)sharedInstance;
 
 - (void)promptUserAndCreateDebugRecordingWithSource:(id)arg1;
+- (void)promptUserAndCreateDebugRecordingWithSource:(id)arg1 completion:(id /* block */)arg2;
 - (void)startCreatingDebugContentIfRequested;
 
 @end

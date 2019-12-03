@@ -2,16 +2,6 @@
    Image: /System/Library/PrivateFrameworks/TVMLKit.framework/TVMLKit
  */
 
-@interface _TVStackSupplementalViewController : UIViewController {
-    struct TVShowcaseConfig { 
-        double inset; 
-    }  _showcaseConfig;
-}
-
-@property (nonatomic) struct TVShowcaseConfig { double x1; } showcaseConfig;
-
-- (void)setShowcaseConfig:(struct TVShowcaseConfig { double x1; })arg1;
-- (struct TVShowcaseConfig { double x1; })showcaseConfig;
-- (void)tv_setShowcaseConfig:(struct TVShowcaseConfig { double x1; })arg1;
+@interface _TVStackSupplementalViewController : UIViewController
 
 @end

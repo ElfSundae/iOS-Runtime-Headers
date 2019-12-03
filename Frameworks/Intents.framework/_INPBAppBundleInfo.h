@@ -3,6 +3,7 @@
  */
 
 @interface _INPBAppBundleInfo : PBCodable <NSCopying, NSSecureCoding, _INPBAppBundleInfo> {
+    bool  __encodeLegacyGloryData;
     _INPBAppId * _appId;
     _INPBBuildId * _buildId;
     struct { }  _has;
@@ -11,6 +12,7 @@
     NSArray * _supportedPlatforms;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic, retain) _INPBAppId *appId;
 @property (nonatomic, retain) _INPBBuildId *buildId;
 @property (readonly, copy) NSString *debugDescription;
@@ -29,8 +31,11 @@
 + (Class)intentSupportType;
 + (Class)localizedProjectsType;
 + (Class)supportedPlatformsType;
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (void)addIntentSupport:(id)arg1;
 - (void)addLocalizedProjects:(id)arg1;
 - (void)addSupportedPlatforms:(id)arg1;
@@ -41,9 +46,11 @@
 - (void)clearSupportedPlatforms;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasAppId;
 - (bool)hasBuildId;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)intentSupportAtIndex:(unsigned long long)arg1;
 - (id)intentSupports;
 - (unsigned long long)intentSupportsCount;

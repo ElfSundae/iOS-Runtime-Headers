@@ -2,14 +2,16 @@
    Image: /System/Library/PrivateFrameworks/Message.framework/Message
  */
 
-@interface MFMailDropAttachmentDataProvider : MFAttachmentLibraryDataProvider <NSURLSessionDownloadDelegate> {
-    NSMutableDictionary * _attachments;
+@interface MFMailDropAttachmentDataProvider : MFAttachmentLibraryDataProvider <EFLoggable, NSURLSessionDownloadDelegate> {
+    NSMutableDictionary * _requests;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+
++ (id)log;
 
 - (void).cxx_destruct;
 - (void)URLSession:(id)arg1 downloadTask:(id)arg2 didFinishDownloadingToURL:(id)arg3;

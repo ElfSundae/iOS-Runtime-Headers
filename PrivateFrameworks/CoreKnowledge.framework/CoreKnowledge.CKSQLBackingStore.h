@@ -2,12 +2,14 @@
    Image: /System/Library/PrivateFrameworks/CoreKnowledge.framework/CoreKnowledge
  */
 
-@interface CoreKnowledge.CKSQLBackingStore : CKAbstractBackingStore {
+@interface CoreKnowledge.CKSQLBackingStore : Swift._SwiftObject {
+    void connection;
     void name;
 }
 
-- (void).cxx_destruct;
-- (id)init;
++ (id)directory;
++ (void)setDirectory:(id)arg1;
+
 - (id)initWithName:(id)arg1;
 
 @end

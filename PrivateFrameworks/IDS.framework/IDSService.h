@@ -23,16 +23,21 @@
 - (void).cxx_destruct;
 - (id)_accountWithAlias:(id)arg1;
 - (id)_internal;
+- (id)accountMatchingSim:(id)arg1;
+- (id)accountMatchingSimIdentifier:(id)arg1;
 - (id)accounts;
 - (void)activateAlias:(id)arg1;
 - (void)activateAliases:(id)arg1;
 - (id)activeAliases;
 - (void)addDelegate:(id)arg1 queue:(id)arg2;
+- (void)addDelegate:(id)arg1 withDelegateProperties:(id)arg2 queue:(id)arg3;
 - (id)aliases;
 - (bool)cancelIdentifier:(id)arg1 error:(id*)arg2;
+- (bool)cancelOpportunisticDataWithIdentifier:(id)arg1 error:(id*)arg2;
 - (id)datagramChannelForSessionDestination:(id)arg1 error:(id*)arg2;
 - (id)datagramChannelForSocketDescriptor:(int)arg1 error:(id*)arg2;
 - (id)datagramConnectionForSessionDestination:(id)arg1 error:(id*)arg2;
+- (id)datagramConnectionForSessionDestination:(id)arg1 uid:(unsigned int)arg2 error:(id*)arg3;
 - (id)datagramConnectionForSocketDescriptor:(int)arg1 error:(id*)arg2;
 - (void)deactivateAlias:(id)arg1;
 - (void)deactivateAliases:(id)arg1;
@@ -41,17 +46,12 @@
 - (id)deviceForUniqueID:(id)arg1;
 - (id)devices;
 - (id)devicesForBTUUID:(id)arg1;
-- (void)disable;
-- (void)disablePhoneUser;
-- (void)disableiCloudUser;
-- (void)enable;
-- (void)enablePhoneUser;
-- (void)enableiCloudUser;
 - (id)firstRoutableInternetDestinationForSelf;
 - (bool)getProgressUpdateForIdentifier:(id)arg1 error:(id*)arg2;
 - (id)iCloudAccount;
 - (id)initWithService:(id)arg1;
 - (id)initWithService:(id)arg1 commands:(id)arg2;
+- (id)initWithService:(id)arg1 commands:(id)arg2 manuallyAckMessages:(bool)arg3;
 - (id)initWithService:(id)arg1 manuallyAckMessages:(bool)arg2;
 - (id)initWithService:(id)arg1 serviceDomain:(id)arg2;
 - (id)internal;
@@ -62,16 +62,19 @@
 - (SEL)protobufActionForIncomingRequestsOfType:(unsigned short)arg1;
 - (SEL)protobufActionForIncomingResponsesOfType:(unsigned short)arg1;
 - (void)removeDelegate:(id)arg1;
+- (void)requestConnectionForUnicastParameter:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)scheduleTransactionLogTask:(id)arg1;
 - (bool)sendAccessoryData:(id)arg1 toAccessoryID:(id)arg2 accessToken:(id)arg3 options:(id)arg4 identifier:(id*)arg5 error:(id*)arg6;
 - (void)sendAckForMessageWithContext:(id)arg1;
 - (bool)sendAheadGroup:(id)arg1 priority:(long long)arg2 options:(id)arg3 identifier:(id*)arg4 error:(id*)arg5;
+- (bool)sendCertifiedDeliveryReceipt:(id)arg1;
 - (bool)sendData:(id)arg1 fromAccount:(id)arg2 toDestinations:(id)arg3 priority:(long long)arg4 options:(id)arg5 identifier:(id*)arg6 error:(id*)arg7;
 - (bool)sendData:(id)arg1 priority:(long long)arg2 options:(id)arg3 identifier:(id*)arg4 error:(id*)arg5;
 - (bool)sendData:(id)arg1 toDestinations:(id)arg2 priority:(long long)arg3 options:(id)arg4 identifier:(id*)arg5 error:(id*)arg6;
 - (bool)sendMessage:(id)arg1 fromAccount:(id)arg2 toDestinations:(id)arg3 options:(id)arg4 identifier:(id*)arg5 error:(id*)arg6;
 - (bool)sendMessage:(id)arg1 fromAccount:(id)arg2 toDestinations:(id)arg3 priority:(long long)arg4 options:(id)arg5 identifier:(id*)arg6 error:(id*)arg7;
 - (bool)sendMessage:(id)arg1 toDestinations:(id)arg2 priority:(long long)arg3 options:(id)arg4 identifier:(id*)arg5 error:(id*)arg6;
+- (bool)sendOpportunisticData:(id)arg1 options:(id)arg2 identifier:(id)arg3 error:(id*)arg4;
 - (bool)sendProtobuf:(id)arg1 fromAccount:(id)arg2 toDestinations:(id)arg3 priority:(long long)arg4 options:(id)arg5 identifier:(id*)arg6 error:(id*)arg7;
 - (bool)sendProtobuf:(id)arg1 toDestinations:(id)arg2 priority:(long long)arg3 options:(id)arg4 identifier:(id*)arg5 error:(id*)arg6;
 - (bool)sendResourceAtURL:(id)arg1 metadata:(id)arg2 toDestinations:(id)arg3 priority:(long long)arg4 options:(id)arg5 identifier:(id*)arg6 error:(id*)arg7;
@@ -96,5 +99,21 @@
 - (bool)hmd_isActive;
 - (id)hmd_localDeviceHandle;
 - (id)hmd_preferredHandle;
+
+// Image: /System/Library/PrivateFrameworks/MapsSupport.framework/MapsSupport
+
++ (id)_msp_IDSIdentifierFor:(id)arg1;
++ (id)_msp_IDSIdentifiersFor:(id)arg1;
+
+- (id)_msp_accountFromIdentifier:(id)arg1;
+- (id)_msp_currentAccount;
+- (id)_msp_currentAccountIdentifier;
+- (bool)_msp_hasValidIDSAccount;
+- (id)_msp_removeSelfFrom:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/PBBridgeSupport.framework/PBBridgeSupport
+
+- (id)pb_defaultPairedDeviceID;
+- (id)pb_mineDevices;
 
 @end

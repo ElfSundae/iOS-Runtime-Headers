@@ -2,51 +2,39 @@
    Image: /System/Library/Frameworks/AVKit.framework/AVKit
  */
 
-@interface AVScrollViewObserver : NSObject <AVScrollViewObserverDelegate, _UIScrollViewScrollObserver> {
-    UIView * _contentView;
-    <AVScrollViewObserverDelegate> * _delegate;
-    CADisplayLink * _displayLink;
-    AVScrollViewObserver * _next;
-    UIScrollView * _observedScrollView;
-    AVScrollViewObserver * _previous;
+@interface AVScrollViewObserver : NSObject <_UIScrollViewScrollObserver> {
+    NSHashTable * _observedScrollViews;
+    UIView<AVScrollViewObserverContentView> * _observer;
+    bool  _scrolling;
+    NSTimer * _scrollingDidEndTimer;
+    bool  _scrollingQuickly;
 }
 
-@property (nonatomic, readonly) UIView *contentView;
-@property (nonatomic, readonly) double contentViewFractionVisible;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) <AVScrollViewObserverDelegate> *delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, retain) CADisplayLink *displayLink;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) bool isObservedScrollViewAncestorOfContentView;
-@property (nonatomic, readonly) bool isScrollViewScrolling;
-@property (nonatomic, readonly) AVScrollViewObserver *next;
-@property (nonatomic) UIScrollView *observedScrollView;
-@property (nonatomic, readonly) AVScrollViewObserver *previous;
+@property (nonatomic, copy) NSHashTable *observedScrollViews;
+@property (nonatomic) UIView<AVScrollViewObserverContentView> *observer;
+@property (getter=isScrolling, nonatomic) bool scrolling;
+@property (nonatomic, retain) NSTimer *scrollingDidEndTimer;
+@property (getter=isScrollingQuickly, nonatomic) bool scrollingQuickly;
 @property (readonly) Class superclass;
 
-+ (id)scrollViewObserverForContentView:(id)arg1 delegate:(id)arg2;
-
 - (void).cxx_destruct;
-- (void)_displayLinkFired:(id)arg1;
 - (void)_observeScrollViewDidScroll:(id)arg1;
-- (void)_startOrPauseDisplayLinkIfNeeded;
-- (id)contentView;
-- (double)contentViewFractionVisible;
+- (void)_updateScrollingStatus;
 - (void)dealloc;
-- (id)delegate;
-- (id)displayLink;
-- (id)initWithView:(id)arg1 observedScrollView:(id)arg2 delegate:(id)arg3;
-- (void)invalidate;
-- (bool)isObservedScrollViewAncestorOfContentView;
-- (bool)isScrollViewScrolling;
-- (id)next;
-- (id)observedScrollView;
-- (id)previous;
-- (void)scrollViewObserverValuesDidChange:(id)arg1;
-- (void)setDelegate:(id)arg1;
-- (void)setDisplayLink:(id)arg1;
-- (void)setObservedScrollView:(id)arg1;
-- (void)validateHierarchyAndFindAdditionalScrollViews;
+- (id)initWithContentView:(id)arg1;
+- (bool)isScrolling;
+- (bool)isScrollingQuickly;
+- (id)observedScrollViews;
+- (id)observer;
+- (id)scrollingDidEndTimer;
+- (void)setObservedScrollViews:(id)arg1;
+- (void)setObserver:(id)arg1;
+- (void)setScrolling:(bool)arg1;
+- (void)setScrollingDidEndTimer:(id)arg1;
+- (void)setScrollingQuickly:(bool)arg1;
+- (void)updateObservedScrollViews;
 
 @end

@@ -10,13 +10,16 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic, readonly, retain) MTLDebugInstrumentationData *debugInstrumentationData;
 @property (readonly, copy) NSString *description;
 @property (readonly) <MTLDevice> *device;
 @property (readonly) unsigned long long hash;
 @property (readonly) NSString *label;
 @property (readonly) unsigned long long maxTotalThreadsPerThreadgroup;
+@property (nonatomic) unsigned long long resourceIndex;
 @property (readonly) unsigned long long staticThreadgroupMemoryLength;
 @property (readonly) Class superclass;
+@property (readonly) bool supportIndirectCommandBuffers;
 @property (readonly) unsigned long long threadExecutionWidth;
 @property (readonly) unsigned long long uniqueIdentifier;
 

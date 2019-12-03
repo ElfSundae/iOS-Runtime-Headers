@@ -2,65 +2,89 @@
    Image: /System/Library/PrivateFrameworks/SearchUI.framework/SearchUI
  */
 
-@interface SearchUITableHeaderView : UITableViewHeaderFooterView <NUIContainerStackViewDelegate> {
+@interface SearchUITableHeaderView : UITableViewHeaderFooterView <NUIContainerViewDelegate> {
+    UIView * _bannerView;
     <SearchUITableHeaderViewDelegate> * _delegate;
     <SFFeedbackListener> * _feedbackListener;
-    UIButton * _headerOptionButton;
+    TLKTextButton * _headerOptionButton;
     unsigned long long  _headerType;
+    bool  _isExpanded;
     SFResultSection * _section;
+    bool  _shouldUseInsetRoundedSections;
+    bool  _shouldUseStandardSectionInsets;
     TLKStackView * _stackView;
-    UILabel * _titleLabel;
+    TLKLabel * _titleLabel;
+    bool  _useShorterHeaders;
     bool  _usesInsetRoundedSections;
 }
 
+@property (nonatomic, retain) UIView *bannerView;
 @property (readonly, copy) NSString *debugDescription;
-@property <SearchUITableHeaderViewDelegate> *delegate;
+@property (nonatomic) <SearchUITableHeaderViewDelegate> *delegate;
 @property (readonly, copy) NSString *description;
-@property <SFFeedbackListener> *feedbackListener;
+@property (nonatomic) <SFFeedbackListener> *feedbackListener;
 @property (readonly) unsigned long long hash;
-@property (retain) UIButton *headerOptionButton;
-@property unsigned long long headerType;
-@property (retain) SFResultSection *section;
-@property (retain) TLKStackView *stackView;
+@property (nonatomic, retain) TLKTextButton *headerOptionButton;
+@property (nonatomic) unsigned long long headerType;
+@property (nonatomic) bool isExpanded;
+@property (nonatomic, retain) SFResultSection *section;
+@property (nonatomic) bool shouldUseInsetRoundedSections;
+@property (nonatomic) bool shouldUseStandardSectionInsets;
+@property (nonatomic, retain) TLKStackView *stackView;
 @property (readonly) Class superclass;
 @property (readonly) NSString *title;
-@property (retain) UILabel *titleLabel;
-@property bool usesInsetRoundedSections;
+@property (nonatomic, retain) TLKLabel *titleLabel;
+@property (nonatomic) bool useShorterHeaders;
+@property (nonatomic) bool usesInsetRoundedSections;
 
 + (id)reuseIdentifier;
 
 - (void).cxx_destruct;
+- (void)_dynamicUserInterfaceTraitDidChange;
+- (id)bannerView;
 - (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize { double x1; double x2; })arg2 forReason:(long long)arg3;
 - (id)delegate;
+- (void)didMoveToWindow;
 - (id)feedbackListener;
 - (id)headerOptionButton;
 - (void)headerOptionButtonPressed;
 - (unsigned long long)headerType;
-- (id)initWithStyle:(unsigned long long)arg1;
+- (id)init;
 - (struct CGSize { double x1; double x2; })intrinsicContentSize;
+- (bool)isExpanded;
 - (void)layoutSubviews;
 - (void)moreButtonPressed;
 - (id)moreResultsPunchout;
 - (id)section;
+- (void)setBannerView:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setFeedbackListener:(id)arg1;
 - (void)setFloating:(bool)arg1;
 - (void)setHeaderOptionButton:(id)arg1;
 - (void)setHeaderType:(unsigned long long)arg1;
+- (void)setIsExpanded:(bool)arg1;
 - (void)setSection:(id)arg1;
+- (void)setShouldUseInsetRoundedSections:(bool)arg1;
+- (void)setShouldUseStandardSectionInsets:(bool)arg1;
 - (void)setStackView:(id)arg1;
 - (void)setTitleLabel:(id)arg1;
+- (void)setUseShorterHeaders:(bool)arg1;
 - (void)setUsesInsetRoundedSections:(bool)arg1;
+- (bool)shouldUseInsetRoundedSections;
+- (bool)shouldUseStandardSectionInsets;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (id)stackView;
 - (bool)supportsShowMoreInApp;
 - (struct CGSize { double x1; double x2; })systemLayoutSizeFittingSize:(struct CGSize { double x1; double x2; })arg1;
 - (id)title;
 - (id)titleLabel;
+- (void)tlk_updateForAppearance:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateAlignmentRectInsets;
 - (void)updateHeaderButtonVisibility;
+- (void)updateSectionTitle;
 - (void)updateWithSection:(id)arg1 isExpanded:(bool)arg2 usesInsetRoundedSection:(bool)arg3;
+- (bool)useShorterHeaders;
 - (bool)usesInsetRoundedSections;
 
 @end

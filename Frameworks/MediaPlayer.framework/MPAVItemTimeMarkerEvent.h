@@ -22,7 +22,7 @@
 - (id)artworkMarker;
 - (id)chapterMarker;
 - (id)closedCaptionMarker;
-- (id)crossedMarkerOfType:(int)arg1;
+- (id)crossedMarkerOfType:(long long)arg1;
 - (id)initWithTimeMarkerNotificationUserInfo:(id)arg1;
 - (void)setAVItem:(id)arg1;
 - (void)setArtworkMarker:(id)arg1;

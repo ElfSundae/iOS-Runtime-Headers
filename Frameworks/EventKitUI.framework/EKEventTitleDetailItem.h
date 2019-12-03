@@ -3,12 +3,13 @@
  */
 
 @interface EKEventTitleDetailItem : EKEventDetailItem <EKEventDetailTitleCellDelegate> {
-    UITableViewCell * _cell;
+    EKEventDetailTitleCell * _cell;
     bool  _cellNeedsUpdate;
     UIColor * _color;
     NSObject<EKEventTitleDetailItemDelegate> * _editDelegate;
     bool  _hasMapItemLaunchOptionFromTimeToLeaveNotification;
     bool  _hidesSeparator;
+    unsigned long long  _numberOfTitleLines;
     NSDate * _proposedTime;
     bool  _showDot;
 }
@@ -16,7 +17,9 @@
 @property (nonatomic) NSObject<EKEventTitleDetailItemDelegate> *editDelegate;
 @property (nonatomic) bool hasMapItemLaunchOptionFromTimeToLeaveNotification;
 @property (nonatomic) bool hidesSeparator;
+@property (nonatomic) unsigned long long numberOfTitleLines;
 @property (nonatomic, retain) NSDate *proposedTime;
+@property (nonatomic, readonly) UIView *sourceViewForPopover;
 
 - (void).cxx_destruct;
 - (void)_updateCellIfNeededForWidth:(double)arg1;
@@ -28,6 +31,7 @@
 - (bool)hasMapItemLaunchOptionFromTimeToLeaveNotification;
 - (bool)hidesSeparator;
 - (bool)minimalMode;
+- (unsigned long long)numberOfTitleLines;
 - (void)predictionWasActedOn;
 - (id)proposedTime;
 - (void)reset;
@@ -35,8 +39,10 @@
 - (void)setEditDelegate:(id)arg1;
 - (void)setHasMapItemLaunchOptionFromTimeToLeaveNotification:(bool)arg1;
 - (void)setHidesSeparator:(bool)arg1;
+- (void)setNumberOfTitleLines:(unsigned long long)arg1;
 - (void)setProposedTime:(id)arg1;
 - (bool)shouldShowEditButtonInline;
+- (id)sourceViewForPopover;
 - (double)titleHeight;
 
 @end

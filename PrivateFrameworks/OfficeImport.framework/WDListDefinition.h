@@ -15,9 +15,9 @@
 @property (nonatomic, readonly) NSString *styleId;
 @property (nonatomic, copy) NSString *styleRefId;
 
+- (void).cxx_destruct;
 - (id)addLevel;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)initWithDocument:(id)arg1 listDefinitionId:(int)arg2 styleId:(id)arg3;
 - (id)levelAt:(int)arg1;

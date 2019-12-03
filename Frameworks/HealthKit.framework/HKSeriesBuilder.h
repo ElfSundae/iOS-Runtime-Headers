@@ -8,7 +8,7 @@
     NSUUID * _identifier;
     HKTaskServerProxyProvider * _proxyProvider;
     NSObject<OS_dispatch_queue> * _resourceQueue;
-    long long  _state;
+    _Atomic int  _state;
     HKHealthStore * _store;
 }
 
@@ -17,10 +17,10 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) NSUUID *identifier;
+@property (nonatomic, readonly, copy) NSUUID *identifier;
 @property (nonatomic, retain) HKTaskServerProxyProvider *proxyProvider;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *resourceQueue;
-@property (nonatomic) long long state;
+@property long long state;
 @property (nonatomic, readonly) HKHealthStore *store;
 @property (readonly) Class superclass;
 
@@ -28,6 +28,7 @@
 + (void)configureClientInterface:(id)arg1;
 + (void)configureServerInterface:(id)arg1;
 + (id)serverInterface;
++ (id)taskServerIdentifier;
 
 - (void).cxx_destruct;
 - (id)_initWithHealthStore:(id)arg1 identifier:(id)arg2 configuration:(id)arg3;

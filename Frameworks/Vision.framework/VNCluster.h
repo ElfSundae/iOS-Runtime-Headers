@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Vision.framework/Vision
  */
 
-@interface VNCluster : NSObject {
+@interface VNCluster : NSObject <NSCopying, NSSecureCoding> {
     unsigned long long  _clusterId;
     NSArray * _objects;
     NSDictionary * _representativenessById;
@@ -18,10 +18,15 @@
 @property (nonatomic, retain) NSArray *suggestedIdsForRepresentative;
 @property (nonatomic) unsigned long long totalObjectCount;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (unsigned long long)clusterId;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)objects;
 - (id)representativenessById;

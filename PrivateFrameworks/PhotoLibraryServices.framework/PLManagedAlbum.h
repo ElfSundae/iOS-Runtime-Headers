@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
  */
 
-@interface PLManagedAlbum : _PLManagedAlbum <PLCloudDeletable, PLSearchableAssetCollection, PLUserEditableAlbumProtocol> {
+@interface PLManagedAlbum : _PLManagedAlbum <PLCloudDeletable, PLDeletableManagedObject, PLFileSystemAlbumMetadataPersistence, PLUserEditableAlbumProtocol> {
     bool  _albumShouldBeAutomaticallyDeleted;
     bool  _needsPersistenceUpdate;
 }
@@ -42,8 +42,6 @@
 @property (nonatomic, readonly) bool isStandInAlbum;
 @property (nonatomic, readonly) bool isUserLibraryAlbum;
 @property (nonatomic, retain) PLManagedAsset *keyAsset;
-@property (nonatomic, readonly) NSDate *keyAssetCreationDate;
-@property (nonatomic, readonly) NSString *keyAssetUUID;
 @property (nonatomic, readonly, retain) NSNumber *kind;
 @property (nonatomic, readonly) int kindValue;
 @property (nonatomic, readonly, copy) NSArray *localizedLocationNames;
@@ -51,30 +49,23 @@
 @property (nonatomic, readonly, retain) NSMutableOrderedSet *mutableAssets;
 @property (nonatomic, readonly, copy) NSString *name;
 @property (nonatomic) bool needsPersistenceUpdate;
-@property (nonatomic, readonly) unsigned long long numberOfAssets;
 @property (nonatomic) int pendingItemsCount;
 @property (nonatomic) int pendingItemsType;
+@property (nonatomic, readonly) PLPhotoLibrary *photoLibrary;
 @property (nonatomic, readonly) unsigned long long photosCount;
-@property (nonatomic, readonly, retain) UIImage *posterImage;
-@property (nonatomic, readonly) NSDate *searchableEndDate;
-@property (nonatomic, readonly) NSDate *searchableStartDate;
+@property (nonatomic, readonly, retain) NSObject *posterImage;
 @property (nonatomic, retain) PLManagedAsset *secondaryKeyAsset;
 @property (nonatomic, readonly) bool shouldDeleteWhenEmpty;
-@property (nonatomic, retain) NSDictionary *slideshowSettings;
 @property (nonatomic, readonly, copy) id /* block */ sortingComparator;
 @property (nonatomic, readonly, retain) NSDate *startDate;
-@property (nonatomic, readonly) NSString *subtitle;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) PLManagedAsset *tertiaryKeyAsset;
-@property (nonatomic, readonly) NSString *title;
 @property (nonatomic, readonly, retain) NSString *title;
 @property (nonatomic, readonly, retain) NSMutableOrderedSet *userEditableAssets;
 @property (nonatomic, readonly, retain) NSString *uuid;
 @property (nonatomic, readonly) unsigned long long videosCount;
 
 + (id)albumSupportsAssetOrderKeysPredicate;
-+ (id)assetOrderByAbumUUIDs;
-+ (id)baseSearchIndexPredicate;
 + (id)childKeyForOrdering;
 + (void)clearAssetOrderByAbumUUIDs;
 + (long long)cloudDeletionTypeForTombstone:(id)arg1;
@@ -82,8 +73,6 @@
 + (id)keyPathsForValuesAffectingApproximateCount;
 + (id)keyPathsForValuesAffectingPhotosCount;
 + (id)keyPathsForValuesAffectingVideosCount;
-+ (id)pathToAssetAlbumOrderStructure;
-+ (id)searchIndexAllowedPredicate;
 + (id)validKindsForPersistence;
 
 - (unsigned long long)_albumStandInCount;
@@ -96,8 +85,9 @@
 - (void)addAssetUsingiTunesAlbumOrder:(id)arg1;
 - (bool)albumShouldBeAutomaticallyDeleted;
 - (unsigned long long)approximateCount;
-- (id)assetUUIDsForPreviewWithCount:(unsigned long long)arg1;
+- (id)assetOrderByAbumUUIDs;
 - (unsigned long long)assetsCount;
+- (bool)canPerformDeleteOperation;
 - (bool)canPerformEditOperation:(unsigned long long)arg1;
 - (id)childKeyForOrdering;
 - (long long)cloudDeletionType;
@@ -106,22 +96,19 @@
 - (id)descriptionOfAssetOrderValues;
 - (void)didSave;
 - (id)filteredIndexesForPredicate:(id)arg1;
-- (void)getInternalUserEditableAssets:(id*)arg1 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (unsigned long long)indexInInternalUserEditableAssetsOfObject:(id)arg1;
 - (void)insertAssets:(id)arg1 atIndexes:(id)arg2;
 - (void)insertInternalUserEditableAssets:(id)arg1 atIndexes:(id)arg2;
-- (void)insertInternalUserEditableAssets:(id)arg1 atIndexes:(id)arg2 trimmedVideoPathInfo:(id)arg3 commentText:(id)arg4;
+- (void)insertInternalUserEditableAssets:(id)arg1 atIndexes:(id)arg2 customExportsInfo:(id)arg3 trimmedVideoPathInfo:(id)arg4 commentText:(id)arg5;
 - (id)internalUserEditableAssetsAtIndexes:(id)arg1;
 - (bool)isEmpty;
-- (bool)isValidKindForPersistence;
-- (id)keyAssetCreationDate;
-- (id)keyAssetUUID;
+- (bool)isValidForPersistence;
 - (id)mutableAssets;
 - (bool)needsPersistenceUpdate;
-- (unsigned long long)numberOfAssets;
 - (id)objectInInternalUserEditableAssetsAtIndex:(unsigned long long)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
-- (void)persistMetadataToFileSystem;
+- (id)payloadForChangedKeys:(id)arg1;
+- (void)persistMetadataToFileSystemWithPathManager:(id)arg1;
 - (unsigned long long)photosCount;
 - (void)prepareForDeletion;
 - (void)recalculateCachedCounts;
@@ -129,16 +116,11 @@
 - (void)registerForChanges;
 - (void)removeAssetsAtIndexes:(id)arg1;
 - (void)removeInternalUserEditableAssetsAtIndexes:(id)arg1;
-- (void)removePersistedFileSystemData;
+- (void)removePersistedFileSystemDataWithPathManager:(id)arg1;
 - (void)replaceAssetsAtIndexes:(id)arg1 withAssets:(id)arg2;
-- (unsigned long long)searchIndexCategory;
-- (id)searchIndexContents;
-- (id)searchableEndDate;
-- (id)searchableStartDate;
 - (void)setAlbumShouldBeAutomaticallyDeleted:(bool)arg1;
 - (void)setNeedsPersistenceUpdate:(bool)arg1;
 - (void)sortAssetsUsingiTunesAlbumOrder;
-- (id)subtitle;
 - (bool)supportsAssetOrderKeys;
 - (void)unregisterForChanges;
 - (void)updateKeyAssetsIfNeeded;

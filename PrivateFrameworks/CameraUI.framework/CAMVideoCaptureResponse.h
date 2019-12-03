@@ -10,6 +10,10 @@
         unsigned int flags; 
         long long epoch; 
     }  _duration;
+    struct CGSize { 
+        double width; 
+        double height; 
+    }  _finalExpectedPixelSize;
     UIImage * _imageWellImage;
     NSURL * _localPersistenceURL;
     NSString * _persistenceUUID;
@@ -31,6 +35,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } duration;
 @property (getter=isExpectingPairedVideo, nonatomic, readonly) bool expectingPairedVideo;
+@property (nonatomic, readonly) struct CGSize { double x1; double x2; } finalExpectedPixelSize;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) UIImage *imageWellImage;
 @property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } irisStillDisplayTime;
@@ -49,6 +54,7 @@
 @property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } stillDisplayTime;
 @property (nonatomic, readonly, copy) NSDictionary *stillImageMetadata;
 @property (nonatomic, readonly, copy) NSString *stillPersistenceUUID;
+@property (nonatomic, readonly) bool stoppedUnexpectedly;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSString *uuid;
 @property (nonatomic, readonly) double videoZoomFactor;
@@ -58,8 +64,9 @@
 - (id)captureDate;
 - (id)description;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })duration;
+- (struct CGSize { double x1; double x2; })finalExpectedPixelSize;
 - (id)imageWellImage;
-- (id)initWithUUID:(id)arg1 captureSession:(unsigned short)arg2 url:(id)arg3 captureDate:(id)arg4 duration:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg5 stillPersistenceUUID:(id)arg6 stillDisplayTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg7 reason:(long long)arg8 videoZoomFactor:(double)arg9 imageWellImage:(id)arg10 previewImage:(id)arg11;
+- (id)initWithUUID:(id)arg1 captureSession:(unsigned short)arg2 url:(id)arg3 captureDate:(id)arg4 duration:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg5 stillPersistenceUUID:(id)arg6 stillDisplayTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg7 reason:(long long)arg8 videoZoomFactor:(double)arg9 finalExpectedPixelSize:(struct CGSize { double x1; double x2; })arg10 imageWellImage:(id)arg11 previewImage:(id)arg12 coordinationInfo:(id)arg13;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })irisStillDisplayTime;
 - (id)irisStillImageUUID;
 - (id)irisVideoPersistenceURL;
@@ -76,6 +83,7 @@
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })stillDisplayTime;
 - (id)stillImageMetadata;
 - (id)stillPersistenceUUID;
+- (bool)stoppedUnexpectedly;
 - (id)uuid;
 - (double)videoZoomFactor;
 

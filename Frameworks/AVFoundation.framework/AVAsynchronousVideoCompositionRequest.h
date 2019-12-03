@@ -16,7 +16,6 @@
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })compositionTime;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
-- (void)finalize;
 - (void)finishCancelledRequest;
 - (void)finishWithComposedVideoFrame:(struct __CVBuffer { }*)arg1;
 - (void)finishWithError:(id)arg1;

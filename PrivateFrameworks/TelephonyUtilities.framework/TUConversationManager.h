@@ -43,5 +43,6 @@
 - (void)registerWithCompletionHandler:(id /* block */)arg1;
 - (void)removeDelegate:(id)arg1;
 - (void)serverDisconnectedForDataSource:(id)arg1 oldConversationsByGroupUUID:(id)arg2;
+- (void)setDownlinkMuted:(bool)arg1 forRemoteParticipantsInConversation:(id)arg2;
 
 @end

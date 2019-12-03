@@ -7,6 +7,7 @@
     HMDDevice * _device;
 }
 
+@property (getter=isBlocked, readonly) bool blocked;
 @property unsigned long long configurationState;
 @property (readonly) HMDDevice *device;
 
@@ -23,6 +24,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDevice:(id)arg1 home:(id)arg2 pairingIdentity:(id)arg3 configurationState:(unsigned long long)arg4;
 - (id)initWithModelObject:(id)arg1;
+- (bool)isBlocked;
 - (id)legacyUser;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (bool)refreshDisplayName;

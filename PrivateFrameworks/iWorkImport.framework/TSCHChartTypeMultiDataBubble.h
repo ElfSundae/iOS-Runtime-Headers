@@ -11,6 +11,7 @@
 - (id)init;
 - (Class)presetImagerClass;
 - (Class)repClass;
+- (bool)supportsSeriesStroke;
 - (id)userInterfaceName;
 - (long long)userInterfaceTag;
 

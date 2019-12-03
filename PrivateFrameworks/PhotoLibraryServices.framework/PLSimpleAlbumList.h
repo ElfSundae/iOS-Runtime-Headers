@@ -13,11 +13,11 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (bool)canEditContainers;
 - (id)containers;
 - (unsigned long long)containersCount;
 - (id)containersRelationshipName;
-- (void)dealloc;
 - (id)initWithAssetContainer:(id)arg1;
 - (id)initWithAssetContainers:(id)arg1;
 - (bool)isEmpty;

@@ -26,11 +26,12 @@
 - (void)findPlugInByUUID:(id)arg1 reply:(id /* block */)arg2;
 - (void)holdPlugins:(id)arg1 flags:(unsigned long long)arg2 reply:(id /* block */)arg3;
 - (id)initWithServiceName:(const char *)arg1;
-- (void)matchPlugIns:(id)arg1 flags:(unsigned long long)arg2 reply:(id /* block */)arg3;
+- (id)initWithServiceName:(const char *)arg1 user:(unsigned int)arg2;
+- (void)matchPlugIns:(id)arg1 flags:(unsigned long long)arg2 uuid:(id)arg3 reply:(id /* block */)arg4;
 - (id)pkd;
 - (long long)protocolVersion;
 - (void)readyPlugIns:(id)arg1 synchronously:(bool)arg2 flags:(unsigned long long)arg3 environment:(id)arg4 reply:(id /* block */)arg5;
-- (void)releaseHold:(id)arg1 reply:(id /* block */)arg2;
+- (void)releaseHold:(id)arg1 flags:(unsigned long long)arg2 reply:(id /* block */)arg3;
 - (void)removePlugIns:(id)arg1 reply:(id /* block */)arg2;
 - (id)replyQueue;
 - (id)request:(const char *)arg1;

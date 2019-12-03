@@ -78,7 +78,6 @@
 - (void)setPresentationPhaseCompletionBlock:(id /* block */)arg1;
 - (void)set_sourceViewSnapshotAndScaleTransformSuppressed:(bool)arg1;
 - (bool)shouldPresentInFullscreen;
-- (bool)shouldRemovePresentersView;
 - (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
 
 @end

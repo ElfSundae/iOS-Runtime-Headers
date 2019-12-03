@@ -59,11 +59,11 @@
 
 + (void)initialize;
 
+- (void).cxx_destruct;
 - (float)baseline;
 - (id)bidiFont;
 - (unsigned char)caps;
 - (id)clickHyperlink;
-- (void)dealloc;
 - (id)description;
 - (id)eastAsianFont;
 - (id)effects;

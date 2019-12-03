@@ -12,11 +12,11 @@
 
 + (int)cpFontClassFromWdFontFamily:(int)arg1;
 
+- (void).cxx_destruct;
 - (void)addAlternateName:(id)arg1;
 - (id)alternateNames;
 - (int)characterSet;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (int)fontFamily;
 - (unsigned long long)hash;

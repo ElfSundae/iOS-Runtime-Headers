@@ -3,11 +3,14 @@
  */
 
 @interface _INPBRunWorkflowIntentResponse : PBCodable <NSCopying, NSSecureCoding, _INPBRunWorkflowIntentResponse> {
+    bool  __encodeLegacyGloryData;
     bool  _continueRunning;
     struct { 
         unsigned int continueRunning : 1; 
+        unsigned int requestsIntentExecution : 1; 
         unsigned int waitingForResume : 1; 
     }  _has;
+    bool  _requestsIntentExecution;
     NSArray * _steps;
     _INPBArchivedObject * _underlyingIntent;
     _INPBArchivedObject * _underlyingIntentResponse;
@@ -15,15 +18,18 @@
     bool  _waitingForResume;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic) bool continueRunning;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) bool hasContinueRunning;
+@property (nonatomic) bool hasRequestsIntentExecution;
 @property (nonatomic, readonly) bool hasUnderlyingIntent;
 @property (nonatomic, readonly) bool hasUnderlyingIntentResponse;
 @property (nonatomic, readonly) bool hasUtterance;
 @property (nonatomic) bool hasWaitingForResume;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) bool requestsIntentExecution;
 @property (nonatomic, copy) NSArray *steps;
 @property (nonatomic, readonly) unsigned long long stepsCount;
 @property (readonly) Class superclass;
@@ -33,24 +39,33 @@
 @property (nonatomic) bool waitingForResume;
 
 + (Class)stepType;
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (void)addStep:(id)arg1;
 - (void)clearSteps;
 - (bool)continueRunning;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasContinueRunning;
+- (bool)hasRequestsIntentExecution;
 - (bool)hasUnderlyingIntent;
 - (bool)hasUnderlyingIntentResponse;
 - (bool)hasUtterance;
 - (bool)hasWaitingForResume;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)readFrom:(id)arg1;
+- (bool)requestsIntentExecution;
 - (void)setContinueRunning:(bool)arg1;
 - (void)setHasContinueRunning:(bool)arg1;
+- (void)setHasRequestsIntentExecution:(bool)arg1;
 - (void)setHasWaitingForResume:(bool)arg1;
+- (void)setRequestsIntentExecution:(bool)arg1;
 - (void)setSteps:(id)arg1;
 - (void)setUnderlyingIntent:(id)arg1;
 - (void)setUnderlyingIntentResponse:(id)arg1;

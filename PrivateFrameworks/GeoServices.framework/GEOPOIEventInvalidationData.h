@@ -9,6 +9,8 @@
 @property (nonatomic, retain) NSData *cacheInvalidationData;
 @property (nonatomic, readonly) bool hasCacheInvalidationData;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (id)cacheInvalidationData;
 - (void)copyTo:(id)arg1;
@@ -19,6 +21,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setCacheInvalidationData:(id)arg1;
 - (void)writeTo:(id)arg1;

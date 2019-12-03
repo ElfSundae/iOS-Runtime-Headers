@@ -10,9 +10,9 @@
 @property (nonatomic, copy) NSString *requestJSON;
 @property (nonatomic, retain) NSMutableSet *tags;
 
+- (void).cxx_destruct;
 - (bool)_matchesClause:(id)arg1 inContext:(id)arg2;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)fullContext;
 - (id)initWithTags:(id)arg1;
 - (bool)isFeed;

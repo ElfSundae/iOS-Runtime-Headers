@@ -20,6 +20,7 @@
 - (id)alternateIdentifiers;
 - (void)connect;
 - (void)connectedToService:(id)arg1;
+- (long long)connectionType;
 - (id)device;
 - (void)disconnect;
 - (void)disconnectedFromService:(id)arg1 error:(id)arg2;

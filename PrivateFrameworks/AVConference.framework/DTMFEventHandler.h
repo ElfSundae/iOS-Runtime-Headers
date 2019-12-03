@@ -3,12 +3,13 @@
  */
 
 @interface DTMFEventHandler : NSObject {
+    int  _currentEventState;
+    unsigned int  _currentPauseCompleteTimestamp;
     unsigned int  currentDurationCounter;
     unsigned int  currentEndTimestamp;
     unsigned char  currentEvent;
-    bool  currentEventInTransmission;
     bool  currentEventNeedsEndBlock;
-    bool  currentIsMarker;
+    unsigned long long  currentEventRetransmitFinalPacketCount;
     unsigned int  currentStartTimestamp;
     unsigned char  currentVolume;
     NSMutableArray * dtmfEventQueue;
@@ -19,10 +20,11 @@
 - (void)dealloc;
 - (id)init;
 - (bool)insertStartBlockWithEvent:(unsigned char)arg1 volume:(unsigned char)arg2 timestamp:(unsigned int)arg3;
-- (bool)insertStopBlockWithTimestamp:(unsigned int)arg1;
+- (bool)insertStopBlockWithEndTimestamp:(unsigned int)arg1 withPauseCompleteTimestamp:(unsigned int)arg2;
 - (void)sendDTMFEvent:(id)arg1 atTimestamp:(unsigned int)arg2 withSampleRate:(unsigned int)arg3;
 - (void)sendingDTMFEventWithTimeStamp:(unsigned int)arg1 interval:(unsigned int)arg2 RTPHandle:(struct tagHANDLE { int x1; }*)arg3;
+- (bool)shouldAdjustForLastPauseCompleteTimestamp:(unsigned int*)arg1;
 - (bool)shouldTransmitDTMFWithTimestamp:(unsigned int)arg1;
-- (void)stopDTMFEvent;
+- (void)stopDTMFEventAtTimestamp:(unsigned int)arg1 withSampleRate:(unsigned int)arg2;
 
 @end

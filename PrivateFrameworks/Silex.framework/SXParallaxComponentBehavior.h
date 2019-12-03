@@ -10,8 +10,6 @@
 @property (nonatomic, readonly) int direction;
 @property (nonatomic, readonly) double factor;
 
-+ (id)typeString;
-
 - (int)cachedDirection;
 - (int)directionWithValue:(id)arg1 withType:(int)arg2;
 - (Class)handlerClassForComponent:(id)arg1;

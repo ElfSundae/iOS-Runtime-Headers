@@ -4,9 +4,10 @@
 
 @interface IKJSInspectorController : NSObject <IKJSInspectorControllerDelegate> {
     IKDOMDocument * _activeDocument;
-    NSString * _activeDocumentIdentifier;
     IKAppContext * _appContext;
-    NSMutableArray * _appDocumentStack;
+    struct { 
+        bool respondsToActiveDocument; 
+    }  _appFlags;
     IKJSInspectorCSSAgent * _cssAgent;
     <IKJSInspectorControllerDelegate> * _delegate;
     struct { 
@@ -26,10 +27,8 @@
     IKJSInspectorStorageAgent * _storageAgent;
 }
 
-@property (nonatomic, readonly) IKDOMDocument *activeDocument;
-@property (nonatomic, readonly, copy) NSString *activeDocumentIdentifier;
+@property (nonatomic) IKDOMDocument *activeDocument;
 @property (readonly) IKAppContext *appContext;
-@property (nonatomic, readonly) NSMutableArray *appDocumentStack;
 @property (nonatomic, readonly) IKJSInspectorCSSAgent *cssAgent;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <IKJSInspectorControllerDelegate> *delegate;
@@ -48,15 +47,14 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_updateCurrentActiveDocument;
 - (id)activeDocument;
-- (id)activeDocumentIdentifier;
 - (id)appContext;
 - (void)appDocumentDidAppear:(id)arg1;
 - (void)appDocumentDidDisappear:(id)arg1;
 - (void)appDocumentDidLoad:(id)arg1;
 - (void)appDocumentDidUnload:(id)arg1;
 - (void)appDocumentDidUpdate:(id)arg1;
-- (id)appDocumentStack;
 - (bool)cancelHighlightView;
 - (id)cssAgent;
 - (void)dealloc;
@@ -81,6 +79,7 @@
 - (id)registerLoaderWithIdentifier:(id)arg1;
 - (id)requestLoader;
 - (void)resetStylesFromNode:(id)arg1;
+- (void)setActiveDocument:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (id)storageAgent;
 - (id)styleFromComposer:(id)arg1;

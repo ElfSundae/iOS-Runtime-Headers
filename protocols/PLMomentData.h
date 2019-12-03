@@ -7,45 +7,51 @@
 
 + (NSArray *)sortByTimeSortDescriptors;
 
+- (float)aggregationScore;
+- (double)approximateLatitude;
 - (CLLocation *)approximateLocation;
-- (NSOrderedSet *)assets;
+- (double)approximateLongitude;
+- (NSSet *)assets;
 - (NSArray *)batchedAssets;
 - (int)cachedCount;
+- (int)cachedPhotosCount;
+- (int)cachedVideosCount;
 - (void)delete;
 - (NSDate *)endDate;
-- (short)generationType;
+- (<PLPhotosHighlightData> *)highlight;
+- (void)insertAssetData:(id <PLMomentAssetData>)arg1;
 - (bool)isDeleted;
+- (NSDate *)localEndDate;
+- (NSDate *)localStartDate;
 - (<PLMomentListData> *)megaMomentList;
+- (unsigned short)processedLocation;
 - (void)removeAssetData:(id <PLMomentAssetData>)arg1;
-- (void)replaceAssetDataAtIndex:(unsigned long long)arg1 withAssetData:(id <PLMomentAssetData>)arg2;
 - (NSDate *)representativeDate;
-- (NSData *)reverseLocationData;
-- (bool)reverseLocationDataContainsLocation;
-- (bool)reverseLocationDataIsValid;
+- (void)setAggregationScore:(float)arg1;
+- (void)setApproximateLatitude:(double)arg1;
 - (void)setApproximateLocation:(CLLocation *)arg1;
-- (void)setAssets:(NSOrderedSet *)arg1;
+- (void)setApproximateLongitude:(double)arg1;
+- (void)setAssets:(NSSet *)arg1;
 - (void)setCachedCount:(int)arg1;
+- (void)setCachedPhotosCount:(int)arg1;
+- (void)setCachedVideosCount:(int)arg1;
 - (void)setEndDate:(NSDate *)arg1;
-- (void)setGenerationType:(short)arg1;
 - (void)setMegaMomentList:(id <PLMomentListData>)arg1;
+- (void)setProcessedLocation:(unsigned short)arg1;
 - (void)setRepresentativeDate:(NSDate *)arg1;
-- (void)setReverseLocationData:(NSData *)arg1;
-- (void)setReverseLocationDataContainsLocation:(bool)arg1;
-- (void)setReverseLocationDataIsValid:(bool)arg1;
 - (void)setStartDate:(NSDate *)arg1;
-- (void)setUsedLocationsOfInterest:(bool)arg1;
-- (void)setUserTitles:(NSArray *)arg1;
+- (void)setTimeZoneOffset:(int)arg1;
 - (void)setUuid:(NSString *)arg1;
 - (void)setYearMomentList:(id <PLMomentListData>)arg1;
 - (NSDate *)startDate;
+- (int)timeZoneOffset;
 - (NSObject<NSCopying> *)uniqueObjectID;
-- (bool)usedLocationsOfInterest;
-- (NSArray *)userTitles;
 - (NSString *)uuid;
 - (<PLMomentListData> *)yearMomentList;
 
 @optional
 
+- (void)setTitle:(NSString *)arg1;
 - (NSString *)title;
 
 @end

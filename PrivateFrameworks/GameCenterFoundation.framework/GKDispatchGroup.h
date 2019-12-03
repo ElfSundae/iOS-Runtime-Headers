@@ -3,6 +3,7 @@
  */
 
 @interface GKDispatchGroup : NSObject {
+    GKActivity * _activity;
     NSError * _error;
     NSObject<OS_dispatch_group> * _group;
     bool  _loggingEnabled;
@@ -13,6 +14,7 @@
     id  result;
 }
 
+@property (retain) GKActivity *activity;
 @property (retain) NSError *error;
 @property (getter=isLoggingEnabled, nonatomic) bool loggingEnabled;
 @property (retain) id result;
@@ -25,7 +27,8 @@
 + (void)waitUntilDone:(id /* block */)arg1;
 
 - (id)_values;
-- (void)_waitWithDispatchTimeout:(unsigned long long)arg1;
+- (long long)_waitWithDispatchTimeout:(unsigned long long)arg1;
+- (id)activity;
 - (id)allValues;
 - (void)dealloc;
 - (id)description;
@@ -41,11 +44,12 @@
 - (id)objectForKeyedSubscript:(id)arg1;
 - (void)perform:(id /* block */)arg1;
 - (id)result;
+- (void)setActivity:(id)arg1;
 - (void)setError:(id)arg1;
 - (void)setLoggingEnabled:(bool)arg1;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (void)setResult:(id)arg1;
 - (void)wait;
-- (void)waitWithTimeout:(double)arg1;
+- (long long)waitWithTimeout:(double)arg1;
 
 @end

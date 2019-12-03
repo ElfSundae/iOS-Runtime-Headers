@@ -22,13 +22,11 @@
     bool  _isActive;
     bool  _isChangingMoviePath;
     bool  _isResigningActive;
-    unsigned long long  _movieIndexWhenResignedActive;
     MPMoviePlayerController * _moviePlayer;
     long long  _movieSourceType;
     MPMovieView * _movieView;
     NSArray * _movies;
     bool  _moviesNeedReload;
-    MPNowPlayingObserver * _nowPlayingObserver;
     bool  _playWhenSourceTypeIsDetermined;
     NSError * _playbackError;
     MPAVController * _player;
@@ -99,7 +97,6 @@
 - (void)_movieTypeAvailableNotification:(id)arg1;
 - (id)_movies;
 - (id)_navigationBar;
-- (id)_nowPlayingMovie;
 - (void)_pausePlaybackForSuspension;
 - (double)_playableEndTime;
 - (double)_playableStartTime;
@@ -127,7 +124,6 @@
 - (void)_setMovieTitle:(id)arg1;
 - (void)_setMovies:(id)arg1;
 - (void)_setNavigationBarHidden:(bool)arg1;
-- (void)_setNowPlayingMovie:(id)arg1;
 - (void)_setShouldEnforceHDCP:(bool)arg1;
 - (void)_setUseApplicationAudioSession:(bool)arg1;
 - (void)_setUseHostedWindowWhenFullscreen:(bool)arg1;
@@ -196,7 +192,7 @@
 - (void)setFullscreen:(bool)arg1 animated:(bool)arg2;
 - (void)setInitialPlaybackTime:(double)arg1;
 - (void)setInlinePlaybackUsesTVOut:(bool)arg1;
-- (void)setMovieControlMode:(int)arg1;
+- (void)setMovieControlMode:(long long)arg1;
 - (void)setMovieSourceType:(long long)arg1;
 - (void)setPlayerItem:(id)arg1;
 - (void)setRepeatMode:(long long)arg1;

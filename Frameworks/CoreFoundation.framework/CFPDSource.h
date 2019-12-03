@@ -8,12 +8,12 @@
     CFPrefsDaemon * _cfprefsd;
     bool  _checkedForNonPrefsPlist;
     bool  _dirty;
+    NSObject<OS_os_transaction> * _dirtyTransaction;
     bool  _disableBackup;
     struct __CFString { } * _domain;
     int  _fileProtectionClass;
     short  _generationShmemIndex;
     bool  _handlingRequest;
-    NSObject<OS_dispatch_group> * _inProgressWriteGroup;
     unsigned int  _lastEgid;
     unsigned int  _lastEuid;
     struct os_unfair_lock_s { 
@@ -26,7 +26,6 @@
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
     }  _observingConnectionsLock;
-    const char * _pathToTemporaryFileToWriteTo;
     NSObject<OS_xpc_object> * _pendingChangesQueue;
     unsigned long long  _pendingChangesSize;
     CFPDDataBuffer * _plist;
@@ -34,32 +33,37 @@
     struct __CFString { } * _userName;
     bool  _waitingForDeviceUnlock;
     bool  _watchingParentDirectory;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _writeLock;
 }
 
-- (void)_writeToDisk:(bool)arg1;
 - (id)acceptMessage:(id)arg1;
+- (unsigned long long)approximatePlistSizeIncludingPendingChanges;
 - (void)asyncNotifyObserversOfWriteFromConnection:(id)arg1 message:(id)arg2;
-- (void)asyncWriteToDisk;
 - (void)attachSizeWarningsToReply:(id)arg1 forByteCount:(unsigned long long)arg2;
 - (void)beginHandlingRequest;
 - (bool)byHost;
-- (void)cacheActualAndTemporaryPathsWithEUID:(unsigned int)arg1 egid:(unsigned int)arg2;
 - (void)cacheActualPath;
-- (void)cacheActualPathCreatingIfNecessary:(bool)arg1 euid:(unsigned int)arg2 egid:(unsigned int)arg3;
+- (void)cacheActualPathCreatingIfNecessary:(bool)arg1 euid:(unsigned int)arg2 egid:(unsigned int)arg3 isWritable:(bool*)arg4;
 - (void)cleanUpAfterAcceptingMessage:(id)arg1;
+- (void)cleanUpIfNecessaryAfterCreatingPlist;
 - (void)clearCache;
+- (int)cloneAndOpenPropertyListWithoutDrainingPendingChangesOrValidatingPlist;
 - (struct __CFString { }*)cloudConfigurationPath;
 - (struct __CFString { }*)container;
 - (id)copyPropertyListValidatingPlist:(bool)arg1;
 - (id)copyPropertyListWithoutDrainingPendingChangesValidatingPlist:(bool)arg1;
 - (struct __CFString { }*)copyUncanonicalizedPath;
+- (id /* block */)createDiskWriteShouldPerformSynchronously:(bool*)arg1;
 - (void)dealloc;
 - (struct __CFString { }*)debugDump;
 - (id)description;
 - (struct __CFString { }*)domain;
 - (void)drainPendingChanges;
 - (void)endHandlingRequest;
-- (bool)enqueueNewKey:(id)arg1 value:(id)arg2 size:(unsigned long long)arg3 encoding:(int)arg4;
+- (bool)enqueueNewKey:(id)arg1 value:(id)arg2 encoding:(int)arg3 inBatch:(bool)arg4;
+- (void)finishedNonRequestWriteWithError:(int)arg1;
 - (bool)getUncanonicalizedPath:(char *)arg1;
 - (void)handleAvoidCache;
 - (void)handleDeviceUnlock;
@@ -68,6 +72,7 @@
 - (void)handleNoPlistFound;
 - (void)handleOpenForWritingFailureWithErrno:(int)arg1;
 - (void)handleSynchronous;
+- (void)handleWritingFailureWithError:(int)arg1;
 - (bool)hasObservers;
 - (unsigned long long)hash;
 - (id)initWithDomain:(struct __CFString { }*)arg1 userName:(struct __CFString { }*)arg2 byHost:(bool)arg3 managed:(bool)arg4 shmemIndex:(short)arg5 daemon:(id)arg6;
@@ -88,10 +93,11 @@
 - (void)stopNotifyingObserver:(id)arg1;
 - (void)syncWriteToDisk;
 - (void)syncWriteToDiskAndFlushCache;
+- (void)tryEndAccessingPlist;
 - (void)updateShmemEntry;
 - (struct __CFString { }*)user;
 - (bool)validateAccessToken:(int)arg1 accessType:(int)arg2;
-- (int)validateMessage:(id)arg1 withNewKey:(id)arg2 newValue:(id)arg3 currentPlistData:(id)arg4 containerPath:(const char *)arg5 diagnosticMessage:(const char **)arg6;
+- (int)validateMessage:(id)arg1 withNewKey:(id)arg2 newValue:(id)arg3 plistIsAvailableToRead:(bool)arg4 containerPath:(const char *)arg5 diagnosticMessage:(const char **)arg6;
 - (int)validatePOSIXPermissionsForMessage:(id)arg1 accessType:(int)arg2 fullyValidated:(bool*)arg3;
 - (int)validateSandboxForRead:(id)arg1 containerPath:(const char *)arg2;
 - (bool)validateSandboxForWrite:(id)arg1 containerPath:(const char *)arg2;

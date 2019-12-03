@@ -13,6 +13,9 @@
 + (void)setIsBacklit:(bool)arg1;
 + (bool)shouldMergeUnchangedEvents;
 
+- (void)deactivate;
+- (void)dealloc;
+- (void)obtainCurrentValue;
 - (void)start;
 - (void)stop;
 - (void)synchronouslyReflectCurrentValue;

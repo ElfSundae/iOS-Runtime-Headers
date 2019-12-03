@@ -44,6 +44,7 @@
 @property (nonatomic, readonly, retain) NSArray *installationWarnings;
 @property (nonatomic, readonly) bool isInstalledForSystem;
 @property (nonatomic, readonly) bool isInstalledForUser;
+@property (nonatomic, readonly) bool isManagedByMDM;
 @property (nonatomic, readonly) bool isManagedByProfileService;
 @property (nonatomic, readonly) bool isSigned;
 @property (nonatomic, readonly) bool isStub;
@@ -88,8 +89,10 @@
 + (id)profileDictionaryFromProfileData:(id)arg1 outSignerCerts:(id*)arg2 outError:(id*)arg3;
 + (id)profileWithData:(id)arg1 fileName:(id)arg2 allowEmptyPayload:(bool)arg3 outError:(id*)arg4;
 + (id)profileWithData:(id)arg1 fileName:(id)arg2 outError:(id*)arg3;
++ (id)profileWithData:(id)arg1 options:(id)arg2 fileName:(id)arg3 allowEmptyPayload:(bool)arg4 outError:(id*)arg5;
++ (id)profileWithData:(id)arg1 options:(id)arg2 outError:(id*)arg3;
 + (id)profileWithData:(id)arg1 outError:(id*)arg2;
-+ (id)profileWithDictionary:(id)arg1 signerCerts:(id)arg2 fileName:(id)arg3 allowEmptyPayload:(bool)arg4 outError:(id*)arg5;
++ (id)profileWithDictionary:(id)arg1 options:(id)arg2 signerCerts:(id)arg3 fileName:(id)arg4 allowEmptyPayload:(bool)arg5 outError:(id*)arg6;
 + (id)removeOptionalNonZeroLengthStringInDictionary:(id)arg1 key:(id)arg2 errorDomain:(id)arg3 invalidDataCode:(long long)arg4 invalidDataErrorString:(id)arg5 outError:(id*)arg6;
 + (id)removeOptionalObjectInDictionary:(id)arg1 key:(id)arg2 type:(Class)arg3 errorDomain:(id)arg4 invalidDataCode:(long long)arg5 invalidDataErrorString:(id)arg6 outError:(id*)arg7;
 + (id)removeRequiredNonZeroLengthStringInDictionary:(id)arg1 key:(id)arg2 errorDomain:(id)arg3 missingDataCode:(long long)arg4 missingDataErrorString:(id)arg5 invalidDataCode:(long long)arg6 invalidDataErrorString:(id)arg7 outError:(id*)arg8;
@@ -126,10 +129,12 @@
 - (bool)isInstalledForSystem;
 - (bool)isInstalledForUser;
 - (bool)isLocked;
+- (bool)isManagedByMDM;
 - (bool)isManagedByProfileService;
 - (bool)isProfileUIInstallationEffectivelyAllowed;
 - (bool)isSigned;
 - (bool)isStub;
+- (bool)isUserEnrollmentProfile;
 - (id)localizedConsentText;
 - (id)localizedManagedPayloadSummaryByType;
 - (id)localizedPayloadSummaryByType;
@@ -141,6 +146,7 @@
 - (id)organization;
 - (id)payloadWithUUID:(id)arg1;
 - (id)payloads;
+- (id)payloadsWithClass:(Class)arg1;
 - (id)productBuildVersion;
 - (id)productVersion;
 - (id)profileDataFileName;

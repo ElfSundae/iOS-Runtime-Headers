@@ -65,7 +65,7 @@
 - (void)setHeadingStyleFontSizeThreshold:(double)arg1;
 - (void)setKeepNSTextTableAttributes:(bool)arg1;
 - (void)setZoomController:(id)arg1;
-- (id)strippedTypingAttributesForEmptyParagraph:(id)arg1 atTheEndOfDocument:(bool)arg2 isTyping:(bool)arg3;
+- (id)strippedTypingAttributesAtStartOfParagraph:(id)arg1 atTheEndOfDocument:(bool)arg2 isTyping:(bool)arg3;
 - (void)styleFontInAttributedString:(id)arg1 inRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 contentSizeCategory:(id)arg3;
 - (void)styleFontInTextStorage:(id)arg1 inRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (id)styleForModelAttributes:(id)arg1;
@@ -79,6 +79,8 @@
 - (id)titleAttributes;
 - (id)titleAttributesWithContentSizeCategory:(id)arg1;
 - (id)typingAttributesForRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 forSelectionChange:(bool)arg2 currentTypingAttributes:(id)arg3 inTextStorage:(id)arg4;
+- (id)typingAttributesForRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 forSelectionChange:(bool)arg2 forSettingTextStyle:(bool)arg3 currentTypingAttributes:(id)arg4 inTextStorage:(id)arg5;
+- (id)typingAttributesForSettingTextStyleForRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 currentTypingAttributes:(id)arg2 inTextStorage:(id)arg3;
 - (id)zoomController;
 
 @end

@@ -13,7 +13,6 @@
 - (int)constructBlock:(id)arg1 context:(id)arg2;
 - (int)forward;
 - (id)initWithParameters:(int)arg1 poolY:(int)arg2 chunk:(int)arg3;
-- (int)initializeRest;
 - (bool)supportGPU;
 - (bool)useGPU;
 

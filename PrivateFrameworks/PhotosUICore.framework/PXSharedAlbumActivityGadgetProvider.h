@@ -15,10 +15,12 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long estimatedGadgetCount;
 @property (nonatomic, retain) PXFeedSectionInfosManager *feedSectionInfosManager;
+@property (nonatomic, readonly) <PXGadgetTransition> *gadgetTransition;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSString *invitationAlbumCloudGUID;
 @property (nonatomic, readonly) long long maxNumberOfSections;
 @property (nonatomic) <PXGadgetDelegate> *nextGadgetResponder;
+@property (nonatomic, readonly) PXGadgetNavigationHelper *rootNavigationHelper;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

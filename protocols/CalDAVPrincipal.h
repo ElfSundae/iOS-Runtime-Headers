@@ -68,8 +68,6 @@
 - (bool)supportsExtendedCalendarQuery;
 - (bool)supportsFreebusy;
 - (<CoreDAVTaskManager> *)taskManager;
-- (NSDateComponents *)todoFilterEndDate;
-- (NSDateComponents *)todoFilterStartDate;
 - (NSString *)uid;
 
 @optional

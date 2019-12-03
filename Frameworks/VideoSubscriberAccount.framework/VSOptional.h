@@ -8,6 +8,7 @@
 
 @property (nonatomic, retain) id object;
 
++ (id)decodableClasses;
 + (id)optionalWithObject:(id)arg1;
 + (bool)supportsSecureCoding;
 

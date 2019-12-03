@@ -2,33 +2,40 @@
    Image: /System/Library/Frameworks/ARKit.framework/ARKit
  */
 
-@interface ARObjectDetectionTechnique : ARTechnique {
+@interface ARObjectDetectionTechnique : ARImageBasedTechnique {
+    ARWorldTrackingPoseData * _currentWorldTrackingPose;
     NSObject<OS_dispatch_semaphore> * _dataSemaphore;
     NSArray * _detectionObjects;
+    NSObject<OS_dispatch_semaphore> * _detectionSemaphore;
     bool  _finishedLoadingObjects;
     ARObjectDetectionResultData * _latestResultData;
     NSObject<OS_dispatch_queue> * _loadObjectsQueue;
-    ARWorldTrackingTechnique * _worldTrackingTechnique;
+    ARODTHandleManager * _odtHandleManager;
+    NSObject<OS_dispatch_queue> * _processDataQueue;
+    NSDictionary * _referenceObjecteMap;
 }
 
+@property (retain) ARWorldTrackingPoseData *currentWorldTrackingPose;
 @property (nonatomic, readonly) NSArray *detectionObjects;
 @property bool finishedLoadingObjects;
-@property (retain) ARWorldTrackingTechnique *worldTrackingTechnique;
+@property (readonly) NSDictionary *referenceObjecteMap;
 
 - (void).cxx_destruct;
+- (void)_enqueueObjectForDetectionNonBlocking:(id)arg1;
 - (void)_loadReferenceObjects;
-- (void)_removeAnchorsForContext:(id)arg1;
-- (void)_reportObjectDetection:(id)arg1 timestamp:(double)arg2;
-- (void)_setupWorldTrackingTechniqueBinding:(id)arg1;
+- (id)currentWorldTrackingPose;
 - (id)detectionObjects;
 - (bool)finishedLoadingObjects;
-- (id)initWithTrackingTechnique:(id)arg1 detectionObjects:(id)arg2;
+- (id)initWithDetectionObjects:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)prepare;
-- (void)requestResultDataAtTimestamp:(double)arg1 context:(id)arg2;
+- (id)processData:(id)arg1;
+- (id)processResultData:(id)arg1 timestamp:(double)arg2 context:(id)arg3;
+- (id)referenceObjecteMap;
+- (double)requiredTimeInterval;
+- (void)setCurrentWorldTrackingPose:(id)arg1;
 - (void)setFinishedLoadingObjects:(bool)arg1;
-- (void)setWorldTrackingTechnique:(id)arg1;
-- (void)siblingTechniquesDidChange:(id)arg1;
-- (id)worldTrackingTechnique;
+- (void)updateDevicePerformanceLevel:(id)arg1;
+- (void)updatePresentationMode:(long long)arg1;
 
 @end

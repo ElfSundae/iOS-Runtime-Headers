@@ -87,6 +87,7 @@
 - (void)setServicesQueue:(id)arg1;
 - (long long)state;
 - (id)stateDescription;
+- (bool)updateCBPeripheral:(id)arg1;
 - (void)writeCharacteristic:(id)arg1 expectResponse:(bool)arg2 completion:(id /* block */)arg3;
 
 @end

@@ -16,7 +16,6 @@
 - (struct OpaqueFigFormatReader { }*)_formatReader;
 - (struct OpaqueFigPlaybackItem { }*)_playbackItem;
 - (void)dealloc;
-- (void)finalize;
 - (id)initWithPropertyList:(id)arg1;
 - (bool)isProxy;
 - (id)tracks;

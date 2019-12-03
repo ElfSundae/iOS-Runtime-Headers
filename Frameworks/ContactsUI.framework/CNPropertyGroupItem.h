@@ -33,6 +33,7 @@
 @property (nonatomic, readonly) NSString *editingStringValue;
 @property (getter=isEmpty, nonatomic, readonly) bool empty;
 @property (nonatomic, readonly) CNUIContactsEnvironment *environment;
+@property (nonatomic, readonly) NSArray *extendedLabels;
 @property (getter=isFavorite, nonatomic, readonly) bool favorite;
 @property (nonatomic, readonly) CNCardPropertyGroup *group;
 @property (nonatomic, retain) CNLabeledValue *labeledValue;
@@ -42,14 +43,17 @@
 @property (nonatomic, retain) CNLabeledValue *originalLabeledValue;
 @property (nonatomic, readonly) NSString *placeholderString;
 @property (nonatomic) unsigned long long policyFlags;
+@property (nonatomic, readonly) NSArray *promotedExtendedLabels;
 @property (nonatomic, retain) NSString *property;
 @property (getter=isReadonly, nonatomic, readonly) bool readonly;
+@property (nonatomic, readonly) NSArray *standardLabels;
 @property (getter=isSuggested, nonatomic, readonly) bool suggested;
-@property (nonatomic, readonly) NSArray *supportedLabels;
+@property (nonatomic, readonly) bool supportsLabel;
 
 + (Class)classForProperty:(id)arg1;
 + (void)deleteCoreRecentsEntriesMatchingProperty:(id)arg1 recentsManager:(id)arg2;
 + (id)emptyValueForLabel:(id)arg1;
++ (id)initialValueForLabel:(id)arg1 group:(id)arg2;
 + (id)newPropertyGroupItemForProperty:(id)arg1;
 + (id)propertyGroupItemWithLabel:(id)arg1 group:(id)arg2 contact:(id)arg3;
 + (id)propertyGroupItemWithLabel:(id)arg1 group:(id)arg2 contact:(id)arg3 environment:(id)arg4;
@@ -79,6 +83,7 @@
 - (id)displayValue;
 - (id)editingStringValue;
 - (id)environment;
+- (id)extendedLabels;
 - (id)group;
 - (id)init;
 - (id)initWithGroup:(id)arg1;
@@ -103,6 +108,7 @@
 - (id)originalLabeledValue;
 - (id)placeholderString;
 - (unsigned long long)policyFlags;
+- (id)promotedExtendedLabels;
 - (id)property;
 - (void)rejectSuggestion;
 - (id)replacementForInvalidValue:(id)arg1;
@@ -118,7 +124,8 @@
 - (void)setPolicyFlags:(unsigned long long)arg1;
 - (void)setProperty:(id)arg1;
 - (bool)shouldCreateNewMeContactToSaveChangesTo;
-- (id)supportedLabels;
+- (id)standardLabels;
+- (bool)supportsLabel;
 - (void)updateLabeledValueWithLabel:(id)arg1;
 - (void)updateLabeledValueWithValue:(id)arg1;
 - (id)updateWithLabel:(id)arg1 value:(id)arg2;

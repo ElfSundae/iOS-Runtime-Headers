@@ -2,39 +2,17 @@
    Image: /System/Library/PrivateFrameworks/SearchUI.framework/SearchUI
  */
 
-@interface SearchUIScreenTimeResultsRowModel : NSObject <SearchUIRowModel> {
-    NSArray * _results;
+@interface SearchUIScreenTimeResultsRowModel : SearchUIRowModel {
     NSString * _title;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (retain) NSArray *results;
-@property (readonly) Class superclass;
-@property (retain) NSString *title;
+@property (nonatomic, retain) NSString *title;
 
 - (void).cxx_destruct;
-- (id)cardSection;
-- (id)dragAppBundleID;
-- (id)dragSubtitle;
-- (id)dragText;
-- (id)dragTitle;
-- (id)dragURL;
-- (id)identifyingResult;
+- (Class)cellViewClass;
 - (id)initWithSection:(id)arg1;
-- (bool)isDraggable;
-- (bool)isSuggestion;
 - (bool)isTappable;
-- (double)leadingSeparatorImageInset;
-- (id)nextCard;
-- (id)punchouts;
-- (id)results;
-- (id)reuseIdentifier;
-- (int)separatorStyle;
-- (void)setResults:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (id)title;
-- (Class)viewClass;
 
 @end

@@ -7,11 +7,14 @@
     bool  _biometricsUnavailableHint;
     UILabel * _debugLabel;
     <PKPassPaymentPayStateViewDelegate> * _delegate;
+    bool  _didLayout;
     PKGlyphView * _glyph;
     double  _glyphViewPadding;
     UILabel * _label;
     double  _labelAlpha;
+    double  _labelStateBottomInset;
     double  _labelTopPadding;
+    long long  _layoutState;
     bool  _persistentEmulationHint;
     long long  _state;
     long long  _style;
@@ -28,6 +31,8 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) UILabel *label;
 @property (nonatomic) double labelAlpha;
+@property (nonatomic) double labelStateBottomInset;
+@property (nonatomic, readonly) long long layoutState;
 @property (nonatomic) bool persistentEmulationHint;
 @property (nonatomic, readonly) long long state;
 @property (readonly) Class superclass;
@@ -41,6 +46,7 @@
 - (bool)_canPreserveGlyphForState:(long long)arg1;
 - (void)_configureLayoutMetrics;
 - (long long)_defaultGlyphStateForState:(long long)arg1;
+- (void)_resolveLayout;
 - (id)_textForState:(long long)arg1 textOverride:(id)arg2;
 - (bool)accessPass;
 - (bool)biometricsUnavailableHint;
@@ -53,13 +59,16 @@
 - (id)initWithStyle:(long long)arg1;
 - (id)label;
 - (double)labelAlpha;
+- (double)labelStateBottomInset;
 - (bool)labelWillChangeForState:(long long)arg1 withOverrideText:(id)arg2;
+- (long long)layoutState;
 - (void)layoutSubviews;
 - (bool)persistentEmulationHint;
 - (void)setAccessPass:(bool)arg1;
 - (void)setBiometricsUnavailableHint:(bool)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setLabelAlpha:(double)arg1;
+- (void)setLabelStateBottomInset:(double)arg1;
 - (void)setPersistentEmulationHint:(bool)arg1;
 - (void)setState:(long long)arg1 animated:(bool)arg2 withCompletionHandler:(id /* block */)arg3;
 - (void)setState:(long long)arg1 animated:(bool)arg2 withOverrideText:(id)arg3 preserveGlyphState:(bool)arg4 completionHandler:(id /* block */)arg5;

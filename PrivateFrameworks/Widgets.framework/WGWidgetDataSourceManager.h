@@ -21,7 +21,7 @@
 @property (getter=_widgetVisbilityManager, nonatomic, retain) WGWidgetVisibilityManager *widgetVisbilityManager;
 
 + (id)_widgetExtensionsDiscoveryAttributes;
-+ (void)availableWidgetsWithCompletion:(id /* block */)arg1;
++ (id)discoverAvailableWidgetsWithError:(id*)arg1;
 
 - (void).cxx_destruct;
 - (void)_beginContinuousPlugInDiscovery;

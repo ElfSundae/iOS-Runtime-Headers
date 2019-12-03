@@ -3,8 +3,8 @@
  */
 
 @interface CNUIIDSAvailabilityProvider : NSObject <CNUIIDSAvailabilityProvider> {
-    CNUIDSHandleAvailablityCache * _faceTimeRequests;
-    CNUIDSHandleAvailablityCache * _iMessageRequests;
+    CNUIDSHandleAvailabilityCache * _faceTimeRequests;
+    CNUIDSHandleAvailabilityCache * _iMessageRequests;
     <CNUIIDSIDQueryControllerWrapper> * _queryControllerWrapper;
     NSArray * _requestFutures;
     <CNScheduler> * _resourceLock;
@@ -12,9 +12,9 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, retain) CNUIDSHandleAvailablityCache *faceTimeRequests;
+@property (nonatomic, retain) CNUIDSHandleAvailabilityCache *faceTimeRequests;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) CNUIDSHandleAvailablityCache *iMessageRequests;
+@property (nonatomic, retain) CNUIDSHandleAvailabilityCache *iMessageRequests;
 @property (nonatomic, retain) <CNUIIDSIDQueryControllerWrapper> *queryControllerWrapper;
 @property (nonatomic, retain) NSArray *requestFutures;
 @property (nonatomic, retain) <CNScheduler> *resourceLock;

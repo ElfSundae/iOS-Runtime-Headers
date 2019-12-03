@@ -5,6 +5,7 @@
 @interface NEFilterVerdict : NSObject <NSCopying, NSSecureCoding> {
     bool  _drop;
     bool  _needRules;
+    bool  _pause;
     bool  _remediate;
     NSString * _remediationButtonTextMapKey;
     NSString * _remediationURLMapKey;
@@ -15,6 +16,7 @@
 
 @property bool drop;
 @property bool needRules;
+@property bool pause;
 @property bool remediate;
 @property (retain) NSString *remediationButtonTextMapKey;
 @property (retain) NSString *remediationURLMapKey;
@@ -30,12 +32,15 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDrop:(bool)arg1 remediate:(bool)arg2;
+- (id)initWithPause:(bool)arg1;
 - (bool)needRules;
+- (bool)pause;
 - (bool)remediate;
 - (id)remediationButtonTextMapKey;
 - (id)remediationURLMapKey;
 - (void)setDrop:(bool)arg1;
 - (void)setNeedRules:(bool)arg1;
+- (void)setPause:(bool)arg1;
 - (void)setRemediate:(bool)arg1;
 - (void)setRemediationButtonTextMapKey:(id)arg1;
 - (void)setRemediationURLMapKey:(id)arg1;

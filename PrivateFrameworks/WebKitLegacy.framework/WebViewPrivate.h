@@ -150,7 +150,7 @@
     struct Lock { 
         struct Atomic<unsigned char> { 
             struct atomic<unsigned char> { 
-                unsigned char __a_; 
+                _Atomic unsigned char __a_; 
             } value; 
         } m_byte; 
     }  pendingFixedPositionLayoutRectMutex;

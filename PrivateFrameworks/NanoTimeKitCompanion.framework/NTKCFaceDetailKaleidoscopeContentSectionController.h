@@ -31,7 +31,7 @@
 - (bool)collectionChanged:(id)arg1 withSelectedOptions:(id)arg2;
 - (id)delegate;
 - (Class)editCellClass;
-- (id)initWithTableView:(id)arg1 face:(id)arg2 inGallery:(bool)arg3 editOptionCollection:(id)arg4 faceView:(id)arg5;
+- (id)initWithTableViewController:(id)arg1 face:(id)arg2 inGallery:(bool)arg3 editOptionCollection:(id)arg4 faceView:(id)arg5;
 - (void)kaleidoscopeEditOptionCellDidSelectUserOption:(id)arg1;
 - (id)parentViewController;
 - (void)setDelegate:(id)arg1;

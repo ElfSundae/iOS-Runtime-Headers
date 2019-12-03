@@ -66,12 +66,12 @@
 - (void)_setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (void)_setWantsBlendModeForAccessibilityBackgrounds:(bool)arg1;
 - (bool)_showsAccessibilityBackgroundWhenEnabled;
-- (void)_styleAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (bool)_suppressesBackIndicatorView;
 - (id)_tintColor;
 - (id)_titleTextAttributesForState:(unsigned long long)arg1;
 - (double)_titleYAdjustmentCustomization;
 - (void)_uninstallBackSelectGestureRecognizer;
+- (void)_updateBackSelectGestureRecognizer;
 - (bool)_useSilverLookForBarStyle:(long long)arg1;
 - (bool)_wantsAccessibilityButtonShapes;
 - (bool)_wantsBlendModeForAccessibilityBackgrounds;
@@ -81,6 +81,7 @@
 - (bool)canBecomeFocused;
 - (bool)customBackgroundImageChangedToOrFromNil;
 - (void)dealloc;
+- (void)didMoveToWindow;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (bool)hasCustomBackgroundImage;

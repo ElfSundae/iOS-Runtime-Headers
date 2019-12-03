@@ -13,16 +13,17 @@
 
 + (id)sharedDelegate;
 
-- (bool)URLIsValidForImportedHyperlink:(id)arg1 targetDocumentRoot:(id)arg2;
+- (bool)URLIsValidForImportedHyperlink:(id)arg1 targetDocumentRoot:(id)arg2 forCrossDocumentPaste:(bool)arg3;
 - (id)appChartPropertyOverrides;
 - (id)applicationDisplayName;
 - (id)applicationName;
-- (id)applicationTemplateVariantsForLocale:(struct __CFLocale { }*)arg1;
+- (id)applicationTemplateVariantsForLocale:(id)arg1;
 - (unsigned long long)applicationType;
 - (id)bladerunnerContainerIdentifier;
 - (id)cloudKitContainerIdentifier;
+- (id)cloudKitSyncContainerIdentifier;
 - (id)createCompatibilityDelegate;
-- (void)customizeHyperlinkViewController:(id)arg1;
+- (void)customizeHyperlinkViewController:(id)arg1 documentRoot:(id)arg2;
 - (void)dealloc;
 - (Class)documentRootClass;
 - (id)documentTypeDisplayName;
@@ -33,7 +34,6 @@
 - (id)init;
 - (id)nativeDocumentType;
 - (id)nativeSFFDocumentType;
-- (bool)openURL:(id)arg1 withDocumentRoot:(id)arg2;
 - (void)p_inputMethodsChanged:(id)arg1;
 - (void)p_localeChanged:(id)arg1;
 - (id)previewImageNameForEncryptedNativeDocument;
@@ -42,6 +42,7 @@
 - (id)rtfDocumentTypes;
 - (id)sharedAlertMessageWithUserName:(id)arg1;
 - (id)sharedReadOnlyAlertMessageWithUserName:(id)arg1;
+- (id)stringForApplePencilDoubleTapSettingsDescription;
 - (id)stringForApplicationUpdateError;
 - (id)stringForBoxCollaborationOptInMessage;
 - (id)stringForChangePasswordWhileConnectingAlertMessage;
@@ -72,6 +73,8 @@
 - (id)stringForGenericServerUnreachable;
 - (id)stringForICloudUnreachable;
 - (id)stringForLearnMoreSharingURL;
+- (id)stringForMoveInlineToFloatingButtonTitle;
+- (id)stringForMoveInlineToFloatingButtonToolTip;
 - (id)stringForNoItemsSyncingListItem;
 - (id)stringForOwnerHasCollabEnabledMessage;
 - (id)stringForOwnerHasCollabEnabledTitle;
@@ -89,7 +92,6 @@
 - (id)stringForUserActivityTitleForFilename:(id)arg1;
 - (id)strokeWidthsForFreehandDrawingToolType:(unsigned long long)arg1;
 - (bool)supportsAutosizingTextboxes;
-- (bool)supportsInlineNativeEquationObjects;
 - (bool)supportsLinkedTextBoxes;
 - (bool)supportsRTL;
 - (bool)tableHeaderInspectorShowsRepeatHeaderRowsSwitch;

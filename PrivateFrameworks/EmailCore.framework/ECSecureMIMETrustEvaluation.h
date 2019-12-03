@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/EmailCore.framework/EmailCore
  */
 
-@interface ECSecureMIMETrustEvaluation : NSObject {
+@interface ECSecureMIMETrustEvaluation : NSObject <EFLoggable> {
     NSError * _error;
     unsigned long long  _options;
     NSString * _signerEmailAddress;
@@ -10,10 +10,14 @@
     unsigned int  _trustResult;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) NSError *error;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) unsigned long long options;
 @property (nonatomic, readonly) bool requiresReevaluationWithNetworkAccess;
 @property (nonatomic, readonly, copy) NSString *signerEmailAddress;
+@property (readonly) Class superclass;
 @property (nonatomic, readonly) struct __SecTrust { }*trust;
 @property (nonatomic, readonly) unsigned int trustResult;
 

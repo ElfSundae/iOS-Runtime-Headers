@@ -26,6 +26,7 @@
 
 + (id)screenCaptureControllerWithSize:(struct CGSize { double x1; double x2; })arg1 minIntervalBetweenFrames:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)delegate;
 - (void)didReceiveSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 sourceRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 destRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3 transform:(unsigned int)arg4;

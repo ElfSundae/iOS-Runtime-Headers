@@ -4,12 +4,12 @@
 
 @interface SearchUIMovieCardSectionView : SearchUICardSectionView
 
-@property (retain) NUIContainerStackView *contentView;
-@property (retain) SFMediaInfoCardSection *section;
+@property (nonatomic, retain) NUIContainerStackView *contentView;
+@property (nonatomic, retain) SFMediaInfoCardSection *section;
 
 + (id)dragTitleForCardSection:(id)arg1;
 
-- (id)initWithRowModel:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
+- (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
 - (id)setupContentView;
 
 @end

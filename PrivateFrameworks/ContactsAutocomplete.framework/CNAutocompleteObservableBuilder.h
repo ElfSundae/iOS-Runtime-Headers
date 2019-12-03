@@ -35,6 +35,7 @@
 - (void)addCoreRecentsObservable:(id)arg1;
 - (void)addDirectoryServerObservable:(id)arg1;
 - (void)addDuetObservable:(id)arg1 doOnTimeout:(id /* block */)arg2;
+- (void)addLocalExtensionObservable:(id)arg1;
 - (void)addSuggestionsObservable:(id)arg1;
 - (void)addSupplementalObservable:(id)arg1;
 - (id)batchingHelper;

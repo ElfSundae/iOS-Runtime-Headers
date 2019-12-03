@@ -6,14 +6,14 @@
     double  _distance;
     NSArray * _events;
     MNGuidanceEventManager * _manager;
-    NSArray * _plannedEvents;
+    NSMutableArray * _plannedEvents;
     double  _speed;
 }
 
 @property (nonatomic) double distance;
 @property (nonatomic, retain) NSArray *events;
 @property (nonatomic) MNGuidanceEventManager *manager;
-@property (nonatomic, retain) NSArray *plannedEvents;
+@property (nonatomic, retain) NSMutableArray *plannedEvents;
 @property (nonatomic) double speed;
 
 + (double)desiredTimeGapBetweenEvent:(id)arg1 andEvent:(id)arg2;

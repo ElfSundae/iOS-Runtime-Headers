@@ -12,6 +12,7 @@
     bool  _criticalAlert;
     NCNotificationAction * _defaultAction;
     NSString * _highestPrioritySubSectionIdentifier;
+    NSArray * _intentIdentifiers;
     bool  _isCollapsedNotification;
     NSString * _notificationIdentifier;
     NCNotificationOptions * _options;
@@ -49,6 +50,7 @@
 @property (nonatomic, readonly) bool hasOnlySingleTextInputAction;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) NSString *highestPrioritySubSectionIdentifier;
+@property (nonatomic, readonly, copy) NSArray *intentIdentifiers;
 @property (nonatomic, readonly) bool isCollapsedNotification;
 @property (nonatomic, readonly, copy) NSArray *minimalEnvironmentActions;
 @property (nonatomic, readonly, copy) NSString *notificationIdentifier;
@@ -81,6 +83,7 @@
 + (id)notificationRequestWithNotificationId:(id)arg1 requestDestinations:(id)arg2;
 + (id)notificationRequestWithNotificationId:(id)arg1 requestDestinations:(id)arg2 isCritical:(bool)arg3;
 + (id)notificationRequestWithNotificationId:(id)arg1 requestDestinations:(id)arg2 lockScreenPersistence:(unsigned long long)arg3;
++ (id)notificationRequestWithNotificationId:(id)arg1 sectionId:(id)arg2 threadId:(id)arg3;
 + (id)notificationRequestWithNotificationId:(id)arg1 threadId:(id)arg2;
 + (id)notificationRequestWithNotificationId:(id)arg1 threadId:(id)arg2 timestamp:(id)arg3;
 + (id)notificationRequestWithNotificationId:(id)arg1 timestamp:(id)arg2;
@@ -121,6 +124,7 @@
 - (unsigned long long)hash;
 - (id)highestPrioritySubSectionIdentifier;
 - (id)initWithNotificationRequest:(id)arg1;
+- (id)intentIdentifiers;
 - (bool)isCollapsedNotification;
 - (bool)isCollapsibleWithNotificationRequest:(id)arg1;
 - (bool)isCriticalAlert;
@@ -148,6 +152,17 @@
 - (id)timestamp;
 - (id)userNotification;
 
+// Image: /System/Library/PrivateFrameworks/SpringBoard.framework/SpringBoard
+
++ (id)_destinations;
++ (id)_notificationOptionsForAlertItem:(id)arg1;
++ (id)_notificationSoundFromSound:(id)arg1;
++ (long long)_soundTypeForSBSoundType:(long long)arg1;
++ (id)notificationRequestWithAlertItem:(id)arg1;
++ (id)notificationRequestWithCardItem:(id)arg1;
+
+- (bool)sb_shouldSuppressAlert;
+
 // Image: /System/Library/PrivateFrameworks/UserNotificationsUIKit.framework/UserNotificationsUIKit
 
 + (id)_notificationRequestForBulletin:(id)arg1 observer:(id)arg2 sectionInfo:(id)arg3 feed:(unsigned long long)arg4 playLightsAndSirens:(bool)arg5 hasPlayLightsAndSirens:(bool)arg6;
@@ -161,7 +176,6 @@
 - (bool)hasOnlySingleMinimalTextInputAction;
 - (bool)hasOnlySingleTextInputAction;
 - (bool)hasSameContactAsNotificationRequest:(id)arg1;
-- (bool)isAudioMessageNotificationRequest;
 - (id)minimalEnvironmentActions;
 - (id)observer;
 - (bool)showsTextInputOnAppearance;

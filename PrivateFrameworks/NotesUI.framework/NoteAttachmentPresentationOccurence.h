@@ -22,6 +22,5 @@
 - (id)initWithPresentation:(id)arg1 element:(id)arg2;
 - (id)presentation;
 - (id)previewItemURL;
-- (bool)showsUpInRange:(id)arg1;
 
 @end

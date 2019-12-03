@@ -24,7 +24,7 @@
 
 @property (nonatomic) <WBSURLCompletionDataSource> *dataSource;
 
-+ (bool)_matchIsNotURLMatchAndTitleLooksLikeURLForBookmarkAndHistoryCompletionMatch:(const struct BookmarkAndHistoryCompletionMatch { unsigned int x1; long long x2; long long x3; unsigned long long x4; unsigned long long x5; id x6; }*)arg1;
++ (bool)_matchIsNotURLMatchAndTitleLooksLikeURLForBookmarkAndHistoryCompletionMatch:(const struct BookmarkAndHistoryCompletionMatch { unsigned int x1; long long x2; long long x3; unsigned long long x4; unsigned long long x5; id x6; float x7; }*)arg1;
 + (void)initializeURLCompletionOnMainThread;
 
 - (id).cxx_construct;
@@ -40,7 +40,7 @@
 - (void)clearHistoryMatchesCache;
 - (void)clearMatchesCaches;
 - (id)dataSource;
-- (void)getBestMatchesForTypedString:(id)arg1 topHits:(id*)arg2 matches:(id*)arg3 limit:(unsigned long long)arg4;
+- (void)getBestMatchesForTypedString:(id)arg1 topHits:(id*)arg2 matches:(id*)arg3 limit:(unsigned long long)arg4 forQueryID:(long long)arg5;
 - (id)init;
 - (void)setDataSource:(id)arg1;
 

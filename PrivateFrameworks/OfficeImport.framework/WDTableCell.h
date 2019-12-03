@@ -11,9 +11,11 @@
     bool  mUseTrackedProperties;
 }
 
+@property (readonly) WDTableRow *row;
+
+- (void).cxx_destruct;
 - (void)clearProperties;
 - (long long)compareIndex:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)identifier;
 - (unsigned long long)index;

@@ -27,6 +27,7 @@
 - (id)_figAssetReaderExtractionOptions;
 - (void)_figAssetReaderFailed;
 - (void)_figAssetReaderSampleBufferDidBecomeAvailableForExtractionID:(int)arg1;
+- (void)_figAssetReaderServerConnectionDied;
 - (bool)_isFinished;
 - (void)_markAsFinished;
 - (bool)_prepareForReadingReturningError:(id*)arg1;
@@ -40,7 +41,6 @@
 - (struct opaqueCMSampleBuffer { }*)copyNextSampleBuffer;
 - (id)currentTimeRanges;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (void)markConfigurationAsFinal;
 - (bool)maximizePowerEfficiency;

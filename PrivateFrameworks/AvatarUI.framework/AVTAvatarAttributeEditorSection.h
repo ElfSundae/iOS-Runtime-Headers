@@ -3,6 +3,7 @@
  */
 
 @interface AVTAvatarAttributeEditorSection : NSObject <AVTAvatarAttributeEditorSection> {
+    <AVTAvatarAttributeEditorHeaderPicker> * _headerAccessory;
     NSString * _identifier;
     NSString * _localizedName;
     NSArray * _sectionItems;
@@ -11,17 +12,21 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, retain) <AVTAvatarAttributeEditorHeaderPicker> *headerAccessory;
 @property (nonatomic, readonly, copy) NSString *identifier;
-@property (nonatomic, readonly, copy) NSString *localizedName;
+@property (nonatomic, copy) NSString *localizedName;
 @property (nonatomic, readonly, copy) NSArray *sectionItems;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)description;
+- (id)headerAccessory;
 - (id)identifier;
 - (id)initWithSectionItems:(id)arg1 localizedName:(id)arg2 identifier:(id)arg3;
 - (id)localizedName;
 - (id)sectionItems;
+- (void)setHeaderAccessory:(id)arg1;
+- (void)setLocalizedName:(id)arg1;
 - (bool)shouldDisplaySeparatorBeforeSection:(id)arg1;
 - (bool)shouldDisplayTitle;
 

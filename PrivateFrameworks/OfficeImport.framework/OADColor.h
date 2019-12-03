@@ -15,12 +15,12 @@
 + (id)tsuColorWithRed:(float)arg1 green:(float)arg2 blue:(float)arg3;
 + (id)tsuColorWithRgbColor:(id)arg1;
 
+- (void).cxx_destruct;
 - (void)addTransform:(id)arg1;
 - (void)addTransformOfType:(int)arg1;
 - (void)addTransformOfType:(int)arg1 value:(float)arg2;
 - (id)colorForStyleColor:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;

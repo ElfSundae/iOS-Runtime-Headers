@@ -2,37 +2,39 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaPunchOut : PBCodable <NSCopying> {
+@interface SISchemaPunchOut : PBCodable <NSSecureCoding, SISchemaPunchOut> {
     NSString * _appID;
     NSString * _urlScheme;
     SISchemaViewContainer * _viewContainer;
+    NSData * _viewElementID;
 }
 
-@property (nonatomic, retain) NSString *appID;
-@property (nonatomic, readonly) bool hasAppID;
-@property (nonatomic, readonly) bool hasUrlScheme;
-@property (nonatomic, readonly) bool hasViewContainer;
-@property (nonatomic, retain) NSString *urlScheme;
+@property (nonatomic, copy) NSString *appID;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) NSData *jsonData;
+@property (readonly) Class superclass;
+@property (nonatomic, copy) NSString *urlScheme;
 @property (nonatomic, retain) SISchemaViewContainer *viewContainer;
+@property (nonatomic, copy) NSData *viewElementID;
 
 - (void).cxx_destruct;
 - (id)appID;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (bool)hasAppID;
-- (bool)hasUrlScheme;
-- (bool)hasViewContainer;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (bool)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
+- (id)jsonData;
 - (bool)readFrom:(id)arg1;
 - (void)setAppID:(id)arg1;
 - (void)setUrlScheme:(id)arg1;
 - (void)setViewContainer:(id)arg1;
+- (void)setViewElementID:(id)arg1;
 - (id)urlScheme;
 - (id)viewContainer;
+- (id)viewElementID;
 - (void)writeTo:(id)arg1;
 
 @end

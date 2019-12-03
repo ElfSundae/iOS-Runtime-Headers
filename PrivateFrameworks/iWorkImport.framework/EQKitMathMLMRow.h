@@ -23,7 +23,7 @@
 - (bool)isBaseFontNameUsed;
 - (bool)isEmbellishedOperator;
 - (int)isOperatorPaddingRequired;
-- (struct Schemata { int (**x1)(); int x2; id x3; })layoutSchemata;
+- (struct Schemata { int (**x1)(); int x2; id x3; id x4; })layoutSchemata;
 - (const struct set<EQKitTypes::Attributes::Enum, std::__1::less<EQKitTypes::Attributes::Enum>, std::__1::allocator<EQKitTypes::Attributes::Enum> > { }*)mathMLAttributes;
 - (id)operatorCore;
 - (id)schemataChildren;

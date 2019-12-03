@@ -8,11 +8,19 @@
 }
 
 @property (readonly) struct CGColor { }*CGColor;
+@property (readonly) struct CGColorSpace { }*CGColorSpace;
+@property (readonly) int CGColorSpaceModel;
+@property (nonatomic, readonly) UIColor *UIColor;
 @property (nonatomic, readonly) double alphaComponent;
+@property (readonly) double blackComponent;
 @property (nonatomic, readonly) double blueComponent;
 @property (nonatomic, readonly) unsigned long long colorRGBSpace;
+@property (readonly) double cyanComponent;
 @property (nonatomic, readonly) double greenComponent;
+@property (readonly) double magentaComponent;
 @property (nonatomic, readonly) double redComponent;
+@property (readonly) double whiteComponent;
+@property (readonly) double yellowComponent;
 
 + (id)blackColor;
 + (id)blueColor;
@@ -25,7 +33,13 @@
 + (id)colorWithCGColor:(struct CGColor { }*)arg1;
 + (id)colorWithCalibratedHue:(double)arg1 saturation:(double)arg2 brightness:(double)arg3 alpha:(double)arg4;
 + (id)colorWithCalibratedRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
++ (id)colorWithCalibratedWhite:(double)arg1 alpha:(double)arg2;
++ (id)colorWithCatalogName:(id)arg1 colorName:(id)arg2;
 + (id)colorWithCsColour:(const struct CsColour { unsigned short x1; unsigned short x2; unsigned short x3; unsigned short x4; }*)arg1;
++ (id)colorWithDeviceCyan:(double)arg1 magenta:(double)arg2 yellow:(double)arg3 black:(double)arg4 alpha:(double)arg5;
++ (id)colorWithDeviceHue:(double)arg1 saturation:(double)arg2 brightness:(double)arg3 alpha:(double)arg4;
++ (id)colorWithDeviceRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
++ (id)colorWithDeviceWhite:(double)arg1 alpha:(double)arg2;
 + (id)colorWithEshColor:(const struct EshColor { struct Data { int x_1_1_1; union Value { struct RGB { unsigned char x_1_3_1; unsigned char x_1_3_2; unsigned char x_1_3_3; } x_2_2_1; unsigned short x_2_2_2; unsigned short x_2_2_3; struct AdjustedColor { unsigned char x_4_3_1; unsigned char x_4_3_2; unsigned int x_4_3_3 : 4; unsigned int x_4_3_4 : 1; unsigned int x_4_3_5 : 1; unsigned int x_4_3_6 : 1; } x_2_2_4; } x_1_1_2; } x1; }*)arg1;
 + (id)colorWithHexString:(id)arg1;
 + (id)colorWithHue:(double)arg1 saturation:(double)arg2 brightness:(double)arg3 alpha:(double)arg4;
@@ -52,8 +66,11 @@
 + (id)yellowColor;
 
 - (struct CGColor { }*)CGColor;
+- (struct CGColorSpace { }*)CGColorSpace;
+- (int)CGColorSpaceModel;
 - (id)UIColor;
 - (double)alphaComponent;
+- (double)blackComponent;
 - (id)blendedColorWithFraction:(double)arg1 ofColor:(id)arg2;
 - (double)blueComponent;
 - (double)brightnessComponent;
@@ -61,12 +78,17 @@
 - (id)colorWithAlphaComponent:(double)arg1;
 - (id)colorWithShadeValue:(double)arg1;
 - (id)colorWithTintValue:(double)arg1;
+- (id)copy;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (struct CsColour { unsigned short x1; unsigned short x2; unsigned short x3; unsigned short x4; })csColour;
+- (double)cyanComponent;
 - (void)dealloc;
 - (struct EshColor { struct Data { int x_1_1_1; union Value { struct RGB { unsigned char x_1_3_1; unsigned char x_1_3_2; unsigned char x_1_3_3; } x_2_2_1; unsigned short x_2_2_2; unsigned short x_2_2_3; struct AdjustedColor { unsigned char x_4_3_1; unsigned char x_4_3_2; unsigned int x_4_3_3 : 4; unsigned int x_4_3_4 : 1; unsigned int x_4_3_5 : 1; unsigned int x_4_3_6 : 1; } x_2_2_4; } x_1_1_2; } x1; })eshColor;
+- (void)getCyan:(double*)arg1 magenta:(double*)arg2 yellow:(double*)arg3 black:(double*)arg4 alpha:(double*)arg5;
 - (void)getRGBAComponents:(double*)arg1;
 - (void)getRGBBytes:(char *)arg1 green:(char *)arg2 blue:(char *)arg3;
+- (void)getRed:(double*)arg1 green:(double*)arg2 blue:(double*)arg3 alpha:(double*)arg4;
+- (void)getWhite:(double*)arg1 alpha:(double*)arg2;
 - (id)grayscaleColor;
 - (double)greenComponent;
 - (unsigned long long)hash;
@@ -90,8 +112,10 @@
 - (bool)isNearlyWhite;
 - (bool)isOpaque;
 - (double)luminance;
+- (double)magentaComponent;
 - (id)newBlendedColorWithFraction:(double)arg1 ofColor:(id)arg2;
 - (id)newSolidColoredBitmap:(struct CGSize { double x1; double x2; })arg1;
+- (double)p_cmykComponentWithIndex:(unsigned char)arg1;
 - (bool)p_isEqualToColor:(id)arg1 withTolerance:(double)arg2;
 - (double)p_rgbComponentWithIndex:(unsigned char)arg1;
 - (void)paintPath:(struct CGPath { }*)arg1 inContext:(struct CGContext { }*)arg2;
@@ -103,5 +127,7 @@
 - (unsigned int)toBGR;
 - (struct { unsigned char x1; unsigned char x2; unsigned char x3; unsigned char x4; })ttColor;
 - (bool)wantsHighContrastBackgroundForDarkMode:(id)arg1;
+- (double)whiteComponent;
+- (double)yellowComponent;
 
 @end

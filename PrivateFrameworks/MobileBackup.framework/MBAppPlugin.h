@@ -4,6 +4,7 @@
 
 @interface MBAppPlugin : MBContainer
 
+@property (nonatomic, readonly) NSArray *allAppGroupContainers;
 @property (nonatomic, readonly) NSString *bundleDir;
 @property (nonatomic, readonly) NSDictionary *entitlements;
 @property (nonatomic, readonly) NSString *entitlementsRelativePath;
@@ -12,6 +13,7 @@
 
 + (id)appPluginWithPropertyList:(id)arg1;
 
+- (id)allAppGroupContainers;
 - (id)bundleDir;
 - (id)domain;
 - (id)entitlements;

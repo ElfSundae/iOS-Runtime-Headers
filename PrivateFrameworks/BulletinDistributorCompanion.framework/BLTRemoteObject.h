@@ -36,14 +36,13 @@
 - (void)_handleNewSessionState:(unsigned long long)arg1;
 - (bool)_idsQueueCallSendCompletionHandlerWithSuccess:(bool)arg1 identifier:(id)arg2 error:(id)arg3;
 - (void)_queueHandleIDSProtobuf:(id)arg1;
-- (void)_queuePerformSend:(id /* block */)arg1 responseToRequest:(id)arg2 withTimeout:(id)arg3 withDescription:(id)arg4 shortDescription:(id)arg5 onlyOneFor:(id)arg6 didSend:(id /* block */)arg7 andResponse:(id /* block */)arg8;
-- (void)_queueSendMessage:(id)arg1 type:(unsigned short)arg2 responseToRequest:(id)arg3 withTimeout:(id)arg4 withDescription:(id)arg5 onlyOneFor:(id)arg6 didSend:(id /* block */)arg7 andResponse:(id /* block */)arg8 didQueue:(id /* block */)arg9;
+- (void)_queuePerformSend:(id /* block */)arg1 responseToRequest:(id)arg2 withTimeout:(id)arg3 withDescription:(id)arg4 shortDescription:(id)arg5 onlyOneFor:(id)arg6 allowCloudDelivery:(bool)arg7 didSend:(id /* block */)arg8 andResponse:(id /* block */)arg9;
+- (void)_queueSendRequest:(id)arg1;
 - (void)_queueUpdateConnectionStatusWithResetDefaulteDevice:(bool)arg1;
 - (void)_removeAndHandleResponseHandler:(id)arg1;
 - (void)_sendAckInitialSequenceNumberForSession:(id)arg1 sessionState:(unsigned long long)arg2;
 - (void)_sendAckInitialSequenceNumberForSession:(id)arg1 withAssert:(bool)arg2 sessionState:(unsigned long long*)arg3;
 - (void)_sendAssertForSession;
-- (void)_sendMessage:(id)arg1 type:(unsigned short)arg2 responseToRequest:(id)arg3 withTimeout:(id)arg4 withDescription:(id)arg5 onlyOneFor:(id)arg6 didSend:(id /* block */)arg7 andResponse:(id /* block */)arg8 didQueue:(id /* block */)arg9;
 - (bool)_sequenceErrorDidHappenAndHandled:(long long)arg1 service:(id)arg2 incomingIdentifier:(id)arg3;
 - (void)_setStandaloneTestModeEnabled:(bool)arg1;
 - (void)_storeProtobufAction:(SEL)arg1 messageType:(unsigned short)arg2 messageSendType:(long long)arg3;
@@ -65,6 +64,7 @@
 - (unsigned long long)lastKnownConnectionStatus;
 - (void)registerProtobufHandlers;
 - (void)sendFileURL:(id)arg1 withTimeout:(id)arg2 extraMetadata:(id)arg3 responseHandlers:(id)arg4 didSend:(id /* block */)arg5 didQueue:(id /* block */)arg6;
+- (void)sendRequest:(id)arg1;
 - (void)sendRequest:(id)arg1 type:(unsigned short)arg2;
 - (void)sendRequest:(id)arg1 type:(unsigned short)arg2 didSend:(id /* block */)arg3;
 - (void)sendRequest:(id)arg1 type:(unsigned short)arg2 withTimeout:(id)arg3 didSend:(id /* block */)arg4;

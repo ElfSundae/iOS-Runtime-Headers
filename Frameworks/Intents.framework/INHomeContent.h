@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface INHomeContent : NSObject <NSCopying, NSSecureCoding, REDonatedActionIdentifierProviding> {
+@interface INHomeContent : NSObject <INJSONSerializable, NSCopying, NSSecureCoding> {
     NSArray * _actions;
     INHomeFilter * _filter;
 }
@@ -14,12 +14,12 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-// Image: /System/Library/Frameworks/Intents.framework/Intents
-
++ (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
+- (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
 - (id)actions;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -30,9 +30,5 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFilter:(id)arg1 actions:(id)arg2;
 - (bool)isEqual:(id)arg1;
-
-// Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
-
-- (unsigned long long)re_actionIdentifierHashValue;
 
 @end

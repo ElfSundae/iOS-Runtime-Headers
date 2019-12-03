@@ -37,6 +37,8 @@
 - (id)classesForSecureStateDecoding;
 - (void)computeDominantMotionState;
 - (unsigned long long)currentDominantMotionState;
+- (void)deactivate;
+- (void)dealloc;
 - (double)dominantActivityInterval;
 - (id)init;
 - (id)initForUnitTest:(bool)arg1;

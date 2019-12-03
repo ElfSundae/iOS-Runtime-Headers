@@ -2,8 +2,8 @@
    Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
  */
 
-@interface CKNotificationChatController : CKCoreChatController <CKMessageEntryViewDelegate, CKMessageEntryViewInputDelegate, UIPreviewInteractionDelegate, UITextInputPayloadDelegate> {
-    CKMessageEntryView * _entryView;
+@interface CKNotificationChatController : CKCoreChatController <CKMessageEntryViewDelegate, CKMessageEntryViewInputDelegate, UITextInputPayloadDelegate> {
+    CKMessageEntryViewController * _entryViewController;
     CKFullScreenBalloonViewControllerNotification * _notificationFullScreenBalloonController;
     CKRaiseGesture * _raiseGesture;
     bool  _shouldAllowReplyFromLockScreen;
@@ -14,7 +14,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <CKNotificationChatControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, retain) CKMessageEntryView *entryView;
+@property (nonatomic, readonly) CKMessageEntryView *entryView;
+@property (nonatomic, retain) CKMessageEntryViewController *entryViewController;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) CKFullScreenBalloonViewControllerNotification *notificationFullScreenBalloonController;
 @property (nonatomic, retain) CKRaiseGesture *raiseGesture;
@@ -24,6 +25,7 @@
 @property (nonatomic) NSExtensionContext *urlOpenContext;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (bool)_deviceIsPasscodeLocked;
 - (void)_dismissFullScreenBubbleViewControllerWithSendAnimation:(bool)arg1 completion:(id /* block */)arg2;
 - (id)_fullScreenBalloonViewControllerWithChatItem:(id)arg1 showActionMenu:(bool)arg2;
@@ -43,6 +45,7 @@
 - (bool)constrainToPresentingVCBounds;
 - (void)dealloc;
 - (id)entryView;
+- (id)entryViewController;
 - (bool)forceWindowedPresentation;
 - (void)fullScreenBalloonViewController:(id)arg1 didAppearAnimated:(bool)arg2;
 - (void)fullScreenBalloonViewController:(id)arg1 sendMessageAcknowledgment:(long long)arg2 forChatItem:(id)arg3;
@@ -55,11 +58,11 @@
 - (void)handlePayload:(id)arg1 withPayloadId:(id)arg2;
 - (id)initWithConversation:(id)arg1;
 - (id)inputAccessoryView;
+- (id)inputAccessoryViewController;
+- (bool)inputAccessoryViewControllerEnabled;
 - (id)launchURLForInputMode:(id)arg1;
 - (bool)messageEntryShouldHideCaret:(id)arg1;
 - (void)messageEntryView:(id)arg1 didTapMediaObject:(id)arg2;
-- (void)messageEntryView:(id)arg1 sendButtonLongPressEnded:(struct CGPoint { double x1; double x2; })arg2;
-- (void)messageEntryView:(id)arg1 sendButtonLongPressMoved:(struct CGPoint { double x1; double x2; })arg2;
 - (bool)messageEntryView:(id)arg1 shouldInsertMediaObjects:(id)arg2;
 - (void)messageEntryViewBrowserButtonHit:(id)arg1;
 - (void)messageEntryViewDidBeginEditing:(id)arg1;
@@ -75,13 +78,10 @@
 - (void)messageEntryViewRecordingDidChange:(id)arg1;
 - (void)messageEntryViewSendButtonHit:(id)arg1;
 - (void)messageEntryViewSendButtonHitWhileDisabled:(id)arg1;
-- (void)messageEntryViewSendButtonLongPressBegan:(id)arg1;
 - (bool)messageEntryViewShouldBeginEditing:(id)arg1;
 - (id)notificationFullScreenBalloonController;
 - (bool)pluginButtonsEnabled;
 - (bool)preserveModalPresentationStyle;
-- (void)previewInteraction:(id)arg1 didUpdatePreviewTransition:(double)arg2 ended:(bool)arg3;
-- (void)previewInteractionDidCancel:(id)arg1;
 - (id)progressBar;
 - (id)raiseGesture;
 - (void)raiseGestureRecognized:(id)arg1;
@@ -90,6 +90,7 @@
 - (void)sendCurrentLocationMessage:(id)arg1;
 - (void)setConversation:(id)arg1;
 - (void)setEntryView:(id)arg1;
+- (void)setEntryViewController:(id)arg1;
 - (void)setLocalUserIsComposing:(bool)arg1 withPluginBundleID:(id)arg2 typingIndicatorData:(id)arg3;
 - (void)setNotificationFullScreenBalloonController:(id)arg1;
 - (void)setRaiseGesture:(id)arg1;
@@ -98,6 +99,7 @@
 - (void)setTypingUpdater:(id)arg1;
 - (void)setUrlOpenContext:(id)arg1;
 - (bool)shouldAllowReplyFromLockScreen;
+- (bool)shouldShowEntryView;
 - (void)showFullScreenAcknowledgmentPickerForChatItem:(id)arg1 showActionMenu:(bool)arg2;
 - (void)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 longPressedForItemWithIndexPath:(id)arg3;
 - (void)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 tappedForChatItem:(id)arg3;

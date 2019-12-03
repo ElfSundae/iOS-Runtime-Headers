@@ -3,26 +3,34 @@
  */
 
 @interface AirPlayReceiverPlatform : NSObject {
-    unsigned int  _audioSessionID;
     AirPlayControllerServer * _controllerServer;
+    unsigned char  _isAmbientAudioPlaying;
+    unsigned char  _isMediaAudioPlaying;
     unsigned char  _isMuted;
+    unsigned char  _isVideoPlaying;
     int  _lockDownActivationStateToken;
     int  _managedDefaultsChangedNotificationToken;
     int  _playbackAllowNotifyToken;
     int  _playbackPreventNotifyToken;
     unsigned char  _playbackPrevented;
     int  _prefChangedNotifyToken;
-    struct AirPlayReceiverServerPrivate { struct __CFRuntimeBase { unsigned long long x_1_1_1; unsigned long long x_1_1_2; } x1; void *x2; id x3; struct OpaqueAPAdvertiser {} *x4; unsigned char x5; unsigned char x6; struct HTTPServerPrivate {} *x7; id x8; struct HTTPServerPrivate {} x9; unsigned char x10[16]; float x11; unsigned char x12; int x13; unsigned char x14; unsigned char x15; id x16; unsigned long long x17; struct OpaqueAPReceiverSystemInfo {} *x18; unsigned char x19; unsigned char x20; struct __CFDictionary {} *x21; struct __CFDictionary {} *x22; struct MediaControlServerPrivate {} *x23; struct __CFDictionary {} *x24; unsigned int x25; int x26; unsigned int x27; struct APReceiverSessionManagerOpaque {} *x28; struct OpaqueFigValeria {} *x29; int (*x30)(); unsigned char x31; unsigned char x32; unsigned char x33; unsigned char x34; unsigned char x35; unsigned char x36; } * _server;
+    struct AirPlayReceiverServerPrivate { struct __CFRuntimeBase { unsigned long long x_1_1_1; _Atomic unsigned long long x_1_1_2; } x1; void *x2; id x3; int x4; int x5; struct OpaqueAPAdvertiser {} *x6; unsigned char x7; unsigned char x8; struct HTTPServerPrivate {} *x9; id x10; struct HTTPServerPrivate {} *x11; unsigned char x12[16]; float x13; unsigned char x14; int x15; unsigned char x16; unsigned char x17; id x18; unsigned int x19; unsigned long long x20; struct OpaqueAPReceiverSystemInfo {} *x21; unsigned char x22; unsigned char x23; struct __CFDictionary {} *x24; struct __CFDictionary {} *x25; struct __CFDictionary {} *x26; unsigned int x27; int x28; unsigned int x29; struct APReceiverSessionManagerOpaque {} *x30; struct OpaqueFigValeria {} *x31; int (*x32)(); struct __CFString {} *x33; struct __CFString {} *x34; unsigned char x35; unsigned char x36; unsigned char x37; unsigned char x38; unsigned char x39; unsigned char x40; unsigned char x41; } * _server;
+    unsigned long long  _stalledSessionCount;
     int  _systemBufferSamples;
     int  _systemSampleRate;
-    struct AirPlayReceiverUIPrivate { } * _ui;
     int  _uiErrorNotifyToken;
     unsigned char  _voiceForSiri;
     unsigned char  _voiceForTelephony;
     int  _volumeControlType;
     float  _volumeSliderValue;
     float  _volumeSliderValueBeforeMute;
+    NSString * _wifiDECaptureUUID;
+    DEExtension * _wifiDiagnosticExtension;
 }
+
+@property (nonatomic) unsigned char isAmbientAudioPlaying;
+@property (nonatomic) unsigned char isMediaAudioPlaying;
+@property (nonatomic) unsigned char isVideoPlaying;
 
 - (void)_avSystemControllerVolumeChanged:(id)arg1;
 - (void)_avSystemControllerVolumeConfigChanged:(id)arg1;
@@ -30,5 +38,12 @@
 - (void)_handleAVAudioSessionServicesReset:(id)arg1;
 - (void)_handleVolumeControlTypeChange;
 - (void)_setupVolumeNotificationHandlers;
+- (void)_updateMediaSessionActivationStateBasedOnMediaAudioPlayingState:(unsigned char)arg1 andVideoPlayingState:(unsigned char)arg2;
+- (unsigned char)isAmbientAudioPlaying;
+- (unsigned char)isMediaAudioPlaying;
+- (unsigned char)isVideoPlaying;
+- (void)setIsAmbientAudioPlaying:(unsigned char)arg1;
+- (void)setIsMediaAudioPlaying:(unsigned char)arg1;
+- (void)setIsVideoPlaying:(unsigned char)arg1;
 
 @end

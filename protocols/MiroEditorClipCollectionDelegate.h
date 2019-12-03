@@ -14,7 +14,7 @@
 - (void)clipCollection:(UICollectionViewController<MiroEditorClipCollection> *)arg1 didSnapToIndexPath:(NSIndexPath *)arg2;
 - (void)clipCollection:(UICollectionViewController<MiroEditorClipCollection> *)arg1 moveItemAtIndexPath:(NSIndexPath *)arg2 toIndexPath:(NSIndexPath *)arg3;
 - (void)clipCollection:(UICollectionViewController<MiroEditorClipCollection> *)arg1 willBeginInteractiveMovementForItemAtIndexPath:(NSIndexPath *)arg2;
-- (<MiroClip> *)clipCollection:(UICollectionViewController<MiroEditorClipCollection> *)arg1 willSetClip:(id <MiroClip>)arg2 onCell:(MiroEditorClipCell *)arg3 indexPath:(NSIndexPath *)arg4;
+- (PMClipProvider *)clipCollection:(UICollectionViewController<MiroEditorClipCollection> *)arg1 willSetClipProvider:(PMClipProvider *)arg2 onCell:(MiroEditorClipCell *)arg3 indexPath:(NSIndexPath *)arg4;
 - (void)clipCollectionDidScroll:(UICollectionViewController<MiroEditorClipCollection> *)arg1;
 
 @end

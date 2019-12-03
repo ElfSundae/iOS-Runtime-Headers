@@ -11,25 +11,26 @@
 @property (nonatomic) bool inCheckerBoardMode;
 @property (nonatomic) bool inPreboardMode;
 @property (nonatomic) bool invertColorsEnabled;
-@property (nonatomic) bool sessionIsLoginSession;
 
 + (id)server;
 
 - (void).cxx_destruct;
 - (void)_didConnectToServer;
 - (id)_handleEventListener:(id)arg1;
-- (id)_handleZoomAttributesListener:(id)arg1;
+- (void)_sendRequestGuidedAccessSessionMessage:(id)arg1 numberOfRetryAttempts:(unsigned long long)arg2 completion:(id /* block */)arg3;
 - (id)_serviceName;
 - (bool)_shouldDispatchLocally;
 - (id)_springboardParametersForGuidedAccessAvailability;
 - (void)_willClearServer;
 - (int)accessibilityAssistiveTouchPID;
+- (id)accessibilityPreferenceAsMobile:(id)arg1;
 - (int)accessibilityUIServicePID;
 - (bool)adaptationEnabled;
 - (void)adjustSystemZoom:(int)arg1;
 - (id)backboardServiceInstance;
 - (bool)blueLightStatusEnabled;
 - (bool)brightnessFiltersEnabled;
+- (struct AXBColorFilterDescription { double x1[3][3]; })colorFilterFromLastUpdate;
 - (unsigned int)contextIdForPosition:(struct CGPoint { double x1; double x2; })arg1;
 - (unsigned int)contextIdHostingContextId:(unsigned int)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })convertFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 fromContextId:(unsigned int)arg2;
@@ -60,12 +61,11 @@
 - (void)registerAssistiveTouchPID:(int)arg1;
 - (void)registerGestureConflictWithZoom:(id)arg1;
 - (void)registerSiriViewServicePID:(int)arg1;
-- (void)registerZoomAttributesChangeHandler:(id /* block */)arg1;
 - (void)requestGuidedAccessSessionEndWithCompletion:(id /* block */)arg1;
 - (void)requestGuidedAccessSessionStartWithConfigurationDictionary:(id)arg1 completion:(id /* block */)arg2;
 - (void)resetAccessibilityFeatures;
 - (void)restoreCachedBrightnessFilters;
-- (bool)sessionIsLoginSession;
+- (void)sessionIsLoginSessionWithResult:(id /* block */)arg1;
 - (void)setAccessibilityPreferenceAsMobile:(id)arg1 value:(id)arg2 notification:(id)arg3;
 - (void)setCapsLockLightOn:(bool)arg1;
 - (void)setHearingAidControlIsVisible:(bool)arg1;
@@ -76,15 +76,12 @@
 - (void)setSessionIsLoginSession:(bool)arg1;
 - (void)setSwitchControlHasScreenSwitch:(bool)arg1;
 - (void)setSwitchControlRendersDeviceUnusable:(bool)arg1;
-- (void)setVoiceOverItemChooserVisible:(bool)arg1;
 - (void)setZoomInitialFocusRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 fromContext:(unsigned int)arg2;
 - (bool)supportsAccessibilityDisplayFilters;
 - (bool)supportsAdaptation;
-- (bool)supportsBlueLightReduction;
 - (void)toggleGuidedAccess;
 - (bool)tripleClickHomeButtonPress;
 - (void)userEventOccurred;
-- (void)zoomAttributesChanged:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })zoomInitialFocusRectWithQueryingContext:(unsigned int)arg1;
 
 @end

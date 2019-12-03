@@ -3,7 +3,7 @@
  */
 
 @interface TLAlertActivationAssertion : NSObject {
-    long long  _activeAcquisitionCount;
+    _Atomic long long  _activeAcquisitionCount;
     TLAlert * _alert;
 }
 

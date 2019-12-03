@@ -8,6 +8,7 @@
 
 @property (nonatomic, retain) NSMutableArray *mappings;
 
++ (bool)isValid:(id)arg1;
 + (Class)mappingsType;
 
 - (void).cxx_destruct;
@@ -23,6 +24,7 @@
 - (id)mappingsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)mappingsCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setMappings:(id)arg1;
 - (void)writeTo:(id)arg1;

@@ -2,15 +2,16 @@
    Image: /System/Library/PrivateFrameworks/SearchUI.framework/SearchUI
  */
 
-@interface SearchUISeparatorView : SearchUIVibrantView {
+@interface SearchUISeparatorView : TLKProminenceView {
     double  _separatorHeight;
 }
 
-@property double separatorHeight;
+@property (nonatomic) double separatorHeight;
 
-- (id)initWithStyle:(unsigned long long)arg1;
+- (struct CGSize { double x1; double x2; })effectiveLayoutSizeFittingSize:(struct CGSize { double x1; double x2; })arg1;
+- (id)init;
+- (struct CGSize { double x1; double x2; })intrinsicContentSize;
 - (double)separatorHeight;
 - (void)setSeparatorHeight:(double)arg1;
-- (struct CGSize { double x1; double x2; })systemLayoutSizeFittingSize:(struct CGSize { double x1; double x2; })arg1;
 
 @end

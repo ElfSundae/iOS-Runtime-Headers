@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/WebKit.framework/WebKit
  */
 
-@interface _WKDownload : NSObject <WKObject> {
+@interface _WKDownload : NSObject <NSCopying, WKObject> {
     struct ObjectStorage<WebKit::DownloadProxy> { 
         struct type { 
             unsigned char __lx[336]; 
@@ -10,7 +10,7 @@
     }  _download;
 }
 
-@property (readonly) /* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*_apiObject;
+@property (readonly) struct Object { int (**x1)(); id x2; }*_apiObject;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -21,8 +21,9 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) bool wasUserInitiated;
 
-- (/* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*)_apiObject;
+- (struct Object { int (**x1)(); id x2; }*)_apiObject;
 - (void)cancel;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)originatingWebView;
 - (void)publishProgressAtURL:(id)arg1;

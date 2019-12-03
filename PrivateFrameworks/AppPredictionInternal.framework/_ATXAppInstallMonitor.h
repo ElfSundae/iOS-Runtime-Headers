@@ -9,13 +9,15 @@
     id /* block */  _updateCompletionBlock;
 }
 
++ (id)removeIntersectionBetweenSet:(id)arg1 set:(id)arg2;
+
 - (void).cxx_destruct;
+- (id)_fetchAllAppsFromDatastore;
+- (id)_fetchAllAppsWithInstallDateFromDatastore;
+- (id)_fetchInstalledApps;
 - (void)_receivedInstallNotificationWithApps:(id)arg1 placeholderInstallNotification:(bool)arg2;
 - (void)_receivedUninstallNotificationWithApps:(id)arg1 placeholderUninstallNotification:(bool)arg2;
 - (void)dealloc;
-- (id)fetchAllAppsFromDatastore;
-- (id)fetchAllAppsWithInstallDateFromDatastore;
-- (id)fetchInstalledApps;
 - (void)handleInstallationOfApps:(id)arg1 andBackdate:(bool)arg2;
 - (void)handleUninstallationOfApps:(id)arg1;
 - (id)initWithAppInfoManager:(id)arg1;
@@ -23,7 +25,6 @@
 - (void)receivedInstallNotification:(id)arg1;
 - (void)receivedStateChangeNotification:(id)arg1;
 - (void)receivedUninstallNotification:(id)arg1;
-- (id)removeIntersectionBetweenSet:(id)arg1 set:(id)arg2;
 - (bool)restoreInProgress;
 - (void)setUpdateCompletionBlock:(id /* block */)arg1;
 - (void)start;

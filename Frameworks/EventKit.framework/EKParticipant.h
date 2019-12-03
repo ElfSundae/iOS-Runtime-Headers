@@ -39,6 +39,7 @@
 - (id)comment;
 - (id)contactPredicate;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)description;
 - (id)displayName;
 - (id)displayNameRaw;
 - (id)emailAddress;

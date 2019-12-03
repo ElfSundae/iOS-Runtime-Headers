@@ -62,44 +62,13 @@
 @property (nonatomic, readonly) bool supportsCompetitions;
 @property (nonatomic, readonly) NSTimeZone *timeZone;
 
+// Image: /System/Library/PrivateFrameworks/ActivitySharing.framework/ActivitySharing
+
 + (id)friendWithCodableFriend:(id)arg1;
 
 - (void).cxx_destruct;
 - (id)UUID;
-- (id)_competitionStartMessage:(id)arg1 replacingNameAndDatePlaceholdersForCompetitionStartDate:(id)arg2;
 - (struct _HKFitnessFriendActivitySnapshot { Class x1; }*)_emptySnapshotWithGoalsCarriedForwardForSnapshotIndex:(long long)arg1;
-- (id)as_competitionAcceptConfirmationMessageForCompetition:(id)arg1;
-- (id)as_competitionAcceptConfirmationTitle;
-- (id)as_competitionAcceptErrorMessage;
-- (id)as_competitionAcceptedNotificationMessageForCompetition:(id)arg1;
-- (id)as_competitionAcceptedNotificationTitle;
-- (id)as_competitionLearnMoreDetailAction;
-- (id)as_competitionLearnMoreDetailMessage;
-- (id)as_competitionLearnMoreFullDescription;
-- (id)as_competitionLearnMoreIntroduction;
-- (id)as_competitionLearnMorePopupAction;
-- (id)as_competitionLearnMoreReceivedNotificationMessageWithWheelchairUse:(long long)arg1;
-- (id)as_competitionLearnMoreSendConfirmationMessageWithWheelchairUse:(long long)arg1;
-- (id)as_competitionLearnMoreTitle;
-- (id)as_competitionReceivedHidingAcceptAction;
-- (id)as_competitionReceivedHidingWarningMessage;
-- (id)as_competitionReceivedNotificationAcceptAction;
-- (id)as_competitionReceivedNotificationMessage;
-- (id)as_competitionReceivedNotificationTitle;
-- (id)as_competitionRequestDurationRemainingString;
-- (id)as_competitionSendConfirmationMessage;
-- (id)as_competitionSendConfirmationSendAction;
-- (id)as_competitionSendConfirmationTitle;
-- (id)as_competitionSendErrorMessage;
-- (id)as_competitionStageString;
-- (id)as_competitionStatusBreadcrumbString;
-- (id)as_detailedSharingDurationString;
-- (id)as_friendListNameStringWithDotPrefix:(id)arg1 keyColor:(id)arg2;
-- (id)as_invitedDurationString;
-- (id)as_myCompetitionScoreStringWithContext:(id)arg1 color:(id)arg2;
-- (id)as_opponentCompetitionScoreStringWithContext:(id)arg1 color:(id)arg2;
-- (id)as_simpleHiddenFromString;
-- (id)as_simpleSharingDurationString;
 - (bool)canSeeMyActivityData;
 - (id)codableFriendIncludingCloudKitFields:(bool)arg1;
 - (id)competitionPendingAcceptance;
@@ -161,5 +130,39 @@
 - (id)snapshots;
 - (bool)supportsCompetitions;
 - (id)timeZone;
+
+// Image: /System/Library/PrivateFrameworks/ActivitySharingUI.framework/ActivitySharingUI
+
+- (id)_competitionStartMessage:(id)arg1 replacingNameAndDatePlaceholdersForCompetitionStartDate:(id)arg2;
+- (id)as_competitionAcceptConfirmationMessageForCompetition:(id)arg1;
+- (id)as_competitionAcceptConfirmationTitle;
+- (id)as_competitionAcceptErrorMessage;
+- (id)as_competitionAcceptedNotificationMessageForCompetition:(id)arg1;
+- (id)as_competitionAcceptedNotificationTitle;
+- (id)as_competitionLearnMoreDetailAction;
+- (id)as_competitionLearnMoreDetailMessage;
+- (id)as_competitionLearnMoreFullDescription;
+- (id)as_competitionLearnMoreIntroduction;
+- (id)as_competitionLearnMorePopupAction;
+- (id)as_competitionLearnMoreTitle;
+- (id)as_competitionReceivedHidingAcceptAction;
+- (id)as_competitionReceivedHidingWarningMessage;
+- (id)as_competitionReceivedNotificationAcceptAction;
+- (id)as_competitionReceivedNotificationMessage;
+- (id)as_competitionReceivedNotificationTitle;
+- (id)as_competitionRequestDurationRemainingString;
+- (id)as_competitionSendConfirmationMessage;
+- (id)as_competitionSendConfirmationSendAction;
+- (id)as_competitionSendConfirmationTitle;
+- (id)as_competitionSendErrorMessage;
+- (id)as_competitionStageString;
+- (id)as_competitionStatusBreadcrumbString;
+- (id)as_detailedSharingDurationString;
+- (id)as_friendListNameStringWithDotPrefix:(id)arg1 keyColor:(id)arg2;
+- (id)as_invitedDurationString;
+- (id)as_myCompetitionScoreStringWithContext:(id)arg1 color:(id)arg2;
+- (id)as_opponentCompetitionScoreStringWithContext:(id)arg1 color:(id)arg2;
+- (id)as_simpleHiddenFromString;
+- (id)as_simpleSharingDurationString;
 
 @end

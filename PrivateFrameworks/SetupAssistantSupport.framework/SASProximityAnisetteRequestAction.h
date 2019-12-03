@@ -12,11 +12,15 @@
 }
 
 @property (retain) AKAnisetteData *anisetteData;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (retain) NSString *dsid;
+@property (readonly) unsigned long long hash;
 @property long long request;
 @property bool shouldProvision;
 @property (retain) NSData *sim;
 @property bool success;
+@property (readonly) Class superclass;
 
 + (id)actionFromDictionary:(id)arg1;
 + (unsigned long long)actionID;

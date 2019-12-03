@@ -24,6 +24,7 @@
 @property (nonatomic, readonly) double velocity;
 
 + (bool)_shouldDefaultToTouches;
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (double)_postRecognitionWeight;

@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MapKit.framework/MapKit
  */
 
-@interface MKPolyline : MKMultiPoint <MKOverlay>
+@interface MKPolyline : MKMultiPoint <MKGeoJSONObject, MKOverlay>
 
 @property (nonatomic, readonly) struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; } boundingMapRect;
 @property (nonatomic, readonly) struct CLLocationCoordinate2D { double x1; double x2; } coordinate;
@@ -17,6 +17,8 @@
 + (id)polylineWithPoints:(const struct { double x1; double x2; }*)arg1 count:(unsigned long long)arg2;
 
 - (void)_calculateBounds;
+- (id)_initWithGeoJSONObject:(id)arg1 error:(id*)arg2;
+- (id)_initWithGeoJSONPoints:(struct NSArray { Class x1; }*)arg1 error:(id*)arg2;
 - (struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })boundingMapRect;
 - (struct CLLocationCoordinate2D { double x1; double x2; })coordinate;
 - (bool)intersectsMapRect:(struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })arg1;

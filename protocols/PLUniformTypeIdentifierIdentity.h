@@ -7,7 +7,9 @@
 
 - (bool)conformsToImage;
 - (bool)conformsToMovie;
+- (bool)conformsToRawImage;
 - (NSString *)identifier;
-- (bool)isPrimaryFormat;
+- (bool)isPlayableVideo;
+- (bool)isPrimaryImageFormat;
 
 @end

@@ -18,11 +18,14 @@
 @property (nonatomic, retain) NSString *topic;
 @property (nonatomic, retain) MTUtils *utils;
 
++ (id)kitWithTopic:(id)arg1 bagProfile:(id)arg2 profileVersion:(id)arg3;
+
 - (void).cxx_destruct;
 - (id)config;
 - (id)delegatePackage;
 - (id)eventHandlers;
 - (id)initWithTopic:(id)arg1;
+- (id)initWithTopic:(id)arg1 bagProfile:(id)arg2 profileVersion:(id)arg3;
 - (id)initWithTopic:(id)arg1 delegatePackage:(id)arg2;
 - (void)setConfig:(id)arg1;
 - (void)setDelegatePackage:(id)arg1;

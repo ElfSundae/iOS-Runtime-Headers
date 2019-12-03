@@ -3,33 +3,33 @@
  */
 
 @interface MRAVOutputContextModification : NSObject {
-    MSVCallback * _callback;
+    NSArray * _avOutputDevices;
+    NSArray * _concreteOutputDevices;
+    NSString * _initiator;
     unsigned long long  _modificationType;
     NSArray * _outputDevices;
     NSString * _password;
-    NSObject<OS_dispatch_source> * _timerSource;
-    bool  _valid;
 }
 
-@property (nonatomic, readonly) MSVCallback *callback;
+@property (nonatomic, readonly) NSArray *avOutputDevices;
+@property (nonatomic, readonly) NSArray *concreteOutputDevices;
+@property (nonatomic, copy) NSString *initiator;
 @property (nonatomic, readonly) unsigned long long modificationType;
 @property (nonatomic, readonly) NSArray *outputDevices;
 @property (nonatomic, copy) NSString *password;
-@property (nonatomic, readonly) bool valid;
-
-+ (id)addModificationWithDevices:(id)arg1 callback:(id)arg2;
-+ (id)removeModificationWithDevices:(id)arg1 callback:(id)arg2;
-+ (id)replaceModificationWithDevices:(id)arg1 callback:(id)arg2;
 
 - (void).cxx_destruct;
-- (id)callback;
-- (void)dealloc;
-- (id)initWithType:(unsigned long long)arg1 devices:(id)arg2 callback:(id)arg3;
-- (void)invalidate;
+- (void)_modifyWithOutputContext:(id)arg1 queue:(id)arg2 completion:(id /* block */)arg3;
+- (id)avOutputDevices;
+- (id)concreteOutputDevices;
+- (id)errorFromResult:(id)arg1;
+- (id)initWithType:(unsigned long long)arg1 devices:(id)arg2;
+- (id)initiator;
 - (unsigned long long)modificationType;
+- (void)modifyWithOutputContext:(id)arg1 queue:(id)arg2 completion:(id /* block */)arg3;
 - (id)outputDevices;
 - (id)password;
+- (void)setInitiator:(id)arg1;
 - (void)setPassword:(id)arg1;
-- (bool)valid;
 
 @end

@@ -3,27 +3,24 @@
  */
 
 @interface CPGridTemplate : CPTemplate <CPBarButtonProviding, CPGridTemplateClientDelegate> {
-    NSArray * _buttons;
     NSArray * _gridButtons;
     NSString * _title;
 }
 
 @property (nonatomic, retain) CPBarButton *backButton;
-@property (nonatomic, readonly) NSArray *buttons;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) NSArray *gridButtons;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSArray *leadingNavigationBarButtons;
 @property (readonly) Class superclass;
-@property (nonatomic, retain) <CPGridTemplateProviding> *templateProvider;
+@property (nonatomic, retain) NAFuture *templateProviderFuture;
 @property (nonatomic, readonly) NSString *title;
 @property (nonatomic, retain) NSArray *trailingNavigationBarButtons;
 
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
-- (id)buttons;
 - (void)encodeWithCoder:(id)arg1;
 - (id)gridButtons;
 - (void)handleActionForControlIdentifier:(id)arg1;

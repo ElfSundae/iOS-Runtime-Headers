@@ -2,18 +2,23 @@
    Image: /System/Library/PrivateFrameworks/SetupAssistant.framework/SetupAssistant
  */
 
-@interface BYDevice : NSObject {
+@interface BYDevice : NSObject <BYDeviceProvider> {
     bool  _hasHomeButton;
     long long  _size;
     long long  _type;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool hasHomeButton;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) long long size;
+@property (readonly) Class superclass;
 @property (nonatomic, readonly) long long type;
 
 + (id)currentDevice;
 
+- (id)currentDevice;
 - (bool)hasHomeButton;
 - (id)init;
 - (long long)size;

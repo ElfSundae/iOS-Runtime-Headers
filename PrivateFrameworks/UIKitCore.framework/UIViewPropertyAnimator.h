@@ -34,6 +34,7 @@
     bool  _reversed;
     bool  _running;
     bool  _scrubsLinearly;
+    bool  _shouldLayoutSubviews;
     bool  _starting;
     CAMediaTimingFunction * _timingFunctionPriorToPause;
     CAMediaTimingFunction * _timingFunctionWhenPaused;
@@ -70,6 +71,7 @@
 @property (getter=isReversed, nonatomic) bool reversed;
 @property (getter=isRunning, nonatomic, readonly) bool running;
 @property (nonatomic) bool scrubsLinearly;
+@property (setter=_setShouldLayoutSubviews:, nonatomic) bool shouldLayoutSubviews;
 @property (getter=_isStarting, setter=_setStarting:, nonatomic) bool starting;
 @property (nonatomic, readonly) long long state;
 @property (readonly) Class superclass;
@@ -173,6 +175,7 @@
 - (void)_setOriginalToValue:(id)arg1 forKey:(id)arg2 inLayer:(id)arg3;
 - (void)_setPausedOnCompletion:(bool)arg1;
 - (void)_setPausesOnCompletion:(bool)arg1;
+- (void)_setShouldLayoutSubviews:(bool)arg1;
 - (void)_setStarting:(bool)arg1;
 - (void)_setTimingParameters:(id)arg1;
 - (void)_setTrackingIdentifier:(id)arg1;
@@ -237,6 +240,7 @@
 - (void)setScrubsLinearly:(bool)arg1;
 - (void)setUnitDuration:(double)arg1;
 - (void)setUserInteractionEnabled:(bool)arg1;
+- (bool)shouldLayoutSubviews;
 - (void)startAnimation;
 - (void)startAnimationAfterDelay:(double)arg1;
 - (void)startAnimationAsPaused:(bool)arg1;

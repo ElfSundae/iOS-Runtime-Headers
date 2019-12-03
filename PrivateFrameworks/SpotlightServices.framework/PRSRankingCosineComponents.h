@@ -3,33 +3,33 @@
  */
 
 @interface PRSRankingCosineComponents : NSObject {
-    NSArray * _InverseDocFrequencies;
-    NSArray * _TermFrequencies;
-    NSArray * _TermFrequenciesWeighted;
-    NSArray * _TermInverseDoc;
-    NSArray * _TermInverseDocWeighted;
     unsigned long long  _fieldLength;
+    NSArray * _inverseDocFrequencies;
+    NSArray * _termFrequencies;
+    NSArray * _termFrequenciesWeighted;
+    NSArray * _termInverseDoc;
+    NSArray * _termInverseDocWeighted;
 }
 
-@property (nonatomic, retain) NSArray *InverseDocFrequencies;
-@property (nonatomic, retain) NSArray *TermFrequencies;
-@property (nonatomic, retain) NSArray *TermFrequenciesWeighted;
-@property (nonatomic, retain) NSArray *TermInverseDoc;
-@property (nonatomic, retain) NSArray *TermInverseDocWeighted;
 @property (nonatomic) unsigned long long fieldLength;
+@property (nonatomic, retain) NSArray *inverseDocFrequencies;
+@property (nonatomic, retain) NSArray *termFrequencies;
+@property (nonatomic, retain) NSArray *termFrequenciesWeighted;
+@property (nonatomic, retain) NSArray *termInverseDoc;
+@property (nonatomic, retain) NSArray *termInverseDocWeighted;
 
 - (void).cxx_destruct;
-- (id)InverseDocFrequencies;
-- (id)TermFrequencies;
-- (id)TermFrequenciesWeighted;
-- (id)TermInverseDoc;
-- (id)TermInverseDocWeighted;
 - (unsigned long long)fieldLength;
+- (id)inverseDocFrequencies;
 - (void)setFieldLength:(unsigned long long)arg1;
 - (void)setInverseDocFrequencies:(id)arg1;
 - (void)setTermFrequencies:(id)arg1;
 - (void)setTermFrequenciesWeighted:(id)arg1;
 - (void)setTermInverseDoc:(id)arg1;
 - (void)setTermInverseDocWeighted:(id)arg1;
+- (id)termFrequencies;
+- (id)termFrequenciesWeighted;
+- (id)termInverseDoc;
+- (id)termInverseDocWeighted;
 
 @end

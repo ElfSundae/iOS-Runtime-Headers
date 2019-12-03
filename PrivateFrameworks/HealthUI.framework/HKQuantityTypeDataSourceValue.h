@@ -4,9 +4,11 @@
 
 @interface HKQuantityTypeDataSourceValue : NSObject {
     HKQuantity * _averageQuantity;
+    HKQuantity * _durationQuantity;
     NSDate * _endDate;
     HKQuantity * _maxQuantity;
     HKQuantity * _minQuantity;
+    HKQuantity * _mostRecentQuantity;
     HKQuantityType * _quantityType;
     long long  _recordCount;
     NSDate * _startDate;
@@ -15,9 +17,11 @@
 }
 
 @property (nonatomic, retain) HKQuantity *averageQuantity;
+@property (nonatomic, retain) HKQuantity *durationQuantity;
 @property (nonatomic, retain) NSDate *endDate;
 @property (nonatomic, retain) HKQuantity *maxQuantity;
 @property (nonatomic, retain) HKQuantity *minQuantity;
+@property (nonatomic, retain) HKQuantity *mostRecentQuantity;
 @property (nonatomic, retain) HKQuantityType *quantityType;
 @property (nonatomic) long long recordCount;
 @property (nonatomic, retain) NSDate *startDate;
@@ -26,15 +30,19 @@
 
 - (void).cxx_destruct;
 - (id)averageQuantity;
+- (id)durationQuantity;
 - (id)endDate;
 - (id)maxQuantity;
 - (id)minQuantity;
+- (id)mostRecentQuantity;
 - (id)quantityType;
 - (long long)recordCount;
 - (void)setAverageQuantity:(id)arg1;
+- (void)setDurationQuantity:(id)arg1;
 - (void)setEndDate:(id)arg1;
 - (void)setMaxQuantity:(id)arg1;
 - (void)setMinQuantity:(id)arg1;
+- (void)setMostRecentQuantity:(id)arg1;
 - (void)setQuantityType:(id)arg1;
 - (void)setRecordCount:(long long)arg1;
 - (void)setStartDate:(id)arg1;

@@ -23,6 +23,7 @@
 - (id)delegate;
 - (id /* block */)didFinishHandler;
 - (void)dismissViewControllerAnimated:(bool)arg1 completion:(id /* block */)arg2;
+- (void)extensionDidFinishWithLaunchURL:(id)arg1 broadcastURL:(id)arg2 extensionBundleID:(id)arg3 cancelled:(bool)arg4;
 - (id)hostViewController;
 - (id)popoverPresentationController;
 - (id)popoverPresentationControllerProxy;

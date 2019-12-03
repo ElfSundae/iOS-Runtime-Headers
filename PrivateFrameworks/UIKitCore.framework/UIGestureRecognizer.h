@@ -59,6 +59,9 @@
         unsigned int wantsDragEvents : 1; 
         unsigned int isDynamicGesture : 1; 
         unsigned int canExcludeWithActiveRequirements : 1; 
+        unsigned int isObservingGesture : 1; 
+        unsigned int didCheckForcePressShouldBegin : 1; 
+        unsigned int canSendForcePressAction : 1; 
     }  _gestureFlags;
     long long  _initialTouchType;
     NSMutableSet * _internalActiveTouches;
@@ -76,10 +79,11 @@
 @property (nonatomic, readonly) NSMutableSet *__pairedGestureIdentifiers;
 @property (nonatomic, readonly) NSSet *_failureDependents;
 @property (nonatomic, readonly) NSSet *_failureRequirements;
-@property (nonatomic, readonly) bool _fb_isTouchGestureRecognizer;
-@property (setter=_fb_setRecognitionEvent:, nonatomic) long long _fb_recognitionEvent;
+@property (nonatomic, readonly) bool _hasUnmetFailureRequirements;
+@property (nonatomic, readonly) bool _isTouchGestureRecognizer;
 @property (setter=_setKeepTouchesOnContinuation:, nonatomic) bool _keepTouchesOnContinuation;
 @property (nonatomic, readonly) NSMutableSet *_pairedGestureIdentifiers;
+@property (setter=_setRecognitionEvent:, nonatomic) long long _recognitionEvent;
 @property (readonly) unsigned long long akNumberOfTouches;
 @property (nonatomic, copy) NSArray *allowedPressTypes;
 @property (nonatomic, copy) NSArray *allowedTouchTypes;
@@ -98,6 +102,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) double lastTouchTimestamp;
 @property (nonatomic, readonly) struct CGPoint { double x1; double x2; } location;
+@property (getter=_modifierFlags, nonatomic, readonly) long long modifierFlags;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, readonly) unsigned long long numberOfTouches;
 @property (nonatomic) bool requiresExclusiveTouchType;
@@ -113,13 +118,17 @@
 + (bool)_shouldSupportStylusTouches;
 + (bool)_shouldUseLinearForceLevelClassifier;
 + (bool)_supportsTouchContinuation;
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)__pairedGestureIdentifiers;
 - (id)__pairedGestureIdentifiersAndCreate:(bool)arg1;
 - (bool)_acceptsFailureRequirements;
 - (id)_activeEvents;
+- (id)_activePressesEvent;
+- (id)_activeTouchesEvent;
 - (id)_activeTouchesForEvent:(id)arg1;
+- (void)_addActiveEvent:(id)arg1;
 - (void)_addFailureDependent:(id)arg1;
 - (void)_addForceTarget:(id)arg1 action:(SEL)arg2;
 - (void)_addTouch:(id)arg1 forEvent:(id)arg2;
@@ -172,29 +181,36 @@
 - (void)_forceLevelClassifier:(id)arg1 currentForceLevelDidChange:(long long)arg2;
 - (unsigned long long)_forcePressCount;
 - (bool)_forceRequirementSatisfied;
+- (id)_gatherViewsToQueryForDelegateCall;
+- (bool)_hasUnmetFailureRequirements;
 - (bool)_hasUnmetRequirementsPreventingExclusion;
 - (void)_ignoreActiveEvents;
 - (bool)_inForceCapableEnvironment;
 - (void)_invalidateInitialTouchType;
 - (bool)_isActive;
 - (bool)_isDirty;
+- (bool)_isEventObserving;
 - (bool)_isExcludedByExcludable:(id)arg1;
 - (bool)_isRecognized;
+- (bool)_isTouchGestureRecognizer;
 - (bool)_keepTouchesOnContinuation;
+- (long long)_modifierFlags;
 - (bool)_needsDynamicDependentRequirementForGestureRecognizer:(id)arg1;
 - (bool)_needsDynamicFailureRequirementForGestureRecognizer:(id)arg1;
 - (id)_pairedGestureIdentifiers;
 - (id)_pairedGestureIdentifiersAndCreate:(bool)arg1;
+- (bool)_paused;
 - (void)_pressWasCancelled:(id)arg1;
 - (void)_pressesBegan:(id)arg1 withEvent:(id)arg2;
 - (id)_rawBriefDescription;
+- (long long)_recognitionEvent;
 - (void)_registerTouches:(id)arg1 forEstimationUpdatesWithEvent:(id)arg2;
 - (void)_removeFailureDependent:(id)arg1;
 - (void)_removeForceTarget:(id)arg1 action:(SEL)arg2;
 - (void)_removeTouch:(id)arg1 forEvent:(id)arg2;
 - (void)_removeTouch:(id)arg1 forEvent:(id)arg2 byCancellingTouches:(bool)arg3;
 - (long long)_requiredForceLevel;
-- (void)_requiredGestureRecognizerCompleted:(id)arg1;
+- (void)_requiredGestureRecognizerCompletedOrWasUnrelated:(id)arg1;
 - (bool)_requiredPreviewForceStateSatisfiedByForceLevel:(long long)arg1;
 - (bool)_requiresGestureRecognizerToFail:(id)arg1;
 - (bool)_requiresSystemGesturesToFail;
@@ -202,9 +218,11 @@
 - (void)_setAcceptsFailureRequiments:(bool)arg1;
 - (void)_setCanExcludeWithActiveRequirements:(bool)arg1;
 - (void)_setDirty;
+- (void)_setEventObserving:(bool)arg1;
 - (void)_setForceLevelClassifier:(id)arg1;
 - (void)_setInitialTouchType:(long long)arg1;
 - (void)_setKeepTouchesOnContinuation:(bool)arg1;
+- (void)_setRecognitionEvent:(long long)arg1;
 - (void)_setRequiredForceLevel:(long long)arg1;
 - (void)_setRequiresSystemGesturesToFail:(bool)arg1;
 - (void)_setWantsDragEvents:(bool)arg1;
@@ -212,7 +230,7 @@
 - (bool)_shouldDelayUntilForceLevelRequirementIsMet;
 - (bool)_shouldReceiveDragEvent:(id)arg1;
 - (bool)_shouldReceivePress:(id)arg1;
-- (bool)_shouldReceiveTouch:(id)arg1 recognizerView:(id)arg2 touchView:(id)arg3;
+- (bool)_shouldReceiveTouch:(id)arg1 forEvent:(id)arg2 recognizerView:(id)arg3;
 - (bool)_shouldReceiveTouch:(id)arg1 withEvent:(id)arg2;
 - (id)_touchForceObservable;
 - (bool)_touchTypeIsAllowed:(id)arg1;
@@ -222,7 +240,7 @@
 - (void)_touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)_touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)_updateForceClassifierWithEvent:(id)arg1;
-- (void)_updateGestureWithEvent:(id)arg1 buttonEvent:(id)arg2;
+- (void)_updateGestureForActiveEvents;
 - (bool)_wantsDragEvents;
 - (bool)_wantsPartialTouchSequences;
 - (void)_willBeginAfterSatisfyingFailureRequirements;
@@ -296,19 +314,9 @@
 - (struct CGPoint { double x1; double x2; })akLocationInWindow;
 - (unsigned long long)akNumberOfTouches;
 
-// Image: /System/Library/PrivateFrameworks/FrontBoard.framework/FrontBoard
-
-- (bool)_fb_isTouchGestureRecognizer;
-- (long long)_fb_recognitionEvent;
-- (void)_fb_setRecognitionEvent:(long long)arg1;
-
 // Image: /System/Library/PrivateFrameworks/HomeUI.framework/HomeUI
 
 - (struct CGPoint { double x1; double x2; })hu_locationInGlobalCoordinateSpace;
-
-// Image: /System/Library/PrivateFrameworks/IMSharedUtilities.framework/Frameworks/XCTest.framework/XCTest
-
-- (id)_automationName;
 
 // Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
 
@@ -323,6 +331,16 @@
 // Image: /System/Library/PrivateFrameworks/SlideshowKit.framework/Frameworks/OpusFoundation.framework/OpusFoundation
 
 - (void)cancel;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoard.framework/SpringBoard
+
+- (id)sb_briefDescription;
+- (void)sb_setStylusTouchesAllowed:(bool)arg1;
+- (id)sb_stringForState;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoardFoundation.framework/SpringBoardFoundation
+
+- (void)sbf_setStylusTouchesAllowed:(bool)arg1;
 
 // Image: /System/Library/PrivateFrameworks/TSReading.framework/TSReading
 
@@ -346,5 +364,10 @@
 - (struct CGPoint { double x1; double x2; })location;
 - (void)tmlSignalAttach:(id)arg1;
 - (void)tmlSignalDetach:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/WorkflowUI.framework/Frameworks/ComponentKit.framework/ComponentKit
+
+- (struct CKTypedComponentAction<UIGestureRecognizer *> { unsigned long long x1; id x2; id x3; SEL x4; })ck_componentAction;
+- (void)ck_setComponentAction:(struct CKTypedComponentAction<UIGestureRecognizer *> { unsigned long long x1; id x2; id x3; SEL x4; })arg1;
 
 @end

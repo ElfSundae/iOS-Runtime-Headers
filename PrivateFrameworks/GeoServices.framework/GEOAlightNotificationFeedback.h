@@ -8,21 +8,21 @@
     double  _arrivedAtTimestamp;
     bool  _displayed;
     struct { 
-        unsigned int alightStopMuid : 1; 
-        unsigned int arrivedAtTimestamp : 1; 
-        unsigned int lastDetectedLocationHorizontalAccuracy : 1; 
-        unsigned int lastDetectedLocationTimestamp : 1; 
-        unsigned int lineMuid : 1; 
-        unsigned int previousStopMuid : 1; 
-        unsigned int triggeredTimestamp : 1; 
-        unsigned int lastDetectedLocationTraversalPercent : 1; 
-        unsigned int stepID : 1; 
-        unsigned int trigger : 1; 
-        unsigned int triggeredLocationTraversalPercent : 1; 
-        unsigned int arrivalDetected : 1; 
-        unsigned int displayed : 1; 
-        unsigned int triggered : 1; 
-    }  _has;
+        unsigned int has_alightStopMuid : 1; 
+        unsigned int has_arrivedAtTimestamp : 1; 
+        unsigned int has_lastDetectedLocationHorizontalAccuracy : 1; 
+        unsigned int has_lastDetectedLocationTimestamp : 1; 
+        unsigned int has_lineMuid : 1; 
+        unsigned int has_previousStopMuid : 1; 
+        unsigned int has_triggeredTimestamp : 1; 
+        unsigned int has_lastDetectedLocationTraversalPercent : 1; 
+        unsigned int has_stepID : 1; 
+        unsigned int has_triggeredLocationTraversalPercent : 1; 
+        unsigned int has_trigger : 1; 
+        unsigned int has_arrivalDetected : 1; 
+        unsigned int has_displayed : 1; 
+        unsigned int has_triggered : 1; 
+    }  _flags;
     double  _lastDetectedLocationHorizontalAccuracy;
     double  _lastDetectedLocationTimestamp;
     int  _lastDetectedLocationTraversalPercent;
@@ -64,6 +64,8 @@
 @property (nonatomic) int triggeredLocationTraversalPercent;
 @property (nonatomic) double triggeredTimestamp;
 
++ (bool)isValid:(id)arg1;
+
 - (int)StringAsTrigger:(id)arg1;
 - (unsigned long long)alightStopMuid;
 - (bool)arrivalDetected;
@@ -95,6 +97,7 @@
 - (unsigned long long)lineMuid;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)previousStopMuid;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAlightStopMuid:(unsigned long long)arg1;
 - (void)setArrivalDetected:(bool)arg1;

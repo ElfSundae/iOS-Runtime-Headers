@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/VoiceTriggerUI.framework/VoiceTriggerUI
  */
 
-@interface VTUIProximityEnrollTrainingViewController : UIViewController <AFMyriadDelegate, AFUIDebugControllerDelegate, AFUISiriLanguageDelegate, CSVTUITrainingManagerDelegate, SUICFlamesViewDelegate, VTUIEnrollmentSetupIntroViewDelegate> {
+@interface VTUIProximityEnrollTrainingViewController : UIViewController <AFMyriadDelegate, AFUIDebugControllerDelegate, AFUISiriLanguageDelegate, CSVTUITrainingManagerDelegate, SUICFlamesViewDelegate, VTUIEnrollmentSetupIntroViewDelegate, VTUISiriDataSharingOptInPresentationDelegate> {
     unsigned long long  _AVVCRetryCount;
     UIView * _aboutTappedSender;
     VTUIAudioHintPlayer * _audioHintPlayer;
@@ -18,6 +18,7 @@
     id /* block */  _hasPHSInCloudFetchBlock;
     NSObject<OS_dispatch_queue> * _hasPHSInCloudFetchQueue;
     bool  _hasRetriedTraining;
+    bool  _hasSkippedTraining;
     VTUIProximityEnrollmentSetupIntroView * _introView;
     bool  _isResignedActive;
     VTUIProximityEnrollmentLanguageOptionsView * _languageOptionsView;
@@ -25,8 +26,11 @@
     long long  _orientation;
     unsigned long long  _sessionId;
     bool  _shouldTurnOnMyriad;
+    VTUISiriDataSharingOptInPresenter * _siriDataSharingOptInPresenter;
+    UIView * _siriDataSharingProximityView;
     AFUISiriLanguage * _siriLanguage;
     NSArray * _siriLanguageOptions;
+    bool  _skipToDataSharingForTesting;
     bool  _skipToEndForTesting;
     NSString * _spokenLanguageCode;
     VTUIProximityEnrollmentSuccessView * _successView;
@@ -54,6 +58,7 @@
 @property (nonatomic) long long orientation;
 @property (nonatomic, readonly) unsigned long long sessionId;
 @property (nonatomic) bool shouldTurnOnMyriad;
+@property (nonatomic) bool skipToDataSharingForTesting;
 @property (nonatomic) bool skipToEndForTesting;
 @property (nonatomic, retain) NSString *spokenLanguageCode;
 @property (nonatomic, retain) VTUIProximityEnrollmentSuccessView *successView;
@@ -72,6 +77,7 @@
 - (void)_checkForPHSCloudDataIfNecessary:(id)arg1;
 - (void)_cleanupHelper;
 - (void)_cleanupTrainingManagerWithCompletion:(id /* block */)arg1;
+- (void)_cleanupTrainingManagerWithCompletion:(id /* block */)arg1 status:(long long)arg2;
 - (void)_clearAggdScalar:(id)arg1;
 - (void)_continueFromIntro:(id)arg1;
 - (void)_continueFromLanguageOptions:(id)arg1;
@@ -104,6 +110,7 @@
 - (void)_setupEnrollTrainingView;
 - (void)_setupMode;
 - (void)_setupTrainingStates;
+- (bool)_shouldShowSiriDataSharingOptInView;
 - (bool)_shouldSpeakAudioHint;
 - (void)_showBadMicAlertCompletion:(id /* block */)arg1;
 - (void)_showBadMicAlertWithCompletion:(id /* block */)arg1;
@@ -111,6 +118,7 @@
 - (void)_showInstruction:(long long)arg1 isRetry:(bool)arg2;
 - (void)_showIntroView;
 - (void)_showResultMark:(bool)arg1 completion:(id /* block */)arg2;
+- (void)_showSiriDataSharingOptInView;
 - (void)_showStatusMessage:(id)arg1 afterDelay:(double)arg2 completion:(id /* block */)arg3;
 - (void)_showTrainingInstruction:(long long)arg1 afterDelay:(double)arg2 isRetry:(bool)arg3 animate:(bool)arg4;
 - (void)_showUnsupportedLocaleAlert;
@@ -167,6 +175,7 @@
 - (void)setMyriadCoordinator:(id)arg1;
 - (void)setOrientation:(long long)arg1;
 - (void)setShouldTurnOnMyriad:(bool)arg1;
+- (void)setSkipToDataSharingForTesting:(bool)arg1;
 - (void)setSkipToEndForTesting:(bool)arg1;
 - (void)setSpokenLanguageCode:(id)arg1;
 - (void)setSuccessView:(id)arg1;
@@ -177,8 +186,11 @@
 - (void)shouldAbortAnotherDeviceBetter:(id)arg1;
 - (void)shouldContinue:(id)arg1;
 - (bool)shouldTurnOnMyriad;
+- (void)siriDataSharingOptInRequestsDismissalFromPresenter:(id)arg1;
+- (void)siriDataSharingOptInViewDismissButtonTappedFromPresenter:(id)arg1;
 - (void)siriLanguageSpokenLanguageCodeDidChange:(id)arg1;
 - (void)skipAssistant:(id)arg1;
+- (bool)skipToDataSharingForTesting;
 - (bool)skipToEndForTesting;
 - (void)skipTraining:(id)arg1;
 - (id)spokenLanguageCode;

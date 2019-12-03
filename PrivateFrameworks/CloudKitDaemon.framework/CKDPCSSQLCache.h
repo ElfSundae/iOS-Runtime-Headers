@@ -13,7 +13,7 @@
 @property (nonatomic, readonly) double earliestValidDate;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *recordQueue;
 
-+ (void)_evictPCSSQLCachesForAppContainerTuples:(id)arg1;
++ (void)_evictPCSSQLCachesForAppContainerAccountTuples:(id)arg1;
 + (void)evictPCSSQLCachesForKnownClientContexts;
 + (id)globalPCSSQLCacheEvictionQueue;
 + (id)pathForContext:(id)arg1;

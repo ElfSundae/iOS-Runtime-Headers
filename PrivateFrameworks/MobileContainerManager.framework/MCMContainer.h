@@ -5,14 +5,15 @@
 @interface MCMContainer : NSObject {
     long long  _containerClass;
     NSString * _identifier;
+    NSString * _personaUniqueString;
     struct container_object { } * _thisContainer;
-    unsigned int  _userId;
     NSUUID * _uuid;
 }
 
 @property (nonatomic, readonly) long long containerClass;
 @property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, readonly) NSDictionary *info;
+@property (nonatomic, readonly) NSString *personaUniqueString;
 @property (getter=isTemporary, nonatomic, readonly) bool temporary;
 @property (nonatomic, readonly) struct container_object { }*thisContainer;
 @property (nonatomic, readonly) NSURL *url;
@@ -37,10 +38,11 @@
 - (id)infoValueForKey:(id)arg1 error:(id*)arg2;
 - (id)init;
 - (id)initWithIdentifier:(id)arg1 createIfNecessary:(bool)arg2 existed:(bool*)arg3 temp:(bool)arg4 error:(id*)arg5;
-- (id)initWithIdentifier:(id)arg1 userId:(unsigned int)arg2 uuid:(id)arg3 error:(id*)arg4;
+- (id)initWithIdentifier:(id)arg1 uuid:(id)arg2 personaUniqueString:(id)arg3 error:(id*)arg4;
 - (bool)isEqual:(id)arg1;
 - (bool)isTemporary;
 - (void)markDeleted;
+- (id)personaUniqueString;
 - (bool)recreateDefaultStructureWithError:(id*)arg1;
 - (bool)regenerateDirectoryUUIDWithError:(id*)arg1;
 - (bool)setInfoValue:(id)arg1 forKey:(id)arg2 error:(id*)arg3;

@@ -5,9 +5,9 @@
 @interface GEOPDHoursThreshold : PBCodable <NSCopying> {
     unsigned int  _closingSoonMessageThresholdSecond;
     struct { 
-        unsigned int closingSoonMessageThresholdSecond : 1; 
-        unsigned int openingSoonMessageThresholdSecond : 1; 
-    }  _has;
+        unsigned int has_closingSoonMessageThresholdSecond : 1; 
+        unsigned int has_openingSoonMessageThresholdSecond : 1; 
+    }  _flags;
     unsigned int  _openingSoonMessageThresholdSecond;
     PBUnknownFields * _unknownFields;
 }
@@ -18,7 +18,10 @@
 @property (nonatomic) unsigned int openingSoonMessageThresholdSecond;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(bool)arg1;
 - (unsigned int)closingSoonMessageThresholdSecond;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -30,6 +33,7 @@
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (unsigned int)openingSoonMessageThresholdSecond;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setClosingSoonMessageThresholdSecond:(unsigned int)arg1;
 - (void)setHasClosingSoonMessageThresholdSecond:(bool)arg1;

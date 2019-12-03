@@ -10,7 +10,7 @@
     long long  mVolume;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (bool)isMuted;
 - (bool)isShowWhenStopped;

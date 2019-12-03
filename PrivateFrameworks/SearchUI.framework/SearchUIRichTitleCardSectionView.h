@@ -4,7 +4,7 @@
 
 @interface SearchUIRichTitleCardSectionView : SearchUICardSectionView
 
-@property (retain) TLKHeaderView *contentView;
+@property (nonatomic, retain) TLKHeaderView *contentView;
 
 + (id)dragSubtitleForCardSection:(id)arg1;
 + (id)dragTitleForCardSection:(id)arg1;

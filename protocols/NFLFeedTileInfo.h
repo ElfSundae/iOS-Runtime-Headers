@@ -9,6 +9,7 @@
 - (NFLHeadlineTileInfo *)feedTileInfoForBookmarking;
 - (NSString *)groupIdentifier;
 - (NSString *)identifier;
+- (bool)isSelectable;
 - (bool)pageable;
 - (unsigned long long)tileInfoType;
 - (NSArray *)underlyingFeedElements;

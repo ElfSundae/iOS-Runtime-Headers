@@ -26,7 +26,7 @@
 - (id)initWithAttachment:(id)arg1;
 - (id)initWithData:(id)arg1 ofType:(id)arg2;
 - (bool)isEqualToModelComparable:(id)arg1;
-- (id)printableTextContent;
+- (id)printableTextContentForAppearanceType:(unsigned long long)arg1;
 - (void)setAttachment:(id)arg1;
 - (bool)usesTextAttachmentView;
 - (double)viewCornerRadius;

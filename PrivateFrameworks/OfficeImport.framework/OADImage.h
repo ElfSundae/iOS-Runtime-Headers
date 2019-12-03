@@ -8,10 +8,10 @@
     OADOle * mOle;
 }
 
+- (void).cxx_destruct;
 - (void)changeParentTextListStylePreservingEffectiveValues:(id)arg1;
 - (id)createImageFill;
 - (void)createPictureFramePresetGeometry;
-- (void)dealloc;
 - (id)description;
 - (id)geometry;
 - (id)imageProperties;

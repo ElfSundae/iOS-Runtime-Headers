@@ -3,7 +3,6 @@
  */
 
 @interface CalLogMaster : NSObject {
-    CalLogNode * _aslNode;
     bool  _autoFlush;
     NSObject<OS_dispatch_group> * _dispatchGroup;
     NSObject<OS_dispatch_queue> * _dispatchQueue;
@@ -16,7 +15,6 @@
     CalLogNode * _userNotificationNode;
 }
 
-@property (nonatomic, retain) CalLogNode *aslNode;
 @property (nonatomic) bool autoFlush;
 @property (nonatomic) bool hasValidNotificationRegistrationToken;
 @property (nonatomic) int notificationRegistrationToken;
@@ -29,9 +27,7 @@
 + (id)sharedLogMaster;
 
 - (void).cxx_destruct;
-- (id)aslNode;
 - (bool)autoFlush;
-- (void)configureASLNode;
 - (void)configureOSLogNode;
 - (void)configureRootConfigurationNode;
 - (void)configureStandardOutNode;
@@ -51,7 +47,6 @@
 - (void)registerForConfigUpdateNotifications;
 - (void)reloadTopLevelNodes;
 - (id)rootConfigurationNode;
-- (void)setAslNode:(id)arg1;
 - (void)setAutoFlush:(bool)arg1;
 - (void)setHasValidNotificationRegistrationToken:(bool)arg1;
 - (void)setNotificationRegistrationToken:(int)arg1;

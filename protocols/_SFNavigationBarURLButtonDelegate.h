@@ -5,6 +5,7 @@
 
 @required
 
+- (bool)navigationBarURLButton:(_SFNavigationBarURLButton *)arg1 shouldAllowLongPressAtPoint:(struct CGPoint { double x1; double x2; })arg2;
 - (bool)navigationBarURLButton:(_SFNavigationBarURLButton *)arg1 shouldShowMenuForGestureWithRecognizer:(UIGestureRecognizer *)arg2;
 - (void)navigationBarURLButtonDidReceiveCopyCommand:(_SFNavigationBarURLButton *)arg1;
 - (void)navigationBarURLButtonDidReceivePasteCommand:(_SFNavigationBarURLButton *)arg1;

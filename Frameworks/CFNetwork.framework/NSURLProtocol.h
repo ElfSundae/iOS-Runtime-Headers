@@ -12,6 +12,7 @@
 
 + (id)_makeRequestCanonicalByMakingRequestURLCanonical:(id)arg1;
 + (Class)_protocolClassForRequest:(id)arg1;
++ (Class)_protocolClassForRequest:(id)arg1 skipAppSSO:(bool)arg2;
 + (bool)canInitWithRequest:(id)arg1;
 + (bool)canInitWithTask:(id)arg1;
 + (id)canonicalRequestForRequest:(id)arg1;
@@ -26,6 +27,7 @@
 - (id)cachedResponse;
 - (id)client;
 - (void)dealloc;
+- (id)init;
 - (id)initWithRequest:(id)arg1 cachedResponse:(id)arg2 client:(id)arg3;
 - (id)initWithTask:(id)arg1 cachedResponse:(id)arg2 client:(id)arg3;
 - (id)request;

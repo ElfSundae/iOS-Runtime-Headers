@@ -20,7 +20,7 @@
 - (void)addSublayout:(id)arg1 forSections:(id)arg2 offset:(struct CGPoint { double x1; double x2; })arg3 relativeToEdges:(unsigned long long)arg4 fromSiblingLayout:(id)arg5;
 - (struct CGSize { double x1; double x2; })collectionViewContentSize;
 - (id)init;
-- (void)invalidateLayoutWithContext:(/* Warning: unhandled struct encoding: '{_UICollectionViewCompositionLayoutInvalidationContext=#@}' */ struct _UICollectionViewCompositionLayoutInvalidationContext { Class x1; id x2; }*)arg1;
+- (void)invalidateLayoutWithContext:(struct _UICollectionViewCompositionLayoutInvalidationContext { Class x1; id x2; }*)arg1;
 - (id)invalidationContextForBoundsChange:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)invalidationContextForPreferredLayoutAttributes:(id)arg1 withOriginalAttributes:(id)arg2;
 - (id)layoutAttributesForDecorationViewOfKind:(id)arg1 atIndexPath:(id)arg2;

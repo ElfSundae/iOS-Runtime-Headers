@@ -7,8 +7,9 @@
     long long  _displayType;
     long long  _interfaceOrientation;
     NSString * _name;
+    FBMainDisplayLayoutPublisher * _publisher;
+    <BSInvalidatable> * _transition;
     NSString * _transitionReason;
-    bool  _transitioning;
 }
 
 @property (nonatomic) long long backlightLevel;
@@ -19,7 +20,6 @@
 @property (getter=isTransitioning, nonatomic, readonly) bool transitioning;
 
 + (void)flushLayoutForDisplayType:(long long)arg1;
-+ (bool)isTransitioningForDisplayType:(long long)arg1;
 + (id)layoutForDisplayType:(long long)arg1;
 
 - (void).cxx_destruct;
@@ -29,6 +29,7 @@
 - (id)description;
 - (long long)displayType;
 - (void)endTransition;
+- (id)init;
 - (id)initWithDisplayType:(long long)arg1 name:(id)arg2;
 - (long long)interfaceOrientation;
 - (bool)isTransitioning;

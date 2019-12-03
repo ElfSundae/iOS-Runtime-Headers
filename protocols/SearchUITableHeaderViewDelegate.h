@@ -6,7 +6,7 @@
 @required
 
 - (void)clearResultsFromSection:(SFResultSection *)arg1;
-- (NSString *)currentQueryString;
+- (NSString *)queryString;
 - (bool)sectionIsClearable:(SFResultSection *)arg1;
 - (void)toggleExpansionForSection:(SFResultSection *)arg1;
 

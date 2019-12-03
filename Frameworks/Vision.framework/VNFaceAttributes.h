@@ -10,19 +10,25 @@
     VNFaceAttributeCategory * _genderCategory;
     VNFaceAttributeCategory * _glassesCategory;
     VNFaceAttributeCategory * _hairColorCategory;
+    VNFaceAttributeCategory * _makeupCategory;
+    VNFaceAttributeCategory * _makeupEyesCategory;
+    VNFaceAttributeCategory * _makeupLipsCategory;
     unsigned long long  _requestRevision;
     VNFaceAttributeCategory * _smilingCategory;
 }
 
-@property (nonatomic, copy) VNFaceAttributeCategory *ageCategory;
-@property (nonatomic, copy) VNFaceAttributeCategory *baldCategory;
-@property (nonatomic, copy) VNFaceAttributeCategory *eyesCategory;
-@property (nonatomic, copy) VNFaceAttributeCategory *faceHairCategory;
-@property (nonatomic, copy) VNFaceAttributeCategory *genderCategory;
-@property (nonatomic, copy) VNFaceAttributeCategory *glassesCategory;
-@property (nonatomic, copy) VNFaceAttributeCategory *hairColorCategory;
+@property (retain) VNFaceAttributeCategory *ageCategory;
+@property (retain) VNFaceAttributeCategory *baldCategory;
+@property (retain) VNFaceAttributeCategory *eyesCategory;
+@property (retain) VNFaceAttributeCategory *faceHairCategory;
+@property (retain) VNFaceAttributeCategory *genderCategory;
+@property (retain) VNFaceAttributeCategory *glassesCategory;
+@property (retain) VNFaceAttributeCategory *hairColorCategory;
+@property (retain) VNFaceAttributeCategory *makeupCategory;
+@property (retain) VNFaceAttributeCategory *makeupEyesCategory;
+@property (retain) VNFaceAttributeCategory *makeupLipsCategory;
 @property (nonatomic, readonly) unsigned long long requestRevision;
-@property (nonatomic, copy) VNFaceAttributeCategory *smilingCategory;
+@property (retain) VNFaceAttributeCategory *smilingCategory;
 
 + (bool)supportsSecureCoding;
 
@@ -40,6 +46,9 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRequestRevision:(unsigned long long)arg1;
 - (bool)isEqual:(id)arg1;
+- (id)makeupCategory;
+- (id)makeupEyesCategory;
+- (id)makeupLipsCategory;
 - (unsigned long long)requestRevision;
 - (void)setAgeCategory:(id)arg1;
 - (void)setBaldCategory:(id)arg1;
@@ -48,6 +57,9 @@
 - (void)setGenderCategory:(id)arg1;
 - (void)setGlassesCategory:(id)arg1;
 - (void)setHairColorCategory:(id)arg1;
+- (void)setMakeupCategory:(id)arg1;
+- (void)setMakeupEyesCategory:(id)arg1;
+- (void)setMakeupLipsCategory:(id)arg1;
 - (void)setSmilingCategory:(id)arg1;
 - (id)smilingCategory;
 

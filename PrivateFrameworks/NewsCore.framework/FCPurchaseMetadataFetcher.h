@@ -15,6 +15,7 @@
 - (void).cxx_destruct;
 - (id)bundleID;
 - (id)checkIfOfferUsedAlreadyWithAppAdamID:(id)arg1;
+- (id)createAMSLookupWithProfile:(id)arg1;
 - (id)externalVersionID;
 - (id)fetchPurchaseMetadataForPurchaseID:(id)arg1 restorePurcase:(bool)arg2;
 - (id)lookupResult;

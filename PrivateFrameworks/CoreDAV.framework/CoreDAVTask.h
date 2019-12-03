@@ -25,6 +25,7 @@
     bool  _finished;
     CoreDAVErrorItem * _forbiddenErrorItem;
     bool  _haveParsedFakeResponseData;
+    bool  _ignoresGuardianRestrictions;
     bool  _justTriedTokenAuth;
     CoreDAVRequestLogger * _logger;
     long long  _numDownloadedElements;
@@ -44,6 +45,7 @@
     <CoreDAVTaskManager> * _taskManager;
     double  _timeoutInterval;
     unsigned long long  _totalBytesReceived;
+    bool  _totalBytesWasProcessedAsAbnormallyLarge;
     bool  _triedRenewingCredential;
     NSString * _uniqueID;
     NSURL * _url;
@@ -60,6 +62,7 @@
 @property (nonatomic, retain) NSError *error;
 @property (getter=isFinished, nonatomic, readonly) bool finished;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) bool ignoresGuardianRestrictions;
 @property (nonatomic, copy) id /* block */ requestProgressBlock;
 @property (nonatomic, retain) NSDictionary *requestProperties;
 @property (nonatomic, retain) <CoreDAVResponseBodyParser> *responseBodyParser;
@@ -70,7 +73,9 @@
 @property (nonatomic) <CoreDAVTaskManager> *taskManager;
 @property (nonatomic) double timeoutInterval;
 @property (nonatomic) unsigned long long totalBytesReceived;
+@property bool totalBytesWasProcessedAsAbnormallyLarge;
 @property (nonatomic, readonly) NSURL *url;
+@property (nonatomic, readonly) NSRunLoop *workRunLoop;
 
 // Image: /System/Library/PrivateFrameworks/CoreDAV.framework/CoreDAV
 
@@ -88,7 +93,6 @@
 - (bool)_handleUnauthorizedAccessError:(id)arg1;
 - (bool)_includeGeneralHeaders;
 - (void)_logSantizedRequest:(id)arg1 withTaskID:(id)arg2;
-- (id)_osLogDescription;
 - (id)_requestForLogging;
 - (void)_sendTimeSpentInNetworkingToProvider;
 - (bool)_shouldCreateCredentialForBasicOrDigestAuthChallenge:(id)arg1;
@@ -122,6 +126,7 @@
 - (void)finishEarlyWithError:(id)arg1;
 - (void)handleWebLoginRequestWithCompletionBlock:(id /* block */)arg1;
 - (id)httpMethod;
+- (bool)ignoresGuardianRestrictions;
 - (id)initWithURL:(id)arg1;
 - (bool)isFinished;
 - (id)lastRedirectURL;
@@ -130,6 +135,7 @@
 - (long long)numDownloadedElements;
 - (void)overrideRequestHeader:(id)arg1 withValue:(id)arg2;
 - (void)performCoreDAVTask;
+- (id)redactedDescription;
 - (void)reportStatusWithError:(id)arg1;
 - (id)requestBody;
 - (id)requestBodyStream;
@@ -147,6 +153,7 @@
 - (void)setDelegate:(id)arg1;
 - (void)setDepth:(int)arg1;
 - (void)setError:(id)arg1;
+- (void)setIgnoresGuardianRestrictions:(bool)arg1;
 - (void)setRequestProgressBlock:(id /* block */)arg1;
 - (void)setRequestProperties:(id)arg1;
 - (void)setResponseBodyParser:(id)arg1;
@@ -155,6 +162,7 @@
 - (void)setTaskManager:(id)arg1;
 - (void)setTimeoutInterval:(double)arg1;
 - (void)setTotalBytesReceived:(unsigned long long)arg1;
+- (void)setTotalBytesWasProcessedAsAbnormallyLarge:(bool)arg1;
 - (bool)shouldLogResponseBody;
 - (void)startModal;
 - (void)submitWithTaskManager:(id)arg1;
@@ -162,14 +170,16 @@
 - (void)tearDownResources;
 - (double)timeoutInterval;
 - (unsigned long long)totalBytesReceived;
+- (bool)totalBytesWasProcessedAsAbnormallyLarge;
 - (id)url;
 - (bool)validate:(id*)arg1;
+- (id)workRunLoop;
 
-// Image: /System/Library/PrivateFrameworks/BookmarkDAV.framework/BookmarkDAV
+// Image: /System/Library/PrivateFrameworks/CDDataAccess.framework/Frameworks/DACoreDAVGlue.framework/DACoreDAVGlue
 
-+ (double)bdv_overrideTimeoutInterval;
-
-- (void)bdv_applyOverrideTimeoutIntervalIfNeeded;
+- (void)cancelTaskWithReason:(int)arg1 underlyingError:(id)arg2;
+- (void)finishWithError:(id)arg1;
+- (void)performTask;
 
 // Image: /System/Library/PrivateFrameworks/DataAccess.framework/Frameworks/DACoreDAVGlue.framework/DACoreDAVGlue
 

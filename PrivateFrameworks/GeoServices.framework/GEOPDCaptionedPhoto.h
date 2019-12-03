@@ -7,16 +7,38 @@
     NSString * _caption;
     bool  _displayFullPhotoInline;
     struct { 
-        unsigned int displayFullPhotoInline : 1; 
-        unsigned int highQuality : 1; 
-        unsigned int isBusinessOwned : 1; 
-        unsigned int useGallery : 1; 
-    }  _has;
+        unsigned int has_displayFullPhotoInline : 1; 
+        unsigned int has_highQuality : 1; 
+        unsigned int has_isBusinessOwned : 1; 
+        unsigned int has_useGallery : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_author : 1; 
+        unsigned int read_caption : 1; 
+        unsigned int read_licenseDescription : 1; 
+        unsigned int read_licenseUrl : 1; 
+        unsigned int read_photo : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_author : 1; 
+        unsigned int wrote_caption : 1; 
+        unsigned int wrote_licenseDescription : 1; 
+        unsigned int wrote_licenseUrl : 1; 
+        unsigned int wrote_photo : 1; 
+        unsigned int wrote_displayFullPhotoInline : 1; 
+        unsigned int wrote_highQuality : 1; 
+        unsigned int wrote_isBusinessOwned : 1; 
+        unsigned int wrote_useGallery : 1; 
+    }  _flags;
     bool  _highQuality;
     bool  _isBusinessOwned;
     NSString * _licenseDescription;
     NSString * _licenseUrl;
     GEOPDPhoto * _photo;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     PBUnknownFields * _unknownFields;
     bool  _useGallery;
 }
@@ -42,10 +64,17 @@
 @property (nonatomic) bool useGallery;
 
 + (id)captionedPhotosForPlaceData:(id)arg1;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
+- (void)_readAuthor;
+- (void)_readCaption;
+- (void)_readLicenseDescription;
+- (void)_readLicenseUrl;
+- (void)_readPhoto;
 - (id)author;
 - (id)caption;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -62,12 +91,15 @@
 - (bool)hasUseGallery;
 - (unsigned long long)hash;
 - (bool)highQuality;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isBusinessOwned;
 - (bool)isEqual:(id)arg1;
 - (id)licenseDescription;
 - (id)licenseUrl;
 - (void)mergeFrom:(id)arg1;
 - (id)photo;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAuthor:(id)arg1;
 - (void)setCaption:(id)arg1;

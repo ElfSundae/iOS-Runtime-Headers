@@ -9,7 +9,6 @@
 @property (nonatomic) <SKProductsRequestDelegate> *delegate;
 
 - (void).cxx_destruct;
-- (void)_handleReply:(id)arg1;
 - (id)_newResponseForProducts:(id)arg1 invalidIdentifiers:(id)arg2;
 - (void)_start;
 - (id)init;

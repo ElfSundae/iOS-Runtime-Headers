@@ -6,7 +6,7 @@
     NSString * _doubleHeightStatus;
     bool  _itemEnabled;
     struct { 
-        bool itemIsEnabled[41]; 
+        bool itemIsEnabled[42]; 
         BOOL timeString[64]; 
         BOOL shortTimeString[64]; 
         BOOL dateString[256]; 
@@ -22,8 +22,11 @@
         BOOL operatorDirectory[1024]; 
         unsigned int serviceContentType; 
         unsigned int secondaryServiceContentType; 
+        unsigned int cellLowDataModeActive : 1; 
+        unsigned int secondaryCellLowDataModeActive : 1; 
         int wifiSignalStrengthRaw; 
         int wifiSignalStrengthBars; 
+        unsigned int wifiLowDataModeActive : 1; 
         unsigned int dataNetworkType; 
         unsigned int secondaryDataNetworkType; 
         int batteryCapacity; 
@@ -39,6 +42,7 @@
         unsigned int displayRawGSMSignal : 1; 
         unsigned int displayRawWifiSignal : 1; 
         unsigned int locationIconType : 1; 
+        unsigned int voiceControlIconType : 2; 
         unsigned int quietModeInactive : 1; 
         unsigned int tetheringConnectionCount; 
         unsigned int batterySaverModeActive : 1; 
@@ -48,6 +52,7 @@
         BOOL breadcrumbSecondaryTitle[256]; 
         BOOL personName[100]; 
         unsigned int electronicTollCollectionAvailable : 1; 
+        unsigned int radarAvailable : 1; 
         unsigned int wifiLinkWarning : 1; 
         unsigned int wifiSearching : 1; 
         double backgroundActivityDisplayStartDate; 
@@ -60,17 +65,17 @@
 }
 
 @property (nonatomic, copy) NSString *doubleHeightStatus;
-@property (nonatomic, readonly) struct { bool x1[41]; BOOL x2[64]; BOOL x3[64]; BOOL x4[256]; int x5; int x6; int x7; int x8; BOOL x9[100]; BOOL x10[100]; BOOL x11[100]; BOOL x12[100]; BOOL x13[2][100]; BOOL x14[1024]; unsigned int x15; unsigned int x16; int x17; int x18; unsigned int x19; unsigned int x20; int x21; unsigned int x22; BOOL x23[150]; int x24; int x25; unsigned int x26 : 1; unsigned int x27 : 1; unsigned int x28 : 1; BOOL x29[256]; unsigned int x30 : 1; unsigned int x31 : 1; unsigned int x32 : 1; unsigned int x33 : 1; unsigned int x34 : 1; unsigned int x35; unsigned int x36 : 1; unsigned int x37 : 1; unsigned int x38 : 1; BOOL x39[256]; BOOL x40[256]; BOOL x41[100]; unsigned int x42 : 1; unsigned int x43 : 1; unsigned int x44 : 1; double x45; unsigned int x46 : 1; unsigned int x47 : 1; BOOL x48[100]; BOOL x49[100]; }*rawData;
+@property (nonatomic, readonly) struct { bool x1[42]; BOOL x2[64]; BOOL x3[64]; BOOL x4[256]; int x5; int x6; int x7; int x8; BOOL x9[100]; BOOL x10[100]; BOOL x11[100]; BOOL x12[100]; BOOL x13[2][100]; BOOL x14[1024]; unsigned int x15; unsigned int x16; unsigned int x17 : 1; unsigned int x18 : 1; int x19; int x20; unsigned int x21 : 1; unsigned int x22; unsigned int x23; int x24; unsigned int x25; BOOL x26[150]; int x27; int x28; unsigned int x29 : 1; unsigned int x30 : 1; unsigned int x31 : 1; BOOL x32[256]; unsigned int x33 : 1; unsigned int x34 : 1; unsigned int x35 : 1; unsigned int x36 : 1; unsigned int x37 : 2; unsigned int x38 : 1; unsigned int x39; unsigned int x40 : 1; unsigned int x41 : 1; unsigned int x42 : 1; BOOL x43[256]; BOOL x44[256]; BOOL x45[100]; unsigned int x46 : 1; unsigned int x47 : 1; unsigned int x48 : 1; unsigned int x49 : 1; double x50; unsigned int x51 : 1; unsigned int x52 : 1; BOOL x53[100]; BOOL x54[100]; }*rawData;
 @property (nonatomic, retain) UISystemNavigationAction *systemNavigationItem;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)doubleHeightStatus;
-- (id)initWithRawData:(const struct { bool x1[41]; BOOL x2[64]; BOOL x3[64]; BOOL x4[256]; int x5; int x6; int x7; int x8; BOOL x9[100]; BOOL x10[100]; BOOL x11[100]; BOOL x12[100]; BOOL x13[2][100]; BOOL x14[1024]; unsigned int x15; unsigned int x16; int x17; int x18; unsigned int x19; unsigned int x20; int x21; unsigned int x22; BOOL x23[150]; int x24; int x25; unsigned int x26 : 1; unsigned int x27 : 1; unsigned int x28 : 1; BOOL x29[256]; unsigned int x30 : 1; unsigned int x31 : 1; unsigned int x32 : 1; unsigned int x33 : 1; unsigned int x34 : 1; unsigned int x35; unsigned int x36 : 1; unsigned int x37 : 1; unsigned int x38 : 1; BOOL x39[256]; BOOL x40[256]; BOOL x41[100]; unsigned int x42 : 1; unsigned int x43 : 1; unsigned int x44 : 1; double x45; unsigned int x46 : 1; unsigned int x47 : 1; BOOL x48[100]; BOOL x49[100]; }*)arg1;
+- (id)initWithRawData:(const struct { bool x1[42]; BOOL x2[64]; BOOL x3[64]; BOOL x4[256]; int x5; int x6; int x7; int x8; BOOL x9[100]; BOOL x10[100]; BOOL x11[100]; BOOL x12[100]; BOOL x13[2][100]; BOOL x14[1024]; unsigned int x15; unsigned int x16; unsigned int x17 : 1; unsigned int x18 : 1; int x19; int x20; unsigned int x21 : 1; unsigned int x22; unsigned int x23; int x24; unsigned int x25; BOOL x26[150]; int x27; int x28; unsigned int x29 : 1; unsigned int x30 : 1; unsigned int x31 : 1; BOOL x32[256]; unsigned int x33 : 1; unsigned int x34 : 1; unsigned int x35 : 1; unsigned int x36 : 1; unsigned int x37 : 2; unsigned int x38 : 1; unsigned int x39; unsigned int x40 : 1; unsigned int x41 : 1; unsigned int x42 : 1; BOOL x43[256]; BOOL x44[256]; BOOL x45[100]; unsigned int x46 : 1; unsigned int x47 : 1; unsigned int x48 : 1; unsigned int x49 : 1; double x50; unsigned int x51 : 1; unsigned int x52 : 1; BOOL x53[100]; BOOL x54[100]; }*)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)isItemEnabled:(int)arg1;
-- (struct { bool x1[41]; BOOL x2[64]; BOOL x3[64]; BOOL x4[256]; int x5; int x6; int x7; int x8; BOOL x9[100]; BOOL x10[100]; BOOL x11[100]; BOOL x12[100]; BOOL x13[2][100]; BOOL x14[1024]; unsigned int x15; unsigned int x16; int x17; int x18; unsigned int x19; unsigned int x20; int x21; unsigned int x22; BOOL x23[150]; int x24; int x25; unsigned int x26 : 1; unsigned int x27 : 1; unsigned int x28 : 1; BOOL x29[256]; unsigned int x30 : 1; unsigned int x31 : 1; unsigned int x32 : 1; unsigned int x33 : 1; unsigned int x34 : 1; unsigned int x35; unsigned int x36 : 1; unsigned int x37 : 1; unsigned int x38 : 1; BOOL x39[256]; BOOL x40[256]; BOOL x41[100]; unsigned int x42 : 1; unsigned int x43 : 1; unsigned int x44 : 1; double x45; unsigned int x46 : 1; unsigned int x47 : 1; BOOL x48[100]; BOOL x49[100]; }*)rawData;
+- (struct { bool x1[42]; BOOL x2[64]; BOOL x3[64]; BOOL x4[256]; int x5; int x6; int x7; int x8; BOOL x9[100]; BOOL x10[100]; BOOL x11[100]; BOOL x12[100]; BOOL x13[2][100]; BOOL x14[1024]; unsigned int x15; unsigned int x16; unsigned int x17 : 1; unsigned int x18 : 1; int x19; int x20; unsigned int x21 : 1; unsigned int x22; unsigned int x23; int x24; unsigned int x25; BOOL x26[150]; int x27; int x28; unsigned int x29 : 1; unsigned int x30 : 1; unsigned int x31 : 1; BOOL x32[256]; unsigned int x33 : 1; unsigned int x34 : 1; unsigned int x35 : 1; unsigned int x36 : 1; unsigned int x37 : 2; unsigned int x38 : 1; unsigned int x39; unsigned int x40 : 1; unsigned int x41 : 1; unsigned int x42 : 1; BOOL x43[256]; BOOL x44[256]; BOOL x45[100]; unsigned int x46 : 1; unsigned int x47 : 1; unsigned int x48 : 1; unsigned int x49 : 1; double x50; unsigned int x51 : 1; unsigned int x52 : 1; BOOL x53[100]; BOOL x54[100]; }*)rawData;
 - (void)setDoubleHeightStatus:(id)arg1;
 - (void)setItem:(int)arg1 enabled:(bool)arg2;
 - (void)setSystemNavigationItem:(id)arg1;

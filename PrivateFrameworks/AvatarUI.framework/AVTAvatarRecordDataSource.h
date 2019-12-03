@@ -45,10 +45,12 @@
 - (void)enumerateObserversRespondingToSelector:(SEL)arg1 withBlock:(id /* block */)arg2;
 - (id)fetchRequest;
 - (unsigned long long)indexOfRecordPassingTest:(id /* block */)arg1;
+- (id)indexSetForEditableRecords;
 - (id)indexesOfRecordsPassingTest:(id /* block */)arg1;
 - (id)initWithRecordStore:(id)arg1 fetchRequest:(id)arg2;
 - (id)initWithRecordStore:(id)arg1 fetchRequest:(id)arg2 callbackQueue:(id)arg3 environment:(id)arg4;
 - (id)initWithRecordStore:(id)arg1 fetchRequest:(id)arg2 callbackQueue:(id)arg3 logger:(id)arg4 notificationCenter:(id)arg5;
+- (id)initWithRecordStore:(id)arg1 fetchRequest:(id)arg2 environment:(id)arg3;
 - (id)internalRecordStore;
 - (id)logger;
 - (id)notificationCenter;

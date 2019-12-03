@@ -12,6 +12,7 @@
 + (id)sharedTimerIfCreated;
 
 - (void).cxx_destruct;
+- (void)_endEvent;
 - (id)init;
 - (void)startWithMessage:(id)arg1;
 - (void)stop;

@@ -2,9 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface UIVisualEffect : NSObject <NSCopying, NSSecureCoding> {
-    _UIVisualEffectConfig * _effectConfig;
-}
+@interface UIVisualEffect : NSObject <NSCopying, NSSecureCoding>
 
 @property (nonatomic, readonly) bool _isATVStyle;
 @property (nonatomic, readonly) bool _isAutomaticStyle;
@@ -21,36 +19,33 @@
 + (id)emptyEffect;
 + (bool)supportsSecureCoding;
 
-- (void).cxx_destruct;
+- (id)_allEffects;
 - (void)_enumerateEffects:(id /* block */)arg1;
 - (long long)_expectedUsage;
 - (bool)_isATVStyle;
 - (bool)_isAutomaticStyle;
-- (bool)_needsUpdateForMovingToSuperview:(id)arg1 fromSuperview:(id)arg2 inEffectView:(id)arg3;
-- (bool)_needsUpdateForMovingToWindow:(id)arg1 fromWindow:(id)arg2 inEffectView:(id)arg3;
-- (bool)_needsUpdateForOption:(id)arg1;
-- (bool)_needsUpdateForTransitionFromTraitCollection:(id)arg1 toTraitCollection:(id)arg2;
-- (bool)_selectorOverriden:(SEL)arg1;
-- (void)_updateEffectNode:(id)arg1 forTraitCollection:(id)arg2;
+- (bool)_needsUpdateForTransitionFromEnvironment:(id)arg1 toEnvironment:(id)arg2 usage:(long long)arg3;
+- (bool)_selectorOverridden:(SEL)arg1;
+- (void)_updateEffectDescriptor:(id)arg1 forEnvironment:(id)arg2 usage:(long long)arg3;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)effectConfig;
-- (id)effectConfigForOptions:(id)arg1;
 - (id)effectConfigForQuality:(long long)arg1;
 - (id)effectForUserInterfaceStyle:(long long)arg1;
 - (id)effectSettings;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 
-// Image: /System/Library/PrivateFrameworks/News/TeaUI.framework/TeaUI
+// Image: /System/Library/PrivateFrameworks/Stocks/StocksUI.framework/StocksUI
 
++ (id)su_visualEffectsForBarWithBackgroundColor:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/TeaUI.framework/TeaUI
+
++ (id)ts_blurEffectWithNewBarStyle;
 + (id)ts_sideBarEffect;
 + (id)ts_sideBarSelectionEffect;
 + (id)ts_visualEffectsForBarWithBackgroundColor:(id)arg1;
++ (id)ts_visualEffectsForBlackBackgroundBarAppearance;
 + (id)ts_visualEffectsForWhiteBackgroundBarAppearance;
-
-// Image: /System/Library/PrivateFrameworks/Stocks/TeaUI.framework/TeaUI
-
-+ (id)ts_sideBarEffect;
-+ (id)ts_sideBarSelectionEffect;
 
 @end

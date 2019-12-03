@@ -12,6 +12,7 @@
 - (id)configuredLocales;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+- (bool)mutatingCommand;
 - (bool)requiresResponse;
 - (void)setConfiguredLocales:(id)arg1;
 

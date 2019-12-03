@@ -3,7 +3,7 @@
  */
 
 @interface WKVideoFullScreenViewController : UIViewController {
-    /* Warning: unhandled struct encoding: '{WeakObjCPtr<AVPlayerViewController>="m_weakReference"@}' */ struct WeakObjCPtr<AVPlayerViewController> { 
+    struct WeakObjCPtr<AVPlayerViewController> { 
         id m_weakReference; 
     }  _avPlayerViewController;
 }

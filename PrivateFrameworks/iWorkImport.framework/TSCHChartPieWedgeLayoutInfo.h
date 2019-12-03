@@ -22,7 +22,7 @@
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } combinedLabelRectInChartCoordinateSpace;
 @property (nonatomic, readonly) struct CGPoint { double x1; double x2; } combinedLabelRectMidpointInChartCoordinateSpace;
 @property (nonatomic) struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; } combinedLabelTransformIntoPieChartCoordinateSpace;
-@property (nonatomic, readonly) int enableCalloutLineSetting;
+@property (nonatomic, readonly) long long enableCalloutLineSetting;
 @property (nonatomic, copy) NSArray *pieLabels;
 @property (nonatomic, readonly) bool stackLabels;
 @property (nonatomic, retain) TSCHChartPieWedgeElement *wedgeElement;
@@ -43,7 +43,7 @@
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })combinedLabelTransformIntoPieChartCoordinateSpace;
 - (void)concatenateCombinedLabelTransformWithTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (int)enableCalloutLineSetting;
+- (long long)enableCalloutLineSetting;
 - (id)initWithPieWedgeElement:(id)arg1 pieLabels:(id)arg2 combinedLabelTransformIntoPieChartCoordinateSpace:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg3;
 - (id)pieLabels;
 - (struct CGPoint { double x1; double x2; })pointAtLabelInChartCoordinateSpace;

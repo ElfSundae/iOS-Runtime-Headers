@@ -12,8 +12,8 @@
 @property (nonatomic, retain) NSURL *destURL;
 @property (nonatomic, retain) NSError *error;
 
+- (void).cxx_destruct;
 - (int)callbackType;
-- (void)dealloc;
 - (id)destURL;
 - (id)error;
 - (void)setCallbackType:(int)arg1;

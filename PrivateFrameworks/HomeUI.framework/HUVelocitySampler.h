@@ -3,12 +3,12 @@
  */
 
 @interface HUVelocitySampler : NSObject {
-    HOVelocitySample * _currentSample;
-    HOVelocitySample * _previousSample;
+    HUVelocitySample * _currentSample;
+    HUVelocitySample * _previousSample;
 }
 
-@property (nonatomic, retain) HOVelocitySample *currentSample;
-@property (nonatomic, retain) HOVelocitySample *previousSample;
+@property (nonatomic, retain) HUVelocitySample *currentSample;
+@property (nonatomic, retain) HUVelocitySample *previousSample;
 @property (nonatomic, readonly) struct CGVector { double x1; double x2; } velocity;
 
 - (void).cxx_destruct;

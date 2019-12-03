@@ -12,7 +12,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithSheetIndex:(unsigned int)arg1 state:(id)arg2;
 - (bool)loadDelayedNode:(id)arg1;
 

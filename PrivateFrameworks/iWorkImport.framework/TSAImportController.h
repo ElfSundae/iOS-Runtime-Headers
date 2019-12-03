@@ -32,6 +32,7 @@
 
 @property (nonatomic, readonly) NSDictionary *additionalDocumentPropertiesForWrite;
 @property (nonatomic, readonly) NSDictionary *additionalDocumentSupportPropertiesForWrite;
+@property (nonatomic, readonly) long long archiveValidationMode;
 @property (nonatomic, readonly) bool areNewExternalReferencesToDataAllowed;
 @property (nonatomic, readonly) NSUUID *baseUUIDForObjectUUID;
 @property (readonly, copy) NSString *debugDescription;
@@ -65,10 +66,9 @@
 @property (nonatomic, readonly) NSURL *temporaryURL;
 
 - (void).cxx_destruct;
-- (void)_beginImport;
+- (void)_beginImportWithCompletionHandler:(id /* block */)arg1;
 - (void)_continueImportWithSuccess:(bool)arg1 error:(id)arg2 completedSteps:(int)arg3;
 - (void)_performImportWithCompletedSteps:(int)arg1;
-- (id)_prepareTemplate:(id)arg1;
 - (bool)_saveContextToTemporaryURL:(id)arg1 passphrase:(id)arg2 originalURL:(id)arg3 documentUUID:(id)arg4 error:(id*)arg5;
 - (void)_setPresentedItemURL:(id)arg1;
 - (void)addIncompatibleMediaContainer:(id)arg1 incompatibleData:(id)arg2 compatibilityLevel:(long long)arg3;
@@ -81,7 +81,6 @@
 - (bool)beginImport;
 - (void)beginImportAsync;
 - (void)cancelImport;
-- (void)checkDownloadPermissionForMissingResourceAccessTypes:(long long)arg1 estimatedMissingResourcesSize:(unsigned long long)arg2 completionQueue:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)dealloc;
 - (id)defaultDraftName;
 - (id)delegate;
@@ -103,7 +102,7 @@
 - (bool)isImportCancelled;
 - (bool)isPasswordProtected;
 - (id)logContext;
-- (id)makeObjectContextWithTemplateInfo:(id)arg1 error:(id*)arg2;
+- (id)makeObjectContextWithTemplateDocument:(id)arg1 error:(id*)arg2;
 - (id)name;
 - (bool)needsFileCoordination;
 - (id)packageDataForWrite;
@@ -115,7 +114,6 @@
 - (id)presentedItemOperationQueue;
 - (id)presentedItemURL;
 - (id)progressContext;
-- (id)progressTitleForDownloadingResourceAccessTypes:(long long)arg1;
 - (void)relinquishPresentedItemToWriter:(id /* block */)arg1;
 - (void)removeFilePresenter;
 - (void)removeWarning:(id)arg1;
@@ -131,8 +129,7 @@
 - (id)sourcePath;
 - (void)suspendAutosaveWithReason:(id)arg1;
 - (void)suspendSaveAndAutosaveWithReason:(id)arg1;
-- (id)templateInfoWithName:(id)arg1;
-- (id)templateInfoWithName:(id)arg1 variantIndex:(unsigned long long)arg2;
+- (id)templateDocumentWithName:(id)arg1 variantIndex:(unsigned long long)arg2;
 - (id)temporaryDirectory;
 - (id)temporaryURL;
 - (id)warnings;

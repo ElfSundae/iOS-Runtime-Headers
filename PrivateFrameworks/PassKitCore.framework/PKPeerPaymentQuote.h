@@ -14,6 +14,7 @@
     NSString * _identifier;
     NSArray * _items;
     PKPeerPaymentRecipient * _recipient;
+    unsigned long long  _riskLevel;
     NSString * _routingNumber;
     NSDecimalNumber * _totalFees;
     NSString * _totalFeesCurrency;
@@ -34,6 +35,7 @@
 @property (nonatomic, readonly, copy) NSString *identifier;
 @property (nonatomic, readonly) NSArray *items;
 @property (nonatomic, retain) PKPeerPaymentRecipient *recipient;
+@property (nonatomic, readonly) unsigned long long riskLevel;
 @property (nonatomic, copy) NSString *routingNumber;
 @property (nonatomic, readonly, copy) NSDecimalNumber *totalFees;
 @property (nonatomic, readonly, copy) NSString *totalFeesCurrency;
@@ -65,6 +67,7 @@
 - (bool)isEqual:(id)arg1;
 - (id)items;
 - (id)recipient;
+- (unsigned long long)riskLevel;
 - (id)routingNumber;
 - (void)setAccountNumber:(id)arg1;
 - (void)setBankName:(id)arg1;

@@ -9,11 +9,14 @@
     unsigned long long  _type;
 }
 
+@property (nonatomic, retain) SBApplicationSceneEntity *applicationSceneEntity;
 @property (nonatomic, retain) id configurationObject;
 @property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic) unsigned long long secureAppType;
 @property (nonatomic, retain) NSString *slot;
 @property (nonatomic) unsigned long long type;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoardServices.framework/SpringBoardServices
 
 - (void).cxx_destruct;
 - (id)configurationObject;
@@ -26,5 +29,17 @@
 - (void)setType:(unsigned long long)arg1;
 - (id)slot;
 - (unsigned long long)type;
+
+// Image: /System/Library/PrivateFrameworks/CoverSheet.framework/CoverSheet
+
+- (long long)sb_materialRecipe;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoard.framework/SpringBoard
+
+- (id)applicationSceneEntity;
+- (bool)isInProcessAction;
+- (void)setApplicationSceneEntity:(id)arg1;
+- (bool)specifiesSupportedInterfaceOrientations;
+- (unsigned long long)supportedInterfaceOrientations;
 
 @end

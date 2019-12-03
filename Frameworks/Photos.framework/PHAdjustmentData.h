@@ -24,7 +24,6 @@
 + (long long)adjustmentBaseVersionFromVideoRequestVersion:(long long)arg1;
 + (long long)imageRequestVersionFromAdjustmentBaseVersion:(long long)arg1;
 + (id)opaqueAdjustmentData;
-+ (id)photoEditModelWithAdjustmentData:(id)arg1 asset:(id)arg2;
 + (bool)supportsSecureCoding;
 + (long long)videoRequestVersionFromAdjustmentBaseVersion:(long long)arg1;
 
@@ -45,14 +44,6 @@
 - (void)setBaseVersion:(long long)arg1;
 - (void)setFormatIdentifier:(id)arg1;
 - (void)setFormatVersion:(id)arg1;
-
-// Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
-
-- (long long)_pu_baseOrientationForAsset:(id)arg1;
-- (long long)pu_adjustmentWorkVersion;
-- (bool)pu_isPenultimateAvailable;
-- (bool)pu_loadPhotoEditModel:(id)arg1 forAsset:(id)arg2 rawEditingAllowed:(bool)arg3;
-- (long long)pu_penultimateState;
 
 // Image: /System/Library/PrivateFrameworks/Memories.framework/Memories
 

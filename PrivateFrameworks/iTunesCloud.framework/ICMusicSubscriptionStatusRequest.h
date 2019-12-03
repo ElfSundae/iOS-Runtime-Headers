@@ -9,6 +9,7 @@
     long long  _maximumRetryCount;
     long long  _reason;
     bool  _shouldIgnoreCache;
+    bool  _shouldReturnLastKnownStatusOnly;
     ICStoreRequestContext * _storeRequestContext;
 }
 
@@ -18,6 +19,7 @@
 @property (nonatomic) long long maximumRetryCount;
 @property (nonatomic) long long reason;
 @property (nonatomic) bool shouldIgnoreCache;
+@property (nonatomic) bool shouldReturnLastKnownStatusOnly;
 @property (nonatomic, copy) ICStoreRequestContext *storeRequestContext;
 
 + (bool)supportsSecureCoding;
@@ -38,8 +40,10 @@
 - (void)setMaximumRetryCount:(long long)arg1;
 - (void)setReason:(long long)arg1;
 - (void)setShouldIgnoreCache:(bool)arg1;
+- (void)setShouldReturnLastKnownStatusOnly:(bool)arg1;
 - (void)setStoreRequestContext:(id)arg1;
 - (bool)shouldIgnoreCache;
+- (bool)shouldReturnLastKnownStatusOnly;
 - (id)storeRequestContext;
 
 @end

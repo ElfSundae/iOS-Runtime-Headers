@@ -49,7 +49,7 @@
 - (void)_createHidSession;
 - (void)_disconnectWithError:(id)arg1;
 - (void)_handleSideEffectsForEvent:(id)arg1;
-- (bool)_isMediaButtonEvent:(id)arg1;
+- (void)_launchApplicationOrURL:(id)arg1;
 - (void)_setupMediaManager;
 - (void)_setupTextInputSession;
 - (void)_setupTouchSession;
@@ -61,6 +61,7 @@
 - (id)companionClient;
 - (void)connect;
 - (bool)connected;
+- (long long)connectionType;
 - (id)delegate;
 - (id)device;
 - (void)disconnect;
@@ -72,11 +73,13 @@
 - (bool)hidTouchSessionActivated;
 - (id)identifier;
 - (id)initWithDevice:(id)arg1;
+- (bool)isPaired;
 - (id)mediaManager;
 - (id)model;
 - (id)name;
 - (id /* block */)rtiSessionHandler;
 - (void)sendButtonEvent:(id)arg1;
+- (void)sendEvent:(id)arg1 options:(id)arg2 response:(id /* block */)arg3;
 - (void)sendTouchEvent:(id)arg1;
 - (void)setActivated:(bool)arg1;
 - (void)setAuthenticated:(bool)arg1;

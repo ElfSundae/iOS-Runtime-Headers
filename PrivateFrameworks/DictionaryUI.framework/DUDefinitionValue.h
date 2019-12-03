@@ -8,7 +8,7 @@
     struct __CFArray { } * _foundRecordRefs;
     NSString * _localizedDictionaryName;
     NSString * _longDefinition;
-    ASAsset * _rawAsset;
+    MAAsset * _rawAsset;
     NSString * _term;
 }
 
@@ -17,7 +17,7 @@
 @property struct __CFArray { }*foundRecordRefs;
 @property (readonly) NSString *localizedDictionaryName;
 @property (readonly) NSString *longDefinition;
-@property (nonatomic, retain) ASAsset *rawAsset;
+@property (nonatomic, retain) MAAsset *rawAsset;
 @property (readonly) NSString *term;
 
 - (void).cxx_destruct;

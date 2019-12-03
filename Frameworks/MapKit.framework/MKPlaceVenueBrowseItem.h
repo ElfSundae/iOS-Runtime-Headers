@@ -12,8 +12,8 @@
 @property (nonatomic, readonly) GEOSearchCategory *searchCategory;
 @property (nonatomic, readonly) NSString *title;
 
-+ (id)browseItemWithCategory:(id)arg1;
-+ (id)imageWithSearchCategory:(id)arg1;
++ (id)browseItemWithCategory:(id)arg1 nightMode:(bool)arg2;
++ (id)imageWithSearchCategory:(id)arg1 nightMode:(bool)arg2;
 
 - (void).cxx_destruct;
 - (id)image;

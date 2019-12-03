@@ -9,7 +9,6 @@
 @property (nonatomic, readonly) bool showBatteryPercentage;
 @property (nonatomic, readonly) bool showOptimalCellDataForCarPlay;
 @property (nonatomic, readonly) bool showRSSI;
-@property (nonatomic, readonly) bool showTapToRadarForCarPlay;
 @property (nonatomic, readonly) bool showThermalWarning;
 @property (nonatomic, readonly) unsigned long long statusBarLogLevel;
 @property (nonatomic, readonly) bool suppressStatusBarOverrideForScreenSharing;

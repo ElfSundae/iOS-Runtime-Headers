@@ -3,12 +3,14 @@
  */
 
 @interface _MRDeviceInfoMessageProtobuf : PBCodable <NSCopying> {
+    NSMutableArray * _airplayReceivers;
     bool  _allowsPairing;
     NSString * _applicationBundleIdentifier;
     NSString * _applicationBundleVersion;
     NSData * _bluetoothAddress;
     bool  _connected;
     int  _deviceClass;
+    NSString * _deviceUID;
     NSString * _groupName;
     NSString * _groupUID;
     NSMutableArray * _groupedDevices;
@@ -33,12 +35,13 @@
     bool  _isGroupLeader;
     bool  _isProxyGroupPlayer;
     unsigned int  _lastSupportedMessageType;
-    NSString * _localReceiverPairingIdentity;
+    NSString * _linkAgent;
     NSString * _localizedModelName;
     unsigned int  _logicalDeviceCount;
     NSString * _managedConfigDeviceID;
     NSString * _name;
     unsigned long long  _protocolVersion;
+    NSString * _senderDefaultGroupUID;
     unsigned int  _sharedQueueVersion;
     bool  _supportsACL;
     bool  _supportsExtendedMotion;
@@ -46,18 +49,20 @@
     bool  _supportsSystemPairing;
     NSString * _systemBuildVersion;
     NSString * _systemMediaApplication;
+    NSString * _systemPodcastApplication;
     NSString * _tightSyncUID;
     bool  _tightlySyncedGroup;
     NSString * _uniqueIdentifier;
 }
 
+@property (nonatomic, retain) NSMutableArray *airplayReceivers;
 @property (nonatomic) bool allowsPairing;
 @property (nonatomic, retain) NSString *applicationBundleIdentifier;
 @property (nonatomic, retain) NSString *applicationBundleVersion;
 @property (nonatomic, retain) NSData *bluetoothAddress;
 @property (nonatomic) bool connected;
 @property (nonatomic) int deviceClass;
-@property (nonatomic, readonly) NSString *deviceUID;
+@property (nonatomic, retain) NSString *deviceUID;
 @property (nonatomic, retain) NSString *groupName;
 @property (nonatomic, retain) NSString *groupUID;
 @property (nonatomic, retain) NSMutableArray *groupedDevices;
@@ -67,18 +72,20 @@
 @property (nonatomic, readonly) bool hasBluetoothAddress;
 @property (nonatomic) bool hasConnected;
 @property (nonatomic) bool hasDeviceClass;
+@property (nonatomic, readonly) bool hasDeviceUID;
 @property (nonatomic, readonly) bool hasGroupName;
 @property (nonatomic, readonly) bool hasGroupUID;
 @property (nonatomic) bool hasIsAirplayActive;
 @property (nonatomic) bool hasIsGroupLeader;
 @property (nonatomic) bool hasIsProxyGroupPlayer;
 @property (nonatomic) bool hasLastSupportedMessageType;
-@property (nonatomic, readonly) bool hasLocalReceiverPairingIdentity;
+@property (nonatomic, readonly) bool hasLinkAgent;
 @property (nonatomic, readonly) bool hasLocalizedModelName;
 @property (nonatomic) bool hasLogicalDeviceCount;
 @property (nonatomic, readonly) bool hasManagedConfigDeviceID;
 @property (nonatomic, readonly) bool hasName;
 @property (nonatomic) bool hasProtocolVersion;
+@property (nonatomic, readonly) bool hasSenderDefaultGroupUID;
 @property (nonatomic) bool hasSharedQueueVersion;
 @property (nonatomic) bool hasSupportsACL;
 @property (nonatomic) bool hasSupportsExtendedMotion;
@@ -86,6 +93,7 @@
 @property (nonatomic) bool hasSupportsSystemPairing;
 @property (nonatomic, readonly) bool hasSystemBuildVersion;
 @property (nonatomic, readonly) bool hasSystemMediaApplication;
+@property (nonatomic, readonly) bool hasSystemPodcastApplication;
 @property (nonatomic, readonly) bool hasTightSyncUID;
 @property (nonatomic) bool hasTightlySyncedGroup;
 @property (nonatomic, readonly) bool hasUniqueIdentifier;
@@ -93,12 +101,13 @@
 @property (nonatomic) bool isGroupLeader;
 @property (nonatomic) bool isProxyGroupPlayer;
 @property (nonatomic) unsigned int lastSupportedMessageType;
-@property (nonatomic, retain) NSString *localReceiverPairingIdentity;
+@property (nonatomic, retain) NSString *linkAgent;
 @property (nonatomic, retain) NSString *localizedModelName;
 @property (nonatomic) unsigned int logicalDeviceCount;
 @property (nonatomic, retain) NSString *managedConfigDeviceID;
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic) unsigned long long protocolVersion;
+@property (nonatomic, retain) NSString *senderDefaultGroupUID;
 @property (nonatomic) unsigned int sharedQueueVersion;
 @property (nonatomic) bool supportsACL;
 @property (nonatomic) bool supportsExtendedMotion;
@@ -106,19 +115,26 @@
 @property (nonatomic) bool supportsSystemPairing;
 @property (nonatomic, retain) NSString *systemBuildVersion;
 @property (nonatomic, retain) NSString *systemMediaApplication;
+@property (nonatomic, retain) NSString *systemPodcastApplication;
 @property (nonatomic, retain) NSString *tightSyncUID;
 @property (nonatomic) bool tightlySyncedGroup;
 @property (nonatomic, retain) NSString *uniqueIdentifier;
 
++ (Class)airplayReceiversType;
 + (Class)groupedDevicesType;
 
 - (void).cxx_destruct;
 - (int)StringAsDeviceClass:(id)arg1;
+- (void)addAirplayReceivers:(id)arg1;
 - (void)addGroupedDevices:(id)arg1;
+- (id)airplayReceivers;
+- (id)airplayReceiversAtIndex:(unsigned long long)arg1;
+- (unsigned long long)airplayReceiversCount;
 - (bool)allowsPairing;
 - (id)applicationBundleIdentifier;
 - (id)applicationBundleVersion;
 - (id)bluetoothAddress;
+- (void)clearAirplayReceivers;
 - (void)clearGroupedDevices;
 - (bool)connected;
 - (void)copyTo:(id)arg1;
@@ -139,18 +155,20 @@
 - (bool)hasBluetoothAddress;
 - (bool)hasConnected;
 - (bool)hasDeviceClass;
+- (bool)hasDeviceUID;
 - (bool)hasGroupName;
 - (bool)hasGroupUID;
 - (bool)hasIsAirplayActive;
 - (bool)hasIsGroupLeader;
 - (bool)hasIsProxyGroupPlayer;
 - (bool)hasLastSupportedMessageType;
-- (bool)hasLocalReceiverPairingIdentity;
+- (bool)hasLinkAgent;
 - (bool)hasLocalizedModelName;
 - (bool)hasLogicalDeviceCount;
 - (bool)hasManagedConfigDeviceID;
 - (bool)hasName;
 - (bool)hasProtocolVersion;
+- (bool)hasSenderDefaultGroupUID;
 - (bool)hasSharedQueueVersion;
 - (bool)hasSupportsACL;
 - (bool)hasSupportsExtendedMotion;
@@ -158,6 +176,7 @@
 - (bool)hasSupportsSystemPairing;
 - (bool)hasSystemBuildVersion;
 - (bool)hasSystemMediaApplication;
+- (bool)hasSystemPodcastApplication;
 - (bool)hasTightSyncUID;
 - (bool)hasTightlySyncedGroup;
 - (bool)hasUniqueIdentifier;
@@ -167,7 +186,7 @@
 - (bool)isGroupLeader;
 - (bool)isProxyGroupPlayer;
 - (unsigned int)lastSupportedMessageType;
-- (id)localReceiverPairingIdentity;
+- (id)linkAgent;
 - (id)localizedModelName;
 - (unsigned int)logicalDeviceCount;
 - (id)managedConfigDeviceID;
@@ -175,12 +194,15 @@
 - (id)name;
 - (unsigned long long)protocolVersion;
 - (bool)readFrom:(id)arg1;
+- (id)senderDefaultGroupUID;
+- (void)setAirplayReceivers:(id)arg1;
 - (void)setAllowsPairing:(bool)arg1;
 - (void)setApplicationBundleIdentifier:(id)arg1;
 - (void)setApplicationBundleVersion:(id)arg1;
 - (void)setBluetoothAddress:(id)arg1;
 - (void)setConnected:(bool)arg1;
 - (void)setDeviceClass:(int)arg1;
+- (void)setDeviceUID:(id)arg1;
 - (void)setGroupName:(id)arg1;
 - (void)setGroupUID:(id)arg1;
 - (void)setGroupedDevices:(id)arg1;
@@ -203,12 +225,13 @@
 - (void)setIsGroupLeader:(bool)arg1;
 - (void)setIsProxyGroupPlayer:(bool)arg1;
 - (void)setLastSupportedMessageType:(unsigned int)arg1;
-- (void)setLocalReceiverPairingIdentity:(id)arg1;
+- (void)setLinkAgent:(id)arg1;
 - (void)setLocalizedModelName:(id)arg1;
 - (void)setLogicalDeviceCount:(unsigned int)arg1;
 - (void)setManagedConfigDeviceID:(id)arg1;
 - (void)setName:(id)arg1;
 - (void)setProtocolVersion:(unsigned long long)arg1;
+- (void)setSenderDefaultGroupUID:(id)arg1;
 - (void)setSharedQueueVersion:(unsigned int)arg1;
 - (void)setSupportsACL:(bool)arg1;
 - (void)setSupportsExtendedMotion:(bool)arg1;
@@ -216,6 +239,7 @@
 - (void)setSupportsSystemPairing:(bool)arg1;
 - (void)setSystemBuildVersion:(id)arg1;
 - (void)setSystemMediaApplication:(id)arg1;
+- (void)setSystemPodcastApplication:(id)arg1;
 - (void)setTightSyncUID:(id)arg1;
 - (void)setTightlySyncedGroup:(bool)arg1;
 - (void)setUniqueIdentifier:(id)arg1;
@@ -226,6 +250,7 @@
 - (bool)supportsSystemPairing;
 - (id)systemBuildVersion;
 - (id)systemMediaApplication;
+- (id)systemPodcastApplication;
 - (id)tightSyncUID;
 - (bool)tightlySyncedGroup;
 - (id)uniqueIdentifier;

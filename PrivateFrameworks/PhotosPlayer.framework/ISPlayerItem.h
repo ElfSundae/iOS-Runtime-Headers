@@ -8,6 +8,7 @@
     NSObject<OS_dispatch_queue> * _ivarQueue;
     void * _ivarQueueIdentifier;
     bool  _ivarQueue_aggressivelyCacheVideoFrames;
+    bool  _ivarQueue_contentSupportsVitality;
     bool  _ivarQueue_decodesAllFramesDuringOrdinaryPlayback;
     NSError * _ivarQueue_error;
     struct { 
@@ -16,6 +17,7 @@
         bool content; 
         bool minimumClientVersion; 
         bool playbackStyleIdentifier; 
+        bool contentSupportsVitality; 
     }  _ivarQueue_isValid;
     long long  _ivarQueue_loadingTarget;
     NSString * _ivarQueue_minimumClientVersion;
@@ -32,18 +34,6 @@
         unsigned int flags; 
         long long epoch; 
     }  _ivarQueue_playerItemPhotoTime;
-    struct { 
-        long long value; 
-        int timescale; 
-        unsigned int flags; 
-        long long epoch; 
-    }  _ivarQueue_postPhotoTime;
-    struct { 
-        long long value; 
-        int timescale; 
-        unsigned int flags; 
-        long long epoch; 
-    }  _ivarQueue_prePhotoTime;
     bool  _ivarQueue_reversesMoreVideoFramesInMemory;
     long long  _ivarQueue_status;
     NSNumber * _ivarQueue_variationIdentifier;
@@ -66,6 +56,8 @@
 @property (setter=_setVideoPlayerItemRequestID:, nonatomic) long long _videoPlayerItemRequestID;
 @property (nonatomic) bool aggressivelyCacheVideoFrames;
 @property (nonatomic, readonly) ISAsset *asset;
+@property (nonatomic) bool contentSupportsVitality;
+@property (nonatomic) bool decodesAllFramesDuringOrdinaryPlayback;
 @property (setter=_setError:, nonatomic, retain) NSError *error;
 @property (nonatomic) long long loadingTarget;
 @property (setter=_setPlayerContent:, nonatomic, retain) ISPlayerContent *playerContent;
@@ -81,12 +73,14 @@
 - (void)_assertOnIvarQueue;
 - (void)_assertOnWorkQueue;
 - (void)_cancelLoading;
-- (void)_handleVideoPlayerItemLoadResultWithSuccess:(bool)arg1 playerItem:(id)arg2 prePhotoTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg3 postPhotoTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg4 videoDuration:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg5 error:(id)arg6;
+- (void)_handleVideoPlayerItemLoadResultWithSuccess:(bool)arg1 playerItem:(id)arg2 videoDuration:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg3 error:(id)arg4;
+- (void)_invalidateContentSupportsVitality;
 - (void)_invalidateMinimumClientVersion;
 - (void)_invalidatePlaybackStyleIdentifier;
 - (void)_invalidatePlayerContent;
 - (void)_invalidateStatus;
 - (void)_invalidateVideoPlayerItem;
+- (bool)_isContentSupportsVitalityValid;
 - (bool)_isLoadingCancelled;
 - (bool)_isMinimumClientVersionValid;
 - (bool)_isOnIvarQueue;
@@ -108,8 +102,9 @@
 - (void)_setPlayerContent:(id)arg1;
 - (void)_setStatus:(long long)arg1;
 - (void)_setVariationIdentifier:(id)arg1;
-- (void)_setVideoPlayerItem:(id)arg1 prePhotoTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2 postPhotoTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg3 videoDuration:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg4;
+- (void)_setVideoPlayerItem:(id)arg1 videoDuration:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2;
 - (void)_setVideoPlayerItemRequestID:(long long)arg1;
+- (void)_updateContentSupportsVitalityIfNeeded;
 - (void)_updateIfNeeded;
 - (void)_updateMinimumClientVersionIfNeeded;
 - (void)_updatePlaybackStyleIdentifierIfNeeded;
@@ -122,6 +117,7 @@
 - (bool)aggressivelyCacheVideoFrames;
 - (id)asset;
 - (void)cancelLoading;
+- (bool)contentSupportsVitality;
 - (void)dealloc;
 - (bool)decodesAllFramesDuringOrdinaryPlayback;
 - (void)didPerformChanges;
@@ -136,6 +132,7 @@
 - (void)resetAVObjects;
 - (bool)reversesMoreVideoFramesInMemory;
 - (void)setAggressivelyCacheVideoFrames:(bool)arg1;
+- (void)setContentSupportsVitality:(bool)arg1;
 - (void)setDecodesAllFramesDuringOrdinaryPlayback:(bool)arg1;
 - (void)setLoadingTarget:(long long)arg1;
 - (void)setReversesMoreVideoFramesInMemory:(bool)arg1;

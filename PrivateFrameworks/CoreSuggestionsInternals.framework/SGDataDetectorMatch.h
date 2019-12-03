@@ -2,7 +2,10 @@
    Image: /System/Library/PrivateFrameworks/CoreSuggestionsInternals.framework/CoreSuggestionsInternals
  */
 
-@interface SGDataDetectorMatch : NSObject {
+@interface SGDataDetectorMatch : NSObject <NSSecureCoding> {
+    bool  _allDay;
+    NSDate * _detectedDate;
+    NSTimeZone * _detectedTimeZone;
     struct _NSRange { 
         unsigned long long location; 
         unsigned long long length; 
@@ -22,6 +25,9 @@
     NSString * _valueString;
 }
 
+@property (nonatomic, readonly) bool allDay;
+@property (nonatomic, readonly) NSDate *detectedDate;
+@property (nonatomic, readonly) NSTimeZone *detectedTimeZone;
 @property (nonatomic, readonly) struct _NSRange { unsigned long long x1; unsigned long long x2; } labelRange;
 @property (nonatomic, readonly) NSString *labelString;
 @property (nonatomic, readonly) unsigned int matchType;
@@ -31,10 +37,21 @@
 @property (nonatomic, readonly) struct _NSRange { unsigned long long x1; unsigned long long x2; } valueRange;
 @property (nonatomic, readonly) NSString *valueString;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
+- (bool)allDay;
 - (id)description;
+- (id)detectedDate;
+- (id)detectedTimeZone;
+- (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithDetectedDate:(id)arg1 detectedTimeZone:(id)arg2 matchType:(unsigned int)arg3 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg4 labelRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg5 labelString:(id)arg6 valueRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg7 valueString:(id)arg8 allDay:(bool)arg9;
 - (id)initWithLookupHintInDomain:(int)arg1 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 labelRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3 labelString:(id)arg4 valueRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg5 valueString:(id)arg6 qid:(id)arg7;
 - (id)initWithMatchType:(unsigned int)arg1 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 labelRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3 labelString:(id)arg4 valueRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg5 valueString:(id)arg6;
+- (bool)isEqual:(id)arg1;
+- (bool)isEqualToDataDetectorMatch:(id)arg1;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })labelRange;
 - (id)labelString;
 - (unsigned int)matchType;

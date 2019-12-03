@@ -3,12 +3,12 @@
  */
 
 @interface _HKSampleQueryConfiguration : HKQueryServerConfiguration {
-    bool  _includeTimeZones;
+    bool  _includeAutomaticTimeZones;
     unsigned long long  _limit;
     NSArray * _sortDescriptors;
 }
 
-@property (nonatomic) bool includeTimeZones;
+@property (nonatomic) bool includeAutomaticTimeZones;
 @property (nonatomic) unsigned long long limit;
 @property (nonatomic, copy) NSArray *sortDescriptors;
 
@@ -17,10 +17,10 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (bool)includeTimeZones;
+- (bool)includeAutomaticTimeZones;
 - (id)initWithCoder:(id)arg1;
 - (unsigned long long)limit;
-- (void)setIncludeTimeZones:(bool)arg1;
+- (void)setIncludeAutomaticTimeZones:(bool)arg1;
 - (void)setLimit:(unsigned long long)arg1;
 - (void)setSortDescriptors:(id)arg1;
 - (id)sortDescriptors;

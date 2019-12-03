@@ -11,11 +11,13 @@
     NSString * _distanceTextItem;
     unsigned long long  _etaTransportType;
     double  _etaTravelTime;
+    bool  _inactiveInBackground;
     NSNumber * _lastTransportTypeFound;
     <GEOTransitLineItem> * _lineItem;
     MKMapItem * _nearestStationItem;
     NSHashTable * _observers;
     NSLock * _observersLock;
+    bool  _paused;
     <_MKPlaceItem> * _placeItem;
     _MKQuickRouteManager * _quickRouteManager;
     NSTimer * _refreshTimer;
@@ -44,6 +46,7 @@
 - (void)_cancelTimer;
 - (void)_commonInit;
 - (void)_configureETAForMapItem:(id)arg1;
+- (void)_didEnterBackground;
 - (void)_notifyETAAllObservers;
 - (void)_notifyLocationAllObservers;
 - (void)_refreshTimer;
@@ -52,6 +55,7 @@
 - (void)_updateETA;
 - (void)_updateETADisplayWithTransportType:(unsigned long long)arg1 travelTime:(double)arg2 distance:(double)arg3;
 - (void)_updateETAHandler:(id)arg1;
+- (void)_willEnterForeground;
 - (void)addObserver:(id)arg1;
 - (id)automobileOptions;
 - (void)cancel;
@@ -77,11 +81,13 @@
 - (void)locationManagerUpdatedLocation:(id)arg1;
 - (id)observers;
 - (id)observersLock;
+- (void)pause;
 - (id)placeItem;
 - (void)quickRouteManager:(id)arg1 didUpdateETA:(id)arg2 error:(id)arg3 animated:(bool)arg4;
 - (bool)quickRouteShouldIncludeTransitWhenNotPreferredTransportType;
 - (bool)quickRouteShouldOnlyUseAutomobile;
 - (void)removeObserver:(id)arg1;
+- (void)restart;
 - (void)setAutomobileOptions:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setObservers:(id)arg1;

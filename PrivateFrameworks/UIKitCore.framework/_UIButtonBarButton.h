@@ -3,6 +3,7 @@
  */
 
 @interface _UIButtonBarButton : UIControl <UISpringLoadedInteractionSupporting> {
+    _UIBarButtonItemData * _appearanceData;
     bool  _backButton;
     NSLayoutConstraint * _heightMinimizingConstraint;
     struct CGRect { 
@@ -19,6 +20,7 @@
     NSLayoutConstraint * _widthMinimizingConstraint;
 }
 
+@property (nonatomic, retain) _UIBarButtonItemData *appearanceData;
 @property (getter=isBackButton, nonatomic, readonly) bool backButton;
 @property (getter=_buttonBarHitRect, setter=_setButtonBarHitRect:, nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } buttonBarHitRect;
 @property (readonly, copy) NSString *debugDescription;
@@ -38,10 +40,13 @@
 - (void)_configureFromBarItem:(id)arg1 appearanceDelegate:(id)arg2 isBackButton:(bool)arg3;
 - (unsigned long long)_controlEventsForActionTriggered;
 - (void)_setButtonBarHitRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (void)_setTouchHasHighlighted:(bool)arg1;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })alignmentRectInsets;
+- (id)appearanceData;
 - (void)configureBackButtonFromBarItem:(id)arg1 withAppearanceDelegate:(id)arg2;
 - (void)configureFromBarItem:(id)arg1 withAppearanceDelegate:(id)arg2;
 - (void)dealloc;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (bool)gestureRecognizerShouldBegin:(id)arg1;
 - (id)heightMinimizingConstraint;
@@ -55,9 +60,10 @@
 - (void)layoutSubviews;
 - (bool)pointInside:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
 - (bool)pointMostlyInside:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
-- (void)reset;
+- (void)setAppearanceData:(id)arg1;
 - (void)setEnabled:(bool)arg1;
 - (void)setHighlighted:(bool)arg1;
+- (void)setNeedsAppearanceUpdate;
 - (void)setSelected:(bool)arg1;
 - (void)setSpringLoaded:(bool)arg1;
 - (void)traitCollectionDidChange:(id)arg1;

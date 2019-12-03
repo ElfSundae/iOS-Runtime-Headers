@@ -26,6 +26,8 @@
 - (void)_dispatchResponsesForAppIconForIdentifier:(id)arg1 appImage:(id)arg2;
 - (void)_enqueueRequestForAppIconForIdentifier:(id)arg1;
 - (bool)_fetchIconFromLaunchServicesWithIdentifier:(id)arg1 onCompletion:(id /* block */)arg2;
+- (void)cacheAppIcon:(id)arg1 forIdentifier:(id)arg2;
+- (id)cachedIconForIdentifier:(id)arg1;
 - (void)cancelLoadAppImageAtURL:(id)arg1;
 - (void)clearImageCache;
 - (id)defaultAppIcon;
@@ -34,6 +36,7 @@
 - (id)init;
 - (void)loadAppIconForIdentifier:(id)arg1 onCompletion:(id /* block */)arg2;
 - (void)loadAppImageAtURL:(id)arg1 completionHandler:(id /* block */)arg2;
+- (id)loadResearchStudyIconForSource:(id)arg1;
 - (id)outstandingRequests;
 - (void)setIconCache:(id)arg1;
 - (void)setOutstandingRequests:(id)arg1;

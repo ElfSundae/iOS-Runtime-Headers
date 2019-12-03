@@ -19,6 +19,7 @@
     bool  _isScheduleTransparent;
     NSString * _languageCode;
     NSString * _locationCode;
+    long long  _maxAttendees;
     bool  _overrideSupportsFreebusy;
     NSURL * _prePublishURL;
     NSURL * _publishURL;
@@ -63,6 +64,7 @@
 @property (nonatomic, readonly) bool isTaskContainer;
 @property (nonatomic, retain) NSString *languageCode;
 @property (nonatomic, retain) NSString *locationCode;
+@property (nonatomic) long long maxAttendees;
 @property (nonatomic) bool overrideSupportsFreebusy;
 @property (nonatomic, retain) NSURL *prePublishURL;
 @property (nonatomic, retain) NSURL *publishURL;
@@ -114,6 +116,7 @@
 - (bool)isTaskContainer;
 - (id)languageCode;
 - (id)locationCode;
+- (long long)maxAttendees;
 - (bool)overrideSupportsFreebusy;
 - (void)postProcessWithResponseHeaders:(id)arg1;
 - (id)prePublishURL;
@@ -135,6 +138,7 @@
 - (void)setIsScheduleTransparent:(bool)arg1;
 - (void)setLanguageCode:(id)arg1;
 - (void)setLocationCode:(id)arg1;
+- (void)setMaxAttendees:(long long)arg1;
 - (void)setOverrideSupportsFreebusy:(bool)arg1;
 - (void)setPrePublishURL:(id)arg1;
 - (void)setPublishURL:(id)arg1;

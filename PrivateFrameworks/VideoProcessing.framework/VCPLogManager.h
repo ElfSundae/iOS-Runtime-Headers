@@ -8,6 +8,7 @@
 
 @property (readonly) int logLevel;
 
++ (id)dateFormatter;
 + (id)sharedLogManager;
 
 - (id)init;

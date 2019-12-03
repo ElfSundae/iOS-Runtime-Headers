@@ -21,7 +21,7 @@
 - (void).cxx_destruct;
 - (id)colorCache;
 - (id)coreModelCategoryFromCategoryDictionary:(id)arg1;
-- (id)coreModelColorPaletteForColorPickerDictionary:(id)arg1 settingDestination:(long long)arg2 subPalette:(id)arg3;
+- (id)coreModelColorPaletteForColorPickerDictionary:(id)arg1 settingDestination:(long long)arg2 inCategory:(long long)arg3;
 - (id)coreModelColorsForColorDefinitions:(id)arg1 paletteSettingKind:(struct { long long x1; long long x2; })arg2;
 - (id)coreModelColorsForPaletteSettingKind:(struct { long long x1; long long x2; })arg1;
 - (id)coreModelGroupFromGroupDictionary:(id)arg1;
@@ -39,6 +39,7 @@
 - (id)plistData;
 - (void)setColorCache:(id)arg1;
 - (void)setError:(id)arg1;
-- (bool)validateForCategoryWithEnumValue:(id)arg1 presetPickers:(id)arg2 colorPicker:(id)arg3 colorPaletteCategory:(id)arg4 subColorPicker:(id)arg5 subColorPaletteCategory:(id)arg6;
+- (bool)validateForCategoryWithEnumValue:(id)arg1 presetPickers:(id)arg2 colorPickers:(id)arg3;
+- (bool)validateForColorPicker:(id)arg1 colorPaletteCategory:(id)arg2 error:(id*)arg3;
 
 @end

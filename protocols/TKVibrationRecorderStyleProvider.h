@@ -21,6 +21,7 @@
 - (double)vibrationRecorderProgressToolbarVerticalOffset;
 - (double)vibrationRecorderProgressViewAccessibilityAdditionalHeight;
 - (double)vibrationRecorderProgressViewDotHorizontalInset;
+- (UIColor *)vibrationRecorderProgressViewDotTintColor;
 - (double)vibrationRecorderProgressViewHeight;
 - (double)vibrationRecorderProgressViewHorizontalOffsetFromEdge;
 - (UIImage *)vibrationRecorderProgressViewResizableDotImage;

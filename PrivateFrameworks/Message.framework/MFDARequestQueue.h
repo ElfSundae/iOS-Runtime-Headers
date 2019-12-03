@@ -7,9 +7,9 @@
     NSString * _folderID;
 }
 
-- (void)dealloc;
-- (id)filterRequests:(id)arg1 consumers:(id)arg2 newConsumers:(id*)arg3;
+- (void).cxx_destruct;
+- (id)filterRequests:(id)arg1;
 - (id)initWithAccount:(id)arg1 folderID:(id)arg2;
-- (void)processRequests:(id)arg1 consumers:(id)arg2;
+- (bool)processRequests:(id)arg1;
 
 @end

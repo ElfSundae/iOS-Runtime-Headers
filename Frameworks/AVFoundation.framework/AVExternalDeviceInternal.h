@@ -8,8 +8,8 @@
     NSMutableDictionary * _currentViewAreas;
     <AVExternalDeviceDelegate> * _delegate;
     struct OpaqueFigEndpoint { } * _figEndpoint;
-    long long  _makeHIDsOnlyOnce;
-    long long  _makeIconsOnlyOnce;
+    AVDispatchOnce * _makeHIDsOnlyOnce;
+    AVDispatchOnce * _makeIconsOnlyOnce;
     NSArray * _oemIcons;
     NSObject<OS_dispatch_queue> * _queue;
     NSArray * _screenInfo;

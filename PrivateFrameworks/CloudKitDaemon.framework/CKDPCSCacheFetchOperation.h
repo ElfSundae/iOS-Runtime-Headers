@@ -4,6 +4,7 @@
 
 @interface CKDPCSCacheFetchOperation : CKDDatabaseOperation {
     CKDPCSCache * _cache;
+    NSError * _dependentPCSFetchError;
     bool  _didFetchData;
     NSError * _fetchError;
     NSObject<OS_dispatch_group> * _fetchGroup;
@@ -19,6 +20,7 @@
 }
 
 @property (nonatomic, retain) CKDPCSCache *cache;
+@property (nonatomic, retain) NSError *dependentPCSFetchError;
 @property (nonatomic) bool didFetchData;
 @property (nonatomic, retain) NSError *fetchError;
 @property (nonatomic, readonly) NSObject<OS_dispatch_group> *fetchGroup;
@@ -47,6 +49,7 @@
 - (void)_willRetryFetch;
 - (id)cache;
 - (bool)canBeUsedForOperation:(id)arg1 withOptions:(unsigned long long)arg2;
+- (id)dependentPCSFetchError;
 - (bool)didFetchData;
 - (id)fetchError;
 - (id)fetchGroup;
@@ -64,6 +67,7 @@
 - (id)parentPCSData;
 - (id)pcsData;
 - (void)setCache:(id)arg1;
+- (void)setDependentPCSFetchError:(id)arg1;
 - (void)setDidFetchData:(bool)arg1;
 - (void)setFetchError:(id)arg1;
 - (void)setFetchOptions:(unsigned long long)arg1;

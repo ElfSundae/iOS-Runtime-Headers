@@ -21,6 +21,12 @@
         int timescale; 
         unsigned int flags; 
         long long epoch; 
+    }  _duration;
+    struct { 
+        long long value; 
+        int timescale; 
+        unsigned int flags; 
+        long long epoch; 
     }  _livePhotoKeyFrameTime;
     bool  _loaded;
     NSArray * _metadata;
@@ -33,27 +39,28 @@
 }
 
 @property (readonly) struct { struct { long long x_1_1_1; long long x_1_1_2; } x1; struct { long long x_2_1_1; long long x_2_1_2; } x2; } cleanAperture;
+@property (readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } duration;
 
 - (void).cxx_destruct;
-- (id)_evaluateImageProperties:(out id*)arg1;
 - (id)_evaluateImagePropertiesWithSourceOptions:(id)arg1 error:(out id*)arg2;
 - (id)_evaluateImageWithSourceOptions:(id)arg1 subsampleFactor:(long long*)arg2 error:(out id*)arg3;
 - (id)_evaluateVideo:(out id*)arg1;
-- (id)_evaluateVideoComposition:(out id*)arg1;
-- (id)_evaluateVideoProperties:(out id*)arg1;
+- (id)_evaluateVideoCompositionWithSourceOptions:(id)arg1 error:(out id*)arg2;
+- (id)_evaluateVideoPropertiesWithSourceOptions:(id)arg1 error:(out id*)arg2;
 - (bool)_load:(out id*)arg1;
 - (id)_settingsForPipelineState:(id)arg1 ownedFrame:(bool)arg2;
 - (id)asset:(out id*)arg1;
 - (struct { struct { long long x_1_1_1; long long x_1_1_2; } x1; struct { long long x_2_1_1; long long x_2_1_2; } x2; })cleanAperture;
+- (struct { long long x1; int x2; unsigned int x3; long long x4; })duration;
 - (id)initWithSettings:(id)arg1;
-- (id)initWithURL:(id)arg1;
+- (id)initWithURL:(id)arg1 identifier:(id)arg2;
 - (bool)load:(out id*)arg1;
-- (struct { long long x1; long long x2; })pixelSize;
-- (id)preparedNodeWithSourceNode:(id)arg1 sourceSettings:(id)arg2 pipelineState:(id)arg3 error:(out id*)arg4;
+- (struct { long long x1; long long x2; })pixelSizeWithSourceOptions:(id)arg1;
 - (bool)requiresAudioMix;
 - (bool)requiresVideoComposition;
 - (id)resolvedNodeWithCachedInputs:(struct NSDictionary { Class x1; }*)arg1 settings:(id)arg2 pipelineState:(id)arg3 error:(out id*)arg4;
 - (bool)shouldCacheNodeForPipelineState:(id)arg1;
+- (id)sourceOptionsForSettings:(id)arg1 error:(out id*)arg2;
 - (long long)sourceOrientation;
 - (bool)supportsPipelineState:(id)arg1 error:(out id*)arg2;
 

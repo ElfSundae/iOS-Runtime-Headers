@@ -10,6 +10,7 @@
         double height; 
     }  _cachedSize;
     bool  _cachedSizeIsValid;
+    UIColor * _computedTextColor;
     NSString * _currentDateText;
     struct _NSRange { 
         unsigned long long location; 
@@ -23,6 +24,7 @@
     bool  _legibilityHidden;
     unsigned long long  _overrideDateStyle;
     long long  _sizeStyle;
+    UIColor * _textColor;
     struct UIEdgeInsets { 
         double top; 
         double left; 
@@ -59,6 +61,7 @@
 - (void).cxx_destruct;
 - (void)_applyAccentColorAttributes;
 - (id)_attributedStringAccentingNumbersInString:(id)arg1;
+- (void)_computeTextColor;
 - (double)_cornerRadius;
 - (double)_firstLineBaselineFrameOriginY;
 - (double)_firstLineBaselineOffsetFromBoundsTop;
@@ -71,6 +74,7 @@
 - (void)_setFont:(id)arg1;
 - (void)_setLastLineBaselineFrameOriginY:(double)arg1;
 - (void)_setText:(id)arg1;
+- (void)_updateTextColor;
 - (id)accentColor;
 - (long long)accentType;
 - (bool)canUseCurvedText;

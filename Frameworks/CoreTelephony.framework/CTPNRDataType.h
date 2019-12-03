@@ -16,6 +16,7 @@
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)description;
 - (id)destAddr;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

@@ -15,6 +15,8 @@
 @property (nonatomic, readonly) NSNumber *stepValue;
 @property (readonly) Class superclass;
 
++ (id)optionsForPrimaryStateControlItem:(id)arg1 incrementalCharacteristicType:(id)arg2;
++ (id)readOnlyCharacteristicTypes;
 + (Class)valueClass;
 
 - (void).cxx_destruct;

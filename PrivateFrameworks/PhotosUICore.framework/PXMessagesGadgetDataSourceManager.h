@@ -2,9 +2,11 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXMessagesGadgetDataSourceManager : PXGadgetDataSourceManager <PXCMMCloudGadgetViewControllerDelegate> {
+@interface PXMessagesGadgetDataSourceManager : PXGadgetDataSourceManager <PXCMMCloudGadgetViewControllerDelegate, PXChangeObserver> {
     NSArray * _cachedGadgetProviders;
     PXCloudWelcomeGadgetProvider * _cloudWelcomeGadgeProvider;
+    bool  _cmmIsAvailable;
+    PXCPLStatus * _cplStatusProvider;
     NSString * _placeholderTitle;
     double  _recentPhotosHeight;
     PXMessagesRecentPhotosGadgetProvider * _recentPhotosProvider;
@@ -16,12 +18,14 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) <PXGadgetTransition> *gadgetTransition;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) <PXGadgetDelegate> *nextGadgetResponder;
 @property (nonatomic, copy) NSString *placeholderTitle;
 @property (nonatomic) double recentPhotosHeight;
 @property (nonatomic, retain) PXMessagesRecentPhotosGadgetProvider *recentPhotosProvider;
 @property (nonatomic, retain) UIViewController<PXPhotoLibraryPresenting> *recentPhotosViewController;
+@property (nonatomic, readonly) PXGadgetNavigationHelper *rootNavigationHelper;
 @property (nonatomic, retain) PXCMMSuggestionsDataSourceManager *suggestionsDataSourceManager;
 @property (readonly) Class superclass;
 
@@ -30,11 +34,13 @@
 - (void)didUpdateCloudPhotoLibraryEnablement:(id)arg1;
 - (id)gadgetProviders;
 - (id)initWithViewModel:(id)arg1 dataSourceManager:(id)arg2;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void*)arg3;
 - (id)placeholderTitle;
 - (void)presentationRequestForWelcomeCloudViewController:(id)arg1;
 - (double)recentPhotosHeight;
 - (id)recentPhotosProvider;
 - (id)recentPhotosViewController;
+- (void)removeCachedProviders;
 - (void)setPlaceholderTitle:(id)arg1;
 - (void)setRecentPhotosHeight:(double)arg1;
 - (void)setRecentPhotosProvider:(id)arg1;

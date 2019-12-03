@@ -9,6 +9,7 @@
 
 @optional
 
+- (void)didInvalidateForRemoteAlert;
 - (void)handleButtonActions:(NSSet *)arg1;
 - (void)handleDoubleHeightStatusBarTap;
 - (void)handleHeadsetButtonPressed:(bool)arg1;

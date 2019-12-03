@@ -16,6 +16,6 @@
 - (id)initWithIdentifier:(unsigned long long)arg1 location:(struct CGPoint { double x1; double x2; })arg2 pressure:(double)arg3;
 - (struct CGPoint { double x1; double x2; })location;
 - (double)pressure;
-- (unsigned long long)type;
+- (long long)type;
 
 @end

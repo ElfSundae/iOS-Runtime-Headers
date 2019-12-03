@@ -4,6 +4,7 @@
 
 @interface CADMutableCalStoreInfo : NSObject <CADCalStoreInfo> {
     NSString * _accountIdentifier;
+    NSString * _delegatedAccountOwnerAccountIdentifier;
     bool  _isEnabled;
     bool  _isLocalStore;
     int  _rowID;
@@ -11,6 +12,7 @@
 }
 
 @property (nonatomic, copy) NSString *accountIdentifier;
+@property (nonatomic, copy) NSString *delegatedAccountOwnerAccountIdentifier;
 @property (nonatomic) bool isEnabled;
 @property (nonatomic) bool isLocalStore;
 @property (nonatomic) int rowID;
@@ -18,10 +20,12 @@
 
 - (void).cxx_destruct;
 - (id)accountIdentifier;
+- (id)delegatedAccountOwnerAccountIdentifier;
 - (bool)isEnabled;
 - (bool)isLocalStore;
 - (int)rowID;
 - (void)setAccountIdentifier:(id)arg1;
+- (void)setDelegatedAccountOwnerAccountIdentifier:(id)arg1;
 - (void)setIsEnabled:(bool)arg1;
 - (void)setIsLocalStore:(bool)arg1;
 - (void)setRowID:(int)arg1;

@@ -20,8 +20,8 @@
     NSMutableString * mText;
 }
 
+- (void).cxx_destruct;
 - (id)characterProperties;
-- (void)dealloc;
 - (id)description;
 - (id)image;
 - (bool)imageBullet;

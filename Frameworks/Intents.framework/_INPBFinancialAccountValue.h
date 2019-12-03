@@ -3,6 +3,7 @@
  */
 
 @interface _INPBFinancialAccountValue : PBCodable <NSCopying, NSSecureCoding, _INPBFinancialAccountValue> {
+    bool  __encodeLegacyGloryData;
     _INPBDataString * _accountNickname;
     NSString * _accountNumber;
     int  _accountType;
@@ -15,6 +16,7 @@
     _INPBValueMetadata * _valueMetadata;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic, retain) _INPBDataString *accountNickname;
 @property (nonatomic, copy) NSString *accountNumber;
 @property (nonatomic) int accountType;
@@ -34,8 +36,12 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) _INPBValueMetadata *valueMetadata;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (int)StringAsAccountType:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)accountNickname;
 - (id)accountNumber;
 - (int)accountType;
@@ -43,6 +49,7 @@
 - (id)balance;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasAccountNickname;
 - (bool)hasAccountNumber;
 - (bool)hasAccountType;
@@ -51,6 +58,7 @@
 - (bool)hasSecondaryBalance;
 - (bool)hasValueMetadata;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)organizationName;
 - (bool)readFrom:(id)arg1;

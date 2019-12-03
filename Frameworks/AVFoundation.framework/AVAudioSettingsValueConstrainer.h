@@ -52,7 +52,6 @@
 - (float)applicableOutputSampleRateForDesiredSampleRate:(float)arg1 rounding:(long long)arg2;
 - (unsigned int)availableOutputChannelCountForDesiredChannelCount:(unsigned int)arg1 rounding:(long long)arg2;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (unsigned int)outputBitsPerChannel;
 - (unsigned int)outputChannelCount;

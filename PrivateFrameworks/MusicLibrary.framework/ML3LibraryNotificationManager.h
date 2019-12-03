@@ -4,7 +4,6 @@
 
 @interface ML3LibraryNotificationManager : NSObject <MSVDistributedNotificationObserverDelegate> {
     ML3MusicLibrary * _library;
-    NSString * _libraryPath;
     NSMutableArray * _notificationObservers;
     NSMutableOrderedSet * _queuedDistributedNotificationNames;
     NSMutableOrderedSet * _queuedLocalNotifications;

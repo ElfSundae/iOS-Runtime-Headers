@@ -35,7 +35,6 @@
 - (struct CGImage { }*)copyCGImageAtTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 actualTime:(struct { long long x1; int x2; unsigned int x3; long long x4; }*)arg2 error:(id*)arg3;
 - (id)customVideoCompositor;
 - (void)dealloc;
-- (void)finalize;
 - (void)generateCGImagesAsynchronouslyForTimes:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)init;
 - (id)initWithAsset:(id)arg1;

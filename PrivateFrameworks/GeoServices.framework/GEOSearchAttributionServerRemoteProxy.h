@@ -4,7 +4,9 @@
 
 @interface GEOSearchAttributionServerRemoteProxy : NSObject <GEOSearchAttributionServerProxy> {
     GEOSearchAttributionManifest * _attributionManifest;
-    NSLock * _attributionManifestLock;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _attributionManifestLock;
     int  _attributionManifestUpdatedToken;
     NSObject<OS_dispatch_queue> * _attributionQueue;
 }

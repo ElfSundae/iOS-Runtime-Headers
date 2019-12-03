@@ -13,7 +13,7 @@
 @property (readonly) id accessibilityButtonShapesEnabled;
 @property (readonly) id accessibilityDarkenSystemColors;
 @property (readonly) id accessibilityEnhanceBackgroundContrast;
-@property (readonly) id accessibilityReduceMotion;
+@property (readonly) id accessibilityMotionAutoPlayVideo;
 @property (readonly) SUScriptColor *accessibilitySingleColor;
 @property (readonly) id accessibilitySingleColorSelected;
 @property (readonly) id accessibilityUseDarkerKeyboard;
@@ -115,7 +115,7 @@
 - (id)accessibilityButtonShapesEnabled;
 - (id)accessibilityDarkenSystemColors;
 - (id)accessibilityEnhanceBackgroundContrast;
-- (id)accessibilityReduceMotion;
+- (id)accessibilityMotionAutoPlayVideo;
 - (id)accessibilitySingleColor;
 - (id)accessibilitySingleColorSelected;
 - (id)accessibilityUseDarkerKeyboard;

@@ -14,7 +14,6 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic) int reason;
-@property (nonatomic, readonly) bool requiresQueryId;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long timestamp;
 
@@ -27,7 +26,6 @@
 - (id)jsonData;
 - (bool)readFrom:(id)arg1;
 - (int)reason;
-- (bool)requiresQueryId;
 - (void)setReason:(int)arg1;
 - (void)setTimestamp:(unsigned long long)arg1;
 - (unsigned long long)timestamp;

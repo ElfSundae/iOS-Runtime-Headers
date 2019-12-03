@@ -21,6 +21,7 @@
 - (unsigned int)foreignEntityKeyForSlot:(unsigned int)arg1;
 - (long long)foreignKeyForSlot:(unsigned int)arg1;
 - (unsigned int)foreignOrderKeyForSlot:(unsigned int)arg1;
+- (bool)hasUniqueConstraintDiffFrom:(id)arg1;
 - (id)initWithSQLEntity:(id)arg1 objectID:(struct _NSScalarObjectID { Class x1; }*)arg2;
 - (id)initWithSQLEntity:(id)arg1 ownedObjectID:(struct _NSScalarObjectID { Class x1; }*)arg2 andTimestamp:(double)arg3;
 - (bool)isEqual:(id)arg1;
@@ -29,6 +30,7 @@
 - (struct _NSScalarObjectID { Class x1; }*)newObjectIDForToOne:(id)arg1;
 - (struct __CFBitVector { }*)newUpdateMaskForConstrainedValues;
 - (struct __CFBitVector { }*)newUpdateMaskFrom:(id)arg1;
+- (struct __CFBitVector { }*)newUpdateMaskWithChangedConstraintsFrom:(id)arg1;
 - (struct _NSScalarObjectID { Class x1; }*)objectID;
 - (long long)optLock;
 - (long long)pk64;
@@ -40,6 +42,6 @@
 - (id)sqlEntity;
 - (unsigned int)sqlEntityID;
 - (id)valueForKey:(id)arg1;
-- (long long)version;
+- (unsigned long long)version;
 
 @end

@@ -12,6 +12,7 @@
     int  _mode;
 }
 
+@property (nonatomic) <AVCEffectsDelegate> *delegate;
 @property (nonatomic) int effectType;
 @property (nonatomic) int mode;
 

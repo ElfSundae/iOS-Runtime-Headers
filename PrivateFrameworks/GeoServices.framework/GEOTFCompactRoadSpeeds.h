@@ -8,22 +8,41 @@
     unsigned int  _decayTimeWindowInMinutes;
     float  _endOffset;
     struct { 
+        unsigned int has_color : 1; 
+        unsigned int has_confidence : 1; 
+        unsigned int has_decayTimeWindowInMinutes : 1; 
+        unsigned int has_endOffset : 1; 
+        unsigned int has_speedKph : 1; 
+        unsigned int has_startOffset : 1; 
+        unsigned int has_hidden : 1; 
+        unsigned int read_geoIds : 1; 
+        unsigned int read_openlr : 1; 
+        unsigned int read_predictedSpeeds : 1; 
+        unsigned int wrote_geoIds : 1; 
+        unsigned int wrote_openlr : 1; 
+        unsigned int wrote_predictedSpeeds : 1; 
+        unsigned int wrote_color : 1; 
+        unsigned int wrote_confidence : 1; 
+        unsigned int wrote_decayTimeWindowInMinutes : 1; 
+        unsigned int wrote_endOffset : 1; 
+        unsigned int wrote_speedKph : 1; 
+        unsigned int wrote_startOffset : 1; 
+        unsigned int wrote_hidden : 1; 
+    }  _flags;
+    struct { 
         long long *list; 
         unsigned long long count; 
         unsigned long long size; 
     }  _geoIds;
-    struct { 
-        unsigned int color : 1; 
-        unsigned int confidence : 1; 
-        unsigned int decayTimeWindowInMinutes : 1; 
-        unsigned int endOffset : 1; 
-        unsigned int speedKph : 1; 
-        unsigned int startOffset : 1; 
-        unsigned int hidden : 1; 
-    }  _has;
     bool  _hidden;
     NSData * _openlr;
     NSMutableArray * _predictedSpeeds;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     unsigned int  _speedKph;
     float  _startOffset;
 }
@@ -48,10 +67,16 @@
 @property (nonatomic) unsigned int speedKph;
 @property (nonatomic) float startOffset;
 
++ (bool)isValid:(id)arg1;
 + (Class)predictedSpeedType;
 
 - (void).cxx_destruct;
 - (int)StringAsColor:(id)arg1;
+- (void)_addNoFlagsGeoIds:(long long)arg1;
+- (void)_addNoFlagsPredictedSpeed:(id)arg1;
+- (void)_readGeoIds;
+- (void)_readOpenlr;
+- (void)_readPredictedSpeeds;
 - (void)addGeoIds:(long long)arg1;
 - (void)addPredictedSpeed:(id)arg1;
 - (void)clearGeoIds;
@@ -79,12 +104,15 @@
 - (bool)hasStartOffset;
 - (unsigned long long)hash;
 - (bool)hidden;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)openlr;
 - (id)predictedSpeedAtIndex:(unsigned long long)arg1;
 - (id)predictedSpeeds;
 - (unsigned long long)predictedSpeedsCount;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setColor:(int)arg1;
 - (void)setConfidence:(float)arg1;

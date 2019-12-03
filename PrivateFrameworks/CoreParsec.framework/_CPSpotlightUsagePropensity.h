@@ -4,65 +4,60 @@
 
 @interface _CPSpotlightUsagePropensity : PBCodable <NSSecureCoding, _CPSpotlightUsagePropensity> {
     float  _appLaunch;
-    long long  _collectionEndTimestamp;
-    long long  _collectionStartTimestamp;
-    int  _configuredLookbackTimeInDays;
-    float  _onDevicePersonalData;
+    float  _onDeviceAddressBookData;
+    float  _onDeviceOtherPersonalData;
     float  _other;
     float  _parsec;
     float  _punchout;
+    float  _querySuggestion;
+    float  _siriSuggestions;
     float  _thirdPartyInAppContent;
     int  _totalEngagements;
-    int  _totalSessions;
 }
 
 @property (nonatomic) float appLaunch;
-@property (nonatomic) long long collectionEndTimestamp;
-@property (nonatomic) long long collectionStartTimestamp;
-@property (nonatomic) int configuredLookbackTimeInDays;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
-@property (nonatomic) float onDevicePersonalData;
+@property (nonatomic) float onDeviceAddressBookData;
+@property (nonatomic) float onDeviceOtherPersonalData;
 @property (nonatomic) float other;
 @property (nonatomic) float parsec;
 @property (nonatomic) float punchout;
+@property (nonatomic) float querySuggestion;
+@property (nonatomic) float siriSuggestions;
 @property (readonly) Class superclass;
 @property (nonatomic) float thirdPartyInAppContent;
 @property (nonatomic) int totalEngagements;
-@property (nonatomic) int totalSessions;
 
 - (float)appLaunch;
-- (long long)collectionEndTimestamp;
-- (long long)collectionStartTimestamp;
-- (int)configuredLookbackTimeInDays;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)jsonData;
-- (float)onDevicePersonalData;
+- (float)onDeviceAddressBookData;
+- (float)onDeviceOtherPersonalData;
 - (float)other;
 - (float)parsec;
 - (float)punchout;
+- (float)querySuggestion;
 - (bool)readFrom:(id)arg1;
-- (bool)requiresQueryId;
 - (void)setAppLaunch:(float)arg1;
-- (void)setCollectionEndTimestamp:(long long)arg1;
-- (void)setCollectionStartTimestamp:(long long)arg1;
-- (void)setConfiguredLookbackTimeInDays:(int)arg1;
-- (void)setOnDevicePersonalData:(float)arg1;
+- (void)setOnDeviceAddressBookData:(float)arg1;
+- (void)setOnDeviceOtherPersonalData:(float)arg1;
 - (void)setOther:(float)arg1;
 - (void)setParsec:(float)arg1;
 - (void)setPunchout:(float)arg1;
+- (void)setQuerySuggestion:(float)arg1;
+- (void)setSiriSuggestions:(float)arg1;
 - (void)setThirdPartyInAppContent:(float)arg1;
 - (void)setTotalEngagements:(int)arg1;
-- (void)setTotalSessions:(int)arg1;
+- (float)siriSuggestions;
 - (float)thirdPartyInAppContent;
 - (int)totalEngagements;
-- (int)totalSessions;
 - (void)writeTo:(id)arg1;
 
 @end

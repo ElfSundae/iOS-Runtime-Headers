@@ -57,6 +57,7 @@
 - (id)initRecurrenceWithFrequency:(long long)arg1 interval:(long long)arg2 end:(id)arg3;
 - (long long)interval;
 - (bool)isAnyDayRule;
+- (bool)isEqualToRecurrenceRule:(id)arg1;
 - (bool)isSimpleRule;
 - (bool)isWeekdayRule;
 - (bool)isWeekendRule;

@@ -8,6 +8,7 @@
     NSString * _etag;
     struct { 
         unsigned int publicAccess : 1; 
+        unsigned int publisherModelType : 1; 
         unsigned int anonymousPublicAccess : 1; 
         unsigned int publisherModel : 1; 
     }  _has;
@@ -18,6 +19,7 @@
     NSMutableArray * _potentialMatchs;
     int  _publicAccess;
     bool  _publisherModel;
+    int  _publisherModelType;
     CKDPProtectionInfo * _selfAddedPcs;
     CKDPShareIdentifier * _shareId;
     NSData * _shortTokenHash;
@@ -34,6 +36,7 @@
 @property (nonatomic, readonly) bool hasOrigin;
 @property (nonatomic) bool hasPublicAccess;
 @property (nonatomic) bool hasPublisherModel;
+@property (nonatomic) bool hasPublisherModelType;
 @property (nonatomic, readonly) bool hasSelfAddedPcs;
 @property (nonatomic, readonly) bool hasShareId;
 @property (nonatomic, readonly) bool hasShortTokenHash;
@@ -45,6 +48,7 @@
 @property (nonatomic, retain) NSMutableArray *potentialMatchs;
 @property (nonatomic) int publicAccess;
 @property (nonatomic) bool publisherModel;
+@property (nonatomic) int publisherModelType;
 @property (nonatomic, retain) CKDPProtectionInfo *selfAddedPcs;
 @property (nonatomic, retain) CKDPShareIdentifier *shareId;
 @property (nonatomic, retain) NSData *shortTokenHash;
@@ -56,6 +60,7 @@
 
 - (void).cxx_destruct;
 - (int)StringAsPublicAccess:(id)arg1;
+- (int)StringAsPublisherModelType:(id)arg1;
 - (id)_publicAccessCKLogValue;
 - (void)addInvitedKeyToRemove:(id)arg1;
 - (void)addParticipant:(id)arg1;
@@ -77,6 +82,7 @@
 - (bool)hasOrigin;
 - (bool)hasPublicAccess;
 - (bool)hasPublisherModel;
+- (bool)hasPublisherModelType;
 - (bool)hasSelfAddedPcs;
 - (bool)hasShareId;
 - (bool)hasShortTokenHash;
@@ -98,6 +104,8 @@
 - (int)publicAccess;
 - (id)publicAccessAsString:(int)arg1;
 - (bool)publisherModel;
+- (int)publisherModelType;
+- (id)publisherModelTypeAsString:(int)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)selfAddedPcs;
 - (void)setAnonymousPublicAccess:(bool)arg1;
@@ -106,6 +114,7 @@
 - (void)setHasAnonymousPublicAccess:(bool)arg1;
 - (void)setHasPublicAccess:(bool)arg1;
 - (void)setHasPublisherModel:(bool)arg1;
+- (void)setHasPublisherModelType:(bool)arg1;
 - (void)setInvitedKeyToRemoves:(id)arg1;
 - (void)setInvitedPcs:(id)arg1;
 - (void)setOrigin:(id)arg1;
@@ -113,6 +122,7 @@
 - (void)setPotentialMatchs:(id)arg1;
 - (void)setPublicAccess:(int)arg1;
 - (void)setPublisherModel:(bool)arg1;
+- (void)setPublisherModelType:(int)arg1;
 - (void)setSelfAddedPcs:(id)arg1;
 - (void)setShareId:(id)arg1;
 - (void)setShortTokenHash:(id)arg1;

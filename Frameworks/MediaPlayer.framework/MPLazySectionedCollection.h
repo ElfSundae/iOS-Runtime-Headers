@@ -13,7 +13,36 @@
     long long  _cachedNumberOfSections;
     <MPLazySectionedCollectionDataSource> * _dataSource;
     bool  _hasValidCachedNumberOfSections;
+    struct map<long, MPIdentifierSet *, std::__1::less<long>, std::__1::allocator<std::__1::pair<const long, MPIdentifierSet *> > > { 
+        struct __tree<std::__1::__value_type<long, MPIdentifierSet *>, std::__1::__map_value_compare<long, std::__1::__value_type<long, MPIdentifierSet *>, std::__1::less<long>, true>, std::__1::allocator<std::__1::__value_type<long, MPIdentifierSet *> > > { 
+            struct __tree_end_node<std::__1::__tree_node_base<void *> *> {} *__begin_node_; 
+            struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<long, MPIdentifierSet *>, void *> > > { 
+                struct __tree_end_node<std::__1::__tree_node_base<void *> *> { 
+                    struct __tree_node_base<void *> {} *__left_; 
+                } __value_; 
+            } __pair1_; 
+            struct __compressed_pair<unsigned long, std::__1::__map_value_compare<long, std::__1::__value_type<long, MPIdentifierSet *>, std::__1::less<long>, true> > { 
+                unsigned long long __value_; 
+            } __pair3_; 
+        } __tree_; 
+    }  _itemIdentifierSetMap;
     NSCache * _itemsCache;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _mapLock;
+    struct map<long, MPIdentifierSet *, std::__1::less<long>, std::__1::allocator<std::__1::pair<const long, MPIdentifierSet *> > > { 
+        struct __tree<std::__1::__value_type<long, MPIdentifierSet *>, std::__1::__map_value_compare<long, std::__1::__value_type<long, MPIdentifierSet *>, std::__1::less<long>, true>, std::__1::allocator<std::__1::__value_type<long, MPIdentifierSet *> > > { 
+            struct __tree_end_node<std::__1::__tree_node_base<void *> *> {} *__begin_node_; 
+            struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<long, MPIdentifierSet *>, void *> > > { 
+                struct __tree_end_node<std::__1::__tree_node_base<void *> *> { 
+                    struct __tree_node_base<void *> {} *__left_; 
+                } __value_; 
+            } __pair1_; 
+            struct __compressed_pair<unsigned long, std::__1::__map_value_compare<long, std::__1::__value_type<long, MPIdentifierSet *>, std::__1::less<long>, true> > { 
+                unsigned long long __value_; 
+            } __pair3_; 
+        } __tree_; 
+    }  _sectionIdentifierSetMap;
     NSCache * _sectionsCache;
 }
 
@@ -23,7 +52,10 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)cachedObjectAtIndexPath:(id)arg1;
+- (id)_cachedObjectAtIndexPath:(id)arg1;
+- (void)_updateCacheWithObject:(id)arg1 atIndexPath:(id)arg2;
+- (id)allItems;
+- (id)allSections;
 - (id)dataSource;
 - (void)enumerateItemsInSectionAtIndex:(long long)arg1 usingBlock:(id /* block */)arg2;
 - (void)enumerateItemsUsingBlock:(id /* block */)arg1;
@@ -43,6 +75,5 @@
 - (long long)numberOfSections;
 - (id)sectionAtIndex:(long long)arg1;
 - (void)setDataSource:(id)arg1;
-- (void)updateCacheWithObject:(id)arg1 atIndexPath:(id)arg2;
 
 @end

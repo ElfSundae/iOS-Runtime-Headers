@@ -21,7 +21,7 @@
 - (void).cxx_destruct;
 - (id)initWithCGImage:(struct RetainPtr<CGImage *> { void *x1; })arg1 defaultActions:(struct RetainPtr<NSArray> { void *x1; })arg2 elementInfo:(struct RetainPtr<_WKActivatedElementInfo> { void *x1; })arg3;
 - (void)loadView;
-- (id)previewActions;
+- (id)previewActionItems;
 - (void)viewDidLayoutSubviews;
 
 @end

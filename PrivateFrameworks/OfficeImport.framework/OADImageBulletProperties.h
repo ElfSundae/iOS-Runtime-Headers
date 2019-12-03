@@ -6,7 +6,7 @@
     OADBlipRef * mImage;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (id)image;
 - (id)initWithBlipRef:(id)arg1;

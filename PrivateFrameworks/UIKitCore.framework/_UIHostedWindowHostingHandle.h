@@ -4,6 +4,7 @@
 
 @interface _UIHostedWindowHostingHandle : NSObject <NSSecureCoding> {
     unsigned int  _contextID;
+    int  _pid;
     struct CGRect { 
         struct CGPoint { 
             double x; 
@@ -25,6 +26,7 @@
 }
 
 @property (nonatomic, readonly) unsigned int contextID;
+@property (nonatomic, readonly) int pid;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } rootLayerFrame;
 @property (nonatomic, readonly) struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; } rootLayerTransform;
 
@@ -34,6 +36,7 @@
 - (unsigned int)contextID;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (int)pid;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })rootLayerFrame;
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })rootLayerTransform;
 

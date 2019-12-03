@@ -6,6 +6,8 @@
     NSMutableArray * __anchors;
     PXAssetsDataSource * __dataSource;
     bool  _animatesContent;
+    unsigned long long  _autoplayBehavior;
+    bool  _autoplayTilesWaitForInput;
     PXAssetBadgeManager * _badgeManager;
     PXAssetsDataSourceManager * _dataSourceManager;
     <PXAssetsSceneDelegate> * _delegate;
@@ -33,6 +35,8 @@
 @property (nonatomic, readonly) NSMutableArray *_anchors;
 @property (setter=_setDataSource:, nonatomic, retain) PXAssetsDataSource *_dataSource;
 @property (nonatomic) bool animatesContent;
+@property (nonatomic) unsigned long long autoplayBehavior;
+@property (nonatomic) bool autoplayTilesWaitForInput;
 @property (nonatomic, readonly) PXAssetBadgeManager *badgeManager;
 @property (nonatomic, readonly) PXAssetsTilingLayout *currentLayout;
 @property (nonatomic, readonly) PXAssetsDataSourceManager *dataSourceManager;
@@ -58,6 +62,8 @@
 - (void)_updateDataSourceIfNeeded;
 - (void)_updateLayoutIfNeeded;
 - (bool)animatesContent;
+- (unsigned long long)autoplayBehavior;
+- (bool)autoplayTilesWaitForInput;
 - (id)badgeManager;
 - (void)checkInTile:(void*)arg1 withIdentifier:(struct PXTileIdentifier { unsigned long long x1; unsigned long long x2[10]; })arg2;
 - (void*)checkOutTileForIdentifier:(struct PXTileIdentifier { unsigned long long x1; unsigned long long x2[10]; })arg1 layout:(id)arg2;
@@ -78,6 +84,8 @@
 - (id)sectionedDataSourceManagerInterestingObjectReferences:(id)arg1;
 - (id)selectionManager;
 - (void)setAnimatesContent:(bool)arg1;
+- (void)setAutoplayBehavior:(unsigned long long)arg1;
+- (void)setAutoplayTilesWaitForInput:(bool)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setNeedsUpdate;
 - (id)targetLayout;

@@ -3,17 +3,22 @@
  */
 
 @interface SearchUIQuickLookThumbnailImage : SearchUIImage {
+    QLThumbnailGenerationRequest * _request;
     NSURL * _url;
 }
 
-@property (retain) NSURL *url;
-
-+ (id)quickLookThumbnailQueue;
+@property QLThumbnailGenerationRequest *request;
+@property (nonatomic, retain) NSURL *url;
 
 - (void).cxx_destruct;
 - (Class)classForCoder;
+- (void)dealloc;
+- (unsigned long long)hash;
 - (id)initWithURL:(id)arg1;
+- (bool)isEqual:(id)arg1;
 - (void)loadImageWithCompletionHandler:(id /* block */)arg1;
+- (id)request;
+- (void)setRequest:(id)arg1;
 - (void)setUrl:(id)arg1;
 - (id)url;
 

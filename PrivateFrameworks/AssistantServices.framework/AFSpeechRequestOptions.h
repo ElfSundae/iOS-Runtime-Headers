@@ -13,6 +13,8 @@
     NSURL * _audioFileURL;
     unsigned long long  _bargeInOptions;
     NSDictionary * _clientAnalyticsContext;
+    long long  _dictationInputOrigin;
+    long long  _endpointerOperationMode;
     double  _expectedActivationEventTime;
     bool  _fetchSmartSiriVolume;
     bool  _hasPlayedStartAlert;
@@ -22,8 +24,10 @@
     bool  _isEyesFree;
     bool  _isInitialBringUp;
     bool  _isOnPhoneCall;
+    AFLanguageDetectionUserContext * _languageDetectionUserContext;
     CLLocation * _location;
     NSString * _locationStatus;
+    AFMyriadContext * _myriadContext;
     NSNumber * _notifyState;
     bool  _pendCallbacksUntilAfterContinuation;
     NSString * _recordDeviceIdentifier;
@@ -33,6 +37,7 @@
     AFSpeechSynthesisRecord * _speechSynthesisRecord;
     NSDictionary * _startContext;
     NSDictionary * _stopContext;
+    bool  _suppressStartAlert;
     bool  _suppressStopAlert;
     struct NSUUID { Class x1; } * _turnIdentifier;
     bool  _useAutomaticEndpointing;
@@ -53,6 +58,8 @@
 @property (nonatomic) unsigned long long bargeInOptions;
 @property (nonatomic, copy) NSString *btDeviceAddress;
 @property (nonatomic, copy) NSDictionary *clientAnalyticsContext;
+@property (nonatomic) long long dictationInputOrigin;
+@property (nonatomic) long long endpointerOperationMode;
 @property (nonatomic) double expectedActivationEventTime;
 @property (nonatomic) bool fetchSmartSiriVolume;
 @property (nonatomic) bool hasPlayedStartAlert;
@@ -62,8 +69,10 @@
 @property (nonatomic) bool isEyesFree;
 @property (nonatomic) bool isInitialBringUp;
 @property (nonatomic) bool isOnPhoneCall;
+@property (nonatomic, copy) AFLanguageDetectionUserContext *languageDetectionUserContext;
 @property (nonatomic, copy) CLLocation *location;
 @property (nonatomic, copy) NSString *locationStatus;
+@property (nonatomic, copy) AFMyriadContext *myriadContext;
 @property (nonatomic, copy) NSNumber *notifyState;
 @property (nonatomic) bool pendCallbacksUntilAfterContinuation;
 @property (nonatomic, copy) NSString *recordDeviceIdentifier;
@@ -73,6 +82,7 @@
 @property (nonatomic, copy) AFSpeechSynthesisRecord *speechSynthesisRecord;
 @property (nonatomic, copy) NSDictionary *startContext;
 @property (nonatomic, copy) NSDictionary *stopContext;
+@property (nonatomic) bool suppressStartAlert;
 @property (nonatomic) bool suppressStopAlert;
 @property (nonatomic, copy) NSUUID *turnIdentifier;
 @property (nonatomic) bool useAutomaticEndpointing;
@@ -97,7 +107,9 @@
 - (id)clientAnalyticsContext;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
+- (long long)dictationInputOrigin;
 - (void)encodeWithCoder:(id)arg1;
+- (long long)endpointerOperationMode;
 - (double)expectedActivationEventTime;
 - (bool)fetchSmartSiriVolume;
 - (bool)hasPlayedStartAlert;
@@ -111,8 +123,10 @@
 - (bool)isOnPhoneCall;
 - (bool)isRaiseToSpeak;
 - (bool)isVoiceTrigger;
+- (id)languageDetectionUserContext;
 - (id)location;
 - (id)locationStatus;
+- (id)myriadContext;
 - (id)notifyState;
 - (bool)pendCallbacksUntilAfterContinuation;
 - (id)recordDeviceIdentifier;
@@ -129,6 +143,8 @@
 - (void)setBargeInOptions:(unsigned long long)arg1;
 - (void)setBtDeviceAddress:(id)arg1;
 - (void)setClientAnalyticsContext:(id)arg1;
+- (void)setDictationInputOrigin:(long long)arg1;
+- (void)setEndpointerOperationMode:(long long)arg1;
 - (void)setExpectedActivationEventTime:(double)arg1;
 - (void)setFetchSmartSiriVolume:(bool)arg1;
 - (void)setHasPlayedStartAlert:(bool)arg1;
@@ -138,8 +154,10 @@
 - (void)setIsEyesFree:(bool)arg1;
 - (void)setIsInitialBringUp:(bool)arg1;
 - (void)setIsOnPhoneCall:(bool)arg1;
+- (void)setLanguageDetectionUserContext:(id)arg1;
 - (void)setLocation:(id)arg1;
 - (void)setLocationStatus:(id)arg1;
+- (void)setMyriadContext:(id)arg1;
 - (void)setNotifyState:(id)arg1;
 - (void)setPendCallbacksUntilAfterContinuation:(bool)arg1;
 - (void)setRecordDeviceIdentifier:(id)arg1;
@@ -149,6 +167,7 @@
 - (void)setSpeechSynthesisRecord:(id)arg1;
 - (void)setStartContext:(id)arg1;
 - (void)setStopContext:(id)arg1;
+- (void)setSuppressStartAlert:(bool)arg1;
 - (void)setSuppressStopAlert:(bool)arg1;
 - (void)setTurnIdentifier:(struct NSUUID { Class x1; }*)arg1;
 - (void)setUseAutomaticEndpointing:(bool)arg1;
@@ -160,6 +179,7 @@
 - (id)speechSynthesisRecord;
 - (id)startContext;
 - (id)stopContext;
+- (bool)suppressStartAlert;
 - (bool)suppressStopAlert;
 - (struct NSUUID { Class x1; }*)turnIdentifier;
 - (bool)useAutomaticEndpointing;

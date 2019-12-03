@@ -6,6 +6,7 @@
 
 + (id)TVKitBundle;
 + (id)TVMLKitBundle;
++ (id)TVUIKitBundle;
 + (id)_bgImageElementForProductTemplate:(id)arg1;
 + (bool)_cornerRadiiFromElement:(id)arg1 cornerRadii:(struct TVCornerRadii { double x1; double x2; double x3; double x4; }*)arg2 circle:(bool*)arg3;
 + (bool)_cornerRadiiFromImageLayout:(id)arg1 cornerRadii:(struct TVCornerRadii { double x1; double x2; double x3; double x4; }*)arg2 circle:(bool*)arg3;

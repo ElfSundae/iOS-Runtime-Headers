@@ -20,8 +20,8 @@
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } attributesContentViewFrame;
 @property (nonatomic, readonly) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } attributesContentViewInsets;
 @property (nonatomic, readonly) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } attributesContentViewScrollIndicatorInsets;
+@property (nonatomic, readonly) double avatarContainerAlpha;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } avatarContainerFrame;
-@property (nonatomic, readonly) UIColor *backgroundColor;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } containerSize;
 @property (nonatomic, readonly, copy) NSString *contentSizeCategory;
 @property (nonatomic, readonly) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } edgeInsets;
@@ -38,6 +38,7 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })attributesContentViewFrame;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })attributesContentViewInsets;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })attributesContentViewScrollIndicatorInsets;
+- (double)avatarContainerAlpha;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })avatarContainerFrame;
 - (id)backgroundColor;
 - (struct CGSize { double x1; double x2; })containerSize;

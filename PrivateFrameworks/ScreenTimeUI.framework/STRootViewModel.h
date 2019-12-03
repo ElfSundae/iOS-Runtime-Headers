@@ -9,7 +9,7 @@
     NSSet * _installedBundleIDs;
     NSDictionary * _installedBundleIDsByCategoryIdentifier;
     bool  _isCloudSyncEnabled;
-    STUser * _me;
+    STUIUser * _me;
 }
 
 @property (nonatomic, readonly) bool canSetUpFamily;
@@ -29,7 +29,7 @@
 @property (nonatomic) bool isCloudSyncEnabled;
 @property (nonatomic, readonly) bool isRemotelyManagedUserWithPasscode;
 @property (nonatomic, readonly) bool isSharingUsageData;
-@property (nonatomic, copy) STUser *me;
+@property (nonatomic, copy) STUIUser *me;
 @property (getter=isScreenTimeEnabled, nonatomic, readonly) bool screenTimeEnabled;
 @property (getter=isWebUsageEnabled, nonatomic, readonly) bool webUsageEnabled;
 

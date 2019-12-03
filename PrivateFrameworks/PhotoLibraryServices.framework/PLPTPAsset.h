@@ -30,6 +30,7 @@
     NSString * _originalFilename;
     NSString * _originatingAssetID;
     NSString * _relatedUUID;
+    NSString * _spatialOverCaptureGroupIdentifier;
     NSNumber * _thumbCompressedSize;
     NSNumber * _thumbOffset;
     struct CGSize { 
@@ -64,6 +65,7 @@
 @property (nonatomic, readonly, copy) NSString *originalFilename;
 @property (nonatomic, readonly, copy) NSString *originatingAssetID;
 @property (nonatomic, readonly, copy) NSString *relatedUUID;
+@property (nonatomic, readonly, copy) NSString *spatialOverCaptureGroupIdentifier;
 @property (nonatomic, readonly, copy) NSNumber *thumbCompressedSize;
 @property (nonatomic, readonly, copy) NSNumber *thumbOffset;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } thumbPixSize;
@@ -101,6 +103,7 @@
 - (id)originalFilename;
 - (id)originatingAssetID;
 - (id)relatedUUID;
+- (id)spatialOverCaptureGroupIdentifier;
 - (id)thumbCompressedSize;
 - (id)thumbOffset;
 - (struct CGSize { double x1; double x2; })thumbPixSize;

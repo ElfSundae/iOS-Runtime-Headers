@@ -3,6 +3,7 @@
  */
 
 @interface CUIStyleEffectConfiguration : NSObject <NSCopying> {
+    NSString * _appearanceName;
     double  _brightnessMultiplier;
     unsigned long long  _colorTemperature;
     unsigned long long  _dimension1;
@@ -14,6 +15,7 @@
     long long  _value;
 }
 
+@property (nonatomic, copy) NSString *appearanceName;
 @property (nonatomic) double brightnessMultiplier;
 @property (nonatomic) unsigned long long colorTemperature;
 @property (nonatomic) unsigned long long dimension1;
@@ -24,15 +26,18 @@
 @property (nonatomic) bool useSimplifiedEffect;
 @property (nonatomic) long long value;
 
+- (id)appearanceName;
 - (double)brightnessMultiplier;
 - (unsigned long long)colorTemperature;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (void)dealloc;
 - (id)description;
 - (unsigned long long)dimension1;
 - (double)effectScale;
 - (bool)foregroundColorShouldTintEffects;
 - (id)init;
 - (long long)presentationState;
+- (void)setAppearanceName:(id)arg1;
 - (void)setBrightnessMultiplier:(double)arg1;
 - (void)setColorTemperature:(unsigned long long)arg1;
 - (void)setDimension1:(unsigned long long)arg1;

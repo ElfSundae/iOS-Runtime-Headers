@@ -31,7 +31,7 @@
 - (void)setInitialSearchInProgressState;
 - (void)setLabel:(id)arg1;
 - (void)setLeftInset:(double)arg1;
-- (void)setNoAvailableTimesStateWithNumberOfExistingTimes:(unsigned long long)arg1;
+- (void)setNoAvailableTimesStateWithNumberOfExistingTimes:(unsigned long long)arg1 hasError:(bool)arg2;
 - (void)setOriginalLabelFontColor:(id)arg1;
 - (void)setPersistentConstraints:(id)arg1;
 - (void)setShowMoreState;

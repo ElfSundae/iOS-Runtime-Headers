@@ -3,38 +3,31 @@
  */
 
 @interface WLWiFiController : NSObject {
-    NSNumber * _channel;
-    struct __WiFiManagerClient { } * _managerClientRef;
-    struct NETRBClient { } * _netrbClientRef;
-    NSString * _password;
-    NSString * _ssid;
-    struct __WiFiNetwork { } * _startedNetwork;
-    id /* block */  _wifiStartCompletionBlock;
-    id /* block */  _wifiStopCompletionBlock;
+    bool  _didConsultPreferencesForStartedNetwork;
+    unsigned long long  _lastRequestID;
+    WLNETRBClient * _netrbClient;
+    NSObject<OS_dispatch_queue> * _requestQueue;
+    WLWiFiNetwork * _startedNetwork;
+    WLWiFiManager * _wifiManager;
 }
 
 @property (nonatomic, readonly) bool hasSoftAPCapability;
-@property (nonatomic, readonly) bool softAPIsEnabled;
 
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
-- (struct __WiFiDeviceClient { }*)_deviceClient;
-- (void)_enableSoftAPWithCompletion:(id /* block */)arg1;
-- (struct NETRBClient { }*)_netrbClient;
-- (id)_networkRecordFromOptions:(id)arg1;
+- (void)_disableSoftAPWithCompletion:(id /* block */)arg1;
+- (void)_enableSoftAPWithSSID:(id)arg1 password:(id)arg2 channel:(id)arg3 completion:(id /* block */)arg4;
+- (void)_ensureStartedNetworkReflectsPreferences;
+- (id)_initWithWiFiManager:(id)arg1 netrbClient:(id)arg2;
+- (id)_networkRecordFromSSID:(id)arg1 password:(id)arg2 channel:(id)arg3;
+- (unsigned long long)_newRequestID;
+- (void)_startWiFiWithSSID:(id)arg1 password:(id)arg2 channel:(id)arg3 completion:(id /* block */)arg4;
+- (id)_startedNetwork;
+- (void)_stopWiFiWithCompletion:(id /* block */)arg1;
 - (void)disableSoftAPWithCompletion:(id /* block */)arg1;
 - (void)enableSoftAPWithSSID:(id)arg1 password:(id)arg2 channel:(id)arg3 completion:(id /* block */)arg4;
 - (bool)hasSoftAPCapability;
 - (id)init;
-- (void)network:(struct __WiFiNetwork { }*)arg1 didFailToStartWithErrorCode:(int)arg2 response:(id)arg3;
-- (void)network:(struct __WiFiNetwork { }*)arg1 didFailToStopWithErrorCode:(int)arg2 response:(id)arg3;
-- (void)network:(struct __WiFiNetwork { }*)arg1 didStartWithResponse:(id)arg2;
-- (void)network:(struct __WiFiNetwork { }*)arg1 didStopWithResponse:(id)arg2;
-- (bool)softAPIsEnabled;
-- (bool)startDHCPReturningError:(id*)arg1;
-- (void)startWiFiWithCompletion:(id /* block */)arg1;
-- (void)stopDHCP;
-- (void)stopWiFiWithCompletion:(id /* block */)arg1;
 
 @end

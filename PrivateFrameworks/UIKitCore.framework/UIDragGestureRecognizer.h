@@ -15,7 +15,7 @@
 - (id)_dragEvent;
 - (bool)_shouldReceiveDragEvent:(id)arg1;
 - (bool)_shouldReceivePress:(id)arg1;
-- (bool)_shouldReceiveTouch:(id)arg1 recognizerView:(id)arg2 touchView:(id)arg3;
+- (bool)_shouldReceiveTouch:(id)arg1 forEvent:(id)arg2 recognizerView:(id)arg3;
 - (bool)canBePreventedByGestureRecognizer:(id)arg1;
 - (bool)canPreventGestureRecognizer:(id)arg1;
 - (id)dropSession;

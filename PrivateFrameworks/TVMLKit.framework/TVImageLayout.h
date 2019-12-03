@@ -27,6 +27,7 @@
         double width; 
         double height; 
     }  _imageSize;
+    UIImageSymbolConfiguration * _imageSymbolConfiguration;
     NSString * _imageTreatment;
     NSString * _inlineTitle;
     NSString * _placeholderArtworkName;
@@ -48,6 +49,7 @@
 @property (nonatomic, retain) IKColor *ikDarkTintColor;
 @property (nonatomic, retain) IKColor *ikTintColor;
 @property (nonatomic) struct CGSize { double x1; double x2; } imageSize;
+@property (nonatomic, retain) UIImageSymbolConfiguration *imageSymbolConfiguration;
 @property (nonatomic, copy) NSString *imageTreatment;
 @property (nonatomic, copy) NSString *inlineTitle;
 @property (nonatomic, copy) NSString *placeholderArtworkName;
@@ -74,6 +76,7 @@
 - (id)ikDarkTintColor;
 - (id)ikTintColor;
 - (struct CGSize { double x1; double x2; })imageSize;
+- (id)imageSymbolConfiguration;
 - (id)imageTreatment;
 - (id)init;
 - (id)inlineTitle;
@@ -90,6 +93,7 @@
 - (void)setIkDarkTintColor:(id)arg1;
 - (void)setIkTintColor:(id)arg1;
 - (void)setImageSize:(struct CGSize { double x1; double x2; })arg1;
+- (void)setImageSymbolConfiguration:(id)arg1;
 - (void)setImageTreatment:(id)arg1;
 - (void)setInlineTitle:(id)arg1;
 - (void)setPlaceholderArtworkName:(id)arg1;

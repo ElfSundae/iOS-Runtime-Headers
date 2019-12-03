@@ -2,9 +2,20 @@
    Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
  */
 
-@interface PKPeerPaymentActionAddMoneyViewController : PKPeerPaymentActionViewController <PKEnterCurrencyAmountViewDelegate, PKNumberPadSuggestionsViewDelegate, PKPeerPaymentActionControllerDelegate> {
-    PKEnterCurrencyAmountView * _enterCurrencyAmountView;
-    PKEnterValueNewBalanceView * _newBalanceView;
+@interface PKPeerPaymentActionAddMoneyViewController : PKPeerPaymentActionViewController <PKEnterCurrencyAmountPassViewDelegate, PKEnterCurrencyAmountViewDelegate, PKNumberPadSuggestionsViewDelegate, PKPeerPaymentActionControllerDelegate> {
+    PKEnterCurrencyAmountPassView * _amountPassView;
+    struct CGRect { 
+        struct CGPoint { 
+            double x; 
+            double y; 
+        } origin; 
+        struct CGSize { 
+            double width; 
+            double height; 
+        } size; 
+    }  _keyboardFrame;
+    bool  _keyboardVisible;
+    UIScrollView * _scrollView;
     PKNumericSuggestionsEnterValueAlgorithm * _suggestionGenerator;
     PKNumberPadSuggestionsView * _suggestionView;
 }
@@ -24,9 +35,14 @@
 - (id)_spinnerBarButton;
 - (void)_updateBarButtonEnabledState;
 - (void)_updateCurrentAmount:(id)arg1 shouldGenerateNewSuggestions:(bool)arg2;
+- (void)_updateLayoutForKeyboardAction:(id /* block */)arg1;
+- (void)enterCurrencyAmountPassViewDidLoadPassSnapshot:(id)arg1;
 - (bool)enterCurrencyAmountView:(id)arg1 shouldChangeAmountFrom:(id)arg2 to:(id)arg3;
 - (void)enterCurrencyAmountViewDidChangeAmount:(id)arg1;
 - (id)initWithPaymentPass:(id)arg1 webService:(id)arg2 context:(long long)arg3;
+- (void)keyboardWillChange:(id)arg1;
+- (void)keyboardWillHide:(id)arg1;
+- (void)keyboardWillShow:(id)arg1;
 - (void)loadView;
 - (void)numberPadSuggestionsView:(id)arg1 didSelectSuggestion:(id)arg2;
 - (void)peerPaymentActionController:(id)arg1 hasChangedState:(unsigned long long)arg2;

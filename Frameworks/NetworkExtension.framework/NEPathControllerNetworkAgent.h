@@ -5,21 +5,24 @@
 @interface NEPathControllerNetworkAgent : NENetworkAgent {
     NSString * _advisoryAgentDomain;
     NSString * _advisoryAgentType;
-    NWInterface * _advisoryInterface;
+    NSMutableArray * _advisoryInterfaceArray;
     id /* block */  _internalAssertHandler;
     id /* block */  _internalUnassertHandler;
+    bool  _isForcedAdvisory;
     bool  _noAdvisoryTimer;
-    NWInterface * _predictedInterface;
+    NSMutableArray * _predictedInterfaceArray;
     bool  _weakAdvisory;
+    bool  updateClientsImmediately;
 }
 
 @property (retain) NSString *advisoryAgentDomain;
 @property (retain) NSString *advisoryAgentType;
-@property (retain) NWInterface *advisoryInterface;
+@property (retain) NSMutableArray *advisoryInterfaceArray;
 @property (copy) id /* block */ internalAssertHandler;
 @property (copy) id /* block */ internalUnassertHandler;
+@property (nonatomic) bool isForcedAdvisory;
 @property bool noAdvisoryTimer;
-@property (retain) NWInterface *predictedInterface;
+@property (retain) NSMutableArray *predictedInterfaceArray;
 @property bool weakAdvisory;
 
 + (id)agentFromData:(id)arg1;
@@ -28,26 +31,30 @@
 - (void).cxx_destruct;
 - (id)advisoryAgentDomain;
 - (id)advisoryAgentType;
-- (id)advisoryInterface;
+- (id)advisoryInterfaceArray;
 - (bool)assertAgentWithOptions:(id)arg1;
 - (id)copyAgentData;
 - (id)initWithAdvisoryAgentDomain:(id)arg1 agentType:(id)arg2 advisoryMode:(unsigned long long)arg3;
 - (id)initWithAdvisoryInterface:(id)arg1 advisoryMode:(unsigned long long)arg2;
 - (id /* block */)internalAssertHandler;
 - (id /* block */)internalUnassertHandler;
+- (bool)isForcedAdvisory;
 - (bool)noAdvisoryTimer;
-- (id)predictedInterface;
+- (id)predictedInterfaceArray;
 - (void)setAdvisoryAgentDomain:(id)arg1;
 - (void)setAdvisoryAgentType:(id)arg1;
-- (void)setAdvisoryInterface:(id)arg1;
+- (void)setAdvisoryInterfaceArray:(id)arg1;
 - (void)setAssertHandler:(id /* block */)arg1;
 - (void)setInternalAssertHandler:(id /* block */)arg1;
 - (void)setInternalUnassertHandler:(id /* block */)arg1;
+- (void)setIsForcedAdvisory:(bool)arg1;
 - (void)setNoAdvisoryTimer:(bool)arg1;
-- (void)setPredictedInterface:(id)arg1;
+- (void)setPredictedInterfaceArray:(id)arg1;
 - (void)setUnassertHandler:(id /* block */)arg1;
+- (void)setUpdateClientsImmediately:(bool)arg1;
 - (void)setWeakAdvisory:(bool)arg1;
 - (void)unassertAgentWithOptions:(id)arg1;
+- (bool)updateClientsImmediately;
 - (bool)weakAdvisory;
 
 @end

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
  */
 
-@interface GEOComposedRouteLeg : NSObject {
+@interface GEOComposedRouteLeg : NSObject <NSSecureCoding> {
     GEOComposedRoute * _composedRoute;
     struct _NSRange { 
         unsigned long long location; 
@@ -19,8 +19,6 @@
 @property (nonatomic, readonly) unsigned int endPointIndex;
 @property (nonatomic, readonly) unsigned long long endStepIndex;
 @property (nonatomic, readonly) GEOPBTransitStop *endingTransitStop;
-@property (nonatomic, readonly) NSArray *enterTransitAccessPoints;
-@property (nonatomic, readonly) NSArray *exitTransitAccessPoints;
 @property (nonatomic, readonly) double expectedTime;
 @property (nonatomic, readonly) unsigned long long numberOfTransitStops;
 @property (nonatomic, readonly) unsigned int pointCount;
@@ -35,17 +33,19 @@
 @property (nonatomic, readonly) int transportType;
 @property (nonatomic, readonly) long long type;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (bool)_MapsCarPlay_isEqual:(id)arg1;
 - (id)composedRoute;
 - (bool)contains:(id)arg1;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned int)endPointIndex;
 - (unsigned long long)endStepIndex;
 - (id)endingTransitStop;
-- (id)enterTransitAccessPoints;
-- (id)exitTransitAccessPoints;
 - (double)expectedTime;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithComposedRoute:(id)arg1 routeLegType:(long long)arg2 stepRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3 pointRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg4;
 - (unsigned long long)numberOfTransitStops;
 - (unsigned int)pointCount;

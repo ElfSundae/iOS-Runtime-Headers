@@ -84,11 +84,11 @@
 - (id)createRegionWithPath:(id)arg1;
 - (id)createRegionWithRects:(id)arg1 in_dc:(id)arg2;
 - (id)createSolidBrush:(id)arg1;
-- (void)dealloc;
 - (void)drawBezierPath:(id)arg1 dc:(id)arg2 fill:(bool)arg3 stroke:(bool)arg4;
 - (int)ellipse:(id)arg1 x1:(int)arg2 y1:(int)arg3 x2:(int)arg4 y2:(int)arg5;
 - (int)excludeClipRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (int)extTextOut:(id)arg1 px:(int*)arg2 py:(int*)arg3 in_text:(id)arg4 options:(int)arg5 left:(int)arg6 top:(int)arg7 right:(int)arg8 bottom:(int)arg9 spacingValues:(int*)arg10 numValues:(int)arg11;
+- (int)fillRectangle:(id)arg1 x1:(int)arg2 y1:(int)arg3 x2:(int)arg4 y2:(int)arg5;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })getCanvas;
 - (id)initWithCanvas:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (int)intersectClipRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;

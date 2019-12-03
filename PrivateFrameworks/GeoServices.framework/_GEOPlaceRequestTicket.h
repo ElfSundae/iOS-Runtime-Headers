@@ -13,9 +13,11 @@
 - (void)applyToCorrectedSearch:(id)arg1;
 - (void)applyToPlaceInfo:(id)arg1;
 - (void)cancel;
+- (struct { int x1; union { int x_2_1_1; int x_2_1_2; int x_2_1_3; } x2; })dataRequestKind;
 - (id)description;
 - (id)initWithRequest:(id)arg1 traits:(id)arg2;
 - (id)initWithRequest:(id)arg1 traits:(id)arg2 mapItemToRefine:(id)arg3;
+- (id)initWithTraits:(id)arg1;
 - (id)resultSectionHeader;
 - (void)submitWithHandler:(id /* block */)arg1 auditToken:(id)arg2 timeout:(long long)arg3 networkActivity:(id /* block */)arg4;
 - (void)submitWithRefinedHandler:(id /* block */)arg1 auditToken:(id)arg2 timeout:(long long)arg3 networkActivity:(id /* block */)arg4;

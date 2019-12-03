@@ -7,12 +7,14 @@
 
 - (<BSInvalidatable> *)acquireFaceDetectionWantedAssertionForReason:(NSString *)arg1;
 - (<BSInvalidatable> *)acquireFingerDetectionWantedAssertionForReason:(NSString *)arg1;
+- (<BSInvalidatable> *)acquireFingerDetectionWantedAssertionForReason:(NSString *)arg1 HIDEventsOnly:(bool)arg2;
 - (<BSInvalidatable> *)acquireMatchingAssertionWithMode:(unsigned long long)arg1 reason:(NSString *)arg2;
 - (<BSInvalidatable> *)acquireSimulatedLockoutAssertionWithLockoutState:(unsigned long long)arg1 forReason:(NSString *)arg2;
 - (void)addObserver:(id <SBUIBiometricResourceObserver>)arg1;
 - (unsigned long long)biometricLockoutState;
 - (bool)hasBiometricAuthenticationCapabilityEnabled;
 - (bool)hasEnrolledIdentities;
+- (bool)hasMesaSupport;
 - (bool)hasPearlSupport;
 - (bool)isFingerDetectEnabled;
 - (bool)isFingerOn;

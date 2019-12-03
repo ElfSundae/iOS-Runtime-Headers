@@ -44,5 +44,6 @@
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
+- (struct CGPoint { double x1; double x2; })translationInWindowCoordinates;
 
 @end

@@ -46,7 +46,6 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) bool isPlaybackQueueTransactionActive;
 @property (nonatomic, readonly) NSArray *items;
-@property (nonatomic) bool limitsBandwidthForCellularAccess;
 @property (nonatomic, readonly) bool outputObscuredDueToInsufficientExternalProtection;
 @property (nonatomic, copy) id /* block */ playbackQueueCommitHandler;
 @property (nonatomic, readonly) id playerAVAudioSession;
@@ -68,7 +67,6 @@
 - (void)_setEQPreset:(int)arg1;
 - (void)_setExpectedAssetTypes:(id)arg1;
 - (void)_setPreferredLanguageList:(id)arg1;
-- (void)_setPreparesItemsForPlaybackAsynchronously:(bool)arg1;
 - (void)_setStoppingFadeOutDuration:(float)arg1;
 - (void)_setUserVolume:(float)arg1;
 - (void)_setWantsVolumeChangesWhenPausedOrInactive:(bool)arg1;
@@ -92,7 +90,6 @@
 - (bool)isExternalPlaybackActive;
 - (bool)isPlaybackQueueTransactionActive;
 - (id)items;
-- (bool)limitsBandwidthForCellularAccess;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (bool)outputObscuredDueToInsufficientExternalProtection;
 - (void)pause;
@@ -114,7 +111,6 @@
 - (void)setCurrentPlaybackQueueTransactionDisplayTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (void)setDefaultItemEQPresetType:(long long)arg1;
 - (void)setExternalPlaybackVideoGravity:(id)arg1;
-- (void)setLimitsBandwidthForCellularAccess:(bool)arg1;
 - (void)setMediaSelectionCriteria:(id)arg1 forMediaCharacteristic:(id)arg2;
 - (void)setPlaybackQueueCommitHandler:(id /* block */)arg1;
 - (void)setRate:(float)arg1;

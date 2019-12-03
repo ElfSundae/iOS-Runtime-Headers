@@ -3,7 +3,6 @@
  */
 
 @interface FCModifyNotificationsForChannelsCommand : FCCommand {
-    unsigned long long  _bundleSubscriptionState;
     NSArray * _channelIDsToAdd;
     NSArray * _channelIDsToRemove;
     NSString * _deviceToken;
@@ -12,7 +11,6 @@
     NSString * _userID;
 }
 
-@property (nonatomic, readonly) unsigned long long bundleSubscriptionState;
 @property (nonatomic, copy) NSArray *channelIDsToAdd;
 @property (nonatomic, copy) NSArray *channelIDsToRemove;
 @property (nonatomic, copy) NSString *deviceToken;
@@ -23,7 +21,6 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
-- (unsigned long long)bundleSubscriptionState;
 - (bool)canCoalesceWithCommand:(id)arg1;
 - (id)channelIDsToAdd;
 - (id)channelIDsToRemove;
@@ -31,7 +28,7 @@
 - (id)deviceToken;
 - (void)encodeWithCoder:(id)arg1;
 - (void)executeWithContext:(id)arg1 delegate:(id)arg2 qualityOfService:(long long)arg3;
-- (id)initWithChannelIDsToAdd:(id)arg1 paidChannelIDsToAdd:(id)arg2 channelIDsToRemove:(id)arg3 userID:(id)arg4 deviceToken:(id)arg5 storefrontID:(id)arg6 bundleSubscriptionState:(unsigned long long)arg7;
+- (id)initWithChannelIDsToAdd:(id)arg1 paidChannelIDsToAdd:(id)arg2 channelIDsToRemove:(id)arg3 userID:(id)arg4 deviceToken:(id)arg5 storefrontID:(id)arg6;
 - (id)initWithCoder:(id)arg1;
 - (id)paidChannelIDsToAdd;
 - (void)setChannelIDsToAdd:(id)arg1;

@@ -3,17 +3,17 @@
  */
 
 @interface CRKFetchStudentDaemonStateResultObject : CATTaskResultObject {
-    NSString * _stateDescription;
+    NSDictionary * _stateDictionary;
 }
 
-@property (nonatomic, copy) NSString *stateDescription;
+@property (nonatomic, copy) NSDictionary *stateDictionary;
 
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)setStateDescription:(id)arg1;
-- (id)stateDescription;
+- (void)setStateDictionary:(id)arg1;
+- (id)stateDictionary;
 
 @end

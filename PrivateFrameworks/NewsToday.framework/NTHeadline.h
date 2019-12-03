@@ -37,6 +37,7 @@
             double height; 
         } size; 
     }  _thumbnailFocalFrame;
+    NSString * _thumbnailIdentifier;
     NSURL * _thumbnailRemoteURL;
     unsigned long long  _thumbnailSizePreset;
     NSString * _title;
@@ -79,6 +80,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) bool supportsSavingForLater;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } thumbnailFocalFrame;
+@property (nonatomic, copy) NSString *thumbnailIdentifier;
 @property (nonatomic, copy) NSURL *thumbnailRemoteURL;
 @property (nonatomic) unsigned long long thumbnailSizePreset;
 @property (nonatomic, copy) NSString *title;
@@ -144,6 +146,7 @@
 - (void)setStoryType:(id)arg1;
 - (void)setSupportsSavingForLater:(bool)arg1;
 - (void)setThumbnailFocalFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (void)setThumbnailIdentifier:(id)arg1;
 - (void)setThumbnailRemoteURL:(id)arg1;
 - (void)setThumbnailSizePreset:(unsigned long long)arg1;
 - (void)setTitle:(id)arg1;
@@ -162,6 +165,7 @@
 - (id)storyType;
 - (bool)supportsSavingForLater;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })thumbnailFocalFrame;
+- (id)thumbnailIdentifier;
 - (id)thumbnailRemoteURL;
 - (unsigned long long)thumbnailSizePreset;
 - (id)title;

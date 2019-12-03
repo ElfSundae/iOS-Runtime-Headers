@@ -5,8 +5,10 @@
 @interface FBApplicationDataStoreInProcessRepositoryClient : NSObject <FBSApplicationDataStoreRepositoryClient> {
     NSObject<OS_dispatch_queue> * _clientCalloutQueue;
     <FBApplicationDataStoreRepository> * _dataStore;
-    NSHashTable * _observers;
-    NSObject<OS_dispatch_queue> * _observersQueue;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _observersLock;
+    NSHashTable * _observersLock_observers;
     NSObject<OS_dispatch_queue> * _prefetchQueue;
     struct NSMutableDictionary { Class x1; } * _prefetchedKeyValues;
     NSCountedSet * _prefetchedKeys;

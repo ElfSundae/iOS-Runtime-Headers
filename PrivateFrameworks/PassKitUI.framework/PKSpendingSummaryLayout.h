@@ -8,6 +8,7 @@
         double width; 
         double height; 
     }  _currentSize;
+    NSMutableDictionary * _footersPerIndexPath;
     NSMutableDictionary * _headersPerIndexPath;
     bool  _isLowEndDevice;
     double  _lastDrawnAlpha;

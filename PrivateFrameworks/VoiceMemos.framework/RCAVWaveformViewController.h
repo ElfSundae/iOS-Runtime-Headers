@@ -2,13 +2,9 @@
    Image: /System/Library/PrivateFrameworks/VoiceMemos.framework/VoiceMemos
  */
 
-@interface RCAVWaveformViewController : UIViewController <RCCaptureSessionObserver, RCPreviewControllerObserver, RCWaveformViewDelegate> {
-    RCAVState * _AVState;
-    RCCompositionController * _activeCaptureCompositionController;
-    RCCaptureSession * _activeCaptureSession;
-    RCPreviewController * _activePreviewController;
+@interface RCAVWaveformViewController : UIViewController <RCTimeObserver, RCWaveformViewDelegate> {
+    <RCTimeController> * _activeTimeController;
     bool  _autocenterCurrentTimeIndicatorAlways;
-    NSTimer * _autoscrollPlaybackTimer;
     long long  _batchUpdatingDisplayableTimesCount;
     bool  _clipsTimeMarkersToDuration;
     double  _currentTime;
@@ -36,9 +32,7 @@
     RCWaveformViewController * _waveformViewController;
 }
 
-@property (nonatomic, readonly) RCAVState *AVState;
-@property (nonatomic, retain) RCCaptureSession *activeCaptureSession;
-@property (nonatomic, retain) RCPreviewController *activePreviewController;
+@property (nonatomic, retain) <RCTimeController> *activeTimeController;
 @property (nonatomic) bool autocenterCurrentTimeIndicatorAlways;
 @property (nonatomic) bool clipsTimeMarkersToDuration;
 @property (nonatomic) double currentTime;
@@ -66,7 +60,6 @@
 @property (nonatomic, retain) RCWaveformViewController *waveformViewController;
 
 - (void).cxx_destruct;
-- (id)AVState;
 - (void)_beginShowingSelectionOverlayAndEnableInsertMode:(bool)arg1;
 - (unsigned long long)_currentTimeDisplayOptions;
 - (unsigned long long)_currentTimeDisplayOptionsIgnoringSelectionOverlayState:(bool)arg1;
@@ -77,14 +70,10 @@
 - (void)_setWaveformDataSource:(id)arg1 initialTime:(double)arg2;
 - (void)_updateCurrentTimeForCapturedInputAtTime:(double)arg1;
 - (void)_updateDisplayableTimesWithBlock:(id /* block */)arg1;
-- (void)_updateInterfaceForAVState;
-- (id)activeCaptureSession;
-- (id)activePreviewController;
+- (void)_updateInterfaceForTimeControllerState:(long long)arg1;
+- (id)activeTimeController;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })annotatedWaveformRectForLayoutBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (bool)autocenterCurrentTimeIndicatorAlways;
-- (void)captureSession:(id)arg1 destinationFragmentDurationDidChangeToDuration:(double)arg2 captureTime:(double)arg3 usingDisplayLinkSmoothing:(bool)arg4;
-- (void)captureSession:(id)arg1 didFinishWithSuccess:(bool)arg2;
-- (void)captureSession:(id)arg1 rateDidChangeToRate:(float)arg2;
 - (bool)clipsTimeMarkersToDuration;
 - (double)currentTime;
 - (double)currentTimeIndicatorCoordinate;
@@ -105,17 +94,11 @@
 - (double)maximumSelectionDuration;
 - (double)nextPreviewStartTime;
 - (struct { double x1; double x2; })nextPreviewTimeRange;
-- (void)previewController:(id)arg1 playbackDidBeginWithRate:(float)arg2;
-- (void)previewController:(id)arg1 playbackDidStopPlayingWithError:(id)arg2;
-- (void)previewController:(id)arg1 playbackTimeDidJumpWithPreviousTime:(double)arg2;
-- (void)previewController:(id)arg1 playbackTimeDidUpdateToCurrentTime:(double)arg2;
-- (void)previewController:(id)arg1 playbackTimeDidUpdateToCurrentTime:(double)arg2 didJumpTime:(bool)arg3;
 - (void)reloadWaveformDataSource:(id)arg1 initialTime:(double)arg2;
+- (void)reloadWaveformDataSource:(id)arg1 withActiveTimeController:(id)arg2;
 - (void)resetSelectedTimeRangeToFullDuration;
 - (struct { double x1; double x2; })selectedTimeRange;
-- (void)setAVState:(id)arg1;
-- (void)setActiveCaptureSession:(id)arg1;
-- (void)setActivePreviewController:(id)arg1;
+- (void)setActiveTimeController:(id)arg1;
 - (void)setAutocenterCurrentTimeIndicatorAlways:(bool)arg1;
 - (void)setClipsTimeMarkersToDuration:(bool)arg1;
 - (void)setCurrentTime:(double)arg1;
@@ -134,7 +117,11 @@
 - (void)setWaveformDataSource:(id)arg1;
 - (void)setWaveformViewController:(id)arg1;
 - (void)showSelectionOverlayAndEnableInsertMode:(bool)arg1;
-- (void)triggerWaveformAutoScroll:(id)arg1;
+- (void)timeController:(id)arg1 didChangeCurrentTime:(double)arg2;
+- (void)timeController:(id)arg1 didChangeCurrentTime:(double)arg2 didChangeDuration:(double)arg3;
+- (void)timeController:(id)arg1 didChangeCurrentTime:(double)arg2 didJumpTime:(bool)arg3;
+- (void)timeController:(id)arg1 didChangeRate:(float)arg2;
+- (void)timeController:(id)arg1 didChangeState:(long long)arg2;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLayoutSubviews;

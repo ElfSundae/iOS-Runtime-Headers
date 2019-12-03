@@ -15,6 +15,7 @@
     CALayer * _customImageLayer;
     <PKGlyphViewDelegate> * _delegate;
     PKFingerprintGlyphView * _fingerprintView;
+    struct UIColor { Class x1; } * _intentPrimaryHighlightColor;
     bool  _isPad;
     NSObject<OS_dispatch_group> * _lastAnimationGroup;
     double  _lastAnimationWillFinish;
@@ -30,8 +31,10 @@
     NSString * _phoneWiggleAnimationKey;
     bool  _phoneWiggling;
     UIColor * _primaryColor;
+    struct UIColor { Class x1; } * _primaryHighlightColor;
     long long  _priorState;
     struct UIColor { Class x1; } * _secondaryColor;
+    struct UIColor { Class x1; } * _secondaryHighlightColor;
     long long  _state;
     long long  _style;
     NSMutableArray * _transitionCompletionHandlers;
@@ -58,10 +61,14 @@
 @property (nonatomic, readonly) unsigned int userIntentEdge;
 
 + (bool)automaticallyNotifiesObserversOfState;
++ (void)invokeSuccessFeedback;
 + (id)sharedStaticResources;
 
 - (void).cxx_destruct;
 - (void)_applyColorMode:(bool)arg1;
+- (void)_applyEffectiveHighlightColorsToLayersAnimated:(bool)arg1;
+- (void)_applyEffectivePrimaryColorToLayersAnimated:(bool)arg1;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (void)_endPhoneWiggle;
 - (void)_executeAfterMinimumAnimationDurationForStateTransition:(id /* block */)arg1;
 - (void)_executeAfterMinimumAnimationDurationForStateTransitionWithDelayRatio:(double)arg1 handler:(id /* block */)arg2;

@@ -3,11 +3,11 @@
  */
 
 @interface PLSharedManagedObjectContext : PLManagedObjectContext {
-    id  _observerToken;
+    id  _changeNotificationObserver;
 }
 
+- (void).cxx_destruct;
 - (void)_mergeChangesFromDidSaveDictionary:(id)arg1 usingObjectIDs:(bool)arg2;
-- (void)handleLocalChangeNotification:(id)arg1;
 - (bool)isUserInterfaceContext;
 - (void)setupLocalChangeNotifications;
 - (void)tearDownLocalChangeNotifications;

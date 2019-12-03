@@ -2,9 +2,12 @@
    Image: /System/Library/Frameworks/SceneKit.framework/SceneKit
  */
 
-@interface SCNLight : NSObject <NSCopying, NSSecureCoding, SCNAnimatable, SCNTechniqueSupport> {
+@interface SCNLight : NSObject <NSCopying, NSSecureCoding, SCNAnimatable> {
     NSURL * _IESProfileURL;
     SCNOrderedDictionary * _animations;
+    void _areaExtents;
+    NSArray * _areaPolygonVertices;
+    long long  _areaType;
     float  _attenuationEndDistance;
     float  _attenuationFalloffExponent;
     float  _attenuationStartDistance;
@@ -15,6 +18,8 @@
     unsigned int  _castsShadow;
     unsigned long long  _categoryBitMask;
     id  _color;
+    bool  _doubleSided;
+    bool  _drawsArea;
     unsigned int  _forcesBackFaceCasters;
     SCNMaterialProperty * _gobo;
     double  _intensity;
@@ -29,8 +34,6 @@
     SCNMaterialProperty * _probeEnvironment;
     void _probeExtents;
     void _probeOffset;
-    <MTLTexture> * _probeTexture;
-    NSArray * _probeTextureMipsArray;
     long long  _probeType;
     long long  _probeUpdateType;
     unsigned int  _sampleDistributedShadowMaps;
@@ -61,6 +64,9 @@
 
 @property (nonatomic, retain) NSURL *IESProfileURL;
 @property (readonly) NSArray *animationKeys;
+@property (nonatomic) void areaExtents;
+@property (nonatomic, copy) NSArray *areaPolygonVertices;
+@property (nonatomic) long long areaType;
 @property (nonatomic) double attenuationEndDistance;
 @property (nonatomic) double attenuationFalloffExponent;
 @property (nonatomic) double attenuationStartDistance;
@@ -70,6 +76,8 @@
 @property (nonatomic, retain) id color;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) bool doubleSided;
+@property (nonatomic) bool drawsArea;
 @property (nonatomic) bool forcesBackFaceCasters;
 @property (nonatomic, readonly) SCNMaterialProperty *gobo;
 @property (readonly) unsigned long long hash;
@@ -77,6 +85,14 @@
 @property (nonatomic) double maximumShadowDistance;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic) double orthographicScale;
+@property (nonatomic) void parallaxCenterOffset;
+@property (nonatomic) bool parallaxCorrectionEnabled;
+@property (nonatomic) void parallaxExtentsFactor;
+@property (nonatomic, readonly) SCNMaterialProperty *probeEnvironment;
+@property (nonatomic) void probeExtents;
+@property (nonatomic) void probeOffset;
+@property (nonatomic) long long probeType;
+@property (nonatomic) long long probeUpdateType;
 @property (nonatomic) bool sampleDistributedShadowMaps;
 @property (nonatomic) double shadowBias;
 @property (nonatomic) unsigned long long shadowCascadeCount;
@@ -90,7 +106,6 @@
 @property (nonatomic) double spotInnerAngle;
 @property (nonatomic) double spotOuterAngle;
 @property (readonly) Class superclass;
-@property (nonatomic, copy) SCNTechnique *technique;
 @property (nonatomic) double temperature;
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic) double zFar;
@@ -110,8 +125,7 @@
 - (void)_customEncodingOfSCNLight:(id)arg1;
 - (void)_didDecodeSCNLight:(id)arg1;
 - (void)_pauseAnimation:(bool)arg1 forKey:(id)arg2 pausedByNode:(bool)arg3;
-- (id)_probeTexture;
-- (id)_probeTextureMipsArray;
+- (void)_resyncObjCModelOfPerTypeParameters;
 - (id)_scnAnimationForKey:(id)arg1;
 - (id)_scnBindings;
 - (double)_shadowCascadeDebugFactor;
@@ -127,6 +141,9 @@
 - (id)animationKeys;
 - (struct __C3DAnimationManager { }*)animationManager;
 - (id)animationPlayerForKey:(id)arg1;
+- (void)areaExtents;
+- (id)areaPolygonVertices;
+- (long long)areaType;
 - (double)attenuationEndDistance;
 - (double)attenuationFalloffExponent;
 - (double)attenuationStartDistance;
@@ -142,10 +159,13 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)description;
+- (bool)doubleSided;
+- (bool)drawsArea;
 - (void)encodeWithCoder:(id)arg1;
 - (bool)forceBackFaceCasters;
 - (bool)forcesBackFaceCasters;
 - (id)gobo;
+- (bool)hasGobo;
 - (id)identifier;
 - (id)init;
 - (id)initPresentationLightWithLightRef:(struct __C3DLight { }*)arg1;
@@ -181,6 +201,9 @@
 - (id)scene;
 - (struct __C3DScene { }*)sceneRef;
 - (void)setAdjustsShadowProjection:(bool)arg1;
+- (void)setAreaExtents;
+- (void)setAreaPolygonVertices:(id)arg1;
+- (void)setAreaType:(long long)arg1;
 - (void)setAttenuationEndDistance:(double)arg1;
 - (void)setAttenuationFalloffExponent:(double)arg1;
 - (void)setAttenuationStartDistance:(double)arg1;
@@ -190,9 +213,12 @@
 - (void)setCastsShadow:(bool)arg1;
 - (void)setCategoryBitMask:(unsigned long long)arg1;
 - (void)setColor:(id)arg1;
+- (void)setDoubleSided:(bool)arg1;
+- (void)setDrawsArea:(bool)arg1;
 - (void)setForceBackFaceCasters:(bool)arg1;
 - (void)setForcesBackFaceCasters:(bool)arg1;
 - (void)setIESProfileURL:(id)arg1;
+- (void)setIESProfileURL:(id)arg1 resolvedURL:(id)arg2;
 - (void)setIdentifier:(id)arg1;
 - (void)setIntensity:(double)arg1;
 - (void)setMaximumShadowDistance:(double)arg1;
@@ -228,8 +254,6 @@
 - (void)setUsesModulatedMode:(bool)arg1;
 - (void)setZFar:(double)arg1;
 - (void)setZNear:(double)arg1;
-- (void)set_probeTexture:(id)arg1;
-- (void)set_probeTextureMipsArray:(id)arg1;
 - (void)set_shadowCascadeDebugFactor:(double)arg1;
 - (void)set_sphericalHarmonics:(id)arg1;
 - (double)shadowBias;

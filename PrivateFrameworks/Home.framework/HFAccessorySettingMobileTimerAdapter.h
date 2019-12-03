@@ -31,7 +31,6 @@
 - (void)_setupDebugHandler;
 - (id)_synchronizeHomeKitToMobileTimer;
 - (id)_synchronizeMobileTimerToHomeKitWithChangeType:(unsigned long long)arg1;
-- (void)accessorySettingWasUpdated:(id)arg1 value:(id)arg2;
 - (id)addAlarm:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (id)alarmCollectionSetting;
@@ -42,9 +41,10 @@
 - (id)alarmsWithPendingEdits;
 - (id)allAlarms;
 - (id)allAlarmsFuture;
-- (id)initWithMediaProfileContainer:(id)arg1 keyPaths:(id)arg2 mode:(unsigned long long)arg3 updateHandler:(id /* block */)arg4;
-- (id)initWithMediaProfileContainer:(id)arg1 keyPaths:(id)arg2 updateHandler:(id /* block */)arg3;
-- (id)initWithMediaProfileContainer:(id)arg1 mode:(unsigned long long)arg2;
+- (void)homeKitSettingWasUpdated:(id)arg1 value:(id)arg2;
+- (id)initWithHomeKitSettingsVendor:(id)arg1 keyPaths:(id)arg2 mode:(unsigned long long)arg3 updateHandler:(id /* block */)arg4;
+- (id)initWithHomeKitSettingsVendor:(id)arg1 keyPaths:(id)arg2 updateHandler:(id /* block */)arg3;
+- (id)initWithHomeKitSettingsVendor:(id)arg1 mode:(unsigned long long)arg2;
 - (id)internalAlarmsBeingAdded;
 - (id)internalAlarmsBeingRemoved;
 - (id)internalAlarmsBeingUpdated;

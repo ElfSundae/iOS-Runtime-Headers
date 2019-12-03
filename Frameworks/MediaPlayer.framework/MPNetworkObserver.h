@@ -20,7 +20,6 @@
 + (id)sharedNetworkObserver;
 
 - (void).cxx_destruct;
-- (void)_cellularNetworkAllowedDidChangeNotification:(id)arg1;
 - (id)_init;
 - (void)beginUsingNetwork;
 - (void)dealloc;

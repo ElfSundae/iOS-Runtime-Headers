@@ -4,11 +4,9 @@
 
 @interface AVPictureInPictureViewController : UIViewController <PGPictureInPictureViewController> {
     <AVPictureInPictureViewControllerDelegate> * _delegate;
-    struct { 
-        bool pictureInPictureViewControllerViewDidAppear; 
-        bool pictureInPictureViewControllerViewWillDisappear; 
-    }  _delegateRespondsTo;
+    AVPictureInPicturePlayerLayerView * _pictureInPicturePlayerLayerView;
     AVPlayerController * _playerController;
+    bool  _shouldShowAlternateActionButtonImage;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -17,11 +15,10 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) AVPictureInPicturePlayerLayerView *pictureInPicturePlayerLayerView;
 @property (nonatomic, retain) AVPlayerController *playerController;
-@property (nonatomic, readonly) bool shouldShowAlternateActionButtonImage;
+@property (nonatomic) bool shouldShowAlternateActionButtonImage;
 @property (nonatomic, readonly) bool shouldShowLoadingIndicator;
 @property (readonly) Class superclass;
 
-+ (id)keyPathsForValuesAffectingShouldShowAlternateActionButtonImage;
 + (id)keyPathsForValuesAffectingShouldShowLoadingIndicator;
 
 - (void).cxx_destruct;
@@ -29,13 +26,16 @@
 - (void)dealloc;
 - (id)delegate;
 - (void)didAnimatePictureInPictureStop;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithPictureInPicturePlayerLayerView:(id)arg1;
+- (void)loadView;
 - (id)pictureInPicturePlayerLayerView;
 - (id)playerController;
 - (void)setDelegate:(id)arg1;
 - (void)setPlayerController:(id)arg1;
+- (void)setShouldShowAlternateActionButtonImage:(bool)arg1;
 - (bool)shouldShowAlternateActionButtonImage;
 - (bool)shouldShowLoadingIndicator;
 - (void)willAnimatePictureInPictureStart;

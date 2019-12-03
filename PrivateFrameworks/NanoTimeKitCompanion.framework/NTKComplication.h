@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/NanoTimeKitCompanion.framework/NanoTimeKitCompanion
  */
 
-@interface NTKComplication : NSObject <NSCopying, NSSecureCoding> {
+@interface NTKComplication : CLKCComplication <NSCopying, NSSecureCoding> {
     unsigned long long  _complicationType;
 }
 
@@ -34,6 +34,8 @@
 - (bool)isEqual:(id)arg1 subclassesAllowed:(bool)arg2;
 - (id)localizedDetailText;
 - (id)localizedKeylineLabelText;
+- (id)localizedRichDetailText;
+- (id)localizedRichKeylineLabelText;
 - (bool)snapshotContext:(id)arg1 isStaleRelativeToContext:(id)arg2;
 
 @end

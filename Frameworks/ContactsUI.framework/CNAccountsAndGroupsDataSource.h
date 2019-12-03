@@ -37,5 +37,6 @@
 - (void)setServerFilterForItem:(id)arg1;
 - (void)setStore:(id)arg1;
 - (id)store;
+- (void)updateRootItemSelection;
 
 @end

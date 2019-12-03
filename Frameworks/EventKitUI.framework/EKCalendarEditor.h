@@ -4,13 +4,14 @@
 
 @interface EKCalendarEditor : UIViewController <EKCalendarEditItemDelegate> {
     EKCalendar * _calendar;
+    EKCalendarColorEditItem * _colorEditItem;
     <EKCalendarEditorDelegate> * _delegate;
     NSArray * _editItems;
     unsigned long long  _entityType;
     EKEventStore * _eventStore;
     bool  _isNewCalendar;
+    EKSource * _limitedToSource;
     EKCalendarShareesEditItem * _shareesEditItem;
-    EKSource * _source;
     <EKStyleProvider> * _styleProvider;
     UITableView * _tableView;
 }
@@ -40,8 +41,8 @@
 - (id)delegate;
 - (void)done:(id)arg1;
 - (id)eventStore;
-- (id)initWithCalendar:(id)arg1 eventStore:(id)arg2 entityType:(unsigned long long)arg3;
-- (id)initWithSource:(id)arg1 eventStore:(id)arg2 entityType:(unsigned long long)arg3;
+- (id)initWithCalendar:(id)arg1 eventStore:(id)arg2 entityType:(unsigned long long)arg3 limitedToSource:(id)arg4;
+- (bool)isModalInPresentation;
 - (bool)isNewCalendar;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;
@@ -65,6 +66,7 @@
 - (bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(bool)arg1;

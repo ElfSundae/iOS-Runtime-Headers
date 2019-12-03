@@ -14,5 +14,6 @@
 - (unsigned long long)action;
 - (id)entityID;
 - (id)initWithAction:(unsigned long long)arg1 entityId:(id)arg2 caller:(id)arg3;
+- (void)processResponse;
 
 @end

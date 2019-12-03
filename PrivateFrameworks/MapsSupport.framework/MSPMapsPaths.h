@@ -12,9 +12,10 @@
     NSString * _failedGeoSearchesSettingsPath;
     NSString * _failedSearchesSettingsPath;
     NSString * _favoritesSyncedMarkerFile;
-    NSString * _fuzzyLocationStoragePath;
     NSString * _geoBookmarksSettingsPath;
+    NSString * _geoCollectionsSettingsPath;
     NSString * _geoHistorySettingsPath;
+    NSString * _geoPinnedPlacesSettingsPath;
     NSString * _groupDirectory;
     NSURL * _groupLibraryURL;
     NSString * _historySettingsPath;
@@ -40,9 +41,10 @@
 @property (nonatomic, readonly) NSString *failedGeoSearchesSettingsPath;
 @property (nonatomic, readonly) NSString *failedSearchesSettingsPath;
 @property (nonatomic, readonly) NSString *favoritesSyncedMarkerFile;
-@property (nonatomic, readonly) NSString *fuzzyLocationStoragePath;
 @property (nonatomic, readonly) NSString *geoBookmarksSettingsPath;
+@property (nonatomic, readonly) NSString *geoCollectionsSettingsPath;
 @property (nonatomic, readonly) NSString *geoHistorySettingsPath;
+@property (nonatomic, readonly) NSString *geoPinnedPlacesSettingsPath;
 @property (nonatomic, readonly) NSString *groupDirectory;
 @property (nonatomic, readonly) NSString *historySettingsPath;
 @property (nonatomic, readonly) NSString *historySyncedMarkerFile;
@@ -54,6 +56,8 @@
 @property (nonatomic, readonly) NSString *reportAProblemDirectionsRecordingsPath;
 @property (nonatomic, readonly) NSString *reportAProblemNotificationsPath;
 @property (nonatomic, readonly) NSString *reportAProblemSearchRecordingsPath;
+@property (nonatomic, readonly) bool shouldSyncMergeFavoritesAfterCheckingOrCreatingMarkerFile;
+@property (nonatomic, readonly) bool shouldSyncMergeHistoryAfterCheckingOrCreatingMarkerFile;
 @property (nonatomic, readonly) NSString *transitAppRankerPath;
 
 + (id)bookmarksSettingsPath;
@@ -68,7 +72,9 @@
 + (id)failedSearchesSettingsPath;
 + (id)favoritesSyncedMarkerFile;
 + (id)geoBookmarksSettingsPath;
++ (id)geoCollectionsSettingsPath;
 + (id)geoHistorySettingsPath;
++ (id)geoPinnedPlacesSettingsPath;
 + (id)groupDirectory;
 + (id)historySettingsPath;
 + (id)historySyncedMarkerFile;
@@ -99,9 +105,10 @@
 - (id)failedGeoSearchesSettingsPath;
 - (id)failedSearchesSettingsPath;
 - (id)favoritesSyncedMarkerFile;
-- (id)fuzzyLocationStoragePath;
 - (id)geoBookmarksSettingsPath;
+- (id)geoCollectionsSettingsPath;
 - (id)geoHistorySettingsPath;
+- (id)geoPinnedPlacesSettingsPath;
 - (id)groupDirectory;
 - (id)historySettingsPath;
 - (id)historySyncedMarkerFile;

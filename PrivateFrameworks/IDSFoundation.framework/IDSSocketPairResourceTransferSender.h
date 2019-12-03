@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/IDSFoundation.framework/IDSFoundation
  */
 
-@interface IDSSocketPairResourceTransferSender : IDSSocketPairMessage {
+@interface IDSSocketPairResourceTransferSender : IDSSocketPairMessage <IDSSocketPairMessage> {
     bool  _compressPayload;
     bool  _compressed;
     bool  _done;
@@ -24,15 +24,20 @@
     bool  _wantsAppAck;
 }
 
+@property (nonatomic, readonly) NSData *data;
+@property (nonatomic, readonly) bool expectsPeerResponse;
+@property (nonatomic, retain) NSDate *expiryDate;
 @property (nonatomic, readonly) bool isDone;
 @property (nonatomic) unsigned int maxChunkSize;
 @property (nonatomic, readonly) NSString *messageUUID;
 @property (nonatomic) unsigned long long nextByte;
+@property (nonatomic, readonly) NSString *peerResponseIdentifier;
 @property (nonatomic) bool resumeResourceTransfers;
 @property (nonatomic, readonly) bool sentFirstMessage;
 @property (nonatomic) unsigned int sequenceNumber;
 @property (nonatomic) unsigned short streamID;
 @property (nonatomic, readonly) unsigned long long totalBytes;
+@property (nonatomic, readonly) bool wantsAppAck;
 
 - (void).cxx_destruct;
 - (void)closeFileAndMarkDone;

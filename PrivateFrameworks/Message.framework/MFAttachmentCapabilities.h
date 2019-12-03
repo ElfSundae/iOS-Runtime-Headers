@@ -5,7 +5,6 @@
 @interface MFAttachmentCapabilities : NSObject
 
 + (bool)_isMailDropDevice;
-+ (bool)_limitMailDropOverCellular;
 + (unsigned long long)_mailDropLimit;
 + (id)capabilitiesDictionary;
 + (unsigned long long)currentDownloadLimit;

@@ -9,6 +9,7 @@
 - (void)clearAllAnnouncements;
 - (id)delegate;
 - (void)endSession;
+- (bool)isSpeaking;
 - (void)prepareToAnnounce;
 - (void)setDelegate:(id)arg1;
 - (void)setVoiceGuidanceLevel:(unsigned long long)arg1;

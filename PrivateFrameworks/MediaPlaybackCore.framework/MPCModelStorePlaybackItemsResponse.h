@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
  */
 
-@interface MPCModelStorePlaybackItemsResponse : MPModelResponse <MPModelResponseDetailedKeepLocalStatusRequesting, MPModelStoreEquivalencyMapping> {
+@interface MPCModelStorePlaybackItemsResponse : MPModelResponse <MPCModelPlaybackResponse, MPModelResponseDetailedKeepLocalStatusRequesting, MPModelStoreEquivalencyMapping> {
     bool  _finalResponse;
     bool  _invalidForPersonalization;
     NSDate * _invalidationDate;

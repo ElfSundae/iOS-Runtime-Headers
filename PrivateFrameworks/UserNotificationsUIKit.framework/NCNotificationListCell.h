@@ -2,11 +2,11 @@
    Image: /System/Library/PrivateFrameworks/UserNotificationsUIKit.framework/UserNotificationsUIKit
  */
 
-@interface NCNotificationListCell : UICollectionViewCell <NCLegibilitySettingsAdjusting, NCNotificationViewControllerObserving, PLContentSizeCategoryAdjusting, UIGestureRecognizerDelegate, UIScrollViewDelegate> {
+@interface NCNotificationListCell : UIView <MTMaterialGrouping, NCNotificationViewControllerObserving, PLContentSizeCategoryAdjusting, UIGestureRecognizerDelegate, UIScrollViewDelegate> {
     unsigned long long  _actionsRevealState;
     bool  _adjustsFontForContentSizeCategory;
-    NSString * _backgroundGroupName;
     bool  _configured;
+    UIView * _contentView;
     NCNotificationViewController * _contentViewController;
     <NCNotificationListCellDelegate> * _delegate;
     bool  _executingDefaultAction;
@@ -18,26 +18,21 @@
     }  _insetMargins;
     UIView * _leftActionButtonsClippingRevealView;
     NCNotificationListCellActionButtonsView * _leftActionButtonsView;
-    double  _overrideAlpha;
-    struct CGPoint { 
-        double x; 
-        double y; 
-    }  _overrideCenter;
+    NSString * _materialGroupNameBase;
     UIPanGestureRecognizer * _panGestureRecognizer;
     double  _panGestureStartingPosition;
     bool  _performingOrbHinting;
     bool  _performingSwipeHinting;
     UIView * _rightActionButtonsClippingRevealView;
     NCNotificationListCellActionButtonsView * _rightActionButtonsView;
-    bool  _shouldOverrideForReveal;
     id /* block */  _sideSwipeHintingHideAnimationBlock;
     UIViewFloatAnimatableProperty * _targetPositionAnimatableProperty;
 }
 
 @property (nonatomic) unsigned long long actionsRevealState;
 @property (nonatomic) bool adjustsFontForContentSizeCategory;
-@property (nonatomic, copy) NSString *backgroundGroupName;
 @property (getter=isConfigured, nonatomic) bool configured;
+@property (nonatomic, readonly) UIView *contentView;
 @property (nonatomic, retain) NCNotificationViewController *contentViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <NCNotificationListCellDelegate> *delegate;
@@ -47,8 +42,7 @@
 @property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } insetMargins;
 @property (nonatomic, retain) UIView *leftActionButtonsClippingRevealView;
 @property (nonatomic, retain) NCNotificationListCellActionButtonsView *leftActionButtonsView;
-@property (nonatomic) double overrideAlpha;
-@property (nonatomic) struct CGPoint { double x1; double x2; } overrideCenter;
+@property (nonatomic, copy) NSString *materialGroupNameBase;
 @property (nonatomic, retain) UIPanGestureRecognizer *panGestureRecognizer;
 @property (nonatomic) double panGestureStartingPosition;
 @property (getter=isPerformingOrbHinting, nonatomic) bool performingOrbHinting;
@@ -56,7 +50,6 @@
 @property (nonatomic, copy) NSString *preferredContentSizeCategory;
 @property (nonatomic, retain) UIView *rightActionButtonsClippingRevealView;
 @property (nonatomic, retain) NCNotificationListCellActionButtonsView *rightActionButtonsView;
-@property (nonatomic) bool shouldOverrideForReveal;
 @property (nonatomic, copy) id /* block */ sideSwipeHintingHideAnimationBlock;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) UIViewFloatAnimatableProperty *targetPositionAnimatableProperty;
@@ -70,6 +63,7 @@
 - (void)_configureClippingIfNecessary;
 - (void)_configureClippingRevealView:(id)arg1;
 - (void)_configureClippingRevealViewsIfNecessary;
+- (bool)_delegateAllowsPerformingClipping;
 - (bool)_disableRasterizeInAnimations;
 - (void)_executeClearAction;
 - (void)_executeDefaultAction;
@@ -85,7 +79,6 @@
 - (void)_resetActionButtonViews;
 - (void)_resetClipping;
 - (void)_resetNotificationCellPositionAnimated:(bool)arg1 completion:(id /* block */)arg2;
-- (void)_resetRevealOverrides;
 - (void)_setNotificationCellPosition:(double)arg1 withVelocity:(double)arg2 animated:(bool)arg3 completion:(id /* block */)arg4;
 - (void)_setupClipping;
 - (void)_setupContentOffsetFloatAnimatableProperty;
@@ -100,14 +93,12 @@
 - (void)_updateTargetPosition:(double)arg1;
 - (unsigned long long)actionsRevealState;
 - (bool)adjustForContentSizeCategoryChange;
-- (void)adjustForLegibilitySettingsChange:(id)arg1;
 - (bool)adjustsFontForContentSizeCategory;
-- (void)applyLayoutAttributes:(id)arg1;
-- (id)backgroundGroupName;
 - (void)cellClearButtonPressed:(id)arg1;
 - (void)cellOpenButtonPressed:(id)arg1;
 - (void)cellSettingsButtonPressed:(id)arg1;
 - (void)cellViewButtonPressed:(id)arg1;
+- (id)contentView;
 - (id)contentViewController;
 - (void)dealloc;
 - (id)delegate;
@@ -122,20 +113,17 @@
 - (void)layoutSubviews;
 - (id)leftActionButtonsClippingRevealView;
 - (id)leftActionButtonsView;
+- (id)materialGroupNameBase;
 - (void)notificationViewControllerDidEndUserInteraction:(id)arg1;
 - (void)notificationViewControllerWillBeginUserInteraction:(id)arg1;
-- (double)overrideAlpha;
-- (struct CGPoint { double x1; double x2; })overrideCenter;
 - (id)panGestureRecognizer;
 - (double)panGestureStartingPosition;
-- (void)prepareForReuse;
 - (void)resetCellActionButtons;
 - (void)resetCellScrollPositionAnimated:(bool)arg1;
 - (id)rightActionButtonsClippingRevealView;
 - (id)rightActionButtonsView;
 - (void)setActionsRevealState:(unsigned long long)arg1;
 - (void)setAdjustsFontForContentSizeCategory:(bool)arg1;
-- (void)setBackgroundGroupName:(id)arg1;
 - (void)setConfigured:(bool)arg1;
 - (void)setContentViewController:(id)arg1;
 - (void)setDelegate:(id)arg1;
@@ -143,21 +131,18 @@
 - (void)setInsetMargins:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setLeftActionButtonsClippingRevealView:(id)arg1;
 - (void)setLeftActionButtonsView:(id)arg1;
-- (void)setOverrideAlpha:(double)arg1;
-- (void)setOverrideCenter:(struct CGPoint { double x1; double x2; })arg1;
+- (void)setMaterialGroupNameBase:(id)arg1;
 - (void)setPanGestureRecognizer:(id)arg1;
 - (void)setPanGestureStartingPosition:(double)arg1;
 - (void)setPerformingOrbHinting:(bool)arg1;
 - (void)setPerformingSwipeHinting:(bool)arg1;
 - (void)setRightActionButtonsClippingRevealView:(id)arg1;
 - (void)setRightActionButtonsView:(id)arg1;
-- (void)setShouldOverrideForReveal:(bool)arg1;
 - (void)setSideSwipeHintingHideAnimationBlock:(id /* block */)arg1;
 - (void)setTargetPositionAnimatableProperty:(id)arg1;
-- (bool)shouldOverrideForReveal;
 - (id /* block */)sideSwipeHintingHideAnimationBlock;
+- (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (id)targetPositionAnimatableProperty;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateCellForContentViewController:(id)arg1;
 
 @end

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface UIButton : UIControl <ABText, CAMAccessibilityHUDItemProvider, NSCoding, TSDPlatformButtonProtocol, UIAccessibilityContentSizeCategoryImageAdjusting, UIGestureRecognizerDelegate, _UIFloatingContentViewDelegate> {
+@interface UIButton : UIControl <ABText, CAMAccessibilityHUDItemProvider, NSCoding, TSDPlatformButtonProtocol, UIAccessibilityContentSizeCategoryImageAdjusting, UIAccessibilityContentSizeCategoryImageAdjustingInternal, UIGestureRecognizerDelegate, _UIFloatingContentViewDelegate> {
     long long  __imageContentMode;
     UIColor * __plainButtonBackgroundColor;
     UIImageView * _backgroundView;
@@ -24,6 +24,7 @@
         unsigned int requiresLayoutForPropertyChange : 1; 
         unsigned int adjustsImageSizeForAccessibilityContentSizeCategory : 1; 
         unsigned int disableAutomaticTitleAnimations : 1; 
+        unsigned int overridesRectAccessors : 1; 
     }  _buttonFlags;
     UIVisualEffectView * _contentBackdropView;
     NSArray * _contentConstraints;
@@ -53,6 +54,7 @@
     }  _internalTitlePaddingInsets;
     unsigned long long  _lastDrawingControlState;
     UIFont * _lazyTitleViewFont;
+    bool  _lazyTitleViewFontIsDefaultForIdiom;
     _UIButtonMaskAnimationView * _maskAnimationView;
     UITapGestureRecognizer * _selectGestureRecognizer;
     UIView * _selectionView;
@@ -84,6 +86,7 @@
 @property (nonatomic, readonly) NSAttributedString *currentAttributedTitle;
 @property (nonatomic, readonly) UIImage *currentBackgroundImage;
 @property (nonatomic, readonly) UIImage *currentImage;
+@property (nonatomic, readonly) UIImageSymbolConfiguration *currentPreferredSymbolConfiguration;
 @property (nonatomic, readonly) NSString *currentTitle;
 @property (nonatomic, readonly) UIColor *currentTitleColor;
 @property (nonatomic, readonly) UIColor *currentTitleShadowColor;
@@ -103,33 +106,32 @@
 // Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 
 + (bool)_buttonTypeIsModernUI:(long long)arg1;
-+ (id)_checkmarkImage;
++ (id)_defaultBackgroundImageColorForType:(long long)arg1 andState:(unsigned long long)arg2;
 + (id)_defaultBackgroundImageForType:(long long)arg1 andState:(unsigned long long)arg2;
++ (id)_defaultBackgroundImageNameForType:(long long)arg1 andState:(unsigned long long)arg2 compact:(bool)arg3;
 + (id)_defaultImageColorForState:(unsigned long long)arg1 button:(id)arg2;
-+ (id)_defaultImageForType:(long long)arg1 andState:(unsigned long long)arg2;
++ (id)_defaultImageColorForType:(long long)arg1 andState:(unsigned long long)arg2;
++ (id)_defaultImageForType:(long long)arg1 andState:(unsigned long long)arg2 withConfiguration:(id)arg3;
++ (id)_defaultImageNameForType:(long long)arg1 andState:(unsigned long long)arg2;
 + (double)_defaultNeighborSpacingForAxis:(long long)arg1;
 + (id)_defaultNormalTitleColor;
 + (id)_defaultNormalTitleShadowColor;
++ (id)_defaultSymbolConfigurationForType:(long long)arg1 andState:(unsigned long long)arg2;
++ (id)_defaultSymbolConfigurationForType:(long long)arg1 andState:(unsigned long long)arg2 compact:(bool)arg3;
 + (id)_defaultTitleColorForState:(unsigned long long)arg1 button:(id)arg2;
-+ (id)_detailDisclosureImage;
-+ (id)_exclamationMarkImage;
-+ (id)_infoDarkImage;
-+ (id)_infoLightImage;
-+ (id)_minusImage;
-+ (id)_plusImage;
-+ (id)_questionMarkImage;
 + (id)_selectedIndicatorImage;
 + (void)_setVisuallyHighlighted:(bool)arg1 forViews:(id)arg2 initialPress:(bool)arg3;
 + (void)_setVisuallyHighlighted:(bool)arg1 forViews:(id)arg2 initialPress:(bool)arg3 baseAlpha:(double)arg4;
 + (void)_setVisuallyHighlighted:(bool)arg1 forViews:(id)arg2 initialPress:(bool)arg3 highlightBlock:(id /* block */)arg4;
-+ (id)_xImage;
++ (id)_systemButtonWithImage:(id)arg1 target:(id)arg2 action:(SEL)arg3;
 + (id)buttonWithType:(long long)arg1;
++ (id)systemButtonWithImage:(id)arg1 target:(id)arg2 action:(SEL)arg3;
 
 - (void).cxx_destruct;
 - (id)__scalarStatisticsForUserTouchUpInsideEvent;
 - (bool)_accessibilityShouldActivateOnHUDLift;
 - (bool)_alwaysHandleScrollerMouseEvent;
-- (void)_applyAppropriateChargeForButton;
+- (void)_applyAppropriateTouchInsetsForButton;
 - (void)_applyCarPlaySystemButtonCustomizations;
 - (id)_archivableContent:(id*)arg1;
 - (id)_attributedTitleForState:(unsigned long long)arg1;
@@ -137,6 +139,7 @@
 - (double)_autolayoutSpacingAtEdge:(int)arg1 forAttribute:(id)arg2 nextToNeighbor:(id)arg3 edge:(int)arg4 attribute:(long long)arg5 multiplier:(double)arg6;
 - (id)_backgroundForState:(unsigned long long)arg1 usesBackgroundForNormalState:(bool*)arg2;
 - (id)_backgroundView;
+- (struct { double x1; double x2; })_baselineOffsetsAtSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)_beginTitleAnimation;
 - (bool)_blurEnabled;
 - (id)_borderColorForState:(unsigned long long)arg1;
@@ -153,7 +156,11 @@
 - (unsigned long long)_controlEventsForActionTriggered;
 - (id)_createPreparedImageViewWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)_currentImageColor;
+- (id)_currentImageWithResolvedConfiguration;
+- (id)_defaultFontForIdiom:(long long)arg1;
+- (void)_deriveTitleRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg1 imageRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg2 fromContentRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3 calculatePositionForEmptyTitle:(bool)arg4;
 - (void)_didChangeFromIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(bool)arg3;
+- (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (bool)_disableAutomaticTitleAnimations;
 - (double)_drawingStrokeForState:(unsigned long long)arg1;
@@ -173,6 +180,7 @@
 - (id)_fadeOutAnimationWithKeyPath:(id)arg1;
 - (id)_floatingContentView;
 - (id)_font;
+- (bool)_fontIsDefaultForIdiom;
 - (void)_gestureRecognizerFailed:(id)arg1;
 - (bool)_hasCustomAutolayoutNeighborSpacingForAttribute:(long long*)arg1;
 - (bool)_hasDrawingStyle;
@@ -183,9 +191,10 @@
 - (double)_highlightCornerRadius;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_highlightRectForImageRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_highlightRectForTextRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (bool)_highlightsBackgroundImage;
 - (id)_imageColorForState:(unsigned long long)arg1;
 - (long long)_imageContentMode;
-- (id)_imageForState:(unsigned long long)arg1 usesImageForNormalState:(bool*)arg2;
+- (id)_imageForState:(unsigned long long)arg1 applyingConfiguration:(bool)arg2 usesImageForNormalState:(bool*)arg3;
 - (bool)_imageNeedsCompositingModeWhenSelected;
 - (id)_imageView;
 - (void)_installSelectGestureRecognizer;
@@ -204,8 +213,7 @@
 - (void)_layoutBackgroundImageView;
 - (void)_layoutContentBackdropView;
 - (id)_layoutDebuggingTitle;
-- (void)_layoutImageView;
-- (void)_layoutTitleView;
+- (void)_layoutImageAndTitleViews;
 - (id)_letterpressStyleForState:(unsigned long long)arg1;
 - (bool)_likelyToHaveTitle;
 - (long long)_lineBreakMode;
@@ -216,6 +224,7 @@
 - (id)_plainButtonBackgroundColor;
 - (void)_populateArchivedSubviews:(id)arg1;
 - (id)_preferredConfigurationForFocusAnimation:(long long)arg1 inContext:(id)arg2;
+- (id)_preferredConfigurationForState:(unsigned long long)arg1;
 - (void)_prepareMaskAnimationViewIfNecessary;
 - (void)_reducedTransparencyDidChange:(id)arg1;
 - (bool)_requiresLayoutForPropertyChange;
@@ -234,11 +243,13 @@
 - (void)_setContentBackgroundHidden:(bool)arg1;
 - (void)_setContentConstraints:(id)arg1;
 - (void)_setContentHuggingPriorities:(struct CGSize { double x1; double x2; })arg1;
+- (void)_setDefaultFontForIdiom;
 - (void)_setDisableAutomaticTitleAnimations:(bool)arg1;
 - (void)_setDrawingStroke:(double)arg1 forState:(unsigned long long)arg2;
 - (void)_setDrawingStyle:(long long)arg1 forState:(unsigned long long)arg2;
 - (void)_setExternalFlatEdge:(unsigned long long)arg1;
 - (void)_setFont:(id)arg1;
+- (void)_setFont:(id)arg1 isDefaultForIdiom:(bool)arg2;
 - (void)_setFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 deferLayout:(bool)arg2;
 - (void)_setHighlighted:(bool)arg1 animated:(bool)arg2;
 - (void)_setImage:(id)arg1 forStates:(unsigned long long)arg2;
@@ -288,6 +299,9 @@
 - (void)_updateMaskState;
 - (void)_updateSelectionViewForState:(unsigned long long)arg1;
 - (void)_updateTitleView;
+- (void)_updateTitleViewStyleEffectConfiguration;
+- (id)_viewForBaselineLayout;
+- (id)_viewForLoweringBaselineLayoutAttribute:(int)arg1;
 - (bool)_visualEffectViewEnabled;
 - (bool)_wantsAccessibilityUnderline;
 - (bool)_wantsContentBackdropView;
@@ -309,6 +323,7 @@
 - (id)currentAttributedTitle;
 - (id)currentBackgroundImage;
 - (id)currentImage;
+- (id)currentPreferredSymbolConfiguration;
 - (id)currentTitle;
 - (id)currentTitleColor;
 - (id)currentTitleShadowColor;
@@ -328,13 +343,17 @@
 - (bool)isAccessibilityElementByDefault;
 - (bool)isElementAccessibilityExposedToInterfaceBuilder;
 - (bool)isSpringLoaded;
+- (id)largeContentImage;
+- (id)largeContentTitle;
 - (void)layoutSubviews;
 - (long long)lineBreakMode;
+- (id)preferredSymbolConfigurationForImageInState:(unsigned long long)arg1;
 - (struct CGPoint { double x1; double x2; })pressFeedbackPosition;
 - (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
 - (bool)reversesTitleShadowWhenHighlighted;
+- (bool)scalesLargeContentImage;
 - (void)setAdjustsImageSizeForAccessibilityContentSizeCategory:(bool)arg1;
 - (void)setAdjustsImageWhenDisabled:(bool)arg1;
 - (void)setAdjustsImageWhenHighlighted:(bool)arg1;
@@ -356,6 +375,7 @@
 - (void)setImageEdgeInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setLineBreakMode:(long long)arg1;
 - (void)setNeedsLayout;
+- (void)setPreferredSymbolConfiguration:(id)arg1 forImageInState:(unsigned long long)arg2;
 - (void)setReversesTitleShadowWhenHighlighted:(bool)arg1;
 - (void)setSelected:(bool)arg1;
 - (void)setSemanticContentAttribute:(long long)arg1;
@@ -385,6 +405,7 @@
 - (struct CGSize { double x1; double x2; })titleShadowOffset;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateConstraints;
+- (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;
 
 // Image: /System/Library/Frameworks/ContactsUI.framework/ContactsUI
@@ -409,20 +430,14 @@
 
 // Image: /System/Library/PrivateFrameworks/AppSupportUI.framework/AppSupportUI
 
-- (long long)_nui_isUIButtonType;
-- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_nui_rectInsetsForBaseline;
-- (double)effectiveBaselineOffsetFromBottom;
-- (double)effectiveFirstBaselineOffsetFromTop;
+- (struct { double x1; double x2; })_nui_additionalInsetsForBaselines;
+- (long long)_nui_baselineViewType;
 
 // Image: /System/Library/PrivateFrameworks/AuthKitUI.framework/AuthKitUI
 
 + (id)ak_passwordRecoveryButton;
 
 - (void)_ak_passwordRecoveryButtonTapped:(id)arg1;
-
-// Image: /System/Library/PrivateFrameworks/CameraKit.framework/CameraKit
-
-- (void)cam_updateContentInsetsToCenterImageWithinMinimumSize:(struct CGSize { double x1; double x2; })arg1;
 
 // Image: /System/Library/PrivateFrameworks/CameraUI.framework/CameraUI
 
@@ -433,28 +448,42 @@
 
 - (void)cps_setBackgroundColor:(id)arg1 forState:(unsigned long long)arg2;
 
-// Image: /System/Library/PrivateFrameworks/FamilyCircleUI.framework/FamilyCircleUI
-
-- (void)fa_setBackgroundColor:(id)arg1;
-- (void)fa_setTitleColor:(id)arg1;
-
 // Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
 
 + (id)_hkecg_detailButton;
 + (double)hk_buddyButtonHorizontalMargin;
 + (id)hk_buddyButtonTintedWithColor:(id)arg1 title:(id)arg2 target:(id)arg3 action:(SEL)arg4;
 + (id)hk_buttonTintedWithColor:(id)arg1 title:(id)arg2 target:(id)arg3 action:(SEL)arg4;
++ (id)hk_multiLineLowContrastRoundRectButtonWithTitle:(id)arg1 target:(id)arg2 action:(SEL)arg3;
 + (id)hk_multiLineRoundRectButtonTintedWithColor:(id)arg1 title:(id)arg2 target:(id)arg3 action:(SEL)arg4;
 + (id)hk_roundRectButtonTintedWithColor:(id)arg1 title:(id)arg2 target:(id)arg3 action:(SEL)arg4;
 + (id)hk_roundedRectBuddyButtonTintedWithColor:(id)arg1 title:(id)arg2 target:(id)arg3 action:(SEL)arg4;
++ (id)imageWithFillColor:(id)arg1;
 
-// Image: /System/Library/PrivateFrameworks/InAppMessages.framework/InAppMessages
+// Image: /System/Library/PrivateFrameworks/HomeUI.framework/HomeUI
 
-+ (id)_iam_closeButton;
++ (id)hu_clipScrubberLiveButton;
++ (id)hu_clipScrubberNearbyAccessoryButton;
+
+// Image: /System/Library/PrivateFrameworks/JetUI.framework/JetUI
+
+- (struct JUMeasurements { double x1; double x2; double x3; double x4; })measurementsWithFitting:(struct CGSize { double x1; double x2; })arg1 in:(id)arg2;
 
 // Image: /System/Library/PrivateFrameworks/MPUFoundation.framework/MPUFoundation
 
 - (void)mpu_configureButtonWithTextDrawingContext:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/NotesUI.framework/NotesUI
+
+- (void)ic_enableLetterpressOnImageViewIfNecessary;
+- (void)ic_enableLetterpressOnTitleLabelIfNecessary;
+- (void)ic_setLetterpressTitleText:(id)arg1 color:(id)arg2 font:(id)arg3 forState:(unsigned long long)arg4;
+- (void)ic_setLetterpressTitleText:(id)arg1 forState:(unsigned long long)arg2;
+
+// Image: /System/Library/PrivateFrameworks/OnBoardingKit.framework/OnBoardingKit
+
+- (id)fontForStyle:(id)arg1 currentSizeCategory:(id)arg2 maxSizeCategory:(id)arg3;
+- (id)fontForStyle:(id)arg1 maxSizeCategory:(id)arg2;
 
 // Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
 
@@ -469,6 +498,11 @@
 
 - (void)px_setTitle:(id)arg1 orAttributedTitle:(id)arg2 forState:(unsigned long long)arg3;
 - (void)px_updateTitleUsingBlock:(id /* block */)arg1;
+
+// Image: /System/Library/PrivateFrameworks/ScreenTimeUI.framework/ScreenTimeUI
+
+- (void)st_setBackgroundColor:(id)arg1;
+- (void)st_setTitleColor:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/StoreKitUI.framework/StoreKitUI
 
@@ -490,6 +524,10 @@
 
 - (void)setVs_normalTitle:(id)arg1;
 - (id)vs_normalTitle;
+
+// Image: /System/Library/PrivateFrameworks/WallpaperKit.framework/WallpaperKit
+
++ (id)wk_buttonWithBlurEffect;
 
 // Image: /System/Library/PrivateFrameworks/iTunesStoreUI.framework/iTunesStoreUI
 

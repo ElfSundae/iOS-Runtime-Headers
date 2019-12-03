@@ -4,10 +4,8 @@
 
 @interface PARSearchClient : NSObject <PARClientXPC> {
     PARSessionConfiguration * _configuration;
-    bool  _configured;
+    _Atomic bool  _configured;
     NSXPCConnection * _connection;
-    QueryIdMapper * _idMapper;
-    NSObject<OS_dispatch_queue> * _idQueue;
     PARImageLoader * _imageLoader;
     NSObject<OS_dispatch_queue> * _queue;
     <PARDaemonXPC> * _remoteObject;
@@ -29,7 +27,6 @@
 
 - (void).cxx_destruct;
 - (void)_invalidateConnection;
-- (unsigned long long)_queryId:(unsigned long long)arg1 forObject:(id)arg2;
 - (void)addCompletion:(id)arg1 forInput:(id)arg2;
 - (void)addSession:(id)arg1;
 - (void)bag:(id)arg1 reply:(id /* block */)arg2;
@@ -43,6 +40,7 @@
 - (void)didDownloadResource:(id)arg1;
 - (id)endpoint;
 - (void)fileHandleAndAttributesForResource:(id)arg1 completion:(id /* block */)arg2;
+- (void)forceFetchBag:(id)arg1 reply:(id /* block */)arg2;
 - (void)getImageMap:(id /* block */)arg1;
 - (id)imageLoader;
 - (id)init;

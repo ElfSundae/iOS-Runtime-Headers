@@ -4,6 +4,7 @@
 
 @interface PLCloudDownloadBatchDetails : NSObject {
     NSArray * _cmmUUIDsToNotify;
+    NSSet * _confirmedResourceIDs;
     NSArray * _flippedPlaceholderAssetUUIDs;
     bool  _hasResourceChanges;
     long long  _numberOfPhotos;
@@ -11,6 +12,7 @@
 }
 
 @property (nonatomic, copy) NSArray *cmmUUIDsToNotify;
+@property (nonatomic, copy) NSSet *confirmedResourceIDs;
 @property (nonatomic, copy) NSArray *flippedPlaceholderAssetUUIDs;
 @property (nonatomic) bool hasResourceChanges;
 @property (nonatomic) long long numberOfPhotos;
@@ -18,11 +20,13 @@
 
 - (void).cxx_destruct;
 - (id)cmmUUIDsToNotify;
+- (id)confirmedResourceIDs;
 - (id)flippedPlaceholderAssetUUIDs;
 - (bool)hasResourceChanges;
 - (long long)numberOfPhotos;
 - (long long)numberOfVideos;
 - (void)setCmmUUIDsToNotify:(id)arg1;
+- (void)setConfirmedResourceIDs:(id)arg1;
 - (void)setFlippedPlaceholderAssetUUIDs:(id)arg1;
 - (void)setHasResourceChanges:(bool)arg1;
 - (void)setNumberOfPhotos:(long long)arg1;

@@ -2,46 +2,72 @@
    Image: /System/Library/PrivateFrameworks/CoreHandwriting.framework/CoreHandwriting
  */
 
-@interface CHBottomUpStrokeGroupingStrategy : CHStrokeGroupingStrategy
+@interface CHBottomUpStrokeGroupingStrategy : CHStrokeGroupingStrategy {
+    struct CGVector { 
+        double dx; 
+        double dy; 
+    }  _defaultDeviationVector;
+    struct CGVector { 
+        double dx; 
+        double dy; 
+    }  _defaultOrientationVector;
+    long long  _groupingContextSize;
+    double  _groupingMergingCostThresh;
+    double  _groupingMergingEndCostLowThresh;
+    double  _groupingSimilarCostThresh;
+    bool  _isInlineContinuousMode;
+    double  _mergeEndBelowModifier;
+    double  _mergeEndDxCostCoeff;
+    double  _mergeEndDyCostCoeff;
+    double  _mergeEndLeftModifier;
+    double  _mergeMiddleBelowModifier;
+    double  _mergeMiddleDxCostCoeff;
+    double  _mergeMiddleDyCostCoeff;
+    bool  _shouldAdjustDeviationOfSmallGroups;
+    bool  _shouldCoalesceLastSubstrokes;
+    bool  _shouldLimitDefaultWritingOrientationDeviation;
+    NSString * _strategyIdentifier;
+    double  _strokeDeviationCapCoeff;
+}
 
-+ (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_boundingBoxOfPoints:(const struct vector<CGPoint, std::__1::allocator<CGPoint> > { struct CGPoint {} *x1; struct CGPoint {} *x2; struct __compressed_pair<CGPoint *, std::__1::allocator<CGPoint> > { struct CGPoint {} *x_3_1_1; } x3; }*)arg1 rotatedAroundPoint:(struct CGPoint { double x1; double x2; })arg2 byAngle:(double)arg3;
+@property (nonatomic, readonly) bool isInlineContinuousMode;
+
 + (struct vector<CGRect, std::__1::allocator<CGRect> > { struct CGRect {} *x1; struct CGRect {} *x2; struct __compressed_pair<CGRect *, std::__1::allocator<CGRect> > { struct CGRect {} *x_3_1_1; } x3; })_boundingBoxesOfStrokesInGroup:(id)arg1 rotatedAroundPoint:(struct CGPoint { double x1; double x2; })arg2 byAngle:(double)arg3;
-+ (double)_circumferenceRatioOfCircleFittedToPoints:(struct list<CGPoint, std::__1::allocator<CGPoint> > { struct __list_node_base<CGPoint, void *> { struct __list_node_base<CGPoint, void *> {} *x_1_1_1; struct __list_node_base<CGPoint, void *> {} *x_1_1_2; } x1; struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<CGPoint, void *> > > { unsigned long long x_2_1_1; } x2; }*)arg1 circleCenter:(struct CGPoint { double x1; double x2; }*)arg2 circleRadius:(double*)arg3;
-+ (double)_containerSupportForPoints:(const struct vector<CGPoint, std::__1::allocator<CGPoint> > { struct CGPoint {} *x1; struct CGPoint {} *x2; struct __compressed_pair<CGPoint *, std::__1::allocator<CGPoint> > { struct CGPoint {} *x_3_1_1; } x3; }*)arg1 withBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
-+ (struct vector<CGPoint, std::__1::allocator<CGPoint> > { struct CGPoint {} *x1; struct CGPoint {} *x2; struct __compressed_pair<CGPoint *, std::__1::allocator<CGPoint> > { struct CGPoint {} *x_3_1_1; } x3; })_convexHullForPoints:(struct vector<CGPoint, std::__1::allocator<CGPoint> > { struct CGPoint {} *x1; struct CGPoint {} *x2; struct __compressed_pair<CGPoint *, std::__1::allocator<CGPoint> > { struct CGPoint {} *x_3_1_1; } x3; }*)arg1;
-+ (struct vector<CGPoint, std::__1::allocator<CGPoint> > { struct CGPoint {} *x1; struct CGPoint {} *x2; struct __compressed_pair<CGPoint *, std::__1::allocator<CGPoint> > { struct CGPoint {} *x_3_1_1; } x3; })_convexHullForStroke:(id)arg1;
-+ (double)_lineOrientationForStrokePoints:(const struct vector<CGPoint, std::__1::allocator<CGPoint> > { struct CGPoint {} *x1; struct CGPoint {} *x2; struct __compressed_pair<CGPoint *, std::__1::allocator<CGPoint> > { struct CGPoint {} *x_3_1_1; } x3; }*)arg1 error:(double*)arg2;
-+ (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_unionStrokeBounds:(const struct vector<CGRect, std::__1::allocator<CGRect> > { struct CGRect {} *x1; struct CGRect {} *x2; struct __compressed_pair<CGRect *, std::__1::allocator<CGRect> > { struct CGRect {} *x_3_1_1; } x3; }*)arg1 aroundXPosition:(double)arg2 usingOneSideStrokeCountLimit:(long long)arg3;
-+ (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_unionStrokeBounds:(const struct vector<CGRect, std::__1::allocator<CGRect> > { struct CGRect {} *x1; struct CGRect {} *x2; struct __compressed_pair<CGRect *, std::__1::allocator<CGRect> > { struct CGRect {} *x_3_1_1; } x3; }*)arg1 usingStrokeCountLimit:(long long)arg2 reverseOrder:(bool)arg3;
-+ (double)_vectorMeanWithoutOutliers:(struct vector<double, std::__1::allocator<double> > { double *x1; double *x2; struct __compressed_pair<double *, std::__1::allocator<double> > { double *x_3_1_1; } x3; }*)arg1;
 
-- (struct CGVector { double x1; double x2; })_averageVectorFromSubstroke:(id)arg1 toSubstroke:(id)arg2 withOrientation:(struct CGVector { double x1; double x2; })arg3 strokeRef:(id)arg4 strokeDest:(id)arg5;
-- (long long)_compareDistanceInWritingSequenceOfStroke:(id)arg1 andStroke:(id)arg2 toReferenceStroke:(id)arg3;
-- (void)_estimateWritingDirectionAndSortSubstrokesAccordingly:(id)arg1 averageWritingOrientation:(struct CGVector { double x1; double x2; }*)arg2 averageStrokeDeviation:(struct CGVector { double x1; double x2; }*)arg3;
-- (struct vector<CGPoint, std::__1::allocator<CGPoint> > { struct CGPoint {} *x1; struct CGPoint {} *x2; struct __compressed_pair<CGPoint *, std::__1::allocator<CGPoint> > { struct CGPoint {} *x_3_1_1; } x3; })_flippedCenters:(const struct vector<CGPoint, std::__1::allocator<CGPoint> > { struct CGPoint {} *x1; struct CGPoint {} *x2; struct __compressed_pair<CGPoint *, std::__1::allocator<CGPoint> > { struct CGPoint {} *x_3_1_1; } x3; }*)arg1 ofSubstrokes:(id)arg2 maxStrokesGap:(long long)arg3 begnning:(bool)arg4;
-- (void)_getMergingEndOfLineCost:(double*)arg1 mergingEndOfLineStroke:(id*)arg2 forStroke:(id)arg3 consistingOfSubstrokes:(id)arg4 toLineGroup:(id)arg5;
+- (void)_applyDefaultGroupingParameters;
+- (void)_applyStrictGroupingParameters;
+- (id)_averageAngleAndReliabilityForStrokeGroup:(id)arg1;
+- (struct CGVector { double x1; double x2; })_averageVectorFromCoalescedSubstrokes:(id)arg1 toSubstroke:(id)arg2 withOrientation:(struct CGVector { double x1; double x2; })arg3 strokeRef:(id)arg4 strokeDest:(id)arg5;
+- (void)_getMergingEndOfLineCost:(double*)arg1 mergingEndOfLineStroke:(id*)arg2 forStroke:(id)arg3 consistingOfSubstrokes:(id)arg4 toLineGroup:(id)arg5 refSubstrokeIndex:(long long)arg6;
 - (void)_getMergingLowerBoundCost:(double*)arg1 withStrokeBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 toLineGroup:(id)arg3;
-- (void)_getMergingMiddleOfLineCost:(double*)arg1 mergingMiddleOfLineStroke:(id*)arg2 forStroke:(id)arg3 consistingOfSubstrokes:(id)arg4 toLineGroup:(id)arg5;
-- (bool)_isStrokeClassifiedAsDoodling:(id)arg1 withSubstrokes:(id)arg2;
-- (void)_mergeGroupsPostProcessing:(id)arg1 createdGroups:(id)arg2 deletedGroups:(id)arg3;
-- (void)_refineLocalWritingOrientationsForSubstrokes:(id)arg1 useCoalescedCenter:(bool)arg2;
-- (bool)_refineWritingOrientationAndResortSubstrokes:(id)arg1 averageWritingOrientation:(struct CGVector { double x1; double x2; }*)arg2;
+- (id)_lastSubstrokeCoalescedWithOverlappingSubstrokes:(id)arg1 strokeDeviation:(struct CGVector { double x1; double x2; })arg2;
+- (id)_newTextLineStrokeGroupWithStroke:(id)arg1 withSubstrokePlacements:(id)arg2 reusableIDRemovedGroups:(id)arg3;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_normalizedBoundsForWritingDirectionSortedStrokes:(id)arg1 strokeWritingOrientations:(const struct vector<CGVector, std::__1::allocator<CGVector> > { struct CGVector {} *x1; struct CGVector {} *x2; struct __compressed_pair<CGVector *, std::__1::allocator<CGVector> > { struct CGVector {} *x_3_1_1; } x3; }*)arg2 firstStrokeDeviation:(struct CGVector { double x1; double x2; })arg3 originalDrawing:(id*)arg4 rotatedSortedStrokes:(struct vector<std::__1::vector<CGPoint, std::__1::allocator<CGPoint> >, std::__1::allocator<std::__1::vector<CGPoint, std::__1::allocator<CGPoint> > > > { struct vector<CGPoint, std::__1::allocator<CGPoint> > {} *x1; struct vector<CGPoint, std::__1::allocator<CGPoint> > {} *x2; struct __compressed_pair<std::__1::vector<CGPoint, std::__1::allocator<CGPoint> > *, std::__1::allocator<std::__1::vector<CGPoint, std::__1::allocator<CGPoint> > > > { struct vector<CGPoint, std::__1::allocator<CGPoint> > {} *x_3_1_1; } x3; }*)arg5;
 - (double)_scaleFactorForBoundsHeight:(double)arg1;
-- (void)_smoothLocalWritingOrientations:(struct vector<CGVector, std::__1::allocator<CGVector> > { struct CGVector {} *x1; struct CGVector {} *x2; struct __compressed_pair<CGVector *, std::__1::allocator<CGVector> > { struct CGVector {} *x_3_1_1; } x3; }*)arg1;
-- (void)_sortSubstrokesByWritingDirection:(id)arg1 averageWritingOrientation:(struct CGVector { double x1; double x2; }*)arg2;
-- (id)_substrokesForStroke:(id)arg1;
-- (void)_updateLocalStrokeDeviationsForSubstrokes:(id)arg1 averageStrokeDeviation:(struct CGVector { double x1; double x2; }*)arg2;
-- (void)_updateLocalWritingOrientationsForSubstrokes:(id)arg1 useCoalescedCenter:(bool)arg2;
-- (void)_updateNontextCandidateSupport:(id)arg1 withStroke:(id)arg2 substrokesByStrokeIdentifier:(id)arg3 nontextStrokeIdentifiers:(id)arg4 nontextGroups:(id)arg5 createdGroups:(id)arg6;
-- (void)_updateNontextCandidates:(id)arg1 byAddingStrokes:(id)arg2 substrokesByStrokeIdentifier:(id)arg3 newNontextStrokeIdentifiers:(id)arg4 textGroups:(id)arg5 nontextGroups:(id)arg6 nontextGroupsSnapshot:(id)arg7 createdGroups:(id)arg8 cancellationBlock:(id /* block */)arg9;
-- (void)_updateNontextCandidates:(id)arg1 byRemovingStrokeIdentifiers:(id)arg2 substrokesByStrokeIdentifier:(id)arg3 reinsertedStrokes:(id)arg4 removedNontextStrokeIdentifiers:(id)arg5 nontextGroups:(id)arg6 createdGroups:(id)arg7 deletedGroups:(id)arg8 cancellationBlock:(id /* block */)arg9;
-- (void)_updateNontextGroups:(id)arg1 createdGroups:(id)arg2 deletedGroups:(id)arg3 byRemovingStrokeIdentifier:(id)arg4;
-- (void)_updateTextGroups:(id)arg1 createdGroups:(id)arg2 deletedGroups:(id)arg3 forAddedStroke:(id)arg4 substrokesByStrokeIdentifier:(id)arg5 cancellationBlock:(id /* block */)arg6;
+- (double)_strokeGroupConfidenceForSortedSubstrokes:(id)arg1 writingDirectionSortedStrokeIdentifiers:(id)arg2 localStrokeWritingOrientations:(const struct vector<CGVector, std::__1::allocator<CGVector> > { struct CGVector {} *x1; struct CGVector {} *x2; struct __compressed_pair<CGVector *, std::__1::allocator<CGVector> > { struct CGVector {} *x_3_1_1; } x3; }*)arg3 averageWritingOrientation:(struct CGVector { double x1; double x2; })arg4 averageStrokeDeviation:(struct CGVector { double x1; double x2; })arg5;
+- (id)_textLineStrokeGroupByAddingStroke:(id)arg1 withSubstrokePlacements:(id)arg2 intoStrokeGroup:(id)arg3 mergingEndSubgroup:(bool)arg4 bestStrokeMergeEnd:(id)arg5;
+- (void)_updateGroups:(id)arg1 createdGroups:(id)arg2 deletedGroups:(id)arg3 forAddedStroke:(id)arg4 substrokePlacementsByStrokeIdentifier:(id)arg5 reusableIDRemovedGroups:(id)arg6 trySplit:(bool)arg7 cancellationBlock:(id /* block */)arg8;
 - (double)_verticalOffsetForBoundsHeight:(double)arg1 andScaleFactor:(double)arg2;
 - (id)_writingDirectionSortedStrokeIdentifiersFromSubstrokes:(id)arg1 localWritingOrientations:(struct vector<CGVector, std::__1::allocator<CGVector> > { struct CGVector {} *x1; struct CGVector {} *x2; struct __compressed_pair<CGVector *, std::__1::allocator<CGVector> > { struct CGVector {} *x_3_1_1; } x3; }*)arg2;
-- (id)averageAngleAndReliabilityForStrokeGroup:(id)arg1;
-- (id)initWithStrokeProvider:(id)arg1 sessionLastResult:(id)arg2 locales:(id)arg3;
-- (id)recognizableDrawingForStrokeGroup:(id)arg1 orderedStrokesIDs:(id*)arg2;
-- (id)updatedGroupingResultWithCancellationBlock:(id /* block */)arg1;
+- (struct CGVector { double x1; double x2; })clippedWritingOrientation:(struct CGVector { double x1; double x2; })arg1;
+- (long long)compareDistanceInWritingSequenceOfStroke:(id)arg1 andStroke:(id)arg2 toReferenceStroke:(id)arg3;
+- (void)dealloc;
+- (void)estimateWritingDirectionAndSortSubstrokesAccordingly:(id)arg1 averageWritingOrientation:(struct CGVector { double x1; double x2; }*)arg2 averageStrokeDeviation:(struct CGVector { double x1; double x2; }*)arg3;
+- (struct vector<CGPoint, std::__1::allocator<CGPoint> > { struct CGPoint {} *x1; struct CGPoint {} *x2; struct __compressed_pair<CGPoint *, std::__1::allocator<CGPoint> > { struct CGPoint {} *x_3_1_1; } x3; })flippedCenters:(const struct vector<CGPoint, std::__1::allocator<CGPoint> > { struct CGPoint {} *x1; struct CGPoint {} *x2; struct __compressed_pair<CGPoint *, std::__1::allocator<CGPoint> > { struct CGPoint {} *x_3_1_1; } x3; }*)arg1 ofSubstrokes:(id)arg2 maxStrokesGap:(long long)arg3 begnning:(bool)arg4;
+- (void)getMergingEndOfLineCost:(double*)arg1 mergingEndOfLineStroke:(id*)arg2 forStroke:(id)arg3 consistingOfSubstrokes:(id)arg4 toLineGroup:(id)arg5;
+- (void)getMergingMiddleOfLineCost:(double*)arg1 mergingMiddleOfLineStroke:(id*)arg2 forStroke:(id)arg3 consistingOfSubstrokes:(id)arg4 toLineGroup:(id)arg5;
+- (id)initWithStrokeProvider:(id)arg1 defaultWritingOrientation:(long long)arg2 locales:(id)arg3 isInlineContinuousMode:(bool)arg4 inlineContinuousModeTargets:(id)arg5;
+- (bool)isInlineContinuousMode;
+- (void)mergeGroupsPostProcessing:(id)arg1 createdGroups:(id)arg2 deletedGroups:(id)arg3;
+- (id)recognizableDrawingForStrokeGroup:(id)arg1 translationVector:(struct CGVector { double x1; double x2; })arg2 originalDrawing:(id*)arg3 orderedStrokesIDs:(id*)arg4 rescalingFactor:(double*)arg5;
+- (void)refineLocalWritingOrientationsForSubstrokes:(id)arg1 useCoalescedCenter:(bool)arg2;
+- (bool)refineWritingOrientationAndResortSubstrokes:(id)arg1 averageWritingOrientation:(struct CGVector { double x1; double x2; }*)arg2;
+- (void)smoothLocalWritingOrientations:(struct vector<CGVector, std::__1::allocator<CGVector> > { struct CGVector {} *x1; struct CGVector {} *x2; struct __compressed_pair<CGVector *, std::__1::allocator<CGVector> > { struct CGVector {} *x_3_1_1; } x3; }*)arg1;
+- (void)sortSubstrokesByWritingDirection:(id)arg1 averageWritingOrientation:(struct CGVector { double x1; double x2; }*)arg2;
+- (id)strategyIdentifier;
+- (id)tryRegroupingStrokesInGroup:(id)arg1 substrokePlacementsByStrokeIdentifier:(id)arg2 cancellationBlock:(id /* block */)arg3;
+- (void)updateLocalStrokeDeviationsForSubstrokes:(id)arg1 averageStrokeDeviation:(struct CGVector { double x1; double x2; }*)arg2;
+- (void)updateLocalWritingOrientationsForSubstrokes:(id)arg1 useCoalescedCenter:(bool)arg2;
+- (id)updatedGroupingResult:(id)arg1 byAddingStrokes:(id)arg2 removingStrokeIdentifiers:(id)arg3 stableStrokeIdentifiers:(id)arg4 allSubstrokesByStrokeIdentifier:(id)arg5 withCancellationBlock:(id /* block */)arg6;
 
 @end

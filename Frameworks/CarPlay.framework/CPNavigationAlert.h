@@ -15,6 +15,7 @@
 
 @property (nonatomic, readonly) double duration;
 @property (nonatomic, retain) NSUUID *identifier;
+@property (nonatomic, readonly, copy) UIImage *image;
 @property (nonatomic, readonly, copy) CPImageSet *imageSet;
 @property (nonatomic) <CPNavigationAlertUpdating> *navigationAlertUpdateTarget;
 @property (nonatomic, readonly) CPAlertAction *primaryAction;
@@ -25,11 +26,14 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)_initWithTitleVariants:(id)arg1 subtitleVariants:(id)arg2 imageSet:(id)arg3 primaryAction:(id)arg4 secondaryAction:(id)arg5 duration:(double)arg6;
 - (double)duration;
 - (void)encodeWithCoder:(id)arg1;
 - (id)identifier;
+- (id)image;
 - (id)imageSet;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithTitleVariants:(id)arg1 subtitleVariants:(id)arg2 image:(id)arg3 primaryAction:(id)arg4 secondaryAction:(id)arg5 duration:(double)arg6;
 - (id)initWithTitleVariants:(id)arg1 subtitleVariants:(id)arg2 imageSet:(id)arg3 primaryAction:(id)arg4 secondaryAction:(id)arg5 duration:(double)arg6;
 - (id)navigationAlertUpdateTarget;
 - (id)primaryAction;

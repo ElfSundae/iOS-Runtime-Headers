@@ -5,10 +5,8 @@
 
 @required
 
-- (FBSProcessHandle *)handle;
-- (NSString *)jobLabel;
-- (NSString *)name;
+- (BSProcessHandle *)handle;
+- (RBSProcessIdentity *)identity;
 - (BSMachPortTaskNameRight *)taskNameRight;
-- (long long)type;
 
 @end

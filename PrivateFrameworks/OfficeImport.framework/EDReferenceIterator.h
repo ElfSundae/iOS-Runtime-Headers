@@ -21,6 +21,7 @@
 + (id)referenceIteratorWithReference:(id)arg1 workbook:(id)arg2;
 + (id)referenceIteratorWithReferenceArray:(id)arg1 workbook:(id)arg2;
 
+- (void).cxx_destruct;
 - (unsigned int)currentCellIndex;
 - (void)dealloc;
 - (id)initWithReference:(id)arg1 workbook:(id)arg2;

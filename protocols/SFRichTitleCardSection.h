@@ -34,6 +34,7 @@
 - (SFImage *)reviewGlyph;
 - (bool)reviewNewLine;
 - (NSString *)reviewText;
+- (SFRichText *)richSubtitle;
 - (int)separatorStyle;
 - (void)setAuxiliaryAlignment:(NSNumber *)arg1;
 - (void)setAuxiliaryBottomText:(NSString *)arg1;
@@ -62,6 +63,7 @@
 - (void)setReviewGlyph:(SFImage *)arg1;
 - (void)setReviewNewLine:(bool)arg1;
 - (void)setReviewText:(NSString *)arg1;
+- (void)setRichSubtitle:(SFRichText *)arg1;
 - (void)setSeparatorStyle:(int)arg1;
 - (void)setSubtitle:(NSString *)arg1;
 - (void)setThumbnailCropCircle:(bool)arg1;

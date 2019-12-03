@@ -4,13 +4,12 @@
 
 @interface SBFMobileKeyBag : NSObject {
     NSObject<OS_dispatch_queue> * _calloutQueue;
-    int  _firstUnlockNotification;
+    struct _MKBEvent { } * _mbkEvent;
     NSObject<OS_dispatch_queue> * _queue;
     bool  _queue_hasPasscodeSet;
     bool  _queue_hasUnlockedSinceBoot;
     NSMutableArray * _queue_observerStateChangedCallbackBlocks;
     NSHashTable * _queue_observers;
-    int  _stateChangedNotifyToken;
 }
 
 @property (nonatomic, readonly, copy) SBFMobileKeyBagState *extendedState;

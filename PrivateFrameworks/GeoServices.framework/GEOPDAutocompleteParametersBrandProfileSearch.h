@@ -4,12 +4,26 @@
 
 @interface GEOPDAutocompleteParametersBrandProfileSearch : PBCodable <NSCopying> {
     struct { 
-        unsigned int maxResults : 1; 
-        unsigned int highlightDiff : 1; 
-    }  _has;
+        unsigned int has_maxResults : 1; 
+        unsigned int has_highlightDiff : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_query : 1; 
+        unsigned int read_viewportInfo : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_query : 1; 
+        unsigned int wrote_viewportInfo : 1; 
+        unsigned int wrote_maxResults : 1; 
+        unsigned int wrote_highlightDiff : 1; 
+    }  _flags;
     bool  _highlightDiff;
     int  _maxResults;
     NSString * _query;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     PBUnknownFields * _unknownFields;
     GEOPDViewportInfo * _viewportInfo;
 }
@@ -24,7 +38,12 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic, retain) GEOPDViewportInfo *viewportInfo;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_readQuery;
+- (void)_readViewportInfo;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -35,10 +54,13 @@
 - (bool)hasViewportInfo;
 - (unsigned long long)hash;
 - (bool)highlightDiff;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (int)maxResults;
 - (void)mergeFrom:(id)arg1;
 - (id)query;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasHighlightDiff:(bool)arg1;
 - (void)setHasMaxResults:(bool)arg1;

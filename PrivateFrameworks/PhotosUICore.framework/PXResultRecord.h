@@ -15,6 +15,7 @@
 - (id)includedOids;
 - (id)inclusionPredicate;
 - (bool)isCurated;
+- (long long)keyAssetIndex;
 - (id)keyAssetsFetchResult;
 - (bool)reverseSortOrder;
 - (bool)wantsCuration;

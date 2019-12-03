@@ -37,7 +37,6 @@
 
 - (void).cxx_destruct;
 - (void)_assertValidPresentingViewController;
-- (void)_cleanUpBasicLogin;
 - (void)_cleanUpBasicLoginWithCompletion:(id /* block */)arg1;
 - (void)_contextDidDismissLoginAlertController;
 - (void)_contextDidEndPresentingSecondaryUI;
@@ -73,6 +72,7 @@
 - (bool)forceInlinePresentation;
 - (bool)isPresentingServerUI;
 - (void)presentBasicLoginUIWithCompletion:(id /* block */)arg1;
+- (void)presentBiometricOrPasscodeValidationForAppleID:(id)arg1 completion:(id /* block */)arg2;
 - (void)presentKeepUsingUIForAppleID:(id)arg1 completion:(id /* block */)arg2;
 - (void)presentLoginAlertWithError:(id)arg1 title:(id)arg2 message:(id)arg3 completion:(id /* block */)arg4;
 - (void)presentNativeRecoveryUIWithContext:(id)arg1 completion:(id /* block */)arg2;

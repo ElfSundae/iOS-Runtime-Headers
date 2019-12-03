@@ -29,10 +29,12 @@
     NSMutableDictionary * _customAttributes;
     CSDecoder * _decoder;
     bool  _hasCodedCustomAttributes;
+    bool  _hasKnownKeysDictionary;
     NSMutableDictionary * _mutableAttributes;
     long long  _searchableItemFlags;
 }
 
+@property (copy) NSString *FPFilename;
 @property (readonly) NSData *HTMLContentDataNoCopy;
 @property (copy) NSString *accountType;
 @property (copy) NSString *adamID;
@@ -60,17 +62,25 @@
 @property (retain) NSNumber *favoriteRank;
 @property (retain) NSNumber *fileIdentifier;
 @property (copy) NSString *fileItemID;
+@property (copy) NSString *fileProviderDomainIdentifier;
 @property (copy) NSString *fileProviderDomaindentifier;
 @property (copy) NSString *fileProviderID;
 @property (copy) NSArray *fileProviderUserInfoKeys;
 @property (copy) NSArray *fileProviderUserInfoValues;
 @property (copy) NSString *filename;
 @property (nonatomic, readonly) bool hasCodedCustomAttributes;
+@property (nonatomic, readonly) bool hasKnownKeysDictionary;
 @property (nonatomic, copy) NSString *ic_dataSourceIdentifier;
-@property (nonatomic, copy) NSString *ic_managedObjectIDURI;
+@property (nonatomic) bool ic_hasAttachments;
+@property (nonatomic) bool ic_hasChecklists;
+@property (nonatomic) bool ic_hasDrawings;
+@property (nonatomic) bool ic_hasScannedDocuments;
+@property (nonatomic) bool ic_isLocked;
+@property (nonatomic) bool ic_isShared;
 @property (nonatomic) unsigned long long ic_searchResultType;
 @property (copy) NSData *intentData;
 @property (retain) NSNumber *isPlaceholder;
+@property (retain) NSNumber *isZombie;
 @property (copy) NSDate *lastApplicationLaunchedDate;
 @property (copy) NSString *lastEditorIdentifier;
 @property (copy) NSString *lastEditorName;
@@ -94,6 +104,7 @@
 @property (retain) NSNumber *parentFileIdentifier;
 @property (copy) NSString *parentFileItemID;
 @property (getter=isPartiallyDownloaded, retain) NSNumber *partiallyDownloaded;
+@property (getter=isPinned, nonatomic, retain) NSNumber *pinned;
 @property (copy) NSString *protectionClass;
 @property (copy) NSString *punchoutLabel;
 @property (readonly) NSArray *queryResultMatchedFields;
@@ -128,6 +139,7 @@
 - (void).cxx_destruct;
 - (id)EXIFGPSVersion;
 - (id)EXIFVersion;
+- (id)FPFilename;
 - (id)GPSAreaInformation;
 - (id)GPSDOP;
 - (id)GPSDateStamp;
@@ -200,6 +212,7 @@
 - (id)bitsPerSample;
 - (id)bundleID;
 - (id)bundleIdentifier;
+- (id)calendarDelegateIdentifier;
 - (id)calendarHolidayIdentifier;
 - (id)cameraOwner;
 - (id)city;
@@ -269,6 +282,7 @@
 - (id)favoriteRank;
 - (id)fileIdentifier;
 - (id)fileItemID;
+- (id)fileProviderDomainIdentifier;
 - (id)fileProviderDomaindentifier;
 - (id)fileProviderID;
 - (id)fileProviderUserInfoKeys;
@@ -282,6 +296,7 @@
 - (id)genre;
 - (id)hasAlphaChannel;
 - (bool)hasCodedCustomAttributes;
+- (bool)hasKnownKeysDictionary;
 - (unsigned long long)hash;
 - (id)headline;
 - (id)hiddenAdditionalRecipients;
@@ -296,6 +311,8 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDecoder:(id)arg1 obj:(struct { char *x1; struct { unsigned int x_2_1_1; unsigned char x_2_1_2; } x2; })arg2;
 - (id)initWithItemContentType:(id)arg1;
+- (id)initWithKnownKeysDictionary:(id)arg1;
+- (id)initWithMutableDictionary:(id)arg1;
 - (id)initWithSerializedAttributes:(id)arg1;
 - (id)instantMessageAddresses;
 - (id)instructions;
@@ -310,6 +327,7 @@
 - (id)isLikelyJunk;
 - (id)isLocal;
 - (id)isPartiallyDownloaded;
+- (id)isPinned;
 - (id)isPlaceholder;
 - (id)isReaderView;
 - (id)isRedEyeOn;
@@ -322,6 +340,7 @@
 - (id)isUserCurated;
 - (id)isUserOwned;
 - (bool)isValidAttributeSet;
+- (id)isZombie;
 - (id)keySignature;
 - (id)keywords;
 - (id)kind;
@@ -456,6 +475,7 @@
 - (void)setBitsPerSample:(id)arg1;
 - (void)setBundleID:(id)arg1;
 - (void)setBundleIdentifier:(id)arg1;
+- (void)setCalendarDelegateIdentifier:(id)arg1;
 - (void)setCalendarHolidayIdentifier:(id)arg1;
 - (void)setCameraOwner:(id)arg1;
 - (void)setCity:(id)arg1;
@@ -513,9 +533,11 @@
 - (void)setExtendedContentRating:(id)arg1;
 - (void)setExtraData:(id)arg1;
 - (void)setFNumber:(id)arg1;
+- (void)setFPFilename:(id)arg1;
 - (void)setFavoriteRank:(id)arg1;
 - (void)setFileIdentifier:(id)arg1;
 - (void)setFileItemID:(id)arg1;
+- (void)setFileProviderDomainIdentifier:(id)arg1;
 - (void)setFileProviderDomaindentifier:(id)arg1;
 - (void)setFileProviderID:(id)arg1;
 - (void)setFileProviderUserInfoKeys:(id)arg1;
@@ -555,7 +577,9 @@
 - (void)setInstantMessageAddresses:(id)arg1;
 - (void)setInstructions:(id)arg1;
 - (void)setIntentData:(id)arg1;
+- (void)setIsPinned:(id)arg1;
 - (void)setIsPlaceholder:(id)arg1;
+- (void)setIsZombie:(id)arg1;
 - (void)setKeySignature:(id)arg1;
 - (void)setKeywords:(id)arg1;
 - (void)setKind:(id)arg1;
@@ -671,6 +695,7 @@
 - (void)setTimeSignature:(id)arg1;
 - (void)setTimestamp:(id)arg1;
 - (void)setTitle:(id)arg1;
+- (void)setTopic:(id)arg1;
 - (void)setTotalBitRate:(id)arg1;
 - (void)setTrashed:(id)arg1;
 - (void)setURL:(id)arg1;
@@ -714,6 +739,7 @@
 - (id)timeSignature;
 - (id)timestamp;
 - (id)title;
+- (id)topic;
 - (id)totalBitRate;
 - (id)uniqueIdentifier;
 - (id)uploadError;
@@ -758,18 +784,32 @@
 + (id)ic_customAttributeKeyDictionary;
 + (id)ic_customAttributeKeyWithName:(id)arg1 searchable:(bool)arg2 searchableByDefault:(bool)arg3 unique:(bool)arg4 multiValued:(bool)arg5;
 + (id)ic_dataSourceIdentifierCustomKey;
-+ (id)ic_managedObjectIDCustomKey;
++ (id)ic_itemHasAttachmentsCustomKey;
++ (id)ic_itemHasChecklistsCustomKey;
++ (id)ic_itemHasDrawingsCustomKey;
++ (id)ic_itemHasScannedDocumentsCustomKey;
++ (id)ic_itemIsLockedCustomKey;
++ (id)ic_itemIsSharedCustomKey;
 + (id)ic_searchResultTypeCustomKey;
 + (id)ic_specializedIndexFieldAttributeKeyForStringField:(id)arg1;
 
 - (id)ic_dataSourceIdentifier;
-- (long long)ic_daysSinceModification;
-- (id)ic_managedObjectIDURI;
+- (bool)ic_hasAttachments;
+- (bool)ic_hasChecklists;
+- (bool)ic_hasDrawings;
+- (bool)ic_hasScannedDocuments;
+- (bool)ic_isLocked;
+- (bool)ic_isShared;
 - (void)ic_populateValuesForSpecializedFields;
 - (unsigned long long)ic_relevance;
 - (unsigned long long)ic_searchResultType;
 - (void)setIc_dataSourceIdentifier:(id)arg1;
-- (void)setIc_managedObjectIDURI:(id)arg1;
+- (void)setIc_hasAttachments:(bool)arg1;
+- (void)setIc_hasChecklists:(bool)arg1;
+- (void)setIc_hasDrawings:(bool)arg1;
+- (void)setIc_hasScannedDocuments:(bool)arg1;
+- (void)setIc_isLocked:(bool)arg1;
+- (void)setIc_isShared:(bool)arg1;
 - (void)setIc_searchResultType:(unsigned long long)arg1;
 
 @end

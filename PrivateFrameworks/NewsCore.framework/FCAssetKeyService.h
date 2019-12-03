@@ -4,13 +4,13 @@
 
 @interface FCAssetKeyService : NSObject <FCAssetKeyServiceType> {
     NFPromise * _endpointURLPromise;
-    AMSURLRequestEncoder * _requestEncoder;
-    AMSURLSession * _session;
+    NFLazy * _requestEncoder;
+    NFLazy * _session;
 }
 
 @property (nonatomic, readonly) NFPromise *endpointURLPromise;
-@property (nonatomic, readonly) AMSURLRequestEncoder *requestEncoder;
-@property (nonatomic, readonly) AMSURLSession *session;
+@property (nonatomic, readonly) NFLazy *requestEncoder;
+@property (nonatomic, readonly) NFLazy *session;
 
 - (void).cxx_destruct;
 - (void)_performHTTPRequestWithData:(id)arg1 completion:(id /* block */)arg2;

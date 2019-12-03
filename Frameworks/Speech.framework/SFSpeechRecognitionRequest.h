@@ -25,6 +25,7 @@
 @property (nonatomic, copy) NSArray *contextualStrings;
 @property (nonatomic) bool detectMultipleUtterances;
 @property (nonatomic, copy) NSString *interactionIdentifier;
+@property (nonatomic) bool requiresOnDeviceRecognition;
 @property (nonatomic) bool shouldReportPartialResults;
 @property (nonatomic) long long taskHint;
 
@@ -52,9 +53,11 @@
 - (bool)detectMultipleUtterances;
 - (id)init;
 - (id)interactionIdentifier;
+- (bool)requiresOnDeviceRecognition;
 - (void)setContextualStrings:(id)arg1;
 - (void)setDetectMultipleUtterances:(bool)arg1;
 - (void)setInteractionIdentifier:(id)arg1;
+- (void)setRequiresOnDeviceRecognition:(bool)arg1;
 - (void)setShouldReportPartialResults:(bool)arg1;
 - (void)setTaskHint:(long long)arg1;
 - (bool)shouldReportPartialResults;

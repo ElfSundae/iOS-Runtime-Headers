@@ -11,6 +11,7 @@
 
 - (NSArray *)avatarView:(CNAvatarView *)arg1 orderedPropertiesForProperties:(NSArray *)arg2 category:(NSString *)arg3;
 - (bool)avatarView:(CNAvatarView *)arg1 shouldShowContact:(CNContact *)arg2;
+- (NSArray *)contactsForPreviewInteractionForAvatarView:(CNAvatarView *)arg1 suggestedKeysToFetch:(NSArray *)arg2;
 - (void)didDismissActionsForAvatarView:(CNAvatarView *)arg1;
 - (void)didUpdateContentForAvatarView:(CNAvatarView *)arg1;
 - (bool)shouldShowActionsForAvatarView:(CNAvatarView *)arg1;

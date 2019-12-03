@@ -18,12 +18,11 @@
 @property (nonatomic, retain) NSDate *userPlaybackInitiationDate;
 @property (nonatomic, retain) NSArray *videosPlayables;
 
-+ (void)_playMediaInfo:(id)arg1 extrasInfo:(id)arg2 appContext:(id)arg3 playbackContext:(unsigned long long)arg4 completion:(id /* block */)arg5;
++ (void)_playMediaInfo:(id)arg1 extrasInfo:(id)arg2 isRentAndWatchNow:(bool)arg3 completion:(id /* block */)arg4;
 + (void)_playPlayables:(id)arg1 storeDictionary:(id)arg2 appContext:(id)arg3 isUpNextPlayback:(bool)arg4 userPlaybackInitiationDate:(id)arg5 openURLCompletionDate:(id)arg6;
-+ (void)_preflightWithMediaInfo:(id)arg1 playbackContext:(unsigned long long)arg2 completion:(id /* block */)arg3;
-+ (void)_presentPlaybackWithMediaInfo:(id)arg1 extrasInfo:(id)arg2 playbackContext:(unsigned long long)arg3 appContext:(id)arg4 completion:(id /* block */)arg5;
-+ (void)playMediaInfo:(id)arg1 appContext:(id)arg2 playbackContext:(unsigned long long)arg3;
-+ (void)playPlayables:(id)arg1 storeDictionary:(id)arg2 appContext:(id)arg3 isUpNextPlayback:(bool)arg4 userPlaybackInitiationDate:(id)arg5;
++ (void)_preflightWithMediaInfo:(id)arg1 isRentAndWatchNow:(bool)arg2 completion:(id /* block */)arg3;
++ (void)_presentPlaybackWithMediaInfo:(id)arg1 extrasInfo:(id)arg2 completion:(id /* block */)arg3;
++ (void)playMediaInfo:(id)arg1 isRentAndWatchNow:(bool)arg2;
 
 - (void).cxx_destruct;
 - (id)appContext;

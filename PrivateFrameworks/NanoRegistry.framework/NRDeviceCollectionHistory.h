@@ -3,7 +3,7 @@
  */
 
 @interface NRDeviceCollectionHistory : NSObject <NRMutableStateParentDelegate, NSCopying, NSFastEnumeration, NSSecureCoding> {
-    bool  _atomicDirty;
+    _Atomic bool  _atomicDirty;
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
     }  _cacheLock;
@@ -47,7 +47,7 @@
 - (void)child:(id)arg1 didApplyDiff:(id)arg2;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned long long)count;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (id)description;
 - (id)deviceCollection;
 - (id)deviceIDAtSwitchIndex:(unsigned int)arg1 date:(id*)arg2;
@@ -69,7 +69,6 @@
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;
 - (id)protobuf;
 - (void)pruneStateCacheItems:(unsigned long long)arg1;
-- (void)purgeWorkingSet;
 - (void)removeObserver:(id)arg1;
 - (void)setHistory:(id)arg1;
 - (void)setHistoryStateCache:(id)arg1;

@@ -19,6 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) NSString *identifier;
 @property (nonatomic, readonly) bool pageable;
+@property (getter=isSelectable, nonatomic, readonly) bool selectable;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) unsigned long long tileInfoType;
 @property (nonatomic, readonly) NSArray *underlyingFeedElements;
@@ -36,6 +37,7 @@
 - (id)initWithGroupIdentifier:(id)arg1 underlyingTileInfos:(id)arg2 groupType:(long long)arg3;
 - (id)initWithIdentifier:(id)arg1 groupIdentifier:(id)arg2 underlyingTileInfos:(id)arg3 groupType:(long long)arg4;
 - (bool)isEqual:(id)arg1;
+- (bool)isSelectable;
 - (bool)pageable;
 - (unsigned long long)tileInfoType;
 - (id)underlyingFeedElements;

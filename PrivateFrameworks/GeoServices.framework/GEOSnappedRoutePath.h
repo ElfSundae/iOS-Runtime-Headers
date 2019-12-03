@@ -17,7 +17,7 @@
     unsigned int  _routeStartIndex;
     GEOComposedRouteSection * _section;
     unsigned int  _unsnappedPointCount;
-    struct { float x1; float x2; } * _unsnappedPoints;
+    struct { float x1; float x2; float x3; } * _unsnappedPoints;
 }
 
 @property (readonly) NSArray *edges;

@@ -29,11 +29,12 @@
 - (void)startTrackingTimeIntervalEventWithName:(id)arg1;
 - (void)stopTrackingTimeIntervalEventWithName:(id)arg1;
 - (void)trackAnimojiWithEffectId:(id)arg1;
+- (void)trackEmojiStickerWithEffectId:(id)arg1;
 - (void)trackEventWithName:(id)arg1;
 - (void)trackEventWithName:(id)arg1 count:(unsigned long long)arg2;
 - (void)trackFilterWithEffectId:(id)arg1;
 - (void)trackLabelWithEffectId:(id)arg1;
-- (void)trackMediaSentWithAnimoji:(bool)arg1 video:(bool)arg2 frontCamera:(bool)arg3 filterCount:(unsigned long long)arg4 labelCount:(unsigned long long)arg5 messagesStickerCount:(unsigned long long)arg6 shapeCount:(unsigned long long)arg7;
+- (void)trackMediaSentWithAnimoji:(bool)arg1 video:(bool)arg2 frontCamera:(bool)arg3 filterCount:(unsigned long long)arg4 labelCount:(unsigned long long)arg5 messagesStickerCount:(unsigned long long)arg6 shapeCount:(unsigned long long)arg7 emojiStickerCount:(unsigned long long)arg8;
 - (void)trackMessagesStickerWithEffectId:(id)arg1;
 - (void)trackShapeWithEffectId:(id)arg1;
 

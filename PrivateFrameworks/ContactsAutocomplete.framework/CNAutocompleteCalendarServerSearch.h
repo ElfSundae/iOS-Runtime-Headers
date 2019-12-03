@@ -19,12 +19,12 @@
 - (void).cxx_destruct;
 - (id)eventStore;
 - (id)executeRequest:(id)arg1 completionHandler:(id /* block */)arg2;
+- (id)executeRequest:(id)arg1 source:(id)arg2 resultsFactory:(id)arg3 withCompletionHandler:(id /* block */)arg4;
 - (id)init;
 - (id)initWithEventStore:(id)arg1 operationFactory:(id)arg2;
 - (id)operationFactory;
 - (id)queryForFetchRequest:(id)arg1;
 - (id /* block */)resultTransformWithFactory:(id)arg1;
-- (id)runQuery:(id)arg1 forSource:(id)arg2 resultsFactory:(id)arg3 withCompletionHandler:(id /* block */)arg4;
 - (void)setTokenizer:(id)arg1;
 - (id)tokenizer;
 

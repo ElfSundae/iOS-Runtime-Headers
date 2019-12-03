@@ -13,6 +13,12 @@
 - (id)initWithCoder:(id)arg1;
 - (id)storeTokens;
 
+// Image: /System/Library/PrivateFrameworks/EmailDaemon.framework/EmailDaemon
+
++ (id)ed_unarchivedTokenWithData:(id)arg1 error:(id*)arg2;
+
+- (id)ed_archiveTokenWithError:(id*)arg1;
+
 // Image: /System/Library/PrivateFrameworks/VoiceMemos.framework/VoiceMemos
 
 + (id)rc_unarchivedTokenWithData:(id)arg1;

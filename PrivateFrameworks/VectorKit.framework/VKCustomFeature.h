@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/VectorKit.framework/VectorKit
  */
 
-@interface VKCustomFeature : NSObject {
+@interface VKCustomFeature : NSObject <NSSecureCoding> {
     <VKCustomFeatureDataSource> * _dataSource;
     struct shared_ptr<md::LabelExternalPointFeature> { 
         struct LabelExternalPointFeature {} *__ptr_; 
@@ -10,16 +10,22 @@
     }  _feature;
 }
 
++ (struct { double x1; double x2; double x3; })muninFeatureLocationForItemCoordinate:(struct { double x1; double x2; })arg1 viewPosition:(struct { double x1; double x2; double x3; })arg2 groundAltitude:(double)arg3;
++ (bool)supportsSecureCoding;
+
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)_initInternalFeatureWithCoordinate:(struct { double x1; double x2; })arg1;
-- (id)_initWithCoordinate:(struct { double x1; double x2; })arg1 isInjected:(bool)arg2;
+- (id)_initWithCoordinate:(struct { double x1; double x2; double x3; })arg1 isInjected:(bool)arg2;
 - (unsigned long long)businessID;
 - (id)dataSource;
+- (void)encodeWithCoder:(id)arg1;
 - (struct shared_ptr<md::LabelExternalPointFeature> { struct LabelExternalPointFeature {} *x1; struct __shared_weak_count {} *x2; }*)feature;
 - (unsigned long long)featureID;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithCoordinate:(struct { double x1; double x2; })arg1;
+- (id)initWithCoordinate:(struct { double x1; double x2; })arg1 elevation:(double)arg2;
 - (bool)isInjectedFeature;
 - (void)setAnnotationText:(id)arg1 locale:(id)arg2;
 - (void)setBusinessID:(unsigned long long)arg1;

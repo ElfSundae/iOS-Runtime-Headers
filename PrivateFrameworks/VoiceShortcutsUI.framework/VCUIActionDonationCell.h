@@ -4,9 +4,15 @@
 
 @interface VCUIActionDonationCell : UITableViewCell {
     UIView * _cardView;
+    bool  _dimmingIneligibleForPrediction;
+    <VCActionDonation> * _donation;
+    bool  _showAppName;
 }
 
 @property (nonatomic) UIView *cardView;
+@property (nonatomic) bool dimmingIneligibleForPrediction;
+@property (nonatomic) <VCActionDonation> *donation;
+@property (nonatomic) bool showAppName;
 
 + (id)preferredReuseIdentifier;
 
@@ -15,9 +21,17 @@
 - (id)cardView;
 - (void)configureWithDonation:(id)arg1 showingAppName:(bool)arg2;
 - (void)configureWithDonation:(id)arg1 showingAppName:(bool)arg2 dimmingIneligibleForPrediction:(bool)arg3;
+- (bool)dimmingIneligibleForPrediction;
+- (id)donation;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)prepareForReuse;
 - (void)setCardView:(id)arg1;
+- (void)setDimmingIneligibleForPrediction:(bool)arg1;
+- (void)setDonation:(id)arg1;
+- (void)setShowAppName:(bool)arg1;
+- (bool)showAppName;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateCardView;
 
 @end

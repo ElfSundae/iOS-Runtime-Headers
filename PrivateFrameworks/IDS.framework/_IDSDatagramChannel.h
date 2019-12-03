@@ -12,6 +12,7 @@
     NSMutableDictionary * _firstPacketArrivalTimeForMKI;
     bool  _hasMetadata;
     unsigned long long  _incomingBytes;
+    bool  _isInvalidated;
     double  _lastIncomingStatReport;
     double  _lastOutgoingStatReport;
     NSMutableDictionary * _linkContexts;
@@ -26,8 +27,9 @@
     NSData * _preConnectionData;
     id /* block */  _readHandler;
     id /* block */  _readHandlerWithOptions;
-    NSObject<OS_dispatch_semaphore> * _readSema;
-    int  _readState;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readLock;
     bool  _receivedPreConnectionData;
     NSMutableArray * _sendingMetadata;
     bool  _sentFirstReadLinkInfo;

@@ -10,7 +10,7 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) <CNPickerControllerDelegate> *delegate;
+@property (nonatomic) <CNPickerControllerDelegate><UINavigationControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) NSMutableArray *geminiChannels;
 @property (readonly) unsigned long long hash;

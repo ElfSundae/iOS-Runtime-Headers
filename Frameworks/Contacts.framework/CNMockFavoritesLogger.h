@@ -22,6 +22,7 @@
 - (void)finishedWritingRemoteFavorites;
 - (void)readingFavorites:(id /* block */)arg1;
 - (void)rematchingFavorites:(id /* block */)arg1;
+- (void)reportFavoritesAccessedBeforeFirstUnlock;
 - (void)writingFavorites:(id /* block */)arg1;
 
 @end

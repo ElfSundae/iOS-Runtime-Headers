@@ -14,18 +14,19 @@
 @property (nonatomic) <CSSpeakerDetectorNDAPIDelegate> *delegate;
 
 - (void).cxx_destruct;
-- (float)_computeSATScore:(id)arg1;
 - (bool)_initializeNDAPI:(id)arg1 resourcePath:(id)arg2;
 - (bool)_initializeSAT:(id)arg1;
 - (bool)addLastTriggerToProfile;
 - (bool)addLastTriggerToProfileWithSuperVector:(id)arg1;
 - (id)analyzeWavForEnrollment:(id)arg1 numSamples:(unsigned long long)arg2;
+- (float)computeSATScore:(id)arg1;
 - (void)dealloc;
 - (id)delegate;
 - (unsigned long long)getMaxSpeakerVectorsToPersist;
+- (float)getRejectLoggingThreshold;
 - (unsigned long long)getSATVectorCount;
+- (float)getSatThreshold;
 - (id)initWithAsset:(id)arg1 speakerModel:(id)arg2;
-- (void)processSuperVector:(id)arg1 withResult:(id)arg2;
 - (void)reset;
 - (void)setDelegate:(id)arg1;
 

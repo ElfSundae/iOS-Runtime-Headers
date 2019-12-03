@@ -13,6 +13,7 @@
 - (void)participant:(AVCSessionParticipant *)arg1 remoteAudioPausedDidChange:(bool)arg2;
 - (void)participant:(AVCSessionParticipant *)arg1 remoteVideoEnabledDidChange:(bool)arg2;
 - (void)participant:(AVCSessionParticipant *)arg1 remoteVideoPausedDidChange:(bool)arg2;
+- (void)participant:(AVCSessionParticipant *)arg1 spatialAudioSourceIDDidChange:(unsigned long long)arg2;
 - (void)participant:(AVCSessionParticipant *)arg1 videoEnabled:(bool)arg2 didSucceed:(bool)arg3 error:(NSError *)arg4;
 - (void)participant:(AVCSessionParticipant *)arg1 videoPaused:(bool)arg2 didSucceed:(bool)arg3 error:(NSError *)arg4;
 

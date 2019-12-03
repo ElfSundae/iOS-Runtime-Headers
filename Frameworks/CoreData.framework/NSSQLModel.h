@@ -20,6 +20,7 @@
 - (id)_entityMapping;
 - (unsigned int)_entityOffset;
 - (bool)_generateModel:(id)arg1 error:(id*)arg2;
+- (unsigned int)_lastEntityID;
 - (bool)_modelHasPrecomputedKeyOrder;
 - (id)_precomputedKeyOrderForEntity:(id)arg1;
 - (void)_recordHasVirtualToOnes;

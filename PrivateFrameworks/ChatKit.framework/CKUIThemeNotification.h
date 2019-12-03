@@ -2,8 +2,10 @@
    Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
  */
 
-@interface CKUIThemeNotification : CKUIThemeLight
+@interface CKUIThemeNotification : CKUITheme
 
+- (id)entryFieldPlaceholderColor;
+- (id)entryViewBackgroundColor;
 - (long long)entryViewStyle;
 
 @end

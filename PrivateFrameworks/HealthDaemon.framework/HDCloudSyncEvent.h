@@ -11,6 +11,7 @@
     long long  _operation;
     NSUUID * _operationID;
     unsigned long long  _options;
+    unsigned int  _pcsReportManateeStatus;
     HDProfile * _profile;
     long long  _reason;
     NSString * _syncCirclePrefix;
@@ -25,6 +26,7 @@
 @property (nonatomic, readonly) long long operation;
 @property (nonatomic, readonly, copy) NSUUID *operationID;
 @property (nonatomic, readonly) unsigned long long options;
+@property (nonatomic, readonly) unsigned int pcsReportManateeStatus;
 @property (nonatomic, readonly) HDProfile *profile;
 @property (nonatomic, readonly) long long reason;
 @property (nonatomic, readonly, copy) NSString *syncCirclePrefix;
@@ -42,6 +44,7 @@
 - (long long)operation;
 - (id)operationID;
 - (unsigned long long)options;
+- (unsigned int)pcsReportManateeStatus;
 - (id)profile;
 - (long long)reason;
 - (id)syncCirclePrefix;

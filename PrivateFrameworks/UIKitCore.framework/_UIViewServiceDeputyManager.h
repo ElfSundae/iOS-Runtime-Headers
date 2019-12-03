@@ -24,7 +24,7 @@
 
 - (int)__automatic_invalidation_logic;
 - (void)__prototype_requestConnectionToDeputyFromHostObject:(id)arg1 replyHandler:(id /* block */)arg2;
-- (void)__requestConnectionToDeputyOfClass:(void *)arg1 fromHostObject:(void *)arg2 replyHandler:(void *)arg3; // needs 3 arg types, found 4: Class, /* Warning: Unrecognized filer type: 'R' using 'void*' */ void*, id, id /* block */
+- (void)__requestConnectionToDeputyOfClass:(void *)arg1 fromHostObject:(void *)arg2 replyHandler:(void *)arg3; // needs 3 arg types, found 4: Class, byref /* Warning: Unrecognized filer type: '' using 'void*' */ void*, id, id /* block */
 - (Class)_deputyClassForConnectionSelector:(SEL)arg1;
 - (void)_invalidateUnconditionallyThen:(id /* block */)arg1;
 - (bool)_isDeallocating;

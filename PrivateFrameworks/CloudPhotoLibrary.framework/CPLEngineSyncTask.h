@@ -8,6 +8,8 @@
     CPLEngineLibrary * _engineLibrary;
     bool  _forceSync;
     bool  _foreground;
+    NSString * _phaseDescription;
+    CPLSyncSession * _session;
     <NSCoding> * _transportUserIdentifier;
 }
 
@@ -16,10 +18,12 @@
 @property (nonatomic, readonly) CPLEngineLibrary *engineLibrary;
 @property (nonatomic) bool forceSync;
 @property (nonatomic) bool foreground;
+@property (readonly) NSString *phaseDescription;
+@property (nonatomic, readonly) CPLSyncSession *session;
 @property (nonatomic, readonly) NSString *taskIdentifier;
 @property (nonatomic, retain) <NSCoding> *transportUserIdentifier;
 
-+ (id)taskWithEngineLibrary:(id)arg1;
++ (id)taskWithEngineLibrary:(id)arg1 session:(id)arg2;
 
 - (void).cxx_destruct;
 - (void)_setCancelled:(bool)arg1;
@@ -30,9 +34,11 @@
 - (id)engineLibrary;
 - (bool)forceSync;
 - (bool)foreground;
-- (id)initWithEngineLibrary:(id)arg1;
+- (id)initWithEngineLibrary:(id)arg1 session:(id)arg2;
 - (bool)isCancelled;
 - (void)launch;
+- (id)phaseDescription;
+- (id)session;
 - (void)setDelegate:(id)arg1;
 - (void)setForceSync:(bool)arg1;
 - (void)setForeground:(bool)arg1;

@@ -9,6 +9,7 @@
     <CNContactActionsControllerDelegate> * _delegate;
     NSArray * _modelCancelables;
     NSDictionary * _modelsByActionTypes;
+    <CNUINavigationListStyle> * _navigationListStyle;
     UIViewController * _viewController;
 }
 
@@ -22,10 +23,11 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSArray *modelCancelables;
 @property (nonatomic, copy) NSDictionary *modelsByActionTypes;
+@property (nonatomic) <CNUINavigationListStyle> *navigationListStyle;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) UIViewController *viewController;
 
-+ (id)descriptorForRequiredKeysForActionTypes:(id)arg1;
++ (id)descriptorForRequiredKeys;
 + (id)supportedActionTypes;
 
 - (void).cxx_destruct;
@@ -45,6 +47,7 @@
 - (id)modelsByActionTypes;
 - (void)navigationListController:(id)arg1 didSelectItem:(id)arg2;
 - (id)navigationListItemForUserActionType:(id)arg1;
+- (id)navigationListStyle;
 - (void)prepareNavigationListItems;
 - (void)retrieveModels;
 - (void)setActionTypes:(id)arg1;
@@ -54,7 +57,9 @@
 - (void)setDelegate:(id)arg1;
 - (void)setModelCancelables:(id)arg1;
 - (void)setModelsByActionTypes:(id)arg1;
+- (void)setNavigationListStyle:(id)arg1;
 - (void)setViewController:(id)arg1;
+- (void)styleUpdated;
 - (id)viewController;
 
 @end

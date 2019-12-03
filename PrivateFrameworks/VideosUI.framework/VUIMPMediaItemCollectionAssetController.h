@@ -47,6 +47,7 @@
 - (id)assetControllers;
 - (void)cancelAndRemoveDownload;
 - (id)completionDispatchQueue;
+- (void)dealloc;
 - (id)delegate;
 - (unsigned long long)fullyDownloadedAssetBytes;
 - (id)init;

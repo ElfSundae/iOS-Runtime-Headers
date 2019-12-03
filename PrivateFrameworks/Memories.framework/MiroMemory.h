@@ -42,11 +42,13 @@
     NSArray * _posters;
     NSArray * _requestedKeywords;
     NSString * _requestedMoodID;
+    NSDictionary * _requestedMusicGenreDistribution;
     NSObject<OS_dispatch_queue> * _saveQueue;
     double  _savedDuration;
     long long  _savedMaxDurationRange;
     long long  _schema;
     bool  _storedPosterExists;
+    NSSet * _suggestions;
     NSDate * _viewedDate;
 }
 
@@ -89,10 +91,12 @@
 @property (nonatomic, retain) NSArray *posters;
 @property (nonatomic, retain) NSArray *requestedKeywords;
 @property (nonatomic, retain) NSString *requestedMoodID;
+@property (nonatomic, retain) NSDictionary *requestedMusicGenreDistribution;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *saveQueue;
 @property (nonatomic) double savedDuration;
 @property (nonatomic) long long schema;
 @property (nonatomic) bool storedPosterExists;
+@property (nonatomic, retain) NSSet *suggestions;
 @property (nonatomic, retain) NSDate *viewedDate;
 
 + (id)_assetCollectionUniqueLocalIdentifier:(id)arg1;
@@ -114,6 +118,7 @@
 - (void)_saveMetadata;
 - (void)_updateAddedRemovedLists;
 - (void)_writeMetadata:(id)arg1;
+- (void)addSuggestionForAssetID:(id)arg1 freezeInfo:(id)arg2 assets:(id)arg3;
 - (void)adornIrisUsableToAssets:(id)arg1;
 - (long long)allAssetCount;
 - (id)allAssets;
@@ -132,6 +137,7 @@
 - (id)currentVideoFreezeRangeForAssetID:(id)arg1 index:(int)arg2;
 - (id)customBlueprint;
 - (double)customDuration;
+- (id)dataRepresentation;
 - (void)dealloc;
 - (id)description;
 - (id)displayName;
@@ -147,12 +153,13 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithData:(id)arg1;
 - (id)initalKeyAssetIdentifier;
 - (void)invalidateCustomDuration;
 - (void)invalidateDuration;
 - (bool)isEqual:(id)arg1;
+- (bool)isPending;
 - (bool)isPersistable;
-- (bool)isPosterEqual:(id)arg1;
 - (bool)isPregenerating;
 - (id)keyAsset;
 - (id)keyAssetID;
@@ -184,9 +191,11 @@
 - (id)pickedLocallyAvailableScenes;
 - (id)posters;
 - (id)rangesWithType:(unsigned long long)arg1 forAssetID:(id)arg2;
+- (long long)rawDurationRange;
 - (void)reportCollectionTypeForAggD:(bool)arg1;
 - (id)requestedKeywords;
 - (id)requestedMoodID;
+- (id)requestedMusicGenreDistribution;
 - (id)saveQueue;
 - (double)savedDuration;
 - (long long)schema;
@@ -225,12 +234,15 @@
 - (void)setRanges:(id)arg1 replaceType:(unsigned long long)arg2 forAssetID:(id)arg3;
 - (void)setRequestedKeywords:(id)arg1;
 - (void)setRequestedMoodID:(id)arg1;
+- (void)setRequestedMusicGenreDistribution:(id)arg1;
 - (void)setSaveQueue:(id)arg1;
 - (void)setSavedDuration:(double)arg1;
 - (void)setSchema:(long long)arg1;
 - (void)setStoredPosterExists:(bool)arg1;
+- (void)setSuggestions:(id)arg1;
 - (void)setViewedDate:(id)arg1;
 - (bool)storedPosterExists;
+- (id)suggestions;
 - (double)titleCardDuration;
 - (id)trimRangesForAsset:(id)arg1;
 - (void)unPersist;

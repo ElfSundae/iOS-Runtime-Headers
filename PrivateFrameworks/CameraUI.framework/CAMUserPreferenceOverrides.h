@@ -3,6 +3,7 @@
  */
 
 @interface CAMUserPreferenceOverrides : NSObject {
+    NSNumber * _aspectRatioCrop;
     NSNumber * _captureDevice;
     NSNumber * _captureMode;
     NSNumber * _flashMode;
@@ -11,6 +12,7 @@
     NSNumber * _wantsQRCodes;
 }
 
+@property (nonatomic, retain) NSNumber *aspectRatioCrop;
 @property (nonatomic, retain) NSNumber *captureDevice;
 @property (nonatomic, retain) NSNumber *captureMode;
 @property (nonatomic, retain) NSNumber *flashMode;
@@ -20,6 +22,7 @@
 @property (nonatomic, retain) NSNumber *wantsQRCodes;
 
 - (void).cxx_destruct;
+- (id)aspectRatioCrop;
 - (id)captureDevice;
 - (id)captureMode;
 - (id)flashMode;
@@ -28,6 +31,7 @@
 - (id)initWithLaunchOptions:(id)arg1;
 - (id)initWithOverrides:(id)arg1;
 - (id)initWithShortcutItem:(id)arg1;
+- (void)setAspectRatioCrop:(id)arg1;
 - (void)setCaptureDevice:(id)arg1;
 - (void)setCaptureMode:(id)arg1;
 - (void)setFlashMode:(id)arg1;

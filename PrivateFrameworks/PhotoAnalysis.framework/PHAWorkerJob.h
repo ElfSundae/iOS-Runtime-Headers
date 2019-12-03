@@ -5,6 +5,7 @@
 @interface PHAWorkerJob : NSObject <NSCopying> {
     unsigned long long  _countOfFailedStarts;
     <PHAWorkerJobDelegate> * _delegate;
+    bool  _didTimeout;
     bool  _disableReactionCheck;
     bool  _ignoreFurtherResults;
     bool  _isGraphUpdateJob;
@@ -20,6 +21,7 @@
 @property (nonatomic, readonly) float completionScore;
 @property (nonatomic) unsigned long long countOfFailedStarts;
 @property (nonatomic) <PHAWorkerJobDelegate> *delegate;
+@property (nonatomic) bool didTimeout;
 @property (nonatomic) bool disableReactionCheck;
 @property (nonatomic, readonly) bool finished;
 @property (nonatomic) bool ignoreFurtherResults;
@@ -38,8 +40,10 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned long long)countOfFailedStarts;
 - (id)delegate;
+- (bool)didTimeout;
 - (bool)disableReactionCheck;
 - (void)extendTimeout;
+- (void)extendTimeoutOrUpdateStopIfNeeded:(bool*)arg1;
 - (void)finish;
 - (bool)finished;
 - (bool)ignoreFurtherResults;
@@ -56,6 +60,7 @@
 - (unsigned long long)scenario;
 - (void)setCountOfFailedStarts:(unsigned long long)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setDidTimeout:(bool)arg1;
 - (void)setDisableReactionCheck:(bool)arg1;
 - (void)setIgnoreFurtherResults:(bool)arg1;
 - (void)setIsGraphUpdateJob:(bool)arg1;

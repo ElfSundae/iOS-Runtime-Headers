@@ -6,17 +6,17 @@
     unsigned short  _systemCode;
     unsigned int  _technology;
     unsigned int  _terminalType;
-    unsigned char  _touchIDRequired;
+    bool  _touchIDRequired;
     unsigned char  _valueAddedServiceMode;
-    unsigned char  _vasSupported;
+    bool  _vasSupported;
 }
 
 @property (nonatomic, readonly) unsigned short systemCode;
 @property (nonatomic, readonly) unsigned int technology;
 @property (nonatomic, readonly) unsigned int terminalType;
-@property (nonatomic, readonly) unsigned char touchIDRequired;
+@property (nonatomic, readonly) bool touchIDRequired;
 @property (nonatomic, readonly) unsigned char valueAddedServiceMode;
-@property (nonatomic, readonly) unsigned char vasSupported;
+@property (nonatomic, readonly) bool vasSupported;
 
 + (bool)supportsSecureCoding;
 
@@ -30,8 +30,8 @@
 - (unsigned short)systemCode;
 - (unsigned int)technology;
 - (unsigned int)terminalType;
-- (unsigned char)touchIDRequired;
+- (bool)touchIDRequired;
 - (unsigned char)valueAddedServiceMode;
-- (unsigned char)vasSupported;
+- (bool)vasSupported;
 
 @end

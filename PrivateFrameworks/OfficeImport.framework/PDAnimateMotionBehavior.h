@@ -9,7 +9,7 @@
     bool  mHasPathEditMode;
     bool  mHasRotationCenter;
     int  mOriginType;
-    NSString * mPath;
+    OITSUBezierPath * mPath;
     int  mPathEditMode;
     NSString * mPointsTypes;
     struct CGPoint { 
@@ -18,8 +18,11 @@
     }  mRotationCenter;
 }
 
++ (id)NSStringForBezierPath:(id)arg1;
++ (id)bezierPathFromNSString:(id)arg1;
+
+- (void).cxx_destruct;
 - (double)angle;
-- (void)dealloc;
 - (bool)hasAngle;
 - (bool)hasOriginType;
 - (bool)hasPath;

@@ -3,6 +3,8 @@
  */
 
 @interface ARVideoFormat : NSObject <NSCopying> {
+    long long  _captureDevicePosition;
+    NSString * _captureDeviceType;
     AVCaptureDeviceFormat * _depthDataFormat;
     AVCaptureDevice * _device;
     AVCaptureDeviceFormat * _deviceFormat;
@@ -13,6 +15,8 @@
     }  _imageResolution;
 }
 
+@property (nonatomic, readonly) long long captureDevicePosition;
+@property (nonatomic, readonly) NSString *captureDeviceType;
 @property (nonatomic, retain) AVCaptureDeviceFormat *depthDataFormat;
 @property (nonatomic, readonly) AVCaptureDevice *device;
 @property (nonatomic, readonly) AVCaptureDeviceFormat *deviceFormat;
@@ -25,6 +29,8 @@
 + (id)supportedVideoFormatsForDevicePosition:(long long)arg1 deviceType:(id)arg2;
 
 - (void).cxx_destruct;
+- (long long)captureDevicePosition;
+- (id)captureDeviceType;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)depthDataFormat;
 - (id)description;
@@ -35,7 +41,7 @@
 - (unsigned long long)hash;
 - (struct CGSize { double x1; double x2; })imageResolution;
 - (id)initWithCaptureDevice:(id)arg1 format:(id)arg2;
-- (id)initWithImageResolution:(struct CGSize { double x1; double x2; })arg1;
+- (id)initWithImageResolution:(struct CGSize { double x1; double x2; })arg1 captureDevicePosition:(long long)arg2 captureDeviceType:(id)arg3;
 - (bool)isEqual:(id)arg1;
 - (void)setDepthDataFormat:(id)arg1;
 - (void)setFrameRatesByPowerUsage:(id)arg1;

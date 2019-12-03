@@ -8,5 +8,9 @@
 + (double)cornerRadius;
 + (struct NSDirectionalEdgeInsets { double x1; double x2; double x3; double x4; })edgeInsets;
 + (double)height;
++ (id)pillFont;
++ (struct CGSize { double x1; double x2; })pillSize;
++ (id)pillSmallFont;
++ (struct CGSize { double x1; double x2; })smallPillSize;
 
 @end

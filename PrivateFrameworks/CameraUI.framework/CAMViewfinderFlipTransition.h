@@ -7,14 +7,14 @@
     unsigned long long  __currentAnimationID;
     CAMSnapshotView * __frontSnapshotView;
     CAMSnapshotView * __targetSnapshotView;
-    CAMViewfinderView * __viewfinderView;
+    <CAMViewfinderTransitionable> * __transitionableViewfinder;
 }
 
 @property (setter=_setBackSnapshotView:, nonatomic, retain) CAMSnapshotView *_backSnapshotView;
 @property (setter=_setCurrentAnimationID:, nonatomic) unsigned long long _currentAnimationID;
 @property (setter=_setFrontSnapshotView:, nonatomic, retain) CAMSnapshotView *_frontSnapshotView;
 @property (setter=_setTargetSnapshotView:, nonatomic, retain) CAMSnapshotView *_targetSnapshotView;
-@property (nonatomic, readonly) CAMViewfinderView *_viewfinderView;
+@property (nonatomic, readonly) <CAMViewfinderTransitionable> *_transitionableViewfinder;
 
 - (void).cxx_destruct;
 - (double)_backSnapshotTargetRadiansForDirection:(unsigned long long)arg1 frontSnapshotRadians:(double)arg2;
@@ -30,9 +30,9 @@
 - (void)_setTargetSnapshotView:(id)arg1;
 - (id)_snapshotFlipAnimationFromValue:(double)arg1 toValue:(double)arg2;
 - (id)_targetSnapshotView;
-- (id)_viewfinderView;
+- (id)_transitionableViewfinder;
 - (void)completeTransitionToLivePreviewWithCompletionHandler:(id /* block */)arg1;
-- (id)initWithViewfinderView:(id)arg1;
+- (id)initWithTransitionableViewfinder:(id)arg1;
 - (void)performFlipTransitionWithDirection:(unsigned long long)arg1 completionHandler:(id /* block */)arg2;
 
 @end

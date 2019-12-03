@@ -18,7 +18,6 @@
 @property (nonatomic, retain) TVButton *playButton;
 @property (nonatomic, retain) _TVProgressView *progressView;
 
-+ (id)_episodePlaceholderImage;
 + (void)configureEpisodeFrameView:(id)arg1 withMedia:(id)arg2 layout:(long long)arg3 imageSize:(struct CGSize { double x1; double x2; })arg4;
 
 - (void).cxx_destruct;

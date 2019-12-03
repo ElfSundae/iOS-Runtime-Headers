@@ -7,6 +7,7 @@
     long long  _currentStage;
     NSArray * _dependentJobs;
     <NUDevice> * _device;
+    bool  _didRespond;
     NSError * _error;
     bool  _failed;
     NUImageGeometry * _fullSizeGeometry;
@@ -14,6 +15,7 @@
     bool  _isCanceled;
     bool  _isExecuting;
     bool  _isFinished;
+    NSString * _memoizationCacheKey;
     unsigned long long  _number;
     NUObservatory * _observatory;
     AVAudioMix * _outputAudioMix;
@@ -30,12 +32,14 @@
     }  _renderScale;
     int  _rendererType;
     NSObject<OS_dispatch_group> * _replyGroup;
+    bool  _replySynchronous;
     NURenderRequest * _request;
     NUGeometrySpaceMap * _resolvedSpaceMap;
     NSObject<OS_dispatch_queue> * _stateQueue;
     NURenderJobStatistics * _stats;
 }
 
+@property (nonatomic, readonly, copy) NSString *additionalDebugInfo;
 @property (nonatomic, retain) NUComposition *composition;
 @property (readonly) long long currentStage;
 @property (retain) NSArray *dependentJobs;
@@ -60,7 +64,6 @@
 @property (nonatomic, retain) NURenderNode *renderNode;
 @property (nonatomic, retain) NURenderPipeline *renderPipeline;
 @property (nonatomic) struct { long long x1; long long x2; } renderScale;
-@property (nonatomic, readonly) <NURenderer> *renderer;
 @property (nonatomic, readonly) int rendererType;
 @property (nonatomic, retain) NSObject<OS_dispatch_group> *replyGroup;
 @property (readonly) NURenderRequest *request;
@@ -78,16 +81,25 @@
 @property (nonatomic, readonly) bool wantsRenderScaleClampedToNativeScale;
 @property (nonatomic, readonly) bool wantsRenderStage;
 
++ (void)flushCache;
++ (void)initialize;
+
 - (void).cxx_destruct;
-- (struct { bool x1; bool x2; })_atomicCancel;
+- (struct { bool x1; bool x2; bool x3; })_atomicCancel;
 - (void)_cancel;
-- (void)_cancelCoalescedJob;
+- (bool)_cancelCoalescedJob;
+- (bool)_checkForMemoizedResult;
 - (void)_didPrepare;
+- (void)_emitSignpostEventType:(unsigned char)arg1 forStage:(long long)arg2 duration:(double)arg3;
 - (void)_finish;
+- (id)_memoizationCacheKey;
+- (void)_memoizeResult:(id)arg1;
 - (long long)_nextStageForStage:(long long)arg1;
 - (void)_notifyCanceled:(long long)arg1;
 - (void)_notifyStageTransition:(long long)arg1;
+- (void)_pause;
 - (void)_reply:(id)arg1;
+- (void)_resume;
 - (void)_run:(long long)arg1;
 - (void)_setCurrentStage:(long long)arg1;
 - (bool)_shouldCancelCoalescedJob;
@@ -98,8 +110,10 @@
 - (void)abortStage:(long long)arg1;
 - (void)addCancelObserver:(id)arg1 queue:(id)arg2 block:(id /* block */)arg3;
 - (void)addStageObserver:(id)arg1 queue:(id)arg2 block:(id /* block */)arg3;
+- (id)additionalDebugInfo;
+- (id)cacheKey;
 - (void)cancel;
-- (void)cancelCoalescedJob;
+- (bool)cancelCoalescedJob;
 - (void)cleanUp;
 - (bool)complete:(out id*)arg1;
 - (id)composition;
@@ -132,6 +146,7 @@
 - (id)outputImage;
 - (id)outputVideo;
 - (id)outputVideoComposition;
+- (void)pause;
 - (id)pipelineForComposition:(id)arg1 error:(out id*)arg2;
 - (bool)prepare:(out id*)arg1;
 - (id)prepareNode;
@@ -145,7 +160,7 @@
 - (id)renderPipeline;
 - (struct { long long x1; long long x2; })renderScale;
 - (bool)renderVideoFrames:(id)arg1 intoPixelBuffer:(struct __CVBuffer { }*)arg2 time:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg3 colorSpace:(id)arg4 error:(out id*)arg5;
-- (id)renderer;
+- (id)renderer:(out id*)arg1;
 - (int)rendererType;
 - (void)reply:(id)arg1;
 - (id)replyGroup;
@@ -155,8 +170,11 @@
 - (id)resolvedSpaceMap;
 - (void)respond;
 - (id)result;
+- (void)resume;
 - (void)run:(long long)arg1;
 - (bool)runStage:(long long)arg1 error:(out id*)arg2;
+- (void)runSynchronous;
+- (void)runToPrepareSynchronous;
 - (id)scalePolicy;
 - (void)setComposition:(id)arg1;
 - (void)setDependentJobs:(id)arg1;

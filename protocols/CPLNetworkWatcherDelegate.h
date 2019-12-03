@@ -5,6 +5,6 @@
 
 @required
 
-- (void)networkStateDidChangeForNetworkWatcher:(CPLNetworkWatcher *)arg1;
+- (void)watcher:(CPLNetworkWatcher *)arg1 stateDidChangeToNetworkState:(CPLNetworkState *)arg2;
 
 @end

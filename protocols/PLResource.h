@@ -7,21 +7,28 @@
 
 - (<PLAssetID> *)assetID;
 - (<PLCodecIdentity> *)codecID;
-- (<PLColorSpaceIdentity> *)colorSpaceID;
 - (unsigned long long)cplType;
+- (long long)dataLength;
 - (<PLResourceDataStore> *)dataStore;
 - (<PLResourceDataStoreKey> *)dataStoreKey;
 - (long long)dataStoreSubtype;
+- (long long)estimatedDataLength;
 - (bool)isDefaultOrientation;
 - (bool)isDerivative;
-- (bool)isPrimaryUTI;
+- (bool)isPlayableVideo;
 - (short)localAvailability;
 - (short)localAvailabilityTarget;
+- (unsigned int)orientation;
 - (long long)orientedHeight;
 - (long long)orientedWidth;
 - (int)qualitySortValue;
 - (unsigned int)recipeID;
 - (short)remoteAvailability;
 - (short)remoteAvailabilityTarget;
+- (float)scale;
+- (NSDate *)trashedDate;
+- (short)trashedState;
+- (long long)unorientedHeight;
+- (long long)unorientedWidth;
 
 @end

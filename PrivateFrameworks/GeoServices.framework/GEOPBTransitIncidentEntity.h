@@ -6,8 +6,8 @@
     unsigned long long  _affectedMuid;
     GEOPBTransitIncidentEntityFilter * _filter;
     struct { 
-        unsigned int affectedMuid : 1; 
-    }  _has;
+        unsigned int has_affectedMuid : 1; 
+    }  _flags;
     PBUnknownFields * _unknownFields;
 }
 
@@ -24,8 +24,11 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (unsigned long long)affectedMuid;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -39,6 +42,7 @@
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)muid;
 - (id)nextStopIDs;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAffectedMuid:(unsigned long long)arg1;
 - (void)setFilter:(id)arg1;

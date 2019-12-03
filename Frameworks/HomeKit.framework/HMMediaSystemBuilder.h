@@ -17,9 +17,9 @@
 }
 
 @property (nonatomic, retain) NSString *builderSessionID;
-@property (nonatomic, retain) NSArray *components;
+@property (nonatomic, copy) NSArray *components;
 @property (nonatomic, retain) HMMutableArray *componentsArray;
-@property (nonatomic, retain) NSString *configuredName;
+@property (nonatomic, copy) NSString *configuredName;
 @property (nonatomic, retain) _HMContext *context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -27,7 +27,7 @@
 @property (nonatomic, readonly) HMHome *home;
 @property (nonatomic, readonly) HMMediaSystem *mediaSystem;
 @property (nonatomic, readonly) NSUUID *mediaSystemUUID;
-@property (nonatomic, retain) NSString *name;
+@property (nonatomic, copy) NSString *name;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSUUID *uuid;
 

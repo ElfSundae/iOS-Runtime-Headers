@@ -3,27 +3,21 @@
  */
 
 @interface CRCarKitServiceClient : NSObject {
-    NSMutableArray * _outstandingSemaphores;
-    <CRCarKitService> * _service;
-    NSXPCConnection * _serviceConnection;
+    NSXPCConnection * _connection;
 }
 
-@property (nonatomic, retain) NSMutableArray *outstandingSemaphores;
-@property (nonatomic, retain) <CRCarKitService> *service;
-@property (nonatomic, retain) NSXPCConnection *serviceConnection;
+@property (nonatomic, retain) NSXPCConnection *connection;
+
++ (id)serviceQueue;
 
 - (void).cxx_destruct;
-- (void)_blockOnServiceSemaphore:(id)arg1;
-- (void)_releaseAllServiceSemaphores;
-- (id)_serviceSemaphore;
+- (void)_serviceQueuePerformBlock:(id /* block */)arg1 errorHandler:(id /* block */)arg2;
+- (void)_setupConnection;
+- (id)connection;
 - (void)dealloc;
 - (id)init;
-- (id)outstandingSemaphores;
-- (void)performServiceCallBlock:(id /* block */)arg1;
-- (id)service;
-- (id)serviceConnection;
-- (void)setOutstandingSemaphores:(id)arg1;
-- (void)setService:(id)arg1;
-- (void)setServiceConnection:(id)arg1;
+- (void)performServiceBlock:(id /* block */)arg1 errorHandler:(id /* block */)arg2;
+- (void)performSynchronousServiceBlock:(id /* block */)arg1 errorHandler:(id /* block */)arg2;
+- (void)setConnection:(id)arg1;
 
 @end

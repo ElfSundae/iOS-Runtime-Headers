@@ -4,6 +4,7 @@
 
 @interface SAPhonePlayVoiceMail : SADomainCommand
 
+@property (nonatomic, retain) SARemoteDevice *targetDevice;
 @property (nonatomic, copy) NSURL *voiceMailId;
 
 // Image: /System/Library/PrivateFrameworks/SAObjects.framework/SAObjects
@@ -14,7 +15,9 @@
 - (id)encodedClassName;
 - (id)groupIdentifier;
 - (bool)requiresResponse;
+- (void)setTargetDevice:(id)arg1;
 - (void)setVoiceMailId:(id)arg1;
+- (id)targetDevice;
 - (id)voiceMailId;
 
 // Image: /System/Library/PrivateFrameworks/AssistantUI.framework/AssistantUI

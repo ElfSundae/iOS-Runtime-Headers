@@ -7,12 +7,20 @@
     WBSSavedPasswordStore * _savedPasswordStore;
 }
 
+@property (nonatomic, readonly) WBSAutoFillQuirksManager *autoFillQuirksManager;
+@property (nonatomic, readonly) bool passwordStoreHasDuplicatedPasswords;
+@property (nonatomic, readonly) WBSSavedPasswordStore *savedPasswordStore;
+
 - (void).cxx_destruct;
 - (bool)_passwordIsReused:(id)arg1 byOtherSavedPassword:(id)arg2;
 - (bool)_savedPasswordQualifiesForReuseAuditing:(id)arg1;
+- (id)autoFillQuirksManager;
+- (id)duplicatePasswordsInPasswords:(id)arg1;
+- (id)init;
 - (id)initWithSavedPasswordStore:(id)arg1 autoFillQuirksManager:(id)arg2;
 - (bool)passwordStoreHasDuplicatedPasswords;
 - (bool)savedPasswordIsReused:(id)arg1;
+- (id)savedPasswordStore;
 - (id)savedPasswordsWithDuplicatedPassword:(id)arg1;
 
 @end

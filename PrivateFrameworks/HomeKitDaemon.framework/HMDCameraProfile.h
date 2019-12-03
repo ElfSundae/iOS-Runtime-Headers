@@ -2,10 +2,19 @@
    Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
  */
 
-@interface HMDCameraProfile : HMDAccessoryProfile <HMDCameraSettingProactiveReaderDelegate> {
+@interface HMDCameraProfile : HMDAccessoryProfile <HMDCameraClipManagerDelegate, HMDCameraProfileSettingsManagerDelegate, HMDCameraSettingProactiveReaderDelegate> {
+    HMDCameraRecordingManager * _cameraRecordingManager;
+    HMDCameraProfileSettingsManager * _cameraSettingsManager;
     NSSet * _cameraStreamManagers;
+    HMDCameraClipManager * _clipManager;
+    HMDCameraClipUserNotificationCenter * _clipUserNotificationCenter;
+    NSUUID * _cloudZoneUUID;
+    HMDHAPAccessory * _hapAccessory;
     bool  _microphonePresent;
     HMFNetMonitor * _networkMonitor;
+    HMDPredicateUtilities * _predicateUtilities;
+    HMDService * _recordingManagementService;
+    id /* block */  _recordingManagerFactory;
     HMDCameraResidentMessageHandler * _residentMessageHandler;
     NSMutableArray * _settingProactiveReaders;
     HMDCameraSnapshotManager * _snapshotManager;
@@ -13,48 +22,90 @@
     HMDCameraStreamSnapshotHandler * _streamSnapshotHandler;
 }
 
-@property (nonatomic, readonly) NSSet *cameraStreamManagers;
+@property (retain) HMDCameraRecordingManager *cameraRecordingManager;
+@property (readonly) HMDCameraProfileSettingsManager *cameraSettingsManager;
+@property (readonly) NSSet *cameraStreamManagers;
+@property (retain) HMDCameraClipManager *clipManager;
+@property (retain) HMDCameraClipUserNotificationCenter *clipUserNotificationCenter;
+@property (retain) NSUUID *cloudZoneUUID;
+@property (readonly) HMDCameraProfileSettingsModel *currentSettingsModel;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly) HMDHAPAccessory *hapAccessory;
 @property (readonly) unsigned long long hash;
 @property (getter=isMicrophonePresent, nonatomic, readonly) bool microphonePresent;
-@property (nonatomic, retain) HMFNetMonitor *networkMonitor;
-@property (nonatomic, readonly) HMDCameraResidentMessageHandler *residentMessageHandler;
-@property (nonatomic, readonly) NSMutableArray *settingProactiveReaders;
-@property (nonatomic, readonly) HMDCameraSnapshotManager *snapshotManager;
+@property (readonly) HMFNetMonitor *networkMonitor;
+@property (retain) HMDPredicateUtilities *predicateUtilities;
+@property (readonly) HMDService *recordingManagementService;
+@property (readonly) id /* block */ recordingManagerFactory;
+@property (readonly) HMDCameraResidentMessageHandler *residentMessageHandler;
+@property (readonly) NSMutableArray *settingProactiveReaders;
+@property (readonly) HMDCameraSnapshotManager *snapshotManager;
 @property (getter=isSpeakerPresent, nonatomic, readonly) bool speakerPresent;
-@property (nonatomic, readonly) HMDCameraStreamSnapshotHandler *streamSnapshotHandler;
+@property (readonly) HMDCameraStreamSnapshotHandler *streamSnapshotHandler;
 @property (readonly) Class superclass;
+@property (getter=isCameraRecordingFeatureSupported, nonatomic, readonly) bool supportsCameraRecordingFeature;
 
 + (bool)hasMessageReceiverChildren;
 + (id)logCategory;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (void)_configureForRecording;
 - (id)_createCameraManagers:(id)arg1;
 - (void)_handleNegotiateStreamRequest:(id)arg1;
 - (void)_handleStreamControlRequest:(id)arg1;
 - (void)_setControlSupport;
-- (void)cameraSettingProactiveReaderDidCompleteRead:(id)arg1 negotiateStreamMessageWasHandled:(bool)arg2;
+- (id)assistantObject;
+- (void)cameraProfileSettingsManager:(id)arg1 canDisableRecordingWithCompletion:(id /* block */)arg2;
+- (void)cameraProfileSettingsManager:(id)arg1 canEnableRecordingWithCompletion:(id /* block */)arg2;
+- (id)cameraRecordingManager;
+- (void)cameraSettingProactiveReaderDidCompleteRead:(id)arg1;
+- (id)cameraSettingsManager;
 - (id)cameraStreamManagers;
+- (id)clipManager;
+- (void)clipManager:(id)arg1 didAddSignificantEventNotification:(id)arg2;
+- (void)clipManager:(id)arg1 didDeleteClip:(id)arg2;
+- (bool)clipManager:(id)arg1 shouldAddNotificationForSignificantEvent:(id)arg2 withHomePresence:(id)arg3;
+- (void)clipManagerDidBecomeAvailable:(id)arg1;
+- (void)clipManagerDidBecomeUnavailable:(id)arg1;
+- (void)clipManagerDidDisableCloudStorage:(id)arg1;
+- (id)clipUserNotificationCenter;
+- (id)cloudZoneUUID;
+- (void)createCameraClipUserNotificationCenter;
+- (id)currentSettingsModel;
 - (void)dealloc;
 - (id)description;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
+- (void)handleCameraProfileSettingsDidChangeNotification:(id)arg1;
+- (void)handleResidentsChanged:(id)arg1;
+- (id)hapAccessory;
 - (unsigned long long)hash;
-- (id)initWithAccessory:(id)arg1 services:(id)arg2 msgDispatcher:(id)arg3;
+- (id)initWithAccessory:(id)arg1 services:(id)arg2 msgDispatcher:(id)arg3 settingsManager:(id)arg4 workQueue:(id)arg5;
+- (id)initWithAccessory:(id)arg1 services:(id)arg2 msgDispatcher:(id)arg3 settingsManager:(id)arg4 workQueue:(id)arg5 recordingManagerFactory:(id /* block */)arg6;
+- (bool)isCameraRecordingFeatureSupported;
 - (bool)isEqual:(id)arg1;
 - (bool)isMicrophonePresent;
 - (bool)isSpeakerPresent;
 - (id)logIdentifier;
 - (id)messageReceiverChildren;
-- (void)monitorForEventsForServices:(id)arg1;
 - (id)networkMonitor;
+- (id)predicateUtilities;
+- (id)recordingManagementService;
+- (id /* block */)recordingManagerFactory;
 - (void)registerForMessages;
+- (void)removeCloudData;
 - (id)residentMessageHandler;
-- (void)setNetworkMonitor:(id)arg1;
+- (void)setCameraRecordingManager:(id)arg1;
+- (void)setClipManager:(id)arg1;
+- (void)setClipUserNotificationCenter:(id)arg1;
+- (void)setCloudZoneUUID:(id)arg1;
+- (void)setPredicateUtilities:(id)arg1;
+- (void)setUp;
 - (id)settingProactiveReaders;
 - (id)snapshotManager;
 - (id)streamSnapshotHandler;
+- (id)url;
 
 @end

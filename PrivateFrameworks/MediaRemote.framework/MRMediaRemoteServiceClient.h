@@ -9,11 +9,12 @@
     int  _notifyRestoreClientStateForLaunch;
     NSObject<OS_dispatch_queue> * _playbackQueueDispatchQueue;
     NSMutableSet * _playerPathInvalidationHandlers;
-    NSString * _preparedBundleID;
     NSMutableArray * _registeredOrigins;
     MRAVRoutingClientController * _routingClientController;
     NSObject<OS_dispatch_queue> * _serialQueue;
     MRMediaRemoteService * _service;
+    MRBlockGuard * _xpcConnectionIgnoreNextInvalidationTimer;
+    bool  _xpcConnectionIsActive;
 }
 
 @property (nonatomic, retain) _MRNowPlayingPlayerPathProtobuf *activePlayerPath;
@@ -27,12 +28,17 @@
 
 - (void).cxx_destruct;
 - (void)_callInvalidationHandler:(id)arg1;
+- (void)_initializeConnection;
+- (void)_invalidateConnectionWithTimer:(bool)arg1;
 - (void)_onQueue_processPlayerPathInvalidationHandlersWithBlock:(id /* block */)arg1;
 - (void)_onQueue_setActivePlayerPath:(id)arg1;
 - (void)_processPlayerPathInvalidationHandlersWithBlock:(id /* block */)arg1;
+- (void)_registerCallbacks;
+- (void)_resumeConnection;
 - (id)activePlayerPath;
 - (id)addPlayerPathInvalidationHandler:(id)arg1;
 - (void)dealloc;
+- (id)debugDescription;
 - (void)fetchPickableRoutesWithCategory:(id)arg1 completion:(id /* block */)arg2;
 - (id)init;
 - (bool)isOriginRegistered:(id)arg1;

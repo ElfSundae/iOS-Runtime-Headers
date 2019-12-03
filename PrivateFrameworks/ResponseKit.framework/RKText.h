@@ -20,8 +20,6 @@
 
 + (id)annotationNameFromType:(unsigned long long)arg1;
 + (unsigned long long)annotationTypeFromName:(id)arg1;
-+ (bool)canClassifyPolarityForLanguageIdentifier:(id)arg1 withOptions:(unsigned long long)arg2;
-+ (bool)canClassifyPolarityForLanguageIdentifier:(id)arg1 withOptions:(unsigned long long)arg2 dataProvider:(id)arg3;
 + (id)defaultDataProvider;
 + (void)initialize;
 + (id)polarityNameFromType:(unsigned long long)arg1;
@@ -39,8 +37,6 @@
 - (id)initWithString:(id)arg1 andLanguageIdentifier:(id)arg2 trainingWeight:(double)arg3 trainVerbatim:(bool)arg4;
 - (id)languageID;
 - (id)lsmText;
-- (unsigned long long)polarityClassificationWithOptions:(unsigned long long)arg1;
-- (unsigned long long)polarityClassificationWithOptions:(unsigned long long)arg1 dataProvider:(id)arg2;
 - (id)processedText;
 - (void)setAnnotations:(id)arg1;
 - (void)setLanguageID:(id)arg1;

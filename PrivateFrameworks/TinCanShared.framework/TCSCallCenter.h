@@ -27,13 +27,12 @@
 - (bool)hasValidConnection;
 - (id)init;
 - (void)invalidate;
-- (void)localMeterLevelForCall:(id)arg1 result:(id /* block */)arg2;
+- (void)logEntryForCallWithUniqueProxyIdentifier:(id)arg1 completion:(id /* block */)arg2;
 - (void)queryIsTinCannable:(id)arg1;
-- (void)remoteMeterLevelForCall:(id)arg1 result:(id /* block */)arg2;
 - (void)remoteUplinkMuteChanged:(id)arg1;
+- (id)ringingCall;
 - (void)sessionViewControllerViewDidAppear;
 - (void)setDelegate:(id)arg1;
-- (void)setGreetingRecordingInProgress:(bool)arg1;
 - (void)setUplinkMuted:(bool)arg1 for:(id)arg2 completion:(id /* block */)arg3;
 - (void)synchronouslyFetchCall;
 

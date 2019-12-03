@@ -9,7 +9,7 @@
 
 @property (nonatomic, retain) TSPData *tspData;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (bool)isAudioOnly;
 - (void)setIsAudioOnly:(bool)arg1;
 - (void)setTspData:(id)arg1;

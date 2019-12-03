@@ -11,6 +11,7 @@
 @property (nonatomic) <PSSplitViewControllerNavigationDelegate> *navigationDelegate;
 
 - (void).cxx_destruct;
+- (id)categoryController;
 - (id)childViewControllerForStatusBarStyle;
 - (id)containerNavigationController;
 - (id)navigationDelegate;

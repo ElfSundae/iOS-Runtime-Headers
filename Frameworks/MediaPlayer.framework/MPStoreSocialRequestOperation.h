@@ -3,9 +3,9 @@
  */
 
 @interface MPStoreSocialRequestOperation : MPAsyncOperation {
-    SSVLoadURLOperation * _URLOperation;
     NSObject<OS_dispatch_queue> * _accessQueue;
     <MPStoreSocialRequestOperationDataSource> * _dataSource;
+    ICStoreURLRequest * _request;
     id /* block */  _responseHandler;
 }
 
@@ -17,7 +17,7 @@
 + (id)_urlStringForKey:(id)arg1 inBag:(id)arg2;
 
 - (void).cxx_destruct;
-- (id)_storeURLRequestPropertiesUsingBag:(id)arg1;
+- (id)_requestURLFromBagDictionary:(id)arg1;
 - (void)cancel;
 - (id)dataSource;
 - (void)execute;

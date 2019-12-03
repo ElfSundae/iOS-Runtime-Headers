@@ -3,6 +3,7 @@
  */
 
 @interface UIAccessibilityHUDItem : NSObject <NSCopying> {
+    long long  _customUserInterfaceStyle;
     UIView * _customView;
     bool  _disabledAppearance;
     bool  _flattenImage;
@@ -17,6 +18,7 @@
     NSString * _title;
 }
 
+@property (nonatomic) long long customUserInterfaceStyle;
 @property (nonatomic, retain) UIView *customView;
 @property (nonatomic) bool disabledAppearance;
 @property (nonatomic) bool flattenImage;
@@ -25,13 +27,12 @@
 @property (nonatomic) bool scaleImage;
 @property (nonatomic, copy) NSString *title;
 
-// Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
-
-+ (id)HUDItemForBarButtonItem:(id)arg1;
++ (id)HUDItemForBarButtonItem:(id)arg1 atPoint:(struct CGPoint { double x1; double x2; })arg2 inView:(id)arg3;
 + (id)HUDItemForTabBarItem:(id)arg1;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (long long)customUserInterfaceStyle;
 - (id)customView;
 - (bool)disabledAppearance;
 - (bool)flattenImage;
@@ -43,6 +44,7 @@
 - (id)initWithTitle:(id)arg1 image:(id)arg2 imageInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg3 scaleImage:(bool)arg4;
 - (bool)isEqual:(id)arg1;
 - (bool)scaleImage;
+- (void)setCustomUserInterfaceStyle:(long long)arg1;
 - (void)setCustomView:(id)arg1;
 - (void)setDisabledAppearance:(bool)arg1;
 - (void)setFlattenImage:(bool)arg1;
@@ -51,9 +53,5 @@
 - (void)setScaleImage:(bool)arg1;
 - (void)setTitle:(id)arg1;
 - (id)title;
-
-// Image: /System/Library/PrivateFrameworks/NotesUI.framework/NotesUI
-
-+ (id)HUDItemForBarButtonItem:(id)arg1;
 
 @end

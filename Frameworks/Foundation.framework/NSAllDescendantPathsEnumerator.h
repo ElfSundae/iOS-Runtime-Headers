@@ -22,6 +22,7 @@
 - (void)dealloc;
 - (id)directoryAttributes;
 - (id)fileAttributes;
+- (bool)isEnumeratingDirectoryPostOrder;
 - (unsigned long long)level;
 - (id)nextObject;
 - (void)skipDescendants;

@@ -15,6 +15,7 @@
 
 @property (setter=___setNSXPCRemoteObjectProxy:, nonatomic, retain) id ___nsxpc_remoteObjectProxy;
 
+- (void).cxx_destruct;
 - (id)___nsxpc_remoteObjectProxy;
 - (void)___setNSXPCRemoteObjectProxy:(id)arg1;
 - (bool)conformsToProtocol:(id)arg1;

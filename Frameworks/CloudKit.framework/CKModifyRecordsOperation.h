@@ -2,13 +2,16 @@
    Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
  */
 
-@interface CKModifyRecordsOperation : CKDatabaseOperation <MSPCloudRequest> {
+@interface CKModifyRecordsOperation : CKDatabaseOperation {
+    NSDictionary * _assetUUIDToExpectedProperties;
     NSMutableDictionary * _assetsByRecordIDAndRecordKey;
     bool  _atomic;
     NSData * _clientChangeTokenData;
     NSDictionary * _conflictLosersToResolveByRecordID;
     NSMutableArray * _deletedRecordIDs;
+    bool  _markAsParticipantNeedsNewInvitationToken;
     id /* block */  _modifyRecordsCompletionBlock;
+    NSDictionary * _packageUUIDToExpectedProperties;
     NSMutableSet * _packagesToDestroy;
     id /* block */  _perRecordCompletionBlock;
     id /* block */  _perRecordProgressBlock;
@@ -25,15 +28,15 @@
     bool  _shouldReportRecordsInFlight;
 }
 
+@property (nonatomic, copy) NSDictionary *assetUUIDToExpectedProperties;
 @property (nonatomic, retain) NSMutableDictionary *assetsByRecordIDAndRecordKey;
 @property (nonatomic) bool atomic;
 @property (nonatomic, copy) NSData *clientChangeTokenData;
 @property (nonatomic, retain) NSDictionary *conflictLosersToResolveByRecordID;
-@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, retain) NSMutableArray *deletedRecordIDs;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
+@property (nonatomic) bool markAsParticipantNeedsNewInvitationToken;
 @property (nonatomic, copy) id /* block */ modifyRecordsCompletionBlock;
+@property (nonatomic, copy) NSDictionary *packageUUIDToExpectedProperties;
 @property (nonatomic, retain) NSMutableSet *packagesToDestroy;
 @property (nonatomic, copy) id /* block */ perRecordCompletionBlock;
 @property (nonatomic, copy) id /* block */ perRecordProgressBlock;
@@ -46,10 +49,8 @@
 @property (nonatomic, copy) NSArray *recordsToSave;
 @property (nonatomic) long long savePolicy;
 @property (nonatomic, retain) NSMutableArray *savedRecords;
-@property (nonatomic, readonly) bool shouldEnqueueDependenciesWhenPerformingAsCloudRequest;
 @property (nonatomic) bool shouldOnlySaveAssetContent;
 @property (nonatomic) bool shouldReportRecordsInFlight;
-@property (readonly) Class superclass;
 
 // Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
 
@@ -59,11 +60,13 @@
 - (void)_handleProgressCallback:(id)arg1;
 - (void)_trackAssetsToUpload;
 - (id)activityCreate;
+- (id)assetUUIDToExpectedProperties;
 - (id)assetsByRecordIDAndRecordKey;
 - (bool)atomic;
 - (bool)claimPackagesInRecord:(id)arg1 error:(id*)arg2;
 - (id)clientChangeTokenData;
 - (id)conflictLosersToResolveByRecordID;
+- (void)copyStreamingAssetServerFieldsFromServerRecord:(id)arg1 toRecord:(id)arg2;
 - (id)deletedRecordIDs;
 - (void)destroyPackages:(id)arg1;
 - (void)destroyPackagesInRecords:(id)arg1;
@@ -72,7 +75,9 @@
 - (bool)hasCKOperationCallbacksSet;
 - (id)init;
 - (id)initWithRecordsToSave:(id)arg1 recordIDsToDelete:(id)arg2;
+- (bool)markAsParticipantNeedsNewInvitationToken;
 - (id /* block */)modifyRecordsCompletionBlock;
+- (id)packageUUIDToExpectedProperties;
 - (id)packagesToDestroy;
 - (id /* block */)perRecordCompletionBlock;
 - (id /* block */)perRecordProgressBlock;
@@ -86,12 +91,15 @@
 - (id)recordsToSave;
 - (long long)savePolicy;
 - (id)savedRecords;
+- (void)setAssetUUIDToExpectedProperties:(id)arg1;
 - (void)setAssetsByRecordIDAndRecordKey:(id)arg1;
 - (void)setAtomic:(bool)arg1;
 - (void)setClientChangeTokenData:(id)arg1;
 - (void)setConflictLosersToResolveByRecordID:(id)arg1;
 - (void)setDeletedRecordIDs:(id)arg1;
+- (void)setMarkAsParticipantNeedsNewInvitationToken:(bool)arg1;
 - (void)setModifyRecordsCompletionBlock:(id /* block */)arg1;
+- (void)setPackageUUIDToExpectedProperties:(id)arg1;
 - (void)setPackagesToDestroy:(id)arg1;
 - (void)setPerRecordCompletionBlock:(id /* block */)arg1;
 - (void)setPerRecordProgressBlock:(id /* block */)arg1;
@@ -108,11 +116,6 @@
 - (void)setShouldReportRecordsInFlight:(bool)arg1;
 - (bool)shouldOnlySaveAssetContent;
 - (bool)shouldReportRecordsInFlight;
-
-// Image: /System/Library/PrivateFrameworks/MapsSupport.framework/MapsSupport
-
-- (void)addCloudAccessCompletionBlock:(id /* block */)arg1;
-- (void)setNetworkBehaviorIsDiscretionary:(bool)arg1;
 
 // Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
 

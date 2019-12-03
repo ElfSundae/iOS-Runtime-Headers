@@ -16,10 +16,10 @@
 
 @property (retain) NSURLSessionConfiguration *configuration;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) NSObject<OS_dispatch_queue> *demuxQueue;
+@property (nonatomic, retain) NSObject<OS_dispatch_queue> *demuxQueue;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property NSString *identifier;
+@property (copy) NSString *identifier;
 @property (nonatomic) long long maximumRequestCount;
 @property (nonatomic) long long requestCount;
 @property (retain) NSURLSession *session;
@@ -28,6 +28,7 @@
 @property (readonly) Class superclass;
 @property (retain) NSMutableDictionary *taskInfoByTaskIdentifier;
 
+- (void).cxx_destruct;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;

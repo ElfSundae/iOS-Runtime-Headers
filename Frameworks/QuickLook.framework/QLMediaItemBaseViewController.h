@@ -48,11 +48,8 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) bool visualTracksEnabled;
 
-+ (bool)shouldBeRemoteForContentType:(id)arg1;
-+ (id)supportedContentTypes;
-+ (Class)transformerClass;
-
 - (void).cxx_destruct;
+- (bool)_assetIsDecodable:(id)arg1;
 - (void)_updateExternalPlayback;
 - (void)_updatePlayingStatus;
 - (void)buttonPressedWithIdentifier:(id)arg1 completionHandler:(id /* block */)arg2;
@@ -74,8 +71,8 @@
 - (double)mediaVolume;
 - (void)observePlayingTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
-- (void)pause;
-- (void)play;
+- (bool)pause;
+- (bool)play;
 - (bool)playable;
 - (id)player;
 - (void)playerItemDidReachEnd:(id)arg1;
@@ -86,7 +83,6 @@
 - (void)previewDidAppear:(bool)arg1;
 - (void)previewDidDisappear:(bool)arg1;
 - (void)previewIsAppearingWithProgress:(double)arg1;
-- (id)registeredKeyCommands;
 - (double)remainingTime;
 - (void)resetToBeginning;
 - (void)setAppearance:(id)arg1 animated:(bool)arg2;
@@ -97,7 +93,9 @@
 - (void)setMediaVolume:(double)arg1;
 - (void)setPlayer:(id)arg1;
 - (void)setRemainingTime:(double)arg1;
+- (id)setupPlayerViewWithPlayer:(id)arg1;
 - (void)setupPlayerWithMediaAsset:(id)arg1;
+- (bool)shouldDisplayPlayButtonInNavigationBar;
 - (void)stop;
 - (void)togglePlayback;
 - (id)toolbarButtonsForTraitCollection:(id)arg1;

@@ -14,5 +14,6 @@
 - (id)xValueAsGenericType;
 - (id)yValue;
 - (id)yValueForKey:(NSString *)arg1;
+- (id)yValueForKey:(NSString *)arg1;
 
 @end

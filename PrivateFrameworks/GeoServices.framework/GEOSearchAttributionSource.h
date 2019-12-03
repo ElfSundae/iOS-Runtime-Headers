@@ -11,9 +11,29 @@
     }  _attributionRequirements;
     bool  _enforceAppStore;
     struct { 
-        unsigned int enforceAppStore : 1; 
-    }  _has;
+        unsigned int has_enforceAppStore : 1; 
+        unsigned int read_attributionRequirements : 1; 
+        unsigned int read_attributionApps : 1; 
+        unsigned int read_localizedAttributions : 1; 
+        unsigned int read_sourceIdentifier : 1; 
+        unsigned int read_supportedComponentActions : 1; 
+        unsigned int read_webBaseActionURL : 1; 
+        unsigned int wrote_attributionRequirements : 1; 
+        unsigned int wrote_attributionApps : 1; 
+        unsigned int wrote_localizedAttributions : 1; 
+        unsigned int wrote_sourceIdentifier : 1; 
+        unsigned int wrote_supportedComponentActions : 1; 
+        unsigned int wrote_webBaseActionURL : 1; 
+        unsigned int wrote_sourceVersion : 1; 
+        unsigned int wrote_enforceAppStore : 1; 
+    }  _flags;
     NSMutableArray * _localizedAttributions;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     NSString * _sourceIdentifier;
     unsigned int  _sourceVersion;
     NSMutableArray * _supportedComponentActions;
@@ -33,11 +53,22 @@
 @property (nonatomic, retain) NSString *webBaseActionURL;
 
 + (Class)attributionAppsType;
++ (bool)isValid:(id)arg1;
 + (Class)localizedAttributionType;
 + (Class)supportedComponentActionsType;
 
 - (void).cxx_destruct;
 - (int)StringAsAttributionRequirements:(id)arg1;
+- (void)_addNoFlagsAttributionApps:(id)arg1;
+- (void)_addNoFlagsAttributionRequirements:(int)arg1;
+- (void)_addNoFlagsLocalizedAttribution:(id)arg1;
+- (void)_addNoFlagsSupportedComponentActions:(id)arg1;
+- (void)_readAttributionApps;
+- (void)_readAttributionRequirements;
+- (void)_readLocalizedAttributions;
+- (void)_readSourceIdentifier;
+- (void)_readSupportedComponentActions;
+- (void)_readWebBaseActionURL;
 - (void)addAttributionApps:(id)arg1;
 - (void)addAttributionRequirements:(int)arg1;
 - (void)addLocalizedAttribution:(id)arg1;
@@ -64,11 +95,14 @@
 - (bool)hasEnforceAppStore;
 - (bool)hasWebBaseActionURL;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)localizedAttributionAtIndex:(unsigned long long)arg1;
 - (id)localizedAttributions;
 - (unsigned long long)localizedAttributionsCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAttributionApps:(id)arg1;
 - (void)setAttributionRequirements:(int*)arg1 count:(unsigned long long)arg2;

@@ -22,7 +22,7 @@
 @property (nonatomic, readonly) CBPeripheral *peripheral;
 @property (nonatomic, readonly) unsigned long long resumeSessionID;
 @property (nonatomic) bool stateChanged;
-@property (nonatomic, retain) NSNumber *stateNumber;
+@property (nonatomic, copy) NSNumber *stateNumber;
 
 + (id)hapUUIDFromBTLEUUID:(id)arg1;
 
@@ -37,7 +37,6 @@
 - (unsigned long long)hapBLEProtocolVersion;
 - (id)initWithPeripheral:(id)arg1 name:(id)arg2 pairingUsername:(id)arg3 statusFlags:(id)arg4 stateNumber:(id)arg5 stateChanged:(bool)arg6 connectReason:(unsigned char)arg7 configNumber:(id)arg8 category:(id)arg9 setupHash:(id)arg10 connectionIdleTime:(unsigned char)arg11 browser:(id)arg12 keyStore:(id)arg13;
 - (long long)linkType;
-- (void)notifyDelegateUpdatedStateNumber;
 - (bool)notifyingCharacteristicUpdated;
 - (id)peripheral;
 - (unsigned long long)resumeSessionID;

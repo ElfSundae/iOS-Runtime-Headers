@@ -18,6 +18,7 @@
     NSMutableDictionary * _progressMap;
     bool  _requestsComplete;
     NSMutableOrderedSet * _serverAssetsInProgress;
+    unsigned long long  _successfullyCompletedItemCount;
     NSMutableDictionary * _syncProgresByAssetType;
     double  _taskStartTime;
     ATThroughputCalculator * _throughputCalculator;

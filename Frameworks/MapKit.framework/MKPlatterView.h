@@ -6,9 +6,9 @@
     NSString * _glyph;
     UIColor * _glyphColor;
     UIFont * _glyphFont;
-    _MKUILabel * _glyphLabel;
+    UIImageView * _glyphImageView;
     bool  _highlighted;
-    UIView * _platterView;
+    MKVibrantView * _platterView;
 }
 
 @property (nonatomic, retain) NSString *glyph;
@@ -20,7 +20,7 @@
 - (id)glyph;
 - (id)glyphColor;
 - (id)glyphFont;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (bool)isHighlighted;
 - (void)layoutSubviews;

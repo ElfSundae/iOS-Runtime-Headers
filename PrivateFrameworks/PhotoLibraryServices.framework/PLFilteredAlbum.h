@@ -51,13 +51,13 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly, retain) NSDate *endDate;
 @property (nonatomic) int filter;
-@property (nonatomic, readonly, retain) NSArray *filterParameters;
+@property (nonatomic, readonly) NSArray *filterParameters;
 @property (nonatomic, readonly, copy) NSIndexSet *filteredIndexes;
 @property (nonatomic, readonly, retain) NSURL *groupURL;
 @property (nonatomic) bool hasUnseenContentBoolValue;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSString *importSessionID;
-@property (nonatomic, readonly, retain) PLIndexMapper *indexMapper;
+@property (nonatomic, readonly) PLIndexMapper *indexMapper;
 @property (nonatomic, retain) NSOrderedSet *invitationRecords;
 @property (nonatomic, readonly) bool isCameraAlbum;
 @property (nonatomic, readonly) bool isCloudSharedAlbum;
@@ -85,13 +85,13 @@
 @property (nonatomic, readonly, copy) NSString *name;
 @property (nonatomic) int pendingItemsCount;
 @property (nonatomic) int pendingItemsType;
+@property (nonatomic, readonly) PLPhotoLibrary *photoLibrary;
 @property (nonatomic, readonly) unsigned long long photosCount;
-@property (nonatomic, readonly, retain) UIImage *posterImage;
+@property (nonatomic, readonly, retain) NSObject *posterImage;
 @property (nonatomic, retain) NSPredicate *predicate;
 @property (nonatomic, retain) NSString *publicURL;
 @property (nonatomic, retain) PLManagedAsset *secondaryKeyAsset;
 @property (nonatomic, readonly) bool shouldDeleteWhenEmpty;
-@property (nonatomic, retain) NSDictionary *slideshowSettings;
 @property (nonatomic, readonly, copy) id /* block */ sortingComparator;
 @property (nonatomic, readonly, retain) NSDate *startDate;
 @property (readonly) Class superclass;
@@ -109,9 +109,10 @@
 + (struct NSObject { Class x1; }*)filteredAlbum:(struct NSObject { Class x1; }*)arg1 intersectFilter:(int)arg2;
 + (struct NSObject { Class x1; }*)filteredAlbum:(struct NSObject { Class x1; }*)arg1 predicate:(id)arg2;
 + (id)filteredIndexesInAlbum:(struct NSObject { Class x1; }*)arg1 predicate:(id)arg2;
-+ (id)predicateForAlbumFilter:(int)arg1 parameters:(id)arg2;
++ (id)predicateForAlbumFilter:(int)arg1 parameters:(id)arg2 photoLibrary:(id)arg3;
 + (struct NSObject { Class x1; }*)unfilteredAlbum:(struct NSObject { Class x1; }*)arg1;
 
+- (void).cxx_destruct;
 - (id)_assets;
 - (id)_cloudSharedBackingAlbum;
 - (void)_commonInitWithBackingAlbum:(struct NSObject { Class x1; }*)arg1 predicate:(id)arg2;
@@ -160,7 +161,6 @@
 - (id)filterParameters;
 - (id)filteredAssetsAtIndexes:(id)arg1;
 - (id)filteredIndexes;
-- (void)getFilteredAssets:(id*)arg1 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (void)getUnseenStartMarkerIndex:(unsigned long long*)arg1 count:(unsigned long long*)arg2 showsProgress:(bool*)arg3;
 - (id)groupURL;
 - (bool)hasUnseenContentBoolValue;
@@ -170,7 +170,7 @@
 - (id)initWithBackingAlbum:(struct NSObject { Class x1; }*)arg1 filter:(int)arg2 parameters:(id)arg3;
 - (id)initWithBackingAlbum:(struct NSObject { Class x1; }*)arg1 predicate:(id)arg2;
 - (void)insertFilteredAssets:(id)arg1 atIndexes:(id)arg2;
-- (void)insertInternalUserEditableAssets:(id)arg1 atIndexes:(id)arg2 trimmedVideoPathInfo:(id)arg3 commentText:(id)arg4;
+- (void)insertInternalUserEditableAssets:(id)arg1 atIndexes:(id)arg2 customExportsInfo:(id)arg3 trimmedVideoPathInfo:(id)arg4 commentText:(id)arg5;
 - (void)insertObject:(id)arg1 inFilteredAssetsAtIndex:(unsigned long long)arg2;
 - (id)invitationRecords;
 - (bool)isCameraAlbum;
@@ -202,8 +202,9 @@
 - (id)objectInFilteredAssetsAtIndex:(unsigned long long)arg1;
 - (int)pendingItemsCount;
 - (int)pendingItemsType;
+- (id)photoLibrary;
 - (unsigned long long)photosCount;
-- (id)posterImage;
+- (struct NSObject { Class x1; }*)posterImage;
 - (id)predicate;
 - (id)publicURL;
 - (void)reducePendingItemsCountBy:(unsigned long long)arg1;
@@ -242,14 +243,12 @@
 - (void)setPredicate:(id)arg1;
 - (void)setPublicURL:(id)arg1;
 - (void)setSecondaryKeyAsset:(id)arg1;
-- (void)setSlideshowSettings:(id)arg1;
 - (void)setTertiaryKeyAsset:(id)arg1;
 - (void)setUnseenAssetsCount:(id)arg1;
 - (void)setUnseenAssetsCountIntegerValue:(unsigned long long)arg1;
 - (void)set_assets:(id)arg1;
 - (bool)shouldDeleteWhenEmpty;
 - (bool)shouldIncludeObjectAtIndex:(unsigned long long)arg1;
-- (id)slideshowSettings;
 - (id /* block */)sortingComparator;
 - (id)tertiaryKeyAsset;
 - (id)title;

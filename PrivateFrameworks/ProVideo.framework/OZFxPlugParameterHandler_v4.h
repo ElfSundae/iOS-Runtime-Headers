@@ -31,6 +31,7 @@
 - (bool)getStringParameterValue:(id*)arg1 fromParm:(unsigned int)arg2;
 - (bool)getTexture:(id*)arg1 layerOffsetX:(double*)arg2 layerOffsetY:(double*)arg3 requestInfo:(struct { union { double x_1_1_1; struct { /* ? */ } *x_1_1_2; } x1; unsigned long long x2; unsigned long long x3; double x4; double x5; unsigned long long x6; })arg4 fromParm:(unsigned int)arg5 atFxTime:(union { double x1; struct { /* ? */ } *x2; })arg6;
 - (bool)getXValue:(double*)arg1 YValue:(double*)arg2 fromParm:(unsigned int)arg3 atFxTime:(union { double x1; struct { /* ? */ } *x2; })arg4;
+- (id)pushButtonSelectorNameForParameterID:(unsigned int)arg1;
 - (bool)setBoolValue:(bool)arg1 toParm:(unsigned int)arg2 atFxTime:(union { double x1; struct { /* ? */ } *x2; })arg3;
 - (bool)setCustomParameterValue:(id)arg1 toParm:(unsigned int)arg2;
 - (bool)setCustomParameterValue:(id)arg1 toParm:(unsigned int)arg2 atFxTime:(union { double x1; struct { /* ? */ } *x2; })arg3;

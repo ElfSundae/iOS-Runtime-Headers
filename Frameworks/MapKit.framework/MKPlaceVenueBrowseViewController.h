@@ -38,6 +38,7 @@
 + (bool)canDisplayForMapItem:(id)arg1;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_ppt_postNotificationName:(id)arg1 object:(id)arg2;
 - (id)browseItems;
 - (id)cellTitleLabelTextColor;
@@ -51,7 +52,7 @@
 - (id)componentIdentifier;
 - (void)contentSizeCategoryDidChange:(id)arg1;
 - (id)delegate;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (id)initWithMapItem:(id)arg1;
 - (id)mapItem;
 - (int)placeCardTypeForAnalytics;

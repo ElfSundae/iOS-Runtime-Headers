@@ -2,8 +2,12 @@
    Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
  */
 
-@interface PLPhotoEditSource : PLEditSource
+@interface PLPhotoEditSource : PLEditSource {
+    bool  _isRAWSource;
+}
 
-- (id)initWithURL:(id)arg1 type:(id)arg2 image:(id)arg3 useEmbeddedPreview:(bool)arg4;
+- (id)initWithURL:(id)arg1 type:(id)arg2 image:(struct NSObject { Class x1; }*)arg3 useEmbeddedPreview:(bool)arg4;
+- (bool)isRAWSource;
+- (id)newSourceWithURL:(id)arg1 type:(id)arg2 useEmbeddedPreview:(bool)arg3;
 
 @end

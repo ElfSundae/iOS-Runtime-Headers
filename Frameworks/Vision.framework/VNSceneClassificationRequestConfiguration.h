@@ -3,13 +3,13 @@
  */
 
 @interface VNSceneClassificationRequestConfiguration : VNImageBasedRequestConfiguration {
-    VNSceneClassificationCustomHierarchy * _customHierarchy;
+    VNClassificationCustomHierarchy * _customHierarchy;
     unsigned long long  _maximumHierarchicalObservations;
     unsigned long long  _maximumLeafObservations;
     VNSceneObservation * _sceneObservation;
 }
 
-@property (nonatomic, retain) VNSceneClassificationCustomHierarchy *customHierarchy;
+@property (nonatomic, retain) VNClassificationCustomHierarchy *customHierarchy;
 @property (nonatomic) unsigned long long maximumHierarchicalObservations;
 @property (nonatomic) unsigned long long maximumLeafObservations;
 @property (nonatomic, retain) VNSceneObservation *sceneObservation;

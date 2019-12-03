@@ -4,18 +4,22 @@
 
 @interface TLKStarsView : TLKStackView {
     double  _currentStarRating;
+    UIFont * _font;
+    double  _starRating;
 }
 
-@property double currentStarRating;
+@property (nonatomic) double currentStarRating;
+@property (nonatomic, retain) UIFont *font;
+@property (nonatomic) double starRating;
 
-+ (id)emptyStar;
-+ (id)fullStar;
-+ (id)halfStar;
-+ (id)starImageWithName:(id)arg1;
-
+- (void).cxx_destruct;
 - (double)currentStarRating;
+- (id)font;
 - (id)init;
 - (void)setCurrentStarRating:(double)arg1;
-- (void)updateStarRating:(double)arg1;
+- (void)setFont:(id)arg1;
+- (void)setStarRating:(double)arg1;
+- (double)starRating;
+- (void)updateStarImages;
 
 @end

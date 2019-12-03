@@ -37,8 +37,8 @@
 + (unsigned long long)_indexForStyle:(long long)arg1 barStyle:(long long)arg2;
 + (id)_standardInnerImageForStyle:(long long)arg1 barStyle:(long long)arg2;
 + (id)_standardOuterImageForStyle:(long long)arg1 barStyle:(long long)arg2;
-+ (id)_tintedImageForHeight:(double)arg1 andColors:(id)arg2;
-+ (id)_tintedImageForHeight:(double)arg1 andColors:(id)arg2 roundingRectCorners:(unsigned long long)arg3;
++ (id)_tintedImageWithTraitCollection:(id)arg1 forHeight:(double)arg2 andColors:(id)arg3;
++ (id)_tintedImageWithTraitCollection:(id)arg1 forHeight:(double)arg2 andColors:(id)arg3 roundingRectCorners:(unsigned long long)arg4;
 + (struct CGSize { double x1; double x2; })defaultSize;
 
 - (void).cxx_destruct;
@@ -46,6 +46,7 @@
 - (id)_appropriateTrackImage;
 - (bool)_contentHuggingDefault_isUsuallyFixedHeight;
 - (id)_defaultTrackColorForCurrentStyle;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (id)_effectiveContentView;
 - (struct CGSize { double x1; double x2; })_intrinsicSizeWithinSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)_layoutShadow;

@@ -5,6 +5,7 @@
 
 @required
 
+- (NSData *)bodyData;
 - (int)endpoint;
 - (bool)getHeaders:(id*)arg1 forKey:(NSString *)arg2;
 - (NSDictionary *)headers;
@@ -14,6 +15,7 @@
 - (NSData *)jsonData;
 - (int)lookupSelectionType;
 - (unsigned long long)queryId;
+- (void)setBodyData:(NSData *)arg1;
 - (void)setEndpoint:(int)arg1;
 - (void)setHeaders:(NSDictionary *)arg1;
 - (void)setHeaders:(NSString *)arg1 forKey:(NSString *)arg2;

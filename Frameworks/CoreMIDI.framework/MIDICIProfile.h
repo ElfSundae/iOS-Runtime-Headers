@@ -20,7 +20,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithData:(id)arg1 name:(id)arg2;
-- (bool)isEqualTo:(id)arg1;
+- (bool)isEqual:(id)arg1;
 - (id)name;
 - (id)profileID;
 - (const void*)rawData;

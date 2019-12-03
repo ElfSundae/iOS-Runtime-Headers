@@ -20,6 +20,7 @@
 
 // Image: /System/Library/Frameworks/EventKit.framework/EventKit
 
++ (id)_eventKitBundle;
 + (id)calendarForEntityType:(unsigned long long)arg1 eventStore:(id)arg2;
 + (id)calendarForEntityTypes:(unsigned long long)arg1 eventStore:(id)arg2;
 + (id)calendarWithEventStore:(id)arg1;
@@ -34,9 +35,11 @@
 - (int)_allowedEntities;
 - (void)_clearCGColorCache;
 - (bool)_flagValueWithMask:(unsigned int)arg1;
+- (bool)_reset;
 - (void)_setAllowedEntities:(int)arg1;
 - (void)_setFlagValue:(bool)arg1 withMask:(unsigned int)arg2;
 - (void)_setSource:(id)arg1;
+- (bool)_validateDeletable:(id*)arg1;
 - (void)addAlarms:(id)arg1;
 - (void)addSharee:(id)arg1;
 - (id)alarms;
@@ -55,6 +58,7 @@
 - (bool)canBeShared;
 - (void)clearInvitationStatus;
 - (id)colorString;
+- (id)colorStringRaw;
 - (bool)commit:(id*)arg1;
 - (bool)couldBeJunk;
 - (id)description;
@@ -73,6 +77,7 @@
 - (bool)hasTasks;
 - (id)init;
 - (unsigned long long)invitationStatus;
+- (bool)isAffectingAvailability;
 - (bool)isAlarmAcknowledgedPropertyDirty;
 - (bool)isDefaultSchedulingCalendar;
 - (bool)isFacebookBirthdayCalendar;
@@ -82,6 +87,7 @@
 - (bool)isIgnoringEventAlerts;
 - (bool)isIgnoringSharedCalendarNotifications;
 - (bool)isImmutable;
+- (bool)isImmutableRaw;
 - (bool)isInbox;
 - (bool)isManaged;
 - (bool)isMarkedImmutableSharees;
@@ -101,6 +107,7 @@
 - (id)ownerIdentityDisplayName;
 - (id)ownerIdentityEmail;
 - (id)ownerIdentityFirstName;
+- (int)ownerIdentityId;
 - (id)ownerIdentityLastName;
 - (id)ownerIdentityPhoneNumber;
 - (bool)prohibitsScheduling;
@@ -113,6 +120,7 @@
 - (void)removeAllSnoozedAlarms;
 - (void)removeSharee:(id)arg1;
 - (void)reset;
+- (id)selectionSyncIdentifier;
 - (id)selfIdentityAddress;
 - (id)selfIdentityDisplayName;
 - (id)selfIdentityEmail;
@@ -135,6 +143,7 @@
 - (void)setCanBePublished:(bool)arg1;
 - (void)setCanBeShared:(bool)arg1;
 - (void)setColorString:(id)arg1;
+- (void)setColorStringRaw:(id)arg1;
 - (void)setDigest:(id)arg1;
 - (void)setDisplayOrder:(int)arg1;
 - (void)setExternalID:(id)arg1;
@@ -148,17 +157,21 @@
 - (void)setImmutable:(bool)arg1;
 - (void)setInbox:(bool)arg1;
 - (void)setInvitationStatus:(unsigned long long)arg1;
+- (void)setIsAffectingAvailability:(bool)arg1;
 - (void)setIsDefaultSchedulingCalendar:(bool)arg1;
 - (void)setIsIgnoringEventAlerts:(bool)arg1;
 - (void)setIsIgnoringSharedCalendarNotifications:(bool)arg1;
 - (void)setIsJunk:(bool)arg1;
 - (void)setIsPublished:(bool)arg1;
+- (void)setMarkedImmutableSharees:(bool)arg1;
+- (void)setMarkedUndeletable:(bool)arg1;
 - (void)setNotes:(id)arg1;
 - (void)setNotificationsCollection:(bool)arg1;
 - (void)setOwnerIdentityAddress:(id)arg1;
 - (void)setOwnerIdentityDisplayName:(id)arg1;
 - (void)setOwnerIdentityEmail:(id)arg1;
 - (void)setOwnerIdentityFirstName:(id)arg1;
+- (void)setOwnerIdentityId:(id)arg1;
 - (void)setOwnerIdentityLastName:(id)arg1;
 - (void)setOwnerIdentityPhoneNumber:(id)arg1;
 - (void)setProhibitsScheduling:(bool)arg1;
@@ -207,9 +220,12 @@
 
 // Image: /System/Library/Frameworks/EventKitUI.framework/EventKitUI
 
++ (id)displayColorForSymbolicName:(id)arg1;
+
+- (id)displayColor;
 - (id)uiColor;
 
-// Image: /System/Library/PrivateFrameworks/PhotoAnalysis.framework/Frameworks/PhotosGraph.framework/Frameworks/MediaMiningKit.framework/MediaMiningKit
+// Image: /System/Library/PrivateFrameworks/MediaMiningKit.framework/MediaMiningKit
 
 - (bool)hasSharees;
 - (id)shareesAndOwner;

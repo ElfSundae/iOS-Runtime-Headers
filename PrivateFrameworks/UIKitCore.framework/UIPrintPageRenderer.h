@@ -34,7 +34,7 @@
 @property (nonatomic) double headerHeight;
 @property (nonatomic, readonly) long long numberOfPages;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } paperRect;
-@property (nonatomic, copy) NSArray *printFormatters;
+@property (copy) NSArray *printFormatters;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } printableRect;
 
 - (void).cxx_destruct;

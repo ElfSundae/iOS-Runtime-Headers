@@ -10,12 +10,14 @@
 @property (nonatomic, retain) NSMutableArray *restaurantLinks;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
 + (id)reservationLinkForPlaceData:(id)arg1;
 + (Class)restaurantLinkType;
 
 - (void).cxx_destruct;
 - (void)addRestaurantLink:(id)arg1;
 - (void)clearRestaurantLinks;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -23,6 +25,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)restaurantLinkAtIndex:(unsigned long long)arg1;
 - (id)restaurantLinks;

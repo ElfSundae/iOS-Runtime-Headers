@@ -3,6 +3,7 @@
  */
 
 @interface UITextSelectionInteraction : UITextInteraction {
+    UITextGestureTuning * _gestureTuning;
     struct CGPoint { 
         double x; 
         double y; 
@@ -11,19 +12,30 @@
     long long  _previousRepeatedGranularity;
 }
 
+- (void).cxx_destruct;
+- (void)_applyTransientState:(id)arg1;
+- (void)_createGestureTuningIfNecessary;
+- (bool)_isNowWithinRepeatedTapTime;
+- (bool)_isRepeatedTap:(id)arg1 gestureLocationOut:(struct CGPoint { double x1; double x2; }*)arg2;
 - (bool)_isShiftKeyBeingHeldForGesture:(id)arg1;
+- (bool)_isWithinRepeatedTapTimeForTouch:(id)arg1;
+- (long long)_textGranularityForRepeatedTap:(long long)arg1;
+- (id)_transientState;
+- (void)_updateTapGestureHistoryWithLocation:(struct CGPoint { double x1; double x2; })arg1;
 - (void)confirmMarkedText:(id)arg1;
+- (void)didMoveToView:(id)arg1;
+- (void)finishSetup;
 - (id)initWithMode:(long long)arg1;
 - (bool)interaction_gestureRecognizerShouldBegin:(id)arg1;
-- (bool)isNowWithinRepeatedTapTime;
 - (void)oneFingerDoubleTap:(id)arg1;
 - (void)oneFingerTap:(id)arg1;
 - (void)oneFingerTapSelectsAll:(id)arg1;
-- (void)performTapActionAtPoint:(struct CGPoint { double x1; double x2; })arg1 granularity:(long long)arg2;
-- (void)performTapActionAtPoint:(struct CGPoint { double x1; double x2; })arg1 granularity:(long long)arg2 modifierFlags:(long long)arg3;
+- (void)oneFingerTripleTap:(id)arg1;
+- (void)performTapActionWithDelegate:(id)arg1 atPoint:(struct CGPoint { double x1; double x2; })arg2 granularity:(long long)arg3 modifierFlags:(long long)arg4;
 - (void)setHybridSelectionWithPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (bool)shouldHandleOneFingerTapInUneditable:(id)arg1;
 - (void)tapAndAHalf:(id)arg1;
+- (void)toggleSelectionCommands;
 - (void)twoFingerRangedSelectGesture:(id)arg1;
 
 @end

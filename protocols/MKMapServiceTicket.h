@@ -10,6 +10,7 @@
 - (GEOMapRegion *)boundingRegion;
 - (NSArray *)browseCategories;
 - (void)cancel;
+- (GEOCategorySearchResultSection *)categorySearchResultSection;
 - (GEOResolvedItem *)clientResolvedResult;
 - (GEORelatedSearchSuggestion *)defaultRelatedSuggestion;
 - (GEODirectionIntent *)directionIntent;
@@ -23,6 +24,7 @@
 - (double)requestResponseTime;
 - (NSString *)resultDisplayHeader;
 - (NSArray *)retainedSearchMetadata;
+- (NSArray *)searchResultSections;
 - (int)searchResultType;
 - (NSString *)sectionHeader;
 - (bool)shouldEnableRedoSearch;

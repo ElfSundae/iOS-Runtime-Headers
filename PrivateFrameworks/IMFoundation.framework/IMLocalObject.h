@@ -12,6 +12,7 @@
 @property (nonatomic, retain) NSString *processName;
 @property (nonatomic, readonly) NSProtocolChecker *protocolChecker;
 @property (nonatomic) id target;
+@property (nonatomic, readonly) bool wasInterrupted;
 @property (nonatomic, retain) NSArray *whitelistedClasses;
 
 + (id)_imLocalObjectQueue;
@@ -59,6 +60,7 @@
 - (void)setWhitelistedClasses:(id)arg1;
 - (id)target;
 - (void)terminated;
+- (bool)wasInterrupted;
 - (id)whitelistedClasses;
 
 @end

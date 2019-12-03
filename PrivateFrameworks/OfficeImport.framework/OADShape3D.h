@@ -15,11 +15,11 @@
 
 + (id)nullShape3D;
 
+- (void).cxx_destruct;
 - (id)bottomBevel;
 - (id)contourColor;
 - (float)contourWidth;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)extrusionColor;
 - (float)extrusionHeight;

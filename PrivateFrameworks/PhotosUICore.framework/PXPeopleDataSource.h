@@ -12,7 +12,6 @@
     NSArray * _members;
     NSString * _name;
     PHFetchResult * _objects;
-    NSArray * _originalMembers;
     id /* block */  _reloadBlock;
     NSObject<OS_dispatch_queue> * _reloadQueue;
     id /* block */  _sortComparator;
@@ -29,7 +28,7 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, readonly) unsigned long long numberOfMembers;
 @property (nonatomic, retain) PHFetchResult *objects;
-@property (nonatomic, copy) NSArray *originalMembers;
+@property (nonatomic, readonly) NSArray *persons;
 @property (nonatomic, copy) id /* block */ reloadBlock;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *reloadQueue;
 @property (nonatomic, copy) id /* block */ sortComparator;
@@ -46,7 +45,6 @@
 - (id)filterPredicate;
 - (void)imageAtIndex:(unsigned long long)arg1 targetSize:(struct CGSize { double x1; double x2; })arg2 withCompletionBlock:(id /* block */)arg3;
 - (void)imageAtIndex:(unsigned long long)arg1 targetSize:(struct CGSize { double x1; double x2; })arg2 withCompletionBlock:(id /* block */)arg3 fastDisplayBlock:(id /* block */)arg4;
-- (unsigned long long)indexOfMember:(id)arg1;
 - (id)initWithName:(id)arg1 objects:(id)arg2;
 - (id)initWithName:(id)arg1 objectsReloadBlock:(id /* block */)arg2;
 - (id)initWithName:(id)arg1 objectsReloadBlock:(id /* block */)arg2 asynchronousLoad:(bool)arg3 callbackDelegate:(id)arg4;
@@ -61,7 +59,8 @@
 - (id)name;
 - (unsigned long long)numberOfMembers;
 - (id)objects;
-- (id)originalMembers;
+- (id)personAtIndex:(unsigned long long)arg1;
+- (id)persons;
 - (unsigned long long)photoQuantityAtIndex:(unsigned long long)arg1;
 - (id /* block */)reloadBlock;
 - (id)reloadQueue;
@@ -74,7 +73,6 @@
 - (void)setMembers:(id)arg1;
 - (void)setName:(id)arg1;
 - (void)setObjects:(id)arg1;
-- (void)setOriginalMembers:(id)arg1;
 - (void)setReloadBlock:(id /* block */)arg1;
 - (void)setReloadQueue:(id)arg1;
 - (void)setSortComparator:(id /* block */)arg1;

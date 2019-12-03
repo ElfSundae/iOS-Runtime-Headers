@@ -41,10 +41,9 @@
 - (void).cxx_destruct;
 - (id)_icon;
 - (id)_outlineIcon;
-- (int)_outlineVariantForScale:(double)arg1;
 - (id)_queue_iconFromWidgetBundleForWidgetWithIdentifier:(id)arg1 extension:(id)arg2;
-- (id)_queue_iconWithFormat:(int)arg1 forWidgetWithIdentifier:(id)arg2 extension:(id)arg3;
 - (id)_queue_iconWithOutlineForWidgetWithIdentifier:(id)arg1 extension:(id)arg2;
+- (id)_queue_iconWithSize:(struct CGSize { double x1; double x2; })arg1 scale:(double)arg2 forWidgetWithIdentifier:(id)arg3 extension:(id)arg4;
 - (void)_requestIcon:(bool)arg1 withHandler:(id /* block */)arg2;
 - (void)_resetIcons;
 - (void)_resetIconsImpl;

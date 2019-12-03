@@ -19,7 +19,7 @@
 - (void).cxx_destruct;
 - (id)heightProvider;
 - (id)initWithViewController:(id)arg1 heightProvider:(id)arg2;
-- (double)sectionItemHeightFor:(double)arg1 traitCollection:(id)arg2;
+- (double)sectionItemHeightForSize:(struct CGSize { double x1; double x2; })arg1 traitCollection:(id)arg2;
 - (id)sectionItemViewController;
 - (id)traitCollection;
 - (id)viewController;

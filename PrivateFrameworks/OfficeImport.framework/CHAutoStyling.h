@@ -9,7 +9,7 @@
 
 + (id)autoStylingWithChart:(id)arg1 drawingTheme:(id)arg2;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (int)defaultMarkerStyleForSeriesIndex:(unsigned long long)arg1;
 - (id)drawingTheme;
 - (id)initWithChart:(id)arg1 drawingTheme:(id)arg2;

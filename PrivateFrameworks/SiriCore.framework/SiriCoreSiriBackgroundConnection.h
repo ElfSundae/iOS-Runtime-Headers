@@ -109,7 +109,7 @@
 - (void)_initializeBufferedGeneralOutputDataWithInitialPayload:(bool)arg1;
 - (void)_networkProviderDidOpen;
 - (long long)_nextConnectionMethod;
-- (long long)_normalizeSNR:(int)arg1;
+- (long long)_normalizeSNR:(long long)arg1;
 - (void)_pingTimerFired;
 - (void)_prepareProviderHeaderWithForceReconnect:(bool)arg1;
 - (Class)_providerClass;

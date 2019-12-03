@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/HomeUI.framework/HomeUI
  */
 
-@interface HUDataAnalyticsLogListViewController : HUItemTableViewController <HUDataAnalyticsModuleControllerDelegate> {
+@interface HUDataAnalyticsLogListViewController : HUItemTableViewController <HUAccessorySettingsDetailsViewControllerProtocol, HUDataAnalyticsModuleControllerDelegate> {
     HUActivityLoadingView * _activityLoadingView;
     HUDataAnalyticsModuleController * _analyticsModuleController;
     <HFMediaProfileContainer> * _mediaProfileContainer;
@@ -25,6 +25,7 @@
 - (void)dataAnalyticsModuleController:(id)arg1 didSelectItem:(id)arg2;
 - (id)hu_preloadContent;
 - (id)init;
+- (id)initWithAccessoryGroupItem:(id)arg1;
 - (id)initWithItemManager:(id)arg1 tableViewStyle:(long long)arg2;
 - (id)initWithMediaProfileContainer:(id)arg1;
 - (id)itemModuleControllers;

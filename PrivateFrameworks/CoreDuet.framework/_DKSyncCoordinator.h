@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CoreDuet.framework/CoreDuet
  */
 
-@interface _DKSyncCoordinator : NSObject <APSConnectionDelegate> {
+@interface _DKSyncCoordinator : NSObject <APSConnectionDelegate, _DKSyncCoordinator> {
     _DKThrottledActivity * _activityThrottler;
     bool  _cloudSyncAvailablityObserverRegistered;
     APSConnection * _connection;

@@ -39,6 +39,6 @@
 - (void)setLabel1:(id)arg1;
 - (void)setLabel2:(id)arg1;
 - (void)setLabel3:(id)arg1;
-- (void)setupWithClip:(id)arg1 andBlueprint:(id)arg2;
+- (void)setupWithClipProvider:(id)arg1;
 
 @end

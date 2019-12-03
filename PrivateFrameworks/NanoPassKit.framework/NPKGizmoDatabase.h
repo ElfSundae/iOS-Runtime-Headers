@@ -123,6 +123,7 @@
 - (bool)_removePassWithUniqueIDLocked:(id)arg1;
 - (void)_removeTransactionWithIdentifier:(id)arg1 forPassWithUniqueID:(id)arg2;
 - (void)_removeTransactionWithServiceIdentifierLocked:(id)arg1 forPassWithUniqueID:(id)arg2;
+- (void)_removeTransactionsForPassWithUniqueID:(id)arg1;
 - (bool)_repairEncodedImagesDuringMigration:(id)arg1;
 - (void)_saveDiffLocked:(id)arg1 forPassWithUniqueID:(id)arg2;
 - (void)_savePassLocked:(id)arg1 locallyAdded:(bool)arg2 wasUpdate:(bool*)arg3;
@@ -198,6 +199,7 @@
 - (struct sqlite3_stmt { }*)removeTransactionStatement;
 - (void)removeTransactionWithIdentifier:(id)arg1 forPassWithUniqueID:(id)arg2;
 - (struct sqlite3_stmt { }*)removeTransactionWithServiceIdentifierStatement;
+- (void)removeTransactionsForPassWithUniqueID:(id)arg1;
 - (id /* block */)restoreBlockForVolatilePassData;
 - (void)saveDiff:(id)arg1 forPassWithUniqueID:(id)arg2;
 - (id)savePass:(id)arg1 isLocalPass:(bool)arg2;

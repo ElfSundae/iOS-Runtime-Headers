@@ -8,7 +8,7 @@
     bool  _isLocalDevice;
     unsigned long long  _numExpectedChanges;
     NSString * _organizationIdentifier;
-    <RMPersistenceControllerProtocol> * _persistenceController;
+    <STPersistenceControllerProtocol> * _persistenceController;
     NSNumber * _userDSID;
     NSString * _userName;
     NSManagedObjectID * _userObjectID;
@@ -23,7 +23,7 @@
 @property (nonatomic) bool isLocalDevice;
 @property unsigned long long numExpectedChanges;
 @property (nonatomic, copy) NSString *organizationIdentifier;
-@property (nonatomic, readonly) <RMPersistenceControllerProtocol> *persistenceController;
+@property (nonatomic, readonly) <STPersistenceControllerProtocol> *persistenceController;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSNumber *userDSID;
 @property (nonatomic, copy) NSString *userName;
@@ -32,15 +32,13 @@
 
 - (void).cxx_destruct;
 - (id)_activationIdentifier;
+- (void)_contactStoreDidChange:(id)arg1;
 - (id)_createUnrestrictedConfiguration:(id)arg1;
-- (id)_getSettingsRestrictionsEnabledWithContext:(id)arg1 error:(id*)arg2;
 - (id)_identifierForConfigurationType:(id)arg1;
 - (id)_localDeviceRestrictions;
-- (bool)_rebuildActivationInContext:(id)arg1 withNewConfigurations:(id)arg2 error:(id*)arg3;
-- (void)_registerForPersistenceStoreNotifications;
+- (void)_registerForPersistentStoreNotifications;
 - (id)_remoteDeviceRestrictions;
 - (id)_restrictionsForWebFilterState:(unsigned long long)arg1;
-- (bool)_setSettingsRestrictionsEnabled:(bool)arg1 error:(id*)arg2;
 - (void)_setValue:(id)arg1 forMCFeature:(id)arg2;
 - (void)_setValue:(id)arg1 forSBCapability:(id)arg2;
 - (void)_updateConfiguration:(id)arg1 keyPath:(id)arg2 value:(id)arg3;
@@ -60,6 +58,7 @@
 - (id)organizationIdentifier;
 - (id)persistenceController;
 - (void)reloadViewModelForRemoteChanges;
+- (void)saveCommunicationLimits:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)saveContentPrivacyEnabled:(bool)arg1 completionHandler:(id /* block */)arg2;
 - (void)saveRestrictionValue:(id)arg1 forItem:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)saveValuesForRestrictions:(id)arg1 completionHandler:(id /* block */)arg2;

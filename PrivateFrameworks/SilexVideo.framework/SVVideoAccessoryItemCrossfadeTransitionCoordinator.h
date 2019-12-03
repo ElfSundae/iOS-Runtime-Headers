@@ -7,6 +7,7 @@
     UIViewPropertyAnimator * _fadeOutAnimator;
 }
 
+@property (nonatomic, readonly) bool animated;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) UIViewPropertyAnimator *fadeInAnimator;
@@ -16,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (void)animateWithContext:(id)arg1;
+- (bool)animated;
 - (void)cancelTransition;
 - (id)fadeInAnimator;
 - (id)fadeOutAnimator;

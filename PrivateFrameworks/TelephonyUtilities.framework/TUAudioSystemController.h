@@ -4,6 +4,7 @@
 
 @interface TUAudioSystemController : TUAudioController {
     NSArray * _currentPickableRoutes;
+    <TUAudioSystemControllerDelegate> * _delegate;
     NSObject<OS_dispatch_queue> * _downlinkMutedQueue;
     NSNumber * _isDownlinkMutedCached;
     bool  _isRequestingDownlinkMuted;
@@ -39,6 +40,7 @@
 
 @property (nonatomic) float activeCategoryVolume;
 @property (nonatomic, readonly, copy) NSArray *bestGuessPickableRoutesForAnyCall;
+@property (nonatomic) <TUAudioSystemControllerDelegate> *delegate;
 @property (getter=isDownlinkMuted, nonatomic) bool downlinkMuted;
 @property (nonatomic, readonly, copy) NSArray *pickableRoutesForTTY;
 @property (nonatomic, readonly, copy) NSDictionary *pickedRouteAttribute;
@@ -69,6 +71,7 @@
 - (id)bestGuessPickableRoutesForAnyCall;
 - (id)currentlyPickedRouteIdForCategory:(id)arg1 andMode:(id)arg2;
 - (void)dealloc;
+- (id)delegate;
 - (void)getPickableRoutesForCategory:(id)arg1 mode:(id)arg2 completion:(id /* block */)arg3;
 - (id)init;
 - (bool)isDownlinkMuted;
@@ -76,10 +79,12 @@
 - (bool)isUplinkMuted;
 - (bool)pickRoute:(id)arg1 error:(id*)arg2;
 - (id)pickableRouteWithUniqueIdentifier:(id)arg1;
+- (id)pickableRoutesForActiveCall;
 - (id)pickableRoutesForCategory:(id)arg1 andMode:(id)arg2;
 - (id)pickableRoutesForTTY;
 - (id)pickedRouteAttribute;
 - (void)setActiveCategoryVolume:(float)arg1;
+- (void)setDelegate:(id)arg1;
 - (void)setDownlinkMuted:(bool)arg1;
 - (void)setUplinkMuted:(bool)arg1;
 - (bool)shouldSuppressCallUsingRoute:(id)arg1;

@@ -11,9 +11,13 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool hf_hasNonStandardTileUI;
 @property (nonatomic, readonly) bool hf_hasSetFavorite;
+@property (nonatomic, readonly) <HFIconDescriptor> *hf_iconDescriptor;
 @property (nonatomic, readonly) bool hf_isFavorite;
+@property (nonatomic, readonly) bool hf_offersAutomation;
 @property (nonatomic, readonly) bool hf_shouldShowInFavorites;
+@property (nonatomic, readonly, copy) NSUUID *profileUniqueIdentifier;
 @property (nonatomic, readonly) NSArray *services;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly, copy) NSUUID *uniqueIdentifier;
@@ -25,17 +29,24 @@
 - (id)accessory;
 - (id)accessoryProfile;
 - (id)description;
+- (void)handleRuntimeStateUpdate:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithAccessoryProfile:(id)arg1;
 - (bool)isEqual:(id)arg1;
+- (id)profileUniqueIdentifier;
 - (id)services;
 - (id)uniqueIdentifier;
 
 // Image: /System/Library/PrivateFrameworks/Home.framework/Home
 
++ (id)_profilesWithNonStandardTileUI;
+
+- (bool)hf_hasNonStandardTileUI;
 - (bool)hf_hasSetFavorite;
+- (id)hf_iconDescriptor;
 - (bool)hf_isFavorite;
 - (bool)hf_isValidObject;
+- (bool)hf_offersAutomation;
 - (id)hf_parentRoom;
 - (bool)hf_shouldShowInFavorites;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;

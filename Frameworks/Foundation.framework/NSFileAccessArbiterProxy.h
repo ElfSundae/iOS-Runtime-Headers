@@ -3,6 +3,7 @@
  */
 
 @interface NSFileAccessArbiterProxy : NSObject <NSFileAccessClientLocalArbiterInterface, NSXPCConnectionDelegate, NSXPCListenerDelegate> {
+    bool  _disableFileProviderReregistration;
     NSMutableDictionary * _presenterMessengersByID;
     NSMutableDictionary * _presentersByID;
     NSMutableArray * _providerListeners;
@@ -47,6 +48,7 @@
 - (id)replacementObjectForXPCConnection:(id)arg1 encoder:(id)arg2 object:(id)arg3;
 - (oneway void)revokeAccessClaimForID:(id)arg1;
 - (oneway void)revokeSubarbitrationClaimForID:(id)arg1;
+- (void)setAutomaticFileProviderReregistrationDisabled:(bool)arg1;
 - (oneway void)tiePresenterForID:(id)arg1 toItemAtURL:(id)arg2;
 - (oneway void)writerWithPurposeID:(id)arg1 didChangeItemAtURL:(id)arg2;
 - (oneway void)writerWithPurposeID:(id)arg1 didChangeSharingOfItemAtURL:(id)arg2;

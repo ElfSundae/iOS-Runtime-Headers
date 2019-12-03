@@ -12,7 +12,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property struct CGSize { double x1; double x2; } size;
+@property (nonatomic) struct CGSize { double x1; double x2; } size;
 @property (readonly) Class superclass;
 
 - (float)contentCompressionResistancePriorityForAxis:(long long)arg1;

@@ -3,10 +3,8 @@
  */
 
 @interface HIDDisplayIOReportingInterface : HIDDisplayInterface {
-    id /* block */  _cancelHandler;
     id /* block */  _dataHandler;
     NSObject<OS_dispatch_queue> * _queue;
-    struct __CFRunLoop { } * _runLoop;
     NSDictionary * _usageElementMap;
 }
 
@@ -14,8 +12,8 @@
 - (void)activate;
 - (void)cancel;
 - (id)getHIDDevices;
-- (void)handleInputData:(struct __IOHIDValue { }*)arg1;
 - (id)initWithContainerID:(id)arg1;
+- (id)initWithService:(unsigned int)arg1;
 - (void)setCancelHandler:(id /* block */)arg1;
 - (void)setDispatchQueue:(id)arg1;
 - (void)setInputDataHandler:(id /* block */)arg1;

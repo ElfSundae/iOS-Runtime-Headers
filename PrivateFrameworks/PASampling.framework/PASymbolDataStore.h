@@ -7,20 +7,21 @@
     NSString * _dscSymDir;
     NSMutableArray * _dsymPaths;
     PAImageInfo * _kernelCache;
+    PAImageInfo * _nonSystemSharedCache;
+    struct _CSRange { 
+        unsigned long long location; 
+        unsigned long long length; 
+    }  _nonSystemSharedCacheRange;
     NSMutableDictionary * _pidToCSSymbolicatorCache;
-    PAImageInfo * _sharedCache32bit;
-    struct _CSRange { 
-        unsigned long long location; 
-        unsigned long long length; 
-    }  _sharedCache32bitRange;
-    PAImageInfo * _sharedCache64bit;
-    struct _CSRange { 
-        unsigned long long location; 
-        unsigned long long length; 
-    }  _sharedCache64bitRange;
+    NSMutableSet * _pidsUsingNonSystemSharedCache;
     NSMutableSet * _sharedCacheUUIDsAlreadySearchedFor;
     bool  _shouldSymbolicate;
     bool  _shouldUseDsymForUUIDToFindBinaries;
+    PAImageInfo * _systemSharedCache;
+    struct _CSRange { 
+        unsigned long long location; 
+        unsigned long long length; 
+    }  _systemSharedCacheRange;
     NSMutableDictionary * _uuidToCSSymbolOwnerCache;
     NSMutableDictionary * _uuidToSharedCacheImageInfoDictionary;
     NSMutableDictionary * _uuidToSymbolOwnerDictionary;
@@ -31,11 +32,12 @@
 @property (retain) NSString *dscSymDir;
 @property (readonly) unsigned long long hash;
 @property (retain) PAImageInfo *kernelCache;
-@property (retain) PAImageInfo *sharedCache32bit;
-@property (retain) PAImageInfo *sharedCache64bit;
+@property (retain) PAImageInfo *nonSystemSharedCache;
+@property (retain) NSMutableSet *pidsUsingNonSystemSharedCache;
 @property bool shouldSymbolicate;
 @property bool shouldUseDsymForUUIDToFindBinaries;
 @property (readonly) Class superclass;
+@property (retain) PAImageInfo *systemSharedCache;
 
 + (id)classDictionaryKey;
 + (id)newInstanceWithoutReferencesFromBufferPosition:(const void*)arg1;
@@ -67,18 +69,19 @@
 - (id)init;
 - (id)kernelCache;
 - (void)makeSureKernelBinariesAreKnown;
+- (id)nonSystemSharedCache;
 - (id)ownerContainingSymbol:(id)arg1;
+- (id)pidsUsingNonSystemSharedCache;
 - (void)populateReferencesUsingBufferPosition:(const void*)arg1 andDeserializationDictionary:(id)arg2 andDataBufferDictionary:(id)arg3;
-- (struct _CSRange { unsigned long long x1; unsigned long long x2; })rangeOfSharedCacheWithArchitecture:(struct _CSArchitecture { int x1; int x2; })arg1;
+- (struct _CSRange { unsigned long long x1; unsigned long long x2; })rangeOfSharedCacheWithPid:(int)arg1;
 - (void)setDscSymDir:(id)arg1;
 - (void)setKernelCache:(id)arg1;
-- (void)setSharedCache32bit:(id)arg1;
-- (void)setSharedCache64bit:(id)arg1;
+- (void)setNonSystemSharedCache:(id)arg1;
+- (void)setPidsUsingNonSystemSharedCache:(id)arg1;
 - (void)setShouldSymbolicate:(bool)arg1;
 - (void)setShouldUseDsymForUUIDToFindBinaries:(bool)arg1;
-- (id)sharedCache32bit;
-- (id)sharedCache64bit;
-- (id)sharedCacheForArch:(struct _CSArchitecture { int x1; int x2; })arg1;
+- (void)setSystemSharedCache:(id)arg1;
+- (id)sharedCacheForPid:(int)arg1;
 - (bool)shouldSymbolicate;
 - (bool)shouldUseDsymForUUIDToFindBinaries;
 - (unsigned long long)sizeInBytesForSerializedVersion;
@@ -89,5 +92,6 @@
 - (id)symbolHandleForOffset:(unsigned long long)arg1 inBinaryWithUUID:(id)arg2 inLivingPid:(int)arg3;
 - (id)symbolHandleForOffset:(unsigned long long)arg1 inBinaryWithUUID:(id)arg2 inSampleTask:(id)arg3 isLiving:(bool)arg4;
 - (id)symbolHandleForOffset:(unsigned long long)arg1 inBinaryWithUUID:(id)arg2 withBinaryOffsetInTask:(unsigned long long)arg3 inLivingPid:(int)arg4;
+- (id)systemSharedCache;
 
 @end

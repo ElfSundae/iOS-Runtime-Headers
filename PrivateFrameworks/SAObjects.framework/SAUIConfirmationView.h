@@ -10,6 +10,9 @@
 @property (nonatomic, copy) NSString *confirmText;
 @property (nonatomic, copy) NSArray *denyCommands;
 @property (nonatomic, copy) NSString *denyText;
+@property (nonatomic, copy) NSString *style;
+@property (nonatomic, copy) NSString *subtitle;
+@property (nonatomic, copy) NSString *title;
 
 + (id)confirmationView;
 + (id)confirmationViewWithDictionary:(id)arg1 context:(id)arg2;
@@ -28,5 +31,11 @@
 - (void)setConfirmText:(id)arg1;
 - (void)setDenyCommands:(id)arg1;
 - (void)setDenyText:(id)arg1;
+- (void)setStyle:(id)arg1;
+- (void)setSubtitle:(id)arg1;
+- (void)setTitle:(id)arg1;
+- (id)style;
+- (id)subtitle;
+- (id)title;
 
 @end

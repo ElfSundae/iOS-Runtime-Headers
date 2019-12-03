@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/EventKitUI.framework/EventKitUI
  */
 
-@interface EKEventEditViewController : UINavigationController {
+@interface EKEventEditViewController : UINavigationController <UIAdaptivePresentationControllerDelegate> {
     bool  _completedWithAction;
     <EKEventEditViewDelegate> * _editViewDelegate;
     EKEventEditor * _editor;
@@ -15,6 +15,9 @@
 }
 
 @property (nonatomic) bool canHideDoneAndCancelButtons;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) bool displayingRootView;
 @property (nonatomic) <EKEventEditViewDelegate> *editViewDelegate;
 @property (nonatomic, retain) EKEventEditor *editor;
 @property (nonatomic, retain) UIColor *editorBackgroundColor;
@@ -22,10 +25,12 @@
 @property (nonatomic) double editorNavBarRightContentInset;
 @property (nonatomic, retain) EKEvent *event;
 @property (nonatomic, retain) EKEventStore *eventStore;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) bool scrollToNotes;
 @property (nonatomic) bool showAttachments;
 @property (nonatomic, retain) EKEventEditViewController *strongSelf;
 @property (nonatomic, retain) NSString *suggestionKey;
+@property (readonly) Class superclass;
 @property (nonatomic) bool timeImplicitlySet;
 @property (nonatomic) int transitionForModalViewPresentation;
 
@@ -33,16 +38,22 @@
 + (void)setDefaultDatesForEvent:(id)arg1;
 
 - (void).cxx_destruct;
+- (id)_confirmDismissAlertExplanationText;
 - (id)_eventEditorForTestingOnly;
+- (id)_leftBarButtonItem;
 - (void)_storeChanged:(id)arg1;
 - (bool)canHideDoneAndCancelButtons;
 - (void)cancelEditing;
+- (void)cancelEditingWithDelegateNotification:(bool)arg1 forceCancel:(bool)arg2;
 - (void)completeAndSave;
+- (id)confirmDismissAlertController;
 - (void)dealloc;
+- (bool)displayingRootView;
 - (id)editViewDelegate;
 - (id)editor;
 - (void)editor:(id)arg1 didCompleteWithAction:(long long)arg2;
 - (void)editor:(id)arg1 prepareCalendarItemForEdit:(id)arg2;
+- (bool)editor:(id)arg1 shouldCompleteWithAction:(long long)arg2;
 - (id)editorBackgroundColor;
 - (double)editorNavBarLeftContentInset;
 - (double)editorNavBarRightContentInset;
@@ -54,7 +65,9 @@
 - (void)handleTapOutside;
 - (bool)hasUnsavedChanges;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (bool)isModalInPresentation;
 - (struct CGSize { double x1; double x2; })preferredContentSize;
+- (void)presentationControllerDidAttemptToDismiss:(id)arg1;
 - (void)refreshStartAndEndDates;
 - (bool)saveWithSpan:(long long)arg1 animated:(bool)arg2;
 - (bool)scrollToNotes;
@@ -80,6 +93,7 @@
 - (bool)timeImplicitlySet;
 - (int)transitionForModalViewPresentation;
 - (void)viewDidAppear:(bool)arg1;
+- (void)viewWillAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;
 - (bool)willPresentDialogOnSave;
 

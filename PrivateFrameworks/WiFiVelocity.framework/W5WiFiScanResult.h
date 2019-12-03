@@ -15,6 +15,8 @@
 - (bool)__supportsWEP;
 - (bool)__supportsWPA2Enterprise;
 - (bool)__supportsWPA2Personal;
+- (bool)__supportsWPA3Enterprise;
+- (bool)__supportsWPA3Personal;
 - (bool)__supportsWPAEnterprise;
 - (bool)__supportsWPAPersonal;
 - (long long)beaconInterval;

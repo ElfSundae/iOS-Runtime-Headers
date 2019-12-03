@@ -26,6 +26,7 @@
     bool  _isSendingAudio;
     bool  _isSendingVideo;
     bool  _isVideo;
+    NSString * _isoCountryCode;
     NSData * _localFrequency;
     float  _localMeterLevel;
     NSUUID * _localSenderIdentityAccountUUID;
@@ -110,6 +111,7 @@
 @property (nonatomic) long long inputAudioPowerSpectrumToken;
 @property (nonatomic) bool isSendingAudio;
 @property (nonatomic) bool isVideo;
+@property (nonatomic, copy) NSString *isoCountryCode;
 @property (nonatomic, retain) NSData *localFrequency;
 @property (nonatomic) float localMeterLevel;
 @property (nonatomic, copy) NSUUID *localSenderIdentityAccountUUID;
@@ -203,6 +205,7 @@
 - (bool)isVideoMirrored;
 - (bool)isVideoPaused;
 - (bool)isVoicemail;
+- (id)isoCountryCode;
 - (struct CGSize { double x1; double x2; })localAspectRatioForOrientation:(long long)arg1;
 - (id)localFrequency;
 - (float)localMeterLevel;
@@ -261,6 +264,7 @@
 - (void)setIsSendingAudio:(bool)arg1;
 - (void)setIsSendingVideo:(bool)arg1;
 - (void)setIsVideo:(bool)arg1;
+- (void)setIsoCountryCode:(id)arg1;
 - (void)setLocalFrequency:(id)arg1;
 - (void)setLocalMeterLevel:(float)arg1;
 - (void)setLocalSenderIdentityAccountUUID:(id)arg1;

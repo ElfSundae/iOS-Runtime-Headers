@@ -5,6 +5,7 @@
 @interface AFSiriTaskExecution : NSObject <AFSiriRequestFailureHandling, AFSiriResponseHandling, NSXPCListenerDelegate> {
     id /* block */  _completionHandler;
     id /* block */  _deliveryHandler;
+    id  _keepAliveCycle;
     NSObject<OS_dispatch_queue> * _queue;
     AFSiriRequest * _request;
     long long  _state;

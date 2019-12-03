@@ -9,6 +9,7 @@
     unsigned long long  _approximateCount;
     unsigned long long  _approximatePhotosCount;
     unsigned long long  _approximateVideosCount;
+    NSArray * _assets;
     NSDate * _creationDate;
     NSDate * _expungeDate;
     NSData * _featuresData;
@@ -33,10 +34,12 @@
 @property (nonatomic, readonly) NSSet *features;
 @property (nonatomic, readonly) NSDictionary *featuresProperties;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool isInvalid;
 @property (nonatomic, readonly) NSArray *keyAssets;
 @property (nonatomic, readonly, copy) NSString *localIdentifier;
 @property (nonatomic, readonly) unsigned char notificationQuality;
 @property (nonatomic, readonly) unsigned short notificationState;
+@property (nonatomic, readonly, copy) NSArray *reasons;
 @property (nonatomic, readonly) id recipe;
 @property (nonatomic, readonly) unsigned long long relevanceDurationInDays;
 @property (nonatomic, readonly) NSDate *relevantUntilDate;
@@ -56,6 +59,7 @@
 
 // Image: /System/Library/Frameworks/Photos.framework/Photos
 
++ (id)availableSuggestionTypeInfosWithOptions:(id)arg1 photoLibrary:(id)arg2;
 + (id)entityKeyMap;
 + (id)fetchSuggestionsWithOptions:(id)arg1;
 + (id)fetchSuggestionsWithState:(unsigned short)arg1 ofType:(unsigned short)arg2 withOptions:(id)arg3;
@@ -69,11 +73,14 @@
 + (bool)managedObjectSupportsRejectedState;
 + (bool)managedObjectSupportsTrashedState;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
++ (id)suggestionInfosWithOptions:(id)arg1 photoLibrary:(id)arg2;
 + (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
++ (id)transientSuggestionWithInfo:(id)arg1 photoLibrary:(id)arg2;
 
 - (void).cxx_destruct;
 - (id)actionProperties;
 - (id)activationDate;
+- (id)assets;
 - (bool)containsUnverifiedPersons;
 - (id)creationDate;
 - (id)description;
@@ -109,6 +116,8 @@
 - (id)universalStartDate;
 
 // Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
+
++ (id)px_keyAssetFilteringPredicate;
 
 - (id)fetchKeyAssets;
 

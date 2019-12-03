@@ -4,29 +4,23 @@
 
 @interface PHImportRecord : PHImportExceptionRecorder {
     NSString * _assetIdentifier;
-    NSString * _destinationPath;
+    NSString * _downloadedPath;
     PHImportAsset * _importAsset;
-    unsigned char  _importFileOperation;
     unsigned char  _importType;
-    bool  _isDownloaded;
     NSString * _rawAssetIdentifier;
     bool  _referencedImport;
     NSMutableArray * _relatedRecords;
-    NSString * _sourcePath;
     PHImportTimerCollection * _timers;
 }
 
 @property (nonatomic, retain) NSString *assetIdentifier;
-@property (nonatomic, retain) NSString *destinationPath;
+@property (readonly) bool canReference;
+@property (nonatomic, retain) NSString *downloadedPath;
 @property (nonatomic, retain) PHImportAsset *importAsset;
-@property (nonatomic) unsigned char importFileOperation;
 @property (nonatomic) unsigned char importType;
-@property (nonatomic) bool isDownloaded;
-@property (nonatomic, readonly) bool isReferenced;
 @property (nonatomic, readonly) NSString *rawAssetIdentifier;
 @property (nonatomic) bool referencedImport;
 @property (nonatomic, retain) NSMutableArray *relatedRecords;
-@property (nonatomic, retain) NSString *sourcePath;
 @property (nonatomic, retain) PHImportTimerCollection *timers;
 
 - (void).cxx_destruct;
@@ -35,33 +29,26 @@
 - (id)allImportAssets;
 - (id)allImportRecords;
 - (id)assetIdentifier;
+- (bool)canReference;
 - (void)cleanupAfterFailure;
 - (id)description;
-- (id)destinationPath;
+- (id)descriptionWithPrefix:(id)arg1;
+- (id)downloadedPath;
 - (id)importAsset;
-- (unsigned char)importFileOperation;
 - (unsigned char)importType;
 - (id)initWithImportAsset:(id)arg1;
-- (bool)isDownloaded;
-- (bool)isReferenced;
 - (bool)needsDownload;
 - (id)rawAssetIdentifier;
 - (id)recordForAsset:(id)arg1;
 - (bool)referencedImport;
 - (id)relatedRecords;
 - (void)setAssetIdentifier:(id)arg1;
-- (void)setDestinationPath:(id)arg1;
-- (void)setDownloadedAtPath:(id)arg1;
+- (void)setDownloadedPath:(id)arg1;
 - (void)setImportAsset:(id)arg1;
-- (void)setImportFileOperation:(unsigned char)arg1;
 - (void)setImportType:(unsigned char)arg1;
-- (void)setIsDownloaded:(bool)arg1;
 - (void)setReferencedImport:(bool)arg1;
 - (void)setRelatedRecords:(id)arg1;
-- (void)setSourcePath:(id)arg1;
 - (void)setTimers:(id)arg1;
-- (id)sourcePath;
 - (id)timers;
-- (void)updateImportType;
 
 @end

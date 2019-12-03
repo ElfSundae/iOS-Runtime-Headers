@@ -28,7 +28,6 @@
 
 + (id)consumePendingLaunchEvent;
 + (void)createPendingLaunchEvent;
-+ (void)load;
 + (double)processStartTime;
 + (void)resetPendingLaunchEventForTesting;
 + (void)withPendingLaunchEvent:(id /* block */)arg1;

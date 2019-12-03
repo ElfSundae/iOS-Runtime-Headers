@@ -4,9 +4,10 @@
 
 @interface NMSRecommendationMediaItemGroup : NMSMediaItemGroup
 
+- (id)_fetchDownloadInfoForItems:(id)arg1;
+- (id)identifiersForContainerType:(unsigned long long)arg1;
 - (bool)isEstimate;
 - (id)itemList;
-- (id)libraryIdentifiersForContainerType:(unsigned long long)arg1;
 - (id)recommendation;
 
 @end

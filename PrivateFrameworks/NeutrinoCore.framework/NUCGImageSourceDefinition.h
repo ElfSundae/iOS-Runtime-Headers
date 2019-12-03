@@ -13,5 +13,6 @@
 - (struct CGImageSource { }*)imageSource;
 - (id)init;
 - (id)initWithCGImageSource:(struct CGImageSource { }*)arg1;
+- (long long)mediaType;
 
 @end

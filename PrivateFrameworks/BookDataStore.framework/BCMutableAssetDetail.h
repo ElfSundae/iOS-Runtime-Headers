@@ -35,6 +35,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) long long editGeneration;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool isAudiobook;
 @property (nonatomic) bool isFinished;
 @property (nonatomic, copy) NSDate *lastOpenDate;
 @property (nonatomic, readonly, copy) NSDate *modificationDate;
@@ -72,6 +73,7 @@
 - (id)initWithCloudData:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRecord:(id)arg1;
+- (bool)isAudiobook;
 - (bool)isFinished;
 - (id)lastOpenDate;
 - (bool)notFinished;

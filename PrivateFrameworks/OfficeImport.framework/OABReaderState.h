@@ -13,12 +13,12 @@
 
 @property (nonatomic, retain) ESDContainer *bstoreContainerHolder;
 
+- (void).cxx_destruct;
 - (id)bstoreContainerHolder;
 - (Class)client;
 - (id)colorPalette;
-- (void)dealloc;
+- (id)contentObjectForId:(int)arg1;
 - (id)drawableForShapeId:(int)arg1;
-- (struct EshContent { }*)eshContentForId:(int)arg1;
 - (int)groupDepth;
 - (id)groupStackReference;
 - (id)init;
@@ -30,8 +30,8 @@
 - (void)resetForNewDrawing;
 - (void)setBstoreContainerHolder:(id)arg1;
 - (void)setColorPalette:(id)arg1;
+- (void)setContentObject:(id)arg1 forId:(int)arg2;
 - (void)setDrawable:(id)arg1 forShapeId:(unsigned int)arg2;
-- (void)setEshContent:(struct EshContent { }*)arg1 forId:(int)arg2;
 - (bool)useXmlBlobs;
 - (id)xmlDrawingState;
 

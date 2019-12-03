@@ -16,8 +16,6 @@
 @property (nonatomic, readonly) UIImage *thumbail;
 @property (nonatomic, readonly) unsigned long long type;
 
-+ (id)backgroundGrayColor;
-
 - (void).cxx_destruct;
 - (void)_configureCell;
 - (id)checkMarkButton;

@@ -2,13 +2,14 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface INCallRecord : NSObject <INCacheableContainer, NSCopying, NSSecureCoding> {
+@interface INCallRecord : NSObject <INCacheableContainer, INJSONSerializable, NSCopying, NSSecureCoding> {
     long long  _callCapability;
     NSNumber * _callDuration;
     long long  _callRecordType;
     INPerson * _caller;
     NSDate * _dateCreated;
     NSString * _identifier;
+    NSNumber * _numberOfCalls;
     NSNumber * _unseen;
 }
 
@@ -21,14 +22,17 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) NSString *identifier;
+@property (nonatomic, readonly, copy) NSNumber *numberOfCalls;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly, copy) NSNumber *unseen;
 
++ (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
 - (id)_intents_cacheableObjects;
+- (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
 - (void)_intents_updateContainerWithCache:(id)arg1;
 - (long long)callCapability;
 - (id)callDuration;
@@ -43,7 +47,9 @@
 - (id)identifier;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 dateCreated:(id)arg2 caller:(id)arg3 callRecordType:(long long)arg4 callCapability:(long long)arg5 callDuration:(id)arg6 unseen:(id)arg7;
+- (id)initWithIdentifier:(id)arg1 dateCreated:(id)arg2 caller:(id)arg3 callRecordType:(long long)arg4 callCapability:(long long)arg5 callDuration:(id)arg6 unseen:(id)arg7 numberOfCalls:(id)arg8;
 - (bool)isEqual:(id)arg1;
+- (id)numberOfCalls;
 - (id)unseen;
 
 @end

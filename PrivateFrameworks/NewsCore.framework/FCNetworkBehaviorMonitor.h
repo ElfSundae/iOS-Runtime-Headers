@@ -29,9 +29,9 @@
 - (id)initWithCacheDirectory:(id)arg1;
 - (void)logNetworkEvent:(id)arg1;
 - (id)networkEvents;
-- (void)networkInterfaceDidChange:(id)arg1;
 - (void)operationThrottlerPerformOperation:(id)arg1;
 - (void)populateTelemetry:(id)arg1 withNetworkEventsFromDate:(id)arg2 toDate:(id)arg3;
 - (id)sessions;
+- (void)wifiReachabilityDidChange:(id)arg1;
 
 @end

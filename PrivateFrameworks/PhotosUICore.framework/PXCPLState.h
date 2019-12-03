@@ -5,11 +5,15 @@
 @interface PXCPLState : NSObject <NSCopying> {
     NSDate * _exitDate;
     bool  _isClientVersionTooOld;
+    bool  _isEnabled;
     bool  _isExceedingBatteryQuota;
     bool  _isExceedingCellularQuota;
     bool  _isExceedingLocalStorageQuota;
     bool  _isExceedingQuota;
-    bool  _isInBatterySaverMode;
+    bool  _isInHardResetSync;
+    bool  _isInLowDataMode;
+    bool  _isInLowPowerMode;
+    bool  _isInSoftResetSync;
     bool  _isOffline;
     bool  _isSyncing;
     bool  _isUserPaused;
@@ -18,17 +22,24 @@
     unsigned long long  _numberOfItemsToAdd;
     unsigned long long  _numberOfItemsToUpload;
     unsigned long long  _numberOfOriginalsToDownload;
+    unsigned long long  _numberOfOtherAssets;
+    unsigned long long  _numberOfPhotoAssets;
     unsigned long long  _numberOfReferencedItems;
+    unsigned long long  _numberOfVideoAssets;
     NSDate * _syncDate;
 }
 
 @property (nonatomic, copy) NSDate *exitDate;
 @property (nonatomic) bool isClientVersionTooOld;
+@property (nonatomic) bool isEnabled;
 @property (nonatomic) bool isExceedingBatteryQuota;
 @property (nonatomic) bool isExceedingCellularQuota;
 @property (nonatomic) bool isExceedingLocalStorageQuota;
 @property (nonatomic) bool isExceedingQuota;
-@property (nonatomic) bool isInBatterySaverMode;
+@property (nonatomic) bool isInHardResetSync;
+@property (nonatomic) bool isInLowDataMode;
+@property (nonatomic) bool isInLowPowerMode;
+@property (nonatomic) bool isInSoftResetSync;
 @property (nonatomic) bool isOffline;
 @property (nonatomic) bool isSyncing;
 @property (nonatomic) bool isUserPaused;
@@ -37,7 +48,10 @@
 @property (nonatomic) unsigned long long numberOfItemsToAdd;
 @property (nonatomic) unsigned long long numberOfItemsToUpload;
 @property (nonatomic) unsigned long long numberOfOriginalsToDownload;
+@property (nonatomic) unsigned long long numberOfOtherAssets;
+@property (nonatomic) unsigned long long numberOfPhotoAssets;
 @property (nonatomic) unsigned long long numberOfReferencedItems;
+@property (nonatomic) unsigned long long numberOfVideoAssets;
 @property (nonatomic, copy) NSDate *syncDate;
 
 - (void).cxx_destruct;
@@ -46,12 +60,16 @@
 - (id)exitDate;
 - (id)init;
 - (bool)isClientVersionTooOld;
+- (bool)isEnabled;
 - (bool)isEqualToCPLState:(id)arg1;
 - (bool)isExceedingBatteryQuota;
 - (bool)isExceedingCellularQuota;
 - (bool)isExceedingLocalStorageQuota;
 - (bool)isExceedingQuota;
-- (bool)isInBatterySaverMode;
+- (bool)isInHardResetSync;
+- (bool)isInLowDataMode;
+- (bool)isInLowPowerMode;
+- (bool)isInSoftResetSync;
 - (bool)isOffline;
 - (bool)isSyncing;
 - (bool)isUserPaused;
@@ -60,14 +78,21 @@
 - (unsigned long long)numberOfItemsToAdd;
 - (unsigned long long)numberOfItemsToUpload;
 - (unsigned long long)numberOfOriginalsToDownload;
+- (unsigned long long)numberOfOtherAssets;
+- (unsigned long long)numberOfPhotoAssets;
 - (unsigned long long)numberOfReferencedItems;
+- (unsigned long long)numberOfVideoAssets;
 - (void)setExitDate:(id)arg1;
 - (void)setIsClientVersionTooOld:(bool)arg1;
+- (void)setIsEnabled:(bool)arg1;
 - (void)setIsExceedingBatteryQuota:(bool)arg1;
 - (void)setIsExceedingCellularQuota:(bool)arg1;
 - (void)setIsExceedingLocalStorageQuota:(bool)arg1;
 - (void)setIsExceedingQuota:(bool)arg1;
-- (void)setIsInBatterySaverMode:(bool)arg1;
+- (void)setIsInHardResetSync:(bool)arg1;
+- (void)setIsInLowDataMode:(bool)arg1;
+- (void)setIsInLowPowerMode:(bool)arg1;
+- (void)setIsInSoftResetSync:(bool)arg1;
 - (void)setIsOffline:(bool)arg1;
 - (void)setIsSyncing:(bool)arg1;
 - (void)setIsUserPaused:(bool)arg1;
@@ -76,7 +101,10 @@
 - (void)setNumberOfItemsToAdd:(unsigned long long)arg1;
 - (void)setNumberOfItemsToUpload:(unsigned long long)arg1;
 - (void)setNumberOfOriginalsToDownload:(unsigned long long)arg1;
+- (void)setNumberOfOtherAssets:(unsigned long long)arg1;
+- (void)setNumberOfPhotoAssets:(unsigned long long)arg1;
 - (void)setNumberOfReferencedItems:(unsigned long long)arg1;
+- (void)setNumberOfVideoAssets:(unsigned long long)arg1;
 - (void)setSyncDate:(id)arg1;
 - (id)syncDate;
 

@@ -5,14 +5,17 @@
 
 @required
 
+- (PLEditSource *)activeEditSource;
 - (long long)baseVersion;
 - (void)beginLoading;
+- (PICompositionController *)compositionController;
 - (NSString *)contentIdentifier;
-- (PLPhotoEditModel *)editModel;
 - (PLEditSource *)editSource;
 - (NSError *)error;
 - (NSString *)livePhotoPairingIdentifier;
 - (NSNumber *)loadDuration;
+- (PICompositionController *)originalCompositionController;
+- (PLEditSource *)overcaptureEditSource;
 - (NSProgress *)progress;
 
 @end

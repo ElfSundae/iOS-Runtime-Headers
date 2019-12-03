@@ -14,4 +14,8 @@
 - (void)stopAnimation;
 - (void)stopPulseAnimation;
 
+@optional
+
+- (void)setTraitCollection:(UITraitCollection *)arg1;
+
 @end

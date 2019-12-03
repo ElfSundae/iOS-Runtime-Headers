@@ -3,8 +3,8 @@
  */
 
 @interface MFMessageStoreObjectCache : NSObject {
-    struct __CFDictionary { } * _cache;
-    long long  _capacity;
+    NSMutableDictionary * _cache;
+    unsigned long long  _capacity;
     id /* block */  _comparator;
     id /* block */  _keyGenerator;
     NSLock * _lock;
@@ -13,11 +13,11 @@
 @property (nonatomic, copy) id /* block */ comparator;
 @property (nonatomic, copy) id /* block */ keyGenerator;
 
+- (void).cxx_destruct;
 - (void)_nts_evictObject;
 - (void)_nts_setObject:(id)arg1 forKey:(id)arg2;
 - (id)addObject:(id)arg1 forMessage:(id)arg2 kind:(long long)arg3;
 - (id /* block */)comparator;
-- (void)dealloc;
 - (id)debugDescription;
 - (id)description;
 - (void)flush;

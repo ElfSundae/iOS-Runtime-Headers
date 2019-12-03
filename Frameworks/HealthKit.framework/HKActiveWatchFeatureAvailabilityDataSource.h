@@ -28,6 +28,7 @@
 - (void)setPairedDeviceRegistry:(id)arg1;
 - (struct { long long x1; long long x2; long long x3; })watchAtrialFibrillationDetectionVersion;
 - (id)watchBuildType;
+- (id)watchCompanionDevicePlatform;
 - (struct { long long x1; long long x2; long long x3; })watchElectrocardiogramVersion;
 - (id)watchModelNumber;
 - (id)watchOSBuildVersion;

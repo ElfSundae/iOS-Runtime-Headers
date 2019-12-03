@@ -24,6 +24,7 @@
         unsigned int type : 1; 
         unsigned int shortPrompt : 1; 
     }  _has;
+    NSMutableArray * _junctionViewImageIDs;
     double  _maneuverTime;
     NSData * _routeID;
     unsigned int  _selectedPrimaryStringIndex;
@@ -60,6 +61,7 @@
 @property (nonatomic) bool hasType;
 @property (nonatomic, readonly) bool hasUniqueIDstring;
 @property (nonatomic) bool hasVehicleSpeed;
+@property (nonatomic, retain) NSMutableArray *junctionViewImageIDs;
 @property (nonatomic) double maneuverTime;
 @property (nonatomic, retain) NSData *routeID;
 @property (nonatomic) unsigned int selectedPrimaryStringIndex;
@@ -74,8 +76,12 @@
 @property (nonatomic, retain) NSString *uniqueIDstring;
 @property (nonatomic) double vehicleSpeed;
 
++ (Class)junctionViewImageIDType;
+
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
+- (void)addJunctionViewImageID:(id)arg1;
+- (void)clearJunctionViewImageIDs;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -105,6 +111,9 @@
 - (unsigned long long)hash;
 - (id)initWithEvent:(id)arg1;
 - (bool)isEqual:(id)arg1;
+- (id)junctionViewImageIDAtIndex:(unsigned long long)arg1;
+- (id)junctionViewImageIDs;
+- (unsigned long long)junctionViewImageIDsCount;
 - (double)maneuverTime;
 - (void)mergeFrom:(id)arg1;
 - (bool)readFrom:(id)arg1;
@@ -130,6 +139,7 @@
 - (void)setHasTrafficColor:(bool)arg1;
 - (void)setHasType:(bool)arg1;
 - (void)setHasVehicleSpeed:(bool)arg1;
+- (void)setJunctionViewImageIDs:(id)arg1;
 - (void)setManeuverTime:(double)arg1;
 - (void)setRouteID:(id)arg1;
 - (void)setSelectedPrimaryStringIndex:(unsigned int)arg1;

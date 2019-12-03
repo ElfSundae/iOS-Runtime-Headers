@@ -63,6 +63,7 @@
 @property (nonatomic) int segmentRetrievalInterval;
 @property (nonatomic, retain) NSString *storefrontLocalizationLanguage;
 @property (nonatomic) float timezone;
+@property (readonly) bool unitTesting;
 
 + (bool)educationModeEnabled;
 + (id)sharedInstance;
@@ -138,5 +139,6 @@
 - (void)setTimezone:(float)arg1;
 - (id)storefrontLocalizationLanguage;
 - (float)timezone;
+- (bool)unitTesting;
 
 @end

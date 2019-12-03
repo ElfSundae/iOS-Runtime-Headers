@@ -19,12 +19,14 @@
     NSObject<OS_dispatch_queue> * _dispatchQueue;
     bool  _invalidateCalled;
     id /* block */  _invalidationHandler;
+    NSObject<OS_dispatch_source> * _lostTimer;
     bool  _needDups;
     NSData * _payloadFilterData;
     NSData * _payloadFilterMask;
     long long  _payloadType;
     bool  _poweredOffSleep;
     double  _rescanInterval;
+    int  _rescanSecondsActual;
     NSObject<OS_dispatch_source> * _rescanTimer;
     struct __sFILE { char *x1; int x2; int x3; short x4; short x5; struct __sbuf { char *x_6_1_1; int x_6_1_2; } x6; int x7; void *x8; int (*x9)(); int (*x10)(); int (*x11)(); int (*x12)(); struct __sbuf { char *x_13_1_1; int x_13_1_2; } x13; struct __sFILEX {} *x14; int x15; unsigned char x16[3]; unsigned char x17[1]; struct __sbuf { char *x_18_1_1; int x_18_1_2; } x18; int x19; long long x20; } * _rssiEventLogFile;
     bool  _rssiLog;
@@ -32,6 +34,16 @@
     long long  _rssiThreshold;
     bool  _scanCache;
     long long  _scanInterval;
+    bool  _scanParamActive;
+    bool  _scanParamCache;
+    bool  _scanParamDups;
+    NSData * _scanParamFilterData;
+    NSData * _scanParamFilterMask;
+    long long  _scanParamInterval;
+    long long  _scanParamMode;
+    NSArray * _scanParamPeers;
+    long long  _scanParamRSSI;
+    long long  _scanParamWindow;
     long long  _scanRate;
     bool  _scanStarted;
     long long  _scanState;
@@ -95,8 +107,10 @@
 - (void)_poweredOff;
 - (void)_poweredOn;
 - (void)_removeAllDevicesWithReason:(id)arg1;
+- (void)_rescanLostFired;
 - (void)_rescanTimerFired;
 - (void)_restartIfNeeded;
+- (void)_restartIfNeeded:(bool)arg1;
 - (void)_rssiLogClose;
 - (void)_rssiLogOpen;
 - (void)_startTimeoutIfNeeded;
@@ -121,7 +135,6 @@
 - (id /* block */)deviceFoundHandler;
 - (id /* block */)deviceLostHandler;
 - (id)dispatchQueue;
-- (id)init;
 - (id)initWithType:(long long)arg1;
 - (void)invalidate;
 - (id /* block */)invalidationHandler;
@@ -137,6 +150,7 @@
 - (id)pairingParsePayload:(id)arg1 identifier:(id)arg2 bleDevice:(id)arg3;
 - (void)pairingStartedScanning:(id)arg1;
 - (bool)pairingUpdatePairedInfo:(id)arg1 fields:(id)arg2 bleDevice:(id)arg3;
+- (void)parseStatus3:(unsigned char)arg1 productID:(unsigned int)arg2 caseLEDColor:(char *)arg3 caseLEDStatus:(char *)arg4;
 - (id)payloadFilterData;
 - (id)payloadFilterMask;
 - (void)performUpdate:(id /* block */)arg1;

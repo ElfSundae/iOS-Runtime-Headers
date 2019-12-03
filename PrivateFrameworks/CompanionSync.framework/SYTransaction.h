@@ -7,8 +7,9 @@
     id /* block */  _completion;
     NSDictionary * _contextInfo;
     NSDictionary * _idsOptions;
-    bool  _inTransaction;
+    _Atomic bool  _inTransaction;
     SYLegacyStore * _store;
+    NSObject<OS_os_transaction> * _transaction;
 }
 
 @property (nonatomic, retain) NSMutableArray *changes;

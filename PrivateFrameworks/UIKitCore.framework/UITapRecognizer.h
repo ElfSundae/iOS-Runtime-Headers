@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface UITapRecognizer : NSObject <NSCoding> {
+@interface UITapRecognizer : NSObject <NSSecureCoding> {
     NSMutableSet * _activeTouches;
     double  _allowableMovement;
     double  _allowableSeparation;
@@ -48,6 +48,8 @@
 @property (nonatomic) unsigned long long numberOfTapsRequired;
 @property (nonatomic) unsigned long long numberOfTouchesRequired;
 @property (nonatomic, readonly) NSArray *touches;
+
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (void)_beginInteraction;

@@ -3,16 +3,18 @@
  */
 
 @interface HRTextContentViewController : HKViewController {
-    NSAttributedString * _attributedString;
+    NSString * _string;
 }
 
-@property (nonatomic, retain) NSAttributedString *attributedString;
+@property (nonatomic, copy) NSString *string;
 
 - (void).cxx_destruct;
-- (id)attributedString;
-- (id)initWithAttributedString:(id)arg1;
+- (id)_attributedStringFromString:(id)arg1;
+- (id)initWithString:(id)arg1;
 - (void)loadView;
-- (void)setAttributedString:(id)arg1;
+- (void)setString:(id)arg1;
+- (id)string;
 - (id)textView;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end

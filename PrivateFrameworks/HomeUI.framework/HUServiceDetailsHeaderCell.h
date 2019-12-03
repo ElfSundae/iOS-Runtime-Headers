@@ -11,7 +11,6 @@
     NSLayoutConstraint * _messageBottomConstraint;
     UITextView * _messageTextView;
     <HUResizableCellDelegate> * _resizingDelegate;
-    HUGridServiceCell * _serviceCell;
     NSLayoutConstraint * _spinnerBottomConstraint;
     UILabel * _titleLabel;
     UIStackView * _titleSpinnerStackView;
@@ -29,7 +28,6 @@
 @property (nonatomic, retain) NSLayoutConstraint *messageBottomConstraint;
 @property (nonatomic, retain) UITextView *messageTextView;
 @property (nonatomic) <HUResizableCellDelegate> *resizingDelegate;
-@property (nonatomic, retain) HUGridServiceCell *serviceCell;
 @property (nonatomic, retain) NSLayoutConstraint *spinnerBottomConstraint;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) UILabel *titleLabel;
@@ -41,7 +39,6 @@
 - (void).cxx_destruct;
 - (void)_configureConstraints;
 - (id)_hiddenMessageTextViewConstraints;
-- (bool)_shouldShowServiceCell;
 - (void)_updateErrorLabelConstraints;
 - (void)_updateRequiredHeightIfNeeded;
 - (id)_visibleMessageTextViewConstraints;
@@ -55,7 +52,6 @@
 - (id)messageBottomConstraint;
 - (id)messageTextView;
 - (id)resizingDelegate;
-- (id)serviceCell;
 - (void)setActionBottomConstraint:(id)arg1;
 - (void)setActionButton:(id)arg1;
 - (void)setCheckingForUpdateSpinner:(id)arg1;
@@ -64,7 +60,6 @@
 - (void)setMessageBottomConstraint:(id)arg1;
 - (void)setMessageTextView:(id)arg1;
 - (void)setResizingDelegate:(id)arg1;
-- (void)setServiceCell:(id)arg1;
 - (void)setSpinnerBottomConstraint:(id)arg1;
 - (void)setTitleLabel:(id)arg1;
 - (void)setTitleSpinnerStackView:(id)arg1;

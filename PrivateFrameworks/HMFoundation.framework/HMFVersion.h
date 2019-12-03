@@ -37,6 +37,17 @@
 - (unsigned long long)updateVersion;
 - (id)versionString;
 
+// Image: /System/Library/PrivateFrameworks/HomeKitBackingStore.framework/HomeKitBackingStore
+
++ (id)hmbVersionFromData:(id)arg1;
++ (id)versionWithHMDVersion:(long long)arg1;
+
+- (id)hmbData;
+- (bool)isGreaterThan:(id)arg1;
+- (bool)isGreaterThanOrEqualTo:(id)arg1;
+- (bool)isLessThan:(id)arg1;
+- (bool)isLessThanOrEqualTo:(id)arg1;
+
 // Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
 
 - (bool)isGreaterThan:(id)arg1;

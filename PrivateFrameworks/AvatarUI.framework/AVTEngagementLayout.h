@@ -26,6 +26,7 @@
 @property (nonatomic, readonly, copy) id /* block */ interItemSpacingProvider;
 
 + (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })insetsToCenterFirstAndLastItemsGivenContainerSize:(struct CGSize { double x1; double x2; })arg1 itemSize:(struct CGSize { double x1; double x2; })arg2;
++ (double)minimumInterItemSpacingForVisibileBoundsSize:(struct CGSize { double x1; double x2; })arg1 defaultCellSize:(struct CGSize { double x1; double x2; })arg2 engagedCellSize:(struct CGSize { double x1; double x2; })arg3;
 
 - (void).cxx_destruct;
 - (struct CGSize { double x1; double x2; })cellSizeForEngagement:(double)arg1;

@@ -2,13 +2,12 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface INControlHomeIntentResponse : INIntentResponse <INControlHomeIntentResponseExport> {
-    _INPBControlHomeIntentResponse * _responseMessagePBRepresentation;
-}
+@interface INControlHomeIntentResponse : INIntentResponse <INControlHomeIntentResponseExport>
 
 @property (nonatomic, readonly) long long code;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, copy) NSArray *entityResponses;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
@@ -18,18 +17,19 @@
 + (int)_typeFromCode:(long long)arg1;
 + (bool)supportsSecureCoding;
 
-- (void).cxx_destruct;
+- (long long)_codeWithName:(id)arg1;
 - (id)_dictionaryRepresentation;
 - (id)_initWithCode:(long long)arg1 userActivity:(id)arg2;
 - (long long)_intentResponseCode;
-- (id)_responseMessagePBRepresentation;
 - (long long)code;
 - (void)encodeWithCoder:(id)arg1;
+- (id)entityResponses;
 - (id)init;
 - (id)initWithBackingStore:(id)arg1;
 - (id)initWithCode:(long long)arg1 userActivity:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)propertiesByName;
+- (void)setEntityResponses:(id)arg1;
 - (void)setPropertiesByName:(id)arg1;
 
 @end

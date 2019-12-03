@@ -6,13 +6,11 @@
     UIView * _backgroundView;
     id  _delegate;
     MPAVRoutingViewController * _routingViewController;
-    MTVibrantStylingProvider * _vibrantStylingProvider;
 }
 
 @property (nonatomic, retain) UIView *backgroundView;
 @property (nonatomic) id delegate;
 @property (nonatomic, retain) MPAVRoutingViewController *routingViewController;
-@property (nonatomic, retain) MTVibrantStylingProvider *vibrantStylingProvider;
 
 + (id)panelViewControllerForCoverSheet;
 
@@ -23,7 +21,5 @@
 - (void)setBackgroundView:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setRoutingViewController:(id)arg1;
-- (void)setVibrantStylingProvider:(id)arg1;
-- (id)vibrantStylingProvider;
 
 @end

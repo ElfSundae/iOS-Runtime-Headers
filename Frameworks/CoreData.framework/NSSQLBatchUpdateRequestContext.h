@@ -16,11 +16,12 @@
 - (void)dealloc;
 - (id)dropObjectIDCaptureStatements;
 - (void)executePrologue;
-- (void)executeRequestCore:(id*)arg1;
+- (bool)executeRequestCore:(id*)arg1;
 - (id)fetchRequestDescribingObjectsToUpdate;
 - (id)initWithRequest:(id)arg1 context:(id)arg2 sqlCore:(id)arg3;
 - (bool)isWritingRequest;
 - (id)request;
+- (id)tempTableName;
 - (id)updateStatement;
 
 @end

@@ -9,29 +9,30 @@
 }
 
 @property (nonatomic) <SDRDiagnosticReporterDelegate> *delegate;
-@property (nonatomic, retain) NSObject<OS_dispatch_queue> *queue;
+@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *queue;
 
 + (void)initialize;
++ (bool)isABCEnabled;
 
 - (void).cxx_destruct;
 - (id)actionsDictionary:(id)arg1 withIDSDestinations:(id)arg2 validFor:(double)arg3;
 - (bool)addSignatureContentForSession:(id)arg1 key:(id)arg2 content:(id)arg3 reply:(id /* block */)arg4;
 - (bool)addToSession:(id)arg1 event:(id)arg2 payload:(id)arg3 reply:(id /* block */)arg4;
 - (bool)addToSession:(id)arg1 events:(id)arg2 payload:(id)arg3 reply:(id /* block */)arg4;
-- (bool)assertFactString:(id)arg1 module:(id)arg2 asSymptom:(bool)arg3 reply:(id /* block */)arg4;
 - (bool)cancelSession:(id)arg1;
+- (void)casesListCallbackWithResult:(id)arg1 service:(id)arg2 identifier:(id)arg3 count:(unsigned long long)arg4 container:(id)arg5 reply:(id /* block */)arg6;
 - (void)dealloc;
 - (id)delegate;
 - (bool)endSession:(id)arg1;
 - (void)getAllDiagnosticCasesWithReply:(id /* block */)arg1;
+- (void)getAutoBugCaptureConfiguration:(id /* block */)arg1;
 - (bool)getDiagnosticPayloadsForSignatures:(id)arg1 reply:(id /* block */)arg2;
 - (id)init;
 - (id)initWithQueue:(id)arg1;
 - (bool)isSignatureValid:(id)arg1;
-- (bool)postAWDEvent:(id)arg1 reply:(id /* block */)arg2;
+- (void)purgeAutoBugCaptureFilesWithSubPaths:(id)arg1 reply:(id /* block */)arg2;
 - (id)queue;
 - (void)setDelegate:(id)arg1;
-- (void)setQueue:(id)arg1;
 - (void)setupXPCInterface;
 - (id)signatureWithDomain:(id)arg1 type:(id)arg2 subType:(id)arg3 detectedProcess:(id)arg4 triggerThresholdValues:(id)arg5;
 - (id)signatureWithDomain:(id)arg1 type:(id)arg2 subType:(id)arg3 originatingProcess:(id)arg4 triggerThreshold:(id)arg5;

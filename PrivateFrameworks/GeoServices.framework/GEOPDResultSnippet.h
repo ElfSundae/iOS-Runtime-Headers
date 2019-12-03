@@ -4,19 +4,44 @@
 
 @interface GEOPDResultSnippet : PBCodable <NSCopying> {
     NSString * _category;
+    NSMutableArray * _childItems;
     NSMutableArray * _childPlaces;
     unsigned int  _distanceDisplayThreshold;
     struct { 
-        unsigned int distanceDisplayThreshold : 1; 
-    }  _has;
+        unsigned int has_distanceDisplayThreshold : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_category : 1; 
+        unsigned int read_childItems : 1; 
+        unsigned int read_childPlaces : 1; 
+        unsigned int read_locationString : 1; 
+        unsigned int read_name : 1; 
+        unsigned int read_priceDescription : 1; 
+        unsigned int read_priceRange : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_category : 1; 
+        unsigned int wrote_childItems : 1; 
+        unsigned int wrote_childPlaces : 1; 
+        unsigned int wrote_locationString : 1; 
+        unsigned int wrote_name : 1; 
+        unsigned int wrote_priceDescription : 1; 
+        unsigned int wrote_priceRange : 1; 
+        unsigned int wrote_distanceDisplayThreshold : 1; 
+    }  _flags;
     NSString * _locationString;
     NSString * _name;
     GEOPDPriceDescription * _priceDescription;
     GEOPDRating * _priceRange;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic, retain) NSString *category;
+@property (nonatomic, retain) NSMutableArray *childItems;
 @property (nonatomic, retain) NSMutableArray *childPlaces;
 @property (nonatomic) unsigned int distanceDisplayThreshold;
 @property (nonatomic, readonly) bool hasCategory;
@@ -31,16 +56,33 @@
 @property (nonatomic, retain) GEOPDRating *priceRange;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (Class)childItemType;
 + (Class)childPlaceType;
++ (bool)isValid:(id)arg1;
 + (id)resultSnippetForPlaceData:(id)arg1;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsChildItem:(id)arg1;
+- (void)_addNoFlagsChildPlace:(id)arg1;
+- (void)_readCategory;
+- (void)_readChildItems;
+- (void)_readChildPlaces;
+- (void)_readLocationString;
+- (void)_readName;
+- (void)_readPriceDescription;
+- (void)_readPriceRange;
+- (void)addChildItem:(id)arg1;
 - (void)addChildPlace:(id)arg1;
 - (id)category;
+- (id)childItemAtIndex:(unsigned long long)arg1;
+- (id)childItems;
+- (unsigned long long)childItemsCount;
 - (id)childPlaceAtIndex:(unsigned long long)arg1;
 - (id)childPlaces;
 - (unsigned long long)childPlacesCount;
+- (void)clearChildItems;
 - (void)clearChildPlaces;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -53,14 +95,18 @@
 - (bool)hasPriceDescription;
 - (bool)hasPriceRange;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)locationString;
 - (void)mergeFrom:(id)arg1;
 - (id)name;
 - (id)priceDescription;
 - (id)priceRange;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setCategory:(id)arg1;
+- (void)setChildItems:(id)arg1;
 - (void)setChildPlaces:(id)arg1;
 - (void)setDistanceDisplayThreshold:(unsigned int)arg1;
 - (void)setHasDistanceDisplayThreshold:(bool)arg1;

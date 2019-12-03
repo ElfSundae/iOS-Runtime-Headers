@@ -5,9 +5,10 @@
 @interface VSRecognitionAction : NSObject {
     NSString * _resultString;
     VSRecognitionSession * _session;
-    /* Warning: unhandled union encoding: '(?="stringValue"@"NSString""attributedStringValue"@"NSAttributedString")' */ union { 
+    union { 
         NSString *stringValue; 
         id attributedStringValue; 
+        /* Warning: Unrecognized filer type: ')' using 'void*' */ void*NSAttributedString; 
     }  _spokenString;
     unsigned int  _spokenStringIsAttributed;
     NSString * _statusString;

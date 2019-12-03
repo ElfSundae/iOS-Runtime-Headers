@@ -11,6 +11,8 @@
 - (bool)isPromisedItem;
 - (NSString *)previewItemContentType;
 - (NSURL *)previewItemURLForDisplay;
+- (NSDictionary *)previewOptions;
+- (void)setPreviewOptions:(NSDictionary *)arg1;
 - (bool)wantsDefaultMediaPlayer;
 
 @end

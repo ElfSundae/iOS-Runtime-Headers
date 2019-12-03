@@ -6,6 +6,7 @@
     UIColor * _altTextColor;
     UIColor * _backgroundColor;
     UIColor * _buttonBackgroundColor;
+    UIColor * _buttonDisabledTextColor;
     UIColor * _buttonTextColor;
     UIColor * _cameraCaptureMaskColor;
     UIColor * _cameraCaptureMaskOutlineColor;
@@ -33,6 +34,7 @@
 @property (nonatomic, copy) UIColor *altTextColor;
 @property (nonatomic, copy) UIColor *backgroundColor;
 @property (nonatomic, copy) UIColor *buttonBackgroundColor;
+@property (nonatomic, copy) UIColor *buttonDisabledTextColor;
 @property (nonatomic, copy) UIColor *buttonTextColor;
 @property (nonatomic, copy) UIColor *cameraCaptureMaskColor;
 @property (nonatomic, copy) UIColor *cameraCaptureMaskOutlineColor;
@@ -60,6 +62,7 @@
 - (id)altTextColor;
 - (id)backgroundColor;
 - (id)buttonBackgroundColor;
+- (id)buttonDisabledTextColor;
 - (id)buttonTextColor;
 - (id)cameraCaptureMaskColor;
 - (id)cameraCaptureMaskOutlineColor;
@@ -80,6 +83,7 @@
 - (void)setAltTextColor:(id)arg1;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setButtonBackgroundColor:(id)arg1;
+- (void)setButtonDisabledTextColor:(id)arg1;
 - (void)setButtonTextColor:(id)arg1;
 - (void)setCameraCaptureMaskColor:(id)arg1;
 - (void)setCameraCaptureMaskOutlineColor:(id)arg1;

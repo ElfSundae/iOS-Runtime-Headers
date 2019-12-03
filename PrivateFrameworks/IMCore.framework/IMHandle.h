@@ -31,6 +31,7 @@
     bool  _hasCheckedCardMap;
     bool  _hasCheckedForSuggestions;
     bool  _hasCheckedPhoneNumber;
+    bool  _hasSuggestedName;
     bool  _hasTemporaryWatch;
     NSString * _id;
     NSDate * _idleSince;
@@ -105,6 +106,7 @@
 @property (nonatomic, readonly) bool hasName;
 @property (nonatomic, readonly) bool hasNoConferencingCaps;
 @property (nonatomic, readonly) bool hasOtherSiblings;
+@property (nonatomic) bool hasSuggestedName;
 @property (nonatomic, readonly) bool hasVideo;
 @property (nonatomic, readonly, retain) NSString *idleString;
 @property (nonatomic, readonly) double idleTime;
@@ -174,6 +176,7 @@
 - (long long)IDStatus;
 - (id)IDWithoutResource;
 - (id)_IDWithTrimmedServer;
+- (id)__imcnContactWithKeys:(id)arg1;
 - (id)_abPersonCreateIfNeeded;
 - (id)_bestChatSibling;
 - (id)_cachedPerson;
@@ -182,9 +185,13 @@
 - (void)_clearABPersonLookup;
 - (void)_clearABProperties;
 - (void)_clearStatusMessageURLCache;
+- (id)_contactID;
 - (void)_contactStoreDidChange:(id)arg1;
 - (void)_createPhoneNumberRefIfNeeded;
 - (id)_displayNameWithAbbreviation;
+- (id)_displayNameWithContact:(id)arg1;
+- (id)_displayNameWithNicknameIfAvailable;
+- (id)_fallbackCNContactWithAllKeys;
 - (void)_fetchBusinessInfo;
 - (void)_fetchMapItemBannerImageDataForMapItem:(id)arg1;
 - (void)_fetchMapItemImageDataForMapItem:(id)arg1;
@@ -238,6 +245,7 @@
 - (id)chatSiblingsArray;
 - (void)clearABPerson;
 - (id)cnContact;
+- (id)cnContactWithKeys:(id)arg1;
 - (long long)compareAccountNames:(id)arg1;
 - (long long)compareFirstNames:(id)arg1;
 - (long long)compareIDs:(id)arg1;
@@ -279,6 +287,7 @@
 - (bool)hasOtherSiblings;
 - (bool)hasResource;
 - (bool)hasServer;
+- (bool)hasSuggestedName;
 - (bool)hasVideo;
 - (unsigned long long)hash;
 - (id)idleString;
@@ -358,6 +367,7 @@
 - (void)setFirstName:(id)arg1 lastName:(id)arg2;
 - (void)setFirstName:(id)arg1 lastName:(id)arg2 fullName:(id)arg3 andUpdateABPerson:(bool)arg4;
 - (void)setHasCheckedForSuggestions:(bool)arg1;
+- (void)setHasSuggestedName:(bool)arg1;
 - (void)setHasTemporaryWatch:(bool)arg1;
 - (void)setIDStatus:(long long)arg1;
 - (void)setIMPerson:(id)arg1;
@@ -390,6 +400,7 @@
 - (double)timeSinceStatusChanged;
 - (double)timeSinceWentOffline;
 - (id)uniqueName;
+- (void)updateCNContact:(id)arg1;
 - (bool)watchingIMHandle;
 
 // Image: /System/Library/PrivateFrameworks/IMAVCore.framework/IMAVCore

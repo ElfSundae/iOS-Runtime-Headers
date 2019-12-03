@@ -5,6 +5,7 @@
 @interface NULivePhotoRenderRequest : NURenderRequest {
     NUColorSpace * _colorSpace;
     <NUScalePolicy> * _scalePolicy;
+    NURenderContext * _stillBufferRenderContext;
 }
 
 @property (nonatomic, retain) NUColorSpace *colorSpace;

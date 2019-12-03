@@ -6,16 +6,20 @@
 
 @property (nonatomic, readonly) bool conformsToImage;
 @property (nonatomic, readonly) bool conformsToMovie;
+@property (nonatomic, readonly) bool conformsToRawImage;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) NSString *identifier;
-@property (getter=isPrimaryFormat, nonatomic, readonly) bool primaryFormat;
+@property (nonatomic, readonly) bool isPlayableVideo;
+@property (getter=isPrimaryImageFormat, nonatomic, readonly) bool primaryImageFormat;
 @property (readonly) Class superclass;
 
 - (bool)conformsToImage;
 - (bool)conformsToMovie;
+- (bool)conformsToRawImage;
 - (id)identifier;
-- (bool)isPrimaryFormat;
+- (bool)isPlayableVideo;
+- (bool)isPrimaryImageFormat;
 
 @end

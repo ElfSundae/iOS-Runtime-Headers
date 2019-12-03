@@ -3,21 +3,20 @@
  */
 
 @interface HDClientAuthorizationOracle : NSObject {
-    HDXPCClient * _client;
     bool  _clientHasPrivateEntitlement;
+    _HKEntitlements * _entitlements;
     HDProfile * _profile;
+    NSString * _sourceBundleIdentifier;
 }
 
-@property (nonatomic, readonly) HDXPCClient *client;
-@property (nonatomic, readonly) HDProfile *profile;
-
 - (void).cxx_destruct;
+- (bool)_shouldBypassAuthorization;
 - (id)additionalAuthorizationPredicateForObjectType:(id)arg1 error:(id*)arg2;
-- (id)client;
 - (id)filteredObjectsForReadAuthorization:(id)arg1 anchor:(id)arg2 error:(id*)arg3;
 - (id)init;
-- (id)initWithClient:(id)arg1 profile:(id)arg2;
-- (id)profile;
+- (id)initWithSourceBundleIdentifier:(id)arg1 entitlements:(id)arg2 profile:(id)arg3;
+- (bool)performReadAuthorizationTransactionWithError:(id*)arg1 handler:(id /* block */)arg2;
 - (id)readAuthorizationStatusForType:(id)arg1 error:(id*)arg2;
+- (id)readAuthorizationStatusesForTypes:(id)arg1 error:(id*)arg2;
 
 @end

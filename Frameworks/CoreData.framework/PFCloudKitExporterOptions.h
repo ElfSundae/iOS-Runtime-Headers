@@ -7,14 +7,14 @@
     NSCloudKitMirroringDelegateOptions * _mirroringDelegateOptions;
     unsigned long long  _perOperationBytesThreshold;
     unsigned long long  _perOperationObjectThreshold;
-    CKRecordZone * _zone;
+    CKRecordZone * _recordZone;
 }
 
 @property (nonatomic, readonly) CKDatabase *database;
 @property (nonatomic, readonly) NSCloudKitMirroringDelegateOptions *mirroringDelegateOptions;
 @property (nonatomic) unsigned long long perOperationBytesThreshold;
 @property (nonatomic) unsigned long long perOperationObjectThreshold;
-@property (nonatomic, readonly) CKRecordZone *zone;
+@property (nonatomic, readonly) CKRecordZone *recordZone;
 
 - (id)copy;
 - (id)database;
@@ -23,8 +23,8 @@
 - (id)mirroringDelegateOptions;
 - (unsigned long long)perOperationBytesThreshold;
 - (unsigned long long)perOperationObjectThreshold;
+- (id)recordZone;
 - (void)setPerOperationBytesThreshold:(unsigned long long)arg1;
 - (void)setPerOperationObjectThreshold:(unsigned long long)arg1;
-- (id)zone;
 
 @end

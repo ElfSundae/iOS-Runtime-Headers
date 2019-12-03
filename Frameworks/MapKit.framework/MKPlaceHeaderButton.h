@@ -8,6 +8,7 @@
     NSLayoutConstraint * _heightConstraint;
     bool  _highlighted;
     bool  _primary;
+    MKVibrantView * _vibrantView;
 }
 
 @property (nonatomic) _MKPlaceActionButtonController *buttonController;
@@ -18,14 +19,16 @@
 
 - (void).cxx_destruct;
 - (void)_contentSizeDidChange;
+- (bool)_isTintColorWhite;
 - (id)_primaryButtonColor;
 - (id)_primaryButtonTextColor;
+- (void)_setVibrantView;
 - (void)_updateStyleNonPrimaryButton;
 - (void)_updateStylePrimaryButton;
 - (void)applyButtonDefaultConfiguration;
 - (id)buttonController;
 - (void)buttonSelected:(id)arg1;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (id)init;
 - (id)initWithPrimaryType:(unsigned long long)arg1;
 - (bool)isHighlighted;

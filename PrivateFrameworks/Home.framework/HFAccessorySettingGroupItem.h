@@ -2,11 +2,12 @@
    Image: /System/Library/PrivateFrameworks/Home.framework/Home
  */
 
-@interface HFAccessorySettingGroupItem : HFItem <HFAccessorySettingItemProtocol> {
+@interface HFAccessorySettingGroupItem : HFItem <HFHomeKitSettingItemProtocol, HFHomeKitSettingsVendorProvider> {
     HFAccessorySettingsEntity * _entity;
-    <HFMediaProfileContainer> * _mediaProfileContainer;
+    <HFHomeKitSettingsVendor> * _homeKitSettingsVendor;
     HMAccessorySelectionSetting * _selectionSetting;
-    HMAccessorySettingGroup * _settingGroup;
+    HMSettingGroup * _settingGroup;
+    NSDictionary * _usageOptions;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -14,11 +15,12 @@
 @property (nonatomic, readonly) HFAccessorySettingsEntity *entity;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) <HFHomeKitObject> *homeKitObject;
-@property (nonatomic, readonly) <HFMediaProfileContainer> *mediaProfileContainer;
+@property (nonatomic, readonly) <HFHomeKitSettingsVendor> *homeKitSettingsVendor;
 @property (nonatomic, readonly) HMAccessorySelectionSetting *selectionSetting;
-@property (nonatomic, readonly) HMAccessorySettingGroup *settingGroup;
+@property (nonatomic, readonly) HMSettingGroup *settingGroup;
 @property (nonatomic, readonly) NSString *settingKeyPath;
 @property (readonly) Class superclass;
+@property (nonatomic, retain) NSDictionary *usageOptions;
 
 - (void).cxx_destruct;
 - (void)_decorateHiddenOrDisabled:(id)arg1;
@@ -28,13 +30,15 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)entity;
 - (id)homeKitObject;
-- (id)initWithMediaProfileContainer:(id)arg1;
-- (id)initWithMediaProfileContainer:(id)arg1 entity:(id)arg2;
-- (id)initWithMediaProfileContainer:(id)arg1 group:(id)arg2;
-- (id)initWithMediaProfileContainer:(id)arg1 selectionSetting:(id)arg2;
-- (id)mediaProfileContainer;
+- (id)homeKitSettingsVendor;
+- (id)initWithHomeKitSettingsVendor:(id)arg1 usageOptions:(id)arg2;
+- (id)initWithHomeKitSettingsVendor:(id)arg1 usageOptions:(id)arg2 entity:(id)arg3;
+- (id)initWithHomeKitSettingsVendor:(id)arg1 usageOptions:(id)arg2 group:(id)arg3;
+- (id)initWithHomeKitSettingsVendor:(id)arg1 usageOptions:(id)arg2 selectionSetting:(id)arg3;
 - (id)selectionSetting;
+- (void)setUsageOptions:(id)arg1;
 - (id)settingGroup;
 - (id)settingKeyPath;
+- (id)usageOptions;
 
 @end

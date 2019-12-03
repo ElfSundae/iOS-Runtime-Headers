@@ -4,9 +4,9 @@
 
 @interface GEOPDTextItemDisplayConfig : PBCodable <NSCopying> {
     struct { 
-        unsigned int maxItemsPerRow : 1; 
-        unsigned int maxRowCount : 1; 
-    }  _has;
+        unsigned int has_maxItemsPerRow : 1; 
+        unsigned int has_maxRowCount : 1; 
+    }  _flags;
     unsigned int  _maxItemsPerRow;
     unsigned int  _maxRowCount;
     PBUnknownFields * _unknownFields;
@@ -18,7 +18,10 @@
 @property (nonatomic) unsigned int maxRowCount;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -30,6 +33,7 @@
 - (unsigned int)maxItemsPerRow;
 - (unsigned int)maxRowCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasMaxItemsPerRow:(bool)arg1;
 - (void)setHasMaxRowCount:(bool)arg1;

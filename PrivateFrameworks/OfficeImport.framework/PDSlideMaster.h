@@ -23,13 +23,13 @@
 @property (nonatomic, retain) NSMutableArray *slideLayouts;
 @property (nonatomic) bool slideNumberPlaceholderIsVisible;
 
+- (void).cxx_destruct;
 - (id)addSlideLayout;
 - (void)addSlideLayout:(id)arg1;
 - (id)bodyTextStyle;
 - (id)colorMap;
 - (id)colorScheme;
 - (bool)dateTimePlaceholderIsVisible;
-- (void)dealloc;
 - (id)defaultTextListStyle;
 - (id)defaultTheme;
 - (id)description;

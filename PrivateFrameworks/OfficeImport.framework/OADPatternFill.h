@@ -10,9 +10,9 @@
 
 + (id)defaultProperties;
 
+- (void).cxx_destruct;
 - (id)bgColor;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)fgColor;
 - (void)fixPropertiesForChangingParentPreservingEffectiveValues:(id)arg1;
 - (unsigned long long)hash;

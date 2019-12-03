@@ -3,10 +3,10 @@
  */
 
 @interface HMDMediaEndpoint : HMFObject <HMFLogging> {
+    HMDMediaBrowser * _browser;
     unsigned int  _connectionState;
     NSString * _localizedName;
     NSString * _logID;
-    HMDMediaBrowser * _mediaBrowser;
     NSSet * _outputDeviceIdentifiers;
     NSMutableArray * _pendingBlocks;
     NSObject<OS_dispatch_queue> * _propertyQueue;
@@ -16,6 +16,7 @@
 }
 
 @property (nonatomic, readonly) NSArray *advertisements;
+@property HMDMediaBrowser *browser;
 @property (getter=isConnected, nonatomic, readonly) bool connected;
 @property (nonatomic) unsigned int connectionState;
 @property (readonly, copy) NSString *debugDescription;
@@ -24,7 +25,6 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSString *localizedName;
 @property (nonatomic, readonly) NSString *logID;
-@property (nonatomic, readonly) HMDMediaBrowser *mediaBrowser;
 @property (nonatomic, retain) NSSet *outputDeviceIdentifiers;
 @property (nonatomic, retain) NSMutableArray *pendingBlocks;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *propertyQueue;
@@ -43,6 +43,7 @@
 - (void)_updateOutputDeviceIdentifiers;
 - (void)_updateOutputDevicesAndConnectWithCompletionHandler:(id /* block */)arg1;
 - (id)advertisements;
+- (id)browser;
 - (unsigned int)connectionState;
 - (void*)copyOrigin;
 - (void)dealloc;
@@ -54,27 +55,27 @@
 - (void*)externalDevice;
 - (void)getPlaybackStateWithCompletionHandler:(id /* block */)arg1;
 - (unsigned long long)hash;
-- (id)initWithEndpoint:(void*)arg1 mediaBrowser:(id)arg2;
+- (id)initWithEndpoint:(void*)arg1;
 - (bool)isConnected;
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToEndpoint:(void*)arg1;
 - (id)localizedName;
 - (id)logID;
 - (id)logIdentifier;
-- (id)mediaBrowser;
 - (id)outputDeviceIdentifiers;
 - (id)pendingBlocks;
 - (id)propertyQueue;
 - (void)registerForNowPlayingUpdates:(bool)arg1;
 - (void*)retainedEndpoint;
 - (id)sessionIdentifier;
+- (void)setBrowser:(id)arg1;
 - (void)setConnectionState:(unsigned int)arg1;
 - (void)setOutputDeviceIdentifiers:(id)arg1;
 - (void)setPendingBlocks:(id)arg1;
 - (void)setPlaybackState:(unsigned int)arg1 completionHandler:(id /* block */)arg2;
 - (void)setRetainedEndpoint:(void*)arg1;
-- (void)updateEndpoint:(void*)arg1;
 - (void)updateOutputDevicesAndConnectWithCompletionHandler:(id /* block */)arg1;
+- (void)updateWithEndpoint:(id)arg1;
 - (id)workQueue;
 
 @end

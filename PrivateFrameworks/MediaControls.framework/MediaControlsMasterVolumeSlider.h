@@ -7,7 +7,7 @@
     double  _forcePercent;
     UILongPressGestureRecognizer * _gestureRecognizer;
     UIView * _growingThumbView;
-    float  _initialValue;
+    float  _initialX;
     UINotificationFeedbackGenerator * _negativeFeedbackGenerator;
     UIImpactFeedbackGenerator * _positiveFeedbackGenerator;
     long long  _syncState;
@@ -45,7 +45,7 @@
 - (void)setPositiveFeedbackGenerator:(id)arg1;
 - (void)setSyncState:(long long)arg1;
 - (void)setSyncingEnabled:(bool)arg1;
-- (void)shrinkThumb;
+- (void)shrinkThumbAfterDelay:(double)arg1;
 - (long long)syncState;
 - (void)traitCollectionDidChange:(id)arg1;
 

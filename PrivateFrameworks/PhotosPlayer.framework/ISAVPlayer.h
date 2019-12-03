@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PhotosPlayer.framework/PhotosPlayer
  */
 
-@interface ISAVPlayer : AVQueuePlayer {
+@interface ISAVPlayer : AVPlayer {
     ISRateCurveRequest * _currentRequest;
 }
 

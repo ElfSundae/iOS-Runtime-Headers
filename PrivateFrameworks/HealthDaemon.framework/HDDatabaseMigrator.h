@@ -219,5 +219,7 @@
 - (id)transaction;
 - (id)whitetailProtectedMigrationSteps;
 - (id)whitetailUnprotectedMigrationSteps;
+- (void)yukon_addProtectedMigrationSteps;
+- (void)yukon_addUnprotectedMigrationSteps;
 
 @end

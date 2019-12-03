@@ -7,6 +7,7 @@
     NSString * _descriptionTrial;
     NSString * _learnMoreTitle;
     NSURL * _learnMoreURL;
+    FCPaywallTopOffsetConfiguration * _paywallTopOffsetConfig;
     unsigned long long  _paywallType;
     FCSubscriptionButtonConfiguration * _subscriptionButtonConfig;
     NSString * _title;
@@ -17,6 +18,7 @@
 @property (nonatomic, copy) NSString *descriptionTrial;
 @property (nonatomic, copy) NSString *learnMoreTitle;
 @property (nonatomic, copy) NSURL *learnMoreURL;
+@property (nonatomic, readonly) FCPaywallTopOffsetConfiguration *paywallTopOffsetConfig;
 @property (nonatomic) unsigned long long paywallType;
 @property (nonatomic, retain) FCSubscriptionButtonConfiguration *subscriptionButtonConfig;
 @property (nonatomic, copy) NSString *title;
@@ -33,6 +35,7 @@
 + (id)defaultPDFHardPaywallWithLandingPageArticleID:(id)arg1;
 + (id)defaultPaywallDescription;
 + (id)defaultPaywallTitle;
++ (id)defaultPaywallTopOffsetConfiguration;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -41,10 +44,11 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithConfigDictionary:(id)arg1;
-- (id)initWithPaywallType:(unsigned long long)arg1 title:(id)arg2 descriptionTrial:(id)arg3 descriptionNonTrial:(id)arg4 learnMoreTitle:(id)arg5 learnMoreURL:(id)arg6 subscriptionButtonConfig:(id)arg7 visualSpecConfig:(id)arg8;
+- (id)initWithPaywallType:(unsigned long long)arg1 title:(id)arg2 descriptionTrial:(id)arg3 descriptionNonTrial:(id)arg4 learnMoreTitle:(id)arg5 learnMoreURL:(id)arg6 subscriptionButtonConfig:(id)arg7 visualSpecConfig:(id)arg8 paywallTopOffsetConfig:(id)arg9;
 - (bool)isEqual:(id)arg1;
 - (id)learnMoreTitle;
 - (id)learnMoreURL;
+- (id)paywallTopOffsetConfig;
 - (unsigned long long)paywallType;
 - (void)setDescriptionNonTrial:(id)arg1;
 - (void)setDescriptionTrial:(id)arg1;

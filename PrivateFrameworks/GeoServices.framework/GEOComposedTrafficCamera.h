@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
  */
 
-@interface GEOComposedTrafficCamera : GEOComposedEnrouteNotice {
+@interface GEOComposedTrafficCamera : GEOComposedEnrouteNotice <NSSecureCoding> {
     GEOTrafficCamera * _trafficCamera;
 }
 
@@ -15,14 +15,18 @@
 @property (nonatomic, readonly) double speedThreshold;
 @property (nonatomic, readonly) int type;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (unsigned int)cameraPriority;
 - (id)description;
 - (id)detailFormatForLocation:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasCameraPriority;
 - (bool)hasSpeedLimitText;
 - (bool)hasSpeedThreshold;
 - (unsigned int)highlightDistance;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithEnrouteNotice:(id)arg1 trafficCamera:(id)arg2 onRoute:(id)arg3;
 - (id)position;
 - (id)speedLimitText;

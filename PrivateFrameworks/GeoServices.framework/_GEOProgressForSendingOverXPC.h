@@ -9,7 +9,7 @@
     NSMutableArray * _remoteConnections;
 }
 
-@property (readonly) NSObject<OS_xpc_object> *endpoint;
+@property (nonatomic, readonly) NSObject<OS_xpc_object> *endpoint;
 
 - (void).cxx_destruct;
 - (void)_broadcastOverXPCConnections:(id)arg1;

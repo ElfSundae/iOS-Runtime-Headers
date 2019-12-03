@@ -13,13 +13,11 @@
 @property (nonatomic, readonly) NSString *contentVersion;
 @property (nonatomic, readonly) long long downloadState;
 @property (nonatomic, readonly) NSError *error;
+@property (nonatomic, readonly) long long expectedContentLength;
 @property (nonatomic, readonly) float progress;
 @property (nonatomic, readonly) long long state;
 @property (nonatomic, readonly) double timeRemaining;
 @property (nonatomic, readonly) SKPaymentTransaction *transaction;
-
-+ (id)contentURLForProductID:(id)arg1;
-+ (void)deleteContentForProductID:(id)arg1;
 
 - (void).cxx_destruct;
 - (void)_applyChangeset:(id)arg1;
@@ -41,6 +39,7 @@
 - (id)copyXPCEncoding;
 - (long long)downloadState;
 - (id)error;
+- (long long)expectedContentLength;
 - (id)init;
 - (id)initWithXPCEncoding:(id)arg1;
 - (bool)isEqual:(id)arg1;

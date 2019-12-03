@@ -2,19 +2,26 @@
    Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
  */
 
-@interface MPStoreLibraryPersonalizationRequest : MPModelRequest {
+@interface MPStoreLibraryPersonalizationRequest : MPModelRequest <MPUserIdentityConsuming> {
     NSMutableDictionary * _itemIndexPathToOverridePropertySet;
     MPSectionedCollection * _representedObjects;
     MPSectionedCollection * _unpersonalizedContentDescriptors;
+    ICUserIdentity * _userIdentity;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) NSDictionary *itemIndexPathToOverridePropertySet;
 @property (nonatomic, retain) MPSectionedCollection *representedObjects;
+@property (readonly) Class superclass;
 @property (nonatomic, readonly) MPSectionedCollection *unpersonalizedContentDescriptors;
+@property (nonatomic, copy) ICUserIdentity *userIdentity;
 
-+ (id)defaultLibraryView;
++ (id)libraryViewWithUserIdentity:(id)arg1;
 + (id)personalizedResponseForContentDescriptor:(id)arg1 requestedProperties:(id)arg2;
-+ (id)sharedQueue;
++ (id)preferredQueue;
++ (bool)requiresNetwork;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -27,6 +34,8 @@
 - (id)representedObjects;
 - (void)setProperties:(id)arg1 forItemAtIndexPath:(id)arg2;
 - (void)setRepresentedObjects:(id)arg1;
+- (void)setUserIdentity:(id)arg1;
 - (id)unpersonalizedContentDescriptors;
+- (id)userIdentity;
 
 @end

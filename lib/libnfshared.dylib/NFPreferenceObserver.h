@@ -10,11 +10,9 @@
 
 - (id /* block */)callback;
 - (void)dealloc;
-- (void)handlePreferencesChanged;
-- (void)handleProfilesChanged;
+- (void)handlePreferencesOrProfileChanged;
 - (void)setCallback:(id /* block */)arg1;
-- (void)start;
+- (void)start:(id /* block */)arg1;
 - (void)stop;
-- (void)updateDiagnosticLogging;
 
 @end

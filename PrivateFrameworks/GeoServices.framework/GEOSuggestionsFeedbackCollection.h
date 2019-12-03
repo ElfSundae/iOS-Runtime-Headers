@@ -4,10 +4,25 @@
 
 @interface GEOSuggestionsFeedbackCollection : PBCodable <NSCopying> {
     struct { 
-        unsigned int sessionID : 1; 
-        unsigned int suggestionEntryIndex : 1; 
-        unsigned int suggestionsEntryListIndex : 1; 
-    }  _has;
+        unsigned int has_sessionID : 1; 
+        unsigned int has_suggestionEntryIndex : 1; 
+        unsigned int has_suggestionsEntryListIndex : 1; 
+        unsigned int read_suggestionEntryMetadata : 1; 
+        unsigned int read_suggestionEntry : 1; 
+        unsigned int read_suggestionMetadata : 1; 
+        unsigned int wrote_sessionID : 1; 
+        unsigned int wrote_suggestionEntryMetadata : 1; 
+        unsigned int wrote_suggestionEntry : 1; 
+        unsigned int wrote_suggestionMetadata : 1; 
+        unsigned int wrote_suggestionEntryIndex : 1; 
+        unsigned int wrote_suggestionsEntryListIndex : 1; 
+    }  _flags;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     struct GEOSessionID { 
         unsigned long long _high; 
         unsigned long long _low; 
@@ -32,7 +47,12 @@
 @property (nonatomic, retain) NSData *suggestionMetadata;
 @property (nonatomic) int suggestionsEntryListIndex;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_readSuggestionEntry;
+- (void)_readSuggestionEntryMetadata;
+- (void)_readSuggestionMetadata;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -44,8 +64,11 @@
 - (bool)hasSuggestionMetadata;
 - (bool)hasSuggestionsEntryListIndex;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (struct GEOSessionID { unsigned long long x1; unsigned long long x2; })sessionID;
 - (void)setHasSessionID:(bool)arg1;

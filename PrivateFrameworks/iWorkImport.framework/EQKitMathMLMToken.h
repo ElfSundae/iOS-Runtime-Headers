@@ -3,10 +3,11 @@
  */
 
 @interface EQKitMathMLMToken : EQKitMathMLNode <EQKitFontStyling, EQKitLayoutSchemataToken, EQKitMathMLNode> {
-    /* Warning: unhandled union encoding: '(?="mChar"I"mString"@"NSString""mContent"@"EQKitMathMLTokenContent")' */ union { 
+    union { 
         unsigned int mChar; 
         NSString *mString; 
         id mContent; 
+        /* Warning: Unrecognized filer type: ')' using 'void*' */ void*EQKitMathMLTokenContent; 
     }  mContent;
     struct { 
         unsigned int mType : 2; 

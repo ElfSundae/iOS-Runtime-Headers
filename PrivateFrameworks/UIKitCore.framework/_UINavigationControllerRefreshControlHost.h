@@ -16,10 +16,11 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <_UINavigationControllerRefreshControlHostDelegate> *delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) double fullHeightOfRefreshControl;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) UIView *hostContainerView;
 @property (nonatomic, readonly) UINavigationController *navigationController;
-@property (retain) UIRefreshControl *refreshControl;
+@property UIRefreshControl *refreshControl;
 @property (retain) NSArray *refreshControlConstraints;
 @property (readonly) bool refreshControlInsetsAffectScrollViewRubberBanding;
 @property (nonatomic) double restingHeightOfRefreshControl;
@@ -37,8 +38,10 @@
 - (double)_thresholdForObstructedContentFullAlpha;
 - (double)_thresholdForObstructedContentZeroAlpha;
 - (void)_updateFadeOutProgress;
+- (void)dealloc;
 - (void)decrementInsetHeight:(double)arg1;
 - (id)delegate;
+- (double)fullHeightOfRefreshControl;
 - (id)hostContainerView;
 - (void)incrementInsetHeight:(double)arg1;
 - (id)initWithNavigationController:(id)arg1 scrollView:(id)arg2;
@@ -56,7 +59,7 @@
 - (void)setRefreshControlConstraints:(id)arg1;
 - (void)setRestingHeightOfRefreshControl:(double)arg1;
 - (void)setUnobstructedHeight:(double)arg1;
-- (void)stopAnimationsAndSetToIdle;
+- (void)stopAnimations;
 - (double)unobstructedHeight;
 
 @end

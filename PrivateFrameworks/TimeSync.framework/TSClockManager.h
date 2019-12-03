@@ -25,6 +25,7 @@
 
 - (void)addClockPersonality:(id)arg1;
 - (bool)addMappingFromClockID:(unsigned long long)arg1 toCoreAudioClockDomain:(unsigned int*)arg2 error:(id*)arg3;
+- (bool)addTSNCaptureServicesWithError:(id*)arg1;
 - (unsigned long long)addUserFilteredClockWithMachInterval:(unsigned long long)arg1 domainInterval:(unsigned long long)arg2 usingFilterShift:(unsigned char)arg3 isAdaptive:(bool)arg4 error:(id*)arg5;
 - (bool)addgPTPServicesWithError:(id*)arg1;
 - (id)availableClockIdentifiers;
@@ -39,6 +40,7 @@
 - (bool)releaseDynamicClockID:(unsigned long long)arg1 error:(id*)arg2;
 - (void)removeClockPersonality:(id)arg1;
 - (bool)removeMappingFromClockIDToCoreAudioClockDomainForClockID:(unsigned long long)arg1 error:(id*)arg2;
+- (bool)removeTSNCaptureServicesWithError:(id*)arg1;
 - (bool)removeUserFilteredClockWithIdentifier:(unsigned long long)arg1 error:(id*)arg2;
 - (bool)removegPTPServicesWithError:(id*)arg1;
 

@@ -21,7 +21,7 @@
 - (void).cxx_destruct;
 - (id)appBundleIdentifier;
 - (id)clientIdentifier;
-- (id)initWithDictionary:(id)arg1 supportedFamilies:(id)arg2;
+- (id)initWithRemoteApplication:(id)arg1 supportedFamilies:(id)arg2;
 - (id)localizedName;
 - (id)supportedFamilies;
 

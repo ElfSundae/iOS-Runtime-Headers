@@ -14,6 +14,7 @@
     NSString * _name;
     EKObjectID * _objectID;
     NSString * _phoneNumber;
+    EKSource * _source;
     NSString * _title;
     long long  _type;
 }
@@ -33,6 +34,7 @@
 @property (nonatomic, readonly) bool needsAlert;
 @property (nonatomic, retain) EKObjectID *objectID;
 @property (nonatomic, retain) NSString *phoneNumber;
+@property (nonatomic, retain) EKSource *source;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic) long long type;
@@ -64,9 +66,11 @@
 - (void)setName:(id)arg1;
 - (void)setObjectID:(id)arg1;
 - (void)setPhoneNumber:(id)arg1;
+- (void)setSource:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (void)setType:(long long)arg1;
 - (void)setURL:(id)arg1;
+- (id)source;
 - (id)title;
 - (long long)type;
 

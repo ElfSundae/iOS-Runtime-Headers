@@ -5,6 +5,6 @@
 
 @required
 
-- (void)infoCardThemeChanged:(id <MKInfoCardTheme>)arg1;
+- (void)infoCardThemeChanged;
 
 @end

@@ -5,7 +5,7 @@
 @interface _ATXAppDailyDoseCurrentStore : NSObject {
     NSMutableDictionary * _cache;
     NSDate * _expires;
-    int  _fd;
+    _Atomic int  _fd;
     NSString * _path;
     NSObject<OS_dispatch_queue> * _queue;
 }

@@ -18,14 +18,17 @@
 
 + (id)_filteredAlarms:(id)arg1 afterDate:(id)arg2 maxCount:(unsigned long long)arg3 filter:(id /* block */)arg4;
 + (id)assistantSyncNotificationName;
-+ (id)daySettingToString:(unsigned long long)arg1 longVersion:(bool)arg2 everyWeekdayVersion:(bool)arg3 showNever:(bool)arg4;
 + (void)warmUp;
 
 - (void).cxx_destruct;
+- (id)_alarmsIncludingSleepAlarm:(bool)arg1 doSynchronous:(bool)arg2;
 - (void)_getCachedAlarmsWithFuture:(id)arg1 finishBlock:(id /* block */)arg2;
 - (id)_initWithConnectionProvidingBlock:(id /* block */)arg1 metrics:(id)arg2;
 - (id)_initWithConnectionProvidingBlock:(id /* block */)arg1 metrics:(id)arg2 notificationCenter:(id)arg3;
+- (id)_nextAlarmsForDate:(id)arg1 maxCount:(unsigned long long)arg2 includeSleepAlarm:(bool)arg3 includeBedtimeNotification:(bool)arg4 doSynchronous:(bool)arg5;
+- (id)_nextAlarmsInRange:(id)arg1 maxCount:(unsigned long long)arg2 includeSleepAlarm:(bool)arg3 includeBedtimeNotification:(bool)arg4 doSynchronous:(bool)arg5;
 - (id)_sortedNextAlarmsAfterDate:(id)arg1 includeSleepAlarm:(bool)arg2 includeBedtimeNotification:(bool)arg3;
+- (id)_sortedNextAlarmsAfterDate:(id)arg1 includeSleepAlarm:(bool)arg2 includeBedtimeNotification:(bool)arg3 doSynchronous:(bool)arg4;
 - (id)addAlarm:(id)arg1;
 - (id)alarmAtIndex:(unsigned long long)arg1;
 - (unsigned long long)alarmCount;

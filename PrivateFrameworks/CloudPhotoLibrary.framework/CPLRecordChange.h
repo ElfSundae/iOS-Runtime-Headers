@@ -3,8 +3,10 @@
  */
 
 @interface CPLRecordChange : NSObject <NSCopying, NSSecureCoding> {
+    unsigned long long  _cachedRealResourceSizeInStorage;
     unsigned long long  _changeType;
     NSDate * _dateDeleted;
+    bool  _didCacheRealResourceSizeInStorage;
     bool  _inExpunged;
     bool  _inTrash;
     bool  _isSparseFullChange;
@@ -16,6 +18,7 @@
     bool  _serverRecordIsCorrupted;
     bool  _shouldFilterDefaultValuesForNewProperties;
     bool  _shouldNotTrustCloudCache;
+    bool  _shouldOnlyUploadNewResources;
     NSString * _uploadIdentifier;
 }
 
@@ -31,7 +34,7 @@
 @property (nonatomic, copy) CPLScopedIdentifier *scopedIdentifier;
 @property (nonatomic) bool serverRecordIsCorrupted;
 
-+ (id)_descriptionForChangeType:(unsigned long long)arg1 isSparseFullChange:(bool)arg2;
++ (id)_descriptionForChangeType:(unsigned long long)arg1 isSparseFullChange:(bool)arg2 onlyUploadNewResources:(bool)arg3;
 + (Class)classForStoredClassName:(id)arg1 forCPLArchiver:(id)arg2;
 + (id /* block */)copyPropertyBlockForDirection:(unsigned long long)arg1;
 + (id)cplAdditionalSecureClassesForProperty:(id)arg1;
@@ -61,10 +64,12 @@
 - (id)_uploadIdentifier;
 - (id)allRelatedScopedIdentifiers;
 - (bool)allResourcesAreAvailable;
+- (bool)allowsToOnlyUploadNewResources;
 - (bool)applyChange:(id)arg1 copyPropertiesToFinalChange:(id)arg2 forChangeType:(unsigned long long)arg3 direction:(unsigned long long)arg4 updatedProperty:(id*)arg5;
 - (void)awakeFromStorage;
 - (unsigned long long)baseDerivativeResourceType;
 - (unsigned long long)baseVideoComplemenentResourceType;
+- (bool)changeIsOnlyAddingResourcesToRecord:(id)arg1 addedResources:(id*)arg2;
 - (unsigned long long)changeType;
 - (id /* block */)checkDefaultValueBlockForPropertyWithSelector:(SEL)arg1;
 - (void)clearIdentifiers;
@@ -77,6 +82,7 @@
 - (id)dateDeleted;
 - (long long)dequeueOrder;
 - (id)description;
+- (unsigned long long)effectiveResourceSizeToUploadUsingStorage:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)estimatedRecordSize;
 - (unsigned long long)fullChangeTypeForFullRecord;
@@ -87,14 +93,18 @@
 - (bool)inTrash;
 - (id)initWithCPLArchiver:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (bool)isAssetChange;
 - (bool)isDelete;
 - (bool)isEqual:(id)arg1;
 - (bool)isFullRecord;
 - (bool)isInScopeWithIdentifier:(id)arg1;
+- (bool)isMasterChange;
 - (bool)isResourceTypeAGeneratedDerivative:(unsigned long long)arg1;
 - (bool)isSparseFullChange;
 - (void)markAsSparseFullChange;
+- (void)markToOnlyUploadNewResources;
 - (id)mergeRecordChangeWithNewRecordChange:(id)arg1 direction:(unsigned long long)arg2;
+- (id)onlyAddedResources;
 - (unsigned long long)originalResourceSize;
 - (void)prepareForStorage;
 - (id)propertiesDescription;
@@ -103,11 +113,13 @@
 - (id)proposedLocalScopedIdentifier;
 - (id)realIdentifier;
 - (id)realRecordChangeFromRecordChange:(id)arg1 direction:(unsigned long long)arg2 newRecord:(id*)arg3;
+- (id)realRecordChangeFromRecordChange:(id)arg1 direction:(unsigned long long)arg2 newRecord:(id*)arg3 changeType:(unsigned long long)arg4 updatedProperties:(id*)arg5;
 - (id)realRecordChangeFromRecordChange:(id)arg1 direction:(unsigned long long)arg2 newRecord:(id*)arg3 updatedProperties:(id*)arg4;
 - (unsigned long long)realResourceSize;
 - (id)realScopedIdentifier;
 - (id)recordChangeData;
 - (id)recordModificationDate;
+- (id)redactedDescription;
 - (id)relatedIdentifier;
 - (id)relatedScopedIdentifier;
 - (bool)resourceChangeWillOnlyChangeDerivatives:(id)arg1;
@@ -141,9 +153,11 @@
 - (void)setShouldFilterDefaultValuesForNewProperties:(bool)arg1;
 - (bool)shouldApplyPropertiesWithSelector:(SEL)arg1;
 - (bool)shouldFilterDefaultValuesForNewProperties;
+- (bool)shouldOnlyUploadNewResources;
 - (id)storedClassNameForCPLArchiver:(id)arg1;
 - (bool)supportsDeletion;
 - (bool)supportsDirectDeletion;
+- (bool)supportsResourceType:(unsigned long long)arg1;
 - (bool)supportsResources;
 - (unsigned long long)totalResourceSize;
 - (id)translateToClientChangeUsingIDMapping:(id)arg1 error:(id*)arg2;

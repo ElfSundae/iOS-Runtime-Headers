@@ -5,11 +5,13 @@
 
 @optional
 
+- (bool)_allowsFocusToLeaveViaHeading:(unsigned long long)arg1;
 - (bool)_isEligibleForFocusInteraction;
 - (NSArray *)_linearFocusMovementSequences;
-- (<UIFocusEnvironment> *)_parentFocusEnvironment;
 - (long long)_preferredFocusMovementStyle;
 - (bool)_reversesLinearFocusWrapping;
 - (void)_setNeedsNonDeferredFocusUpdate;
+- (bool)areChildrenFocused;
+- (void)setAreChildrenFocused:(bool)arg1;
 
 @end

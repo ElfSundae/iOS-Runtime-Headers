@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/HomeKit.framework/HomeKit
  */
 
-@interface HMAccessorySettings : NSObject <HFStateDumpBuildable, HMFLogging, HMObjectMerge> {
+@interface HMAccessorySettings : HMSettings <HFStateDumpBuildable, HMFLogging, HMObjectMerge> {
     _HMContext * _context;
     <HMAccessorySettingsDelegate> * _delegate;
     HMFUnfairLock * _lock;
@@ -18,7 +18,6 @@
 @property <HMAccessorySettingsDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) NATreeNode *hf_codex;
 @property (readonly) HMAccessorySettingGroup *rootGroup;
 @property <HMAccessorySettingsContainer> *settingsContainer;
 @property <HMControllable> *settingsControl;
@@ -51,12 +50,6 @@
 
 // Image: /System/Library/PrivateFrameworks/Home.framework/Home
 
-+ (id)hf_MediaAccessoryCodex;
-
-- (id)hf_accessorySettingAtKeyPath:(id)arg1;
-- (id)hf_accessorySettingGroupAtKeyPath:(id)arg1;
-- (id)hf_accessorySettingItemAtKeyPath:(id)arg1;
-- (id)hf_codex;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 
 @end

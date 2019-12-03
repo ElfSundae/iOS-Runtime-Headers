@@ -11,7 +11,7 @@
 @property (readonly) CNMultiValuePropertyDescription *property;
 
 - (void).cxx_destruct;
-- (bool)applyToABPerson:(void*)arg1 withPropertiesContext:(id)arg2 error:(id*)arg3;
+- (bool)applyToABPerson:(void*)arg1 withPropertiesContext:(id)arg2 logger:(id)arg3 error:(id*)arg4;
 - (void)applyToMutableContact:(id)arg1 withIdentifierMap:(id)arg2;
 - (id)description;
 - (id)diff;

@@ -9,7 +9,7 @@
     CHDData * mSizeData;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (bool)isBubble3D;
 - (bool)isInvertIfNegative;
 - (bool)isShowBubbleSize;

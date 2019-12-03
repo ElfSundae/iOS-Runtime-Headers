@@ -9,7 +9,7 @@
     NSString * _type;
 }
 
-@property (retain) NSError *error;
+@property (nonatomic, retain) NSError *error;
 @property (nonatomic) double executionTime;
 @property (readonly) NSUUID *identifier;
 @property (readonly) NSString *type;
@@ -24,6 +24,7 @@
 - (id)identifier;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 error:(id)arg2;
 - (void)setError:(id)arg1;
 - (void)setExecutionTime:(double)arg1;
 - (id)type;

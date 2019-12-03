@@ -6,10 +6,11 @@
 
 + (void)_addAuthorizationWithRow:(struct HDSQLiteRow { }*)arg1 toCodableCollection:(id)arg2;
 + (id)_allSourcesRequestingTypes:(id)arg1 additionalPredicate:(id)arg2 profile:(id)arg3 error:(id*)arg4;
-+ (bool)_insertAuthorizationWithSourceIdentifier:(long long)arg1 dataTypeCode:(long long)arg2 authorizationStatus:(long long)arg3 authorizationRequest:(long long)arg4 authorizationMode:(long long)arg5 modificationDate:(id)arg6 currentDate:(id)arg7 syncProvenance:(long long)arg8 objectAnchor:(long long)arg9 modificationEpoch:(id)arg10 options:(unsigned long long)arg11 database:(id)arg12 error:(id*)arg13;
-+ (bool)_insertCodableAuthorizations:(id)arg1 sourceEntity:(id)arg2 syncProvenance:(long long)arg3 objectAnchor:(long long)arg4 currentDate:(id)arg5 options:(unsigned long long)arg6 database:(id)arg7 error:(id*)arg8;
++ (bool)_insertAuthorizationWithSourceIdentifier:(long long)arg1 dataTypeCode:(long long)arg2 authorizationStatus:(long long)arg3 authorizationRequest:(long long)arg4 authorizationMode:(long long)arg5 modificationDate:(id)arg6 currentDate:(id)arg7 syncProvenance:(long long)arg8 objectAnchor:(long long)arg9 modificationEpoch:(id)arg10 options:(unsigned long long)arg11 profile:(id)arg12 database:(id)arg13 error:(id*)arg14;
++ (bool)_insertCodableAuthorizations:(id)arg1 sourceEntity:(id)arg2 syncProvenance:(long long)arg3 objectAnchor:(long long)arg4 currentDate:(id)arg5 options:(unsigned long long)arg6 profile:(id)arg7 database:(id)arg8 error:(id*)arg9;
 + (bool)_insertCodableSourceAuthorizations:(id)arg1 overwriteExisting:(bool)arg2 syncStore:(id)arg3 profile:(id)arg4 error:(id*)arg5;
 + (id)_maxObjectPersistentIDForProfile:(id)arg1 error:(id*)arg2;
++ (id)_nextModificationEpochForSourceIdentifier:(long long)arg1 type:(long long)arg2 profile:(id)arg3 database:(id)arg4 error:(id*)arg5;
 + (id)_predicateForBundleIdentifier:(id)arg1 profile:(id)arg2 error:(id*)arg3;
 + (id)_predicateForSourceEntities:(id)arg1;
 + (id)_predicateForSourceEntities:(id)arg1 types:(id)arg2;
@@ -23,7 +24,7 @@
 + (id)authorizationRecordsBySourceForType:(id)arg1 profile:(id)arg2 error:(id*)arg3;
 + (id)authorizationRecordsByTypeForBundleIdentifier:(id)arg1 types:(id)arg2 profile:(id)arg3 error:(id*)arg4;
 + (id)authorizationStatusesForBundleIdentifier:(id)arg1 types:(id)arg2 profile:(id)arg3 error:(id*)arg4;
-+ (const struct { id x1; unsigned char x2; }*)columnDefinitionsWithCount:(unsigned long long*)arg1;
++ (const struct { id x1; id x2; unsigned char x3; }*)columnDefinitionsWithCount:(unsigned long long*)arg1;
 + (id)databaseTable;
 + (id)foreignKeys;
 + (id)modificationDateForSourceEntity:(id)arg1 type:(id)arg2 profile:(id)arg3 error:(id*)arg4;

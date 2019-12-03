@@ -31,6 +31,7 @@
 @property (nonatomic, readonly) UIColor *inlayColor;
 @property (nonatomic, readonly) UIColor *labelColor;
 @property (nonatomic, readonly) double largeTickValue;
+@property (nonatomic, readonly) unsigned long long paletteColor;
 @property (nonatomic, readonly) bool showsShadows;
 @property (nonatomic, readonly) double smallTickValue;
 @property (nonatomic, readonly) UIColor *tickColor;
@@ -52,6 +53,7 @@
 - (id)inlayColor;
 - (id)labelColor;
 - (double)largeTickValue;
+- (unsigned long long)paletteColor;
 - (bool)showsShadows;
 - (double)smallTickValue;
 - (id)tickColor;

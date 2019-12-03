@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/WiFiKit.framework/WiFiKit
  */
 
-@interface WFLinkQuality : NSObject {
+@interface WFLinkQuality : NSObject <NSCopying> {
     long long  _rssi;
     float  _scaledRssi;
     NSString * _ssid;
@@ -13,6 +13,7 @@
 @property (nonatomic, copy) NSString *ssid;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)init;
 - (id)initWithSSID:(id)arg1 rssi:(long long)arg2 scaledRSSI:(float)arg3;

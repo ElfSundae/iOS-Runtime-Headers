@@ -12,8 +12,8 @@
     NSString * mURI;
 }
 
+- (void).cxx_destruct;
 - (id)URI;
-- (void)dealloc;
 - (id)description;
 - (id)dosName;
 - (id)initWithParagraph:(id)arg1;

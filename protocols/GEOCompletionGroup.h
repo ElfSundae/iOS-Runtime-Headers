@@ -5,7 +5,9 @@
 
 @required
 
+- (bool)enforceServerResultsOrder;
 - (NSArray *)items;
 - (NSString *)localizedSectionHeader;
+- (bool)shouldInterleaveClientResults;
 
 @end

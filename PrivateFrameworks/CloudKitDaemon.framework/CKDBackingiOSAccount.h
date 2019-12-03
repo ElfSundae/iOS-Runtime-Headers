@@ -20,7 +20,6 @@
 - (id)_initWithParentAccount:(id)arg1 inStore:(id)arg2;
 - (id)accountPropertiesForDataclass:(id)arg1;
 - (id)accountStore;
-- (bool)canAuthWithCloudKit;
 - (bool)canRenew;
 - (id)ckAccount;
 - (id)cloudKitAuthTokenWithError:(id*)arg1;
@@ -31,6 +30,7 @@
 - (bool)iCloudDriveAllowsCellularAccess;
 - (id)identifier;
 - (bool)isDataclassEnabled:(id)arg1;
+- (bool)isPrimaryEmailVerified;
 - (id)parentAppleAccount;
 - (id)primaryEmail;
 - (void)setParentAppleAccount:(id)arg1;

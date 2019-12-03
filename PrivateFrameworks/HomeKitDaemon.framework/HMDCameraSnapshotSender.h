@@ -2,11 +2,11 @@
    Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
  */
 
-@interface HMDCameraSnapshotSender : HMFObject <HMDCameraPowerAssertionProtocol, HMFLogging> {
+@interface HMDCameraSnapshotSender : HMFObject <HMFLogging> {
     HMDAccessory * _accessory;
     NSObject<OS_dispatch_queue> * _delegateQueue;
     HMDDevice * _device;
-    HMDCameraSessionID * _sessionID;
+    HMDCameraSnapshotSessionID * _sessionID;
     NSUUID * _uniqueIdentifier;
     NSObject<OS_dispatch_queue> * _workQueue;
 }
@@ -17,7 +17,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) HMDDevice *device;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) HMDCameraSessionID *sessionID;
+@property (nonatomic, readonly) HMDCameraSnapshotSessionID *sessionID;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSUUID *uniqueIdentifier;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *workQueue;

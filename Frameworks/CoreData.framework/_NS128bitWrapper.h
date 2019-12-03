@@ -9,6 +9,7 @@
     }  bits;
 }
 
+- (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (unsigned long long)hash;

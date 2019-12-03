@@ -19,7 +19,6 @@
 - (float)clusteringDistanceThreshold;
 - (id)initWithImageprintObservations:(id)arg1 clusteringDistanceThreshold:(float)arg2;
 - (id)initWithImageprintObservations:(id)arg1 clusteringDistanceThreshold:(float)arg2 completionHandler:(id /* block */)arg3;
-- (id)initWithName:(id)arg1 options:(id)arg2 completionHandler:(id /* block */)arg3;
 - (id)inputImageprints;
 - (bool)internalPerformInContext:(id)arg1 error:(id*)arg2;
 - (id /* block */)resultsSortingComparator;

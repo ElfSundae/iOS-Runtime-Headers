@@ -33,5 +33,6 @@
 - (id)selectedRoomIdentifierForSelectedHome;
 - (void)setSelectedHomeAppTabIdentifier:(id)arg1;
 - (void)setSelectedHomeIdentifier:(id)arg1;
+- (void)syncToNanoPrefs;
 
 @end

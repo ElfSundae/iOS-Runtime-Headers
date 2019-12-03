@@ -49,8 +49,6 @@
 - (int)StringAsInView:(id)arg1;
 - (int)StringAsInteractionGesture:(id)arg1;
 - (int)StringAsSourceType:(id)arg1;
-- (void)_setFromSwipeMenu:(bool)arg1;
-- (void)_setInteractionGesture:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;

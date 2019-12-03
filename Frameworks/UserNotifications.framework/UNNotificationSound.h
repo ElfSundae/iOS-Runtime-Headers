@@ -12,10 +12,11 @@
     bool  _shouldIgnoreRingerSwitch;
     bool  _shouldRepeat;
     NSString * _toneFileName;
+    NSURL * _toneFileURL;
     NSString * _toneIdentifier;
     unsigned long long  _toneMediaLibraryItemIdentifier;
     NSString * _vibrationIdentifier;
-    NSDictionary * _vibrationPattern;
+    NSURL * _vibrationPatternFileURL;
 }
 
 @property (nonatomic, readonly, copy) NSString *alertTopic;
@@ -27,10 +28,11 @@
 @property (nonatomic, readonly) bool shouldIgnoreRingerSwitch;
 @property (nonatomic, readonly) bool shouldRepeat;
 @property (nonatomic, readonly, copy) NSString *toneFileName;
+@property (nonatomic, readonly, copy) NSURL *toneFileURL;
 @property (nonatomic, readonly, copy) NSString *toneIdentifier;
 @property (nonatomic, readonly) unsigned long long toneMediaLibraryItemIdentifier;
 @property (nonatomic, readonly, copy) NSString *vibrationIdentifier;
-@property (nonatomic, readonly, copy) NSDictionary *vibrationPattern;
+@property (nonatomic, readonly, copy) NSURL *vibrationPatternFileURL;
 
 // Image: /System/Library/Frameworks/UserNotifications.framework/UserNotifications
 
@@ -40,12 +42,13 @@
 + (id)defaultCriticalSound;
 + (id)defaultCriticalSoundWithAudioVolume:(float)arg1;
 + (id)defaultSound;
++ (id)defaultSystemSound;
 + (id)soundNamed:(id)arg1;
 + (id)soundWithAlertType:(long long)arg1;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
-- (id)_initWithAlertType:(long long)arg1 alertTopic:(id)arg2 audioCategory:(id)arg3 audioVolume:(id)arg4 critical:(bool)arg5 maximumDuration:(double)arg6 shouldIgnoreRingerSwitch:(bool)arg7 shouldRepeat:(bool)arg8 toneFileName:(id)arg9 toneIdentifier:(id)arg10 toneMediaLibraryItemIdentifier:(unsigned long long)arg11 vibrationIdentifier:(id)arg12 vibrationPattern:(id)arg13;
+- (id)_initWithAlertType:(long long)arg1 alertTopic:(id)arg2 audioCategory:(id)arg3 audioVolume:(id)arg4 critical:(bool)arg5 maximumDuration:(double)arg6 shouldIgnoreRingerSwitch:(bool)arg7 shouldRepeat:(bool)arg8 toneFileName:(id)arg9 toneFileURL:(id)arg10 toneIdentifier:(id)arg11 toneMediaLibraryItemIdentifier:(unsigned long long)arg12 vibrationIdentifier:(id)arg13 vibrationPatternFileURL:(id)arg14;
 - (id)alertTopic;
 - (long long)alertType;
 - (id)audioCategory;
@@ -63,10 +66,11 @@
 - (bool)shouldIgnoreRingerSwitch;
 - (bool)shouldRepeat;
 - (id)toneFileName;
+- (id)toneFileURL;
 - (id)toneIdentifier;
 - (unsigned long long)toneMediaLibraryItemIdentifier;
 - (id)vibrationIdentifier;
-- (id)vibrationPattern;
+- (id)vibrationPatternFileURL;
 
 // Image: /System/Library/PrivateFrameworks/MobileTimer.framework/MobileTimer
 

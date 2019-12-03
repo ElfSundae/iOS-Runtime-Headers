@@ -6,8 +6,6 @@
 
 @property (nonatomic, readonly) UIColor *fadeColor;
 
-+ (id)typeString;
-
 - (Class)handlerClass;
 - (bool)userControllable;
 

@@ -6,10 +6,9 @@
     double  _currentCompletionFactor;
     UIImageView * _gradientBackgroundImageView;
     UIImageView * _iconImageView;
-    HKRingsView * _ringsView;
+    ARUIRingsView * _ringsView;
     UILabel * _secondaryLabel;
     FIUIDividerView * _separatorView;
-    bool  _showDivider;
     UILabel * _typeLabel;
     HKWorkout * _workout;
 }
@@ -17,10 +16,9 @@
 @property (nonatomic) double currentCompletionFactor;
 @property (nonatomic, retain) UIImageView *gradientBackgroundImageView;
 @property (nonatomic, retain) UIImageView *iconImageView;
-@property (nonatomic, retain) HKRingsView *ringsView;
+@property (nonatomic, retain) ARUIRingsView *ringsView;
 @property (nonatomic, retain) UILabel *secondaryLabel;
 @property (nonatomic, retain) FIUIDividerView *separatorView;
-@property (nonatomic) bool showDivider;
 @property (nonatomic, retain) UILabel *typeLabel;
 @property (nonatomic, retain) HKWorkout *workout;
 
@@ -37,6 +35,7 @@
 - (id)gradientBackgroundImageView;
 - (id)iconImageView;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 ringsViewRenderer:(id)arg3;
 - (void)layoutSubviews;
 - (id)ringsView;
 - (id)secondaryLabel;
@@ -47,12 +46,10 @@
 - (void)setRingsView:(id)arg1;
 - (void)setSecondaryLabel:(id)arg1;
 - (void)setSeparatorView:(id)arg1;
-- (void)setShowDivider:(bool)arg1;
 - (void)setTypeLabel:(id)arg1;
 - (void)setWorkout:(id)arg1;
 - (void)setWorkout:(id)arg1 fillRing:(bool)arg2;
 - (void)setWorkoutWithoutFillingRing:(id)arg1;
-- (bool)showDivider;
 - (id)typeLabel;
 - (id)workout;
 

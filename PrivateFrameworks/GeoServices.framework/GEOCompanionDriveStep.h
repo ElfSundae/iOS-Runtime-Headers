@@ -6,18 +6,39 @@
     int  _drivingSide;
     GEONameInfo * _exitNumber;
     struct { 
-        unsigned int drivingSide : 1; 
-        unsigned int junctionType : 1; 
-        unsigned int maneuverType : 1; 
-        unsigned int shieldType : 1; 
-        unsigned int toFreeway : 1; 
-    }  _has;
+        unsigned int has_drivingSide : 1; 
+        unsigned int has_junctionType : 1; 
+        unsigned int has_maneuverType : 1; 
+        unsigned int has_shieldType : 1; 
+        unsigned int has_toFreeway : 1; 
+        unsigned int read_junctionElements : 1; 
+        unsigned int read_exitNumber : 1; 
+        unsigned int read_maneuverNames : 1; 
+        unsigned int read_shield : 1; 
+        unsigned int read_signposts : 1; 
+        unsigned int wrote_junctionElements : 1; 
+        unsigned int wrote_exitNumber : 1; 
+        unsigned int wrote_maneuverNames : 1; 
+        unsigned int wrote_shield : 1; 
+        unsigned int wrote_signposts : 1; 
+        unsigned int wrote_drivingSide : 1; 
+        unsigned int wrote_junctionType : 1; 
+        unsigned int wrote_maneuverType : 1; 
+        unsigned int wrote_shieldType : 1; 
+        unsigned int wrote_toFreeway : 1; 
+    }  _flags;
     struct GEOJunctionElement { int x1; int x2; int x3; struct { unsigned int x_4_1_1 : 1; unsigned int x_4_1_2 : 1; unsigned int x_4_1_3 : 1; } x4; } * _junctionElements;
     unsigned long long  _junctionElementsCount;
     unsigned long long  _junctionElementsSpace;
     int  _junctionType;
     NSMutableArray * _maneuverNames;
     int  _maneuverType;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     NSString * _shield;
     int  _shieldType;
     NSMutableArray * _signposts;
@@ -48,6 +69,7 @@
 @property (nonatomic) bool toFreeway;
 @property (nonatomic, readonly) int transportType;
 
++ (bool)isValid:(id)arg1;
 + (Class)maneuverNameType;
 + (Class)signpostType;
 
@@ -55,6 +77,14 @@
 - (int)StringAsDrivingSide:(id)arg1;
 - (int)StringAsJunctionType:(id)arg1;
 - (int)StringAsManeuverType:(id)arg1;
+- (void)_addNoFlagsJunctionElement:(struct GEOJunctionElement { int x1; int x2; int x3; struct { unsigned int x_4_1_1 : 1; unsigned int x_4_1_2 : 1; unsigned int x_4_1_3 : 1; } x4; })arg1;
+- (void)_addNoFlagsManeuverName:(id)arg1;
+- (void)_addNoFlagsSignpost:(id)arg1;
+- (void)_readExitNumber;
+- (void)_readJunctionElements;
+- (void)_readManeuverNames;
+- (void)_readShield;
+- (void)_readSignposts;
 - (void)addJunctionElement:(struct GEOJunctionElement { int x1; int x2; int x3; struct { unsigned int x_4_1_1 : 1; unsigned int x_4_1_2 : 1; unsigned int x_4_1_3 : 1; } x4; })arg1;
 - (void)addManeuverName:(id)arg1;
 - (void)addSignpost:(id)arg1;
@@ -77,6 +107,8 @@
 - (bool)hasShieldType;
 - (bool)hasToFreeway;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (struct GEOJunctionElement { int x1; int x2; int x3; struct { unsigned int x_4_1_1 : 1; unsigned int x_4_1_2 : 1; unsigned int x_4_1_3 : 1; } x4; })junctionElementAtIndex:(unsigned long long)arg1;
 - (struct GEOJunctionElement { int x1; int x2; int x3; struct { unsigned int x_4_1_1 : 1; unsigned int x_4_1_2 : 1; unsigned int x_4_1_3 : 1; } x4; }*)junctionElements;
@@ -89,6 +121,7 @@
 - (int)maneuverType;
 - (id)maneuverTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setDrivingSide:(int)arg1;
 - (void)setExitNumber:(id)arg1;

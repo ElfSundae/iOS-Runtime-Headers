@@ -7,12 +7,14 @@
     NSSet * _knownNetworks;
     NSObject<OS_dispatch_queue> * _knownNetworksQueue;
     NSSet * _managedNetworkNames;
+    WFClient * _wifiClient;
 }
 
-@property (nonatomic, readonly) bool hasHS20Networks;
+@property (nonatomic) bool hasHS20Networks;
 @property (nonatomic, retain) NSSet *knownNetworks;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *knownNetworksQueue;
 @property (nonatomic, retain) NSSet *managedNetworkNames;
+@property (nonatomic) WFClient *wifiClient;
 
 + (id)sharedInstance;
 
@@ -20,13 +22,13 @@
 - (void)_clientServerRestarted:(id)arg1;
 - (void)_forceUpdateKnownNetworks;
 - (void)_forceUpdateKnownNetworksAndWait:(bool)arg1;
-- (id)_init;
 - (id)_networkProfileFromNetworkAttributes:(id)arg1;
 - (void)_preferredNetworksDidChange:(id)arg1;
 - (id)getGeoTagsForNetworkProfile:(id)arg1;
 - (id)getScoreForNetworkProfile:(id)arg1;
 - (bool)hasHS20Networks;
 - (id)init;
+- (id)initWithClient:(id)arg1;
 - (id)knownNetworks;
 - (id)knownNetworksQueue;
 - (id)managedNetworkNames;
@@ -37,9 +39,12 @@
 - (bool)removeNetworkProfile:(id)arg1 error:(id*)arg2;
 - (bool)saveNetworkProfile:(id)arg1 forReason:(unsigned long long)arg2 error:(out id*)arg3;
 - (bool)setAutoJoinEnabled:(bool)arg1 forProfile:(id)arg2 error:(out id*)arg3;
+- (void)setHasHS20Networks:(bool)arg1;
 - (void)setKnownNetworks:(id)arg1;
 - (void)setKnownNetworksQueue:(id)arg1;
 - (void)setManagedNetworkNames:(id)arg1;
+- (void)setWifiClient:(id)arg1;
 - (void)updateKnownNetworks;
+- (id)wifiClient;
 
 @end

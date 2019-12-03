@@ -4,6 +4,7 @@
 
 @interface EKPersistentExceptionDate : EKPersistentObject
 
++ (Class)meltedClass;
 + (id)relations;
 
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

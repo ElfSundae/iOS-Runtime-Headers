@@ -4,18 +4,20 @@
 
 @interface VUIFeaturedCellOverlayLayout : NSObject {
     VUIButtonLayout * _buttonLayout;
+    VUIAppleTVChannelLogoLayout * _channelLogoLayout;
     VUITextLayout * _disclaimerLayout;
-    TVImageLayout * _logoImageLayout;
     long long  _overlayType;
     VUITextLayout * _subtitleLayout;
+    VUIButtonLayout * _textButtonLayout;
     VUITextLayout * _titleLayout;
 }
 
 @property (nonatomic, retain) VUIButtonLayout *buttonLayout;
+@property (nonatomic, retain) VUIAppleTVChannelLogoLayout *channelLogoLayout;
 @property (nonatomic, retain) VUITextLayout *disclaimerLayout;
-@property (nonatomic, retain) TVImageLayout *logoImageLayout;
 @property (nonatomic) long long overlayType;
 @property (nonatomic, retain) VUITextLayout *subtitleLayout;
+@property (nonatomic, retain) VUIButtonLayout *textButtonLayout;
 @property (nonatomic, retain) VUITextLayout *titleLayout;
 
 + (id)layoutWithLayout:(id)arg1 overlayType:(long long)arg2 element:(id)arg3;
@@ -23,17 +25,19 @@
 - (void).cxx_destruct;
 - (void)_setupLayouts;
 - (id)buttonLayout;
+- (id)channelLogoLayout;
 - (id)disclaimerLayout;
 - (id)initWithOverlayType:(long long)arg1;
-- (id)logoImageLayout;
 - (long long)overlayType;
 - (void)setButtonLayout:(id)arg1;
+- (void)setChannelLogoLayout:(id)arg1;
 - (void)setDisclaimerLayout:(id)arg1;
-- (void)setLogoImageLayout:(id)arg1;
 - (void)setOverlayType:(long long)arg1;
 - (void)setSubtitleLayout:(id)arg1;
+- (void)setTextButtonLayout:(id)arg1;
 - (void)setTitleLayout:(id)arg1;
 - (id)subtitleLayout;
+- (id)textButtonLayout;
 - (id)titleLayout;
 
 @end

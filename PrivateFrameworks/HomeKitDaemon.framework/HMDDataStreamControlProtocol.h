@@ -4,6 +4,7 @@
 
 @interface HMDDataStreamControlProtocol : NSObject <HMDDataStreamProtocol, HMFLogging> {
     bool  _helloMessageResponseReceived;
+    NSString * _logIdentifier;
     NSNumber * _pendingHelloMessageIdentifier;
 }
 
@@ -11,6 +12,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool helloMessageResponseReceived;
+@property (readonly, copy) NSString *logIdentifier;
 @property (nonatomic, retain) NSNumber *pendingHelloMessageIdentifier;
 @property (readonly) Class superclass;
 
@@ -24,8 +26,9 @@
 - (void)dataStreamDidClose:(id)arg1;
 - (void)dataStreamDidOpen:(id)arg1;
 - (bool)helloMessageResponseReceived;
-- (id)init;
+- (id)initWithLogIdentifier:(id)arg1;
 - (bool)isExpectedHelloControlMessage:(id)arg1 header:(id)arg2;
+- (id)logIdentifier;
 - (id)pendingHelloMessageIdentifier;
 - (void)setHelloMessageResponseReceived:(bool)arg1;
 - (void)setPendingHelloMessageIdentifier:(id)arg1;

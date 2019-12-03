@@ -2,25 +2,28 @@
    Image: /System/Library/PrivateFrameworks/SpringBoardServices.framework/SpringBoardServices
  */
 
-@interface SBSRemoteAlertDefinition : NSObject <BSDescriptionProviding, BSXPCCoding> {
+@interface SBSRemoteAlertDefinition : NSObject <BSDescriptionProviding, BSXPCCoding, NSCopying> {
     bool  _forCarPlay;
     NSString * _impersonatedCarPlayAppIdentifier;
     NSString * _serviceName;
     NSDictionary * _userInfo;
-    NSString * _vcClassName;
+    NSString * _viewControllerClassName;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (getter=isForCarPlay, nonatomic) bool forCarPlay;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) NSString *impersonatedCarPlayAppIdentifier;
-@property (nonatomic, readonly) NSString *serviceName;
+@property (nonatomic, copy) NSString *impersonatedCarPlayAppIdentifier;
+@property (nonatomic, readonly, copy) NSString *serviceName;
 @property (readonly) Class superclass;
-@property (nonatomic, retain) NSDictionary *userInfo;
-@property (nonatomic, readonly) NSString *viewControllerClassName;
+@property (nonatomic, copy) NSDictionary *userInfo;
+@property (nonatomic, readonly, copy) NSString *viewControllerClassName;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoardServices.framework/SpringBoardServices
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
@@ -38,5 +41,9 @@
 - (id)succinctDescriptionBuilder;
 - (id)userInfo;
 - (id)viewControllerClassName;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoard.framework/SpringBoard
+
++ (id)definitionWithServiceName:(id)arg1 legacyAlertOptions:(id)arg2;
 
 @end

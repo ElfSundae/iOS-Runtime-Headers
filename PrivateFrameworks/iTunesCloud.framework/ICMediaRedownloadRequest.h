@@ -11,6 +11,7 @@
     ICStoreRequestContext * _requestContext;
     NSString * _requestURLBagKey;
     ICStoreURLRequest * _storeURLRequest;
+    bool  _streamingRental;
     bool  _usePrioritizedURLSession;
 }
 
@@ -20,6 +21,7 @@
 @property (nonatomic, copy) NSDictionary *redownloadParameters;
 @property (nonatomic, copy) ICStoreRequestContext *requestContext;
 @property (nonatomic, copy) NSString *requestURLBagKey;
+@property (getter=isStreamingRental, nonatomic) bool streamingRental;
 @property (nonatomic) bool usePrioritizedURLSession;
 
 - (void).cxx_destruct;
@@ -32,6 +34,7 @@
 - (id)initWithRequestContext:(id)arg1 redownloadParameters:(id)arg2;
 - (id)initWithRequestContext:(id)arg1 redownloadParametersString:(id)arg2;
 - (bool)isPlaybackRequest;
+- (bool)isStreamingRental;
 - (void)performRequestWithResponseHandler:(id /* block */)arg1;
 - (id)redownloadParameters;
 - (id)requestContext;
@@ -42,6 +45,7 @@
 - (void)setRedownloadParameters:(id)arg1;
 - (void)setRequestContext:(id)arg1;
 - (void)setRequestURLBagKey:(id)arg1;
+- (void)setStreamingRental:(bool)arg1;
 - (void)setUsePrioritizedURLSession:(bool)arg1;
 - (bool)usePrioritizedURLSession;
 

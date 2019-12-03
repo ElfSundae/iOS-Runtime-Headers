@@ -10,11 +10,13 @@
 @property (nonatomic, retain) NSMutableArray *searchResultsForCategoryEntrys;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
 + (Class)searchResultsForCategoryEntryType;
 
 - (void).cxx_destruct;
 - (void)addSearchResultsForCategoryEntry:(id)arg1;
 - (void)clearSearchResultsForCategoryEntrys;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -22,6 +24,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)searchResultsForCategoryEntryAtIndex:(unsigned long long)arg1;
 - (id)searchResultsForCategoryEntrys;

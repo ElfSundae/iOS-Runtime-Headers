@@ -28,6 +28,7 @@
 @property (nonatomic, copy) NSString *originalFilename;
 @property (nonatomic, copy) NSString *originatingAssetID;
 @property (nonatomic, copy) NSString *relatedUUID;
+@property (nonatomic, copy) NSString *spatialOverCaptureGroupIdentifier;
 @property (nonatomic, copy) NSNumber *thumbCompressedSize;
 @property (nonatomic, copy) NSNumber *thumbOffset;
 @property (nonatomic) struct CGSize { double x1; double x2; } thumbPixSize;
@@ -58,6 +59,7 @@
 - (void)setOriginalFilename:(id)arg1;
 - (void)setOriginatingAssetID:(id)arg1;
 - (void)setRelatedUUID:(id)arg1;
+- (void)setSpatialOverCaptureGroupIdentifier:(id)arg1;
 - (void)setThumbCompressedSize:(id)arg1;
 - (void)setThumbOffset:(id)arg1;
 - (void)setThumbPixSize:(struct CGSize { double x1; double x2; })arg1;

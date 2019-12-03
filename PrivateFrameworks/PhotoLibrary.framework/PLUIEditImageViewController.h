@@ -19,7 +19,7 @@
 - (void)cropOverlayWasOKed:(id)arg1;
 - (void)dealloc;
 - (id)delegate;
-- (int)imageFormat;
+- (unsigned short)imageFormat;
 - (id)imageTile;
 - (id)initWithPhoto:(id)arg1;
 - (int)mode;

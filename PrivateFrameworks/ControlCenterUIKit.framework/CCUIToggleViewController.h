@@ -12,16 +12,19 @@
     UIImage * _selectedGlyphImage;
 }
 
+@property (nonatomic, readonly) UIViewPropertyAnimator *customAnimator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) CCUIToggleModule *module;
 @property (nonatomic, readonly) double preferredExpandedContentHeight;
 @property (nonatomic, readonly) double preferredExpandedContentWidth;
+@property (nonatomic, readonly) double preferredExpandedContinuousCornerRadius;
 @property (nonatomic, readonly) bool providesOwnPlatter;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)buttonTapped:(id)arg1 forEvent:(id)arg2;
 - (id)module;
 - (double)preferredExpandedContentHeight;

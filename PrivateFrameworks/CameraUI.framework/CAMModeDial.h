@@ -35,7 +35,7 @@
 - (void)_commonCAMModeDialInitializationWithLayoutStyle:(long long)arg1;
 - (void)_configureGradientForLayoutStyle:(long long)arg1;
 - (void)_configureMeshTransformForLayoutStyle:(long long)arg1;
-- (id)_fontForLayoutStyle:(long long)arg1;
+- (id)_fontForLayoutStyle:(long long)arg1 selected:(bool)arg2;
 - (id)_gradientLayer;
 - (struct CGPoint { double x1; double x2; })_horizontalContainerCenterForMode:(long long)arg1;
 - (id)_horizontalMeshTransform;
@@ -52,7 +52,6 @@
 - (id)_selectedItemBackgroundView;
 - (void)_setItems:(id)arg1;
 - (void)_setModes:(id)arg1;
-- (id)_titleForMode:(long long)arg1;
 - (void)_updateContainerCenterFromSelectedModeAnimated:(bool)arg1;
 - (void)_updateForLayoutStyle;
 - (void)_updateItemsForLayoutStyle:(long long)arg1;

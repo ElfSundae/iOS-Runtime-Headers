@@ -5,12 +5,13 @@
 @interface HDPrimaryProfile : HDProfile {
     HDAppSubscriptionManager * _appSubscriptionManager;
     HDAWDSubmissionManager * _awdSubmissionManager;
-    HDCloudSyncManager * _cloudSyncManager;
     HDCurrentActivitySummaryHelper * _currentActivitySummaryHelper;
     HDDataCollectionManager * _dataCollectionManager;
+    HDDemoDataManager * _demoDataManager;
     HDFitnessMachineManager * _fitnessMachineManager;
     HDNanoSyncManager * _nanoSyncManager;
     HDNotificationManager * _notificationManager;
+    HDOntologyLifecycleManager * _ontologyLifecycleManager;
     HDServiceConnectionManager * _serviceConnectionManager;
     HDHealthServiceManager * _serviceManager;
     HDWorkoutManager * _workoutManager;
@@ -20,20 +21,19 @@
 - (void)_applyPPTUpdates;
 - (id)_newAWDSubmissionManager;
 - (id)_newAppSubscriptionManager;
-- (id)_newCloudSyncManager;
 - (id)_newNanoSyncManager;
 - (id)_newNotificationManager;
 - (id)_newWorkoutManager;
 - (id)activityCacheManager;
 - (id)appSubscriptionManager;
 - (id)awdSubmissionManager;
-- (id)cloudSyncManager;
 - (id)currentActivitySummaryHelper;
 - (id)dataCollectionManager;
 - (id)fitnessMachineManager;
 - (id)initWithDirectoryPath:(id)arg1 medicalIDDirectoryPath:(id)arg2 daemon:(id)arg3;
 - (id)nanoSyncManager;
 - (id)notificationManager;
+- (id)ontologyLifecycleManager;
 - (id)serviceConnectionManager;
 - (id)serviceManager;
 - (void)terminationCleanup;

@@ -39,6 +39,7 @@
 - (void)_profileListChanged:(id)arg1;
 - (long long)_profilesCount;
 - (int)_resolveIndexPathForSection:(id)arg1;
+- (bool)_showProfileDetailPageForUserEnrollmentProfile:(id)arg1;
 - (void)_showProgressIndicator;
 - (id)_specifiersForDataDictionary;
 - (id)dataDictionary;

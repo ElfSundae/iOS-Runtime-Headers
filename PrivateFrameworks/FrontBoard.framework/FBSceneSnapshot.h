@@ -5,26 +5,24 @@
 @interface FBSceneSnapshot : NSObject {
     FBSceneSnapshotContext * _context;
     FBScene * _scene;
-    XBDisplaySnapshot * _snapshot;
+    _FBSSnapshot * _snapshot;
 }
 
 @property (nonatomic, readonly) struct CGImage { }*CGImage;
-@property (nonatomic, readonly) struct __IOSurface { }*IOSurface;
-@property (nonatomic, readonly) UIImage *UIImage;
-@property (nonatomic, readonly) FBSceneSnapshotContext *context;
-@property (getter=isDataLoaded, nonatomic, readonly) bool dataLoaded;
-@property (nonatomic, readonly) struct __IOSurface { }*fallbackIOSurface;
+@property (nonatomic, readonly) IOSurface *IOSurface;
+@property (nonatomic, readonly, copy) FBSceneSnapshotContext *context;
+@property (nonatomic, readonly) IOSurface *fallbackIOSurface;
+@property (nonatomic, readonly) bool hasProtectedContent;
 
 - (void).cxx_destruct;
 - (struct CGImage { }*)CGImage;
-- (struct __IOSurface { }*)IOSurface;
-- (id)UIImage;
+- (id)IOSurface;
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })_baseTransformForSnapshotContext:(id)arg1 rootContext:(id)arg2;
 - (id)_collectLayersToSnapshotFromScene:(id)arg1 withSnapshotContext:(id)arg2 rootContext:(id)arg3;
 - (bool)capture;
 - (id)context;
-- (struct __IOSurface { }*)fallbackIOSurface;
+- (id)fallbackIOSurface;
+- (bool)hasProtectedContent;
 - (id)initWithScene:(id)arg1 snapshotContext:(id)arg2;
-- (bool)isDataLoaded;
 
 @end

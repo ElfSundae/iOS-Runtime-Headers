@@ -9,6 +9,7 @@
 
 - (id)initWithRequest:(id)arg1 forPlayerPath:(id)arg2;
 - (id)playerPath;
+- (unsigned long long)priority;
 - (id)request;
 - (unsigned long long)type;
 

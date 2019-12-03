@@ -30,5 +30,6 @@
 - (id)initWithPath:(id)arg1 log:(id)arg2;
 - (void)refill;
 - (void)startWork;
+- (id)state;
 
 @end

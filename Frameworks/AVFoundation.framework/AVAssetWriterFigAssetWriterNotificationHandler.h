@@ -22,7 +22,6 @@
 - (id)_weakReferenceToDelegate;
 - (void)dealloc;
 - (id)delegate;
-- (void)finalize;
 - (id)initWithFigAssetWriter:(struct OpaqueFigAssetWriter { }*)arg1;
 - (void)setDelegate:(id)arg1;
 

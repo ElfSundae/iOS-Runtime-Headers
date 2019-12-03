@@ -4,12 +4,13 @@
 
 @interface PHImageRequestResource : NSObject <PLResourceIdentity> {
     unsigned int  _orientation;
+    PLPhotoLibrary * _photoLibrary;
     unsigned int  _recipeID;
-    short  _resourceType;
+    unsigned int  _resourceType;
     <PLUniformTypeIdentifierIdentity> * _uniformTypeIdentifierID;
     long long  _unorientedHeight;
     long long  _unorientedWidth;
-    short  _version;
+    unsigned int  _version;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -17,23 +18,25 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) unsigned int orientation;
 @property (nonatomic, readonly) unsigned int recipeID;
-@property (nonatomic, readonly) short resourceType;
+@property (nonatomic, readonly) unsigned int resourceType;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) <PLUniformTypeIdentifierIdentity> *uniformTypeIdentifierID;
 @property (nonatomic, readonly) long long unorientedHeight;
 @property (nonatomic, readonly) long long unorientedWidth;
-@property (nonatomic, readonly) short version;
+@property (nonatomic, readonly) unsigned int version;
+
++ (id)imageRequestResourceForDataStoreKey:(id)arg1 store:(id)arg2 assetObjectID:(id)arg3 context:(id)arg4;
 
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithPlistDictionary:(id)arg1;
+- (id)initWithPlistDictionary:(id)arg1 photoLibrary:(id)arg2;
 - (id)initWithResource:(id)arg1;
 - (unsigned int)orientation;
 - (unsigned int)recipeID;
-- (short)resourceType;
+- (unsigned int)resourceType;
 - (id)uniformTypeIdentifierID;
 - (long long)unorientedHeight;
 - (long long)unorientedWidth;
-- (short)version;
+- (unsigned int)version;
 
 @end

@@ -2,21 +2,26 @@
    Image: /System/Library/Frameworks/QuickLook.framework/QuickLook
  */
 
-@interface QLItem : NSObject <NSSecureCoding, QLPreviewItemPrivateProtocol, QLSExtensionThumbnailItem> {
+@interface QLItem : NSObject <NSSecureCoding, QLPreviewItemPrivateProtocol, QLTExtensionThumbnailItem> {
     QLUTIAnalyzer * _UTIAnalyzer;
-    UIDocumentInteractionController * _archiveController;
     UIColor * _backgroundColorOverride;
     bool  _canBeEdited;
     bool  _canBeShared;
+    bool  _canHandleEditedCopy;
+    NSDictionary * _clientPreviewOptions;
+    QLPreviewItemEditedCopy * _editedCopy;
     unsigned long long  _editedFileBehavior;
     long long  _editedFileExtensionHandle;
-    NSURL * _editedFileURL;
+    long long  _editingMode;
     QLItemFetcher * _fetcher;
     FPItem * _fpItem;
     bool  _hasDeterminedShouldUseExtensionPreview;
     bool  _hasDeterminedShouldUseExtensionThumbnail;
     bool  _isPromisedItem;
     NSNumber * _itemSize;
+    QLPreviewItemEditedCopy * _lastSavedEditedCopy;
+    bool  _needsAccessToExternalResources;
+    bool  _originalContentWasUpdated;
     <QLPreviewItemPrivateProtocol> * _originalPreviewItem;
     NSString * _password;
     NSString * _previewItemContentType;
@@ -27,7 +32,6 @@
     NSString * _previewItemTitle;
     unsigned long long  _previewItemType;
     NSURL * _previewItemURL;
-    NSDictionary * _previewOptions;
     long long  _processIdentifier;
     NSString * _relativePath;
     FPSandboxingURLWrapper * _sandboxingURLWrapper;
@@ -37,7 +41,6 @@
     bool  _shouldUseExtensionThumbnail;
     NSString * _spotlightQueryString;
     <QLItemThumbnailGeneratorProtocolInternal> * _thumbnailGenerator;
-    unsigned long long  _thumbnailItemType;
     bool  _useAVPlayerViewController;
     bool  _useFullPDFTransition;
     bool  _useLoadingTimeout;
@@ -47,16 +50,19 @@
 
 @property (readonly) NSString *MIMEType;
 @property (nonatomic, retain) QLUTIAnalyzer *UTIAnalyzer;
-@property (retain) UIDocumentInteractionController *archiveController;
 @property (readonly) double autoPlaybackPosition;
 @property (nonatomic, retain) UIColor *backgroundColorOverride;
 @property (nonatomic) bool canBeEdited;
 @property (nonatomic) bool canBeShared;
+@property (nonatomic) bool canHandleEditedCopy;
+@property (nonatomic, copy) NSDictionary *clientPreviewOptions;
 @property (nonatomic, readonly, copy) NSString *contentType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, retain) QLPreviewItemEditedCopy *editedCopy;
 @property (nonatomic) unsigned long long editedFileBehavior;
-@property (nonatomic, retain) NSURL *editedFileURL;
+@property (nonatomic, readonly) NSURL *editedFileURL;
+@property (nonatomic) long long editingMode;
 @property (nonatomic, retain) QLItemFetcher *fetcher;
 @property (retain) FPItem *fpItem;
 @property (nonatomic) bool hasDeterminedShouldUseExtensionPreview;
@@ -64,6 +70,9 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool isPromisedItem;
 @property (nonatomic, retain) NSNumber *itemSize;
+@property (nonatomic, retain) QLPreviewItemEditedCopy *lastSavedEditedCopy;
+@property bool needsAccessToExternalResources;
+@property (nonatomic) bool originalContentWasUpdated;
 @property (nonatomic, retain) <QLPreviewItemPrivateProtocol> *originalPreviewItem;
 @property (retain) NSString *password;
 @property (nonatomic, retain) NSString *previewItemContentType;
@@ -86,7 +95,6 @@
 @property (retain) NSString *spotlightQueryString;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) <QLItemThumbnailGeneratorProtocolInternal> *thumbnailGenerator;
-@property (nonatomic) unsigned long long thumbnailItemType;
 @property bool useAVPlayerViewController;
 @property (nonatomic) bool useFullPDFTransition;
 @property (nonatomic) bool useLoadingTimeout;
@@ -94,36 +102,41 @@
 @property (readonly) bool wantsDefaultMediaPlayer;
 @property bool wantsPreviewInDebugViewController;
 
-+ (id)_allPreviewClasses;
-+ (id)_newEditedFileURLForItem:(id)arg1;
-+ (unsigned long long)_previewItemTypeForPreviewClass:(Class)arg1;
++ (bool)contentTypeConformsToRTFD:(id)arg1;
 + (id)contentTypesToPreviewTypes;
++ (id)customExtensionCommunicationEncodedClasses;
 + (id)encodedClasses;
 + (id)itemWithPreviewItem:(id)arg1;
-+ (id)previewOptionEncodedClasses;
++ (id)rtfContentTypes;
 + (bool)shouldUseRemoteCollection:(id)arg1;
 + (id)supportedContentTypes;
 + (bool)supportsSecureCoding;
++ (id)webContentTypes;
 
 - (void).cxx_destruct;
 - (id)MIMEType;
 - (id)UTIAnalyzer;
 - (void)_commonInit;
 - (unsigned long long)_getPreviewItemType;
-- (unsigned long long)_getThumbnailItemType;
-- (id)archiveController;
+- (void)_removeEditedCopyIfExists;
+- (unsigned long long)_uncachedExtensionPreviewItemType;
+- (unsigned long long)_uncachedPreviewItemType;
 - (id)backgroundColorOverride;
 - (bool)canBeEdited;
 - (bool)canBePreviewed;
 - (bool)canBePrintedWithCustomPrinter;
 - (bool)canBeShared;
+- (bool)canHandleEditedCopy;
+- (id)clientPreviewOptions;
 - (id)contentType;
 - (id)createPreviewContext;
 - (void)dealloc;
 - (long long)defaultWhitePointAdaptivityStyle;
 - (id)description;
+- (id)editedCopy;
 - (unsigned long long)editedFileBehavior;
 - (id)editedFileURL;
+- (long long)editingMode;
 - (void)encodeWithCoder:(id)arg1;
 - (id)fetcher;
 - (id)fpItem;
@@ -135,7 +148,6 @@
 - (id)initWithDataProvider:(id)arg1 contentType:(id)arg2 previewTitle:(id)arg3;
 - (id)initWithFPItem:(id)arg1;
 - (id)initWithPreviewItemProvider:(id)arg1 contentType:(id)arg2 previewTitle:(id)arg3 fileSize:(id)arg4;
-- (id)initWithRelativePath:(id)arg1 archiveController:(id)arg2;
 - (id)initWithSearchableItemUniqueIdentifier:(id)arg1 applicationBundleIdentifier:(id)arg2;
 - (id)initWithSearchableItemUniqueIdentifier:(id)arg1 queryString:(id)arg2 applicationBundleIdentifier:(id)arg3 previewTitle:(id)arg4;
 - (id)initWithURL:(id)arg1;
@@ -146,7 +158,11 @@
 - (bool)isPromisedItem;
 - (bool)isStandardQuickLookType;
 - (id)itemSize;
+- (id)lastSavedEditedCopy;
+- (double)maxLoadingTime;
 - (unsigned long long)maximumNumberOfCachedPreviews;
+- (bool)needsAccessToExternalResources;
+- (bool)originalContentWasUpdated;
 - (id)originalPreviewItem;
 - (id)password;
 - (void)prepareSaveURL:(id /* block */)arg1;
@@ -154,12 +170,13 @@
 - (id)previewItemContentType;
 - (id)previewItemData;
 - (id)previewItemDataProvider;
+- (id)previewItemPrintingViewControllerClassName;
 - (id)previewItemProvider;
 - (id)previewItemProviderProgress;
 - (id)previewItemTitle;
 - (unsigned long long)previewItemType;
 - (id)previewItemURL;
-- (Class)previewItemViewControllerClass;
+- (id)previewItemViewControllerClassName;
 - (id)previewOptions;
 - (struct CGSize { double x1; double x2; })previewSizeForItemViewControllerSize:(struct CGSize { double x1; double x2; })arg1;
 - (long long)processIdentifier;
@@ -169,19 +186,23 @@
 - (id)saveURL;
 - (id)searchableItemApplicationBundleIdentifier;
 - (id)searchableItemIdentifier;
-- (void)setArchiveController:(id)arg1;
 - (void)setBackgroundColorOverride:(id)arg1;
 - (void)setCanBeEdited:(bool)arg1;
 - (void)setCanBeShared:(bool)arg1;
+- (void)setCanHandleEditedCopy:(bool)arg1;
+- (void)setClientPreviewOptions:(id)arg1;
+- (void)setEditedCopy:(id)arg1;
 - (void)setEditedFileBehavior:(unsigned long long)arg1;
-- (void)setEditedFileURL:(id)arg1;
-- (void)setEditedFileURL:(id)arg1 withSandboxExtension:(id)arg2;
+- (void)setEditingMode:(long long)arg1;
 - (void)setFetcher:(id)arg1;
 - (void)setFpItem:(id)arg1;
 - (void)setHasDeterminedShouldUseExtensionPreview:(bool)arg1;
 - (void)setHasDeterminedShouldUseExtensionThumbnail:(bool)arg1;
 - (void)setIsPromisedItem:(bool)arg1;
 - (void)setItemSize:(id)arg1;
+- (void)setLastSavedEditedCopy:(id)arg1;
+- (void)setNeedsAccessToExternalResources:(bool)arg1;
+- (void)setOriginalContentWasUpdated:(bool)arg1;
 - (void)setOriginalPreviewItem:(id)arg1;
 - (void)setPassword:(id)arg1;
 - (void)setPreviewItemContentType:(id)arg1;
@@ -202,7 +223,6 @@
 - (void)setShouldUseExtensionThumbnail:(bool)arg1;
 - (void)setSpotlightQueryString:(id)arg1;
 - (void)setThumbnailGenerator:(id)arg1;
-- (void)setThumbnailItemType:(unsigned long long)arg1;
 - (void)setUTIAnalyzer:(id)arg1;
 - (void)setUseAVPlayerViewController:(bool)arg1;
 - (void)setUseFullPDFTransition:(bool)arg1;
@@ -212,9 +232,10 @@
 - (id)shareableURL;
 - (bool)shouldUseExtensionPreview;
 - (bool)shouldUseExtensionThumbnail;
+- (bool)shouldUseRemoteViewController;
 - (id)spotlightQueryString;
 - (id)thumbnailGenerator;
-- (unsigned long long)thumbnailItemType;
+- (Class)transformerClass;
 - (bool)useAVPlayerViewController;
 - (bool)useExtensionPreview;
 - (bool)useExtensionThumbnail;

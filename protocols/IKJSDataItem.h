@@ -5,11 +5,8 @@
 
 @required
 
-- (JSValue *)getPropertyPath:(NSString *)arg1;
 - (NSString *)identifier;
 - (id)initConstructor:(JSValue *)arg1 :(JSValue *)arg2;
-- (void)setPropertyPath:(NSString *)arg1 :(JSValue *)arg2;
-- (void)touchPropertyPath:(NSString *)arg1;
 - (NSString *)type;
 
 @end

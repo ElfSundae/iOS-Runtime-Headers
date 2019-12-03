@@ -5,6 +5,8 @@
 
 @required
 
-- (void)mediaRequest:(PHMediaRequest *)arg1 isRequestingLocalAvailabilityChangeForResource:(id <PLResourceIdentity>)arg2;
+- (void)mediaRequest:(PHMediaRequest *)arg1 didFindLocallyAvailableResult:(bool)arg2 isDegraded:(bool)arg3;
+- (void)mediaRequest:(PHMediaRequest *)arg1 didFinishWithResult:(PHCompositeMediaResult *)arg2;
+- (bool)mediaRequest:(PHMediaRequest *)arg1 didStartLocalAvailabilityChangeRequestForResource:(id <PLResourceIdentity>)arg2;
 
 @end

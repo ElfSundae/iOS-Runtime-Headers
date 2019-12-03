@@ -17,9 +17,12 @@
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
+- (void)_startMonitoringWithQueue:(id)arg1;
+- (void)_stopMonitoring;
 - (id)biometricDevice;
 - (id)delegate;
 - (void)device:(id)arg1 matchEventOccurred:(id)arg2;
+- (unsigned long long)getBiometricMatchResultForTriggerTimeStamp:(unsigned long long)arg1;
 - (bool)getLastBiometricMatchEvent:(bool*)arg1 atTime:(unsigned long long*)arg2;
 - (id)init;
 - (void)setBiometricDevice:(id)arg1;

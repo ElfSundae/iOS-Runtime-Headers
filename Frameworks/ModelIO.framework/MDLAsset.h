@@ -12,6 +12,7 @@
     double  _frameInterval;
     bool  _isSceneKitBridged;
     <MDLObjectContainerComponent> * _masters;
+    float  _metersPerUnit;
     NSMutableArray * _objects;
     <MDLAssetResolver> * _resolver;
     double  _startTime;
@@ -32,6 +33,7 @@
 @property (nonatomic) double endTime;
 @property (nonatomic) double frameInterval;
 @property (nonatomic, retain) <MDLObjectContainerComponent> *masters;
+@property (nonatomic) float metersPerUnit;
 @property (nonatomic, retain) <MDLAssetResolver> *resolver;
 @property (nonatomic) double startTime;
 @property (nonatomic, retain) NSUnitLength *unitLength;
@@ -42,6 +44,9 @@
 
 + (bool)canExportFileExtension:(id)arg1;
 + (bool)canImportFileExtension:(id)arg1;
++ (void)convertToUSDZ:(id)arg1 writeToURL:(id)arg2;
++ (void)convertToUSDZWithURL:(id)arg1;
++ (bool)isValidUSDZResource:(id)arg1;
 + (id)placeLightProbesWithDensity:(float)arg1 heuristic:(long long)arg2 usingIrradianceDataSource:(id)arg3;
 
 - (void).cxx_destruct;
@@ -61,7 +66,7 @@
 - (id)components;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned long long)count;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
 - (id)description;
 - (double)endTime;
@@ -79,6 +84,7 @@
 - (id)initWithURL:(id)arg1 vertexDescriptor:(id)arg2 bufferAllocator:(id)arg3 preserveTopology:(bool)arg4 error:(id*)arg5;
 - (void)loadTextures;
 - (id)masters;
+- (float)metersPerUnit;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;
 - (id)objectAtPath:(id)arg1;
@@ -92,6 +98,7 @@
 - (void)setEndTime:(double)arg1;
 - (void)setFrameInterval:(double)arg1;
 - (void)setMasters:(id)arg1;
+- (void)setMetersPerUnit:(float)arg1;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (void)setResolver:(id)arg1;
 - (void)setStartTime:(double)arg1;

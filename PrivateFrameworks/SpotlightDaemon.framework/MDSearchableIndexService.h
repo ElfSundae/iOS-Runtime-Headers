@@ -6,10 +6,12 @@
     CSIndexingQueue * _activityQueue;
     NSString * _clientBundleID;
     NSObject<OS_xpc_object> * _clientConnection;
+    NSString * _clientPersonaID;
     NSObject<OS_dispatch_queue> * _clientQueue;
     unsigned int  _clientUID;
     NSObject<MDIndexer> * _indexer;
     bool  _isInternal;
+    bool  _isPrivate;
     NSString * _protectionClass;
     bool  _quotaDisabled;
     bool  _searchInternal;
@@ -18,6 +20,7 @@
 @property (nonatomic, readonly) CSIndexingQueue *activityQueue;
 @property (nonatomic, copy) NSString *clientBundleID;
 @property (nonatomic, retain) NSObject<OS_xpc_object> *clientConnection;
+@property (nonatomic, copy) NSString *clientPersonaID;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *clientQueue;
 @property (nonatomic) unsigned int clientUID;
 @property (readonly, copy) NSString *debugDescription;
@@ -25,6 +28,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSObject<MDIndexer> *indexer;
 @property (nonatomic) bool isInternal;
+@property (nonatomic) bool isPrivate;
 @property (nonatomic, readonly) NSString *processDescription;
 @property (nonatomic, copy) NSString *protectionClass;
 @property (nonatomic) bool quotaDisabled;
@@ -42,11 +46,10 @@
 - (void)_dispatchActivities:(id)arg1 bundleID:(id)arg2;
 - (void)_dispatchToReceiversWithBundleID:(id)arg1 protectionClass:(id)arg2 options:(long long)arg3 items:(id)arg4 itemsText:(id)arg5 itemsHTML:(id)arg6 deletes:(id)arg7;
 - (void)_forceAppWithBundleID:(id)arg1 toPerformJob:(id)arg2;
-- (void)_issueCommand:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)_issueCommand:(id)arg1 searchContext:(id)arg2 completionHandler:(id /* block */)arg3;
 - (bool)_jobForIndex:(long long)arg1;
 - (void)_makeActivityQueueIfNecessary;
-- (void)_performIndexJob:(id)arg1 acknowledgementHandler:(id /* block */)arg2;
-- (void)_processIndexDataForBundle:(id)arg1 protectionClass:(id)arg2 options:(long long)arg3 items:(id)arg4 itemsText:(id)arg5 clientState:(id)arg6 clientStateName:(id)arg7 deletes:(id)arg8 completionHandler:(id /* block */)arg9;
+- (void)_processIndexDataForBundle:(id)arg1 protectionClass:(id)arg2 personaID:(id)arg3 options:(long long)arg4 items:(id)arg5 itemsText:(id)arg6 clientState:(id)arg7 clientStateName:(id)arg8 deletes:(id)arg9 completionHandler:(id /* block */)arg10;
 - (id)activityQueue;
 - (bool)addInteraction:(id)arg1;
 - (void)addInteraction:(id)arg1 intentClassName:(id)arg2 bundleID:(id)arg3 protectionClass:(id)arg4 options:(long long)arg5 completionHandler:(id /* block */)arg6;
@@ -56,6 +59,7 @@
 - (void)checkInWithProtectionClass:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)clientBundleID;
 - (id)clientConnection;
+- (id)clientPersonaID;
 - (id)clientQueue;
 - (unsigned int)clientUID;
 - (bool)dataMigration:(id)arg1;
@@ -81,7 +85,7 @@
 - (bool)donateRelevantActions:(id)arg1;
 - (void)donateRelevantActions:(id)arg1 bundleID:(id)arg2 options:(long long)arg3 completionHandler:(id /* block */)arg4;
 - (bool)fetchAttributes:(id)arg1;
-- (void)fetchAttributes:(id)arg1 protectionClass:(id)arg2 bundleID:(id)arg3 identifiers:(id)arg4 reply:(id)arg5 completionHandler:(id /* block */)arg6;
+- (void)fetchAttributes:(id)arg1 protectionClass:(id)arg2 bundleID:(id)arg3 identifiers:(id)arg4 includeParents:(bool)arg5 reply:(id)arg6 completionHandler:(id /* block */)arg7;
 - (bool)fetchClientState:(id)arg1;
 - (void)fetchLastClientStateWithProtectionClass:(id)arg1 forBundleID:(id)arg2 clientStateName:(id)arg3 options:(long long)arg4 completionHandler:(id /* block */)arg5;
 - (void)flushUserActivities;
@@ -91,10 +95,10 @@
 - (void)indexSearchableItems:(id)arg1 deleteSearchableItemsWithIdentifiers:(id)arg2 clientState:(id)arg3 protectionClass:(id)arg4 forBundleID:(id)arg5 options:(long long)arg6 completionHandler:(id /* block */)arg7;
 - (id)indexer;
 - (bool)isInternal;
+- (bool)isPrivate;
 - (bool)issueCommand:(id)arg1;
 - (void)performDataMigrationWithTimeout:(id)arg1 completionHandler:(id /* block */)arg2;
-- (void)performIndexJob:(id)arg1;
-- (void)performIndexJob:(id)arg1 acknowledgementHandler:(id /* block */)arg2;
+- (void)performIndexJob:(id)arg1 protectionClass:(id)arg2 acknowledgementHandler:(id /* block */)arg3;
 - (bool)processActivities:(id)arg1;
 - (id)processDescription;
 - (bool)processIndexData:(id)arg1;
@@ -105,10 +109,12 @@
 - (bool)searchInternal;
 - (void)setClientBundleID:(id)arg1;
 - (void)setClientConnection:(id)arg1;
+- (void)setClientPersonaID:(id)arg1;
 - (void)setClientQueue:(id)arg1;
 - (void)setClientUID:(unsigned int)arg1;
 - (void)setIndexer:(id)arg1;
 - (void)setIsInternal:(bool)arg1;
+- (void)setIsPrivate:(bool)arg1;
 - (void)setProtectionClass:(id)arg1;
 - (void)setQuotaDisabled:(bool)arg1;
 - (void)setSearchInternal:(bool)arg1;

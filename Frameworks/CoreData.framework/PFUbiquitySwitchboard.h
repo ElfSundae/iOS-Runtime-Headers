@@ -31,6 +31,6 @@
 - (void)removeFilePresenterCachedForUbiquityRootLocation:(id)arg1 andLocalPeerID:(id)arg2;
 - (id)retainedEntryForStoreName:(id)arg1 andLocalPeerID:(id)arg2;
 - (void)unregisterCoordinator:(id)arg1;
-- (void)unregisterPersistentStore:(id)arg1;
+- (void)unregisterPersistentStore:(id)arg1 inCoordinator:(id)arg2;
 
 @end

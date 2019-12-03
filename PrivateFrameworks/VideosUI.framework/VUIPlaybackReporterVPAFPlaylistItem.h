@@ -19,6 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long overallPosition;
 @property (nonatomic, readonly) unsigned long long startOverallPosition;
+@property (nonatomic, readonly) long long startPosition;
 @property (readonly) Class superclass;
 @property (nonatomic) struct _NSRange { unsigned long long x1; unsigned long long x2; } timeRange;
 

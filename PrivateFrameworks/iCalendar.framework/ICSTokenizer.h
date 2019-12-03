@@ -3,11 +3,11 @@
  */
 
 @interface ICSTokenizer : NSObject {
-    int  _cursor;
+    unsigned long long  _cursor;
     NSData * _data;
     const char * _datastring;
     int  _expectedNextTokenType;
-    int  _length;
+    unsigned long long  _length;
     int  _logCount;
     bool  _printedICS;
     char * _token;

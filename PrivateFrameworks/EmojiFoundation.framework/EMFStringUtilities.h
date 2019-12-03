@@ -11,10 +11,20 @@
 + (bool)_genderEmojiBaseStringNeedVariantSelector:(id)arg1;
 + (bool)_hasSkinToneVariantsForString:(id)arg1;
 + (bool)_isNewlyAddedEmoji:(id)arg1;
++ (id)_multiPersonStringForString:(id)arg1 skinToneVariantSpecifier:(id)arg2;
 + (id)_preferenceIndexString:(id)arg1;
++ (id)_skinToneChooserVariantsForMultiPersonType:(long long)arg1;
++ (id)_skinToneChooserVariantsForString:(id)arg1;
 + (int)_skinToneForString:(id)arg1;
++ (int)_skinToneModifierFromSpecifierType:(id)arg1;
++ (id)_skinToneSpecifiersForString:(id)arg1;
++ (id)_skinToneSuffixFromSpecifierType:(id)arg1;
++ (id)_skinToneVariantsForMultiPersonType:(long long)arg1;
 + (id)_skinToneVariantsForString:(id)arg1;
 + (id)_stringWithUnichar:(unsigned int)arg1;
++ (id)_tokenizedMultiPersonFromString:(id)arg1;
++ (long long)multiPersonTypeForString:(id)arg1;
 + (id)professionSkinToneEmojiBaseKey:(id)arg1;
++ (id)skinToneSpecifierTypeFromEmojiFitzpatrickModifier:(int)arg1;
 
 @end

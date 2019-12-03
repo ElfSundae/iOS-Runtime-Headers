@@ -8,6 +8,7 @@
     NSString * mSoundFile;
 }
 
+- (void).cxx_destruct;
 - (id)description;
 
 @end

@@ -12,6 +12,9 @@
 
 @property (nonatomic, readonly) MPRemoteCommand *command;
 @property (nonatomic, readonly) double timestamp;
+@property (nonatomic, readonly) ICUserIdentity *userIdentity;
+
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
 
 + (id)eventWithCommand:(id)arg1 mediaRemoteType:(unsigned int)arg2 options:(id)arg3;
 
@@ -20,10 +23,16 @@
 - (id)commandID;
 - (id)contentItemID;
 - (id)contextID;
+- (id)description;
 - (id)init;
 - (id)initWithCommand:(id)arg1 mediaRemoteType:(unsigned int)arg2 options:(id)arg3;
+- (id)interfaceID;
 - (id)mediaRemoteOptions;
 - (long long)playbackQueueOffset;
 - (double)timestamp;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
+- (id)userIdentity;
 
 @end

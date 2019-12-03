@@ -19,7 +19,6 @@
 - (void)_willDeallocOrFinalize;
 - (void)dealloc;
 - (struct { double x1; double x2; double x3; double x4; })edgeWidths;
-- (void)finalize;
 - (bool)hasEqualPropertiesToFigVideoCompositor:(struct OpaqueFigVideoCompositor { }*)arg1;
 - (bool)highQualityRendering;
 - (id)initWithFigVideoCompositor:(struct OpaqueFigVideoCompositor { }*)arg1 clientRequiredPixelBufferAttributes:(id)arg2 videoComposition:(id)arg3 pixelBufferPool:(struct __CVPixelBufferPool { }*)arg4;

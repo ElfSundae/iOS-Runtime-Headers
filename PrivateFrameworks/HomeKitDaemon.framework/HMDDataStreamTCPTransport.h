@@ -5,6 +5,7 @@
 @interface HMDDataStreamTCPTransport : NSObject <HMDDataStreamTransport, HMFLogging> {
     HMDDataStreamFrameReader * _byteReader;
     bool  _connected;
+    NSString * _logIdentifier;
     HMFNetAddress * _remoteAddress;
     long long  _remotePort;
     NSObject<OS_tcp_connection> * _tcpConnection;
@@ -17,6 +18,7 @@
 @property (nonatomic) <HMDDataStreamTransportDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, copy) NSString *logIdentifier;
 @property (nonatomic, retain) HMFNetAddress *remoteAddress;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSObject<OS_tcp_connection> *tcpConnection;
@@ -34,11 +36,13 @@
 - (void)connect;
 - (void)dealloc;
 - (id)delegate;
-- (id)initWithAddress:(id)arg1 port:(long long)arg2 workQueue:(id)arg3;
+- (id)initWithAddress:(id)arg1 port:(long long)arg2 workQueue:(id)arg3 logIdentifier:(id)arg4;
+- (id)logIdentifier;
 - (id)remoteAddress;
 - (void)sendRawFrame:(id)arg1 completion:(id /* block */)arg2;
 - (void)setByteReader:(id)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setLogIdentifier:(id)arg1;
 - (void)setRemoteAddress:(id)arg1;
 - (void)setTcpConnection:(id)arg1;
 - (void)setWorkQueue:(id)arg1;

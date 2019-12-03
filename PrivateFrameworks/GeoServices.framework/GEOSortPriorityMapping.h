@@ -14,6 +14,7 @@
 
 - (void).cxx_destruct;
 - (id)entries;
+- (id)init;
 - (id)initWithAutocompleteResultSortPriorityMapping:(id)arg1;
 - (id)initWithEntries:(id)arg1;
 

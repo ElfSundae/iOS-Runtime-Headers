@@ -15,10 +15,10 @@
 + (int)defaultItalic;
 + (id)defaultStyle;
 
+- (void).cxx_destruct;
 - (void)applyOverridesFrom:(id)arg1;
 - (int)bold;
 - (id)color;
-- (void)dealloc;
 - (id)description;
 - (id)fontReference;
 - (id)init;

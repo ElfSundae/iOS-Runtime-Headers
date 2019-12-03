@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UIFoundation.framework/UIFoundation
  */
 
-@interface NSTextAttachment : NSObject <NSCoding, NSSecureCoding, NSTextAttachmentContainer, UIAccessibilityContentSizeCategoryImageAdjusting> {
+@interface NSTextAttachment : NSObject <NSSecureCoding, NSTextAttachmentContainer, UIAccessibilityContentSizeCategoryImageAdjusting> {
     struct CGRect { 
         struct CGPoint { 
             double x; 
@@ -22,6 +22,7 @@
         unsigned int _allowsTextAttachmentView : 1; 
         unsigned int _embeddingType : 4; 
         unsigned int _standaloneAlignment : 3; 
+        unsigned int _allocatesTextContainer : 1; 
     }  _taFlags;
     NSString * _uti;
     NSTextAttachmentView * _wrapperView;
@@ -49,9 +50,12 @@
 + (Class)textAttachmentClassForFileType:(id)arg1;
 + (Class)textAttachmentViewProviderClassForFileType:(id)arg1;
 
+- (bool)_allocatesTextContainer;
 - (id)_cacheKey;
 - (id)_image;
+- (id)_imageForUTI_iOS:(id)arg1;
 - (void)_invalidateWrapperView;
+- (void)_setAllocatesTextContainer:(bool)arg1;
 - (bool)allowsTextAttachmentView;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })attachmentBoundsForTextContainer:(id)arg1 proposedLineFragment:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 glyphPosition:(struct CGPoint { double x1; double x2; })arg3 characterIndex:(unsigned long long)arg4;
 - (id)attachmentCell;
@@ -94,6 +98,7 @@
 
 + (bool)_attachmentHasImage:(id)arg1;
 + (id)_imageFromAttachment:(id)arg1;
++ (id)textAttachmentWithImage:(id)arg1;
 
 - (bool)adjustsImageSizeForAccessibilityContentSizeCategory;
 - (void)setAdjustsImageSizeForAccessibilityContentSizeCategory:(bool)arg1;

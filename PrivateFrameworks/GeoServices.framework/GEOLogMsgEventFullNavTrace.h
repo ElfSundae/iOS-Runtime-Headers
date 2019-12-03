@@ -9,6 +9,8 @@
 @property (nonatomic, readonly) bool hasNavTraceData;
 @property (nonatomic, retain) NSData *navTraceData;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -19,6 +21,7 @@
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)navTraceData;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setNavTraceData:(id)arg1;
 - (void)writeTo:(id)arg1;

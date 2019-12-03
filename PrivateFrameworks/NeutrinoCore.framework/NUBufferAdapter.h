@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/NeutrinoCore.framework/NeutrinoCore
  */
 
-@interface NUBufferAdapter : NSObject <NUBuffer> {
+@interface NUBufferAdapter : NSObject <NUBuffer, NUBufferProvider> {
     const void * _bytes;
     NUPixelFormat * _format;
     long long  _rowBytes;
@@ -25,11 +25,13 @@
 - (void).cxx_destruct;
 - (const void*)bytes;
 - (const void*)bytesAtPoint:(struct { long long x1; long long x2; })arg1;
+- (id)description;
 - (id)format;
 - (id)init;
 - (id)initWithBuffer:(id)arg1;
 - (id)initWithSize:(struct { long long x1; long long x2; })arg1 format:(id)arg2 rowBytes:(long long)arg3 bytes:(const void*)arg4;
 - (void)invalidate;
+- (void)provideBuffer:(id /* block */)arg1;
 - (long long)rowBytes;
 - (struct { long long x1; long long x2; })size;
 

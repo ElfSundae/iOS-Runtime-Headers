@@ -3,14 +3,14 @@
  */
 
 @interface HDClientDataCollectionObservationStateMonitor : NSObject <HDProcessStateObserver> {
-    HDXPCClient * _client;
+    HDHealthStoreClient * _client;
     <HDClientDataCollectionObservationStateMonitorDelegate> * _delegate;
-    bool  _invalidated;
+    _Atomic bool  _invalidated;
     NSLock * _lock;
     HDProfile * _profile;
 }
 
-@property (nonatomic, readonly) HDXPCClient *client;
+@property (nonatomic, readonly) HDHealthStoreClient *client;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <HDClientDataCollectionObservationStateMonitorDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -25,7 +25,7 @@
 - (void)dealloc;
 - (id)delegate;
 - (id)init;
-- (id)initWithClient:(id)arg1 profile:(id)arg2 delegate:(id)arg3;
+- (id)initWithClient:(id)arg1 delegate:(id)arg2;
 - (void)invalidate;
 - (void)processDidEnterBackground:(id)arg1;
 - (void)processDidEnterForeground:(id)arg1;

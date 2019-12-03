@@ -25,6 +25,7 @@
 - (id)_lockedGetQueuedFetchForOperation:(id)arg1 ofClass:(Class)arg2;
 - (void)_lockedRescheduleFetchTimer;
 - (void)_lockedTearDownFetchTimer;
+- (void)cancelAllOperations;
 - (id)context;
 - (void)dealloc;
 - (bool)fetchRequestForExistingOperation:(id)arg1 isDependentOnOperation:(id)arg2;

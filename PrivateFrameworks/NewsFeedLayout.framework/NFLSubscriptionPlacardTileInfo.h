@@ -12,6 +12,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) NSString *identifier;
 @property (nonatomic, readonly) bool pageable;
+@property (getter=isSelectable, nonatomic, readonly) bool selectable;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) unsigned long long tileInfoType;
 @property (nonatomic, readonly) NSArray *underlyingFeedElements;
@@ -21,6 +22,7 @@
 - (id)feedTileInfoForBookmarking;
 - (id)groupIdentifier;
 - (id)identifier;
+- (bool)isSelectable;
 - (bool)pageable;
 - (unsigned long long)tileInfoType;
 - (id)underlyingFeedElements;

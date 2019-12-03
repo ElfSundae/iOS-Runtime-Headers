@@ -29,6 +29,7 @@
     NSString * _plainBody;
     IMHandle * _sender;
     unsigned long long  _sortID;
+    NSString * _sourceApplicationID;
     IMHandle * _subject;
     NSAttributedString * _text;
     NSDate * _time;
@@ -86,6 +87,7 @@
 @property (setter=_updateSender:, nonatomic, retain) IMHandle *sender;
 @property (nonatomic, readonly) NSString *senderName;
 @property (nonatomic) unsigned long long sortID;
+@property (nonatomic, retain) NSString *sourceApplicationID;
 @property (nonatomic, readonly) IMHandle *subject;
 @property (nonatomic, readonly) NSString *summaryString;
 @property (setter=_updateText:, nonatomic, retain) NSAttributedString *text;
@@ -156,6 +158,7 @@
 - (id)description;
 - (id)descriptionForPurpose:(long long)arg1;
 - (id)descriptionForPurpose:(long long)arg1 inChat:(id)arg2;
+- (id)descriptionForPurpose:(long long)arg1 inChat:(id)arg2 senderDisplayName:(id)arg3;
 - (id)error;
 - (id)expressiveSendStyleID;
 - (id)fileTransferGUIDs;
@@ -210,8 +213,10 @@
 - (void)setNotificationIDSTokenURI:(id)arg1;
 - (void)setPayloadData:(id)arg1;
 - (void)setSortID:(unsigned long long)arg1;
+- (void)setSourceApplicationID:(id)arg1;
 - (void)setTimeExpressiveSendPlayed:(id)arg1;
 - (unsigned long long)sortID;
+- (id)sourceApplicationID;
 - (id)subject;
 - (id)summaryString;
 - (id)text;

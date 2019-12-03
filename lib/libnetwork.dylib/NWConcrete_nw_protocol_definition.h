@@ -3,14 +3,19 @@
  */
 
 @interface NWConcrete_nw_protocol_definition : NSObject <OS_nw_protocol_definition> {
+    unsigned int  __pad_bits;
     int (* allocate_flow_state;
     int (* allocate_globals;
     int (* allocate_instance_state;
     int (* allocate_metadata;
     int (* allocate_options;
     int (* check_equality_options;
+    int (* copy_establishment_report;
+    int (* copy_message_options;
     int (* copy_metadata;
     int (* copy_options;
+    int (* copy_original;
+    int (* create_reply;
     unsigned int  custom_flow_map_key_size;
     int (* deallocate_cache_entry;
     int (* deallocate_flow_state;
@@ -19,6 +24,9 @@
     int (* deallocate_metadata;
     int (* deallocate_options;
     int (* destroy;
+    unsigned int  framer;
+    int (* framer_create;
+    id /* block */  framer_start;
     int (* handle_error;
     int (* handle_inbound;
     int (* handle_outbound;
@@ -30,11 +38,16 @@
     int (* inbound_starting;
     int (* inbound_stopping;
     int (* initialize;
+    int (* link_state;
+    unsigned int  message_is_stream;
     int (* outbound_starting;
     int (* outbound_stopping;
+    unsigned int  receive_single_message;
+    int (* set_original;
     int (* should_flush_cache;
     int (* start;
     int (* stop;
+    unsigned int  supports_replies;
     unsigned char  unique_identifier;
     int  variant;
 }
@@ -44,6 +57,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)description;
 - (id)init;
 

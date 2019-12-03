@@ -60,7 +60,6 @@
 - (unsigned short*)keys2;
 - (unsigned short*)keys3;
 - (unsigned int)maximumIndex;
-- (id)newKeySetWithKeys:(id)arg1 encoding:(unsigned int)arg2;
 - (unsigned int)numKey;
 - (void*)rankTable;
 - (unsigned int*)seeds;

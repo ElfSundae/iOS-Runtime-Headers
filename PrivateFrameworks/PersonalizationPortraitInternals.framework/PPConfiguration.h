@@ -3,25 +3,52 @@
  */
 
 @interface PPConfiguration : NSObject {
+    int  _abGroupOverrideChangedNotificationToken;
+    _PASNotificationToken * _assetUpdateHandlerToken;
     _PASLock * _lock;
 }
 
-+ (id)_loadConfigPlist;
++ (id)_loadConfigPlistWithPath:(id)arg1;
++ (id)_loadTopicCalibrationPlistWithPath:(id)arg1;
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
 - (void)_loadConfigParams;
-- (double)getTopicsMultiplierForSource:(id)arg1 andAlgorithm:(id)arg2;
+- (id)availablePortraitVariantNames;
+- (void)dealloc;
+- (float)feedbackSessionLogsExtractionsSamplingRate;
+- (int)feedbackSessionLogsGeohashLength;
+- (float)feedbackSessionLogsSamplingRate;
 - (double)halfValuePosition;
+- (bool)highLevelTopicExtractionEnabled;
+- (double)highLevelTopicScoreAttenuationFactor;
+- (double)highLevelTopicScoreThreshold;
 - (id)init;
-- (unsigned long long)maxNumberOfTopicRecords;
-- (unsigned long long)minNumberOfTopicRecords;
+- (double)locationDecayHalfLifeSeconds;
+- (double)namedEntityDecayHalfLifeSeconds;
+- (id)naturalPortraitVariantName;
 - (double)nonReaderTextWeight;
+- (int)portraitAnalyticsGeohashLength;
+- (int)portraitAnalyticsMaximumNumberOfRecords;
 - (double)portraitAnalyticsSamplingRate;
+- (double)portraitAnalyticsTopicsSamplingRate;
+- (id)portraitMusicDataCollectionAMPBundleIds;
+- (bool)portraitMusicDataCollectionCollectNonAMPNowPlaying;
+- (int)portraitMusicDataCollectionMaximumRecordsPerType;
+- (double)portraitMusicDataCollectionSamplingRateForAMP;
+- (double)portraitMusicDataCollectionSamplingRateForCTS;
 - (id)portraitVariantName;
-- (double)remoteTopicsMultiplier;
+- (float)remoteTopicsMultiplier;
 - (id)resourceForMappingId:(id)arg1;
+- (bool)safariDataDetectorsEnabledForHighMemoryDevices;
+- (bool)safariDonationTitleExtractionEnabled;
 - (double)scalingFactorForMappingId:(id)arg1;
+- (float)scoreThresholdForLocation;
+- (float)scoreThresholdForNamedEntity;
+- (float)scoreThresholdForTopic;
+- (id)topicCalibrationTrie;
+- (double)topicDecayHalfLifeSeconds;
+- (float)topicsMultiplierForBundleId:(id)arg1 algorithm:(unsigned long long)arg2;
 - (double)topicsScalingFactor;
 - (double)topicsSigmoidPeakValue;
 - (double)topicsSigmoidWidth;

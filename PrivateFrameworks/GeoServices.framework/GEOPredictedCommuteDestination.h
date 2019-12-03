@@ -7,10 +7,10 @@
     double  _confidenceScore;
     int  _destinationType;
     struct { 
-        unsigned int confidenceScore : 1; 
-        unsigned int destinationType : 1; 
-        unsigned int chosen : 1; 
-    }  _has;
+        unsigned int has_confidenceScore : 1; 
+        unsigned int has_destinationType : 1; 
+        unsigned int has_chosen : 1; 
+    }  _flags;
 }
 
 @property (nonatomic) bool chosen;
@@ -19,6 +19,8 @@
 @property (nonatomic) bool hasChosen;
 @property (nonatomic) bool hasConfidenceScore;
 @property (nonatomic) bool hasDestinationType;
+
++ (bool)isValid:(id)arg1;
 
 - (int)StringAsDestinationType:(id)arg1;
 - (bool)chosen;
@@ -35,6 +37,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setChosen:(bool)arg1;
 - (void)setConfidenceScore:(double)arg1;

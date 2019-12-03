@@ -5,9 +5,10 @@
 @interface NUIGridArrangement : NSObject <_NUIGridArrangementContainer> {
     struct _NUIGridArrangement { 
         <_NUIGridArrangementContainer> *container; 
+        unsigned int horzDist : 8; 
+        unsigned int vertDist : 8; 
         bool baselineRelative; 
-        long long horzDist; 
-        long long vertDist; 
+        bool hasValidMeasurement; 
         struct vector<_NUIGridArrangementCell, std::__1::allocator<_NUIGridArrangementCell> > { 
             struct _NUIGridArrangementCell {} *__begin_; 
             struct _NUIGridArrangementCell {} *__end_; 

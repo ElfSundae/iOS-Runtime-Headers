@@ -3,7 +3,9 @@
  */
 
 @interface VCVideoCaptureServer : NSObject <VideoCaptureServer> {
-    NSMutableArray * _cameraPreviewClients;
+    BKSApplicationStateMonitor * _cameraPreviewClientMonitor;
+    NSObject<OS_dispatch_queue> * _cameraPreviewClientMonitorQueue;
+    NSMutableDictionary * _cameraPreviewClients;
     NSString * _currentCameraUniqueID;
     int  _encodingHeight;
     int  _encodingWidth;
@@ -14,7 +16,6 @@
     int  _newThermalLevel;
     int  _peakPowerLevel;
     int  _peakPowerNotificationToken;
-    unsigned int  _previewSlot;
     int  _thermalLevel;
     int  _thermalNotificationToken;
     NSObject<OS_dispatch_queue> * _xpcCommandQueue;
@@ -98,6 +99,7 @@
 - (int)getFrameRateForThermalLevel:(int)arg1;
 - (int)getFrameRateForThermalLevel:(int)arg1 peakPowerPressure:(int)arg2;
 - (void)handleAVCaptureError:(int)arg1 error:(id)arg2;
+- (void)handleCameraPreviewClientStateChange:(id)arg1;
 - (void)handleCaptureEvent:(id)arg1;
 - (void)handleCaptureEvent:(id)arg1 subType:(id)arg2;
 - (id)init;
@@ -117,6 +119,7 @@
 - (void)registerBlocksForServer;
 - (bool)registerForFrames:(id)arg1 unpausing:(bool)arg2;
 - (bool)registerForVideoFramesFromSource:(int)arg1 withClient:(id)arg2 width:(int)arg3 height:(int)arg4 frameRate:(int)arg5 unpausing:(bool)arg6;
+- (bool)registerForVideoFramesFromSource:(int)arg1 withClient:(id)arg2 width:(int)arg3 height:(int)arg4 frameRate:(int)arg5 unpausing:(bool)arg6 clientPID:(int)arg7 screenDisplayID:(unsigned int)arg8;
 - (oneway void)release;
 - (void)resetCameraToPreviewSettingsForced:(bool)arg1;
 - (id)retain;
@@ -124,6 +127,9 @@
 - (void)sendSnapshotFromFrame:(struct __CVBuffer { }*)arg1;
 - (void)setAnimoji:(id)arg1;
 - (void)setAppDelegate:(id)arg1;
+- (void)setCameraZoomAvailable:(bool)arg1 currentZoomFactor:(double)arg2 maxZoomFactor:(double)arg3;
+- (void)setCameraZoomFactor:(double)arg1;
+- (void)setCameraZoomFactor:(double)arg1 withRate:(double)arg2;
 - (bool)setCaptureCameraWithUID:(id)arg1;
 - (void)setCaptureFrameRate:(int)arg1;
 - (void)setCaptureWidth:(int)arg1 height:(int)arg2 rate:(int)arg3;
@@ -139,5 +145,6 @@
 - (void)stopCapture;
 - (void)stopPreview;
 - (void)updateImageQueueFrameRate:(int)arg1;
+- (void)updateViewPointThermalLevel:(int)arg1;
 
 @end

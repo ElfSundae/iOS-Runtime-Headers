@@ -3,7 +3,7 @@
  */
 
 @interface WKProcessGroup : NSObject {
-    /* Warning: unhandled struct encoding: '{WeakObjCPtr<id<WKProcessGroupDelegate> >="m_weakReference"@}' */ struct WeakObjCPtr<id<WKProcessGroupDelegate> > { 
+    struct WeakObjCPtr<id<WKProcessGroupDelegate> > { 
         id m_weakReference; 
     }  _delegate;
     struct RetainPtr<WKGeolocationProviderIOS> { 
@@ -26,6 +26,7 @@
 - (id)delegate;
 - (id)init;
 - (id)initWithInjectedBundleURL:(id)arg1;
+- (id)initWithInjectedBundleURL:(id)arg1 andCustomClassesForParameterCoder:(id)arg2;
 - (void)setDelegate:(id)arg1;
 
 @end

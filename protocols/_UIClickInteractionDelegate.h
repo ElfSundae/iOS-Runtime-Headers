@@ -9,7 +9,6 @@
 
 @optional
 
-- (void)clickInteraction:(_UIClickInteraction *)arg1 didObserveForce:(double)arg2;
 - (void)clickInteractionDidClickDown:(_UIClickInteraction *)arg1;
 - (void)clickInteractionDidEnd:(_UIClickInteraction *)arg1;
 - (bool)clickInteractionShouldBegin:(_UIClickInteraction *)arg1;

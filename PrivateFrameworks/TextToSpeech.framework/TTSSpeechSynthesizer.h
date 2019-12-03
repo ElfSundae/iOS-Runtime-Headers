@@ -3,6 +3,7 @@
  */
 
 @interface TTSSpeechSynthesizer : NSObject <TTSSpeechConnectionDelegate> {
+    id /* block */  _audioBufferCallback;
     unsigned int  _audioQueueFlags;
     unsigned int  _audioSessionID;
     bool  _audioSessionIDIsValid;
@@ -17,9 +18,11 @@
     float  _pitch;
     NSObject<OS_dispatch_queue> * _queue;
     float  _rate;
+    unsigned long long  _requestClientIdentifier;
     void * _speakingRequestClientContext;
     NSMutableArray * _speechRequests;
     bool  _supportsAccurateWordCallbacks;
+    bool  _synthesizeSilently;
     struct { 
         unsigned int delegateStartWithRequest : 1; 
         unsigned int delegateFinishWithRequest : 1; 
@@ -27,8 +30,11 @@
         unsigned int delegatePauseWithRequest : 1; 
         unsigned int delegateContinueWithRequest : 1; 
         unsigned int delegateWillSpeakWithRequest : 1; 
+        unsigned int delegateSynthesizedSilentlyURL : 1; 
         unsigned int willUseInput : 1; 
     }  _synthesizerFlags;
+    unsigned long long  _synthesizerInstanceID;
+    NSMutableDictionary * _testingLastRuleConversion;
     bool  _useMonarchStyleRate;
     bool  _useSharedSession;
     NSArray * _userSubstitutions;
@@ -36,6 +42,9 @@
     float  _volume;
 }
 
+@property (nonatomic, copy) id /* block */ audioBufferCallback;
+@property (nonatomic) unsigned int audioQueueFlags;
+@property (nonatomic, readonly) unsigned int audioSessionID;
 @property (nonatomic, retain) NSString *bundleIdentifier;
 @property (nonatomic) <TTSSpeechSynthesizerDelegate> *delegate;
 @property (nonatomic) bool ignoreSubstitutions;
@@ -43,29 +52,36 @@
 @property (nonatomic, copy) NSArray *phonemeSubstitutions;
 @property (nonatomic) float pitch;
 @property (nonatomic) float rate;
+@property (nonatomic) unsigned long long requestClientIdentifier;
 @property (nonatomic, readonly) NSString *resolvedVoiceIdentifier;
 @property (nonatomic) void*speakingRequestClientContext;
 @property (nonatomic) bool supportsAccurateWordCallbacks;
+@property (nonatomic) bool synthesizeSilently;
 @property (nonatomic, copy) NSArray *userSubstitutions;
 @property (nonatomic, retain) NSString *voiceIdentifier;
 @property (nonatomic) float volume;
 
++ (void)_initializeServers;
 + (id)_speechVoiceForIdentifier:(id)arg1 language:(id)arg2 footprint:(long long)arg3;
 + (id)_speechVoiceForIdentifier:(id)arg1 language:(id)arg2 footprint:(long long)arg3 useFallbackDefault:(bool)arg4;
 + (id)allAvailableVoices;
++ (id)audioFileSettingsForVoice:(id)arg1;
 + (id)availableLanguageCodes;
 + (id)availableVoices;
-+ (id)availableVoicesForLanguageCode:(id)arg1;
++ (id)availableVoicesForLanguageCode:(id)arg1 queryingMobileAssets:(bool)arg2;
 + (bool)employSpeechMarkupForType:(long long)arg1 identifier:(id)arg2 withLanguage:(id)arg3;
 + (void)initialize;
-+ (bool)isSystemSpeaking;
-+ (void)refreshAllAvailableVoices;
++ (id)refreshAllAvailableVoices;
++ (id)refreshAllAvailableVoices:(bool)arg1;
++ (void)setSpeechJobFinishedUnitTestBlock:(id /* block */)arg1;
++ (void)setSpeechJobStartedUnitTestBlock:(id /* block */)arg1;
++ (void)setTestingAvailableVoicesForLanguageCode:(id)arg1;
 + (void)setVoiceAssetsForTesting:(id)arg1;
 + (id)speechMarkupStringForType:(long long)arg1 forIdentifier:(id)arg2 string:(id)arg3;
 + (id)supportedIPAPhonemeLanguages;
-+ (id)testingLastRuleConversion;
++ (id)synthesizerForSynthesizerID:(unsigned long long)arg1;
 + (void)testingSetAllVoices:(id)arg1;
-+ (void)testingSetLastRuleConversion:(id)arg1 replacement:(id)arg2;
++ (id)voiceAccessQueue;
 + (id)voiceAssetsForTesting;
 + (id)voiceForIdentifier:(id)arg1;
 
@@ -77,10 +93,15 @@
 - (id)_preprocessText:(id)arg1 languageCode:(id)arg2;
 - (void)_processUserSubstitutions:(id)arg1 toText:(id)arg2 request:(id)arg3 bundleIdentifier:(id)arg4 voice:(id)arg5;
 - (void)_setDelegate:(id)arg1;
+- (bool)_skipSubstition:(id)arg1 language:(id)arg2 bundleIdentifier:(id)arg3 voice:(id)arg4;
 - (bool)_startSpeakingString:(id)arg1 orAttributedString:(id)arg2 toURL:(id)arg3 withLanguageCode:(id)arg4 request:(id*)arg5 error:(id*)arg6;
 - (bool)_stopSpeakingRequest:(id)arg1 atNextBoundary:(long long)arg2 synchronously:(bool)arg3 error:(id*)arg4;
+- (id /* block */)audioBufferCallback;
+- (unsigned int)audioQueueFlags;
+- (unsigned int)audioSessionID;
 - (id)bundleIdentifier;
 - (void)connection:(id)arg1 speechRequest:(id)arg2 didStopAtEnd:(bool)arg3 phonemesSpoken:(id)arg4 error:(id)arg5;
+- (void)connection:(id)arg1 speechRequest:(id)arg2 didSynthesizeSilentlyToURL:(id)arg3;
 - (void)connection:(id)arg1 speechRequest:(id)arg2 willSpeakMark:(long long)arg3 inRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg4;
 - (void)connection:(id)arg1 speechRequestDidContinue:(id)arg2;
 - (void)connection:(id)arg1 speechRequestDidPause:(id)arg2;
@@ -103,8 +124,11 @@
 - (id)phonemeSubstitutions;
 - (float)pitch;
 - (float)rate;
+- (unsigned long long)requestClientIdentifier;
 - (id)resolvedVoiceIdentifier;
 - (id)resolvedVoiceIdentifierForLanguageCode:(id)arg1;
+- (void)setAudioBufferCallback:(id /* block */)arg1;
+- (void)setAudioQueueFlags:(unsigned int)arg1;
 - (void)setBundleIdentifier:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setFootprint:(long long)arg1;
@@ -113,21 +137,21 @@
 - (void)setPhonemeSubstitutions:(id)arg1;
 - (void)setPitch:(float)arg1;
 - (void)setRate:(float)arg1;
+- (void)setRequestClientIdentifier:(unsigned long long)arg1;
 - (void)setSpeakingRequestClientContext:(void*)arg1;
 - (void)setSupportsAccurateWordCallbacks:(bool)arg1;
+- (void)setSynthesizeSilently:(bool)arg1;
 - (void)setUseMonarchStyleRate:(bool)arg1;
 - (void)setUserSubstitutions:(id)arg1;
 - (void)setVoiceIdentifier:(id)arg1;
 - (void)setVolume:(float)arg1;
 - (void*)speakingRequestClientContext;
 - (id)speechString;
-- (bool)startSpeakingAttributedString:(id)arg1 toURL:(id)arg2 withLanguageCode:(id)arg3 error:(id*)arg4;
-- (bool)startSpeakingIPAPhonemes:(id)arg1 withLanguageCode:(id)arg2 request:(id*)arg3 error:(id*)arg4;
 - (bool)startSpeakingString:(id)arg1 error:(id*)arg2;
 - (bool)startSpeakingString:(id)arg1 request:(id*)arg2 error:(id*)arg3;
 - (bool)startSpeakingString:(id)arg1 toURL:(id)arg2 error:(id*)arg3;
-- (bool)startSpeakingString:(id)arg1 toURL:(id)arg2 request:(id*)arg3 error:(id*)arg4;
 - (bool)startSpeakingString:(id)arg1 toURL:(id)arg2 withLanguageCode:(id)arg3 error:(id*)arg4;
+- (bool)startSpeakingString:(id)arg1 toURL:(id)arg2 withLanguageCode:(id)arg3 request:(id*)arg4 error:(id*)arg5;
 - (bool)startSpeakingString:(id)arg1 withLanguageCode:(id)arg2 error:(id*)arg3;
 - (bool)startSpeakingString:(id)arg1 withLanguageCode:(id)arg2 request:(id*)arg3 error:(id*)arg4;
 - (bool)stopSpeakingAtNextBoundary:(long long)arg1 error:(id*)arg2;
@@ -135,9 +159,12 @@
 - (bool)stopSpeakingRequest:(id)arg1 atNextBoundary:(long long)arg2 error:(id*)arg3;
 - (bool)stopSpeakingRequest:(id)arg1 atNextBoundary:(long long)arg2 synchronously:(bool)arg3 error:(id*)arg4;
 - (bool)supportsAccurateWordCallbacks;
+- (bool)synthesizeSilently;
+- (unsigned long long)synthesizerInstanceID;
+- (id)testingLastRuleConversion;
+- (void)testingSetLastRuleConversion:(id)arg1 replacement:(id)arg2;
 - (void)useAudioQueueFlags:(unsigned int)arg1;
 - (bool)useMonarchStyleRate;
-- (void)useSharedAudioSession:(bool)arg1;
 - (void)useSpecificAudioSession:(unsigned int)arg1;
 - (id)userSubstitutions;
 - (id)voiceIdentifier;

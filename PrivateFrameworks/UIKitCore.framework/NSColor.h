@@ -8,6 +8,7 @@
 + (id)colorWithCalibratedWhite:(double)arg1 alpha:(double)arg2;
 + (bool)supportsSecureCoding;
 
+- (Class)classForCoder;
 - (id)initWithCoder:(id)arg1;
 
 @end

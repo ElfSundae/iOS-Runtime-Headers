@@ -2,16 +2,15 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUHideActivity : PUActivity {
+@interface PUHideActivity : PXActivity {
     PUAssetHidingHelper * _assetHidingHelper;
 }
 
 + (long long)activityCategory;
 
 - (void).cxx_destruct;
-- (id)_activityBundleImageConfiguration;
-- (id)_activityImageName;
 - (id)_assetHidingHelper;
+- (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;
 - (bool)canPerformWithActivityItems:(id)arg1;

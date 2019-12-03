@@ -24,6 +24,7 @@
 + (id)cloudVerifyAccountSyncOperationWithBlock:(id /* block */)arg1;
 + (id)cloudZoneFetchSyncOperation:(id)arg1 cloudConflict:(bool)arg2 block:(id /* block */)arg3;
 + (id)cloudZonePushSyncOperation:(id)arg1 block:(id /* block */)arg2;
++ (id)queryDatabaseOperationWithBlock:(id /* block */)arg1;
 
 - (void).cxx_destruct;
 - (id)_initWithOperationType:(unsigned long long)arg1 options:(id)arg2 syncBlock:(id /* block */)arg3;

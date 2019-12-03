@@ -22,7 +22,6 @@
 - (struct CGPoint { double x1; double x2; })returnKeyOffset;
 - (struct CGPoint { double x1; double x2; })rightArrowKeyOffset;
 - (double)stringKeyFontSize;
-- (id)thinKeycapsFontName;
 - (struct CGPoint { double x1; double x2; })undoKeyOffset;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })variantSymbolFrameInsets;
 - (struct CGPoint { double x1; double x2; })variantSymbolTextOffset;

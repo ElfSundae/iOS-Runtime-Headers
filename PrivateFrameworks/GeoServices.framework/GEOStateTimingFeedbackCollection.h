@@ -5,10 +5,10 @@
 @interface GEOStateTimingFeedbackCollection : PBCodable <NSCopying> {
     double  _durationInOldState;
     struct { 
-        unsigned int sessionID : 1; 
-        unsigned int durationInOldState : 1; 
-        unsigned int sessionRelativeTimestamp : 1; 
-    }  _has;
+        unsigned int has_sessionID : 1; 
+        unsigned int has_durationInOldState : 1; 
+        unsigned int has_sessionRelativeTimestamp : 1; 
+    }  _flags;
     struct GEOSessionID { 
         unsigned long long _high; 
         unsigned long long _low; 
@@ -25,6 +25,7 @@
 @property (nonatomic) double sessionRelativeTimestamp;
 @property (nonatomic, retain) NSMutableArray *stateTransitions;
 
++ (bool)isValid:(id)arg1;
 + (Class)stateTransitionType;
 
 - (void).cxx_destruct;
@@ -41,6 +42,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (struct GEOSessionID { unsigned long long x1; unsigned long long x2; })sessionID;
 - (double)sessionRelativeTimestamp;

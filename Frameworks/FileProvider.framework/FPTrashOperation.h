@@ -2,15 +2,15 @@
    Image: /System/Library/Frameworks/FileProvider.framework/FileProvider
  */
 
-@interface FPTrashOperation : FPActionOperation {
-    NSArray * _items;
-}
+@interface FPTrashOperation : FPTransformOperation
 
-- (void).cxx_destruct;
+- (id)finalItemsForStitcherForResult:(id)arg1;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
+- (id)fp_prettyDescription;
 - (id)initWithItems:(id)arg1;
-- (void)mainWithExtensionProxy:(id)arg1;
 - (void)presendNotifications;
 - (id)replicateForItems:(id)arg1;
+- (void)subclassPreflightWithCompletion:(id /* block */)arg1;
+- (unsigned long long)transformItem:(id)arg1 atIndex:(unsigned long long)arg2;
 
 @end

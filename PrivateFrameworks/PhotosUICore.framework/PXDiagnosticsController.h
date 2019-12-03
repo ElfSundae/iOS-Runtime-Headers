@@ -19,17 +19,21 @@
 + (id)sharedController;
 
 - (void).cxx_destruct;
+- (id)_currentRootViewController;
 - (id)_diagnosticsServicesClasses;
+- (void)_executeService:(id)arg1;
 - (id)_gestureRecognizer;
 - (void)_handleGestureRecognizer:(id)arg1;
 - (void)_loadDiagnosticsServicesClasses;
-- (void)_presentContextualViewControllerForService:(id)arg1;
+- (void)_presentContextualViewControllerFromPoint:(struct CGPoint { double x1; double x2; })arg1 inCoordinateSpace:(id)arg2;
 - (void)_setGestureRecognizer:(id)arg1;
 - (void)_updateGestureRecognizer;
 - (id)_window;
 - (id)consoleDescriptionForServices:(id)arg1;
 - (id)currentItemProviders;
 - (bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
+- (void)presentContextualDiagnostics;
 - (void)presentContextualViewControllerForServices:(id)arg1;
 - (id)servicesWithItemProviders:(id)arg1;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;

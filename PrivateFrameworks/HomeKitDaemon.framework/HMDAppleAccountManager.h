@@ -9,6 +9,7 @@
     ACAccountStore * _accountStore;
     HMDBackingStore * _backingStore;
     NSObject<OS_dispatch_queue> * _clientQueue;
+    HMDCloudCache * _cloudCache;
     HMFTimer * _devicesChangeBackoffTimer;
     HMFUnfairLock * _lock;
     bool  _monitoring;
@@ -24,6 +25,7 @@
 @property (readonly) ACAccountStore *accountStore;
 @property (nonatomic, retain) HMDBackingStore *backingStore;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *clientQueue;
+@property (nonatomic, retain) HMDCloudCache *cloudCache;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) HMDDevice *device;
@@ -60,6 +62,7 @@
 - (id)accountStore;
 - (id)backingStore;
 - (id)clientQueue;
+- (id)cloudCache;
 - (void)connection:(id)arg1 didReceivePublicToken:(id)arg2;
 - (id)device;
 - (id)devicesChangeBackoffTimer;
@@ -80,6 +83,7 @@
 - (void)service:(id)arg1 devicesChanged:(id)arg2;
 - (void)setAccount:(id)arg1;
 - (void)setBackingStore:(id)arg1;
+- (void)setCloudCache:(id)arg1;
 - (void)setMonitoring:(bool)arg1;
 - (void)setRapportIdentitiesChangedNotificationToken:(int)arg1;
 - (void)setRapportIdentitiesChangedNotificationTokenValid:(bool)arg1;

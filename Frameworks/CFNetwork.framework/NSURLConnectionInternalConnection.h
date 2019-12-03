@@ -21,7 +21,6 @@
 - (struct _CFURLConnection { }*)_CFURLConnection;
 - (struct _CFURLConnection { }*)_atomic_CFURLConnection;
 - (void)_invalidate;
-- (void)_reportTimingDataToAWD;
 - (void)_resumeLoading;
 - (struct _CFURLConnection { }*)_retainCFURLConnection;
 - (void)_setDelegateQueue:(id)arg1;
@@ -33,7 +32,7 @@
 - (void)cleanupChallenges;
 - (void)continueWithoutCredentialForAuthenticationChallenge:(id)arg1;
 - (void)dealloc;
-- (id)initWithInfo:(const struct InternalInit { id x1; id x2; bool x3; long long x4; }*)arg1;
+- (id)initWithInfo:(const struct InternalInit { id x1; id x2; id x3; id x4; bool x5; long long x6; }*)arg1;
 - (void)invokeForDelegate:(id /* block */)arg1;
 - (void)performDefaultHandlingForAuthenticationChallenge:(id)arg1;
 - (void)rejectProtectionSpaceAndContinueWithChallenge:(id)arg1;

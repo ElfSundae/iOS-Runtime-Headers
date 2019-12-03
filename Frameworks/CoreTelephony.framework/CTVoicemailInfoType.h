@@ -22,10 +22,11 @@
 - (bool)available;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)count;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithParam:(id)arg1 available:(bool)arg2 count:(id)arg3 isNetworkOriginated:(bool)arg4;
+- (id)initWithParam:(id)arg1 available:(bool)arg2 count:(id)arg3 isNetworkOriginated:(bool)arg4 isVoiceMailMWI:(bool)arg5;
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToCTVoicemailInfoType:(id)arg1;
 - (bool)isNetworkOriginated;

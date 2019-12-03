@@ -8,7 +8,7 @@
     double  _minFireInterval;
     NSObject<OS_dispatch_queue> * _queue;
     NSObject<OS_dispatch_source> * _source;
-    int  _sourceResumed;
+    _Atomic int  _sourceSuspendCount;
     NSObject<OS_dispatch_source> * _timer;
 }
 

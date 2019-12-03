@@ -3,10 +3,10 @@
  */
 
 @interface INVoiceShortcutCenter : NSObject {
-    VCVoiceShortcutClient * _voiceShortcutClient;
+    <INVCVoiceShortcutClient> * _voiceShortcutClient;
 }
 
-@property (setter=_setVoiceShortcutClient:, nonatomic, retain) VCVoiceShortcutClient *voiceShortcutClient;
+@property (setter=_setVoiceShortcutClient:, nonatomic, retain) <INVCVoiceShortcutClient> *voiceShortcutClient;
 
 + (void)initialize;
 + (id)sharedCenter;

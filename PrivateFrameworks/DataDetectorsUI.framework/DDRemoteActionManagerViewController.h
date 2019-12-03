@@ -13,9 +13,12 @@
     UIView * _loadingView;
     NSLayoutConstraint * _navControllerTopConstraint;
     UINavigationController * _navigationController;
-    NSString * _platerTitle;
+    NSString * _platterTitle;
+    struct CGSize { 
+        double width; 
+        double height; 
+    }  _preferredContentSize;
     bool  _previewMode;
-    NSMutableArray * _rawSwipeActions;
     DDRemoteActionHostViewController * _remoteViewController;
     <NSCopying> * _request;
     <DDRemoteActionViewServiceProtocol> * _serviceContext;
@@ -49,7 +52,6 @@
 - (void)loadRemoteAction:(id)arg1;
 - (void)loadTitleBarIfNeeded;
 - (void)presentRemoteViewController;
-- (id)previewActionItems;
 - (bool)previewMode;
 - (void)removeLoadingViewToShowView:(id)arg1;
 - (id)request;

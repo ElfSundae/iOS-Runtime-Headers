@@ -13,6 +13,7 @@
         unsigned int isRetry : 1; 
     }  _has;
     bool  _isRetry;
+    AWDNWL2Report * _l2Report;
     NSString * _parentActivityUUID;
     unsigned long long  _timestamp;
 }
@@ -24,9 +25,11 @@
 @property (nonatomic) bool hasActivityLabel;
 @property (nonatomic, readonly) bool hasActivityUUID;
 @property (nonatomic) bool hasIsRetry;
+@property (nonatomic, readonly) bool hasL2Report;
 @property (nonatomic, readonly) bool hasParentActivityUUID;
 @property (nonatomic) bool hasTimestamp;
 @property (nonatomic) bool isRetry;
+@property (nonatomic, retain) AWDNWL2Report *l2Report;
 @property (nonatomic, retain) NSString *parentActivityUUID;
 @property (nonatomic) unsigned long long timestamp;
 
@@ -42,11 +45,13 @@
 - (bool)hasActivityLabel;
 - (bool)hasActivityUUID;
 - (bool)hasIsRetry;
+- (bool)hasL2Report;
 - (bool)hasParentActivityUUID;
 - (bool)hasTimestamp;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (bool)isRetry;
+- (id)l2Report;
 - (void)mergeFrom:(id)arg1;
 - (id)parentActivityUUID;
 - (bool)readFrom:(id)arg1;
@@ -58,6 +63,7 @@
 - (void)setHasIsRetry:(bool)arg1;
 - (void)setHasTimestamp:(bool)arg1;
 - (void)setIsRetry:(bool)arg1;
+- (void)setL2Report:(id)arg1;
 - (void)setParentActivityUUID:(id)arg1;
 - (void)setTimestamp:(unsigned long long)arg1;
 - (unsigned long long)timestamp;

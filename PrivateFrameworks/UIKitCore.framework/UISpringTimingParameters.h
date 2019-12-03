@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface UISpringTimingParameters : NSObject <UITimingCurveProvider> {
+@interface UISpringTimingParameters : NSObject <NSSecureCoding, UITimingCurveProvider> {
     double  _damping;
     double  _dampingRatio;
     bool  _implicitDuration;
@@ -28,6 +28,10 @@
 
 // Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 
++ (void)_convertDampingRatio:(double)arg1 response:(double)arg2 toMass:(double*)arg3 stiffness:(double*)arg4 damping:(double*)arg5;
++ (void)_convertMass:(double)arg1 stiffness:(double)arg2 damping:(double)arg3 toDampingRatio:(double*)arg4 response:(double*)arg5;
++ (bool)supportsSecureCoding;
+
 - (id)_mediaTimingFunction;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)cubicTimingParameters;
@@ -41,6 +45,8 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDampingRatio:(double)arg1;
 - (id)initWithDampingRatio:(double)arg1 initialVelocity:(struct CGVector { double x1; double x2; })arg2;
+- (id)initWithDampingRatio:(double)arg1 response:(double)arg2;
+- (id)initWithDampingRatio:(double)arg1 response:(double)arg2 initialVelocity:(struct CGVector { double x1; double x2; })arg3;
 - (id)initWithMass:(double)arg1 stiffness:(double)arg2 damping:(double)arg3 initialVelocity:(struct CGVector { double x1; double x2; })arg4;
 - (struct CGVector { double x1; double x2; })initialVelocity;
 - (bool)isEqual:(id)arg1;
@@ -54,11 +60,7 @@
 - (double)stiffness;
 - (long long)timingCurveType;
 
-// Image: /System/Library/PrivateFrameworks/News/TeaUI.framework/TeaUI
-
-- (double)ts_settlingDuration;
-
-// Image: /System/Library/PrivateFrameworks/Stocks/TeaUI.framework/TeaUI
+// Image: /System/Library/PrivateFrameworks/TeaUI.framework/TeaUI
 
 - (double)ts_settlingDuration;
 

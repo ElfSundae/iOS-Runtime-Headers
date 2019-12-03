@@ -20,7 +20,7 @@
 
 + (id)styleForEnum:(long long)arg1;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)descriptionForObject:(id)arg1 withIndent:(long long)arg2;
 - (long long)extraIndent;
 - (id)fieldSeparator;

@@ -19,6 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) <HFIconDescriptor> *iconDescriptor;
 @property (nonatomic) bool isFavorite;
+@property (nonatomic, readonly) HFMediaPlaybackActionBuilder *mediaAction;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, readonly) bool requiresDeviceUnlock;
 @property (readonly) Class superclass;
@@ -26,6 +27,7 @@
 + (Class)homeKitRepresentationClass;
 
 - (void).cxx_destruct;
+- (id)_deleteActionSet:(id)arg1 fromHome:(id)arg2;
 - (id)_lazilyUpdateActions;
 - (id)_lazilyUpdateFavorite;
 - (id)_lazilyUpdateIcon;
@@ -35,11 +37,13 @@
 - (id)actions;
 - (void)addAction:(id)arg1;
 - (id)commitItem;
+- (id)deleteActionSet;
 - (id)iconDescriptor;
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2;
 - (id)initWithHome:(id)arg1;
 - (bool)isAffectedByEndEvents;
 - (bool)isFavorite;
+- (id)mediaAction;
 - (id)name;
 - (void)removeAction:(id)arg1;
 - (void)removeAllActions;

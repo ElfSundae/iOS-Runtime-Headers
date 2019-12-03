@@ -22,6 +22,7 @@
 // Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
 
 + (bool)_isConcreteObjectClass;
++ (id)_quantitySamplesEnforcingDurationWithType:(id)arg1 quantity:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 device:(id)arg5 metadata:(id)arg6;
 + (id)_unfrozenQuantitySampleWithQuantityType:(id)arg1 quantity:(id)arg2 startDate:(id)arg3 device:(id)arg4;
 + (id)quantitySampleWithType:(id)arg1 quantity:(id)arg2 startDate:(id)arg3 endDate:(id)arg4;
 + (id)quantitySampleWithType:(id)arg1 quantity:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 device:(id)arg5 metadata:(id)arg6;
@@ -29,6 +30,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (long long)_compareFreezeStateWithSample:(id)arg1;
 - (bool)_frozen;
 - (id)_init;
 - (void)_setCodableQuantitySample:(id)arg1;
@@ -37,7 +39,7 @@
 - (void)_setFrozen:(bool)arg1;
 - (void)_setQuantity:(id)arg1;
 - (bool)_shouldNotifyOnInsert;
-- (id)_validateConfiguration;
+- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
 - (id)_valueDescription;
 - (id)codableQuantitySample;
 - (long long)count;
@@ -51,9 +53,19 @@
 + (id)createWithCodable:(id)arg1;
 + (Class)hd_dataEntityClass;
 + (id)migrateCodableObject:(id)arg1;
++ (bool)supportsDistinctByKeyPath:(id)arg1;
 
 - (bool)addCodableRepresentationToCollection:(id)arg1;
 - (id)codableRepresentationForSync;
+- (id)uniqueIdentifierForDistinctByKeyPath:(id)arg1 error:(id*)arg2;
+
+// Image: /System/Library/PrivateFrameworks/HealthMenstrualCycles.framework/HealthMenstrualCycles
+
++ (id)hkmc_quantitySampleWithBasalBodyTemperature:(id)arg1 date:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/HealthToolbox.framework/HealthToolbox
+
+- (id)quantitySampleForType:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
 

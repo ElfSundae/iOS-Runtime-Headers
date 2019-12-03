@@ -36,6 +36,7 @@
 - (void)didUnlock;
 - (void)didWake;
 - (void)handleURL:(id)arg1;
+- (void)handleURL:(id)arg1 withCompletion:(id /* block */)arg2;
 - (id)initWithTitle:(id)arg1 identifier:(id)arg2;
 - (id)navigationController:(id)arg1 animationControllerForOperation:(long long)arg2 fromViewController:(id)arg3 toViewController:(id)arg4;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(bool)arg3;

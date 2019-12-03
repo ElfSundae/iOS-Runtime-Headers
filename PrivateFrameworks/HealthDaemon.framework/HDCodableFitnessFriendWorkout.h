@@ -3,6 +3,7 @@
  */
 
 @interface HDCodableFitnessFriendWorkout : PBCodable <HDDecoding, NSCopying> {
+    long long  _amm;
     NSString * _bundleID;
     NSString * _deviceManufacturer;
     NSString * _deviceModel;
@@ -11,6 +12,7 @@
     double  _goal;
     long long  _goalType;
     struct { 
+        unsigned int amm : 1; 
         unsigned int duration : 1; 
         unsigned int goal : 1; 
         unsigned int goalType : 1; 
@@ -30,6 +32,7 @@
     long long  _type;
 }
 
+@property (nonatomic) long long amm;
 @property (nonatomic, retain) NSString *bundleID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -39,6 +42,7 @@
 @property (nonatomic, retain) NSData *friendUUID;
 @property (nonatomic) double goal;
 @property (nonatomic) long long goalType;
+@property (nonatomic) bool hasAmm;
 @property (nonatomic, readonly) bool hasBundleID;
 @property (nonatomic, readonly) bool hasDeviceManufacturer;
 @property (nonatomic, readonly) bool hasDeviceModel;
@@ -64,6 +68,7 @@
 @property (nonatomic) long long type;
 
 - (void).cxx_destruct;
+- (long long)amm;
 - (bool)applyToObject:(id)arg1;
 - (id)bundleID;
 - (void)copyTo:(id)arg1;
@@ -76,6 +81,7 @@
 - (id)friendUUID;
 - (double)goal;
 - (long long)goalType;
+- (bool)hasAmm;
 - (bool)hasBundleID;
 - (bool)hasDeviceManufacturer;
 - (bool)hasDeviceModel;
@@ -97,6 +103,7 @@
 - (void)mergeFrom:(id)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)sample;
+- (void)setAmm:(long long)arg1;
 - (void)setBundleID:(id)arg1;
 - (void)setDeviceManufacturer:(id)arg1;
 - (void)setDeviceModel:(id)arg1;
@@ -104,6 +111,7 @@
 - (void)setFriendUUID:(id)arg1;
 - (void)setGoal:(double)arg1;
 - (void)setGoalType:(long long)arg1;
+- (void)setHasAmm:(bool)arg1;
 - (void)setHasDuration:(bool)arg1;
 - (void)setHasGoal:(bool)arg1;
 - (void)setHasGoalType:(bool)arg1;

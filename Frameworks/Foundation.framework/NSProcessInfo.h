@@ -12,11 +12,15 @@
 
 @property (readonly) unsigned long long activeProcessorCount;
 @property (readonly, copy) NSArray *arguments;
+@property (nonatomic, readonly) double ask_launchTime;
 @property bool automaticTerminationSupportEnabled;
+@property (getter=crk_isBeingTested, nonatomic, readonly) bool crk_beingTested;
 @property (readonly, copy) NSDictionary *environment;
 @property (readonly, copy) NSString *fullUserName;
 @property (readonly, copy) NSString *globallyUniqueString;
 @property (readonly, copy) NSString *hostName;
+@property (nonatomic, readonly) bool ic_isCloudDaemon;
+@property (getter=isMacCatalystApp, readonly) bool macCatalystApp;
 @property (readonly) struct { long long x1; long long x2; long long x3; } operatingSystemVersion;
 @property (readonly, copy) NSString *operatingSystemVersionString;
 @property (readonly) unsigned long long physicalMemory;
@@ -56,6 +60,7 @@
 - (id)globallyUniqueString;
 - (id)hostName;
 - (bool)isLowPowerModeEnabled;
+- (bool)isMacCatalystApp;
 - (bool)isOperatingSystemAtLeastVersion:(struct { long long x1; long long x2; long long x3; })arg1;
 - (bool)isTranslated;
 - (unsigned long long)operatingSystem;
@@ -77,18 +82,32 @@
 - (id)userHomeDirectory;
 - (id)userName;
 
-// Image: /Developer/Library/PrivateFrameworks/DVTInstrumentsFoundation.framework/DVTInstrumentsFoundation
-
-+ (bool)isAppleInternal;
-
 // Image: /System/Library/Frameworks/CoreData.framework/CoreData
 
 - (void)_disableAutomaticTerminationWithoutSettingRelaunchable:(id)arg1;
 - (void)_enableAutomaticTerminationWithoutSettingRelaunchable:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/AppStoreKit.framework/AppStoreKit
+
+- (double)ask_launchTime;
+
 // Image: /System/Library/PrivateFrameworks/BaseBoard.framework/BaseBoard
 
 - (id)bs_jobLabel;
+
+// Image: /System/Library/PrivateFrameworks/ClassroomKit.framework/ClassroomKit
+
+- (bool)crk_hasEntitlement:(id)arg1 withValue:(id)arg2;
+- (bool)crk_isBeingTested;
+
+// Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
+
+- (id)processStartTime;
+- (id)systemStartTime;
+
+// Image: /System/Library/PrivateFrameworks/IntentsFoundation.framework/IntentsFoundation
+
+- (struct { unsigned int x1[8]; })if_auditToken;
 
 // Image: /System/Library/PrivateFrameworks/MIME.framework/MIME
 
@@ -108,5 +127,9 @@
 - (id)_safari_operatingSystemVersionStringFromOperatingSystemVersion:(struct { long long x1; long long x2; long long x3; })arg1;
 - (id)safari_operatingSystemVersionString;
 - (bool)safari_systemSupportsBroadway;
+
+// Image: /System/Library/PrivateFrameworks/iTunesCloud.framework/iTunesCloud
+
+- (bool)ic_isCloudDaemon;
 
 @end

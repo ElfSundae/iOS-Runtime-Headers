@@ -7,7 +7,9 @@
     PXPresentationState * mXmlDocumentState;
 }
 
-- (void)dealloc;
+@property (readonly) PBPresentationReaderState *presentationState;
+
+- (void).cxx_destruct;
 - (id)drawableOnTgtSlideForShapeId:(int)arg1;
 - (id)initWithPresentationState:(id)arg1;
 - (id)presentationState;

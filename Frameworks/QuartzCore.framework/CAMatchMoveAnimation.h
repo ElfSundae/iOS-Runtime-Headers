@@ -15,6 +15,7 @@
 @property unsigned long long sourceLayerRenderId;
 @property (copy) NSArray *sourcePoints;
 @property bool targetsSuperlayer;
+@property bool usesNormalizedCoordinates;
 
 + (id)defaultValueForKey:(id)arg1;
 
@@ -39,10 +40,12 @@
 - (void)setSourceLayerRenderId:(unsigned long long)arg1;
 - (void)setSourcePoints:(id)arg1;
 - (void)setTargetsSuperlayer:(bool)arg1;
+- (void)setUsesNormalizedCoordinates:(bool)arg1;
 - (unsigned int)sourceContextId;
 - (id)sourceLayer;
 - (unsigned long long)sourceLayerRenderId;
 - (id)sourcePoints;
 - (bool)targetsSuperlayer;
+- (bool)usesNormalizedCoordinates;
 
 @end

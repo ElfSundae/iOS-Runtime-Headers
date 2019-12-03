@@ -4,8 +4,8 @@
 
 @interface PPRoutineSupport : NSObject
 
-+ (void)fetchLocationsOfInterestMapItemsVisitiedBetweenStartDate:(id)arg1 endDate:(id)arg2 withHandler:(id /* block */)arg3;
-+ (void)importCoreRoutineData;
-+ (id)locationsOfInterestVisitiedBetweenStartDate:(id)arg1 endDate:(id)arg2;
++ (id)fetchLocationOfInterestByType:(long long)arg1;
++ (void)importCoreRoutineDataWithCompletion:(id /* block */)arg1;
++ (id)locationsOfInterestVisitedBetweenStartDate:(id)arg1 endDate:(id)arg2;
 
 @end

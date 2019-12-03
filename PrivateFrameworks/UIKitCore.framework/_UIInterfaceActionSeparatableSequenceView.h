@@ -9,6 +9,7 @@
     long long  _axis;
     long long  _distribution;
     UIStackView * _stackView;
+    bool  _visualCornerForcedOverride;
     unsigned long long  _visualCornerPosition;
     UIInterfaceActionVisualStyle * _visualStyle;
 }
@@ -19,6 +20,7 @@
 @property (nonatomic) long long axis;
 @property (nonatomic) long long distribution;
 @property (nonatomic, readonly) UIStackView *stackView;
+@property (nonatomic) bool visualCornerForcedOverride;
 @property (nonatomic) unsigned long long visualCornerPosition;
 @property (nonatomic, retain) UIInterfaceActionVisualStyle *visualStyle;
 
@@ -56,12 +58,14 @@
 - (void)setArrangedContentViews:(id)arg1;
 - (void)setAxis:(long long)arg1;
 - (void)setDistribution:(long long)arg1;
+- (void)setVisualCornerForcedOverride:(bool)arg1;
 - (void)setVisualCornerPosition:(unsigned long long)arg1;
 - (void)setVisualStyle:(id)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (id)stackView;
 - (struct CGSize { double x1; double x2; })systemLayoutSizeFittingSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)updateConstraints;
+- (bool)visualCornerForcedOverride;
 - (unsigned long long)visualCornerPosition;
 - (id)visualStyle;
 

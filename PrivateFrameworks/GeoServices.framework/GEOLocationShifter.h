@@ -5,7 +5,9 @@
 @interface GEOLocationShifter : NSObject <GEOResourceManifestTileGroupObserver> {
     bool  _isRequestingShiftFunction;
     NSMutableArray * _locationsToShift;
-    NSLock * _lock;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _lock;
     NSObject<OS_dispatch_queue> * _queue;
     int  _resetPrivacyToken;
     NSCache * _shiftFunctionCache;
@@ -18,6 +20,7 @@
 @property (readonly) Class superclass;
 
 + (id)_proxy;
++ (void)flushDiskCache;
 + (bool)isLocationShiftEnabled;
 + (bool)isLocationShiftRequiredForCoordinate:(struct { double x1; double x2; })arg1;
 + (unsigned int)locationShiftFunctionVersion;

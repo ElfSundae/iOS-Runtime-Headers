@@ -5,7 +5,7 @@
 @interface VUIJSVideosNativeInterface : IKJSObject <VUIJSVideosNativeInterface>
 
 - (id)locStringForKey:(id)arg1;
-- (id)locStringForKeyWithCount:(id)arg1 :(id)arg2;
+- (id)locStringForKeyWithCounts:(id)arg1 :(id)arg2;
 - (void)setLocDictionary:(id)arg1;
 
 @end

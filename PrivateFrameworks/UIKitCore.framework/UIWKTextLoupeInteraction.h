@@ -2,8 +2,10 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface UIWKTextLoupeInteraction : UITextLoupeInteraction
+@interface UIWKTextLoupeInteraction : UITextLoupeInteraction {
+    bool  _isSelecting;
+}
 
-- (void)loupeGestureWithState:(long long)arg1 atGesturePoint:(id /* block */)arg2 modifierFlags:(long long)arg3 shouldCancel:(bool*)arg4;
+- (void)loupeGestureWithState:(long long)arg1 location:(id /* block */)arg2 translation:(id /* block */)arg3 velocity:(id /* block */)arg4 modifierFlags:(long long)arg5 shouldCancel:(bool*)arg6;
 
 @end

@@ -26,6 +26,7 @@
 - (id)delegate;
 - (id)getAnalyzedResult;
 - (float)getLoggingThreshold;
+- (float)getRejectLoggingThreshold;
 - (id)getSuperVectorWithEndPoint:(unsigned long long)arg1;
 - (float)getThreshold;
 - (id)initWithConfigPath:(id)arg1 resourcePath:(id)arg2;

@@ -31,6 +31,7 @@
 - (id)_geoFenceWithDictionary:(id)arg1;
 - (long long)classification;
 - (bool)containsLocation:(id)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)expressCredentialTypes;
 - (id)expressTransitNetworks;

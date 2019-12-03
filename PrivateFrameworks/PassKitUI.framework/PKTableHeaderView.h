@@ -35,11 +35,13 @@
 @property (nonatomic) double topPadding;
 
 - (void).cxx_destruct;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (bool)_hasAccessibilityLargeText;
 - (struct CGSize { double x1; double x2; })_sizeThatFitsExcludingImage:(struct CGSize { double x1; double x2; })arg1;
 - (id)_subtitleFont;
 - (id)_titleFont;
 - (void)_updateAccessoryViews;
+- (void)_updateCheckmarkColor;
 - (void)_updateFonts;
 - (void)_updateImageView;
 - (bool)accessoryViewsDisabled;

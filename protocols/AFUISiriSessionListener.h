@@ -5,6 +5,7 @@
 
 @optional
 
+- (void)siriSessionDidFinishRequestWithError:(NSError *)arg1;
 - (void)siriSessionDidInitializeSessionInfo:(AFUISiriSessionInfo *)arg1;
 - (void)siriSessionDidUpdateSessionInfo:(AFUISiriSessionInfo *)arg1;
 

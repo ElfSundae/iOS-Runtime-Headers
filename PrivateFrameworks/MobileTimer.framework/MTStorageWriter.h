@@ -2,10 +2,12 @@
    Image: /System/Library/PrivateFrameworks/MobileTimer.framework/MobileTimer
  */
 
-@interface MTStorageWriter : NSCoder <MTCoder> {
+@interface MTStorageWriter : NSCoder <MTSerializer> {
     NSMutableArray * _stack;
 }
 
+@property (nonatomic, readonly) NSCoder *mtCoder;
+@property (nonatomic, readonly) unsigned long long mtType;
 @property (nonatomic, retain) NSMutableArray *stack;
 
 - (void).cxx_destruct;
@@ -23,9 +25,8 @@
 - (void)encodeObject:(id)arg1 forKey:(id)arg2;
 - (id)encodedDictionary;
 - (id)init;
-- (bool)mt_isReadingFromPersistence;
-- (bool)mt_isWritingToPersistence;
-- (bool)mt_isWritingToStorage;
+- (id)mtCoder;
+- (unsigned long long)mtType;
 - (void)setStack:(id)arg1;
 - (id)stack;
 

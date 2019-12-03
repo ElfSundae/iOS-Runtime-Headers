@@ -33,6 +33,7 @@
 + (id)availableVisualizationIdentifiers;
 + (id)localizedNameForRecognitionSessionStatusKey:(id)arg1;
 + (id)localizedNameForVisualizationIdentifier:(id)arg1;
++ (struct CGColor { }*)newColorForVisualizedItemAtIndex:(long long)arg1;
 + (bool)variableHeightForRecognitionSessionStatusKey:(id)arg1;
 
 - (id)_activeVisualizationIDs;
@@ -67,6 +68,5 @@
 - (void)visualization:(id)arg1 needsDisplayInRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (long long)visualizationIndexForStrokeGroup:(id)arg1;
 - (void)visualizationNeedsDisplay:(id)arg1;
-- (bool)wantsHighFrequencyNotifications;
 
 @end

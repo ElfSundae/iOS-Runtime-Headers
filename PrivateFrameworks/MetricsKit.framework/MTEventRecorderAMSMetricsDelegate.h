@@ -4,10 +4,13 @@
 
 @interface MTEventRecorderAMSMetricsDelegate : MTObject <AMSMetricsBagContract, MTEventRecorderDelegate> {
     AMSBag * _amsBag;
+    AMSMetrics * _backgroundAMSMetrics;
+    AMSMetrics * _bagBasedAMSMetrics;
     NSString * _containerId;
+    AMSMetrics * _contractBasedAMSMetrics;
     NSDictionary * _lastMetricsDictionary;
-    MTPromise * _metricsPromise;
     bool  _monitorsLifecycleEvents;
+    bool  _personalizedWithItunesAccount;
 }
 
 @property (nonatomic, readonly) AMSBagValue *TFOSamplingPercentage;
@@ -18,7 +21,10 @@
 @property (nonatomic, readonly) AMSBagValue *apsAllowedProductTypes;
 @property (nonatomic, readonly) AMSBagValue *apsEnabledPatterns;
 @property (nonatomic, readonly) AMSBagValue *apsSamplingPercent;
+@property (nonatomic, retain) AMSMetrics *backgroundAMSMetrics;
+@property (nonatomic, retain) AMSMetrics *bagBasedAMSMetrics;
 @property (nonatomic, retain) NSString *containerId;
+@property (nonatomic, retain) AMSMetrics *contractBasedAMSMetrics;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) AMSBagValue *guidRegexes;
@@ -28,10 +34,10 @@
 @property (nonatomic, readonly) <AMSMescalBagContract> *mescalContract;
 @property (nonatomic, readonly) <AMSMetricsBagContract> *metricsContract;
 @property (nonatomic, readonly) AMSBagValue *metricsDictionary;
-@property (nonatomic, retain) MTPromise *metricsPromise;
 @property (nonatomic, readonly) AMSBagValue *metricsURL;
 @property (nonatomic, readonly) AMSBagValue *metricsUrl;
 @property (nonatomic) bool monitorsLifecycleEvents;
+@property (nonatomic) bool personalizedWithItunesAccount;
 @property (nonatomic, readonly) AMSBagValue *storefrontSuffix;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) AMSBagValue *trustedDomains;
@@ -39,26 +45,33 @@
 + (id)bundleIdentifier;
 
 - (void).cxx_destruct;
+- (id)activeItunesAccount;
 - (id)amsBag;
+- (id)backgroundAMSMetrics;
+- (id)bagBasedAMSMetrics;
 - (id)containerId;
-- (id)flushBackgroundMetricsIfNeeded;
+- (id)contractBasedAMSMetrics;
 - (id)flushUnreportedEvents;
 - (id)initWithContainerId:(id)arg1;
 - (id)initWithContainerId:(id)arg1 amsBag:(id)arg2;
 - (id)initWithContainerId:(id)arg1 profileName:(id)arg2 profileVersion:(id)arg3;
 - (id)lastMetricsDictionary;
+- (id)lookupItunesAccount:(id)arg1;
 - (id)mescalContract;
 - (id)metricsDictionary;
-- (id)metricsPromise;
 - (bool)monitorsLifecycleEvents;
+- (bool)personalizedWithItunesAccount;
 - (id)prepareMetrics;
 - (id)recordEvent:(id)arg1 toTopic:(id)arg2;
 - (id)sendMethod;
 - (void)setAmsBag:(id)arg1;
+- (void)setBackgroundAMSMetrics:(id)arg1;
+- (void)setBagBasedAMSMetrics:(id)arg1;
 - (void)setContainerId:(id)arg1;
+- (void)setContractBasedAMSMetrics:(id)arg1;
 - (void)setLastMetricsDictionary:(id)arg1;
-- (void)setMetricsPromise:(id)arg1;
 - (void)setMonitorsLifecycleEvents:(bool)arg1;
+- (void)setPersonalizedWithItunesAccount:(bool)arg1;
 - (bool)shouldFlushBackgroundMetrics;
 - (id)trustedDomains;
 

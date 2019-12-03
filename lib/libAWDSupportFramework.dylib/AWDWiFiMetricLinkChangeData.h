@@ -19,6 +19,7 @@
     unsigned int  _channel;
     unsigned int  _channelWidth;
     NSString * _countryCode;
+    unsigned int  _enhancedSecurityType;
     unsigned int  _flags;
     struct { 
         int *list; 
@@ -38,6 +39,7 @@
         unsigned int capabilities : 1; 
         unsigned int channel : 1; 
         unsigned int channelWidth : 1; 
+        unsigned int enhancedSecurityType : 1; 
         unsigned int flags : 1; 
         unsigned int gatewayARPHistory : 1; 
         unsigned int htASel : 1; 
@@ -65,6 +67,7 @@
     bool  _isInVol;
     bool  _isLinkUp;
     NSString * _locale;
+    NSString * _localeSource;
     unsigned int  _mcastCipher;
     NSData * _oui;
     unsigned int  _phyMode;
@@ -112,6 +115,7 @@
 @property (nonatomic) unsigned int channel;
 @property (nonatomic) unsigned int channelWidth;
 @property (nonatomic, retain) NSString *countryCode;
+@property (nonatomic) unsigned int enhancedSecurityType;
 @property (nonatomic) unsigned int flags;
 @property (nonatomic, readonly) int*fwTxFrmsHistorys;
 @property (nonatomic, readonly) unsigned long long fwTxFrmsHistorysCount;
@@ -124,6 +128,7 @@
 @property (nonatomic) bool hasChannel;
 @property (nonatomic) bool hasChannelWidth;
 @property (nonatomic, readonly) bool hasCountryCode;
+@property (nonatomic) bool hasEnhancedSecurityType;
 @property (nonatomic) bool hasFlags;
 @property (nonatomic) bool hasGatewayARPHistory;
 @property (nonatomic) bool hasHtASel;
@@ -135,6 +140,7 @@
 @property (nonatomic) bool hasIsInVol;
 @property (nonatomic) bool hasIsLinkUp;
 @property (nonatomic, readonly) bool hasLocale;
+@property (nonatomic, readonly) bool hasLocaleSource;
 @property (nonatomic) bool hasMcastCipher;
 @property (nonatomic, readonly) bool hasOui;
 @property (nonatomic) bool hasPhyMode;
@@ -164,6 +170,7 @@
 @property (nonatomic) bool isInVol;
 @property (nonatomic) bool isLinkUp;
 @property (nonatomic, retain) NSString *locale;
+@property (nonatomic, retain) NSString *localeSource;
 @property (nonatomic) unsigned int mcastCipher;
 @property (nonatomic, retain) NSData *oui;
 @property (nonatomic) unsigned int phyMode;
@@ -222,6 +229,7 @@
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (unsigned int)enhancedSecurityType;
 - (unsigned int)flags;
 - (int)fwTxFrmsHistoryAtIndex:(unsigned long long)arg1;
 - (int*)fwTxFrmsHistorys;
@@ -236,6 +244,7 @@
 - (bool)hasChannel;
 - (bool)hasChannelWidth;
 - (bool)hasCountryCode;
+- (bool)hasEnhancedSecurityType;
 - (bool)hasFlags;
 - (bool)hasGatewayARPHistory;
 - (bool)hasHtASel;
@@ -247,6 +256,7 @@
 - (bool)hasIsInVol;
 - (bool)hasIsLinkUp;
 - (bool)hasLocale;
+- (bool)hasLocaleSource;
 - (bool)hasMcastCipher;
 - (bool)hasOui;
 - (bool)hasPhyMode;
@@ -278,6 +288,7 @@
 - (bool)isInVol;
 - (bool)isLinkUp;
 - (id)locale;
+- (id)localeSource;
 - (unsigned int)mcastCipher;
 - (void)mergeFrom:(id)arg1;
 - (id)oui;
@@ -296,6 +307,7 @@
 - (void)setChannel:(unsigned int)arg1;
 - (void)setChannelWidth:(unsigned int)arg1;
 - (void)setCountryCode:(id)arg1;
+- (void)setEnhancedSecurityType:(unsigned int)arg1;
 - (void)setFlags:(unsigned int)arg1;
 - (void)setFwTxFrmsHistorys:(int*)arg1 count:(unsigned long long)arg2;
 - (void)setFwTxPerHistorys:(int*)arg1 count:(unsigned long long)arg2;
@@ -305,6 +317,7 @@
 - (void)setHasCapabilities:(bool)arg1;
 - (void)setHasChannel:(bool)arg1;
 - (void)setHasChannelWidth:(bool)arg1;
+- (void)setHasEnhancedSecurityType:(bool)arg1;
 - (void)setHasFlags:(bool)arg1;
 - (void)setHasGatewayARPHistory:(bool)arg1;
 - (void)setHasHtASel:(bool)arg1;
@@ -332,6 +345,7 @@
 - (void)setIsInVol:(bool)arg1;
 - (void)setIsLinkUp:(bool)arg1;
 - (void)setLocale:(id)arg1;
+- (void)setLocaleSource:(id)arg1;
 - (void)setMcastCipher:(unsigned int)arg1;
 - (void)setOui:(id)arg1;
 - (void)setPhyMode:(unsigned int)arg1;

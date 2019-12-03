@@ -12,5 +12,7 @@
 - (void)pictureInPictureRemoteObject:(PGPictureInPictureRemoteObject *)arg1 willHidePictureInPictureViewController:(PGPictureInPictureViewController *)arg2;
 - (void)pictureInPictureRemoteObject:(PGPictureInPictureRemoteObject *)arg1 willShowPictureInPictureViewController:(PGPictureInPictureViewController *)arg2;
 - (bool)pictureInPictureRemoteObjectShouldAcceptSetupRequest:(PGPictureInPictureRemoteObject *)arg1;
+- (bool)pictureInPictureRemoteObjectShouldCancelActivePictureInPictureOnStart:(PGPictureInPictureRemoteObject *)arg1;
+- (bool)pictureInPictureRemoteObjectShouldUpdateCancellationPolicyOnStart:(PGPictureInPictureRemoteObject *)arg1;
 
 @end

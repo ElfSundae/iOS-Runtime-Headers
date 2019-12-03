@@ -4,8 +4,11 @@
 
 @interface CUBluetoothClient : NSObject <CBCentralManagerDelegate, CBPeripheralManagerDelegate> {
     id /* block */  _bluetoothAddressChangedHandler;
+    int  _bluetoothState;
+    id /* block */  _bluetoothStateChangedHandler;
     struct { 
         int (*accessoryEvent)(); 
+        int (*accessorySetupCommand)(); 
     }  _btAccessoryCallbacks;
     bool  _btAccessoryEventsNeeded;
     bool  _btAccessoryEventsRegistered;
@@ -55,6 +58,8 @@
 }
 
 @property (nonatomic, copy) id /* block */ bluetoothAddressChangedHandler;
+@property (nonatomic) int bluetoothState;
+@property (nonatomic, copy) id /* block */ bluetoothStateChangedHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, copy) id /* block */ deviceConnectedHandler;
@@ -86,6 +91,8 @@
 - (void)_processFindDeviceRequests;
 - (void)activate;
 - (id /* block */)bluetoothAddressChangedHandler;
+- (int)bluetoothState;
+- (id /* block */)bluetoothStateChangedHandler;
 - (void)centralManagerDidUpdateState:(id)arg1;
 - (void)dealloc;
 - (id /* block */)deviceConnectedHandler;
@@ -103,6 +110,8 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (void)peripheralManagerDidUpdateState:(id)arg1;
 - (void)setBluetoothAddressChangedHandler:(id /* block */)arg1;
+- (void)setBluetoothState:(int)arg1;
+- (void)setBluetoothStateChangedHandler:(id /* block */)arg1;
 - (void)setDeviceConnectedHandler:(id /* block */)arg1;
 - (void)setDeviceDisconnectedHandler:(id /* block */)arg1;
 - (void)setDevicePairedHandler:(id /* block */)arg1;

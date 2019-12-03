@@ -27,7 +27,7 @@
 - (void).cxx_destruct;
 - (id)flatSectionedItems;
 - (id)initWithRequestedPropertySet:(id)arg1 storeItemMetadataResults:(id)arg2 flatSectionedItems:(id)arg3;
-- (id)modelObjectForRecommendationChildDictionary:(id)arg1 parentGroup:(id)arg2 subgroupsAccumulator:(id)arg3;
+- (id)modelObjectForRecommendationChildDictionary:(id)arg1 parentGroup:(id)arg2 subgroupsAccumulator:(id)arg3 userIdentity:(id)arg4;
 - (id)requestedPropertySet;
 - (id)storeItemMetadataResults;
 

@@ -28,6 +28,7 @@
 - (id)initWithDownload:(id)arg1 queue:(id)arg2 constraints:(id)arg3;
 - (void)invalidate;
 - (void)invalidateWithError:(id)arg1;
+- (id)monitorOfClass:(Class)arg1;
 - (id)registerObserverBlock:(id /* block */)arg1;
 
 @end

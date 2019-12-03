@@ -19,6 +19,7 @@
 - (void)dealloc;
 - (id)getActivationBuild:(id*)arg1;
 - (id)getActivationState:(id*)arg1;
+- (id)getUCRTActivationLockState:(id*)arg1;
 - (bool)handleActivationInfo:(id)arg1 withError:(id*)arg2;
 - (bool)handleActivationInfoWithSession:(id)arg1 activationSignature:(id)arg2 error:(id*)arg3;
 - (id)init;
@@ -29,5 +30,6 @@
 - (bool)reactivateDevice:(id*)arg1;
 - (bool)recertifyDeviceWithError:(id*)arg1;
 - (bool)unbrickDevice:(id*)arg1;
+- (void)updateBasebandTicket:(struct __SecKey { }*)arg1 baaCert:(struct __SecCertificate { }*)arg2 options:(id)arg3 withCompletion:(id /* block */)arg4;
 
 @end

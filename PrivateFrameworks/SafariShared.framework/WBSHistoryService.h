@@ -19,7 +19,7 @@
 @property (nonatomic, readonly) WBSHistoryURLCompletionDataStore *urlCompletionDataStore;
 
 - (void).cxx_destruct;
-- (bool)_connectionIsEntitledToUseService:(id)arg1;
+- (bool)_connectionIsEntitledToUseUserDatabase:(id)arg1;
 - (void)_resume;
 - (void)_shutdown;
 - (id)databaseAccessBroker;

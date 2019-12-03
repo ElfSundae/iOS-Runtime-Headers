@@ -3,7 +3,9 @@
  */
 
 @interface _INPBValueMetadata : PBCodable <NSCopying, NSSecureCoding, _INPBValueMetadata> {
+    bool  __encodeLegacyGloryData;
     NSString * _canonicalValue;
+    _INPBConfidenceScore * _confidenceScore;
     bool  _confirmed;
     struct { 
         unsigned int confirmed : 1; 
@@ -19,11 +21,14 @@
     NSString * _uuid;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic, copy) NSString *canonicalValue;
+@property (nonatomic, retain) _INPBConfidenceScore *confidenceScore;
 @property (nonatomic) bool confirmed;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool hasCanonicalValue;
+@property (nonatomic, readonly) bool hasConfidenceScore;
 @property (nonatomic) bool hasConfirmed;
 @property (nonatomic, readonly) bool hasInput;
 @property (nonatomic, readonly) bool hasSource;
@@ -38,21 +43,30 @@
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *uuid;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (int)StringAsRequiredEntitlements:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (void)addRequiredEntitlement:(int)arg1;
 - (id)canonicalValue;
 - (void)clearRequiredEntitlements;
+- (id)confidenceScore;
 - (bool)confirmed;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (void)dealloc;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasCanonicalValue;
+- (bool)hasConfidenceScore;
 - (bool)hasConfirmed;
 - (bool)hasInput;
 - (bool)hasSource;
 - (bool)hasSourceAppBundleIdentifier;
 - (bool)hasUuid;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)input;
 - (bool)isEqual:(id)arg1;
 - (bool)readFrom:(id)arg1;
@@ -61,6 +75,7 @@
 - (id)requiredEntitlementsAsString:(int)arg1;
 - (unsigned long long)requiredEntitlementsCount;
 - (void)setCanonicalValue:(id)arg1;
+- (void)setConfidenceScore:(id)arg1;
 - (void)setConfirmed:(bool)arg1;
 - (void)setHasConfirmed:(bool)arg1;
 - (void)setInput:(id)arg1;

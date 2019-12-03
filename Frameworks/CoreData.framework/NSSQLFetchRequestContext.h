@@ -59,7 +59,7 @@
 - (void)dealloc;
 - (void)executeEpilogue;
 - (void)executePrologue;
-- (void)executeRequestCore:(id*)arg1;
+- (bool)executeRequestCore:(id*)arg1;
 - (id)externalDataLinksDirectory;
 - (id)externalDataReferencesDirectory;
 - (id)faultHandler;

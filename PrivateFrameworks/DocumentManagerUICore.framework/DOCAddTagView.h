@@ -4,28 +4,25 @@
 
 @interface DOCAddTagView : UIView <UITextFieldDelegate> {
     UILabel * _addNewTagLabel;
-    UIVisualEffectView * _addNewTagLabelWrapper;
     CAShapeLayer * _borderLayer;
     <DOCAddTagTextFieldDelegate> * _delegate;
-    DOCTagIconView * _tagDotView;
+    DOCTagDotView * _tagDotView;
     UITextField * _tagNameTextField;
 }
 
 @property (nonatomic, readonly) UILabel *addNewTagLabel;
-@property (nonatomic, readonly) UIVisualEffectView *addNewTagLabelWrapper;
 @property (nonatomic, readonly) CAShapeLayer *borderLayer;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <DOCAddTagTextFieldDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (nonatomic, readonly) DOCTagIconView *tagDotView;
+@property (nonatomic, readonly) DOCTagDotView *tagDotView;
 @property (nonatomic, readonly) UITextField *tagNameTextField;
 @property (nonatomic, readonly) NSString *text;
 
 - (void).cxx_destruct;
 - (id)addNewTagLabel;
-- (id)addNewTagLabelWrapper;
 - (id)borderLayer;
 - (void)cancel;
 - (void)commit;

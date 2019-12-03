@@ -32,6 +32,7 @@
 @property (nonatomic, readonly) long long carrierBundlingErrorCode;
 @property (nonatomic, readonly) long long carrierBundlingStatusType;
 @property (nonatomic, readonly, copy) NSString *cellularOperatorName;
+@property (getter=isCloudMusicServiceEnabled, nonatomic, readonly) bool cloudMusicServiceEnabled;
 @property (nonatomic, readonly, copy) NSDictionary *dictionaryRepresentation;
 @property (getter=isDiscoveryModeEligible, nonatomic, readonly) bool discoveryModeEligible;
 @property (getter=isEligibleForFreeTrial, nonatomic, readonly) bool eligibleForFreeTrial;
@@ -71,6 +72,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithResponseDictionary:(id)arg1;
 - (bool)isAdministrator;
+- (bool)isCloudMusicServiceEnabled;
 - (bool)isDiscoveryModeEligible;
 - (bool)isEligibleForFreeTrial;
 - (bool)isEqual:(id)arg1;

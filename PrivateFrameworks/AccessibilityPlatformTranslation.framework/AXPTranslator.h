@@ -24,7 +24,9 @@
 
 - (void).cxx_destruct;
 - (void)_resetBridgeTokensForResponse:(id)arg1 bridgeDelegateToken:(id)arg2;
+- (id)_translationApplicationObjectForPidNumber:(id)arg1;
 - (bool)accessibilityEnabled;
+- (id /* block */)attributedStringConversionBlock;
 - (id)bridgeDelegate;
 - (id)bridgeTokenDelegate;
 - (void)enableAccessibility;
@@ -45,6 +47,7 @@
 - (id)processMultipleAttributeRequest:(id)arg1;
 - (void)processPlatformNotification:(unsigned long long)arg1 data:(id)arg2;
 - (id)processSetAttribute:(id)arg1;
+- (id)processSupportedActions:(id)arg1;
 - (id)processTranslatorRequest:(id)arg1;
 - (id)runtimeDelegate;
 - (id)sendTranslatorRequest:(id)arg1;
@@ -57,6 +60,7 @@
 - (void)setSystemAppDelegate:(id)arg1;
 - (bool)supportsDelegateTokens;
 - (id)systemAppDelegate;
+- (id)translationApplicationObject;
 - (id)translationApplicationObjectForPid:(int)arg1;
 
 @end

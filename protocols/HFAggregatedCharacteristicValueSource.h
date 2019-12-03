@@ -6,6 +6,7 @@
 @required
 
 - (NSSet *)allCharacteristicsForCharacteristicType:(NSString *)arg1;
+- (NSSet *)allServices;
 - (id)copyWithValueSource:(id <HFCharacteristicValueSource>)arg1;
 - (HMCharacteristicMetadata *)metadataForCharacteristicType:(NSString *)arg1;
 - (HFServiceDescriptor *)primaryServiceDescriptor;

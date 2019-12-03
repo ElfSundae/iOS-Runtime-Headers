@@ -25,7 +25,7 @@
     unsigned int  tc_event_read_close_delivered;
     unsigned int  tc_event_write_close_delivered;
     unsigned long long  tc_id;
-    void * tc_internally_retained_object;
+    NWConcrete_tcp_connection * tc_internally_retained_object;
     unsigned int  tc_keepalive_count;
     unsigned int  tc_keepalive_events;
     unsigned int  tc_keepalive_interval;

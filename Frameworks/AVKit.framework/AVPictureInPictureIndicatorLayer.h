@@ -10,7 +10,7 @@
         double width; 
         double height; 
     }  _imageSize;
-    struct UIEdgeInsets { 
+    struct NSEdgeInsets { 
         double top; 
         double left; 
         double bottom; 
@@ -22,7 +22,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithTraitCollection:(id)arg1 opaque:(bool)arg2;
+- (id)initWithDisplayScale:(double)arg1 placeholderImage:(struct CGImage { }*)arg2 opaque:(bool)arg3;
 - (void)layoutSublayers;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })textBoundingRectWhenDrawnInRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 

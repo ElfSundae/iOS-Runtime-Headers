@@ -22,7 +22,6 @@
 - (void)dealloc;
 - (bool)hasGapBetweenSeparatorAndTrailingEdge;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
-- (void)layoutSubviews;
 - (double)minCellHeight;
 - (void)performAccessoryAction;
 - (void)performDefaultAction;

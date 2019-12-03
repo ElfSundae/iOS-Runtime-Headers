@@ -9,11 +9,14 @@
     ICAttachmentPreviewGeneratorOperationQueue * _costlyGeneratorQueue;
     ICAttachmentPreviewGeneratorOperationQueue * _generatorQueue;
     NSMapTable * _lastOperationForAttachmentID;
+    NSMutableOrderedSet * _postProcessingIDsPending;
+    ICAttachmentPreviewGeneratorOperationQueue * _postProcessingQueue;
+    unsigned long long  _postProcessingRequestIndex;
     unsigned long long  _previewGenerationState;
     NSObject<OS_dispatch_queue> * _previewProgressQueue;
     NSObject<OS_dispatch_queue> * _previewQueue;
     ICProgressIndicatorTracker * _progressTracker;
-    bool  _shouldGenerateAttachmentsWhenReachable;
+    _Atomic bool  _shouldGenerateAttachmentsWhenReachable;
 }
 
 @property (nonatomic, retain) ICAttachmentPreviewGeneratorOperationQueue *asyncGeneratorQueue;
@@ -25,28 +28,42 @@
 @property (nonatomic, retain) ICAttachmentPreviewGeneratorOperationQueue *generatorQueue;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSMapTable *lastOperationForAttachmentID;
+@property (nonatomic, retain) NSMutableOrderedSet *postProcessingIDsPending;
+@property (nonatomic, retain) ICAttachmentPreviewGeneratorOperationQueue *postProcessingQueue;
+@property unsigned long long postProcessingRequestIndex;
 @property unsigned long long previewGenerationState;
+@property (nonatomic, readonly) bool previewOperationsIdle;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *previewProgressQueue;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *previewQueue;
 @property (nonatomic, retain) ICProgressIndicatorTracker *progressTracker;
-@property (nonatomic) bool shouldGenerateAttachmentsWhenReachable;
+@property (nonatomic) _Atomic bool shouldGenerateAttachmentsWhenReachable;
 @property (readonly) Class superclass;
 
++ (bool)imageClassificationEnabled;
++ (bool)ocrGenerationEnabled;
++ (void)purgeImageClassificationsInContext:(id)arg1;
++ (void)purgeOCRInContext:(id)arg1;
++ (void)setImageClassificationTemporarilyDisabled:(bool)arg1;
 + (id)sharedGenerator;
 
 - (void).cxx_destruct;
+- (void)adjustUserTitleIfNecessaryForAttachment:(id)arg1;
 - (id)asyncGeneratorQueue;
 - (void)attachmentDidLoad:(id)arg1;
 - (id)attachmentIDsPending;
 - (id)attachmentIDsProgress;
+- (void)attachmentNeedsPostProcessingNotification:(id)arg1;
 - (void)attachmentNeedsPreviewGenerationNotification:(id)arg1;
 - (void)attachmentWillBeDeleted:(id)arg1;
+- (void)beginPostProcessingAfterDelayIfNecessaryWithForceDelay:(bool)arg1;
 - (void)cancelGenerationOfPendingPreviews;
 - (void)cancelIfNeededForAttachment:(id)arg1;
 - (id)costlyGeneratorQueue;
 - (void)dealloc;
+- (void)didRecieveMemoryWarning;
 - (void)disableAutomaticPreviewGeneration;
 - (void)enableAutomaticPreviewGeneration;
+- (void)generateMissingOrOutdatedAttachmentMetaDataIfNeededInContext:(id)arg1;
 - (void)generatePendingPreviewForAttachment:(id)arg1;
 - (void)generatePendingPreviews;
 - (void)generatePreviewIfNeededForAttachment:(id)arg1;
@@ -58,8 +75,18 @@
 - (id)lastOperationForAttachmentID;
 - (void)managedObjectContextDidSave:(id)arg1;
 - (void)mediaDidLoad:(id)arg1;
+- (id)missingOrOutdatedImageClassificationSummaryAttachmentsInContext:(id)arg1;
+- (id)missingOrOutdatedMetaDataAttachmentsInContext:(id)arg1;
+- (id)missingOrOutdatedOCRSummaryAttachmentsInContext:(id)arg1;
 - (void)operationComplete:(id)arg1;
+- (void)postProcessIfNeededForAttachment:(id)arg1;
+- (void)postProcessPendingPreviews;
+- (void)postProcessPreviewForAttachment:(id)arg1;
+- (id)postProcessingIDsPending;
+- (id)postProcessingQueue;
+- (unsigned long long)postProcessingRequestIndex;
 - (unsigned long long)previewGenerationState;
+- (bool)previewOperationsIdle;
 - (id)previewProgressQueue;
 - (id)previewQueue;
 - (id)progressForObjectID:(id)arg1;
@@ -74,6 +101,9 @@
 - (void)setCostlyGeneratorQueue:(id)arg1;
 - (void)setGeneratorQueue:(id)arg1;
 - (void)setLastOperationForAttachmentID:(id)arg1;
+- (void)setPostProcessingIDsPending:(id)arg1;
+- (void)setPostProcessingQueue:(id)arg1;
+- (void)setPostProcessingRequestIndex:(unsigned long long)arg1;
 - (void)setPreviewGenerationState:(unsigned long long)arg1;
 - (void)setPreviewProgressQueue:(id)arg1;
 - (void)setPreviewQueue:(id)arg1;

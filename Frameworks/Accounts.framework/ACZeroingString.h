@@ -11,6 +11,7 @@
 @property (readonly) unsigned long long length;
 
 + (id)_emptyString;
++ (Class)classForKeyedUnarchiver;
 + (bool)supportsSecureCoding;
 
 - (bool)_allowsDirectEncoding;
@@ -18,6 +19,7 @@
 - (unsigned short)characterAtIndex:(unsigned long long)arg1;
 - (unsigned short*)characters;
 - (Class)classForCoder;
+- (Class)classForKeyedArchiver;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

@@ -3,7 +3,7 @@
  */
 
 @interface MTLSharedEventHandle : NSObject <NSSecureCoding> {
-    struct MTLSharedEventHandlePrivate { unsigned int x1; id x2; } * _priv;
+    struct MTLSharedEventHandlePrivate { unsigned int x1; id x2; unsigned long long x3; } * _priv;
 }
 
 @property (readonly) NSString *label;

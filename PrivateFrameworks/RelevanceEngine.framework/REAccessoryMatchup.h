@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
  */
 
-@interface REAccessoryMatchup : NSObject <NSCoding, NSCopying> {
+@interface REAccessoryMatchup : NSObject <NSCopying, NSSecureCoding> {
     NSString * _awayTeamDetail;
     REImage * _awayTeamImage;
     NSString * _awayTeamName;
@@ -25,6 +25,8 @@
 @property (nonatomic, readonly) NSString *matchupProgress;
 @property (nonatomic, readonly) NSDate *matchupStartDate;
 @property (nonatomic, readonly) unsigned long long status;
+
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)awayTeamDetail;

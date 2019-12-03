@@ -3,7 +3,7 @@
  */
 
 @interface CADisplayMode : NSObject {
-    struct CADisplayModePriv { struct Mode { union { struct { unsigned int x_1_3_1 : 16; unsigned int x_1_3_2 : 16; unsigned int x_1_3_3 : 24; unsigned int x_1_3_4 : 1; unsigned int x_1_3_5 : 4; unsigned int x_1_3_6 : 2; unsigned int x_1_3_7 : 1; } x_1_2_1; unsigned long long x_1_2_2; } x_1_1_1; } x1; id x2; unsigned long long x3; } * _priv;
+    struct CADisplayModePriv { struct Mode { union { struct { unsigned int x_1_3_1 : 16; unsigned int x_1_3_2 : 16; unsigned int x_1_3_3 : 1; unsigned int x_1_3_4 : 23; unsigned int x_1_3_5 : 1; unsigned int x_1_3_6 : 4; unsigned int x_1_3_7 : 2; unsigned int x_1_3_8 : 1; } x_1_2_1; unsigned long long x_1_2_2; } x_1_1_1; } x1; id x2; unsigned long long x3; unsigned long long x4; unsigned int x5; } * _priv;
 }
 
 @property (nonatomic, readonly, copy) NSString *colorGamut;
@@ -16,13 +16,17 @@
 @property (nonatomic, readonly) double pixelAspectRatio;
 @property (nonatomic, readonly) unsigned long long preferredScale;
 @property (nonatomic, readonly) double refreshRate;
+@property (nonatomic, readonly) bool sb_isLPMDisplayMode;
 @property (nonatomic, readonly) unsigned long long width;
 
-+ (id)_displayModeWithMode:(struct Mode { union { struct { unsigned int x_1_2_1 : 16; unsigned int x_1_2_2 : 16; unsigned int x_1_2_3 : 24; unsigned int x_1_2_4 : 1; unsigned int x_1_2_5 : 4; unsigned int x_1_2_6 : 2; unsigned int x_1_2_7 : 1; } x_1_1_1; unsigned long long x_1_1_2; } x1; })arg1 display:(id)arg2;
+// Image: /System/Library/Frameworks/QuartzCore.framework/QuartzCore
+
++ (id)_displayModeWithMode:(struct Mode { union { struct { unsigned int x_1_2_1 : 16; unsigned int x_1_2_2 : 16; unsigned int x_1_2_3 : 1; unsigned int x_1_2_4 : 23; unsigned int x_1_2_5 : 1; unsigned int x_1_2_6 : 4; unsigned int x_1_2_7 : 2; unsigned int x_1_2_8 : 1; } x_1_1_1; unsigned long long x_1_1_2; } x1; })arg1 display:(id)arg2;
 
 - (id)_display;
-- (id)_initWithMode:(struct Mode { union { struct { unsigned int x_1_2_1 : 16; unsigned int x_1_2_2 : 16; unsigned int x_1_2_3 : 24; unsigned int x_1_2_4 : 1; unsigned int x_1_2_5 : 4; unsigned int x_1_2_6 : 2; unsigned int x_1_2_7 : 1; } x_1_1_1; unsigned long long x_1_1_2; } x1; })arg1 display:(id)arg2;
-- (struct Mode { union { struct { unsigned int x_1_2_1 : 16; unsigned int x_1_2_2 : 16; unsigned int x_1_2_3 : 24; unsigned int x_1_2_4 : 1; unsigned int x_1_2_5 : 4; unsigned int x_1_2_6 : 2; unsigned int x_1_2_7 : 1; } x_1_1_1; unsigned long long x_1_1_2; } x1; })_mode;
+- (id)_initWithMode:(struct Mode { union { struct { unsigned int x_1_2_1 : 16; unsigned int x_1_2_2 : 16; unsigned int x_1_2_3 : 1; unsigned int x_1_2_4 : 23; unsigned int x_1_2_5 : 1; unsigned int x_1_2_6 : 4; unsigned int x_1_2_7 : 2; unsigned int x_1_2_8 : 1; } x_1_1_1; unsigned long long x_1_1_2; } x1; })arg1 display:(id)arg2;
+- (struct Mode { union { struct { unsigned int x_1_2_1 : 16; unsigned int x_1_2_2 : 16; unsigned int x_1_2_3 : 1; unsigned int x_1_2_4 : 23; unsigned int x_1_2_5 : 1; unsigned int x_1_2_6 : 4; unsigned int x_1_2_7 : 2; unsigned int x_1_2_8 : 1; } x_1_1_1; unsigned long long x_1_1_2; } x1; })_mode;
+- (void)_setPreferredUIScale:(unsigned int)arg1;
 - (void)_setWidth:(unsigned long long)arg1 height:(unsigned long long)arg2;
 - (id)colorGamut;
 - (id)colorMode;
@@ -39,5 +43,9 @@
 - (unsigned long long)preferredScale;
 - (double)refreshRate;
 - (unsigned long long)width;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoard.framework/SpringBoard
+
+- (bool)sb_isLPMDisplayMode;
 
 @end

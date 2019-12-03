@@ -8,6 +8,7 @@
 
 + (id)baseUnit;
 + (id)gravity;
++ (void)initialize;
 + (id)metersPerSecondSquared;
 
 // Image: /System/Library/Frameworks/HealthKit.framework/HealthKit

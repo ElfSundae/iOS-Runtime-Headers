@@ -36,7 +36,7 @@
 - (void)_handleBulletinBoardNotificationCommitRequest:(id)arg1;
 - (void)_registerNotificationHandlers;
 - (id)condition;
-- (void)configureBulletinNotification:(id /* block */)arg1;
+- (void)configureBulletinNotification;
 - (void)configureMsgDispatcher:(id)arg1;
 - (void)dealloc;
 - (id)dumpState;

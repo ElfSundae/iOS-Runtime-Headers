@@ -21,6 +21,7 @@
 - (void)setRequest:(id)arg1;
 - (void)setSettingsDelegate:(id)arg1;
 - (id)settingsDelegate;
+- (bool)shouldAutorotate;
 - (void)viewDidLoad;
 
 @end

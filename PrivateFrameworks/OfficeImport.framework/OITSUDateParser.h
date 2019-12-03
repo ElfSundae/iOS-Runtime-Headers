@@ -3,20 +3,21 @@
  */
 
 @interface OITSUDateParser : NSObject {
-    NSMutableArray * mFormatCategories;
-    bool  mIsJapaneseLocale;
-    OITSULocale * mLocale;
-    struct __CFDateFormatter { } * mSpecialCaseFormatter;
+    NSMutableArray * _formatCategories;
+    bool  _isJapaneseLocale;
+    OITSULocale * _locale;
+    struct __CFDateFormatter { } * _specialCaseFormatter;
 }
 
-- (void)addFormat:(id)arg1 locale:(struct __CFLocale { }*)arg2 formatCategoryMap:(id)arg3;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)formatStringsDictionary;
 - (id)initWithLocale:(id)arg1;
-- (struct __CFDate { }*)newDateFromString:(struct __CFString { }*)arg1 preferredFormatString:(struct __CFString { }*)arg2 successfulFormatString:(const struct __CFString {}**)arg3 tryAggressiveFormats:(bool)arg4;
-- (struct __CFDate { }*)newDateFromString:(struct __CFString { }*)arg1 successfulFormatString:(const struct __CFString {}**)arg2;
-- (struct __CFDate { }*)newDateFromStringTryingFormats:(struct __CFString { }*)arg1 locale:(struct __CFLocale { }*)arg2 formats:(id)arg3 outSuccessfulFormatString:(const struct __CFString {}**)arg4;
-- (void)parseFormat:(id)arg1 initialPattern:(id*)arg2 separator:(unsigned short*)arg3;
-- (struct __CFDateFormatter { }*)specialCaseDateFormatterForLocale:(struct __CFLocale { }*)arg1;
+- (id)newDateFromString:(id)arg1 preferredFormatString:(id)arg2 successfulFormatString:(id*)arg3 tryAggressiveFormats:(bool)arg4;
+- (id)newDateFromString:(id)arg1 successfulFormatString:(id*)arg2;
+- (void)p_addFormat:(id)arg1 locale:(id)arg2 formatCategoryMap:(id)arg3;
+- (id)p_initialPatternParsingFormat:(id)arg1 separator:(unsigned short*)arg2;
+- (id)p_newDateFromStringTryingFormats:(id)arg1 locale:(id)arg2 formats:(id)arg3 outSuccessfulFormatString:(id*)arg4;
+- (struct __CFDateFormatter { }*)specialCaseDateFormatterForLocale:(id)arg1;
 
 @end

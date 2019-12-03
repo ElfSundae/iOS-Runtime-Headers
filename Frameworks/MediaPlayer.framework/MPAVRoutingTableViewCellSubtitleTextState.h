@@ -6,6 +6,7 @@
     bool  _animating;
     NSString * _batteryText;
     unsigned long long  _currentVisibleTextType;
+    NSString * _localizedSubtitle;
     NSString * _pairedDeviceText;
     NSString * _routeUID;
 }
@@ -15,6 +16,7 @@
 @property (nonatomic) unsigned long long currentVisibleTextType;
 @property (nonatomic, readonly) bool hasVisibleTextTypeToShow;
 @property (nonatomic, readonly) bool hasVisibleTextTypeToTransitionTo;
+@property (nonatomic, copy) NSString *localizedSubtitle;
 @property (nonatomic, copy) NSString *pairedDeviceText;
 @property (nonatomic, copy) NSString *routeUID;
 @property (nonatomic, readonly, copy) NSString *stringForCurrentVisibleTextType;
@@ -27,12 +29,14 @@
 - (bool)hasVisibleTextTypeToShow;
 - (bool)hasVisibleTextTypeToTransitionTo;
 - (bool)isAnimating;
+- (id)localizedSubtitle;
 - (id)pairedDeviceText;
 - (void)resetForNewRoute;
 - (id)routeUID;
 - (void)setAnimating:(bool)arg1;
 - (void)setBatteryText:(id)arg1;
 - (void)setCurrentVisibleTextType:(unsigned long long)arg1;
+- (void)setLocalizedSubtitle:(id)arg1;
 - (void)setPairedDeviceText:(id)arg1;
 - (void)setRouteUID:(id)arg1;
 - (id)stringForCurrentVisibleTextType;

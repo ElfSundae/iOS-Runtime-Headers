@@ -29,6 +29,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_loadRecentHandwritingsAndStickersWithCompletion:(id /* block */)arg1;
 - (void)_postBrowserDidPrepareForDisplayNotificationIfNecessary;
 - (void)_setContentOverlayInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (id)_stickerForMSSticker:(id)arg1;
@@ -75,6 +76,7 @@
 - (bool)stickerBrowserView:(id)arg1 shouldDrawBorderAroundSticker:(id)arg2;
 - (id)stickerBrowserView:(id)arg1 stickerAtIndex:(long long)arg2;
 - (id)stickerCache;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(bool)arg1;

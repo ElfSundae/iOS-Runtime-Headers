@@ -24,6 +24,7 @@
 - (unsigned long long)_bytesLengthForStore;
 - (void*)_bytesPtrForStore;
 - (void)_copyToInterimLocation;
+- (bool)_evictFile:(id*)arg1;
 - (id)_fileURLForSaving;
 - (id)_interimLocationURL;
 - (bool)_isCloudKitSupportOriginated;

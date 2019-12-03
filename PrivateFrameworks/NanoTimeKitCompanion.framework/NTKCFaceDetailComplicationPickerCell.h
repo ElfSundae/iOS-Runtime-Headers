@@ -6,6 +6,7 @@
     NSArray * _complications;
     bool  _dateSlot;
     <NTKCFaceDetailComplicationPickerCellDelegate> * _delegate;
+    bool  _isRichSlot;
     UIPickerView * _picker;
     long long  _selectedIndex;
     CAShapeLayer * _selectionIndicator;
@@ -18,6 +19,7 @@
 @property (nonatomic) <NTKCFaceDetailComplicationPickerCellDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool isRichSlot;
 @property (nonatomic, retain) UIPickerView *picker;
 @property (nonatomic, retain) NTKComplication *selectedComplication;
 @property (nonatomic, retain) CAShapeLayer *selectionIndicator;
@@ -33,6 +35,7 @@
 - (bool)dateSlot;
 - (id)delegate;
 - (id)init;
+- (bool)isRichSlot;
 - (void)layoutSubviews;
 - (long long)numberOfComponentsInPickerView:(id)arg1;
 - (id)picker;
@@ -42,7 +45,7 @@
 - (double)pickerView:(id)arg1 rowHeightForComponent:(long long)arg2;
 - (id)selectedComplication;
 - (id)selectionIndicator;
-- (void)setComplications:(id)arg1 forSlot:(id)arg2 dateSlot:(bool)arg3;
+- (void)setComplications:(id)arg1 forSlot:(id)arg2 dateSlot:(bool)arg3 isRichSlot:(bool)arg4;
 - (void)setDelegate:(id)arg1;
 - (void)setPicker:(id)arg1;
 - (void)setSelectedComplication:(id)arg1;

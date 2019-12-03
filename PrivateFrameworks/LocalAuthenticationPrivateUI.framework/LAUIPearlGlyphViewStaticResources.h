@@ -25,7 +25,7 @@
 - (void).cxx_destruct;
 - (id)device;
 - (id)init;
-- (id)initWithDevice:(id)arg1 state:(struct renderer_shared_state { id x1; id x2; struct array<id<MTLRenderPipelineState>, 3> { /* Warning: unhandled array encoding: '[3@]}{array<id<MTLRenderPipelineState>, 3>=[3@]}@@@}' */ id x_3_1_1[3]; } x3; id x4; id x5; })arg2;
-- (struct renderer_shared_state { id x1; id x2; struct array<id<MTLRenderPipelineState>, 3> { /* Warning: unhandled array encoding: '[3@]}{array<id<MTLRenderPipelineState>, 3>=[3@]}@@@}' */ id x_3_1_1[3]; } x3; id x4; id x5; }*)state;
+- (id)initWithDevice:(id)arg1 state:(struct renderer_shared_state { id x1; id x2; id x3; id x4; struct array<id<MTLRenderPipelineState>, 3> { id x_5_1_1[3]; } x5; struct array<id<MTLRenderPipelineState>, 3> { id x_6_1_1[3]; } x6; id x7; id x8; id x9; })arg2;
+- (struct renderer_shared_state { id x1; id x2; id x3; id x4; struct array<id<MTLRenderPipelineState>, 3> { id x_5_1_1[3]; } x5; struct array<id<MTLRenderPipelineState>, 3> { id x_6_1_1[3]; } x6; id x7; id x8; id x9; }*)state;
 
 @end

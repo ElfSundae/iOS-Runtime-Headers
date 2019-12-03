@@ -3,6 +3,7 @@
  */
 
 @interface _INPBMoveFileIntentResponse : PBCodable <NSCopying, NSSecureCoding, _INPBMoveFileIntentResponse> {
+    bool  __encodeLegacyGloryData;
     _INPBString * _destinationName;
     NSArray * _entityNames;
     struct { 
@@ -19,6 +20,7 @@
     bool  _success;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) _INPBString *destinationName;
@@ -37,16 +39,21 @@
 @property (readonly) Class superclass;
 
 + (Class)entityNameType;
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (int)StringAsEntityTypes:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (void)addEntityName:(id)arg1;
 - (void)addEntityType:(int)arg1;
 - (void)clearEntityNames;
 - (void)clearEntityTypes;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (void)dealloc;
 - (id)destinationName;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (id)entityNameAtIndex:(unsigned long long)arg1;
 - (id)entityNames;
 - (unsigned long long)entityNamesCount;
@@ -59,6 +66,7 @@
 - (bool)hasSourceName;
 - (bool)hasSuccess;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)overwrite;
 - (bool)readFrom:(id)arg1;

@@ -4,6 +4,7 @@
 
 @interface INIntentNoteContentSlotValueTransformer : NSValueTransformer
 
++ (long long)_intents_valueType;
 + (bool)allowsReverseTransformation;
 + (Class)reverseTransformedValueClass;
 + (Class)transformedValueClass;

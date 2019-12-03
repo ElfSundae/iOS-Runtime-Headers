@@ -14,6 +14,7 @@
 + (id)remoteProxyForXPCInterface:(id)arg1 connectionErrorHandler:(id /* block */)arg2;
 + (id)remoteProxyForXPCInterface:(id)arg1 shouldLaunchMobileMail:(bool)arg2 connectionErrorHandler:(id /* block */)arg3;
 
+- (void).cxx_destruct;
 - (id)connection;
 - (void)dealloc;
 - (id)init;

@@ -16,23 +16,26 @@
 
 - (void).cxx_destruct;
 - (id)clkDevice;
-- (id)computeShaderFromLibrary:(id)arg1;
+- (id)computePipelineManager;
+- (id)computeShaderName;
 - (void)computeWithEncoder:(id)arg1 pipelineState:(id)arg2;
 - (double)currentTime;
 - (void)dealloc;
-- (id)fragmentShaderFromLibrary:(id)arg1;
+- (id)fragmentShaderName;
 - (void)handleScreenOff;
 - (id)initWithDevice:(id)arg1 initialSemaphoreCount:(int)arg2;
 - (void)loadMetalTexturesAndBuffersWithDevice:(id)arg1;
 - (void)performOffscreenPassesWithCommandBuffer:(id)arg1;
 - (bool)postSemaphoreComputeForTime:(double)arg1;
 - (bool)preSemaphoreComputeForTime:(double)arg1;
-- (void)prepareForQuadView:(id)arg1;
 - (bool)prepareForTime:(double)arg1;
 - (void)renderForDisplayWithEncoder:(id)arg1;
+- (id)renderPipelineManager;
+- (id)renderPipelineName;
 - (void)renderWithEncoder:(id)arg1;
 - (void)setTimeScale:(float)arg1;
+- (void)setupForQuadView:(id)arg1;
 - (float)timeScale;
-- (id)vertexShaderFromLibrary:(id)arg1;
+- (id)vertexShaderName;
 
 @end

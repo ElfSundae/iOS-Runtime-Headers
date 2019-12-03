@@ -5,15 +5,17 @@
 @interface PLEmailAddressManager : NSObject {
     NSMutableDictionary * _emailsForKey;
     NSMutableDictionary * _keysForEmails;
+    PLLazyObject * _lazyAssetsdClient;
     int  _maxKey;
-    NSString * _plistPath;
+    PLPhotoLibraryPathManager * _pathManager;
 }
 
-+ (id)sharedManager;
-
+- (void).cxx_destruct;
 - (void)_loadDictionariesIfNeeded;
-- (void)dealloc;
+- (id)assetsdClient;
 - (id)emailAddressForKey:(id)arg1;
+- (id)initWithPathManager:(id)arg1 lazyAssetsdClient:(id)arg2;
 - (id)keyForEmailAddress:(id)arg1;
+- (id)plistPath;
 
 @end

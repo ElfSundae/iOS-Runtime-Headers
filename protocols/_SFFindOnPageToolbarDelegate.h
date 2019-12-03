@@ -7,7 +7,6 @@
 
 - (void)done;
 - (bool)hasMatches;
-- (NSString *)longMatchLabelText;
 - (NSString *)matchLabelText;
 - (void)next;
 - (void)previous;

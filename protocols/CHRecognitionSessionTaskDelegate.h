@@ -5,6 +5,6 @@
 
 @required
 
-- (CHRecognizer *)recognizerForLocale:(NSLocale *)arg1;
+- (<CHRecognizing> *)recognizerForLocale:(NSLocale *)arg1;
 
 @end

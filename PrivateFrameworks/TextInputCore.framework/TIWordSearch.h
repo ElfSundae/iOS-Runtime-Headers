@@ -5,6 +5,7 @@
 @interface TIWordSearch : NSObject <TIKeyboardActivityObserving> {
     bool  _autoCorrects;
     NSCache * _candidatesCache;
+    id  _dictionaryUpdateObserver;
     TIInputMode * _inputMode;
     TIMecabraEnvironment * _mecabraEnvironment;
     TIMecabraWrapper * _mecabraWrapper;
@@ -76,18 +77,22 @@
 - (void)releaseBackgroundActivityAssertion;
 - (void)resetMecabraEnvironment;
 - (void)resetPreviousWord;
+- (void)revertInlineCandidate;
 - (void)saveLearningDictionary;
 - (void)setAutoCorrects:(bool)arg1;
 - (void)setCandidatesCache:(id)arg1;
+- (void)setDebuggingLogEnabled:(bool)arg1;
 - (void)setLanguageModelAdaptationContext:(id)arg1;
 - (void)setLanguageModelAdaptationContextWithClientIdentifier:(id)arg1 recipientIdentifier:(id)arg2;
 - (void)setLeftDocumentContext:(id)arg1 rightDocumentContext:(id)arg2;
 - (void)setMecabraEnvironment:(id)arg1;
+- (void)setMecabraTextContentType:(int)arg1;
 - (void)setMecabraWrapper:(id)arg1;
 - (void)setOperation:(id)arg1;
 - (void)setShouldLearnAcceptedCandidate:(bool)arg1;
 - (bool)shouldLearnAcceptedCandidate;
 - (id)uncachedCandidatesForOperation:(id)arg1;
+- (void)updateDictionaryPaths;
 - (void)updateMecabraState;
 - (void)updateUserWordEntries;
 

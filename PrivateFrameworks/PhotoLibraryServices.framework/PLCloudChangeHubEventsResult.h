@@ -16,9 +16,9 @@
 @property (readonly) long long resultType;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (unsigned long long)changeHubEventIndex;
 - (id)currentTokenDescription;
-- (void)dealloc;
 - (void)enumerateLocalEventsWithBlock:(id /* block */)arg1;
 - (id)initWithResultType:(long long)arg1 events:(id)arg2 changeHubEventIndex:(unsigned long long)arg3;
 - (id)initWithSuccesfulEvents:(id)arg1 changeHubEventIndex:(unsigned long long)arg2;

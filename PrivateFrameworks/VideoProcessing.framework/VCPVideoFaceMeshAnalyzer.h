@@ -61,12 +61,12 @@
 - (int)checkResolutionChange:(struct __CVBuffer { }*)arg1 withRotation:(int)arg2;
 - (void)dealloc;
 - (id)initWithFocalLengthInPixels:(float)arg1 offline:(bool)arg2;
-- (int)initialize:(struct __CVBuffer { }*)arg1;
 - (bool)isTracked;
 - (void)makeValidationDecision;
 - (void)mapToCameraNegativeZ;
 - (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })pose;
 - (void)rotateLandmarks:(int)arg1 width:(int)arg2 height:(int)arg3 landmarks:(float*)arg4 numLandmarks:(int)arg5;
+- (int)setFrame:(struct __CVBuffer { }*)arg1;
 - (bool)updateFocalLengthInPixels:(float)arg1;
 - (void)updateIntrinsicWhenRotated;
 - (int)validateFace:(struct __CVBuffer { }*)arg1 eulerAngles:(float*)arg2;

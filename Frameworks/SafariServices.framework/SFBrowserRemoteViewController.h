@@ -15,6 +15,7 @@
 @property (getter=isOnScreenForVolumeDisplay, nonatomic, readonly) bool onScreenForVolumeDisplay;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSString *volumeAudioCategory;
+@property (nonatomic, readonly) UIWindowScene *windowSceneForVolumeDisplay;
 
 + (id)exportedInterface;
 + (id)requestViewControllerWithConnectionHandler:(id /* block */)arg1;
@@ -24,9 +25,11 @@
 - (id)delegate;
 - (void)didChangeFullScreen:(bool)arg1;
 - (void)didDecideCookieSharingForURL:(id)arg1 shouldCancel:(bool)arg2;
+- (void)didDecideShouldShowLinkPreviews:(bool)arg1;
 - (void)didFinishInitialLoad:(bool)arg1;
 - (void)didLoadWebView;
 - (void)didMoveToParentViewController:(id)arg1;
+- (void)didResolveRedirectionWithURL:(id)arg1 appLink:(id)arg2;
 - (void)executeCustomActivityProxyID:(id)arg1;
 - (void)fetchActivityViewControllerInfoForURL:(id)arg1 title:(id)arg2;
 - (void)initialLoadDidRedirectToURL:(id)arg1;
@@ -38,5 +41,6 @@
 - (void)willDismissServiceViewController;
 - (void)willMoveToParentViewController:(id)arg1;
 - (void)willOpenURLInHostApplication:(id)arg1;
+- (id)windowSceneForVolumeDisplay;
 
 @end

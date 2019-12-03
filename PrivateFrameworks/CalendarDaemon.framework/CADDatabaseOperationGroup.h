@@ -9,11 +9,10 @@
 + (bool)requiresReminderAccess;
 
 - (void)CADDatabaseCanModifyCalendarDatabase:(id /* block */)arg1;
-- (void)CADDatabaseClearSuperfluousChanges:(id /* block */)arg1;
 - (void)CADDatabaseCommitWithReply:(id /* block */)arg1;
 - (void)CADDatabaseExportICSDataForCalendarItems:(id)arg1 preventLineFolding:(bool)arg2 reply:(id /* block */)arg3;
 - (void)CADDatabaseFetchChangedObjectIDsSinceSequenceNumber:(long long)arg1 reply:(id /* block */)arg2;
-- (void)CADDatabaseFetchObjectChangesForEntityType:(int)arg1 insideObject:(id)arg2 reply:(id /* block */)arg3;
+- (void)CADDatabaseFetchObjectChangesForEntityTypes:(id)arg1 insideObject:(id)arg2 reply:(id /* block */)arg3;
 - (void)CADDatabaseGetChangedEntityIDsSinceTimestamp:(double)arg1 reply:(id /* block */)arg2;
 - (void)CADDatabaseGetChangesSinceSequenceNumber:(int)arg1 reply:(id /* block */)arg2;
 - (void)CADDatabaseGetNextAssignableColorWithReply:(id /* block */)arg1;
@@ -22,14 +21,17 @@
 - (void)CADDatabaseImportICSData:(id)arg1 intoCalendarsWithIDs:(id)arg2 optionsMask:(unsigned long long)arg3 reply:(id /* block */)arg4;
 - (void)CADDatabaseLastConfirmedSplashScreenVersion:(id /* block */)arg1;
 - (void)CADDatabaseMarkChangedObjectIDsConsumedUpToSequenceNumber:(long long)arg1 reply:(id /* block */)arg2;
+- (void)CADDatabaseMarkIndividualChangesConsumed:(id)arg1 reply:(id /* block */)arg2;
 - (void)CADDatabaseRebuildOccurrenceCacheWithReply:(id /* block */)arg1;
 - (void)CADDatabaseRegisterForDetailedChangeTracking:(id /* block */)arg1;
 - (void)CADDatabaseResetWithReply:(id /* block */)arg1;
 - (void)CADDatabaseRollbackWithReply:(id /* block */)arg1;
 - (void)CADDatabaseSaveWithReply:(id /* block */)arg1;
-- (void)CADDatabaseSetInitializationOptions:(id)arg1 reply:(id /* block */)arg2;
 - (void)CADDatabaseSetShowsDeclinedEvents:(bool)arg1 reply:(id /* block */)arg2;
+- (void)CADDatabaseUnregisterForDetailedChangeTracking:(id /* block */)arg1;
 - (bool)_CADDatabaseCanModifyCalendarDatabase;
+- (struct __CFArray { }*)_copyToIntCFArrayRef:(id)arg1;
+- (struct __CFSet { }*)_copyToIntCFSetRef:(id)arg1;
 - (id)_importData:(id)arg1 intoCalendarWithID:(int)arg2 optionsMask:(unsigned long long)arg3 outError:(int*)arg4;
 
 @end

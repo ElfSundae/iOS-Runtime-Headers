@@ -20,6 +20,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContactIdentifier:(id)arg1;
 - (bool)isPeopleSearch;
+- (bool)isScopedAppSearch;
 - (id)queryString;
 - (void)setContactIdentifier:(id)arg1;
 - (id)tokenText;

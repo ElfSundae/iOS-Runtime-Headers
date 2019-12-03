@@ -16,8 +16,8 @@
 
 - (void).cxx_destruct;
 - (id)_dollarCodeDescriptionAsBinomialCoefficient:(bool)arg1 orMixedNumberFraction:(bool)arg2 withNumberOfOuterRadicals:(unsigned long long)arg3 treePosition:(id)arg4;
-- (id)_speakableDescriptionWithSpeakingStyle:(int)arg1 arePausesAllowed:(bool)arg2 asBinomialCoefficient:(bool)arg3;
-- (id)_speakableSegmentsWithSpeakingStyle:(int)arg1 upToDepth:(unsigned long long)arg2 treePosition:(id)arg3 asBinomialCoefficient:(bool)arg4;
+- (id)_speakableDescriptionWithSpeakingStyle:(long long)arg1 arePausesAllowed:(bool)arg2 asBinomialCoefficient:(bool)arg3;
+- (id)_speakableSegmentsWithSpeakingStyle:(long long)arg1 upToDepth:(unsigned long long)arg2 treePosition:(id)arg3 asBinomialCoefficient:(bool)arg4;
 - (id)denominator;
 - (id)description;
 - (id)dollarCodeDescriptionAsBinomialCoefficientWithTreePosition:(id)arg1 numberOfOuterRadicals:(unsigned long long)arg2;
@@ -36,10 +36,10 @@
 - (void)setLineThickness:(double)arg1;
 - (void)setNumerator:(id)arg1;
 - (void)setOperator:(id)arg1;
-- (id)speakableDescriptionAsBinomialCoefficientWithSpeakingStyle:(int)arg1;
-- (id)speakableDescriptionWithSpeakingStyle:(int)arg1 arePausesAllowed:(bool)arg2;
-- (id)speakableSegmentsAsBinomialCoefficientWithSpeakingStyle:(int)arg1 upToDepth:(unsigned long long)arg2 treePosition:(id)arg3;
-- (id)speakableSegmentsWithSpeakingStyle:(int)arg1 upToDepth:(unsigned long long)arg2 treePosition:(id)arg3;
+- (id)speakableDescriptionAsBinomialCoefficientWithSpeakingStyle:(long long)arg1;
+- (id)speakableDescriptionWithSpeakingStyle:(long long)arg1 arePausesAllowed:(bool)arg2;
+- (id)speakableSegmentsAsBinomialCoefficientWithSpeakingStyle:(long long)arg1 upToDepth:(unsigned long long)arg2 treePosition:(id)arg3;
+- (id)speakableSegmentsWithSpeakingStyle:(long long)arg1 upToDepth:(unsigned long long)arg2 treePosition:(id)arg3;
 - (id)subExpressions;
 
 @end

@@ -7,14 +7,16 @@
     int  _handlerType;
     unsigned int  _identifier;
     struct __CFRunLoopSource { } * _invalidationSource;
-    bool  _isConnectionStarted;
+    _Atomic bool  _isConnectionStarted;
     unsigned int  _pingPort;
     struct __CFRunLoopSource { } * _pingSource;
 }
 
 + (void)_addConnectionToRunLoop:(id)arg1;
 + (void)_configServer;
++ (void)_configServerWithMachServiceName:(char *)arg1;
 + (void)_createConnectionRunLoop;
++ (bool)_inUnitTests;
 + (void)_unconfigServerAndRetry:(bool)arg1;
 + (void)initialize;
 + (bool)supportsSecureCoding;

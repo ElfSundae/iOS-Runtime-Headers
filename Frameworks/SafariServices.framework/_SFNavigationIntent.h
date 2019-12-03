@@ -3,45 +3,62 @@
  */
 
 @interface _SFNavigationIntent : NSObject {
-    bool  _opensInNewTab;
-    long long  _preferredTabOrder;
+    bool  _isUnifiedFieldNavigation;
+    long long  _policy;
+    bool  _shouldRelateToSourceTab;
+    _WKActivatedElementInfo * _sourceElementInfo;
+    NSUUID * _sourceTabUUID;
+    NSUUID * _sourceWindowUUID;
     unsigned long long  _type;
     id  _value;
 }
 
 @property (nonatomic, readonly, copy) NSURL *URL;
 @property (nonatomic, readonly) WebBookmark *bookmark;
+@property (nonatomic, readonly) bool canUseExistingBlankTab;
 @property (nonatomic, readonly) WBSCloudTab *cloudTab;
+@property (nonatomic, readonly, copy) NSDictionary *externalOptions;
+@property (nonatomic) bool isUnifiedFieldNavigation;
 @property (nonatomic, readonly, copy) NSArray *navigationIntents;
-@property (nonatomic) bool opensInNewTab;
+@property (nonatomic, readonly) bool opensInNewTab;
+@property (nonatomic, readonly) bool opensInNewWindow;
+@property (nonatomic) long long policy;
 @property (nonatomic, readonly, copy) NSString *privacyPreservingDescription;
+@property (nonatomic, readonly) _SFTabStateData *recentlyClosedTabStateData;
 @property (nonatomic, readonly) bool shouldOrderToForeground;
+@property (nonatomic) bool shouldRelateToSourceTab;
+@property (nonatomic, retain) _WKActivatedElementInfo *sourceElementInfo;
+@property (nonatomic, retain) NSUUID *sourceTabUUID;
+@property (nonatomic, retain) NSUUID *sourceWindowUUID;
 @property (nonatomic, readonly, copy) NSString *text;
 @property (nonatomic, readonly) unsigned long long type;
 
-+ (id)_navigationIntentForMKMapItem:(id)arg1;
-+ (id)_navigationIntentWithItems:(id)arg1;
-+ (bool)canCreateNavigationIntentForDropSession:(id)arg1;
-+ (void)navigationIntentForDropSession:(id)arg1 completionHandler:(id /* block */)arg2;
-+ (void)navigationIntentForItemProviders:(id)arg1 completionHandler:(id /* block */)arg2;
-+ (id)navigationIntentWithBookmark:(id)arg1;
-+ (id)navigationIntentWithCloudTab:(id)arg1;
-+ (id)navigationIntentWithHistoryURL:(id)arg1;
-+ (id)navigationIntentWithMultipleIntents:(id)arg1;
-+ (id)navigationIntentWithText:(id)arg1;
-
 - (void).cxx_destruct;
 - (id)URL;
-- (id)_initWithType:(unsigned long long)arg1 value:(id)arg2;
+- (id)_initWithType:(unsigned long long)arg1 value:(id)arg2 policy:(long long)arg3;
 - (id)bookmark;
+- (bool)canUseExistingBlankTab;
 - (id)cloudTab;
 - (id)description;
+- (id)externalOptions;
+- (bool)isUnifiedFieldNavigation;
 - (id)navigationIntents;
 - (bool)opensInNewTab;
+- (bool)opensInNewWindow;
+- (long long)policy;
 - (id)privacyPreservingDescription;
-- (void)setOpensInNewTab:(bool)arg1;
-- (void)setPreferredTabOrder:(long long)arg1;
+- (id)recentlyClosedTabStateData;
+- (void)setIsUnifiedFieldNavigation:(bool)arg1;
+- (void)setPolicy:(long long)arg1;
+- (void)setShouldRelateToSourceTab:(bool)arg1;
+- (void)setSourceElementInfo:(id)arg1;
+- (void)setSourceTabUUID:(id)arg1;
+- (void)setSourceWindowUUID:(id)arg1;
 - (bool)shouldOrderToForeground;
+- (bool)shouldRelateToSourceTab;
+- (id)sourceElementInfo;
+- (id)sourceTabUUID;
+- (id)sourceWindowUUID;
 - (id)text;
 - (unsigned long long)type;
 

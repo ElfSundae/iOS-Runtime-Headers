@@ -9,5 +9,6 @@
 
 - (void)addEvent:(id)arg1;
 - (id)allEvents;
+- (bool)isSequenceTerminated;
 
 @end

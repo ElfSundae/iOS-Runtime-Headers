@@ -59,7 +59,7 @@
 - (void)setDeleteImmediately:(bool)arg1;
 - (void)setKeepOriginals:(bool)arg1;
 - (bool)storeData:(id)arg1 identity:(id)arg2 isOriginal:(bool)arg3 needsCommit:(bool*)arg4 error:(id*)arg5;
-- (bool)storeFileAtURL:(id)arg1 identity:(id)arg2 isOriginal:(bool)arg3 needsCommit:(bool*)arg4 error:(id*)arg5;
+- (bool)storeFileAtURL:(id)arg1 identity:(id)arg2 isOriginal:(bool)arg3 moveIfPossible:(bool)arg4 needsCommit:(bool*)arg5 error:(id*)arg6;
 - (bool)storeUnretainedData:(id)arg1 identity:(id)arg2 isOriginal:(bool)arg3 error:(id*)arg4;
 - (bool)storeUnretainedFileAtURL:(id)arg1 identity:(id)arg2 isOriginal:(bool)arg3 error:(id*)arg4;
 - (bool)tryToFreeDiskSpace:(unsigned long long)arg1 actuallyFreedSpace:(unsigned long long*)arg2 error:(id*)arg3;

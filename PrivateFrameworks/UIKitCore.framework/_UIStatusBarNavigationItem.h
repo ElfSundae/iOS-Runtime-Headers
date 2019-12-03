@@ -9,6 +9,7 @@
 @property (nonatomic, retain) _UIStatusBarStringView *nameView;
 
 - (void).cxx_destruct;
+- (void)_create_nameView;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
 - (id)createDisplayItemForIdentifier:(id)arg1;
 - (id)dependentEntryKeys;

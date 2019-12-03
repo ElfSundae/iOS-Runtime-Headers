@@ -8,7 +8,6 @@
     NSMutableDictionary * _composeImages;
     UILongPressGestureRecognizer * _longPressGestureRecognizer;
     NSMutableDictionary * _mediaObjects;
-    CKComposition * _pasteboardComposition;
     NSMutableDictionary * _pluginDisplayContainers;
     UITapGestureRecognizer * _tapGestureRecognizer;
 }
@@ -22,12 +21,12 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) UILongPressGestureRecognizer *longPressGestureRecognizer;
 @property (nonatomic, retain) NSMutableDictionary *mediaObjects;
-@property (nonatomic, retain) CKComposition *pasteboardComposition;
 @property (nonatomic, retain) NSMutableDictionary *pluginDisplayContainers;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) UITapGestureRecognizer *tapGestureRecognizer;
 
 - (void).cxx_destruct;
+- (id)_compositionFromSelection;
 - (void)_showCustomInputView;
 - (bool)allowCalloutActions;
 - (id)attributedTextForCompositionText:(id)arg1;
@@ -40,6 +39,7 @@
 - (void)cut:(id)arg1;
 - (void)dealloc;
 - (bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)handlePastedString:(id)arg1 toRange:(id)arg2;
 - (void)handleTapOrLongPress:(id)arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 textContainer:(id)arg2;
@@ -47,7 +47,7 @@
 - (id)mediaObjects;
 - (void)paste:(id)arg1;
 - (id)pasteConfiguration;
-- (id)pasteboardComposition;
+- (id)pasteboard;
 - (id)pluginDisplayContainers;
 - (void)previewDidChange:(id)arg1;
 - (void)setAllowCalloutActions:(bool)arg1;
@@ -56,7 +56,6 @@
 - (void)setCompositionText:(id)arg1;
 - (void)setLongPressGestureRecognizer:(id)arg1;
 - (void)setMediaObjects:(id)arg1;
-- (void)setPasteboardComposition:(id)arg1;
 - (void)setPluginDisplayContainers:(id)arg1;
 - (void)setTapGestureRecognizer:(id)arg1;
 - (id)tapGestureRecognizer;

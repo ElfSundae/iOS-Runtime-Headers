@@ -25,6 +25,7 @@
 - (void*)getVertexBufferAtIndex:(unsigned long long)arg1;
 - (void)reset;
 - (void)setFragmentBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
+- (void)setRenderPipelineState:(id)arg1;
 - (void)setVertexBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 
 @end

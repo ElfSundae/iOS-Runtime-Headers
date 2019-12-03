@@ -7,7 +7,7 @@
 + (id)_accountJoinClausesForProperty:(id)arg1;
 + (id)_gatewayJoinClausesForProperty:(id)arg1;
 + (id)checkConstraints;
-+ (const struct { id x1; unsigned char x2; }*)columnDefinitionsWithCount:(unsigned long long*)arg1;
++ (const struct { id x1; id x2; unsigned char x3; }*)columnDefinitionsWithCount:(unsigned long long*)arg1;
 + (id)databaseTable;
 + (id)foreignKeys;
 + (id)joinClausesForProperty:(id)arg1;

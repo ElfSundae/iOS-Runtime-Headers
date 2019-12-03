@@ -7,7 +7,7 @@
     bool  mOle;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)head;
 - (id)initWithHead:(id)arg1;
 - (bool)isOle;

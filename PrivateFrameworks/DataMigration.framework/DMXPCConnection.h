@@ -26,6 +26,7 @@
 - (id /* block */)invalidationHandler;
 - (void)resume;
 - (void)sendMessage:(id)arg1 replyHandler:(id /* block */)arg2;
+- (void)sendMessage:(id)arg1 syncReplyHandler:(id /* block */)arg2;
 - (void)setInterruptionHandler:(id /* block */)arg1;
 - (void)setInvalidationHandler:(id /* block */)arg1;
 

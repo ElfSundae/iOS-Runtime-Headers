@@ -7,8 +7,6 @@
 @property (nonatomic, readonly) double initialAlpha;
 @property (nonatomic, readonly) double initialScale;
 
-+ (id)typeString;
-
 - (Class)handlerClass;
 
 @end

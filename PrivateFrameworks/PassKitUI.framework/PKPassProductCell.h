@@ -40,6 +40,7 @@
 - (void)setAccessibleLayoutObserverDelegate:(id)arg1;
 - (void)setAction:(id)arg1;
 - (void)setActionHandler:(id /* block */)arg1;
+- (void)setBackgroundColor:(id)arg1;
 - (void)setBalance:(id)arg1;
 - (void)setPass:(id)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;

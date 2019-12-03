@@ -39,10 +39,9 @@
 - (void)addObject:(id)arg1;
 - (id)allObjects;
 - (void)assign:(unsigned long long)arg1 key:(const void*)arg2;
-- (Class)classForCoder;
 - (id)copy;
 - (unsigned long long)count;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

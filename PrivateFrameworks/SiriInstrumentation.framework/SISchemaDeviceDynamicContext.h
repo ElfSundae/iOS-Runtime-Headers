@@ -2,38 +2,32 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaDeviceDynamicContext : PBCodable <NSCopying> {
+@interface SISchemaDeviceDynamicContext : PBCodable <NSSecureCoding, SISchemaDeviceDynamicContext> {
     NSString * _countryCode;
-    struct { 
-        unsigned int timeIntervalSince1970 : 1; 
-    }  _has;
     SISchemaLocation * _location;
     double  _timeIntervalSince1970;
 }
 
-@property (nonatomic, retain) NSString *countryCode;
-@property (nonatomic, readonly) bool hasCountryCode;
-@property (nonatomic, readonly) bool hasLocation;
-@property (nonatomic) bool hasTimeIntervalSince1970;
+@property (nonatomic, copy) NSString *countryCode;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic, retain) SISchemaLocation *location;
+@property (readonly) Class superclass;
 @property (nonatomic) double timeIntervalSince1970;
 
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)countryCode;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (bool)hasCountryCode;
-- (bool)hasLocation;
-- (bool)hasTimeIntervalSince1970;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (bool)isEqual:(id)arg1;
+- (id)jsonData;
 - (id)location;
-- (void)mergeFrom:(id)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setCountryCode:(id)arg1;
-- (void)setHasTimeIntervalSince1970:(bool)arg1;
 - (void)setLocation:(id)arg1;
 - (void)setTimeIntervalSince1970:(double)arg1;
 - (double)timeIntervalSince1970;

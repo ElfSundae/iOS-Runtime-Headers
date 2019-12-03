@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
  */
 
-@interface MPModelLibrarySearchResponse : MPModelResponse
+@interface MPModelLibrarySearchResponse : MPModelLibraryResponse
 
 - (void)_mediaLibraryDidChangeNotification:(id)arg1;
 - (void)dealloc;

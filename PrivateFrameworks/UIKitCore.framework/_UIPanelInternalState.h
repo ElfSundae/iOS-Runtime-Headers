@@ -4,7 +4,6 @@
 
 @interface _UIPanelInternalState : NSObject <NSCopying> {
     _UIPanelAnimationState * _animationState;
-    long long  _collapsedSecondaryIndex;
     long long  _collapsedState;
     UIViewController * _collapsedViewController;
     UISlidingBarConfiguration * _configuration;
@@ -14,12 +13,12 @@
     double  _keyboardAdjustment;
     UIViewController * _leadingViewController;
     UIViewController * _mainViewController;
+    UIViewController * _preservedDetailController;
     UISlidingBarStateRequest * _stateRequest;
     UIViewController * _trailingViewController;
 }
 
 @property (nonatomic, retain) _UIPanelAnimationState *animationState;
-@property (nonatomic) long long collapsedSecondaryIndex;
 @property (nonatomic) long long collapsedState;
 @property (nonatomic, retain) UIViewController *collapsedViewController;
 @property (nonatomic, copy) UISlidingBarConfiguration *configuration;
@@ -29,6 +28,7 @@
 @property (nonatomic) double keyboardAdjustment;
 @property (nonatomic, retain) UIViewController *leadingViewController;
 @property (nonatomic, retain) UIViewController *mainViewController;
+@property (nonatomic, retain) UIViewController *preservedDetailController;
 @property (nonatomic, copy) UISlidingBarStateRequest *stateRequest;
 @property (nonatomic, retain) UIViewController *trailingViewController;
 
@@ -39,7 +39,6 @@
 - (double)_defaultWidthForViewController:(id)arg1 parentWidth:(double)arg2;
 - (id)_stateForInteractiveRequest:(id)arg1 withAffectedSides:(long long)arg2 inPossibleStates:(id)arg3;
 - (id)animationState;
-- (long long)collapsedSecondaryIndex;
 - (long long)collapsedState;
 - (id)collapsedViewController;
 - (id)computePossibleStatesGivenParentView:(id)arg1 withSize:(struct CGSize { double x1; double x2; })arg2;
@@ -51,8 +50,8 @@
 - (double)keyboardAdjustment;
 - (id)leadingViewController;
 - (id)mainViewController;
+- (id)preservedDetailController;
 - (void)setAnimationState:(id)arg1;
-- (void)setCollapsedSecondaryIndex:(long long)arg1;
 - (void)setCollapsedState:(long long)arg1;
 - (void)setCollapsedViewController:(id)arg1;
 - (void)setConfiguration:(id)arg1;
@@ -62,6 +61,7 @@
 - (void)setKeyboardAdjustment:(double)arg1;
 - (void)setLeadingViewController:(id)arg1;
 - (void)setMainViewController:(id)arg1;
+- (void)setPreservedDetailController:(id)arg1;
 - (void)setStateRequest:(id)arg1;
 - (void)setTrailingViewController:(id)arg1;
 - (id)stateRequest;

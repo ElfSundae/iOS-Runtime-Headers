@@ -36,6 +36,7 @@
 - (id)autocompleteStore;
 - (void)cancelSearch;
 - (id /* block */)completion;
+- (void)dealloc;
 - (id)fetchRequest;
 - (id)init;
 - (bool)isCancelled;

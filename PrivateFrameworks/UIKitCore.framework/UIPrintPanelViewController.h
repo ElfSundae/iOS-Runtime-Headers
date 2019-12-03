@@ -57,8 +57,11 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (struct CGSize { double x1; double x2; })_getPreferredContentSize:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 windowFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (void)_keyWindowWillRotate:(id)arg1;
+- (struct CGSize { double x1; double x2; })_makeContentSizeeWithLongSize:(double)arg1 shortSize:(double)arg2;
 - (void)_presentInParentAnimated:(bool)arg1;
+- (void)_printNavigationConrollerDidDismiss;
 - (id)_removeRollsFrom:(id)arg1;
 - (bool)annotationsImaged;
 - (void)cancelPrinting;
@@ -82,7 +85,7 @@
 - (id)paper;
 - (id)paperList;
 - (void)popoverControllerDidDismissPopover:(id)arg1;
-- (void)presentPrintPanelAnimated:(bool)arg1;
+- (void)presentPrintPanelAnimated:(bool)arg1 hostingScene:(id)arg2;
 - (void)presentPrintPanelFromBarButtonItem:(id)arg1 animated:(bool)arg2;
 - (void)presentPrintPanelFromRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 inView:(id)arg2 animated:(bool)arg3;
 - (void)printMoreOptionsViewDidDisappear;

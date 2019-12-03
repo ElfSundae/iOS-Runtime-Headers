@@ -3,10 +3,10 @@
  */
 
 @interface PUImportFakePhotosDataSource : PXPhotosDataSource {
-    PUImportAssetsDataSource * _importDataSource;
+    PXImportAssetsDataSource * _importDataSource;
 }
 
-@property (nonatomic, retain) PUImportAssetsDataSource *importDataSource;
+@property (nonatomic, retain) PXImportAssetsDataSource *importDataSource;
 
 - (void).cxx_destruct;
 - (id)importDataSource;

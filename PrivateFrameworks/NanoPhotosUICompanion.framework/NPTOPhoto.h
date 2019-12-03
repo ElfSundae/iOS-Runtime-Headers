@@ -30,7 +30,7 @@
 
 - (void).cxx_destruct;
 - (id)_fullImageData;
-- (id)_imageWithFormat:(int)arg1;
+- (id)_imageWithSize:(long long)arg1;
 - (id)asset;
 - (unsigned long long)contentsIndex;
 - (id)eagerlyDecodedFullImage;

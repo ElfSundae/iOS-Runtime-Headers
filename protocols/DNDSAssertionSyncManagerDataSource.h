@@ -5,8 +5,6 @@
 
 @required
 
-- (NSArray *)activeLocalModeAssertionsForSyncManager:(id <DNDSAssertionSyncManager>)arg1;
-- (NSDate *)lastModeAssertionsCompleteInvalidationDateForSyncManager:(id <DNDSAssertionSyncManager>)arg1;
-- (NSDate *)lastModeAssertionsUpdateDateForSyncManager:(id <DNDSAssertionSyncManager>)arg1;
+- (DNDSPairedDevice *)currentlyActivePairedDeviceForSyncManager:(id <DNDSAssertionSyncManager>)arg1;
 
 @end

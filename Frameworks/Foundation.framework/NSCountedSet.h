@@ -15,7 +15,7 @@
 - (Class)classForCoder;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned long long)count;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (unsigned long long)countForObject:(id)arg1;
 - (void)dealloc;
 - (id)descriptionWithLocale:(id)arg1;
@@ -33,7 +33,11 @@
 - (id)objectEnumerator;
 - (void)removeObject:(id)arg1;
 
-// Image: /System/Library/PrivateFrameworks/Message.framework/Message
+// Image: /System/Library/PrivateFrameworks/MediaMiningKit.framework/MediaMiningKit
+
+- (void)enumerateObjectsSortedByCountUsingBlock:(id /* block */)arg1 ascending:(bool)arg2;
+
+// Image: /System/Library/PrivateFrameworks/MessageLegacy.framework/MessageLegacy
 
 - (id)mf_debugDescription;
 
@@ -45,12 +49,9 @@
 
 - (id)fc_description;
 
-// Image: /System/Library/PrivateFrameworks/PhotoAnalysis.framework/Frameworks/PhotosGraph.framework/Frameworks/MediaMiningKit.framework/MediaMiningKit
+// Image: /System/Library/PrivateFrameworks/PhotosGraph.framework/PhotosGraph
 
-- (void)enumerateObjectsSortedByCountUsingBlock:(id /* block */)arg1 ascending:(bool)arg2;
-
-// Image: /System/Library/PrivateFrameworks/PhotoAnalysis.framework/Frameworks/PhotosGraph.framework/PhotosGraph
-
+- (unsigned long long)pg_accumulatedCount;
 - (unsigned long long)pg_countForRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (id)pg_objectWithMaxCount;
 - (id)pg_objectWithMinCount;

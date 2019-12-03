@@ -16,8 +16,8 @@
 @property (nonatomic, retain) NSString *sourceID;
 @property (nonatomic) long long type;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (double)eventTime;
 - (id)info;
 - (id)initWithType:(long long)arg1 withQToken:(id)arg2 withSourceID:(id)arg3 withEventTime:(double)arg4 withInfo:(id)arg5;

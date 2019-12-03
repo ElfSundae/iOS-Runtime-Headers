@@ -42,6 +42,7 @@
 - (void)setFeeLabel:(id)arg1;
 - (void)setFeeTitleLabel:(id)arg1;
 - (void)setTermsLinkButton:(id)arg1;
+- (bool)showSchumerBox;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (id)termsLinkButton;
 

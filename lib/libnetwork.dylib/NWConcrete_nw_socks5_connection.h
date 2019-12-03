@@ -5,6 +5,7 @@
 @interface NWConcrete_nw_socks5_connection : NSObject <OS_nw_socks5_connection> {
     id /* block */  sc_cancel;
     NSObject<OS_nw_error> * sc_error;
+    unsigned int  sc_has_read_from_in_connection;
     unsigned long long  sc_id;
     NSObject<OS_nw_connection> * sc_in_connection;
     unsigned long long  sc_in_connection_bytes_read;
@@ -24,9 +25,14 @@
     unsigned long long  sc_out_connection_bytes_written;
     unsigned int  sc_out_connection_failed_or_sent_write_close;
     unsigned int  sc_out_disable_proxy;
+    unsigned int  sc_out_udp;
+    NSObject<OS_nw_socks5_server> * sc_parent;
+    NSObject<OS_nw_path_evaluator> * sc_prefer_wifi_path_evaluator;
+    int  sc_prefer_wifi_previous_path_status;
     NSObject<OS_dispatch_queue> * sc_queue;
     unsigned int  sc_sent_reply;
     unsigned short  sc_shoes_request_length_hbo;
+    unsigned int  sc_should_prefer_wifi;
     unsigned char  sc_state;
 }
 
@@ -38,6 +44,6 @@
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
-- (id)initWithConnection:(id)arg1 queue:(id)arg2 shoes:(bool)arg3 disableProxy:(bool)arg4;
+- (id)initWithConnection:(id)arg1 queue:(id)arg2 parent:(id)arg3 shoes:(bool)arg4 disableProxy:(bool)arg5;
 
 @end

@@ -89,6 +89,12 @@
 - (long long)unitsStyle;
 - (unsigned long long)zeroFormattingBehavior;
 
+// Image: /System/Library/Frameworks/MapKit.framework/MapKit
+
++ (id)_mapkit_descriptionForTimeSinceDate:(id)arg1;
++ (id)_mapkit_descriptionForTimeSinceDate:(id)arg1 referenceDate:(id)arg2;
++ (id)_mapkit_descriptionForTimeSinceDate:(id)arg1 referenceDate:(id)arg2 smallestUnit:(unsigned long long)arg3;
+
 // Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
 
 + (id)__ck_durationFormatter;
@@ -99,10 +105,7 @@
 
 // Image: /System/Library/PrivateFrameworks/ScreenTimeUI.framework/ScreenTimeUI
 
-+ (id)st_sharedAbbreviatedHourAndMinuteDateFormatter;
 + (id)st_sharedAbbreviatedSecondsDateFormatter;
-+ (id)st_sharedFullDynamicDateFormatter;
-+ (id)st_sharedShortDayHourAndMinuteDateFormatter;
 + (id)st_sharedShortDynamicDateFormatter;
 
 @end

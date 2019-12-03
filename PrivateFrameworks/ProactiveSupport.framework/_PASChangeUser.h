@@ -4,6 +4,6 @@
 
 @interface _PASChangeUser : NSObject
 
-+ (void)becomeCurrentUser;
++ (bool)becomeCurrentUser;
 
 @end

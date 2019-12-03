@@ -16,13 +16,13 @@
 
 + (id)sharedInstance;
 
+- (void).cxx_destruct;
 - (id)configVersion;
 - (void)configVersionDidChange:(id)arg1;
 - (id)contentProxyURL;
 - (id)contentProxyURLConnect;
 - (void)contentProxyURLConnectDidChange:(id)arg1;
 - (void)contentProxyURLDidChange:(id)arg1;
-- (void)dealloc;
 - (long long)proxyType;
 - (void)proxyTypeDidChange:(long long)arg1;
 - (void)setConfigVersion:(id)arg1;

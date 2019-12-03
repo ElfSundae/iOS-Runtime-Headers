@@ -8,6 +8,7 @@
 
 - (Class)classForCompilingModelType:(int)arg1;
 - (Class)classForLoadingModelType:(int)arg1;
+- (Class)classForLoadingModelType:(int)arg1 isUpdatable:(bool)arg2;
 - (id)init;
 
 @end

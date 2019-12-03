@@ -8,7 +8,7 @@
     bool  _responseWasFromCache;
 }
 
-@property (retain) WFAirQualityConditions *airQualityConditions;
+@property (nonatomic, retain) WFAirQualityConditions *airQualityConditions;
 @property (nonatomic, retain) NSData *rawAPIData;
 @property (nonatomic) bool responseWasFromCache;
 

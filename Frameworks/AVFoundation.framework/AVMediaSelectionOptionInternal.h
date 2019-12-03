@@ -7,7 +7,7 @@
     NSString * _displayNameLocaleIdentifier;
     NSArray * _groupMediaCharacteristics;
     NSArray * _optionMediaCharacteristics;
-    long long  _synthesizeMediaCharacteristicsOnce;
+    AVDispatchOnce * _synthesizeMediaCharacteristicsOnce;
 }
 
 @end

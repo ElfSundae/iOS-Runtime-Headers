@@ -3,6 +3,7 @@
  */
 
 @interface _INPBRunVoiceCommandIntentResponse : PBCodable <NSCopying, NSSecureCoding, _INPBRunVoiceCommandIntentResponse> {
+    bool  __encodeLegacyGloryData;
     NSString * _appBundleId;
     bool  _continueRunning;
     bool  _customResponsesDisabled;
@@ -11,12 +12,14 @@
         unsigned int customResponsesDisabled : 1; 
         unsigned int intentCategory : 1; 
         unsigned int interstitialDisabled : 1; 
+        unsigned int prefersExecutionOnCompanion : 1; 
         unsigned int toggleState : 1; 
     }  _has;
     int  _intentCategory;
     bool  _interstitialDisabled;
     NSString * _localizedAppName;
     _INPBDictionary * _parameters;
+    bool  _prefersExecutionOnCompanion;
     NSString * _responseTemplate;
     NSArray * _steps;
     int  _toggleState;
@@ -26,6 +29,7 @@
     NSString * _verb;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic, copy) NSString *appBundleId;
 @property (nonatomic) bool continueRunning;
 @property (nonatomic) bool customResponsesDisabled;
@@ -38,6 +42,7 @@
 @property (nonatomic) bool hasInterstitialDisabled;
 @property (nonatomic, readonly) bool hasLocalizedAppName;
 @property (nonatomic, readonly) bool hasParameters;
+@property (nonatomic) bool hasPrefersExecutionOnCompanion;
 @property (nonatomic, readonly) bool hasResponseTemplate;
 @property (nonatomic) bool hasToggleState;
 @property (nonatomic, readonly) bool hasUnderlyingIntent;
@@ -49,6 +54,7 @@
 @property (nonatomic) bool interstitialDisabled;
 @property (nonatomic, copy) NSString *localizedAppName;
 @property (nonatomic, retain) _INPBDictionary *parameters;
+@property (nonatomic) bool prefersExecutionOnCompanion;
 @property (nonatomic, copy) NSString *responseTemplate;
 @property (nonatomic, copy) NSArray *steps;
 @property (nonatomic, readonly) unsigned long long stepsCount;
@@ -60,10 +66,13 @@
 @property (nonatomic, copy) NSString *verb;
 
 + (Class)stepType;
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (int)StringAsIntentCategory:(id)arg1;
 - (int)StringAsToggleState:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (void)addStep:(id)arg1;
 - (id)appBundleId;
 - (void)clearSteps;
@@ -71,6 +80,7 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (bool)customResponsesDisabled;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasAppBundleId;
 - (bool)hasContinueRunning;
 - (bool)hasCustomResponsesDisabled;
@@ -78,6 +88,7 @@
 - (bool)hasInterstitialDisabled;
 - (bool)hasLocalizedAppName;
 - (bool)hasParameters;
+- (bool)hasPrefersExecutionOnCompanion;
 - (bool)hasResponseTemplate;
 - (bool)hasToggleState;
 - (bool)hasUnderlyingIntent;
@@ -85,12 +96,14 @@
 - (bool)hasUnderlyingIntentTitle;
 - (bool)hasVerb;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (int)intentCategory;
 - (id)intentCategoryAsString:(int)arg1;
 - (bool)interstitialDisabled;
 - (bool)isEqual:(id)arg1;
 - (id)localizedAppName;
 - (id)parameters;
+- (bool)prefersExecutionOnCompanion;
 - (bool)readFrom:(id)arg1;
 - (id)responseTemplate;
 - (void)setAppBundleId:(id)arg1;
@@ -100,11 +113,13 @@
 - (void)setHasCustomResponsesDisabled:(bool)arg1;
 - (void)setHasIntentCategory:(bool)arg1;
 - (void)setHasInterstitialDisabled:(bool)arg1;
+- (void)setHasPrefersExecutionOnCompanion:(bool)arg1;
 - (void)setHasToggleState:(bool)arg1;
 - (void)setIntentCategory:(int)arg1;
 - (void)setInterstitialDisabled:(bool)arg1;
 - (void)setLocalizedAppName:(id)arg1;
 - (void)setParameters:(id)arg1;
+- (void)setPrefersExecutionOnCompanion:(bool)arg1;
 - (void)setResponseTemplate:(id)arg1;
 - (void)setSteps:(id)arg1;
 - (void)setToggleState:(int)arg1;

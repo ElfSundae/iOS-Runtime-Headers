@@ -54,6 +54,8 @@
     NSMutableArray * _writingDirectionArray;
 }
 
++ (bool)_usesLibXML2ForOptions:(id)arg1;
++ (bool)allowsAttributedStringAgentForOptions:(id)arg1;
 + (id)defaultParagraphStyle;
 + (void)initialize;
 

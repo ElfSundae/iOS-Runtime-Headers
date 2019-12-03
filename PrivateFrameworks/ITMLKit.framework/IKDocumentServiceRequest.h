@@ -9,14 +9,14 @@
         bool hasDocumentDidChange; 
     }  _dsrDelegateFlags;
     IKJSViewModelLink * _link;
-    NSDictionary * _respondeDictionary;
+    NSDictionary * _responseDictionary;
 }
 
 @property (readonly) IKAppDocument *appDocument;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy) NSDictionary *respondeDictionary;
+@property (readonly, copy) NSDictionary *responseDictionary;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -25,7 +25,7 @@
 - (void)documentDidChangeForViewModelLink:(id)arg1;
 - (void)onCancel;
 - (void)onSend;
-- (id)respondeDictionary;
+- (id)responseDictionary;
 - (void)responseDictionaryDidChangeForViewModelLink:(id)arg1;
 - (void)setDelegate:(id)arg1;
 

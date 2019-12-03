@@ -19,6 +19,7 @@
     int  mWrapMode;
 }
 
+- (void).cxx_destruct;
 - (id)color;
 - (id)colorAtPosition:(float)arg1;
 - (void)createPhoneBrush;

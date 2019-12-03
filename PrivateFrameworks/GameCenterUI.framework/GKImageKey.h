@@ -22,9 +22,9 @@
 + (id)fileNameWithIdentifierInImageSource:(id)arg1;
 + (id)keyForImageIdentifier:(id)arg1 withImageSource:(id)arg2;
 
+- (void).cxx_destruct;
 - (id)basename;
 - (id)cacheKey;
-- (void)dealloc;
 - (id)filePath;
 - (id)imageID;
 - (void)setBasename:(id)arg1;

@@ -39,5 +39,6 @@
 - (id)serverFlowStyle;
 - (void)setServerFlowStyle:(id)arg1;
 - (void)showLoadingSpinnerViewController;
+- (id)versionFromLicenseText:(id)arg1;
 
 @end

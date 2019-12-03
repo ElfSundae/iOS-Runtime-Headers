@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PHActivityViewController : UIActivityViewController <PUActivityDataSource> {
+@interface PHActivityViewController : UIActivityViewController <PXActivityDataSource> {
     NSArray * __PHActivityItems;
 }
 

@@ -26,6 +26,7 @@
 - (id)achievementsDefaultIcon;
 - (id)achievementsNotStartedIcon;
 - (id)addPlayerButtonImage;
+- (id)avatarSourceWithDimension:(long long)arg1;
 - (id)bubbleAccept;
 - (id)bubbleChallenges;
 - (id)bubbleDecline;
@@ -53,9 +54,12 @@
 - (id)interactiveRatingStarsBackground;
 - (id)interactiveRatingStarsForeground;
 - (id)macGameIconSource;
+- (id)messagesInviteBackgroundImage;
+- (id)monogramSourceWithDimension:(long long)arg1;
 - (id)navbarActionButtonIcon;
 - (id)photoDetailSource;
 - (id)photoListSource;
+- (id)placeholderSourceWithDimension:(long long)arg1;
 - (id)playerPickerSelectedImage;
 - (id)playerPickerUnselectedImage;
 - (id)ratingStarsBackgroundImage;

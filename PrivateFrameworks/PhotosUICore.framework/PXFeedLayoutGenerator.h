@@ -5,7 +5,7 @@
 @interface PXFeedLayoutGenerator : NSObject {
     long long  _cacheHeadLocation;
     long long  _cacheTailLocation;
-    /* Warning: unhandled array encoding: '[20@]' */ id  _cachedBatchID;
+    id  _cachedBatchID;
     struct PXTileInfo { 
         long long index; 
         struct CGSize { 
@@ -60,7 +60,7 @@
 @property (nonatomic, readonly) bool isAtEnd;
 @property (nonatomic) struct CGSize { double x1; double x2; } noCaptionSpacing;
 @property (nonatomic) long long numberOfMagneticGuidelines;
-@property (nonatomic) id /* block */ parsedFrameBlock;
+@property (nonatomic, copy) id /* block */ parsedFrameBlock;
 @property (nonatomic) double roundingScale;
 @property (nonatomic) long long scanLocation;
 @property (nonatomic) long long scanSpecialSequenceCount;

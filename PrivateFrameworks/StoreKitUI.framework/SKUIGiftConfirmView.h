@@ -27,8 +27,8 @@
 @property (nonatomic, readonly) UIButton *termsButton;
 
 - (void).cxx_destruct;
-- (id)_newBoldLabelWithSize:(double)arg1 white:(double)arg2;
-- (id)_newLightLabelWithSize:(double)arg1 white:(double)arg2 alpha:(double)arg3;
+- (id)_newBoldLabelWithSize:(double)arg1;
+- (id)_newLightLabelWithSize:(double)arg1 alpha:(double)arg2;
 - (id)_termsButton;
 - (id)initWithGift:(id)arg1 configuration:(id)arg2;
 - (void)layoutSubviews;

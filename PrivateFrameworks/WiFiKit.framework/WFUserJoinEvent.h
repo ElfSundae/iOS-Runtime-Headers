@@ -14,11 +14,13 @@
 @property (nonatomic) unsigned int metricIdentifier;
 @property (readonly) Class superclass;
 
-+ (id)joinEventWithType:(long long)arg1 security:(long long)arg2;
++ (id)joinEventWithSecurity:(long long)arg1 error:(long long)arg2 sectionCounts:(id)arg3 sectionName:(id)arg4;
++ (id)joinEventWithType:(long long)arg1 security:(long long)arg2 error:(long long)arg3;
 
 - (void).cxx_destruct;
+- (id)_countMetricsFromSectionCounts:(id)arg1;
 - (unsigned int)_metricIdForType:(long long)arg1;
-- (id)initWithType:(long long)arg1 security:(long long)arg2;
+- (id)initWithType:(long long)arg1 security:(long long)arg2 error:(long long)arg3 sectionCounts:(id)arg4 sectionName:(id)arg5;
 - (id)metric;
 - (unsigned int)metricIdentifier;
 - (void)setMetric:(id)arg1;

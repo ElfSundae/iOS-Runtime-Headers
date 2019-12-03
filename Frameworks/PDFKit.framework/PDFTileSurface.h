@@ -6,12 +6,11 @@
     struct CGImage { } * cgImageRef;
     struct __IOSurface { } * ioSurfaceRef;
     int  pageNumber;
-    NSDate * recycledDate;
     int  tileId;
     int  tileSize;
     int  type;
 }
 
-- (void).cxx_destruct;
+- (void)releaseSurface;
 
 @end

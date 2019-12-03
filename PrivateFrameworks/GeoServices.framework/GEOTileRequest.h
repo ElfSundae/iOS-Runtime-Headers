@@ -10,13 +10,13 @@
     NSString * _bundleVersion;
     GEOTileKeyMap * _cachedData;
     GEOTileKeyMap * _cachedEtags;
+    unsigned long long  _constraints;
+    GEOTileKeyMap * _createTimes;
     GEOTileKeyList * _keyList;
     unsigned char  _loadReason;
     NSLocale * _locale;
     GEOResourceManifestConfiguration * _manifestConfiguration;
     GEOTileKeyMap * _priorities;
-    bool  _requirePowerPluggedIn;
-    bool  _requireWiFi;
     bool  _shouldParticipateInBalancer;
     GEOTileKeyMap * _signpostIDs;
 }
@@ -28,13 +28,13 @@
 @property (nonatomic, readonly) NSString *bundleVersion;
 @property (nonatomic, readonly) GEOTileKeyMap *cachedData;
 @property (nonatomic, readonly) GEOTileKeyMap *cachedEtags;
+@property (nonatomic, readonly) unsigned long long constraints;
+@property (nonatomic, readonly) GEOTileKeyMap *createTimes;
 @property (nonatomic, readonly) GEOTileKeyList *keyList;
 @property (nonatomic, readonly) unsigned char loadReason;
 @property (nonatomic, readonly) NSLocale *locale;
 @property (nonatomic, readonly) GEOResourceManifestConfiguration *manifestConfiguration;
 @property (nonatomic, readonly) GEOTileKeyMap *priorities;
-@property (nonatomic, readonly) bool requirePowerPluggedIn;
-@property (nonatomic, readonly) bool requireWiFi;
 @property (nonatomic, readonly) bool shouldParticipateInBalancer;
 @property (nonatomic, readonly) GEOTileKeyMap *signpostIDs;
 
@@ -46,17 +46,17 @@
 - (id)bundleVersion;
 - (id)cachedData;
 - (id)cachedEtags;
+- (unsigned long long)constraints;
+- (id)createTimes;
 - (id)description;
 - (id)init;
 - (id)initWithKeyList:(id)arg1 manifestConfiguration:(id)arg2 locale:(id)arg3;
-- (id)initWithKeyList:(id)arg1 manifestConfiguration:(id)arg2 locale:(id)arg3 cachedEtags:(id)arg4 cachedData:(id)arg5 priorities:(id)arg6 signpostIDs:(id)arg7 additionalInfos:(id)arg8 bundleIdentifier:(id)arg9 bundleVersion:(id)arg10 auditToken:(id)arg11 requireWiFi:(bool)arg12 requirePowerPluggedIn:(bool)arg13 backgroundSessionIdentifier:(id)arg14 shouldParticipateInBalancer:(bool)arg15 reason:(unsigned char)arg16;
+- (id)initWithKeyList:(id)arg1 manifestConfiguration:(id)arg2 locale:(id)arg3 cachedEtags:(id)arg4 cachedData:(id)arg5 priorities:(id)arg6 signpostIDs:(id)arg7 createTimes:(id)arg8 additionalInfos:(id)arg9 bundleIdentifier:(id)arg10 bundleVersion:(id)arg11 auditToken:(id)arg12 constraints:(unsigned long long)arg13 backgroundSessionIdentifier:(id)arg14 shouldParticipateInBalancer:(bool)arg15 reason:(unsigned char)arg16;
 - (id)keyList;
 - (unsigned char)loadReason;
 - (id)locale;
 - (id)manifestConfiguration;
 - (id)priorities;
-- (bool)requirePowerPluggedIn;
-- (bool)requireWiFi;
 - (bool)shouldParticipateInBalancer;
 - (id)signpostIDs;
 

@@ -7,7 +7,7 @@
     bool  mLoaded;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)delayedContext;
 - (bool)isLoaded;
 - (bool)load;

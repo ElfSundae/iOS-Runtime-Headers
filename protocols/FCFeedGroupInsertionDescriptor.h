@@ -5,6 +5,6 @@
 
 @required
 
-- (bool)wantsToInsertGroup:(id <FCFeedGroupOutlining>)arg1 withContext:(FCFeedGroupEmittingContext *)arg2;
+- (bool)wantsToInsertGroupInContext:(FCFeedGroupEmittingContext *)arg1;
 
 @end

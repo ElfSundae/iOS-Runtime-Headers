@@ -19,7 +19,7 @@
 - (void)_handleChangedOrNewScopes:(id)arg1 deletedScopeIdentifiers:(id)arg2 newScopeListSyncAnchor:(struct NSData { Class x1; }*)arg3;
 - (void)_handleFinalScopeListSyncAnchor:(struct NSData { Class x1; }*)arg1 error:(id)arg2;
 - (void)cancel;
-- (id)initWithEngineLibrary:(id)arg1;
+- (id)initWithEngineLibrary:(id)arg1 session:(id)arg2;
 - (void)launch;
 - (id)taskIdentifier;
 

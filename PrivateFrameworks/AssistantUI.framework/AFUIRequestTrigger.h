@@ -4,11 +4,11 @@
 
 @interface AFUIRequestTrigger : NSObject {
     NSMapTable * _observers;
-    AFUIRequestOptions * _options;
+    SASRequestOptions * _options;
     long long  _state;
 }
 
-@property (nonatomic, readonly) AFUIRequestOptions *options;
+@property (nonatomic, readonly) SASRequestOptions *options;
 @property (nonatomic, readonly) long long state;
 
 - (void).cxx_destruct;

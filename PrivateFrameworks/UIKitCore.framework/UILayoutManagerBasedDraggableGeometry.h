@@ -5,6 +5,7 @@
 @interface UILayoutManagerBasedDraggableGeometry : NSObject <UITextDraggableGeometry, UITextDraggableGeometryFastSameViewOperationsSupporting> {
     long long  _geometryOptions;
     NSLayoutManager * _layoutManager;
+    UIColor * _previousBackgroundColor;
     UIView<UITextDragSupporting><UITextDropSupporting> * _view;
 }
 
@@ -18,12 +19,12 @@
 
 - (void).cxx_destruct;
 - (id)_draggableTextInRange:(id)arg1;
-- (bool)_isUsableLink:(id)arg1;
+- (bool)_isActualLink:(id)arg1;
 - (id /* block */)_previewProviderForTextInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (void)_renderTextInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 image:(out id*)arg2 boundingRectangles:(out id*)arg3 forLifting:(bool)arg4;
 - (id /* block */)_targetedPreviewProviderForImage:(id)arg1 inRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (id /* block */)_targetedPreviewProviderForTextInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
-- (id /* block */)_targetedPreviewProviderForTextInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 overrideLifting:(id /* block */)arg2;
+- (id /* block */)_targetedPreviewProviderForTextInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 dismissing:(bool)arg2 overrideLifting:(id /* block */)arg3;
 - (struct CGPoint { double x1; double x2; })_textOriginOffsetForRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 inView:(id)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_textRectForRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 inView:(id)arg2;
 - (id)_textStorage;
@@ -33,8 +34,9 @@
 - (id)initWithView:(id)arg1 layoutManager:(id)arg2;
 - (id)layoutManager;
 - (id)performSameViewDropOperation:(id)arg1;
-- (id)previewForDroppingText:(id)arg1 toPosition:(id)arg2 inContainerView:(id)arg3;
+- (id)previewForDroppingTextInRange:(id)arg1 toPosition:(id)arg2 inContainerView:(id)arg3;
 - (void)setGeometryOptions:(long long)arg1;
+- (id /* block */)targetedPreviewProviderForTextInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 dismissing:(bool)arg2;
 - (id)textRangeForAttachmentInTextRange:(id)arg1 atPoint:(struct CGPoint { double x1; double x2; })arg2;
 - (id)textRangesForAttachmentsInTextRange:(id)arg1;
 - (id)view;

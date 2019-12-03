@@ -22,6 +22,7 @@
 - (bool)_showsActivityIndicator;
 - (void)cancelFeedback:(id)arg1;
 - (id)delegate;
+- (void)finishWithSuccess:(bool)arg1;
 - (id)initWithDelegate:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setShowsActivityIndicator:(bool)arg1;

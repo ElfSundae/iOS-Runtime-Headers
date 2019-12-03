@@ -13,7 +13,7 @@
 @property (copy) id /* block */ finishedBlock;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (retain) NSData *syncAnchor;
+@property (copy) NSData *syncAnchor;
 
 - (void).cxx_destruct;
 - (void)didEnumerateItems:(id)arg1;

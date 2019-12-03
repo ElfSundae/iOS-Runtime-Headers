@@ -17,7 +17,6 @@
 - (id)paragraphStylesBetweenCharIndex:(unsigned long long)arg1 andCharIndex:(unsigned long long)arg2;
 - (bool)shouldCreateKnobs;
 - (bool)shouldShowKnobs;
-- (void)showTableOfContentsEditingCollaborationHUDAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (id)tocInfo;
 
 @end

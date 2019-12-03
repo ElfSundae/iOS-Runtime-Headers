@@ -16,12 +16,14 @@
 
 @property (nonatomic, retain) NSError *cachedStreamError;
 @property (nonatomic, readonly) HMCameraProfile *cameraProfile;
+@property (getter=isContinuousStreamingEnabled, nonatomic, readonly) bool continuousStreamingEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) HFExecutionEnvironment *executionEnvironment;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool isRegisteredForEvents;
 @property (nonatomic, retain) <NACancelable> *nextSnapshotEvent;
+@property (getter=arePeriodicSnapshotsEnabled, nonatomic, readonly) bool periodicSnapshotsEnabled;
 @property (nonatomic) unsigned long long snapshotErrorCount;
 @property (nonatomic, retain) NSDate *snapshotErrorDate;
 @property (nonatomic, readonly) NSMapTable *snapshotRequesters;
@@ -44,6 +46,7 @@
 - (void)_stopStreaming;
 - (void)_updateEventRegistration;
 - (void)accessoryDidUpdateReachability:(id)arg1;
+- (bool)arePeriodicSnapshotsEnabled;
 - (void)beginContinuousStreamingWithRequester:(id)arg1;
 - (void)beginPeriodicSnapshotsWithRequester:(id)arg1;
 - (id)cachedStreamError;
@@ -61,6 +64,7 @@
 - (void)executionEnvironmentDidBecomeVisible:(id)arg1;
 - (void)executionEnvironmentWillResignActive:(id)arg1;
 - (id)initWithCameraProfile:(id)arg1;
+- (bool)isContinuousStreamingEnabled;
 - (bool)isRegisteredForEvents;
 - (id)nextSnapshotEvent;
 - (void)setCachedStreamError:(id)arg1;

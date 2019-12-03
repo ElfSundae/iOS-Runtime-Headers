@@ -22,6 +22,7 @@
         double bottom; 
         double trailing; 
     }  _hitRectInsets;
+    UIImageView * _imageView;
     bool  _included;
     struct CGPoint { 
         double x; 
@@ -35,6 +36,7 @@
     NSTimer * _longPressTimer;
     AVMicaPackage * _micaPackage;
     NSString * _micaPackageStateName;
+    bool  _removed;
     bool  _showsHighlightedAppearance;
     long long  _trackingState;
     struct CGPoint { 
@@ -55,6 +57,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) UIViewPropertyAnimator *highlightAnimator;
 @property (nonatomic) struct NSDirectionalEdgeInsets { double x1; double x2; double x3; double x4; } hitRectInsets;
+@property (nonatomic, retain) UIImageView *imageView;
 @property (getter=isIncluded, nonatomic) bool included;
 @property (nonatomic) struct CGPoint { double x1; double x2; } initialPreciseLocationOfTouch;
 @property (nonatomic) struct CGPoint { double x1; double x2; } locationOfTouchInWindow;
@@ -62,6 +65,7 @@
 @property (nonatomic) NSTimer *longPressTimer;
 @property (nonatomic, retain) AVMicaPackage *micaPackage;
 @property (nonatomic, retain) NSString *micaPackageStateName;
+@property (getter=isRemoved, nonatomic) bool removed;
 @property (nonatomic) bool showsHighlightedAppearance;
 @property (readonly) Class superclass;
 @property (nonatomic) long long trackingState;
@@ -84,6 +88,8 @@
 - (id)highlightAnimator;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })hitRect;
 - (struct NSDirectionalEdgeInsets { double x1; double x2; double x3; double x4; })hitRectInsets;
+- (id)imageNameForMicaPackageState;
+- (id)imageView;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (struct CGPoint { double x1; double x2; })initialPreciseLocationOfTouch;
 - (struct CGSize { double x1; double x2; })intrinsicContentSize;
@@ -91,6 +97,7 @@
 - (bool)isCollapsedOrExcluded;
 - (bool)isIncluded;
 - (bool)isLongPressEnabled;
+- (bool)isRemoved;
 - (struct CGPoint { double x1; double x2; })locationOfTouchInWindow;
 - (id)longPressTimer;
 - (id)micaPackage;
@@ -102,8 +109,10 @@
 - (void)setExtrinsicContentSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setHasAlternateAppearance:(bool)arg1;
 - (void)setHasFullScreenAppearance:(bool)arg1;
+- (void)setHidden:(bool)arg1;
 - (void)setHighlightAnimator:(id)arg1;
 - (void)setHitRectInsets:(struct NSDirectionalEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
+- (void)setImageView:(id)arg1;
 - (void)setIncluded:(bool)arg1;
 - (void)setInitialPreciseLocationOfTouch:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setLocationOfTouchInWindow:(struct CGPoint { double x1; double x2; })arg1;
@@ -111,6 +120,8 @@
 - (void)setLongPressTimer:(id)arg1;
 - (void)setMicaPackage:(id)arg1;
 - (void)setMicaPackageStateName:(id)arg1;
+- (void)setNeedsUpdateGlyphRenderingMode;
+- (void)setRemoved:(bool)arg1;
 - (void)setShowsHighlightedAppearance:(bool)arg1;
 - (void)setTrackingState:(long long)arg1;
 - (void)setTranslationOfPanFromPreviousTouch:(struct CGPoint { double x1; double x2; })arg1;
@@ -118,6 +129,5 @@
 - (long long)trackingState;
 - (struct CGPoint { double x1; double x2; })translationOfPanFromPreviousTouch;
 - (void)triggerSelectionChangedFeedback;
-- (void)willMoveToWindow:(id)arg1;
 
 @end

@@ -2,16 +2,14 @@
    Image: /System/Library/PrivateFrameworks/FrontBoard.framework/FrontBoard
  */
 
-@interface FBPreferences : NSObject {
-    NSObject<OS_dispatch_queue> * _queue;
-}
+@interface FBPreferences : BSAbstractDefaultDomain
+
+@property (nonatomic, readonly) bool defaultShellShouldTerminateClientsOnDisconnect;
+@property (nonatomic, readonly) bool disableXPCServicesEndpointHack;
 
 + (id)sharedInstance;
 
-- (void).cxx_destruct;
-- (void)_queue_reload;
-- (id)description;
-- (id)init;
-- (void)reload;
+- (void)_bindAndRegisterDefaults;
+- (id)_init;
 
 @end

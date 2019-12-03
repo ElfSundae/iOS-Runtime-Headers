@@ -9,6 +9,7 @@
     struct { 
         /* Warning: Unrecognized filer type: ']' using 'void*' */ void*columns[4]; 
     }  _referenceTransform;
+    NSUUID * _sessionIdentifier;
     struct { 
         /* Warning: Unrecognized filer type: ']' using 'void*' */ void*columns[4]; 
     }  _transform;
@@ -18,6 +19,7 @@
 @property (nonatomic) double lastUpdateTimestamp;
 @property (nonatomic, readonly) NSString *name;
 @property (nonatomic) struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; } referenceTransform;
+@property (nonatomic, retain) NSUUID *sessionIdentifier;
 @property (nonatomic) struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; } transform;
 
 + (bool)supportsSecureCoding;
@@ -40,8 +42,10 @@
 - (double)lastUpdateTimestamp;
 - (id)name;
 - (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })referenceTransform;
+- (id)sessionIdentifier;
 - (void)setLastUpdateTimestamp:(double)arg1;
 - (void)setReferenceTransform:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })arg1;
+- (void)setSessionIdentifier:(id)arg1;
 - (void)setTransform:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })arg1;
 - (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })transform;
 

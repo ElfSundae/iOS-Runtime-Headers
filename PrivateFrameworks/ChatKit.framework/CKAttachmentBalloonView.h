@@ -20,6 +20,7 @@
 - (void)layoutSubviews;
 - (void)prepareForDisplay;
 - (void)prepareForReuse;
+- (void)richIconDidChange:(id)arg1;
 - (void)setAttachmentView:(id)arg1;
 - (void)setMediaObject:(id)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1 textAlignmentInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; }*)arg2;

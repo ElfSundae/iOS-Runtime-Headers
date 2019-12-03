@@ -32,6 +32,7 @@
 
 + (id)describeProminentFeature:(unsigned long long)arg1;
 + (id)eventHighlightWithEKEvent:(id)arg1 score:(double)arg2 prominentFeature:(unsigned long long)arg3 features:(id)arg4 isExtraordinary:(bool)arg5;
++ (id)eventHighlightWithEvent:(id)arg1 score:(double)arg2 prominentFeature:(unsigned long long)arg3 features:(id)arg4 isExtraordinary:(bool)arg5;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;

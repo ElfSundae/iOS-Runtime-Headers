@@ -2,12 +2,13 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUUIMomentsGridViewController : PUPhotosGridViewController <PUPhotoPickerSelectionHandler, PUPhotoPickerServicesConsumer, PUPhotoPickerTestSupportHandler> {
+@interface PUUIMomentsGridViewController : PUPhotosGridViewController <PUPhotoPickerFileSizeToolbarProviderDelegate, PUPhotoPickerSelectionHandler, PUPhotoPickerServicesConsumer, PUPhotoPickerTestSupportHandler, PUPhotosGridViewSupplementalToolbarDataSource> {
     PUUIImagePickerControllerHelper * __imagePickerControllerHelper;
     NSArray * __imagePickerMediaTypes;
     bool  _didDisappear;
+    PUPhotoPickerFileSizeToolbarProvider * _fileSizePickerToolbarProvider;
     UIBarButtonItem * _imagePickerCancelButton;
-    UIBarButtonItem * _imagePickerMultipleSelectionDoneButton;
+    UIBarButtonItem * _imagePickerSelectionDoneButton;
     struct UIEdgeInsets { 
         double top; 
         double left; 
@@ -16,10 +17,13 @@
     }  _lastKnownSafeAreaInsets;
     double  _lastKnownWidth;
     <PUPhotoPicker> * _photoPicker;
+    PUPhotoPickerResizeTaskDescriptor * _resizeTaskDescriptor;
 }
 
 @property (readonly) PUUIImagePickerControllerHelper *_imagePickerControllerHelper;
 @property (setter=_setImagePickerMediaTypes:, nonatomic, copy) NSArray *_imagePickerMediaTypes;
+@property (getter=isAnyAssetDownloading, nonatomic, readonly) bool anyAssetDownloading;
+@property (getter=isAnyAssetSelected, nonatomic, readonly) bool anyAssetSelected;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) bool didDisappear;
@@ -28,11 +32,16 @@
 @property (nonatomic) double lastKnownWidth;
 @property (nonatomic) <PUPhotoPicker> *photoPicker;
 @property (nonatomic, readonly) bool referenceValuesDidChange;
+@property (nonatomic, retain) PUPhotoPickerResizeTaskDescriptor *resizeTaskDescriptor;
+@property (nonatomic, readonly) NSArray *selectedAssets;
+@property (nonatomic, readonly) PUSessionInfo *sessionInfo;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_handleImagePickerCancel:(id)arg1;
-- (void)_handleImagePickerMultipleSelectionDone:(id)arg1;
+- (void)_handleImagePickerMultipleSelectionDone;
+- (void)_handleImagePickerSelectionDone:(id)arg1;
+- (void)_handleImagePickerSingleSelectionDone;
 - (id)_imagePickerControllerHelper;
 - (id)_imagePickerMediaTypes;
 - (void)_scrollToBottomIfNeeded;
@@ -48,8 +57,10 @@
 - (void)handleNavigateToAsset:(id)arg1 inContainer:(id)arg2;
 - (void)handleToggleSelectionOfItemAtIndexPath:(id)arg1;
 - (id)init;
+- (id)initWithModalPresentationStyle:(long long)arg1;
 - (id)initWithSpec:(id)arg1;
 - (bool)initiallyScrolledToBottom;
+- (bool)isAnyAssetDownloading;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })lastKnownSafeAreaInsets;
 - (double)lastKnownWidth;
 - (void)loadView;
@@ -57,7 +68,10 @@
 - (void)performPhotoPickerPreviewOfFirstAsset;
 - (void)performPhotoPickerSelection;
 - (id)photoPicker;
+- (void)photoPickerFileSizeToolbarProvider:(id)arg1 didSelectResizeTaskDescriptor:(id)arg2;
+- (void)photoPickerFileSizeToolbarProvider:(id)arg1 presentSizePickerViewController:(id)arg2;
 - (bool)referenceValuesDidChange;
+- (id)resizeTaskDescriptor;
 - (double)sectionedGridLayout:(id)arg1 accessibilitySectionHeaderHeightForVisualSection:(long long)arg2;
 - (double)sectionedGridLayout:(id)arg1 sectionHeaderHeightForVisualSection:(long long)arg2;
 - (void)setDidDisappear:(bool)arg1;
@@ -65,8 +79,10 @@
 - (void)setLastKnownWidth:(double)arg1;
 - (void)setPhotoPicker:(id)arg1;
 - (void)setPhotoPickerMediaTypes:(id)arg1;
+- (void)setResizeTaskDescriptor:(id)arg1;
 - (bool)shouldPerformAutomaticContentOffsetAdjustment;
 - (bool)shouldShowMenu;
+- (bool)updateSpec;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLoad;

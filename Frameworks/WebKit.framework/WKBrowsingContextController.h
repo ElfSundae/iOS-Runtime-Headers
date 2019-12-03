@@ -3,10 +3,10 @@
  */
 
 @interface WKBrowsingContextController : NSObject {
-    /* Warning: unhandled struct encoding: '{WeakObjCPtr<id<WKBrowsingContextHistoryDelegate> >="m_weakReference"@}' */ struct WeakObjCPtr<id<WKBrowsingContextHistoryDelegate> > { 
+    struct WeakObjCPtr<id<WKBrowsingContextHistoryDelegate> > { 
         id m_weakReference; 
     }  _historyDelegate;
-    /* Warning: unhandled struct encoding: '{WeakObjCPtr<id<WKBrowsingContextLoadDelegate> >="m_weakReference"@}' */ struct WeakObjCPtr<id<WKBrowsingContextLoadDelegate> > { 
+    struct WeakObjCPtr<id<WKBrowsingContextLoadDelegate> > { 
         id m_weakReference; 
     }  _loadDelegate;
     struct RefPtr<WebKit::WebPageProxy, WTF::DumbPtrTraits<WebKit::WebPageProxy> > { 
@@ -17,7 +17,7 @@
             struct PageLoadStateObserver {} *__value_; 
         } __ptr_; 
     }  _pageLoadStateObserver;
-    /* Warning: unhandled struct encoding: '{WeakObjCPtr<id<WKBrowsingContextPolicyDelegate> >="m_weakReference"@}' */ struct WeakObjCPtr<id<WKBrowsingContextPolicyDelegate> > { 
+    struct WeakObjCPtr<id<WKBrowsingContextPolicyDelegate> > { 
         id m_weakReference; 
     }  _policyDelegate;
 }

@@ -7,6 +7,7 @@
     UIView * _defaultFocusView;
     NSArray * _sectionViews;
     VUISeparatorView * _separatorView;
+    IKViewElement * _viewElement;
     VUIProductMetadataLayout * _viewLayout;
 }
 
@@ -14,6 +15,7 @@
 @property (nonatomic, retain) UIView *defaultFocusView;
 @property (nonatomic, retain) NSArray *sectionViews;
 @property (nonatomic, retain) VUISeparatorView *separatorView;
+@property (nonatomic, retain) IKViewElement *viewElement;
 @property (nonatomic, retain) VUIProductMetadataLayout *viewLayout;
 
 + (id)configureViewWithElement:(id)arg1 existingView:(id)arg2;
@@ -31,9 +33,11 @@
 - (void)setDefaultFocusView:(id)arg1;
 - (void)setSectionViews:(id)arg1;
 - (void)setSeparatorView:(id)arg1;
+- (void)setViewElement:(id)arg1;
 - (void)setViewLayout:(id)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (void)updateViewWithSections:(id)arg1;
+- (id)viewElement;
 - (id)viewLayout;
 
 @end

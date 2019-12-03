@@ -4,8 +4,6 @@
 
 @interface SXParallaxScaleScene : SXComponentAnimation
 
-+ (id)typeString;
-
 - (Class)handlerClass;
 - (bool)userControllable;
 

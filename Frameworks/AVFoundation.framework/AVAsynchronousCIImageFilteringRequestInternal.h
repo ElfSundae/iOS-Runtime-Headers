@@ -24,7 +24,6 @@
 - (id)compositingRequest;
 - (void)dealloc;
 - (id /* block */)defaultCIContextProvider;
-- (void)finalize;
 - (void)setCancellationTest:(id /* block */)arg1;
 - (void)setCompletionHandler:(id /* block */)arg1;
 - (void)setCompositingRequest:(id)arg1;

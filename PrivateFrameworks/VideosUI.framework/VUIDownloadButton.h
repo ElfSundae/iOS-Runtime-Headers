@@ -12,7 +12,7 @@
     UIImage * _notDownloadedImage;
     bool  _observingDownloadProgress;
     UIViewController * _presentingViewController;
-    VUICircleProgressIndicator * _progressIndicator;
+    VUICircularProgress * _progressIndicator;
     bool  _showsTextInDownloadedState;
     VUIDownloadButtonViewModel * _viewModel;
     bool  _wasCanceled;
@@ -28,7 +28,7 @@
 @property (nonatomic, retain) UIImage *notDownloadedImage;
 @property (nonatomic) bool observingDownloadProgress;
 @property (nonatomic) UIViewController *presentingViewController;
-@property (nonatomic, retain) VUICircleProgressIndicator *progressIndicator;
+@property (nonatomic, retain) VUICircularProgress *progressIndicator;
 @property (nonatomic) bool showsTextInDownloadedState;
 @property (nonatomic, retain) VUIDownloadButtonViewModel *viewModel;
 @property (nonatomic) bool wasCanceled;

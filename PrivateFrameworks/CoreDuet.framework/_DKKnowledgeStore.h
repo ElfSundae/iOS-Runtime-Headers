@@ -6,12 +6,14 @@
     NSObject<OS_dispatch_queue> * _defaultQueue;
     NSObject<_DKKnowledgeQuerying><_DKKnowledgeSaving><_DKKnowledgeDeleting><_DKKnowledgeEventStreamDeleting> * _knowledgeStoreHandle;
     _DKPrivacyPolicyEnforcer * _privacyEnforcer;
+    _DKQueryDispatcher * _queryDispatcher;
     _DKRateLimitPolicyEnforcer * _rateLimitEnforcer;
 }
 
 @property (retain) NSObject<OS_dispatch_queue> *defaultQueue;
 @property (nonatomic, retain) NSObject<_DKKnowledgeQuerying><_DKKnowledgeSaving><_DKKnowledgeDeleting><_DKKnowledgeEventStreamDeleting> *knowledgeStoreHandle;
 @property (readonly) _DKPrivacyPolicyEnforcer *privacyEnforcer;
+@property (nonatomic, retain) _DKQueryDispatcher *queryDispatcher;
 @property (readonly) _DKRateLimitPolicyEnforcer *rateLimitEnforcer;
 
 + (id)_knowledgeStoreWithStoreDirectory:(id)arg1 readOnly:(bool)arg2;
@@ -21,6 +23,7 @@
 + (id)knowledgeStoreWithDirectReadWriteAccess;
 + (id)userKnowledgeStore;
 + (id)userKnowledgeStoreWithDirectReadOnlyAccess;
++ (id)userKnowledgeStoreWithDirectReadWriteAccess;
 
 - (void).cxx_destruct;
 - (id)_sanitizeObjectsBeforeSaving:(id)arg1;
@@ -32,6 +35,7 @@
 - (bool)deleteObjects:(id)arg1 error:(id*)arg2;
 - (void)deleteObjects:(id)arg1 responseQueue:(id)arg2 withCompletion:(id /* block */)arg3;
 - (bool)deleteRemoteState:(id*)arg1;
+- (id)deviceUUID;
 - (id)executeQuery:(id)arg1 error:(id*)arg2;
 - (void)executeQuery:(id)arg1 responseQueue:(id)arg2;
 - (void)executeQuery:(id)arg1 responseQueue:(id)arg2 withCompletion:(id /* block */)arg3;
@@ -40,11 +44,13 @@
 - (id)knowledgeStoreHandle;
 - (id)knowledgeSynchronizingHandleWithError:(id*)arg1;
 - (id)privacyEnforcer;
+- (id)queryDispatcher;
 - (id)rateLimitEnforcer;
 - (bool)saveObjects:(id)arg1 error:(id*)arg2;
 - (void)saveObjects:(id)arg1 responseQueue:(id)arg2 withCompletion:(id /* block */)arg3;
 - (void)setDefaultQueue:(id)arg1;
 - (void)setKnowledgeStoreHandle:(id)arg1;
+- (void)setQueryDispatcher:(id)arg1;
 - (id)sourceDeviceIdentityFromObject:(id)arg1 error:(id*)arg2;
 - (id)sourceDeviceIdentityWithError:(id*)arg1;
 - (bool)synchronizeWithError:(id*)arg1;

@@ -2,13 +2,21 @@
    Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
  */
 
-@interface PKDiscoveryGalleryView : UIView <PKDiscoveryCardViewDelegate, PKPGSVSectionSubheaderView, UIScrollViewDelegate> {
+@interface PKDiscoveryGalleryView : UIView <PKDiscoveryCardViewDelegate, PKForegroundActiveArbiterObserver, PKPGSVSectionSubheaderView, UIScrollViewDelegate> {
     bool  _animatingCard;
+    bool  _articleLayoutsUpdatedAfterEnteringForegroundActive;
     NSMutableArray * _cardViews;
     PKDiscoveryDataSource * _dataSource;
     NSMutableArray * _discoveryCardViews;
     UIImage * _dismissImage;
+    NSArray * _displayedCardViews;
+    struct { 
+        bool foreground; 
+        bool foregroundActive; 
+    }  _foregroundState;
     UIScrollView * _horizontalScrollView;
+    NSString * _lastReportedDiscoveryItemIdentifier;
+    double  _lastTimeForegroundActive;
     struct { 
         unsigned int hasPaymentPassWelcomeCard : 1; 
         unsigned int hasBarcodePassWelcomeCard : 1; 
@@ -47,12 +55,15 @@
 - (void)_pageControlChanged:(id)arg1;
 - (void)_removeCardView:(id)arg1 animated:(bool)arg2;
 - (void)_reportCurrentDiscoveryCardToDiscoveryService;
+- (bool)_requestDismissalIfNecessaryAfterLayoutStateUpdate;
 - (void)_scanCodePressed;
-- (void)_shouldDismiss;
+- (void)_updateCardViews;
 - (void)_updateCardViewsAnimated:(bool)arg1;
-- (void)_updateDiscoveryCardViewsForUpdatedArticleLayouts:(id)arg1 animated:(bool)arg2;
+- (void)_updateCardViewsAnimated:(bool)arg1 overrideFrontmostCardToIdentifier:(id)arg2;
+- (void)_updateDiscoveryCardViewsForUpdatedArticleLayouts:(id)arg1 overrideFrontmostCardToIdentifier:(id)arg2 animated:(bool)arg3;
 - (void)_updatePageControlVisibilityWithDelay:(double)arg1;
 - (void)_updatePageControlWithDisplayIndex;
+- (void)_updateScrollViewToCardIndex:(unsigned long long)arg1 animated:(bool)arg2;
 - (id)cardViewForCardWithItemIdentifier:(id)arg1;
 - (id)dataSource;
 - (void)dealloc;
@@ -60,9 +71,9 @@
 - (void)discoveryCardViewRemoveTapped:(id)arg1;
 - (void)discoveryCardViewTapped:(id)arg1;
 - (unsigned long long)displayIndex;
+- (void)foregroundActiveArbiter:(id)arg1 didUpdateForegroundActiveState:(struct { bool x1; bool x2; })arg2;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (bool)isAnimatingCard;
-- (void)layoutIfNeededAnimated:(bool)arg1;
 - (void)layoutSubviews;
 - (bool)needsUpdate;
 - (id)pressedDiscoveryCardView;

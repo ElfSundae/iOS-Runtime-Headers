@@ -6,6 +6,6 @@
 @required
 
 - (void)activeAssertionsDidChangeForLifetimeMonitor:(id <DNDSLifetimeMonitor>)arg1;
-- (void)lifetimeMonitor:(id <DNDSLifetimeMonitor>)arg1 lifetimeDidExpireForAssertionUUIDs:(NSArray *)arg2;
+- (void)lifetimeMonitor:(id <DNDSLifetimeMonitor>)arg1 lifetimeDidExpireForAssertionUUIDs:(NSArray *)arg2 expirationDate:(NSDate *)arg3;
 
 @end

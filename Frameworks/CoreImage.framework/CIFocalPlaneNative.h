@@ -17,6 +17,7 @@
 + (id)customAttributes;
 
 - (id)_focalPlanePreProcessorKernel;
+- (id)_focalPlanePreProcessorKernelPow2;
 - (id)outputImage;
 
 @end

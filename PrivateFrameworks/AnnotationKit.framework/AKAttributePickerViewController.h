@@ -22,6 +22,7 @@
 
 - (void).cxx_destruct;
 - (void)_attributeStyleChanged:(id)arg1;
+- (bool)_canShowWhileLocked;
 - (void)_lineAttributesChanged:(id)arg1;
 - (void)_updatePreferredContentSize;
 - (id)controller;

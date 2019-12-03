@@ -7,13 +7,14 @@
     int  mColumnOffset;
     EDSheet * mCurrentSheet;
     EDFormula * mFormula;
-    OITSUIntDictionary * mNameArrayedTestCache;
-    OITSUIntDictionary * mNameCircularReferenceTestCache;
+    NSMutableDictionary * mNameArrayedTestCache;
+    NSMutableDictionary * mNameCircularReferenceTestCache;
     EDName * mParentName;
     int  mRowOffset;
     EDFormula * mTokensToClean;
 }
 
+- (void).cxx_destruct;
 - (void)addOffsetsToRow:(int*)arg1 rowRelative:(bool)arg2 column:(int*)arg3 columnRelative:(bool)arg4;
 - (void)applyMaxCellsInName:(id)arg1;
 - (void)applyProcessorToObject:(id)arg1 sheet:(id)arg2;
@@ -37,9 +38,8 @@
 - (bool)cleanTokenAtIndex:(unsigned int)arg1 tokenOffset:(int*)arg2;
 - (bool)cleanUnion:(unsigned int)arg1;
 - (bool)combineCellReferences:(unsigned int)arg1 tokenOffset:(int*)arg2;
-- (void)dealloc;
 - (bool)doesNameIndexContainCircularReferences:(unsigned int)arg1 sheetIndex:(unsigned long long)arg2 previousNameIndexes:(struct set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int> > { struct __tree<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsigned int> > { struct __tree_end_node<std::__1::__tree_node_base<void *> *> {} *x_1_1_1; struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<unsigned int, void *> > > { struct __tree_end_node<std::__1::__tree_node_base<void *> *> { struct __tree_node_base<void *> {} *x_1_3_1; } x_2_2_1; } x_1_1_2; struct __compressed_pair<unsigned long, std::__1::less<unsigned int> > { unsigned long long x_3_2_1; } x_1_1_3; } x1; }*)arg3;
-- (bool)isArrayedFormulaSupported:(id)arg1 allowSimpleRanges:(bool)arg2;
+- (bool)isArrayedFormulaSupported:(id)arg1 allowSimpleRanges:(bool)arg2 formulasBeingEvaluated:(id)arg3;
 - (bool)isLinkReferenceIndexSupported:(unsigned int)arg1 allowExternal:(bool)arg2;
 - (bool)isObjectSupported:(id)arg1;
 - (bool)isReferenceValidInLassoForRow:(int)arg1 rowRelative:(bool)arg2 column:(int)arg3 columnRelative:(bool)arg4;

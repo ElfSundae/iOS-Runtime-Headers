@@ -89,7 +89,6 @@
 - (id)multipathSubflowSwitchCounts;
 - (int)pathType;
 - (bool)readFrom:(id)arg1;
-- (bool)requiresQueryId;
 - (void)setConnectionDelay:(double)arg1;
 - (void)setEdgeAddress:(id)arg1;
 - (void)setEdgeType:(int)arg1;

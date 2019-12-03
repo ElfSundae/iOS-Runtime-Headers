@@ -23,6 +23,7 @@
 - (void).cxx_destruct;
 - (id)data;
 - (id)initWithKey:(id)arg1 data:(id)arg2 error:(id*)arg3;
+- (bool)isEqual:(id)arg1;
 - (id)key;
 - (unsigned long long)serializeData:(id)arg1 withChecksum:(unsigned char)arg2 to:(void*)arg3;
 - (unsigned long long)serializeTo:(void*)arg1 maxSize:(unsigned long long)arg2;

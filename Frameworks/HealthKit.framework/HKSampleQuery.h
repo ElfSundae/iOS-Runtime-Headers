@@ -3,7 +3,7 @@
  */
 
 @interface HKSampleQuery : HKQuery <HKSampleQueryClientInterface> {
-    bool  _includeTimeZones;
+    bool  _includeAutomaticTimeZones;
     unsigned long long  _limit;
     id /* block */  _resultHandler;
     NSMutableArray * _samplesPendingDelivery;
@@ -13,9 +13,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) bool includeTimeZones;
+@property (nonatomic) bool includeAutomaticTimeZones;
 @property (readonly) unsigned long long limit;
-@property (nonatomic, readonly) id /* block */ resultHandler;
+@property (nonatomic, readonly, copy) id /* block */ resultHandler;
 @property (readonly, copy) NSArray *sortDescriptors;
 @property (readonly) Class superclass;
 
@@ -26,7 +26,7 @@
 - (void).cxx_destruct;
 - (bool)_prepareSamplesForDelivery:(id)arg1 error:(id*)arg2;
 - (void)client_deliverSamples:(id)arg1 clearPendingSamples:(bool)arg2 isFinalBatch:(bool)arg3 queryUUID:(id)arg4;
-- (bool)includeTimeZones;
+- (bool)includeAutomaticTimeZones;
 - (id)initWithSampleType:(id)arg1 predicate:(id)arg2 limit:(unsigned long long)arg3 sortDescriptors:(id)arg4 resultsHandler:(id /* block */)arg5;
 - (unsigned long long)limit;
 - (void)queue_deliverError:(id)arg1;
@@ -34,7 +34,7 @@
 - (void)queue_queryDidDeactivate:(id)arg1;
 - (void)queue_validate;
 - (id /* block */)resultHandler;
-- (void)setIncludeTimeZones:(bool)arg1;
+- (void)setIncludeAutomaticTimeZones:(bool)arg1;
 - (id)sortDescriptors;
 
 @end

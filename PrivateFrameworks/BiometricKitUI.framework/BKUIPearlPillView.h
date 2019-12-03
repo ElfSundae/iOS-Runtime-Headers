@@ -103,8 +103,8 @@
 - (void)setStartRadius:(double)arg1;
 - (void)setState:(unsigned long long)arg1;
 - (void)setState:(unsigned long long)arg1 animated:(bool)arg2;
-- (void)setState:(unsigned long long)arg1 animated:(bool)arg2 animationDelay:(double)arg3 completion:(id /* block */)arg4;
-- (void)setState:(unsigned long long)arg1 animated:(bool)arg2 completion:(id /* block */)arg3;
+- (void)setState:(unsigned long long)arg1 animated:(bool)arg2 animationDelay:(double)arg3 completion:(id /* block */)arg4 failure:(id /* block */)arg5;
+- (void)setState:(unsigned long long)arg1 animated:(bool)arg2 completion:(id /* block */)arg3 failure:(id /* block */)arg4;
 - (void)setStateAnimationCompletion:(id /* block */)arg1;
 - (void)setStateAnimationDuration:(double)arg1;
 - (void)setStateAnimationStart:(id)arg1;

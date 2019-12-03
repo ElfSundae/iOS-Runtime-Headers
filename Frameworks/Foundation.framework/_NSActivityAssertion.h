@@ -4,7 +4,7 @@
 
 @interface _NSActivityAssertion : NSObject {
     unsigned char  _adoptPreviousVoucher;
-    bool  _ended;
+    _Atomic bool  _ended;
     id /* block */  _expirationHandler;
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
@@ -14,6 +14,7 @@
     BKSProcessAssertion * _processAssertion;
     NSString * _reason;
     unsigned int  _systemSleepAssertionID;
+    NSObject<OS_os_transaction> * _transaction;
     NSObject<OS_voucher> * _voucher;
     <NSObject> * _xpcBoost;
 }

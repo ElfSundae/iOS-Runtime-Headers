@@ -10,6 +10,7 @@
     _UILAConfigurationHistory * _configurationHistory;
     NSMutableSet * _hiddenItems;
     NSMutableSet * _incomingItems;
+    NSMutableSet * _invalidBaselineConstraints;
     bool  _layoutFillsCanvas;
     bool  _layoutUsesCanvasMarginsWhenFilling;
     NSMutableArray * _mutableItems;
@@ -36,6 +37,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) NSSet *invalidBaselineConstraints;
 @property (nonatomic, readonly, copy) NSArray *items;
 @property (nonatomic) bool layoutFillsCanvas;
 @property (nonatomic) bool layoutUsesCanvasMarginsWhenFilling;
@@ -47,6 +49,7 @@
 - (bool)_allItemsHidden;
 - (bool)_awaitingAnimationLayoutPass;
 - (long long)_axisForSpanningLayoutGuide;
+- (id)_baselineDependentConstraints;
 - (bool)_canvasConnectionConstraintsNeedUpdatePass;
 - (long long)_centerAttributeForCanvasConnections;
 - (void)_clearAllConstraintsArrays;
@@ -57,12 +60,15 @@
 - (void)_createUnanimatedConfigurationTargetIfNecessary;
 - (void)_didEvaluateMultilineHeightForView:(id)arg1;
 - (long long)_dimensionAttributeForCurrentAxis;
+- (void)_hasBaselineChangedNotification:(id)arg1;
+- (void)_hasBaselineChangedNotificationRequirementDidChange;
 - (bool)_hasStaleConfiguration;
 - (id)_hiddenItems;
 - (id)_identifierForSpanningLayoutGuide;
 - (id)_incomingItems;
 - (unsigned long long)_indexOfItemForLocationAttribute:(long long)arg1;
 - (void)_intrinsicContentSizeInvalidatedForItem:(id)arg1;
+- (void)_invalidateBaselineConstraint:(id)arg1;
 - (bool)_itemWantsLayoutAsIfVisible:(id)arg1;
 - (long long)_layoutRelationForCanvasConnectionForAttribute:(long long)arg1;
 - (long long)_minAttributeForCanvasConnections;
@@ -74,6 +80,7 @@
 - (id)_propertySource;
 - (void)_registerAnimationRequest;
 - (void)_removeSpanningLayoutGuide;
+- (bool)_requiresNotificationForHasBaselinePropertyChanges;
 - (void)_respondToChangesWithIncomingItem:(id)arg1 outgoingItem:(id)arg2 newlyHiddenItem:(id)arg3 newlyUnhiddenItem:(id)arg4;
 - (void)_setAxis:(long long)arg1 notify:(bool)arg2;
 - (void)_setLayoutFillsCanvas:(bool)arg1 notify:(bool)arg2;
@@ -103,6 +110,7 @@
 - (id)initWithItems:(id)arg1;
 - (id)initWithItems:(id)arg1 onAxis:(long long)arg2;
 - (void)insertItem:(id)arg1 atIndex:(unsigned long long)arg2;
+- (id)invalidBaselineConstraints;
 - (id)items;
 - (bool)layoutFillsCanvas;
 - (bool)layoutUsesCanvasMarginsWhenFilling;

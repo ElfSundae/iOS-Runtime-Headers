@@ -42,6 +42,7 @@
 - (void)_invokeCallbackWithSuccess:(bool)arg1;
 - (id)_privateDelegate;
 - (id)_remoteObjectProxy;
+- (id)_remoteObjectProxyWithFailureHandler:(id /* block */)arg1;
 - (void)_setPrivateDelegate:(id)arg1;
 - (void)_viewServiceTimerFired:(id)arg1;
 - (id)connection;

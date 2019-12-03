@@ -27,11 +27,14 @@
     bool  _isMovieExport;
     bool  _isShowLayerVisible;
     <MTLDevice> * _metalDevice;
+    TSULRUCache * _movieAssetCache;
+    TSDMPSImageConversionStorage * _mpsImageConversionStorage;
     CALayer * _noMetalBadgeLayer;
     long long  _playMode;
     CALayer * _rootLayer;
     TSDGLLayer * _sharedGLLayer;
     TSDMetalLayer * _sharedMetalLayer;
+    bool  _shouldAllowBackgroundAlpha;
     bool  _shouldAlwaysLoop;
     bool  _shouldAlwaysSetCurrentGLContextWhenDrawing;
     bool  _shouldAnimateNullTransitions;
@@ -42,7 +45,6 @@
     bool  _shouldForceTextureGeneration;
     bool  _shouldNotBakeActionTextures;
     bool  _shouldPreferCARenderer;
-    bool  _shouldPreserveTransparency;
     bool  _shouldRespectSkippedSlides;
     bool  _shouldShowVideoReflectionsAndMasks;
     bool  _shouldSkipBuilds;
@@ -84,11 +86,14 @@
 @property (nonatomic) bool isShowLayerVisible;
 @property (nonatomic, readonly) bool isWideGamut;
 @property (nonatomic, readonly) <MTLDevice> *metalDevice;
+@property (nonatomic, readonly) TSULRUCache *movieAssetCache;
+@property (nonatomic, readonly) TSDMPSImageConversionStorage *mpsImageConversionStorage;
 @property (nonatomic) long long playMode;
 @property (nonatomic, readonly) NSArray *playableSlideNodes;
 @property (nonatomic, readonly) CALayer *rootLayer;
 @property (nonatomic, retain) TSDGLLayer *sharedGLLayer;
 @property (nonatomic, retain) TSDMetalLayer *sharedMetalLayer;
+@property (nonatomic) bool shouldAllowBackgroundAlpha;
 @property (nonatomic) bool shouldAlwaysLoop;
 @property (nonatomic) bool shouldAlwaysSetCurrentGLContextWhenDrawing;
 @property (nonatomic) bool shouldAnimateNullTransitions;
@@ -99,7 +104,6 @@
 @property (nonatomic) bool shouldForceTextureGeneration;
 @property (nonatomic) bool shouldNotBakeActionTextures;
 @property (nonatomic) bool shouldPreferCARenderer;
-@property (nonatomic) bool shouldPreserveTransparency;
 @property (nonatomic) bool shouldRespectSkippedSlides;
 @property (nonatomic, readonly) bool shouldShowInstructionalText;
 @property (nonatomic) bool shouldShowVideoReflectionsAndMasks;
@@ -163,6 +167,8 @@
 - (id)lastSlideNode;
 - (void)makeSharedMetalLayerVisible:(bool)arg1;
 - (id)metalDevice;
+- (id)movieAssetCache;
+- (id)mpsImageConversionStorage;
 - (id)nextSlideAfterCurrent;
 - (id)nextSlideNodeAfterCurrent;
 - (id)nextSlideNodeAfterSlideNode:(id)arg1;
@@ -201,6 +207,7 @@
 - (void)setSharedGLContextAsCurrentContextShouldCreate:(bool)arg1;
 - (void)setSharedGLLayer:(id)arg1;
 - (void)setSharedMetalLayer:(id)arg1;
+- (void)setShouldAllowBackgroundAlpha:(bool)arg1;
 - (void)setShouldAlwaysLoop:(bool)arg1;
 - (void)setShouldAlwaysSetCurrentGLContextWhenDrawing:(bool)arg1;
 - (void)setShouldAnimateNullTransitions:(bool)arg1;
@@ -211,7 +218,6 @@
 - (void)setShouldForceTextureGeneration:(bool)arg1;
 - (void)setShouldNotBakeActionTextures:(bool)arg1;
 - (void)setShouldPreferCARenderer:(bool)arg1;
-- (void)setShouldPreserveTransparency:(bool)arg1;
 - (void)setShouldRespectSkippedSlides:(bool)arg1;
 - (void)setShouldShowVideoReflectionsAndMasks:(bool)arg1;
 - (void)setShouldSkipBuilds:(bool)arg1;
@@ -222,6 +228,7 @@
 - (void)setWorkDurationArray:(id)arg1;
 - (id)sharedGLLayer;
 - (id)sharedMetalLayer;
+- (bool)shouldAllowBackgroundAlpha;
 - (bool)shouldAlwaysLoop;
 - (bool)shouldAlwaysSetCurrentGLContextWhenDrawing;
 - (bool)shouldAnimateNullTransitions;
@@ -232,7 +239,6 @@
 - (bool)shouldForceTextureGeneration;
 - (bool)shouldNotBakeActionTextures;
 - (bool)shouldPreferCARenderer;
-- (bool)shouldPreserveTransparency;
 - (bool)shouldRespectSkippedSlides;
 - (bool)shouldShowInstructionalText;
 - (bool)shouldShowVideoReflectionsAndMasks;

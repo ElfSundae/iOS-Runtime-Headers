@@ -76,7 +76,7 @@
 - (struct CGPath { }*)CGPath;
 - (void)_addPathSegment:(long long)arg1 point:(struct CGPoint { double x1; double x2; })arg2;
 - (void)_appendArcSegmentWithCenter:(struct CGPoint { double x1; double x2; })arg1 radius:(double)arg2 angle1:(double)arg3 angle2:(double)arg4;
-- (void)_appendToPath:(id)arg1;
+- (void)_appendToPath:(id)arg1 skippingInitialMoveIfPossible:(bool)arg2;
 - (struct CGPoint { double x1; double x2; })_checkPointForValidity:(struct CGPoint { double x1; double x2; })arg1;
 - (id)_copyFlattenedPath;
 - (void)_deviceClosePath;
@@ -87,6 +87,7 @@
 - (bool)_isValid:(double)arg1;
 - (void)addClip;
 - (void)appendBezierPath:(id)arg1;
+- (void)appendBezierPath:(id)arg1 skippingInitialMoveIfPossible:(bool)arg2;
 - (void)appendBezierPathWithArcFromPoint:(struct CGPoint { double x1; double x2; })arg1 toPoint:(struct CGPoint { double x1; double x2; })arg2 radius:(double)arg3;
 - (void)appendBezierPathWithArcWithCenter:(struct CGPoint { double x1; double x2; })arg1 radius:(double)arg2 startAngle:(double)arg3 endAngle:(double)arg4;
 - (void)appendBezierPathWithArcWithCenter:(struct CGPoint { double x1; double x2; })arg1 radius:(double)arg2 startAngle:(double)arg3 endAngle:(double)arg4 clockwise:(bool)arg5;
@@ -99,6 +100,7 @@
 - (id)bezierPathByFlatteningPath;
 - (id)bezierPathByFlatteningPathWithFlatness:(double)arg1;
 - (id)bezierPathByRemovingRedundantElements;
+- (id)bezierPathByRemovingSmallSubpathsForInteriorWrapsForInset:(double)arg1;
 - (id)bezierPathByReversingPath;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })bounds;
 - (const char *)cString;
@@ -144,6 +146,7 @@
 - (double)lineWidth;
 - (double)miterLimit;
 - (void)moveToPoint:(struct CGPoint { double x1; double x2; })arg1;
+- (id)p_bezierPathByRemovingRedundantElementAndSubregionsSmallerThanThreshold:(double)arg1;
 - (void)relativeCurveToPoint:(struct CGPoint { double x1; double x2; })arg1 controlPoint1:(struct CGPoint { double x1; double x2; })arg2 controlPoint2:(struct CGPoint { double x1; double x2; })arg3;
 - (void)relativeLineToPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)relativeMoveToPoint:(struct CGPoint { double x1; double x2; })arg1;

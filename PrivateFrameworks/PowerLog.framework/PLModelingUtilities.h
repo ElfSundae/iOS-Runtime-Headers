@@ -10,6 +10,7 @@
 + (double)duetDiscretionaryBudget;
 + (bool)internalBuild;
 + (bool)isHeySiriAlwaysOn;
++ (bool)isHomePod;
 + (bool)isLowPowerModeSupported;
 + (bool)isMac;
 + (bool)isNarrowScreen;

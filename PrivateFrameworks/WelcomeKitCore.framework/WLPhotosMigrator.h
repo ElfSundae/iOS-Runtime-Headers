@@ -2,17 +2,23 @@
    Image: /System/Library/PrivateFrameworks/WelcomeKitCore.framework/WelcomeKitCore
  */
 
-@interface WLPhotosMigrator : WLFileMigrationWebService {
+@interface WLPhotosMigrator : NSObject <WLDataclassMigrating> {
     NSObject<OS_dispatch_semaphore> * _importSema;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)contentType;
 
 - (void).cxx_destruct;
+- (bool)accountBased;
 - (id)contentType;
 - (id)dataType;
 - (void)importRecordData:(id)arg1 summary:(id)arg2 account:(id)arg3 completion:(id /* block */)arg4;
-- (id)initWithSourceDevice:(id)arg1 urlSessionController:(id)arg2 delegate:(id)arg3;
-- (bool)shouldDownloadDataAsSeparateFileForSummary:(id)arg1 account:(id)arg2;
+- (id)init;
+- (bool)storeRecordDataInDatabase;
 
 @end

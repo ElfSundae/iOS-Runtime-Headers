@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/TVMLKit.framework/TVMLKit
  */
 
-@interface __TVModalPresenterNavigationController : UINavigationController <UIGestureRecognizerDelegate, _TVModalPresenterFocusing> {
+@interface __TVModalPresenterNavigationController : UINavigationController <UIGestureRecognizerDelegate, _TVApplicationInspectorDocumentProvider, _TVModalPresenterFocusing> {
     id /* block */  _dismissalBlock;
     bool  _isModalNavVisisble;
     NSMapTable * _popCompletionBlocks;
@@ -26,6 +26,7 @@
 - (void)_dismissForLastViewController;
 - (void)_dismissForLastViewController:(bool)arg1;
 - (void)_ensureNavigationBarHiddenSafelyForViewSize:(struct CGSize { double x1; double x2; })arg1;
+- (id)activeDocument;
 - (id)childViewControllerForHomeIndicatorAutoHidden;
 - (void)didShowViewController:(id)arg1 animated:(bool)arg2;
 - (id /* block */)dismissalBlock;

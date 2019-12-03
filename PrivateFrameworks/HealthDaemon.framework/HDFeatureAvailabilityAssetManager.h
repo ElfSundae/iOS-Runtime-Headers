@@ -6,6 +6,7 @@
     NSURL * _assetDirectoryOverride;
     _HKMobileAssetDownloadManager * _downloadManager;
     HDPeriodicActivity * _periodicActivity;
+    NSObject<OS_dispatch_queue> * _queue;
     double  _retryInterval;
     NPSManager * _syncManager;
     NSUserDefaults * _unitTest_defaults;
@@ -18,6 +19,7 @@
 @property (nonatomic, retain) _HKMobileAssetDownloadManager *downloadManager;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) HDPeriodicActivity *periodicActivity;
+@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *queue;
 @property (nonatomic, readonly) double retryInterval;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NPSManager *syncManager;
@@ -26,14 +28,15 @@
 
 - (void).cxx_destruct;
 - (void)_configureDownloadManager;
-- (void)_downloadDidCompleteWithAssets:(id)arg1;
-- (void)_downloadDidCompleteWithError:(id)arg1;
+- (void)_queue_downloadDidCompleteWithAssets:(id)arg1;
+- (void)_queue_downloadDidCompleteWithError:(id)arg1;
 - (id)assetDirectoryOverride;
 - (id)downloadManager;
 - (id)initWithProfile:(id)arg1;
 - (void)performPeriodicActivity:(id)arg1 completion:(id /* block */)arg2;
 - (id)periodicActivity;
 - (void)periodicActivity:(id)arg1 configureXPCActivityCriteria:(id)arg2;
+- (id)queue;
 - (double)retryInterval;
 - (void)setDownloadManager:(id)arg1;
 - (void)setPeriodicActivity:(id)arg1;

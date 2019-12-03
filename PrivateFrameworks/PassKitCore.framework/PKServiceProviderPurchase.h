@@ -8,6 +8,7 @@
     NSString * _identifier;
     NSString * _partnerMetadata;
     NSDate * _purchaseDate;
+    NSString * _regionIdentifier;
     PKServiceProviderPurchaseData * _serviceProviderData;
     NSString * _serviceProviderIdentifier;
     NSString * _signature;
@@ -20,6 +21,7 @@
 @property (nonatomic, copy) NSString *identifier;
 @property (nonatomic, copy) NSString *partnerMetadata;
 @property (nonatomic, copy) NSDate *purchaseDate;
+@property (nonatomic, copy) NSString *regionIdentifier;
 @property (nonatomic, copy) PKServiceProviderPurchaseData *serviceProviderData;
 @property (nonatomic, copy) NSString *serviceProviderIdentifier;
 @property (nonatomic, copy) NSString *signature;
@@ -42,6 +44,7 @@
 - (bool)isEqualToServiceProviderPurchase:(id)arg1;
 - (id)partnerMetadata;
 - (id)purchaseDate;
+- (id)regionIdentifier;
 - (id)serviceProviderData;
 - (id)serviceProviderIdentifier;
 - (void)setActions:(id)arg1;
@@ -49,6 +52,7 @@
 - (void)setIdentifier:(id)arg1;
 - (void)setPartnerMetadata:(id)arg1;
 - (void)setPurchaseDate:(id)arg1;
+- (void)setRegionIdentifier:(id)arg1;
 - (void)setServiceProviderData:(id)arg1;
 - (void)setServiceProviderIdentifier:(id)arg1;
 - (void)setSignature:(id)arg1;

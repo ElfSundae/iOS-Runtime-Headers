@@ -4,6 +4,7 @@
 
 @interface PUAssetSharedViewModel : PUViewModel {
     <PUDisplayAsset> * _asset;
+    long long  _flippingFullSizeRenderState;
     PUOperationStatus * _loadingStatus;
     NSProgress * _saveProgress;
     long long  _saveState;
@@ -11,6 +12,7 @@
 
 @property (nonatomic, readonly) <PUDisplayAsset> *asset;
 @property (nonatomic, readonly) PUAssetSharedViewModelChange *currentChange;
+@property (nonatomic) long long flippingFullSizeRenderState;
 @property (nonatomic, retain) PUOperationStatus *loadingStatus;
 @property (nonatomic, retain) NSProgress *saveProgress;
 @property (nonatomic) long long saveState;
@@ -18,6 +20,7 @@
 - (void).cxx_destruct;
 - (id)asset;
 - (id)currentChange;
+- (long long)flippingFullSizeRenderState;
 - (id)init;
 - (id)initWithAsset:(id)arg1;
 - (id)loadingStatus;
@@ -25,6 +28,7 @@
 - (void)registerChangeObserver:(id)arg1;
 - (id)saveProgress;
 - (long long)saveState;
+- (void)setFlippingFullSizeRenderState:(long long)arg1;
 - (void)setLoadingStatus:(id)arg1;
 - (void)setSaveProgress:(id)arg1;
 - (void)setSaveState:(long long)arg1;

@@ -3,7 +3,7 @@
  */
 
 @interface PPConnectionsNamedEntitySource : PPConnectionsSource <PPConnectionsLocationSource> {
-    PPLocalNamedEntityStore * _neStore;
+    PPLocalNamedEntityStore * _namedEntityStore;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -15,7 +15,7 @@
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
-- (id)init;
+- (id)initWithNamedEntityStore:(id)arg1;
 - (id)locationItemsWithCriteria:(id)arg1 earliest:(id)arg2 latest:(id)arg3 limit:(unsigned long long)arg4 consumer:(unsigned long long)arg5 explanationSet:(id)arg6;
 
 @end

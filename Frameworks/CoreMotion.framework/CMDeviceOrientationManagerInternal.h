@@ -3,7 +3,7 @@
  */
 
 @interface CMDeviceOrientationManagerInternal : NSObject {
-    /* Warning: unhandled struct encoding: '{Dispatcher=^^?@}' */ struct Dispatcher { int (**x1)(); id x2; } * fDeviceOrientationDispatcher;
+    struct Dispatcher { int (**x1)(); id x2; } * fDeviceOrientationDispatcher;
     id /* block */  fDeviceOrientationHandler;
     NSOperationQueue * fDeviceOrientationQueue;
     NSObject<OS_dispatch_semaphore> * fDeviceOrientationSemaphore;

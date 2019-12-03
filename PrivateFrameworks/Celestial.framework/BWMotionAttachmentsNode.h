@@ -3,6 +3,8 @@
  */
 
 @interface BWMotionAttachmentsNode : BWNode {
+    NSString * _attachedMediaKeyToProcess;
+    bool  _attachedMediaStreamForcedOff;
     BWLimitedGMErrorLogger * _limitedGMErrorLogger;
     BWNodeOutput * _offlineVISMotionDataOutput;
     NSDictionary * _optionsDict;
@@ -15,16 +17,20 @@
 
 + (void)initialize;
 
+- (void)_emitSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 output:(id)arg2;
+- (void)_flushIfRequiredForMarkerBuffer:(struct opaqueCMSampleBuffer { }*)arg1;
 - (int)_setupSampleBufferProcessor;
+- (id)attachedMediaKeyToProcess;
 - (void)dealloc;
 - (void)didReachEndOfDataForInput:(id)arg1;
 - (void)didSelectFormat:(id)arg1 forInput:(id)arg2;
-- (id)initWithSensorIDDictionaryByPortType:(id)arg1 cameraModuleInfoByPortType:(id)arg2 activePortTypes:(id)arg3 requiredFormat:(id)arg4 motionAttachmentsMode:(int)arg5 motionAttachmentsSource:(int)arg6 motionCallbackThreadPriority:(unsigned int)arg7 provideSourceVideoWithMotionAttachmentsOutput:(bool)arg8 provideOfflineVISMotionDataOutput:(bool)arg9;
+- (id)initWithSensorIDDictionaryByPortType:(id)arg1 cameraModuleInfoByPortType:(id)arg2 tuningParameters:(id)arg3 activePortTypes:(id)arg4 horizontalSensorBinningFactor:(int)arg5 verticalSensorBinningFactor:(int)arg6 maxSupportedFrameRate:(float)arg7 motionAttachmentsMode:(int)arg8 motionAttachmentsSource:(int)arg9 motionCallbackThreadPriority:(unsigned int)arg10 provideSourceVideoWithMotionAttachmentsOutput:(bool)arg11 provideOfflineVISMotionDataOutput:(bool)arg12;
 - (id)nodeSubType;
 - (id)nodeType;
 - (id)offlineVISMotionDataOutput;
 - (void)prepareForCurrentConfigurationToBecomeLive;
 - (void)renderSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 forInput:(id)arg2;
+- (void)setAttachedMediaKeyToProcess:(id)arg1;
 - (id)sourceVideoWithMotionAttachmentsOutput;
 
 @end

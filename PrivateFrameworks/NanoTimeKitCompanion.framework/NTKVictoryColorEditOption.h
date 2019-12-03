@@ -13,7 +13,7 @@
 + (id)optionWithVictoryColor:(unsigned long long)arg1 forDevice:(id)arg2;
 
 - (id)_valueToFaceBundleStringDict;
-- (bool)optionExistsInOSVersion:(unsigned int)arg1;
+- (bool)optionExistsInDevice:(id)arg1;
 - (long long)swatchStyle;
 - (unsigned long long)victoryColor;
 

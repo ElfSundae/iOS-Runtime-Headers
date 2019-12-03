@@ -3,17 +3,18 @@
  */
 
 @interface BurstClip : CompoundClip <CompoundClipInformation, KonaClipMiroAutoEditAdditions, NSCopying> {
+    NSArray * _allSourceClips;
     unsigned long long  _allowedBurstStyles;
     BurstClipStyle * _burstClipStyle;
     unsigned long long  _burstStyle;
     NSArray * _containedClips;
     double  _idealVideoDuration;
     double  _minimumVideoDuration;
-    NSArray * _sourceClips;
     UIColor * _threeUpStyleGapColor;
     UIColor * _threeUpStylePopBackgroundColor;
 }
 
+@property (nonatomic, retain) NSArray *allSourceClips;
 @property (nonatomic) unsigned long long allowedBurstStyles;
 @property (nonatomic, readonly) unsigned long long assetCount;
 @property (nonatomic, retain) BurstClipStyle *burstClipStyle;
@@ -28,12 +29,12 @@
 @property (nonatomic, readonly) double maximumDuration;
 @property (nonatomic, readonly) double minimumDuration;
 @property (nonatomic) double minimumVideoDuration;
-@property (nonatomic, retain) NSArray *sourceClips;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) UIColor *threeUpStyleGapColor;
 @property (nonatomic, retain) UIColor *threeUpStylePopBackgroundColor;
 
 - (void).cxx_destruct;
+- (id)allSourceClips;
 - (unsigned long long)allowedBurstStyles;
 - (double)aspectRatio;
 - (unsigned long long)assetCount;
@@ -66,7 +67,9 @@
 - (id)pickedKBClips;
 - (id)plistRepresentationFromProject:(id)arg1;
 - (id)representingClip;
+- (void)setAllSourceClips:(id)arg1;
 - (void)setAllowedBurstStyles:(unsigned long long)arg1;
+- (void)setAltAspect:(double)arg1;
 - (void)setBurstClipStyle:(id)arg1;
 - (void)setBurstStyle:(unsigned long long)arg1;
 - (void)setContainedClips:(id)arg1;
@@ -74,13 +77,10 @@
 - (void)setDuration:(int)arg1;
 - (void)setIdealPhotoDuration:(double)arg1;
 - (void)setIdealVideoDuration:(double)arg1;
-- (void)setIsAltClip:(bool)arg1;
 - (void)setMinimumPhotoDuration:(double)arg1;
 - (void)setMinimumVideoDuration:(double)arg1;
-- (void)setSourceClips:(id)arg1;
 - (void)setThreeUpStyleGapColor:(id)arg1;
 - (void)setThreeUpStylePopBackgroundColor:(id)arg1;
-- (id)sourceClips;
 - (unsigned long long)supportedBurstStyles;
 - (id)supportedBurstStylesArray;
 - (id)threeUpStyleGapColor;

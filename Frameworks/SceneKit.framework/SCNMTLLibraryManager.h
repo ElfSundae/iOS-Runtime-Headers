@@ -30,7 +30,7 @@
 - (id)frameworkLibrary;
 - (id)initWithDevice:(id)arg1;
 - (id)libraryForFile:(id)arg1;
-- (void)libraryForProgramDesc:(struct { struct __C3DFXProgram {} *x1; struct __C3DMaterial {} *x2; struct __C3DGeometry {} *x3; struct __C3DFXPass {} *x4; struct __C3DFXPass {} *x5; id x6; struct __C3DBlendStates {} x7; struct __C3DNode {} *x8; unsigned char x9; unsigned char x10; unsigned char x11; bool x12; id x13; /* Warning: Unrecognized filer type: '?' using 'void*' */ void*x14; void*x15; unsigned char x16; id /* block */ x17; })arg1 completionHandler:(id /* block */)arg2;
+- (void)libraryForProgramDesc:(struct { struct __C3DFXProgram {} *x1; struct __C3DMaterial {} *x2; struct __C3DGeometry {} *x3; struct __C3DFXPass {} *x4; struct __C3DFXPass {} *x5; id x6; struct __C3DBlendStates {} *x7; struct __C3DNode {} *x8; unsigned char x9; unsigned char x10; unsigned char x11; unsigned char x12; bool x13; id x14; struct { unsigned char x_15_1_1; id /* block */ x_15_1_2; } x15; })arg1 completionHandler:(id /* block */)arg2;
 - (id)libraryForSourceCode:(id)arg1 options:(id)arg2;
 - (id)shaderCompilationGroup;
 - (void)waitForShadersCompilation;

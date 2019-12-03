@@ -7,6 +7,7 @@
     NSMutableDictionary * _cache;
     DNDState * _doNotDisturbState;
     NSHashTable * _expirerInternTable;
+    int  _learnRefreshToken;
     struct _opaque_pthread_mutex_t { 
         long long __sig; 
         BOOL __opaque[56]; 

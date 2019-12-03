@@ -7,6 +7,7 @@
 }
 
 - (void).cxx_destruct;
+- (void)_enumerateLabelsWithBlock:(id /* block */)arg1;
 - (id)init;
 - (id)innerLabel;
 - (void)layoutSubviews;

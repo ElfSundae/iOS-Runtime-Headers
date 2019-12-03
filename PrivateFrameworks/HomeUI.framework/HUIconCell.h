@@ -17,6 +17,7 @@
     bool  _iconTintColorFollowsDisabledState;
     HUIconView * _iconView;
     HFItem * _item;
+    bool  _separatorInsetLinesUpWithText;
     NSArray * _staticConstraints;
 }
 
@@ -40,6 +41,7 @@
 @property (nonatomic, retain) HUIconView *iconView;
 @property (nonatomic, retain) HFItem *item;
 @property (nonatomic) <HUResizableCellDelegate> *resizingDelegate;
+@property (nonatomic) bool separatorInsetLinesUpWithText;
 @property (nonatomic, retain) NSArray *staticConstraints;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) UILabel *textLabel;
@@ -69,6 +71,7 @@
 - (id)item;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
+- (bool)separatorInsetLinesUpWithText;
 - (void)setContainerView:(id)arg1;
 - (void)setContentMetrics:(id)arg1;
 - (void)setDisableContinuousIconAnimation:(bool)arg1;
@@ -84,6 +87,7 @@
 - (void)setIconTintColorFollowsDisabledState:(bool)arg1;
 - (void)setIconView:(id)arg1;
 - (void)setItem:(id)arg1;
+- (void)setSeparatorInsetLinesUpWithText:(bool)arg1;
 - (void)setStaticConstraints:(id)arg1;
 - (id)staticConstraints;
 - (void)updateConstraints;

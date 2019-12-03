@@ -3,7 +3,7 @@
  */
 
 @interface BLTBulletinDistributor : NSObject <BBObserverDelegate, BLTBulletinDistributorSubscriberDeviceDelegate, BLTCompanionServer, NSXPCListenerDelegate> {
-    BLTAttachmentHashCache * _attachmentHashCache;
+    BLTHashCache * _attachmentHashCache;
     BBObserver * _bbObserver;
     BLTBulletinFetcher * _bulletinFetcher;
     NSMutableSet * _bulletinIDsWaitingOnGizmoAdd;
@@ -11,7 +11,9 @@
     BLTClientReplyTimeoutManager * _clientReplyTimeoutManager;
     BLTRemoteGizmoClient * _gizmoConnection;
     BLTGizmoLegacyMap * _gizmoLegacyMap;
+    BLTHashCache * _iconHashCache;
     NSMutableSet * _lockScreenFeed;
+    BLTBulletinDistributorMRUSectionCache * _mruSectionCache;
     NSMutableSet * _noticesFeed;
     NSMutableDictionary * _pendingBulletinUpdates;
     BLTPingSubscriberManager * _pingSubscriberManager;
@@ -19,11 +21,12 @@
     BLTSettingSync * _settingSync;
     bool  _standaloneTestModeEnabled;
     NSDate * _startupTime;
+    unsigned long long  _stateHandler;
     BLTUserNotificationList * _userNotificationList;
     BLTWatchKitAppList * _watchKitAppList;
 }
 
-@property (nonatomic, retain) BLTAttachmentHashCache *attachmentHashCache;
+@property (nonatomic, retain) BLTHashCache *attachmentHashCache;
 @property (nonatomic, retain) BBObserver *bbObserver;
 @property (nonatomic, retain) BLTBulletinFetcher *bulletinFetcher;
 @property (nonatomic, retain) NSMutableSet *bulletinIDsWaitingOnGizmoAdd;
@@ -34,8 +37,10 @@
 @property (nonatomic, retain) BLTRemoteGizmoClient *gizmoConnection;
 @property (nonatomic, retain) BLTGizmoLegacyMap *gizmoLegacyMap;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, retain) BLTHashCache *iconHashCache;
 @property (nonatomic, readonly) bool isStandaloneTestModeEnabled;
 @property (nonatomic, retain) NSMutableSet *lockScreenFeed;
+@property (nonatomic, retain) BLTBulletinDistributorMRUSectionCache *mruSectionCache;
 @property (nonatomic, retain) NSMutableSet *noticesFeed;
 @property (nonatomic, retain) NSMutableDictionary *pendingBulletinUpdates;
 @property (nonatomic, retain) BLTPingSubscriberManager *pingSubscriberManager;
@@ -52,7 +57,9 @@
 - (void).cxx_destruct;
 - (void)_addBulletin:(id)arg1 forFeed:(unsigned long long)arg2 playLightsAndSirens:(bool)arg3 attachment:(id)arg4 attachmentType:(long long)arg5 alwaysSend:(bool)arg6 completion:(id /* block */)arg7;
 - (void)_attachAttachment:(id)arg1 attachmentType:(long long)arg2 toBulletin:(id)arg3;
+- (void)_attachIconToBulletin:(id)arg1;
 - (id)_bulletinWithPublisherBulletinID:(id)arg1 recordID:(id)arg2 sectionID:(id)arg3;
+- (void)_cleanupForAddedBulletin:(id)arg1;
 - (bool)_enqueuBulletinUpdate:(unsigned long long)arg1 bulletin:(id)arg2 feed:(unsigned long long)arg3;
 - (void)_handleAddBulletin:(id)arg1 feed:(unsigned long long)arg2 shouldPlayLightsAndSirens:(bool)arg3 performedWithSuccess:(bool)arg4 sendAttemptTime:(id)arg5 connectionStatus:(unsigned long long)arg6 isGizmoReady:(bool)arg7 shouldSendReplyIfNeeded:(bool)arg8 replyToken:(id)arg9;
 - (void)_handleAllSyncComplete;
@@ -60,9 +67,10 @@
 - (void)_handleDidPlayLightsAndSirens:(bool)arg1 forBulletin:(id)arg2 inPhoneSection:(id)arg3 transmissionDate:(id)arg4 receptionDate:(id)arg5 fromGizmo:(bool)arg6 finalReply:(bool)arg7 replyToken:(id)arg8;
 - (void)_handleInitialSyncStateCompleteChanged:(id)arg1;
 - (void)_handleSyncStateChanged:(id)arg1;
+- (void)_mapBulletin:(id)arg1;
 - (unsigned long long)_nanoPresentableFeedFromPhoneFeed:(unsigned long long)arg1;
-- (void)_notifyGizmoOfBulletin:(id)arg1 forFeed:(unsigned long long)arg2 updateType:(unsigned long long)arg3 playLightsAndSirens:(bool)arg4 shouldSendReplyIfNeeded:(bool)arg5 attachment:(id)arg6 attachmentType:(long long)arg7 isCriticalBulletin:(bool)arg8 replyToken:(id)arg9;
-- (void)_notifyGizmoOfCancelBulletin:(id)arg1 universalSectionID:(id)arg2 feed:(unsigned long long)arg3 withBulletinDate:(id)arg4;
+- (void)_notifyGizmoOfBulletin:(id)arg1 forFeed:(unsigned long long)arg2 updateType:(unsigned long long)arg3 playLightsAndSirens:(bool)arg4 shouldSendReplyIfNeeded:(bool)arg5 attachment:(id)arg6 attachmentType:(long long)arg7 replyToken:(id)arg8;
+- (void)_notifyGizmoOfCancelBulletin:(id)arg1 sectionID:(id)arg2 universalSectionID:(id)arg3 feed:(unsigned long long)arg4 withBulletinDate:(id)arg5;
 - (id)_obsoletionDateRelativeToNow;
 - (void)_performModifyBulletin:(id)arg1 forFeed:(unsigned long long)arg2;
 - (void)_performNextPendingBulletinUpdateForBulletinID:(id)arg1;
@@ -79,6 +87,7 @@
 - (void)_sendPBBulletin:(id)arg1 forBulletin:(id)arg2 feed:(unsigned long long)arg3 updateType:(unsigned long long)arg4 playLightsAndSirens:(bool)arg5 shouldSendReplyIfNeeded:(bool)arg6;
 - (void)_setupBBObserver;
 - (void)_startBulletinListening;
+- (id)_stateDescription;
 - (void)_subscriberWillAllowBulletin:(id)arg1 completion:(id /* block */)arg2;
 - (bool)_willNanoPresent:(unsigned long long)arg1;
 - (bool)_willNanoPresent:(unsigned long long)arg1 forBulletin:(id)arg2 feed:(unsigned long long)arg3;
@@ -99,9 +108,12 @@
 - (id)gizmoLegacyMap;
 - (void)handleAction:(id)arg1;
 - (void)handleDidPlayLightsAndSirens:(bool)arg1 forBulletin:(id)arg2 inPhoneSection:(id)arg3 transmissionDate:(id)arg4 receptionDate:(id)arg5 replyToken:(id)arg6;
+- (id)iconHashCache;
 - (id)init;
+- (bool)isLocallyConnectedToRemote;
 - (bool)isStandaloneTestModeEnabled;
 - (id)lockScreenFeed;
+- (id)mruSectionCache;
 - (id)noticesFeed;
 - (void)observer:(id)arg1 addBulletin:(id)arg2 forFeed:(unsigned long long)arg3 playLightsAndSirens:(bool)arg4 attachment:(id)arg5 attachmentType:(long long)arg6 alwaysSend:(bool)arg7 withReply:(id /* block */)arg8;
 - (void)observer:(id)arg1 addBulletin:(id)arg2 forFeed:(unsigned long long)arg3 playLightsAndSirens:(bool)arg4 withReply:(id /* block */)arg5;
@@ -131,7 +143,9 @@
 - (void)setClientReplyTimeoutManager:(id)arg1;
 - (void)setGizmoConnection:(id)arg1;
 - (void)setGizmoLegacyMap:(id)arg1;
+- (void)setIconHashCache:(id)arg1;
 - (void)setLockScreenFeed:(id)arg1;
+- (void)setMruSectionCache:(id)arg1;
 - (void)setNoticesFeed:(id)arg1;
 - (void)setPendingBulletinUpdates:(id)arg1;
 - (void)setPingSubscriberManager:(id)arg1;

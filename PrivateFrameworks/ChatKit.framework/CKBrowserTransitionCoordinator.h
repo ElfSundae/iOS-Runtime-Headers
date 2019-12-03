@@ -82,7 +82,6 @@
 - (long long)lastTransitionReason;
 - (id)modalAppWindow;
 - (id)preModalKeyWindow;
-- (void)presentCurrentBrowserFullscreenAnimated:(bool)arg1 completion:(id /* block */)arg2;
 - (void)presentPluginFullScreenModal:(id)arg1 animated:(bool)arg2 completion:(id /* block */)arg3;
 - (id)presentedModalBrowserNavigationController;
 - (id)presentingViewController;

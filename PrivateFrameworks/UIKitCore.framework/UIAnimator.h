@@ -4,7 +4,7 @@
 
 @interface UIAnimator : NSObject {
     NSMutableArray * _animations;
-    /* Warning: unhandled array encoding: '[3@]' */ id  _heartbeat;
+    id  _heartbeat;
     int  _heartbeatClientCount;
     double  _lastUpdateTime;
 }

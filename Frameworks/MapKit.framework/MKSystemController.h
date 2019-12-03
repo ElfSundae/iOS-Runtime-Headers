@@ -15,6 +15,7 @@
 - (bool)_isRunningInLockScreen;
 - (bool)_openURLsOnBackgroundThread;
 - (bool)_shouldUseLaunchServices;
+- (id)_transformURLIfNecessary:(id)arg1;
 - (bool)isDevicePluggedIn;
 - (bool)isHiDPI;
 - (bool)isInternalInstall;
@@ -23,6 +24,7 @@
 - (bool)openURL:(id)arg1;
 - (void)openURL:(id)arg1 bundleIdentifier:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)openURL:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)openURL:(id)arg1 fromScene:(id)arg2 completionHandler:(id /* block */)arg3;
 - (id)openURLDelegate;
 - (void)openUserActivity:(id)arg1 withApplicationProxy:(id)arg2 requireOptionKeyPromptUnlockDevice:(bool)arg3 completionHandler:(id /* block */)arg4;
 - (bool)overrideBlurStyle;

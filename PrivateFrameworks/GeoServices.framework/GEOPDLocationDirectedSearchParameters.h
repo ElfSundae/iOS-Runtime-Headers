@@ -4,12 +4,31 @@
 
 @interface GEOPDLocationDirectedSearchParameters : PBCodable <NSCopying> {
     struct { 
-        unsigned int maxResults : 1; 
-        unsigned int searchType : 1; 
-        unsigned int sortOrder : 1; 
-    }  _has;
+        unsigned int has_maxResults : 1; 
+        unsigned int has_searchType : 1; 
+        unsigned int has_sortOrder : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_nearestTransitParameters : 1; 
+        unsigned int read_searchLocation : 1; 
+        unsigned int read_searchString : 1; 
+        unsigned int read_viewportInfo : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_nearestTransitParameters : 1; 
+        unsigned int wrote_searchLocation : 1; 
+        unsigned int wrote_searchString : 1; 
+        unsigned int wrote_viewportInfo : 1; 
+        unsigned int wrote_maxResults : 1; 
+        unsigned int wrote_searchType : 1; 
+        unsigned int wrote_sortOrder : 1; 
+    }  _flags;
     unsigned int  _maxResults;
     GEOPDNearestTransitParameters * _nearestTransitParameters;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     GEOLatLng * _searchLocation;
     NSString * _searchString;
     int  _searchType;
@@ -34,9 +53,16 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic, retain) GEOPDViewportInfo *viewportInfo;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsSearchType:(id)arg1;
 - (int)StringAsSortOrder:(id)arg1;
+- (void)_readNearestTransitParameters;
+- (void)_readSearchLocation;
+- (void)_readSearchString;
+- (void)_readViewportInfo;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -49,11 +75,14 @@
 - (bool)hasSortOrder;
 - (bool)hasViewportInfo;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (id)initWithSearchURLQuery:(id)arg1 coordinate:(struct { double x1; double x2; })arg2 maxResults:(unsigned int)arg3 traits:(id)arg4;
 - (bool)isEqual:(id)arg1;
 - (unsigned int)maxResults;
 - (void)mergeFrom:(id)arg1;
 - (id)nearestTransitParameters;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)searchLocation;
 - (id)searchString;

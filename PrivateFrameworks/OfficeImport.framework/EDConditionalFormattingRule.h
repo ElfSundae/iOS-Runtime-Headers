@@ -23,12 +23,12 @@
 
 + (id)conditionalFormattingRuleWithResources:(id)arg1;
 
+- (void).cxx_destruct;
 - (bool)aboveAverage;
 - (void)addFormula:(id)arg1 worksheet:(id)arg2;
 - (bool)appliesToDateOnly;
 - (bool)bottom;
 - (long long)compareToOtherRuleUsingPriority:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)differentialStyle;
 - (unsigned long long)differentialStyleIndex;

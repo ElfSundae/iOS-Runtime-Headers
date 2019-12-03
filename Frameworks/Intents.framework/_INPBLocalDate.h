@@ -3,6 +3,7 @@
  */
 
 @interface _INPBLocalDate : PBCodable <NSCopying, NSSecureCoding, _INPBLocalDate> {
+    bool  __encodeLegacyGloryData;
     long long  _dayOfMonth;
     int  _dayOfWeek;
     struct { 
@@ -15,6 +16,7 @@
     long long  _year;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic) long long dayOfMonth;
 @property (nonatomic) int dayOfWeek;
 @property (readonly, copy) NSString *debugDescription;
@@ -28,17 +30,23 @@
 @property (readonly) Class superclass;
 @property (nonatomic) long long year;
 
++ (bool)supportsSecureCoding;
+
 - (int)StringAsDayOfWeek:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (long long)dayOfMonth;
 - (int)dayOfWeek;
 - (id)dayOfWeekAsString:(int)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasDayOfMonth;
 - (bool)hasDayOfWeek;
 - (bool)hasMonth;
 - (bool)hasYear;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (long long)month;
 - (bool)readFrom:(id)arg1;

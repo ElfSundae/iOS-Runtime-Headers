@@ -12,8 +12,10 @@
 
 - (void).cxx_destruct;
 - (void)_appendSearchResults:(id)arg1 identifiers:(id)arg2 abPropertyType:(int)arg3 toArray:(id)arg4;
+- (void)getAddressForContact:(id)arg1 address:(id*)arg2 kind:(unsigned long long*)arg3;
 - (id)recipientWithAddress:(id)arg1;
-- (id)recipientWithRecord:(void*)arg1 property:(int)arg2 identifier:(int)arg3;
+- (id)recipientWithContact:(id)arg1;
+- (id)recipientWithContactProperty:(id)arg1;
 - (id)searchABPropertyTypes;
 - (void)setSearchABPropertyTypes:(id)arg1;
 

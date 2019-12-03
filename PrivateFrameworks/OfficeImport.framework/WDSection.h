@@ -176,6 +176,10 @@
     }  mTrackedProperties;
 }
 
+@property (readonly) WDDocument *document;
+
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)appendColumnSpace:(long long)arg1;
 - (void)appendColumnWidth:(long long)arg1;
 - (bool)bidi;
@@ -191,7 +195,6 @@
 - (long long)columnSpaceAt:(unsigned int)arg1;
 - (long long)columnWidthAt:(unsigned int)arg1;
 - (bool)columnsEqualWidth;
-- (void)dealloc;
 - (id)description;
 - (id)document;
 - (id)evenPageFooter;

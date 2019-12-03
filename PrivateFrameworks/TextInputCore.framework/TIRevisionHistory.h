@@ -9,6 +9,8 @@
     }  _currentTokenIterator;
     <TIRevisionHistoryDelegate> * _delegate;
     NSString * _documentText;
+    bool  _isDeletingBackwards;
+    bool  _isRapidDeleteActive;
     TIRevisionHistoryToken * _lastRejectedToken;
     TILRUDictionary * _recentAutocorrections;
     struct _NSRange { 
@@ -23,12 +25,16 @@
 @property (nonatomic) struct _TIRevisionHistoryTokenIterator { unsigned long long x1; unsigned long long x2; } currentTokenIterator;
 @property (nonatomic) <TIRevisionHistoryDelegate> *delegate;
 @property (nonatomic, copy) NSString *documentText;
+@property (nonatomic) bool isDeletingBackwards;
+@property (nonatomic) bool isRapidDeleteActive;
 @property (nonatomic, retain) TIRevisionHistoryToken *lastRejectedToken;
 @property (nonatomic, retain) TILRUDictionary *recentAutocorrections;
 @property (nonatomic) struct _NSRange { unsigned long long x1; unsigned long long x2; } selectedRange;
 @property (nonatomic) bool shouldReportRevisionToDP;
 @property (nonatomic, readonly) NSMutableArray *tokenization;
 @property (nonatomic, readonly) void*tokenizer;
+
++ (id)documentStateTrimmedToSentenceForState:(id)arg1;
 
 - (void).cxx_destruct;
 - (void)acceptCurrentSentence;
@@ -45,7 +51,7 @@
 - (void)dealloc;
 - (id)delegate;
 - (void)deleteBackward;
-- (bool)deletingBackwardEqualsDocumentState:(id)arg1;
+- (struct _NSRange { unsigned long long x1; unsigned long long x2; })deletionRangeToObtainDocumentState:(id)arg1;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })documentRangeOfTokenAtIterator:(struct _TIRevisionHistoryTokenIterator { unsigned long long x1; unsigned long long x2; })arg1;
 - (id)documentState;
 - (id)documentText;
@@ -57,6 +63,8 @@
 - (id)initWithLocale:(id)arg1;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })inputRangeForReplacement:(id)arg1;
 - (void)insertText:(id)arg1;
+- (bool)isDeletingBackwards;
+- (bool)isRapidDeleteActive;
 - (bool)isSelectionContainedByToken:(struct _TIRevisionHistoryTokenIterator { unsigned long long x1; unsigned long long x2; })arg1;
 - (bool)isWordToken:(struct _TIRevisionHistoryTokenIterator { unsigned long long x1; unsigned long long x2; })arg1;
 - (struct _TIRevisionHistoryTokenIterator { unsigned long long x1; unsigned long long x2; })iteratorUpperBoundForSelectionStart;
@@ -85,6 +93,8 @@
 - (void)setCurrentTokenIterator:(struct _TIRevisionHistoryTokenIterator { unsigned long long x1; unsigned long long x2; })arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDocumentText:(id)arg1;
+- (void)setIsDeletingBackwards:(bool)arg1;
+- (void)setIsRapidDeleteActive:(bool)arg1;
 - (void)setLastRejectedToken:(id)arg1;
 - (void)setRecentAutocorrections:(id)arg1;
 - (void)setSelectedRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface UINavigationController : UIViewController <GKContentRefresh, GKURLHandling, HUPreloadableViewController, HUPresentationDelegate, UIGestureRecognizerDelegatePrivate, UILayoutContainerViewDelegate, _UINavigationBarDelegatePrivate, _UIScrollViewScrollObserver> {
+@interface UINavigationController : UIViewController <GKContentRefresh, GKURLHandling, HUPreloadableViewController, HUPresentationDelegate, UIGestureRecognizerDelegatePrivate, UIInterfaceOrientationMaskOverride, UILayoutContainerViewDelegate, _UINavigationBarDelegatePrivate, _UIScrollViewScrollObserver> {
     NSString * __backdropGroupName;
     _UIAnimationCoordinator * __barInteractiveAnimationCoordinator;
     _UIBarPanGestureRecognizer * __barSwipeHideGesture;
@@ -22,7 +22,6 @@
     id /* block */  __updateNavigationBarHandler;
     bool  __usingBuiltinAnimator;
     UITapGestureRecognizer * _backGestureRecognizer;
-    double  _bottomInsetDelta;
     double  _builtinTransitionGap;
     long long  _builtinTransitionStyle;
     UILayoutContainerView * _containerView;
@@ -31,6 +30,10 @@
     UINavigationDeferredTransitionContext * _deferredTransitionContext;
     <UINavigationControllerDelegate> * _delegate;
     UIViewController * _disappearingViewController;
+    struct CGSize { 
+        double width; 
+        double height; 
+    }  _externallySetNavControllerPreferredContentSize;
     _UINavigationControllerPalette * _freePalette;
     bool  _hidesBarsOnSwipe;
     bool  _hidesBarsOnTap;
@@ -39,6 +42,7 @@
     bool  _interactiveScrollActive;
     struct { 
         double minimum; 
+        double preferred; 
         double maximum; 
     }  _interactiveScrollNavBarIntrinsicHeightRange;
     bool  _interactiveTransition;
@@ -62,7 +66,6 @@
         unsigned int pretendNavBarHidden : 1; 
         unsigned int avoidMovingNavBarOffscreenBeforeUnhiding : 1; 
         unsigned int searchBarHidNavBar : 1; 
-        unsigned int useSystemPopoverBarAppearance : 1; 
         unsigned int isCustomTransition : 1; 
         unsigned int isBuiltinTransition : 1; 
         unsigned int resetDidHideOnCancel : 1; 
@@ -104,6 +107,9 @@
         unsigned int layingOutTopViewController : 1; 
         unsigned int hasScheduledDeferredUpdateNavigationBarHostedRefreshControl : 1; 
         unsigned int allowsFreezeLayoutForOrientationChangeOnDismissal : 1; 
+        unsigned int scrollViewObservationReasonHasVariableHeightNavigationBar : 1; 
+        unsigned int scrollViewObservationReasonIsEmulatingChromelessForFixedHeightNavigationBar : 1; 
+        unsigned int scrollViewObservationReasonIsAutoUpdatingManualScrollEdgeAppearance : 1; 
     }  _navigationControllerFlags;
     UIView * _navigationTransitionView;
     UIView * _paletteClippingView;
@@ -189,7 +195,6 @@
 + (bool)_directlySetsContentOverlayInsetsForChildren;
 + (bool)_shouldSendLegacyMethodsFromViewWillTransitionToSize;
 + (bool)doesOverridePreferredInterfaceOrientationForPresentation;
-+ (bool)doesOverrideSupportedInterfaceOrientations;
 
 - (void).cxx_destruct;
 - (void)__viewWillLayoutSubviews;
@@ -216,7 +221,7 @@
 - (struct { double x1; double x2; double x3; double x4; bool x5; bool x6; bool x7; bool x8; })_calculateTopLayoutInfoForViewController:(id)arg1;
 - (void)_calculateTopViewFramesForExpandedLayoutWithViewController:(id)arg1 contentScrollView:(id)arg2 gettingNavBarFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg3 topPaletteFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg4;
 - (void)_calculateTopViewFramesForLayoutWithViewController:(id)arg1 contentScrollView:(id)arg2 navBarFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg3 topPaletteFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg4 topLayoutType:(long long)arg5;
-- (void)_calculateTopViewFramesForPushPopIncomingLayoutWithViewController:(id)arg1 contentScrollView:(id)arg2 gettingNavBarFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg3 topPaletteFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg4;
+- (void)_calculateTopViewFramesFromLayoutHeightsWithViewController:(id)arg1 contentScrollView:(id)arg2 preservingContentInset:(bool)arg3 respectFullExtension:(bool)arg4 gettingNavBarFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg5 topPaletteFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg6;
 - (bool)_canHostRefreshControlOwnedByScrollView:(id)arg1;
 - (bool)_canRestoreFocusAfterTransitionToRecalledItem:(id)arg1 inViewController:(id)arg2;
 - (bool)_canUpdateTopViewFramesToMatchScrollView;
@@ -225,6 +230,8 @@
 - (void)_clearLastOperation;
 - (bool)_clipUnderlapWhileTransitioning;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_collapsableContentPaddingForObservedScrollView:(id)arg1;
+- (void)_commonInitWithBuiltinTransitionGap:(double)arg1;
+- (void)_commonNonCoderInit;
 - (void)_computeAndApplyScrollContentInsetDeltaForViewController:(id)arg1;
 - (struct CGPoint { double x1; double x2; })_computeTopBarCenter:(id)arg1 hidden:(bool)arg2 edge:(unsigned long long)arg3 center:(struct CGPoint { double x1; double x2; })arg4 offset:(double)arg5;
 - (void)_configureBarSwipeGesture;
@@ -232,9 +239,7 @@
 - (void)_configureBarsAutomaticActions;
 - (void)_configureKeyboardBarHiding;
 - (void)_configureToolbar;
-- (void)_confirmBarAccessMethods;
 - (id)_contentFocusContainerGuide;
-- (void)_createAndAttachSearchPaletteForTopViewControllerIfNecessary:(id)arg1;
 - (void)_createAndAttachSearchPaletteForTransitionToTopViewControllerIfNecesssary:(id)arg1;
 - (id)_customInteractionController:(id)arg1;
 - (double)_customNavigationTransitionDuration;
@@ -243,7 +248,6 @@
 - (int)_deferredTransition;
 - (void)_detachPalette:(id)arg1;
 - (void)_detachTopPaletteIfShowingSearchBarForTopmostViewControllerInNavigationController:(id)arg1;
-- (void)_detachTopPaletteIfShowingSearchBarForViewController:(id)arg1;
 - (void)_didBecomeContentViewControllerOfPopover:(id)arg1;
 - (bool)_didExplicitlyHideTabBar;
 - (void)_didResignContentViewControllerOfPopover:(id)arg1;
@@ -262,7 +266,7 @@
 - (void)_finishAnimationTracking;
 - (void)_finishInteractiveTransition:(double)arg1 transitionContext:(id)arg2;
 - (void)_forgetFocusedItemForViewController:(id)arg1;
-- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_frameForContainerViewInSheetForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 displayingTopView:(bool)arg2 andBottomView:(bool)arg3;
+- (void)_forwardPaletteToViewControllerIfNeeded:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_frameForPalette:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_frameForViewController:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_frameForWrapperViewForViewController:(id)arg1;
@@ -277,21 +281,19 @@
 - (bool)_hasNestedNavigationController;
 - (bool)_hasPreferredInterfaceOrientationForPresentation;
 - (bool)_hasTranslucentNavigationBarIncludingViewController:(id)arg1;
-- (double)_heightOfTopPartsWhenHiddenAndCollapsed;
-- (double)_heightOfTopPartsWhenVisibleAndExpanded;
+- (struct { double x1; double x2; double x3; })_heightRangeOfTopViews;
 - (void)_hideForKeyboardAppearance;
 - (void)_hideOrShowBottomBarIfNeededWithTransition:(int)arg1;
 - (void)_hideShowNavigationBarDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (void)_hideShowToolbarDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_incomingNavigationBarFrame;
 - (id)_independentContainedScrollViewIntermediateToDescendantViewController:(id)arg1;
-- (void)_initializeHeightOfTopPalette:(id)arg1;
 - (void)_initializeNavigationDeferredTransitionContextIfNecessary;
 - (void)_installPaletteIntoViewHierarchy:(id)arg1;
 - (id)_interactionController;
 - (bool)_interactiveScrollActive;
 - (id)_interruptibleNavigationTransitionAnimator;
-- (struct { double x1; double x2; })_intrinsicNavigationBarHeightRangeForViewController:(id)arg1;
+- (struct { double x1; double x2; double x3; })_intrinsicNavigationBarHeightRangeForNavItem:(id)arg1;
 - (bool)_isAlreadyPoppingNavItem;
 - (bool)_isCrossfadingInTabBar;
 - (bool)_isCrossfadingOutTabBar;
@@ -301,26 +303,26 @@
 - (bool)_isNavigationBarVisible;
 - (bool)_isNestedNavigationController;
 - (bool)_isPerformingLayoutToLayoutTransition;
+- (bool)_isPopping;
 - (bool)_isPresentationContextByDefault;
+- (bool)_isPushing;
 - (bool)_isPushingOrPopping;
 - (bool)_isPushingOrPoppingUsingLayoutToLayoutNavigationTransition;
 - (bool)_isSupportedInterfaceOrientation:(long long)arg1;
 - (bool)_isTransitioning;
 - (bool)_isTransitioningOrPaletteIsTransitioning;
 - (bool)_isUsingBuiltinAnimator;
-- (bool)_isViewControllerFullScene;
+- (bool)_isViewControllerFullWidth;
 - (id)_keyboardAnimationStyle;
 - (id)_keyboardAppearedNotificationToken;
 - (int)_keyboardDirectionForTransition:(long long)arg1;
 - (id)_lastNavigationItems;
+- (void)_layoutContainerViewDidMoveToWindow:(id)arg1;
 - (void)_layoutContainerViewSemanticContentAttributeChanged:(id)arg1;
 - (struct NSDirectionalEdgeInsets { double x1; double x2; double x3; double x4; })_layoutMarginsforNavigationBar:(id)arg1;
 - (void)_layoutTopViewController;
-- (void)_layoutTopViewControllerInSheet;
-- (void)_layoutTopViewControllerInSheetWithPopoverView:(id)arg1;
-- (void)_layoutTopViewControllerOutOfSheet;
+- (void)_layoutTopViewControllerLookForNested:(bool)arg1;
 - (void)_layoutViewController:(id)arg1;
-- (void)_loadTopSearchPaletteForDeferredTransitionIfNecessaryForTransitionToViewController:(id)arg1;
 - (void)_makeBarHideGestureIfNecessary;
 - (void)_makeBarSwipeGestureIfNecessary;
 - (id)_managedSearchPaletteForEdge:(unsigned long long)arg1 size:(struct CGSize { double x1; double x2; })arg2;
@@ -329,6 +331,9 @@
 - (id)_navControllerToCreateManagedSearchPaletteForNavController:(id)arg1;
 - (id)_navbarAnimationId;
 - (bool)_navbarIsAppearingInteractively;
+- (bool)_navigationBar:(id)arg1 getContentOffsetOfObservedScrollViewIfApplicable:(struct CGPoint { double x1; double x2; }*)arg2;
+- (void)_navigationBar:(id)arg1 itemEnabledAutoScrollTransition:(id)arg2;
+- (double)_navigationBar:(id)arg1 preferredHeightForTransitionToHeightRange:(struct { double x1; double x2; double x3; })arg2;
 - (bool)_navigationBarAnimationWasCancelled;
 - (void)_navigationBarChangedSize:(id)arg1;
 - (void)_navigationBarDidChangeStyle:(id)arg1;
@@ -336,9 +341,11 @@
 - (id)_navigationBarForDragAffordance;
 - (id)_navigationBarForNestedNavigationController;
 - (id)_navigationBarHiddenByDefault:(bool)arg1;
+- (bool)_navigationBarLayoutIsInInteractiveScroll;
 - (bool)_navigationBarShouldUpdateProgress;
 - (struct CGSize { double x1; double x2; })_navigationBarSizeForViewController:(id)arg1 proposedHeight:(double)arg2 allowRubberBandStretch:(bool)arg3;
 - (void)_navigationBarWillBeginCoordinatedTransitionAnimations:(id)arg1;
+- (bool)_navigationControllerShouldObserveScrollView;
 - (void)_navigationItemDidUpdateSearchController:(id)arg1 oldSearchController:(id)arg2;
 - (id)_navigationItems;
 - (id)_navigationItemsCallingPublicAccessor:(bool)arg1;
@@ -353,7 +360,6 @@
 - (void)_observeScrollViewDidEndDecelerating:(id)arg1;
 - (void)_observeScrollViewDidEndDragging:(id)arg1 willDecelerate:(bool)arg2;
 - (void)_observeScrollViewDidScroll:(id)arg1;
-- (void)_observeScrollViewDidScroll:(id)arg1 topLayoutType:(long long)arg2;
 - (void)_observeScrollViewWillBeginDragging:(id)arg1;
 - (id)_outermostNavigationController;
 - (id)_overridingPreferredFocusEnvironment;
@@ -367,6 +373,7 @@
 - (id)_pinningBarForPalette:(id)arg1;
 - (void)_playPopNavigationSound;
 - (void)_playPushNavigationSound;
+- (void)_popNavigationBar:(id)arg1 item:(id)arg2;
 - (void)_popViewControllerAndUpdateInterfaceOrientationAnimated:(bool)arg1;
 - (id)_popViewControllerWithTransition:(int)arg1 allowPoppingLast:(bool)arg2;
 - (bool)_positionBarsExclusivelyWithSafeArea;
@@ -381,20 +388,17 @@
 - (void)_positionToolbarHidden:(bool)arg1 edge:(unsigned long long)arg2;
 - (void)_positionToolbarHidden:(bool)arg1 edge:(unsigned long long)arg2 crossFade:(bool)arg3;
 - (void)_positionTransitioningPalette:(id)arg1 outside:(bool)arg2 edge:(unsigned long long)arg3 preservingYPosition:(bool)arg4;
-- (double)_preferredHeightForHidingNavigationBarForViewController:(id)arg1;
+- (double)_preferredHeightForHidingNavigationBarForViewController:(id)arg1 topItem:(id)arg2;
 - (long long)_preferredNavigationBarPosition;
 - (void)_prepareCollectionViewController:(id)arg1 forSharingWithCollectionViewController:(id)arg2;
 - (void)_prepareCollectionViewControllerForSharing:(id)arg1;
 - (void)_prepareCollectionViewControllers:(id)arg1 forSharingInRange:(id)arg2;
-- (void)_prepareForDismissalInPopover:(id)arg1;
 - (void)_prepareForNestedDisplayWithNavigationController:(id)arg1;
 - (void)_prepareForNormalDisplayWithNavigationController:(id)arg1;
-- (void)_prepareForPresentationInPopover:(id)arg1;
 - (void)_presentationTransitionUnwrapViewController:(id)arg1;
 - (void)_presentationTransitionWrapViewController:(id)arg1 forTransitionContext:(id)arg2;
 - (void)_privateWillShowViewController:(id)arg1;
 - (void)_propagateContentAdjustmentsForControllersWithSharedViews;
-- (bool)_reallyWantsFullScreenLayout;
 - (id)_recallRememberedFocusedItemForViewController:(id)arg1;
 - (void)_releaseContainerViews;
 - (void)_reloadCachedInteractiveScrollMeasurements;
@@ -427,9 +431,11 @@
 - (void)_setClipUnderlapWhileTransitioning:(bool)arg1;
 - (void)_setClipsToBounds:(bool)arg1;
 - (void)_setContentInset:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
+- (void)_setContentOverlayInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)_setCrossfadingInTabBar:(bool)arg1;
 - (void)_setCrossfadingOutTabBar:(bool)arg1;
 - (void)_setCustomTransition:(bool)arg1;
+- (void)_setDefinesPresentationContextIfNecessaryForViewController:(id)arg1;
 - (void)_setDidExplicitlyHideTabBar:(bool)arg1;
 - (void)_setInteractionController:(id)arg1;
 - (void)_setInteractiveAnimationCoordinator:(id)arg1;
@@ -464,20 +470,18 @@
 - (void)_setViewControllers:(id)arg1 transition:(int)arg2 animated:(bool)arg3 operation:(long long)arg4;
 - (void)_setViewControllers_7_0:(id)arg1 transition:(int)arg2 animated:(bool)arg3;
 - (void)_setViewControllers_7_0:(id)arg1 transition:(int)arg2 animated:(bool)arg3 operation:(long long)arg4;
+- (void)_setupBackGestureRecognizer;
 - (bool)_shouldBottomBarBeHidden;
 - (bool)_shouldChildViewControllerUseFullScreenLayout:(id)arg1;
 - (bool)_shouldCrossFadeBottomBars;
 - (bool)_shouldCrossFadeNavigationBar;
 - (bool)_shouldHideBarsForTraits:(id)arg1;
 - (bool)_shouldHideSearchBarWhenScrollingForNavigationItem:(id)arg1;
-- (bool)_shouldLayoutViewControllerForTransparentStatusBar:(id)arg1;
 - (bool)_shouldNavigationBarInsetViewController:(id)arg1;
 - (bool)_shouldNavigationBarInsetViewController:(id)arg1 orOverlayContent:(bool*)arg2;
-- (bool)_shouldNavigationBarInsetViewControllerPreInnsbruck:(id)arg1;
 - (bool)_shouldPersistViewWhenCoding;
 - (bool)_shouldPopFromLandscapeToPortraitOrientation;
 - (bool)_shouldSkipHostedRefreshControlUpdateSchedulingDeferredUpdateIfNecessary;
-- (bool)_shouldSynthesizeSupportedOrientations;
 - (bool)_shouldTabBarController:(id)arg1 insetViewController:(id)arg2 orOverlayContent:(bool*)arg3;
 - (bool)_shouldToolBar:(id)arg1 insetViewController:(id)arg2;
 - (bool)_shouldToolBar:(id)arg1 insetViewController:(id)arg2 orOverlayContent:(bool*)arg3;
@@ -501,6 +505,7 @@
 - (void)_stopTransitionsImmediately;
 - (long long)_subclassPreferredFocusedViewPrioritizationType;
 - (void)_tabBarControllerDidFinishShowingTabBar:(id)arg1 isHidden:(bool)arg2;
+- (id)_tippyTopViewController;
 - (id)_toolbarAnimationId;
 - (bool)_toolbarAnimationWasCancelled;
 - (Class)_toolbarClass;
@@ -515,6 +520,7 @@
 - (id)_transitionCoordinator;
 - (int)_transitionForOldViewControllers:(id)arg1 newViewControllers:(id)arg2;
 - (void)_unhideNavigationBarForEdge:(unsigned long long)arg1;
+- (void)_updateAndObserveScrollView:(id)arg1 viewController:(id)arg2;
 - (void)_updateBarsForCurrentInterfaceOrientation;
 - (void)_updateBarsForCurrentInterfaceOrientationAndForceBarLayout:(bool)arg1;
 - (void)_updateBottomBarHiddenState;
@@ -523,21 +529,23 @@
 - (void)_updateInteractiveBarTransition:(id)arg1 withUUID:(id)arg2 percent:(double)arg3 isFinished:(bool)arg4 didComplete:(bool)arg5 completionSpeed:(double)arg6 completionCurve:(long long)arg7;
 - (void)_updateInteractivePopGestureEnabledState;
 - (void)_updateInteractiveTransition:(double)arg1;
+- (void)_updateLayoutForScrollView:(id)arg1 topLayoutType:(long long)arg2;
 - (void)_updateLayoutForStatusBarAndInterfaceOrientation;
+- (void)_updateManualScrollEdgeAppearanceProgressForScrollView:(id)arg1 navigationItem:(id)arg2;
 - (id /* block */)_updateNavigationBarHandler;
 - (void)_updateNavigationBarHostedRefreshControlToHostRefreshControlForScrollView:(id)arg1;
 - (void)_updatePaletteConstraints;
 - (void)_updatePalettesWithBlock:(id /* block */)arg1;
 - (void)_updateScrollViewFromViewController:(id)arg1 toViewController:(id)arg2;
+- (void)_updateScrollViewObservationFlagsForScrollView:(id)arg1 navigationItem:(id)arg2;
 - (void)_updateSearchPaletteSettingsForTopViewController:(id)arg1;
 - (void)_updateToolbarItemsFromViewController:(id)arg1 animated:(bool)arg2;
-- (void)_updateTopPaletteVisibilityState;
 - (void)_updateTopViewFramesForViewController:(id)arg1;
+- (void)_updateTopViewFramesForViewController:(id)arg1 isCancelledTransition:(bool)arg2 isOrientationChange:(bool)arg3;
 - (void)_updateTopViewFramesToMatchScrollOffsetInViewController:(id)arg1 contentScrollView:(id)arg2 topLayoutType:(long long)arg3;
 - (bool)_useCrossFadeForGestureHiding;
 - (bool)_useCurrentStatusBarHeight;
 - (bool)_useStandardStatusBarHeight;
-- (bool)_usesTransitionController;
 - (id)_viewControllerForDisappearCallback;
 - (id)_viewControllerForSearchPalette;
 - (void)_viewControllerSubtreeDidGainViewController:(id)arg1;
@@ -577,6 +585,7 @@
 - (void)detachPalette:(id)arg1 isInPaletteTransition:(bool)arg2;
 - (id)detailViewController;
 - (void)didAnimateFirstHalfOfRotationToInterfaceOrientation:(long long)arg1;
+- (void)didMoveToParentViewController:(id)arg1;
 - (void)didRotateFromInterfaceOrientation:(long long)arg1;
 - (void)didShowViewController:(id)arg1 animated:(bool)arg2;
 - (id)disappearingViewController;
@@ -610,7 +619,6 @@
 - (id)moreListSelectedImage;
 - (id)moreListTableCell;
 - (id)navigationBar;
-- (void)navigationBar:(id)arg1 buttonClicked:(int)arg2;
 - (bool)navigationBar:(id)arg1 shouldPopItem:(id)arg2;
 - (Class)navigationBarClass;
 - (void)navigationBarDidChangeOpacity:(id)arg1;
@@ -638,7 +646,6 @@
 - (long long)preferredStatusBarStyle;
 - (bool)pretendNavBarHidden;
 - (id)previousViewController;
-- (void)purgeMemoryForReason:(int)arg1;
 - (void)pushViewController:(id)arg1 animated:(bool)arg2;
 - (void)pushViewController:(id)arg1 transition:(int)arg2;
 - (void)pushViewController:(id)arg1 transition:(int)arg2 forceImmediate:(bool)arg3;
@@ -741,20 +748,22 @@
 - (void)popToSigninControllerAnimated:(bool)arg1;
 - (id)signInControllerInHierarchy;
 
-// Image: /System/Library/PrivateFrameworks/GameCenterPrivateUI.framework/GameCenterPrivateUI
-
-- (void)_gkReplaceTopViewControllerWithViewController:(id)arg1 transition:(id)arg2;
-- (void)_gkSetViewControllers:(id)arg1 transition:(id)arg2;
-
 // Image: /System/Library/PrivateFrameworks/GameCenterUI.framework/GameCenterUI
 
 - (void)_gkForceNextContentUpdate;
 - (void)_gkHandleURLPathComponents:(id)arg1 query:(id)arg2;
 - (void)_gkRefreshContentsForDataType:(unsigned int)arg1 userInfo:(id)arg2;
+- (void)_gkReplaceTopViewControllerWithViewController:(id)arg1 transition:(id)arg2;
 - (void)_gkResetContents;
 - (void)_gkSetContentsNeedUpdateWithHandler:(id /* block */)arg1;
+- (void)_gkSetViewControllers:(id)arg1 transition:(id)arg2;
 - (bool)_gkShouldRefreshContentsForDataType:(unsigned int)arg1 userInfo:(id)arg2;
 - (void)_gkUpdateContentsWithCompletionHandlerAndError:(id /* block */)arg1;
+
+// Image: /System/Library/PrivateFrameworks/HealthExperienceUI.framework/HealthExperienceUI
+
+- (unsigned long long)overrideMask;
+- (id)providedHealthStoreFor:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/HomeUI.framework/HomeUI
 
@@ -763,30 +772,20 @@
 - (id)hu_presentedItem;
 - (id)hu_pushPreloadableViewController:(id)arg1 animated:(bool)arg2;
 
+// Image: /System/Library/PrivateFrameworks/ManagedConfigurationUI.framework/ManagedConfigurationUI
+
+- (void)popToViewController:(id)arg1 pushViewController:(id)arg2 animated:(bool)arg3;
+
 // Image: /System/Library/PrivateFrameworks/MediaPlayerUI.framework/MediaPlayerUI
 
 - (void)MPU_popToViewController:(id)arg1 animated:(bool)arg2 popRequestSentCompletion:(id /* block */)arg3;
 - (void)MPU_popToViewControllerBeforeViewController:(id)arg1 animated:(bool)arg2;
 
-// Image: /System/Library/PrivateFrameworks/MobileTimerUI.framework/MobileTimerUI
-
-- (id)initWithRootViewController:(id)arg1 forceLegacyBars:(bool)arg2;
-
-// Image: /System/Library/PrivateFrameworks/News/TeaUI.framework/TeaUI
-
-- (void)popToRootViewControllerOppositeDirectionAnimated:(bool)arg1;
-- (void)popToViewControllerOppositeDirection:(id)arg1 animated:(bool)arg2;
-- (void)popViewControllerOppositeDirectionAnimated:(bool)arg1;
-- (void)ts_setNavigationBarBackgroundHidden:(bool)arg1;
-- (void)ts_setPaletteBackgroundHidden:(bool)arg1;
-- (void)ts_setPaletteBlurthroughBackground;
-- (void)ts_setPreferredNavigationBarPosition:(long long)arg1;
-- (void)ts_setTopPaletteShadowHidden:(bool)arg1;
-- (void)ts_setTranslucentNavigationBarBackgroundEnabled:(bool)arg1;
-
 // Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
 
+- (void)_pk_popToViewController:(id)arg1 animated:(bool)arg2;
 - (void)_pk_popToViewControllerMarker:(id)arg1 animated:(bool)arg2;
+- (void)_pk_popViewControllersFromViewController:(id)arg1 toViewController:(id)arg2 animated:(bool)arg3;
 - (void)_pk_presentPaymentSetupViewController:(id)arg1 animated:(bool)arg2 performPreflight:(bool)arg3 delay:(long long)arg4 completion:(id /* block */)arg5;
 - (void)pk_applyAppearance:(id)arg1;
 - (id)pk_childrenForAppearance;
@@ -804,23 +803,32 @@
 
 - (void)_ppt_setTransitionAnimationCompletionHandler:(id /* block */)arg1;
 - (id /* block */)_ppt_transitionAnimationCompletionHandler;
+- (void)_px_prepareNavigationFromViewController:(id)arg1 options:(unsigned long long)arg2 completionHandler:(id /* block */)arg3;
+- (bool)canRouteToDestination:(id)arg1;
+- (id)nextExistingParticipantOnRouteToDestination:(id)arg1;
 - (void)ppt_installTransitionAnimationCompletionHandler:(id /* block */)arg1;
 - (void)ppt_notifyTransitionAnimationDidComplete;
 - (double)px_HDRFocus;
+- (bool)px_allowsTabSwitching;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint { double x1; double x2; })arg1 inCoordinateSpace:(id)arg2;
 - (double)px_imageModulationIntensity;
 - (bool)px_isImageModulationEnabled;
+- (void)px_navigateToStateAllowingTabSwitchingWithOptions:(unsigned long long)arg1 completionHandler:(id /* block */)arg2;
 - (id)px_popToViewControllerPreceedingViewController:(id)arg1 animated:(bool)arg2;
 - (bool)px_preparePopToViewController:(id)arg1 forced:(bool)arg2;
 - (void)px_pushViewController:(id)arg1 animated:(bool)arg2 completion:(id /* block */)arg3;
 - (id)px_snapBackController;
+- (id)px_topViewController;
 
 // Image: /System/Library/PrivateFrameworks/Preferences.framework/Preferences
 
 - (void)popRecursivelyToRootController;
 
-// Image: /System/Library/PrivateFrameworks/Stocks/TeaUI.framework/TeaUI
+// Image: /System/Library/PrivateFrameworks/TeaUI.framework/TeaUI
 
+- (void)popToRootViewControllerOppositeDirectionAnimated:(bool)arg1;
+- (void)popToViewControllerOppositeDirection:(id)arg1 animated:(bool)arg2;
+- (void)popViewControllerOppositeDirectionAnimated:(bool)arg1;
 - (void)ts_setNavigationBarBackgroundHidden:(bool)arg1;
 - (void)ts_setPaletteBackgroundHidden:(bool)arg1;
 - (void)ts_setPaletteBlurthroughBackground;

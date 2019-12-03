@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/AppSupportUI.framework/AppSupportUI
  */
 
-@interface NUIWidgetGridViewCell : NUIContainerStackView <NUIContainerStackViewDelegate, NUIWidgetGridViewCell> {
+@interface NUIWidgetGridViewCell : NUIContainerStackView <NUIContainerViewDelegate, NUIWidgetGridViewCell> {
     bool  _accessibilityEnabled;
     struct { 
         double leading; 

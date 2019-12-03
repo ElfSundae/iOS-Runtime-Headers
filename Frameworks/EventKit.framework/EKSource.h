@@ -22,17 +22,19 @@
 @property (nonatomic, retain) NSSet *cachedOwnerAddresses;
 @property (nonatomic) long long cachedPort;
 @property (nonatomic, readonly) NSSet *calendars;
-@property (nonatomic, readonly) CDBSourceConstraints *constraints;
+@property (nonatomic, readonly) EKSourceConstraints *constraints;
 @property (nonatomic, retain) NSString *constraintsDescriptionPath;
 @property (nonatomic, copy) NSString *creatorBundleID;
 @property (nonatomic, copy) NSString *creatorCodeSigningIdentity;
 @property (nonatomic, copy) NSNumber *defaultAlarmOffset;
+@property (nonatomic, copy) NSString *delegatedAccountOwnerStoreID;
 @property (nonatomic, readonly) int displayOrderForNewCalendar;
 @property (getter=isEnabled, nonatomic) bool enabled;
 @property (nonatomic, copy) NSString *externalID;
 @property (nonatomic, copy) NSString *externalModificationTag;
 @property (nonatomic) int flags;
 @property (nonatomic, readonly) bool hasOwnerEmailAddress;
+@property (nonatomic, readonly) bool isDelegate;
 @property (nonatomic) bool isFacebook;
 @property (nonatomic, readonly) bool isFacebookSource;
 @property (nonatomic, readonly) bool isSyncing;
@@ -42,6 +44,7 @@
 @property (nonatomic, retain) NSDate *lastSyncStartDate;
 @property (nonatomic) bool onlyCreatorCanModify;
 @property (nonatomic, readonly) NSSet *ownerAddresses;
+@property (nonatomic, readonly) NSString *personaIdentifier;
 @property (nonatomic) long long preferredEventPrivateValue;
 @property (nonatomic) bool prohibitsDetachmentOnCommentChange;
 @property (nonatomic) bool prohibitsICSImport;
@@ -49,9 +52,11 @@
 @property (nonatomic) bool prohibitsMultipleMonthsInYearlyRecurrence;
 @property (nonatomic) bool prohibitsPrivateEventsWithAttendees;
 @property (nonatomic) bool prohibitsYearlyRecurrenceInterval;
+@property (nonatomic, readonly) REMObjectID *remAccountObjectID;
 @property (nonatomic) bool requiresSamePrivacyLevelAcrossRecurrenceSeries;
 @property (nonatomic, readonly) NSString *serverHost;
 @property (nonatomic, readonly) long long serverPort;
+@property (nonatomic) bool showsNotifications;
 @property (nonatomic) bool snoozeAlarmRequiresDetach;
 @property (nonatomic, retain) NSString *sourceIdentifier;
 @property (nonatomic) long long sourceType;
@@ -83,6 +88,7 @@
 - (void)_cacheExternalIdentification;
 - (void)_cacheExternalIdentificationIfNeeded;
 - (void)_countCalendarItemsOfCalType:(int)arg1 resultHandler:(id /* block */)arg2;
+- (bool)_reset;
 - (id)allCalendars;
 - (bool)allowsCalendarAddDeleteModify;
 - (bool)allowsEvents;
@@ -92,6 +98,7 @@
 - (id)cachedHost;
 - (id)cachedOwnerAddresses;
 - (long long)cachedPort;
+- (id)calendarWithExternalIdentifier:(id)arg1;
 - (id)calendars;
 - (id)calendarsForEntityType:(unsigned long long)arg1;
 - (bool)commit:(id*)arg1;
@@ -102,6 +109,7 @@
 - (id)creatorBundleID;
 - (id)creatorCodeSigningIdentity;
 - (id)defaultAlarmOffset;
+- (id)delegatedAccountOwnerStoreID;
 - (id)description;
 - (bool)disabled;
 - (int)displayOrderForNewCalendar;
@@ -110,6 +118,7 @@
 - (bool)flag:(int)arg1;
 - (int)flags;
 - (bool)hasOwnerEmailAddress;
+- (bool)isDelegate;
 - (bool)isEnabled;
 - (bool)isFacebook;
 - (bool)isFacebookSource;
@@ -121,6 +130,7 @@
 - (int)managedConfigurationAccountAccess;
 - (bool)onlyCreatorCanModify;
 - (id)ownerAddresses;
+- (id)personaIdentifier;
 - (long long)preferredEventPrivateValue;
 - (int)preferredEventPrivateValueRaw;
 - (bool)prohibitsDetachmentOnCommentChange;
@@ -130,7 +140,10 @@
 - (bool)prohibitsPrivateEventsWithAttendees;
 - (bool)prohibitsYearlyRecurrenceInterval;
 - (id)readWriteCalendarsForEntityType:(unsigned long long)arg1;
+- (bool)refresh;
+- (id)remAccountObjectID;
 - (bool)remove:(id*)arg1;
+- (bool)removeCalendarItemsOlderThanDate:(id)arg1 entityTypeMask:(unsigned long long)arg2 error:(id*)arg3;
 - (bool)requiresSamePrivacyLevelAcrossRecurrenceSeries;
 - (id)serverHost;
 - (long long)serverPort;
@@ -145,6 +158,8 @@
 - (void)setCreatorBundleID:(id)arg1;
 - (void)setCreatorCodeSigningIdentity:(id)arg1;
 - (void)setDefaultAlarmOffset:(id)arg1;
+- (void)setDelegatedAccountOwnerStoreID:(id)arg1;
+- (void)setDisabled:(bool)arg1;
 - (void)setEnabled:(bool)arg1;
 - (void)setExternalID:(id)arg1;
 - (void)setExternalModificationTag:(id)arg1;
@@ -164,6 +179,7 @@
 - (void)setProhibitsPrivateEventsWithAttendees:(bool)arg1;
 - (void)setProhibitsYearlyRecurrenceInterval:(bool)arg1;
 - (void)setRequiresSamePrivacyLevelAcrossRecurrenceSeries:(bool)arg1;
+- (void)setShowsNotifications:(bool)arg1;
 - (void)setSnoozeAlarmRequiresDetach:(bool)arg1;
 - (void)setSourceIdentifier:(id)arg1;
 - (void)setSourceType:(long long)arg1;
@@ -179,6 +195,7 @@
 - (void)setTitle:(id)arg1;
 - (void)setUsesSelfAttendee:(bool)arg1;
 - (void)setWasMigrated:(bool)arg1;
+- (bool)showsNotifications;
 - (bool)snoozeAlarmRequiresDetach;
 - (id)sourceIdentifier;
 - (long long)sourceType;
@@ -198,6 +215,7 @@
 - (id)timeOfLastExternalIdentificationCache;
 - (id)title;
 - (bool)usesSelfAttendee;
+- (bool)validate:(id*)arg1;
 - (bool)wantsCommentPromptWhenDeclining;
 - (bool)wasMigrated;
 

@@ -10,6 +10,7 @@
     bool  _hostedOnCurrentDevice;
     bool  _onHold;
     bool  _outgoing;
+    NSString * _providerIdentifier;
 }
 
 @property (nonatomic, readonly, copy) NSUUID *UUID;
@@ -22,6 +23,7 @@
 @property (getter=isHostedOnCurrentDevice, nonatomic) bool hostedOnCurrentDevice;
 @property (getter=isOnHold, nonatomic) bool onHold;
 @property (getter=isOutgoing, nonatomic) bool outgoing;
+@property (nonatomic, retain) NSString *providerIdentifier;
 @property (readonly) Class superclass;
 
 + (bool)supportsSecureCoding;
@@ -42,6 +44,7 @@
 - (bool)isHostedOnCurrentDevice;
 - (bool)isOnHold;
 - (bool)isOutgoing;
+- (id)providerIdentifier;
 - (id)sanitizedCopy;
 - (id)sanitizedCopyWithZone:(struct _NSZone { }*)arg1;
 - (void)setEndpointOnCurrentDevice:(bool)arg1;
@@ -50,6 +53,7 @@
 - (void)setHostedOnCurrentDevice:(bool)arg1;
 - (void)setOnHold:(bool)arg1;
 - (void)setOutgoing:(bool)arg1;
+- (void)setProviderIdentifier:(id)arg1;
 - (void)updateCopy:(id)arg1 withZone:(struct _NSZone { }*)arg2;
 - (void)updateSanitizedCopy:(id)arg1 withZone:(struct _NSZone { }*)arg2;
 

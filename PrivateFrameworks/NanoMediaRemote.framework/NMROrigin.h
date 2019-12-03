@@ -2,38 +2,52 @@
    Image: /System/Library/PrivateFrameworks/NanoMediaRemote.framework/NanoMediaRemote
  */
 
-@interface NMROrigin : NSObject <NMROriginMediaRemoteObserverNotificationHandler> {
+@interface NMROrigin : NSObject {
     NSString * _cachedDisplayName;
+    unsigned long long  _connectionState;
     void * _deviceInfo;
     void * _mediaRemoteOrigin;
     NSObject<OS_dispatch_queue> * _queue;
+    MPAVRoute * _route;
 }
 
+@property (nonatomic, readonly) unsigned long long connectionState;
+@property (nonatomic, readonly) NSString *deviceIdentifier;
 @property (nonatomic, readonly) void*deviceInfo;
 @property (nonatomic, readonly) NSString *displayName;
+@property (nonatomic, readonly) bool isCompanion;
 @property (nonatomic, readonly) bool isLocal;
 @property (nonatomic, readonly) long long logicalDeviceCount;
 @property (nonatomic, readonly) void*mediaRemoteOrigin;
-@property (nonatomic, readonly) int originType;
+@property (nonatomic, readonly) MPAVRoute *route;
+@property (nonatomic, readonly) unsigned long long type;
 @property (nonatomic, readonly) NSNumber *uniqueIdentifier;
 
-+ (void*)_originFromNotification:(id)arg1;
-
 - (void).cxx_destruct;
+- (void)_handleExternalDeviceConnectionStateDidChangeNotification:(id)arg1;
+- (void)_handleRouteConnectionDidConnectNotification:(id)arg1;
+- (void)_handleRouteConnectionDidInvalidateNotification:(id)arg1;
+- (void)_updateConnectionState;
+- (unsigned long long)connectionState;
 - (void)dealloc;
 - (id)description;
+- (id)deviceIdentifier;
 - (void*)deviceInfo;
 - (id)displayName;
 - (unsigned long long)hash;
-- (id)initWithMROriginRef:(void*)arg1;
+- (id)init;
+- (id)initWithOrigin:(void*)arg1 deviceInfo:(void*)arg2;
+- (id)initWithRoute:(id)arg1;
+- (bool)isCompanion;
 - (bool)isEqual:(id)arg1;
 - (bool)isLocal;
 - (long long)logicalDeviceCount;
 - (void*)mediaRemoteOrigin;
-- (int)originType;
-- (bool)shouldHandleNotification:(id)arg1;
+- (id)playerPathWithBundleID:(id)arg1 playerID:(id)arg2;
+- (id)route;
+- (unsigned long long)type;
 - (id)uniqueIdentifier;
-- (bool)updateDeviceInfo:(void*)arg1;
-- (void)updateWithMROrigin:(void*)arg1;
+- (void)updateOrigin:(void*)arg1 deviceInfo:(void*)arg2;
+- (void)updateRoute:(id)arg1;
 
 @end

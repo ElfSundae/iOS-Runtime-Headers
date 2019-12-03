@@ -21,7 +21,9 @@
         unsigned int rssi : 1; 
         unsigned int serverHash : 1; 
         unsigned int uarfcn : 1; 
+        unsigned int isLimitedService : 1; 
     }  _has;
+    bool  _isLimitedService;
     CLPLocation * _location;
     int  _mcc;
     int  _mnc;
@@ -32,6 +34,7 @@
     int  _rscp;
     int  _rssi;
     int  _serverHash;
+    NSString * _serviceProviderName;
     int  _tac;
     int  _uarfcn;
 }
@@ -49,13 +52,16 @@
 @property (nonatomic) bool hasCellLatitude;
 @property (nonatomic) bool hasCellLongitude;
 @property (nonatomic) bool hasEcn0;
+@property (nonatomic) bool hasIsLimitedService;
 @property (nonatomic, readonly) bool hasNeighborGroup;
 @property (nonatomic, readonly) bool hasOperatorName;
 @property (nonatomic) bool hasPid;
 @property (nonatomic) bool hasRscp;
 @property (nonatomic) bool hasRssi;
 @property (nonatomic) bool hasServerHash;
+@property (nonatomic, readonly) bool hasServiceProviderName;
 @property (nonatomic) bool hasUarfcn;
+@property (nonatomic) bool isLimitedService;
 @property (nonatomic, retain) CLPLocation *location;
 @property (nonatomic) int mcc;
 @property (nonatomic) int mnc;
@@ -66,6 +72,7 @@
 @property (nonatomic) int rscp;
 @property (nonatomic) int rssi;
 @property (nonatomic) int serverHash;
+@property (nonatomic, retain) NSString *serviceProviderName;
 @property (nonatomic) int tac;
 @property (nonatomic) int uarfcn;
 
@@ -91,15 +98,18 @@
 - (bool)hasCellLatitude;
 - (bool)hasCellLongitude;
 - (bool)hasEcn0;
+- (bool)hasIsLimitedService;
 - (bool)hasNeighborGroup;
 - (bool)hasOperatorName;
 - (bool)hasPid;
 - (bool)hasRscp;
 - (bool)hasRssi;
 - (bool)hasServerHash;
+- (bool)hasServiceProviderName;
 - (bool)hasUarfcn;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
+- (bool)isLimitedService;
 - (id)location;
 - (int)mcc;
 - (void)mergeFrom:(id)arg1;
@@ -114,6 +124,7 @@
 - (int)rscp;
 - (int)rssi;
 - (int)serverHash;
+- (id)serviceProviderName;
 - (void)setAppBundleId:(id)arg1;
 - (void)setBandInfo:(int)arg1;
 - (void)setBandwidth:(int)arg1;
@@ -126,11 +137,13 @@
 - (void)setHasCellLatitude:(bool)arg1;
 - (void)setHasCellLongitude:(bool)arg1;
 - (void)setHasEcn0:(bool)arg1;
+- (void)setHasIsLimitedService:(bool)arg1;
 - (void)setHasPid:(bool)arg1;
 - (void)setHasRscp:(bool)arg1;
 - (void)setHasRssi:(bool)arg1;
 - (void)setHasServerHash:(bool)arg1;
 - (void)setHasUarfcn:(bool)arg1;
+- (void)setIsLimitedService:(bool)arg1;
 - (void)setLocation:(id)arg1;
 - (void)setMcc:(int)arg1;
 - (void)setMnc:(int)arg1;
@@ -141,6 +154,7 @@
 - (void)setRscp:(int)arg1;
 - (void)setRssi:(int)arg1;
 - (void)setServerHash:(int)arg1;
+- (void)setServiceProviderName:(id)arg1;
 - (void)setTac:(int)arg1;
 - (void)setUarfcn:(int)arg1;
 - (int)tac;

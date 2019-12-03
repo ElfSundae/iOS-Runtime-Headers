@@ -2,20 +2,17 @@
    Image: /System/Library/PrivateFrameworks/AssertionServices.framework/AssertionServices
  */
 
-@interface BKSWorkspace : NSObject {
-    NSMutableSet * _clientConnections;
-    NSMutableSet * _hostConnections;
-    NSObject<OS_xpc_object> * _listenerConnection;
-    NSObject<OS_dispatch_queue> * _queue;
-}
+@interface BKSWorkspace : NSObject <RBSServiceDelegate>
 
-+ (id)sharedConnection;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 + (id)sharedInstance;
-+ (id)sharedQueue;
 
-- (void)_queue_handleClientMessage:(id)arg1;
-- (void)_queue_handleConnectToHostMessage:(id)arg1;
-- (void)_queue_handleServerMessage:(id)arg1;
 - (id)init;
+- (void)service:(id)arg1 didLoseInheritances:(id)arg2;
+- (void)service:(id)arg1 didReceiveInheritances:(id)arg2;
 
 @end

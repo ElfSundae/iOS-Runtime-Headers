@@ -10,9 +10,12 @@
     VUIComingSoonBannerCardView * _comingSoonView;
     double  _contentOffset;
     _TVImageView * _coverArtImageView;
+    _TVImageView * _decorationImageGradientView;
+    _TVImageView * _decorationImageView;
     VUILabel * _descComputationLabel;
     VUIFocusableTextView * _descriptionTextView;
     VUILabel * _disclaimerTextView;
+    VUILabel * _episodeInfoView;
     CAGradientLayer * _gradientLayer;
     VUIMediaTagsView * _infoTagsView;
     VUIProductBannerLayout * _layout;
@@ -20,6 +23,7 @@
     VUILabel * _logoTextView;
     bool  _prefersUberLayout;
     VUISeparatorView * _separatorView;
+    VUILabel * _subTextView;
     VUILabel * _tagsComputationLabel;
     VUIMediaTagsView * _tagsView;
     IKViewElement * _viewElement;
@@ -33,10 +37,13 @@
 @property (nonatomic) double contentOffset;
 @property (nonatomic, retain) _TVImageView *coverArtImageView;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic, retain) _TVImageView *decorationImageGradientView;
+@property (nonatomic, retain) _TVImageView *decorationImageView;
 @property (nonatomic, retain) VUILabel *descComputationLabel;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) VUIFocusableTextView *descriptionTextView;
 @property (nonatomic, retain) VUILabel *disclaimerTextView;
+@property (nonatomic, retain) VUILabel *episodeInfoView;
 @property (nonatomic, retain) CAGradientLayer *gradientLayer;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) VUIMediaTagsView *infoTagsView;
@@ -45,6 +52,7 @@
 @property (nonatomic, retain) VUILabel *logoTextView;
 @property (nonatomic) bool prefersUberLayout;
 @property (nonatomic, retain) VUISeparatorView *separatorView;
+@property (nonatomic, retain) VUILabel *subTextView;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) VUILabel *tagsComputationLabel;
 @property (nonatomic, retain) VUIMediaTagsView *tagsView;
@@ -61,9 +69,12 @@
 - (id)comingSoonView;
 - (double)contentOffset;
 - (id)coverArtImageView;
+- (id)decorationImageGradientView;
+- (id)decorationImageView;
 - (id)descComputationLabel;
 - (id)descriptionTextView;
 - (id)disclaimerTextView;
+- (id)episodeInfoView;
 - (id)gradientLayer;
 - (id)infoTagsView;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
@@ -82,9 +93,12 @@
 - (void)setComingSoonView:(id)arg1;
 - (void)setContentOffset:(double)arg1;
 - (void)setCoverArtImageView:(id)arg1;
+- (void)setDecorationImageGradientView:(id)arg1;
+- (void)setDecorationImageView:(id)arg1;
 - (void)setDescComputationLabel:(id)arg1;
 - (void)setDescriptionTextView:(id)arg1;
 - (void)setDisclaimerTextView:(id)arg1;
+- (void)setEpisodeInfoView:(id)arg1;
 - (void)setGradientLayer:(id)arg1;
 - (void)setInfoTagsView:(id)arg1;
 - (void)setLayout:(id)arg1;
@@ -93,14 +107,15 @@
 - (void)setPrefersUberLayout:(bool)arg1;
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (void)setSeparatorView:(id)arg1;
+- (void)setSubTextView:(id)arg1;
 - (void)setTagsComputationLabel:(id)arg1;
 - (void)setTagsView:(id)arg1;
 - (void)setViewElement:(id)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
+- (id)subTextView;
 - (id)tagsComputationLabel;
 - (id)tagsView;
 - (double)topThreshold;
-- (void)traitCollectionDidChange:(id)arg1;
 - (id)viewElement;
 
 @end

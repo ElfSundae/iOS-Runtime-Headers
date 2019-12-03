@@ -11,6 +11,7 @@
     _TVImageView * _imageView;
     _TVImageView * _imagesViewDefaultState;
     _TVImageView * _imagesViewHighlightedState;
+    UILargeContentViewerInteraction * _largeContentViewerInteraction;
     VUIButtonLayout * _layout;
     id /* block */  _selectActionHandler;
     VUILabel * _textContentView;
@@ -25,6 +26,7 @@
 @property (nonatomic, retain) _TVImageView *imageView;
 @property (nonatomic, retain) _TVImageView *imagesViewDefaultState;
 @property (nonatomic, retain) _TVImageView *imagesViewHighlightedState;
+@property (nonatomic, retain) UILargeContentViewerInteraction *largeContentViewerInteraction;
 @property (nonatomic, retain) VUIButtonLayout *layout;
 @property (nonatomic, copy) id /* block */ selectActionHandler;
 @property (nonatomic, copy) VUILabel *textContentView;
@@ -38,20 +40,27 @@
 - (bool)_hasImage;
 - (bool)_hasTitle;
 - (struct CGSize { double x1; double x2; })_imageSizeThatFits:(struct CGSize { double x1; double x2; })arg1;
+- (void)_updateBackgroundColor;
 - (void)_updateLayout;
 - (id)backdropView;
 - (id)backgroundImageView;
 - (id)backgroundImagesViewDefaultState;
 - (id)backgroundImagesViewHighlightedState;
 - (double)bottomMarginWithBaselineMargin:(double)arg1;
+- (id)hitTest:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
 - (bool)imageTrailsTextContent;
 - (id)imageView;
 - (id)imagesViewDefaultState;
 - (id)imagesViewHighlightedState;
 - (id)initWithLayout:(id)arg1 interfaceStyle:(long long)arg2;
+- (struct CGSize { double x1; double x2; })intrinsicContentSize;
+- (id)largeContentImage;
+- (id)largeContentTitle;
+- (id)largeContentViewerInteraction;
 - (id)layout;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
+- (bool)scalesLargeContentImage;
 - (id /* block */)selectActionHandler;
 - (void)setBackdropView:(id)arg1;
 - (void)setBackgroundImage:(id)arg1 state:(unsigned long long)arg2;
@@ -65,6 +74,7 @@
 - (void)setImageView:(id)arg1 state:(unsigned long long)arg2;
 - (void)setImagesViewDefaultState:(id)arg1;
 - (void)setImagesViewHighlightedState:(id)arg1;
+- (void)setLargeContentViewerInteraction:(id)arg1;
 - (void)setLayout:(id)arg1;
 - (void)setSelectActionHandler:(id /* block */)arg1;
 - (void)setTextContentView:(id)arg1;
@@ -74,6 +84,7 @@
 - (id)textContentView;
 - (double)topMarginToLabel:(id)arg1 withBaselineMargin:(double)arg2;
 - (double)topMarginWithBaselineMargin:(double)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateWithElement:(id)arg1;
 - (id)viewElement;
 

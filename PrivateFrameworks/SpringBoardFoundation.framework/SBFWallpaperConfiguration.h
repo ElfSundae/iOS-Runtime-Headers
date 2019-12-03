@@ -3,14 +3,16 @@
  */
 
 @interface SBFWallpaperConfiguration : NSObject <BSDescriptionProviding, NSCopying, NSSecureCoding> {
+    bool  _needsWallpaperDimmingTreatment;
     NSURL * _originalVideoURL;
-    <SBFProceduralWallpaper> * _proceduralWallpaper;
     NSDictionary * _proceduralWallpaperInfo;
     long long  _variant;
     NSURL * _videoURL;
     UIColor * _wallpaperColor;
     NSString * _wallpaperColorName;
+    SBFGradient * _wallpaperGradient;
     SBWallpaperImage * _wallpaperImage;
+    NSData * _wallpaperImageHashData;
     SBFWallpaperOptions * _wallpaperOptions;
     UIImage * _wallpaperOriginalImage;
     UIImage * _wallpaperThumbnailImage;
@@ -21,8 +23,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) bool needsWallpaperDimmingTreatment;
 @property (nonatomic, copy) NSURL *originalVideoURL;
-@property (nonatomic, retain) <SBFProceduralWallpaper> *proceduralWallpaper;
 @property (nonatomic, readonly, copy) NSString *proceduralWallpaperIdentifier;
 @property (nonatomic, copy) NSDictionary *proceduralWallpaperInfo;
 @property (nonatomic, readonly, copy) NSDictionary *proceduralWallpaperOptions;
@@ -31,7 +33,9 @@
 @property (nonatomic, copy) NSURL *videoURL;
 @property (nonatomic, copy) UIColor *wallpaperColor;
 @property (nonatomic, copy) NSString *wallpaperColorName;
+@property (nonatomic, copy) SBFGradient *wallpaperGradient;
 @property (nonatomic, retain) SBWallpaperImage *wallpaperImage;
+@property (nonatomic, copy) NSData *wallpaperImageHashData;
 @property (nonatomic, copy) SBFWallpaperOptions *wallpaperOptions;
 @property (nonatomic, retain) UIImage *wallpaperOriginalImage;
 @property (nonatomic, retain) UIImage *wallpaperThumbnailImage;
@@ -51,18 +55,20 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithVariant:(long long)arg1 type:(long long)arg2;
 - (bool)isEqual:(id)arg1;
+- (bool)needsWallpaperDimmingTreatment;
 - (id)originalVideoURL;
-- (id)proceduralWallpaper;
 - (id)proceduralWallpaperIdentifier;
 - (id)proceduralWallpaperInfo;
 - (id)proceduralWallpaperOptions;
+- (void)setNeedsWallpaperDimmingTreatment:(bool)arg1;
 - (void)setOriginalVideoURL:(id)arg1;
-- (void)setProceduralWallpaper:(id)arg1;
 - (void)setProceduralWallpaperInfo:(id)arg1;
 - (void)setVideoURL:(id)arg1;
 - (void)setWallpaperColor:(id)arg1;
 - (void)setWallpaperColorName:(id)arg1;
+- (void)setWallpaperGradient:(id)arg1;
 - (void)setWallpaperImage:(id)arg1;
+- (void)setWallpaperImageHashData:(id)arg1;
 - (void)setWallpaperOptions:(id)arg1;
 - (void)setWallpaperOriginalImage:(id)arg1;
 - (void)setWallpaperThumbnailImage:(id)arg1;
@@ -73,7 +79,9 @@
 - (id)videoURL;
 - (id)wallpaperColor;
 - (id)wallpaperColorName;
+- (id)wallpaperGradient;
 - (id)wallpaperImage;
+- (id)wallpaperImageHashData;
 - (id)wallpaperOptions;
 - (id)wallpaperOriginalImage;
 - (id)wallpaperThumbnailImage;

@@ -4,6 +4,7 @@
 
 @interface STProxyConnection : NSObject {
     NSObject<OS_dispatch_data> * _bufferedInputData;
+    <STAceObjectHandler> * _handler;
     struct __CFHTTPMessage { } * _httpRequestHeader;
     SiriCoreDataDecompressor * _inputDecompressor;
     bool  _isCanceled;
@@ -11,7 +12,6 @@
     bool  _isOpened;
     NSObject<OS_dispatch_queue> * _queue;
     GCDAsyncSocket * _socket;
-    STAceRecorder * recorder;
 }
 
 - (void).cxx_destruct;
@@ -28,7 +28,7 @@
 - (bool)_tryReadingParsedDataFromBytes:(const void*)arg1 length:(unsigned long long)arg2 packet:(struct { unsigned char x1; unsigned int x2; }*)arg3 object:(id*)arg4 bytesParsed:(unsigned long long*)arg5 error:(id*)arg6;
 - (void)handleAceObject:(id)arg1;
 - (void)handlePacket:(struct { unsigned char x1; unsigned int x2; }*)arg1;
-- (id)initWithSocket:(id)arg1 isRecording:(bool)arg2 replayFileURL:(id)arg3;
+- (id)initWithSocket:(id)arg1 handler:(id)arg2 replayFileURL:(id)arg3;
 - (void)parseData:(id)arg1;
 
 @end

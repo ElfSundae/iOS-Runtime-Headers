@@ -30,7 +30,6 @@
     SAUIAppPunchOut * _snippetPunchOut;
     UIColor * _titleBackgroundColor;
     UIColor * _titleTextColor;
-    bool  _topKeylineHidden;
     UICollectionReusableView<SiriUIReusableView> * _transparentFooterView;
     UICollectionReusableView<SiriUIReusableView> * _transparentHeaderView;
     bool  _virgin;
@@ -62,7 +61,6 @@
 @property (nonatomic, copy) NSString *subtitle;
 @property (nonatomic, copy) UIColor *titleBackgroundColor;
 @property (nonatomic, copy) UIColor *titleTextColor;
-@property (nonatomic) bool topKeylineHidden;
 @property (getter=isVirgin, nonatomic, readonly) bool virgin;
 @property (nonatomic) bool wantsConfirmationInsets;
 @property (getter=_willAnimateCancellation, setter=_setWillAnimateCancellation:, nonatomic) bool willAnimateCancellation;
@@ -159,7 +157,6 @@
 - (id)subtitle;
 - (id)titleBackgroundColor;
 - (id)titleTextColor;
-- (bool)topKeylineHidden;
 - (Class)transparentFooterViewClass;
 - (Class)transparentHeaderViewClass;
 - (bool)usePlatterStyle;

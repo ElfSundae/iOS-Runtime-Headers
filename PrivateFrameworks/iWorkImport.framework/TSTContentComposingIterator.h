@@ -41,5 +41,6 @@
 - (void)setMinCursorCellID:(struct TSUCellCoord { unsigned int x1; unsigned short x2; bool x3; bool x4; })arg1;
 - (void)terminate;
 - (void)updateCellData:(id)arg1;
+- (void)updateFormulaForCellData:(id)arg1;
 
 @end

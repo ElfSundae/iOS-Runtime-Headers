@@ -3,7 +3,7 @@
  */
 
 @interface HDDataProvenanceManager : NSObject <HDDiagnosticObject> {
-    int  _defaultsLoaded;
+    _Atomic bool  _defaultsLoaded;
     NSString * _localProductType;
     NSString * _localSourceVersion;
     NSString * _localSystemBuild;
@@ -46,7 +46,7 @@
 - (id)localSourceID;
 - (id)localSystemBuild;
 - (id)originProvenanceByPersistentID;
-- (id)originProvenanceForPersistentID:(long long)arg1 database:(id)arg2 error:(id*)arg3;
+- (id)originProvenanceForPersistentID:(id)arg1 database:(id)arg2 error:(id*)arg3;
 - (id)persistentIDsByProvenanceKey;
 - (id)provenanceEntityForProvenance:(id)arg1 database:(id)arg2 error:(id*)arg3;
 - (id)provenanceEntityForProvenance:(id)arg1 error:(id*)arg2;

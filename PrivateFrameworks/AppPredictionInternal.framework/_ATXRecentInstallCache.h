@@ -17,6 +17,7 @@
 - (id)allRecentlyInstalledApplications;
 - (id)init;
 - (id)initTrackingAppsMoreRecentThan:(double)arg1;
+- (id)initTrackingAppsMoreRecentThan:(double)arg1 installMonitor:(id)arg2 uninstallMonitor:(id)arg3;
 - (void)reset;
 
 @end

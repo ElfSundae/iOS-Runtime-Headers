@@ -17,6 +17,7 @@
     long long  _loadingIndicatorAlignment;
     NSLayoutConstraint * _loadingIndicatorLeftAlignmentConstraint;
     NSLayoutConstraint * _loadingIndicatorRightAlignmentConstraint;
+    bool  _removed;
     bool  _showsLoadingIndicator;
     NSString * _text;
 }
@@ -34,6 +35,7 @@
 @property (nonatomic) long long loadingIndicatorAlignment;
 @property (nonatomic, retain) NSLayoutConstraint *loadingIndicatorLeftAlignmentConstraint;
 @property (nonatomic, retain) NSLayoutConstraint *loadingIndicatorRightAlignmentConstraint;
+@property (getter=isRemoved, nonatomic) bool removed;
 @property (nonatomic) bool showsLoadingIndicator;
 @property (nonatomic, copy) NSString *text;
 
@@ -48,6 +50,7 @@
 - (bool)isCollapsed;
 - (bool)isCollapsedOrExcluded;
 - (bool)isIncluded;
+- (bool)isRemoved;
 - (id)label;
 - (id)labelIfLoaded;
 - (id)loadingIndicator;
@@ -59,10 +62,12 @@
 - (void)setFont:(id)arg1;
 - (void)setHasAlternateAppearance:(bool)arg1;
 - (void)setHasFullScreenAppearance:(bool)arg1;
+- (void)setHidden:(bool)arg1;
 - (void)setIncluded:(bool)arg1;
 - (void)setLoadingIndicatorAlignment:(long long)arg1;
 - (void)setLoadingIndicatorLeftAlignmentConstraint:(id)arg1;
 - (void)setLoadingIndicatorRightAlignmentConstraint:(id)arg1;
+- (void)setRemoved:(bool)arg1;
 - (void)setShowsLoadingIndicator:(bool)arg1;
 - (void)setText:(id)arg1;
 - (bool)showsLoadingIndicator;

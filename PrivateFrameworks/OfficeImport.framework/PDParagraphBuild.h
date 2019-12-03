@@ -10,10 +10,10 @@
     int  mType;
 }
 
+- (void).cxx_destruct;
 - (id)addTimeNodeData;
 - (double)autoAdvanceTime;
 - (int)buildLevel;
-- (void)dealloc;
 - (unsigned long long)hash;
 - (id)init;
 - (bool)isEqual:(id)arg1;

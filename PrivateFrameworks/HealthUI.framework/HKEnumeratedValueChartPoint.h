@@ -14,7 +14,7 @@
 @property (nonatomic, retain) NSArray *indices;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) <HKGraphSeriesBlockCoordinateInfo> *userInfo;
-@property (nonatomic) NSDate *xValue;
+@property (nonatomic, copy) NSDate *xValue;
 
 - (void).cxx_destruct;
 - (id)allYValues;

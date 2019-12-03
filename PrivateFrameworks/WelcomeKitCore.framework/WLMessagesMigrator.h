@@ -2,10 +2,17 @@
    Image: /System/Library/PrivateFrameworks/WelcomeKitCore.framework/WelcomeKitCore
  */
 
-@interface WLMessagesMigrator : WLMigrationWebService {
+@interface WLMessagesMigrator : NSObject <WLDataclassMigrating> {
     NSString * _accountGuid;
     struct sqlite3 { } * _database;
+    WLSQLController * _sqlController;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, retain) WLSQLController *sqlController;
+@property (readonly) Class superclass;
 
 + (id)_attachmentPersistentPathForGuid:(id)arg1 fileName:(id)arg2 mimeType:(id)arg3 uti:(id)arg4;
 + (id)contentType;
@@ -58,12 +65,17 @@
 - (id)_sortedHandleIDs:(id)arg1;
 - (id)_uncanonicalizedIDWithMessage:(id)arg1;
 - (id)_uniqueHandleStringsWithMessage:(id)arg1;
+- (bool)accountBased;
 - (id)contentType;
+- (id)dataType;
 - (void)estimateItemSizeForSummary:(id)arg1 account:(id)arg2;
 - (void)importDidEnd;
 - (void)importRecordData:(id)arg1 summary:(id)arg2 account:(id)arg3 completion:(id /* block */)arg4;
 - (id)importWillBegin;
-- (id)initWithSourceDevice:(id)arg1 urlSessionController:(id)arg2 delegate:(id)arg3;
+- (id)initWithSQLController:(id)arg1;
 - (void)performPreImportPhaseForSummary:(id)arg1 data:(id)arg2;
+- (void)setSqlController:(id)arg1;
+- (id)sqlController;
+- (bool)storeRecordDataInDatabase;
 
 @end

@@ -17,6 +17,7 @@
         unsigned int _mirrorsTextAlignment : 1; 
         unsigned int _reserved : 29; 
     }  _slFlags;
+    __NSImmutableTextStorage * _textStorage;
 }
 
 + (bool)_validateAttributes:(id)arg1 measuringOnly:(bool)arg2;
@@ -25,11 +26,14 @@
 
 - (bool)_allowsEllipsisGlyphSubstitution;
 - (bool)_mirrorsTextAlignment;
+- (id)_textContainerForAttachmentProtocol;
+- (id)_textStorageForAttachmentProtocol;
 - (bool)_usesScreenFonts;
 - (id)attributedString;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })characterRangeForGlyphRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 actualGlyphRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; }*)arg2;
 - (id)createRenderingContextForCharacterRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 typesetterBehavior:(long long)arg2 usesScreenFonts:(bool)arg3 hasStrongRight:(bool)arg4 maximumWidth:(double)arg5;
 - (id)createRenderingContextForCharacterRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 typesetterBehavior:(long long)arg2 usesScreenFonts:(bool)arg3 hasStrongRight:(bool)arg4 syncDirection:(bool)arg5 mirrorsTextAlignment:(bool)arg6 maximumWidth:(double)arg7;
+- (void)dealloc;
 - (void)deleteGlyphsInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (void)done;
 - (unsigned long long)getGlyphsInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 glyphs:(unsigned short*)arg2 properties:(long long*)arg3 characterIndexes:(unsigned long long*)arg4 bidiLevels:(char *)arg5;

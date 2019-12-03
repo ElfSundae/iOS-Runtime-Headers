@@ -6,6 +6,7 @@
     bool  _includeCalendarServers;
     bool  _includeContacts;
     bool  _includeDirectoryServers;
+    bool  _includeLocalExtensions;
     bool  _includePredictions;
     bool  _includeRecents;
     bool  _includeSuggestions;
@@ -18,6 +19,7 @@
 @property bool includeCalendarServers;
 @property bool includeContacts;
 @property bool includeDirectoryServers;
+@property bool includeLocalExtensions;
 @property bool includePredictions;
 @property bool includeRecents;
 @property bool includeSuggestions;
@@ -27,6 +29,7 @@
 - (bool)includeCalendarServers;
 - (bool)includeContacts;
 - (bool)includeDirectoryServers;
+- (bool)includeLocalExtensions;
 - (bool)includePredictions;
 - (bool)includeRecents;
 - (bool)includeSuggestions;
@@ -34,6 +37,7 @@
 - (void)setIncludeCalendarServers:(bool)arg1;
 - (void)setIncludeContacts:(bool)arg1;
 - (void)setIncludeDirectoryServers:(bool)arg1;
+- (void)setIncludeLocalExtensions:(bool)arg1;
 - (void)setIncludePredictions:(bool)arg1;
 - (void)setIncludeRecents:(bool)arg1;
 - (void)setIncludeSuggestions:(bool)arg1;

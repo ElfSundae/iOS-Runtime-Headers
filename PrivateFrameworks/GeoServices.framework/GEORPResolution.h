@@ -6,13 +6,32 @@
     GEOMapRegion * _displayRegion;
     int  _displayStyle;
     struct { 
-        unsigned int resolutionDate : 1; 
-        unsigned int transitLineMuid : 1; 
-        unsigned int displayStyle : 1; 
-    }  _has;
+        unsigned int has_resolutionDate : 1; 
+        unsigned int has_transitLineMuid : 1; 
+        unsigned int has_displayStyle : 1; 
+        unsigned int read_displayRegion : 1; 
+        unsigned int read_localizedAlertText : 1; 
+        unsigned int read_localizedChangeLists : 1; 
+        unsigned int read_localizedDescription : 1; 
+        unsigned int read_updatedPlaces : 1; 
+        unsigned int wrote_displayRegion : 1; 
+        unsigned int wrote_localizedAlertText : 1; 
+        unsigned int wrote_localizedChangeLists : 1; 
+        unsigned int wrote_localizedDescription : 1; 
+        unsigned int wrote_resolutionDate : 1; 
+        unsigned int wrote_transitLineMuid : 1; 
+        unsigned int wrote_updatedPlaces : 1; 
+        unsigned int wrote_displayStyle : 1; 
+    }  _flags;
     NSString * _localizedAlertText;
     NSMutableArray * _localizedChangeLists;
     NSString * _localizedDescription;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     double  _resolutionDate;
     unsigned long long  _transitLineMuid;
     NSMutableArray * _updatedPlaces;
@@ -33,11 +52,19 @@
 @property (nonatomic) unsigned long long transitLineMuid;
 @property (nonatomic, retain) NSMutableArray *updatedPlaces;
 
++ (bool)isValid:(id)arg1;
 + (Class)localizedChangeListType;
 + (Class)updatedPlaceType;
 
 - (void).cxx_destruct;
 - (int)StringAsDisplayStyle:(id)arg1;
+- (void)_addNoFlagsLocalizedChangeList:(id)arg1;
+- (void)_addNoFlagsUpdatedPlace:(id)arg1;
+- (void)_readDisplayRegion;
+- (void)_readLocalizedAlertText;
+- (void)_readLocalizedChangeLists;
+- (void)_readLocalizedDescription;
+- (void)_readUpdatedPlaces;
 - (void)addLocalizedChangeList:(id)arg1;
 - (void)addUpdatedPlace:(id)arg1;
 - (void)clearLocalizedChangeLists;
@@ -56,6 +83,8 @@
 - (bool)hasResolutionDate;
 - (bool)hasTransitLineMuid;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)localizedAlertText;
 - (id)localizedChangeListAtIndex:(unsigned long long)arg1;
@@ -63,6 +92,7 @@
 - (unsigned long long)localizedChangeListsCount;
 - (id)localizedDescription;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (double)resolutionDate;
 - (void)setDisplayRegion:(id)arg1;

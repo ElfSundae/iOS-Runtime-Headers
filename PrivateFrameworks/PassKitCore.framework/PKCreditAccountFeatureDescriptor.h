@@ -8,6 +8,7 @@
     unsigned long long  _paymentFundingSourceTypes;
     unsigned long long  _paymentPresets;
     NSString * _paymentTermsIdentifier;
+    NSArray * _supportedFileFormatsForTransactionData;
 }
 
 @property (nonatomic, copy) NSString *fundingSourceTermsIdentifier;
@@ -15,6 +16,7 @@
 @property (nonatomic) unsigned long long paymentFundingSourceTypes;
 @property (nonatomic) unsigned long long paymentPresets;
 @property (nonatomic, copy) NSString *paymentTermsIdentifier;
+@property (nonatomic, copy) NSArray *supportedFileFormatsForTransactionData;
 
 + (bool)supportsSecureCoding;
 
@@ -37,5 +39,7 @@
 - (void)setPaymentFundingSourceTypes:(unsigned long long)arg1;
 - (void)setPaymentPresets:(unsigned long long)arg1;
 - (void)setPaymentTermsIdentifier:(id)arg1;
+- (void)setSupportedFileFormatsForTransactionData:(id)arg1;
+- (id)supportedFileFormatsForTransactionData;
 
 @end

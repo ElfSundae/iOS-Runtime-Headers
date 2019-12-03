@@ -38,6 +38,7 @@
 - (void)_saveRecordCount:(long long)arg1;
 - (id)_serverBagTimeIntervalForFirstSyncTimeout;
 - (void)_setICloudBackupsDisabled:(bool)arg1;
+- (bool)_setiCloudBackupAttribute:(bool)arg1 onItemAtPath:(id)arg2 error:(id*)arg3;
 - (bool)_timeIntervalFromFirstSync:(id)arg1 hasExpiredForDate:(id)arg2;
 - (bool)checkDatabaseWasRestored;
 - (id)ckUtilities;
@@ -59,7 +60,6 @@
 - (void)setFirstSyncDateToNow;
 - (void)setICloudBackupsDisabled:(bool)arg1;
 - (void)setUserDefaultBool:(bool)arg1 forKey:(id)arg2;
-- (bool)setupAssistantNeedsToRun;
 - (id)syncStateDebuggingInfo:(id)arg1;
 - (void)toggleiCloudBackupsIfNeeded:(id /* block */)arg1;
 - (void)writeUserDefault:(id)arg1 forKey:(id)arg2;

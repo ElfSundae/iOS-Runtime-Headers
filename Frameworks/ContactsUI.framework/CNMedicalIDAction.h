@@ -3,8 +3,7 @@
  */
 
 @interface CNMedicalIDAction : CNPropertyAction <HKMedicalIDViewControllerDelegate> {
-    _HKMedicalIDData * _healthData;
-    HKHealthStore * _healthStore;
+    CNHealthStoreManager * _healthStoreManager;
     long long  _medicalIDActionType;
 }
 
@@ -12,22 +11,19 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) _HKMedicalIDData *healthData;
-@property (nonatomic, retain) HKHealthStore *healthStore;
+@property (nonatomic, retain) CNHealthStoreManager *healthStoreManager;
 @property (nonatomic) long long medicalIDActionType;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)healthData;
-- (id)healthStore;
+- (id)healthStoreManager;
 - (long long)medicalIDActionType;
 - (void)medicalIDViewControllerDidCancel:(id)arg1;
 - (void)medicalIDViewControllerDidDelete:(id)arg1;
 - (void)medicalIDViewControllerDidFinish:(id)arg1;
 - (void)medicalIDViewControllerDidSave:(id)arg1;
 - (void)performActionWithSender:(id)arg1;
-- (void)setHealthData:(id)arg1;
-- (void)setHealthStore:(id)arg1;
+- (void)setHealthStoreManager:(id)arg1;
 - (void)setMedicalIDActionType:(long long)arg1;
 
 @end

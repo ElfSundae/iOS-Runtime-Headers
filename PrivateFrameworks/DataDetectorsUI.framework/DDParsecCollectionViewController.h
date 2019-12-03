@@ -2,11 +2,11 @@
    Image: /System/Library/PrivateFrameworks/DataDetectorsUI.framework/DataDetectorsUI
  */
 
-@interface DDParsecCollectionViewController : UINavigationController <DDParsecHostVCInterface, UIAdaptivePresentationControllerDelegate, UINavigationControllerDelegate> {
+@interface DDParsecCollectionViewController : UINavigationController <DDParsecHostVCInterface, UIAdaptivePresentationControllerDelegate, UINavigationControllerDelegate, _UIRemoteViewControllerContaining> {
     NSArray * _actions;
-    UIVisualEffectView * _blurView;
     NSDictionary * _context;
     id /* block */  _dismissCompletionHandler;
+    bool  _needsBackground;
     <DDParsecCollectionDelegate> * _parsecDelegate;
     bool  _previewMode;
     long long  _previousStatusBarStyle;
@@ -24,6 +24,7 @@
     UITapGestureRecognizer * _tapGesture;
 }
 
+@property (nonatomic, readonly) _UIRemoteViewController *_containedRemoteViewController;
 @property (copy) NSArray *actions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -34,12 +35,11 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_blurEffect;
-- (id)_blurEffectWithTraitCollection:(id)arg1;
+- (bool)_allowsStylingSheetsAsCards;
+- (id)_containedRemoteViewController;
 - (void)_interactionEnded;
 - (void)_updatePreferredContentSize;
 - (id)actions;
-- (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (void)appDidEnterBackground;
 - (void)appWillEnterForeground;
 - (id /* block */)dismissCompletionHandler;
@@ -56,7 +56,7 @@
 - (id)parsecDelegate;
 - (void)presentRemoteCollection:(id)arg1;
 - (void)presentationController:(id)arg1 willPresentWithAdaptiveStyle:(long long)arg2 transitionCoordinator:(id)arg3;
-- (id)previewActionItems;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (void)replaceControllerWithController:(id)arg1;
 - (void)setActions:(id)arg1;
 - (void)setDismissCompletionHandler:(id /* block */)arg1;
@@ -73,6 +73,5 @@
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
-- (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

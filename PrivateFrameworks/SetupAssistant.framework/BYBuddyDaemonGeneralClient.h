@@ -12,6 +12,7 @@
 - (id)backupMetadata;
 - (void)cancelDataMigratorDeferredExit;
 - (void)deferDataMigratorExit;
+- (void)ensureShortLivedTokenUpgrade;
 - (void)ensureSilentLoginUpgrade;
 - (id)init;
 - (void)observeFinishSetupTriggers;

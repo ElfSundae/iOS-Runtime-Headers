@@ -57,7 +57,6 @@
 - (id)backoffManager;
 - (void)cancelCompletionBlock:(id /* block */)arg1;
 - (id)daemon;
-- (void)dealloc;
 - (id)delegate;
 - (void)didFinishGettingAllAssets;
 - (void)didFinishPuttingAllAssets;

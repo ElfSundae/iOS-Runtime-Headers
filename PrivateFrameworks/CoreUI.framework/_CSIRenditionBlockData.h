@@ -7,7 +7,7 @@
     char * _data;
     unsigned int  _dataPixelFormat;
     unsigned char  _imageBlockReleaseCount;
-    unsigned long long  _imageBytes;
+    _Atomic unsigned long long  _imageBytes;
     unsigned int  _mmappedData;
     BOOL  _name;
     unsigned int  _nrows;

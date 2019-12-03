@@ -11,6 +11,7 @@
     NSArray * _items;
     UILayoutGuide * _marginLayoutguide;
     unsigned long long  _maxButtonsPerRow;
+    MKPlaceholderGridCache * _placeholderGridCache;
     unsigned long long  _style;
 }
 
@@ -22,12 +23,13 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)actionManager;
 - (void)actionRowSelected:(id)arg1;
 - (void)createActionViews;
 - (void)createActions;
 - (void)createConstraints;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (id)initWithStyle:(unsigned long long)arg1;
 - (id)items;
 - (void)layoutButtons;

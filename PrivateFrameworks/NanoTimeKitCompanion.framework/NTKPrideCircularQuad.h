@@ -5,22 +5,32 @@
 @interface NTKPrideCircularQuad : NTKPrideSplinesQuad {
     id /* block */  _complicationAlphaCallback;
     float  _complicationFade;
+    struct { 
+        int startColor; 
+        bool startReversed; 
+        int endColor; 
+        bool endReversed; 
+    }  _currentColorConfig;
     float  _currentFade;
     unsigned long long  _currentStyle;
     float  _displayMode;
     bool  _fading;
-    bool  _forceRenderOnce;
     float  _globalTouchTime;
     bool  _paused;
     struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[32]; void*x2[32]; } * _perSplineData;
-    int  _previouslySelectedColor;
+    double  _splineColorTransitionFraction;
+    bool  _useXRsRGB;
     float  _velocity;
 }
 
 @property (nonatomic, copy) id /* block */ complicationAlphaCallback;
+@property (nonatomic) double splineColorTransitionFraction;
 
 - (void).cxx_destruct;
+- (void)_colorSequenceForStartIndex:(int)arg1 reverseDirection:(bool)arg2 colorSequence:(id /* block */)arg3;
 - (void)_generateControlPointDampingCoefficients;
+- (struct { int x1; bool x2; int x3; bool x4; })advanceConfig:(struct { int x1; bool x2; int x3; bool x4; })arg1;
+- (struct { int x1; bool x2; int x3; bool x4; })advanceCurrentConfig;
 - (float)ampltiudeForControlPoint:(int)arg1 ofSpline:(int)arg2;
 - (void)applyToForegroundZoomFraction:(double)arg1 faceScale:(double)arg2;
 - (void)applyTransitionFromDialToFullScreenWithFraction:(double)arg1;
@@ -31,12 +41,14 @@
 - (float)currentSplineWidth;
 - (void)dealloc;
 - (void)generateControlPointsForSpline:(int)arg1;
+- (struct { int x1; bool x2; int x3; bool x4; })generateNextRandomConfigFromConfig:(struct { int x1; bool x2; int x3; bool x4; })arg1;
+- (struct { int x1; bool x2; int x3; bool x4; })generateNextRandomConfigFromCurrentConfig;
 - (id)generateVignetteTextureData;
 - (id /* block */)getNTKPrideSplineDefinitionFiller;
 - (float)globalAmplitudeForTime:(double)arg1;
 - (void)handleOrdinaryScreenWake;
 - (void)handleScreenOff;
-- (id)initWithDevice:(id)arg1;
+- (id)initWithDevice:(id)arg1 useXRsRGB:(bool)arg2;
 - (void)initializePerSplineData;
 - (float)interpolationStepSizeForSpline:(int)arg1;
 - (struct { }*)noiseConfiguration;
@@ -51,17 +63,21 @@
 - (void)prepareWristRaiseAnimation;
 - (void)processSpline:(int)arg1;
 - (void)randomizeSplineColors;
+- (id)renderPipelineManager;
+- (id)renderPipelineName;
 - (void)setAmplitude:(float)arg1 forControlPoint:(int)arg2 ofSpline:(int)arg3;
+- (void)setColorConfig:(struct { int x1; bool x2; int x3; bool x4; })arg1;
 - (void)setComplicationAlphaCallback:(id /* block */)arg1;
 - (void)setDefaultSplineColors;
 - (void)setDialMode;
 - (void)setFullscreenMode;
 - (void)setNoise:(void *)arg1 forControlPoint:(void *)arg2 inSpline:(void *)arg3; // needs 3 arg types, found 2: int, int
-- (void)setSplineColor:(int)arg1 reverseDirection:(bool)arg2;
+- (void)setSplineColorTransitionFraction:(double)arg1;
 - (bool)shouldForceRender;
 - (id)splineColorAtIndex:(int)arg1;
+- (double)splineColorTransitionFraction;
 - (void)startWavesAtTime:(double)arg1;
-- (id)vertexShaderFromLibrary:(id)arg1;
+- (id)vertexShaderName;
 - (bool)willConsumeTouch:(id)arg1;
 
 @end

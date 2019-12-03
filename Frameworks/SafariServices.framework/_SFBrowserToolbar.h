@@ -2,24 +2,6 @@
    Image: /System/Library/Frameworks/SafariServices.framework/SafariServices
  */
 
-@interface _SFBrowserToolbar : _SFToolbar {
-    <_SFBrowserToolbarDataSource> * _dataSource;
-}
-
-@property (nonatomic) <_SFBrowserToolbarDataSource> *dataSource;
-@property (nonatomic, readonly) double differenceBetweenWidthsOfLeadingAndTrailingItems;
-
-- (void).cxx_destruct;
-- (double)URLFieldHorizontalMargin;
-- (double)_contentMargin;
-- (id)_toolbarItems;
-- (double)_totalWidthOfLeadingItems;
-- (double)_totalWidthOfTrailingItems;
-- (id)dataSource;
-- (void)didCompleteBarRegistrationWithToken:(id)arg1;
-- (double)differenceBetweenWidthsOfLeadingAndTrailingItems;
-- (bool)isMinibar;
-- (void)layoutSubviews;
-- (void)setDataSource:(id)arg1;
+@interface _SFBrowserToolbar : _SFToolbar
 
 @end

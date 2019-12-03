@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
  */
 
-@interface MFComposeRecipient : NSObject <NSCopying, NSSecureCoding, UIItemProviderReading, UIItemProviderWriting> {
+@interface MFComposeRecipient : NSObject <NSCopying, NSItemProviderReading, NSItemProviderWriting, NSSecureCoding> {
     NSString * _address;
     CNAutocompleteResult * _autocompleteResult;
     NSArray * _cachedCompleteMatches;
@@ -30,19 +30,19 @@
 @property (nonatomic, readonly) NSString *commentedAddress;
 @property (nonatomic, readonly) NSString *compositeName;
 @property (nonatomic, retain) CNContact *contact;
-@property (nonatomic, retain) NSString *contactIdentifier;
+@property (nonatomic, copy) NSString *contactIdentifier;
 @property (nonatomic, retain) NSString *countryCode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, retain) NSString *displayString;
+@property (nonatomic, copy) NSString *displayString;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) bool isDirectoryServerResult;
 @property (nonatomic, readonly) bool isGroup;
 @property (nonatomic, readonly) bool isSuggestedRecipient;
 @property (nonatomic, readonly) unsigned long long kind;
-@property (nonatomic, retain) NSString *label;
+@property (nonatomic, copy) NSString *label;
 @property (nonatomic, readonly) NSString *normalizedAddress;
-@property (nonatomic, readonly) MFComposeRecipientOriginContext *originContext;
+@property (nonatomic, retain) MFComposeRecipientOriginContext *originContext;
 @property (nonatomic, readonly) NSString *placeholderName;
 @property (getter=isRemovableFromSearchResults, nonatomic, readonly) bool removableFromSearchResults;
 @property (nonatomic, readonly) NSString *shortName;
@@ -50,11 +50,9 @@
 @property (nonatomic) unsigned long long sourceType;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSString *uncommentedAddress;
-@property (nonatomic, retain) NSString *unlocalizedLabel;
-@property (nonatomic, retain) NSString *valueIdentifier;
+@property (nonatomic, copy) NSString *unlocalizedLabel;
+@property (nonatomic, copy) NSString *valueIdentifier;
 @property (nonatomic, readonly, copy) NSArray *writableTypeIdentifiersForItemProvider;
-
-// Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
 
 + (id)_requiredKeyDescriptors;
 + (id)composeRecipientWithAutocompleteResult:(id)arg1;
@@ -67,6 +65,7 @@
 + (bool)supportsSecureCoding;
 + (id)writableTypeIdentifiersForItemProvider;
 
+- (void).cxx_destruct;
 - (id)_unformattedAddress;
 - (id)address;
 - (id)autocompleteResult;
@@ -79,7 +78,6 @@
 - (id)contactIdentifier;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)countryCode;
-- (void)dealloc;
 - (id)description;
 - (id)displayString;
 - (void)encodeWithCoder:(id)arg1;
@@ -126,15 +124,5 @@
 - (id)unlocalizedLabel;
 - (id)valueIdentifier;
 - (bool)wasCompleteMatch;
-
-// Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
-
-- (id)IDSCanonicalAddress;
-- (id)canonicalAddress;
-- (struct __CFPhoneNumber { }*)copyPhoneNumber;
-- (bool)isEmail;
-- (bool)isPhone;
-- (id)rawAddress;
-- (void)setCanonicalAddress:(id)arg1;
 
 @end

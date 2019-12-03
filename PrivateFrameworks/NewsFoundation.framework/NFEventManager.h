@@ -17,6 +17,7 @@
 - (void)handleAlwaysTrigger:(id)arg1 event:(id)arg2;
 - (void)handleOnceTrigger:(id)arg1 event:(id)arg2;
 - (id)init;
+- (void)triggerAlwaysWhenAllEventsHaveOccurred:(id)arg1 block:(id /* block */)arg2;
 - (void)triggerOnAnyEvent:(id)arg1 block:(id /* block */)arg2;
 - (void)triggerOnEvent:(id)arg1 block:(id /* block */)arg2;
 - (void)triggerOnceWhenAllEventsHaveOccurred:(id)arg1 block:(id /* block */)arg2;

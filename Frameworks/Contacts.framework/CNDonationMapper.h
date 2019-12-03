@@ -12,6 +12,8 @@
 @property (nonatomic, readonly) CNDonationStore *donationStore;
 @property (nonatomic, readonly) CNContactsEnvironment *environment;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, retain) NSString *legacyTetheredSyncComputerAnchor;
+@property (nonatomic, retain) NSString *legacyTetheredSyncDeviceAnchor;
 @property (readonly) Class superclass;
 
 + (id)log;
@@ -19,13 +21,14 @@
 
 - (void).cxx_destruct;
 - (id)accountsMatchingPredicate:(id)arg1 error:(id*)arg2;
+- (id)authorizedKeysForContactKeys:(id)arg1 error:(id*)arg2;
 - (id)contactObservableForFetchRequest:(id)arg1;
 - (id)containersMatchingPredicate:(id)arg1 error:(id*)arg2;
 - (id)defaultContainerIdentifier;
 - (id)donationStore;
 - (id)environment;
 - (bool)executeSaveRequest:(id)arg1 error:(id*)arg2;
-- (bool)executeSaveRequest:(id)arg1 response:(id*)arg2 error:(id*)arg3;
+- (bool)executeSaveRequest:(id)arg1 response:(id*)arg2 authorizationContext:(id)arg3 error:(id*)arg4;
 - (id)groupsMatchingPredicate:(id)arg1 error:(id*)arg2;
 - (id)initWithContactsEnvironment:(id)arg1 managedConfiguration:(id)arg2;
 - (id)initWithDonationStore:(id)arg1 environment:(id)arg2;

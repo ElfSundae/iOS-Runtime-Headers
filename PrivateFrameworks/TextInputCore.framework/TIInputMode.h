@@ -12,14 +12,19 @@
     NSString * _variant;
 }
 
+@property (nonatomic, readonly) NSArray *allAccentKeyStrings;
+@property (nonatomic, readonly) NSDictionary *compositionMap;
+@property (nonatomic, readonly) bool doesComposeText;
 @property (nonatomic, readonly) Class inputManagerClass;
 @property (nonatomic, readonly) Class keyboardFeatureSpecializationClass;
 @property (nonatomic, readonly) NSString *languageWithRegion;
+@property (nonatomic, readonly) NSDictionary *layoutTags;
 @property (nonatomic, readonly) NSLocale *locale;
 @property (nonatomic, readonly) Class multilingualInputManagerClass;
 @property (nonatomic, readonly) NSString *nonstopPunctuationCharacters;
 @property (nonatomic, readonly) NSString *normalizedIdentifier;
 @property (nonatomic, readonly) NSString *replacementForDoubleSpace;
+@property (nonatomic, readonly) NSDictionary *reverseCompositionMap;
 @property (nonatomic, readonly) NSString *sentenceDelimitingCharacters;
 @property (nonatomic, readonly) NSString *sentencePrefixingCharacters;
 @property (nonatomic, readonly) NSString *sentenceTrailingCharacters;
@@ -31,19 +36,24 @@
 + (id)inputModeWithIdentifier:(id)arg1;
 
 - (void).cxx_destruct;
+- (id)allAccentKeyStrings;
+- (id)compositionMap;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
+- (bool)doesComposeText;
 - (unsigned long long)hash;
 - (id)initWithNormalizedIdentifier:(id)arg1;
 - (Class)inputManagerClass;
 - (bool)isEqual:(id)arg1;
 - (Class)keyboardFeatureSpecializationClass;
 - (id)languageWithRegion;
+- (id)layoutTags;
 - (id)locale;
 - (Class)multilingualInputManagerClass;
 - (id)nonstopPunctuationCharacters;
 - (id)normalizedIdentifier;
 - (id)replacementForDoubleSpace;
+- (id)reverseCompositionMap;
 - (id)sentenceDelimitingCharacters;
 - (id)sentencePrefixingCharacters;
 - (id)sentenceTrailingCharacters;

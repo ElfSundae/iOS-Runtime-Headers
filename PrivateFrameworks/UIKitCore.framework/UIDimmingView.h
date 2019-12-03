@@ -6,12 +6,13 @@
     UIImageView * _backgroundGlow;
     id  _delegate;
     UIColor * _dimmingColor;
-    bool  _displayed;
     UIBarButtonItem * _highlightedBarButtonItem;
     UIImageView * _highlightedImageView;
     bool  _ignoresTouches;
     bool  _inPassthroughHitTest;
     NSArray * _passthroughViews;
+    double  _percentDisplayed;
+    double  _percentLightened;
     UITapGestureRecognizer * _singleFingerTapRecognizer;
     bool  _suppressesBackdrops;
 }
@@ -20,11 +21,13 @@
 @property (nonatomic) id delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) UIColor *dimmingColor;
-@property (nonatomic) bool displayed;
+@property (nonatomic, readonly) bool displayed;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) UIBarButtonItem *highlightedBarButtonItem;
 @property (nonatomic) bool ignoresTouches;
-@property (nonatomic, retain) NSArray *passthroughViews;
+@property (nonatomic, copy) NSArray *passthroughViews;
+@property (nonatomic) double percentDisplayed;
+@property (nonatomic) double percentLightened;
 @property (readonly) Class superclass;
 @property (nonatomic) bool suppressesBackdrops;
 
@@ -49,14 +52,20 @@
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)mouseUp:(struct __GSEvent { }*)arg1;
 - (id)passthroughViews;
+- (double)percentDisplayed;
+- (double)percentLightened;
 - (void)setDelegate:(id)arg1;
 - (void)setDimmingColor:(id)arg1;
-- (void)setDisplayed:(bool)arg1;
 - (void)setHighlightedBarButtonItem:(id)arg1;
 - (void)setIgnoresTouches:(bool)arg1;
 - (void)setPassthroughViews:(id)arg1;
+- (void)setPercentDisplayed:(double)arg1;
+- (void)setPercentLightened:(double)arg1;
 - (void)setSuppressesBackdrops:(bool)arg1;
 - (bool)suppressesBackdrops;
+- (int)textEffectsVisibilityLevel;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateBackgroundColor;
 
 @end

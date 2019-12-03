@@ -16,7 +16,7 @@
 
 + (bool)supportsSecureCoding;
 
-- (void)applyChannelBins:(id)arg1 channelID:(unsigned short)arg2;
+- (void)applyChannelBins:(struct _VCAudioPowerSpectrumEntry { struct _VCRange { float x_1_1_1; float x_1_1_2; } x1; float x2; }*)arg1 binCount:(unsigned int)arg2 channelID:(unsigned short)arg3;
 - (id)channels;
 - (void)checkNumChannels:(unsigned short)arg1;
 - (void)dealloc;

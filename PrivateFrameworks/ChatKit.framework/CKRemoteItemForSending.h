@@ -11,6 +11,7 @@
     NSString * _attachmentDescription;
     NSURL * _attachmentURL;
     struct CGImageBlockSet { } * _blockSet;
+    NSObject<OS_dispatch_semaphore> * _previewCreationSemaphore;
     struct __IOSurface { } * _previewImage;
     bool  _previewIsFullyRealizedByChatKit;
 }
@@ -23,6 +24,7 @@
 @property (nonatomic, retain) NSString *attachmentDescription;
 @property (nonatomic, retain) NSURL *attachmentURL;
 @property (nonatomic) struct CGImageBlockSet { }*blockSet;
+@property (nonatomic, retain) NSObject<OS_dispatch_semaphore> *previewCreationSemaphore;
 @property (nonatomic) struct __IOSurface { }*previewImage;
 @property (nonatomic) bool previewIsFullyRealizedByChatKit;
 
@@ -44,11 +46,12 @@
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithAttachmentURL:(id)arg1 description:(id)arg2;
-- (id)initWithAttachmentURL:(id)arg1 description:(id)arg2 previewImage:(id)arg3;
+- (id)initWithAttachmentURL:(id)arg1 description:(id)arg2 blockOnPreviewCreation:(bool)arg3;
+- (id)initWithAttachmentURL:(id)arg1 description:(id)arg2 previewImage:(id)arg3 blockOnPreviewCreation:(bool)arg4;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithMSMessage:(id)arg1;
 - (id)initWithRichLinkWithURL:(id)arg1 data:(id)arg2;
+- (id)previewCreationSemaphore;
 - (struct __IOSurface { }*)previewImage;
 - (bool)previewIsFullyRealizedByChatKit;
 - (id)previewUIImage;
@@ -60,8 +63,9 @@
 - (void)setAttachmentDescription:(id)arg1;
 - (void)setAttachmentURL:(id)arg1;
 - (void)setBlockSet:(struct CGImageBlockSet { }*)arg1;
+- (void)setPreviewCreationSemaphore:(id)arg1;
 - (void)setPreviewImage:(struct __IOSurface { }*)arg1;
 - (void)setPreviewIsFullyRealizedByChatKit:(bool)arg1;
-- (void)waitForPreviewCreation;
+- (void)waitForPreviewGenerationIfNecessary;
 
 @end

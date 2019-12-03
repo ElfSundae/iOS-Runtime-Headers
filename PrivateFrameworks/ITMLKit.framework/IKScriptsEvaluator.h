@@ -31,12 +31,16 @@
 - (id)appContext;
 - (id)callback;
 - (void)evaluate;
+- (void)evaluateScripts;
+- (void)handleScirptLoadFailure;
 - (id)identifier;
 - (id)initWithScripts:(id)arg1 withContext:(id)arg2 callback:(id)arg3 jingleRequest:(bool)arg4;
 - (bool)isJingleRequest;
 - (void)operation:(id)arg1 failedWithError:(id)arg2;
 - (void)operation:(id)arg1 finishedWithOutput:(id)arg2;
+- (void)parseScriptData:(id)arg1 successPredicate:(id /* block */)arg2 completion:(id /* block */)arg3;
 - (id)records;
+- (void)scriptDidLoadWithID:(id)arg1 data:(id)arg2 error:(id)arg3;
 - (id)scripts;
 - (void)setAppContext:(id)arg1;
 - (void)setCallback:(id)arg1;

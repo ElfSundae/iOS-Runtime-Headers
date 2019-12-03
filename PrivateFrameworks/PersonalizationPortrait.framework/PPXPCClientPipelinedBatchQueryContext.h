@@ -4,7 +4,7 @@
 
 @interface PPXPCClientPipelinedBatchQueryContext : NSObject {
     struct atomic_flag { 
-        bool _Value; 
+        _Atomic bool _Value; 
     }  _calledFinalizeBlock;
     id /* block */  _finalizeCall;
     id /* block */  _handleBatch;

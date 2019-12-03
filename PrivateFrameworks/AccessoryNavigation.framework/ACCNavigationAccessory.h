@@ -36,6 +36,7 @@
 - (void)setAccessoryUID:(id)arg1;
 - (void)setComponentListInternal:(id)arg1;
 - (void)setObjectDetectionComponentListInternal:(id)arg1;
+- (bool)supportsExitInfoForAnyComponent;
 - (void)updateLaneGuidanceInfo:(id)arg1 componentList:(id)arg2;
 - (void)updateManeuverInfo:(id)arg1 componentList:(id)arg2;
 - (void)updateRouteGuidanceInfo:(id)arg1 componentList:(id)arg2;

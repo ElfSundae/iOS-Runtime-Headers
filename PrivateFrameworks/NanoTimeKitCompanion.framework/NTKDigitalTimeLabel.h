@@ -3,9 +3,9 @@
  */
 
 @interface NTKDigitalTimeLabel : CLKUITimeLabel <NTKColoringView, NTKTimeView> {
-    UIColor * _color;
     bool  _frozen;
     UIColor * _overrideColor;
+    UIColor * _shadowColor;
     bool  _usesLegibility;
 }
 
@@ -21,11 +21,16 @@
 @property (nonatomic) bool usesLegibility;
 
 - (void).cxx_destruct;
+- (id)_labelColorFromFaceColor:(unsigned long long)arg1 device:(id)arg2;
 - (id)_newUnderlyingLabel:(bool)arg1;
 - (void)animateToStyle:(id)arg1 duration:(double)arg2 timingFunction:(id)arg3 additionalAnimation:(id /* block */)arg4 completion:(id /* block */)arg5;
+- (void)applyFaceColor:(unsigned long long)arg1 device:(id)arg2;
+- (void)applyFaceFromColor:(unsigned long long)arg1 toColor:(unsigned long long)arg2 fraction:(float)arg3 device:(id)arg4;
 - (id)color;
 - (id)contentColor;
+- (id)initWithTimeLabelOptions:(unsigned long long)arg1 forDevice:(id)arg2;
 - (bool)isFrozen;
+- (void)layoutSubviews;
 - (id)overrideColor;
 - (void)setColor:(id)arg1;
 - (void)setFrameUsingCurrentStyle;
@@ -33,6 +38,8 @@
 - (void)setOverrideColor:(id)arg1;
 - (void)setOverrideDate:(id)arg1 duration:(double)arg2;
 - (void)setShadowColor:(id)arg1;
+- (void)setStyle:(id)arg1;
+- (void)setTextColor:(id)arg1;
 - (void)setTimeOffset:(double)arg1;
 - (void)setUsesLegibility:(bool)arg1;
 - (bool)usesLegibility;

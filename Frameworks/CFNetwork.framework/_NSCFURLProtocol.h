@@ -3,11 +3,11 @@
  */
 
 @interface _NSCFURLProtocol : NSURLProtocol {
-    struct NSCFURLProtocolClient { int (**x1)(); int (**x2)(); id x3; } * _client;
+    struct NSCFURLProtocolClient { int (**x1)(); int (**x2)(); id x3; id x4; } * _client;
     struct _CFURLProtocol { } * _prot;
 }
 
-+ (const struct InternalProtocolImplementation { long long x1; void *x2; int (*x3)(); int (*x4)(); int (*x5)(); int (*x6)(); int (*x7)(); int (*x8)(); int (*x9)(); }*)_cf_internalImpl;
++ (const struct InternalProtocolImplementation { long long x1; void *x2; int (*x3)(); int (*x4)(); int (*x5)(); int (*x6)(); int (*x7)(); int (*x8)(); int (*x9)(); int (*x10)(); }*)_cf_internalImpl;
 + (bool)canInitWithRequest:(id)arg1;
 + (bool)canInitWithTask:(id)arg1;
 + (id)canonicalRequestForRequest:(id)arg1;

@@ -8,7 +8,7 @@
     int  _authorizationStatus;
     bool  _criticalAlertSetting;
     NSString * _displayName;
-    bool  _displaysCriticalBulletins;
+    bool  _displaysCriticalBulletinsLegacy;
     bool  _excludeFromBulletinBoard;
     NSString * _factorySectionID;
     int  _groupingSetting;
@@ -23,12 +23,13 @@
         unsigned int pushSettings : 1; 
         unsigned int sectionCategory : 1; 
         unsigned int sectionType : 1; 
+        unsigned int spokenNotificationSetting : 1; 
         unsigned int subsectionPriority : 1; 
         unsigned int suppressedSettings : 1; 
         unsigned int version : 1; 
         unsigned int allowsNotifications : 1; 
         unsigned int criticalAlertSetting : 1; 
-        unsigned int displaysCriticalBulletins : 1; 
+        unsigned int displaysCriticalBulletinsLegacy : 1; 
         unsigned int excludeFromBulletinBoard : 1; 
         unsigned int iconsStripped : 1; 
         unsigned int phoneAllowsNotifications : 1; 
@@ -53,6 +54,7 @@
     bool  _showsInNotificationCenter;
     bool  _showsMessagePreview;
     bool  _showsOnExternalDevices;
+    int  _spokenNotificationSetting;
     NSString * _subsectionID;
     int  _subsectionPriority;
     NSMutableArray * _subsections;
@@ -60,6 +62,7 @@
     unsigned int  _suppressedSettings;
     NSString * _universalSectionID;
     unsigned int  _version;
+    NSString * _watchSectionID;
 }
 
 @property (nonatomic) unsigned int alertType;
@@ -67,7 +70,7 @@
 @property (nonatomic) int authorizationStatus;
 @property (nonatomic) bool criticalAlertSetting;
 @property (nonatomic, retain) NSString *displayName;
-@property (nonatomic) bool displaysCriticalBulletins;
+@property (nonatomic) bool displaysCriticalBulletinsLegacy;
 @property (nonatomic) bool excludeFromBulletinBoard;
 @property (nonatomic, retain) NSString *factorySectionID;
 @property (nonatomic) int groupingSetting;
@@ -76,7 +79,7 @@
 @property (nonatomic) bool hasAuthorizationStatus;
 @property (nonatomic) bool hasCriticalAlertSetting;
 @property (nonatomic, readonly) bool hasDisplayName;
-@property (nonatomic) bool hasDisplaysCriticalBulletins;
+@property (nonatomic) bool hasDisplaysCriticalBulletinsLegacy;
 @property (nonatomic) bool hasExcludeFromBulletinBoard;
 @property (nonatomic, readonly) bool hasFactorySectionID;
 @property (nonatomic) bool hasGroupingSetting;
@@ -95,12 +98,14 @@
 @property (nonatomic) bool hasShowsInNotificationCenter;
 @property (nonatomic) bool hasShowsMessagePreview;
 @property (nonatomic) bool hasShowsOnExternalDevices;
+@property (nonatomic) bool hasSpokenNotificationSetting;
 @property (nonatomic, readonly) bool hasSubsectionID;
 @property (nonatomic) bool hasSubsectionPriority;
 @property (nonatomic) bool hasSuppressFromSettings;
 @property (nonatomic) bool hasSuppressedSettings;
 @property (nonatomic, readonly) bool hasUniversalSectionID;
 @property (nonatomic) bool hasVersion;
+@property (nonatomic, readonly) bool hasWatchSectionID;
 @property (nonatomic, retain) BLTPBSectionIcon *icon;
 @property (nonatomic) bool iconsStripped;
 @property (nonatomic) int lockScreenSetting;
@@ -116,6 +121,7 @@
 @property (nonatomic) bool showsInNotificationCenter;
 @property (nonatomic) bool showsMessagePreview;
 @property (nonatomic) bool showsOnExternalDevices;
+@property (nonatomic) int spokenNotificationSetting;
 @property (nonatomic, retain) NSString *subsectionID;
 @property (nonatomic) int subsectionPriority;
 @property (nonatomic, retain) NSMutableArray *subsections;
@@ -123,6 +129,7 @@
 @property (nonatomic) unsigned int suppressedSettings;
 @property (nonatomic, retain) NSString *universalSectionID;
 @property (nonatomic) unsigned int version;
+@property (nonatomic, retain) NSString *watchSectionID;
 
 + (Class)subsectionsType;
 
@@ -130,6 +137,7 @@
 - (int)StringAsGroupingSetting:(id)arg1;
 - (int)StringAsLockScreenSetting:(id)arg1;
 - (int)StringAsNotificationCenterSetting:(id)arg1;
+- (int)StringAsSpokenNotificationSetting:(id)arg1;
 - (void)addSubsections:(id)arg1;
 - (unsigned int)alertType;
 - (bool)allowsNotifications;
@@ -142,7 +150,7 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)displayName;
-- (bool)displaysCriticalBulletins;
+- (bool)displaysCriticalBulletinsLegacy;
 - (bool)excludeFromBulletinBoard;
 - (id)factorySectionID;
 - (int)groupingSetting;
@@ -152,7 +160,7 @@
 - (bool)hasAuthorizationStatus;
 - (bool)hasCriticalAlertSetting;
 - (bool)hasDisplayName;
-- (bool)hasDisplaysCriticalBulletins;
+- (bool)hasDisplaysCriticalBulletinsLegacy;
 - (bool)hasExcludeFromBulletinBoard;
 - (bool)hasFactorySectionID;
 - (bool)hasGroupingSetting;
@@ -171,12 +179,14 @@
 - (bool)hasShowsInNotificationCenter;
 - (bool)hasShowsMessagePreview;
 - (bool)hasShowsOnExternalDevices;
+- (bool)hasSpokenNotificationSetting;
 - (bool)hasSubsectionID;
 - (bool)hasSubsectionPriority;
 - (bool)hasSuppressFromSettings;
 - (bool)hasSuppressedSettings;
 - (bool)hasUniversalSectionID;
 - (bool)hasVersion;
+- (bool)hasWatchSectionID;
 - (unsigned long long)hash;
 - (id)icon;
 - (bool)iconsStripped;
@@ -199,7 +209,7 @@
 - (void)setAuthorizationStatus:(int)arg1;
 - (void)setCriticalAlertSetting:(bool)arg1;
 - (void)setDisplayName:(id)arg1;
-- (void)setDisplaysCriticalBulletins:(bool)arg1;
+- (void)setDisplaysCriticalBulletinsLegacy:(bool)arg1;
 - (void)setExcludeFromBulletinBoard:(bool)arg1;
 - (void)setFactorySectionID:(id)arg1;
 - (void)setGroupingSetting:(int)arg1;
@@ -207,7 +217,7 @@
 - (void)setHasAllowsNotifications:(bool)arg1;
 - (void)setHasAuthorizationStatus:(bool)arg1;
 - (void)setHasCriticalAlertSetting:(bool)arg1;
-- (void)setHasDisplaysCriticalBulletins:(bool)arg1;
+- (void)setHasDisplaysCriticalBulletinsLegacy:(bool)arg1;
 - (void)setHasExcludeFromBulletinBoard:(bool)arg1;
 - (void)setHasGroupingSetting:(bool)arg1;
 - (void)setHasIconsStripped:(bool)arg1;
@@ -223,6 +233,7 @@
 - (void)setHasShowsInNotificationCenter:(bool)arg1;
 - (void)setHasShowsMessagePreview:(bool)arg1;
 - (void)setHasShowsOnExternalDevices:(bool)arg1;
+- (void)setHasSpokenNotificationSetting:(bool)arg1;
 - (void)setHasSubsectionPriority:(bool)arg1;
 - (void)setHasSuppressFromSettings:(bool)arg1;
 - (void)setHasSuppressedSettings:(bool)arg1;
@@ -242,6 +253,7 @@
 - (void)setShowsInNotificationCenter:(bool)arg1;
 - (void)setShowsMessagePreview:(bool)arg1;
 - (void)setShowsOnExternalDevices:(bool)arg1;
+- (void)setSpokenNotificationSetting:(int)arg1;
 - (void)setSubsectionID:(id)arg1;
 - (void)setSubsectionPriority:(int)arg1;
 - (void)setSubsections:(id)arg1;
@@ -249,10 +261,13 @@
 - (void)setSuppressedSettings:(unsigned int)arg1;
 - (void)setUniversalSectionID:(id)arg1;
 - (void)setVersion:(unsigned int)arg1;
+- (void)setWatchSectionID:(id)arg1;
 - (bool)showsInLockScreen;
 - (bool)showsInNotificationCenter;
 - (bool)showsMessagePreview;
 - (bool)showsOnExternalDevices;
+- (int)spokenNotificationSetting;
+- (id)spokenNotificationSettingAsString:(int)arg1;
 - (id)subsectionID;
 - (int)subsectionPriority;
 - (id)subsections;
@@ -262,6 +277,7 @@
 - (unsigned int)suppressedSettings;
 - (id)universalSectionID;
 - (unsigned int)version;
+- (id)watchSectionID;
 - (void)writeTo:(id)arg1;
 
 @end

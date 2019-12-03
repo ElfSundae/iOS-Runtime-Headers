@@ -14,8 +14,9 @@
 + (void)prewarmGaussianPyramid:(id)arg1 device:(id)arg2 commandBuffer:(id)arg3;
 
 - (void).cxx_destruct;
-- (void)encodeToCommandBuffer:(id)arg1 source:(id)arg2 destination:(id)arg3 mask:(id)arg4 maxBlur:(float)arg5;
-- (id)initWithDevice:(id)arg1 library:(id)arg2 commandQueue:(id)arg3 error:(id*)arg4;
+- (void)encodeBlurPyramidInPlaceToCommandBuffer:(id)arg1 inoutTexture:(id)arg2;
+- (void)encodeToCommandBuffer:(id)arg1 source:(id)arg2 destination:(id)arg3 mask:(id)arg4 maxBlurRadius:(float)arg5;
+- (id)initWithDevice:(id)arg1 library:(id)arg2 commandQueue:(id)arg3 kernelSize:(int)arg4 error:(id*)arg5;
 - (id)label;
 
 @end

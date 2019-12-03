@@ -10,11 +10,13 @@
 @property (nonatomic, retain) NSMutableArray *tileSets;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
 + (Class)tileSetType;
 
 - (void).cxx_destruct;
 - (void)addTileSet:(id)arg1;
 - (void)clearTileSets;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -22,6 +24,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setTileSets:(id)arg1;
 - (id)tileSetAtIndex:(unsigned long long)arg1;

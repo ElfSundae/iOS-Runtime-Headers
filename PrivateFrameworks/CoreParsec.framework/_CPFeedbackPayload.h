@@ -108,6 +108,7 @@
 - (id)cardViewAppearFeedback;
 - (id)cardViewDisappearFeedback;
 - (id)cbaEngagementFeedback;
+- (void)clearContained_Feedback;
 - (id)clearInputFeedback;
 - (id)clientTimingFeedback;
 - (id)codable;
@@ -134,7 +135,6 @@
 - (unsigned long long)queryId;
 - (id)rankingFeedback;
 - (bool)readFrom:(id)arg1;
-- (bool)requiresQueryId;
 - (id)resultEngagementFeedback;
 - (id)resultFeedback;
 - (id)resultGradingFeedback;

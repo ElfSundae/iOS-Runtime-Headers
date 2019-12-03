@@ -9,6 +9,7 @@
 }
 
 @property (nonatomic, readonly) long long failureCode;
+@property (nonatomic, readonly, copy) NSString *internalDisplaySafeDescription;
 @property (nonatomic, readonly, copy) NSString *propertyName;
 @property (nonatomic, readonly, copy) NSString *resourceKeyPath;
 
@@ -20,6 +21,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (long long)failureCode;
 - (id)initWithCoder:(id)arg1;
+- (id)internalDisplaySafeDescription;
 - (id)propertyName;
 - (id)resourceKeyPath;
 

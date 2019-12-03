@@ -55,6 +55,7 @@
 - (double)contentWidth;
 - (void)createMediaViewEventForGalleryItem:(id)arg1;
 - (id)createViewForViewIndex:(unsigned long long)arg1;
+- (void)discardContents;
 - (id)exposedGalleryItems;
 - (void)finishMediaViewEvent;
 - (void)forceImageViewFullscreen:(id)arg1;

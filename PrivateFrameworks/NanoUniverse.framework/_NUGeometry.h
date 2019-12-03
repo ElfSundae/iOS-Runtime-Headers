@@ -6,20 +6,20 @@
     int  _icount;
     unsigned short * _indices;
     int  _vcount;
-    struct _NUVertex { short x1; short x2; short x3; short x4; short x5; short x6; } * _vertices;
+    struct _NUVertex { } * _vertices;
 }
 
 @property (nonatomic, readonly) int icount;
 @property (nonatomic, readonly) const unsigned short*indices;
 @property (nonatomic, readonly) int vcount;
-@property (nonatomic, readonly) const struct _NUVertex { short x1; short x2; short x3; short x4; short x5; short x6; }*vertices;
+@property (nonatomic, readonly) const struct _NUVertex { }*vertices;
 
 - (int)addIndices:(const unsigned short*)arg1 count:(int)arg2 vbase:(int)arg3;
-- (int)addVertices:(const struct _NUVertex { short x1; short x2; short x3; short x4; short x5; short x6; }*)arg1 count:(int)arg2;
+- (int)addVertices:(const struct _NUVertex { }*)arg1 count:(int)arg2;
 - (void)dealloc;
 - (int)icount;
 - (const unsigned short*)indices;
 - (int)vcount;
-- (const struct _NUVertex { short x1; short x2; short x3; short x4; short x5; short x6; }*)vertices;
+- (const struct _NUVertex { }*)vertices;
 
 @end

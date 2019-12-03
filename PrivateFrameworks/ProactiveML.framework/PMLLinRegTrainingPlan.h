@@ -3,7 +3,6 @@
  */
 
 @interface PMLLinRegTrainingPlan : NSObject <PMLPlanProtocol> {
-    bool  _isSynchronous;
     unsigned long long  _maxSessionsLimit;
     <PMLNoiseStrategy> * _noiseStrategy;
     struct NSString { Class x1; } * _planId;
@@ -19,7 +18,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) bool isSynchronous;
 @property (nonatomic, readonly) unsigned long long maxSessionsLimit;
 @property (nonatomic, readonly) NSString *planId;
 @property (nonatomic, readonly) PMLSessionDescriptor *sessionDescriptor;
@@ -35,8 +33,7 @@
 - (id)description;
 - (id)init;
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
-- (id)initWithStore:(id)arg1 tracker:(id)arg2 noiseStrategy:(id)arg3 planId:(struct NSString { Class x1; }*)arg4 isSynchronous:(bool)arg5 positiveLabel:(unsigned long long)arg6 skew:(double)arg7 sessionDescriptor:(id)arg8 maxSessionsLimit:(unsigned long long)arg9 sessionsInBatch:(unsigned long long)arg10 useOnlyAppleInternalSessions:(bool)arg11;
-- (bool)isSynchronous;
+- (id)initWithStore:(id)arg1 tracker:(id)arg2 noiseStrategy:(id)arg3 planId:(struct NSString { Class x1; }*)arg4 positiveLabel:(unsigned long long)arg5 skew:(double)arg6 sessionDescriptor:(id)arg7 maxSessionsLimit:(unsigned long long)arg8 sessionsInBatch:(unsigned long long)arg9 useOnlyAppleInternalSessions:(bool)arg10;
 - (void)loadSessionsWithBlock:(id /* block */)arg1;
 - (unsigned long long)maxSessionsLimit;
 - (id)normalizeRegressor:(id)arg1;

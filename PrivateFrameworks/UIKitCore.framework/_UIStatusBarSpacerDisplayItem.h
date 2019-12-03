@@ -19,6 +19,7 @@
 - (void)_applyConstraintsIfNeeded;
 - (void)applyUpdate:(id)arg1;
 - (id)constraints;
+- (id)initWithIdentifier:(id)arg1 item:(id)arg2;
 - (id)layoutGuide;
 - (void)setConstraints:(id)arg1;
 - (void)setContainerView:(id)arg1;

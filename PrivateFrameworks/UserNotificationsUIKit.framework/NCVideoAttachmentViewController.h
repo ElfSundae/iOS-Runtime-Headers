@@ -16,6 +16,7 @@
 @property (nonatomic, retain) AVPlayerViewController *playerViewController;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_mediaPlayPauseButtonTapped:(id)arg1;
 - (void)_mediaPlayPauseButtonUpdateSize;
 - (void)_pause;

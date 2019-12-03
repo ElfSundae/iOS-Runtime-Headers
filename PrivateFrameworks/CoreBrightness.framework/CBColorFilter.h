@@ -28,6 +28,8 @@
 - (unsigned long long)evaluatedFilterMode;
 - (bool)forceSampleUpdate;
 - (bool)handleHIDEvent:(struct __IOHIDEvent { }*)arg1 from:(struct __IOHIDServiceClient { }*)arg2;
+- (bool)hasExtFrontSensor;
+- (bool)hasExtRearSensor;
 - (id)initWithQueue:(id)arg1;
 - (unsigned long long)mode;
 - (id)newColorSampleConditionWeighted;

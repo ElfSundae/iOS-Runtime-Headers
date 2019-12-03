@@ -22,12 +22,17 @@
 
 @property (nonatomic) bool automaticKeyboardFrameTrackingDisabled;
 
++ (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_endFrameForNotification:(id)arg1 inView:(id)arg2;
++ (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_frameInBoundsForKeyboardFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 inView:(id)arg2;
++ (bool)_shouldIgnoreFrameChangeNotification:(id)arg1 inView:(id)arg2;
+
 - (void).cxx_destruct;
 - (void)_createConstraints;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_frameInBoundsForKeyboardFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)_keyboardChanged:(id)arg1;
 - (void)_matchInitialKeyboardFrame;
 - (void)_removeConstraints;
+- (bool)_shouldOverrideAnimationForFrameChangeNotification:(id)arg1;
 - (void)_startObservingKeyboardNotificationsForScreen:(id)arg1;
 - (void)_stopObservingKeyboardNotifications;
 - (void)_updateConstraintsForKeyboardNotification:(id)arg1;

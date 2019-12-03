@@ -2,22 +2,12 @@
    Image: /System/Library/PrivateFrameworks/CoreSpeech.framework/CoreSpeech
  */
 
-@interface CSEndpointerProxy : NSObject <CSEndpointAnalyzer, CSEndpointAnalyzerDelegate> {
+@interface CSEndpointerProxy : NSObject <CSEndpointAnalyzer, CSEndpointAnalyzerDelegate, CSEndpointAnalyzerImplDelegate> {
     <CSEndpointAnalyzerImpl> * _activeEndpointer;
-    bool  _didEnterTwoshot;
     <CSEndpointAnalyzerDelegate> * _endpointerDelegate;
     <CSEndpointAnalyzerImpl> * _hybridEndpointer;
+    <CSEndpointAnalyzerImpl> * _nnvadEndpointer;
     bool  _recordingDidStop;
-    double  _vad2AutomaticEndpointingSuspensionEndTime;
-    double  _vad2Delay;
-    double  _vad2EndWaitTime;
-    long long  _vad2EndpointStyle;
-    <CSEndpointAnalyzerImpl> * _vad2Endpointer;
-    long long  _vad2EndpointtMode;
-    double  _vad2InterspeechWaitTime;
-    double  _vad2MinimumDurationForEndpointer;
-    bool  _vad2SaveSamplesSeenInReset;
-    double  _vad2StartWaitTime;
 }
 
 @property (nonatomic) <CSEndpointAnalyzerImpl> *activeEndpointer;
@@ -26,7 +16,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) double delay;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) bool didEnterTwoshot;
 @property (nonatomic) double endWaitTime;
 @property (nonatomic) long long endpointMode;
 @property (nonatomic) long long endpointStyle;
@@ -37,34 +26,23 @@
 @property (nonatomic, readonly) double lastEndOfVoiceActivityTime;
 @property (nonatomic, readonly) double lastStartOfVoiceActivityTime;
 @property (nonatomic) double minimumDurationForEndpointer;
+@property (nonatomic, retain) <CSEndpointAnalyzerImpl> *nnvadEndpointer;
 @property (nonatomic) bool recordingDidStop;
 @property (nonatomic) bool saveSamplesSeenInReset;
 @property (nonatomic) double startWaitTime;
 @property (readonly) Class superclass;
-@property (nonatomic) double vad2AutomaticEndpointingSuspensionEndTime;
-@property (nonatomic) double vad2Delay;
-@property (nonatomic) double vad2EndWaitTime;
-@property (nonatomic) long long vad2EndpointStyle;
-@property (nonatomic, retain) <CSEndpointAnalyzerImpl> *vad2Endpointer;
-@property (nonatomic) long long vad2EndpointtMode;
-@property (nonatomic) double vad2InterspeechWaitTime;
-@property (nonatomic) double vad2MinimumDurationForEndpointer;
-@property (nonatomic) bool vad2SaveSamplesSeenInReset;
-@property (nonatomic) double vad2StartWaitTime;
 
 - (void).cxx_destruct;
-- (void)_setupVAD2Endpointer;
-- (bool)_shouldEnterTwoShotAtEndPointTime:(double)arg1;
-- (bool)_shouldUseVAD2ForTwoShot;
+- (void)_setupNNVADEndpointer;
 - (id)activeEndpointer;
 - (double)automaticEndpointingSuspensionEndTime;
 - (double)delay;
-- (bool)didEnterTwoshot;
 - (double)elapsedTimeWithNoSpeech;
 - (unsigned long long)endPointAnalyzerType;
 - (double)endWaitTime;
 - (long long)endpointMode;
 - (long long)endpointStyle;
+- (void)endpointer:(id)arg1 detectedTwoShotAtTime:(double)arg2;
 - (void)endpointer:(id)arg1 didDetectHardEndpointAtTime:(double)arg2 withMetrics:(id)arg3;
 - (void)endpointer:(id)arg1 didDetectStartpointAtTime:(double)arg2;
 - (id)endpointerDelegate;
@@ -75,20 +53,20 @@
 - (double)lastEndOfVoiceActivityTime;
 - (double)lastStartOfVoiceActivityTime;
 - (double)minimumDurationForEndpointer;
+- (id)nnvadEndpointer;
 - (void)preheat;
 - (void)processAudioSamplesAsynchronously:(id)arg1;
 - (void)processServerEndpointFeatures:(id)arg1;
 - (bool)recordingDidStop;
-- (void)recordingStoppedForReason:(unsigned long long)arg1;
+- (void)recordingStoppedForReason:(long long)arg1;
 - (void)reset;
-- (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1 recordContext:(id)arg2;
+- (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1 recordContext:(id)arg2 recordSettings:(id)arg3;
 - (void)resetForVoiceTriggerTwoShotWithSampleRate:(unsigned long long)arg1;
 - (bool)saveSamplesSeenInReset;
 - (void)setActiveChannel:(unsigned long long)arg1;
 - (void)setActiveEndpointer:(id)arg1;
 - (void)setAutomaticEndpointingSuspensionEndTime:(double)arg1;
 - (void)setDelay:(double)arg1;
-- (void)setDidEnterTwoshot:(bool)arg1;
 - (void)setEndWaitTime:(double)arg1;
 - (void)setEndpointMode:(long long)arg1;
 - (void)setEndpointStyle:(long long)arg1;
@@ -96,33 +74,15 @@
 - (void)setHybridEndpointer:(id)arg1;
 - (void)setInterspeechWaitTime:(double)arg1;
 - (void)setMinimumDurationForEndpointer:(double)arg1;
+- (void)setNnvadEndpointer:(id)arg1;
 - (void)setRecordingDidStop:(bool)arg1;
 - (void)setSaveSamplesSeenInReset:(bool)arg1;
 - (void)setStartWaitTime:(double)arg1;
-- (void)setVad2AutomaticEndpointingSuspensionEndTime:(double)arg1;
-- (void)setVad2Delay:(double)arg1;
-- (void)setVad2EndWaitTime:(double)arg1;
-- (void)setVad2EndpointStyle:(long long)arg1;
-- (void)setVad2Endpointer:(id)arg1;
-- (void)setVad2EndpointtMode:(long long)arg1;
-- (void)setVad2InterspeechWaitTime:(double)arg1;
-- (void)setVad2MinimumDurationForEndpointer:(double)arg1;
-- (void)setVad2SaveSamplesSeenInReset:(bool)arg1;
-- (void)setVad2StartWaitTime:(double)arg1;
 - (void)shouldAcceptEagerResultForDuration:(double)arg1 resultsCompletionHandler:(id /* block */)arg2;
 - (double)startWaitTime;
+- (void)stopEndpointer;
 - (double)trailingSilenceDurationAtEndpoint;
 - (void)updateEndpointerDelayedTrigger:(bool)arg1;
 - (void)updateEndpointerThreshold:(float)arg1;
-- (double)vad2AutomaticEndpointingSuspensionEndTime;
-- (double)vad2Delay;
-- (double)vad2EndWaitTime;
-- (long long)vad2EndpointStyle;
-- (id)vad2Endpointer;
-- (long long)vad2EndpointtMode;
-- (double)vad2InterspeechWaitTime;
-- (double)vad2MinimumDurationForEndpointer;
-- (bool)vad2SaveSamplesSeenInReset;
-- (double)vad2StartWaitTime;
 
 @end

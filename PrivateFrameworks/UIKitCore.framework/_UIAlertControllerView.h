@@ -12,9 +12,21 @@
     NSMutableArray * _actionViews;
     bool  _actionsReversed;
     UIAlertController * _alertController;
-    bool  _alignsToKeyboard;
+    struct { 
+        unsigned int hasAppliedTitleAndMessageLabelVibrantContainerViewConstraints : 1; 
+        unsigned int hasAppliedTitleConstraints : 1; 
+        unsigned int hasAppliedMessageConstraints : 1; 
+        unsigned int hasAppliedDetailConstraints : 1; 
+        unsigned int presentedAsPopover : 1; 
+        unsigned int hasDimmingView : 1; 
+        unsigned int cancelActionIsDiscrete : 1; 
+        unsigned int shouldHaveBackdropView : 1; 
+        unsigned int alignsToKeyboard : 1; 
+        unsigned int hasCachedLargestActionDimension : 1; 
+        unsigned int needsActionsChangedHandling : 1; 
+        unsigned int needsUpdateForPropertyChange : 1; 
+    }  _alertControllerViewFlags;
     long long  _batchActionChangesInProgressCount;
-    bool  _cancelActionIsDiscrete;
     NSLayoutConstraint * _centerXConstraint;
     NSLayoutConstraint * _centerYConstraint;
     NSLayoutConstraint * _contentScrollViewBottomConstraint;
@@ -48,17 +60,11 @@
     NSLayoutConstraint * _discreteCancelActionViewWidthConstraint;
     UIAlertAction * _effectivePreferredAction;
     NSLayoutConstraint * _foregroundViewWidthConstraint;
-    bool  _hasAppliedDetailConstraints;
-    bool  _hasAppliedMessageConstraints;
-    bool  _hasAppliedTitleConstraints;
-    bool  _hasCachedLargestActionDimension;
-    bool  _hasDimmingView;
     UIView * _headerContentViewControllerContainerView;
     NSLayoutConstraint * _headerContentViewControllerContainerViewTopAlignmentConstraint;
     NSLayoutConstraint * _headerContentViewControllerPreferredHeightConstraint;
     NSLayoutConstraint * _headerContentViewControllerPreferredWidthConstraint;
     NSLayoutConstraint * _heightConstraint;
-    bool  _inPopover;
     UIView * _keyboardLayoutAlignmentAvailableSpaceView;
     _UIKeyboardLayoutAlignmentView * _keyboardLayoutAlignmentView;
     struct CGSize { 
@@ -76,11 +82,11 @@
     _UIAlertControllerInterfaceActionGroupView * _mainInterfaceActionsGroupView;
     UILabel * _messageLabel;
     _UIFlexibleConstantConstraintSet * _messageLabelTopAlignmentConstraints;
-    bool  _needsActionsChangedHandling;
     NSArray * _noDimmingViewConstraints;
     bool  _presentationContextPrefersCancelActionShown;
-    bool  _shouldHaveBackdropView;
-    bool  _showsCancelAction;
+    UIView * _separatedHeaderContentViewControllerContainerView;
+    NSLayoutConstraint * _separatedHeaderContentViewControllerContainerViewBottomConstraint;
+    NSLayoutConstraint * _separatedHeaderContentViewControllerContainerViewWidthConstraint;
     bool  _springLoaded;
     UIView * _textFieldViewControllerContainerView;
     NSLayoutConstraint * _textFieldViewControllerContainerViewHeightConstraint;
@@ -90,6 +96,8 @@
     NSLayoutConstraint * _textFieldViewControllerViewLeftConstraint;
     NSLayoutConstraint * _textFieldViewControllerViewRightConstraint;
     NSLayoutConstraint * _textFieldViewControllerViewTopConstraint;
+    UIVisualEffectView * _titleAndMessageLabelVibrantContainerView;
+    NSArray * _titleAndMessageLabelVibrantContainerViewVerticalConstraints;
     UILabel * _titleLabel;
     _UIFlexibleConstantConstraintSet * _titleLabelTopAlignmentConstraints;
     UIAlertControllerVisualStyle * _visualStyle;
@@ -133,13 +141,15 @@
 @property (readonly) unsigned long long hash;
 @property (retain) NSLayoutConstraint *headerContentViewControllerContainerViewTopAlignmentConstraint;
 @property (retain) NSLayoutConstraint *heightConstraint;
-@property bool inPopover;
 @property (getter=_layoutSize, setter=_setLayoutSize:, nonatomic) struct CGSize { double x1; double x2; } layoutSize;
 @property (retain) NSLayoutConstraint *mainActionButtonSequenceViewHeightConstraint;
 @property (retain) NSLayoutConstraint *mainActionButtonSequenceViewHorizontalAlignmentConstraint;
 @property (retain) NSLayoutConstraint *mainActionButtonSequenceViewWidthConstraint;
 @property (retain) _UIFlexibleConstantConstraintSet *messageLabelTopAlignmentConstraints;
 @property (nonatomic) bool presentationContextPrefersCancelActionShown;
+@property bool presentedAsPopover;
+@property (retain) NSLayoutConstraint *separatedHeaderContentViewControllerContainerViewBottomConstraint;
+@property (retain) NSLayoutConstraint *separatedHeaderContentViewControllerContainerViewWidthConstraint;
 @property bool shouldHaveBackdropView;
 @property (getter=isSpringLoaded, nonatomic) bool springLoaded;
 @property (readonly) Class superclass;
@@ -150,17 +160,18 @@
 @property (retain) NSLayoutConstraint *textFieldViewControllerViewLeftConstraint;
 @property (retain) NSLayoutConstraint *textFieldViewControllerViewRightConstraint;
 @property (retain) NSLayoutConstraint *textFieldViewControllerViewTopConstraint;
+@property (retain) NSArray *titleAndMessageLabelVibrantContainerViewVerticalConstraints;
 @property (retain) _UIFlexibleConstantConstraintSet *titleLabelTopAlignmentConstraints;
 @property (retain) NSLayoutConstraint *widthConstraint;
 
-+ (bool)_retroactivelyRequiresConstraintBasedLayout;
 + (void)initialize;
++ (bool)requiresConstraintBasedLayout;
 
 - (void).cxx_destruct;
 - (void)_UIAppearance_setAlignsToKeyboard:(bool)arg1;
 - (void)_UIAppearance_setHasDimmingView:(bool)arg1;
-- (void)_UIAppearance_setInPopover:(bool)arg1;
 - (void)_UIAppearance_setPresentationContextPrefersCancelActionShown:(bool)arg1;
+- (void)_UIAppearance_setPresentedAsPopover:(bool)arg1;
 - (void)_UIAppearance_setShouldHaveBackdropView:(bool)arg1;
 - (id)__cancelActionView;
 - (void)_accessibilityColorsChanged;
@@ -170,13 +181,16 @@
 - (bool)_actionsReversed;
 - (void)_addContentViewControllerToViewHierarchy;
 - (void)_addHeaderContentViewControllerToViewHierarchy;
+- (void)_addSeparatedHeaderContentViewControllerToViewHierarchy;
 - (void)_applyContentViewControllerContainerViewConstraints;
 - (void)_applyDetailMessageConstraints;
 - (void)_applyHeaderContentViewControllerContainerViewConstraints;
 - (void)_applyISEngineLayoutValuesToBoundsOnly:(bool)arg1;
 - (void)_applyKeyboardAlignmentViewsConstraints;
 - (void)_applyMessageConstraints;
+- (void)_applySeparatedContentViewControllerContainerViewContraints;
 - (void)_applyTextFieldViewControllerContainerViewConstraints;
+- (void)_applyTitleAndMessageLabelVibrantContainerViewConstraints;
 - (void)_applyTitleConstraints;
 - (void)_applyViewConstraints;
 - (void)_associateActionsWithActionViews;
@@ -217,7 +231,7 @@
 - (struct CGSize { double x1; double x2; })_layoutSize;
 - (double)_layoutWidthForHorizontalLayout:(bool)arg1;
 - (struct CGSize { double x1; double x2; })_mainActionButtonSequenceViewSizeForHorizontalLayout:(bool)arg1 itemSize:(struct CGSize { double x1; double x2; })arg2;
-- (double)_marginBetweenContentAndDiscreteCancelAction;
+- (double)_marginBetweenInterfaceActionGroups;
 - (struct CGSize { double x1; double x2; })_minimumSizeForAllActions;
 - (id)_newStyledBackgroundView;
 - (long long)_numberOfActionsForMainActionButtonSequenceView;
@@ -229,13 +243,14 @@
 - (void)_prepareDetailMessageLabel;
 - (void)_prepareDimmingView;
 - (void)_prepareDimmingViewConstraints;
-- (void)_prepareDimmingViewConstraintsIfNeeded;
 - (void)_prepareDiscreteCancelActionGroupView;
 - (void)_prepareHeaderContentViewControllerContainerView;
 - (void)_prepareKeyboardLayoutAlignmentViews;
 - (void)_prepareMainInterfaceActionsGroupView;
 - (void)_prepareMesssageLabel;
+- (void)_prepareSeparateContentViewControllerContainerView;
 - (void)_prepareTextFieldViewControllerContainerView;
+- (void)_prepareTitleAndMessageLabelVibrantContainer;
 - (void)_prepareTitleLabel;
 - (void)_prepareViewsAndAddConstraints;
 - (id)_presentableAlertActions;
@@ -247,6 +262,7 @@
 - (void)_reloadInterfaceActionsGroupViewPreferredAction;
 - (void)_removeContentViewControllerViewFromHierarchy;
 - (void)_removeHeaderContentViewControllerViewFromHierarchy;
+- (void)_removeSeparatedHeaderContentViewControllerFromHierarchy;
 - (void)_scrollInitialActionToVisibleForPresentation;
 - (void)_setActionsReversed:(bool)arg1;
 - (void)_setAttributedDetailMessage:(id)arg1;
@@ -256,6 +272,7 @@
 - (void)_setMessage:(id)arg1;
 - (void)_setTitle:(id)arg1;
 - (void)_setVisualStyle:(id)arg1;
+- (void)_setupHorizontalConstraintsForLabelView:(id)arg1;
 - (bool)_shouldAllowPassthroughToLayersBehindUsForTouches:(id)arg1;
 - (bool)_shouldHaveCancelActionInMainActionButtonSequenceView;
 - (struct CGSize { double x1; double x2; })_sizeForLayoutWidthDetermination;
@@ -265,6 +282,7 @@
 - (double)_spaceRequiredForActionSectionsSpacing;
 - (id)_textFieldViewController;
 - (void)_textFieldsChanged;
+- (bool)_titleAndMessageLabelUseVibrancy;
 - (id)_unlocalizedOrderedPresentableAlertActionViewRepresentations;
 - (id)_unlocalizedOrderedPresentableAlertActions;
 - (void)_updateActionViewHeight;
@@ -275,6 +293,7 @@
 - (void)_updateContentView;
 - (void)_updateDetailLabelContents;
 - (void)_updateDetailLabelFontSize;
+- (void)_updateForPropertyChangeIfNeeded;
 - (void)_updateInsets;
 - (void)_updateLabelFontSizes;
 - (void)_updateLabelProperties;
@@ -288,6 +307,7 @@
 - (void)_updateTitleLabelContents;
 - (void)_updateTitleLabelFontSize;
 - (double)_verticalLayoutWidth;
+- (id)_vibrancyEffectForTitleAndMessageLabel;
 - (id)_visualStyle;
 - (id)actionGroupEqualsContentViewWidthConstraint;
 - (id)actionViewMetrics;
@@ -330,7 +350,6 @@
 - (id)headerContentViewController;
 - (id)headerContentViewControllerContainerViewTopAlignmentConstraint;
 - (id)heightConstraint;
-- (bool)inPopover;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)interfaceAction:(id)arg1 invokeActionHandler:(id /* block */)arg2 completion:(id /* block */)arg3;
 - (bool)isSpringLoaded;
@@ -341,7 +360,11 @@
 - (id)messageLabelTopAlignmentConstraints;
 - (id)preferredFocusedView;
 - (bool)presentationContextPrefersCancelActionShown;
+- (bool)presentedAsPopover;
 - (void)safeAreaInsetsDidChange;
+- (id)separatedHeaderContentViewController;
+- (id)separatedHeaderContentViewControllerContainerViewBottomConstraint;
+- (id)separatedHeaderContentViewControllerContainerViewWidthConstraint;
 - (void)setActionGroupEqualsContentViewWidthConstraint:(id)arg1;
 - (void)setActionViewMetrics:(id)arg1;
 - (void)setAlertController:(id)arg1;
@@ -372,12 +395,14 @@
 - (void)setHasDimmingView:(bool)arg1;
 - (void)setHeaderContentViewControllerContainerViewTopAlignmentConstraint:(id)arg1;
 - (void)setHeightConstraint:(id)arg1;
-- (void)setInPopover:(bool)arg1;
 - (void)setMainActionButtonSequenceViewHeightConstraint:(id)arg1;
 - (void)setMainActionButtonSequenceViewHorizontalAlignmentConstraint:(id)arg1;
 - (void)setMainActionButtonSequenceViewWidthConstraint:(id)arg1;
 - (void)setMessageLabelTopAlignmentConstraints:(id)arg1;
 - (void)setPresentationContextPrefersCancelActionShown:(bool)arg1;
+- (void)setPresentedAsPopover:(bool)arg1;
+- (void)setSeparatedHeaderContentViewControllerContainerViewBottomConstraint:(id)arg1;
+- (void)setSeparatedHeaderContentViewControllerContainerViewWidthConstraint:(id)arg1;
 - (void)setShouldHaveBackdropView:(bool)arg1;
 - (void)setSpringLoaded:(bool)arg1;
 - (void)setTextFieldViewControllerContainerViewHeightConstraint:(id)arg1;
@@ -388,6 +413,7 @@
 - (void)setTextFieldViewControllerViewRightConstraint:(id)arg1;
 - (void)setTextFieldViewControllerViewTopConstraint:(id)arg1;
 - (void)setTintAdjustmentMode:(long long)arg1;
+- (void)setTitleAndMessageLabelVibrantContainerViewVerticalConstraints:(id)arg1;
 - (void)setTitleLabelTopAlignmentConstraints:(id)arg1;
 - (void)setWidthConstraint:(id)arg1;
 - (bool)shouldHaveBackdropView;
@@ -403,11 +429,14 @@
 - (id)textFields;
 - (long long)tintAdjustmentMode;
 - (id)title;
+- (id)titleAndMessageLabelVibrantContainerViewVerticalConstraints;
 - (id)titleLabelTopAlignmentConstraints;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
+- (void)updateConstraints;
+- (void)updateObservations:(id)arg1;
 - (id)widthConstraint;
 
 @end

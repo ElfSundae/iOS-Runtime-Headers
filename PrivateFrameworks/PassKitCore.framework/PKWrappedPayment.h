@@ -6,6 +6,7 @@
     PKSecureElementCertificateSet * _certificates;
     NSData * _enrollmentSignature;
     NSString * _kextBlacklistVersion;
+    NSString * _merchantCountryCode;
     NSData * _transactionData;
     NSString * _transactionIdentifier;
     NSData * _transactionInstructionsSignature;
@@ -14,6 +15,7 @@
 @property (nonatomic, copy) PKSecureElementCertificateSet *certificates;
 @property (nonatomic, copy) NSData *enrollmentSignature;
 @property (nonatomic, copy) NSString *kextBlacklistVersion;
+@property (nonatomic, copy) NSString *merchantCountryCode;
 @property (nonatomic, copy) NSData *transactionData;
 @property (nonatomic, copy) NSString *transactionIdentifier;
 @property (nonatomic, copy) NSData *transactionInstructionsSignature;
@@ -27,9 +29,11 @@
 - (id)enrollmentSignature;
 - (id)initWithCoder:(id)arg1;
 - (id)kextBlacklistVersion;
+- (id)merchantCountryCode;
 - (void)setCertificates:(id)arg1;
 - (void)setEnrollmentSignature:(id)arg1;
 - (void)setKextBlacklistVersion:(id)arg1;
+- (void)setMerchantCountryCode:(id)arg1;
 - (void)setTransactionData:(id)arg1;
 - (void)setTransactionIdentifier:(id)arg1;
 - (void)setTransactionInstructionsSignature:(id)arg1;

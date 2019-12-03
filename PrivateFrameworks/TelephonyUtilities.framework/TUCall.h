@@ -15,8 +15,8 @@
     NSDate * _dateStartedConnecting;
     int  _disconnectedReason;
     bool  _endpointOnCurrentDevice;
-    bool  _expectedEndpointOnPairedClientDevice;
     int  _faceTimeIDStatus;
+    int  _filteredOutReason;
     NSString * _hardPauseDigits;
     int  _hardPauseDigitsState;
     bool  _hasUpdatedAudio;
@@ -24,6 +24,7 @@
     double  _hostMessageSendTime;
     NSString * _isoCountryCode;
     TUCallModel * _model;
+    long long  _priority;
     NSDictionary * _providerContext;
     long long  _provisionalHoldStatus;
     NSObject<OS_dispatch_queue> * _queue;
@@ -35,9 +36,11 @@
     bool  _shouldSuppressRingtone;
     long long  _soundRegion;
     NSString * _sourceIdentifier;
+    bool  _supportsRecents;
     int  _transitionStatus;
     int  _ttyType;
     NSString * _uniqueProxyIdentifier;
+    long long  _verificationStatus;
     bool  _video;
     TUVideoCallAttributes * _videoCallAttributes;
     bool  _wantsHoldMusic;
@@ -91,9 +94,9 @@
 @property (nonatomic, readonly) NSString *endedReasonString;
 @property (nonatomic, readonly, copy) NSDictionary *endedReasonUserInfo;
 @property (getter=isEndpointOnCurrentDevice, nonatomic) bool endpointOnCurrentDevice;
-@property (getter=isExpectedEndpointOnPairedClientDevice, nonatomic) bool expectedEndpointOnPairedClientDevice;
 @property (nonatomic) int faceTimeIDStatus;
 @property (nonatomic, readonly) long long faceTimeTransportType;
+@property (nonatomic) int filteredOutReason;
 @property (nonatomic, readonly) TUHandle *handle;
 @property (nonatomic, copy) NSString *hardPauseDigits;
 @property (nonatomic, readonly) NSString *hardPauseDigitsDisplayString;
@@ -123,6 +126,7 @@
 @property (getter=isOutgoing, nonatomic, readonly) bool outgoing;
 @property (nonatomic, readonly) long long outputAudioPowerSpectrumToken;
 @property (nonatomic, readonly) bool prefersExclusiveAccessToCellularNetwork;
+@property (nonatomic) long long priority;
 @property (nonatomic, readonly) TUCallProvider *provider;
 @property (nonatomic, readonly) NSDictionary *providerContext;
 @property (nonatomic) long long provisionalHoldStatus;
@@ -153,6 +157,7 @@
 @property (nonatomic, readonly) bool statusIsProvisional;
 @property (nonatomic, readonly, copy) NSString *suggestedDisplayName;
 @property (nonatomic, readonly) bool supportsDTMFTones;
+@property (nonatomic) bool supportsRecents;
 @property (nonatomic, readonly) bool supportsTTYWithVoice;
 @property (setter=tc_setUseUnderlyingRemoteUplinkMuted:, nonatomic) bool tc_useUnderlyingRemoteUplinkMuted;
 @property (getter=isThirdPartyVideo, nonatomic, readonly) bool thirdPartyVideo;
@@ -163,6 +168,7 @@
 @property (nonatomic, readonly, copy) NSUUID *uniqueProxyIdentifierUUID;
 @property (getter=isUplinkMuted, nonatomic) bool uplinkMuted;
 @property (getter=isUsingBaseband, nonatomic, readonly) bool usingBaseband;
+@property (nonatomic) long long verificationStatus;
 @property (getter=isVideo, nonatomic) bool video;
 @property (nonatomic, retain) TUVideoCallAttributes *videoCallAttributes;
 @property (getter=isVideoDegraded, nonatomic, readonly) bool videoDegraded;
@@ -234,6 +240,7 @@
 - (id)errorAlertTitle;
 - (int)faceTimeIDStatus;
 - (long long)faceTimeTransportType;
+- (int)filteredOutReason;
 - (void)groupWithOtherCall:(id)arg1;
 - (id)handle;
 - (id)hardPauseDigits;
@@ -265,7 +272,6 @@
 - (bool)isEndpointOnCurrentDevice;
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToCall:(id)arg1;
-- (bool)isExpectedEndpointOnPairedClientDevice;
 - (bool)isHostedOnCurrentDevice;
 - (bool)isIncoming;
 - (bool)isMediaStalled;
@@ -303,6 +309,7 @@
 - (long long)outputAudioPowerSpectrumToken;
 - (void)playDTMFToneForKey:(unsigned char)arg1;
 - (bool)prefersExclusiveAccessToCellularNetwork;
+- (long long)priority;
 - (id)provider;
 - (id)providerContext;
 - (long long)provisionalHoldStatus;
@@ -334,8 +341,8 @@
 - (void)setDisconnectedReason:(int)arg1;
 - (void)setDownlinkMuted:(bool)arg1;
 - (void)setEndpointOnCurrentDevice:(bool)arg1;
-- (void)setExpectedEndpointOnPairedClientDevice:(bool)arg1;
 - (void)setFaceTimeIDStatus:(int)arg1;
+- (void)setFilteredOutReason:(int)arg1;
 - (void)setHardPauseDigits:(id)arg1;
 - (void)setHardPauseDigitsState:(int)arg1;
 - (void)setHasUpdatedAudio:(bool)arg1;
@@ -347,6 +354,7 @@
 - (void)setLocalVideoLayer:(id)arg1 forMode:(long long)arg2;
 - (void)setModel:(id)arg1;
 - (bool)setMuted:(bool)arg1;
+- (void)setPriority:(long long)arg1;
 - (void)setProvisionalHoldStatus:(long long)arg1;
 - (void)setQueue:(id)arg1;
 - (void)setRemoteVideoLayer:(id)arg1 forMode:(long long)arg2;
@@ -357,10 +365,12 @@
 - (void)setShouldSuppressRingtone:(bool)arg1;
 - (void)setSoundRegion:(long long)arg1;
 - (void)setSourceIdentifier:(id)arg1;
+- (void)setSupportsRecents:(bool)arg1;
 - (void)setTransitionStatus:(int)arg1;
 - (void)setTtyType:(int)arg1;
 - (void)setUniqueProxyIdentifier:(id)arg1;
 - (void)setUplinkMuted:(bool)arg1;
+- (void)setVerificationStatus:(long long)arg1;
 - (void)setVideo:(bool)arg1;
 - (void)setVideoCallAttributes:(id)arg1;
 - (void)setWantsHoldMusic:(bool)arg1;
@@ -379,6 +389,7 @@
 - (id)suggestedDisplayName;
 - (id)supplementalInCallString;
 - (bool)supportsDTMFTones;
+- (bool)supportsRecents;
 - (bool)supportsTTYWithVoice;
 - (void)suppressRingtone;
 - (void)suppressRingtoneDueToRemoteSuppression;
@@ -390,6 +401,7 @@
 - (id)uniqueProxyIdentifierUUID;
 - (void)updateComparativeCall;
 - (void)updateWithCall:(id)arg1;
+- (long long)verificationStatus;
 - (id)videoCallAttributes;
 - (long long)videoStreamToken;
 - (bool)wantsHoldMusic;

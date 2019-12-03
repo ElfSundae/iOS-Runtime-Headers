@@ -4,12 +4,20 @@
 
 @interface PKBarcodeTableViewCell : UITableViewCell {
     PKBarcodeStickerView * _barcodeStickerView;
+    struct CGSize { 
+        double width; 
+        double height; 
+    }  _maximumBarcodeSize;
     PKPass * _pass;
 }
+
+@property (nonatomic) struct CGSize { double x1; double x2; } maximumBarcodeSize;
 
 - (void).cxx_destruct;
 - (id)initWithPass:(id)arg1;
 - (void)layoutSubviews;
+- (struct CGSize { double x1; double x2; })maximumBarcodeSize;
+- (void)setMaximumBarcodeSize:(struct CGSize { double x1; double x2; })arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 
 @end

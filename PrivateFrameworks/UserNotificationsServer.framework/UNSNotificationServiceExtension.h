@@ -10,6 +10,7 @@
 }
 
 @property (nonatomic, readonly) LSPlugInKitProxy *proxy;
+@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *queue;
 
 + (void)_allowAccessToNotificationCenterForServiceExtensionWithIdentifier:(id)arg1;
 + (void)_disallowAccessToNotificationCenterForServiceExtensionWithIdentifier:(id)arg1;
@@ -20,5 +21,6 @@
 - (id)_initWithExtension:(id)arg1 serviceTime:(double)arg2 graceTime:(double)arg3;
 - (id)mutateContentForNotificationRequest:(id)arg1 error:(id*)arg2;
 - (id)proxy;
+- (id)queue;
 
 @end

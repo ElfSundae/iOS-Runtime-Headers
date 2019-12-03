@@ -28,7 +28,6 @@
 + (id)pasteboardWithName:(id)arg1 create:(bool)arg2;
 + (id)pasteboardWithPasteboard:(id)arg1;
 + (id)pasteboardWithUniqueName;
-+ (id)stylePasteboard;
 
 - (void).cxx_destruct;
 - (id)URLs;

@@ -19,7 +19,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) bool disconnectOnDemandEnabled;
+@property (readonly) NEDNSProxyProviderProtocol *dnsProxyConfiguration;
 @property bool enabled;
+@property (readonly) NEFilterProviderConfiguration *filterConfiguration;
 @property (readonly) unsigned long long hash;
 @property (retain) NSMutableArray *identities;
 @property (readonly) bool isAlwaysOn;
@@ -37,6 +39,7 @@
 - (void)addIdentityProperties:(id)arg1 withDomain:(long long)arg2;
 - (bool)addOnDemandRuleWithParameters:(id)arg1 errorStr:(id*)arg2;
 - (bool)addPathRuleWithParameters:(id)arg1 errorStr:(id*)arg2;
+- (bool)addPersonalDNSWithParameters:(id)arg1 errorStr:(id*)arg2;
 - (id)clientName;
 - (bool)createConfigurationWithParameters:(id)arg1 errorStr:(id*)arg2;
 - (id)createdConfigurations;
@@ -45,7 +48,9 @@
 - (void)dealloc;
 - (id)decodeConfigurationWithIdentifier:(id)arg1 andDecoder:(id)arg2;
 - (bool)disconnectOnDemandEnabled;
+- (id)dnsProxyConfiguration;
 - (bool)enabled;
+- (id)filterConfiguration;
 - (void)handleCommand:(int)arg1 forConfigWithName:(id)arg2 withParameters:(id)arg3 completionHandler:(id /* block */)arg4;
 - (id)identities;
 - (id)initInternalWithClientName:(id)arg1;
@@ -64,11 +69,13 @@
 - (bool)removeAppRuleWithParameters:(id)arg1 errorStr:(id*)arg2;
 - (bool)removeOnDemandRuleWithParameters:(id)arg1 errorStr:(id*)arg2;
 - (bool)removePathRuleWithParameters:(id)arg1 errorStr:(id*)arg2;
+- (bool)removePersonalDNSWithParameters:(id)arg1 errorStr:(id*)arg2;
 - (bool)setAlwaysOnParameters:(id)arg1 errorStr:(id*)arg2;
 - (bool)setCommonParameters:(id)arg1 errorStr:(id*)arg2;
 - (void)setCreatedConfigurations:(id)arg1;
 - (void)setCurrentConfiguration:(id)arg1;
 - (void)setCurrentConfigurations:(id)arg1;
+- (bool)setDNSProxyWithParameters:(id)arg1 errorStr:(id*)arg2;
 - (void)setDisconnectOnDemandEnabled:(bool)arg1;
 - (void)setEnabled:(bool)arg1;
 - (bool)setFilterPluginWithParameters:(id)arg1 errorStr:(id*)arg2;
@@ -87,6 +94,8 @@
 - (bool)swapConfigurationTypeWithParameters:(id)arg1 errorStr:(id*)arg2;
 - (bool)unsetAlwaysOnParameters:(id)arg1 errorStr:(id*)arg2;
 - (bool)unsetCommonParameters:(id)arg1 errorStr:(id*)arg2;
+- (bool)unsetDNSProxyWithParameters:(id)arg1 errorStr:(id*)arg2;
+- (bool)unsetFilterPluginParameters:(id)arg1 errorStr:(id*)arg2;
 - (bool)unsetIPSecParameters:(id)arg1 errorStr:(id*)arg2;
 - (bool)unsetPPPParameters:(id)arg1 errorStr:(id*)arg2;
 - (bool)unsetPasswordWithParameters:(id)arg1 errorStr:(id*)arg2;

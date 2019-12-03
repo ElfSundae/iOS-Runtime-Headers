@@ -5,6 +5,7 @@
 
 @required
 
+- (NSArray *)departures;
 - (NSArray *)departuresValidForDate:(NSDate *)arg1;
 - (NSString *)direction;
 - (long long)displayStyle;
@@ -25,5 +26,6 @@
 - (unsigned long long)numberOfDeparturesAfterDate:(NSDate *)arg1;
 - (NSArray *)operatingHours;
 - (NSArray *)operatingHoursForDate:(NSDate *)arg1 inTimeZone:(NSTimeZone *)arg2;
+- (unsigned long long)stopId;
 
 @end

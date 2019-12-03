@@ -4,7 +4,9 @@
 
 @interface SFExternalPasswordCredentialServiceViewController : SFPasswordServiceViewController <SFCredentialProviderExtensionManagerObserver, SFExternalPasswordCredentialServiceViewControllerProtocol, _ASPasswordCredentialAuthenticationViewControllerDelegate, _SFAuthenticationClient, _SFAuthenticationContextDelegate> {
     _SFAuthenticationContext * _authenticationContext;
+    long long  _completionAction;
     _ASPasswordCredentialAuthenticationViewController * _extensionController;
+    id /* block */  _getCredentialCompletion;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -18,6 +20,8 @@
 - (void).cxx_destruct;
 - (id)_authenticationContext;
 - (void)_dismiss;
+- (void)_finishRequestToAutoFillCredential:(id)arg1 extensionShowedUI:(bool)arg2 error:(id)arg3 completion:(id /* block */)arg4;
+- (void)_finishRequestToReturnCredential:(id)arg1 extensionShowedUI:(bool)arg2 error:(id)arg3 completion:(id /* block */)arg4;
 - (id)authenticationCustomUIProgressObserverForContext:(id)arg1;
 - (id)authenticationMessageForContext:(id)arg1;
 - (void)autoFillWithCredentialIdentity:(id)arg1;
@@ -26,9 +30,10 @@
 - (bool)contextShouldAllowPasscodeFallback:(id)arg1;
 - (void)credentialProviderExtensionManagerExtensionListDidChange:(id)arg1;
 - (bool)displayMessageAsTitleForContext:(id)arg1;
+- (void)getCredentialForCredentialIdentity:(id)arg1 completion:(id /* block */)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)passcodePromptForContext:(id)arg1;
-- (void)passwordCredentialAuthenticationViewController:(id)arg1 didFinishWithCredential:(id)arg2 completion:(id /* block */)arg3;
+- (void)passwordCredentialAuthenticationViewController:(id)arg1 didFinishWithCredential:(id)arg2 error:(id)arg3 completion:(id /* block */)arg4;
 - (void)presentUIForPasswordCredentialAuthenticationViewController:(id)arg1;
 
 @end

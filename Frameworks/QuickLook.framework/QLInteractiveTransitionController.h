@@ -16,6 +16,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) bool wantsInteractiveStart;
 
+- (void)_performForcedDismissal;
 - (double)completeProgress;
 - (void)completeTransition:(bool)arg1 withDuration:(double)arg2;
 - (void)setCompleteProgress:(double)arg1;

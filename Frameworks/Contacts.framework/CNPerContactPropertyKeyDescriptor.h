@@ -16,6 +16,7 @@
 
 - (void).cxx_destruct;
 - (void)_cn_executeGetterForRepresentedKeys:(id /* block */)arg1;
+- (id)_cn_ignorableKeys;
 - (id)_cn_optionalKeys;
 - (id)_cn_requiredKeys;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

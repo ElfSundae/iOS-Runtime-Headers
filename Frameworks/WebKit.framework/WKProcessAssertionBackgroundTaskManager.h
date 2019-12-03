@@ -3,30 +3,32 @@
  */
 
 @interface WKProcessAssertionBackgroundTaskManager : NSObject {
-    unsigned long long  _backgroundTask;
-    struct HashSet<WebKit::ProcessAssertionClient *, WTF::PtrHash<WebKit::ProcessAssertionClient *>, WTF::HashTraits<WebKit::ProcessAssertionClient *> > { 
-        struct HashTable<WebKit::ProcessAssertionClient *, WebKit::ProcessAssertionClient *, WTF::IdentityExtractor, WTF::PtrHash<WebKit::ProcessAssertionClient *>, WTF::HashTraits<WebKit::ProcessAssertionClient *>, WTF::HashTraits<WebKit::ProcessAssertionClient *> > { 
-            struct ProcessAssertionClient {} **m_table; 
+    bool  _applicationIsBackgrounded;
+    struct HashSet<WebKit::ProcessAndUIAssertion *, WTF::PtrHash<WebKit::ProcessAndUIAssertion *>, WTF::HashTraits<WebKit::ProcessAndUIAssertion *> > { 
+        struct HashTable<WebKit::ProcessAndUIAssertion *, WebKit::ProcessAndUIAssertion *, WTF::IdentityExtractor, WTF::PtrHash<WebKit::ProcessAndUIAssertion *>, WTF::HashTraits<WebKit::ProcessAndUIAssertion *>, WTF::HashTraits<WebKit::ProcessAndUIAssertion *> > { 
+            struct ProcessAndUIAssertion {} **m_table; 
             unsigned int m_tableSize; 
             unsigned int m_tableSizeMask; 
             unsigned int m_keyCount; 
             unsigned int m_deletedCount; 
         } m_impl; 
-    }  _clients;
-    unsigned int  _needsToRunInBackgroundCount;
+    }  _assertionsNeedingBackgroundTask;
+    unsigned long long  _backgroundTask;
+    id /* block */  _pendingTaskReleaseTask;
 }
 
 + (id)shared;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_notifyClientsOfImminentSuspension;
+- (void)_cancelPendingReleaseTask;
+- (void)_notifyAssertionsOfImminentSuspension;
+- (void)_releaseBackgroundTask;
+- (void)_scheduleReleaseTask;
 - (void)_updateBackgroundTask;
-- (void)addClient:(struct ProcessAssertionClient { int (**x1)(); }*)arg1;
+- (void)addAssertionNeedingBackgroundTask:(struct ProcessAndUIAssertion { int (**x1)(); struct WeakPtrFactory<WebKit::ProcessAssertion> { struct RefPtr<WTF::WeakPtrImpl, WTF::DumbPtrTraits<WTF::WeakPtrImpl> > { struct WeakPtrImpl {} *x_1_2_1; } x_2_1_1; } x2; struct RetainPtr<BKSProcessAssertion> { void *x_3_1_1; } x3; int x4; int x5; struct Client {} *x6; bool x7; }*)arg1;
 - (void)dealloc;
-- (void)decrementNeedsToRunInBackgroundCount;
-- (void)incrementNeedsToRunInBackgroundCount;
 - (id)init;
-- (void)removeClient:(struct ProcessAssertionClient { int (**x1)(); }*)arg1;
+- (void)removeAssertionNeedingBackgroundTask:(struct ProcessAndUIAssertion { int (**x1)(); struct WeakPtrFactory<WebKit::ProcessAssertion> { struct RefPtr<WTF::WeakPtrImpl, WTF::DumbPtrTraits<WTF::WeakPtrImpl> > { struct WeakPtrImpl {} *x_1_2_1; } x_2_1_1; } x2; struct RetainPtr<BKSProcessAssertion> { void *x_3_1_1; } x3; int x4; int x5; struct Client {} *x6; bool x7; }*)arg1;
 
 @end

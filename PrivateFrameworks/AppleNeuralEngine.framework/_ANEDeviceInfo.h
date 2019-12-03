@@ -4,6 +4,7 @@
 
 @interface _ANEDeviceInfo : NSObject
 
++ (id)aneSubType;
 + (id)bootArgs;
 + (id)buildVersion;
 + (bool)hasANE;

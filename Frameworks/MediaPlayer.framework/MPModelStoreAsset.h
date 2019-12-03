@@ -6,6 +6,7 @@
 
 @property (nonatomic) unsigned long long accountIdentifier;
 @property (nonatomic) long long endpointType;
+@property (nonatomic, readonly) bool needsUserUpload;
 @property (nonatomic, copy) NSString *redownloadParameters;
 @property (getter=isRedownloadable, nonatomic) bool redownloadable;
 @property (nonatomic) bool shouldReportPlayEvents;
@@ -13,6 +14,7 @@
 
 + (id)__accountIdentifier_KEY;
 + (id)__endpointType_KEY;
++ (id)__needsUserUpload_KEY;
 + (id)__redownloadParameters_KEY;
 + (id)__redownloadable_KEY;
 + (id)__shouldReportPlayEvents_KEY;

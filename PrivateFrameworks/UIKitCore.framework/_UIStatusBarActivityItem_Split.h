@@ -14,6 +14,8 @@
 + (id)syncStartDisplayIdentifier;
 
 - (void).cxx_destruct;
+- (void)_create_activityView;
+- (void)_create_syncStartView;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })activityIndicatorAlignmentRectInsets;
 - (id)activityView;
 - (id)additionAnimationForDisplayItemWithIdentifier:(id)arg1;

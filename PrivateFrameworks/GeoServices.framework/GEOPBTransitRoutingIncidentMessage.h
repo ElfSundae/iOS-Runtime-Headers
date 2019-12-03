@@ -4,8 +4,21 @@
 
 @interface GEOPBTransitRoutingIncidentMessage : PBCodable <NSCopying> {
     struct { 
-        unsigned int routingIncidentMessageIndex : 1; 
-    }  _has;
+        unsigned int has_routingIncidentMessageIndex : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_transitIncidentIndexs : 1; 
+        unsigned int read_routingMessage : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_transitIncidentIndexs : 1; 
+        unsigned int wrote_routingMessage : 1; 
+        unsigned int wrote_routingIncidentMessageIndex : 1; 
+    }  _flags;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     unsigned int  _routingIncidentMessageIndex;
     NSString * _routingMessage;
     struct { 
@@ -24,9 +37,15 @@
 @property (nonatomic, readonly) unsigned long long transitIncidentIndexsCount;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_addNoFlagsTransitIncidentIndex:(unsigned int)arg1;
+- (void)_readRoutingMessage;
+- (void)_readTransitIncidentIndexs;
 - (void)addTransitIncidentIndex:(unsigned int)arg1;
 - (void)clearTransitIncidentIndexs;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -35,8 +54,11 @@
 - (bool)hasRoutingIncidentMessageIndex;
 - (bool)hasRoutingMessage;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (unsigned int)routingIncidentMessageIndex;
 - (id)routingMessage;

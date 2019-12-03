@@ -9,7 +9,6 @@
     NSString * _buttonTitle;
     UISnapshotView * _collapsingDetailSnapshotView;
     UISnapshotView * _collapsingMasterSnapshotView;
-    NSArray * _cornerImageViews;
     id  _delegate;
     UIFocusContainerGuide * _detailFocusContainerGuide;
     UISplitViewControllerDisplayModeBarButtonItem * _displayModeButtonItem;
@@ -20,7 +19,6 @@
     unsigned long long  _lastFocusedChildViewControllerIndex;
     long long  _lastNotifiedDisplayMode;
     long long  _lastPresentedOrientation;
-    double  _masterColumnWidth;
     UIFocusContainerGuide * _masterFocusContainerGuide;
     double  _maximumPrimaryColumnWidth;
     UITapGestureRecognizer * _menuGestureRecognizer;
@@ -113,7 +111,6 @@
 
 @property (setter=_setClearPreventRotationHook:, nonatomic, copy) id /* block */ _clearPreventRotationHook;
 @property (setter=_setDisplayModeButtonItemTitle:, nonatomic, copy) NSString *_displayModeButtonItemTitle;
-@property (nonatomic, readonly) bool _presentsInFadingPopover;
 @property (setter=_setPreservedDetailController:, nonatomic, retain) UIViewController *_preservedDetailController;
 @property (getter=isCollapsed, nonatomic, readonly) bool collapsed;
 @property (readonly, copy) NSString *debugDescription;
@@ -124,7 +121,6 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool hidesMasterViewInPortrait;
 @property (getter=_lastFocusedChildViewControllerIndex, nonatomic, readonly) unsigned long long lastFocusedChildViewControllerIndex;
-@property (nonatomic) float masterColumnWidth;
 @property (getter=_masterFocusContainerGuide, nonatomic, readonly) UIFocusContainerGuide *masterFocusContainerGuide;
 @property (nonatomic) double maximumPrimaryColumnWidth;
 @property (nonatomic) double minimumPrimaryColumnWidth;
@@ -132,6 +128,7 @@
 @property (nonatomic) double preferredPrimaryColumnWidthFraction;
 @property (nonatomic) bool prefersOverlayInRegularWidthPhone;
 @property (nonatomic) bool presentsWithGesture;
+@property (nonatomic) long long primaryBackgroundStyle;
 @property (nonatomic) long long primaryEdge;
 @property (readonly) Class superclass;
 @property (nonatomic) bool usesDeviceOverlayPreferences;
@@ -221,7 +218,6 @@
 - (void)_prepareForCompactLayout;
 - (long long)_prepareToTransitionToViewSize:(struct CGSize { double x1; double x2; })arg1 fromOrientation:(long long)arg2 toOrientation:(long long)arg3 duration:(double)arg4;
 - (void)_presentMasterViewController:(bool)arg1;
-- (bool)_presentsInFadingPopover;
 - (id)_preservedDetailController;
 - (double)_primaryColumnWidthForSize:(struct CGSize { double x1; double x2; })arg1;
 - (double)_primaryColumnWidthForSize:(struct CGSize { double x1; double x2; })arg1 isCompact:(bool)arg2;
@@ -232,7 +228,6 @@
 - (id)_primaryViewControllerForCollapsing;
 - (id)_primaryViewControllerForExpanding;
 - (void)_removeCollapsingSnapshotViews;
-- (void)_removeRoundedCorners;
 - (struct CGSize { double x1; double x2; })_screenSizeInMainScene:(bool)arg1;
 - (id)_secondaryViewControllerForCollapsing;
 - (void)_separateMasterAndDetailWithTransitionCoordinator:(id)arg1;
@@ -249,14 +244,13 @@
 - (void)_setUpFocusContainerGuides;
 - (void)_setUsesExtraWidePrimaryColumn:(bool)arg1;
 - (void)_setupHiddenPopoverControllerWithViewController:(id)arg1;
-- (void)_setupRoundedCorners;
 - (void)_setupUnderBarSeparatorView;
 - (bool)_shouldPersistViewWhenCoding;
 - (bool)_shouldPreventAutorotation;
-- (bool)_shouldSynthesizeSupportedOrientations;
 - (bool)_shouldUseRelativeInsets;
 - (void)_showMasterViewAnimated:(bool)arg1;
 - (unsigned long long)_targetEdgeForPopover;
+- (id)_traitCollectionForChildEnvironment:(id)arg1;
 - (void)_triggerDisplayModeAction:(id)arg1;
 - (void)_updateChildContentMargins;
 - (void)_updateDelegateHiddenMasterAspectRatios;
@@ -268,6 +262,7 @@
 - (void)_viewControllerHiding:(id)arg1;
 - (void)_willBeginSnapshotSession;
 - (void)_willShowCollapsedDetailViewController:(id)arg1 inTargetController:(id)arg2;
+- (id)childViewControllerForStatusBarStyle;
 - (void)dealloc;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
 - (id)delegate;
@@ -284,7 +279,6 @@
 - (id)initWithSplitViewController:(id)arg1;
 - (bool)isCollapsed;
 - (void)loadView;
-- (float)masterColumnWidth;
 - (id)masterViewController;
 - (double)maximumPrimaryColumnWidth;
 - (double)minimumPrimaryColumnWidth;
@@ -293,22 +287,24 @@
 - (id)preferredFocusEnvironments;
 - (id)preferredFocusedView;
 - (long long)preferredInterfaceOrientationForPresentation;
+- (long long)preferredLeadingStatusBarStyle;
 - (double)preferredPrimaryColumnWidthFraction;
+- (long long)preferredTrailingStatusBarStyle;
 - (bool)prefersOverlayInRegularWidthPhone;
 - (bool)presentsWithGesture;
+- (long long)primaryBackgroundStyle;
 - (double)primaryColumnWidth;
 - (long long)primaryEdge;
-- (void)purgeMemoryForReason:(int)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setGutterWidth:(float)arg1;
 - (void)setHidesMasterViewInPortrait:(bool)arg1;
-- (void)setMasterColumnWidth:(float)arg1;
 - (void)setMaximumPrimaryColumnWidth:(double)arg1;
 - (void)setMinimumPrimaryColumnWidth:(double)arg1;
 - (void)setPreferredDisplayMode:(long long)arg1;
 - (void)setPreferredPrimaryColumnWidthFraction:(double)arg1;
 - (void)setPrefersOverlayInRegularWidthPhone:(bool)arg1;
 - (void)setPresentsWithGesture:(bool)arg1;
+- (void)setPrimaryBackgroundStyle:(long long)arg1;
 - (void)setPrimaryEdge:(long long)arg1;
 - (void)setUsesDeviceOverlayPreferences:(bool)arg1;
 - (void)setViewControllers:(id)arg1;

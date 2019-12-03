@@ -2,12 +2,11 @@
    Image: /System/Library/PrivateFrameworks/SIMSetupSupport.framework/SIMSetupSupport
  */
 
-@interface TSCellularPlanUserConsentViewController : BFFSplashController <TSSetupFlowItem> {
+@interface TSCellularPlanUserConsentViewController : OBWelcomeController <TSSetupFlowItem> {
     NSString * _confirmationCode;
     unsigned long long  _consentType;
     <TSSIMSetupFlowDelegate> * _delegate;
     bool  _didReceiveResponse;
-    NSString * _name;
     bool  _requireAdditionalConsent;
 }
 
@@ -18,10 +17,14 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (void)calculateTitleAndDetailsWithName:(id)arg1 consentType:(unsigned long long)arg2 title:(id*)arg3 details:(id*)arg4;
+
 - (void).cxx_destruct;
 - (void)_acceptButtonTapped;
 - (void)_cancelButtonTapped;
 - (void)_declineButtonTapped;
+- (void)_setNavigationItems;
+- (bool)canBeShownFromSuspendedState;
 - (unsigned long long)consentType;
 - (id)delegate;
 - (id)initWithConfirmationCode:(id)arg1 consentType:(unsigned long long)arg2 requireAdditionalConsent:(bool)arg3 confirmationCode:(id)arg4;

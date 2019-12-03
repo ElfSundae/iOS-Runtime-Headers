@@ -3,12 +3,12 @@
  */
 
 @interface _MFSoundBehaviorOverridesMonitor : NSObject {
-    MFFuture * _behaviorOverrideTypes;
+    EFFuture * _behaviorOverrideTypes;
     DNDEventBehaviorResolutionService * _dndBehaviorResolutionService;
     NSObject<OS_dispatch_queue> * _dndBehaviorResolutionServiceQueue;
 }
 
-@property (readonly) MFFuture *behaviorOverrideTypes;
+@property (readonly) EFFuture *behaviorOverrideTypes;
 
 + (id)sharedInstance;
 

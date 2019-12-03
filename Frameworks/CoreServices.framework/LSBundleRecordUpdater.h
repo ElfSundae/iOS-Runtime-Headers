@@ -9,38 +9,40 @@
         unsigned int _plistContentFlags; 
         unsigned int _itemFlags; 
         unsigned char _iconFlags; 
-        unsigned char _highResFlags; 
-        unsigned char _appNapFlags; 
-        unsigned char eGPUFlags; 
         unsigned short _archFlags; 
+        unsigned int platform; 
         unsigned int _hfsType; 
-        unsigned int _hfsCreator; 
-        unsigned long long _inoBundle; 
-        unsigned long long _inoExec; 
         int _mtime; 
         int _rtime; 
-        unsigned long long _version; 
-        unsigned long long _minSystemVersion; 
-        unsigned long long _maxSystemVersion; 
-        unsigned long long _execSDKVersion; 
+        struct LSVersionNumber { 
+            unsigned char _opaque[32]; 
+        } _version; 
+        struct LSVersionNumber { 
+            unsigned char _opaque[32]; 
+        } _minSystemVersion; 
+        struct LSVersionNumber { 
+            unsigned char _opaque[32]; 
+        } _maxSystemVersion; 
+        struct LSVersionNumber { 
+            unsigned char _opaque[32]; 
+        } _execSDKVersion; 
         unsigned int appStoreToolsBuildVersion; 
-        unsigned int machOUUIDs[4]; 
+        unsigned int machOUUIDs; 
         unsigned long long sequenceNumber; 
         unsigned long long compatibilityState; 
-        unsigned long long installFailureReason; 
         unsigned long long itemID; 
         unsigned int deviceFamilies; 
-        unsigned int installType; 
         unsigned int teamID; 
         unsigned int identifier; 
         unsigned int exactIdentifier; 
         unsigned int name; 
         unsigned int displayName; 
-        unsigned int companionAppID; 
         unsigned int counterpartIdentifiers; 
         unsigned int filename; 
         unsigned int bundleVersion; 
         unsigned int shortVersionString; 
+        unsigned int installType; 
+        unsigned long long installFailureReason; 
         unsigned int signerIdentity; 
         unsigned int codeInfoIdentifier; 
         unsigned int signerOrganization; 
@@ -53,12 +55,12 @@
         unsigned int itemName; 
         unsigned long long storefront; 
         unsigned long long versionIdentifier; 
+        unsigned int sourceAppIdentifier; 
+        unsigned int appVariant; 
         unsigned long long ratingRank; 
         unsigned int ratingLabel; 
         unsigned long long genreID; 
         unsigned int genre; 
-        unsigned int sourceAppIdentifier; 
-        unsigned int appVariant; 
         unsigned int primaryIconName; 
         unsigned int iconsDict; 
         unsigned int iconFileNames; 
@@ -67,18 +69,18 @@
         unsigned int libraryItems; 
         unsigned int claims; 
         unsigned int types; 
-        unsigned int services; 
         unsigned int plugins; 
         unsigned int extensionPoints; 
         unsigned int activityTypes; 
         unsigned int schemesWhitelist; 
+        unsigned int bgPermittedIDs; 
         unsigned int alias; 
         unsigned int appContainerAlias; 
         unsigned int dataContainerAlias; 
         unsigned int container; 
         unsigned char revision; 
         unsigned char retries; 
-        unsigned char _reserved3; 
+        unsigned char containingDirectoryClass; 
         unsigned char _reserved4; 
         unsigned int plistRarities; 
         unsigned int commonPlistEntries; 
@@ -86,18 +88,23 @@
         unsigned int groupContainers; 
         unsigned int sandboxEnvironmentVariables; 
         unsigned int siriActionDefinitionURLs; 
+        unsigned int localizedDisplayName; 
+        unsigned int localizedShortDisplayName; 
+        unsigned int localizedNameWithContext[1]; 
+        unsigned int managedPersonas; 
         unsigned int _reserved5; 
     }  _bundleData;
     unsigned int  _bundleID;
     NSString * _bundleIdentifier;
     struct LSContext { 
-        struct LSDatabase {} *db; 
+        _LSDatabase *db; 
     }  _context;
     bool  _hasContext;
 }
 
 @property (nonatomic, readonly) NSString *bundleIdentifier;
 
+- (void).cxx_destruct;
 - (id)bundleIdentifier;
 - (void)dealloc;
 - (id)initWithBundleIdentifier:(id)arg1;
@@ -105,6 +112,6 @@
 - (void)parsePlaceholderMetadata:(id)arg1;
 - (void)parseSINFDictionary:(id)arg1;
 - (void)parseiTunesMetadata:(id)arg1;
-- (int)updateBundleRecord;
+- (bool)updateBundleRecord:(id*)arg1;
 
 @end

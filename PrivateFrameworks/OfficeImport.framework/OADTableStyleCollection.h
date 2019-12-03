@@ -10,8 +10,8 @@
 
 @property (nonatomic, copy) NSString *defaultTableStyleId;
 
+- (void).cxx_destruct;
 - (void)addTableStyle:(id)arg1;
-- (void)dealloc;
 - (id)defaultTableStyleId;
 - (id)init;
 - (void)setDefaultTableStyleId:(id)arg1;

@@ -18,6 +18,7 @@
 @property (nonatomic, readonly) bool isInAirplaneMode;
 @property (nonatomic, readonly) bool isInRetailDemoMode;
 @property (nonatomic, readonly) bool isNetworkReachable;
+@property (nonatomic, readonly) bool isSeedBuild;
 @property (nonatomic, readonly) double lastNetworkChangedTime;
 @property (nonatomic, readonly) NSString *model;
 @property (nonatomic, readonly) NSString *networkType;
@@ -45,6 +46,7 @@
 - (bool)isInAirplaneMode;
 - (bool)isInRetailDemoMode;
 - (bool)isNetworkReachable;
+- (bool)isSeedBuild;
 - (double)lastNetworkChangedTime;
 - (id)model;
 - (id)networkType;

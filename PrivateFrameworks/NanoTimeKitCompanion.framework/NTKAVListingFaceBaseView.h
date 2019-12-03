@@ -32,17 +32,18 @@
 - (void)_applyDataMode;
 - (void)_applyFrozen;
 - (void)_applySlow;
-- (void)_backlightWillTurnOff;
+- (void)_cancelAllTasks;
 - (void)_cancelDelayedPlayback;
 - (void)_cancelPauseLockout;
 - (bool)_changeCurrentListing;
 - (void)_cleanupAfterOrb:(bool)arg1;
-- (void)_complicationFlickerWorkgroundAnimationWithDuration:(double)arg1 applier:(id /* block */)arg2;
+- (id)_complicationFlickerWorkgroundAnimationWithDuration:(double)arg1 applier:(id /* block */)arg2;
 - (id)_curtainView;
 - (bool)_curtainViewVisible;
 - (void)_endScrubbingAnimated:(bool)arg1 withCompletion:(id /* block */)arg2;
 - (void)_fadeFromCurtainViewWithDuration:(double)arg1 completion:(id /* block */)arg2;
 - (void)_fadeToCurtainViewWithDuration:(double)arg1 completion:(id /* block */)arg2;
+- (void)_handleFaceStyleDidChange;
 - (void)_handleOrdinaryScreenWake;
 - (void)_handleScreenWake;
 - (void)_handleWristRaiseScreenWake;
@@ -81,6 +82,7 @@
 - (bool)paused;
 - (void)setContentUnloadedForFaceSwiping:(bool)arg1;
 - (void)setCurrentListing:(id)arg1;
+- (void)setNormalComplicationDisplayWrapper:(id)arg1 forSlot:(id)arg2;
 - (void)setShouldChangeVariantForScreenWake:(bool)arg1;
 - (bool)shouldChangeVariantForScreenWake;
 - (bool)shouldPause;

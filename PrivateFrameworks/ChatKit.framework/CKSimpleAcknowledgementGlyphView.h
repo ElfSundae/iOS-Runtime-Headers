@@ -3,10 +3,10 @@
  */
 
 @interface CKSimpleAcknowledgementGlyphView : CKAcknowledgmentGlyphView {
-    UIImageView * _glyph;
+    CKAcknowledgmentGlyphImageView * _glyph;
 }
 
-@property (nonatomic, retain) UIImageView *glyph;
+@property (nonatomic, retain) CKAcknowledgmentGlyphImageView *glyph;
 
 - (void).cxx_destruct;
 - (double)animationDuration;

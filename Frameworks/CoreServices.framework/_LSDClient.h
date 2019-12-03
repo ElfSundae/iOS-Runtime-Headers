@@ -13,9 +13,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)XPCConnection;
 - (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(bool)arg3;
-- (void)dealloc;
 - (void)didHandleInvocation:(id)arg1 isReply:(bool)arg2;
 - (id)initWithXPCConnection:(id)arg1;
 - (id)initWithXPCConnection:(id)arg1 queue:(id)arg2;

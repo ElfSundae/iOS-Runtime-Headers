@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MapKit.framework/MapKit
  */
 
-@interface MKTransitAttributionViewController : _MKTableViewController <GEOResourceManifestTileGroupObserver, MKModuleViewControllerProtocol, MKStackingViewControllerPreferredSizeUse, _MKInfoCardChildViewControllerAnalyticsDelegate> {
+@interface MKTransitAttributionViewController : _MKTableViewController <GEOResourceManifestTileGroupObserver, MKModuleViewControllerProtocol, MKStackingViewControllerPreferredSizeUse> {
     <MKTransitAttributionViewControllerDelegate> * _delegate;
     bool  _isAttributionURLAvailable;
     <GEOTransitLineItem> * _lineItem;
@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 - (id)_attribution;
 - (id)_attributionCell;
+- (bool)_canShowWhileLocked;
 - (void)_commonInit;
 - (bool)_hasAttribution;
 - (void)_presentTransitAttributionDetails;

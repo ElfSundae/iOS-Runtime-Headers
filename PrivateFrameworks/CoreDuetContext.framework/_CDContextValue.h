@@ -10,8 +10,6 @@
 @property (nonatomic, retain) NSMutableDictionary *metadata;
 @property (nonatomic, retain) NSObject<NSCopying><NSSecureCoding> *value;
 
-// Image: /System/Library/PrivateFrameworks/CoreDuetContext.framework/CoreDuetContext
-
 + (id)supportedContextValueClasses;
 + (bool)supportsSecureCoding;
 
@@ -29,9 +27,5 @@
 - (void)setMetadata:(id)arg1;
 - (void)setValue:(id)arg1;
 - (id)value;
-
-// Image: /System/Library/PrivateFrameworks/CoreDuet.framework/CoreDuet
-
-+ (id)contextMetadataWithInteraction:(id)arg1 bundleIdentifier:(id)arg2 eventUUID:(id)arg3;
 
 @end

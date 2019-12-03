@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/BaseBoard.framework/BaseBoard
  */
 
-@interface BSTransaction : NSObject <BSWatchdogProviding> {
+@interface BSTransaction : NSObject <BSWatchdogProviding, SBUIAnimationControllerCoordinating> {
     bool  _aborted;
     BSAuditHistory * _auditHistory;
     bool  _auditHistoryEnabled;
@@ -48,6 +48,8 @@
 @property (getter=hasStarted, nonatomic, readonly) bool started;
 @property (nonatomic, readonly) unsigned long long state;
 @property (readonly) Class superclass;
+
+// Image: /System/Library/PrivateFrameworks/BaseBoard.framework/BaseBoard
 
 + (id)_defaultTransactionLog;
 
@@ -189,5 +191,9 @@
 - (bool)shouldWatchdog:(id*)arg1;
 - (unsigned long long)state;
 - (double)watchdogTimeout;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoard.framework/SpringBoard
+
+- (id)coordinatingAnimationControllers;
 
 @end

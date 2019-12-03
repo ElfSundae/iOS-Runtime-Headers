@@ -16,6 +16,7 @@
 
 + (void)assembleURL:(id)arg1 sandbox:(id)arg2 physicalURL:(id)arg3 physicalSandbox:(id)arg4;
 + (bool)supportsSecureCoding;
++ (id)wrapperWithSecurityScopedURL:(id)arg1;
 + (id)wrapperWithURL:(id)arg1;
 + (id)wrapperWithURL:(id)arg1 extensionClass:(const char *)arg2 error:(id*)arg3;
 + (id)wrapperWithURL:(id)arg1 readonly:(bool)arg2;

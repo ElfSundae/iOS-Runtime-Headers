@@ -18,7 +18,6 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic) unsigned int level;
-@property (nonatomic, readonly) bool requiresQueryId;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long timestamp;
 
@@ -36,7 +35,6 @@
 - (id)jsonData;
 - (unsigned int)level;
 - (bool)readFrom:(id)arg1;
-- (bool)requiresQueryId;
 - (void)setCard:(id)arg1;
 - (void)setFbr:(id)arg1;
 - (void)setLevel:(unsigned int)arg1;

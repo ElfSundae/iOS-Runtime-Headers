@@ -69,6 +69,7 @@
 + (id)messageIdForURL:(id)arg1;
 + (id)messageIdsFromMessages:(id)arg1;
 + (unsigned long long)removeState:(unsigned long long)arg1 fromStatus:(unsigned long long)arg2;
++ (id)serverIdsFromMessages:(id)arg1;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;

@@ -14,6 +14,7 @@
     NSArray * _bankAccounts;
     const void * _billingAddress;
     PKContact * _billingContact;
+    NSString * _boundInterfaceIdentifier;
     double  _clientCallbackTimeout;
     unsigned long long  _confirmationStyle;
     NSString * _countryCode;
@@ -21,6 +22,7 @@
     bool  _deviceSupportsPeerPaymentAccountPayment;
     bool  _expectsMerchantSession;
     NSData * _externalizedContext;
+    PKPaymentInstallmentConfiguration * _installmentConfiguration;
     NSString * _localizedBiometricConfirmationTitle;
     NSString * _localizedConfirmationTitle;
     NSString * _localizedNavigationTitle;
@@ -59,6 +61,8 @@
 
 @property (nonatomic) unsigned long long APIType;
 @property (nonatomic, retain) NSString *CTDataConnectionServiceType;
+@property (readonly) bool _isAMPPayment;
+@property (readonly) bool _isPSD2StyleRequest;
 @property (nonatomic) struct __SecAccessControl { }*accesssControlRef;
 @property (nonatomic) bool accountPaymentSupportsPeerPayment;
 @property (nonatomic) bool accountPaymentUsePeerPaymentBalance;
@@ -68,6 +72,7 @@
 @property (nonatomic, retain) NSArray *bankAccounts;
 @property (nonatomic) const void*billingAddress;
 @property (nonatomic, retain) PKContact *billingContact;
+@property (nonatomic, copy) NSString *boundInterfaceIdentifier;
 @property (nonatomic) double clientCallbackTimeout;
 @property (nonatomic) unsigned long long confirmationStyle;
 @property (nonatomic, copy) NSString *countryCode;
@@ -75,6 +80,7 @@
 @property (nonatomic) bool deviceSupportsPeerPaymentAccountPayment;
 @property (nonatomic) bool expectsMerchantSession;
 @property (nonatomic, copy) NSData *externalizedContext;
+@property (nonatomic, retain) PKPaymentInstallmentConfiguration *installmentConfiguration;
 @property (nonatomic, copy) NSString *localizedBiometricConfirmationTitle;
 @property (nonatomic, copy) NSString *localizedConfirmationTitle;
 @property (nonatomic, copy) NSString *localizedNavigationTitle;
@@ -127,6 +133,8 @@
 - (id)CTDataConnectionServiceType;
 - (id)_addressFieldsToContactFields:(unsigned long long)arg1;
 - (unsigned long long)_contactFieldsToAddressFields:(id)arg1;
+- (bool)_isAMPPayment;
+- (bool)_isPSD2StyleRequest;
 - (id)_transactionAmount;
 - (struct __SecAccessControl { }*)accesssControlRef;
 - (bool)accountPaymentSupportsPeerPayment;
@@ -137,10 +145,13 @@
 - (id)bankAccounts;
 - (const void*)billingAddress;
 - (id)billingContact;
+- (id)boundInterfaceIdentifier;
 - (double)clientCallbackTimeout;
 - (unsigned long long)confirmationStyle;
 - (id)countryCode;
 - (id)currencyCode;
+- (void)dealloc;
+- (id)description;
 - (bool)deviceSupportsPeerPaymentAccountPayment;
 - (id)disbursementPaymentRequest;
 - (void)encodeWithCoder:(id)arg1;
@@ -149,6 +160,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1 error:(id*)arg2;
+- (id)installmentConfiguration;
 - (bool)isDisbursementPaymentRequest;
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToPaymentRequest:(id)arg1;
@@ -191,6 +203,7 @@
 - (void)setBankAccounts:(id)arg1;
 - (void)setBillingAddress:(void*)arg1;
 - (void)setBillingContact:(id)arg1;
+- (void)setBoundInterfaceIdentifier:(id)arg1;
 - (void)setCTDataConnectionServiceType:(id)arg1;
 - (void)setClientCallbackTimeout:(double)arg1;
 - (void)setConfirmationStyle:(unsigned long long)arg1;
@@ -199,6 +212,7 @@
 - (void)setDeviceSupportsPeerPaymentAccountPayment:(bool)arg1;
 - (void)setExpectsMerchantSession:(bool)arg1;
 - (void)setExternalizedContext:(id)arg1;
+- (void)setInstallmentConfiguration:(id)arg1;
 - (void)setLocalizedBiometricConfirmationTitle:(id)arg1;
 - (void)setLocalizedConfirmationTitle:(id)arg1;
 - (void)setLocalizedNavigationTitle:(id)arg1;

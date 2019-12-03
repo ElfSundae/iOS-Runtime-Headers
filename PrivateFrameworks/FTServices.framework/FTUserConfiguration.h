@@ -16,7 +16,7 @@
 @property (nonatomic) struct __CTServerConnection { }*ctServerConnection;
 @property (nonatomic) bool isDeviceInDualPhoneIdentityMode;
 @property (nonatomic, retain) NSMutableDictionary *nonBTAllowedCache;
-@property (nonatomic, copy) NSString *selectedPhoneNumberRegistrationSubscriptionLabel;
+@property (nonatomic, copy) NSArray *selectedPhoneNumberRegistrationSubscriptionLabels;
 @property (nonatomic, readonly, copy) NSNumber *selectedPhoneNumberRegistrationSubscriptionNumber;
 
 + (id)sharedInstance;
@@ -39,14 +39,15 @@
 - (bool)isDeviceInDualPhoneIdentityMode;
 - (id)nonBTAllowedCache;
 - (bool)nonBluetoothAllowedForBundleId:(id)arg1;
-- (id)selectedPhoneNumberRegistrationSubscriptionLabel;
+- (id)selectedPhoneNumberRegistrationSubscriptionLabels;
 - (id)selectedPhoneNumberRegistrationSubscriptionNumber;
 - (void)setAllowAnyNetwork:(bool)arg1;
 - (void)setCellularFaceTimeEnabled:(bool)arg1;
 - (void)setCtServerConnection:(struct __CTServerConnection { }*)arg1;
 - (void)setIsDeviceInDualPhoneIdentityMode:(bool)arg1;
 - (void)setNonBTAllowedCache:(id)arg1;
-- (void)setSelectedPhoneNumberRegistrationSubscriptionLabel:(id)arg1;
+- (void)setSelectedPhoneNumberRegistrationSubscriptionLabels:(id)arg1;
+- (void)silentlySetSelectedPhoneNumberRegistrationSubscriptionLabels:(id)arg1;
 - (bool)wifiAllowedForBundleId:(id)arg1;
 
 @end

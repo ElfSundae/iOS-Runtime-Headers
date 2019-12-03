@@ -9,7 +9,7 @@
     int  _location;
     unsigned char  _masksInitialized;
     char * _nameString;
-    /* Warning: unhandled struct encoding: '{GLKEffectPropertyPrv=^{GLKBigInt_s}^{GLKBigInt_s}^{GLKBigInt_s}^{GLKBigInt_s}@}' */ struct GLKEffectPropertyPrv { struct GLKBigInt_s {} *x1; struct GLKBigInt_s {} *x2; struct GLKBigInt_s {} *x3; struct GLKBigInt_s {} *x4; id x5; } * _prv;
+    struct GLKEffectPropertyPrv { struct GLKBigInt_s {} *x1; struct GLKBigInt_s {} *x2; struct GLKBigInt_s {} *x3; struct GLKBigInt_s {} *x4; id x5; } * _prv;
     char * _vshSource;
 }
 

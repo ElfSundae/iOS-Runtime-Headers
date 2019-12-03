@@ -11,23 +11,23 @@
 @optional
 
 - (BSAnimationSettings *)hideHomeAffordanceAnimationSettingsForNotificationViewController:(NCNotificationViewController *)arg1;
-- (_UILegibilitySettings *)legibilitySettingsForNotificationViewController:(NCNotificationViewController *)arg1;
 - (NSDictionary *)notificationUsageTrackingStateForNotificationViewController:(NCNotificationViewController *)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })notificationViewController:(NCNotificationViewController *)arg1 finalFrameForDismissingLongLookFromView:(UIView *)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })notificationViewController:(NCNotificationViewController *)arg1 initialFrameForPresentingLongLookFromView:(UIView *)arg2;
 - (<PLKeyboardHomeAffordanceAssertion> *)notificationViewController:(NCNotificationViewController *)arg1 keyboardAssertionForGestureWindow:(UIWindow *)arg2;
 - (void)notificationViewController:(NCNotificationViewController *)arg1 requestsExpandingCoalescedBundleForNotificationRequest:(NCNotificationRequest *)arg2;
-- (void)notificationViewController:(void *)arg1 shouldFinishLongLookTransitionWithCompletionBlock:(void *)arg2; // needs 2 arg types, found 7: NCNotificationViewController *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, void*
-- (bool)notificationViewController:(NCNotificationViewController *)arg1 suggestsDismissingShortLookWithSource:(id)arg2;
+- (void)notificationViewController:(void *)arg1 shouldFinishLongLookTransitionForTrigger:(void *)arg2 withCompletionBlock:(void *)arg3; // needs 3 arg types, found 8: NCNotificationViewController *, long long, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, void*
+- (bool)notificationViewController:(NCNotificationViewController *)arg1 suggestsDismissingShortLookWithSourceGestureRecognizer:(UIGestureRecognizer *)arg2 animated:(bool)arg3;
 - (long long)notificationViewControllerDateFormatStyle:(NCNotificationViewController *)arg1;
-- (void)notificationViewControllerIsReadyToBePresented:(NCNotificationViewController *)arg1;
-- (bool)notificationViewControllerShouldAllowInteractionGesture:(NCNotificationViewController *)arg1;
-- (bool)notificationViewControllerShouldBlurShortLook:(NCNotificationViewController *)arg1;
+- (bool)notificationViewControllerIsCoalescedBundle:(NCNotificationViewController *)arg1;
+- (bool)notificationViewControllerShouldAllowClickPresentationInteraction:(NCNotificationViewController *)arg1;
+- (bool)notificationViewControllerShouldAllowDragInteraction:(NCNotificationViewController *)arg1;
+- (bool)notificationViewControllerShouldAllowLongPressGesture:(NCNotificationViewController *)arg1;
 - (bool)notificationViewControllerShouldInterpretTapAsDefaultAction:(NCNotificationViewController *)arg1;
 - (bool)notificationViewControllerShouldPan:(NCNotificationViewController *)arg1;
+- (bool)notificationViewControllerShouldSupportClickPresentationInteraction:(NCNotificationViewController *)arg1;
 - (void)notificationViewControllerWillDismissForCancelAction:(NCNotificationViewController *)arg1;
 - (<UIViewSpringAnimationBehaviorDescribing> *)settleHomeAffordanceAnimationBehaviorDescriptionForNotificationViewController:(NCNotificationViewController *)arg1;
-- (bool)shouldLoadAudioAccessoryViewForNotificationViewController:(NCNotificationViewController *)arg1;
 - (bool)showAdditionalMessageLinesForNotificationViewController:(NCNotificationViewController *)arg1;
 - (BSAnimationSettings *)unhideHomeAffordanceAnimationSettingsForNotificationViewController:(NCNotificationViewController *)arg1;
 

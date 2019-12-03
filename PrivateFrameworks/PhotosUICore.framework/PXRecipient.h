@@ -6,10 +6,10 @@
     NSSet * _allEmails;
     NSSet * _allPhones;
     CNContact * _contact;
-    NSString * _displayName;
     NSString * _emailAddressString;
     NSString * _firstName;
     NSString * _lastName;
+    NSString * _localizedName;
     NSString * _phoneNumberString;
     PXRecipientTransport * _suggestedTransport;
     NSSet * _unformattedAllPhones;
@@ -20,14 +20,14 @@
 @property (nonatomic, readonly) CNContact *contact;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, readonly) NSString *displayName;
-@property (nonatomic, readonly, copy) NSString *displayName;
 @property (nonatomic, readonly) NSString *emailAddressString;
 @property (nonatomic, readonly, copy) NSString *emailAddressString;
 @property (nonatomic, readonly) NSString *firstName;
 @property (nonatomic, readonly, copy) NSString *firstName;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) NSString *lastName;
+@property (nonatomic, readonly) NSString *localizedName;
+@property (nonatomic, readonly, copy) NSString *localizedName;
 @property (nonatomic, readonly) NSString *phoneNumberString;
 @property (nonatomic, readonly, copy) NSString *phoneNumberString;
 @property (nonatomic, retain) PXRecipientTransport *suggestedTransport;
@@ -35,7 +35,6 @@
 @property (nonatomic, readonly) NSSet *unformattedAllPhones;
 
 + (id)_contactForAddress:(id)arg1 recipientKind:(long long)arg2;
-+ (id)displayNameForAddress:(id)arg1 recipientKind:(long long)arg2;
 + (id)new;
 
 - (void).cxx_destruct;
@@ -44,15 +43,15 @@
 - (id)contact;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
-- (id)displayName;
 - (id)emailAddressString;
 - (id)firstName;
 - (unsigned long long)hash;
 - (id)init;
-- (id)initWithAddress:(id)arg1 recipientKind:(long long)arg2;
-- (id)initWithContact:(id)arg1 address:(id)arg2 recipientKind:(long long)arg3;
+- (id)initWithAddress:(id)arg1 nameComponents:(id)arg2 recipientKind:(long long)arg3;
+- (id)initWithContact:(id)arg1 address:(id)arg2 nameComponents:(id)arg3 recipientKind:(long long)arg4;
 - (bool)isEqual:(id)arg1;
 - (id)lastName;
+- (id)localizedName;
 - (id)phoneNumberString;
 - (void)setSuggestedTransport:(id)arg1;
 - (id)suggestedTransport;

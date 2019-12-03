@@ -6,6 +6,7 @@
     int  _actualAudioSendingBitrate;
     struct tagHANDLE { int x1; } * _afrc;
     bool  _allowAudioSwitching;
+    bool  _alwaysOnAudioRedundancyEnabled;
     VCPacketBundler * _audioBundler;
     unsigned int  _audioFrameCounter;
     int  _audioHeaderSize;
@@ -17,6 +18,7 @@
     int  _audioTxBitrate;
     float  _blockSeconds;
     long long  _blockSize;
+    bool  _cellularAllowRedLowBitratesEnabled;
     void * _controlInfoGenerator;
     unsigned int  _currentAudioCap;
     VCAudioPayload * _currentAudioPayload;
@@ -86,6 +88,7 @@
     double  _lastTierSwitch;
     double  _lastUpdateQualityIndicator;
     unsigned int  _maxIDSStreamIdCount;
+    unsigned char  _mediaControlInfoVersion;
     struct tagHANDLE { int x1; } * _mediaQueue;
     bool  _needsPacketThread;
     int  _operatingMode;
@@ -120,6 +123,7 @@
     VCTransportSession * _transportSession;
     bool  _useRateControl;
     unsigned int  _vadSegmentCounter;
+    bool  _wifiAllowRedLowBitratesEnabled;
 }
 
 @property (nonatomic, readonly) int actualAudioSendingBitrate;
@@ -141,6 +145,7 @@
 @property (nonatomic, readonly) bool isRedEnabled;
 @property (nonatomic, readonly) unsigned int lastSentAudioSampleTime;
 @property (nonatomic) unsigned int maxIDSStreamIdCount;
+@property (nonatomic) unsigned char mediaControlInfoVersion;
 @property (nonatomic) int operatingMode;
 @property (nonatomic) int qualityIndicator;
 @property (nonatomic) unsigned int rateChangeCounter;
@@ -182,6 +187,7 @@
 - (void)logTierInfo:(int)arg1;
 - (unsigned int)maxIDSStreamIdCount;
 - (unsigned int)maximumSamplesPerFrame;
+- (unsigned char)mediaControlInfoVersion;
 - (float)nextAudioInterval:(int)arg1;
 - (int)operatingMode;
 - (void)pushAudioSamples:(struct opaqueVCAudioBufferList { }*)arg1;
@@ -208,6 +214,7 @@
 - (void)setInputMeter:(unsigned char)arg1;
 - (void)setIsAudioStalled:(bool)arg1;
 - (void)setMaxIDSStreamIdCount:(unsigned int)arg1;
+- (void)setMediaControlInfoVersion:(unsigned char)arg1;
 - (void)setOperatingMode:(int)arg1;
 - (void)setQualityIndicator:(int)arg1;
 - (void)setRateChangeCounter:(unsigned int)arg1;

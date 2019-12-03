@@ -2,13 +2,12 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXHorizontalCollectionGadget : PXGadgetViewController <PXGadget, PXMutableHorizontalCollectionGadget> {
+@interface PXHorizontalCollectionGadget : PXGadgetUIViewController <PXGadget, PXMutableHorizontalCollectionGadget> {
     id /* block */  _accessoryButtonAction;
     struct CGSize { 
         double width; 
         double height; 
     }  _cachedMaxHeightForColumnWidth;
-    const struct __CFString { } * _collectionAccessoryButtonEventTrackerKey;
     NSString * _collectionAccessoryButtonTitle;
     unsigned long long  _collectionAccessoryButtonType;
     double  _collectionHeight;
@@ -21,7 +20,9 @@
     unsigned long long  _gadgetType;
     unsigned long long  _headerStyle;
     <PXHorizontalCollectionGadgetDelegate> * _horizontalGadgetDelegate;
+    bool  _isFixedHeight;
     bool  _isPerformingChanges;
+    bool  _isResourceLoaded;
     PXGadgetOrbContext * _previewOrbContext;
     long long  _priority;
     struct CGRect { 
@@ -38,15 +39,14 @@
 }
 
 @property (nonatomic, copy) id /* block */ accessoryButtonAction;
-@property (nonatomic, readonly) const struct __CFString { }*accessoryButtonEventTrackerKey;
 @property (nonatomic, readonly) NSString *accessoryButtonTitle;
 @property (nonatomic, readonly) unsigned long long accessoryButtonType;
 @property (nonatomic) struct CGSize { double x1; double x2; } cachedMaxHeightForColumnWidth;
-@property (nonatomic, readonly) const struct __CFString { }*collectionAccessoryButtonEventTrackerKey;
 @property (nonatomic, readonly, copy) NSString *collectionAccessoryButtonTitle;
 @property (nonatomic, readonly) unsigned long long collectionAccessoryButtonType;
 @property (nonatomic, readonly) double collectionHeight;
 @property (nonatomic, readonly, copy) NSString *collectionTitle;
+@property (nonatomic, readonly) Class collectionViewItemClass;
 @property (nonatomic, copy) NSDictionary *columnSpans;
 @property (nonatomic) long long currentColumnSpan;
 @property (readonly, copy) NSString *debugDescription;
@@ -59,7 +59,9 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long headerStyle;
 @property (nonatomic) <PXHorizontalCollectionGadgetDelegate> *horizontalGadgetDelegate;
+@property (nonatomic) bool isFixedHeight;
 @property (nonatomic) bool isPerformingChanges;
+@property (nonatomic) bool isResourceLoaded;
 @property (nonatomic, readonly) NSString *localizedTitle;
 @property (nonatomic, retain) PXGadgetOrbContext *previewOrbContext;
 @property (nonatomic) long long priority;
@@ -73,57 +75,56 @@
 - (void).cxx_destruct;
 - (long long)_columnSpanForTraitCollection:(id)arg1;
 - (struct CGSize { double x1; double x2; })_ensureCachedHeightForColumnWidth:(double)arg1;
+- (void)_extendedTraitCollectionDidChange:(unsigned long long)arg1;
 - (void)_updateCollectionViewPaging;
 - (void)_updateColumnSettings;
 - (id /* block */)accessoryButtonAction;
-- (const struct __CFString { }*)accessoryButtonEventTrackerKey;
 - (id)accessoryButtonTitle;
 - (unsigned long long)accessoryButtonType;
-- (long long)anchorPosition;
 - (struct CGSize { double x1; double x2; })cachedMaxHeightForColumnWidth;
-- (const struct __CFString { }*)collectionAccessoryButtonEventTrackerKey;
 - (id)collectionAccessoryButtonTitle;
 - (unsigned long long)collectionAccessoryButtonType;
 - (double)collectionHeight;
 - (id)collectionTitle;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
+- (void)collectionView:(id)arg1 prefetchItemsAtIndexPaths:(id)arg2;
 - (id)columnSpans;
 - (void)commitPreviewViewController:(id)arg1;
 - (struct NSObject { Class x1; }*)contentViewController;
 - (void)contentViewDidDisappear;
 - (void)contentViewWillAppear;
 - (long long)currentColumnSpan;
-- (id)debugURLsForDiagnostics;
 - (long long)defaultColumnSpan;
 - (id)delegate;
 - (void)didDismissPreviewViewController:(id)arg1 committing:(bool)arg2;
-- (void)extendedTraitCollectionDidChange:(unsigned long long)arg1;
 - (void)gadget:(id)arg1 didChange:(unsigned long long)arg2;
 - (bool)gadget:(id)arg1 transitionToViewController:(struct NSObject { Class x1; }*)arg2 animated:(bool)arg3 completion:(id /* block */)arg4;
 - (void)gadgetControllerFinishedUpdatingDataSourceWithChange:(id)arg1;
 - (void)gadgetControllerHasAppeared;
 - (void)gadgetControllerHasDisappeared;
 - (id)gadgetSpec;
+- (id)gadgetTransition;
 - (unsigned long long)gadgetType;
-- (id)gridPresentation;
 - (bool)hasContentToDisplay;
-- (bool)hasLoadedContentData;
 - (unsigned long long)headerStyle;
 - (id)horizontalGadgetDelegate;
 - (id)initWithDataSourceManager:(id)arg1;
 - (id)initWithProviders:(id)arg1;
+- (bool)isFixedHeight;
 - (bool)isPerformingChanges;
+- (bool)isResourceLoaded;
 - (bool)isRootGadgetViewController;
-- (void)loadContentData;
 - (id)localizedTitle;
-- (id)oneUpPresentation;
+- (bool)navigateToGadget:(id)arg1 animated:(bool)arg2;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void*)arg3;
 - (void)performChanges:(id /* block */)arg1;
+- (void)prefetchDuringScrollingForWidth:(double)arg1;
 - (id)previewOrbContext;
-- (struct NSObject { Class x1; }*)previewViewControllerAtLocation:(struct CGPoint { double x1; double x2; })arg1 fromSourceView:(struct NSObject { Class x1; }*)arg2 outSourceRect:(out struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg3;
+- (struct NSObject { Class x1; }*)previewViewControllerAtLocation:(struct CGPoint { double x1; double x2; })arg1 fromSourceView:(struct NSObject { Class x1; }*)arg2;
 - (long long)priority;
+- (id)rootNavigationHelper;
 - (void)setAccessoryButtonAction:(id /* block */)arg1;
 - (void)setCachedMaxHeightForColumnWidth:(struct CGSize { double x1; double x2; })arg1;
-- (void)setCollectionAccessoryButtonEventTrackerKey:(struct __CFString { }*)arg1;
 - (void)setCollectionAccessoryButtonTitle:(id)arg1;
 - (void)setCollectionAccessoryButtonType:(unsigned long long)arg1;
 - (void)setCollectionHeight:(double)arg1;
@@ -136,15 +137,19 @@
 - (void)setGadgetType:(unsigned long long)arg1;
 - (void)setHeaderStyle:(unsigned long long)arg1;
 - (void)setHorizontalGadgetDelegate:(id)arg1;
+- (void)setIsFixedHeight:(bool)arg1;
 - (void)setIsPerformingChanges:(bool)arg1;
+- (void)setIsResourceLoaded:(bool)arg1;
 - (void)setLayout:(id)arg1;
 - (void)setPreviewOrbContext:(id)arg1;
 - (void)setPriority:(long long)arg1;
 - (void)setVisibleContentRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setVisibleGadgetsLoaded:(bool)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
+- (struct NSObject { Class x1; }*)targetPreviewViewForLocation:(struct CGPoint { double x1; double x2; })arg1 inCoordinateSpace:(id)arg2;
 - (void)updateIfNeeded;
-- (void)userDidSelectAccessoryButton:(id)arg1;
+- (void)userDidSelectAccessoryButton:(struct NSObject { Class x1; }*)arg1;
+- (void)viewDidAppear:(bool)arg1;
 - (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(bool)arg1;

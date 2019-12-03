@@ -4,6 +4,22 @@
 
 @interface CLIndoorLocation : NSObject <NSSecureCoding> {
     struct { 
+        int yieldType; 
+        double prbPipelinedSaysYield; 
+        double prbCoarseIndoorSaysIndoor; 
+        double prbWifiSaysIndoor; 
+        double prbGpsSaysIndoor; 
+        double prbParticleFilterSaysYield; 
+        double prbOnFloors; 
+        double prbOnFloor[5]; 
+        double prbInlier; 
+        double prbLocalizerIoWrapperSaysWifiOk; 
+        double prbInjectionOccupancyRetryLimitOk; 
+        double prbInjectionGainRetryLimitOk; 
+        int pfYieldStatusBeforeCalculatePose; 
+        int yieldStatusBeforeCalculatePose; 
+    }  _diagnosticReport;
+    struct { 
         int suitability; 
         struct { 
             double latitude; 
@@ -29,6 +45,7 @@
         unsigned int integrity; 
         int referenceFrame; 
         int rawReferenceFrame; 
+        int signalEnvironmentType; 
     }  _location;
     NSString * _locationDescription;
     NSString * _locationId;
@@ -69,31 +86,39 @@
         double specialHorizontalAccuracy; 
         double machContinuousTime; 
         int originDevice; 
+        bool isMatcherPropagatedCoordinates; 
+        double slope; 
+        double maxAbsSlope; 
+        double groundAltitude; 
+        double groundAltitudeUncertainty; 
     }  _locationPrivate;
     bool  _requestsGpsAssistance;
 }
 
-@property (nonatomic) struct { int x1; struct { double x_2_1_1; double x_2_1_2; } x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; int x11; double x12; int x13; struct { double x_14_1_1; double x_14_1_2; } x14; double x15; int x16; unsigned int x17; int x18; int x19; } location;
+@property (nonatomic) struct { int x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8[5]; double x9; double x10; double x11; double x12; int x13; int x14; } diagnosticReport;
+@property (nonatomic) struct { int x1; struct { double x_2_1_1; double x_2_1_2; } x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; int x11; double x12; int x13; struct { double x_14_1_1; double x_14_1_2; } x14; double x15; int x16; unsigned int x17; int x18; int x19; int x20; } location;
 @property (nonatomic, retain) NSString *locationDescription;
 @property (nonatomic, retain) NSString *locationId;
-@property (nonatomic) struct { double x1; double x2; double x3; double x4; double x5; float x6; float x7; float x8; bool x9; int x10; struct { double x_11_1_1; double x_11_1_2; } x11; double x12; int x13; int x14; bool x15; struct { double x_16_1_1; double x_16_1_2; bool x_16_1_3; bool x_16_1_4; } x16; struct { double x_17_1_1; double x_17_1_2; } x17; float x18; struct { double x_19_1_1; double x_19_1_2; } x19; double x20; double x21; int x22; } locationPrivate;
+@property (nonatomic) struct { double x1; double x2; double x3; double x4; double x5; float x6; float x7; float x8; bool x9; int x10; struct { double x_11_1_1; double x_11_1_2; } x11; double x12; int x13; int x14; bool x15; struct { double x_16_1_1; double x_16_1_2; bool x_16_1_3; bool x_16_1_4; } x16; struct { double x_17_1_1; double x_17_1_2; } x17; float x18; struct { double x_19_1_1; double x_19_1_2; } x19; double x20; double x21; int x22; bool x23; double x24; double x25; double x26; double x27; } locationPrivate;
 @property (nonatomic) bool requestsGpsAssistance;
 
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)description;
+- (struct { int x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8[5]; double x9; double x10; double x11; double x12; int x13; int x14; })diagnosticReport;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (struct { int x1; struct { double x_2_1_1; double x_2_1_2; } x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; int x11; double x12; int x13; struct { double x_14_1_1; double x_14_1_2; } x14; double x15; int x16; unsigned int x17; int x18; int x19; })location;
+- (struct { int x1; struct { double x_2_1_1; double x_2_1_2; } x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; int x11; double x12; int x13; struct { double x_14_1_1; double x_14_1_2; } x14; double x15; int x16; unsigned int x17; int x18; int x19; int x20; })location;
 - (id)locationDescription;
 - (id)locationId;
-- (struct { double x1; double x2; double x3; double x4; double x5; float x6; float x7; float x8; bool x9; int x10; struct { double x_11_1_1; double x_11_1_2; } x11; double x12; int x13; int x14; bool x15; struct { double x_16_1_1; double x_16_1_2; bool x_16_1_3; bool x_16_1_4; } x16; struct { double x_17_1_1; double x_17_1_2; } x17; float x18; struct { double x_19_1_1; double x_19_1_2; } x19; double x20; double x21; int x22; })locationPrivate;
+- (struct { double x1; double x2; double x3; double x4; double x5; float x6; float x7; float x8; bool x9; int x10; struct { double x_11_1_1; double x_11_1_2; } x11; double x12; int x13; int x14; bool x15; struct { double x_16_1_1; double x_16_1_2; bool x_16_1_3; bool x_16_1_4; } x16; struct { double x_17_1_1; double x_17_1_2; } x17; float x18; struct { double x_19_1_1; double x_19_1_2; } x19; double x20; double x21; int x22; bool x23; double x24; double x25; double x26; double x27; })locationPrivate;
 - (bool)requestsGpsAssistance;
-- (void)setLocation:(struct { int x1; struct { double x_2_1_1; double x_2_1_2; } x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; int x11; double x12; int x13; struct { double x_14_1_1; double x_14_1_2; } x14; double x15; int x16; unsigned int x17; int x18; int x19; })arg1;
+- (void)setDiagnosticReport:(struct { int x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8[5]; double x9; double x10; double x11; double x12; int x13; int x14; })arg1;
+- (void)setLocation:(struct { int x1; struct { double x_2_1_1; double x_2_1_2; } x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; int x11; double x12; int x13; struct { double x_14_1_1; double x_14_1_2; } x14; double x15; int x16; unsigned int x17; int x18; int x19; int x20; })arg1;
 - (void)setLocationDescription:(id)arg1;
 - (void)setLocationId:(id)arg1;
-- (void)setLocationPrivate:(struct { double x1; double x2; double x3; double x4; double x5; float x6; float x7; float x8; bool x9; int x10; struct { double x_11_1_1; double x_11_1_2; } x11; double x12; int x13; int x14; bool x15; struct { double x_16_1_1; double x_16_1_2; bool x_16_1_3; bool x_16_1_4; } x16; struct { double x_17_1_1; double x_17_1_2; } x17; float x18; struct { double x_19_1_1; double x_19_1_2; } x19; double x20; double x21; int x22; })arg1;
+- (void)setLocationPrivate:(struct { double x1; double x2; double x3; double x4; double x5; float x6; float x7; float x8; bool x9; int x10; struct { double x_11_1_1; double x_11_1_2; } x11; double x12; int x13; int x14; bool x15; struct { double x_16_1_1; double x_16_1_2; bool x_16_1_3; bool x_16_1_4; } x16; struct { double x_17_1_1; double x_17_1_2; } x17; float x18; struct { double x_19_1_1; double x_19_1_2; } x19; double x20; double x21; int x22; bool x23; double x24; double x25; double x26; double x27; })arg1;
 - (void)setRequestsGpsAssistance:(bool)arg1;
 
 @end

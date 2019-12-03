@@ -10,6 +10,8 @@
     AVWeakReference * _dataProviderWeakReference;
     NSMutableArray * _futureFrameMetadataDicts;
     struct OpaqueFigSampleBufferProcessor { } * _gvsProcessor;
+    bool  _isFirstFrame;
+    float  _lookAheadTime;
     long long  _metadataOutputFrameNumber;
     int  _metadataPrimingCount;
     NSSet * _optionalMetadataKeys;
@@ -35,7 +37,8 @@
 
 - (struct opaqueCMSampleBuffer { }*)_copyStabilizedSampleBuffer:(id*)arg1;
 - (struct opaqueCMSampleBuffer { }*)_createSampleBufferWithPixelBuffer:(struct __CVBuffer { }*)arg1 sampleTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2 futureMetadata:(id)arg3 status:(int*)arg4;
-- (int)_setupGVSProcessorWithMetadataArray:(id)arg1;
+- (unsigned long long)_extendedRowsOfOutputBuffer;
+- (int)_setupGVSProcessor;
 - (void)_teardownVISProcessor;
 - (int)_validateSourcePixelBuffer:(struct __CVBuffer { }*)arg1 withSampleTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2 metadata:(id)arg3 isEndOfData:(bool*)arg4;
 - (int)_validateStabilizationMetadata:(id)arg1 withSampleTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2 isEndOfData:(bool*)arg3;

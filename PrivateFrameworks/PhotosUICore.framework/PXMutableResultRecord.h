@@ -12,6 +12,7 @@
     NSSet * _includedOids;
     NSPredicate * _inclusionPredicate;
     bool  _inclusionPredicateIsValid;
+    long long  _keyAssetIndex;
     PHFetchResult * _keyAssetsFetchResult;
     bool  _preloadAssetTypeCounts;
     bool  _reverseSortOrder;
@@ -27,6 +28,7 @@
 @property (nonatomic, readonly) NSSet *includedOids;
 @property (nonatomic, readonly) NSPredicate *inclusionPredicate;
 @property (nonatomic, readonly) bool isCurated;
+@property (nonatomic) long long keyAssetIndex;
 @property (nonatomic, retain) PHFetchResult *keyAssetsFetchResult;
 @property (nonatomic) bool preloadAssetTypeCounts;
 @property (nonatomic, readonly) bool reverseSortOrder;
@@ -36,6 +38,7 @@
 - (id)_exposedFetchResultBeforeFiltering;
 - (void)_invalidateFilteredFetchResult;
 - (void)_invalidateInclusionPredicate;
+- (void)_invalidateKeyAssetIndex;
 - (void)_setIncludeOids:(id)arg1;
 - (void)_updateFilteredFetchResultIfNeeded;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -49,14 +52,17 @@
 - (void)includeOids:(id)arg1;
 - (id)includedOids;
 - (id)inclusionPredicate;
+- (id)init;
 - (void)invalidateFetchResultAssetCache;
 - (bool)isCurated;
+- (long long)keyAssetIndex;
 - (id)keyAssetsFetchResult;
 - (bool)preloadAssetTypeCounts;
 - (bool)reverseSortOrder;
 - (void)setCuratedFetchResult:(id)arg1;
 - (void)setFetchResult:(id)arg1;
 - (void)setFetchResult:(id)arg1 reverseSortOrder:(bool)arg2;
+- (void)setKeyAssetIndex:(long long)arg1;
 - (void)setKeyAssetsFetchResult:(id)arg1;
 - (void)setPreloadAssetTypeCounts:(bool)arg1;
 - (void)setReverseSortOrder:(bool)arg1;

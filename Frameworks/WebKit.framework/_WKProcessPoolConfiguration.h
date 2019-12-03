@@ -3,29 +3,33 @@
  */
 
 @interface _WKProcessPoolConfiguration : NSObject <NSCopying, WKObject> {
+    bool  _configureJSCForTesting;
     struct ObjectStorage<API::ProcessPoolConfiguration> { 
         struct type { 
-            unsigned char __lx[256]; 
+            unsigned char __lx[272]; 
         } data; 
     }  _processPoolConfiguration;
-    unsigned long long  _wirelessContextIdentifier;
 }
 
 @property (nonatomic, copy) NSString *CTDataConnectionServiceType;
 @property (getter=isJITEnabled, nonatomic) bool JITEnabled;
-@property (readonly) /* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*_apiObject;
+@property (readonly) struct Object { int (**x1)(); id x2; }*_apiObject;
 @property (nonatomic, copy) NSArray *additionalReadAccessAllowedURLs;
 @property (nonatomic) bool alwaysKeepAndReuseSwappedProcesses;
 @property (nonatomic, copy) NSArray *alwaysRevalidatedURLSchemes;
 @property (nonatomic) bool alwaysRunsAtBackgroundPriority;
 @property (nonatomic) bool attrStyleEnabled;
 @property (nonatomic, copy) NSArray *cachePartitionedURLSchemes;
+@property (nonatomic) bool configureJSCForTesting;
+@property (nonatomic, copy) NSSet *customClassesForParameterCoder;
 @property (nonatomic, copy) NSString *customWebContentServiceBundleIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long diskCacheSizeOverride;
 @property (nonatomic) bool diskCacheSpeculativeValidationEnabled;
+@property (nonatomic) unsigned long long downloadMonitorSpeedMultiplierForTesting;
 @property (readonly) unsigned long long hash;
+@property (setter=setHSTSStorageDirectory:, nonatomic, copy) NSURL *hstsStorageDirectory;
 @property (nonatomic) bool ignoreSynchronousMessagingTimeoutsForTesting;
 @property (nonatomic, copy) NSURL *injectedBundleURL;
 @property (nonatomic) unsigned long long maximumProcessCount;
@@ -40,23 +44,28 @@
 @property (nonatomic, copy) NSString *sourceApplicationSecondaryIdentifier;
 @property (readonly) Class superclass;
 @property (nonatomic) bool suppressesConnectionTerminationOnSystemChange;
+@property (nonatomic) bool usesSingleWebProcess;
 @property (nonatomic) bool usesWebProcessCache;
 @property (nonatomic) unsigned long long wirelessContextIdentifier;
 
 - (id)CTDataConnectionServiceType;
-- (/* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*)_apiObject;
+- (struct Object { int (**x1)(); id x2; }*)_apiObject;
 - (id)additionalReadAccessAllowedURLs;
 - (bool)alwaysKeepAndReuseSwappedProcesses;
 - (id)alwaysRevalidatedURLSchemes;
 - (bool)alwaysRunsAtBackgroundPriority;
 - (bool)attrStyleEnabled;
 - (id)cachePartitionedURLSchemes;
+- (bool)configureJSCForTesting;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)customClassesForParameterCoder;
 - (id)customWebContentServiceBundleIdentifier;
 - (void)dealloc;
 - (id)description;
 - (long long)diskCacheSizeOverride;
 - (bool)diskCacheSpeculativeValidationEnabled;
+- (unsigned long long)downloadMonitorSpeedMultiplierForTesting;
+- (id)hstsStorageDirectory;
 - (bool)ignoreSynchronousMessagingTimeoutsForTesting;
 - (id)init;
 - (id)injectedBundleURL;
@@ -74,9 +83,13 @@
 - (void)setAttrStyleEnabled:(bool)arg1;
 - (void)setCTDataConnectionServiceType:(id)arg1;
 - (void)setCachePartitionedURLSchemes:(id)arg1;
+- (void)setConfigureJSCForTesting:(bool)arg1;
+- (void)setCustomClassesForParameterCoder:(id)arg1;
 - (void)setCustomWebContentServiceBundleIdentifier:(id)arg1;
 - (void)setDiskCacheSizeOverride:(long long)arg1;
 - (void)setDiskCacheSpeculativeValidationEnabled:(bool)arg1;
+- (void)setDownloadMonitorSpeedMultiplierForTesting:(unsigned long long)arg1;
+- (void)setHSTSStorageDirectory:(id)arg1;
 - (void)setIgnoreSynchronousMessagingTimeoutsForTesting:(bool)arg1;
 - (void)setInjectedBundleURL:(id)arg1;
 - (void)setJITEnabled:(bool)arg1;
@@ -91,6 +104,7 @@
 - (void)setSourceApplicationBundleIdentifier:(id)arg1;
 - (void)setSourceApplicationSecondaryIdentifier:(id)arg1;
 - (void)setSuppressesConnectionTerminationOnSystemChange:(bool)arg1;
+- (void)setUsesSingleWebProcess:(bool)arg1;
 - (void)setUsesWebProcessCache:(bool)arg1;
 - (void)setWirelessContextIdentifier:(unsigned long long)arg1;
 - (bool)shouldCaptureAudioInUIProcess;
@@ -98,6 +112,7 @@
 - (id)sourceApplicationBundleIdentifier;
 - (id)sourceApplicationSecondaryIdentifier;
 - (bool)suppressesConnectionTerminationOnSystemChange;
+- (bool)usesSingleWebProcess;
 - (bool)usesWebProcessCache;
 - (unsigned long long)wirelessContextIdentifier;
 

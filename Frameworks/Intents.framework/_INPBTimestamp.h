@@ -3,6 +3,7 @@
  */
 
 @interface _INPBTimestamp : PBCodable <NSCopying, NSSecureCoding, _INPBTimestamp> {
+    bool  __encodeLegacyGloryData;
     struct { 
         unsigned int nanos : 1; 
         unsigned int seconds : 1; 
@@ -11,6 +12,7 @@
     long long  _seconds;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) bool hasNanos;
@@ -20,11 +22,17 @@
 @property (nonatomic) long long seconds;
 @property (readonly) Class superclass;
 
++ (bool)supportsSecureCoding;
+
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasNanos;
 - (bool)hasSeconds;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (int)nanos;
 - (bool)readFrom:(id)arg1;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
  */
 
-@interface HKDataMetadataSimpleSection : HKDataMetadataSection {
+@interface HKDataMetadataSimpleSection : HKDataMetadataSection <HKDataMetadataSectionDataReceiver> {
     NSMutableArray * _rows;
     NSString * _title;
 }
@@ -12,6 +12,7 @@
 
 - (void).cxx_destruct;
 - (id)_rowTitles;
+- (id)_valueForRowWithTitle:(id)arg1;
 - (void)addText:(id)arg1 detail:(id)arg2;
 - (id)cellForIndex:(unsigned long long)arg1 tableView:(id)arg2;
 - (id)initWithTitle:(id)arg1;

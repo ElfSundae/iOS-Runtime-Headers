@@ -2,10 +2,10 @@
    Image: /System/Library/PrivateFrameworks/CameraUI.framework/CameraUI
  */
 
-@interface CAMBottomBar : UIView <CAMApertureButtonDelegate, CAMExpandableMenuButtonDelegate> {
+@interface CAMBottomBar : UIView <CAMExpandableMenuButtonDelegate, CEKApertureButtonDelegate> {
     CAMHDRButton * _HDRButton;
     CAMExpandableMenuButton * __expandedMenuButton;
-    CAMApertureButton * _apertureButton;
+    CEKApertureButton * _apertureButton;
     long long  _backgroundStyle;
     UIView * _backgroundView;
     CAMCreativeCameraButton * _creativeCameraButton;
@@ -27,7 +27,7 @@
 
 @property (nonatomic, retain) CAMHDRButton *HDRButton;
 @property (setter=_setExpandedMenuButton:, nonatomic, retain) CAMExpandableMenuButton *_expandedMenuButton;
-@property (nonatomic, retain) CAMApertureButton *apertureButton;
+@property (nonatomic, retain) CEKApertureButton *apertureButton;
 @property (nonatomic) long long backgroundStyle;
 @property (nonatomic, readonly) UIView *backgroundView;
 @property (nonatomic, retain) CAMCreativeCameraButton *creativeCameraButton;
@@ -73,7 +73,7 @@
 - (void)_updateFlipButtonTappableEdgeInsets;
 - (void)_updateImageWellTappableEdgeInsets;
 - (id)apertureButton;
-- (void)apertureButtonNeedsLayout:(id)arg1;
+- (void)apertureButtonNeedsLayout:(id)arg1 animated:(bool)arg2;
 - (long long)backgroundStyle;
 - (id)backgroundView;
 - (void)collapseMenuButton:(id)arg1 animated:(bool)arg2;

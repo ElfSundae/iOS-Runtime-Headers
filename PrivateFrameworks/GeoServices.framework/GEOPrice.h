@@ -6,8 +6,9 @@
     float  _amount;
     NSString * _currencyCode;
     struct { 
-        unsigned int amount : 1; 
-    }  _has;
+        unsigned int has_amount : 1; 
+    }  _flags;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic) float amount;
@@ -19,10 +20,14 @@
 @property (nonatomic, readonly) bool hasCurrencyCode;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic, readonly) double value;
+
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (float)amount;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)currencyCode;
@@ -33,10 +38,12 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAmount:(float)arg1;
 - (void)setCurrencyCode:(id)arg1;
 - (void)setHasAmount:(bool)arg1;
+- (id)unknownFields;
 - (double)value;
 - (void)writeTo:(id)arg1;
 

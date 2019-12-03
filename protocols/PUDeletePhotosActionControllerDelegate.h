@@ -9,6 +9,7 @@
 
 @optional
 
+- (void)deletePhotosActionController:(PUDeletePhotosActionController *)arg1 dismissConfirmationViewController:(UIViewController *)arg2;
 - (long long)preferredAlertControllerStyleForDeletePhotosActionController:(PUDeletePhotosActionController *)arg1;
 
 @end

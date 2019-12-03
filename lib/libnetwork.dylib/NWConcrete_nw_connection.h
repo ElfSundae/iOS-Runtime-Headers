@@ -3,6 +3,7 @@
  */
 
 @interface NWConcrete_nw_connection : NSObject <OS_nw_connection> {
+    NWConcrete_nw_connection * _internal_reference;
     NSObject<OS_nw_array> * activities;
     unsigned int  adaptive_read_timeout_count;
     id /* block */  adaptive_read_timeout_handler;
@@ -11,24 +12,28 @@
     int  alternate_path_state;
     id /* block */  alternate_path_state_handler;
     NSObject<OS_nw_array> * attempted_endpoints;
-    unsigned int  batching;
+    NSObject<OS_nw_read_request> * batched_receives;
+    NSObject<OS_nw_write_request> * batched_sends;
+    bool  batching;
     id /* block */  better_path_available_handler;
+    NSObject<OS_dispatch_group> * cancel_group;
     id /* block */  cancel_handler;
-    unsigned int  cancelled;
+    bool  cancelled;
     NSObject<OS_nw_array> * candidate_endpoint_handlers;
     id /* block */  client_handler;
     unsigned int  client_qos_class;
     NSObject<OS_dispatch_queue> * client_queue;
     NSObject<OS_nw_endpoint_handler> * connected_endpoint_handler;
+    unsigned int  connected_fallback_generation;
+    NSObject<OS_nw_array> * data_transfer_reports;
     NSObject<OS_nw_endpoint_handler> * dry_run_endpoint_handler;
     NSObject<OS_nw_endpoint> * endpoint;
     NSObject<OS_nw_array> * errors;
+    NSObject<OS_nw_establishment_report> * establishment_report;
     unsigned int  excessive_keepalive_count;
     id /* block */  excessive_keepalive_handler;
     unsigned int  excessive_keepalive_interval;
     unsigned int  generic_stats_reported;
-    unsigned int  has_batched_receives;
-    unsigned int  has_batched_sends;
     unsigned int  hit_max_timestamps;
     NSObject<OS_nw_read_request> * initial_read_requests;
     NSObject<OS_nw_write_request> * initial_write_requests;
@@ -37,12 +42,19 @@
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
     }  lock;
+    unsigned char  logging_sequence_number;
     id /* block */  low_throughput_handler;
+    struct metadata_changed_registration_list_s { 
+        struct nw_connection_metadata_changed_registration {} *tqh_first; 
+        struct nw_connection_metadata_changed_registration {} **tqh_last; 
+    }  metadata_changed_registration_list;
     unsigned short  num_timestamps;
     NSObject<OS_nw_parameters> * parameters;
     NSObject<OS_nw_endpoint_handler> * parent_endpoint_handler;
     id /* block */  path_changed_handler;
-    unsigned int  prohibit_set_queue;
+    unsigned long long  pending_expected_progress_target;
+    NSObject<OS_nw_array> * probes;
+    bool  prohibit_set_queue;
     id /* block */  read_close_handler;
     NSObject<OS_nw_endpoint_handler> * ready_dry_run_endpoint_handler;
     unsigned int  should_report_activities;

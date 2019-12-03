@@ -4,18 +4,17 @@
 
 @interface CPTemplate : NSObject <CPBarButtonDelegate, CPBarButtonProviding, CPControlDelegate, CPTemplateDelegate, NSSecureCoding> {
     CPBarButton * _backButton;
-    NSOperationQueue * _deferredOperationQueue;
     NSUUID * _identifier;
     NSArray * _internalLeadingBarButtons;
     NSArray * _internalTrailingBarButtons;
     <CPTemplateDelegate> * _templateDelegate;
     <CPBaseTemplateProviding> * _templateProvider;
+    NAFuture * _templateProviderFuture;
     id  _userInfo;
 }
 
 @property (nonatomic, retain) CPBarButton *backButton;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic, retain) NSOperationQueue *deferredOperationQueue;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSUUID *identifier;
@@ -25,6 +24,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) <CPTemplateDelegate> *templateDelegate;
 @property (nonatomic, retain) <CPBaseTemplateProviding> *templateProvider;
+@property (nonatomic, retain) NAFuture *templateProviderFuture;
 @property (nonatomic, retain) NSArray *trailingNavigationBarButtons;
 @property (nonatomic, retain) id userInfo;
 
@@ -34,9 +34,8 @@
 - (id)backButton;
 - (bool)barButton:(id)arg1 setImage:(id)arg2;
 - (bool)barButton:(id)arg1 setTitle:(id)arg2;
+- (void)connectTemplateProvider:(id)arg1;
 - (bool)control:(id)arg1 setEnabled:(bool)arg2;
-- (void)dealloc;
-- (id)deferredOperationQueue;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (void)handleActionForControlIdentifier:(id)arg1;
@@ -45,20 +44,22 @@
 - (id)initWithCoder:(id)arg1;
 - (id)internalLeadingBarButtons;
 - (id)internalTrailingBarButtons;
+- (void)invalidateTemplateProvider;
 - (id)leadingNavigationBarButtons;
 - (void)setBackButton:(id)arg1;
-- (void)setDeferredOperationQueue:(id)arg1;
 - (void)setInternalLeadingBarButtons:(id)arg1;
 - (void)setInternalTrailingBarButtons:(id)arg1;
 - (void)setLeadingNavigationBarButtons:(id)arg1;
 - (void)setTemplateDelegate:(id)arg1;
 - (void)setTemplateProvider:(id)arg1;
+- (void)setTemplateProviderFuture:(id)arg1;
 - (void)setTrailingNavigationBarButtons:(id)arg1;
 - (void)setUserInfo:(id)arg1;
 - (id)templateDelegate;
 - (void)templateDidAppear:(id)arg1 animated:(bool)arg2;
 - (void)templateDidDisappear:(id)arg1 animated:(bool)arg2;
 - (id)templateProvider;
+- (id)templateProviderFuture;
 - (void)templateWillAppear:(id)arg1 animated:(bool)arg2;
 - (void)templateWillDisappear:(id)arg1 animated:(bool)arg2;
 - (id)trailingNavigationBarButtons;

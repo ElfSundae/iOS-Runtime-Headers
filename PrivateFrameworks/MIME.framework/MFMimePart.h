@@ -41,6 +41,7 @@
 - (id)_partThatIsAttachment;
 - (SEL)_selectorForCString:(char *)arg1;
 - (void)_setDecryptedMessageBody:(id)arg1 isEncrypted:(bool)arg2 isSigned:(bool)arg3;
+- (void)_setObjectInOtherIvars:(id)arg1 forKey:(id)arg2;
 - (void)_setRFC822DecodedMessageBody:(id)arg1;
 - (bool)_shouldContinueDecodingProcess;
 - (void)addSubpart:(id)arg1;
@@ -145,6 +146,18 @@
 - (bool)usesKnownSignatureProtocol;
 
 // Image: /System/Library/PrivateFrameworks/Message.framework/Message
+
+- (id)SMIMEError;
+- (bool)_needsSignatureVerification:(id*)arg1;
+- (void)_setSMIMEError:(id)arg1;
+- (void)_setSigners:(id)arg1;
+- (id)copySigners;
+- (id)decodeApplicationPkcs7_mime;
+- (id)decodeMultipartSigned;
+- (id)newEncryptedPartWithData:(id)arg1 compositionSpecification:(id)arg2 encryptedData:(id*)arg3;
+- (id)newSignedPartWithData:(id)arg1 sender:(id)arg2 compositionSpecification:(id)arg3 signatureData:(id*)arg4;
+
+// Image: /System/Library/PrivateFrameworks/MessageLegacy.framework/MessageLegacy
 
 - (id)SMIMEError;
 - (bool)_needsSignatureVerification:(id*)arg1;

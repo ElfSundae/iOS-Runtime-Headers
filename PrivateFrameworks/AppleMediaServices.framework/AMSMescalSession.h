@@ -19,18 +19,18 @@
 - (bool)_cacheCertData:(id)arg1 expiration:(double)arg2;
 - (id)_cachedCertData;
 - (id)_cachedCertPath;
-- (id)_establishContextWithContract:(id)arg1 logKey:(id)arg2 error:(id*)arg3;
-- (id)_loadCertificateDataWithContract:(id)arg1 logKey:(id)arg2 error:(id*)arg3;
-- (id)_postExchangeData:(id)arg1 contract:(id)arg2 logKey:(id)arg3 error:(id*)arg4;
+- (id)_establishContextWithBag:(id)arg1 error:(id*)arg2;
+- (id)_loadCertificateDataWithBag:(id)arg1 error:(id*)arg2;
+- (id)_postExchangeData:(id)arg1 bag:(id)arg2 error:(id*)arg3;
 - (void)_resetSession;
 - (bool)_shouldRetryFairPlayForError:(id)arg1;
 - (bool)_verifyEntitlements;
 - (bool)_verifyPrimeResponse:(id)arg1 error:(id*)arg2;
 - (id)initWithType:(long long)arg1;
-- (bool)primeTheConnectionWithContract:(id)arg1 logKey:(id)arg2 error:(id*)arg3;
+- (bool)primeTheConnectionWithBag:(id)arg1 error:(id*)arg2;
 - (bool)primed;
 - (void)setPrimed:(bool)arg1;
-- (id)signData:(id)arg1 contract:(id)arg2 logKey:(id)arg3 error:(id*)arg4;
-- (bool)verifyData:(id)arg1 withSignature:(id)arg2 contract:(id)arg3 logKey:(id)arg4 error:(id*)arg5;
+- (id)signData:(id)arg1 bag:(id)arg2 error:(id*)arg3;
+- (bool)verifyData:(id)arg1 withSignature:(id)arg2 bag:(id)arg3 error:(id*)arg4;
 
 @end

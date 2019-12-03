@@ -4,6 +4,7 @@
 
 @interface ICMediaAVAssetDownloadOptions : NSObject {
     NSNumber * _DSID;
+    bool  _allowDownloadOnConstrainedNetworks;
     bool  _canUseCellularData;
     NSString * _clientIdentifier;
     NSString * _contentType;
@@ -20,6 +21,7 @@
 }
 
 @property (nonatomic, copy) NSNumber *DSID;
+@property (nonatomic) bool allowDownloadOnConstrainedNetworks;
 @property (nonatomic) bool canUseCellularData;
 @property (nonatomic, copy) NSString *clientIdentifier;
 @property (nonatomic, copy) NSString *contentType;
@@ -41,6 +43,7 @@
 
 - (void).cxx_destruct;
 - (id)DSID;
+- (bool)allowDownloadOnConstrainedNetworks;
 - (bool)canUseCellularData;
 - (id)clientIdentifier;
 - (id)contentType;
@@ -53,6 +56,7 @@
 - (id)purchaseBundleSinfs;
 - (id)redownloadParameters;
 - (id)secondaryClientIdentifier;
+- (void)setAllowDownloadOnConstrainedNetworks:(bool)arg1;
 - (void)setCanUseCellularData:(bool)arg1;
 - (void)setClientIdentifier:(id)arg1;
 - (void)setContentType:(id)arg1;

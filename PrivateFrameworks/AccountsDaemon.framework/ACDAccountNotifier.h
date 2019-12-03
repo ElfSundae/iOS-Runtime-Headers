@@ -3,28 +3,30 @@
  */
 
 @interface ACDAccountNotifier : NSObject {
-    NSMutableDictionary * _instantiatedPluginsByAccountTypeID;
-    NSSet * _notificationPlugins;
-    NSDictionary * _pluginBundlesByAccountTypeID;
-    NSMutableDictionary * _principalObjectByPluginBundleURL;
+    NSArray * _notificationEntries;
+    NSObject<OS_dispatch_queue> * _notificationEntryQueue;
 }
 
-+ (id)_presumedAccountTypeIDsByNotificationPluginID;
-+ (id)sharedAccountNotifier;
+@property (nonatomic, readonly, copy) NSArray *notificationEntries;
+
++ (id)allNotificationEntries;
 
 - (void).cxx_destruct;
-- (void)_faultInNotificationPlugins;
-- (id)_generateMapOfNotificationPluginBundlesByAccountTypeID;
-- (id)_loadPrincipalObjectFromBundle:(id)arg1;
-- (id)_loadPrincipalObjectsFromBundles:(id)arg1;
-- (id)_pluginsRegisteredForAccountType:(id)arg1;
-- (bool)canRemoveAccount:(id)arg1 inStore:(id)arg2;
-- (bool)canSaveAccount:(id)arg1 inStore:(id)arg2;
+- (id)_pluginsRegisteredForAccount:(id)arg1;
+- (id)_pluginsRegisteredForNewAccount:(id)arg1 oldAccount:(id)arg2;
+- (id)_provisionedDataclassesForNewAccount:(id)arg1 oldAccount:(id)arg2;
+- (id)_unsafe_pluginsRegisteredForAccount:(id)arg1;
+- (id)_unsafe_pluginsRegisteredForNewAccount:(id)arg1 oldAccount:(id)arg2;
+- (void)addNotificationEntry:(id)arg1;
+- (bool)canRemoveAccount:(id)arg1 inStore:(id)arg2 error:(id*)arg3;
+- (bool)canSaveAccount:(id)arg1 inStore:(id)arg2 error:(id*)arg3;
 - (id)init;
-- (id)notificationPlugins;
+- (id)initWithNotificationEntries:(id)arg1;
+- (id)notificationEntries;
 - (void)postDidChangeNotificationForType:(int)arg1 inStore:(id)arg2 newAccount:(id)arg3 oldAccount:(id)arg4;
 - (void)postDidPerformDataclassActionsOnAccount:(id)arg1 forDataclasses:(id)arg2;
 - (bool)postWillChangeNotificationForType:(int)arg1 inStore:(id)arg2 newAccount:(id)arg3 oldAccount:(id)arg4;
 - (void)postWillPerformDataclassActionsOnAccount:(id)arg1 forDataclasses:(id)arg2;
+- (void)removeAllNotificationEntries;
 
 @end

@@ -5,6 +5,7 @@
 @interface PFImageMetadata : NSObject
 
 + (id)imagePropertiesByRemovingKey:(const void*)arg1 dictionaryKey:(const void*)arg2 fromImageProperties:(id)arg3;
++ (bool)queryImagePropertiesOfFileAtURL:(id)arg1 error:(id*)arg2 block:(id /* block */)arg3;
 + (bool)readMetadataType:(unsigned char)arg1 fromCGImageProperties:(id)arg2 value:(id*)arg3 error:(id*)arg4;
 + (bool)readMetadataType:(unsigned char)arg1 fromFileURL:(id)arg2 value:(id*)arg3 error:(id*)arg4;
 + (bool)readMetadataValueFromImageAtFileURL:(id)arg1 dictionaryKey:(const void*)arg2 key:(const void*)arg3 value:(id*)arg4 error:(id*)arg5;

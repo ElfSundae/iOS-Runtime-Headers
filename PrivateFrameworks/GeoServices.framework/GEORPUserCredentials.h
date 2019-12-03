@@ -3,8 +3,20 @@
  */
 
 @interface GEORPUserCredentials : PBCodable <NSCopying> {
+    struct { 
+        unsigned int read_icloudUserMapsAuthToken : 1; 
+        unsigned int read_icloudUserPersonId : 1; 
+        unsigned int wrote_icloudUserMapsAuthToken : 1; 
+        unsigned int wrote_icloudUserPersonId : 1; 
+    }  _flags;
     NSString * _icloudUserMapsAuthToken;
     NSString * _icloudUserPersonId;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
 }
 
 @property (nonatomic, readonly) bool hasIcloudUserMapsAuthToken;
@@ -13,8 +25,11 @@
 @property (nonatomic, retain) NSString *icloudUserPersonId;
 
 + (id)_credentialsForPrimaryICloudAccount;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
+- (void)_readIcloudUserMapsAuthToken;
+- (void)_readIcloudUserPersonId;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -24,8 +39,11 @@
 - (unsigned long long)hash;
 - (id)icloudUserMapsAuthToken;
 - (id)icloudUserPersonId;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setIcloudUserMapsAuthToken:(id)arg1;
 - (void)setIcloudUserPersonId:(id)arg1;

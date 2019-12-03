@@ -8,10 +8,12 @@
 
 + (id)URLForAddress:(id)arg1;
 + (id)URLForAddress:(id)arg1 label:(id)arg2;
++ (id)URLForCollectionStorage:(id)arg1;
 + (id)URLForCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg1;
 + (id)URLForCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg1 address:(id)arg2 label:(id)arg3;
 + (id)URLForCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg1 address:(id)arg2 label:(id)arg3 extraStorage:(id)arg4;
 + (id)URLForCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg1 address:(id)arg2 label:(id)arg3 extraStorage:(id)arg4 useWebPlaceCard:(bool)arg5;
++ (id)URLForCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg1 address:(id)arg2 label:(id)arg3 extraStorage:(id)arg4 useWebPlaceCard:(bool)arg5 muninViewState:(id)arg6;
 + (id)URLForCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg1 address:(id)arg2 label:(id)arg3 useWebPlaceCard:(bool)arg4;
 + (id)URLForCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg1 label:(id)arg2;
 + (id)URLForDirectionsFrom:(id)arg1 to:(id)arg2;
@@ -24,6 +26,7 @@
 + (id)URLForInternalBusiness:(id)arg1 id:(unsigned long long)arg2 provider:(int)arg3 coordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg4 address:(id)arg5;
 + (id)URLForInternalBusiness:(id)arg1 id:(unsigned long long)arg2 provider:(int)arg3 coordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg4 address:(id)arg5 extraStorage:(id)arg6;
 + (id)URLForInternalBusiness:(id)arg1 id:(unsigned long long)arg2 provider:(int)arg3 coordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg4 address:(id)arg5 extraStorage:(id)arg6 useWebPlaceCard:(bool)arg7;
++ (id)URLForInternalBusiness:(id)arg1 id:(unsigned long long)arg2 provider:(int)arg3 coordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg4 address:(id)arg5 extraStorage:(id)arg6 useWebPlaceCard:(bool)arg7 muninViewState:(id)arg8;
 + (id)URLForInternalBusiness:(id)arg1 id:(unsigned long long)arg2 provider:(int)arg3 coordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg4 address:(id)arg5 useWebPlaceCard:(bool)arg6;
 + (id)URLForInternalBusiness:(id)arg1 id:(unsigned long long)arg2 provider:(int)arg3 coordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg4 address:(id)arg5 useWebPlaceCard:(bool)arg6 mapItemData:(id)arg7;
 + (id)URLForSearch:(id)arg1;

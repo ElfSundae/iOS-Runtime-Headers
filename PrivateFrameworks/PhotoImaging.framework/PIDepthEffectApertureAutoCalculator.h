@@ -4,6 +4,6 @@
 
 @interface PIDepthEffectApertureAutoCalculator : NUAutoCalculator
 
-- (void)calculate:(id /* block */)arg1;
+- (void)submit:(id /* block */)arg1;
 
 @end

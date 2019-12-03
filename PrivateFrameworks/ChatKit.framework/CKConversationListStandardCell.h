@@ -16,15 +16,18 @@
 - (id)avatarView:(id)arg1 orderedPropertiesForProperties:(id)arg2 category:(id)arg3;
 - (bool)avatarView:(id)arg1 shouldShowContact:(id)arg2;
 - (id)chevronImageView;
+- (id)contactsForPreviewInteractionForAvatarView:(id)arg1 suggestedKeysToFetch:(id)arg2;
 - (void)dealloc;
 - (void)increaseContrastDidChange;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
+- (double)leadingLayoutMargin;
+- (void)prepareForReuse;
 - (id)presentingViewControllerForAvatarView:(id)arg1;
 - (void)updateContentsForConversation:(id)arg1;
 - (void)updateContentsForConversation:(id)arg1 fastPreview:(bool)arg2;
 - (void)updateForEditing:(bool)arg1;
 - (void)updateFromLabelWithText:(id)arg1;
-- (void)updateUnreadIndicatorWithImage:(id)arg1;
+- (void)updateUnreadIndicatorWithImage:(id)arg1 tintColor:(id)arg2;
 
 @end

@@ -4,6 +4,8 @@
 
 @interface NSURLSessionConfiguration : NSObject <NSCopying, NSSecureCoding> {
     bool  __allowsWCA;
+    bool  __collectsTimingData;
+    long long  __companionProxyPreference;
 }
 
 @property (copy) NSDictionary *HTTPAdditionalHeaders;
@@ -13,7 +15,9 @@
 @property bool HTTPShouldSetCookies;
 @property bool HTTPShouldUsePipelining;
 @property int TLSMaximumSupportedProtocol;
+@property unsigned short TLSMaximumSupportedProtocolVersion;
 @property int TLSMinimumSupportedProtocol;
+@property unsigned short TLSMinimumSupportedProtocolVersion;
 @property (retain) NSURLCache *URLCache;
 @property (retain) NSURLCredentialStorage *URLCredentialStorage;
 @property (copy) NSString *_CTDataConnectionServiceType;
@@ -21,13 +25,17 @@
 @property unsigned long long _TCPAdaptiveReadTimeout;
 @property unsigned long long _TCPAdaptiveWriteTimeout;
 @property bool _allowTCPIOConnectionStreamTask;
+@property bool _allowsConstrainedNetworkAccess;
 @property bool _allowsExpensiveAccess;
 @property bool _allowsIndefiniteConnections;
 @property bool _allowsMultipathTCP;
 @property bool _allowsPowerNapScheduling;
 @property bool _allowsResponseMonitoringDuringBodyTranmission;
 @property bool _allowsRetryForBackgroundDataTasks;
+@property bool _allowsSensitiveLogging;
 @property bool _allowsTCPFastOpen;
+@property bool _allowsTLSFallback;
+@property bool _allowsTLSFalseStart;
 @property bool _allowsTLSSessionResumption;
 @property bool _allowsTLSSessionTickets;
 @property bool _allowsWCA;
@@ -38,6 +46,7 @@
 @property bool _clientIsNotExplicitlyDiscretionary;
 @property bool _collectsTimingData;
 @property (copy) NSString *_companionAppBundleIdentifier;
+@property long long _companionProxyPreference;
 @property double _connectionCacheCellPurgeTimeout;
 @property double _connectionCachePurgeTimeout;
 @property (copy) NSString *_connectionPoolName;
@@ -47,16 +56,17 @@
 @property (copy) NSURL *_directoryForDownloadedFiles;
 @property bool _disablesOutOfProcessDirectWiFiUsage;
 @property bool _disablesUseOfProxySession;
-@property bool _disallowsSPDY;
+@property long long _duetPreClearedMode;
 @property bool _duetPreauthorized;
 @property long long _expiredDNSBehavior;
 @property unsigned long long _forcedNetworkServiceType;
 @property bool _forcesNewConnections;
 @property bool _ignoreDidReceiveResponseDisposition;
 @property bool _infersDiscretionaryFromOriginatingClient;
-@property (copy) NSString *_ledBellyServiceIdentifier;
 @property double _longLivedConnectionCacheCellPurgeTimeout;
 @property double _longLivedConnectionCachePurgeTimeout;
+@property (copy) NSNumber *_maximumWatchCellularTransferSize;
+@property unsigned long long _multipathAlternatePort;
 @property bool _onBehalfOfPairedDevice;
 @property (copy) NSDictionary *_overriddenDelegateOptions;
 @property bool _overridesBackgroundSessionAutoRedirect;
@@ -70,11 +80,13 @@
 @property (retain) NSURLCache *_phskip_urlCache;
 @property bool _phskip_urlCacheSet;
 @property bool _prefersInfraWiFi;
+@property bool _preventsAppSSO;
 @property bool _preventsDirectWiFiAccess;
 @property bool _preventsIdleSleep;
 @property bool _preventsIdleSleepOnceConnected;
 @property bool _preventsSystemHTTPProxyAuthentication;
 @property (getter=_isProxySession) bool _proxySession;
+@property bool _reportsDataStalls;
 @property bool _requiresClientToOpenFiles;
 @property bool _requiresPowerPluggedIn;
 @property bool _requiresSecureHTTPSProxyConnection;
@@ -91,12 +103,13 @@
 @property (copy) NSSet *_suppressedAutoAddedHTTPHeaders;
 @property (copy) NSString *_tcpConnectionPoolName;
 @property long long _timingDataOptions;
-@property (copy) NSString *_tlsCachePrefix;
 @property (copy) NSString *_tlsTrustPinningPolicyName;
 @property bool _usePipeliningHeuristics;
 @property (copy) NSString *_watchAppBundleIdentifier;
 @property (copy) NSString *_watchExtensionBundleIdentifier;
 @property bool allowsCellularAccess;
+@property bool allowsConstrainedNetworkAccess;
+@property bool allowsExpensiveNetworkAccess;
 @property (getter=isBackgroundSession) bool backgroundSession;
 @property (copy) NSDictionary *connectionProxyDictionary;
 @property (getter=isDiscretionary) bool discretionary;
@@ -125,48 +138,61 @@
 + (id)AVBackgroundSessionConfigurationWithIdentifier:(id)arg1;
 + (id)_AVBackgroundSessionConfigurationWithIdentifier:(id)arg1;
 + (id)_defaultProtocolClasses;
-+ (id)_proxySessionConfigurationWithIdentifier:(id)arg1;
 + (id)backgroundSessionConfiguration:(id)arg1;
 + (id)backgroundSessionConfigurationWithIdentifier:(id)arg1;
 + (id)defaultSessionConfiguration;
 + (id)ephemeralSessionConfiguration;
++ (id)new;
 + (id)sessionConfigurationForSharedSession;
 + (bool)supportsSecureCoding;
 
 - (bool)_allowsWCA;
+- (bool)_collectsTimingData;
+- (long long)_companionProxyPreference;
 - (void*)_copyAttribute:(struct __CFString { }*)arg1;
-- (struct OpaqueCFHTTPCookieStorage { }*)_copyCFCookieStorage;
 - (struct _CFHSTSPolicy { }*)copyHSTSPolicy;
+- (id)copyImmutableVariant:(id /* block */)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (struct HTTPConnectionCacheLimits { int x1; int x2; int x3; int x4; int x5; int x6; int x7; int x8; int x9; int x10; })getConnectionCacheLimits;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDisposition:(id)arg1;
+- (bool)isEqual:(id)arg1;
+- (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (void)set_allowsWCA:(bool)arg1;
+- (void)set_collectsTimingData:(bool)arg1;
+- (void)set_companionProxyPreference:(long long)arg1;
 
 // Image: /System/Library/PrivateFrameworks/AppleAccount.framework/AppleAccount
 
 - (void)aa_registerProtocolClass:(Class)arg1;
 - (void)aa_unregisterProtocolClass:(Class)arg1;
 
+// Image: /System/Library/PrivateFrameworks/AppleMediaServices.framework/AppleMediaServices
+
++ (id)_URLBagCache;
++ (bool)_allowsAMSURLCache;
++ (id)ams_configurationWithProcessInfo:(id)arg1 bag:(id)arg2;
+
+- (void)ams_configureWithProcessInfo:(id)arg1 bag:(id)arg2;
+
 // Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
 
-- (void)applyNSURLConnectionProperties:(id)arg1;
 - (void)geo_configureWithRequest:(id)arg1;
 - (bool)geo_hasApplicationAttribution:(id)arg1;
 - (bool)geo_isCompatibleWithRequest:(id)arg1;
 - (void)geo_setApplicationAttribution:(id)arg1;
 
-// Image: /System/Library/PrivateFrameworks/News/TeaFoundation.framework/TeaFoundation
+// Image: /System/Library/PrivateFrameworks/PodcastsKit.framework/PodcastsKit
 
-- (void)setTs_timingDataEnabled:(bool)arg1;
-- (bool)ts_timingDataEnabled;
++ (id)im_headerByApplyingStealthStyle:(long long)arg1 toBaseHeaders:(id)arg2;
 
 // Image: /System/Library/PrivateFrameworks/ProtocolBuffer.framework/ProtocolBuffer
 
 - (void)applyNSURLConnectionProperties:(id)arg1;
 
-// Image: /System/Library/PrivateFrameworks/Stocks/TeaFoundation.framework/TeaFoundation
+// Image: /System/Library/PrivateFrameworks/TeaFoundation.framework/TeaFoundation
 
 - (void)setTs_timingDataEnabled:(bool)arg1;
 - (bool)ts_timingDataEnabled;

@@ -6,6 +6,7 @@
 @optional
 
 - (void)safariViewController:(SFSafariViewController *)arg1 didDecideCookieSharingForURL:(NSURL *)arg2 shouldCancel:(bool)arg3;
+- (void)safariViewController:(SFSafariViewController *)arg1 didResolveRedirectionWithURL:(NSURL *)arg2 appLink:(LSAppLink *)arg3;
 - (void)safariViewController:(SFSafariViewController *)arg1 hostApplicationOpenURL:(NSURL *)arg2;
 
 @end

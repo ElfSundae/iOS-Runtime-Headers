@@ -3,7 +3,7 @@
  */
 
 @interface _GEOCountryConfigurationRemoteProxy : NSObject <_GEOCountryConfigurationServerProxy> {
-    int  _countryCodeChangedToken;
+    id  _countryCodeChangeListener;
     <_GEOCountryConfigurationServerProxyDelegate> * _delegate;
     NSObject<OS_dispatch_queue> * _delegateQueue;
     int  _providersChangedToken;

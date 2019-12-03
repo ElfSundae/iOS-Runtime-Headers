@@ -17,6 +17,7 @@
 - (void).cxx_destruct;
 - (id)description;
 - (id)familyName;
+- (id)fontFaceWithAttributes:(id)arg1 size:(long long)arg2;
 - (id)fontFaces;
 - (id)initWithFamilyName:(id)arg1 faces:(id)arg2;
 

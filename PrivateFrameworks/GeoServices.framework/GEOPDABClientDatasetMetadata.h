@@ -6,9 +6,9 @@
     unsigned int  _bucketId;
     unsigned int  _datasetId;
     struct { 
-        unsigned int bucketId : 1; 
-        unsigned int datasetId : 1; 
-    }  _has;
+        unsigned int has_bucketId : 1; 
+        unsigned int has_datasetId : 1; 
+    }  _flags;
     PBUnknownFields * _unknownFields;
 }
 
@@ -18,8 +18,11 @@
 @property (nonatomic) bool hasDatasetId;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (unsigned int)bucketId;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned int)datasetId;
@@ -30,6 +33,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setBucketId:(unsigned int)arg1;
 - (void)setDatasetId:(unsigned int)arg1;

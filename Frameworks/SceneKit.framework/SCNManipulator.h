@@ -16,6 +16,7 @@
             void*originalRotation; 
         } axisRotate; 
     }  _actionData;
+    bool  _alternateMode;
     SCNNode * _arcHandleXY;
     SCNNode * _arcHandleXZ;
     SCNNode * _arcHandleYZ;
@@ -99,14 +100,15 @@
 @property (nonatomic) long long yAlignment;
 @property (nonatomic) long long zAlignment;
 
-- (bool)_applyWithEvent:(struct { id x1; struct CGPoint { double x_2_1_1; double x_2_1_2; } x2; struct CGPoint { double x_3_1_1; double x_3_1_2; } x3; struct SCNVector3 { float x_4_1_1; float x_4_1_2; float x_4_1_3; } x4; struct SCNVector3 { float x_5_1_1; float x_5_1_2; float x_5_1_3; } x5; double x6; })arg1;
+- (bool)_applyWithEvent:(struct { id x1; id x2; struct CGPoint { double x_3_1_1; double x_3_1_2; } x3; struct CGPoint { double x_4_1_1; double x_4_1_2; } x4; struct SCNVector3 { float x_5_1_1; float x_5_1_2; float x_5_1_3; } x5; struct SCNVector3 { float x_6_1_1; float x_6_1_2; float x_6_1_3; } x6; double x7; })arg1;
 - (void)_deleteOriginalData;
+- (unsigned long long)_effectiveFeatures;
 - (void)_prepareSnapToAlignData:(void *)arg1 minOffset:(void *)arg2 maxOffset:(void *)arg3; // needs 3 arg types, found 1: unsigned short
 - (void)_saveOriginalData;
 - (void)_setAuthoringEnvironment:(id)arg1;
 - (void)_snapPositionToAlign:(void *)arg1 original:(void *)arg2 unit:(void *)arg3 axisMove:(void *)arg4 rayStart:(void *)arg5 rayDir:(void *)arg6 didSnap:(void *)arg7 snapIndexes:(void *)arg8; // needs 8 arg types, found 5: struct SCNVector3 { float x1; float x2; float x3; }, double, bool, bool*, long long*
-- (void)_updateActionWithEvent:(struct { id x1; struct CGPoint { double x_2_1_1; double x_2_1_2; } x2; struct CGPoint { double x_3_1_1; double x_3_1_2; } x3; struct SCNVector3 { float x_4_1_1; float x_4_1_2; float x_4_1_3; } x4; struct SCNVector3 { float x_5_1_1; float x_5_1_2; float x_5_1_3; } x5; double x6; })arg1;
-- (void)_updateCloneStateWithEvent:(struct { id x1; struct CGPoint { double x_2_1_1; double x_2_1_2; } x2; struct CGPoint { double x_3_1_1; double x_3_1_2; } x3; struct SCNVector3 { float x_4_1_1; float x_4_1_2; float x_4_1_3; } x4; struct SCNVector3 { float x_5_1_1; float x_5_1_2; float x_5_1_3; } x5; double x6; })arg1;
+- (void)_updateActionWithEvent:(struct { id x1; id x2; struct CGPoint { double x_3_1_1; double x_3_1_2; } x3; struct CGPoint { double x_4_1_1; double x_4_1_2; } x4; struct SCNVector3 { float x_5_1_1; float x_5_1_2; float x_5_1_3; } x5; struct SCNVector3 { float x_6_1_1; float x_6_1_2; float x_6_1_3; } x6; double x7; })arg1;
+- (void)_updateCloneStateWithEvent:(struct { id x1; id x2; struct CGPoint { double x_3_1_1; double x_3_1_2; } x3; struct CGPoint { double x_4_1_1; double x_4_1_2; } x4; struct SCNVector3 { float x_5_1_1; float x_5_1_2; float x_5_1_3; } x5; struct SCNVector3 { float x_6_1_1; float x_6_1_2; float x_6_1_3; } x6; double x7; })arg1;
 - (void)addClonesToScene;
 - (id)authoringEnvironment;
 - (void)clearSnapIndexes;
@@ -115,20 +117,21 @@
 - (void)editingSpaceChanged;
 - (long long)effectiveEditingSpace;
 - (unsigned long long)features;
-- (id)hitTest:(struct { id x1; struct CGPoint { double x_2_1_1; double x_2_1_2; } x2; struct CGPoint { double x_3_1_1; double x_3_1_2; } x3; struct SCNVector3 { float x_4_1_1; float x_4_1_2; float x_4_1_3; } x4; struct SCNVector3 { float x_5_1_1; float x_5_1_2; float x_5_1_3; } x5; double x6; })arg1;
+- (id)hitTest:(struct { id x1; id x2; struct CGPoint { double x_3_1_1; double x_3_1_2; } x3; struct CGPoint { double x_4_1_1; double x_4_1_2; } x4; struct SCNVector3 { float x_5_1_1; float x_5_1_2; float x_5_1_3; } x5; struct SCNVector3 { float x_6_1_1; float x_6_1_2; float x_6_1_3; } x6; double x7; })arg1;
 - (id)init;
 - (bool)isDragging;
 - (void)lockLayout;
 - (id)manipulatorNode;
-- (bool)mouseDown:(struct { id x1; struct CGPoint { double x_2_1_1; double x_2_1_2; } x2; struct CGPoint { double x_3_1_1; double x_3_1_2; } x3; struct SCNVector3 { float x_4_1_1; float x_4_1_2; float x_4_1_3; } x4; struct SCNVector3 { float x_5_1_1; float x_5_1_2; float x_5_1_3; } x5; double x6; })arg1;
-- (bool)mouseDragged:(struct { id x1; struct CGPoint { double x_2_1_1; double x_2_1_2; } x2; struct CGPoint { double x_3_1_1; double x_3_1_2; } x3; struct SCNVector3 { float x_4_1_1; float x_4_1_2; float x_4_1_3; } x4; struct SCNVector3 { float x_5_1_1; float x_5_1_2; float x_5_1_3; } x5; double x6; })arg1;
-- (bool)mouseMoved:(struct { id x1; struct CGPoint { double x_2_1_1; double x_2_1_2; } x2; struct CGPoint { double x_3_1_1; double x_3_1_2; } x3; struct SCNVector3 { float x_4_1_1; float x_4_1_2; float x_4_1_3; } x4; struct SCNVector3 { float x_5_1_1; float x_5_1_2; float x_5_1_3; } x5; double x6; })arg1;
-- (bool)mouseUp:(struct { id x1; struct CGPoint { double x_2_1_1; double x_2_1_2; } x2; struct CGPoint { double x_3_1_1; double x_3_1_2; } x3; struct SCNVector3 { float x_4_1_1; float x_4_1_2; float x_4_1_3; } x4; struct SCNVector3 { float x_5_1_1; float x_5_1_2; float x_5_1_3; } x5; double x6; })arg1;
+- (bool)mouseDown:(struct { id x1; id x2; struct CGPoint { double x_3_1_1; double x_3_1_2; } x3; struct CGPoint { double x_4_1_1; double x_4_1_2; } x4; struct SCNVector3 { float x_5_1_1; float x_5_1_2; float x_5_1_3; } x5; struct SCNVector3 { float x_6_1_1; float x_6_1_2; float x_6_1_3; } x6; double x7; })arg1;
+- (bool)mouseDragged:(struct { id x1; id x2; struct CGPoint { double x_3_1_1; double x_3_1_2; } x3; struct CGPoint { double x_4_1_1; double x_4_1_2; } x4; struct SCNVector3 { float x_5_1_1; float x_5_1_2; float x_5_1_3; } x5; struct SCNVector3 { float x_6_1_1; float x_6_1_2; float x_6_1_3; } x6; double x7; })arg1;
+- (bool)mouseMoved:(struct { id x1; id x2; struct CGPoint { double x_3_1_1; double x_3_1_2; } x3; struct CGPoint { double x_4_1_1; double x_4_1_2; } x4; struct SCNVector3 { float x_5_1_1; float x_5_1_2; float x_5_1_3; } x5; struct SCNVector3 { float x_6_1_1; float x_6_1_2; float x_6_1_3; } x6; double x7; })arg1;
+- (bool)mouseUp:(struct { id x1; id x2; struct CGPoint { double x_3_1_1; double x_3_1_2; } x3; struct CGPoint { double x_4_1_1; double x_4_1_2; } x4; struct SCNVector3 { float x_5_1_1; float x_5_1_2; float x_5_1_3; } x5; struct SCNVector3 { float x_6_1_1; float x_6_1_2; float x_6_1_3; } x6; double x7; })arg1;
 - (void)prepareSnapToAlignData;
 - (void)prepareSnapToAlignDataIfNeeded;
 - (bool)readonly;
 - (void)removeClonesFromScene;
 - (id)scene;
+- (void)setAlternateMode:(bool)arg1;
 - (void)setFeatures:(unsigned long long)arg1;
 - (void)setReadonly:(bool)arg1;
 - (void)setTarget:(id)arg1;

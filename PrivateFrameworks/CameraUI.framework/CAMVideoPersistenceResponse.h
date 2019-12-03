@@ -24,6 +24,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } duration;
 @property (getter=isExpectingPairedVideo, nonatomic, readonly) bool expectingPairedVideo;
+@property (nonatomic, readonly) struct CGSize { double x1; double x2; } finalExpectedPixelSize;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } irisStillDisplayTime;
 @property (nonatomic, readonly) NSString *irisStillImageUUID;
@@ -44,8 +45,8 @@
 - (id)burstIdentifier;
 - (id)captureDate;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })duration;
-- (id)initWithUUID:(id)arg1 captureSession:(unsigned short)arg2 url:(id)arg3 creationDate:(id)arg4 scubberImage:(id)arg5;
-- (id)initWithUUID:(id)arg1 captureSession:(unsigned short)arg2 url:(id)arg3 creationDate:(id)arg4 scubberImage:(id)arg5 duration:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg6 stillPersistenceUUID:(id)arg7 stillDisplayTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg8;
+- (struct CGSize { double x1; double x2; })finalExpectedPixelSize;
+- (id)initWithUUID:(id)arg1 captureSession:(unsigned short)arg2 url:(id)arg3 creationDate:(id)arg4 scrubberImage:(id)arg5 finalExpectedPixelSize:(struct CGSize { double x1; double x2; })arg6 duration:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg7 stillPersistenceUUID:(id)arg8 stillDisplayTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg9 coordinationInfo:(id)arg10;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })irisStillDisplayTime;
 - (id)irisStillImageUUID;
 - (id)irisVideoPersistenceURL;

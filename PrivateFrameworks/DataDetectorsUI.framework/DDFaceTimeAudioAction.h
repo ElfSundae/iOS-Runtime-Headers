@@ -7,6 +7,7 @@
 + (bool)isAvailable;
 
 - (id)callProvider;
+- (id)dialRequest;
 - (int)interactionType;
 - (id)localizedName;
 - (id)notificationIconBundleIdentifier;

@@ -4,6 +4,7 @@
 
 @interface VCRateControlMediaController : NSObject {
     unsigned int  _afrcRemoteEstimatedBandwidth;
+    bool  _allowVideoStop;
     int  _audioFractionTier;
     unsigned int  _audioSendingBitrate;
     unsigned int  _audioStallBitrate;
@@ -55,6 +56,7 @@
 }
 
 @property (nonatomic) unsigned int afrcRemoteEstimatedBandwidth;
+@property (nonatomic) bool allowVideoStop;
 @property (nonatomic) int audioFractionTier;
 @property (nonatomic) unsigned int audioSendingBitrate;
 @property (nonatomic) int basebandFlushCount;
@@ -79,12 +81,13 @@
 @property (nonatomic) unsigned int videoSendingBitrate;
 
 - (unsigned int)afrcRemoteEstimatedBandwidth;
+- (bool)allowVideoStop;
 - (int)audioFractionTier;
 - (unsigned int)audioSendingBitrate;
 - (int)basebandFlushCount;
 - (int)basebandFlushedAudioCount;
 - (int)basebandFlushedVideoCount;
-- (void)computePacketLossWithTimestamp:(unsigned short)arg1 totalRemoteReceivedPackets:(unsigned int)arg2 packetBurstLoss:(unsigned int)arg3 packetLossRate:(double*)arg4 mostBurstLoss:(unsigned int*)arg5;
+- (void)computePacketLossWithRemoteInfo:(struct VCRCMediaPLPFromRemoteInfo { unsigned short x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int *x5; double *x6; double *x7; }*)arg1;
 - (void)dealloc;
 - (void)decreaseFlushCount:(int)arg1;
 - (bool)didMediaGetFlushedWithPayloadType:(unsigned char)arg1 transactionID:(unsigned short)arg2 packetDropped:(unsigned short)arg3 sequenceNumberArray:(unsigned short*)arg4;
@@ -114,10 +117,12 @@
 - (bool)rampDownAudioFraction;
 - (bool)rampUpAudioFraction;
 - (void)recordVideoRefreshFrameWithTimestamp:(unsigned int)arg1 payloadType:(unsigned char)arg2 packetCount:(unsigned int)arg3 isKeyFrame:(bool)arg4;
+- (void)resetAFRCVideoSendingBitrate;
 - (void)resumeVideoByVCRateControl;
 - (void)scheduleProbingSequenceAtTime:(double)arg1;
 - (void)scheduleProbingSequenceWithFrameSize:(unsigned int)arg1 paddingBytes:(unsigned int)arg2 isProbingSequenceScheduled:(bool*)arg3;
 - (void)setAfrcRemoteEstimatedBandwidth:(unsigned int)arg1;
+- (void)setAllowVideoStop:(bool)arg1;
 - (void)setAudioFractionTier:(int)arg1;
 - (void)setAudioSendingBitrate:(unsigned int)arg1;
 - (void)setBasebandFlushCount:(int)arg1;
@@ -135,7 +140,7 @@
 - (id)statisticsCollector;
 - (void)stopVideoByVCRateControl;
 - (unsigned int)targetBitrate;
-- (void)updateBasebandSuggestionWithStatistics:(struct { int x1; double x2; union { struct { unsigned int x_1_2_1; unsigned int x_1_2_2; unsigned int x_1_2_3; unsigned int x_1_2_4; unsigned int x_1_2_5; double x_1_2_6; double x_1_2_7; double x_1_2_8; double x_1_2_9; BOOL x_1_2_10[64]; } x_3_1_1; struct { unsigned int x_2_2_1; unsigned int x_2_2_2; unsigned int x_2_2_3; unsigned int x_2_2_4; unsigned int x_2_2_5; unsigned int x_2_2_6; unsigned int x_2_2_7; } x_3_1_2; struct { double x_3_2_1; unsigned int x_3_2_2; unsigned int x_3_2_3; unsigned int x_3_2_4; unsigned int x_3_2_5; unsigned int x_3_2_6; unsigned long long x_3_2_7; } x_3_1_3; struct { unsigned int x_4_2_1; bool x_4_2_2; bool x_4_2_3; bool x_4_2_4; unsigned int x_4_2_5; unsigned int x_4_2_6; double x_4_2_7; unsigned int x_4_2_8; } x_3_1_4; struct { unsigned char x_5_2_1; unsigned int x_5_2_2; unsigned int x_5_2_3; unsigned int x_5_2_4; unsigned int x_5_2_5; unsigned int x_5_2_6; unsigned int x_5_2_7; unsigned int x_5_2_8; unsigned int x_5_2_9; unsigned int x_5_2_10; double x_5_2_11; double x_5_2_12; double x_5_2_13; unsigned int x_5_2_14; unsigned int x_5_2_15; unsigned int x_5_2_16; } x_3_1_5; } x3; })arg1;
+- (void)updateBasebandSuggestionWithStatistics:(struct { int x1; double x2; bool x3; bool x4; union { struct { unsigned int x_1_2_1; unsigned int x_1_2_2; unsigned int x_1_2_3; unsigned int x_1_2_4; unsigned int x_1_2_5; double x_1_2_6; double x_1_2_7; double x_1_2_8; double x_1_2_9; BOOL x_1_2_10[64]; } x_5_1_1; struct { unsigned int x_2_2_1; unsigned int x_2_2_2; unsigned int x_2_2_3; unsigned int x_2_2_4; unsigned int x_2_2_5; unsigned int x_2_2_6; unsigned int x_2_2_7; unsigned int x_2_2_8; unsigned int x_2_2_9; unsigned int x_2_2_10; unsigned int x_2_2_11; double x_2_2_12; unsigned int x_2_2_13; unsigned int x_2_2_14; double x_2_2_15; unsigned int x_2_2_16; } x_5_1_2; struct { double x_3_2_1; double x_3_2_2; unsigned int x_3_2_3; unsigned int x_3_2_4; unsigned int x_3_2_5; unsigned int x_3_2_6; unsigned int x_3_2_7; unsigned long long x_3_2_8; } x_5_1_3; struct { unsigned int x_4_2_1; bool x_4_2_2; bool x_4_2_3; bool x_4_2_4; unsigned int x_4_2_5; unsigned int x_4_2_6; double x_4_2_7; unsigned int x_4_2_8; } x_5_1_4; struct { unsigned char x_5_2_1; unsigned int x_5_2_2; unsigned int x_5_2_3; unsigned int x_5_2_4; unsigned int x_5_2_5; unsigned int x_5_2_6; unsigned int x_5_2_7; unsigned int x_5_2_8; unsigned int x_5_2_9; unsigned int x_5_2_10; double x_5_2_11; double x_5_2_12; double x_5_2_13; unsigned int x_5_2_14; unsigned int x_5_2_15; unsigned int x_5_2_16; } x_5_1_5; } x5; })arg1;
 - (void)updateLargeFrameSizeWithBandwidth:(unsigned int)arg1;
 - (void)updateProbingLargeFrameSizeCap;
 - (unsigned int)videoSendingBitrate;

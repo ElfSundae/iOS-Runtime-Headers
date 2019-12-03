@@ -39,6 +39,7 @@
 - (void)_initializeServerChangeToken:(id)arg1;
 - (void)_initializeSubscription:(id)arg1;
 - (void)addCloudRecord:(id)arg1 ownerID:(id)arg2;
+- (void)allDescendentsCloudRecordsForParentID:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)backingStoreZone;
 - (id)cache;
 - (id)cloudRecordWithName:(id)arg1;
@@ -52,6 +53,7 @@
 - (id)createCloudRecordWithObjectID:(id)arg1 recordName:(id)arg2;
 - (id)createCloudZoneChangeTemporaryCache:(bool)arg1;
 - (void)deleteCloudRecord:(id)arg1;
+- (void)deleteCloudRecordNames:(id)arg1;
 - (void)deleteZone;
 - (id)description;
 - (bool)doesProcessChangeEvenIfDecryptionFails;
@@ -81,6 +83,8 @@
 - (id)subscription;
 - (id)subscriptionName;
 - (void)updateCloudRecord:(id)arg1;
+- (void)updateCloudRecord:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)updateServerChangeToken:(id)arg1;
 - (id)zone;
 - (id)zoneRootRecordName;
 

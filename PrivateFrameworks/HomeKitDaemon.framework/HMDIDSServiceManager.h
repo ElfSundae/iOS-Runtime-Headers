@@ -11,9 +11,9 @@
 }
 
 @property _HMDIDSProxyLinkPreferenceAssertion *proxyLinkPreferenceAssertion;
-@property (nonatomic, readonly) IDSService *proxyService;
-@property (nonatomic, readonly) IDSService *service;
-@property (nonatomic, readonly) IDSService *streamService;
+@property (readonly) IDSService *proxyService;
+@property (readonly) IDSService *service;
+@property (readonly) IDSService *streamService;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *workQueue;
 
 + (id)sharedManager;

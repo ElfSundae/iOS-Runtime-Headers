@@ -4,7 +4,6 @@
 
 @interface VTUIStyle : NSObject {
     long long  _audioProductID;
-    NSString * _audioProductName;
     bool  _bluetoothDeviceSupportsHeySiri;
     UIFontMetrics * _bodyMetricsForScaling;
     NSString * _deviceClass;
@@ -12,20 +11,22 @@
     NSArray * _deviceImageIntroSuffixes;
     NSArray * _deviceStringSuffixes;
     long long  _enrollmentMode;
-    bool  _isBuddy;
+    bool  _isBuddyOrFollowUp;
+    bool  _isFloatingWithReducedWidth;
     bool  _isHeySiriAlwaysOn;
     bool  _isIpad;
     bool  _isLargeIpad;
     MGWrapper * _mgWrapper;
     bool  _needMoreLineSpacing;
     bool  _supportSideButtonActivation;
+    bool  _supportsSideButtonActivation;
 }
 
 @property (nonatomic) long long audioProductID;
-@property (nonatomic, copy) NSString *audioProductName;
 @property (nonatomic) bool bluetoothDeviceSupportsHeySiri;
 @property (nonatomic) long long enrollmentMode;
-@property (nonatomic) bool isBuddy;
+@property (nonatomic) bool isBuddyOrFollowUp;
+@property (nonatomic) bool isFloatingWithReducedWidth;
 @property (nonatomic) bool isHeySiriAlwaysOn;
 @property (nonatomic) bool supportSideButtonActivation;
 
@@ -37,23 +38,22 @@
 - (void)_createImageSuffixesForDevice;
 - (void)_createStringSuffixesForDevice;
 - (id)_deviceImageForBaseImageName:(id)arg1;
+- (id)_headerTitleFont;
 - (long long)audioProductID;
-- (id)audioProductName;
 - (bool)bluetoothDeviceSupportsHeySiri;
 - (double)bottomOfContinueToNotNowFirstBaseline;
 - (id)buttonTextColor;
+- (double)continueButtonFromBottom;
 - (double)continueButtonPaddingTop;
 - (double)continueButtonTopOffset;
 - (void)dealloc;
-- (id)deviceDoneImage;
 - (id)deviceSetupImage;
-- (id)educationVideoGradientColor;
-- (double)educationalVideoFrameHeight;
-- (bool)educationalVideosSupported;
+- (id)dynamicColorWithLightColor:(id)arg1 darkColor:(id)arg2;
 - (long long)enrollmentMode;
 - (double)finishEnrollmentFromBottom;
 - (double)flamesHeight;
-- (double)flamesViewHeight;
+- (double)flamesViewHeightLandscape;
+- (double)flamesViewHeightPortrait;
 - (id)footerButtonFont;
 - (double)footerButtonMaximumWidth;
 - (id)footerFont;
@@ -63,25 +63,31 @@
 - (double)footerTextBaselineFromTop;
 - (double)footerTextBottomPadding;
 - (id)footerTextColor;
-- (id)headerTitleFont;
 - (double)headerTitleLinespacing;
 - (double)horizontalPadding;
 - (double)horizontalPaddingLandscape;
 - (double)horizontalPaddingPortrait;
 - (double)horizontalTextPadding;
-- (double)imageViewTopOffset;
+- (double)imageViewTopOffsetLandscape;
+- (double)imageViewTopOffsetPortrait;
 - (id)init;
-- (bool)isBuddy;
+- (id)instructionLabelFont;
+- (bool)isBuddyOrFollowUp;
+- (bool)isFloatingWithReducedWidth;
 - (bool)isGreenTeaCapableDevice;
 - (bool)isHeySiriAlwaysOn;
+- (bool)isSmallestOnboardingDeviceInBuddy;
 - (double)laterButtonBaselinePadding;
 - (double)minimumImageViewHeight;
 - (void)orientationChanged:(id)arg1;
 - (double)paddingFromTop;
-- (id)placeholderImageForEducationalVideo;
+- (id)paneBackgroundColor;
+- (double)paneVideoFrameHeight;
 - (id)primaryButtonFont;
 - (double)primaryButtonHeight;
 - (double)primaryButtonHorizontalInset;
+- (double)proxAboutLinkFirstBaselineFromTop;
+- (double)proxAboutLinkHeight;
 - (id)proxCancelFont;
 - (double)proxContainerCornerRadius;
 - (double)proxContainerHorizontalVerticalPadding;
@@ -99,6 +105,7 @@
 - (double)proxPaddingImageSubtitle;
 - (double)proxPaddingImageSubtitleFromTop;
 - (double)proxPaddingIntroSubtitleButton;
+- (double)proxPaddingIntroSubtitleLandscape;
 - (double)proxPaddingIntroTitleImage;
 - (double)proxPaddingSkipButtonPageLabel;
 - (double)proxPaddingTitleImage;
@@ -136,20 +143,23 @@
 - (double)radarBtnVerticalPadding;
 - (id)secondaryButtonFont;
 - (void)setAudioProductID:(long long)arg1;
-- (void)setAudioProductName:(id)arg1;
 - (void)setBluetoothDeviceSupportsHeySiri:(bool)arg1;
 - (void)setEnrollmentMode:(long long)arg1;
-- (void)setIsBuddy:(bool)arg1;
+- (void)setIsBuddyOrFollowUp:(bool)arg1;
+- (void)setIsFloatingWithReducedWidth:(bool)arg1;
 - (void)setIsHeySiriAlwaysOn:(bool)arg1;
 - (void)setSupportSideButtonActivation:(bool)arg1;
-- (id)siriWaveformImage;
-- (double)skipButtonBaselineBottomMargin;
+- (double)skipButtonBaselineBottomMarginLandscape;
+- (double)skipButtonBaselineBottomMarginPortrait;
+- (double)smallestDeviceFrameHeight;
+- (id)smallestDeviceOnboardingAsset;
 - (double)statusLabelMinHeight;
 - (double)statusLabelVerticalOffsetFromCenter;
 - (double)subtitle1BaselineOffset;
 - (double)subtitle2BaselineOffset;
 - (id)subtitleFont;
 - (bool)supportSideButtonActivation;
+- (bool)supportsSideButtonActivation;
 - (double)textOverlayLabelWidth;
 - (double)textOverlayOffsetFromTop;
 - (double)tickMarkHorizontalSizeRatio;
@@ -165,5 +175,6 @@
 - (double)turnOnSiriImageViewTopOffset;
 - (double)turnOnSiriSubtitle1BaselineOffset;
 - (double)turnOnSiriSubtitle2BaselineOffset;
+- (id)videoPlaceholderImage;
 
 @end

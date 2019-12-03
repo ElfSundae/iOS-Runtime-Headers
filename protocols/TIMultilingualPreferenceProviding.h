@@ -7,5 +7,6 @@
 
 - (TIInputMode *)preferredSecondaryInputMode;
 - (NSArray *)userEnabledInputModes;
+- (NSArray *)userPreferredLanguages;
 
 @end

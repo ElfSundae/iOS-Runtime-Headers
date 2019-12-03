@@ -3,6 +3,7 @@
  */
 
 @interface PXToastViewController : UIViewController {
+    CAShapeLayer * _checkLayer;
     <PXToastViewControllerDelegate> * _delegate;
     UINotificationFeedbackGenerator * _feedbackGenerator;
     UIImage * _image;
@@ -15,6 +16,7 @@
     UIVisualEffectView * _toastView;
 }
 
+@property (nonatomic, retain) CAShapeLayer *checkLayer;
 @property (nonatomic) <PXToastViewControllerDelegate> *delegate;
 @property (nonatomic, retain) UINotificationFeedbackGenerator *feedbackGenerator;
 @property (nonatomic, retain) UIImage *image;
@@ -36,6 +38,7 @@
 - (void).cxx_destruct;
 - (void)_animateCheckMark;
 - (void)_dismissAfterDelay:(double)arg1;
+- (id)checkLayer;
 - (id)delegate;
 - (id)feedbackGenerator;
 - (id)image;
@@ -47,6 +50,7 @@
 - (id)presentationWindow;
 - (id)primaryLabel;
 - (id)secondaryLabel;
+- (void)setCheckLayer:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setFeedbackGenerator:(id)arg1;
 - (void)setImage:(id)arg1;
@@ -59,6 +63,7 @@
 - (void)setToastView:(id)arg1;
 - (bool)shouldUseAnimatedCheckmark;
 - (id)toastView;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

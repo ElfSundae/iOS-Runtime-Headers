@@ -6,6 +6,7 @@
     struct { 
         /* Warning: Unrecognized filer type: ']' using 'void*' */ void*columns[4]; 
     }  _cameraTransform;
+    ARVideoFormat * _currentlyActiveVideoFormat;
     double  _timestamp;
     NSDictionary * _vioStateDetails;
     struct { 
@@ -16,11 +17,12 @@
 }
 
 @property (nonatomic) struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; } cameraTransform;
+@property (nonatomic, retain) ARVideoFormat *currentlyActiveVideoFormat;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (nonatomic, readonly) double timestamp;
+@property (nonatomic) double timestamp;
 @property (nonatomic, copy) NSDictionary *vioStateDetails;
 @property (nonatomic) struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; } visionCameraTransform;
 @property (nonatomic) long long worldMappingStatus;
@@ -30,12 +32,15 @@
 
 - (void).cxx_destruct;
 - (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })cameraTransform;
+- (id)currentlyActiveVideoFormat;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTimestamp:(double)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)setCameraTransform:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })arg1;
+- (void)setCurrentlyActiveVideoFormat:(id)arg1;
+- (void)setTimestamp:(double)arg1;
 - (void)setVioStateDetails:(id)arg1;
 - (void)setVisionCameraTransform:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })arg1;
 - (void)setWorldMappingStatus:(long long)arg1;

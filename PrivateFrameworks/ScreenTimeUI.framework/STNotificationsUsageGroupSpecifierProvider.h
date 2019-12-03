@@ -13,8 +13,10 @@
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *notificationSettingsGatewayQueue;
 
 - (void).cxx_destruct;
+- (void)_selectedUsageReportDidChangeFrom:(id)arg1 to:(id)arg2;
+- (void)_specifierIdentifierDidChange:(id)arg1;
+- (id)_usageDetailsCoordinator:(id)arg1;
 - (id)getNotificationsInfo:(id)arg1;
-- (id)getUsageReport:(id)arg1;
 - (id)init;
 - (id)newSpecifierWithUsageItem:(id)arg1;
 - (id)notificationSectionByBundleID;

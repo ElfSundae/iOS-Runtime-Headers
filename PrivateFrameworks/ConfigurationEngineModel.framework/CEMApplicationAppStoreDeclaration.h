@@ -5,7 +5,7 @@
 @interface CEMApplicationAppStoreDeclaration : CEMAssetBase <CEMRegisteredTypeProtocol> {
     NSString * _payloadBundleIdentifier;
     CEMAssetBaseDescriptor * _payloadDescriptor;
-    NSString * _payloadITunesStoreID;
+    NSNumber * _payloadITunesStoreID;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -13,7 +13,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSString *payloadBundleIdentifier;
 @property (nonatomic, copy) CEMAssetBaseDescriptor *payloadDescriptor;
-@property (nonatomic, copy) NSString *payloadITunesStoreID;
+@property (nonatomic, copy) NSNumber *payloadITunesStoreID;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;

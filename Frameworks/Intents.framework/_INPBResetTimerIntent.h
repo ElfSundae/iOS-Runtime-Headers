@@ -3,6 +3,7 @@
  */
 
 @interface _INPBResetTimerIntent : PBCodable <NSCopying, NSSecureCoding, _INPBResetTimerIntent> {
+    bool  __encodeLegacyGloryData;
     struct { 
         unsigned int resetMultiple : 1; 
     }  _has;
@@ -11,6 +12,7 @@
     _INPBTimer * _targetTimer;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool hasIntentMetadata;
@@ -22,13 +24,19 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) _INPBTimer *targetTimer;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasIntentMetadata;
 - (bool)hasResetMultiple;
 - (bool)hasTargetTimer;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)intentMetadata;
 - (bool)isEqual:(id)arg1;
 - (bool)readFrom:(id)arg1;

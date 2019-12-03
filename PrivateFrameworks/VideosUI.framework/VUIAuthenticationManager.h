@@ -13,7 +13,7 @@
 + (void)_performAuthenticationWithContext:(id)arg1 completionHandler:(id /* block */)arg2;
 + (id)_userAccount;
 + (bool)allowsAccountModification;
-+ (void)requestAuthenticationWithCompletionHandler:(id /* block */)arg1;
++ (void)requestAuthenticationAlwaysPrompt:(bool)arg1 withCompletionHandler:(id /* block */)arg2;
 + (id)sharedInstance;
 + (void)signInUserWithAppleID:(id)arg1 password:(id)arg2 completionHandler:(id /* block */)arg3;
 + (void)signOutUserWithCompletionHandler:(id /* block */)arg1;

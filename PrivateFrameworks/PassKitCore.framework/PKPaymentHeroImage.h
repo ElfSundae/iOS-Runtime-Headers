@@ -35,7 +35,7 @@
 - (id)initWithIdentifier:(id)arg1 imageData:(id)arg2 credentialType:(long long)arg3;
 - (id)initWithLegacyDictionary:(id)arg1 identifier:(id)arg2;
 - (bool)isBeta;
-- (bool)isSupportedByDevice:(id)arg1 deviceVersion:(id)arg2 deviceClass:(id)arg3;
+- (bool)isSupportedByDevice:(id)arg1;
 - (id)requiredDeviceFeatures;
 - (id)versionRequirement;
 

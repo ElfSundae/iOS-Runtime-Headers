@@ -3,7 +3,7 @@
  */
 
 @interface _NSObserverList : NSObject {
-    unsigned int  _observerCount;
+    _Atomic unsigned int  _observerCount;
     id  _observers;
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 

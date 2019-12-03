@@ -3,15 +3,18 @@
  */
 
 @interface NTKRichComplicationCornerTextImageView : NTKRichComplicationCornerTextCustomView {
-    UIImageView * _imageView;
+    NTKRichComplicationImageView * _imageView;
 }
 
 + (bool)handlesComplicationTemplate:(id)arg1;
-+ (void)load;
 + (bool)supportsComplicationFamily:(long long)arg1;
 
 - (void).cxx_destruct;
+- (void)_editingDidEnd;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
 - (id)_outerView;
+- (void)setPaused:(bool)arg1;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 
 @end

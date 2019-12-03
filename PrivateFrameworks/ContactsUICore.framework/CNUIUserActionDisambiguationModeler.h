@@ -28,7 +28,7 @@
 - (id)discoverActionsForContact:(id)arg1 actionType:(id)arg2 trackingChanges:(bool)arg3;
 - (id)discoveringEnvironment;
 - (id)init;
-- (id)initWithDiscoveringEnvironment:(id)arg1 usingPerAppDiscoveringHelper:(bool)arg2;
+- (id)initWithDiscoveringEnvironment:(id)arg1;
 - (id)initWithTargetDiscoveringHelper:(id)arg1 rankingHelper:(id)arg2 defaultActionFetcher:(id)arg3 discoveringEnvironment:(id)arg4;
 - (id)modelsWithContact:(id)arg1 actionType:(id)arg2;
 - (id)modelsWithDefaultAction:(id)arg1 actions:(id)arg2 recentActions:(id)arg3 directoryServiceActions:(id)arg4 foundOnDeviceActions:(id)arg5 sorts:(bool)arg6 throttles:(bool)arg7;
@@ -41,7 +41,6 @@
 - (void)setRankingHelper:(id)arg1;
 - (void)setTargetDiscoveringHelper:(id)arg1;
 - (void)setTracksChanges:(bool)arg1;
-- (id)sharedTargetDiscoveringHelper:(id)arg1;
 - (id)sortActionsOnModel:(id)arg1;
 - (id)targetDiscoveringHelper;
 - (id)targetsChangedObservableForActionType:(id)arg1;

@@ -6,8 +6,9 @@
     NSArray * _currentLatencyMap;
     NSArray * _edgeLatencies;
     NPEdgeSelection * _edgeSelection;
+    bool  _hasIPv6;
     bool  _isProbeInProgress;
-    unsigned int  _lastFailureReason;
+    long long  _lastFallbackReason;
     NSDate * _lastUsed;
     NSDate * _lastVisited;
     NSDate * _probeRateLimit;
@@ -16,8 +17,9 @@
 @property (retain) NSArray *currentLatencyMap;
 @property (retain) NSArray *edgeLatencies;
 @property (retain) NPEdgeSelection *edgeSelection;
+@property bool hasIPv6;
 @property bool isProbeInProgress;
-@property unsigned int lastFailureReason;
+@property long long lastFallbackReason;
 @property (retain) NSDate *lastUsed;
 @property (readonly) NSString *lastUsedDesc;
 @property (retain) NSDate *lastVisited;
@@ -34,10 +36,11 @@
 - (id)edgeSelection;
 - (void)encodeWithCoder:(id)arg1;
 - (void)handleTFOFailedForAddressFamily:(unsigned char)arg1;
+- (bool)hasIPv6;
 - (id)initWithCoder:(id)arg1;
 - (bool)isLatency:(id)arg1 qualifiedForLatencyMap:(id)arg2 parameters:(struct networkParameters { bool x1; bool x2; bool x3; }*)arg3 requireUniqueEdges:(bool)arg4;
 - (bool)isProbeInProgress;
-- (unsigned int)lastFailureReason;
+- (long long)lastFallbackReason;
 - (id)lastUsed;
 - (id)lastUsedDesc;
 - (id)lastVisited;
@@ -49,8 +52,9 @@
 - (void)setCurrentLatencyMap:(id)arg1;
 - (void)setEdgeLatencies:(id)arg1;
 - (void)setEdgeSelection:(id)arg1;
+- (void)setHasIPv6:(bool)arg1;
 - (void)setIsProbeInProgress:(bool)arg1;
-- (void)setLastFailureReason:(unsigned int)arg1;
+- (void)setLastFallbackReason:(long long)arg1;
 - (void)setLastUsed:(id)arg1;
 - (void)setLastVisited:(id)arg1;
 - (void)setProbeRateLimit:(id)arg1;

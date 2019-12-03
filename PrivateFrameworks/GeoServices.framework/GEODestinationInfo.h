@@ -4,15 +4,16 @@
 
 @interface GEODestinationInfo : PBCodable <NSCopying> {
     struct { 
-        unsigned int hasDisplayAddress : 1; 
-        unsigned int hasDisplayName : 1; 
-        unsigned int hasSpokenAddress : 1; 
-        unsigned int hasSpokenName : 1; 
-    }  _has;
+        unsigned int has_hasDisplayAddress : 1; 
+        unsigned int has_hasDisplayName : 1; 
+        unsigned int has_hasSpokenAddress : 1; 
+        unsigned int has_hasSpokenName : 1; 
+    }  _flags;
     bool  _hasDisplayAddress;
     bool  _hasDisplayName;
     bool  _hasSpokenAddress;
     bool  _hasSpokenName;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic) bool hasDisplayAddress;
@@ -23,7 +24,12 @@
 @property (nonatomic) bool hasHasSpokenName;
 @property (nonatomic) bool hasSpokenAddress;
 @property (nonatomic) bool hasSpokenName;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
+- (void).cxx_destruct;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -39,6 +45,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasDisplayAddress:(bool)arg1;
 - (void)setHasDisplayName:(bool)arg1;
@@ -48,6 +55,7 @@
 - (void)setHasHasSpokenName:(bool)arg1;
 - (void)setHasSpokenAddress:(bool)arg1;
 - (void)setHasSpokenName:(bool)arg1;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 
 @end

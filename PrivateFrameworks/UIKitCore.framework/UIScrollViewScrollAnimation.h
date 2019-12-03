@@ -14,6 +14,7 @@
         double x; 
         double y; 
     }  _targetOffset;
+    bool  _targetOffsetValidAtStart;
 }
 
 - (void).cxx_destruct;

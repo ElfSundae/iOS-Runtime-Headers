@@ -3,6 +3,7 @@
  */
 
 @interface ARImageDetectionResult : NSObject <NSCopying, NSSecureCoding> {
+    double  _estimatedScaleFactor;
     void * _imageContext;
     ARReferenceImage * _referenceImage;
     struct { 
@@ -13,6 +14,7 @@
     }  _worldTrackingCameraTransformAtDetection;
 }
 
+@property (nonatomic) double estimatedScaleFactor;
 @property (nonatomic) void*imageContext;
 @property (nonatomic, retain) ARReferenceImage *referenceImage;
 @property (nonatomic) struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; } visionTransform;
@@ -23,10 +25,12 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (double)estimatedScaleFactor;
 - (void*)imageContext;
 - (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)referenceImage;
+- (void)setEstimatedScaleFactor:(double)arg1;
 - (void)setImageContext:(void*)arg1;
 - (void)setReferenceImage:(id)arg1;
 - (void)setVisionTransform:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })arg1;

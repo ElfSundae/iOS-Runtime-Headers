@@ -3,7 +3,6 @@
  */
 
 @interface CSVMapper : CMMapper {
-    CMArchiveManager * mArchiver;
     unsigned long long  mColumnCount;
     NSString * mFileName;
     struct CGSize { 

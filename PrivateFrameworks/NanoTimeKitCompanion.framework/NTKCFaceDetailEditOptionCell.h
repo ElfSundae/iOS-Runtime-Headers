@@ -6,6 +6,7 @@
     NTKEditOptionCollection * _collection;
     UICollectionView * _collectionView;
     <NTKCFaceDetailEditOptionCellDelegate> * _delegate;
+    NTKFace * _face;
     NTKFaceView * _faceView;
     UICollectionViewFlowLayout * _layout;
     UILabel * _optionsDescription;
@@ -30,6 +31,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <NTKCFaceDetailEditOptionCellDelegate> *delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) NTKFace *face;
 @property (nonatomic) NTKFaceView *faceView;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) UICollectionViewFlowLayout *layout;
@@ -56,8 +58,9 @@
 - (id)delegate;
 - (void)ensureIndexVisible:(long long)arg1 animated:(bool)arg2;
 - (void)ensureSelectedOptionVisible:(bool)arg1;
+- (id)face;
 - (id)faceView;
-- (id)initWithCollection:(id)arg1 forFaceView:(id)arg2;
+- (id)initWithCollection:(id)arg1 forFaceView:(id)arg2 face:(id)arg3;
 - (id)layout;
 - (void)layoutSubviews;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
@@ -70,6 +73,7 @@
 - (void)setCollection:(id)arg1;
 - (void)setCollectionView:(id)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setFace:(id)arg1;
 - (void)setFaceView:(id)arg1;
 - (void)setLayout:(id)arg1;
 - (void)setOptionsDescription:(id)arg1;

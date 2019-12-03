@@ -16,6 +16,8 @@
     unsigned long long  _previousTransactionState;
     unsigned long long  _previousVASTransactionState;
     NSData * _restrictedModeID;
+    NSData * _rmpUuid;
+    unsigned long long  _rmpUuidRefTimestamp;
     NSData * _tsmUuid;
     unsigned long long  _tsmUuidRefTimestamp;
     NSUserDefaults * _userDefault;
@@ -30,6 +32,8 @@
 + (id)sharedAWDLogger;
 
 - (void)_postAWDEvent:(id)arg1 withTimestamp:(unsigned long long)arg2;
+- (void)_postAWDHCIEndOfTransactionEventWithParametersLegacy:(id)arg1 currentTimestamp:(unsigned long long)arg2;
+- (void)_postAWDHCIStartOfTransactionEventWithParametersLegacy:(id)arg1 currentTimestamp:(unsigned long long)arg2;
 - (void)_postAWDHardwareExceptionEventWithAssertionCounter:(unsigned int)arg1 hardwareType:(unsigned int)arg2 wdogDump:(unsigned int*)arg3 hwFltDump:(unsigned int*)arg4;
 - (void)_postReaderSessionEndedWithType:(unsigned int)arg1 uuid:(id)arg2 startTime:(id)arg3 params:(id)arg4;
 - (void)_postReaderSessionPollingStartedWithType:(unsigned int)arg1 uuid:(id)arg2 startTime:(id)arg3;
@@ -68,9 +72,7 @@
 - (void)postAWDHCEStateChangeEvent:(unsigned int)arg1;
 - (void)postAWDHCIActivityTimeout:(id)arg1;
 - (void)postAWDHCIEndOfTransactionEventWithParameters:(id)arg1;
-- (void)postAWDHCIEndOfTransactionV2EventWithParameters:(id)arg1;
-- (void)postAWDHCIStartOfTransactionEventWithVersion:(unsigned int)arg1 withStatus:(unsigned int)arg2;
-- (void)postAWDHCIStartOfTransactionV2EventWithParameters:(id)arg1;
+- (void)postAWDHCIStartOfTransactionEventWithParameters:(id)arg1;
 - (void)postAWDMiddlewareException:(unsigned int)arg1 mwVersion:(unsigned int)arg2 errorType:(unsigned int)arg3 errorCode:(unsigned int)arg4 breadcrumb:(unsigned long long)arg5 checkMaxExceptionCounter:(bool)arg6;
 - (void)postAWDMobileSoftwareUpdateException:(unsigned int)arg1;
 - (void)postAWDPLLUnlockEvent;
@@ -95,6 +97,8 @@
 - (void)postAWDVASSelectOSE:(id)arg1;
 - (void)postAWDVASTransactionException:(unsigned int)arg1 withSWStatus:(unsigned int)arg2;
 - (void)postAWDVersionInfo:(id)arg1;
+- (void)postReaderModeIngestionSessionEnded:(id)arg1 startTime:(unsigned long long)arg2;
+- (void)postReaderModeIngestionSessionStarted:(id)arg1;
 - (void)setActiveAID:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)updateStats:(id)arg1 reset:(bool)arg2;

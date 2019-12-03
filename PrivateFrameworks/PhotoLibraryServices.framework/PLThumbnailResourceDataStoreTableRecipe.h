@@ -8,10 +8,15 @@
 
 @property (nonatomic) unsigned int recipeID;
 
-- (void)applyToResource:(id)arg1 sourceProperties:(id)arg2 inContext:(id)arg3;
+- (id)chooseIngredientsFrom:(id)arg1 version:(unsigned int)arg2;
+- (id)codecInContext:(id)arg1;
+- (id)colorSpaceGivenSourceColorSpace:(id)arg1 inContext:(id)arg2;
 - (id)description;
+- (void)generateAndStoreForAsset:(id)arg1 version:(unsigned int)arg2 imageConversionClient:(id)arg3 videoConversionClient:(id)arg4 progress:(id*)arg5 completion:(id /* block */)arg6;
 - (id)initWithRecipeID:(unsigned int)arg1;
 - (unsigned int)recipeID;
 - (void)setRecipeID:(unsigned int)arg1;
+- (id)supportedVersionsForLocalResourceGeneration;
+- (id)utiInContext:(id)arg1;
 
 @end

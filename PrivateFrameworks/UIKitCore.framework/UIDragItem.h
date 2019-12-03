@@ -4,76 +4,103 @@
 
 @interface UIDragItem : NSObject {
     unsigned long long  __managementState;
-    _UIDragSessionImpl * _dragSession;
-    _UIDraggingItem * _draggingItem;
-    id /* block */  _imageComponentsProvider;
-    _UIInternalDraggingItem * _internalDraggingItem;
+    bool  _deferPreviewUpdates;
+    <_UIDragSetDownAnimationTarget> * _destinationVisualTarget;
+    bool  _dirty;
+    <_UIDragDropSessionInternal> * _dragDropSession;
+    _UIDragPreviewBlockProvider * _dragPreviewBlockProvider;
     NSItemProvider * _itemProvider;
     id  _localObject;
-    id /* block */  _preferredImageComponentsProvider;
-    _UIDragPreviewProvider * _preferredPreviewProvider;
+    unsigned long long  _preferredPreviewType;
     id /* block */  _previewProvider;
     id  _privateLocalContext;
+    <_UIDragSetDownAnimationTarget> * _sourceVisualTarget;
     UITargetedDragPreview * _targetedLiftPreview;
+    unsigned long long  _updatedPreviewType;
+    struct CGSize { 
+        double width; 
+        double height; 
+    }  _visibleDropItemSize;
 }
 
-@property (getter=_dragSession, setter=_setDragSession:, nonatomic) _UIDragSessionImpl *_dragSession;
 @property (setter=_setDraggedTextRange:, nonatomic, retain) UITextRange *_draggedTextRange;
-@property (getter=_draggingItem, setter=_setDraggingItem:, nonatomic, retain) _UIDraggingItem *_draggingItem;
 @property (nonatomic) unsigned long long _managementState;
 @property (nonatomic, readonly) WebBookmark *_sf_localBookmark;
 @property (nonatomic, readonly) NSURL *_sf_localURL;
-@property (nonatomic, readonly) struct CGSize { double x1; double x2; } _visibleDropItemSize;
-@property (getter=_duiPreviewProvider, nonatomic, readonly) id /* block */ duiPreviewProvider;
-@property (nonatomic, readonly) id /* block */ imageComponentsProvider;
-@property (getter=_internalDraggingItem, setter=_setInternalDraggingItem:, nonatomic) _UIInternalDraggingItem *internalDraggingItem;
+@property (nonatomic, readonly) _SFTabStateData *_sf_tabStateData;
+@property (getter=_deferPreviewUpdates, setter=_setDeferPreviewUpdates:, nonatomic) bool deferPreviewUpdates;
+@property (getter=_destinationVisualTarget, setter=_setDestinationVisualTarget:, nonatomic) <_UIDragSetDownAnimationTarget> *destinationVisualTarget;
+@property (getter=_isDirty, setter=_setDirty:, nonatomic) bool dirty;
+@property (getter=_dragDropSession, setter=_setDragDropSession:, nonatomic) <_UIDragDropSessionInternal> *dragDropSession;
+@property (nonatomic, retain) _UIDragPreviewBlockProvider *dragPreviewBlockProvider;
 @property (nonatomic, retain) NSItemProvider *itemProvider;
 @property (nonatomic, retain) id localObject;
-@property (nonatomic, readonly) id /* block */ preferredImageComponentsProvider;
-@property (getter=_preferredPreviewProvider, setter=_setPreferredPreviewProvider:, nonatomic, retain) _UIDragPreviewProvider *preferredPreviewProvider;
+@property (nonatomic) unsigned long long preferredPreviewType;
 @property (nonatomic, copy) id /* block */ previewProvider;
 @property (getter=_privateLocalContext, setter=_setPrivateLocalContext:, nonatomic, retain) id privateLocalContext;
-@property (getter=_targetedLiftPreview, setter=_setTargetedLiftPreview:, nonatomic, retain) UITargetedDragPreview *targetedLiftPreview;
+@property (getter=_sourceVisualTarget, setter=_setSourceVisualTarget:, nonatomic) <_UIDragSetDownAnimationTarget> *sourceVisualTarget;
+@property (getter=_targetedLiftPreview, nonatomic, retain) UITargetedDragPreview *targetedLiftPreview;
+@property (nonatomic) unsigned long long updatedPreviewType;
+@property (getter=_visibleDropItemSize, setter=_setVisibleDropItemSize:, nonatomic) struct CGSize { double x1; double x2; } visibleDropItemSize;
 
 // Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 
 - (void).cxx_destruct;
-- (void)_didSetPreferredPreviewProvider;
-- (id)_dragSession;
+- (id)_currentPreviewProvider;
+- (bool)_deferPreviewUpdates;
+- (id)_destinationVisualTarget;
+- (id)_dragDropSession;
 - (id)_draggedTextRange;
-- (id)_draggingItem;
-- (id /* block */)_duiPreviewProvider;
-- (id)_internalDraggingItem;
+- (bool)_isDirty;
+- (void)_loadOriginalImageComponentProvider;
 - (unsigned long long)_managementState;
-- (id)_preferredPreviewProvider;
-- (struct CGSize { double x1; double x2; })_previewImageSize;
+- (void)_previewNeedsUpdateForType:(unsigned long long)arg1;
+- (id)_previewProviderForType:(unsigned long long)arg1;
 - (id)_privateLocalContext;
-- (void)_setDragSession:(id)arg1;
+- (void)_setDeferPreviewUpdates:(bool)arg1;
+- (void)_setDestinationVisualTarget:(id)arg1;
+- (void)_setDirty:(bool)arg1;
+- (void)_setDragDropSession:(id)arg1;
 - (void)_setDraggedTextRange:(id)arg1;
-- (void)_setDraggingItem:(id)arg1;
-- (void)_setInternalDraggingItem:(id)arg1;
-- (void)_setPreferredPreviewProvider:(id)arg1;
 - (void)_setPrivateLocalContext:(id)arg1;
-- (void)_setTargetedLiftPreview:(id)arg1;
+- (void)_setSourceVisualTarget:(id)arg1;
+- (void)_setVisibleDropItemSize:(struct CGSize { double x1; double x2; })arg1;
+- (id)_sourceVisualTarget;
 - (id)_targetedLiftPreview;
+- (id)_uicmi_getAssociatedMenuIdentifier;
+- (void)_uicmi_setAssociatedMenuIdentifier:(id)arg1;
+- (void)_updatePreferredPreview;
 - (struct CGSize { double x1; double x2; })_visibleDropItemSize;
-- (id /* block */)imageComponentsProvider;
+- (id)dragPreviewBlockProvider;
 - (id)initWithItemProvider:(id)arg1;
 - (id)itemProvider;
 - (id)localObject;
-- (id /* block */)preferredImageComponentsProvider;
+- (unsigned long long)preferredPreviewType;
 - (id /* block */)previewProvider;
+- (void)setDragPreviewBlockProvider:(id)arg1;
 - (void)setItemProvider:(id)arg1;
 - (void)setLocalObject:(id)arg1;
+- (void)setPreferredPreviewType:(unsigned long long)arg1;
 - (void)setPreviewProvider:(id /* block */)arg1;
+- (void)setTargetedLiftPreview:(id)arg1;
+- (void)setUpdatedPreviewType:(unsigned long long)arg1;
 - (void)set_managementState:(unsigned long long)arg1;
+- (unsigned long long)updatedPreviewType;
 
 // Image: /System/Library/Frameworks/SafariServices.framework/SafariServices
 
++ (id)_sf_itemWithTabStateData:(id)arg1 userActivity:(id)arg2;
 + (void)_sf_loadObjectsFromDragItems:(id)arg1 usingLocalObjectLoader:(int (*)arg2 objectLoader:(int (*)arg3 completionHandler:(id /* block */)arg4;
 
 - (id)_sf_initWithBookmark:(id)arg1;
+- (id)_sf_initWithSiriSuggestion:(id)arg1;
 - (id)_sf_localBookmark;
 - (id)_sf_localURL;
+- (id)_sf_tabStateData;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoardHome.framework/SpringBoardHome
+
+- (id)sbh_appDragLocalContext;
+- (void)sbh_setAppDragLocalContext:(id)arg1;
 
 @end

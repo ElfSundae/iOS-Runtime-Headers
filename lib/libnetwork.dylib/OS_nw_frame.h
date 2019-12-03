@@ -4,6 +4,6 @@
 
 @interface OS_nw_frame : OS_object
 
-- (void)_dispose;
+- (void)dealloc;
 
 @end

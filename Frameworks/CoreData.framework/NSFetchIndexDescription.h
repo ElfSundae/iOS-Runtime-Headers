@@ -17,6 +17,7 @@
 + (bool)supportsSecureCoding;
 
 - (void)_checkElements:(id)arg1;
+- (long long)_compare:(id)arg1;
 - (id)_compoundIndexRepresentation;
 - (bool)_expressionIsCompoundIndexCompatible:(id)arg1;
 - (bool)_isBinary;

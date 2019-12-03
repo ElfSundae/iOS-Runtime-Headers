@@ -3,17 +3,23 @@
  */
 
 @interface SiriUIConfiguration : NSObject <NSCopying> {
-    int  _flamesViewFidelity;
+    long long  _flamesViewFidelity;
     bool  _isSystemHostedPresentation;
+    long long  _siriViewMode;
 }
 
-@property (nonatomic, readonly) int flamesViewFidelity;
+@property (nonatomic, readonly) long long flamesViewFidelity;
 @property (nonatomic, readonly) bool isSystemHostedPresentation;
+@property (nonatomic, readonly) long long siriViewMode;
 
+- (id)_NSStringFromSiriViewMode:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (int)flamesViewFidelity;
+- (id)description;
+- (long long)flamesViewFidelity;
 - (id)init;
-- (id)initWithFlamesViewFidelity:(int)arg1 isSystemHostedPresentation:(bool)arg2;
+- (id)initWithFlamesViewFidelity:(long long)arg1 isSystemHostedPresentation:(bool)arg2;
+- (id)initWithFlamesViewFidelity:(long long)arg1 isSystemHostedPresentation:(bool)arg2 siriViewMode:(long long)arg3;
 - (bool)isSystemHostedPresentation;
+- (long long)siriViewMode;
 
 @end

@@ -32,6 +32,7 @@
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUsername:(id)arg1 service:(id)arg2;
 - (id)initWithUsername:(id)arg1 userIdentifier:(id)arg2 service:(id)arg3 teamIdentifier:(id)arg4 bundleIdentifiers:(id)arg5;

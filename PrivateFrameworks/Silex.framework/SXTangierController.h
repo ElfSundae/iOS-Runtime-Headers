@@ -58,6 +58,7 @@
 @property (nonatomic) bool preventScrollViewDidScrollReentrance;
 @property (nonatomic) bool rebuildFlows;
 @property (nonatomic, retain) STScrollView *scrollView;
+@property (nonatomic) bool selectionEnabled;
 @property (nonatomic, readonly) bool shouldClipToScrollViewBoundsInVisibleBounds;
 @property (nonatomic, readonly) bool shouldPopKnobsOutsideEnclosingScrollView;
 @property (nonatomic, readonly) bool shouldResizeCanvasToScrollView;
@@ -94,7 +95,6 @@
 - (id)icc;
 - (id)initWithViewport:(id)arg1 scrollView:(id)arg2 componentActionHandler:(id)arg3 dragItemProvider:(id)arg4 componentController:(id)arg5 componentInteractionManager:(id)arg6;
 - (unsigned long long)initialSubviewCount;
-- (bool)interactiveCanvasController:(id)arg1 configureHardPressGesture:(id)arg2;
 - (id)interactiveCanvasController:(id)arg1 delegateConformingToProtocol:(id)arg2 forRep:(id)arg3;
 - (id)interactiveCanvasController:(id)arg1 dragItemForSmartField:(id)arg2 interaction:(id)arg3 session:(id)arg4;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })interactiveCanvasController:(id)arg1 expandVisibleBoundsForClippingReps:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
@@ -121,6 +121,7 @@
 - (bool)rebuildFlows;
 - (id)scrollPositionForVisibleRectWithComponentRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)scrollView;
+- (bool)selectionEnabled;
 - (void)setDelegate:(id)arg1;
 - (void)setDisableClippingForTiles:(bool)arg1;
 - (void)setEnclosingCanvasScrolling:(bool)arg1;
@@ -129,12 +130,12 @@
 - (void)setPreventScrollViewDidScrollReentrance:(bool)arg1;
 - (void)setRebuildFlows:(bool)arg1;
 - (void)setScrollView:(id)arg1;
+- (void)setSelectionEnabled:(bool)arg1;
 - (void)setStoredSelection:(id)arg1;
 - (void)setUnscaledCanvasRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setViewport:(id)arg1;
 - (bool)shouldClipToScrollViewBoundsInVisibleBounds;
 - (id)storedSelection;
-- (id)stringForLookupItemForInteractiveCanvasController:(id)arg1;
 - (void)teardown;
 - (id)textRenderCollector;
 - (id)topLevelLayersForInteractiveCanvasController:(id)arg1;
@@ -142,7 +143,6 @@
 - (id)underRepsHost;
 - (struct os_unfair_lock_s { unsigned int x1; })unfairLock;
 - (void)updateCanvasSize:(struct CGSize { double x1; double x2; })arg1 forComponentViews:(id)arg2;
-- (void)updateHUD;
 - (void)updateInfosWithBlock:(id /* block */)arg1;
 - (void)updatePresentationState;
 - (id)viewport;
@@ -150,6 +150,5 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })visibleBounds;
 - (id)visibleBoundsClipViewForInteractiveCanvasController:(id)arg1;
 - (void)willTransitionToPresented;
-- (void)willTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
 
 @end

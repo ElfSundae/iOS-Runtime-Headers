@@ -2,19 +2,12 @@
    Image: /System/Library/PrivateFrameworks/MapsSuggestions.framework/MapsSuggestions
  */
 
-@interface MapsSuggestionsRoutineSource : MapsSuggestionsBaseSource <MapsSuggestionsSource> {
-    bool  _areFrequentLocationsAvailable;
-    NSArray * _homeAddresses;
-    GEOLocationShifter * _locationShifter;
-    MapsSuggestionsLimitedDictionary * _mapItemCache;
-    MapsSuggestionsLimitedDictionary * _mapItemCacheOrigin;
+@interface MapsSuggestionsRoutineSource : MapsSuggestionsBaseSource <MapsSuggestionsPreloadableSource, MapsSuggestionsSource> {
     struct NSArray { Class x1; } * _previouslyAddedEntries;
     NSObject<OS_dispatch_queue> * _queue;
-    MapsSuggestionsNetworkRequester * _requester;
-    RTRoutineManager * _routineManager;
+    MapsSuggestionsRoutine * _routine;
     bool  _running;
     NSObject<OS_dispatch_source> * _updateTimer;
-    NSArray * _workAddresses;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -28,20 +21,8 @@
 + (bool)isEnabled;
 
 - (void).cxx_destruct;
-- (bool)_addCalendarFieldsToSuggestionEntry:(id)arg1 fromSource:(id)arg2;
-- (bool)_addFieldsToSuggestionsEntry:(id)arg1 fromRTMapItem:(id)arg2;
-- (void)_addLabelForEntry:(id)arg1;
-- (bool)_addParkedCarFieldsToSuggestionsEntry:(id)arg1 vehicleEvent:(id)arg2;
-- (bool)_addRecentsFieldsToSuggestionEntry:(id)arg1 fromSource:(id)arg2;
-- (bool)_addResumeRouteFieldsToSuggestionEntry:(id)arg1 fromSource:(id)arg2;
-- (int)_convertTransportType:(long long)arg1;
-- (long long)_convertType:(long long)arg1 source:(id)arg2 typeSource:(long long)arg3;
 - (void)_requestTouristInfoFromRoutineIfNeededForLocation:(id)arg1;
-- (void)_resolveMapItemsAndAddEntries:(struct NSArray { Class x1; }*)arg1;
-- (void)_setFrequentLocationsAreAvailable:(bool)arg1;
 - (void)_startMonitoringVehicleEvents;
-- (id)_suggestionEntryForPredictedLOI:(id)arg1;
-- (void)_treatPLOIs:(id)arg1 stepName:(id)arg2;
 - (void)_updateSuggestionEntries;
 - (bool)canProduceEntriesOfType:(long long)arg1;
 - (void)dealloc;
@@ -49,6 +30,7 @@
 - (bool)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(id /* block */)arg3;
 - (void)start;
 - (void)stop;
+- (bool)suggestionsEntriesAtLocation:(id)arg1 period:(struct NSDateInterval { Class x1; }*)arg2 handler:(id /* block */)arg3;
 - (double)updateSuggestionEntries;
 
 @end

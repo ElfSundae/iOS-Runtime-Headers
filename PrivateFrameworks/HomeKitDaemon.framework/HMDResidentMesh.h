@@ -7,9 +7,10 @@
     HMFTimer * _devicesChangedTimer;
     HMDHomeManager * _homeManager;
     HMFTimer * _linkQualityMonitorTimer;
+    NSMutableDictionary * _loadMetrics;
     NSSet * _primaryResidentForHomes;
     NSMutableArray * _reachableAccessories;
-    HMDCentralMessageDispatcher * _remoteMessageDispatcher;
+    HMDMessageDispatcher * _remoteMessageDispatcher;
     HMDResidentMeshMeshStorage * _resident;
     NSMutableArray * _residents;
     long long  _startupTickCount;
@@ -25,11 +26,12 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) HMDHomeManager *homeManager;
 @property (nonatomic, readonly) HMFTimer *linkQualityMonitorTimer;
+@property (nonatomic, readonly) NSMutableDictionary *loadMetrics;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (nonatomic, readonly) NSUUID *messageTargetUUID;
 @property (nonatomic, retain) NSSet *primaryResidentForHomes;
 @property (nonatomic, retain) NSMutableArray *reachableAccessories;
-@property (nonatomic) HMDCentralMessageDispatcher *remoteMessageDispatcher;
+@property (nonatomic) HMDMessageDispatcher *remoteMessageDispatcher;
 @property (nonatomic) HMDResidentMeshMeshStorage *resident;
 @property (nonatomic, retain) NSMutableArray *residents;
 @property (nonatomic) long long startupTickCount;
@@ -66,7 +68,7 @@
 - (void)_handleMeshUpdateRequestMessage:(id)arg1;
 - (void)_removeConnectivityFromDeviceToAccessory:(id)arg1 activateTimer:(bool)arg2;
 - (id)_residentMapForAccessories:(id)arg1;
-- (void)_sendMessage:(id)arg1 payload:(id)arg2 target:(id)arg3 responseHandler:(id /* block */)arg4;
+- (void)_sendMessage:(id)arg1 payload:(id)arg2 target:(id)arg3 force:(bool)arg4 responseHandler:(id /* block */)arg5;
 - (void)_updateAccessoryLinkQuality;
 - (id)balancedResidentMapForAccessories:(id)arg1;
 - (id)bestResidentForAccessory:(id)arg1;
@@ -79,6 +81,7 @@
 - (id)homeManager;
 - (id)initWithHomeManager:(id)arg1 residentEnabled:(bool)arg2;
 - (id)linkQualityMonitorTimer;
+- (id)loadMetrics;
 - (id)logIdentifier;
 - (id)messageDestination;
 - (id)messageReceiveQueue;
@@ -88,8 +91,10 @@
 - (id)remoteMessageDispatcher;
 - (id)resident;
 - (id)residents;
+- (id)residentsForCameraAccessory:(id)arg1 excludeResident:(id /* block */)arg2 sortedBy:(id /* block */)arg3;
 - (void)setBroadcastRate:(unsigned long long)arg1;
 - (void)setHomeManager:(id)arg1;
+- (void)setMetricForCurrentDevice:(id)arg1 withValue:(id)arg2 isUrgent:(bool)arg3;
 - (void)setPrimaryResidentForHomes:(id)arg1;
 - (void)setReachableAccessories:(id)arg1;
 - (void)setRemoteMessageDispatcher:(id)arg1;

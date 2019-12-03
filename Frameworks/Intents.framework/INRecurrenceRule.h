@@ -7,8 +7,8 @@
     unsigned long long  _interval;
 }
 
-@property (readonly) long long frequency;
-@property (readonly) unsigned long long interval;
+@property (nonatomic, readonly) long long frequency;
+@property (nonatomic, readonly) unsigned long long interval;
 
 + (bool)supportsSecureCoding;
 

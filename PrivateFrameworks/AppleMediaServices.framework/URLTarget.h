@@ -4,14 +4,14 @@
 
 @interface URLTarget : NSObject {
     unsigned int  _applicationState;
-    NSString * _bundleId;
+    NSString * _bundleID;
     long long  _defaultIndex;
     NSString * _normalScheme;
     NSString * _secureScheme;
 }
 
 @property (nonatomic) unsigned int applicationState;
-@property (nonatomic, retain) NSString *bundleId;
+@property (nonatomic, retain) NSString *bundleID;
 @property (nonatomic) long long defaultIndex;
 @property (nonatomic, retain) NSString *normalScheme;
 @property (nonatomic, retain) NSString *secureScheme;
@@ -20,13 +20,13 @@
 
 - (void).cxx_destruct;
 - (unsigned int)applicationState;
-- (id)bundleId;
+- (id)bundleID;
 - (long long)defaultIndex;
 - (id)initWithBundle:(id)arg1 scheme:(id)arg2 secureScheme:(id)arg3;
 - (id)normalScheme;
 - (id)secureScheme;
 - (void)setApplicationState:(unsigned int)arg1;
-- (void)setBundleId:(id)arg1;
+- (void)setBundleID:(id)arg1;
 - (void)setDefaultIndex:(long long)arg1;
 - (void)setNormalScheme:(id)arg1;
 - (void)setSecureScheme:(id)arg1;

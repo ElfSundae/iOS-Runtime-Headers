@@ -3,17 +3,17 @@
  */
 
 @interface MFDAMoveResponseConsumer : MFDAMailAccountConsumer <DAMessageMoveRequestConsumer> {
+    NSMutableDictionary * _destinationRemoteIDsBySourceRemoteIDs;
     MFError * _error;
     NSMutableSet * _failures;
-    NSSet * _messagesIDs;
-    NSMutableDictionary * _newRemoteIDsByMessageID;
+    NSSet * _sourceRemoteIDs;
 }
 
 @property (nonatomic, retain) MFError *error;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)error;
-- (id)initWithMessageIDs:(id)arg1 newRemoteIDsByMessageID:(id)arg2 failures:(id)arg3;
+- (id)initWithSourceRemoteIDs:(id)arg1 destinationRemoteIDsBySourceRemoteIDs:(id)arg2 failures:(id)arg3;
 - (void)resultsForMessageMove:(id)arg1;
 - (void)setError:(id)arg1;
 - (void)taskFailed:(id)arg1 statusCode:(long long)arg2 error:(id)arg3;

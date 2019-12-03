@@ -17,6 +17,7 @@
     unsigned long long  _horizontalContentAlignment;
     unsigned long long  _ignoreDocumentGutter;
     unsigned long long  _ignoreDocumentMargin;
+    unsigned long long  _ignoreViewportPadding;
     <SXEdgeSpacing> * _margin;
     struct _SXConvertibleValue { 
         double value; 
@@ -43,6 +44,7 @@
 @property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, readonly) unsigned long long ignoreDocumentGutter;
 @property (nonatomic) unsigned long long ignoreDocumentMargin;
+@property (nonatomic, readonly) unsigned long long ignoreViewportPadding;
 @property (nonatomic, retain) <SXEdgeSpacing> *margin;
 @property (nonatomic, readonly) struct _SXConvertibleValue { double x1; unsigned long long x2; } maximumContentWidth;
 @property (nonatomic, readonly) struct _SXConvertibleValue { double x1; unsigned long long x2; } maximumWidth;
@@ -58,6 +60,7 @@
 - (unsigned long long)horizontalContentAlignment;
 - (unsigned long long)ignoreDocumentGutter;
 - (unsigned long long)ignoreDocumentMargin;
+- (unsigned long long)ignoreViewportPadding;
 - (id)initWithColumnRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (id)margin;
 - (struct _SXConvertibleValue { double x1; unsigned long long x2; })maximumContentWidth;

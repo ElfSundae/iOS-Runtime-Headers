@@ -4,7 +4,7 @@
 
 @interface SearchUIRowCardSectionView : SearchUICardSectionView
 
-@property (retain) TLKSimpleRowView *contentView;
+@property (nonatomic, retain) TLKSimpleRowView *contentView;
 
 + (id)dragSubtitleForCardSection:(id)arg1;
 + (id)dragTitleForCardSection:(id)arg1;

@@ -3,17 +3,17 @@
  */
 
 @interface IMFullScreenEffect : NSObject {
-    <IMFullScreenEffectDelegate> * _delegate;
+    id  _delegate;
     NSString * _identifier;
     NSArray * _messageFilters;
+    unsigned long long  _messageOrientation;
     NSURL * _soundEffectFileURL;
-    bool  _soundEffectHasHapticTrack;
+    id  _triggeredByObject;
     bool  _triggeredByResponseKit;
-    IMMessagePartChatItem * _triggeringChatItem;
 }
 
 @property (nonatomic, readonly) UIColor *backgroundColor;
-@property (nonatomic) <IMFullScreenEffectDelegate> *delegate;
+@property id delegate;
 @property (nonatomic, readonly) double duration;
 @property (nonatomic, readonly) bool effectIsDark;
 @property (nonatomic, readonly) Class effectViewClass;
@@ -21,11 +21,12 @@
 @property (nonatomic, copy) NSString *identifier;
 @property (nonatomic, readonly) unsigned long long layerCount;
 @property (nonatomic, readonly) NSArray *messageFilters;
+@property (nonatomic) unsigned long long messageOrientation;
 @property (nonatomic, readonly) bool shouldDrawOverNavigationBar;
 @property (nonatomic, readonly) NSURL *soundEffectFileURL;
 @property (nonatomic, readonly) bool soundEffectHasHapticTrack;
+@property (nonatomic) id triggeredByObject;
 @property (nonatomic) bool triggeredByResponseKit;
-@property (nonatomic, copy) IMMessagePartChatItem *triggeringChatItem;
 
 + (id)_monochromeDimmingFilterWithType:(long long)arg1;
 + (id)bigEmojiFilter;
@@ -33,11 +34,7 @@
 + (id)tapBackFilter;
 
 - (void).cxx_destruct;
-- (void)_didPrepareSoundEffect;
-- (void)applyMessageFiltersToCells:(id)arg1;
-- (void)applyMessageFiltersToTriggeringCell:(id)arg1;
 - (struct UIColor { Class x1; }*)backgroundColor;
-- (void)clearMessageFiltersFromCells:(id)arg1;
 - (id)delegate;
 - (double)duration;
 - (bool)effectIsDark;
@@ -46,17 +43,17 @@
 - (bool)isForegroundEffect;
 - (unsigned long long)layerCount;
 - (id)messageFilters;
-- (void)playSoundEffect;
+- (unsigned long long)messageOrientation;
 - (void)prepareSoundEffect;
 - (void)setDelegate:(id)arg1;
 - (void)setIdentifier:(id)arg1;
+- (void)setMessageOrientation:(unsigned long long)arg1;
+- (void)setTriggeredByObject:(id)arg1;
 - (void)setTriggeredByResponseKit:(bool)arg1;
-- (void)setTriggeringChatItem:(id)arg1;
 - (bool)shouldDrawOverNavigationBar;
 - (id)soundEffectFileURL;
 - (bool)soundEffectHasHapticTrack;
-- (void)stopSoundEffect;
+- (id)triggeredByObject;
 - (bool)triggeredByResponseKit;
-- (id)triggeringChatItem;
 
 @end

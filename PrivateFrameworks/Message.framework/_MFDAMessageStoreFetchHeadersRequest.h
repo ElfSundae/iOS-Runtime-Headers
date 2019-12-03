@@ -11,6 +11,7 @@
 @property (nonatomic, readonly) bool isUserRequested;
 @property (nonatomic, readonly) bool shouldSend;
 
+- (void).cxx_destruct;
 - (id)deferredOperation;
 - (unsigned long long)generationNumber;
 - (unsigned long long)hash;

@@ -17,6 +17,7 @@
 
 - (void)dealloc;
 - (void)dispose;
+- (id)extensionPoint;
 - (void)handleNewFlow:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)handleReport:(id)arg1;
 - (void)notifyRulesChanged;
@@ -27,6 +28,5 @@
 - (void)setObserving:(bool)arg1;
 - (void)startFilterWithOptions:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)stopObserving;
-- (void)stopWithReason:(int)arg1;
 
 @end

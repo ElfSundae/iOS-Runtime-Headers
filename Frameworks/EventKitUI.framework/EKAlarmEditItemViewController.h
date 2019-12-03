@@ -34,7 +34,7 @@
 - (void)_storeChanged:(id)arg1;
 - (id)alarm;
 - (unsigned long long)alarmIndex;
-- (void)alarmTableDidChangeAlarm:(id)arg1;
+- (void)alarmTable:(id)arg1 didSelectRowAtIndexPath:(id)arg2 commitSelectionBlock:(id /* block */)arg3;
 - (bool)allDay;
 - (id)calendar;
 - (bool)customSelected;

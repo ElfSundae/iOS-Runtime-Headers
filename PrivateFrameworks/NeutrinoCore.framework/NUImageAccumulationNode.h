@@ -24,9 +24,10 @@
 - (id)_image;
 - (id)_newImage;
 - (id)colorSpace;
+- (id)debugQuickLookObject;
 - (id)image;
 - (struct { long long x1; long long x2; })imageSize;
-- (id)initWithImageSize:(struct { long long x1; long long x2; })arg1 tileSize:(struct { long long x1; long long x2; })arg2 pixelFormat:(id)arg3 colorSpace:(id)arg4 input:(id)arg5;
+- (id)initWithImageSize:(struct { long long x1; long long x2; })arg1 tileSize:(struct { long long x1; long long x2; })arg2 borderSize:(struct { long long x1; long long x2; })arg3 pixelFormat:(id)arg4 colorSpace:(id)arg5 input:(id)arg6;
 - (id)initWithSettings:(id)arg1 inputs:(struct NSDictionary { Class x1; }*)arg2;
 - (id)layout;
 - (id)pixelFormat;

@@ -9,6 +9,7 @@
     UILabel * _label;
     UINavigationBar * _navBar;
     AKSmoothPathView * _pathView;
+    UIResponder * _responderToRestore;
     AKInkSignatureView * _signatureView;
 }
 
@@ -21,15 +22,20 @@
 @property (nonatomic, retain) UILabel *label;
 @property (nonatomic, retain) UINavigationBar *navBar;
 @property (nonatomic, retain) AKSmoothPathView *pathView;
+@property (nonatomic) UIResponder *responderToRestore;
 @property (nonatomic, retain) AKInkSignatureView *signatureView;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_cancel:(id)arg1;
 - (void)_clear:(id)arg1;
 - (void)_done:(id)arg1;
+- (void)_setToolPickerVisible;
 - (void)_validateButtons;
 - (id)baselineView;
+- (bool)becomeFirstResponder;
+- (bool)canBecomeFirstResponder;
 - (id)controller;
 - (id)delegate;
 - (void)didReceiveMemoryWarning;
@@ -40,14 +46,18 @@
 - (id)pathView;
 - (long long)positionForBar:(id)arg1;
 - (bool)prefersStatusBarHidden;
+- (id)responderToRestore;
 - (void)setBaselineView:(id)arg1;
 - (void)setController:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setLabel:(id)arg1;
 - (void)setNavBar:(id)arg1;
 - (void)setPathView:(id)arg1;
+- (void)setResponderToRestore:(id)arg1;
 - (void)setSignatureView:(id)arg1;
 - (id)signatureView;
+- (void)viewDidAppear:(bool)arg1;
+- (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLoad;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 

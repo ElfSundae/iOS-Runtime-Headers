@@ -15,7 +15,7 @@
 @property (nonatomic, retain) HKUnitPreferenceController *unitController;
 
 - (void).cxx_destruct;
-- (void)_addHeartbeatSequenceSample:(id)arg1;
+- (void)_addHeartbeatSeriesSample:(id)arg1;
 - (id)_displayStringForInstantaneousBPM:(double)arg1;
 - (id)_displayStringForTime:(double)arg1;
 - (id)_initWithHealthStore:(id)arg1 displayTypeController:(id)arg2 unitController:(id)arg3;
@@ -23,7 +23,7 @@
 - (id)displayTypeController;
 - (id)healthStore;
 - (id)initWithHRVSample:(id)arg1 healthStore:(id)arg2 displayTypeController:(id)arg3 unitController:(id)arg4;
-- (id)initWithHeartbeatSequenceSample:(id)arg1 healthStore:(id)arg2 displayTypeController:(id)arg3 unitController:(id)arg4;
+- (id)initWithHeartbeatSeriesSample:(id)arg1 healthStore:(id)arg2 displayTypeController:(id)arg3 unitController:(id)arg4;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)setBpmPoints:(id)arg1;
 - (void)setDisplayTypeController:(id)arg1;

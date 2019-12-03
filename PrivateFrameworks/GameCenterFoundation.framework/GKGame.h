@@ -12,16 +12,17 @@
 @property (nonatomic, readonly) NSString *bundleVersion;
 @property (nonatomic, readonly) NSString *cacheKey;
 @property (nonatomic, readonly) NSString *defaultCategory;
-@property (getter=isDownloading, nonatomic, readonly) bool downloading;
 @property long long environment;
 @property (nonatomic, readonly) NSNumber *externalVersion;
-@property (nonatomic, readonly) NSDictionary *gameDescriptor;
+@property (nonatomic, readonly) GKGameDescriptor *gameDescriptor;
+@property (nonatomic, readonly) NSDictionary *gameDescriptorDictionary;
 @property (nonatomic, readonly) struct GKGameInfo { bool x1; bool x2; bool x3; bool x4; bool x5; bool x6; unsigned long long x7; unsigned long long x8; unsigned long long x9; unsigned long long x10; } gameInfo;
 @property (getter=isInstalled, nonatomic, readonly) bool installedGame;
 @property (retain) GKGameInternal *internal;
 @property (nonatomic, readonly) NSString *name;
-@property (nonatomic) unsigned char platform;
+@property (nonatomic) long long platform;
 @property (getter=isPrerendered, nonatomic) bool prerendered;
+@property (nonatomic, readonly) NSString *shortBundleVersion;
 @property (nonatomic, retain) GKStoreItemInternal *storeItem;
 @property (nonatomic, readonly) bool supportsMultiplayer;
 @property (nonatomic, readonly) bool supportsTurnBasedMultiplayer;
@@ -48,6 +49,7 @@
 - (long long)environment;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)gameDescriptor;
+- (id)gameDescriptorDictionary;
 - (struct GKGameInfo { bool x1; bool x2; bool x3; bool x4; bool x5; bool x6; unsigned long long x7; unsigned long long x8; unsigned long long x9; unsigned long long x10; })gameInfo;
 - (void)getFriendPlayersForAchievement:(id)arg1 handler:(id /* block */)arg2;
 - (void)getFriendPlayersForLeaderboard:(id)arg1 handler:(id /* block */)arg2;
@@ -57,7 +59,6 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithInternalRepresentation:(id)arg1;
 - (id)internal;
-- (bool)isDownloading;
 - (bool)isEqual:(id)arg1;
 - (bool)isGameCenter;
 - (bool)isInstalled;
@@ -96,6 +97,7 @@
 - (id)iconForStyle:(long long)arg1;
 - (id)imageSourceForIconStyle:(long long)arg1;
 - (id)imageSourceForiOSIconStyle:(long long)arg1;
+- (void)launchAppOrPresentStoreSheetFromViewController:(id)arg1;
 - (id)loadIconForSize:(struct CGSize { double x1; double x2; })arg1 scale:(double)arg2 withCompletionHandler:(id /* block */)arg3;
 - (id)loadIconForStyle:(long long)arg1 withCompletionHandler:(id /* block */)arg2;
 - (id)logoImageWithMaximumSize:(struct CGSize { double x1; double x2; })arg1;

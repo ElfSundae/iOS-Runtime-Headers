@@ -4,13 +4,15 @@
 
 @interface GEOTimeToLeaveMapLaunch : PBCodable <NSCopying> {
     struct { 
-        unsigned int minutesUntilEvent : 1; 
-    }  _has;
+        unsigned int has_minutesUntilEvent : 1; 
+    }  _flags;
     double  _minutesUntilEvent;
 }
 
 @property (nonatomic) bool hasMinutesUntilEvent;
 @property (nonatomic) double minutesUntilEvent;
+
++ (bool)isValid:(id)arg1;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -21,6 +23,7 @@
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (double)minutesUntilEvent;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasMinutesUntilEvent:(bool)arg1;
 - (void)setMinutesUntilEvent:(double)arg1;

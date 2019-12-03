@@ -15,6 +15,12 @@
     NSData * _payload;
     NSString * _sound;
     int  _source;
+    NSString * _subtitle;
+    NSMutableArray * _subtitleLocalizedArguments;
+    NSString * _subtitleLocalizedKey;
+    NSString * _title;
+    NSMutableArray * _titleLocalizedArguments;
+    NSString * _titleLocalizedKey;
     NSString * _uuid;
 }
 
@@ -28,17 +34,34 @@
 @property (nonatomic, readonly) bool hasPayload;
 @property (nonatomic, readonly) bool hasSound;
 @property (nonatomic) bool hasSource;
+@property (nonatomic, readonly) bool hasSubtitle;
+@property (nonatomic, readonly) bool hasSubtitleLocalizedKey;
+@property (nonatomic, readonly) bool hasTitle;
+@property (nonatomic, readonly) bool hasTitleLocalizedKey;
 @property (nonatomic, readonly) bool hasUuid;
 @property (nonatomic) bool isRead;
 @property (nonatomic, retain) NSData *payload;
 @property (nonatomic, retain) NSString *sound;
 @property (nonatomic) int source;
+@property (nonatomic, retain) NSString *subtitle;
+@property (nonatomic, retain) NSMutableArray *subtitleLocalizedArguments;
+@property (nonatomic, retain) NSString *subtitleLocalizedKey;
+@property (nonatomic, retain) NSString *title;
+@property (nonatomic, retain) NSMutableArray *titleLocalizedArguments;
+@property (nonatomic, retain) NSString *titleLocalizedKey;
 @property (nonatomic, retain) NSString *uuid;
+
++ (Class)subtitleLocalizedArgumentsType;
++ (Class)titleLocalizedArgumentsType;
 
 - (void).cxx_destruct;
 - (int)StringAsSource:(id)arg1;
+- (void)addSubtitleLocalizedArguments:(id)arg1;
+- (void)addTitleLocalizedArguments:(id)arg1;
 - (int)badgeCount;
 - (id)category;
+- (void)clearSubtitleLocalizedArguments;
+- (void)clearTitleLocalizedArguments;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -51,6 +74,10 @@
 - (bool)hasPayload;
 - (bool)hasSound;
 - (bool)hasSource;
+- (bool)hasSubtitle;
+- (bool)hasSubtitleLocalizedKey;
+- (bool)hasTitle;
+- (bool)hasTitleLocalizedKey;
 - (bool)hasUuid;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
@@ -68,10 +95,26 @@
 - (void)setPayload:(id)arg1;
 - (void)setSound:(id)arg1;
 - (void)setSource:(int)arg1;
+- (void)setSubtitle:(id)arg1;
+- (void)setSubtitleLocalizedArguments:(id)arg1;
+- (void)setSubtitleLocalizedKey:(id)arg1;
+- (void)setTitle:(id)arg1;
+- (void)setTitleLocalizedArguments:(id)arg1;
+- (void)setTitleLocalizedKey:(id)arg1;
 - (void)setUuid:(id)arg1;
 - (id)sound;
 - (int)source;
 - (id)sourceAsString:(int)arg1;
+- (id)subtitle;
+- (id)subtitleLocalizedArguments;
+- (id)subtitleLocalizedArgumentsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)subtitleLocalizedArgumentsCount;
+- (id)subtitleLocalizedKey;
+- (id)title;
+- (id)titleLocalizedArguments;
+- (id)titleLocalizedArgumentsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)titleLocalizedArgumentsCount;
+- (id)titleLocalizedKey;
 - (id)uuid;
 - (void)writeTo:(id)arg1;
 

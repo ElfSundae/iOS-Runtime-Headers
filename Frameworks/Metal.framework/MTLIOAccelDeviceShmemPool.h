@@ -3,18 +3,18 @@
  */
 
 @interface MTLIOAccelDeviceShmemPool : NSObject {
-    /* Warning: unhandled struct encoding: '{_MTLIOAccelDeviceShmemPoolPrivate="queue"{shmemPoolQueue="tqh_first"@"MTLIOAccelDeviceShmem""tqh_last"^@}"lock"{os_unfair_lock_s="_os_unfair_lock_opaque"I}"count"i"shmemClass"#"device"@"MTLIOAccelDevice""shmemSize"I}' */ struct _MTLIOAccelDeviceShmemPoolPrivate { 
+    struct _MTLIOAccelDeviceShmemPoolPrivate { 
         struct shmemPoolQueue { 
             MTLIOAccelDeviceShmem *tqh_first; 
             id *tqh_last; 
-            struct os_unfair_lock_s { 
-                unsigned int _os_unfair_lock_opaque; 
-            } lock; 
-            int count; 
-            Class shmemClass; 
-            MTLIOAccelDevice *device; 
-            unsigned int shmemSize; 
         } queue; 
+        struct os_unfair_lock_s { 
+            unsigned int _os_unfair_lock_opaque; 
+        } lock; 
+        int count; 
+        Class shmemClass; 
+        MTLIOAccelDevice *device; 
+        unsigned int shmemSize; 
     }  _priv;
 }
 

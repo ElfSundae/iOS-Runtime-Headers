@@ -2,9 +2,10 @@
    Image: /System/Library/PrivateFrameworks/CoreDuet.framework/CoreDuet
  */
 
-@interface _DKEventQuery : _DKQuery <_DKExecutableQuery> {
+@interface _DKEventQuery : _DKQuery <NSCopying, _DKExecutableQuery> {
     bool  _deduplicateValues;
     NSObject<OS_dispatch_queue> * _defaultQueue;
+    NSSet * _deviceIDs;
     NSArray * _eventStreams;
     NSArray * _groupByProperties;
     unsigned long long  _limit;
@@ -17,6 +18,7 @@
 }
 
 @property bool deduplicateValues;
+@property (retain) NSSet *deviceIDs;
 @property (retain) NSArray *eventStreams;
 @property (retain) NSArray *groupByProperties;
 @property unsigned long long limit;
@@ -30,14 +32,17 @@
 + (id)eventQueryWithPredicate:(id)arg1 eventStreams:(id)arg2 offset:(unsigned long long)arg3 limit:(unsigned long long)arg4 sortDescriptors:(id)arg5;
 + (id)eventQueryWithPredicate:(id)arg1 eventStreams:(id)arg2 offset:(unsigned long long)arg3 limit:(unsigned long long)arg4 sortDescriptors:(id)arg5 resultHandler:(id /* block */)arg6;
 + (id)expressionForEventDuration;
++ (void)load;
 + (id)predicateForEventsOfMaximumDuration:(double)arg1;
 + (id)predicateForEventsOfMinimumDuration:(double)arg1;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)constructFetchRequestPredicate;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (bool)deduplicateValues;
 - (id)description;
+- (id)deviceIDs;
 - (void)encodeWithCoder:(id)arg1;
 - (id)eventStreams;
 - (id)executeUsingCoreDataStorage:(id)arg1 error:(id*)arg2;
@@ -53,6 +58,7 @@
 - (long long)resultType;
 - (id /* block */)resultsHandler;
 - (void)setDeduplicateValues:(bool)arg1;
+- (void)setDeviceIDs:(id)arg1;
 - (void)setEventStreams:(id)arg1;
 - (void)setGroupByProperties:(id)arg1;
 - (void)setLimit:(unsigned long long)arg1;

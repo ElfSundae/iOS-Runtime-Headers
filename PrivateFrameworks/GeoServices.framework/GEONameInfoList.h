@@ -10,11 +10,13 @@
 @property (nonatomic, retain) NSMutableArray *nameInfos;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
 + (Class)nameInfoType;
 
 - (void).cxx_destruct;
 - (void)addNameInfo:(id)arg1;
 - (void)clearNameInfos;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -25,6 +27,7 @@
 - (id)nameInfoAtIndex:(unsigned long long)arg1;
 - (id)nameInfos;
 - (unsigned long long)nameInfosCount;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setNameInfos:(id)arg1;
 - (id)unknownFields;

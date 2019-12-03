@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PhotoLibrary.framework/PhotoLibrary
  */
 
-@interface PLUIImageViewController : UIViewController <PLCropOverlayDelegate, PLImageLoadingQueueDelegate, PLPhotoTileViewControllerDelegate, PLVideoViewDelegate> {
+@interface PLUIImageViewController : UIViewController <PLCropOverlayDelegate, PLPhotoTileViewControllerDelegate, PLVideoViewDelegate> {
     unsigned int  _allowEditing;
     PLCropOverlay * _cropOverlay;
     struct CGRect { 
@@ -16,10 +16,7 @@
         } size; 
     }  _cropRect;
     UIImage * _image;
-    PLImageCache * _imageCache;
-    PLImageLoadingQueue * _imageLoadingQueue;
     struct CGImage { } * _imageRef;
-    PLImageSource * _imageSource;
     PLPhotoTileViewController * _imageTile;
     unsigned int  _isDisappearing;
     unsigned int  _isVideo;
@@ -57,6 +54,7 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_viewFrame;
 - (void)attachScrubberPalette;
 - (void)beginDisplayingProgress;
+- (id)cancelButtonTitle;
 - (id)chooseButtonTitle;
 - (bool)clientIsWallpaper;
 - (id)cropOverlay;
@@ -66,6 +64,7 @@
 - (void)cropOverlayPlay:(id)arg1;
 - (void)cropOverlayWasCancelled:(id)arg1;
 - (void)cropOverlayWasOKed:(id)arg1;
+- (id)customBackgroundColor;
 - (void)dealloc;
 - (long long)desiredStatusBarAnimation;
 - (void)didChooseVideoAtURL:(id)arg1 options:(id)arg2;
@@ -78,8 +77,7 @@
 - (void)handleAutoloopSelected;
 - (void)handleMediaSelectionUsingTile:(id)arg1 managedAsset:(id)arg2 args:(id)arg3 includeEditing:(bool)arg4;
 - (void)handleVideoSelectionWithURL:(id)arg1 args:(id)arg2;
-- (int)imageFormat;
-- (void)imageLoadingQueue:(id)arg1 didLoadImage:(id)arg2 forAsset:(id)arg3 fromSource:(id)arg4;
+- (unsigned short)imageFormat;
 - (bool)imagePickerAllowsEditing;
 - (unsigned long long)imagePickerSavingOptions;
 - (id)initWithImage:(struct CGImage { }*)arg1 cropRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
@@ -91,6 +89,7 @@
 - (void)loadView;
 - (id)localizedTitle;
 - (id)localizedUseButtonTitle;
+- (id)maxZoomScaleOverride;
 - (void)photoTileViewController:(id)arg1 didAppear:(bool)arg2;
 - (void)photoTileViewController:(id)arg1 didDisappear:(bool)arg2;
 - (void)photoTileViewController:(id)arg1 willAppear:(bool)arg2;
@@ -109,6 +108,7 @@
 - (void)setAllowsEditing:(bool)arg1;
 - (void)setCropOverlayDone;
 - (void)setupNavigationItem;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)videoMaximumDuration;
 - (id)videoQuality;
 - (void)videoRemakerDidBeginRemaking:(id)arg1;
@@ -122,7 +122,6 @@
 - (void)videoViewIsReadyToBeginPlayback:(id)arg1;
 - (double)videoViewScrubberYOrigin:(id)arg1 forOrientation:(long long)arg2;
 - (void)viewDidAppear:(bool)arg1;
-- (void)viewDidDisappear:(bool)arg1;
 - (bool)viewImageBeforeSelecting;
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;

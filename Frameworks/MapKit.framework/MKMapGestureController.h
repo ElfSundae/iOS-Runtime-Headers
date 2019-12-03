@@ -3,19 +3,26 @@
  */
 
 @interface MKMapGestureController : NSObject <MKVariableDelayTapRecognizerDelegate, UIGestureRecognizerDelegate, _MKUserInteractionGestureRecognizerTouchObserver> {
+    _MKDirectionalArrowRecognizer * _arrowZoomGestureRecognizer;
+    double  _arrowZoomSpeed;
+    double  _arrowZoomStartTimestamp;
     MKCompassView * _compassView;
+    VKTimedAnimation * _currentArrowAnimation;
     <MKMapGestureControllerDelegate> * _delegate;
     bool  _didStartLongPress;
     MKVariableDelayTapRecognizer * _doubleTapGestureRecognizer;
     long long  _gestureCount;
     bool  _isPanning;
     bool  _isPinching;
+    double  _lastPinchUpdateTimestamp;
     double  _lastScale;
     MKBasicMapView * _mapView;
+    _MKOneHandedZoomGestureRecognizer * _oneHandedZoomGestureRecognizer;
     VKCompoundAnimation * _panDecelerationAnimationGroup;
     UIPanGestureRecognizer * _panGestureRecognizer;
     bool  _panWithMomentum;
     VKDynamicAnimation * _pinchDecelerationAnimation;
+    double  _pinchFactorAverageInGesture;
     UIPinchGestureRecognizer * _pinchGestureRecognizer;
     VKDynamicAnimation * _rotationDecelerationAnimation;
     MKRotationFilter * _rotationFilter;
@@ -25,8 +32,8 @@
     VKDynamicAnimation * _tiltDecelerationAnimation;
     MKTiltGestureRecognizer * _tiltGestureRecognizer;
     _MKUserInteractionGestureRecognizer * _touchGestureRecognizer;
+    UITraitCollection * _traitCollection;
     UILongPressGestureRecognizer * _twoFingerLongPressGestureRecognizer;
-    MKTwoFingerPanGestureRecognizer * _twoFingerPanGestureRecognizer;
     UITapGestureRecognizer * _twoFingerTapGestureRecognizer;
     UIPanGestureRecognizer * _verticalPanGestureRecognizer;
 }
@@ -38,6 +45,7 @@
 @property (nonatomic, readonly) UITapGestureRecognizer *doubleTapGestureRecognizer;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) MKBasicMapView *mapView;
+@property (nonatomic, readonly) UIGestureRecognizer *oneHandedZoomGestureRecognizer;
 @property (nonatomic, readonly) UIPanGestureRecognizer *panGestureRecognizer;
 @property (nonatomic) bool panWithMomentum;
 @property (nonatomic, readonly) UIPinchGestureRecognizer *pinchGestureRecognizer;
@@ -49,17 +57,18 @@
 @property (readonly) Class superclass;
 @property (getter=isTiltEnabled, nonatomic) bool tiltEnabled;
 @property (nonatomic, readonly) UILongPressGestureRecognizer *twoFingerLongPressGestureRecognizer;
-@property (nonatomic, readonly) UIPanGestureRecognizer *twoFingerPanGestureRecognizer;
 @property (nonatomic, readonly) UITapGestureRecognizer *twoFingerTapGestureRecognizer;
 @property (nonatomic, readonly) UIPanGestureRecognizer *verticalPanGestureRecognizer;
 @property (getter=isZoomEnabled, nonatomic) bool zoomEnabled;
 
 - (void).cxx_destruct;
 - (void)_clearGesture:(id)arg1;
-- (void)_handleStandardPan:(id)arg1;
 - (void)_handleStandardTilt:(id)arg1;
+- (void)_setOneHandedZoomGestureConfiguration:(id)arg1;
+- (void)_setTraitCollection:(id)arg1;
 - (struct CGPoint { double x1; double x2; })_snapPointToDevicePixels:(struct CGPoint { double x1; double x2; })arg1;
 - (void)_updateRotationGestureForState:(long long)arg1 focusPoint:(struct CGPoint { double x1; double x2; })arg2 rotation:(double)arg3 velocity:(double)arg4;
+- (void)_updateZoomGestureForState:(long long)arg1 focusPoint:(struct CGPoint { double x1; double x2; })arg2 scale:(double)arg3 velocity:(double)arg4 gestureType:(long long)arg5 configuration:(id)arg6;
 - (void)beginGesturing;
 - (void)clearGestureRecognizersInFlight;
 - (id)compassView;
@@ -73,15 +82,17 @@
 - (void)gestureRecognizerTouchesBegan:(id)arg1;
 - (void)gestureRecognizerTouchesCanceled:(id)arg1;
 - (void)gestureRecognizerTouchesEnded:(id)arg1;
+- (void)handleArrowZoom:(id)arg1;
 - (void)handleDoubleTap:(id)arg1;
 - (void)handlePan:(id)arg1;
+- (void)handlePanZoom:(id)arg1;
 - (void)handlePinch:(id)arg1;
 - (void)handleRotation:(id)arg1;
 - (void)handleTilt:(id)arg1;
 - (void)handleTouch:(id)arg1;
 - (void)handleTwoFingerLongPress:(id)arg1;
-- (void)handleTwoFingerPan:(id)arg1;
 - (void)handleTwoFingerTap:(id)arg1;
+- (void)handleZoomArrowMask:(long long)arg1 speed:(double)arg2;
 - (id)initWithMapView:(id)arg1 gestureTargetView:(id)arg2;
 - (id)initWithMapView:(id)arg1 gestureTargetView:(id)arg2 doubleTapTargetView:(id)arg3;
 - (bool)isRotationEnabled;
@@ -89,6 +100,7 @@
 - (bool)isTiltEnabled;
 - (bool)isZoomEnabled;
 - (id)mapView;
+- (id)oneHandedZoomGestureRecognizer;
 - (id)panGestureRecognizer;
 - (bool)panWithMomentum;
 - (id)pinchGestureRecognizer;
@@ -108,7 +120,6 @@
 - (void)stopDynamicAnimations;
 - (void)stopUserInteractionFromExternalGesture;
 - (id)twoFingerLongPressGestureRecognizer;
-- (id)twoFingerPanGestureRecognizer;
 - (id)twoFingerTapGestureRecognizer;
 - (double)variableDelayTapRecognizer:(id)arg1 shouldWaitForNextTapForDuration:(double)arg2 afterTouch:(id)arg3;
 - (id)verticalPanGestureRecognizer;

@@ -15,6 +15,7 @@
     unsigned long long  _libraryID;
     unsigned long long  _mediaType;
     double  _retrievalTime;
+    ICUserIdentity * _userIdentity;
 }
 
 @property (nonatomic, readonly) long long artworkType;
@@ -27,6 +28,7 @@
 @property (nonatomic, readonly) unsigned long long libraryID;
 @property (nonatomic, readonly) unsigned long long mediaType;
 @property (nonatomic) double retrievalTime;
+@property (nonatomic, readonly, copy) ICUserIdentity *userIdentity;
 
 - (void).cxx_destruct;
 - (void)_onQueue_updateTokens;
@@ -53,5 +55,6 @@
 - (void)setFetchableArtworkToken:(id)arg1;
 - (void)setLibraryArtwork:(id)arg1;
 - (void)setRetrievalTime:(double)arg1;
+- (id)userIdentity;
 
 @end

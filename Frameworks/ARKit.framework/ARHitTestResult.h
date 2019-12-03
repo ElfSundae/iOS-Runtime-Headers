@@ -16,9 +16,13 @@
 
 @property (nonatomic, retain) ARAnchor *anchor;
 @property (nonatomic) double distance;
+@property (nonatomic, readonly) void localPosition;
 @property (nonatomic) struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; } localTransform;
 @property (nonatomic, readonly) unsigned long long type;
+@property (nonatomic, readonly) void worldPosition;
 @property (nonatomic) struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; } worldTransform;
+
+// Image: /System/Library/Frameworks/ARKit.framework/ARKit
 
 - (void).cxx_destruct;
 - (id)_description:(bool)arg1;
@@ -34,5 +38,10 @@
 - (void)setWorldTransform:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })arg1;
 - (unsigned long long)type;
 - (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })worldTransform;
+
+// Image: /System/Library/PrivateFrameworks/AssetViewer.framework/AssetViewer
+
+- (void)localPosition;
+- (void)worldPosition;
 
 @end

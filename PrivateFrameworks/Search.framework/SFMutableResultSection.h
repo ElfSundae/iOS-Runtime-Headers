@@ -7,6 +7,7 @@
     unsigned int  _domain;
     NSArray * _hiddenExtResults;
     bool  _isGlanceCategory;
+    bool  _pinToTop;
     NSMutableOrderedSet * _resultSet;
     NSString * _resultSetIdentifier;
     bool  _serialized;
@@ -18,6 +19,7 @@
 @property (nonatomic) unsigned int domain;
 @property (nonatomic, retain) NSArray *hiddenExtResults;
 @property (nonatomic) bool isGlanceCategory;
+@property bool pinToTop;
 @property (nonatomic, retain) NSMutableOrderedSet *resultSet;
 @property (nonatomic, retain) NSString *resultSetIdentifier;
 @property (nonatomic) bool serialized;
@@ -45,9 +47,11 @@
 - (bool)isGlanceCategory;
 - (id)objectForFeedback;
 - (id)objectForFeedbackWithResultsArray:(id)arg1;
+- (bool)pinToTop;
 - (void)removeResults:(id)arg1;
 - (void)removeResultsAtIndex:(unsigned long long)arg1;
 - (void)removeResultsInArray:(id)arg1;
+- (void)removeResultsInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (void)replaceResultsAtIndex:(unsigned long long)arg1 withResults:(id)arg2;
 - (id)resultSet;
 - (id)resultSetIdentifier;
@@ -59,6 +63,7 @@
 - (void)setDomain:(unsigned int)arg1;
 - (void)setHiddenExtResults:(id)arg1;
 - (void)setIsGlanceCategory:(bool)arg1;
+- (void)setPinToTop:(bool)arg1;
 - (void)setResultSet:(id)arg1;
 - (void)setResultSetIdentifier:(id)arg1;
 - (void)setResults:(id)arg1;

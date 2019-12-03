@@ -35,7 +35,7 @@
 - (id)resultWithIdentifier:(id)arg1 title:(id)arg2 url:(id)arg3 bundleIdentifier:(id)arg4;
 - (void)searchDaemonLocalSuggestionsData:(id)arg1 lexicon:(struct _LXLexicon { }*)arg2 tokenizer:(struct __CFStringTokenizer { }*)arg3 currentLocaleRef:(struct __CFLocale { }*)arg4;
 - (void)searchDaemonQuery:(id)arg1 encounteredError:(id)arg2;
-- (void)searchDaemonQuery:(id)arg1 gotResultSet:(id)arg2 replace:(bool)arg3 complete:(bool)arg4 finished:(bool)arg5 delayed:(bool)arg6 delayedTopHit:(bool)arg7 blendingDuration:(double)arg8 geoEntityString:(id)arg9;
+- (void)searchDaemonQuery:(id)arg1 gotResultSet:(id)arg2 replace:(bool)arg3 complete:(bool)arg4 finished:(bool)arg5 delayed:(bool)arg6 delayedTopHit:(bool)arg7 unchanged:(bool)arg8 forceStable:(bool)arg9 blendingDuration:(double)arg10 geoEntityString:(id)arg11 supportedAppScopes:(id)arg12;
 - (void)searchDaemonRankingLog:(id)arg1;
 - (void)searchDaemonSuggestionsArray:(id)arg1;
 - (id)searchString;

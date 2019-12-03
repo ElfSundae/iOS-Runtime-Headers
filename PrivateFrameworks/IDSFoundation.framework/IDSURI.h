@@ -9,6 +9,7 @@
 @property (nonatomic, retain) NSString *prefixedURI;
 @property (nonatomic, readonly) NSString *unprefixedURI;
 
++ (id)URIWithPrefixedURI:(id)arg1;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;

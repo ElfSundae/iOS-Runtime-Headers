@@ -5,7 +5,6 @@
 @interface WLKBasicEpisodeMetadata : WLKBasicContentMetadata {
     NSString * _canonicalSeasonID;
     NSString * _canonicalShowID;
-    WLKShowContentRating * _contentRating;
     double  _duration;
     NSNumber * _episodeNumber;
     WLKPlayable * _playable;
@@ -18,7 +17,6 @@
 
 @property (nonatomic, readonly, copy) NSString *canonicalSeasonID;
 @property (nonatomic, readonly, copy) NSString *canonicalShowID;
-@property (nonatomic, readonly) WLKShowContentRating *contentRating;
 @property (nonatomic, readonly) double duration;
 @property (nonatomic, readonly) NSNumber *episodeNumber;
 @property (nonatomic, readonly) WLKPlayable *playable;
@@ -33,7 +31,6 @@
 - (void).cxx_destruct;
 - (id)canonicalSeasonID;
 - (id)canonicalShowID;
-- (id)contentRating;
 - (double)duration;
 - (id)episodeNumber;
 - (id)initWithDictionary:(id)arg1;

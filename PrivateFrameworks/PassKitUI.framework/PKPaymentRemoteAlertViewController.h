@@ -7,7 +7,6 @@
     bool  _backlightActive;
     bool  _brightnessRampingAllowed;
     bool  _deviceUILocked;
-    PKEducationViewController * _educationVC;
     NSArray * _fieldPassUniqueIdentifiers;
     PKFieldProperties * _fieldProperties;
     NSObject<OS_dispatch_group> * _fieldPropertiesLookupGroup;
@@ -38,6 +37,7 @@
 
 - (void).cxx_destruct;
 - (void)_appearIfNecessary;
+- (bool)_canShowWhileLocked;
 - (void)_contactlessInterfaceSessionDidAuthorize:(id)arg1;
 - (void)_contactlessInterfaceSessionFinishTransaction:(id)arg1;
 - (void)_dismissForSource:(unsigned long long)arg1 completion:(id /* block */)arg2;
@@ -48,19 +48,18 @@
 - (bool)_notificationIsFromChildViewController:(id)arg1;
 - (void)_paymentDidReceiveSuccessfulTransactionNotification:(id)arg1;
 - (void)_presentHomeButtonDoubleTapAlertIfNecessary;
-- (void)_presentPassAnimated:(bool)arg1;
+- (void)_presentPassAnimated:(bool)arg1 withCompletion:(id /* block */)arg2;
 - (void)_setupGroupController;
-- (void)_willAppearInRemoteViewController;
 - (id)childViewControllerForStatusBarHidden;
 - (id)childViewControllerForStatusBarStyle;
 - (void)configureWithContext:(id)arg1 completion:(id /* block */)arg2;
 - (void)consumeDoublePressUpForButtonKind:(long long)arg1;
 - (void)dealloc;
-- (void)handleHomeButtonPressed;
+- (void)didInvalidateForRemoteAlert;
+- (void)handleButtonActions:(id)arg1;
 - (id)init;
-- (void)linkedApplicationOpen:(id)arg1;
 - (void)loadView;
-- (void)setUserInfo:(id)arg1;
+- (void)openApplication:(id)arg1;
 - (bool)shouldAutorotate;
 - (struct CGSize { double x1; double x2; })sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize { double x1; double x2; })arg2;
 - (unsigned long long)supportedInterfaceOrientations;

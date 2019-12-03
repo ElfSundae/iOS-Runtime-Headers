@@ -10,7 +10,7 @@
 @property (readonly) Class superclass;
 
 - (bool)isEmbellishedOperator;
-- (struct Schemata { int (**x1)(); int x2; id x3; })layoutSchemata;
+- (struct Schemata { int (**x1)(); int x2; id x3; id x4; })layoutSchemata;
 - (id)operatorCore;
 - (id)schemataKernel;
 - (id)schemataSubscript;

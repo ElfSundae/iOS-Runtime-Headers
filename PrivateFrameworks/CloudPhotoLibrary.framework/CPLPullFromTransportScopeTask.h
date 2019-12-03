@@ -5,6 +5,7 @@
 @interface CPLPullFromTransportScopeTask : CPLEngineScopedTask {
     CPLLibraryInfo * _currentLibraryInfo;
     Class  _currentQueryClass;
+    bool  _didNotifySchedulerPullQueueIsFullOnce;
     <CPLEngineTransportDownloadBatchTask> * _downloadTask;
     <CPLEngineTransportGetCurrentSyncAnchorTask> * _fetchInitialSyncAnchorTask;
     bool  _hasCachedTotalAssetCountForScope;
@@ -13,6 +14,9 @@
     CPLLibraryInfo * _initialLibraryInfo;
     CPLLibraryState * _initialLibraryState;
     struct NSData { Class x1; } * _initialSyncAnchor;
+    bool  _needsToNotifySchedulerPullQueueIsFull;
+    NSObject<OS_dispatch_queue> * _notifyQueue;
+    NSString * _phaseDescription;
     <CPLEngineTransportQueryTask> * _queryTask;
     NSObject<OS_dispatch_queue> * _queue;
     unsigned long long  _rewindFeatureVersion;
@@ -25,6 +29,8 @@
     bool  _useCourtesyMingling;
     CPLFeatureVersionHistory * _versionHistory;
 }
+
+@property (copy) NSString *phaseDescription;
 
 - (void).cxx_destruct;
 - (void)_cancelAllTasks;
@@ -40,13 +46,18 @@
 - (void)_launchNextQueryTask;
 - (void)_launchPullTasksAndDisableQueries:(bool)arg1;
 - (void)_launchQueryForClass:(Class)arg1 cursor:(id)arg2;
+- (void)_notifySchedulerPullQueueIsFull;
+- (void)_notifySchedulerPullQueueIsFullNowIfNecessary;
+- (void)_reallyNotifySchedulerPullQueueIsFull;
 - (void)_storeInitialSyncAnchorIfNecessaryInTransaction:(id)arg1;
 - (unsigned long long)_totalAssetCountForScope;
 - (void)_updateLastFeatureVersionAndRelaunchFetchChangesFromSyncAnchor:(struct NSData { Class x1; }*)arg1;
 - (void)cancel;
 - (bool)checkScopeIsValidInTransaction:(id)arg1;
-- (id)initWithEngineLibrary:(id)arg1 clientCacheIdentifier:(id)arg2 scope:(id)arg3 transportScope:(id)arg4;
+- (id)initWithEngineLibrary:(id)arg1 session:(id)arg2 clientCacheIdentifier:(id)arg3 scope:(id)arg4 transportScope:(id)arg5;
 - (void)launch;
+- (id)phaseDescription;
+- (void)setPhaseDescription:(id)arg1;
 - (void)taskDidFinishWithError:(id)arg1;
 - (id)taskIdentifier;
 

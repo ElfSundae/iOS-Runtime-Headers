@@ -62,6 +62,7 @@
 - (bool)isInterestingToUser;
 - (bool)isLike;
 - (bool)isMyComment;
+- (id)personInfoManager;
 - (bool)shouldNotifyAsNotificationWithMediaStreamInfo:(id)arg1 asCaptionOnly:(bool*)arg2;
 
 @end

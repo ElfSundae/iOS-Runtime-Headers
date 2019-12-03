@@ -17,7 +17,7 @@
     NSArray * _dnsAddresses;
     unsigned int  _eapolControlMode;
     unsigned int  _eapolSupplicantState;
-    long long  _guardInterval;
+    unsigned long long  _guardInterval;
     NSString * _interfaceName;
     NSArray * _ipv4Addresses;
     long long  _ipv4ConfigMethod;
@@ -29,10 +29,10 @@
     W5WiFiScanResult * _lastJoinedScanResult;
     NSArray * _linkQualityUpdates;
     NSString * _macAddress;
-    long long  _mcsIndex;
+    unsigned long long  _mcsIndex;
     NSString * _networkServiceID;
     long long  _noise;
-    long long  _numberOfSpacialStreams;
+    unsigned long long  _numberOfSpacialStreams;
     int  _opMode;
     int  _phyMode;
     NSData * _power;
@@ -60,7 +60,7 @@
 @property (nonatomic, copy) NSArray *dnsAddresses;
 @property (nonatomic) unsigned int eapolControlMode;
 @property (nonatomic) unsigned int eapolSupplicantState;
-@property (nonatomic) long long guardInterval;
+@property (nonatomic) unsigned long long guardInterval;
 @property (nonatomic, copy) NSString *interfaceName;
 @property (nonatomic, copy) NSArray *ipv4Addresses;
 @property (nonatomic) long long ipv4ConfigMethod;
@@ -72,10 +72,10 @@
 @property (nonatomic, copy) W5WiFiScanResult *lastJoinedScanResult;
 @property (nonatomic, copy) NSArray *linkQualityUpdates;
 @property (nonatomic, copy) NSString *macAddress;
-@property (nonatomic) long long mcsIndex;
+@property (nonatomic) unsigned long long mcsIndex;
 @property (nonatomic, copy) NSString *networkServiceID;
 @property (nonatomic) long long noise;
-@property (nonatomic) long long numberOfSpacialStreams;
+@property (nonatomic) unsigned long long numberOfSpacialStreams;
 @property (nonatomic) int opMode;
 @property (nonatomic) int phyMode;
 @property (nonatomic, copy) NSData *power;
@@ -109,7 +109,7 @@
 - (unsigned int)eapolControlMode;
 - (unsigned int)eapolSupplicantState;
 - (void)encodeWithCoder:(id)arg1;
-- (long long)guardInterval;
+- (unsigned long long)guardInterval;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)interfaceName;
@@ -125,10 +125,10 @@
 - (id)lastJoinedScanResult;
 - (id)linkQualityUpdates;
 - (id)macAddress;
-- (long long)mcsIndex;
+- (unsigned long long)mcsIndex;
 - (id)networkServiceID;
 - (long long)noise;
-- (long long)numberOfSpacialStreams;
+- (unsigned long long)numberOfSpacialStreams;
 - (int)opMode;
 - (int)phyMode;
 - (id)power;
@@ -149,7 +149,7 @@
 - (void)setDnsAddresses:(id)arg1;
 - (void)setEapolControlMode:(unsigned int)arg1;
 - (void)setEapolSupplicantState:(unsigned int)arg1;
-- (void)setGuardInterval:(long long)arg1;
+- (void)setGuardInterval:(unsigned long long)arg1;
 - (void)setInterfaceName:(id)arg1;
 - (void)setIpv4Addresses:(id)arg1;
 - (void)setIpv4ConfigMethod:(long long)arg1;
@@ -161,10 +161,10 @@
 - (void)setLastJoinedScanResult:(id)arg1;
 - (void)setLinkQualityUpdates:(id)arg1;
 - (void)setMacAddress:(id)arg1;
-- (void)setMcsIndex:(long long)arg1;
+- (void)setMcsIndex:(unsigned long long)arg1;
 - (void)setNetworkServiceID:(id)arg1;
 - (void)setNoise:(long long)arg1;
-- (void)setNumberOfSpacialStreams:(long long)arg1;
+- (void)setNumberOfSpacialStreams:(unsigned long long)arg1;
 - (void)setOpMode:(int)arg1;
 - (void)setPhyMode:(int)arg1;
 - (void)setPower:(id)arg1;

@@ -2,7 +2,8 @@
    Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
  */
 
-@interface MPAVRoutingTableViewCell : UITableViewCell <MPAVRoutingThemeableCellView> {
+@interface MPAVRoutingTableViewCell : MPAVClippingTableViewCell <MPAVRoutingThemeableCellView> {
+    UIImageView * _checkmarkImageView;
     <MPAVRoutingTableViewCellDelegate> * _delegate;
     UIImageView * _iconImageView;
     unsigned long long  _iconStyle;
@@ -43,6 +44,7 @@
 - (void).cxx_destruct;
 - (void)_animateSubtitleLabelToNextAvailableText;
 - (id)_batteryTextForRoute:(id)arg1;
+- (id)_checkmarkAccessibilityLabelForSmartAudio;
 - (id)_checkmarkImageForSmartAudio;
 - (id)_checkmarkImageNameForSmartAudio;
 - (void)_configureDetailLabel:(id)arg1;
@@ -51,9 +53,9 @@
 - (id)_iconImageForRoute:(id)arg1;
 - (id)_pairedDeviceTextForRoute:(id)arg1;
 - (bool)_shouldShowSeparateBatteryPercentagesForBatteryLevel:(id)arg1;
-- (void)_updateSmartAudioAccessory;
+- (void)_updateAccessory;
 - (void)_updateSpinnerStyle;
-- (void)_updateSubtitleTextLabelForRoute:(id)arg1;
+- (void)_updateSubtitleTextLabelForRouteItem:(id)arg1;
 - (void)dealloc;
 - (id)delegate;
 - (unsigned long long)iconStyle;
@@ -86,7 +88,7 @@
 - (id)subtitleView;
 - (double)subtitleViewAlpha;
 - (id)titleView;
-- (void)updateForEndpoint:(id)arg1 route:(id)arg2 inferLocalizedModelName:(bool)arg3;
+- (void)updateForEndpoint:(id)arg1 routeItem:(id)arg2 inferLocalizedModelName:(bool)arg3;
 - (bool)useSmartAudioCheckmarkStyle;
 - (id)volumeSlider;
 - (id)volumeView;

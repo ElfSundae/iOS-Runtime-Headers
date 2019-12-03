@@ -3,7 +3,6 @@
  */
 
 @interface SiriUIReusableHeaderView : UICollectionReusableView <SiriUIReusableView, SiriUISizableHeaderView> {
-    UIView * _backgroundView;
     UIImageView * _chevronView;
     struct UIEdgeInsets { 
         double top; 
@@ -13,8 +12,6 @@
     }  _contentInsets;
     UIButton * _headerAreaButton;
     UILabel * _headerLabel;
-    SiriUIKeyline * _keyline;
-    long long  _keylineType;
     SiriUISnippetViewController * _snippetViewController;
     NSString * _titleText;
     UIColor * _titleTextColor;
@@ -24,7 +21,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) UIButton *headerAreaButton;
-@property (nonatomic) long long keylineType;
 @property (nonatomic) SiriUISnippetViewController *snippetViewController;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *titleText;
@@ -39,10 +35,7 @@
 - (double)desiredHeightForWidth:(double)arg1;
 - (id)headerAreaButton;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
-- (long long)keylineType;
 - (void)layoutSubviews;
-- (void)setBackgroundColor:(id)arg1;
-- (void)setKeylineType:(long long)arg1;
 - (void)setSnippetViewController:(id)arg1;
 - (void)setTitleText:(id)arg1;
 - (void)setTitleTextColor:(id)arg1;

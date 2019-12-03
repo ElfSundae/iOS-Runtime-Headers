@@ -40,6 +40,7 @@
 - (id)initWithRecipientIdentifiers:(id)arg1 senderIdentifiers:(id)arg2;
 - (bool)isEqual:(id)arg1;
 - (id)mostRecentNonSenderTextEntry;
+- (id)mostRecentTextEntries:(unsigned long long)arg1;
 - (bool)mostRecentTextEntryIsByMe;
 - (id)mostRecentTextEntryLogString;
 - (id)pendingEntries;

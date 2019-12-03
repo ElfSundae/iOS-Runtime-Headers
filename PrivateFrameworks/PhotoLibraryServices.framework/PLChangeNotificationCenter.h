@@ -3,59 +3,23 @@
  */
 
 @interface PLChangeNotificationCenter : NSObject {
-    struct contentChanges_s { 
-        NSMutableArray *container; 
-        NSMutableArray *updatedContent; 
-    }  _albumListsContent;
-    struct contentChanges_s { 
-        NSMutableArray *container; 
-        NSMutableArray *updatedContent; 
-    }  _albumsContent;
+    PLContentChanges * _albumListsContent;
+    PLContentChanges * _albumsContent;
     NSMutableSet * _assetsWithCloudCommentChanges;
     int  _cameraPreviewChangeListenerCount;
     NSNumber * _cameraPreviewChangedToken;
-    struct changeList_s { 
-        NSMutableSet *inserted; 
-        NSMutableSet *updated; 
-        NSMutableSet *deleted; 
-    }  _changedAlbumLists;
-    struct changeList_s { 
-        NSMutableSet *inserted; 
-        NSMutableSet *updated; 
-        NSMutableSet *deleted; 
-    }  _changedAlbums;
-    struct changeList_s { 
-        NSMutableSet *inserted; 
-        NSMutableSet *updated; 
-        NSMutableSet *deleted; 
-    }  _changedAssets;
-    struct changeList_s { 
-        NSMutableSet *inserted; 
-        NSMutableSet *updated; 
-        NSMutableSet *deleted; 
-    }  _changedCloudFeedEntries;
-    struct changeList_s { 
-        NSMutableSet *inserted; 
-        NSMutableSet *updated; 
-        NSMutableSet *deleted; 
-    }  _changedMomentLists;
-    struct changeList_s { 
-        NSMutableSet *inserted; 
-        NSMutableSet *updated; 
-        NSMutableSet *deleted; 
-    }  _changedMoments;
+    PLChangeList * _changedAlbumLists;
+    PLChangeList * _changedAlbums;
+    PLChangeList * _changedAssets;
+    PLChangeList * _changedCloudFeedEntries;
+    PLChangeList * _changedMomentLists;
+    PLChangeList * _changedMoments;
     NSMutableArray * _enqueuedNotifications;
     bool  _isOverloaded;
     bool  _isProcessingRemoteDidSave;
     PLManagedObjectContext * _moc;
-    struct contentChanges_s { 
-        NSMutableArray *container; 
-        NSMutableArray *updatedContent; 
-    }  _momentListsContent;
-    struct contentChanges_s { 
-        NSMutableArray *container; 
-        NSMutableArray *updatedContent; 
-    }  _momentsContent;
+    PLContentChanges * _momentListsContent;
+    PLContentChanges * _momentsContent;
     NSObject<OS_dispatch_queue> * _notificationHandlingQueue;
     NSMutableSet * _overloadedObjects;
     NSDictionary * _remoteNotificationData;
@@ -65,11 +29,12 @@
 @property (nonatomic, readonly) bool _shouldForceFetchingAlbumsToReload;
 @property (nonatomic, readonly, retain) NSNotificationCenter *backingCenter;
 
-+ (id)allManagedObjectKeysStrategy;
++ (id)allManagedObjectKeysStrategyWithContext:(id)arg1;
 + (id)defaultCenter;
 + (void)forceFetchingAlbumReload;
-+ (void)getInsertedAssetCount:(unsigned long long*)arg1 deletedAssetCount:(unsigned long long*)arg2 fromContextDidChangeNotification:(id)arg3;
++ (void)getInsertedAssetCount:(unsigned long long*)arg1 deletedAssetCount:(unsigned long long*)arg2 updatedAssets:(id)arg3 fromContextDidChangeNotification:(id)arg4;
 
+- (void).cxx_destruct;
 - (id)_attributesOfInterestForObject:(id)arg1;
 - (void)_cleanupState;
 - (void)_enqueueAlbumChangeNotification:(id)arg1;
@@ -125,7 +90,7 @@
 - (void)managedObjectContextWillBeOverloaded:(id)arg1 withNotificationData:(id)arg2 usingObjectIDs:(bool)arg3;
 - (id)observeCameraPreviewWellImageChangeOnQueue:(id)arg1 block:(id /* block */)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
-- (void)postShouldReloadNotification;
+- (void)postShouldReloadNotificationWithPhotoLibrary:(id)arg1;
 - (void)processContextDidChangeNotification:(id)arg1;
 - (void)processContextDidSaveObjectIDsNotification:(id)arg1;
 - (void)removeAssetChangeObserver:(id)arg1;

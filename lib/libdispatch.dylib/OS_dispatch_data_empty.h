@@ -5,7 +5,6 @@
 @interface OS_dispatch_data_empty : OS_dispatch_data
 
 + (id)allocWithZone:(struct _NSZone { }*)arg1;
-+ (void)load;
 
 - (void)_activate;
 - (void*)_getContext;

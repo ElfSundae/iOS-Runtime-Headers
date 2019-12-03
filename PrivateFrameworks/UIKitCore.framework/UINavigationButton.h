@@ -13,7 +13,7 @@
     UIView * __enclosingBar;
     UIColor * _accessibilityBackgroundTintColor;
     Class  _appearanceGuideClass;
-    id  _appearanceStorage;
+    _UIBarButtonItemAppearanceStorage * _appearanceStorage;
     long long  _barStyle;
     struct CGSize { 
         double width; 

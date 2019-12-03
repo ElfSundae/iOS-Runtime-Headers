@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/MIME.framework/MIME
  */
 
-@interface MFMessageHeaders : NSObject <NSCopying, SGHeaderCollection> {
+@interface MFMessageHeaders : NSObject <ECMessageHeaders, NSCopying, SGHeaderCollection> {
     NSData * _data;
     unsigned int  _preferredEncoding;
 }
@@ -24,6 +24,7 @@
 + (bool)shouldDecodeHeaderForKey:(id)arg1;
 + (id)uniqueHeaderKeyStringForString:(id)arg1;
 
+- (void).cxx_destruct;
 - (id)_capitalizedKeyForKey:(id)arg1;
 - (id)_commaSeparatedValuesForKey:(id)arg1 includeAngleBracket:(bool)arg2;
 - (unsigned int)_contentTypeEncoding;
@@ -50,9 +51,9 @@
 - (id)copyHeadersForKey:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)data;
-- (void)dealloc;
 - (id)description;
 - (id)encodedHeaders;
+- (id)firstAddressForKey:(id)arg1;
 - (id)firstHeaderForKey:(id)arg1;
 - (id)firstSenderAddress;
 - (bool)hasHeaderForKey:(id)arg1;

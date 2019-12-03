@@ -12,6 +12,7 @@
 @property (nonatomic, retain) ADHomeButtonHandler *homeButtonHandler;
 @property (nonatomic, retain) id notificationObserver;
 
+- (void).cxx_destruct;
 - (id)adSpace;
 - (void)cancelAndDismiss;
 - (void)dealloc;

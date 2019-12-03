@@ -15,9 +15,9 @@
 + (id)borderWithType:(int)arg1 colorReference:(id)arg2 resources:(id)arg3;
 + (id)borderWithType:(int)arg1 resources:(id)arg2;
 
+- (void).cxx_destruct;
 - (id)color;
 - (id)colorReference;
-- (void)dealloc;
 - (id)description;
 - (int)diagonalType;
 - (unsigned long long)hash;

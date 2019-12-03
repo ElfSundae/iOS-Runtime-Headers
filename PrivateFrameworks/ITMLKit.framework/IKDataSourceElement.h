@@ -8,6 +8,9 @@
     NSArray * _autoHighlightedChildElements;
     <IKDataSourceElementImplementing> * _impl;
     struct { 
+        bool hasMasterPrototypes; 
+        bool hasProxiedItemElements; 
+        bool hasMasterPrototypeForItemAtIndex; 
         bool hasResetImplicitUpdates; 
         bool hasProxyElementForLoadedChildElement; 
         bool hasCanProxyUnloadedChildElement; 
@@ -21,6 +24,7 @@
 @property (nonatomic, copy) NSDictionary *indexTitles;
 @property (getter=areItemsBound, nonatomic, readonly) bool itemsBound;
 @property (nonatomic, readonly) IKChangeSet *itemsChangeSet;
+@property (nonatomic, readonly) NSArray *masterPrototypes;
 @property (nonatomic, readonly) NSArray *prototypes;
 @property (nonatomic, readonly, copy) NSArray *proxiedItemElements;
 
@@ -47,6 +51,8 @@
 - (id)itemsChangeSet;
 - (id)lastItemElement;
 - (void)loadIndex:(long long)arg1;
+- (id)masterPrototypeForItemAtIndex:(unsigned long long)arg1;
+- (id)masterPrototypes;
 - (long long)numberOfItems;
 - (id)prototypeForItemAtIndex:(long long)arg1;
 - (id)prototypes;

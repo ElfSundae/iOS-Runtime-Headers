@@ -10,13 +10,13 @@
 
 + (bool)supportsSecureCoding;
 
+- (void).cxx_destruct;
 - (id)URL;
 - (void)_enumerateWithXPCConnection:(id)arg1 block:(id /* block */)arg2;
 - (bool)_requiresDatabaseMappingEntitlement;
-- (bool)_shouldCacheResolvedResults;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithURL:(id)arg1;
+- (void)yieldBundles:(const struct vector<unsigned int, std::__1::allocator<unsigned int> > { unsigned int *x1; unsigned int *x2; struct __compressed_pair<unsigned int *, std::__1::allocator<unsigned int> > { unsigned int *x_3_1_1; } x3; }*)arg1 context:(struct LSContext { id x1; }*)arg2 block:(id /* block */)arg3;
 
 @end

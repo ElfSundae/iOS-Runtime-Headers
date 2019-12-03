@@ -8,6 +8,8 @@
     <MTLumaDodgePillBackgroundLuminanceObserver> * _backgroundLumninanceObserver;
     NSMutableArray * _bounceAnimationKeys;
     unsigned int  _bounceAnimationsInFlight;
+    long long  _graphicsQuality;
+    _MTLumaDodgePillLowQualityEffectView * _lowQualityEffectView;
     double  _luma;
     bool  _lumaIsValid;
     MTLumaDodgePillSettings * _settings;
@@ -21,18 +23,16 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long style;
+@property (nonatomic, readonly) double suggestedEdgeSpacing;
 @property (readonly) Class superclass;
 
 + (void)initialize;
 + (Class)layerClass;
-+ (double)suggestedEdgeSpacing;
-+ (struct CGSize { double x1; double x2; })suggestedSizeForContentWidth:(double)arg1;
 + (bool)supportsBackgroundLuminanceObserving;
 
 - (void).cxx_destruct;
 - (bool)_shouldAnimatePropertyAdditivelyWithKey:(id)arg1;
 - (bool)_shouldAnimatePropertyWithKey:(id)arg1;
-- (id)_styleSettings;
 - (void)_updateStyle;
 - (void)animationDidStop:(id)arg1 finished:(bool)arg2;
 - (void)backdropLayer:(id)arg1 didChangeLuma:(double)arg2;
@@ -42,12 +42,16 @@
 - (void)bounce;
 - (void)dealloc;
 - (id)description;
-- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 settings:(id)arg2;
+- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 settings:(id)arg2 graphicsQuality:(long long)arg3;
+- (void)layoutSubviews;
 - (void)resetBackgroundLuminanceHysteresis;
 - (void)setBackgroundLuminanceBias:(long long)arg1;
 - (void)setBackgroundLumninanceObserver:(id)arg1;
 - (void)setStyle:(long long)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (long long)style;
+- (double)suggestedEdgeSpacing;
+- (struct CGSize { double x1; double x2; })suggestedSizeForContentWidth:(double)arg1;
 
 @end

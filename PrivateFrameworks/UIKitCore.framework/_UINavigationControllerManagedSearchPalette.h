@@ -24,7 +24,6 @@
 - (void)_setSearchBar:(id)arg1;
 - (void)_setShadowAlpha:(double)arg1;
 - (double)_shadowAlpha;
-- (bool)_shouldHideWhenScrolling;
 - (bool)_shouldUpdateBackground;
 - (bool)_supportsSpecialSearchBarTransitions;
 - (void)_updateLayoutForCurrentConfiguration;

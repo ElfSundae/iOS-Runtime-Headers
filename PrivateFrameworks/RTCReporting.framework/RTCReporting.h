@@ -23,6 +23,7 @@
 
 + (id)getPersistentIdentifierForDNU:(bool)arg1;
 + (id)newHierarchyTokenFromParentToken:(id)arg1;
++ (id)newSecureHierarchyTokenFromParentToken:(id)arg1;
 + (void)regeneratePersistentIdentifierForDNU:(bool)arg1;
 + (bool)sendOneMessageWithSessionInfo:(id)arg1 userInfo:(id)arg2 category:(unsigned short)arg3 type:(unsigned short)arg4 payload:(id)arg5 error:(id*)arg6;
 

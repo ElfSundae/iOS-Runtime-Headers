@@ -5,7 +5,7 @@
 
 @required
 
-+ (void)handleNotificationPayload:(AMSPushPayload *)arg1 config:(AMSPushConfiguration *)arg2 bagContract:(id <AMSURLBagContract>)arg3;
++ (void)handleNotificationPayload:(AMSPushPayload *)arg1 config:(AMSPushConfiguration *)arg2 bag:(id <AMSBagProtocol>)arg3;
 
 @optional
 

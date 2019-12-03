@@ -8,13 +8,17 @@
     NSObject<OS_dispatch_queue> * _planeUpdateQueue;
     ARPlaneWorld * _planeWorld;
     AREnvironmentProbeManager * _probeManager;
+    ARImageData * _superWide;
+    NSObject<OS_dispatch_semaphore> * _superWideSemaphore;
+    bool  _wantsHDREnvironmentTextures;
 }
 
 @property bool networkIntialized;
 @property (retain) AREnvironmentProbeManager *probeManager;
+@property (readonly) bool wantsHDREnvironmentTextures;
 
 - (void).cxx_destruct;
-- (id)initWithOptions:(long long)arg1;
+- (id)initWithOptions:(long long)arg1 wantsHDREnvironmentTextures:(bool)arg2;
 - (bool)isEqual:(id)arg1;
 - (bool)networkIntialized;
 - (void)prepare;
@@ -26,5 +30,6 @@
 - (unsigned long long)requiredSensorDataTypes;
 - (void)setNetworkIntialized:(bool)arg1;
 - (void)setProbeManager:(id)arg1;
+- (bool)wantsHDREnvironmentTextures;
 
 @end

@@ -17,7 +17,7 @@
 @property (nonatomic, copy) NSString *interfaceName;
 @property struct __SCDynamicStore { }*networkServiceStore;
 @property struct __SCPreferences { }*prefsRef;
-@property (retain) NSObject<OS_dispatch_queue> *queue;
+@property (nonatomic, retain) NSObject<OS_dispatch_queue> *queue;
 @property (nonatomic, copy) NSString *serviceID;
 @property struct __SCDynamicStore { }*storeRef;
 
@@ -35,10 +35,10 @@
 - (id)__wifiServiceID;
 - (void)_postChangesNotification:(id)arg1;
 - (id)bundleIdentifier;
+- (void)dealloc;
 - (id)dnsDomainName;
 - (id)dnsSearchDomains;
 - (id)dnsServerAddresses;
-- (void)finalize;
 - (bool)globalProxyIsEnabled;
 - (bool)hasValidIPAddress;
 - (bool)hasValidIPv4Address;

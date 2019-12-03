@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
  */
 
-@interface PKEditGroupsViewController : PKEditTableViewController <PKEditGroupViewControllerDelegate, PKEditTableViewControllerCachingDelegate, PKGroupDelegate, PKGroupsControllerDelegate, UIViewControllerPreviewingDelegate> {
+@interface PKEditGroupsViewController : PKEditTableViewController <PKEditGroupViewControllerDelegate, PKEditTableViewControllerCachingDelegate, PKGroupDelegate, PKGroupsControllerDelegate, _UIContextMenuInteractionDelegate> {
     NSMutableArray * _actions;
     PKGroup * _deletingGroup;
     bool  _editingMode;
@@ -11,7 +11,6 @@
         double width; 
         double height; 
     }  _imageSizeNeeded;
-    <UIViewControllerPreviewing> * _previewingContext;
     UITableView * _tableView;
     PKGroup * _viewingGroup;
     PKPass * _viewingPass;
@@ -25,6 +24,9 @@
 - (void).cxx_destruct;
 - (void)_showNoPassesViewIfNoGroupsToShow;
 - (void)configureCell:(id)arg1 atIndexPath:(id)arg2 withGroup:(id)arg3;
+- (id)contextMenuInteraction:(id)arg1 actionsForMenuAtLocation:(struct CGPoint { double x1; double x2; })arg2 withSuggestedActions:(id)arg3;
+- (id)contextMenuInteraction:(id)arg1 previewForHighlightingAtLocation:(struct CGPoint { double x1; double x2; })arg2;
+- (bool)contextMenuInteractionShouldBegin:(id)arg1;
 - (void)group:(id)arg1 didInsertPass:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)group:(id)arg1 didMovePassFromIndex:(unsigned long long)arg2 toIndex:(unsigned long long)arg3;
 - (void)group:(id)arg1 didRemovePass:(id)arg2 atIndex:(unsigned long long)arg3;
@@ -41,8 +43,7 @@
 - (id)passAtIndexPath:(id)arg1;
 - (bool)passExistsWithUniqueIdentifier:(id)arg1;
 - (void)prefetchItemsAtIndexPaths:(id)arg1;
-- (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
-- (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint { double x1; double x2; })arg2;
+- (bool)shouldShowPreviewForRowAtIndexPath:(id)arg1;
 - (bool)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;

@@ -6,6 +6,7 @@
 
 @property (nonatomic, copy) NSString *accessory;
 @property (nonatomic, copy) NSURL *accessoryIdentifier;
+@property (nonatomic, copy) NSString *accessoryType;
 @property (nonatomic, copy) NSArray *attributes;
 @property (nonatomic, copy) NSNumber *currentDevice;
 @property (nonatomic, copy) NSString *entityType;
@@ -13,8 +14,11 @@
 @property (nonatomic, copy) NSString *home;
 @property (nonatomic, copy) NSURL *homeIdentifier;
 @property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSURL *primaryServiceIdentifier;
+@property (nonatomic, copy) NSArray *relatedEntityIdentifiers;
 @property (nonatomic, copy) NSString *room;
 @property (nonatomic, copy) NSURL *roomIdentifier;
+@property (nonatomic, copy) NSArray *sceneActions;
 @property (nonatomic, copy) NSString *sceneType;
 @property (nonatomic, copy) NSString *serviceGroup;
 @property (nonatomic, copy) NSArray *serviceGroupIdentifiers;
@@ -32,6 +36,7 @@
 
 - (id)accessory;
 - (id)accessoryIdentifier;
+- (id)accessoryType;
 - (id)attributes;
 - (id)currentDevice;
 - (id)encodedClassName;
@@ -41,8 +46,11 @@
 - (id)home;
 - (id)homeIdentifier;
 - (id)name;
+- (id)primaryServiceIdentifier;
+- (id)relatedEntityIdentifiers;
 - (id)room;
 - (id)roomIdentifier;
+- (id)sceneActions;
 - (id)sceneType;
 - (id)serviceGroup;
 - (id)serviceGroupIdentifiers;
@@ -50,6 +58,7 @@
 - (id)serviceType;
 - (void)setAccessory:(id)arg1;
 - (void)setAccessoryIdentifier:(id)arg1;
+- (void)setAccessoryType:(id)arg1;
 - (void)setAttributes:(id)arg1;
 - (void)setCurrentDevice:(id)arg1;
 - (void)setEntityType:(id)arg1;
@@ -57,8 +66,11 @@
 - (void)setHome:(id)arg1;
 - (void)setHomeIdentifier:(id)arg1;
 - (void)setName:(id)arg1;
+- (void)setPrimaryServiceIdentifier:(id)arg1;
+- (void)setRelatedEntityIdentifiers:(id)arg1;
 - (void)setRoom:(id)arg1;
 - (void)setRoomIdentifier:(id)arg1;
+- (void)setSceneActions:(id)arg1;
 - (void)setSceneType:(id)arg1;
 - (void)setServiceGroup:(id)arg1;
 - (void)setServiceGroupIdentifiers:(id)arg1;

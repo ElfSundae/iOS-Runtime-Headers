@@ -29,6 +29,7 @@
 - (id)initWithService:(unsigned int)arg1;
 - (id)name;
 - (bool)open;
+- (unsigned long long)registryID;
 - (id)reporterResults;
 - (bool)reset;
 - (unsigned int)service;

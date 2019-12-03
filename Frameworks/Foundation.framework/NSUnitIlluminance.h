@@ -5,6 +5,7 @@
 @interface NSUnitIlluminance : NSDimension <NSSecureCoding>
 
 + (id)baseUnit;
++ (void)initialize;
 + (id)lux;
 
 @end

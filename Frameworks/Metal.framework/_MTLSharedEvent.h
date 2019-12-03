@@ -4,6 +4,9 @@
 
 @interface _MTLSharedEvent : IOSurfaceSharedEvent <MTLSharedEvent> {
     NSString * _label;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _labelLock;
     unsigned long long  _labelTraceID;
 }
 
@@ -20,13 +23,15 @@
 
 - (void)dealloc;
 - (id)device;
-- (unsigned int)encodeKernelSignalEventCommandArgs:(struct IOAccelKernelCommandSignalOrWaitEventArgs { unsigned int x1; unsigned int x2; unsigned long long x3; }*)arg1 value:(unsigned long long)arg2;
-- (unsigned int)encodeKernelWaitEventCommandArgs:(struct IOAccelKernelCommandSignalOrWaitEventArgs { unsigned int x1; unsigned int x2; unsigned long long x3; }*)arg1 value:(unsigned long long)arg2;
+- (unsigned int)encodeKernelSignalEventCommandArgs:(struct IOAccelKernelCommandSignalOrWaitEventArgs { unsigned int x1; unsigned short x2; unsigned short x3; unsigned long long x4; }*)arg1 value:(unsigned long long)arg2;
+- (unsigned int)encodeKernelWaitEventCommandArgs:(struct IOAccelKernelCommandSignalOrWaitEventArgs { unsigned int x1; unsigned short x2; unsigned short x3; unsigned long long x4; }*)arg1 value:(unsigned long long)arg2;
+- (unsigned int)encodeKernelWaitEventCommandArgs:(struct IOAccelKernelCommandSignalOrWaitEventArgs { unsigned int x1; unsigned short x2; unsigned short x3; unsigned long long x4; }*)arg1 value:(unsigned long long)arg2 timeout:(unsigned int)arg3;
 - (id)initWithSharedEventHandle:(id)arg1;
 - (id)label;
 - (unsigned long long)labelTraceID;
 - (id)newSharedEventHandle;
 - (void)notifyListener:(id)arg1 atValue:(unsigned long long)arg2 block:(id /* block */)arg3;
+- (id)retainedLabel;
 - (void)setLabel:(id)arg1;
 
 @end

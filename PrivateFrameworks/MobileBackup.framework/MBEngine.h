@@ -12,6 +12,7 @@
     MBProperties * _preflightProperties;
     MBProperties * _properties;
     MBSettingsContext * _settingsContext;
+    MBWatchdog * _watchdog;
 }
 
 @property (nonatomic, readonly) MBAppManager *appManager;
@@ -30,6 +31,7 @@
 @property (nonatomic, readonly) int engineType;
 @property (nonatomic, readonly) NSString *engineTypeString;
 @property (getter=isForegroundRestore, nonatomic, readonly) bool foregroundRestore;
+@property (nonatomic, readonly) bool isInternetReachableViaWiFi;
 @property (getter=isMigrate, nonatomic, readonly) bool migrate;
 @property (nonatomic, readonly) MBProperties *preflightProperties;
 @property (nonatomic, readonly) MBProperties *properties;
@@ -38,6 +40,7 @@
 @property (nonatomic, readonly) NSString *restoreTypeString;
 @property (getter=isServiceEngine, nonatomic, readonly) bool serviceEngine;
 @property (nonatomic, readonly) MBSettingsContext *settingsContext;
+@property (nonatomic, retain) MBWatchdog *watchdog;
 
 + (id)aggregateDictionaryForFullRestoreWithKey:(id)arg1 engineType:(int)arg2;
 + (id)aggregateDictionaryKey:(id)arg1 forEngineType:(int)arg2 engineMode:(int)arg3;
@@ -57,6 +60,7 @@
 - (id)engineModeString;
 - (int)engineType;
 - (id)engineTypeString;
+- (bool)fetchHSA2Enabled:(bool*)arg1 error:(id*)arg2;
 - (id)initWithSettingsContext:(id)arg1 debugContext:(id)arg2 domainManager:(id)arg3;
 - (bool)isBackgroundRestore;
 - (bool)isBackupEngine;
@@ -64,6 +68,7 @@
 - (bool)isDeviceTransferEngine;
 - (bool)isDriveEngine;
 - (bool)isForegroundRestore;
+- (bool)isInternetReachableViaWiFi;
 - (bool)isMigrate;
 - (bool)isRestoreEngine;
 - (bool)isServiceEngine;
@@ -79,10 +84,12 @@
 - (id)restoringBundleID;
 - (void)setDomainRestoreBehaviors:(id)arg1;
 - (void)setEncrypted:(bool)arg1;
+- (void)setWatchdog:(id)arg1;
 - (id)settingsContext;
 - (bool)shouldAlwaysRestoreSystemSharedContainerDomain:(id)arg1;
 - (bool)shouldCommitIfPossible;
 - (id)validateFile:(id)arg1;
 - (id)validateRestoreDomain:(id)arg1 relativePath:(id)arg2;
+- (id)watchdog;
 
 @end

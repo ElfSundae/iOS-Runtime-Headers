@@ -9,4 +9,8 @@
 - (void)workoutSession:(HDWorkoutSessionServer *)arg1 didFailWithError:(NSError *)arg2;
 - (void)workoutSession:(HDWorkoutSessionServer *)arg1 didGenerateEvent:(_HKWorkoutEvent *)arg2;
 
+@optional
+
+- (void)workoutSession:(HDWorkoutSessionServer *)arg1 didUpdateDataAccumulator:(id <HDWorkoutDataAccumulator>)arg2;
+
 @end

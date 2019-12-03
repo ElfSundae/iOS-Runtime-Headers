@@ -101,6 +101,7 @@
 @property (nonatomic, copy) NSURL *serverURL;
 @property (nonatomic) int slotPosition;
 @property (readonly) Class superclass;
+@property (nonatomic) <ADBannerViewDelegate> *weakDelegate;
 @property (nonatomic, copy) NSDate *webLoadStartTime;
 
 + (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_adWindowBounds;
@@ -112,6 +113,7 @@
 + (void)setServerURL:(id)arg1;
 + (struct CGSize { double x1; double x2; })sizeFromBannerContentSizeIdentifier:(id)arg1;
 
+- (void).cxx_destruct;
 - (id)_accessibilityUserTestingElementAttributes;
 - (void)_commonInit;
 - (void)_forwardErrorToDelegate:(id)arg1;
@@ -128,7 +130,6 @@
 - (int)action;
 - (double)adDataLoadTime;
 - (id)adDisplayDate;
-- (id)adPrivacyDetailsAttributes;
 - (id)adResponseId;
 - (id)adSpace;
 - (id)adSpaceView;
@@ -231,10 +232,6 @@
 - (bool)reUsed;
 - (void)registerVideoPlayerForAdAnalytics:(id)arg1;
 - (void)removeCreativeView;
-- (void)reportAdPrivacySheetDidAppear;
-- (void)reportAdPrivacySheetDidDisappear;
-- (void)reportAdPrivacySheetDidLinkOut;
-- (void)reportAdPrivacySheetDidRender;
 - (void)reportNativeClickEvent;
 - (bool)requestCalledbackError;
 - (id)requiredContentSizeIdentifiers;
@@ -300,6 +297,7 @@
 - (void)setSlotPosition:(int)arg1;
 - (void)setTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg1;
 - (void)setViewSizeInPortrait:(struct CGSize { double x1; double x2; })arg1 inLandscape:(struct CGSize { double x1; double x2; })arg2;
+- (void)setWeakDelegate:(id)arg1;
 - (void)setWebLoadStartTime:(id)arg1;
 - (bool)shouldTestVisibilityAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
@@ -317,6 +315,7 @@
 - (void)videoBannerDidUnload:(id)arg1;
 - (void)videoBannerTouched:(id)arg1;
 - (void)videoBannerVisibilityDidChange:(id)arg1;
+- (id)weakDelegate;
 - (id)webLoadStartTime;
 
 @end

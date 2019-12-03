@@ -14,13 +14,13 @@
     PHFetchResult * _collectionsFetchResult;
     PXPhotoKitCollectionsDataSourceManagerConfiguration * _configuration;
     NSMutableDictionary * _fetchResultsByPendingChangedCollections;
-    bool  _initiatedBackgroundFetching;
     bool  _isPhotoLibraryEmpty;
     bool  _needsBackgroundFetching;
     bool  _performedBackgroundFetching;
     PHPhotoLibrary * _photoLibrary;
+    bool  _prepareBackgroundFetching;
     bool  _publishChangesScheduledOnRunLoop;
-    bool  _resumedBackgroundFetching;
+    bool  _startBackgroundFetching;
     NSOperationQueue * _subCollectionFetchOperationQueue;
     NSMutableDictionary * _subCollectionFetchResultsCache;
     NSMutableDictionary * _subCollectionKeyAssetFetchResultsCache;
@@ -43,6 +43,9 @@
 @property (nonatomic, readonly) long long numberOfPendingKeyAssetFetches;
 @property (readonly) Class superclass;
 
++ (id)sharedKeyAssetsFetchQueue;
++ (id)sharedSubCollectionsFetchQueue;
+
 - (void).cxx_destruct;
 - (id)_cachedKeyAssetFetchResultForSubCollection:(id)arg1;
 - (id)_changedSubCollectionIndexesBySections;
@@ -57,21 +60,21 @@
 - (struct PXTwoTuple { Class x1; }*)_filterFetchResult:(id)arg1;
 - (unsigned long long)_fixedOrderPriorityForVirtualCollection:(id)arg1;
 - (struct PXTwoTuple { Class x1; }*)_getSectionedCollectionListAndFetchResultsFromFetchResult:(id)arg1;
-- (void)_initiateBackgroundFetchingIfNeededForCollection:(id)arg1;
 - (bool)_isEmpty;
 - (bool)_isImportsAssetCollection:(id)arg1;
 - (bool)_isPlacesAlbumAssetCollection:(id)arg1;
 - (bool)_needsFetchResultForCollection:(id)arg1;
 - (bool)_needsKeyAssetsFetchResultForCollection:(id)arg1;
 - (id)_newDataSource;
+- (void)_prepareBackgroundFetchingIfNeededForCollection:(id)arg1;
 - (void)_publishPendingCollectionChanges;
 - (void)_recursivelyCollectCollectionsIn:(id)arg1 fetchResult:(id)arg2;
 - (void)_recursivelyEnumerateAssetCollectionsInFetchResult:(id)arg1 block:(id /* block */)arg2;
-- (void)_resumeFetchOperations;
-- (void)_resumeKeyAssetsFetchOperations;
 - (void)_setCollectionListBySection:(id)arg1;
 - (void)_setCollectionsFetchResultBySection:(id)arg1;
 - (bool)_shouldIncludeCollection:(id)arg1;
+- (void)_startFetchOperations;
+- (void)_startKeyAssetsFetchOperations;
 - (id)_subCollectionActiveCountFetchOperations;
 - (id)_subCollectionActiveKeyAssetsFetchOperations;
 - (id)_subitemChangeDetailsByItemBySection;
@@ -102,14 +105,14 @@
 - (bool)hasAssetsFetchResultForCollection:(id)arg1;
 - (id)indexPathForCollection:(id)arg1;
 - (id)initWithConfiguration:(id)arg1;
-- (void)initiateBackgroundFetchingIfNeeded;
 - (bool)isCachedFetchResultOutdatedForCollection:(id)arg1;
 - (id)keyAssetsFetchResultForCollection:(id)arg1;
 - (long long)numberOfPendingKeyAssetFetches;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
+- (void)prepareBackgroundFetchingIfNeeded;
 - (id)prepareForPhotoLibraryChange:(id)arg1;
-- (void)resumeBackgroundFetchingIfNeeded;
 - (void)set_virtualCollections:(id)arg1;
+- (void)startBackgroundFetchingIfNeeded;
 - (void)startCoalescingFetchResultChanges;
 - (void)stopCoalescingAndPublishFetchResultChanges;
 - (id)uncachedFetchResultForSubCollection:(id)arg1;

@@ -9,10 +9,15 @@
         unsigned int var_count; 
         double constant; 
         union { 
-            /* Warning: unhandled struct encoding: '{?="stored_extern_marker"@"slab"^{?}"capacity"Q}"inline_slab"{?="aligner"Q}"padding"[48C])}' */ struct { 
+            struct { 
                 id stored_extern_marker; 
+                struct { /* ? */ } *slab; 
+                unsigned long long capacity; 
             } extern_data; 
-            unsigned long long capacity; 
+            struct { 
+                unsigned long long aligner; 
+            } inline_slab; 
+            unsigned char padding[48]; 
         } data; 
     }  linExp;
 }
@@ -34,7 +39,7 @@
 - (double)constant;
 - (id)copyContentsAndReturnToPool;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
 - (id)description;
 - (id)engine;

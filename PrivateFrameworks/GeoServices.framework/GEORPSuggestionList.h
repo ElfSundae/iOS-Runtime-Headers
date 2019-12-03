@@ -6,7 +6,23 @@
     GEOPDPlaceRequest * _autocompleteRequest;
     GEOPDPlaceResponse * _autocompleteResponse;
     NSMutableArray * _entrys;
+    struct { 
+        unsigned int read_autocompleteRequest : 1; 
+        unsigned int read_autocompleteResponse : 1; 
+        unsigned int read_entrys : 1; 
+        unsigned int read_query : 1; 
+        unsigned int wrote_autocompleteRequest : 1; 
+        unsigned int wrote_autocompleteResponse : 1; 
+        unsigned int wrote_entrys : 1; 
+        unsigned int wrote_query : 1; 
+    }  _flags;
     NSString * _query;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
 }
 
 @property (nonatomic, retain) GEOPDPlaceRequest *autocompleteRequest;
@@ -18,8 +34,14 @@
 @property (nonatomic, retain) NSString *query;
 
 + (Class)entryType;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsEntry:(id)arg1;
+- (void)_readAutocompleteRequest;
+- (void)_readAutocompleteResponse;
+- (void)_readEntrys;
+- (void)_readQuery;
 - (void)addEntry:(id)arg1;
 - (id)autocompleteRequest;
 - (id)autocompleteResponse;
@@ -35,9 +57,12 @@
 - (bool)hasAutocompleteResponse;
 - (bool)hasQuery;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)query;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAutocompleteRequest:(id)arg1;
 - (void)setAutocompleteResponse:(id)arg1;

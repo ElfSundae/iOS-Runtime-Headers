@@ -12,4 +12,6 @@
 + (Class)validatedClass;
 + (id)validatorWithObject:(id)arg1;
 
+- (bool)isValidWithAPIType:(unsigned long long)arg1 withError:(id*)arg2;
+
 @end

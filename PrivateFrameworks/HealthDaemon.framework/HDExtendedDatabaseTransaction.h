@@ -34,7 +34,7 @@
 
 - (void).cxx_destruct;
 - (void)_enableAutomaticRollbackTimer;
-- (void)_transaction_runTransactionWithOptions:(unsigned long long)arg1;
+- (void)_transaction_runTransactionWithContext:(id)arg1;
 - (id)automaticRollbackTimer;
 - (bool)commitWithErrorOut:(id*)arg1;
 - (id)completionSemaphore;
@@ -42,7 +42,7 @@
 - (id)dataQueue;
 - (id)database;
 - (void)dealloc;
-- (id)initWithDatabase:(id)arg1 options:(unsigned long long)arg2 transactionTimeout:(double)arg3 continuationTimeout:(double)arg4 error:(id*)arg5;
+- (id)initWithDatabase:(id)arg1 context:(id)arg2 transactionTimeout:(double)arg3 continuationTimeout:(double)arg4 error:(id*)arg5;
 - (id)lastError;
 - (id /* block */)pendingWork;
 - (bool)pendingWorkDidSucceed;

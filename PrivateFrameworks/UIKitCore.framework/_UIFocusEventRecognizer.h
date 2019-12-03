@@ -22,6 +22,7 @@
     }  _flags;
     unsigned long long  _focusUpdateCountSinceLastPanBegan;
     unsigned long long  _inputType;
+    bool  _isShippingSettings;
     CADisplayLink * _joystickFocusDirectionDisplayLink;
     _UIFocusEngineJoystickGestureRecognizer * _joystickGestureRecognizer;
     NSTimer * _joystickModeExitTimer;
@@ -46,11 +47,16 @@
     }  _momentumVelocity;
     _UIFocusMotionEffectsController * _motionEffectsController;
     UIMoveEvent * _moveEvent;
+    int  _numFrames;
     UIView * _owningView;
     _UIFocusEnginePanGestureRecognizer * _panGestureRecognizer;
     _UIFocusMovementInfo * _previousJoystickFocusMovementInfo;
     double  _previousJoystickFocusMovementTime;
     double  _previousJoystickRegionEntryTime;
+    struct CGPoint { 
+        double x; 
+        double y; 
+    }  _previousPoints;
     struct CGVector { 
         double dx; 
         double dy; 
@@ -64,6 +70,8 @@
         double x; 
         double y; 
     }  _touchBeganPoint;
+    NSObservation * _trackingModeObserveration;
+    NSUserDefaults * _trackingUserDefaults;
     UIView * _viewForTouchDeferredFocus;
 }
 
@@ -114,6 +122,8 @@
 - (id)_motionEffectsController;
 - (id)_moveEvent;
 - (bool)_moveInDirection:(unsigned long long)arg1;
+- (bool)_moveInDirection:(unsigned long long)arg1 withEvaluator:(id /* block */)arg2;
+- (bool)_moveInDirection:(unsigned long long)arg1 withSearchInfo:(id)arg2;
 - (bool)_moveWithEvent:(id)arg1;
 - (void)_panGestureEnd:(id)arg1;
 - (void)_panGestureStart:(id)arg1;
@@ -137,6 +147,7 @@
 - (id)_uiktest_panGestureRecognizer;
 - (void)_uiktest_setPanGestureRecognizer:(id)arg1;
 - (void)_updatePanLocation:(struct CGPoint { double x1; double x2; })arg1 reportedVelocity:(struct CGVector { double x1; double x2; })arg2;
+- (void)_updateTrackingMode;
 - (double)_verticalFrictionInterpolationForMomentumSpeed:(double)arg1 totalDistance:(double)arg2;
 - (void)dealloc;
 - (id)delegate;

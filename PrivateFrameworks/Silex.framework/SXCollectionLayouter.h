@@ -26,7 +26,7 @@
 - (id)containerComponentBlueprint;
 - (id)delegate;
 - (id)initWithContainerComponent:(id)arg1 layouterFactory:(id)arg2 columnCalculator:(id)arg3 unitConverterFactory:(id)arg4;
-- (void)layoutBlueprint:(id)arg1 columnLayout:(id)arg2 shouldContinue:(bool*)arg3;
+- (void)layoutBlueprint:(id)arg1 columnLayout:(id)arg2 description:(id)arg3 shouldContinue:(bool*)arg4;
 - (id)layouterFactory;
 - (void)setDelegate:(id)arg1;
 - (id)unitConverterFactory;

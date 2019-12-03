@@ -49,6 +49,8 @@
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, retain) SFUserReportRequest *userReportRequest;
 
+// Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
+
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -86,5 +88,9 @@
 - (id)thumbnail;
 - (id)title;
 - (id)type;
+
+// Image: /System/Library/PrivateFrameworks/SearchUI.framework/SearchUI
+
+- (Class)_searchUIHorizontallyScrollingButtonControllerClass;
 
 @end

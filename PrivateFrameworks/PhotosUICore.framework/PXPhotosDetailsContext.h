@@ -5,7 +5,9 @@
 @interface PXPhotosDetailsContext : PXObservable <PXChangeObserver, PXHierarchicalContext, PXMutablePhotosDetailsContext, PXPhotosDataSourceChangeObserver> {
     PHFetchResult * _assetCollections;
     NSDictionary * _assetsByCollection;
+    unsigned long long  _contextHierarchyDepth;
     PXDisplayTitleInfo * _displayTitleInfo;
+    bool  _hasLocation;
     PHFetchResult * _keyAssetsFetchResult;
     NSString * _localizedSubtitle;
     NSString * _localizedTitle;
@@ -21,9 +23,11 @@
 
 @property (nonatomic, readonly) PHFetchResult *assetCollections;
 @property (nonatomic, readonly, copy) NSDictionary *assetsByCollection;
+@property (nonatomic, readonly) unsigned long long contextHierarchyDepth;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) PXDisplayTitleInfo *displayTitleInfo;
+@property (nonatomic, readonly) bool hasLocation;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) PHFetchResult *keyAssetsFetchResult;
 @property (nonatomic, readonly, copy) NSString *localizedSubtitle;
@@ -39,15 +43,20 @@
 @property (nonatomic, readonly) PXPhotosDetailsViewModel *viewModel;
 @property (nonatomic, readonly) unsigned long long viewSourceOrigin;
 
++ (id)photosDetailsContextForAsset:(id)arg1 parentContext:(id)arg2;
++ (id)photosDetailsContextForAssetCollection:(id)arg1 assets:(id)arg2 keyAssets:(id)arg3 enableCuration:(bool)arg4 enableKeyAssets:(bool)arg5 useVerboseSmartDescription:(bool)arg6 viewSourceOrigin:(unsigned long long)arg7;
++ (id)photosDetailsContextForAssetCollection:(id)arg1 assets:(id)arg2 viewSourceOrigin:(unsigned long long)arg3;
 + (id)photosDetailsContextForMemory:(id)arg1;
-+ (id)photosDetailsContextForSection:(long long)arg1 inPhotosDataSource:(id)arg2 viewSourceOrigin:(unsigned long long)arg3;
++ (id)photosDetailsContextForMemory:(id)arg1 enableCuration:(bool)arg2 enableKeyAssets:(bool)arg3;
 
 - (void).cxx_destruct;
 - (void)_updatePropertiesDerivedFromDisplayTitleInfo;
 - (void)_updatePropertiesDerivedFromPhotosDataSource;
 - (id)assetCollections;
 - (id)assetsByCollection;
+- (unsigned long long)contextHierarchyDepth;
 - (id)displayTitleInfo;
+- (bool)hasLocation;
 - (id)init;
 - (id)initWithPhotosDataSource:(id)arg1 displayTitleInfo:(id)arg2 parentContext:(id)arg3 keyAssetsFetchResult:(id)arg4;
 - (id)keyAssetsFetchResult;
@@ -62,10 +71,12 @@
 - (void)photosDataSource:(id)arg1 didChange:(id)arg2;
 - (void)setAssetCollections:(id)arg1;
 - (void)setAssetsByCollection:(id)arg1;
+- (void)setHasLocation:(bool)arg1;
 - (void)setKeyAssetsFetchResult:(id)arg1;
 - (void)setLocalizedSubtitle:(id)arg1;
 - (void)setLocalizedTitle:(id)arg1;
 - (void)setPeople:(id)arg1;
+- (void)setPhotosDataSource:(id)arg1;
 - (void)setShouldShowMovieHeader:(bool)arg1;
 - (void)setTitleFontName:(id)arg1;
 - (void)setViewModel:(id)arg1;

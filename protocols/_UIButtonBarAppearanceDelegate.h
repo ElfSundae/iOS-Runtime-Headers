@@ -6,17 +6,16 @@
 @required
 
 - (double)absorptionForItem:(UIBarButtonItem *)arg1;
-- (id)appearanceStorage;
+- (_UIBarButtonItemAppearanceStorage *)appearanceStorage;
 - (double)backButtonMargin;
 - (double)backButtonMaximumWidth;
 - (UIImage *)backIndicatorImage;
 - (UIImage *)backIndicatorMaskImage;
-- (long long)barMetrics;
 - (long long)barType;
 - (bool)barWantsLetterpress;
 - (bool)centerTextButtons;
+- (bool)compactMetrics;
 - (double)defaultEdgeSpacing;
-- (UIFontDescriptor *)defaultFontDescriptor;
 - (double)defaultTextPadding;
 - (unsigned long long)edgesPaddingBarButtonItem:(UIBarButtonItem *)arg1;
 - (bool)isRTL;

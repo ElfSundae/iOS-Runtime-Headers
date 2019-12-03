@@ -13,6 +13,7 @@
 
 @optional
 
+- (void)forceUpdatePowerUsage:(unsigned long long)arg1;
 - (unsigned long long)powerUsage;
 - (void)setPowerUsage:(unsigned long long)arg1;
 

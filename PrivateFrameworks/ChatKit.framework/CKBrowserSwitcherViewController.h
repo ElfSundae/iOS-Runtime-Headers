@@ -34,6 +34,7 @@
     id /* block */  _performAfterFirstLayoutBlock;
     CKBrowserSwitcherScrollPreventer * _scrollPreventer;
     IMScheduledUpdater * _scrollUpdater;
+    UIView * _shadowView;
     NSDate * _timeOfLastScrollingDecelerationEnded;
     UILongPressGestureRecognizer * _touchTracker;
     CKBrowserTransitionCoordinator * _transitionCoordinator;
@@ -70,6 +71,7 @@
 @property (nonatomic, copy) id /* block */ performAfterFirstLayoutBlock;
 @property (nonatomic, retain) CKBrowserSwitcherScrollPreventer *scrollPreventer;
 @property (nonatomic, retain) IMScheduledUpdater *scrollUpdater;
+@property (nonatomic, retain) UIView *shadowView;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSDate *timeOfLastScrollingDecelerationEnded;
 @property (nonatomic, retain) UILongPressGestureRecognizer *touchTracker;
@@ -104,6 +106,7 @@
 - (void)_snapshotCurrentViewController;
 - (void)_transitionSnapshotViewToBrowserView;
 - (void)_transitionSnapshotViewToBrowserViewAfterViewDidPrepareForDisplay:(id)arg1;
+- (void)_updateActiveBrowserAlphaStateOnInsertForCurrentController:(id)arg1 currentView:(id)arg2;
 - (void)_updateActiveBrowserTimestampForCurrentBalloonPlugin;
 - (void)_updateAppNameAndPageForOffset:(struct CGPoint { double x1; double x2; })arg1;
 - (void)_updateBrowserViewPositionForPluginAndInsertIfNecessary:(id)arg1;
@@ -225,6 +228,7 @@
 - (void)setPerformAfterFirstLayoutBlock:(id /* block */)arg1;
 - (void)setScrollPreventer:(id)arg1;
 - (void)setScrollUpdater:(id)arg1;
+- (void)setShadowView:(id)arg1;
 - (void)setTimeOfLastScrollingDecelerationEnded:(id)arg1;
 - (void)setTouchTracker:(id)arg1;
 - (void)setTransitionCoordinator:(id)arg1;
@@ -232,20 +236,24 @@
 - (void)setTransitioningFromSnapshotToLiveView:(bool)arg1;
 - (void)setViewHasLaidOutSubviews:(bool)arg1;
 - (void)setupPausedExpandAnimatorIfNeeded;
+- (id)shadowView;
 - (bool)shouldAlwaysShowAppTitle;
 - (bool)shouldAutorotate;
 - (void)showBrowserFullscreenForPlugin:(id)arg1 datasource:(id)arg2;
 - (void)showBrowserFullscreenModalForPlugin:(id)arg1 datasource:(id)arg2;
 - (void)showBrowserInSwitcherForPlugin:(id)arg1 datasource:(id)arg2 reloadData:(bool)arg3;
 - (void)stopExpandAnimatorAndCleanupState;
+- (unsigned long long)supportedInterfaceOrientations;
 - (id)timeOfLastScrollingDecelerationEnded;
 - (id)touchTracker;
-- (id)touchTracker;
+- (id)traitCollection;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)transitionCoordinator;
 - (void)transitionToCollapsed;
 - (void)transitionToFullscreen;
 - (id)transitionsPresentationViewController;
 - (void)unloadRemoteViewControllers;
+- (void)updateGrabberTitleAndIconForPlugin:(id)arg1;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLayoutSubviews;

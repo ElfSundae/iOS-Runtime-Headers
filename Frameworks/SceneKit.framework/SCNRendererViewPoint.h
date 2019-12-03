@@ -3,7 +3,15 @@
  */
 
 @interface SCNRendererViewPoint : NSObject {
-    MTLRenderPassDescriptor * passDescriptor;
+    MTLRenderPassDescriptor * _passDescriptor;
+    struct { 
+        double originX; 
+        double originY; 
+        double width; 
+        double height; 
+        double znear; 
+        double zfar; 
+    }  _viewport;
     struct SCNMatrix4 { 
         float m11; 
         float m12; 
@@ -40,14 +48,6 @@
         float m43; 
         float m44; 
     }  viewMatrix;
-    struct { 
-        double originX; 
-        double originY; 
-        double width; 
-        double height; 
-        double znear; 
-        double zfar; 
-    }  viewport;
 }
 
 @property (nonatomic, retain) MTLRenderPassDescriptor *passDescriptor;

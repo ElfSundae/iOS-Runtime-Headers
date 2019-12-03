@@ -31,7 +31,7 @@
 + (id)fontWithFeatures:(int)arg1 lfWidth:(int)arg2 lfEscapement:(int)arg3 lfOrientation:(int)arg4 lfWeight:(int)arg5 lfItalic:(bool)arg6 lfUnderline:(bool)arg7 lfStrikeOut:(bool)arg8 lfCharSet:(int)arg9 lfOutPrecision:(int)arg10 lfClipPrecision:(unsigned char)arg11 lfQuality:(int)arg12 pitch:(int)arg13 family:(int)arg14 lfFaceName:(id)arg15;
 + (id)fontWithStockFont:(int)arg1;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (double)escapement;
 - (id)faceName;
 - (double)fontHeight;

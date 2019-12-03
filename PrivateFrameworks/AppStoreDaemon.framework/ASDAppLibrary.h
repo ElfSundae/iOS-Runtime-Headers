@@ -14,6 +14,8 @@
 
 + (id)interface;
 + (long long)launchApp:(id)arg1;
++ (long long)launchApp:(id)arg1 onPairedDevice:(id)arg2;
++ (void)launchApp:(id)arg1 onPairedDevice:(id)arg2 withResultHandler:(id /* block */)arg3;
 + (void)launchApp:(id)arg1 withResultHandler:(id /* block */)arg2;
 + (long long)launchMessagesExtensionForApp:(id)arg1;
 + (void)launchMessagesExtensionForApp:(id)arg1 withResultHandler:(id /* block */)arg2;

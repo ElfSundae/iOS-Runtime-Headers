@@ -37,6 +37,7 @@
 - (id)initWithOldIndexPath:(id)arg1 newIndexPath:(id)arg2;
 - (long long)inverseCompareIndexPaths:(id)arg1;
 - (bool)isAppendingSectionInsert;
+- (bool)isEqual:(id)arg1;
 - (bool)isEqualToUpdate:(id)arg1;
 - (bool)isNOOP;
 - (bool)isRevertedUpdateOf:(id)arg1;

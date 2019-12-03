@@ -12,6 +12,7 @@
 
 - (void).cxx_destruct;
 - (id)analysisRequest;
+- (id)cacheKey;
 - (bool)prepare:(out id*)arg1;
 - (id)recipe;
 - (bool)render:(out id*)arg1;

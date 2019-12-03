@@ -12,6 +12,8 @@
     }  _cellID;
     bool  _cellIDIsValid;
     bool  _cellIsValid;
+    TSTCellFormulaSpec * _formulaSpec;
+    bool  _formulaSpecIsValid;
     struct TSUCellRect { 
         struct TSUCellCoord { 
             unsigned int row; 
@@ -39,6 +41,8 @@
 @property (nonatomic, readonly) int cellValueType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, retain) TSTCellFormulaSpec *formulaSpec;
+@property (nonatomic) bool formulaSpecIsValid;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct TSUCellRect { struct TSUCellCoord { unsigned int x_1_1_1; unsigned short x_1_1_2; bool x_1_1_3; bool x_1_1_4; } x1; struct { unsigned int x_2_1_1; unsigned int x_2_1_2; } x2; } mergeRange;
 @property (nonatomic) bool mergeRangeIsValid;
@@ -55,6 +59,8 @@
 - (bool)cellIsEmpty;
 - (bool)cellIsValid;
 - (int)cellValueType;
+- (id)formulaSpec;
+- (bool)formulaSpecIsValid;
 - (id)init;
 - (struct TSUCellRect { struct TSUCellCoord { unsigned int x_1_1_1; unsigned short x_1_1_2; bool x_1_1_3; bool x_1_1_4; } x1; struct { unsigned int x_2_1_1; unsigned int x_2_1_2; } x2; })mergeRange;
 - (bool)mergeRangeIsValid;
@@ -63,6 +69,8 @@
 - (void)setCellID:(struct TSUCellCoord { unsigned int x1; unsigned short x2; bool x3; bool x4; })arg1;
 - (void)setCellIDIsValid:(bool)arg1;
 - (void)setCellIsValid:(bool)arg1;
+- (void)setFormulaSpec:(id)arg1;
+- (void)setFormulaSpecIsValid:(bool)arg1;
 - (void)setMergeRange:(struct TSUCellRect { struct TSUCellCoord { unsigned int x_1_1_1; unsigned short x_1_1_2; bool x_1_1_3; bool x_1_1_4; } x1; struct { unsigned int x_2_1_1; unsigned int x_2_1_2; } x2; })arg1;
 - (void)setMergeRangeIsValid:(bool)arg1;
 

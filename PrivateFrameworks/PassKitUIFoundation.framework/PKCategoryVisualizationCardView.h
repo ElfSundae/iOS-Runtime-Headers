@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PassKitUIFoundation.framework/PassKitUIFoundation
  */
 
-@interface PKCategoryVisualizationCardView : UIView <MTKViewDelegate, PKMotionManagerClientProtocol> {
+@interface PKCategoryVisualizationCardView : UIView <PKMetalRenderLoopDelegate, PKMotionManagerClientProtocol> {
     bool  _blurDisabled;
     MPSUnaryImageKernel * _blurShader;
     NSArray * _bucketColors;
@@ -11,14 +11,13 @@
     <MTLRenderPipelineState> * _circlePipelineState;
     <MTLBuffer> * _circleUniformsBuffer;
     <MTLCommandQueue> * _commandQueue;
-    <MTLDevice> * _device;
+    unsigned long long  _drawableHeight;
+    unsigned long long  _drawableWidth;
     bool  _effectivePaused;
     bool  _emptying;
     bool  _hasPendingUpdate;
     bool  _invalidated;
-    <MTLLibrary> * _library;
     NSSet * _magnitudes;
-    MTKView * _metalView;
     bool  _motionEnabled;
     bool  _needsDraw;
     <MTLTexture> * _overlayNormalTexture;
@@ -26,6 +25,9 @@
     <MTLTexture> * _overlayTexture;
     bool  _paused;
     long long  _pendingUpdateStyle;
+    PKMetalRenderLoop * _renderLoop;
+    MTLRenderPassDescriptor * _renderPassDescriptor;
+    MTLRenderPassDescriptor * _secondRenderPassDescriptor;
     <MTLBuffer> * _singleCircleDataBuffer;
     struct { 
         double startTime; 
@@ -52,16 +54,15 @@
 - (void)_calculateNewCirclePositions;
 - (void)_createMetalResourcesWithTextures:(id)arg1;
 - (void)_empty;
-- (id)_makePipelineStateWithVertexFunction:(id)arg1 fragmentFunction:(id)arg2;
 - (void)_startMotionUpdates;
 - (void)_stopMotionUpdates;
 - (void)_updateCircles;
 - (void)_updatePausedState;
+- (void)_updateRenderPassDescriptorWithDrawable:(id)arg1;
 - (void)_updateTextureAndBlurShader;
 - (id)bucketColors;
 - (void)dealloc;
 - (void)didMoveToWindow;
-- (void)drawInMTKView:(id)arg1;
 - (id)init;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)invalidate;
@@ -71,7 +72,8 @@
 - (void)layoutSubviews;
 - (id)magnitudes;
 - (void)motionManager:(id)arg1 didReceiveMotion:(id)arg2;
-- (void)mtkView:(id)arg1 drawableSizeWillChange:(struct CGSize { double x1; double x2; })arg2;
+- (void)renderLoop:(id)arg1 drawAtTime:(double)arg2;
+- (void)renderLoop:(id)arg1 drawableSizeDidChange:(struct CGSize { double x1; double x2; })arg2;
 - (void)renderWithTextures:(id)arg1 rendererState:(id)arg2;
 - (id)rendererState;
 - (void)setBlurDisabled:(bool)arg1;

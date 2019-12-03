@@ -22,6 +22,7 @@
 @property bool disabled;
 @property bool disablesUpdates;
 @property (readonly) unsigned int displayId;
+@property (getter=isFlipBookEnabled) bool flipBookEnabled;
 @property (getter=isGrayscale) bool grayscale;
 @property float idealRefreshRate;
 @property bool invertsColors;
@@ -45,7 +46,7 @@
 
 - (id)TVMode;
 - (id)TVSignalType;
-- (id)_initWithCADisplayServer:(struct Server { int (**x1)(); struct SpinLock { struct { int x_1_2_1; } x_2_1_1; } x2; struct Mutex { struct _opaque_pthread_mutex_t { long long x_1_2_1; BOOL x_1_2_2[56]; } x_3_1_1; } x3; id x4; struct Display {} x5; struct __CFString {} *x6; struct ContextItem {} *x7; unsigned long long x8; unsigned long long x9; struct ContextItem {} *x10; unsigned long long x11; struct SpinLock { struct { int x_1_2_1; } x_12_1_1; } x12; struct PendingOperation {} *x13; struct Context {} *x14; struct Shape {} *x15; unsigned int x16; struct Context {} *x17; struct Renderer {} *x18; struct Bounds { int x_19_1_1; int x_19_1_2; int x_19_1_3; int x_19_1_4; } x19; double x20; double x21; double x22; struct __CFDictionary {} *x23; struct HangEvent { int (**x_24_1_1)(); struct hangEvent {} *x_24_1_2; } x24; unsigned int x25 : 1; unsigned int x26 : 1; unsigned int x27 : 1; unsigned int x28 : 1; unsigned int x29 : 1; unsigned int x30 : 1; unsigned int x31 : 1; unsigned int x32 : 1; unsigned int x33 : 1; unsigned int x34 : 1; }*)arg1;
+- (id)_initWithCADisplayServer:(struct Server { int (**x1)(); struct SpinLock { struct { int x_1_2_1; } x_2_1_1; } x2; struct Mutex { struct _opaque_pthread_mutex_t { long long x_1_2_1; BOOL x_1_2_2[56]; } x_3_1_1; } x3; id x4; struct Display {} *x5; struct __CFString {} *x6; struct ContextItem {} *x7; unsigned long long x8; unsigned long long x9; struct ContextItem {} *x10; unsigned long long x11; struct SpinLock { struct { int x_1_2_1; } x_12_1_1; } x12; struct PendingOperation {} *x13; struct Context {} *x14; struct Shape {} *x15; unsigned int x16; struct Context {} *x17; struct Renderer {} *x18; struct Bounds { int x_19_1_1; int x_19_1_2; int x_19_1_3; int x_19_1_4; } x19; double x20; double x21; unsigned int x22; double x23; struct __CFDictionary {} *x24; unsigned int x25 : 1; unsigned int x26 : 1; unsigned int x27 : 1; unsigned int x28 : 1; unsigned int x29 : 1; unsigned int x30 : 1; unsigned int x31 : 1; unsigned int x32 : 1; unsigned int x33 : 1; }*)arg1;
 - (void)addClone:(id)arg1;
 - (void)addClone:(id)arg1 options:(id)arg2;
 - (bool)allowsDisplayCompositing;
@@ -73,6 +74,7 @@
 - (void)invalidate;
 - (bool)invertsColors;
 - (bool)isBlanked;
+- (bool)isFlipBookEnabled;
 - (bool)isGrayscale;
 - (bool)isMirroringEnabled;
 - (bool)isSecure;
@@ -95,11 +97,13 @@
 - (void)setAllowsExtendedDynamicRange:(bool)arg1;
 - (void)setAllowsVirtualModes:(bool)arg1;
 - (void)setBlanked:(bool)arg1;
+- (void)setCalibrationPhase:(unsigned int)arg1 forIdentifier:(unsigned int)arg2;
 - (void)setColorMatrix:(float*)arg1 scale:(float)arg2 rampDuration:(double)arg3;
 - (void)setColorMode:(id)arg1;
 - (void)setContrast:(float)arg1;
 - (void)setDisabled:(bool)arg1;
 - (void)setDisablesUpdates:(bool)arg1;
+- (void)setFlipBookEnabled:(bool)arg1;
 - (void)setGrayscale:(bool)arg1;
 - (void)setIdealRefreshRate:(float)arg1;
 - (void)setInvertsColors:(bool)arg1;
@@ -121,7 +125,6 @@
 - (bool)supportsExtendedColors;
 - (long long)tag;
 - (unsigned int)taskNamePortOfContextId:(unsigned int)arg1;
-- (unsigned int)taskPortOfContextId:(unsigned int)arg1;
 - (id)uniqueId;
 - (void)update;
 - (bool)usesPreferredModeRefreshRate;

@@ -9,7 +9,7 @@
     }  _ignoreRange;
 }
 
-@property struct _NSRange { unsigned long long x1; unsigned long long x2; } ignoreRange;
+@property (nonatomic) struct _NSRange { unsigned long long x1; unsigned long long x2; } ignoreRange;
 
 + (id)computeTruncationForAlignments:(id)arg1 indexForFirstTrailingColumn:(unsigned long long)arg2 totalEqualColumns:(unsigned long long)arg3;
 

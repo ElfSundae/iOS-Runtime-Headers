@@ -37,11 +37,11 @@
 
 @property (nonatomic, retain) NSDictionary *attributeMap;
 
+- (void).cxx_destruct;
 - (double)acceleration;
 - (int)animationPresetClass;
 - (id)attributeMap;
 - (id)childTimeNodeList;
-- (void)dealloc;
 - (double)deceleration;
 - (id)description;
 - (bool)display;

@@ -5,6 +5,7 @@
 
 @required
 
+- (NSSet *)acceptedInvitationIdentifiers;
 - (NSArray *)courseInvitations;
 - (NSArray *)courses;
 - (NSDictionary *)observingInstructorIdentifiersByCourseIdentifiers;

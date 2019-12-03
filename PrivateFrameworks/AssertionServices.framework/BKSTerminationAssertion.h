@@ -12,14 +12,14 @@
 @property (nonatomic, readonly) unsigned long long efficacy;
 @property (nonatomic, readonly, copy) NSString *targetBundleIdentifier;
 
-- (id)_clientQueue_createEvent;
-- (id)_clientQueue_destroyEvent;
-- (id)_clientQueue_updateEvent;
+- (void).cxx_destruct;
+- (unsigned long long)_bksErrorForRBSRequestError:(unsigned long long)arg1;
+- (bool)acquire;
 - (id)context;
-- (void)dealloc;
 - (unsigned long long)efficacy;
 - (id)initWithBundleIdentifier:(id)arg1 efficacy:(unsigned long long)arg2 name:(id)arg3 context:(id)arg4 withHandler:(id /* block */)arg5;
 - (id)initWithBundleIdentifier:(id)arg1 efficacy:(unsigned long long)arg2 name:(id)arg3 withHandler:(id /* block */)arg4;
+- (void)invalidate;
 - (id)targetBundleIdentifier;
 
 @end

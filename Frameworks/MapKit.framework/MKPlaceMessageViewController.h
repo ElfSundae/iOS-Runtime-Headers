@@ -15,8 +15,10 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)analyticsDelegate;
 - (id)infoCardChildPossibleActions;
+- (id)infoCardChildUnactionableUIElements;
 - (id)initWithPlaceItem:(id)arg1;
 - (void)loadRow;
 - (id)placeItem;

@@ -25,6 +25,7 @@
 
 - (void)_handleInterestNotification:(unsigned int)arg1 withArgument:(void*)arg2;
 - (void)_handleNotification:(unsigned int)arg1 withArg1:(unsigned long long)arg2 andArg2:(unsigned long long)arg3;
+- (void)_handleNotification:(unsigned int)arg1 withArgs:(unsigned long long*)arg2 ofCount:(unsigned int)arg3;
 - (int)_lockState;
 - (id)clockName;
 - (unsigned int)connection;
@@ -35,7 +36,7 @@
 - (bool)convertFromMachAbsoluteTime:(unsigned long long*)arg1 toDomainTime:(unsigned long long*)arg2 withCount:(unsigned int)arg3;
 - (unsigned long long)convertFromMachAbsoluteToDomainTime:(unsigned long long)arg1 withFlags:(unsigned int*)arg2;
 - (void)dealloc;
-- (bool)deregisterAsyncDCLCallback;
+- (bool)deregisterAsyncCallback;
 - (id)diagnosticDescriptionWithIndent:(id)arg1;
 - (bool)getRateRatioNumerator:(unsigned long long*)arg1 denominator:(unsigned long long*)arg2 machAnchor:(unsigned long long*)arg3 andDomainAnchor:(unsigned long long*)arg4 withError:(id*)arg5;
 - (double)hostRateRatio;

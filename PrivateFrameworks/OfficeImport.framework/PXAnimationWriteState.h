@@ -13,7 +13,7 @@
 @property (nonatomic, retain) TCXmlPrefixStreamWriter *file;
 @property (nonatomic, retain) OCXWriteState *writeState;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)file;
 - (bool)hasMainSeqTimeNodeId;
 - (id)initWithWriteState:(id)arg1 file:(id)arg2;

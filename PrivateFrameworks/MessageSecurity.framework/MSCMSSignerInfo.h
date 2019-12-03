@@ -16,7 +16,7 @@
     }  _signedAttrsStruct;
     struct __SecCertificate { } * _signerCertificate;
     NSData * _signerIssuerSequence;
-    struct __SecKey { struct __CFRuntimeBase { unsigned long long x_1_1_1; unsigned long long x_1_1_2; } x1; struct __SecKeyDescriptor {} *x2; void *x3; } * _signerPrivKey;
+    struct __SecKey { struct __CFRuntimeBase { unsigned long long x_1_1_1; _Atomic unsigned long long x_1_1_2; } x1; struct __SecKeyDescriptor {} *x2; void *x3; } * _signerPrivKey;
     NSData * _signerSerialNumber;
     MSCMSMutableAttributeArray * _unprotectedAttributes;
     struct SignerInfo_unsignedAttrs { 
@@ -36,7 +36,7 @@
 @property struct SignerInfo_signedAttrs { unsigned int x1; struct Attribute {} *x2; } signedAttrsStruct;
 @property struct __SecCertificate { }*signerCertificate;
 @property (retain) NSData *signerIssuerSequence;
-@property struct __SecKey { struct __CFRuntimeBase { unsigned long long x_1_1_1; unsigned long long x_1_1_2; } x1; struct __SecKeyDescriptor {} *x2; void *x3; }*signerPrivKey;
+@property struct __SecKey { struct __CFRuntimeBase { unsigned long long x_1_1_1; _Atomic unsigned long long x_1_1_2; } x1; struct __SecKeyDescriptor {} *x2; void *x3; }*signerPrivKey;
 @property (retain) NSData *signerSerialNumber;
 @property (retain) MSCMSMutableAttributeArray *unprotectedAttributes;
 @property struct SignerInfo_unsignedAttrs { unsigned int x1; struct Attribute {} *x2; } unsignedAttrsStruct;
@@ -75,7 +75,7 @@
 - (void)setSignedAttrsStruct:(struct SignerInfo_signedAttrs { unsigned int x1; struct Attribute {} *x2; })arg1;
 - (void)setSignerCertificate:(struct __SecCertificate { }*)arg1;
 - (void)setSignerIssuerSequence:(id)arg1;
-- (void)setSignerPrivKey:(struct __SecKey { struct __CFRuntimeBase { unsigned long long x_1_1_1; unsigned long long x_1_1_2; } x1; struct __SecKeyDescriptor {} *x2; void *x3; }*)arg1;
+- (void)setSignerPrivKey:(struct __SecKey { struct __CFRuntimeBase { unsigned long long x_1_1_1; _Atomic unsigned long long x_1_1_2; } x1; struct __SecKeyDescriptor {} *x2; void *x3; }*)arg1;
 - (void)setSignerSerialNumber:(id)arg1;
 - (void)setUnprotectedAttributes:(id)arg1;
 - (void)setUnsignedAttrsStruct:(struct SignerInfo_unsignedAttrs { unsigned int x1; struct Attribute {} *x2; })arg1;
@@ -86,7 +86,7 @@
 - (struct SignerInfo_signedAttrs { unsigned int x1; struct Attribute {} *x2; })signedAttrsStruct;
 - (struct __SecCertificate { }*)signerCertificate;
 - (id)signerIssuerSequence;
-- (struct __SecKey { struct __CFRuntimeBase { unsigned long long x_1_1_1; unsigned long long x_1_1_2; } x1; struct __SecKeyDescriptor {} *x2; void *x3; }*)signerPrivKey;
+- (struct __SecKey { struct __CFRuntimeBase { unsigned long long x_1_1_1; _Atomic unsigned long long x_1_1_2; } x1; struct __SecKeyDescriptor {} *x2; void *x3; }*)signerPrivKey;
 - (id)signerSerialNumber;
 - (id)unprotectedAttributes;
 - (struct SignerInfo_unsignedAttrs { unsigned int x1; struct Attribute {} *x2; })unsignedAttrsStruct;

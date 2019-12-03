@@ -6,6 +6,7 @@
     bool  _applyRssiThresholdFilter;
     NSArray * _channels;
     unsigned long long  _dwellTime;
+    bool  _includeBSSList;
     long long  _rssiThreshold;
     NSString * _ssid;
 }
@@ -13,6 +14,7 @@
 @property bool applyRssiThresholdFilter;
 @property (nonatomic, retain) NSArray *channels;
 @property unsigned long long dwellTime;
+@property bool includeBSSList;
 @property (nonatomic) long long rssiThreshold;
 @property (nonatomic, copy) NSString *ssid;
 
@@ -26,6 +28,7 @@
 - (id)channels;
 - (id)description;
 - (unsigned long long)dwellTime;
+- (bool)includeBSSList;
 - (id)init;
 - (id)initWithSSID:(id)arg1 channels:(id)arg2;
 - (long long)rssiThreshold;
@@ -33,6 +36,7 @@
 - (void)setApplyRssiThresholdFilter:(bool)arg1;
 - (void)setChannels:(id)arg1;
 - (void)setDwellTime:(unsigned long long)arg1;
+- (void)setIncludeBSSList:(bool)arg1;
 - (void)setRssiThreshold:(long long)arg1;
 - (void)setSsid:(id)arg1;
 - (id)ssid;

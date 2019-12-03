@@ -4,11 +4,14 @@
 
 @interface UIAccessibilityElementSuperCategory : __UIAccessibilityElementSuperCategory_super
 
++ (void)_accessibilityPerformValidations:(id)arg1;
++ (bool)_isSerializableAccessibilityElement;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 
 - (float)_accessibilityActivationDelay;
 - (id)_accessibilityAutomaticIdentifier;
+- (bool)_accessibilityIsFKARunningForFocusItem;
 - (bool)_accessibilityProvidesOwnFrame;
 - (bool)_accessibilitySetNativeFocus;
 - (void)_accessibilitySetValue:(id)arg1;

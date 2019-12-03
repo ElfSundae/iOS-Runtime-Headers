@@ -38,10 +38,11 @@
 - (void)_prepareForEditing;
 - (void)_prepareForSnapshotting;
 - (void)_prepareToZoomWithIconView:(id)arg1 minDiameter:(double)arg2 maxDiameter:(double)arg3;
-- (void)_renderSynchronouslyWithImageQueueDiscard:(bool)arg1;
+- (void)_renderSynchronouslyWithImageQueueDiscard:(bool)arg1 inGroup:(id)arg2;
 - (struct CGSize { double x1; double x2; })_sceneSize;
 - (void)_setContentViewsOpaque:(bool)arg1;
 - (void)_setZoomFraction:(double)arg1 iconDiameter:(double)arg2;
+- (void)_setupSceneHostViewIfNecessary;
 - (bool)_shouldFreezeSceneForEditMode:(long long)arg1;
 - (void)_startScrubbingAnimated:(bool)arg1 withCompletion:(id /* block */)arg2;
 - (void)_unloadSnapshotContentViews;

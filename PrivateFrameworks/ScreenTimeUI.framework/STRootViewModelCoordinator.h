@@ -2,16 +2,18 @@
    Image: /System/Library/PrivateFrameworks/ScreenTimeUI.framework/ScreenTimeUI
  */
 
-@interface STRootViewModelCoordinator : NSObject <RMGroupFetchedResultsControllerDelegate, STRootViewModelCoordinator> {
+@interface STRootViewModelCoordinator : NSObject <STGroupFetchedResultsControllerDelegate, STRootViewModelCoordinator> {
     NSObject<STContentPrivacyViewModelCoordinator> * _contentPrivacyCoordinator;
     NSMutableDictionary * _coordinatorsByChildDSID;
-    RMGroupFetchedResultsController * _fetchedResultsController;
+    NSString * _deviceIdentifier;
+    STGroupFetchedResultsController * _fetchedResultsController;
     bool  _hasAlreadyEnteredPINForSession;
     bool  _isLocalUser;
-    <RMPersistenceControllerProtocol> * _persistenceController;
-    NSArray * _selectedDeviceIdentifiers;
+    STAdminPersistenceController * _persistenceController;
     NSObject<STTimeAllowancesViewModelCoordinator> * _timeAllowancesCoordinator;
     NSObject<STUsageDetailsViewModelCoordinator> * _usageDetailsCoordinator;
+    long long  _usageHistoryType;
+    NSNumber * _usageReportType;
     NSNumber * _userDSID;
     NSString * _userName;
     STRootViewModel * _viewModel;
@@ -21,17 +23,19 @@
 @property (nonatomic, retain) NSMutableDictionary *coordinatorsByChildDSID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, retain) RMGroupFetchedResultsController *fetchedResultsController;
+@property (readonly, copy) NSString *deviceIdentifier;
+@property (nonatomic, retain) STGroupFetchedResultsController *fetchedResultsController;
 @property (nonatomic) bool hasAlreadyEnteredPINForSession;
 @property (nonatomic) bool hasShownMiniBuddy;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool isLocalUser;
 @property (getter=isPasscodeEnabled, nonatomic, readonly) bool passcodeEnabled;
-@property (nonatomic, retain) <RMPersistenceControllerProtocol> *persistenceController;
-@property (nonatomic, copy) NSArray *selectedDeviceIdentifiers;
+@property (readonly) STAdminPersistenceController *persistenceController;
 @property (readonly) Class superclass;
 @property (readonly) NSObject<STTimeAllowancesViewModelCoordinator> *timeAllowancesCoordinator;
 @property (readonly) NSObject<STUsageDetailsViewModelCoordinator> *usageDetailsCoordinator;
+@property (readonly) long long usageHistoryType;
+@property (readonly, copy) NSNumber *usageReportType;
 @property (nonatomic, copy) NSNumber *userDSID;
 @property (nonatomic, copy) NSString *userName;
 @property (nonatomic, retain) STRootViewModel *viewModel;
@@ -41,27 +45,20 @@
 + (id)loadViewModelFromManagedObjectContext:(id)arg1 isLocalUser:(bool)arg2 userDSID:(id)arg3 error:(id*)arg4;
 
 - (void).cxx_destruct;
-- (id)_automaticDateTimeConfigurationIdentifier;
-- (void)_createUserManagementConfigurationsForCoreUser:(id)arg1 inContext:(id)arg2;
-- (void)_deleteUserManagementConfigurationsForCoreUser:(id)arg1 fromContext:(id)arg2;
-- (id)_iCloudLogoutConfigurationIdentifier;
-- (id)_managedUserActivationIdentifier;
-- (void)_notifyServerOfScreenTimeEnabled:(bool)arg1 forDSID:(id)arg2;
 - (void)_passcodeSessionHasEnded:(id)arg1;
-- (void)_registerForPersistenceStoreNotifications;
+- (void)_registerForPersistentStoreNotifications;
 - (void)_registerForWillResignActiveNotifications;
 - (id)contentPrivacyCoordinator;
-- (id)coordinatorForChild:(id)arg1;
+- (id)coordinatorForChild:(id)arg1 deviceIdentifier:(id)arg2 usageReportType:(id)arg3;
 - (id)coordinatorsByChildDSID;
+- (id)deviceIdentifier;
 - (void)enableScreenTimeWithPIN:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)fetchedResultsController;
 - (void)groupResultsControllerDidChangeContents:(id)arg1;
 - (bool)hasAlreadyEnteredPINForSession;
 - (bool)hasShownMiniBuddy;
 - (id)init;
-- (id)initWithPersistenceController:(id)arg1;
-- (id)initWithPersistenceController:(id)arg1 userDSID:(id)arg2 selectedDevices:(id)arg3;
-- (id)initWithUserDSID:(id)arg1;
+- (id)initWithUserDSID:(id)arg1 deviceIdentifier:(id)arg2 usageReportType:(id)arg3 usageHistoryType:(long long)arg4;
 - (bool)isLocalUser;
 - (bool)isPasscodeEnabled;
 - (void)loadViewModelRightNow;
@@ -70,23 +67,22 @@
 - (id)organizationIdentifierForUsage;
 - (id)persistenceController;
 - (void)saveViewModel:(id)arg1;
-- (id)selectedDeviceIdentifiers;
 - (void)setCoordinatorsByChildDSID:(id)arg1;
 - (void)setFetchedResultsController:(id)arg1;
 - (void)setHasAlreadyEnteredPINForSession:(bool)arg1;
 - (void)setHasShownMiniBuddy:(bool)arg1;
 - (void)setIsLocalUser:(bool)arg1;
 - (void)setPIN:(id)arg1 completionHandler:(id /* block */)arg2;
-- (void)setPersistenceController:(id)arg1;
 - (void)setScreenTimeEnabled:(bool)arg1 completionHandler:(id /* block */)arg2;
 - (void)setScreenTimeSyncingEnabled:(bool)arg1 completionHandler:(id /* block */)arg2;
-- (void)setSelectedDeviceIdentifiers:(id)arg1;
 - (void)setShareWebUsageEnabled:(bool)arg1 completionHandler:(id /* block */)arg2;
 - (void)setUserDSID:(id)arg1;
 - (void)setUserName:(id)arg1;
 - (void)setViewModel:(id)arg1;
 - (id)timeAllowancesCoordinator;
 - (id)usageDetailsCoordinator;
+- (long long)usageHistoryType;
+- (id)usageReportType;
 - (id)userDSID;
 - (id)userName;
 - (bool)validatePIN:(id)arg1;

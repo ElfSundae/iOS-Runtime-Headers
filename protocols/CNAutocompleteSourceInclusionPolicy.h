@@ -8,6 +8,7 @@
 - (bool)includeCalendarServers;
 - (bool)includeContacts;
 - (bool)includeDirectoryServers;
+- (bool)includeLocalExtensions;
 - (bool)includePredictions;
 - (bool)includeRecents;
 - (bool)includeSuggestions;

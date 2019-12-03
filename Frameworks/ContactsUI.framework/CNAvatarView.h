@@ -3,6 +3,7 @@
  */
 
 @interface CNAvatarView : UIView <CNAvatarCardControllerDelegate, CNCardTransitioning, CNContactChangesObserver> {
+    bool  _allowStaleRendering;
     bool  _allowsAnimation;
     bool  _asynchronousRendering;
     bool  _autoUpdateContact;
@@ -29,11 +30,13 @@
     bool  _showsActionsOnForcePress;
     bool  _showsActionsOnTap;
     bool  _showsContactOnTap;
+    unsigned long long  _stateCaptureHandle;
     unsigned long long  _style;
     bool  _threeDTouchEnabled;
 }
 
 @property (nonatomic, copy) NSArray *actionCategories;
+@property (nonatomic) bool allowStaleRendering;
 @property (nonatomic) bool allowsAnimation;
 @property (nonatomic) bool asynchronousRendering;
 @property (nonatomic) bool autoUpdateContact;
@@ -67,6 +70,7 @@
 @property (nonatomic) bool showsActionsOnForcePress;
 @property (nonatomic) bool showsActionsOnTap;
 @property (nonatomic) bool showsContactOnTap;
+@property (nonatomic) unsigned long long stateCaptureHandle;
 @property (nonatomic) unsigned long long style;
 @property (readonly) Class superclass;
 @property (getter=isThreeDTouchEnabled, nonatomic) bool threeDTouchEnabled;
@@ -90,6 +94,7 @@
 - (void)_updateCardActions;
 - (void)_updateRegistration;
 - (id)actionCategories;
+- (bool)allowStaleRendering;
 - (bool)allowsAnimation;
 - (bool)asynchronousRendering;
 - (bool)autoUpdateContact;
@@ -128,8 +133,8 @@
 - (id)initWithContact:(id)arg1;
 - (id)initWithContactStore:(id)arg1 personaStore:(id)arg2 threeDTouchEnabled:(bool)arg3;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
-- (id)initWithImageRenderer:(id)arg1 threeDTouchEnabled:(bool)arg2;
-- (id)initWithImageRenderer:(id)arg1 threeDTouchEnabled:(bool)arg2 style:(unsigned long long)arg3 schedulerProvider:(id)arg4;
+- (id)initWithImageRenderer:(id)arg1 threeDTouchEnabled:(bool)arg2 contactStore:(id)arg3;
+- (id)initWithImageRenderer:(id)arg1 threeDTouchEnabled:(bool)arg2 contactStore:(id)arg3 style:(unsigned long long)arg4 schedulerProvider:(id)arg5;
 - (id)initWithSettings:(id)arg1;
 - (bool)isThreeDTouchEnabled;
 - (void)layoutSubviews;
@@ -145,6 +150,7 @@
 - (id)rendererToken;
 - (id)schedulerProvider;
 - (void)setActionCategories:(id)arg1;
+- (void)setAllowStaleRendering:(bool)arg1;
 - (void)setAllowsAnimation:(bool)arg1;
 - (void)setAsynchronousRendering:(bool)arg1;
 - (void)setAutoUpdateContact:(bool)arg1;
@@ -173,6 +179,7 @@
 - (void)setShowsActionsOnForcePress:(bool)arg1;
 - (void)setShowsActionsOnTap:(bool)arg1;
 - (void)setShowsContactOnTap:(bool)arg1;
+- (void)setStateCaptureHandle:(unsigned long long)arg1;
 - (void)setStyle:(unsigned long long)arg1;
 - (void)setThreeDTouchEnabled:(bool)arg1;
 - (void)setTransitioningImageVisible:(bool)arg1;
@@ -182,6 +189,7 @@
 - (bool)showsActionsOnTap;
 - (bool)showsContactOnTap;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
+- (unsigned long long)stateCaptureHandle;
 - (unsigned long long)style;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })transitioningContentFrame;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })transitioningFrame;

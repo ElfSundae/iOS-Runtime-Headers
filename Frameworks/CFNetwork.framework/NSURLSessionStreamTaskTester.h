@@ -19,7 +19,6 @@
         NSDictionary *proxyConfig; 
         int connectionType; 
         bool allowTimeout; 
-        bool allowTCPIOConnectionStreamTask; 
     }  _testConfig;
 }
 
@@ -35,7 +34,7 @@
 - (void)cleanupInputStream;
 - (void)cleanupOutputStream;
 - (void)dealloc;
-- (id)initWithTestConfig:(struct StreamTaskTestConfig { id x1; id x2; bool x3; bool x4; })arg1;
+- (id)initWithTestConfig:(struct StreamTaskTestConfig { id x1; long long x2; id x3; int x4; bool x5; })arg1;
 - (void)resumeWithTestBlock:(id /* block */)arg1;
 - (void)stream:(id)arg1 handleEvent:(unsigned long long)arg2;
 

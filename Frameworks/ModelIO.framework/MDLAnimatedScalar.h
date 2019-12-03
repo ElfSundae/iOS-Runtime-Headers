@@ -5,7 +5,7 @@
 @interface MDLAnimatedScalar : MDLAnimatedValue
 
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (struct VtValue { struct aligned_storage_imp<8, 8> { union data_t { BOOL x_1_2_1[8]; struct a8 { } x_1_2_2; } x_1_1_1; } x1; struct TfPointerAndBits<const VtValue::_TypeInfo> { struct _TypeInfo {} *x_2_1_1; } x2; })defaultVtValue;
+- (struct VtValue { struct type { unsigned char x_1_1_1[8]; } x1; struct TfPointerAndBits<const VtValue::_TypeInfo> { struct _TypeInfo {} *x_2_1_1; } x2; })defaultVtValue;
 - (double)doubleAtTime:(double)arg1;
 - (float)floatAtTime:(double)arg1;
 - (unsigned long long)getDoubleArray:(double*)arg1 maxCount:(unsigned long long)arg2;

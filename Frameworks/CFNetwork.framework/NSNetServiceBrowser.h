@@ -18,7 +18,6 @@
 - (void)_setIncludesAWDL:(bool)arg1;
 - (void)dealloc;
 - (id)delegate;
-- (void)finalize;
 - (bool)includesPeerToPeer;
 - (id)init;
 - (void)removeFromRunLoop:(id)arg1 forMode:(id)arg2;

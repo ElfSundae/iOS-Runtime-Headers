@@ -4,6 +4,7 @@
 
 @interface SBLockScreenDefaults : SBAbstractSpringBoardDefaultDomain
 
+@property (nonatomic) bool allowLocketGesture;
 @property (nonatomic) bool forceWakeToMaps;
 @property (nonatomic) bool limitFeaturesForRemoteLock;
 @property (nonatomic) double nowPlayingTimeout;

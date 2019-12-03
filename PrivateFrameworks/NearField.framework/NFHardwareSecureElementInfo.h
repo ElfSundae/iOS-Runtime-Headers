@@ -14,6 +14,7 @@
     NSString * _eckaCertificate;
     NSString * _firmwareKeyID;
     unsigned long long  _firmwareVersion;
+    unsigned long long  _fullOSVersion;
     unsigned long long  _hardwareVersion;
     NSString * _identifier;
     bool  _jcopTooOld;
@@ -32,6 +33,7 @@
     NSString * _platformIdentifier;
     NSNumber * _referenceCounter;
     bool  _restrictedMode;
+    bool  _restrictedPerformanceMode;
     NSString * _rootKeyID;
     NSString * _rsaCertificate;
     unsigned long long  _seType;
@@ -52,6 +54,7 @@
 @property (nonatomic, readonly) NSString *eckaCertificate;
 @property (nonatomic, readonly) NSString *firmwareKeyID;
 @property (nonatomic, readonly) unsigned long long firmwareVersion;
+@property (nonatomic, readonly) unsigned long long fullOSVersion;
 @property (nonatomic, readonly) unsigned long long hardwareVersion;
 @property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, readonly) bool jcopTooOld;
@@ -70,6 +73,7 @@
 @property (nonatomic, readonly) NSString *platformIdentifier;
 @property (nonatomic, readonly) NSNumber *referenceCounter;
 @property (nonatomic, readonly) bool restrictedMode;
+@property (nonatomic, readonly) bool restrictedPerformanceMode;
 @property (nonatomic, readonly) NSString *rootKeyID;
 @property (nonatomic, readonly) NSString *rsaCertificate;
 @property (nonatomic, readonly) unsigned long long seType;
@@ -83,6 +87,7 @@
 - (unsigned long long)OSMode;
 - (unsigned long long)OSVersion;
 - (void)_setIsInRestrictedMode:(bool)arg1;
+- (void)_setIsInRestrictedPerformanceMode:(bool)arg1;
 - (unsigned long long)appletMap;
 - (id)asDictionary;
 - (id)atrString;
@@ -95,6 +100,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)firmwareKeyID;
 - (unsigned long long)firmwareVersion;
+- (unsigned long long)fullOSVersion;
 - (unsigned long long)hardwareVersion;
 - (id)identifier;
 - (id)initWithCoder:(id)arg1;
@@ -115,6 +121,7 @@
 - (id)platformIdentifier;
 - (id)referenceCounter;
 - (bool)restrictedMode;
+- (bool)restrictedPerformanceMode;
 - (id)rootKeyID;
 - (id)rsaCertificate;
 - (unsigned long long)seType;

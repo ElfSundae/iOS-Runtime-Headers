@@ -80,11 +80,4 @@
 
 - (id)af_messageValue;
 
-// Image: /System/Library/PrivateFrameworks/SiriClientFlow.framework/SiriClientFlow
-
-+ (id)recipientsFromMessage:(id)arg1;
-+ (id)smsCollectionFromMessages:(id)arg1;
-+ (id)smsFromMessage:(id)arg1;
-+ (id)urlIdentifierForMessage:(id)arg1;
-
 @end

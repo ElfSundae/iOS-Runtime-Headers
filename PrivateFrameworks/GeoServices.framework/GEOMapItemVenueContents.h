@@ -15,6 +15,7 @@
 @property (nonatomic, readonly) NSString *title;
 
 - (void).cxx_destruct;
+- (id)init;
 - (id)initWithItemList:(id)arg1;
 - (id)initWithTitle:(id)arg1 items:(id)arg2;
 - (id)items;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface UITextField : UIControl <ABText, MPUAutoupdatingTextContainer, NSCoding, UIContentSizeCategoryAdjusting, UIGestureRecognizerDelegate, UIKeyInputPrivate, UIKeyboardInput, UIPopoverControllerDelegate, UITextDragSupporting, UITextDraggable, UITextDropSupporting, UITextDroppable, UITextFieldContent, UITextInput, UITextInputTraits_Private, UITextPasteConfigurationSupporting, UITextPasteConfigurationSupporting_Internal, UIViewGhostedRangeSupporting, _UIFloatingContentViewDelegate, _UILayoutBaselineUpdating, _UITextFieldContentViewContextProvider, _UITextFieldContent_Internal, _UITextFieldVisualStyleSubject> {
+@interface UITextField : UIControl <ABText, MPUAutoupdatingTextContainer, NSCoding, UIContentSizeCategoryAdjusting, UIGestureRecognizerDelegate, UIKeyInputPrivate, UIKeyboardInput, UIPopoverControllerDelegate, UITextDragSupporting, UITextDraggable, UITextDropSupporting, UITextDroppable, UITextFieldContent, UITextInput, UITextInputTraits_Private, UITextPasteConfigurationSupporting, UITextPasteConfigurationSupporting_Internal, UIViewGhostedRangeSupporting, WFAlertTextField, WFInputViewMutable, _UIDrawsTextInRect, _UIFloatingContentViewDelegate, _UILayoutBaselineUpdating, _UITextFieldCanvasViewContext, _UITextFieldVisualStyleSubject, _UITextItemDiscoverable> {
     _UIFieldEditorLayoutManager * __layoutManager;
     NSTextContainer * __textContainer;
     bool  _adjustsFontForContentSizeCategory;
@@ -48,6 +48,7 @@
         double width; 
         double height; 
     }  _leftViewOffset;
+    NSDictionary * _linkTextAttributes;
     double  _minimumFontSize;
     UITextInputTraits * _nonAtomTraits;
     NSArray * _overriddenAttributesForEditing;
@@ -76,7 +77,7 @@
     UITextFieldLabel * _suffixLabel;
     UITextFieldBackgroundView * _systemBackgroundView;
     UISystemInputViewController * _systemInputViewController;
-    _UITextFieldContentView * _textContentView;
+    _UITextFieldCanvasView * _textContentView;
     <UITextDragDelegate> * _textDragDelegate;
     <UITextDragDropSupport> * _textDragDropSupport;
     long long  _textDragOptions;
@@ -104,12 +105,16 @@
         unsigned int overridePasscodeStyle : 1; 
         unsigned int shouldResignWithoutUpdate : 1; 
         unsigned int blurEnabled : 1; 
+        unsigned int visualEffectViewEnabled : 1; 
         unsigned int disableFocus : 1; 
         unsigned int disableRemoteTextEditing : 1; 
         unsigned int allowsAttachments : 1; 
+        unsigned int isReceivingDrop : 1; 
         unsigned int contentCoverUnsecuresText : 1; 
         unsigned int forcesClearButtonHighContrastAppearance : 1; 
+        unsigned int contentInsetsFromFontsValid : 1; 
     }  _textFieldFlags;
+    _UITextItemDiscoverer * _textItemDiscoverer;
     _UICascadingTextStorage * _textStorage;
     UITextInputTraits * _traits;
     UIColor * _tvCustomFocusedTextColor;
@@ -137,6 +142,7 @@
 @property (nonatomic) bool accessibilityValueChangesAreReplacements;
 @property (nonatomic) bool adjustsFontForContentSizeCategory;
 @property (nonatomic) bool adjustsFontSizeToFitWidth;
+@property (nonatomic) long long alertTextInputMode;
 @property (nonatomic) bool allowsAttachments;
 @property (nonatomic) bool allowsEditingTextAttributes;
 @property (nonatomic, copy) NSAttributedString *attributedPlaceholder;
@@ -163,23 +169,29 @@
 @property (nonatomic, retain) UIImage *disabledBackground;
 @property (nonatomic) bool displaySecureEditsUsingPlainText;
 @property (nonatomic) bool displaySecureTextUsingPlainText;
+@property (nonatomic, readonly) struct CGPoint { double x1; double x2; } drawingScale;
+@property (getter=isEditable, nonatomic, readonly) bool editable;
 @property (getter=isEditing, nonatomic, readonly) bool editing;
 @property (nonatomic) int emptyContentReturnKeyType;
 @property (nonatomic) bool enablesReturnKeyAutomatically;
 @property (nonatomic) bool enablesReturnKeyOnNonWhiteSpaceContent;
 @property (nonatomic, readonly) UITextPosition *endOfDocument;
+@property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } floatingKeyboardEdgeInsets;
 @property (nonatomic, retain) UIFont *font;
 @property (nonatomic) bool forceDefaultDictationInfo;
 @property (nonatomic) long long forceDictationKeyboardType;
 @property (nonatomic) bool forceDisableDictation;
 @property (nonatomic) bool forceEnableDictation;
+@property (nonatomic) bool forceFloatingKeyboard;
 @property (nonatomic) bool hasDefaultContents;
 @property (nonatomic, readonly) bool hasText;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool hidePrediction;
+@property (nonatomic, retain) UIView *inputAccessoryView;
 @property (retain) UIView *inputAccessoryView;
 @property (nonatomic, retain) UIInputContextHistory *inputContextHistory;
 @property (nonatomic) <UITextInputDelegate> *inputDelegate;
+@property (nonatomic, retain) UIView *inputView;
 @property (retain) UIView *inputView;
 @property (nonatomic, readonly) id insertDictationResultPlaceholder;
 @property (nonatomic, retain) UIColor *insertionPointColor;
@@ -208,6 +220,7 @@
 @property (nonatomic) long long returnKeyType;
 @property (nonatomic, retain) UIView *rightView;
 @property (nonatomic) long long rightViewMode;
+@property (setter=sb_setMaxInputLength:, nonatomic) unsigned long long sb_maxInputLength;
 @property (getter=isSecureTextEntry, nonatomic) bool secureTextEntry;
 @property (copy) UITextRange *selectedTextRange;
 @property (nonatomic) long long selectionAffinity;
@@ -215,16 +228,19 @@
 @property (nonatomic, retain) UIImage *selectionDragDotImage;
 @property (nonatomic, retain) UIColor *selectionHighlightColor;
 @property (nonatomic) int shortcutConversionType;
+@property (nonatomic) bool showDictationButton;
 @property (nonatomic) long long smartDashesType;
 @property (nonatomic) long long smartInsertDeleteType;
 @property (nonatomic) long long smartQuotesType;
 @property (nonatomic) long long spellCheckingType;
+@property (nonatomic, copy) NSArray *suggestions;
 @property (readonly) Class superclass;
 @property (nonatomic) bool suppressReturnKeyStyling;
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic) long long textAlignment;
 @property (nonatomic, retain) UIColor *textColor;
 @property (nonatomic, readonly) NSTextContainer *textContainer;
+@property (nonatomic, readonly) struct CGPoint { double x1; double x2; } textContainerOrigin;
 @property (nonatomic, copy) NSString *textContentType;
 @property (getter=isTextDragActive, nonatomic, readonly) bool textDragActive;
 @property (nonatomic) <UITextDragDelegate> *textDragDelegate;
@@ -234,6 +250,7 @@
 @property (nonatomic) <UITextDropDelegate> *textDropDelegate;
 @property (nonatomic, readonly) UIDropInteraction *textDropInteraction;
 @property (nonatomic, readonly) UIView *textInputView;
+@property (nonatomic, readonly) <UICoordinateSpace> *textItemCoordinateSpace;
 @property (nonatomic) int textLoupeVisibility;
 @property (nonatomic) long long textScriptType;
 @property (nonatomic) int textSelectionBehavior;
@@ -244,13 +261,18 @@
 @property (nonatomic, copy) NSDictionary *typingAttributes;
 @property (nonatomic, retain) UIColor *underlineColorForSpelling;
 @property (nonatomic, retain) UIColor *underlineColorForTextAlternatives;
+@property (nonatomic) bool useAutomaticEndpointing;
 @property (nonatomic) bool useInterfaceLanguageForLocalization;
+@property (nonatomic) bool usesStandardTextScaling;
 @property (nonatomic) struct _NSRange { unsigned long long x1; unsigned long long x2; } validTextRange;
 @property (nonatomic, retain) _UITextFieldVisualStyle *visualStyle;
 
 // Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 
++ (Class)_fieldEditorClass;
 + (bool)_isCompatibilityTextField;
++ (Class)_textPasteItemClass;
++ (bool)_wantsFadedEdges;
 
 - (void).cxx_destruct;
 - (void)__resumeBecomeFirstResponder;
@@ -258,12 +280,13 @@
 - (void)_addFieldEditorToView;
 - (void)_addShortcut:(id)arg1;
 - (void)_addTextContentView;
-- (void)_adjustPreferredFontForCurrentContentSizeCategory;
+- (void)_adjustFontForAccessibilityTraits:(bool)arg1;
 - (void)_applicationResuming:(id)arg1;
 - (void)_applyHighlightedAnimated:(bool)arg1;
 - (void)_applyRoundedRectBackgroundCornerRadiusToBackgroundViewWithWarning:(bool)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_atomBackgroundViewFrame;
 - (void)_attachFieldEditor;
+- (id)_attributedStringForInsertionOfAttributedString:(id)arg1;
 - (id)_attributedText;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_availableTextRectExcludingButtonsForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_availableTextRectForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 forEditing:(bool)arg2;
@@ -275,24 +298,27 @@
 - (double)_baselineLayoutConstraintConstantForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)_baselineLayoutLabel;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_baselineLeftViewRectForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (struct { double x1; double x2; })_baselineOffsetsAtSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)_becomeFirstResponder;
 - (long long)_blurEffectStyle;
 - (long long)_blurEffectStyleForAppearance;
 - (bool)_blurEnabled;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_boundsForTextRectExcludingButtons:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (bool)_canDrawContent;
+- (id)_canvasView;
 - (void)_clearBackgroundViews;
 - (id)_clearButton;
 - (void)_clearButtonClicked:(id)arg1;
 - (id)_clearButtonImageForState:(unsigned long long)arg1;
 - (struct CGSize { double x1; double x2; })_clearButtonSize;
 - (void)_clearSelectionUI;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_clipRectForFadedEdges;
 - (id)_contentBackdropView;
 - (void)_contentCoverStateDidChange;
 - (bool)_contentCoverUnsecuresText;
 - (id)_contentCoverView;
 - (long long)_contentCoverViewMode;
 - (id)_contentSnapshot;
-- (id)_contextForTextFieldContentView;
 - (unsigned long long)_controlEventsForActionTriggered;
 - (id)_copyFont:(id)arg1 newSize:(float)arg2 maxSize:(float)arg3;
 - (void)_createBaselineLayoutLabelIfNecessary;
@@ -303,11 +329,19 @@
 - (id)_currentTextColor;
 - (id)_defaultPromptString;
 - (void)_define:(id)arg1;
+- (bool)_delegateShouldBeginEditing;
+- (bool)_delegateShouldChangeCharactersInTextStorageRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 replacementString:(id)arg2 delegateCares:(bool*)arg3;
+- (bool)_delegateShouldClear;
+- (bool)_delegateShouldEndEditing;
+- (bool)_delegateShouldScrollToVisibleWhenBecomingFirstResponder;
 - (void)_deleteBackwardAndNotify:(bool)arg1;
 - (void)_detachFieldEditor;
+- (void)_detachFieldEditorDiscardingEdits:(bool)arg1 animated:(bool)arg2;
 - (id)_dictationInterpretations;
 - (void)_didAttachFieldEditor;
 - (void)_didChangeSecureTextEntry;
+- (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
+- (void)_didSetFont:(id)arg1;
 - (void)_didUpdateAfterDetachingFieldEditor;
 - (void)_disableClipToBoundsForBorderStyleNone;
 - (bool)_disableTextColorUpdateOnTraitCollectionChange;
@@ -320,7 +354,6 @@
 - (id)_fieldEditor;
 - (bool)_fieldEditorAttached;
 - (double)_fieldEditorHeight;
-- (id)_fieldEditorIfAttached;
 - (bool)_finishResignFirstResponder;
 - (id)_floatingContentView;
 - (void)_forceObscureAllText;
@@ -372,9 +405,7 @@
 - (bool)_ownsInputAccessoryView;
 - (bool)_partsShouldBeMini;
 - (double)_passcodeStyleAlpha;
-- (void)_pasteAttributedString:(id)arg1 pasteAsRichText:(bool)arg2;
-- (void)_pasteSessionDidFinish;
-- (void)_performPasteOfAttributedString:(id)arg1 toRange:(id)arg2 animator:(id)arg3 completion:(id /* block */)arg4;
+- (void)_pasteSessionDidFinish:(id)arg1;
 - (id)_placeholderColor;
 - (id)_placeholderLabel;
 - (Class)_placeholderLabelClass;
@@ -385,6 +416,7 @@
 - (void)_promptForReplace:(id)arg1;
 - (void)_propagateCuiProperties;
 - (id)_proxyTextInput;
+- (struct _NSRange { unsigned long long x1; unsigned long long x2; })_rangeForSetText;
 - (bool)_requiresKeyboardResetOnReload;
 - (void)_resetSelectionUI;
 - (void)_resignFirstResponder;
@@ -405,7 +437,7 @@
 - (void)_setActualRightView:(id)arg1;
 - (void)_setActualRightViewMode:(long long)arg1;
 - (void)_setAttributedPlaceholder:(id)arg1;
-- (void)_setAttributedText:(id)arg1 onFieldEditorAndSetCaretSelectionAfterText:(bool)arg2;
+- (void)_setAttributedTextOnFieldEditor:(id)arg1;
 - (void)_setBackgroundCoverView:(id)arg1;
 - (void)_setBackgroundCoverViewMode:(long long)arg1;
 - (void)_setBackgroundFillColor:(id)arg1;
@@ -437,12 +469,15 @@
 - (void)_setSystemBackgroundViewActive:(bool)arg1;
 - (void)_setTextColor:(id)arg1;
 - (void)_setUpBaselineLayoutConstraintsForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (void)_setVisualEffectViewEnabled:(bool)arg1 backgroundColor:(id)arg2;
+- (void)_setupDefaultStyleEffectConfiguration;
 - (void)_share:(id)arg1;
 - (bool)_shouldDetermineInterfaceStyleTextColor;
 - (bool)_shouldEndEditing;
 - (bool)_shouldObscureInput;
 - (bool)_shouldResignOnEditingDidEndOnExit;
 - (bool)_shouldSendContentChangedNotificationsIfOnlyMarkedTextChanged;
+- (bool)_shouldSuppressSelectionHandles;
 - (bool)_shouldUnobscureTextWithContentCover;
 - (void)_showTextStyleOptions:(id)arg1;
 - (bool)_showsAtomBackground;
@@ -462,11 +497,13 @@
 - (id)_systemBackgroundView;
 - (Class)_systemBackgroundViewClass;
 - (id)_systemInputViewController;
+- (id)_targetForDrawTextInRect;
 - (id)_text;
 - (id)_textContainer;
-- (id)_textContentView;
 - (id)_textInputViewForAddingGestureRecognizers;
+- (id)_textItemDiscoverer;
 - (bool)_textNeedsSanitizing:(id)arg1;
+- (struct _NSRange { unsigned long long x1; unsigned long long x2; })_textRangeForTextStorageRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (bool)_textShouldFillFieldEditorHeight;
 - (bool)_textShouldUseVibrancy;
 - (struct CGSize { double x1; double x2; })_textSize;
@@ -487,6 +524,7 @@
 - (id)_uiktest_tvCustomTextColor;
 - (bool)_uiktest_tvUseVibrancy;
 - (void)_uninstallSelectGestureRecognizer;
+- (struct _NSRange { unsigned long long x1; unsigned long long x2; })_unobscuredSecureRange;
 - (void)_updateAtomBackground;
 - (void)_updateAtomTextColor;
 - (void)_updateAutosizeStyleIfNeeded;
@@ -501,17 +539,21 @@
 - (void)_updatePlaceholderPosition;
 - (void)_updateSelectionGestures;
 - (void)_updateSuffix:(id)arg1;
+- (void)_updateTextEffectsConfigurationIfNeeded;
 - (bool)_useGesturesForEditableContent;
 - (long long)_userInterfaceStyle;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })_visibleRangeWithLayout:(bool)arg1;
+- (bool)_visualEffectViewEnabled;
 - (bool)_wantsBaselineUpdatingFollowingConstraintsPass;
 - (void)_willAttachFieldEditor;
 - (void)_willUpdateAfterDetachingFieldEditor;
 - (void)_windowBecameKey;
 - (void)_windowResignedKey;
+- (id)accessibilityPath;
 - (id)actualFont;
 - (double)actualMinimumFontSize;
 - (void)addGhostedRange:(id)arg1;
+- (void)addInvisibleRange:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })adjustedCaretRectForCaretRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (bool)adjustsFontForContentSizeCategory;
 - (bool)adjustsFontSizeToFitWidth;
@@ -614,6 +656,7 @@
 - (bool)hasMarkedText;
 - (bool)hasSelection;
 - (bool)hasText;
+- (bool)hasTextItemsOfType:(long long)arg1 inTextRange:(id)arg2;
 - (id)hitTest:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })iconRect;
 - (void)increaseSize:(id)arg1;
@@ -627,8 +670,12 @@
 - (id)insertDictationResultPlaceholder;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })insertFilteredText:(id)arg1;
 - (void)insertText:(id)arg1;
+- (void)insertText:(id)arg1 alternatives:(id)arg2 style:(long long)arg3;
+- (void)insertText:(id)arg1 style:(long long)arg2 alternatives:(id)arg3;
+- (id)insertTextPlaceholderWithSize:(struct CGSize { double x1; double x2; })arg1;
 - (id)interactionAssistant;
 - (void)interactionTintColorDidChange;
+- (void)invalidateDropCaret;
 - (bool)isAccessibilityElementByDefault;
 - (bool)isEditable;
 - (bool)isEditing;
@@ -641,12 +688,14 @@
 - (bool)keyboardInputChanged:(id)arg1;
 - (void)keyboardInputChangedSelection:(id)arg1;
 - (bool)keyboardInputShouldDelete:(id)arg1;
+- (id)largeContentTitle;
 - (id)layoutManager;
 - (void)layoutSubviews;
 - (void)layoutTilesNow;
 - (id)leftView;
 - (long long)leftViewMode;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })leftViewRectForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (id)linkTextAttributes;
 - (void)makeTextWritingDirectionLeftToRight:(id)arg1;
 - (void)makeTextWritingDirectionNatural:(id)arg1;
 - (void)makeTextWritingDirectionRightToLeft:(id)arg1;
@@ -682,7 +731,10 @@
 - (void)removeAllGhostedRanges;
 - (void)removeDictationResultPlaceholder:(id)arg1 willInsertResult:(bool)arg2;
 - (void)removeFromSuperview;
+- (void)removeInvisibleRange:(id)arg1;
+- (void)removeTextPlaceholder:(id)arg1;
 - (void)replace:(id)arg1;
+- (void)replaceRange:(id)arg1 withAttributedText:(id)arg2;
 - (void)replaceRange:(id)arg1 withText:(id)arg2;
 - (void)replaceRangeWithTextWithoutClosingTyping:(id)arg1 replacementText:(id)arg2;
 - (void)resignDropResponderWithDropPerformed:(bool)arg1;
@@ -692,7 +744,7 @@
 - (long long)rightViewMode;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })rightViewRectForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)sanitizeAttributedText:(id)arg1;
-- (void)scrollTextFieldToVisible;
+- (void)scrollTextFieldToVisibleIfNecessary;
 - (id)searchText;
 - (void)select:(id)arg1;
 - (void)selectAll;
@@ -754,6 +806,7 @@
 - (void)setLabelOffset:(float)arg1;
 - (void)setLeftView:(id)arg1;
 - (void)setLeftViewMode:(long long)arg1;
+- (void)setLinkTextAttributes:(id)arg1;
 - (void)setMarkedText:(id)arg1 selectedRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (void)setMarkedTextStyle:(id)arg1;
 - (void)setMinimumFontSize:(double)arg1;
@@ -806,6 +859,7 @@
 - (long long)textAlignment;
 - (id)textColor;
 - (id)textContainer;
+- (struct CGPoint { double x1; double x2; })textContainerOrigin;
 - (id)textDragDelegate;
 - (id)textDragInteraction;
 - (long long)textDragOptions;
@@ -814,6 +868,8 @@
 - (id)textInRange:(id)arg1;
 - (id)textInputTraits;
 - (id)textInputView;
+- (id)textItemCoordinateSpace;
+- (id)textItemsOfType:(long long)arg1 inTextRange:(id)arg2;
 - (id)textLabel;
 - (id)textRangeFromPosition:(id)arg1 toPosition:(id)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })textRect;
@@ -833,7 +889,11 @@
 - (id)undoManager;
 - (void)unmarkText;
 - (void)updateFloatingCursorAtPoint:(struct CGPoint { double x1; double x2; })arg1;
+- (void)updateFloatingCursorAtPoint:(struct CGPoint { double x1; double x2; })arg1 velocity:(struct CGPoint { double x1; double x2; })arg2;
+- (void)validateCommand:(id)arg1;
+- (id)valueForKey:(id)arg1;
 - (id)viewForLastBaselineLayout;
+- (id)visibleTextRange;
 - (id)visualStyle;
 - (id)webView;
 - (id)willGenerateCancelPreview;
@@ -847,14 +907,15 @@
 - (void)setAb_text:(id)arg1;
 - (void)setAb_textAttributes:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/AppSupportUI.framework/AppSupportUI
+
+- (struct { double x1; double x2; })_nui_additionalInsetsForBaselines;
+- (long long)_nui_baselineViewType;
+
 // Image: /System/Library/PrivateFrameworks/AuthKitUI.framework/AuthKitUI
 
 - (id)ak_addActivityIndicator;
 - (id)ak_addForgotButtonWithTarget:(id)arg1 action:(SEL)arg2;
-
-// Image: /System/Library/PrivateFrameworks/DocumentManager.framework/DocumentManager
-
-+ (bool)doc_setDefaultKeyboardAppearanceIfPossible:(long long)arg1;
 
 // Image: /System/Library/PrivateFrameworks/GameCenterUI.framework/GameCenterUI
 
@@ -873,11 +934,10 @@
 - (id)pk_placeholderColor;
 - (void)pk_setPlaceholderColor:(id)arg1;
 
-// Image: /System/Library/PrivateFrameworks/TSReading.framework/TSReading
+// Image: /System/Library/PrivateFrameworks/SpringBoard.framework/SpringBoard
 
-- (void)resizeToFitAsAccessoryInCell:(id)arg1 tableView:(id)arg2;
-- (void)resizeToFitAsAccessoryInCellWithLabelText:(id)arg1 tableView:(id)arg2;
-- (void)resizeToFitAsAccessoryInCellWithLabelTextWidth:(double)arg1 tableView:(id)arg2;
+- (unsigned long long)sb_maxInputLength;
+- (void)sb_setMaxInputLength:(unsigned long long)arg1;
 
 // Image: /System/Library/PrivateFrameworks/TouchML.framework/TouchML
 
@@ -891,10 +951,14 @@
 - (bool)accessibilityValueChangesAreReplacements;
 - (void)setAccessibilityValueChangesAreReplacements:(bool)arg1;
 
-// Image: /System/Library/PrivateFrameworks/VoiceMemos.framework/VoiceMemos
+// Image: /System/Library/PrivateFrameworks/WorkflowUI.framework/WorkflowUI
 
-- (void)rc_copyKeyboardSettingsFromTextField:(id)arg1;
-- (void)rc_resignFirstResponderWithoutDismissingKeyboardForDuration:(double)arg1 completionBlock:(id /* block */)arg2;
++ (bool)usesSuggestions;
+
+- (long long)alertTextInputMode;
+- (void)setAlertTextInputMode:(long long)arg1;
+- (void)setSuggestions:(id)arg1;
+- (id)suggestions;
 
 // Image: /System/Library/PrivateFrameworks/iTunesStoreUI.framework/iTunesStoreUI
 

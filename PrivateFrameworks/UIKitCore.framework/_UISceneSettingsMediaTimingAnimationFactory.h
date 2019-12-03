@@ -14,6 +14,7 @@
 
 - (void).cxx_destruct;
 - (id)_basicAnimationForView:(id)arg1 withKeyPath:(id)arg2;
+- (bool)_shouldAnimateAdditivelyForView:(id)arg1 withKeyPath:(id)arg2;
 - (id)_timingFunctionForAnimation;
 - (void)set_timingFunctionForAnimation:(id)arg1;
 

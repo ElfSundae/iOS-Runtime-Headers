@@ -3,15 +3,15 @@
  */
 
 @interface HDSampleQueryServer : HDBatchedQueryServer {
-    bool  _includeTimeZones;
+    bool  _includeAutomaticTimeZones;
     unsigned long long  _limit;
     NSArray * _sortDescriptors;
     bool  _suspended;
 }
 
-@property (nonatomic, readonly) bool includeTimeZones;
+@property (nonatomic, readonly) bool includeAutomaticTimeZones;
 @property (nonatomic, readonly) unsigned long long limit;
-@property (nonatomic, readonly) NSArray *sortDescriptors;
+@property (nonatomic, readonly, copy) NSArray *sortDescriptors;
 
 + (Class)queryClass;
 + (id)requiredEntitlements;
@@ -19,9 +19,10 @@
 
 - (void).cxx_destruct;
 - (void)_queue_start;
-- (bool)includeTimeZones;
-- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
+- (bool)includeAutomaticTimeZones;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
 - (unsigned long long)limit;
 - (id)sortDescriptors;
+- (bool)validateConfiguration:(id*)arg1;
 
 @end

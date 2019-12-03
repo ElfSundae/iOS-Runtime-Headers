@@ -5,6 +5,7 @@
 @interface CKPlaceholderOperation : NSOperation {
     id  _context;
     id /* block */  _daemonInvokeBlock;
+    bool  _finishInvoked;
     NSObject<OS_dispatch_group> * _group;
     bool  _isExecuting;
     bool  _isFinished;
@@ -15,6 +16,7 @@
 
 @property (nonatomic, retain) id context;
 @property (nonatomic, readonly) id /* block */ daemonInvokeBlock;
+@property (nonatomic) bool finishInvoked;
 @property (nonatomic) bool isExecuting;
 @property (nonatomic) bool isFinished;
 @property (nonatomic, readonly) NSString *operationID;
@@ -25,10 +27,11 @@
 - (id)CKDescriptionPropertiesWithPublic:(bool)arg1 private:(bool)arg2 shouldExpand:(bool)arg3;
 - (void)_setIsExecuting:(bool)arg1;
 - (void)_setIsFinished:(bool)arg1;
-- (void)cancel;
 - (id)context;
 - (id /* block */)daemonInvokeBlock;
 - (id)description;
+- (void)finish;
+- (bool)finishInvoked;
 - (id)initWithOperation:(id)arg1 daemonInvocationBlock:(id /* block */)arg2;
 - (bool)isConcurrent;
 - (bool)isExecuting;
@@ -37,6 +40,7 @@
 - (id)operationID;
 - (id)sectionID;
 - (void)setContext:(id)arg1;
+- (void)setFinishInvoked:(bool)arg1;
 - (void)setIsExecuting:(bool)arg1;
 - (void)setIsFinished:(bool)arg1;
 - (void)setSectionID:(id)arg1;

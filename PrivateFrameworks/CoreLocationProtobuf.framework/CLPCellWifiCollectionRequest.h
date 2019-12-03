@@ -4,6 +4,7 @@
 
 @interface CLPCellWifiCollectionRequest : PBRequest <NSCopying> {
     NSMutableArray * _cdmaCellTowerLocations;
+    NSMutableArray * _cellOutOfServiceInfos;
     NSMutableArray * _cellTowerLocations;
     NSMutableArray * _lteCellTowerLocations;
     CLPMeta * _meta;
@@ -12,6 +13,7 @@
 }
 
 @property (nonatomic, retain) NSMutableArray *cdmaCellTowerLocations;
+@property (nonatomic, retain) NSMutableArray *cellOutOfServiceInfos;
 @property (nonatomic, retain) NSMutableArray *cellTowerLocations;
 @property (nonatomic, retain) NSMutableArray *lteCellTowerLocations;
 @property (nonatomic, retain) CLPMeta *meta;
@@ -19,6 +21,7 @@
 @property (nonatomic, retain) NSMutableArray *wifiAPLocations;
 
 + (Class)cdmaCellTowerLocationType;
++ (Class)cellOutOfServiceInfoType;
 + (Class)cellTowerLocationType;
 + (Class)lteCellTowerLocationType;
 + (Class)scdmaCellTowerLocationType;
@@ -26,6 +29,7 @@
 
 - (void).cxx_destruct;
 - (void)addCdmaCellTowerLocation:(id)arg1;
+- (void)addCellOutOfServiceInfo:(id)arg1;
 - (void)addCellTowerLocation:(id)arg1;
 - (void)addLteCellTowerLocation:(id)arg1;
 - (void)addScdmaCellTowerLocation:(id)arg1;
@@ -33,10 +37,14 @@
 - (id)cdmaCellTowerLocationAtIndex:(unsigned long long)arg1;
 - (id)cdmaCellTowerLocations;
 - (unsigned long long)cdmaCellTowerLocationsCount;
+- (id)cellOutOfServiceInfoAtIndex:(unsigned long long)arg1;
+- (id)cellOutOfServiceInfos;
+- (unsigned long long)cellOutOfServiceInfosCount;
 - (id)cellTowerLocationAtIndex:(unsigned long long)arg1;
 - (id)cellTowerLocations;
 - (unsigned long long)cellTowerLocationsCount;
 - (void)clearCdmaCellTowerLocations;
+- (void)clearCellOutOfServiceInfos;
 - (void)clearCellTowerLocations;
 - (void)clearLteCellTowerLocations;
 - (void)clearScdmaCellTowerLocations;
@@ -59,6 +67,7 @@
 - (id)scdmaCellTowerLocations;
 - (unsigned long long)scdmaCellTowerLocationsCount;
 - (void)setCdmaCellTowerLocations:(id)arg1;
+- (void)setCellOutOfServiceInfos:(id)arg1;
 - (void)setCellTowerLocations:(id)arg1;
 - (void)setLteCellTowerLocations:(id)arg1;
 - (void)setMeta:(id)arg1;

@@ -21,8 +21,8 @@
 - (void)_start:(id /* block */)arg1;
 - (void)_stop:(id /* block */)arg1;
 - (void)addWidgetDataSourceChangeHandler:(id /* block */)arg1 forIdentifier:(id)arg2;
-- (void)availableWidgetsWithCompletion:(id /* block */)arg1;
 - (void)childDataSourceManagerDataSourcesDidChange:(id)arg1;
+- (id)discoverAvailableWidgetsWithError:(id*)arg1;
 - (void)removeChangeHandlersWithIdentifier:(id)arg1;
 
 @end

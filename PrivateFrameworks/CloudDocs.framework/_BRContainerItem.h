@@ -3,6 +3,7 @@
  */
 
 @interface _BRContainerItem : BRQueryItem <NSCopying, NSSecureCoding> {
+    NSSet * _containerClientIDs;
     NSString * _containerID;
     NSString * _localizedName;
 }
@@ -16,7 +17,8 @@
 - (id)displayName;
 - (void)encodeWithCoder:(id)arg1;
 - (id)filename;
-- (id)fp_appContainerBundleIdentifier;
+- (id)fp_cloudContainerClientBundleIdentifiers;
+- (id)fp_cloudContainerIdentifier;
 - (bool)fp_isContainer;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithQueryItem:(id)arg1 container:(id)arg2 zoneRowID:(id)arg3;

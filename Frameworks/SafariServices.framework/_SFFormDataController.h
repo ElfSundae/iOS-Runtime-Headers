@@ -4,6 +4,7 @@
 
 @interface _SFFormDataController : WBUFormDataController <_SFAuthenticationContextDelegate> {
     _SFAuthenticationContext * _autoFillAuthenticationContext;
+    WBSOneTimeCodeMonitor * _oneTimeCodeMonitor;
 }
 
 @property (nonatomic, readonly) _SFAuthenticationContext *autoFillAuthenticationContext;
@@ -21,5 +22,6 @@
 - (bool)contextShouldAllowPasscodeFallback:(id)arg1;
 - (id)initWithAggressiveKeychainCaching:(bool)arg1;
 - (double)invalidationTimeoutIfApplicationEntersBackgroundDuringAuthenticationForContext:(id)arg1;
+- (id)oneTimeCodeMonitor;
 
 @end

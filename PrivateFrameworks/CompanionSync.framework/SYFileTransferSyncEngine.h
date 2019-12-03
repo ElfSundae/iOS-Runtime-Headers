@@ -4,21 +4,31 @@
 
 @interface SYFileTransferSyncEngine : SYSyncEngine <IDSServiceDelegate> {
     SYDevice * _activeDevice;
+    NSObject<OS_os_transaction> * _closureTransaction;
     NSDictionary * _customIDSOptions;
     NSMutableArray * _deferredIncomingSessions;
     NSObject<OS_dispatch_queue> * _idsQueue;
+    bool  _idsQueueIsSuspended;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _idsQueueLock;
+    bool  _idsQueueResumedLock;
     IDSService * _idsService;
     bool  _inSession;
     NSURL * _inputFileURL;
     IDSMessageContext * _inputPriorityBoostContext;
     _SYInputStreamer * _inputStream;
     NSMutableDictionary * _messageIDsToSessionIDs;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _messageMapLock;
     NSMutableIndexSet * _messageRows;
     NSURL * _outputFileURL;
     _SYOutputStreamer * _outputStream;
     SYDevice * _responseDevice;
     NSURL * _responseFileURL;
     NSMutableIndexSet * _responseMessageRows;
+    NSObject<OS_os_transaction> * _responseSessionTransaction;
     _SYOutputStreamer * _responseStream;
     bool  _responsesCanceled;
     bool  _sessionCanceled;
@@ -51,8 +61,10 @@
 - (void)_readNextProtobuf:(id /* block */)arg1;
 - (void)_reallyHandleSessionRestart:(id)arg1 priority:(long long)arg2 options:(id)arg3 userContext:(id)arg4 callback:(id /* block */)arg5;
 - (void)_recordLastSeqNo:(id)arg1;
+- (void)_resumeIdsQueue;
 - (bool)_sessionDeviceCanUseSingleMessages;
 - (bool)_shouldTreatAsSessionEnd:(id)arg1;
+- (void)_suspendIdsQueue;
 - (id)_wrapIncomingMessage:(id)arg1 ofType:(unsigned short)arg2 identifier:(id)arg3;
 - (id)_wrapIncomingResponse:(id)arg1 ofType:(unsigned short)arg2 identifier:(id)arg3;
 - (id)_wrapMessage:(id)arg1 ofType:(unsigned short)arg2 userInfo:(id)arg3;
@@ -63,6 +75,7 @@
 - (bool)buffersSessions;
 - (id)cancelMessagesReturningFailures:(id)arg1;
 - (id)customIDSOptions;
+- (void)dealloc;
 - (void)endFileTransferForStream:(id)arg1 atURL:(id)arg2 target:(id)arg3 wasCancelled:(bool)arg4 messageRows:(id)arg5;
 - (void)endResponseSession;
 - (void)endSession;
@@ -77,6 +90,7 @@
 - (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 hasBeenDeliveredWithContext:(id)arg4;
 - (void)service:(id)arg1 account:(id)arg2 incomingData:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)service:(id)arg1 account:(id)arg2 incomingResourceAtURL:(id)arg3 metadata:(id)arg4 fromID:(id)arg5 context:(id)arg6;
+- (void)service:(id)arg1 connectedDevicesChanged:(id)arg2;
 - (void)service:(id)arg1 didSwitchActivePairedDevice:(id)arg2 acknowledgementBlock:(id /* block */)arg3;
 - (void)service:(id)arg1 nearbyDevicesChanged:(id)arg2;
 - (void)setCustomIDSOptions:(id)arg1;

@@ -15,7 +15,7 @@
 @property (nonatomic, readonly) unsigned char typeFlags;
 
 - (void).cxx_destruct;
-- (void)addEntry:(id)arg1;
+- (bool)addEntry:(id)arg1 source:(unsigned char)arg2 type:(unsigned char)arg3;
 - (bool)contains:(id)arg1;
 - (struct _LXEntry { }*)copyEntryForString:(id)arg1;
 - (void)dealloc;
@@ -28,7 +28,8 @@
 - (id)initWithName:(id)arg1 typeFlags:(unsigned char)arg2;
 - (id)name;
 - (void)removeAllEntries;
-- (void)removeEntry:(id)arg1;
+- (void)removeEntriesBySource:(unsigned char)arg1;
+- (void)removeEntry:(id)arg1 source:(unsigned char)arg2;
 - (unsigned char)typeFlags;
 
 @end

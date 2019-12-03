@@ -3,16 +3,18 @@
  */
 
 @interface WBSParsecDSession : NSObject <PARSessionDelegate, WBSParsecSearchSession> {
-    WBSCompletionQuery * _currentQuery;
     unsigned long long  _currentQueryID;
-    <WBSParsecSearchSessionDelegate> * _delegate;
     WBSParsecDFeedbackDispatcher * _feedbackDispatcher;
-    GEOUserSessionEntity * _geoUserSessionEntity;
-    PARSession * _parsecdSession;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _geoUserSessionLock;
     NSObject<OS_dispatch_queue> * _requestProcessingQueue;
     bool  _skipAutoFillDataUpdates;
-    double  _uiScale;
-    bool  _valid;
+    WBSCompletionQuery * _threadUnsafeCurrentQuery;
+    <WBSParsecSearchSessionDelegate> * _threadUnsafeDelegate;
+    GEOUserSessionEntity * _threadUnsafeGEOUserSessionEntity;
+    PARSession * _threadUnsafeParsecdSession;
+    double  _threadUnsafeUIScale;
 }
 
 @property (nonatomic, retain) WBSCompletionQuery *currentQuery;
@@ -26,7 +28,6 @@
 @property (nonatomic, readonly) bool skipAutoFillDataUpdates;
 @property (readonly) Class superclass;
 @property (setter=setUIScale:, nonatomic) double uiScale;
-@property (getter=isValid, nonatomic, readonly) bool valid;
 
 + (void)_updateAutoFillCorrectionSetsIfNeededForSession:(id)arg1 completionHandler:(id /* block */)arg2;
 + (void)_updateAutoFillTLDsIfNeededForSession:(id)arg1 completionHandler:(id /* block */)arg2;
@@ -42,7 +43,6 @@
 - (id)delegate;
 - (id)feedbackDispatcher;
 - (id)initWithParsecdSession:(id)arg1 skipAutoFillDataUpdates:(bool)arg2;
-- (bool)isValid;
 - (id)parsecdSession;
 - (void)session:(id)arg1 bag:(id)arg2 didLoadWithError:(id)arg3;
 - (void)setCurrentQuery:(id)arg1;

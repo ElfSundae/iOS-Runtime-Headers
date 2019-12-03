@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UserNotificationsUIKit.framework/UserNotificationsUIKit
  */
 
-@interface NCNotificationListSectionRevealHintView : UICollectionReusableView <NCLegibilitySettingsAdjusting, PLContentSizeCategoryAdjusting> {
+@interface NCNotificationListSectionRevealHintView : UIView <NCLegibilitySettingsAdjusting, PLContentSizeCategoryAdjusting> {
     bool  _adjustsFontForContentSizeCategory;
     bool  _forceRevealed;
     double  _hintingAlpha;
@@ -48,6 +48,5 @@
 - (void)setLegibilitySettings:(id)arg1;
 - (void)setRevealHintTitle:(id)arg1;
 - (void)setRevealPercentage:(double)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
 
 @end

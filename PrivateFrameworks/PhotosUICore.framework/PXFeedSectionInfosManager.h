@@ -12,7 +12,7 @@
     NSMutableArray * _pendingFeedEntriesChangeNotifications;
     PLPhotoLibrary * _photoLibrary;
     NSMutableArray * _sectionInfos;
-    NSMapTable * _sectionInfosByCloudFeedEntry;
+    NSMutableDictionary * _sectionInfosByCloudFeedEntry;
 }
 
 @property (nonatomic) <PXFeedSectionInfosManagerDelegate> *delegate;

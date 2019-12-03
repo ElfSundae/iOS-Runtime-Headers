@@ -51,6 +51,7 @@
 - (void)deleteAllDefaults;
 - (void)deleteAllLocalDefaults;
 - (void)deleteDefaultBillingAddress:(id)arg1;
+- (void)deleteDefaultBillingAddressForPrimaryAccountIdentifier:(id)arg1;
 - (void)deleteDefaultContactEmail;
 - (void)deleteDefaultContactName;
 - (void)deleteDefaultContactPhone;

@@ -15,6 +15,7 @@
 + (bool)supportsSecureCoding;
 
 - (void)addRecord:(id)arg1;
+- (void)addRecordArray:(id)arg1;
 - (id)asData;
 - (void)dealloc;
 - (id)decode;

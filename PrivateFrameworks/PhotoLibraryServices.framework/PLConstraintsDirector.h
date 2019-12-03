@@ -8,7 +8,7 @@
     bool  _didTransitionToOpportunisticDisallowed;
     PLForegroundMonitor * _foregroundMonitor;
     NSObject<OS_dispatch_queue> * _isolationQueue;
-    NSURL * _photoLibraryURL;
+    PLPhotoAnalysisServiceClient * _photoAnalysisServiceClient;
     bool  _photosAppInForeground;
 }
 
@@ -19,16 +19,15 @@
 
 + (bool)_photoanalysisdIsRunning;
 + (bool)constraintsAllowSchedulingUserInitiatedAnalysisForAssets;
-+ (id)sharedConstraintsDirector;
 
+- (void).cxx_destruct;
 - (void)_addBonusTime;
 - (void)_disableAutoFGAndUserFGConstraints;
-- (void)dealloc;
 - (void)foregroundMonitor:(id)arg1 changedStateToForeground:(bool)arg2 forBundleIdentifier:(id)arg3;
 - (void)informCameraAppCameraViewControllerVisibilityChanged:(bool)arg1;
 - (void)informCameraAppForegroundState:(bool)arg1;
 - (void)informOpportunisticTasksAllowed:(bool)arg1;
-- (id)initWithPhotoLibraryURL:(id)arg1;
+- (id)initWithPhotoAnalysisClient:(id)arg1;
 - (bool)shouldScheduleUserInitiatedAnalysisForAssets;
 
 @end

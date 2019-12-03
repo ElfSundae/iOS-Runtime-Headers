@@ -17,6 +17,8 @@
 
 // Image: /System/Library/Frameworks/Intents.framework/Intents
 
++ (id)_ignoredParameters;
+
 - (id)_categoryVerb;
 - (id)_dictionaryRepresentation;
 - (long long)_intentCategory;

@@ -28,6 +28,7 @@
 
 - (void).cxx_destruct;
 - (struct CGSize { double x1; double x2; })_currentKeyboardSize;
+- (void)_dismissKeyboard:(id)arg1;
 - (bool)_inputViewControllerShouldDirectlyInsertPassword;
 - (void)_postButtonPressedNotificationForButton:(long long)arg1;
 - (void)_updateKeyboardHeight;

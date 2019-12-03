@@ -15,6 +15,7 @@
 - (void).cxx_destruct;
 - (id /* block */)clientCompletion;
 - (id)clientQueue;
+- (id)description;
 - (void)setClientCompletion:(id /* block */)arg1;
 - (void)setClientQueue:(id)arg1;
 - (void)setState:(unsigned long long)arg1;

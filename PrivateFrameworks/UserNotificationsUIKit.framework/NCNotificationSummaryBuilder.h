@@ -14,6 +14,7 @@
     NSString * _summaryText;
 }
 
+@property (nonatomic, readonly) NSArray *notificationRequests;
 @property (nonatomic, readonly, copy) NSString *summaryText;
 
 - (void).cxx_destruct;
@@ -30,6 +31,7 @@
 - (unsigned long long)_summaryNotificationsCount;
 - (void)_updateSummaryText;
 - (id)description;
+- (id)notificationRequests;
 - (id)summaryText;
 - (void)updateWithNotificationRequests:(id)arg1;
 

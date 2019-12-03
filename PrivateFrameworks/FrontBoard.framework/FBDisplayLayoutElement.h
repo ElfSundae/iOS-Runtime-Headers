@@ -3,11 +3,13 @@
  */
 
 @interface FBDisplayLayoutElement : NSObject <BSDescriptionProviding> {
-    bool  _activated;
+    <BSInvalidatable> * _activeAssertion;
     long long  _displayType;
     FBSDisplayLayoutElement * _element;
     Class  _elementClass;
     NSString * _identifier;
+    NSString * _key;
+    FBMainDisplayLayoutPublisher * _publisher;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -31,6 +33,7 @@
 - (id)element;
 - (Class)elementClass;
 - (id)identifier;
+- (id)init;
 - (id)initWithDisplayType:(long long)arg1 identifier:(id)arg2 elementClass:(Class)arg3;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;

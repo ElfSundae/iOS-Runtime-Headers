@@ -20,10 +20,11 @@
 - (bool)isReadyForMoreMediaData;
 - (void)markAsFinished;
 - (void)markCurrentPassAsFinished;
-- (bool)mediaDataRequesterShouldRequestMediaData:(id)arg1;
+- (bool)mediaDataRequesterShouldRequestMediaData;
 - (void)requestMediaDataOnceIfNecessaryWithMediaDataRequester:(id)arg1;
 - (void)requestMediaDataWhenReadyOnQueue:(id)arg1 usingBlock:(id /* block */)arg2;
 - (long long)status;
+- (void)stopRequestingMediaData;
 - (id)transitionToAndReturnTerminalHelperWithTerminalStatus:(long long)arg1;
 
 @end

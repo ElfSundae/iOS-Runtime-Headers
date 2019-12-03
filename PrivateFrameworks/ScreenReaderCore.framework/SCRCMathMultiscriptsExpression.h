@@ -14,7 +14,7 @@
 
 - (void).cxx_destruct;
 - (id)_appendString:(id)arg1 toDescription:(id)arg2 arePausesAllowed:(bool)arg3;
-- (void)_subSuperScriptsDescriptionFromArray:(id)arg1 withSpeakingStyle:(int)arg2 arePausesAllowed:(bool)arg3 outSubscripts:(id*)arg4 outSuperscripts:(id*)arg5;
+- (void)_subSuperScriptsDescriptionFromArray:(id)arg1 withSpeakingStyle:(long long)arg2 arePausesAllowed:(bool)arg3 outSubscripts:(id*)arg4 outSuperscripts:(id*)arg5;
 - (id)_subSuperscriptPairFromDictionary:(id)arg1;
 - (id)base;
 - (id)description;
@@ -24,6 +24,6 @@
 - (void)setBase:(id)arg1;
 - (void)setPostScripts:(id)arg1;
 - (void)setPreScripts:(id)arg1;
-- (id)speakableDescriptionWithSpeakingStyle:(int)arg1 arePausesAllowed:(bool)arg2;
+- (id)speakableDescriptionWithSpeakingStyle:(long long)arg1 arePausesAllowed:(bool)arg2;
 
 @end

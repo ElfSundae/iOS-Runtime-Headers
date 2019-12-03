@@ -2,9 +2,11 @@
    Image: /System/Library/PrivateFrameworks/ProVideo.framework/ProVideo
  */
 
-@interface PAEKeyerAutokeySetup : NSObject <NSCoding> {
+@interface PAEKeyerAutokeySetup : NSObject <NSSecureCoding> {
     NSMutableArray * _initialSamples;
 }
+
++ (bool)supportsSecureCoding;
 
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

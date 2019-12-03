@@ -3,7 +3,6 @@
  */
 
 @interface HUTitleValueEditableTextCell : UITableViewCell <HUCellProtocol, HUDisableableCellProtocol> {
-    long long  _compressionResistancePolicy;
     bool  _disabled;
     bool  _hideTitle;
     HFItem * _item;
@@ -17,7 +16,6 @@
     NSArray * _valueTextFieldConstraints;
 }
 
-@property (nonatomic) long long compressionResistancePolicy;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (getter=isDisabled, nonatomic) bool disabled;
@@ -40,9 +38,7 @@
 - (void).cxx_destruct;
 - (void)_addTitleLabel;
 - (void)_addValueTextField;
-- (void)_updateCompressionResistance;
 - (void)_updateTitle;
-- (long long)compressionResistancePolicy;
 - (bool)hideTitle;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (bool)isDisabled;
@@ -50,7 +46,6 @@
 - (id)labelsSpacingConstraint;
 - (id)minimumHeightConstraint;
 - (void)prepareForReuse;
-- (void)setCompressionResistancePolicy:(long long)arg1;
 - (void)setDisabled:(bool)arg1;
 - (void)setHideTitle:(bool)arg1;
 - (void)setHighlighted:(bool)arg1 animated:(bool)arg2;

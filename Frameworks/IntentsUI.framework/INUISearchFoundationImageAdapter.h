@@ -13,9 +13,11 @@
 + (void)initialize;
 
 - (void).cxx_destruct;
+- (unsigned long long)hash;
 - (id)initWithIntentsImage:(id)arg1;
 - (id)initWithPayloadImage:(id)arg1;
 - (id)intentsImage;
+- (bool)isEqual:(id)arg1;
 - (void)loadImageDataWithCompletionAndErrorHandler:(id /* block */)arg1;
 - (void)loadImageDataWithCompletionHandler:(id /* block */)arg1;
 - (id)payloadImage;

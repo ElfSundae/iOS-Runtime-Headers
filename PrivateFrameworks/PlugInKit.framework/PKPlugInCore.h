@@ -6,8 +6,10 @@
     NSDictionary * _annotations;
     NSDictionary * _bundleInfoDictionary;
     NSData * _cdhash;
+    NSString * _containingBundleIdentifier;
     NSURL * _containingUrl;
     NSURL * _dataContainerURL;
+    NSUUID * _discoveryInstanceUUID;
     NSDictionary * _entitlements;
     unsigned long long  _hubProtocolVersion;
     NSString * _identifier;
@@ -28,9 +30,11 @@
 @property (readonly) NSDictionary *attributes;
 @property (retain) NSDictionary *bundleInfoDictionary;
 @property (retain) NSData *cdhash;
+@property (copy) NSString *containingBundleIdentifier;
 @property (readonly) NSString *containingPath;
-@property (retain) NSURL *containingUrl;
+@property (copy) NSURL *containingUrl;
 @property (nonatomic, readonly) NSURL *dataContainerURL;
+@property (readonly) NSUUID *discoveryInstanceUUID;
 @property (retain) NSDictionary *entitlements;
 @property unsigned long long hubProtocolVersion;
 @property (retain) NSString *identifier;
@@ -41,9 +45,9 @@
 @property (readonly) bool isMultiplexed;
 @property long long lastModified;
 @property (retain) NSString *localizedContainingName;
-@property (retain) NSDictionary *localizedFileProviderActionNames;
-@property (retain) NSString *localizedName;
-@property (retain) NSString *localizedShortName;
+@property (readonly) NSDictionary *localizedFileProviderActionNames;
+@property (readonly) NSString *localizedName;
+@property (readonly) NSString *localizedShortName;
 @property (readonly) bool oldStyle;
 @property bool onSystemVolume;
 @property (retain) NSString *originalIdentifier;
@@ -61,6 +65,8 @@
 + (id)readSDKDictionary:(id)arg1;
 
 - (void).cxx_destruct;
+- (void)_loadLocalizedNames;
+- (id)_localizedFileProviderActionNamesForPKDict:(id)arg1 fromBundle:(id)arg2;
 - (id)annotations;
 - (id)attribute:(id)arg1;
 - (id)attributes;
@@ -68,10 +74,13 @@
 - (id)bundleInfoDictionary;
 - (void)canonicalize;
 - (id)cdhash;
+- (id)containingBundleIdentifier;
 - (id)containingPath;
 - (id)containingUrl;
 - (id)dataContainerURL;
+- (id)description;
 - (id)diagnose;
+- (id)discoveryInstanceUUID;
 - (id)embeddedCodePath;
 - (id)embeddedProtocolSpec;
 - (id)entitlements;
@@ -82,7 +91,7 @@
 - (id)infoKey:(id)arg1;
 - (id)init;
 - (id)initWithForm:(id)arg1;
-- (id)initWithName:(id)arg1 url:(id)arg2 bundleInfo:(id)arg3 info:(id)arg4 uuid:(id)arg5;
+- (id)initWithName:(id)arg1 url:(id)arg2 bundleInfo:(id)arg3 uuid:(id)arg4 discoveryInstanceUUID:(id)arg5 extensionPointCache:(struct NSMutableDictionary { Class x1; }*)arg6;
 - (bool)isAppExtension;
 - (bool)isData;
 - (bool)isDedicated;
@@ -95,7 +104,7 @@
 - (void)localizedInfoDictionaryForKeys:(id)arg1 completion:(id /* block */)arg2;
 - (id)localizedName;
 - (id)localizedShortName;
-- (id)mergeDictionary:(id)arg1 into:(id)arg2;
+- (id)mergeSDKDictionary:(id)arg1 intoExtensionDictionary:(id)arg2;
 - (id)mergeSharedResources:(id)arg1 into:(id)arg2;
 - (id)normalizeInfoDictionary:(id)arg1;
 - (bool)oldStyle;
@@ -107,13 +116,15 @@
 - (id)principalSpec;
 - (id)protocolSpec;
 - (id)requirement;
-- (void)resolveSDK;
-- (bool)sdkOverridesKey:(id)arg1;
+- (id)resolveSDKWithInfoPlist:(id)arg1 extensionPointCache:(struct NSMutableDictionary { Class x1; }*)arg2;
+- (id)sdkDictionaryWithInfoPlist:(id)arg1 extensionPointCache:(struct NSMutableDictionary { Class x1; }*)arg2;
+- (struct NSSet { Class x1; }*)sdkOnlyKeyPaths;
 - (id)sdkSpec;
 - (void)setAnnotation:(id)arg1 value:(id)arg2;
 - (void)setAnnotations:(id)arg1;
 - (void)setBundleInfoDictionary:(id)arg1;
 - (void)setCdhash:(id)arg1;
+- (void)setContainingBundleIdentifier:(id)arg1;
 - (void)setContainingUrl:(id)arg1;
 - (bool)setDictionaries:(id)arg1;
 - (void)setEntitlements:(id)arg1;
@@ -121,9 +132,6 @@
 - (void)setIdentifier:(id)arg1;
 - (void)setLastModified:(long long)arg1;
 - (void)setLocalizedContainingName:(id)arg1;
-- (void)setLocalizedFileProviderActionNames:(id)arg1;
-- (void)setLocalizedName:(id)arg1;
-- (void)setLocalizedShortName:(id)arg1;
 - (void)setOnSystemVolume:(bool)arg1;
 - (void)setOriginalIdentifier:(id)arg1;
 - (void)setPlugInDictionary:(id)arg1;
@@ -131,10 +139,11 @@
 - (void)setUrl:(id)arg1;
 - (void)setUuid:(id)arg1;
 - (bool)setupWithForm:(id)arg1;
-- (bool)setupWithName:(id)arg1 url:(id)arg2 bundleInfo:(id)arg3 info:(id)arg4 uuid:(id)arg5;
+- (bool)setupWithName:(id)arg1 url:(id)arg2 bundleInfo:(id)arg3 uuid:(id)arg4 discoveryInstanceUUID:(id)arg5 extensionPointCache:(struct NSMutableDictionary { Class x1; }*)arg6;
 - (id)timestamp;
 - (void)updateFromForm:(id)arg1;
 - (id)url;
+- (bool)useBundle:(id)arg1 error:(id*)arg2;
 - (id)uuid;
 - (id)version;
 

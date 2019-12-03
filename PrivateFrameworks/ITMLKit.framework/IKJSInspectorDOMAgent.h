@@ -31,8 +31,11 @@
 - (void)documentDidUpdate;
 - (void)focusWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 nodeId:(int)arg3;
 - (void)getAccessibilityPropertiesForNodeWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 nodeId:(int)arg3;
+- (void)getAssociatedDataForNodeWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 nodeId:(int)arg3;
 - (void)getAttributesWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 nodeId:(int)arg3;
+- (void)getDataBindingsForNodeWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 nodeId:(int)arg3;
 - (void)getDocumentWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2;
+- (void)getEventListenersForNodeWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 nodeId:(int)arg3;
 - (void)getEventListenersForNodeWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 nodeId:(int)arg3 objectGroup:(id*)arg4;
 - (void)getOuterHTMLWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 nodeId:(int)arg3;
 - (void)getSearchResultsWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 searchId:(id)arg3 fromIndex:(int)arg4 toIndex:(int)arg5;
@@ -52,6 +55,7 @@
 - (void)markUndoableStateWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2;
 - (void)moveToWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 nodeId:(int)arg3 targetNodeId:(int)arg4 insertBeforeNodeId:(int*)arg5;
 - (void)performSearchWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 query:(id)arg3 nodeIds:(id*)arg4;
+- (void)performSearchWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 query:(id)arg3 nodeIds:(id*)arg4 caseSensitive:(bool*)arg5;
 - (void)pushNodeByBackendIdToFrontendWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 backendNodeId:(int)arg3;
 - (void)pushNodeByPathToFrontendWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 path:(id)arg3;
 - (void)querySelectorAllWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 nodeId:(int)arg3 selector:(id)arg4;
@@ -68,7 +72,7 @@
 - (void)setAttributesAsTextWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 nodeId:(int)arg3 text:(id)arg4 name:(id*)arg5;
 - (void)setBreakpointForEventListenerWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 eventListenerId:(int)arg3;
 - (void)setEventListenerDisabledWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 eventListenerId:(int)arg3 disabled:(bool)arg4;
-- (void)setInspectModeEnabledWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 enabled:(bool)arg3 highlightConfig:(id*)arg4;
+- (void)setInspectModeEnabledWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 enabled:(bool)arg3 highlightConfig:(id*)arg4 showRulers:(bool*)arg5;
 - (void)setInspectedNodeWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 nodeId:(int)arg3;
 - (void)setNodeNameWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 nodeId:(int)arg3 name:(id)arg4;
 - (void)setNodeValueWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 nodeId:(int)arg3 value:(id)arg4;

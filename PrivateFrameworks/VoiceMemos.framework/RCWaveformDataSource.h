@@ -8,7 +8,7 @@
     NSURL * _generatedWaveformOutputURL;
     bool  _hasSavedGeneratedWaveform;
     bool  _hasStartedLoading;
-    RCMutableWaveform * _liveRecordingMergingWaveform;
+    double  _liveRecordingMergeTime;
     NSObject<OS_dispatch_queue> * _queue;
     RCWaveformGenerator * _waveformGenerator;
     NSHashTable * _weakObservers;
@@ -26,7 +26,6 @@
 @property bool hasSavedGeneratedWaveform;
 @property (nonatomic, readonly) bool hasStartedLoading;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) RCWaveform *liveRecordingMergingWaveform;
 @property (nonatomic, readonly) float loadingProgress;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *queue;
 @property (readonly) Class superclass;
@@ -41,6 +40,7 @@
 - (void)addObserver:(id)arg1;
 - (double)averagePowerLevelsRate;
 - (void)beginLoading;
+- (void)cancelLoading;
 - (bool)canceled;
 - (void)dealloc;
 - (double)duration;
@@ -51,7 +51,6 @@
 - (bool)hasSavedGeneratedWaveform;
 - (bool)hasStartedLoading;
 - (id)initWithWaveformGenerator:(id)arg1 generatedWaveformOutputURL:(id)arg2;
-- (id)liveRecordingMergingWaveform;
 - (float)loadingProgress;
 - (void)mergeGeneratedWaveformIfNecessary;
 - (id)queue;
@@ -63,6 +62,7 @@
 - (void)setHasSavedGeneratedWaveform:(bool)arg1;
 - (bool)setPaused:(bool)arg1;
 - (bool)shouldMergeLiveWaveform;
+- (void)startLoading;
 - (id)synchronouslyApproximateWaveformSegmentsByReadingCurrentFileAheadTimeRange:(struct { double x1; double x2; })arg1;
 - (struct { double x1; double x2; })timeRangeToHighlight;
 - (void)updateAccumulatorWaveformSegmentsWithBlock:(id /* block */)arg1;
@@ -72,6 +72,7 @@
 - (void)waveformGeneratorDidFinishLoading:(id)arg1 error:(id)arg2;
 - (void)waveformGeneratorWillBeginLoading:(id)arg1;
 - (id)waveformSegmentsInTimeRange:(struct { double x1; double x2; })arg1;
+- (id)waveformSegmentsIntersectingTimeRange:(struct { double x1; double x2; })arg1;
 - (id)weakObservers;
 
 @end

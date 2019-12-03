@@ -12,9 +12,9 @@
     long long  _priority;
 }
 
-@property (nonatomic, readonly) const struct __CFString { }*accessoryButtonEventTrackerKey;
 @property (nonatomic, readonly) NSString *accessoryButtonTitle;
 @property (nonatomic, readonly) unsigned long long accessoryButtonType;
+@property (nonatomic, readonly) Class collectionViewItemClass;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <PXGadgetDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -50,12 +50,10 @@
 - (id)gadgetSpec;
 - (unsigned long long)gadgetType;
 - (bool)hasContentToDisplay;
-- (bool)hasLoadedContentData;
 - (id)headerView;
 - (id)init;
 - (id)invitationSectionInfo;
 - (id)invitationView;
-- (void)loadContentData;
 - (bool)loadedContentData;
 - (long long)priority;
 - (void)setDelegate:(id)arg1;
@@ -77,6 +75,5 @@
 // Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
 
 - (id)px_gridPresentation;
-- (id)px_sharePresentation;
 
 @end

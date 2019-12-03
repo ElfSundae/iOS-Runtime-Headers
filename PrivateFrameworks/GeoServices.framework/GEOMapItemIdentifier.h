@@ -6,6 +6,8 @@
     GEOPDMapsIdentifier * _mapsIdentifier;
 }
 
+@property (nonatomic, readonly) NSData *comparableRepresentation;
+@property (nonatomic, readonly) struct { double x1; double x2; } coordinate;
 @property (getter=hasCoordinate, nonatomic, readonly) bool hasCoordinate;
 @property (nonatomic, readonly) unsigned long long muid;
 @property (nonatomic, readonly) int resultProviderID;
@@ -14,14 +16,17 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)comparableRepresentation;
 - (struct { double x1; double x2; })coordinate;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)debugDescription;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCCoder:(id)arg1;
 - (bool)hasCoordinate;
 - (unsigned long long)hash;
 - (id)init;
+- (id)initWithBasemapId:(unsigned long long)arg1 resultProviderID:(int)arg2 coordinate:(struct { double x1; double x2; })arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithMUID:(unsigned long long)arg1;
 - (id)initWithMUID:(unsigned long long)arg1 coordinate:(struct { double x1; double x2; })arg2;
@@ -35,5 +40,6 @@
 - (id)mapsIdentifier;
 - (unsigned long long)muid;
 - (int)resultProviderID;
+- (id)shortDebugDescription;
 
 @end

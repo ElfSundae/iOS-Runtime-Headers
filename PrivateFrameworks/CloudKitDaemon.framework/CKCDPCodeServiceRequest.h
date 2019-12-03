@@ -4,11 +4,13 @@
 
 @interface CKCDPCodeServiceRequest : PBRequest <NSCopying> {
     CKCDPCodeServiceRequestAccountConfig * _accountConfig;
+    CKCDPCodeServiceRequestAssetAuthorizeGetRequestOptions * _assetAuthorizeGetRequestOptions;
     NSMutableArray * _clientConfigs;
     NSString * _functionName;
     struct { 
         unsigned int serializationFormat : 1; 
     }  _has;
+    CKCDPCodeServiceRequestProtectedCloudComputeMetadata * _protectedCloudComputeMetadata;
     CKCDPCodeServiceRequestRequestContext * _requestContext;
     int  _serializationFormat;
     NSData * _serializedParameters;
@@ -16,14 +18,18 @@
 }
 
 @property (nonatomic, retain) CKCDPCodeServiceRequestAccountConfig *accountConfig;
+@property (nonatomic, retain) CKCDPCodeServiceRequestAssetAuthorizeGetRequestOptions *assetAuthorizeGetRequestOptions;
 @property (nonatomic, retain) NSMutableArray *clientConfigs;
 @property (nonatomic, retain) NSString *functionName;
 @property (nonatomic, readonly) bool hasAccountConfig;
+@property (nonatomic, readonly) bool hasAssetAuthorizeGetRequestOptions;
 @property (nonatomic, readonly) bool hasFunctionName;
+@property (nonatomic, readonly) bool hasProtectedCloudComputeMetadata;
 @property (nonatomic, readonly) bool hasRequestContext;
 @property (nonatomic) bool hasSerializationFormat;
 @property (nonatomic, readonly) bool hasSerializedParameters;
 @property (nonatomic, readonly) bool hasServiceName;
+@property (nonatomic, retain) CKCDPCodeServiceRequestProtectedCloudComputeMetadata *protectedCloudComputeMetadata;
 @property (nonatomic, retain) CKCDPCodeServiceRequestRequestContext *requestContext;
 @property (nonatomic) int serializationFormat;
 @property (nonatomic, retain) NSData *serializedParameters;
@@ -35,6 +41,7 @@
 - (int)StringAsSerializationFormat:(id)arg1;
 - (id)accountConfig;
 - (void)addClientConfig:(id)arg1;
+- (id)assetAuthorizeGetRequestOptions;
 - (void)clearClientConfigs;
 - (id)clientConfigAtIndex:(unsigned long long)arg1;
 - (id)clientConfigs;
@@ -45,7 +52,9 @@
 - (id)dictionaryRepresentation;
 - (id)functionName;
 - (bool)hasAccountConfig;
+- (bool)hasAssetAuthorizeGetRequestOptions;
 - (bool)hasFunctionName;
+- (bool)hasProtectedCloudComputeMetadata;
 - (bool)hasRequestContext;
 - (bool)hasSerializationFormat;
 - (bool)hasSerializedParameters;
@@ -53,6 +62,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)protectedCloudComputeMetadata;
 - (bool)readFrom:(id)arg1;
 - (id)requestContext;
 - (int)serializationFormat;
@@ -60,9 +70,11 @@
 - (id)serializedParameters;
 - (id)serviceName;
 - (void)setAccountConfig:(id)arg1;
+- (void)setAssetAuthorizeGetRequestOptions:(id)arg1;
 - (void)setClientConfigs:(id)arg1;
 - (void)setFunctionName:(id)arg1;
 - (void)setHasSerializationFormat:(bool)arg1;
+- (void)setProtectedCloudComputeMetadata:(id)arg1;
 - (void)setRequestContext:(id)arg1;
 - (void)setSerializationFormat:(int)arg1;
 - (void)setSerializedParameters:(id)arg1;

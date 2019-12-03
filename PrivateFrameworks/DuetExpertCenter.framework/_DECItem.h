@@ -15,8 +15,6 @@
 @property (readonly) Class superclass;
 
 + (unsigned long long)category;
-+ (id)fromSearchResult:(id)arg1;
-+ (bool)isSearchFoundationCompliant;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -31,6 +29,5 @@
 - (id)metadata;
 - (void)setIdentifier:(id)arg1;
 - (void)setMetadata:(id)arg1;
-- (id)toSearchResult;
 
 @end

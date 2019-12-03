@@ -13,5 +13,6 @@
 - (id)allEvents;
 - (id)events;
 - (id)initWithEvents:(id)arg1;
+- (bool)isSequenceTerminated;
 
 @end

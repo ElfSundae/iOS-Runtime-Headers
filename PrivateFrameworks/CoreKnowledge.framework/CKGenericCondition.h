@@ -3,8 +3,8 @@
  */
 
 @interface CKGenericCondition : NSObject <NSCopying, NSSecureCoding> {
+    void $__lazy_storage_$_sql;
     void negated;
-    void sql.storage;
     void type;
 }
 

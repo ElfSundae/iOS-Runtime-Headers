@@ -3,6 +3,7 @@
  */
 
 @interface BWStreamingSessionAnalyticsPayload : NSObject <BWCoreAnalyticsPayload> {
+    NSDictionary * _actuatorVendor;
     int  _clientIDType;
     int  _devicePosition;
     int  _deviceType;
@@ -23,6 +24,7 @@
     unsigned int  _timeToFirstPhotoCapture;
 }
 
+@property (nonatomic, retain) NSDictionary *actuatorVendor;
 @property (nonatomic) int clientIDType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -46,6 +48,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned int timeToFirstPhotoCapture;
 
+- (id)actuatorVendor;
 - (int)clientIDType;
 - (void)dealloc;
 - (int)devicePosition;
@@ -65,6 +68,7 @@
 - (id)numberOfSphereJitterDetectAttempts;
 - (id)numberOfSphereJitterDetects;
 - (void)reset;
+- (void)setActuatorVendor:(id)arg1;
 - (void)setClientIDType:(int)arg1;
 - (void)setDevicePosition:(int)arg1;
 - (void)setDeviceType:(int)arg1;

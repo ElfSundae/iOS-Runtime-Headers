@@ -5,7 +5,7 @@
 @interface __NSPlaceholderFileSecurity : NSFileSecurity <NSCoding, NSCopying>
 
 + (id)immutablePlaceholder;
-+ (void)initialize;
++ (bool)supportsSecureCoding;
 
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;

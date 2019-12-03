@@ -34,6 +34,7 @@
 @property (nonatomic) bool useLightStyle;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)button;
 - (id)buttonContainer;
 - (void)buttonTapped:(id)arg1;

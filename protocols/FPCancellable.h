@@ -5,6 +5,6 @@
 
 @required
 
-- (oneway void)cancel;
+- (void)cancel;
 
 @end

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/Preferences.framework/Preferences
  */
 
-@interface PSListController : PSViewController <PSSpecifierObserver, PSViewControllerOffsetProtocol, UIAlertViewDelegate, UIAppearance, UIPopoverPresentationControllerDelegate, UITableViewDataSource, UITableViewDataSourcePrefetching, UITableViewDelegate> {
+@interface PSListController : PSViewController <PSSpecifierObserver, PSURLControllerHandlerDelegate, PSViewControllerOffsetProtocol, UIAlertViewDelegate, UIAppearance, UIPopoverPresentationControllerDelegate, UITableViewDataSource, UITableViewDataSourcePrefetching, UITableViewDelegate> {
     UIColor * _altTextColor;
     UIColor * _backgroundColor;
     NSMutableArray * _bundleControllers;
@@ -18,6 +18,7 @@
         double x; 
         double y; 
     }  _contentOffsetWithKeyboard;
+    bool  _contentSizeDidChange;
     <PSSpecifierDataSource> * _dataSource;
     bool  _edgeToEdgeCells;
     UIColor * _editableInsertionPointColor;
@@ -35,6 +36,7 @@
     UIKeyboard * _keyboard;
     bool  _keyboardWasVisible;
     NSString * _offsetItemName;
+    UIColor * _padSelectionColor;
     NSDictionary * _pendingURLResourceDictionary;
     bool  _popupIsDismissing;
     bool  _popupIsModal;
@@ -53,6 +55,8 @@
     NSMutableDictionary * _specifiersByID;
     UITableView * _table;
     UIColor * _textColor;
+    PSURLControllerHandler * _urlHandler;
+    id /* block */  _urlHandlingCompletion;
     bool  _usesDarkTheme;
     float  _verticalContentOffset;
 }
@@ -63,6 +67,7 @@
 @property (nonatomic, retain) UIColor *cellAccessoryColor;
 @property (nonatomic, retain) UIColor *cellAccessoryHighlightColor;
 @property (nonatomic, retain) UIColor *cellHighlightColor;
+@property (nonatomic) bool contentSizeDidChange;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) bool edgeToEdgeCells;
@@ -76,15 +81,21 @@
 @property (nonatomic, retain) UIColor *foregroundColor;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) long long observerType;
+@property (nonatomic, retain) UIColor *padSelectionColor;
 @property (nonatomic, retain) NSDictionary *pendingURLResourceDictionary;
 @property (getter=isPrefetchingEnabled, nonatomic) bool prefetchingEnabled;
 @property (nonatomic, retain) UIColor *segmentedSliderTrackColor;
 @property (nonatomic, retain) UIColor *separatorColor;
+@property (getter=isShowingSetupController, nonatomic) bool showingSetupController;
 @property (nonatomic, retain) <PSSpecifierDataSource> *specifierDataSource;
 @property (nonatomic, copy) NSString *specifierIDPendingPush;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) UIColor *textColor;
+@property (nonatomic, retain) PSURLControllerHandler *urlHandler;
+@property (nonatomic, copy) id /* block */ urlHandlingCompletion;
 @property (nonatomic) bool usesDarkTheme;
+
+// Image: /System/Library/PrivateFrameworks/Preferences.framework/Preferences
 
 + (id)aggregateReportingDomainOverride;
 + (id)appearance;
@@ -141,9 +152,10 @@
 - (void)clearCache;
 - (void)clearPendingURL;
 - (void)confirmationViewAcceptedForSpecifier:(id)arg1;
+- (void)confirmationViewAlternateAcceptedForSpecifier:(id)arg1;
 - (void)confirmationViewCancelledForSpecifier:(id)arg1;
 - (bool)containsSpecifier:(id)arg1;
-- (void)contentSizeChangedNotificationPosted:(id)arg1;
+- (bool)contentSizeDidChange;
 - (void)contentSizeDidChange:(id)arg1;
 - (id)controllerForRowAtIndexPath:(id)arg1;
 - (id)controllerForSpecifier:(id)arg1;
@@ -151,10 +163,14 @@
 - (void)createPrequeuedPSTableCells:(unsigned long long)arg1;
 - (void)dataSource:(id)arg1 performUpdates:(id)arg2;
 - (void)dealloc;
+- (void)delayedContentSizeDidChange;
 - (id)description;
+- (void)didBecomeActive:(id)arg1;
 - (void)dismissConfirmationViewAnimated:(bool)arg1;
 - (void)dismissPopover;
 - (void)dismissPopoverAnimated:(bool)arg1;
+- (void)dismissPopoverAnimated:(bool)arg1 completion:(id /* block */)arg2;
+- (void)dismissPopoverWithCompletion:(id /* block */)arg1;
 - (bool)edgeToEdgeCells;
 - (id)editableInsertionPointColor;
 - (id)editablePlaceholderTextColor;
@@ -163,7 +179,6 @@
 - (id)editableTextColor;
 - (void)endUpdates;
 - (id)findFirstVisibleResponder;
-- (void)fontSliderDidEndSlidingNotificationPosted:(id)arg1;
 - (id)footerHyperlinkColor;
 - (bool)forceSynchronousIconLoadForCreatedCells;
 - (id)foregroundColor;
@@ -174,7 +189,7 @@
 - (id)getGroupSpecifierForSpecifier:(id)arg1;
 - (id)getGroupSpecifierForSpecifierID:(id)arg1;
 - (bool)handlePendingURL;
-- (void)handleURL:(id)arg1;
+- (void)handleURL:(id)arg1 withCompletion:(id /* block */)arg2;
 - (void)highlightSpecifierWithID:(id)arg1;
 - (long long)indexForIndexPath:(id)arg1;
 - (long long)indexForRow:(long long)arg1 inGroup:(long long)arg2;
@@ -203,6 +218,7 @@
 - (void)insertSpecifier:(id)arg1 atIndex:(long long)arg2 animated:(bool)arg3;
 - (void)invalidateSpecifiersForDataSource:(id)arg1;
 - (bool)isPrefetchingEnabled;
+- (bool)isShowingSetupController;
 - (void)lazyLoadBundle:(id)arg1;
 - (id)loadSpecifiersFromPlistName:(id)arg1 target:(id)arg2;
 - (id)loadSpecifiersFromPlistName:(id)arg1 target:(id)arg2 bundle:(id)arg3;
@@ -212,10 +228,12 @@
 - (long long)numberOfGroups;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (long long)observerType;
+- (id)padSelectionColor;
 - (id)pendingURLResourceDictionary;
 - (bool)performActionForSpecifier:(id)arg1;
 - (bool)performButtonActionForSpecifier:(id)arg1;
 - (bool)performConfirmationActionForSpecifier:(id)arg1;
+- (bool)performConfirmationAlternateActionForSpecifier:(id)arg1;
 - (bool)performConfirmationCancelActionForSpecifier:(id)arg1;
 - (bool)performLoadActionForSpecifier:(id)arg1;
 - (void)performSpecifierUpdates:(id)arg1;
@@ -224,6 +242,7 @@
 - (void)popupViewWillDisappear;
 - (void)prefetchResourcesFor:(id)arg1;
 - (bool)prepareHandlingURLForSpecifierID:(id)arg1 resourceDictionary:(id)arg2 animatePush:(bool*)arg3;
+- (bool)prepareHandlingURLForSpecifierID:(id)arg1 resourceDictionary:(id)arg2 animatePush:(bool*)arg3 withCompletion:(id /* block */)arg4;
 - (void)prepareSpecifiersMetadata;
 - (void)pushController:(id)arg1 animate:(bool)arg2;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })rangeOfSpecifiersInGroupID:(id)arg1;
@@ -252,6 +271,7 @@
 - (long long)rowsForGroup:(long long)arg1;
 - (id)segmentedSliderTrackColor;
 - (void)selectRowForSpecifier:(id)arg1;
+- (id)selectSpecifier:(id)arg1;
 - (id)separatorColor;
 - (void)setAltTextColor:(id)arg1;
 - (void)setBackgroundColor:(id)arg1;
@@ -260,6 +280,7 @@
 - (void)setCellAccessoryColor:(id)arg1;
 - (void)setCellAccessoryHighlightColor:(id)arg1;
 - (void)setCellHighlightColor:(id)arg1;
+- (void)setContentSizeDidChange:(bool)arg1;
 - (void)setDesiredVerticalContentOffset:(float)arg1;
 - (void)setDesiredVerticalContentOffsetItemNamed:(id)arg1;
 - (void)setEdgeToEdgeCells:(bool)arg1;
@@ -271,11 +292,13 @@
 - (void)setFooterHyperlinkColor:(id)arg1;
 - (void)setForceSynchronousIconLoadForCreatedCells:(bool)arg1;
 - (void)setForegroundColor:(id)arg1;
+- (void)setPadSelectionColor:(id)arg1;
 - (void)setPendingURLResourceDictionary:(id)arg1;
 - (void)setPrefetchingEnabled:(bool)arg1;
 - (void)setReusesCells:(bool)arg1;
 - (void)setSegmentedSliderTrackColor:(id)arg1;
 - (void)setSeparatorColor:(id)arg1;
+- (void)setShowingSetupController:(bool)arg1;
 - (void)setSpecifier:(id)arg1;
 - (void)setSpecifierDataSource:(id)arg1;
 - (void)setSpecifierID:(id)arg1;
@@ -283,8 +306,11 @@
 - (void)setSpecifiers:(id)arg1;
 - (void)setTextColor:(id)arg1;
 - (void)setTitle:(id)arg1;
+- (void)setUrlHandler:(id)arg1;
+- (void)setUrlHandlingCompletion:(id /* block */)arg1;
 - (void)setUsesDarkTheme:(bool)arg1;
 - (bool)shouldDeferPushForSpecifierID:(id)arg1;
+- (bool)shouldDeferPushForSpecifierID:(id)arg1 urlDictionary:(id)arg2;
 - (bool)shouldReloadSpecifiersOnResume;
 - (bool)shouldSelectResponderOnAppearance;
 - (void)showConfirmationViewForSpecifier:(id)arg1;
@@ -328,6 +354,8 @@
 - (id)textColor;
 - (void)updateSpecifiers:(id)arg1 withSpecifiers:(id)arg2;
 - (void)updateSpecifiersInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 withSpecifiers:(id)arg2;
+- (id)urlHandler;
+- (id /* block */)urlHandlingCompletion;
 - (bool)usesDarkTheme;
 - (float)verticalContentOffset;
 - (void)viewDidAppear:(bool)arg1;
@@ -337,5 +365,9 @@
 - (void)viewDidUnload;
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;
+
+// Image: /System/Library/PrivateFrameworks/Accessibility.framework/Frameworks/AccessibilityUIUtilities.framework/AccessibilityUIUtilities
+
+- (bool)ax_handlesOwnScrollingInSetup;
 
 @end

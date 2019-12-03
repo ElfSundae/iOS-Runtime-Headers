@@ -23,6 +23,6 @@
 - (long long)repeatMode;
 - (void)setEndAction:(long long)arg1;
 - (void)setRepeatMode:(long long)arg1;
-- (id)splice:(long long)arg1 :(long long)arg2 :(id)arg3;
+- (id)splice:(unsigned long long)arg1 :(unsigned long long)arg2 :(id)arg3;
 
 @end

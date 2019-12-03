@@ -6,10 +6,12 @@
     GEOPDModule * _module;
 }
 
+@property (nonatomic, readonly) GEOModuleOptions *options;
 @property (nonatomic, readonly) int type;
 
 - (void).cxx_destruct;
 - (id)initWithModule:(id)arg1;
+- (id)options;
 - (int)type;
 
 @end

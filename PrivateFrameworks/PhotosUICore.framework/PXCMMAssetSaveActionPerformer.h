@@ -5,7 +5,7 @@
 @interface PXCMMAssetSaveActionPerformer : PXCMMAssetActionPerformer
 
 - (void)_importAsset:(id)arg1;
-- (void)_simulateImportForAssetReference:(id)arg1 importStatusManager:(id)arg2;
+- (void)_simulateImportForAssetReference:(id)arg1 assetImportStatusManager:(id)arg2;
 - (id)createActionProgress;
 - (bool)isCancellable;
 - (void)performBackgroundTask;

@@ -93,10 +93,12 @@
 - (id)intentMessageName;
 - (id)intentResponseMessageData;
 - (id)intentResponseMessageName;
+- (bool)isEqual:(id)arg1;
 - (id)jsonData;
 - (void)loadCardSectionsWithCompletionAndErrorHandler:(id /* block */)arg1;
 - (void)loadCardSectionsWithCompletionHandler:(id /* block */)arg1;
 - (unsigned long long)queryId;
+- (void)recursiveSetQueryId:(unsigned long long)arg1;
 - (id)resultIdentifier;
 - (void)setCardId:(id)arg1;
 - (void)setCardSections:(id)arg1;

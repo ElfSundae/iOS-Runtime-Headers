@@ -5,40 +5,28 @@
 
 @required
 
-- (long long)collectionEndTimestamp;
-- (long long)collectionStartTimestamp;
-- (float)competitorCompletion;
-- (float)competitorRecentSearch;
-- (float)competitorTopGoto;
-- (float)competitorTopTap;
-- (int)configuredLookbackTimeInDays;
+- (float)goToSite;
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;
 - (NSData *)jsonData;
-- (float)localOtherTap;
-- (float)localTopGoto;
-- (float)localTopTap;
+- (float)localGoto;
+- (float)localTap;
 - (float)other;
-- (float)parsecOtherTap;
-- (float)parsecTopGoto;
-- (float)parsecTopTap;
-- (void)setCollectionEndTimestamp:(long long)arg1;
-- (void)setCollectionStartTimestamp:(long long)arg1;
-- (void)setCompetitorCompletion:(float)arg1;
-- (void)setCompetitorRecentSearch:(float)arg1;
-- (void)setCompetitorTopGoto:(float)arg1;
-- (void)setCompetitorTopTap:(float)arg1;
-- (void)setConfiguredLookbackTimeInDays:(int)arg1;
-- (void)setLocalOtherTap:(float)arg1;
-- (void)setLocalTopGoto:(float)arg1;
-- (void)setLocalTopTap:(float)arg1;
+- (float)parsecGoto;
+- (float)parsecTap;
+- (void)setGoToSite:(float)arg1;
+- (void)setLocalGoto:(float)arg1;
+- (void)setLocalTap:(float)arg1;
 - (void)setOther:(float)arg1;
-- (void)setParsecOtherTap:(float)arg1;
-- (void)setParsecTopGoto:(float)arg1;
-- (void)setParsecTopTap:(float)arg1;
+- (void)setParsecGoto:(float)arg1;
+- (void)setParsecTap:(float)arg1;
+- (void)setThirdPartyCompletionOrRecentSearch:(float)arg1;
+- (void)setThirdPartyGoto:(float)arg1;
+- (void)setThirdPartyTap:(float)arg1;
 - (void)setTotalEngagements:(int)arg1;
-- (void)setTotalSessions:(int)arg1;
+- (float)thirdPartyCompletionOrRecentSearch;
+- (float)thirdPartyGoto;
+- (float)thirdPartyTap;
 - (int)totalEngagements;
-- (int)totalSessions;
 
 @end

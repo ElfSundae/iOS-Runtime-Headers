@@ -19,10 +19,10 @@
 
 + (id)phoneticInfoWithResources:(id)arg1;
 
+- (void).cxx_destruct;
 - (int)align;
 - (void)appendString:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)font;
 - (unsigned long long)fontIndex;

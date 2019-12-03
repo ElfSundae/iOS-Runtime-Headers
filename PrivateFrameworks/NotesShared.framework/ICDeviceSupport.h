@@ -4,6 +4,9 @@
 
 @interface ICDeviceSupport : NSObject
 
+// Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
+
++ (bool)deviceIsIPad;
 + (bool)deviceSupportsFaceID;
 + (bool)deviceSupportsPencil;
 + (bool)deviceSupportsTouchID;
@@ -12,5 +15,10 @@
 + (bool)notesLowEndHardware;
 + (id)notesProductType;
 + (bool)shouldOnlyDrawWithPencil;
+
+// Image: /System/Library/PrivateFrameworks/NotesUI.framework/NotesUI
+
++ (bool)cameraAvailable;
++ (bool)isLargerCompactHorizontalWidthDevice;
 
 @end

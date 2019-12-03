@@ -17,6 +17,7 @@
     bool  _showBillingAddress;
     UIStackView * _stackView;
     UIColor * _subTextLabelColor;
+    UIColor * _subTextLabelColorOverride;
     NSString * _subTextOverrideString;
     PKTransitBalanceModel * _transitBalanceModel;
 }

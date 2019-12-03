@@ -10,8 +10,8 @@
 
 + (id)pathExtensionForBlipType:(int)arg1;
 
+- (void).cxx_destruct;
 - (id)altSubBlip;
-- (void)dealloc;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (id)mainSubBlip;

@@ -7,6 +7,7 @@
 
 - (void)beginWithStore:(id <AVTAvatarStore>)arg1;
 - (void)didChangeCurrentAvatarInCarousel:(id <AVTAvatarRecord>)arg1;
+- (void)didChangeCurrentAvatarInStickers:(id <AVTAvatarRecord>)arg1;
 - (void)didCreateAvatar:(id <AVTAvatarRecord>)arg1;
 - (void)didDeleteAvatar:(id <AVTAvatarRecord>)arg1;
 - (void)didDiscardVideoWithDuration:(double)arg1;
@@ -14,7 +15,9 @@
 - (void)didEditAvatar:(id <AVTAvatarRecord>)arg1;
 - (void)didEnterEditor;
 - (void)didLeaveEditor;
+- (void)didOpenStickersAppFromRecents;
 - (void)didPauseFaceTracking;
+- (void)didPeelOffStickerFromStickersApp:(NSString *)arg1 withAvatar:(id <AVTAvatarRecord>)arg2;
 - (void)didRecordVideo;
 - (void)didReplayVideo;
 - (void)didResumeFaceTracking;
@@ -24,7 +27,8 @@
 - (void)didShowExpandedMode;
 - (void)didStartFaceTrackingInCarouselWithAvatar:(id <AVTAvatarRecord>)arg1;
 - (void)didStopFaceTrackingInCarousel;
-- (void)didTriggerHoldPose;
+- (void)didTapStickerFromRecents:(NSString *)arg1;
+- (void)didTapStickerFromStickersApp:(NSString *)arg1 withAvatar:(id <AVTAvatarRecord>)arg2;
 - (void)end;
 
 @end

@@ -4,7 +4,6 @@
 
 @interface CKComposeRecipientSelectionController : CKRecipientSelectionController <TPPillViewDelegate, UITextFieldDelegate> {
     bool  _firstAppear;
-    CNGeminiManager * _geminiManager;
     bool  _hasUserSetContextPreference;
     UIView * _pillContainerView;
     TPPillView * _pillView;
@@ -17,7 +16,6 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) NSArray *expandedRecipients;
 @property (getter=isFirstAppear, nonatomic) bool firstAppear;
-@property (nonatomic, retain) CNGeminiManager *geminiManager;
 @property (nonatomic) bool hasUserSetContextPreference;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) UIView *pillContainerView;
@@ -28,6 +26,9 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_atomizeToConversationNameIfNecessary:(unsigned long long)arg1;
+- (id)_bestSenderIdentityForRecipient:(id)arg1;
+- (bool)_canShowWhileLocked;
 - (id)_getSubscriptionContextToDisplay;
 - (id)_handlesForRecipients:(id)arg1;
 - (bool)_hasExistingConversationWithAddedRecipient:(id)arg1;
@@ -36,18 +37,28 @@
 - (void)_legacyAddRecipient:(id)arg1;
 - (unsigned long long)_pillViewThemeForCurrentService;
 - (id)_senderIdentityForSubscriptionContext:(id)arg1;
+- (bool)_shouldHidePillViewForSenderIdentity:(id)arg1 recipientCount:(unsigned long long)arg2;
+- (id)_startNewConverationFromContextInSettingsPreference;
+- (id)_subscriptionContextForSimID:(id)arg1 phoneNumber:(id)arg2;
 - (bool)_updateBackfillForNewRecipients;
+- (void)_updateContentOfPillView:(id)arg1 withSenderIdentity:(id)arg2;
 - (void)_updatePillViewForContext:(id)arg1;
 - (void)_updatePillViewIfIsNewConversation:(bool)arg1;
 - (void)_updatePillViewIfNeededIfIsNewConversation:(bool)arg1;
 - (void)addRecipient:(id)arg1;
+- (bool)allContextsiMessageable;
 - (bool)alwaysShowSearchResultsTable;
 - (void)atomizeAndInvokeBlock:(id /* block */)arg1;
 - (void)atomizeAndSendTimeoutHandler;
+- (id)autocompleteResultIdentifier:(id)arg1;
 - (void)configureSubscriptionContextForRecipients:(id)arg1;
+- (id)conversationGUIDForRecipient:(id)arg1;
+- (id)conversationList;
 - (void)dealloc;
+- (bool)deviceHasMultipleSubscriptions;
 - (id)expandedRecipients;
-- (id)geminiManager;
+- (bool)hasBackfilledConversation;
+- (bool)hasMultipleActiveSharedSubscriptions;
 - (bool)hasUserSetContextPreference;
 - (bool)homogenizePreferredServiceForiMessage;
 - (bool)isFirstAppear;
@@ -56,14 +67,15 @@
 - (id)pillView;
 - (void)pillViewWasTapped:(id)arg1;
 - (void)presentAlertForSubscriptionContext;
-- (void)presentContextSelectionAlertForRecipient:(id)arg1 completion:(id /* block */)arg2;
+- (void)presentContextSelectionAlertWithCompletion:(id /* block */)arg1;
 - (id)proposedRecipients;
+- (bool)recipientIsiMessagable:(id)arg1;
 - (void)recipientSelectionControllerDidChange;
+- (id)recipients;
 - (void)reset;
 - (id)selectedSubscriptionContext;
 - (id /* block */)sendBlock;
 - (void)setFirstAppear:(bool)arg1;
-- (void)setGeminiManager:(id)arg1;
 - (void)setHasUserSetContextPreference:(bool)arg1;
 - (void)setPillContainerView:(id)arg1;
 - (void)setPillView:(id)arg1;
@@ -71,8 +83,9 @@
 - (void)setSelectedSubscriptionContext:(id)arg1 updatePillView:(bool)arg2;
 - (void)setSendBlock:(id /* block */)arg1;
 - (bool)shouldAtomizeToConversationName;
+- (bool)shouldInvalidateIDSRequests;
 - (bool)shouldSuppressSearchResultsTable;
-- (id)subscriptionContextForSenderIdentity:(id)arg1;
+- (id)startNewConversationAccountDisplayName;
 - (bool)textFieldShouldReturn:(id)arg1;
 - (void)viewDidAppearDeferredSetup;
 - (void)viewDidDisappear:(bool)arg1;

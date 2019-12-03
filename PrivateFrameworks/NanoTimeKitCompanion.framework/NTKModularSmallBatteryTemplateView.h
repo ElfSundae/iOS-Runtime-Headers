@@ -5,7 +5,6 @@
 @interface NTKModularSmallBatteryTemplateView : NTKModularSmallRingTemplateView
 
 + (bool)handlesComplicationTemplate:(id)arg1;
-+ (void)load;
 + (bool)supportsComplicationFamily:(long long)arg1;
 
 - (void)_refreshRingImage;

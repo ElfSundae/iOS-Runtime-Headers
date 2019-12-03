@@ -4,7 +4,7 @@
 
 @interface NSManagedObject : NSObject <NSFetchRequestResult, _KSTIUserDictionaryEntry> {
     unsigned int  _cd_extraFlags;
-    void * _cd_extras;
+    struct { id x1; id x2; id x3; id x4; id x5; } * _cd_extras;
     unsigned int  _cd_lockingInfo;
     NSManagedObjectContext * _cd_managedObjectContext;
     NSManagedObjectID * _cd_objectID;
@@ -34,7 +34,7 @@
 
 // Image: /System/Library/Frameworks/CoreData.framework/CoreData
 
-+ (struct { int x1; void *x2; id x3; unsigned char x4; unsigned long long x5; void *x6; unsigned char x7[32]; char *x8; struct _moFactoryClassFlags { unsigned int x_9_1_1 : 1; unsigned int x_9_1_2 : 1; unsigned int x_9_1_3 : 1; unsigned int x_9_1_4 : 1; unsigned int x_9_1_5 : 1; unsigned int x_9_1_6 : 1; unsigned int x_9_1_7 : 26; } x9; }*)_PFMOClassFactoryData;
++ (struct { int x1; void *x2; id x3; unsigned long long x4; unsigned char x5; unsigned long long x6; void *x7; unsigned char x8[32]; char *x9; struct _moFactoryClassFlags { unsigned int x_10_1_1 : 1; unsigned int x_10_1_2 : 1; unsigned int x_10_1_3 : 1; unsigned int x_10_1_4 : 1; unsigned int x_10_1_5 : 1; unsigned int x_10_1_6 : 1; unsigned int x_10_1_7 : 26; } x10; }*)_PFMOClassFactoryData;
 + (id)_PFPlaceHolderSingleton;
 + (id)_PFPlaceHolderSingleton_core;
 + (void)_entityDeallocated;
@@ -157,6 +157,7 @@
 - (void)awakeFromFetch;
 - (void)awakeFromInsert;
 - (void)awakeFromSnapshotEvents:(unsigned long long)arg1;
+- (id)bindableObjectPublisher;
 - (id)changedValues;
 - (id)changedValuesForCurrentEvent;
 - (id)committedValuesForKeys:(id)arg1;
@@ -203,6 +204,7 @@
 - (bool)respondsToSelector:(SEL)arg1;
 - (id)retain;
 - (unsigned long long)retainCount;
+- (void)setBindableObjectPublisher:(id)arg1;
 - (void)setNilValueForKey:(id)arg1;
 - (void)setObservationInfo:(void*)arg1;
 - (void)setPrimitiveValue:(id)arg1 forKey:(id)arg2;
@@ -256,22 +258,23 @@
 
 // Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
 
-+ (id)objectFromObjectID:(id)arg1 context:(id)arg2;
-+ (id)objectIDsFromObjects:(id)arg1;
-+ (id)objectIDsMatchingPredicate:(id)arg1 context:(id)arg2;
-+ (id)objectIDsMatchingPredicate:(id)arg1 sortDescriptors:(id)arg2 context:(id)arg3;
-+ (id)objectsFromObjectIDs:(id)arg1 context:(id)arg2;
-+ (id)objectsFromObjectIDs:(id)arg1 relationshipKeyPathsForPrefetching:(id)arg2 context:(id)arg3;
-+ (id)objectsMatchingPredicate:(id)arg1 context:(id)arg2;
-+ (id)objectsMatchingPredicate:(id)arg1 sortDescriptors:(id)arg2 context:(id)arg3;
-+ (id)objectsMatchingPredicate:(id)arg1 sortDescriptors:(id)arg2 relationshipKeyPathsForPrefetching:(id)arg3 context:(id)arg4;
-+ (id)permanentObjectIDsFromObjects:(id)arg1;
-+ (id)resultsMatchingPredicate:(id)arg1 sortDescriptors:(id)arg2 resultType:(unsigned long long)arg3 relationshipKeyPathsForPrefetching:(id)arg4 context:(id)arg5;
++ (bool)ic_containsFaultingManagedObjects:(id)arg1;
++ (id)ic_objectFromObjectID:(id)arg1 context:(id)arg2;
++ (id)ic_objectIDsFromObjects:(id)arg1;
++ (id)ic_objectIDsMatchingPredicate:(id)arg1 context:(id)arg2;
++ (id)ic_objectIDsMatchingPredicate:(id)arg1 sortDescriptors:(id)arg2 context:(id)arg3;
++ (id)ic_objectsFromObjectIDs:(id)arg1 context:(id)arg2;
++ (id)ic_objectsFromObjectIDs:(id)arg1 relationshipKeyPathsForPrefetching:(id)arg2 context:(id)arg3;
++ (id)ic_objectsMatchingPredicate:(id)arg1 context:(id)arg2;
++ (id)ic_objectsMatchingPredicate:(id)arg1 sortDescriptors:(id)arg2 context:(id)arg3;
++ (id)ic_objectsMatchingPredicate:(id)arg1 sortDescriptors:(id)arg2 relationshipKeyPathsForPrefetching:(id)arg3 context:(id)arg4;
++ (id)ic_permanentObjectIDsFromObjects:(id)arg1;
++ (id)ic_resultsMatchingPredicate:(id)arg1 sortDescriptors:(id)arg2 resultType:(unsigned long long)arg3 relationshipKeyPathsForPrefetching:(id)arg4 context:(id)arg5;
 
-- (bool)obtainPermanentObjectIDIfNecessary;
-- (id)permanentObjectID;
-- (void)postNotificationOnMainThreadAfterSaveWithName:(id)arg1;
-- (void)postNotificationOnMainThreadWithName:(id)arg1;
+- (bool)ic_obtainPermanentObjectIDIfNecessary;
+- (id)ic_permanentObjectID;
+- (id)ic_postNotificationOnMainThreadAfterSaveWithName:(id)arg1;
+- (void)ic_postNotificationOnMainThreadWithName:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
 
@@ -286,5 +289,9 @@
 // Image: /System/Library/PrivateFrameworks/VoiceMemos.framework/VoiceMemos
 
 - (id)rc_valueForAttributeKey:(id)arg1;
+
+// Image: /usr/lib/swift/libswiftCoreData.dylib
+
+- (void)_willChange_Swift_Trampoline;
 
 @end

@@ -12,6 +12,7 @@
     TSPComponent * _rootObjectComponent;
 }
 
+@property (nonatomic, readonly) long long archiveValidationMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

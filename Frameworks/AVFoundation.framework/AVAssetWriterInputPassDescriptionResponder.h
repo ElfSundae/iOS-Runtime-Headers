@@ -14,7 +14,6 @@
 - (bool)_hasStoppedResponding;
 - (void)_releaseAndClearCallbackBlock_invokeOnSerializationQueue;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)initWithCallbackQueue:(id)arg1 block:(id /* block */)arg2;
 - (void)respondToNewPassDescription:(id)arg1;

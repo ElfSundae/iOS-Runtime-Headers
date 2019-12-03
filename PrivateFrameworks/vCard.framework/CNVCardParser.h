@@ -38,6 +38,7 @@
     NSMutableArray * _relatedNames;
     <CNVCardParsedResultBuilder> * _resultBuilder;
     NSMutableArray * _socialProfiles;
+    unsigned long long  _startingPositionOfCurrentProperty;
     NSString * _uid;
     NSMutableArray * _unknowns;
     NSMutableArray * _urls;
@@ -127,6 +128,7 @@
 - (bool)parse_X_AIM;
 - (bool)parse_X_AIM_ID;
 - (bool)parse_X_ALTBDAY;
+- (bool)parse_X_APPLE_GUARDIAN_WHITELISTED;
 - (bool)parse_X_APPLE_LIKENESS_SERVICE_IDENTIFIER;
 - (bool)parse_X_APPLE_LIKENESS_SOURCE;
 - (bool)parse_X_APPLE_SUBADMINISTRATIVEAREA;
@@ -167,6 +169,7 @@
 - (id)resultsWithFactory:(id)arg1;
 - (void)setImageData:(id)arg1;
 - (id)typeParameters;
+- (id)unparsedStringForCurrentProperty;
 - (id)validCountryCodes;
 - (bool)valueIsEmpty:(id)arg1;
 

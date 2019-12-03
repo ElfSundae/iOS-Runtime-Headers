@@ -4,10 +4,12 @@
 
 @interface PKPaymentSetupFeature : NSObject <NSCopying, NSSecureCoding> {
     long long  _state;
+    long long  _supportedOptions;
     long long  _type;
 }
 
 @property (nonatomic) long long state;
+@property (nonatomic) long long supportedOptions;
 @property (nonatomic) long long type;
 
 + (id)paymentSetupFeatureWithProtobuf:(id)arg1;
@@ -21,8 +23,10 @@
 - (bool)isEqual:(id)arg1;
 - (id)protobuf;
 - (void)setState:(long long)arg1;
+- (void)setSupportedOptions:(long long)arg1;
 - (void)setType:(long long)arg1;
 - (long long)state;
+- (long long)supportedOptions;
 - (long long)type;
 
 @end

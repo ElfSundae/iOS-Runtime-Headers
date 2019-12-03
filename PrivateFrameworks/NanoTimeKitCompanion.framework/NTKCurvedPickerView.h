@@ -13,6 +13,7 @@
     double  _currentFraction;
     bool  _interior;
     NSMutableDictionary * _sideViews;
+    unsigned long long  _transitioningSide;
 }
 
 @property (nonatomic, readonly) double centerAngle;
@@ -22,7 +23,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) bool interior;
-@property (nonatomic, retain) UIImage *maskImage;
 @property (nonatomic, readonly) unsigned long long numberOfSides;
 @property (nonatomic, readonly) unsigned long long numberOfVisibleSides;
 @property (readonly) Class superclass;
@@ -40,11 +40,9 @@
 - (id)init;
 - (bool)interior;
 - (void)layoutSubviews;
-- (id)maskImage;
 - (unsigned long long)numberOfSides;
 - (unsigned long long)numberOfVisibleSides;
 - (void)setCircleRadius:(double)arg1 centerAngle:(double)arg2 circleCenter:(struct CGPoint { double x1; double x2; })arg3 interior:(bool)arg4;
-- (void)setMaskImage:(id)arg1;
 - (void)setView:(id)arg1 forSideAtIndex:(unsigned long long)arg2;
 - (void)transitionToFraction:(double)arg1 fromSideAtIndex:(unsigned long long)arg2 toSideAtIndex:(unsigned long long)arg3;
 - (void)transitionToSideAtIndex:(unsigned long long)arg1;

@@ -5,14 +5,49 @@
 @interface GEOTransitDecoderData : PBCodable <NSCopying> {
     NSMutableArray * _accessPoints;
     NSMutableArray * _artworks;
+    struct { 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_accessPoints : 1; 
+        unsigned int read_artworks : 1; 
+        unsigned int read_halls : 1; 
+        unsigned int read_lines : 1; 
+        unsigned int read_stations : 1; 
+        unsigned int read_steps : 1; 
+        unsigned int read_stops : 1; 
+        unsigned int read_systems : 1; 
+        unsigned int read_transitIncidentMessages : 1; 
+        unsigned int read_transitIncidents : 1; 
+        unsigned int read_walkings : 1; 
+        unsigned int read_zilchPoints : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_accessPoints : 1; 
+        unsigned int wrote_artworks : 1; 
+        unsigned int wrote_halls : 1; 
+        unsigned int wrote_lines : 1; 
+        unsigned int wrote_stations : 1; 
+        unsigned int wrote_steps : 1; 
+        unsigned int wrote_stops : 1; 
+        unsigned int wrote_systems : 1; 
+        unsigned int wrote_transitIncidentMessages : 1; 
+        unsigned int wrote_transitIncidents : 1; 
+        unsigned int wrote_walkings : 1; 
+        unsigned int wrote_zilchPoints : 1; 
+    }  _flags;
     NSMutableArray * _halls;
     NSMutableArray * _lines;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     NSMutableArray * _stations;
     NSMutableArray * _steps;
     NSMutableArray * _stops;
     NSMutableArray * _systems;
     NSMutableArray * _transitIncidentMessages;
     NSMutableArray * _transitIncidents;
+    PBUnknownFields * _unknownFields;
     NSMutableArray * _walkings;
     NSMutableArray * _zilchPoints;
 }
@@ -27,12 +62,14 @@
 @property (nonatomic, retain) NSMutableArray *systems;
 @property (nonatomic, retain) NSMutableArray *transitIncidentMessages;
 @property (nonatomic, retain) NSMutableArray *transitIncidents;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic, retain) NSMutableArray *walkings;
 @property (nonatomic, retain) NSMutableArray *zilchPoints;
 
 + (Class)accessPointType;
 + (Class)artworkType;
 + (Class)hallType;
++ (bool)isValid:(id)arg1;
 + (Class)lineType;
 + (Class)stationType;
 + (Class)stepType;
@@ -44,6 +81,30 @@
 + (Class)zilchPointsType;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsAccessPoint:(id)arg1;
+- (void)_addNoFlagsArtwork:(id)arg1;
+- (void)_addNoFlagsHall:(id)arg1;
+- (void)_addNoFlagsLine:(id)arg1;
+- (void)_addNoFlagsStation:(id)arg1;
+- (void)_addNoFlagsStep:(id)arg1;
+- (void)_addNoFlagsStop:(id)arg1;
+- (void)_addNoFlagsSystem:(id)arg1;
+- (void)_addNoFlagsTransitIncident:(id)arg1;
+- (void)_addNoFlagsTransitIncidentMessage:(id)arg1;
+- (void)_addNoFlagsWalking:(id)arg1;
+- (void)_addNoFlagsZilchPoints:(id)arg1;
+- (void)_readAccessPoints;
+- (void)_readArtworks;
+- (void)_readHalls;
+- (void)_readLines;
+- (void)_readStations;
+- (void)_readSteps;
+- (void)_readStops;
+- (void)_readSystems;
+- (void)_readTransitIncidentMessages;
+- (void)_readTransitIncidents;
+- (void)_readWalkings;
+- (void)_readZilchPoints;
 - (id)accessPointAtIndex:(unsigned long long)arg1;
 - (id)accessPoints;
 - (unsigned long long)accessPointsCount;
@@ -73,6 +134,7 @@
 - (void)clearSystems;
 - (void)clearTransitIncidentMessages;
 - (void)clearTransitIncidents;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)clearWalkings;
 - (void)clearZilchPoints;
 - (void)copyTo:(id)arg1;
@@ -83,11 +145,14 @@
 - (id)halls;
 - (unsigned long long)hallsCount;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)lineAtIndex:(unsigned long long)arg1;
 - (id)lines;
 - (unsigned long long)linesCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAccessPoints:(id)arg1;
 - (void)setArtworks:(id)arg1;
@@ -119,6 +184,7 @@
 - (unsigned long long)transitIncidentMessagesCount;
 - (id)transitIncidents;
 - (unsigned long long)transitIncidentsCount;
+- (id)unknownFields;
 - (id)walkingAtIndex:(unsigned long long)arg1;
 - (id)walkings;
 - (unsigned long long)walkingsCount;

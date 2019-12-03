@@ -13,6 +13,7 @@
 
 - (void).cxx_destruct;
 - (id)customLabel;
+- (id)debugDescription;
 - (id)initWithContactAddressType:(int)arg1 customLabel:(id)arg2;
 - (id)initWithLabelType:(long long)arg1;
 - (id)initWithLabelType:(long long)arg1 customLabel:(id)arg2;

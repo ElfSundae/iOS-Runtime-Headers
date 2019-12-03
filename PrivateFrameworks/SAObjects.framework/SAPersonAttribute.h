@@ -36,8 +36,4 @@
 
 - (id)st_contactAddressValue;
 
-// Image: /System/Library/PrivateFrameworks/SiriClientFlow.framework/SiriClientFlow
-
-+ (id)personAttributeFromHandle:(id)arg1;
-
 @end

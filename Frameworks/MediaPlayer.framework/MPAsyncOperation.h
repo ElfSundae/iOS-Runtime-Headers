@@ -2,14 +2,20 @@
    Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
  */
 
-@interface MPAsyncOperation : NSOperation {
+@interface MPAsyncOperation : NSOperation <MPUserIdentityConsuming> {
     NSObject<OS_dispatch_queue> * _accessQueue;
     NSError * _error;
     bool  _isExecuting;
     bool  _isFinished;
+    ICUserIdentity * _userIdentity;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly, copy) NSError *error;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (nonatomic, copy) ICUserIdentity *userIdentity;
 
 - (void).cxx_destruct;
 - (id)error;
@@ -21,6 +27,8 @@
 - (bool)isConcurrent;
 - (bool)isExecuting;
 - (bool)isFinished;
+- (void)setUserIdentity:(id)arg1;
 - (void)start;
+- (id)userIdentity;
 
 @end

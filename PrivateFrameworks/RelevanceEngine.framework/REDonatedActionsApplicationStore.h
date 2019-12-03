@@ -6,6 +6,8 @@
     REUpNextScheduler * _applicationScheduler;
     NSMutableSet * _applications;
     REDonatedActionFilteredCache * _cache;
+    <REMLElementRanker> * _elementRanker;
+    RERelevanceEngine * _filteringEngine;
     NSObject<OS_dispatch_queue> * _queue;
     REUpNextScheduler * _scheduler;
 }
@@ -19,7 +21,7 @@
 - (void)_notify;
 - (void)_notifyApplicationsUpdates;
 - (void)_queue_loadApplicationsIfNeededWithCompletion:(id /* block */)arg1;
-- (bool)_shouldFilterDonation:(id)arg1 date:(id)arg2 location:(id)arg3;
+- (bool)_shouldFilterDonation:(id)arg1;
 - (void)_sortDonationsByCount:(id)arg1 completion:(id /* block */)arg2;
 - (void)donatedActionFilteredCacheCountDidChange;
 - (void)donatedActionFilteredCacheDidAddDonation:(id)arg1;
@@ -30,7 +32,8 @@
 - (void)fetchFirstPerformedActionDate:(id /* block */)arg1;
 - (void)fetchPerformedCountForAction:(id)arg1 completion:(id /* block */)arg2;
 - (void)fetchPerformedTodayCountForActionWithBundleIdentifer:(id)arg1 actionIdentifier:(unsigned long long)arg2 completion:(id /* block */)arg3;
-- (void)fetchTopDonationsForApplications:(id)arg1 fromOnlyRecentPlatform:(bool)arg2 currentDate:(id)arg3 currentLocation:(id)arg4 block:(id /* block */)arg5;
+- (void)fetchTopDonationsForApplications:(id)arg1 fromOnlyRecentPlatform:(bool)arg2 block:(id /* block */)arg3;
 - (id)init;
+- (id)initWithLocationManager:(id)arg1;
 
 @end

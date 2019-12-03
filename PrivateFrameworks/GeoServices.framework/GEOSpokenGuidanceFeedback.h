@@ -4,9 +4,9 @@
 
 @interface GEOSpokenGuidanceFeedback : PBCodable <NSCopying> {
     struct { 
-        unsigned int spokenGuidanceIndex : 1; 
-        unsigned int shortPrompt : 1; 
-    }  _has;
+        unsigned int has_spokenGuidanceIndex : 1; 
+        unsigned int has_shortPrompt : 1; 
+    }  _flags;
     bool  _shortPrompt;
     int  _spokenGuidanceIndex;
 }
@@ -15,6 +15,8 @@
 @property (nonatomic) bool hasSpokenGuidanceIndex;
 @property (nonatomic) bool shortPrompt;
 @property (nonatomic) int spokenGuidanceIndex;
+
++ (bool)isValid:(id)arg1;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -25,6 +27,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasShortPrompt:(bool)arg1;
 - (void)setHasSpokenGuidanceIndex:(bool)arg1;

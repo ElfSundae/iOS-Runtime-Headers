@@ -3,7 +3,7 @@
  */
 
 @interface EDBuildableFormula : NSObject <EDFormulaBuilding> {
-    struct EDBuildablePtg { int (**x1)(); char *x2; int x3; unsigned int x4; unsigned short x5; struct EDBuildablePtg {} *x6; struct EDBuildablePtg {} *x7; struct EDBuildablePtg {} *x8; bool x9; int x10; unsigned short x11; unsigned short x12; } * mTree;
+    struct EDBuildablePtg { int (**x1)(); char *x2; int x3; unsigned int x4; unsigned short x5; struct EDBuildablePtg {} *x6; struct EDBuildablePtg {} *x7; struct EDBuildablePtg {} *x8; struct EDBuildablePtg {} *x9; bool x10; int x11; unsigned short x12; unsigned short x13; } * mTree;
     int  mWarning;
 }
 
@@ -21,14 +21,14 @@
 - (bool)convertLastRefsToArea;
 - (bool)convertRefs:(unsigned int)arg1 toType:(int)arg2;
 - (bool)convertRefs:(unsigned int)arg1 toTypes:(int*)arg2;
-- (void)convertRefsInList:(struct EDBuildablePtg { int (**x1)(); char *x2; int x3; unsigned int x4; unsigned short x5; struct EDBuildablePtg {} *x6; struct EDBuildablePtg {} *x7; struct EDBuildablePtg {} *x8; bool x9; int x10; unsigned short x11; unsigned short x12; }*)arg1 toType:(int)arg2;
+- (void)convertRefsInList:(struct EDBuildablePtg { int (**x1)(); char *x2; int x3; unsigned int x4; unsigned short x5; struct EDBuildablePtg {} *x6; struct EDBuildablePtg {} *x7; struct EDBuildablePtg {} *x8; struct EDBuildablePtg {} *x9; bool x10; int x11; unsigned short x12; unsigned short x13; }*)arg1 toType:(int)arg2;
 - (bool)convertToIntersect:(unsigned int)arg1;
 - (bool)convertToList:(unsigned int)arg1;
 - (bool)convertToList:(unsigned int)arg1 withFinalParen:(bool)arg2;
 - (void)copyToFormula:(id)arg1;
 - (bool)copyToken:(unsigned int)arg1 from:(id)arg2;
 - (void)dealloc;
-- (bool)fixTableOfConstantsRef:(struct EDBuildablePtg { int (**x1)(); char *x2; int x3; unsigned int x4; unsigned short x5; struct EDBuildablePtg {} *x6; struct EDBuildablePtg {} *x7; struct EDBuildablePtg {} *x8; bool x9; int x10; unsigned short x11; unsigned short x12; }*)arg1;
+- (bool)fixTableOfConstantsRef:(struct EDBuildablePtg { int (**x1)(); char *x2; int x3; unsigned int x4; unsigned short x5; struct EDBuildablePtg {} *x6; struct EDBuildablePtg {} *x7; struct EDBuildablePtg {} *x8; struct EDBuildablePtg {} *x9; bool x10; int x11; unsigned short x12; unsigned short x13; }*)arg1;
 - (bool)fixTableOfConstantsRefs;
 - (id)formula;
 - (bool)insertExternalName:(unsigned long long)arg1 withLink:(unsigned long long)arg2 atIndex:(unsigned int)arg3;
@@ -47,11 +47,11 @@
 - (void)replaceStringInStringTokenAtIndex:(unsigned long long)arg1 content:(id)arg2;
 - (char *)setExtendedDataForLastTokenAtIndex:(unsigned int)arg1 length:(unsigned int)arg2;
 - (void)setWarning:(int)arg1;
-- (bool)shrinkSpanningRef:(struct EDBuildablePtg { int (**x1)(); char *x2; int x3; unsigned int x4; unsigned short x5; struct EDBuildablePtg {} *x6; struct EDBuildablePtg {} *x7; struct EDBuildablePtg {} *x8; bool x9; int x10; unsigned short x11; unsigned short x12; }*)arg1;
+- (bool)shrinkSpanningRef:(struct EDBuildablePtg { int (**x1)(); char *x2; int x3; unsigned int x4; unsigned short x5; struct EDBuildablePtg {} *x6; struct EDBuildablePtg {} *x7; struct EDBuildablePtg {} *x8; struct EDBuildablePtg {} *x9; bool x10; int x11; unsigned short x12; unsigned short x13; }*)arg1;
 - (bool)shrinkSpanningRefAtArgIndex:(unsigned int)arg1;
 - (id)stringFromStringTokenAtIndex:(unsigned long long)arg1;
-- (struct EDBuildablePtg { int (**x1)(); char *x2; int x3; unsigned int x4; unsigned short x5; struct EDBuildablePtg {} *x6; struct EDBuildablePtg {} *x7; struct EDBuildablePtg {} *x8; bool x9; int x10; unsigned short x11; unsigned short x12; }*)tokenAtIndex:(unsigned long long)arg1;
-- (struct EDBuildablePtg { int (**x1)(); char *x2; int x3; unsigned int x4; unsigned short x5; struct EDBuildablePtg {} *x6; struct EDBuildablePtg {} *x7; struct EDBuildablePtg {} *x8; bool x9; int x10; unsigned short x11; unsigned short x12; }*)tokenAtIndex:(unsigned long long)arg1 previousToken:(struct EDBuildablePtg {}**)arg2;
+- (struct EDBuildablePtg { int (**x1)(); char *x2; int x3; unsigned int x4; unsigned short x5; struct EDBuildablePtg {} *x6; struct EDBuildablePtg {} *x7; struct EDBuildablePtg {} *x8; struct EDBuildablePtg {} *x9; bool x10; int x11; unsigned short x12; unsigned short x13; }*)tokenAtIndex:(unsigned long long)arg1;
+- (struct EDBuildablePtg { int (**x1)(); char *x2; int x3; unsigned int x4; unsigned short x5; struct EDBuildablePtg {} *x6; struct EDBuildablePtg {} *x7; struct EDBuildablePtg {} *x8; struct EDBuildablePtg {} *x9; bool x10; int x11; unsigned short x12; unsigned short x13; }*)tokenAtIndex:(unsigned long long)arg1 previousToken:(struct EDBuildablePtg {}**)arg2;
 - (int)tokenTypeAtIndex:(unsigned long long)arg1;
 - (bool)uppercaseArgAtIndex:(unsigned int)arg1;
 - (int)warningType;

@@ -12,8 +12,8 @@
 
 + (id)mappingInfoWithSheetName:(id)arg1;
 
+- (void).cxx_destruct;
 - (int)columnOffset;
-- (void)dealloc;
 - (id)initWithSheetName:(id)arg1;
 - (int)rowOffset;
 - (id)sheetName;

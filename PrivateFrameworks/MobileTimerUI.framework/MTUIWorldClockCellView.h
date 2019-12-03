@@ -4,7 +4,6 @@
 
 @interface MTUIWorldClockCellView : UIView <MTClock> {
     UILabel * _combinedLabel;
-    NSArray * _currentConstraints;
     <MTUIWorldClockCellViewDelegate> * _delegate;
     MTUIDigitalClockLabel * _digitalClock;
     bool  _editing;
@@ -16,7 +15,6 @@
 }
 
 @property (nonatomic, readonly) UILabel *combinedLabel;
-@property (nonatomic, retain) NSArray *currentConstraints;
 @property (nonatomic) <MTUIWorldClockCellViewDelegate> *delegate;
 @property (nonatomic, readonly) MTUIDigitalClockLabel *digitalClock;
 @property (nonatomic, readonly) UILabel *nameLabel;
@@ -31,7 +29,6 @@
 - (void)_configureFonts;
 - (double)coarseUpdateInterval;
 - (id)combinedLabel;
-- (id)currentConstraints;
 - (id)delegate;
 - (id)digitalClock;
 - (void)handleTextSizeChange:(id)arg1;
@@ -40,7 +37,6 @@
 - (void)localeChange:(id)arg1;
 - (id)nameLabel;
 - (long long)runMode;
-- (void)setCurrentConstraints:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setEditing:(bool)arg1 animated:(bool)arg2;
 - (void)setShouldStackViews:(bool)arg1;

@@ -6,6 +6,7 @@
 
 - (void)_doOneIteration;
 - (void)launch;
+- (void)taskDidFinishWithError:(id)arg1;
 - (id)taskIdentifier;
 
 @end

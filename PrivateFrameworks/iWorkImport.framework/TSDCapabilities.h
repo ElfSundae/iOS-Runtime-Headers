@@ -18,6 +18,8 @@
 @property (nonatomic, readonly) long long renderer;
 
 + (id)currentCapabilities;
++ (id)currentCapabilitiesOverride;
++ (void)setCurrentCapabilitiesOverride:(id)arg1;
 
 - (long long)device;
 - (bool)hasLightningPort;
@@ -25,6 +27,7 @@
 - (bool)isRendererH3OrBelow;
 - (bool)isRendererH4OrBelow;
 - (bool)isRendererH5OrBelow;
+- (struct CGSize { double x1; double x2; })maximumHardcodedTextureSize;
 - (struct CGSize { double x1; double x2; })maximumTextureSize;
 - (void)p_setupDevice;
 - (void)p_setupPlatform;

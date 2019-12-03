@@ -5,6 +5,8 @@
 @interface MTLIOAccelComputeCommandEncoder : MTLIOAccelCommandEncoder
 
 - (void)bindEmulationArguments;
+- (void)executeCommandsInBuffer:(id)arg1 indirectBuffer:(id)arg2 indirectBufferOffset:(unsigned long long)arg3;
+- (void)executeCommandsInBuffer:(id)arg1 withRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (void*)getBufferContentsAtIndex:(unsigned long long)arg1;
 - (id)getComputePipelineState;
 - (unsigned long long)getType;

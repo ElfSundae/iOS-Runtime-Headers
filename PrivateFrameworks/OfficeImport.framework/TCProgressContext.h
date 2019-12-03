@@ -28,6 +28,7 @@
 + (void)setProgress:(double)arg1;
 + (id)stageForCurrentThread;
 
+- (void).cxx_destruct;
 - (id)currentStage;
 - (void)dealloc;
 - (id)initWithParentContext:(id)arg1;

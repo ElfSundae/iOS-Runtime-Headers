@@ -41,9 +41,9 @@
 + (id)labelDetailStringAttributes;
 + (id)regularTitleStringAttributes;
 
+- (void).cxx_destruct;
 - (id)activeConstraints;
 - (void)animateSnapshotOfLabel:(id)arg1 withBlock:(id /* block */)arg2;
-- (void)dealloc;
 - (id)detailLabel;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (id)recipient;

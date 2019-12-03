@@ -72,6 +72,7 @@
 - (id)currentHelpTopicItemForTableOfContentViewController:(id)arg1;
 - (void)dealloc;
 - (id)delegate;
+- (id)deviceFamily;
 - (void)dismiss;
 - (void)displayHelpBookWithLocale:(id)arg1;
 - (bool)displayHelpTopicsOnly;
@@ -134,8 +135,10 @@
 - (void)tableOfContentViewController:(id)arg1 showHelpTopicItem:(id)arg2;
 - (void)tableOfContentViewControllerShowHelpBookInfo:(id)arg1;
 - (id)topicIDForTopicName:(id)arg1 locale:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateCacheControllerToLanguageCode:(id)arg1;
 - (void)updateChildViewConstraints;
+- (void)updateDarkMode;
 - (void)updateDoneButton;
 - (void)updateLastLoadVersion;
 - (void)updateTOCButton;

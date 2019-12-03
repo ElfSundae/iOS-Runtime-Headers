@@ -5,6 +5,5 @@
 @interface VCPCNNPoolingBlockVector : VCPCNNPoolingBlock
 
 - (int)forward;
-- (int)initializeRest;
 
 @end

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CoreSpeech.framework/CoreSpeech
  */
 
-@interface CSSmartSiriVolume : NSObject <CSAlarmMonitorDelegate, CSMediaPlayingMonitorDelegate, CSSpeechManagerDelegate, CSTimerMonitorDelegate, CSVoiceTriggerDelegate> {
+@interface CSSmartSiriVolume : NSObject <CSAlarmMonitorDelegate, CSAudioServerCrashMonitorDelegate, CSAudioStreamProvidingDelegate, CSMediaPlayingMonitorDelegate, CSSiriClientBehaviorMonitorDelegate, CSSiriEnabledMonitorDelegate, CSTimerMonitorDelegate, CSVoiceTriggerDelegate, CSVolumeMonitorDelegate> {
     unsigned long long  _LKFSChannelBitset;
     unsigned int  _LKFSLowerPercentile;
     float  _LKFSMicSensitivityOffset;
@@ -16,6 +16,7 @@
     float  _TTSVolumeUpperLimitDB;
     bool  _alarmSoundIsFiring;
     float  _alarmVolume;
+    CSAudioStream * _audioStream;
     CSAsset * _currentAsset;
     NSUserDefaults * _defaults;
     <CSSmartSiriVolumeDelegate> * _delegate;
@@ -27,7 +28,10 @@
             float *__value_; 
         } __end_cap_; 
     }  _floatBuffer;
+    bool  _isListenPollingStarting;
     bool  _isStartSampleCountMarked;
+    NSObject<OS_dispatch_source> * _listenPollingTimer;
+    long long  _listenPollingTimerCount;
     bool  _mediaIsPlaying;
     float  _musicVolumeDB;
     unsigned long long  _noiseLevelChannelBitset;
@@ -64,16 +68,21 @@
     float  _userOffsetOutputRangeLow;
 }
 
+@property (nonatomic, retain) CSAudioStream *audioStream;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <CSSmartSiriVolumeDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, retain) NSObject<OS_dispatch_source> *listenPollingTimer;
+@property (nonatomic) long long listenPollingTimerCount;
 @property (readonly) Class superclass;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)CSAlarmMonitor:(id)arg1 didReceiveAlarmChanged:(long long)arg2;
+- (void)CSAudioServerCrashMonitorDidReceiveServerRestart:(id)arg1;
 - (void)CSMediaPlayingMonitor:(id)arg1 didReceiveMediaPlayingChanged:(long long)arg2;
+- (void)CSSiriEnabledMonitor:(id)arg1 didReceiveEnabled:(bool)arg2;
 - (void)CSTimerMonitor:(id)arg1 didReceiveTimerChanged:(long long)arg2;
 - (void)CSVolumeMonitor:(id)arg1 didReceiveAlarmVolumeChanged:(float)arg2;
 - (void)CSVolumeMonitor:(id)arg1 didReceiveMusicVolumeChanged:(float)arg2;
@@ -91,6 +100,14 @@
 - (void)_setAsset:(id)arg1;
 - (void)_setDefaultParameters;
 - (void)_setStartAnalyzeTime:(unsigned long long)arg1;
+- (void)_startListenPolling;
+- (void)_startListenPollingWithInterval:(double)arg1 completion:(id /* block */)arg2;
+- (void)_startListenWithCompletion:(id /* block */)arg1;
+- (void)_stopListening;
+- (id)audioStream;
+- (void)audioStreamProvider:(id)arg1 audioBufferAvailable:(id)arg2;
+- (void)audioStreamProvider:(id)arg1 audioChunkForTVAvailable:(id)arg2;
+- (void)audioStreamProvider:(id)arg1 didStopStreamUnexpectly:(long long)arg2;
 - (id)delegate;
 - (float)estimateSoundLevelbySoundType:(long long)arg1;
 - (float)estimatedTTSVolumeForNoiseLevelAndLKFS:(float)arg1 LKFS:(float)arg2;
@@ -99,14 +116,19 @@
 - (void)initializeAlarmState;
 - (void)initializeMediaPlayingState;
 - (void)initializeTimerState;
+- (id)listenPollingTimer;
+- (long long)listenPollingTimerCount;
 - (void)prepareSoundLevelBufferFromSamples:(id)arg1 soundType:(long long)arg2 firedVoiceTriggerEvent:(bool)arg3 triggerStartTimeSampleOffset:(unsigned long long)arg4 triggerEndTimeSampleOffset:(unsigned long long)arg5;
 - (void)reset;
 - (void)setAsset:(id)arg1;
+- (void)setAudioStream:(id)arg1;
 - (void)setDelegate:(id)arg1;
-- (void)speechManagerDidStartForwarding:(id)arg1 successfully:(bool)arg2 error:(id)arg3;
-- (void)speechManagerDidStopForwarding:(id)arg1 forReason:(long long)arg2;
-- (void)speechManagerLPCMRecordBufferAvailable:(id)arg1 chunk:(id)arg2;
-- (void)speechManagerRecordBufferAvailable:(id)arg1 buffer:(id)arg2;
+- (void)setListenPollingTimer:(id)arg1;
+- (void)setListenPollingTimerCount:(long long)arg1;
+- (void)siriClientBehaviorMonitor:(id)arg1 didStartStreamWithContext:(id)arg2 successfully:(bool)arg3 option:(id)arg4;
+- (void)siriClientBehaviorMonitor:(id)arg1 didStopStream:(id)arg2;
+- (void)siriClientBehaviorMonitor:(id)arg1 willStartStreamWithContext:(id)arg2 option:(id)arg3;
+- (void)siriClientBehaviorMonitor:(id)arg1 willStopStream:(id)arg2;
 - (void)startSmartSiriVolume;
 - (void)voiceTriggerDidDetectKeyword:(id)arg1 deviceId:(id)arg2;
 

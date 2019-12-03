@@ -4,7 +4,7 @@
 
 @interface SearchUIImagesCardSectionView : SearchUICardSectionView
 
-@property (retain) TLKImagesView *contentView;
+@property (nonatomic, retain) TLKImagesView *contentView;
 
 + (bool)supportsRecyclingForCardSection:(id)arg1;
 

@@ -20,6 +20,7 @@
 - (void)_activateStateWithIdentifier:(id)arg1;
 - (void)_backGestureFired:(id)arg1;
 - (id)_stateWithIdentifier:(id)arg1;
+- (void)_viewDidLoad;
 - (id)backGestureRecognizer;
 - (id)initWithVoiceTemplate:(id)arg1 templateDelegate:(id)arg2;
 - (double)lastVoiceTemplateStateChangeTime;
@@ -28,7 +29,6 @@
 - (void)setTitleView:(id)arg1;
 - (id)titleView;
 - (void)viewDidAppear:(bool)arg1;
-- (void)viewDidLoad;
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;
 - (id)voiceTemplate;

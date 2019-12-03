@@ -3,6 +3,7 @@
  */
 
 @interface MTLDebugSharedEvent : MTLToolsSharedEvent {
+    bool  _isStandardEvent;
     struct mutex { 
         struct _opaque_pthread_mutex_t { 
             long long __sig; 
@@ -37,6 +38,8 @@
     NSMapTable * _valueToResourcesMap;
 }
 
+@property (nonatomic) bool isStandardEvent;
+
 + (id)sharedListener;
 
 - (id).cxx_construct;
@@ -44,9 +47,11 @@
 - (void)_retainWritableResourcesForValue:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)initWithBaseObject:(id)arg1 parent:(id)arg2;
+- (bool)isStandardEvent;
 - (void)releaseWritableResourcesForValue:(unsigned long long)arg1;
 - (id)removeWritableResourcesForValue:(unsigned long long)arg1;
 - (void)retainWritableResourcesForValue:(unsigned long long)arg1;
+- (void)setIsStandardEvent:(bool)arg1;
 - (void)setSignaledValue:(unsigned long long)arg1;
 - (void)setWritableResources:(id)arg1 forValue:(unsigned long long)arg2;
 

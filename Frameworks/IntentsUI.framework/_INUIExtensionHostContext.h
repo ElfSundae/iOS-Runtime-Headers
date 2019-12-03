@@ -21,5 +21,6 @@
 - (void)requestHandlingOfIntent:(id)arg1;
 - (void)setExtensionContextState:(id)arg1 completion:(id /* block */)arg2;
 - (void)setExtensionHostContextDelegate:(id)arg1;
+- (void)willBeginEditing;
 
 @end

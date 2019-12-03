@@ -13,7 +13,7 @@
     NSArray * _feedItems;
     id /* block */  _feedItemsChangedHandler;
     unsigned long long  _maxNumberOfFeedsToQuery;
-    FCFeedPersonalizedItems * _nonEditorialPersonalizedArticles;
+    NSMapTable * _nonEditorialScoreProfiles;
     unsigned long long  _perFeedLimit;
     bool  _streamFeedItems;
 }
@@ -29,7 +29,7 @@
 @property (nonatomic, copy) id /* block */ feedItemsChangedHandler;
 @property (nonatomic) unsigned long long maxNumberOfFeedsToQuery;
 @property (readonly, copy) NSArray *nonEditorialFeedItems;
-@property (retain) FCFeedPersonalizedItems *nonEditorialPersonalizedArticles;
+@property (retain) NSMapTable *nonEditorialScoreProfiles;
 @property (nonatomic) unsigned long long perFeedLimit;
 @property (nonatomic) bool streamFeedItems;
 
@@ -48,7 +48,7 @@
 - (id)init;
 - (unsigned long long)maxNumberOfFeedsToQuery;
 - (id)nonEditorialFeedItems;
-- (id)nonEditorialPersonalizedArticles;
+- (id)nonEditorialScoreProfiles;
 - (void)operationWillFinishWithError:(id)arg1;
 - (unsigned long long)perFeedLimit;
 - (void)performOperation;
@@ -62,7 +62,7 @@
 - (void)setFeedItems:(id)arg1;
 - (void)setFeedItemsChangedHandler:(id /* block */)arg1;
 - (void)setMaxNumberOfFeedsToQuery:(unsigned long long)arg1;
-- (void)setNonEditorialPersonalizedArticles:(id)arg1;
+- (void)setNonEditorialScoreProfiles:(id)arg1;
 - (void)setPerFeedLimit:(unsigned long long)arg1;
 - (void)setStreamFeedItems:(bool)arg1;
 - (bool)streamFeedItems;

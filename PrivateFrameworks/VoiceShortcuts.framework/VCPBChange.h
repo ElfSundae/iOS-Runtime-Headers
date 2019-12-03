@@ -2,23 +2,16 @@
    Image: /System/Library/PrivateFrameworks/VoiceShortcuts.framework/VoiceShortcuts
  */
 
-@interface VCPBChange : PBCodable <NSCopying, SYChange> {
+@interface VCPBChange : PBCodable <NSCopying> {
     int  _changeType;
     NSData * _message;
     int  _messageType;
     NSString * _uniqueID;
 }
 
-@property (nonatomic, readonly) long long changeType;
 @property (nonatomic) int changeType;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSData *message;
 @property (nonatomic) int messageType;
-@property (nonatomic, readonly) NSString *objectIdentifier;
-@property (nonatomic, readonly) NSString *sequencer;
-@property (readonly) Class superclass;
 @property (nonatomic, retain) NSString *uniqueID;
 
 - (void).cxx_destruct;
@@ -31,15 +24,12 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
-- (id)initWithVoiceShortcutChange:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)message;
 - (int)messageType;
 - (id)messageTypeAsString:(int)arg1;
-- (id)objectIdentifier;
 - (bool)readFrom:(id)arg1;
-- (id)sequencer;
 - (void)setChangeType:(int)arg1;
 - (void)setMessage:(id)arg1;
 - (void)setMessageType:(int)arg1;

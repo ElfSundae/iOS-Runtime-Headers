@@ -3,16 +3,19 @@
  */
 
 @interface VUIFeaturesConfiguration : NSObject {
+    VUIAutoPlayConfig * _autoPlayConfig;
     VUINowPlayingConfig * _nowPlayingConfig;
     VUIPostPlayConfig * _postPlayConfig;
 }
 
+@property (nonatomic, readonly) VUIAutoPlayConfig *autoPlayConfig;
 @property (nonatomic, readonly) VUINowPlayingConfig *nowPlayingConfig;
 @property (nonatomic, readonly) VUIPostPlayConfig *postPlayConfig;
 
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
+- (id)autoPlayConfig;
 - (id)init;
 - (id)nowPlayingConfig;
 - (id)postPlayConfig;

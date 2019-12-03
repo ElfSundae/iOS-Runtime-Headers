@@ -9,6 +9,4 @@
 @property (nonatomic, readonly) struct _SXConvertibleValue { double x1; unsigned long long x2; } minimumHeight;
 @property (nonatomic, readonly) struct _SXConvertibleValue { double x1; unsigned long long x2; } minimumWidth;
 
-+ (id)typeString;
-
 @end

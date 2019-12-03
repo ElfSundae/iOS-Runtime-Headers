@@ -10,6 +10,7 @@
 @property (readonly) bool includeCalendarServers;
 @property (readonly) bool includeContacts;
 @property (readonly) bool includeDirectoryServers;
+@property (readonly) bool includeLocalExtensions;
 @property (readonly) bool includePredictions;
 @property (readonly) bool includeRecents;
 @property (readonly) bool includeSuggestions;
@@ -19,6 +20,7 @@
 - (bool)includeCalendarServers;
 - (bool)includeContacts;
 - (bool)includeDirectoryServers;
+- (bool)includeLocalExtensions;
 - (bool)includePredictions;
 - (bool)includeRecents;
 - (bool)includeSuggestions;

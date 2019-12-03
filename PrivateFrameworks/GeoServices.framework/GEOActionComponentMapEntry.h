@@ -5,8 +5,8 @@
 @interface GEOActionComponentMapEntry : PBCodable <NSCopying> {
     int  _actionComponent;
     struct { 
-        unsigned int actionComponent : 1; 
-    }  _has;
+        unsigned int has_actionComponent : 1; 
+    }  _flags;
     struct { 
         int *list; 
         unsigned long long count; 
@@ -18,6 +18,8 @@
 @property (nonatomic) bool hasActionComponent;
 @property (nonatomic, readonly) int*placeDataComponents;
 @property (nonatomic, readonly) unsigned long long placeDataComponentsCount;
+
++ (bool)isValid:(id)arg1;
 
 - (int)StringAsActionComponent:(id)arg1;
 - (int)actionComponent;
@@ -36,6 +38,7 @@
 - (int*)placeDataComponents;
 - (int)placeDataComponentsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)placeDataComponentsCount;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setActionComponent:(int)arg1;
 - (void)setHasActionComponent:(bool)arg1;

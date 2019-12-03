@@ -52,6 +52,7 @@
 - (id)initWithLanguageCode:(id)arg1 gender:(long long)arg2 isCustom:(bool)arg3 name:(id)arg4 footprint:(long long)arg5 contentVersion:(id)arg6 masteredVersion:(id)arg7;
 - (bool)isCustom;
 - (bool)isEqual:(id)arg1;
+- (bool)isLanguageAndGenderEqual:(id)arg1;
 - (bool)isMatchForVoiceAsset:(id)arg1;
 - (bool)isValidForSiriSessionLanguage:(id)arg1;
 - (id)languageCode;

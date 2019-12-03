@@ -9,10 +9,10 @@
     int  mTransferMode2;
 }
 
+- (void).cxx_destruct;
 - (id)color1;
 - (id)color2;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (unsigned long long)hash;
 - (id)init;
 - (bool)isEqual:(id)arg1;

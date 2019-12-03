@@ -15,7 +15,6 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) int headerType;
 @property (nonatomic, readonly) NSData *jsonData;
-@property (nonatomic, readonly) bool requiresQueryId;
 @property (nonatomic, copy) NSString *sectionId;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long timestamp;
@@ -31,7 +30,6 @@
 - (bool)isEqual:(id)arg1;
 - (id)jsonData;
 - (bool)readFrom:(id)arg1;
-- (bool)requiresQueryId;
 - (id)sectionId;
 - (void)setHeaderType:(int)arg1;
 - (void)setSectionId:(id)arg1;

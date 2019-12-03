@@ -27,7 +27,7 @@
 @property (nonatomic, retain) id userInfo;
 @property (nonatomic) unsigned int writeBufferSize;
 
-+ (id)createBoundPair:(/* Warning: unhandled array encoding: '[2@]' */ id)arg1;
++ (id)createBoundPair:(id)arg1;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;

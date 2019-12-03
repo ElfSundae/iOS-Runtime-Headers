@@ -10,9 +10,10 @@
     long long  __styleToPlayWhenReady;
     NSDate * __vitalityTimeoutDate;
     long long  _currentPlaybackStyle;
-    int  _fadeInRequestID;
+    _Atomic int  _fadeInRequestID;
     bool  _hinting;
     bool  _immediatelyShowsPhotoWhenPlaybackEnds;
+    bool  _isAttemptingToPlayback;
     struct { 
         bool scale; 
         bool apertureMode; 
@@ -58,6 +59,7 @@
 @property (readonly) unsigned long long hash;
 @property (getter=isHinting, setter=_setHinting:, nonatomic) bool hinting;
 @property (nonatomic) bool immediatelyShowsPhotoWhenPlaybackEnds;
+@property (setter=_setIsAttemptingToPlayback:, nonatomic) bool isAttemptingToPlayback;
 @property (getter=isPlaybackAllowed, nonatomic) bool playbackAllowed;
 @property (nonatomic, readonly) NSSet *playbackFilters;
 @property (getter=isPlayingVitality, setter=_setPlayingVitality:, nonatomic) bool playingVitality;
@@ -85,6 +87,7 @@
 - (void)_resetPlaybackFilters;
 - (void)_setCurrentPlaybackStyle:(long long)arg1;
 - (void)_setHinting:(bool)arg1;
+- (void)_setIsAttemptingToPlayback:(bool)arg1;
 - (void)_setPlayingVitality:(bool)arg1;
 - (void)_setSettleAutomaticallyWhenReady:(bool)arg1;
 - (void)_setShouldPlayVitalityWhenReady:(bool)arg1;
@@ -109,12 +112,14 @@
 - (void)didPerformChanges;
 - (bool)immediatelyShowsPhotoWhenPlaybackEnds;
 - (id)init;
+- (bool)isAttemptingToPlayback;
 - (bool)isHinting;
 - (bool)isPlaybackAllowed;
 - (bool)isPlayingVitality;
 - (double)lastAppliedScale;
 - (void)livePhotoPlaybackBehaviorDidBeginPlaying:(id)arg1;
 - (void)livePhotoPlaybackBehaviorDidFinish:(id)arg1;
+- (void)livePhotoPlaybackBehaviorWillTransitionToPhoto:(id)arg1;
 - (void)livePhotoSettleBehaviorDidFinish:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void*)arg3;
 - (void)playHintWhenReady;
@@ -126,6 +131,7 @@
 - (void)removePlaybackFilter:(id)arg1;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })seekTime;
 - (void)setImmediatelyShowsPhotoWhenPlaybackEnds:(bool)arg1;
+- (void)setIsAttemptingToPlayback:(bool)arg1;
 - (void)setPlaybackAllowed:(bool)arg1;
 - (void)setSeekTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 completion:(id /* block */)arg2;
 - (void)setTargetReadiness:(long long)arg1;

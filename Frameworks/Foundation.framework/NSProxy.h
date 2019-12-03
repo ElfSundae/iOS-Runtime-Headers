@@ -124,4 +124,12 @@
 
 - (bool)__isSingletonProxy__im;
 
+// Image: /System/Library/PrivateFrameworks/WorkflowUI.framework/WorkflowUI
+
+- (void)pop_addAnimation:(id)arg1 forKey:(id)arg2;
+- (id)pop_animationForKey:(id)arg1;
+- (id)pop_animationKeys;
+- (void)pop_removeAllAnimations;
+- (void)pop_removeAnimationForKey:(id)arg1;
+
 @end

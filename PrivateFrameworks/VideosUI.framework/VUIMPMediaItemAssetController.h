@@ -22,7 +22,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSObject<VUIMediaEntityIdentifier> *mediaEntityIdentifier;
 @property (nonatomic, readonly, copy) VUIMediaEntityType *mediaEntityType;
-@property (nonatomic, retain) MPMediaItem *mediaItem;
+@property (nonatomic, readonly) MPMediaItem *mediaItem;
 @property (getter=isRequestingPermissionToDownload, nonatomic) bool requestingPermissionToDownload;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *serialProcessingDispatchQueue;
 @property (nonatomic, readonly, copy) VUIMediaEntityAssetControllerState *state;
@@ -35,7 +35,6 @@
 - (void).cxx_destruct;
 - (void)_enqueueAsyncProcessingQueueStrongSelfBlock:(id /* block */)arg1;
 - (void)_enqueueCompletionQueueBlock:(id /* block */)arg1;
-- (void)_handleMediaItemAssetControllerStateDidChangeNotification:(id)arg1;
 - (void)_handleMediaLibraryContentsDidChangeNotification:(id)arg1;
 - (bool)_isDownloaded;
 - (void)_notifyDelegateStateDidChange:(id)arg1;
@@ -49,7 +48,6 @@
 - (void)_onProcessingQueue_startMonitoringDownload;
 - (void)_onProcessingQueue_updateStateWithStatus:(unsigned long long)arg1 downloadProgress:(double)arg2 bytesDownloaded:(unsigned long long)arg3 bytesToDownload:(unsigned long long)arg4 supportsPausing:(bool)arg5 supportsCancellation:(bool)arg6 notify:(bool)arg7;
 - (void)_onProcessingQueue_updateStateWithStatus:(unsigned long long)arg1 notify:(bool)arg2;
-- (void)_postStateDidChangeNotificationWithFromState:(id)arg1 toState:(id)arg2;
 - (void)cancelAndRemoveDownload;
 - (id)completionDispatchQueue;
 - (void)dealloc;
@@ -71,7 +69,6 @@
 - (void)setDelegate:(id)arg1;
 - (void)setDownloadController:(id)arg1;
 - (void)setMediaEntityIdentifier:(id)arg1;
-- (void)setMediaItem:(id)arg1;
 - (void)setRequestingPermissionToDownload:(bool)arg1;
 - (void)setSerialProcessingDispatchQueue:(id)arg1;
 - (void)startDownloadWithCompletion:(id /* block */)arg1;

@@ -5,9 +5,11 @@
 @interface PLComputedAssetAttributes : PLManagedObject
 
 @property (nonatomic, retain) PLManagedAsset *asset;
+@property (nonatomic) float behavioralScore;
 @property (nonatomic) float failureScore;
 @property (nonatomic) float harmoniousColorScore;
 @property (nonatomic) float immersivenessScore;
+@property (nonatomic) float interactionScore;
 @property (nonatomic) float interestingSubjectScore;
 @property (nonatomic) float intrusiveObjectPresenceScore;
 @property (nonatomic) float livelyColorScore;
@@ -29,5 +31,7 @@
 
 + (id)entityName;
 + (id)fetchRequest;
+
+- (void)setPropertiesFromImageAestheticsObservation:(id)arg1;
 
 @end

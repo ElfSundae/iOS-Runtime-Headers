@@ -30,6 +30,7 @@
 @property (nonatomic, readonly) NSDictionary *dictionaryRepresentation;
 @property (nonatomic) bool disableAliasValidation;
 @property (nonatomic) bool disallowRefresh;
+@property (nonatomic, retain) NSNumber *dropMessageIndicatorCommand;
 @property (nonatomic, retain) NSArray *duetIdentifiersOverride;
 @property (nonatomic) bool encryptPayload;
 @property (nonatomic) bool enforceRemoteTimeouts;
@@ -56,6 +57,7 @@
 @property (nonatomic, retain) NSString *metricReportIdentifier;
 @property (nonatomic) bool nonCloudWaking;
 @property (nonatomic) bool nonWaking;
+@property (nonatomic, retain) NSNumber *originalTimestamp;
 @property (nonatomic, retain) NSString *originalfromID;
 @property (nonatomic, retain) NSString *peerResponseIdentifier;
 @property (nonatomic) long long priority;
@@ -67,12 +69,14 @@
 @property (nonatomic) bool requireLocalWiFi;
 @property (nonatomic, retain) NSDictionary *resourceMetadata;
 @property (nonatomic, retain) NSString *resourcePath;
+@property (nonatomic) bool sessionForceInternetInvitation;
 @property (nonatomic, retain) NSString *sessionID;
 @property (nonatomic, retain) NSString *subService;
 @property (nonatomic, retain) NSString *subServiceAccountUUID;
 @property (nonatomic) double timeout;
 @property (nonatomic) bool useDictAsTopLevel;
 @property (nonatomic) bool wantsAppAck;
+@property (nonatomic) bool wantsCertifiedDelivery;
 @property (nonatomic) bool wantsDeliveryStatus;
 @property (nonatomic) bool wantsProgress;
 @property (nonatomic) bool wantsResponse;
@@ -103,6 +107,7 @@
 - (id)dictionaryRepresentationIncludingTrace:(bool)arg1;
 - (bool)disableAliasValidation;
 - (bool)disallowRefresh;
+- (id)dropMessageIndicatorCommand;
 - (id)duetIdentifiersOverride;
 - (void)encodeWithCoder:(id)arg1;
 - (bool)encryptPayload;
@@ -134,6 +139,7 @@
 - (bool)nonCloudWaking;
 - (bool)nonWaking;
 - (id)objectForKey:(id)arg1;
+- (id)originalTimestamp;
 - (id)originalfromID;
 - (id)peerResponseIdentifier;
 - (long long)priority;
@@ -145,6 +151,7 @@
 - (bool)requireLocalWiFi;
 - (id)resourceMetadata;
 - (id)resourcePath;
+- (bool)sessionForceInternetInvitation;
 - (id)sessionID;
 - (void)setAccessToken:(id)arg1;
 - (void)setAccountUUID:(id)arg1;
@@ -168,6 +175,7 @@
 - (void)setDestinations:(id)arg1;
 - (void)setDisableAliasValidation:(bool)arg1;
 - (void)setDisallowRefresh:(bool)arg1;
+- (void)setDropMessageIndicatorCommand:(id)arg1;
 - (void)setDuetIdentifiersOverride:(id)arg1;
 - (void)setEncryptPayload:(bool)arg1;
 - (void)setEnforceRemoteTimeouts:(bool)arg1;
@@ -194,6 +202,7 @@
 - (void)setNonCloudWaking:(bool)arg1;
 - (void)setNonWaking:(bool)arg1;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
+- (void)setOriginalTimestamp:(id)arg1;
 - (void)setOriginalfromID:(id)arg1;
 - (void)setPeerResponseIdentifier:(id)arg1;
 - (void)setPriority:(long long)arg1;
@@ -205,12 +214,14 @@
 - (void)setRequireLocalWiFi:(bool)arg1;
 - (void)setResourceMetadata:(id)arg1;
 - (void)setResourcePath:(id)arg1;
+- (void)setSessionForceInternetInvitation:(bool)arg1;
 - (void)setSessionID:(id)arg1;
 - (void)setSubService:(id)arg1;
 - (void)setSubServiceAccountUUID:(id)arg1;
 - (void)setTimeout:(double)arg1;
 - (void)setUseDictAsTopLevel:(bool)arg1;
 - (void)setWantsAppAck:(bool)arg1;
+- (void)setWantsCertifiedDelivery:(bool)arg1;
 - (void)setWantsDeliveryStatus:(bool)arg1;
 - (void)setWantsProgress:(bool)arg1;
 - (void)setWantsResponse:(bool)arg1;
@@ -219,6 +230,7 @@
 - (double)timeout;
 - (bool)useDictAsTopLevel;
 - (bool)wantsAppAck;
+- (bool)wantsCertifiedDelivery;
 - (bool)wantsDeliveryStatus;
 - (bool)wantsProgress;
 - (bool)wantsResponse;

@@ -6,15 +6,18 @@
     int  _CIFormat;
     unsigned int  _CVPixelFormat;
     long long  _bytesPerPixel;
+    bool  _extendedRange;
     NSString * _name;
 }
 
 @property (nonatomic, readonly) int CIFormat;
 @property (nonatomic, readonly) unsigned int CVPixelFormat;
 @property (nonatomic, readonly) long long bytesPerPixel;
+@property (nonatomic, readonly) bool extendedRange;
 @property (nonatomic, readonly) NSString *name;
 
 + (id)A16;
++ (id)A2RGB10;
 + (id)ARGB8;
 + (id)BGRA8;
 + (id)I8;
@@ -24,7 +27,6 @@
 + (id)RGBAf;
 + (id)RGBAh;
 + (id)XRSRGB10;
-+ (id)XRSRGB10_A8;
 + (id)pixelFormatForCIFormat:(int)arg1;
 + (id)pixelFormatForCVPixelFormat:(unsigned int)arg1;
 + (id)sRGBA8;
@@ -35,6 +37,7 @@
 - (long long)alignedRowBytesForWidth:(long long)arg1;
 - (long long)bytesPerPixel;
 - (id)description;
+- (bool)extendedRange;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToPixelFormat:(id)arg1;

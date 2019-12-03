@@ -6,7 +6,7 @@
 @required
 
 - (void)close:(bool)arg1;
-- (IKJSDataSource *)dataSource;
+- (JSValue *)dataSource;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })range;
 
 @end

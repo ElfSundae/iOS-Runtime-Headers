@@ -16,10 +16,11 @@
 
 + (id)eventWithType:(long long)arg1;
 + (id)eventWithType:(long long)arg1 state:(bool)arg2;
++ (id)eventWithType:(long long)arg1 stateEnum:(unsigned int)arg2;
 
 - (void).cxx_destruct;
 - (unsigned int)_metricIdForType:(long long)arg1;
-- (id)initWithType:(long long)arg1 state:(bool)arg2;
+- (id)initWithType:(long long)arg1 state:(bool)arg2 stateEnum:(unsigned int)arg3;
 - (id)metric;
 - (unsigned int)metricIdentifier;
 - (void)setMetric:(id)arg1;

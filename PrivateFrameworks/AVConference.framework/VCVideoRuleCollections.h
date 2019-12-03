@@ -10,6 +10,8 @@
 @property (readonly) NSDictionary *rules;
 @property (readonly) NSArray *supportedPayloads;
 
++ (id)newCorrectedVideoRules:(id)arg1 payload:(int)arg2;
+
 - (void)addSupportedPayload:(int)arg1;
 - (void)addVideoRules:(id)arg1 transportType:(unsigned char)arg2 payload:(int)arg3 encodingType:(unsigned char)arg4;
 - (void)appendVideoRules:(id)arg1 transportType:(unsigned char)arg2 payload:(int)arg3 encodingType:(unsigned char)arg4;
@@ -17,6 +19,7 @@
 - (id)filterRules:(id)arg1 byBitrateRule:(id)arg2;
 - (id)getVideoRulesForTransport:(unsigned char)arg1 payload:(int)arg2 encodingType:(unsigned char)arg3;
 - (id)init;
+- (bool)isEqual:(id)arg1;
 - (bool)isPayloadSupported:(int)arg1;
 - (void)removeVideoRulesWithWidth:(int)arg1 height:(int)arg2 transportType:(unsigned char)arg3 encodingType:(unsigned char)arg4;
 - (id)rules;

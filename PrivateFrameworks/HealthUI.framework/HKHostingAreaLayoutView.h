@@ -8,8 +8,8 @@
 
 @property (nonatomic, retain) UIView *hostedView;
 
++ (id)colorBackgroundViewHostingView:(id)arg1;
 + (id)viewHostingView:(id)arg1;
-+ (id)whiteBackgroundViewHostingView:(id)arg1;
 
 - (void).cxx_destruct;
 - (id)hostedView;

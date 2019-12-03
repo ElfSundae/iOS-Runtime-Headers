@@ -15,17 +15,32 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) unsigned long long type;
 
-+ (bool)supportsSecureCoding;
-
-- (id)_parseResponseData:(id)arg1 outError:(id*)arg2;
-- (unsigned long long)_parseResponseErrorWithData:(id)arg1;
-- (bool)_transceiveWithData:(id)arg1 receivedData:(id*)arg2 commandConfig:(id)arg3 error:(id*)arg4;
+- (id)_generateRequestHeader:(unsigned char)arg1 flags:(unsigned char)arg2;
+- (id)_parseResponseErrorWithData:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (void)customCommandWithRequestFlag:(unsigned char)arg1 customCommandCode:(long long)arg2 customRequestParameters:(id)arg3 completionHandler:(id /* block */)arg4;
+- (void)extendedLockBlockWithRequestFlags:(unsigned char)arg1 blockNumber:(long long)arg2 completionHandler:(id /* block */)arg3;
+- (void)extendedReadMultipleBlocksWithRequestFlags:(unsigned char)arg1 blockRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 completionHandler:(id /* block */)arg3;
+- (void)extendedReadSingleBlockWithRequestFlags:(unsigned char)arg1 blockNumber:(long long)arg2 completionHandler:(id /* block */)arg3;
+- (void)extendedWriteSingleBlockWithRequestFlags:(unsigned char)arg1 blockNumber:(long long)arg2 dataBlock:(id)arg3 completionHandler:(id /* block */)arg4;
+- (void)getMultipleBlockSecurityStatusWithRequestFlag:(unsigned char)arg1 blockRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 completionHandler:(id /* block */)arg3;
+- (void)getSystemInfoWithRequestFlag:(unsigned char)arg1 completionHandler:(id /* block */)arg2;
 - (unsigned long long)icManufacturerCode;
 - (id)icSerialNumber;
 - (id)identifier;
-- (id)initWithSession:(id)arg1 tag:(id)arg2;
+- (void)lockAFIWithRequestFlag:(unsigned char)arg1 completionHandler:(id /* block */)arg2;
+- (void)lockBlockWithRequestFlags:(unsigned char)arg1 blockNumber:(unsigned char)arg2 completionHandler:(id /* block */)arg3;
+- (void)lockDFSIDWithRequestFlag:(unsigned char)arg1 completionHandler:(id /* block */)arg2;
 - (void)readMultipleBlocksWithConfiguration:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)readMultipleBlocksWithRequestFlags:(unsigned char)arg1 blockRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 completionHandler:(id /* block */)arg3;
+- (void)readSingleBlockWithRequestFlags:(unsigned char)arg1 blockNumber:(unsigned char)arg2 completionHandler:(id /* block */)arg3;
+- (void)resetToReadyWithRequestFlags:(unsigned char)arg1 completionHandler:(id /* block */)arg2;
+- (void)selectWithRequestFlags:(unsigned char)arg1 completionHandler:(id /* block */)arg2;
 - (void)sendCustomCommandWithConfiguration:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)stayQuietWithCompletionHandler:(id /* block */)arg1;
+- (void)writeAFIWithRequestFlag:(unsigned char)arg1 afi:(unsigned char)arg2 completionHandler:(id /* block */)arg3;
+- (void)writeDSFIDWithRequestFlag:(unsigned char)arg1 dsfid:(unsigned char)arg2 completionHandler:(id /* block */)arg3;
+- (void)writeMultipleBlocksWithRequestFlags:(unsigned char)arg1 blockRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 dataBlocks:(id)arg3 completionHandler:(id /* block */)arg4;
+- (void)writeSingleBlockWithRequestFlags:(unsigned char)arg1 blockNumber:(unsigned char)arg2 dataBlock:(id)arg3 completionHandler:(id /* block */)arg4;
 
 @end

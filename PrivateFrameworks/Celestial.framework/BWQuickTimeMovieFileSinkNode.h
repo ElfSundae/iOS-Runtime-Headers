@@ -3,12 +3,14 @@
  */
 
 @interface BWQuickTimeMovieFileSinkNode : BWFileSinkNode {
+    NSMutableDictionary * _APSModeByPortType;
     struct { 
         long long value; 
         int timescale; 
         unsigned int flags; 
         long long epoch; 
     }  _adjustedMaxFileDuration;
+    BWMovieFileOutputAnalyticsPayload * _analyticsPayload;
     bool  _atLeastOneFragmentIsWritten;
     struct OpaqueCMByteStream { } * _byteStream;
     struct { 
@@ -17,6 +19,7 @@
         unsigned int flags; 
         long long epoch; 
     }  _checkDiskSpaceAtThisDuration;
+    NSString * _clientApplicationID;
     struct { 
         long long value; 
         int timescale; 
@@ -52,34 +55,22 @@
     BWIrisMovieInfo * _firstIrisMovieInfo;
     NSMutableArray * _flushingIrisMovieGenerators;
     struct OpaqueFigFormatWriter { } * _formatWriter;
+    NSString * _gmLoggingPreamble;
     bool  _haveDebugASBD;
     bool * _haveSeenSamplesForTrack;
     bool  _ignoreFileSizeLimit;
+    BWInferenceResultRingBuffers * _irisMotionAnalysisRingBuffer;
     NSObject<OS_dispatch_queue> * _irisMovieGenerationQueue;
     BWIrisMovieGenerator * _irisMovieGenerator;
     bool  _irisMovieProcessingSuspended;
     bool  _irisSampleReferenceMoviesEnabled;
+    BWIrisStillImageMovieMetadataCache * _irisStillImageMovieMetadataCache;
     int  _irisStillImageTimeTrackID;
     int  _irisStillImageTimeTrackTimeScale;
     unsigned int  _irisTerminationStatus;
-    struct { 
-        long long value; 
-        int timescale; 
-        unsigned int flags; 
-        long long epoch; 
-    }  _largestWrittenAudioPTS;
-    struct { 
-        long long value; 
-        int timescale; 
-        unsigned int flags; 
-        long long epoch; 
-    }  _largestWrittenVideoPTS;
-    struct { 
-        long long value; 
-        int timescale; 
-        unsigned int flags; 
-        long long epoch; 
-    }  _lastKnownAudioDuration;
+    struct { long long x1; int x2; unsigned int x3; long long x4; } * _largestWrittenPTSs;
+    struct { long long x1; int x2; unsigned int x3; long long x4; } * _largestWrittenVideoDTSs;
+    struct { long long x1; int x2; unsigned int x3; long long x4; } * _lastWrittenAudioVideoDurations;
     BWLimitedGMErrorLogger * _limitedGMErrorLogger;
     unsigned long long  _masterInputIndex;
     int  _masterInputTimeScale;
@@ -90,6 +81,7 @@
         long long epoch; 
     }  _maxFileDuration;
     unsigned long long  _maxFileSize;
+    double  _maxTotalZoomFactor;
     float  _maxVideoFrameRate;
     unsigned long long  _minFreeDiskSpaceLimit;
     NSArray * _movieLevelMetadata;
@@ -102,31 +94,58 @@
     }  _nextTimeToReturnFileSize;
     unsigned long long  _numAudioTracks;
     unsigned long long  _numInputs;
+    long long  _numVideoFramesPortTypeBack;
+    long long  _numVideoFramesPortTypeFront;
+    long long  _numVideoFramesPortTypeSuperWide;
+    long long  _numVideoFramesPortTypeTelephoto;
     unsigned long long  _numVideoTracks;
+    BWObjectRingBufferThreadSafe * _overCaptureQualityMetadataRingBuffer;
+    BWVideoQualityMetrics * _overCaptureQualityMetrics;
     char * _parentPath;
     NSMutableArray * _pendingIrisRefMovieRequests;
+    unsigned long long  _pipelineIndex;
+    int  _pipelineTraceID;
+    double  _pointlessOverCaptureMaxZoomThreshold;
     struct OpaqueFigSimpleMutex { } * _propertyMutex;
     bool  _recordingIsForFrontCamera;
     int  _recordingState;
-    struct { 
-        long long value; 
-        int timescale; 
-        unsigned int flags; 
-        long long epoch; 
-    }  _secondLargestWrittenVideoPTS;
+    struct { long long x1; int x2; unsigned int x3; long long x4; } * _secondLargestWrittenAudioVideoPTSs;
     FigCaptureMovieFileRecordingSettings * _settings;
-    struct { 
-        long long value; 
-        int timescale; 
-        unsigned int flags; 
-        long long epoch; 
-    }  _smallestWrittenAudioPTS;
-    struct { 
-        long long value; 
-        int timescale; 
-        unsigned int flags; 
-        long long epoch; 
-    }  _smallestWrittenVideoPTS;
+    struct { long long x1; int x2; unsigned int x3; long long x4; } * _smallestWrittenPTSs;
+    struct BWCoreAnalyticsMovieRecordingSphereAFStatistics { 
+        float accelStandardDeviation; 
+        float gyroStandardDeviation; 
+        float sphereMaxTrackErrorWide; 
+        float sphereMaxTrackErrorTele; 
+        float sphereStdTrackErrorSumXXWide; 
+        float sphereStdTrackErrorSumXXTele; 
+        float afMaxTrackErrorWide; 
+        float afMaxTrackErrorTele; 
+        float afStdTrackErrorSumXXWide; 
+        float afStdTrackErrorSumXXTele; 
+        float sphereMinDistanceFromEndStopWide; 
+        float sphereMinDistanceFromEndStopTele; 
+        float spherePowerWide; 
+        float spherePowerTele; 
+        float afPowerWide; 
+        float afPowerTele; 
+        unsigned int numberOfSamples; 
+        unsigned int numberOfSamplesWide; 
+        unsigned int numberOfSamplesTele; 
+        unsigned int range_0_90umBinWide; 
+        unsigned int range_90_110umBinWide; 
+        unsigned int range_110_130umBinWide; 
+        unsigned int range_130_150umBinWide; 
+        unsigned int range_150_175umBinWide; 
+        unsigned int range_175_infinityBinWide; 
+        unsigned int range_0_90umBinTele; 
+        unsigned int range_90_110umBinTele; 
+        unsigned int range_110_130umBinTele; 
+        unsigned int range_130_150umBinTele; 
+        unsigned int range_150_175umBinTele; 
+        unsigned int range_175_infinityBinTele; 
+    }  _sphereAFStatistics;
+    NSMutableDictionary * _sphereModeByPortType;
     NSArray * _stagingQueues;
     struct { 
         long long value; 
@@ -134,12 +153,18 @@
         unsigned int flags; 
         long long epoch; 
     }  _startingPTS;
+    int  _streamForcedOffErrorCode;
     NSArray * _structuralDependentTrackReferenceListForMetadataInputs;
     NSDictionary * _temporalScalabilityProperties;
     NSObject<OS_dispatch_queue> * _thumbnailGenerationDispatchQueue;
     struct __IOSurface { } * _thumbnailSurface;
     int * _trackIDs;
     NSArray * _trackReferenceListForMetadataInputs;
+    struct { 
+        int width; 
+        int height; 
+    }  _videoDimensions;
+    bool  _vitalInputStreamHasBeenForcedOff;
 }
 
 @property (nonatomic) bool irisMovieProcessingSuspended;
@@ -154,54 +179,74 @@
 - (long long)_adjustedMinFreeDiskSpaceLimitForEstimatedMovieSizeOverhead:(long long)arg1;
 - (void)_buildIrisRefMovieGeneratorAndWriteFirstIrisAsRefMovie;
 - (int)_checkFreeSpaceForEstimatedMovieSizeOverhead:(long long)arg1;
+- (void)_collectCoreAnalyticsData:(struct opaqueCMSampleBuffer { }*)arg1;
 - (void)_debugAudioUsingSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1;
 - (void)_determineWhichInputsWeExpectToSeeSamplesFor;
 - (void)_doEndRecordingAtTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 earlyTerminationErrCode:(int)arg2;
-- (int)_doStartRecordingAtTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 withSettings:(id)arg2 thumbnailSourcePixelBuffer:(struct __CVBuffer { }*)arg3 sensorVideoPort:(struct __CFString { }*)arg4;
+- (int)_doStartRecordingAtTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 withSettings:(id)arg2 thumbnailSourcePixelBuffer:(struct __CVBuffer { }*)arg3 thumbnailSourceFinalCropRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg4 sensorVideoPort:(struct __CFString { }*)arg5;
 - (bool)_driveStateMachineWithBuffer:(struct opaqueCMSampleBuffer { }*)arg1 forInput:(id)arg2 sampleBufferAlreadyAtHeadOfQueue:(bool)arg3;
 - (void)_driveStateMachineWithMediaBuffer:(struct opaqueCMSampleBuffer { }*)arg1 forInputIndex:(unsigned long long)arg2 sampleBufferAlreadyAtHeadOfQueue:(bool)arg3;
 - (bool)_driveStateMachineWithPauseMarkerBuffer:(struct opaqueCMSampleBuffer { }*)arg1 forInputIndex:(unsigned long long)arg2 sampleBufferAlreadyAtHeadOfQueue:(bool)arg3;
 - (bool)_driveStateMachineWithResumeMarkerBuffer:(struct opaqueCMSampleBuffer { }*)arg1 forInputIndex:(unsigned long long)arg2 sampleBufferAlreadyAtHeadOfQueue:(bool)arg3;
 - (bool)_driveStateMachineWithStartMarkerBuffer:(struct opaqueCMSampleBuffer { }*)arg1 forInputIndex:(unsigned long long)arg2 sampleBufferAlreadyAtHeadOfQueue:(bool)arg3;
 - (bool)_driveStateMachineWithStopMarkerBuffer:(struct opaqueCMSampleBuffer { }*)arg1 forInputIndex:(unsigned long long)arg2 sampleBufferAlreadyAtHeadOfQueue:(bool)arg3;
+- (struct { long long x1; int x2; unsigned int x3; long long x4; })_endingPTSForTrack:(unsigned long long)arg1 endingPTS:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2 writtenEndingPTS:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg3 validatedEndingPTS:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg4 isIrisMasterMovie:(bool)arg5;
+- (struct { long long x1; int x2; unsigned int x3; long long x4; })_finalizeAudioVideoDurationsAndFindWrittenEndingPTSFromEndingPTS:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })_findMarkers:(struct __CFString { }*)arg1;
-- (struct { long long x1; int x2; unsigned int x3; long long x4; })_findStartMarkersWithMatchedStagedSetting:(id*)arg1 thumbnailSourcePixelBuffer:(struct __CVBuffer {}**)arg2 sensorVideoPort:(const struct __CFString {}**)arg3;
+- (struct { long long x1; int x2; unsigned int x3; long long x4; })_findStartMarkersWithMatchedStagedSetting:(id*)arg1 thumbnailSourcePixelBuffer:(struct __CVBuffer {}**)arg2 thumbnailSourceFinalCropRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg3 sensorVideoPort:(const struct __CFString {}**)arg4;
+- (struct { long long x1; int x2; unsigned int x3; long long x4; })_findWrittenStartingPTS;
 - (void)_finishIrisMovieGeneration;
+- (void)_fixVitalityScoreWithMotionAnalysis:(id)arg1;
 - (void)_forceEarlyTerminationWithErrorCode:(int)arg1;
+- (void)_generateThumbnailSurfaceFromPixelBuffer:(struct __CVBuffer { }*)arg1 cropRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (unsigned long long)_getCurrentFileSize:(bool)arg1;
 - (void)_handleFormatWriterDidWriteFragmentNotification;
+- (id)_handleIrisRequest:(id)arg1;
+- (bool)_irisIsExpected:(id)arg1;
 - (void)_moveOrDeleteTemporaryIrisMovie:(id)arg1 recordingSucceeded:(bool)arg2;
 - (void)_preprocessingForFirstAudioBuffer:(struct opaqueCMSampleBuffer { }*)arg1 forInputIndex:(unsigned long long)arg2;
 - (void)_preprocessingForFirstMetadataBuffer:(struct opaqueCMSampleBuffer { }*)arg1 forInputIndex:(unsigned long long)arg2;
 - (void)_preprocessingForFirstVideoBuffer:(struct opaqueCMSampleBuffer { }*)arg1 forInputIndex:(unsigned long long)arg2;
 - (void)_printBufferEvent:(struct opaqueCMSampleBuffer { }*)arg1 forNodeInputIndex:(unsigned long long)arg2 eventName:(id)arg3;
+- (void)_setRecordingState:(int)arg1;
 - (int)_startUpFormatWriterAtTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 withSettings:(id)arg2;
 - (id)_validTrackReferencesForReferenceInputIndexes:(id)arg1;
+- (struct { long long x1; int x2; unsigned int x3; long long x4; })_validatedEndingPTSFromEndingPTS:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (int)_verifyMovieTiming:(id)arg1;
 - (void)_writeBuffer:(struct opaqueCMSampleBuffer { }*)arg1 forInputIndex:(unsigned long long)arg2;
 - (void)_writeIrisRefMovieWithInfo:(id)arg1;
-- (int)_writeStillImageTimeMetadataSampleForCaptureTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 toTrackWithID:(int)arg2 usingTrackTimeScale:(int)arg3;
+- (int)_writeStillImageTimeMetadataSampleForCaptureTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 stillImageTransformData:(id)arg2 referenceDimensions:(struct { int x1; int x2; })arg3 toTrackWithID:(int)arg4 usingTrackTimeScale:(int)arg5;
+- (id)clientApplicationID;
 - (void)configurationWithID:(long long)arg1 updatedFormat:(id)arg2 didBecomeLiveForInput:(id)arg3;
 - (void)dealloc;
 - (void)didReachEndOfDataForInput:(id)arg1;
+- (void)handleDroppedSample:(id)arg1 forInput:(id)arg2;
 - (void)handleIrisReferenceMovieRequest:(id)arg1 forInput:(id)arg2;
-- (id)init;
-- (id)initWithNumberOfVideoInputs:(unsigned long long)arg1 numberOfAudioInputs:(unsigned long long)arg2 numberOfMetadataInputs:(unsigned long long)arg3;
+- (id)initWithNumberOfVideoInputs:(unsigned long long)arg1 numberOfAudioInputs:(unsigned long long)arg2 numberOfMetadataInputs:(unsigned long long)arg3 cameraInfoByPortType:(id)arg4 pipelineIndex:(unsigned long long)arg5 sinkID:(id)arg6;
+- (id)initWithSinkID:(id)arg1;
+- (id)irisMotionAnalysisRingBuffer;
 - (bool)irisMovieProcessingSuspended;
 - (bool)irisSampleReferenceMoviesEnabled;
+- (id)irisStillImageMovieMetadataCache;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })lastFileDuration;
 - (unsigned long long)lastFileSize;
 - (float)maxVideoFrameRate;
 - (id)movieLevelMetadata;
 - (id)nodeSubType;
+- (int)pipelineTraceID;
 - (void)prepareForCurrentConfigurationToBecomeLive;
 - (void)renderSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 forInput:(id)arg2;
+- (void)setClientApplicationID:(id)arg1;
+- (void)setIrisMotionAnalysisRingBuffer:(id)arg1;
 - (void)setIrisMovieProcessingSuspended:(bool)arg1;
 - (void)setIrisSampleReferenceMoviesEnabled:(bool)arg1;
+- (void)setIrisStillImageMovieMetadataCache:(id)arg1;
 - (void)setMaxVideoFrameRate:(float)arg1;
 - (void)setMovieLevelMetadata:(id)arg1;
+- (void)setPipelineTraceID:(int)arg1;
 - (void)setStructuralDependentTrackReferenceListForMetadataInputs:(id)arg1;
 - (void)setTrackReferenceListForMetadataInputs:(id)arg1;
+- (void)setupOverCaptureQualityMetricsForLivePhotoHistory:(int)arg1;
 - (id)structuralDependentTrackReferenceListForMetadataInputs;
 - (id)trackReferenceListForMetadataInputs;
 

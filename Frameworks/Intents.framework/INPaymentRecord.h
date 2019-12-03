@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface INPaymentRecord : NSObject <INCacheableContainer, NSCopying, NSSecureCoding> {
+@interface INPaymentRecord : NSObject <INCacheableContainer, INJSONSerializable, NSCopying, NSSecureCoding> {
     INCurrencyAmount * _currencyAmount;
     INCurrencyAmount * _feeAmount;
     NSString * _note;
@@ -24,11 +24,13 @@
 @property (nonatomic, readonly) long long status;
 @property (readonly) Class superclass;
 
++ (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
 - (id)_intents_cacheableObjects;
+- (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
 - (void)_intents_updateContainerWithCache:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)currencyAmount;

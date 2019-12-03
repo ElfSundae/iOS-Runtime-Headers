@@ -4,18 +4,20 @@
 
 @interface CNKFaceTimeInCallControlsViewController : UIViewController {
     void audioIsEnabled;
+    void controlsButtonRowCount;
     void delegate;
     void effectsAreAvailable;
     void effectsAreEnabled;
     void groupName;
     void isExpanded;
-    void localParticipant;
+    union { in /* Warning: Unrecognized filer type: 'u' using 'void*' */ void*x1; long x2; long x3; }  localParticipant;
     void mode;
     void participantDelegate;
     void participantsTableViewController;
     void participantsViewControllerDelegate;
     void representedLegacyCallIdentifier;
     void shouldShowJoinButton;
+    void tableViewSeparator;
     void topInset;
     void videoIsEnabled;
     void viewContent;
@@ -33,6 +35,7 @@
 @property (nonatomic) bool videoIsEnabled;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)accessibilityCameraButton;
 - (id)accessibilityCameraLabel;
 - (id)accessibilityDisableVideoButton;
@@ -57,11 +60,13 @@
 - (void)didTapToggleCameraButton:(id)arg1;
 - (bool)effectsAreAvailable;
 - (bool)effectsAreEnabled;
+- (void)embedEffectsBrowserViewController:(id)arg1;
 - (void)handleLegacyCallStatusDidChangeNotification:(id)arg1;
 - (id)initWithActiveCall:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (bool)isExpanded;
+- (void)loadView;
 - (void)setAudioIsEnabled:(bool)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setEffectsAreAvailable:(bool)arg1;
@@ -80,5 +85,6 @@
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)willMoveToParentViewController:(id)arg1;
 
 @end

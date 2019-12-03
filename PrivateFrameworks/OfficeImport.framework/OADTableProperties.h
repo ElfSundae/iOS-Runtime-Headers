@@ -21,9 +21,9 @@
 
 + (id)defaultProperties;
 
+- (void).cxx_destruct;
 - (bool)bandColumn;
 - (bool)bandRow;
-- (void)dealloc;
 - (id)description;
 - (id)effects;
 - (bool)firstColumn;

@@ -17,12 +17,11 @@
 
 - (void).cxx_destruct;
 - (void)_performUserInteractionTask;
-- (id)_presentingViewControllerForExpungeConfirmation;
 - (id)actionPerformerDelegate;
+- (void)deletePhotosActionController:(id)arg1 dismissConfirmationViewController:(id)arg2;
 - (void)deletePhotosActionController:(id)arg1 presentConfirmationViewController:(id)arg2;
 - (void)performBackgroundTask;
 - (void)performUserInteractionTask;
-- (long long)preferredAlertControllerStyle;
 - (void)setActionPerformerDelegate:(id)arg1;
 
 @end

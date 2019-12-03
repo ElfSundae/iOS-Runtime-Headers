@@ -18,9 +18,11 @@
     <MTKViewDelegate> * _delegate;
     unsigned long long  _depthStencilPixelFormat;
     <MTLTexture> * _depthStencilTexture;
+    unsigned long long  _depthStencilTextureUsage;
     <MTLDevice> * _device;
     bool  _deviceReset;
     CADisplayLink * _displayLink;
+    bool  _doesNotifyOnRecommendedSizeUpdate;
     bool  _drawOffscreen;
     int (* _drawRectSubIMP;
     unsigned long long  _drawableAttachmentIndex;
@@ -46,11 +48,16 @@
     unsigned long long  _measureAfterSeconds;
     CAMetalLayer * _metalLayer;
     <MTLTexture> * _multisampleColorTexture;
+    unsigned long long  _multisampleColorTextureUsage;
     <MTLTexture> * _multisampleColorTextures;
     long long  _nominalFramesPerSecond;
     MTKOffscreenDrawable * _offscreenSwapChain;
     bool  _paused;
     bool  _pausedOnBackgrounding;
+    struct CGSize { 
+        double width; 
+        double height; 
+    }  _preferredDrawableSize;
     long long  _preferredFramesPerSecond;
     int  _renderAttachmentDirtyState;
     unsigned long long  _sampleCount;
@@ -71,6 +78,7 @@
 @property (nonatomic, readonly) MTLRenderPassDescriptor *currentRenderPassDescriptor;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <MTKViewDelegate> *delegate;
+@property (nonatomic) unsigned long long depthStencilAttachmentTextureUsage;
 @property (nonatomic) unsigned long long depthStencilPixelFormat;
 @property (nonatomic, readonly) <MTLTexture> *depthStencilTexture;
 @property (readonly, copy) NSString *description;
@@ -79,8 +87,11 @@
 @property (nonatomic) bool enableSetNeedsDisplay;
 @property (nonatomic) bool framebufferOnly;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned long long multisampleColorAttachmentTextureUsage;
 @property (nonatomic, readonly) <MTLTexture> *multisampleColorTexture;
 @property (getter=isPaused, nonatomic) bool paused;
+@property (readonly) <MTLDevice> *preferredDevice;
+@property (nonatomic, readonly) struct CGSize { double x1; double x2; } preferredDrawableSize;
 @property (nonatomic) long long preferredFramesPerSecond;
 @property (nonatomic) bool presentsWithTransaction;
 @property (nonatomic) unsigned long long sampleCount;
@@ -108,11 +119,14 @@
 - (unsigned int)clearStencil;
 - (unsigned long long)colorPixelFormat;
 - (const id*)colorTextures;
+- (const id*)colorTexturesForceUpdate:(bool)arg1;
 - (struct CGColorSpace { }*)colorspace;
+- (void)createDepthStencilTexture;
 - (id)currentDrawable;
 - (id)currentRenderPassDescriptor;
 - (void)dealloc;
 - (id)delegate;
+- (unsigned long long)depthStencilAttachmentTextureUsage;
 - (unsigned long long)depthStencilPixelFormat;
 - (id)depthStencilTexture;
 - (id)device;
@@ -120,6 +134,7 @@
 - (void)displayLayer:(id)arg1;
 - (void)draw;
 - (void)drawLayer:(id)arg1 inContext:(struct CGContext { }*)arg2;
+- (unsigned long long)drawNumber;
 - (unsigned long long)drawableAttachmentIndex;
 - (struct CGSize { double x1; double x2; })drawableSize;
 - (bool)enableSetNeedsDisplay;
@@ -132,9 +147,13 @@
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 device:(id)arg2;
 - (bool)isPaused;
 - (void)layoutSubviews;
+- (unsigned long long)multisampleColorAttachmentTextureUsage;
 - (id)multisampleColorTexture;
 - (const id*)multisampleColorTextures;
+- (const id*)multisampleColorTexturesForceUpdate:(bool)arg1;
 - (long long)nominalFramesPerSecond;
+- (id)preferredDevice;
+- (struct CGSize { double x1; double x2; })preferredDrawableSize;
 - (long long)preferredFramesPerSecond;
 - (bool)presentsWithTransaction;
 - (void)releaseDrawables;
@@ -148,6 +167,7 @@
 - (void)setColorspace:(struct CGColorSpace { }*)arg1;
 - (void)setContentScaleFactor:(double)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setDepthStencilAttachmentTextureUsage:(unsigned long long)arg1;
 - (void)setDepthStencilPixelFormat:(unsigned long long)arg1;
 - (void)setDevice:(id)arg1;
 - (void)setDrawableAttachmentIndex:(unsigned long long)arg1;
@@ -155,10 +175,13 @@
 - (void)setEnableSetNeedsDisplay:(bool)arg1;
 - (void)setFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setFramebufferOnly:(bool)arg1;
+- (void)setMultisampleColorAttachmentTextureUsage:(unsigned long long)arg1;
+- (void)setNilValueForKey:(id)arg1;
 - (void)setNominalFramesPerSecond:(long long)arg1;
 - (void)setPaused:(bool)arg1;
 - (void)setPreferredFramesPerSecond:(long long)arg1;
 - (void)setPresentsWithTransaction:(bool)arg1;
 - (void)setSampleCount:(unsigned long long)arg1;
+- (double)startTime;
 
 @end

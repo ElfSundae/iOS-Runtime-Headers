@@ -19,6 +19,7 @@
 - (void).cxx_destruct;
 - (void)_handleAccountChanged:(id)arg1;
 - (id)account;
+- (id)appleAccountInformation;
 - (id)bridgedClientInfo;
 - (void)checkTLKsMissingWithCompletion:(id /* block */)arg1;
 - (void)cloudStoreStatusWithCompletion:(id /* block */)arg1;

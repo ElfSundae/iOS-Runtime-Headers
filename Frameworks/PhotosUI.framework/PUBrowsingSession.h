@@ -8,9 +8,10 @@
     PUAssetsDataSourceManager * _dataSourceManager;
     PXAssetEditOperationManager * _editOperationManager;
     PXGestureProvider * _gestureProvider;
-    <PXImportStatusManager> * _importStatusManager;
+    <PXAssetImportStatusManager> * _importStatusManager;
     PULoadingStatusManager * _loadingStatusManager;
     PUMediaProvider * _mediaProvider;
+    PUOneUpMergedVideoProvider * _mergedVideoProvider;
     PXPhotosDetailsContext * _photosDetailsContext;
     PUTileAnimator * _tileAnimator;
     PUBrowsingViewModel * _viewModel;
@@ -24,9 +25,10 @@
 @property (nonatomic, readonly) PXAssetEditOperationManager *editOperationManager;
 @property (nonatomic, readonly) PXGestureProvider *gestureProvider;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) <PXImportStatusManager> *importStatusManager;
+@property (nonatomic, readonly) <PXAssetImportStatusManager> *importStatusManager;
 @property (nonatomic, readonly) PULoadingStatusManager *loadingStatusManager;
 @property (nonatomic, retain) PUMediaProvider *mediaProvider;
+@property (nonatomic, readonly) PUOneUpMergedVideoProvider *mergedVideoProvider;
 @property (nonatomic, readonly) PXPhotosDetailsContext *photosDetailsContext;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) PUTileAnimator *tileAnimator;
@@ -52,6 +54,7 @@
 - (id)loadingStatusManager;
 - (void)loadingStatusManager:(id)arg1 didUpdateLoadingStatus:(id)arg2 forItem:(id)arg3;
 - (id)mediaProvider;
+- (id)mergedVideoProvider;
 - (id)photosDetailsContext;
 - (void)setContentTileProvider:(id)arg1;
 - (void)setMediaProvider:(id)arg1;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface UICollectionViewUpdate : NSObject {
+@interface UICollectionViewUpdate : NSObject <_UICollectionViewUpdateTranslating> {
     id * _animatedFooters;
     id * _animatedHeaders;
     id * _animatedItems;
@@ -49,13 +49,30 @@
     NSMutableArray * _viewAnimations;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 - (void).cxx_destruct;
 - (void)_computeItemUpdates;
 - (void)_computeSectionUpdates;
 - (void)_computeSupplementaryUpdates;
 - (void)dealloc;
 - (id)description;
+- (long long)finalGlobalIndexForInitialGlobalIndex:(long long)arg1;
+- (id)finalIndexPathForInitialIndexPath:(id)arg1;
+- (id)finalIndexPathForSupplementaryElementOfKind:(id)arg1 forInitialIndexPath:(id)arg2;
+- (long long)finalSectionCount;
+- (struct _NSRange { unsigned long long x1; unsigned long long x2; })finalSectionGlobalItemRangeForSection:(long long)arg1;
+- (long long)finalSectionIndexForInitialSectionIndex:(long long)arg1;
 - (id)initWithCollectionView:(id)arg1 updateItems:(id)arg2 oldModel:(id)arg3 newModel:(id)arg4 oldVisibleBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg5 newVisibleBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg6;
+- (struct _NSRange { unsigned long long x1; unsigned long long x2; })initalSectionGlobalItemRangeForSection:(long long)arg1;
+- (long long)initialGlobalIndexForFinalGlobalIndex:(long long)arg1;
+- (id)initialIndexPathForFinalIndexPath:(id)arg1;
+- (id)initialIndexPathForSupplementaryElementOfKind:(id)arg1 forFinalIndexPath:(id)arg2;
+- (long long)initialSectionCount;
+- (long long)initialSectionIndexForFinalSectionIndex:(long long)arg1;
 - (id)newIndexPathForSupplementaryElementOfKind:(id)arg1 oldIndexPath:(id)arg2;
 - (id)oldIndexPathForSupplementaryElementOfKind:(id)arg1 newIndexPath:(id)arg2;
 

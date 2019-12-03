@@ -51,6 +51,7 @@
 - (void)setListener:(id)arg1;
 - (void)setListenerEndpoint:(id)arg1;
 - (void)setServiceInfoHandler:(id /* block */)arg1;
+- (void)setupNewConnection:(id)arg1;
 - (void)updateBroadcastURL:(id)arg1;
 - (void)updateServiceInfo:(id)arg1;
 

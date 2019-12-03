@@ -14,8 +14,6 @@
 @property (nonatomic, readonly) NSArray *sectionCommands;
 @property (nonatomic, readonly) NSString *shortcutIdentifier;
 
-+ (void)initialize;
-
 - (void).cxx_destruct;
 - (bool)asynchronous;
 - (id)cardIdentifier;

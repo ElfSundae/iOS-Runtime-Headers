@@ -4,6 +4,7 @@
 
 @interface CRSCardRequest : CRSRequest <CRSCardRequesting> {
     <CRContent> * _content;
+    NSSet * _excludedServiceIdentifiers;
     unsigned long long  _format;
     bool  _loadsBundleServices;
     NSObject<OS_dispatch_queue> * _queue;
@@ -12,6 +13,7 @@
 @property (nonatomic, retain) <CRContent> *content;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (getter=_excludedServiceIdentifiers, setter=_setExcludedServiceIdentifiers:, nonatomic, copy) NSSet *excludedServiceIdentifiers;
 @property (nonatomic) unsigned long long format;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool loadsBundleServices;
@@ -21,7 +23,9 @@
 + (void)registerService:(id)arg1;
 
 - (void).cxx_destruct;
+- (id)_excludedServiceIdentifiers;
 - (void)_loadAndRegisterBundleServices:(id /* block */)arg1;
+- (void)_setExcludedServiceIdentifiers:(id)arg1;
 - (void)_tryRemainingCardServices:(id)arg1 reply:(id /* block */)arg2;
 - (id)content;
 - (unsigned long long)format;

@@ -23,15 +23,16 @@
 - (void)attemptDatabaseFileRecoveryAtPath:(id)arg1 withCompletionHandler:(id /* block */)arg2;
 - (void)beginTransactionForDatabaseAtPath:(id)arg1 withPriorityLevel:(unsigned long long)arg2 options:(unsigned long long)arg3 completionHandler:(id /* block */)arg4;
 - (void)cancelImportOperation:(unsigned long long)arg1 completionHandler:(id /* block */)arg2;
+- (void)checkIntegrityOfDatabaseAtPath:(id)arg1 repairFaults:(bool)arg2 withCompletionHandler:(id /* block */)arg3;
 - (void)dealloc;
 - (void)endTransaction:(id)arg1 shouldCommit:(bool)arg2 withCompletionHandler:(id /* block */)arg3;
 - (void)executeQuery:(id)arg1 withParameters:(id)arg2 options:(id)arg3 onTransaction:(id)arg4 withCompletionHandler:(id /* block */)arg5;
 - (void)executeUpdate:(id)arg1 withParameters:(id)arg2 onTransaction:(id)arg3 withCompletionHandler:(id /* block */)arg4;
-- (void)getDeviceSharedLibraryPath:(id /* block */)arg1;
 - (void)getLanguageResourcesWithCompletion:(id /* block */)arg1;
 - (void)importOperationWithIdentifier:(id)arg1 didUpdateWithProgress:(float)arg2;
 - (id)init;
-- (void)lockDatabaseForReason:(id)arg1 withCompletion:(id /* block */)arg2;
+- (void)lockDatabaseForReason:(long long)arg1 withCompletion:(id /* block */)arg2;
+- (id)mediaLibraryResourcesServiceListenerEndpointWithError:(id*)arg1;
 - (void)performBackupOfDatabaseAtPath:(id)arg1 withCompletion:(id /* block */)arg2;
 - (void)performDatabaseOperation:(unsigned long long)arg1 withAttributes:(id)arg2 options:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)performDiagnosticWithCompletionHandler:(id /* block */)arg1;

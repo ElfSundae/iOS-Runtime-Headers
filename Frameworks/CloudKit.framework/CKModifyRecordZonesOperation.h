@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
  */
 
-@interface CKModifyRecordZonesOperation : CKDatabaseOperation <MSPCloudRequest> {
+@interface CKModifyRecordZonesOperation : CKDatabaseOperation {
     NSMutableArray * _deletedRecordZoneIDs;
     bool  _markZonesAsUserPurged;
     id /* block */  _modifyRecordZonesCompletionBlock;
@@ -13,10 +13,7 @@
     NSMutableArray * _savedRecordZones;
 }
 
-@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, retain) NSMutableArray *deletedRecordZoneIDs;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic) bool markZonesAsUserPurged;
 @property (nonatomic, copy) id /* block */ modifyRecordZonesCompletionBlock;
 @property (nonatomic, retain) NSMutableDictionary *recordZoneErrors;
@@ -24,10 +21,6 @@
 @property (nonatomic, retain) NSMutableDictionary *recordZonesByZoneIDs;
 @property (nonatomic, copy) NSArray *recordZonesToSave;
 @property (nonatomic, retain) NSMutableArray *savedRecordZones;
-@property (nonatomic, readonly) bool shouldEnqueueDependenciesWhenPerformingAsCloudRequest;
-@property (readonly) Class superclass;
-
-// Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
 
 - (void).cxx_destruct;
 - (bool)CKOperationShouldRun:(id*)arg1;
@@ -56,10 +49,5 @@
 - (void)setRecordZonesByZoneIDs:(id)arg1;
 - (void)setRecordZonesToSave:(id)arg1;
 - (void)setSavedRecordZones:(id)arg1;
-
-// Image: /System/Library/PrivateFrameworks/MapsSupport.framework/MapsSupport
-
-- (void)addCloudAccessCompletionBlock:(id /* block */)arg1;
-- (void)setNetworkBehaviorIsDiscretionary:(bool)arg1;
 
 @end

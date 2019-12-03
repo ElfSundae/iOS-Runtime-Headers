@@ -3,17 +3,21 @@
  */
 
 @interface HKUCUMUnitDisplayConverter : NSObject {
-    NSDictionary * _displayNameLookupTable;
+    NSDictionary * _hkUnitNameLookupTable;
     NSDictionary * _synonymLookupTable;
 }
 
-@property (readonly) NSDictionary *displayNameLookupTable;
-@property (readonly) NSDictionary *synonymLookupTable;
+@property (nonatomic, copy) NSDictionary *hkUnitNameLookupTable;
+@property (nonatomic, copy) NSDictionary *synonymLookupTable;
+
++ (id)sharedConverter;
 
 - (void).cxx_destruct;
-- (id)displayNameForUCUMUnitString:(id)arg1;
-- (id)displayNameLookupTable;
+- (id)hkUnitNameForUCUMUnitCode:(id)arg1;
+- (id)hkUnitNameLookupTable;
 - (id)init;
+- (void)setHkUnitNameLookupTable:(id)arg1;
+- (void)setSynonymLookupTable:(id)arg1;
 - (id)synonymForUCUMUnitString:(id)arg1;
 - (id)synonymLookupTable;
 

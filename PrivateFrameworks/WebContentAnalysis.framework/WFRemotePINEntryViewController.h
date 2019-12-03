@@ -13,7 +13,9 @@
 
 - (void)dealloc;
 - (id)delegate;
+- (void)getIsPINPresentWithCompletion:(id /* block */)arg1;
 - (bool)isNumericPIN;
+- (void)permitURLWithCompletion:(id /* block */)arg1;
 - (bool)requiresKeyboard;
 - (void)setDelegate:(id)arg1;
 - (void)setPageTitle:(id)arg1;

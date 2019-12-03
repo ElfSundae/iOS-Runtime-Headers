@@ -18,11 +18,15 @@
 - (id)archiveCallObject:(id)arg1;
 - (id)dbHandle;
 - (void)deleteAllObjects;
+- (long long)deleteCallsWithPredicate:(id)arg1 error:(id*)arg2;
 - (void)deleteObjectWithUniqueId:(id)arg1;
 - (void)deleteObjectsWithLimits:(id)arg1;
 - (void)deleteObjectsWithUniqueIds:(id)arg1;
 - (id)fetchAllObjects;
-- (id)fetchCallsWithPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3;
+- (unsigned long long)fetchCallCountWithPredicate:(id)arg1 sortDescriptors:(id)arg2;
+- (id)fetchCallsWithPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 offset:(unsigned long long)arg4 batchSize:(unsigned long long)arg5;
+- (unsigned long long)fetchCoalescedCallCountWithPredicate:(id)arg1 sortDescriptors:(id)arg2;
+- (id)fetchCoalescedCallsWithPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 offset:(unsigned long long)arg4 batchSize:(unsigned long long)arg5;
 - (id)fetchObjectWithUniqueId:(id)arg1;
 - (id)fetchObjectsWithLimits:(id)arg1;
 - (id)init;
@@ -34,6 +38,7 @@
 - (id)predicateForCallKinds:(id)arg1;
 - (id)predicateForLimits:(id)arg1;
 - (void)resetTimers;
+- (long long)setRead:(bool)arg1 forCallsWithPredicate:(id)arg2 error:(id*)arg3;
 - (double)timerIncoming;
 - (double)timerLifetime;
 - (double)timerOutgoing;

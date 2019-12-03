@@ -8,6 +8,13 @@
 
 @property (getter=get_LastConfirmedSplashScreenVersionViewed, setter=set_LastConfirmedSplashScreenVersionViewed:, nonatomic) long long LastConfirmedSplashScreenVersionViewed;
 @property (getter=get_enableTravelAdvisoriesForAutomaticBehavior, setter=set_enableTravelAdvisoriesForAutomaticBehavior:, nonatomic) bool enableTravelAdvisoriesForAutomaticBehavior;
+@property (readonly) bool has_LastConfirmedSplashScreenVersionViewed;
+@property (readonly) bool has_enableTravelAdvisoriesForAutomaticBehavior;
+@property (readonly) bool has_kCalPreferredDaysToSyncKey;
+@property (readonly) bool has_kCalRemindersPreferredDaysToSyncKey;
+@property (readonly) bool has_sqlProfileLoggingEnabled;
+@property (readonly) bool has_suggestEventLocations;
+@property (readonly) bool has_suggestedLocationsTestMode;
 @property (getter=get_kCalPreferredDaysToSyncKey, setter=set_kCalPreferredDaysToSyncKey:, nonatomic) long long kCalPreferredDaysToSyncKey;
 @property (getter=get_kCalRemindersPreferredDaysToSyncKey, setter=set_kCalRemindersPreferredDaysToSyncKey:, nonatomic) long long kCalRemindersPreferredDaysToSyncKey;
 @property (getter=get_sqlProfileLoggingEnabled, setter=set_sqlProfileLoggingEnabled:, nonatomic) bool sqlProfileLoggingEnabled;
@@ -17,6 +24,8 @@
 + (id)shared;
 
 - (void).cxx_destruct;
+- (void)_setVersion:(unsigned long long)arg1;
+- (unsigned long long)_version;
 - (long long)get_LastConfirmedSplashScreenVersionViewed;
 - (bool)get_enableTravelAdvisoriesForAutomaticBehavior;
 - (long long)get_kCalPreferredDaysToSyncKey;
@@ -24,7 +33,16 @@
 - (bool)get_sqlProfileLoggingEnabled;
 - (bool)get_suggestEventLocations;
 - (bool)get_suggestedLocationsTestMode;
+- (bool)has_LastConfirmedSplashScreenVersionViewed;
+- (bool)has_enableTravelAdvisoriesForAutomaticBehavior;
+- (bool)has_kCalPreferredDaysToSyncKey;
+- (bool)has_kCalRemindersPreferredDaysToSyncKey;
+- (bool)has_sqlProfileLoggingEnabled;
+- (bool)has_suggestEventLocations;
+- (bool)has_suggestedLocationsTestMode;
 - (id)init;
+- (void)migrateIfNeededWithOptions:(unsigned long long)arg1;
+- (bool)needsMigration;
 - (void)set_LastConfirmedSplashScreenVersionViewed:(long long)arg1;
 - (void)set_enableTravelAdvisoriesForAutomaticBehavior:(bool)arg1;
 - (void)set_kCalPreferredDaysToSyncKey:(long long)arg1;

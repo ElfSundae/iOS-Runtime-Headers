@@ -55,13 +55,13 @@
 - (bool)hasPreviousVisibleRect;
 - (bool)hasVisibleRect;
 - (id)init;
-- (id)initWithArchive:(const struct SheetUIStateArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct Point {} *x5; struct Point {} *x6; struct Size {} *x7; struct Size {} *x8; struct SelectionPathArchive {} *x9; struct Reference {} *x10; float x11; float x12; bool x13; bool x14; bool x15; unsigned int x16; }*)arg1 unarchiver:(id)arg2;
+- (id)initWithArchive:(const struct SheetUIStateArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct Point {} *x5; struct Point {} *x6; struct Size {} *x7; struct Size {} *x8; struct SelectionPathArchive {} *x9; struct Reference {} *x10; float x11; float x12; bool x13; bool x14; bool x15; unsigned int x16; }*)arg1 unarchiver:(id)arg2;
 - (bool)isEqual:(id)arg1;
 - (id)p_persistableSelectionPathFromSelectionPath:(id)arg1;
 - (struct CGPoint { double x1; double x2; })previousScrollPosition;
 - (float)previousViewScale;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })previousVisibleRect;
-- (void)saveToArchive:(struct SheetUIStateArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct Point {} *x5; struct Point {} *x6; struct Size {} *x7; struct Size {} *x8; struct SelectionPathArchive {} *x9; struct Reference {} *x10; float x11; float x12; bool x13; bool x14; bool x15; unsigned int x16; }*)arg1 archiver:(id)arg2 context:(id)arg3;
+- (void)saveToArchive:(struct SheetUIStateArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct Point {} *x5; struct Point {} *x6; struct Size {} *x7; struct Size {} *x8; struct SelectionPathArchive {} *x9; struct Reference {} *x10; float x11; float x12; bool x13; bool x14; bool x15; unsigned int x16; }*)arg1 archiver:(id)arg2 context:(id)arg3;
 - (struct CGPoint { double x1; double x2; })scrollPosition;
 - (id)selectionPath;
 - (void)setArchivedDeviceIdiom:(long long)arg1;

@@ -5,9 +5,9 @@
 @interface GEOPDLocatedInsideInfo : PBCodable <NSCopying> {
     int  _featureType;
     struct { 
-        unsigned int muid : 1; 
-        unsigned int featureType : 1; 
-    }  _has;
+        unsigned int has_muid : 1; 
+        unsigned int has_featureType : 1; 
+    }  _flags;
     unsigned long long  _muid;
     PBUnknownFields * _unknownFields;
 }
@@ -18,8 +18,11 @@
 @property (nonatomic) unsigned long long muid;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsFeatureType:(id)arg1;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -32,6 +35,7 @@
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)muid;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setFeatureType:(int)arg1;
 - (void)setHasFeatureType:(bool)arg1;

@@ -22,6 +22,7 @@
 
 - (void).cxx_destruct;
 - (void)_adjustOrientationIfNecessaryInWindow:(id)arg1 forViewController:(id)arg2 preservingViewController:(id)arg3;
+- (bool)_inheritsPresentingViewControllerThemeLevel;
 - (bool)_invokesDelegatesOnOrientationChange;
 - (void)_placeCounterRotationViewWithView:(id)arg1 inWindow:(id)arg2 fromOrientation:(long long)arg3 toOrientation:(long long)arg4 force:(bool)arg5;
 - (void)_removeCounterRotation;
@@ -34,6 +35,5 @@
 - (long long)presentationStyle;
 - (void)presentationTransitionDidEnd:(bool)arg1;
 - (bool)shouldPresentInFullscreen;
-- (bool)shouldRemovePresentersView;
 
 @end

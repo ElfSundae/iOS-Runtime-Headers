@@ -29,6 +29,7 @@
 
 - (void).cxx_destruct;
 - (id)cacheDirectoryPath;
+- (id)description;
 - (id)extendedTraitCollection;
 - (id)geotaggableInformationDelegate;
 - (id)init;

@@ -60,6 +60,7 @@
 - (void)setSubText:(id)arg1;
 - (void)setTitleText:(id)arg1;
 - (void)setType:(id)arg1;
+- (id)shortcutItem;
 - (id)subText;
 - (id)titleText;
 - (id)type;

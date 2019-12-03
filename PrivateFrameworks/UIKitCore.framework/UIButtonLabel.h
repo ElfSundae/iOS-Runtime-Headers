@@ -5,16 +5,21 @@
 @interface UIButtonLabel : UILabel {
     UIButton * _button;
     NSDictionary * _cachedDefaultAttributes;
+    bool  _fontIsDefaultForIdiom;
     bool  _reverseShadow;
 }
+
+@property (nonatomic, readonly) bool _fontIsDefaultForIdiom;
 
 + (id)_defaultAttributes;
 
 - (void).cxx_destruct;
 - (id)_defaultAttributes;
+- (bool)_fontIsDefaultForIdiom;
 - (id)_initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 button:(id)arg2;
 - (void)_invalidateCachedDefaultAttributes;
 - (double)_paddingForBaselineSpacingFromEdge:(int)arg1 toNeighborEdge:(int)arg2;
+- (void)_setFont:(id)arg1 isDefaultForIdiom:(bool)arg2;
 - (void)_setMinimumFontSize:(double)arg1;
 - (void)_setWantsAutolayout;
 - (bool)_shouldAnimatePropertyWithKey:(id)arg1;

@@ -12,9 +12,8 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_abAssistantManager;
 - (void)_dismissPicker;
-- (id)_pickerResponseForPerson:(void*)arg1;
+- (id)_pickerResponseForPerson:(id)arg1;
 - (void)contactPicker:(id)arg1 didSelectContact:(id)arg2;
 - (void)contactPickerDidCancel:(id)arg1;
 - (void)showPicker:(id)arg1;

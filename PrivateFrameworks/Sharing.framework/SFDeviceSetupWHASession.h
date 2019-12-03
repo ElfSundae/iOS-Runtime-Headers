@@ -4,6 +4,10 @@
 
 @interface SFDeviceSetupWHASession : NSObject {
     bool  _activateCalled;
+    bool  _cdpEnabled;
+    SFDeviceOperationCDPSetup * _cdpSetupOperation;
+    double  _cdpSetupSecs;
+    int  _cdpState;
     NSObject<OS_dispatch_queue> * _dispatchQueue;
     int  _finishState;
     bool  _homeKitDoFullSetup;
@@ -14,6 +18,8 @@
     int  _pairSetupState;
     int  _pairVerifyState;
     SFDevice * _peerDevice;
+    unsigned long long  _peerFeatureFlags;
+    unsigned long long  _peerProblemsFlags;
     UIViewController * _presentingViewController;
     id /* block */  _progressHandler;
     id /* block */  _promptForHomeHandler;
@@ -45,6 +51,7 @@
 - (void)_cleanup;
 - (void)_reportError:(id)arg1;
 - (void)_run;
+- (int)_runCDPSetup;
 - (int)_runFinish;
 - (int)_runHomeKitSetup;
 - (int)_runInfoExchange;

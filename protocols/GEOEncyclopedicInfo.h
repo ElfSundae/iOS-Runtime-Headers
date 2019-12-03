@@ -8,6 +8,7 @@
 - (GEOMapItemAttribution *)encyclopedicAttribution;
 - (NSArray *)factoids;
 - (bool)hasPairOfFactoids;
+- (bool)hasStandAloneFactoids;
 - (bool)hasTextBlock;
 - (NSString *)textBlockText;
 - (NSString *)textBlockTitle;

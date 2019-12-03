@@ -3,32 +3,37 @@
  */
 
 @interface AMSUserAgent : NSObject {
-    AMSLRUCache * _cache;
+    AMSMappedBundleInfo * _bundleInfo;
+    AMSProcessInfo * _processInfo;
 }
 
-@property (nonatomic, readonly, copy) NSString *clientName;
-@property (nonatomic, readonly, copy) NSString *clientVersion;
+@property (nonatomic, readonly) AMSMappedBundleInfo *bundleInfo;
+@property (nonatomic, retain) NSString *clientName;
+@property (nonatomic, retain) NSString *clientVersion;
+@property (nonatomic, readonly) AMSProcessInfo *processInfo;
 
-+ (id)shared;
++ (id)_sharedCache;
++ (void)cacheUserAgent:(id)arg1 forBundleIdentifier:(id)arg2;
++ (id)cachedUserAgentForBundleIdentifier:(id)arg1;
++ (id)userAgentForProcessInfo:(id)arg1;
 
 - (void).cxx_destruct;
+- (id)_compileAndShouldCache:(bool*)arg1;
 - (id)_iOSComponentBuildVersion;
-- (id)_iOSComponentClientInfoWithBundleID:(id)arg1;
+- (id)_iOSComponentClientInfo;
 - (id)_iOSComponentDeviceModel;
-- (id)_iOSComponentFairPlayDeviceType;
 - (id)_iOSComponentHardwarePlatform;
-- (id)_iOSComponentParentheticalWithFairPlayDeviceType:(id)arg1;
 - (id)_iOSComponentProductVersion;
-- (bool)_iOSFairPlayDeviceType:(unsigned int*)arg1 error:(id*)arg2;
+- (id)_sharedComponentFairPlayDeviceType;
 - (id)_sharedComponentFrameworkVersion;
-- (void)cacheUserAgent:(id)arg1 forBundleIdentifier:(id)arg2;
-- (id)cachedUserAgentForBundleIdentifier:(id)arg1;
+- (id)_sharedComponentParentheticalWithFairPlayDeviceType:(id)arg1;
+- (id)bundleInfo;
 - (id)clientName;
-- (id)clientNameForBundleIdentifier:(id)arg1;
 - (id)clientVersion;
-- (id)clientVersionForBundleIdentifier:(id)arg1;
-- (id)init;
-- (id)userAgentForBundleIdentifier:(id)arg1 additionalComponents:(id)arg2;
-- (id)userAgentForBundleIdentifier:(id)arg1 additionalComponents:(id)arg2 addAccountMediaTypeComponent:(bool)arg3;
+- (id)compile;
+- (id)initWithProcessInfo:(id)arg1;
+- (id)processInfo;
+- (void)setClientName:(id)arg1;
+- (void)setClientVersion:(id)arg1;
 
 @end

@@ -4,12 +4,14 @@
 
 @interface SSVPBPlayActivityEvent : PBCodable <NSCopying> {
     NSString * _buildVersion;
+    long long  _characterDisplayedCount;
     NSString * _cloudAlbumID;
     unsigned long long  _cloudPlaylistID;
     long long  _containerAdamID;
     NSString * _containerID;
     int  _containerType;
     NSString * _deviceName;
+    int  _displayType;
     int  _endReasonType;
     SSVPBPlayActivityEnqueuerProperties * _enqueuerProperties;
     long long  _equivalencySourceAdamID;
@@ -21,6 +23,7 @@
     NSString * _featureName;
     NSString * _globalPlaylistID;
     struct { 
+        unsigned int characterDisplayedCount : 1; 
         unsigned int cloudPlaylistID : 1; 
         unsigned int containerAdamID : 1; 
         unsigned int equivalencySourceAdamID : 1; 
@@ -39,6 +42,7 @@
         unsigned int tvShowPurchasedAdamID : 1; 
         unsigned int tvShowSubscriptionAdamID : 1; 
         unsigned int containerType : 1; 
+        unsigned int displayType : 1; 
         unsigned int endReasonType : 1; 
         unsigned int eventType : 1; 
         unsigned int itemType : 1; 
@@ -59,6 +63,7 @@
     double  _itemEndTime;
     double  _itemStartTime;
     int  _itemType;
+    NSString * _lyricLanguage;
     NSString * _lyricsID;
     int  _mediaType;
     bool  _offline;
@@ -90,12 +95,14 @@
 }
 
 @property (nonatomic, retain) NSString *buildVersion;
+@property (nonatomic) long long characterDisplayedCount;
 @property (nonatomic, retain) NSString *cloudAlbumID;
 @property (nonatomic) unsigned long long cloudPlaylistID;
 @property (nonatomic) long long containerAdamID;
 @property (nonatomic, retain) NSString *containerID;
 @property (nonatomic) int containerType;
 @property (nonatomic, retain) NSString *deviceName;
+@property (nonatomic) int displayType;
 @property (nonatomic) int endReasonType;
 @property (nonatomic, retain) SSVPBPlayActivityEnqueuerProperties *enqueuerProperties;
 @property (nonatomic) long long equivalencySourceAdamID;
@@ -107,12 +114,14 @@
 @property (nonatomic, retain) NSString *featureName;
 @property (nonatomic, retain) NSString *globalPlaylistID;
 @property (nonatomic, readonly) bool hasBuildVersion;
+@property (nonatomic) bool hasCharacterDisplayedCount;
 @property (nonatomic, readonly) bool hasCloudAlbumID;
 @property (nonatomic) bool hasCloudPlaylistID;
 @property (nonatomic) bool hasContainerAdamID;
 @property (nonatomic, readonly) bool hasContainerID;
 @property (nonatomic) bool hasContainerType;
 @property (nonatomic, readonly) bool hasDeviceName;
+@property (nonatomic) bool hasDisplayType;
 @property (nonatomic) bool hasEndReasonType;
 @property (nonatomic, readonly) bool hasEnqueuerProperties;
 @property (nonatomic) bool hasEquivalencySourceAdamID;
@@ -130,6 +139,7 @@
 @property (nonatomic) bool hasItemEndTime;
 @property (nonatomic) bool hasItemStartTime;
 @property (nonatomic) bool hasItemType;
+@property (nonatomic, readonly) bool hasLyricLanguage;
 @property (nonatomic, readonly) bool hasLyricsID;
 @property (nonatomic) bool hasMediaType;
 @property (nonatomic) bool hasOffline;
@@ -165,6 +175,7 @@
 @property (nonatomic) double itemEndTime;
 @property (nonatomic) double itemStartTime;
 @property (nonatomic) int itemType;
+@property (nonatomic, retain) NSString *lyricLanguage;
 @property (nonatomic, retain) NSString *lyricsID;
 @property (nonatomic) int mediaType;
 @property (nonatomic) bool offline;
@@ -196,6 +207,7 @@
 
 - (void).cxx_destruct;
 - (int)StringAsContainerType:(id)arg1;
+- (int)StringAsDisplayType:(id)arg1;
 - (int)StringAsEndReasonType:(id)arg1;
 - (int)StringAsEventType:(id)arg1;
 - (int)StringAsItemType:(id)arg1;
@@ -204,6 +216,7 @@
 - (int)StringAsSourceType:(id)arg1;
 - (int)StringAsSystemReleaseType:(id)arg1;
 - (id)buildVersion;
+- (long long)characterDisplayedCount;
 - (id)cloudAlbumID;
 - (unsigned long long)cloudPlaylistID;
 - (long long)containerAdamID;
@@ -215,6 +228,8 @@
 - (id)description;
 - (id)deviceName;
 - (id)dictionaryRepresentation;
+- (int)displayType;
+- (id)displayTypeAsString:(int)arg1;
 - (int)endReasonType;
 - (id)endReasonTypeAsString:(int)arg1;
 - (id)enqueuerProperties;
@@ -228,12 +243,14 @@
 - (id)featureName;
 - (id)globalPlaylistID;
 - (bool)hasBuildVersion;
+- (bool)hasCharacterDisplayedCount;
 - (bool)hasCloudAlbumID;
 - (bool)hasCloudPlaylistID;
 - (bool)hasContainerAdamID;
 - (bool)hasContainerID;
 - (bool)hasContainerType;
 - (bool)hasDeviceName;
+- (bool)hasDisplayType;
 - (bool)hasEndReasonType;
 - (bool)hasEnqueuerProperties;
 - (bool)hasEquivalencySourceAdamID;
@@ -251,6 +268,7 @@
 - (bool)hasItemEndTime;
 - (bool)hasItemStartTime;
 - (bool)hasItemType;
+- (bool)hasLyricLanguage;
 - (bool)hasLyricsID;
 - (bool)hasMediaType;
 - (bool)hasOffline;
@@ -289,6 +307,7 @@
 - (double)itemStartTime;
 - (int)itemType;
 - (id)itemTypeAsString:(int)arg1;
+- (id)lyricLanguage;
 - (id)lyricsID;
 - (int)mediaType;
 - (id)mediaTypeAsString:(int)arg1;
@@ -308,12 +327,14 @@
 - (id)requestingBundleVersion;
 - (bool)sBEnabled;
 - (void)setBuildVersion:(id)arg1;
+- (void)setCharacterDisplayedCount:(long long)arg1;
 - (void)setCloudAlbumID:(id)arg1;
 - (void)setCloudPlaylistID:(unsigned long long)arg1;
 - (void)setContainerAdamID:(long long)arg1;
 - (void)setContainerID:(id)arg1;
 - (void)setContainerType:(int)arg1;
 - (void)setDeviceName:(id)arg1;
+- (void)setDisplayType:(int)arg1;
 - (void)setEndReasonType:(int)arg1;
 - (void)setEnqueuerProperties:(id)arg1;
 - (void)setEquivalencySourceAdamID:(long long)arg1;
@@ -324,9 +345,11 @@
 - (void)setExternalID:(id)arg1;
 - (void)setFeatureName:(id)arg1;
 - (void)setGlobalPlaylistID:(id)arg1;
+- (void)setHasCharacterDisplayedCount:(bool)arg1;
 - (void)setHasCloudPlaylistID:(bool)arg1;
 - (void)setHasContainerAdamID:(bool)arg1;
 - (void)setHasContainerType:(bool)arg1;
+- (void)setHasDisplayType:(bool)arg1;
 - (void)setHasEndReasonType:(bool)arg1;
 - (void)setHasEquivalencySourceAdamID:(bool)arg1;
 - (void)setHasEventDateTimestamp:(bool)arg1;
@@ -361,6 +384,7 @@
 - (void)setItemEndTime:(double)arg1;
 - (void)setItemStartTime:(double)arg1;
 - (void)setItemType:(int)arg1;
+- (void)setLyricLanguage:(id)arg1;
 - (void)setLyricsID:(id)arg1;
 - (void)setMediaType:(int)arg1;
 - (void)setOffline:(bool)arg1;

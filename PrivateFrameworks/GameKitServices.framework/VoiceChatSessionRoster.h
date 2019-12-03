@@ -30,7 +30,7 @@
 - (unsigned int)focusID;
 - (bool)hasFocus;
 - (id)initWithGKSession:(id)arg1 peerID:(id)arg2 voiceChatSession:(id)arg3 sendQueue:(id)arg4;
-- (void)peer:(id)arg1 didChangeState:(int)arg2;
+- (void)peer:(id)arg1 didChangeState:(unsigned int)arg2;
 - (void)processSubscribeBeacon:(struct tagVoiceChatBeacon { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; }*)arg1 beaconState:(id)arg2 fromPeer:(id)arg3;
 - (void)processUnsubscribeBeacon:(struct tagVoiceChatBeacon { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; }*)arg1 beaconState:(id)arg2 fromPeer:(id)arg3;
 - (bool)recalculateFocusRating;

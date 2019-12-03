@@ -5,6 +5,7 @@
 @interface CNPropertyGroupDateItem : CNPropertyGroupItem
 
 + (id)emptyValueForLabel:(id)arg1;
++ (id)initialValueForLabel:(id)arg1 group:(id)arg2;
 + (void)initialize;
 
 - (id)bestValue:(id)arg1;

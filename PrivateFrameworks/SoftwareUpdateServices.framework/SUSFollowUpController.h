@@ -14,6 +14,7 @@
 
 - (void)SUSFollowUpControllerBadgeSettings;
 - (void)SUSFollowUpControllerUnbadgeSettings;
+- (void)dealloc;
 - (void)dismissAutoUpdateFollowUp;
 - (void)dismissBadgeOnlyFollowUp;
 - (void)dismissFollowUp;

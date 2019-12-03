@@ -3,31 +3,34 @@
  */
 
 @interface FBSSceneClientIdentity : NSObject <BSDescriptionProviding, NSCopying> {
-    NSString * _bundleIdentifier;
     bool  _local;
+    RBSProcessIdentity * _processIdentity;
 }
 
-@property (nonatomic, copy) NSString *bundleIdentifier;
+@property (nonatomic, readonly, copy) NSString *bundleIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (getter=isLocal, nonatomic, readonly) bool local;
+@property (nonatomic, readonly, copy) RBSProcessIdentity *processIdentity;
 @property (readonly) Class superclass;
 
 + (id)identityForBundleID:(id)arg1;
++ (id)identityForProcessIdentity:(id)arg1;
 + (id)localIdentity;
 
 - (void).cxx_destruct;
+- (id)_init;
 - (id)bundleIdentifier;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithBundleID:(id)arg1;
+- (id)init;
 - (bool)isEqual:(id)arg1;
 - (bool)isLocal;
-- (void)setBundleIdentifier:(id)arg1;
+- (id)processIdentity;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 

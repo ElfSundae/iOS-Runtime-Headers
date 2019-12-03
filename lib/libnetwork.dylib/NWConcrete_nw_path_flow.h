@@ -34,6 +34,7 @@
     unsigned int  nexus_key_length;
     unsigned int  nexus_port;
     NSObject<OS_nw_endpoint> * remote_endpoint;
+    NSObject<OS_nw_array> * resolved_endpoints;
     unsigned char  tfo_cookie;
     unsigned char  tfo_cookie_len;
     unsigned int  viable;

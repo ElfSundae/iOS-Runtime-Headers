@@ -4,6 +4,7 @@
 
 @interface RPStoreInfo : NSObject {
     NSString * _appName;
+    NSArray * _artworkDictionary;
     NSString * _author;
     NSString * _bundleID;
     NSArray * _categories;
@@ -11,6 +12,7 @@
 }
 
 @property (nonatomic, retain) NSString *appName;
+@property (nonatomic, retain) NSArray *artworkDictionary;
 @property (nonatomic, retain) NSString *author;
 @property (nonatomic, retain) NSString *bundleID;
 @property (nonatomic, retain) NSArray *categories;
@@ -18,12 +20,14 @@
 
 - (void).cxx_destruct;
 - (id)appName;
+- (id)artworkDictionary;
 - (id)author;
 - (id)bundleID;
 - (id)categories;
 - (id)dictionary;
 - (id)itemURL;
 - (void)setAppName:(id)arg1;
+- (void)setArtworkDictionary:(id)arg1;
 - (void)setAuthor:(id)arg1;
 - (void)setBundleID:(id)arg1;
 - (void)setCategories:(id)arg1;

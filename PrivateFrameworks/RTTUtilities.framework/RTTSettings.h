@@ -4,6 +4,7 @@
 
 @interface RTTSettings : NSObject {
     NSMutableSet * _registeredNotifications;
+    NSMutableDictionary * _serverCachedSettings;
     NSLock * _synchronizeDomainsLock;
     NSMutableSet * _synchronizePreferences;
     NSMutableDictionary * _updateBlocks;
@@ -45,6 +46,8 @@
 - (bool)boolValueForKey:(id)arg1 andContext:(id)arg2 withDefaultValue:(bool)arg3;
 - (bool)boolValueForKey:(id)arg1 withDefaultValue:(bool)arg2;
 - (id)cannedResponses;
+- (void)clearAllServerSettingsCache;
+- (void)clearServerSettingsCacheForKey:(id)arg1;
 - (bool)continuityRTTIsSupported;
 - (id)currentLocale;
 - (void)dealloc;
@@ -99,5 +102,6 @@
 - (void)updateGizmoValueIfNeeded:(id)arg1 forPreferenceKey:(id)arg2;
 - (id)uuidFromContext:(id)arg1;
 - (id)valueForPreferenceKey:(id)arg1;
+- (id)valueForPreferenceKey:(id)arg1 andContext:(id)arg2;
 
 @end

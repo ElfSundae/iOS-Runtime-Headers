@@ -6,10 +6,10 @@
     bool  _correctedValue;
     int  _flag;
     struct { 
-        unsigned int flag : 1; 
-        unsigned int correctedValue : 1; 
-        unsigned int originalValue : 1; 
-    }  _has;
+        unsigned int has_flag : 1; 
+        unsigned int has_correctedValue : 1; 
+        unsigned int has_originalValue : 1; 
+    }  _flags;
     bool  _originalValue;
 }
 
@@ -19,6 +19,8 @@
 @property (nonatomic) bool hasFlag;
 @property (nonatomic) bool hasOriginalValue;
 @property (nonatomic) bool originalValue;
+
++ (bool)isValid:(id)arg1;
 
 - (int)StringAsFlag:(id)arg1;
 - (void)copyTo:(id)arg1;
@@ -35,6 +37,7 @@
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (bool)originalValue;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setCorrectedValue:(bool)arg1;
 - (void)setFlag:(int)arg1;

@@ -4,13 +4,13 @@
 
 @interface _HDBackgroundRunningAssertion : HDAssertion {
     BKSProcessAssertion * _bksAssertion;
-    HDXPCClient * _client;
+    HDHealthStoreClient * _client;
     CLInUseAssertion * _coreLocationAssertion;
     bool  _shouldAcquireCLAssertion;
 }
 
 @property (nonatomic, retain) BKSProcessAssertion *bksAssertion;
-@property (nonatomic, readonly) HDXPCClient *client;
+@property (nonatomic, readonly) HDHealthStoreClient *client;
 @property (nonatomic, retain) CLInUseAssertion *coreLocationAssertion;
 @property (nonatomic, readonly) bool shouldAcquireCLAssertion;
 

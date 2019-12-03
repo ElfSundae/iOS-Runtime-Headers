@@ -5,7 +5,6 @@
 @interface FAFamilyNotification : NSObject <NSSecureCoding> {
     NSString * _actionButtonLabel;
     NSURL * _activateActionURL;
-    NSURL * _clearActionURL;
     NSString * _clientIdentifier;
     NSString * _delegateMachServiceName;
     NSURL * _dismissActionlURL;
@@ -29,7 +28,6 @@
 
 @property (copy) NSString *actionButtonLabel;
 @property (copy) NSURL *activateActionURL;
-@property (copy) NSURL *clearActionURL;
 @property (copy) NSString *clientIdentifier;
 @property (copy) NSString *delegateMachServiceName;
 @property (copy) NSURL *dismissActionlURL;
@@ -56,7 +54,6 @@
 - (id)actionButtonLabel;
 - (id)activateActionURL;
 - (id)cacheDictionaryRepresentation;
-- (id)clearActionURL;
 - (id)clientIdentifier;
 - (id)delegateMachServiceName;
 - (id)description;
@@ -77,7 +74,6 @@
 - (id)relevanceDate;
 - (void)setActionButtonLabel:(id)arg1;
 - (void)setActivateActionURL:(id)arg1;
-- (void)setClearActionURL:(id)arg1;
 - (void)setClientIdentifier:(id)arg1;
 - (void)setDelegateMachServiceName:(id)arg1;
 - (void)setDismissActionlURL:(id)arg1;

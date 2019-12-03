@@ -3,10 +3,28 @@
  */
 
 @interface VKPolylinePath : NSObject {
+    bool  _distanceSnapping;
+    struct optional<std::__1::vector<double, std::__1::allocator<double> > > { 
+        bool _hasValue; 
+        union ValueUnion { 
+            unsigned char data[24]; 
+            struct vector<double, std::__1::allocator<double> > { 
+                double *__begin_; 
+                double *__end_; 
+                struct __compressed_pair<double *, std::__1::allocator<double> > { 
+                    double *__value_; 
+                } __end_cap_; 
+            } type; 
+        } _value; 
+    }  _distances;
     VKPolylineOverlay * _overlay;
-    bool  _ownsPoints;
-    unsigned int  _pointCount;
-    struct Matrix<float, 2, 1> { float x1[2]; } * _points;
+    struct vector<gm::Matrix<float, 2, 1>, std::__1::allocator<gm::Matrix<float, 2, 1> > > { 
+        struct Matrix<float, 2, 1> {} *__begin_; 
+        struct Matrix<float, 2, 1> {} *__end_; 
+        struct __compressed_pair<gm::Matrix<float, 2, 1> *, std::__1::allocator<gm::Matrix<float, 2, 1> > > { 
+            struct Matrix<float, 2, 1> {} *__value_; 
+        } __end_cap_; 
+    }  _points;
     struct PolylineCoordinate { 
         unsigned int index; 
         float offset; 
@@ -34,6 +52,7 @@
 @property (nonatomic) unsigned char trafficSpeed;
 
 - (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)assignPoints:(struct Matrix<float, 2, 1> { float x1[2]; }*)arg1 count:(unsigned int)arg2;
 - (void)assignTo:(id)arg1 withSegment:(const struct TrafficSegment { unsigned int x1; unsigned char x2; }*)arg2;
 - (void)dealloc;
@@ -56,5 +75,6 @@
 - (void)splitTrafficSegmentationAndAddTo:(id)arg1 with:(struct TrafficSegmentsAlongRoute { struct vector<md::TrafficSegment, std::__1::allocator<md::TrafficSegment> > { struct TrafficSegment {} *x_1_1_1; struct TrafficSegment {} *x_1_1_2; struct __compressed_pair<md::TrafficSegment *, std::__1::allocator<md::TrafficSegment> > { struct TrafficSegment {} *x_3_2_1; } x_1_1_3; } x1; }*)arg2 shouldSnap:(bool)arg3;
 - (double)startDistance;
 - (unsigned char)trafficSpeed;
+- (void)updateDistances:(bool)arg1;
 
 @end

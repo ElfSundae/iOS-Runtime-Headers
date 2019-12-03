@@ -3,6 +3,7 @@
  */
 
 @interface _UIFocusMapSnapshot : NSObject <_UIFocusRegionSearchContext> {
+    bool  _clipToSnapshotRect;
     NSMutableArray * _containersBeingAdded;
     NSMutableArray * _containersBeingAddedFocusSystems;
     bool  _didCaptureSnapshot;
@@ -18,6 +19,7 @@
     <_UIFocusRegionContainer> * _regionsContainer;
     <_UIFocusRegionContainer> * _rootContainer;
     <_UIFocusMapArea> * _searchArea;
+    _UIFocusSearchInfo * _searchInfo;
 }
 
 @property (nonatomic, readonly) <UICoordinateSpace> *coordinateSpace;
@@ -34,6 +36,7 @@
 @property (nonatomic, readonly) <_UIFocusRegionContainer> *rootContainer;
 @property (nonatomic, readonly) UIScreen *screen;
 @property (getter=_searchArea, nonatomic, readonly) <_UIFocusMapArea> *searchArea;
+@property (nonatomic, retain) _UIFocusSearchInfo *searchInfo;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -60,5 +63,7 @@
 - (id)rootContainer;
 - (id)screen;
 - (id)searchArea;
+- (id)searchInfo;
+- (void)setSearchInfo:(id)arg1;
 
 @end

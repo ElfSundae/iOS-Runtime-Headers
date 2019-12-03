@@ -11,8 +11,8 @@
 
 @optional
 
-- (void)statusBar:(UIStatusBar *)arg1 didTriggerButtonType:(long long)arg2 withAction:(long long)arg3;
-- (void)statusBar:(UIStatusBar *)arg1 didTriggerButtonType:(long long)arg2 withAction:(long long)arg3 context:(id)arg4;
+- (void)statusBar:(UIStatusBar_Base *)arg1 didTriggerButtonType:(long long)arg2 withAction:(long long)arg3;
+- (void)statusBar:(UIStatusBar_Base *)arg1 didTriggerButtonType:(long long)arg2 withAction:(long long)arg3 context:(id)arg4;
 - (UISystemNavigationAction *)statusBarSystemNavigationAction:(UIStatusBar_Base *)arg1;
 
 @end

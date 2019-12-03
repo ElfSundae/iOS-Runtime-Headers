@@ -8,6 +8,12 @@
         double x; 
         double y; 
     }  _center;
+    struct UIEdgeInsets { 
+        double top; 
+        double left; 
+        double bottom; 
+        double right; 
+    }  _defaultLayoutMargins;
     NSString * _elementKind;
     struct CGRect { 
         struct CGPoint { 
@@ -27,6 +33,7 @@
         unsigned int isHidden : 1; 
         unsigned int isClone : 1; 
     }  _layoutFlags;
+    unsigned long long  _maskedCorners;
     NSString * _reuseIdentifier;
     struct CGSize { 
         double width; 
@@ -60,11 +67,13 @@
 @property (nonatomic, readonly) UIBezierPath *collisionBoundingPath;
 @property (nonatomic, readonly) unsigned long long collisionBoundsType;
 @property (readonly, copy) NSString *debugDescription;
+@property (getter=_defaultLayoutMargins, setter=_setDefaultLayoutMargins:, nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } defaultLayoutMargins;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } frame;
 @property (readonly) unsigned long long hash;
 @property (getter=isHidden, nonatomic) bool hidden;
 @property (nonatomic, retain) NSIndexPath *indexPath;
+@property (getter=_maskedCorners, setter=_setMaskedCorners:, nonatomic) unsigned long long maskedCorners;
 @property (nonatomic, readonly) unsigned long long representedElementCategory;
 @property (nonatomic, readonly) NSString *representedElementKind;
 @property (nonatomic) struct CGSize { double x1; double x2; } size;
@@ -82,6 +91,7 @@
 - (void).cxx_destruct;
 - (id)__elementKind;
 - (id)__indexPath;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_defaultLayoutMargins;
 - (id)_elementKind;
 - (bool)_isCell;
 - (bool)_isClone;
@@ -89,9 +99,12 @@
 - (bool)_isEquivalentTo:(id)arg1;
 - (bool)_isSupplementaryView;
 - (bool)_isTransitionVisibleTo:(id)arg1;
+- (unsigned long long)_maskedCorners;
 - (id)_reuseIdentifier;
+- (void)_setDefaultLayoutMargins:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)_setElementKind:(id)arg1;
 - (void)_setIsClone:(bool)arg1;
+- (void)_setMaskedCorners:(unsigned long long)arg1;
 - (void)_setReuseIdentifier:(id)arg1;
 - (void)_setZPosition:(long long)arg1;
 - (long long)_zPosition;
@@ -107,6 +120,7 @@
 - (id)initialLayoutAttributesForInsertedDecorationElementOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (bool)isEqual:(id)arg1;
 - (bool)isHidden;
+- (bool)isSizeEqualForPreferredFittingAttributes:(id)arg1;
 - (unsigned long long)representedElementCategory;
 - (id)representedElementKind;
 - (void)setAlpha:(double)arg1;

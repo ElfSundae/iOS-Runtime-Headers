@@ -5,14 +5,30 @@
 @interface GEOTransitBaseFare : PBCodable <GEOTransitFare, NSCopying> {
     bool  _cashOnly;
     struct { 
-        unsigned int numberOfLegs : 1; 
-        unsigned int paymentType : 1; 
-        unsigned int cashOnly : 1; 
-    }  _has;
+        unsigned int has_numberOfLegs : 1; 
+        unsigned int has_paymentType : 1; 
+        unsigned int has_cashOnly : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_price : 1; 
+        unsigned int read_supportedPaymentMethods : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_price : 1; 
+        unsigned int wrote_supportedPaymentMethods : 1; 
+        unsigned int wrote_numberOfLegs : 1; 
+        unsigned int wrote_paymentType : 1; 
+        unsigned int wrote_cashOnly : 1; 
+    }  _flags;
     unsigned int  _numberOfLegs;
     int  _paymentType;
     GEOTransitPrice * _price;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     NSMutableArray * _supportedPaymentMethods;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic, readonly) bool cashOnly;
@@ -32,15 +48,21 @@
 @property (nonatomic, readonly) NSArray *supportedICCardProviders;
 @property (nonatomic, retain) NSMutableArray *supportedPaymentMethods;
 @property (nonatomic, readonly) long long type;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic, readonly) NSDecimalNumber *value;
 
++ (bool)isValid:(id)arg1;
 + (Class)supportedPaymentMethodType;
 
 - (void).cxx_destruct;
 - (int)StringAsPaymentType:(id)arg1;
+- (void)_addNoFlagsSupportedPaymentMethod:(id)arg1;
+- (void)_readPrice;
+- (void)_readSupportedPaymentMethods;
 - (void)addSupportedPaymentMethod:(id)arg1;
 - (bool)cashOnly;
 - (void)clearSupportedPaymentMethods;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)currencyCode;
@@ -51,12 +73,15 @@
 - (bool)hasPaymentType;
 - (bool)hasPrice;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (unsigned int)numberOfLegs;
 - (int)paymentType;
 - (id)paymentTypeAsString:(int)arg1;
 - (id)price;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setCashOnly:(bool)arg1;
 - (void)setHasCashOnly:(bool)arg1;
@@ -71,6 +96,7 @@
 - (id)supportedPaymentMethods;
 - (unsigned long long)supportedPaymentMethodsCount;
 - (long long)type;
+- (id)unknownFields;
 - (id)value;
 - (void)writeTo:(id)arg1;
 

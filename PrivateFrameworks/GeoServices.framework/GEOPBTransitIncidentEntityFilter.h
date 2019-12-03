@@ -15,9 +15,12 @@
 @property (nonatomic, readonly) unsigned long long nextStopMuidsCount;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (void)addNextStopMuid:(unsigned long long)arg1;
 - (void)clearNextStopMuids;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -29,6 +32,7 @@
 - (unsigned long long)nextStopMuidAtIndex:(unsigned long long)arg1;
 - (unsigned long long*)nextStopMuids;
 - (unsigned long long)nextStopMuidsCount;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setNextStopMuids:(unsigned long long*)arg1 count:(unsigned long long)arg2;
 - (id)unknownFields;

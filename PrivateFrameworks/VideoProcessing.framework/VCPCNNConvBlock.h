@@ -23,7 +23,6 @@
 - (void).cxx_destruct;
 - (int)constructBlock:(id)arg1 context:(id)arg2;
 - (id)initWithParameters:(int)arg1 filterNum:(int)arg2 chunk:(int)arg3 reLU:(bool)arg4 padding:(bool)arg5 groups:(int)arg6 stride:(int)arg7 batchNorm:(bool)arg8;
-- (int)initializeRest;
 - (bool)supportGPU;
 - (bool)useGPU;
 

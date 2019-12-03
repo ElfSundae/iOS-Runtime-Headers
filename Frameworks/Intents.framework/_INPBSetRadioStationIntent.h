@@ -3,6 +3,7 @@
  */
 
 @interface _INPBSetRadioStationIntent : PBCodable <NSCopying, NSSecureCoding, _INPBSetRadioStationIntent> {
+    bool  __encodeLegacyGloryData;
     _INPBString * _channel;
     _INPBDouble * _frequency;
     struct { 
@@ -14,6 +15,7 @@
     _INPBString * _stationName;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic, retain) _INPBString *channel;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -31,11 +33,16 @@
 @property (nonatomic, retain) _INPBString *stationName;
 @property (readonly) Class superclass;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (int)StringAsRadioType:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)channel;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (id)frequency;
 - (bool)hasChannel;
 - (bool)hasFrequency;
@@ -44,6 +51,7 @@
 - (bool)hasRadioType;
 - (bool)hasStationName;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)intentMetadata;
 - (bool)isEqual:(id)arg1;
 - (id)presetNumber;

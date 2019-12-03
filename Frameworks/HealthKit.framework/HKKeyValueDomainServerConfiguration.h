@@ -8,7 +8,7 @@
 }
 
 @property (nonatomic, readonly) long long category;
-@property (nonatomic, readonly) NSString *domainName;
+@property (nonatomic, readonly, copy) NSString *domainName;
 
 + (bool)supportsSecureCoding;
 

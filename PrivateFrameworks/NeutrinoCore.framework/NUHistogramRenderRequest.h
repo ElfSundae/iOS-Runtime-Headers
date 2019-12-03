@@ -2,11 +2,18 @@
    Image: /System/Library/PrivateFrameworks/NeutrinoCore.framework/NeutrinoCore
  */
 
-@interface NUHistogramRenderRequest : NURenderRequest {
+@interface NUHistogramRenderRequest : NURenderRequest <NUTimeBased> {
     NUColorSpace * _colorSpace;
+    NUHistogramParameters * _parameters;
 }
 
 @property (nonatomic, retain) NUColorSpace *colorSpace;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, copy) NUHistogramParameters *parameters;
+@property (readonly) Class superclass;
+@property (nonatomic) struct { long long x1; int x2; unsigned int x3; long long x4; } time;
 
 - (void).cxx_destruct;
 - (id)colorSpace;
@@ -14,7 +21,9 @@
 - (id)initWithComposition:(id)arg1;
 - (long long)mediaComponentType;
 - (id)newRenderJob;
+- (id)parameters;
 - (void)setColorSpace:(id)arg1;
+- (void)setParameters:(id)arg1;
 - (void)submit:(id /* block */)arg1;
 
 @end

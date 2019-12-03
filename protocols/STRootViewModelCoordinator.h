@@ -6,7 +6,7 @@
 @required
 
 - (NSObject<STContentPrivacyViewModelCoordinator> *)contentPrivacyCoordinator;
-- (id)coordinatorForChild:(STUser *)arg1;
+- (id)coordinatorForChild:(STUIUser *)arg1 deviceIdentifier:(NSString *)arg2 usageReportType:(NSNumber *)arg3;
 - (void)enableScreenTimeWithPIN:(void *)arg1 completionHandler:(void *)arg2; // needs 2 arg types, found 7: NSString *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSError *, void*
 - (bool)hasAlreadyEnteredPINForSession;
 - (bool)hasShownMiniBuddy;

@@ -17,6 +17,7 @@
 + (id)furlongs;
 + (id)hectometers;
 + (id)inches;
++ (void)initialize;
 + (id)kilometers;
 + (id)lightyears;
 + (id)megameters;
@@ -35,5 +36,9 @@
 
 - (id)hk_equivalentBaseUnit;
 - (id)hk_equivalentUnitWithConstant:(double)arg1 coefficient:(double)arg2;
+
+// Image: /System/Library/Frameworks/Intents.framework/Intents
+
+- (id)_intents_stringRepresentation;
 
 @end

@@ -3,31 +3,31 @@
  */
 
 @interface CLKComplicationTemplateActivity : CLKComplicationTemplate {
-    double  _briskMinutesPercentComplete;
-    double  _energyPercentComplete;
+    double  _exercisePercentComplete;
     long long  _family;
     bool  _hideDots;
-    double  _standHoursPercentComplete;
+    double  _movePercentComplete;
+    double  _standPercentComplete;
 }
 
-@property (nonatomic) double briskMinutesPercentComplete;
-@property (nonatomic) double energyPercentComplete;
+@property (nonatomic) double exercisePercentComplete;
 @property (getter=dotsAreHidden, nonatomic) bool hideDots;
-@property (nonatomic) double standHoursPercentComplete;
+@property (nonatomic) double movePercentComplete;
+@property (nonatomic) double standPercentComplete;
 
 + (id)activityTemplateWithFamily:(long long)arg1;
 
 - (void)_enumerateBOOLKeysWithBlock:(id /* block */)arg1;
 - (void)_enumerateFloatKeysWithBlock:(id /* block */)arg1;
-- (double)briskMinutesPercentComplete;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (bool)dotsAreHidden;
-- (double)energyPercentComplete;
+- (double)exercisePercentComplete;
 - (bool)isCompatibleWithFamily:(long long)arg1;
-- (void)setBriskMinutesPercentComplete:(double)arg1;
-- (void)setEnergyPercentComplete:(double)arg1;
+- (double)movePercentComplete;
+- (void)setExercisePercentComplete:(double)arg1;
 - (void)setHideDots:(bool)arg1;
-- (void)setStandHoursPercentComplete:(double)arg1;
-- (double)standHoursPercentComplete;
+- (void)setMovePercentComplete:(double)arg1;
+- (void)setStandPercentComplete:(double)arg1;
+- (double)standPercentComplete;
 
 @end

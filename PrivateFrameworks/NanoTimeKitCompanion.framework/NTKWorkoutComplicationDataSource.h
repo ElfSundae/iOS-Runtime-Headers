@@ -6,7 +6,6 @@
     _HKFirstPartyWorkoutSnapshot * _activeWorkoutSnapshot;
     NSArray * _animationImages;
     bool  _deviceIsLocked;
-    bool  _frozen;
     bool  _hasKnownLastWorkoutState;
     NSObject<OS_dispatch_queue> * _healthQueue;
     HKHealthStore * _healthStore;
@@ -32,7 +31,6 @@
 + (id)_workoutTintColor;
 + (bool)acceptsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
 + (bool)acceptsComplicationType:(unsigned long long)arg1 forDevice:(id)arg2;
-+ (Class)richComplicationDisplayViewClassForType:(unsigned long long)arg1 family:(long long)arg2 forDevice:(id)arg3;
 
 - (void).cxx_destruct;
 - (id)_animationImages;
@@ -48,9 +46,10 @@
 - (void)_startObserving;
 - (void)_stopLastWorkoutQuerySynchronously:(bool)arg1;
 - (void)_stopObservingSynchronously:(bool)arg1;
-- (id)_templateForActiveWorkout;
+- (id)_templateForActiveWorkoutInSwitcher:(bool)arg1;
 - (void)_updateActiveWorkoutState;
 - (id)activeWorkoutSnapshot;
+- (bool)alwaysShowIdealizedTemplateInSwitcher;
 - (id)complicationApplicationIdentifier;
 - (id)currentSwitcherTemplate;
 - (void)dealloc;
@@ -64,8 +63,9 @@
 - (id)lastWorkout;
 - (id)lastWorkoutQuery;
 - (id)lockedTemplate;
-- (void)pause;
 - (void)resume;
+- (void)resumeAnimations;
+- (Class)richComplicationDisplayViewClassForDevice:(id)arg1;
 - (void)setActiveWorkoutSnapshot:(id)arg1;
 - (void)setHasKnownLastWorkoutState:(bool)arg1;
 - (void)setHealthStore:(id)arg1;

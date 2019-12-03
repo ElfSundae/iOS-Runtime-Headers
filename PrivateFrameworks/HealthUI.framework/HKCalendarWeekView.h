@@ -25,14 +25,14 @@
 @property (nonatomic, readonly) HKDateCache *dateCache;
 @property (nonatomic) double dateDiameter;
 @property (nonatomic) double dateTopMargin;
-@property (nonatomic, readonly) NSArray *dayCells;
+@property (nonatomic, readonly, copy) NSArray *dayCells;
 @property (nonatomic) <HKCalendarWeekViewDelegate> *delegate;
 @property (nonatomic) long long firstDayOfMonthCellIndex;
 @property (nonatomic) double leadingMargin;
 @property (nonatomic) double monthTitleBottomMargin;
 @property (nonatomic) double monthTitleTopMargin;
 @property (nonatomic, retain) UIView<HKCalendarMonthTitleFormatting> *monthTitleView;
-@property (nonatomic, retain) NSDate *monthWeekStart;
+@property (nonatomic, copy) NSDate *monthWeekStart;
 @property (nonatomic, retain) HKCalendarDayCell *pressedDayCell;
 @property (nonatomic) long long pressedDayOfWeek;
 

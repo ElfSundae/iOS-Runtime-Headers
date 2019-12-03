@@ -21,6 +21,7 @@
     double  _ppt_delay;
     bool  _ppt_presentComposeRecipientView;
     bool  _ppt_scrollComposeRecipientsView;
+    bool  _publishOriginals;
     NSArray * _recipients;
     PXCMMSendBackSuggestionSource * _sendBackSuggestionSource;
     unsigned long long  _sourceType;
@@ -30,6 +31,7 @@
     long long  _videosCount;
 }
 
+@property (nonatomic, readonly) PXCMMActionManager *actionManager;
 @property (nonatomic, readonly) unsigned long long activityType;
 @property (nonatomic) long long count;
 @property (nonatomic, readonly) PXAssetsDataSourceManager *dataSourceManager;
@@ -48,6 +50,7 @@
 @property (nonatomic) double ppt_delay;
 @property (nonatomic) bool ppt_presentComposeRecipientView;
 @property (nonatomic) bool ppt_scrollComposeRecipientsView;
+@property (nonatomic) bool publishOriginals;
 @property (nonatomic, copy) NSArray *recipients;
 @property (nonatomic, retain) PXCMMSendBackSuggestionSource *sendBackSuggestionSource;
 @property (nonatomic) unsigned long long sourceType;
@@ -81,6 +84,7 @@
 - (double)ppt_delay;
 - (bool)ppt_presentComposeRecipientView;
 - (bool)ppt_scrollComposeRecipientsView;
+- (bool)publishOriginals;
 - (id)recipients;
 - (id)sendBackSuggestionSource;
 - (void)setCount:(long long)arg1;
@@ -98,6 +102,7 @@
 - (void)setPpt_delay:(double)arg1;
 - (void)setPpt_presentComposeRecipientView:(bool)arg1;
 - (void)setPpt_scrollComposeRecipientsView:(bool)arg1;
+- (void)setPublishOriginals:(bool)arg1;
 - (void)setRecipients:(id)arg1;
 - (void)setSendBackSuggestionSource:(id)arg1;
 - (void)setSourceType:(unsigned long long)arg1;

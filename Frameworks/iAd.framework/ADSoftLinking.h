@@ -67,7 +67,6 @@
 @property (nonatomic, readonly) int (*VTImageRotationSessionInvalidate;
 @property (nonatomic, readonly) int (*VTImageRotationSessionRelease;
 @property (nonatomic, readonly) int (*VTImageRotationSessionTransferImage;
-@property (nonatomic, readonly) Class WBUFormDataControllerWK1;
 @property (nonatomic, readonly) NSMutableDictionary *boundSymbols;
 @property (nonatomic, readonly) struct __CFString { }*kIOSurfaceAllocSize;
 @property (nonatomic, readonly) struct __CFString { }*kIOSurfaceBytesPerElement;
@@ -85,6 +84,7 @@
 
 + (id)sharedManager;
 
+- (void).cxx_destruct;
 - (Class)ABNewPersonViewController;
 - (Class)ABPeoplePickerNavigationController;
 - (id)AVLayerVideoGravityResizeAspect;
@@ -136,7 +136,6 @@
 - (int (*)VTImageRotationSessionInvalidate;
 - (int (*)VTImageRotationSessionRelease;
 - (int (*)VTImageRotationSessionTransferImage;
-- (Class)WBUFormDataControllerWK1;
 - (Class)_classWithName:(id)arg1 inFrameworkAtPath:(id)arg2;
 - (void)_loadFrameworkIfNeeded:(id)arg1;
 - (void*)_pointerToSymbolWithName:(id)arg1 inFrameworkAtPath:(id)arg2;

@@ -87,6 +87,10 @@
 
 + (id)tsu_currentThreadName;
 
+// Image: /System/Library/PrivateFrameworks/PodcastsKit.framework/PodcastsKit
+
++ (void)mainThread:(id /* block */)arg1;
+
 // Image: /System/Library/PrivateFrameworks/ScreenReaderCore.framework/ScreenReaderCore
 
 - (void)registerForStopNotification;
@@ -106,11 +110,13 @@
 + (id)tsp_currentReadCompletionInfo;
 + (bool)tsp_hasReadFileAccess;
 + (bool)tsp_isArchiverThread;
++ (bool)tsp_isPerformingLegacyDocumentReferenceResolution;
 + (bool)tsp_isRunningFinalizeHandlersForLegacyDocument;
 + (bool)tsp_isRunningFinalizeHandlersForUpgrade;
 + (bool)tsp_isUnarchiverThread;
 + (id)tsp_newUnarchiverQueueWithName:(const char *)arg1;
 + (void)tsp_performSynchronousArchiverOperationUsingBlock:(id /* block */)arg1;
++ (void)tsp_performSynchronousLegacyDocumentReferenceResolutionUsingBlock:(id /* block */)arg1;
 + (void)tsp_performSynchronousOperationWithReadFileAccessUsingBlock:(id /* block */)arg1;
 + (void)tsp_performSynchronousOperationWithThreadDictionaryObject:(id)arg1 forKey:(id)arg2 usingBlock:(id /* block */)arg3;
 + (void)tsp_runFinalizeHandlersForReadCompletionInfo:(id)arg1 usingBlock:(id /* block */)arg2;

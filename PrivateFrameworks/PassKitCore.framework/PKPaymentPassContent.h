@@ -11,6 +11,7 @@
     NSURL * _messageServiceURL;
     bool  _supportsTransitOnly;
     NSString * _transactionPushTopic;
+    NSURL * _transactionServiceRegistrationURL;
     NSURL * _transactionServiceURL;
     NSArray * _upgradeRequests;
 }
@@ -23,6 +24,7 @@
 @property (nonatomic, copy) NSURL *messageServiceURL;
 @property (nonatomic) bool supportsTransitOnly;
 @property (nonatomic, copy) NSString *transactionPushTopic;
+@property (nonatomic, copy) NSURL *transactionServiceRegistrationURL;
 @property (nonatomic, copy) NSURL *transactionServiceURL;
 @property (nonatomic, copy) NSArray *upgradeRequests;
 
@@ -46,10 +48,12 @@
 - (void)setMessageServiceURL:(id)arg1;
 - (void)setSupportsTransitOnly:(bool)arg1;
 - (void)setTransactionPushTopic:(id)arg1;
+- (void)setTransactionServiceRegistrationURL:(id)arg1;
 - (void)setTransactionServiceURL:(id)arg1;
 - (void)setUpgradeRequests:(id)arg1;
 - (bool)supportsTransitOnly;
 - (id)transactionPushTopic;
+- (id)transactionServiceRegistrationURL;
 - (id)transactionServiceURL;
 - (id)upgradeRequests;
 

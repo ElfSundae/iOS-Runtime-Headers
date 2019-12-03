@@ -7,9 +7,15 @@
     bool  _hasSymptomsBasedHistoricalWiFiQuality;
     bool  _hasSymptomsBasedInstantCellQuality;
     bool  _hasSymptomsBasedInstantWiFiQuality;
+    bool  _iRATCallInProgress;
+    unsigned long long  _iRATCallNumber;
+    WRM_iRATInterface * _interface;
     bool  _lastFetchInProgress;
     NSNumber * _lastSignalStrength;
     double  _lastSuccessfulSymptomsFetch;
+    double  _lastiRATFetch;
+    SiriCoreLinkRecommendationInfo * _linkMetricsInfo;
+    SiriCoreLinkRecommendationInfo * _linkRecommendationInfo;
     NSHashTable * _observers;
     NSObject<OS_nw_path_evaluator> * _pathEvaluator;
     int  _pathStatus;
@@ -33,7 +39,10 @@
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
+- (bool)_defaultBTLinkRecommendation;
+- (bool)_defaultWiFiLinkRecommendation;
 - (bool)_getConnectionSuccessRate:(id)arg1 hasMetric:(bool*)arg2;
+- (void)_getLinkRecommendationSafe:(bool)arg1 recommendation:(id /* block */)arg2;
 - (void)_getNetworkPerformanceFeed;
 - (id)_init;
 - (void)_pathUpdated:(id)arg1;
@@ -42,20 +51,26 @@
 - (long long)_reportWiFiHistoricalQuality;
 - (long long)_reportWiFiInstantQuality;
 - (void)_stopMonitoringNetwork;
+- (void)_subscribeToLinkRecommendations:(id)arg1;
 - (id)_wiFiManagerClient;
 - (void)acquireWiFiAssertion:(long long)arg1;
 - (void)addObserver:(id)arg1;
 - (long long)anyNetworkQuality;
 - (long long)cellularNetworkQuality;
+- (void)deRegisterWithWirelessCoexManager;
 - (void)dealloc;
 - (void)forceFastDormancy;
+- (void)getLinkRecommendation:(bool)arg1 recommendation:(id /* block */)arg2;
 - (void)getNetworkPerformanceFeed;
 - (void)getQualityReport:(id /* block */)arg1;
 - (void)getSignalStrength:(id*)arg1 subscriptionCount:(unsigned long long*)arg2;
+- (void)registerWithWirelessCoexManager;
 - (void)releaseWiFiAssertion;
 - (void)removeObserver:(id)arg1;
+- (void)resetLinkMetrics;
 - (void)startMonitoringNetworkForHost:(id)arg1;
 - (void)stopMonitoringNetwork;
+- (void)updateLinkMetrics:(id)arg1 completion:(id /* block */)arg2;
 - (long long)wifiNetworkQuality;
 
 @end

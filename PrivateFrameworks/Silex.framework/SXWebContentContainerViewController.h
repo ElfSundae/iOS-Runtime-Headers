@@ -4,6 +4,7 @@
 
 @interface SXWebContentContainerViewController : UIViewController {
     <SXWebContentConfigurationManager> * _configurationManager;
+    SXWebContentDeveloperSettings * _developerSettings;
     <SXWebContentErrorProvider> * _errorProvider;
     <SXWebContentInteractionProvider> * _interactionProvider;
     <SXWebContentPresentationManager> * _presentationManager;
@@ -11,6 +12,7 @@
 }
 
 @property (nonatomic, readonly) <SXWebContentConfigurationManager> *configurationManager;
+@property (nonatomic, retain) SXWebContentDeveloperSettings *developerSettings;
 @property (nonatomic, readonly) <SXWebContentErrorProvider> *errorProvider;
 @property (nonatomic, readonly) <SXWebContentInteractionProvider> *interactionProvider;
 @property (nonatomic, readonly) <SXWebContentPresentationManager> *presentationManager;
@@ -19,12 +21,14 @@
 - (void).cxx_destruct;
 - (bool)allowUserInteractionForInteractionType:(unsigned long long)arg1;
 - (id)configurationManager;
+- (id)developerSettings;
 - (id)errorProvider;
 - (id)initWithWebContentViewController:(id)arg1 interactionProvider:(id)arg2 errorProvider:(id)arg3 configurationManager:(id)arg4 presentationManager:(id)arg5;
 - (id)interactionProvider;
 - (void)loadHTMLString:(id)arg1 baseURL:(id)arg2;
 - (void)loadURL:(id)arg1;
 - (id)presentationManager;
+- (void)setDeveloperSettings:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (id)webContentViewController;

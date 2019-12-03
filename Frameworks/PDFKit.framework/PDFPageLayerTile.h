@@ -4,7 +4,7 @@
 
 @interface PDFPageLayerTile : CALayer <PDFTilePoolDelegate> {
     int  generationID;
-    bool  isWorking;
+    _Atomic bool  isWorking;
     struct CGRect { 
         struct CGPoint { 
             double x; 

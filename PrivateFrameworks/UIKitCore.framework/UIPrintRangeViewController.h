@@ -41,6 +41,5 @@
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLoad;
-- (void)willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 
 @end

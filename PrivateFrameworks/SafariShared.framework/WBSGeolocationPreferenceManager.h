@@ -16,6 +16,7 @@
 
 - (void).cxx_destruct;
 - (bool)_isDateLessThanOneDayAgo:(id)arg1;
+- (void)_removePermissionsPassingTest:(id /* block */)arg1 completionHandler:(id /* block */)arg2;
 - (void)_setValue:(id)arg1 forDomain:(id)arg2 shouldIncludeTimestamp:(bool)arg3 completionHandler:(id /* block */)arg4;
 - (id)defaultPreferenceValueForPreferenceIfNotCustomized:(id)arg1;
 - (id)geolocationPreference;
@@ -29,8 +30,10 @@
 - (id)preferences;
 - (long long)preferencesStoreKeyForPreference:(id)arg1;
 - (void)removeAllPermissions;
+- (void)removeAllTemporaryPermissions;
 - (void)removePermissionsAddedAfterDate:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)removePreferenceValuesForDomains:(id)arg1 fromPreference:(id)arg2 completionHandler:(id /* block */)arg3;
+- (void)removeTemporaryPermissionsAddedAfterDate:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)setDefaultGeolocationSetting:(long long)arg1;
 - (void)setGeolocationSetting:(long long)arg1 forDomain:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)setValue:(id)arg1 ofPreference:(id)arg2 forDomain:(id)arg3 completionHandler:(id /* block */)arg4;

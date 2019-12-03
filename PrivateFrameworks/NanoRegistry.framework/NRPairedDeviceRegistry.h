@@ -3,22 +3,24 @@
  */
 
 @interface NRPairedDeviceRegistry : NRRegistryClient <NRPairedDeviceRegistryXPCFrameworkDelegate> {
+    unsigned long long  _callCount;
     bool  _disconnected;
     unsigned short  _lastCompatibilityState;
     unsigned long long  _lastStatus;
     NSMutableDictionary * _legacyDevices;
     NSObject<OS_dispatch_queue> * _legacyDevicesQueue;
     NSObject<OS_dispatch_queue> * _legacyDevicesQueueFirst;
-    NSMutableArray * _waitingToPairBlocks;
+    NSMutableArray * _waitingForRegistryUpdateBlocks;
 }
 
+@property (nonatomic) unsigned long long callCount;
 @property (nonatomic) unsigned short lastCompatibilityState;
 @property (nonatomic) unsigned long long lastStatus;
 @property (nonatomic, retain) NSMutableDictionary *legacyDevices;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *legacyDevicesQueue;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *legacyDevicesQueueFirst;
 @property (nonatomic, readonly) unsigned long long status;
-@property (nonatomic, retain) NSMutableArray *waitingToPairBlocks;
+@property (nonatomic, retain) NSMutableArray *waitingForRegistryUpdateBlocks;
 
 // Image: /System/Library/PrivateFrameworks/NanoRegistry.framework/NanoRegistry
 
@@ -35,7 +37,7 @@
 - (void)_fireCompatibilityStateChangedNotificationWithCollection:(id)arg1;
 - (void)_fireCompatibilityStateStatusNotificationsWithCollection:(id)arg1;
 - (void)_fireStatusChangedNotificationWithCollection:(id)arg1;
-- (void)_fireWaitingToPairBlocks;
+- (void)_fireWaitingForUpdateBlocksWithCollection:(id)arg1;
 - (void)_getActiveDeviceAssertionsWithInlineBlock:(id /* block */)arg1;
 - (id)_getChangeHistory;
 - (id)_getClientInfo;
@@ -46,6 +48,7 @@
 - (void)_getSwitchEventsFromIndex:(unsigned int)arg1 toIndex:(unsigned int)arg2 inlineCallback:(id /* block */)arg3;
 - (void)_invalidateActiveDeviceAssertionWithIdentifier:(id)arg1;
 - (id)_legacyDevicesWithCollection:(id)arg1 secureProperties:(id)arg2;
+- (id)_mostlyPairedDevices;
 - (void)_pingActiveGizmoWithPriority:(long long)arg1 withMessageSize:(unsigned long long)arg2 withBlock:(id /* block */)arg3;
 - (void)_postNotification:(id)arg1 forDeviceID:(id)arg2 withUserInfo:(id)arg3;
 - (void)_submitAlbertPairingReport;
@@ -56,6 +59,7 @@
 - (void)beginMigrationWithDevice:(id)arg1 passcode:(id)arg2 withBlock:(id /* block */)arg3;
 - (void)beginMigrationWithDevice:(id)arg1 withCompletion:(id /* block */)arg2;
 - (id)blockAndQueryVersions;
+- (unsigned long long)callCount;
 - (void)checkIfFlaggedForRecoveryWithCompletion:(id /* block */)arg1;
 - (void)clearRecoveryFlagWithCompletion:(id /* block */)arg1;
 - (void)companionOOBDiscoverAndPairWithName:(id)arg1 withOutOfBandPairingKey:(id)arg2 withOptions:(id)arg3 operationHasBegun:(id /* block */)arg4;
@@ -84,11 +88,14 @@
 - (void)getSwitchEventsFromIndex:(unsigned int)arg1 inlineCallback:(id /* block */)arg2;
 - (void)gizmoOOBAdvertiseAndPairWithName:(id)arg1 operationHasBegun:(id /* block */)arg2;
 - (void)gizmoPasscodeAdvertiseAndPairWithName:(id)arg1 operationHasBegun:(id /* block */)arg2;
+- (bool)hasCompletedInitialSyncForPairingID:(id)arg1;
 - (id)init;
 - (id)initWithBoost:(bool)arg1;
 - (id)initWithBoost:(bool)arg1 disconnected:(bool)arg2;
+- (bool)isAssertionActive:(id)arg1;
 - (bool)isKeychainEnabled;
 - (bool)isPaired;
+- (void)isPhoneReadyToMigrateDevice:(id)arg1 withCompletion:(id /* block */)arg2;
 - (bool)isWatchSetupPushActive;
 - (void)keepPhoneUnlockedInternalTestSPI:(id /* block */)arg1;
 - (unsigned short)lastCompatibilityState;
@@ -98,12 +105,16 @@
 - (id)legacyDevices;
 - (id)legacyDevicesQueue;
 - (id)legacyDevicesQueueFirst;
+- (void)logCallFrequency;
 - (long long)maxPairedDeviceCount;
 - (long long)maxPairingCompatibilityVersion;
 - (id)migrationConsentRequestData;
 - (unsigned long long)migrationCountForPairingID:(id)arg1;
 - (long long)minPairingCompatibilityVersion;
 - (long long)minQuickSwitchCompatibilityVersion;
+- (id)nonActiveDeviceForBTDeviceID:(id)arg1;
+- (id)nonActiveDeviceForBluetoothID:(id)arg1;
+- (id)nonActiveDeviceForIDSDevice:(id)arg1;
 - (void)notifyActivationCompleted:(id)arg1 withSuccess:(bool)arg2;
 - (void)notifyPairingShouldContinue;
 - (void)notifyPasscode:(id)arg1 forDevice:(id)arg2;
@@ -124,6 +135,7 @@
 - (void)setActivePairedDevice:(id)arg1 isMagicSwitch:(bool)arg2 operationHasCompleted:(id /* block */)arg3;
 - (void)setActivePairedDevice:(id)arg1 operationHasCompleted:(id /* block */)arg2;
 - (void)setActivePairedDevice:(id)arg1 withActiveDeviceAssertionHandler:(id /* block */)arg2;
+- (void)setCallCount:(unsigned long long)arg1;
 - (void)setLastCompatibilityState:(unsigned short)arg1;
 - (void)setLastStatus:(unsigned long long)arg1;
 - (void)setLegacyDevices:(id)arg1;
@@ -131,7 +143,7 @@
 - (void)setLegacyDevicesQueueFirst:(id)arg1;
 - (void)setMigrationConsented:(bool)arg1 forDevice:(id)arg2 withBlock:(id /* block */)arg3;
 - (void)setMigrationConsented:(bool)arg1 forDeviceID:(id)arg2 withBlock:(id /* block */)arg3;
-- (void)setWaitingToPairBlocks:(id)arg1;
+- (void)setWaitingForRegistryUpdateBlocks:(id)arg1;
 - (void)startWatchSetupPush;
 - (unsigned long long)status;
 - (void)stopWatchSetupPush;
@@ -145,12 +157,17 @@
 - (void)unpairWithDevice:(id)arg1 withOptions:(id)arg2 operationHasBegun:(id /* block */)arg3;
 - (void)unpairWithSimulator:(id)arg1 withQueue:(id)arg2 withCompletion:(id /* block */)arg3;
 - (void)userIsCheckingForUpdate;
+- (id)waitForActiveDevice;
 - (id)waitForActivePairedDevice;
 - (void)waitForPairingStorePathPairingID:(id /* block */)arg1;
 - (void)waitForWatchPairingExtendedMetadataForAdvertisedName:(id)arg1 completion:(id /* block */)arg2;
-- (id)waitingToPairBlocks;
+- (id)waitingForRegistryUpdateBlocks;
 - (void)xpcDeviceID:(id)arg1 needsPasscode:(id)arg2;
 - (void)xpcHasNewOOBKey:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/BulletinDistributorCompanion.framework/BulletinDistributorCompanion
+
++ (id)blt_boundedWaitForActivePairedDevice;
 
 // Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon
 

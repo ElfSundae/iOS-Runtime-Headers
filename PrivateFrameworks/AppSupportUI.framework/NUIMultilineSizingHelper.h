@@ -10,8 +10,9 @@
     }  _flags;
     double  _preferredMaxLayoutWidth;
     UIView * _view;
-    /* Warning: unhandled struct encoding: '{objc_super="receiver"@"super_class"#}' */ struct objc_super { 
+    struct objc_super { 
         id receiver; 
+        Class super_class; 
     }  _view_super;
 }
 

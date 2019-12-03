@@ -5,6 +5,7 @@
 
 @required
 
+- (void)_isPlaceholderViewSelector;
 - (UIView *)associatedView;
 - (UIView *)fallbackView;
 - (struct CGSize { double x1; double x2; })fixedSize;

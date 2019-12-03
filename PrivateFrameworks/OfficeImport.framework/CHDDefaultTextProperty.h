@@ -22,9 +22,9 @@
 
 + (id)defaultTextPropertyWithResources:(id)arg1;
 
+- (void).cxx_destruct;
 - (id)contentFormat;
 - (unsigned long long)contentFormatId;
-- (void)dealloc;
 - (int)defaultTextType;
 - (id)description;
 - (id)initWithResources:(id)arg1;

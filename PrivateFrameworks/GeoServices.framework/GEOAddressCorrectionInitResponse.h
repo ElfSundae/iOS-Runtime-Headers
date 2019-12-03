@@ -7,10 +7,24 @@
     NSString * _addressID;
     GEOLocation * _addressLocation;
     struct { 
-        unsigned int numberOfVisitsBucketSize : 1; 
-        unsigned int statusCode : 1; 
-    }  _has;
+        unsigned int has_numberOfVisitsBucketSize : 1; 
+        unsigned int has_statusCode : 1; 
+        unsigned int read_addressID : 1; 
+        unsigned int read_addressLocation : 1; 
+        unsigned int read_address : 1; 
+        unsigned int wrote_addressID : 1; 
+        unsigned int wrote_addressLocation : 1; 
+        unsigned int wrote_address : 1; 
+        unsigned int wrote_numberOfVisitsBucketSize : 1; 
+        unsigned int wrote_statusCode : 1; 
+    }  _flags;
     unsigned int  _numberOfVisitsBucketSize;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     int  _statusCode;
 }
 
@@ -25,9 +39,14 @@
 @property (nonatomic) int statusCode;
 
 + (Class)addressType;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsStatusCode:(id)arg1;
+- (void)_addNoFlagsAddress:(id)arg1;
+- (void)_readAddress;
+- (void)_readAddressID;
+- (void)_readAddressLocation;
 - (void)addAddress:(id)arg1;
 - (id)address;
 - (id)addressAtIndex:(unsigned long long)arg1;
@@ -35,6 +54,7 @@
 - (id)addressID;
 - (id)addressLocation;
 - (void)clearAddress;
+- (void)clearSensitiveFields;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -44,9 +64,12 @@
 - (bool)hasNumberOfVisitsBucketSize;
 - (bool)hasStatusCode;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (unsigned int)numberOfVisitsBucketSize;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAddress:(id)arg1;
 - (void)setAddressID:(id)arg1;

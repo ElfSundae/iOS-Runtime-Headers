@@ -6,8 +6,8 @@
     int  _componentType;
     NSMutableArray * _externalActionDetails;
     struct { 
-        unsigned int componentType : 1; 
-    }  _has;
+        unsigned int has_componentType : 1; 
+    }  _flags;
     PBUnknownFields * _unknownFields;
 }
 
@@ -17,11 +17,13 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 + (Class)externalActionDetailType;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsComponentType:(id)arg1;
 - (void)addExternalActionDetail:(id)arg1;
 - (void)clearExternalActionDetails;
+- (void)clearUnknownFields:(bool)arg1;
 - (int)componentType;
 - (id)componentTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
@@ -35,6 +37,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setComponentType:(int)arg1;
 - (void)setExternalActionDetails:(id)arg1;

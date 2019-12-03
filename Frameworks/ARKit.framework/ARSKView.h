@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/ARKit.framework/ARKit
  */
 
-@interface ARSKView : SKView <ARInternalSessionObserver> {
+@interface ARSKView : SKView <ARInternalSessionObserver, ARSessionProviding> {
     long long  _interfaceOrientation;
     NSSet * _lastFrameAnchors;
     NSMutableDictionary * _nodesByAnchorIdentifier;
@@ -27,7 +27,6 @@
 - (id)anchorForNode:(id)arg1;
 - (void)commonInit;
 - (void)dealloc;
-- (void)deviceOrientationDidChange:(id)arg1;
 - (id)hitTest:(struct CGPoint { double x1; double x2; })arg1 types:(unsigned long long)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;

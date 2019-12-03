@@ -28,7 +28,7 @@
 
 - (void).cxx_destruct;
 - (bool)_beepIfNecessaryWithShortPromptType:(unsigned long long)arg1 textToSpeak:(id)arg2;
-- (bool)_headphonesAreInUse;
+- (bool)_deviceSettingsAllowSpeech;
 - (bool)_isVoiceGuidanceEnabled;
 - (void)_speak:(id)arg1 fallbackPrompt:(unsigned long long)arg2 completionBlock:(id /* block */)arg3;
 - (unsigned long long)appContext;
@@ -38,6 +38,7 @@
 - (id)delegate;
 - (void)endSession;
 - (id)init;
+- (bool)isSpeaking;
 - (id)language;
 - (bool)muteSpeechOverride;
 - (void)prepareToAnnounce;

@@ -16,6 +16,7 @@
 
 - (void)close;
 - (id)delegate;
+- (id)init;
 - (void)open;
 - (id)propertyForKey:(id)arg1;
 - (void)removeFromRunLoop:(id)arg1 forMode:(id)arg2;

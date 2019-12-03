@@ -8,7 +8,7 @@
     NSObject<OS_dispatch_queue> * _delegateCalloutQueue;
     NSError * _error;
     bool  _monitoring;
-    <FBSProcess> * _process;
+    <FBSProcessInternal> * _process;
     bool  _violated;
 }
 
@@ -18,7 +18,7 @@
 @property (nonatomic, readonly) NSError *error;
 @property (readonly) unsigned long long hash;
 @property (getter=isMonitoring, nonatomic, readonly) bool monitoring;
-@property (nonatomic, readonly) <FBSProcess> *process;
+@property (nonatomic, readonly) <FBSProcessInternal> *process;
 @property (readonly) Class superclass;
 @property (getter=isViolated, nonatomic, readonly) bool violated;
 

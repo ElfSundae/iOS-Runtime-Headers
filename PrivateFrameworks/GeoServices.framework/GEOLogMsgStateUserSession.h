@@ -5,12 +5,12 @@
 @interface GEOLogMsgStateUserSession : PBCodable <NSCopying> {
     GEOLocalTime * _eventTime;
     struct { 
-        unsigned int navSessionId : 1; 
-        unsigned int sessionId : 1; 
-        unsigned int navSessionRelativeTimestamp : 1; 
-        unsigned int relativeTimestamp : 1; 
-        unsigned int sequenceNumber : 1; 
-    }  _has;
+        unsigned int has_navSessionId : 1; 
+        unsigned int has_sessionId : 1; 
+        unsigned int has_navSessionRelativeTimestamp : 1; 
+        unsigned int has_relativeTimestamp : 1; 
+        unsigned int has_sequenceNumber : 1; 
+    }  _flags;
     struct GEOSessionID { 
         unsigned long long _high; 
         unsigned long long _low; 
@@ -37,6 +37,8 @@
 @property (nonatomic) unsigned int sequenceNumber;
 @property (nonatomic) struct GEOSessionID { unsigned long long x1; unsigned long long x2; } sessionId;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -54,6 +56,7 @@
 - (void)mergeFrom:(id)arg1;
 - (struct GEOSessionID { unsigned long long x1; unsigned long long x2; })navSessionId;
 - (double)navSessionRelativeTimestamp;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (double)relativeTimestamp;
 - (unsigned int)sequenceNumber;

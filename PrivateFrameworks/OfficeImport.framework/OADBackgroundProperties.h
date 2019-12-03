@@ -7,7 +7,7 @@
     OADFill * mFill;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)effects;
 - (id)fill;
 - (unsigned long long)hash;

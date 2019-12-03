@@ -26,7 +26,6 @@
 - (id)description;
 - (id)discoveryTimestamp;
 - (id)endDate;
-- (void)finalize;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithItems:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;

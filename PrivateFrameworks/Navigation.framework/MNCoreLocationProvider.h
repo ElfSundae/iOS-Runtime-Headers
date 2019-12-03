@@ -8,6 +8,8 @@
     id /* block */  _authorizationRequestBlock;
     int  _authorizationStatus;
     CLLocationManager * _clLocationManager;
+    NSRunLoop * _debug_deinitRunLoop;
+    NSRunLoop * _debug_initRunLoop;
     <MNLocationProviderDelegate> * _delegate;
     NSBundle * _effectiveBundle;
     NSString * _effectiveBundleIdentifier;
@@ -37,13 +39,15 @@
 @property (nonatomic) bool matchInfoEnabled;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) double timeScale;
-@property bool updatingLocations;
+@property (nonatomic, readonly) unsigned long long traceVersion;
+@property (nonatomic) bool updatingLocations;
 @property (nonatomic, readonly) bool usesCLMapCorrection;
 
 - (void).cxx_destruct;
 - (id)_clLocationManager;
 - (void)_createCLLocationManager;
 - (void)_resetForNewEffectiveBundle;
+- (void)_sharedInit;
 - (void)_updateAuthorizationStatus;
 - (long long)activityType;
 - (id /* block */)authorizationRequestBlock;
@@ -57,6 +61,8 @@
 - (double)expectedGpsUpdateInterval;
 - (int)headingOrientation;
 - (id)init;
+- (id)initWithEffectiveBundle:(id)arg1;
+- (id)initWithEffectiveBundleIdentifier:(id)arg1;
 - (bool)isLocationServicesPreferencesDialogEnabled;
 - (bool)isSimulation;
 - (bool)isTracePlayer;
@@ -93,6 +99,7 @@
 - (void)stopUpdatingVehicleHeading;
 - (void)stopUpdatingVehicleSpeed;
 - (double)timeScale;
+- (unsigned long long)traceVersion;
 - (bool)updatingLocations;
 - (bool)usesCLMapCorrection;
 

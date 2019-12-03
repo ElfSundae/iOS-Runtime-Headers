@@ -3,7 +3,7 @@
  */
 
 @interface TLKLabelItem : NSObject <TLKGridArrangementItem> {
-    TLKFormattedText * _formattedText;
+    TLKRichText * _richText;
     struct _NSRange { 
         unsigned long long location; 
         unsigned long long length; 
@@ -24,16 +24,16 @@
     NUISizeCache * sizeCache;
 }
 
-@property struct _NSRange { unsigned long long x1; unsigned long long x2; } columnRange;
+@property (nonatomic) struct _NSRange { unsigned long long x1; unsigned long long x2; } columnRange;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property TLKFormattedText *formattedText;
-@property struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } frame;
+@property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } frame;
 @property (readonly) unsigned long long hash;
-@property double horizontalCompressionResistance;
-@property double horizontalHuggingPriority;
-@property unsigned long long row;
-@property (retain) NUISizeCache *sizeCache;
+@property (nonatomic) double horizontalCompressionResistance;
+@property (nonatomic) double horizontalHuggingPriority;
+@property (nonatomic, retain) TLKRichText *richText;
+@property (nonatomic) unsigned long long row;
+@property (nonatomic, retain) NUISizeCache *sizeCache;
 @property (readonly) Class superclass;
 
 + (id)font;
@@ -42,24 +42,25 @@
 + (void)setFontValues;
 
 - (void).cxx_destruct;
+- (id)attributedString;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })columnRange;
 - (float)contentCompressionResistancePriorityForAxis:(long long)arg1;
 - (float)contentHuggingPriorityForAxis:(long long)arg1;
 - (id)description;
 - (double)effectiveBaselineOffsetFromContentBottom;
 - (double)effectiveFirstBaselineOffsetFromContentTop;
-- (id)formattedText;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })frame;
 - (double)horizontalCompressionResistance;
 - (double)horizontalHuggingPriority;
 - (id)init;
 - (bool)isLayoutSizeDependentOnPerpendicularAxis;
+- (id)richText;
 - (unsigned long long)row;
 - (void)setColumnRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
-- (void)setFormattedText:(id)arg1;
 - (void)setFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setHorizontalCompressionResistance:(double)arg1;
 - (void)setHorizontalHuggingPriority:(double)arg1;
+- (void)setRichText:(id)arg1;
 - (void)setRow:(unsigned long long)arg1;
 - (void)setSizeCache:(id)arg1;
 - (id)sizeCache;

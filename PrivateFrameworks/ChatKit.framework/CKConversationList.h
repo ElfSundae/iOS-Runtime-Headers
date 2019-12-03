@@ -6,12 +6,14 @@
     bool  _loadedConversations;
     bool  _loadingConversations;
     CKConversation * _pendingConversation;
+    bool  _remergingConversations;
     NSMutableArray * _trackedConversations;
 }
 
 @property (nonatomic, readonly) bool loadedConversations;
 @property (nonatomic, readonly) bool loadingConversations;
 @property (nonatomic, retain) CKConversation *pendingConversation;
+@property (nonatomic) bool remergingConversations;
 
 + (void)_handleRegistryDidLoadNotification:(id)arg1;
 + (void)initialize;
@@ -22,7 +24,6 @@
 - (void)_abPartialChanged:(id)arg1;
 - (id)_alreadyTrackedConversationForChat:(id)arg1;
 - (void)_beginTrackingAllExistingChatsIfNeeded;
-- (void)_beginTrackingAllExistingChatsIfNeededAsync;
 - (id)_beginTrackingConversationWithChat:(id)arg1;
 - (void)_beginTrackingConversationWithChat:(id)arg1 completion:(id /* block */)arg2;
 - (void)_chatItemsDidChange:(id)arg1;
@@ -31,16 +32,20 @@
 - (id)_copyEntitiesForAddressStrings:(id)arg1;
 - (void)_handleChatJoinStateDidChange:(id)arg1;
 - (void)_handleChatParticipantsDidChange:(id)arg1;
+- (void)_handleChatsDidRemergeNotification:(id)arg1;
+- (void)_handleChatsWillRemergeNotification:(id)arg1;
 - (void)_handleEngroupFinishedUpdating:(id)arg1;
 - (void)_handleMemoryWarning:(id)arg1;
 - (void)_handlePreferredServiceChangedNotification:(id)arg1;
 - (void)_handleRegistryDidRegisterChatNotification:(id)arg1;
 - (void)_handleRegistryWillUnregisterChatNotification:(id)arg1;
 - (bool)_isUnreadChat:(id)arg1 ignoringMessages:(id)arg2;
+- (bool)_messageFilteringEnabled;
 - (void)_postConversationListChangedNotification;
 - (void)_postConversationListUpdateVisibleConversationsNotificationForUID:(id)arg1;
+- (bool)_shouldBailBeginTrackingForCurrentProcess;
 - (bool)_shouldFilterForParticipants:(id)arg1;
-- (id)activeConversations;
+- (id)_testingTrackedConversations;
 - (void)beginTrackingConversation:(id)arg1 forChat:(id)arg2;
 - (id)conversationForExistingChat:(id)arg1;
 - (id)conversationForExistingChatWithGUID:(id)arg1;
@@ -61,10 +66,12 @@
 - (bool)loadingConversations;
 - (id)pendingConversation;
 - (id)pendingConversationCreatingIfNecessary;
+- (bool)remergingConversations;
 - (void)resetCaches;
 - (void)resort;
 - (void)setNeedsReload;
 - (void)setPendingConversation:(id)arg1;
+- (void)setRemergingConversations:(bool)arg1;
 - (void)stopTrackingConversation:(id)arg1;
 - (id)topMostConversation;
 - (void)unpendConversation;

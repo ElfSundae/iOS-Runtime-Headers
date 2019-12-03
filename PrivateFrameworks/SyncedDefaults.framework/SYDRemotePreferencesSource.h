@@ -3,33 +3,37 @@
  */
 
 @interface SYDRemotePreferencesSource : NSObject {
+    struct __CFDictionary { } * _cache;
+    SYDClient * _client;
+    struct __CFDictionary { } * _configurationDictionary;
+    struct __CFSet { } * _dirtyKeys;
+    NSMutableDictionary * _externalChanges;
     bool  _forceNextSynchronization;
     long long  _generationCount;
+    long long  _initialSyncChangeCount;
     NSObject<OS_os_transaction> * _isExecutingForClient;
+    unsigned char  _isInitialSync;
     double  _lastAccess;
     long long  _lastGenerationFromDisk;
     NSObject<OS_dispatch_source> * _memoryWarningSource;
+    bool  _memoryWarningSourceEnabled;
+    struct __CFString { } * _preferenceID;
     NSObject<OS_dispatch_queue> * _protectionQueue;
-    struct __CFDictionary { } * cache;
-    SYDClient * client;
-    struct __CFDictionary { } * configurationDictionary;
-    struct __CFSet { } * dirtyKeys;
-    NSMutableDictionary * externalChanges;
-    long long  initialSyncChangeCount;
-    unsigned char  isInitialSync;
-    struct __CFString { } * preferenceID;
-    id /* block */  registrationBlock;
-    NSObject<OS_dispatch_queue> * registrationQueue;
-    long long  storageChangeCount;
-    struct __CFURL { } * urlOnDisk;
+    id /* block */  _registrationBlock;
+    NSObject<OS_dispatch_queue> * _registrationQueue;
+    long long  _storageChangeCount;
+    struct __CFURL { } * _urlOnDisk;
 }
 
 + (id)SYDRemotePreferencesSourceConfigurationDidChangeNotification;
 + (id)SYDRemotePreferencesSourceDidChangeNotification;
++ (id)SYDUbiquitousKeyValueStoreDidChangeExternallyNotification;
++ (bool)alwaysUseKVSOnCloudKit;
 + (void)initialize;
 + (void)migrateSyncedDefaultsForBundleIdentifier:(id)arg1;
 + (void)noteAccountChanges:(id)arg1;
 + (void)resetAllApplicationsWithCompletionHandler:(id /* block */)arg1;
++ (void)setAlwaysUseKVSOnCloudKit:(bool)arg1;
 
 - (void).cxx_destruct;
 - (void)_cachePlistFromDisk;
@@ -55,6 +59,7 @@
 - (id)initWithApplicationID:(struct __CFString { }*)arg1 storeID:(struct __CFString { }*)arg2 shared:(bool)arg3;
 - (id)initWithApplicationID:(struct __CFString { }*)arg1 storeID:(struct __CFString { }*)arg2 shared:(bool)arg3 additionalSource:(bool)arg4;
 - (id)initWithApplicationID:(struct __CFString { }*)arg1 storeID:(struct __CFString { }*)arg2 shared:(bool)arg3 additionalSource:(bool)arg4 containerPath:(struct __CFString { }*)arg5;
+- (id)initWithApplicationID:(struct __CFString { }*)arg1 storeID:(struct __CFString { }*)arg2 shared:(bool)arg3 additionalSource:(bool)arg4 containerPath:(struct __CFString { }*)arg5 storeType:(long long)arg6;
 - (unsigned char)isInitialSync;
 - (long long)maximumDataLengthPerKey;
 - (long long)maximumKeyCount;
@@ -64,6 +69,7 @@
 - (void)registerForSynchronizedDefaults;
 - (void)scheduleRemoteSynchronization;
 - (id)serverSideDebugDescription;
+- (void)setCache:(struct __CFDictionary { }*)arg1;
 - (void)setDefaultsConfiguration:(id)arg1;
 - (void)setValue:(void*)arg1 forKey:(struct __CFString { }*)arg2;
 - (void)synchronizationWithCompletionHandler:(id /* block */)arg1;

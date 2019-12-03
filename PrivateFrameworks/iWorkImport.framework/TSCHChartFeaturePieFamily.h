@@ -29,6 +29,6 @@
 - (bool)supportsStartAngleRotation;
 - (bool)supportsTrendLines;
 - (void)updateTitlesForExportingModel:(id)arg1 info:(id)arg2;
-- (Class)valueAxisClassForID:(id)arg1 scale:(int)arg2;
+- (Class)valueAxisClassForID:(id)arg1 scale:(long long)arg2;
 
 @end

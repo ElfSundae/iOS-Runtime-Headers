@@ -4,7 +4,8 @@
 
 @interface AVTAvatarUpdaterFactory : NSObject
 
-+ (id /* block */)updaterForColor:(id)arg1 variationStore:(id)arg2;
-+ (id /* block */)updaterForPreset:(id)arg1;
++ (id /* block */)updaterForColor:(id)arg1 variationStore:(id)arg2 pairedColor:(id)arg3;
++ (id /* block */)updaterForPairingCategory:(id)arg1 variationStore:(id)arg2;
++ (id /* block */)updaterForPreset:(id)arg1 pairedPreset:(id)arg2;
 
 @end

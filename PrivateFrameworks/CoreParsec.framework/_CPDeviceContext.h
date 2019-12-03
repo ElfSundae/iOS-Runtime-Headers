@@ -31,7 +31,6 @@
 - (id)locale;
 - (id)osVersion;
 - (bool)readFrom:(id)arg1;
-- (bool)requiresQueryId;
 - (void)setCountry:(id)arg1;
 - (void)setDeviceModel:(id)arg1;
 - (void)setLocale:(id)arg1;

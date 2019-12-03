@@ -12,8 +12,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)dataRep;
-- (void)dealloc;
 - (id)description;
 - (id)initWithTargetLocation:(id)arg1 package:(id)arg2;
 - (bool)loadDelayedNode:(id)arg1;

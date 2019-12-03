@@ -56,6 +56,7 @@
             double height; 
         } size; 
     }  _tableBounds;
+    double  _trailingLayoutMarginSize;
     struct CGRect { 
         struct CGPoint { 
             double x; 
@@ -76,6 +77,7 @@
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } summaryFrame;
 @property (nonatomic) double summaryLabelCapFrameYOrigin;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } tableBounds;
+@property (nonatomic) double trailingLayoutMarginSize;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } unreadFrame;
 
 + (id)sharedInstance;
@@ -94,11 +96,13 @@
 - (void)setSummaryFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setSummaryLabelCapFrameYOrigin:(double)arg1;
 - (void)setTableBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (void)setTrailingLayoutMarginSize:(double)arg1;
 - (void)setUnreadFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (bool)shouldShowChevron;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })summaryFrame;
 - (double)summaryLabelCapFrameYOrigin;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })tableBounds;
+- (double)trailingLayoutMarginSize;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })unreadFrame;
 
 @end

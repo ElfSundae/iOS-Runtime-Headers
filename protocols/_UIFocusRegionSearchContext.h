@@ -13,5 +13,6 @@
 - (UIFocusSystem *)focusSystem;
 - (UIScreen *)screen;
 - (<_UIFocusMapArea> *)searchArea;
+- (_UIFocusSearchInfo *)searchInfo;
 
 @end

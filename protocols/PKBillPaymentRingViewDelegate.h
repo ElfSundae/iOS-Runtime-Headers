@@ -5,6 +5,6 @@
 
 @required
 
-- (void)billPaymentRingView:(PKBillPaymentRingView *)arg1 selectedSuggestedAmount:(PKBillPaymentSuggestedAmount *)arg2 selectedSuggestedAmountIsTarget:(bool)arg3;
+- (void)billPaymentRingView:(PKBillPaymentRingView *)arg1 selectedSuggestedAmount:(PKBillPaymentSuggestedAmount *)arg2 selectedSuggestedAmountIsTarget:(bool)arg3 userInitiatedChange:(bool)arg4;
 
 @end

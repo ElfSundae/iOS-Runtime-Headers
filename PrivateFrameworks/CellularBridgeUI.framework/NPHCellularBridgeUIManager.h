@@ -13,6 +13,8 @@
     CTXPCServiceSubscriptionInfo * _serviceSubscriptionInfo;
     NSMutableDictionary * _serviceSubscriptionInfoList;
     bool  _shouldOfferSignupCompletion;
+    CTDeviceIdentifier * _transferableRemoteDeviceID;
+    CTRemotePlan * _transferableRemotePlan;
 }
 
 @property (nonatomic, readonly) bool LTEMayImpactService;
@@ -20,6 +22,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool isAnyCellularPlanActivating;
 @property (nonatomic, readonly) NSArray *serviceSubscriptionsInUse;
 @property (nonatomic, readonly) NSArray *serviceSubscriptionsOfferingRemotePlan;
 @property (nonatomic, readonly) NSArray *serviceSubscriptionsOfferingTrialPlan;
@@ -30,6 +33,8 @@
 @property (nonatomic, readonly) bool shouldOfferTrialPlan;
 @property (nonatomic, readonly) bool shouldShowAddNewRemotePlan;
 @property (readonly) Class superclass;
+@property (nonatomic, retain) CTDeviceIdentifier *transferableRemoteDeviceID;
+@property (nonatomic, retain) CTRemotePlan *transferableRemotePlan;
 @property (nonatomic, readonly) NSString *trialPlanType;
 
 + (bool)_isSubscriptionInUse:(id)arg1;
@@ -54,7 +59,7 @@
 - (void)_localPlanInfoDidChange:(id)arg1;
 - (void)_prePromptForUserConsentIfNecessary:(id /* block */)arg1;
 - (void)_prePromptUserForConsentTextType:(long long)arg1 relevantPlanItem:(id)arg2 completionBlock:(id /* block */)arg3;
-- (void)_promptUserToPickSubscriptionContextOnViewController:(id)arg1;
+- (void)_promptUserToPickSubscriptionContextOnViewController:(id)arg1 andIsTransferFlow:(bool)arg2;
 - (id)_serviceSubscriptionInfoForSubscriptionContext:(id)arg1;
 - (void)_setUpCellularPlanDirectWithContext:(id)arg1 withCompletion:(id /* block */)arg2;
 - (void)_setUpCellularPlanWithActivationCodeOnViewController:(id)arg1 withContext:(id)arg2 withCompletion:(id /* block */)arg3 codelessActivationBlock:(id /* block */)arg4;
@@ -67,6 +72,7 @@
 - (void)_updateServiceSubscriptionInfo:(id)arg1;
 - (void)_updateShouldShowAddNewRemotePlan;
 - (void)_updateShouldWarnAboutLTEMayImpactService;
+- (void)_updateTransferableCellularPlanFromDeviceWithCSN:(id)arg1;
 - (void)activeSubscriptionsDidChange;
 - (bool)allCompanionSIMsMissing;
 - (id)carrierNameForSubscription:(id)arg1;
@@ -78,6 +84,7 @@
 - (id)displayNameForCellularPlan:(id)arg1;
 - (void)finishRemoteProvisioning;
 - (id)init;
+- (bool)isAnyCellularPlanActivating;
 - (bool)isCarrierSetupFlowUnsupported;
 - (bool)isGeminiSetup;
 - (id)selectedCellularPlan;
@@ -86,9 +93,13 @@
 - (id)serviceSubscriptionsOfferingTrialPlan;
 - (id)serviceSubscriptionsShouldShowAddNewRemotePlan;
 - (id)serviceSubscriptionsToOfferUser;
+- (void)setTransferableRemoteDeviceID:(id)arg1;
+- (void)setTransferableRemotePlan:(id)arg1;
 - (void)setUpCellularPlanOnViewController:(id)arg1 withCompletion:(id /* block */)arg2;
 - (void)setUpCellularPlanOnViewController:(id)arg1 withContext:(id)arg2 withCompletion:(id /* block */)arg3;
+- (void)setUpOrTransferCellularPlanOnViewController:(id)arg1 withCompletion:(id /* block */)arg2;
 - (bool)shouldAllowUserToAddOrSetUpPlan;
+- (bool)shouldAllowUserToTransferPlanFromDeviceWithCSN:(id)arg1;
 - (bool)shouldOfferRemotePlan;
 - (bool)shouldOfferSignupCompletion;
 - (bool)shouldOfferTrialPlan;
@@ -96,6 +107,9 @@
 - (void)simStatusDidChange:(id)arg1 status:(id)arg2;
 - (void)startRemoteProvisioning;
 - (void)subscriptionInfoDidChange;
+- (void)transferCellularPlanOnViewController:(id)arg1 withCompletion:(id /* block */)arg2;
+- (id)transferableRemoteDeviceID;
+- (id)transferableRemotePlan;
 - (id)trialPlanType;
 - (void)updateCellularPlansWithFetch:(bool)arg1;
 - (id)userConsentMessageForConsentType:(long long)arg1 relevantPlanItem:(id)arg2;

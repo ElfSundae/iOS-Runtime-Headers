@@ -3,25 +3,24 @@
  */
 
 @interface STScreenTimeGroupSpecifierProvider : STRootGroupSpecifierProvider {
-    PSSpecifier * _thisDeviceSpecifier;
+    PSSpecifier * _seeAllActivitySpecifier;
     PSSpecifier * _usageSummarySpecifier;
 }
 
-@property (nonatomic, retain) PSSpecifier *thisDeviceSpecifier;
-@property (nonatomic, retain) PSSpecifier *usageSummarySpecifier;
+@property (readonly) PSSpecifier *seeAllActivitySpecifier;
+@property (readonly) PSSpecifier *usageSummarySpecifier;
 
 - (void).cxx_destruct;
+- (void)_displayNameDidChangeFrom:(id)arg1 to:(id)arg2;
+- (void)_isSharingUsageDataDidChange:(bool)arg1;
 - (void)_refreshingDidChange:(bool)arg1;
-- (id)getCoordinator:(id)arg1;
-- (id)getUsageDescription:(id)arg1;
+- (void)_showUsageDetailListController:(id)arg1;
+- (id)_usageDetailsCoordinator:(id)arg1;
+- (void)_usageReportDidChangeFrom:(id)arg1 to:(id)arg2;
 - (id)init;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
-- (void)reloadScreenTimeSummarySpecifier;
+- (id)seeAllActivitySpecifier;
 - (void)setCoordinator:(id)arg1;
-- (void)setThisDeviceSpecifier:(id)arg1;
-- (void)setUsageSummarySpecifier:(id)arg1;
-- (void)showUsageDetailController:(id)arg1;
-- (id)thisDeviceSpecifier;
 - (id)usageSummarySpecifier;
 
 @end

@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Foundation.framework/Foundation
  */
 
-@interface NSExtensionContext : NSObject <NSCopying, NSSecureCoding, NSXPCListenerDelegate, _NSExtensionAuxHostingBase> {
+@interface NSExtensionContext : NSObject <NSCopying, NSSecureCoding, NSXPCListenerDelegate, WFApplicationContextProvider, _NSExtensionAuxHostingBase> {
     NSUUID * __UUID;
     NSXPCConnection * __auxiliaryConnection;
     NSXPCListener * __auxiliaryListener;
@@ -32,11 +32,14 @@
 @property (getter=_transaction, setter=_setTransaction:, retain) NSObject<OS_os_transaction> *_transaction;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) <WFExtensionApplicationContextProviderDelegate> *extensionApplicationContextProviderDelegate;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } hostedViewMaximumAllowedSize;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } hostedViewMinimumAllowedSize;
 @property (setter=_setInputItems:, nonatomic, copy) NSArray *inputItems;
+@property (nonatomic, readonly) INIntent *intent;
 @property (readonly) Class superclass;
+@property (nonatomic) bool wfIdleTimerDisabled;
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
@@ -99,6 +102,14 @@
 - (void)openURL:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)set_UUID:(id)arg1;
 
+// Image: /System/Library/Frameworks/Intents.framework/Intents
+
+- (bool)_intents_accessedIntent;
+- (id)_intents_intent;
+- (void)_intents_setAccessedIntent:(bool)arg1;
+- (void)_intents_setIntent:(id)arg1;
+- (id)intent;
+
 // Image: /System/Library/Frameworks/IntentsUI.framework/IntentsUI
 
 - (struct CGSize { double x1; double x2; })hostedViewMaximumAllowedSize;
@@ -110,6 +121,17 @@
 - (void)completeRequestWithBroadcastURL:(id)arg1 broadcastConfiguration:(id)arg2 setupInfo:(id)arg3;
 - (void)completeRequestWithBroadcastURL:(id)arg1 setupInfo:(id)arg2;
 - (void)loadBroadcastingApplicationInfoWithCompletion:(id /* block */)arg1;
+
+// Image: /System/Library/PrivateFrameworks/ContentKit.framework/ContentKit
+
+- (id)applicationForWFApplicationContext:(id)arg1;
+- (id)bundleForWFApplicationContext:(id)arg1;
+- (id)currentUserInterfaceTypeForWFApplicationContext:(id)arg1;
+- (id)extensionApplicationContextProviderDelegate;
+- (id)keyWindowForWFApplicationContext:(id)arg1;
+- (id)notificationNameForApplicationStateEvent:(long long)arg1 applicationContext:(id)arg2;
+- (void)setExtensionApplicationContextProviderDelegate:(id)arg1;
+- (bool)shouldReverseLayoutDirection;
 
 // Image: /System/Library/PrivateFrameworks/Widgets.framework/Widgets
 

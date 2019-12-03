@@ -3,10 +3,10 @@
  */
 
 @interface CKHistoricEvent : NSObject <NSCopying, NSSecureCoding> {
-    void _firstSeen;
+    union { in /* Warning: Unrecognized filer type: 'u' using 'void*' */ void*x1; long x2; long x3; }  _firstSeen;
     void _frequency;
     void _lastDuration;
-    void _lastSeen;
+    union { in /* Warning: Unrecognized filer type: 'u' using 'void*' */ void*x1; long x2; long x3; }  _lastSeen;
     void _metadata;
     void _totalDuration;
     void identifier;
@@ -20,7 +20,6 @@
 @property (nonatomic, readonly) NSDictionary *metadata;
 @property (nonatomic, readonly) double totalDuration;
 
-+ (id)dateFormat;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;

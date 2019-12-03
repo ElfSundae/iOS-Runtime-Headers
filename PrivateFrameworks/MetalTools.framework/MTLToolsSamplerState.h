@@ -9,6 +9,7 @@
 @property (readonly) <MTLDevice> *device;
 @property (readonly) unsigned long long hash;
 @property (readonly) NSString *label;
+@property (nonatomic) unsigned long long resourceIndex;
 @property (readonly) Class superclass;
 @property (readonly) unsigned long long uniqueIdentifier;
 

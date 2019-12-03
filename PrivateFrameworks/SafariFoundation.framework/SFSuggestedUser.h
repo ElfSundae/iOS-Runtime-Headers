@@ -21,6 +21,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithValue:(id)arg1 type:(long long)arg2;
 - (bool)isEqual:(id)arg1;

@@ -18,6 +18,7 @@
 
 - (void).cxx_destruct;
 - (bool)acceptsDataObject:(id)arg1;
+- (bool)acceptsDataObjectWithStartTimestamp:(double)arg1 endTimestamp:(double)arg2 valueInCanonicalUnit:(double)arg3;
 - (id)comparisonDate;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)encodeWithCoder:(id)arg1;

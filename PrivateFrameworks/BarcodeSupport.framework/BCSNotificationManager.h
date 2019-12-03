@@ -2,13 +2,10 @@
    Image: /System/Library/PrivateFrameworks/BarcodeSupport.framework/BarcodeSupport
  */
 
-@interface BCSNotificationManager : NSObject <BCSDataProviderDelegate> {
-    BBDataProviderConnection * _bbConnection;
-    BBDataProviderProxy * _nfcBBProxy;
-    BCSNFCDataProvider * _nfcDataProvider;
+@interface BCSNotificationManager : NSObject <UNUserNotificationCenterDelegate> {
+    UNUserNotificationCenter * _nfcUserNotificationCenter;
     NSMutableSet * _notifications;
-    BBDataProviderProxy * _qrCodeBBProxy;
-    BCSQRCodeDataProvider * _qrCodeDataProvider;
+    UNUserNotificationCenter * _qrCodeUserNotificationCenter;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -19,14 +16,14 @@
 + (id)sharedManager;
 
 - (void).cxx_destruct;
-- (id)_bbProxyForCodeType:(long long)arg1;
+- (void)_configureUserNotificationCenter;
 - (id)_notificationWithIdentifier:(id)arg1;
-- (id)clearedInfoForBulletins:(id)arg1 lastClearedInfo:(id)arg2;
-- (void)getPNGDataForAttachmentUUID:(id)arg1 recordID:(id)arg2 sizeConstraints:(id)arg3 withCompletionHandler:(id /* block */)arg4;
-- (void)handleBulletinActionResponse:(id)arg1 withCompletion:(id /* block */)arg2;
+- (id)_userNotificationCenterForCodeType:(long long)arg1;
+- (void)didReceiveNotificationResponse:(id)arg1;
 - (id)init;
 - (void)invalidate;
 - (void)scheduleNotification:(id)arg1 codeType:(long long)arg2;
+- (void)userNotificationCenter:(id)arg1 didReceiveNotificationResponse:(id)arg2 withCompletionHandler:(id /* block */)arg3;
 - (void)withdrawNotificationsWithProcessID:(int)arg1 codeType:(long long)arg2;
 
 @end

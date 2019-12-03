@@ -13,6 +13,7 @@
     NMSIncomingRequest * _request;
     double  _sendTimeout;
     bool  _sent;
+    NSObject<OS_os_transaction> * _transaction;
     NSSet * targetDeviceIDs;
 }
 
@@ -31,6 +32,7 @@
 @property (getter=isSent) bool sent;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSSet *targetDeviceIDs;
+@property (nonatomic, retain) NSObject<OS_os_transaction> *transaction;
 
 - (void).cxx_destruct;
 - (id)CPObfuscatedDescriptionObject;
@@ -60,6 +62,8 @@
 - (void)setSendTimeout:(double)arg1;
 - (void)setSent:(bool)arg1;
 - (void)setTargetDeviceIDs:(id)arg1;
+- (void)setTransaction:(id)arg1;
 - (id)targetDeviceIDs;
+- (id)transaction;
 
 @end

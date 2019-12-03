@@ -24,9 +24,9 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPredicates:(id)arg1;
-- (id)initWithProtobufferDecodableObject:(id)arg1;
+- (id)initWithProtobufferDecodableObject:(id)arg1 library:(id)arg2;
 - (bool)isEqual:(id)arg1;
 - (id)predicates;
-- (id)protobufferEncodableObject;
+- (id)protobufferEncodableObjectFromLibrary:(id)arg1;
 
 @end

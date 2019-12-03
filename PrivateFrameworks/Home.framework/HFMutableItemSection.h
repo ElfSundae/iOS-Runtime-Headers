@@ -11,5 +11,6 @@
 @property (nonatomic, copy) NSDictionary *userInfo;
 
 - (void)setItems:(id)arg1 filteringToDisplayedItems:(id)arg2;
+- (void)setItemsUsingDefaultSortComparator:(id)arg1;
 
 @end

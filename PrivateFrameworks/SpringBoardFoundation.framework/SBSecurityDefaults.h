@@ -10,8 +10,10 @@
 @property (getter=isBlockedForThermal, nonatomic) bool blockedForThermal;
 @property (getter=isDeviceWipeEnabled, nonatomic, readonly) bool deviceWipeEnabled;
 @property (nonatomic, readonly) bool dontLockEver;
+@property (nonatomic, readonly) bool enableLayerBasedViewSecurity;
 @property (nonatomic, retain) NSNumber *numberOfFailedPasscodeAttempts;
 @property (getter=isPendingDeviceWipe, nonatomic, retain) NSNumber *pendingDeviceWipe;
+@property (nonatomic, readonly) bool reportSecureDrawViolations;
 @property (nonatomic, retain) NSNumber *unblockTimeFromReferenceDate;
 
 - (void)_bindAndRegisterDefaults;

@@ -11,8 +11,7 @@
     NSDate * _lastPeriodicSyncDate;
     HDIDSMessageCenter * _messageCenter;
     HDKeyValueDomain * _nanoSyncDomain;
-    NSObject<OS_dispatch_queue> * _observerQueue;
-    NSHashTable * _observers;
+    HKObserverSet * _observers;
     NSArray * _pairedDevices;
     HKNanoSyncPairedDevicesSnapshot * _pairedDevicesSnapshot;
     HDPairedSyncManager * _pairedSyncManager;
@@ -34,8 +33,7 @@
 @property (nonatomic, retain) NSDate *lastPeriodicSyncDate;
 @property (nonatomic, retain) HDIDSMessageCenter *messageCenter;
 @property (nonatomic, retain) HDKeyValueDomain *nanoSyncDomain;
-@property (nonatomic, retain) NSObject<OS_dispatch_queue> *observerQueue;
-@property (nonatomic, retain) NSHashTable *observers;
+@property (nonatomic, retain) HKObserverSet *observers;
 @property (nonatomic, retain) NSArray *pairedDevices;
 @property (retain) HKNanoSyncPairedDevicesSnapshot *pairedDevicesSnapshot;
 @property (nonatomic, readonly) HDPairedSyncManager *pairedSyncManager;
@@ -49,9 +47,9 @@
 @property (nonatomic) bool waitingForFirstUnlock;
 
 - (void).cxx_destruct;
-- (long long)_actionForRestoreRequest:(id)arg1 syncStore:(id)arg2 error:(id*)arg3;
 - (void)_addDaytonaVersionMessageHandlersToMessageCenter:(id)arg1;
-- (id)_allObservers;
+- (void)_addGraceVersionMessageHandlersToMessageCenter:(id)arg1;
+- (int)_changeResponseStatusCodeForAction:(long long)arg1;
 - (void)_deviceDidBecomeActive:(id)arg1;
 - (void)_deviceDidPair:(id)arg1;
 - (void)_deviceDidUnpair:(id)arg1;
@@ -64,12 +62,14 @@
 - (void)_logIncomingResponse:(id)arg1;
 - (void)_logOutgoingMessageError:(id)arg1;
 - (void)_notifyObserversPairedDevicesChanged:(id)arg1;
-- (bool)_prepareForCompanionChangeWithStore:(id)arg1 error:(id*)arg2;
+- (long long)_queue_actionForRestoreRequest:(id)arg1 syncStore:(id)arg2 error:(id*)arg3;
 - (void)_queue_authorizationRequestDidFailToSendWithError:(id)arg1 syncStore:(id)arg2;
 - (void)_queue_beginProactiveSyncWithCompletion:(id /* block */)arg1;
 - (void)_queue_beginRestoreWithStore:(id)arg1 completion:(id /* block */)arg2;
 - (void)_queue_cancelPeriodicSyncTimer;
+- (long long)_queue_changeRequestActionForMessage:(id)arg1 syncStore:(id)arg2 errorDescription:(id*)arg3;
 - (void)_queue_changeRequestDidFailToSendWithError:(id)arg1 syncStore:(id)arg2;
+- (long long)_queue_changeResponseActionForMessage:(id)arg1 statusCode:(int)arg2 syncStore:(id)arg3 errorDescription:(id*)arg4;
 - (void)_queue_changeResponseDidFailToSendWithError:(id)arg1 syncStore:(id)arg2;
 - (void)_queue_companionUserNotificationRequestDidFailToSendWithError:(id)arg1 syncStore:(id)arg2;
 - (id)_queue_eligibleInactiveSyncStores;
@@ -86,7 +86,7 @@
 - (void)_queue_receiveAuthorizationCompleteRequest:(id)arg1 syncStore:(id)arg2;
 - (void)_queue_receiveAuthorizationRequest:(id)arg1 syncStore:(id)arg2;
 - (void)_queue_receiveAuthorizationResponse:(id)arg1 syncStore:(id)arg2;
-- (void)_queue_receiveChangeRequest:(id)arg1 syncStore:(id)arg2;
+- (void)_queue_receiveChangeRequest:(id)arg1 syncStore:(id)arg2 completion:(id /* block */)arg3;
 - (void)_queue_receiveChangeResponse:(id)arg1 syncStore:(id)arg2;
 - (void)_queue_receiveRoutineRequest:(id)arg1 syncStore:(id)arg2;
 - (void)_queue_recieveCompanionUserNotificationRequest:(id)arg1 syncStore:(id)arg2;
@@ -116,6 +116,7 @@
 - (void)_queue_updateDeviceNameIfNecessaryWithSyncStore:(id)arg1;
 - (void)_queue_updateSyncStores;
 - (void)_queue_updateSyncStoresWithCompletion:(id /* block */)arg1;
+- (id)_queue_validatedSyncStore:(id)arg1 device:(id)arg2 message:(id)arg3 error:(id*)arg4;
 - (void)_queue_waitForLastChanceSyncWithPairingID:(id)arg1 timeout:(double)arg2 completion:(id /* block */)arg3;
 - (void)_registerForSyncTriggers;
 - (void)_resetSyncAnchorsForStore:(id)arg1;
@@ -126,6 +127,9 @@
 - (void)_syncImmediatelyWithReason:(id)arg1 options:(unsigned long long)arg2;
 - (bool)_syncQueue_applyActivationRestore:(id)arg1 request:(id)arg2 syncStore:(id)arg3 error:(id*)arg4;
 - (void)_syncQueue_forwardSpeculativeChangeSetIfNecessaryForChanges:(id)arg1 destinationSyncStores:(id)arg2 originSyncStore:(id)arg3;
+- (bool)_syncQueue_prepareForCompanionChangeWithStore:(id)arg1 error:(id*)arg2;
+- (id)_syncQueue_responseForChangesRequest:(id)arg1 syncStore:(id)arg2 statusCode:(int)arg3;
+- (void)_syncronouslyHandleIncomingRequest:(id)arg1 usingBlock:(id /* block */)arg2;
 - (void)_unregisterForSyncTriggers;
 - (void)_userCharacteristicsDidChange:(id)arg1;
 - (void)_userPreferencesDidChange:(id)arg1;
@@ -168,8 +172,7 @@
 - (void)nanoSyncStore:(id)arg1 deviceNameDidChange:(id)arg2;
 - (void)nanoSyncStore:(id)arg1 remoteSystemBuildVersionDidChange:(id)arg2;
 - (void)nanoSyncStore:(id)arg1 restoreStateDidChange:(long long)arg2;
-- (void)obliterateWithReason:(id)arg1 preserveCopy:(bool)arg2;
-- (id)observerQueue;
+- (void)obliterateWithOptions:(unsigned long long)arg1 reason:(id)arg2;
 - (id)observers;
 - (id)pairedDevices;
 - (id)pairedDevicesSnapshot;
@@ -191,7 +194,6 @@
 - (void)setLastPeriodicSyncDate:(id)arg1;
 - (void)setMessageCenter:(id)arg1;
 - (void)setNanoSyncDomain:(id)arg1;
-- (void)setObserverQueue:(id)arg1;
 - (void)setObservers:(id)arg1;
 - (void)setPairedDevices:(id)arg1;
 - (void)setPairedDevicesSnapshot:(id)arg1;

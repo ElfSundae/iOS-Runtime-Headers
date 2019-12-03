@@ -6,11 +6,27 @@
     NSString * _addressIdentifier;
     int  _addressType;
     struct { 
-        unsigned int addressType : 1; 
-        unsigned int isMe : 1; 
-    }  _has;
+        unsigned int has_addressType : 1; 
+        unsigned int has_isMe : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_addressIdentifier : 1; 
+        unsigned int read_name : 1; 
+        unsigned int read_spokenName : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_addressIdentifier : 1; 
+        unsigned int wrote_name : 1; 
+        unsigned int wrote_spokenName : 1; 
+        unsigned int wrote_addressType : 1; 
+        unsigned int wrote_isMe : 1; 
+    }  _flags;
     bool  _isMe;
     NSString * _name;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     NSString * _spokenName;
     PBUnknownFields * _unknownFields;
 }
@@ -27,11 +43,17 @@
 @property (nonatomic, retain) NSString *spokenName;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsAddressType:(id)arg1;
+- (void)_readAddressIdentifier;
+- (void)_readName;
+- (void)_readSpokenName;
 - (id)addressIdentifier;
 - (int)addressType;
 - (id)addressTypeAsString:(int)arg1;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -42,10 +64,13 @@
 - (bool)hasName;
 - (bool)hasSpokenName;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)isMe;
 - (void)mergeFrom:(id)arg1;
 - (id)name;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAddressIdentifier:(id)arg1;
 - (void)setAddressType:(int)arg1;

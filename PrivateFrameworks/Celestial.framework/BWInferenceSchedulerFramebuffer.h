@@ -5,7 +5,7 @@
 @interface BWInferenceSchedulerFramebuffer : NSObject {
     BWInferenceSchedulerGraph * _graph;
     BWInferenceSchedulerJobList * _jobs;
-    int  failedJobStatus;
+    _Atomic int  failedJobStatus;
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
     }  framebufferLock;

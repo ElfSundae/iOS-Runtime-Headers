@@ -11,8 +11,12 @@
     CKOperationConfiguration * _configuration;
     id  _context;
     NSString * _deviceIdentifier;
+    unsigned long long  _discretionaryWhenBackgroundedState;
+    unsigned long long  _duetPreClearedMode;
     NSError * _error;
+    bool  _failedToScheduleDiscretionaryOperation;
     CKOperationGroup * _group;
+    bool  _isDiscretionarySuspended;
     NSObject<OS_os_transaction> * _isExecuting;
     bool  _isFinished;
     bool  _isFinishingOnCallbackQueue;
@@ -27,13 +31,15 @@
     bool  _queueHasStarted;
     id /* block */  _requestCompletedBlock;
     CKOperationConfiguration * _resolvedConfiguration;
+    bool  _runningDiscretionaryOperation;
     NSMutableArray * _savedRequestUUIDs;
     NSMutableDictionary * _savedResponseHTTPHeadersByRequestUUID;
     NSMutableDictionary * _savedW3CNavigationTimingByRequestUUID;
     NSString * _sectionID;
-    CKTimeLogger * _timeLogger;
+    unsigned long long  _systemScheduler;
     NSObject<OS_dispatch_source> * _timeoutSource;
     bool  _usesBackgroundSession;
+    struct _xpc_activity_eligibility_changed_handler_s { } * _xpcActivityEligibilityChangedHandler;
 }
 
 @property (nonatomic, retain) CKOperationMMCSRequestOptions *MMCSRequestOptions;
@@ -48,10 +54,15 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) NSString *deviceIdentifier;
+@property (nonatomic, readonly) CKDiscretionaryOptions *discretionaryOptions;
+@property (nonatomic) unsigned long long discretionaryWhenBackgroundedState;
+@property (nonatomic) unsigned long long duetPreClearedMode;
 @property (nonatomic, retain) NSError *error;
+@property (nonatomic) bool failedToScheduleDiscretionaryOperation;
 @property (nonatomic, readonly) NSString *flowControlKey;
 @property (nonatomic, retain) CKOperationGroup *group;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) bool isDiscretionarySuspended;
 @property (nonatomic) bool isExecuting;
 @property (nonatomic) bool isFinished;
 @property (nonatomic, readonly) bool isFinishingOnCallbackQueue;
@@ -70,6 +81,7 @@
 @property (nonatomic, readonly) NSArray *requestUUIDs;
 @property (nonatomic, readonly) CKOperationConfiguration *resolvedConfiguration;
 @property (nonatomic, readonly) NSDictionary *responseHTTPHeadersByRequestUUID;
+@property (nonatomic) bool runningDiscretionaryOperation;
 @property (nonatomic, retain) NSMutableArray *savedRequestUUIDs;
 @property (nonatomic, retain) NSMutableDictionary *savedResponseHTTPHeadersByRequestUUID;
 @property (nonatomic, retain) NSMutableDictionary *savedW3CNavigationTimingByRequestUUID;
@@ -77,10 +89,11 @@
 @property (nonatomic, retain) NSString *sourceApplicationBundleIdentifier;
 @property (nonatomic, retain) NSString *sourceApplicationSecondaryIdentifier;
 @property (readonly) Class superclass;
-@property (nonatomic, retain) CKTimeLogger *timeLogger;
+@property (nonatomic) unsigned long long systemScheduler;
 @property (nonatomic, retain) NSObject<OS_dispatch_source> *timeoutSource;
 @property (nonatomic) bool usesBackgroundSession;
 @property (nonatomic, readonly) NSDictionary *w3cNavigationTimingByRequestUUID;
+@property (nonatomic) struct _xpc_activity_eligibility_changed_handler_s { }*xpcActivityEligibilityChangedHandler;
 
 // Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
 
@@ -88,11 +101,13 @@
 - (id)CKDescriptionPropertiesWithPublic:(bool)arg1 private:(bool)arg2 shouldExpand:(bool)arg3;
 - (bool)CKOperationShouldRun:(id*)arg1;
 - (id)MMCSRequestOptions;
+- (void)_cancelDaemonOperation;
 - (id)_findBestThrottleError:(id)arg1;
 - (void)_finishInternalOnCallbackQueueWithError:(id)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_handleCheckpointCallback:(id)arg1;
 - (void)_handleCompletionCallback:(id)arg1;
+- (void)_handleDiscretionarySuspensionCallback;
 - (void)_handleProgressCallback:(id)arg1;
 - (void)_handleProgressCallback:(id)arg1 completion:(id /* block */)arg2;
 - (void)_handleRemoteProxyFailureWithError:(id)arg1;
@@ -110,6 +125,7 @@
 - (id)callbackQueue;
 - (void)cancel;
 - (id)cancelError;
+- (void)cancelWithError:(id)arg1;
 - (void)cancelWithUnderlyingError:(id)arg1;
 - (id)clientVoucher;
 - (bool)clouddConnectionInterrupted;
@@ -120,7 +136,11 @@
 - (void)dealloc;
 - (id)description;
 - (id)deviceIdentifier;
+- (id)discretionaryOptions;
+- (unsigned long long)discretionaryWhenBackgroundedState;
+- (unsigned long long)duetPreClearedMode;
 - (id)error;
+- (bool)failedToScheduleDiscretionaryOperation;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
 - (void)finishWithError:(id)arg1;
@@ -129,6 +149,7 @@
 - (bool)hasCKOperationCallbacksSet;
 - (id)init;
 - (bool)isConcurrent;
+- (bool)isDiscretionarySuspended;
 - (bool)isExecuting;
 - (bool)isFinished;
 - (bool)isFinishingOnCallbackQueue;
@@ -154,6 +175,7 @@
 - (id)requestUUIDs;
 - (id)resolvedConfiguration;
 - (id)responseHTTPHeadersByRequestUUID;
+- (bool)runningDiscretionaryOperation;
 - (id)savedRequestUUIDs;
 - (id)savedResponseHTTPHeadersByRequestUUID;
 - (id)savedW3CNavigationTimingByRequestUUID;
@@ -169,8 +191,12 @@
 - (void)setConfiguration:(id)arg1;
 - (void)setContainer:(id)arg1;
 - (void)setDeviceIdentifier:(id)arg1;
+- (void)setDiscretionaryWhenBackgroundedState:(unsigned long long)arg1;
+- (void)setDuetPreClearedMode:(unsigned long long)arg1;
 - (void)setError:(id)arg1;
+- (void)setFailedToScheduleDiscretionaryOperation:(bool)arg1;
 - (void)setGroup:(id)arg1;
+- (void)setIsDiscretionarySuspended:(bool)arg1;
 - (void)setIsExecuting:(bool)arg1;
 - (void)setIsFinished:(bool)arg1;
 - (void)setIsOutstandingOperation:(bool)arg1;
@@ -185,26 +211,33 @@
 - (void)setQualityOfService:(long long)arg1;
 - (void)setQueueHasStarted:(bool)arg1;
 - (void)setRequestCompletedBlock:(id /* block */)arg1;
+- (void)setRunningDiscretionaryOperation:(bool)arg1;
 - (void)setSavedRequestUUIDs:(id)arg1;
 - (void)setSavedResponseHTTPHeadersByRequestUUID:(id)arg1;
 - (void)setSavedW3CNavigationTimingByRequestUUID:(id)arg1;
 - (void)setSectionID:(id)arg1;
 - (void)setSourceApplicationBundleIdentifier:(id)arg1;
 - (void)setSourceApplicationSecondaryIdentifier:(id)arg1;
-- (void)setTimeLogger:(id)arg1;
+- (void)setSystemScheduler:(unsigned long long)arg1;
 - (void)setTimeoutIntervalForRequest:(double)arg1;
 - (void)setTimeoutIntervalForResource:(double)arg1;
 - (void)setTimeoutSource:(id)arg1;
 - (void)setUsesBackgroundSession:(bool)arg1;
+- (void)setXpcActivityEligibilityChangedHandler:(struct _xpc_activity_eligibility_changed_handler_s { }*)arg1;
 - (id)sourceApplicationBundleIdentifier;
 - (id)sourceApplicationSecondaryIdentifier;
 - (void)start;
-- (id)timeLogger;
+- (unsigned long long)systemScheduler;
 - (double)timeoutIntervalForRequest;
 - (double)timeoutIntervalForResource;
 - (id)timeoutSource;
 - (bool)usesBackgroundSession;
 - (id)w3cNavigationTimingByRequestUUID;
+- (struct _xpc_activity_eligibility_changed_handler_s { }*)xpcActivityEligibilityChangedHandler;
+
+// Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon
+
+- (bool)hd_wasCancelledWithError:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
 

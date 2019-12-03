@@ -10,6 +10,7 @@
     bool  _cachedAssetInformationValid;
     unsigned long long  _cachedAudioTrackChannels;
     unsigned long long  _cachedAudioTrackCount;
+    unsigned int  _cachedCodec4cc;
     int  _cachedDuration;
     struct CGSize { 
         double width; 
@@ -45,6 +46,7 @@
 @property (nonatomic) bool cachedAssetInformationValid;
 @property (nonatomic) unsigned long long cachedAudioTrackChannels;
 @property (nonatomic) unsigned long long cachedAudioTrackCount;
+@property (nonatomic) unsigned int cachedCodec4cc;
 @property (nonatomic) int cachedDuration;
 @property (nonatomic) struct CGSize { double x1; double x2; } cachedEncodedPixelSize;
 @property (nonatomic) float cachedFrameRate;
@@ -70,6 +72,7 @@
 - (bool)cachedAssetInformationValid;
 - (unsigned long long)cachedAudioTrackChannels;
 - (unsigned long long)cachedAudioTrackCount;
+- (unsigned int)cachedCodec4cc;
 - (int)cachedDuration;
 - (struct CGSize { double x1; double x2; })cachedEncodedPixelSize;
 - (float)cachedFrameRate;
@@ -108,6 +111,7 @@
 - (void)setCachedAssetInformationValid:(bool)arg1;
 - (void)setCachedAudioTrackChannels:(unsigned long long)arg1;
 - (void)setCachedAudioTrackCount:(unsigned long long)arg1;
+- (void)setCachedCodec4cc:(unsigned int)arg1;
 - (void)setCachedDuration:(int)arg1;
 - (void)setCachedEncodedPixelSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setCachedFrameRate:(float)arg1;
@@ -122,6 +126,7 @@
 - (void)updateCreationDate;
 - (void)updateLocation;
 - (void)updateMetadata;
+- (unsigned int)videoCodec;
 - (id)weakAVAsset;
 
 @end

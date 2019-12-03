@@ -4,34 +4,32 @@
 
 @interface PKNavigationController : UINavigationController <UINavigationControllerDelegate> {
     UIView * _backgroundView;
-    UIColor * _barBackgroundColor;
     UIVisualEffectView * _blurView;
-    UIColor * _defaultBarItemTintColor;
     unsigned long long  _explicitlyDefinedSupportedInterfaceOrientations;
     bool  _hasExplicitlyDefinedSupportedInterfaceOrientations;
-    double  _navigationBarOpacity;
-    long long  _shadowStyle;
+    bool  _hasStatusBarStyleOverride;
+    long long  _statusBarStyleOverride;
     UIImageView * _wallpaperView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic, retain) UIColor *defaultBarItemTintColor;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_applyShadowStyleForViewController:(id)arg1;
+- (bool)_canShowWhileLocked;
 - (void)_updateBarAppearanceForViewController:(id)arg1;
 - (void)_updateWithWallpaperImage:(id)arg1;
-- (id)childViewControllerForStatusBarStyle;
 - (void)dealloc;
-- (id)defaultBarItemTintColor;
-- (id)initWithBarBackgroundColor:(id)arg1 barShadowStyle:(long long)arg2;
+- (id)init;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithNavigationBarClass:(Class)arg1 toolbarClass:(Class)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)initWithRootViewController:(id)arg1;
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(bool)arg3;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(bool)arg3;
-- (void)setDefaultBarItemTintColor:(id)arg1;
+- (long long)preferredStatusBarStyle;
 - (void)setNeedsNavigationBarUpdate;
 - (void)setSupportedInterfaceOrientations:(unsigned long long)arg1;
 - (void)setupBackgroundViewWithBlurEffect:(long long)arg1;

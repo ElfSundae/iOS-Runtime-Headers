@@ -11,6 +11,7 @@
 }
 
 @property (nonatomic, readonly) EKCalendarNotification *notification;
+@property (nonatomic, readonly) EKObjectID *objectID;
 @property (nonatomic, readonly) int type;
 
 - (void).cxx_destruct;
@@ -19,6 +20,7 @@
 - (id)initWithType:(int)arg1 objectID:(id)arg2 date:(id)arg3 eventStore:(id)arg4;
 - (id)initWithType:(int)arg1 objectID:(id)arg2 eventStore:(id)arg3;
 - (id)notification;
+- (id)objectID;
 - (int)type;
 
 @end

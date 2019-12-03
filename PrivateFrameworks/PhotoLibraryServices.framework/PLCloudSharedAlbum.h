@@ -74,12 +74,12 @@
 @property (nonatomic, readonly, copy) NSString *name;
 @property (nonatomic) int pendingItemsCount;
 @property (nonatomic) int pendingItemsType;
+@property (nonatomic, readonly) PLPhotoLibrary *photoLibrary;
 @property (nonatomic, readonly) unsigned long long photosCount;
-@property (nonatomic, readonly, retain) UIImage *posterImage;
+@property (nonatomic, readonly, retain) NSObject *posterImage;
 @property (nonatomic, retain) NSString *publicURL;
 @property (nonatomic, retain) PLManagedAsset *secondaryKeyAsset;
 @property (nonatomic, readonly) bool shouldDeleteWhenEmpty;
-@property (nonatomic, retain) NSDictionary *slideshowSettings;
 @property (nonatomic, readonly, copy) id /* block */ sortingComparator;
 @property (nonatomic, readonly, retain) NSDate *startDate;
 @property (readonly) Class superclass;
@@ -91,19 +91,14 @@
 @property (nonatomic, readonly) unsigned long long videosCount;
 
 + (id)allCloudSharedAlbumsInLibrary:(id)arg1;
-+ (id)cloudOwnerDisplayNameWithFirstName:(id)arg1 lastName:(id)arg2 fullName:(id)arg3 emailKey:(id)arg4 includingEmail:(bool)arg5 allowsEmail:(bool)arg6;
++ (id)cloudOwnerDisplayNameWithFirstName:(id)arg1 lastName:(id)arg2 fullName:(id)arg3 emailKey:(id)arg4 includingEmail:(bool)arg5 allowsEmail:(bool)arg6 emailAddressManager:(id)arg7;
 + (id)cloudSharedAlbumWithGUID:(id)arg1 inLibrary:(id)arg2;
 + (id)cloudSharedAlbumWithObjectID:(id)arg1 managedObjectContext:(id)arg2;
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (id)lightweightReimportDirectoryNameWithGUID:(id)arg1 cloudPersonID:(id)arg2;
-+ (id)localizedSharedByLabelWithFirstName:(id)arg1 lastName:(id)arg2 fullName:(id)arg3 emailKey:(id)arg4 isOwned:(bool)arg5 allowsEmail:(bool)arg6;
++ (id)localizedSharedByLabelWithFirstName:(id)arg1 lastName:(id)arg2 fullName:(id)arg3 emailKey:(id)arg4 isOwned:(bool)arg5 allowsEmail:(bool)arg6 emailAddressManager:(id)arg7;
 
 - (id)_expectedKeyAssets:(id)arg1;
-- (id)activityViewController:(id)arg1 itemsForActivityType:(id)arg2;
-- (id)activityViewController:(id)arg1 thumbnailForActivityType:(id)arg2;
-- (id)activityViewControllerPlaceholderItems:(id)arg1;
-- (id)activityViewControllerSubject:(id)arg1;
 - (id)albumDirectoryPath;
 - (void)awakeFromInsert;
 - (bool)canContributeToCloudSharedAlbum;
@@ -115,6 +110,7 @@
 - (int)cloudRelationshipStateValue;
 - (void)delete;
 - (void)deleteFromDatabaseOnly;
+- (id)emailAddressManager;
 - (void)getUnseenStartMarkerIndex:(unsigned long long*)arg1 count:(unsigned long long*)arg2 showsProgress:(bool*)arg3;
 - (bool)hasUnseenContentBoolValue;
 - (bool)isFamilyCloudSharedAlbum;
@@ -124,7 +120,7 @@
 - (id)localizedSharedWithLabel;
 - (void)persistRecoveryMetadata;
 - (void)prepareForDeletion;
-- (void)publishBatchOfOriginalAssets:(id)arg1 withBatchCommentText:(id)arg2 assetsSharingInfos:(id)arg3 andTrimmedVideoPathInfo:(id)arg4 isNewAlbum:(bool)arg5;
+- (void)publishBatchOfOriginalAssetUUIDs:(id)arg1 withBatchCommentText:(id)arg2 assetsSharingInfos:(id)arg3 customExportsInfo:(id)arg4 andTrimmedVideoPathInfo:(id)arg5 isNewAlbum:(bool)arg6;
 - (void)setCloudOwnerEmail:(id)arg1;
 - (void)setHasUnseenContentBoolValue:(bool)arg1;
 - (void)setUnseenAssetsCountIntegerValue:(unsigned long long)arg1;

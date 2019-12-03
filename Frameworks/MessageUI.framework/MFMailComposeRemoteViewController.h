@@ -12,6 +12,7 @@
 + (id)requestViewControllerWithConnectionHandler:(id /* block */)arg1;
 + (id)serviceViewControllerInterface;
 
+- (void).cxx_destruct;
 - (void)bodyFinishedDrawing;
 - (id)delegate;
 - (void)serviceCompositionFinishedWithResult:(long long)arg1 error:(id)arg2;

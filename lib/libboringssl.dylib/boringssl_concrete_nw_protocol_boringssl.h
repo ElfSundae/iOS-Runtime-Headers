@@ -3,7 +3,8 @@
  */
 
 @interface boringssl_concrete_nw_protocol_boringssl : NSObject <OS_nw_protocol_boringssl> {
-    char * address_string;
+    const char * address_string;
+    struct nw_protocol { unsigned char x1[16]; struct nw_protocol_identifier {} *x2; struct nw_protocol_callbacks {} *x3; struct nw_protocol {} *x4; void *x5; struct nw_protocol {} *x6; void *x7; } * application_output_handler;
     NSObject<OS_nw_association> * association;
     void * boringssl_bio;
     void * boringssl_ctx_handle;
@@ -11,12 +12,15 @@
     NSObject<OS_dispatch_queue> * client_queue;
     unsigned int  did_receive_data_once;
     unsigned int  early_data_enabled;
+    struct nw_protocol { unsigned char x1[16]; struct nw_protocol_identifier {} *x2; struct nw_protocol_callbacks {} *x3; struct nw_protocol {} *x4; void *x5; struct nw_protocol {} *x6; void *x7; } * early_output_handler;
     unsigned int  external_frames;
     struct nw_frame_array_s { 
         struct nw_frame {} *tqh_first; 
         struct nw_frame {} **tqh_last; 
     }  finalized_output_frame_array;
+    struct nw_protocol { unsigned char x1[16]; struct nw_protocol_identifier {} *x2; struct nw_protocol_callbacks {} *x3; struct nw_protocol {} *x4; void *x5; struct nw_protocol {} *x6; void *x7; } * handshake_output_handler;
     void * handshake_timer;
+    struct nw_protocol { unsigned char x1[16]; struct nw_protocol_identifier {} *x2; struct nw_protocol_callbacks {} *x3; struct nw_protocol {} *x4; void *x5; struct nw_protocol {} *x6; void *x7; } * initial_output_handler;
     unsigned int  input_available_unacknowledged;
     struct nw_frame_array_s { 
         struct nw_frame {} *tqh_first; 
@@ -24,13 +28,31 @@
     }  input_frame_array;
     unsigned int  input_frame_byte_count;
     unsigned int  input_suspended;
-    unsigned int  is_dtls;
     BOOL  log_str;
+    unsigned int  message_mode;
+    id /* block */  message_writer;
+    struct nw_frame_array_s { 
+        struct nw_frame {} *tqh_first; 
+        struct nw_frame {} **tqh_last; 
+    }  output_application_frame_array;
+    struct nw_frame_array_s { 
+        struct nw_frame {} *tqh_first; 
+        struct nw_frame {} **tqh_last; 
+    }  output_early_frame_array;
     struct nw_frame_array_s { 
         struct nw_frame {} *tqh_first; 
         struct nw_frame {} **tqh_last; 
     }  output_frame_array;
+    struct nw_frame_array_s { 
+        struct nw_frame {} *tqh_first; 
+        struct nw_frame {} **tqh_last; 
+    }  output_handshake_frame_array;
+    struct nw_frame_array_s { 
+        struct nw_frame {} *tqh_first; 
+        struct nw_frame {} **tqh_last; 
+    }  output_initial_frame_array;
     unsigned int  output_protocol_supports_early_data;
+    NSObject<OS_nw_parameters> * parameters;
     struct nw_protocol { 
         unsigned char flow_id[16]; 
         struct nw_protocol_identifier {} *identifier; 
@@ -46,6 +68,7 @@
     }  read_frame_array;
     int (* read_func;
     unsigned int  read_ready;
+    unsigned int  received_connect;
     unsigned int  ref_cnt;
     unsigned int  server;
     unsigned int  servicing_reads;

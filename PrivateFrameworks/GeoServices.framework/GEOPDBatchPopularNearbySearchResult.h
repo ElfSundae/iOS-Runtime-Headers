@@ -10,11 +10,13 @@
 @property (nonatomic, retain) NSMutableArray *popularNearbyResults;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
 + (Class)popularNearbyResultType;
 
 - (void).cxx_destruct;
 - (void)addPopularNearbyResult:(id)arg1;
 - (void)clearPopularNearbyResults;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -25,6 +27,7 @@
 - (id)popularNearbyResultAtIndex:(unsigned long long)arg1;
 - (id)popularNearbyResults;
 - (unsigned long long)popularNearbyResultsCount;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setPopularNearbyResults:(id)arg1;
 - (id)unknownFields;

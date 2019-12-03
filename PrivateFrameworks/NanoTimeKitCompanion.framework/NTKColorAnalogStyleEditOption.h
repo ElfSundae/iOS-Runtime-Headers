@@ -12,7 +12,7 @@
 + (id)optionWithStyle:(unsigned long long)arg1 forDevice:(id)arg2;
 
 - (id)_valueToFaceBundleStringDict;
-- (bool)optionExistsInOSVersion:(unsigned int)arg1;
+- (bool)optionExistsInDevice:(id)arg1;
 - (unsigned long long)style;
 - (long long)swatchStyle;
 

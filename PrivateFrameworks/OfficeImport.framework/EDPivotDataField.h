@@ -13,9 +13,9 @@
 
 + (id)pivotDataField;
 
+- (void).cxx_destruct;
 - (long long)baseField;
 - (unsigned long long)baseItem;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)fieldId;
 - (id)init;

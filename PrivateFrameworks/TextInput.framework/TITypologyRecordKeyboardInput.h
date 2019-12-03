@@ -18,12 +18,16 @@
 
 - (void).cxx_destruct;
 - (void)applyToStatistic:(id)arg1;
+- (id)changedText;
+- (id)currentKeyboardState;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)input;
 - (id)keyboardConfig;
 - (id)keyboardState;
 - (id)output;
+- (void)removeContextFromKeyboardState;
+- (void)replaceDocumentState:(id)arg1;
 - (void)setInput:(id)arg1;
 - (void)setKeyboardConfig:(id)arg1;
 - (void)setKeyboardState:(id)arg1;

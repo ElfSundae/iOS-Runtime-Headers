@@ -5,7 +5,7 @@
 
 @required
 
-+ (void)presentCell:(UITableViewCell *)arg1 withDataItem:(PKPaymentDataItem *)arg2 shouldShowSeperator:(bool)arg3 forPaymentRequest:(PKPaymentRequest *)arg4;
++ (void)presentCell:(void *)arg1 withDataItem:(void *)arg2 shouldShowSeperator:(void *)arg3 forPaymentRequest:(void *)arg4 cellProvider:(void *)arg5; // needs 5 arg types, found 9: UITableViewCell *, PKPaymentDataItem *, bool, PKPaymentRequest *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, UITableViewCell *, id /* block */, void*
 
 @optional
 

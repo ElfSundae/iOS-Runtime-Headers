@@ -11,6 +11,7 @@
     NSString * _bundleVersion;
     NSString * _cohort;
     NSString * _deviceVendorID;
+    NSNumber * _downloaderID;
     NSNumber * _externalVersionIdentifier;
     NSNumber * _installOrder;
     bool  _isBeta;
@@ -30,6 +31,7 @@
 @property (nonatomic, copy) NSString *bundleVersion;
 @property (nonatomic, copy) NSString *cohort;
 @property (nonatomic, copy) NSString *deviceVendorID;
+@property (nonatomic, copy) NSNumber *downloaderID;
 @property (nonatomic, copy) NSNumber *externalVersionIdentifier;
 @property (nonatomic, copy) NSNumber *installOrder;
 @property (nonatomic) bool isBeta;
@@ -53,6 +55,7 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)deviceVendorID;
+- (id)downloaderID;
 - (void)encodeWithCoder:(id)arg1;
 - (id)externalVersionIdentifier;
 - (id)initWithBundleID:(id)arg1;
@@ -69,6 +72,7 @@
 - (void)setBundleVersion:(id)arg1;
 - (void)setCohort:(id)arg1;
 - (void)setDeviceVendorID:(id)arg1;
+- (void)setDownloaderID:(id)arg1;
 - (void)setExternalVersionIdentifier:(id)arg1;
 - (void)setInstallOrder:(id)arg1;
 - (void)setIsBeta:(bool)arg1;

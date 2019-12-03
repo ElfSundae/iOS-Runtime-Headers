@@ -8,6 +8,7 @@
     HMDSyncOperationQueue * _cloudFetchOperations;
     HMFExponentialBackoffTimer * _cloudPushDelayTimer;
     HMDSyncOperationQueue * _cloudPushOperations;
+    NSMutableArray * _cloudQueryDatabaseOperations;
     NSMutableArray * _cloudVerifyAccountOperations;
     NSMutableArray * _cloudZoneFetchOperations;
     NSMutableDictionary * _cloudZoneFetchOperationsMap;
@@ -26,6 +27,7 @@
 @property (nonatomic, retain) HMDSyncOperationQueue *cloudFetchOperations;
 @property (nonatomic, retain) HMFExponentialBackoffTimer *cloudPushDelayTimer;
 @property (nonatomic, retain) HMDSyncOperationQueue *cloudPushOperations;
+@property (nonatomic, retain) NSMutableArray *cloudQueryDatabaseOperations;
 @property (nonatomic, retain) NSMutableArray *cloudVerifyAccountOperations;
 @property (nonatomic, retain) NSMutableArray *cloudZoneFetchOperations;
 @property (nonatomic, retain) NSMutableDictionary *cloudZoneFetchOperationsMap;
@@ -56,6 +58,7 @@
 - (id)cloudFetchOperations;
 - (id)cloudPushDelayTimer;
 - (id)cloudPushOperations;
+- (id)cloudQueryDatabaseOperations;
 - (id)cloudVerifyAccountOperations;
 - (id)cloudZoneFetchOperations;
 - (id)cloudZoneFetchOperationsMap;
@@ -81,6 +84,7 @@
 - (void)setCloudFetchOperations:(id)arg1;
 - (void)setCloudPushDelayTimer:(id)arg1;
 - (void)setCloudPushOperations:(id)arg1;
+- (void)setCloudQueryDatabaseOperations:(id)arg1;
 - (void)setCloudVerifyAccountOperations:(id)arg1;
 - (void)setCloudZoneFetchOperations:(id)arg1;
 - (void)setCloudZoneFetchOperationsMap:(id)arg1;

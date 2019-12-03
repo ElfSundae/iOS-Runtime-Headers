@@ -9,8 +9,8 @@
 
 @property (nonatomic) UIPickerTableView *pickerTable;
 
-+ (id)_modernCenterCellFont;
-+ (id)_modernNonCenterCellFont;
++ (id)_centerCellFont;
++ (id)_nonCenterCellFont;
 
 - (void).cxx_destruct;
 - (void)_setIsCenterCell:(bool)arg1 shouldModifyAlphaOfView:(bool)arg2;

@@ -14,12 +14,12 @@
 }
 
 @property (getter=isBackgroundTask, nonatomic) bool backgroundTask;
-@property (nonatomic, readonly) id /* block */ cancelHandler;
+@property (nonatomic, readonly, copy) id /* block */ cancelHandler;
 @property (nonatomic, retain) CPLResource *cloudResource;
-@property (nonatomic, readonly) id /* block */ completionHandler;
-@property (nonatomic, readonly) id /* block */ didStartHandler;
-@property (nonatomic, readonly) id /* block */ launchHandler;
-@property (nonatomic, readonly) id /* block */ progressHandler;
+@property (nonatomic, readonly, copy) id /* block */ completionHandler;
+@property (nonatomic, readonly, copy) id /* block */ didStartHandler;
+@property (nonatomic, readonly, copy) id /* block */ launchHandler;
+@property (nonatomic, readonly, copy) id /* block */ progressHandler;
 @property (nonatomic, retain) <CPLEngineTransportTask> *transportTask;
 
 - (void).cxx_destruct;

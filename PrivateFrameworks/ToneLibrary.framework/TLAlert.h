@@ -4,6 +4,7 @@
 
 @interface TLAlert : NSObject {
     TLAlertConfiguration * _configuration;
+    bool  _hasSynchronizedVibrationUnmatchedWithTone;
     long long  _instanceIndex;
     <TLAlertPlaybackObserver> * _playbackObserver;
     NSString * _toneIdentifier;
@@ -11,6 +12,7 @@
     NSString * _vibrationIdentifier;
 }
 
+@property (nonatomic, readonly) bool _hasSynchronizedVibrationUnmatchedWithTone;
 @property (nonatomic, readonly) TLAlertConfiguration *configuration;
 @property (nonatomic) <TLAlertPlaybackObserver> *playbackObserver;
 @property (nonatomic, readonly) NSString *toneIdentifier;
@@ -30,7 +32,8 @@
 
 - (void).cxx_destruct;
 - (id)_descriptionForDebugging:(bool)arg1;
-- (id)_initWithConfiguration:(id)arg1 toneIdentifier:(id)arg2 vibrationIdentifier:(id)arg3;
+- (bool)_hasSynchronizedVibrationUnmatchedWithTone;
+- (id)_initWithConfiguration:(id)arg1 toneIdentifier:(id)arg2 vibrationIdentifier:(id)arg3 hasSynchronizedVibrationUnmatchedWithTone:(bool)arg4;
 - (void)_updateAudioVolumeDynamicallyToValue:(float)arg1;
 - (id)configuration;
 - (id)debugDescription;

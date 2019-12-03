@@ -20,7 +20,6 @@
 
 + (void)cannedInfoForType:(unsigned long long)arg1 directivesPath:(id*)arg2 modelName:(id*)arg3;
 + (id)directivesFromFilePath:(id)arg1;
-+ (id)errorDomain;
 + (void)loadModelWithURL:(id)arg1 type:(unsigned long long)arg2 directivesPath:(id)arg3 intoModelDict:(id)arg4 error:(id*)arg5;
 + (bool)loadModelsWithDirectory:(id)arg1 intoModelDict:(id)arg2;
 + (void)pathsFor:(unsigned long long)arg1 withParentPath:(id)arg2 modelPath:(id*)arg3 directivesPath:(id*)arg4;
@@ -29,12 +28,12 @@
 - (void).cxx_destruct;
 - (void)activate;
 - (unsigned long long)activeCount;
-- (float*)computeL2ScoresForVectors:(id)arg1 secondVector:(id)arg2 withServerFeatures:(id)arg3 withBundleFeatures:(id)arg4 experimentalWeight1:(double)arg5 experimentalWeight2:(double)arg6 forShadow:(bool)arg7 shouldCancel:(bool*)arg8;
-- (float*)computeScoresForFeatures:(id)arg1 withBundleFeatures:(id)arg2 serverBundleFeatures:(id)arg3 usingModelContext:(id)arg4 qos:(unsigned int)arg5 shouldCancel:(bool*)arg6;
+- (float*)computeL2ScoresForVectors:(id)arg1 secondVector:(id)arg2 withServerFeatures:(id)arg3 withBundleFeatures:(id)arg4 experimentalWeight1:(double)arg5 experimentalWeight2:(double)arg6 forShadow:(bool)arg7 shouldCancel:(bool*)arg8 clientBundle:(id)arg9 hasMail:(bool)arg10;
+- (float*)computeScoresForFeatures:(id)arg1 withBundleFeatures:(id)arg2 serverBundleFeatures:(id)arg3 usingModelContext:(id)arg4 qos:(unsigned int)arg5 shouldCancel:(bool*)arg6 filterBundle:(id)arg7;
 - (void)deactivate;
 - (void)dealloc;
 - (bool)disablePolicy;
-- (id)getL2ModelVersion;
+- (id)getL2ModelVersionForClientBundle:(id)arg1;
 - (id)init;
 - (void)loadCannedModelWithType:(unsigned long long)arg1 error:(id*)arg2;
 - (void)loadCannedModels;

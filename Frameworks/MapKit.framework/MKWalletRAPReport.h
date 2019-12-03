@@ -3,13 +3,16 @@
  */
 
 @interface MKWalletRAPReport : NSObject {
+    GEORPFeedbackRequestParameters * _feedbackRequestParameters;
     GEORPProblem * _problem;
+    GEORPFeedbackRequestParameters * _requestParameters;
 }
 
 @property (nonatomic, copy) NSString *correlationId;
 @property (nonatomic, copy) NSString *merchantAdamId;
 @property (nonatomic, readonly) GEORPProblem *problem;
 @property (nonatomic, copy) NSString *reportersComment;
+@property (nonatomic, readonly) GEORPFeedbackRequestParameters *requestParameters;
 
 - (void).cxx_destruct;
 - (id)correlationId;
@@ -17,6 +20,7 @@
 - (id)merchantAdamId;
 - (id)problem;
 - (id)reportersComment;
+- (id)requestParameters;
 - (void)setCorrelationId:(id)arg1;
 - (void)setMerchantAdamId:(id)arg1;
 - (void)setReportersComment:(id)arg1;

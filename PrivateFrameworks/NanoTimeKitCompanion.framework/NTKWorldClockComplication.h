@@ -25,6 +25,7 @@
 - (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)localizedDetailText;
+- (id)localizedRichDetailText;
 - (bool)snapshotContext:(id)arg1 isStaleRelativeToContext:(id)arg2;
 
 @end

@@ -3,7 +3,7 @@
  */
 
 @interface PUAvalancheReviewController : UIViewController <PHAssetCollectionDataSource, PUAvalancheReviewCollectionViewLayoutDelegate, PUOneUpAssetTransitionViewController, PUOneUpPhotosSharingTransitionViewController, PUPhotosSharingTransitionViewController, PUReviewScrubberDataSource, PUReviewScrubberDelegate, PUTransitionViewAnimatorDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate> {
-    PUOneUpAssetTransitionInfo * __assetTransitionInfo;
+    PUAssetTransitionInfo * __assetTransitionInfo;
     NSMutableDictionary * __assetsToSizeDictionary;
     PLAvalanche * __avalancheBeingReviewed;
     PHCachingImageManager * __cachingImageManager;
@@ -42,7 +42,7 @@
     NSMutableDictionary * _resultsForAssetCollection;
 }
 
-@property (nonatomic, retain) PUOneUpAssetTransitionInfo *_assetTransitionInfo;
+@property (nonatomic, retain) PUAssetTransitionInfo *_assetTransitionInfo;
 @property (setter=_setAssetsToSizeDictionary:, nonatomic, retain) NSMutableDictionary *_assetsToSizeDictionary;
 @property (nonatomic, readonly) PLAvalanche *_avalancheBeingReviewed;
 @property (nonatomic, readonly) PHCachingImageManager *_cachingImageManager;
@@ -84,6 +84,7 @@
 - (id)_avalancheBeingReviewed;
 - (void)_beginZoomingForCellAtIndexPath:(id)arg1;
 - (id)_cachingImageManager;
+- (bool)_canShowWhileLocked;
 - (id)_cancelBarButtonItem;
 - (void)_cancelReviewMode;
 - (void)_cancelReviewModeAction:(id)arg1;
@@ -150,7 +151,6 @@
 - (void)_updateReviewScrubberFromContentOffset;
 - (bool)_updatingContentOffsetFromScrubbing;
 - (id)assetCollectionsFetchResult;
-- (void)assetContainerDidChange:(id)arg1;
 - (id)assetsInAssetCollection:(id)arg1;
 - (id)avalancheContainerList;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
@@ -169,6 +169,7 @@
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)oneUpAssetTransition:(id)arg1 requestTransitionContextWithCompletion:(id /* block */)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })oneUpAssetTransitionAssetFinalFrame:(id)arg1;
+- (void)pu_assetContainerDidChange:(id)arg1;
 - (bool)pu_wantsNavigationBarVisible;
 - (bool)pu_wantsTabBarVisible;
 - (bool)pu_wantsToolbarVisible;
@@ -177,7 +178,7 @@
 - (void)reviewScrubber:(id)arg1 willDisplayCell:(id)arg2 atIndexPath:(id)arg3;
 - (void)reviewScrubberDidScrub:(id)arg1;
 - (void)reviewScrubberDidSelectItemAtIndexPath:(id)arg1;
-- (int)reviewScrubberImageFormat;
+- (unsigned short)reviewScrubberImageFormat;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(bool)arg2;
 - (void)scrollViewDidScroll:(id)arg1;

@@ -4,9 +4,11 @@
 
 @interface NPHSIMChoiceViewController : BPSSetupOptinViewController {
     <NPHSIMChoiceViewControllerDelegate> * _SIMChoiceDelegate;
+    unsigned long long  _backgroundTaskID;
     UIButton * _cancelButton;
     long long  _configuration;
     bool  _haveReceivedProxyPlanItems;
+    bool  _isTransferFlow;
     UIButton * _lowerButton;
     NSString * _lowerButtonTitle;
     UIButton * _lowerSkipButton;
@@ -15,15 +17,18 @@
     UIScrollView * _scrollView;
     UIActivityIndicatorView * _spinner;
     UILabel * _spinnerExplanation;
+    NSTimer * _taskCompletionTimeout;
     UIButton * _upperButton;
     NSString * _upperButtonTitle;
     NSArray * _userVisibleErrors;
 }
 
 @property (nonatomic) <NPHSIMChoiceViewControllerDelegate> *SIMChoiceDelegate;
+@property (nonatomic) unsigned long long backgroundTaskID;
 @property (nonatomic, retain) UIButton *cancelButton;
 @property (nonatomic) long long configuration;
 @property (nonatomic) bool haveReceivedProxyPlanItems;
+@property (nonatomic) bool isTransferFlow;
 @property (nonatomic, retain) UIButton *lowerButton;
 @property (nonatomic, retain) NSString *lowerButtonTitle;
 @property (nonatomic, retain) UIButton *lowerSkipButton;
@@ -32,12 +37,14 @@
 @property (nonatomic, retain) UIScrollView *scrollView;
 @property (nonatomic, retain) UIActivityIndicatorView *spinner;
 @property (nonatomic, retain) UILabel *spinnerExplanation;
+@property (nonatomic, retain) NSTimer *taskCompletionTimeout;
 @property (nonatomic, retain) UIButton *upperButton;
 @property (nonatomic, retain) NSString *upperButtonTitle;
 @property (nonatomic, retain) NSArray *userVisibleErrors;
 
 - (void).cxx_destruct;
 - (id)SIMChoiceDelegate;
+- (unsigned long long)backgroundTaskID;
 - (id)cancelButton;
 - (void)checkForSoftwareUpdate;
 - (long long)configuration;
@@ -45,8 +52,9 @@
 - (void)dealloc;
 - (bool)haveReceivedProxyPlanItems;
 - (id)imageResource;
-- (id)initWithSIMChoiceViewControllerDelegate:(id)arg1;
+- (id)initWithSIMChoiceViewControllerDelegate:(id)arg1 andIsTransferFlow:(bool)arg2;
 - (bool)isGeminiSetup;
+- (bool)isTransferFlow;
 - (bool)legacyButtonStyles;
 - (id)lowerButton;
 - (id)lowerButtonTitle;
@@ -55,9 +63,11 @@
 - (void)navigateToNextView;
 - (id)nextNavBarButtonItem;
 - (id)scrollView;
+- (void)setBackgroundTaskID:(unsigned long long)arg1;
 - (void)setCancelButton:(id)arg1;
 - (void)setConfiguration:(long long)arg1;
 - (void)setHaveReceivedProxyPlanItems:(bool)arg1;
+- (void)setIsTransferFlow:(bool)arg1;
 - (void)setLowerButton:(id)arg1;
 - (void)setLowerButtonTitle:(id)arg1;
 - (void)setLowerSkipButton:(id)arg1;
@@ -67,6 +77,7 @@
 - (void)setScrollView:(id)arg1;
 - (void)setSpinner:(id)arg1;
 - (void)setSpinnerExplanation:(id)arg1;
+- (void)setTaskCompletionTimeout:(id)arg1;
 - (void)setUpNow;
 - (void)setUpperButton:(id)arg1;
 - (void)setUpperButtonTitle:(id)arg1;
@@ -74,11 +85,14 @@
 - (double)sidePadding;
 - (id)spinner;
 - (id)spinnerExplanation;
+- (id)taskCompletionTimeout;
 - (id)titleString;
+- (void)transfer;
 - (id)trialOfferMessage;
 - (void)updateUIFromCellularPlanItems;
 - (void)updateUIToShowContinue;
 - (void)updateUIToShowPlanSetUpTrial;
+- (void)updateUIToShowPlanTransferOrSetUpNewOptions;
 - (void)updateUIToShowPreinstall;
 - (void)updateUIToShowSetUpNow;
 - (void)updateUIToShowSetUpNowSIMChoices;
@@ -93,7 +107,9 @@
 - (void)userTappedNext:(id)arg1;
 - (void)userTappedSetUp:(id)arg1;
 - (void)userTappedSetUpCarrier:(id)arg1;
+- (void)userTappedSetUpNew:(id)arg1;
 - (void)userTappedSkip:(id)arg1;
+- (void)userTappedTransfer:(id)arg1;
 - (id)userVisibleErrors;
 - (double)verticalTitleInset;
 - (void)viewDidAppear:(bool)arg1;

@@ -44,6 +44,8 @@
 - (id)abbreviatedDisplayName;
 - (id)chatAccount;
 - (id)cnContact;
+- (id)cnContactWithKeys:(id)arg1;
+- (id)cnContactWithKeys:(id)arg1 shouldFetchSuggestedContact:(bool)arg2;
 - (void)contactStoreDidChange:(id)arg1;
 - (void)dealloc;
 - (id)defaultIMHandle;

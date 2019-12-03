@@ -12,6 +12,7 @@
         int network_index; 
     }  _espressoNetwork;
     void * _espressoPlan;
+    NSArray * _filterThreshold;
     struct vector<std::__1::shared_ptr<espresso_buffer_t>, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t> > > { 
         struct shared_ptr<espresso_buffer_t> {} *__begin_; 
         struct shared_ptr<espresso_buffer_t> {} *__end_; 
@@ -32,7 +33,17 @@
         struct __compressed_pair<std::__1::shared_ptr<espresso_buffer_t> *, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t> > > { 
             struct shared_ptr<espresso_buffer_t> {} *__value_; 
         } __end_cap_; 
+    }  _objectnessOutputs;
+    struct vector<std::__1::shared_ptr<espresso_buffer_t>, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t> > > { 
+        struct shared_ptr<espresso_buffer_t> {} *__begin_; 
+        struct shared_ptr<espresso_buffer_t> {} *__end_; 
+        struct __compressed_pair<std::__1::shared_ptr<espresso_buffer_t> *, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t> > > { 
+            struct shared_ptr<espresso_buffer_t> {} *__value_; 
+        } __end_cap_; 
     }  _offsetsOutputs;
+    unsigned long long  _preferredSmallSide;
+    bool  _releaseEspressoContext;
+    bool  _releaseEspressoPlan;
     struct vector<std::__1::shared_ptr<espresso_buffer_t>, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t> > > { 
         struct shared_ptr<espresso_buffer_t> {} *__begin_; 
         struct shared_ptr<espresso_buffer_t> {} *__end_; 
@@ -48,19 +59,36 @@
             struct shared_ptr<espresso_buffer_t> {} *__value_; 
         } __end_cap_; 
     }  _yawOutputs;
+    bool  isAnchorSquare;
 }
 
 @property (nonatomic, readonly) unsigned long long preferredSmallSide;
 @property (nonatomic) float threshold;
 
++ (const struct vector<float, std::__1::allocator<float> > { float *x1; float *x2; struct __compressed_pair<float *, std::__1::allocator<float> > { float *x_3_1_1; } x3; }*)defaultBoxesSides;
++ (bool)inputBGR;
++ (struct tuple<float, float, float> { struct __tuple_impl<std::__1::__tuple_indices<0, 1, 2>, float, float, float> { float x_1_1_1; float x_1_1_2; float x_1_1_3; } x1; })inputBiasRGB;
++ (float)inputImageAspectRatio;
++ (float)inputImageMaxDimension;
++ (float)inputImageMinDimension;
++ (id)inputLayerName;
++ (float)inputScale;
++ (float)nonSquareRollDefault;
++ (float)nonSquareYawDefault;
++ (unsigned long long)numberBinsRoll;
++ (unsigned long long)numberBinsYaw;
++ (id)processingDeviceDetectorWithEspressoNetwork:(struct { void *x1; int x2; })arg1 espressoPlan:(void*)arg2 threshold:(float)arg3;
 + (id)processingDeviceNetworkWithModelPath:(id)arg1 threshold:(float)arg2 preferredDeviceID:(int)arg3 engineID:(int)arg4 storageType:(int)arg5;
++ (const struct vector<float, std::__1::allocator<float> > { float *x1; float *x2; struct __compressed_pair<float *, std::__1::allocator<float> > { float *x_3_1_1; } x3; }*)strides;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dealloc;
+- (id)initWithEspressoNetwork:(struct { void *x1; int x2; })arg1 espressoPlan:(void*)arg2 threshold:(float)arg3;
 - (id)initWithModelPath:(id)arg1 espressoEngineID:(int)arg2 espressoDeviceID:(int)arg3 espressoStorageType:(int)arg4 threshold:(float)arg5;
+- (void)initializeBuffers;
+- (void)initializeEspressoResourcesWithModelPath:(id)arg1 espressoEngineID:(int)arg2 espressoDeviceID:(int)arg3 espressoStorageType:(int)arg4;
 - (unsigned long long)preferredSmallSide;
-- (id)processCIImage:(id)arg1;
 - (id)processVImage:(struct vImage_Buffer { void *x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; })arg1 inputIsBGR:(bool)arg2;
 - (id)resizeAndProcessVImage:(struct vImage_Buffer { void *x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; })arg1 inputIsBGR:(bool)arg2;
 - (void)runNetwork:(struct vImage_Buffer { void *x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; })arg1 inputIsBGR:(bool)arg2;

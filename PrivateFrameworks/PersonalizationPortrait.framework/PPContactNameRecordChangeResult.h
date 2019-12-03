@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PersonalizationPortrait.framework/PersonalizationPortrait
  */
 
-@interface PPContactNameRecordChangeResult : NSObject <NSSecureCoding> {
+@interface PPContactNameRecordChangeResult : NSObject <NSCopying, NSSecureCoding> {
     NSArray * _changes;
     bool  _changesTruncated;
 }

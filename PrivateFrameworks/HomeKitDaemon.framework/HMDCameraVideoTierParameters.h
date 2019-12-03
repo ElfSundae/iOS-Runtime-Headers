@@ -5,7 +5,7 @@
 @interface HMDCameraVideoTierParameters : HMFObject <HMFLogging, NSSecureCoding> {
     HMDCameraVideoTier * _currentPickedTier;
     HMDCameraVideoTier * _firstPickedTier;
-    HMDCameraSessionID * _sessionID;
+    HMDCameraStreamSessionID * _sessionID;
     NSArray * _tierOrder;
     NSDictionary * _videoTierCombinations;
 }
@@ -15,7 +15,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) HMDCameraVideoTier *firstPickedTier;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) HMDCameraSessionID *sessionID;
+@property (nonatomic, readonly) HMDCameraStreamSessionID *sessionID;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSArray *tierOrder;
 @property (nonatomic, readonly) NSDictionary *videoTierCombinations;

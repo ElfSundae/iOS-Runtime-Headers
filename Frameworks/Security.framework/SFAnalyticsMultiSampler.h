@@ -14,6 +14,7 @@
 }
 
 @property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly) bool oncePerReport;
 @property (nonatomic) double samplingInterval;
 
 - (void).cxx_destruct;
@@ -21,6 +22,7 @@
 - (id)initWithName:(id)arg1 interval:(double)arg2 block:(id /* block */)arg3 clientClass:(Class)arg4;
 - (id)name;
 - (void)newTimer;
+- (bool)oncePerReport;
 - (void)pauseSampling;
 - (void)resumeSampling;
 - (id)sampleNow;

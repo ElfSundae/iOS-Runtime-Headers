@@ -10,6 +10,8 @@
     NSString * _bundleID;
     NSString * _categoryID;
     NSObject<OS_dispatch_queue> * _dispatchQueue;
+    unsigned int  _flags;
+    NSString * _header;
     NSString * _identifier;
     bool  _invalidateCalled;
     bool  _invalidateDone;
@@ -35,7 +37,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *dispatchQueue;
+@property (nonatomic) unsigned int flags;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, copy) NSString *header;
 @property (nonatomic, copy) NSString *identifier;
 @property (nonatomic, copy) NSString *label;
 @property (nonatomic) long long soundAlertType;
@@ -64,6 +68,8 @@
 - (void)dealloc;
 - (id)description;
 - (id)dispatchQueue;
+- (unsigned int)flags;
+- (id)header;
 - (id)identifier;
 - (id)init;
 - (void)invalidate;
@@ -74,6 +80,8 @@
 - (void)setBundleID:(id)arg1;
 - (void)setCategoryID:(id)arg1;
 - (void)setDispatchQueue:(id)arg1;
+- (void)setFlags:(unsigned int)arg1;
+- (void)setHeader:(id)arg1;
 - (void)setIdentifier:(id)arg1;
 - (void)setLabel:(id)arg1;
 - (void)setSoundAlertType:(long long)arg1;

@@ -49,11 +49,13 @@
 - (id)videos_rentalAdamIDString;
 - (id)videos_resumeTime;
 - (id)vui_contentRatingRank;
+- (bool)vui_disableLocalAsset;
 - (bool)vui_disableResumeMenu;
 - (id)vui_fpsCertificateURL;
 - (id)vui_fpsKeyServerURL;
 - (id)vui_hlsPlaylistURL;
 - (id)vui_launchPlaybackURL;
+- (id)vui_persistentID;
 - (id)vui_rentalAdamIDString;
 - (id)vui_resumeTime;
 - (id)vui_scrubVideoURL;

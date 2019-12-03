@@ -2,8 +2,8 @@
    Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
  */
 
-@interface _GEOCategorySuggestionsManagerLocalProxy : NSObject <GEOCategorySuggestionsManagerServerProxy> {
-    int  _urlsChangedToken;
+@interface _GEOCategorySuggestionsManagerLocalProxy : NSObject <GEOCategorySuggestionsManagerServerProxy, GEOResourceManifestTileGroupObserver> {
+    id  _urlsChangedListener;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -11,9 +11,11 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_updateIfNecessary;
 - (void)dealloc;
 - (id)init;
+- (void)resourceManifestManagerDidChangeActiveTileGroup:(id)arg1;
 - (void)updateCachedSpotlightCategorySuggestions:(id /* block */)arg1;
 
 @end

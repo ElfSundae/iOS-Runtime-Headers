@@ -15,7 +15,6 @@
     ADCreativeController * _creativeController;
     ADAdActionPublicAttributes * _currentActionPublicAttributes;
     ADAdImpressionPublicAttributes * _currentAdImpressionPublicAttributes;
-    ADPrivacyDetailsAttributes * _currentPrivacyDetailsAttributes;
     UIViewController * _customActionViewController;
     bool  _didInstallCreativeView;
     bool  _fastVisibilityContextIsFeed;
@@ -27,8 +26,7 @@
     float  _lastVolume;
     ADMRAIDAction * _mraidAction;
     NewsTransparencyViewController * _newsViewController;
-    ADMediaAnalyticsEventInfo * _pendingAnalyticsEventInfo;
-    long long  _pendingAnalyticsVideoState;
+    bool  _prerollVideo;
     NSArray * _prerollVideoAssets;
     bool  _privacyRequestInProgress;
     long long  _progressMileStoneMet;
@@ -74,7 +72,6 @@
 @property (nonatomic, retain) ADCreativeController *creativeController;
 @property (nonatomic, retain) ADAdActionPublicAttributes *currentActionPublicAttributes;
 @property (nonatomic, retain) ADAdImpressionPublicAttributes *currentAdImpressionPublicAttributes;
-@property (nonatomic, readonly) ADPrivacyDetailsAttributes *currentPrivacyDetailsAttributes;
 @property (nonatomic, retain) UIViewController *customActionViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -89,13 +86,12 @@
 @property (nonatomic) float lastVolume;
 @property (nonatomic, retain) ADMRAIDAction *mraidAction;
 @property (nonatomic, retain) NewsTransparencyViewController *newsViewController;
-@property (nonatomic, copy) ADMediaAnalyticsEventInfo *pendingAnalyticsEventInfo;
-@property (nonatomic) long long pendingAnalyticsVideoState;
+@property (nonatomic) bool prerollVideo;
 @property (nonatomic, retain) NSArray *prerollVideoAssets;
 @property (nonatomic) bool privacyRequestInProgress;
 @property (nonatomic) long long progressMileStoneMet;
 @property (nonatomic) unsigned long long reUseCount;
-@property (nonatomic, readonly) <ADAdRecipient> *recipient;
+@property (nonatomic) <ADAdRecipient> *recipient;
 @property (nonatomic, retain) ADSInternalSize *reorientedContainerSize;
 @property (nonatomic) long long requestOrientation;
 @property (nonatomic) bool requiresFastVisibiltyTestOnly;
@@ -115,6 +111,7 @@
 
 + (id)ADIdentifierNameForCreativeType:(int)arg1;
 
+- (void).cxx_destruct;
 - (void)_clientApplicationDidBecomeActive;
 - (void)_clientApplicationDidEnterBackground;
 - (void)_closeConnectionIfNecessary;
@@ -142,7 +139,6 @@
 - (bool)actionViewControllerReadyForPresentation;
 - (bool)actionViewControllerWantsDismissal;
 - (bool)adLibManagedVideo;
-- (id)adPrivacyDetailsAttributes;
 - (bool)adRequestMade;
 - (id)advertisingSection;
 - (id)authenticationUserName;
@@ -182,13 +178,13 @@
 - (id)currentActionPublicAttributes;
 - (id)currentAdImpressionPublicAttributes;
 - (struct CGSize { double x1; double x2; })currentAdSizeForContainerSize:(struct CGSize { double x1; double x2; })arg1;
-- (id)currentPrivacyDetailsAttributes;
 - (id)customActionViewController;
 - (void)dealloc;
 - (id)description;
 - (void)determineActionForTapAtLocation:(struct CGPoint { double x1; double x2; })arg1 inFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 withMRAIDAction:(id)arg3 completeHandler:(id /* block */)arg4;
 - (bool)didInstallCreativeView;
 - (void)dismissCustomActionViewController;
+- (void)dismissWebViewActionViewControlller:(id)arg1;
 - (void)executeBannerViewActionFrom:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 withTapLocation:(struct CGPoint { double x1; double x2; })arg2;
 - (bool)fastVisibilityContextIsFeed;
 - (bool)firedAdStatusEvent;
@@ -211,8 +207,7 @@
 - (void)newsTransparencyViewControllerDidRenderView:(id)arg1;
 - (id)newsViewController;
 - (void)openURL:(id)arg1 fromFrame:(id)arg2 tapLocation:(id)arg3;
-- (id)pendingAnalyticsEventInfo;
-- (long long)pendingAnalyticsVideoState;
+- (bool)prerollVideo;
 - (id)prerollVideoAssets;
 - (void)presentActionViewController:(id)arg1;
 - (bool)privacyRequestInProgress;
@@ -222,10 +217,6 @@
 - (id)recipient;
 - (void)refuseBannerViewAction;
 - (id)reorientedContainerSize;
-- (void)reportAdPrivacySheetDidAppear;
-- (void)reportAdPrivacySheetDidDisappear;
-- (void)reportAdPrivacySheetDidLinkOut;
-- (void)reportAdPrivacySheetDidRender;
 - (void)reportNativeClickEvent;
 - (long long)requestOrientation;
 - (bool)requiresFastVisibiltyTestOnly;
@@ -256,12 +247,12 @@
 - (void)setLastVolume:(float)arg1;
 - (void)setMraidAction:(id)arg1;
 - (void)setNewsViewController:(id)arg1;
-- (void)setPendingAnalyticsEventInfo:(id)arg1;
-- (void)setPendingAnalyticsVideoState:(long long)arg1;
+- (void)setPrerollVideo:(bool)arg1;
 - (void)setPrerollVideoAssets:(id)arg1;
 - (void)setPrivacyRequestInProgress:(bool)arg1;
 - (void)setProgressMileStoneMet:(long long)arg1;
 - (void)setReUseCount:(unsigned long long)arg1;
+- (void)setRecipient:(id)arg1;
 - (void)setReorientedContainerSize:(id)arg1;
 - (void)setRequestOrientation:(long long)arg1;
 - (void)setRequiresFastVisibiltyTestOnly:(bool)arg1;

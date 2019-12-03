@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface _UILinearForceLevelClassifier : _UIForceLevelClassifier <UIDebuggingInformationObserver> {
+@interface _UILinearForceLevelClassifier : _UIForceLevelClassifier {
     bool  _anyForceObservations;
     long long  _impulseObservationState;
     double  _impulseSmoothingFactor;
@@ -17,15 +17,11 @@
 }
 
 @property (nonatomic, readonly) double currentImpulse;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic) double impulseSmoothingFactor;
 @property (nonatomic) double revealThreshold;
 @property (nonatomic) double smoothingFactor;
 @property (nonatomic) double standardThreshold;
 @property (nonatomic) double strongThreshold;
-@property (readonly) Class superclass;
 
 - (double)_calculateProgressOfTouchForceValue:(double)arg1 toForceLevel:(long long)arg2 minimumRequiredForceLevel:(long long)arg3;
 - (long long)_forceLevelForTouchForceValue:(double)arg1;

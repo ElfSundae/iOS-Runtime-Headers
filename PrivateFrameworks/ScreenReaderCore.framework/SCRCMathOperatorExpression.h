@@ -26,6 +26,6 @@
 - (id)latexFormatStringAsOver;
 - (id)mathMLString;
 - (unsigned short)operatorChar;
-- (id)speakableDescriptionWithSpeakingStyle:(int)arg1 arePausesAllowed:(bool)arg2;
+- (id)speakableDescriptionWithSpeakingStyle:(long long)arg1 arePausesAllowed:(bool)arg2;
 
 @end

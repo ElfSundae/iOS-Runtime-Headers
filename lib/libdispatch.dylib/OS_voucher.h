@@ -4,10 +4,7 @@
 
 @interface OS_voucher : OS_object
 
-+ (void)load;
-
-- (void)_dispose;
-- (void)_xref_dispose;
+- (void)dealloc;
 - (id)debugDescription;
 - (id)init;
 - (oneway void)release;

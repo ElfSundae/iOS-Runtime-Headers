@@ -4,10 +4,10 @@
 
 @interface HMDHTTPMessageTransport : HMDRemoteMessageTransport <HMDHTTPClientMessageTransportDelegate, HMDHTTPServerMessageTransportDelegate, HMFNetServiceBrowserDelegate> {
     HMFNetServiceBrowser * _clientBrowser;
-    NSObject<OS_dispatch_queue> * _clientQueue;
     NSMutableArray * _clientTransports;
     HMDHTTPDevice * _currentDevice;
-    NSObject<OS_dispatch_queue> * _propertyQueue;
+    <HMFLocking> * _lock;
+    NSObject<OS_dispatch_queue> * _queue;
     NSMutableSet * _residentDevices;
     bool  _serverEnabled;
     HMDHTTPServerMessageTransport * _serverTransport;
@@ -17,18 +17,18 @@
 
 @property (nonatomic, readonly, copy) NSDictionary *TXTRecord;
 @property (nonatomic, readonly) HMFNetServiceBrowser *clientBrowser;
-@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *clientQueue;
 @property (nonatomic, readonly) NSArray *clientTransports;
 @property (nonatomic, readonly) HMDHTTPDevice *currentDevice;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *propertyQueue;
 @property (getter=isServerEnabled) bool serverEnabled;
 @property (nonatomic, readonly) HMDHTTPServerMessageTransport *serverTransport;
 @property (readonly) Class superclass;
 
 + (id)logCategory;
++ (id)protocolVersion;
++ (bool)protocolVersionSupportsExtendedMessages:(id)arg1;
 + (unsigned long long)restriction;
 + (id)shortDescription;
 + (bool)shouldHostMessageServer;
@@ -46,7 +46,6 @@
 - (void)client:(id)arg1 didReceiveMessage:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)client:(id)arg1 didStopWithError:(id)arg2;
 - (id)clientBrowser;
-- (id)clientQueue;
 - (id)clientTransportForDevice:(id)arg1;
 - (id)clientTransportForService:(id)arg1;
 - (id)clientTransports;
@@ -58,13 +57,13 @@
 - (id)deviceForHTTPDevice:(id)arg1;
 - (void)handleServerEnabled:(bool)arg1;
 - (id)initWithAccountRegistry:(id)arg1;
+- (id)initWithAccountRegistry:(id)arg1 clientBrowser:(id)arg2;
 - (bool)isDeviceConnected:(id)arg1;
 - (bool)isServerEnabled;
 - (id)logIdentifier;
 - (void)netServiceBrowser:(id)arg1 didAddService:(id)arg2;
 - (void)netServiceBrowser:(id)arg1 didRemoveService:(id)arg2;
 - (void)netServiceBrowser:(id)arg1 didStopBrowsingWithError:(id)arg2;
-- (id)propertyQueue;
 - (long long)qualityOfService;
 - (void)removeAllClientTransports;
 - (void)removeClientTransport:(id)arg1;

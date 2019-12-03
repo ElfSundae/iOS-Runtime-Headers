@@ -10,11 +10,37 @@
     NSDictionary * _serviceLookup;
 }
 
+@property (readonly) <GKAccountService> *accountService;
+@property (readonly) <GKAccountServicePrivate> *accountServicePrivate;
+@property (readonly) <GKAnalyticsService> *analyticsService;
+@property (readonly) <GKAnalyticsServicePrivate> *analyticsServicePrivate;
 @property (retain) GKDaemonProxy *baseProxy;
+@property (readonly) <GKBulletinService> *bulletinService;
+@property (readonly) <GKBulletinServicePrivate> *bulletinServicePrivate;
+@property (readonly) <GKChallengeService> *challengeService;
+@property (readonly) <GKChallengeServicePrivate> *challengeServicePrivate;
+@property (readonly) <GKFriendService> *friendService;
+@property (readonly) <GKFriendServicePrivate> *friendServicePrivate;
+@property (readonly) <GKGameService> *gameService;
+@property (readonly) <GKGameServicePrivate> *gameServicePrivate;
+@property (readonly) <GKGameSessionService> *gameSessionService;
+@property (readonly) <GKGameSessionServicePrivate> *gameSessionServicePrivate;
+@property (readonly) <GKGameStatService> *gameStatService;
+@property (readonly) <GKGameStatServicePrivate> *gameStatServicePrivate;
 @property (retain) GKPlayerInternal *localPlayer;
+@property (readonly) <GKMultiplayerService> *multiplayerService;
+@property (readonly) <GKMultiplayerServicePrivate> *multiplayerServicePrivate;
 @property (retain) GKThreadsafeDictionary *pendingRequests;
+@property (readonly) <GKProfileService> *profileService;
+@property (readonly) <GKProfileServicePrivate> *profileServicePrivate;
 @property unsigned int serviceGeneration;
 @property (retain) NSDictionary *serviceLookup;
+@property (readonly) <GKTournamentService> *tournamentService;
+@property (readonly) <GKTournamentServicePrivate> *tournamentServicePrivate;
+@property (readonly) <GKTurnBasedService> *turnBasedService;
+@property (readonly) <GKTurnBasedServicePrivate> *turnBasedServicePrivate;
+@property (readonly) <GKUtilityService> *utilityService;
+@property (readonly) <GKUtilityServicePrivate> *utilityServicePrivate;
 
 - (id)accountService;
 - (id)accountServicePrivate;
@@ -56,6 +82,8 @@
 - (void)setPendingRequests:(id)arg1;
 - (void)setServiceGeneration:(unsigned int)arg1;
 - (void)setServiceLookup:(id)arg1;
+- (id)tournamentService;
+- (id)tournamentServicePrivate;
 - (id)turnBasedService;
 - (id)turnBasedServicePrivate;
 - (id)utilityService;

@@ -10,7 +10,11 @@
     unsigned int  fallback_child_indefinite_failed;
     unsigned int  fallback_disposition;
     NSObject<OS_nw_interface> * fallback_interface;
+    unsigned int  fallback_is_cellular;
+    unsigned int  fallback_is_forced;
+    unsigned long long  fallback_timeout_nanos;
     void * fallback_timer;
+    unsigned long long  fallback_timer_start;
     unsigned long long  fallback_usage_cap;
     unsigned int  no_fallback_timer;
     void * post_transport_timer;
@@ -18,6 +22,7 @@
     unsigned int  primary_child_in_progress;
     unsigned int  primary_child_indefinite_failed;
     NSObject<OS_nw_interface> * primary_interface;
+    unsigned int  received_primary_cancelled_error;
     int  result;
     unsigned int  started_fallback;
     void * usage_cap_timer;

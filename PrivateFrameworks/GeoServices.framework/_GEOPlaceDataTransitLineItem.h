@@ -25,6 +25,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) GEOMapItemIdentifier *identifier;
 @property (nonatomic, readonly) NSArray *incidents;
+@property (nonatomic, readonly) bool isBus;
 @property (nonatomic, readonly) bool isIncidentsTTLExpired;
 @property (nonatomic, readonly) NSArray *labelItems;
 @property (nonatomic, readonly) NSString *lineColorString;
@@ -50,6 +51,7 @@
 - (id)identifier;
 - (id)incidents;
 - (id)initWithMapItem:(id)arg1;
+- (bool)isBus;
 - (bool)isIncidentsTTLExpired;
 - (id)labelItems;
 - (id)lineColorString;

@@ -9,7 +9,7 @@
     <CNScheduler> * _downstreamScheduler;
     bool  _open;
     unsigned long long  _options;
-    <CNScheduler> * _resourceLock;
+    CNUnfairLock * _resourceLock;
     <CNCancelable> * _scheduledToken;
     bool  _someoneWaiting;
 }
@@ -20,9 +20,11 @@
 @property (nonatomic, readonly) <CNScheduler> *downstreamScheduler;
 @property (nonatomic) bool open;
 @property (nonatomic, readonly) unsigned long long options;
-@property (nonatomic, readonly) <CNScheduler> *resourceLock;
+@property (nonatomic, readonly) CNUnfairLock *resourceLock;
 @property (nonatomic, retain) <CNCancelable> *scheduledToken;
-@property (nonatomic) bool someoneWaiting;
+@property (getter=isSomeoneWaiting, nonatomic) bool someoneWaiting;
+
++ (id)os_log;
 
 - (void).cxx_destruct;
 - (id /* block */)block;
@@ -32,6 +34,7 @@
 - (id)downstreamScheduler;
 - (void)handleEvent;
 - (id)initWithDelay:(double)arg1 options:(unsigned long long)arg2 block:(id /* block */)arg3 schedulerProvider:(id)arg4 downstreamScheduler:(id)arg5;
+- (bool)isSomeoneWaiting;
 - (void)nts_closeDoor;
 - (bool)nts_isDoorOpened;
 - (void)nts_letSomeoneIn;
@@ -44,6 +47,5 @@
 - (void)setOpen:(bool)arg1;
 - (void)setScheduledToken:(id)arg1;
 - (void)setSomeoneWaiting:(bool)arg1;
-- (bool)someoneWaiting;
 
 @end

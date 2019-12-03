@@ -5,7 +5,7 @@
 @interface CATRemoteConnectionTrustDecision : NSObject {
     id  _trust;
     CATRemoteConnection * mConnection;
-    bool  mHasResponded;
+    _Atomic bool  mHasResponded;
 }
 
 @property (readonly) id trust;

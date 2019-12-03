@@ -7,13 +7,13 @@
     PCPersistentTimer * _lifetimeTimer;
 }
 
-+ (bool)willMonitorLifetime:(id)arg1;
++ (Class)lifetimeClass;
 
 - (void).cxx_destruct;
 - (void)_calendarEventStoreChangedWithNotification:(id)arg1;
 - (void)_timerFired:(id)arg1;
 - (id)activeDateIntervalForCalendarEventLifetime:(id)arg1 assertionStartDate:(id)arg2;
 - (id)init;
-- (id)updateForModeAssertionDetails:(id)arg1 date:(id)arg2;
+- (id)updateForModeAssertions:(id)arg1 date:(id)arg2;
 
 @end

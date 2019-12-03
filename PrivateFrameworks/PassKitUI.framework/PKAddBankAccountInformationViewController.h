@@ -5,6 +5,7 @@
 @interface PKAddBankAccountInformationViewController : PKPaymentSetupTableViewController <UITextFieldDelegate> {
     NSString * _accountCountryCode;
     PKBankAccountInformation * _bankInformation;
+    NSMutableDictionary * _cellHasPastedContent;
     NSArray * _cellPlaceholderText;
     NSArray * _cellText;
     NSMutableDictionary * _cells;
@@ -30,7 +31,9 @@
 
 - (void).cxx_destruct;
 - (void)_addPaymentFundingSourceWithCompletion:(id /* block */)arg1;
+- (bool)_allCellsHavePastedContent;
 - (id)_bankInformationTextForRow:(unsigned long long)arg1;
+- (id)_cellHasPastedContent;
 - (bool)_cellValuesAreValid;
 - (id)_countrySpecificLocalizedStringKeyForKey:(id)arg1;
 - (id)_countrySpecificLocalizedStringKeyForKey:(id)arg1 minDigits:(unsigned long long)arg2 maxDigits:(unsigned long long)arg3;
@@ -49,6 +52,7 @@
 - (id)_placeholderTextForRow:(unsigned long long)arg1;
 - (void)_reloadTableSection;
 - (unsigned long long)_rowWithTextField:(id)arg1;
+- (void)_setCellHasPastedContent:(bool)arg1 forRow:(unsigned long long)arg2;
 - (void)_setIdleTimerDisabled:(bool)arg1 title:(id)arg2 subtitle:(id)arg3;
 - (void)_setNavigationBarEnabled:(bool)arg1;
 - (void)_setNavigationBarItemsHidden:(bool)arg1;
@@ -74,8 +78,6 @@
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (bool)offerKeychainPreFill;
 - (bool)pkui_disablesAutomaticDismissalUponEnteringBackground;
-- (id)pkui_navigationBarTintColor;
-- (bool)pkui_prefersNavigationBarShadowHidden;
 - (void)setDelegate:(id)arg1;
 - (void)setHeaderViewTitle:(id)arg1 subtitle:(id)arg2;
 - (void)setOfferKeychainPreFill:(bool)arg1;
@@ -84,10 +86,10 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 replacementString:(id)arg3;
+- (void)textFieldClearButtonPressed:(id)arg1;
 - (void)textFieldDidBeginEditing:(id)arg1;
 - (void)textFieldDidChange:(id)arg1;
 - (void)viewDidAppear:(bool)arg1;
-- (void)viewDidLoad;
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillLayoutSubviews;
 

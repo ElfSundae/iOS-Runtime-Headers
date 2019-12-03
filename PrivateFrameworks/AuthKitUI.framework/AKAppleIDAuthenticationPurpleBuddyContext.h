@@ -19,6 +19,7 @@
 - (id)navigationController;
 - (id)passwordForCreating;
 - (void)presentBasicLoginUIWithCompletion:(id /* block */)arg1;
+- (void)presentBiometricOrPasscodeValidationForAppleID:(id)arg1 completion:(id /* block */)arg2;
 - (void)presentLoginAlertWithError:(id)arg1 title:(id)arg2 message:(id)arg3 completion:(id /* block */)arg4;
 - (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(unsigned long long*)arg3;
 - (void)setNavigationController:(id)arg1;

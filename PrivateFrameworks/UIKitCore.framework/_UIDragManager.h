@@ -9,7 +9,6 @@
     long long  _pendingSessionRequests;
     NSMutableArray * _pendingSessionRequestsCompletionBlocks;
     UIScreen * _screen;
-    _UIDruidSourceWarmUpConnection * _warmUpConnection;
 }
 
 @property (nonatomic, readonly) CAContext *dragImageContext;
@@ -17,9 +16,11 @@
 @property (nonatomic, copy) NSArray *dragSessionSources;
 @property (nonatomic, readonly) UIScreen *screen;
 
++ (void)initializeDraggingSystem;
+
 - (void).cxx_destruct;
 - (void)_willAddDeactivationReason:(id)arg1;
-- (id)beginDragWithItems:(id)arg1 dataOwner:(long long)arg2 touches:(id)arg3 orInitialCentroid:(struct CGPoint { double x1; double x2; })arg4 requiredContextIds:(id)arg5 shouldPerformHitTesting:(bool)arg6 sourceView:(id)arg7 accessibilityEndpoint:(id)arg8;
+- (id)beginDragWithSessionConfiguration:(id)arg1;
 - (void)deleteSlots:(id)arg1;
 - (id)dragDestinationWithEvent:(id)arg1;
 - (id)dragImageContext;
@@ -36,6 +37,5 @@
 - (void)setDragSessionDestinations:(id)arg1;
 - (void)setDragSessionSources:(id)arg1;
 - (unsigned int)uploadImage:(struct CGImage { }*)arg1;
-- (void)warmUpDruid;
 
 @end

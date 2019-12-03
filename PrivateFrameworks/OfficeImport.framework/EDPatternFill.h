@@ -13,10 +13,10 @@
 + (id)patternFillWithType:(int)arg1 foreColorReference:(id)arg2 backColorReference:(id)arg3 resources:(id)arg4;
 + (id)patternFillWithType:(int)arg1 resources:(id)arg2;
 
+- (void).cxx_destruct;
 - (id)backColor;
 - (id)backColorReference;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)foreColor;
 - (id)foreColorReference;

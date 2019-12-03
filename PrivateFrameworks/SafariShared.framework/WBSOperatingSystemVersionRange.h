@@ -21,7 +21,6 @@
 @property (nonatomic, readonly) struct { long long x1; long long x2; long long x3; } minimumVersion;
 
 + (id)defaultCloudBookmarksEligibleOperatingSystemRanges;
-+ (id)rangeWithCloudBookmarksMigrationRampSettingsDictionary:(id)arg1;
 
 - (void).cxx_destruct;
 - (id)family;

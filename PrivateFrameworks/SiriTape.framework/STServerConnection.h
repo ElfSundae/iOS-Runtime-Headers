@@ -5,6 +5,6 @@
 @interface STServerConnection : STProxyConnection
 
 - (void)handleAceObject:(id)arg1;
-- (id)initWithSocket:(id)arg1 isRecording:(bool)arg2 replayFileURL:(id)arg3;
+- (id)initWithSocket:(id)arg1 handler:(id)arg2 replayFileURL:(id)arg3;
 
 @end

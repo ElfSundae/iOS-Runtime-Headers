@@ -2,23 +2,28 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXCMMInvitationGadget : NSObject <PXChangeObserver, PXGadget> {
-    PXCMMAssetsProgressListener * _assetsProgressListener;
-    UIColor * _backgroundColor;
+@interface PXCMMInvitationGadget : NSObject <PXCMMInvitationViewDelegate, PXChangeObserver, PXGadget> {
     <PXGadgetDelegate> * _delegate;
+    bool  _didLoadInvitation;
+    bool  _didRequestCachingOfPosterImage;
     PXGadgetSpec * _gadgetSpec;
     <PXCMMInvitation> * _invitation;
     <PXCMMInvitationGadgetDelegate> * _invitationGadgetDelegate;
     PXCMMInvitationView * _invitationView;
-    UILongPressGestureRecognizer * _longPressGestureRecognizer;
+    PXCMMInvitationViewModel * _invitationViewModel;
+    PXMomentShareStatusPresentation * _momentShareStatusPresentation;
     NSManagedObjectID * _objectID;
+    struct CGSize { 
+        double width; 
+        double height; 
+    }  _requestedPosterImageSize;
+    double  _requestedWidth;
+    <PXCMMWorkflowPresenting> * _workflowPresenter;
 }
 
-@property (nonatomic, readonly) const struct __CFString { }*accessoryButtonEventTrackerKey;
 @property (nonatomic, readonly) NSString *accessoryButtonTitle;
 @property (nonatomic, readonly) unsigned long long accessoryButtonType;
-@property (nonatomic, retain) PXCMMAssetsProgressListener *assetsProgressListener;
-@property (nonatomic, retain) UIColor *backgroundColor;
+@property (nonatomic, readonly) Class collectionViewItemClass;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <PXGadgetDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -30,6 +35,7 @@
 @property (nonatomic, retain) <PXCMMInvitation> *invitation;
 @property (nonatomic) <PXCMMInvitationGadgetDelegate> *invitationGadgetDelegate;
 @property (nonatomic, readonly) NSString *localizedTitle;
+@property (nonatomic, retain) PXMomentShareStatusPresentation *momentShareStatusPresentation;
 @property (nonatomic, retain) NSManagedObjectID *objectID;
 @property (nonatomic) long long priority;
 @property (readonly) Class superclass;
@@ -37,45 +43,52 @@
 @property (nonatomic, readonly) bool supportsHighlighting;
 @property (nonatomic, readonly) bool supportsSelection;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } visibleContentRect;
+@property (nonatomic, readonly) <PXCMMWorkflowPresenting> *workflowPresenter;
+
++ (id)_imageRequestOptions;
++ (id)sharedUserInitiatedQueue;
 
 - (void).cxx_destruct;
-- (void)_changeViewConfiguration:(id /* block */)arg1;
+- (void)_cachePosterImageWithWidth:(double)arg1;
+- (void)_clearPosterImageCache;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
 - (void)_lastExitedForYouDateDidChange:(id)arg1;
-- (void)_loadInvitation:(id)arg1;
-- (void)_longPressGesture:(id)arg1;
-- (void)_registerAssetsProgressListenerForInvitation:(id)arg1;
-- (void)_tapGesture:(id)arg1;
-- (void)_updateExpirationTitle;
-- (void)_updateLongPressGestureRecognizer;
-- (void)_updateStatusString;
-- (void)_updateTitle;
-- (id)assetsProgressListener;
-- (id)backgroundColor;
+- (void)_loadInvitationIfNecessary;
+- (void)_presentDetailViewAnimated:(bool)arg1;
+- (void)_registerMomentShareStatusPresentation;
+- (void)_updateExpirationTitle:(id)arg1;
+- (void)_updateStatusString:(id)arg1;
+- (void)_updateTitle:(id)arg1;
+- (Class)collectionViewItemClass;
 - (void)commitPreviewViewController:(id)arg1;
 - (void)contentHasBeenSeen;
-- (struct NSObject { Class x1; }*)contentView;
 - (id)delegate;
 - (id)gadgetSpec;
 - (unsigned long long)gadgetType;
 - (bool)hasContentToDisplay;
+- (id)init;
+- (id)initWithWorkflowPresenter:(id)arg1;
 - (id)invitation;
 - (id)invitationGadgetDelegate;
+- (void)invitationViewSizeThatFitsDidChange:(id)arg1;
+- (id)momentShareStatusPresentation;
 - (id)objectID;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void*)arg3;
-- (void)ppt_presentDetailView;
-- (void)presentInvitationAnimated:(bool)arg1;
-- (struct NSObject { Class x1; }*)previewViewControllerAtLocation:(struct CGPoint { double x1; double x2; })arg1 fromSourceView:(struct NSObject { Class x1; }*)arg2 outSourceRect:(out struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg3;
-- (void)setAssetsProgressListener:(id)arg1;
-- (void)setBackgroundColor:(id)arg1;
+- (void)prefetchDuringScrollingForWidth:(double)arg1;
+- (void)prepareCollectionViewItem:(struct UICollectionViewCell { Class x1; }*)arg1;
+- (void)presentDetailViewAnimated:(bool)arg1;
+- (void)presentDetailViewForInvitationView:(id)arg1 animated:(bool)arg2;
+- (struct NSObject { Class x1; }*)previewViewControllerAtLocation:(struct CGPoint { double x1; double x2; })arg1 fromSourceView:(struct NSObject { Class x1; }*)arg2;
 - (void)setDelegate:(id)arg1;
 - (void)setGadgetSpec:(id)arg1;
 - (void)setInvitation:(id)arg1;
 - (void)setInvitationGadgetDelegate:(id)arg1;
+- (void)setMomentShareStatusPresentation:(id)arg1;
 - (void)setObjectID:(id)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (bool)supportsHighlighting;
-- (bool)supportsSelection;
+- (struct NSObject { Class x1; }*)targetPreviewViewForLocation:(struct CGPoint { double x1; double x2; })arg1 inCoordinateSpace:(id)arg2;
 - (id)uniqueGadgetIdentifier;
+- (id)workflowPresenter;
 
 @end

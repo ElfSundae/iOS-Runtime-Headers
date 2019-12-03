@@ -9,10 +9,13 @@
     NSMutableDictionary * _systemSharedContainersByID;
 }
 
++ (id)_allPersistedDisabledDomainNames;
++ (void)_persistDisabledDomainNames:(id)arg1;
 + (id)appManager;
 + (id)appManagerWithSettingsContext:(id)arg1;
 
-- (id)_copyAppsWithPlists:(id)arg1 error:(id*)arg2;
+- (id)_allDisabledDomainNames;
+- (id)_copyAppsWithPlists:(id)arg1 safeHarbor:(bool)arg2 error:(id*)arg3;
 - (id)_copySafeHarborsWithError:(id*)arg1;
 - (id)_copySystemContainersWithError:(id*)arg1;
 - (id)_copySystemContainersWithPlists:(id)arg1 error:(id*)arg2;

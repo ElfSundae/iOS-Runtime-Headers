@@ -10,6 +10,7 @@
     NSMutableDictionary * _breatheSessionReadingsBySessionUUID;
     NSMutableArray * _breatheStatistics;
     NSDateInterval * _dateInterval;
+    NSDateComponents * _dateOfBirthComponents;
     struct vector<HDActivityCacheHeartRateStatisticsBuilderHeartRateSample, std::__1::allocator<HDActivityCacheHeartRateStatisticsBuilderHeartRateSample> > { 
         struct HDActivityCacheHeartRateStatisticsBuilderHeartRateSample {} *__begin_; 
         struct HDActivityCacheHeartRateStatisticsBuilderHeartRateSample {} *__end_; 
@@ -35,7 +36,7 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_addBeatsPerMinute:(double)arg1 time:(double)arg2 toSessionStatistics:(id)arg3;
+- (void)_addBeatsPerSecond:(double)arg1 time:(double)arg2 toSessionStatistics:(id)arg3;
 - (void)_addHeartRateSamples:(const struct vector<HDActivityCacheHeartRateStatisticsBuilderHeartRateSample, std::__1::allocator<HDActivityCacheHeartRateStatisticsBuilderHeartRateSample> > { struct HDActivityCacheHeartRateStatisticsBuilderHeartRateSample {} *x1; struct HDActivityCacheHeartRateStatisticsBuilderHeartRateSample {} *x2; struct __compressed_pair<HDActivityCacheHeartRateStatisticsBuilderHeartRateSample *, std::__1::allocator<HDActivityCacheHeartRateStatisticsBuilderHeartRateSample> > { struct HDActivityCacheHeartRateStatisticsBuilderHeartRateSample {} *x_3_1_1; } x3; }*)arg1 toStatistics:(id)arg2;
 - (void)_addHeartRateSamplesToAllStatistics:(const struct vector<HDActivityCacheHeartRateStatisticsBuilderHeartRateSample, std::__1::allocator<HDActivityCacheHeartRateStatisticsBuilderHeartRateSample> > { struct HDActivityCacheHeartRateStatisticsBuilderHeartRateSample {} *x1; struct HDActivityCacheHeartRateStatisticsBuilderHeartRateSample {} *x2; struct __compressed_pair<HDActivityCacheHeartRateStatisticsBuilderHeartRateSample *, std::__1::allocator<HDActivityCacheHeartRateStatisticsBuilderHeartRateSample> > { struct HDActivityCacheHeartRateStatisticsBuilderHeartRateSample {} *x_3_1_1; } x3; }*)arg1;
 - (void)_addHeartRateStatisticsForNewWorkouts:(const struct vector<HDActivityCacheStatisticsBuilderWorkoutSample, std::__1::allocator<HDActivityCacheStatisticsBuilderWorkoutSample> > { struct HDActivityCacheStatisticsBuilderWorkoutSample {} *x1; struct HDActivityCacheStatisticsBuilderWorkoutSample {} *x2; struct __compressed_pair<HDActivityCacheStatisticsBuilderWorkoutSample *, std::__1::allocator<HDActivityCacheStatisticsBuilderWorkoutSample> > { struct HDActivityCacheStatisticsBuilderWorkoutSample {} *x_3_1_1; } x3; }*)arg1;
@@ -54,6 +55,7 @@
 - (id)heartRateSummary;
 - (id)initWithDateInterval:(id)arg1 activityCacheIndex:(long long)arg2;
 - (id)restingHeartRate;
+- (void)setDateOfBirthComponents:(id)arg1;
 - (id)walkingAverageHeartRate;
 
 @end

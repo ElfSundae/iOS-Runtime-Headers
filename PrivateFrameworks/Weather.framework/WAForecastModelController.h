@@ -9,6 +9,7 @@
     NSOperationQueue * _forecastOperationQueue;
     struct ct_green_tea_logger_s { } * _greenTeaLogger;
     NSObject<OS_dispatch_queue> * _incomingRequestQueue;
+    WFWeatherStoreService * _store;
     NSString * _trackingParameter;
     NSMutableSet * _updatingCities;
 }
@@ -19,6 +20,7 @@
 @property (retain) NSOperationQueue *forecastOperationQueue;
 @property (nonatomic) struct ct_green_tea_logger_s { }*greenTeaLogger;
 @property (retain) NSObject<OS_dispatch_queue> *incomingRequestQueue;
+@property (readonly) WFWeatherStoreService *store;
 @property (copy) NSString *trackingParameter;
 @property (retain) NSMutableSet *updatingCities;
 
@@ -46,6 +48,7 @@
 - (void)setIncomingRequestQueue:(id)arg1;
 - (void)setTrackingParameter:(id)arg1;
 - (void)setUpdatingCities:(id)arg1;
+- (id)store;
 - (id)trackingParameter;
 - (id)updatingCities;
 

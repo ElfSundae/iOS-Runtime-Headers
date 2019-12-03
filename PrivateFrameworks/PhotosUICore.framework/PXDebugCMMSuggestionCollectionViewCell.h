@@ -3,10 +3,10 @@
  */
 
 @interface PXDebugCMMSuggestionCollectionViewCell : UICollectionViewCell {
-    PXCMMPosterView * _gadgetView;
+    PXCMMPosterUIView * _gadgetView;
 }
 
-@property (nonatomic, readonly) PXCMMPosterView *gadgetView;
+@property (nonatomic, readonly) PXCMMPosterUIView *gadgetView;
 
 - (void).cxx_destruct;
 - (id)gadgetView;

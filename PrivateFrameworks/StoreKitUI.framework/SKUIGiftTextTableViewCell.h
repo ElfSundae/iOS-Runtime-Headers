@@ -5,6 +5,7 @@
 @interface SKUIGiftTextTableViewCell : UITableViewCell <UITextViewDelegate> {
     UIView * _bottomBorderView;
     UILabel * _label;
+    bool  _leftToRight;
     long long  _maximumCharacterCount;
     UILabel * _placeholderLabel;
     UITextView * _textView;
@@ -15,6 +16,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSString *label;
+@property (nonatomic) bool leftToRight;
 @property (nonatomic) long long maximumCharacterCount;
 @property (nonatomic, copy) NSString *placeholder;
 @property (readonly) Class superclass;
@@ -27,9 +29,11 @@
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (id)label;
 - (void)layoutSubviews;
+- (bool)leftToRight;
 - (long long)maximumCharacterCount;
 - (id)placeholder;
 - (void)setLabel:(id)arg1;
+- (void)setLeftToRight:(bool)arg1;
 - (void)setMaximumCharacterCount:(long long)arg1;
 - (void)setPlaceholder:(id)arg1;
 - (void)setTextView:(id)arg1;

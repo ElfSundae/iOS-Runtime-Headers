@@ -39,6 +39,7 @@
 - (void)enumerateQueryResults:(unsigned long long)arg1 stringCache:(struct { struct __CFDictionary {} *x1; struct __CFDictionary {} *x2; unsigned int x3; }*)arg2 usingBlock:(id /* block */)arg3;
 - (id)initWithByteVector:(char *)arg1 count:(unsigned int)arg2 deallocator:(id /* block */)arg3;
 - (id)initWithByteVector:(char *)arg1 count:(unsigned int)arg2 shouldDeallocate:(bool)arg3;
+- (id)initWithByteVector:(char *)arg1 count:(unsigned int)arg2 trusted:(unsigned char)arg3 deallocator:(id /* block */)arg4;
 - (bool)isEqual:(id)arg1;
 
 @end

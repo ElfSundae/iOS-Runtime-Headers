@@ -71,7 +71,6 @@
 - (bool)searchBarToBecomeTopAttached;
 - (void)setContentVisible:(bool)arg1;
 - (bool)shouldAccountForStatusBar;
-- (bool)shouldRemovePresentersView;
 - (double)statusBarAdjustment;
 - (void)traitCollectionDidChange:(id)arg1;
 

@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/EventKitUI.framework/EventKitUI
  */
 
-@interface EKUIEventDiffViewController : EKEventViewController <EKEditItemViewControllerProtocol, EKEventTitleDetailItemDelegate> {
+@interface EKUIEventDiffViewController : EKEventViewController <EKEditItemViewControllerProtocol, EKEventDetailNotesCellDelegate, EKEventTitleDetailItemDelegate> {
     <EKEditItemViewControllerDelegate> * _editDelegate;
     NSMutableArray * _items;
     EKEvent * _originalEvent;

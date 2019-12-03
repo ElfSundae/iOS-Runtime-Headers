@@ -70,7 +70,7 @@
 - (unsigned long long)shareeStatus;
 - (int)shareeStatusRaw;
 
-// Image: /System/Library/PrivateFrameworks/PhotoAnalysis.framework/Frameworks/PhotosGraph.framework/Frameworks/MediaMiningKit.framework/MediaMiningKit
+// Image: /System/Library/PrivateFrameworks/MediaMiningKit.framework/MediaMiningKit
 
 - (bool)isCurrentUserForScheduling;
 - (bool)isCurrentUserForSharing;

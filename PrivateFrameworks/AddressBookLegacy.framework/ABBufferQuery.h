@@ -10,6 +10,7 @@
     bool  _needsMultivalueTable;
     bool  _needsPersonLinkTable;
     bool  _needsPersonTable;
+    ABSQLPredicate * _predicate;
     struct __CFDictionary { } * _propertyIndices;
     bool  _requestedHasImageData;
     bool  _requestedImageCropRect;
@@ -18,6 +19,7 @@
     bool  _requestedImageThumbnail;
     NSIndexSet * _requestedMultivalueIdentifiers;
     NSIndexSet * _requestedPropertyIdentifiers;
+    bool  _requestedSyncImageData;
     NSIndexSet * _scopedStoreIdentifiers;
     unsigned int  _sortOrder;
     struct CPSqliteStatement { struct CPSqliteConnection {} *x1; struct sqlite3_stmt {} *x2; double x3; bool x4; } * _statement;
@@ -30,6 +32,7 @@
 @property (nonatomic, readonly) bool needsMultivalueTable;
 @property (nonatomic, readonly) bool needsPersonLinkTable;
 @property (nonatomic, readonly) bool needsPersonTable;
+@property (nonatomic, readonly) ABSQLPredicate *predicate;
 @property (nonatomic) struct __CFDictionary { }*propertyIndices;
 @property (nonatomic, readonly) bool requestedHasImageData;
 @property (nonatomic, readonly) bool requestedImageCropRect;
@@ -38,6 +41,7 @@
 @property (nonatomic, readonly) bool requestedImageThumbnail;
 @property (nonatomic, readonly) NSIndexSet *requestedMultivalueIdentifiers;
 @property (nonatomic, readonly) NSIndexSet *requestedPropertyIdentifiers;
+@property (nonatomic, readonly) bool requestedSyncImageData;
 @property (nonatomic, readonly) NSIndexSet *scopedStoreIdentifiers;
 @property (nonatomic, readonly) unsigned int sortOrder;
 @property (nonatomic) struct CPSqliteStatement { struct CPSqliteConnection {} *x1; struct sqlite3_stmt {} *x2; double x3; bool x4; }*statement;
@@ -53,12 +57,13 @@
 - (void)bindWithClause:(id)arg1;
 - (void)dealloc;
 - (bool)fetchLinkedContacts;
-- (id)initWithAddressBook:(void*)arg1 whereClause:(id)arg2 whereClauseBindBlock:(id /* block */)arg3 requestedProperties:(struct __CFSet { }*)arg4 includeLinkedContacts:(bool)arg5 sortOrder:(unsigned int)arg6 managedConfiguration:(id)arg7;
+- (id)initWithAddressBook:(void*)arg1 predicate:(id)arg2 requestedProperties:(struct __CFSet { }*)arg3 includeLinkedContacts:(bool)arg4 sortOrder:(unsigned int)arg5 managedConfiguration:(id)arg6;
 - (id)managedConfiguration;
 - (bool)needsMultivalueEntryTable;
 - (bool)needsMultivalueTable;
 - (bool)needsPersonLinkTable;
 - (bool)needsPersonTable;
+- (id)predicate;
 - (void)prependWithClauseToQueryString:(id)arg1 whereClause:(id)arg2;
 - (struct __CFDictionary { }*)propertyIndices;
 - (bool)requestedHasImageData;
@@ -68,6 +73,7 @@
 - (bool)requestedImageThumbnail;
 - (id)requestedMultivalueIdentifiers;
 - (id)requestedPropertyIdentifiers;
+- (bool)requestedSyncImageData;
 - (id)scopedStoreIdentifiers;
 - (id)scopedStoresForManagedConfiguration:(id)arg1;
 - (void)setAddressBook:(void*)arg1;

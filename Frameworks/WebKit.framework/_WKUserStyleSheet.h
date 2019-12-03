@@ -10,7 +10,7 @@
     }  _userStyleSheet;
 }
 
-@property (readonly) /* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*_apiObject;
+@property (readonly) struct Object { int (**x1)(); id x2; }*_apiObject;
 @property (nonatomic, readonly, copy) NSURL *baseURL;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -19,7 +19,7 @@
 @property (nonatomic, readonly, copy) NSString *source;
 @property (readonly) Class superclass;
 
-- (/* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*)_apiObject;
+- (struct Object { int (**x1)(); id x2; }*)_apiObject;
 - (id)baseURL;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;

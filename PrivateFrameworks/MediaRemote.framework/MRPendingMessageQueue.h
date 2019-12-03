@@ -3,6 +3,7 @@
  */
 
 @interface MRPendingMessageQueue : NSObject {
+    NSMutableArray * _delayableMessages;
     unsigned long long  _lowPriorityMessagesCount;
     unsigned long long  _maxLowPriorityMessagesAllowed;
     NSMutableArray * _messages;

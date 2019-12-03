@@ -7,6 +7,7 @@
     NSDate * _date;
     NSNumber * _max;
     NSNumber * _min;
+    NSNumber * _mostRecent;
     NSNumber * _sum;
     <HKGraphSeriesBlockCoordinateInfo> * _userInfo;
 }

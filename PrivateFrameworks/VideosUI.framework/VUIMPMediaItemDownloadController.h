@@ -5,14 +5,14 @@
 @interface VUIMPMediaItemDownloadController : NSObject {
     MPMediaItem * _mediaItem;
     NSObject<OS_dispatch_queue> * _observerDispatchQueue;
-    NSMutableArray * _observers;
+    NSHashTable * _observers;
     NSObject<OS_dispatch_queue> * _serialProcessingDispatchQueue;
     VUIMPMediaItemDownloadControllerState * _state;
 }
 
 @property (nonatomic, retain) MPMediaItem *mediaItem;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *observerDispatchQueue;
-@property (nonatomic, retain) NSMutableArray *observers;
+@property (nonatomic, retain) NSHashTable *observers;
 @property (getter=isRestoreDownload, nonatomic, readonly) bool restoreDownload;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *serialProcessingDispatchQueue;
 @property (nonatomic, copy) VUIMPMediaItemDownloadControllerState *state;

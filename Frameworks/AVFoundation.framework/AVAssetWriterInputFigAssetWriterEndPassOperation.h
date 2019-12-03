@@ -13,7 +13,6 @@
 - (void)_notifyWhetherMorePassesAreNeeded:(bool)arg1 timeRanges:(id)arg2 forTrackWithID:(int)arg3;
 - (void)dealloc;
 - (id)descriptionForNextPass;
-- (void)finalize;
 - (id)init;
 - (id)initWithFigAssetWriter:(struct OpaqueFigAssetWriter { }*)arg1 trackID:(int)arg2;
 - (bool)isAsynchronous;

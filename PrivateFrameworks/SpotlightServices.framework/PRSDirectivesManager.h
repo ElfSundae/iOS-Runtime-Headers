@@ -69,12 +69,12 @@
 @property (nonatomic) double weightX;
 @property (nonatomic) double weightY;
 
-+ (id)descriptorsForModelInputScore;
 + (void)initialize;
 
 - (void).cxx_destruct;
 - (void)cleanup;
 - (void)dealloc;
+- (void)getAllDirectivesArraysForTesting:(void*)arg1;
 - (unsigned long long)getDirectiveTypeFromString:(id)arg1;
 - (id)init;
 - (void)processDirectives:(id)arg1;

@@ -16,6 +16,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) <HUQuickControlViewInteractionDelegate> *interactionDelegate;
 @property (nonatomic, copy) HUQuickControlViewProfile *profile;
+@property (nonatomic) unsigned long long reachabilityState;
 @property (nonatomic, retain) id secondaryValue;
 @property (readonly) Class superclass;
 @property (getter=isUserInteractionActive, nonatomic, readonly) bool userInteractionActive;

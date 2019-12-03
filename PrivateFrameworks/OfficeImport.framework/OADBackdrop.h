@@ -8,9 +8,9 @@
     OADVector3D * mUp;
 }
 
+- (void).cxx_destruct;
 - (id)anchor;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (id)init;

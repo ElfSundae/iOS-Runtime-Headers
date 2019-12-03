@@ -41,6 +41,7 @@
     PUMediaProvider * _mediaProvider;
     UIColor * _placeholderColor;
     bool  _shouldUseFullsizeImageData;
+    bool  _shouldUsePenultimateVersionForNextImageUpdate;
 }
 
 @property (setter=_setAssetLoadingStage:, nonatomic) long long _assetLoadingStage;
@@ -75,6 +76,7 @@
 @property (nonatomic, retain) PUMediaProvider *mediaProvider;
 @property (nonatomic, copy) UIColor *placeholderColor;
 @property (nonatomic) bool shouldUseFullsizeImageData;
+@property (setter=_setShouldUsePenultimateVersionForNextImageUpdate:, nonatomic) bool shouldUsePenultimateVersionForNextImageUpdate;
 @property (readonly) Class superclass;
 
 + (id)_supportedZoomImageFormats;
@@ -93,6 +95,7 @@
 - (void)_handleShouldReloadAssetMediaNotification:(id)arg1;
 - (id)_imageRequester;
 - (id)_imageView;
+- (void)_invalidate;
 - (void)_invalidateFullsizeImageMetadata;
 - (void)_invalidateFullsizeTiledLayer;
 - (void)_invalidateImage;
@@ -109,6 +112,7 @@
 - (bool)_needsUpdateImageView;
 - (void)_setAssetLoadingStage:(long long)arg1;
 - (void)_setAssetLoadingStartDate:(id)arg1;
+- (void)_setAssetWithoutUpdateIfNeeded:(id)arg1;
 - (void)_setDisplayingFullQualityImage:(bool)arg1;
 - (void)_setFullsizeImageData:(id)arg1;
 - (void)_setFullsizeImageOrientation:(long long)arg1;
@@ -125,6 +129,7 @@
 - (void)_setNeedsUpdateImageLayerModulator:(bool)arg1;
 - (void)_setNeedsUpdateImageLayerModulatorInput:(bool)arg1;
 - (void)_setNeedsUpdateImageView:(bool)arg1;
+- (void)_setShouldUsePenultimateVersionForNextImageUpdate:(bool)arg1;
 - (void)_setTargetSize:(struct CGSize { double x1; double x2; })arg1;
 - (struct CGSize { double x1; double x2; })_targetSize;
 - (void)_updateAssetLoadingStage;
@@ -170,6 +175,7 @@
 - (void)setShouldUseFullsizeImageData:(bool)arg1;
 - (bool)shouldAvoidInPlaceSnapshottedFadeOut;
 - (bool)shouldUseFullsizeImageData;
+- (bool)shouldUsePenultimateVersionForNextImageUpdate;
 - (void)updateMutableImageLayerModulator:(id)arg1;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 - (bool)wantsVisibleRectChanges;

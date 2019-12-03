@@ -3,8 +3,10 @@
  */
 
 @interface BWVisionInferenceProvider : NSObject <BWInferenceExecutable, BWInferenceProvider> {
+    bool  _alwaysExecuteForRedEyeReduction;
     NSMutableArray * _cloneVideoRequirements;
     BWVisionInferenceContext * _context;
+    bool  _executesRequestsIndividually;
     int  _executionTarget;
     unsigned long long  _indexOfRequestForMaximumNumberOfFaces;
     NSMutableArray * _inputMetadataRequirements;
@@ -40,6 +42,7 @@
 
 + (void)initialize;
 
+- (id)bindIdealInputForRequest:(id)arg1 fromAttachedMediaUsingKey:(id)arg2;
 - (id)bindInputForRequest:(id)arg1 fromAttachedMediaUsingKey:(id)arg2 preparedByAttachedMediaKey:(id)arg3 withVideoFormatProvider:(id /* block */)arg4;
 - (id)bindInputForRequest:(id)arg1 fromMetadataUsingKeys:(id)arg2;
 - (id)bindOutputByCloningInputRequirement:(id)arg1 toAttachedMediaUsingKey:(id)arg2;
@@ -53,7 +56,7 @@
 - (int)executeOnSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 usingStorage:(id)arg2 withExecutionTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg3 completionHandler:(id /* block */)arg4;
 - (int)executionTarget;
 - (id)extractable;
-- (id)initWithConfiguration:(id)arg1 requests:(id)arg2 executionTarget:(int)arg3 preventionReasons:(id)arg4 resourceProvider:(id)arg5;
+- (id)initWithConfiguration:(id)arg1 requests:(id)arg2 executesRequestsIndividually:(bool)arg3 executionTarget:(int)arg4 preventionReasons:(id)arg5 resourceProvider:(id)arg6;
 - (id)inputMetadataRequirements;
 - (id)inputVideoRequirements;
 - (id)newStorage;
@@ -61,7 +64,7 @@
 - (id)outputVideoRequirements;
 - (int)prepareForExecution;
 - (id)preventionReasons;
-- (int)prewarm;
+- (int)prewarmUsingLimitedMemory:(bool)arg1;
 - (id)primaryInputVideoRequirement;
 - (id)propagatable;
 - (void)propagateInferenceResultsToInferenceDictionary:(id)arg1 usingStorage:(id)arg2 propagationSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg3;

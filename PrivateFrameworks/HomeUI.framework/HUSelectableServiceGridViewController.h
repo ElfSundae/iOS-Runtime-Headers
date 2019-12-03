@@ -21,6 +21,7 @@
 
 + (id /* block */)defaultItemProviderCreatorWithOptions:(unsigned long long)arg1;
 + (id)itemServiceTypesToHide;
++ (id /* block */)transformationBlockWithOptions:(unsigned long long)arg1;
 
 - (void).cxx_destruct;
 - (void)_addAllServicesInSectionFromButton:(id)arg1;

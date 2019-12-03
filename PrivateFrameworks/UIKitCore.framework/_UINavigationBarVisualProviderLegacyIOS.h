@@ -5,6 +5,7 @@
 @interface _UINavigationBarVisualProviderLegacyIOS : _UINavigationBarVisualProvider <_UIBasicAnimationFactory, _UINavigationBarGestureHandlerDelegate> {
     UIImageView * _backIndicatorView;
     _UIBarBackground * _backgroundView;
+    _UIBarBackgroundLayoutLegacy * _backgroundViewLayout;
     UIFocusContainerGuide * _contentFocusContainerGuide;
     UIView * _contentView;
     UIView * _currentCanvasView;
@@ -58,7 +59,6 @@
 - (void)_shim_30244716;
 - (bool)_shim_34415965;
 - (id)_shim_backIndicatorView;
-- (id)_shim_backdropGroupName;
 - (long long)_shim_backdropStyle;
 - (double)_shim_backgroundHeight;
 - (id)_shim_compatibilityBackgroundView;
@@ -70,7 +70,6 @@
 - (void)_shim_popForCarplayPressAtFakePoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)_shim_pressBackIndicator:(bool)arg1 initialPress:(bool)arg2;
 - (id)_shim_promptText;
-- (void)_shim_setBackdropGroupName:(id)arg1;
 - (void)_shim_setCustomBackgroundView:(id)arg1;
 - (void)_shim_setDisableBlurTinting:(bool)arg1;
 - (void)_shim_setPromptText:(id)arg1 animated:(bool)arg2;
@@ -126,6 +125,7 @@
 - (void)teardown;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateArchivedSubviews:(id)arg1;
+- (void)updateBackgroundGroupName;
 - (void)updateTopNavigationItemAnimated:(bool)arg1;
 - (void)updateTopNavigationItemTitleView;
 

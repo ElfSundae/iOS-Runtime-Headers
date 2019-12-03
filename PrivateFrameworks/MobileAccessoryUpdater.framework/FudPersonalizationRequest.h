@@ -4,6 +4,7 @@
 
 @interface FudPersonalizationRequest : NSObject {
     unsigned int  _boardID;
+    bool  _cepoSet;
     unsigned int  _chipEpoch;
     unsigned int  _chipID;
     bool  _cproSet;
@@ -11,6 +12,7 @@
     NSDictionary * _customManifestProperties;
     unsigned long long  _ecID;
     bool  _enableMixMatch;
+    NSData * _extEcID;
     bool  _globalSigning;
     NSData * _nonceHash;
     NSArray * _objectList;
@@ -30,6 +32,7 @@
 @property (nonatomic, retain) NSDictionary *customManifestProperties;
 @property (nonatomic) unsigned long long ecID;
 @property (nonatomic) bool enableMixMatch;
+@property (nonatomic, retain) NSData *extEcID;
 @property (nonatomic) bool globalSigning;
 @property (nonatomic, retain) NSData *nonceHash;
 @property (nonatomic, retain) NSArray *objectList;
@@ -49,8 +52,10 @@
 - (void)dealloc;
 - (unsigned long long)ecID;
 - (bool)enableMixMatch;
+- (id)extEcID;
 - (bool)globalSigning;
 - (id)initWithName:(id)arg1;
+- (bool)isChipEpochSet;
 - (bool)isProductionModeSet;
 - (bool)isSecurityModeSet;
 - (id)nonceHash;
@@ -69,6 +74,7 @@
 - (void)setCustomManifestProperties:(id)arg1;
 - (void)setEcID:(unsigned long long)arg1;
 - (void)setEnableMixMatch:(bool)arg1;
+- (void)setExtEcID:(id)arg1;
 - (void)setGlobalSigning:(bool)arg1;
 - (void)setNonceHash:(id)arg1;
 - (void)setObjectList:(id)arg1;

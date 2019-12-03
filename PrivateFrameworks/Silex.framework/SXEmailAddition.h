@@ -7,8 +7,6 @@
 @property (nonatomic, readonly) NSString *subject;
 @property (nonatomic, readonly) NSString *to;
 
-+ (id)typeString;
-
 - (id)action;
 
 @end

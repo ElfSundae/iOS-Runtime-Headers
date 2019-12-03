@@ -12,7 +12,7 @@
     NSString * _label;
     unsigned long long  _maxRetryCount;
     id /* block */  _performBlock;
-    unsigned int  _requestID;
+    _Atomic unsigned int  _requestID;
     unsigned long long  _retryCount;
     bool  _shouldThrottle;
     bool  _started;
@@ -28,7 +28,7 @@
 @property (nonatomic, retain) NSString *label;
 @property (nonatomic) unsigned long long maxRetryCount;
 @property (nonatomic, copy) id /* block */ performBlock;
-@property (nonatomic) unsigned int requestID;
+@property (nonatomic) _Atomic unsigned int requestID;
 @property (nonatomic) unsigned long long retryCount;
 @property (nonatomic) bool shouldThrottle;
 @property (nonatomic) bool started;

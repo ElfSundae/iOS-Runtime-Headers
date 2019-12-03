@@ -4,9 +4,9 @@
 
 @interface GEOLogMsgStateMapView : PBCodable <NSCopying> {
     struct { 
-        unsigned int zoomLevel : 1; 
-        unsigned int mapType : 1; 
-    }  _has;
+        unsigned int has_zoomLevel : 1; 
+        unsigned int has_mapType : 1; 
+    }  _flags;
     GEOMapRegion * _mapRegion;
     int  _mapType;
     double  _zoomLevel;
@@ -18,6 +18,8 @@
 @property (nonatomic, retain) GEOMapRegion *mapRegion;
 @property (nonatomic) int mapType;
 @property (nonatomic) double zoomLevel;
+
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsMapType:(id)arg1;
@@ -34,6 +36,7 @@
 - (int)mapType;
 - (id)mapTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasMapType:(bool)arg1;
 - (void)setHasZoomLevel:(bool)arg1;

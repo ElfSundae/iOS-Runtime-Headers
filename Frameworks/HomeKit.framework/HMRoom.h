@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/HomeKit.framework/HomeKit
  */
 
-@interface HMRoom : NSObject <HFReorderableHomeKitObject, HFStateDumpBuildable, HFWallaperHost, HMFMessageReceiver, HMMutableApplicationData, HMObjectMerge, NSSecureCoding> {
+@interface HMRoom : NSObject <HFReorderableHomeKitObject, HFStateDumpBuildable, HFWallaperHost, HMMutableApplicationData, HMObjectMerge, NSSecureCoding> {
     HMApplicationData * _applicationData;
     _HMContext * _context;
     HMHome * _home;
@@ -14,6 +14,7 @@
 
 @property (nonatomic, readonly, copy) NSArray *accessories;
 @property (nonatomic, readonly) HMApplicationData *applicationData;
+@property (readonly, copy) NSUUID *applicationDataIdentifier;
 @property (nonatomic, retain) _HMContext *context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -24,12 +25,12 @@
 @property (nonatomic, readonly) NSArray *hf_allZones;
 @property (nonatomic, readonly, copy) NSDate *hf_dateAdded;
 @property (nonatomic, readonly, copy) NSString *hf_displayName;
+@property (nonatomic, readonly) HMCameraProfile *hf_unitaryCameraProfile;
 @property (nonatomic, readonly) NSArray *hf_unpairedHomePods;
+@property (nonatomic, readonly) NSArray *hf_visibleAccessories;
 @property (nonatomic, readonly) UIImage *hf_wallpaperImage;
 @property (nonatomic, readonly) HMHome *home;
 @property (nonatomic) HMHome *home;
-@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *messageReceiveQueue;
-@property (nonatomic, readonly) NSUUID *messageTargetUUID;
 @property (nonatomic, readonly, copy) NSString *name;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly, copy) NSUUID *uniqueIdentifier;
@@ -41,24 +42,20 @@
 
 - (void).cxx_destruct;
 - (void)__configureWithContext:(id)arg1 home:(id)arg2;
-- (void)_handleRoomRenamedNotification:(id)arg1;
 - (void)_invalidate;
 - (bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
-- (void)_registerNotificationHandlers;
 - (void)_unconfigure;
 - (void)_updateName:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)_updateRoomName:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)accessories;
 - (id)applicationData;
+- (id)applicationDataIdentifier;
 - (id)context;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)home;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1;
-- (id)messageReceiveQueue;
-- (id)messageTargetUUID;
 - (id)name;
 - (void)setApplicationData:(id)arg1;
 - (void)setContext:(id)arg1;
@@ -79,9 +76,11 @@
 - (id)hf_dateAdded;
 - (id)hf_displayName;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
+- (id)hf_unitaryCameraProfile;
 - (id)hf_unpairedHomePods;
 - (id)hf_updateDateAdded:(id)arg1;
 - (id)hf_updateWallpaperImage:(id)arg1;
+- (id)hf_visibleAccessories;
 - (id)hf_wallpaperImage;
 
 @end

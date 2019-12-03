@@ -10,6 +10,7 @@
     NSURL * _upgradePassURL;
     PKPassUpgradeRequest * _upgradeRequest;
     PKPaymentPass * _upgradedPass;
+    bool  _webRequestFinished;
 }
 
 @property (nonatomic) bool appletDidUpgrade;
@@ -20,6 +21,7 @@
 @property (nonatomic, copy) NSURL *upgradePassURL;
 @property (nonatomic, readonly) PKPassUpgradeRequest *upgradeRequest;
 @property (nonatomic, retain) PKPaymentPass *upgradedPass;
+@property (nonatomic) bool webRequestFinished;
 
 - (void).cxx_destruct;
 - (bool)appletDidUpgrade;
@@ -33,9 +35,11 @@
 - (void)setRequiresAppletUpgrade:(bool)arg1;
 - (void)setUpgradePassURL:(id)arg1;
 - (void)setUpgradedPass:(id)arg1;
+- (void)setWebRequestFinished:(bool)arg1;
 - (bool)upgradeIsComplete;
 - (id)upgradePassURL;
 - (id)upgradeRequest;
 - (id)upgradedPass;
+- (bool)webRequestFinished;
 
 @end

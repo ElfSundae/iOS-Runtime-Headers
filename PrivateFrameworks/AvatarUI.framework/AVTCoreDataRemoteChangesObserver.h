@@ -9,7 +9,6 @@
     AVTCoreEnvironment * _environment;
     <AVTUILogger> * _logger;
     <NSObject> * _observationToken;
-    NSObject<OS_os_transaction> * _osTransaction;
     NSMutableArray * _transactionsForPendingChanges;
     NSObject<OS_dispatch_queue> * _workQueue;
 }
@@ -20,7 +19,6 @@
 @property (nonatomic, readonly) AVTCoreEnvironment *environment;
 @property (nonatomic, readonly) <AVTUILogger> *logger;
 @property (nonatomic, retain) <NSObject> *observationToken;
-@property (nonatomic, retain) NSObject<OS_os_transaction> *osTransaction;
 @property (nonatomic, readonly) NSMutableArray *transactionsForPendingChanges;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *workQueue;
 
@@ -35,12 +33,10 @@
 - (bool)isObservingChanges;
 - (id)logger;
 - (id)observationToken;
-- (id)osTransaction;
 - (void)performManagedObjectContextWork:(id /* block */)arg1;
-- (void)processRemoteChangeNotification:(id)arg1;
+- (void)processRemoteChangeNotification:(id)arg1 completion:(id /* block */)arg2;
 - (void)registerCoalescerEventHandler;
 - (void)setObservationToken:(id)arg1;
-- (void)setOsTransaction:(id)arg1;
 - (void)startObservingChanges;
 - (id)transactionsForPendingChanges;
 - (id)workQueue;

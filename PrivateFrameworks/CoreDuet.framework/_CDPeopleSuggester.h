@@ -11,6 +11,7 @@
     NSObject<OS_dispatch_queue> * _queue;
     _CDInteractionStoreNotificationReceiver * _receiver;
     _CDPeopleSuggesterSettings * _settings;
+    int  _settingsNotifyToken;
 }
 
 @property double cacheTimeoutSeconds;
@@ -39,5 +40,6 @@
 - (id)settings;
 - (void)suggestPeopleWithCompletionHandler:(id /* block */)arg1;
 - (id)suggestPeopleWithError:(id*)arg1;
+- (void)updateSettings;
 
 @end

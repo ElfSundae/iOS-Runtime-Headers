@@ -24,7 +24,7 @@
 
 - (void).cxx_destruct;
 - (void)_loadBundleResources;
-- (id)_resourceFromBundle:(struct __CFBundle { }*)arg1 forKey:(id)arg2;
+- (id)_resourceFromBundle:(id)arg1 forKey:(id)arg2;
 - (id)currentPhoneLanguage;
 - (id)documentationBundleURL;
 - (void)encodeWithCoder:(id)arg1;

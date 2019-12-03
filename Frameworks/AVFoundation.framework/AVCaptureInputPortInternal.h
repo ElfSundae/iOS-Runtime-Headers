@@ -9,6 +9,8 @@
     struct opaqueCMFormatDescription { } * formatDescription;
     AVCaptureInput * input;
     NSString * mediaType;
+    long long  sourceDevicePosition;
+    NSString * sourceDeviceType;
     NSString * sourceID;
 }
 

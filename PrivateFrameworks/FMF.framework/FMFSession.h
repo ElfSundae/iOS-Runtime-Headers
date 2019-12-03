@@ -92,6 +92,7 @@
 - (oneway void)didUpdateHideFromFollowersStatus:(bool)arg1;
 - (oneway void)didUpdateLocations:(id)arg1;
 - (oneway void)didUpdatePendingOffersForHandles:(id)arg1;
+- (oneway void)didUpdatePreferences:(id)arg1;
 - (void)dispatchOnDelegateQueue:(id /* block */)arg1;
 - (void)dumpStateWithCompletion:(id /* block */)arg1;
 - (void)encryptPayload:(id)arg1 completion:(id /* block */)arg2;
@@ -101,6 +102,7 @@
 - (void)favoritesForMaxCount:(id)arg1 completion:(id /* block */)arg2;
 - (void)fencesForHandles:(id)arg1 completion:(id /* block */)arg2;
 - (void)forceRefresh;
+- (void)getAccountEmailAddress:(id /* block */)arg1;
 - (id)getActiveLocationSharingDevice;
 - (void)getActiveLocationSharingDevice:(id /* block */)arg1;
 - (id)getAllDevices;
@@ -124,6 +126,7 @@
 - (void)getPendingMappingPacketsForHandle:(id)arg1 groupId:(id)arg2 completion:(id /* block */)arg3;
 - (void)getPrettyNameForHandle:(id)arg1 completion:(id /* block */)arg2;
 - (void)getRecordIdForHandle:(id)arg1 completion:(id /* block */)arg2;
+- (void)getThisDeviceAndCompanion:(id /* block */)arg1;
 - (void)handleAndLocationForPayload:(id)arg1 completion:(id /* block */)arg2;
 - (void)handleIncomingAirDropURL:(id)arg1 completion:(id /* block */)arg2;
 - (id)handles;
@@ -139,6 +142,7 @@
 - (void)invalidate;
 - (void)invalidateWithError:(id)arg1;
 - (bool)is5XXError:(id)arg1;
+- (void)isAllowFriendRequestsEnabled:(id /* block */)arg1;
 - (void)isIn5XXGracePeriodWithCompletion:(id /* block */)arg1;
 - (bool)isModelInitialized;
 - (bool)isMyLocationEnabled;
@@ -160,11 +164,13 @@
 - (void)sendFriendshipInviteToHandle:(id)arg1 groupId:(id)arg2 callerId:(id)arg3 endDate:(id)arg4 completion:(id /* block */)arg5;
 - (void)sendFriendshipOfferToHandle:(id)arg1 groupId:(id)arg2 callerId:(id)arg3 endDate:(id)arg4 completion:(id /* block */)arg5;
 - (void)sendFriendshipOfferToHandles:(id)arg1 groupId:(id)arg2 callerId:(id)arg3 endDate:(id)arg4 completion:(id /* block */)arg5;
+- (void)sendIDSMessage:(id)arg1 toIdentifier:(id)arg2 completion:(id /* block */)arg3;
 - (void)sendIDSPacket:(id)arg1 toHandle:(id)arg2;
 - (oneway void)sendMappingPacket:(id)arg1 toHandle:(id)arg2;
 - (id)serverProxy;
 - (void)sessionHandleReport:(id /* block */)arg1;
 - (void)setActiveDevice:(id)arg1 completion:(id /* block */)arg2;
+- (void)setAllowFriendRequestsEnabled:(bool)arg1 completion:(id /* block */)arg2;
 - (void)setCachedCanShareLocationWithHandleByHandle:(id)arg1;
 - (void)setCachedGetHandlesFollowingMyLocation:(id)arg1;
 - (void)setCachedGetHandlesSharingLocationsWithMe:(id)arg1;
@@ -186,6 +192,7 @@
 - (void)showShareMyLocationiCloudSettingsOffAlert;
 - (void)stopSharingMyLocationWithHandle:(id)arg1 groupId:(id)arg2 callerId:(id)arg3 completion:(id /* block */)arg4;
 - (void)stopSharingMyLocationWithHandles:(id)arg1 groupId:(id)arg2 callerId:(id)arg3 completion:(id /* block */)arg4;
+- (void)triggerWithUUID:(id)arg1 forFenceWithID:(id)arg2 withStatus:(id)arg3 forDate:(id)arg4 completion:(id /* block */)arg5;
 - (id)verifyRestrictionsAndShowDialogIfRequired;
 
 @end

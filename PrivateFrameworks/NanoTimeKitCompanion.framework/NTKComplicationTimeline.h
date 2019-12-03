@@ -27,6 +27,7 @@
 - (id)_beforeGapDate;
 - (id)_effectiveTimeTravelDate;
 - (id)_leftmostDate;
+- (id)_nowEntry;
 - (id)_nowNode;
 - (void)_recycleAllNodes;
 - (id)_rightmostDate;
@@ -43,14 +44,14 @@
 - (void)dealloc;
 - (id)delegate;
 - (id)endOfVisibilityForNowEntry;
-- (void)extendLeftFromDate:(id)arg1 withEntries:(struct NSArray { Class x1; }*)arg2;
-- (void)extendRightFromDate:(id)arg1 withEntries:(struct NSArray { Class x1; }*)arg2;
+- (void)extendLeftFromDate:(id)arg1 withEntries:(struct NSArray { Class x1; }*)arg2 tritiumUpdatePriority:(long long)arg3;
+- (void)extendRightFromDate:(id)arg1 withEntries:(struct NSArray { Class x1; }*)arg2 tritiumUpdatePriority:(long long)arg3;
 - (id)initWithEntry:(id)arg1;
 - (id)nowEntry;
 - (id)nowWindow;
 - (long long)nowWindowNodeCapacity;
 - (bool)paused;
-- (void)resetWithEntry:(id)arg1;
+- (void)resetWithEntry:(id)arg1 withTritiumUpdatePriority:(long long)arg2;
 - (void)setDelegate:(id)arg1;
 - (void)setPaused:(bool)arg1;
 - (void)setTimeTravelDate:(id)arg1;

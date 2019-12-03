@@ -16,6 +16,7 @@
 + (id)labelWithString:(id)arg1 textLayout:(id)arg2 existingLabel:(id)arg3;
 
 - (void).cxx_destruct;
+- (void)_updateCompositingFilter;
 - (void)_updateTextColor;
 - (void)_updateTextColor:(bool)arg1;
 - (double)baselineHeight;

@@ -3,6 +3,7 @@
  */
 
 @interface AVScrubber : UISlider <AVExternalGestureRecognizerPreventing, UIScrollViewDelegate> {
+    bool  _canChangeScrubbingSpeed;
     bool  _collapsed;
     UIImageView * _currentThumbView;
     double  _currentValueChangedTime;
@@ -15,6 +16,7 @@
     }  _extrinsicContentSize;
     UISelectionFeedbackGenerator * _feedbackGenerator;
     bool  _hasAlternateAppearance;
+    bool  _hasChangedLocationAtLeastOnce;
     bool  _hasFullScreenAppearance;
     struct NSDirectionalEdgeInsets { 
         double top; 
@@ -26,17 +28,15 @@
     NSArray * _loadedTimeRanges;
     UIView * _loadedTrackOverlayView;
     NSMutableArray * _previousScrubberVelocities;
-    struct CGPoint { 
-        double x; 
-        double y; 
-    }  _previousTouchLocationInView;
     float  _previousValue;
     double  _previousValueChangeTime;
     float  _rate;
+    bool  _removed;
     double  _resolution;
     bool  _scrollScrubbing;
     UIScrollView * _scrollView;
     long long  _scrubbingSpeed;
+    bool  _scrubsWhenTappedAnywhere;
     bool  _shouldRecoverFromPrecisionScrubbingIfNeeded;
     bool  _slowKnobMovementDetected;
     double  _timestampWhenTrackingEnded;
@@ -44,6 +44,7 @@
     NSTimer * _updateSlowKnobMovementDetectedTimer;
 }
 
+@property (nonatomic) bool canChangeScrubbingSpeed;
 @property (getter=isCollapsed, nonatomic) bool collapsed;
 @property (getter=isCollapsedOrExcluded, nonatomic, readonly) bool collapsedOrExcluded;
 @property (nonatomic) UIImageView *currentThumbView;
@@ -54,6 +55,7 @@
 @property (nonatomic) struct CGSize { double x1; double x2; } extrinsicContentSize;
 @property (nonatomic, readonly) UISelectionFeedbackGenerator *feedbackGenerator;
 @property (nonatomic) bool hasAlternateAppearance;
+@property (nonatomic) bool hasChangedLocationAtLeastOnce;
 @property (nonatomic) bool hasFullScreenAppearance;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct NSDirectionalEdgeInsets { double x1; double x2; double x3; double x4; } hitRectInsets;
@@ -63,10 +65,12 @@
 @property (nonatomic, readonly) NSString *localizedScrubbingSpeedName;
 @property (nonatomic, retain) NSMutableArray *previousScrubberVelocities;
 @property (nonatomic) float rate;
+@property (getter=isRemoved, nonatomic) bool removed;
 @property (nonatomic) double resolution;
 @property (getter=isScrollScrubbing, nonatomic) bool scrollScrubbing;
 @property (nonatomic, retain) UIScrollView *scrollView;
 @property (nonatomic) long long scrubbingSpeed;
+@property (nonatomic) bool scrubsWhenTappedAnywhere;
 @property (nonatomic) bool shouldRecoverFromPrecisionScrubbingIfNeeded;
 @property (nonatomic) bool slowKnobMovementDetected;
 @property (readonly) Class superclass;
@@ -83,6 +87,7 @@
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })alignmentRectInsets;
 - (bool)avkit_shouldPreventExternalGestureRecognizerAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (bool)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
+- (bool)canChangeScrubbingSpeed;
 - (void)cancelTrackingWithEvent:(id)arg1;
 - (float)clampedEstimatedFrameRate;
 - (struct CGPoint { double x1; double x2; })contentOffsetFromValue;
@@ -97,6 +102,7 @@
 - (struct CGSize { double x1; double x2; })extrinsicContentSize;
 - (id)feedbackGenerator;
 - (bool)hasAlternateAppearance;
+- (bool)hasChangedLocationAtLeastOnce;
 - (bool)hasFullScreenAppearance;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })hitRect;
 - (struct NSDirectionalEdgeInsets { double x1; double x2; double x3; double x4; })hitRectInsets;
@@ -105,6 +111,7 @@
 - (bool)isCollapsed;
 - (bool)isCollapsedOrExcluded;
 - (bool)isIncluded;
+- (bool)isRemoved;
 - (bool)isScrollScrubbing;
 - (bool)isTracking;
 - (void)layoutSubviews;
@@ -121,6 +128,8 @@
 - (double)resolution;
 - (id)scrollView;
 - (long long)scrubbingSpeed;
+- (bool)scrubsWhenTappedAnywhere;
+- (void)setCanChangeScrubbingSpeed:(bool)arg1;
 - (void)setCollapsed:(bool)arg1;
 - (void)setCurrentThumbView:(id)arg1;
 - (void)setDelegate:(id)arg1;
@@ -128,16 +137,20 @@
 - (void)setEstimatedFrameRate:(float)arg1;
 - (void)setExtrinsicContentSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setHasAlternateAppearance:(bool)arg1;
+- (void)setHasChangedLocationAtLeastOnce:(bool)arg1;
 - (void)setHasFullScreenAppearance:(bool)arg1;
+- (void)setHidden:(bool)arg1;
 - (void)setHitRectInsets:(struct NSDirectionalEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setIncluded:(bool)arg1;
 - (void)setLoadedTimeRanges:(id)arg1;
 - (void)setPreviousScrubberVelocities:(id)arg1;
 - (void)setRate:(float)arg1;
+- (void)setRemoved:(bool)arg1;
 - (void)setResolution:(double)arg1;
 - (void)setScrollScrubbing:(bool)arg1;
 - (void)setScrollView:(id)arg1;
 - (void)setScrubbingSpeed:(long long)arg1;
+- (void)setScrubsWhenTappedAnywhere:(bool)arg1;
 - (void)setShouldRecoverFromPrecisionScrubbingIfNeeded:(bool)arg1;
 - (void)setSlowKnobMovementDetected:(bool)arg1;
 - (void)setTimestampWhenTrackingEnded:(double)arg1;

@@ -10,6 +10,7 @@
 @property (nonatomic, retain) _UIStatusBarCycleAnimation *cycleAnimation;
 @property (nonatomic) bool needsCycleAnimationUpdate;
 
++ (id)_barImageWithSize:(struct CGSize { double x1; double x2; })arg1 forScale:(double)arg2 distance:(double)arg3 angle:(double)arg4 centerPoint:(struct CGPoint { double x1; double x2; })arg5 cornerRadius:(double)arg6 thickness:(double)arg7;
 + (double)_barThicknessAtIndex:(unsigned long long)arg1 iconSize:(long long)arg2;
 + (double)_interspaceForIconSize:(long long)arg1;
 + (struct CGSize { double x1; double x2; })_intrinsicContentSizeForNumberOfBars:(long long)arg1 iconSize:(long long)arg2;

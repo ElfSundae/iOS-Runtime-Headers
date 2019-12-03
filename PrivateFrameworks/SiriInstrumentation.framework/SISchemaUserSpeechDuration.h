@@ -2,28 +2,31 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaUserSpeechDuration : PBCodable <NSCopying> {
-    int  _durationMs;
-    struct { 
-        unsigned int durationMs : 1; 
-    }  _has;
+@interface SISchemaUserSpeechDuration : PBCodable <NSSecureCoding, SISchemaUserSpeechDuration> {
+    long long  _durationMs;
+    NSString * _resultCandidateId;
 }
 
-@property (nonatomic) int durationMs;
-@property (nonatomic) bool hasDurationMs;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (nonatomic) long long durationMs;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) NSData *jsonData;
+@property (nonatomic, copy) NSString *resultCandidateId;
+@property (readonly) Class superclass;
 
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (id)description;
+- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
-- (int)durationMs;
-- (bool)hasDurationMs;
+- (long long)durationMs;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (bool)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
+- (id)jsonData;
 - (bool)readFrom:(id)arg1;
-- (void)setDurationMs:(int)arg1;
-- (void)setHasDurationMs:(bool)arg1;
+- (id)resultCandidateId;
+- (void)setDurationMs:(long long)arg1;
+- (void)setResultCandidateId:(id)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

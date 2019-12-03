@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/MediaControls.framework/MediaControls
  */
 
-@interface MediaControlsEndpointController : NSObject <MPAVRoutingControllerDelegate, MPRequestResponseControllerDelegate> {
+@interface MediaControlsEndpointController : NSObject <MPAVRoutingControllerDelegate, MPRequestResponseControllerDelegate, _MCStateDumpPropertyListTransformable> {
     bool  _allowsAutomaticResponseLoading;
     bool  _attemptingConnection;
     bool  _automaticResponseLoading;
@@ -56,7 +56,9 @@
 - (void)_createRequestController;
 - (void)_getConnected:(bool*)arg1 invalid:(bool*)arg2;
 - (void)_initRoutingController;
+- (void)_maybeReloadPlayerPathWithRoute:(id)arg1;
 - (void)_reloadPlayerPathWithRoute:(id)arg1;
+- (id)_stateDumpObject;
 - (void)_updateState;
 - (bool)allowsAutomaticResponseLoading;
 - (id)bundleID;

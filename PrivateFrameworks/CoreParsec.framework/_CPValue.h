@@ -32,6 +32,7 @@
 - (void).cxx_destruct;
 - (bool)bool_value;
 - (id)bytes_value;
+- (void)clearKind;
 - (id)dictionaryRepresentation;
 - (id)feedbackJSON;
 - (unsigned long long)hash;
@@ -44,7 +45,6 @@
 - (int)null_value;
 - (double)number_value;
 - (bool)readFrom:(id)arg1;
-- (bool)requiresQueryId;
 - (void)setBool_value:(bool)arg1;
 - (void)setBytes_value:(id)arg1;
 - (void)setList_value:(id)arg1;

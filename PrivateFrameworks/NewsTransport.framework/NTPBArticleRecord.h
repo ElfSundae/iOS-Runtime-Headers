@@ -10,6 +10,7 @@
     NTPBRecordBase * _base;
     long long  _behaviorFlags;
     NSMutableArray * _blockedStorefrontIDs;
+    long long  _bodyTextLength;
     NSString * _clusterID;
     int  _contentType;
     NSString * _contentURL;
@@ -23,6 +24,7 @@
     struct { 
         unsigned int backendArticleVersion : 1; 
         unsigned int behaviorFlags : 1; 
+        unsigned int bodyTextLength : 1; 
         unsigned int halfLifeMilliseconds : 1; 
         unsigned int minimumNewsVersion : 1; 
         unsigned int publisherArticleVersion : 1; 
@@ -110,6 +112,7 @@
 @property (nonatomic, retain) NTPBRecordBase *base;
 @property (nonatomic) long long behaviorFlags;
 @property (nonatomic, retain) NSMutableArray *blockedStorefrontIDs;
+@property (nonatomic) long long bodyTextLength;
 @property (nonatomic, retain) NSString *clusterID;
 @property (nonatomic) int contentType;
 @property (nonatomic, retain) NSString *contentURL;
@@ -125,6 +128,7 @@
 @property (nonatomic) bool hasBackendArticleVersion;
 @property (nonatomic, readonly) bool hasBase;
 @property (nonatomic) bool hasBehaviorFlags;
+@property (nonatomic) bool hasBodyTextLength;
 @property (nonatomic, readonly) bool hasClusterID;
 @property (nonatomic) bool hasContentType;
 @property (nonatomic, readonly) bool hasContentURL;
@@ -278,6 +282,7 @@
 - (id)blockedStorefrontIDs;
 - (id)blockedStorefrontIDsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)blockedStorefrontIDsCount;
+- (long long)bodyTextLength;
 - (void)clearAllowedStorefrontIDs;
 - (void)clearBlockedStorefrontIDs;
 - (void)clearExperimentalTitles;
@@ -314,6 +319,7 @@
 - (bool)hasBackendArticleVersion;
 - (bool)hasBase;
 - (bool)hasBehaviorFlags;
+- (bool)hasBodyTextLength;
 - (bool)hasClusterID;
 - (bool)hasContentType;
 - (bool)hasContentURL;
@@ -418,6 +424,7 @@
 - (void)setBase:(id)arg1;
 - (void)setBehaviorFlags:(long long)arg1;
 - (void)setBlockedStorefrontIDs:(id)arg1;
+- (void)setBodyTextLength:(long long)arg1;
 - (void)setClusterID:(id)arg1;
 - (void)setContentType:(int)arg1;
 - (void)setContentURL:(id)arg1;
@@ -430,6 +437,7 @@
 - (void)setHalfLifeMilliseconds:(unsigned long long)arg1;
 - (void)setHasBackendArticleVersion:(bool)arg1;
 - (void)setHasBehaviorFlags:(bool)arg1;
+- (void)setHasBodyTextLength:(bool)arg1;
 - (void)setHasContentType:(bool)arg1;
 - (void)setHasHalfLifeMilliseconds:(bool)arg1;
 - (void)setHasIsBundlePaid:(bool)arg1;

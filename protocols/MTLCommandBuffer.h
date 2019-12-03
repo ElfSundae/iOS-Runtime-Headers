@@ -29,6 +29,7 @@
 - (void)presentDrawable:(id <MTLDrawable>)arg1 atTime:(double)arg2;
 - (void)pushDebugGroup:(NSString *)arg1;
 - (<MTLRenderCommandEncoder> *)renderCommandEncoderWithDescriptor:(MTLRenderPassDescriptor *)arg1;
+- (<MTLResourceStateCommandEncoder> *)resourceStateCommandEncoder;
 - (bool)retainedReferences;
 - (void)setLabel:(NSString *)arg1;
 - (unsigned long long)status;

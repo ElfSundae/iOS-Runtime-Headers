@@ -20,6 +20,8 @@
 @property (nonatomic, copy) NSString *simulatedChatIdentifier;
 @property (nonatomic, readonly) NSString *simulatedGUID;
 
++ (id)prepopulatedChat;
+
 - (void).cxx_destruct;
 - (bool)_handleIncomingItem:(id)arg1;
 - (id)_messageWithGUID:(id)arg1;

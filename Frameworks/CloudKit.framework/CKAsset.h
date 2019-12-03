@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
  */
 
-@interface CKAsset : NSObject <CKRecordValue, NSSecureCoding> {
+@interface CKAsset : NSObject <CKRecordValue, HMBModelObjectStorage, NSSecureCoding> {
     NSString * _UUID;
     long long  _arrayIndex;
     NSDictionary * _assetChunkerOptions;
@@ -40,6 +40,7 @@
     NSString * _recordKey;
     NSData * _referenceSignature;
     NSString * _requestor;
+    bool  _shouldReadAssetContentUsingClientProxy;
     bool  _shouldReadRawEncryptedData;
     NSData * _signature;
     unsigned long long  _size;
@@ -97,6 +98,7 @@
 @property (nonatomic, copy) NSString *recordKey;
 @property (nonatomic, retain) NSData *referenceSignature;
 @property (nonatomic, retain) NSString *requestor;
+@property (nonatomic, readonly) bool shouldReadAssetContentUsingClientProxy;
 @property (nonatomic) bool shouldReadRawEncryptedData;
 @property (nonatomic, copy) NSData *signature;
 @property (nonatomic) unsigned long long size;
@@ -160,6 +162,7 @@
 - (id)generationCountToSave;
 - (bool)hasSize;
 - (id)init;
+- (id)initWithAssetContent:(id)arg1 itemTypeHint:(id)arg2;
 - (id)initWithAssetReference:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithCopyInfo:(id)arg1 fileURL:(id)arg2;
@@ -227,6 +230,7 @@
 - (void)setUploaded:(bool)arg1;
 - (void)setWasCached:(bool)arg1;
 - (void)setWrappedAssetKey:(id)arg1;
+- (bool)shouldReadAssetContentUsingClientProxy;
 - (bool)shouldReadRawEncryptedData;
 - (id)signature;
 - (unsigned long long)size;
@@ -241,5 +245,11 @@
 // Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
 
 - (bool)fillInDownloadURLsForAssetWithFieldName:(id)arg1 fileName:(id)arg2 recordPCS:(struct _OpaquePCSShareProtection { }*)arg3 pcsManager:(id)arg4 useEncryption:(bool)arg5 useClearAssetEncryption:(bool)arg6 outError:(id*)arg7;
+
+// Image: /System/Library/PrivateFrameworks/HomeKitBackingStore.framework/HomeKitBackingStore
+
++ (id)hmbDecodeData:(id)arg1 fromStorageLocation:(unsigned long long)arg2 error:(id*)arg3;
+
+- (id)hmbEncodeForStorageLocation:(unsigned long long)arg1 error:(id*)arg2;
 
 @end

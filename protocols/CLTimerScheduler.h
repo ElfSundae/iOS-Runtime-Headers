@@ -5,7 +5,7 @@
 
 @required
 
-- (void)reflectNextFireTime:(double)arg1 fireInterval:(double)arg2;
+- (void)reflectNextFireDelay:(double)arg1 fireInterval:(double)arg2;
 - (void)setTimer:(CLTimer *)arg1;
 - (CLTimer *)timer;
 

@@ -13,7 +13,7 @@
 @property (nonatomic, readonly) NSString *target;
 @property (nonatomic, readonly) NSString *type;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)idString;
 - (id)initWithId:(unsigned long long)arg1 type:(id)arg2 target:(id)arg3 external:(bool)arg4;
 - (id)target;

@@ -10,6 +10,7 @@
 @optional
 
 - (void)didFinishAnimatedBoundsChange;
+- (<CKPluginEntryViewControllerDelegate> *)entryViewDelegate;
 - (NSArray *)framesOfVisibleContentViewInCoordinateSpace:(id <UICoordinateSpace>)arg1;
 - (id)initWithDataSource:(IMBalloonPluginDataSource *)arg1 entryViewDelegate:(id <CKPluginEntryViewControllerDelegate>)arg2;
 - (bool)loadedContentView;
@@ -19,6 +20,7 @@
 - (void)payloadWillSend;
 - (void)performHostAppResume;
 - (void)performHostAppSuspend;
+- (void)setEntryViewDelegate:(id <CKPluginEntryViewControllerDelegate>)arg1;
 - (bool)wantsClearButton;
 - (bool)wantsEdgeToEdgeLayout;
 - (void)willAnimateBoundsChange;

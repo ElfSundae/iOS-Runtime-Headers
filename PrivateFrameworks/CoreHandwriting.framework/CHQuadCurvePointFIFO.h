@@ -13,7 +13,6 @@
     struct vector<float __attribute__((ext_vector_type(4))), std::__1::allocator<float __attribute__((ext_vector_type(4)))> >="__begin_"^"__end_"^"__end_cap_"{__compressed_pair<float * __attribute__((ext_vector_type(4))), std::__1::allocator<float __attribute__((ext_vector_type(4)))> >="__value_"^ {}  _points;
     struct vector<float __attribute__((ext_vector_type(4))), std::__1::allocator<float __attribute__((ext_vector_type(4)))> >="__begin_"^"__end_"^"__end_cap_"{__compressed_pair<float * __attribute__((ext_vector_type(4))), std::__1::allocator<float __attribute__((ext_vector_type(4)))> >="__value_"^ {}  _prevPoints;
     float  _unitScale;
-    UIView * _view;
 }
 
 @property (nonatomic) /* Warning: unhandled struct encoding: '{vector<float __attribute__((ext_vector_type(4)))' */ struct  controlPoints; /* unknown property attribute:  std::__1::allocator<float __attribute__((ext_vector_type(4)))> >=^}} */
@@ -26,7 +25,6 @@
 @property (nonatomic) /* Warning: unhandled struct encoding: '{vector<float __attribute__((ext_vector_type(4)))' */ struct  points; /* unknown property attribute:  std::__1::allocator<float __attribute__((ext_vector_type(4)))> >=^}} */
 @property (nonatomic) /* Warning: unhandled struct encoding: '{vector<float __attribute__((ext_vector_type(4)))' */ struct  prevPoints; /* unknown property attribute:  std::__1::allocator<float __attribute__((ext_vector_type(4)))> >=^}} */
 @property (nonatomic) float unitScale;
-@property (nonatomic, retain) UIView *view;
 
 + (void)interpolateFromPoint:(void *)arg1 toPoint:(void *)arg2 controlPoint:(void *)arg3 time:(void *)arg4; // needs 4 arg types, found 1: float
 
@@ -42,7 +40,6 @@
 - (void)flush;
 - (id)initWithFIFO:(id)arg1;
 - (id)initWithFIFO:(id)arg1 drawingTarget:(id)arg2;
-- (id)initWithFIFO:(id)arg1 strokeView:(id)arg2;
 - (void)lastPoint;
 - (double)lineWidth;
 - (struct CGPath { }*)path;
@@ -59,8 +56,6 @@
 - (void)setPrevPoints:(struct vector<float __attribute__((ext_vector_type(4))), std::__1::allocator<float __attribute__((ext_vector_type(4)))> >=^^{__compressed_pair<float * __attribute__((ext_vector_type(4))), std::__1::allocator<float __attribute__((ext_vector_type(4)))> >=^ {})arg1;
 - (void)setUnitScale:(float)arg1;
 - (void)setUnitScaleForViewSize:(struct CGSize { double x1; double x2; })arg1 normalizedSize:(struct CGSize { double x1; double x2; })arg2 contentScaleFactor:(double)arg3;
-- (void)setView:(id)arg1;
 - (float)unitScale;
-- (id)view;
 
 @end

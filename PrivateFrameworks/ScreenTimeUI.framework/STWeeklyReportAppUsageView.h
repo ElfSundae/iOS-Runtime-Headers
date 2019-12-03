@@ -21,7 +21,7 @@
 - (void)_didFetchIcon:(id)arg1;
 - (id)appImageStackView;
 - (id)dimensionByUsageItem;
-- (id)initWithUsageReport:(id)arg1;
+- (id)initWithUsageReport:(id)arg1 useVibrancy:(bool)arg2;
 - (id)report;
 - (void)setAppImageStackView:(id)arg1;
 - (void)setDimensionByUsageItem:(id)arg1;

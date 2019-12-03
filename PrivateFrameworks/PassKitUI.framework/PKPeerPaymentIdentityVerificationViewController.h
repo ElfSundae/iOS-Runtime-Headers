@@ -32,8 +32,6 @@
 - (id)initWithController:(id)arg1 visibleFieldIdentifiers:(id)arg2;
 - (void)peerPaymentAccountResolutionController:(id)arg1 requestsDismissCurrentViewControllerAnimated:(bool)arg2;
 - (void)peerPaymentAccountResolutionController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(bool)arg3;
-- (id)pkui_navigationBarTintColor;
-- (bool)pkui_prefersNavigationBarShadowHidden;
 - (void)setHeaderSubtitle:(id)arg1;
 - (void)setHeaderTitle:(id)arg1;
 - (id)visibleFieldIdentifiers;

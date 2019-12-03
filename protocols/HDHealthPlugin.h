@@ -11,8 +11,6 @@
 
 @optional
 
-- (void)_setPluginCatherineFeeder:(CMCatherineFeeder *)arg1;
-- (void)_setPluginHeartRateEnable:(bool)arg1;
 - (bool)daemonDidReceiveNotification:(const char *)arg1;
 - (NSArray *)dataCollectors;
 - (<HDDeepBreathingSessionServer> *)deepBreathingServerForClient:(id)arg1 configuration:(_HKDeepBreathingSessionConfiguration *)arg2 healthDaemon:(id <HDHealthDaemon>)arg3 delegate:(id <HDDeepBreathingSessionServerDelegate>)arg4;

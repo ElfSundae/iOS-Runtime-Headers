@@ -3,6 +3,7 @@
  */
 
 @interface HUWallpaperThumbnailCell : UITableViewCell <UIDropInteractionDelegate> {
+    long long  _contentMode;
     <HUWallpaperThumbnailCellDelegate> * _delegate;
     UIDropInteraction * _dropInteraction;
     NSLayoutConstraint * _imageHeightConstraint;
@@ -14,6 +15,7 @@
     NSLayoutConstraint * _imageWidthConstraint;
 }
 
+@property (nonatomic) long long contentMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <HUWallpaperThumbnailCellDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -27,6 +29,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (long long)contentMode;
 - (id)delegate;
 - (id)dropInteraction;
 - (bool)dropInteraction:(id)arg1 canHandleSession:(id)arg2;
@@ -42,6 +45,7 @@
 - (id)imageWidthConstraint;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)prepareForReuse;
+- (void)setContentMode:(long long)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDropInteraction:(id)arg1;
 - (void)setImage:(id)arg1;

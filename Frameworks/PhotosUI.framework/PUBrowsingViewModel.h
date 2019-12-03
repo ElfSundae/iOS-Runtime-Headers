@@ -2,12 +2,13 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUBrowsingViewModel : PUViewModel <PUAssetSharedViewModelChangeObserver, PUAssetViewModelChangeObserver, PXImportStatusObserver> {
+@interface PUBrowsingViewModel : PUViewModel <PUAssetSharedViewModelChangeObserver, PUAssetViewModelChangeObserver, PXAssetImportStatusObserver> {
     NSMutableSet * __animatingTransitionIdentifiers;
     long long  __scrubbingSessionDistance;
     long long  __userNavigationDistance;
     NSMutableSet * __videoDisallowedReasons;
     bool  _accessoryViewsDefaultVisibility;
+    PUAssetActionManager * _actionManager;
     bool  _allAssetViewModelsAreInvalid;
     PUCachedMapTable * _assetSharedViewModelByAsset;
     PUAssetsDataSource * _assetsDataSource;
@@ -16,9 +17,10 @@
     PUAssetReference * _currentAssetReference;
     NSDate * _currentAssetReferenceChangedDate;
     double  _currentAssetTransitionProgress;
-    <PXImportStatusManager> * _importStatusManager;
+    <PXAssetImportStatusManager> * _importStatusManager;
     NSMutableSet * _invalidAssetViewModels;
     bool  _isAnimatingAnyTransition;
+    bool  _isAttemptingToPlayVideoOverlay;
     bool  _isBrowsingSpeedRegimeInvalidationScheduled;
     bool  _isChromeVisible;
     bool  _isScrolling;
@@ -28,7 +30,7 @@
     long long  _lastChromeVisibilityChangeReason;
     PUAssetReference * _leadingAssetReference;
     PUMediaProvider * _mediaProvider;
-    int  _ongoingEnumerations;
+    _Atomic int  _ongoingEnumerations;
     bool  _presentingOverOneUp;
     PUReviewScreenBarsModel * _reviewScreenBarsModel;
     struct CGSize { 
@@ -38,6 +40,7 @@
     PUAssetReference * _trailingAssetReference;
     NSString * _transitionDriverIdentifier;
     bool  _videoContentAllowed;
+    long long  _videoOverlayPlayState;
     PUCachedMapTable * _viewModelByAssetReference;
 }
 
@@ -46,18 +49,23 @@
 @property (setter=_setUserNavigationDistance:, nonatomic) long long _userNavigationDistance;
 @property (setter=_setVideoDisallowedReasons:, nonatomic, retain) NSMutableSet *_videoDisallowedReasons;
 @property (nonatomic) bool accessoryViewsDefaultVisibility;
+@property (nonatomic, retain) PUAssetActionManager *actionManager;
+@property (nonatomic, readonly) PUAssetViewModel *assetViewModelForCurrentAssetReference;
 @property (nonatomic, retain) PUAssetsDataSource *assetsDataSource;
+@property (getter=isAutoplayVideoMuted, nonatomic) bool autoplayVideoMuted;
 @property (setter=_setBrowsingSpeedRegime:, nonatomic) long long browsingSpeedRegime;
 @property (nonatomic, retain) PUAssetReference *currentAssetReference;
 @property (nonatomic, readonly) double currentAssetTransitionProgress;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) <PXImportStatusManager> *importStatusManager;
+@property (nonatomic, retain) <PXAssetImportStatusManager> *importStatusManager;
 @property (setter=_setAnimatingAnyTransition:, nonatomic) bool isAnimatingAnyTransition;
+@property (nonatomic) bool isAttemptingToPlayVideoOverlay;
 @property (setter=setChromeVisible:, nonatomic) bool isChromeVisible;
 @property (nonatomic) bool isScrolling;
 @property (nonatomic) bool isScrubbing;
+@property (nonatomic, readonly) bool isVideoContentAllowed;
 @property (setter=_setLastChromeVisibilityChangeContext:, nonatomic, retain) id lastChromeVisibilityChangeContext;
 @property (setter=_setLastChromeVisibilityChangeReason:, nonatomic) long long lastChromeVisibilityChangeReason;
 @property (setter=_setLeadingAssetReference:, nonatomic, retain) PUAssetReference *leadingAssetReference;
@@ -68,17 +76,23 @@
 @property (readonly) Class superclass;
 @property (setter=_setTrailingAssetReference:, nonatomic, retain) PUAssetReference *trailingAssetReference;
 @property (nonatomic, readonly, copy) NSString *transitionDriverIdentifier;
+@property (nonatomic) long long videoOverlayPlayState;
 
++ (void)_handleWillResignActiveNotification:(id)arg1;
++ (bool)autoplayVideoMuted;
 + (void)initialize;
++ (void)setAutoplayVideoMuted:(bool)arg1;
 
 - (void).cxx_destruct;
 - (id)_animatingTransitionIdentifiers;
 - (id)_assetSharedViewModelForAsset:(id)arg1 createIfNeeded:(bool)arg2;
 - (id)_badgeInfoPromiseForAssetReference:(id)arg1;
+- (id)_filteredAllowedBadges:(id)arg1 forAssetReference:(id)arg2;
 - (double)_focusValueForAsset:(id)arg1;
 - (void)_handleAssetSharedViewModel:(id)arg1 didChange:(id)arg2;
 - (void)_handleAssetViewModel:(id)arg1 didChange:(id)arg2;
 - (void)_handleAsyncBrowsingSpeedRegimeInvalidation;
+- (void)_handleAutoplayMutedDidChangeNotification:(id)arg1;
 - (long long)_importStateForAssetReference:(id)arg1;
 - (void)_invalidateAllAssetViewModels;
 - (void)_invalidateAssetViewModel:(id)arg1;
@@ -109,9 +123,12 @@
 - (long long)_userNavigationDistance;
 - (id)_videoDisallowedReasons;
 - (bool)accessoryViewsDefaultVisibility;
+- (id)actionManager;
 - (id)activeAssetReferences;
+- (void)assetImportStatusManager:(id)arg1 didChangeStatusForAssetReference:(id)arg2;
 - (id)assetSharedViewModelForAsset:(id)arg1;
 - (id)assetViewModelForAssetReference:(id)arg1;
+- (id)assetViewModelForCurrentAssetReference;
 - (id)assetsDataSource;
 - (long long)browsingSpeedRegime;
 - (id)currentAssetReference;
@@ -120,13 +137,16 @@
 - (id)debugDetailedDescription;
 - (void)didPerformChanges;
 - (id)importStatusManager;
-- (void)importStatusManager:(id)arg1 didChangeStatusForAssetReference:(id)arg2;
 - (id)init;
 - (bool)isAnimatingAnyTransition;
+- (bool)isAttemptingToPlayVideoOverlay;
+- (bool)isAutoplayVideoMuted;
 - (bool)isChromeVisible;
 - (bool)isPresentingOverOneUp;
 - (bool)isScrolling;
 - (bool)isScrubbing;
+- (bool)isTogglingCTMForAsset:(id)arg1;
+- (bool)isVideoContentAllowed;
 - (id)lastChromeVisibilityChangeContext;
 - (long long)lastChromeVisibilityChangeReason;
 - (id)leadingAssetReference;
@@ -137,14 +157,17 @@
 - (struct CGSize { double x1; double x2; })secondScreenSize;
 - (void)setAccessoryViewsDefaultVisibility:(bool)arg1;
 - (void)setAccessoryViewsDefaultVisibility:(bool)arg1 changeReason:(long long)arg2;
+- (void)setActionManager:(id)arg1;
 - (void)setAnimating:(bool)arg1 transitionWithIdentifier:(id)arg2;
 - (void)setAssetsDataSource:(id)arg1;
+- (void)setAutoplayVideoMuted:(bool)arg1;
 - (void)setChromeVisible:(bool)arg1;
 - (void)setChromeVisible:(bool)arg1 changeReason:(long long)arg2;
 - (void)setChromeVisible:(bool)arg1 changeReason:(long long)arg2 context:(id)arg3;
 - (void)setCurrentAssetReference:(id)arg1;
 - (void)setCurrentAssetReference:(id)arg1 transitionProgress:(double)arg2 transitionDriverIdentifier:(id)arg3;
 - (void)setImportStatusManager:(id)arg1;
+- (void)setIsAttemptingToPlayVideoOverlay:(bool)arg1;
 - (void)setIsScrolling:(bool)arg1;
 - (void)setIsScrubbing:(bool)arg1;
 - (void)setMediaProvider:(id)arg1;
@@ -152,9 +175,12 @@
 - (void)setReviewScreenBarsModel:(id)arg1;
 - (void)setSecondScreenSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setVideoContentAllowed:(bool)arg1 forReason:(id)arg2;
+- (void)setVideoContentAllowedForAllReasons;
+- (void)setVideoOverlayPlayState:(long long)arg1;
 - (id)trailingAssetReference;
 - (id)transitionDriverIdentifier;
 - (void)unregisterChangeObserver:(id)arg1;
+- (long long)videoOverlayPlayState;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 
 @end

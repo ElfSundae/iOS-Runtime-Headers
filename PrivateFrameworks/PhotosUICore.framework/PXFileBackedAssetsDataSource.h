@@ -5,13 +5,16 @@
 @interface PXFileBackedAssetsDataSource : PXAssetsDataSource {
     _PXFileBackedAssetCollection * _assetCollection;
     NSDictionary * _assetCollectionBySection;
-    NSDictionary * _fileURLsBySection;
+    NSDictionary * _assetDescriptionsBySection;
 }
 
-@property (nonatomic, readonly) NSDictionary *fileURLsBySection;
+@property (nonatomic, readonly, copy) NSDictionary *assetDescriptionsBySection;
 
 - (void).cxx_destruct;
-- (id)fileURLsBySection;
+- (id)assetDescriptionsBySection;
+- (id)assetsInSectionIndexPath:(struct PXSimpleIndexPath { unsigned long long x1; long long x2; long long x3; long long x4; })arg1;
+- (id)init;
+- (id)initWithFileBackedAssetDescriptionsBySection:(id)arg1;
 - (id)initWithFileURLsBySection:(id)arg1;
 - (id)inputForItem:(id)arg1;
 - (long long)numberOfItemsInSection:(long long)arg1;

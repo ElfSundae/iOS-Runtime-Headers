@@ -4,8 +4,6 @@
 
 @interface SPZKWSession : NSObject
 
-+ (id)cachedZKWAppBundleIDs;
-
 - (id)queryWithContext:(id)arg1;
 
 @end

@@ -2,44 +2,36 @@
    Image: /System/Library/PrivateFrameworks/NeutrinoCore.framework/NeutrinoCore
  */
 
-@interface NUCGAuxiliaryImageProperties : NSObject <NUDepthProperties, NUPortraitEffectsMatteProperties> {
-    NSDictionary * _auxiliaryData;
-    NSString * _auxiliaryType;
-    AVDepthData * _depthData;
+@interface NUCGAuxiliaryImageProperties : NSObject <NUAuxiliaryImageProperties> {
+    NSDictionary * _auxCoreGraphicsInfoDictionary;
+    <NUAuxiliaryImage> * _auxImage;
+    NSString * _auxiliaryImageTypeCGIdentifier;
     id  _imageSource;
-    AVPortraitEffectsMatte * _portraitEffectsMatte;
     struct { 
         long long width; 
         long long height; 
     }  _size;
 }
 
-@property (retain) NSDictionary *auxiliaryData;
-@property (copy) NSString *auxiliaryType;
+@property (retain) NSDictionary *auxCoreGraphicsInfoDictionary;
+@property (retain) <NUAuxiliaryImage> *auxImage;
+@property (readonly) NSString *auxiliaryImageTypeCGIdentifier;
 @property (readonly, copy) NSString *debugDescription;
-@property (retain) AVDepthData *depthData;
-@property (readonly) NSString *depthType;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (retain) AVPortraitEffectsMatte *portraitEffectsMatte;
 @property struct { long long x1; long long x2; } size;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)auxiliaryData;
-- (id)auxiliaryData:(out id*)arg1;
-- (id)auxiliaryType;
-- (id)depthData;
-- (id)depthData:(out id*)arg1;
-- (id)depthType;
+- (id)auxCoreGraphicsInfoDictionary;
+- (id)auxImage;
+- (id)auxiliaryCoreGraphicsInfoDictionary:(out id*)arg1;
+- (id)auxiliaryImage:(out id*)arg1;
+- (id)auxiliaryImageTypeCGIdentifier;
 - (id)description;
-- (id)initWitProperties:(id)arg1 imageSource:(struct CGImageSource { }*)arg2;
-- (id)portraitEffectsMatte;
-- (id)portraitEffectsMatte:(out id*)arg1;
-- (void)setAuxiliaryData:(id)arg1;
-- (void)setAuxiliaryType:(id)arg1;
-- (void)setDepthData:(id)arg1;
-- (void)setPortraitEffectsMatte:(id)arg1;
+- (id)initWithCGProperties:(id)arg1 imageSource:(struct CGImageSource { }*)arg2;
+- (void)setAuxCoreGraphicsInfoDictionary:(id)arg1;
+- (void)setAuxImage:(id)arg1;
 - (void)setSize:(struct { long long x1; long long x2; })arg1;
 - (struct { long long x1; long long x2; })size;
 

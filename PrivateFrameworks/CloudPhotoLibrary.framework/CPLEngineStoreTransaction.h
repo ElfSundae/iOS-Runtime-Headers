@@ -23,6 +23,7 @@
 - (id)error;
 - (id)initForWrite:(bool)arg1;
 - (id)name;
+- (id)redactedDescription;
 - (void)setError:(id)arg1;
 - (void)setName:(id)arg1;
 

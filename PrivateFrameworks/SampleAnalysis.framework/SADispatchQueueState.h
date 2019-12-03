@@ -13,7 +13,7 @@
 @property (readonly) Class superclass;
 @property (readonly) SAThread *thread;
 @property (readonly) SAThreadState *threadState;
-@property (readonly) unsigned long long threadStateIndex;
+@property unsigned long long threadStateIndex;
 
 + (id)classDictionaryKey;
 + (id)newInstanceWithoutReferencesFromSerializedBuffer:(const struct { unsigned char x1; unsigned char x2; unsigned long long x3; unsigned int x4; }*)arg1 bufferLength:(unsigned long long)arg2;
@@ -25,6 +25,7 @@
 - (id)debugDescriptionWithDispatchQueue:(id)arg1;
 - (id)initWithThread:(id)arg1 threadStateIndex:(unsigned long long)arg2;
 - (void)populateReferencesUsingBuffer:(const struct { unsigned char x1; unsigned char x2; unsigned long long x3; unsigned int x4; }*)arg1 bufferLength:(unsigned long long)arg2 andDeserializationDictionary:(struct NSMutableDictionary { Class x1; }*)arg3 andDataBufferDictionary:(struct NSMutableDictionary { Class x1; }*)arg4;
+- (void)setThreadStateIndex:(unsigned long long)arg1;
 - (unsigned long long)sizeInBytesForSerializedVersion;
 - (id)thread;
 - (id)threadState;

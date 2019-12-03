@@ -6,7 +6,7 @@
     unsigned long long  _maxiumInaccessibleHeadlineCount;
     unsigned long long  _minimumResultHeadlineCount;
     double  _paidHeadlineRatio;
-    FCPurchaseController * _purchaseController;
+    <FCPurchaseProviderType> * _purchaseProvider;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -15,7 +15,7 @@
 @property (nonatomic) unsigned long long maxiumInaccessibleHeadlineCount;
 @property (nonatomic) unsigned long long minimumResultHeadlineCount;
 @property (nonatomic) double paidHeadlineRatio;
-@property (nonatomic, retain) FCPurchaseController *purchaseController;
+@property (nonatomic, retain) <FCPurchaseProviderType> *purchaseProvider;
 @property (readonly) Class superclass;
 
 + (id)transformationWithConfiguration:(id)arg1 context:(id)arg2;
@@ -24,11 +24,11 @@
 - (unsigned long long)maxiumInaccessibleHeadlineCount;
 - (unsigned long long)minimumResultHeadlineCount;
 - (double)paidHeadlineRatio;
-- (id)purchaseController;
+- (id)purchaseProvider;
 - (void)setMaxiumInaccessibleHeadlineCount:(unsigned long long)arg1;
 - (void)setMinimumResultHeadlineCount:(unsigned long long)arg1;
 - (void)setPaidHeadlineRatio:(double)arg1;
-- (void)setPurchaseController:(id)arg1;
+- (void)setPurchaseProvider:(id)arg1;
 - (id)transformFeedItems:(id)arg1;
 - (id)transformHeadlines:(id)arg1;
 - (id)transformItems:(id)arg1 isPaidBlock:(id /* block */)arg2 sourceChannelIDProvider:(id /* block */)arg3;

@@ -5,6 +5,7 @@
 @interface SFIdentityAttributes : NSObject <SFKeychainItemAttributes> {
     id  _identityAttributesInternal;
     struct NSString { Class x1; } * _privateKeyDomain;
+    NSString * persistentIdentifier;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -30,6 +31,7 @@
 - (id)keySpecifier;
 - (id)localizedDescription;
 - (id)localizedLabel;
+- (id)persistentIdentifier;
 - (struct NSString { Class x1; }*)privateKeyDomain;
 - (void)setIdentityName:(id)arg1;
 - (void)setKeySpecifier:(id)arg1;

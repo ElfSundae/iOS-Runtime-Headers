@@ -3,6 +3,7 @@
  */
 
 @interface MapsSuggestionsUniqueIdentifierDeduper : MapsSuggestionsBaseDeduper <MapsSuggestionsDeduper> {
+    struct NSString { Class x1; } * _name;
     long long  _type;
 }
 
@@ -14,7 +15,9 @@
 
 + (bool)isEnabled;
 
+- (void).cxx_destruct;
 - (bool)dedupeByEnrichingEntry:(id)arg1 withEntry:(id)arg2;
 - (id)initWithType:(long long)arg1;
+- (struct NSString { Class x1; }*)uniqueName;
 
 @end

@@ -11,7 +11,6 @@
     NSMutableSet * _dynamicGestureRecognizers;
     NSMutableSet * _dynamicInteractions;
     NSMutableSet * _endingGestureRecognizers;
-    UIEventEnvironment * _eventEnvironment;
     UIView * _eventView;
     NSMutableSet * _exitingGestureRecognizers;
     bool  _ignoreDragEnd;
@@ -27,10 +26,11 @@
 @property (nonatomic, readonly) unsigned int dragSessionID;
 @property (getter=_dropSession, nonatomic, readonly) _UIDropSessionImpl *dropSession;
 @property (getter=_dynamicGestureRecognizers, nonatomic, readonly) NSSet *dynamicGestureRecognizers;
-@property (nonatomic) UIEventEnvironment *eventEnvironment;
 @property (nonatomic, readonly) UIWindow *eventWindow;
+@property (nonatomic, readonly) bool hasActiveGestureRecognizers;
 @property (getter=_hitTestedView, nonatomic, readonly) UIView *hitTestedView;
 @property (nonatomic, readonly) bool isFromAccessibilitySession;
+@property (nonatomic, readonly) bool isPolicyDriven;
 @property (nonatomic, readonly) struct CGPoint { double x1; double x2; } locationInSceneReferenceSpace;
 @property (getter=_sessionDestination, nonatomic, readonly) _UIInternalDraggingSessionDestination *sessionDestination;
 @property (getter=_sessionSource, nonatomic, readonly) _UIInternalDraggingSessionSource *sessionSource;
@@ -49,6 +49,7 @@
 - (void)_ignoreDragEnd;
 - (void)_ignoreGestureRecognizer:(id)arg1;
 - (bool)_isReadyForReset;
+- (bool)_isTouchRoutingPolicyBased;
 - (void)_removeGestureRecognizer:(id)arg1;
 - (void)_reset;
 - (bool)_sendEventToGestureRecognizer:(id)arg1;
@@ -67,13 +68,13 @@
 - (id)_windows;
 - (void)dealloc;
 - (unsigned int)dragSessionID;
-- (id)eventEnvironment;
 - (id)eventWindow;
-- (id)initWithDragSessionID:(unsigned int)arg1;
+- (bool)hasActiveGestureRecognizers;
+- (id)initWithDragSessionID:(unsigned int)arg1 environment:(id)arg2;
 - (bool)isFromAccessibilitySession;
+- (bool)isPolicyDriven;
 - (struct CGPoint { double x1; double x2; })locationInSceneReferenceSpace;
 - (struct CGPoint { double x1; double x2; })locationInView:(id)arg1;
-- (void)setEventEnvironment:(id)arg1;
 - (long long)type;
 
 @end

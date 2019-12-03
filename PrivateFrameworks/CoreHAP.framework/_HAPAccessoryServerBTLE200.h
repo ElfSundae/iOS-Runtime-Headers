@@ -299,7 +299,7 @@
 - (id)shortDescription;
 - (bool)shouldVerifyHAPCharacteristic:(id)arg1;
 - (bool)shouldVerifyHAPService:(id)arg1;
-- (void)startPairingWithConsentRequired:(bool)arg1;
+- (void)startPairingWithConsentRequired:(bool)arg1 config:(id)arg2 ownershipToken:(id)arg3;
 - (bool)stopPairingWithError:(id*)arg1;
 - (void)tearDownSessionOnAuthCompletion;
 - (void)timerDidFire:(id)arg1;

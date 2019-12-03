@@ -5,7 +5,9 @@
 @interface NWConcrete_nw_hostname_endpoint : NWConcrete_nw_endpoint {
     char * hostname;
     unsigned short  port;
-    NSObject<OS_xpc_object> * txt_record;
+    unsigned short  priority;
+    NSObject<OS_nw_txt_record> * txt_record;
+    unsigned short  weight;
 }
 
 - (void).cxx_destruct;
@@ -15,9 +17,14 @@
 - (void)dealloc;
 - (const char *)domainForPolicy;
 - (unsigned long long)getHash;
+- (const char *)hostname;
 - (id)initWithHostname:(const char *)arg1 port:(unsigned short)arg2;
 - (bool)isEqualToEndpoint:(id)arg1 matchInterface:(bool)arg2 matchParent:(bool)arg3;
 - (unsigned short)port;
+- (unsigned short)priority;
+- (void)setPriority:(unsigned short)arg1;
+- (void)setWeight:(unsigned short)arg1;
 - (unsigned int)type;
+- (unsigned short)weight;
 
 @end

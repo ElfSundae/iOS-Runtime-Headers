@@ -11,7 +11,7 @@
 @property (readonly) Class superclass;
 
 - (id)date;
-- (id)initShowingDay:(bool)arg1 month:(bool)arg2 year:(bool)arg3 useDarkAppearance:(bool)arg4;
+- (id)initShowingDay:(bool)arg1 month:(bool)arg2 year:(bool)arg3 useDarkAppearance:(bool)arg4 locale:(id)arg5 calendar:(id)arg6;
 - (void)prepareToDie;
 - (void)setDate:(id)arg1;
 - (void)setDateValueChangedTarget:(id)arg1 action:(SEL)arg2;

@@ -6,13 +6,17 @@
     NSDictionary * _appLocation;
     NSSet * _dockedApps;
     NSSet * _folderApps;
+    NSDate * _lastAppIconRefreshTime;
     unsigned char  _latestHash;
+    unsigned long long  _numFolders;
+    unsigned long long  _numPages;
     NSObject<OS_dispatch_queue> * _syncQueue;
 }
 
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
+- (void)_reload;
 - (id)allAppsOnSpringboard;
 - (id)allDockedApps;
 - (id)allFolderApps;
@@ -21,8 +25,11 @@
 - (long long)folderPageNumberForBundleId:(id)arg1;
 - (id)init;
 - (id)loadIconStateData;
+- (unsigned long long)numberOfApps;
+- (unsigned long long)numberOfFolders;
+- (unsigned long long)numberOfPages;
 - (void)parseIconState:(id)arg1;
-- (void)reload;
+- (void)reloadIfExpired;
 - (long long)springboardPageLocationForBundleId:(id)arg1;
 - (long long)springboardPageNumberForBundleId:(id)arg1;
 

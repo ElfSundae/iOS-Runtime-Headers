@@ -14,10 +14,26 @@
         unsigned long long size; 
     }  _availablePrioritizations;
     struct { 
-        unsigned int showTransitSchedules : 1; 
-    }  _has;
+        unsigned int has_showTransitSchedules : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_availablePaymentTypes : 1; 
+        unsigned int read_availablePrioritizations : 1; 
+        unsigned int read_transitSurchargeOptions : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_availablePaymentTypes : 1; 
+        unsigned int wrote_availablePrioritizations : 1; 
+        unsigned int wrote_transitSurchargeOptions : 1; 
+        unsigned int wrote_showTransitSchedules : 1; 
+    }  _flags;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     bool  _showTransitSchedules;
     GEORequestOptions * _transitSurchargeOptions;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic, readonly) int*availablePaymentTypes;
@@ -30,10 +46,18 @@
 @property (nonatomic) bool showTransitSchedules;
 @property (nonatomic, readonly) <GEOSurchargeOption> *surchargeOptions;
 @property (nonatomic, retain) GEORequestOptions *transitSurchargeOptions;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
+
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsAvailablePaymentTypes:(id)arg1;
 - (int)StringAsAvailablePrioritizations:(id)arg1;
+- (void)_addNoFlagsAvailablePaymentType:(int)arg1;
+- (void)_addNoFlagsAvailablePrioritization:(int)arg1;
+- (void)_readAvailablePaymentTypes;
+- (void)_readAvailablePrioritizations;
+- (void)_readTransitSurchargeOptions;
 - (void)addAvailablePaymentType:(int)arg1;
 - (void)addAvailablePrioritization:(int)arg1;
 - (int)availablePaymentTypeAtIndex:(unsigned long long)arg1;
@@ -46,6 +70,7 @@
 - (unsigned long long)availablePrioritizationsCount;
 - (void)clearAvailablePaymentTypes;
 - (void)clearAvailablePrioritizations;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -54,9 +79,12 @@
 - (bool)hasShowTransitSchedules;
 - (bool)hasTransitSurchargeOptions;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)prioritizationOptions;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAvailablePaymentTypes:(int*)arg1 count:(unsigned long long)arg2;
 - (void)setAvailablePrioritizations:(int*)arg1 count:(unsigned long long)arg2;
@@ -66,6 +94,7 @@
 - (bool)showTransitSchedules;
 - (id)surchargeOptions;
 - (id)transitSurchargeOptions;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -19,8 +19,8 @@
 - (id)getGPUContext;
 - (id)init;
 - (id)initWithParameters:(short)arg1 useGPU:(bool)arg2;
-- (int)initializeNetwork:(id)arg1 paramFileUrl:(id)arg2;
 - (id)output;
+- (int)prepareNetworkFromURL:(id)arg1 withInputSize:(id)arg2;
 - (int)size;
 
 @end

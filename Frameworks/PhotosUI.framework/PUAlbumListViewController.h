@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUAlbumListViewController : UIViewController <PLDismissableViewController, PLNavigableCollectionContainer, PUAlbumListTableViewCellDelegate, PUAlbumStreamActivityDelegate, PUCollectionViewReorderDelegate, PUSectionedGridLayoutDelegate, PUStackedAlbumControllerTransition, PUStackedAlbumTransitionDelegate, PXCloudFeedNavigating, PXCollectionsDataSourceManagerObserver, PXEditableNavigationTitleViewDelegate, PXNavigableSharedAlbumActivityFeedHostViewController, PXPhotoLibraryUIChangeObserver, PXPlacesSnapshotFactoryDelegate, PXSettingsKeyObserver, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDropDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, UITableViewDataSource, UITableViewDelegate> {
+@interface PUAlbumListViewController : UIViewController <PLCloudFeedNavigating, PUAlbumListTableViewCellDelegate, PUAlbumStreamActivityDelegate, PUCollectionViewReorderDelegate, PUSectionedGridLayoutDelegate, PUStackedAlbumControllerTransition, PUStackedAlbumTransitionDelegate, PXCollectionsDataSourceManagerObserver, PXEditableNavigationTitleViewDelegate, PXForcedDismissableViewController, PXNavigableCollectionContainer, PXNavigableSharedAlbumActivityFeedHostViewController, PXPhotoLibraryUIChangeObserver, PXPlacesSnapshotFactoryDelegate, PXSettingsKeyObserver, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDropDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, UITableViewDataSource, UITableViewDelegate> {
     bool  __aboutToCreateAlbum;
     UICollectionViewLayout * __albumListTransitionLayout;
     UIView * __backgroundView;
@@ -157,7 +157,6 @@
 - (id)_albumCreationButtonItem;
 - (id)_albumListTransitionLayout;
 - (void)_allChildAssetCollections:(id)arg1 andCollectionLists:(id)arg2 ofFolder:(id)arg3;
-- (bool)_appAllowsSupressionOfAlerts;
 - (id)_assetsFetchOptions;
 - (id)_backgroundView;
 - (id)_badgeManager;
@@ -191,7 +190,7 @@
 - (void)_handleAlbumCreation:(id)arg1;
 - (void)_handleAlbumOrFolderCreation:(id)arg1;
 - (void)_handleCancelButton:(id)arg1;
-- (void)_handleCreateAlbumOrFolder:(bool)arg1;
+- (void)_handleCreateAlbumOrFolder:(bool)arg1 isSmartAlbum:(bool)arg2;
 - (void)_handleDoneButton:(id)arg1;
 - (void)_handleDrop:(id)arg1 forItemAtIndexPath:(id)arg2;
 - (void)_handlePendingScrollingAnimationEndBlock;
@@ -293,7 +292,7 @@
 - (id)_visibleAssetsForCollection:(id)arg1 correspondingCollections:(out id*)arg2;
 - (id)_visibleAssetsForCollection:(id)arg1 maximumNumberOfVisibleAssets:(long long)arg2 correspondingCollections:(out id*)arg3;
 - (void)_visiblyInsertItemAtIndexPath:(id)arg1 modelUpdate:(id /* block */)arg2 completionHandler:(id /* block */)arg3;
-- (void)albumListCellContentView:(id)arg1 didEndRetitingFromTitle:(id)arg2 toTitle:(id)arg3;
+- (void)albumListCellContentView:(id)arg1 didEndRetitlingFromTitle:(id)arg2 toTitle:(id)arg3;
 - (void)albumListCellContentView:(id)arg1 performDeleteAction:(id)arg2;
 - (bool)albumListCellContentViewShouldBeginRetitling:(id)arg1;
 - (void)albumListTableViewCell:(id)arg1 willChangeState:(unsigned long long)arg2;
@@ -307,6 +306,7 @@
 - (id)bestReferenceItemIndexPath;
 - (bool)canNavigateToCollection:(id)arg1;
 - (bool)canPresentPicker;
+- (bool)canRouteToDestination:(id)arg1;
 - (bool)canShowAggregateItem;
 - (bool)canShowAvatarViews;
 - (bool)canShowSyncProgress;
@@ -345,9 +345,10 @@
 - (bool)gestureRecognizerShouldBegin:(id)arg1;
 - (id)gridLayout;
 - (void)handleCreateAlbum;
-- (void)handleCreateAlbumOrFolder:(bool)arg1 helper:(id)arg2;
+- (void)handleCreateAlbumOrFolder:(bool)arg1 isSmartAlbum:(bool)arg2 helper:(id)arg3;
 - (void)handleCreateFolder;
 - (void)handleCreateSharedAlbum;
+- (void)handleCreateSmartAlbum;
 - (void)handleDeleteAlbumAtIndexPath:(id)arg1;
 - (void)handleSessionInfoAlbumSelection:(id)arg1;
 - (void)handleTransitionFade:(bool)arg1 animate:(bool)arg2;
@@ -371,6 +372,7 @@
 - (id)mainScrollView;
 - (void)navigateToAllPhotosAnimated:(bool)arg1 completion:(id /* block */)arg2;
 - (void)navigateToCollection:(id)arg1 animated:(bool)arg2 completion:(id /* block */)arg3;
+- (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(id /* block */)arg3;
 - (void)navigateToPeopleAnimated:(bool)arg1 withPersonLocalIdentifier:(id)arg2 withCompletion:(id /* block */)arg3;
 - (void)navigateToRevealAssetCollection:(id)arg1 initiallyHidden:(bool)arg2 animated:(bool)arg3;
 - (void)navigateToSharedAlbumActivityFeedAnimated:(bool)arg1 configuration:(id /* block */)arg2 completion:(id /* block */)arg3;
@@ -398,7 +400,7 @@
 - (id)prepareForPhotoLibraryChange:(id)arg1;
 - (void)prepareForPopoverPresentation:(id)arg1;
 - (bool)progressViewVisible;
-- (bool)pu_handleSecondTabTap;
+- (bool)pu_scrollToInitialPositionAnimated:(bool)arg1;
 - (id)pushedAlbum;
 - (id)pushedController;
 - (id)px_gridPresentation;

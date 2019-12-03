@@ -7,7 +7,9 @@
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
     }  _lock;
+    bool  _lock_allowsUnknownDisplays;
     <FBSDisplayObserving> * _lock_bookendObserver;
+    bool  _lock_canPostToBookendObserver;
     NSHashTable * _lock_observers;
     NSMapTable * _lock_sourcesByDisplay;
     CADisplay * _mainDisplay;
@@ -16,6 +18,7 @@
 
 @property (nonatomic, readonly) <FBSDisplayObserving> *bookendObserver;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *callOutQueue;
+@property (nonatomic, readonly) bool canPostToBookendObserver;
 @property (nonatomic, readonly, copy) NSSet *connectedIdentities;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -29,10 +32,13 @@
 - (id)_initWithBookendObserver:(id)arg1;
 - (void)_lock_enumerateConnectedWithBlock:(id /* block */)arg1;
 - (void)_lock_enumerateSourcesWithBlock:(id /* block */)arg1;
+- (void)_postInitialBookendObserverConnections;
 - (id)_sortedSources;
 - (void)addObserver:(id)arg1;
+- (bool)allowsUnknownDisplays;
 - (id)bookendObserver;
 - (id)callOutQueue;
+- (bool)canPostToBookendObserver;
 - (id)configurationForIdentity:(id)arg1;
 - (id)connectedIdentities;
 - (void)dealloc;
@@ -45,5 +51,6 @@
 - (id)mainIdentity;
 - (id)observersEnumerator;
 - (void)removeObserver:(id)arg1;
+- (void)setAllowsUnknownDisplays:(bool)arg1;
 
 @end

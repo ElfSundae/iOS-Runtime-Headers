@@ -15,9 +15,11 @@
     NSDictionary * _results;
     bool  _supportsAdvertisingUnlocked;
     bool  _supportsAlwaysDirect;
-    bool  _supportsAuthPrompts;
+    bool  _supportsApproveIcon;
+    bool  _supportsApproveWithWatch;
     bool  _supportsConnectionCache;
     bool  _supportsEncryption;
+    bool  _supportsHEIC;
     bool  _unlockEnabled;
 }
 
@@ -33,9 +35,11 @@
 @property (nonatomic, retain) NSDictionary *results;
 @property (nonatomic) bool supportsAdvertisingUnlocked;
 @property (nonatomic) bool supportsAlwaysDirect;
-@property (nonatomic) bool supportsAuthPrompts;
+@property (nonatomic) bool supportsApproveIcon;
+@property (nonatomic) bool supportsApproveWithWatch;
 @property (nonatomic) bool supportsConnectionCache;
 @property (nonatomic) bool supportsEncryption;
+@property (nonatomic) bool supportsHEIC;
 @property (nonatomic, readonly) long long type;
 @property (nonatomic) bool unlockEnabled;
 
@@ -69,15 +73,19 @@
 - (void)setResults:(id)arg1;
 - (void)setSupportsAdvertisingUnlocked:(bool)arg1;
 - (void)setSupportsAlwaysDirect:(bool)arg1;
-- (void)setSupportsAuthPrompts:(bool)arg1;
+- (void)setSupportsApproveIcon:(bool)arg1;
+- (void)setSupportsApproveWithWatch:(bool)arg1;
 - (void)setSupportsConnectionCache:(bool)arg1;
 - (void)setSupportsEncryption:(bool)arg1;
+- (void)setSupportsHEIC:(bool)arg1;
 - (void)setUnlockEnabled:(bool)arg1;
 - (bool)supportsAdvertisingUnlocked;
 - (bool)supportsAlwaysDirect;
-- (bool)supportsAuthPrompts;
+- (bool)supportsApproveIcon;
+- (bool)supportsApproveWithWatch;
 - (bool)supportsConnectionCache;
 - (bool)supportsEncryption;
+- (bool)supportsHEIC;
 - (long long)type;
 - (bool)unlockEnabled;
 

@@ -3,6 +3,7 @@
  */
 
 @interface AFDeviceRingerSwitchObserver : NSObject <AFNotifyObserverDelegate> {
+    bool  _isActive;
     NSHashTable * _listeners;
     AFNotifyObserver * _notifyObserver;
     NSObject<OS_dispatch_queue> * _queue;

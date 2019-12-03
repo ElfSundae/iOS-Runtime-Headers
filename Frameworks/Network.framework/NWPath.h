@@ -6,9 +6,11 @@
     NSObject<OS_nw_path> * _internalPath;
 }
 
+@property (nonatomic, readonly) NWAdvertiseDescriptor *advertiseDescriptor;
 @property (nonatomic, readonly) NWBrowseDescriptor *browseDescriptor;
 @property (nonatomic, readonly) NSUUID *clientID;
 @property (nonatomic, readonly) NWInterface *connectedInterface;
+@property (getter=isConstrained, nonatomic, readonly) bool constrained;
 @property (nonatomic, readonly) NWParameters *derivedParameters;
 @property (getter=isDirect, nonatomic, readonly) bool direct;
 @property (nonatomic, readonly) NSArray *dnsSearchDomains;
@@ -29,6 +31,8 @@
 @property (getter=isFlowDivert, nonatomic, readonly) bool flowDivert;
 @property (nonatomic, readonly) unsigned int flowDivertControlUnit;
 @property (nonatomic, readonly) NSArray *flows;
+@property (nonatomic, readonly) NSArray *gateways;
+@property (nonatomic, readonly) bool hasAdvertiseDescriptor;
 @property (nonatomic, readonly) bool hasBrowseDescriptor;
 @property (nonatomic, readonly) NWInterface *interface;
 @property (readonly) NSObject<OS_nw_path> *internalPath;
@@ -37,6 +41,7 @@
 @property (nonatomic, readonly) long long maximumDatagramSize;
 @property (nonatomic, readonly) long long mtu;
 @property (nonatomic, readonly) NWParameters *parameters;
+@property (getter=isPerAppVPN, nonatomic, readonly) bool perAppVPN;
 @property (nonatomic, readonly) unsigned int policyID;
 @property (nonatomic, readonly, copy) NSString *privateDescription;
 @property (nonatomic, readonly) NSArray *proxySettings;
@@ -58,6 +63,7 @@
 + (id)pathWithProtocolBufferData:(id)arg1;
 
 - (void).cxx_destruct;
+- (id)advertiseDescriptor;
 - (id)browseDescriptor;
 - (id)clientID;
 - (id)connectedInterface;
@@ -81,7 +87,9 @@
 - (unsigned int)filterControlUnit;
 - (unsigned int)flowDivertControlUnit;
 - (id)flows;
+- (id)gateways;
 - (id)genericNetworkAgentsWithDomain:(id)arg1 type:(id)arg2;
+- (bool)hasAdvertiseDescriptor;
 - (bool)hasBrowseDescriptor;
 - (bool)hasUnsatisfiedFallbackAgent;
 - (id)inactiveNetworkAgentUUIDsOnlyVoluntary:(bool)arg1;
@@ -89,6 +97,7 @@
 - (id)initWithPath:(id)arg1;
 - (id)interface;
 - (id)internalPath;
+- (bool)isConstrained;
 - (bool)isDirect;
 - (bool)isEligibleForCrazyIvan46;
 - (bool)isEqualToPath:(id)arg1;
@@ -97,7 +106,9 @@
 - (bool)isFlowDivert;
 - (bool)isLinkQualityAbort;
 - (bool)isListener;
+- (bool)isListenerInterfaceSpecific;
 - (bool)isLocal;
+- (bool)isPerAppVPN;
 - (bool)isRoaming;
 - (bool)isViable;
 - (long long)maximumDatagramSize;

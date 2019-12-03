@@ -26,6 +26,7 @@
 - (void).cxx_destruct;
 - (id)JSSignConfiguration;
 - (void)_getSignatureDataForRequest:(id)arg1 urlBag:(id)arg2 completionHandler:(id /* block */)arg3;
+- (bool)_shouldPersonalizeRequest;
 - (id)_stringForCachePolicy:(unsigned long long)arg1;
 - (id)additionalHTTPCookies;
 - (long long)anisetteVersion;

@@ -24,6 +24,9 @@
 - (id)saveURL;
 - (bool)shouldCropImage;
 - (bool)showThumbnailInNoteList;
+- (struct CGSize { double x1; double x2; })sizeByCroppingSize:(struct CGSize { double x1; double x2; })arg1;
+- (bool)supportsImageClassification;
+- (bool)supportsOCR;
 - (bool)supportsQuickLook;
 - (void)updateAttachmentSize;
 - (void)updateFileBasedAttributes;
@@ -31,11 +34,18 @@
 // Image: /System/Library/PrivateFrameworks/NotesUI.framework/NotesUI
 
 - (id)activityItems;
+- (id)classificationsForImage:(struct UIImage { Class x1; }*)arg1;
+- (void)classifyImageInOperation:(id)arg1;
+- (void)drawPreviewInRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)generateFullSizePreviewWithAttachmentIdentifier:(id)arg1 existingPreviewImage:(id)arg2 markupModelData:(id)arg3 imageOrientation:(long long)arg4 imageFilterType:(short)arg5 mediaDecryptedData:(id)arg6 mediaURL:(id)arg7 mediaSize:(struct CGSize { double x1; double x2; })arg8 croppingQuad:(id)arg9;
+- (void)generateOCRInOperation:(id)arg1;
 - (bool)generatePreviewsDuringCloudActivity;
-- (void)generatePreviewsInOperation:(id)arg1;
+- (bool)generatePreviewsInOperation:(id)arg1;
 - (id /* block */)genericBrickThumbnailCreator;
 - (id /* block */)genericListThumbnailCreator;
+- (id)labelsForClassificationObservations:(id)arg1;
 - (bool)needToGeneratePreviews;
+- (bool)needToPostProcessAttachment;
+- (id)ocrStringFromImage:(struct UIImage { Class x1; }*)arg1 title:(id*)arg2;
 
 @end

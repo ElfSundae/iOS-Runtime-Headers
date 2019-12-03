@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)initWithPatchesVector:(struct vector<ARPatch, std::__1::allocator<ARPatch> > { struct { /* ? */ } *x1; struct { /* ? */ } *x2; struct __compressed_pair<ARPatch *, std::__1::allocator<ARPatch> > { struct { /* ? */ } *x_3_1_1; } x3; })arg1 pivotAngle:(float)arg2;
+- (bool)isEqual:(id)arg1;
 - (const struct { }*)patches;
 - (float)pivot;
 - (unsigned long long)size;

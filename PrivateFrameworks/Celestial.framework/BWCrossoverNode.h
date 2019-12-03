@@ -17,7 +17,7 @@
 - (void)handleDroppedSample:(id)arg1 forInput:(id)arg2;
 - (void)handleNodeError:(id)arg1 forInput:(id)arg2;
 - (void)handleStillImageReferenceFrameBracketedCaptureSequenceNumber:(int)arg1 forInput:(id)arg2;
-- (id)initWithMediaType:(unsigned int)arg1;
+- (id)initWithMediaType:(unsigned int)arg1 numberOfInputs:(unsigned int)arg2;
 - (id)nodeSubType;
 - (id)nodeType;
 - (void)prepareForCurrentConfigurationToBecomeLive;

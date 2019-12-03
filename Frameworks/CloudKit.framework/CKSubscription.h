@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
  */
 
-@interface CKSubscription : NSObject <NSCopying, NSSecureCoding> {
+@interface CKSubscription : NSObject <HMBModelObjectStorage, NSCopying, NSSecureCoding> {
     CKNotificationInfo * _notificationInfo;
     NSPredicate * _predicate;
     NSString * _recordType;
@@ -12,13 +12,19 @@
     CKRecordZoneID * _zoneID;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, copy) CKNotificationInfo *notificationInfo;
 @property (nonatomic, copy) NSPredicate *predicate;
 @property (nonatomic, copy) NSString *recordType;
 @property (nonatomic, copy) NSString *subscriptionID;
 @property (nonatomic) unsigned long long subscriptionOptions;
 @property (nonatomic) long long subscriptionType;
+@property (readonly) Class superclass;
 @property (nonatomic, copy) CKRecordZoneID *zoneID;
+
+// Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
 
 + (bool)supportsSecureCoding;
 
@@ -34,12 +40,14 @@
 - (id)debugDescription;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRecordType:(id)arg1 predicate:(id)arg2 options:(unsigned long long)arg3;
 - (id)initWithRecordType:(id)arg1 predicate:(id)arg2 subscriptionID:(id)arg3 options:(unsigned long long)arg4;
 - (id)initWithZoneID:(id)arg1 options:(unsigned long long)arg2;
 - (id)initWithZoneID:(id)arg1 subscriptionID:(id)arg2 options:(unsigned long long)arg3;
+- (bool)isEqual:(id)arg1;
 - (id)notificationInfo;
 - (id)predicate;
 - (id)recordType;
@@ -54,5 +62,11 @@
 - (unsigned long long)subscriptionOptions;
 - (long long)subscriptionType;
 - (id)zoneID;
+
+// Image: /System/Library/PrivateFrameworks/HomeKitBackingStore.framework/HomeKitBackingStore
+
++ (id)hmbDecodeData:(id)arg1 fromStorageLocation:(unsigned long long)arg2 error:(id*)arg3;
+
+- (id)hmbEncodeForStorageLocation:(unsigned long long)arg1 error:(id*)arg2;
 
 @end

@@ -12,7 +12,7 @@
 
 - (void).cxx_destruct;
 - (id)catalog;
-- (id)imageWithTraitCollection:(id)arg1;
+- (id)imageWithConfiguration:(id)arg1;
 - (id)initWithContentsOfFile:(id)arg1;
 - (id)initWithData:(id)arg1;
 - (void)setCatalog:(id)arg1;

@@ -10,6 +10,7 @@
 @property (readonly) unsigned long long OSVersion;
 @property (readonly) NSString *eccCertificate;
 @property (readonly) NSString *eckaCertificate;
+@property (readonly) unsigned long long fullOSVersion;
 @property (readonly) bool isInRestrictedMode;
 @property (readonly) bool isProductionSigned;
 @property (readonly) NSString *rsaCertificate;
@@ -25,11 +26,13 @@
 - (id)_initWithInfo:(id)arg1;
 - (void)_markDirty;
 - (void)_setIsInRestrictedMode:(bool)arg1;
+- (void)_setIsInRestrictedPerformanceMode:(bool)arg1;
 - (void)_updateIfDirty;
 - (void)_updateSecureElementInfo:(id)arg1;
 - (void)dealloc;
 - (id)eccCertificate;
 - (id)eckaCertificate;
+- (unsigned long long)fullOSVersion;
 - (unsigned int)hwType;
 - (id)identifier;
 - (id)info;

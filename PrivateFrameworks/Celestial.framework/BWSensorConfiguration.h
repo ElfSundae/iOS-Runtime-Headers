@@ -3,19 +3,23 @@
  */
 
 @interface BWSensorConfiguration : NSObject {
+    NSDictionary * _cameraInfo;
     NSString * _portType;
-    NSString * _sensorID;
     NSDictionary * _sensorIDDictionary;
+    NSString * _sensorIDString;
 }
 
+@property (nonatomic, readonly) NSDictionary *cameraInfo;
 @property (nonatomic, readonly) NSString *portType;
-@property (nonatomic, readonly) NSString *sensorID;
 @property (nonatomic, readonly) NSDictionary *sensorIDDictionary;
+@property (nonatomic, readonly) NSString *sensorIDString;
 
+- (id)cameraInfo;
 - (void)dealloc;
-- (id)initWithPortType:(id)arg1 sensorID:(id)arg2 sensorIDDictionary:(id)arg3;
+- (id)description;
+- (id)initWithPortType:(id)arg1 sensorIDString:(id)arg2 sensorIDDictionary:(id)arg3 cameraInfo:(id)arg4;
 - (id)portType;
-- (id)sensorID;
 - (id)sensorIDDictionary;
+- (id)sensorIDString;
 
 @end

@@ -11,6 +11,7 @@
     TVPPlaybackReportingEventCollection * _eventCollection;
     bool  _hasLoadedAnyStreamingKeyRequests;
     NSDate * _keyExpirationDate;
+    NSMutableDictionary * _keyIdentifierPenaltyBox;
     NSURL * _keyServerURL;
     NSNumber * _rentalID;
     NSDate * _rentalPlaybackStartDate;
@@ -19,6 +20,7 @@
     NSNumber * _secureInvalidationDSID;
     NSURL * _secureInvalidationNonceURL;
     long long  _state;
+    bool  _usesKeyIdentifierPenaltyBox;
 }
 
 @property (nonatomic, retain) NSData *certificateData;
@@ -29,6 +31,7 @@
 @property (nonatomic, retain) TVPPlaybackReportingEventCollection *eventCollection;
 @property (nonatomic) bool hasLoadedAnyStreamingKeyRequests;
 @property (nonatomic, retain) NSDate *keyExpirationDate;
+@property (nonatomic, retain) NSMutableDictionary *keyIdentifierPenaltyBox;
 @property (nonatomic, copy) NSURL *keyServerURL;
 @property (nonatomic, retain) NSNumber *rentalID;
 @property (nonatomic, retain) NSDate *rentalPlaybackStartDate;
@@ -37,6 +40,7 @@
 @property (nonatomic, retain) NSNumber *secureInvalidationDSID;
 @property (nonatomic, retain) NSURL *secureInvalidationNonceURL;
 @property (nonatomic) long long state;
+@property (nonatomic) bool usesKeyIdentifierPenaltyBox;
 
 + (void)_loadAndCacheCertificateDataForValidURL:(id)arg1 completion:(id /* block */)arg2;
 + (void)_loadFPSURLsFromStoreBagWithCompletion:(id /* block */)arg1;
@@ -70,8 +74,10 @@
 - (id)initWithCertificateURL:(id)arg1 keyServerURL:(id)arg2;
 - (void)invalidateKeysWithRequests:(id)arg1 completion:(id /* block */)arg2;
 - (id)keyExpirationDate;
+- (id)keyIdentifierPenaltyBox;
 - (id)keyServerURL;
 - (void)loadFairPlayStreamingKeyRequests:(id)arg1 completion:(id /* block */)arg2;
+- (void)removeAllEntriesFromKeyIdentifierPenaltyBox;
 - (id)rentalID;
 - (id)rentalPlaybackStartDate;
 - (id)requestsAwaitingCertFetch;
@@ -87,6 +93,7 @@
 - (void)setEventCollection:(id)arg1;
 - (void)setHasLoadedAnyStreamingKeyRequests:(bool)arg1;
 - (void)setKeyExpirationDate:(id)arg1;
+- (void)setKeyIdentifierPenaltyBox:(id)arg1;
 - (void)setKeyServerURL:(id)arg1;
 - (void)setRentalID:(id)arg1;
 - (void)setRentalPlaybackStartDate:(id)arg1;
@@ -95,6 +102,8 @@
 - (void)setSecureInvalidationDSID:(id)arg1;
 - (void)setSecureInvalidationNonceURL:(id)arg1;
 - (void)setState:(long long)arg1;
+- (void)setUsesKeyIdentifierPenaltyBox:(bool)arg1;
 - (long long)state;
+- (bool)usesKeyIdentifierPenaltyBox;
 
 @end

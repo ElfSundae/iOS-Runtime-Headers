@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/AnnotationKit.framework/AnnotationKit
  */
 
-@interface AKSmoothPathView : UIView {
+@interface AKSmoothPathView : UIView <CHPointFIFODrawingTarget> {
     bool  _applyModelBaseScaleFactorToStroke;
     AKBitmapFIFO * _bitmapFifo;
     double  _cachedEffectiveStrokeWidthInModel;
@@ -44,9 +44,12 @@
 @property double cachedModelToViewScale;
 @property AKController *controller;
 @property double currentWeight;
+@property (readonly, copy) NSString *debugDescription;
 @property (retain) <AKSmoothPathViewDelegate> *delegate;
+@property (readonly, copy) NSString *description;
 @property bool disableSingleDotSpecialCase;
 @property (nonatomic) bool hasShadow;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, retain) CHQuadCurvePointFIFO *interpolatingFIFO;
 @property bool isAddingPointWithoutSmoothing;
 @property (nonatomic) double maxPressure;
@@ -63,6 +66,7 @@
 @property (nonatomic, retain) UIColor *strokeColor;
 @property (nonatomic, retain) CHPointStrokeFIFO *strokeFIFO;
 @property (nonatomic) double strokeWidth;
+@property (readonly) Class superclass;
 
 + (id)newSmoothPathViewForCurrentPlatformWithController:(id)arg1;
 

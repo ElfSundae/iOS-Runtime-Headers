@@ -3,6 +3,8 @@
  */
 
 @interface HKRoundedHeaderView : UIView {
+    UIColor * _chevronColor;
+    UIImageView * _chevronRightImageView;
     UIColor * _color;
     UIColor * _detailTextColor;
     NSString * _detailTextCompositingFilter;
@@ -14,6 +16,7 @@
     HKGradientView * _gradientView;
     UIImage * _image;
     UIImageView * _imageView;
+    NSLayoutConstraint * _largeTextChevronCenterYConstraint;
     NSArray * _largeTextConstraints;
     NSArray * _regularConstraints;
     NSString * _text;
@@ -26,6 +29,8 @@
     NSLayoutConstraint * _textLeadingConstraintToView;
 }
 
+@property (nonatomic, retain) UIColor *chevronColor;
+@property (nonatomic, retain) UIImageView *chevronRightImageView;
 @property (nonatomic, retain) UIColor *color;
 @property (nonatomic, copy) NSString *detailText;
 @property (nonatomic, retain) UIColor *detailTextColor;
@@ -38,6 +43,7 @@
 @property (nonatomic, retain) HKGradientView *gradientView;
 @property (nonatomic, retain) UIImage *image;
 @property (nonatomic, retain) UIImageView *imageView;
+@property (nonatomic, retain) NSLayoutConstraint *largeTextChevronCenterYConstraint;
 @property (nonatomic, retain) NSArray *largeTextConstraints;
 @property (nonatomic, retain) NSArray *regularConstraints;
 @property (nonatomic, copy) NSString *text;
@@ -60,12 +66,15 @@
 
 - (void).cxx_destruct;
 - (bool)_isLayingOutForAccessibility;
+- (bool)_isTextLabelTruncated;
 - (void)_setupConstraints;
 - (void)_setupUI;
 - (void)_updateForCurrentSizeCategory;
 - (void)_updateTextConstraints;
 - (void)_updateTextLabel;
 - (void)_updateUI;
+- (id)chevronColor;
+- (id)chevronRightImageView;
 - (id)color;
 - (id)detailText;
 - (id)detailTextColor;
@@ -81,8 +90,11 @@
 - (id)initWithColor:(id)arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)initWithGradient:(id)arg1;
+- (id)largeTextChevronCenterYConstraint;
 - (id)largeTextConstraints;
 - (id)regularConstraints;
+- (void)setChevronColor:(id)arg1;
+- (void)setChevronRightImageView:(id)arg1;
 - (void)setColor:(id)arg1;
 - (void)setDetailText:(id)arg1;
 - (void)setDetailTextColor:(id)arg1;
@@ -95,6 +107,7 @@
 - (void)setGradientView:(id)arg1;
 - (void)setImage:(id)arg1;
 - (void)setImageView:(id)arg1;
+- (void)setLargeTextChevronCenterYConstraint:(id)arg1;
 - (void)setLargeTextConstraints:(id)arg1;
 - (void)setRegularConstraints:(id)arg1;
 - (void)setText:(id)arg1;

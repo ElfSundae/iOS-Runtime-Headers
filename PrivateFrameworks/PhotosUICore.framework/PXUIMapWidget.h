@@ -113,6 +113,7 @@
 - (id)cachedFooterTitle;
 - (id)contentView;
 - (id)context;
+- (void)controllerTraitCollectionDidChangeFrom:(id)arg1 to:(id)arg2;
 - (void)dealloc;
 - (id)footerButton;
 - (id)footerFont;

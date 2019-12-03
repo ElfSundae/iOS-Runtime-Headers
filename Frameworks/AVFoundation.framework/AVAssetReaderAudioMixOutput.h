@@ -29,7 +29,6 @@
 - (id)audioTracks;
 - (void)dealloc;
 - (id)description;
-- (void)finalize;
 - (id)init;
 - (id)initWithAudioTracks:(id)arg1 audioSettings:(id)arg2;
 - (id)mediaType;

@@ -13,7 +13,6 @@
 - (id)backgroundColorLookupTable;
 - (void)dealloc;
 - (id)foregroundColorLookupTable;
-- (id)init;
 - (id)initWithForegroundColorLookupTable:(id)arg1 backgroundColorLookupTable:(id)arg2;
 
 @end

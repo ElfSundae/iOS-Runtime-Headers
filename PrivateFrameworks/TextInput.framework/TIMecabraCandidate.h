@@ -5,6 +5,7 @@
 @interface TIMecabraCandidate : TIKeyboardCandidate {
     bool  _OTAWordListCandidate;
     NSString * _candidate;
+    bool  _continuousPathConversion;
     long long  _cursorMovement;
     unsigned long long  _deleteCount;
     bool  _emojiCandidate;
@@ -14,8 +15,11 @@
     bool  _isForShortcutConversion;
     NSNumber * _mecabraCandidatePointerValue;
     bool  _regionalCandidate;
+    bool  _responseKitCandidate;
+    NSString * _responseKitCategory;
 }
 
+@property (getter=isContinuousPathConversion, nonatomic) bool continuousPathConversion;
 @property (nonatomic, retain) NSNumber *mecabraCandidatePointerValue;
 
 // Image: /System/Library/PrivateFrameworks/TextInput.framework/TextInput
@@ -34,17 +38,23 @@
 - (id)initWithCandidate:(id)arg1 forInput:(id)arg2 mecabraCandidatePointerValue:(id)arg3 withFlags:(int)arg4 deleteCount:(unsigned long long)arg5 cursorMovement:(long long)arg6;
 - (id)initWithCandidateResultSetCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithResponseKitString:(id)arg1 responseKitCategory:(id)arg2 mecabraCandidatePointerValue:(id)arg3;
 - (id)initWithSurface:(id)arg1 input:(id)arg2 mecabraCandidatePointerValue:(id)arg3;
 - (id)input;
 - (bool)isAutocorrection;
+- (bool)isContinuousPathConversion;
 - (bool)isEmojiCandidate;
+- (bool)isEqual:(id)arg1;
 - (bool)isExtensionCandidate;
 - (bool)isForShortcutConversion;
 - (bool)isFullwidthCandidate;
 - (bool)isOTAWordListCandidate;
 - (bool)isRegionalCandidate;
+- (bool)isResponseKitCandidate;
 - (id)label;
 - (id)mecabraCandidatePointerValue;
+- (id)responseKitCategory;
+- (void)setContinuousPathConversion:(bool)arg1;
 - (void)setMecabraCandidatePointerValue:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/TextInputCore.framework/TextInputCore
@@ -54,5 +64,6 @@
 + (id)mecabraCandidateWithCandidateRef:(const void*)arg1 autoconvertedCandidates:(id)arg2;
 
 - (id)initWithMecabraCandidate:(const void*)arg1;
+- (id)initWithMecabraCandidate:(const void*)arg1 cursorMovement:(long long)arg2;
 
 @end

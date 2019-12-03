@@ -6,10 +6,23 @@
     int  _acSequenceNumber;
     NSMutableArray * _displayedResults;
     struct { 
-        unsigned int acSequenceNumber : 1; 
-        unsigned int searchFieldType : 1; 
-        unsigned int selectedIndex : 1; 
-    }  _has;
+        unsigned int has_acSequenceNumber : 1; 
+        unsigned int has_searchFieldType : 1; 
+        unsigned int has_selectedIndex : 1; 
+        unsigned int read_displayedResults : 1; 
+        unsigned int read_searchString : 1; 
+        unsigned int wrote_displayedResults : 1; 
+        unsigned int wrote_searchString : 1; 
+        unsigned int wrote_acSequenceNumber : 1; 
+        unsigned int wrote_searchFieldType : 1; 
+        unsigned int wrote_selectedIndex : 1; 
+    }  _flags;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     int  _searchFieldType;
     NSString * _searchString;
     int  _selectedIndex;
@@ -26,9 +39,13 @@
 @property (nonatomic) int selectedIndex;
 
 + (Class)displayedResultType;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsSearchFieldType:(id)arg1;
+- (void)_addNoFlagsDisplayedResult:(id)arg1;
+- (void)_readDisplayedResults;
+- (void)_readSearchString;
 - (int)acSequenceNumber;
 - (void)addDisplayedResult:(id)arg1;
 - (void)clearDisplayedResults;
@@ -44,8 +61,11 @@
 - (bool)hasSearchString;
 - (bool)hasSelectedIndex;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (int)searchFieldType;
 - (id)searchFieldTypeAsString:(int)arg1;

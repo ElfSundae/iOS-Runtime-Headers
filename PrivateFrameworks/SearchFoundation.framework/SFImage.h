@@ -60,10 +60,12 @@
 - (bool)hasShouldCropToCircle;
 - (bool)hasSize;
 - (bool)hasSource;
+- (unsigned long long)hash;
 - (id)identifier;
 - (id)imageData;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProtobuf:(id)arg1;
+- (bool)isEqual:(id)arg1;
 - (bool)isTemplate;
 - (id)jsonData;
 - (id)keyColor;

@@ -3,7 +3,6 @@
  */
 
 @interface ATXDigitalHealthBlacklist : NSObject <LSApplicationWorkspaceObserverProtocol> {
-    LSApplicationWorkspace * _applicationWorkspace;
     _PASLock * _lock;
 }
 
@@ -15,12 +14,10 @@
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
-- (void)_setup;
-- (void)_updateBlacklistWithNewBlacklistedBundles:(id)arg1 whitelistedBundles:(id)arg2;
-- (id)blacklistedBundles;
+- (bool)_updateBlacklistWithNewBlacklistedBundleIds:(id)arg1 whitelistedBundleIds:(id)arg2;
+- (id)blacklistedBundleIds;
 - (void)dealloc;
 - (void)deviceManagementPolicyDidChange:(id)arg1;
 - (id)init;
-- (bool)isBundleBlacklisted:(id)arg1;
 
 @end

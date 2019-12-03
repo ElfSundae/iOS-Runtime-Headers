@@ -15,6 +15,7 @@
 - (void).cxx_destruct;
 - (bool)describesParentVenue;
 - (id)filterID;
+- (id)init;
 - (id)initWithFilterElementInfo:(id)arg1;
 - (id)initWithLabel:(id)arg1 filterID:(id)arg2;
 - (id)label;

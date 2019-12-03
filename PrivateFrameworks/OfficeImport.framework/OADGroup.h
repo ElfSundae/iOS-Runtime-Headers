@@ -21,13 +21,13 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)addChild:(id)arg1;
 - (void)addChildren:(id)arg1;
 - (void)changeParentTextListStylePreservingEffectiveValues:(id)arg1;
 - (id)childAtIndex:(unsigned long long)arg1;
 - (unsigned long long)childCount;
 - (id)children;
-- (void)dealloc;
 - (id)description;
 - (id)groupProperties;
 - (id)init;

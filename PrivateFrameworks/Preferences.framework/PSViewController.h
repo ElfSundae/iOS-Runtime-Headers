@@ -21,6 +21,7 @@
 - (void)formSheetViewDidDisappear;
 - (void)formSheetViewWillDisappear;
 - (void)handleURL:(id)arg1;
+- (void)handleURL:(id)arg1 withCompletion:(id /* block */)arg2;
 - (id)init;
 - (long long)navigationItemLargeTitleDisplayMode;
 - (id)parentController;

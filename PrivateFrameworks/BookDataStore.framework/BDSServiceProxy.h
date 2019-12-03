@@ -23,6 +23,7 @@
 - (void)assetDetailsForAssetIDs:(id)arg1 completion:(id /* block */)arg2;
 - (void)assetReviewForAssetReviewID:(id)arg1 completion:(id /* block */)arg2;
 - (void)assetReviewsForAssetReviewIDs:(id)arg1 completion:(id /* block */)arg2;
+- (void)audiobookStoreEnabledWithCompletion:(id /* block */)arg1;
 - (void)collectionDetailForCollectionID:(id)arg1 completion:(id /* block */)arg2;
 - (void)collectionDetailsForCollectionIDs:(id)arg1 completion:(id /* block */)arg2;
 - (void)collectionMemberForCollectionMemberID:(id)arg1 completion:(id /* block */)arg2;
@@ -52,7 +53,10 @@
 - (void)fetchCollectionDetailsIncludingDeleted:(bool)arg1 completion:(id /* block */)arg2;
 - (void)fetchCollectionMembersInCollectionID:(id)arg1 completion:(id /* block */)arg2;
 - (void)fetchCollectionMembersIncludingDeleted:(bool)arg1 completion:(id /* block */)arg2;
+- (void)fetchFinishedAssetCountByYearWithCompletion:(id /* block */)arg1;
+- (void)fetchFinishedDatesByAssetIDForYear:(long long)arg1 completion:(id /* block */)arg2;
 - (void)fetchMaxSortOrderInCollectionID:(id)arg1 completion:(id /* block */)arg2;
+- (void)fetchMostRecentAudiobookWithCompletion:(id /* block */)arg1;
 - (void)fetchStoreItemsIncludingDeleted:(bool)arg1 completion:(id /* block */)arg2;
 - (void)fetchUserDataIncludingDeleted:(bool)arg1 completion:(id /* block */)arg2;
 - (void)formXPCConnection;
@@ -74,6 +78,7 @@
 - (void)setAssetDetails:(id)arg1 completion:(id /* block */)arg2;
 - (void)setAssetReview:(id)arg1 completion:(id /* block */)arg2;
 - (void)setAssetReviews:(id)arg1 completion:(id /* block */)arg2;
+- (void)setCloudSyncPaused:(bool)arg1;
 - (void)setCollectionDetail:(id)arg1 completion:(id /* block */)arg2;
 - (void)setCollectionDetails:(id)arg1 completion:(id /* block */)arg2;
 - (void)setCollectionMember:(id)arg1 completion:(id /* block */)arg2;
@@ -89,6 +94,10 @@
 - (void)shutdown;
 - (void)signalFetchChangesTransaction:(id)arg1;
 - (void)storeItemForStoreID:(id)arg1 completion:(id /* block */)arg2;
+- (void)updateBitrateForItemWithAdamID:(id)arg1 completion:(id /* block */)arg2;
+- (id)updateReadingNowWithCompletion:(id /* block */)arg1;
+- (id)updateWantToReadAndReadingNowWithCompletion:(id /* block */)arg1;
+- (id)updateWantToReadWithCompletion:(id /* block */)arg1;
 - (void)userDataValueForKey:(id)arg1 completion:(id /* block */)arg2;
 - (void)userDatumForKey:(id)arg1 completion:(id /* block */)arg2;
 - (void)userDatumIncludingDeleted:(bool)arg1 forKey:(id)arg2 completion:(id /* block */)arg3;

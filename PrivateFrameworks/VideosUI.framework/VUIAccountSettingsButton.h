@@ -4,10 +4,11 @@
 
 @interface VUIAccountSettingsButton : VUIButton
 
-- (void)_loadAccountImage;
-- (void)_restrictionsDidChange:(id)arg1;
+- (void)_accountStoreDidChange:(id)arg1;
 - (void)_setup;
+- (void)_setupAccountImageView;
 - (void)_updateAccountButtonVisibility:(bool)arg1;
+- (void)_updateAccountImage;
 - (id)initWithButtonLayout:(id)arg1 interfaceStyle:(long long)arg2;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 

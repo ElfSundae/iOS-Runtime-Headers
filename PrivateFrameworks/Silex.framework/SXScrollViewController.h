@@ -2,8 +2,8 @@
    Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
  */
 
-@interface SXScrollViewController : UIViewController <STScrollViewDelegate, SXAdControllerPresentationDelegate, SXComponentHosting, SXDocumentSectionHosting, SXFormatInteractorDelegate, SXKeyboardSupport, SXPresentationDelegate, SXPresentationEnvironment, SXPreviewViewControllerManagerDelegate, SXScrollPositionRestoring, SXTangierControllerDelegate, SXViewportChangeListener, UIGestureRecognizerDelegate> {
-    <SXActionManager> * _actionManager;
+@interface SXScrollViewController : UIViewController <STScrollViewDelegate, SXAdControllerPresentationDelegate, SXComponentHosting, SXContextMenuManagerDelegate, SXDocumentSectionHosting, SXFormatInteractorDelegate, SXKeyboardSupport, SXPresentationDelegate, SXPresentationEnvironment, SXScrollPositionRestoring, SXTangierControllerDelegate, SXViewportChangeListener, UIGestureRecognizerDelegate> {
+    <SXDOMObjectProviding> * _DOMObjectProvider;
     <SXAdControllerContainer> * _adControllerContainer;
     <SXAdDocumentStateManager> * _adDocumentStateManager;
     <SXAnalyticsReportingContainer> * _analyticsReportingContainer;
@@ -12,7 +12,11 @@
     NSMutableArray * _articleScrollEvents;
     SXComponentBehaviorController * _behaviorController;
     <SXComponentController> * _componentController;
+    <SXComponentInteractionManager> * _componentInteractionManager;
+    <SXDocumentSectionBlueprint> * _contentOverlayBlueprint;
+    double  _contentOverlayTopOffset;
     SXContext * _context;
+    <SXContextMenuManager> * _contextMenuManager;
     SXFullscreenCanvasController * _currentCanvasController;
     <SXScrollViewControllerDelegate> * _delegate;
     <SXDocumentControllerContainer> * _documentControllerContainer;
@@ -33,7 +37,6 @@
     SXPresentationAttributes * _presentationAttributes;
     <SXPresentationAttributesManager> * _presentationAttributesManager;
     <SXPresentationDelegateContainer> * _presentationDelegateContainer;
-    <SXPreviewViewControllerManager> * _previewViewControllerManager;
     <UIViewControllerPreviewing> * _previewingContext;
     <SXResourceDataSourceContainer> * _resourceDataSourceContainer;
     bool  _restoreScrollPositionOnNextLayout;
@@ -52,7 +55,7 @@
     SXViewportDebugger * _viewportDebugger;
 }
 
-@property (nonatomic, readonly) <SXActionManager> *actionManager;
+@property (nonatomic, readonly) <SXDOMObjectProviding> *DOMObjectProvider;
 @property (nonatomic, readonly) <SXAdControllerContainer> *adControllerContainer;
 @property (nonatomic, readonly) <SXAdDocumentStateManager> *adDocumentStateManager;
 @property (nonatomic, readonly) <SXAnalyticsReportingContainer> *analyticsReportingContainer;
@@ -61,7 +64,11 @@
 @property (nonatomic, retain) NSMutableArray *articleScrollEvents;
 @property (nonatomic, readonly) SXComponentBehaviorController *behaviorController;
 @property (nonatomic, readonly) <SXComponentController> *componentController;
+@property (nonatomic, readonly) <SXComponentInteractionManager> *componentInteractionManager;
+@property (nonatomic, readonly) <SXDocumentSectionBlueprint> *contentOverlayBlueprint;
+@property (nonatomic) double contentOverlayTopOffset;
 @property (nonatomic, readonly) SXContext *context;
+@property (nonatomic, readonly) <SXContextMenuManager> *contextMenuManager;
 @property (nonatomic, retain) SXFullscreenCanvasController *currentCanvasController;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <SXScrollViewControllerDelegate> *delegate;
@@ -86,9 +93,9 @@
 @property (nonatomic, readonly) SXPresentationAttributes *presentationAttributes;
 @property (nonatomic, readonly) <SXPresentationAttributesManager> *presentationAttributesManager;
 @property (nonatomic, readonly) <SXPresentationDelegateContainer> *presentationDelegateContainer;
-@property (nonatomic, readonly) <SXPreviewViewControllerManager> *previewViewControllerManager;
 @property (nonatomic, retain) <UIViewControllerPreviewing> *previewingContext;
 @property (nonatomic, readonly) <SXResourceDataSourceContainer> *resourceDataSourceContainer;
+@property (nonatomic, readonly) UIResponder *responder;
 @property (nonatomic) bool restoreScrollPositionOnNextLayout;
 @property (nonatomic, retain) SXScrollPosition *restoredScrollPosition;
 @property (nonatomic, readonly) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } safeAreaInsets;
@@ -98,6 +105,7 @@
 @property (nonatomic, retain) NSOrderedSet *snapLines;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) SXTangierController *tangierController;
+@property (nonatomic) bool textSelectionEnabled;
 @property (nonatomic, readonly) <SXTextSelectionManager> *textSelectionManager;
 @property (nonatomic, readonly) UITraitCollection *traitCollection;
 @property (nonatomic, readonly) <SXTransitionDataSourceProvider> *transitionDataSourceProvider;
@@ -110,9 +118,9 @@
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } viewportSize;
 
 - (void).cxx_destruct;
+- (id)DOMObjectProvider;
 - (void)_applicationWillEnterForeground:(id)arg1;
 - (bool)accessibilityShouldScrollForScrollView:(id)arg1 defaultValue:(bool)arg2;
-- (id)actionManager;
 - (id)adControllerContainer;
 - (id)adDocumentStateManager;
 - (void)addComponentView:(id)arg1;
@@ -121,19 +129,24 @@
 - (id)analyticsReportingContainer;
 - (id)animationController;
 - (id)appStateMonitor;
+- (void)applyContentOverlayBlueprint:(id)arg1 topOffset:(double)arg2;
 - (void)applyFooterBlueprint:(id)arg1;
 - (void)applyHeaderBlueprint:(id)arg1;
 - (id)articleScrollEvents;
 - (void)assistiveTechnologyStatusDidChange:(id)arg1;
+- (bool)becomeFirstResponder;
 - (id)behaviorController;
 - (id)canvasViewController;
 - (id)componentController;
+- (id)componentInteractionManager;
+- (id)contentOverlayBlueprint;
+- (double)contentOverlayTopOffset;
 - (id)context;
+- (id)contextMenuManager;
 - (id)currentCanvasController;
 - (void)dealloc;
 - (id)delegate;
 - (void)dictionaryWithComponentOffsets:(id)arg1 forComponentViews:(id)arg2;
-- (void)didTouchScrollView:(id)arg1 withEvent:(id)arg2;
 - (void)dismissFullscreenCanvasForComponent:(id)arg1;
 - (void)displayContentsAfterLayoutWithInteractor:(id)arg1;
 - (id)documentControllerContainer;
@@ -152,7 +165,7 @@
 - (double)headerHeight;
 - (id)headlineAccessibilityElement;
 - (void)hideContentsForLayoutWithInteractor:(id)arg1;
-- (id)initWithScrollView:(id)arg1 documentControllerContainer:(id)arg2 resourceDataSourceContainer:(id)arg3 analyticsReportingContainer:(id)arg4 presentationDelegateContainer:(id)arg5 adControllerContainer:(id)arg6 presentationAttributeManager:(id)arg7 viewport:(id)arg8 tangierController:(id)arg9 componentController:(id)arg10 interactor:(id)arg11 appStateMonitor:(id)arg12 viewControllerPresentingManager:(id)arg13 scrollPositionManager:(id)arg14 documentStyleRenderer:(id)arg15 previewViewControllerManager:(id)arg16 scrollReporter:(id)arg17 videoPlayerViewControllerManager:(id)arg18 mediaSharingPolicyProvider:(id)arg19 fontIndex:(id)arg20 documentProvider:(id)arg21 transitionDataSourceProvider:(id)arg22;
+- (id)initWithScrollView:(id)arg1 documentControllerContainer:(id)arg2 resourceDataSourceContainer:(id)arg3 analyticsReportingContainer:(id)arg4 presentationDelegateContainer:(id)arg5 adControllerContainer:(id)arg6 presentationAttributeManager:(id)arg7 viewport:(id)arg8 tangierController:(id)arg9 componentController:(id)arg10 interactor:(id)arg11 appStateMonitor:(id)arg12 viewControllerPresentingManager:(id)arg13 scrollPositionManager:(id)arg14 documentStyleRenderer:(id)arg15 componentInteractionManager:(id)arg16 contextMenuManager:(id)arg17 scrollReporter:(id)arg18 videoPlayerViewControllerManager:(id)arg19 mediaSharingPolicyProvider:(id)arg20 fontIndex:(id)arg21 documentProvider:(id)arg22 transitionDataSourceProvider:(id)arg23 DOMObjectProvider:(id)arg24;
 - (id)interactiveCanvasController;
 - (id)interactor;
 - (void)interactor:(id)arg1 didIntegrateBlueprint:(id)arg2;
@@ -171,13 +184,14 @@
 - (id)presentationDelegateContainer;
 - (id)presentingContentViewController;
 - (id)presentingViewControllerForAdController:(id)arg1;
-- (id)previewViewControllerManager;
 - (id)previewingContext;
 - (void)removeComponentView:(id)arg1;
 - (void)removeInteractivityFocusForComponent:(id)arg1;
 - (id)requestFullScreenCanvasViewControllerForComponent:(id)arg1 canvasController:(id)arg2 withCompletionBlock:(id /* block */)arg3;
 - (id)requestFullScreenCanvasViewControllerForComponent:(id)arg1 withCompletionBlock:(id /* block */)arg2;
+- (bool)resignFirstResponder;
 - (id)resourceDataSourceContainer;
+- (id)responder;
 - (bool)restoreScrollPositionOnNextLayout;
 - (id)restoredScrollPosition;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })safeAreaInsets;
@@ -194,6 +208,7 @@
 - (id)sectionHostingView;
 - (id)sectionHostingViewController;
 - (void)setArticleScrollEvents:(id)arg1;
+- (void)setContentOverlayTopOffset:(double)arg1;
 - (void)setCurrentCanvasController:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setFocussedComponentView:(id)arg1;
@@ -205,13 +220,14 @@
 - (void)setRestoredScrollPosition:(id)arg1;
 - (void)setSnapLines:(id)arg1;
 - (void)setTangierController:(id)arg1;
+- (void)setTextSelectionEnabled:(bool)arg1;
 - (void)setTransitioning:(bool)arg1;
 - (void)setViewport:(id)arg1;
 - (void)setViewportDebugger:(id)arg1;
 - (bool)shouldAutomaticallyForwardAppearanceMethods;
 - (bool)shouldPreventDraggingForScrollView:(id)arg1;
 - (bool)shouldRestoreScrollPositionForLayoutBlueprint:(id)arg1;
-- (bool)shouldStartPreviewForPreviewViewControllerManager:(id)arg1;
+- (bool)shouldStartPreviewForContextMenuManager:(id)arg1;
 - (void)showScrollViewIfNeeded;
 - (id)snapLines;
 - (double)snaplineForContentOffset:(double)arg1 velocity:(double)arg2;
@@ -224,6 +240,7 @@
 - (void)tangierControllerDidStopScrolling:(id)arg1;
 - (void)tangierControllerWillStartScrolling:(id)arg1;
 - (id)textScrollPositionForComponentViews:(id)arg1;
+- (bool)textSelectionEnabled;
 - (id)textSelectionManager;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)transitionDataSourceProvider;
@@ -248,7 +265,7 @@
 - (void)viewport:(id)arg1 appearStateChangedFromState:(unsigned long long)arg2;
 - (id)viewportDebugger;
 - (struct CGSize { double x1; double x2; })viewportSize;
-- (void)willEndPreviewingForPreviewViewControllerManager:(id)arg1;
-- (void)willStartPreviewingForPreviewViewControllerManager:(id)arg1;
+- (void)willEndPreviewingForContextMenuManager:(id)arg1;
+- (void)willStartPreviewingForContextMenuManager:(id)arg1;
 
 @end

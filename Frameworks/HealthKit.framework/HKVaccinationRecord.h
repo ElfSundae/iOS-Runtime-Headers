@@ -2,9 +2,10 @@
    Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
  */
 
-@interface HKVaccinationRecord : HKMedicalRecord <HDCoding, NSCopying, NSSecureCoding> {
+@interface HKVaccinationRecord : HKMedicalRecord <HDCoding, HKConceptIndexable, NSCopying, NSSecureCoding> {
     HKMedicalDate * _administrationDate;
-    NSArray * _bodySiteCoding;
+    HKConcept * _bodySite;
+    NSArray * _bodySiteCodings;
     NSString * _doseNumber;
     NSString * _doseQuantity;
     HKMedicalDate * _expirationDate;
@@ -12,38 +13,54 @@
     bool  _patientReported;
     NSString * _performer;
     NSString * _reaction;
+    NSArray * _reasons;
     NSArray * _reasonsCodings;
+    NSArray * _reasonsNotGiven;
     NSArray * _reasonsNotGivenCodings;
+    HKConcept * _route;
     NSArray * _routeCodings;
+    HKConcept * _status;
     HKMedicalCoding * _statusCoding;
+    HKConcept * _vaccination;
     NSArray * _vaccinationCodings;
 }
 
+@property (readonly) NSUUID *UUID;
 @property (readonly, copy) HKMedicalDate *administrationDate;
-@property (readonly, copy) NSArray *bodySiteCoding;
+@property (readonly, copy) HKConcept *bodySite;
+@property (readonly, copy) NSArray *bodySiteCodings;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *doseNumber;
 @property (readonly, copy) NSString *doseQuantity;
 @property (readonly, copy) HKMedicalDate *expirationDate;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly, copy) NSLocale *locale;
 @property (readonly) bool notGiven;
 @property (readonly) bool patientReported;
 @property (readonly, copy) NSString *performer;
 @property (readonly, copy) NSString *reaction;
+@property (readonly, copy) NSArray *reasons;
 @property (readonly, copy) NSArray *reasonsCodings;
+@property (readonly, copy) NSArray *reasonsNotGiven;
 @property (readonly, copy) NSArray *reasonsNotGivenCodings;
+@property (readonly, copy) HKConcept *route;
 @property (readonly, copy) NSArray *routeCodings;
+@property (readonly, copy) HKConcept *status;
 @property (readonly, copy) HKMedicalCoding *statusCoding;
 @property (readonly) Class superclass;
+@property (readonly, copy) HKConcept *vaccination;
 @property (readonly, copy) NSArray *vaccinationCodings;
 @property (readonly, copy) HKVaccinationRecordType *vaccinationRecordType;
 
 // Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
 
 + (bool)_isConcreteObjectClass;
-+ (id)bodySiteCodingPreferredSystems;
++ (id)_newVaccinationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(bool)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 vaccinationCodings:(id)arg11 expirationDate:(id)arg12 doseNumber:(id)arg13 doseQuantity:(id)arg14 performer:(id)arg15 bodySiteCodings:(id)arg16 reaction:(id)arg17 notGiven:(bool)arg18 administrationDate:(id)arg19 statusCoding:(id)arg20 patientReported:(bool)arg21 routeCodings:(id)arg22 reasonsCodings:(id)arg23 reasonsNotGivenCodings:(id)arg24 config:(id /* block */)arg25;
++ (id)bodySiteCodingsPreferredSystems;
++ (id)cachedConceptRelationshipKeyPaths;
 + (id)defaultDisplayString;
++ (id)indexableConceptKeyPaths;
 + (id)reasonsCodingsPreferredSystems;
 + (id)reasonsNotGivenCodingsPreferredSystems;
 + (id)routeCodingsPreferredSystems;
@@ -51,12 +68,13 @@
 + (bool)supportsEquivalence;
 + (bool)supportsSecureCoding;
 + (id)vaccinationCodingsPreferredSystems;
-+ (id)vaccinationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(bool)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 sortDate:(id)arg9 vaccinationCodings:(id)arg10 expirationDate:(id)arg11 doseNumber:(id)arg12 doseQuantity:(id)arg13 performer:(id)arg14 bodySiteCoding:(id)arg15 reaction:(id)arg16 notGiven:(bool)arg17 administrationDate:(id)arg18 statusCoding:(id)arg19 patientReported:(bool)arg20 routeCodings:(id)arg21 reasonsCodings:(id)arg22 reasonsNotGivenCodings:(id)arg23;
-+ (id)vaccinationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(bool)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 vaccinationCodings:(id)arg9 expirationDate:(id)arg10 doseNumber:(id)arg11 doseQuantity:(id)arg12 performer:(id)arg13 bodySiteCoding:(id)arg14 reaction:(id)arg15 notGiven:(bool)arg16 administrationDate:(id)arg17 statusCoding:(id)arg18 patientReported:(bool)arg19 routeCodings:(id)arg20 reasonsCodings:(id)arg21 reasonsNotGivenCodings:(id)arg22;
++ (id)vaccinationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(bool)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 vaccinationCodings:(id)arg11 expirationDate:(id)arg12 doseNumber:(id)arg13 doseQuantity:(id)arg14 performer:(id)arg15 bodySiteCodings:(id)arg16 reaction:(id)arg17 notGiven:(bool)arg18 administrationDate:(id)arg19 statusCoding:(id)arg20 patientReported:(bool)arg21 routeCodings:(id)arg22 reasonsCodings:(id)arg23 reasonsNotGivenCodings:(id)arg24;
++ (id)vaccinationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(bool)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 vaccinationCodings:(id)arg10 expirationDate:(id)arg11 doseNumber:(id)arg12 doseQuantity:(id)arg13 performer:(id)arg14 bodySiteCodings:(id)arg15 reaction:(id)arg16 notGiven:(bool)arg17 administrationDate:(id)arg18 statusCoding:(id)arg19 patientReported:(bool)arg20 routeCodings:(id)arg21 reasonsCodings:(id)arg22 reasonsNotGivenCodings:(id)arg23;
 
 - (void).cxx_destruct;
 - (void)_setAdministrationDate:(id)arg1;
-- (void)_setBodySiteCoding:(id)arg1;
+- (void)_setBodySite:(id)arg1;
+- (void)_setBodySiteCodings:(id)arg1;
 - (void)_setDoseNumber:(id)arg1;
 - (void)_setDoseQuantity:(id)arg1;
 - (void)_setExpirationDate:(id)arg1;
@@ -64,15 +82,25 @@
 - (void)_setPatientReported:(bool)arg1;
 - (void)_setPerformer:(id)arg1;
 - (void)_setReaction:(id)arg1;
+- (void)_setReasons:(id)arg1;
 - (void)_setReasonsCodings:(id)arg1;
+- (void)_setReasonsNotGiven:(id)arg1;
 - (void)_setReasonsNotGivenCodings:(id)arg1;
+- (void)_setRoute:(id)arg1;
 - (void)_setRouteCodings:(id)arg1;
+- (void)_setStatus:(id)arg1;
 - (void)_setStatusCoding:(id)arg1;
+- (void)_setVaccination:(id)arg1;
 - (void)_setVaccinationCodings:(id)arg1;
-- (id)_validateConfiguration;
+- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
 - (id)administrationDate;
-- (id)bodySiteCoding;
-- (id)bodySiteCodingTasks;
+- (bool)applyConcepts:(id)arg1 forKeyPath:(id)arg2 error:(id*)arg3;
+- (id)bodySite;
+- (id)bodySiteCodings;
+- (id)bodySiteCodingsCollection;
+- (id)bodySiteCodingsContext;
+- (id)bodySiteCodingsTasks;
+- (id)codingsForKeyPath:(id)arg1 error:(id*)arg2;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)doseNumber;
@@ -89,15 +117,30 @@
 - (bool)patientReported;
 - (id)performer;
 - (id)reaction;
+- (id)reasons;
 - (id)reasonsCodings;
+- (id)reasonsCodingsCollection;
+- (id)reasonsCodingsContexts;
 - (id)reasonsCodingsTasks;
+- (id)reasonsNotGiven;
 - (id)reasonsNotGivenCodings;
+- (id)reasonsNotGivenCodingsCollection;
+- (id)reasonsNotGivenCodingsContexts;
 - (id)reasonsNotGivenCodingsTasks;
+- (id)route;
 - (id)routeCodings;
+- (id)routeCodingsCollection;
+- (id)routeCodingsContext;
 - (id)routeCodingsTasks;
+- (id)status;
 - (id)statusCoding;
+- (id)statusCodingCollection;
+- (id)statusCodingContext;
 - (id)statusCodingTasks;
+- (id)vaccination;
 - (id)vaccinationCodings;
+- (id)vaccinationCodingsCollection;
+- (id)vaccinationCodingsContext;
 - (id)vaccinationCodingsTasks;
 - (id)vaccinationRecordType;
 
@@ -108,6 +151,14 @@
 
 - (bool)addCodableRepresentationToCollection:(id)arg1;
 - (id)codableRepresentationForSync;
+
+// Image: /System/Library/PrivateFrameworks/HealthRecordsUI.framework/HealthRecordsUI
+
+- (id)codings;
+- (id)meaningfulDateTitle;
+- (long long)recordCategoryType;
+- (id)title;
+- (id)titleDisplayStringForDetailViewController;
 
 // Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
 

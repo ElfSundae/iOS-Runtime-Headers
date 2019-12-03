@@ -5,30 +5,33 @@
 
 @required
 
-- (NSSet *)addressNodes;
-- (NSSet *)businessNodes;
-- (NSSet *)dateNodes;
+- (NSString *)UUID;
+- (bool)babyIsPresent;
+- (<PGGraphBusinessedEvent> *)businessedEvent;
+- (double)contentScore;
+- (NSDictionary *)debugDictionary;
 - (bool)endsBeforeLocalDate:(NSDate *)arg1;
-- (void)enumerateBusinessesUsingBlock:(void *)arg1; // needs 1 arg types, found 8: id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, PGGraphBusinessEdge *, PGGraphBusinessNode *, bool*, void*
-- (void)enumerateMeaningNodesUsingBlock:(void *)arg1; // needs 1 arg types, found 8: id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, PGGraphMeaningEdge *, PGGraphMeaningNode *, bool*, void*
-- (bool)happensPartiallyAtMyHome;
-- (bool)happensPartiallyAtMyWork;
-- (NSSet *)highConfidenceSceneNodes;
-- (NSSet *)holidayNodes;
+- (<PGEventEnrichment> *)enrichableEvent;
+- (void)eventEnumerateMomentNodesUsingBlock:(void *)arg1; // needs 1 arg types, found 7: id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, PGGraphMomentNode *, bool*, void*
+- (PGGraphHighlightGroupNode *)highlightGroupNode;
+- (bool)isLongTrip;
+- (bool)isShortTrip;
+- (bool)isTrip;
 - (NSDate *)localEndDate;
 - (NSDate *)localStartDate;
-- (NSSet *)meaningLabels;
-- (NSSet *)meaningNodes;
+- (<PGGraphLocatedEvent> *)locatedEvent;
+- (<PGGraphMeaningfulEvent> *)meaningfulEvent;
 - (NSSet *)momentNodes;
-- (NSSet *)personNodes;
-- (NSSet *)poiNodes;
-- (NSSet *)publicEventNodes;
-- (NSSet *)roiNodes;
-- (NSSet *)sceneNodes;
-- (NSSet *)searchConfidenceSceneNodes;
-- (NSSet *)seasonNodes;
-- (NSSet *)socialGroupNodes;
+- (NSSet *)naturalLanguageFeatures;
+- (unsigned long long)numberOfAssets;
+- (unsigned long long)numberOfMoments;
+- (<PGGraphPeopledEvent> *)peopledEvent;
+- (bool)petIsPresent;
+- (PGGraphNode<PGGraphRelatableEvent> *)relatableEvent;
+- (<PGGraphScenedEvent> *)scenedEvent;
+- (NSArray *)sortedMomentNodes;
 - (bool)startsAfterLocalDate:(NSDate *)arg1;
+- (<PGGraphTimedEvent> *)timedEvent;
 - (NSDate *)universalEndDate;
 - (NSDate *)universalStartDate;
 

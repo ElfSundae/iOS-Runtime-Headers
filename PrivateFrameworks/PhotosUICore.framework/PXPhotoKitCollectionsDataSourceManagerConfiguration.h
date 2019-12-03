@@ -10,7 +10,9 @@
     bool  _includePeopleAlbum;
     bool  _separateSectionsForSmartAndUserCollections;
     bool  _shouldIgnoreLibraryChanges;
+    bool  _skipAssetFetches;
     bool  _skipKeyAssetFetches;
+    bool  _skipKeyAssetFetchesForSmartAlbums;
 }
 
 @property (nonatomic) unsigned long long assetTypesToInclude;
@@ -21,7 +23,9 @@
 @property (nonatomic) bool includePeopleAlbum;
 @property (nonatomic) bool separateSectionsForSmartAndUserCollections;
 @property bool shouldIgnoreLibraryChanges;
+@property (nonatomic) bool skipAssetFetches;
 @property (nonatomic) bool skipKeyAssetFetches;
+@property (nonatomic) bool skipKeyAssetFetchesForSmartAlbums;
 
 - (void).cxx_destruct;
 - (id)_generatePredicateForAssetTypesToInclude;
@@ -46,8 +50,12 @@
 - (void)setIsRootFolder:(bool)arg1;
 - (void)setSeparateSectionsForSmartAndUserCollections:(bool)arg1;
 - (void)setShouldIgnoreLibraryChanges:(bool)arg1;
+- (void)setSkipAssetFetches:(bool)arg1;
 - (void)setSkipKeyAssetFetches:(bool)arg1;
+- (void)setSkipKeyAssetFetchesForSmartAlbums:(bool)arg1;
 - (bool)shouldIgnoreLibraryChanges;
+- (bool)skipAssetFetches;
 - (bool)skipKeyAssetFetches;
+- (bool)skipKeyAssetFetchesForSmartAlbums;
 
 @end

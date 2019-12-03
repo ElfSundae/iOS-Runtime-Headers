@@ -24,6 +24,7 @@
 - (double)_cappedValueForTimeInterval:(double)arg1;
 - (struct UIOffset { double x1; double x2; })_dotInsets;
 - (struct CGSize { double x1; double x2; })_dotSize;
+- (id)_dotTintColor;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_frameForDotAtTimeInterval:(double)arg1 duration:(double)arg2;
 - (id)_resizableDotImage;
 - (void)_updateHorizontalConstraintsOfDotForCurrentVibrationComponent:(id)arg1 withFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;

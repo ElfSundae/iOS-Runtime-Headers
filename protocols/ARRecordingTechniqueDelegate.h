@@ -5,6 +5,10 @@
 
 @required
 
-- (void)technique:(ARRecordingTechnique *)arg1 didFinishWithResult:(NSError *)arg2;
+- (void)technique:(id <ARRecordingTechniqueProtocol>)arg1 didFinishWithResult:(NSError *)arg2;
+
+@optional
+
+- (void)recordingTechniqueDidBecomeReady:(id <ARRecordingTechniqueProtocol>)arg1;
 
 @end

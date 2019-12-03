@@ -3,7 +3,7 @@
  */
 
 @interface ICSRecurrenceRule : NSObject <ICSWriting, NSSecureCoding> {
-    int  _freq;
+    unsigned long long  _freq;
     NSMutableDictionary * _parameters;
 }
 
@@ -17,7 +17,7 @@
 @property (nonatomic, retain) NSArray *byweekno;
 @property (nonatomic, retain) NSArray *byyearday;
 @property (nonatomic) NSNumber *count;
-@property (nonatomic) int freq;
+@property (nonatomic) unsigned long long freq;
 @property (nonatomic) NSNumber *interval;
 @property (nonatomic, retain) ICSDateValue *until;
 @property (nonatomic) NSNumber *wkst;
@@ -42,9 +42,9 @@
 - (void)cleanUpForStartDate:(id)arg1;
 - (id)count;
 - (void)encodeWithCoder:(id)arg1;
-- (int)freq;
+- (unsigned long long)freq;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithFrequency:(int)arg1;
+- (id)initWithFrequency:(unsigned long long)arg1;
 - (id)interval;
 - (id)occurrencesForStartDate:(id)arg1 fromDate:(id)arg2 toDate:(id)arg3 inTimeZone:(id)arg4;
 - (id)parameterValueForName:(id)arg1;
@@ -64,7 +64,7 @@
 - (void)setByweekno:(id)arg1;
 - (void)setByyearday:(id)arg1;
 - (void)setCount:(id)arg1;
-- (void)setFreq:(int)arg1;
+- (void)setFreq:(unsigned long long)arg1;
 - (void)setInterval:(id)arg1;
 - (void)setParameterValue:(id)arg1 forName:(id)arg2;
 - (void)setUntil:(id)arg1;

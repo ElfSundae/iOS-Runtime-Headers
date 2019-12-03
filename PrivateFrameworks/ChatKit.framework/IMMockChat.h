@@ -3,6 +3,7 @@
  */
 
 @interface IMMockChat : IMChat {
+    NSArray * _extraParticipants;
     IMHandle * _incomingHandle;
     IMMessage * _lastMockIMMessage;
     NSArray * _mockChatItems;
@@ -10,6 +11,7 @@
     IMHandle * _outgoingHandle;
 }
 
+@property (nonatomic, retain) NSArray *extraParticipants;
 @property (nonatomic, retain) IMHandle *incomingHandle;
 @property (nonatomic, retain) IMMessage *lastMockIMMessage;
 @property (nonatomic, retain) NSArray *mockChatItems;
@@ -19,11 +21,13 @@
 - (void).cxx_destruct;
 - (id)_chatItemFromMockItemInfo:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)_messageFromMockItemInfo:(id)arg1;
+- (void)addExtraParticipants:(id)arg1;
 - (void)appendMockItemWithInfo:(id)arg1;
 - (id)chatItems;
 - (bool)deleteAllHistory;
 - (void)deleteChatItems:(id)arg1;
 - (id)displayName;
+- (id)extraParticipants;
 - (id)incomingHandle;
 - (id)init;
 - (id)lastFinishedMessage;
@@ -37,6 +41,7 @@
 - (id)outgoingHandle;
 - (id)participants;
 - (id)recipient;
+- (void)setExtraParticipants:(id)arg1;
 - (void)setIncomingHandle:(id)arg1;
 - (void)setLastMockIMMessage:(id)arg1;
 - (void)setMockChatItems:(id)arg1;

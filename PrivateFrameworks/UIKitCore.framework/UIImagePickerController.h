@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface UIImagePickerController : UINavigationController <NSCoding> {
+@interface UIImagePickerController : UINavigationController <NSCoding, _UIRemoteViewControllerContaining> {
     struct CGRect { 
         struct CGPoint { 
             double x; 
@@ -19,7 +19,6 @@
         unsigned int isCleaningUp : 1; 
         unsigned int didRevertStatusBar : 1; 
     }  _imagePickerFlags;
-    NSString * _initialViewControllerClassName;
     NSArray * _mediaTypes;
     bool  _photoPickerDidEndDelayingPresentation;
     bool  _photoPickerDidStartDelayingPresentation;
@@ -29,8 +28,6 @@
     id /* block */  _photoPickerPreviewDisplayCompletion;
     Class  _photoPickerRequestOptionsClass;
     NSExtension * _photosExtension;
-    id  _photosExtensionDiscoveryDriver;
-    NSObject<OS_dispatch_queue> * _photosExtensionDiscoveryQueue;
     bool  _previousStatusBarHidden;
     int  _previousStatusBarStyle;
     NSMutableDictionary * _properties;
@@ -38,6 +35,7 @@
     long long  _sourceType;
 }
 
+@property (nonatomic, readonly) _UIRemoteViewController *_containedRemoteViewController;
 @property (nonatomic) bool allowsEditing;
 @property (nonatomic) bool allowsImageEditing;
 @property (nonatomic) long long cameraCaptureMode;
@@ -45,16 +43,17 @@
 @property (nonatomic) long long cameraFlashMode;
 @property (nonatomic, retain) UIView *cameraOverlayView;
 @property (nonatomic) struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; } cameraViewTransform;
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <UINavigationControllerDelegate><UIImagePickerControllerDelegate> *delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) long long imageExportPreset;
-@property (nonatomic, copy) NSString *initialViewControllerClassName;
 @property (nonatomic, copy) NSArray *mediaTypes;
 @property (nonatomic, readonly) Class photoPickerRequestOptionsClass;
 @property (nonatomic, retain) NSExtension *photosExtension;
-@property (nonatomic, retain) id photosExtensionDiscoveryDriver;
-@property (readonly) NSObject<OS_dispatch_queue> *photosExtensionDiscoveryQueue;
 @property (nonatomic) bool showsCameraControls;
 @property (nonatomic) long long sourceType;
+@property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *videoExportPreset;
 @property (nonatomic) double videoMaximumDuration;
 @property (nonatomic) long long videoQuality;
@@ -76,12 +75,13 @@
 - (bool)_allowsMultipleSelection;
 - (void)_autoDismiss;
 - (id)_cameraViewController;
+- (id)_containedRemoteViewController;
 - (bool)_convertAutoloopsToGIF;
 - (void)_createInitialControllerWithCompletion:(id /* block */)arg1;
 - (bool)_didRevertStatusBar;
 - (void)_handleEndingPhotoPickerPresentationDelay;
 - (void)_handleInstantiatedRemoteViewController:(id)arg1 request:(id)arg2 error:(id)arg3 completion:(id /* block */)arg4;
-- (void)_handleMatchingExtensions:(id)arg1 error:(id)arg2 completion:(id /* block */)arg3;
+- (void)_handleMatchingExtension:(id)arg1 viewControllerClassName:(id)arg2 completion:(id /* block */)arg3;
 - (void)_handlePushViewController:(id)arg1;
 - (void)_handleTopViewControllerReadyForDisplay:(id)arg1;
 - (void)_imagePickerDidCancel;
@@ -92,17 +92,17 @@
 - (void)_initializeProperties;
 - (void)_invalidatePhotoPickerServices;
 - (bool)_isCameraCaptureModeValid:(long long)arg1;
-- (bool)_isPhotoPickerExtensionEnabled;
 - (bool)_isSupportedInterfaceOrientation:(long long)arg1;
 - (unsigned long long)_multipleSelectionLimit;
 - (bool)_onlyShowAutoloops;
 - (id /* block */)_photoPickerDisplayCompletion;
 - (id /* block */)_photoPickerPreviewDisplayCompletion;
 - (void)_populateArchivedChildViewControllers:(id)arg1;
+- (long long)_preferredModalPresentationStyle;
 - (id)_properties;
 - (id)_propertiesForPhotoPickerExtension;
 - (void)_removeAllChildren;
-- (void)_serializeHandlingMatchingExtensions:(id)arg1 error:(id)arg2 completion:(id /* block */)arg3;
+- (bool)_requiresPickingConfirmation;
 - (void)_setAllowsImageEditing:(bool)arg1;
 - (void)_setAllowsIris:(bool)arg1;
 - (void)_setAllowsMultipleSelection:(bool)arg1;
@@ -113,6 +113,8 @@
 - (void)_setPhotoPickerDisplayCompletion:(id /* block */)arg1;
 - (void)_setPhotoPickerPreviewDisplayCompletion:(id /* block */)arg1;
 - (void)_setProperties:(id)arg1;
+- (void)_setRequiresPickingConfirmation:(bool)arg1;
+- (void)_setShowsFileSizePicker:(bool)arg1;
 - (void)_setShowsPrompt:(bool)arg1;
 - (void)_setStaticPrompt:(id)arg1;
 - (void)_setTargetForPrompt:(id)arg1;
@@ -120,6 +122,7 @@
 - (void)_setupControllersForCurrentMediaTypes;
 - (void)_setupControllersForCurrentSourceTypeWithCompletion:(id /* block */)arg1;
 - (bool)_shouldDelayPresentation;
+- (bool)_showsFileSizePicker;
 - (bool)_showsPrompt;
 - (bool)_sourceTypeIsCamera;
 - (id)_staticPrompt;
@@ -145,12 +148,9 @@
 - (long long)imageExportPreset;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initialViewControllerClassName;
 - (id)mediaTypes;
 - (Class)photoPickerRequestOptionsClass;
 - (id)photosExtension;
-- (id)photosExtensionDiscoveryDriver;
-- (id)photosExtensionDiscoveryQueue;
 - (void)requestViewControllerFromPhotoPickerWithRequestIdentifier:(id)arg1;
 - (void)setAllowsEditing:(bool)arg1;
 - (void)setAllowsImageEditing:(bool)arg1;
@@ -160,11 +160,9 @@
 - (void)setCameraOverlayView:(id)arg1;
 - (void)setCameraViewTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg1;
 - (void)setImageExportPreset:(long long)arg1;
-- (void)setInitialViewControllerClassName:(id)arg1;
 - (void)setMediaTypes:(id)arg1;
 - (void)setPhotoPickerViewControllerTitle:(id)arg1;
 - (void)setPhotosExtension:(id)arg1;
-- (void)setPhotosExtensionDiscoveryDriver:(id)arg1;
 - (void)setShowsCameraControls:(bool)arg1;
 - (void)setSourceType:(long long)arg1;
 - (void)setVideoExportPreset:(id)arg1;
@@ -184,6 +182,10 @@
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;
 - (void)viewWillUnload;
+
+// Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
+
++ (id)mf_systemImagePickerWithSourceType:(long long)arg1;
 
 // Image: /System/Library/PrivateFrameworks/AppleAccountUI.framework/AppleAccountUI
 

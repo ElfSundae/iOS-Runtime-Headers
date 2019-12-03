@@ -3,35 +3,34 @@
  */
 
 @interface HMDLogEvent : HMFObject {
-    unsigned long long  _endTime;
+    NSDate * _endDate;
     NSError * _eventError;
     NSUUID * _eventType;
-    unsigned long long  _startTime;
+    NSDate * _startDate;
     bool  _submitted;
 }
 
 @property (readonly) double durationInMilliseconds;
-@property (nonatomic) unsigned long long endTime;
+@property (nonatomic, retain) NSDate *endDate;
 @property (nonatomic, retain) NSError *eventError;
 @property (nonatomic, readonly) NSUUID *eventType;
-@property (nonatomic) unsigned long long startTime;
+@property (nonatomic, readonly) NSDate *startDate;
 @property (getter=isSubmitted, nonatomic) bool submitted;
 
 + (id)stringForSource:(unsigned long long)arg1;
 
 - (void).cxx_destruct;
 - (double)durationInMilliseconds;
-- (unsigned long long)endTime;
+- (id)endDate;
 - (id)eventError;
 - (id)eventType;
 - (id)init;
 - (id)initWithEventType:(id)arg1;
 - (bool)isSubmitted;
-- (void)setEndTime:(unsigned long long)arg1;
+- (void)setEndDate:(id)arg1;
 - (void)setEventError:(id)arg1;
-- (void)setStartTime:(unsigned long long)arg1;
 - (void)setSubmitted:(bool)arg1;
-- (unsigned long long)startTime;
-- (void)submitAtTime:(unsigned long long)arg1 error:(id)arg2;
+- (id)startDate;
+- (void)submitAtDate:(id)arg1 error:(id)arg2;
 
 @end

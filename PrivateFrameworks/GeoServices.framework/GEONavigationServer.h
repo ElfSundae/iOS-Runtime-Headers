@@ -5,17 +5,22 @@
 @interface GEONavigationServer : NSObject <GEONavigationServerPushStateXPCInterface> {
     NSData * _activeRouteDetailsData;
     NSData * _guidanceStateData;
+    bool  _isListenerConnectionOpen;
+    int  _listenerConnectionOpenToken;
+    NSMutableArray * _listenerPeers;
     NSData * _navigationVoiceVolumeData;
-    NSMutableArray * _peers;
     NSData * _positionFromDestinationData;
     NSData * _positionFromManeuverData;
     NSData * _positionFromSignData;
+    GEONavdPeer * _pushStatePeer;
     NSData * _rideSelectionsData;
     NSData * _routeSummaryData;
+    unsigned long long  _state;
     NSData * _stepIndexData;
     NSData * _stepNameInfoData;
     NSData * _trafficIncidentAlertDetailsData;
     NSData * _transitSummaryData;
+    int  _transportType;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -26,7 +31,10 @@
 + (id)identifier;
 
 - (void).cxx_destruct;
+- (void)_closePushStatePeerConnection;
 - (void)_forEachValidPeerProxy:(id /* block */)arg1;
+- (void)_notifyListenersOpenConnection;
+- (void)_openPushStatePeerConnection:(id)arg1;
 - (void)_requestActiveRouteDetailsDataWithPeer:(id)arg1;
 - (void)_requestGuidanceStateWithPeer:(id)arg1;
 - (void)_requestNavigationVoiceVolumeWithPeer:(id)arg1;
@@ -45,6 +53,7 @@
 - (void)dealloc;
 - (id)init;
 - (void)setCurrentRoadName:(id)arg1;
+- (void)setNavigationSessionState:(unsigned long long)arg1 transportType:(int)arg2;
 - (void)setNavigationVoiceVolumeWithData:(id)arg1;
 - (void)setRouteSummaryWithActiveRouteDetailsData:(id)arg1;
 - (void)setRouteSummaryWithGuidanceStateData:(id)arg1;

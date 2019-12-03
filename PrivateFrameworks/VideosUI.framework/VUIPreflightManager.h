@@ -17,11 +17,8 @@
 + (id)defaultPreflightManager;
 
 - (void).cxx_destruct;
-- (id)_contentRatingValue;
-- (bool)_isAllowed:(bool)arg1 isTVShow:(bool)arg2;
-- (bool)_isMovie;
+- (bool)_isAllowedToPlayOrPurchase;
 - (bool)_isOnWiFi;
-- (bool)_isTVShow;
 - (bool)_isTrailer;
 - (id)_lastAgeConfirmationPrompted;
 - (long long)_lastConfirmedAge;
@@ -29,12 +26,14 @@
 - (void)_performRestrictionsCheckWithCompletion:(id /* block */)arg1;
 - (void)_preflightDownloadWithCompletion:(id /* block */)arg1;
 - (void)_preflightWithOptions:(long long)arg1 completion:(id /* block */)arg2;
+- (id)_ratingDomain;
+- (id)_ratingValue;
 - (long long)_requiredAgeForPlayback;
 - (void)_setLastAgeConfirmationPrompted:(id)arg1;
 - (void)_setLastConfirmedAge:(long long)arg1;
 - (bool)_shouldShowAgeConfirmationAlert;
 - (void)_showAgeConfirmationWithPresentingViewController:(id)arg1 completion:(id /* block */)arg2;
-- (void)_showRestrictionsAlert:(bool)arg1 completion:(id /* block */)arg2;
+- (void)_showRestrictionsAlertForRatingDomain:(id)arg1 completion:(id /* block */)arg2;
 - (id)init;
 - (id)mediaItem;
 - (void)preflightWithOptions:(long long)arg1 completion:(id /* block */)arg2;

@@ -28,7 +28,7 @@
 - (bool)isValidOption;
 - (id)localizedName;
 - (id)localizedNameForAction;
-- (bool)optionExistsInOSVersion:(unsigned int)arg1;
+- (bool)optionExistsInDevice:(id)arg1;
 - (long long)swatchStyle;
 
 @end

@@ -71,7 +71,9 @@
 - (unsigned long long)style;
 - (id)subtitleLabel;
 - (id)titleLabel;
+- (void)updateViews;
 - (void)updateViewsAndConstraints;
+- (void)viewDidAppear:(bool)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(bool)arg1;

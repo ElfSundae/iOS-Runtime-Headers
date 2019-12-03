@@ -11,6 +11,7 @@
     NSString * _countryCode;
     NSDate * _createdDate;
     NSString * _currencyCode;
+    NSSet * _installmentPlans;
     NSDate * _lastUpdatedDate;
     NSSet * _physicalCards;
     NSTimeZone * _productTimeZone;
@@ -25,10 +26,12 @@
 @property (nonatomic, copy) NSString *associatedPassSerialNumber;
 @property (nonatomic, copy) NSString *associatedPassTypeIdentifier;
 @property (nonatomic, copy) NSURL *associatedPassURL;
+@property (nonatomic, readonly, copy) PKCurrencyAmount *cardBalance;
 @property (nonatomic) long long cardType;
 @property (nonatomic, copy) NSString *countryCode;
 @property (nonatomic, copy) NSDate *createdDate;
 @property (nonatomic, copy) NSString *currencyCode;
+@property (nonatomic, copy) NSSet *installmentPlans;
 @property (nonatomic, copy) NSDate *lastUpdatedDate;
 @property (nonatomic, copy) NSSet *physicalCards;
 @property (nonatomic, retain) NSTimeZone *productTimeZone;
@@ -36,6 +39,7 @@
 @property (nonatomic) bool termsAcceptanceRequired;
 @property (nonatomic, copy) NSString *termsIdentifier;
 @property (nonatomic, copy) NSURL *termsURL;
+@property (nonatomic, readonly, copy) PKCurrencyAmount *totalBalance;
 @property (nonatomic, copy) NSSet *virtualCards;
 
 + (bool)supportsSecureCoding;
@@ -47,6 +51,7 @@
 - (id)associatedPassSerialNumber;
 - (id)associatedPassTypeIdentifier;
 - (id)associatedPassURL;
+- (id)cardBalance;
 - (long long)cardType;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)countryCode;
@@ -58,8 +63,12 @@
 - (void)ingestExtendedAccountDetails:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
+- (id)installmentPlanWithIdentifier:(id)arg1;
+- (id)installmentPlans;
 - (bool)isEqual:(id)arg1;
 - (id)lastUpdatedDate;
+- (long long)numberOfActiveInstallments;
+- (long long)numberOfActiveStatementedInstallments;
 - (id)physicalCards;
 - (id)productTimeZone;
 - (id)rates;
@@ -72,6 +81,7 @@
 - (void)setCountryCode:(id)arg1;
 - (void)setCreatedDate:(id)arg1;
 - (void)setCurrencyCode:(id)arg1;
+- (void)setInstallmentPlans:(id)arg1;
 - (void)setLastUpdatedDate:(id)arg1;
 - (void)setPhysicalCards:(id)arg1;
 - (void)setProductTimeZone:(id)arg1;
@@ -83,6 +93,8 @@
 - (bool)termsAcceptanceRequired;
 - (id)termsIdentifier;
 - (id)termsURL;
+- (id)totalBalance;
+- (id)virtualCardWithIdentifier:(id)arg1;
 - (id)virtualCards;
 
 @end

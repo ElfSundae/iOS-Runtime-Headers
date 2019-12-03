@@ -39,6 +39,7 @@
 - (void)setDelegateQueue:(id)arg1;
 - (void)setScanIsActive:(bool)arg1;
 - (void)startBrowsingForAccessories;
+- (void)startBrowsingForAirPlayWACAccessoriesWithBrowser:(id)arg1;
 - (void)stopBrowsingForAccessories;
 
 @end

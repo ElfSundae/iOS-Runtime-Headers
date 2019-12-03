@@ -2,9 +2,9 @@
    Image: /System/Library/PrivateFrameworks/NotesUI.framework/NotesUI
  */
 
-@interface ICAttachmentBrickPreviewImageCacheV2 : ICCache
+@interface ICAttachmentBrickPreviewImageCacheV2 : ICThumbnailDataCache
 
-+ (id)cacheKeyForAttachmentObjectID:(id)arg1 brickSize:(unsigned long long)arg2 scale:(double)arg3;
++ (id)cacheKeyForAttachmentObjectID:(id)arg1 brickSize:(unsigned long long)arg2 scale:(double)arg3 appearanceType:(unsigned long long)arg4;
 
 - (void)attachmentPreviewImagesDidUpdate:(id)arg1;
 - (void)dealloc;

@@ -23,6 +23,7 @@
     bool  _topLevelCancel;
     double  _uiDidAppearTimePPT;
     double  _uiDidLoadTimePPT;
+    VEKProgressWatcher * _watcherProperty;
 }
 
 @property double autoEditFinishedTimePPT;
@@ -46,6 +47,7 @@
 @property bool topLevelCancel;
 @property double uiDidAppearTimePPT;
 @property double uiDidLoadTimePPT;
+@property (retain) VEKProgressWatcher *watcherProperty;
 
 + (id)sharedInstanceForPregenerate;
 
@@ -54,17 +56,14 @@
 - (void)_cancel;
 - (void)_downloadSongForPregenrateWithMemory:(id)arg1;
 - (void)_logMemoryStuff:(id)arg1;
-- (id)_printDataForAssetAsString:(id)arg1 andPickInfo:(id)arg2;
-- (id)_returnTextDebugAsString;
-- (id)assetMediaType:(id)arg1 itemStart:(double)arg2 itemDuration:(double)arg3;
 - (double)autoEditFinishedTimePPT;
 - (double)autoEditStartedTimePPT;
 - (void)cancelAutoEdit;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id /* block */)downloadCompleted;
 - (int)downloadPolicy;
 - (float)downloadProgress;
-- (id)durationsForAsset:(id)arg1 itemDuration:(double)arg2;
 - (void)fetchAndPrintAssets:(id)arg1 andMemory:(id)arg2;
 - (id)initForPregenerate;
 - (id)initWithMemory:(id)arg1 shouldBuildMovieController:(bool)arg2;
@@ -78,7 +77,7 @@
 - (id)operationQueue;
 - (void)performAutoEdit;
 - (void)performAutoEditWithCompletionHandler:(id /* block */)arg1;
-- (void)performPersist;
+- (void)performPersistWithPersistableThing:(id)arg1;
 - (double)playbackStartedTimePPT;
 - (void)pregenerateMemory:(id)arg1 withCompletionHandler:(id /* block */)arg2;
 - (id)prepareStartedTime;
@@ -107,6 +106,7 @@
 - (void)setTopLevelCancel:(bool)arg1;
 - (void)setUiDidAppearTimePPT:(double)arg1;
 - (void)setUiDidLoadTimePPT:(double)arg1;
+- (void)setWatcherProperty:(id)arg1;
 - (bool)shouldBuildMovieController;
 - (bool)shouldNotifyProgress;
 - (bool)shouldSave;
@@ -119,5 +119,6 @@
 - (void)updateProgress:(float)arg1;
 - (void)updateProject:(id)arg1;
 - (void)updateRemainingAssetsToDownload:(long long)arg1;
+- (id)watcherProperty;
 
 @end

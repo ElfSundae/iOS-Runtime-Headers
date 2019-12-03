@@ -2,14 +2,17 @@
    Image: /System/Library/PrivateFrameworks/Memories.framework/Memories
  */
 
-@interface KonaClip : NSObject <KonaClipMiroAutoEditAdditions, MiroClip, MiroClip_Shim, NSCopying, SpeedRangeDelegate> {
-    KonaClip * _altClip;
+@interface KonaClip : NSObject <AltAspect, KonaClipMiroAutoEditAdditions, MiroClip, MiroClip_Shim, NSCopying, SpeedRangeDelegate> {
+    double  _altAspect;
+    AltClipCollection * _altClips;
     ClipBackground * _clipBackground;
     unsigned int  _filterEffectSeed;
-    bool  _isAltClip;
+    id  _freezeInfo;
+    id  _scene;
     float  _sourceDuration;
     float  _sourceStartTime;
     SpeedRanges * _speedRanges;
+    id  _suggestion;
     TitleDefinition * _titleDefinition;
     NSString * _uuid;
     long long  anchorItemIndex;
@@ -21,7 +24,8 @@
     bool  transitionChanged;
 }
 
-@property (nonatomic, retain) KonaClip *altClip;
+@property (nonatomic) double altAspect;
+@property (nonatomic, retain) AltClipCollection *altClips;
 @property (nonatomic, retain) KonaClip *anchorItem;
 @property (nonatomic) long long anchorItemIndex;
 @property (nonatomic) int anchorLocalOffset;
@@ -48,11 +52,11 @@
 @property (nonatomic) unsigned int filterEffectSeed;
 @property (nonatomic, readonly) float frameRate;
 @property (nonatomic) int freezeFrame;
+@property (nonatomic, retain) id freezeInfo;
 @property (nonatomic, readonly) bool hasSelection;
 @property (nonatomic, readonly) bool hasTitle;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSURL *identifierURL;
-@property (nonatomic) bool isAltClip;
 @property (nonatomic, readonly) bool isSlomo;
 @property (nonatomic, readonly) int maxDur;
 @property (nonatomic) int maxDuration;
@@ -72,6 +76,7 @@
 @property (nonatomic, readonly) int rawSourceDuration;
 @property (nonatomic) float rotation;
 @property (nonatomic) float scaleFactor;
+@property (nonatomic, retain) id scene;
 @property (nonatomic) int selectionEnd;
 @property (nonatomic) int selectionStart;
 @property (nonatomic) bool showActivity;
@@ -84,6 +89,7 @@
 @property (nonatomic, retain) SpeedRanges *speedRanges;
 @property (nonatomic) int startOffset;
 @property (nonatomic) int startTime;
+@property (nonatomic) id suggestion;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) TitleDefinition *titleDefinition;
 @property (nonatomic, readonly) int titleDuration;
@@ -105,9 +111,11 @@
 + (id)clipWithAsset:(id)arg1;
 + (id)objectFromPlist:(id)arg1 inProject:(id)arg2;
 
+- (void).cxx_destruct;
 - (void)_addDefaultKeys;
 - (bool)allowsTitle;
-- (id)altClip;
+- (double)altAspect;
+- (id)altClips;
 - (id)anchorItem;
 - (long long)anchorItemIndex;
 - (int)anchorLocalOffset;
@@ -141,10 +149,12 @@
 - (void)didFinishTrimming;
 - (int)duration;
 - (void)encodeWithCoder:(id)arg1;
+- (id)fileURL;
 - (id)filterEffect;
 - (unsigned int)filterEffectSeed;
 - (float)frameRate;
 - (int)freezeFrame;
+- (id)freezeInfo;
 - (void)generateFilterEffectSeed;
 - (bool)hasAudioCharacteristic;
 - (bool)hasPhotoCharacteristic;
@@ -152,11 +162,11 @@
 - (bool)hasTitle;
 - (bool)hasVisualCharacteristic;
 - (unsigned long long)hash;
+- (id)identifier;
 - (id)identifierURL;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (void)initializeFromURL:(id)arg1 asset:(id)arg2;
-- (bool)isAltClip;
 - (bool)isBackgroundAudio;
 - (bool)isBurst;
 - (bool)isEqual:(id)arg1;
@@ -192,9 +202,11 @@
 - (int)rawSourceDuration;
 - (float)rotation;
 - (float)scaleFactor;
+- (id)scene;
 - (int)selectionEnd;
 - (int)selectionStart;
-- (void)setAltClip:(id)arg1;
+- (void)setAltAspect:(double)arg1;
+- (void)setAltClips:(id)arg1;
 - (void)setAnchorItem:(id)arg1;
 - (void)setAnchorItemIndex:(long long)arg1;
 - (void)setAnchorLocalOffset:(int)arg1;
@@ -215,8 +227,8 @@
 - (void)setFilterEffect:(id)arg1;
 - (void)setFilterEffectSeed:(unsigned int)arg1;
 - (void)setFreezeFrame:(int)arg1;
+- (void)setFreezeInfo:(id)arg1;
 - (void)setIdentifierURL:(id)arg1;
-- (void)setIsAltClip:(bool)arg1;
 - (void)setMaxDuration:(int)arg1;
 - (void)setMovie:(id)arg1;
 - (void)setMovieMapLocation:(id)arg1;
@@ -229,6 +241,7 @@
 - (void)setProjectMovie:(bool)arg1;
 - (void)setRotation:(float)arg1;
 - (void)setScaleFactor:(float)arg1;
+- (void)setScene:(id)arg1;
 - (void)setSelectionEnd:(int)arg1;
 - (void)setSelectionStart:(int)arg1;
 - (void)setShowActivity:(bool)arg1;
@@ -238,6 +251,7 @@
 - (void)setSpeedRanges:(id)arg1;
 - (void)setStartOffset:(int)arg1;
 - (void)setStartTime:(int)arg1;
+- (void)setSuggestion:(id)arg1;
 - (void)setTitleDefinition:(id)arg1;
 - (void)setTransitionChanged:(bool)arg1;
 - (void)setTransitionEatLeft:(int)arg1;
@@ -247,13 +261,18 @@
 - (void)setUserEditedSize:(int)arg1;
 - (void)setUserEditing:(bool)arg1;
 - (bool)showActivity;
+- (id)sourceClips;
 - (float)sourceDuration;
 - (float)sourceStartTime;
+- (struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; })sourceTimeRange;
+- (long long)specialTreatment;
 - (float)speed;
 - (id)speedRanges;
 - (void)stampNewUUID;
 - (int)startOffset;
 - (int)startTime;
+- (id)suggestion;
+- (struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; })targetTimeRange;
 - (id)titleDefinition;
 - (int)titleDuration;
 - (id)titleEffect;
@@ -271,5 +290,6 @@
 - (void)validateEffectRange:(struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; })arg1 inProject:(id)arg2;
 - (id)validationInformation;
 - (id)videoMovie;
+- (long long)volume;
 
 @end

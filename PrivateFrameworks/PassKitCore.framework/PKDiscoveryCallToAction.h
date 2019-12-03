@@ -49,9 +49,11 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (long long)foregroundContentMode;
+- (unsigned long long)hash;
 - (id)icon;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
+- (bool)isEqual:(id)arg1;
 - (void)localizeWithBundle:(id)arg1;
 - (void)localizeWithBundle:(id)arg1 table:(id)arg2;
 - (id)localizedButtonText;

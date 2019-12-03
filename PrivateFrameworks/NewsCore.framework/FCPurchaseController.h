@@ -3,6 +3,7 @@
  */
 
 @interface FCPurchaseController : NSObject <FCAppActivityObserving, FCPurchaseProviderType, FCUserInfoObserving, NSURLSessionDelegate> {
+    NSObject<OS_dispatch_queue> * _accessQueue;
     FCCloudContext * _cloudContext;
     FCAsyncSerialQueue * _entitlementQueue;
     <FCEntitlementsOverrideProviderType> * _entitlementsOverrideProvider;
@@ -11,11 +12,11 @@
     FCPurchaseLookUpEntriesManager * _purchaseLookupEntriesManager;
     NSSet * _purchasesDiscoveredTagIDs;
     NSDictionary * _readOnlyPurchaseLookUpEntriesByTagID;
-    NSObject<OS_dispatch_queue> * _readWriteQueue;
     NSURLSession * _session;
     NSMutableDictionary * _webAccessEntriesByTagID;
 }
 
+@property (nonatomic, retain) NSObject<OS_dispatch_queue> *accessQueue;
 @property (nonatomic, readonly) NSSet *allPurchasedTagIDs;
 @property (nonatomic, readonly) NSSet *allTagIDs;
 @property (nonatomic, retain) FCCloudContext *cloudContext;
@@ -32,7 +33,6 @@
 @property (nonatomic, readonly, copy) NSSet *purchasedTagIDs;
 @property (nonatomic, retain) NSSet *purchasesDiscoveredTagIDs;
 @property (copy) NSDictionary *readOnlyPurchaseLookUpEntriesByTagID;
-@property (nonatomic, retain) NSObject<OS_dispatch_queue> *readWriteQueue;
 @property (nonatomic, retain) NSURLSession *session;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSMutableDictionary *webAccessEntriesByTagID;
@@ -42,11 +42,11 @@
 - (void).cxx_destruct;
 - (id)_allPurchasedTagIDs;
 - (void)_applicationDidEnterBackground;
-- (void)_entitlementCheckWithIgnoreCache:(bool)arg1 callbackQueue:(id)arg2 completion:(id /* block */)arg3;
 - (void)_entitlementCheckWithIgnoreCache:(bool)arg1 restorableBundleIAPs:(id)arg2 callbackQueue:(id)arg3 completion:(id /* block */)arg4 serialCompletion:(id /* block */)arg5;
 - (void)_initializeAppStorePurchaseDiscoveredList;
 - (void)_removeFromPurchasedChannelsListWithTagIDs:(id)arg1;
 - (id)_webAccessEntryIDForTagID:(id)arg1;
+- (id)accessQueue;
 - (void)activityObservingApplicationDidEnterBackground;
 - (void)addAppStoreDiscoveredChannelsToFavorites:(id)arg1;
 - (void)addAppStorePurchaseWithTagID:(id)arg1 purchaseID:(id)arg2;
@@ -68,7 +68,6 @@
 - (id)entitlementQueue;
 - (id)entitlementsOverrideProvider;
 - (id)expiredPurchaseChannelIDs;
-- (void)feldsparEntitlementCheckWithCallbackQueue:(id)arg1 ignoreCache:(bool)arg2 completion:(id /* block */)arg3;
 - (void)fetchChannelIDsForPurchaseIDs:(id)arg1 callbackQueue:(id)arg2 completion:(id /* block */)arg3;
 - (id)fetchOperationForPurchaseLookupWithPurchaseIDs:(id)arg1;
 - (void)forceExpireAllSubscriptionsIfNeeded;
@@ -85,6 +84,8 @@
 - (bool)isPaidSubscriberFromAppStore;
 - (bool)isPaidSubscriberFromNews;
 - (bool)isPaidSubscriberFromWeb;
+- (bool)isTagIDPurchased:(id)arg1;
+- (bool)isTagPurchased:(id)arg1;
 - (id)lastEntitlementCheckTime;
 - (id)lastSignedInItunesAccountDSID;
 - (id)lastSignedInItunesAccountName;
@@ -103,7 +104,6 @@
 - (id)purchasedTagIDs;
 - (id)purchasesDiscoveredTagIDs;
 - (id)readOnlyPurchaseLookUpEntriesByTagID;
-- (id)readWriteQueue;
 - (void)removeFromPurchasedChannelsListWithTagIDs:(id)arg1;
 - (void)removeFromPurchasesDiscoveredList:(id)arg1 completion:(id /* block */)arg2;
 - (void)removeFromWebAccessOptedInListWithTagID:(id)arg1;
@@ -111,6 +111,7 @@
 - (void)renewalNoticeShownForPurchasedChannelsListWithTagIDs:(id)arg1;
 - (void)saveToDisk;
 - (id)session;
+- (void)setAccessQueue:(id)arg1;
 - (void)setCloudContext:(id)arg1;
 - (void)setEntitlementQueue:(id)arg1;
 - (void)setEntitlementsOverrideProvider:(id)arg1;
@@ -121,7 +122,6 @@
 - (void)setPurchaseLookupEntriesManager:(id)arg1;
 - (void)setPurchasesDiscoveredTagIDs:(id)arg1;
 - (void)setReadOnlyPurchaseLookUpEntriesByTagID:(id)arg1;
-- (void)setReadWriteQueue:(id)arg1;
 - (void)setSession:(id)arg1;
 - (void)setWebAccessEntriesByTagID:(id)arg1;
 - (void)shouldShowSignedInWithDifferentiTunesAccountAlertWithiTunesAccountName:(id)arg1 iTunesAccountDSID:(id)arg2 isUserSignedIntoiTunes:(bool)arg3 isBundleSubscriber:(bool)arg4 completion:(id /* block */)arg5;

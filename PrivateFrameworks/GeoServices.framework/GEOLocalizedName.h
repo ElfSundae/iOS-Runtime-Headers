@@ -4,15 +4,33 @@
 
 @interface GEOLocalizedName : PBCodable <NSCopying> {
     struct { 
-        unsigned int nameRank : 1; 
-        unsigned int isDefault : 1; 
-    }  _has;
+        unsigned int has_nameRank : 1; 
+        unsigned int has_isDefault : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_languageCode : 1; 
+        unsigned int read_nameType : 1; 
+        unsigned int read_name : 1; 
+        unsigned int read_phoneticName : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_languageCode : 1; 
+        unsigned int wrote_nameType : 1; 
+        unsigned int wrote_name : 1; 
+        unsigned int wrote_phoneticName : 1; 
+        unsigned int wrote_nameRank : 1; 
+        unsigned int wrote_isDefault : 1; 
+    }  _flags;
     bool  _isDefault;
     NSString * _languageCode;
     NSString * _name;
     unsigned int  _nameRank;
     NSString * _nameType;
     NSString * _phoneticName;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     PBUnknownFields * _unknownFields;
 }
 
@@ -30,7 +48,14 @@
 @property (nonatomic, retain) NSString *phoneticName;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_readLanguageCode;
+- (void)_readName;
+- (void)_readNameType;
+- (void)_readPhoneticName;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -42,6 +67,8 @@
 - (bool)hasNameType;
 - (bool)hasPhoneticName;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (id)initWithPlaceDataLocalizedString:(id)arg1;
 - (bool)isDefault;
 - (bool)isEqual:(id)arg1;
@@ -51,6 +78,7 @@
 - (unsigned int)nameRank;
 - (id)nameType;
 - (id)phoneticName;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasIsDefault:(bool)arg1;
 - (void)setHasNameRank:(bool)arg1;

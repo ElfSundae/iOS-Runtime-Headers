@@ -3,7 +3,7 @@
  */
 
 @interface MFMailboxMessageIterationFilter : NSObject <MFMessageIterationFilter> {
-    NSIndexSet * _mailboxes;
+    EFMutableInt64Set * _mailboxes;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -11,7 +11,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
+- (bool)filterMessageWithRow:(id)arg1;
 - (bool)filterMessageWithStatement:(struct sqlite3_stmt { }*)arg1;
 - (id)initWithMailboxes:(id)arg1;
 

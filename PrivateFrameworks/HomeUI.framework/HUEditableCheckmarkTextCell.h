@@ -3,6 +3,7 @@
  */
 
 @interface HUEditableCheckmarkTextCell : UITableViewCell <HUCellProtocol, HUDisableableCellProtocol, HUEditableTextCellProtocol> {
+    UIView * _accessoryView;
     bool  _allowCheckmarkSelectionWhileDisabled;
     UITapGestureRecognizer * _checkmarkTapRecognizer;
     HUCheckmarkAccessoryView * _checkmarkView;
@@ -37,6 +38,7 @@
 
 - (void).cxx_destruct;
 - (void)_checkmarkTapped:(id)arg1;
+- (id)accessoryView;
 - (bool)allowCheckmarkSelectionWhileDisabled;
 - (id)checkmarkTapRecognizer;
 - (id)checkmarkView;
@@ -49,6 +51,7 @@
 - (id)item;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
+- (void)setAccessoryView:(id)arg1;
 - (void)setAllowCheckmarkSelectionWhileDisabled:(bool)arg1;
 - (void)setChecked:(bool)arg1;
 - (void)setCheckmarkTapRecognizer:(id)arg1;

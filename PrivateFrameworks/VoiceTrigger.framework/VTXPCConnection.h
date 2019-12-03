@@ -35,8 +35,10 @@
 - (oneway void)notifyVoiceTriggeredSiriSessionCancelled:(id)arg1;
 - (oneway void)queryLastTriggerEventTypeWithReply:(id /* block */)arg1;
 - (oneway void)requestAudioCapture:(double)arg1;
+- (oneway void)requestCurrentBuiltInRTModelDictionaryWithReply:(id /* block */)arg1;
 - (oneway void)requestCurrentVoiceTriggerAssetDictionaryWithReply:(id /* block */)arg1;
 - (oneway void)resetAssertions;
+- (oneway void)setCurrentBuiltInRTModelDictionary:(id)arg1;
 - (oneway void)setPhraseSpotterBypassing:(bool)arg1 timeout:(double)arg2 timestamp:(double)arg3;
 - (oneway void)setRaiseToSpeakBypassing:(bool)arg1 timeout:(double)arg2 timestamp:(double)arg3;
 

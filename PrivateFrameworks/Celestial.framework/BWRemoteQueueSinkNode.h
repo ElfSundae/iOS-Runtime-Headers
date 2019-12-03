@@ -51,7 +51,7 @@
 - (void)didReachEndOfDataForInput:(id)arg1;
 - (bool)discardsLateSampleBuffers;
 - (void)handleDroppedSample:(id)arg1 forInput:(id)arg2;
-- (id)initWithMediaType:(unsigned int)arg1 receiverPID:(int)arg2;
+- (id)initWithMediaType:(unsigned int)arg1 receiverPID:(int)arg2 sinkID:(id)arg3;
 - (id)nodeSubType;
 - (bool)panoramaRequiresLTMLocking;
 - (bool)pixelBufferAttachmentModificationAllowed;

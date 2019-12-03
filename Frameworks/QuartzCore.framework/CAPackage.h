@@ -3,7 +3,7 @@
  */
 
 @interface CAPackage : NSObject {
-    struct _CAPackageData { id x1; id x2; bool x3; id x4; } * _data;
+    struct _CAPackageData { id x1; id x2; id x3; bool x4; bool x5; id x6; id x7; } * _data;
 }
 
 @property (getter=isGeometryFlipped, readonly) bool geometryFlipped;
@@ -36,9 +36,5 @@
 // Image: /System/Library/PrivateFrameworks/ControlCenterUIKit.framework/ControlCenterUIKit
 
 + (id)ccuiPackageFromDescription:(id)arg1;
-
-// Image: /System/Library/PrivateFrameworks/FamilyCircleUI.framework/FamilyCircleUI
-
-+ (id)fa_packageFromDescription:(id)arg1;
 
 @end

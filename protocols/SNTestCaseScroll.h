@@ -12,6 +12,7 @@
 
 @optional
 
+- (long long)numberOfScreens;
 - (unsigned long long)scrollDirection;
 
 @end

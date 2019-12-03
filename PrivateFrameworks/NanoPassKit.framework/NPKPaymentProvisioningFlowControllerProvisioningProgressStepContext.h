@@ -2,6 +2,15 @@
    Image: /System/Library/PrivateFrameworks/NanoPassKit.framework/NanoPassKit
  */
 
-@interface NPKPaymentProvisioningFlowControllerProvisioningProgressStepContext : NPKPaymentProvisioningFlowStepContext
+@interface NPKPaymentProvisioningFlowControllerProvisioningProgressStepContext : NPKPaymentProvisioningFlowStepContext {
+    NSString * _localizedProgressDescription;
+}
+
+@property (nonatomic, retain) NSString *localizedProgressDescription;
+
+- (void).cxx_destruct;
+- (id)initWithRequestContext:(id)arg1;
+- (id)localizedProgressDescription;
+- (void)setLocalizedProgressDescription:(id)arg1;
 
 @end

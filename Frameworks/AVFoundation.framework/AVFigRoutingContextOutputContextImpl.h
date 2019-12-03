@@ -30,23 +30,23 @@
 @property AVOutputContext *parentOutputContext;
 @property (readonly) bool providesControlForAllVolumeFeatures;
 @property (readonly) Class superclass;
+@property (readonly) bool supportsMultipleBluetoothOutputDevices;
 @property (readonly) bool supportsMultipleOutputDevices;
 @property (readonly) float volume;
 
 + (id)auxiliaryOutputContext;
 + (struct OpaqueFigRoutingContext { }*)copySystemVideoRoutingContext;
++ (id)defaultSharedOutputContextImpl;
 + (id)iTunesAudioContext;
-+ (void)initialize;
 + (bool)outputContextExistsWithRemoteOutputDevice;
 + (id)outputContextImplForControllingOutputDeviceGroupWithID:(id)arg1 options:(id)arg2;
-+ (id)outputContextImplForID:(id)arg1;
++ (id)outputContextImplForID:(id)arg1 type:(id)arg2;
 + (id)platformDependentScreenOrVideoContext;
 + (void)resetOutputDeviceForAllOutputContexts;
 + (id)routingContextFactory;
 + (id)sharedAudioPresentationOutputContext;
 + (id)sharedSystemAudioContext;
 + (id)sharedSystemScreenContext;
-+ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)ID;
@@ -71,15 +71,13 @@
 - (void)communicationChannelManager:(id)arg1 didCloseCommunicationChannel:(id)arg2;
 - (void)communicationChannelManager:(id)arg1 didReceiveData:(id)arg2 fromCommunicationChannel:(id)arg3;
 - (void)dealloc;
-- (void)encodeWithCoder:(id)arg1;
 - (struct OpaqueFigRoutingContext { }*)figRoutingContext;
 - (unsigned long long)hash;
 - (id)init;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithFigRoutingContext:(struct OpaqueFigRoutingContext { }*)arg1 routingContextReplacementBlock:(id /* block */)arg2;
 - (id)initWithFigRoutingContext:(struct OpaqueFigRoutingContext { }*)arg1 routingContextReplacementBlock:(id /* block */)arg2 outputDeviceTranslator:(id)arg3 volumeController:(struct OpaqueFigVolumeControllerState { }*)arg4 communicationChannelManagerCreator:(id /* block */)arg5;
 - (id)initWithFigRoutingContextCreator:(id /* block */)arg1;
-- (id)initWithRoutingContextUUID:(id)arg1;
+- (id)initWithRoutingContextUUID:(id)arg1 type:(id)arg2;
 - (bool)isEqual:(id)arg1;
 - (void)muteAllOutputDevicesWithCompletionHandler:(id /* block */)arg1;
 - (id)openCommunicationChannelWithOptions:(id)arg1 error:(id*)arg2;
@@ -91,13 +89,13 @@
 - (id)parentOutputContext;
 - (void)pausePlaybackOnAllOutputDevicesWithCompletionHandler:(id /* block */)arg1;
 - (bool)providesControlForAllVolumeFeatures;
-- (void)removeOutputDevice:(id)arg1;
+- (void)removeOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(id /* block */)arg3;
 - (id)routingContextUUID;
 - (void)setOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(id /* block */)arg3;
-- (void)setOutputDevices:(id)arg1;
 - (void)setOutputDevices:(id)arg1 options:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)setParentOutputContext:(id)arg1;
 - (void)setVolume:(float)arg1;
+- (bool)supportsMultipleBluetoothOutputDevices;
 - (bool)supportsMultipleOutputDevices;
 - (float)volume;
 

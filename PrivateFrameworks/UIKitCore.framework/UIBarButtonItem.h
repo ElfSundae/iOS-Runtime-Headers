@@ -21,7 +21,7 @@
         double bottom; 
         double right; 
     }  _additionalSelectionInsets;
-    id  _appearanceStorage;
+    _UIBarButtonItemAppearanceStorage * _appearanceStorage;
     struct { 
         unsigned int enabled : 1; 
         unsigned int style : 3; 
@@ -91,6 +91,7 @@
 @property (setter=_setToolbarCharge:, nonatomic) double _toolbarCharge;
 @property (setter=_setViewOwner:, nonatomic) <_UIBarButtonItemViewOwner> *_viewOwner;
 @property (nonatomic, readonly) bool _viewWantsLetterpressImage;
+@property (getter=_width, setter=_setWidth:, nonatomic) double _width;
 @property (nonatomic) SEL action;
 @property (nonatomic, readonly) UIBarButtonItemGroup *buttonGroup;
 @property (nonatomic, retain) UIView *customView;
@@ -125,6 +126,7 @@
 - (void)_applyPositionAdjustmentToSegmentedControl:(id)arg1;
 - (id /* block */)_autoValidationHandler;
 - (id)_backButtonAlternateTitles;
+- (id)_backgroundImageForState:(unsigned long long)arg1 compact:(bool)arg2 type:(long long)arg3;
 - (void)_connectInterfaceBuilderEventConnection:(id)arg1;
 - (void)_executeValidationHandler;
 - (bool)_flexible;
@@ -134,10 +136,9 @@
 - (void)_getSystemItemStyle:(long long*)arg1 title:(id*)arg2 image:(id*)arg3 selectedImage:(id*)arg4 action:(SEL*)arg5 forBarStyle:(long long)arg6 landscape:(bool)arg7 alwaysBordered:(bool)arg8;
 - (void)_getToolbarSystemItemEdgeInsetsWithImageInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; }*)arg1 forBarStyle:(long long)arg2 landscape:(bool)arg3 alwaysBordered:(bool)arg4;
 - (bool)_hidden;
-- (id)_imageForState:(unsigned long long)arg1 metrics:(long long)arg2 position:(long long)arg3 type:(long long)arg4;
+- (id)_imageForState:(unsigned long long)arg1 compact:(bool)arg2 type:(long long)arg3;
 - (bool)_imageHasEffects;
 - (id)_interactions;
-- (id)_internalLargeContentSizeImage;
 - (bool)_isImageBarButtonItem;
 - (id)_itemForPresenting;
 - (id)_itemVariation;
@@ -153,6 +154,7 @@
 - (id)_possibleItemVariations;
 - (id)_possibleSystemItems;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_rectForPresenting;
+- (bool)_resizesBackgroundImage;
 - (double)_rightImagePaddingForEdgeMarginInNavBar;
 - (void)_sendAction:(id)arg1 withEvent:(id)arg2;
 - (void)_setActsAsFakeBackButton:(bool)arg1;
@@ -213,6 +215,7 @@
 - (bool)groupRepresentative;
 - (bool)hasImage;
 - (bool)hasTitle;
+- (unsigned long long)hash;
 - (id)image;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })imageInsets;
 - (id)init;
@@ -298,29 +301,19 @@
 - (void)_sf_setTarget:(id)arg1 touchDownAction:(SEL)arg2 longPressAction:(SEL)arg3;
 - (void)_sf_test_simulateLongPressInvocation;
 
-// Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
-
-+ (id)_ckBarButtonItemWithTitle:(id)arg1 style:(long long)arg2;
-+ (id)ckCancelBarButtonItem;
-+ (id)ckDoneBarButtonItem;
-+ (id)ckEditBarButtonItem;
-+ (id)ckEditDoneButtonPossibleItemVariations;
-
 // Image: /System/Library/PrivateFrameworks/DocumentManager.framework/DocumentManager
 
 - (bool)_doc_isMatchingUUID:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/HealthRecordsUI.framework/HealthRecordsUI
+
++ (id)makeTapToRadarItemWithTarget:(id)arg1 action:(SEL)arg2;
 
 // Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
 
 + (id)hk_backButtonForDate:(id)arg1;
 + (id)hk_backButtonWithTitle:(id)arg1;
 + (id)hk_sequencingButtonWithTitle:(id)arg1 accessibilityFormatString:(id)arg2;
-
-// Image: /System/Library/PrivateFrameworks/News/TeaUI.framework/TeaUI
-
-+ (id)backBarButtonItemWithTarget:(id)arg1 action:(SEL)arg2;
-
-- (id)ts_barButtonItemView;
 
 // Image: /System/Library/PrivateFrameworks/NewsUI.framework/NewsUI
 
@@ -329,6 +322,20 @@
 // Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
 
 + (id)px_localizedSelectBarButtonItem;
+
+// Image: /System/Library/PrivateFrameworks/ScreenshotServices.framework/ScreenshotServices
+
++ (id)_sss_cropItemWithTarget:(id)arg1 action:(SEL)arg2;
++ (id)_sss_redoItemWithTarget:(id)arg1 action:(SEL)arg2;
++ (id)_sss_shareItemWithTarget:(id)arg1 action:(SEL)arg2;
++ (id)_sss_trashItemWithTarget:(id)arg1 action:(SEL)arg2;
++ (id)_sss_undoItemWithTarget:(id)arg1 action:(SEL)arg2;
+
+// Image: /System/Library/PrivateFrameworks/TeaUI.framework/TeaUI
+
++ (id)backBarButtonItemWithTarget:(id)arg1 action:(SEL)arg2;
+
+- (id)ts_barButtonItemView;
 
 // Image: /System/Library/PrivateFrameworks/TelephonyUI.framework/TelephonyUI
 

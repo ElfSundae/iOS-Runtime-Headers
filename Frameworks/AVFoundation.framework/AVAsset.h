@@ -8,7 +8,7 @@
 
 @property (readonly) NSArray *availableChapterLocales;
 @property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } duration;
-@property (nonatomic, readonly) bool isDecodableMovie;
+@property (nonatomic, readonly) NSArray *fragments;
 @property (nonatomic, readonly) bool isProxy;
 @property (readonly) NSString *localizedDisplayName;
 @property (nonatomic, readonly, retain) <AVLoggingIdentifier> *loggingIdentifier;
@@ -18,6 +18,7 @@
 @property (readonly) float mainVideoTrackNominalFrameRate;
 @property (readonly) struct CGSize { double x1; double x2; } mainVideoTrackPreferredSize;
 @property (readonly) struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; } mainVideoTrackPreferredTransform;
+@property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } minimumTimeOffsetFromLive;
 @property (nonatomic, readonly) long long moovAtomSize;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } naturalSize;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } naturalSizeWithPreferredTransforms;
@@ -27,11 +28,15 @@
 @property (nonatomic, readonly) float preferredVolume;
 @property (nonatomic, readonly) id propertyListForProxy;
 @property (nonatomic, readonly) NSValue *pu_cachedDuration;
+@property (nonatomic, readonly) bool pu_supportsVitality;
+@property (nonatomic, readonly) NSValue *px_cachedDuration;
+@property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } px_duration;
 @property (getter=isQTAutoloopVideo, readonly) bool qtAutoloopVideo;
+@property (nonatomic, readonly) AVAssetTrack *rc_audioTrack;
 @property (setter=rc_setComposedAVURL:, nonatomic, retain) NSURL *rc_composedAVURL;
+@property (nonatomic, readonly) NSDictionary *rc_recordingMetadata;
 @property (readonly) struct CGSize { double x1; double x2; } scaleFactors;
 @property (nonatomic, readonly) bool tsu_isPlayable;
-@property (nonatomic, readonly) unsigned int videoOrientation;
 
 // Image: /System/Library/Frameworks/AVFoundation.framework/AVFoundation
 
@@ -40,6 +45,8 @@
 + (id)assetWithURL:(id)arg1;
 + (id)assetWithURL:(id)arg1 figPlaybackItem:(struct OpaqueFigPlaybackItem { }*)arg2 trackIDs:(id)arg3 dynamicBehavior:(bool)arg4;
 + (bool)expectsPropertyRevisedNotifications;
++ (id)inspectionOnlyAssetWithFigAsset:(struct OpaqueFigAsset { }*)arg1;
++ (id)inspectionOnlyAssetWithStreamDataParser:(id)arg1 tracks:(id)arg2;
 + (id)makeAssetLoggingIdentifier;
 + (bool)supportsPlayerItems;
 
@@ -101,12 +108,14 @@
 - (id)creationDate;
 - (void)dealloc;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })duration;
+- (id)fragments;
 - (bool)hasProtectedContent;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1 contentType:(id)arg2 options:(id)arg3;
 - (id)initWithURL:(id)arg1 options:(id)arg2;
 - (bool)isCompatibleWithAirPlayVideo;
+- (bool)isCompatibleWithPhotosTranscodingServiceWithOptions:(id)arg1;
 - (bool)isCompatibleWithSavedPhotosAlbum;
 - (bool)isComposable;
 - (bool)isEqual:(id)arg1;
@@ -124,6 +133,7 @@
 - (id)mediaSelectionGroupForPropertyList:(id)arg1 mediaSelectionOption:(id*)arg2;
 - (id)metadata;
 - (id)metadataForFormat:(id)arg1;
+- (struct { long long x1; int x2; unsigned int x3; long long x4; })minimumTimeOffsetFromLive;
 - (long long)moovAtomSize;
 - (struct CGSize { double x1; double x2; })naturalSize;
 - (int)naturalTimeScale;
@@ -160,7 +170,6 @@
 
 - (bool)canPassthroughExport;
 - (id)commonMetadataStringValueForKey:(id)arg1;
-- (bool)isDecodableMovie;
 - (bool)isMarkedNotSerializable;
 - (id)localizedDisplayName;
 - (id)mainAudioTrack;
@@ -178,18 +187,22 @@
 - (id)pu_cachedDuration;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })pu_duration;
 - (void)pu_loadDurationWithCompletionHandler:(id /* block */)arg1;
+- (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[3]; })pu_perspectiveTransform:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[3]; })arg1 rescaledForMetadata:(id)arg2 currentAssetDimensions:(struct CGSize { double x1; double x2; })arg3;
+- (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[3]; })pu_perspectiveTransformForMetadata:(id)arg1;
+- (struct TransformMetadataItemPair { id x1; id x2; })pu_stillAssetTransformMetadataPair;
+- (id)pu_stillImageTransformAssetTrack;
+- (bool)pu_supportsVitality;
+- (id)pu_vitalityVideoComposition;
 
 // Image: /System/Library/Frameworks/QuickLook.framework/QuickLook
 
 + (void)assetIsAutoloopMedia:(id)arg1 completionHandler:(id /* block */)arg2;
 
+- (bool)ql_canBeRotated;
+
 // Image: /System/Library/PrivateFrameworks/IMSharedUI.framework/IMSharedUI
 
 - (bool)isQTAutoloopVideo;
-
-// Image: /System/Library/PrivateFrameworks/ImageCapture.framework/ImageCapture
-
-- (unsigned int)videoOrientation;
 
 // Image: /System/Library/PrivateFrameworks/Memories.framework/Memories
 
@@ -206,7 +219,7 @@
 
 // Image: /System/Library/PrivateFrameworks/NotesUI.framework/NotesUI
 
-- (struct UIImage { Class x1; }*)previewImage;
+- (struct UIImage { Class x1; }*)ic_previewImage;
 
 // Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
 
@@ -222,6 +235,13 @@
 - (float)is_cropFactor;
 - (id)is_valueForMetadataIdentifier:(id)arg1;
 - (struct CGSize { double x1; double x2; })is_videoSize;
+
+// Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
+
+- (void)_px_setCachedDuration:(id)arg1;
+- (id)px_cachedDuration;
+- (struct { long long x1; int x2; unsigned int x3; long long x4; })px_duration;
+- (void)px_loadDurationWithCompletionHandler:(id /* block */)arg1;
 
 // Image: /System/Library/PrivateFrameworks/TSUtility.framework/TSUtility
 
@@ -243,7 +263,6 @@
 - (id)vcp_assetWithoutAdjustments:(id)arg1 duration:(double)arg2;
 - (id)vcp_enabledTracksWithMediaType:(id)arg1;
 - (id)vcp_firstEnabledTrackWithMediaType:(id)arg1;
-- (bool)vcp_isMontage;
 - (bool)vcp_isShortMovie;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })vcp_livePhotoStillDisplayTime;
 - (void)vcp_scaleRampWithIntervals:(id)arg1 andRates:(id)arg2 inSlowmoTimerange:(struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; })arg3 withTimeMapping:(id)arg4 inComposition:(id)arg5;
@@ -251,7 +270,11 @@
 
 // Image: /System/Library/PrivateFrameworks/VoiceMemos.framework/VoiceMemos
 
++ (bool)rc_updateMetadataInFile:(id)arg1 withMetadata:(id)arg2 error:(id*)arg3;
+
+- (id)rc_audioTrack;
 - (id)rc_composedAVURL;
+- (id)rc_recordingMetadata;
 - (void)rc_setComposedAVURL:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport

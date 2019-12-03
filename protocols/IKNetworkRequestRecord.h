@@ -15,6 +15,8 @@
 - (NSString *)identifier;
 - (long long)initiatorType;
 - (long long)resourceType;
+- (long long)state;
 - (void)willSendRequest:(NSURLRequest *)arg1;
+- (void)willSendRequest:(NSURLRequest *)arg1 redirectResponse:(NSHTTPURLResponse *)arg2;
 
 @end

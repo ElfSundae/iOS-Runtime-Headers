@@ -18,6 +18,10 @@
 @property (nonatomic) long long userRating;
 
 - (void).cxx_destruct;
+- (unsigned long long)_firstStar;
+- (bool)_isRTL;
+- (unsigned long long)_lastStar;
+- (unsigned long long)_ratingForUIDirection:(unsigned long long)arg1;
 - (double)_unfilledStarsMinX;
 - (double)_unfilledStarsWidth;
 - (void)_updateUserRatingWithTouch:(id)arg1;

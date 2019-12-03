@@ -9,8 +9,11 @@
     NSArray * _overrides;
 }
 
++ (void)addOverride:(id)arg1;
 + (id)allOverrides;
 + (id)newIteratorWithNotFoundHandler:(id /* block */)arg1;
++ (id)overrideDirectoryURL;
++ (void)removeOverride:(id)arg1;
 
 - (void).cxx_destruct;
 - (void)callNextOverrides;

@@ -17,6 +17,7 @@
     NSString * _punchoutPickerDismissText;
     NSString * _punchoutPickerTitle;
     int  _separatorStyle;
+    SFImage * _thumbnail;
     SFRichText * _title;
     NSString * _type;
 }
@@ -41,9 +42,12 @@
 @property (nonatomic, copy) NSString *resultIdentifier;
 @property (nonatomic) int separatorStyle;
 @property (readonly) Class superclass;
+@property (nonatomic, retain) SFImage *thumbnail;
 @property (nonatomic, retain) SFRichText *title;
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, retain) SFUserReportRequest *userReportRequest;
+
+// Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
 
 + (bool)supportsSecureCoding;
 
@@ -74,9 +78,15 @@
 - (void)setPunchoutPickerDismissText:(id)arg1;
 - (void)setPunchoutPickerTitle:(id)arg1;
 - (void)setSeparatorStyle:(int)arg1;
+- (void)setThumbnail:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (void)setType:(id)arg1;
+- (id)thumbnail;
 - (id)title;
 - (id)type;
+
+// Image: /System/Library/PrivateFrameworks/SearchUI.framework/SearchUI
+
+- (Class)_searchUIHorizontallyScrollingButtonControllerClass;
 
 @end

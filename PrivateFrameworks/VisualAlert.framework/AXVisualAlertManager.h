@@ -50,7 +50,7 @@
 - (id)_activePattern;
 - (id)_asyncManagerAdapter;
 - (void)_beginVisualAlertForType:(unsigned long long)arg1 repeat:(bool)arg2;
-- (void)_beginVisualAlertForType:(unsigned long long)arg1 repeat:(bool)arg2 skipAutomaticStopOnUserInteraction:(bool)arg3;
+- (void)_beginVisualAlertForType:(unsigned long long)arg1 repeat:(bool)arg2 skipAutomaticStopOnUserInteraction:(bool)arg3 bundleId:(id)arg4;
 - (void)_endVisualAlert;
 - (void)_handleBeginVisualAlertForAlarmWithSound:(bool)arg1;
 - (void)_handleBeginVisualAlertForIncomingCall;
@@ -72,7 +72,7 @@
 - (void)_handleVideoConferenceCallRinging;
 - (void)_handleVisualAlertForExternalApplication;
 - (void)_handleVisualAlertForIncomingMessage;
-- (void)_handleVisualAlertForRegularNotification;
+- (void)_handleVisualAlertForRegularNotification:(id)arg1;
 - (void)_handleVolumeChanged;
 - (bool)_hasVideoConferenceCameraTorchManager;
 - (void)_insertCustomLogicForSystemWideServer;

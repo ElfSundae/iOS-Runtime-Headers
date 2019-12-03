@@ -23,6 +23,7 @@
 @property (nonatomic, readonly, copy) NSString *serviceType;
 @property (nonatomic, readonly) bool useNetServicesConnection;
 @property (nonatomic, readonly) bool useNewDownloadService;
+@property (nonatomic, readonly) bool useNewRestoreService;
 @property (nonatomic, readonly) bool watchProxyDownloadsDisabled;
 
 + (id)sharedInstance;
@@ -34,6 +35,8 @@
 - (id)dataClassesNeedingSync;
 - (id)endpointInfo;
 - (bool)fairPlayEnabled;
+- (id)getCurrentInstallDisposition;
+- (id)getPreExistingStoreIdentifiers;
 - (bool)grappaEnabled;
 - (bool)hasCompletedDataMigration;
 - (id)hostInfoForLibrary:(id)arg1;
@@ -52,11 +55,13 @@
 - (id)serviceName;
 - (id)serviceType;
 - (void)setActiveRestoreType:(int)arg1;
+- (void)setCurrentInstallDisposition:(id)arg1;
 - (void)setEndpointInfo:(id)arg1;
 - (void)setHasCompletedDataMigration:(bool)arg1;
 - (void)setHostInfo:(id)arg1 forLibrary:(id)arg2;
 - (void)setLastAuthenticationDialogResponseTime:(double)arg1;
 - (void)setPairingSyncCompletionTime:(double)arg1;
+- (void)setPreExistingStoreIdentifiers:(id)arg1;
 - (void)setSyncPending:(bool)arg1 forDataClass:(id)arg2;
 - (void)setSyncState:(id)arg1 forLibrary:(id)arg2 dataClass:(id)arg3;
 - (void)setVersion:(unsigned long long)arg1 forDataclass:(id)arg2;
@@ -65,6 +70,7 @@
 - (void)updateLastSyncTimeForLibrary:(id)arg1 dataClass:(id)arg2;
 - (bool)useNetServicesConnection;
 - (bool)useNewDownloadService;
+- (bool)useNewRestoreService;
 - (unsigned long long)versionForDataclass:(id)arg1;
 - (bool)watchProxyDownloadsDisabled;
 

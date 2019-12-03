@@ -11,6 +11,7 @@
 @property (nonatomic, readonly) bool privacyAcknowledgementRequiredForBooks;
 @property (nonatomic, readonly) bool privacyAcknowledgementRequiredForMedia;
 @property (nonatomic, readonly) bool privacyAcknowledgementRequiredForMusic;
+@property (nonatomic, readonly) bool privacyAcknowledgementRequiredForPodcasts;
 @property (nonatomic, readonly) bool privacyAcknowledgementRequiredForVideos;
 
 + (id)sharedPrivacyInfo;
@@ -23,6 +24,8 @@
 - (bool)privacyAcknowledgementRequiredForBooks;
 - (bool)privacyAcknowledgementRequiredForMedia;
 - (bool)privacyAcknowledgementRequiredForMusic;
+- (bool)privacyAcknowledgementRequiredForPodcasts;
+- (bool)privacyAcknowledgementRequiredForSystemApplicationType:(long long)arg1;
 - (bool)privacyAcknowledgementRequiredForVideos;
 
 @end

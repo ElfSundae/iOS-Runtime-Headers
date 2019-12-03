@@ -10,9 +10,9 @@
 
 + (bool)supportsSecureCoding;
 
+- (void).cxx_destruct;
 - (id)_initWithType:(id)arg1 qualifier:(id)arg2 criteria:(id)arg3;
 - (id)criteria;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

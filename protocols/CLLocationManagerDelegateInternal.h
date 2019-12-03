@@ -7,8 +7,6 @@
 
 - (void)locationManager:(CLLocationManager *)arg1 didChangeAppStatusFor:(NSDictionary *)arg2;
 - (void)locationManager:(CLLocationManager *)arg1 didChangeStatusForTechnology:(int)arg2 active:(bool)arg3;
-- (void)locationManager:(CLLocationManager *)arg1 didEnterRegion:(CLRegion *)arg2 withLocation:(CLLocation *)arg3;
-- (void)locationManager:(CLLocationManager *)arg1 didExitRegion:(CLRegion *)arg2 withLocation:(CLLocation *)arg3;
 - (void)locationManager:(CLLocationManager *)arg1 didFailFindingPlacemarkForLocation:(CLLocation *)arg2 withError:(NSError *)arg3;
 - (void)locationManager:(CLLocationManager *)arg1 didFindPlacemark:(NSDictionary *)arg2 forLocation:(CLLocation *)arg3;
 - (void)locationManager:(CLLocationManager *)arg1 didRangePeers:(NSArray *)arg2;

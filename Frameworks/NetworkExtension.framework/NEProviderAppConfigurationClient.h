@@ -7,6 +7,8 @@
     NSMutableArray * _createdManagers;
     NEVPNManager * _currentManager;
     NSMutableArray * _currentManagers;
+    NEDNSProxyManager * _dnsProxyManager;
+    NEFilterManager * _filterManager;
     bool  _isServerMode;
     NSXPCListener * _listener;
     <NEConfigurationCommandHandling> * _remoteObject;
@@ -19,6 +21,8 @@
 @property (retain) NSMutableArray *currentManagers;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (retain) NEDNSProxyManager *dnsProxyManager;
+@property (retain) NEFilterManager *filterManager;
 @property (readonly) unsigned long long hash;
 @property bool isServerMode;
 @property (readonly) NSXPCListener *listener;
@@ -34,7 +38,11 @@
 - (id)currentManager;
 - (id)currentManagers;
 - (int)deleteKeychainItemWithPersistentReference:(id)arg1;
+- (id)dnsProxyConfiguration;
+- (id)dnsProxyManager;
 - (bool)enabled;
+- (id)filterConfiguration;
+- (id)filterManager;
 - (void)handleCommand:(int)arg1 forConfigWithName:(id)arg2 withParameters:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)handleConfigChanged:(id)arg1;
 - (id)initForServerMode;
@@ -54,8 +62,9 @@
 - (void)setCreatedManagers:(id)arg1;
 - (void)setCurrentManager:(id)arg1;
 - (void)setCurrentManagers:(id)arg1;
+- (void)setDnsProxyManager:(id)arg1;
 - (void)setEnabled:(bool)arg1;
-- (bool)setFilterPluginWithParameters:(id)arg1 errorStr:(id*)arg2;
+- (void)setFilterManager:(id)arg1;
 - (void)setIsServerMode:(bool)arg1;
 - (int)setKeychainItemData:(id)arg1 withName:(id)arg2 persistentReference:(id*)arg3;
 - (void)setOnDemandEnabled:(bool)arg1;

@@ -10,7 +10,6 @@
 - (void)_detatchFromPlayerItem;
 - (id)_weakReference;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 
 @end

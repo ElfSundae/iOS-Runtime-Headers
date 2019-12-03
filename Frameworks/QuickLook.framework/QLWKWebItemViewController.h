@@ -14,7 +14,7 @@
     }  _pageSize;
     <QLWebKitPaginator> * _paginator;
     NSString * _previewContentType;
-    WBUPrintPageRenderer * _renderer;
+    UIPrintPageRenderer * _renderer;
     NSLayoutConstraint * _rightConstraint;
     struct CGPoint { 
         double x; 
@@ -39,8 +39,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) WKWebView *webView;
 
-+ (bool)providesCustomPrinter;
-+ (Class)transformerClass;
++ (bool)_shouldDisableJavaScriptForContentType:(id)arg1;
 
 - (void).cxx_destruct;
 - (void)_addThumbnailToCache:(id)arg1 atIndex:(unsigned long long)arg2;
@@ -75,6 +74,7 @@
 - (void)previewDidAppear:(bool)arg1;
 - (void)previewWillAppear:(bool)arg1;
 - (id)printer;
+- (void)provideCurrentPageAndVisibleRectWithCompletionHandler:(id /* block */)arg1;
 - (id)scrollView;
 - (void)scrollViewDidScroll:(id)arg1;
 - (id)scrubView;

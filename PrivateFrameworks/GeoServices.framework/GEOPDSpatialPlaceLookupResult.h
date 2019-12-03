@@ -4,8 +4,8 @@
 
 @interface GEOPDSpatialPlaceLookupResult : PBCodable <NSCopying> {
     struct { 
-        unsigned int statusCode : 1; 
-    }  _has;
+        unsigned int has_statusCode : 1; 
+    }  _flags;
     NSMutableArray * _places;
     int  _statusCode;
     PBUnknownFields * _unknownFields;
@@ -16,12 +16,14 @@
 @property (nonatomic) int statusCode;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
 + (Class)placeType;
 
 - (void).cxx_destruct;
 - (int)StringAsStatusCode:(id)arg1;
 - (void)addPlace:(id)arg1;
 - (void)clearPlaces;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -33,6 +35,7 @@
 - (id)placeAtIndex:(unsigned long long)arg1;
 - (id)places;
 - (unsigned long long)placesCount;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasStatusCode:(bool)arg1;
 - (void)setPlaces:(id)arg1;

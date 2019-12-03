@@ -2,7 +2,9 @@
    Image: /System/Library/PrivateFrameworks/NotesUI.framework/NotesUI
  */
 
-@interface ICGradientView : UIView
+@interface ICGradientView : UIView {
+    NSArray * _gradientColors;
+}
 
 @property (nonatomic) struct CGPoint { double x1; double x2; } endPoint;
 @property (nonatomic, copy) NSArray *gradientColors;
@@ -12,6 +14,7 @@
 
 + (Class)layerClass;
 
+- (void).cxx_destruct;
 - (struct CGPoint { double x1; double x2; })endPoint;
 - (id)gradientColors;
 - (id)gradientLayer;
@@ -21,5 +24,7 @@
 - (void)setLocations:(id)arg1;
 - (void)setStartPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (struct CGPoint { double x1; double x2; })startPoint;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateLayerColors;
 
 @end

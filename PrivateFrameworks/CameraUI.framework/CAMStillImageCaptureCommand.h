@@ -10,6 +10,7 @@
 
 - (void).cxx_destruct;
 - (id)_request;
+- (void)_sanitizeCapturePhotoSettings:(id)arg1 withContext:(id)arg2;
 - (long long)_videoOrientationForCaptureOrientation:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)encodeWithCoder:(id)arg1;

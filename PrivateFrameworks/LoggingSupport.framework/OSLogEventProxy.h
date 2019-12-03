@@ -69,7 +69,6 @@
                 bool has_context_data; 
             } log_message; 
             struct { 
-                char *action; 
                 bool persisted; 
             } useraction; 
             struct { 
@@ -188,6 +187,7 @@
 - (void)_setThreadCrumb;
 - (void)_setTimesyncDatabase:(struct _os_timesync_db_s { }*)arg1;
 - (void)_setUUIDDBFileDescriptor:(int)arg1;
+- (bool)_shouldIncludeSensitive;
 - (unsigned long long)_timesyncRangeUUIDIndex;
 - (oneway void)_unmake;
 - (unsigned long long)activityIdentifier;

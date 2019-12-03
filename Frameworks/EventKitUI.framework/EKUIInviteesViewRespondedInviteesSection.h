@@ -7,6 +7,7 @@
     bool  _editable;
     EKEvent * _event;
     id /* block */  _participantRemoved;
+    id /* block */  _participantSetRole;
     id /* block */  _participantTapped;
     NSMutableArray * _participants;
     int  _responseType;
@@ -21,6 +22,7 @@
 @property (nonatomic, retain) EKEvent *event;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) id /* block */ participantRemoved;
+@property (nonatomic, copy) id /* block */ participantSetRole;
 @property (nonatomic, copy) id /* block */ participantTapped;
 @property (nonatomic, retain) NSMutableArray *participants;
 @property (nonatomic) int responseType;
@@ -30,6 +32,7 @@
 
 - (void).cxx_destruct;
 - (bool)_isValidRow:(long long)arg1;
+- (id)actionsForRow:(id)arg1;
 - (id)cachedCellReuseIdentifier;
 - (bool)canEditRow:(id)arg1;
 - (bool)canSelectRow:(id)arg1;
@@ -45,6 +48,7 @@
 - (id)initWithResponseType:(int)arg1;
 - (unsigned long long)numberOfRows;
 - (id /* block */)participantRemoved;
+- (id /* block */)participantSetRole;
 - (id /* block */)participantTapped;
 - (id)participants;
 - (void)reloadAndRegisterReusableCellsWithTableView:(id)arg1;
@@ -56,6 +60,7 @@
 - (void)setEditable:(bool)arg1;
 - (void)setEvent:(id)arg1;
 - (void)setParticipantRemoved:(id /* block */)arg1;
+- (void)setParticipantSetRole:(id /* block */)arg1;
 - (void)setParticipantTapped:(id /* block */)arg1;
 - (void)setParticipants:(id)arg1;
 - (void)setResponseType:(int)arg1;

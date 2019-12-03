@@ -20,6 +20,7 @@
     NSMutableDictionary * _scalingRequirementByVideoFormatByAttachedMediaKey;
     BWInferenceScheduler * _scheduler;
     NSMutableSet * _unresolvedAttachedMediaKeysPreventingProvidedVideoRequirements;
+    BWVideoProcessingInferenceAdapter * _videoProcessingAdapter;
     NSMutableArray * _videoRequirementsPossiblyProvidingAttachedMedia;
     NSMutableArray * _videoRequirementsPossiblyReceivingAttachedMedia;
     BWVisionInferenceAdapter * _visionAdapter;
@@ -45,15 +46,17 @@
 - (void)_prepareProvidedVideoRequirementsIfNecessary;
 - (int)addInferenceOfType:(int)arg1 version:(struct { unsigned short x1; unsigned short x2; unsigned short x3; })arg2 configuration:(id)arg3;
 - (void)dealloc;
+- (int)enableIntermediateBufferSharingWithNetworksLoadedFromPath:(id)arg1;
 - (id)espressoContextForExecutionTarget:(int)arg1;
 - (id)initWithCaptureDevice:(id)arg1 scheduler:(id)arg2 priority:(unsigned int)arg3;
+- (id)initWithCaptureDevice:(id)arg1 scheduler:(id)arg2 priority:(unsigned int)arg3 shareIntermediateBuffer:(bool)arg4;
 - (bool)isConfiguredForInference;
 - (struct OpaqueFigCaptureISPProcessingSession { }*)ispProcessingSessionForExecutionTarget:(int)arg1;
 - (int)performInferencesOnSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 attachingResultsToSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg2;
 - (int)prepareForInferenceWithFormatProvider:(id)arg1;
 - (int)prepareForInferenceWithFormatProvider:(id)arg1 pixelBufferPoolProvider:(id)arg2;
 - (int)prepareForInputVideoFormat:(id)arg1 attachedMediaKey:(id)arg2;
-- (int)prewarmInferences;
+- (int)prewarmInferencesUsingLimitedMemory:(bool)arg1;
 - (id)providedVideoRequirementsByAttachedMediaKey;
 - (bool)requiresDeviceOrientationMetadata;
 - (id)visionContextForExecutionTarget:(int)arg1;

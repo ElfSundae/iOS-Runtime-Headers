@@ -2,24 +2,27 @@
    Image: /System/Library/PrivateFrameworks/NanoTimeKitCompanion.framework/NanoTimeKitCompanion
  */
 
-@interface NTKStopwatchComplicationController : NTKComplicationController
+@interface NTKStopwatchComplicationController : NTKComplicationController <NTKTimeTravel> {
+    NSDate * _timeTravelDate;
+}
 
 @property (nonatomic, readonly) <NTKStopwatchComplicationDisplay> *legacyDisplay;
+@property (nonatomic, retain) NSDate *timeTravelDate;
 
 + (bool)_acceptsComplicationType:(unsigned long long)arg1 forDevice:(id)arg2;
 
+- (void).cxx_destruct;
 - (void)_activate;
 - (void)_configureForLegacyDisplay:(id)arg1;
 - (void)_deactivate;
-- (void)_handleLocaleChange;
-- (void)_handleReloadNotification;
-- (void)_handleTimeFormatChange;
-- (void)_startStopwatchTimerUpdates;
-- (void)_stopStopwatchTimerUpdates;
+- (void)_handleStopwatchChange;
 - (void)_updateDisplay;
 - (id)complicationApplicationIdentifier;
 - (bool)hasTapAction;
 - (void)performTapAction;
 - (void)setDataMode:(long long)arg1 forDisplayWrapper:(id)arg2;
+- (void)setTimeTravelDate:(id)arg1;
+- (void)setTimeTravelDate:(id)arg1 animated:(bool)arg2;
+- (id)timeTravelDate;
 
 @end

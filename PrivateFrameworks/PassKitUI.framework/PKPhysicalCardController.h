@@ -23,6 +23,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) <PKSetupFlowControllerProtocol> *parentFlowController;
 @property (nonatomic, readonly) PKPaymentPass *paymentPass;
+@property (nonatomic, readonly) bool physicalCardBlocked;
 @property (nonatomic, readonly) PKPhysicalCard *primaryPhysicalCard;
 @property (nonatomic, readonly) bool primaryPhysicalCardEnabled;
 @property (nonatomic) <PKPaymentSetupViewControllerDelegate> *setupDelegate;
@@ -44,6 +45,7 @@
 - (void)orderFlowViewControllerForReason:(unsigned long long)arg1 content:(long long)arg2 completion:(id /* block */)arg3;
 - (id)parentFlowController;
 - (id)paymentPass;
+- (bool)physicalCardBlocked;
 - (id)primaryPhysicalCard;
 - (bool)primaryPhysicalCardEnabled;
 - (void)setParentFlowController:(id)arg1;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
  */
 
-@interface CKDRecordPCSData : CKDPCSData {
+@interface CKDRecordPCSData : CKDPCSData <NSSecureCoding> {
     CKDChainPCSData * _chainPCSData;
     NSData * _chainParentPublicKeyID;
     CKEncryptedData * _encryptedPublicSharingKey;
@@ -52,6 +52,7 @@
 - (void)setEncryptedPublicSharingKey:(id)arg1;
 - (void)setParentID:(id)arg1;
 - (void)setParentPCSData:(id)arg1;
+- (void)setPcs:(struct _OpaquePCSShareProtection { }*)arg1;
 - (void)setRecordID:(id)arg1;
 - (void)setShareID:(id)arg1;
 - (void)setSharePCSData:(id)arg1;

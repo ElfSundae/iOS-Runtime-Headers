@@ -17,6 +17,8 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) long long type;
 
+// Image: /System/Library/Frameworks/Accounts.framework/Accounts
+
 + (id)_actionForError:(id)arg1;
 + (id)actionWithType:(long long)arg1;
 + (id)destructiveActionWithType:(long long)arg1;
@@ -38,5 +40,9 @@
 - (bool)isDestructive;
 - (bool)isEqual:(id)arg1;
 - (long long)type;
+
+// Image: /System/Library/PrivateFrameworks/AppleAccount.framework/AppleAccount
+
+- (bool)isSafeForAutoEnablement;
 
 @end

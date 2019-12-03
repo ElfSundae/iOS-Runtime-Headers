@@ -13,20 +13,20 @@
     int  _state;
 }
 
-@property (nonatomic, readonly) NSDate *date;
-@property (nonatomic, readonly) NSError *error;
-@property (nonatomic, readonly) NSArray *errors;
-@property (nonatomic, readonly) unsigned long long estimatedTimeRemaining;
-@property (nonatomic, readonly) bool isBackground;
-@property (nonatomic, readonly) bool isCloud;
-@property (nonatomic, readonly) float progress;
-@property (nonatomic, readonly) int state;
+@property (nonatomic, retain) NSDate *date;
+@property (nonatomic, retain) NSError *error;
+@property (nonatomic, retain) NSMutableArray *errors;
+@property (nonatomic) unsigned long long estimatedTimeRemaining;
+@property (nonatomic) bool isBackground;
+@property (nonatomic) bool isCloud;
+@property (nonatomic) float progress;
+@property (nonatomic) int state;
 
 + (bool)supportsSecureCoding;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)date;
-- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
@@ -40,9 +40,12 @@
 - (bool)isBackground;
 - (bool)isCloud;
 - (float)progress;
-- (void)setBackground:(bool)arg1;
+- (void)setDate:(id)arg1;
 - (void)setError:(id)arg1;
+- (void)setErrors:(id)arg1;
 - (void)setEstimatedTimeRemaining:(unsigned long long)arg1;
+- (void)setIsBackground:(bool)arg1;
+- (void)setIsCloud:(bool)arg1;
 - (void)setProgress:(float)arg1;
 - (void)setState:(int)arg1;
 - (int)state;

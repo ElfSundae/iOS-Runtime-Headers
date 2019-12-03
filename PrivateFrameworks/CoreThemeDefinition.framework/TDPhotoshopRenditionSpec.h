@@ -20,7 +20,7 @@
 - (id)copyDataFromAttributes;
 - (id)createCSIRepresentationFromGradientPSDImage:(id)arg1 withCompression:(bool)arg2 colorSpaceID:(unsigned long long)arg3;
 - (id)createCSIRepresentationFromPSDImage:(id)arg1 withCompression:(bool)arg2 colorSpaceID:(unsigned long long)arg3;
-- (id)createCSIRepresentationFromPSDImage:(id)arg1 withCompression:(bool)arg2 edgeMetricsMask:(id)arg3 textMetricsMask:(id)arg4 baselineMetricsMask:(id)arg5 auxiliary1MetricsMask:(id)arg6 auxiliary2MetricsMask:(id)arg7 colorSpaceID:(unsigned long long)arg8 allowsPaletteImageCompression:(bool)arg9 allowsHevcCompression:(bool)arg10 allowsDeepmapImageCompression:(bool)arg11;
+- (id)createCSIRepresentationFromPSDImage:(id)arg1 withCompression:(bool)arg2 edgeMetricsMask:(id)arg3 textMetricsMask:(id)arg4 baselineMetricsMask:(id)arg5 auxiliary1MetricsMask:(id)arg6 auxiliary2MetricsMask:(id)arg7 colorSpaceID:(unsigned long long)arg8 allowsPaletteImageCompression:(bool)arg9 allowsHevcCompression:(bool)arg10 allowsDeepmapImageCompression:(bool)arg11 allowsDeepmap2ImageCompression:(bool)arg12;
 - (id)createCSIRepresentationWithCompression:(bool)arg1 colorSpaceID:(unsigned long long)arg2 document:(id)arg3;
 - (void)dealloc;
 - (id)debugDescription;

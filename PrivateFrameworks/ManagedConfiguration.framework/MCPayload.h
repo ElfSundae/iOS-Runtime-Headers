@@ -31,6 +31,7 @@
 @property (nonatomic, readonly) long long version;
 
 + (id)applicablePayloadsForHomePod;
++ (id)availablePayloadsForUserEnrollment;
 + (id)badFieldTypeErrorWithField:(id)arg1;
 + (id)badFieldValueErrorWithField:(id)arg1;
 + (id)badFieldValueErrorWithField:(id)arg1 underlyingError:(id)arg2;
@@ -57,6 +58,7 @@
 - (bool)containsSensitiveUserInformation;
 - (id)description;
 - (id)displayName;
+- (id)filterForUserEnrollmentOutError:(id*)arg1;
 - (id)friendlyName;
 - (id)identifier;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id*)arg3;

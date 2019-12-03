@@ -15,7 +15,7 @@
         } _has_bits_; 
         struct CachedSize { 
             struct atomic<int> { 
-                int __a_; 
+                _Atomic int __a_; 
             } size_; 
         } _cached_size_; 
         struct RepeatedPtrField<TSP::ObjectSerializationDirectory_Entry> { 

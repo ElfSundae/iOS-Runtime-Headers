@@ -12,7 +12,6 @@
 - (void)dealloc;
 - (void)didUpdateLayer:(id)arg1;
 - (bool)directlyManagesLayerContent;
-- (bool)shouldBeginEditingWithGesture:(id)arg1;
 - (id)storage;
 - (id)supportedCustomRotors;
 - (Class)wpEditorClass;

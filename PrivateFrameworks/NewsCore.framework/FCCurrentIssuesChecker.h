@@ -21,6 +21,7 @@
 - (id)_promiseFilterUnreadIssuesWithFromIssues:(id)arg1 withChainingdata:(id)arg2;
 - (id)_promiseFollowedChannelIDs;
 - (id)context;
+- (id)demoFollowedChannelIDs;
 - (void)fetchCurrentIssuesWithCompletion:(id /* block */)arg1;
 - (void)fetchUsersCurrentIssuesWithCompletion:(id /* block */)arg1;
 - (id)init;
@@ -29,6 +30,7 @@
 - (void)setContext:(id)arg1;
 - (void)setIssueReadingHistory:(id)arg1;
 - (void)setSubscriptionController:(id)arg1;
+- (id)sortIssues:(id)arg1 basedOnTagIDs:(id)arg2;
 - (id)subscriptionController;
 
 @end

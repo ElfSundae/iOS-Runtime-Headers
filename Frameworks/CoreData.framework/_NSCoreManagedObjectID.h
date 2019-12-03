@@ -30,7 +30,6 @@
 - (id)_storeInfo1;
 - (id)entity;
 - (id)entityName;
-- (void)finalize;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (bool)isTemporaryID;

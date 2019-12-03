@@ -4,13 +4,13 @@
 
 @interface TLKTitleContainerView : TLKStackView {
     TLKImageView * _secondaryImageView;
-    TLKVibrantLabel * _secondaryLabel;
-    TLKVibrantLabel * _titleLabel;
+    TLKLabel * _secondaryLabel;
+    TLKLabel * _titleLabel;
 }
 
 @property (nonatomic, retain) TLKImageView *secondaryImageView;
-@property (nonatomic, retain) TLKVibrantLabel *secondaryLabel;
-@property (nonatomic, retain) TLKVibrantLabel *titleLabel;
+@property (nonatomic, retain) TLKLabel *secondaryLabel;
+@property (nonatomic, retain) TLKLabel *titleLabel;
 
 + (id)titleFont;
 + (id)titleFontforTitle:(id)arg1;
@@ -22,7 +22,6 @@
 - (id)secondaryTitleLabelString;
 - (void)setSecondaryImageView:(id)arg1;
 - (void)setSecondaryLabel:(id)arg1;
-- (void)setStyle:(unsigned long long)arg1;
 - (void)setTitleLabel:(id)arg1;
 - (id)titleLabel;
 - (id)titleLabelString;

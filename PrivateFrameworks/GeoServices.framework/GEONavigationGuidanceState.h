@@ -3,15 +3,15 @@
  */
 
 @interface GEONavigationGuidanceState : PBCodable <NSCopying> {
+    struct { 
+        unsigned int has_guidanceLevelIgnoringTimeCriterion : 1; 
+        unsigned int has_guidanceLevel : 1; 
+        unsigned int has_navigationState : 1; 
+        unsigned int has_trackedTransportType : 1; 
+        unsigned int has_shouldSuppressCellularDataAlerts : 1; 
+    }  _flags;
     int  _guidanceLevel;
     int  _guidanceLevelIgnoringTimeCriterion;
-    struct { 
-        unsigned int guidanceLevel : 1; 
-        unsigned int guidanceLevelIgnoringTimeCriterion : 1; 
-        unsigned int navigationState : 1; 
-        unsigned int trackedTransportType : 1; 
-        unsigned int shouldSuppressCellularDataAlerts : 1; 
-    }  _has;
     int  _navigationState;
     bool  _shouldSuppressCellularDataAlerts;
     int  _trackedTransportType;
@@ -27,6 +27,8 @@
 @property (nonatomic) int navigationState;
 @property (nonatomic) bool shouldSuppressCellularDataAlerts;
 @property (nonatomic) int trackedTransportType;
+
++ (bool)isValid:(id)arg1;
 
 - (int)StringAsGuidanceLevel:(id)arg1;
 - (int)StringAsGuidanceLevelIgnoringTimeCriterion:(id)arg1;
@@ -52,6 +54,7 @@
 - (void)mergeFrom:(id)arg1;
 - (int)navigationState;
 - (id)navigationStateAsString:(int)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setGuidanceLevel:(int)arg1;
 - (void)setGuidanceLevelIgnoringTimeCriterion:(int)arg1;

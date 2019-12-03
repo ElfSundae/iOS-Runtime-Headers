@@ -14,7 +14,6 @@
     UIView * _platterView;
     long long  _style;
     UITapGestureRecognizer * _tapGestureRecognizer;
-    <CNActionViewTemplateImage> * _templateImage;
     NSString * _title;
     UIFont * _titleFont;
     UILabel * _titleLabel;
@@ -36,7 +35,6 @@
 @property (nonatomic) long long style;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) UITapGestureRecognizer *tapGestureRecognizer;
-@property (nonatomic, retain) <CNActionViewTemplateImage> *templateImage;
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) UIFont *titleFont;
 @property (nonatomic, retain) UILabel *titleLabel;
@@ -86,7 +84,6 @@
 - (void)setPlatterView:(id)arg1;
 - (void)setStyle:(long long)arg1;
 - (void)setTapGestureRecognizer:(id)arg1;
-- (void)setTemplateImage:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (void)setTitleFont:(id)arg1;
 - (void)setTitleLabel:(id)arg1;
@@ -95,7 +92,6 @@
 - (long long)style;
 - (struct CGSize { double x1; double x2; })systemLayoutSizeFittingSize:(struct CGSize { double x1; double x2; })arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 - (id)tapGestureRecognizer;
-- (id)templateImage;
 - (void)tintColorDidChange;
 - (id)title;
 - (id)titleFont;

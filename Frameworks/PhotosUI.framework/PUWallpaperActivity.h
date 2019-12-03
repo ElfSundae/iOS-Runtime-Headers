@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUWallpaperActivity : PUActivity {
+@interface PUWallpaperActivity : PXActivity <SBSUIWallpaperPreviewViewControllerDelegate> {
     bool  __needsUpdateWallpaperModificationAllowed;
     bool  __wallpaperModificationAllowed;
     UIViewController * _wallpaperActivityViewController;
@@ -10,18 +10,22 @@
 
 @property (setter=_setNeedsUpdateWallpaperModificationAllowed:, nonatomic) bool _needsUpdateWallpaperModificationAllowed;
 @property (getter=_isWallpaperModificationAllowed, setter=_setWallpaperModificationAllowed:, nonatomic) bool _wallpaperModificationAllowed;
-
-+ (bool)_isCapabilityBasedActivity;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_activityBundleImageConfiguration;
 - (id)_activityImageName;
+- (void)_fetchImageForWallPaperAsset:(id)arg1 resultHandler:(id /* block */)arg2;
+- (void)_handleSetWallpaperActionWithController:(id)arg1 locations:(long long)arg2;
 - (bool)_isWallpaperModificationAllowed;
 - (bool)_needsUpdateWallpaperModificationAllowed;
 - (void)_restrictionsChanged:(id)arg1;
 - (void)_setNeedsUpdateWallpaperModificationAllowed:(bool)arg1;
 - (void)_setWallpaperModificationAllowed:(bool)arg1;
 - (void)_updateWallpaperModificationAllowedIfNeeded;
+- (id)activityImage;
 - (id)activityTitle;
 - (id)activityType;
 - (id)activityViewController;
@@ -29,8 +33,7 @@
 - (void)dealloc;
 - (id)init;
 - (void)prepareWithActivityItems:(id)arg1;
-- (void)wallpaperImageViewController:(id)arg1 didSetWallpaperWithOptions:(id)arg2;
-- (void)wallpaperImageViewControllerDidCancel:(id)arg1;
-- (void)wallpaperImageViewControllerDidFinishSaving:(id)arg1;
+- (void)wallpaperPreviewViewControllerCancelButtonPressed:(id)arg1;
+- (void)wallpaperPreviewViewControllerSetButtonPressed:(id)arg1;
 
 @end

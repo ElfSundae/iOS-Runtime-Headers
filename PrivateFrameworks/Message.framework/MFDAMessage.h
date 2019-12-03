@@ -11,8 +11,8 @@
 
 @property (nonatomic, readonly) DAMailMessage *DAMailMessage;
 
+- (void).cxx_destruct;
 - (id)DAMailMessage;
-- (void)dealloc;
 - (id)externalConversationID;
 - (id)headers;
 - (id)headersIfAvailable;

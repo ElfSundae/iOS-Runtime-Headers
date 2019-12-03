@@ -13,8 +13,11 @@
     NSString * _url;
 }
 
+@property (nonatomic, copy) NSString *path;
+
 // Image: /System/Library/PrivateFrameworks/MIME.framework/MIME
 
+- (void).cxx_destruct;
 - (id)URL;
 - (void)_isImage:(bool*)arg1 orPDFFile:(bool*)arg2;
 - (id)contentID;

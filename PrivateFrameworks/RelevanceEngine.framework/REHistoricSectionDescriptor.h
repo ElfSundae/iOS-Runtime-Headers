@@ -2,27 +2,23 @@
    Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
  */
 
-@interface REHistoricSectionDescriptor : NSObject <NSCopying, REIndentedDescription> {
+@interface REHistoricSectionDescriptor : NSObject <NSCopying, REHistoricSectionDescriptorProperties> {
     bool  _invertsRanking;
     long long  _maxElementCount;
     RESectionDescriptor * _parentDescriptor;
     NSOrderedSet * _rules;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic) bool invertsRanking;
 @property (nonatomic) long long maxElementCount;
 @property (nonatomic, readonly) NSString *name;
 @property (nonatomic, retain) NSArray *orderedRules;
 @property (nonatomic) RESectionDescriptor *parentDescriptor;
 @property (nonatomic, copy) NSSet *rules;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (id)descriptionWithIndent:(unsigned long long)arg1;
+- (id)description;
 - (unsigned long long)hash;
 - (id)init;
 - (bool)invertsRanking;

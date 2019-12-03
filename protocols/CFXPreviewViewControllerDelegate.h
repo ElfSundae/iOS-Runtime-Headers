@@ -5,6 +5,7 @@
 
 @required
 
+- (long long)cameraModeUsedForCapture;
 - (bool)mediaCapturedInFunCam;
 - (long long)orientationUsedForCapture;
 - (void)previewViewController:(CFXPreviewViewController *)arg1 didFinishExportingMediaItem:(CFXMediaItem *)arg2 withError:(NSError *)arg3;

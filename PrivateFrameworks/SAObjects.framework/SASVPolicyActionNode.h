@@ -10,6 +10,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSString *name;
+@property (nonatomic, retain) SASVSpeechMetadata *speechMetadata;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *type;
 
@@ -24,7 +25,9 @@
 - (void)setChildren:(id)arg1;
 - (void)setConfirmationType:(id)arg1;
 - (void)setName:(id)arg1;
+- (void)setSpeechMetadata:(id)arg1;
 - (void)setType:(id)arg1;
+- (id)speechMetadata;
 - (id)type;
 
 @end

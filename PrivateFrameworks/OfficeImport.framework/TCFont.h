@@ -23,8 +23,8 @@
 + (id)fontWithFont:(id)arg1;
 
 - (id).cxx_construct;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)englishName;
 - (id)equivalentDictionary;

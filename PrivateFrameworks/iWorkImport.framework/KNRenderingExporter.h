@@ -21,6 +21,7 @@
     bool  _printingPageMargins;
     bool  _printingSelectedSlides;
     bool  _printingSkippedSlides;
+    bool  _printingSlideBackgroundsWithAlpha;
     bool  _printingSlideNumbers;
     NSOrderedSet * _selectedSlideNodes;
     unsigned long long  _slidesPerPage;
@@ -47,6 +48,7 @@
 @property (getter=isPrintingPageMargins, nonatomic) bool printingPageMargins;
 @property (getter=isPrintingSelectedSlides, nonatomic) bool printingSelectedSlides;
 @property (getter=isPrintingSkippedSlides, nonatomic) bool printingSkippedSlides;
+@property (getter=isPrintingSlideBackgroundsWithAlpha, nonatomic) bool printingSlideBackgroundsWithAlpha;
 @property (getter=isPrintingSlideNumbers, nonatomic) bool printingSlideNumbers;
 @property (nonatomic, readonly) unsigned long long rangeEnd;
 @property (nonatomic, readonly) unsigned long long rangeStart;
@@ -57,20 +59,20 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) bool usesViewForDrawing;
 
+- (void).cxx_destruct;
 - (void)addAnchorPointForSlide:(id)arg1 context:(struct CGContext { }*)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })boundsRect;
 - (unsigned long long)currentBuildIndex;
 - (id)currentInfos;
 - (id)currentSlideNode;
 - (unsigned long long)currentSlideNumber;
-- (void)dealloc;
 - (id)documentRoot;
 - (void)drawBorderForRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 context:(struct CGContext { }*)arg2;
 - (void)drawDateForRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 context:(struct CGContext { }*)arg2;
 - (bool)drawImageForSlideNode:(id)arg1 andEvent:(unsigned long long)arg2 slideSize:(struct CGSize { double x1; double x2; })arg3 intoRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg4 context:(struct CGContext { }*)arg5 createPage:(bool)arg6;
 - (void)drawInView:(id)arg1 rect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (void)drawNSStringDateForRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 context:(struct CGContext { }*)arg2;
-- (void)drawSlideNumberForNode:(id)arg1 index:(unsigned long long)arg2 forRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3 context:(struct CGContext { }*)arg4 position:(long long)arg5;
+- (void)drawSlideNumberForNode:(id)arg1 buildIndex:(unsigned long long)arg2 forRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3 context:(struct CGContext { }*)arg4 position:(long long)arg5;
 - (void)enableRenderAllContent;
 - (bool)exportToURL:(id)arg1 delegate:(id)arg2 error:(id*)arg3;
 - (bool)exportToURL:(id)arg1 pageNumber:(unsigned long long)arg2 delegate:(id)arg3 error:(id*)arg4;
@@ -87,6 +89,7 @@
 - (bool)isPrintingPageMargins;
 - (bool)isPrintingSelectedSlides;
 - (bool)isPrintingSkippedSlides;
+- (bool)isPrintingSlideBackgroundsWithAlpha;
 - (bool)isPrintingSlideNumbers;
 - (id)offscreenController;
 - (unsigned long long)p_slideNumberForSlideNode:(id)arg1;
@@ -118,6 +121,7 @@
 - (void)setPrintingPageMargins:(bool)arg1;
 - (void)setPrintingSelectedSlides:(bool)arg1;
 - (void)setPrintingSkippedSlides:(bool)arg1;
+- (void)setPrintingSlideBackgroundsWithAlpha:(bool)arg1;
 - (void)setPrintingSlideNumbers:(bool)arg1;
 - (void)setSelectedSlideNodes:(id)arg1;
 - (void)setSlidesPerPage:(unsigned long long)arg1;

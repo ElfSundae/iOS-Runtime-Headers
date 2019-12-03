@@ -4,11 +4,26 @@
 
 @interface GEOPDPictureItem : PBCodable <NSCopying> {
     struct { 
-        unsigned int photoItemType : 1; 
-    }  _has;
+        unsigned int has_photoItemType : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_photo : 1; 
+        unsigned int read_primaryText : 1; 
+        unsigned int read_secondaryText : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_photo : 1; 
+        unsigned int wrote_primaryText : 1; 
+        unsigned int wrote_secondaryText : 1; 
+        unsigned int wrote_photoItemType : 1; 
+    }  _flags;
     GEOPDPhoto * _photo;
     int  _photoItemType;
     NSString * _primaryText;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     NSString * _secondaryText;
     PBUnknownFields * _unknownFields;
 }
@@ -23,8 +38,14 @@
 @property (nonatomic, retain) NSString *secondaryText;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsPhotoItemType:(id)arg1;
+- (void)_readPhoto;
+- (void)_readPrimaryText;
+- (void)_readSecondaryText;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -34,12 +55,15 @@
 - (bool)hasPrimaryText;
 - (bool)hasSecondaryText;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)photo;
 - (int)photoItemType;
 - (id)photoItemTypeAsString:(int)arg1;
 - (id)primaryText;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)secondaryText;
 - (void)setHasPhotoItemType:(bool)arg1;

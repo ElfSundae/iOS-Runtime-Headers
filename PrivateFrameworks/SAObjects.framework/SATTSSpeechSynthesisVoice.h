@@ -14,6 +14,7 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *quality;
 @property (readonly) Class superclass;
+@property (nonatomic, copy) NSString *type;
 @property (nonatomic) bool useServer;
 
 + (id)speechSynthesisVoice;
@@ -33,7 +34,9 @@
 - (void)setLanguageCode:(id)arg1;
 - (void)setName:(id)arg1;
 - (void)setQuality:(id)arg1;
+- (void)setType:(id)arg1;
 - (void)setUseServer:(bool)arg1;
+- (id)type;
 - (bool)useServer;
 
 @end

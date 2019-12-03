@@ -8,9 +8,9 @@
     bool  _didAddObservers;
     bool  _didAddTrashObservers;
     ICFolder * _trashFolder;
-    ICSelectorDelayer * _trashFolderHiddenSelectorDelayer;
 }
 
+@property (nonatomic, retain) ICAccountData *accountData;
 @property (nonatomic, retain) ICAccountProxy *accountProxy;
 @property (nonatomic) int accountType;
 @property (nonatomic, retain) NSData *cryptoVerifier;
@@ -25,32 +25,41 @@
 @property (nonatomic) bool didMigrateOnMac;
 @property (nonatomic, retain) NSSet *folders;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool isManaged;
 @property (nonatomic, retain) NSSet *legacyTombstones;
 @property (nonatomic, readonly) NSString *localizedName;
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSSet *notes;
 @property (nonatomic, retain) NSSet *ownerInverse;
+@property (nonatomic, readonly) NSPersistentStore *persistentStore;
 @property (nonatomic, retain) NSSet *serverChangeTokens;
+@property (nonatomic) bool storeDataSeparately;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) ICFolder *trashFolder;
-@property (nonatomic, retain) ICSelectorDelayer *trashFolderHiddenSelectorDelayer;
 @property (nonatomic, retain) NSString *userRecordName;
 
 // Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
 
++ (id)accountUtilities;
 + (id)accountWithIdentifier:(id)arg1 context:(id)arg2;
 + (id)accountsMatchingPredicate:(id)arg1 context:(id)arg2;
 + (id)accountsWithAccountType:(int)arg1 context:(id)arg2;
++ (id)allAccountIdentifiersInContext:(id)arg1;
 + (id)allAccountsInContext:(id)arg1;
 + (id)allActiveAccountsInContext:(id)arg1;
++ (id)allActiveAccountsInContext:(id)arg1 sortDescriptors:(id)arg2 relationshipKeyPathsForPrefetching:(id)arg3;
++ (id)allActiveCloudKitAccountsInContext:(id)arg1;
++ (id)allCloudKitAccountsInContext:(id)arg1;
 + (id)allCloudObjectsInContext:(id)arg1;
 + (bool)clearAccountForAppleCloudKitTable;
 + (id)cloudKitAccountInContext:(id)arg1;
++ (id)cloudKitAccountWithIdentifier:(id)arg1 context:(id)arg2;
 + (id)cloudKitIfMigratedElseLocalAccountInContext:(id)arg1;
 + (id)defaultAccountInContext:(id)arg1;
 + (void)deleteAccount:(id)arg1;
 + (void)deleteAccountWithBatchDelete:(id)arg1;
-+ (id)existingCloudObjectForRecordID:(id)arg1 context:(id)arg2;
++ (id)existingCloudObjectForRecordID:(id)arg1 accountID:(id)arg2 context:(id)arg3;
++ (bool)hasActiveCloudKitAccountInContext:(id)arg1;
 + (void)initialize;
 + (void)initializeLocalAccountNamesInBackground;
 + (bool)isCloudKitAccountAvailable;
@@ -63,9 +72,13 @@
 + (id)localizedLocalAccountNameMidSentence;
 + (id)newAccountWithIdentifier:(id)arg1 type:(int)arg2 context:(id)arg3;
 + (id)newLocalAccountInContext:(id)arg1;
++ (unsigned long long)numberOfCloudKitAccountsInContext:(id)arg1 onlyMigrated:(bool)arg2;
++ (void)setAccountUtilities:(id)arg1;
 + (id)standardFolderIdentifierWithPrefix:(id)arg1 accountIdentifier:(id)arg2 accountType:(int)arg3;
 
 - (void).cxx_destruct;
+- (id)accountDataCreateIfNecessary;
+- (id)accountFilesDirectoryURL;
 - (id)accountName;
 - (id)accountProxy;
 - (void)addTrashObserversIfNecessary;
@@ -73,30 +86,40 @@
 - (id)allItemsFolderLocalizedTitle;
 - (void)awakeFromFetch;
 - (void)awakeFromInsert;
+- (id)cacheKey;
 - (bool)canBeSharedViaICloud;
 - (bool)canPasswordProtectNotes;
 - (long long)compare:(id)arg1;
-- (unsigned long long)countOfVisibleFolders;
+- (id)containerIdentifier;
+- (bool)containsSharedFolders;
 - (void)createDefaultFolder;
 - (void)createStandardFolders;
 - (void)createTrashFolder;
 - (id)cryptoPassphraseVerifier;
+- (id)customNoteSortTypeValue;
+- (id)customRootLevelFolders;
 - (void)dealloc;
 - (id)defaultFolder;
 - (id)defaultFolderIdentifier;
 - (bool)didAddObservers;
 - (bool)didAddTrashObservers;
+- (id)exportableMediaDirectoryURL;
+- (id)fallbackImageDirectoryURL;
 - (id)folderWithIdentifier:(id)arg1;
 - (bool)hasAnyCustomFolders;
 - (bool)hasSameCryptoKeyAsAccount:(id)arg1;
 - (id)ic_loggingIdentifier;
 - (id)ic_loggingValues;
+- (unsigned long long)indexOfCustomRootLevelFolder:(id)arg1;
+- (bool)isAllNotesContainer;
 - (bool)isDeletable;
 - (bool)isInICloudAccount;
 - (bool)isLeaf;
+- (bool)isManaged;
 - (id)localizedName;
 - (id)localizedNameMidSentence;
-- (void)mergeDataFromRecord:(id)arg1;
+- (id)mediaDirectoryURL;
+- (void)mergeDataFromRecord:(id)arg1 accountID:(id)arg2;
 - (bool)needsToBeDeletedFromCloud;
 - (bool)needsToBePushedToCloud;
 - (id)newlyCreatedRecord;
@@ -104,6 +127,8 @@
 - (void)noteWillBeDeletedOrUndeleted:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (id)passwordProtectedNotes;
+- (void)performBlockInPersonaContextIfNecessary:(id /* block */)arg1;
+- (id)persistentStore;
 - (id)predicateForAttachmentsInAccount;
 - (id)predicateForFolders;
 - (id)predicateForNotesInAccount;
@@ -115,6 +140,7 @@
 - (id)predicateForVisibleNotes;
 - (id)predicateForVisibleNotesIncludingTrash;
 - (void)prepareForDeletion;
+- (id)previewImageDirectoryURL;
 - (id)recordName;
 - (id)recordType;
 - (id)recordZoneName;
@@ -129,19 +155,21 @@
 - (void)setDidChooseToMigrate:(bool)arg1;
 - (void)setMarkedForDeletion:(bool)arg1;
 - (void)setName:(id)arg1;
+- (void)setSubFolderOrderMergeableData:(id)arg1;
 - (void)setTrashFolder:(id)arg1;
-- (void)setTrashFolderHiddenSelectorDelayer:(id)arg1;
 - (bool)shouldBeDeletedFromLocalDatabase;
-- (bool)shouldExcludeFilesFromBackup;
+- (bool)shouldExcludeFilesFromCloudBackup;
 - (id)standardFolderIdentifierWithPrefix:(id)arg1;
+- (id)subFolderIdentifiersOrderedSet;
+- (id)subFolderOrderMergeableData;
 - (bool)supportsEditingNotes;
 - (bool)supportsLegacyTombstones;
 - (id)titleForNavigationBar;
 - (id)titleForTableViewCell;
 - (id)trashFolder;
-- (id)trashFolderHiddenSelectorDelayer;
 - (id)trashFolderIdentifier;
 - (void)updateAccountNameForAccountListSorting;
+- (void)updateSubFolderMergeableDataChangeCount;
 - (void)updateTrashFolderHiddenNoteContainerState;
 - (id)visibleFolders;
 - (id)visibleFoldersWithParent:(id)arg1;
@@ -151,6 +179,7 @@
 - (unsigned long long)visibleNotesCount;
 - (unsigned long long)visibleNotesIncludingTrashCount;
 - (bool)visibleRootFoldersContainFolderWithTitle:(id)arg1;
+- (id)visibleSubFolders;
 - (void)willTurnIntoFault;
 
 // Image: /System/Library/PrivateFrameworks/NotesUI.framework/NotesUI

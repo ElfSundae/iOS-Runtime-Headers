@@ -2,22 +2,22 @@
    Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
  */
 
-@interface PLColorSpace : NSManagedObject <PLColorSpaceIdentity>
+@interface PLColorSpace : NSObject {
+    NSString * _colorSpaceName;
+}
 
 @property (nonatomic, copy) NSString *colorSpaceName;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (nonatomic, retain) NSSet *resources;
-@property (readonly) Class superclass;
 
-+ (id)colorSpaceFromName:(id)arg1 createIfMissing:(bool)arg2 context:(id)arg3;
-+ (id)commonColorSpace_displaySpace_inContext:(id)arg1;
-+ (id)commonColorSpace_sRGB_inContext:(id)arg1;
-+ (id)commonColorSpace_unspecified_inContext:(id)arg1;
-+ (id)entityInManagedObjectContext:(id)arg1;
-+ (id)entityName;
++ (id)colorSpaceFromName:(id)arg1;
++ (id)commonColorSpace_displaySpace;
++ (id)commonColorSpace_sRGB;
++ (id)commonColorSpace_unspecified;
 
-- (bool)supportsCloudUpload;
+- (void).cxx_destruct;
+- (id)colorSpaceName;
+- (unsigned long long)hash;
+- (id)initWithName:(id)arg1;
+- (bool)isEqual:(id)arg1;
+- (void)setColorSpaceName:(id)arg1;
 
 @end

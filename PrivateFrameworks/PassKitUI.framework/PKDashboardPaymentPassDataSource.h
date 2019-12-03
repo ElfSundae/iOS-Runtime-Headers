@@ -40,6 +40,7 @@
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
     }  _lockTransactions;
+    NSMutableDictionary * _messageImagesCache;
     NSOrderedSet * _messages;
     bool  _messagesLoaded;
     NSArray * _months;
@@ -89,11 +90,11 @@
 
 - (void).cxx_destruct;
 - (void)_addToAMPButtonTappedForPass:(id)arg1;
-- (void)_callIssuer;
 - (bool)_canDisplayBalance;
 - (bool)_canShowTransactions;
 - (id)_contactResolver;
 - (void)_deleteButtonTapped;
+- (id)_downloadMessageIconURLAndReloadIfNecessary:(id)arg1;
 - (void)_educationMessagesWithCompletion:(id /* block */)arg1;
 - (void)_fetchAMPEnrollmentEligibility;
 - (void)_localeDidChangeNotification:(id)arg1;
@@ -108,13 +109,14 @@
 - (id)_messageForSessionActive;
 - (id)_messageFromEngagementMessage:(id)arg1;
 - (void)_messageFromPaymentServiceSuppressingPassStateChanges:(bool)arg1 completion:(id /* block */)arg2;
+- (id)_messageImageWithName:(id)arg1 extension:(id)arg2;
 - (void)_messagesForAccountStatusWithCompletion:(id /* block */)arg1;
-- (void)_openBusinessChatWithContext:(id)arg1;
+- (id)_messagesForInstallmentPlans;
 - (bool)_passAvailableForAMPEnrollment;
 - (void)_peerPaymentAccountChanged:(id)arg1;
 - (struct { bool x1; bool x2; unsigned long long x3; })_peerPaymentDashboardCondition;
 - (void)_peerPaymentResolutionTappedWithResolution:(unsigned long long)arg1;
-- (void)_presentContactViewControllerWithBusinessChatContext:(id)arg1;
+- (void)_presentAccountResolution:(unsigned long long)arg1 forBusinessChatContext:(id)arg2;
 - (void)_presentPassDetailsWithAction:(unsigned long long)arg1;
 - (void)_presentPassWithPassUniqueIdentifier:(id)arg1;
 - (void)_presentPhysicalCardActivation;
@@ -125,7 +127,6 @@
 - (void)_updateWithTransactionGroups:(id)arg1;
 - (void)_verificationButtonTapped;
 - (id)account;
-- (void)accountServiceAccountResolutionController:(id)arg1 requestsDismissCurrentViewControllerAnimated:(bool)arg2;
 - (void)accountServiceAccountResolutionController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(bool)arg3;
 - (id)currentMonthTransactions;
 - (void)dealloc;

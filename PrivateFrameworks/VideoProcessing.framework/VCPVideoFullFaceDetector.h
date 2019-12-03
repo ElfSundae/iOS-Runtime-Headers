@@ -11,10 +11,17 @@
     NSMutableArray * _frameFaceResults;
     VCPFrameAnalysisStats * _frameStats;
     NSMutableDictionary * _keyFaces;
+    float  _latestFrameArea;
     int  _latestTrackID;
     VCPCNNPoseEstimator * _poseEstimator;
     NSMutableArray * _reservedIDs;
     VCPCNNSmileDetector * _smileDetector;
+    struct { 
+        long long value; 
+        int timescale; 
+        unsigned int flags; 
+        long long epoch; 
+    }  _timeLastTracking;
 }
 
 - (void).cxx_destruct;

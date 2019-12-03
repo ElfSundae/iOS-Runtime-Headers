@@ -51,6 +51,8 @@
 @property (nonatomic, readonly) long long numberOfValues;
 @property (readonly) Class superclass;
 @property (getter=_symptoms, nonatomic, readonly) unsigned long long symptoms;
+@property (nonatomic, readonly) NSString *wd_commaSeparatedData;
+@property (nonatomic, readonly) NSString *wd_commaSeparatedHeader;
 
 // Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
 
@@ -62,11 +64,12 @@
 - (void).cxx_destruct;
 - (id)_averageHeartRate;
 - (unsigned long long)_classification;
+- (void)_enumerateDataForLead:(unsigned long long)arg1 block:(id /* block */)arg2;
 - (id)_localizedClassification;
 - (id)_localizedSymptoms;
 - (void)_setPayload:(id)arg1;
 - (unsigned long long)_symptoms;
-- (id)_validateConfiguration;
+- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateDataForLead:(unsigned long long)arg1 block:(id /* block */)arg2;
 - (id)frequency;
@@ -84,11 +87,18 @@
 
 - (id)codableRepresentationForSync;
 
+// Image: /System/Library/PrivateFrameworks/HealthToolbox.framework/HealthToolbox
+
+- (id)wd_commaSeparatedData;
+- (id)wd_commaSeparatedHeader;
+
 // Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
 
 + (id)hk_abnormalBPMTextColor;
 + (id)hk_abnormalCardHeaderColor;
++ (id)hk_abnormalClassificationTextColor;
 + (id)hk_abnormalTimeStampCompositingFilter;
++ (id)hk_abnormalTimeStampTextColor;
 + (id)hk_defaultBPMTextColor;
 + (id)hk_defaultCardBackgroundColor;
 + (id)hk_defaultCardHeaderColor;

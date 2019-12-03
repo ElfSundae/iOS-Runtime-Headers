@@ -3,6 +3,8 @@
  */
 
 @interface NEFilterSource : NSObject {
+    unsigned long long  _byteInboundCount;
+    unsigned long long  _byteOutboundCount;
     unsigned int  _controlUnit;
     NSURLRequest * _currentRequest;
     NSURLResponse * _currentResponse;
@@ -10,6 +12,7 @@
     NWPathEvaluator * _evaluator;
     bool  _expectRemediation;
     NSUUID * _flowUUID;
+    struct ne_filter_globals { } * _globals;
     unsigned long long  _lastPendingDataStartIndex;
     unsigned long long  _lastSendDataLength;
     NSString * _organization;
@@ -30,6 +33,8 @@
     NSString * _urlAppendString;
 }
 
+@property unsigned long long byteInboundCount;
+@property unsigned long long byteOutboundCount;
 @property unsigned int controlUnit;
 @property (retain) NSURLRequest *currentRequest;
 @property (retain) NSURLResponse *currentResponse;
@@ -37,6 +42,7 @@
 @property (retain) NWPathEvaluator *evaluator;
 @property bool expectRemediation;
 @property (retain) NSUUID *flowUUID;
+@property (readonly) struct ne_filter_globals { }*globals;
 @property unsigned long long lastPendingDataStartIndex;
 @property unsigned long long lastSendDataLength;
 @property (retain) NSString *organization;
@@ -56,11 +62,13 @@
 @property (retain) NSURL *url;
 @property (retain) NSString *urlAppendString;
 
-+ (void)connectToFilterUnit:(unsigned int)arg1 withCompletionHandler:(id /* block */)arg2;
 + (bool)filterRequired;
 
 - (void).cxx_destruct;
 - (void)addData:(id)arg1 withCompletionQueue:(id)arg2 completionHandler:(id /* block */)arg3;
+- (unsigned long long)byteInboundCount;
+- (unsigned long long)byteOutboundCount;
+- (void)connectToFilterUnit:(unsigned int)arg1 withCompletionHandler:(id /* block */)arg2;
 - (unsigned int)controlUnit;
 - (id)currentRequest;
 - (id)currentResponse;
@@ -71,6 +79,9 @@
 - (id)filterOptions;
 - (void)finishedLoadingWithDecisionHandler:(id /* block */)arg1;
 - (id)flowUUID;
+- (bool)generateCryptoSignature:(unsigned char)arg1 length:(unsigned int*)arg2;
+- (struct ne_filter_globals { }*)globals;
+- (void)initGlobals;
 - (id)initWithDecisionQueue:(id)arg1;
 - (id)initWithParentURL:(id)arg1 decisionQueue:(id)arg2;
 - (id)initWithURL:(id)arg1 direction:(long long)arg2 socketIdentifier:(unsigned long long)arg3;
@@ -96,6 +107,8 @@
 - (id)remediationURL;
 - (id)replacementData;
 - (bool)sendDataToPluginWithConnection:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)setByteInboundCount:(unsigned long long)arg1;
+- (void)setByteOutboundCount:(unsigned long long)arg1;
 - (void)setControlUnit:(unsigned int)arg1;
 - (void)setCurrentRequest:(id)arg1;
 - (void)setCurrentResponse:(id)arg1;

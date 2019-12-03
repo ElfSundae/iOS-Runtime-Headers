@@ -18,6 +18,8 @@
 @property (nonatomic, retain) NSString *localeIdentifier;
 @property (nonatomic, readonly) int presentationStyle;
 @property (nonatomic, readonly) int skinTone;
+@property (nonatomic, readonly) NSArray *skinToneChooserVariants;
+@property (nonatomic, readonly) NSArray *skinToneSpecifiers;
 @property (nonatomic, readonly, copy) NSArray *skinToneVariants;
 @property (nonatomic, copy) NSString *string;
 @property (nonatomic, readonly) bool supportsSkinToneVariants;
@@ -35,9 +37,11 @@
 - (id)_skinToneVariantStrings;
 - (id)copyWithPresentationStyle:(int)arg1;
 - (id)copyWithSkinToneVariant:(int)arg1;
+- (id)copyWithSkinToneVariantSpecifier:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)copyWithoutModifiers;
 - (void)dealloc;
+- (id)description;
 - (struct __EmojiTokenWrapper { }*)emojiTokenRef;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
@@ -55,6 +59,8 @@
 - (void)setLocaleIdentifier:(id)arg1;
 - (void)setString:(id)arg1;
 - (int)skinTone;
+- (id)skinToneChooserVariants;
+- (id)skinToneSpecifiers;
 - (id)skinToneVariants;
 - (id)string;
 - (bool)supportsPresentationStyle:(int)arg1;

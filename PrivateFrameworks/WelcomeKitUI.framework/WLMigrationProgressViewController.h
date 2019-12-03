@@ -11,13 +11,16 @@
     bool  _migrationControllerIsRestartable;
     id /* block */  _migrationDidBeginHandler;
     unsigned long long  _migrationState;
-    NSString * _progressString;
     UIProgressView * _progressView;
+    double  _remainingDownloadTime;
+    NSDateComponentsFormatter * _remainingDownloadTimeFormatter;
+    NSObject<OS_dispatch_source> * _remainingDownloadTimeUpdateTimer;
     WLSourceDevice * _sourceDevice;
     UIActivityIndicatorView * _spinner;
     UILabel * _stateView;
     NSArray * _stateViewConstraintsForNoSpinner;
     NSArray * _stateViewConstraintsForWithSpinner;
+    bool  _usingRetryPolicies;
 }
 
 @property (nonatomic, copy) id /* block */ completionHandler;
@@ -28,20 +31,19 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_callClientCompletionWithSuccess:(bool)arg1;
-- (void)_didCompleteMigrationWithSuccess:(bool)arg1;
+- (void)_callClientCompletionWithSuccess:(bool)arg1 retry:(bool)arg2;
+- (void)_didCompleteMigrationWithSuccess:(bool)arg1 retry:(bool)arg2;
 - (void)_startMigration;
-- (void)_uiTestModeStartFakeMigration;
 - (void)_updateProgressViewsWithOneLineStateKey:(id)arg1 twoLineStateKey:(id)arg2 showDeviceName:(bool)arg3 showSpinner:(bool)arg4 explanationText:(id)arg5;
 - (id /* block */)completionHandler;
 - (void)dataMigrator:(id)arg1 didFailWithError:(id)arg2;
 - (void)dataMigrator:(id)arg1 didUpdateMigrationState:(unsigned long long)arg2;
 - (void)dataMigrator:(id)arg1 didUpdateProgressPercentage:(float)arg2;
-- (void)dataMigrator:(id)arg1 didUpdateProgressString:(id)arg2;
+- (void)dataMigrator:(id)arg1 didUpdateRemainingDownloadTime:(double)arg2;
 - (void)dataMigratorDidBecomeRestartable:(id)arg1;
 - (void)dataMigratorDidFinish:(id)arg1 withImportErrors:(bool)arg2;
 - (void)dataMigratorDidGetInterrupted;
-- (id)initWithSourceDevice:(id)arg1 metrics:(id)arg2;
+- (id)initWithSourceDevice:(id)arg1 metrics:(id)arg2 usingRetryPolicies:(bool)arg3;
 - (void)loadView;
 - (id /* block */)migrationDidBeginHandler;
 - (void)setCompletionHandler:(id /* block */)arg1;

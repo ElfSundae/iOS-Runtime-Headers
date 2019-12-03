@@ -5,6 +5,6 @@
 @interface NSSQLCountRequestContext : NSSQLFetchRequestContext
 
 - (id)_createStatement;
-- (void)executeRequestCore:(id*)arg1;
+- (bool)executeRequestCore:(id*)arg1;
 
 @end

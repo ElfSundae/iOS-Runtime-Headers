@@ -41,6 +41,7 @@
 - (bool)isEqual:(id)arg1;
 - (bool)isInMainScope;
 - (id)plistArchiveWithCPLArchiver:(id)arg1;
+- (id)redactedDescription;
 - (id)safeFilename;
 - (id)scopeIdentifier;
 - (long long)scopeIndex;

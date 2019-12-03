@@ -8,6 +8,7 @@
 - (SXDropCapStyle *)dropCapStyle;
 - (long long)exactLineHeight;
 - (long long)firstLineIndent;
+- (bool)fontScaling;
 - (bool)hangingPunctuation;
 - (long long)hyphenation;
 - (long long)lineHeight;

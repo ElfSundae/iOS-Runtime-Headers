@@ -17,6 +17,8 @@
 
 - (void).cxx_destruct;
 - (struct CLLocationCoordinate2D { double x1; double x2; })coordinate;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (void)setSubtitle:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (id)subtitle;

@@ -12,6 +12,7 @@
     unsigned int  _retainCount;
 }
 
+- (bool)_canUseRealloc;
 - (void)_freeBytes;
 - (bool)_providesConcreteBacking;
 - (void)appendBytes:(const void*)arg1 length:(unsigned long long)arg2;

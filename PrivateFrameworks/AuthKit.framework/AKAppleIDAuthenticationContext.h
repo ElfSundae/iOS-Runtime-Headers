@@ -2,12 +2,14 @@
    Image: /System/Library/PrivateFrameworks/AuthKit.framework/AuthKit
  */
 
-@interface AKAppleIDAuthenticationContext : NSObject <AKAppleIDAuthenticationLimitedUIProvider, NSSecureCoding> {
+@interface AKAppleIDAuthenticationContext : NSObject <AKAppleIDAuthenticationLimitedUIProvider, AKAuthenticationContext, NSSecureCoding> {
     NSString * _DSID;
     struct __CFUserNotification { } * _activeSecondFactoryEntryPrompt;
     NSString * _altDSID;
     <AKAnisetteServiceProtocol> * _anisetteDataProvider;
     bool  _anticipateEscrowAttempt;
+    NSString * _appProvidedContext;
+    NSDictionary * _appProvidedData;
     unsigned long long  _attemptIndex;
     unsigned long long  _authenticationType;
     unsigned long long  _capabilityForUIDisplay;
@@ -93,14 +95,19 @@
 @property (setter=_setShortLivedToken:, nonatomic, copy) NSString *_shortLivedToken;
 @property (nonatomic) bool _shouldSendGrandSlamTokensForRemoteUI;
 @property (nonatomic) bool _shouldSendIdentityTokenForRemoteUI;
-@property (nonatomic, readonly) bool _shouldSkipInitialReachabilityCheck;
+@property (nonatomic) bool _shouldSkipInitialReachabilityCheck;
 @property (nonatomic, copy) NSString *altDSID;
 @property (nonatomic, retain) <AKAnisetteServiceProtocol> *anisetteDataProvider;
 @property (nonatomic) bool anticipateEscrowAttempt;
+@property (nonatomic, copy) NSString *appProvidedContext;
+@property (nonatomic, copy) NSDictionary *appProvidedData;
 @property (nonatomic) unsigned long long authenticationType;
 @property (nonatomic, retain) id clientInfo;
 @property (nonatomic, copy) AKDevice *companionDevice;
 @property (nonatomic, retain) AKAnisetteData *companionDeviceAnisetteData;
+@property (getter=isContextEligibleForBiometricOrPasscodeAuth, nonatomic, readonly) bool contextEligibleForBiometricOrPasscodeAuth;
+@property (getter=isContextEligibleForSilentAuth, nonatomic, readonly) bool contextEligibleForSilentAuth;
+@property (getter=isContextEligibleForSilentAuthCoercion, nonatomic, readonly) bool contextEligibleForSilentAuthCoercion;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, copy) NSString *defaultButtonString;
 @property (readonly, copy) NSString *description;
@@ -156,6 +163,7 @@
 
 - (void).cxx_destruct;
 - (id)DSID;
+- (id)_appendBlameIfRequiredTo:(id)arg1;
 - (unsigned long long)_attemptIndex;
 - (unsigned long long)_capabilityForUIDisplay;
 - (void)_handleSecondFactorCodeEntry;
@@ -192,6 +200,8 @@
 - (id)altDSID;
 - (id)anisetteDataProvider;
 - (bool)anticipateEscrowAttempt;
+- (id)appProvidedContext;
+- (id)appProvidedData;
 - (id)authKitAccount:(id*)arg1;
 - (id)authKitAccountForSilentServiceToken:(id*)arg1;
 - (unsigned long long)authenticationType;
@@ -217,7 +227,11 @@
 - (id)httpHeadersForRemoteUI;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithContext:(id)arg1;
 - (id)isAppleIDLoginEnabled;
+- (bool)isContextEligibleForBiometricOrPasscodeAuth;
+- (bool)isContextEligibleForSilentAuth;
+- (bool)isContextEligibleForSilentAuthCoercion;
 - (bool)isEphemeral;
 - (bool)isFirstTimeLogin;
 - (bool)isTriggeredByNotification;
@@ -230,6 +244,7 @@
 - (bool)needsPasswordChange;
 - (bool)needsRepair;
 - (void)presentBasicLoginUIWithCompletion:(id /* block */)arg1;
+- (void)presentBiometricOrPasscodeValidationForAppleID:(id)arg1 completion:(id /* block */)arg2;
 - (void)presentLoginAlertWithError:(id)arg1 title:(id)arg2 message:(id)arg3 completion:(id /* block */)arg4;
 - (void)presentSecondFactorAlertWithError:(id)arg1 title:(id)arg2 message:(id)arg3 completion:(id /* block */)arg4;
 - (void)presentSecondFactorUIWithCompletion:(id /* block */)arg1;
@@ -243,6 +258,8 @@
 - (void)setAltDSID:(id)arg1;
 - (void)setAnisetteDataProvider:(id)arg1;
 - (void)setAnticipateEscrowAttempt:(bool)arg1;
+- (void)setAppProvidedContext:(id)arg1;
+- (void)setAppProvidedData:(id)arg1;
 - (void)setAppleIDLoginEnabled:(id)arg1;
 - (void)setAuthenticationType:(unsigned long long)arg1;
 - (void)setClientInfo:(id)arg1;
@@ -297,6 +314,7 @@
 - (void)set_passwordPromptTitle:(id)arg1;
 - (void)set_shouldSendGrandSlamTokensForRemoteUI:(bool)arg1;
 - (void)set_shouldSendIdentityTokenForRemoteUI:(bool)arg1;
+- (void)set_shouldSkipInitialReachabilityCheck:(bool)arg1;
 - (bool)shouldAllowAppleIDCreation;
 - (bool)shouldForceInteractiveAuth;
 - (bool)shouldOfferSecurityUpgrade;

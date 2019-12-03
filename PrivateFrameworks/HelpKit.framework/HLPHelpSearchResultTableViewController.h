@@ -6,6 +6,7 @@
     UILabel * _footerLabel;
     UIView * _footerView;
     NSArray * _searchResults;
+    double  _separatorValue;
 }
 
 @property (nonatomic, retain) UIView *footerView;
@@ -13,6 +14,7 @@
 
 - (void).cxx_destruct;
 - (id)footerView;
+- (void)preferSeparatorValue:(double)arg1;
 - (id)searchResults;
 - (void)setFooterView:(id)arg1;
 - (void)setSearchResults:(id)arg1;

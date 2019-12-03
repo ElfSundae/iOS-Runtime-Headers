@@ -5,7 +5,7 @@
 @interface PLExpandedPlatterPresentationView : UIView <PLContentSizeManaging, UIScrollViewDelegate> {
     <PLExpandedPlatterPresentationViewDelegate> * _delegate;
     UIView<PLExpandedPlatter><PLContentSizeCategoryAdjusting> * _expandedPlatterView;
-    UIViewController<PLPreviewInteractionPresentable> * _presentableViewController;
+    UIViewController<PLClickPresentationInteractionPresentable> * _presentableViewController;
     UIScrollView * _scrollView;
 }
 
@@ -14,7 +14,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) UIView<PLExpandedPlatter><PLContentSizeCategoryAdjusting> *expandedPlatterView;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) UIViewController<PLPreviewInteractionPresentable> *presentableViewController;
+@property (nonatomic) UIViewController<PLClickPresentationInteractionPresentable> *presentableViewController;
 @property (nonatomic, readonly) UIScrollView *scrollView;
 @property (readonly) Class superclass;
 

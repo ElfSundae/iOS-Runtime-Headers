@@ -2,13 +2,14 @@
    Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon
  */
 
-@interface HDDatabase : NSObject <HDAssertionObserver, HDContentProtectionObserver, HDDiagnosticObject, HDHealthDatabase, HDSQLiteDatabaseDelegate, HDSQLiteDatabasePoolDelegate, HDSQLiteDatabaseProvider> {
+@interface HDDatabase : NSObject <HDAssertionObserver, HDContentProtectionObserver, HDDatabaseJournalDelegate, HDDiagnosticObject, HDHealthDatabase, HDSQLiteDatabaseDelegate, HDSQLiteDatabasePoolDelegate, HDSQLiteDatabaseProvider> {
     NSMutableSet * _activeDatabases;
     NSConditionLock * _activeDatabasesLock;
     HDAssertionManager * _assertionManager;
     NSOperationQueue * _asynchronousOperationQueue;
     HDDatabaseJournal * _cloudSyncJournal;
     HDContentProtectionManager * _contentProtectionManager;
+    NSMutableDictionary * _databaseJournalMergeObserverSetByType;
     NSDictionary * _databasePoolForType;
     bool  _didRunPostMigrationUpdates;
     NSMutableDictionary * _extendedTransactions;
@@ -19,7 +20,7 @@
         struct DataStore {} *__ptr_; 
         struct __shared_weak_count {} *__cntrl_; 
     }  _highFrequencyDataStore;
-    bool  _invalidated;
+    _Atomic bool  _invalidated;
     bool  _isObservingContentProtection;
     HDDatabaseJournal * _journal;
     NSObject<OS_dispatch_group> * _journalGroup;
@@ -38,6 +39,7 @@
     long long  _protectedDataState;
     NSLock * _schemaMigrationLock;
     NSObject<OS_dispatch_queue> * _secondaryJournalMergeQueue;
+    NSObject<OS_dispatch_queue> * _serialAsynchronousQueue;
     bool  _shouldNotifyFirstUnlockObservers;
     NSString * _threadLocalIgnoreTransactionContextKey;
     NSString * _threadLocalTransactionContextKey;
@@ -51,7 +53,7 @@
 @property (nonatomic, retain) HDAssertionManager *assertionManager;
 @property (nonatomic, retain) NSOperationQueue *asynchronousOperationQueue;
 @property (nonatomic, readonly) HDDatabaseJournal *cloudSyncJournal;
-@property (nonatomic, retain) HDContentProtectionManager *contentProtectionManager;
+@property (nonatomic, readonly) HDContentProtectionManager *contentProtectionManager;
 @property (getter=isDataProtectedByFirstUnlockAvailable, nonatomic, readonly) bool dataProtectedByFirstUnlockAvailable;
 @property (nonatomic, retain) NSDictionary *databasePoolForType;
 @property (readonly, copy) NSString *debugDescription;
@@ -90,12 +92,12 @@
 - (void).cxx_destruct;
 - (id)HFDSizeInBytes;
 - (id)_URLForWALForDatabaseAtURL:(id)arg1;
-- (bool)_allowProtectedDataAccessWhileLockedWithTransactionContext:(id)arg1;
+- (bool)_allowProtectedDataAccessWhileLockedWithTransaction:(id)arg1;
 - (bool)_applyOffsetTimeInterval:(double)arg1 database:(id)arg2 error:(id*)arg3;
-- (bool)_attachProtectedDatabaseIfNeededToDatabase:(id)arg1 transaction:(id)arg2 options:(unsigned long long)arg3 error:(id*)arg4;
-- (bool)_canAttachProtectedDatabaseForTransaction:(id)arg1 options:(unsigned long long)arg2 error:(id*)arg3;
+- (bool)_attachProtectedDatabaseIfNeededToDatabase:(id)arg1 transaction:(id)arg2 error:(id*)arg3;
+- (bool)_canAttachProtectedDatabaseForTransaction:(id)arg1 error:(id*)arg2;
 - (void)_checkInDatabase:(id)arg1 type:(long long)arg2 flushImmediately:(bool)arg3;
-- (id)_checkOutDatabaseForTransaction:(id)arg1 databaseType:(long long)arg2 options:(unsigned long long)arg3 error:(id*)arg4;
+- (id)_checkOutDatabaseForTransaction:(id)arg1 databaseType:(long long)arg2 error:(id*)arg3;
 - (id)_cloudSyncJournalDirectoryPath;
 - (bool)_createDataTablesInDatabase:(id)arg1 entityClasses:(id)arg2 requiredPrefix:(id)arg3 error:(id*)arg4;
 - (id)_createDatabaseConnection;
@@ -105,7 +107,6 @@
 - (long long)_createEntitiesWithMigrationTransaction:(id)arg1 error:(id*)arg2;
 - (id)_currentDatabaseJournal;
 - (void)_enableIncrementalAutovacuumIfNeededForTransaction:(id)arg1;
-- (bool)_enableSecureDeleteForDatabase:(id)arg1 error:(id*)arg2;
 - (long long)_fileSizeForURL:(id)arg1 error:(id*)arg2;
 - (struct shared_ptr<health::DataStore> { struct DataStore {} *x1; struct __shared_weak_count {} *x2; })_highFrequencyDataStoreWithError:(id*)arg1;
 - (bool)_isDatabaseValidWithError:(id*)arg1;
@@ -113,13 +114,14 @@
 - (id)_journalForType:(long long)arg1;
 - (bool)_journalQueue_performJournalMergeAndCleanup;
 - (void)_mergeSecondaryJournals;
-- (bool)_migrateOrCreateProtectedSchemaInDatabase:(id)arg1 transactionContext:(id)arg2 options:(unsigned long long)arg3 error:(id*)arg4;
+- (bool)_migrateOrCreateProtectedSchemaInDatabase:(id)arg1 transaction:(id)arg2 error:(id*)arg3;
 - (long long)_migrateOrCreateProtectedSchemaInDatabaseIfWritable:(id)arg1 error:(id*)arg2;
 - (long long)_migrateOrCreateSchemaWithMigrationTransaction:(id)arg1 error:(id*)arg2;
 - (long long)_migrateWithMigrationTransaction:(id)arg1 fromUserVersion:(long long)arg2 error:(id*)arg3;
 - (bool)_migrationRequiredForProtectionClass:(long long)arg1 migrator:(id)arg2 schemaProviders:(id)arg3 error:(id*)arg4;
 - (id)_newDatabaseConnectionWithError:(id*)arg1;
 - (long long)_performMigrationWithUnprotectedDatabase:(id)arg1 protectedDatabase:(id)arg2 error:(id*)arg3 block:(id /* block */)arg4;
+- (void)_performWhenDataProtectedByFirstUnlockIsAvailableOnQueue:(id)arg1 block:(id /* block */)arg2;
 - (void)_presentRollbackAlertForSchema:(id)arg1 protectionClass:(long long)arg2 foundVersion:(long long)arg3 currentVersion:(long long)arg4;
 - (void)_protectedDataQueue_beginObservingContentProtection;
 - (void)_protectedDataQueue_cancelProtectedDataFlushTimer;
@@ -128,6 +130,7 @@
 - (void)_protectedDataQueue_mergeJournalAsynchronously;
 - (long long)_protectedDataState;
 - (void)_reportDatabaseSizes;
+- (void)_reportMigrationResultIfNecessaryForStatus:(long long)arg1 database:(id)arg2 protectedDatabase:(bool)arg3 error:(id)arg4;
 - (bool)_runPostMigrationUpdatesWithDatabase:(id)arg1 error:(id*)arg2;
 - (id)_threadLocalTransaction;
 - (id)_threadLocalTransactionContext;
@@ -136,6 +139,7 @@
 - (bool)accessHighFrequencyDataStoreWithError:(id*)arg1 block:(id /* block */)arg2;
 - (id)activeDatabases;
 - (id)activeDatabasesLock;
+- (void)addDatabaseJournalMergeObserver:(id)arg1 journalType:(long long)arg2 queue:(id)arg3;
 - (bool)addJournalEntries:(id)arg1 error:(id*)arg2;
 - (bool)addJournalEntry:(id)arg1 error:(id*)arg2;
 - (void)addProtectedDataObserver:(id)arg1;
@@ -145,7 +149,7 @@
 - (id)assertionManager;
 - (void)assertionManager:(id)arg1 assertionInvalidated:(id)arg2;
 - (id)asynchronousOperationQueue;
-- (id)beginExtendedTransactionWithOptions:(unsigned long long)arg1 transactionTimeout:(double)arg2 continuationTimeout:(double)arg3 error:(id*)arg4;
+- (id)beginExtendedTransactionWithContext:(id)arg1 transactionTimeout:(double)arg2 continuationTimeout:(double)arg3 error:(id*)arg4;
 - (void)beginObservingContentProtection;
 - (void)checkInDatabase:(id)arg1 type:(long long)arg2;
 - (id)cloneAccessibilityAssertion:(id)arg1 ownerIdentifier:(id)arg2 error:(id*)arg3;
@@ -153,11 +157,12 @@
 - (id)contentProtectionManager;
 - (void)contentProtectionStateChanged:(long long)arg1 previousState:(long long)arg2;
 - (long long)currentSchemaVersionForProtectionClass:(long long)arg1;
+- (void)databaseJournalMergeDidComplete:(id)arg1;
 - (void)databasePool:(id)arg1 didFlushDatabases:(id)arg2;
 - (id)databasePoolForDatabaseType:(long long)arg1;
 - (id)databasePoolForType;
 - (id)databaseSizeInBytesExcludingHFD;
-- (id)databaseTransaction:(id)arg1 checkOutDatabaseWithType:(long long)arg2 options:(unsigned long long)arg3 error:(id*)arg4;
+- (id)databaseTransaction:(id)arg1 checkOutDatabaseWithType:(long long)arg2 error:(id*)arg3;
 - (void)dealloc;
 - (id)diagnosticDescription;
 - (bool)didRunPostMigrationUpdates;
@@ -173,6 +178,7 @@
 - (bool)isDataProtectedByFirstUnlockAvailable;
 - (bool)isProtectedDataAvailable;
 - (id)journal;
+- (unsigned long long)journalFileCountForType:(long long)arg1;
 - (id)journalGroup;
 - (id)journalQueue;
 - (id)mainDatabaseURL;
@@ -183,17 +189,18 @@
 - (double)offsetTimeInterval;
 - (unsigned long long)pendingJournalMerges;
 - (void)performAsynchronously:(id /* block */)arg1;
-- (bool)performMigrationWithTransactionContext:(id)arg1 options:(unsigned long long)arg2 error:(id*)arg3;
-- (bool)performTransactionWithContext:(id)arg1 options:(unsigned long long)arg2 error:(id*)arg3 block:(id /* block */)arg4 inaccessibilityHandler:(id /* block */)arg5;
-- (bool)performTransactionWithOptions:(unsigned long long)arg1 error:(id*)arg2 block:(id /* block */)arg3 inaccessibilityHandler:(id /* block */)arg4;
-- (bool)performTransactionWithOptions:(unsigned long long)arg1 error:(id*)arg2 usingBlock:(id /* block */)arg3 inaccessibilityHandler:(id /* block */)arg4;
+- (void)performAsynchronouslySerial:(id /* block */)arg1;
+- (bool)performTransactionWithContext:(id)arg1 error:(id*)arg2 block:(id /* block */)arg3 inaccessibilityHandler:(id /* block */)arg4;
 - (void)performWhenDataProtectedByFirstUnlockIsAvailable:(id /* block */)arg1;
+- (void)performWhenDataProtectedByFirstUnlockIsAvailableOnQueue:(id)arg1 block:(id /* block */)arg2;
 - (bool)performWithJournalType:(long long)arg1 error:(id*)arg2 block:(id /* block */)arg3;
 - (bool)performWithTransactionContext:(id)arg1 error:(id*)arg2 block:(id /* block */)arg3;
 - (id)profile;
 - (id)profileDirectoryPath;
+- (id)progressForJournalMergeWithType:(long long)arg1;
 - (double)protectedDataFlushInterval;
 - (id)protectedDatabaseURL;
+- (void)removeDatabaseJournalMergeObserver:(id)arg1 journalType:(long long)arg2;
 - (void)removeProtectedDataObserver:(id)arg1;
 - (id)schemaMigrationLock;
 - (id)secondaryJournalMergeQueue;
@@ -201,7 +208,6 @@
 - (void)setActiveDatabasesLock:(id)arg1;
 - (void)setAssertionManager:(id)arg1;
 - (void)setAsynchronousOperationQueue:(id)arg1;
-- (void)setContentProtectionManager:(id)arg1;
 - (void)setDatabasePoolForType:(id)arg1;
 - (void)setDidRunPostMigrationUpdates:(bool)arg1;
 - (void)setExtendedTransactions:(id)arg1;
@@ -222,6 +228,7 @@
 - (id)threadLocalTransactionKey;
 - (id)unitTest_currentTransaction;
 - (id /* block */)unitTest_didWaitForJournalMergeHandler;
+- (void)unitTest_setContentProtectionStateAndWait:(long long)arg1;
 - (id)virtualFilesystemModuleForDatabase:(id)arg1;
 
 @end

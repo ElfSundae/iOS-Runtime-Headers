@@ -26,6 +26,7 @@
 
 + (id /* block */)defaultItemComparator;
 + (id)filterSections:(id)arg1 toDisplayedItems:(id)arg2;
++ (id /* block */)itemResultManualSortComparator;
 + (id)na_identity;
 
 - (void).cxx_destruct;

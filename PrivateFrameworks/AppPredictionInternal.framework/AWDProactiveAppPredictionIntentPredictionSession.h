@@ -52,6 +52,7 @@
     int  _locationDistanceFromWork;
     int  _logType;
     int  _predictionAge;
+    NSString * _sessionId;
     int  _sessionLogVersion;
     int  _timeOfDayInterval;
     unsigned long long  _timestamp;
@@ -94,6 +95,7 @@
 @property (nonatomic) bool hasLocationDistanceFromWork;
 @property (nonatomic) bool hasLogType;
 @property (nonatomic) bool hasPredictionAge;
+@property (nonatomic, readonly) bool hasSessionId;
 @property (nonatomic) bool hasSessionLogVersion;
 @property (nonatomic) bool hasTimeOfDayInterval;
 @property (nonatomic) bool hasTimestamp;
@@ -113,6 +115,7 @@
 @property (nonatomic) int locationDistanceFromWork;
 @property (nonatomic) int logType;
 @property (nonatomic) int predictionAge;
+@property (nonatomic, retain) NSString *sessionId;
 @property (nonatomic) int sessionLogVersion;
 @property (nonatomic) int timeOfDayInterval;
 @property (nonatomic) unsigned long long timestamp;
@@ -175,6 +178,7 @@
 - (bool)hasLocationDistanceFromWork;
 - (bool)hasLogType;
 - (bool)hasPredictionAge;
+- (bool)hasSessionId;
 - (bool)hasSessionLogVersion;
 - (bool)hasTimeOfDayInterval;
 - (bool)hasTimestamp;
@@ -198,6 +202,7 @@
 - (void)mergeFrom:(id)arg1;
 - (int)predictionAge;
 - (bool)readFrom:(id)arg1;
+- (id)sessionId;
 - (int)sessionLogVersion;
 - (void)setAbGroup:(id)arg1;
 - (void)setActionDatas:(id)arg1;
@@ -242,6 +247,7 @@
 - (void)setLocationDistanceFromWork:(int)arg1;
 - (void)setLogType:(int)arg1;
 - (void)setPredictionAge:(int)arg1;
+- (void)setSessionId:(id)arg1;
 - (void)setSessionLogVersion:(int)arg1;
 - (void)setTimeOfDayInterval:(int)arg1;
 - (void)setTimestamp:(unsigned long long)arg1;

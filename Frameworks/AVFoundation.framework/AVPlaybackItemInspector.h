@@ -17,7 +17,6 @@
 - (id)compatibleTrackForCompositionTrack:(id)arg1;
 - (void)dealloc;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })duration;
-- (void)finalize;
 - (unsigned long long)hash;
 - (id)initWithPlaybackItem:(struct OpaqueFigPlaybackItem { }*)arg1 trackIDs:(id)arg2;
 - (bool)isEqual:(id)arg1;

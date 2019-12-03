@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
  */
 
-@interface MPResponse : NSObject <NSCopying> {
+@interface MPResponse : NSObject <NSCopying, _MPStateDumpPropertyListTransformable> {
     id  _builder;
     NSArray * _middleware;
     id  _request;
@@ -10,13 +10,18 @@
 }
 
 @property (nonatomic, readonly) id builder;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSArray *middleware;
 @property (nonatomic, readonly, copy) id request;
+@property (readonly) Class superclass;
 @property (getter=isValid, nonatomic, readonly) bool valid;
 
 + (id)builderProtocol;
 
 - (void).cxx_destruct;
+- (id)_stateDumpObject;
 - (id)builder;
 - (id)chain;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

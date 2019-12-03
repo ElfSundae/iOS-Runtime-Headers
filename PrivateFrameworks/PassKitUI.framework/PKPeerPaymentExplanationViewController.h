@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
  */
 
-@interface PKPeerPaymentExplanationViewController : PKExplanationViewController <AAUIDeviceToDeviceEncryptionHelperDelegate, PKExplanationViewControllerDelegate, PKExplanationViewDelegate, PKPaymentSelectPassesViewControllerDelegate> {
+@interface PKPeerPaymentExplanationViewController : PKExplanationViewController <PKExplanationViewControllerDelegate, PKExplanationViewDelegate, PKPaymentSelectPassesViewControllerDelegate> {
     bool  _allowsManualEntry;
     PKPeerPaymentCredential * _credential;
     bool  _hidesSetupLater;
@@ -34,7 +34,6 @@
 - (struct CGSize { double x1; double x2; })_snapshotSize;
 - (void)_terminateSetupFlow;
 - (bool)allowsManualEntry;
-- (void)deviceToDeviceEncryptionHelper:(id)arg1 shouldContinueUpgradingUserToHSA2WithCompletion:(id /* block */)arg2;
 - (void)explanationViewControllerDidSelectCancel:(id)arg1;
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (void)explanationViewDidSelectSetupLater:(id)arg1;

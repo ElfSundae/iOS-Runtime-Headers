@@ -50,7 +50,7 @@
 - (id /* block */)providerForGradientFromColor;
 - (id /* block */)providerForImageForItem:(id)arg1 scope:(id)arg2 queue:(id)arg3 renderingHandler:(id /* block */)arg4;
 - (id /* block */)providerForThumbnailForModelColor:(id)arg1;
-- (id /* block */)providerForThumbnailForModelPreset:(id)arg1 presetOverrides:(id)arg2 avatarConfiguration:(id)arg3 framingMode:(id)arg4;
+- (id /* block */)providerForThumbnailForModelPreset:(id)arg1 presetOverrides:(id)arg2 poseOverride:(id)arg3 avatarConfiguration:(id)arg4 framingMode:(id)arg5;
 - (void)releaseRenderingResourceForEstimatedDuration:(double)arg1;
 - (void)renderColorForColorPreset:(id)arg1 skinColor:(id)arg2 intoLayer:(id)arg3;
 - (void)renderColorGradientForModelColor:(id)arg1 skinColor:(id)arg2 handler:(id /* block */)arg3;

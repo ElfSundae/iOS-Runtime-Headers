@@ -13,6 +13,9 @@
 - (void).cxx_destruct;
 - (id)classifier;
 - (void)dealloc;
+- (unsigned long long)frequencyOfLatinFamilyName:(id)arg1;
+- (unsigned long long)frequencyOfLatinGivenName:(id)arg1;
+- (unsigned long long)genderMajorityForGivenName:(id)arg1;
 - (id)init;
 - (bool)isPrefix:(id)arg1;
 - (bool)isSuffix:(id)arg1;

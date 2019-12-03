@@ -7,7 +7,7 @@
 }
 
 - (void).cxx_destruct;
-- (void)getBestMatchesForTypedString:(id)arg1 limit:(unsigned long long)arg2 completionHandler:(id /* block */)arg3;
+- (void)getBestMatchesForTypedString:(id)arg1 limit:(unsigned long long)arg2 forQueryID:(long long)arg3 completionHandler:(id /* block */)arg4;
 - (id)initWithHistoryService:(id)arg1;
 
 @end

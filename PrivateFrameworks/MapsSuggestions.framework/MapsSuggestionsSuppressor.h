@@ -17,7 +17,6 @@
 + (id)defaultFilePath;
 
 - (void).cxx_destruct;
-- (void)_deleteSuppressedEntriesFile;
 - (bool)_loadSuppressedEntries;
 - (bool)_saveSuppressedEntries;
 - (id)init;
@@ -27,6 +26,8 @@
 - (void)purge;
 - (bool)saveSuppressedEntries;
 - (bool)suppressEntry:(id)arg1 forTime:(double)arg2;
+- (id)test_dateUntilSuppressedEntry:(id)arg1;
+- (void)test_deleteSuppressedEntriesFile;
 - (struct NSString { Class x1; }*)uniqueName;
 
 @end

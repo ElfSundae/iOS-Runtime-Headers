@@ -10,6 +10,7 @@
         bool notifyOnEntry; 
         bool notifyOnExit; 
         bool conservativeEntry; 
+        bool emergency; 
         union { 
             struct { 
                 BOOL proximityUUID[512]; 
@@ -28,6 +29,15 @@
                 int referenceFrame; 
                 bool allowMonitoringWhileNearby; 
             } circularAttributes; 
+            struct { 
+                struct { 
+                    double latitude; 
+                    double longitude; 
+                } vertices[101]; 
+                int verticesCount; 
+                int referenceFrame; 
+                bool allowMonitoringWhileNearby; 
+            } polygonalAttributes; 
         } ; 
     }  _clientRegion;
 }

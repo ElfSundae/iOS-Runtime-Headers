@@ -16,6 +16,8 @@
     bool  _fromForwardedMessage;
     CSPerson * _fromPerson;
     NSString * _localizedApplicationName;
+    NSString * _operatingSystemVersion;
+    bool  _shouldShowOperatingSystemVersion;
     NSString * _sourceKey;
     NSString * _teamId;
     NSString * _title;
@@ -31,7 +33,7 @@
 @property (nonatomic, readonly) NSDate *date;
 @property (nonatomic, readonly) NSString *externalKey;
 @property (nonatomic, readonly) SGSimpleNamedEmailAddress *from;
-@property (getter=isFromForwardedMessage, readonly) bool fromForwardedMessage;
+@property (getter=isFromForwardedMessage, nonatomic, readonly) bool fromForwardedMessage;
 @property (nonatomic, readonly) CSPerson *fromPerson;
 @property (nonatomic, readonly) NSString *localizedApplicationName;
 @property (nonatomic, readonly) NSString *sourceKey;

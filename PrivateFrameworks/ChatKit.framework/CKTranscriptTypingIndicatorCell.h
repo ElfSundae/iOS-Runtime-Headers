@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
  */
 
-@interface CKTranscriptTypingIndicatorCell : CKTranscriptMessageCell {
+@interface CKTranscriptTypingIndicatorCell : CKTranscriptMessageCell <CKLayerDelegate> {
     CKTypingView * _typingView;
 }
 
@@ -10,11 +10,9 @@
 @property (nonatomic, retain) CKTypingView *typingView;
 
 - (void).cxx_destruct;
-- (void)_applicationDidEnterBackground:(id)arg1;
-- (void)_applicationWillEnterForeground:(id)arg1;
+- (void)ckLayerDidBecomeVisible:(bool)arg1;
 - (void)configureForChatItem:(id)arg1;
 - (void)dealloc;
-- (void)didMoveToWindow;
 - (id)indicatorLayer;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)layoutSubviewsForAlignmentContents;
@@ -23,6 +21,7 @@
 - (void)prepareForReuse;
 - (void)setIndicatorLayer:(id)arg1;
 - (void)setOrientation:(BOOL)arg1;
+- (void)setTraitCollection:(id)arg1;
 - (void)setTypingView:(id)arg1;
 - (void)startGrowAnimation;
 - (void)startPulseAnimation;

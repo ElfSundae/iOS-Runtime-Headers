@@ -22,6 +22,6 @@
 - (id)download;
 - (void)fireCompletionIfNecessaryForResult:(bool)arg1;
 - (bool)forInstallTonight;
-- (id)initWithDownload:(id)arg1 autoInstallOperation:(id)arg2 forInstallTonight:(bool)arg3 canDeferInstallation:(bool)arg4 completionBlock:(id /* block */)arg5;
+- (id)initWithDownload:(id)arg1 autoInstallOperation:(id)arg2 forInstallTonight:(bool)arg3 canDeferInstallation:(bool)arg4 completionQueue:(id)arg5 completionBlock:(id /* block */)arg6;
 
 @end

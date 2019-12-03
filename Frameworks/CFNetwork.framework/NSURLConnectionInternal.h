@@ -20,7 +20,6 @@
 
 - (id)_connectionProperties;
 - (void)_invalidate;
-- (void)_reportTimingDataToAWD;
 - (void)_setDelegateQueue:(id)arg1;
 - (id)_timingData;
 - (void)_withActiveConnectionAndDelegate:(id /* block */)arg1;
@@ -31,7 +30,7 @@
 - (void)continueWithoutCredentialForAuthenticationChallenge:(id)arg1;
 - (id)currentRequest;
 - (void)dealloc;
-- (id)initWithInfo:(const struct InternalInit { id x1; id x2; bool x3; long long x4; }*)arg1;
+- (id)initWithInfo:(const struct InternalInit { id x1; id x2; id x3; id x4; bool x5; long long x6; }*)arg1;
 - (void)invokeForDelegate:(id /* block */)arg1;
 - (bool)isConnectionActive;
 - (id)originalRequest;

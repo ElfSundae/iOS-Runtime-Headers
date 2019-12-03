@@ -12,7 +12,7 @@
 
 + (id)createFontCacheKeyForName:(id)arg1 size:(int)arg2;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (id)name;

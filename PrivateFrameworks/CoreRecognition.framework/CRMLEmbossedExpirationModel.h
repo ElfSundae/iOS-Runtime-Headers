@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CoreRecognition.framework/CoreRecognition
  */
 
-@interface CRMLEmbossedExpirationModel : CRMLModel
+@interface CRMLEmbossedExpirationModel : CRMLCCModel
 
 - (int)classCount;
 - (const int*)codeMap;

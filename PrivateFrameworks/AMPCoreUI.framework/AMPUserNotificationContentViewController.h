@@ -3,6 +3,8 @@
  */
 
 @interface AMPUserNotificationContentViewController : UIViewController {
+    NSString * _audioSessionCategory;
+    unsigned long long  _audioSessionCategoryOptions;
     <AMPUserNotificationContentDelegate> * _delegate;
     UIImageView * _imageView;
     UILabel * _textLabel;
@@ -11,6 +13,8 @@
     AVPlayerViewController * _videoPlayerController;
 }
 
+@property (nonatomic, retain) NSString *audioSessionCategory;
+@property (nonatomic) unsigned long long audioSessionCategoryOptions;
 @property (nonatomic) <AMPUserNotificationContentDelegate> *delegate;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } expectedContentSize;
 @property (nonatomic, readonly) UIImageView *imageView;
@@ -20,6 +24,8 @@
 @property (nonatomic, readonly) AVPlayerViewController *videoPlayerController;
 
 - (void).cxx_destruct;
+- (id)audioSessionCategory;
+- (unsigned long long)audioSessionCategoryOptions;
 - (id)delegate;
 - (struct CGSize { double x1; double x2; })expectedContentSize;
 - (id)imageView;
@@ -28,6 +34,8 @@
 - (void)loadView;
 - (void)mediaPause;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
+- (void)setAudioSessionCategory:(id)arg1;
+- (void)setAudioSessionCategoryOptions:(unsigned long long)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setPreferredContentSize:(struct CGSize { double x1; double x2; })arg1;
 - (id)textLabel;

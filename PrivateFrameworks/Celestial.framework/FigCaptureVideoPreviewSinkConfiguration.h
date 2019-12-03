@@ -6,12 +6,25 @@
     bool  _depthDataDeliveryEnabled;
     bool  _filterRenderingEnabled;
     NSArray * _filters;
+    float  _portraitLightingEffectStrength;
+    double  _primaryCaptureRectAspectRatio;
+    struct CGPoint { 
+        double x; 
+        double y; 
+    }  _primaryCaptureRectCenter;
+    bool  _primaryCaptureRectModificationEnabled;
+    long long  _primaryCaptureRectUniqueID;
     float  _simulatedAperture;
 }
 
 @property (nonatomic) bool depthDataDeliveryEnabled;
 @property (nonatomic) bool filterRenderingEnabled;
 @property (nonatomic, copy) NSArray *filters;
+@property (nonatomic) float portraitLightingEffectStrength;
+@property (nonatomic) double primaryCaptureRectAspectRatio;
+@property (nonatomic) struct CGPoint { double x1; double x2; } primaryCaptureRectCenter;
+@property (nonatomic) bool primaryCaptureRectModificationEnabled;
+@property (nonatomic) long long primaryCaptureRectUniqueID;
 @property (nonatomic) float simulatedAperture;
 
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -21,11 +34,22 @@
 - (id)description;
 - (bool)filterRenderingEnabled;
 - (id)filters;
+- (id)init;
 - (id)initWithXPCEncoding:(id)arg1;
 - (bool)isEqual:(id)arg1;
+- (float)portraitLightingEffectStrength;
+- (double)primaryCaptureRectAspectRatio;
+- (struct CGPoint { double x1; double x2; })primaryCaptureRectCenter;
+- (bool)primaryCaptureRectModificationEnabled;
+- (long long)primaryCaptureRectUniqueID;
 - (void)setDepthDataDeliveryEnabled:(bool)arg1;
 - (void)setFilterRenderingEnabled:(bool)arg1;
 - (void)setFilters:(id)arg1;
+- (void)setPortraitLightingEffectStrength:(float)arg1;
+- (void)setPrimaryCaptureRectAspectRatio:(double)arg1;
+- (void)setPrimaryCaptureRectCenter:(struct CGPoint { double x1; double x2; })arg1;
+- (void)setPrimaryCaptureRectModificationEnabled:(bool)arg1;
+- (void)setPrimaryCaptureRectUniqueID:(long long)arg1;
 - (void)setSimulatedAperture:(float)arg1;
 - (float)simulatedAperture;
 - (int)sinkType;

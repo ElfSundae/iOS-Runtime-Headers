@@ -2,13 +2,14 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUTabbedLibraryViewController : UITabBarController <PLAssetContainerListChangeObserver, PLAssetContainerObserver, PLDismissableViewController, PLInvitationRecordsObserver, PLRootLibraryNavigationController, PXChangeObserver, PXSettingsKeyObserver, UINavigationControllerDelegate> {
+@interface PUTabbedLibraryViewController : UITabBarController <PLAssetContainerListChangeObserver, PLAssetContainerObserver, PLInvitationRecordsObserver, PXChangeObserver, PXForcedDismissableViewController, PXRootLibraryNavigationController, PXSettingsKeyObserver, UINavigationControllerDelegate> {
     PXForYouBadgeManager * _badgeManager;
     <PUTabbedLibraryViewControllerContainerDelegate> * _containerDelegate;
     NSMutableIndexSet * _everDisplayedContentModes;
     NSArray * _excludedContentModes;
     NSMutableDictionary * _filteredAlbumListsByContentMode;
     PUImportViewController * _importViewController;
+    PXProgrammaticNavigationRequest * _pendingNavigationRequest;
     int  _pendingSelectedContentMode;
     bool  _px_hidesTabBarForRegularHorizontalSizeClass;
     PUSessionInfo * _sessionInfo;
@@ -26,6 +27,7 @@
 @property (nonatomic, copy) NSArray *excludedContentModes;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) PUImportViewController *importViewController;
+@property (nonatomic, retain) PXProgrammaticNavigationRequest *pendingNavigationRequest;
 @property (setter=px_setHidesTabBarForRegularHorizontalSizeClass:, nonatomic) bool px_hidesTabBarForRegularHorizontalSizeClass;
 @property (nonatomic, readonly) NSArray *rootViewControllers;
 @property (nonatomic) int selectedContentMode;
@@ -38,17 +40,16 @@
 + (bool)_shouldForwardViewWillTransitionToSize;
 
 - (void).cxx_destruct;
-- (struct NSObject { Class x1; }*)_albumListForContentMode:(int)arg1;
-- (void)_applicationWillEnterForeground:(id)arg1;
+- (struct NSObject { Class x1; }*)_albumListForContentMode:(int)arg1 library:(id)arg2;
 - (struct NSObject { Class x1; }*)_availableAlbumToNavigateToAsset:(id)arg1 preferredAlbum:(struct NSObject { Class x1; }*)arg2;
 - (int)_contentModeForAlbum:(struct NSObject { Class x1; }*)arg1;
+- (int)_contentModeForDestination:(id)arg1;
 - (int)_contentModeForNavigationController:(id)arg1;
 - (void)_didFinishPostingNotifications:(id)arg1;
 - (void)_enumerateViewControllersWithBlock:(id /* block */)arg1;
 - (id)_existingNavigationControllerForContentMode:(int)arg1;
-- (void)_handleFetchedMomentShare:(id)arg1 error:(id)arg2 timedOut:(bool)arg3;
+- (void)_handleFetchedMomentShare:(id)arg1 atURL:(id)arg2 error:(id)arg3 timedOut:(bool)arg4;
 - (bool)_isNavigationControllerBadged:(id)arg1;
-- (void)_libraryDidChange:(id)arg1;
 - (void)_navigateToAlbum:(struct NSObject { Class x1; }*)arg1 andPerformAction:(int)arg2 initiallyHidden:(bool)arg3 animated:(bool)arg4 completion:(id /* block */)arg5;
 - (void)_navigateToAsset:(id)arg1 andPerformAction:(int)arg2 inAlbum:(struct NSObject { Class x1; }*)arg3 animated:(bool)arg4;
 - (void)_navigateToContentMode:(int)arg1 defaultLocationIfNeverDisplayed:(bool)arg2 animated:(bool)arg3;
@@ -62,6 +63,7 @@
 - (bool)_navigationControllerShouldUseBuiltinInteractionController:(id)arg1;
 - (id)_newNavigationControllerWithRootController:(id)arg1;
 - (id)_nextCloudFeedNavigatingObject;
+- (void)_sceneWillEnterForeground:(id)arg1;
 - (id)_snapBackRootViewControllerInNavigationController:(id)arg1;
 - (id)_tabRootViewControllerInNavigationController:(id)arg1;
 - (void)_updateRootViewControllersInNavigationControllers:(id)arg1 tabBarHidden:(bool)arg2;
@@ -74,6 +76,7 @@
 - (bool)assetIsAvailableForNavigationInMoments:(id)arg1;
 - (bool)assetIsAvailableForNavigationInMoments:(id)arg1 refetchSectionsIfNeeded:(bool)arg2;
 - (id)badgeManager;
+- (bool)canRouteToDestination:(id)arg1;
 - (bool)cloudFeedAssetIsAvailableForNavigation:(id)arg1;
 - (bool)cloudFeedCommentIsAvailableForNavigation:(id)arg1;
 - (bool)cloudFeedInvitationForAlbumIsAvailableForNavigation:(id)arg1;
@@ -97,11 +100,12 @@
 - (void)navigateToCloudFeedWithCompletion:(id /* block */)arg1;
 - (void)navigateToComment:(id)arg1 forAsset:(id)arg2 animated:(bool)arg3;
 - (void)navigateToContentMode:(int)arg1 animated:(bool)arg2 completion:(id /* block */)arg3;
+- (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(id /* block */)arg3;
+- (void)navigateToInitialLocationInCurrentNavigationController;
 - (void)navigateToInitialLocationInNavigationController:(id)arg1;
 - (void)navigateToInvitationCMMWithIdentifier:(id)arg1 animated:(bool)arg2;
 - (void)navigateToMemoryWithLocalIdentifier:(id)arg1;
 - (void)navigateToMomentShareWithURL:(id)arg1 animated:(bool)arg2;
-- (void)navigateToOneUpForAsset:(id)arg1 inAssetContainer:(id)arg2 animated:(bool)arg3;
 - (void)navigateToOneYearAgoSearch;
 - (void)navigateToPeopleAlbumAnimated:(bool)arg1 revealPersonWithLocalIdentifier:(id)arg2 completion:(id /* block */)arg3;
 - (void)navigateToPhotosContentBottomAnimated:(bool)arg1;
@@ -117,15 +121,19 @@
 - (id)navigationController:(id)arg1 interactionControllerForAnimationController:(id)arg2;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(bool)arg3;
 - (id)newRootViewControllerForContentMode:(int)arg1;
+- (id)nextExistingParticipantOnRouteToDestination:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void*)arg3;
+- (id)pendingNavigationRequest;
 - (id)ppt_navigationControllerForContentMode:(int)arg1;
 - (void)prepareForDefaultImageSnapshot;
 - (bool)prepareForDismissingForced:(bool)arg1;
 - (bool)pu_shouldSelectViewController:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })px_frameForTabItem:(unsigned long long)arg1 inCoordinateSpace:(id)arg2;
+- (id)px_gridPresentation;
 - (bool)px_hidesTabBarForRegularHorizontalSizeClass;
 - (id)px_navigateToMemoryWithLocalIdentifier:(id)arg1;
 - (void)px_setHidesTabBarForRegularHorizontalSizeClass:(bool)arg1;
+- (void)px_switchToTabForDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(id /* block */)arg3;
 - (id)rootViewControllers;
 - (int)selectedContentMode;
 - (id)selectedNavigationController;
@@ -135,6 +143,7 @@
 - (void)setExcludedContentModes:(id)arg1;
 - (void)setImportViewController:(id)arg1;
 - (void)setImportViewController:(id)arg1 animated:(bool)arg2;
+- (void)setPendingNavigationRequest:(id)arg1;
 - (void)setSelectedContentMode:(int)arg1;
 - (void)setSelectedViewController:(id)arg1;
 - (void)setSessionInfo:(id)arg1;

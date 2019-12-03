@@ -19,6 +19,7 @@
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;
 - (NSData *)jsonData;
+- (unsigned long long)numberOfRows;
 - (NSArray *)punchoutOptions;
 - (_SFPBPunchout *)punchoutOptionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)punchoutOptionsCount;
@@ -30,6 +31,7 @@
 - (void)setCardSections:(NSArray *)arg1;
 - (void)setHasBottomPadding:(bool)arg1;
 - (void)setHasTopPadding:(bool)arg1;
+- (void)setNumberOfRows:(unsigned long long)arg1;
 - (void)setPunchoutOptions:(NSArray *)arg1;
 - (void)setPunchoutPickerDismissText:(NSString *)arg1;
 - (void)setPunchoutPickerTitle:(NSString *)arg1;

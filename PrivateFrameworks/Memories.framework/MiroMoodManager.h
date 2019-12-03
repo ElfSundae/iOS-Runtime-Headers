@@ -47,15 +47,14 @@
 + (id)blueprintForBlueprint:(id)arg1 replaceProjectFilterByID:(id)arg2;
 + (id)blueprintForBlueprint:(id)arg1 replaceSongByID:(id)arg2 shouldLockSong:(bool)arg3;
 + (id)blueprintForBlueprint:(id)arg1 replaceSongByiTunesMediaID:(unsigned long long)arg2;
-+ (id)blueprintForBlueprint:(id)arg1 replaceSongWithKeywords:(id)arg2 shouldLockSong:(bool)arg3;
++ (id)blueprintForBlueprint:(id)arg1 replaceSongWithKeywords:(id)arg2 musicGenreDistribution:(id)arg3 shouldLockSong:(bool)arg4;
 + (id)blueprintForBlueprint:(id)arg1 replaceTitleByID:(id)arg2;
 + (id)blueprintForBlueprint:(id)arg1 replaceTitleByID:(id)arg2 orChangeAnimation:(bool)arg3;
 + (id)blueprintForBlueprint:(id)arg1 replaceTitleByID:(id)arg2 shouldLockTitle:(bool)arg3;
 + (id)blueprintForBlueprint:(id)arg1 replaceTitleSettingsEffectIDOnly:(id)arg2;
 + (id)blueprintForBlueprint:(id)arg1 titleValidforClipLength:(id)arg2;
-+ (id)blueprintFromFontName:(id)arg1;
 + (bool)blueprintTitleSupportsSubtitle:(id)arg1;
-+ (id)blueprintWithMood:(id)arg1;
++ (id)blueprintWithMood:(id)arg1 keywords:(id)arg2 musicGenreDistribution:(id)arg3 allowNonLocalSongs:(bool)arg4;
 + (id)blueprintWithNewSongForBlueprint:(id)arg1;
 + (id)blueprintWithNewTitleStyleForBlueprint:(id)arg1;
 + (id)blueprintWithPortraitSafeTitleForBlueprint:(id)arg1;
@@ -121,7 +120,7 @@
 - (id)_prunedTitleList:(id)arg1 forMood:(id)arg2 andClipLength:(id)arg3;
 - (id)_prunedTitleList:(id)arg1 forMood:(id)arg2 defaultsOnly:(bool)arg3;
 - (id)_prunedTitlesRemovingDuplicateEffects:(id)arg1;
-- (id)_randomBlueprintForMoodID:(id)arg1 andSongID:(id)arg2 excludingPartsInMood:(id)arg3 defaultsOnly:(bool)arg4;
+- (id)_randomBlueprintForMoodID:(id)arg1 keywords:(id)arg2 musicGenreDistribution:(id)arg3 andSongID:(id)arg4 excludingPartsInMood:(id)arg5 defaultsOnly:(bool)arg6;
 - (void)_removeObserverForAvalaibleSongChange;
 - (void)_resetSongList;
 - (unsigned long long)_totalTransitionWeightsForEditStyleDict:(id)arg1;

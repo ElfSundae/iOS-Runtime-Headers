@@ -25,6 +25,7 @@
 - (void)fxTime:(union { double x1; struct { /* ? */ } *x2; }*)arg1 fromFrame:(double)arg2 forPlugIn:(id)arg3;
 - (float)getBlendingGamma;
 - (struct PCRect<float> { float x1; float x2; float x3; float x4; })getCropRectFromImage:(id)arg1 toImage:(id)arg2;
+- (bool)getCropRectFromImage:(id)arg1 toImage:(id)arg2 output:(struct PCRect<float> { float x1; float x2; float x3; float x4; }*)arg3;
 - (bool)getHeliumImage:(id*)arg1 layerOffsetX:(double*)arg2 layerOffsetY:(double*)arg3 requestInfo:(struct { union { double x_1_1_1; struct { /* ? */ } *x_1_1_2; } x1; unsigned long long x2; unsigned long long x3; double x4; double x5; unsigned long long x6; })arg4 fromParm:(int)arg5 atTime:(union { double x1; struct { /* ? */ } *x2; })arg6;
 - (bool)getHeliumImage:(id*)arg1 source:(bool)arg2 withInfo:(struct { union { double x_1_1_1; struct { /* ? */ } *x_1_1_2; } x1; unsigned long long x2; unsigned long long x3; double x4; double x5; unsigned long long x6; })arg3 atTime:(union { double x1; struct { /* ? */ } *x2; })arg4;
 - (struct PCRect<float> { float x1; float x2; float x3; float x4; })getImageBoundary:(id)arg1;
@@ -41,6 +42,7 @@
 - (double)secondsFromFxTime:(union { double x1; struct { /* ? */ } *x2; })arg1;
 - (void)setIgnoresPixelAspectRatio:(bool)arg1;
 - (struct HGRef<HGNode> { struct HGNode {} *x1; })smear:(struct HGRef<HGNode> { struct HGNode {} *x1; })arg1 fromImage:(id)arg2 toImage:(id)arg3;
+- (bool)smear:(struct HGRef<HGNode> { struct HGNode {} *x1; })arg1 fromImage:(id)arg2 toImage:(id)arg3 resultNode:(struct HGRef<HGNode> { struct HGNode {} *x1; }*)arg4;
 - (void)transform:(struct HGRef<HGNode> { struct HGNode {} *x1; }*)arg1 fromImage:(id)arg2 toImage:(id)arg3 fit:(bool)arg4;
 - (struct HGRef<HGNode> { struct HGNode {} *x1; })transformFromImage:(id)arg1 toImage:(id)arg2 fit:(bool)arg3;
 - (bool)variesOverTime;

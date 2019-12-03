@@ -16,7 +16,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NCNotificationRequest *notificationRequest;
-@property (nonatomic) NCNotificationAction *presentationSourceAction;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly, copy) NSString *title;
 

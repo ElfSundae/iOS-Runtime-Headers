@@ -19,7 +19,7 @@
 
 - (void).cxx_destruct;
 - (void)addEntity:(id)arg1 isDurable:(bool)arg2;
-- (void)addEntry:(id)arg1 tokenizedNewEntity:(id)arg2;
+- (void)addEntry:(id)arg1 tokenizedNewEntity:(id)arg2 source:(unsigned char)arg3 type:(unsigned char)arg4;
 - (bool)areStringCharactersWhitelisted:(id)arg1;
 - (struct USet { }*)exemplarSetForSupportedLocales;
 - (id)filterWord:(id)arg1;
@@ -30,9 +30,12 @@
 - (id)lexicons;
 - (void)reloadRecents;
 - (void)removeAllEntries;
-- (void)removeEntry:(id)arg1 tokenizedNewEntity:(id)arg2;
+- (void)removeEntriesBySource:(unsigned char)arg1;
+- (void)removeEntry:(id)arg1;
+- (void)removeEntry:(id)arg1 source:(unsigned char)arg2;
 - (void)setFilteringBlock:(id /* block */)arg1;
 - (void)setLexicons:(id)arg1;
 - (void)updateQueue:(id)arg1 newEntity:(id)arg2;
+- (void)updateQueueFromString:(id)arg1 newEntity:(id)arg2;
 
 @end

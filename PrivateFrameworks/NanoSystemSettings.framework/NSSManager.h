@@ -18,13 +18,18 @@
 + (void)initialize;
 
 - (void).cxx_destruct;
+- (void)cancelFileTransfersInProgress;
 - (id)connection;
 - (void)dealloc;
+- (void)deleteDiagnosticLogFile:(id)arg1 withResult:(id /* block */)arg2;
 - (void)enableAirplaneMode:(bool)arg1 completionHandler:(id /* block */)arg2;
 - (id)externalQueue;
+- (bool)fileTransferInProgress:(id)arg1;
 - (void)getAboutInfo:(id /* block */)arg1;
 - (void)getAccountsInfo:(id /* block */)arg1;
 - (void)getAccountsInfoForAccountType:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)getDiagnosticLogFileFromGizmo:(id)arg1 withResults:(id /* block */)arg2;
+- (void)getDiagnosticLogsInfo:(id /* block */)arg1;
 - (void)getLegalDocuments:(id /* block */)arg1;
 - (void)getLocalesInfo:(id /* block */)arg1;
 - (void)getProfileWithIdentifier:(id)arg1 completionHandler:(id /* block */)arg2;

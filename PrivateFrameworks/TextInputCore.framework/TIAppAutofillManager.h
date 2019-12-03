@@ -11,6 +11,7 @@
     IMOneTimeCodeAccelerator * _oneTimeCodeAccelerator;
     NSObject<OS_dispatch_queue> * _oneTimeCodeAcceleratorQueue;
     NSDictionary * _queuedCustomInfo;
+    TIKeyboardSecureCandidateRenderer * _secureCandidateRenderer;
 }
 
 @property (nonatomic, retain) NSString *clientIdentifierForLastAutofillGeneration;
@@ -21,18 +22,20 @@
 @property (nonatomic, retain) IMOneTimeCodeAccelerator *oneTimeCodeAccelerator;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *oneTimeCodeAcceleratorQueue;
 @property (nonatomic, retain) NSDictionary *queuedCustomInfo;
+@property (nonatomic, readonly) TIKeyboardSecureCandidateRenderer *secureCandidateRenderer;
 
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
+- (bool)_simulatesAutofillCandidates;
 - (id)clientIdentifierForLastAutofillGeneration;
 - (id)clientIdentifierForLastKeyboardSync;
 - (id)currentOneTimeCode;
 - (id)customInfoFromCredential:(id)arg1;
 - (id)documentIdentifierForLastAutofillGeneration;
-- (id)generateAutofillFormCandidatesWithSecureCandidateRenderer:(id)arg1 withRenderTraits:(id)arg2 withKeyboardState:(id)arg3;
-- (id)generateAutofillFormSuggestedUsernameWithSecureCandidateRenderer:(id)arg1 withRenderTraits:(id)arg2 withKeyboardState:(id)arg3;
-- (id)generateOneTimeCodeCandidatesWithSecureCandidateRenderer:(id)arg1 withRenderTraits:(id)arg2 withKeyboardState:(id)arg3;
+- (id)generateAutofillFormCandidatesWithRenderTraits:(id)arg1 withKeyboardState:(id)arg2;
+- (id)generateAutofillFormSuggestedUsernameWithRenderTraits:(id)arg1 withKeyboardState:(id)arg2;
+- (id)generateOneTimeCodeCandidatesWithRenderTraits:(id)arg1 withKeyboardState:(id)arg2;
 - (id)getCredentialsWithApplicationIdentifier:(id)arg1 autofillContext:(id)arg2;
 - (id)initPrivate;
 - (bool)isValidedString:(id)arg1;
@@ -45,6 +48,7 @@
 - (id)oneTimeCodeAcceleratorQueue;
 - (void)pushQueuedCredentialIfNecessaryForKeyboardState:(id)arg1;
 - (id)queuedCustomInfo;
+- (id)secureCandidateRenderer;
 - (void)setClientIdentifierForLastAutofillGeneration:(id)arg1;
 - (void)setClientIdentifierForLastKeyboardSync:(id)arg1;
 - (void)setCurrentOneTimeCode:(id)arg1;

@@ -24,7 +24,7 @@
 - (void)deregisterRemoteRequestHandler:(id)arg1;
 - (id)init;
 - (unsigned int)powerAssertion;
-- (void)registerRemoteRequestHandler:(id)arg1;
+- (void)registerRemoteRequestHandler:(id)arg1 forSessionID:(id)arg2;
 - (void)setPowerAssertion:(unsigned int)arg1;
 - (id)workQueue;
 

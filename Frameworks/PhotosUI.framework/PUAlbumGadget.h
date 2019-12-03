@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUAlbumGadget : NSObject <PXGadget> {
+@interface PUAlbumGadget : NSObject <PXDiagnosticsEnvironment, PXGadget> {
     <PUAlbumGadgetDelegate> * _albumGadgetDelegate;
     PUAlbumListCellContentView * _albumListCellContentView;
     PHCollection * _collection;
@@ -13,13 +13,13 @@
     bool  _needsUpdate;
 }
 
-@property (nonatomic, readonly) const struct __CFString { }*accessoryButtonEventTrackerKey;
 @property (nonatomic, readonly) NSString *accessoryButtonTitle;
 @property (nonatomic, readonly) unsigned long long accessoryButtonType;
 @property (nonatomic) <PUAlbumGadgetDelegate> *albumGadgetDelegate;
 @property (nonatomic, readonly) PUAlbumListCellContentView *albumListCellContentView;
 @property (nonatomic, readonly) PUAlbumListCellContentViewHelper *albumListCellContentViewHelper;
 @property (nonatomic, retain) PHCollection *collection;
+@property (nonatomic, readonly) Class collectionViewItemClass;
 @property (getter=isContentViewVisible, nonatomic) bool contentViewVisible;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <PXGadgetDelegate> *delegate;
@@ -60,6 +60,7 @@
 - (id)initWithCollection:(id)arg1 albumGadgetDelegate:(id)arg2;
 - (bool)isContentViewVisible;
 - (bool)needsUpdate;
+- (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint { double x1; double x2; })arg1 inCoordinateSpace:(id)arg2;
 - (void)reconfigure;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })rectForStackItemAtIndex:(long long)arg1 inCoordinateSpace:(id)arg2;
 - (void)setAlbumGadgetDelegate:(id)arg1;

@@ -29,6 +29,7 @@
         double x; 
         double y; 
     }  _scaleAnchorOffset;
+    id /* block */  _videoLayerReadyForDisplayChangeHandler;
     ISWrappedAVAudioSession * _wrappedAudioSession;
 }
 
@@ -42,10 +43,12 @@
 @property (readonly, copy) NSString *description;
 @property (getter=isDisplayingPhoto, nonatomic, readonly) bool displayingPhoto;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool isVideoReadyForDisplay;
 @property (nonatomic, retain) UIImage *overrideImage;
 @property (nonatomic, retain) ISBasePlayer *player;
 @property (nonatomic) struct CGPoint { double x1; double x2; } scaleAnchorOffset;
 @property (readonly) Class superclass;
+@property (nonatomic, copy) id /* block */ videoLayerReadyForDisplayChangeHandler;
 @property (setter=_setWrappedAudioSession:, nonatomic, retain) ISWrappedAVAudioSession *wrappedAudioSession;
 
 + (Class)playerClass;
@@ -61,6 +64,7 @@
 - (void)_updatePhotoView;
 - (void)_updatePlayerAudioSession;
 - (id)_videoView;
+- (void)_videoViewReadyForDisplayDidChange;
 - (void)applyOutputInfo:(id)arg1 withTransitionOptions:(id)arg2 completion:(id /* block */)arg3;
 - (void)applyScale:(double)arg1 withTransitionOptions:(id)arg2 completion:(id /* block */)arg3;
 - (void)audioSessionDidChange;
@@ -71,6 +75,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (bool)isDisplayingPhoto;
+- (bool)isVideoReadyForDisplay;
 - (void)layoutSubviews;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void*)arg3;
 - (id)overrideImage;
@@ -85,7 +90,9 @@
 - (void)setOverrideImage:(id)arg1;
 - (void)setPlayer:(id)arg1;
 - (void)setScaleAnchorOffset:(struct CGPoint { double x1; double x2; })arg1;
+- (void)setVideoLayerReadyForDisplayChangeHandler:(id /* block */)arg1;
 - (void)unregisterChangeObserver:(id)arg1;
+- (id /* block */)videoLayerReadyForDisplayChangeHandler;
 - (id)wrappedAudioSession;
 
 @end

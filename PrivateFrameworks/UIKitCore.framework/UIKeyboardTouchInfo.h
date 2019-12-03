@@ -3,6 +3,7 @@
  */
 
 @interface UIKeyboardTouchInfo : NSObject {
+    long long  _continuousPathState;
     bool  _dragged;
     int  _fingerID;
     struct CGPoint { 
@@ -17,11 +18,13 @@
     UIKBTree * _key;
     UIKBTree * _keyplane;
     bool  _maySuppressUpAction;
+    unsigned long long  _processedTouchCount;
     UIKBTree * _slidOffKey;
     int  _stage;
-    UIKBTouchState * _touch;
+    NSMutableArray * _touchHistory;
 }
 
+@property (nonatomic) long long continuousPathState;
 @property (nonatomic) bool dragged;
 @property (nonatomic) int fingerID;
 @property (nonatomic) struct CGPoint { double x1; double x2; } initialDragPoint;
@@ -30,19 +33,26 @@
 @property (nonatomic, retain) UIKBTree *key;
 @property (nonatomic, retain) UIKBTree *keyplane;
 @property (nonatomic) bool maySuppressUpAction;
+@property (nonatomic) unsigned long long processedTouchCount;
 @property (nonatomic, retain) UIKBTree *slidOffKey;
 @property (nonatomic) int stage;
-@property (nonatomic, retain) UIKBTouchState *touch;
+@property (nonatomic, readonly) UIKBTouchState *touch;
+@property (nonatomic, readonly) NSMutableArray *touchHistory;
 
+- (void)addTouch:(id)arg1;
+- (long long)continuousPathState;
 - (void)dealloc;
 - (bool)dragged;
 - (int)fingerID;
+- (id)init;
 - (struct CGPoint { double x1; double x2; })initialDragPoint;
 - (int)initialKeyState;
 - (struct CGPoint { double x1; double x2; })initialPoint;
 - (id)key;
 - (id)keyplane;
 - (bool)maySuppressUpAction;
+- (unsigned long long)processedTouchCount;
+- (void)setContinuousPathState:(long long)arg1;
 - (void)setDragged:(bool)arg1;
 - (void)setFingerID:(int)arg1;
 - (void)setInitialDragPoint:(struct CGPoint { double x1; double x2; })arg1;
@@ -51,11 +61,12 @@
 - (void)setKey:(id)arg1;
 - (void)setKeyplane:(id)arg1;
 - (void)setMaySuppressUpAction:(bool)arg1;
+- (void)setProcessedTouchCount:(unsigned long long)arg1;
 - (void)setSlidOffKey:(id)arg1;
 - (void)setStage:(int)arg1;
-- (void)setTouch:(id)arg1;
 - (id)slidOffKey;
 - (int)stage;
 - (id)touch;
+- (id)touchHistory;
 
 @end

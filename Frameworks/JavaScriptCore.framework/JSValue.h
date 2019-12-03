@@ -15,6 +15,7 @@
 @property (readonly) bool isNumber;
 @property (readonly) bool isObject;
 @property (readonly) bool isString;
+@property (readonly) bool isSymbol;
 @property (readonly) bool isUndefined;
 
 // Image: /System/Library/Frameworks/JavaScriptCore.framework/JavaScriptCore
@@ -92,28 +93,10 @@
 
 // Image: /System/Library/PrivateFrameworks/ITMLKit.framework/ITMLKit
 
-- (id)_ikdb_globalObject;
-- (id)_ikdo_boxedInstance;
-- (void)_ikdo_setBoxedInstance:(id)arg1;
-- (bool)ikdb_isArray;
-- (bool)ikdb_isObject;
-- (id)ikdb_prototype;
-- (id)ikdo_box;
-- (id)ikdo_toDataObservableOfClass:(Class)arg1;
-
-// Image: /System/Library/PrivateFrameworks/NeutrinoCore.framework/NeutrinoCore
-
-+ (id)nujs_valueWithFunction:(id)arg1 params:(id)arg2 body:(id)arg3 sourceURL:(id)arg4 inContext:(id)arg5;
-
-- (id)nu_unwrapJSValue;
-- (id)nujs_callWithArguments:(id)arg1 thisObject:(id)arg2;
-- (id)nujs_functionSource;
-- (bool)nujs_isFunction;
-- (bool)nujs_isString;
-- (id)nujs_properties;
-- (id)nujs_toArray;
-- (id)nujs_toDictionary;
-- (id)nujs_toObject;
+- (id)_ikdt_globalObject;
+- (bool)ikdt_isArray;
+- (bool)ikdt_isObject;
+- (id)ikdt_prototype;
 
 // Image: /System/Library/PrivateFrameworks/SlideshowKit.framework/Frameworks/OpusKit.framework/OpusKit
 

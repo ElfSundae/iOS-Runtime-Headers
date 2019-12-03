@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CoreDAV.framework/CoreDAV
  */
 
-@interface CoreDAVContainerSyncTaskGroup : CoreDAVTaskGroup <CoreDAVDeleteTaskDelegate, CoreDAVGetTaskDelegate, CoreDAVPutTaskDelegate> {
+@interface CoreDAVContainerSyncTaskGroup : CoreDAVTaskGroup <CoreDAVDeleteTaskDelegate, CoreDAVGetTaskDelegate, CoreDAVPropPatchTaskDelegate, CoreDAVPutTaskDelegate> {
     NSMutableArray * _actions;
     bool  _actionsOnly;
     NSURL * _addMemberURL;
@@ -95,6 +95,7 @@
 - (id)previousCTag;
 - (id)previousSyncToken;
 - (void)propFindTask:(id)arg1 parsedResponses:(id)arg2 error:(id)arg3;
+- (void)propPatchTask:(id)arg1 parsedResponses:(id)arg2 error:(id)arg3;
 - (void)putTask:(id)arg1 completedWithNewETag:(id)arg2 error:(id)arg3;
 - (void)receivedPropertiesToValues:(id)arg1 forURL:(id)arg2;
 - (void)setActionsOnly:(bool)arg1;

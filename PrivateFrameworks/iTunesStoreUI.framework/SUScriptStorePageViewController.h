@@ -36,6 +36,7 @@
 + (id)webScriptNameForKeyName:(id)arg1;
 + (id)webScriptNameForSelector:(SEL)arg1;
 
+- (void).cxx_destruct;
 - (id)URLStrings;
 - (id)URLs;
 - (id)_className;
@@ -48,7 +49,6 @@
 - (id)alwaysDispatchesScrollEvents;
 - (void)applyURLStrings:(id)arg1 toViewController:(id)arg2;
 - (id)attributeKeys;
-- (void)dealloc;
 - (bool)doubleTapEnabled;
 - (bool)flashesScrollIndicators;
 - (long long)indicatorStyleGray;

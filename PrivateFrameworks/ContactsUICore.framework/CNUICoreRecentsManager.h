@@ -27,6 +27,7 @@
 - (id)recentsContactsMatchingHandles:(id)arg1;
 - (id)recentsLibrary;
 - (void)removeRecents:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)removeRecentsWithIdentifiers:(id)arg1 domain:(id)arg2 completionHandler:(id /* block */)arg3;
 - (id)workQueue;
 
 @end

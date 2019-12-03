@@ -3,16 +3,15 @@
  */
 
 @interface NTKPhotoAlbumObserver : NSObject {
-    NPTOPreference * _albumPreferenceObserver;
-    NSHashTable * _observers;
+    NSMutableDictionary * _deviceAlbumObservers;
 }
 
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
-- (void)_startOrStopObservingIfNecessary;
-- (void)addObserver:(id)arg1;
+- (void)_startOrStopObservingIfNecessaryForDevice:(id)arg1;
+- (void)addObserver:(id)arg1 forDevice:(id)arg2;
 - (id)init;
-- (void)removeObserver:(id)arg1;
+- (void)removeObserver:(id)arg1 forDevice:(id)arg2;
 
 @end

@@ -42,13 +42,13 @@
 - (void).cxx_destruct;
 - (bool)_assetContainsMetadataKey:(id)arg1;
 - (id)asset;
+- (Class)balloonViewClassForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (id)bbPreviewFillToSize:(struct CGSize { double x1; double x2; })arg1;
 - (struct CGSize { double x1; double x2; })bbSize;
 - (bool)canExport;
 - (bool)checkedVideoInfo;
 - (void)export:(id)arg1;
 - (id)generatePreviewFromThumbnail:(id)arg1 width:(double)arg2 orientation:(BOOL)arg3;
-- (bool)generatePreviewOutOfProcess;
 - (id)generateThumbnailFillToSize:(struct CGSize { double x1; double x2; })arg1 contentAlignmentInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg2;
 - (id)generateThumbnailForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (bool)hasNoVideoTrack;
@@ -62,7 +62,6 @@
 - (int)mediaType;
 - (Class)previewBalloonViewClass;
 - (id)previewCacheKeyWithOrientation:(BOOL)arg1;
-- (id)previewCachesFileURLWithOrientation:(BOOL)arg1 extension:(id)arg2;
 - (id)previewForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (id)previewItemTitle;
 - (struct CGSize { double x1; double x2; })pxSize;

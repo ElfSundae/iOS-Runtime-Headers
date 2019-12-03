@@ -2,10 +2,10 @@
    Image: /System/Library/PrivateFrameworks/AppPredictionInternal.framework/AppPredictionInternal
  */
 
-@interface _ATXFeedback : NSObject {
+@interface _ATXFeedback : NSObject <_ATXFeedbackProtocol> {
+    NSString * _abGroupIdentifier;
     double  _priorAlpha;
     double  _priorBeta;
-    double  _priorMean;
     _ATXDataStore * _store;
     _ATXInternalUninstallNotification * _uninstallNotificationListener;
 }

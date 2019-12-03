@@ -6,6 +6,7 @@
     NSDate * _date;
     bool  _delete;
     unsigned long long  _fetchBatchSize;
+    NSData * _fetchData;
     unsigned long long  _fetchLimit;
     long long  _resultType;
     NSDictionary * _token;
@@ -15,6 +16,7 @@
 @property (nonatomic, readonly, retain) NSDate *date;
 @property (nonatomic, readonly) bool delete;
 @property (nonatomic, readonly) unsigned long long fetchBatchSize;
+@property (nonatomic, readonly, retain) NSData *fetchData;
 @property (nonatomic, readonly) unsigned long long fetchLimit;
 @property (nonatomic, readonly) long long resultType;
 @property (nonatomic, readonly, retain) NSDictionary *token;
@@ -27,6 +29,7 @@
 - (bool)delete;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)fetchBatchSize;
+- (id)fetchData;
 - (unsigned long long)fetchLimit;
 - (id)initForRequest:(id)arg1;
 - (id)initWithCoder:(id)arg1;

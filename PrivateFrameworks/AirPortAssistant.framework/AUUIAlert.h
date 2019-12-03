@@ -16,7 +16,6 @@
     long long  destructiveButtonIndex;
     NSString * destructiveButtonTitle;
     NSString * message;
-    bool  modernAlerts;
     UIAlertAction * okAction;
     long long  okButtonIndex;
     NSString * okButtonTitle;

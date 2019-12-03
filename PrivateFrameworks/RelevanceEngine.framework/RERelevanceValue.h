@@ -2,14 +2,14 @@
    Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
  */
 
-@interface RERelevanceValue : NSObject <NSCopying> {
+@interface RERelevanceValue : NSObject <NSCopying, REAutomaticExportedInterface> {
     unsigned long long  _hash;
     bool  _isHistoric;
-    NSArray * _values;
+    RETaggedFeatureValueArray * _values;
 }
 
 @property (nonatomic, readonly) bool isHistoric;
-@property (nonatomic, readonly) NSArray *values;
+@property (nonatomic, readonly) RETaggedFeatureValueArray *values;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

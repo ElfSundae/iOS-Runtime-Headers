@@ -22,6 +22,7 @@
     NSDictionary * _escrowRecord;
     bool  _fmipRecovery;
     NSString * _fmipUUID;
+    NSString * _hsa2CachedPrerecordUUID;
     NSString * _iCloudEnv;
     NSData * _iCloudIdentityData;
     NSString * _iCloudPassword;
@@ -32,6 +33,7 @@
     NSDictionary * _metadataHash;
     NSString * _oldEMCSCred;
     NSString * _passphrase;
+    EscrowPrerecord * _prerecord;
     NSObject<OS_dispatch_queue> * _queue;
     NSString * _recordID;
     NSString * _recoveryKey;
@@ -39,6 +41,7 @@
     bool  _silent;
     NSString * _smsTarget;
     bool  _stingray;
+    bool  _suppressServerFiltering;
     bool  _synchronize;
     bool  _useCachedPassphrase;
     bool  _useRecoveryPET;
@@ -67,6 +70,7 @@
 @property (nonatomic, retain) NSDictionary *escrowRecord;
 @property (nonatomic) bool fmipRecovery;
 @property (nonatomic, copy) NSString *fmipUUID;
+@property (nonatomic, copy) NSString *hsa2CachedPrerecordUUID;
 @property (nonatomic, copy) NSString *iCloudEnv;
 @property (nonatomic, retain) NSData *iCloudIdentityData;
 @property (nonatomic, copy) NSString *iCloudPassword;
@@ -77,6 +81,7 @@
 @property (nonatomic, retain) NSDictionary *metadataHash;
 @property (nonatomic, copy) NSString *oldEMCSCred;
 @property (nonatomic, copy) NSString *passphrase;
+@property (nonatomic, retain) EscrowPrerecord *prerecord;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *queue;
 @property (nonatomic, copy) NSString *recordID;
 @property (nonatomic, copy) NSString *recoveryKey;
@@ -84,6 +89,7 @@
 @property (nonatomic) bool silent;
 @property (nonatomic, copy) NSString *smsTarget;
 @property (nonatomic) bool stingray;
+@property (nonatomic) bool suppressServerFiltering;
 @property (nonatomic) bool synchronize;
 @property (nonatomic) bool useCachedPassphrase;
 @property (nonatomic) bool useRecoveryPET;
@@ -92,6 +98,9 @@
 @property (nonatomic) bool usesRecoveryKey;
 @property (nonatomic, copy) NSString *verificationToken;
 
++ (id)_ClassCreateSecureBackupConcurrentConnection;
++ (unsigned int)daemonPasscodeRequestOpinion:(id*)arg1;
++ (unsigned int)needPasscodeForHSA2EscrowRecordUpdate:(id*)arg1;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -105,6 +114,8 @@
 - (void)backOffDateWithInfo:(id)arg1 completionBlock:(id /* block */)arg2;
 - (id)backupWithInfo:(id)arg1;
 - (void)backupWithInfo:(id)arg1 completionBlock:(id /* block */)arg2;
+- (id)beginHSA2PasscodeRequest:(bool)arg1 error:(id*)arg2;
+- (id)beginHSA2PasscodeRequest:(bool)arg1 uuid:(id)arg2 error:(id*)arg3;
 - (void)cachePassphrase;
 - (void)cachePassphraseWithCompletionBlock:(id /* block */)arg1;
 - (id)cachePassphraseWithInfo:(id)arg1;
@@ -144,6 +155,7 @@
 - (void)getAccountInfoWithResults:(id /* block */)arg1;
 - (void)getCountrySMSCodesWithInfo:(id)arg1 completionBlockWithResults:(id /* block */)arg2;
 - (void)getCountrySMSCodesWithResults:(id /* block */)arg1;
+- (id)hsa2CachedPrerecordUUID;
 - (id)iCloudEnv;
 - (id)iCloudIdentityData;
 - (id)iCloudPassword;
@@ -155,12 +167,15 @@
 - (id)initWithUserActivityLabel:(id)arg1;
 - (id)metadata;
 - (id)metadataHash;
-- (void)notificationOccurred:(id)arg1;
+- (void)notificationInfo:(id /* block */)arg1;
 - (id)oldEMCSCred;
 - (id)passphrase;
 - (void)populateWithInfo:(id)arg1;
+- (void)prepareHSA2EscrowRecordContents:(bool)arg1 reply:(id /* block */)arg2;
+- (id)prerecord;
 - (id)queue;
 - (id)recordID;
+- (void)recoverRecordContents:(id /* block */)arg1;
 - (id)recoverWithError:(id*)arg1;
 - (void)recoverWithInfo:(id)arg1 completionBlock:(id /* block */)arg2;
 - (void)recoverWithInfo:(id)arg1 completionBlockWithResults:(id /* block */)arg2;
@@ -189,6 +204,7 @@
 - (void)setEscrowRecord:(id)arg1;
 - (void)setFmipRecovery:(bool)arg1;
 - (void)setFmipUUID:(id)arg1;
+- (void)setHsa2CachedPrerecordUUID:(id)arg1;
 - (void)setICloudEnv:(id)arg1;
 - (void)setICloudIdentityData:(id)arg1;
 - (void)setICloudPassword:(id)arg1;
@@ -199,6 +215,7 @@
 - (void)setMetadataHash:(id)arg1;
 - (void)setOldEMCSCred:(id)arg1;
 - (void)setPassphrase:(id)arg1;
+- (void)setPrerecord:(id)arg1;
 - (void)setQueue:(id)arg1;
 - (void)setRecordID:(id)arg1;
 - (void)setRecoveryKey:(id)arg1;
@@ -206,6 +223,7 @@
 - (void)setSilent:(bool)arg1;
 - (void)setSmsTarget:(id)arg1;
 - (void)setStingray:(bool)arg1;
+- (void)setSuppressServerFiltering:(bool)arg1;
 - (void)setSynchronize:(bool)arg1;
 - (void)setUseCachedPassphrase:(bool)arg1;
 - (void)setUseRecoveryPET:(bool)arg1;
@@ -217,6 +235,7 @@
 - (id)smsTarget;
 - (id)srpInitNonce;
 - (id)srpRecoveryBlobFromSRPInitResponse:(id)arg1;
+- (void)srpRecoveryUpdateDSID:(id)arg1 recoveryPassphrase:(id)arg2;
 - (id)startSMSChallengeWithError:(id*)arg1;
 - (void)startSMSChallengeWithInfo:(id)arg1 completionBlock:(id /* block */)arg2;
 - (void)startSMSChallengeWithInfo:(id)arg1 completionBlockWithResults:(id /* block */)arg2;
@@ -226,6 +245,7 @@
 - (void)stashRecoveryDataWithInfo:(id)arg1 completionBlock:(id /* block */)arg2;
 - (void)stateCaptureWithCompletionBlock:(id /* block */)arg1;
 - (bool)stingray;
+- (bool)suppressServerFiltering;
 - (bool)synchronize;
 - (void)uncachePassphrase;
 - (void)uncachePassphraseWithCompletionBlock:(id /* block */)arg1;

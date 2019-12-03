@@ -19,11 +19,12 @@
 + (id)_convertRedEyeCorrections:(id)arg1 withOrientation:(long long)arg2;
 + (id)addUnmanagedAdjustmentFromXMPDataIfNeededForAsset:(id)arg1;
 + (id)copyUnmanagedAdjustmentFromSourceAsset:(id)arg1 forPlaceholderAsset:(id)arg2 inLibrary:(id)arg3 error:(id*)arg4;
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
-+ (id)insertInManagedObjectContext:(id)arg1;
 
+- (void)awakeFromInsert;
 - (bool)isSyncableChange;
+- (id)payloadForChangedKeys:(id)arg1;
+- (id)payloadID;
 - (bool)supportsCloudUpload;
 - (void)willSave;
 

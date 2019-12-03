@@ -6,12 +6,14 @@
     GEOPDQuickLinkItem * _quickLinkItem;
 }
 
-@property (nonatomic, readonly) NSString *quickLinkTitle;
-@property (nonatomic, readonly) NSString *quickLinkURLString;
+@property (nonatomic, readonly) NSString *URLString;
+@property (nonatomic, readonly) NSString *appAdamID;
+@property (nonatomic, readonly) NSString *title;
 
 - (void).cxx_destruct;
+- (id)URLString;
+- (id)appAdamID;
 - (id)initWithQuickLink:(id)arg1;
-- (id)quickLinkTitle;
-- (id)quickLinkURLString;
+- (id)title;
 
 @end

@@ -20,6 +20,5 @@
 - (bool)isEqual:(id)arg1;
 - (id)modelObject;
 - (id)valueForProperty:(id)arg1;
-- (id)valuesForProperties:(id)arg1;
 
 @end

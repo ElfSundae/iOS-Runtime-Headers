@@ -2,70 +2,75 @@
    Image: /System/Library/PrivateFrameworks/SearchUI.framework/SearchUI
  */
 
-@interface SearchUIPlayButtonViewController : SearchUIAccessoryViewController <MPUNowPlayingDelegate, NUIContainerStackViewDelegate> {
-    NSArray * _adamIDs;
-    UILabel * _captionLabel;
-    struct CGSize { 
-        double width; 
-        double height; 
-    }  _captionLabelSize;
-    MPMediaItem * _localMediaItem;
-    NSString * _localMediaItemIdentifier;
+@interface SearchUIPlayButtonViewController : SearchUIAccessoryViewController <NUIContainerViewDelegate> {
+    TLKLabel * _captionLabel;
+    MPMediaEntity * _mediaEntity;
+    long long  _mediaEntityType;
+    unsigned long long  _persistentID;
     SearchUIButton * _playButton;
-    struct CGSize { 
-        double width; 
-        double height; 
-    }  _playButtonSize;
     SFPunchout * _punchout;
+    NSString * _spotlightIdentifier;
+    NSArray * _storeIdentifiers;
+    NSTimer * _timer;
 }
 
-@property (retain) NSArray *adamIDs;
-@property (retain) UILabel *captionLabel;
-@property struct CGSize { double x1; double x2; } captionLabelSize;
+@property (nonatomic, retain) TLKLabel *captionLabel;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (retain) MPMediaItem *localMediaItem;
-@property (retain) NSString *localMediaItemIdentifier;
-@property (retain) SearchUIButton *playButton;
-@property struct CGSize { double x1; double x2; } playButtonSize;
-@property (retain) SFPunchout *punchout;
+@property (nonatomic, retain) MPMediaEntity *mediaEntity;
+@property (nonatomic) long long mediaEntityType;
+@property (nonatomic) unsigned long long persistentID;
+@property (nonatomic, retain) SearchUIButton *playButton;
+@property (nonatomic, retain) SFPunchout *punchout;
+@property (nonatomic, retain) NSString *spotlightIdentifier;
+@property (nonatomic, retain) NSArray *storeIdentifiers;
 @property (readonly) Class superclass;
+@property (nonatomic, retain) NSTimer *timer;
 
 + (id)font;
 + (void)initialize;
-+ (id)localMediaItemForStoreIdentifiers:(id)arg1;
-+ (bool)supportsResult:(id)arg1;
++ (id)mediaEntityForAction:(id)arg1;
++ (bool)mediaItem:(id)arg1 matchesPersistentID:(unsigned long long)arg2 forType:(long long)arg3;
++ (bool)supportsRowModel:(id)arg1;
 
 - (void).cxx_destruct;
-- (id)adamIDs;
 - (void)buttonPressed;
 - (id)captionLabel;
-- (struct CGSize { double x1; double x2; })captionLabelSize;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3;
 - (struct CGSize { double x1; double x2; })containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize { double x1; double x2; })arg2 forArrangedSubview:(id)arg3;
-- (void)containerViewDidInvalidateIntrinsicContentSize:(id)arg1;
-- (id)fetchLocalMediaItem;
-- (id)localMediaItem;
-- (id)localMediaItemIdentifier;
+- (void)createTimerIfNeeded;
+- (void)dealloc;
+- (void)hide;
+- (void)invalidateTimerIfNeeded;
 - (bool)matchesNowPlayingAudioItem;
-- (void)nowPlayingController:(id)arg1 elapsedTimeDidChange:(double)arg2;
-- (void)nowPlayingController:(id)arg1 playbackStateDidChange:(bool)arg2;
+- (id)mediaEntity;
+- (long long)mediaEntityType;
+- (void)nowPlayingItemDidChange;
+- (unsigned long long)persistentID;
 - (id)playButton;
-- (struct CGSize { double x1; double x2; })playButtonSize;
+- (void)playbackStateDidChange;
 - (id)punchout;
-- (void)setAdamIDs:(id)arg1;
+- (void)sendEngagementDidPunchout:(bool)arg1;
 - (void)setCaptionLabel:(id)arg1;
-- (void)setCaptionLabelSize:(struct CGSize { double x1; double x2; })arg1;
-- (void)setLocalMediaItem:(id)arg1;
-- (void)setLocalMediaItemIdentifier:(id)arg1;
+- (void)setMediaEntity:(id)arg1;
+- (void)setMediaEntityType:(long long)arg1;
+- (void)setPersistentID:(unsigned long long)arg1;
 - (void)setPlayButton:(id)arg1;
-- (void)setPlayButtonSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setPunchout:(id)arg1;
-- (id)setupViewWithStyle:(unsigned long long)arg1;
+- (void)setSpotlightIdentifier:(id)arg1;
+- (void)setStoreIdentifiers:(id)arg1;
+- (void)setTimer:(id)arg1;
+- (id)setupView;
 - (bool)shouldTopAlignForAccessibilityContentSizes;
+- (id)spotlightIdentifier;
+- (id)storeIdentifiers;
+- (id)timer;
+- (void)togglePlaybackState;
+- (unsigned long long)type;
+- (void)updateButtonProgressAnimated:(bool)arg1;
 - (void)updatePlayState;
-- (void)updateProgressForCurrentlyActiveTrackAnimated:(bool)arg1;
-- (void)updateWithResult:(id)arg1;
+- (bool)updateTimerForPauseState;
+- (void)updateWithRowModel:(id)arg1;
 
 @end

@@ -15,6 +15,7 @@
 - (void)behavior:(ISBehavior *)arg1 setVideoForwardPlaybackEndTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2;
 - (void)behavior:(ISBehavior *)arg1 setVideoPlayRate:(float)arg2;
 - (void)behavior:(ISBehavior *)arg1 setVideoVolume:(float)arg2;
+- (bool)behaviorIsVideoReadyForDisplay:(ISBehavior *)arg1;
 - (float)videoPlayRate;
 
 @end

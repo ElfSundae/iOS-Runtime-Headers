@@ -3,11 +3,13 @@
  */
 
 @interface AVTView : SCNView {
+    <SCNCaptureDeviceOutputConsumer> * _arCaptureDeviceOutputConsumer;
+    AVTARMaskRenderer * _arMaskRenderer;
+    SCNTechnique * _arMaskTechnique;
+    struct __CVMetalTextureCache { } * _arMaskTextureCache;
     bool  _arMode;
-    SCNTechnique * _arTechnique;
     AVTAvatar * _avatar;
     SCNNode * _avatarNode;
-    <SCNCaptureDeviceOutputConsumer> * _captureDeviceOutputConsumer;
     bool  _captureImageIsTooDark;
     unsigned long long  _currentExpressionIndex;
     double  _currentlyRenderedTrackingDate;
@@ -21,13 +23,11 @@
     AVTFaceTracker * _faceTracker;
     <AVTViewFaceTrackingDelegate> * _faceTrackingDelegate;
     bool  _faceTrackingPaused;
-    <SCNSceneRendererDelegate> * _fwdDelegate;
     bool  _isSensorCovered;
     AVTAvatar * _lastRenderedAvatar;
     unsigned long long  _lastTrackingUpdateTimestamp;
     NSLock * _lock;
     bool  _lockLookAt;
-    AVTARMaskRenderer * _maskRenderer;
     unsigned long long  _noTrackingFrameCount;
     bool  _packetNeedRecording;
     double  _perfPacketUpdateTimestamp;
@@ -42,7 +42,6 @@
         bool reached_max_capacity; 
     }  _perfTimes;
     bool  _showPerfHUD;
-    struct __CVMetalTextureCache { } * _textureCache;
 }
 
 @property (nonatomic) bool arMode;
@@ -66,8 +65,11 @@
 - (void)_enablePhysics:(bool)arg1;
 - (void)_fireTrackingLoss;
 - (void)_refreshPerfTimesInfo;
+- (void)_renderer:(id)arg1 didApplyAnimationsAtTime:(double)arg2;
 - (void)_renderer:(id)arg1 didBuildSubdivDataForHash:(id)arg2 dataProvider:(id /* block */)arg3;
 - (id)_renderer:(id)arg1 subdivDataForHash:(id)arg2;
+- (void)_renderer:(id)arg1 updateAtTime:(double)arg2;
+- (void)_renderer:(id)arg1 willRenderScene:(id)arg2 atTime:(double)arg3;
 - (void)_resetFaceToRandomPosition;
 - (void)_updateAvatarForARMode:(bool)arg1;
 - (void)_updateFocal;
@@ -81,8 +83,8 @@
 - (double)currentAudioTime;
 - (double)currentlyRenderedTrackingDate;
 - (void)dealloc;
-- (id)delegate;
 - (void)didLostTrackingForAWhile;
+- (void)didMoveToWindow;
 - (bool)directRetargetingMode;
 - (bool)enableFaceTracking;
 - (bool)enableReticle;
@@ -104,16 +106,9 @@
 - (bool)isSensorCovered;
 - (void)layoutSubviews;
 - (void)lockAvatar;
-- (void)renderer:(id)arg1 didApplyAnimationsAtTime:(double)arg2;
-- (void)renderer:(id)arg1 didApplyConstraintsAtTime:(double)arg2;
-- (void)renderer:(id)arg1 didRenderScene:(id)arg2 atTime:(double)arg3;
-- (void)renderer:(id)arg1 didSimulatePhysicsAtTime:(double)arg2;
-- (void)renderer:(id)arg1 updateAtTime:(double)arg2;
-- (void)renderer:(id)arg1 willRenderScene:(id)arg2 atTime:(double)arg3;
 - (void)setArMode:(bool)arg1;
 - (void)setAvatar:(id)arg1;
 - (void)setCaptureImageIsTooDark:(bool)arg1;
-- (void)setDelegate:(id)arg1;
 - (void)setDirectRetargetingMode:(bool)arg1;
 - (void)setEnableFaceTracking:(bool)arg1;
 - (void)setEnableReticle:(bool)arg1;
@@ -133,12 +128,13 @@
 - (void)unlockAvatar;
 - (void)updateAtTime:(double)arg1;
 - (void)updateForChangedFaceTrackingPaused;
+- (void)updateInterfaceOrientation;
 - (void)warmupMemoji;
 - (void)willUpdateAvatarWithNewFaceTrackingData:(double)arg1;
 
 // Image: /System/Library/PrivateFrameworks/AvatarUI.framework/AvatarUI
 
-+ (id)snapshotAVTView:(id)arg1 matchingViewSize:(id)arg2;
++ (id)snapshotAVTView:(id)arg1 matchingViewSize:(id)arg2 highQuality:(bool)arg3;
 
 - (void)downcastWithAVTViewHandler:(id /* block */)arg1 recordViewHandler:(id /* block */)arg2;
 

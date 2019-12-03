@@ -12,9 +12,9 @@
 @property (nonatomic, copy) NSString *eastAsianFont;
 @property (nonatomic, copy) NSString *latinFont;
 
+- (void).cxx_destruct;
 - (id)baseFontForId:(int)arg1;
 - (id)complexScriptFont;
-- (void)dealloc;
 - (id)eastAsianFont;
 - (bool)isEmpty;
 - (bool)isEqualToBaseFontCollection:(id)arg1;

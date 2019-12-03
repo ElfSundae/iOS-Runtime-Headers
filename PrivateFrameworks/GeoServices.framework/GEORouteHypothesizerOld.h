@@ -11,7 +11,6 @@
     unsigned long long  _etaUpdateFrequency;
     double  _etaUpdateInterval;
     GEOETAUpdater * _etaUpdater;
-    GEORoute * _existingRoute;
     GEODirectionsRequestFeedback * _feedback;
     id /* block */  _handler;
     GEORouteHypothesisOld * _hypothesis;
@@ -63,7 +62,6 @@
 - (id)etaUpdaterRoutesForETATrafficUpdateRequest:(id)arg1;
 - (void)etaUpdaterUpdatedETA:(id)arg1;
 - (id)feedback;
-- (id)initWithExistingRoute:(id)arg1 source:(id)arg2 destination:(id)arg3 etaUpdater:(id)arg4;
 - (id)initWithSource:(id)arg1 toDestination:(id)arg2 arrivalDate:(id)arg3 usualRouteData:(id)arg4;
 - (id)initWithSource:(id)arg1 toDestination:(id)arg2 departureDate:(id)arg3 usualRouteData:(id)arg4;
 - (id)route;

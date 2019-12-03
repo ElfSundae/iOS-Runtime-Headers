@@ -3,13 +3,17 @@
  */
 
 @interface NSSQLSaveChangesRequestContext : NSSQLStoreRequestContext {
+    NSSQLRowCache * _contextGenerationRowCache;
     NSString * _externalDataLinksDirectory;
     NSString * _externalDataReferencesDirectory;
     NSFaultHandler * _faultHandler;
     NSString * _fileBackedFuturesDirectory;
     NSDictionary * _metadataToWrite;
+    NSSet * _objectIDsInsertUpdatedToPruneDATrigger;
     NSSet * _objectIDsToPruneTrigger;
+    NSSet * _objectIDsUpdatedToPruneDATrigger;
     NSMutableDictionary * _originalCachedRows;
+    NSSQLRowCache * _primaryRowCache;
     NSSQLSavePlan * _savePlan;
     NSMutableDictionary * _updateMasksForHistoryTracking;
 }
@@ -25,11 +29,12 @@
 @property (nonatomic, readonly) NSSQLSavePlan *savePlan;
 
 - (void)addDataMask:(id)arg1 forEntityKey:(id)arg2;
+- (id)contextRowCache;
 - (id)dataMaskForKey:(id)arg1;
 - (void)dealloc;
 - (void)executeEpilogue;
 - (void)executePrologue;
-- (void)executeRequestCore:(id*)arg1;
+- (bool)executeRequestCore:(id*)arg1;
 - (id)externalDataLinksDirectory;
 - (id)externalDataReferencesDirectory;
 - (id)faultHandler;

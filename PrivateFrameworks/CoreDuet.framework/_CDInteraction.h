@@ -7,9 +7,12 @@
     NSArray * _attachments;
     NSString * _bundleId;
     NSURL * _contentURL;
+    NSString * _derivedIntentIdentifier;
     long long  _direction;
     NSString * _domainIdentifier;
     NSDate * _endDate;
+    bool  _forcePersistInteraction;
+    NSString * _groupName;
     bool  _isResponse;
     NSArray * _keywords;
     NSString * _locationUUID;
@@ -26,10 +29,13 @@
 @property (retain) NSString *bundleId;
 @property (retain) NSURL *contentURL;
 @property (readonly, copy) NSString *debugDescription;
+@property (retain) NSString *derivedIntentIdentifier;
 @property (readonly, copy) NSString *description;
 @property long long direction;
 @property (retain) NSString *domainIdentifier;
 @property (retain) NSDate *endDate;
+@property (nonatomic) bool forcePersistInteraction;
+@property (retain) NSString *groupName;
 @property (readonly) unsigned long long hash;
 @property bool isResponse;
 @property (retain) NSArray *keywords;
@@ -47,6 +53,9 @@
 @property (nonatomic, readonly) bool userIsThreadInitiator;
 @property (retain) NSString *uuid;
 
++ (id)conversationIdForMobileMailInteractionRecipients:(id)arg1;
++ (id)recipientIdentifiersFromMobileMailConversationId:(id)arg1;
++ (id)shareSheetInteractionFromINInteraction:(id)arg1 bundleID:(id)arg2 knowledgeStore:(id)arg3;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -54,15 +63,20 @@
 - (id)attachments;
 - (id)bundleId;
 - (id)contentURL;
+- (id)derivedIntentIdentifier;
 - (id)description;
 - (id)descriptionOfArray:(id)arg1;
 - (long long)direction;
 - (id)domainIdentifier;
 - (void)encodeWithCoder:(id)arg1;
 - (id)endDate;
+- (bool)forcePersistInteraction;
+- (id)groupName;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithINInteraction:(id)arg1 bundleID:(id)arg2;
+- (bool)isEqual:(id)arg1;
 - (bool)isResponse;
 - (id)keywords;
 - (id)locationUUID;
@@ -74,9 +88,12 @@
 - (void)setAttachments:(id)arg1;
 - (void)setBundleId:(id)arg1;
 - (void)setContentURL:(id)arg1;
+- (void)setDerivedIntentIdentifier:(id)arg1;
 - (void)setDirection:(long long)arg1;
 - (void)setDomainIdentifier:(id)arg1;
 - (void)setEndDate:(id)arg1;
+- (void)setForcePersistInteraction:(bool)arg1;
+- (void)setGroupName:(id)arg1;
 - (void)setIsResponse:(bool)arg1;
 - (void)setKeywords:(id)arg1;
 - (void)setLocationUUID:(id)arg1;

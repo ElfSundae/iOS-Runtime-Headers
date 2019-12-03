@@ -21,13 +21,14 @@
 @property (nonatomic, readonly) NSMutableSet *visibleViewControllers;
 
 - (void).cxx_destruct;
-- (void)applySectionBlueprint:(id)arg1 identifier:(id)arg2 offset:(struct CGPoint { double x1; double x2; })arg3 width:(double)arg4;
+- (void)applySectionBlueprint:(id)arg1 identifier:(id)arg2 offset:(struct CGPoint { double x1; double x2; })arg3 size:(struct CGSize { double x1; double x2; })arg4;
 - (id)blueprints;
 - (void)endImpressions;
-- (double)heightForBlueprint:(id)arg1 width:(double)arg2 traitCollection:(id)arg3;
+- (double)heightForBlueprint:(id)arg1 canvasSize:(struct CGSize { double x1; double x2; })arg2 traitCollection:(id)arg3;
 - (id)hosting;
 - (id)initWithSectionHosting:(id)arg1 viewport:(id)arg2 appStateMonitor:(id)arg3;
 - (id)multiScrollDelegate;
+- (void)performDisappearanceTransitionForVisibleViewControllers;
 - (void)updateViewControllerVisibility;
 - (id)view;
 - (id)viewController;

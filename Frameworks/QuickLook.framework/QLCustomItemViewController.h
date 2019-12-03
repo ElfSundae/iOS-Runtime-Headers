@@ -22,10 +22,12 @@
 - (void).cxx_destruct;
 - (void)didDismissActivityViewController;
 - (void)dismissPreviewController;
+- (void)forwardMessageToHost:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)getFrameWithCompletionBlock:(id /* block */)arg1;
 - (id)hostViewControllerProxy;
 - (bool)isShareEnabled;
 - (void)presentActivityViewControllerFromView:(id)arg1;
+- (void)presentActivityViewControllerFromView:(id)arg1 withURL:(id)arg2;
 - (void)presentationModeDidChange:(unsigned long long)arg1 animated:(bool)arg2;
 - (id)previewOptions;
 - (void)setAppearance:(id)arg1 animated:(bool)arg2;

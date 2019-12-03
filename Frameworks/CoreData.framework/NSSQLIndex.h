@@ -13,15 +13,15 @@
 @property (nonatomic, retain) NSMutableArray *createTableStatements;
 @property (nonatomic, retain) NSMutableArray *dropTableStatements;
 @property (nonatomic, readonly, retain) NSFetchIndexDescription *indexDescription;
-@property (nonatomic, readonly, retain) NSSQLEntity *sqlEntity;
+@property (nonatomic, readonly) NSSQLEntity *sqlEntity;
 @property (nonatomic, retain) NSMutableArray *updateTableStatements;
 
 - (id)bulkUpdateStatementsForStore:(id)arg1;
-- (id)createStatementsForStore:(id)arg1;
 - (id)createTableStatements;
 - (void)dealloc;
 - (id)dropStatementsForStore:(id)arg1;
 - (id)dropTableStatements;
+- (id)generateStatementsForStore:(id)arg1;
 - (id)indexDescription;
 - (id)initForIndexDescription:(id)arg1 sqlEntity:(id)arg2;
 - (bool)isEqual:(id)arg1;

@@ -13,6 +13,7 @@
 - (void)distribute:(id)arg1 double_Arg:(double)arg2 object_Arg:(id)arg3;
 - (void)distribute:(id)arg1 int32t_Arg:(int)arg2 double_Arg:(double)arg3;
 - (void)distribute:(id)arg1 int32t_Arg:(int)arg2 int32t_Arg:(int)arg3;
+- (void)distribute:(id)arg1 int32t_Arg:(int)arg2 object_Arg:(id)arg3;
 - (void)distribute:(id)arg1 int64t_Arg:(long long)arg2 int64t_Arg:(long long)arg3;
 - (void)distribute:(id)arg1 objectArg:(id)arg2;
 - (void)distribute:(id)arg1 objectArg:(id)arg2 BOOLArg:(bool)arg3;
@@ -43,6 +44,6 @@
 
 // Image: /usr/lib/libobjc.A.dylib
 
-+ (void)initialize:(void *)arg1; // needs 1 arg types, found 5: short, /* Warning: Unrecognized filer type: '"' using 'void*' */ void*, char *, short, /* Warning: Unrecognized filer type: ',' using 'void*' */ void*
++ (void)initialize;
 
 @end

@@ -17,10 +17,14 @@
     WDTableStyleOverride * mTableStyleOverrides;
 }
 
+@property WDStyle *baseStyle;
+@property WDStyle *nextStyle;
+@property (readonly) WDStyleSheet *styleSheet;
+
+- (void).cxx_destruct;
 - (id)baseStyle;
 - (id)characterProperties;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (bool)hidden;
 - (id)id;

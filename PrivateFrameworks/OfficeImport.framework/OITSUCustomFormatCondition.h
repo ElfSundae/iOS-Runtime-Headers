@@ -3,20 +3,20 @@
  */
 
 @interface OITSUCustomFormatCondition : NSObject <NSCopying> {
-    int  mConditionType;
-    double  mConditionValue;
-    OITSUCustomFormatData * mData;
+    int  _conditionType;
+    double  _conditionValue;
+    OITSUCustomFormatData * _data;
 }
 
 @property (nonatomic, readonly) int conditionType;
 @property (nonatomic, readonly) double conditionValue;
 @property (nonatomic, readonly) OITSUCustomFormatData *data;
 
+- (void).cxx_destruct;
 - (int)conditionType;
 - (double)conditionValue;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)data;
-- (void)dealloc;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithType:(int)arg1 value:(double)arg2 data:(id)arg3;

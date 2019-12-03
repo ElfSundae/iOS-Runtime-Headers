@@ -13,7 +13,7 @@
 @property (readonly) float blink;
 @property (readonly) bool isBlinking;
 @property (readonly) int landmarkCount;
-@property (readonly) FigUtlROIProcessor *roi;
+@property (nonatomic, readonly) FigUtlROIProcessor *roi;
 
 + (id)createFaceLandmarksRequest:(float)arg1;
 + (void)deallocateResources;

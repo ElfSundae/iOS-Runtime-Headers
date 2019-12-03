@@ -5,7 +5,7 @@
 @interface PKPaymentDocumentSubmissionController : NSObject {
     UIImage * _backID;
     long long  _context;
-    <PKPaymentDocumentSubmissionControllerDelegate> * _delegate;
+    UIViewController<PKPaymentDocumentSubmissionControllerDelegate> * _delegate;
     unsigned long long  _featureIdentifier;
     UIImage * _frontID;
     PKDocumentRequest * _selectedDocument;
@@ -16,11 +16,11 @@
 
 @property (nonatomic, retain) UIImage *backID;
 @property (nonatomic) long long context;
-@property (nonatomic) <PKPaymentDocumentSubmissionControllerDelegate> *delegate;
+@property (nonatomic) UIViewController<PKPaymentDocumentSubmissionControllerDelegate> *delegate;
 @property (nonatomic) unsigned long long featureIdentifier;
 @property (nonatomic, retain) UIImage *frontID;
 @property (nonatomic, retain) PKDocumentRequest *selectedDocument;
-@property (nonatomic, retain) <PKPaymentSetupViewControllerDelegate> *setupDelegate;
+@property (nonatomic) <PKPaymentSetupViewControllerDelegate> *setupDelegate;
 @property (nonatomic) long long side;
 @property (nonatomic) long long state;
 
@@ -50,13 +50,12 @@
 - (long long)side;
 - (long long)state;
 - (void)stateChanged;
-- (void)terminateSetupFlowFromViewController:(id)arg1;
+- (void)terminateSetupFlow;
 - (void)tryUploadAgain;
 - (void)uploadID;
 - (void)userApprovedCapturedID;
 - (void)userRejectedCapturedID;
-- (void)userWantsToCancelFromViewController:(id)arg1;
+- (void)userWantsToCancel;
 - (void)userWantsToContinue;
-- (void)userWantsToWithdraw;
 
 @end

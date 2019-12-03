@@ -9,6 +9,7 @@
 + (id)fallbackFilenamePrefix;
 
 - (int)mediaType;
+- (bool)shouldBeQuickLooked;
 - (id)subtitle;
 
 @end

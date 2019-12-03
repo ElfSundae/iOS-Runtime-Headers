@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/MapsSupport.framework/MapsSupport
  */
 
-@interface MSPHistoryReplicaEditUpdateModificationDate : MSPReplicaEdit {
+@interface MSPHistoryReplicaEditUpdateModificationDate : MSPReplicaEditRemoveTombstone {
     NSDate * _modificationDate;
 }
 

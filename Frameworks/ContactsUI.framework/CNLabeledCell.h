@@ -22,6 +22,7 @@
 @property (nonatomic, readonly) NSString *valueString;
 @property (nonatomic, copy) NSDictionary *valueTextAttributes;
 @property (nonatomic, readonly) UIView<ABText> *valueView;
+@property (nonatomic, readonly) double valueViewBottomMargin;
 @property (nonatomic) bool valueViewNeedsHuggingContent;
 
 + (bool)wantsChevron;
@@ -37,6 +38,7 @@
 - (id)constantConstraintsForHorizontalLayout;
 - (id)constantConstraintsForStandardLayout;
 - (id)constantConstraintsForVerticalLayout;
+- (bool)displaysCellSelectionState;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (id)labelString;
 - (id)labelTextAttributes;
@@ -55,6 +57,7 @@
 - (id)valueString;
 - (id)valueTextAttributes;
 - (id)valueView;
+- (double)valueViewBottomMargin;
 - (bool)valueViewNeedsHuggingContent;
 - (id)variableConstraints;
 - (id)variableConstraintsForHorizontalLayout;

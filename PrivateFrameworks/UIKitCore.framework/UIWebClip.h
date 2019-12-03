@@ -10,6 +10,8 @@
     NSURLConnection * _startupImageConnection;
     NSURLConnection * _startupLandscapeImageConnection;
     unsigned long long  _webClipStatusBarStyle;
+    NSString * applicationBundleIdentifier;
+    unsigned long long  bundleVersion;
     bool  classicMode;
     unsigned long long  currentIconIndex;
     <WebClipDelegate> * delegate;
@@ -34,6 +36,9 @@
 
 @property (setter=_sf_setApplicationManifest:, nonatomic, retain) _WKApplicationManifest *_sf_applicationManifest;
 @property (nonatomic, readonly) NSURL *_sf_applicationManifestPath;
+@property (nonatomic, copy) NSString *applicationBundleIdentifier;
+@property (nonatomic, readonly) NSURL *applicationLaunchURL;
+@property (nonatomic, readonly) unsigned long long bundleVersion;
 @property bool classicMode;
 @property (nonatomic) <WebClipDelegate> *delegate;
 @property bool fullScreen;
@@ -47,6 +52,7 @@
 @property (nonatomic, retain) UIImage *initialLaunchImage;
 @property (nonatomic, retain) NSURL *pageURL;
 @property bool removalDisallowed;
+@property (nonatomic, readonly) NSString *sb_iconImageFileProtectionType;
 @property (nonatomic, retain) UIImage *startupImage;
 @property (retain) NSURL *startupImageURL;
 @property (nonatomic, retain) UIImage *startupLandscapeImage;
@@ -90,7 +96,10 @@
 - (void)_reloadProperties;
 - (void)_setIconImage:(id)arg1 isPrecomposed:(bool)arg2 isScreenShotBased:(bool)arg3;
 - (bool)_writeImage:(id)arg1 toDiskWithFileName:(id)arg2;
+- (id)applicationBundleIdentifier;
+- (id)applicationLaunchURL;
 - (id)bundleIdentifier;
+- (unsigned long long)bundleVersion;
 - (void)cancelMediaUpdate;
 - (bool)classicMode;
 - (void)configureWithMetaTags:(id)arg1 linkTags:(id)arg2;
@@ -119,6 +128,7 @@
 - (void)requestCustomLandscapeStartupImageUpdate;
 - (void)requestCustomPortraitStartupImageUpdate;
 - (void)requestIconUpdateInSpringBoard;
+- (void)setApplicationBundleIdentifier:(id)arg1;
 - (void)setClassicMode:(bool)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setFullScreen:(bool)arg1;
@@ -158,5 +168,10 @@
 - (id)_sf_applicationManifest;
 - (id)_sf_applicationManifestPath;
 - (void)_sf_setApplicationManifest:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoardFoundation.framework/SpringBoardFoundation
+
+- (id)sb_iconImageFileProtectionType;
+- (bool)sb_markIconImageFileProtectionTypeAsNone;
 
 @end

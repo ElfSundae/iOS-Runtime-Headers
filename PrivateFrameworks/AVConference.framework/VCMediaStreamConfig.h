@@ -11,6 +11,7 @@
     double  _decryptionTimeOutInterval;
     long long  _direction;
     VCNetworkAddress * _localAddress;
+    unsigned int  _localSSRC;
     VCMediaStreamMultiwayConfig * _multiwayConfig;
     bool  _rateAdaptationEnabled;
     NSData * _receiveMasterKey;
@@ -18,6 +19,7 @@
     VCNetworkAddress * _remoteAddress;
     unsigned int  _remoteSSRC;
     bool  _rtcpEnabled;
+    bool  _rtcpReceiveCallbackEnabled;
     unsigned short  _rtcpRemotePort;
     double  _rtcpSendInterval;
     bool  _rtcpTimeOutEnabled;
@@ -37,6 +39,7 @@
 @property (nonatomic) double decryptionTimeOutInterval;
 @property (nonatomic) long long direction;
 @property (nonatomic, retain) VCNetworkAddress *localAddress;
+@property (nonatomic) unsigned int localSSRC;
 @property (nonatomic, retain) VCMediaStreamMultiwayConfig *multiwayConfig;
 @property (nonatomic, readonly) long long primaryTxCodecType;
 @property (getter=isRateAdaptationEnabled, nonatomic) bool rateAdaptationEnabled;
@@ -45,6 +48,7 @@
 @property (nonatomic, retain) VCNetworkAddress *remoteAddress;
 @property (nonatomic) unsigned int remoteSSRC;
 @property (getter=isRTCPEnabled, nonatomic) bool rtcpEnabled;
+@property (getter=isRTCPReceiveCallbackEnabled, nonatomic) bool rtcpReceiveCallbackEnabled;
 @property (nonatomic) unsigned short rtcpRemotePort;
 @property (nonatomic) double rtcpSendInterval;
 @property (getter=isRTCPTimeOutEnabled, nonatomic) bool rtcpTimeOutEnabled;
@@ -72,10 +76,12 @@
 - (id)initWithClientDictionary:(id)arg1;
 - (bool)isDecryptionTimeOutEnabled;
 - (bool)isRTCPEnabled;
+- (bool)isRTCPReceiveCallbackEnabled;
 - (bool)isRTCPTimeOutEnabled;
 - (bool)isRTPTimeOutEnabled;
 - (bool)isRateAdaptationEnabled;
 - (id)localAddress;
+- (unsigned int)localSSRC;
 - (id)multiwayConfig;
 - (long long)primaryTxCodecType;
 - (id)receiveMasterKey;
@@ -94,6 +100,7 @@
 - (void)setDecryptionTimeOutInterval:(double)arg1;
 - (void)setDirection:(long long)arg1;
 - (void)setLocalAddress:(id)arg1;
+- (void)setLocalSSRC:(unsigned int)arg1;
 - (void)setMultiwayConfig:(id)arg1;
 - (void)setRateAdaptationEnabled:(bool)arg1;
 - (void)setReceiveMasterKey:(id)arg1;
@@ -101,6 +108,7 @@
 - (void)setRemoteAddress:(id)arg1;
 - (void)setRemoteSSRC:(unsigned int)arg1;
 - (void)setRtcpEnabled:(bool)arg1;
+- (void)setRtcpReceiveCallbackEnabled:(bool)arg1;
 - (void)setRtcpRemotePort:(unsigned short)arg1;
 - (void)setRtcpSendInterval:(double)arg1;
 - (void)setRtcpTimeOutEnabled:(bool)arg1;

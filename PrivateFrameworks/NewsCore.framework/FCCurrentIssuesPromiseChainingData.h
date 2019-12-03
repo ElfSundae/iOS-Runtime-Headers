@@ -3,16 +3,24 @@
  */
 
 @interface FCCurrentIssuesPromiseChainingData : NSObject {
+    NSArray * _autoFavoriteTagIDs;
+    NSArray * _followedTagIDs;
     FCCurrentIssuesCheckerResult * _partialResult;
     NSArray * _resultingIssues;
 }
 
+@property (nonatomic, retain) NSArray *autoFavoriteTagIDs;
+@property (nonatomic, retain) NSArray *followedTagIDs;
 @property (nonatomic, retain) FCCurrentIssuesCheckerResult *partialResult;
 @property (nonatomic, retain) NSArray *resultingIssues;
 
 - (void).cxx_destruct;
+- (id)autoFavoriteTagIDs;
+- (id)followedTagIDs;
 - (id)partialResult;
 - (id)resultingIssues;
+- (void)setAutoFavoriteTagIDs:(id)arg1;
+- (void)setFollowedTagIDs:(id)arg1;
 - (void)setPartialResult:(id)arg1;
 - (void)setResultingIssues:(id)arg1;
 

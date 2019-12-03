@@ -19,9 +19,11 @@
 @property (readonly) NSString *sourceDeviceType;
 @property (readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } timestamp;
 
++ (id)AVFileTypeFromFigCaptureStillImageSettingsFileType:(int)arg1 codec:(unsigned int)arg2 unresolvedSettings:(id)arg3;
+
 - (struct CGImage { }*)CGImageRepresentation;
 - (struct __CVBuffer { }*)_embeddedThumbnailSourcePixelBuffer;
-- (id)_fileDataRepresentationWithReplacementMetadata:(id)arg1 replacementEmbeddedThumbnailPhotoFormat:(id)arg2 replacementEmbeddedThumbnailPixelBuffer:(struct __CVBuffer { }*)arg3 replacementDepthData:(id)arg4 replacementPortraitEffectsMatte:(id)arg5 exceptionReason:(id*)arg6;
+- (id)_fileDataRepresentationWithReplacementMetadata:(id)arg1 replacementEmbeddedThumbnailPhotoFormat:(id)arg2 replacementEmbeddedThumbnailPixelBuffer:(struct __CVBuffer { }*)arg3 replacementDepthData:(id)arg4 replacementPortraitEffectsMatte:(id)arg5 replacementHairSegmentationMatte:(id)arg6 replacementSkinSegmentationMatte:(id)arg7 replacementTeethSegmentationMatte:(id)arg8 exceptionReason:(id*)arg9;
 - (unsigned int)_orientation;
 - (unsigned int)actualPhotoProcessingFlags;
 - (id)bracketSettings;
@@ -35,7 +37,7 @@
 - (id)fileDataRepresentation;
 - (id)fileDataRepresentationWithCustomizer:(id)arg1;
 - (id)fileDataRepresentationWithReplacementMetadata:(id)arg1 replacementEmbeddedThumbnailPhotoFormat:(id)arg2 replacementEmbeddedThumbnailPixelBuffer:(struct __CVBuffer { }*)arg3 replacementDepthData:(id)arg4;
-- (id)initWithTimestamp:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 photoSurface:(struct __IOSurface { }*)arg2 photoSurfaceSize:(unsigned long long)arg3 previewPhotoSurface:(struct __IOSurface { }*)arg4 embeddedThumbnailSourceSurface:(struct __IOSurface { }*)arg5 metadata:(id)arg6 depthDataSurface:(struct __IOSurface { }*)arg7 depthMetadataDictionary:(id)arg8 portraitEffectsMatteSurface:(struct __IOSurface { }*)arg9 portraitEffectsMatteMetadataDictionary:(id)arg10 captureRequest:(id)arg11 bracketSettings:(id)arg12 sequenceCount:(unsigned long long)arg13 photoCount:(unsigned long long)arg14 expectedPhotoProcessingFlags:(unsigned int)arg15 sourceDeviceType:(id)arg16;
+- (id)initWithTimestamp:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 photoSurface:(struct __IOSurface { }*)arg2 photoSurfaceSize:(unsigned long long)arg3 processedFileType:(id)arg4 previewPhotoSurface:(struct __IOSurface { }*)arg5 embeddedThumbnailSourceSurface:(struct __IOSurface { }*)arg6 metadata:(id)arg7 depthDataSurface:(struct __IOSurface { }*)arg8 depthMetadataDictionary:(id)arg9 portraitEffectsMatteSurface:(struct __IOSurface { }*)arg10 portraitEffectsMatteMetadataDictionary:(id)arg11 hairSegmentationMatteSurface:(struct __IOSurface { }*)arg12 hairSegmentationMatteMetadataDictionary:(id)arg13 skinSegmentationMatteSurface:(struct __IOSurface { }*)arg14 skinSegmentationMatteMetadataDictionary:(id)arg15 teethSegmentationMatteSurface:(struct __IOSurface { }*)arg16 teethSegmentationMatteMetadataDictionary:(id)arg17 captureRequest:(id)arg18 bracketSettings:(id)arg19 sequenceCount:(unsigned long long)arg20 photoCount:(unsigned long long)arg21 expectedPhotoProcessingFlags:(unsigned int)arg22 sourceDeviceType:(id)arg23;
 - (bool)isRawPhoto;
 - (long long)lensStabilizationStatus;
 - (id)livePhotoMovieFileURL;
@@ -47,7 +49,10 @@
 - (id)portraitMetadata;
 - (struct CGImage { }*)previewCGImageRepresentation;
 - (struct __CVBuffer { }*)previewPixelBuffer;
+- (id)privateClientMetadata;
+- (id)processedFileType;
 - (id)resolvedSettings;
+- (id)semanticSegmentationMatteForType:(id)arg1;
 - (long long)sequenceCount;
 - (id)sourceDeviceType;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })timestamp;

@@ -41,6 +41,7 @@
 - (id)backBarButtonItem;
 - (void)controller:(id)arg1 fetchRequests:(id)arg2 didCompleteWithResult:(id)arg3;
 - (void)controller:(id)arg1 fetchRequests:(id)arg2 didFailWithError:(id)arg3;
+- (void)dealloc;
 - (void)downloadCellDidRequestCancelDownload:(id)arg1;
 - (id)downloadEntitiesTableView;
 - (id)episodesBySeason;

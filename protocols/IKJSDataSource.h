@@ -13,5 +13,6 @@
 - (void)move:(long long)arg1 :(long long)arg2 :(long long)arg3 :(JSValue *)arg4;
 - (JSValue *)replace:(long long)arg1 :(JSValue *)arg2;
 - (long long)segmentSize;
+- (void)update:(JSValue *)arg1 :(JSValue *)arg2 :(long long)arg3;
 
 @end

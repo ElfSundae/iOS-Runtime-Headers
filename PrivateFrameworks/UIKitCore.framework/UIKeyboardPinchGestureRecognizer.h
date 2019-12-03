@@ -4,6 +4,7 @@
 
 @interface UIKeyboardPinchGestureRecognizer : UIGestureRecognizer {
     NSMutableSet * _activeTouches;
+    double  _beginPinchTimestamp;
     double  _initialPinchSeparation;
     NSMutableDictionary * _initialTouchPoints;
     <UIKeyboardPinchGestureRecognizerDelegate> * _pinchDelegate;

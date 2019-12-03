@@ -20,10 +20,10 @@
 
 + (id)unarchiveFromDictionary:(id)arg1;
 
+- (void).cxx_destruct;
 - (id)archiveToDictionary;
 - (float)currentMultiplier;
 - (float)currentTotal;
-- (void)dealloc;
 - (id)delegate;
 - (id)initWithDelegate:(id)arg1;
 - (id)mediaPathString;

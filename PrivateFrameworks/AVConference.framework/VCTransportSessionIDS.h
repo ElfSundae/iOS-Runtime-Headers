@@ -6,6 +6,7 @@
     VCDatagramChannelIDS * _datagramChannel;
     NSString * _destination;
     bool  _isIDSDCEventUsageErrorReported;
+    bool  _isWiFiAssistActive;
     bool  _requireEncryptionInfo;
     VCIDSSessionInfoSynchronizer * _sessionInfoSynchronizer;
     int  _socket;
@@ -30,7 +31,7 @@
 - (void)dispatchedProcessDatagramChannelEventInfo:(id)arg1;
 - (int)flushBasebandQueueForConnection:(id)arg1 payloadInfoList:(id)arg2;
 - (bool)getConnectionSetupData:(id*)arg1 withOptions:(id)arg2 error:(id*)arg3;
-- (int)getSignalStrength:(int*)arg1 signalRaw:(int*)arg2 signalGrade:(int*)arg3;
+- (int)getSignalStrengthBars:(int*)arg1 displayBars:(int*)arg2 maxDisplayBars:(int*)arg3;
 - (void)handleCellularMTUChanged:(id)arg1;
 - (void)handleChannelInfoReport:(id)arg1;
 - (void)handleDefaultLinkUpdatedWithInfo:(id)arg1;
@@ -56,6 +57,7 @@
 - (void)setPiggybackBlobPreference;
 - (void)setQuickRelayServerProvider:(int)arg1;
 - (void)setSocket:(int)arg1;
+- (void)setWiFiAssist:(bool)arg1;
 - (int)socket;
 - (void)start;
 - (void)stop;

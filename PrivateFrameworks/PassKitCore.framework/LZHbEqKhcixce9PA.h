@@ -4,6 +4,7 @@
 
 @interface LZHbEqKhcixce9PA : NSObject <pjRPsXEyBJiXQnH9> {
     NSXPCConnection * _connection;
+    NSMutableSet * _disconnectionCallbacks;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -7,6 +7,7 @@
     CUCaptureController * __captureController;
     NSObject<OS_dispatch_source> * __captureTimer;
     bool  __focusAndExposureAdjusted;
+    CAMCaptureGraphConfiguration * __graphConfigurationForCurrentState;
     bool  __ignoringTimerCallbacksForTearDown;
     bool  __ignoringTimerCallbacksWaitingForCaptureResponse;
     NSCountedSet * __inFlightTimelapseUUIDs;
@@ -18,6 +19,7 @@
     bool  __previewStarted;
     bool  __shouldUpdateFocusAndExposureWhenContrastDetectionCompletes;
     CAMTimelapseState * __state;
+    CAMStorageController * __storageController;
     <CAMTimelapseControllerDelegate> * _delegate;
     CAMFocusResult * _lastFocusResult;
 }
@@ -26,6 +28,7 @@
 @property (nonatomic, readonly) CUCaptureController *_captureController;
 @property (nonatomic, readonly) NSObject<OS_dispatch_source> *_captureTimer;
 @property (getter=_isFocusAndExposureAdjusted, setter=_setFocusAndExposureAdjusted:, nonatomic) bool _focusAndExposureAdjusted;
+@property (getter=_graphConfigurationForCurrentState, nonatomic, readonly) CAMCaptureGraphConfiguration *_graphConfigurationForCurrentState;
 @property (nonatomic, readonly) bool _ignoringTimerCallbacksForTearDown;
 @property (nonatomic, readonly) bool _ignoringTimerCallbacksWaitingForCaptureResponse;
 @property (nonatomic, readonly) NSCountedSet *_inFlightTimelapseUUIDs;
@@ -37,6 +40,7 @@
 @property (setter=_setPreviewStarted:, nonatomic) bool _previewStarted;
 @property (setter=_setShouldUpdateFocusAndExposureWhenContrastDetectionCompletes:, nonatomic) bool _shouldUpdateFocusAndExposureWhenContrastDetectionCompletes;
 @property (nonatomic, readonly) CAMTimelapseState *_state;
+@property (nonatomic, readonly) CAMStorageController *_storageController;
 @property (nonatomic, readonly) NSDate *captureStartTime;
 @property (getter=isCapturing, nonatomic, readonly) bool capturing;
 @property (readonly, copy) NSString *debugDescription;
@@ -60,9 +64,11 @@
 - (id)_createThumbnailImageFromPlaceholderResult:(id)arg1;
 - (void)_deviceStarted:(id)arg1;
 - (bool)_enqueueCaptureRequest;
+- (id)_graphConfigurationForCurrentState;
 - (bool)_ignoringTimerCallbacksForTearDown;
 - (bool)_ignoringTimerCallbacksWaitingForCaptureResponse;
 - (id)_inFlightTimelapseUUIDs;
+- (void)_invalidateCachedGraphConfiguration;
 - (bool)_isFocusAndExposureAdjusted;
 - (id)_locationController;
 - (id)_motionController;
@@ -92,6 +98,7 @@
 - (id)_state;
 - (id)_stillImageCaptureRequestWithCurrentSettings;
 - (void)_stopCapturingWithReasons:(long long)arg1;
+- (id)_storageController;
 - (void)_teardownCaptureTimer;
 - (void)_triggerBackendCrashRecoveryIfNeeded;
 - (void)_updateFocusAndExposureForStartCapturing;
@@ -102,7 +109,7 @@
 - (id)delegate;
 - (void)forceStopTimelapseCaptureWithReasons:(long long)arg1;
 - (id)init;
-- (id)initWithCaptureController:(id)arg1 locationController:(id)arg2 motionController:(id)arg3 persistenceController:(id)arg4 nebulaDaemonProxyManager:(id)arg5;
+- (id)initWithCaptureController:(id)arg1 locationController:(id)arg2 motionController:(id)arg3 persistenceController:(id)arg4 storageController:(id)arg5 nebulaDaemonProxyManager:(id)arg6;
 - (bool)isCapturing;
 - (id)lastFocusResult;
 - (void)restoreConfiguration;

@@ -4,7 +4,6 @@
 
 @interface GEOPhoneNumberResolver : NSObject {
     <GEOPhoneNumberResolving> * _resolver;
-    NSObject<OS_dispatch_queue> * _workQueue;
 }
 
 + (id)sharedResolver;

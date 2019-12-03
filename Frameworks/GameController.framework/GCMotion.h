@@ -11,7 +11,6 @@
     }  _attitude;
     bool  _compassEnabled;
     GCController * _controller;
-    bool  _emulatedMotionEnabled;
     struct { 
         double pitch; 
         double yaw; 
@@ -22,12 +21,7 @@
         double y; 
         double z; 
     }  _gravity;
-    id /* block */  _internalValueChangedHandler;
-    bool  _linkedOnOrAfterCompassFeature;
     bool  _motionLite;
-    CMMotionManager * _motionMgr;
-    bool  _motionUpdatedEnabled;
-    bool  _paused;
     struct GCQuaternion { 
         double x; 
         double y; 
@@ -39,11 +33,6 @@
         double yaw; 
         double roll; 
     }  _prevEulerAngles;
-    struct { 
-        double x; 
-        double y; 
-        double z; 
-    }  _prevGravity;
     struct { 
         double x; 
         double y; 
@@ -85,10 +74,13 @@
 - (struct { double x1; double x2; double x3; })gravity;
 - (bool)hasAttitudeAndRotationRate;
 - (id)initWithController:(id)arg1;
-- (id /* block */)internalValueChangedHandler;
 - (bool)isEmulatedMicroGamepad;
 - (struct { double x1; double x2; double x3; })rotationRate;
-- (void)setInternalValueChangedHandler:(id /* block */)arg1;
+- (void)setAttitude:(struct GCQuaternion { double x1; double x2; double x3; double x4; })arg1;
+- (void)setGravity:(struct { double x1; double x2; double x3; })arg1;
+- (void)setRotationRate:(struct { double x1; double x2; double x3; })arg1;
+- (void)setStateFromMotion:(id)arg1;
+- (void)setUserAcceleration:(struct { double x1; double x2; double x3; })arg1;
 - (void)setValueChangedHandler:(id /* block */)arg1;
 - (struct { double x1; double x2; double x3; })userAcceleration;
 - (id /* block */)valueChangedHandler;

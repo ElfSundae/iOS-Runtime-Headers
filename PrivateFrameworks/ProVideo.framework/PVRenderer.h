@@ -11,6 +11,11 @@
         } __end_cap_; 
     }  _cvPools;
     struct HGSynchronizable { int (**x1)(); struct _opaque_pthread_mutex_t { long long x_2_1_1; BOOL x_2_1_2[56]; } x2; struct _opaque_pthread_t {} *x3; unsigned long long x4; struct _opaque_pthread_cond_t { long long x_5_1_1; BOOL x_5_1_2[40]; } x5; } * _cvPoolsLock;
+    struct unique_ptr<PVGCDLock, std::__1::default_delete<PVGCDLock> > { 
+        struct __compressed_pair<PVGCDLock *, std::__1::default_delete<PVGCDLock> > { 
+            struct PVGCDLock {} *__value_; 
+        } __ptr_; 
+    }  _dateLock;
     struct HGRef<HGCVPixelBufferPool> { 
         struct HGCVPixelBufferPool {} *m_Obj; 
     }  _destinationBufferPool;

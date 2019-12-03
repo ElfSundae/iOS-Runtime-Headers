@@ -30,10 +30,10 @@
 - (void)cancelDownloadForIdentifier:(id)arg1;
 - (void)checkIfDownloadIsRequiredForAsset:(id)arg1 completion:(id /* block */)arg2;
 - (id)gridViewController;
-- (void)handleDownloadOfAsset:(id)arg1 inCollection:(id)arg2 withSuccessHandler:(id /* block */)arg3;
 - (void)handleDownloadOfAssetIfNeeded:(id)arg1 inCollection:(id)arg2 withSuccessHandler:(id /* block */)arg3;
 - (id)init;
 - (id)initWithGridViewController:(id)arg1;
+- (bool)isAnyPickerAssetDownloading:(id)arg1;
 - (long long)mode;
 - (void)setMode:(long long)arg1;
 - (void)setShouldTreatLivePhotosAsStills:(bool)arg1;

@@ -12,9 +12,10 @@
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
-- (void)_setVolumeFromDefaults;
 - (void)addObserver:(id)arg1;
+- (id)init;
 - (void)removeObserver:(id)arg1;
+- (void)setVolumeFromDefaults;
 - (id)settings;
 - (void)updateForSettings:(id)arg1;
 

@@ -3,16 +3,15 @@
  */
 
 @interface _UIBlurThroughEffect : UIVisualEffect {
+    _UICoreUIEffect * _reducedTransparencyEffect;
     long long  _style;
 }
 
 + (id)_blurThroughWithStyle:(long long)arg1;
 
-- (bool)_needsUpdateForMovingToSuperview:(id)arg1 fromSuperview:(id)arg2 inEffectView:(id)arg3;
-- (bool)_needsUpdateForMovingToWindow:(id)arg1 fromWindow:(id)arg2 inEffectView:(id)arg3;
-- (bool)_needsUpdateForOption:(id)arg1;
-- (bool)_needsUpdateForTransitionFromTraitCollection:(id)arg1 toTraitCollection:(id)arg2;
-- (void)_updateEffectNode:(id)arg1 forTraitCollection:(id)arg2;
+- (void).cxx_destruct;
+- (bool)_needsUpdateForTransitionFromEnvironment:(id)arg1 toEnvironment:(id)arg2 usage:(long long)arg3;
+- (void)_updateEffectDescriptor:(id)arg1 forEnvironment:(id)arg2 usage:(long long)arg3;
 - (bool)isEqual:(id)arg1;
 
 @end

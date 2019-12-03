@@ -9,8 +9,10 @@
 - (void)addRequiredEntitlement:(int)arg1;
 - (NSString *)canonicalValue;
 - (void)clearRequiredEntitlements;
+- (_INPBConfidenceScore *)confidenceScore;
 - (bool)confirmed;
 - (bool)hasCanonicalValue;
+- (bool)hasConfidenceScore;
 - (bool)hasConfirmed;
 - (bool)hasInput;
 - (bool)hasSource;
@@ -22,6 +24,7 @@
 - (NSString *)requiredEntitlementsAsString:(int)arg1;
 - (unsigned long long)requiredEntitlementsCount;
 - (void)setCanonicalValue:(NSString *)arg1;
+- (void)setConfidenceScore:(_INPBConfidenceScore *)arg1;
 - (void)setConfirmed:(bool)arg1;
 - (void)setHasConfirmed:(bool)arg1;
 - (void)setInput:(NSString *)arg1;

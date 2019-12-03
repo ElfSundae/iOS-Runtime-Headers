@@ -10,7 +10,7 @@
     bool  _inGallery;
     NSMutableArray * _rows;
     long long  _section;
-    UITableView * _tableView;
+    UIViewController<NTKCTableViewProviding> * _tableViewController;
     NSString * _titleForHeader;
 }
 
@@ -22,7 +22,8 @@
 @property (nonatomic, readonly) long long numberOfRows;
 @property (nonatomic, retain) NSMutableArray *rows;
 @property (nonatomic) long long section;
-@property (nonatomic) UITableView *tableView;
+@property (nonatomic, readonly) UITableView *tableView;
+@property (nonatomic) UIViewController<NTKCTableViewProviding> *tableViewController;
 @property (nonatomic, readonly) NSString *titleForHeader;
 
 + (void)registerForTableView:(id)arg1;
@@ -30,6 +31,7 @@
 - (void).cxx_destruct;
 - (bool)_canSelectRow:(long long)arg1;
 - (void)_commonInit;
+- (id)_groupName;
 - (double)_heightForSpacerRow;
 - (id)_newSectionHeader;
 - (id)_spacerRow;
@@ -45,7 +47,7 @@
 - (double)heightForHeaderView;
 - (double)heightForRow:(long long)arg1;
 - (bool)inGallery;
-- (id)initWithTableView:(id)arg1 face:(id)arg2 inGallery:(bool)arg3;
+- (id)initWithTableViewController:(id)arg1 face:(id)arg2 inGallery:(bool)arg3;
 - (long long)numberOfRows;
 - (id)rows;
 - (long long)section;
@@ -56,8 +58,9 @@
 - (void)setInGallery:(bool)arg1;
 - (void)setRows:(id)arg1;
 - (void)setSection:(long long)arg1;
-- (void)setTableView:(id)arg1;
+- (void)setTableViewController:(id)arg1;
 - (id)tableView;
+- (id)tableViewController;
 - (id)titleForHeader;
 
 @end

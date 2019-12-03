@@ -7,7 +7,7 @@
     GKMatchRequest * _matchRequest;
     GKTurnBasedMatchmakerHostViewController * _remoteViewController;
     bool  _showExistingMatches;
-    <GKTurnBasedMatchmakerViewControllerDelegate> * _turnBasedMatchmakerDelegateWeak;
+    <GKTurnBasedMatchmakerViewControllerDelegate> * turnBasedMatchmakerDelegate;
 }
 
 @property (nonatomic, retain) UIAlertController *alertController;
@@ -22,6 +22,7 @@
 
 + (bool)_preventsAppearanceProxyCustomization;
 
+- (void).cxx_destruct;
 - (void)_setupChildViewController;
 - (void)_setupRemoteViewController;
 - (id)alertController;

@@ -43,7 +43,7 @@
 - (int)flushBasebandQueueForConnection:(id)arg1 payloadInfoList:(id)arg2;
 - (int)flushBasebandQueueWithPayloads:(id)arg1 flushCount:(unsigned int*)arg2;
 - (bool)getConnectionSetupData:(id*)arg1 withOptions:(id)arg2 error:(id*)arg3;
-- (int)getSignalStrength:(int*)arg1 signalRaw:(int*)arg2 signalGrade:(int*)arg3;
+- (int)getSignalStrengthBars:(int*)arg1 displayBars:(int*)arg2 maxDisplayBars:(int*)arg3;
 - (void)handleMediaReceivedOverPeerToPeerLinkWithConnectionId:(int)arg1;
 - (void)handleMediaReceivedOverRelayLinkWithConnectionId:(int)arg1;
 - (id)initWithNotificationQueue:(id)arg1 reportingAgent:(struct opaqueRTCReporting { }*)arg2;

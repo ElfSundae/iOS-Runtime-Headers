@@ -73,6 +73,7 @@
 
 // Image: /System/Library/PrivateFrameworks/NanoPassKit.framework/NanoPassKit
 
+- (id)npkImageByMemoryMappingDataWithTemporaryFilePrefix:(id)arg1;
 - (id)resizedImageToCover:(struct CGSize { double x1; double x2; })arg1;
 - (id)resizedImageToFit:(struct CGSize { double x1; double x2; })arg1;
 - (id)resizedImageWithSize:(struct CGSize { double x1; double x2; })arg1 shouldCover:(bool)arg2;

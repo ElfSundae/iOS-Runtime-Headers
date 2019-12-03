@@ -4,6 +4,7 @@
 
 @interface VUIDocumentPreFetchedDataPostPlay : VUIDocumentPreFetchedData {
     bool  _canAutoPlay;
+    NSArray * _excludedCanonicals;
     NSString * _host;
     NSString * _productID;
     NSString * _showID;
@@ -11,6 +12,7 @@
 }
 
 @property (nonatomic) bool canAutoPlay;
+@property (nonatomic, copy) NSArray *excludedCanonicals;
 @property (nonatomic, copy) NSString *host;
 @property (nonatomic, copy) NSString *productID;
 @property (nonatomic, copy) NSString *showID;
@@ -18,10 +20,12 @@
 
 - (void).cxx_destruct;
 - (bool)canAutoPlay;
+- (id)excludedCanonicals;
 - (id)host;
 - (id)jsonData;
 - (id)productID;
 - (void)setCanAutoPlay:(bool)arg1;
+- (void)setExcludedCanonicals:(id)arg1;
 - (void)setHost:(id)arg1;
 - (void)setProductID:(id)arg1;
 - (void)setShowID:(id)arg1;

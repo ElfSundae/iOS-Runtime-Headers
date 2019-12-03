@@ -8,8 +8,8 @@
     bool  _shouldRetryRequest;
 }
 
+- (void).cxx_destruct;
 - (void)actionFailed:(long long)arg1 forTask:(id)arg2 error:(id)arg3;
-- (void)dealloc;
 - (id)init;
 - (id)initWithAlwaysReportFailures:(bool)arg1;
 - (void)setDone:(bool)arg1;

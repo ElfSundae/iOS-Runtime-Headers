@@ -13,7 +13,7 @@
     long long  _role;
     bool  _useMeCardIfAvailable;
     NSString * _userIdentifier;
-    CRKNotSoGoodImage * _userImage;
+    CRKImage * _userImage;
     NSData * _userImageData;
     NSString * _userSource;
 }
@@ -35,7 +35,7 @@
 @property (readonly) Class superclass;
 @property (getter=shouldUseMeCardIfAvailable, nonatomic) bool useMeCardIfAvailable;
 @property (nonatomic, copy) NSString *userIdentifier;
-@property (nonatomic, copy) CRKNotSoGoodImage *userImage;
+@property (nonatomic, copy) CRKImage *userImage;
 @property (nonatomic, copy) NSData *userImageData;
 @property (nonatomic, copy) NSString *userSource;
 

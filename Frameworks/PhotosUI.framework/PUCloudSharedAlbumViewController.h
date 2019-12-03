@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUCloudSharedAlbumViewController : PUPhotosAlbumViewController <PLAlbumStreamingOptionsViewControllerDelegate, PUPhotoStreamComposeServiceDelegate, PUVideoTrimQueueControllerDelegate, UIPopoverPresentationControllerDelegate> {
+@interface PUCloudSharedAlbumViewController : PUPhotosAlbumViewController <PUPhotoStreamComposeServiceDelegate, PUVideoTrimQueueControllerDelegate, PXAlbumStreamingOptionsViewControllerDelegate, UIPopoverPresentationControllerDelegate> {
     bool  __canContributeToCloudSharedAlbum;
     UIBarButtonItem * __optionsBarButtonItem;
     UIBarButtonItem * __optionsBarButtonSpacerItem;
@@ -37,7 +37,6 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (bool)_appAllowsSupressionOfAlerts;
 - (bool)_canContributeToCloudSharedAlbum;
 - (bool)_canDisplayOptions;
 - (void)_collectionView:(id)arg1 performDropWithCoordinator:(id)arg2;

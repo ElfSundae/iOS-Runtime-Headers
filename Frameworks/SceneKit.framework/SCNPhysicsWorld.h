@@ -3,6 +3,8 @@
  */
 
 @interface SCNPhysicsWorld : NSObject <NSSecureCoding> {
+    NSArray * _activeBehaviors;
+    bool  _activeBehaviorsValid;
     struct c3dAether { 
         struct vector<c3dPhysicsField *, std::__1::allocator<c3dPhysicsField *> > { 
             struct c3dPhysicsField {} **__begin_; 
@@ -27,6 +29,7 @@
     struct btC3DDebugDraw { int (**x1)(); int x2; void *x3; } * _debugDrawer;
     double  _elapsedTime;
     NSMutableArray * _fields;
+    bool  _firstSimulationDone;
     struct btOverlappingPairCallback { int (**x1)(); } * _ghostPairCallback;
     struct SCNVector3 { 
         float x; 
@@ -72,7 +75,7 @@
 - (void)_removeFieldFromWorld:(id)arg1;
 - (void)_reset;
 - (void)_step:(double)arg1;
-- (void)_updatePhysicsFieldsTrasforms;
+- (void)_updatePhysicsFieldsTransforms;
 - (void)addBehavior:(id)arg1;
 - (void)addPhysicsBody:(id)arg1 nodeRef:(struct __C3DNode { }*)arg2 colGroup:(unsigned long long)arg3 colMask:(unsigned long long)arg4 colTest:(unsigned long long)arg5;
 - (id)allBehaviors;

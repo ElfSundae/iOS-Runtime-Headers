@@ -9,11 +9,15 @@
 - (NSString *)contentInfoText;
 - (NSDate *)dateForCurrentSortType;
 - (NSString *)folderName;
+- (NSString *)folderNameForNoteList;
+- (NSString *)identifier;
 - (bool)isModernNote;
 - (bool)isPasswordProtected;
+- (bool)isSharedReadOnly;
 - (bool)isSharedViaICloud;
+- (bool)isSharedViaICloudFolder;
 - (NSString *)noteAsPlainTextWithoutTitle;
-- (NSArray *)searchableContentKeyPaths;
+- (NSArray *)noteCellKeyPaths;
 - (NSString *)title;
 - (NSString *)trimmedTitle;
 

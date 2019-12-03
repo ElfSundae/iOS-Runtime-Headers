@@ -3,8 +3,10 @@
  */
 
 @interface SYDevice : NSObject <NRDevicePropertyObserver, SYStateLoggable> {
+    bool  _cachedConnected;
     bool  _cachedIsNearby;
     NSString * _deviceClass;
+    bool  _hasCachedConnected;
     bool  _hasCachedNearby;
     NSDate * _lastActiveDate;
     NRDevice * _nrDevice;
@@ -16,11 +18,13 @@
 }
 
 @property (getter=isActive, nonatomic, readonly) bool active;
+@property (nonatomic) bool cachedConnected;
 @property (nonatomic) bool cachedIsNearby;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) NSString *deviceClass;
 @property (nonatomic, readonly) long long deviceCode;
+@property (nonatomic) bool hasCachedConnected;
 @property (nonatomic) bool hasCachedNearby;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSDate *lastActiveDate;
@@ -45,6 +49,7 @@
 - (void).cxx_destruct;
 - (void)_updateCachedStateForProperty:(id)arg1;
 - (void)_updateStateFlagsPostingNotifications:(bool)arg1;
+- (bool)cachedConnected;
 - (bool)cachedIsNearby;
 - (id)debugDescription;
 - (id)description;
@@ -52,6 +57,7 @@
 - (id)deviceClass;
 - (long long)deviceCode;
 - (id)findMatchingIDSDeviceFromList:(id)arg1;
+- (bool)hasCachedConnected;
 - (bool)hasCachedNearby;
 - (id)init;
 - (id)initWithNRDevice:(id)arg1;
@@ -63,7 +69,9 @@
 - (id)nrDevice;
 - (id)pairingID;
 - (id)pairingStorePath;
+- (void)setCachedConnected:(bool)arg1;
 - (void)setCachedIsNearby:(bool)arg1;
+- (void)setHasCachedConnected:(bool)arg1;
 - (void)setHasCachedNearby:(bool)arg1;
 - (void)setState:(long long)arg1;
 - (long long)state;

@@ -17,6 +17,8 @@
 - (void).cxx_destruct;
 - (id)buyParams;
 - (id)initWithDictionary:(id)arg1;
+- (id)notificationBody;
+- (id)notificationTitle;
 - (id)offer;
 - (bool)playWhenDone;
 - (id)title;

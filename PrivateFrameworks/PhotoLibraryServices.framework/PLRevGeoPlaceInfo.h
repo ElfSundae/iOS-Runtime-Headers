@@ -2,20 +2,28 @@
    Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
  */
 
-@interface PLRevGeoPlaceInfo : NSObject {
-    NSMutableSet * _geoPlaceInfos;
+@interface PLRevGeoPlaceInfo : NSObject <NSSecureCoding> {
+    bool  _hasArea;
+    double  _maximumArea;
+    double  _minimumArea;
     NSString * _placeName;
 }
 
-@property (nonatomic, readonly, retain) NSSet *geoPlaceInfos;
-@property (nonatomic, readonly, retain) NSNumber *minimumArea;
+@property (nonatomic, readonly) bool hasArea;
+@property (nonatomic, readonly) double maximumArea;
+@property (nonatomic, readonly) double minimumArea;
 @property (nonatomic, readonly, copy) NSString *placeName;
 
-- (void)addPlaceInfo:(id)arg1;
-- (void)dealloc;
-- (id)geoPlaceInfos;
++ (bool)supportsSecureCoding;
+
+- (void).cxx_destruct;
+- (void)addPlaceInfoArea:(double)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (bool)hasArea;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithPlaceName:(id)arg1;
-- (id)minimumArea;
+- (double)maximumArea;
+- (double)minimumArea;
 - (id)placeName;
 
 @end

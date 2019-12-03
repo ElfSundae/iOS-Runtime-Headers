@@ -15,6 +15,8 @@
 @property (nonatomic, copy) id /* block */ stepHandler;
 @property (nonatomic, copy) id /* block */ timingFunction;
 
+// Image: /System/Library/PrivateFrameworks/VectorKit.framework/VectorKit
+
 + (void)setDragCoefficientGetter:(id /* block */)arg1;
 
 - (void)dealloc;
@@ -34,5 +36,9 @@
 - (void)stopAnimation:(bool)arg1;
 - (bool)timed;
 - (id /* block */)timingFunction;
+
+// Image: /System/Library/Frameworks/MapKit.framework/MapKit
+
++ (id)animationMatchingCurrentAnimationParametersWithName:(id)arg1;
 
 @end

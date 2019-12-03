@@ -21,7 +21,7 @@
 @property (nonatomic, readonly, copy) NSString *canonicalID;
 @property (nonatomic, readonly, copy) NSNumber *colorCapability;
 @property (nonatomic, readonly, copy) NSString *contentDescription;
-@property (nonatomic, readonly, copy) VUIContentRating *contentRating;
+@property (nonatomic, readonly, copy) _TVContentRating *contentRating;
 @property (nonatomic, readonly, copy) NSString *coverArtImageIdentifier;
 @property (nonatomic, retain) NSMutableDictionary *firstAccessPropertiesCache;
 @property (nonatomic, readonly, copy) NSString *genreTitle;

@@ -99,7 +99,6 @@
 - (void)setStorageProtocolURL:(id)arg1;
 - (void)stop;
 - (id)storageProtocolURL;
-- (void)submitAssetCollectionsForPublication:(id)arg1;
 - (void)submitAssetCollectionsForPublication:(id)arg1 skipAssetCollections:(id)arg2;
 
 @end

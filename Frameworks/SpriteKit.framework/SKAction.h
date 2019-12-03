@@ -3,7 +3,7 @@
  */
 
 @interface SKAction : NSObject <NSCopying, NSSecureCoding> {
-    struct SKCAction { int (**x1)(); unsigned int x2; float x3; id /* block */ x4; id x5; double x6; double x7; float x8; float x9; double x10; bool x11; bool x12; id /* block */ x13; long long x14; float x15; float x16; float x17; float x18; } * _caction;
+    struct SKCAction { int (**x1)(); unsigned int x2; float x3; id /* block */ x4; id x5; bool x6; double x7; double x8; float x9; float x10; double x11; bool x12; bool x13; id /* block */ x14; long long x15; float x16; float x17; float x18; float x19; } * _caction;
 }
 
 @property (nonatomic) double duration;
@@ -118,7 +118,7 @@
 + (id)waitForDuration:(double)arg1 withRange:(double)arg2;
 + (id)warpTo:(id)arg1 duration:(double)arg2;
 
-- (struct SKCAction { int (**x1)(); unsigned int x2; float x3; id /* block */ x4; id x5; double x6; double x7; float x8; float x9; double x10; bool x11; bool x12; id /* block */ x13; long long x14; float x15; float x16; float x17; float x18; }*)caction;
+- (struct SKCAction { int (**x1)(); unsigned int x2; float x3; id /* block */ x4; id x5; bool x6; double x7; double x8; float x9; float x10; double x11; bool x12; bool x13; id /* block */ x14; long long x15; float x16; float x17; float x18; float x19; }*)caction;
 - (void)commonInit;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

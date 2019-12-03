@@ -5,8 +5,8 @@
 
 @optional
 
-- (void)miroCollectionView:(MiroInteractiveCollectionView *)arg1 willBeginInteractiveMovementForItemAtIndexPath:(NSIndexPath *)arg2;
-- (void)miroCollectionViewDidCancelInteractiveMovement:(MiroInteractiveCollectionView *)arg1;
-- (void)miroCollectionViewDidEndInteractiveMovement:(MiroInteractiveCollectionView *)arg1;
+- (void)miroCollectionView:(PMInteractiveCollectionView *)arg1 willBeginInteractiveMovementForItemAtIndexPath:(NSIndexPath *)arg2;
+- (void)miroCollectionViewDidCancelInteractiveMovement:(PMInteractiveCollectionView *)arg1;
+- (void)miroCollectionViewDidEndInteractiveMovement:(PMInteractiveCollectionView *)arg1;
 
 @end

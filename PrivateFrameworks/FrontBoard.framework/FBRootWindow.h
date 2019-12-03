@@ -6,7 +6,6 @@
     CALayer * _bezelLayer;
     CALayer * _maskLayer;
     UIView * _sceneContainerView;
-    UIView * _systemGestureView;
     NSHashTable * _transforms;
 }
 
@@ -20,9 +19,7 @@
 - (void).cxx_destruct;
 - (bool)_appearsInLoupe;
 - (bool)_canBecomeKeyWindow;
-- (id)_focusResponder;
 - (bool)_shouldPrepareScreenForWindow;
-- (id)_systemGestureView;
 - (void)_updateTransforms;
 - (bool)_usesWindowServerHitTesting;
 - (void)attachSceneTransform:(id)arg1;

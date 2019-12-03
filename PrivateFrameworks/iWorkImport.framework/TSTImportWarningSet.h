@@ -50,6 +50,7 @@
 + (id)warningSetForDifferentBehaviorForFunctionFormula:(id)arg1 originalFormula:(id)arg2;
 + (id)warningSetForErrorTokenFormula:(id)arg1;
 + (id)warningSetForExternalReferenceFormula:(id)arg1;
++ (id)warningSetForFilteredColumnFormulaNotCopied;
 + (id)warningSetForNaturalLanguageFormula:(id)arg1;
 + (id)warningSetForReferenceOutOfBoundsFormula:(id)arg1;
 + (id)warningSetForSharedFormulaBaseNotFoundFormula:(id)arg1;
@@ -65,6 +66,8 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (long long)TSTImportFormulaWarningTypeFromArchive:(int)arg1;
+- (int)TSTImportFormulaWarningTypeToArchive;
 - (bool)areAnySet;
 - (id)cellDiffClearingWarningsWithContext:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -72,12 +75,12 @@
 - (unsigned long long)hash;
 - (id)individualWarnings;
 - (id)init;
-- (id)initFromArchive:(const struct ImportWarningSetArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct ArenaStringPtr { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > {} *x_5_1_1; } x5; struct ImportWarningSetArchive_FormulaImportWarning {} *x6; bool x7; bool x8; bool x9; bool x10; bool x11; bool x12; bool x13; bool x14; bool x15; bool x16; bool x17; bool x18; bool x19; }*)arg1;
+- (id)initFromArchive:(const struct ImportWarningSetArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct ArenaStringPtr { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > {} *x_5_1_1; } x5; struct ImportWarningSetArchive_FormulaImportWarning {} *x6; bool x7; bool x8; bool x9; bool x10; bool x11; bool x12; bool x13; bool x14; bool x15; bool x16; bool x17; bool x18; bool x19; bool x20; }*)arg1;
 - (id)initFromPropertyCommandMessage:(const struct Message { int (**x1)(); }*)arg1 unarchiver:(id)arg2;
 - (bool)isEqual:(id)arg1;
-- (bool)isTransposeWarning;
 - (id)localizedWarningStrings;
-- (void)saveToArchive:(struct ImportWarningSetArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct ArenaStringPtr { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > {} *x_5_1_1; } x5; struct ImportWarningSetArchive_FormulaImportWarning {} *x6; bool x7; bool x8; bool x9; bool x10; bool x11; bool x12; bool x13; bool x14; bool x15; bool x16; bool x17; bool x18; bool x19; }*)arg1;
+- (bool)p_isPersistedWithFormulaWarningTypeEnumeration;
+- (void)saveToArchive:(struct ImportWarningSetArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct ArenaStringPtr { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > {} *x_5_1_1; } x5; struct ImportWarningSetArchive_FormulaImportWarning {} *x6; bool x7; bool x8; bool x9; bool x10; bool x11; bool x12; bool x13; bool x14; bool x15; bool x16; bool x17; bool x18; bool x19; bool x20; }*)arg1;
 - (void)saveToPropertyCommandMessage:(struct Message { int (**x1)(); }*)arg1 archiver:(id)arg2;
 - (id)warningSetByAddingWarningsFromSet:(id)arg1;
 - (id)warningSetByRemovingWarningsFromSet:(id)arg1;

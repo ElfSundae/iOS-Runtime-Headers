@@ -8,9 +8,11 @@
 + (void)initialize;
 + (id)predicateForAllRecords;
 + (id)predicateForKey:(id)arg1;
++ (id)predicateForKey:(id)arg1 beginsWith:(bool)arg2 matchReportVersion:(bool)arg3;
 + (id)predicateForKey:(id)arg1 beginsWith:(bool)arg2 submitted:(bool)arg3 matchReportVersion:(bool)arg4;
 + (id)predicateForKeyBeginsWith:(id)arg1;
 + (id)predicateForRecordsInDateRangeStart:(id)arg1 end:(id)arg2;
++ (id)predicateForRecordsMatchingKey:(id)arg1;
 + (id)predicateForRecordsNotSubmitted;
 + (id)predicateForRecordsNotSubmittedForKey:(id)arg1;
 + (id)predicateForRecordsNotSubmittedForKeyBeginsWith:(id)arg1;

@@ -9,10 +9,12 @@
 }
 
 @property (nonatomic, copy) PSIDateFilter *dateFilter;
+@property (nonatomic, readonly) NSArray *datedTokens;
 @property (nonatomic, readonly) unsigned long long numberOfTokens;
 
 - (void).cxx_destruct;
 - (id)dateFilter;
+- (id)datedTokens;
 - (id)description;
 - (id)descriptionWithToken:(id)arg1;
 - (void)enumerateTokensUsingBlock:(id /* block */)arg1;

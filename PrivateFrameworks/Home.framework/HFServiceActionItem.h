@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/Home.framework/Home
  */
 
-@interface HFServiceActionItem : HFItem <HFServiceLikeItem> {
+@interface HFServiceActionItem : HFItem <HFServiceLikeItem, HUServiceContainerItem> {
     NSSet * _actionBuilders;
     NSSet * _actions;
     HFItem<HFServiceLikeItem> * _containingItem;
@@ -17,8 +17,11 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) HMHome *home;
 @property (nonatomic, readonly) <HFHomeKitObject> *homeKitObject;
+@property (nonatomic, readonly) NSSet *services;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) <HFCharacteristicValueSource> *valueSource;
+
+// Image: /System/Library/PrivateFrameworks/Home.framework/Home
 
 + (id)_percentFormatter;
 
@@ -39,10 +42,16 @@
 - (id)homeKitObject;
 - (id)init;
 - (id)initWithHome:(id)arg1 containingItem:(id)arg2;
+- (id)namingComponentForHomeKitObject;
 - (id)serviceActionItemForChildServiceItem:(id)arg1;
 - (id)services;
 - (void)setActionBuilders:(id)arg1;
 - (void)setActions:(id)arg1;
 - (id)valueSource;
+
+// Image: /System/Library/PrivateFrameworks/HomeUI.framework/HomeUI
+
+- (id)hu_containedAccessories;
+- (id)hu_containedServices;
 
 @end

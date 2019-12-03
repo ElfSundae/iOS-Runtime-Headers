@@ -23,6 +23,7 @@
 - (void).cxx_destruct;
 - (void)__closeDatabaseOnIvarQueue;
 - (void)_clearDatabaseCloseTimerOnIvarQueue;
+- (void)_onIvarQueue_deleteDatesBefore:(id)arg1 after:(id)arg2;
 - (void)_onIvarQueue_deleteSerializedValueForKey:(id)arg1 valueType:(BOOL)arg2;
 - (void)_onIvarQueue_deleteUpToRowID:(unsigned long long)arg1 valueType:(BOOL)arg2;
 - (void)_onIvarQueue_performBlock:(id /* block */)arg1 initializeStore:(bool)arg2;
@@ -36,9 +37,9 @@
 - (id)dataForKey:(id)arg1 error:(id*)arg2;
 - (unsigned int)dataProtectionClass;
 - (id)datasUpToLimit:(unsigned long long)arg1 deleteContext:(id*)arg2 error:(id*)arg3;
-- (void)dealloc;
 - (bool)deleteBatchWithContext:(id)arg1 error:(id*)arg2;
 - (void)deleteDatabase;
+- (bool)deleteEntriesBeforeDate:(id)arg1 afterDate:(id)arg2 error:(id*)arg3;
 - (id)initWithPath:(id)arg1 storeName:(id)arg2 dataProtectionClass:(unsigned int)arg3;
 - (id)messageStore;
 - (id)path;
@@ -48,7 +49,5 @@
 - (void)setPath:(id)arg1;
 - (void)setStoreName:(id)arg1;
 - (id)storeName;
-- (void)systemDidEnterMemoryPressure;
-- (void)systemDidLeaveMemoryPressure;
 
 @end

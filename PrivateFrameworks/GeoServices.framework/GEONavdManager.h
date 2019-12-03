@@ -4,7 +4,9 @@
 
 @interface GEONavdManager : NSObject {
     NSMutableArray * _openers;
-    NSLock * _openersLock;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _openersLock;
     GEONavdServerProxy * _proxy;
 }
 

@@ -33,7 +33,6 @@
 @property (nonatomic, readonly) <HFCharacteristicOperationContextProviding> *contextProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, readonly, copy) NSSet *executingActionSets;
 @property (nonatomic, readonly) NAFuture *firstReadCompleteFuture;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NACancelationToken *inFlightReadCancelationToken;
@@ -55,8 +54,9 @@
 - (long long)_debug_totalNumberOfIssuedBatchReadRequests;
 - (void)_endReadsCompleteTrackingForCharacteristic:(id)arg1 withLogger:(id)arg2 didRead:(bool)arg3;
 - (id)_openTransactionCompletionFuture;
-- (id)_transactionLock_characteristicsWithPendingWritesInTransacton:(id)arg1 includeDirectWrites:(bool)arg2 includeActionSets:(bool)arg3;
+- (id)_transactionLock_characteristicsWithPendingWritesInTransacton:(id)arg1 includeDirectWrites:(bool)arg2 includeActionSets:(bool)arg3 includeActions:(bool)arg4;
 - (void)_transactionLock_executeActionSetTransaction:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)_transactionLock_executeActionsTransaction:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)_transactionLock_executeReadTransaction:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)_transactionLock_executeWriteTransaction:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)allReadCharacteristics;
@@ -78,7 +78,7 @@
 - (id)contextProvider;
 - (id)executeActionSet:(id)arg1;
 - (void)executeActionSet:(id)arg1 completionHandler:(id /* block */)arg2;
-- (id)executingActionSets;
+- (id)executeActions:(id)arg1;
 - (id)firstReadCompleteFuture;
 - (bool)hasCachedReadErrorForAccessory:(id)arg1 passingTest:(id /* block */)arg2;
 - (unsigned long long)hash;

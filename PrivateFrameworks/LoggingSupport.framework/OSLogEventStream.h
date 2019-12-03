@@ -18,6 +18,7 @@
 @property (nonatomic) struct _os_timesync_db_s { }*tsdb;
 
 - (void).cxx_destruct;
+- (void)_activateStreamFromTimeIntervalSinceLastBoot:(double)arg1;
 - (void)_activateStreamInRange:(struct os_timesync_range_s { struct os_trace_uuid_map_s {} *x1; unsigned long long x2; unsigned long long x3; unsigned char x4[0][16]; }*)arg1;
 - (void)_foreachIndexFile:(id /* block */)arg1;
 - (id)_initWithSource:(id)arg1 flags:(unsigned long long)arg2;

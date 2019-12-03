@@ -5,12 +5,31 @@
 @interface GEORegionalResource : PBCodable <NSCopying> {
     NSMutableArray * _attributions;
     struct { 
-        unsigned int x : 1; 
-        unsigned int y : 1; 
-        unsigned int z : 1; 
-    }  _has;
+        unsigned int has_x : 1; 
+        unsigned int has_y : 1; 
+        unsigned int has_z : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_tileRanges : 1; 
+        unsigned int read_attributions : 1; 
+        unsigned int read_iconChecksums : 1; 
+        unsigned int read_icons : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_tileRanges : 1; 
+        unsigned int wrote_attributions : 1; 
+        unsigned int wrote_iconChecksums : 1; 
+        unsigned int wrote_icons : 1; 
+        unsigned int wrote_x : 1; 
+        unsigned int wrote_y : 1; 
+        unsigned int wrote_z : 1; 
+    }  _flags;
     NSMutableArray * _iconChecksums;
     NSMutableArray * _icons;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     struct GEOTileSetRegion { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; } * _tileRanges;
     unsigned long long  _tileRangesCount;
     unsigned long long  _tileRangesSpace;
@@ -36,8 +55,17 @@
 + (Class)attributionType;
 + (Class)iconChecksumType;
 + (Class)iconType;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsAttribution:(id)arg1;
+- (void)_addNoFlagsIcon:(id)arg1;
+- (void)_addNoFlagsIconChecksum:(id)arg1;
+- (void)_addNoFlagsTileRange:(struct GEOTileSetRegion { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; })arg1;
+- (void)_readAttributions;
+- (void)_readIconChecksums;
+- (void)_readIcons;
+- (void)_readTileRanges;
 - (void)addAttribution:(id)arg1;
 - (void)addIcon:(id)arg1;
 - (void)addIconChecksum:(id)arg1;
@@ -49,6 +77,7 @@
 - (void)clearIconChecksums;
 - (void)clearIcons;
 - (void)clearTileRanges;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -64,8 +93,11 @@
 - (unsigned long long)iconChecksumsCount;
 - (id)icons;
 - (unsigned long long)iconsCount;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAttributions:(id)arg1;
 - (void)setHasX:(bool)arg1;

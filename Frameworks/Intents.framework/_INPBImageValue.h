@@ -3,6 +3,7 @@
  */
 
 @interface _INPBImageValue : PBCodable <NSCopying, NSSecureCoding, _INPBImageValue> {
+    bool  __encodeLegacyGloryData;
     NSData * _data;
     struct { 
         unsigned int height : 1; 
@@ -17,6 +18,7 @@
     double  _width;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic, copy) NSData *data;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -36,11 +38,16 @@
 @property (nonatomic, retain) _INPBValueMetadata *valueMetadata;
 @property (nonatomic) double width;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)data;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasData;
 - (bool)hasHeight;
 - (bool)hasProxyServiceIdentifier;
@@ -50,6 +57,7 @@
 - (bool)hasWidth;
 - (unsigned long long)hash;
 - (double)height;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)proxyServiceIdentifier;
 - (bool)readFrom:(id)arg1;

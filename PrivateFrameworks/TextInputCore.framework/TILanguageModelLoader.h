@@ -41,7 +41,7 @@
 + (void)resetClientAndRecipientCache;
 + (void)setAsynchronousLoad:(bool)arg1;
 + (void)setOfflineTrainingEnabled:(bool)arg1;
-+ (id)sharedLanguageModelLoaderForInputMode:(id)arg1 dynamicResourcePath:(id)arg2 mobileAssets:(id)arg3 usesLinguisticContext:(bool)arg4;
++ (id)sharedLanguageModelLoaderForInputMode:(id)arg1 staticResourcePaths:(id)arg2 dynamicResourcePath:(id)arg3 mobileAssets:(id)arg4 usesLinguisticContext:(bool)arg5;
 + (void)startObservingContactStore;
 + (struct shared_ptr<KB::LanguageModel> { struct LanguageModel {} *x1; struct __shared_weak_count {} *x2; })stubForLocale:(id)arg1 adaptationContext:(id)arg2 staticResourcePaths:(id)arg3 dynamicResourcePath:(id)arg4;
 
@@ -54,7 +54,8 @@
 - (id)dynamicResourcePath;
 - (void)findRecordsMatchingRecipient:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)flushDynamicLearningCaches;
-- (id)initWithInputMode:(id)arg1 dynamicResourcePath:(id)arg2 mobileAssets:(id)arg3 usesLinguisticContext:(bool)arg4;
+- (bool)hasLanguageModelBundle;
+- (id)initWithInputMode:(id)arg1 staticResourcePaths:(id)arg2 dynamicResourcePath:(id)arg3 mobileAssets:(id)arg4 usesLinguisticContext:(bool)arg5;
 - (id)inputMode;
 - (struct shared_ptr<KB::LanguageModel> { struct LanguageModel {} *x1; struct __shared_weak_count {} *x2; })languageModelForAdaptationContext:(id)arg1;
 - (struct shared_ptr<KB::LanguageModel> { struct LanguageModel {} *x1; struct __shared_weak_count {} *x2; })lightweightLanguageModel;

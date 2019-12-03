@@ -18,6 +18,7 @@
     NSData * _participantData;
     NSString * _participantID;
     unsigned int  _prominenceIndex;
+    unsigned long long  _spatialAudioSourceID;
     NSObject<OS_dispatch_queue> * _stateQueue;
     bool  _videoEnabled;
     bool  _videoPaused;
@@ -25,6 +26,7 @@
     long long  _videoToken;
     unsigned int  _visibilityIndex;
     float  _volume;
+    unsigned long long  spatialAudioSourceID;
 }
 
 @property (getter=isAudioEnabled, nonatomic) bool audioEnabled;
@@ -44,6 +46,7 @@
 @property (nonatomic, readonly) unsigned long long participantID;
 @property (nonatomic) unsigned int prominenceIndex;
 @property (nonatomic, retain) VCXPCClientShared *sharedXPCConnection;
+@property (nonatomic) unsigned long long spatialAudioSourceID;
 @property (nonatomic) NSObject<OS_dispatch_queue> *stateQueue;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSString *uuid;
@@ -85,6 +88,7 @@
 - (void)setHasPendingChanges:(bool)arg1;
 - (void)setProminenceIndex:(unsigned int)arg1;
 - (void)setSharedXPCConnection:(id)arg1;
+- (void)setSpatialAudioSourceID:(unsigned long long)arg1;
 - (void)setStateAudioEnabled:(bool)arg1;
 - (void)setStateAudioPaused:(bool)arg1;
 - (void)setStateQueue:(id)arg1;
@@ -99,6 +103,7 @@
 - (void)setupConfig;
 - (void)setupNotificationQueue:(id)arg1;
 - (id)sharedXPCConnection;
+- (unsigned long long)spatialAudioSourceID;
 - (id)stateQueue;
 - (id)uuid;
 - (unsigned char)videoQuality;

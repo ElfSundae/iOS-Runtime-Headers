@@ -65,7 +65,7 @@
 - (bool)hasRepairedMaxNetworkBitrate;
 - (bool)hasRepairedStreamID;
 - (unsigned long long)hash;
-- (id)initWithMultiwayConfig:(id)arg1 isSubStream:(bool)arg2;
+- (id)initWithStreamConfig:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)isSubStream;
 - (unsigned int)keyFrameInterval;
@@ -74,6 +74,7 @@
 - (unsigned int)maxPacketsPerSecond;
 - (void)mergeFrom:(id)arg1;
 - (unsigned int)metadata;
+- (id)newMultiwayVideoStream;
 - (unsigned int)payload;
 - (void)printWithLogFile:(void*)arg1;
 - (unsigned int)qualityIndex;

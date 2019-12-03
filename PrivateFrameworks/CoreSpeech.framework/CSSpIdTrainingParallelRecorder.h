@@ -30,6 +30,7 @@
 - (void)processMyriadDecision:(unsigned long long)arg1;
 - (id)queue;
 - (void)recordingStoppedForReason:(long long)arg1;
+- (void)setCVTTriggerPhraseDetected;
 - (void)setInvocationStyle:(id)arg1;
 - (void)setLastSpeakerIdInfo:(id)arg1;
 - (void)setParallelRecordingUttLogger:(id)arg1;

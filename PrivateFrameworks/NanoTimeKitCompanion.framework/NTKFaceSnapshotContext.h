@@ -26,6 +26,7 @@
 @property (nonatomic, retain) NSString *tzVersion;
 @property (nonatomic, retain) NSNumber *uses24hTime;
 
++ (id)currentContext;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;

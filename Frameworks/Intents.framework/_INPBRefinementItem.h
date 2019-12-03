@@ -3,11 +3,13 @@
  */
 
 @interface _INPBRefinementItem : PBCodable <NSCopying, NSSecureCoding, _INPBRefinementItem> {
+    bool  __encodeLegacyGloryData;
     struct { }  _has;
     _INPBSelectionItem * _item;
     NSString * _subKeyPath;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool hasItem;
@@ -17,12 +19,18 @@
 @property (nonatomic, copy) NSString *subKeyPath;
 @property (readonly) Class superclass;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasItem;
 - (bool)hasSubKeyPath;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)item;
 - (bool)readFrom:(id)arg1;

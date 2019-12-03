@@ -16,7 +16,7 @@
 - (bool)_canDoASubselectForExpression:(id)arg1 inContext:(id)arg2;
 - (id)_entitySpecificationKeypath;
 - (bool)_functionExpressionIsSubqueryFollowedByKeypath:(id)arg1;
-- (id)_generateSQLForConstantCollection:(id)arg1 inContext:(id)arg2;
+- (id)_generateSQLForConstantCollection:(id)arg1 reboundFrom:(id)arg2 inContext:(id)arg3;
 - (id)_generateSQLForConstantValue:(id)arg1 inContext:(id)arg2;
 - (id)_generateSQLForExpression:(id)arg1 allowToMany:(bool)arg2 inContext:(id)arg3;
 - (id)_generateSQLForExpressionCollection:(id)arg1 allowToMany:(bool)arg2 inContext:(id)arg3;

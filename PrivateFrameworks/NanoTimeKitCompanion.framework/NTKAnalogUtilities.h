@@ -4,7 +4,6 @@
 
 @interface NTKAnalogUtilities : NSObject
 
-+ (id)artShader;
 + (id)circularMaskShader;
 + (void)colorizeLabels:(id)arg1 color:(id)arg2;
 + (struct CGSize { double x1; double x2; })dialSizeForDevice:(id)arg1;

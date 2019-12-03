@@ -15,10 +15,10 @@
     double  _remainingTime;
     bool  _rerouting;
     GEOComposedRoute * _route;
-    GEORouteSet * _routeSet;
     long long  _score;
     NSDictionary * _scores;
     MNCommuteDestinationSuggestion * _suggestion;
+    GEOComposedRouteTraffic * _traffic;
 }
 
 @property (readonly) bool canCalculateETA;
@@ -32,16 +32,16 @@
 @property (nonatomic, retain) MNLocation *lastMatchedLocation;
 @property (nonatomic, readonly, copy) NSString *name;
 @property (nonatomic, retain) GEOComposedRoute *nonRecommendedRoute;
-@property (retain) MNObserverHashTable *observers;
+@property (nonatomic, retain) MNObserverHashTable *observers;
 @property (nonatomic) double remainingDistance;
 @property (nonatomic) double remainingTime;
 @property (nonatomic) bool rerouting;
 @property (nonatomic, retain) GEOComposedRoute *route;
-@property (nonatomic, retain) GEORouteSet *routeSet;
 @property (nonatomic) long long score;
 @property (nonatomic, copy) NSDictionary *scores;
 @property (nonatomic, readonly) NSString *shortDescription;
 @property (nonatomic, retain) MNCommuteDestinationSuggestion *suggestion;
+@property (nonatomic, retain) GEOComposedRouteTraffic *traffic;
 @property (nonatomic, readonly, copy) NSString *uniqueIdentifier;
 @property (nonatomic, readonly) GEOComposedWaypoint *waypoint;
 
@@ -72,7 +72,6 @@
 - (void)removeObserver:(id)arg1;
 - (bool)rerouting;
 - (id)route;
-- (id)routeSet;
 - (long long)score;
 - (id)scores;
 - (void)setDirectionsRequest:(id)arg1;
@@ -87,12 +86,13 @@
 - (void)setRemainingTime:(double)arg1;
 - (void)setRerouting:(bool)arg1;
 - (void)setRoute:(id)arg1;
-- (void)setRouteSet:(id)arg1;
 - (void)setScore:(long long)arg1;
 - (void)setScores:(id)arg1;
 - (void)setSuggestion:(id)arg1;
+- (void)setTraffic:(id)arg1;
 - (id)shortDescription;
 - (id)suggestion;
+- (id)traffic;
 - (id)uniqueIdentifier;
 - (void)updateFrom:(id)arg1;
 - (id)waypoint;

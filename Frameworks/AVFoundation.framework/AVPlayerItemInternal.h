@@ -10,6 +10,13 @@
     }  IFramePrefetchTargetDimensions;
     unsigned int  RTCReportingFlags;
     NSURL * URL;
+    struct { 
+        long long value; 
+        int timescale; 
+        unsigned int flags; 
+        long long epoch; 
+    }  advanceTimeForOverlappedPlayback;
+    bool  advanceTimeForOverlappedPlaybackWasSet;
     bool  aggressivelyCachesVideoFrames;
     bool  aggressivelyCachesVideoFramesWasSet;
     bool  allowProgressiveResume;
@@ -19,6 +26,7 @@
     AVAsset * assetWithFigPlaybackItem;
     NSDictionary * audibleDRMInfo;
     AVAudioMix * audioMix;
+    bool  audioSpatializationAllowed;
     NSArray * automaticallyLoadedAssetKeys;
     bool  blendsVideoFrames;
     bool  blendsVideoFramesWasSet;
@@ -32,6 +40,13 @@
     bool  canStepForward;
     bool  canUseNetworkResourcesForLiveStreamingWhilePaused;
     AVWeakReference * clientsOriginalVideoComposition;
+    struct { 
+        long long value; 
+        int timescale; 
+        unsigned int flags; 
+        long long epoch; 
+    }  configuredTimeOffsetFromLive;
+    AVMediaSelection * currentMediaSelection;
     AVCustomVideoCompositorSession * customVideoCompositorSession;
     bool  decodesAllFramesDuringOrdinaryPlayback;
     bool  decodesAllFramesDuringOrdinaryPlaybackWasSet;
@@ -40,6 +55,7 @@
     bool  didBecomeReadyForInspectionOfDuration;
     bool  didBecomeReadyForInspectionOfMediaSelectionOptions;
     bool  didBecomeReadyForInspectionOfPresentationSize;
+    bool  didBecomeReadyForInspectionOfRecommendedTimeOffsetFromLive;
     bool  didBecomeReadyForInspectionOfTracks;
     bool  didFireKVOForAssetForNonStreamingItem;
     bool  didInformObserversAboutAvailabilityOfTracks;
@@ -57,8 +73,9 @@
     NSObject<OS_dispatch_queue> * figConfigurationQueue;
     struct OpaqueFigPlaybackItem { } * figPlaybackItem;
     NSObject<OS_dispatch_queue> * figPlaybackItemAccessorQueue;
-    struct OpaqueCMTimebase { } * figTimebase;
+    NSObject<OS_dispatch_queue> * figPlaybackItemSetterQueue;
     void * figVideoCompositor;
+    struct OpaqueCMTimebase { } * foldedTimebase;
     struct { 
         long long value; 
         int timescale; 
@@ -127,7 +144,7 @@
             long long epoch; 
         } duration; 
     }  loopTimeRange;
-    struct OpaqueCMTimebase { } * loopingTimebase;
+    NSDictionary * loudnessInfo;
     struct { 
         long long value; 
         int timescale; 
@@ -173,10 +190,17 @@
         double width; 
         double height; 
     }  presentationSize;
+    bool  preservesTimeOffsetFromLive;
     AVPlayerItem * previousItem;
-    AVPropertyStorage * propertyStorage;
-    struct OpaqueCMTimebase { } * proxyTimebase;
+    struct OpaqueCMTimebase { } * proxyFoldedTimebase;
+    struct OpaqueCMTimebase { } * proxyUnfoldedTimebase;
     NSDictionary * rampInOutInfo;
+    struct { 
+        long long value; 
+        int timescale; 
+        unsigned int flags; 
+        long long epoch; 
+    }  recommendedTimeOffsetFromLive;
     bool  requiresAccessLog;
     unsigned long long  restrictions;
     struct { 
@@ -207,6 +231,7 @@
     NSArray * timedMetadata;
     NSArray * trackIDsForAssetWithFigPlaybackItem;
     NSArray * tracks;
+    struct OpaqueCMTimebase { } * unfoldedFigTimebase;
     bool  usesIFrameOnlyPlaybackForHighRateScaledEdits;
     bool  usesIFrameOnlyPlaybackForHighRateScaledEditsWasSet;
     bool  usesMinimalLatencyForVideoCompositionRendering;

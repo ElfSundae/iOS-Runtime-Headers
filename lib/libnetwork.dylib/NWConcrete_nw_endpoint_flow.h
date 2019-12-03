@@ -14,19 +14,19 @@
     NSObject<OS_nw_fd_wrapper> * connected_fd_wrapper;
     NSObject<OS_nw_array> * connected_metadata;
     NSObject<OS_nw_path> * connected_path;
+    unsigned char  connection_uuid;
     unsigned int  custom_protocols_only;
-    NSObject<OS_dispatch_data> * final_data;
-    NSObject<OS_nw_error> * final_error;
+    struct nw_data_transfer_snapshot { unsigned long long x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; unsigned long long x5; unsigned long long x6; unsigned long long x7; unsigned long long x8; unsigned long long x9; unsigned long long x10; unsigned long long x11; unsigned long long x12; unsigned long long x13; } * data_transfer_snapshot;
     unsigned long long  first_keepalive_time;
     NSObject<OS_nw_endpoint> * flow_divert_endpoint;
     NSObject<OS_xpc_object> * flow_divert_token;
+    NSObject<OS_nw_path> * flow_path;
     NSObject<OS_nw_path_flow_registration> * flow_registration;
     unsigned int  has_connected;
+    unsigned int  has_progress_target;
     unsigned int  initial_payload_sent;
-    unsigned int  initialized_protocol;
-    NSObject<OS_nw_dictionary> * input_contexts;
-    unsigned int  input_finished;
-    void * internally_retained_object;
+    unsigned int  initialized_protocol_callbacks;
+    NWConcrete_nw_endpoint_flow * internally_retained_object;
     struct nw_protocol_identifier { BOOL x1[32]; int x2; int x3; } * ip_protocol_identifier;
     unsigned int  is_channel;
     unsigned int  is_flow_divert;
@@ -36,16 +36,20 @@
     unsigned int  keepalive_event_enabled;
     id /* block */  keepalive_event_handler;
     NSObject<OS_nw_error> * last_error;
-    NSObject<OS_nw_content_context> * last_output_context;
-    unsigned int  last_output_context_pending;
+    struct nw_listen_protocol_callbacks { 
+        int (*new_flow)(); 
+        int (*disconnected)(); 
+    }  listen_callbacks;
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
     }  lock;
+    id /* block */  metadata_changed_event_handler;
+    unsigned int  multilayer_packet_logging;
     unsigned int  multipath_nat64_query_outstanding;
-    struct nw_frame_array_s { 
-        struct nw_frame {} *tqh_first; 
-        struct nw_frame {} **tqh_last; 
-    }  pending_input_frames;
+    struct nw_hash_table { } * multiplexed_flow_table;
+    NSObject<OS_nw_protocol_definition> * multiplexed_message_definition;
+    struct nw_protocol { unsigned char x1[16]; struct nw_protocol_identifier {} *x2; struct nw_protocol_callbacks {} *x3; struct nw_protocol {} *x4; void *x5; struct nw_protocol {} *x6; void *x7; } * multiplexed_message_protocol;
+    NSObject<OS_nw_read_request> * new_flow_read_requests;
     unsigned int  pending_write_bytes;
     int  pre_connected_fd;
     struct nw_protocol_callbacks { 
@@ -84,15 +88,6 @@
         int (*reset)(); 
         int (*input_flush)(); 
     }  protocol_callbacks;
-    struct nw_protocol { 
-        unsigned char flow_id[16]; 
-        struct nw_protocol_identifier {} *identifier; 
-        struct nw_protocol_callbacks {} *callbacks; 
-        struct nw_protocol {} *output_handler; 
-        void *handle; 
-        struct nw_protocol {} *default_input_handler; 
-        void *output_handler_context; 
-    }  protocol_handler;
     struct nw_protocol_identifier { 
         BOOL name[32]; 
         int level; 
@@ -100,10 +95,53 @@
     }  protocol_identifier;
     unsigned short  protocol_log_id_num;
     id /* block */  read_close_handler;
-    NSObject<OS_nw_read_request> * read_requests;
-    unsigned int  servicing_reads;
+    unsigned long long  received_application_byte_count;
+    unsigned long long  sent_application_byte_count;
     unsigned int  setup_protocols;
+    struct nw_flow_protocol { 
+        struct nw_protocol { 
+            unsigned char flow_id[16]; 
+            struct nw_protocol_identifier {} *identifier; 
+            struct nw_protocol_callbacks {} *callbacks; 
+            struct nw_protocol {} *output_handler; 
+            void *handle; 
+            struct nw_protocol {} *default_input_handler; 
+            void *output_handler_context; 
+        } protocol; 
+        struct nw_listen_protocol { 
+            struct nw_listen_protocol_callbacks {} *callbacks; 
+            struct nw_protocol {} *protocol_handler; 
+            void *protocol_handler_context; 
+            void *handle; 
+        } listen_protocol; 
+        NWConcrete_nw_endpoint_handler *handler; 
+        NSObject<OS_nw_parameters> *parameters; 
+        NSObject<OS_nw_context> *context; 
+        NSObject<OS_nw_write_request> *write_requests; 
+        NSObject<OS_nw_read_request> *read_requests; 
+        NSObject<OS_nw_content_context> *last_output_context; 
+        NSObject<OS_nw_protocol_metadata> *metadata; 
+        NSObject<OS_nw_protocol_metadata> *input_metadata; 
+        NSObject<OS_nw_content_context> *output_context; 
+        NSObject<OS_nw_dictionary> *input_contexts; 
+        struct nw_frame_array_s { 
+            struct nw_frame {} *tqh_first; 
+            struct nw_frame {} **tqh_last; 
+        } pending_input_frames; 
+        NSObject<OS_dispatch_data> *final_data; 
+        NSObject<OS_nw_error> *final_error; 
+        NSObject<OS_nw_error> *last_error; 
+        unsigned int initialized : 1; 
+        unsigned int last_output_context_pending : 1; 
+        unsigned int servicing_reads : 1; 
+        unsigned int input_finished : 1; 
+        unsigned int waiting_for_initial_read : 1; 
+        unsigned int __pad_bits : 3; 
+        unsigned char __pad[7]; 
+    }  shared_protocol;
     struct _DNSServiceRef_t { } * sleep_proxy_ref;
+    unsigned int  snapshot_count;
+    unsigned long long  snapshot_length;
     struct nw_protocol { unsigned char x1[16]; struct nw_protocol_identifier {} *x2; struct nw_protocol_callbacks {} *x3; struct nw_protocol {} *x4; void *x5; struct nw_protocol {} *x6; void *x7; } * socket_protocol;
     unsigned int  started;
     unsigned int  started_protocols;
@@ -112,7 +150,6 @@
     struct nw_protocol { unsigned char x1[16]; struct nw_protocol_identifier {} *x2; struct nw_protocol_callbacks {} *x3; struct nw_protocol {} *x4; void *x5; struct nw_protocol {} *x6; void *x7; } * tls_protocol;
     struct nw_protocol { unsigned char x1[16]; struct nw_protocol_identifier {} *x2; struct nw_protocol_callbacks {} *x3; struct nw_protocol {} *x4; void *x5; struct nw_protocol {} *x6; void *x7; } * transport_protocol;
     id /* block */  write_close_handler;
-    NSObject<OS_nw_write_request> * write_requests;
 }
 
 @property (readonly, copy) NSString *debugDescription;

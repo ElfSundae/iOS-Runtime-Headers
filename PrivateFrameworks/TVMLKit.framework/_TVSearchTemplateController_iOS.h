@@ -18,9 +18,12 @@
     }  _keyboardFrame;
     IKViewElement * _nonResultsElement;
     UIView * _nonResultsView;
+    UIView * _originalSearchFieldRightView;
+    long long  _originalSearchFieldRightViewMode;
     _TVStackCollectionViewController * _resultsViewController;
     UISearchController * _searchController;
     IKTextFieldElement * _searchFieldElement;
+    UIActivityIndicatorView * _spinner;
     IKViewElement * _viewElement;
 }
 

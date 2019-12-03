@@ -3,7 +3,8 @@
  */
 
 @interface VUIFeaturedCellOverlayView : UIView {
-    VUIButton * _button;
+    VUIAppleTVChannelLogoView * _appleTVChannelLogoView;
+    NSArray * _buttons;
     VUILabel * _disclaimerLabel;
     _TVImageView * _logoImageView;
     VUIFeaturedCellOverlayLayout * _overlayLayout;
@@ -12,7 +13,8 @@
     IKViewElement * _viewElement;
 }
 
-@property (nonatomic, retain) VUIButton *button;
+@property (nonatomic, retain) VUIAppleTVChannelLogoView *appleTVChannelLogoView;
+@property (nonatomic, retain) NSArray *buttons;
 @property (nonatomic, retain) VUILabel *disclaimerLabel;
 @property (nonatomic, retain) _TVImageView *logoImageView;
 @property (nonatomic, retain) VUIFeaturedCellOverlayLayout *overlayLayout;
@@ -23,12 +25,14 @@
 + (id)featuredCellOverViewFromElement:(id)arg1 overlayType:(long long)arg2 existingView:(id)arg3;
 
 - (void).cxx_destruct;
-- (id)button;
+- (id)appleTVChannelLogoView;
+- (id)buttons;
 - (id)disclaimerLabel;
 - (void)layoutSubviews;
 - (id)logoImageView;
 - (id)overlayLayout;
-- (void)setButton:(id)arg1;
+- (void)setAppleTVChannelLogoView:(id)arg1;
+- (void)setButtons:(id)arg1;
 - (void)setDisclaimerLabel:(id)arg1;
 - (void)setLogoImageView:(id)arg1;
 - (void)setOverlayLayout:(id)arg1;

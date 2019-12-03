@@ -6,7 +6,7 @@
     OADDrawable * mDrawable;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)drawable;
 - (unsigned long long)hash;
 - (id)init;

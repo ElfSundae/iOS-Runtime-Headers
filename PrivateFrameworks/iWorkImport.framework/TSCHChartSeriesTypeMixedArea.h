@@ -8,5 +8,6 @@
 - (id)genericToSpecificPropertyMap;
 - (bool)supportsSymbolDrawing;
 - (bool)supportsSymbolFillForSymbolType:(int)arg1;
+- (id)userInterfaceName;
 
 @end

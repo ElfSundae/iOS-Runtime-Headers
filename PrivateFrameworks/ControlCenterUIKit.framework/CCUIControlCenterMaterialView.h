@@ -5,16 +5,13 @@
 @interface CCUIControlCenterMaterialView : UIView
 
 + (id)_auxiliaryMaterialView;
++ (long long)_controlCenterRecipe;
 + (id)_darkMaterialView;
 + (id)_lightFillMaterialView;
-+ (long long)_recipe;
 + (id)_tertiaryMaterialView;
-+ (id)baseMaterialBlurView;
 + (id)controlCenterDarkMaterial;
 + (id)controlCenterLightFill;
 + (id)controlCenterTertiaryMaterial;
-+ (id)moduleBackgroundMaterialView;
-+ (id)primaryMaterialView;
 + (id)secondaryMaterialView;
 
 @end

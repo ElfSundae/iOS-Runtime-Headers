@@ -19,7 +19,7 @@
 @property (nonatomic, readonly) double duration;
 @property (readonly) unsigned long long hash;
 @property (getter=isSkippable, nonatomic) bool skippable;
-@property (nonatomic, readonly) double startTime;
+@property (nonatomic) double startTime;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long type;
 @property (nonatomic, retain) id userInfo;
@@ -36,6 +36,7 @@
 - (void)setActive:(bool)arg1;
 - (void)setAutoRemove:(bool)arg1;
 - (void)setSkippable:(bool)arg1;
+- (void)setStartTime:(double)arg1;
 - (void)setType:(unsigned long long)arg1;
 - (void)setUserInfo:(id)arg1;
 - (bool)shouldAutoRemove;

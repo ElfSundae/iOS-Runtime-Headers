@@ -4,7 +4,7 @@
 
 @interface SGLongRunningTask : NSObject {
     NSDate * _deadline;
-    bool  _deferRequested;
+    _Atomic bool  _deferRequested;
     SGLongRunningTaskManager * _manager;
 }
 

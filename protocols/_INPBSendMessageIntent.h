@@ -5,27 +5,35 @@
 
 @required
 
-+ (Class)attachmentType;
++ (Class)attachmentsType;
 + (Class)recipientType;
 
-- (void)addAttachment:(_INPBMessageAttachment *)arg1;
+- (int)StringAsEffect:(NSString *)arg1;
+- (int)StringAsMessageType:(NSString *)arg1;
+- (void)addAttachments:(_INPBSendMessageAttachment *)arg1;
 - (void)addRecipient:(_INPBContact *)arg1;
-- (_INPBMessageAttachment *)attachmentAtIndex:(unsigned long long)arg1;
 - (NSArray *)attachments;
+- (_INPBSendMessageAttachment *)attachmentsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)attachmentsCount;
 - (void)clearAttachments;
 - (void)clearRecipients;
 - (_INPBString *)content;
 - (NSString *)conversationIdentifier;
+- (int)effect;
+- (NSString *)effectAsString:(int)arg1;
 - (_INPBString *)groupName;
 - (bool)hasContent;
 - (bool)hasConversationIdentifier;
+- (bool)hasEffect;
 - (bool)hasGroupName;
 - (bool)hasIntentMetadata;
+- (bool)hasMessageType;
 - (bool)hasSender;
 - (bool)hasServiceName;
 - (bool)hasSpeakableGroupName;
 - (_INPBIntentMetadata *)intentMetadata;
+- (int)messageType;
+- (NSString *)messageTypeAsString:(int)arg1;
 - (_INPBContact *)recipientAtIndex:(unsigned long long)arg1;
 - (NSArray *)recipients;
 - (unsigned long long)recipientsCount;
@@ -34,8 +42,12 @@
 - (void)setAttachments:(NSArray *)arg1;
 - (void)setContent:(_INPBString *)arg1;
 - (void)setConversationIdentifier:(NSString *)arg1;
+- (void)setEffect:(int)arg1;
 - (void)setGroupName:(_INPBString *)arg1;
+- (void)setHasEffect:(bool)arg1;
+- (void)setHasMessageType:(bool)arg1;
 - (void)setIntentMetadata:(_INPBIntentMetadata *)arg1;
+- (void)setMessageType:(int)arg1;
 - (void)setRecipients:(NSArray *)arg1;
 - (void)setSender:(_INPBContact *)arg1;
 - (void)setServiceName:(NSString *)arg1;

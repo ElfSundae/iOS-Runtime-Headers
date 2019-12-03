@@ -12,8 +12,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (struct __CFString { }*)CFApplicationID;
-- (void)dealloc;
 - (id)initWithApplicationID:(id)arg1;
 - (bool)primitiveBoolValueForKey:(id)arg1 keyExists:(bool*)arg2;
 - (long long)primitiveIntegerValueForKey:(id)arg1 keyExists:(bool*)arg2;

@@ -3,10 +3,14 @@
  */
 
 @interface _MPCMediaRemotePublisher : NSObject <MPCPlaybackEngineEventObserving, MPNowPlayingPlaybackQueueDataSourcePrivate> {
+    NSArray * _accounts;
+    bool  _activeAccountAllowsSubscriptionPlayback;
+    NSString * _activeAccountStoreFrontIdentifier;
     MPRemoteCommandCenter * _commandCenter;
     bool  _engineRestoringState;
     MPNowPlayingInfoCenter * _infoCenter;
     bool  _initializedSupportedCommands;
+    NSUserDefaults * _ipodDefaults;
     NSString * _lastContextID;
     MPLibraryAddStatusObserver * _libraryAddStatusObserver;
     MPCPlaybackEngine * _playbackEngine;
@@ -28,13 +32,17 @@
 - (void)_disableQueueModificationsChangedNotification:(id)arg1;
 - (void)_durationAvailableNotification:(id)arg1;
 - (void)_enqueueFallbackIntentIfNeededForCommandEvent:(id)arg1 completion:(id /* block */)arg2;
+- (id)_exportableSessionTypes;
 - (void)_likedStateChangedNotification:(id)arg1;
 - (void)_performCommandEvent:(id)arg1 completion:(id /* block */)arg2;
+- (bool)_playbackStateIsIdle:(long long)arg1;
+- (id)_supportedSessionTypes;
+- (void)_updateLaunchCommands;
 - (void)_updateSupportedCommands;
-- (void)_updateUpNextItemCount;
 - (void)addSupportedSpecializedQueueIdentifier:(id)arg1 localizedName:(id)arg2 queueType:(long long)arg3 queueParameters:(id)arg4;
 - (void)becomeActive;
 - (id)commandCenter;
+- (void)engine:(id)arg1 didChangeAccounts:(id)arg2;
 - (void)engine:(id)arg1 didChangeQueueWithReason:(id)arg2;
 - (void)engine:(id)arg1 didChangeRepeatType:(long long)arg2;
 - (void)engine:(id)arg1 didChangeShuffleType:(long long)arg2;
@@ -42,6 +50,7 @@
 - (void)engine:(id)arg1 didChangeToState:(unsigned long long)arg2;
 - (void)engineDidEndStateRestoration:(id)arg1;
 - (void)engineWillBeginStateRestoration:(id)arg1;
+- (void)getShouldRestoreStateWithCompletion:(id /* block */)arg1;
 - (bool)hasInitializedSupportedCommands;
 - (id)infoCenter;
 - (id)initWithPlaybackEngine:(id)arg1;
@@ -50,14 +59,19 @@
 - (id)nowPlayingInfoCenter:(id)arg1 artworkForContentItem:(id)arg2 size:(struct CGSize { double x1; double x2; })arg3 completion:(id /* block */)arg4;
 - (id)nowPlayingInfoCenter:(id)arg1 contentItemForID:(id)arg2;
 - (id)nowPlayingInfoCenter:(id)arg1 contentItemIDForOffset:(long long)arg2;
+- (id)nowPlayingInfoCenter:(id)arg1 contentItemIDsFromOffset:(long long)arg2 toOffset:(long long)arg3 nowPlayingIndex:(long long*)arg4;
 - (void)nowPlayingInfoCenter:(id)arg1 didBeginLyricsEvent:(id)arg2;
 - (void)nowPlayingInfoCenter:(id)arg1 didEndLyricsEvent:(id)arg2;
+- (void)nowPlayingInfoCenter:(id)arg1 didEndMigrationWithIdentifier:(id)arg2 error:(id)arg3;
+- (void)nowPlayingInfoCenter:(id)arg1 getTransportablePlaybackSessionRepresentationForRequest:(id)arg2 completion:(id /* block */)arg3;
 - (id)nowPlayingInfoCenter:(id)arg1 lyricsForContentItem:(id)arg2 completion:(id /* block */)arg3;
+- (void)nowPlayingInfoCenter:(id)arg1 willBeginSessionMigrationWithIdentifier:(id)arg2;
 - (id)playbackEngine;
 - (id)playbackQueueIdentifierForNowPlayingInfoCenter:(id)arg1;
 - (id)playerPath;
 - (void)publishIfNeeded;
 - (void)removeSupportedSpecializedQueueIdentifier:(id)arg1;
+- (bool)respondsToSelector:(SEL)arg1;
 - (void)setEngineRestoringState:(bool)arg1;
 - (void)setInitializedSupportedCommands:(bool)arg1;
 

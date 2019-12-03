@@ -3,10 +3,12 @@
  */
 
 @interface DMFInstallAppRequest : DMFAppRequest {
+    NSNumber * _accountIdentifier;
     bool  _allowFreePurchases;
     unsigned long long  _licenseType;
 }
 
+@property (nonatomic, copy) NSNumber *accountIdentifier;
 @property (nonatomic) bool allowFreePurchases;
 @property (nonatomic) unsigned long long licenseType;
 
@@ -15,10 +17,13 @@
 + (id)permittedPlatforms;
 + (bool)supportsSecureCoding;
 
+- (void).cxx_destruct;
+- (id)accountIdentifier;
 - (bool)allowFreePurchases;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (unsigned long long)licenseType;
+- (void)setAccountIdentifier:(id)arg1;
 - (void)setAllowFreePurchases:(bool)arg1;
 - (void)setLicenseType:(unsigned long long)arg1;
 

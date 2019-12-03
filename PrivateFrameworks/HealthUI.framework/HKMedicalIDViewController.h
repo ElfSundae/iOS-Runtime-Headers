@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
  */
 
-@interface HKMedicalIDViewController : UITableViewController <HKEmergencyCardDeletionDelegate, HKEmergencyCardRowHeightChangeDelegate, HKMedicalIDViewControllerDelegate, UITableViewDataSource, UITableViewDelegate> {
+@interface HKMedicalIDViewController : UITableViewController <HKEmergencyCardContactUpdateDelegate, HKEmergencyCardDeletionDelegate, HKEmergencyCardRowHeightChangeDelegate, HKMedicalIDViewControllerDelegate, UITableViewDataSource, UITableViewDelegate> {
     NSArray * _accumulatedNumberOfRowsForItems;
     bool  _allowsEditing;
     HKEmergencyCardContactsTableItem * _contactsItem;
@@ -51,6 +51,7 @@
 - (void)_buildPresentableTableItems;
 - (void)_buildTableItems;
 - (void)_buildViewModeTableItems;
+- (bool)_canShowWhileLocked;
 - (void)_cancelEditingTapped:(id)arg1;
 - (void)_contactStoreDidChange:(id)arg1;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
@@ -58,8 +59,7 @@
 - (void)_doneEditingTapped:(id)arg1;
 - (void)_doneTapped:(id)arg1;
 - (bool)_editable;
-- (id)_fetchMedicalIDDataSynchronously:(bool*)arg1;
-- (void)_fetchName;
+- (void)_fetchDemographicInformation;
 - (void)_forceDisableBiometricIfDeviceLocked;
 - (id)_newViewForFooterInSection:(long long)arg1;
 - (void)_nextButtonTapped:(id)arg1;
@@ -126,6 +126,7 @@
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (void)timeZoneDidChange:(id)arg1;
+- (void)updateEmergencyContactTableItem;
 - (void)updateNavigationBar;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidLoad;

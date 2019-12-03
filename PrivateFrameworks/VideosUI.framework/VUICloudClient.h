@@ -2,17 +2,10 @@
    Image: /System/Library/PrivateFrameworks/VideosUI.framework/VideosUI
  */
 
-@interface VUICloudClient : NSObject {
-    HSCloudClient * _hsCloudClient;
-}
-
-@property (nonatomic, retain) HSCloudClient *hsCloudClient;
+@interface VUICloudClient : NSObject
 
 + (id)sharedInstance;
 
-- (void).cxx_destruct;
-- (id)hsCloudClient;
 - (void)loadArtworkURLsForPurchaseHistoryIDs:(id)arg1 completionHandler:(id /* block */)arg2;
-- (void)setHsCloudClient:(id)arg1;
 
 @end

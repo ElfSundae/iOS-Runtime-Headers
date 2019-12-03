@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/IDSFoundation.framework/IDSFoundation
  */
 
-@interface IDSSocketPairOTRMessage : IDSSocketPairMessage {
+@interface IDSSocketPairOTRMessage : IDSSocketPairMessage <IDSSocketPairMessage> {
     NSData * _data;
     bool  _encrypted;
     unsigned long long  _offset;
@@ -16,12 +16,17 @@
 
 @property (nonatomic, readonly) NSData *data;
 @property (nonatomic, readonly) bool encrypted;
+@property (nonatomic, readonly) bool expectsPeerResponse;
+@property (nonatomic, retain) NSDate *expiryDate;
+@property (nonatomic, readonly) NSString *messageUUID;
+@property (nonatomic, readonly) NSString *peerResponseIdentifier;
 @property (nonatomic, readonly) unsigned short priority;
 @property (nonatomic, readonly) unsigned char protectionClass;
-@property (nonatomic, readonly) unsigned int sequenceNumber;
+@property (nonatomic) unsigned int sequenceNumber;
 @property (nonatomic, readonly) bool shouldEncrypt;
 @property (nonatomic) unsigned short streamID;
 @property (nonatomic, readonly) unsigned char versionNumber;
+@property (nonatomic, readonly) bool wantsAppAck;
 
 - (void).cxx_destruct;
 - (id)_nonHeaderData;
@@ -34,6 +39,7 @@
 - (unsigned short)priority;
 - (unsigned char)protectionClass;
 - (unsigned int)sequenceNumber;
+- (void)setSequenceNumber:(unsigned int)arg1;
 - (void)setStreamID:(unsigned short)arg1;
 - (bool)shouldEncrypt;
 - (unsigned short)streamID;

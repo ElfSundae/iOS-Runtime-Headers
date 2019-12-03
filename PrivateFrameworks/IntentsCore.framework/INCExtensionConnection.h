@@ -5,6 +5,7 @@
 @interface INCExtensionConnection : NSObject {
     INCAppProxy * _appProxy;
     NSArray * _extensionInputItems;
+    CLInUseAssertion * _inUseAssertion;
     id /* block */  _interruptionHandler;
     INCDisplayLayoutMonitorObserver * _layoutObserver;
     NSObject<OS_dispatch_queue> * _queue;
@@ -34,15 +35,19 @@
 
 - (void).cxx_destruct;
 - (bool)_cancelRequestTimer;
+- (void)_invalidateInUseAssertion;
 - (id)_queue;
 - (void)_setShouldObserveLayout:(bool)arg1;
 - (bool)_shouldObserveLayout;
 - (void)_startRequestTimerWithExtensionProxy:(id)arg1;
+- (void)_takeInUseAssertionForBundleIdentifier:(id)arg1 withReason:(id)arg2;
+- (double)_timeoutIntervalForTransactionState:(id)arg1;
 - (id)_transaction;
 - (id)appProxy;
 - (id)extensionInputItems;
 - (id)initWithIntent:(id)arg1;
 - (id)initWithIntent:(id)arg1 remoteProxyProvider:(id /* block */)arg2;
+- (id)initWithIntent:(id)arg1 supportedExtensionTypes:(long long)arg2 donateInteraction:(bool)arg3 groupIdentifier:(id)arg4 remoteProxyProvider:(id /* block */)arg5;
 - (id)initWithIntent:(id)arg1 supportedExtensionTypes:(long long)arg2 remoteProxyProvider:(id /* block */)arg3;
 - (id)intent;
 - (id /* block */)interruptionHandler;

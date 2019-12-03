@@ -3,10 +3,10 @@
  */
 
 @interface PKTransactionDebugDetailsViewController : UITableViewController {
+    bool  _inBridge;
     UITableViewCell * _mapsCell;
     NSDictionary * _mapsMerchantDetails;
     NSDictionary * _merchantDetails;
-    UIBarButtonItem * _shareButton;
     PKPaymentTransaction * _transaction;
     NSDictionary * _transactionDetails;
 }
@@ -18,7 +18,6 @@
 - (void).cxx_destruct;
 - (id)_cellWithPrimaryText:(id)arg1 infoText:(id)arg2;
 - (void)_didSelectMap;
-- (void)_handleShareButton:(id)arg1;
 - (id)_mapsBrandInfoCellForIndex:(long long)arg1;
 - (id)_mapsCell;
 - (id)_mapsMerchantInfoCellForIndex:(long long)arg1;
@@ -44,5 +43,6 @@
 - (bool)tableView:(id)arg1 shouldShowMenuForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)transactionDetails;
+- (void)viewDidLoad;
 
 @end

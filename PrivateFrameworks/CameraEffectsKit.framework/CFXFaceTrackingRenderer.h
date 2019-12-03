@@ -10,6 +10,7 @@
     SCNNode * _faceAnchorNode;
     SCNNode * _faceRectNode;
     struct __CVPixelBufferPool { } * _inputBufferPool;
+    bool  _logged_render_failed;
     struct __CVMetalTextureCache { } * _metalTextureCache;
     struct CGSize { 
         double width; 
@@ -17,7 +18,6 @@
     }  _outputSize;
     NSLock * _renderLock;
     SCNRenderer * _renderer;
-    struct __CVPixelBufferPool { } * _rotateBufferPoolForLandscapeInputBuffer;
     struct OpaqueVTImageRotationSession { } * _rotationSession;
     struct OpaqueVTPixelTransferSession { } * _transferSession;
     SCNNode * _transform3DPlaneNode;
@@ -42,7 +42,6 @@
 @property (nonatomic) struct CGSize { double x1; double x2; } outputSize;
 @property (nonatomic, retain) NSLock *renderLock;
 @property (nonatomic, retain) SCNRenderer *renderer;
-@property (nonatomic) struct __CVPixelBufferPool { }*rotateBufferPoolForLandscapeInputBuffer;
 @property (nonatomic) struct OpaqueVTImageRotationSession { }*rotationSession;
 @property (readonly) Class superclass;
 @property (nonatomic) struct OpaqueVTPixelTransferSession { }*transferSession;
@@ -75,6 +74,7 @@
 - (id)delegate;
 - (id)faceAnchorNode;
 - (id)faceRectNode;
+- (void)flush;
 - (id)init;
 - (struct __CVPixelBufferPool { }*)inputBufferPool;
 - (struct __CVMetalTextureCache { }*)metalTextureCache;
@@ -91,7 +91,6 @@
 - (void)resetCameraTransform;
 - (void)resetRenderer;
 - (void)resetSceneNodes;
-- (struct __CVPixelBufferPool { }*)rotateBufferPoolForLandscapeInputBuffer;
 - (struct OpaqueVTImageRotationSession { }*)rotationSession;
 - (void)setBillboardTransformPlaneNode:(id)arg1;
 - (void)setCameraNode:(id)arg1;
@@ -105,7 +104,6 @@
 - (void)setOutputSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setRenderLock:(id)arg1;
 - (void)setRenderer:(id)arg1;
-- (void)setRotateBufferPoolForLandscapeInputBuffer:(struct __CVPixelBufferPool { }*)arg1;
 - (void)setRotationSession:(struct OpaqueVTImageRotationSession { }*)arg1;
 - (void)setTransferSession:(struct OpaqueVTPixelTransferSession { }*)arg1;
 - (void)setTransform3DPlaneNode:(id)arg1;

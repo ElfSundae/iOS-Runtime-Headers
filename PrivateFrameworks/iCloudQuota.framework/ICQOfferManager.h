@@ -28,6 +28,7 @@
 - (void)_firedInvalidationTimer:(id)arg1;
 - (id)_funnelCloudServerOfferForAccount:(id)arg1 options:(id)arg2 error:(id*)arg3;
 - (void)_getOfferForAccount:(id)arg1 bundleIdentifier:(id)arg2 completion:(id /* block */)arg3;
+- (void)_getOfferForAccount:(id)arg1 bundleIdentifier:(id)arg2 offerContext:(id)arg3 completion:(id /* block */)arg4;
 - (void)_handlePushReceivedDarwinNotification;
 - (void)_refetchOffer;
 - (void)_registerForDarwinNotifications;
@@ -43,6 +44,7 @@
 - (bool)fetchOfferIfNeeded;
 - (void)forcePostFollowup;
 - (void)getOfferForBundleIdentifier:(id)arg1 completion:(id /* block */)arg2;
+- (void)getOfferForBundleIdentifier:(id)arg1 offerContext:(id)arg2 completion:(id /* block */)arg3;
 - (void)getOfferWithCompletion:(id /* block */)arg1;
 - (id)init;
 - (bool)isBuddyOfferEnabled;

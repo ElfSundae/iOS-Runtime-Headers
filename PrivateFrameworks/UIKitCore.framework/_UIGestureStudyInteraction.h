@@ -3,40 +3,31 @@
  */
 
 @interface _UIGestureStudyInteraction : NSObject <UIGestureRecognizerDelegate, UIInteraction> {
-    <_UIGestureStudyInteractionDelegate> * _delegate;
-    _UIGestureStudyClickInteraction * _forceClickInteraction;
-    _UIGestureStudyClickInteraction * _longPressClickInteraction;
+    double  _durationWhenMovementExceeded;
     _UIGestureStudyPressDurationGestureRecognizer * _pressDurationRecognizer;
     UIView * _view;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) <_UIGestureStudyInteractionDelegate> *delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, retain) _UIGestureStudyClickInteraction *forceClickInteraction;
+@property (nonatomic) double durationWhenMovementExceeded;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) _UIGestureStudyClickInteraction *longPressClickInteraction;
 @property (nonatomic, retain) _UIGestureStudyPressDurationGestureRecognizer *pressDurationRecognizer;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) UIView *view;
 
 - (void).cxx_destruct;
-- (id)_baseMetadataForTriggeredParticipant:(id)arg1;
-- (void)_handleLongPressRecognizer:(id)arg1;
-- (void)_interactionDidTrigger:(id)arg1;
-- (void)_reportEventForTriggeredParticipant:(id)arg1;
-- (id)_viewRegionForTriggeredParticipant:(id)arg1;
-- (id)delegate;
+- (id)_eventDataForTriggeredRecognizer:(id)arg1;
+- (void)_handlePressRecognizer:(id)arg1;
+- (id)_locationForTriggeredRecognizer:(id)arg1;
+- (void)_reportEventForTriggeredRecognizer:(id)arg1;
+- (id)_viewDescription;
 - (void)didMoveToView:(id)arg1;
-- (id)forceClickInteraction;
+- (double)durationWhenMovementExceeded;
 - (bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
-- (id)initWithDelegate:(id)arg1;
 - (struct CGPoint { double x1; double x2; })locationInCoordinateSpace:(id)arg1;
-- (id)longPressClickInteraction;
 - (id)pressDurationRecognizer;
-- (void)setDelegate:(id)arg1;
-- (void)setForceClickInteraction:(id)arg1;
-- (void)setLongPressClickInteraction:(id)arg1;
+- (void)setDurationWhenMovementExceeded:(double)arg1;
 - (void)setPressDurationRecognizer:(id)arg1;
 - (id)view;
 - (void)willMoveToView:(id)arg1;

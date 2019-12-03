@@ -21,8 +21,10 @@
 - (id)description;
 - (long long)displayType;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
+- (bool)isEqual:(id)arg1;
 - (void)localizeWithBundle:(id)arg1;
 - (void)localizeWithBundle:(id)arg1 table:(id)arg2;
 - (id)localizedCaption;

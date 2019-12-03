@@ -18,6 +18,7 @@
 - (NSString *)feedIDForBin:(long long)arg1;
 - (FCAssetHandle *)feedNavImageAssetHandle;
 - (NSString *)freeFeedIDForBin:(long long)arg1;
+- (FCColor *)groupDarkStyleTitleColor;
 - (FCColor *)groupTitleColor;
 - (unsigned long long)groupingEligibility;
 - (bool)hideAccessoryText;
@@ -46,6 +47,7 @@
 - (FCAssetHandle *)nameImageCompactAssetHandle;
 - (FCAssetHandle *)nameImageMaskWidgetHQAssetHandle;
 - (FCAssetHandle *)nameImageMaskWidgetLQAssetHandle;
+- (FCSubscriptionButtonConfiguration *)paidBundleSubscriptionButtonConfiguration;
 - (NSString *)paidFeedIDForBin:(long long)arg1;
 - (void)ppt_overrideFeedID:(NSString *)arg1;
 - (FCPurchaseOfferableConfiguration *)prefetchPurchaseOffer;

@@ -63,7 +63,6 @@
 - (void)dealloc;
 - (id)description;
 - (id)dispatchQueue;
-- (id)init;
 - (id)initWithDevice:(id)arg1 acceptor:(bool)arg2;
 - (void)invalidate;
 - (id /* block */)invalidationHandler;

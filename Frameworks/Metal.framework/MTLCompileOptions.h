@@ -11,6 +11,7 @@
 @property (nonatomic) bool glBufferBindPoints;
 @property (nonatomic) unsigned long long languageVersion;
 @property (nonatomic, copy) NSDictionary *preprocessorMacros;
+@property (nonatomic) unsigned char sourceLanguage;
 @property (nonatomic) bool tracingEnabled;
 
 + (id)alloc;

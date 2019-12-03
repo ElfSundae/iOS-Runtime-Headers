@@ -10,6 +10,5 @@
 - (double)defaultRowHeightForTableView:(id)arg1;
 - (double)defaultRowHeightForTableView:(id)arg1 cellStyle:(long long)arg2;
 - (bool)supportsUserInterfaceStyles;
-- (bool)useOffWhiteEtchedLook;
 
 @end

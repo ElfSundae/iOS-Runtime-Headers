@@ -16,6 +16,7 @@
     FAFamilyPickInviteeViewController * _pickInviteeVC;
     NSData * _pushToken;
     AAUIRemoteUIController * _remoteUIController;
+    FARequestConfigurator * _requestConfigurator;
     UIActivityIndicatorView * _spinnerView;
     NSMutableURLRequest * _startRemoteUIRequest;
 }
@@ -32,7 +33,8 @@
 
 - (void).cxx_destruct;
 - (id)_itunesAccount;
-- (id)_pushToken;
+- (id)_requestConfigurator;
+- (void)_startRemoteUIRequest:(id)arg1;
 - (id)addFamilyMemberInstructions;
 - (id)continuationData;
 - (id)createChildAccountButtonTitle;
@@ -45,7 +47,7 @@
 - (void)pickInviteeViewControllerWantsChildAccountFlow:(id)arg1;
 - (void)remoteUIController:(id)arg1 didReceiveHTTPResponse:(id)arg2;
 - (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(unsigned long long*)arg3;
-- (void)remoteUIController:(id)arg1 willLoadRequest:(id)arg2;
+- (void)remoteUIController:(id)arg1 shouldLoadRequest:(id)arg2 redirectResponse:(id)arg3 withCompletionHandler:(id /* block */)arg4;
 - (void)remoteUIControllerDidDismiss:(id)arg1;
 - (void)setAddFamilyMemberInstructions:(id)arg1;
 - (void)setContinuationData:(id)arg1;

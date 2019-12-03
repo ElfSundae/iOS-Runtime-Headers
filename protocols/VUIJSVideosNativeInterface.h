@@ -6,7 +6,7 @@
 @required
 
 - (NSString *)locStringForKey:(NSString *)arg1;
-- (NSString *)locStringForKeyWithCount:(NSString *)arg1 :(NSNumber *)arg2;
+- (NSString *)locStringForKeyWithCounts:(NSString *)arg1 :(NSArray *)arg2;
 - (void)setLocDictionary:(NSDictionary *)arg1;
 
 @end

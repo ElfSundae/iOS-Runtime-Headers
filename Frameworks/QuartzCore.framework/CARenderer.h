@@ -3,7 +3,7 @@
  */
 
 @interface CARenderer : NSObject {
-    struct CARendererPriv { id x1; /* Warning: Unrecognized filer type: 'W' using 'void*' */ void*x2; void*x3; void*x4; void*x5; void*x6; int x7; double x8; void*x9; void*x10; id x11; id x12; struct Context {} x13; struct Renderer {} *x14; struct CGRect { struct CGPoint { double x_1_2_1; double x_1_2_2; } x_15_1_1; struct CGSize { double x_2_2_1; double x_2_2_2; } x_15_1_2; } x15; struct CGColorSpace {} *x16; struct Update {} *x17; unsigned int x18; unsigned int x19[2]; unsigned int x20[2]; unsigned int x21; unsigned int x22 : 8; unsigned long long x23; BOOL x24[0]; } * _priv;
+    struct CARendererPriv { id x1; struct Weak<id> { id x_2_1_1; } x2; id x3; struct Context {} *x4; struct Renderer {} *x5; struct CGRect { struct CGPoint { double x_1_2_1; double x_1_2_2; } x_6_1_1; struct CGSize { double x_2_2_1; double x_2_2_2; } x_6_1_2; } x6; struct CGColorSpace {} *x7; struct Update {} *x8; unsigned int x9; unsigned int x10[2]; unsigned int x11[2]; unsigned int x12; unsigned int x13 : 8; unsigned int x14 : 1; unsigned int x15 : 1; unsigned long long x16; BOOL x17[0]; } * _priv;
 }
 
 @property struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } bounds;

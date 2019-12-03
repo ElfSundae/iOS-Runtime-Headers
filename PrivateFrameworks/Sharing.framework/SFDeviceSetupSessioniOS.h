@@ -14,6 +14,9 @@
     bool  _configRequestSent;
     bool  _configResponseReceived;
     NSObject<OS_dispatch_queue> * _dispatchQueue;
+    CoreTelephonyClient * _eSIMClient;
+    bool  _eSIMSetupEnabled;
+    int  _eSIMSetupState;
     RPFileTransferSession * _fileTransferSessionTemplate;
     id /* block */  _interruptionHandler;
     bool  _invalidateCalled;
@@ -59,6 +62,7 @@
 - (void)_receivedObject:(id)arg1 flags:(unsigned int)arg2;
 - (void)_run;
 - (int)_runCoreCDPSetup;
+- (int)_runESIMSetup;
 - (int)_runPreAuthPairSetup;
 - (int)_runResume;
 - (void)_runSFSessionActivated;

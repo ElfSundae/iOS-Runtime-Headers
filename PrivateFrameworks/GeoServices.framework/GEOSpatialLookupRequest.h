@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
  */
 
-@interface GEOSpatialLookupRequest : PBRequest <NSCopying> {
+@interface GEOSpatialLookupRequest : PBCodable <NSCopying> {
     struct { 
         int *list; 
         unsigned long long count; 
@@ -10,11 +10,23 @@
     }  _categorys;
     GEOLatLng * _center;
     struct { 
-        unsigned int maxResults : 1; 
-        unsigned int radius : 1; 
-    }  _has;
+        unsigned int has_maxResults : 1; 
+        unsigned int has_radius : 1; 
+        unsigned int read_categorys : 1; 
+        unsigned int read_center : 1; 
+        unsigned int wrote_categorys : 1; 
+        unsigned int wrote_center : 1; 
+        unsigned int wrote_maxResults : 1; 
+        unsigned int wrote_radius : 1; 
+    }  _flags;
     int  _maxResults;
     int  _radius;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
 }
 
 @property (nonatomic, readonly) int*categorys;
@@ -25,8 +37,13 @@
 @property (nonatomic) int maxResults;
 @property (nonatomic) int radius;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsCategorys:(id)arg1;
+- (void)_addNoFlagsCategory:(int)arg1;
+- (void)_readCategorys;
+- (void)_readCenter;
 - (void)addCategory:(int)arg1;
 - (int)categoryAtIndex:(unsigned long long)arg1;
 - (int*)categorys;
@@ -42,10 +59,13 @@
 - (bool)hasMaxResults;
 - (bool)hasRadius;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (int)maxResults;
 - (void)mergeFrom:(id)arg1;
 - (int)radius;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setCategorys:(int*)arg1 count:(unsigned long long)arg2;
 - (void)setCenter:(id)arg1;

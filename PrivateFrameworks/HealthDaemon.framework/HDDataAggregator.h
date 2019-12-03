@@ -4,7 +4,7 @@
 
 @interface HDDataAggregator : NSObject <HDHealthDaemonReadyObserver> {
     HDDataCollectionManager * _dataCollectionManager;
-    bool  _hasStartedCollectors;
+    _Atomic bool  _hasStartedCollectors;
     NSLock * _lock;
     bool  _lock_canStartCollectors;
     NSMapTable * _lock_collectorRegistry;
@@ -30,17 +30,16 @@
 - (id)dataCollectionManager;
 - (void)dataCollector:(id)arg1 didChangeState:(id)arg2;
 - (void)dataCollector:(id)arg1 didCollectSensorData:(id)arg2 device:(id)arg3;
-- (void)dataCollector:(id)arg1 didCollectSensorDatum:(id)arg2;
 - (void)dataCollector:(id)arg1 didCollectSensorDatum:(id)arg2 device:(id)arg3;
-- (double)defaultDataCollectionInterval;
 - (id)diagnosticDescription;
 - (bool)didPersistObjects:(id)arg1 lastDatum:(id)arg2 collector:(id)arg3 error:(id*)arg4;
 - (id)initWithDataCollectionManager:(id)arg1;
 - (id)objectType;
-- (bool)persistObjects:(id)arg1 lastDatum:(id)arg2 collector:(id)arg3 source:(id)arg4 device:(id)arg5 error:(id*)arg6;
+- (bool)persistForCollector:(id)arg1 usedDatums:(id)arg2 source:(id)arg3 device:(id)arg4 error:(id*)arg5 persistenceHandler:(id /* block */)arg6;
+- (bool)persistObjects:(id)arg1 usedDatums:(id)arg2 collector:(id)arg3 source:(id)arg4 device:(id)arg5 error:(id*)arg6;
 - (void)recomputeCollectorConfiguration;
 - (void)registerDataCollector:(id)arg1 state:(id)arg2;
-- (void)requestAggregationThroughDate:(id)arg1 mode:(long long)arg2 completion:(id /* block */)arg3;
+- (void)requestAggregationThroughDate:(id)arg1 mode:(long long)arg2 freezeSeries:(bool)arg3 completion:(id /* block */)arg4;
 - (void)resume;
 - (void)setConfiguration:(id)arg1;
 - (void)unregisterDataCollector:(id)arg1;

@@ -17,6 +17,7 @@
 @property (nonatomic, readonly) NSDate *valueUpdatedTime;
 
 + (id)responseWithRequest:(id)arg1 error:(id)arg2;
++ (id)responsesWithRequests:(id)arg1 error:(id)arg2;
 
 - (void).cxx_destruct;
 - (id)description;

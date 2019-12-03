@@ -5,31 +5,35 @@
 @interface _ANERequest : NSObject {
     id /* block */  _completionHandler;
     NSArray * _inputArray;
-    NSArray * _inputNameArray;
+    NSArray * _inputIndexArray;
     NSArray * _outputArray;
-    NSArray * _outputNameArray;
-    NSString * _procedureName;
+    NSArray * _outputIndexArray;
+    NSNumber * _procedureIndex;
+    _ANEIOSurfaceObject * _weightsBuffer;
 }
 
 @property (copy) id /* block */ completionHandler;
 @property (nonatomic, readonly) NSArray *inputArray;
-@property (nonatomic, readonly) NSArray *inputNameArray;
+@property (nonatomic, readonly) NSArray *inputIndexArray;
 @property (nonatomic, readonly) NSArray *outputArray;
-@property (nonatomic, readonly) NSArray *outputNameArray;
-@property (nonatomic, readonly, copy) NSString *procedureName;
+@property (nonatomic, readonly) NSArray *outputIndexArray;
+@property (nonatomic, readonly, copy) NSNumber *procedureIndex;
+@property (nonatomic, readonly) _ANEIOSurfaceObject *weightsBuffer;
 
-+ (id)requestWithInputs:(id)arg1 inputNames:(id)arg2 outputs:(id)arg3 outputNames:(id)arg4 procedureName:(id)arg5;
++ (id)requestWithInputs:(id)arg1 inputIndices:(id)arg2 outputs:(id)arg3 outputIndices:(id)arg4 procedureIndex:(id)arg5;
++ (id)requestWithInputs:(id)arg1 inputIndices:(id)arg2 outputs:(id)arg3 outputIndices:(id)arg4 weightsBuffer:(id)arg5 procedureIndex:(id)arg6;
 
 - (void).cxx_destruct;
 - (id /* block */)completionHandler;
 - (id)description;
-- (id)initWithInputs:(id)arg1 inputNames:(id)arg2 outputs:(id)arg3 outputNames:(id)arg4 procedureName:(id)arg5;
+- (id)initWithInputs:(id)arg1 inputIndices:(id)arg2 outputs:(id)arg3 outputIndices:(id)arg4 weightsBuffer:(id)arg5 procedureIndex:(id)arg6;
 - (id)inputArray;
-- (id)inputNameArray;
+- (id)inputIndexArray;
 - (id)outputArray;
-- (id)outputNameArray;
-- (id)procedureName;
+- (id)outputIndexArray;
+- (id)procedureIndex;
 - (void)setCompletionHandler:(id /* block */)arg1;
 - (bool)validate;
+- (id)weightsBuffer;
 
 @end

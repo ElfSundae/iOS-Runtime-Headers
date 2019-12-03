@@ -162,6 +162,7 @@
 - (id)nsli_contentWidthVariable;
 - (struct CGSize { double x1; double x2; })nsli_convertSizeFromEngineSpace:(struct CGSize { double x1; double x2; })arg1;
 - (struct CGSize { double x1; double x2; })nsli_convertSizeToEngineSpace:(struct CGSize { double x1; double x2; })arg1;
+- (bool)nsli_defaultResolvedValue:(double*)arg1 forSymbolicConstant:(id)arg2 inConstraint:(id)arg3 error:(id*)arg4;
 - (id)nsli_description;
 - (bool)nsli_descriptionIncludesPointer;
 - (struct CGSize { double x1; double x2; })nsli_engineToUserScalingCoefficients;
@@ -203,8 +204,8 @@
 
 // Image: /System/Library/PrivateFrameworks/SearchUI.framework/SearchUI
 
-- (id)containingView;
-- (bool)isContainedByItem:(id)arg1;
-- (id)view;
+- (id)searchui_containingView;
+- (bool)searchui_isContainedByItem:(id)arg1;
+- (id)searchui_view;
 
 @end

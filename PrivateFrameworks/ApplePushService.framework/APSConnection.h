@@ -16,6 +16,9 @@
     NSMutableDictionary * _idsToOutgoingMessages;
     NSArray * _ignoredTopics;
     bool  _isConnected;
+    bool  _isDeallocing;
+    bool  _isDisconnected;
+    bool  _isReconnectScheduled;
     bool  _isShutdown;
     NSObject<OS_dispatch_queue> * _ivarQueue;
     unsigned long long  _largeMessageSize;
@@ -28,6 +31,7 @@
     NSString * _processName;
     NSData * _publicToken;
     NSMutableArray * _queuedDelegateBlocks;
+    double  _reconnectDelay;
     bool  _usesAppLaunchStats;
 }
 
@@ -40,9 +44,10 @@
 @property (nonatomic, readonly, retain) NSData *publicToken;
 @property (nonatomic) bool usesAppLaunchStats;
 
+// Image: /System/Library/PrivateFrameworks/ApplePushService.framework/ApplePushService
+
 + (void)_blockingXPCCallWithArgumentBlock:(id /* block */)arg1 resultHandler:(id /* block */)arg2;
 + (void)_flushIdentityCache;
-+ (void)_safelyCancelAndReleaseAfterBarrierConnection:(id)arg1;
 + (void)_safelyCancelAndReleaseConnection:(id)arg1;
 + (void)_setTokenState;
 + (id)connectionsDebuggingState;
@@ -55,6 +60,7 @@
 + (void)requestCourierConnection;
 + (double)serverTime;
 
+- (void).cxx_destruct;
 - (void)_addEnableCriticalReliabilityToXPCMessage:(id)arg1;
 - (void)_addEnableStatusNotificationsToXPCMessage:(id)arg1;
 - (void)_addUsesAppLaunchStatsToXPCMessage:(id)arg1;
@@ -67,8 +73,8 @@
 - (void)_deliverConnectionStatusFromDealloc:(bool)arg1;
 - (void)_deliverDidReconnectOnIvarQueue;
 - (void)_deliverMessage:(id)arg1;
-- (void)_deliverOutgoingMessageResultWithID:(unsigned long long)arg1 checkpointTraceData:(id)arg2 error:(id)arg3;
-- (void)_deliverOutgoingMessageResultWithID:(unsigned long long)arg1 error:(id)arg2;
+- (void)_deliverOutgoingMessageResultWithID:(unsigned long long)arg1 checkpointTraceData:(id)arg2 error:(id)arg3 sendRTT:(unsigned long long)arg4 ackTimestamp:(unsigned long long)arg5;
+- (void)_deliverOutgoingMessageResultWithID:(unsigned long long)arg1 error:(id)arg2 sendRTT:(unsigned long long)arg3;
 - (void)_deliverPublicToken:(id)arg1 withCompletionBlock:(id /* block */)arg2;
 - (void)_deliverPublicTokenOnIvarQueue:(id)arg1 withCompletionBlock:(id /* block */)arg2;
 - (void)_deliverToken:(id)arg1 forTopic:(id)arg2 identifier:(id)arg3;
@@ -80,6 +86,7 @@
 - (id)_listForIdentifierOnIvarQueue:(unsigned long long)arg1;
 - (void)_noteDisconnectedFromDaemonOnIvarQueue;
 - (void)_onIvarQueue_setEnabledTopics:(id)arg1 ignoredTopics:(id)arg2 opportunisticTopics:(id)arg3 sendToDaemon:(bool)arg4;
+- (void)_reconnectIfNecessaryOnIvarQueueAfterDelay;
 - (void)_sendOutgoingMessage:(id)arg1 fake:(bool)arg2;
 - (void)_setEnableCriticalReliability:(bool)arg1 sendToDaemon:(bool)arg2;
 - (void)_setEnableStatusNotifications:(bool)arg1 sendToDaemon:(bool)arg2;
@@ -128,5 +135,9 @@
 - (void)setUsesAppLaunchStats:(bool)arg1;
 - (void)shutdown;
 - (bool)usesAppLaunchStats;
+
+// Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
+
++ (id)ck_singletonConnectionForEnvironmentName:(id)arg1 namedDelegatePort:(id)arg2;
 
 @end

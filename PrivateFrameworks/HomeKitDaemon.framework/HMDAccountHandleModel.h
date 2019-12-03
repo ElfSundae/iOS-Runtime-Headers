@@ -8,5 +8,6 @@
 @property (nonatomic, retain) NSNumber *local;
 
 + (id)properties;
++ (id)schemaHashRoot;
 
 @end

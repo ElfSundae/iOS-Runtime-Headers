@@ -33,7 +33,7 @@
 - (bool)faceDetected;
 - (bool)flare;
 - (id)initFromDictionary:(id)arg1;
-- (id)initFromFaceInfo:(const struct { unsigned short x1; unsigned int x2; float x3; float x4; float x5; }*)arg1;
+- (id)initFromFaceInfo:(const struct { unsigned short x1; unsigned short x2; unsigned int x3; float x4; float x5; float x6; }*)arg1;
 - (id)initWithPresenceState:(bool)arg1;
 - (id)initWithPresenceState:(bool)arg1 details:(id)arg2;
 - (bool)multipleFaces;

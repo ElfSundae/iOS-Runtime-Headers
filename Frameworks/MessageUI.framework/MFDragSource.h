@@ -30,14 +30,14 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_api_dragInteraction:(id)arg1 previewForLiftingItem:(id)arg2 session:(id)arg3;
-- (void)_api_dragInteraction:(id)arg1 session:(id)arg2 willEndWithOperation:(unsigned long long)arg3;
 - (long long)_dragInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 - (bool)_dragInteractionAllowsDragOverridingMasterSwitch:(id)arg1;
 - (bool)allowsDragOverridingMasterSwitch;
 - (id)delegate;
 - (id)dragInteraction;
 - (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
+- (id)dragInteraction:(id)arg1 previewForLiftingItem:(id)arg2 session:(id)arg3;
+- (void)dragInteraction:(id)arg1 session:(id)arg2 willEndWithOperation:(unsigned long long)arg3;
 - (bool)dragInteraction:(id)arg1 sessionAllowsMoveOperation:(id)arg2;
 - (bool)dragInteraction:(id)arg1 sessionIsRestrictedToDraggingApplication:(id)arg2;
 - (id)initWithView:(id)arg1 delegate:(id)arg2;

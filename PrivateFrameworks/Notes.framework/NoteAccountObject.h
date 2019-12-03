@@ -16,6 +16,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) bool didChooseToMigrate;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool isICloudIMAPAccount;
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSString *pathToConstraintsPlist;
 @property (nonatomic, readonly) bool preventMovingNotesToOtherAccounts;
@@ -25,12 +26,16 @@
 
 // Image: /System/Library/PrivateFrameworks/Notes.framework/Notes
 
++ (bool)shouldDataAccessCreateAccountForACAccount:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)accountType;
 - (id)basicAccountIdentifier;
 - (id)collectionInfo;
 - (id)constraints;
 - (void)didTurnIntoFault;
+- (bool)isAllNotesContainer;
+- (bool)isICloudIMAPAccount;
 - (id)noteVisibilityTestingForSearchingAccount;
 - (id)pathToConstraintsPlist;
 - (id)predicateForNotes;
@@ -48,6 +53,8 @@
 - (id)defaultFolder;
 - (id)emailAddress;
 - (id)folders;
+- (bool)isManaged;
+- (id)localizedAttachmentsNotSupportedReason;
 - (id)objectIdentifier;
 - (bool)supportsAttachments;
 

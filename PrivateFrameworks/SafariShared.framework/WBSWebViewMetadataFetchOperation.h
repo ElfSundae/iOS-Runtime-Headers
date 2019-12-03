@@ -17,6 +17,7 @@
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } webViewSize;
 
 - (void).cxx_destruct;
+- (void)_setUpWebViewAndStartOffscreenFetching;
 - (void)_webViewWebProcessDidCrash:(id)arg1;
 - (void)cancel;
 - (void)clearWebView;
@@ -26,7 +27,6 @@
 - (void)didCreateWebView;
 - (void)didFailFetch;
 - (void)setDelegate:(id)arg1;
-- (void)setUpWebViewIfNeeded;
 - (void)start;
 - (void)startOffscreenFetching;
 - (id)webView;

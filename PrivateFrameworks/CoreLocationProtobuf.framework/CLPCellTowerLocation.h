@@ -15,7 +15,9 @@
         unsigned int rscp : 1; 
         unsigned int serverHash : 1; 
         unsigned int transmit : 1; 
+        unsigned int isLimitedService : 1; 
     }  _has;
+    bool  _isLimitedService;
     int  _lac;
     CLPLocation * _location;
     int  _mcc;
@@ -28,6 +30,7 @@
     int  _rscp;
     int  _rssi;
     int  _serverHash;
+    NSString * _serviceProviderName;
     int  _transmit;
 }
 
@@ -38,13 +41,16 @@
 @property (nonatomic, readonly) bool hasAppBundleId;
 @property (nonatomic) bool hasArfcn;
 @property (nonatomic) bool hasEcn0;
+@property (nonatomic) bool hasIsLimitedService;
 @property (nonatomic, readonly) bool hasNeighborGroup;
 @property (nonatomic, readonly) bool hasOperatorName;
 @property (nonatomic) bool hasPsc;
 @property (nonatomic) bool hasRat;
 @property (nonatomic) bool hasRscp;
 @property (nonatomic) bool hasServerHash;
+@property (nonatomic, readonly) bool hasServiceProviderName;
 @property (nonatomic) bool hasTransmit;
+@property (nonatomic) bool isLimitedService;
 @property (nonatomic) int lac;
 @property (nonatomic, retain) CLPLocation *location;
 @property (nonatomic) int mcc;
@@ -57,6 +63,7 @@
 @property (nonatomic) int rscp;
 @property (nonatomic) int rssi;
 @property (nonatomic) int serverHash;
+@property (nonatomic, retain) NSString *serviceProviderName;
 @property (nonatomic) int transmit;
 
 + (Class)neighborType;
@@ -75,15 +82,18 @@
 - (bool)hasAppBundleId;
 - (bool)hasArfcn;
 - (bool)hasEcn0;
+- (bool)hasIsLimitedService;
 - (bool)hasNeighborGroup;
 - (bool)hasOperatorName;
 - (bool)hasPsc;
 - (bool)hasRat;
 - (bool)hasRscp;
 - (bool)hasServerHash;
+- (bool)hasServiceProviderName;
 - (bool)hasTransmit;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
+- (bool)isLimitedService;
 - (int)lac;
 - (id)location;
 - (int)mcc;
@@ -100,17 +110,20 @@
 - (int)rscp;
 - (int)rssi;
 - (int)serverHash;
+- (id)serviceProviderName;
 - (void)setAppBundleId:(id)arg1;
 - (void)setArfcn:(int)arg1;
 - (void)setCi:(int)arg1;
 - (void)setEcn0:(int)arg1;
 - (void)setHasArfcn:(bool)arg1;
 - (void)setHasEcn0:(bool)arg1;
+- (void)setHasIsLimitedService:(bool)arg1;
 - (void)setHasPsc:(bool)arg1;
 - (void)setHasRat:(bool)arg1;
 - (void)setHasRscp:(bool)arg1;
 - (void)setHasServerHash:(bool)arg1;
 - (void)setHasTransmit:(bool)arg1;
+- (void)setIsLimitedService:(bool)arg1;
 - (void)setLac:(int)arg1;
 - (void)setLocation:(id)arg1;
 - (void)setMcc:(int)arg1;
@@ -123,6 +136,7 @@
 - (void)setRscp:(int)arg1;
 - (void)setRssi:(int)arg1;
 - (void)setServerHash:(int)arg1;
+- (void)setServiceProviderName:(id)arg1;
 - (void)setTransmit:(int)arg1;
 - (int)transmit;
 - (void)writeTo:(id)arg1;

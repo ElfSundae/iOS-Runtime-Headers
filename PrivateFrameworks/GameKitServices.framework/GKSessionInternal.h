@@ -24,7 +24,7 @@
         long long __sig; 
         BOOL __opaque[56]; 
     }  _lock;
-    int  _mode;
+    unsigned int  _mode;
     struct _DNSServiceRef_t { } * _oldService;
     GKAutoPeerIDTable * _peerIDTable;
     GKTable * _peerInfoTable;
@@ -70,7 +70,7 @@
 @property <GKSessionPrivateDelegate> *privateDelegate;
 @property (nonatomic, copy) NSString *serviceType;
 @property (readonly) NSString *sessionID;
-@property (readonly) int sessionMode;
+@property (readonly) unsigned int sessionMode;
 @property (nonatomic) struct OpaqueGCKSession { }*sessionRef;
 @property bool wifiEnabled;
 
@@ -102,7 +102,7 @@
 - (bool)filterService:(const char *)arg1 withPID:(unsigned int)arg2;
 - (void)handleEvents;
 - (id)initWithConnection:(id)arg1 session:(id)arg2 delegate:(id)arg3;
-- (id)initWithSessionID:(id)arg1 displayName:(id)arg2 session:(id)arg3 sessionMode:(int)arg4;
+- (id)initWithSessionID:(id)arg1 displayName:(id)arg2 session:(id)arg3 sessionMode:(unsigned int)arg4;
 - (bool)isAvailable;
 - (bool)isBusy;
 - (bool)isPeerBusy:(id)arg1;
@@ -112,9 +112,9 @@
 - (id)newNSErrorFromGKSessionError:(int)arg1 description:(id)arg2 reason:(id)arg3;
 - (id)newNSErrorFromHRESULT:(int)arg1 description:(id)arg2 reason:(id)arg3;
 - (bool)parseServiceName:(const char *)arg1 intoDisplayName:(id*)arg2 pid:(unsigned int*)arg3 state:(id*)arg4;
-- (bool)passesSendDataSanityCheck:(id)arg1 toPeers:(id)arg2 withDataMode:(int)arg3 error:(id*)arg4;
+- (bool)passesSendDataSanityCheck:(id)arg1 toPeers:(id)arg2 withDataMode:(unsigned int)arg3 error:(id*)arg4;
 - (id)peerID;
-- (id)peersWithConnectionState:(int)arg1;
+- (id)peersWithConnectionState:(unsigned int)arg1;
 - (unsigned long long)port;
 - (void)printDictionaries;
 - (id)privateDelegate;
@@ -122,15 +122,15 @@
 - (void)publish;
 - (void)receiveDOOB:(id)arg1 fromPeer:(id)arg2 inSession:(id)arg3 context:(void*)arg4;
 - (void)reset;
-- (bool)sendAudioData:(id)arg1 toPeers:(id)arg2 withDataMode:(int)arg3 error:(id*)arg4;
+- (bool)sendAudioData:(id)arg1 toPeers:(id)arg2 withDataMode:(unsigned int)arg3 error:(id*)arg4;
 - (void)sendCallbacksToDelegate:(struct { int x1; char *x2; int x3; unsigned int x4; }*)arg1 remotePeer:(unsigned int)arg2;
-- (bool)sendData:(id)arg1 toPeers:(id)arg2 withDataMode:(int)arg3 enableOOB:(bool)arg4 error:(id*)arg5;
-- (bool)sendData:(id)arg1 toPeers:(id)arg2 withDataMode:(int)arg3 error:(id*)arg4;
-- (bool)sendDataToAllPeers:(id)arg1 withDataMode:(int)arg2 error:(id*)arg3;
+- (bool)sendData:(id)arg1 toPeers:(id)arg2 withDataMode:(unsigned int)arg3 enableOOB:(bool)arg4 error:(id*)arg5;
+- (bool)sendData:(id)arg1 toPeers:(id)arg2 withDataMode:(unsigned int)arg3 error:(id*)arg4;
+- (bool)sendDataToAllPeers:(id)arg1 withDataMode:(unsigned int)arg2 error:(id*)arg3;
 - (id)serviceName;
 - (id)serviceType;
 - (id)sessionID;
-- (int)sessionMode;
+- (unsigned int)sessionMode;
 - (struct OpaqueGCKSession { }*)sessionRef;
 - (void)setAgpSessionRef:(struct OpaqueAGPSession { }*)arg1;
 - (void)setAvailable:(bool)arg1;

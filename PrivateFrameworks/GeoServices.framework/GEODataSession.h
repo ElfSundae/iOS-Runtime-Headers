@@ -2,10 +2,9 @@
    Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
  */
 
-@interface GEODataSession : NSObject <GEODataSession, GEODataSessionRulesProvider> {
+@interface GEODataSession : NSObject <GEODataSession> {
     NSObject<OS_dispatch_queue> * _sessionIsolation;
     <GEODataSession> * _urlSession;
-    <GEODataSession> * _xpcSession;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -14,20 +13,19 @@
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *sessionIsolation;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) GEODataURLSession *urlSession;
-@property (nonatomic, readonly) <GEODataSession> *xpcSession;
 
++ (void)asynchronousGetURL:(id)arg1 kind:(struct { int x1; union { int x_2_1_1; int x_2_1_2; int x_2_1_3; } x2; })arg2 requestCounterTicket:(id)arg3 queue:(id)arg4 completionHandler:(id /* block */)arg5;
 + (id)sharedDataSession;
 
 - (void).cxx_destruct;
-- (bool)_rules_isOnlineAllowedForRequest:(id)arg1;
+- (void)asynchronousGetURL:(id)arg1 kind:(struct { int x1; union { int x_2_1_1; int x_2_1_2; int x_2_1_3; } x2; })arg2 requestCounterTicket:(id)arg3 queue:(id)arg4 completionHandler:(id /* block */)arg5;
+- (id)downloadTaskWithRequest:(id)arg1 priority:(float)arg2 delegate:(id)arg3 delegateQueue:(id)arg4;
 - (id)init;
-- (id)initWithXPCSession:(id)arg1 urlSession:(id)arg2;
+- (id)initWithUrlSession:(id)arg1;
 - (id)manifestManager;
-- (id)preferedRulesForRequest:(id)arg1;
 - (id)sessionIsolation;
-- (id)taskWithRequest:(id)arg1 rules:(id)arg2 delegate:(id)arg3 delegateQueue:(id)arg4;
-- (id)taskWithRequest:(id)arg1 rules:(id)arg2 priority:(float)arg3 delegate:(id)arg4 delegateQueue:(id)arg5;
+- (id)taskWithRequest:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3;
+- (id)taskWithRequest:(id)arg1 priority:(float)arg2 delegate:(id)arg3 delegateQueue:(id)arg4;
 - (id)urlSession;
-- (id)xpcSession;
 
 @end

@@ -17,6 +17,7 @@
     unsigned long long  _intendedFrameIndex;
     NSMapTable * _interestTable;
     bool  _isScrubbing;
+    bool  _paused;
     unsigned long long  _playCount;
     struct CGSize { 
         double width; 
@@ -66,7 +67,7 @@
 @property (nonatomic, retain) NSMapTable *interestTable;
 @property (nonatomic) bool isScrubbing;
 @property (nonatomic) long long loadingIndicatorStyle;
-@property (nonatomic, readonly) bool paused;
+@property (nonatomic) bool paused;
 @property (nonatomic) unsigned long long playCount;
 @property (nonatomic) struct CGSize { double x1; double x2; } preferredImageSize;
 @property (nonatomic) UIImage *preferredQualityImage;
@@ -162,6 +163,7 @@
 - (void)setInterestTable:(id)arg1;
 - (void)setIsScrubbing:(bool)arg1;
 - (void)setLoadingIndicatorStyle:(long long)arg1;
+- (void)setPaused:(bool)arg1;
 - (void)setPlayCount:(unsigned long long)arg1;
 - (void)setPreferredImageSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setPreferredQualityImage:(id)arg1;

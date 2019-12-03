@@ -18,12 +18,13 @@
 @property (nonatomic, copy) NSString *lastName;
 @property (nonatomic) EKParticipant *participant;
 
-+ (id)contactStore;
 + (id)participantForSortingWithEKParticipant:(id)arg1;
 
 - (void).cxx_destruct;
 - (id)cachedDisplayName;
 - (long long)compare:(id)arg1;
+- (long long)compareByContactNames:(id)arg1;
+- (long long)compareByEmailThenByContactName:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)displayName;
@@ -32,6 +33,7 @@
 - (bool)isPhone;
 - (id)lastName;
 - (id)participant;
+- (bool)participantIsOptional:(id)arg1;
 - (void)setCachedDisplayName:(id)arg1;
 - (void)setFirstName:(id)arg1;
 - (void)setIsEmail:(bool)arg1;

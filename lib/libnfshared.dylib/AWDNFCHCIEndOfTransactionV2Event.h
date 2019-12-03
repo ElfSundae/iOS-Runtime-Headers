@@ -20,6 +20,7 @@
         unsigned int currencyCode : 1; 
         unsigned int expressType : 1; 
         unsigned int informative : 1; 
+        unsigned int localValidation : 1; 
         unsigned int maxRSSIValue : 1; 
         unsigned int minRSSIValue : 1; 
         unsigned int spid : 1; 
@@ -36,6 +37,7 @@
     bool  _hasExpiryDate;
     unsigned int  _informative;
     bool  _isBlacklisted;
+    unsigned int  _localValidation;
     unsigned int  _maxRSSIValue;
     unsigned int  _minRSSIValue;
     unsigned int  _spid;
@@ -72,6 +74,7 @@
 @property (nonatomic) bool hasHasExpiryDate;
 @property (nonatomic) bool hasInformative;
 @property (nonatomic) bool hasIsBlacklisted;
+@property (nonatomic) bool hasLocalValidation;
 @property (nonatomic) bool hasMaxRSSIValue;
 @property (nonatomic) bool hasMinRSSIValue;
 @property (nonatomic) bool hasSpid;
@@ -90,6 +93,7 @@
 @property (nonatomic) bool hasVersion;
 @property (nonatomic) unsigned int informative;
 @property (nonatomic) bool isBlacklisted;
+@property (nonatomic) unsigned int localValidation;
 @property (nonatomic) unsigned int maxRSSIValue;
 @property (nonatomic) unsigned int minRSSIValue;
 @property (nonatomic) unsigned int spid;
@@ -130,6 +134,7 @@
 - (bool)hasHasExpiryDate;
 - (bool)hasInformative;
 - (bool)hasIsBlacklisted;
+- (bool)hasLocalValidation;
 - (bool)hasMaxRSSIValue;
 - (bool)hasMinRSSIValue;
 - (bool)hasSpid;
@@ -150,6 +155,7 @@
 - (unsigned int)informative;
 - (bool)isBlacklisted;
 - (bool)isEqual:(id)arg1;
+- (unsigned int)localValidation;
 - (unsigned int)maxRSSIValue;
 - (void)mergeFrom:(id)arg1;
 - (unsigned int)minRSSIValue;
@@ -171,6 +177,7 @@
 - (void)setHasHasExpiryDate:(bool)arg1;
 - (void)setHasInformative:(bool)arg1;
 - (void)setHasIsBlacklisted:(bool)arg1;
+- (void)setHasLocalValidation:(bool)arg1;
 - (void)setHasMaxRSSIValue:(bool)arg1;
 - (void)setHasMinRSSIValue:(bool)arg1;
 - (void)setHasSpid:(bool)arg1;
@@ -185,6 +192,7 @@
 - (void)setHasVersion:(bool)arg1;
 - (void)setInformative:(unsigned int)arg1;
 - (void)setIsBlacklisted:(bool)arg1;
+- (void)setLocalValidation:(unsigned int)arg1;
 - (void)setMaxRSSIValue:(unsigned int)arg1;
 - (void)setMinRSSIValue:(unsigned int)arg1;
 - (void)setSpid:(unsigned int)arg1;

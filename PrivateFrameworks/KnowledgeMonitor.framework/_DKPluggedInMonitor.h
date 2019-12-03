@@ -10,14 +10,18 @@
 @property (nonatomic) bool enabled;
 @property (nonatomic) int pluggedInToken;
 
-+ (id)_eventWithState:(bool)arg1;
++ (id)_eventWithState:(bool)arg1 adapterType:(long long)arg2;
 + (id)entitlements;
 + (id)eventStream;
 + (void)setIsPluggedIn:(bool)arg1;
 + (bool)shouldMergeUnchangedEvents;
 
+- (long long)currentAdapterType;
+- (void)deactivate;
+- (void)dealloc;
 - (bool)enabled;
 - (int)pluggedInToken;
+- (void)setCurrentState;
 - (void)setEnabled:(bool)arg1;
 - (void)setPluggedInToken:(int)arg1;
 - (void)start;

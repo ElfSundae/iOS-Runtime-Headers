@@ -19,11 +19,11 @@
 
 - (void).cxx_destruct;
 - (void)_accountDidChange;
+- (bool)_isCellularAllowedForBR;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)invalidate;
-- (bool)isCellularAllowedForBR;
 - (bool)isNetworkReachableForBundle:(id)arg1;
 - (unsigned int)reachabilityFlags;
 - (void)removeObserver:(id)arg1;

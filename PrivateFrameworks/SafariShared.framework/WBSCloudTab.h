@@ -10,6 +10,7 @@
     bool  _matchedLastSearch;
     bool  _pinned;
     NSDictionary * _readerScrollPositionDictionary;
+    NSString * _sceneID;
     NSString * _title;
     NSString * _titleForLastSearch;
     NSArray * _titleWords;
@@ -30,6 +31,7 @@
 @property (nonatomic) bool matchedLastSearch;
 @property (getter=isPinned, nonatomic) bool pinned;
 @property (nonatomic, copy) NSDictionary *readerScrollPositionDictionary;
+@property (nonatomic, readonly, copy) NSString *sceneID;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *titleForLastSearch;
@@ -37,7 +39,7 @@
 @property (nonatomic, retain) NSURL *url;
 @property (nonatomic, retain) NSUUID *uuid;
 
-+ (id)_dictionaryWithURL:(id)arg1 uuid:(id)arg2 title:(id)arg3 isShowingReader:(bool)arg4 readerScrollPosition:(id)arg5 isPinned:(bool)arg6;
++ (id)_dictionaryWithURL:(id)arg1 uuid:(id)arg2 title:(id)arg3 isShowingReader:(bool)arg4 readerScrollPosition:(id)arg5 isPinned:(bool)arg6 sceneID:(id)arg7;
 
 - (void).cxx_destruct;
 - (id)URLString;
@@ -51,14 +53,15 @@
 - (unsigned long long)hash;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithDictionaryFromUserActivityUserInfo:(id)arg1;
-- (id)initWithURL:(id)arg1 uuid:(id)arg2 title:(id)arg3 isShowingReader:(bool)arg4 readerScrollPosition:(id)arg5;
 - (id)initWithURL:(id)arg1 uuid:(id)arg2 title:(id)arg3 isShowingReader:(bool)arg4 readerScrollPosition:(id)arg5 isPinned:(bool)arg6;
+- (id)initWithURL:(id)arg1 uuid:(id)arg2 title:(id)arg3 isShowingReader:(bool)arg4 readerScrollPosition:(id)arg5 sceneID:(id)arg6;
 - (bool)isEqual:(id)arg1;
 - (bool)isPinned;
 - (bool)isShowingReader;
 - (id)lastSearchTerm;
 - (bool)matchedLastSearch;
 - (id)readerScrollPositionDictionary;
+- (id)sceneID;
 - (void)setIsShowingReader:(bool)arg1;
 - (void)setLastSearchTerm:(id)arg1;
 - (void)setMatchedLastSearch:(bool)arg1;

@@ -4,6 +4,7 @@
 
 @interface EKEventAttachmentDetailItem : EKEventDetailItem <EKEventAttachmentCellControllerDelegate> {
     NSArray * _cellControllers;
+    bool  _visibilityChanged;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -13,9 +14,11 @@
 
 - (void).cxx_destruct;
 - (void)_cleanUpCellControllers;
+- (void)_setUpCellControllers;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (bool)configureWithCalendar:(id)arg1 preview:(bool)arg2;
 - (void)dealloc;
+- (bool)detailItemVisibilityChanged;
 - (void)eventViewController:(id)arg1 didSelectSubitem:(unsigned long long)arg2;
 - (bool)hasDetailViewControllerAtIndex:(unsigned long long)arg1;
 - (unsigned long long)numberOfSubitems;

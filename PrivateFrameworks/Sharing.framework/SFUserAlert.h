@@ -6,7 +6,9 @@
     NSDictionary * _additionalInfo;
     NSString * _alternateButtonTitle;
     bool  _asBanner;
+    struct __CFUserNotification { } * _cfNotif;
     NSString * _defaultButtonTitle;
+    id /* block */  _dictionaryResponseHandler;
     NSObject<OS_dispatch_queue> * _dispatchQueue;
     id /* block */  _errorHandler;
     bool  _hasDefaultButton;
@@ -16,6 +18,7 @@
     NSString * _message;
     NSString * _otherButtonTitle;
     id /* block */  _responseHandler;
+    struct __CFRunLoopSource { } * _runLoopSrc;
     NSURL * _soundURL;
     bool  _textInput;
     NSString * _textInputTitle;
@@ -29,6 +32,7 @@
 @property (nonatomic, retain) NSString *alternateButtonTitle;
 @property (nonatomic) bool asBanner;
 @property (nonatomic, retain) NSString *defaultButtonTitle;
+@property (nonatomic, copy) id /* block */ dictionaryResponseHandler;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *dispatchQueue;
 @property (nonatomic, copy) id /* block */ errorHandler;
 @property (nonatomic) bool hasDefaultButton;
@@ -46,19 +50,24 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)_defaultDictionary;
 - (void)_ensureXPCStarted;
+- (void)_handleResponseForNotification:(struct __CFUserNotification { }*)arg1 flags:(unsigned long long)arg2;
 - (void)_interrupted;
 - (void)_invalidate;
 - (void)_invalidated;
+- (id)_mergedDict;
 - (void)_postNotification:(struct __CFUserNotification { }*)arg1;
 - (void)_present;
 - (void)_presentBanner;
+- (void)_updateNotification;
 - (id)additionalInfo;
 - (id)alternateButtonTitle;
 - (bool)asBanner;
 - (struct __CFUserNotification { }*)createNotification;
 - (void)dealloc;
 - (id)defaultButtonTitle;
+- (id /* block */)dictionaryResponseHandler;
 - (id)dispatchQueue;
 - (void)encodeWithCoder:(id)arg1;
 - (id /* block */)errorHandler;
@@ -75,6 +84,7 @@
 - (void)setAlternateButtonTitle:(id)arg1;
 - (void)setAsBanner:(bool)arg1;
 - (void)setDefaultButtonTitle:(id)arg1;
+- (void)setDictionaryResponseHandler:(id /* block */)arg1;
 - (void)setDispatchQueue:(id)arg1;
 - (void)setErrorHandler:(id /* block */)arg1;
 - (void)setHasDefaultButton:(bool)arg1;
@@ -94,6 +104,7 @@
 - (id /* block */)textResponseHandler;
 - (double)timeout;
 - (id)title;
+- (void)userNotificationDictionaryResponse:(id)arg1;
 - (void)userNotificationError:(id)arg1;
 - (void)userNotificationResponse:(int)arg1;
 - (void)userNotificationTextResponse:(id)arg1;

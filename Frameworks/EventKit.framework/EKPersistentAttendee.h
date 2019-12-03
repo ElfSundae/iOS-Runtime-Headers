@@ -16,6 +16,7 @@
 + (id)attendeeWithEmailAddress:(id)arg1 name:(id)arg2;
 + (id)attendeeWithName:(id)arg1 emailAddress:(id)arg2 address:(id)arg3;
 + (id)defaultPropertiesToLoad;
++ (Class)meltedClass;
 + (id)relations;
 
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

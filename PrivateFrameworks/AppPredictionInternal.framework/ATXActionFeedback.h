@@ -3,6 +3,8 @@
  */
 
 @interface ATXActionFeedback : NSObject {
+    PETScalarEventTracker * _captureRateTracker;
+    PETDistributionEventTracker * _durationTracker;
     PETScalarEventTracker * _engagedInitTracker;
     PETDistributionEventTracker * _engagedSlotTracker;
     PETScalarEventTracker * _engagementTracker;
@@ -12,16 +14,19 @@
     bool  _spotlightEngagmentMatchedLockscreen;
     PETScalarEventTracker * _tvEngagementTracker;
     PETScalarEventTracker * _tvShownTracker;
+    ATXUserMetricsLogger * _userMetricsLogger;
 }
 
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
+- (void)_computeAndLogSpotlightCaptureRateWithActionResponse:(id)arg1;
 - (id)_init;
 - (void)applyFinalFeedbackForActionResponse:(id)arg1 engagementType:(unsigned long long)arg2;
 - (void)decayCounts;
 - (void)logHeuristicFeedback:(id)arg1;
-- (void)logHeuristicFeedbackForAction:(id)arg1 actionType:(unsigned short)arg2;
+- (void)logHeuristicFeedbackToPortraitForAction:(id)arg1 withActionType:(unsigned short)arg2;
+- (void)logHeuristicFeedbackToSuggestionsForAction:(id)arg1 withActionType:(unsigned short)arg2;
 - (void)processCachedATXActionResponseWithConsumerSubType:(unsigned char)arg1;
 - (void)receiveFeedbackWithActionResponse:(id)arg1;
 - (void)registerPredictionNotificationChangeDetected:(long long)arg1 was3dTouched:(bool)arg2;

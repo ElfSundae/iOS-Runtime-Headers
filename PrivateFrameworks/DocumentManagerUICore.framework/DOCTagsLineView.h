@@ -4,11 +4,11 @@
 
 @interface DOCTagsLineView : UIView {
     <DOCTagViewDelegate> * _delegate;
-    DOCTagIconView * _dot1View;
-    DOCTagIconView * _dot2View;
-    DOCTagIconView * _dot3View;
-    UIStackView * _dotsView;
-    UIStackView * _stackView;
+    DOCTagDotView * _dot1View;
+    DOCTagDotView * _dot2View;
+    DOCTagDotView * _dot3View;
+    NUIContainerStackView * _dotsView;
+    NUIContainerStackView * _stackView;
     DOCTagView * _tag1View;
     DOCTagView * _tag2View;
     DOCVisualEffectLabel * _tagSummaryLabel;
@@ -17,11 +17,11 @@
 }
 
 @property (nonatomic) <DOCTagViewDelegate> *delegate;
-@property (nonatomic, readonly) DOCTagIconView *dot1View;
-@property (nonatomic, readonly) DOCTagIconView *dot2View;
-@property (nonatomic, readonly) DOCTagIconView *dot3View;
-@property (nonatomic, readonly) UIStackView *dotsView;
-@property (nonatomic, readonly) UIStackView *stackView;
+@property (nonatomic, readonly) DOCTagDotView *dot1View;
+@property (nonatomic, readonly) DOCTagDotView *dot2View;
+@property (nonatomic, readonly) DOCTagDotView *dot3View;
+@property (nonatomic, readonly) NUIContainerStackView *dotsView;
+@property (nonatomic, readonly) NUIContainerStackView *stackView;
 @property (nonatomic, readonly) DOCTagView *tag1View;
 @property (nonatomic, readonly) DOCTagView *tag2View;
 @property (nonatomic, readonly) DOCVisualEffectLabel *tagSummaryLabel;
@@ -37,16 +37,20 @@
 - (id)createTagSummaryLabel;
 - (id)createTagView;
 - (id)delegate;
+- (void)didMoveToWindow;
 - (id)dot1View;
 - (id)dot2View;
 - (id)dot3View;
 - (id)dotsView;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (struct CGSize { double x1; double x2; })intrinsicContentSize;
+- (void)layoutSubviews;
 - (void)layoutTags;
 - (double)maxTagWidth;
 - (void)setDelegate:(id)arg1;
 - (void)setTags:(id)arg1;
 - (id)stackView;
+- (struct CGSize { double x1; double x2; })systemLayoutSizeFittingSize:(struct CGSize { double x1; double x2; })arg1;
 - (id)tag1View;
 - (id)tag2View;
 - (id)tagSummaryLabel;
@@ -56,6 +60,5 @@
 - (void)updateMaxTagWidth;
 - (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;
-- (id)widthConstraintForDotView:(id)arg1;
 
 @end

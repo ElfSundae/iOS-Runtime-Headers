@@ -29,6 +29,7 @@
 - (unsigned long long)indexForDirection:(unsigned long long)arg1;
 - (id)init;
 - (id)localizedDirections;
+- (id)localizedStringForDirection:(unsigned long long)arg1;
 - (void)setDefaultDirection:(unsigned long long)arg1;
 
 @end

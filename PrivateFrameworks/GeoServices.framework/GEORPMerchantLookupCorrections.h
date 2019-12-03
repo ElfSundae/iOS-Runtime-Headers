@@ -4,10 +4,10 @@
 
 @interface GEORPMerchantLookupCorrections : PBCodable <NSCopying> {
     struct { 
-        unsigned int isCategoryIncorrect : 1; 
-        unsigned int isMerchantIncorrect : 1; 
-        unsigned int isOtherIssue : 1; 
-    }  _has;
+        unsigned int has_isCategoryIncorrect : 1; 
+        unsigned int has_isMerchantIncorrect : 1; 
+        unsigned int has_isOtherIssue : 1; 
+    }  _flags;
     bool  _isCategoryIncorrect;
     bool  _isMerchantIncorrect;
     bool  _isOtherIssue;
@@ -19,6 +19,8 @@
 @property (nonatomic) bool isCategoryIncorrect;
 @property (nonatomic) bool isMerchantIncorrect;
 @property (nonatomic) bool isOtherIssue;
+
++ (bool)isValid:(id)arg1;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -33,6 +35,7 @@
 - (bool)isMerchantIncorrect;
 - (bool)isOtherIssue;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasIsCategoryIncorrect:(bool)arg1;
 - (void)setHasIsMerchantIncorrect:(bool)arg1;

@@ -13,6 +13,7 @@
     bool  _readerButtonSelected;
     bool  _showsLockIcon;
     bool  _showsNotSecureAnnotation;
+    bool  _showsPageFormatButton;
     bool  _showsReaderAvailabilityText;
     bool  _showsReaderButton;
     bool  _showsSearchIndicator;
@@ -34,6 +35,7 @@
 @property (nonatomic) bool readerButtonSelected;
 @property (nonatomic) bool showsLockIcon;
 @property (nonatomic) bool showsNotSecureAnnotation;
+@property (nonatomic) bool showsPageFormatButton;
 @property (nonatomic, readonly) bool showsReaderAvailabilityText;
 @property (nonatomic) bool showsReaderButton;
 @property (nonatomic) bool showsSearchIndicator;
@@ -65,6 +67,7 @@
 - (void)setShowsLockIcon:(bool)arg1;
 - (void)setShowsNotSecureAnnotation:(bool)arg1;
 - (void)setShowsNotSecureAnnotation:(bool)arg1 hasFocusedSensitiveField:(bool)arg2;
+- (void)setShowsPageFormatButton:(bool)arg1;
 - (void)setShowsReaderButton:(bool)arg1;
 - (void)setShowsReaderButton:(bool)arg1 showsAvailabilityText:(bool)arg2;
 - (void)setShowsSearchIndicator:(bool)arg1;
@@ -74,6 +77,7 @@
 - (void)setTextHasEVCertificateTint:(bool)arg1;
 - (bool)showsLockIcon;
 - (bool)showsNotSecureAnnotation;
+- (bool)showsPageFormatButton;
 - (bool)showsReaderAvailabilityText;
 - (bool)showsReaderButton;
 - (bool)showsSearchIndicator;

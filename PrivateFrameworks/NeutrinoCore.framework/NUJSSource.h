@@ -2,12 +2,14 @@
    Image: /System/Library/PrivateFrameworks/NeutrinoCore.framework/NeutrinoCore
  */
 
-@interface NUJSSource : NUJSProxy
+@interface NUJSSource : NUJSProxy <NUJSSourceExport>
 
+@property (readonly) NSString *mediaType;
 @property (nonatomic, readonly) NUSource *source;
 
 - (id)initWithRepresentedObject:(id)arg1 context:(id)arg2;
 - (id)initWithSource:(id)arg1 context:(id)arg2;
+- (id)mediaType;
 - (id)source;
 - (id)toString;
 

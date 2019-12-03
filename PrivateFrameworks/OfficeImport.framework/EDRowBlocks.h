@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
  */
 
-@interface EDRowBlocks : NSObject <TSUFlushable> {
+@interface EDRowBlocks : NSObject <TSUiOSMemoryWarningFlushable> {
     NSString * mFileName;
     EDCollection * mFormulas;
     int  mLockCount;
@@ -18,6 +18,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (struct EDCellHeader { unsigned int x1; unsigned int x2; }*)cellWithRowNumber:(unsigned int)arg1 columnNumber:(int)arg2;
 - (Class)classForFormulaType:(unsigned char)arg1;
 - (void)dealloc;

@@ -9,6 +9,7 @@
     CIVector * inputChinPositions;
     CIImage * inputDisparityImage;
     CIVector * inputFocusRect;
+    CIImage * inputHairImage;
     CIImage * inputImage;
     CIVector * inputLeftEyePositions;
     NSNumber * inputLumaNoiseScale;
@@ -25,6 +26,7 @@
 @property (retain) CIVector *inputChinPositions;
 @property (retain) CIImage *inputDisparityImage;
 @property (nonatomic, retain) CIVector *inputFocusRect;
+@property (retain) CIImage *inputHairImage;
 @property (retain) CIImage *inputImage;
 @property (retain) CIVector *inputLeftEyePositions;
 @property (nonatomic, retain) NSNumber *inputLumaNoiseScale;
@@ -48,6 +50,7 @@
 - (id)inputChinPositions;
 - (id)inputDisparityImage;
 - (id)inputFocusRect;
+- (id)inputHairImage;
 - (id)inputImage;
 - (id)inputLeftEyePositions;
 - (id)inputLumaNoiseScale;
@@ -63,6 +66,7 @@
 - (void)setInputChinPositions:(id)arg1;
 - (void)setInputDisparityImage:(id)arg1;
 - (void)setInputFocusRect:(id)arg1;
+- (void)setInputHairImage:(id)arg1;
 - (void)setInputImage:(id)arg1;
 - (void)setInputLeftEyePositions:(id)arg1;
 - (void)setInputLumaNoiseScale:(id)arg1;

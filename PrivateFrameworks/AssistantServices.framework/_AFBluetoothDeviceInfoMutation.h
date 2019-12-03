@@ -16,9 +16,15 @@
         unsigned int hasIsAdvancedAppleAudioDevice : 1; 
         unsigned int hasSupportsInEarDetection : 1; 
         unsigned int hasSupportsVoiceTrigger : 1; 
+        unsigned int hasSupportsSpokenNotification : 1; 
+        unsigned int hasSupportsListeningModeANC : 1; 
+        unsigned int hasSupportsListeningModeTransparency : 1; 
     }  _mutationFlags;
     unsigned int  _productID;
     bool  _supportsInEarDetection;
+    bool  _supportsListeningModeANC;
+    bool  _supportsListeningModeTransparency;
+    bool  _supportsSpokenNotification;
     bool  _supportsVoiceTrigger;
     unsigned int  _vendorID;
 }
@@ -37,6 +43,9 @@
 - (void)setIsAdvancedAppleAudioDevice:(bool)arg1;
 - (void)setProductID:(unsigned int)arg1;
 - (void)setSupportsInEarDetection:(bool)arg1;
+- (void)setSupportsListeningModeANC:(bool)arg1;
+- (void)setSupportsListeningModeTransparency:(bool)arg1;
+- (void)setSupportsSpokenNotification:(bool)arg1;
 - (void)setSupportsVoiceTrigger:(bool)arg1;
 - (void)setVendorID:(unsigned int)arg1;
 

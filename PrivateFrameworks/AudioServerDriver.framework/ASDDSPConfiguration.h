@@ -6,7 +6,7 @@
     NSArray * _dspItems;
 }
 
-@property (nonatomic, retain) NSArray *dspItems;
+@property (nonatomic, copy) NSArray *dspItems;
 
 - (void).cxx_destruct;
 - (id)dspItems;

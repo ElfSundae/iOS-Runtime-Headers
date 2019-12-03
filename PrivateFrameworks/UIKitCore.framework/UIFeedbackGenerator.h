@@ -90,6 +90,7 @@
 - (void)_stopFeedbackWarming;
 - (void)_stopPreparationForAllStyles;
 - (void)_stopPreparationForStyle:(long long)arg1;
+- (id)_ui_descriptionBuilder;
 - (void)_updatePreparationTimer:(id)arg1 withTimeout:(double)arg2;
 - (void)activateWithCompletionBlock:(id /* block */)arg1;
 - (long long)activationCount;

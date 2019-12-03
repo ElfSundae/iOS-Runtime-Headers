@@ -9,8 +9,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)_dispose;
 - (id)copy;
+- (void)dealloc;
 - (id)debugDescription;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;

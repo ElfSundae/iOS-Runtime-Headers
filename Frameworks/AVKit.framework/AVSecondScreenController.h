@@ -5,19 +5,15 @@
 @interface AVSecondScreenController : NSObject {
     bool  _allowsUpdatingActiveConnection;
     NSMutableOrderedSet * _connections;
-    bool  _hasApplicationBecomeActiveAtLeastOnce;
     AVObservationController * _observationController;
     NSMutableOrderedSet * _secondScreens;
 }
 
 @property (nonatomic) bool allowsUpdatingActiveConnection;
 @property (nonatomic, readonly) NSMutableOrderedSet *connections;
-@property (nonatomic) bool hasApplicationBecomeActiveAtLeastOnce;
 @property (nonatomic, readonly) AVObservationController *observationController;
 @property (nonatomic, readonly) NSMutableOrderedSet *secondScreens;
 
-+ (void)handleApplicationDidBecomeActiveNotification;
-+ (void)load;
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
@@ -33,7 +29,6 @@
 - (id)connectionPassingTest:(id /* block */)arg1;
 - (id)connections;
 - (void)dealloc;
-- (bool)hasApplicationBecomeActiveAtLeastOnce;
 - (id)init;
 - (id)observationController;
 - (id)preferredConnection;
@@ -41,7 +36,6 @@
 - (void)removeSecondScreen:(id)arg1;
 - (id)secondScreens;
 - (void)setAllowsUpdatingActiveConnection:(bool)arg1;
-- (void)setHasApplicationBecomeActiveAtLeastOnce:(bool)arg1;
 - (void)setPreferredConnection:(id)arg1;
 
 @end

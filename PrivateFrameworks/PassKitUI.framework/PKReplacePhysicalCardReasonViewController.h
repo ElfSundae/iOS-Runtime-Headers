@@ -21,8 +21,6 @@
 - (void)_reasonRowSelectedAtIndexPath:(id)arg1 inTableView:(id)arg2;
 - (void)_updateNavigationButtons;
 - (id)initWithPhysicalCardController:(id)arg1 context:(long long)arg2;
-- (id)pkui_navigationBarTintColor;
-- (bool)pkui_prefersNavigationBarShadowHidden;
 - (void)scrollViewDidScroll:(id)arg1;
 - (bool)shouldMapSection:(unsigned long long)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
@@ -32,5 +30,6 @@
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (void)viewDidLoad;
+- (void)viewWillLayoutSubviews;
 
 @end

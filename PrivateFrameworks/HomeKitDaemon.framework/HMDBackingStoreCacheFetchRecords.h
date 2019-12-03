@@ -7,6 +7,7 @@
     HMDBackingStoreCacheGroup * _group;
     NSArray * _parentUuids;
     NSArray * _recordNames;
+    bool  _recursive;
     HMDBackingStoreCacheShareGroup * _share;
     NSArray * _uuids;
 }
@@ -15,6 +16,7 @@
 @property (nonatomic, retain) HMDBackingStoreCacheGroup *group;
 @property (nonatomic, retain) NSArray *parentUuids;
 @property (nonatomic, retain) NSArray *recordNames;
+@property bool recursive;
 @property (nonatomic, retain) HMDBackingStoreCacheShareGroup *share;
 @property (nonatomic, retain) NSArray *uuids;
 
@@ -30,10 +32,12 @@
 - (id)mainReturningError;
 - (id)parentUuids;
 - (id)recordNames;
+- (bool)recursive;
 - (void)setFetchResult:(id /* block */)arg1;
 - (void)setGroup:(id)arg1;
 - (void)setParentUuids:(id)arg1;
 - (void)setRecordNames:(id)arg1;
+- (void)setRecursive:(bool)arg1;
 - (void)setShare:(id)arg1;
 - (void)setUuids:(id)arg1;
 - (id)share;

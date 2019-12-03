@@ -9,8 +9,8 @@
 
 + (id)masterLayoutMap;
 
+- (void).cxx_destruct;
 - (id)allMasterIds;
-- (void)dealloc;
 - (id)init;
 - (int)masterIdForTitleId:(int)arg1;
 - (id)masterInfoForMasterId:(int)arg1;

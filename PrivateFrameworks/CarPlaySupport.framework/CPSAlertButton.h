@@ -6,4 +6,8 @@
 
 + (id)buttonWithCPAlertAction:(id)arg1;
 
+- (id)_buttonFont;
+- (id)_externalUnfocusedBorderColor;
+- (void)traitCollectionDidChange:(id)arg1;
+
 @end

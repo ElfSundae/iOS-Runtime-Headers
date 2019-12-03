@@ -4,7 +4,7 @@
 
 @interface HDWorkoutSessionEntity : HDHealthEntity
 
-+ (const struct { id x1; unsigned char x2; }*)columnDefinitionsWithCount:(unsigned long long*)arg1;
++ (const struct { id x1; id x2; unsigned char x3; }*)columnDefinitionsWithCount:(unsigned long long*)arg1;
 + (id)createSessionWithIdentifier:(id)arg1 source:(id)arg2 configuration:(id)arg3 state:(long long)arg4 profile:(id)arg5 error:(id*)arg6;
 + (id)databaseTable;
 + (id)foreignKeys;
@@ -22,6 +22,7 @@
 - (bool)finishWithTransaction:(id)arg1 error:(id*)arg2;
 - (id)hasFailedInTransaction:(id)arg1 error:(id*)arg2;
 - (bool)insertWorkoutEvent:(id)arg1 transaction:(id)arg2 error:(id*)arg3;
+- (id)latestActivityDateInTransaction:(id)arg1 error:(id*)arg2;
 - (id)requestedTargetStateWithTransaction:(id)arg1 error:(id*)arg2;
 - (bool)setAssociatedBuilder:(id)arg1 transaction:(id)arg2 error:(id*)arg3;
 - (bool)setClientApplicationIdentifier:(id)arg1 transaction:(id)arg2 error:(id*)arg3;
@@ -36,6 +37,8 @@
 - (id)sourceWithTransaction:(id)arg1 error:(id*)arg2;
 - (id)startDateInTransaction:(id)arg1 error:(id*)arg2;
 - (id)stateWithTransaction:(id)arg1 error:(id*)arg2;
+- (bool)updateLatestActivityDate:(id)arg1 transaction:(id)arg2 error:(id*)arg3;
+- (bool)updateLatestActivityDateWithTransaction:(id)arg1 error:(id*)arg2;
 - (id)workoutConfigurationWithTransaction:(id)arg1 error:(id*)arg2;
 - (id)workoutEventsInTransaction:(id)arg1 error:(id*)arg2;
 

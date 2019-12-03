@@ -7,14 +7,17 @@
     <SXIssueCoverViewProvider> * _viewProvider;
 }
 
-@property (nonatomic, readonly) UIView *coverView;
+@property (nonatomic, retain) UIView *coverView;
 @property (nonatomic, readonly) <SXIssueCoverViewProvider> *viewProvider;
 
 - (void).cxx_destruct;
 - (id)coverView;
+- (void)discardContents;
 - (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 viewProvider:(id)arg5;
-- (void)loadComponent:(id)arg1;
 - (void)presentComponentWithChanges:(struct { bool x1; bool x2; })arg1;
+- (void)renderContents;
+- (void)renderIssueCover;
+- (void)setCoverView:(id)arg1;
 - (id)viewProvider;
 
 @end

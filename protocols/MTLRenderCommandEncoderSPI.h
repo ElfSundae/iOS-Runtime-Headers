@@ -10,6 +10,7 @@
 - (void)setDepthClipModeSPI:(unsigned long long)arg1;
 - (void)setFragmentTexture:(id <MTLTexture>)arg1 atTextureIndex:(unsigned long long)arg2 samplerState:(id <MTLSamplerState>)arg3 atSamplerIndex:(unsigned long long)arg4;
 - (void)setLineWidth:(float)arg1;
+- (void)setVertexAmplificationMode:(unsigned long long)arg1 value:(unsigned long long)arg2;
 
 @optional
 
@@ -29,6 +30,8 @@
 - (void)setStencilCleared;
 - (void)setStencilResolveTexture:(id <MTLTexture>)arg1 slice:(unsigned long long)arg2 depthPlane:(unsigned long long)arg3 level:(unsigned long long)arg4;
 - (void)setStencilResolveTexture:(id <MTLTexture>)arg1 slice:(unsigned long long)arg2 depthPlane:(unsigned long long)arg3 level:(unsigned long long)arg4 yInvert:(bool)arg5;
+- (void)setTransformFeedbackState:(unsigned long long)arg1;
+- (void)setTriangleFrontFillMode:(unsigned long long)arg1 backFillMode:(unsigned long long)arg2;
 - (void)setVertexSamplerState:(id <MTLSamplerState>)arg1 lodMinClamp:(float)arg2 lodMaxClamp:(float)arg3 lodBias:(float)arg4 atIndex:(unsigned long long)arg5;
 - (void)setViewportTransformEnabled:(bool)arg1;
 

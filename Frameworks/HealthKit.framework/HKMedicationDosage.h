@@ -36,4 +36,8 @@
 
 - (id)codableRepresentationForSync;
 
+// Image: /System/Library/PrivateFrameworks/HealthRecordsUI.framework/HealthRecordsUI
+
+- (id)hr_dosageTimePeriodString;
+
 @end

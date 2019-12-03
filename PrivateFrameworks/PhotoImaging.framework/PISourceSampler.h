@@ -2,8 +2,11 @@
    Image: /System/Library/PrivateFrameworks/PhotoImaging.framework/PhotoImaging
  */
 
-@interface PISourceSampler : NUColorSampler
+@interface PISourceSampler : NUColorSampler <PITagColorSampler>
+
+@property (nonatomic, readonly) NSString *tag;
 
 - (id)_pipelineFilters;
+- (id)tag;
 
 @end

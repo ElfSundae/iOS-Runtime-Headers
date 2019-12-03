@@ -27,10 +27,15 @@
 - (void)configure;
 - (id)description;
 - (bool)dirty;
+- (void)dirtyLayoutForPlainAppearanceChange:(bool)arg1 doneAppearanceChanged:(bool)arg2;
 - (id)init;
 - (id)initWithLayoutMetrics:(id)arg1;
 - (double)minimumLayoutWidthGivenMinimumSpaceWidth:(double)arg1;
 - (void)setDirty:(bool)arg1;
+- (void)setSuppressSpacing:(bool)arg1;
+- (void)setUseGroupSizing:(bool)arg1;
 - (bool)shouldHoriziontallyCenterView:(id)arg1;
+- (bool)suppressSpacing;
+- (bool)useGroupSizing;
 
 @end

@@ -3,7 +3,7 @@
  */
 
 @interface PUPhotosSharingGridCell : UICollectionViewCell {
-    int  _currentImageRequestID;
+    long long  _currentImageRequestID;
     UIView * _highlightOverlayView;
     struct CGPoint { 
         double x; 
@@ -18,18 +18,18 @@
     UIView * _zoomingCellSuperview;
 }
 
-@property (nonatomic) int currentImageRequestID;
+@property (nonatomic) long long currentImageRequestID;
 @property (nonatomic, readonly) PUPhotoView *photoView;
 
 - (void).cxx_destruct;
 - (void)_updateHighlight;
 - (void)_updateSubviewOrdering;
-- (int)currentImageRequestID;
+- (long long)currentImageRequestID;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)layoutSubviews;
 - (id)photoView;
 - (void)prepareForReuse;
-- (void)setCurrentImageRequestID:(int)arg1;
+- (void)setCurrentImageRequestID:(long long)arg1;
 - (void)setHighlighted:(bool)arg1;
 
 @end

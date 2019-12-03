@@ -33,6 +33,7 @@
 @property (nonatomic, copy) UITextInputPasswordRules *passwordRules;
 @property (nonatomic) long long returnKeyType;
 @property (getter=isSecureTextEntry, nonatomic) bool secureTextEntry;
+@property (nonatomic, readonly) bool shouldDisplayFindNextPreviousInDiscoverabilityHUD;
 @property (nonatomic) bool shouldFocusTextField;
 @property (nonatomic) long long smartDashesType;
 @property (nonatomic) long long smartInsertDeleteType;
@@ -50,6 +51,7 @@
 - (void).cxx_destruct;
 - (void)_advance:(id)arg1;
 - (void)_dismiss:(id)arg1;
+- (unsigned long long)_findOptions;
 - (bool)_requiresKeyboardWhenFirstResponder;
 - (void)_setFindingInWebViewIfNeeded;
 - (void)_webView:(id)arg1 didCountMatches:(unsigned long long)arg2 forString:(id)arg3;
@@ -65,7 +67,7 @@
 - (id)findTextField;
 - (bool)hasMatches;
 - (bool)hasText;
-- (void)hideFindOnPage;
+- (bool)hideFindOnPage;
 - (long long)highlightedMatchIndex;
 - (id)initWithDelegate:(id)arg1;
 - (id)inputAccessoryView;
@@ -73,7 +75,6 @@
 - (bool)isFocused;
 - (bool)isShowing;
 - (id)keyCommands;
-- (id)longMatchLabelText;
 - (id)matchLabelText;
 - (void)next;
 - (unsigned long long)numberOfFindMatches;
@@ -87,8 +88,10 @@
 - (void)setShouldFocusTextField:(bool)arg1;
 - (void)setUsesNarrowLayout:(bool)arg1;
 - (void)setWebView:(id)arg1;
+- (bool)shouldDisplayFindNextPreviousInDiscoverabilityHUD;
 - (bool)shouldFocusTextField;
 - (void)showFindOnPage;
+- (void)takeFindStringFromSelection;
 - (id)textForToolbarLabel;
 - (id)toolbar;
 - (void)updateSearchText:(id)arg1;

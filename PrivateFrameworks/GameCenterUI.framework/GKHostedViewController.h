@@ -7,7 +7,7 @@
     bool  _gkIsDisappearing;
     bool  _isRequestingRemoteViewController;
     bool  _presentingRemoteViewController;
-    GKRemoteViewController * _remoteViewController;
+    GKRemoteViewServiceController * _remoteViewController;
     id /* block */  _remoteViewReadyHandler;
     bool  _shouldPresentRemoteViewController;
 }
@@ -16,7 +16,7 @@
 @property (nonatomic) bool gkIsDisappearing;
 @property (nonatomic) bool isRequestingRemoteViewController;
 @property (nonatomic) bool presentingRemoteViewController;
-@property (nonatomic, retain) GKRemoteViewController *remoteViewController;
+@property (nonatomic, retain) GKRemoteViewServiceController *remoteViewController;
 @property (nonatomic, copy) id /* block */ remoteViewReadyHandler;
 @property (nonatomic) bool shouldPresentRemoteViewController;
 

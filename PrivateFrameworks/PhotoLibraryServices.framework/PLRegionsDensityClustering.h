@@ -4,7 +4,6 @@
 
 @interface PLRegionsDensityClustering : PLRegionsClustering {
     unsigned long long  _algorithm;
-    bool  _clusterAllRemainingObjects;
     double  _definiteClusterMaximumDistanceUnit;
     unsigned long long  _definiteClusterMinimumNumberOfObjects;
     double  _definiteClusterMinimumNumberOfObjectsPercent;
@@ -21,7 +20,6 @@
 }
 
 @property (nonatomic) unsigned long long algorithm;
-@property (nonatomic) bool clusterAllRemainingObjects;
 @property (nonatomic) double definiteClusterMaximumDistanceUnit;
 @property (nonatomic) unsigned long long definiteClusterMinimumNumberOfObjects;
 @property (nonatomic) double definiteClusterMinimumNumberOfObjectsPercent;
@@ -39,7 +37,6 @@
 - (id /* block */)_locationBasedClusteringBlock;
 - (id /* block */)_timeAndLocationBasedClusteringBlockWithTimeIntervalDistance:(double)arg1;
 - (unsigned long long)algorithm;
-- (bool)clusterAllRemainingObjects;
 - (double)definiteClusterMaximumDistanceUnit;
 - (unsigned long long)definiteClusterMinimumNumberOfObjects;
 - (double)definiteClusterMinimumNumberOfObjectsPercent;
@@ -56,7 +53,6 @@
 - (bool)removeExtensiveClustersContainingDefiniteClusters;
 - (bool)removeExtensiveClustersObjectsFromDataset;
 - (void)setAlgorithm:(unsigned long long)arg1;
-- (void)setClusterAllRemainingObjects:(bool)arg1;
 - (void)setDefiniteClusterMaximumDistanceUnit:(double)arg1;
 - (void)setDefiniteClusterMinimumNumberOfObjects:(unsigned long long)arg1;
 - (void)setDefiniteClusterMinimumNumberOfObjectsPercent:(double)arg1;

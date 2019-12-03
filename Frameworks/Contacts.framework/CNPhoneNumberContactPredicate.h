@@ -5,6 +5,7 @@
 @interface CNPhoneNumberContactPredicate : CNPredicate <CNSuggestedContactPredicate> {
     NSString * _countryCode;
     NSString * _digits;
+    NSArray * _groupIdentifiers;
     CNPhoneNumber * _phoneNumber;
     NSString * _prefixHint;
     bool  _returnsMultipleResults;
@@ -14,6 +15,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) NSString *digits;
+@property (nonatomic, readonly, copy) NSArray *groupIdentifiers;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) CNPhoneNumber *phoneNumber;
 @property (nonatomic, readonly, copy) NSString *prefixHint;
@@ -27,11 +29,13 @@
 - (id)description;
 - (id)digits;
 - (void)encodeWithCoder:(id)arg1;
+- (id)groupIdentifiers;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDigits:(id)arg1 countryCode:(id)arg2 returnMultipleResults:(bool)arg3;
+- (id)initWithPhoneNumber:(id)arg1 prefixHint:(id)arg2 groupIdentifiers:(id)arg3 returnMultipleResults:(bool)arg4;
+- (id)initWithPhoneNumber:(id)arg1 prefixHint:(id)arg2 returnMultipleResults:(bool)arg3;
 - (id)initWithPhoneNumber:(id)arg1 returnMultipleResults:(bool)arg2;
-- (id)initWithPhoneNumber:(id)arg1 returnMultipleResults:(bool)arg2 prefixHint:(id)arg3;
 - (bool)isEqual:(id)arg1;
 - (id)phoneNumber;
 - (id)prefixHint;

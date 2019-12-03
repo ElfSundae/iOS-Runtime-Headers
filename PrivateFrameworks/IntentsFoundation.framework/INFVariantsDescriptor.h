@@ -8,8 +8,8 @@
 }
 
 @property (nonatomic, readonly) NSString *dictionaryKey;
-@property unsigned long long gender;
-@property unsigned long long plurality;
+@property (nonatomic) unsigned long long gender;
+@property (nonatomic) unsigned long long plurality;
 
 + (id)variant;
 + (id)variantWithVariants:(unsigned long long)arg1;

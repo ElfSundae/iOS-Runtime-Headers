@@ -30,6 +30,7 @@
     unsigned char  _originalCellFlag;
     bool  _originalUsesBackgroundNetwork;
     unsigned char  _originalWifiFlag;
+    IDSPhoneSubscriptionSelector * _phoneSubscriptionSelector;
     id /* block */  _profileChangedBlock;
     id /* block */  _profileStatusChangedBlock;
     long long  _requiredWifiCount;
@@ -63,6 +64,7 @@
 @property (nonatomic, readonly, copy) NSArray *failedAccounts;
 @property (nonatomic, readonly, retain) IMServiceImpl *firstService;
 @property (nonatomic, readonly, copy) NSArray *phoneAccounts;
+@property (nonatomic, retain) IDSPhoneSubscriptionSelector *phoneSubscriptionSelector;
 @property (nonatomic, copy) id /* block */ profileChangedBlock;
 @property (nonatomic, copy) id /* block */ profileStatusChangedBlock;
 @property (nonatomic, copy) id /* block */ resetBlock;
@@ -70,6 +72,7 @@
 @property (getter=isServiceEnabled, nonatomic) bool serviceEnabled;
 @property (nonatomic, readonly, retain) NSSet *serviceNames;
 @property (getter=isServiceSupported, nonatomic, readonly) bool serviceSupported;
+@property (nonatomic, readonly) bool serviceSupportsDeviceAliasEnablement;
 @property (nonatomic) long long serviceType;
 @property (nonatomic, copy) NSArray *services;
 @property (nonatomic, readonly, retain) IMAccount *systemAccount;
@@ -117,6 +120,8 @@
 - (id)_logName;
 - (id)_logSpace;
 - (void)_nukeCallerIDCache;
+- (long long)_phoneSubscriptionSlotMatchingLabel:(id)arg1;
+- (long long)_phoneSubscriptionSlotMatchingPhoneNumber:(id)arg1;
 - (void)_postCallerIDChanged;
 - (id)_predicatesWithFilter:(long long)arg1;
 - (void)_purgeExcessAccounts;
@@ -152,6 +157,7 @@
 - (id)activeAccounts;
 - (bool)addAlias:(id)arg1;
 - (bool)addAlias:(id)arg1 toAccount:(id)arg2;
+- (void)addDeviceAlias:(id)arg1;
 - (id /* block */)aliasAddedBlock;
 - (id)aliasNamed:(id)arg1;
 - (id /* block */)aliasRemovedBlock;
@@ -180,7 +186,6 @@
 - (void)dealloc;
 - (bool)deviceCanTakeNetworkAction;
 - (void)deviceCapabilityChanged:(id)arg1;
-- (bool)deviceHasNetworkEnabled;
 - (bool)deviceHasSaneNetworkConnection;
 - (id)displayAccount;
 - (id)displayAlias;
@@ -210,6 +215,7 @@
 - (void)nukeAllCallerIDSettings;
 - (void)openURL:(id)arg1;
 - (id)phoneAccounts;
+- (id)phoneSubscriptionSelector;
 - (void)profileChanged:(id)arg1;
 - (id /* block */)profileChangedBlock;
 - (id /* block */)profileStatusChangedBlock;
@@ -217,10 +223,12 @@
 - (void)refreshSystemAccount;
 - (bool)removeAlias:(id)arg1 fromAccount:(id)arg2;
 - (void)removeAllHandlers;
+- (void)removeDeviceAlias:(id)arg1;
 - (id /* block */)resetBlock;
 - (void)resetNetworkFirstRunAlert;
 - (id /* block */)serviceDidBecomeUnsupportedBlock;
 - (id)serviceNames;
+- (bool)serviceSupportsDeviceAliasEnablement;
 - (long long)serviceType;
 - (id)services;
 - (void)setAccountActivationChangedBlock:(id /* block */)arg1;
@@ -235,6 +243,7 @@
 - (void)setCallerIdChangedBlock:(id /* block */)arg1;
 - (void)setCellularDataEnabled:(bool)arg1 withCompletion:(id /* block */)arg2;
 - (bool)setDisplayAlias:(id)arg1;
+- (void)setPhoneSubscriptionSelector:(id)arg1;
 - (void)setProfileChangedBlock:(id /* block */)arg1;
 - (void)setProfileStatusChangedBlock:(id /* block */)arg1;
 - (void)setResetBlock:(id /* block */)arg1;
@@ -259,6 +268,7 @@
 - (long long)systemAccountType;
 - (void)systemApplicationDidEnterBackground;
 - (bool)unvalidateAlias:(id)arg1;
+- (id)usableDeviceAliases;
 - (id)useableAliases;
 - (id)useableAliasesForAccounts:(id)arg1;
 - (bool)validateAlias:(id)arg1;

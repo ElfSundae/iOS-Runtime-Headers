@@ -15,6 +15,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)_progressIndicatorView;
 - (void)_setProgressIndicatorView:(id)arg1;
 - (bool)_shouldAcceptEventsFromStateMachine:(id)arg1;

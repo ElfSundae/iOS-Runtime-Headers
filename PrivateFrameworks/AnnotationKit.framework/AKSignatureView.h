@@ -25,7 +25,6 @@
     }  _aggregateInvalid;
     AKBitmapFIFO * _bitmapFifo;
     CHBoxcarFilterPointFIFO * _boxcarFIFO;
-    struct CGColor { } * _cgColor;
     double  _currentWeight;
     CHQuadCurvePointFIFO * _interpolatingFIFO;
     bool  _isAddingPointWithoutSmoothing;
@@ -34,6 +33,7 @@
         double y; 
     }  _lastPoint;
     double  _lastSetNeedsDisplayCallToSuperTime;
+    <AKSignatureViewLiveDelegate> * _liveDelegate;
     double  _maxPressure;
     double  _maxThickness;
     double  _minPressure;
@@ -70,6 +70,7 @@
 @property (nonatomic, readonly) double interfaceScale;
 @property (nonatomic, retain) CHQuadCurvePointFIFO *interpolatingFIFO;
 @property bool isAddingPointWithoutSmoothing;
+@property (nonatomic) <AKSignatureViewLiveDelegate> *liveDelegate;
 @property (nonatomic) double maxPressure;
 @property (nonatomic) double maxThickness;
 @property (nonatomic) double minPressure;
@@ -103,6 +104,7 @@
 - (double)interfaceScale;
 - (id)interpolatingFIFO;
 - (bool)isAddingPointWithoutSmoothing;
+- (id)liveDelegate;
 - (double)maxPressure;
 - (double)maxThickness;
 - (double)minPressure;
@@ -114,6 +116,7 @@
 - (void)setFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setInterpolatingFIFO:(id)arg1;
 - (void)setIsAddingPointWithoutSmoothing:(bool)arg1;
+- (void)setLiveDelegate:(id)arg1;
 - (void)setMaxPressure:(double)arg1;
 - (void)setMaxThickness:(double)arg1;
 - (void)setMinPressure:(double)arg1;

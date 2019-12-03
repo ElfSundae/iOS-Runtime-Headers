@@ -19,10 +19,11 @@
 - (long long)_numberOfEntries;
 - (id)_readValueWithKey:(id)arg1;
 - (void)_removeAllEntries;
-- (void)_removeOldFormatCache;
+- (void)_removeOldFormatCacheFromPath:(id)arg1;
 - (long long)_rowIdOfKey:(id)arg1;
 - (id)_rowIdsOfEntriesBeforeTimeStamp:(double)arg1;
 - (long long)_threadUnsafeRowIdOfKey:(id)arg1;
+- (id)init;
 - (id)initWithPath:(id)arg1;
 - (void)tearDown;
 

@@ -7,19 +7,39 @@
     int  _clientImgMaxHeight;
     int  _clientImgMaxWidth;
     struct { 
-        unsigned int sessionID : 1; 
-        unsigned int clientImgFmt : 1; 
-        unsigned int clientImgMaxHeight : 1; 
-        unsigned int clientImgMaxWidth : 1; 
-        unsigned int mapCenterX : 1; 
-        unsigned int mapCenterY : 1; 
-        unsigned int mapSpanX : 1; 
-        unsigned int mapSpanY : 1; 
-        unsigned int requestType : 1; 
-        unsigned int tilesizeX : 1; 
-        unsigned int tilesizeY : 1; 
-        unsigned int zoomlevel : 1; 
-    }  _has;
+        unsigned int has_sessionID : 1; 
+        unsigned int has_clientImgFmt : 1; 
+        unsigned int has_clientImgMaxHeight : 1; 
+        unsigned int has_clientImgMaxWidth : 1; 
+        unsigned int has_mapCenterX : 1; 
+        unsigned int has_mapCenterY : 1; 
+        unsigned int has_mapSpanX : 1; 
+        unsigned int has_mapSpanY : 1; 
+        unsigned int has_requestType : 1; 
+        unsigned int has_tilesizeX : 1; 
+        unsigned int has_tilesizeY : 1; 
+        unsigned int has_zoomlevel : 1; 
+        unsigned int read_mapRegion : 1; 
+        unsigned int read_placeSearchRequest : 1; 
+        unsigned int read_query : 1; 
+        unsigned int read_userLocation : 1; 
+        unsigned int wrote_sessionID : 1; 
+        unsigned int wrote_mapRegion : 1; 
+        unsigned int wrote_placeSearchRequest : 1; 
+        unsigned int wrote_query : 1; 
+        unsigned int wrote_userLocation : 1; 
+        unsigned int wrote_clientImgFmt : 1; 
+        unsigned int wrote_clientImgMaxHeight : 1; 
+        unsigned int wrote_clientImgMaxWidth : 1; 
+        unsigned int wrote_mapCenterX : 1; 
+        unsigned int wrote_mapCenterY : 1; 
+        unsigned int wrote_mapSpanX : 1; 
+        unsigned int wrote_mapSpanY : 1; 
+        unsigned int wrote_requestType : 1; 
+        unsigned int wrote_tilesizeX : 1; 
+        unsigned int wrote_tilesizeY : 1; 
+        unsigned int wrote_zoomlevel : 1; 
+    }  _flags;
     int  _mapCenterX;
     int  _mapCenterY;
     GEOMapRegion * _mapRegion;
@@ -27,6 +47,12 @@
     int  _mapSpanY;
     GEOPlaceSearchRequest * _placeSearchRequest;
     NSString * _query;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     int  _requestType;
     struct GEOSessionID { 
         unsigned long long _high; 
@@ -71,9 +97,15 @@
 @property (nonatomic, retain) GEOLocation *userLocation;
 @property (nonatomic) int zoomlevel;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsClientImgFmt:(id)arg1;
 - (int)StringAsRequestType:(id)arg1;
+- (void)_readMapRegion;
+- (void)_readPlaceSearchRequest;
+- (void)_readQuery;
+- (void)_readUserLocation;
 - (int)clientImgFmt;
 - (id)clientImgFmtAsString:(int)arg1;
 - (int)clientImgMaxHeight;
@@ -99,6 +131,8 @@
 - (bool)hasUserLocation;
 - (bool)hasZoomlevel;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (int)mapCenterX;
 - (int)mapCenterY;
@@ -108,6 +142,7 @@
 - (void)mergeFrom:(id)arg1;
 - (id)placeSearchRequest;
 - (id)query;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (int)requestType;
 - (id)requestTypeAsString:(int)arg1;

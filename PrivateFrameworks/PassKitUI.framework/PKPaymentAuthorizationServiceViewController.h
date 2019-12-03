@@ -25,12 +25,33 @@
     bool  _hostApplicationEnteredBackground;
     bool  _hostApplicationResignedActive;
     long long  _internalCoachingState;
-    long long  _internalPearlState;
+    long long  _internalFaceIDState;
     bool  _isAMPPayment;
     bool  _isPad;
-    double  _keyboardHeight;
+    struct CGRect { 
+        struct CGPoint { 
+            double x; 
+            double y; 
+        } origin; 
+        struct CGSize { 
+            double width; 
+            double height; 
+        } size; 
+    }  _keyboardFrame;
+    bool  _keyboardVisible;
+    struct CGRect { 
+        struct CGPoint { 
+            double x; 
+            double y; 
+        } origin; 
+        struct CGSize { 
+            double width; 
+            double height; 
+        } size; 
+    }  _lastKeyboardFrame;
     CNContact * _lastUnservicableAddress;
     PKPaymentAuthorizationLayout * _layout;
+    unsigned short  _layoutRecursionCounter;
     bool  _needsFinalCallback;
     bool  _needsToAccommodateKeyboard;
     UIViewController * _passcodeViewController;
@@ -55,6 +76,7 @@
     bool  _treatingHostAsBackgrounded;
     bool  _userIntentRequired;
     bool  _viewAppeared;
+    unsigned char  _visibility;
     bool  _visible;
 }
 
@@ -73,6 +95,7 @@
 
 - (void).cxx_destruct;
 - (void)_abandonActiveEnrollmentAttempts;
+- (void)_abandonPSD2StyleAMPBuy;
 - (void)_addPassphraseViewControllerToHierarchy:(id)arg1 withCompletion:(id /* block */)arg2;
 - (long long)_authenticatorPolicy;
 - (id)_availabilityStringForPass:(id)arg1;
@@ -96,17 +119,19 @@
 - (void)_resumeAuthenticationWithPreviousError:(id)arg1 animated:(bool)arg2;
 - (void)_selectOptionsForDataItem:(id)arg1;
 - (void)_sendDidEncounterAuthorizationEventIfNecessary:(unsigned long long)arg1;
+- (void)_setAMPBarItem;
 - (void)_setAuthenticating:(bool)arg1;
 - (void)_setPasscodeViewController:(id)arg1;
 - (void)_setPassphraseViewController:(id)arg1;
 - (void)_setUserIntentRequired:(bool)arg1 shouldIgnorePhysicalButton:(bool)arg2;
+- (void)_setVisibility:(unsigned char)arg1;
 - (void)_setVisible:(bool)arg1;
 - (void)_setupBankAccounts;
 - (void)_setupPaymentPassAndBillingAddress;
 - (void)_setupShippingAddress;
 - (void)_setupShippingContact;
 - (void)_setupShippingMethods;
-- (void)_setupWithPaymentRequest:(id)arg1 fromAppWithLocalizedName:(id)arg2 applicationIdentifier:(id)arg3 bundleIdentifier:(id)arg4 teamIdentifier:(id)arg5;
+- (void)_setupWithPaymentRequest:(id)arg1 relevantPassUniqueID:(id)arg2 fromAppWithLocalizedName:(id)arg3 applicationIdentifier:(id)arg4 bundleIdentifier:(id)arg5 teamIdentifier:(id)arg6;
 - (void)_showUnservicableAddressAlertForErrors:(id)arg1;
 - (void)_startEvaluation;
 - (void)_startSimulatorHIDListener;
@@ -121,6 +146,7 @@
 - (void)_updateCancelButtonEnabledForState:(unsigned long long)arg1 param:(id)arg2;
 - (void)_updateCoachingInstruction;
 - (void)_updateFooterStateForBiometricMatchMissIfNecessary;
+- (void)_updateLayoutForKeyboardAction:(id /* block */)arg1;
 - (void)_updatePendingTransaction:(id)arg1 withAuthorizationStateParam:(id)arg2;
 - (void)_updatePhysicalButtonInstruction;
 - (void)_updatePreferencesWithErrors:(id)arg1;
@@ -131,7 +157,7 @@
 - (id)authenticator;
 - (void)authenticator:(id)arg1 didRequestUserAction:(long long)arg2;
 - (void)authenticator:(id)arg1 didTransitionToCoachingState:(long long)arg2;
-- (void)authenticator:(id)arg1 didTransitionToPearlState:(long long)arg2;
+- (void)authenticator:(id)arg1 didTransitionToFaceIDState:(long long)arg2;
 - (void)authenticatorDidEncounterBiometricLockout:(id)arg1;
 - (void)authenticatorDidEncounterFingerOff:(id)arg1;
 - (void)authenticatorDidEncounterFingerOn:(id)arg1;
@@ -164,10 +190,11 @@
 - (void)handleHostApplicationDidCancel;
 - (void)handleHostApplicationWillResignActive:(bool)arg1;
 - (id)handlePaymentRequest:(id)arg1 fromAppWithLocalizedName:(id)arg2 andApplicationIdentifier:(id)arg3;
-- (id)handlePaymentRequest:(id)arg1 fromAppWithLocalizedName:(id)arg2 applicationIdentifier:(id)arg3 bundleIdentifier:(id)arg4 teamIdentifier:(id)arg5;
+- (id)handlePaymentRequest:(id)arg1 relevantPassUniqueID:(id)arg2 fromAppWithLocalizedName:(id)arg3 applicationIdentifier:(id)arg4 bundleIdentifier:(id)arg5 teamIdentifier:(id)arg6;
 - (id)initWithLayout:(id)arg1;
 - (void)invalidate;
 - (bool)isUserIntentRequired;
+- (void)keyboardWillChange:(id)arg1;
 - (void)keyboardWillHide:(id)arg1;
 - (void)keyboardWillShow:(id)arg1;
 - (bool)paymentAuthorizationStateMachine:(id)arg1 didTransitionFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3 withParam:(id)arg4;
@@ -199,6 +226,7 @@
 - (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(bool)arg2;
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;
+- (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
 
 @end

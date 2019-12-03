@@ -26,7 +26,8 @@
 - (id)avatar;
 - (id)avatarConfiguration;
 - (id)avatarRecord;
-- (id)buildUIModelWithCurrentlySelectedCategory:(id)arg1;
+- (id)buildInitialEditorState;
+- (id)buildUIModelWithCurrentEditorDataSource:(id)arg1 forCategoryAtIndex:(unsigned long long)arg2;
 - (void)cancelAllPreloading;
 - (void)cancelPreloadForSectionItemIndexPath:(id)arg1;
 - (id)cancelationTokens;
@@ -40,6 +41,8 @@
 - (id)resourceLoader;
 - (void)setCancelationTokens:(id)arg1;
 - (void)setLogger:(id)arg1;
+- (void)updateAvatarBySelectingHeaderPickerItem:(id)arg1 animated:(bool)arg2;
 - (void)updateAvatarBySelectingSectionItem:(id)arg1 animated:(bool)arg2;
+- (void)updateAvatarWithAvatarUpdater:(id /* block */)arg1 animated:(bool)arg2;
 
 @end

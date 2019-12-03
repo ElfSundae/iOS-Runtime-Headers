@@ -7,7 +7,6 @@
     NSDate * _dateOfPublication;
     NSDate * _dueDate;
     NSString * _instructions;
-    NSDate * _lastReviewedDate;
     NSError * _publishError;
     long long  _publishingState;
     bool  _reviewed;

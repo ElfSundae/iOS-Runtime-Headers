@@ -22,7 +22,6 @@
 
 + (id)_requiredCapabilitiesForInfoDictionary:(id)arg1;
 + (id)_supportedDeviceFamiliesForBundleInfoDictionary:(id)arg1;
-+ (unsigned long long)_visibilityPreferenceForBundleInfoDictionary:(id)arg1;
 + (id)metadataForBundleAtURL:(id)arg1;
 
 - (void).cxx_destruct;

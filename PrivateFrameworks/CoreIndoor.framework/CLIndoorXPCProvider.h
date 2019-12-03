@@ -33,9 +33,8 @@
 - (void)withinQueueInitializeConnection;
 - (void)withinQueueInterruptionHandler;
 - (void)withinQueueInvalidate;
-- (void)withinQueueReconnectInvalidatedConnection;
 - (void)withinQueueReinitializeRemoteState;
-- (void)withinQueueScheduleReconnect:(struct duration<long long, std::__1::ratio<1, 1000000000> > { long long x1; })arg1 reason:(id)arg2 reinitializeConnection:(bool)arg3;
+- (void)withinQueueScheduleReconnect:(struct duration<long long, std::__1::ratio<1, 1000000000> > { long long x1; })arg1 reason:(id)arg2;
 - (int)withinQueueShouldReinitializeRemote:(struct time_point<std::__1::chrono::steady_clock, std::__1::chrono::duration<long long, std::__1::ratio<1, 1000000000> > > { struct duration<long long, std::__1::ratio<1, 1000000000> > { long long x_1_1_1; } x1; })arg1;
 
 @end

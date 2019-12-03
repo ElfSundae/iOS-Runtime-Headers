@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SIMSetupSupport.framework/SIMSetupSupport
  */
 
-@interface TSCellularPlanScanViewController : UIViewController <TSCellularPlanQRCodeScannerCaptureDelegate, TSSetupFlowItem, UINavigationControllerDelegate> {
+@interface TSCellularPlanScanViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate, TSSetupFlowItem, UINavigationControllerDelegate> {
     bool  _confirmationCodeRequired;
     UIView * _cutoutView;
     <TSSIMSetupFlowDelegate> * _delegate;
@@ -35,8 +35,8 @@
 
 - (void).cxx_destruct;
 - (void)_addNewPlanWithCardData:(id)arg1 confirmationCode:(id)arg2;
+- (bool)canBeShownFromSuspendedState;
 - (void)captureOutput:(id)arg1 didOutputMetadataObjects:(id)arg2 fromConnection:(id)arg3;
-- (void)captureSession:(id)arg1 isRunning:(bool)arg2;
 - (bool)confirmationCodeRequired;
 - (id)cutoutView;
 - (id)delegate;
@@ -46,6 +46,7 @@
 - (id)fauxCardData;
 - (id)init;
 - (bool)manualCardInfoEntry;
+- (long long)navigationBarScrollToEdgeBehavior;
 - (void)planInfoDidUpdate:(id)arg1 planListError:(id)arg2;
 - (id)positionQRCodeLabel;
 - (void)presentViewController:(id)arg1 animated:(bool)arg2 completion:(id /* block */)arg3;

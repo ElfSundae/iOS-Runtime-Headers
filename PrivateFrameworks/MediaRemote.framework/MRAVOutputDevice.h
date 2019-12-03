@@ -5,13 +5,16 @@
 @interface MRAVOutputDevice : NSObject {
     NSData * _MACAddress;
     bool  _airPlayReceiverSessionActive;
+    NSArray * _availableBluetoothListeningModes;
     float  _batteryLevel;
+    NSString * _bluetoothID;
     bool  _canAccessAppleMusic;
     bool  _canAccessRemoteAssets;
     bool  _canAccessiCloudMusicLibrary;
     bool  _canFetchMediaDataFromSender;
     bool  _canPlayEncryptedProgressiveDownloadAssets;
     bool  _canRelayCommunicationChannel;
+    NSString * _currentBluetoothListeningMode;
     bool  _deviceGroupable;
     unsigned int  _deviceSubtype;
     unsigned int  _deviceType;
@@ -37,6 +40,7 @@
     bool  _remoteControllable;
     bool  _requiresAuthorization;
     MRAVOutputDeviceSourceInfo * _sourceInfo;
+    bool  _supportsBluetoothSharing;
     bool  _supportsBufferedAirPlay;
     bool  _supportsExternalScreen;
     bool  _supportsRapport;
@@ -47,7 +51,9 @@
 
 @property (nonatomic, readonly) NSData *MACAddress;
 @property (getter=isAirPlayReceiverSessionActive, nonatomic, readonly) bool airPlayReceiverSessionActive;
+@property (nonatomic, readonly) NSArray *availableBluetoothListeningModes;
 @property (nonatomic, readonly) float batteryLevel;
+@property (nonatomic, readonly) NSString *bluetoothID;
 @property (nonatomic, readonly) bool canAccessAppleMusic;
 @property (nonatomic, readonly) bool canAccessRemoteAssets;
 @property (nonatomic, readonly) bool canAccessiCloudMusicLibrary;
@@ -56,6 +62,8 @@
 @property (nonatomic, readonly) bool canRelayCommunicationChannel;
 @property (nonatomic, readonly) NSString *capabilitiesDescription;
 @property (nonatomic, readonly) NSString *composedTypeDescription;
+@property (nonatomic, readonly) NSString *currentBluetoothListeningMode;
+@property (nonatomic, readonly) NSString *debugName;
 @property (nonatomic, readonly) _MRAVOutputDeviceDescriptorProtobuf *descriptor;
 @property (getter=isDeviceGroupable, nonatomic, readonly) bool deviceGroupable;
 @property (nonatomic, readonly) unsigned int deviceSubtype;
@@ -68,6 +76,7 @@
 @property (getter=isGroupable, nonatomic, readonly) bool groupable;
 @property (nonatomic, readonly) bool hasBatteryLevel;
 @property (nonatomic, readonly) bool isAddedToHomeKit;
+@property (nonatomic, readonly) bool isPersonalRoute;
 @property (nonatomic, readonly) NSDictionary *jsonEncodableDictionaryRepresentation;
 @property (getter=isLocalDevice, nonatomic, readonly) bool localDevice;
 @property (nonatomic, readonly) NSString *logicalDeviceID;
@@ -84,6 +93,7 @@
 @property (nonatomic, readonly) bool requiresAuthorization;
 @property (nonatomic, readonly) NSString *roleDescription;
 @property (nonatomic, readonly) MRAVOutputDeviceSourceInfo *sourceInfo;
+@property (nonatomic, readonly) bool supportsBluetoothSharing;
 @property (nonatomic, readonly) bool supportsBufferedAirPlay;
 @property (nonatomic, readonly) bool supportsExternalScreen;
 @property (nonatomic, readonly) bool supportsRapport;
@@ -97,7 +107,9 @@
 
 - (void).cxx_destruct;
 - (id)MACAddress;
+- (id)availableBluetoothListeningModes;
 - (float)batteryLevel;
+- (id)bluetoothID;
 - (bool)canAccessAppleMusic;
 - (bool)canAccessRemoteAssets;
 - (bool)canAccessiCloudMusicLibrary;
@@ -106,6 +118,8 @@
 - (bool)canRelayCommunicationChannel;
 - (id)capabilitiesDescription;
 - (id)composedTypeDescription;
+- (id)currentBluetoothListeningMode;
+- (id)debugName;
 - (id)description;
 - (id)descriptor;
 - (unsigned int)deviceSubtype;
@@ -123,6 +137,7 @@
 - (bool)isGroupLeader;
 - (bool)isGroupable;
 - (bool)isLocalDevice;
+- (bool)isPersonalRoute;
 - (bool)isPickedOnPairedDevice;
 - (bool)isProxyGroupPlayer;
 - (bool)isRemoteControllable;
@@ -143,6 +158,7 @@
 - (void)setParentGroupIdentifier:(id)arg1;
 - (void)setVolume:(float)arg1;
 - (id)sourceInfo;
+- (bool)supportsBluetoothSharing;
 - (bool)supportsBufferedAirPlay;
 - (bool)supportsExternalScreen;
 - (bool)supportsRapport;

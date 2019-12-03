@@ -3,6 +3,7 @@
  */
 
 @interface HMDAssertionLogEvent : HMDLogEvent {
+    NSString * _description;
     NSString * _reason;
 }
 
@@ -11,6 +12,7 @@
 + (id)identifier;
 
 - (void).cxx_destruct;
+- (id)description;
 - (id)initWithReason:(id)arg1;
 - (id)reason;
 

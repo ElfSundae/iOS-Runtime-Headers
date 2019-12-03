@@ -4,7 +4,6 @@
 
 @interface _MKEnvironmentLabel : UIView {
     UILabel * _label;
-    CAShapeLayer * _roundedCorner;
 }
 
 @property (nonatomic, copy) NSString *text;

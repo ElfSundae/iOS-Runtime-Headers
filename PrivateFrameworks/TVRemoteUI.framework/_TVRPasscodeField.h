@@ -5,6 +5,7 @@
 @interface _TVRPasscodeField : UIControl <UIKeyInput> {
     TVRCPINEntryAttributes * _PINEntryattributes;
     NSMutableString * _mutablePasscode;
+    bool  _useSystemColors;
 }
 
 @property (nonatomic, retain) TVRCPINEntryAttributes *PINEntryattributes;
@@ -28,6 +29,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSString *text;
 @property (nonatomic, copy) NSString *textContentType;
+@property (nonatomic) bool useSystemColors;
 
 - (void).cxx_destruct;
 - (id)PINEntryattributes;
@@ -53,7 +55,9 @@
 - (void)setMutablePasscode:(id)arg1;
 - (void)setPINEntryattributes:(id)arg1;
 - (void)setText:(id)arg1;
+- (void)setUseSystemColors:(bool)arg1;
 - (long long)spellCheckingType;
 - (id)text;
+- (bool)useSystemColors;
 
 @end

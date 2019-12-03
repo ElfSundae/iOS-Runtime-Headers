@@ -3,16 +3,16 @@
  */
 
 @interface HUQuickControlViewControllerGroup : NSObject {
-    HUQuickControlViewController * _alternateViewController;
+    NSSet * _alternateViewControllers;
     HUQuickControlViewController * _primaryViewController;
 }
 
-@property (nonatomic, readonly) HUQuickControlViewController *alternateViewController;
+@property (nonatomic, readonly) NSSet *alternateViewControllers;
 @property (nonatomic, readonly) HUQuickControlViewController *primaryViewController;
 
 - (void).cxx_destruct;
-- (id)alternateViewController;
-- (id)initWithPrimaryViewController:(id)arg1 alternateViewController:(id)arg2;
+- (id)alternateViewControllers;
+- (id)initWithPrimaryViewController:(id)arg1 alternateViewControllers:(id)arg2;
 - (id)primaryViewController;
 
 @end

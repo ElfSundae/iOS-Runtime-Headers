@@ -2,13 +2,13 @@
    Image: /System/Library/PrivateFrameworks/CameraUI.framework/CameraUI
  */
 
-@interface CAMViewfinderView : UIView <CAMBadgeViewDelegate, CAMInstructionLabelDelegate> {
+@interface CAMViewfinderView : UIView <CAMInstructionLabelDelegate, CAMViewfinderTransitionable, CEKBadgeViewDelegate> {
     CAMHDRBadge * _HDRBadge;
     UIView * __bottomBarExtensionView;
     CAMViewfinderFlipTransition * __flipTransition;
     CAMViewfinderOpenAndCloseTransition * __openAndCloseTransition;
     CAMPreviewContainerMaskingView * __previewContainerMaskingView;
-    CAMPreviewContainerView * __previewContainerView;
+    UIView * __previewContainerView;
     UIView * __topBarExtensionView;
     bool  _automaticallyAdjustsTopBarOrientation;
     CAMBottomBar * _bottomBar;
@@ -22,8 +22,8 @@
     CAMFocusLockBadge * _focusAndExposureLockBadge;
     CAMFramerateIndicatorView * _framerateIndicatorView;
     long long  _layoutStyle;
-    CAMLightingControl * _lightingControl;
-    CAMLightingNameBadge * _lightingNameBadge;
+    CEKLightingControl * _lightingControl;
+    CEKLightingNameBadge * _lightingNameBadge;
     CAMLivePhotoBadge * _livePhotoBadge;
     long long  _maskingAspectRatio;
     long long  _orientation;
@@ -32,7 +32,6 @@
     CAMPortraitModeInstructionLabel * _portraitModeInstructionLabel;
     CAMPreviewView * _previewView;
     long long  _previewViewOrientation;
-    CAMQRCodeDescriptionOverlayView * _qrCodeDescriptionOverlayView;
     CAMQRCodeInstructionLabel * _qrCodeInstructionLabel;
     CAMShallowDepthOfFieldBadge * _shallowDepthOfFieldBadge;
     CUShutterButton * _shutterButton;
@@ -51,7 +50,7 @@
 @property (setter=_setFlipTransition:, nonatomic, retain) CAMViewfinderFlipTransition *_flipTransition;
 @property (setter=_setOpenAndCloseTransition:, nonatomic, retain) CAMViewfinderOpenAndCloseTransition *_openAndCloseTransition;
 @property (nonatomic, readonly) CAMPreviewContainerMaskingView *_previewContainerMaskingView;
-@property (nonatomic, readonly) CAMPreviewContainerView *_previewContainerView;
+@property (nonatomic, readonly) UIView *_previewContainerView;
 @property (setter=_setTopBarExtensionView:, nonatomic, retain) UIView *_topBarExtensionView;
 @property (nonatomic) bool automaticallyAdjustsTopBarOrientation;
 @property (nonatomic, retain) CAMBottomBar *bottomBar;
@@ -68,8 +67,8 @@
 @property (nonatomic, retain) CAMFramerateIndicatorView *framerateIndicatorView;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long layoutStyle;
-@property (nonatomic, retain) CAMLightingControl *lightingControl;
-@property (nonatomic, retain) CAMLightingNameBadge *lightingNameBadge;
+@property (nonatomic, retain) CEKLightingControl *lightingControl;
+@property (nonatomic, retain) CEKLightingNameBadge *lightingNameBadge;
 @property (nonatomic, retain) CAMLivePhotoBadge *livePhotoBadge;
 @property (nonatomic) long long maskingAspectRatio;
 @property (nonatomic) long long orientation;
@@ -78,7 +77,6 @@
 @property (nonatomic, retain) CAMPortraitModeInstructionLabel *portraitModeInstructionLabel;
 @property (nonatomic, retain) CAMPreviewView *previewView;
 @property (nonatomic) long long previewViewOrientation;
-@property (nonatomic, retain) CAMQRCodeDescriptionOverlayView *qrCodeDescriptionOverlayView;
 @property (nonatomic, retain) CAMQRCodeInstructionLabel *qrCodeInstructionLabel;
 @property (nonatomic, retain) CAMShallowDepthOfFieldBadge *shallowDepthOfFieldBadge;
 @property (nonatomic, retain) CUShutterButton *shutterButton;
@@ -103,7 +101,6 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_cameraPreviewFrameForAspectRatio:(long long)arg1 topBarFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 bottomBarFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3 shouldShiftPreviewForUtilityBar:(bool)arg4;
 - (void)_cameraTopBarForLayoutForLayoutStyle:(long long)arg1 shouldAdjustTopBarOrientation:(bool)arg2 bounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg3 center:(struct CGPoint { double x1; double x2; }*)arg4 transform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; }*)arg5;
 - (void)_commonCAMViewfinderViewInitializationWithLayoutStyle:(long long)arg1;
-- (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })_correctingTransformFromPreviewViewOrientation:(long long)arg1;
 - (void)_createPlaceholderSnapshotAndPerformDoubleSidedFadeForView:(id)arg1 fadeOutDuration:(double)arg2 fadeOutDelay:(double)arg3 fadeInDuration:(double)arg4 fadeInDelay:(double)arg5;
 - (void)_createPlaceholderSnapshotAndPerformSingleSidedFadeForView:(id)arg1 fadeOutDuration:(double)arg2 fadeOutDelay:(double)arg3;
 - (void)_enforceBadgeSubviewOrderingWithAppearingBadges:(id)arg1;
@@ -165,8 +162,6 @@
 - (void)badgeViewDidChangeIntrinsicContentSize:(id)arg1;
 - (id)bottomBar;
 - (id)burstIndicatorView;
-- (void)closeAndRotateWithDirection:(unsigned long long)arg1 withCompletionHandler:(id /* block */)arg2;
-- (void)closeWithBlur:(bool)arg1 animated:(bool)arg2 withCompletionHandler:(id /* block */)arg3;
 - (long long)desiredAspectRatio;
 - (id)disabledModeOverlayView;
 - (id)elapsedTimeView;
@@ -175,7 +170,6 @@
 - (id)flipButton;
 - (id)focusAndExposureLockBadge;
 - (id)framerateIndicatorView;
-- (void)handleApplicationDidEnterBackground;
 - (id)hitTest:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
@@ -187,7 +181,6 @@
 - (id)lightingNameBadge;
 - (id)livePhotoBadge;
 - (long long)maskingAspectRatio;
-- (void)openForReason:(long long)arg1 animated:(bool)arg2 withCompletionHandler:(id /* block */)arg3;
 - (long long)orientation;
 - (id)panoramaView;
 - (id)portraitModeDescriptionOverlayView;
@@ -196,7 +189,6 @@
 - (void)prepareForResumingUsingCrossfade;
 - (id)previewView;
 - (long long)previewViewOrientation;
-- (id)qrCodeDescriptionOverlayView;
 - (id)qrCodeInstructionLabel;
 - (void)removeInflightBlurAnimations;
 - (void)setAutomaticallyAdjustsTopBarOrientation:(bool)arg1;
@@ -224,7 +216,6 @@
 - (void)setPortraitModeInstructionLabel:(id)arg1;
 - (void)setPreviewView:(id)arg1;
 - (void)setPreviewViewOrientation:(long long)arg1;
-- (void)setQrCodeDescriptionOverlayView:(id)arg1;
 - (void)setQrCodeInstructionLabel:(id)arg1;
 - (void)setShallowDepthOfFieldBadge:(id)arg1;
 - (void)setShutterButton:(id)arg1;

@@ -17,6 +17,7 @@
 }
 
 @property (nonatomic, copy) id /* block */ cancellationHandler;
+@property (nonatomic, readonly) bool isCancelled;
 @property (nonatomic, retain) NSProgress *progress;
 @property (nonatomic, copy) NSString *title;
 
@@ -27,6 +28,7 @@
 - (void)dealloc;
 - (void)hideAnimated:(bool)arg1 allowDelay:(bool)arg2;
 - (id)init;
+- (bool)isCancelled;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (id)progress;
 - (void)setCancellationHandler:(id /* block */)arg1;

@@ -15,6 +15,7 @@
 - (void)_fetchAdditionalFeedItemsForChannel:(id)arg1 feedRange:(id)arg2 block:(id /* block */)arg3;
 - (void)_fetchHeadlinesForFeedItems:(id)arg1 feedContextByFeedID:(id)arg2 block:(id /* block */)arg3;
 - (void)_fetchTagForSourceChannelIdentifier:(id)arg1 block:(id /* block */)arg2;
+- (void)_performOperation;
 - (bool)alwaysShowExpiredGroups;
 - (void)performOperation;
 - (bool)unlimitedBackfill;

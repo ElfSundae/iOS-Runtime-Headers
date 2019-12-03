@@ -4,6 +4,7 @@
 
 @interface SXUnitConverter : NSObject {
     double  _componentWidth;
+    double  _contentScaleFactor;
     double  _documentGutter;
     double  _documentMargin;
     double  _parentWidth;
@@ -14,12 +15,14 @@
 }
 
 @property (nonatomic, readonly) double componentWidth;
+@property (nonatomic, readonly) double contentScaleFactor;
 @property (nonatomic, readonly) double documentGutter;
 @property (nonatomic, readonly) double documentMargin;
 @property (nonatomic, readonly) double parentWidth;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } viewportSize;
 
 - (double)componentWidth;
+- (double)contentScaleFactor;
 - (double)convertColumnGutterToPoints:(double)arg1;
 - (double)convertComponentWidthToPoints:(double)arg1;
 - (double)convertDocumentMarginToPoints:(double)arg1;
@@ -31,7 +34,7 @@
 - (double)convertViewportWidthToPoints:(double)arg1;
 - (double)documentGutter;
 - (double)documentMargin;
-- (id)initWithComponentWidth:(double)arg1 parentWidth:(double)arg2 documentGutter:(double)arg3 documentMargin:(double)arg4 viewportSize:(struct CGSize { double x1; double x2; })arg5;
+- (id)initWithComponentWidth:(double)arg1 parentWidth:(double)arg2 documentGutter:(double)arg3 documentMargin:(double)arg4 viewportSize:(struct CGSize { double x1; double x2; })arg5 contentScaleFactor:(double)arg6;
 - (double)parentWidth;
 - (struct CGSize { double x1; double x2; })viewportSize;
 

@@ -4,26 +4,40 @@
 
 @interface AMSURLAction : NSObject {
     long long  _actionType;
+    AMSAuthenticateResult * _authenticateResult;
+    AMSDialogResult * _dialogResult;
     NSError * _error;
+    NSString * _reason;
     NSURL * _redirectURL;
+    NSDictionary * _updatedHeaders;
 }
 
-@property (nonatomic) long long actionType;
-@property (nonatomic, retain) NSError *error;
-@property (nonatomic, retain) NSURL *redirectURL;
+@property (nonatomic, readonly) long long actionType;
+@property (nonatomic, retain) AMSAuthenticateResult *authenticateResult;
+@property (nonatomic, retain) AMSDialogResult *dialogResult;
+@property (nonatomic, readonly) NSError *error;
+@property (nonatomic, retain) NSString *reason;
+@property (nonatomic, readonly) NSURL *redirectURL;
+@property (nonatomic, retain) NSDictionary *updatedHeaders;
 
 + (id)actionWithError:(id)arg1;
++ (id)proceedAction;
 + (id)redirectActionWithURL:(id)arg1;
 + (id)retryAction;
 
 - (void).cxx_destruct;
 - (long long)actionType;
+- (id)authenticateResult;
 - (id)description;
+- (id)dialogResult;
 - (id)error;
 - (id)initWithType:(long long)arg1;
+- (id)reason;
 - (id)redirectURL;
-- (void)setActionType:(long long)arg1;
-- (void)setError:(id)arg1;
-- (void)setRedirectURL:(id)arg1;
+- (void)setAuthenticateResult:(id)arg1;
+- (void)setDialogResult:(id)arg1;
+- (void)setReason:(id)arg1;
+- (void)setUpdatedHeaders:(id)arg1;
+- (id)updatedHeaders;
 
 @end

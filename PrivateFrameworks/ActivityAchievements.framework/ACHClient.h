@@ -27,6 +27,7 @@
 - (void)_remoteProxy:(id /* block */)arg1 errorHandler:(id /* block */)arg2;
 - (void)addEarnedInstance:(id)arg1 completion:(id /* block */)arg2;
 - (void)addTemplate:(id)arg1 completion:(id /* block */)arg2;
+- (void)availableMobileAssetsWithCompletion:(id /* block */)arg1;
 - (id)clientQueue;
 - (void)connectionInvalidated;
 - (id)exportedInterface;
@@ -45,6 +46,7 @@
 - (void)removeAllTemplatesWithCompletion:(id /* block */)arg1;
 - (void)removeEarnedInstance:(id)arg1 completion:(id /* block */)arg2;
 - (void)removeTemplate:(id)arg1 completion:(id /* block */)arg2;
+- (void)runMonthlyChallengesWithCompletion:(id /* block */)arg1;
 - (id)serverProxy;
 - (id)serverQueue;
 - (void)setActivityChallengeAssetsServerURL:(id)arg1 completion:(id /* block */)arg2;

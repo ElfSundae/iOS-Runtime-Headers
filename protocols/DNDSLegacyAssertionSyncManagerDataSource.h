@@ -5,6 +5,6 @@
 
 @required
 
-- (NSDateInterval *)legacyAssertionSyncManager:(id <DNDSAssertionSyncManager>)arg1 activeDateIntervalForModeAssertion:(DNDModeAssertion *)arg2;
+- (DNDState *)currentStateForLegacyAssertionSyncManager:(id <DNDSAssertionSyncManager>)arg1;
 
 @end

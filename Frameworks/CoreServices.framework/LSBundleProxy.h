@@ -9,14 +9,17 @@
     _LSLazyPropertyList * __groupContainers;
     _LSLazyPropertyList * __infoDictionary;
     _LSBundleIDValidationToken * __validationToken;
+    NSURL * _bundleContainerURL;
     NSString * _bundleExecutable;
     unsigned long long  _bundleFlags;
+    NSString * _bundleIdentifier;
     NSString * _bundleType;
     NSURL * _bundleURL;
     NSString * _bundleVersion;
     NSUUID * _cacheGUID;
     unsigned long long  _compatibilityState;
     bool  _containerized;
+    NSURL * _dataContainerURL;
     bool  _foundBackingBundle;
     unsigned char  _iconFlags;
     NSString * _localizedShortName;
@@ -33,9 +36,7 @@
 @property (setter=_setEntitlements:, nonatomic, copy) _LSLazyPropertyList *_entitlements;
 @property (setter=_setEnvironmentVariables:, nonatomic, copy) _LSLazyPropertyList *_environmentVariables;
 @property (setter=_setGroupContainers:, nonatomic, copy) _LSLazyPropertyList *_groupContainers;
-@property (readonly) LSApplicationProxy *_inf_containingAppProxy;
 @property (readonly) bool _inf_isSystem;
-@property (readonly) bool _inf_isWatchKitAppExtension;
 @property (setter=_setInfoDictionary:, nonatomic, copy) _LSLazyPropertyList *_infoDictionary;
 @property (setter=_setValidationToken:, nonatomic, retain) _LSBundleIDValidationToken *_validationToken;
 @property (nonatomic, readonly) NSURL *appStoreReceiptURL;
@@ -55,6 +56,10 @@
 @property (nonatomic, readonly) NSDictionary *environmentVariables;
 @property (nonatomic, readonly) bool foundBackingBundle;
 @property (nonatomic, readonly) NSDictionary *groupContainerURLs;
+@property (readonly) LSApplicationProxy *if_containingAppProxy;
+@property (readonly) bool if_isAppExtension;
+@property (readonly) bool if_isSystem;
+@property (readonly) bool if_isWatchKitAppExtension;
 @property (nonatomic, readonly) NSString *localizedShortName;
 @property (nonatomic, copy) NSArray *machOUUIDs;
 @property (nonatomic, readonly) bool profileValidated;
@@ -69,9 +74,12 @@
 + (bool)bundleProxyForCurrentProcessNeedsUpdate:(id)arg1;
 + (id)bundleProxyForIdentifier:(id)arg1;
 + (id)bundleProxyForURL:(id)arg1;
++ (id)bundleProxyForURL:(id)arg1 error:(id*)arg2;
++ (id)bundleProxyWithAuditToken:(struct { unsigned int x1[8]; })arg1 error:(id*)arg2;
 + (bool)canInstantiateFromDatabase;
 + (bool)supportsSecureCoding;
 
+- (void).cxx_destruct;
 - (bool)UPPValidated;
 - (unsigned long long)_containerClassForLSBundleType:(id)arg1;
 - (id)_dataContainerURLFromContainerManager;
@@ -80,14 +88,19 @@
 - (id)_environmentVariablesFromContainerManager;
 - (id)_groupContainerURLsFromContainerManager;
 - (id)_groupContainers;
+- (bool)_hasAssociatedPersonas;
 - (id)_infoDictionary;
-- (id)_initWithBundleUnit:(unsigned int)arg1 context:(struct LSContext { struct LSDatabase {} *x1; }*)arg2 bundleType:(unsigned long long)arg3 bundleID:(id)arg4 localizedName:(id)arg5 bundleContainerURL:(id)arg6 dataContainerURL:(id)arg7 resourcesDirectoryURL:(id)arg8 iconsDictionary:(id)arg9 iconFileNames:(id)arg10 version:(id)arg11;
+- (id)_initWithBundleUnit:(unsigned int)arg1 context:(struct LSContext { id x1; }*)arg2 bundleType:(unsigned long long)arg3 bundleID:(id)arg4 localizedName:(id)arg5 bundleContainerURL:(id)arg6 dataContainerURL:(id)arg7 resourcesDirectoryURL:(id)arg8 iconsDictionary:(id)arg9 iconFileNames:(id)arg10 version:(id)arg11;
+- (id)_localizedNameWithPreferredLocalizations:(id)arg1 useShortNameOnly:(bool)arg2;
+- (id)_managedPersonas;
 - (void)_setCompatibilityState:(unsigned long long)arg1;
 - (void)_setEntitlements:(id)arg1;
 - (void)_setEnvironmentVariables:(id)arg1;
 - (void)_setGroupContainers:(id)arg1;
 - (void)_setInfoDictionary:(id)arg1;
 - (void)_setValidationToken:(id)arg1;
+- (bool)_shouldCallThroughToContainerManagerForPersona;
+- (bool)_usesSystemPersona;
 - (id)_validationToken;
 - (id)_valueForEqualityTesting;
 - (id)appStoreReceiptName;
@@ -103,7 +116,6 @@
 - (unsigned long long)compatibilityState;
 - (id)containerURL;
 - (id)dataContainerURL;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)entitlementValueForKey:(id)arg1 ofClass:(Class)arg2;
 - (id)entitlementValueForKey:(id)arg1 ofClass:(Class)arg2 valuesOfClass:(Class)arg3;
@@ -155,8 +167,18 @@
 
 // Image: /System/Library/PrivateFrameworks/IntentsFoundation.framework/IntentsFoundation
 
-- (id)_inf_containingAppProxy;
 - (bool)_inf_isSystem;
-- (bool)_inf_isWatchKitAppExtension;
+- (id)if_containingAppProxy;
+- (bool)if_isAppExtension;
+- (bool)if_isSystem;
+- (bool)if_isWatchKitAppExtension;
+
+// Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
+
+- (bool)_isInstalled;
+
+// Image: /System/Library/PrivateFrameworks/StorageSettings.framework/StorageSettings
+
+- (bool)valueForBooleanInfoKey:(id)arg1;
 
 @end

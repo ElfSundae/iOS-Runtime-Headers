@@ -6,6 +6,7 @@
     struct NSString { Class x1; } * _planId;
     unsigned long long  _quantizationNumberOfBuckets;
     NSMutableArray * _results;
+    NSLock * _resultsLock;
 }
 
 @property (readonly, copy) NSString *debugDescription;

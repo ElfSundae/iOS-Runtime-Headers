@@ -24,14 +24,15 @@
 - (long long)categoryAtIndex:(long long)arg1;
 - (unsigned long long)categoryMask;
 - (id)contentStrings;
+- (unsigned long long)groupCount;
 - (id)groupDescription;
 - (id)groupResult;
 - (id)initWithGroupResult:(id)arg1;
 - (bool)isContentStringTextSearchableAtIndex:(long long)arg1;
+- (bool)isImplicitlyTokenized;
 - (bool)isMatchedByIdentifierAtIndex:(long long)arg1;
 - (id)keyAssetUUID;
 - (id)lookupIdentifiers;
-- (unsigned long long)matchCount;
 - (id)matchRanges;
 - (id)matchRangesAtIndex:(long long)arg1;
 - (id)owningContentString;

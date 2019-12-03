@@ -3,11 +3,11 @@
  */
 
 @interface HKHealthPrivacyHostAuthorizationViewController : _UIRemoteViewController <HKHealthPrivacyHostRemoteViewController> {
-    <HKHealthPrivacyHostAuthorizationViewControllerDelegate> * _delegate;
+    <HKHealthPrivacyHostAuthorizationControllerDelegate> * _delegate;
 }
 
 @property (nonatomic, readonly) <HKHealthPrivacyServiceRemoteAuthorizationViewController> *_healthPrivacyServiceViewControllerProxy;
-@property (nonatomic) <HKHealthPrivacyHostAuthorizationViewControllerDelegate> *delegate;
+@property (nonatomic) <HKHealthPrivacyHostAuthorizationControllerDelegate> *delegate;
 
 + (id)exportedInterface;
 + (id)requestRemoteViewControllerWithConnectionHandler:(id /* block */)arg1;

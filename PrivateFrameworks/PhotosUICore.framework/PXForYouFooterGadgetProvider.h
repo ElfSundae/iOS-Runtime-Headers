@@ -13,7 +13,7 @@
 - (bool)_didProcessContentOvernight;
 - (void)_generateFooterGadget;
 - (void)_handleFaceProgressCompletionWithCountDictionary:(id)arg1;
-- (void)_handleSceneProgressCompletionWithCountDictionary:(id)arg1;
+- (void)_handleSceneProgressCompletionWithCount:(unsigned long long)arg1;
 - (id)_peaceMemoryFetchOptions;
 - (bool)attemptedToGenerateGadgets;
 - (unsigned long long)estimatedNumberOfGadgets;

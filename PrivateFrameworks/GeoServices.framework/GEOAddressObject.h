@@ -9,6 +9,7 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) NSString *displayLanguage;
 @property (nonatomic, readonly) bool hasKnownAccuracy;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) int knownAccuracy;
@@ -28,6 +29,7 @@
 - (id)cityDisplayNameWithFallback:(bool)arg1;
 - (id)cnPostalAddress;
 - (void)dealloc;
+- (id)displayLanguage;
 - (id)fullAddressNoCurrentCountryWithMultiline:(bool)arg1;
 - (id)fullAddressWithMultiline:(bool)arg1;
 - (id)fullAddressWithMultiline:(bool)arg1 relative:(id)arg2;

@@ -8,12 +8,14 @@
         double width; 
         double height; 
     }  _attachmentContentSize;
+    NSRegularExpression * _highlightPatternRegex;
     bool  _selected;
     ICTextAttachment * _textAttachment;
 }
 
 @property (nonatomic) ICAttachment *attachment;
 @property (nonatomic) struct CGSize { double x1; double x2; } attachmentContentSize;
+@property (nonatomic, retain) NSRegularExpression *highlightPatternRegex;
 @property (nonatomic) bool selected;
 @property (nonatomic) ICTextAttachment *textAttachment;
 
@@ -36,6 +38,7 @@
 - (void)didScrollOutOfVisibleRange;
 - (void)didSetSelected:(bool)arg1;
 - (void)didUpdatePreviewImages;
+- (id)highlightPatternRegex;
 - (void)mediaDidLoad:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (id)quickLookTransitionView;
@@ -43,6 +46,7 @@
 - (bool)selected;
 - (void)setAttachment:(id)arg1;
 - (void)setAttachmentContentSize:(struct CGSize { double x1; double x2; })arg1;
+- (void)setHighlightPatternRegex:(id)arg1;
 - (void)setSelected:(bool)arg1;
 - (void)setTextAttachment:(id)arg1;
 - (id)textAttachment;

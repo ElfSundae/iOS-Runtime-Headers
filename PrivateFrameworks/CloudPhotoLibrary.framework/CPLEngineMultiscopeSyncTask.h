@@ -26,12 +26,12 @@
 - (void)_launchTaskForNextScope;
 - (void)_setCurrentTask:(id)arg1;
 - (void)cancel;
-- (id)description;
 - (void)dispatchAsyncWithCurrentSubtask:(id /* block */)arg1;
 - (id)enumerateScopesForTaskInTransaction:(id)arg1;
-- (id)initWithEngineLibrary:(id)arg1;
+- (id)initWithEngineLibrary:(id)arg1 session:(id)arg2;
 - (void)launch;
-- (id)newScopedTaskWithScope:(id)arg1 transportScope:(id)arg2 clientCacheIdentifier:(id)arg3;
+- (id)newScopedTaskWithScope:(id)arg1 session:(id)arg2 transportScope:(id)arg3 clientCacheIdentifier:(id)arg4;
+- (id)phaseDescription;
 - (id)scopes;
 - (void)setForceSync:(bool)arg1;
 - (void)setForeground:(bool)arg1;

@@ -11,6 +11,7 @@
     NSString * _name;
     long long  _qualityOfService;
     id /* block */  _responseHandler;
+    double  _timeout;
     HMFMessageTransport * _transport;
     NSDictionary * _userInfo;
 }
@@ -23,6 +24,7 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic) long long qualityOfService;
 @property (nonatomic, copy) id /* block */ responseHandler;
+@property (nonatomic) double timeout;
 @property (nonatomic) HMFMessageTransport *transport;
 @property (nonatomic, copy) NSDictionary *userInfo;
 
@@ -45,8 +47,10 @@
 - (void)setName:(id)arg1;
 - (void)setQualityOfService:(long long)arg1;
 - (void)setResponseHandler:(id /* block */)arg1;
+- (void)setTimeout:(double)arg1;
 - (void)setTransport:(id)arg1;
 - (void)setUserInfo:(id)arg1;
+- (double)timeout;
 - (id)transport;
 - (id)userInfo;
 

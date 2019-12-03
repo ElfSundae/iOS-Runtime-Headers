@@ -12,6 +12,8 @@
 @property (nonatomic, readonly) NSString *_draggedLinkTitle;
 @property (nonatomic, readonly) NSURL *_draggedLinkURL;
 @property (setter=_setUnobscuredSafeAreaInsets:, nonatomic) struct WebEdgeInsets { double x1; double x2; double x3; double x4; } _unobscuredSafeAreaInsets;
+@property (setter=_setUseDarkAppearance:, nonatomic) bool _useDarkAppearance;
+@property (setter=_setUseElevatedUserInterfaceLevel:, nonatomic) bool _useElevatedUserInterfaceLevel;
 @property (setter=_setUseSystemAppearance:, nonatomic) bool _useSystemAppearance;
 @property (nonatomic, copy) NSString *applicationNameForUserAgent;
 @property (nonatomic, readonly) WebBackForwardList *backForwardList;
@@ -176,7 +178,7 @@
 - (unsigned long long)_deviceOrientation;
 - (id)_deviceOrientationProvider;
 - (void)_didCommitLoadForFrame:(id)arg1;
-- (void)_didConcludeEditDataInteraction;
+- (void)_didConcludeEditDrag;
 - (void)_didFinishScrollingOrZooming;
 - (void)_didScrollDocumentInFrameView:(id)arg1;
 - (void)_dispatchPendingLoadRequests;
@@ -190,10 +192,9 @@
 - (id)_draggedLinkTitle;
 - (id)_draggedLinkURL;
 - (id)_editingDelegateForwarder;
-- (bool)_effectiveAppearanceIsDark;
 - (id)_elementAtWindowPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)_endedDataInteraction:(struct CGPoint { double x1; double x2; })arg1 global:(struct CGPoint { double x1; double x2; })arg2;
-- (void)_enterVideoFullscreenForVideoElement:(struct HTMLVideoElement { int (**x1)(); struct Weak<WebCore::JSDOMObject> { struct WeakImpl {} *x_2_1_1; } x2; int x3; unsigned int x4; struct ContainerNode {} *x5; struct TreeScope {} *x6; struct Node {} *x7; struct Node {} *x8; union DataUnion { struct RenderObject {} *x_9_1_1; struct NodeRareDataBase {} *x_9_1_2; } x9; struct Node {} *x10; struct Node {} *x11; struct QualifiedName { struct RefPtr<WebCore::QualifiedName::QualifiedNameImpl, WTF::DumbPtrTraits<WebCore::QualifiedName::QualifiedNameImpl> > { struct QualifiedNameImpl {} *x_1_2_1; } x_12_1_1; } x12; struct RefPtr<WebCore::ElementData, WTF::DumbPtrTraits<WebCore::ElementData> > { struct ElementData {} *x_13_1_1; } x13; int (**x14)(); struct ScriptExecutionContext {} *x15; unsigned int x16; int (**x17)(); struct WeakPtrFactory<WebCore::HTMLMediaElement> { struct RefPtr<WTF::WeakReference<WebCore::HTMLMediaElement>, WTF::DumbPtrTraits<WTF::WeakReference<WebCore::HTMLMediaElement> > > { struct WeakReference<WebCore::HTMLMediaElement> {} *x_1_2_1; } x_18_1_1; } x18; int (**x19)(); }*)arg1 mode:(unsigned int)arg2;
+- (void)_enterVideoFullscreenForVideoElement:(struct HTMLVideoElement { int (**x1)(); struct Weak<WebCore::JSDOMObject> { struct WeakImpl {} *x_2_1_1; } x2; unsigned int x3; unsigned int x4; struct ContainerNode {} *x5; struct TreeScope {} *x6; struct Node {} *x7; struct Node {} *x8; union DataUnion { struct RenderObject {} *x_9_1_1; struct NodeRareDataBase {} *x_9_1_2; } x9; struct WeakPtrFactory<WebCore::ContainerNode> { struct RefPtr<WTF::WeakPtrImpl, WTF::DumbPtrTraits<WTF::WeakPtrImpl> > { struct WeakPtrImpl {} *x_1_2_1; } x_10_1_1; } x10; struct Node {} *x11; struct Node {} *x12; struct QualifiedName { struct RefPtr<WebCore::QualifiedName::QualifiedNameImpl, WTF::DumbPtrTraits<WebCore::QualifiedName::QualifiedNameImpl> > { struct QualifiedNameImpl {} *x_1_2_1; } x_13_1_1; } x13; struct RefPtr<WebCore::ElementData, WTF::DumbPtrTraits<WebCore::ElementData> > { struct ElementData {} *x_14_1_1; } x14; int (**x15)(); struct ScriptExecutionContext {} *x16; unsigned int x17; int (**x18)(); int (**x19)(); int (**x20)(); int (**x21)(); int (**x22)(); struct WeakPtrFactory<WebCore::MediaProducer> { struct RefPtr<WTF::WeakPtrImpl, WTF::DumbPtrTraits<WTF::WeakPtrImpl> > { struct WeakPtrImpl {} *x_1_2_1; } x_23_1_1; } x23; }*)arg1 mode:(unsigned int)arg2;
 - (unsigned long long)_enteredDataInteraction:(id)arg1 client:(struct CGPoint { double x1; double x2; })arg2 global:(struct CGPoint { double x1; double x2; })arg3 operation:(unsigned long long)arg4;
 - (void)_executeCoreCommandByName:(id)arg1 value:(id)arg2;
 - (void)_exitVideoFullscreen;
@@ -234,7 +235,7 @@
 - (void)_loadBackForwardListFromOtherView:(id)arg1;
 - (bool)_locked_plugInsAreRunningInFrame:(id)arg1;
 - (void)_locked_recursivelyPerformPlugInSelector:(SEL)arg1 inFrame:(id)arg2;
-- (struct Frame { int (**x1)(); struct atomic<unsigned int> { unsigned int x_2_1_1; } x2; struct Ref<WebCore::WindowProxy, WTF::DumbPtrTraits<WebCore::WindowProxy> > { struct WindowProxy {} *x_3_1_1; } x3; struct HashSet<WebCore::FrameDestructionObserver *, WTF::PtrHash<WebCore::FrameDestructionObserver *>, WTF::HashTraits<WebCore::FrameDestructionObserver *> > { struct HashTable<WebCore::FrameDestructionObserver *, WebCore::FrameDestructionObserver *, WTF::IdentityExtractor, WTF::PtrHash<WebCore::FrameDestructionObserver *>, WTF::HashTraits<WebCore::FrameDestructionObserver *>, WTF::HashTraits<WebCore::FrameDestructionObserver *> > { struct FrameDestructionObserver {} **x_1_2_1; unsigned int x_1_2_2; unsigned int x_1_2_3; unsigned int x_1_2_4; unsigned int x_1_2_5; } x_4_1_1; } x4; struct Frame {} *x5; struct Page {} *x6; struct RefPtr<WebCore::Settings, WTF::DumbPtrTraits<WebCore::Settings> > { struct Settings {} *x_7_1_1; } x7; struct FrameTree { struct Frame {} *x_8_1_1; struct Frame {} *x_8_1_2; struct AtomicString { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_4_1; } x_1_3_1; } x_3_2_1; } x_8_1_3; struct AtomicString { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_4_1; } x_1_3_1; } x_4_2_1; } x_8_1_4; struct RefPtr<WebCore::Frame, WTF::DumbPtrTraits<WebCore::Frame> > { struct Frame {} *x_5_2_1; } x_8_1_5; struct Frame {} *x_8_1_6; struct RefPtr<WebCore::Frame, WTF::DumbPtrTraits<WebCore::Frame> > { struct Frame {} *x_7_2_1; } x_8_1_7; struct Frame {} *x_8_1_8; unsigned int x_8_1_9; unsigned long long x_8_1_10; } x8; }*)_mainCoreFrame;
+- (struct Frame { int (**x1)(); struct atomic<unsigned int> { _Atomic unsigned int x_2_1_1; } x2; struct Ref<WebCore::WindowProxy, WTF::DumbPtrTraits<WebCore::WindowProxy> > { struct WindowProxy {} *x_3_1_1; } x3; struct HashSet<WebCore::FrameDestructionObserver *, WTF::PtrHash<WebCore::FrameDestructionObserver *>, WTF::HashTraits<WebCore::FrameDestructionObserver *> > { struct HashTable<WebCore::FrameDestructionObserver *, WebCore::FrameDestructionObserver *, WTF::IdentityExtractor, WTF::PtrHash<WebCore::FrameDestructionObserver *>, WTF::HashTraits<WebCore::FrameDestructionObserver *>, WTF::HashTraits<WebCore::FrameDestructionObserver *> > { struct FrameDestructionObserver {} **x_1_2_1; unsigned int x_1_2_2; unsigned int x_1_2_3; unsigned int x_1_2_4; unsigned int x_1_2_5; } x_4_1_1; } x4; struct Frame {} *x5; struct Page {} *x6; struct RefPtr<WebCore::Settings, WTF::DumbPtrTraits<WebCore::Settings> > { struct Settings {} *x_7_1_1; } x7; struct FrameTree { struct Frame {} *x_8_1_1; struct Frame {} *x_8_1_2; struct AtomString { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_4_1; } x_1_3_1; } x_3_2_1; } x_8_1_3; struct AtomString { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_4_1; } x_1_3_1; } x_4_2_1; } x_8_1_4; struct RefPtr<WebCore::Frame, WTF::DumbPtrTraits<WebCore::Frame> > { struct Frame {} *x_5_2_1; } x_8_1_5; struct Frame {} *x_8_1_6; struct RefPtr<WebCore::Frame, WTF::DumbPtrTraits<WebCore::Frame> > { struct Frame {} *x_7_2_1; } x_8_1_7; struct Frame {} *x_8_1_8; unsigned int x_8_1_9; unsigned long long x_8_1_10; } x8; }*)_mainCoreFrame;
 - (id)_mainFrameOverrideEncoding;
 - (void)_mouseDidMoveOverElement:(id)arg1 modifierFlags:(unsigned long long)arg2;
 - (bool)_needsOneShotDrawingSynchronization;
@@ -313,6 +314,10 @@
 - (void)_setUIKitDelegate:(id)arg1;
 - (void)_setUIWebViewUserAgentWithBuildVersion:(id)arg1;
 - (void)_setUnobscuredSafeAreaInsets:(struct WebEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
+- (void)_setUseDarkAppearance:(bool)arg1;
+- (void)_setUseDarkAppearance:(bool)arg1 useElevatedUserInterfaceLevel:(bool)arg2;
+- (void)_setUseDarkAppearance:(bool)arg1 useInactiveAppearance:(bool)arg2;
+- (void)_setUseElevatedUserInterfaceLevel:(bool)arg1;
 - (void)_setUseFastImageScalingMode:(bool)arg1;
 - (void)_setUseFixedLayout:(bool)arg1;
 - (void)_setUseSystemAppearance:(bool)arg1;
@@ -335,6 +340,8 @@
 - (void)_updateScreenScaleFromWindow;
 - (void)_updateVisibilityState;
 - (unsigned long long)_updatedDataInteraction:(id)arg1 client:(struct CGPoint { double x1; double x2; })arg2 global:(struct CGPoint { double x1; double x2; })arg3 operation:(unsigned long long)arg4;
+- (bool)_useDarkAppearance;
+- (bool)_useElevatedUserInterfaceLevel;
 - (bool)_useFixedLayout;
 - (bool)_useSystemAppearance;
 - (struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_1_1; } x1; })_userAgentString;
@@ -565,6 +572,7 @@
 - (void)resetPageZoom:(id)arg1;
 - (void)resetTrackedRepaints;
 - (id)resourceLoadDelegate;
+- (void)resumeAllMediaPlayback;
 - (void)scheduleInRunLoop:(id)arg1 forMode:(id)arg2;
 - (id)scriptDebugDelegate;
 - (void)scrollDOMRangeToVisible:(id)arg1;
@@ -653,6 +661,7 @@
 - (void)subscript:(id)arg1;
 - (void)superscript:(id)arg1;
 - (bool)supportsTextEncoding;
+- (void)suspendAllMediaPlayback;
 - (void)swapWithMark:(id)arg1;
 - (bool)tabKeyCyclesThroughElements;
 - (void)takeFindStringFromSelection:(id)arg1;
@@ -679,7 +688,6 @@
 - (id)userAgentForURL:(id)arg1;
 - (bool)usesPageCache;
 - (int)validationMessageTimerMagnification;
-- (void)viewDidChangeEffectiveAppearance;
 - (void)viewDidMoveToWindow;
 - (id)windowScriptObject;
 - (void)yank:(id)arg1;

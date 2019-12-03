@@ -8,8 +8,8 @@
     WDText * mText;
 }
 
+- (void).cxx_destruct;
 - (id)date;
-- (void)dealloc;
 - (id)initWithText:(id)arg1;
 - (id)owner;
 - (void)setDate:(id)arg1;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
  */
 
-@interface HMDBackingStoreModelObject : HMFObject <HMFLogging> {
+@interface HMDBackingStoreModelObject : HMFObject <HMFLogging, NSCopying> {
     HMFVersion * _bsoDataVersion;
     bool  _bsoDataVersionOverride;
     <HMDBackingStoreObjectProtocol> * _bsoDelegate;
@@ -18,8 +18,10 @@
 @property (nonatomic, readonly) HMFVersion *bsoDataVersion;
 @property bool bsoDataVersionOverride;
 @property (nonatomic) <HMDBackingStoreObjectProtocol> *bsoDelegate;
+@property (nonatomic, readonly) bool bsoIgnoreModel;
+@property (nonatomic, retain) HMFVersion *bsoIgnoredBefore;
 @property (readonly) unsigned long long bsoLogRowID;
-@property (nonatomic, readonly) CKRecord *bsoRecord;
+@property (nonatomic, retain) CKRecord *bsoRecord;
 @property (nonatomic, retain) NSString *bsoType;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, readonly) NSSet *dependentUUIDs;
@@ -33,6 +35,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSUUID *uuid;
 
++ (Class)backedObjectClass;
 + (id)bsoSchemaHash;
 + (id)formatValue:(id)arg1;
 + (Class)genericRepresentation;
@@ -50,13 +53,17 @@
 
 - (void).cxx_destruct;
 - (bool)_validateType:(id)arg1 error:(id*)arg2;
+- (id)backedObjectWithParent:(id)arg1 error:(id*)arg2;
 - (id)bsoDataVersion;
 - (bool)bsoDataVersionOverride;
 - (id)bsoDelegate;
+- (bool)bsoIgnoreModel;
+- (id)bsoIgnoredBefore;
 - (unsigned long long)bsoLogRowID;
 - (id)bsoRecord;
 - (id)bsoType;
 - (void)clearVersionOverride;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)debugString:(bool)arg1;
 - (id)defaultValueForPropertyNamed:(id)arg1 isSet:(bool*)arg2;
 - (id)dependentUUIDs;
@@ -81,6 +88,7 @@
 - (bool)isReplayable;
 - (id)logIdentifier;
 - (id)merge:(id)arg1;
+- (bool)merge:(id)arg1 error:(id*)arg2;
 - (id)merge:(id)arg1 from:(unsigned long long)arg2;
 - (unsigned long long)objectChangeType;
 - (id)parentUUID;
@@ -90,6 +98,8 @@
 - (bool)propertyWasSet:(id)arg1;
 - (void)setBsoDataVersionOverride:(bool)arg1;
 - (void)setBsoDelegate:(id)arg1;
+- (void)setBsoIgnoredBefore:(id)arg1;
+- (void)setBsoRecord:(id)arg1;
 - (void)setBsoType:(id)arg1;
 - (void)setObjectChangeType:(unsigned long long)arg1;
 - (void)setParentUUID:(id)arg1;

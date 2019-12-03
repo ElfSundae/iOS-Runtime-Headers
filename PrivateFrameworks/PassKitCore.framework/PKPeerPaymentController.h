@@ -32,8 +32,6 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) PKPeerPaymentWebService *webService;
 
-// Image: /System/Library/PrivateFrameworks/PassKitCore.framework/PassKitCore
-
 + (id)_displayNameForRecipientAddress:(id)arg1 contactResolver:(id)arg2 foundInContacts:(bool*)arg3;
 + (id)_displayableErrorOverrideForUnderlyingError:(id)arg1;
 + (id)_peerPaymentPassURL;
@@ -82,7 +80,6 @@
 - (id)peerPaymentPass;
 - (void)performAction:(id)arg1 withPaymentIdentifier:(id)arg2 completion:(id /* block */)arg3;
 - (void)performQuote:(id)arg1 completion:(id /* block */)arg2;
-- (id)performQuoteOrientation;
 - (id)performQuoteResponse;
 - (void)performQuoteWithCompletion:(id /* block */)arg1;
 - (id)quote;
@@ -102,9 +99,5 @@
 - (void)statusForPaymentIdentifier:(id)arg1 withCompletion:(id /* block */)arg2;
 - (id)summaryItemsForQuote:(id)arg1;
 - (id)webService;
-
-// Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
-
-- (id)performQuoteOrientation;
 
 @end

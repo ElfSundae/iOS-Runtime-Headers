@@ -31,6 +31,7 @@
 - (bool)cameraConnectionStartCapture:(CCCameraConnection *)arg1;
 - (bool)cameraConnectionStopCapture:(CCCameraConnection *)arg1;
 - (NSArray *)cameraConnectionSupportedCaptureModes:(CCCameraConnection *)arg1;
+- (bool)cameraConnectionSupportsMomentCapture:(CCCameraConnection *)arg1;
 - (void)cameraConnectionToggleCameraDevice:(CCCameraConnection *)arg1;
 - (bool)cameraConnectionToggleCameraDeviceSupport:(CCCameraConnection *)arg1;
 - (double)cameraConnectionZoomAmount:(CCCameraConnection *)arg1;

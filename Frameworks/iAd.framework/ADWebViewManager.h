@@ -10,11 +10,11 @@
 
 + (id)sharedManager;
 
+- (void).cxx_destruct;
 - (id)_webViewForCreative;
 - (id)_webViewForCreativeForVideo;
 - (id)creativeView;
 - (id)creativeViewForVideo;
-- (void)dealloc;
 - (void)preallocateWebViewWithBackgroundPriority;
 - (id)preallocatedWebView;
 - (void)setPreallocatedWebView:(id)arg1;

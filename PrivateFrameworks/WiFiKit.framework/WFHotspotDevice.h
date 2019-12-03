@@ -27,18 +27,24 @@
 - (id)init;
 - (id)initWithHotspotDevice:(id)arg1;
 - (bool)isAdhoc;
+- (bool)isEnterprise;
 - (bool)isEqual:(id)arg1;
 - (bool)isHotspot20;
 - (bool)isInstantHotspot;
+- (bool)isKnown;
+- (bool)isPopular;
 - (bool)isSecure;
 - (bool)isUnconfiguredAccessory;
+- (bool)prominentDisplay;
 - (long long)rssi;
 - (float)scaledRSSI;
 - (long long)securityMode;
 - (void)setHotspotDevice:(id)arg1;
 - (void)setScaledRSSI:(float)arg1;
+- (unsigned long long)signalBars;
 - (id)ssid;
 - (id)subtitle;
 - (id)title;
+- (unsigned long long)uniqueIdentifier;
 
 @end

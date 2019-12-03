@@ -5,6 +5,7 @@
 @interface CSSpIdContext : NSObject {
     unsigned long long  _activeChannel;
     CSAsset * _asset;
+    CSAsset * _fallbackAsset;
     unsigned long long  _invocationStyle;
     NSString * _locale;
     NSString * _uniqueUttTag;
@@ -13,6 +14,7 @@
 
 @property (nonatomic) unsigned long long activeChannel;
 @property (nonatomic, retain) CSAsset *asset;
+@property (nonatomic, readonly) CSAsset *fallbackAsset;
 @property (nonatomic) unsigned long long invocationStyle;
 @property (nonatomic, readonly) NSString *locale;
 @property (nonatomic, retain) NSString *uniqueUttTag;
@@ -22,7 +24,8 @@
 - (unsigned long long)activeChannel;
 - (id)asset;
 - (id)description;
-- (id)initWithSpIdInvocationStyle:(unsigned long long)arg1 asset:(id)arg2 locale:(id)arg3 vtEventInfo:(id)arg4;
+- (id)fallbackAsset;
+- (id)initWithSpIdInvocationStyle:(unsigned long long)arg1 asset:(id)arg2 fallbackAsset:(id)arg3 locale:(id)arg4 vtEventInfo:(id)arg5;
 - (unsigned long long)invocationStyle;
 - (id)locale;
 - (void)setActiveChannel:(unsigned long long)arg1;

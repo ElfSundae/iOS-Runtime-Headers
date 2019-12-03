@@ -12,7 +12,7 @@
 @property (nonatomic, readonly) unsigned long long indexOfSelectedOption;
 @property (nonatomic, readonly) NSString *localizedTitle;
 @property (nonatomic, readonly) unsigned long long numberOfOptions;
-@property (nonatomic, retain) NSArray *options;
+@property (nonatomic, readonly) NSArray *options;
 @property (nonatomic, readonly) MPCPlayerResponse *response;
 
 - (void).cxx_destruct;
@@ -24,6 +24,5 @@
 - (unsigned long long)numberOfOptions;
 - (id)options;
 - (id)response;
-- (void)setOptions:(id)arg1;
 
 @end

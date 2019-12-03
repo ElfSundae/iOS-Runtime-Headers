@@ -3,42 +3,70 @@
  */
 
 @interface NEIKEv2MOBIKE : NSObject <NSObject> {
-    NEIKEv2PacketTunnelProvider * _ikev2TunnelProvider;
-    bool  _mobikeCapable;
-    unsigned int  _mobikeRetries;
-    bool  _mobikeRunning;
-    NSObject<OS_dispatch_source> * _mobikeTimer;
+    bool  _mobikeEarlyDisconnect;
+    bool  _mobikeInProgress;
+    NWInterface * _mobikeInterface;
+    long long  _mobikePathStatus;
+    bool  _mobikePending;
+    NSObject<OS_dispatch_queue> * _mobikeQueue;
+    bool  _mobikeReasserting;
+    NSString * _mobikeServer;
+    NWInterface * _mobikeTransportInterface;
+    unsigned long long  _mobikeTries;
+    NSObject<OS_dispatch_source> * _mobikeWaitTimer;
+    NEIKEv2PacketTunnelProvider * _tunnelProvider;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property NEIKEv2PacketTunnelProvider *ikev2TunnelProvider;
-@property bool mobikeCapable;
-@property unsigned int mobikeRetries;
-@property bool mobikeRunning;
-@property (retain) NSObject<OS_dispatch_source> *mobikeTimer;
+@property bool mobikeEarlyDisconnect;
+@property bool mobikeInProgress;
+@property (retain) NWInterface *mobikeInterface;
+@property long long mobikePathStatus;
+@property bool mobikePending;
+@property (retain) NSObject<OS_dispatch_queue> *mobikeQueue;
+@property bool mobikeReasserting;
+@property (retain) NSString *mobikeServer;
+@property (retain) NWInterface *mobikeTransportInterface;
+@property unsigned long long mobikeTries;
+@property (retain) NSObject<OS_dispatch_source> *mobikeWaitTimer;
 @property (readonly) Class superclass;
+@property NEIKEv2PacketTunnelProvider *tunnelProvider;
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (void)ikev2MOBIKECleanup;
-- (void)ikev2MOBIKEFailed;
-- (void)ikev2MOBIKEReassert:(id /* block */)arg1;
-- (bool)ikev2MOBIKESetup:(bool)arg1 ifChange:(bool)arg2 serverAddress:(id)arg3;
-- (bool)ikev2MOBIKESkipTunnelNetworkSettingsUpdate;
-- (void)ikev2MOBIKEStart:(unsigned long long)arg1 pathStatus:(long long)arg2 serverAddress:(id)arg3 persist:(unsigned char)arg4;
-- (void)ikev2MOBIKEStopTimer;
-- (id)ikev2TunnelProvider;
-- (id)initWithTunnelProvider:(id)arg1;
-- (bool)mobikeCapable;
-- (unsigned int)mobikeRetries;
-- (bool)mobikeRunning;
-- (id)mobikeTimer;
-- (void)setIkev2TunnelProvider:(id)arg1;
-- (void)setMobikeCapable:(bool)arg1;
-- (void)setMobikeRetries:(unsigned int)arg1;
-- (void)setMobikeRunning:(bool)arg1;
-- (void)setMobikeTimer:(id)arg1;
+- (id)initWithQueue:(id)arg1 tunnelProvider:(id)arg2;
+- (void)initiateMOBIKE:(unsigned long long)arg1 pathStatus:(long long)arg2 serverAddress:(id)arg3 earlyDisconnect:(bool)arg4;
+- (void)mobikeDisconnect;
+- (bool)mobikeEarlyDisconnect;
+- (bool)mobikeInProgress;
+- (id)mobikeInterface;
+- (long long)mobikePathStatus;
+- (bool)mobikePending;
+- (id)mobikeQueue;
+- (bool)mobikeReadyCheck:(unsigned long long)arg1 pathStatus:(long long)arg2 mobikeServer:(id)arg3;
+- (void)mobikeReassert;
+- (bool)mobikeReasserting;
+- (id)mobikeServer;
+- (void)mobikeStartWaitTimer;
+- (void)mobikeStopWaitTimer;
+- (id)mobikeTransportInterface;
+- (unsigned long long)mobikeTries;
+- (id)mobikeWaitTimer;
+- (void)setMobikeEarlyDisconnect:(bool)arg1;
+- (void)setMobikeInProgress:(bool)arg1;
+- (void)setMobikeInterface:(id)arg1;
+- (void)setMobikePathStatus:(long long)arg1;
+- (void)setMobikePending:(bool)arg1;
+- (void)setMobikeQueue:(id)arg1;
+- (void)setMobikeReasserting:(bool)arg1;
+- (void)setMobikeServer:(id)arg1;
+- (void)setMobikeTransportInterface:(id)arg1;
+- (void)setMobikeTries:(unsigned long long)arg1;
+- (void)setMobikeWaitTimer:(id)arg1;
+- (void)setTunnelProvider:(id)arg1;
+- (bool)startMOBIKE:(id)arg1;
+- (id)tunnelProvider;
 
 @end

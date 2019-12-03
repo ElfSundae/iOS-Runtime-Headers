@@ -22,6 +22,7 @@
 - (void)cancelInteraction;
 - (void)dealloc;
 - (bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (bool)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithView:(id)arg1;
 - (bool)isActive;
 - (struct CGPoint { double x1; double x2; })locationInCoordinateSpace:(id)arg1;

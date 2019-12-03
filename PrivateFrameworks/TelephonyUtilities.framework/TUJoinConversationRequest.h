@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/TelephonyUtilities.framework/TelephonyUtilities
  */
 
-@interface TUJoinConversationRequest : NSObject <NSCopying, NSSecureCoding> {
+@interface TUJoinConversationRequest : NSObject <NSCopying, NSSecureCoding, TUFilteredRequest> {
     NSUUID * _UUID;
     TUHandle * _callerID;
     NSString * _messagesGroupName;
@@ -18,11 +18,15 @@
 @property (nonatomic, readonly) NSURL *URL;
 @property (nonatomic, retain) NSUUID *UUID;
 @property (nonatomic, retain) TUHandle *callerID;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSString *messagesGroupName;
 @property (nonatomic, copy) NSUUID *messagesGroupUUID;
 @property (nonatomic, readonly, copy) NSSet *remoteMembers;
 @property (nonatomic) bool shouldSuppressInCallUI;
 @property (nonatomic) bool showUIPrompt;
+@property (readonly) Class superclass;
 @property (getter=isUplinkMuted, nonatomic) bool uplinkMuted;
 @property (getter=isVideoEnabled, nonatomic) bool videoEnabled;
 @property (nonatomic) bool wantsStagingArea;
@@ -33,6 +37,7 @@
 + (id)remoteMembersFromURLComponents:(id)arg1;
 + (id)sanitizedMembersFromMembers:(id)arg1;
 + (bool)shouldSuppressInCallUIFromURLComponents:(id)arg1;
++ (bool)showUIPromptFromURLComponents:(id)arg1;
 + (bool)supportsSecureCoding;
 + (bool)videoEnabledFromURLComponents:(id)arg1;
 + (bool)wantsStagingAreaFromURLComponents:(id)arg1;
@@ -40,11 +45,13 @@
 - (void).cxx_destruct;
 - (id)URL;
 - (id)UUID;
+- (id)bundleIdentifier;
 - (id)callerID;
 - (id)callerIDQueryItem;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)handles;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithConversation:(id)arg1;
 - (id)initWithGroupUUID:(id)arg1 localParticipantHandle:(id)arg2 remoteParticipantHandles:(id)arg3;
@@ -71,6 +78,7 @@
 - (bool)shouldSuppressInCallUI;
 - (id)shouldSuppressInCallUIQueryItem;
 - (bool)showUIPrompt;
+- (id)showUIPromptQueryItem;
 - (id)videoEnabledQueryItem;
 - (bool)wantsStagingArea;
 - (id)wantsStagingAreaQueryItem;

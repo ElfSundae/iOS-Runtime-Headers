@@ -7,10 +7,10 @@
     bool  _deviceInVehicle;
     int  _deviceInterfaceOrientation;
     struct { 
-        unsigned int deviceBatteryState : 1; 
-        unsigned int deviceInterfaceOrientation : 1; 
-        unsigned int deviceInVehicle : 1; 
-    }  _has;
+        unsigned int has_deviceBatteryState : 1; 
+        unsigned int has_deviceInterfaceOrientation : 1; 
+        unsigned int has_deviceInVehicle : 1; 
+    }  _flags;
 }
 
 @property (nonatomic) int deviceBatteryState;
@@ -19,6 +19,8 @@
 @property (nonatomic) bool hasDeviceBatteryState;
 @property (nonatomic) bool hasDeviceInVehicle;
 @property (nonatomic) bool hasDeviceInterfaceOrientation;
+
++ (bool)isValid:(id)arg1;
 
 - (int)StringAsDeviceBatteryState:(id)arg1;
 - (int)StringAsDeviceInterfaceOrientation:(id)arg1;
@@ -37,6 +39,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setDeviceBatteryState:(int)arg1;
 - (void)setDeviceInVehicle:(bool)arg1;

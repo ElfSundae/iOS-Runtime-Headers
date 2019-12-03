@@ -13,7 +13,7 @@
 @property (readonly, copy) NSString *description;
 @property (getter=isEmpty, nonatomic, readonly) bool empty;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) NSUUID *parentUUID;
+@property (nonatomic, copy) NSUUID *parentUUID;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSUUID *uuid;
 

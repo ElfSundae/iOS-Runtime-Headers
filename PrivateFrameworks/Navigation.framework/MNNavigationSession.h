@@ -2,9 +2,9 @@
    Image: /System/Library/PrivateFrameworks/Navigation.framework/Navigation
  */
 
-@interface MNNavigationSession : NSObject <MNGuidanceManagerDelegate, MNLocationManagerHeadingObserver, MNLocationManagerObserver, MNLocationTrackerDelegate, MNNavigationAudioSessionDelegate, MNTimeAndDistanceUpdaterDelegate, MNTracePlayerObserver, MNVoiceControllerObserver> {
+@interface MNNavigationSession : NSObject <GEOMotionContextDelegate, MNGuidanceManagerDelegate, MNLocationManagerHeadingObserver, MNLocationManagerObserver, MNLocationTrackerDelegate, MNNavigationAudioSessionDelegate, MNSessionUpdateManagerDelegate, MNTimeAndDistanceUpdaterDelegate, MNTracePlayerObserver, MNVoiceControllerObserver> {
     MNTrafficIncidentAlert * _activeTrafficIncidentAlert;
-    MNNavigationAudioSession * _audioSession;
+    <MNAudioSession> * _audioSession;
     GEOApplicationAuditToken * _auditToken;
     MNClassicGuidanceManager * _classicGuidanceManager;
     GEOComposedWaypoint * _destination;
@@ -15,10 +15,14 @@
     bool  _isAllowedToSwitchTransportTypes;
     bool  _isConnectedToCarplay;
     bool  _isSpeakingTrafficIncidentAlert;
+    NSUUID * _lastJunctionViewID;
     NSUUID * _lastLaneID;
     MNGuidanceSignInfo * _lastSignInfo;
     MNLocationTracker * _locationTracker;
+    MNNavigationSessionLogger * _logger;
+    GEOResourceManifestUpdateAssertion * _manifestUpdateAssertion;
     GEOMotionContext * _motionContext;
+    MNTraceNavigationEventRecorder * _navigationEventRecorder;
     int  _navigationType;
     MNObserverHashTable * _observers;
     MNRouteManager * _routeManager;
@@ -47,13 +51,13 @@
 @property (nonatomic, readonly) double remainingTime;
 @property (nonatomic, readonly) MNRouteManager *routeManager;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) bool traceIsPlaying;
 @property (nonatomic, readonly) MNNavigationTraceManager *traceManager;
 
 - (void).cxx_destruct;
 - (void)_closeTileLoader;
 - (id)_locationTrackerForTransportType:(int)arg1 navigationType:(int)arg2;
 - (void)_openTileLoader;
-- (void)_setVolumeFromDefaults;
 - (void)_startAudioSession;
 - (void)_startETAUpdates;
 - (void)_startGuidanceAllowMidRouteStart:(bool)arg1;
@@ -68,6 +72,7 @@
 - (void)_stopLocationUpdates;
 - (void)_stopMotionUpdates;
 - (void)_stopTravelTimeUpdates;
+- (void)addInjectedEvent:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (id)audioSession;
 - (void)audioSessionDidFinishAnnouncingArrival:(id)arg1;
@@ -77,14 +82,16 @@
 - (id)destination;
 - (double)distanceToManeuverEnd;
 - (double)distanceToManeuverStart;
-- (void)guidanceManager:(id)arg1 announce:(id)arg2 shortPromptType:(unsigned long long)arg3 stage:(unsigned long long)arg4 hasSecondaryManeuver:(bool)arg5 completionBlock:(id /* block */)arg6;
+- (void)guidanceManager:(id)arg1 announce:(id)arg2 shortPromptType:(unsigned long long)arg3 ignorePromptStyle:(bool)arg4 stage:(unsigned long long)arg5 hasSecondaryManeuver:(bool)arg6 completionBlock:(id /* block */)arg7;
 - (void)guidanceManager:(id)arg1 didArriveWithAnnouncement:(id)arg2;
 - (void)guidanceManager:(id)arg1 didStartWithAnnouncement:(id)arg2;
 - (void)guidanceManager:(id)arg1 displayManeuverAlertForAnnouncementStage:(unsigned long long)arg2;
 - (void)guidanceManager:(id)arg1 displayPrimaryStep:(id)arg2 instructions:(id)arg3 shieldType:(int)arg4 shieldText:(id)arg5 drivingSide:(int)arg6 maneuverStepIndex:(unsigned long long)arg7 isSynthetic:(bool)arg8;
 - (void)guidanceManager:(id)arg1 displaySecondaryStep:(id)arg2 instructions:(id)arg3 shieldType:(int)arg4 shieldText:(id)arg5 drivingSide:(int)arg6;
+- (void)guidanceManager:(id)arg1 hideJunctionViewForId:(id)arg2;
 - (void)guidanceManager:(id)arg1 hideLaneDirectionsForId:(id)arg2;
 - (void)guidanceManager:(id)arg1 newGuidanceEventFeedback:(id)arg2;
+- (void)guidanceManager:(id)arg1 showJunctionView:(id)arg2;
 - (void)guidanceManager:(id)arg1 showLaneDirections:(id)arg2;
 - (void)guidanceManager:(id)arg1 triggerHaptics:(int)arg2;
 - (void)guidanceManager:(id)arg1 updateSignsWithInfo:(id)arg2;
@@ -97,6 +104,7 @@
 - (void)guidanceManagerHideSecondaryStep:(id)arg1;
 - (void)guidanceManagerProceedingToRoute:(id)arg1 proceedToRouteDistance:(double)arg2 displayString:(id)arg3 closestStepIndex:(unsigned long long)arg4;
 - (bool)guidancePromptsEnabled;
+- (id)init;
 - (id)initWithRouteManager:(id)arg1 auditToken:(id)arg2 traceManager:(id)arg3;
 - (bool)isAllowedToSwitchTransportTypes;
 - (bool)isConnectedToCarplay;
@@ -112,23 +120,24 @@
 - (void)locationManagerUpdatedHeading:(id)arg1;
 - (void)locationManagerUpdatedLocation:(id)arg1;
 - (void)locationTracker:(id)arg1 didChangeState:(int)arg2;
+- (void)locationTracker:(id)arg1 didFailRerouteWithError:(id)arg2;
 - (void)locationTracker:(id)arg1 didReroute:(id)arg2 newAlternateRoutes:(id)arg3 rerouteReason:(unsigned long long)arg4 request:(id)arg5 response:(id)arg6;
-- (void)locationTracker:(id)arg1 didSignalAlightForStepAtIndex:(unsigned long long)arg2;
+- (void)locationTracker:(id)arg1 didSuppressReroute:(id)arg2;
 - (void)locationTracker:(id)arg1 didSwitchToNewTransportType:(int)arg2 newRoute:(id)arg3 request:(id)arg4 response:(id)arg5;
 - (void)locationTracker:(id)arg1 didUpdateAlternateRoutes:(id)arg2;
 - (void)locationTracker:(id)arg1 didUpdateETAForRoute:(id)arg2;
-- (void)locationTracker:(id)arg1 didUpdateFeedback:(id)arg2 forAlightingStepAtIndex:(unsigned long long)arg3;
 - (void)locationTracker:(id)arg1 didUpdateMatchedLocation:(id)arg2;
-- (void)locationTracker:(id)arg1 didUpdateTrafficForETARoute:(id)arg2 from:(unsigned int)arg3 to:(unsigned int)arg4;
-- (void)locationTracker:(id)arg1 failedRerouteWithErrorCode:(long long)arg2;
 - (void)locationTracker:(id)arg1 invalidatedTrafficIncidentAlert:(id)arg2;
 - (void)locationTracker:(id)arg1 matchedToStepIndex:(unsigned long long)arg2 legIndex:(unsigned long long)arg3;
 - (void)locationTracker:(id)arg1 receivedTrafficIncidentAlert:(id)arg2 responseCallback:(id /* block */)arg3;
 - (void)locationTracker:(id)arg1 updatedTrafficIncidentAlert:(id)arg2;
 - (void)locationTrackerDidArrive:(id)arg1;
 - (void)locationTrackerDidCancelReroute:(id)arg1;
+- (void)locationTrackerDidEnterPreArrivalState:(id)arg1;
+- (void)locationTrackerDidTimeoutInArrivalRegion:(id)arg1;
 - (void)locationTrackerWillReroute:(id)arg1;
 - (id)motionContext;
+- (void)motionContextDidUpdateMotion:(id)arg1;
 - (int)navigationState;
 - (int)navigationType;
 - (double)remainingDistance;
@@ -137,11 +146,13 @@
 - (bool)repeatCurrentGuidance;
 - (bool)repeatCurrentTrafficAlert;
 - (void)resumeOriginalDestination;
+- (id)routeInfoForUpdateManager:(id)arg1;
 - (id)routeManager;
 - (void)setAudioSession:(id)arg1;
 - (void)setGuidancePromptsEnabled:(bool)arg1;
 - (void)setIsConnectedToCarplay:(bool)arg1;
 - (void)setIsNavigatingInLowGuidance:(bool)arg1;
+- (void)setJunctionViewImageWidth:(double)arg1 height:(double)arg2;
 - (void)startNavigationSessionWithDetails:(id)arg1;
 - (void)stopCurrentGuidancePrompt;
 - (void)stopNavigationSession;
@@ -151,6 +162,7 @@
 - (void)timeAndDistanceUpdater:(id)arg1 didUpdateRemainingTime:(double)arg2 remainingDistance:(double)arg3;
 - (double)timeSinceLastAnnouncement;
 - (double)timeUntilNextAnnouncement;
+- (bool)traceIsPlaying;
 - (void)traceJumpedInTime;
 - (id)traceManager;
 - (void)tracePlayer:(id)arg1 didJumpToRouteResponse:(id)arg2 request:(id)arg3 origin:(id)arg4 destination:(id)arg5;
@@ -171,8 +183,19 @@
 - (void)tracePlayerDidStayOnRoute:(id)arg1;
 - (void)tracePlayerDidStop:(id)arg1;
 - (void)updateDestination:(id)arg1;
+- (void)updateManager:(id)arg1 didReceiveETAError:(id)arg2;
+- (void)updateManager:(id)arg1 didReceiveETAResponse:(id)arg2 toRequest:(id)arg3;
+- (void)updateManager:(id)arg1 didReceiveTransitError:(id)arg2;
+- (void)updateManager:(id)arg1 didReceiveTransitUpdateResponse:(id)arg2;
+- (void)updateManager:(id)arg1 didReceiveTransitUpdates:(id)arg2;
+- (void)updateManager:(id)arg1 didUpdateETAForRouteInfo:(id)arg2;
+- (void)updateManager:(id)arg1 willSendETARequest:(id)arg2;
+- (void)updateManager:(id)arg1 willSendTransitUpdateRequestForRouteIDs:(id)arg2;
+- (void)updateManager:(id)arg1 willSendTransitUpdateRequests:(id)arg2;
+- (id)userLocationForUpdateManager:(id)arg1;
 - (bool)vibrateForPrompt:(unsigned long long)arg1;
 - (void)voiceController:(id)arg1 didActivateAudioSession:(bool)arg2;
 - (void)voiceController:(id)arg1 didStartSpeakingPrompt:(id)arg2;
+- (bool)wantsETAUpdates;
 
 @end

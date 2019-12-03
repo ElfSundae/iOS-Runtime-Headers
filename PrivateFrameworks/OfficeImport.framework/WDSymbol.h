@@ -2,19 +2,16 @@
    Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
  */
 
-@interface WDSymbol : WDRun {
+@interface WDSymbol : WDRunWithCharacterProperties {
     unsigned short  mCharacter;
     WDFont * mFont;
-    WDCharacterProperties * mProperties;
 }
 
+- (void).cxx_destruct;
 - (unsigned short)character;
-- (void)clearProperties;
-- (void)dealloc;
 - (id)description;
 - (id)font;
 - (id)initWithParagraph:(id)arg1;
-- (id)properties;
 - (int)runType;
 - (void)setCharacter:(unsigned short)arg1;
 - (void)setFont:(id)arg1;

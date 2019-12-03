@@ -6,9 +6,9 @@
     PVImageBuffer * _alphaMaskImageBuffer;
     PVCMSampleBuffer * _colorSampleBuffer;
     AVDepthData * _depthData;
-    struct unique_ptr<PVGCDReadWriteLock, std::__1::default_delete<PVGCDReadWriteLock> > { 
-        struct __compressed_pair<PVGCDReadWriteLock *, std::__1::default_delete<PVGCDReadWriteLock> > { 
-            struct PVGCDReadWriteLock {} *__value_; 
+    struct unique_ptr<PVGCDLock, std::__1::default_delete<PVGCDLock> > { 
+        struct __compressed_pair<PVGCDLock *, std::__1::default_delete<PVGCDLock> > { 
+            struct PVGCDLock {} *__value_; 
         } __ptr_; 
     }  _mdLock;
     struct NSMutableDictionary { Class x1; } * _metadata;

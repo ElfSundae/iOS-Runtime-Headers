@@ -6,7 +6,7 @@
     SearchUIWatchListUtilities * _watchListUtility;
 }
 
-@property (retain) SearchUIWatchListUtilities *watchListUtility;
+@property (nonatomic, retain) SearchUIWatchListUtilities *watchListUtility;
 
 - (void).cxx_destruct;
 - (void)buttonPressed;

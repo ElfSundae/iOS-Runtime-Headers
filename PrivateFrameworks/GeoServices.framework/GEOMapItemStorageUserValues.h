@@ -3,8 +3,28 @@
  */
 
 @interface GEOMapItemStorageUserValues : PBCodable <NSCopying> {
+    struct { 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_name : 1; 
+        unsigned int read_phoneNumber : 1; 
+        unsigned int read_timeZoneData : 1; 
+        unsigned int read_timeZoneName : 1; 
+        unsigned int read_url : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_name : 1; 
+        unsigned int wrote_phoneNumber : 1; 
+        unsigned int wrote_timeZoneData : 1; 
+        unsigned int wrote_timeZoneName : 1; 
+        unsigned int wrote_url : 1; 
+    }  _flags;
     NSString * _name;
     NSString * _phoneNumber;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     NSData * _timeZoneData;
     NSString * _timeZoneName;
     PBUnknownFields * _unknownFields;
@@ -23,7 +43,15 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic, retain) NSString *url;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_readName;
+- (void)_readPhoneNumber;
+- (void)_readTimeZoneData;
+- (void)_readTimeZoneName;
+- (void)_readUrl;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -34,10 +62,13 @@
 - (bool)hasTimeZoneName;
 - (bool)hasUrl;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)name;
 - (id)phoneNumber;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setName:(id)arg1;
 - (void)setPhoneNumber:(id)arg1;

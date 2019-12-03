@@ -17,6 +17,7 @@
     double  _sendTimeout;
     bool  _sent;
     IDSDevice * _toDevice;
+    HDDaemonTransaction * _transaction;
 }
 
 @property (nonatomic, retain) NSData *data;

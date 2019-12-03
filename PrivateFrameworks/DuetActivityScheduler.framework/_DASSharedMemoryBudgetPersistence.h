@@ -21,10 +21,11 @@
 - (id)budgetToIndex;
 - (id)init;
 - (id)lastModulationDate;
-- (id)loadBudgets;
+- (id)loadBudgetsWithExpectedNames:(id)arg1;
 - (void)saveBudgets:(id)arg1;
 - (void)saveModulationDate:(id)arg1;
 - (void)setBudgetToIndex:(id)arg1;
 - (void)updateBudget:(id)arg1;
+- (id)validatedStringFromStoredValue:(char *)arg1 withAllowedNames:(id)arg2;
 
 @end

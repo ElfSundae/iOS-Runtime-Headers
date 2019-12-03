@@ -2,29 +2,11 @@
    Image: /System/Library/Frameworks/CoreSpotlight.framework/CoreSpotlight
  */
 
-@interface _MDIndexExtensionLoader : NSObject {
-    id  _matchingContext;
-    long long  _notificationCount;
-    NSObject<OS_dispatch_queue> * _queue;
-}
-
-@property (nonatomic, retain) id matchingContext;
-@property (nonatomic) long long notificationCount;
-@property (nonatomic, retain) NSObject<OS_dispatch_queue> *queue;
+@interface _MDIndexExtensionLoader : _MDExtensionLoader
 
 + (id)_matchDictionary;
 
-- (void).cxx_destruct;
 - (id)_filterIndexExtensions:(id)arg1 outFileProviderBundleMap:(id*)arg2;
-- (void)findExtensionsWithCompletionBlock:(id /* block */)arg1;
 - (id)init;
-- (id)matchingContext;
-- (long long)notificationCount;
-- (id)queue;
-- (void)setMatchingContext:(id)arg1;
-- (void)setNotificationCount:(long long)arg1;
-- (void)setQueue:(id)arg1;
-- (void)startLookingForExtensionsWithMatchUpdateHandler:(id /* block */)arg1;
-- (void)stopLookingForExtensions;
 
 @end

@@ -12,7 +12,9 @@
 @property (nonatomic, retain) CXNamespace *OCXRelationshipsNamespace;
 @property (nonatomic, readonly) int xmlFormat;
 
+- (void).cxx_destruct;
 - (id)OCXCommentAuthorsRelationshipType;
+- (id)OCXCommentsExtendedRelationshipType;
 - (id)OCXCommentsRelationshipType;
 - (id)OCXCustomXmlRelationshipType;
 - (id)OCXDrawingNamespace;
@@ -39,7 +41,6 @@
 - (id)OCXThemeOverrideRelationshipType;
 - (id)OCXThemeRelationshipType;
 - (id)OCXVmlDrawingRelationshipType;
-- (void)dealloc;
 - (id)init;
 - (void)setOCXDrawingNamespace:(id)arg1;
 - (void)setOCXRelationshipsNamespace:(id)arg1;

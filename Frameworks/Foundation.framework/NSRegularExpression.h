@@ -47,6 +47,7 @@
 // Image: /System/Library/Frameworks/Intents.framework/Intents
 
 + (id)_intents_sharedFormatRegularExpression;
++ (id)_intents_sharedFunctionRegularExpression;
 + (id)_intents_sharedOldFormatRegularExpression;
 + (id)_intents_sharedStringsDictFormatRegularExpression;
 
@@ -58,5 +59,30 @@
 + (id)mf_forwardSeparatorExpression;
 + (id)mf_horizontalSeparatorExpression;
 + (id)mf_signatureExpression;
+
+// Image: /System/Library/PrivateFrameworks/ActionKit.framework/ActionKit
+
++ (id)enRegexWithPattern:(id)arg1;
+
+- (id)enCapturedSubstringsOfString:(id)arg1;
+- (bool)enFindInString:(id)arg1;
+- (bool)enMatchesString:(id)arg1;
+- (id)enReplaceWithString:(id)arg1 inString:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/EmailCore.framework/EmailCore
+
++ (id)ec_regularExpressionForList;
+
+// Image: /System/Library/PrivateFrameworks/EmailFoundation.framework/EmailFoundation
+
++ (id)ef_regularExpressionForQuotedStringsInLocales:(id)arg1;
+
+- (void)ef_enumerateTokensInString:(id)arg1 options:(unsigned long long)arg2 usingBlock:(id /* block */)arg3;
+- (id)ef_stringByRemovingTokensFromString:(id)arg1 matchingOptions:(unsigned long long)arg2 tokenizationOptions:(unsigned long long)arg3 tokenizationHandler:(id /* block */)arg4;
+- (id)ef_stringByRemovingTokensFromString:(id)arg1 tokenizationHandler:(id /* block */)arg2;
+
+// Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
+
++ (id)ic_regexForSearchStrings:(id)arg1;
 
 @end

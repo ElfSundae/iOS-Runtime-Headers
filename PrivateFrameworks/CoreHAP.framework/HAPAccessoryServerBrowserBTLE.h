@@ -64,7 +64,7 @@
 - (void)_handleTargetedScanTimeout;
 - (bool)_hasPairedAccessoriesOfType:(unsigned long long)arg1;
 - (bool)_hasRecentlySeenAccessoriesWithIdentifiers:(id)arg1;
-- (void)_matchAccessoryServerWithSetupID:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)_matchAccessoryServerWithSetupID:(id)arg1 serverIdentifier:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)_notifyDelegatesOfRemovedAccessoryServer:(id)arg1 error:(id)arg2;
 - (unsigned long long)_parseAdvertisementData:(id)arg1 forPeripheral:(id)arg2 name:(id*)arg3 pairingUsername:(id*)arg4 statusFlags:(id*)arg5 stateNumber:(id*)arg6 category:(id*)arg7 configNumber:(id*)arg8 setupHash:(id*)arg9;
 - (void)_performTargetedScanForAccessoryWithIdentifier:(id)arg1;
@@ -109,7 +109,7 @@
 - (bool)isPerformingGeneralScan;
 - (long long)linkType;
 - (void)markNotifyingCharacteristicUpdatedForIdentifier:(id)arg1;
-- (void)matchAccessoryServerWithSetupID:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)matchAccessoryServerWithSetupID:(id)arg1 serverIdentifier:(id)arg2 completionHandler:(id /* block */)arg3;
 - (id)pairedAccessoryIdentifiers;
 - (void)pauseScans;
 - (id)peripheralsPendingConnection;

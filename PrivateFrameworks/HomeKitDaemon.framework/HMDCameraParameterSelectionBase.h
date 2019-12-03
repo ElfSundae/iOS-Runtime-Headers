@@ -3,13 +3,13 @@
  */
 
 @interface HMDCameraParameterSelectionBase : HMFObject <HMFLogging> {
-    HMDCameraSessionID * _sessionID;
+    HMDCameraStreamSessionID * _sessionID;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) HMDCameraSessionID *sessionID;
+@property (nonatomic, readonly) HMDCameraStreamSessionID *sessionID;
 @property (readonly) Class superclass;
 
 + (id)logCategory;

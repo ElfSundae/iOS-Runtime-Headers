@@ -3,10 +3,14 @@
  */
 
 @interface WDParagraph : WDBlock {
+    unsigned long long  identifier;
     WDParagraphProperties * mProperties;
     NSMutableArray * mRuns;
 }
 
+@property unsigned long long identifier;
+
+- (void).cxx_destruct;
 - (id)addAnnotation:(int)arg1;
 - (id)addAnnotation:(int)arg1 atIndex:(unsigned long long)arg2;
 - (id)addBookmark;
@@ -19,14 +23,15 @@
 - (id)addFootnote;
 - (id)addHyperlinkFieldMarker;
 - (id)addHyperlinkFieldMarker:(int)arg1;
+- (id)addMath:(id)arg1;
 - (void)addRun:(id)arg1;
 - (id)addSpecialCharacter;
 - (id)addSymbol;
 - (int)blockType;
 - (void)clearProperties;
 - (void)clearRuns;
-- (void)dealloc;
 - (id)description;
+- (unsigned long long)identifier;
 - (id)initWithText:(id)arg1;
 - (id)initWithText:(id)arg1 string:(id)arg2;
 - (void)insertRun:(id)arg1 atIndex:(unsigned long long)arg2;
@@ -42,5 +47,6 @@
 - (unsigned long long)runCount;
 - (id)runIterator;
 - (id)runs;
+- (void)setIdentifier:(unsigned long long)arg1;
 
 @end

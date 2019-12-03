@@ -11,8 +11,8 @@
     bool  hasInstanceIdentifierMapping;
     NSDictionary * initializationOptions;
     AVAssetInspectorLoader * loader;
-    long long  makeOneAssetDownloadCacheOnly;
-    long long  makeOneResourceLoaderOnly;
+    AVDispatchOnce * makeOneAssetDownloadCacheOnly;
+    AVDispatchOnce * makeOneResourceLoaderOnly;
     AVAssetResourceLoader * resourceLoader;
     AVWeakReference * sessionReference;
     NSArray * tracks;

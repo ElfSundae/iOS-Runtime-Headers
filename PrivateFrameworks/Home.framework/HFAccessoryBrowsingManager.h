@@ -4,6 +4,7 @@
 
 @interface HFAccessoryBrowsingManager : NSObject <HMAccessoryBrowserDelegate> {
     HMAccessoryBrowser * _accessoryBrowser;
+    bool  _isBrowsing;
     NSMutableSet * _mutableDiscoveredSharingDevices;
     NSHashTable * _observers;
     SFDeviceDiscovery * _sharingDeviceBrowser;
@@ -15,6 +16,7 @@
 @property (nonatomic, readonly) NSArray *discoveredHMAccessories;
 @property (nonatomic, readonly) NSArray *discoveredSharingDevices;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) bool isBrowsing;
 @property (nonatomic, retain) NSMutableSet *mutableDiscoveredSharingDevices;
 @property (nonatomic, retain) NSHashTable *observers;
 @property (nonatomic, retain) SFDeviceDiscovery *sharingDeviceBrowser;
@@ -28,10 +30,12 @@
 - (id)discoveredHMAccessories;
 - (id)discoveredSharingDevices;
 - (id)init;
+- (bool)isBrowsing;
 - (id)mutableDiscoveredSharingDevices;
 - (id)observers;
 - (void)removeBrowsingObserver:(id)arg1;
 - (void)setAccessoryBrowser:(id)arg1;
+- (void)setIsBrowsing:(bool)arg1;
 - (void)setMutableDiscoveredSharingDevices:(id)arg1;
 - (void)setObservers:(id)arg1;
 - (void)setSharingDeviceBrowser:(id)arg1;

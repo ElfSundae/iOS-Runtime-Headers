@@ -10,7 +10,6 @@
     }  _bitrateAdjuster;
     id /* block */  _callback;
     WK_RTCVideoCodecInfo * _codecInfo;
-    struct _VCPCompressionSession { } * _compressionSession;
     bool  _disableEncoding;
     unsigned int  _encoderBitrateBps;
     struct vector<unsigned char, std::__1::allocator<unsigned char> > { 
@@ -23,11 +22,8 @@
     struct H264BitstreamParser { 
         int (**_vptr$H264BitstreamParser)(); 
         struct optional<webrtc::SpsParser::SpsState> { 
-            bool engaged_; 
             union { 
-                struct dummy_type { 
-                    struct empty_struct { } data[44]; 
-                } dummy_; 
+                BOOL __null_state_; 
                 struct SpsState { 
                     unsigned int width; 
                     unsigned int height; 
@@ -40,15 +36,13 @@
                     unsigned int max_num_ref_frames; 
                     unsigned int vui_params_present; 
                     unsigned int id; 
-                } data_; 
+                } __val_; 
             } ; 
+            bool __engaged_; 
         } sps_; 
         struct optional<webrtc::PpsParser::PpsState> { 
-            bool engaged_; 
             union { 
-                struct dummy_type { 
-                    struct empty_struct { } data[24]; 
-                } dummy_; 
+                BOOL __null_state_; 
                 struct PpsState { 
                     bool bottom_field_pic_order_in_frame_present_flag; 
                     bool weighted_pred_flag; 
@@ -58,17 +52,16 @@
                     int pic_init_qp_minus26; 
                     unsigned int id; 
                     unsigned int sps_id; 
-                } data_; 
+                } __val_; 
             } ; 
+            bool __engaged_; 
         } pps_; 
         struct optional<int> { 
-            bool engaged_; 
             union { 
-                struct dummy_type { 
-                    struct empty_struct { } data[4]; 
-                } dummy_; 
-                int data_; 
+                BOOL __null_state_; 
+                int __val_; 
             } ; 
+            bool __engaged_; 
         } last_slice_qp_delta_; 
     }  _h264BitstreamParser;
     int  _height;
@@ -151,6 +144,9 @@
     struct __CFString { } * _profile;
     int  _simulcastIndex;
     unsigned int  _targetBitrateBps;
+    bool  _useVCP;
+    struct _VCPCompressionSession { } * _vcpCompressionSession;
+    struct OpaqueVTCompressionSession { } * _vtCompressionSession;
     int  _width;
 }
 
@@ -166,6 +162,7 @@
 - (void)destroyCompressionSession;
 - (long long)encode:(id)arg1 codecSpecificInfo:(id)arg2 frameTypes:(id)arg3;
 - (void)frameWasEncoded:(int)arg1 flags:(unsigned int)arg2 sampleBuffer:(struct opaqueCMSampleBuffer { }*)arg3 codecSpecificInfo:(id)arg4 width:(int)arg5 height:(int)arg6 renderTimeMs:(long long)arg7 timestamp:(unsigned int)arg8 rotation:(long long)arg9;
+- (bool)hasCompressionSession;
 - (id)implementationName;
 - (id)initWithCodecInfo:(id)arg1 simulcastIndex:(int)arg2;
 - (unsigned int)pixelFormatOfFrame:(id)arg1;

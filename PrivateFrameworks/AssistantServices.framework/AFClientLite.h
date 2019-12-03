@@ -2,17 +2,22 @@
    Image: /System/Library/PrivateFrameworks/AssistantServices.framework/AssistantServices
  */
 
-@interface AFClientLite : NSObject <AFClientLiteClientCommandHandling> {
-    id /* block */  _commandHandler;
-    NSObject<OS_dispatch_queue> * _queue;
+@interface AFClientLite : NSObject {
+    AFCallSiteInfo * _initiationCallSiteInfo;
 }
+
+// Image: /System/Library/PrivateFrameworks/AssistantServices.framework/AssistantServices
 
 - (void).cxx_destruct;
 - (void)_handleCommand:(id)arg1 afterCurrentRequest:(bool)arg2 isOneWay:(bool)arg3 commandHandler:(id /* block */)arg4 completion:(id /* block */)arg5;
+- (void)dealloc;
 - (void)handleCommand:(id)arg1 afterCurrentRequest:(bool)arg2 commandHandler:(id /* block */)arg3 completion:(id /* block */)arg4;
 - (void)handleCommand:(id)arg1 commandHandler:(id /* block */)arg2 completion:(id /* block */)arg3;
-- (oneway void)handleCommand:(id)arg1 completion:(id /* block */)arg2;
 - (void)handleOneWayCommand:(id)arg1 commandHandler:(id /* block */)arg2 completion:(id /* block */)arg3;
 - (id)init;
+
+// Image: /System/Library/PrivateFrameworks/WorkflowKit.framework/WorkflowKit
+
+- (void)wf_handleCommand:(id)arg1 onRemoteDevice:(id)arg2 commandHandler:(id /* block */)arg3 completion:(id /* block */)arg4;
 
 @end

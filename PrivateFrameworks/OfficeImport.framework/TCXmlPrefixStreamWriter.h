@@ -6,15 +6,13 @@
     NSMutableArray * mStateStack;
 }
 
-+ (struct _xmlTextWriter { }*)createNonXmlTextWriterAtEntry:(id)arg1 inOutputStream:(id)arg2 isCompressed:(bool)arg3;
-+ (struct _xmlTextWriter { }*)createXmlTextWriterAtEntry:(id)arg1 inOutputStream:(id)arg2 isCompressed:(bool)arg3;
-
+- (void).cxx_destruct;
 - (bool)addElement:(id)arg1;
 - (id)currentAttributePrefix;
 - (id)currentElementPrefix;
 - (id)currentState;
 - (void)dealloc;
-- (id)initWithTextWriter:(struct _xmlTextWriter { }*)arg1;
+- (id)initWithTextWriterProvider:(id)arg1;
 - (void)popState;
 - (void)pushElementPrefix:(id)arg1 attributePrefix:(id)arg2;
 - (void)pushOAState;

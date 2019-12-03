@@ -3,7 +3,7 @@
  */
 
 @interface HMDCameraStreamControlMessageHandler : HMFObject <HMDCameraStreamControlManagerDelegate, HMFLogging, HMFTimerDelegate> {
-    HMDAccessory * _accessory;
+    HMDHAPAccessory * _accessory;
     id /* block */  _messageSender;
     HMFNetMonitor * _networkMonitor;
     HMDNotificationRegistration * _notificationRegistration;
@@ -18,7 +18,7 @@
     NSObject<OS_dispatch_queue> * _workQueue;
 }
 
-@property (nonatomic, readonly) HMDAccessory *accessory;
+@property (nonatomic, readonly) HMDHAPAccessory *accessory;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -63,6 +63,7 @@
 - (id)description;
 - (void)handleAccessoryIsNotReachable:(id)arg1;
 - (void)handleActivePhoneCallEstablishedNotification:(id)arg1;
+- (void)handleCameraSettingsDidChangeNotification:(id)arg1;
 - (void)handleForegroundAppsNotification:(id)arg1;
 - (void)handleMessage:(id)arg1;
 - (unsigned long long)hash;

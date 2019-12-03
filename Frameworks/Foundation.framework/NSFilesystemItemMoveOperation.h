@@ -18,7 +18,7 @@
 - (id)delegate;
 - (id)error;
 - (bool)filesystemItemCopyOperation:(id)arg1 shouldProceedAfterError:(id)arg2 copyingItemAtPath:(id)arg3 toPath:(id)arg4;
-- (void)initWithSourceURL:(id)arg1 destinationURL:(id)arg2 options:(unsigned long long)arg3;
+- (id)initWithSourceURL:(id)arg1 destinationURL:(id)arg2 options:(unsigned long long)arg3;
 - (void)main;
 - (void)setDelegate:(id)arg1;
 

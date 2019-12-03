@@ -6,8 +6,8 @@
     <FCCoreConfigurationManager> * _configurationManager;
     <FCFeedPersonalizing> * _feedPersonalizer;
     <FCPaidAccessCheckerType> * _paidAccessChecker;
+    unsigned long long  _savedStoriesCount;
     FCSubscriptionList * _subscriptionList;
-    unsigned long long  _trendingAndSavedStoriesCount;
 }
 
 @property (nonatomic, retain) <FCCoreConfigurationManager> *configurationManager;
@@ -16,9 +16,9 @@
 @property (nonatomic, retain) <FCFeedPersonalizing> *feedPersonalizer;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) <FCPaidAccessCheckerType> *paidAccessChecker;
+@property (nonatomic) unsigned long long savedStoriesCount;
 @property (nonatomic, retain) FCSubscriptionList *subscriptionList;
 @property (readonly) Class superclass;
-@property (nonatomic) unsigned long long trendingAndSavedStoriesCount;
 
 - (void).cxx_destruct;
 - (id)_sortedEditorialGroupEmittersWithForYouGroupsConfiguration:(id)arg1;
@@ -35,19 +35,19 @@
 - (long long)feedSortMethod;
 - (bool)hasEditions;
 - (id)iAdFeedID;
-- (id)initWithIdentifier:(id)arg1 trendingAndSavedStoriesCount:(long long)arg2 configurationManager:(id)arg3 subscriptionList:(id)arg4 feedPersonalizer:(id)arg5 paidAccessChecker:(id)arg6;
+- (id)initWithIdentifier:(id)arg1 savedStoriesCount:(long long)arg2 configurationManager:(id)arg3 subscriptionList:(id)arg4 feedPersonalizer:(id)arg5 paidAccessChecker:(id)arg6;
 - (id)languagesWithSubscriptionController:(id)arg1;
 - (id)name;
 - (id)offlineFeedGroupEmittersWithConfiguration:(id)arg1;
 - (id)paidAccessChecker;
 - (void)prepareToProvideFeedGroupEmittersWithCallbackQueue:(id)arg1 completionHandler:(id /* block */)arg2;
+- (unsigned long long)savedStoriesCount;
 - (void)setConfigurationManager:(id)arg1;
 - (void)setFeedPersonalizer:(id)arg1;
 - (void)setPaidAccessChecker:(id)arg1;
+- (void)setSavedStoriesCount:(unsigned long long)arg1;
 - (void)setSubscriptionList:(id)arg1;
-- (void)setTrendingAndSavedStoriesCount:(unsigned long long)arg1;
 - (bool)shouldFilterFeedGroupEmitter:(id)arg1 withConfiguration:(id)arg2;
 - (id)subscriptionList;
-- (unsigned long long)trendingAndSavedStoriesCount;
 
 @end

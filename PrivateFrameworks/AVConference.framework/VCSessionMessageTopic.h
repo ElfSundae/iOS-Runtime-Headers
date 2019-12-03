@@ -23,9 +23,12 @@
 - (void)clearTransactionCacheForParticipant:(id)arg1;
 - (void)dealloc;
 - (id)initWithTopicKey:(id)arg1 strings:(id)arg2 allowConcurrent:(bool)arg3 controlChannel:(id)arg4 receiveHandler:(id /* block */)arg5;
+- (bool)isDuplicateMessageID:(id)arg1 messageHistory:(id)arg2 participantID:(id)arg3;
 - (bool)isSendingEnabled;
 - (bool)isStringAssociated:(id)arg1;
+- (id)messageForCommand:(id)arg1;
 - (void)passMessage:(id)arg1 sequence:(int)arg2 fromParticipant:(id)arg3;
+- (void)purgeExpiredEntries:(double)arg1 messageHistory:(id)arg2 participantID:(id)arg3;
 - (void)sendMessage:(id)arg1;
 - (void)sendMessage:(id)arg1 participantID:(unsigned long long)arg2;
 - (void)sendMessage:(id)arg1 participantID:(unsigned long long)arg2 withSequence:(long long)arg3 numRetries:(long long)arg4;

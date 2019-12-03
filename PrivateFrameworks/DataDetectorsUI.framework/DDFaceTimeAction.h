@@ -7,6 +7,7 @@
 + (bool)isAvailable;
 
 - (id)dialRequest;
+- (id)icon;
 - (id)localizedName;
 - (id)notificationTitle;
 

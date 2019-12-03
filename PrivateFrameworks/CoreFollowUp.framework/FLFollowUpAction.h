@@ -27,7 +27,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
-- (void)_loadActionURL;
+- (bool)_loadActionURL;
 - (id)_userInfoData;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

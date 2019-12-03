@@ -3,17 +3,30 @@
  */
 
 @interface CSSpIdProcessor : NSObject <CSSpIdSpeakerVectorGeneratorDelegate> {
+    NSString * _assetVersion;
     <CSSpIdProcessorDelegate> * _delegate;
+    unsigned long long  _invocationStyle;
+    float  _logitCeilScore;
+    float  _logitFloorScore;
+    NSObject<OS_dispatch_queue> * _queue;
+    float  _rawScoreNonVTOffset;
+    float  _rawScoreNonVTScale;
+    float  _rawScoreVTOffset;
+    float  _rawScoreVTScale;
     NSArray * _satAnalyzers;
     CSSpIdSpeakerVectorGenerator * _spIdSvg;
     unsigned long long  _spIdType;
     NSString * _spIdTypeStr;
+    bool  _triggerPhraseDetectedOnTap;
 }
 
+@property (nonatomic, retain) NSString *assetVersion;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <CSSpIdProcessorDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned long long invocationStyle;
+@property (nonatomic, retain) NSObject<OS_dispatch_queue> *queue;
 @property (nonatomic, retain) NSArray *satAnalyzers;
 @property (nonatomic, readonly) float satScoreThreshold;
 @property (nonatomic, retain) CSSpIdSpeakerVectorGenerator *spIdSvg;
@@ -24,14 +37,21 @@
 
 - (void).cxx_destruct;
 - (void)_processSpeakerVector:(id)arg1 withSize:(unsigned long long)arg2 processedAudioDurationMs:(unsigned long long)arg3 isFinal:(bool)arg4;
+- (id)assetVersion;
 - (void)dealloc;
 - (id)delegate;
 - (void)endProcessing;
 - (id)initWithSpIdContext:(id)arg1 forSpIdType:(unsigned long long)arg2 delegate:(id)arg3;
+- (unsigned long long)invocationStyle;
 - (void)processAudioData:(id)arg1;
+- (id)queue;
 - (id)satAnalyzers;
 - (float)satScoreThreshold;
+- (void)setAssetVersion:(id)arg1;
+- (void)setCVTTriggerPhraseDetected;
 - (void)setDelegate:(id)arg1;
+- (void)setInvocationStyle:(unsigned long long)arg1;
+- (void)setQueue:(id)arg1;
 - (void)setSatAnalyzers:(id)arg1;
 - (void)setSpIdSvg:(id)arg1;
 - (void)setSpIdType:(unsigned long long)arg1;

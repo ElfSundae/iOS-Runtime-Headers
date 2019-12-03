@@ -10,10 +10,9 @@
 @property (readonly) NSXPCListenerEndpoint *listenerEndpoint;
 @property (readonly) NSXPCStoreServer *server;
 
-+ (id)newDefaultContainer;
-+ (id)sharedInstance;
++ (id)newContainerWithPathManager:(id)arg1;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithServer:(id)arg1 listener:(id)arg2;
 - (id)listenerEndpoint;
 - (id)server;

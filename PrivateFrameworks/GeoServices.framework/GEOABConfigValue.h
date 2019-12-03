@@ -6,10 +6,10 @@
     bool  _boolValue;
     double  _doubleValue;
     struct { 
-        unsigned int doubleValue : 1; 
-        unsigned int intValue : 1; 
-        unsigned int boolValue : 1; 
-    }  _has;
+        unsigned int has_doubleValue : 1; 
+        unsigned int has_intValue : 1; 
+        unsigned int has_boolValue : 1; 
+    }  _flags;
     long long  _intValue;
     NSString * _stringValue;
     PBUnknownFields * _unknownFields;
@@ -25,8 +25,11 @@
 @property (nonatomic, retain) NSString *stringValue;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (bool)boolValue;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -40,6 +43,7 @@
 - (long long)intValue;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setBoolValue:(bool)arg1;
 - (void)setDoubleValue:(double)arg1;

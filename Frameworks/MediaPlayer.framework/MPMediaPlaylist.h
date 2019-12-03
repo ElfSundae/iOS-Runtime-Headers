@@ -27,15 +27,15 @@
 - (id)artworkCatalog;
 - (id)artworkCatalogsWithMaximumCount:(unsigned long long)arg1;
 - (id)authorDisplayName;
-- (bool)canPlayUsingNetworkType:(long long)arg1;
 - (unsigned long long)count;
 - (id)descriptionText;
 - (void)encodeWithCoder:(id)arg1;
 - (bool)existsInLibrary;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithMultiverseIdentifier:(id)arg1;
+- (id)initWithMultiverseIdentifier:(id)arg1 library:(id)arg2;
 - (id)initWithPersistentID:(unsigned long long)arg1;
+- (id)initWithPersistentID:(unsigned long long)arg1 mediaLibrary:(id)arg2;
 - (bool)isCloudMix;
 - (bool)isEqual:(id)arg1;
 - (id)items;
@@ -52,11 +52,6 @@
 - (void)setUserSelectedArtworkImage:(id)arg1;
 - (id)tiledArtworkCatalogWithRows:(unsigned long long)arg1 columns:(unsigned long long)arg2;
 - (id)valueForProperty:(id)arg1;
-
-// Image: /System/Library/PrivateFrameworks/FuseUI.framework/FuseUI
-
-+ (id)customPropertyHandlersCollection;
-+ (void)registerSupportedCustomPropertiesWithHandlersCollection:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/MPUFoundation.framework/MPUFoundation
 

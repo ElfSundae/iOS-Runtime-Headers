@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface INPerson : NSObject <INCacheableContainer, INImageProxyInjecting, INKeyImageProducing, INPersonExport, INSpeakable, NSCopying, NSMutableCopying, NSSecureCoding, REDonatedActionIdentifierProviding> {
+@interface INPerson : NSObject <INCacheableContainer, INCodableAttributeRelationComparing, INImageProxyInjecting, INKeyImageProducing, INPersonExport, INSpeakable, NSCopying, NSMutableCopying, NSSecureCoding, REDonatedActionIdentifierProviding> {
     NSArray * _aliases;
     NSArray * _alternatives;
     NSString * _contactIdentifier;
@@ -12,6 +12,7 @@
     bool  _isMe;
     NSPersonNameComponents * _nameComponents;
     INPersonHandle * _personHandle;
+    NSString * _phonemeData;
     NSString * _relationship;
     NSString * _sourceAppBundleIdentifier;
     long long  _suggestionType;
@@ -40,9 +41,12 @@
 @property (nonatomic, readonly, copy) NSString *lastName;
 @property (nonatomic, copy) NSPersonNameComponents *nameComponents;
 @property (nonatomic, copy) INPersonHandle *personHandle;
+@property (nonatomic, copy) NSString *phonemeData;
 @property (nonatomic, readonly) NSString *pronunciationHint;
 @property (nonatomic, copy) NSString *relationship;
 @property (nonatomic, readonly, copy) NSArray *siriMatches;
+@property (nonatomic, readonly) NSString *siriRemembersID;
+@property (nonatomic, readonly) NSString *siriRemembersTokenString;
 @property (nonatomic, readonly) NSString *spokenPhrase;
 @property (nonatomic, readonly) long long suggestionType;
 @property (nonatomic) long long suggestionType;
@@ -63,10 +67,12 @@
 - (id)_dictionaryRepresentation;
 - (id)_displayName;
 - (id)_initWithUserInput:(id)arg1 personHandle:(id)arg2 nameComponents:(id)arg3 displayName:(id)arg4 image:(id)arg5 contactIdentifier:(id)arg6 customIdentifier:(id)arg7 relationship:(id)arg8 aliases:(id)arg9 suggestionType:(long long)arg10 isMe:(bool)arg11 alternatives:(id)arg12 sourceAppBundleIdentifier:(id)arg13;
+- (id)_initWithUserInput:(id)arg1 personHandle:(id)arg2 nameComponents:(id)arg3 displayName:(id)arg4 image:(id)arg5 contactIdentifier:(id)arg6 customIdentifier:(id)arg7 relationship:(id)arg8 aliases:(id)arg9 suggestionType:(long long)arg10 isMe:(bool)arg11 alternatives:(id)arg12 sourceAppBundleIdentifier:(id)arg13 phonemeData:(id)arg14;
 - (void)_injectProxiesForImages:(id /* block */)arg1 completion:(id /* block */)arg2;
 - (id)_intents_cacheableObjects;
+- (bool)_intents_compareValue:(id)arg1 relation:(unsigned long long)arg2;
 - (id)_intents_indexingRepresentation;
-- (id)_intents_readableDescriptionForLanguage:(id)arg1;
+- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
 - (void)_intents_updateContainerWithCache:(id)arg1;
 - (id)_keyImage;
 - (id)_sourceAppBundleIdentifier;
@@ -102,6 +108,7 @@
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (id)nameComponents;
 - (id)personHandle;
+- (id)phonemeData;
 - (id)pronunciationHint;
 - (id)relationship;
 - (void)setAliases:(id)arg1;
@@ -114,6 +121,7 @@
 - (void)setIsMe:(bool)arg1;
 - (void)setNameComponents:(id)arg1;
 - (void)setPersonHandle:(id)arg1;
+- (void)setPhonemeData:(id)arg1;
 - (void)setRelationship:(id)arg1;
 - (void)setSuggestionType:(long long)arg1;
 - (id)siriMatches;
@@ -129,6 +137,11 @@
 
 - (id)acs_formattedPersonName;
 
+// Image: /System/Library/PrivateFrameworks/CoreKnowledge.framework/CoreKnowledge
+
+- (id)siriRemembersID;
+- (id)siriRemembersTokenString;
+
 // Image: /System/Library/PrivateFrameworks/IMAssistantCore.framework/IMAssistantCore
 
 - (id)__im_assistant_allContactIdentifiers;
@@ -139,7 +152,8 @@
 - (id)__im_assistant_initWithContact:(id)arg1 displayFormattedHandle:(id)arg2 normalizedHandle:(id)arg3 type:(long long)arg4 label:(id)arg5;
 - (id)__im_assistant_initWithContact:(id)arg1 imHandle:(id)arg2;
 - (id)__im_assistant_initWithContact:(id)arg1 imHandle:(id)arg2 type:(long long)arg3 label:(id)arg4;
-- (id)__im_assistant_initWithContact:(id)arg1 unformattedPersonHandle:(id)arg2 account:(id)arg3;
+- (id)__im_assistant_initWithContact:(id)arg1 unformattedPersonHandle:(id)arg2 accountDataSource:(id)arg3;
+- (id)__im_assistant_initWithHandleFromContact:(id)arg1 accountDataSource:(id)arg2;
 
 // Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
 

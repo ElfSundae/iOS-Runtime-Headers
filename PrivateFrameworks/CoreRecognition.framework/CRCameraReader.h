@@ -21,7 +21,6 @@
     bool  _codeInverted;
     NSDate * _codePresented;
     double  _configDemoSpeed;
-    bool  _configExperimentalMode;
     bool  _configPresentCentered;
     bool  _configUseFastScanning;
     bool  _configUseJPEGForColor;
@@ -33,13 +32,13 @@
     DiagnosticHUDLayer * _diagnosticHUDLayer;
     bool  _didSendEndOrCancel;
     bool  _didSendFindBox;
-    CRMLModel * _embossedCardholderModel;
-    CRMLModel * _embossedExpirationModel;
-    CRMLModel * _embossedNumberModel;
+    CRMLCCModel * _embossedCardholderModel;
+    CRMLCCModel * _embossedExpirationModel;
+    CRMLCCModel * _embossedNumberModel;
     bool  _enableAltIDCardScan;
     NSMutableDictionary * _expirationDateCounts;
     long long  _exposureMode;
-    CRMLModel * _flatPrintedModel;
+    CRMLCCModel * _flatPrintedModel;
     long long  _focusMode;
     NSString * _foundCode;
     NSArray * _foundPoints;
@@ -62,7 +61,12 @@
     UIColor * _maskColor;
     UIColor * _maskOutlineColor;
     NSMutableArray * _nameCutRects;
+    CRImageReader * _ocrImageReader;
+    float  _ocrOverlayBackgroundOpacity;
+    NSString * _ocrOverlayFontName;
+    NSMutableDictionary * _optionsDictionary;
     NSArray * _outputObjectTypes;
+    CATextLayer * _overlayTextLayer;
     NSMutableDictionary * _pinnedFoundInfo;
     UIColor * _placementTextColor;
     struct { 
@@ -87,6 +91,7 @@
     double  _sessionTimeout;
     bool  _showDiagnosticHUD;
     UITapGestureRecognizer * _tapGestureRecognizer;
+    NSMutableArray * _textDetectorRTFeedback;
     long long  _torchMode;
     long long  _whiteBalanceMode;
 }
@@ -109,7 +114,6 @@
 @property bool codeInverted;
 @property (retain) NSDate *codePresented;
 @property double configDemoSpeed;
-@property bool configExperimentalMode;
 @property bool configPresentCentered;
 @property bool configUseFastScanning;
 @property bool configUseJPEGForColor;
@@ -124,13 +128,13 @@
 @property (retain) DiagnosticHUDLayer *diagnosticHUDLayer;
 @property bool didSendEndOrCancel;
 @property bool didSendFindBox;
-@property (retain) CRMLModel *embossedCardholderModel;
-@property (retain) CRMLModel *embossedExpirationModel;
-@property (retain) CRMLModel *embossedNumberModel;
+@property (retain) CRMLCCModel *embossedCardholderModel;
+@property (retain) CRMLCCModel *embossedExpirationModel;
+@property (retain) CRMLCCModel *embossedNumberModel;
 @property bool enableAltIDCardScan;
 @property (retain) NSMutableDictionary *expirationDateCounts;
 @property long long exposureMode;
-@property (retain) CRMLModel *flatPrintedModel;
+@property (retain) CRMLCCModel *flatPrintedModel;
 @property long long focusMode;
 @property (retain) NSString *foundCode;
 @property (retain) NSArray *foundPoints;
@@ -144,7 +148,12 @@
 @property (nonatomic, copy) UIColor *maskColor;
 @property (nonatomic, copy) UIColor *maskOutlineColor;
 @property (retain) NSMutableArray *nameCutRects;
+@property (nonatomic, retain) CRImageReader *ocrImageReader;
+@property float ocrOverlayBackgroundOpacity;
+@property (retain) NSString *ocrOverlayFontName;
+@property (nonatomic, retain) NSMutableDictionary *optionsDictionary;
 @property (copy) NSArray *outputObjectTypes;
+@property (nonatomic, retain) CATextLayer *overlayTextLayer;
 @property (retain) NSMutableDictionary *pinnedFoundInfo;
 @property (nonatomic, copy) UIColor *placementTextColor;
 @property struct { long long x1; int x2; unsigned int x3; long long x4; } pointsFound;
@@ -160,12 +169,13 @@
 @property bool showDiagnosticHUD;
 @property (readonly) Class superclass;
 @property (retain) UITapGestureRecognizer *tapGestureRecognizer;
+@property (nonatomic, retain) NSMutableArray *textDetectorRTFeedback;
 @property long long torchMode;
 @property long long whiteBalanceMode;
 
-+ (id)extractCardImage:(id)arg1 fromPixelBuffer:(struct __CVBuffer { }*)arg2 withCardBuffer:(struct __CVBuffer { }*)arg3 pixelFocalLength:(id)arg4;
-+ (id)extractCardImage:(id)arg1 fromPixelBuffer:(struct __CVBuffer { }*)arg2 withCardBuffer:(struct __CVBuffer { }*)arg3 withPoints:(id)arg4 pixelFocalLength:(id)arg5;
-+ (id)extractCardImage:(id)arg1 fromPixelBuffer:(struct __CVBuffer { }*)arg2 withCardBuffer:(struct __CVBuffer { }*)arg3 withPoints:(id)arg4 pixelFocalLength:(id)arg5 padding:(float)arg6 inputOrientation:(int)arg7;
++ (id)extractCardImage:(id)arg1 fromPixelBuffer:(struct __CVBuffer { }*)arg2 withCardBuffer:(struct __CVBuffer { }*)arg3 cameraIntrinsicData:(id)arg4;
++ (id)extractCardImage:(id)arg1 fromPixelBuffer:(struct __CVBuffer { }*)arg2 withCardBuffer:(struct __CVBuffer { }*)arg3 withPoints:(id)arg4 cameraIntrinsicData:(id)arg5;
++ (id)extractCardImage:(id)arg1 fromPixelBuffer:(struct __CVBuffer { }*)arg2 withCardBuffer:(struct __CVBuffer { }*)arg3 withPoints:(id)arg4 cameraIntrinsicData:(id)arg5 padding:(float)arg6 inputOrientation:(int)arg7;
 + (id)findCodeInImage:(struct vImage_Buffer { void *x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; })arg1 maxStage:(unsigned long long)arg2;
 + (id)findCodeInImage:(struct vImage_Buffer { void *x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; })arg1 maxStage:(unsigned long long)arg2 outputObjectTypes:(id)arg3;
 + (id)findCodeInImage:(struct vImage_Buffer { void *x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; })arg1 maxStage:(unsigned long long)arg2 roi:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3;
@@ -180,11 +190,13 @@
 - (void)aetPlacementTextColor:(id)arg1;
 - (id)alignmentLayer;
 - (void)animatePresentCodeAtFrameTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
+- (id)attributedStringWithFrame:(struct CGSize { double x1; double x2; })arg1 withFont:(id)arg2 withString:(id)arg3 color:(struct CGColor { }*)arg4;
 - (float)borderPaddingIDCard;
 - (id)boxLayer;
 - (id)boxLayerHideTimer;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })boxLayerPresentationFrame;
 - (id)callbackDelegate;
+- (id)cameraIntrinsicDataForSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 width:(unsigned long long)arg2 height:(unsigned long long)arg3;
 - (id)cameraMode;
 - (long long)cameraPosition;
 - (void)cancel;
@@ -201,7 +213,6 @@
 - (bool)codeInverted;
 - (id)codePresented;
 - (double)configDemoSpeed;
-- (bool)configExperimentalMode;
 - (bool)configPresentCentered;
 - (bool)configUseFastScanning;
 - (bool)configUseJPEGForColor;
@@ -210,6 +221,7 @@
 - (struct __CVBuffer { }*)correctedCardBuffer;
 - (void)createCorrectedCardBuffer;
 - (struct __CVBuffer { }*)createFastAccessPixelBufferWithSize:(struct CGSize { double x1; double x2; })arg1 videoFormat:(int)arg2;
+- (id)createTextLayerForRecognizedObject:(id)arg1;
 - (long long)currentCameraIdentifier;
 - (id)currentDeviceID;
 - (id)dateCutRects;
@@ -228,13 +240,15 @@
 - (id)findCCExpDateInImageEmbossed:(id)arg1;
 - (id)findCCNameInImageEmbossed:(id)arg1;
 - (id)findCCNumberInImageEmbossed:(id)arg1;
+- (id)findCCNumberInImageEmbossed:(id)arg1 withFinalDigit:(id)arg2;
 - (id)findCCObjectEmbossed:(id)arg1 inImage:(id)arg2 forRect:(id)arg3;
 - (id)findCCObjectsEmbossed:(id)arg1 inImage:(id)arg2 numberRects:(id)arg3 nameRects:(id)arg4 dateRects:(id)arg5;
 - (id)findCCResultsInImageFlat:(id)arg1 usingTextFeatures:(id)arg2 invert:(bool)arg3;
 - (void)findCodeInSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1;
-- (void)findIDObjects:(id)arg1 inPixelBuffer:(struct __CVBuffer { }*)arg2 attachments:(id)arg3 frameTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg4;
+- (void)findIDObjects:(id)arg1 inPixelBuffer:(struct __CVBuffer { }*)arg2 cameraIntrinsicData:(id)arg3 frameTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg4;
+- (void)findOCRTextObjects:(id)arg1 inPixelBuffer:(struct __CVBuffer { }*)arg2 attachments:(id)arg3 frameTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg4;
 - (id)findObjects:(id)arg1 inImage:(id)arg2 properties:(id)arg3;
-- (void)findObjects:(id)arg1 inPixelBuffer:(struct __CVBuffer { }*)arg2 attachments:(id)arg3 frameTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg4;
+- (void)findObjects:(id)arg1 inPixelBuffer:(struct __CVBuffer { }*)arg2 cameraIntrinsicData:(id)arg3 frameTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg4;
 - (id)findObjectsEmbossed:(id)arg1 inImage:(id)arg2;
 - (id)findObjectsFlat:(id)arg1 inImage:(id)arg2 numberRects:(id)arg3 invert:(bool)arg4;
 - (void)flashScreenAndPlayCaptureSound;
@@ -250,6 +264,8 @@
 - (unsigned long long)imagesToCapture;
 - (id)init;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2 options:(id)arg3;
+- (id)initWithOptions:(id)arg1;
 - (bool)isCaptureMode;
 - (bool)isQRCode;
 - (struct opaqueCMSampleBuffer { }*)lastBuffer;
@@ -258,9 +274,15 @@
 - (void)loadView;
 - (id)maskColor;
 - (id)maskOutlineColor;
+- (void)mergeInfo:(id)arg1 intoFindInfo:(id)arg2;
 - (id)nameCutRects;
+- (id)ocrImageReader;
+- (float)ocrOverlayBackgroundOpacity;
+- (id)ocrOverlayFontName;
+- (id)optionsDictionary;
 - (void)orientationDidChange:(id)arg1;
 - (id)outputObjectTypes;
+- (id)overlayTextLayer;
 - (void)pauseBoxLayerHideTimer;
 - (id)pinnedFoundInfo;
 - (id)placementTextColor;
@@ -282,6 +304,7 @@
 - (void)sendDidEndWithInfo:(id)arg1;
 - (void)sendDidFindTarget:(id)arg1 frameTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2;
 - (void)sendDidRecognizeNewObjects:(id)arg1;
+- (void)sendProvideOverlayObjects:(id)arg1;
 - (bool)sessionIsStopping;
 - (id)sessionManager;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })sessionStarted;
@@ -304,7 +327,6 @@
 - (void)setCodeInverted:(bool)arg1;
 - (void)setCodePresented:(id)arg1;
 - (void)setConfigDemoSpeed:(double)arg1;
-- (void)setConfigExperimentalMode:(bool)arg1;
 - (void)setConfigPresentCentered:(bool)arg1;
 - (void)setConfigUseFastScanning:(bool)arg1;
 - (void)setConfigUseJPEGForColor:(bool)arg1;
@@ -337,7 +359,12 @@
 - (void)setMaskColor:(id)arg1;
 - (void)setMaskOutlineColor:(id)arg1;
 - (void)setNameCutRects:(id)arg1;
+- (void)setOcrImageReader:(id)arg1;
+- (void)setOcrOverlayBackgroundOpacity:(float)arg1;
+- (void)setOcrOverlayFontName:(id)arg1;
+- (void)setOptionsDictionary:(id)arg1;
 - (void)setOutputObjectTypes:(id)arg1;
+- (void)setOverlayTextLayer:(id)arg1;
 - (void)setPinnedFoundInfo:(id)arg1;
 - (void)setPlacementTextColor:(id)arg1;
 - (void)setPointsFound:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
@@ -352,16 +379,20 @@
 - (void)setSessionTimeout:(double)arg1;
 - (void)setShowDiagnosticHUD:(bool)arg1;
 - (void)setTapGestureRecognizer:(id)arg1;
+- (void)setTextDetectorRTFeedback:(id)arg1;
 - (void)setTorchMode:(long long)arg1;
 - (void)setWhiteBalanceMode:(long long)arg1;
+- (void)setupInitialLayerConfiguration;
 - (bool)showDiagnosticHUD;
 - (void)showMessage:(id)arg1 color:(id)arg2 style:(long long)arg3 duration:(double)arg4;
+- (void)showTextDetectorObjects:(id)arg1;
 - (void)start;
 - (void)startSession;
 - (void)stopSession;
 - (void)switchToCamera:(long long)arg1;
 - (void)switchToCameraWithDeviceID:(id)arg1;
 - (id)tapGestureRecognizer;
+- (id)textDetectorRTFeedback;
 - (void)toggleCamera;
 - (long long)torchMode;
 - (void)updateContactsCache:(id)arg1;
@@ -369,7 +400,7 @@
 - (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(bool)arg1;
+- (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
 - (long long)whiteBalanceMode;
-- (void)willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 
 @end

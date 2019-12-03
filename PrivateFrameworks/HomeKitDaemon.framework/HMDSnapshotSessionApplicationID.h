@@ -4,11 +4,11 @@
 
 @interface HMDSnapshotSessionApplicationID : HMFObject <NSCopying> {
     NSString * _applicationIdentifier;
-    HMDCameraSessionID * _sessionID;
+    HMDCameraSnapshotSessionID * _sessionID;
 }
 
 @property (nonatomic, readonly) NSString *applicationIdentifier;
-@property (nonatomic, readonly) HMDCameraSessionID *sessionID;
+@property (nonatomic, readonly) HMDCameraSnapshotSessionID *sessionID;
 
 - (void).cxx_destruct;
 - (id)applicationIdentifier;

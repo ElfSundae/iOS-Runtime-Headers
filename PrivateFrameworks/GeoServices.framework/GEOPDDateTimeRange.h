@@ -5,9 +5,9 @@
 @interface GEOPDDateTimeRange : PBCodable <NSCopying> {
     unsigned long long  _endDate;
     struct { 
-        unsigned int endDate : 1; 
-        unsigned int startDate : 1; 
-    }  _has;
+        unsigned int has_endDate : 1; 
+        unsigned int has_startDate : 1; 
+    }  _flags;
     unsigned long long  _startDate;
     struct GEOPDLocalTimeRange { unsigned int x1; unsigned int x2; struct { unsigned int x_3_1_1 : 1; unsigned int x_3_1_2 : 1; } x3; } * _timeRanges;
     unsigned long long  _timeRangesCount;
@@ -24,9 +24,12 @@
 @property (nonatomic, readonly) unsigned long long timeRangesCount;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (void)addTimeRange:(struct GEOPDLocalTimeRange { unsigned int x1; unsigned int x2; struct { unsigned int x_3_1_1 : 1; unsigned int x_3_1_2 : 1; } x3; })arg1;
 - (void)clearTimeRanges;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -39,6 +42,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setEndDate:(unsigned long long)arg1;
 - (void)setHasEndDate:(bool)arg1;

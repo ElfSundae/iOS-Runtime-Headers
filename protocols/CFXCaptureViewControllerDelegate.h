@@ -9,6 +9,7 @@
 - (void)captureViewController:(CFXCaptureViewController *)arg1 didCaptureMediaItem:(CFXMediaItem *)arg2;
 - (void)captureViewController:(CFXCaptureViewController *)arg1 didChangeEffectComposition:(CFXEffectComposition *)arg2;
 - (void)captureViewController:(CFXCaptureViewController *)arg1 didRenderFrame:(CFXFrame *)arg2;
+- (void)captureViewController:(CFXCaptureViewController *)arg1 presentationRectWasPinchedWithState:(long long)arg2 scale:(double)arg3 velocity:(double)arg4;
 - (void)captureViewControllerCameraFlipButtonWasTapped:(CFXCaptureViewController *)arg1;
 - (void)captureViewControllerDoneButtonWasTapped:(CFXCaptureViewController *)arg1;
 - (void)captureViewControllerEffectsButtonWasTapped:(CFXCaptureViewController *)arg1;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SpringBoardUI.framework/SpringBoardUI
  */
 
-@interface SBSceneHandle : NSObject <BSDescriptionProviding, FBSceneHostManagerObserver, FBSceneMonitorDelegate> {
+@interface SBSceneHandle : NSObject <BSDescriptionProviding, FBSceneMonitorDelegate, FBSceneObserver> {
     long long  _contentState;
     FBSSceneDefinition * _definition;
     FBSDisplayIdentity * _displayIdentity;
@@ -19,6 +19,7 @@
 @property (getter=_definition, nonatomic, readonly) FBSSceneDefinition *definition;
 @property (readonly, copy) NSString *description;
 @property (setter=_setDisplayIdentity:, nonatomic, retain) FBSDisplayIdentity *displayIdentity;
+@property (getter=isEffectivelyForeground, nonatomic, readonly) bool effectivelyForeground;
 @property (readonly) unsigned long long hash;
 @property (getter=_manuallyControlsLifecycle, setter=_setManuallyControlsLifecycle:, nonatomic) bool manuallyControlsLifecycle;
 @property (nonatomic, readonly) FBScene *scene;
@@ -27,6 +28,8 @@
 @property (getter=_sceneMonitor, setter=_setSceneMonitor:, nonatomic, retain) FBSceneMonitor *sceneMonitor;
 @property (readonly) Class superclass;
 
+// Image: /System/Library/PrivateFrameworks/SpringBoardUI.framework/SpringBoardUI
+
 - (void).cxx_destruct;
 - (void)_commonInit;
 - (id)_createMonitor;
@@ -34,7 +37,7 @@
 - (void)_didCreateScene:(id)arg1;
 - (void)_didDestroyScene:(id)arg1;
 - (void)_didUpdateClientSettingsWithDiff:(id)arg1 transitionContext:(id)arg2;
-- (void)_didUpdateHostContentState:(long long)arg1;
+- (void)_didUpdateContentState:(long long)arg1;
 - (void)_didUpdatePairingStatusForExternalSceneIdentifiers:(id)arg1;
 - (void)_didUpdateSettingsWithDiff:(id)arg1 previousSettings:(id)arg2;
 - (void)_enumerateObserversWithBlock:(id /* block */)arg1;
@@ -45,7 +48,6 @@
 - (void)_noteSceneCreated:(id)arg1;
 - (void)_noteSceneDestroyed:(id)arg1;
 - (id)_sceneMonitor;
-- (void)_setContentState:(long long)arg1;
 - (void)_setDisplayIdentity:(id)arg1;
 - (void)_setManuallyControlsLifecycle:(bool)arg1;
 - (void)_setScene:(id)arg1;
@@ -57,12 +59,14 @@
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)displayIdentity;
+- (unsigned long long)hash;
 - (id)init;
 - (bool)isContentReady;
+- (bool)isEqual:(id)arg1;
 - (bool)isPairedWithExternalSceneWithIdentifier:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (id)scene;
-- (void)sceneHostManagerContentStateDidChange:(id)arg1;
+- (void)sceneContentStateDidChange:(id)arg1;
 - (id)sceneIdentifier;
 - (id)sceneIfExists;
 - (void)sceneMonitor:(id)arg1 pairingStatusDidChangeForExternalSceneIDs:(id)arg2;
@@ -72,5 +76,13 @@
 - (void)sceneMonitor:(id)arg1 sceneWasDestroyed:(id)arg2;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoard.framework/SpringBoard
+
+- (bool)isDeviceApplicationSceneHandle;
+- (bool)isEffectivelyForeground;
+- (id)newScenePlaceholderContentContextWithActivationSettings:(id)arg1;
+- (id)newSceneViewController;
+- (id)newSceneViewWithReferenceSize:(struct CGSize { double x1; double x2; })arg1 orientation:(long long)arg2 hostRequester:(id)arg3;
 
 @end

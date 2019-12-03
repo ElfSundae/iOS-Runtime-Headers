@@ -48,7 +48,6 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
-- (void)_activateAfterResidentChangeWithCompletion:(id /* block */)arg1;
 - (void)_activateEvents:(id /* block */)arg1;
 - (void)_activateWithCompletion:(id /* block */)arg1;
 - (void)_addEventToEventTrigger:(id)arg1;
@@ -64,6 +63,7 @@
 - (void)_handleLocationAuthorizationChangedNotification:(id)arg1;
 - (void)_handleRemoveEventModel:(id)arg1 message:(id)arg2;
 - (void)_handleRemoveEventsFromEventTrigger:(id)arg1;
+- (void)_handleRemoveEventsFromEventTrigger:(id)arg1 relay:(bool)arg2;
 - (void)_handleUpdateEventTriggerCondition:(id)arg1;
 - (void)_handleUpdateEventTriggerExecuteOnce:(id)arg1;
 - (void)_handleUpdateEventTriggerRecurrences:(id)arg1;

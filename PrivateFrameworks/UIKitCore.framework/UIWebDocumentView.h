@@ -112,12 +112,13 @@
     UIView * _initialDropSnapshotView;
     <UITextInputDelegate> * _inputDelegate;
     unsigned int  _inspectorSearchingForNode;
-    /* Warning: unhandled struct encoding: '{?="timer"@"NSTimer""location"{CGPoint="x"d"y"d}"isBlocked"B"isCancelled"B"isOnWebThread"B"isDisplayingHighlight"B"attemptedClick"B"lastPanTranslation"{CGPoint="x"d"y"d}"element"@"DOMNode""delegate"@"interactionSheet"@"UIWebRotatingAlertController""allowsImageSheet"B"allowsDataDetectorsSheet"B"allowsLinkSheet"B"acceptsFirstResponder"B"documentScale"d"previewHintRects"@"NSArray""previewHintImage"@"UIImage"}' */ struct { 
+    struct { 
         NSTimer *timer; 
         struct CGPoint { 
             double x; 
             double y; 
         } location; 
+        long long modifierFlags; 
         bool isBlocked; 
         bool isCancelled; 
         bool isOnWebThread; 
@@ -129,6 +130,14 @@
         } lastPanTranslation; 
         DOMNode *element; 
         id delegate; 
+        UIWebRotatingAlertController *interactionSheet; 
+        bool allowsImageSheet; 
+        bool allowsDataDetectorsSheet; 
+        bool allowsLinkSheet; 
+        bool acceptsFirstResponder; 
+        double documentScale; 
+        NSArray *previewHintRects; 
+        UIImage *previewHintImage; 
     }  _interaction;
     bool  _isPerformingDrop;
     unsigned int  _isSettingRedrawFrame;
@@ -216,7 +225,6 @@
     WebThreadSafeUndoManager * _undoManager;
     unsigned int  _updatesScrollView;
     unsigned int  _updatingSize;
-    unsigned int  _usePreTimberlineTransparencyBehavior;
     unsigned int  _usingMinimalTilesDuringLoading;
     _UIWebViewportHandler * _viewportHandler;
     bool  _wantsMinimalUI;
@@ -266,10 +274,12 @@
 @property (nonatomic) bool enablesReturnKeyOnNonWhiteSpaceContent;
 @property (nonatomic, readonly) UITextPosition *endOfDocument;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } exposedScrollViewRect;
+@property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } floatingKeyboardEdgeInsets;
 @property (nonatomic) bool forceDefaultDictationInfo;
 @property (nonatomic) long long forceDictationKeyboardType;
 @property (nonatomic) bool forceDisableDictation;
 @property (nonatomic) bool forceEnableDictation;
+@property (nonatomic) bool forceFloatingKeyboard;
 @property (nonatomic) bool hasDefaultContents;
 @property (nonatomic, readonly) bool hasText;
 @property (readonly) unsigned long long hash;
@@ -311,12 +321,14 @@
 @property (nonatomic) bool shouldAutoscroll;
 @property (nonatomic) bool shouldIgnoreCustomViewport;
 @property (nonatomic) bool shouldOnlyRecognizeGesturesOnActiveElements;
+@property (nonatomic) bool showDictationButton;
 @property (nonatomic) bool sizeUpdatesSuspended;
 @property (nonatomic) long long smartDashesType;
 @property (nonatomic) long long smartInsertDeleteType;
 @property (nonatomic) long long smartQuotesType;
 @property (nonatomic) long long spellCheckingType;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) bool supportsImagePaste;
 @property (nonatomic) bool suppressReturnKeyStyling;
 @property (nonatomic) bool suppressesIncrementalRendering;
 @property (nonatomic, copy) NSString *textContentType;
@@ -330,6 +342,7 @@
 @property (nonatomic, readonly) <UITextInputTokenizer> *tokenizer;
 @property (nonatomic, retain) UIColor *underlineColorForSpelling;
 @property (nonatomic, retain) UIColor *underlineColorForTextAlternatives;
+@property (nonatomic) bool useAutomaticEndpointing;
 @property (nonatomic) bool useInterfaceLanguageForLocalization;
 @property (nonatomic) struct _NSRange { unsigned long long x1; unsigned long long x2; } validTextRange;
 @property (nonatomic, readonly) bool wantsMinimalUI;
@@ -345,7 +358,6 @@
 + (Class)layerClass;
 + (id)standardTextViewPreferences;
 
-- (id)URL;
 - (void)_WAKViewSizeDidChange:(id)arg1;
 - (bool)_acceptsFirstResponder;
 - (SEL)_actionForLongPressOnElement:(id)arg1;
@@ -382,6 +394,7 @@
 - (void)_doubleTapRecognized:(id)arg1;
 - (long long)_dragInteraction:(id)arg1 dataOwnerForAddingToSession:(id)arg2 withTouchAtPoint:(struct CGPoint { double x1; double x2; })arg3;
 - (long long)_dragInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
+- (bool)_dragInteraction:(id)arg1 sessionSupportsSystemDrag:(id)arg2;
 - (void)_drawPDFPagesForPage:(unsigned long long)arg1 withPaginationInfo:(id)arg2;
 - (long long)_dropInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 - (void)_editableSelectionLayoutChangedByScrolling:(bool)arg1;
@@ -438,7 +451,7 @@
 - (void)_renderUnbufferedInContext:(struct CGContext { }*)arg1;
 - (void)_resetForNewPage;
 - (void)_resetFormDataForFrame:(id)arg1;
-- (void)_resetInteractionWithLocation:(struct CGPoint { double x1; double x2; })arg1;
+- (void)_resetInteractionWithLocation:(struct CGPoint { double x1; double x2; })arg1 modifierFlags:(long long)arg2;
 - (void)_resetShowingTextStyle:(id)arg1;
 - (void)_reshapePlugInViews;
 - (id)_responderForBecomeFirstResponder;
@@ -643,6 +656,8 @@
 - (bool)gestureRecognizerShouldBegin:(id)arg1;
 - (long long)getPasteboardChangeCount;
 - (long long)getPasteboardItemsCount;
+- (bool)handleKeyAppCommandForCurrentEvent;
+- (bool)handleKeyTextCommandForCurrentEvent;
 - (void)handleKeyWebEvent:(id)arg1;
 - (bool)hasContent;
 - (bool)hasDrawnTiles;
@@ -719,6 +734,7 @@
 - (double)minimumScaleForSize:(struct CGSize { double x1; double x2; })arg1;
 - (bool)mouseEventsChangeSelection;
 - (bool)needsScrollNotifications;
+- (id)newMouseEvent:(int)arg1;
 - (struct CGImage { }*)newSnapshotWithRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)nextUnperturbedDictationResultBoundaryFromPosition:(id)arg1;
 - (long long)offsetFromPosition:(id)arg1 toPosition:(id)arg2;
@@ -870,7 +886,6 @@
 - (void)setTileUpdatesDisabled:(bool)arg1;
 - (void)setTilingArea:(int)arg1;
 - (void)setUpdatesScrollView:(bool)arg1;
-- (void)setUsePreTimberlineTransparencyBehavior;
 - (void)setUserStyleSheet:(id)arg1;
 - (void)setViewportSize:(struct CGSize { double x1; double x2; })arg1 forDocumentTypes:(int)arg2;
 - (void)setWebDraggingDelegate:(id)arg1;
@@ -912,6 +927,7 @@
 - (void)unmarkText;
 - (void)updateDragCaretIfPossible;
 - (void)updateFloatingCursorAtPoint:(struct CGPoint { double x1; double x2; })arg1;
+- (void)updateFloatingCursorAtPoint:(struct CGPoint { double x1; double x2; })arg1 velocity:(struct CGPoint { double x1; double x2; })arg2;
 - (void)updateInteractionElements;
 - (bool)updateKeyboardStateOnResponderChanges;
 - (void)updateSelection;

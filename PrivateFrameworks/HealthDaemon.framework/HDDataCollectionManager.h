@@ -2,16 +2,27 @@
    Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon
  */
 
-@interface HDDataCollectionManager : NSObject <HDAssertionObserver, HDDiagnosticObject, HDHealthDaemonReadyObserver> {
+@interface HDDataCollectionManager : NSObject <HDAssertionObserver, HDDiagnosticObject, HDHealthDaemonReadyObserver, HDPeriodicActivityDelegate> {
     NSObject<OS_dispatch_queue> * _assertionQueue;
+    HDAudioExposureEventObserver * _audioExposureEventObserver;
     HDBTLEHeartRateDataCollector * _blteHeartRateDataCollector;
-    NSMutableArray * _builtinCollectors;
+    NSSet * _collectibleTypes;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _collectorLock;
+    NSMutableArray * _collectorLock_builtinCollectors;
+    NSMutableDictionary * _collectorLock_dataCollectorsByType;
     NSMutableDictionary * _dataAggregatorsByType;
-    NSMutableDictionary * _dataCollectorsByType;
+    NSObject<OS_dispatch_queue> * _dataCollectionQueue;
     HDDemoManager * _demoManager;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _fakingLock;
     NSDate * _lastLaunchUpdate;
     NSMutableDictionary * _observersByType;
     HDDatabaseCoalescedWritePool * _pendingSavePool;
+    HDPeriodicActivity * _periodicUpdateActivity;
+    int  _privacyPreferencesNotificationToken;
     HDProfile * _profile;
     NSObject<OS_dispatch_queue> * _queue;
     id /* block */  _unitTest_aggregatorConfigurationChangedHandler;
@@ -21,7 +32,7 @@
 
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *assertionQueue;
 @property (nonatomic, retain) HDBTLEHeartRateDataCollector *blteHeartRateDataCollector;
-@property (nonatomic, retain) NSMutableDictionary *dataCollectorsByType;
+@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *dataCollectionQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, retain) HDDemoManager *demoManager;
 @property (readonly, copy) NSString *description;
@@ -33,25 +44,28 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_dataAggregatorConfigurationForCollectorState:(struct { double x1; bool x2; bool x3; bool x4; })arg1;
+- (id)_dataAggregatorConfigurationForCollectorState:(struct { double x1; double x2; double x3; bool x4; bool x5; bool x6; })arg1;
 - (id)_dataAggregatorsDiagnosticDescription;
 - (id)_dataCollectorsDiagnosticDescription;
 - (bool)_dataReceived:(id)arg1 provenance:(id)arg2 isDemoData:(bool)arg3 error:(id*)arg4;
 - (void)_demoObjectsReceived:(id)arg1 completion:(id /* block */)arg2;
+- (id)_fakingLock_demoManagerCreatingIfNecessary;
 - (id)_newAggregatorForObjectType:(id)arg1;
 - (id)_observersDescription;
 - (void)_queue_addDataCollector:(id)arg1;
 - (void)_queue_adjustDataCollectionForType:(id)arg1 block:(id /* block */)arg2;
 - (id)_queue_aggregatorForType:(id)arg1;
 - (void)_queue_alertCollectorsOfTypesWithObservers;
-- (struct { double x1; bool x2; bool x3; bool x4; })_queue_collectionStateForType:(id)arg1;
+- (struct { double x1; double x2; double x3; bool x4; bool x5; bool x6; })_queue_collectionStateForType:(id)arg1;
 - (void)_queue_createBuiltinCollectors;
-- (double)_queue_defaultCollectionIntervalForType:(id)arg1;
-- (id)_queue_demoManagerCreatingIfNecessary;
+- (struct { double x1; double x2; double x3; bool x4; bool x5; bool x6; })_queue_defaultCollectionStateForType:(id)arg1;
 - (id)_queue_observerMapForType:(id)arg1;
 - (void)_queue_setupUnprotectedDataDependantState;
-- (void)_requestAggregationThroughDate:(id)arg1 type:(id)arg2 mode:(long long)arg3 completion:(id /* block */)arg4;
-- (void)_requestAggregationThroughDate:(id)arg1 types:(id)arg2 mode:(long long)arg3 completion:(id /* block */)arg4;
+- (void)_queue_updateLegacyDataCollector:(id)arg1 forChangeFromState:(struct { double x1; double x2; double x3; bool x4; bool x5; bool x6; })arg2 toState:(struct { double x1; double x2; double x3; bool x4; bool x5; bool x6; })arg3 type:(id)arg4;
+- (void)_registerCollectors:(id)arg1;
+- (void)_requestAggregationThroughDate:(id)arg1 type:(id)arg2 mode:(long long)arg3 freezeSeries:(bool)arg4 completion:(id /* block */)arg5;
+- (void)_requestAggregationThroughDate:(id)arg1 types:(id)arg2 mode:(long long)arg3 freezeSeries:(bool)arg4 completion:(id /* block */)arg5;
+- (bool)_typeIsCollectible:(id)arg1;
 - (void)_updateDataCollectorsWithPrivacySettings;
 - (void)addDataCollectionObserver:(id)arg1 type:(id)arg2 collectionInterval:(double)arg3 state:(id)arg4;
 - (void)addDataCollector:(id)arg1;
@@ -60,9 +74,10 @@
 - (id)assertionQueue;
 - (id)blteHeartRateDataCollector;
 - (id)btleHeartRateDataCollector;
+- (id)collectibleTypes;
 - (void)daemonReady:(id)arg1;
 - (void)dataCollectionObserver:(id)arg1 didChangeState:(id)arg2;
-- (id)dataCollectorsByType;
+- (id)dataCollectionQueue;
 - (void)dealloc;
 - (double)defaultCollectionIntervalForType:(id)arg1;
 - (id)demoManager;
@@ -72,7 +87,9 @@
 - (id)init;
 - (id)initWithProfile:(id)arg1;
 - (id)observersByType;
+- (void)performPeriodicActivity:(id)arg1 completion:(id /* block */)arg2;
 - (void)performSaveWithMaximumLatency:(double)arg1 block:(id /* block */)arg2 completion:(id /* block */)arg3;
+- (void)periodicActivity:(id)arg1 configureXPCActivityCriteria:(id)arg2;
 - (void)periodicUpdate;
 - (id)pluginDataCollectors;
 - (id)profile;
@@ -80,12 +97,11 @@
 - (void)removeDataCollectionObserver:(id)arg1;
 - (void)removeDataCollectionObserver:(id)arg1 type:(id)arg2;
 - (void)requestAggregationForAllTypesThroughDate:(id)arg1 mode:(long long)arg2 completion:(id /* block */)arg3;
-- (void)requestAggregationThroughDate:(id)arg1 types:(id)arg2 mode:(long long)arg3 completion:(id /* block */)arg4;
+- (void)requestAggregationThroughDate:(id)arg1 types:(id)arg2 mode:(long long)arg3 freezeSeries:(bool)arg4 completion:(id /* block */)arg5;
 - (bool)sensorDataArrayReceived:(id)arg1 deviceEntity:(id)arg2 error:(id*)arg3;
 - (void)sensorDataReceived:(id)arg1 deviceEntity:(id)arg2;
 - (void)setAssertionQueue:(id)arg1;
 - (void)setBlteHeartRateDataCollector:(id)arg1;
-- (void)setDataCollectorsByType:(id)arg1;
 - (void)setDemoManager:(id)arg1;
 - (void)setObserversByType:(id)arg1;
 - (void)setQueue:(id)arg1;
@@ -96,6 +112,7 @@
 - (void)stopFakingData;
 - (id)takeCollectionAssertionWithOwnerIdentifier:(id)arg1 sampleTypes:(id)arg2 observer:(id)arg3 observerState:(id)arg4 collectionInterval:(double)arg5;
 - (id)takeCollectionAssertionWithOwnerIdentifier:(id)arg1 sampleTypes:(id)arg2 observerState:(id)arg3 collectionInterval:(double)arg4;
+- (void)unitTest_addCollectibleType:(id)arg1;
 - (id)unitTest_dataAggregatorConfigurationForType:(id)arg1;
 - (void)unitTest_setAggregator:(id)arg1 forType:(id)arg2;
 - (void)unitTest_setAggregatorConfigurationChangeHandler:(id /* block */)arg1;

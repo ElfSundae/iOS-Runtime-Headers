@@ -10,6 +10,7 @@
 @property (nonatomic, readonly) unsigned long long options;
 @property (nonatomic, readonly) unsigned long long variants;
 
++ (id)identityKind;
 + (id)kindWithVariants:(unsigned long long)arg1 options:(unsigned long long)arg2;
 + (bool)supportsSecureCoding;
 

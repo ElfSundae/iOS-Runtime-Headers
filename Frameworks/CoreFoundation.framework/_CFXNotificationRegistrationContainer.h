@@ -22,7 +22,7 @@
 - (id)initWithParent:(id)arg1;
 - (id)initWithParent:(id)arg1 childKeyCallbacks:(const struct { long long x1; int (*x2)(); int (*x3)(); int (*x4)(); int (*x5)(); int (*x6)(); }*)arg2;
 - (void)invalidate;
-- (void)removeChild:(id)arg1;
+- (void)removeChild:(id)arg1 token:(unsigned long long)arg2;
 - (void)resetChildren;
 
 @end

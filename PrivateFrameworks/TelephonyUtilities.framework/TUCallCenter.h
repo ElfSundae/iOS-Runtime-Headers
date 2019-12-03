@@ -4,6 +4,7 @@
 
 @interface TUCallCenter : NSObject <TUCallContainer> {
     TUAudioDeviceController * _audioDeviceController;
+    TUCallFilterController * _callFilterController;
     TUCallServicesInterface * _callServicesInterface;
     CNContactStore * _contactStore;
     TUConversationManager * _conversationManager;
@@ -16,6 +17,7 @@
         double width; 
         double height; 
     }  _localPortraitAspectRatio;
+    TURouteController * _pairedHostDeviceRouteController;
     TUCallProviderManager * _providerManager;
     NSObject<OS_dispatch_queue> * _queue;
     TURouteController * _routeController;
@@ -30,6 +32,7 @@
 @property (nonatomic, retain) TUAudioDeviceController *audioDeviceController;
 @property (nonatomic, readonly) <TUCallContainerPrivate> *callContainer;
 @property (nonatomic, readonly) unsigned long long callCountOnDefaultPairedDevice;
+@property (nonatomic, retain) TUCallFilterController *callFilterController;
 @property (nonatomic, readonly, copy) NSArray *callGroupsOnDefaultPairedDevice;
 @property (nonatomic, retain) TUCallServicesInterface *callServicesInterface;
 @property (nonatomic, readonly, copy) NSArray *callsHostedElsewhere;
@@ -64,18 +67,18 @@
 @property (nonatomic, readonly) TUCall *incomingVideoCall;
 @property (nonatomic) struct CGSize { double x1; double x2; } localLandscapeAspectRatio;
 @property (nonatomic) struct CGSize { double x1; double x2; } localPortraitAspectRatio;
+@property (nonatomic, retain) TURouteController *pairedHostDeviceRouteController;
 @property (nonatomic, retain) TUCallProviderManager *providerManager;
-@property (nonatomic, retain) NSObject<OS_dispatch_queue> *queue;
+@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *queue;
 @property (nonatomic, retain) TURouteController *routeController;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) TUVideoDeviceController *videoDeviceController;
 
 + (id)callCenterWithQueue:(id)arg1;
-+ (id)callCenterWithQueue:(id)arg1 daemonDelegate:(id)arg2 shouldRegister:(bool)arg3;
-+ (const void*)sharedAddressBook;
++ (id)callCenterWithQueue:(id)arg1 server:(id)arg2 shouldRegister:(bool)arg3;
 + (id)sharedContactStore;
 + (id)sharedInstance;
-+ (id)sharedInstanceWithQueue:(id)arg1 daemonDelegate:(id)arg2 shouldRegister:(bool)arg3;
++ (id)sharedInstanceWithQueue:(id)arg1 server:(id)arg2 shouldRegister:(bool)arg3;
 
 - (void).cxx_destruct;
 - (id)_allCalls;
@@ -104,6 +107,7 @@
 - (id)audioOrVideoCallWithStatus:(int)arg1;
 - (id)callContainer;
 - (unsigned long long)callCountOnDefaultPairedDevice;
+- (id)callFilterController;
 - (id)callGroupsOnDefaultPairedDevice;
 - (id)callPassingTest:(id /* block */)arg1;
 - (id)callPassingTest:(id /* block */)arg1 sortedUsingComparator:(id /* block */)arg2;
@@ -154,6 +158,7 @@
 - (void)enteredBackgroundForAllCalls;
 - (void)enteredForegroundForCall:(id)arg1;
 - (bool)existingCallsHaveMultipleProviders;
+- (void)fetchCurrentCalls;
 - (id)frontmostAudioOrVideoCall;
 - (id)frontmostCall;
 - (void)groupCall:(id)arg1 withOtherCall:(id)arg2;
@@ -187,6 +192,8 @@
 - (bool)launchAppForJoinRequest:(id)arg1;
 - (struct CGSize { double x1; double x2; })localLandscapeAspectRatio;
 - (struct CGSize { double x1; double x2; })localPortraitAspectRatio;
+- (id)pairedHostDeviceRouteController;
+- (void)pickRouteForRapportDeviceWithMediaSystemIdentifier:(id)arg1 effectiveIdentifier:(id)arg2;
 - (id)providerManager;
 - (void)pullCallFromClientUsingHandoffActivityUserInfo:(id)arg1 completion:(id /* block */)arg2;
 - (void)pullHostedCallsFromPairedHostDevice;
@@ -201,14 +208,15 @@
 - (id)routeController;
 - (void)sendFieldModeDigits:(id)arg1 forProvider:(id)arg2;
 - (void)setAudioDeviceController:(id)arg1;
+- (void)setCallFilterController:(id)arg1;
 - (void)setCallServicesInterface:(id)arg1;
 - (void)setContactStore:(id)arg1;
 - (void)setConversationManager:(id)arg1;
 - (void)setDisconnectCallPreflight:(id /* block */)arg1;
 - (void)setLocalLandscapeAspectRatio:(struct CGSize { double x1; double x2; })arg1;
 - (void)setLocalPortraitAspectRatio:(struct CGSize { double x1; double x2; })arg1;
+- (void)setPairedHostDeviceRouteController:(id)arg1;
 - (void)setProviderManager:(id)arg1;
-- (void)setQueue:(id)arg1;
 - (void)setRouteController:(id)arg1;
 - (void)setTTYType:(int)arg1 forCall:(id)arg2;
 - (void)setVideoDeviceController:(id)arg1;

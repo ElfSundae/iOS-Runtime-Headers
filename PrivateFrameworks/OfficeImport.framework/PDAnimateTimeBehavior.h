@@ -12,9 +12,9 @@
     int  mValueType;
 }
 
+- (void).cxx_destruct;
 - (id)by;
 - (int)calcMode;
-- (void)dealloc;
 - (id)from;
 - (bool)hasCalcMode;
 - (bool)hasValueType;

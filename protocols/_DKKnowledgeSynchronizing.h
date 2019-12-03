@@ -6,6 +6,7 @@
 @required
 
 - (bool)deleteRemoteState:(id*)arg1;
+- (NSUUID *)deviceUUID;
 - (NSString *)sourceDeviceIdentityFromObject:(_DKObject *)arg1 error:(id*)arg2;
 - (NSString *)sourceDeviceIdentityWithError:(id*)arg1;
 - (bool)synchronizeWithError:(id*)arg1;

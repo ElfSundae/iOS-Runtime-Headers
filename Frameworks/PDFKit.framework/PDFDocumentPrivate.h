@@ -3,6 +3,7 @@
  */
 
 @interface PDFDocumentPrivate : NSObject {
+    int  accessPermissions;
     PDFAKDocumentAdaptor * akDocumentAdaptor;
     bool  allowsCommenting;
     bool  allowsContentAccessibility;
@@ -11,10 +12,14 @@
     bool  allowsDocumentChanges;
     bool  allowsFormFieldEntry;
     bool  allowsPrinting;
+    <PDFDocumentAsyncFindDelegate> * asyncSearchDelegate;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  asyncSearchLock;
+    NSObject<OS_dispatch_queue> * asyncSearchQueue;
+    NSMutableArray * asyncSearchResults;
     NSDictionary * attributes;
     NSMutableIndexSet * bookmarkedPages;
-    struct __DDScanner { } * dataDetector;
-    NSOperationQueue * dataDetectorQueue;
     id  delegate;
     struct CGPDFDocument { } * document;
     NSArray * documentCatalogMetadata;
@@ -40,14 +45,13 @@
     int  majorVersion;
     int  minorVersion;
     PDFOutline * outline;
+    NSString * ownerPassword;
     <PDFDocumentPageChangeDelegate> * pageChangeDelegate;
     unsigned long long  pageCount;
     NSMutableDictionary * pageDictionaryIndices;
     NSMutableDictionary * pageIndices;
-    NSOperationQueue * pageLayoutThreadQueue;
     NSMutableArray * pages;
     bool  pagesChanged;
-    NSString * password;
     <PDFAKControllerDelegateProtocol> * pdfAKControllerDelegateForDeferredSetup;
     long long  permission;
     PDFRenderingProperties * renderingProperties;
@@ -63,7 +67,9 @@
     bool  respondsToDidUnlock;
     bool  respondsToPrintJobTitle;
     bool  subclassOverridesPageAtIndex;
+    NSObject<OS_dispatch_queue> * textExtractionQueue;
     bool  useTaggedPDF;
+    NSString * userPassword;
     NSString * xmpNameSpace;
     NSString * xmpPrefix;
     NSString * xmpRootPath;

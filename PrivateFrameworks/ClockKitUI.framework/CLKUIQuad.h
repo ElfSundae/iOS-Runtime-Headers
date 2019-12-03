@@ -15,12 +15,13 @@
 - (id)init;
 - (bool)isOpaque;
 - (void)performOffscreenPassesWithCommandBuffer:(id)arg1;
-- (void)prepareForQuadView:(id)arg1;
 - (bool)prepareForTime:(double)arg1;
 - (void)purge;
 - (id)quadView;
 - (void)renderForDisplayWithEncoder:(id)arg1;
 - (void)setOpaque:(bool)arg1;
 - (void)setQuadView:(id)arg1;
+- (void)setupForQuadView:(id)arg1;
+- (void)unlinkQuadView;
 
 @end

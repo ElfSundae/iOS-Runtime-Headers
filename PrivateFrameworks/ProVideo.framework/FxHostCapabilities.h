@@ -3,8 +3,11 @@
  */
 
 @interface FxHostCapabilities : NSObject {
-    struct FxHostCapabilitiesPriv { id x1; id x2; } * _hostCapPriv;
+    struct FxHostCapabilitiesPriv { id x1; unsigned int x2; id x3; id x4; } * _hostCapPriv;
 }
+
++ (id)getRemoteHostCapabilities;
++ (void)setRemoteHostCapabilities:(id)arg1;
 
 - (void)dealloc;
 - (bool)formatsFloatRGBABitmapsAsARGB;

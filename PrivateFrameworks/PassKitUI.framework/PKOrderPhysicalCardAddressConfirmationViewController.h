@@ -27,6 +27,7 @@
 - (void)_showDisplayableError:(id)arg1;
 - (void)_showSpinner:(bool)arg1;
 - (void)_terminateFlow;
+- (void)dealloc;
 - (id)delegate;
 - (void)explanationViewControllerDidSelectCancel:(id)arg1;
 - (void)explanationViewDidSelectContinue:(id)arg1;

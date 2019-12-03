@@ -4,8 +4,8 @@
 
 @interface DNDSDefaultLifetimeMonitor : DNDSBaseLifetimeMonitor
 
-+ (bool)willMonitorLifetime:(id)arg1;
++ (Class)lifetimeClass;
 
-- (id)updateForModeAssertionDetails:(id)arg1 date:(id)arg2;
+- (id)updateForModeAssertions:(id)arg1 date:(id)arg2;
 
 @end

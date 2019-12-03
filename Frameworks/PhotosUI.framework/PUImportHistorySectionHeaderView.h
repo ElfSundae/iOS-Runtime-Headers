@@ -6,7 +6,6 @@
     UIButton * _actionButton;
     bool  _actionButtonEnabled;
     NSString * _actionText;
-    _UIBackdropView * _backdropView;
     NSString * _backdropViewGroupName;
     struct UIEdgeInsets { 
         double top; 
@@ -32,12 +31,12 @@
     bool  _showsActionButton;
     UILabel * _spacerLabel;
     bool  _supportsMultipleLinesInCompactLayout;
+    UIVisualEffectView * _visualEffectView;
 }
 
 @property (nonatomic, retain) UIButton *actionButton;
 @property (nonatomic) bool actionButtonEnabled;
 @property (nonatomic, copy) NSString *actionText;
-@property (nonatomic, retain) _UIBackdropView *backdropView;
 @property (nonatomic, copy) NSString *backdropViewGroupName;
 @property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } contentInsets;
 @property (nonatomic) <PUImportHistorySectionHeaderViewDelegate> *delegate;
@@ -53,6 +52,7 @@
 @property (nonatomic) bool showsActionButton;
 @property (nonatomic, retain) UILabel *spacerLabel;
 @property (nonatomic) bool supportsMultipleLinesInCompactLayout;
+@property (nonatomic, readonly) UIVisualEffectView *visualEffectView;
 
 - (void).cxx_destruct;
 - (void)_actionButtonPressed:(id)arg1;
@@ -71,7 +71,6 @@
 - (bool)actionButtonEnabled;
 - (id)actionText;
 - (void)applyLayoutAttributes:(id)arg1;
-- (id)backdropView;
 - (id)backdropViewGroupName;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })contentInsets;
 - (void)dealloc;
@@ -92,7 +91,6 @@
 - (void)setActionButtonEnabled:(bool)arg1;
 - (void)setActionButtonEnabled:(bool)arg1 animated:(bool)arg2;
 - (void)setActionText:(id)arg1;
-- (void)setBackdropView:(id)arg1;
 - (void)setBackdropViewGroupName:(id)arg1;
 - (void)setContentInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setDelegate:(id)arg1;
@@ -113,6 +111,7 @@
 - (bool)supportsMultipleLinesInCompactLayout;
 - (id)traitCollection;
 - (void)traitCollectionDidChange:(id)arg1;
+- (id)visualEffectView;
 - (void)willTransitionFromLayout:(id)arg1 toLayout:(id)arg2;
 
 @end

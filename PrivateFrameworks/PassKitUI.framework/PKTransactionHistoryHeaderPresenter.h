@@ -3,7 +3,7 @@
  */
 
 @interface PKTransactionHistoryHeaderPresenter : NSObject <PKDashboardItemPresenter> {
-    PKFileDownloader * _fileDownloader;
+    PKObjectDownloader * _fileDownloader;
     NSDateFormatter * _formatterMonth;
     UIImage * _heroImage;
     UIImage * _logoBackgroundImage;

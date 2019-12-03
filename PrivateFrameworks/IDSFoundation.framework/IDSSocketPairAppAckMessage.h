@@ -2,16 +2,21 @@
    Image: /System/Library/PrivateFrameworks/IDSFoundation.framework/IDSFoundation
  */
 
-@interface IDSSocketPairAppAckMessage : IDSSocketPairMessage {
+@interface IDSSocketPairAppAckMessage : IDSSocketPairMessage <IDSSocketPairMessage> {
     unsigned long long  _offset;
     NSString * _peerResponseIdentifier;
     unsigned int  _sequenceNumber;
     unsigned short  _streamID;
 }
 
+@property (nonatomic, readonly) NSData *data;
+@property (nonatomic, readonly) bool expectsPeerResponse;
+@property (nonatomic, retain) NSDate *expiryDate;
+@property (nonatomic, readonly) NSString *messageUUID;
 @property (nonatomic, readonly) NSString *peerResponseIdentifier;
 @property (nonatomic) unsigned int sequenceNumber;
 @property (nonatomic) unsigned short streamID;
+@property (nonatomic, readonly) bool wantsAppAck;
 
 - (void).cxx_destruct;
 - (id)_nonHeaderData;

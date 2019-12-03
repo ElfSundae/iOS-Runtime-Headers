@@ -5,8 +5,8 @@
 @interface GEOLogMsgEventStateTiming : PBCodable <NSCopying> {
     double  _durationInOldState;
     struct { 
-        unsigned int durationInOldState : 1; 
-    }  _has;
+        unsigned int has_durationInOldState : 1; 
+    }  _flags;
     NSMutableArray * _stateTransitionFeedbacks;
 }
 
@@ -14,6 +14,7 @@
 @property (nonatomic) bool hasDurationInOldState;
 @property (nonatomic, retain) NSMutableArray *stateTransitionFeedbacks;
 
++ (bool)isValid:(id)arg1;
 + (Class)stateTransitionFeedbackType;
 
 - (void).cxx_destruct;
@@ -28,6 +29,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setDurationInOldState:(double)arg1;
 - (void)setHasDurationInOldState:(bool)arg1;

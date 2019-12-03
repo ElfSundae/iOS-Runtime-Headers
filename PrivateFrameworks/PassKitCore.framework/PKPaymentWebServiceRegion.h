@@ -18,11 +18,13 @@
     NSString * _lastDeviceCheckInBuildVersion;
     NSString * _lastUpdatedTag;
     long long  _outstandingCheckInAction;
+    NSURL * _partnerServiceURL;
     NSURL * _paymentServicesMerchantURL;
     NSURL * _paymentServicesURL;
     NSURL * _peerPaymentServiceURL;
     NSString * _productsPushTopic;
     NSString * _regionCode;
+    NSString * _transactionZonePushTopic;
     NSString * _trustedServiceManagerPushTopic;
     NSURL * _trustedServiceManagerURL;
     NSString * _userNotificationPushTopic;
@@ -43,16 +45,16 @@
 @property (nonatomic, copy) NSString *lastDeviceCheckInBuildVersion;
 @property (nonatomic, retain) NSString *lastUpdatedTag;
 @property (nonatomic) long long outstandingCheckInAction;
+@property (nonatomic, retain) NSURL *partnerServiceURL;
 @property (nonatomic, retain) NSURL *paymentServicesMerchantURL;
 @property (nonatomic, retain) NSURL *paymentServicesURL;
 @property (nonatomic, retain) NSURL *peerPaymentServiceURL;
 @property (nonatomic, copy) NSString *productsPushTopic;
 @property (nonatomic, retain) NSString *regionCode;
+@property (nonatomic, copy) NSString *transactionZonePushTopic;
 @property (nonatomic, retain) NSString *trustedServiceManagerPushTopic;
 @property (nonatomic, retain) NSURL *trustedServiceManagerURL;
 @property (nonatomic, retain) NSString *userNotificationPushTopic;
-
-// Image: /System/Library/PrivateFrameworks/PassKitCore.framework/PassKitCore
 
 + (bool)supportsSecureCoding;
 
@@ -75,6 +77,7 @@
 - (id)lastDeviceCheckInBuildVersion;
 - (id)lastUpdatedTag;
 - (long long)outstandingCheckInAction;
+- (id)partnerServiceURL;
 - (id)paymentServicesMerchantURL;
 - (id)paymentServicesURL;
 - (id)peerPaymentServiceURL;
@@ -95,20 +98,19 @@
 - (void)setLastDeviceCheckInBuildVersion:(id)arg1;
 - (void)setLastUpdatedTag:(id)arg1;
 - (void)setOutstandingCheckInAction:(long long)arg1;
+- (void)setPartnerServiceURL:(id)arg1;
 - (void)setPaymentServicesMerchantURL:(id)arg1;
 - (void)setPaymentServicesURL:(id)arg1;
 - (void)setPeerPaymentServiceURL:(id)arg1;
 - (void)setProductsPushTopic:(id)arg1;
 - (void)setRegionCode:(id)arg1;
+- (void)setTransactionZonePushTopic:(id)arg1;
 - (void)setTrustedServiceManagerPushTopic:(id)arg1;
 - (void)setTrustedServiceManagerURL:(id)arg1;
 - (void)setUserNotificationPushTopic:(id)arg1;
+- (id)transactionZonePushTopic;
 - (id)trustedServiceManagerPushTopic;
 - (id)trustedServiceManagerURL;
 - (id)userNotificationPushTopic;
-
-// Image: /System/Library/PrivateFrameworks/NanoPassKit.framework/NanoPassKit
-
-- (id)npkPossiblyOverriddenPeerPaymentServiceURL;
 
 @end

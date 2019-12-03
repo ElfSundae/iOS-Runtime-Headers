@@ -26,6 +26,7 @@
 - (double)_getConfidence:(id)arg1;
 - (void)_recognizeWavData:(const short*)arg1 length:(int)arg2;
 - (unsigned long long)activeChannel;
+- (void)dealloc;
 - (id)delegate;
 - (void)endAudio;
 - (id)initWithConfigPath:(id)arg1 triggerTokens:(id)arg2 useKeywordSpotting:(bool)arg3;

@@ -2,7 +2,9 @@
    Image: /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
  */
 
-@interface NSInputStream : NSStream
+@interface NSInputStream : NSStream {
+    unsigned char  _reserved;
+}
 
 @property (readonly) bool hasBytesAvailable;
 
@@ -15,6 +17,7 @@
 
 - (struct { long long x1; int x2; })_cfStreamError;
 - (unsigned long long)_cfTypeID;
+- (void)dealloc;
 - (bool)getBuffer:(char **)arg1 length:(unsigned long long*)arg2;
 - (bool)hasBytesAvailable;
 - (id)initWithData:(id)arg1;

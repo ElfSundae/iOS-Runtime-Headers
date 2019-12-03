@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
  */
 
-@interface NSMutableSet : NSSet <HMFMerging>
+@interface NSMutableSet : NSSet <HMFMerging, WFOutputTraversalContext>
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -38,6 +38,8 @@
 - (void)removeObjectsWithOptions:(unsigned long long)arg1 passingTest:(id /* block */)arg2;
 - (void)replaceObject:(id)arg1;
 - (void)setArray:(id)arg1;
+- (id)setByAddingObjectsFromArray:(id)arg1;
+- (id)setByAddingObjectsFromSet:(id)arg1;
 - (void)setObject:(id)arg1;
 - (void)setOrderedSet:(id)arg1;
 - (void)setSet:(id)arg1;
@@ -57,6 +59,11 @@
 // Image: /System/Library/Frameworks/MapKit.framework/MapKit
 
 - (void)_mapkit_removeObjectsFromArray:(id)arg1;
+
+// Image: /System/Library/Frameworks/VisionKit.framework/VisionKit
+
+- (void)dc_addNonNilObject:(id)arg1;
+- (void)dc_removeNonNilObject:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/AXCoreUtilities.framework/AXCoreUtilities
 
@@ -90,6 +97,11 @@
 - (void)_DAS_addOrReplaceObjectsFromArray:(id)arg1;
 - (void)_DAS_unionSetOverridingExisting:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/EmailFoundation.framework/EmailFoundation
+
+- (void)ef_removeObjectsInArray:(id)arg1;
+- (id)ef_uniquedObject:(id)arg1;
+
 // Image: /System/Library/PrivateFrameworks/FMCoreLite.framework/FMCoreLite
 
 - (void)fm_safeAddObject:(id)arg1;
@@ -103,17 +115,10 @@
 
 + (id)nonRetainingSet;
 
-// Image: /System/Library/PrivateFrameworks/MIME.framework/MIME
-
-- (id)mf_uniquedObject:(id)arg1;
-
-// Image: /System/Library/PrivateFrameworks/MobileBackup.framework/MobileBackup
-
-- (void)minusPathSet:(id)arg1;
-
 // Image: /System/Library/PrivateFrameworks/NetAppsUtilities.framework/NetAppsUtilities
 
 - (void)na_safeAddObject:(id)arg1;
+- (void)na_safeAddObjectsFromArray:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
 
@@ -125,8 +130,12 @@
 
 // Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
 
++ (id)ic_setFromNonNilArray:(id)arg1;
+
 - (void)ic_addNonNilObject:(id)arg1;
+- (void)ic_addObjectsFromNonNilArray:(id)arg1;
 - (void)ic_removeNonNilObject:(id)arg1;
+- (void)ic_removeObjectsFromNonNilArray:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
 
@@ -134,6 +143,7 @@
 - (void)tsu_addNonNilObject:(id)arg1;
 - (void)tsu_addObjectsFromNonNilArray:(id)arg1;
 - (void)tsu_removeEqualObject:(id)arg1;
+- (void)tsu_removeObjectsPassingTest:(id /* block */)arg1;
 - (void)tsu_xorSet:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
@@ -152,6 +162,7 @@
 // Image: /System/Library/PrivateFrameworks/WiFiKit.framework/WiFiKit
 
 - (id)_equivalentExistingNetworkProfile:(id)arg1;
+- (void)compareAndUpdateDuplicateScanRecords:(id)arg1;
 - (bool)removeNetworkProfile:(id)arg1;
 - (bool)replaceNetworkProfile:(id)arg1;
 

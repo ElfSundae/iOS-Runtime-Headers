@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
  */
 
-@interface HKCorrelation : HKSample <HDCoding> {
+@interface HKCorrelation : HKSample <HDCoding, WFNaming> {
     NSMutableDictionary * _objects;
 }
 
@@ -13,6 +13,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) NSSet *objects;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly, copy) NSString *wfName;
 
 // Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
 
@@ -33,13 +34,17 @@
 - (void)_filterCorrelatedObjectsWithFilterDictionary:(id)arg1;
 - (id)_init;
 - (void)_removeAllCorrelatedObjects;
-- (id)_validateConfiguration;
+- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
 - (id)correlationType;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)objects;
 - (id)objectsForType:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/ActionKit.framework/ActionKit
+
+- (id)wfName;
 
 // Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon
 
@@ -53,6 +58,11 @@
 - (void)hd_cleanupBeforeJournalInsertion;
 - (bool)hd_insertRelatedDataWithPersistentID:(id)arg1 insertionContext:(id)arg2 profile:(id)arg3 database:(id)arg4 error:(id*)arg5;
 - (id)hd_relatedJournalEntries;
+
+// Image: /System/Library/PrivateFrameworks/HealthToolbox.framework/HealthToolbox
+
+- (void)deleteObjectWithHealthStore:(id)arg1 options:(unsigned long long)arg2 completion:(id /* block */)arg3;
+- (id)quantitySampleForType:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
 

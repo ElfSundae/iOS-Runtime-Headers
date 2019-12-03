@@ -26,6 +26,7 @@
 - (void).cxx_destruct;
 - (id)DOMObjectProvider;
 - (bool)allowComponentIntersection;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })bordersInsetsWithUnitConverter:(id)arg1;
 - (double)calculateHeightForWidth:(double)arg1 layoutContext:(id)arg2;
 - (id)component;
 - (id)componentLayout;
@@ -40,6 +41,7 @@
 - (void)saveInfo:(id)arg1 forRenderingPhaseWithIdentifier:(id)arg2;
 - (void)setSuggestedSize:(struct CGSize { double x1; double x2; })arg1;
 - (unsigned long long)shouldIgnoreMarginsForColumnLayout:(id)arg1;
+- (unsigned long long)shouldIgnoreViewportPaddingForColumnLayout:(id)arg1;
 - (id)snapLines;
 - (struct CGSize { double x1; double x2; })suggestedSize;
 

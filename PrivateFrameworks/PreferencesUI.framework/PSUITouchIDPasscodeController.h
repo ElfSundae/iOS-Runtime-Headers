@@ -21,6 +21,7 @@
 - (void)addEnrollment:(id)arg1;
 - (void)backgrounded:(id)arg1;
 - (id)biometricLogo;
+- (void)cancelModalFlow;
 - (void)dealloc;
 - (void)enrollBiometric;
 - (void)enrollResult:(int)arg1 bkIdentity:(id)arg2;

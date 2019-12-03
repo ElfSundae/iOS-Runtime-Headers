@@ -16,10 +16,12 @@
 - (void)dealloc;
 - (void)detachFromFigCaptureSession:(struct OpaqueFigCaptureSession { }*)arg1;
 - (void)detachSafelyFromFigCaptureSession:(struct OpaqueFigCaptureSession { }*)arg1;
+- (void)handleChangedActiveFormat:(id)arg1 forDevice:(id)arg2;
 - (id)initSubclass;
 - (void)performFigCaptureSessionOperationSafelyUsingBlock:(id /* block */)arg1;
 - (id)ports;
 - (id)session;
 - (void)setSession:(id)arg1;
+- (id)videoDevice;
 
 @end

@@ -12,11 +12,13 @@
 @property (nonatomic, retain) NSMutableArray *languages;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
 + (Class)languageType;
 
 - (void).cxx_destruct;
 - (void)addLanguage:(id)arg1;
 - (void)clearLanguages;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -28,6 +30,7 @@
 - (id)languages;
 - (unsigned long long)languagesCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setIdentifier:(unsigned int)arg1;
 - (void)setLanguages:(id)arg1;

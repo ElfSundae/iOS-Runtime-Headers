@@ -24,11 +24,13 @@
 + (id)titleString;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_contentSizeDidChange;
 - (void)_showAllHeaderButtonTapped;
 - (void)_updateServiceHourRows;
 - (void)captureCloseAnalytics;
 - (id)infoCardChildPossibleActions;
+- (id)infoCardChildUnactionableUIElements;
 - (id)initWithMapItem:(id)arg1 type:(long long)arg2;
 - (id)mapItem;
 - (id)placeServiceDelegate;
@@ -37,6 +39,7 @@
 - (void)setPlaceServiceDelegate:(id)arg1;
 - (void)setScrollView:(id)arg1;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;
 
 @end

@@ -64,9 +64,13 @@
 // Image: /System/Library/Frameworks/CoreData.framework/CoreData
 
 - (bool)_isForeignObjectExpression:(id)arg1 givenContext:(id)arg2;
+- (id)_keypathsForDerivedPropertyValidation:(id*)arg1;
 - (id)minimalFormInContext:(id)arg1;
 
 // Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
+
++ (id)hk_equalityPredicateWithKey:(id)arg1 value:(id)arg2;
++ (id)hk_inequalityPredicateWithKey:(id)arg1 value:(id)arg2 ascending:(bool)arg3;
 
 - (id)_parseComparisonPredicateWithKeyPath:(id)arg1 predicateOperatorType:(unsigned long long)arg2 value:(id)arg3 dataTypes:(id)arg4 filterClasses:(id)arg5;
 - (id)hk_filterRepresentationForDataTypes:(id)arg1 filterClasses:(id)arg2;
@@ -93,6 +97,14 @@
 - (id)_parseListContainsAnyFiltersWithTranslator:(id)arg1 withError:(id*)arg2;
 - (id)_parseListContainsFiltersWithTranslator:(id)arg1 withError:(id*)arg2;
 - (id)_parseNearFiltersWithTranslator:(id)arg1 withError:(id*)arg2;
+
+// Image: /System/Library/PrivateFrameworks/Email.framework/Email
+
+- (id)em_searchableIndexQueryGenerator;
+
+// Image: /System/Library/PrivateFrameworks/EmailFoundation.framework/EmailFoundation
+
+- (id)predicateNodeFromPropertyMapper:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon
 

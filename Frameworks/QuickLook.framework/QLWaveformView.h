@@ -2,22 +2,36 @@
    Image: /System/Library/Frameworks/QuickLook.framework/QuickLook
  */
 
-@interface QLWaveformView : UIView {
+@interface QLWaveformView : UIView <PHVideoScrubberFilmstripView> {
     AVAsset * _asset;
     UIView * _lineView;
-    UIImage * _placeholderImage;
-    struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } * _visibleRect;
     UIImage * _waveImage;
     struct CGSize { 
         double width; 
         double height; 
     }  _waveSize;
     UIImageView * _waveView;
+    UIImage * placeholderImage;
+    struct CGRect { 
+        struct CGPoint { 
+            double x; 
+            double y; 
+        } origin; 
+        struct CGSize { 
+            double width; 
+            double height; 
+        } size; 
+    }  visibleRect;
 }
 
-@property (nonatomic, retain) AVAsset *asset;
-@property (retain) UIImage *placeholderImage;
-@property struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*visibleRect;
+@property (nonatomic, copy) AVAsset *asset;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, retain) UIImage *placeholderImage;
+@property (readonly) Class superclass;
+@property (nonatomic, copy) AVVideoComposition *videoComposition;
+@property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } visibleRect;
 
 - (void).cxx_destruct;
 - (void)_expandWaveform;
@@ -27,8 +41,8 @@
 - (id)placeholderImage;
 - (void)setAsset:(id)arg1;
 - (void)setPlaceholderImage:(id)arg1;
-- (void)setVisibleRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg1;
+- (void)setVisibleRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)updateImage;
-- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)visibleRect;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })visibleRect;
 
 @end

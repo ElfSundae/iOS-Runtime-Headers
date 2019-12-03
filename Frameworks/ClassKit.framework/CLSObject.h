@@ -7,8 +7,10 @@
     struct NSMutableDictionary { Class x1; } * _childrenByID;
     CLSDataStore * _dataStore;
     NSDate * _dateCreated;
+    NSDate * _dateExpires;
     NSDate * _dateLastModified;
     bool  _deleted;
+    bool  _enforceImmutablility;
     unsigned int  _generation;
     struct os_unfair_recursive_lock_s { 
         struct os_unfair_lock_s { 
@@ -26,10 +28,12 @@
 @property (nonatomic, copy) NSString *appIdentifier;
 @property (nonatomic) CLSDataStore *dataStore;
 @property (nonatomic, retain) NSDate *dateCreated;
+@property (nonatomic, retain) NSDate *dateExpires;
 @property (nonatomic, retain) NSDate *dateLastModified;
 @property (readonly, copy) NSString *debugDescription;
 @property (getter=isDeleted, nonatomic) bool deleted;
 @property (readonly, copy) NSString *description;
+@property (getter=isImmutablilityEnforced, nonatomic) bool enforceImmutablility;
 @property unsigned int generation;
 @property (readonly) unsigned long long hash;
 @property (getter=isModified, nonatomic) bool modified;
@@ -39,6 +43,8 @@
 @property (readonly) Class superclass;
 @property (getter=isTemporary, nonatomic) bool temporary;
 @property (nonatomic, readonly) id vertexID;
+
+// Image: /System/Library/Frameworks/ClassKit.framework/ClassKit
 
 + (id)dateFormatter;
 + (id)relations;
@@ -56,6 +62,7 @@
 - (id)childrenPassingTest:(id /* block */)arg1;
 - (id)dataStore;
 - (id)dateCreated;
+- (id)dateExpires;
 - (id)dateLastModified;
 - (id)description;
 - (id)dictionaryRepresentation;
@@ -70,6 +77,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDeletedObjectID:(id)arg1;
 - (bool)isDeleted;
+- (bool)isImmutablilityEnforced;
 - (bool)isModified;
 - (bool)isTemporary;
 - (void)lock;
@@ -82,8 +90,10 @@
 - (void)setAppIdentifier:(id)arg1;
 - (void)setDataStore:(id)arg1;
 - (void)setDateCreated:(id)arg1;
+- (void)setDateExpires:(id)arg1;
 - (void)setDateLastModified:(id)arg1;
 - (void)setDeleted:(bool)arg1;
+- (void)setEnforceImmutablility:(bool)arg1;
 - (void)setGeneration:(unsigned int)arg1;
 - (void)setModified:(bool)arg1;
 - (void)setObjectID:(id)arg1;
@@ -94,5 +104,9 @@
 - (bool)validateObject:(id*)arg1;
 - (id)vertexID;
 - (void)willSaveObject;
+
+// Image: /System/Library/PrivateFrameworks/ContactsAutocomplete.framework/ContactsAutocomplete
+
+- (void)acceptVisitor:(id)arg1;
 
 @end

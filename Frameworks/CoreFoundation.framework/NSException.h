@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
  */
 
-@interface NSException : NSObject <NSCoding, NSCopying> {
+@interface NSException : NSObject <NSCopying, NSSecureCoding> {
     NSString * name;
     NSString * reason;
     id  reserved;
@@ -14,15 +14,17 @@
 @property (readonly, copy) NSString *name;
 @property (readonly, copy) NSString *reason;
 @property (readonly, copy) NSDictionary *userInfo;
-@property (readonly, copy) NSString *xct_formattedDescription;
 
 // Image: /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
 
 + (id)exceptionWithName:(id)arg1 reason:(id)arg2 userInfo:(id)arg3;
 + (void)raise:(id)arg1 format:(id)arg2;
 + (void)raise:(id)arg1 format:(id)arg2 arguments:(char *)arg3;
++ (bool)supportsSecureCoding;
 
 - (bool)_installStackTraceKeyIfNeeded;
+- (bool)_isUnarchived;
+- (void)_markAsUnarchived;
 - (id)callStackReturnAddresses;
 - (id)callStackSymbols;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -42,61 +44,38 @@
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
++ (bool)supportsSecureCoding;
+
 - (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)replacementObjectForPortCoder:(id)arg1;
 
-// Image: /System/Library/Frameworks/ModelIO.framework/ModelIO
+// Image: /System/Library/PrivateFrameworks/AppAnalytics.framework/AppAnalytics
 
-+ (bool)mdltsu_catchExceptionsInBlock:(id /* block */)arg1 error:(id*)arg2;
-+ (void)mdltsu_raiseWithError:(id)arg1;
++ (bool)__aa_tryCatch:(id /* block */)arg1 error:(id*)arg2;
 
-- (id)mdltsu_error;
+// Image: /System/Library/PrivateFrameworks/BookUtility.framework/BookUtility
 
-// Image: /System/Library/PrivateFrameworks/IMSharedUtilities.framework/Frameworks/XCTest.framework/XCTest
++ (void)bu_raiseWithError:(id)arg1;
 
-- (id)xct_formattedDescription;
-
-// Image: /System/Library/PrivateFrameworks/Memories.framework/Memories
-
-+ (void)errnoRaise:(id)arg1 format:(id)arg2;
-
-- (int)localErrno;
+- (id)bu_error;
 
 // Image: /System/Library/PrivateFrameworks/NanoRegistry.framework/NanoRegistry
 
 - (id)nr_safeDescription;
-
-// Image: /System/Library/PrivateFrameworks/News/AppAnalytics.framework/AppAnalytics
-
-+ (bool)aa_tryCatch:(id /* block */)arg1 error:(id*)arg2;
-
-// Image: /System/Library/PrivateFrameworks/News/TeaFoundation.framework/TeaFoundation
-
-+ (void)tf_throw:(id)arg1;
-+ (bool)tf_tryCatch:(id /* block */)arg1 error:(id*)arg2;
 
 // Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
 
 + (void)sfu_errnoRaise:(id)arg1 format:(id)arg2;
 + (void)tsu_raiseWithError:(id)arg1;
 
-- (id)gsu_descriptionWithStacktrace;
 - (int)sfu_localErrno;
 - (id)tsu_error;
 
 // Image: /System/Library/PrivateFrameworks/PairedSync.framework/PairedSync
 
 - (id)psy_safeDescription;
-
-// Image: /System/Library/PrivateFrameworks/Stocks/AppAnalytics.framework/AppAnalytics
-
-+ (bool)aa_tryCatch:(id /* block */)arg1 error:(id*)arg2;
-
-// Image: /System/Library/PrivateFrameworks/Stocks/TeaFoundation.framework/TeaFoundation
-
-+ (bool)tf_tryCatch:(id /* block */)arg1 error:(id*)arg2;
 
 // Image: /System/Library/PrivateFrameworks/TSUtility.framework/TSUtility
 
@@ -105,6 +84,11 @@
 
 - (int)localErrno;
 - (id)tsu_error;
+
+// Image: /System/Library/PrivateFrameworks/TeaFoundation.framework/TeaFoundation
+
++ (void)tf_throw:(id)arg1;
++ (bool)tf_tryCatch:(id /* block */)arg1 error:(id*)arg2;
 
 // Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
 

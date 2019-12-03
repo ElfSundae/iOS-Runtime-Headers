@@ -2,13 +2,14 @@
    Image: /System/Library/Frameworks/Photos.framework/Photos
  */
 
-@interface PHLocallyAvailableResourceBag : NSObject <PHRecyclableObject> {
+@interface PHLocallyAvailableResourceBag : NSObject <NSCopying, PHRecyclableObject> {
     <PLAssetID> * _assetID;
     <PLResourceDataStore> * _dataStore;
     <PLResourceDataStoreKey> * _dataStoreKey;
     bool  _isDefaultOrientation;
     bool  _isDegraded;
     bool  _isPrimaryFormat;
+    bool  _keyIsHintBased;
 }
 
 @property (nonatomic, retain) <PLAssetID> *assetID;
@@ -20,15 +21,19 @@
 @property (nonatomic) bool isDefaultOrientation;
 @property (nonatomic) bool isDegraded;
 @property (nonatomic) bool isPrimaryFormat;
+@property (nonatomic) bool keyIsHintBased;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)assetID;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dataStore;
 - (id)dataStoreKey;
+- (id)description;
 - (bool)isDefaultOrientation;
 - (bool)isDegraded;
 - (bool)isPrimaryFormat;
+- (bool)keyIsHintBased;
 - (void)prepareForReuse;
 - (id)resourceData;
 - (id)resourceURL;
@@ -38,5 +43,6 @@
 - (void)setIsDefaultOrientation:(bool)arg1;
 - (void)setIsDegraded:(bool)arg1;
 - (void)setIsPrimaryFormat:(bool)arg1;
+- (void)setKeyIsHintBased:(bool)arg1;
 
 @end

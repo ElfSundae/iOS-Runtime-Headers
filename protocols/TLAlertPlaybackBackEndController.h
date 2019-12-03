@@ -6,7 +6,7 @@
 @required
 
 - (void)playAlert:(void *)arg1 withCompletionHandler:(void *)arg2; // needs 2 arg types, found 8: TLAlert *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, long long, NSError *, void*
-- (void)stopPlayingAlerts:(void *)arg1 withOptions:(void *)arg2 playbackCompletionType:(void *)arg3 completionHandler:(void *)arg4; // needs 4 arg types, found 9: NSArray *, TLAlertStoppingOptions *, long long, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, void*
+- (void)stopPlayingAlerts:(void *)arg1 withOptions:(void *)arg2 playbackCompletionType:(void *)arg3 willStopAlertsHandler:(void *)arg4 completionHandler:(void *)arg5; // needs 5 arg types, found 15: NSArray *, TLAlertStoppingOptions *, long long, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, void*, id /* block */, void*, void, id /* block */, bool, void*
 
 @optional
 

@@ -17,6 +17,7 @@
 @property (readonly) bool canUndo;
 @property (readonly) long long groupingLevel;
 @property bool groupsByEvent;
+@property (nonatomic, readonly) bool ic_isUndoingOrRedoing;
 @property unsigned long long levelsOfUndo;
 @property (readonly) bool redoActionIsDiscardable;
 @property (readonly, copy) NSString *redoActionName;
@@ -34,6 +35,8 @@
 + (void)_endTopLevelGroupings;
 + (void)_setEndsTopLevelGroupingsAfterRunLoopIterations:(bool)arg1;
 
+- (void)__redoCommonDoSingle:(bool)arg1;
+- (void)__redoSingle;
 - (void)_cancelAutomaticTopLevelGroupEnding;
 - (void)_commitUndoGrouping;
 - (void)_delayAutomaticTermination:(double)arg1;
@@ -89,5 +92,12 @@
 // Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
 
 - (bool)ic_isUndoingOrRedoing;
+- (void)ic_performUndoGroup:(id /* block */)arg1;
+- (void)ic_performUndoGroupWithActionName:(id)arg1 undoGroup:(id /* block */)arg2;
+
+// Image: /System/Library/PrivateFrameworks/WorkflowUI.framework/WorkflowUI
+
+- (void)addActionWithName:(id)arg1 undoHandler:(id /* block */)arg2;
+- (void)wf_performBlock:(id /* block */)arg1;
 
 @end

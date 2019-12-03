@@ -4,10 +4,10 @@
 
 @interface GEOStateTransitionFeedback : PBCodable <NSCopying> {
     struct { 
-        unsigned int newValue : 1; 
-        unsigned int oldValue : 1; 
-        unsigned int stateType : 1; 
-    }  _has;
+        unsigned int has_newValue : 1; 
+        unsigned int has_oldValue : 1; 
+        unsigned int has_stateType : 1; 
+    }  _flags;
     int  _newValue;
     int  _oldValue;
     int  _stateType;
@@ -19,6 +19,8 @@
 @property (nonatomic) int newValue;
 @property (nonatomic) int oldValue;
 @property (nonatomic) int stateType;
+
++ (bool)isValid:(id)arg1;
 
 - (int)StringAsNewValue:(id)arg1;
 - (int)StringAsOldValue:(id)arg1;
@@ -37,6 +39,7 @@
 - (id)newValueAsString:(int)arg1;
 - (int)oldValue;
 - (id)oldValueAsString:(int)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasNewValue:(bool)arg1;
 - (void)setHasOldValue:(bool)arg1;

@@ -8,9 +8,10 @@
 }
 
 + (id)activeInstance;
++ (bool)keyboardInputMode:(id)arg1 supportsResizingOffsetForScreenTraits:(id)arg2;
 + (struct CGSize { double x1; double x2; })keyboardSizeForInputMode:(id)arg1 screenTraits:(id)arg2 keyboardType:(long long)arg3;
 
-- (int)_clipCornersOfView:(id)arg1;
+- (unsigned long long)_clipCornersOfView:(id)arg1;
 - (void)_moveWithEvent:(id)arg1;
 - (id)currentKeyplane;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })dragGestureRectInView:(id)arg1;

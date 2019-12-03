@@ -4,22 +4,8 @@
 
 @interface PDFPageLayerEffectPrivate : NSObject {
     PDFAnnotation * annotation;
-    struct CGImage { } * lollipopImageMask;
-    CALayer * lollipopMagnifierLayer;
-    struct CGSize { 
-        double width; 
-        double height; 
-    }  lollipopSize;
-    LoupeRenderRequest * loupeRenderRequest;
-    struct os_unfair_lock_s { 
-        unsigned int _os_unfair_lock_opaque; 
-    }  loupeRenderRequestLock;
-    struct CGImage { } * magnifierImageMask;
-    struct CGSize { 
-        double width; 
-        double height; 
-    }  magnifierSize;
     NSMutableDictionary * markupEffectLayers;
+    PDFPageLayerEffect * noteLayer;
     struct CGRect { 
         struct CGPoint { 
             double x; 
@@ -30,41 +16,13 @@
             double height; 
         } size; 
     }  pageFrame;
-    struct { 
-        bool isOnFirstPage; 
-        bool isOnLastPage; 
-        struct CGRect { 
-            struct CGPoint { 
-                double x; 
-                double y; 
-            } origin; 
-            struct CGSize { 
-                double width; 
-                double height; 
-            } size; 
-        } firstPageRect; 
-        struct CGRect { 
-            struct CGPoint { 
-                double x; 
-                double y; 
-            } origin; 
-            struct CGSize { 
-                double width; 
-                double height; 
-            } size; 
-        } lastPageRect; 
-    }  pageInfo;
     <PDFPageLayerInterface> * pageLayer;
+    PDFScannerResult * pdfResult;
     CALayer * rootSelectionLayer;
-    PDFSelection * selection;
     NSMutableDictionary * selectionEffectLayers;
-    CALayer * selectionEndHandle;
-    CALayer * selectionStartHandle;
+    NSMutableArray * selections;
     bool  shouldRotateContent;
-    bool  showTextSelectionHandle;
-    CALayer * textMagnifierLayer;
     NSUUID * uuid;
-    PDFTimer * zoomTimer;
 }
 
 - (void).cxx_destruct;

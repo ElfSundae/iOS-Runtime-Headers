@@ -16,7 +16,7 @@
 + (id)messageWithOriginIdentifier:(id)arg1;
 
 - (void).cxx_destruct;
-- (id)initWithOriginIdentifier:(id)arg1;
+- (id)_initWithOriginIdentifier:(id)arg1;
 - (id)initWithProtobufData:(id)arg1;
 - (id)originIdentifier;
 - (id)protobufData;

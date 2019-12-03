@@ -17,6 +17,7 @@
 - (void)fetchPasswordCredentialForPersistentIdentifier:(id)arg1 withResultHandler:(id /* block */)arg2;
 - (void)lookupCredentialsForServiceIdentifiers:(id)arg1 withResultHandler:(id /* block */)arg2;
 - (void)removeCredentialWithPersistentIdentifier:(id)arg1 withResultHandler:(id /* block */)arg2;
+- (void)replaceCredential:(id)arg1 withNewCredential:(id)arg2 resultHandler:(id /* block */)arg3;
 - (void)replaceOldCredential:(id)arg1 withNewCredential:(id)arg2 resultHandler:(id /* block */)arg3;
 - (id)serverProxyWithBooleanHandler:(id /* block */)arg1;
 - (id)serverProxyWithDualResultHandler:(id /* block */)arg1;

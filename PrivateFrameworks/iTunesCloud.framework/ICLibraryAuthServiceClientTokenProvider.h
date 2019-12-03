@@ -2,27 +2,46 @@
    Image: /System/Library/PrivateFrameworks/iTunesCloud.framework/iTunesCloud
  */
 
-@interface ICLibraryAuthServiceClientTokenProvider : NSObject {
+@interface ICLibraryAuthServiceClientTokenProvider : NSObject <ICLibraryAuthServiceClientTokenProviderProtocol, NSXPCListenerDelegate> {
     NSObject<OS_dispatch_queue> * _accessQueue;
-    NSString * _cachedClientToken;
-    NSDate * _cachedClientTokenExpiration;
-    NSNumber * _cachedDSID;
-    NSObject<OS_dispatch_queue> * _calloutQueue;
-    NSObject<OS_dispatch_queue> * _delayQueue;
+    NSMutableSet * _dsidsToExcludeFromAutoRefresh;
+    bool  _isService;
     NSOperationQueue * _operationQueue;
-    id /* block */  _requestDelayBlock;
+    AFMultiUserConnection * _siriConnection;
+    NSMutableDictionary * _tokenCache;
+    NSXPCConnection * _xpcClientConnection;
+    NSMutableSet * _xpcConnections;
+    NSXPCListener * _xpcServiceListener;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)sharedProvider;
 
 - (void).cxx_destruct;
-- (id)_activeAccountDSID;
-- (void)_handleITunesStoreAccountsChanged;
-- (void)_handleRequestTokenForExternalRequest:(bool)arg1;
-- (void)_handleTokenResponse:(id)arg1 tokenRequest:(id)arg2;
-- (id /* block */)_requestTokenWithDelay:(long long)arg1 forExternalRequest:(bool)arg2;
-- (void)_userIdentityStoreDidChangeNotification:(id)arg1;
+- (void)_addConnection:(id)arg1;
+- (id)_clientConnection;
+- (void)_commitCache;
+- (void)_handleLibraryAuthServiceClientTokenDidChangeDistributedNotification:(id)arg1;
+- (void)_loadCache;
+- (void)_refreshTokenForDSID:(id)arg1 forExternalRequest:(bool)arg2 completion:(id /* block */)arg3;
+- (void)_refreshTokensForDSIDs:(id)arg1 forExternalRequest:(bool)arg2 completion:(id /* block */)arg3;
+- (void)_removeConnection:(id)arg1;
+- (void)_updateRefreshTimer;
+- (void)addTokenResult:(id)arg1 forDSID:(id)arg2 completion:(id /* block */)arg3;
 - (id)cachedTokenAndResetCache:(bool)arg1;
+- (void)dealloc;
+- (void)getAllTokensForAssistantForcingRefresh:(bool)arg1 completion:(id /* block */)arg2;
+- (void)getTokenForDSID:(id)arg1 forceRefresh:(bool)arg2 completion:(id /* block */)arg3;
+- (void)getTokenForcingRefresh:(bool)arg1 completion:(id /* block */)arg2;
+- (void)getTokenResultForDSID:(id)arg1 forceRefresh:(bool)arg2 completion:(id /* block */)arg3;
+- (void)getTokenResultsForDSIDs:(id)arg1 forceRefresh:(bool)arg2 completion:(id /* block */)arg3;
 - (id)init;
+- (bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
+- (void)startService;
+- (void)stopService;
 
 @end

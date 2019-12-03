@@ -3,6 +3,7 @@
  */
 
 @interface _INPBGetCarPowerLevelStatusIntentResponse : PBCodable <NSCopying, NSSecureCoding, _INPBGetCarPowerLevelStatusIntentResponse> {
+    bool  __encodeLegacyGloryData;
     _INPBDouble * _chargePercentRemaining;
     bool  _charging;
     _INPBDistance * _distanceRemaining;
@@ -13,6 +14,7 @@
     _INPBInteger * _minutesToFull;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic, retain) _INPBDouble *chargePercentRemaining;
 @property (nonatomic) bool charging;
 @property (readonly, copy) NSString *debugDescription;
@@ -28,12 +30,17 @@
 @property (nonatomic, retain) _INPBInteger *minutesToFull;
 @property (readonly) Class superclass;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)chargePercentRemaining;
 - (bool)charging;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (id)distanceRemaining;
+- (void)encodeWithCoder:(id)arg1;
 - (id)fuelPercentRemaining;
 - (bool)hasChargePercentRemaining;
 - (bool)hasCharging;
@@ -41,6 +48,7 @@
 - (bool)hasFuelPercentRemaining;
 - (bool)hasMinutesToFull;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)minutesToFull;
 - (bool)readFrom:(id)arg1;

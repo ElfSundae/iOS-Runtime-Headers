@@ -44,10 +44,6 @@
     NSLayoutConstraint * _leadingInset;
     FUFlightLeg * _leg;
     bool  _multiFlights;
-    FUSeparator * _sep1;
-    FUSeparator * _sep2;
-    FUSeparator * _sep3;
-    FUSeparator * _sep4;
     FUSeparator * _sep5;
     unsigned long long  _style;
     FUStyleProvider * _styleProvider;
@@ -92,10 +88,6 @@
 @property FULabel *labelStatusTitle;
 @property (nonatomic, retain) NSLayoutConstraint *leadingInset;
 @property (nonatomic, readonly) FUFlightLeg *leg;
-@property FUSeparator *sep1;
-@property FUSeparator *sep2;
-@property FUSeparator *sep3;
-@property FUSeparator *sep4;
 @property FUSeparator *sep5;
 @property (nonatomic) unsigned long long style;
 @property (nonatomic, retain) NSLayoutConstraint *trailingInset;
@@ -103,6 +95,7 @@
 + (id)flightViewForStyle:(unsigned long long)arg1 compact:(bool)arg2;
 
 - (void).cxx_destruct;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (void)addDateTimeAttributesToString:(id)arg1 striked:(bool)arg2 alignment:(long long)arg3;
 - (id)arrivalDelayConstraint;
 - (id)arrivalGateConstraint;
@@ -115,6 +108,7 @@
 - (id)departureDelayConstraint;
 - (id)departureGateConstraint;
 - (id)departureTerminalConstraint;
+- (void)didMoveToWindow;
 - (id)flight;
 - (id)flightButton;
 - (void)flightButtonTapped:(id)arg1;
@@ -146,10 +140,6 @@
 - (id)labelStatusTitle;
 - (id)leadingInset;
 - (id)leg;
-- (id)sep1;
-- (id)sep2;
-- (id)sep3;
-- (id)sep4;
 - (id)sep5;
 - (void)setArrivalDelayConstraint:(id)arg1;
 - (void)setArrivalGateConstraint:(id)arg1;
@@ -188,16 +178,13 @@
 - (void)setLabelStatus:(id)arg1;
 - (void)setLabelStatusTitle:(id)arg1;
 - (void)setLeadingInset:(id)arg1;
-- (void)setSep1:(id)arg1;
-- (void)setSep2:(id)arg1;
-- (void)setSep3:(id)arg1;
-- (void)setSep4:(id)arg1;
 - (void)setSep5:(id)arg1;
 - (void)setStyle:(unsigned long long)arg1;
 - (void)setTrailingInset:(id)arg1;
 - (void)setupLabelStylesWithStyle:(unsigned long long)arg1;
 - (double)standardTableCellContentInset;
 - (unsigned long long)style;
+- (void)tlk_updateForAppearance:(id)arg1;
 - (id)trailingInset;
 - (void)updateAirlineInformation;
 - (void)updateDateTimeForDeparture:(bool)arg1;

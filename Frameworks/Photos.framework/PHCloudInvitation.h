@@ -53,5 +53,6 @@
 - (id)inviteePhones;
 - (id)inviteeSubscriptionDate;
 - (bool)isMine;
+- (id)personInfoManager;
 
 @end

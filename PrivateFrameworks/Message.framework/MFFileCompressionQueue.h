@@ -2,38 +2,32 @@
    Image: /System/Library/PrivateFrameworks/Message.framework/Message
  */
 
-@interface MFFileCompressionQueue : NSObject {
-    bool  _activityCreated;
+@interface MFFileCompressionQueue : NSObject <EFLoggable> {
     NSMutableArray * _fileCompressionQueue;
-    NSObject<OS_os_activity> * _fileCompressionQueueActivity;
-    NSLock * _fileCompressionQueueLock;
-    NSObject<OS_os_activity> * _libraryCompressionActivity;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _fileCompressionQueueLock;
 }
 
-@property (nonatomic) bool activityCreated;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, retain) NSMutableArray *fileCompressionQueue;
-@property (nonatomic, retain) NSObject<OS_os_activity> *fileCompressionQueueActivity;
-@property (nonatomic, retain) NSLock *fileCompressionQueueLock;
-@property (nonatomic, retain) NSObject<OS_os_activity> *libraryCompressionActivity;
+@property (nonatomic) struct os_unfair_lock_s { unsigned int x1; } fileCompressionQueueLock;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
++ (id)log;
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
-- (bool)activityCreated;
 - (void)addFile:(id)arg1;
-- (void)createCompressionActivity;
 - (id)fileCompressionQueue;
-- (id)fileCompressionQueueActivity;
-- (id)fileCompressionQueueLock;
+- (struct os_unfair_lock_s { unsigned int x1; })fileCompressionQueueLock;
 - (bool)hasNext;
 - (id)init;
-- (id)libraryCompressionActivity;
 - (id)nextFile;
-- (void)setActivityCreated:(bool)arg1;
 - (void)setFileCompressionQueue:(id)arg1;
-- (void)setFileCompressionQueueActivity:(id)arg1;
-- (void)setFileCompressionQueueLock:(id)arg1;
-- (void)setLibraryCompressionActivity:(id)arg1;
+- (void)setFileCompressionQueueLock:(struct os_unfair_lock_s { unsigned int x1; })arg1;
 - (long long)size;
 
 @end

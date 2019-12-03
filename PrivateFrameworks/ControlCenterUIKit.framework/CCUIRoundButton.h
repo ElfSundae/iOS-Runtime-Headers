@@ -10,10 +10,12 @@
     CCUICAPackageView * _glyphPackageView;
     NSString * _glyphState;
     UIColor * _highlightColor;
+    UILongPressGestureRecognizer * _longPressGestureRecognizer;
     UIView * _normalStateBackgroundView;
     UIImageView * _selectedGlyphView;
     UIView * _selectedStateBackgroundView;
     bool  _useAlternateBackground;
+    MTVisualStylingProvider * _visualStylingProvider;
 }
 
 @property (nonatomic, retain) UIView *alternateSelectedStateBackgroundView;
@@ -35,13 +37,13 @@
 - (void).cxx_destruct;
 - (double)_cornerRadius;
 - (void)_deactivateReachability:(id)arg1;
-- (void)_handlePressGesture:(id)arg1;
 - (void)_primaryActionPerformed:(id)arg1;
 - (void)_setCornerRadius:(double)arg1;
 - (void)_updateForStateChange;
+- (void)_updateVisualStylingOfGlyphView:(id)arg1;
 - (id)alternateSelectedStateBackgroundView;
 - (void)dealloc;
-- (bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (void)didMoveToWindow;
 - (bool)gestureRecognizerShouldBegin:(id)arg1;
 - (id)glyphImage;
 - (id)glyphImageView;

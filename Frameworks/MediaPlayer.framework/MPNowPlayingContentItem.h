@@ -9,6 +9,7 @@
 
 @property (nonatomic, copy) NSString *albumArtistName;
 @property (nonatomic, copy) NSString *albumName;
+@property (nonatomic, copy) NSString *albumYear;
 @property (getter=isAlwaysLiveItem, nonatomic) bool alwaysLiveItem;
 @property (nonatomic, retain) MPMediaItemArtwork *artwork;
 @property (nonatomic, retain) <MPNowPlayingContentItemArtworkDataSource> *artworkDataSource;
@@ -41,6 +42,7 @@
 @property (nonatomic, copy) NSString *info;
 @property (nonatomic) long long legacyUniqueID;
 @property (nonatomic, copy) NSString *localizedContentRating;
+@property (nonatomic, copy) NSString *localizedDurationString;
 @property (nonatomic, copy) MPNowPlayingInfoLyricsItem *lyrics;
 @property (nonatomic) unsigned long long mediaType;
 @property (nonatomic, copy) NSDictionary *nowPlayingInfo;
@@ -69,12 +71,15 @@
 @property (nonatomic) long long trackNumber;
 @property (nonatomic, copy) NSDictionary *userInfo;
 
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
 + (bool)shouldPushArtworkData;
 
 - (void).cxx_destruct;
 - (void)_mergeContentItem:(id)arg1;
 - (id)albumArtistName;
 - (id)albumName;
+- (id)albumYear;
 - (id)artworkDataSource;
 - (id)artworkIdentifier;
 - (id)artworkURL;
@@ -84,6 +89,7 @@
 - (id)collectionIdentifier;
 - (id)collectionInfo;
 - (id)composerName;
+- (id)copyWithNewIdentifier:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)currentLanguageOptions;
 - (float)defaultPlaybackRate;
@@ -113,6 +119,7 @@
 - (bool)isSteerable;
 - (long long)legacyUniqueID;
 - (id)localizedContentRating;
+- (id)localizedDurationString;
 - (id)lyrics;
 - (unsigned long long)mediaType;
 - (id)nowPlayingInfo;
@@ -130,6 +137,7 @@
 - (id)seriesName;
 - (void)setAlbumArtistName:(id)arg1;
 - (void)setAlbumName:(id)arg1;
+- (void)setAlbumYear:(id)arg1;
 - (void)setAlwaysLiveItem:(bool)arg1;
 - (void)setArtwork:(id)arg1;
 - (void)setArtworkDataSource:(id)arg1;
@@ -161,6 +169,7 @@
 - (void)setInfo:(id)arg1;
 - (void)setLegacyUniqueID:(long long)arg1;
 - (void)setLocalizedContentRating:(id)arg1;
+- (void)setLocalizedDurationString:(id)arg1;
 - (void)setLyrics:(id)arg1;
 - (void)setMediaType:(unsigned long long)arg1;
 - (void)setNowPlayingInfo:(id)arg1;
@@ -198,5 +207,9 @@
 - (id)trackArtistName;
 - (long long)trackNumber;
 - (id)userInfo;
+
+// Image: /System/Library/PrivateFrameworks/PodcastsKit.framework/PodcastsKit
+
+- (void)updateNowPlayingInfoIfNeeded:(id)arg1;
 
 @end

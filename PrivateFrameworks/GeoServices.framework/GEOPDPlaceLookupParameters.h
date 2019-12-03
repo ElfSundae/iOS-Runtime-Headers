@@ -5,15 +5,29 @@
 @interface GEOPDPlaceLookupParameters : PBCodable <NSCopying> {
     bool  _enablePartialClientization;
     struct { 
-        unsigned int resultProviderId : 1; 
-        unsigned int enablePartialClientization : 1; 
-    }  _has;
+        unsigned int has_resultProviderId : 1; 
+        unsigned int has_enablePartialClientization : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_muids : 1; 
+        unsigned int read_identifiers : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_muids : 1; 
+        unsigned int wrote_identifiers : 1; 
+        unsigned int wrote_resultProviderId : 1; 
+        unsigned int wrote_enablePartialClientization : 1; 
+    }  _flags;
     NSMutableArray * _identifiers;
     struct { 
         unsigned long long *list; 
         unsigned long long count; 
         unsigned long long size; 
     }  _muids;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     int  _resultProviderId;
     PBUnknownFields * _unknownFields;
 }
@@ -28,12 +42,18 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 + (Class)identifierType;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsIdentifier:(id)arg1;
+- (void)_addNoFlagsMuid:(unsigned long long)arg1;
+- (void)_readIdentifiers;
+- (void)_readMuids;
 - (void)addIdentifier:(id)arg1;
 - (void)addMuid:(unsigned long long)arg1;
 - (void)clearIdentifiers;
 - (void)clearMuids;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -46,12 +66,15 @@
 - (id)identifierAtIndex:(unsigned long long)arg1;
 - (id)identifiers;
 - (unsigned long long)identifiersCount;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (id)initWithIdentifiers:(id)arg1 resultProviderID:(int)arg2;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)muidAtIndex:(unsigned long long)arg1;
 - (unsigned long long*)muids;
 - (unsigned long long)muidsCount;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (int)resultProviderId;
 - (void)setEnablePartialClientization:(bool)arg1;

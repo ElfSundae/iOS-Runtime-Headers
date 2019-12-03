@@ -6,13 +6,13 @@
     unsigned int  _duration;
     int  _endReason;
     struct { 
-        unsigned int startTime : 1; 
-        unsigned int duration : 1; 
-        unsigned int endReason : 1; 
-        unsigned int numberOfAlertingResponses : 1; 
-        unsigned int numberOfDoomRoutingRequests : 1; 
-        unsigned int predictedExitTime : 1; 
-    }  _has;
+        unsigned int has_startTime : 1; 
+        unsigned int has_duration : 1; 
+        unsigned int has_endReason : 1; 
+        unsigned int has_numberOfAlertingResponses : 1; 
+        unsigned int has_numberOfDoomRoutingRequests : 1; 
+        unsigned int has_predictedExitTime : 1; 
+    }  _flags;
     unsigned int  _numberOfAlertingResponses;
     unsigned int  _numberOfDoomRoutingRequests;
     NSMutableArray * _predictedDestinations;
@@ -34,6 +34,7 @@
 @property (nonatomic) unsigned int predictedExitTime;
 @property (nonatomic) double startTime;
 
++ (bool)isValid:(id)arg1;
 + (Class)predictedDestinationType;
 
 - (void).cxx_destruct;
@@ -62,6 +63,7 @@
 - (id)predictedDestinations;
 - (unsigned long long)predictedDestinationsCount;
 - (unsigned int)predictedExitTime;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setDuration:(unsigned int)arg1;
 - (void)setEndReason:(int)arg1;

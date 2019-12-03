@@ -8,7 +8,7 @@
     HMFTimer * advertisementTimer;
     HAPBTLECentralManager * centralManager;
     CUBLEAdvertiser * leAdvertiser;
-    HMFTimer * waitForReachableTimer;
+    HMDAccessoryQueues * powerOnQueues;
     NSObject<OS_dispatch_queue> * workQueue;
 }
 
@@ -21,21 +21,25 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) CUBLEAdvertiser *leAdvertiser;
 @property (nonatomic, retain) HMFUnfairLock *lock;
+@property (nonatomic, retain) HMDAccessoryQueues *powerOnQueues;
 @property (readonly, copy) NSString *privateDescription;
 @property (readonly, copy) NSString *propertyDescription;
 @property (readonly, copy) NSString *shortDescription;
 @property (readonly) Class superclass;
-@property (nonatomic, retain) HMFTimer *waitForReachableTimer;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *workQueue;
 
++ (id)initializeAdvertiser;
 + (id)sharedAdvertiser;
 
 - (void).cxx_destruct;
 - (void)_advertisementTimeout;
 - (void)_cancelOn:(id)arg1;
-- (void)_completePendingPowerOnRequest;
+- (void)_clearAdvertiser;
+- (void)_completePendingPowerOnRequest:(id)arg1;
+- (void)_flushQueue:(id)arg1;
+- (void)_flushQueues;
+- (void)_startAdvertising;
 - (void)_stopAdvertisement:(id)arg1;
-- (void)_wirelessReachabilityTimeout;
 - (id)accessory;
 - (id)advertisementTimer;
 - (void)cancelOn:(id)arg1;
@@ -45,17 +49,17 @@
 - (bool)isAdvertisingForAccessory:(id)arg1;
 - (id)leAdvertiser;
 - (id)lock;
-- (void)powerOn:(id)arg1 macAddress:(id)arg2;
+- (void)powerOn:(id)arg1;
+- (id)powerOnQueues;
 - (void)setAccessory:(id)arg1;
 - (void)setAdvertisementTimer:(id)arg1;
 - (void)setCentralManager:(id)arg1;
 - (void)setLeAdvertiser:(id)arg1;
 - (void)setLock:(id)arg1;
-- (void)setWaitForReachableTimer:(id)arg1;
+- (void)setPowerOnQueues:(id)arg1;
 - (void)setWorkQueue:(id)arg1;
 - (void)stopAdvertisement:(id)arg1;
 - (void)timerDidFire:(id)arg1;
-- (id)waitForReachableTimer;
 - (id)workQueue;
 
 @end

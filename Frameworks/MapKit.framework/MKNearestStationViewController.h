@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MapKit.framework/MapKit
  */
 
-@interface MKNearestStationViewController : UITableViewController <MKStackingViewControllerPreferredSizeUse, _MKInfoCardChildViewControllerAnalyticsDelegate> {
+@interface MKNearestStationViewController : UITableViewController <MKStackingViewControllerPreferredSizeUse> {
     <MKNearestStationViewControllerDelegate> * _delegate;
     NSString * _errorMessage;
     NSString * _lineName;

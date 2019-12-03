@@ -54,6 +54,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (void)addAttachmentsFromFilePaths:(id)arg1;
 - (void)addAttachmentsFromFileTransferGUIDs:(id)arg1;
 - (id)associatedMessageGUID;
 - (id)attachments;
@@ -66,6 +67,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1 additionalAllowedClasses:(id)arg2;
 - (id)initWithMessage:(id)arg1;
 - (id)initWithMessageItem:(id)arg1;
 - (bool)isEqual:(id)arg1;

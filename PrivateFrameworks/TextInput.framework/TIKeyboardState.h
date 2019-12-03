@@ -12,6 +12,7 @@
     }  _autocorrectionListUIState;
     NSDictionary * _autofillContext;
     unsigned long long  _autofillMode;
+    NSArray * _auxiliaryInputModeLanguages;
     NSString * _clientIdentifier;
     TIKeyboardCandidate * _currentCandidate;
     NSUUID * _documentIdentifier;
@@ -31,6 +32,7 @@
             unsigned int keyboardEventsLagging : 1; 
             unsigned int hardwareKeyboardMode : 1; 
             unsigned int splitKeyboardMode : 1; 
+            unsigned int floatingKeyboardMode : 1; 
             unsigned int wordLearningEnabled : 1; 
             unsigned int autocorrectionEnabled : 1; 
             unsigned int shortcutConversionEnabled : 1; 
@@ -41,6 +43,7 @@
             unsigned int longPredictionListEnabled : 1; 
             unsigned int needAutofill : 1; 
             unsigned int needOneTimeCodeAutofill : 1; 
+            unsigned int landscapeOrientation : 1; 
         } fields; 
     }  _mask;
     NSString * _recipientIdentifier;
@@ -59,12 +62,14 @@
 @property (nonatomic) bool autocorrectionListUIDisplayed;
 @property (nonatomic, retain) NSDictionary *autofillContext;
 @property (nonatomic) unsigned long long autofillMode;
+@property (nonatomic, copy) NSArray *auxiliaryInputModeLanguages;
 @property (nonatomic) bool canSendCurrentLocation;
 @property (nonatomic) bool candidateSelectionPredictionEnabled;
 @property (nonatomic, copy) NSString *clientIdentifier;
 @property (nonatomic, retain) TIKeyboardCandidate *currentCandidate;
 @property (nonatomic, retain) NSUUID *documentIdentifier;
 @property (nonatomic, retain) TIDocumentState *documentState;
+@property (nonatomic) bool floatingKeyboardMode;
 @property (nonatomic) bool hardwareKeyboardMode;
 @property (nonatomic, retain) TIInputContextHistory *inputContextHistory;
 @property (nonatomic, copy) NSString *inputForMarkedText;
@@ -73,6 +78,7 @@
 @property (nonatomic, retain) TIKeyboardLayout *keyLayout;
 @property (nonatomic) bool keyboardEventsLagging;
 @property (nonatomic) unsigned long long keyboardType;
+@property (nonatomic) bool landscapeOrientation;
 @property (nonatomic, copy) TIKeyboardLayoutState *layoutState;
 @property (nonatomic) bool longPredictionListEnabled;
 @property (nonatomic) bool needAutofill;
@@ -85,6 +91,7 @@
 @property (nonatomic) bool secureTextEntry;
 @property (nonatomic) int shiftState;
 @property (nonatomic) bool shortcutConversionEnabled;
+@property (nonatomic, readonly) bool shouldOutputFullwidthSpace;
 @property (nonatomic) bool shouldSkipCandidateSelection;
 @property (nonatomic) bool splitKeyboardMode;
 @property (nonatomic, copy) NSArray *supportedPayloadIds;
@@ -104,6 +111,7 @@
 - (bool)autocorrectionListUIDisplayed;
 - (id)autofillContext;
 - (unsigned long long)autofillMode;
+- (id)auxiliaryInputModeLanguages;
 - (bool)canSendCurrentLocation;
 - (bool)candidateSelectionPredictionEnabled;
 - (id)clientIdentifier;
@@ -113,6 +121,7 @@
 - (id)documentIdentifier;
 - (id)documentState;
 - (void)encodeWithCoder:(id)arg1;
+- (bool)floatingKeyboardMode;
 - (bool)hardwareKeyboardMode;
 - (id)initWithCoder:(id)arg1;
 - (id)inputContextHistory;
@@ -123,6 +132,7 @@
 - (id)keyLayout;
 - (bool)keyboardEventsLagging;
 - (unsigned long long)keyboardType;
+- (bool)landscapeOrientation;
 - (id)layoutState;
 - (bool)longPredictionListEnabled;
 - (bool)needAutofill;
@@ -140,12 +150,14 @@
 - (void)setAutocorrectionListUIDisplayed:(bool)arg1;
 - (void)setAutofillContext:(id)arg1;
 - (void)setAutofillMode:(unsigned long long)arg1;
+- (void)setAuxiliaryInputModeLanguages:(id)arg1;
 - (void)setCanSendCurrentLocation:(bool)arg1;
 - (void)setCandidateSelectionPredictionEnabled:(bool)arg1;
 - (void)setClientIdentifier:(id)arg1;
 - (void)setCurrentCandidate:(id)arg1;
 - (void)setDocumentIdentifier:(id)arg1;
 - (void)setDocumentState:(id)arg1;
+- (void)setFloatingKeyboardMode:(bool)arg1;
 - (void)setHardwareKeyboardMode:(bool)arg1;
 - (void)setInputContextHistory:(id)arg1;
 - (void)setInputForMarkedText:(id)arg1;
@@ -154,6 +166,7 @@
 - (void)setKeyLayout:(id)arg1;
 - (void)setKeyboardEventsLagging:(bool)arg1;
 - (void)setKeyboardType:(unsigned long long)arg1;
+- (void)setLandscapeOrientation:(bool)arg1;
 - (void)setLayoutState:(id)arg1;
 - (void)setLongPredictionListEnabled:(bool)arg1;
 - (void)setNeedAutofill:(bool)arg1;
@@ -175,6 +188,7 @@
 - (void)setWordLearningEnabled:(bool)arg1;
 - (int)shiftState;
 - (bool)shortcutConversionEnabled;
+- (bool)shouldOutputFullwidthSpace;
 - (bool)shouldSkipCandidateSelection;
 - (bool)splitKeyboardMode;
 - (id)supportedPayloadIds;

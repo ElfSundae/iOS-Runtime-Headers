@@ -15,8 +15,10 @@
 // Image: /System/Library/PrivateFrameworks/ContactsFoundation.framework/ContactsFoundation
 
 + (id)amb:(id)arg1;
++ (id)asyncScannerResultsInString:(id)arg1;
 + (id)binderTypeForResultType:(unsigned long long)arg1;
 + (id)combineLatest:(id)arg1;
++ (id)combineLatest:(id)arg1 resultScheduler:(id)arg2 schedulerProvider:(id)arg3;
 + (id)combineLatest:(id)arg1 schedulerProvider:(id)arg2;
 + (id)concatenate:(id)arg1;
 + (id)emptyObservable;
@@ -33,6 +35,7 @@
 + (id)observableWithEmailAddressesInString:(id)arg1;
 + (id)observableWithError:(id)arg1;
 + (id)observableWithFuture:(id)arg1;
++ (id)observableWithFuture:(id)arg1 schedulerProvider:(id)arg2;
 + (id)observableWithFutures:(id)arg1;
 + (id)observableWithFutures:(id)arg1 schedulerProvider:(id)arg2;
 + (id)observableWithInitialState:(id)arg1 condition:(id /* block */)arg2 nextState:(id /* block */)arg3 resultSelector:(id /* block */)arg4;
@@ -49,7 +52,10 @@
 + (id)observableWithScannerResultsInString:(id)arg1;
 + (id)observableWithScannerResultsOfType:(unsigned long long)arg1 inString:(id)arg2;
 + (id)observableWithTimeInterval:(double)arg1 scheduler:(id)arg2;
++ (id)os_log;
++ (id)os_log_protocol;
 + (id)progressiveForkJoin:(id)arg1 scheduler:(id)arg2;
++ (id)scannerResultsInString:(id)arg1;
 + (void)sendNextTimestampFromQueue:(id)arg1 toObserver:(id)arg2 untilCanceled:(id)arg3 scheduler:(id)arg4;
 + (id)timerWithDelay:(double)arg1;
 + (id)timerWithDelay:(double)arg1 scheduler:(id)arg2;

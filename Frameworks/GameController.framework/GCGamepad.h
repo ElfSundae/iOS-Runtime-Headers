@@ -2,20 +2,36 @@
    Image: /System/Library/Frameworks/GameController.framework/GameController
  */
 
-@interface GCGamepad : NSObject
+@interface GCGamepad : NSObject {
+    GCControllerButtonInput * _button0;
+    GCControllerButtonInput * _button1;
+    GCControllerButtonInput * _button2;
+    GCControllerButtonInput * _button3;
+    GCControllerButtonInput * _buttonMenu;
+    GCController * _controller;
+    GCControllerDirectionPad * _dpad;
+    bool  _dpadFlippedY;
+    GCControllerButtonInput * _leftShoulder;
+    GCMotion * _motion;
+    GCControllerButtonInput * _rightShoulder;
+    id /* block */  _valueChangedHandler;
+}
 
-@property (nonatomic, readonly) GCControllerButtonInput *buttonA;
-@property (nonatomic, readonly) GCControllerButtonInput *buttonB;
-@property (nonatomic, readonly) GCControllerButtonInput *buttonX;
-@property (nonatomic, readonly) GCControllerButtonInput *buttonY;
-@property (nonatomic, readonly) GCController *controller;
-@property (nonatomic, readonly) GCControllerDirectionPad *dpad;
-@property (nonatomic, readonly) GCControllerButtonInput *leftShoulder;
-@property (nonatomic, readonly) GCControllerButtonInput *rightShoulder;
+@property (nonatomic, retain) GCControllerButtonInput *buttonA;
+@property (nonatomic, retain) GCControllerButtonInput *buttonB;
+@property (nonatomic, retain) GCControllerButtonInput *buttonMenu;
+@property (nonatomic, retain) GCControllerButtonInput *buttonX;
+@property (nonatomic, retain) GCControllerButtonInput *buttonY;
+@property (nonatomic) GCController *controller;
+@property (nonatomic, retain) GCControllerDirectionPad *dpad;
+@property (nonatomic, retain) GCControllerButtonInput *leftShoulder;
+@property (nonatomic, retain) GCControllerButtonInput *rightShoulder;
 @property (nonatomic, copy) id /* block */ valueChangedHandler;
 
-+ (bool)supportsUSBInterfaceProtocol:(unsigned char)arg1;
++ (bool)supportsSecureCoding;
 
+- (void).cxx_destruct;
+- (id)_motion;
 - (bool)allowsRotation;
 - (id)button0;
 - (id)button1;
@@ -23,22 +39,42 @@
 - (id)button3;
 - (id)buttonA;
 - (id)buttonB;
+- (id)buttonMenu;
 - (id)buttonX;
 - (id)buttonY;
 - (id)controller;
 - (id)dpad;
+- (void)encodeWithCoder:(id)arg1;
+- (void)handleEvent:(struct __IOHIDEvent { }*)arg1;
+- (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithController:(id)arg1;
-- (id)inputForElement:(struct __IOHIDElement { }*)arg1;
+- (id)initWithController:(id)arg1 dpadFlippedY:(bool)arg2;
+- (bool)isBluetoothAndUSBMirrored;
 - (id)leftShoulder;
+- (id)name;
+- (id)productCategory;
 - (bool)reportsAbsoluteDpadValues;
 - (id)rightShoulder;
 - (id)saveSnapshot;
 - (void)setAllowsRotation:(bool)arg1;
 - (void)setButton:(id)arg1 pressed:(bool)arg2;
 - (void)setButton:(id)arg1 value:(double)arg2;
+- (void)setButtonA:(id)arg1;
+- (void)setButtonB:(id)arg1;
+- (void)setButtonMenu:(id)arg1;
+- (void)setButtonX:(id)arg1;
+- (void)setButtonY:(id)arg1;
+- (void)setController:(id)arg1;
+- (void)setControllerForElements;
+- (void)setDpad:(id)arg1;
 - (void)setDpad:(id)arg1 x:(double)arg2 y:(double)arg3;
+- (void)setLeftShoulder:(id)arg1;
+- (void)setPlayerIndex:(long long)arg1;
 - (void)setReportsAbsoluteDpadValues:(bool)arg1;
+- (void)setRightShoulder:(id)arg1;
 - (void)setValueChangedHandler:(id /* block */)arg1;
+- (void)set_motion:(id)arg1;
 - (id /* block */)valueChangedHandler;
 
 @end

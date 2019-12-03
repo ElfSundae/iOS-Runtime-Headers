@@ -5,10 +5,10 @@
 @interface GEOPDWifiFingerprint : PBCodable <NSCopying> {
     unsigned int  _confidence;
     struct { 
-        unsigned int confidence : 1; 
-        unsigned int labelType : 1; 
-        unsigned int status : 1; 
-    }  _has;
+        unsigned int has_confidence : 1; 
+        unsigned int has_labelType : 1; 
+        unsigned int has_status : 1; 
+    }  _flags;
     int  _labelType;
     int  _status;
     PBUnknownFields * _unknownFields;
@@ -22,9 +22,12 @@
 @property (nonatomic) int status;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsLabelType:(id)arg1;
 - (int)StringAsStatus:(id)arg1;
+- (void)clearUnknownFields:(bool)arg1;
 - (unsigned int)confidence;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -38,6 +41,7 @@
 - (int)labelType;
 - (id)labelTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setConfidence:(unsigned int)arg1;
 - (void)setHasConfidence:(bool)arg1;

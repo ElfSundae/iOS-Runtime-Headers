@@ -13,7 +13,7 @@
     }  _principalClassInstance;
 }
 
-@property (readonly) /* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*_apiObject;
+@property (readonly) struct Object { int (**x1)(); id x2; }*_apiObject;
 @property (readonly) struct OpaqueWKBundle { }*_bundleRef;
 @property (readonly) WKConnection *connection;
 @property (readonly, copy) NSString *debugDescription;
@@ -24,7 +24,7 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (/* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*)_apiObject;
+- (struct Object { int (**x1)(); id x2; }*)_apiObject;
 - (struct OpaqueWKBundle { }*)_bundleRef;
 - (void)_setPrincipalClassInstance:(id)arg1;
 - (id)connection;

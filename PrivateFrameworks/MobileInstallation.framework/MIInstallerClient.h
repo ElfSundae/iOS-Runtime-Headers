@@ -44,7 +44,6 @@
 - (void)enumerateAppDictionary:(id)arg1 error:(id)arg2;
 - (void)enumerateInstalledAppsWithOptions:(id)arg1 completion:(id /* block */)arg2;
 - (void)fetchDiskUsageForIdentifiers:(id)arg1 withOptions:(id)arg2 completion:(id /* block */)arg3;
-- (void)fetchInstalledAppsWithOptions:(id)arg1 completion:(id /* block */)arg2;
 - (void)fetchInstalledDeveloperAppsWithMountPath:(id)arg1 completion:(id /* block */)arg2;
 - (void)getAppMetadataForApp:(id)arg1 completion:(id /* block */)arg2;
 - (id)init;
@@ -64,11 +63,15 @@
 - (void)setDelegatesCompleteError:(id)arg1;
 - (void)setProgressBlock:(id /* block */)arg1;
 - (void)setQueue:(id)arg1;
+- (void)setSystemAppMigrationComplete:(id /* block */)arg1;
 - (void)snapshotWKAppInCompanionAppID:(id)arg1 toURL:(id)arg2 options:(id)arg3 completion:(id /* block */)arg4;
+- (void)systemAppMigratorHasCompleted:(id /* block */)arg1;
 - (void)uninstallIdentifiers:(id)arg1 withOptions:(id)arg2 completion:(id /* block */)arg3;
 - (void)updatePlaceholderMetadataForApp:(id)arg1 installType:(unsigned long long)arg2 failureReason:(unsigned long long)arg3 underlyingError:(id)arg4 failureSource:(unsigned long long)arg5 completion:(id /* block */)arg6;
 - (void)updateSinfForLSWithIdentifier:(id)arg1 withOptions:(id)arg2 sinfData:(id)arg3 completion:(id /* block */)arg4;
 - (void)updateSystemAppStateForIdentifier:(id)arg1 appState:(int)arg2 completion:(id /* block */)arg3;
 - (void)updateiTunesMetadataForLSWithIdentifier:(id)arg1 options:(id)arg2 plistData:(id)arg3 completion:(id /* block */)arg4;
+- (void)waitForSystemAppMigratorToComplete:(id /* block */)arg1;
+- (void)waitForSystemAppMigratorWithCompletion:(id /* block */)arg1;
 
 @end

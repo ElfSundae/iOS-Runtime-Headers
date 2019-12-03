@@ -19,6 +19,7 @@
 @property (readonly) Class superclass;
 
 + (id)searchWithEntityClass:(Class)arg1 predicate:(id)arg2 store:(id)arg3;
++ (id)signpostHandle;
 
 - (void).cxx_destruct;
 - (id)_createOSActivity;
@@ -32,6 +33,8 @@
 - (id)fetchObjectIDs;
 - (id)initWithEntityClass:(Class)arg1 predicate:(id)arg2 store:(id)arg3;
 - (id)runSynchronously;
+- (void)signpostEndWithError:(int)arg1 count:(unsigned long long)arg2;
+- (void)signpostStart;
 - (id)startWithCompletion:(id /* block */)arg1;
 - (void)terminate;
 

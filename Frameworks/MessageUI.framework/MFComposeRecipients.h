@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
  */
 
-@interface MFComposeRecipients : NSObject <UIItemProviderReading> {
+@interface MFComposeRecipients : NSObject <NSItemProviderReading> {
     NSArray * _recipients;
 }
 

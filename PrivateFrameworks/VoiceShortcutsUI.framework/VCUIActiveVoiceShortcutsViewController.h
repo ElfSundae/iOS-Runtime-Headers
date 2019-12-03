@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/VoiceShortcutsUI.framework/VoiceShortcutsUI
  */
 
-@interface VCUIActiveVoiceShortcutsViewController : UITableViewController <VCUIDebugWorkflowViewControllerDelegate, VCUIEditVoiceShortcutViewControllerDelegate, VCUIGalleryViewControllerDelegate> {
+@interface VCUIActiveVoiceShortcutsViewController : UITableViewController <VCUIShortcutViewControllerDelegate> {
     VCUIVoiceShortcutCell * _prototypeCell;
     UISearchController * _searchController;
     VCVoiceShortcutClient * _voiceShortcutClient;
@@ -21,14 +21,7 @@
 + (void)initialize;
 
 - (void).cxx_destruct;
-- (void)createNewShortcut;
-- (void)debugWorkflowViewControllerDidFinish:(id)arg1;
 - (void)didTapCancel;
-- (void)editVoiceShortcutViewController:(id)arg1 didDeleteVoiceShortcut:(id)arg2;
-- (void)editVoiceShortcutViewController:(id)arg1 didSaveWithUpdatedVoiceShortcut:(id)arg2;
-- (void)editVoiceShortcutViewControllerDidCancel:(id)arg1;
-- (void)galleryViewControllerDidCancel:(id)arg1;
-- (void)galleryViewControllerDidFinish:(id)arg1;
 - (id)initWithVoiceShortcutClient:(id)arg1;
 - (void)launchExtensionToRunVoiceShortcut:(id)arg1;
 - (id)prototypeCell;
@@ -37,6 +30,9 @@
 - (void)setPrototypeCell:(id)arg1;
 - (void)setSearchController:(id)arg1;
 - (void)setVoiceShortcuts:(id)arg1;
+- (void)shortcutViewController:(id)arg1 didDeleteShortcut:(id)arg2;
+- (void)shortcutViewController:(id)arg1 didSaveShortcut:(id)arg2;
+- (void)shortcutViewControllerDidCancel:(id)arg1;
 - (void)showConfirmationWithTitle:(id)arg1 message:(id)arg2 confirmationHandler:(id /* block */)arg3;
 - (void)showHandleIntentResponse:(id)arg1;
 - (bool)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;

@@ -4,6 +4,7 @@
 
 @interface EMKOverlayView : UIView {
     EMKEmojiTokenList * _emojiTokenList;
+    long long  _interfaceStyle;
     unsigned long long  _numEmojiToShow;
     struct CGRect { 
         struct CGPoint { 

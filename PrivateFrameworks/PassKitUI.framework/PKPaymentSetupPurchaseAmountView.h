@@ -22,6 +22,7 @@
     PKNumericSuggestionsEnterValueAlgorithm * _suggestionGenerator;
     PKNumberPadSuggestionsView * _suggestionView;
     UIButton * _transferBalanceButton;
+    bool  _transferButtonEnabled;
 }
 
 @property (nonatomic, retain) UIStackView *amountStackView;
@@ -48,6 +49,7 @@
 @property (nonatomic, retain) PKNumberPadSuggestionsView *suggestionView;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) UIButton *transferBalanceButton;
+@property (getter=isTransferButtonEnabled, nonatomic) bool transferButtonEnabled;
 
 - (void).cxx_destruct;
 - (void)_createConstraints;
@@ -74,6 +76,7 @@
 - (void)enterCurrencyAmountViewDidChangeAmount:(id)arg1;
 - (id)fixedConstraint;
 - (id)initWithProduct:(id)arg1 provisioningMethodMetadata:(id)arg2 showTransferButton:(bool)arg3;
+- (bool)isTransferButtonEnabled;
 - (void)layoutSubviews;
 - (id)maxLoadedBalance;
 - (id)messageLabel;
@@ -100,6 +103,7 @@
 - (void)setSuggestionGenerator:(id)arg1;
 - (void)setSuggestionView:(id)arg1;
 - (void)setTransferBalanceButton:(id)arg1;
+- (void)setTransferButtonEnabled:(bool)arg1;
 - (bool)showTransferButton;
 - (id)suggestionGenerator;
 - (id)suggestionView;

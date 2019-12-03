@@ -3,6 +3,8 @@
  */
 
 @interface PKBackFieldTableCell : PKTableViewCell {
+    double  _cachedWidth;
+    double  _computedHeight;
     PKPassField * _field;
     bool  _showLinks;
     UITextView * _valueTextView;
@@ -11,7 +13,6 @@
 @property (nonatomic, retain) PKPassField *field;
 @property (nonatomic) bool showLinks;
 
-+ (id)_linkColor;
 + (id)_linkTextAttributes;
 + (id)reuseIdentifier;
 + (id)titleFont;
@@ -20,7 +21,7 @@
 - (void).cxx_destruct;
 - (void)_detectLinks;
 - (void)_setupTextAttributes;
-- (struct CGSize { double x1; double x2; })_sizeForValueTextWithWidth:(double)arg1;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_textBounds;
 - (void)dealloc;
 - (id)field;
 - (id)initWithField:(id)arg1 showLinks:(bool)arg2;
@@ -29,5 +30,6 @@
 - (void)setShowLinks:(bool)arg1;
 - (bool)showLinks;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end

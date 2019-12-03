@@ -19,6 +19,7 @@
 + (id)exportPresetForAsset:(id)arg1 preferredPreset:(id)arg2;
 + (int)preferredTimeScale;
 + (id)sharedConfiguration;
++ (id)slowMotionSourceAssetPropertyKeys;
 + (id)timeRangeMapperForSourceDuration:(double)arg1 slowMotionRate:(float)arg2 slowMotionTimeRange:(struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; })arg3 forExport:(bool)arg4;
 
 @end

@@ -12,8 +12,9 @@
     float  _bloomBlurRadius;
     float  _bloomIntensity;
     int  _bloomIteration;
+    float  _bloomIterationSpread;
     float  _bloomThreshold;
-    struct __C3DCamera { struct __C3DEntity { struct __CFRuntimeBase { unsigned long long x_1_2_1; unsigned long long x_1_2_2; } x_1_1_1; void *x_1_1_2; struct __CFString {} *x_1_1_3; struct __CFString {} *x_1_1_4; struct __CFDictionary {} *x_1_1_5; struct __C3DScene {} *x_1_1_6; long long x_1_1_7; } x1; struct { unsigned int x_2_1_1 : 1; unsigned int x_2_1_2 : 1; unsigned int x_2_1_3 : 1; unsigned int x_2_1_4 : 1; unsigned int x_2_1_5 : 1; unsigned int x_2_1_6 : 1; unsigned int x_2_1_7 : 1; double x_2_1_8; double x_2_1_9; double x_2_1_10; float x_2_1_11; double x_2_1_12; union C3DMatrix4x4 { float x_13_2_1[16]; /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x_13_2_2[4]; void*x_13_2_3; } x_2_1_13; struct { void*x_14_2_1[4]; void*x_14_2_2[4]; } x_2_1_14; void*x_2_1_15; float x_2_1_16; float x_2_1_17; float x_2_1_18; float x_2_1_19; float x_2_1_20; float x_2_1_21; float x_2_1_22; float x_2_1_23; float x_2_1_24; float x_2_1_25; float x_2_1_26; float x_2_1_27; int x_2_1_28; float x_2_1_29; float x_2_1_30; float x_2_1_31; float x_2_1_32; float x_2_1_33; float x_2_1_34; float x_2_1_35; float x_2_1_36; float x_2_1_37; struct { float x_38_2_1; float x_38_2_2; float x_38_2_3; float x_38_2_4; float x_38_2_5; int x_38_2_6; int x_38_2_7; } x_2_1_38; struct __C3DEffectSlot {} *x_2_1_39; unsigned long long x_2_1_40; } x2; } * _camera;
+    struct __C3DCamera { struct __C3DEntity { struct __CFRuntimeBase { unsigned long long x_1_2_1; _Atomic unsigned long long x_1_2_2; } x_1_1_1; void *x_1_1_2; struct __CFString {} *x_1_1_3; struct __CFString {} *x_1_1_4; struct __CFDictionary {} *x_1_1_5; struct __C3DScene {} *x_1_1_6; long long x_1_1_7; } x1; struct { unsigned int x_2_1_1 : 1; unsigned int x_2_1_2 : 1; unsigned int x_2_1_3 : 1; unsigned int x_2_1_4 : 1; unsigned int x_2_1_5 : 1; unsigned int x_2_1_6 : 1; unsigned int x_2_1_7 : 1; double x_2_1_8; double x_2_1_9; double x_2_1_10; float x_2_1_11; double x_2_1_12; union C3DMatrix4x4 { float x_13_2_1[16]; /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x_13_2_2[4]; void*x_13_2_3; } x_2_1_13; struct { void*x_14_2_1[4]; void*x_14_2_2[4]; } x_2_1_14; void*x_2_1_15; float x_2_1_16; float x_2_1_17; float x_2_1_18; float x_2_1_19; float x_2_1_20; float x_2_1_21; float x_2_1_22; float x_2_1_23; float x_2_1_24; float x_2_1_25; float x_2_1_26; float x_2_1_27; int x_2_1_28; float x_2_1_29; float x_2_1_30; float x_2_1_31; float x_2_1_32; float x_2_1_33; float x_2_1_34; float x_2_1_35; float x_2_1_36; float x_2_1_37; float x_2_1_38; float x_2_1_39; float x_2_1_40; float x_2_1_41; float x_2_1_42; struct { float x_43_2_1; float x_43_2_2; float x_43_2_3; float x_43_2_4; float x_43_2_5; int x_43_2_6; int x_43_2_7; } x_2_1_43; } x2; } * _camera;
     unsigned long long  _categoryBitMask;
     float  _colorFringeIntensity;
     float  _colorFringeStrength;
@@ -34,6 +35,11 @@
     long long  _focalBlurSampleCount;
     float  _focalLength;
     float  _focusDistance;
+    float  _grainIntensity;
+    bool  _grainIsColored;
+    float  _grainScale;
+    float  _grainSlice;
+    <MTLTexture> * _grainTexture;
     unsigned int  _isPresentationInstance;
     unsigned int  _legacyFov;
     float  _maximumExposure;
@@ -77,6 +83,8 @@
     float  _vignettingPower;
     bool  _wantsExposureAdaptation;
     bool  _wantsHDR;
+    float  _whiteBalanceTemperature;
+    float  _whiteBalanceTint;
     float  _whitePoint;
     float  _xFov;
     float  _yFov;
@@ -85,12 +93,13 @@
 }
 
 @property (readonly) NSArray *animationKeys;
-@property (nonatomic) double aperture;
 @property (nonatomic) long long apertureBladeCount;
 @property (nonatomic) bool automaticallyAdjustsZRange;
 @property (nonatomic) double averageGray;
 @property (nonatomic) double bloomBlurRadius;
 @property (nonatomic) double bloomIntensity;
+@property (nonatomic) long long bloomIterationCount;
+@property (nonatomic) double bloomIterationSpread;
 @property (nonatomic) double bloomThreshold;
 @property (nonatomic) unsigned long long categoryBitMask;
 @property (nonatomic) double colorFringeIntensity;
@@ -104,12 +113,12 @@
 @property (nonatomic) double exposureOffset;
 @property (nonatomic) double fStop;
 @property (nonatomic) double fieldOfView;
-@property (nonatomic) double focalBlurRadius;
 @property (nonatomic) long long focalBlurSampleCount;
-@property (nonatomic) double focalDistance;
 @property (nonatomic) double focalLength;
-@property (nonatomic) double focalSize;
 @property (nonatomic) double focusDistance;
+@property (nonatomic) double grainIntensity;
+@property (nonatomic) bool grainIsColored;
+@property (nonatomic) double grainScale;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double maximumExposure;
 @property (nonatomic) double minimumExposure;
@@ -133,14 +142,14 @@
 @property (nonatomic) bool wantsDepthOfField;
 @property (nonatomic) bool wantsExposureAdaptation;
 @property (nonatomic) bool wantsHDR;
+@property (nonatomic) double whiteBalanceTemperature;
+@property (nonatomic) double whiteBalanceTint;
 @property (nonatomic) double whitePoint;
-@property (nonatomic) double xFov;
-@property (nonatomic) double yFov;
 @property (nonatomic) double zFar;
 @property (nonatomic) double zNear;
 
 + (id)camera;
-+ (id)cameraWithCameraRef:(struct __C3DCamera { struct __C3DEntity { struct __CFRuntimeBase { unsigned long long x_1_2_1; unsigned long long x_1_2_2; } x_1_1_1; void *x_1_1_2; struct __CFString {} *x_1_1_3; struct __CFString {} *x_1_1_4; struct __CFDictionary {} *x_1_1_5; struct __C3DScene {} *x_1_1_6; long long x_1_1_7; } x1; struct { unsigned int x_2_1_1 : 1; unsigned int x_2_1_2 : 1; unsigned int x_2_1_3 : 1; unsigned int x_2_1_4 : 1; unsigned int x_2_1_5 : 1; unsigned int x_2_1_6 : 1; unsigned int x_2_1_7 : 1; double x_2_1_8; double x_2_1_9; double x_2_1_10; float x_2_1_11; double x_2_1_12; union C3DMatrix4x4 { float x_13_2_1[16]; /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x_13_2_2[4]; void*x_13_2_3; } x_2_1_13; struct { void*x_14_2_1[4]; void*x_14_2_2[4]; } x_2_1_14; void*x_2_1_15; float x_2_1_16; float x_2_1_17; float x_2_1_18; float x_2_1_19; float x_2_1_20; float x_2_1_21; float x_2_1_22; float x_2_1_23; float x_2_1_24; float x_2_1_25; float x_2_1_26; float x_2_1_27; int x_2_1_28; float x_2_1_29; float x_2_1_30; float x_2_1_31; float x_2_1_32; float x_2_1_33; float x_2_1_34; float x_2_1_35; float x_2_1_36; float x_2_1_37; struct { float x_38_2_1; float x_38_2_2; float x_38_2_3; float x_38_2_4; float x_38_2_5; int x_38_2_6; int x_38_2_7; } x_2_1_38; struct __C3DEffectSlot {} *x_2_1_39; unsigned long long x_2_1_40; } x2; }*)arg1;
++ (id)cameraWithCameraRef:(struct __C3DCamera { struct __C3DEntity { struct __CFRuntimeBase { unsigned long long x_1_2_1; _Atomic unsigned long long x_1_2_2; } x_1_1_1; void *x_1_1_2; struct __CFString {} *x_1_1_3; struct __CFString {} *x_1_1_4; struct __CFDictionary {} *x_1_1_5; struct __C3DScene {} *x_1_1_6; long long x_1_1_7; } x1; struct { unsigned int x_2_1_1 : 1; unsigned int x_2_1_2 : 1; unsigned int x_2_1_3 : 1; unsigned int x_2_1_4 : 1; unsigned int x_2_1_5 : 1; unsigned int x_2_1_6 : 1; unsigned int x_2_1_7 : 1; double x_2_1_8; double x_2_1_9; double x_2_1_10; float x_2_1_11; double x_2_1_12; union C3DMatrix4x4 { float x_13_2_1[16]; /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x_13_2_2[4]; void*x_13_2_3; } x_2_1_13; struct { void*x_14_2_1[4]; void*x_14_2_2[4]; } x_2_1_14; void*x_2_1_15; float x_2_1_16; float x_2_1_17; float x_2_1_18; float x_2_1_19; float x_2_1_20; float x_2_1_21; float x_2_1_22; float x_2_1_23; float x_2_1_24; float x_2_1_25; float x_2_1_26; float x_2_1_27; int x_2_1_28; float x_2_1_29; float x_2_1_30; float x_2_1_31; float x_2_1_32; float x_2_1_33; float x_2_1_34; float x_2_1_35; float x_2_1_36; float x_2_1_37; float x_2_1_38; float x_2_1_39; float x_2_1_40; float x_2_1_41; float x_2_1_42; struct { float x_43_2_1; float x_43_2_2; float x_43_2_3; float x_43_2_4; float x_43_2_5; int x_43_2_6; int x_43_2_7; } x_2_1_43; } x2; }*)arg1;
 + (id)cameraWithMDLCamera:(id)arg1;
 + (id)keyPathsForValuesAffectingFieldOfView;
 + (id)keyPathsForValuesAffectingFocalLength;
@@ -158,8 +167,8 @@
 - (void)_syncEntityObjCModel;
 - (void)_syncObjCAnimations;
 - (void)_syncObjCModel;
+- (void)_updateFieldOfView;
 - (void)_updateFocalLength;
-- (void)_updateFov;
 - (void)addAnimation:(id)arg1;
 - (void)addAnimation:(id)arg1 forKey:(id)arg2;
 - (void)addAnimationPlayer:(id)arg1 forKey:(id)arg2;
@@ -176,8 +185,10 @@
 - (double)bloomBlurRadius;
 - (double)bloomIntensity;
 - (long long)bloomIteration;
+- (long long)bloomIterationCount;
+- (double)bloomIterationSpread;
 - (double)bloomThreshold;
-- (struct __C3DCamera { struct __C3DEntity { struct __CFRuntimeBase { unsigned long long x_1_2_1; unsigned long long x_1_2_2; } x_1_1_1; void *x_1_1_2; struct __CFString {} *x_1_1_3; struct __CFString {} *x_1_1_4; struct __CFDictionary {} *x_1_1_5; struct __C3DScene {} *x_1_1_6; long long x_1_1_7; } x1; struct { unsigned int x_2_1_1 : 1; unsigned int x_2_1_2 : 1; unsigned int x_2_1_3 : 1; unsigned int x_2_1_4 : 1; unsigned int x_2_1_5 : 1; unsigned int x_2_1_6 : 1; unsigned int x_2_1_7 : 1; double x_2_1_8; double x_2_1_9; double x_2_1_10; float x_2_1_11; double x_2_1_12; union C3DMatrix4x4 { float x_13_2_1[16]; /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x_13_2_2[4]; void*x_13_2_3; } x_2_1_13; struct { void*x_14_2_1[4]; void*x_14_2_2[4]; } x_2_1_14; void*x_2_1_15; float x_2_1_16; float x_2_1_17; float x_2_1_18; float x_2_1_19; float x_2_1_20; float x_2_1_21; float x_2_1_22; float x_2_1_23; float x_2_1_24; float x_2_1_25; float x_2_1_26; float x_2_1_27; int x_2_1_28; float x_2_1_29; float x_2_1_30; float x_2_1_31; float x_2_1_32; float x_2_1_33; float x_2_1_34; float x_2_1_35; float x_2_1_36; float x_2_1_37; struct { float x_38_2_1; float x_38_2_2; float x_38_2_3; float x_38_2_4; float x_38_2_5; int x_38_2_6; int x_38_2_7; } x_2_1_38; struct __C3DEffectSlot {} *x_2_1_39; unsigned long long x_2_1_40; } x2; }*)cameraRef;
+- (struct __C3DCamera { struct __C3DEntity { struct __CFRuntimeBase { unsigned long long x_1_2_1; _Atomic unsigned long long x_1_2_2; } x_1_1_1; void *x_1_1_2; struct __CFString {} *x_1_1_3; struct __CFString {} *x_1_1_4; struct __CFDictionary {} *x_1_1_5; struct __C3DScene {} *x_1_1_6; long long x_1_1_7; } x1; struct { unsigned int x_2_1_1 : 1; unsigned int x_2_1_2 : 1; unsigned int x_2_1_3 : 1; unsigned int x_2_1_4 : 1; unsigned int x_2_1_5 : 1; unsigned int x_2_1_6 : 1; unsigned int x_2_1_7 : 1; double x_2_1_8; double x_2_1_9; double x_2_1_10; float x_2_1_11; double x_2_1_12; union C3DMatrix4x4 { float x_13_2_1[16]; /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x_13_2_2[4]; void*x_13_2_3; } x_2_1_13; struct { void*x_14_2_1[4]; void*x_14_2_2[4]; } x_2_1_14; void*x_2_1_15; float x_2_1_16; float x_2_1_17; float x_2_1_18; float x_2_1_19; float x_2_1_20; float x_2_1_21; float x_2_1_22; float x_2_1_23; float x_2_1_24; float x_2_1_25; float x_2_1_26; float x_2_1_27; int x_2_1_28; float x_2_1_29; float x_2_1_30; float x_2_1_31; float x_2_1_32; float x_2_1_33; float x_2_1_34; float x_2_1_35; float x_2_1_36; float x_2_1_37; float x_2_1_38; float x_2_1_39; float x_2_1_40; float x_2_1_41; float x_2_1_42; struct { float x_43_2_1; float x_43_2_2; float x_43_2_3; float x_43_2_4; float x_43_2_5; int x_43_2_6; int x_43_2_7; } x_2_1_43; } x2; }*)cameraRef;
 - (unsigned long long)categoryBitMask;
 - (double)colorFringeIntensity;
 - (double)colorFringeStrength;
@@ -209,11 +220,16 @@
 - (double)focalLength;
 - (double)focalSize;
 - (double)focusDistance;
+- (double)grainIntensity;
+- (bool)grainIsColored;
+- (double)grainScale;
+- (double)grainSlice;
+- (id)grainTexture;
 - (bool)hasCustomProjectionTransform;
 - (id)identifier;
 - (id)init;
-- (id)initPresentationCameraWithCameraRef:(struct __C3DCamera { struct __C3DEntity { struct __CFRuntimeBase { unsigned long long x_1_2_1; unsigned long long x_1_2_2; } x_1_1_1; void *x_1_1_2; struct __CFString {} *x_1_1_3; struct __CFString {} *x_1_1_4; struct __CFDictionary {} *x_1_1_5; struct __C3DScene {} *x_1_1_6; long long x_1_1_7; } x1; struct { unsigned int x_2_1_1 : 1; unsigned int x_2_1_2 : 1; unsigned int x_2_1_3 : 1; unsigned int x_2_1_4 : 1; unsigned int x_2_1_5 : 1; unsigned int x_2_1_6 : 1; unsigned int x_2_1_7 : 1; double x_2_1_8; double x_2_1_9; double x_2_1_10; float x_2_1_11; double x_2_1_12; union C3DMatrix4x4 { float x_13_2_1[16]; /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x_13_2_2[4]; void*x_13_2_3; } x_2_1_13; struct { void*x_14_2_1[4]; void*x_14_2_2[4]; } x_2_1_14; void*x_2_1_15; float x_2_1_16; float x_2_1_17; float x_2_1_18; float x_2_1_19; float x_2_1_20; float x_2_1_21; float x_2_1_22; float x_2_1_23; float x_2_1_24; float x_2_1_25; float x_2_1_26; float x_2_1_27; int x_2_1_28; float x_2_1_29; float x_2_1_30; float x_2_1_31; float x_2_1_32; float x_2_1_33; float x_2_1_34; float x_2_1_35; float x_2_1_36; float x_2_1_37; struct { float x_38_2_1; float x_38_2_2; float x_38_2_3; float x_38_2_4; float x_38_2_5; int x_38_2_6; int x_38_2_7; } x_2_1_38; struct __C3DEffectSlot {} *x_2_1_39; unsigned long long x_2_1_40; } x2; }*)arg1;
-- (id)initWithCameraRef:(struct __C3DCamera { struct __C3DEntity { struct __CFRuntimeBase { unsigned long long x_1_2_1; unsigned long long x_1_2_2; } x_1_1_1; void *x_1_1_2; struct __CFString {} *x_1_1_3; struct __CFString {} *x_1_1_4; struct __CFDictionary {} *x_1_1_5; struct __C3DScene {} *x_1_1_6; long long x_1_1_7; } x1; struct { unsigned int x_2_1_1 : 1; unsigned int x_2_1_2 : 1; unsigned int x_2_1_3 : 1; unsigned int x_2_1_4 : 1; unsigned int x_2_1_5 : 1; unsigned int x_2_1_6 : 1; unsigned int x_2_1_7 : 1; double x_2_1_8; double x_2_1_9; double x_2_1_10; float x_2_1_11; double x_2_1_12; union C3DMatrix4x4 { float x_13_2_1[16]; /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x_13_2_2[4]; void*x_13_2_3; } x_2_1_13; struct { void*x_14_2_1[4]; void*x_14_2_2[4]; } x_2_1_14; void*x_2_1_15; float x_2_1_16; float x_2_1_17; float x_2_1_18; float x_2_1_19; float x_2_1_20; float x_2_1_21; float x_2_1_22; float x_2_1_23; float x_2_1_24; float x_2_1_25; float x_2_1_26; float x_2_1_27; int x_2_1_28; float x_2_1_29; float x_2_1_30; float x_2_1_31; float x_2_1_32; float x_2_1_33; float x_2_1_34; float x_2_1_35; float x_2_1_36; float x_2_1_37; struct { float x_38_2_1; float x_38_2_2; float x_38_2_3; float x_38_2_4; float x_38_2_5; int x_38_2_6; int x_38_2_7; } x_2_1_38; struct __C3DEffectSlot {} *x_2_1_39; unsigned long long x_2_1_40; } x2; }*)arg1;
+- (id)initPresentationCameraWithCameraRef:(struct __C3DCamera { struct __C3DEntity { struct __CFRuntimeBase { unsigned long long x_1_2_1; _Atomic unsigned long long x_1_2_2; } x_1_1_1; void *x_1_1_2; struct __CFString {} *x_1_1_3; struct __CFString {} *x_1_1_4; struct __CFDictionary {} *x_1_1_5; struct __C3DScene {} *x_1_1_6; long long x_1_1_7; } x1; struct { unsigned int x_2_1_1 : 1; unsigned int x_2_1_2 : 1; unsigned int x_2_1_3 : 1; unsigned int x_2_1_4 : 1; unsigned int x_2_1_5 : 1; unsigned int x_2_1_6 : 1; unsigned int x_2_1_7 : 1; double x_2_1_8; double x_2_1_9; double x_2_1_10; float x_2_1_11; double x_2_1_12; union C3DMatrix4x4 { float x_13_2_1[16]; /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x_13_2_2[4]; void*x_13_2_3; } x_2_1_13; struct { void*x_14_2_1[4]; void*x_14_2_2[4]; } x_2_1_14; void*x_2_1_15; float x_2_1_16; float x_2_1_17; float x_2_1_18; float x_2_1_19; float x_2_1_20; float x_2_1_21; float x_2_1_22; float x_2_1_23; float x_2_1_24; float x_2_1_25; float x_2_1_26; float x_2_1_27; int x_2_1_28; float x_2_1_29; float x_2_1_30; float x_2_1_31; float x_2_1_32; float x_2_1_33; float x_2_1_34; float x_2_1_35; float x_2_1_36; float x_2_1_37; float x_2_1_38; float x_2_1_39; float x_2_1_40; float x_2_1_41; float x_2_1_42; struct { float x_43_2_1; float x_43_2_2; float x_43_2_3; float x_43_2_4; float x_43_2_5; int x_43_2_6; int x_43_2_7; } x_2_1_43; } x2; }*)arg1;
+- (id)initWithCameraRef:(struct __C3DCamera { struct __C3DEntity { struct __CFRuntimeBase { unsigned long long x_1_2_1; _Atomic unsigned long long x_1_2_2; } x_1_1_1; void *x_1_1_2; struct __CFString {} *x_1_1_3; struct __CFString {} *x_1_1_4; struct __CFDictionary {} *x_1_1_5; struct __C3DScene {} *x_1_1_6; long long x_1_1_7; } x1; struct { unsigned int x_2_1_1 : 1; unsigned int x_2_1_2 : 1; unsigned int x_2_1_3 : 1; unsigned int x_2_1_4 : 1; unsigned int x_2_1_5 : 1; unsigned int x_2_1_6 : 1; unsigned int x_2_1_7 : 1; double x_2_1_8; double x_2_1_9; double x_2_1_10; float x_2_1_11; double x_2_1_12; union C3DMatrix4x4 { float x_13_2_1[16]; /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x_13_2_2[4]; void*x_13_2_3; } x_2_1_13; struct { void*x_14_2_1[4]; void*x_14_2_2[4]; } x_2_1_14; void*x_2_1_15; float x_2_1_16; float x_2_1_17; float x_2_1_18; float x_2_1_19; float x_2_1_20; float x_2_1_21; float x_2_1_22; float x_2_1_23; float x_2_1_24; float x_2_1_25; float x_2_1_26; float x_2_1_27; int x_2_1_28; float x_2_1_29; float x_2_1_30; float x_2_1_31; float x_2_1_32; float x_2_1_33; float x_2_1_34; float x_2_1_35; float x_2_1_36; float x_2_1_37; float x_2_1_38; float x_2_1_39; float x_2_1_40; float x_2_1_41; float x_2_1_42; struct { float x_43_2_1; float x_43_2_2; float x_43_2_3; float x_43_2_4; float x_43_2_5; int x_43_2_6; int x_43_2_7; } x_2_1_43; } x2; }*)arg1;
 - (id)initWithCoder:(id)arg1;
 - (bool)isAnimationForKeyPaused:(id)arg1;
 - (bool)isPausedOrPausedByInheritance;
@@ -253,6 +269,8 @@
 - (void)setBloomBlurRadius:(double)arg1;
 - (void)setBloomIntensity:(double)arg1;
 - (void)setBloomIteration:(long long)arg1;
+- (void)setBloomIterationCount:(long long)arg1;
+- (void)setBloomIterationSpread:(double)arg1;
 - (void)setBloomThreshold:(double)arg1;
 - (void)setCategoryBitMask:(unsigned long long)arg1;
 - (void)setColorFringeIntensity:(double)arg1;
@@ -276,6 +294,11 @@
 - (void)setFocalLength:(double)arg1;
 - (void)setFocalSize:(double)arg1;
 - (void)setFocusDistance:(double)arg1;
+- (void)setGrainIntensity:(double)arg1;
+- (void)setGrainIsColored:(bool)arg1;
+- (void)setGrainScale:(double)arg1;
+- (void)setGrainSlice:(double)arg1;
+- (void)setGrainTexture:(id)arg1;
 - (void)setIdentifier:(id)arg1;
 - (void)setMaximumExposure:(double)arg1;
 - (void)setMinimumExposure:(double)arg1;
@@ -301,6 +324,8 @@
 - (void)setWantsDepthOfField:(bool)arg1;
 - (void)setWantsExposureAdaptation:(bool)arg1;
 - (void)setWantsHDR:(bool)arg1;
+- (void)setWhiteBalanceTemperature:(double)arg1;
+- (void)setWhiteBalanceTint:(double)arg1;
 - (void)setWhitePoint:(double)arg1;
 - (void)setXFov:(double)arg1;
 - (void)setXMag:(double)arg1;
@@ -317,6 +342,8 @@
 - (bool)wantsDepthOfField;
 - (bool)wantsExposureAdaptation;
 - (bool)wantsHDR;
+- (double)whiteBalanceTemperature;
+- (double)whiteBalanceTint;
 - (double)whitePoint;
 - (double)xFov;
 - (double)xMag;

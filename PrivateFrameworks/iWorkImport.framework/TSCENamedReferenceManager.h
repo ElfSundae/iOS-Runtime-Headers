@@ -33,6 +33,7 @@
             } __p3_; 
         } __table_; 
     }  _stringsByTrackedReferenceByTable;
+    TSCEReferenceTracker * _weakReferenceTracker;
 }
 
 @property TSCECalculationEngine *calcEngine;

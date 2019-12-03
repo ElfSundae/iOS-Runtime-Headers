@@ -28,6 +28,7 @@
 }
 
 @property (nonatomic) double backgroundAlpha;
+@property (nonatomic, readonly) NSCalendar *calendar;
 @property (getter=isScrubbing, nonatomic) bool scrubbing;
 
 - (void).cxx_destruct;
@@ -55,6 +56,7 @@
 - (void)applyTransitionFraction:(double)arg1 fromStyle:(unsigned long long)arg2 toStyle:(unsigned long long)arg3;
 - (id)auxiliaryScrubbingObscuredNodes;
 - (double)backgroundAlpha;
+- (id)calendar;
 - (struct CGPoint { double x1; double x2; })centerOf4NumeralForStyle:(unsigned long long)arg1;
 - (unsigned long long)currentDensity;
 - (void)dealloc;
@@ -64,6 +66,7 @@
 - (void)setAdjustsForStatusBarIcon:(bool)arg1 animated:(bool)arg2;
 - (void)setBackgroundAlpha:(double)arg1;
 - (void)setOverrideDate:(id)arg1 duration:(double)arg2;
+- (void)setOverrideDate:(id)arg1 hourRadians:(double)arg2 minuteRadians:(double)arg3 secondRadians:(double)arg4;
 - (void)setScrubbing:(bool)arg1;
 - (void)startScrubbingAnimated:(bool)arg1 withCompletion:(id /* block */)arg2;
 - (void)update:(double)arg1;

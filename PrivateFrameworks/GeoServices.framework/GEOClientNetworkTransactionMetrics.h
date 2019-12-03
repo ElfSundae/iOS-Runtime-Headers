@@ -9,22 +9,22 @@
     double  _domainLookupStart;
     double  _fetchStart;
     struct { 
-        unsigned int connectEnd : 1; 
-        unsigned int connectStart : 1; 
-        unsigned int domainLookupEnd : 1; 
-        unsigned int domainLookupStart : 1; 
-        unsigned int fetchStart : 1; 
-        unsigned int requestEnd : 1; 
-        unsigned int requestStart : 1; 
-        unsigned int responseEnd : 1; 
-        unsigned int responseStart : 1; 
-        unsigned int secureConnectEnd : 1; 
-        unsigned int secureConnectStart : 1; 
-        unsigned int protocolName : 1; 
-        unsigned int resourceFetchType : 1; 
-        unsigned int proxyConnection : 1; 
-        unsigned int reusedConnection : 1; 
-    }  _has;
+        unsigned int has_connectEnd : 1; 
+        unsigned int has_connectStart : 1; 
+        unsigned int has_domainLookupEnd : 1; 
+        unsigned int has_domainLookupStart : 1; 
+        unsigned int has_fetchStart : 1; 
+        unsigned int has_requestEnd : 1; 
+        unsigned int has_requestStart : 1; 
+        unsigned int has_responseEnd : 1; 
+        unsigned int has_responseStart : 1; 
+        unsigned int has_secureConnectEnd : 1; 
+        unsigned int has_secureConnectStart : 1; 
+        unsigned int has_protocolName : 1; 
+        unsigned int has_resourceFetchType : 1; 
+        unsigned int has_proxyConnection : 1; 
+        unsigned int has_reusedConnection : 1; 
+    }  _flags;
     int  _protocolName;
     bool  _proxyConnection;
     double  _requestEnd;
@@ -70,9 +70,12 @@
 @property (nonatomic) double secureConnectStart;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsProtocolName:(id)arg1;
 - (int)StringAsResourceFetchType:(id)arg1;
+- (void)clearUnknownFields:(bool)arg1;
 - (double)connectEnd;
 - (double)connectStart;
 - (void)copyTo:(id)arg1;
@@ -103,6 +106,7 @@
 - (int)protocolName;
 - (id)protocolNameAsString:(int)arg1;
 - (bool)proxyConnection;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (double)requestEnd;
 - (double)requestStart;

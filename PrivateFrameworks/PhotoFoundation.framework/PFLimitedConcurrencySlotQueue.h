@@ -3,7 +3,7 @@
  */
 
 @interface PFLimitedConcurrencySlotQueue : NSObject {
-    unsigned long long  _blockCount;
+    _Atomic unsigned long long  _blockCount;
     PFLimitedConcurrencyQueueClass * _concurrentQueue;
     unsigned long long  _slotIndex;
     NSObject<OS_dispatch_queue> * _slotQueue;

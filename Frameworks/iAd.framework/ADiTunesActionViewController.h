@@ -4,6 +4,7 @@
 
 @interface ADiTunesActionViewController : ADActionViewController <SKStoreProductViewControllerDelegate> {
     int  _defaultResult;
+    ADHomeButtonHandler * _homeButtonHandler;
     SKStoreProductViewController * _storeProductViewController;
 }
 
@@ -11,19 +12,23 @@
 @property (nonatomic) int defaultResult;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, retain) ADHomeButtonHandler *homeButtonHandler;
 @property (nonatomic, retain) SKStoreProductViewController *storeProductViewController;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)clientApplicationDidEnterBackground;
-- (void)dealloc;
 - (int)defaultResult;
 - (void)didSetAdSpace;
 - (void)dismiss;
+- (id)homeButtonHandler;
 - (void)productViewController:(id)arg1 didFinishWithResult:(long long)arg2;
 - (void)setDefaultResult:(int)arg1;
+- (void)setHomeButtonHandler:(id)arg1;
 - (void)setStoreProductViewController:(id)arg1;
 - (id)storeProductViewController;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewWillAppear:(bool)arg1;
+- (void)viewWillDisappear:(bool)arg1;
 
 @end

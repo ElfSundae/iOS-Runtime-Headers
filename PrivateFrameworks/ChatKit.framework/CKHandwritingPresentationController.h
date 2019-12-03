@@ -55,6 +55,7 @@
 - (id)handwritingWindow;
 - (id)init;
 - (long long)initialInterfaceOrientation;
+- (bool)isHandwritingLandscape;
 - (id)pluginBundleID;
 - (id)pluginPayload;
 - (bool)requestedVisibility;

@@ -2,15 +2,15 @@
    Image: /System/Library/Frameworks/MapKit.framework/MapKit
  */
 
-@interface MKPlaceCardHeaderViewController : MKPlaceSectionViewController <MKETAProviderObserver, MKModuleViewControllerProtocol, _MKInfoCardChildViewControllerAnalyticsDelegate, _MKStackViewDelegate> {
+@interface MKPlaceCardHeaderViewController : MKPlaceSectionViewController <MKETAProviderObserver, MKModuleViewControllerProtocol, _MKStackViewDelegate> {
     _MKTokenAttributedString * _categoryToken;
     NSArray * _constraints;
     bool  _constraintsCreated;
+    MKMaskContentView * _contentMaskView;
     _MKDataHeaderModel * _dataModel;
     <MKPlaceCardHeaderViewControllerDelegate> * _delegate;
     _MKTokenAttributedString * _distanceToken;
     _MKUILabel * _firstLabel;
-    _MKTokenAttributedString * _hoursToken;
     bool  _isUserLocation;
     MKPlaceSectionRowView * _labelsSectionView;
     unsigned long long  _layout;
@@ -56,14 +56,15 @@
 
 - (void).cxx_destruct;
 - (void)ETAProviderUpdated:(id)arg1;
+- (bool)_canShowWhileLocked;
 - (void)_commonInit;
 - (void)_contentSizeDidChange;
+- (void)_contentSizeDidChangeNotificationHandler;
 - (void)_createViews;
 - (id)_currentTitle;
 - (bool)_hasSecondaryName;
 - (bool)_isLikelyToShowDistance;
 - (void)_loadLogo;
-- (id)_localizedHours;
 - (bool)_mapItemShouldDisplayDistance:(id)arg1;
 - (id)_openStateString;
 - (id)_reviewLabelText;
@@ -74,7 +75,7 @@
 - (double)contentAlpha;
 - (id)delegate;
 - (void)hideTitle:(bool)arg1;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (id)initWithLineItem:(id)arg1 layout:(unsigned long long)arg2;
 - (id)initWithPlaceItem:(id)arg1 layout:(unsigned long long)arg2;
 - (id)lineItem;
@@ -90,6 +91,7 @@
 - (id)titleFont;
 - (void)updateContent;
 - (void)updateHeaderTitle;
+- (void)updateMaskAlpha:(double)arg1 onHeight:(double)arg2 withOffset:(double)arg3;
 - (void)updateViews;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

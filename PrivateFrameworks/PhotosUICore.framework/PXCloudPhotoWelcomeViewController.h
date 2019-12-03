@@ -2,52 +2,54 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXCloudPhotoWelcomeViewController : UIViewController <AAUIGenericTermsRemoteUIDelegate, PSCloudStorageOffersManagerDelegate, PXCloudPhotoWelcomeNavigationControllerDismissDelegate, PXCloudPhotoWelcomeViewDelegate> {
-    bool  _enableOnAppear;
-    PSCloudStorageOffersManager * _offersManager;
-    bool  _requireStorageUpgrade;
-    AAUIGenericTermsRemoteUI * _termsManager;
-    PXCloudPhotoWelcomeView * _welcomeView;
+@interface PXCloudPhotoWelcomeViewController : OBWelcomeController <AAUIGenericTermsRemoteUIDelegate, PSCloudStorageOffersManagerDelegate, PXCloudPhotoWelcomeNavigationControllerDismissDelegate> {
+    NSArray * __buttons;
+    bool  __enableOnAppear;
+    PSCloudStorageOffersManager * __offersManager;
+    bool  __requireStorageUpgrade;
+    AAUIGenericTermsRemoteUI * __termsManager;
 }
 
+@property (setter=_setButtons:, nonatomic, retain) NSArray *_buttons;
+@property (setter=_setEnableOnAppear:, nonatomic) bool _enableOnAppear;
+@property (setter=_setOffersManager:, nonatomic, retain) PSCloudStorageOffersManager *_offersManager;
+@property (setter=_setRequireStorageUpgrade:, nonatomic) bool _requireStorageUpgrade;
+@property (setter=_setTermsManager:, nonatomic, retain) AAUIGenericTermsRemoteUI *_termsManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (nonatomic, retain) PXCloudPhotoWelcomeView *welcomeView;
-
-+ (bool)shouldPresentCloudPhotoWelcomeViewController:(bool*)arg1;
 
 - (void).cxx_destruct;
 - (void)_applicationWillEnterForeground:(id)arg1;
+- (id)_buttons;
+- (void)_cloudPhotoWelcomeViewGoButtonTapped:(id)arg1;
+- (void)_cloudPhotoWelcomeViewLearnMoreTapped:(id)arg1;
+- (void)_cloudPhotoWelcomeViewNotNowButtonTapped:(id)arg1;
 - (void)_continueWithoutStoragePurchase:(id)arg1;
-- (void)_dismiss;
-- (void)_enableButtons;
-- (void)_enableCPLDataClass;
 - (void)_enableCloudPhotoLibrary;
+- (void)_enableCloudPhotoLibraryWithoutCheck;
+- (bool)_enableOnAppear;
 - (void)_handleEnableError:(id)arg1;
-- (void)_handleGoButtonTapped;
-- (void)_presentStoragePurchaseController;
+- (id)_offersManager;
+- (bool)_requireStorageUpgrade;
+- (void)_setButtons:(id)arg1;
+- (void)_setButtonsEnabled:(bool)arg1;
+- (void)_setEnableOnAppear:(bool)arg1;
+- (void)_setOffersManager:(id)arg1;
+- (void)_setRequireStorageUpgrade:(bool)arg1;
+- (void)_setTermsManager:(id)arg1;
+- (id)_termsManager;
 - (void)_updateCurrentActivity;
-- (void)cloudPhotoWelcomeViewGoButtonTapped:(id)arg1;
-- (void)cloudPhotoWelcomeViewLearnMoreTapped:(id)arg1;
-- (void)cloudPhotoWelcomeViewNotNowButtonTapped:(id)arg1;
 - (void)genericTermsRemoteUI:(id)arg1 didFinishWithSuccess:(bool)arg2;
+- (id)initWithDefaultTitle;
+- (id)initWithTitle:(id)arg1 detailText:(id)arg2 icon:(id)arg3;
+- (id)initWithTitle:(id)arg1 detailText:(id)arg2 icon:(id)arg3 contentLayout:(long long)arg4;
 - (void)manager:(id)arg1 loadDidFailWithError:(id)arg2;
 - (void)manager:(id)arg1 willPresentViewController:(id)arg2;
 - (void)managerDidCancel:(id)arg1;
 - (void)navigationControllerDidDismissViewController:(id)arg1;
-- (long long)preferredInterfaceOrientationForPresentation;
-- (id)presentingViewControllerTraitCollection;
-- (void)setWelcomeView:(id)arg1;
-- (bool)shouldAutorotate;
-- (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
-- (unsigned long long)supportedInterfaceOrientations;
-- (void)traitCollectionDidChange:(id)arg1;
-- (void)viewDidAppear:(bool)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(bool)arg1;
-- (void)viewWillLayoutSubviews;
-- (id)welcomeView;
 
 @end

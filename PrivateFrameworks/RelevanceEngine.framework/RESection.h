@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
  */
 
-@interface RESection : NSObject <RESectionDelegate> {
+@interface RESection : NSObject <RESectionDelegate, RESectionProperties> {
     bool  _allowsSubsections;
     NSMutableArray * _batchBlocks;
     REMLElementComparator * _comparator;
@@ -21,6 +21,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <RESectionDelegate> *delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) NSArray *elements;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long maximumElements;
 @property (nonatomic, readonly) NSString *name;
@@ -45,6 +46,7 @@
 - (long long)count;
 - (id)delegate;
 - (id)elementIdAtIndex:(unsigned long long)arg1;
+- (id)elements;
 - (long long)indexOfElementWithId:(id)arg1;
 - (id)initWithSectionDescriptor:(id)arg1 comparator:(id)arg2;
 - (long long)maximumElements;

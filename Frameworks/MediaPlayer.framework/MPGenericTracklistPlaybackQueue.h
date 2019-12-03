@@ -24,7 +24,7 @@
 - (id)collectionIdentifierSet;
 - (id)description;
 - (id)firstTrackIdentifier;
-- (id)initWithMediaRemotePlaybackQueue:(struct _MRSystemAppPlaybackQueue { }*)arg1;
+- (id)initWithMediaRemotePlaybackQueue:(struct _MRSystemAppPlaybackQueue { }*)arg1 options:(id)arg2;
 - (long long)repeatType;
 - (long long)shuffleType;
 - (id)trackIdentifiers;

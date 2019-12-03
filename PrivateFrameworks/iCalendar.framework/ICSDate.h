@@ -29,4 +29,9 @@
 - (id)systemTimeZoneWithCalendar:(id)arg1 withEvent:(id)arg2 withCorrectnessFlag:(bool*)arg3;
 - (id)validatedCompleteDateTime;
 
+// Image: /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit
+
+- (id)rem_dateAsUTC;
+- (id)rem_dateWithICSCalendar:(id)arg1;
+
 @end

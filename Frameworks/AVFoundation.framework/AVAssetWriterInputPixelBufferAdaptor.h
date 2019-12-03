@@ -22,7 +22,6 @@
 - (void)dealloc;
 - (void)declareKeyPathDependenciesWithRegistry:(id)arg1;
 - (id)description;
-- (void)finalize;
 - (id)init;
 - (id)initWithAssetWriterInput:(id)arg1 sourcePixelBufferAttributes:(id)arg2;
 - (struct __CVPixelBufferPool { }*)pixelBufferPool;

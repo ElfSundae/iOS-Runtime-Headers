@@ -3,15 +3,18 @@
  */
 
 @interface TVRUICoreDevice : NSObject <TVRCDeviceDelegate, TVRCKeyboardControllerDelegate, TVRUIDevice> {
+    bool  _captionsEnabled;
     bool  _connecting;
     NSMutableDictionary * _coreButtons;
     TVRCDeviceAuthenticationChallenge * _currentChallenge;
     <TVRUIDeviceDelegate> * _delegate;
     TVRCDevice * _device;
+    bool  _supportsCaptionsToggle;
     bool  _supportsLaunchingApplications;
     bool  _supportsVolumeControl;
 }
 
+@property (nonatomic, readonly) bool captionsEnabled;
 @property (getter=isConnecting, nonatomic) bool connecting;
 @property (nonatomic, retain) NSMutableDictionary *coreButtons;
 @property (nonatomic, retain) TVRCDeviceAuthenticationChallenge *currentChallenge;
@@ -21,6 +24,7 @@
 @property (nonatomic, retain) TVRCDevice *device;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) bool supportsCaptionsToggle;
 @property (nonatomic, readonly) bool supportsLaunchingApplications;
 @property (nonatomic, readonly) bool supportsVolumeControl;
 
@@ -33,6 +37,7 @@
 - (void)_disconnectWithType:(unsigned long long)arg1;
 - (id)_initWithCoreDevice:(id)arg1;
 - (id)_initWithDeviceIdentifier:(id)arg1;
+- (bool)_isCaptionsToggleButton:(id)arg1;
 - (bool)_isLaunchApplicationButton:(id)arg1;
 - (bool)_isMediaButton:(id)arg1;
 - (bool)_isVolumeButton:(id)arg1;
@@ -40,6 +45,7 @@
 - (void)_processButtonsForFeatureRemovals:(id)arg1;
 - (long long)_tvrcTouchPhaseFromUITouchPhase:(long long)arg1;
 - (void)cancelAuthenitcationChallenge;
+- (bool)captionsEnabled;
 - (void)connect;
 - (id)coreButtons;
 - (id)currentChallenge;
@@ -51,13 +57,16 @@
 - (void)device:(id)arg1 removedSupportedButtons:(id)arg2 added:(id)arg3;
 - (void)deviceBeganConnecting:(id)arg1;
 - (void)deviceConnected:(id)arg1;
+- (id)deviceContextInformation;
 - (void)disconnectSystemInitiated;
 - (void)disconnectUserInitiated;
+- (void)disconnectWithTimeOut;
 - (bool)hasIdentifier:(id)arg1;
 - (id)identifier;
 - (bool)isConnected;
 - (bool)isConnecting;
 - (bool)isEqualToDevice:(id)arg1;
+- (bool)isPaired;
 - (id)keyboardAttributes;
 - (void)keyboardController:(id)arg1 beganTextEditingWithAttributes:(id)arg2;
 - (void)keyboardController:(id)arg1 didUpdateAttributes:(id)arg2;
@@ -78,6 +87,8 @@
 - (void)setDevice:(id)arg1;
 - (void)startVoiceRecorder;
 - (void)stopVoiceRecorder;
+- (bool)supportsCaptionsToggle;
+- (bool)supportsDonatingIntents;
 - (bool)supportsLaunchingApplications;
 - (bool)supportsTouchEvents;
 - (bool)supportsVolumeControl;

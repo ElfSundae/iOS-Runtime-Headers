@@ -31,13 +31,14 @@
 - (struct __SecCertificate { }*)copyCertificateWithPersistentID:(id)arg1;
 - (id)description;
 - (id)earliestCertificateExpiryDate;
-- (id)initWithDictionary:(id)arg1 signerCerts:(id)arg2 allowEmptyPayload:(bool)arg3 outError:(id*)arg4;
+- (id)initWithDictionary:(id)arg1 options:(id)arg2 signerCerts:(id)arg3 allowEmptyPayload:(bool)arg4 outError:(id*)arg5;
 - (id)installationWarningsIncludeUnsignedProfileWarning:(bool)arg1;
 - (bool)isCloudLocked;
 - (id)isCloudLockedNum;
 - (bool)isCloudProfile;
 - (id)isCloudProfileNum;
 - (bool)isMDMProfile;
+- (bool)isManagedByMDM;
 - (bool)isManagedByProfileService;
 - (id)localizedManagedPayloadSummaryByType;
 - (id)localizedPayloadSummaryByType;

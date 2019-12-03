@@ -4,9 +4,9 @@
 
 @interface PLSubstandardPhotoEditSource : PLEditSource
 
-+ (id)_imageWithImage:(id)arg1 orientation:(long long)arg2;
++ (id)_imageWithImage:(struct NSObject { Class x1; }*)arg1 orientation:(long long)arg2;
 
-- (id)initWithImage:(id)arg1 orientation:(long long)arg2;
-- (id)initWithImage:(id)arg1 orientation:(long long)arg2 size:(struct CGSize { double x1; double x2; })arg3;
+- (id)initWithImage:(struct NSObject { Class x1; }*)arg1 orientation:(long long)arg2;
+- (id)initWithImage:(struct NSObject { Class x1; }*)arg1 orientation:(long long)arg2 size:(struct CGSize { double x1; double x2; })arg3;
 
 @end

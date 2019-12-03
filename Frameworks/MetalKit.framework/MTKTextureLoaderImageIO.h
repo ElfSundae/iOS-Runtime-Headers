@@ -6,6 +6,7 @@
     struct CGImageBlockSet { } * _blockSet;
     unsigned long long  _bytesPerRow;
     struct __CFData { } * _cfData;
+    bool  _expandRGBToRGBA;
     NSData * _imageData;
     struct MTLPixelFormatInfo { 
         char *name; 

@@ -4,10 +4,13 @@
 
 @interface SiriCoreNWConnection : NSObject <SiriCoreConnectionProvider> {
     NSArray * _attemptedEndpoints;
+    unsigned long long  _betterPathAvailableNotificationMachTime;
     bool  _connectByPOPEnabled;
     NSObject<OS_nw_connection> * _connection;
     NSString * _connectionId;
     SiriCoreConnectionType * _connectionType;
+    NSObject<OS_dispatch_source> * _connectionUnviableTimer;
+    NSObject<OS_nw_content_context> * _content_context;
     <SiriCoreConnectionProviderDelegate> * _delegate;
     NSObject<OS_nw_endpoint> * _endpoint;
     bool  _enforceEV;
@@ -45,6 +48,7 @@
 + (void)getMetricsContext:(id /* block */)arg1;
 
 - (void).cxx_destruct;
+- (void)_cancelConnectionUnviableTimer;
 - (void)_cancelOpenTimer;
 - (void)_cancelStaleConnectionTimer;
 - (void)_closeWithError:(id)arg1;
@@ -61,6 +65,7 @@
 - (id)_setParametersForHost:(const char *)arg1 useTLS:(bool)arg2 initialPayload:(id)arg3;
 - (void)_setupOpenTimer;
 - (void)_setupStaleConnectionTimer;
+- (void)_startConnectionUnviableTimer;
 - (id)_url;
 - (id)analysisInfo;
 - (void)close;

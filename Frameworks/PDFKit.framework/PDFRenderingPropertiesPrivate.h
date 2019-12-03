@@ -10,7 +10,6 @@
     bool  enablePageShadows;
     bool  enableTileEdgeColoring;
     bool  enableTileUpdates;
-    bool  forceWebKitMainThread;
     double  greekingThreshold;
     long long  interpolationQuality;
     bool  isUsingPDFExtensionView;

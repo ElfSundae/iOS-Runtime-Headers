@@ -13,24 +13,26 @@
 
 @property (nonatomic, readonly) PUUIAlbumListViewController *albumListViewController;
 @property (nonatomic, readonly) bool allowsMultipleSelection;
+@property (getter=isAnyAssetDownloading, nonatomic, readonly) bool anyAssetDownloading;
 @property (nonatomic) bool didHandleSelectionOfAssets;
 @property (nonatomic, readonly) PUPhotosGridViewController *gridViewController;
 @property (nonatomic, retain) NSObject<OS_dispatch_group> *multiSelectionGroup;
 @property (nonatomic, readonly) <PUPhotoPicker> *photoPicker;
+@property (nonatomic, readonly) bool requiresPickingConfirmation;
+@property (nonatomic, readonly) bool showsFileSizePicker;
 
 + (int)albumFilterForMediaTypes:(id)arg1;
 + (id)albumListViewControllerSpec;
 + (id)assetsFilterPredicateForMediaTypes:(id)arg1;
 + (id)collectionsFilterPredicateForMediaTypes:(id)arg1;
 + (id)gridViewControllerSpec;
-+ (id)imagePickerControllerForViewController:(id)arg1;
 + (unsigned long long)imagePickerTypesForMediaTypes:(id)arg1;
 
 - (void).cxx_destruct;
-- (void)_handleSelectionOfDownloadedAssets:(id)arg1;
-- (id)_imagePickerController;
+- (id)_extraArgumentsForResizeTaskDescriptor:(id)arg1;
+- (void)_handleSelectionOfDownloadedAssets:(id)arg1 resizeTaskDescriptor:(id)arg2;
 - (id)_mediaTypes;
-- (void)_notifyImagePickerOfAssetAvailability:(id)arg1;
+- (void)_notifyImagePickerOfAssetAvailability:(id)arg1 resizeTaskDescriptor:(id)arg2;
 - (id)_pickerProperties;
 - (void)_pushImageViewControllerForAsset:(id)arg1 allowEditing:(bool)arg2 expectsLivePhoto:(bool)arg3;
 - (void)_selectAsset:(id)arg1 withHintCollection:(id)arg2 hintIndexPath:(id)arg3;
@@ -42,18 +44,20 @@
 - (bool)didHandleSelectionOfAssets;
 - (id)gridViewController;
 - (void)handleKeyboardAvoidanceIfNeeded:(id)arg1;
-- (void)handleSelectionOfAsset:(id)arg1 inCollection:(id)arg2;
-- (void)handleSelectionOfAssets:(id)arg1;
+- (void)handleSelectionOfAsset:(id)arg1 inCollection:(id)arg2 resizeTaskDescriptor:(id)arg3;
+- (void)handleSelectionOfAssets:(id)arg1 resizeTaskDescriptor:(id)arg2;
 - (void)handleToggleSelectionOfItemAtIndexPath:(id)arg1;
 - (id)initWithAlbumListViewController:(id)arg1 photoPickerServices:(id)arg2;
 - (id)initWithGridViewController:(id)arg1 photoPickerServices:(id)arg2;
+- (bool)isAnyAssetDownloading;
 - (id)multiSelectionGroup;
 - (unsigned long long)multipleSelectionLimit;
 - (id)photoPicker;
+- (bool)requiresPickingConfirmation;
 - (void)setDidHandleSelectionOfAssets:(bool)arg1;
 - (void)setMultiSelectionGroup:(id)arg1;
+- (bool)showsFileSizePicker;
 - (bool)showsPrompt;
-- (void)updatePhotoPickerAppearance;
 - (void)updateSessionInfo;
 
 @end

@@ -8,6 +8,7 @@
 - (NSString *)ID;
 - (NSDictionary *)airPlayProperties;
 - (bool)automaticallyAllowsConnectionsFromPeersInHomeGroup;
+- (NSArray *)availableBluetoothListeningModes;
 - (NSNumber *)batteryLevel;
 - (bool)canAccessAppleMusic;
 - (bool)canAccessRemoteAssets;
@@ -20,8 +21,9 @@
 - (bool)canRelayCommunicationChannel;
 - (bool)canSetVolume;
 - (NSNumber *)caseBatteryLevel;
-- (void)configureUsingBlock:(void *)arg1 options:(void *)arg2 completionHandler:(void *)arg3; // needs 3 arg types, found 16: id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, <AVOutputDeviceConfigurationModification> *, void*, NSDictionary *, id /* block */, void*, void, id /* block */, int, <AVOutputDeviceConfigurationRetrieval> *, NSString *, NSError *, void*
+- (void)configureUsingBlock:(void *)arg1 options:(void *)arg2 completionHandler:(void *)arg3; // needs 3 arg types, found 16: id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, <AVOutputDeviceConfigurationModification> *, void*, NSDictionary *, id /* block */, void*, void, id /* block */, long long, <AVOutputDeviceConfigurationRetrieval> *, NSString *, NSError *, void*
 - (NSArray *)connectedPairedDevices;
+- (NSString *)currentBluetoothListeningMode;
 - (unsigned long long)deviceFeatures;
 - (long long)deviceSubType;
 - (long long)deviceType;
@@ -30,6 +32,7 @@
 - (NSString *)groupID;
 - (NSData *)identifyingMACAddress;
 - (bool)isGroupLeader;
+- (NSNumber *)isInEar;
 - (bool)isInUseByPairedDevice;
 - (bool)isLogicalDeviceLeader;
 - (NSNumber *)leftBatteryLevel;
@@ -44,10 +47,13 @@
 - (bool)requiresAuthorization;
 - (NSNumber *)rightBatteryLevel;
 - (NSString *)serialNumber;
+- (bool)setCurrentBluetoothListeningMode:(NSString *)arg1 error:(id*)arg2;
 - (void)setParentOutputDevice:(AVOutputDevice *)arg1;
 - (void)setSecondDisplayEnabled:(bool)arg1;
 - (void)setVolume:(float)arg1;
+- (bool)supportsBluetoothSharing;
 - (bool)supportsBufferedAirPlay;
+- (NSNumber *)supportsDataOverACLProtocol;
 - (float)volume;
 
 @end

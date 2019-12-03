@@ -24,12 +24,15 @@
 - (void)activateAssertionWithIdentifier:(id)arg1;
 - (void)activityStateWithCompletion:(id /* block */)arg1;
 - (void)appleIDInfoWithCompletion:(id /* block */)arg1;
+- (void)broadwayPresentCardWithCode:(id)arg1 options:(id)arg2 completion:(id /* block */)arg3;
 - (void)contactIDForEmailHash:(id)arg1 phoneHash:(id)arg2 completion:(id /* block */)arg3;
 - (void)dealloc;
 - (id)dispatchQueue;
 - (void)displayNameForEmailHash:(id)arg1 phoneHash:(id)arg2 completion:(id /* block */)arg3;
 - (void)displayStringForContactIdentifier:(id)arg1 deviceIdentifier:(id)arg2 completion:(id /* block */)arg3;
 - (void)findContact:(id)arg1 completion:(id /* block */)arg2;
+- (void)getDeviceAssets:(id)arg1 completion:(id /* block */)arg2;
+- (void)getPeopleSuggestions:(id)arg1 completion:(id /* block */)arg2;
 - (id)init;
 - (id /* block */)interruptionHandler;
 - (void)invalidate;

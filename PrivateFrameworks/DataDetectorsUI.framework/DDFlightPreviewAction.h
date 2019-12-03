@@ -3,21 +3,16 @@
  */
 
 @interface DDFlightPreviewAction : DDRemoteAction {
-    NSString * _platerTitle;
     bool  _previewModeSet;
 }
 
-@property (retain) NSString *platerTitle;
-
 + (id)viewControllerProviderClass;
 
-- (void).cxx_destruct;
-- (id)initWithURL:(id)arg1 result:(struct __DDResult { }*)arg2 context:(id)arg3;
-- (id)platerTitle;
-- (id)platterTitle;
+- (id)expandViewController;
+- (id)menuActionClasses;
 - (id)previewActions;
-- (void)setPlaterTitle:(id)arg1;
 - (void)setPreviewMode:(bool)arg1;
-- (bool)wantsSeamlessCommit;
+- (struct CGSize { double x1; double x2; })suggestedContentSize;
+- (bool)wantsCustomViewControllerCommit;
 
 @end

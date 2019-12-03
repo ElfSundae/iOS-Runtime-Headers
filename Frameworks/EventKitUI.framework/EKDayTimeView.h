@@ -5,11 +5,9 @@
 @interface EKDayTimeView : UIView <EKCurrentTimeMarkerViewUpdating, EKUITintColorUpdateDelegate> {
     NSMutableArray * _contentViews;
     <EKDayTimeViewDelegate> * _delegate;
-    double  _designatorSize;
     double  _highlightedHour;
     double  _hourHeight;
     double  _hourHeightScale;
-    double  _hourSize;
     double  _hoursToPad;
     struct _NSRange { 
         unsigned long long location; 
@@ -20,6 +18,7 @@
     unsigned int  _rightBorder;
     bool  _showsTimeMarker;
     bool  _showsTimeMarkerExtension;
+    long long  _targetSizeClass;
     UIColor * _timeColor;
     EKCurrentTimeMarkerView * _timeMarker;
     UIView * _timeMarkerExtension;
@@ -50,30 +49,31 @@
 @property (nonatomic, retain) UIVisualEffect *visualEffect;
 
 + (id)_boldFontForOrientation:(long long)arg1;
-+ (void)_calculateWidthForOrientation:(long long)arg1 excludeCurrentTime:(bool)arg2;
++ (void)_calculateWidthForSizeClass:(long long)arg1 orientation:(long long)arg2 excludeCurrentTime:(bool)arg3;
 + (double)_dynamicFontSizeForOrientation:(long long)arg1;
 + (id)_hourFontForOrientation:(long long)arg1;
++ (double)_hourFontSize;
 + (void)_invalidateCachedValues;
 + (void)_invalidateWidth;
 + (id)_noonLocalizedString;
 + (double)_noonLocalizedWidthForOrientation:(long long)arg1;
 + (id)_normalFontForOrientation:(long long)arg1;
 + (void)_registerForInvalidation;
-+ (double)_timeTextWidthForOrientation:(long long)arg1;
++ (void)_setWidth:(double)arg1 forOrientation:(long long)arg2 sizeClass:(long long)arg3 excludeCurrentTime:(bool)arg4;
++ (double)_timeTextWidthForSizeClass:(long long)arg1 orientation:(long long)arg2;
++ (double)_timeVerticalInsetForOrientation:(long long)arg1 inViewHierarchy:(id)arg2;
++ (double)_widthForOrientation:(long long)arg1 sizeClass:(long long)arg2 excludeCurrentTime:(bool)arg3;
 + (id)allDayLabelBoldFont;
 + (id)allDayLabelFont;
-+ (double)defaultHeightForOrientation:(long long)arg1;
-+ (double)defaultHeightForOrientation:(long long)arg1 withHourScale:(double)arg2;
++ (double)defaultHeightForSizeClass:(long long)arg1 orientation:(long long)arg2;
++ (double)defaultHeightForSizeClass:(long long)arg1 orientation:(long long)arg2 withHourScale:(double)arg3;
 + (double)defaultHourScale;
-+ (double)designatorSizeForOrientation:(long long)arg1;
 + (double)heightOfHourTextForHour:(long long)arg1 orientation:(long long)arg2;
-+ (double)hourHeightForOrientation:(long long)arg1;
-+ (double)hourSizeForOrientation:(long long)arg1;
-+ (double)hourWidthForOrientation:(long long)arg1;
++ (double)hourHeightForSizeClass:(long long)arg1 orientation:(long long)arg2;
++ (double)hourWidthForSizeClass:(long long)arg1 orientation:(long long)arg2;
 + (void)setVerticalPadding:(double)arg1;
-+ (double)timeInsetForOrientation:(long long)arg1;
-+ (double)timeVerticalInsetForOrientation:(long long)arg1;
-+ (double)timeWidthForOrientation:(long long)arg1;
++ (double)timeInsetForSizeClass:(long long)arg1 orientation:(long long)arg2;
++ (double)timeWidthForOrientation:(long long)arg1 inViewHierarchy:(id)arg2;
 + (id)unscaledAllDayLabelFont;
 + (double)verticalPadding;
 
@@ -82,11 +82,13 @@
 - (void)_invalidateTimeWidth;
 - (void)_localeChanged;
 - (double)_positionOfSecond:(int)arg1;
+- (long long)_sizeClass;
 - (void)_sizeClassChanged;
 - (double)_timeWidth;
 - (void)dealloc;
 - (double)defaultHeight;
 - (id)delegate;
+- (void)didMoveToWindow;
 - (void)drawRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 forContentView:(id)arg2 withHourRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3;
 - (double)highlightedHour;
 - (double)hourHeight;
@@ -94,6 +96,7 @@
 - (double)hoursToPad;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })hoursToRender;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 sizeClass:(long long)arg2;
 - (void)layoutFrames;
 - (void)layoutSubviews;
 - (double)scaledHourHeight;
@@ -123,6 +126,7 @@
 - (id)timeMarker;
 - (void)tintColorDidChange;
 - (double)topPadding;
+- (void)updateHourHeight;
 - (void)updateMarkerPosition;
 - (bool)usesLightText;
 - (void)viewTintColorDidChangeForView:(id)arg1 toColor:(id)arg2;

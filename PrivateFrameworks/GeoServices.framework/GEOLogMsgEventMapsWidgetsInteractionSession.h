@@ -6,13 +6,25 @@
     int  _duration;
     int  _endState;
     struct { 
-        unsigned int duration : 1; 
-        unsigned int endState : 1; 
-        unsigned int localDayOfWeek : 1; 
-        unsigned int localHour : 1; 
-        unsigned int mapsWidgetType : 1; 
-        unsigned int lockedMode : 1; 
-    }  _has;
+        unsigned int has_duration : 1; 
+        unsigned int has_endState : 1; 
+        unsigned int has_localDayOfWeek : 1; 
+        unsigned int has_localHour : 1; 
+        unsigned int has_mapsWidgetType : 1; 
+        unsigned int has_lockedMode : 1; 
+        unsigned int read_mapsDestinationsWidget : 1; 
+        unsigned int read_mapsNearbyWidget : 1; 
+        unsigned int read_mapsTransitWidget : 1; 
+        unsigned int wrote_mapsDestinationsWidget : 1; 
+        unsigned int wrote_mapsNearbyWidget : 1; 
+        unsigned int wrote_mapsTransitWidget : 1; 
+        unsigned int wrote_duration : 1; 
+        unsigned int wrote_endState : 1; 
+        unsigned int wrote_localDayOfWeek : 1; 
+        unsigned int wrote_localHour : 1; 
+        unsigned int wrote_mapsWidgetType : 1; 
+        unsigned int wrote_lockedMode : 1; 
+    }  _flags;
     int  _localDayOfWeek;
     int  _localHour;
     bool  _lockedMode;
@@ -20,6 +32,12 @@
     GEOMapsNearbyWidget * _mapsNearbyWidget;
     GEOMapsTransitWidget * _mapsTransitWidget;
     int  _mapsWidgetType;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
 }
 
 @property (nonatomic) int duration;
@@ -41,9 +59,14 @@
 @property (nonatomic, retain) GEOMapsTransitWidget *mapsTransitWidget;
 @property (nonatomic) int mapsWidgetType;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsEndState:(id)arg1;
 - (int)StringAsMapsWidgetType:(id)arg1;
+- (void)_readMapsDestinationsWidget;
+- (void)_readMapsNearbyWidget;
+- (void)_readMapsTransitWidget;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -61,6 +84,8 @@
 - (bool)hasMapsTransitWidget;
 - (bool)hasMapsWidgetType;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (int)localDayOfWeek;
 - (int)localHour;
@@ -71,6 +96,7 @@
 - (int)mapsWidgetType;
 - (id)mapsWidgetTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setDuration:(int)arg1;
 - (void)setEndState:(int)arg1;

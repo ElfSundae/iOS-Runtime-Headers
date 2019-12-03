@@ -10,6 +10,7 @@
 @property (nonatomic, copy) MPCPrivateListeningStateSource *privateListeningStateSource;
 @property (nonatomic, copy) NSString *requestingBundleIdentifier;
 @property (nonatomic, copy) NSString *requestingBundleVersion;
+@property (nonatomic, retain) ICUserIdentity *userIdentity;
 
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
@@ -19,5 +20,6 @@
 - (void)setPrivateListeningStateSource:(id)arg1;
 - (void)setRequestingBundleIdentifier:(id)arg1;
 - (void)setRequestingBundleVersion:(id)arg1;
+- (void)setUserIdentity:(id)arg1;
 
 @end

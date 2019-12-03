@@ -9,8 +9,8 @@
 
 + (id)mapperForCurrentThread;
 
+- (void).cxx_destruct;
 - (void)cancel;
-- (void)dealloc;
 - (id)init;
 - (bool)isCancelled;
 - (void)quit;

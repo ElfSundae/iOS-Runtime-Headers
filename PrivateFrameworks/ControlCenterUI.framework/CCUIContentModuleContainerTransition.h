@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/ControlCenterUI.framework/ControlCenterUI
  */
 
-@interface CCUIContentModuleContainerTransition : NSObject <_UIPreviewInteractionViewControllerTransition> {
+@interface CCUIContentModuleContainerTransition : NSObject <_UIClickPresentationTransition> {
     bool  _appearanceTransition;
     struct CGRect { 
         struct CGPoint { 
@@ -19,9 +19,11 @@
 
 @property (getter=isAppearanceTransition, nonatomic) bool appearanceTransition;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } contentRestOverrideFrame;
+@property (nonatomic, readonly) UIViewPropertyAnimator *customAnimator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, copy) UITargetedPreview *sourcePreview;
 @property (readonly) Class superclass;
 @property (nonatomic) CCUIContentModuleContainerViewController *viewController;
 

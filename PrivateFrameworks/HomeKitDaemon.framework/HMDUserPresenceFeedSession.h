@@ -9,7 +9,7 @@
     HMUserPresenceCompute * _presenceComputeStatus;
     HMDUserPresenceRegion * _presenceRegionStatus;
     HMDUserPresenceUpdateReason * _reason;
-    HMDCentralMessageDispatcher * _remoteMessageDispatcher;
+    HMDMessageDispatcher * _remoteMessageDispatcher;
     HMDDevice * _residentDevice;
     NSUUID * _sessionID;
     NSDate * _statusChangeDate;
@@ -28,7 +28,7 @@
 @property (nonatomic, readonly) HMUserPresenceCompute *presenceComputeStatus;
 @property (nonatomic, readonly) HMDUserPresenceRegion *presenceRegionStatus;
 @property (nonatomic, retain) HMDUserPresenceUpdateReason *reason;
-@property (nonatomic, readonly) HMDCentralMessageDispatcher *remoteMessageDispatcher;
+@property (nonatomic, readonly) HMDMessageDispatcher *remoteMessageDispatcher;
 @property (nonatomic, readonly) HMDDevice *residentDevice;
 @property (nonatomic, readonly) NSUUID *sessionID;
 @property (nonatomic, readonly) NSDate *statusChangeDate;

@@ -4,6 +4,7 @@
 
 @interface AVVideoCompositionRenderContextInternal : NSObject {
     NSDictionary * _basisProperties;
+    struct OpaqueFigSimpleMutex { } * _bufferPoollInitMutex;
     struct __CFDictionary { } * _cleanApertureDict;
     NSDictionary * _clientRequiredPixelBufferAttributes;
     NSDictionary * _destinationDesiredPixelBufferAttributes;
@@ -47,6 +48,5 @@
 
 - (void)_willDeallocOrFinalize;
 - (void)dealloc;
-- (void)finalize;
 
 @end

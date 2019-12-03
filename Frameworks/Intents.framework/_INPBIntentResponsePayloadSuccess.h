@@ -3,6 +3,7 @@
  */
 
 @interface _INPBIntentResponsePayloadSuccess : PBCodable <NSCopying, NSSecureCoding, _INPBIntentResponsePayloadSuccess> {
+    bool  __encodeLegacyGloryData;
     struct { 
         unsigned int shouldOpenContainingApplication : 1; 
     }  _has;
@@ -11,6 +12,7 @@
     bool  _shouldOpenContainingApplication;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool hasResponseMessageData;
@@ -22,13 +24,19 @@
 @property (nonatomic) bool shouldOpenContainingApplication;
 @property (readonly) Class superclass;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasResponseMessageData;
 - (bool)hasResponseTypeName;
 - (bool)hasShouldOpenContainingApplication;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)responseMessageData;

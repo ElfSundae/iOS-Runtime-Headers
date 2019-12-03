@@ -5,11 +5,13 @@
 @interface HKActivitySummary : NSObject <NSCopying, NSSecureCoding> {
     HKQuantity * _activeEnergyBurned;
     HKQuantity * _activeEnergyBurnedGoal;
+    NSDate * _activeHoursGoalDate;
     long long  _activitySummaryIndex;
     HKQuantity * _appleExerciseTime;
     HKQuantity * _appleExerciseTimeGoal;
     HKQuantity * _appleStandHours;
     HKQuantity * _appleStandHoursGoal;
+    NSDate * _briskMinutesGoalDate;
     NSDate * _creationDate;
     NSArray * _dailyBriskMinutesStatistics;
     NSArray * _dailyEnergyBurnedStatistics;
@@ -29,11 +31,13 @@
 @property (nonatomic, retain) HKQuantity *activeEnergyBurned;
 @property (nonatomic, retain) HKQuantity *activeEnergyBurnedGoal;
 @property (getter=_activeEnergyCompletionPercentage, nonatomic, readonly) double activeEnergyCompletionPercentage;
+@property (getter=_activeHoursGoalDate, setter=_setActiveHoursGoalDate:, nonatomic, retain) NSDate *activeHoursGoalDate;
 @property (getter=_activitySummaryIndex, setter=_setActivitySummaryIndex:, nonatomic) long long activitySummaryIndex;
 @property (nonatomic, retain) HKQuantity *appleExerciseTime;
 @property (nonatomic, retain) HKQuantity *appleExerciseTimeGoal;
 @property (nonatomic, retain) HKQuantity *appleStandHours;
 @property (nonatomic, retain) HKQuantity *appleStandHoursGoal;
+@property (getter=_briskMinutesGoalDate, setter=_setBriskMinutesGoalDate:, nonatomic, retain) NSDate *briskMinutesGoalDate;
 @property (getter=_creationDate, setter=_setCreationDate:, nonatomic, retain) NSDate *creationDate;
 @property (getter=_dailyBriskMinutesStatistics, setter=_setDailyBriskMinutesStatistics:, nonatomic, retain) NSArray *dailyBriskMinutesStatistics;
 @property (getter=_dailyEnergyBurnedStatistics, setter=_setDailyEnergyBurnedStatistics:, nonatomic, retain) NSArray *dailyEnergyBurnedStatistics;
@@ -45,6 +49,7 @@
 @property (getter=_exerciseTimeCompletionPercentage, nonatomic, readonly) double exerciseTimeCompletionPercentage;
 @property (getter=_flightsClimbed, setter=_setFlightsClimbed:, nonatomic, retain) HKQuantity *flightsClimbed;
 @property (getter=_gregorianDateComponents, setter=_setGregorianDateComponents:, nonatomic, copy) NSDateComponents *gregorianDateComponents;
+@property (getter=_hasEnergyBurnedGoal, nonatomic, readonly) bool hasEnergyBurnedGoal;
 @property (getter=_hasMoveGoal, nonatomic, readonly) bool hasMoveGoal;
 @property (getter=_pushCount, setter=_setPushCount:, nonatomic, retain) HKQuantity *pushCount;
 @property (getter=_standHoursCompletionPercentage, nonatomic, readonly) double standHoursCompletionPercentage;
@@ -54,7 +59,7 @@
 
 // Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
 
-+ (id)_highestEnergyBurnedActivityCacheAmongCaches:(id)arg1;
++ (id)_mostRecentlyCreatedCacheAmongCaches:(id)arg1;
 + (id)_mostSignificantCacheAmongCaches:(id)arg1;
 + (bool)_validateActivitySummaryDateComponents:(id)arg1 errorMessage:(id*)arg2;
 + (bool)_validateActivitySummaryDateComponentsRange:(id)arg1 endDateComponents:(id)arg2 errorMessage:(id*)arg3;
@@ -62,8 +67,10 @@
 
 - (void).cxx_destruct;
 - (double)_activeEnergyCompletionPercentage;
+- (id)_activeHoursGoalDate;
 - (long long)_activitySummaryIndex;
 - (bool)_allFieldsAreEqual:(id)arg1;
+- (id)_briskMinutesGoalDate;
 - (id)_creationDate;
 - (id)_dailyBriskMinutesStatistics;
 - (id)_dailyEnergyBurnedStatistics;
@@ -75,6 +82,7 @@
 - (double)_exerciseTimeCompletionPercentage;
 - (id)_flightsClimbed;
 - (id)_gregorianDateComponents;
+- (bool)_hasEnergyBurnedGoal;
 - (bool)_hasExerciseGoal;
 - (bool)_hasMoveGoal;
 - (bool)_hasStandHoursGoal;
@@ -82,7 +90,9 @@
 - (bool)_isDataLoading;
 - (double)_percentageCompleteWithQuantity:(id)arg1 goalQuantity:(id)arg2 unit:(id)arg3;
 - (id)_pushCount;
+- (void)_setActiveHoursGoalDate:(id)arg1;
 - (void)_setActivitySummaryIndex:(long long)arg1;
+- (void)_setBriskMinutesGoalDate:(id)arg1;
 - (void)_setCreationDate:(id)arg1;
 - (void)_setDailyBriskMinutesStatistics:(id)arg1;
 - (void)_setDailyEnergyBurnedStatistics:(id)arg1;
@@ -112,6 +122,7 @@
 - (id)distanceWalkingRunning;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)setActiveEnergyBurned:(id)arg1;
@@ -124,17 +135,18 @@
 - (void)setStepCount:(id)arg1;
 - (id)stepCount;
 
-// Image: /System/Library/PrivateFrameworks/ActivitySharing.framework/ActivitySharing
+// Image: /System/Library/PrivateFrameworks/ActivitySharingUI.framework/ActivitySharingUI
 
-- (id)_activeEnergyStringWithFont:(id)arg1 smallCapsFont:(id)arg2 color:(id)arg3 formattingManager:(id)arg4;
 - (bool)_isEmptyExerciseSummary;
-- (bool)_isEmptyMoveSummary;
-- (id)as_activeEnergyProgressStringWithContext:(id)arg1 formattingManager:(id)arg2;
-- (id)as_activeEnergyStringWithContext:(id)arg1 formattingManager:(id)arg2;
+- (bool)_isEmptyMoveSummaryForSnapshot:(struct _HKFitnessFriendActivitySnapshot { Class x1; }*)arg1;
+- (id)_moveStringWithFont:(id)arg1 smallCapsFont:(id)arg2 color:(id)arg3 formattingManager:(id)arg4 snapshot:(struct _HKFitnessFriendActivitySnapshot { Class x1; }*)arg5;
 - (id)as_distanceStringWithContext:(id)arg1 formattingManager:(id)arg2;
 - (id)as_exerciseDurationStringWithContext:(id)arg1;
 - (id)as_exerciseProgressStringWithContext:(id)arg1;
-- (id)as_movePercentStringWithContext:(id)arg1;
+- (double)as_moveCompletionPercentage;
+- (id)as_movePercentStringWithContext:(id)arg1 snapshot:(struct _HKFitnessFriendActivitySnapshot { Class x1; }*)arg2;
+- (id)as_moveProgressStringWithContext:(id)arg1 formattingManager:(id)arg2 snapshot:(struct _HKFitnessFriendActivitySnapshot { Class x1; }*)arg3;
+- (id)as_moveStringWithContext:(id)arg1 formattingManager:(id)arg2 snapshot:(struct _HKFitnessFriendActivitySnapshot { Class x1; }*)arg3;
 - (id)as_pushesStringWithContext:(id)arg1;
 - (id)as_stepsStringWithContext:(id)arg1;
 

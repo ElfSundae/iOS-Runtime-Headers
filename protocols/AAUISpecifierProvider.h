@@ -6,7 +6,7 @@
 @required
 
 - (<AAUISpecifierProviderDelegate> *)delegate;
-- (id)initWithAccountManager:(AAUIAccountManager *)arg1;
+- (id)initWithAccountManager:(AIDAAccountManager *)arg1;
 - (void)setDelegate:(id <AAUISpecifierProviderDelegate>)arg1;
 - (void)setSpecifiers:(NSArray *)arg1;
 - (NSArray *)specifiers;

@@ -44,9 +44,11 @@
 @property (nonatomic) long long eventIndex;
 @property (nonatomic, readonly) double eventStartTime;
 @property (nonatomic, copy) NSDictionary *finalAttributes;
+@property (nonatomic, readonly) double finalRotation;
 @property (nonatomic, readonly) double finalScale;
 @property (nonatomic, readonly) bool hasPreviousActionRotate;
 @property (nonatomic, readonly) bool hasPreviousActionScale;
+@property (nonatomic, readonly) double initialRotation;
 @property (nonatomic, readonly) double initialScale;
 @property (nonatomic, readonly) bool isActionBuild;
 @property (nonatomic, readonly) bool isActionMotionPath;
@@ -93,10 +95,12 @@
 - (long long)eventIndex;
 - (double)eventStartTime;
 - (id)finalAttributes;
+- (double)finalRotation;
 - (double)finalScale;
 - (bool)hasPreviousActionRotate;
 - (bool)hasPreviousActionScale;
 - (id)initWithBuildType:(long long)arg1 effectIdentifier:(id)arg2 attributes:(id)arg3 pluginClass:(Class)arg4 deliveryStyle:(unsigned long long)arg5 eventIndex:(long long)arg6 stageIndex:(long long)arg7 startTime:(double)arg8 eventStartTime:(double)arg9 duration:(double)arg10 direction:(unsigned long long)arg11 automatic:(bool)arg12 animateAtEndOfPreviousBuild:(bool)arg13 parentBuild:(id)arg14;
+- (double)initialRotation;
 - (double)initialScale;
 - (bool)isActionBuild;
 - (bool)isActionMotionPath;

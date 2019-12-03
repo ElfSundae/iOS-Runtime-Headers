@@ -16,12 +16,12 @@
     NSUUID * _subjectUUID;
 }
 
-@property (nonatomic, retain) NSData *applicationData;
+@property (nonatomic, copy) NSData *applicationData;
 @property (nonatomic, readonly) struct __SecCertificate { }*certificate;
 @property (nonatomic, readonly, copy) NSString *channel;
 @property (nonatomic) bool disableCompression;
 @property (nonatomic, copy) NSDate *endDate;
-@property (nonatomic, retain) NSDictionary *keyValuePairs;
+@property (nonatomic, copy) NSDictionary *keyValuePairs;
 @property (nonatomic, copy) NSString *payloadIdentifier;
 @property (nonatomic, copy) NSString *payloadType;
 @property (nonatomic, copy) NSDate *startDate;

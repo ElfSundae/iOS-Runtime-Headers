@@ -29,6 +29,7 @@
     int  mOrientation;
     EDResources * mResources;
     bool  mReverseOrder;
+    bool  mReverseOrderOverridden;
     double  mScalingMaximum;
     double  mScalingMinimum;
     bool  mSecondary;
@@ -43,6 +44,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)adjustAxisPositionForHorizontalChart;
 - (id)axisGraphicProperties;
 - (int)axisId;
@@ -56,7 +58,6 @@
 - (int)crossBetween;
 - (int)crosses;
 - (double)crossesAt;
-- (void)dealloc;
 - (id)defaultDateTimeContentFormat;
 - (id)description;
 - (id)font;
@@ -72,6 +73,7 @@
 - (bool)isHorizontalPosition;
 - (bool)isLineVisible;
 - (bool)isReverseOrder;
+- (bool)isReverseOrderOverridden;
 - (bool)isSecondary;
 - (bool)isTickLabelAutoRotation;
 - (bool)isTickLabelVisible;
@@ -107,6 +109,7 @@
 - (void)setMinorTickMark:(int)arg1;
 - (void)setOrientation:(int)arg1;
 - (void)setReverseOrder:(bool)arg1;
+- (void)setReverseOrderOverridden:(bool)arg1;
 - (void)setScalingMaximum:(double)arg1;
 - (void)setScalingMinimum:(double)arg1;
 - (void)setSecondary:(bool)arg1;

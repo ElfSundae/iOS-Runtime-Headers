@@ -9,7 +9,6 @@
     NSObject<OS_dispatch_queue> * _assetInternalAccessQueue;
     unsigned long long  _assetLoadContext;
     NSObject<OS_dispatch_queue> * _assetLoadContextAccessQueue;
-    unsigned long long  _backgroundTaskIdentifier;
     bool  _cleanedUp;
     TVPContentKeySession * _contentKeySession;
     NSTimer * _diskSpaceMonitorTimer;
@@ -18,7 +17,7 @@
     NSObject<TVPMediaItem> * _mediaItem;
     NSString * _mediaItemLoaderGUID;
     unsigned long long  _refCount;
-    NSObject * _reportingHierarchyToken;
+    id  _reportingHierarchyToken;
     NSNotification * _savedMediaServerResetUserNotification;
     NSString * _state;
     TVPStateMachine * _stateMachine;
@@ -31,7 +30,6 @@
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *assetInternalAccessQueue;
 @property (nonatomic) unsigned long long assetLoadContext;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *assetLoadContextAccessQueue;
-@property (nonatomic) unsigned long long backgroundTaskIdentifier;
 @property (nonatomic) bool cleanedUp;
 @property (nonatomic, readonly) bool containsStreamingAVAsset;
 @property (nonatomic, retain) TVPContentKeySession *contentKeySession;
@@ -44,7 +42,7 @@
 @property (nonatomic, retain) NSObject<TVPMediaItem> *mediaItem;
 @property (nonatomic, copy) NSString *mediaItemLoaderGUID;
 @property (nonatomic) unsigned long long refCount;
-@property (nonatomic, retain) NSObject *reportingHierarchyToken;
+@property (nonatomic, retain) id reportingHierarchyToken;
 @property (nonatomic, retain) NSNotification *savedMediaServerResetUserNotification;
 @property (nonatomic, retain) NSString *state;
 @property (nonatomic, retain) TVPStateMachine *stateMachine;
@@ -92,7 +90,6 @@
 - (id)assetInternalAccessQueue;
 - (unsigned long long)assetLoadContext;
 - (id)assetLoadContextAccessQueue;
-- (unsigned long long)backgroundTaskIdentifier;
 - (bool)cleanedUp;
 - (void)cleanupIfNecessary;
 - (bool)containsStreamingAVAsset;
@@ -120,7 +117,6 @@
 - (void)setAssetInternalAccessQueue:(id)arg1;
 - (void)setAssetLoadContext:(unsigned long long)arg1;
 - (void)setAssetLoadContextAccessQueue:(id)arg1;
-- (void)setBackgroundTaskIdentifier:(unsigned long long)arg1;
 - (void)setCleanedUp:(bool)arg1;
 - (void)setContentKeySession:(id)arg1;
 - (void)setDiskSpaceMonitorTimer:(id)arg1;

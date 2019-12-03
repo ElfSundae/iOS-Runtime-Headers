@@ -11,7 +11,7 @@
 @property (nonatomic, readonly, copy) NSArray *unstablePlacements;
 
 + (id)activityItemDisplayIdentifier;
-+ (id)groupWithHighPriority:(long long)arg1 lowPriority:(long long)arg2;
++ (id)groupWithHighPriority:(long long)arg1 lowPriority:(long long)arg2 bluetoothPaddingInset:(double)arg3;
 
 - (void).cxx_destruct;
 - (id)stablePlacements;

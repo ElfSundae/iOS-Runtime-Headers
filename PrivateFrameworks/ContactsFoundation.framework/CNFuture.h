@@ -3,9 +3,8 @@
  */
 
 @interface CNFuture : NSObject <CNFuture, CNPromise> {
-    CNFutureCompletionBlocks * _completionBlocks;
-    CNFutureResult * _futureResult;
-    NSConditionLock * _stateLock;
+    NSMutableArray * _calculationDependencies;
+    <CNFutureImpl> * _impl;
 }
 
 @property (getter=isCancelled, readonly) bool cancelled;
@@ -17,21 +16,23 @@
 
 + (id)chain:(id)arg1;
 + (void)finishPromise:(id)arg1 withFuture:(id)arg2;
-+ (id)flatMap:(id)arg1 withBlock:(id /* block */)arg2;
++ (id)flatMap:(id)arg1 withBlock:(id /* block */)arg2 schedulerProvider:(id)arg3;
 + (id)future;
 + (id)futureWithBlock:(id /* block */)arg1;
 + (id)futureWithBlock:(id /* block */)arg1 scheduler:(id)arg2;
++ (id)futureWithBlock:(id /* block */)arg1 scheduler:(id)arg2 schedulerProvider:(id)arg3;
++ (id)futureWithBlock:(id /* block */)arg1 schedulerProvider:(id)arg2;
 + (id)futureWithError:(id)arg1;
 + (id)futureWithResult:(id)arg1;
 + (id)join:(id)arg1;
 + (id)lazyFutureWithBlock:(id /* block */)arg1;
 + (id)promiseFuture;
-+ (id)recover:(id)arg1 withBlock:(id /* block */)arg2;
++ (id)recover:(id)arg1 withBlock:(id /* block */)arg2 schedulerProvider:(id)arg3;
 + (id)sequence:(id)arg1;
 
+- (void).cxx_destruct;
 - (void)_flushCompletionBlocks;
-- (bool)_nts_isFinished;
-- (void)addCompletionBlock:(id /* block */)arg1;
+- (void)addCalculationDependency:(id)arg1;
 - (void)addFailureBlock:(id /* block */)arg1;
 - (void)addFailureBlock:(id /* block */)arg1 scheduler:(id)arg2;
 - (void)addSuccessBlock:(id /* block */)arg1;
@@ -40,19 +41,21 @@
 - (bool)cancel;
 - (id /* block */)completionHandlerAdapter;
 - (id /* block */)completionHandlerAdapterWithDefaultValue:(id)arg1;
-- (void)dealloc;
+- (id)description;
 - (void)didCancel;
 - (id /* block */)errorOnlyCompletionHandlerAdapter;
 - (bool)finishWithError:(id)arg1;
 - (bool)finishWithResult:(id)arg1;
 - (bool)finishWithResult:(id)arg1 error:(id)arg2;
 - (id)flatMap:(id /* block */)arg1;
-- (id)futureResult;
+- (id)flatMap:(id /* block */)arg1 schedulerProvider:(id)arg2;
 - (id)init;
+- (id)initWithImpl:(id)arg1;
+- (id)initWithSchedulerProvider:(id)arg1;
 - (bool)isCancelled;
 - (bool)isFinished;
-- (bool)nts_isFinished;
 - (id)recover:(id /* block */)arg1;
+- (id)recover:(id /* block */)arg1 schedulerProvider:(id)arg2;
 - (id)result:(id*)arg1;
 - (id)resultBeforeDate:(id)arg1 error:(id*)arg2;
 - (id)resultWithTimeout:(double)arg1 error:(id*)arg2;

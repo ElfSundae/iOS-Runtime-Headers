@@ -9,6 +9,7 @@
     int  _clientPid;
     VCAudioPayload * _currentAudioPayload;
     struct SoundDec_t { struct AudioStreamBasicDescription { double x_1_1_1; unsigned int x_1_1_2; unsigned int x_1_1_3; unsigned int x_1_1_4; unsigned int x_1_1_5; unsigned int x_1_1_6; unsigned int x_1_1_7; unsigned int x_1_1_8; unsigned int x_1_1_9; } x1; struct AudioStreamBasicDescription { double x_2_1_1; unsigned int x_2_1_2; unsigned int x_2_1_3; unsigned int x_2_1_4; unsigned int x_2_1_5; unsigned int x_2_1_6; unsigned int x_2_1_7; unsigned int x_2_1_8; unsigned int x_2_1_9; } x2; int x3; int x4; struct OpaqueAudioConverter {} *x5; char *x6; int x7; struct AudioStreamPacketDescription { long long x_8_1_1; unsigned int x_8_1_2; unsigned int x_8_1_3; } x8; struct AudioBufferList {} *x9; struct AudioBufferList {} *x10; char *x11; char *x12; int x13; int x14; int x15; int x16; unsigned char x17; int x18; int x19; unsigned int x20; unsigned int x21; } * _decoder;
+    int  _state;
     id  _textStream;
     unsigned int  _vpioSamplesPerFrame;
     NSObject<VCMediaStreamDelegate> * delegate;
@@ -19,7 +20,6 @@
         long long __sig; 
         BOOL __opaque[56]; 
     }  sessionLock;
-    int  state;
     struct AudioStreamBasicDescription { 
         double mSampleRate; 
         unsigned int mFormatID; 
@@ -47,6 +47,7 @@
 - (int)deviceRole;
 - (void)didResumeAudioIO:(id)arg1;
 - (void)didSuspendAudioIO:(id)arg1;
+- (void)didUpdateBasebandCodec:(const struct _VCRemoteCodecInfo { unsigned int x1; double x2; }*)arg1;
 - (id)initWithMode:(long long)arg1 clientPid:(int)arg2;
 - (bool)isValid;
 - (void)lock;

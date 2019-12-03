@@ -7,8 +7,8 @@
     OITSUColor * mPhonePatternColor;
 }
 
+- (void).cxx_destruct;
 - (id)color;
-- (void)dealloc;
 - (void)fillPath:(id)arg1;
 - (id)initWithPhoneImage:(id)arg1;
 

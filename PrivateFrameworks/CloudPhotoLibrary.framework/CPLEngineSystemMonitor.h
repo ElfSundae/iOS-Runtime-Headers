@@ -28,6 +28,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) bool isDataBudgetOverriden;
 @property (readonly) bool isNetworkConnected;
+@property (readonly) bool isNetworkConstrained;
 @property (readonly) bool isOnCellularOrUnknown;
 @property (readonly) Class superclass;
 
@@ -54,13 +55,15 @@
 - (id)initWithEngineLibrary:(id)arg1;
 - (bool)isDataBudgetOverriden;
 - (bool)isNetworkConnected;
+- (bool)isNetworkConstrained;
 - (bool)isOnCellularOrUnknown;
-- (void)networkStateDidChangeForNetworkWatcher:(id)arg1;
 - (void)openWithCompletionHandler:(id /* block */)arg1;
 - (void)scheduledOverrideDidEnd:(id)arg1;
 - (void)startOverridingSystemBudgets:(unsigned long long)arg1 reason:(id)arg2;
 - (void)startOverridingSystemBudgetsForClient:(unsigned long long)arg1;
 - (void)stopOverridingSystemBudgets:(unsigned long long)arg1 reason:(id)arg2;
 - (void)stopOverridingSystemBudgetsForClient:(unsigned long long)arg1;
+- (void)updateDiskPressureState;
+- (void)watcher:(id)arg1 stateDidChangeToNetworkState:(id)arg2;
 
 @end

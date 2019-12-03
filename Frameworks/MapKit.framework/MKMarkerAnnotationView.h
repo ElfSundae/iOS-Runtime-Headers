@@ -11,6 +11,7 @@
     UILabel * _glyphLabel;
     NSString * _glyphText;
     UIColor * _glyphTintColor;
+    bool  _isObserving;
     UIColor * _markerStrokeTintColor;
     double  _markerStrokeWidth;
     UIColor * _markerTintColor;
@@ -21,8 +22,6 @@
     UILabel * _selectedGlyphLabel;
     _MKBezierPathView * _selectedMarkerView;
     UIImageView * _shadowView;
-    long long  _subtitleVisibility;
-    long long  _titleVisibility;
     MKWalletMerchantStylingInfo * _walletMerchantStylingInfo;
 }
 
@@ -41,11 +40,13 @@
 @property (getter=_walletMerchantStylingInfo, setter=_setWalletMerchantStylingInfo:, nonatomic, retain) MKWalletMerchantStylingInfo *walletMerchantStylingInfo;
 
 + (float)_defaultDisplayPriority;
++ (Class)_mapkitLeafClass;
 
 - (void).cxx_destruct;
 - (void)_configureAnimated:(bool)arg1 fromState:(long long)arg2 toState:(long long)arg3;
 - (void)_configureViewsForState:(long long)arg1 usesCallout:(bool)arg2;
 - (long long)_currentMarkerState;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_defaultCollisionAlignmentRectInsets;
 - (void)_didDragWithVelocity:(struct CGPoint { double x1; double x2; })arg1;
 - (id)_effectiveGlyphImageForState:(long long)arg1 isSystemProvided:(bool*)arg2;
 - (id)_effectiveGlyphText;
@@ -55,7 +56,6 @@
 - (id)_effectiveMarkerTintColorForState:(long long)arg1;
 - (double)_effectiveShadowAlphaForState:(long long)arg1;
 - (id)_effectiveSubtitlesIsCollidable:(bool*)arg1;
-- (id)_effectiveTitleIsCollidable:(bool*)arg1;
 - (bool)_hasDataRequiringCallout;
 - (void)_setSelected:(bool)arg1 animated:(bool)arg2;
 - (void)_setStyleAttributes:(id)arg1;
@@ -72,7 +72,7 @@
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })alignmentRectInsets;
 - (bool)animatesWhenAdded;
 - (bool)canShowCallout;
-- (void)configureCustomFeature:(id)arg1;
+- (void)dealloc;
 - (id)glyphImage;
 - (id)glyphText;
 - (id)glyphTintColor;
@@ -104,7 +104,6 @@
 - (void)setSubtitleVisibility:(long long)arg1;
 - (void)setTitleVisibility:(long long)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
-- (long long)subtitleVisibility;
-- (long long)titleVisibility;
+- (bool)updateCalloutViewIfNeededAnimated:(bool)arg1;
 
 @end

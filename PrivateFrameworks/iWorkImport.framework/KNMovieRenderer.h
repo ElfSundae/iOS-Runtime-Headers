@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
  */
 
-@interface KNMovieRenderer : KNBuildRenderer <KNAmbientBuildRenderer, TSKMediaPlayerControllerDelegate> {
+@interface KNMovieRenderer : KNBuildRenderer <KNAmbientBuildRenderer, KNAnimationMovieHost, TSKMediaPlayerControllerDelegate> {
     TSUWeakReference * _buildInRendererReference;
     struct CGRect { 
         struct CGPoint { 
@@ -38,6 +38,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool hasAmbientBuildStarted;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) TSDMovieInfo *movieInfo;
 @property (nonatomic, readonly) NSObject<NSCopying> *movieTimelineMovieIdentifier;
 @property (nonatomic, readonly) CALayer *offscreenVideoLayer;
 @property (nonatomic, readonly) NSObject<TSKMediaPlayerController> *playerController;
@@ -56,6 +57,7 @@
 - (bool)hasAmbientBuildStarted;
 - (id)initWithAnimatedBuild:(id)arg1 info:(id)arg2 buildStage:(id)arg3 animatedSlideView:(id)arg4;
 - (void)interruptAndReset;
+- (id)movieInfo;
 - (id)movieTimelineMovieIdentifier;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (id)offscreenVideoLayer;

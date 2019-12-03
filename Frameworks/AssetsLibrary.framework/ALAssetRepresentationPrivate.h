@@ -8,7 +8,7 @@
     ALAssetsLibrary * _library;
     PLManagedAsset * _photo;
     PLPhotoLibrary * _photoLibrary;
-    PLSidecarFile * _sidecar;
+    <PLSidecar> * _sidecar;
 }
 
 @property (nonatomic, retain) PLPhotoLibrary *_photoLibrary;
@@ -19,7 +19,7 @@
 @property (nonatomic) bool isValid;
 @property (nonatomic) ALAssetsLibrary *library;
 @property (nonatomic, retain) PLManagedAsset *photo;
-@property (nonatomic, retain) PLSidecarFile *sidecar;
+@property (nonatomic, retain) <PLSidecar> *sidecar;
 @property (readonly) Class superclass;
 
 + (void)_clearFileDescriptorQueue;

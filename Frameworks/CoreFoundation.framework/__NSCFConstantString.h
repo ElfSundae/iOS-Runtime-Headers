@@ -7,6 +7,7 @@
 @property (readonly, copy) NSString *redactedDescription;
 
 - (id)autorelease;
+- (id)copy;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (bool)isNSCFConstantString__;
 - (id)redactedDescription;

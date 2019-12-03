@@ -7,8 +7,10 @@
     PDSlideMaster * mSlideMaster;
 }
 
+@property PDSlideMaster *slideMaster;
+
+- (void).cxx_destruct;
 - (id)background;
-- (void)dealloc;
 - (id)defaultTheme;
 - (id)description;
 - (void)doneWithContent;

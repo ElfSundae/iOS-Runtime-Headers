@@ -16,5 +16,6 @@
 - (void)setScrollViewDelegate:(id <UIScrollViewDelegate>)arg1;
 - (void)setTransitOptions:(GEOTransitOptions *)arg1;
 - (GEOTransitOptions *)transitOptions;
+- (void)updateMaskAlpha:(double)arg1 onHeight:(double)arg2 withOffset:(double)arg3;
 
 @end

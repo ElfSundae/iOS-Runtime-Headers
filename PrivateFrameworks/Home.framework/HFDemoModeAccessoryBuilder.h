@@ -3,6 +3,7 @@
  */
 
 @interface HFDemoModeAccessoryBuilder : HFItemBuilder <HFServiceLikeBuilder> {
+    HFNamingComponents * _namingComponent;
     bool  isFavorite;
     NSString * name;
     HFRoomBuilder * room;
@@ -16,6 +17,7 @@
 @property (nonatomic, retain) <HFIconDescriptor> *iconDescriptor;
 @property (nonatomic) bool isFavorite;
 @property (nonatomic, copy) NSString *name;
+@property (nonatomic, retain) HFNamingComponents *namingComponent;
 @property (nonatomic, readonly) NSString *originalName;
 @property (nonatomic, retain) HFRoomBuilder *room;
 @property (readonly) Class superclass;
@@ -34,11 +36,13 @@
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2;
 - (bool)isFavorite;
 - (id)name;
+- (id)namingComponent;
 - (id)originalName;
 - (id)removeItemFromHome;
 - (id)room;
 - (void)setIsFavorite:(bool)arg1;
 - (void)setName:(id)arg1;
+- (void)setNamingComponent:(id)arg1;
 - (void)setRoom:(id)arg1;
 - (bool)supportsFavoriting;
 

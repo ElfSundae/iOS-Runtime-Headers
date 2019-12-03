@@ -3,35 +3,41 @@
  */
 
 @interface HKQuery : NSObject <HKQueryClientInterface, _HKXPCExportable> {
-    long long  _activationState;
+    _Atomic int  _activationState;
+    double  _activationTime;
     NSUUID * _activationUUID;
+    unsigned int  _applicationSDKVersion;
     NSObject<OS_dispatch_queue> * _clientQueue;
-    int  _deactivateCallCount;
-    bool  _deactivating;
+    _Atomic int  _deactivateCallCount;
+    NSString * _debugIdentifier;
     <HKQueryDelegate> * _delegate;
     _HKFilter * _filter;
     bool  _hasBeenExecuted;
     HKObjectType * _objectType;
     NSPredicate * _predicate;
     HKQueryServerProxyProvider * _proxyProvider;
+    long long  _qualityOfService;
     NSObject<OS_dispatch_queue> * _queue;
     <HKQueryServerInterface> * _serverProxy;
     bool  _shouldSuppressDataCollection;
     HKHealthStore * _strongHealthStore;
 }
 
-@property (nonatomic, readonly) long long activationState;
-@property (nonatomic, readonly) NSUUID *activationUUID;
+@property (readonly) long long activationState;
+@property (copy) NSUUID *activationUUID;
+@property (nonatomic, readonly) unsigned int applicationSDKVersion;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *clientQueue;
 @property (readonly) long long deactivateCallCount;
 @property (readonly) bool deactivating;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic, copy) NSString *debugIdentifier;
 @property (nonatomic, readonly) <HKQueryDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (getter=_filter, nonatomic, readonly) _HKFilter *filter;
 @property (readonly) unsigned long long hash;
-@property (retain) HKObjectType *objectType;
-@property (retain) NSPredicate *predicate;
+@property (nonatomic, retain) HKObjectType *objectType;
+@property (nonatomic, retain) NSPredicate *predicate;
+@property (nonatomic) long long qualityOfService;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *queue;
 @property (readonly) HKSampleType *sampleType;
 @property (nonatomic) bool shouldSuppressDataCollection;
@@ -41,6 +47,7 @@
 
 + (id)_cachedInterfaceForProtocol:(id)arg1 configurationHandler:(id /* block */)arg2;
 + (id)_predicateForObjectsFromAppleWatches;
++ (id)_predicateForObjectsWithMinOSBuildVersion:(id)arg1 maxOSBuildVersion:(id)arg2;
 + (id)clientInterface;
 + (id)clientInterfaceProtocol;
 + (Class)configurationClass;
@@ -72,6 +79,7 @@
 + (id)predicateForRecordsWithSortDateFromStartDateComponents:(id)arg1 endDateComponents:(id)arg2;
 + (id)predicateForSamplesAssociatedWithSample:(id)arg1;
 + (id)predicateForSamplesForDayFromDate:(id)arg1 calendar:(id)arg2 options:(unsigned long long)arg3;
++ (id)predicateForSamplesWithConceptIdentifier:(id)arg1 keyPath:(id)arg2;
 + (id)predicateForSamplesWithStartDate:(id)arg1 endDate:(id)arg2 inclusiveEndDates:(bool)arg3 options:(unsigned long long)arg4;
 + (id)predicateForSamplesWithStartDate:(id)arg1 endDate:(id)arg2 options:(unsigned long long)arg3;
 + (id)predicateForSamplesWithinDateInterval:(id)arg1 options:(unsigned long long)arg2;
@@ -88,15 +96,17 @@
 
 - (void).cxx_destruct;
 - (id)_filter;
+- (id)_filterForPredicate:(id)arg1 objectType:(id)arg2;
 - (id)_initWithObjectType:(id)arg1 predicate:(id)arg2;
 - (id)_predicateFilterClasses;
 - (void)_queue_activateWithHealthStore:(id)arg1 activationUUID:(id)arg2 completion:(id /* block */)arg3;
 - (void)_queue_deactivateWithError:(id)arg1;
 - (void)_queue_finishActivationWithServerProxy:(id)arg1 activationUUID:(id)arg2 error:(id)arg3 completion:(id /* block */)arg4;
 - (void)_throwInvalidArgumentExceptionIfHasBeenExecuted:(SEL)arg1;
-- (void)activateWithClientQueue:(id)arg1 healthStore:(id)arg2 delegate:(id)arg3 completion:(id /* block */)arg4;
+- (void)activateWithClientQueue:(id)arg1 healthStore:(id)arg2 delegate:(id)arg3 time:(double)arg4 completion:(id /* block */)arg5;
 - (long long)activationState;
 - (id)activationUUID;
+- (unsigned int)applicationSDKVersion;
 - (id)clientQueue;
 - (void)client_deliverError:(id)arg1 forQuery:(id)arg2;
 - (void)connectionInterrupted;
@@ -104,11 +114,14 @@
 - (void)deactivate;
 - (long long)deactivateCallCount;
 - (bool)deactivating;
+- (id)debugIdentifier;
 - (id)delegate;
 - (id)description;
 - (id)exportedInterface;
+- (bool)hasQueryUUID:(id)arg1;
 - (id)objectType;
 - (id)predicate;
+- (long long)qualityOfService;
 - (id)queue;
 - (void)queue_deactivate;
 - (void)queue_deliverError:(id)arg1;
@@ -121,8 +134,11 @@
 - (void)reactivateWithHealthStore:(id)arg1;
 - (id)remoteInterface;
 - (id)sampleType;
+- (void)setActivationUUID:(id)arg1;
+- (void)setDebugIdentifier:(id)arg1;
 - (void)setObjectType:(id)arg1;
 - (void)setPredicate:(id)arg1;
+- (void)setQualityOfService:(long long)arg1;
 - (void)setShouldSuppressDataCollection:(bool)arg1;
 - (bool)shouldSuppressDataCollection;
 

@@ -10,8 +10,8 @@
 @property (nonatomic) int placeLevel;
 @property (nonatomic, retain) NSString *placeName;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 - (id)initWithData:(id)arg1;

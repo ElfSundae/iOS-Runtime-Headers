@@ -2,11 +2,11 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUDuplicateActivity : PUActivity
+@interface PUDuplicateActivity : PXActivity
 
 + (long long)activityCategory;
 
-- (id)_activityBundleImageConfiguration;
+- (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;
 - (bool)canPerformWithActivityItems:(id)arg1;

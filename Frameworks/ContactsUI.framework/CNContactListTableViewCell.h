@@ -5,44 +5,55 @@
 @interface CNContactListTableViewCell : UITableViewCell {
     CNContact * _contact;
     CNContactFormatter * _contactFormatter;
+    CNContactListStyleApplier * _contactListStyleApplier;
     CNContactMatchInfo * _contactMatchInfo;
     bool  _enabled;
+    bool  _hasBeenDisplayed;
+    bool  _isEmergencyContact;
     bool  _isMeCard;
     id /* block */  _selectedBackgroundViewConfiguration;
-    <ABStyleProvider> * _styleProvider;
     <CNCancelable> * _summaryCancelationToken;
 }
 
 @property (nonatomic, retain) CNContact *contact;
 @property (nonatomic, retain) CNContactFormatter *contactFormatter;
+@property (nonatomic, retain) CNContactListStyleApplier *contactListStyleApplier;
 @property (nonatomic, retain) CNContactMatchInfo *contactMatchInfo;
 @property (nonatomic) bool enabled;
+@property (nonatomic) bool hasBeenDisplayed;
+@property (nonatomic) bool isEmergencyContact;
 @property (nonatomic) bool isMeCard;
 @property (nonatomic, copy) id /* block */ selectedBackgroundViewConfiguration;
-@property (nonatomic, readonly) <ABStyleProvider> *styleProvider;
 @property (nonatomic, retain) <CNCancelable> *summaryCancelationToken;
 
 - (void).cxx_destruct;
-- (void)_cnui_applyContactStyle;
+- (void)cancelAsyncOperations;
 - (id)contact;
 - (id)contactFormatter;
+- (id)contactListStyleApplier;
 - (id)contactMatchInfo;
 - (void)dealloc;
 - (bool)enabled;
+- (bool)hasBeenDisplayed;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (bool)isEmergencyContact;
 - (bool)isMeCard;
+- (void)layoutSubviews;
 - (void)prepareForReuse;
 - (id /* block */)selectedBackgroundViewConfiguration;
 - (void)setContact:(id)arg1;
 - (void)setContactFormatter:(id)arg1;
+- (void)setContactListStyleApplier:(id)arg1;
 - (void)setContactMatchInfo:(id)arg1;
+- (void)setContactMatchInfo:(id)arg1 completionBlock:(id /* block */)arg2;
 - (void)setEnabled:(bool)arg1;
+- (void)setHasBeenDisplayed:(bool)arg1;
 - (void)setHighlighted:(bool)arg1 animated:(bool)arg2;
+- (void)setIsEmergencyContact:(bool)arg1;
 - (void)setIsMeCard:(bool)arg1;
 - (void)setSelected:(bool)arg1 animated:(bool)arg2;
 - (void)setSelectedBackgroundViewConfiguration:(id /* block */)arg1;
 - (void)setSummaryCancelationToken:(id)arg1;
-- (id)styleProvider;
 - (id)summaryCancelationToken;
 
 @end

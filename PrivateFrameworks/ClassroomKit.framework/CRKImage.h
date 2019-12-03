@@ -7,6 +7,7 @@
     UIImage * _underlyingImage;
 }
 
+@property (nonatomic, readonly) struct CGImage { }*CGImage;
 @property (nonatomic, readonly, copy) NSData *PNGRepresentation;
 @property (nonatomic, copy) NSString *accessibilityDescription;
 @property (getter=isHorizontallyFlipped, nonatomic) bool horizontallyFlipped;
@@ -19,11 +20,14 @@
 + (id)imageWithCGImage:(struct CGImage { }*)arg1;
 + (id)imageWithData:(id)arg1;
 + (id)imageWithUnderlyingImage:(id)arg1;
++ (struct CGImage { }*)resizedCGImageFromImage:(struct CGImage { }*)arg1 newSize:(struct CGSize { double x1; double x2; })arg2;
++ (double)screenScale;
 + (bool)supportsSecureCoding;
 + (id)templateImageNamed:(id)arg1;
 + (id)templateImageNamed:(id)arg1 inBundle:(id)arg2;
 
 - (void).cxx_destruct;
+- (struct CGImage { }*)CGImage;
 - (id)JPEGRepresentationWithCompressionFactor:(double)arg1;
 - (id)PNGRepresentation;
 - (id)accessibilityDescription;

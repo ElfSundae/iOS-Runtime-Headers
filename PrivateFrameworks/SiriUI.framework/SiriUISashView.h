@@ -5,7 +5,6 @@
 @interface SiriUISashView : UIView {
     UIView * _contentView;
     UIImageView * _imageView;
-    UIView * _overlayView;
     SiriUISashItem * _sashItem;
     SiriUITextContainerView * _textContainerView;
 }

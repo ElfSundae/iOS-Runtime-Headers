@@ -4,6 +4,7 @@
 
 @interface BCSWiFiConfigurationData : NSObject <BCSParsedDataPrivate> {
     bool  _WEP;
+    bool  _hidden;
     NSString * _password;
     NSString * _ssid;
 }
@@ -13,6 +14,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly, copy) NSString *extraPreviewText;
 @property (readonly) unsigned long long hash;
+@property (getter=isHidden, nonatomic, readonly) bool hidden;
 @property (nonatomic, readonly, copy) NSString *password;
 @property (nonatomic, readonly, copy) NSString *ssid;
 @property (readonly) Class superclass;
@@ -24,7 +26,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)extraPreviewText;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithSSID:(id)arg1 isWEP:(bool)arg2 password:(id)arg3;
+- (id)initWithSSID:(id)arg1 isWEP:(bool)arg2 password:(id)arg3 isHidden:(bool)arg4;
+- (bool)isHidden;
 - (bool)isWEP;
 - (id)password;
 - (id)ssid;

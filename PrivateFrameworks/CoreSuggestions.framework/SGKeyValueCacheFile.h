@@ -15,6 +15,8 @@
     NSString * _tmpPath;
 }
 
++ (id)encodedStringForFullName:(id)arg1;
++ (id)fullNameForEncodedContact:(id)arg1;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -22,6 +24,7 @@
 - (void)commitTemporaryFile;
 - (void)dealloc;
 - (void)deleteValueByRecordId:(id)arg1;
+- (void)deleteValueByRecordIdSet:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

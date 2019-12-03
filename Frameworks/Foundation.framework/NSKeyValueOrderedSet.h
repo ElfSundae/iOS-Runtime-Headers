@@ -11,7 +11,7 @@
 + (id)_proxyShare;
 
 - (id)_proxyInitWithContainer:(id)arg1 getter:(id)arg2;
-- (struct { id x1; })_proxyLocator;
+- (struct { id x1; id x2; })_proxyLocator;
 - (void)_proxyNonGCFinalize;
 - (unsigned long long)count;
 - (void)dealloc;

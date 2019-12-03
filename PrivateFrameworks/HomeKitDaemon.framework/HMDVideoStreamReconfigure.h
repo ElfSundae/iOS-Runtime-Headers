@@ -9,7 +9,7 @@
     NSDictionary * _downlinkQualityInfo;
     bool  _reconfigurationMode;
     NSMutableArray * _reconfigureEvents;
-    HMDCameraSessionID * _sessionID;
+    HMDCameraStreamSessionID * _sessionID;
     HMFTimer * _upgradeDebouceTimer;
     NSObject<OS_dispatch_queue> * _workQueue;
 }
@@ -23,7 +23,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool reconfigurationMode;
 @property (nonatomic, readonly) NSMutableArray *reconfigureEvents;
-@property (nonatomic, readonly) HMDCameraSessionID *sessionID;
+@property (nonatomic, readonly) HMDCameraStreamSessionID *sessionID;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) HMFTimer *upgradeDebouceTimer;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *workQueue;

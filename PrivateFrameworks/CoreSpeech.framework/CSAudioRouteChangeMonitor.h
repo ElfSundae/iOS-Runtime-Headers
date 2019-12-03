@@ -2,27 +2,15 @@
    Image: /System/Library/PrivateFrameworks/CoreSpeech.framework/CoreSpeech
  */
 
-@interface CSAudioRouteChangeMonitor : CSEventMonitor {
-    bool  _isHearstConnected;
-    bool  _isJarvisConnected;
-    NSObject<OS_dispatch_queue> * _queue;
-}
+@interface CSAudioRouteChangeMonitor : CSEventMonitor
 
 + (id)sharedInstance;
 
-- (void).cxx_destruct;
-- (bool)_fetchHearstConnectionState;
-- (bool)_fetchJarvisConnectionState;
-- (void)_notifyHearstConnectionState:(bool)arg1;
-- (void)_notifyJarvisConnectionState:(bool)arg1;
 - (void)_startMonitoringWithQueue:(id)arg1;
 - (void)_stopMonitoring;
 - (void)getHearstConnected:(id /* block */)arg1;
 - (void)getJarvisConnected:(id /* block */)arg1;
 - (bool)hearstConnected;
-- (id)init;
-- (void)jarvisAudioRouteDidChange:(id)arg1;
 - (bool)jarvisConnected;
-- (void)preferredExternalRouteDidChange:(id)arg1;
 
 @end

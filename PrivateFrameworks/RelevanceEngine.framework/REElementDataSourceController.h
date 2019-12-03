@@ -2,10 +2,11 @@
    Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
  */
 
-@interface REElementDataSourceController : NSObject <REElementDataSourceDelegate> {
+@interface REElementDataSourceController : NSObject <REElementDataSourceControllerProperties, REElementDataSourceDelegate> {
     bool  _allowsLocationUse;
     int  _boostCount;
     NSArray * _contentAttributes;
+    unsigned long long  _contentMode;
     REElementDataSource * _dataSource;
     Class  _dataSourceClass;
     NSMutableDictionary * _dataSourceElementIdentifierMap;
@@ -30,6 +31,8 @@
 }
 
 @property (nonatomic, readonly) NSArray *allElements;
+@property (nonatomic, readonly) NSArray *allProvidedElements;
+@property (nonatomic, readonly) bool allowsLocationUse;
 @property (nonatomic, readonly) NSString *applicationBundleIdentifier;
 @property (nonatomic, readonly) NSString *bundleIdentifier;
 @property (nonatomic, readonly) REElementDataSource *dataSource;
@@ -37,12 +40,14 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <REElementDataSourceControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) bool hasDataAvailable;
 @property (nonatomic, readonly) bool hasLoadedData;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) NSString *name;
 @property (nonatomic) unsigned long long state;
 @property (readonly) Class superclass;
-
-+ (id)_sharedDataSourceQueue;
+@property (nonatomic, readonly) NSArray *supportedSections;
+@property (nonatomic, readonly) unsigned long long updateCount;
 
 - (void).cxx_destruct;
 - (void)_addElementIdentifier:(id)arg1;
@@ -54,6 +59,7 @@
 - (id)_groupElements:(id)arg1 bySections:(id)arg2;
 - (void)_handleDeviceLockStateChange:(id)arg1;
 - (void)_handleSignifiantTimeChange:(id)arg1;
+- (id)_initWithRelevanceEngine:(id)arg1 dataSourceClass:(Class)arg2 dataSource:(id)arg3;
 - (void)_loadLoggingHeader;
 - (void)_namespaceElementIdentifier:(id)arg1 section:(id)arg2;
 - (void)_performOrEnqueueUpdateBlock:(id /* block */)arg1;
@@ -69,14 +75,16 @@
 - (void)_setSection:(id)arg1 forElementWithIdentifier:(id)arg2;
 - (id)_shallowCopiedElements:(id)arg1;
 - (void)_storeElement:(id)arg1;
+- (bool)_supportsContentRelevanceProviderForElement:(id)arg1;
 - (id)_updateRelevanceProvidersForElement:(id)arg1;
 - (bool)_validElement:(id)arg1;
 - (void)addElements:(id)arg1 toSection:(unsigned long long)arg2;
 - (void)addElements:(id)arg1 toSectionWithIdentifier:(id)arg2;
 - (id)allElements;
+- (id)allProvidedElements;
+- (bool)allowsLocationUse;
 - (id)applicationBundleIdentifier;
 - (id)bundleIdentifier;
-- (void)collectLoggableState:(id /* block */)arg1;
 - (id)dataSource;
 - (Class)dataSourceClass;
 - (void)dealloc;
@@ -86,12 +94,15 @@
 - (id)elementOperationQueue;
 - (void)elementWillBecomeVisible:(id)arg1;
 - (void)fetchElementWithIdentifierVisible:(id)arg1 withHandler:(id /* block */)arg2;
+- (bool)hasDataAvailable;
 - (bool)hasElementWithId:(id)arg1 inSection:(unsigned long long)arg2;
 - (bool)hasElementWithId:(id)arg1 inSectionWithIdentifier:(id)arg2;
 - (bool)hasLoadedData;
+- (id)initWithRelevanceEngine:(id)arg1 dataSource:(id)arg2;
 - (id)initWithRelevanceEngine:(id)arg1 dataSourceClass:(Class)arg2;
 - (void)invalidateAndReloadWithCompletion:(id /* block */)arg1;
 - (void)invalidateElements;
+- (id)name;
 - (void)pause;
 - (void)prepareToUnload;
 - (void)refreshElement:(id)arg1;
@@ -103,5 +114,7 @@
 - (void)setDelegate:(id)arg1;
 - (void)setState:(unsigned long long)arg1;
 - (unsigned long long)state;
+- (id)supportedSections;
+- (unsigned long long)updateCount;
 
 @end

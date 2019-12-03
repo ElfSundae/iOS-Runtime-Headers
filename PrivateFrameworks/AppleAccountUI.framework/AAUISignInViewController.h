@@ -6,9 +6,12 @@
     AAUIHeaderView * _accountsHeaderView;
     long long  _akServiceType;
     bool  _allowsAccountCreation;
+    bool  _canEditUsername;
     NSArray * _compactConstraints;
     <AAUISignInViewControllerDelegate> * _delegate;
     NSArray * _expandedConstraints;
+    UMUserPersona * _originalPersona;
+    UMUserPersonaContext * _originalPersonaContext;
     UITableViewCell * _passwordCell;
     id /* block */  _passwordHandler;
     bool  _shouldAnticipatePiggybacking;
@@ -16,12 +19,14 @@
     UITableViewHeaderFooterView * _tableFooterView;
     UITableViewHeaderFooterView * _tableHeaderView;
     UITableView * _tableView;
+    NSString * _username;
     UITableViewCell * _usernameCell;
 }
 
 @property (setter=_setAkServiceType:, nonatomic) long long _akServiceType;
 @property (setter=_setShouldAnticipatePiggybacking:, nonatomic) bool _shouldAnticipatePiggybacking;
 @property (nonatomic) bool allowsAccountCreation;
+@property (nonatomic) bool canEditUsername;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <AAUISignInViewControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -30,6 +35,7 @@
 @property (nonatomic) bool showServiceIcons;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) UILabel *titleLabel;
+@property (nonatomic, copy) NSString *username;
 @property (nonatomic, retain) AAUIBuddyView *view;
 
 + (void)phoneNumberSupportedWithCompletion:(id /* block */)arg1;
@@ -71,6 +77,7 @@
 - (void)_setShouldAnticipatePiggybacking:(bool)arg1;
 - (void)_setUsernameCellWaiting:(bool)arg1;
 - (bool)_shouldAnticipatePiggybacking;
+- (bool)_showOnlyPassword;
 - (id)_stringForFooter;
 - (id)_tableFooterView;
 - (id)_tableHeaderView;
@@ -81,6 +88,7 @@
 - (id)_usernameCell;
 - (bool)allowsAccountCreation;
 - (id)authenticationContext;
+- (bool)canEditUsername;
 - (void)constrainView:(id)arg1 toFillHeaderFooterView:(id)arg2;
 - (void)context:(id)arg1 needsPasswordWithCompletion:(id /* block */)arg2;
 - (void)dealloc;
@@ -92,8 +100,10 @@
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (bool)remoteUIController:(id)arg1 shouldLoadRequest:(id)arg2 redirectResponse:(id)arg3;
 - (void)setAllowsAccountCreation:(bool)arg1;
+- (void)setCanEditUsername:(bool)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setShowServiceIcons:(bool)arg1;
+- (void)setUsername:(id)arg1;
 - (bool)showServiceIcons;
 - (void)sizeCategoryDidChange:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
@@ -107,6 +117,7 @@
 - (bool)textFieldShouldReturn:(id)arg1;
 - (id)titleLabel;
 - (void)traitCollectionDidChange:(id)arg1;
+- (id)username;
 - (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

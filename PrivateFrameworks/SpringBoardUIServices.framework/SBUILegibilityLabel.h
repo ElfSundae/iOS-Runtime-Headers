@@ -57,6 +57,7 @@
 - (id)initWithSettings:(id)arg1 strength:(double)arg2;
 - (id)initWithSettings:(id)arg1 strength:(double)arg2 string:(id)arg3 font:(id)arg4;
 - (id)initWithSettings:(id)arg1 strength:(double)arg2 string:(id)arg3 font:(id)arg4 options:(long long)arg5;
+- (struct CGSize { double x1; double x2; })intrinsicContentSize;
 - (double)lastBaselineOffsetFromBottom;
 - (void)layoutSubviews;
 - (id)legibilitySettings;

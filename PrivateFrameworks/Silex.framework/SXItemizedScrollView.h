@@ -52,6 +52,8 @@
 - (void)layoutSubviews;
 - (void)rebuildFramesArray;
 - (void)reindexate;
+- (void)scrollToNext;
+- (void)scrollToPrevious;
 - (void)setActiveViewIndex:(unsigned long long)arg1 animated:(bool)arg2;
 - (void)setContentTooSmall:(bool)arg1;
 - (void)setDataSource:(id)arg1;

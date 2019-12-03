@@ -9,9 +9,11 @@
 @property (nonatomic, retain) NSString *bundleId;
 @property (nonatomic, retain) NSString *contentURL;
 @property (nonatomic) double creationDate;
+@property (nonatomic, retain) NSString *derivedIntentIdentifier;
 @property (nonatomic) long long direction;
 @property (nonatomic, retain) NSString *domainIdentifier;
 @property (nonatomic) double endDate;
+@property (nonatomic, retain) NSString *groupName;
 @property (nonatomic) bool isResponse;
 @property (nonatomic, retain) NSSet *keywords;
 @property (nonatomic, retain) NSString *locationUUID;

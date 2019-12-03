@@ -17,11 +17,14 @@
     NSString * _coverArticleListID;
     FCAssetHandle * _coverImageAssetHandle;
     NSArray * _currentIssueIDs;
+    NSString * _darkStyleBackgroundColorHexString;
+    NSString * _darkStyleForegroundColorHexString;
     FCHeadlineTemplate * _defaultHeadlineTemplate;
     NSString * _defaultSectionID;
     NTPBFeedConfiguration * _feedConfiguration;
     FCAssetHandle * _feedNavImageAssetHandle;
     NSString * _foregroundColorHexString;
+    NSString * _groupDarkStyleTitleColorHexString;
     NSString * _groupTitleColorHexString;
     unsigned long long  _groupingEligibility;
     FCTextInfo * _headlineBylineTextInfo;
@@ -81,6 +84,7 @@
         double width; 
         double height; 
     }  _nameImageSize;
+    FCSubscriptionButtonConfiguration * _paidBundleSubscriptionButtonConfiguration;
     NSString * _parentID;
     NSString * _pptFeedIDOverride;
     NSString * _primaryAudience;
@@ -128,6 +132,10 @@
 @property (nonatomic, readonly, copy) NSString *coverArticleListID;
 @property (nonatomic, readonly) FCAssetHandle *coverImageAssetHandle;
 @property (nonatomic, readonly, copy) NSArray *currentIssueIDs;
+@property (nonatomic, readonly) FCColor *darkStyleBackgroundColor;
+@property (nonatomic, copy) NSString *darkStyleBackgroundColorHexString;
+@property (nonatomic, readonly) FCColor *darkStyleForegroundColor;
+@property (nonatomic, copy) NSString *darkStyleForegroundColorHexString;
 @property (nonatomic, readonly) NSData *data;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, readonly) FCTagBanner *defaultBannerImage;
@@ -139,6 +147,8 @@
 @property (nonatomic, readonly) long long feedType;
 @property (nonatomic, readonly) FCColor *foregroundColor;
 @property (nonatomic, copy) NSString *foregroundColorHexString;
+@property (nonatomic, readonly, copy) FCColor *groupDarkStyleTitleColor;
+@property (nonatomic, copy) NSString *groupDarkStyleTitleColorHexString;
 @property (nonatomic, readonly, copy) FCColor *groupTitleColor;
 @property (nonatomic, copy) NSString *groupTitleColorHexString;
 @property (nonatomic, readonly) unsigned long long groupingEligibility;
@@ -182,6 +192,7 @@
 @property (nonatomic, readonly) FCAssetHandle *nameImageMaskWidgetHQAssetHandle;
 @property (nonatomic, readonly) FCAssetHandle *nameImageMaskWidgetLQAssetHandle;
 @property (nonatomic) struct CGSize { double x1; double x2; } nameImageSize;
+@property (nonatomic, readonly, copy) FCSubscriptionButtonConfiguration *paidBundleSubscriptionButtonConfiguration;
 @property (nonatomic, readonly, copy) NSString *parentID;
 @property (nonatomic, copy) NSString *pptFeedIDOverride;
 @property (nonatomic, readonly, copy) NSString *primaryAudience;
@@ -239,6 +250,10 @@
 - (id)coverArticleListID;
 - (id)coverImageAssetHandle;
 - (id)currentIssueIDs;
+- (id)darkStyleBackgroundColor;
+- (id)darkStyleBackgroundColorHexString;
+- (id)darkStyleForegroundColor;
+- (id)darkStyleForegroundColorHexString;
 - (id)data;
 - (id)defaultBannerImage;
 - (id)defaultHeadlineTemplate;
@@ -252,6 +267,8 @@
 - (id)foregroundColorHexString;
 - (id)freeFeedIDForBin:(long long)arg1;
 - (id)freeFeedIDForSection:(id)arg1 bin:(long long)arg2;
+- (id)groupDarkStyleTitleColor;
+- (id)groupDarkStyleTitleColorHexString;
 - (id)groupTitleColor;
 - (id)groupTitleColorHexString;
 - (unsigned long long)groupingEligibility;
@@ -265,7 +282,7 @@
 - (id)identifier;
 - (id)initChannelForTestingWithIdentifier:(id)arg1 name:(id)arg2 defaultSection:(id)arg3 publisherAuthorizationURL:(id)arg4 publisherVerificationURL:(id)arg5;
 - (id)initChannelForTestingWithIdentifier:(id)arg1 name:(id)arg2 publisherPaidBundlePurchaseIDs:(id)arg3;
-- (id)initChannelFromNotificationWithIdentifier:(id)arg1 name:(id)arg2 nameImageAssetHandle:(id)arg3;
+- (id)initChannelFromNotificationWithIdentifier:(id)arg1 name:(id)arg2 nameImageAssetHandle:(id)arg3 nameImageMaskAssetHandle:(id)arg4;
 - (id)initForTestingWithTagType:(unsigned long long)arg1 identifier:(id)arg2 name:(id)arg3;
 - (id)initWithData:(id)arg1 context:(id)arg2;
 - (id)initWithTagRecord:(id)arg1 assetManager:(id)arg2 interestToken:(id)arg3;
@@ -307,6 +324,7 @@
 - (id)nameImageMaskWidgetHQAssetHandle;
 - (id)nameImageMaskWidgetLQAssetHandle;
 - (struct CGSize { double x1; double x2; })nameImageSize;
+- (id)paidBundleSubscriptionButtonConfiguration;
 - (id)paidFeedIDForBin:(long long)arg1;
 - (id)paidFeedIDForSection:(id)arg1 bin:(long long)arg2;
 - (id)parentID;
@@ -333,8 +351,11 @@
 - (void)setBackgroundColorHexString:(id)arg1;
 - (void)setBannerImageBaselineOffsetPercentage:(double)arg1;
 - (void)setBannerImageScale:(double)arg1;
+- (void)setDarkStyleBackgroundColorHexString:(id)arg1;
+- (void)setDarkStyleForegroundColorHexString:(id)arg1;
 - (void)setFeedConfiguration:(id)arg1;
 - (void)setForegroundColorHexString:(id)arg1;
+- (void)setGroupDarkStyleTitleColorHexString:(id)arg1;
 - (void)setGroupTitleColorHexString:(id)arg1;
 - (void)setLoadDate:(id)arg1;
 - (void)setNameImageAssetHandle:(id)arg1;

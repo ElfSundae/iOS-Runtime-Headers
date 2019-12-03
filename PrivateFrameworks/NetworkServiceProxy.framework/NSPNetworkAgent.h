@@ -7,7 +7,6 @@
     NSPAppRule * _appRule;
     NSPConfiguration * _configuration;
     unsigned char  _dataDigest;
-    <NSPNetworkAgentDelegate> * _delegate;
     NSData * _keybag;
     bool  active;
     NSString * agentDescription;
@@ -23,7 +22,6 @@
 @property (nonatomic, copy) NSUUID *agentUUID;
 @property (retain) NSPAppRule *appRule;
 @property (retain) NSPConfiguration *configuration;
-@property <NSPNetworkAgentDelegate> *delegate;
 @property (getter=isKernelActivated, nonatomic) bool kernelActivated;
 @property (retain) NSData *keybag;
 @property (getter=isNetworkProvider, nonatomic) bool networkProvider;
@@ -31,6 +29,8 @@
 @property (nonatomic) bool requiresAssert;
 @property (getter=isSpecificUseOnly, nonatomic) bool specificUseOnly;
 @property (nonatomic) bool supportsBrowseRequests;
+@property (nonatomic) bool supportsResolveRequests;
+@property (nonatomic) bool updateClientsImmediately;
 @property (getter=isUserActivated, nonatomic) bool userActivated;
 @property (getter=isVoluntary, nonatomic) bool voluntary;
 
@@ -43,10 +43,8 @@
 - (id)agentDescription;
 - (id)agentUUID;
 - (id)appRule;
-- (bool)assertAgentWithOptions:(id)arg1;
 - (id)configuration;
 - (id)copyAgentData;
-- (id)delegate;
 - (id)init;
 - (bool)isActive;
 - (bool)isEqual:(id)arg1;
@@ -61,11 +59,9 @@
 - (void)setAgentUUID:(id)arg1;
 - (void)setAppRule:(id)arg1;
 - (void)setConfiguration:(id)arg1;
-- (void)setDelegate:(id)arg1;
 - (void)setKernelActivated:(bool)arg1;
 - (void)setKeybag:(id)arg1;
 - (void)setUserActivated:(bool)arg1;
 - (void)setVoluntary:(bool)arg1;
-- (void)unassertAgentWithOptions:(id)arg1;
 
 @end

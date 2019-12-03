@@ -57,6 +57,8 @@
 - (void)sendFileTransfer:(IMFileTransfer *)arg1 toPerson:(NSString *)arg2;
 - (void)sendLogDumpMessageAtFilePath:(void *)arg1 toRecipient:(void *)arg2 shouldDeleteFile:(void *)arg3 withCompletion:(void *)arg4; // needs 4 arg types, found 9: NSString *, NSString *, bool, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, void*
 - (void)sendMessage:(IMMessageItem *)arg1 toChatID:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4;
+- (void)sendNicknameInfoToChatID:(NSString *)arg1;
+- (bool)sendNicknameUpdatesToPeerDevices:(NSDictionary *)arg1 toDestinations:(NSArray *)arg2;
 - (void)sendPlayedReceiptForMessage:(IMMessageItem *)arg1 toChatID:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4;
 - (void)sendReadReceiptForMessage:(IMMessageItem *)arg1 toChatID:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4;
 - (void)sendSavedReceiptForMessage:(IMMessageItem *)arg1 toChatID:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4;

@@ -13,6 +13,7 @@
 @property (nonatomic) <TKVibrationRecorderViewControllerDelegate> *vibrationRecorderViewControllerDelegate;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (bool)canBeShownFromSuspendedState;
 - (void)dealloc;
 - (id)initWithVibratorController:(id)arg1;

@@ -35,6 +35,7 @@
 + (id)callHistoryControllerWithCoalescingStrategy:(unsigned long long)arg1 options:(unsigned long long)arg2;
 + (id)sharedController;
 + (id)sharedControllerWithCoalescingStrategy:(unsigned long long)arg1 options:(unsigned long long)arg2;
++ (id)tuHandleFromCHHandle:(id)arg1;
 
 - (void).cxx_destruct;
 - (id)_callHistoryCoalescingStrategyForCoalescingStrategy:(unsigned long long)arg1;
@@ -62,6 +63,7 @@
 - (void)markRecentCallsAsReadWithPredicate:(id)arg1;
 - (void)markRecentVideoCallsAsRead;
 - (id)metadataPreCachedOptions;
+- (id)mostRecentCallWithHandle:(id)arg1;
 - (unsigned long long)options;
 - (void)providersChangedForProviderManager:(id)arg1;
 - (id)recentCalls;

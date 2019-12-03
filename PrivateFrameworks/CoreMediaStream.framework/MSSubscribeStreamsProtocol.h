@@ -34,14 +34,13 @@
         struct __CFData {} *__currentChunkData; 
         long long __chunkBytesRemaining; 
     }  _context;
-    struct __MSSSPCChunkParsingContext { void *x1; int (*x2)(); int (*x3)(); int (*x4)(); int (*x5)(); int (*x6)(); int (*x7)(); struct __CFString {} *x8; struct __CFURL {} *x9; struct __CFString {} *x10; struct __CFString {} *x11; int x12; } * _parseContext;
+    struct __MSSSPCChunkParsingContext { void *x1; int (*x2)(); int (*x3)(); int (*x4)(); int (*x5)(); int (*x6)(); struct __CFString {} *x7; struct __CFURL {} *x8; struct __CFString {} *x9; struct __CFString {} *x10; int x11; } * _parseContext;
 }
 
 - (id)_assetCollectionsFromCoreArray:(id)arg1 personID:(id)arg2 outError:(id*)arg3;
 - (id)_assetFromCoreDictionary:(id)arg1 personID:(id)arg2 outError:(id*)arg3;
 - (void)_chunkDidBeginStreamForPersonID:(id)arg1 wasReset:(bool)arg2 metadata:(id)arg3;
 - (void)_chunkDidEndStreamForPersonID:(id)arg1 ctag:(id)arg2;
-- (void)_chunkDidFindShareState:(id)arg1;
 - (void)_chunkDidFindSubscriptionGoneForPersonID:(id)arg1;
 - (void)_chunkDidFindSubscriptionTemporarilyUnavailableForPersonID:(id)arg1;
 - (void)_chunkDidParseAssetCollections:(id)arg1 forPersonID:(id)arg2;

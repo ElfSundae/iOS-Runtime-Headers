@@ -7,6 +7,7 @@
     OISFUZipEntry * mZipEntry;
 }
 
+- (void).cxx_destruct;
 - (id)data;
 - (void)dealloc;
 - (id)initWithZipEntry:(id)arg1;

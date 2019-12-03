@@ -4,6 +4,7 @@
 
 @interface ATXNotificationsLoggingServer : NSObject <ATXNotificationsLoggingProtocol, NSXPCListenerDelegate, UNUserNotificationCenterDelegate> {
     _ATXAggregateLogger * _aggdlogger;
+    ATXBBNotificationManager * _bbNotificationManager;
     <_CDLocalContext> * _context;
     ATXNotificationContextManager * _contextmanager;
     ATXNotificationsDedupeTracker * _dedupetracker;

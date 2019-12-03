@@ -12,12 +12,12 @@
     struct { 
         bool priorityForInfoRequestOfKind; 
     }  _infoProviderRespondsTo;
+    bool  _isUpdatingInfo;
     <PXInfoUpdaterObserver> * _observer;
     struct { 
         bool shouldUpdate; 
     }  _observerRespondsTo;
     bool  _shouldUpdateInfo;
-    bool  _updatingInfo;
 }
 
 @property (nonatomic) long long currentUpdateGeneration;
@@ -26,9 +26,9 @@
 @property (nonatomic, retain) id info;
 @property (nonatomic, readonly, copy) NSString *infoKind;
 @property (nonatomic, readonly) <PXInfoProvider> *infoProvider;
+@property (nonatomic) bool isUpdatingInfo;
 @property (nonatomic) <PXInfoUpdaterObserver> *observer;
 @property (nonatomic) bool shouldUpdateInfo;
-@property (getter=isUpdatingInfo, nonatomic) bool updatingInfo;
 
 - (void).cxx_destruct;
 - (void)_handleCurrentUpdateWithInfo:(id)arg1 generation:(long long)arg2;
@@ -45,13 +45,14 @@
 - (void)invalidateInfo;
 - (bool)isUpdatingInfo;
 - (id)observer;
+- (void)performBlockWhenDoneUpdating:(id /* block */)arg1;
 - (void)setCurrentUpdateGeneration:(long long)arg1;
 - (void)setCurrentUpdatePriority:(long long)arg1;
 - (void)setCurrentUpdateProgress:(id)arg1;
 - (void)setInfo:(id)arg1;
+- (void)setIsUpdatingInfo:(bool)arg1;
 - (void)setObserver:(id)arg1;
 - (void)setShouldUpdateInfo:(bool)arg1;
-- (void)setUpdatingInfo:(bool)arg1;
 - (bool)shouldUpdateInfo;
 
 @end

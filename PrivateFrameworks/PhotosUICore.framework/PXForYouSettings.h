@@ -5,12 +5,13 @@
 @interface PXForYouSettings : PXSettings {
     bool  _allowGIFPlayback;
     bool  _allowLoopPlayback;
-    bool  _allowSharingEditSuggestions;
     bool  _allowVideoPlayback;
+    bool  _alwaysShowSuggestionRenderingOverlay;
     bool  _delayEditRenders;
     bool  _disableSharedAlbumTopMargin;
     bool  _forceDisplayReportJunk;
     bool  _forcePortraitBias;
+    unsigned long long  _maxMemoriesToFetch;
     unsigned long long  _maxSimultaneousVideoCount;
     double  _minimumVisibilityForVideoPlayback;
     bool  _navigateToActivityPost;
@@ -22,10 +23,10 @@
     bool  _showForYouSettingsAtTopLevel;
     bool  _showHorizontalGadget;
     bool  _showMemories;
+    bool  _showQuestions;
     bool  _showRecentInterestSuggestions;
     bool  _showSampleSuggestionGadgets;
     bool  _showSharedAlbumActivity;
-    bool  _showTapToRadar;
     bool  _showVerticalSampleGadgets;
     long long  _sortingAlgorithm;
     bool  _useCachedEditRenders;
@@ -35,12 +36,13 @@
 
 @property (nonatomic) bool allowGIFPlayback;
 @property (nonatomic) bool allowLoopPlayback;
-@property (nonatomic) bool allowSharingEditSuggestions;
 @property (nonatomic) bool allowVideoPlayback;
+@property (nonatomic) bool alwaysShowSuggestionRenderingOverlay;
 @property (nonatomic) bool delayEditRenders;
 @property (nonatomic) bool disableSharedAlbumTopMargin;
 @property (nonatomic) bool forceDisplayReportJunk;
 @property (nonatomic) bool forcePortraitBias;
+@property (nonatomic) unsigned long long maxMemoriesToFetch;
 @property (nonatomic) unsigned long long maxSimultaneousVideoCount;
 @property (nonatomic) double minimumVisibilityForVideoPlayback;
 @property (nonatomic) bool navigateToActivityPost;
@@ -52,10 +54,10 @@
 @property (nonatomic) bool showForYouSettingsAtTopLevel;
 @property (nonatomic) bool showHorizontalGadget;
 @property (nonatomic) bool showMemories;
+@property (nonatomic) bool showQuestions;
 @property (nonatomic) bool showRecentInterestSuggestions;
 @property (nonatomic) bool showSampleSuggestionGadgets;
 @property (nonatomic) bool showSharedAlbumActivity;
-@property (nonatomic) bool showTapToRadar;
 @property (nonatomic) bool showVerticalSampleGadgets;
 @property (nonatomic) long long sortingAlgorithm;
 @property (nonatomic) bool useCachedEditRenders;
@@ -68,25 +70,27 @@
 
 - (bool)allowGIFPlayback;
 - (bool)allowLoopPlayback;
-- (bool)allowSharingEditSuggestions;
 - (bool)allowVideoPlayback;
+- (bool)alwaysShowSuggestionRenderingOverlay;
 - (bool)delayEditRenders;
 - (bool)disableSharedAlbumTopMargin;
 - (bool)forceDisplayReportJunk;
 - (bool)forcePortraitBias;
+- (unsigned long long)maxMemoriesToFetch;
 - (unsigned long long)maxSimultaneousVideoCount;
 - (double)minimumVisibilityForVideoPlayback;
 - (bool)navigateToActivityPost;
 - (id)parentSettings;
 - (void)setAllowGIFPlayback:(bool)arg1;
 - (void)setAllowLoopPlayback:(bool)arg1;
-- (void)setAllowSharingEditSuggestions:(bool)arg1;
 - (void)setAllowVideoPlayback:(bool)arg1;
+- (void)setAlwaysShowSuggestionRenderingOverlay:(bool)arg1;
 - (void)setDefaultValues;
 - (void)setDelayEditRenders:(bool)arg1;
 - (void)setDisableSharedAlbumTopMargin:(bool)arg1;
 - (void)setForceDisplayReportJunk:(bool)arg1;
 - (void)setForcePortraitBias:(bool)arg1;
+- (void)setMaxMemoriesToFetch:(unsigned long long)arg1;
 - (void)setMaxSimultaneousVideoCount:(unsigned long long)arg1;
 - (void)setMinimumVisibilityForVideoPlayback:(double)arg1;
 - (void)setNavigateToActivityPost:(bool)arg1;
@@ -98,10 +102,10 @@
 - (void)setShowForYouSettingsAtTopLevel:(bool)arg1;
 - (void)setShowHorizontalGadget:(bool)arg1;
 - (void)setShowMemories:(bool)arg1;
+- (void)setShowQuestions:(bool)arg1;
 - (void)setShowRecentInterestSuggestions:(bool)arg1;
 - (void)setShowSampleSuggestionGadgets:(bool)arg1;
 - (void)setShowSharedAlbumActivity:(bool)arg1;
-- (void)setShowTapToRadar:(bool)arg1;
 - (void)setShowVerticalSampleGadgets:(bool)arg1;
 - (void)setSortingAlgorithm:(long long)arg1;
 - (void)setUseCachedEditRenders:(bool)arg1;
@@ -115,10 +119,10 @@
 - (bool)showForYouSettingsAtTopLevel;
 - (bool)showHorizontalGadget;
 - (bool)showMemories;
+- (bool)showQuestions;
 - (bool)showRecentInterestSuggestions;
 - (bool)showSampleSuggestionGadgets;
 - (bool)showSharedAlbumActivity;
-- (bool)showTapToRadar;
 - (bool)showVerticalSampleGadgets;
 - (long long)sortingAlgorithm;
 - (bool)useCachedEditRenders;

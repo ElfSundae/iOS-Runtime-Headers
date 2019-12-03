@@ -14,9 +14,9 @@
 @property (nonatomic, copy) NSArray *mailboxNames;
 @property (nonatomic, copy) NSString *notificationNamePrefix;
 
+- (void).cxx_destruct;
 - (id)accountIdentifier;
 - (id)bundleIdentifier;
-- (void)dealloc;
 - (id)init;
 - (id)mailboxNames;
 - (id)notificationNamePrefix;

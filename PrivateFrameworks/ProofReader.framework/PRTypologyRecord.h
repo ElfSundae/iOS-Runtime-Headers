@@ -12,6 +12,7 @@
     NSArray * _keyEventArray;
     NSString * _language;
     NSArray * _languages;
+    unsigned long long  _offset;
     double  _openTime;
     struct _NSRange { 
         unsigned long long location; 
@@ -36,6 +37,6 @@
 - (void)closeTypologyRecordWithResults:(id)arg1;
 - (void)dealloc;
 - (id)dictionaryRepresentation;
-- (id)initWithString:(id)arg1 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 language:(id)arg3 languages:(id)arg4 topLanguages:(id)arg5 autocorrect:(bool)arg6 initialCapitalize:(bool)arg7 autocapitalize:(bool)arg8 keyEventArray:(id)arg9 appIdentifier:(id)arg10 selectedRangeValue:(id)arg11;
+- (id)initWithString:(id)arg1 offset:(unsigned long long)arg2 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3 language:(id)arg4 languages:(id)arg5 topLanguages:(id)arg6 autocorrect:(bool)arg7 initialCapitalize:(bool)arg8 autocapitalize:(bool)arg9 keyEventArray:(id)arg10 appIdentifier:(id)arg11 selectedRangeValue:(id)arg12;
 
 @end

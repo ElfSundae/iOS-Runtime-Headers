@@ -3,9 +3,8 @@
  */
 
 @interface NSInvocationOperation : NSOperation {
-    id  _exception;
-    id  _inv;
-    void * _reserved2;
+    NSException * _exception;
+    NSInvocation * _inv;
 }
 
 @property (readonly, retain) NSInvocation *invocation;

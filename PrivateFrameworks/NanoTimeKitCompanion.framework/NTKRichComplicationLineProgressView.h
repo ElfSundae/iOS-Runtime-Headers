@@ -2,8 +2,16 @@
    Image: /System/Library/PrivateFrameworks/NanoTimeKitCompanion.framework/NanoTimeKitCompanion
  */
 
-@interface NTKRichComplicationLineProgressView : NTKRichComplicationProgressView
+@interface NTKRichComplicationLineProgressView : NTKRichComplicationProgressView {
+    long long  _progressFillStyle;
+}
 
-- (id)initWithForDevice:(id)arg1;
+@property (nonatomic, readonly) long long progressFillStyle;
+
+- (id)initForDevice:(id)arg1 progressFillStyle:(long long)arg2;
+- (id)overrideBackgroundGradientColorsForGradientColors:(id)arg1;
+- (id)overrideBackgroundGradientColorsForGradientColors:(id)arg1 locations:(id)arg2;
+- (long long)progressFillStyle;
+- (void)setProgress:(double)arg1;
 
 @end

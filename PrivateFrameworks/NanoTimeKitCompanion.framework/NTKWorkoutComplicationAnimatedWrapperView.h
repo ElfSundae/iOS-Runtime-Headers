@@ -21,7 +21,7 @@
 @property (nonatomic) bool usesLegibility;
 
 - (void).cxx_destruct;
-- (void)_applyAnimationForPauseState:(bool)arg1;
+- (void)_applyAnimationForPauseState:(bool)arg1 animated:(bool)arg2;
 - (void)_updateState;
 - (void)_updateTint;
 - (id)color;

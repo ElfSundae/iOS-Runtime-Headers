@@ -22,8 +22,10 @@
     NSTextCheckingResult * _textCheckingResult;
 }
 
+@property (nonatomic, readonly) bool isCloseQuote;
 @property (nonatomic, readonly) bool isDate;
 @property (nonatomic, readonly) bool isEmailAddress;
+@property (nonatomic, readonly) bool isOpenQuote;
 @property (nonatomic, readonly) bool isPhoneNumber;
 @property (nonatomic, readonly) bool isPunctuation;
 @property (nonatomic, readonly) bool isSentenceTerminator;
@@ -38,8 +40,10 @@
 - (id)description;
 - (id)initWithNLToken:(struct { struct { long long x_1_1_1; long long x_1_1_2; } x1; unsigned long long x2; })arg1 text:(id)arg2 type:(id)arg3 lexicalClass:(id)arg4 language:(id)arg5 script:(id)arg6 namedEntity:(id)arg7 derivedSubtoken:(id)arg8 speechFormatter:(id)arg9;
 - (id)initWithdatatype:(unsigned long long)arg1 text:(id)arg2 textCheckingResult:(id)arg3 speechFormatter:(id)arg4;
+- (bool)isCloseQuote;
 - (bool)isDate;
 - (bool)isEmailAddress;
+- (bool)isOpenQuote;
 - (bool)isPhoneNumber;
 - (bool)isPunctuation;
 - (bool)isSentenceTerminator;

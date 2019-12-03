@@ -17,6 +17,7 @@
 - (double)minViewportAspectRatio;
 - (double)minViewportWidth;
 - (NSString *)platform;
+- (unsigned long long)preferredColorScheme;
 - (NSString *)subscriptionStatus;
 - (unsigned long long)testing;
 - (long long)verticalSizeClass;

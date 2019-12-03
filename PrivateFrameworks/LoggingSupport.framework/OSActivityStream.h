@@ -3,7 +3,6 @@
  */
 
 @interface OSActivityStream : NSObject {
-    NSMutableDictionary * _activityFilters;
     <OSActivityStreamDelegate> * _delegate;
     bool  _delegateHasDidFail;
     bool  _delegateStreamErrorLess;
@@ -20,9 +19,8 @@
     _OSLogStreamFilter * _streamFilter;
 }
 
-@property (nonatomic) NSMutableDictionary *activityFilters;
 @property (nonatomic) <OSActivityStreamDelegate> *delegate;
-@property (nonatomic) OSLogDevice *device;
+@property (nonatomic, retain) OSLogDevice *device;
 @property (nonatomic) <OSDeviceDelegate> *deviceDelegate;
 @property (nonatomic) unsigned long long eventFilter;
 @property (nonatomic) unsigned long long events;
@@ -30,8 +28,6 @@
 @property (nonatomic, copy) NSCompoundPredicate *predicate;
 
 - (void).cxx_destruct;
-- (id)activityFilters;
-- (void)addFilterForActivity:(id)arg1 andBinary:(id)arg2;
 - (void)addProcessID:(int)arg1;
 - (void)dealloc;
 - (id)delegate;
@@ -45,7 +41,6 @@
 - (id)initWithDevice:(void*)arg1;
 - (unsigned long long)options;
 - (id)predicate;
-- (void)setActivityFilters:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDevice:(id)arg1;
 - (void)setDeviceDelegate:(id)arg1;

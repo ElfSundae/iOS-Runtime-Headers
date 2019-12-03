@@ -8,7 +8,7 @@
 }
 
 @property (nonatomic) bool flipsToVerticalAxisForAccessibilityContentSizes;
-@property bool isForcedToBeVertical;
+@property (nonatomic) bool isForcedToBeVertical;
 
 - (void)addArrangedSubview:(id)arg1;
 - (bool)flipsToVerticalAxisForAccessibilityContentSizes;

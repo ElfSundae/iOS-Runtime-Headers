@@ -4,11 +4,13 @@
 
 @interface TUContactsDataProvider : NSObject {
     <TUContactsDataSource> * _contactsDataSource;
+    TUContactsDataProviderIgnoredHandles * _ignoredHandles;
     id /* block */  _localeSupportsPrefixHintForFetchRequest;
     bool  _useAsianNameFormat;
 }
 
 @property (nonatomic, readonly) <TUContactsDataSource> *contactsDataSource;
+@property (nonatomic, copy) TUContactsDataProviderIgnoredHandles *ignoredHandles;
 @property (nonatomic, copy) id /* block */ localeSupportsPrefixHintForFetchRequest;
 @property (nonatomic) bool useAsianNameFormat;
 
@@ -27,6 +29,7 @@
 - (id)contactsForHandle:(id)arg1 countryCode:(id)arg2 keysToFetch:(id)arg3 prefixHint:(id)arg4;
 - (id)executeFetchRequest:(id)arg1;
 - (id)formattedNameForHandle:(id)arg1 countryCode:(id)arg2;
+- (id)ignoredHandles;
 - (id)init;
 - (id)initWithContactsDataSource:(id)arg1;
 - (id)labeledHandlesForContactWithIdentifier:(id)arg1;
@@ -35,6 +38,7 @@
 - (id)localizedCompositeNameForContact:(id)arg1 secondContact:(id)arg2;
 - (int)personIDForContact:(id)arg1;
 - (id)prefixHintForFetchRequest:(id)arg1;
+- (void)setIgnoredHandles:(id)arg1;
 - (void)setLocaleSupportsPrefixHintForFetchRequest:(id /* block */)arg1;
 - (void)setUseAsianNameFormat:(bool)arg1;
 - (id)unifiedContactsForFetchRequest:(id)arg1 countryCode:(id)arg2;

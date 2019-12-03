@@ -33,6 +33,7 @@
 @property (nonatomic, retain) NSString *url;
 
 - (void).cxx_destruct;
+- (void)_evaluateDelegateBlockSync:(id /* block */)arg1;
 - (void)_resolveArtworkImageURL;
 - (id)appContext;
 - (id)appMediaItem;

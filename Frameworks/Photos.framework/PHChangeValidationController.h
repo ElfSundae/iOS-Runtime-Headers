@@ -37,6 +37,10 @@
 
 - (void).cxx_destruct;
 - (bool)_prepareWithError:(id*)arg1;
+- (bool)_promptForUserConfirmationWithTitle:(id)arg1 message:(id)arg2 defaultButtonTitle:(id)arg3 alternateButtonTitle:(id)arg4 additionalAlertParameters:(id)arg5;
+- (bool)_recordObjectID:(id)arg1 withSimpleDeleteValidators:(id)arg2;
+- (id)_simpleDeleteValidatorsWithManagedObjectContext:(id)arg1;
+- (bool)_validateSimpleDeletionsWithValidators:(id)arg1 requestsByObjectID:(id)arg2 error:(id*)arg3;
 - (id)albumsToDelete;
 - (id)assetsToChangeContent;
 - (id)assetsToDelete;
@@ -50,6 +54,9 @@
 - (id)insertRequests;
 - (id)managedObjectContext;
 - (id)photoLibrary;
+- (bool)promptForUserConfirmationWithTitle:(id)arg1 message:(id)arg2 defaultButtonTitle:(id)arg3 alternateButtonTitle:(id)arg4;
+- (bool)promptForUserConfirmationWithTitle:(id)arg1 message:(id)arg2 defaultButtonTitle:(id)arg3 alternateButtonTitle:(id)arg4 previewAssetLocalIdentifiers:(id)arg5;
+- (bool)promptForUserConfirmationWithTitle:(id)arg1 message:(id)arg2 defaultButtonTitle:(id)arg3 alternateButtonTitle:(id)arg4 renderedContentURLs:(id)arg5;
 - (id)renderedContentURLs;
 - (id)updateRequests;
 - (bool)validateWithError:(id*)arg1;

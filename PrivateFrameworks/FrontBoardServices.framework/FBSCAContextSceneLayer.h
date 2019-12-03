@@ -12,7 +12,8 @@
 + (id)layerWithCAContext:(id)arg1;
 
 - (id)CAContext;
-- (id)_initWithCAContext:(id)arg1 contextID:(unsigned int)arg2 level:(double)arg3;
+- (id)_initWithCAContext:(id)arg1 contextID:(unsigned int)arg2 fallbackLevel:(double)arg3;
+- (id)_succinctDescription;
 - (unsigned int)contextID;
 - (id)description;
 - (void)encodeWithXPCDictionary:(id)arg1;
@@ -20,6 +21,7 @@
 - (id)initWithCAContext:(id)arg1;
 - (id)initWithCAContextID:(unsigned int)arg1 level:(double)arg2;
 - (id)initWithXPCDictionary:(id)arg1;
+- (bool)isCAContextLayer;
 - (bool)isEqual:(id)arg1;
 
 @end

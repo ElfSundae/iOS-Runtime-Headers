@@ -27,7 +27,7 @@
 @property (readonly) long long status;
 
 - (void).cxx_destruct;
-- (id)_newUpdateTouchIDSettingsOperationWithTwoKeys;
+- (id)_newUpdateTouchIDSettingsOperation;
 - (id)accountIdentifier;
 - (id)attestationStringExtendedActions;
 - (id)attestationStringPurchase;

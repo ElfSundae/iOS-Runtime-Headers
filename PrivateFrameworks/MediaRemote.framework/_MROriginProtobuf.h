@@ -20,7 +20,10 @@
 @property (nonatomic) bool hasIdentifier;
 @property (nonatomic) bool hasType;
 @property (nonatomic) int identifier;
+@property (nonatomic, readonly) bool isLocal;
 @property (nonatomic) int type;
+
++ (id)localOrigin;
 
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;

@@ -3,8 +3,11 @@
  */
 
 @interface GEOProactiveTileDownloader : NSObject <GEOBatchOpportunisticTileDownloaderDelegate> {
+    GEOXPCActivity * _activity;
     GEOBatchOpportunisticTileDownloader * _currentDownloader;
+    unsigned long long  _currentPolicy;
     GEODataSaverTileLoaderManager * _dataSaverManager;
+    NSObject<OS_dispatch_source> * _deferCheckinTimer;
     <GEOProactiveTileDownloaderDelegate> * _delegate;
     NSObject<OS_dispatch_queue> * _delegateQueue;
     struct GEOOnce_s { 
@@ -22,14 +25,15 @@
     GEOTileDB * _diskCache;
     NSObject<OS_dispatch_queue> * _isolationQueue;
     GEOResourceManifestManager * _manifestManager;
+    bool  _policyEnabled;
     GEOPowerAssertion * _powerAssertion;
+    NSMutableArray * _remainingPolicies;
     GEORequestCounter * _requestCounter;
-    bool  _shouldUpdateRecentlyUsedStaleTiles;
     GEOStaleTileUpdater * _staleUpdater;
     NSString * _startCountry;
     NSString * _startRegion;
-    GEOStaleTileUpdater * _testStaleUpdater;
-    NSObject<OS_xpc_object> * _xpcActivity;
+    NSDictionary * _testDownloaders;
+    NSString * _uniqueIdentifier;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -44,18 +48,22 @@
 
 - (void).cxx_destruct;
 - (void)_clearPowerAssertion;
+- (void)_clearXPCDeferralTimer;
 - (void)_finish;
+- (void)_pauseIfNecessary;
 - (void)_registerXPCActivity;
+- (void)_registerXPCDeferralTimer;
 - (void)_start;
+- (void)_startNextDownloader;
 - (void)_takePowerAssertionIfNecessary;
 - (void)_xpcActivityFired;
-- (void)batchOpportunisticTileDownloader:(id)arg1 receivedData:(id)arg2 tileEdition:(unsigned int)arg3 tileSet:(unsigned int)arg4 etag:(id)arg5 forKey:(struct _GEOTileKey { unsigned int x1 : 6; unsigned int x2 : 26; unsigned int x3 : 26; unsigned int x4 : 6; unsigned int x5 : 8; unsigned int x6 : 8; unsigned int x7 : 8; unsigned int x8 : 1; unsigned int x9 : 7; unsigned char x10[4]; })arg6 userInfo:(id)arg7;
+- (void)batchOpportunisticTileDownloader:(id)arg1 failedToLoadKey:(struct _GEOTileKey { unsigned int x1 : 7; unsigned int x2 : 1; union { struct _GEOStandardTileKey { unsigned int x_1_2_1 : 40; unsigned int x_1_2_2 : 6; unsigned int x_1_2_3 : 26; unsigned int x_1_2_4 : 26; unsigned int x_1_2_5 : 14; unsigned int x_1_2_6 : 4; unsigned int x_1_2_7 : 4; } x_3_1_1; struct _GEORegionalResourceKey { unsigned int x_2_2_1 : 32; unsigned int x_2_2_2 : 8; unsigned int x_2_2_3 : 6; unsigned int x_2_2_4 : 8; unsigned int x_2_2_5 : 8; } x_3_1_2; struct _GEOSputnikMetadataKey { unsigned int x_3_2_1 : 32; unsigned int x_3_2_2 : 24; unsigned int x_3_2_3 : 14; unsigned int x_3_2_4 : 8; } x_3_1_3; struct _GEOFlyoverKey { unsigned int x_4_2_1 : 6; unsigned int x_4_2_2 : 26; unsigned int x_4_2_3 : 26; unsigned int x_4_2_4 : 8; unsigned int x_4_2_5 : 24; unsigned int x_4_2_6 : 14; unsigned int x_4_2_7 : 8; unsigned int x_4_2_8 : 8; } x_3_1_4; struct _GEOTransitLineSelectionKey { unsigned int x_5_2_1 : 6; unsigned int x_5_2_2 : 25; unsigned int x_5_2_3 : 25; unsigned int x_5_2_4 : 64; } x_3_1_5; struct _GEOTileOverlayKey { unsigned int x_6_2_1 : 6; unsigned int x_6_2_2 : 26; unsigned int x_6_2_3 : 26; unsigned int x_6_2_4 : 8; unsigned int x_6_2_5 : 32; } x_3_1_6; } x3; })arg2 error:(id)arg3;
+- (void)batchOpportunisticTileDownloader:(id)arg1 receivedData:(id)arg2 tileEdition:(unsigned int)arg3 tileSet:(unsigned int)arg4 etag:(id)arg5 forKey:(struct _GEOTileKey { unsigned int x1 : 7; unsigned int x2 : 1; union { struct _GEOStandardTileKey { unsigned int x_1_2_1 : 40; unsigned int x_1_2_2 : 6; unsigned int x_1_2_3 : 26; unsigned int x_1_2_4 : 26; unsigned int x_1_2_5 : 14; unsigned int x_1_2_6 : 4; unsigned int x_1_2_7 : 4; } x_3_1_1; struct _GEORegionalResourceKey { unsigned int x_2_2_1 : 32; unsigned int x_2_2_2 : 8; unsigned int x_2_2_3 : 6; unsigned int x_2_2_4 : 8; unsigned int x_2_2_5 : 8; } x_3_1_2; struct _GEOSputnikMetadataKey { unsigned int x_3_2_1 : 32; unsigned int x_3_2_2 : 24; unsigned int x_3_2_3 : 14; unsigned int x_3_2_4 : 8; } x_3_1_3; struct _GEOFlyoverKey { unsigned int x_4_2_1 : 6; unsigned int x_4_2_2 : 26; unsigned int x_4_2_3 : 26; unsigned int x_4_2_4 : 8; unsigned int x_4_2_5 : 24; unsigned int x_4_2_6 : 14; unsigned int x_4_2_7 : 8; unsigned int x_4_2_8 : 8; } x_3_1_4; struct _GEOTransitLineSelectionKey { unsigned int x_5_2_1 : 6; unsigned int x_5_2_2 : 25; unsigned int x_5_2_3 : 25; unsigned int x_5_2_4 : 64; } x_3_1_5; struct _GEOTileOverlayKey { unsigned int x_6_2_1 : 6; unsigned int x_6_2_2 : 26; unsigned int x_6_2_3 : 26; unsigned int x_6_2_4 : 8; unsigned int x_6_2_5 : 32; } x_3_1_6; } x3; })arg6 userInfo:(id)arg7;
 - (void)batchOpportunisticTileDownloaderDidFinish:(id)arg1;
-- (bool)batchOpportunisticTileDownloaderShouldPause:(id)arg1;
 - (void)cancel;
 - (id)init;
 - (id)initWithDelegate:(id)arg1 delegateQueue:(id)arg2 diskCache:(id)arg3;
-- (id)initWithDelegate:(id)arg1 delegateQueue:(id)arg2 diskCache:(id)arg3 dataSaverManager:(id)arg4 manifestManager:(id)arg5 requestCounter:(id)arg6 staleUpdater:(id)arg7;
+- (id)initWithDelegate:(id)arg1 delegateQueue:(id)arg2 diskCache:(id)arg3 dataSaverManager:(id)arg4 manifestManager:(id)arg5 requestCounter:(id)arg6 downloaders:(id)arg7;
 - (void)start;
 
 @end

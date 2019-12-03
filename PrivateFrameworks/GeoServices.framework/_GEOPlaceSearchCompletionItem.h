@@ -13,6 +13,7 @@
     GEOMapServiceTraits * _traits;
 }
 
+@property (nonatomic, readonly) long long autocompleteCellType;
 @property (nonatomic, readonly) GEOResolvedItem *clientResolved;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -21,22 +22,27 @@
 @property (nonatomic, readonly) NSArray *displayLines;
 @property (nonatomic, readonly) GEOPDAutocompleteEntry *entry;
 @property (nonatomic, readonly) NSData *entryMetadata;
+@property (nonatomic, readonly) long long entryTapBehavior;
 @property (nonatomic, readonly) <GEOMapItem> *geoMapItem;
 @property (nonatomic, readonly) bool hasDisambiguationRadiusMeters;
+@property (nonatomic, readonly) bool hasQueryAcceleratorAffordanceEnabled;
 @property (nonatomic, readonly) bool hasSortPriority;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) GEOMapItemIdentifier *identifier;
 @property (nonatomic, readonly) NSData *metadata;
 @property (getter=_placeDataAutocompleteEntry, nonatomic, readonly) GEOPDAutocompleteEntry *placeDataAutocompleteEntry;
 @property (nonatomic, readonly) int placeType;
+@property (nonatomic, readonly) NSString *queryAcceleratorCompletionString;
 @property (nonatomic, readonly) GEORetainedSearchMetadata *retainedSearchMetadata;
 @property (nonatomic, readonly) GEOSearchCategory *searchCategory;
+@property (nonatomic, readonly) GEOServerResultScoreMetadata *serverResultScoreMetadata;
 @property (nonatomic, readonly) long long sortPriority;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) long long type;
 
 - (void).cxx_destruct;
 - (id)_placeDataAutocompleteEntry;
+- (long long)autocompleteCellType;
 - (id)calloutTitle;
 - (id)clientResolved;
 - (id)directionIntent;
@@ -44,9 +50,11 @@
 - (id)displayLines;
 - (id)entry;
 - (id)entryMetadata;
+- (long long)entryTapBehavior;
 - (id)geoMapItem;
 - (bool)getCoordinate:(struct { double x1; double x2; }*)arg1;
 - (bool)hasDisambiguationRadiusMeters;
+- (bool)hasQueryAcceleratorAffordanceEnabled;
 - (bool)hasSortPriority;
 - (unsigned long long)hash;
 - (id)highlightsForLine:(unsigned long long)arg1;
@@ -55,10 +63,12 @@
 - (bool)isEqual:(id)arg1;
 - (id)metadata;
 - (int)placeType;
+- (id)queryAcceleratorCompletionString;
 - (id)queryLine;
 - (id)retainedSearchMetadata;
 - (id)searchCategory;
 - (void)sendFeedback;
+- (id)serverResultScoreMetadata;
 - (long long)sortPriority;
 - (long long)type;
 

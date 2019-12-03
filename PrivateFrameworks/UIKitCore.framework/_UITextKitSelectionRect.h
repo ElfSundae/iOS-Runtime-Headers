@@ -3,6 +3,7 @@
  */
 
 @interface _UITextKitSelectionRect : UITextSelectionRect {
+    bool  __drawsOwnHighlight;
     bool  _containsEnd;
     bool  _containsStart;
     struct CGRect { 
@@ -18,6 +19,7 @@
     bool  _vertical;
 }
 
+@property (setter=_setDrawsOwnHighlight:, nonatomic) bool _drawsOwnHighlight;
 @property (nonatomic) bool containsEnd;
 @property (nonatomic) bool containsStart;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } rect;
@@ -25,6 +27,8 @@
 
 + (id)selectionRectWithRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 fromView:(id)arg2;
 
+- (bool)_drawsOwnHighlight;
+- (void)_setDrawsOwnHighlight:(bool)arg1;
 - (bool)containsEnd;
 - (bool)containsStart;
 - (id)description;

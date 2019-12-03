@@ -3,15 +3,36 @@
  */
 
 @interface GEOPBTransitStop : PBCodable <GEOTransitNamedItem, NSCopying> {
-    unsigned int  _hallIndex;
     struct { 
-        unsigned int muid : 1; 
-        unsigned int hallIndex : 1; 
-        unsigned int stopIndex : 1; 
-    }  _has;
+        unsigned int has_muid : 1; 
+        unsigned int has_hallIndex : 1; 
+        unsigned int has_stopIndex : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_latLng : 1; 
+        unsigned int read_nameDisplayString : 1; 
+        unsigned int read_styleAttributes : 1; 
+        unsigned int read_timezone : 1; 
+        unsigned int read_zoomNames : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_latLng : 1; 
+        unsigned int wrote_muid : 1; 
+        unsigned int wrote_nameDisplayString : 1; 
+        unsigned int wrote_styleAttributes : 1; 
+        unsigned int wrote_timezone : 1; 
+        unsigned int wrote_zoomNames : 1; 
+        unsigned int wrote_hallIndex : 1; 
+        unsigned int wrote_stopIndex : 1; 
+    }  _flags;
+    unsigned int  _hallIndex;
     GEOLatLng * _latLng;
     unsigned long long  _muid;
     NSString * _nameDisplayString;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     unsigned int  _stopIndex;
     GEOStyleAttributes * _styleAttributes;
     NSString * _timezone;
@@ -40,12 +61,20 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic, retain) NSMutableArray *zoomNames;
 
++ (bool)isValid:(id)arg1;
 + (Class)zoomNameType;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsZoomName:(id)arg1;
+- (void)_readLatLng;
+- (void)_readNameDisplayString;
+- (void)_readStyleAttributes;
+- (void)_readTimezone;
+- (void)_readZoomNames;
 - (void)addZoomName:(id)arg1;
 - (id)bestName;
 - (id)bestNameWithLocale:(out id*)arg1;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)clearZoomNames;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -61,11 +90,14 @@
 - (bool)hasTimezone;
 - (unsigned long long)hash;
 - (id)identifier;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)latLng;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)muid;
 - (id)nameDisplayString;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHallIndex:(unsigned int)arg1;
 - (void)setHasHallIndex:(bool)arg1;

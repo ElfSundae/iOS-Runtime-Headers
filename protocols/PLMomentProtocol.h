@@ -5,6 +5,7 @@
 
 @required
 
+- (struct CLLocationCoordinate2D { double x1; double x2; })pl_coordinate;
 - (NSDate *)pl_endDate;
 - (CLLocation *)pl_location;
 - (unsigned long long)pl_numberOfAssets;

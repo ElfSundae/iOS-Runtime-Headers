@@ -13,6 +13,8 @@
 @property (nonatomic, readonly) bool isLocked;
 @property (nonatomic, readonly) NSString *name;
 @property (nonatomic) long long persistedLevel;
+@property (nonatomic) bool signpostEnabled;
+@property (nonatomic) bool signpostPersisted;
 @property (nonatomic, readonly) OSLogPreferencesSubsystem *subsystem;
 
 - (void).cxx_destruct;
@@ -28,6 +30,10 @@
 - (void)reset;
 - (void)setEnabledLevel:(long long)arg1;
 - (void)setPersistedLevel:(long long)arg1;
+- (void)setSignpostEnabled:(bool)arg1;
+- (void)setSignpostPersisted:(bool)arg1;
+- (bool)signpostEnabled;
+- (bool)signpostPersisted;
 - (id)subsystem;
 
 @end

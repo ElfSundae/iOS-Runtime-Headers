@@ -8,9 +8,9 @@
     OADTheme * mTheme;
 }
 
+- (void).cxx_destruct;
 - (id)colorMap;
 - (id)colorScheme;
-- (void)dealloc;
 - (id)defaultTextListStyle;
 - (id)description;
 - (void)doneWithContent;

@@ -6,6 +6,22 @@
     GEOPDFeatureBuilding * _featureBuilding;
     GEOPDFeaturePOI * _featurePoi;
     GEOPDFeatureVenue * _featureVenue;
+    struct { 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_featureBuilding : 1; 
+        unsigned int read_featurePoi : 1; 
+        unsigned int read_featureVenue : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_featureBuilding : 1; 
+        unsigned int wrote_featurePoi : 1; 
+        unsigned int wrote_featureVenue : 1; 
+    }  _flags;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     PBUnknownFields * _unknownFields;
 }
 
@@ -17,7 +33,13 @@
 @property (nonatomic, readonly) bool hasFeatureVenue;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_readFeatureBuilding;
+- (void)_readFeaturePoi;
+- (void)_readFeatureVenue;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -29,8 +51,11 @@
 - (bool)hasFeaturePoi;
 - (bool)hasFeatureVenue;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setFeatureBuilding:(id)arg1;
 - (void)setFeaturePoi:(id)arg1;

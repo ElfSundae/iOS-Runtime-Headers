@@ -25,6 +25,7 @@
 @property (nonatomic, retain) id timeObserver;
 @property (nonatomic, retain) ADBannerView *videoAd;
 
+- (void).cxx_destruct;
 - (bool)_beginLoadingVideoFromURL:(id)arg1;
 - (id)_networkOptimalVideoURLForAd:(id)arg1;
 - (void)applicationDidBecomeActive;

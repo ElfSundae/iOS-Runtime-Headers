@@ -4,8 +4,8 @@
 
 @interface GEOPDSearchVenueFilter : PBCodable <NSCopying> {
     struct { 
-        unsigned int venueSearchType : 1; 
-    }  _has;
+        unsigned int has_venueSearchType : 1; 
+    }  _flags;
     PBUnknownFields * _unknownFields;
     GEOPDVenueIdentifier * _venueFilter;
     int  _venueSearchType;
@@ -17,8 +17,11 @@
 @property (nonatomic, retain) GEOPDVenueIdentifier *venueFilter;
 @property (nonatomic) int venueSearchType;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsVenueSearchType:(id)arg1;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -28,6 +31,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasVenueSearchType:(bool)arg1;
 - (void)setVenueFilter:(id)arg1;

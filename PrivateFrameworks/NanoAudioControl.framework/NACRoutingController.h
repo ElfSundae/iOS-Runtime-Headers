@@ -4,7 +4,6 @@
 
 @interface NACRoutingController : NSObject
 
-+ (id)companionRoutingControllerWithAudioCategory:(id)arg1;
 + (id)localRoutingControllerWithAudioCategory:(id)arg1;
 + (id)proxyRoutingControllerWithAudioCategory:(id)arg1;
 

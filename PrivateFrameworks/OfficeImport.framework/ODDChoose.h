@@ -7,8 +7,8 @@
     NSMutableArray * mWhens;
 }
 
+- (void).cxx_destruct;
 - (void)addWhen:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 - (id)otherwise;

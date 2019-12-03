@@ -15,6 +15,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)alertControllerDelegate;
 - (id)alertItem;
 - (id)description;
@@ -22,6 +23,7 @@
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)setAlertControllerDelegate:(id)arg1;
 - (void)setAlertItem:(id)arg1;
+- (void)setHiddenOnClonedDisplay:(bool)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 - (void)viewDidDisappear:(bool)arg1;

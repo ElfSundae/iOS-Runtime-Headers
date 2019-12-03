@@ -19,6 +19,7 @@
 - (id)dateRemovedForIssueID:(id)arg1;
 - (bool)everContainedIssueID:(id)arg1;
 - (id)init;
+- (id)initWithStoreDirectoryFileURL:(id)arg1;
 - (id)issueIDs;
 - (id)localStore;
 - (id)observers;

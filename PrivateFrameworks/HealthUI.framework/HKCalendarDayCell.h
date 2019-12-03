@@ -18,7 +18,7 @@
 
 @property (nonatomic, retain) UIFont *boldFont;
 @property (nonatomic, readonly) CALayer *circle;
-@property (nonatomic, readonly) NSDate *date;
+@property (nonatomic, readonly, copy) NSDate *date;
 @property (nonatomic, readonly) HKDateCache *dateCache;
 @property (nonatomic) double dayDiameter;
 @property (nonatomic, readonly) CALayer *dayLabel;

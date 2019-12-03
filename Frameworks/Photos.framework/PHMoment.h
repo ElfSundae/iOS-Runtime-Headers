@@ -3,19 +3,34 @@
  */
 
 @interface PHMoment : PHAssetCollection {
-    short  _generationType;
+    float  _aggregationScore;
+    double  _approximateLatitude;
+    double  _approximateLongitude;
     NSDate * _modificationDate;
+    unsigned short  _processedLocation;
     NSDate * _representativeDate;
-    NSData * _reverseLocationData;
-    bool  _reverseLocationDataContainsLocation;
-    bool  _reverseLocationDataIsValid;
+    NSString * _subtitle;
+    int  _timeZoneOffset;
 }
 
-@property (nonatomic, readonly) short generationType;
+@property (nonatomic, readonly) float aggregationScore;
+@property (nonatomic, readonly) double approximateLatitude;
+@property (nonatomic, readonly) double approximateLongitude;
+@property (nonatomic, readonly) NSDate *localEndDate;
+@property (nonatomic, readonly) NSDate *localStartDate;
 @property (nonatomic, readonly) NSDate *modificationDate;
+@property (nonatomic) unsigned short processedLocation;
+@property (nonatomic, readonly) NSString *processedLocationTypeString;
 @property (nonatomic, readonly) NSDate *representativeDate;
+@property (nonatomic, readonly) NSString *subtitle;
+@property (nonatomic, readonly) int timeZoneOffset;
+@property (nonatomic, readonly) NSDate *universalEndDate;
+@property (nonatomic, readonly) NSDate *universalStartDate;
 
++ (id)_fetchMomentUUIDByAssetUUIDForAssetUUIDs:(id)arg1 photoLibrary:(id)arg2;
 + (id)entityKeyMap;
++ (id)fetchMomentUUIDByAssetUUIDForAssetUUIDs:(id)arg1 options:(id)arg2;
++ (id)fetchMomentUUIDByAssetUUIDForAssets:(id)arg1 options:(id)arg2;
 + (id)fetchType;
 + (id)identifierCode;
 + (id)managedEntityName;
@@ -25,20 +40,29 @@
 
 - (void).cxx_destruct;
 - (void)_cacheLocationWithCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg1;
-- (void)_decodeTitlesIfNeeded;
+- (float)aggregationScore;
+- (double)approximateLatitude;
+- (double)approximateLongitude;
 - (bool)canPerformEditOperation:(long long)arg1;
 - (bool)canShowAvalancheStacks;
 - (Class)changeRequestClass;
 - (bool)collectionHasFixedOrder;
 - (id)description;
-- (short)generationType;
-- (bool)hasLocalizedTitle;
 - (bool)hasLocationInfo;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
-- (bool)isMeaningful;
+- (id)localEndDate;
+- (id)localStartDate;
 - (id)localizedLocationNames;
+- (id)localizedSubtitle;
 - (id)localizedTitle;
 - (id)modificationDate;
+- (unsigned short)processedLocation;
+- (id)processedLocationTypeString;
 - (id)representativeDate;
+- (void)setProcessedLocation:(unsigned short)arg1;
+- (id)subtitle;
+- (int)timeZoneOffset;
+- (id)universalEndDate;
+- (id)universalStartDate;
 
 @end

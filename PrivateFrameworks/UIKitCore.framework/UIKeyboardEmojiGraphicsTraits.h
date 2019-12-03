@@ -43,6 +43,7 @@
 @property (nonatomic, readonly) double scrubViewTopPadding;
 @property (nonatomic, readonly) double sectionOffset;
 
++ (id)emojiGraphicsTraitsForCurrentScreenTraits;
 + (id)emojiGraphicsTraitsWithScreenTraits:(id)arg1;
 
 - (double)alertTextWidth;

@@ -6,6 +6,8 @@
     EAAccessoryInternal * _internal;
 }
 
+@property (nonatomic, readonly) NSDictionary *CARAnalyticsDescription;
+@property (nonatomic, readonly) NSDictionary *CARVehicleAccessoryInfoKeys;
 @property (getter=isConnected, nonatomic, readonly) bool connected;
 @property (nonatomic, readonly) unsigned long long connectionID;
 @property (nonatomic) <EAAccessoryDelegate> *delegate;
@@ -17,6 +19,8 @@
 @property (nonatomic, readonly) NSString *name;
 @property (nonatomic, readonly) NSArray *protocolStrings;
 @property (nonatomic, readonly) NSString *serialNumber;
+
+// Image: /System/Library/Frameworks/ExternalAccessory.framework/ExternalAccessory
 
 - (void)_OOBBTPairingCompletedWithStatus:(unsigned char)arg1 forAccessoryWithMACAddress:(id)arg2;
 - (void)_addSession:(id)arg1;
@@ -78,6 +82,7 @@
 - (bool)pointOfInterestHandoffEnabled;
 - (id)ppid;
 - (id)preferredApp;
+- (id)protocolDetails;
 - (id)protocolStrings;
 - (void)requestIAPAccessoryWiFiCredentials;
 - (void)resetIAPTimeSyncKalmanFilter;
@@ -111,8 +116,11 @@
 - (bool)supportsAccessibility;
 - (bool)supportsCamera;
 - (bool)supportsCarPlay;
+- (bool)supportsCarPlayAppLinks;
+- (bool)supportsDestinationSharing;
 - (bool)supportsLocation;
 - (bool)supportsOOBBTPairing;
+- (bool)supportsOOBBTPairing2;
 - (bool)supportsPointOfInterest;
 - (bool)supportsPublicIap;
 - (bool)supportsUSBCarPlay;
@@ -122,5 +130,10 @@
 - (id)vehicleInfoInitialData;
 - (id)vehicleInfoSupportedTypes;
 - (id)wakeToken;
+
+// Image: /System/Library/PrivateFrameworks/CarKit.framework/CarKit
+
+- (id)CARAnalyticsDescription;
+- (id)CARVehicleAccessoryInfoKeys;
 
 @end

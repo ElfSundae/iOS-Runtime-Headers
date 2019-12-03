@@ -4,12 +4,11 @@
 
 @interface ICModernSearchIndexerDataSource : ICBaseSearchIndexerDataSource
 
-- (id)allIndexableObjectIdentifiersByObjectID;
+- (id)allIndexableObjectIDsInReversedReindexingOrder;
 - (void)contextWillSave:(id)arg1;
 - (id)dataSourceIdentifier;
-- (id)indexableObjectIDsWithIdentifiers:(id)arg1;
+- (unsigned long long)indexingPriority;
 - (id)newManagedObjectContext;
-- (id)objectForSearchableItemIdentifier:(id)arg1 context:(id)arg2;
 - (id)persistentStoreCoordinator;
 
 @end

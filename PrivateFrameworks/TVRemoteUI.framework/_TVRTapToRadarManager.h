@@ -8,6 +8,7 @@
 
 @property (nonatomic, retain) NSURLComponents *urlComponents;
 
++ (id)_captureScreenshot;
 + (id)bugImage;
 + (void)fileRadarWithTitle:(id)arg1 description:(id)arg2;
 

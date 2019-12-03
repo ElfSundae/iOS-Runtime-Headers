@@ -4,6 +4,7 @@
 
 @interface UNSAttachmentsRepository : NSObject {
     NSURL * _directoryURL;
+    UNSBundleLibrarian * _librarian;
     UNSKeyedDictionaryRepository * _referencesRepository;
 }
 
@@ -17,6 +18,7 @@
 - (void)_performAttachmentFilesMigration;
 - (void)_performAttachmentReferencesMigration;
 - (void)_performAttachmentReferencesMigrationForBundleIdentifier:(id)arg1;
+- (void)_performAttachmentRepositoryKeyMigration;
 - (void)_removeAllReferencesForBundleIdentifier:(id)arg1;
 - (unsigned long long)_removeReferencesToRepositoryURL:(id)arg1 forNotificationIdentifier:(id)arg2 bundleIdentifier:(id)arg3;
 - (void)_removeRepositoryURL:(id)arg1;
@@ -26,7 +28,7 @@
 - (id)bundleIdentifiersClaimingAttachments;
 - (void)deleteAllFilesForBundleIdentifier:(id)arg1;
 - (void)ensureIntegrityUsingNotificationIdentifiersForBundleIdentifiers:(id)arg1;
-- (id)initWithDirectory:(id)arg1;
+- (id)initWithDirectory:(id)arg1 librarian:(id)arg2;
 - (bool)isRepositoryURL:(id)arg1;
 - (bool)isValidRepositoryURL:(id)arg1 forBundleIdentifier:(id)arg2;
 - (id)moveFileIntoRepositoryFromFileURL:(id)arg1 forNotificationIdentifier:(id)arg2 bundleIdentifier:(id)arg3;

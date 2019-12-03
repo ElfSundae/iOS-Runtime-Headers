@@ -3,8 +3,11 @@
  */
 
 @interface _INPBMessageLinkMetadata : PBCodable <NSCopying, NSSecureCoding, _INPBMessageLinkMetadata> {
+    bool  __encodeLegacyGloryData;
     NSString * _albumArtist;
     NSString * _albumName;
+    NSString * _appleTvSubtitle;
+    NSString * _appleTvTitle;
     NSString * _artistGenre;
     NSString * _artistName;
     NSString * _audioBookAuthor;
@@ -22,6 +25,8 @@
     NSArray * _imageURLs;
     NSString * _itemType;
     int  _linkMediaType;
+    NSString * _movieBundleGenre;
+    NSString * _movieBundleName;
     NSString * _movieGenre;
     NSString * _movieName;
     NSString * _musicVideoArtist;
@@ -51,10 +56,14 @@
     NSString * _tvEpisodeSeasonName;
     NSString * _tvSeasonGenre;
     NSString * _tvSeasonName;
+    NSString * _tvShowName;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic, copy) NSString *albumArtist;
 @property (nonatomic, copy) NSString *albumName;
+@property (nonatomic, copy) NSString *appleTvSubtitle;
+@property (nonatomic, copy) NSString *appleTvTitle;
 @property (nonatomic, copy) NSString *artistGenre;
 @property (nonatomic, copy) NSString *artistName;
 @property (nonatomic, copy) NSString *audioBookAuthor;
@@ -67,6 +76,8 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool hasAlbumArtist;
 @property (nonatomic, readonly) bool hasAlbumName;
+@property (nonatomic, readonly) bool hasAppleTvSubtitle;
+@property (nonatomic, readonly) bool hasAppleTvTitle;
 @property (nonatomic, readonly) bool hasArtistGenre;
 @property (nonatomic, readonly) bool hasArtistName;
 @property (nonatomic, readonly) bool hasAudioBookAuthor;
@@ -79,6 +90,8 @@
 @property (nonatomic, readonly) bool hasITunesStoreIdentifier;
 @property (nonatomic, readonly) bool hasItemType;
 @property (nonatomic) bool hasLinkMediaType;
+@property (nonatomic, readonly) bool hasMovieBundleGenre;
+@property (nonatomic, readonly) bool hasMovieBundleName;
 @property (nonatomic, readonly) bool hasMovieGenre;
 @property (nonatomic, readonly) bool hasMovieName;
 @property (nonatomic, readonly) bool hasMusicVideoArtist;
@@ -108,6 +121,7 @@
 @property (nonatomic, readonly) bool hasTvEpisodeSeasonName;
 @property (nonatomic, readonly) bool hasTvSeasonGenre;
 @property (nonatomic, readonly) bool hasTvSeasonName;
+@property (nonatomic, readonly) bool hasTvShowName;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSString *iTunesStoreFrontIdentifier;
 @property (nonatomic, copy) NSString *iTunesStoreIdentifier;
@@ -117,6 +131,8 @@
 @property (nonatomic, readonly) unsigned long long imageURLsCount;
 @property (nonatomic, copy) NSString *itemType;
 @property (nonatomic) int linkMediaType;
+@property (nonatomic, copy) NSString *movieBundleGenre;
+@property (nonatomic, copy) NSString *movieBundleName;
 @property (nonatomic, copy) NSString *movieGenre;
 @property (nonatomic, copy) NSString *movieName;
 @property (nonatomic, copy) NSString *musicVideoArtist;
@@ -147,13 +163,20 @@
 @property (nonatomic, copy) NSString *tvEpisodeSeasonName;
 @property (nonatomic, copy) NSString *tvSeasonGenre;
 @property (nonatomic, copy) NSString *tvSeasonName;
+@property (nonatomic, copy) NSString *tvShowName;
+
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (int)StringAsLinkMediaType:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (void)addIconURL:(id)arg1;
 - (void)addImageURL:(id)arg1;
 - (id)albumArtist;
 - (id)albumName;
+- (id)appleTvSubtitle;
+- (id)appleTvTitle;
 - (id)artistGenre;
 - (id)artistName;
 - (id)audioBookAuthor;
@@ -166,8 +189,11 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)creator;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasAlbumArtist;
 - (bool)hasAlbumName;
+- (bool)hasAppleTvSubtitle;
+- (bool)hasAppleTvTitle;
 - (bool)hasArtistGenre;
 - (bool)hasArtistName;
 - (bool)hasAudioBookAuthor;
@@ -180,6 +206,8 @@
 - (bool)hasITunesStoreIdentifier;
 - (bool)hasItemType;
 - (bool)hasLinkMediaType;
+- (bool)hasMovieBundleGenre;
+- (bool)hasMovieBundleName;
 - (bool)hasMovieGenre;
 - (bool)hasMovieName;
 - (bool)hasMusicVideoArtist;
@@ -209,6 +237,7 @@
 - (bool)hasTvEpisodeSeasonName;
 - (bool)hasTvSeasonGenre;
 - (bool)hasTvSeasonName;
+- (bool)hasTvShowName;
 - (unsigned long long)hash;
 - (id)iTunesStoreFrontIdentifier;
 - (id)iTunesStoreIdentifier;
@@ -218,10 +247,13 @@
 - (id)imageURLAtIndex:(unsigned long long)arg1;
 - (id)imageURLs;
 - (unsigned long long)imageURLsCount;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)itemType;
 - (int)linkMediaType;
 - (id)linkMediaTypeAsString:(int)arg1;
+- (id)movieBundleGenre;
+- (id)movieBundleName;
 - (id)movieGenre;
 - (id)movieName;
 - (id)musicVideoArtist;
@@ -240,6 +272,8 @@
 - (bool)readFrom:(id)arg1;
 - (void)setAlbumArtist:(id)arg1;
 - (void)setAlbumName:(id)arg1;
+- (void)setAppleTvSubtitle:(id)arg1;
+- (void)setAppleTvTitle:(id)arg1;
 - (void)setArtistGenre:(id)arg1;
 - (void)setArtistName:(id)arg1;
 - (void)setAudioBookAuthor:(id)arg1;
@@ -255,6 +289,8 @@
 - (void)setImageURLs:(id)arg1;
 - (void)setItemType:(id)arg1;
 - (void)setLinkMediaType:(int)arg1;
+- (void)setMovieBundleGenre:(id)arg1;
+- (void)setMovieBundleName:(id)arg1;
 - (void)setMovieGenre:(id)arg1;
 - (void)setMovieName:(id)arg1;
 - (void)setMusicVideoArtist:(id)arg1;
@@ -284,6 +320,7 @@
 - (void)setTvEpisodeSeasonName:(id)arg1;
 - (void)setTvSeasonGenre:(id)arg1;
 - (void)setTvSeasonName:(id)arg1;
+- (void)setTvShowName:(id)arg1;
 - (id)siteName;
 - (id)softwareGenre;
 - (id)softwareName;
@@ -298,6 +335,7 @@
 - (id)tvEpisodeSeasonName;
 - (id)tvSeasonGenre;
 - (id)tvSeasonName;
+- (id)tvShowName;
 - (void)writeTo:(id)arg1;
 
 @end

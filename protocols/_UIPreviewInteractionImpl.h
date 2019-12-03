@@ -5,6 +5,7 @@
 
 @required
 
+- (void)_startPreviewAtLocation:(struct CGPoint { double x1; double x2; })arg1 inCoordinateSpace:(id <UICoordinateSpace>)arg2;
 - (void)cancelInteraction;
 - (<UIPreviewInteractionDelegate> *)delegate;
 - (id)initWithView:(UIView *)arg1 previewInteraction:(UIPreviewInteraction *)arg2;

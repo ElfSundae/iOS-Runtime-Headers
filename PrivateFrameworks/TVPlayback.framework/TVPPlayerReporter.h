@@ -5,7 +5,7 @@
 @interface TVPPlayerReporter : NSObject {
     NSString * _optFlag;
     TVPPlayer * _player;
-    NSObject * _reportingHierarchyToken;
+    id  _reportingHierarchyToken;
     RTCReporting * _rtcAgent;
     double  _timeWatched;
     double  _timeWatchedStart;
@@ -13,7 +13,7 @@
 
 @property (retain) NSString *optFlag;
 @property (nonatomic) TVPPlayer *player;
-@property (nonatomic, retain) NSObject *reportingHierarchyToken;
+@property (nonatomic, retain) id reportingHierarchyToken;
 @property (retain) RTCReporting *rtcAgent;
 @property double timeWatched;
 @property double timeWatchedStart;

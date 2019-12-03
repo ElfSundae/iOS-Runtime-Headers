@@ -4,9 +4,9 @@
 
 @interface GEOLogMsgStateRealtimeTrafficProbe : PBCodable <NSCopying> {
     struct { 
-        unsigned int recvTime : 1; 
-        unsigned int probeCount : 1; 
-    }  _has;
+        unsigned int has_recvTime : 1; 
+        unsigned int has_probeCount : 1; 
+    }  _flags;
     int  _probeCount;
     long long  _recvTime;
     NSString * _tripId;
@@ -18,6 +18,8 @@
 @property (nonatomic) int probeCount;
 @property (nonatomic) long long recvTime;
 @property (nonatomic, retain) NSString *tripId;
+
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
@@ -31,6 +33,7 @@
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (int)probeCount;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (long long)recvTime;
 - (void)setHasProbeCount:(bool)arg1;

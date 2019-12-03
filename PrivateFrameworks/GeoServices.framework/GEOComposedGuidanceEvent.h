@@ -2,8 +2,7 @@
    Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
  */
 
-@interface GEOComposedGuidanceEvent : NSObject {
-    bool  _clampToStep;
+@interface GEOComposedGuidanceEvent : NSObject <NSSecureCoding> {
     unsigned long long  _creationOrder;
     double  _distanceForStrings;
     double  _endValidDistance;
@@ -29,10 +28,12 @@
 @property (nonatomic, readonly) NSString *exclusiveSetIdentifier;
 @property (nonatomic, retain) GEOGuidanceEvent *guidanceEvent;
 @property (nonatomic, readonly) bool hasHaptics;
+@property (nonatomic, readonly) bool hasJunctionView;
 @property (nonatomic, readonly) bool hasSignGuidance;
 @property (nonatomic, readonly) bool hasSpokenGuidance;
 @property (nonatomic, readonly) bool isLaneGuidanceForManeuver;
 @property (nonatomic, readonly) bool isSticky;
+@property (nonatomic, readonly) GEOJunctionView *junctionView;
 @property (nonatomic, readonly) NSArray *laneInstructions;
 @property (nonatomic, readonly) NSArray *laneTitles;
 @property (nonatomic, readonly) NSArray *lanes;
@@ -51,9 +52,11 @@
 @property (nonatomic, readonly) GEOComposedRouteStep *step;
 @property (nonatomic, readonly) NSUUID *uniqueID;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
-- (bool)_MapsCarPlay_isEqual:(id)arg1;
 - (void)_findSource;
+- (unsigned long long)_junctionViewIDForData:(id)arg1;
 - (void)_lazyInit;
 - (bool)_needsLazyInit;
 - (id)announcements;
@@ -65,18 +68,23 @@
 - (double)desiredTimeGapToEvent:(id)arg1 chained:(bool)arg2;
 - (double)distanceForStrings;
 - (int)drivingSide;
+- (void)encodeWithCoder:(id)arg1;
 - (double)endDistanceForSpeed:(double)arg1;
 - (double)endValidDistance;
 - (unsigned long long)enrouteNoticeIndex;
 - (id)exclusiveSetIdentifier;
 - (id)guidanceEvent;
 - (bool)hasHaptics;
+- (bool)hasJunctionView;
 - (bool)hasSignGuidance;
 - (bool)hasSpokenGuidance;
-- (id)initWithGuidanceEvent:(id)arg1 stepIndex:(unsigned long long)arg2 composedRoute:(id)arg3 clampToStep:(bool)arg4;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithGuidanceEvent:(id)arg1 stepIndex:(unsigned long long)arg2 composedRoute:(id)arg3;
+- (bool)isEqual:(id)arg1;
 - (bool)isLaneGuidanceForManeuver;
 - (bool)isSticky;
 - (bool)isValidForSpeed:(double)arg1;
+- (id)junctionView;
 - (id)laneInstructions;
 - (id)laneTitles;
 - (id)lanes;
@@ -86,6 +94,7 @@
 - (double)referencePointDistance;
 - (double)repetitionInterval;
 - (void)setGuidanceEvent:(id)arg1;
+- (void)setRoute:(id)arg1;
 - (id)shieldInfo;
 - (id)signDetails;
 - (id)signTitles;

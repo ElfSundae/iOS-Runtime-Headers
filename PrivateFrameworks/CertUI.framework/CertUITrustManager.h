@@ -6,6 +6,8 @@
     NSString * _access;
 }
 
+// Image: /System/Library/PrivateFrameworks/CertUI.framework/CertUI
+
 + (void)_migrateVersionZeroFromAccessGroup:(id)arg1 toGroup:(id)arg2;
 + (id)defaultTrustManager;
 + (void)migrateFromVersionOne;
@@ -29,5 +31,9 @@
 - (void)removeAllTrusts;
 - (void)removeSMIMETrust:(struct __SecTrust { }*)arg1 sender:(id)arg2;
 - (void)removeSSLTrust:(struct __SecTrust { }*)arg1 hostname:(id)arg2 service:(id)arg3;
+
+// Image: /System/Library/Frameworks/SafariServices.framework/SafariServices
+
+- (bool)userAllowsCertificateTrust:(struct __SecTrust { }*)arg1 host:(id)arg2 shouldPrompt:(bool)arg3;
 
 @end

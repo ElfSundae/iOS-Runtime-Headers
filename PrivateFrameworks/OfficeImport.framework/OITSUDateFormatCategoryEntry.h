@@ -3,16 +3,16 @@
  */
 
 @interface OITSUDateFormatCategoryEntry : NSObject {
-    NSMutableSet * mFormatStrings;
-    struct __CFArray { } * mFormatters;
-    unsigned short  mSeparator;
+    NSMutableSet * _formatStrings;
+    NSMutableArray * _formatters;
+    unsigned short  _separator;
 }
 
-- (void)addFormat:(id)arg1 locale:(struct __CFLocale { }*)arg2;
-- (void)dealloc;
+- (void).cxx_destruct;
+- (void)addFormat:(id)arg1 locale:(id)arg2;
 - (id)formatStrings;
 - (id)initWithSeparator:(unsigned short)arg1;
-- (struct __CFDate { }*)newDateFromString:(struct __CFString { }*)arg1 forceAllowAMPM:(bool)arg2 successfulFormatString:(const struct __CFString {}**)arg3 perfect:(bool*)arg4;
+- (id)newDateFromString:(id)arg1 forceAllowAMPM:(bool)arg2 successfulFormatString:(id*)arg3 perfect:(bool*)arg4;
 - (unsigned short)separator;
 
 @end

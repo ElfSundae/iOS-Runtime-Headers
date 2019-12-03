@@ -13,6 +13,7 @@
 - (void).cxx_destruct;
 - (bool)allowNonSecureHTTP;
 - (id)description;
+- (id)initWithRequestContext:(id)arg1;
 - (void)setAllowNonSecureHTTP:(bool)arg1;
 - (void)setTermsURL:(id)arg1;
 - (id)termsURL;

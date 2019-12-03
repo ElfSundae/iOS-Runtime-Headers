@@ -3,7 +3,6 @@
  */
 
 @interface NWConcrete_nw_protocol_instance : NSObject <OS_nw_protocol_instance> {
-    unsigned int  __pad_bits;
     unsigned int  allow_buffering;
     struct nw_protocol_callbacks { 
         int (*add_input_handler)(); 
@@ -45,7 +44,7 @@
     unsigned int  datagram;
     void * destroy_timer;
     NSObject<OS_nw_endpoint> * endpoint;
-    unsigned int  flow_controlled;
+    NSObject<OS_nw_path_flow_registration> * flow_registration;
     struct nw_hash_table { } * flows_table;
     void * handle;
     struct nw_frame_array_s { 
@@ -53,10 +52,16 @@
         struct nw_frame {} **tqh_last; 
     }  inbound_frames;
     unsigned int  initialized;
+    unsigned int  input_acknowledged;
     unsigned long long  last_accepted_flow;
+    unsigned int  limit_outbound_data;
+    unsigned int  link_flow_controlled;
     struct nw_listen_protocol { struct nw_listen_protocol_callbacks {} *x1; struct nw_protocol {} *x2; void *x3; void *x4; } * listen_handler;
     BOOL  log_str;
     unsigned long long  maximum_content_size;
+    unsigned int  needs_finalize_output;
+    unsigned int  needs_output_available;
+    unsigned int  new_flow_is_control;
     NSObject<OS_nw_array> * outbound_data_requests;
     struct nw_frame_array_s { 
         struct nw_frame {} *tqh_first; 
@@ -86,13 +91,16 @@
         struct nw_protocol {} *default_input_handler; 
         void *output_handler_context; 
     }  protocol;
+    unsigned int  protocol_outbound_data_limit;
     unsigned int  ready;
     unsigned long long  reserve_footer_size;
     unsigned long long  reserve_header_size;
+    unsigned int  should_destroy;
     unsigned int  started;
     unsigned int  supports_external_data;
-    unsigned int  waiting_for_flow_control;
+    unsigned int  waiting_for_link_flow_control;
     unsigned int  waiting_for_listener_accept;
+    id /* block */  wakeup;
 }
 
 @property (readonly, copy) NSString *debugDescription;

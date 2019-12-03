@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/InputContext.framework/InputContext
  */
 
-@interface _ICPredictionManager : NSObject <_ICPredictionManaging> {
+@interface _ICPredictionManager : NSObject <_ICFeedbackAccepting, _ICPredictionManaging> {
     _ICResultCache * _cache;
     NSArray * _predictionSources;
 }
@@ -20,6 +20,7 @@
 - (id)initWithPredictionSources:(id)arg1;
 - (id)lastCachedResultWithInitialCharacters:(id)arg1;
 - (void)predictedItemSelected:(id)arg1;
+- (void)provideFeedbackForString:(id)arg1 type:(unsigned char)arg2 style:(unsigned char)arg3;
 - (void)reset;
 - (id)searchForMeCardEmailAddresses;
 - (id)searchForMeCardRegions;

@@ -15,8 +15,8 @@
 + (id)messageWithName:(id)arg1 identifier:(id)arg2 target:(id)arg3 payload:(id)arg4 responseHandler:(id /* block */)arg5;
 
 - (void).cxx_destruct;
-- (void)handleMessageWithName:(id)arg1 messageIdentifier:(id)arg2 messagePayload:(id)arg3 target:(id)arg4;
-- (void)handleMessageWithName:(id)arg1 messageIdentifier:(id)arg2 messagePayload:(id)arg3 target:(id)arg4 responseHandler:(id /* block */)arg5;
+- (void)handleMessage:(id)arg1;
+- (void)handleMessage:(id)arg1 responseHandler:(id /* block */)arg2;
 - (id)initWithRefreshHandler:(id /* block */)arg1;
 - (id /* block */)refreshHandler;
 - (void)sendMessage:(id)arg1 completionHandler:(id /* block */)arg2;

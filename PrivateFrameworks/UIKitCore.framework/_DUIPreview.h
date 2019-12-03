@@ -3,6 +3,7 @@
  */
 
 @interface _DUIPreview : NSObject <NSCopying, NSSecureCoding> {
+    bool  _avoidAnimation;
     UIColor * _backgroundColor;
     struct CGPoint { 
         double x; 
@@ -25,17 +26,16 @@
     }  _originalCenter;
     double  _originalRotation;
     UIBezierPath * _outline;
-    NSDictionary * _springboardParameters;
-    bool  _springboardPlatterStyle;
-    bool  _textMode;
+    long long  _previewMode;
     struct CGSize { 
         double width; 
         double height; 
     }  _viewScaleFactor;
+    bool  _wantsSuppressedMask;
 }
 
-@property (nonatomic, copy) NSDictionary *_springboardParameters;
-@property (nonatomic) bool _springboardPlatterStyle;
+@property (nonatomic, readonly) bool _springboardPlatterStyle;
+@property (nonatomic) bool avoidAnimation;
 @property (nonatomic, readonly) double backAlpha;
 @property (nonatomic, copy) UIColor *backgroundColor;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } boundingSize;
@@ -54,6 +54,7 @@
 @property (nonatomic, copy) UIBezierPath *outline;
 @property (getter=isOversized, nonatomic, readonly) bool oversized;
 @property (nonatomic, readonly) UIDragPreviewParameters *parameters;
+@property (nonatomic) long long previewMode;
 @property (nonatomic, readonly) double scaleFactor;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } scaledSize;
 @property (nonatomic, readonly) double stackAlpha;
@@ -62,15 +63,16 @@
 @property (nonatomic, readonly) struct CGPoint { double x1; double x2; } unscaledAnchorPoint;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } unscaledSize;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } viewScaleFactor;
+@property (nonatomic) bool wantsSuppressedMask;
 
 + (id)defaultPreviewWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 + (double)defaultStackAlpha;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
-- (id)_springboardParameters;
 - (bool)_springboardPlatterStyle;
 - (double)_topOffset;
+- (bool)avoidAnimation;
 - (double)backAlpha;
 - (id)backgroundColor;
 - (struct CGSize { double x1; double x2; })boundingSize;
@@ -97,8 +99,10 @@
 - (double)originalRotation;
 - (id)outline;
 - (id)parameters;
+- (long long)previewMode;
 - (double)scaleFactor;
 - (struct CGSize { double x1; double x2; })scaledSize;
+- (void)setAvoidAnimation:(bool)arg1;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setFadesHorizontally:(bool)arg1;
 - (void)setFadesVertically:(bool)arg1;
@@ -107,14 +111,15 @@
 - (void)setOriginalCenter:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setOriginalRotation:(double)arg1;
 - (void)setOutline:(id)arg1;
+- (void)setPreviewMode:(long long)arg1;
 - (void)setTextMode:(bool)arg1;
-- (void)set_springboardParameters:(id)arg1;
-- (void)set_springboardPlatterStyle:(bool)arg1;
+- (void)setWantsSuppressedMask:(bool)arg1;
 - (double)stackAlpha;
 - (bool)textMode;
 - (double)topAlpha;
 - (struct CGPoint { double x1; double x2; })unscaledAnchorPoint;
 - (struct CGSize { double x1; double x2; })unscaledSize;
 - (struct CGSize { double x1; double x2; })viewScaleFactor;
+- (bool)wantsSuppressedMask;
 
 @end

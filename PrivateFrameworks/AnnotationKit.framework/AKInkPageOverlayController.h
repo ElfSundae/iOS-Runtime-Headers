@@ -9,6 +9,7 @@
     double  _lastStrokeEndTime;
     bool  _onlyPencilDraws;
     AKPageController * _pageController;
+    <PKRulerHostingDelegate> * _rulerHostingDelegate;
     AKShapeDetectionController * _shapeDetectionController;
 }
 
@@ -21,6 +22,7 @@
 @property double lastStrokeEndTime;
 @property bool onlyPencilDraws;
 @property AKPageController *pageController;
+@property (nonatomic) <PKRulerHostingDelegate> *rulerHostingDelegate;
 @property (retain) AKShapeDetectionController *shapeDetectionController;
 @property (readonly) Class superclass;
 
@@ -40,8 +42,10 @@
 - (void)_toolStatusUpdated:(id)arg1;
 - (void)_updateAllowedTouchTypesAllEnabled:(bool)arg1 pencilEnabled:(bool)arg2;
 - (void)_updateGestureDependencyPriority;
+- (void)annotationEditingDidEndWithCompletion:(id /* block */)arg1;
 - (void)beginIgnoringAnnotationSelectionObservation:(id)arg1;
 - (id /* block */)delayedShapeDetectionBlock;
+- (void)didToggleRuler;
 - (void)endIgnoringAnnotationSelectionObservation:(id)arg1;
 - (bool)ignoreAnnotationAndSelectionKVO;
 - (id)initWithPageController:(id)arg1;
@@ -55,12 +59,15 @@
 - (bool)onlyPencilDraws;
 - (id)overlayView:(id)arg1;
 - (id)pageController;
+- (id)rulerHostingDelegate;
+- (struct CGSize { double x1; double x2; })scaleFromDrawingInCanvasView:(id)arg1 toPageControllerModelSpace:(id)arg2;
 - (void)setDelayedShapeDetectionBlock:(id /* block */)arg1;
 - (void)setIgnoreAnnotationAndSelectionKVO:(bool)arg1;
 - (void)setInkOverlayView:(id)arg1;
 - (void)setLastStrokeEndTime:(double)arg1;
 - (void)setOnlyPencilDraws:(bool)arg1;
 - (void)setPageController:(id)arg1;
+- (void)setRulerHostingDelegate:(id)arg1;
 - (void)setShapeDetectionController:(id)arg1;
 - (void)setup;
 - (id)shapeDetectionController;

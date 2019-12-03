@@ -3,17 +3,21 @@
  */
 
 @interface TSKAnimatedGIFFrame : NSObject {
-    struct CGImage { } * mImage;
+    unsigned long long  mIndex;
+    struct CGImage { } * mPreloadedImage;
+    struct CGImageSource { } * mSource;
     double  mTime;
 }
 
 @property (nonatomic, readonly) struct CGImage { }*image;
+@property (nonatomic, readonly) unsigned long long index;
 @property (nonatomic, readonly) double time;
 
 - (void)dealloc;
 - (id)description;
 - (struct CGImage { }*)image;
-- (id)initWithCGImage:(struct CGImage { }*)arg1 time:(double)arg2;
+- (unsigned long long)index;
+- (id)initWithSource:(struct CGImageSource { }*)arg1 index:(unsigned long long)arg2 time:(double)arg3 preloadImage:(bool)arg4;
 - (double)time;
 
 @end

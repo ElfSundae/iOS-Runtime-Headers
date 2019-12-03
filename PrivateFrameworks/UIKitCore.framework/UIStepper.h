@@ -2,20 +2,18 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface UIStepper : UIControl {
+@interface UIStepper : UIControl <UIStepperControl> {
     bool  _autorepeat;
+    NSMutableDictionary * _backgroundImages;
     bool  _continuous;
+    NSMutableDictionary * _decrementImages;
     NSMutableDictionary * _dividerImages;
-    bool  _isRtoL;
+    NSMutableDictionary * _incrementImages;
     double  _maximumValue;
-    UIImageView * _middleView;
     double  _minimumValue;
-    UIButton * _minusButton;
-    UIButton * _plusButton;
-    long long  _repeatCount;
-    NSTimer * _repeatTimer;
     double  _stepValue;
     double  _value;
+    UIView<UIStepperVisualElement> * _visualElement;
     bool  _wraps;
 }
 
@@ -24,9 +22,13 @@
 @property (nonatomic) double maximumValue;
 @property (nonatomic) double minimumValue;
 @property (nonatomic) double stepValue;
-@property (nonatomic, retain) UIColor *tintColor;
 @property (nonatomic) double value;
+@property (nonatomic, retain) UIView<UIStepperVisualElement> *visualElement;
 @property (nonatomic) bool wraps;
+
++ (Class)_fallbackVisualElementClass;
++ (Class)visualElementClassForTraitCollection:(id)arg1;
++ (id)visualElementForTraitCollection:(id)arg1;
 
 - (void).cxx_destruct;
 - (id)__scalarStatisticsForUserValueChangedEvent;
@@ -37,17 +39,9 @@
 - (void)_emitValueChanged;
 - (struct CGSize { double x1; double x2; })_intrinsicSizeWithinSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)_populateArchivedSubviews:(id)arg1;
-- (void)_setBackgroundImage:(id)arg1 forState:(unsigned long long)arg2;
-- (void)_setDecrementImage:(id)arg1 forState:(unsigned long long)arg2;
-- (void)_setDividerImage:(id)arg1 forLeftSegmentState:(unsigned long long)arg2 rightSegmentState:(unsigned long long)arg3;
-- (void)_setIncrementImage:(id)arg1 forState:(unsigned long long)arg2;
-- (void)_startTimer;
-- (void)_stopTimer;
-- (void)_updateButtonEnabled;
-- (void)_updateCount:(id)arg1;
-- (void)_updateDividerImageForButtonState;
-- (void)_updateHighlightingAtPoint:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
-- (void)_updateImages;
+- (void)_refreshVisualElement;
+- (void)_refreshVisualElementForTraitCollection:(id)arg1 populatingAPIProperties:(bool)arg2;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })alignmentRectInsets;
 - (bool)autorepeat;
 - (id)backgroundImageForState:(unsigned long long)arg1;
 - (bool)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
@@ -63,7 +57,6 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (bool)isContinuous;
-- (void)layoutSubviews;
 - (double)maximumValue;
 - (double)minimumValue;
 - (void)setAutorepeat:(bool)arg1;
@@ -71,6 +64,7 @@
 - (void)setContinuous:(bool)arg1;
 - (void)setDecrementImage:(id)arg1 forState:(unsigned long long)arg2;
 - (void)setDividerImage:(id)arg1 forLeftSegmentState:(unsigned long long)arg2 rightSegmentState:(unsigned long long)arg3;
+- (void)setEnabled:(bool)arg1;
 - (void)setFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setIncrementImage:(id)arg1 forState:(unsigned long long)arg2;
 - (void)setMaximumValue:(double)arg1;
@@ -78,10 +72,16 @@
 - (void)setStepValue:(double)arg1;
 - (void)setTintColor:(id)arg1;
 - (void)setValue:(double)arg1;
+- (void)setVisualElement:(id)arg1;
 - (void)setWraps:(bool)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (double)stepValue;
+- (void)tintColorDidChange;
+- (void)traitCollectionDidChange:(id)arg1;
 - (double)value;
+- (id)visualElement;
+- (void)visualElementDidSetValue:(id)arg1;
+- (void)visualElementSendValueChangedEvent:(id)arg1;
 - (bool)wraps;
 
 @end

@@ -2,10 +2,12 @@
    Image: /System/Library/PrivateFrameworks/MobileTimer.framework/MobileTimer
  */
 
-@interface MTStorageReaderV1 : NSKeyedUnarchiver <MTCoder>
+@interface MTStorageReaderV1 : NSKeyedUnarchiver <MTSerializer>
 
-- (bool)mt_isReadingFromPersistence;
-- (bool)mt_isWritingToPersistence;
-- (bool)mt_isWritingToStorage;
+@property (nonatomic, readonly) NSCoder *mtCoder;
+@property (nonatomic, readonly) unsigned long long mtType;
+
+- (id)mtCoder;
+- (unsigned long long)mtType;
 
 @end

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/Message.framework/Message
  */
 
-@interface MFDADeferredMessageMoveOperation : MFOfflineCacheOperation <MFDAOfflineCacheOperation> {
+@interface MFDADeferredMessageMoveOperation : _MFOfflineCacheOperation {
     NSString * _destinationMailboxID;
     NSArray * _originalFlags;
     NSString * _sourceMailboxID;
@@ -10,13 +10,13 @@
     NSArray * _temporaryRemoteIDs;
 }
 
++ (id)log;
 + (bool)supportsSecureCoding;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithMessages:(id)arg1 temporaryIDs:(id)arg2 sourceMailbox:(id)arg3 destinationMailbox:(id)arg4;
-- (bool)performWithAccount:(id)arg1 offlineCache:(id)arg2;
+- (bool)translateToLocalActionWithConnection:(id)arg1;
 
 @end

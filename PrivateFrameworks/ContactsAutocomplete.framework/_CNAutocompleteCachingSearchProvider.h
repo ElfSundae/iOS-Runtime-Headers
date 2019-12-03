@@ -6,6 +6,7 @@
     <CNFuture> * _calendarServerSearchFuture;
     <CNFuture> * _directoryServerSearchFuture;
     <CNFuture> * _duetSearchFuture;
+    <CNFuture> * _localExtensionSearchesFuture;
     <CNFuture> * _localSearchFuture;
     <CNFuture> * _recentsSearchFuture;
     <CNFuture> * _suggestionsSearchFuture;
@@ -21,6 +22,7 @@
 - (id)directoryServerSearch;
 - (id)duetSearch;
 - (id)initWithSearchProvider:(id)arg1;
+- (id)localExtensionSearches;
 - (id)localSearch;
 - (id)recentsSearch;
 - (id)suggestionsSearch;

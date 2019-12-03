@@ -6,6 +6,8 @@
     NSString * _alertMessage;
     NSString * _alertTitle;
     GKPlayerCredential * _credential;
+    NSString * _lastPersonalizationVersionDisplayed;
+    unsigned long long  _lastPrivacyNoticeVersionDisplayed;
     bool  _loginDisabled;
     bool  _passwordChangeRequired;
     NSURL * _passwordChangeURL;
@@ -15,6 +17,8 @@
 @property (nonatomic, retain) NSString *alertMessage;
 @property (nonatomic, retain) NSString *alertTitle;
 @property (nonatomic, retain) GKPlayerCredential *credential;
+@property (nonatomic, retain) NSString *lastPersonalizationVersionDisplayed;
+@property (nonatomic) unsigned long long lastPrivacyNoticeVersionDisplayed;
 @property (nonatomic) bool loginDisabled;
 @property (nonatomic) bool passwordChangeRequired;
 @property (nonatomic, retain) NSURL *passwordChangeURL;
@@ -22,16 +26,20 @@
 
 + (id)secureCodedPropertyKeys;
 
+- (void).cxx_destruct;
 - (id)alertMessage;
 - (id)alertTitle;
 - (id)credential;
-- (void)dealloc;
+- (id)lastPersonalizationVersionDisplayed;
+- (unsigned long long)lastPrivacyNoticeVersionDisplayed;
 - (bool)loginDisabled;
 - (bool)passwordChangeRequired;
 - (id)passwordChangeURL;
 - (void)setAlertMessage:(id)arg1;
 - (void)setAlertTitle:(id)arg1;
 - (void)setCredential:(id)arg1;
+- (void)setLastPersonalizationVersionDisplayed:(id)arg1;
+- (void)setLastPrivacyNoticeVersionDisplayed:(unsigned long long)arg1;
 - (void)setLoginDisabled:(bool)arg1;
 - (void)setPasswordChangeRequired:(bool)arg1;
 - (void)setPasswordChangeURL:(id)arg1;

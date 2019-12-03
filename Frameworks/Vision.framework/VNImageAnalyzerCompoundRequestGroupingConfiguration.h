@@ -4,15 +4,15 @@
 
 @interface VNImageAnalyzerCompoundRequestGroupingConfiguration : NSObject {
     NSMutableDictionary * _detectorConfigurationOptions;
-    NSMutableArray * _observationClasses;
+    NSMutableDictionary * _kindToOriginalRequestsMapping;
     NSMutableArray * _originalRequests;
 }
 
 - (void).cxx_destruct;
-- (void)addOriginalRequest:(id)arg1 withObservationClass:(Class)arg2;
+- (void)addOriginalRequest:(id)arg1 forKind:(unsigned long long)arg2;
 - (id)detectorConfigurationOptions;
+- (void)enumerateOriginalRequestsByKindUsingBlock:(id /* block */)arg1;
 - (id)init;
-- (id)observationClasses;
 - (id)originalRequests;
 - (bool)preferBackgroundProcessing;
 - (id)processingDevice;

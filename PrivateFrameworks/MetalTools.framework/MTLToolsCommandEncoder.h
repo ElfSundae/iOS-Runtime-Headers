@@ -24,7 +24,6 @@
 - (id)label;
 - (void)popDebugGroup;
 - (void)pushDebugGroup:(id)arg1;
-- (void)setGlobalTraceObjectID:(unsigned long long)arg1;
 - (void)setLabel:(id)arg1;
 
 @end

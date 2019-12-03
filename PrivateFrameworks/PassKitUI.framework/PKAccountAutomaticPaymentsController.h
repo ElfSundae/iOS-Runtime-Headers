@@ -14,7 +14,6 @@
     PKAccountAutomaticPaymentsDateViewController * _dateViewController;
     <PKAccountAutomaticPaymentsControllerDelegate> * _delegate;
     unsigned long long  _featureIdentifier;
-    long long  _frequencyDay;
     NSArray * _fundingSources;
     PKAccountAutomaticPaymentsHeroViewController * _heroViewController;
     PKAccountAutomaticPaymentsMinimumPaymentDisclosureViewController * _minimumPaymentDisclosureViewController;
@@ -30,6 +29,7 @@
     NSCalendar * _productCalendar;
     NSTimeZone * _productTimeZone;
     PKAccountWebServiceSchedulePaymentRequest * _schedulePaymentRequest;
+    long long  _scheduledDay;
     PKAccountAutomaticPaymentsSetupCompleteViewController * _setupCompleteViewController;
     UIViewController * _viewPaymentController;
 }
@@ -41,13 +41,13 @@
 @property (nonatomic) <PKAccountAutomaticPaymentsControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) unsigned long long featureIdentifier;
-@property (nonatomic) long long frequencyDay;
 @property (nonatomic, retain) NSArray *fundingSources;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSDate *paymentDate;
 @property (nonatomic) long long paymentFrequency;
 @property (nonatomic) long long paymentPreset;
 @property (nonatomic, readonly) long long paymentSetupContext;
+@property (nonatomic) long long scheduledDay;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -59,12 +59,12 @@
 - (void)_resetPaymentConfiguration;
 - (id)_schedulePaymentRequest;
 - (id)account;
+- (id)alertControllerForScheduledDate:(id)arg1;
 - (id)amount;
 - (id)automaticPayments;
 - (bool)canPerformScheduleAutomaticPaymentsWithPreset:(long long)arg1 frequency:(long long)arg2 amount:(id)arg3 paymentDate:(id)arg4;
 - (id)delegate;
 - (unsigned long long)featureIdentifier;
-- (long long)frequencyDay;
 - (id)fundingSources;
 - (id)initWithAccountService:(id)arg1 paymentWebService:(id)arg2 account:(id)arg3 context:(long long)arg4;
 - (long long)minimumPaymentDayForPreset:(long long)arg1;
@@ -81,13 +81,14 @@
 - (void)performScheduleAutomaticPaymentsFromViewController:(id)arg1;
 - (void)preflightWithCompletion:(id /* block */)arg1;
 - (void)presentNextViewControllerFromViewController:(id)arg1;
+- (long long)scheduledDay;
 - (void)setAmount:(id)arg1;
 - (void)setAutomaticPayments:(id)arg1;
 - (void)setDelegate:(id)arg1;
-- (void)setFrequencyDay:(long long)arg1;
 - (void)setFundingSources:(id)arg1;
 - (void)setPaymentDate:(id)arg1;
 - (void)setPaymentFrequency:(long long)arg1;
 - (void)setPaymentPreset:(long long)arg1;
+- (void)setScheduledDay:(long long)arg1;
 
 @end

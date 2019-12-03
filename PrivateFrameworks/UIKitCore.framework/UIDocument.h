@@ -14,6 +14,7 @@
         unsigned int inClose : 1; 
         unsigned int isOpen : 1; 
         unsigned int inOpen : 1; 
+        unsigned int inRevert : 1; 
         unsigned int isAutosavingBecauseOfTimer : 1; 
         unsigned int versionWithoutRecentChangesIsNotLastOpened : 1; 
         unsigned int ignoreUndoAndRedoNotifications : 1; 
@@ -25,9 +26,9 @@
         unsigned int inConflict : 1; 
         unsigned int needToStopAccessingSecurityScopedResource : 1; 
     }  _docFlags;
-    NSLock * _documentPropertyLock;
     NSObject<OS_dispatch_queue> * _fileAccessQueue;
     NSObject<OS_dispatch_semaphore> * _fileAccessSemaphore;
+    NSString * _fileBookmark;
     NSDate * _fileModificationDate;
     NSOperationQueue * _filePresenterQueue;
     NSString * _fileType;
@@ -36,8 +37,8 @@
     double  _lastSaveTime;
     NSString * _localizedName;
     NSObject<OS_dispatch_queue> * _openingQueue;
-    NSProgress * _progress;
     id  _progressSubscriber;
+    NSMutableSet * _progresses;
     NSUndoManager * _undoManager;
     id  _versionWithoutRecentChanges;
     NSMutableArray * _versions;
@@ -59,7 +60,7 @@
 @property (readonly, retain) NSOperationQueue *presentedItemOperationQueue;
 @property (readonly, copy) NSURL *presentedItemURL;
 @property (readonly, copy) NSURL *primaryPresentedItemURL;
-@property (getter=progress, setter=_setProgress:, nonatomic, retain) NSProgress *progress;
+@property (readonly) NSProgress *progress;
 @property (nonatomic, readonly) NSString *savingFileType;
 @property (readonly) Class superclass;
 @property (retain) NSUndoManager *undoManager;
@@ -100,7 +101,7 @@
 - (void)_performBlockSynchronouslyOnMainThread:(id /* block */)arg1;
 - (id)_presentableFileNameForSaveOperation:(long long)arg1 url:(id)arg2;
 - (void)_progressPublished:(id)arg1;
-- (void)_progressUnpublished;
+- (void)_progressUnpublished:(id)arg1;
 - (void)_reallyManageUserActivity;
 - (void)_registerAsFilePresenterIfNecessary;
 - (void)_releaseUndoManager;
@@ -116,7 +117,6 @@
 - (void)_setInConflict:(bool)arg1;
 - (void)_setInOpen:(bool)arg1;
 - (void)_setOpen:(bool)arg1;
-- (void)_setProgress:(id)arg1;
 - (void)_setUserActivity:(id)arg1;
 - (bool)_shouldAllowWritingInResponseToPresenterMessage;
 - (id)_titleForActivityContinuation;
@@ -128,6 +128,7 @@
 - (void)_updatePermissionsState:(bool)arg1;
 - (id)_userActivityWithActivityType:(id)arg1;
 - (id)_userInfoForActivityContinuation;
+- (id)_writingProgressForURL:(id)arg1 indeterminate:(bool)arg2;
 - (void)accommodatePresentedItemDeletionWithCompletionHandler:(id /* block */)arg1;
 - (void)accommodatePresentedSubitemDeletionAtURL:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)autosaveWithCompletionHandler:(id /* block */)arg1;

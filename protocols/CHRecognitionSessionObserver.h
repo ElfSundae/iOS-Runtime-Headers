@@ -9,7 +9,7 @@
 
 @optional
 
+- (double)preferredRecognitionResultUpdatesInterval;
 - (void)recognitionSessionDidChangeStatus:(CHRecognitionSession *)arg1;
-- (bool)wantsHighFrequencyNotifications;
 
 @end

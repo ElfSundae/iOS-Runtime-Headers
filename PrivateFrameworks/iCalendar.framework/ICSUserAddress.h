@@ -60,6 +60,7 @@
 - (id)propertiesToObscure;
 - (int)role;
 - (bool)rsvp;
+- (id)sanitizeAddressString:(id)arg1;
 - (int)scheduleagent;
 - (int)scheduleforcesend;
 - (int)schedulestatus;

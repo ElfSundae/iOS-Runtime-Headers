@@ -5,7 +5,9 @@
 @interface GEOResourceManifestServerRemoteProxy : NSObject <GEOResourceManifestServerProxy> {
     int  _activeTileGroupChangedNotificationToken;
     NSString * _authToken;
-    NSLock * _authTokenLock;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _authTokenLock;
     GEOResourceManifestConfiguration * _configuration;
     NSObject<OS_xpc_object> * _conn;
     NSObject<OS_dispatch_queue> * _connectionQueue;
@@ -47,6 +49,7 @@
 - (oneway void)resetActiveTileGroup;
 - (id)serverQueue;
 - (oneway void)setActiveTileGroupIdentifier:(id)arg1;
+- (void)setActiveTileGroupIdentifier:(id)arg1 updateType:(long long)arg2 completionHandler:(id /* block */)arg3;
 - (void)setDelegate:(id)arg1;
 - (void)setManifestToken:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)updateIfNecessary:(id /* block */)arg1;

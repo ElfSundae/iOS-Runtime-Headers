@@ -15,7 +15,7 @@
 @property (nonatomic, readonly) <PXGadget> *gadget;
 @property (nonatomic, readonly) NSString *gadgetId;
 @property (nonatomic, readonly) unsigned long long gadgetType;
-@property (nonatomic, readonly) id /* block */ navigationBlock;
+@property (nonatomic, readonly, copy) id /* block */ navigationBlock;
 @property (nonatomic, readonly) long long navigationType;
 
 - (void).cxx_destruct;

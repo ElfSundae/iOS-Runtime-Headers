@@ -3,10 +3,11 @@
  */
 
 @interface _HKMobileAssetDownloadManager : NSObject {
-    id /* block */  _downloadCompletionHandler;
-    NSDictionary * _downloadOptions;
-    NSMutableSet * _downloadingPredicateFormats;
+    NSMutableSet * _downloadingQueryParams;
     id /* block */  _errorHandler;
+    long long  _maxNumberOfRetriesAllowed;
+    id /* block */  _mobileAssetDownloadCompletionHandler;
+    MADownloadOptions * _mobileAssetDownloadOptions;
     NSString * _mobileAssetTypeName;
     NSMutableArray * _pendingOperations;
     NSObject<OS_dispatch_queue> * _queue;
@@ -15,33 +16,38 @@
     bool  _shouldQueryLocalAssetsFirst;
 }
 
-@property (nonatomic, copy) id /* block */ downloadCompletionHandler;
-@property (nonatomic, copy) NSDictionary *downloadOptions;
 @property (nonatomic, copy) id /* block */ errorHandler;
+@property (nonatomic) long long maxNumberOfRetriesAllowed;
+@property (nonatomic, copy) id /* block */ mobileAssetDownloadCompletionHandler;
+@property (nonatomic, copy) MADownloadOptions *mobileAssetDownloadOptions;
 @property (nonatomic, readonly, copy) NSString *mobileAssetTypeName;
 @property (nonatomic) bool shouldAutoDownloadRemoteAssets;
 @property (nonatomic) bool shouldQueryLocalAssetsFirst;
 
 - (void).cxx_destruct;
-- (void)_callDownloadCompletionHandlerWithAssets:(id)arg1 predicate:(id)arg2;
+- (void)_callDownloadCompletionHandlerWithAssets:(id)arg1 queryParams:(id)arg2;
 - (void)_callErrorHandlerWithError:(id)arg1;
+- (id)_errorWithDomain:(id)arg1 code:(long long)arg2;
+- (id)_generateAssetQueryFromQueryParams:(id)arg1;
 - (void)_queue_downloadAssets:(id)arg1 completion:(id /* block */)arg2;
-- (void)_queue_fetchAssetsWithLocalInformation:(bool)arg1 shouldRequery:(bool)arg2 predicate:(id)arg3;
-- (void)_queue_fetchAssetsWithPredicate:(id)arg1 onlyLocal:(bool)arg2 completion:(id /* block */)arg3;
+- (void)_queue_fetchAssetsWithLocalInformation:(bool)arg1 shouldRequery:(bool)arg2 queryParams:(id)arg3;
+- (void)_queue_fetchAssetsWithQuery:(id)arg1 onlyLocal:(bool)arg2 completion:(id /* block */)arg3;
 - (void)dealloc;
 - (id)description;
-- (void)downloadAssets:(id)arg1 completion:(id /* block */)arg2;
-- (void)downloadAssetsWithPredicate:(id)arg1;
-- (id /* block */)downloadCompletionHandler;
-- (id)downloadOptions;
+- (void)downloadAssetsWithQueryParams:(id)arg1;
+- (void)downloadMobileAssets:(id)arg1 completion:(id /* block */)arg2;
 - (id /* block */)errorHandler;
-- (void)fetchAssetsWithPredicate:(id)arg1 onlyLocal:(bool)arg2 completion:(id /* block */)arg3;
-- (id)initWithMobileAssetTypeName:(id)arg1;
+- (void)fetchAssetsWithQueryParams:(id)arg1 onlyLocal:(bool)arg2 completion:(id /* block */)arg3;
+- (id)initWithMobileAssetTypeName:(id)arg1 queue:(id)arg2;
+- (long long)maxNumberOfRetriesAllowed;
+- (id /* block */)mobileAssetDownloadCompletionHandler;
+- (id)mobileAssetDownloadOptions;
 - (id)mobileAssetTypeName;
-- (void)removeAssets:(id)arg1 completion:(id /* block */)arg2;
-- (void)setDownloadCompletionHandler:(id /* block */)arg1;
-- (void)setDownloadOptions:(id)arg1;
+- (void)removeMobileAssets:(id)arg1 completion:(id /* block */)arg2;
 - (void)setErrorHandler:(id /* block */)arg1;
+- (void)setMaxNumberOfRetriesAllowed:(long long)arg1;
+- (void)setMobileAssetDownloadCompletionHandler:(id /* block */)arg1;
+- (void)setMobileAssetDownloadOptions:(id)arg1;
 - (void)setShouldAutoDownloadRemoteAssets:(bool)arg1;
 - (void)setShouldQueryLocalAssetsFirst:(bool)arg1;
 - (bool)shouldAutoDownloadRemoteAssets;

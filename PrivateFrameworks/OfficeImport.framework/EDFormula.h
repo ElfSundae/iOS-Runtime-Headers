@@ -74,6 +74,6 @@
 - (id)warningParameter;
 - (int)warningType;
 - (bool)wrapArgumentsWithOperator:(int)arg1 argumentCount:(unsigned int)arg2 atIndex:(unsigned int)arg3;
-- (struct ChVector<XlPtg *> { struct XlPtg {} **x1; struct XlPtg {} **x2; unsigned int x3; unsigned int x4; unsigned int x5; }*)xlPtgs;
+- (struct ChVector<XlPtg *> { struct XlPtg {} **x1; struct XlPtg {} **x2; struct __compressed_pair<XlPtg **, ChAllocator<XlPtg *> > { struct XlPtg {} **x_3_1_1; } x3; }*)xlPtgs;
 
 @end

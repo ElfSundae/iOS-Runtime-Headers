@@ -2,14 +2,38 @@
    Image: /System/Library/PrivateFrameworks/Memories.framework/Memories
  */
 
-@interface MiroMusicMenuCell : MiroMemoryEditorMenuTableViewCell {
-    UIImageView * _checkmarkView;
+@interface MiroMusicMenuCell : UITableViewCell {
+    NSLayoutConstraint * _artworkLeadingConstraint;
+    UIImageView * _artworkView;
+    NSString * _detailText;
+    UILabel * _lowerDetailsLabel;
+    NSString * _secondaryDetailText;
+    UILabel * _upperDetailsLabel;
 }
 
-@property (nonatomic, retain) UIImageView *checkmarkView;
+@property (nonatomic, retain) NSLayoutConstraint *artworkLeadingConstraint;
+@property (nonatomic, retain) UIImageView *artworkView;
+@property (nonatomic, retain) NSString *detailText;
+@property (nonatomic, retain) UILabel *lowerDetailsLabel;
+@property (nonatomic, retain) NSString *secondaryDetailText;
+@property (nonatomic, retain) UILabel *upperDetailsLabel;
 
 - (void).cxx_destruct;
-- (id)checkmarkView;
-- (void)setCheckmarkView:(id)arg1;
+- (void)_updateFonts;
+- (id)artworkLeadingConstraint;
+- (id)artworkView;
+- (void)awakeFromNib;
+- (id)detailText;
+- (id)lowerDetailsLabel;
+- (void)prepareForReuse;
+- (id)secondaryDetailText;
+- (void)setArtworkLeadingConstraint:(id)arg1;
+- (void)setArtworkView:(id)arg1;
+- (void)setDetailText:(id)arg1;
+- (void)setLowerDetailsLabel:(id)arg1;
+- (void)setSecondaryDetailText:(id)arg1;
+- (void)setSelected:(bool)arg1 animated:(bool)arg2;
+- (void)setUpperDetailsLabel:(id)arg1;
+- (id)upperDetailsLabel;
 
 @end

@@ -3,6 +3,8 @@
  */
 
 @interface MCMDMConfiguration : NSObject {
+    NSString * _easEnrollmentID;
+    bool  _isUserEnrollment;
     NSObject<OS_dispatch_queue> * _memberQueue;
     int  _memberQueueAccessRights;
     NSURL * _memberQueueCheckInURL;
@@ -15,8 +17,11 @@
     bool  _memberQueueSignMessage;
     NSString * _memberQueueTopic;
     bool  _memberQueueUseDevelopmentAPNS;
+    NSString * _personaID;
 }
 
+@property (nonatomic, retain) NSString *easEnrollmentID;
+@property (nonatomic) bool isUserEnrollment;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *memberQueue;
 @property (nonatomic) int memberQueueAccessRights;
 @property (nonatomic, retain) NSURL *memberQueueCheckInURL;
@@ -29,11 +34,14 @@
 @property (nonatomic) bool memberQueueSignMessage;
 @property (nonatomic, retain) NSString *memberQueueTopic;
 @property (nonatomic) bool memberQueueUseDevelopmentAPNS;
+@property (nonatomic, retain) NSString *personaID;
 
 + (id)sharedConfiguration;
 
 - (void).cxx_destruct;
+- (id)easEnrollmentID;
 - (id)init;
+- (bool)isUserEnrollment;
 - (id)memberQueue;
 - (int)memberQueueAccessRights;
 - (id)memberQueueCheckInURL;
@@ -47,8 +55,11 @@
 - (bool)memberQueueSignMessage;
 - (id)memberQueueTopic;
 - (bool)memberQueueUseDevelopmentAPNS;
+- (id)personaID;
 - (bool)readConfigurationOutError:(id*)arg1;
 - (void)refreshDetailsFromDisk;
+- (void)setEasEnrollmentID:(id)arg1;
+- (void)setIsUserEnrollment:(bool)arg1;
 - (void)setMemberQueue:(id)arg1;
 - (void)setMemberQueueAccessRights:(int)arg1;
 - (void)setMemberQueueCheckInURL:(id)arg1;
@@ -61,5 +72,6 @@
 - (void)setMemberQueueSignMessage:(bool)arg1;
 - (void)setMemberQueueTopic:(id)arg1;
 - (void)setMemberQueueUseDevelopmentAPNS:(bool)arg1;
+- (void)setPersonaID:(id)arg1;
 
 @end

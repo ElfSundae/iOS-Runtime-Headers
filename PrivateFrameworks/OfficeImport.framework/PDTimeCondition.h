@@ -10,7 +10,7 @@
     int  mTriggerEvent;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (int)delay;
 - (id)description;
 - (bool)hasDelay;

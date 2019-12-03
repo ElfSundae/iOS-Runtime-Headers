@@ -21,8 +21,8 @@
 
 + (id)propertyIDKey;
 
-- (void)_configureFromReadingNowDetail:(id)arg1;
-- (void)configureFromCloudData:(id)arg1;
+- (void)_configureFromReadingNowDetail:(id)arg1 withMergers:(id)arg2;
+- (void)configureFromCloudData:(id)arg1 withMergers:(id)arg2;
 - (id)debugDescription;
 - (id)identifier;
 - (bool)isEqualExceptForDate:(id)arg1;

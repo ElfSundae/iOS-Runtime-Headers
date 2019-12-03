@@ -16,8 +16,10 @@
     NSString * _imageName;
     unsigned int  _keyType;
     NSString * _relatedText;
-    struct FixedPointVector<unsigned char, 4> { 
-        unsigned char _e[4]; 
+    struct Color<unsigned char, 4, geo::ColorSpace::Linear> { 
+        struct Matrix<unsigned char, 4, 1> { 
+            unsigned char _e[4]; 
+        } _backing; 
     }  _shieldColor;
     NSString * _shieldText;
     NSString * _shieldTextLocale;
@@ -26,8 +28,8 @@
 }
 
 @property (nonatomic, readonly) NSString *accessibilityText;
-@property (nonatomic, readonly) long long artworkSourceType;
-@property (nonatomic, readonly) long long artworkUseType;
+@property (nonatomic, readonly) int artworkSourceType;
+@property (nonatomic, readonly) int artworkUseType;
 @property (nonatomic, readonly) unsigned int cartoID;
 @property (nonatomic) unsigned char dataType;
 @property (nonatomic) unsigned int dataValue;
@@ -42,12 +44,11 @@
 @property (nonatomic, readonly) unsigned int iconAttributeValue;
 @property (nonatomic, readonly) <GEOTransitIconDataSource> *iconDataSource;
 @property (nonatomic, readonly) <GEOTransitShieldDataSource> *iconFallbackShieldDataSource;
-@property (nonatomic, readonly) long long iconType;
+@property (nonatomic, readonly) int iconType;
 @property (nonatomic) struct CGPoint { double x1; double x2; } imageCenter;
 @property (nonatomic, readonly) NSString *imageName;
 @property (nonatomic, readonly) unsigned int keyType;
 @property (nonatomic, retain) NSString *relatedText;
-@property (nonatomic, readonly) struct { struct { float x_1_1_1; float x_1_1_2; float x_1_1_3; float x_1_1_4; } x1; } shieldColor;
 @property (nonatomic, readonly) NSString *shieldColorString;
 @property (nonatomic, readonly) <GEOTransitShieldDataSource> *shieldDataSource;
 @property (nonatomic, readonly) NSString *shieldText;
@@ -56,6 +57,8 @@
 @property (nonatomic, readonly) unsigned int shieldType;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSString *text;
+@property (nonatomic, readonly) <GEOTransitTextDataSource> *textDataSource;
+@property (nonatomic, readonly) struct { float x1; float x2; float x3; float x4; } transitLineColor;
 
 // Image: /System/Library/PrivateFrameworks/VectorKit.framework/VectorKit
 
@@ -74,8 +77,8 @@
 - (id)initWithIconAttributeKey:(unsigned int)arg1 attributeValue:(unsigned int)arg2;
 - (id)initWithIconName:(const char *)arg1;
 - (id)initWithLabelImageKey:(const struct shared_ptr<md::LabelImageKey> { struct LabelImageKey {} *x1; struct __shared_weak_count {} *x2; }*)arg1;
-- (id)initWithShieldName:(const char *)arg1 text:(const char *)arg2 locale:(const char *)arg3 color:(struct FixedPointVector<unsigned char, 4> { unsigned char x1[4]; })arg4;
-- (id)initWithShieldText:(const char *)arg1 locale:(const char *)arg2 type:(unsigned int)arg3 color:(struct FixedPointVector<unsigned char, 4> { unsigned char x1[4]; })arg4;
+- (id)initWithShieldName:(const char *)arg1 text:(const char *)arg2 locale:(const char *)arg3 color:(struct Color<unsigned char, 4, geo::ColorSpace::Linear> { struct Matrix<unsigned char, 4, 1> { unsigned char x_1_1_1[4]; } x1; })arg4;
+- (id)initWithShieldText:(const char *)arg1 locale:(const char *)arg2 type:(unsigned int)arg3 color:(struct Color<unsigned char, 4, geo::ColorSpace::Linear> { struct Matrix<unsigned char, 4, 1> { unsigned char x_1_1_1[4]; } x1; })arg4;
 - (unsigned int)keyType;
 - (id)relatedText;
 - (void)setDataType:(unsigned char)arg1;
@@ -84,22 +87,23 @@
 - (void)setImageCenter:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setRelatedText:(id)arg1;
 - (void)setText:(id)arg1;
-- (struct { struct { float x_1_1_1; float x_1_1_2; float x_1_1_3; float x_1_1_4; } x1; })shieldColor;
 - (id)shieldText;
 - (id)shieldTextLocale;
 - (unsigned int)shieldType;
 - (id)text;
+- (struct { float x1; float x2; float x3; float x4; })transitLineColor;
 
 // Image: /System/Library/Frameworks/MapKit.framework/MapKit
 
 - (id)accessibilityText;
-- (long long)artworkSourceType;
-- (long long)artworkUseType;
+- (int)artworkSourceType;
+- (int)artworkUseType;
 - (bool)hasRoutingIncidentBadge;
 - (id)iconDataSource;
 - (id)iconFallbackShieldDataSource;
-- (long long)iconType;
+- (int)iconType;
 - (id)shieldColorString;
 - (id)shieldDataSource;
+- (id)textDataSource;
 
 @end

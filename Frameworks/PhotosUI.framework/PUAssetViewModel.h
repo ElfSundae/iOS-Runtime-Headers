@@ -14,6 +14,7 @@
     double  _contentOffsetOverrideFactor;
     long long  _displayedContentUpdateCount;
     NSObject<OS_dispatch_group> * _displayedContentUpdateGroup;
+    long long  _flippingFullSizeRenderState;
     double  _focusValue;
     bool  _forceBadgesVisible;
     long long  _importState;
@@ -41,6 +42,7 @@
     }  _preferredContentOffset;
     NSProgress * _saveProgress;
     long long  _saveState;
+    bool  _toggleCTM;
     PUBrowsingVideoPlayer * _videoPlayer;
 }
 
@@ -60,6 +62,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long displayedContentUpdateCount;
 @property (nonatomic, retain) NSObject<OS_dispatch_group> *displayedContentUpdateGroup;
+@property (nonatomic) long long flippingFullSizeRenderState;
 @property (nonatomic) double focusValue;
 @property (nonatomic) bool forceBadgesVisible;
 @property (readonly) unsigned long long hash;
@@ -80,6 +83,7 @@
 @property (nonatomic, retain) NSProgress *saveProgress;
 @property (nonatomic, readonly) long long saveState;
 @property (readonly) Class superclass;
+@property (nonatomic) bool toggleCTM;
 @property (nonatomic, readonly) PUBrowsingVideoPlayer *videoPlayer;
 
 - (void).cxx_destruct;
@@ -116,6 +120,7 @@
 - (void)didUpdateDisplayedContent;
 - (long long)displayedContentUpdateCount;
 - (id)displayedContentUpdateGroup;
+- (long long)flippingFullSizeRenderState;
 - (double)focusValue;
 - (bool)forceBadgesVisible;
 - (long long)importState;
@@ -148,6 +153,7 @@
 - (void)setContentOffsetOverrideFactor:(double)arg1;
 - (void)setDisplayedContentUpdateCount:(long long)arg1;
 - (void)setDisplayedContentUpdateGroup:(id)arg1;
+- (void)setFlippingFullSizeRenderState:(long long)arg1;
 - (void)setFocusValue:(double)arg1;
 - (void)setForceBadgesVisible:(bool)arg1;
 - (void)setImportState:(long long)arg1;
@@ -162,7 +168,9 @@
 - (void)setPreferredContentOffset:(struct CGPoint { double x1; double x2; })arg1 changeReason:(long long)arg2;
 - (void)setSaveProgress:(id)arg1;
 - (void)setSaveState:(long long)arg1;
+- (void)setToggleCTM:(bool)arg1;
 - (void)setUserTransformingTile:(bool)arg1;
+- (bool)toggleCTM;
 - (void)unregisterChangeObserver:(id)arg1;
 - (id)videoPlayer;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;

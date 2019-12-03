@@ -8,6 +8,11 @@
         unsigned long long count; 
         unsigned long long size; 
     }  _answeredQuerySendCounts;
+    struct { 
+        unsigned int *list; 
+        unsigned long long count; 
+        unsigned long long size; 
+    }  _dnsOverTCPStates;
     NSString * _domain;
     struct { 
         unsigned int *list; 
@@ -49,6 +54,8 @@
 
 @property (nonatomic, readonly) unsigned int*answeredQuerySendCounts;
 @property (nonatomic, readonly) unsigned long long answeredQuerySendCountsCount;
+@property (nonatomic, readonly) unsigned int*dnsOverTCPStates;
+@property (nonatomic, readonly) unsigned long long dnsOverTCPStatesCount;
 @property (nonatomic, retain) NSString *domain;
 @property (nonatomic, readonly) unsigned int*expiredAnswerStates;
 @property (nonatomic, readonly) unsigned long long expiredAnswerStatesCount;
@@ -71,6 +78,7 @@
 - (int)StringAsNetworkType:(id)arg1;
 - (int)StringAsRecordType:(id)arg1;
 - (void)addAnsweredQuerySendCount:(unsigned int)arg1;
+- (void)addDnsOverTCPState:(unsigned int)arg1;
 - (void)addExpiredAnswerState:(unsigned int)arg1;
 - (void)addNegAnsweredQuerySendCount:(unsigned int)arg1;
 - (void)addNegResponseLatencyMs:(unsigned int)arg1;
@@ -81,6 +89,7 @@
 - (unsigned int*)answeredQuerySendCounts;
 - (unsigned long long)answeredQuerySendCountsCount;
 - (void)clearAnsweredQuerySendCounts;
+- (void)clearDnsOverTCPStates;
 - (void)clearExpiredAnswerStates;
 - (void)clearNegAnsweredQuerySendCounts;
 - (void)clearNegResponseLatencyMs;
@@ -92,6 +101,9 @@
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (unsigned int)dnsOverTCPStateAtIndex:(unsigned long long)arg1;
+- (unsigned int*)dnsOverTCPStates;
+- (unsigned long long)dnsOverTCPStatesCount;
 - (id)domain;
 - (unsigned int)expiredAnswerStateAtIndex:(unsigned long long)arg1;
 - (unsigned int*)expiredAnswerStates;
@@ -117,6 +129,7 @@
 - (unsigned int)responseLatencyMsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)responseLatencyMsCount;
 - (void)setAnsweredQuerySendCounts:(unsigned int*)arg1 count:(unsigned long long)arg2;
+- (void)setDnsOverTCPStates:(unsigned int*)arg1 count:(unsigned long long)arg2;
 - (void)setDomain:(id)arg1;
 - (void)setExpiredAnswerStates:(unsigned int*)arg1 count:(unsigned long long)arg2;
 - (void)setHasNetworkType:(bool)arg1;

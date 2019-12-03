@@ -14,6 +14,7 @@
     _UIProgressView * _progressView;
     NSTimer * _showTimer;
     NSProgress * _urlProgress;
+    UIWindowScene * _weakScene;
     UIWindow * _window;
 }
 
@@ -30,6 +31,7 @@
 @property (nonatomic, retain) NSProgress *urlProgress;
 @property (getter=_window, setter=_setWindow:, nonatomic, retain) UIWindow *window;
 
++ (id)instanceForScene:(id)arg1;
 + (id)sharedInstance;
 
 - (void).cxx_destruct;

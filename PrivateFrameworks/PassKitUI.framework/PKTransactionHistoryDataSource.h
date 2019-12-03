@@ -4,6 +4,8 @@
 
 @interface PKTransactionHistoryDataSource : NSObject <PKDashboardDataSource, PKDashboardTransactionFetcherDelegate> {
     PKAccount * _account;
+    NSArray * _actionItems;
+    PKInstallmentPlan * _associatedInstallmentPlan;
     CNContact * _contact;
     bool  _contactLoaded;
     PKPeerPaymentContactResolver * _contactResolver;

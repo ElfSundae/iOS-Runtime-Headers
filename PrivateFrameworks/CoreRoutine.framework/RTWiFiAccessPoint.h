@@ -24,8 +24,11 @@
 - (id)date;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithMac:(id)arg1 rssi:(long long)arg2 channel:(long long)arg3 age:(double)arg4 date:(id)arg5;
+- (bool)isEqual:(id)arg1;
 - (id)mac;
 - (long long)rssi;
 

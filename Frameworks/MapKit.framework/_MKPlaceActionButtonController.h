@@ -30,6 +30,7 @@
 - (id)buttonTitle;
 - (id)delegate;
 - (id)infoCardChildPossibleActions;
+- (id)infoCardChildUnactionableUIElements;
 - (id)initWithTitle:(id)arg1 subTitle:(id)arg2 analyticsAction:(int)arg3 selectedBlock:(id /* block */)arg4;
 - (id)initWithTitle:(id)arg1 subTitle:(id)arg2 selectedBlock:(id /* block */)arg3;
 - (void)setDelegate:(id)arg1;

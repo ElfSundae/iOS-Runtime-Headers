@@ -18,12 +18,15 @@
 
 - (void).cxx_destruct;
 - (void)applyToStatistic:(id)arg1;
+- (id)currentKeyboardState;
 - (void)encodeWithCoder:(id)arg1;
 - (bool)forwardAdjustment;
 - (int)granularity;
 - (id)initWithCoder:(id)arg1;
 - (id)keyboardConfig;
 - (id)keyboardState;
+- (void)removeContextFromKeyboardState;
+- (void)replaceDocumentState:(id)arg1;
 - (void)setForwardAdjustment:(bool)arg1;
 - (void)setGranularity:(int)arg1;
 - (void)setKeyboardConfig:(id)arg1;

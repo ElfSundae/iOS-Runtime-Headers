@@ -18,8 +18,6 @@
     int  _state;
 }
 
-+ (void)initialize;
-
 - (void)_alreadyOnQueueEmitAllObjects;
 - (void)_alreadyOnQueueEmitObject;
 - (void)_mergeChanges;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/iTunesCloud.framework/iTunesCloud
  */
 
-@interface ICUserIdentity : NSObject <NSCopying, NSSecureCoding> {
+@interface ICUserIdentity : NSObject <ML3AccountInformationProviding, NSCopying, NSSecureCoding> {
     NSNumber * _DSID;
     bool  _allowsAccountEstablishment;
     bool  _allowsDelegation;
@@ -12,11 +12,18 @@
 }
 
 @property (nonatomic, readonly, copy) NSNumber *DSID;
+@property (nonatomic, readonly, copy) NSString *accountDSID;
 @property (nonatomic, readonly) bool allowsAccountEstablishment;
 @property (nonatomic, readonly) bool allowsDelegation;
 @property (nonatomic, readonly) unsigned long long creationTime;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly, copy) NSString *deviceIdentifier;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (nonatomic, readonly) long long type;
+
+// Image: /System/Library/PrivateFrameworks/iTunesCloud.framework/iTunesCloud
 
 + (id)activeAccount;
 + (id)activeLockerAccount;
@@ -29,6 +36,8 @@
 
 - (void).cxx_destruct;
 - (id)DSID;
+- (void)_resolveDSIDForEncoding;
+- (void)_setResolvedDSID:(id)arg1;
 - (bool)allowsAccountEstablishment;
 - (bool)allowsDelegation;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -44,5 +53,9 @@
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToIdentity:(id)arg1;
 - (long long)type;
+
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
+- (id)accountDSID;
 
 @end

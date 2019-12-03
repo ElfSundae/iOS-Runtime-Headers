@@ -45,6 +45,7 @@
 - (void)setUsesWideImage:(bool)arg1;
 - (id)symbolView;
 - (id)titleLabel;
+- (void)traitCollectionDidChange:(id)arg1;
 - (bool)usesWideImage;
 
 @end

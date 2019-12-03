@@ -22,12 +22,12 @@
 - (id)_folderNameForReferenceResource:(id)arg1 adjustment:(id)arg2;
 - (bool)_isUnsupportedFormatError:(id)arg1;
 - (id)_tempFolderURLForGeneratedResourcesWithReferenceResource:(id)arg1 adjustment:(id)arg2;
-- (void)_updateChange:(id*)arg1 fromOldChange:(id)arg2 withResources:(id)arg3;
+- (void)_updateChange:(id*)arg1 fromOldChange:(id)arg2 withResources:(id)arg3 includeThumbnail:(bool)arg4;
 - (id)cacheURL;
 - (id)cachedResourcesForReferenceResource:(id)arg1 adjustment:(id)arg2;
 - (Class)derivativeGeneratorClass;
 - (void)discardCache;
-- (void)generateDerivativesForChange:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)generateDerivativesForChange:(id)arg1 derivativesFilter:(id)arg2 completionHandler:(id /* block */)arg3;
 - (id)initWithCacheURL:(id)arg1;
 - (void)noteGeneratedResouces:(id)arg1 haveBeenGeneratedForReferenceResource:(id)arg2 adjustment:(id)arg3;
 - (void)setDerivativeGeneratorClass:(Class)arg1;

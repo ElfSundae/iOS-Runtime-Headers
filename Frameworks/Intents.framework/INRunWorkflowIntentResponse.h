@@ -2,15 +2,14 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface INRunWorkflowIntentResponse : INIntentResponse <INRunWorkflowIntentResponseExport> {
-    _INPBRunWorkflowIntentResponse * _responseMessagePBRepresentation;
-}
+@interface INRunWorkflowIntentResponse : INIntentResponse <INRunWorkflowIntentResponseExport>
 
 @property (nonatomic, readonly) long long code;
 @property (nonatomic, copy) NSNumber *continueRunning;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, copy) NSNumber *requestsIntentExecution;
 @property (nonatomic, copy) NSArray *steps;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) INArchivedObject *underlyingIntent;
@@ -24,11 +23,10 @@
 + (int)_typeFromCode:(long long)arg1;
 + (bool)supportsSecureCoding;
 
-- (void).cxx_destruct;
+- (long long)_codeWithName:(id)arg1;
 - (id)_dictionaryRepresentation;
 - (id)_initWithCode:(long long)arg1 userActivity:(id)arg2;
 - (long long)_intentResponseCode;
-- (id)_responseMessagePBRepresentation;
 - (bool)_shouldForwardIntentToApp;
 - (long long)code;
 - (id)continueRunning;
@@ -38,8 +36,10 @@
 - (id)initWithCode:(long long)arg1 userActivity:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)propertiesByName;
+- (id)requestsIntentExecution;
 - (void)setContinueRunning:(id)arg1;
 - (void)setPropertiesByName:(id)arg1;
+- (void)setRequestsIntentExecution:(id)arg1;
 - (void)setSteps:(id)arg1;
 - (void)setUnderlyingIntent:(id)arg1;
 - (void)setUnderlyingIntentResponse:(id)arg1;

@@ -4,13 +4,27 @@
 
 @interface GEORPProblem : PBCodable <NSCopying> {
     struct { 
-        unsigned int problemType : 1; 
-        unsigned int protocolVersion : 1; 
-    }  _has;
+        unsigned int has_problemType : 1; 
+        unsigned int has_protocolVersion : 1; 
+        unsigned int read_userPaths : 1; 
+        unsigned int read_problemContext : 1; 
+        unsigned int read_problemCorrections : 1; 
+        unsigned int wrote_userPaths : 1; 
+        unsigned int wrote_problemContext : 1; 
+        unsigned int wrote_problemCorrections : 1; 
+        unsigned int wrote_problemType : 1; 
+        unsigned int wrote_protocolVersion : 1; 
+    }  _flags;
     GEORPProblemContext * _problemContext;
     GEORPProblemCorrections * _problemCorrections;
     int  _problemType;
     unsigned int  _protocolVersion;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     struct { 
         int *list; 
         unsigned long long count; 
@@ -29,9 +43,15 @@
 @property (nonatomic, readonly) int*userPaths;
 @property (nonatomic, readonly) unsigned long long userPathsCount;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsProblemType:(id)arg1;
 - (int)StringAsUserPaths:(id)arg1;
+- (void)_addNoFlagsUserPath:(int)arg1;
+- (void)_readProblemContext;
+- (void)_readProblemCorrections;
+- (void)_readUserPaths;
 - (void)addUserPath:(int)arg1;
 - (void)clearUserPaths;
 - (void)copyTo:(id)arg1;
@@ -44,6 +64,8 @@
 - (bool)hasProblemType;
 - (bool)hasProtocolVersion;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (id)initWithMerchantIndustryCode:(long long)arg1 mapsIdentifier:(unsigned long long)arg2 merchantName:(id)arg3 merchantRawName:(id)arg4 merchantIndustryCategory:(id)arg5 merchantURL:(id)arg6 merchantFormattedAddress:(id)arg7 transactionTime:(double)arg8 transactionType:(id)arg9 transactionLocation:(struct { double x1; double x2; })arg10;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
@@ -52,6 +74,7 @@
 - (int)problemType;
 - (id)problemTypeAsString:(int)arg1;
 - (unsigned int)protocolVersion;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasProblemType:(bool)arg1;
 - (void)setHasProtocolVersion:(bool)arg1;

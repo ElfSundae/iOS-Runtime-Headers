@@ -4,10 +4,10 @@
 
 @interface HMDSoftwareUpdateModel : HMDBackingStoreModelObject
 
-@property (nonatomic, retain) HMSoftwareUpdateDocumentationMetadata *documentationMetadata;
-@property (nonatomic, retain) NSNumber *downloadSize;
-@property (nonatomic, retain) HMFSoftwareVersion *softwareVersion;
-@property (nonatomic, retain) NSNumber *state;
+@property (nonatomic, copy) HMSoftwareUpdateDocumentationMetadata *documentationMetadata;
+@property (nonatomic, copy) NSNumber *downloadSize;
+@property (nonatomic, copy) HMFSoftwareVersion *softwareVersion;
+@property (nonatomic, copy) NSNumber *state;
 
 + (id)properties;
 

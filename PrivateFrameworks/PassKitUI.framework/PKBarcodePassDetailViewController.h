@@ -12,16 +12,23 @@
     <PKPassDeleteHandler> * _deleteOverrider;
     bool  _didRampScreenBrightness;
     PKPassDisplayProfile * _displayProfile;
-    NSMutableDictionary * _fieldCellHeightsByRow;
     NSMutableDictionary * _fieldCellsByRow;
-    bool  _forcedRefresh;
-    double  _forcedTopContentInset;
     struct UIEdgeInsets { 
         double top; 
         double left; 
         double bottom; 
         double right; 
     }  _headerContentInset;
+    struct CGRect { 
+        struct CGPoint { 
+            double x; 
+            double y; 
+        } origin; 
+        struct CGSize { 
+            double width; 
+            double height; 
+        } size; 
+    }  _headerFrame;
     double  _headerHeight;
     UIView * _headerView;
     bool  _isBluetoothEnabled;
@@ -29,8 +36,6 @@
     bool  _isWifiEnabled;
     PKLinkedAppView * _linkedApp;
     UIView * _locationHelpView;
-    bool  _navigationBarVisible;
-    bool  _navigationControllerHidesShadow;
     PKPass * _pass;
     PKPassHeaderView * _passHeaderView;
     UITableViewCell * _personalizePassCell;
@@ -40,15 +45,12 @@
     }  _previousLayoutTableViewBoundsSize;
     UIRefreshControl * _refreshControl;
     NSObject<OS_dispatch_source> * _refreshTimeout;
-    UITableViewCell * _shareCell;
     bool  _showDoneButton;
     PKSettingTableCell * _showInLockScreenCell;
     PKSettingTableCell * _showNotificationsCell;
     bool  _showsLinks;
     unsigned long long  _suppressedContent;
-    UISegmentedControl * _tabBar;
-    double  _tabBarHeight;
-    NSArray * _tabBarSegments;
+    double  _titleOpacity;
     unsigned char  _visiblityState;
 }
 
@@ -69,7 +71,7 @@
 - (id)_automaticSelectionCell;
 - (id)_barcodeCell;
 - (void)_bluetoothPowerChanged:(id)arg1;
-- (id)_createTabBarWithSelectedIndex:(long long)arg1;
+- (bool)_canShowWhileLocked;
 - (id)_deleteCell;
 - (void)_deletePass;
 - (void)_done:(id)arg1;
@@ -87,18 +89,14 @@
 - (void)_refreshFinished:(bool)arg1;
 - (id)_relevantBuckets;
 - (void)_reloadPassAndView;
-- (void)_reloadTitle;
 - (unsigned long long)_settingForRow:(unsigned long long)arg1;
 - (bool)_settingsAvailable;
 - (id)_settingsCellForRow:(unsigned long long)arg1;
-- (id)_shareCell;
 - (void)_sharePass;
-- (void)_tabBarSegmentChanged:(id)arg1;
-- (double)_titleOpacityForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 lowerBoundary:(double)arg2 higherBoundary:(double)arg3;
-- (bool)_updateHeaderHeightDeterminingLayout:(bool)arg1;
+- (bool)_updateHeaderHeight;
+- (void)_updateNavigationItem;
 - (void)_updatePassProperties;
-- (void)_updateTabBar;
-- (void)_updateTabBarWithSegments:(id)arg1;
+- (void)_updateStandardAppearance:(id)arg1;
 - (void)_wifiChanged:(id)arg1;
 - (void)dealloc;
 - (id)deleteOverrider;
@@ -110,16 +108,12 @@
 - (void)loadView;
 - (id)pass;
 - (void)passHeaderViewDidChangePass:(id)arg1;
-- (double)pkui_preferredNavigationBarBackgroundOpacity;
-- (bool)pkui_prefersNavigationBarShadowHidden;
 - (void)pushSettingsFromViewToModel;
 - (void)refreshControlValueChanged:(id)arg1;
 - (bool)reloadData;
 - (void)reloadSection:(unsigned long long)arg1;
 - (void)reloadSections:(id)arg1;
 - (long long)rowAnimationForReloadingSection:(unsigned long long)arg1;
-- (void)scrollViewDidEndDecelerating:(id)arg1;
-- (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(bool)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint { double x1; double x2; })arg2 targetContentOffset:(inout struct CGPoint { double x1; double x2; }*)arg3;
 - (void)setDeleteOverrider:(id)arg1;
@@ -141,10 +135,9 @@
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3;
-- (void)viewDidAppear:(bool)arg1;
-- (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;
+- (void)viewWillLayoutSubviews;
 
 @end

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PassKitCore.framework/PassKitCore
  */
 
-@interface PKPaymentTransactionRewards : NSObject <NSSecureCoding, PKCloudStoreCoding> {
+@interface PKPaymentTransactionRewards : NSObject <NSCopying, NSSecureCoding, PKCloudStoreCoding> {
     NSArray * _rewardsItems;
 }
 
@@ -12,6 +12,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (void)encodeServerAndDeviceDataWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCloudStoreCoder:(id)arg1;

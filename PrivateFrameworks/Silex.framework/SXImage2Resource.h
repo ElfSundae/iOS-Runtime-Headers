@@ -6,8 +6,6 @@
     bool  wideColorSpace;
 }
 
-+ (id)typeString;
-
 - (bool)wideColorSpace;
 
 @end

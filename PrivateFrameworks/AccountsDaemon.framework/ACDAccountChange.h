@@ -8,9 +8,9 @@
     ACAccount * _oldAccount;
 }
 
-@property (nonatomic, retain) ACAccount *account;
-@property (nonatomic) int changeType;
-@property (nonatomic, retain) ACAccount *oldAccount;
+@property (nonatomic, readonly) ACAccount *account;
+@property (nonatomic, readonly) int changeType;
+@property (nonatomic, readonly) ACAccount *oldAccount;
 
 + (id)changeWithChangeType:(int)arg1 account:(id)arg2 oldAccount:(id)arg3;
 
@@ -19,8 +19,5 @@
 - (int)changeType;
 - (id)initWithChangeType:(int)arg1 account:(id)arg2 oldAccount:(id)arg3;
 - (id)oldAccount;
-- (void)setAccount:(id)arg1;
-- (void)setChangeType:(int)arg1;
-- (void)setOldAccount:(id)arg1;
 
 @end

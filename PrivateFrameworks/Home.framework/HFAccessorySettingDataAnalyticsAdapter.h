@@ -11,7 +11,7 @@
 
 - (void)configureSection:(id)arg1 forEntity:(id)arg2;
 - (id)customizeSections:(id)arg1 forEntity:(id)arg2;
-- (id)initWithMediaProfileContainer:(id)arg1 mode:(unsigned long long)arg2;
+- (id)initWithHomeKitSettingsVendor:(id)arg1 mode:(unsigned long long)arg2;
 - (bool)shouldShowSettingsEntity:(id)arg1;
 
 @end

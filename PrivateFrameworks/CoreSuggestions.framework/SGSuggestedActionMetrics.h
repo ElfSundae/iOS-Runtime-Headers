@@ -5,6 +5,7 @@
 @interface SGSuggestedActionMetrics : NSObject {
     SGMContactConfirmed * _contactConfirmed;
     SGMContactDetailConfirmed * _contactDetailConfirmed;
+    SGMContactDetailConversationTurn * _contactDetailConversationTurn;
     SGMContactDetailRejected * _contactDetailRejected;
     SGMContactDetailUsed * _contactDetailUsed;
     SGMContactInBanner * _contactInBanner;
@@ -18,6 +19,7 @@
 
 @property (nonatomic, retain) SGMContactConfirmed *contactConfirmed;
 @property (nonatomic, retain) SGMContactDetailConfirmed *contactDetailConfirmed;
+@property (nonatomic, retain) SGMContactDetailConversationTurn *contactDetailConversationTurn;
 @property (nonatomic, retain) SGMContactDetailRejected *contactDetailRejected;
 @property (nonatomic, retain) SGMContactDetailUsed *contactDetailUsed;
 @property (nonatomic, retain) SGMContactInBanner *contactInBanner;
@@ -34,13 +36,15 @@
 + (void)recordBannerRejectedWithContact:(id)arg1 inApp:(struct SGMBannerDisplayApp_ { unsigned long long x1; })arg2;
 + (void)recordBannerRejectedWithEvent:(id)arg1 inApp:(struct SGMBannerDisplayApp_ { unsigned long long x1; })arg2;
 + (void)recordBannerShownWithContacts:(id)arg1 events:(id)arg2 inApp:(struct SGMBannerDisplayApp_ { unsigned long long x1; })arg3;
-+ (void)recordContactDetailEngagementWithResolution:(long long)arg1 detailType:(struct SGMContactDetailType_ { unsigned long long x1; })arg2 extractionType:(unsigned long long)arg3;
++ (void)recordContactDetailEngagementWithResolution:(long long)arg1 detailType:(struct SGMContactDetailType_ { unsigned long long x1; })arg2 extractionType:(unsigned long long)arg3 modelVersion:(id)arg4;
 + (void)recordContactDetailUsage:(id)arg1 withApp:(id)arg2;
-+ (void)recordMaybeContactFrom:(unsigned long long)arg1;
++ (void)recordConversationTurnWithContact:(id)arg1 received:(bool)arg2 curated:(bool)arg3 throughApp:(id)arg4 withDetailName:(id)arg5 withDetailExtraction:(id)arg6;
++ (void)recordMaybeContactFrom:(unsigned long long)arg1 withVersion:(id)arg2;
 
 - (void).cxx_destruct;
 - (id)contactConfirmed;
 - (id)contactDetailConfirmed;
+- (id)contactDetailConversationTurn;
 - (id)contactDetailRejected;
 - (id)contactDetailUsed;
 - (id)contactInBanner;
@@ -52,6 +56,7 @@
 - (id)maybeInformationShown;
 - (void)setContactConfirmed:(id)arg1;
 - (void)setContactDetailConfirmed:(id)arg1;
+- (void)setContactDetailConversationTurn:(id)arg1;
 - (void)setContactDetailRejected:(id)arg1;
 - (void)setContactDetailUsed:(id)arg1;
 - (void)setContactInBanner:(id)arg1;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UIFoundation.framework/UIFoundation
  */
 
-@interface NSLayoutManager : NSObject <NSCoding> {
+@interface NSLayoutManager : NSObject <NSSecureCoding> {
     NSFont * _cachedFont;
     struct _NSRange { 
         unsigned long long location; 
@@ -19,6 +19,8 @@
     }  _cachedLocationNominalGlyphRange;
     struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } * _cachedRectArray;
     unsigned long long  _cachedRectArrayCapacity;
+    NSTextContainer * _cachedTextContainer;
+    bool  _cachedTextContainerIsVertical;
     NSRunStorage * _containerRuns;
     NSStorage * _containerUsedRects;
     struct _NSRange { 
@@ -77,7 +79,7 @@
     NSTypesetter * _typesetter;
 }
 
-@property (nonatomic) bool EKUI_limitsLayoutForSuspiciousContents;
+@property (nonatomic) bool CUIK_limitsLayoutForSuspiciousContents;
 @property (nonatomic) bool allowsNonContiguousLayout;
 @property bool allowsOriginalFontMetricsOverride;
 @property (nonatomic) <NSLayoutManagerDelegate> *delegate;
@@ -85,7 +87,6 @@
 @property (nonatomic, readonly) NSTextContainer *extraLineFragmentTextContainer;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } extraLineFragmentUsedRect;
 @property (nonatomic, readonly) bool hasNonContiguousLayout;
-@property (nonatomic) double hyphenationFactor;
 @property bool limitsLayoutForSuspiciousContents;
 @property (nonatomic, readonly) unsigned long long numberOfGlyphs;
 @property (retain) NSParagraphArbitrator *paragraphArbitrator;
@@ -95,6 +96,7 @@
 @property (copy) CUIStyleEffectConfiguration *styleEffectConfiguration;
 @property (nonatomic, readonly) NSArray *textContainers;
 @property (nonatomic) NSTextStorage *textStorage;
+@property bool usesDefaultHyphenation;
 @property (nonatomic) bool usesFontLeading;
 
 // Image: /System/Library/PrivateFrameworks/UIFoundation.framework/UIFoundation
@@ -107,6 +109,7 @@
 + (bool)_showsInvisibleCharacters;
 + (bool)_usesScreenFonts;
 + (void)initialize;
++ (bool)supportsSecureCoding;
 
 - (unsigned short)CGGlyphAtIndex:(unsigned long long)arg1;
 - (unsigned short)CGGlyphAtIndex:(unsigned long long)arg1 isValidIndex:(bool*)arg2;
@@ -195,11 +198,13 @@
 - (void)_recalculateUsageForTextContainerAtIndex:(unsigned long long)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)_rectArrayForRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 withinSelectionRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 rangeIsCharRange:(bool)arg3 singleRectOnly:(bool)arg4 fullLineRectsOnly:(bool)arg5 inTextContainer:(id)arg6 rectCount:(unsigned long long*)arg7 rangeWithinContainer:(struct _NSRange { unsigned long long x1; unsigned long long x2; }*)arg8 glyphsDrawOutsideLines:(bool*)arg9;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)_rectArrayForRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 withinSelectionRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 rangeIsCharRange:(bool)arg3 singleRectOnly:(bool)arg4 fullLineRectsOnly:(bool)arg5 inTextContainer:(id)arg6 rectCount:(unsigned long long*)arg7 rangeWithinContainer:(struct _NSRange { unsigned long long x1; unsigned long long x2; }*)arg8 glyphsDrawOutsideLines:(bool*)arg9 rectArray:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg10 rectArrayCapacity:(unsigned long long)arg11;
+- (void)_resetCachedTextContainer;
 - (void)_resizeTextViewForTextContainer:(id)arg1;
 - (id)_rowArrayCache;
 - (id)_selectedRanges;
 - (id)_selectionRangesForInsertionPointRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (void)_setAlwaysDrawsActive:(bool)arg1;
+- (void)_setCachedTextContainer:(id)arg1 isVertical:(bool)arg2;
 - (void)_setCurrentAttachmentRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 index:(unsigned long long)arg2;
 - (void)_setDrawsDebugBaselines:(bool)arg1;
 - (void)_setDrawsUnderlinesLikeWebKit:(bool)arg1;
@@ -214,6 +219,7 @@
 - (void)_setRowArrayCache:(id)arg1;
 - (void)_setTextContainer:(id)arg1 forGlyphRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (void)_showAttachmentCell:(id)arg1 inRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 characterIndex:(unsigned long long)arg3;
+- (void)_showCGGlyphs:(const unsigned short*)arg1 positions:(const struct CGPoint { double x1; double x2; }*)arg2 count:(long long)arg3 font:(id)arg4 textMatrix:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg5 attributes:(id)arg6 inContext:(struct CGContext { }*)arg7;
 - (void)_simpleDeleteGlyphsInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (void)_simpleInsertGlyph:(unsigned int)arg1 atGlyphIndex:(unsigned long long)arg2 characterIndex:(unsigned long long)arg3 elastic:(bool)arg4;
 - (unsigned long long)_smallEncodingGlyphIndexForCharacterIndex:(unsigned long long)arg1 startOfRange:(bool)arg2 okToFillHoles:(bool)arg3;
@@ -270,6 +276,7 @@
 - (id)extraLineFragmentTextContainer;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })extraLineFragmentUsedRect;
 - (void)fillBackgroundRectArray:(const struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg1 count:(unsigned long long)arg2 forCharacterRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3 color:(id)arg4;
+- (void)fillMarkedBackgroundRectArray:(const struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg1 count:(unsigned long long)arg2 forCharacterRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3 color:(id)arg4;
 - (void)finalize;
 - (unsigned long long)firstUnlaidCharacterIndex;
 - (unsigned long long)firstUnlaidGlyphIndex;
@@ -377,13 +384,14 @@
 - (void)setTypesetterBehavior:(long long)arg1;
 - (void)setUnderlineColorForSpelling:(id)arg1;
 - (void)setUnderlineColorForTextAlternatives:(id)arg1;
+- (void)setUsesDefaultHyphenation:(bool)arg1;
 - (void)setUsesFontLeading:(bool)arg1;
 - (void)setUsesScreenFonts:(bool)arg1;
 - (void)setViewProvider:(id)arg1 forTextAttachment:(id)arg2 characterIndex:(unsigned long long)arg3;
 - (void)showAttachment:(id)arg1 inRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 textContainer:(id)arg3 characterIndex:(unsigned long long)arg4;
 - (void)showAttachmentCell:(id)arg1 inRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 characterIndex:(unsigned long long)arg3;
 - (void)showCGGlyphs:(const unsigned short*)arg1 positions:(const struct CGPoint { double x1; double x2; }*)arg2 count:(unsigned long long)arg3 font:(id)arg4 matrix:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg5 attributes:(id)arg6 inContext:(struct CGContext { }*)arg7;
-- (void)showCGGlyphs:(const unsigned short*)arg1 positions:(const struct CGPoint { double x1; double x2; }*)arg2 count:(unsigned long long)arg3 font:(id)arg4 textMatrix:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg5 attributes:(id)arg6 inContext:(struct CGContext { }*)arg7;
+- (void)showCGGlyphs:(const unsigned short*)arg1 positions:(const struct CGPoint { double x1; double x2; }*)arg2 count:(long long)arg3 font:(id)arg4 textMatrix:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg5 attributes:(id)arg6 inContext:(struct CGContext { }*)arg7;
 - (bool)showsControlCharacters;
 - (bool)showsInvisibleCharacters;
 - (void)strikethroughGlyphRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 strikethroughType:(long long)arg2 lineFragmentRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3 lineFragmentGlyphRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg4 containerOrigin:(struct CGPoint { double x1; double x2; })arg5;
@@ -409,14 +417,15 @@
 - (id)underlineColorForTextAlternatives;
 - (void)underlineGlyphRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 underlineType:(long long)arg2 lineFragmentRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3 lineFragmentGlyphRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg4 containerOrigin:(struct CGPoint { double x1; double x2; })arg5;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })usedRectForTextContainer:(id)arg1;
+- (bool)usesDefaultHyphenation;
 - (bool)usesFontLeading;
 - (bool)usesScreenFonts;
 - (id)viewProviderForTextAttachment:(id)arg1 characterIndex:(unsigned long long)arg2;
 
-// Image: /System/Library/Frameworks/EventKitUI.framework/EventKitUI
+// Image: /System/Library/PrivateFrameworks/CalendarUIKit.framework/CalendarUIKit
 
-- (bool)EKUI_limitsLayoutForSuspiciousContents;
-- (void)setEKUI_limitsLayoutForSuspiciousContents:(bool)arg1;
+- (bool)CUIK_limitsLayoutForSuspiciousContents;
+- (void)setCUIK_limitsLayoutForSuspiciousContents:(bool)arg1;
 
 // Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 

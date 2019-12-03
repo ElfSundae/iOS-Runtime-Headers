@@ -24,6 +24,7 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)delegate;
+- (void)expectedProgressTargetChanged;
 - (id)initWithTask:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3;
 - (void)resume;
 - (void)setBytesPerSecondLimit:(long long)arg1;

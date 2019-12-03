@@ -20,6 +20,9 @@
     NSString * _hostApplicationIdentifier;
     bool  _ignoreProximity;
     PKRemotePaymentInstrument * _initialRemotePaymentInstrument;
+    NSDecimalNumber * _installmentAuthorizationAmount;
+    NSString * _installmentBindToken;
+    NSString * _installmentGroupIdentifier;
     PKPaymentInstructions * _instructions;
     NSMapTable * _instrumentToDeviceMap;
     NSMutableArray * _items;
@@ -39,6 +42,7 @@
     PKPeerPaymentService * _peerPaymentService;
     NSArray * _pendingTransactions;
     PKPaymentOptionsRecents * _recents;
+    NSString * _relevantPassUniqueID;
     PKRemoteDevice * _remoteDevice;
     NSMutableDictionary * _remoteDeviceToAcceptedInstruments;
     PKRemotePaymentInstrument * _remotePaymentInstrument;
@@ -76,6 +80,9 @@
 @property (nonatomic, retain) NSString *hostAppLocalizedName;
 @property (nonatomic, retain) NSString *hostApplicationIdentifier;
 @property (nonatomic, retain) PKRemotePaymentInstrument *initialRemotePaymentInstrument;
+@property (nonatomic, retain) NSDecimalNumber *installmentAuthorizationAmount;
+@property (nonatomic, copy) NSString *installmentBindToken;
+@property (nonatomic, copy) NSString *installmentGroupIdentifier;
 @property (nonatomic, retain) PKPaymentInstructions *instructions;
 @property (nonatomic, readonly) NSArray *items;
 @property (nonatomic, retain) PKPassLibrary *library;
@@ -96,6 +103,7 @@
 @property (nonatomic, retain) NSArray *pendingTransactions;
 @property (nonatomic, readonly) bool pinRequired;
 @property (nonatomic, retain) PKPaymentOptionsRecents *recents;
+@property (nonatomic, retain) NSString *relevantPassUniqueID;
 @property (nonatomic, retain) PKRemoteDevice *remoteDevice;
 @property (nonatomic, readonly) NSArray *remoteDevices;
 @property (nonatomic, retain) PKRemotePaymentInstrument *remotePaymentInstrument;
@@ -118,6 +126,7 @@
 
 - (void).cxx_destruct;
 - (id)_defaultSelectedPaymentApplicationForPaymentApplications:(id)arg1;
+- (void)_didSetItemForClass:(Class)arg1;
 - (long long)_displayOrderForDataType:(long long)arg1;
 - (void)_ensureItemForClass:(Class)arg1;
 - (void)_ensureItems;
@@ -161,6 +170,9 @@
 - (id)init;
 - (id)initWithMode:(long long)arg1;
 - (id)initialRemotePaymentInstrument;
+- (id)installmentAuthorizationAmount;
+- (id)installmentBindToken;
+- (id)installmentGroupIdentifier;
 - (id)instructions;
 - (bool)isShippingEditable;
 - (bool)isValidWithError:(id*)arg1;
@@ -185,6 +197,7 @@
 - (id)pendingTransactions;
 - (bool)pinRequired;
 - (id)recents;
+- (id)relevantPassUniqueID;
 - (id)remoteDevice;
 - (id)remoteDevices;
 - (id)remotePaymentInstrument;
@@ -197,6 +210,9 @@
 - (void)setHostAppLocalizedName:(id)arg1;
 - (void)setHostApplicationIdentifier:(id)arg1;
 - (void)setInitialRemotePaymentInstrument:(id)arg1;
+- (void)setInstallmentAuthorizationAmount:(id)arg1;
+- (void)setInstallmentBindToken:(id)arg1;
+- (void)setInstallmentGroupIdentifier:(id)arg1;
 - (void)setInstructions:(id)arg1;
 - (void)setLibrary:(id)arg1;
 - (void)setPass:(id)arg1;
@@ -216,6 +232,7 @@
 - (void)setPeerPaymentService:(id)arg1;
 - (void)setPendingTransactions:(id)arg1;
 - (void)setRecents:(id)arg1;
+- (void)setRelevantPassUniqueID:(id)arg1;
 - (void)setRemoteDevice:(id)arg1;
 - (void)setRemotePaymentInstrument:(id)arg1;
 - (void)setRemotePaymentInstrument:(id)arg1 withSelectedPaymentApplication:(id)arg2;
@@ -254,6 +271,7 @@
 // Image: /System/Library/PrivateFrameworks/NanoPassKit.framework/NanoPassKit
 
 - (bool)_hasNonPeerPaymentAcceptedPasses;
+- (bool)npkIsCardOnFilePayment;
 - (bool)npkIsPeerPayment;
 - (bool)npkIsSkeletonPeerPayment;
 - (bool)npkIsSplitPeerPayment;

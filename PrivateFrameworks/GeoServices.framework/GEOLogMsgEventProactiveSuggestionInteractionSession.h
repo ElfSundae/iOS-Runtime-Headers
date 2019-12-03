@@ -5,10 +5,10 @@
 @interface GEOLogMsgEventProactiveSuggestionInteractionSession : PBCodable <NSCopying> {
     int  _duration;
     struct { 
-        unsigned int duration : 1; 
-        unsigned int interactedItemIndex : 1; 
-        unsigned int listType : 1; 
-    }  _has;
+        unsigned int has_duration : 1; 
+        unsigned int has_interactedItemIndex : 1; 
+        unsigned int has_listType : 1; 
+    }  _flags;
     int  _interactedItemIndex;
     int  _listType;
     NSMutableArray * _proactiveItems;
@@ -22,6 +22,7 @@
 @property (nonatomic) int listType;
 @property (nonatomic, retain) NSMutableArray *proactiveItems;
 
++ (bool)isValid:(id)arg1;
 + (Class)proactiveItemType;
 
 - (void).cxx_destruct;
@@ -45,6 +46,7 @@
 - (id)proactiveItemAtIndex:(unsigned long long)arg1;
 - (id)proactiveItems;
 - (unsigned long long)proactiveItemsCount;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setDuration:(int)arg1;
 - (void)setHasDuration:(bool)arg1;

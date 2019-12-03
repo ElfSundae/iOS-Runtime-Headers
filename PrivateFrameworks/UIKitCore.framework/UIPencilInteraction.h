@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface UIPencilInteraction : NSObject <UIInteraction> {
+@interface UIPencilInteraction : NSObject <UIInteraction, UIInteraction_Internal> {
     <UIPencilInteractionDelegate> * _delegate;
     bool  _enabled;
     UIView * _view;
@@ -19,8 +19,10 @@
 + (long long)preferredTapAction;
 
 - (void).cxx_destruct;
+- (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (void)dealloc;
 - (id)delegate;
+- (id)description;
 - (void)didMoveToView:(id)arg1;
 - (id)init;
 - (bool)isEnabled;

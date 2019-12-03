@@ -3,13 +3,12 @@
  */
 
 @interface PLCloudFeedEntriesManager : NSObject {
-    PLPhotoLibrary * __library;
+    PLPhotoLibrary * _library;
 }
 
-@property (nonatomic, readonly, retain) PLPhotoLibrary *_library;
+@property (nonatomic, readonly) PLPhotoLibrary *library;
 
-+ (id)sharedManager;
-
+- (void).cxx_destruct;
 - (void)_addAsset:(id)arg1 toEntry:(id)arg2;
 - (id)_albumCreatedEntryForSharedAlbum:(id)arg1;
 - (id /* block */)_assetSortingComparator;
@@ -24,7 +23,6 @@
 - (id)_invitationAcceptedEntryForInvitationRecord:(id)arg1;
 - (id)_invitationDeclinedEntryForInvitationRecord:(id)arg1;
 - (id)_invitationReceivedEntryForSharedAlbum:(id)arg1;
-- (id)_library;
 - (void)_mergeEntriesAroundDate:(id)arg1;
 - (void)_mergeOlderEntry:(id)arg1 intoMoreRecentEntry:(id)arg2;
 - (void)_noteContentDeletionAffectingAlbumCreatedEntry:(id)arg1;
@@ -51,8 +49,8 @@
 - (bool)_tryMergingComment:(id)arg1 withEntry:(id)arg2;
 - (bool)_wasAssetPublishedBeforeSubscription:(id)arg1;
 - (bool)_wasCommentPublishedBeforeSubscription:(id)arg1;
-- (void)dealloc;
-- (id)init;
+- (id)initWithPhotoLibrary:(id)arg1;
+- (id)library;
 - (void)processAlbumUpdates:(id)arg1 assetInserts:(id)arg2 assetUpdates:(id)arg3 commentInserts:(id)arg4 invitationRecordUpdates:(id)arg5 deletionEntries:(id)arg6 completionHandler:(id /* block */)arg7;
 - (void)rebuildAllEntries:(id /* block */)arg1;
 

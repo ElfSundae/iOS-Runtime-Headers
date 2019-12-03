@@ -4,6 +4,9 @@
 
 @interface PFSharingRemakerOptions : NSObject <NSCopying> {
     NSString * _customAccessibilityLabel;
+    NSDate * _customDate;
+    CLLocation * _customLocation;
+    NSString * _exportFileType;
     NSString * _exportPreset;
     NSURL * _outputDirectoryURL;
     NSString * _outputFilename;
@@ -13,6 +16,9 @@
 }
 
 @property (nonatomic, copy) NSString *customAccessibilityLabel;
+@property (nonatomic, copy) NSDate *customDate;
+@property (nonatomic, copy) CLLocation *customLocation;
+@property (nonatomic, copy) NSString *exportFileType;
 @property (nonatomic, copy) NSString *exportPreset;
 @property (nonatomic, copy) NSURL *outputDirectoryURL;
 @property (nonatomic, copy) NSString *outputFilename;
@@ -23,10 +29,16 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)customAccessibilityLabel;
+- (id)customDate;
+- (id)customLocation;
+- (id)exportFileType;
 - (id)exportPreset;
 - (id)outputDirectoryURL;
 - (id)outputFilename;
 - (void)setCustomAccessibilityLabel:(id)arg1;
+- (void)setCustomDate:(id)arg1;
+- (void)setCustomLocation:(id)arg1;
+- (void)setExportFileType:(id)arg1;
 - (void)setExportPreset:(id)arg1;
 - (void)setOutputDirectoryURL:(id)arg1;
 - (void)setOutputFilename:(id)arg1;

@@ -5,6 +5,7 @@
 
 @required
 
+- (MTLDebugInstrumentationData *)debugInstrumentationData;
 - (unsigned int)getComputeKernelTelemetryID;
 - (unsigned long long)staticThreadgroupMemoryLength;
 - (unsigned long long)uniqueIdentifier;
@@ -12,5 +13,6 @@
 @optional
 
 - (unsigned long long)resourceIndex;
+- (void)setResourceIndex:(unsigned long long)arg1;
 
 @end

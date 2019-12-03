@@ -7,6 +7,8 @@
     NSString * _clientValidationRegex;
     NSString * _codeOnError;
     <NSObject><NSCopying> * _currentValue;
+    bool  _dataNodeProof;
+    NSString * _dataNodeProofGroup;
     <NSObject><NSCopying> * _defaultValue;
     NSString * _displayFormat;
     NSString * _group;
@@ -31,6 +33,8 @@
 @property (nonatomic, copy) NSString *clientValidationRegex;
 @property (nonatomic, copy) NSString *codeOnError;
 @property (getter=getCurrentValue, nonatomic, copy) <NSObject><NSCopying> *currentValue;
+@property (nonatomic) bool dataNodeProof;
+@property (nonatomic, copy) NSString *dataNodeProofGroup;
 @property (nonatomic, copy) <NSObject><NSCopying> *defaultValue;
 @property (nonatomic, copy) NSString *displayFormat;
 @property (nonatomic, copy) NSString *group;
@@ -56,6 +60,8 @@
 - (unsigned long long)attributeType;
 - (id)clientValidationRegex;
 - (id)codeOnError;
+- (bool)dataNodeProof;
+- (id)dataNodeProofGroup;
 - (id)defaultValue;
 - (id)description;
 - (id)displayFormat;
@@ -87,6 +93,8 @@
 - (void)setClientValidationRegex:(id)arg1;
 - (void)setCodeOnError:(id)arg1;
 - (void)setCurrentValue:(id)arg1;
+- (void)setDataNodeProof:(bool)arg1;
+- (void)setDataNodeProofGroup:(id)arg1;
 - (void)setDefaultValue:(id)arg1;
 - (void)setDisplayFormat:(id)arg1;
 - (void)setGroup:(id)arg1;

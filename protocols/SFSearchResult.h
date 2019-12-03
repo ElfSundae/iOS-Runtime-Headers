@@ -27,6 +27,7 @@
 - (NSArray *)descriptions;
 - (bool)doNotFold;
 - (NSNumber *)engagementScore;
+- (NSData *)entityData;
 - (NSString *)fbr;
 - (NSDictionary *)featureScaling;
 - (NSString *)fileProviderDomainIdentifier;
@@ -99,6 +100,7 @@
 - (void)setDescriptions:(NSArray *)arg1;
 - (void)setDoNotFold:(bool)arg1;
 - (void)setEngagementScore:(NSNumber *)arg1;
+- (void)setEntityData:(NSData *)arg1;
 - (void)setFbr:(NSString *)arg1;
 - (void)setFeatureScaling:(NSDictionary *)arg1;
 - (void)setFileProviderDomainIdentifier:(NSString *)arg1;

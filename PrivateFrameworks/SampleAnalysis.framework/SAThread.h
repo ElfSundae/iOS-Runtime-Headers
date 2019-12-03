@@ -40,6 +40,7 @@
 - (unsigned long long)indexOfFirstThreadStateOnOrAfterTime:(id)arg1 withSampleIndex:(bool)arg2;
 - (unsigned long long)indexOfLastThreadStateOnOrBeforeTime:(id)arg1 withSampleIndex:(bool)arg2;
 - (id)initWithId:(unsigned long long)arg1;
+- (void)insertState:(id)arg1 atIndex:(unsigned long long)arg2;
 - (bool)isGlobalForcedIdle;
 - (bool)isMainThread;
 - (bool)isProcessorIdleThread;

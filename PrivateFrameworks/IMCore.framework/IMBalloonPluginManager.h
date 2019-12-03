@@ -4,21 +4,28 @@
 
 @interface IMBalloonPluginManager : NSObject {
     id  _extensionMatchingContext;
+    id  _highMemoryExtensionMatchingContext;
     NSMutableDictionary * _pluginIDToMetadataCache;
     NSString * _pluginMetaDataFolder;
+    NSMutableDictionary * _pluginsBundleIDMap;
     NSMutableDictionary * _pluginsMap;
     NSMutableSet * _pluginsToRemoveAfterExtensionsUpdate;
+    Class  _richLinksDataSourceClass;
 }
 
 @property (nonatomic, retain) id extensionMatchingContext;
+@property (nonatomic, retain) id highMemoryExtensionMatchingContext;
 @property (nonatomic, retain) NSMutableDictionary *pluginIDToMetadataCache;
 @property (nonatomic, retain) NSString *pluginMetaDataFolder;
+@property (nonatomic, retain) NSMutableDictionary *pluginsBundleIDMap;
 @property (nonatomic, retain) NSMutableDictionary *pluginsMap;
 @property (nonatomic, retain) NSMutableSet *pluginsToRemoveAfterExtensionsUpdate;
+@property (nonatomic, readonly, retain) Class richLinksDataSourceClass;
 
 // Image: /System/Library/PrivateFrameworks/IMCore.framework/IMCore
 
 + (id)_extensionBlacklist;
++ (void)disableExtensionDiscovery;
 + (bool)isRunningPPT;
 + (void)setIsRunningPPT:(bool)arg1;
 + (id)sharedInstance;
@@ -26,7 +33,9 @@
 - (void).cxx_destruct;
 - (id)_appProxyBundleIdentifiersForAppPlugins;
 - (void)_clearPluginMetadataForUninstalledApps;
+- (id)_currentlyInstalledExtensionsExcludingExtensionPoint:(id)arg1;
 - (void)_deleteMetaDataForPlugins:(id)arg1;
+- (id)_extensionWithIdentifier:(id)arg1;
 - (id)_fallBackMessagesExtensionPluginForBundleID:(id)arg1;
 - (void)_findPluginsInPathInternal:(id)arg1;
 - (void)_findPluginsInPaths:(id)arg1;
@@ -39,6 +48,7 @@
 - (void)_loadAllDataSources;
 - (void)_loadAppBundleDataSources;
 - (void)_loadAppExtensionDataSources;
+- (id)_loadAppExtensionDataSourcesForExtensionPoint:(id)arg1;
 - (id)_metadataForPluginIdentifier:(id)arg1;
 - (void)_moveExtensionDataSourcesFromMessagesExtensionPluginToAppExtensions;
 - (id)_pluginPlistPath:(id)arg1;
@@ -49,7 +59,7 @@
 - (void)_setPluginsToRemoveAndCallSelectorWithDelay:(id)arg1;
 - (void)_storeMetadata:(id)arg1 _forPlugin:(id)arg2;
 - (void)_updatePluginsForBundles:(id)arg1;
-- (void)_updatePluginsForExtensions:(id)arg1;
+- (void)_updatePluginsForExtensions:(id)arg1 extensionPoint:(id)arg2;
 - (id)allPlugins;
 - (id)balloonPluginForBundleID:(id)arg1;
 - (id)conversationID:(id)arg1 appID:(id)arg2;
@@ -58,23 +68,30 @@
 - (void)dealloc;
 - (id)existingDataSourceForMessageGUID:(id)arg1 bundleID:(id)arg2;
 - (id)extensionMatchingContext;
+- (id)highMemoryExtensionMatchingContext;
 - (id)init;
 - (void)insertDataSource:(id)arg1 forGUID:(id)arg2;
+- (void)loadExtensionWithIdentifierIfNeeded:(id)arg1;
 - (id)localParticipantIdentifierForAppID:(id)arg1 conversationID:(id)arg2;
 - (void)pluginChatItem:(id)arg1 didRelenquishNonResuableController:(id)arg2;
 - (void)pluginChatItem:(id)arg1 didRelinquishReusableController:(id)arg2;
 - (id)pluginIDToMetadataCache;
 - (id)pluginMetaDataFolder;
+- (id)pluginsBundleIDMap;
 - (id)pluginsMap;
 - (id)pluginsToRemoveAfterExtensionsUpdate;
 - (id)recipientIDForRecipient:(id)arg1 appID:(id)arg2;
 - (void)removePluginWithBundleID:(id)arg1;
+- (Class)richLinksDataSourceClass;
 - (void)setExtensionMatchingContext:(id)arg1;
+- (void)setHighMemoryExtensionMatchingContext:(id)arg1;
 - (void)setPluginEnabled:(bool)arg1 identifier:(id)arg2;
 - (void)setPluginIDToMetadataCache:(id)arg1;
 - (void)setPluginMetaDataFolder:(id)arg1;
+- (void)setPluginsBundleIDMap:(id)arg1;
 - (void)setPluginsMap:(id)arg1;
 - (void)setPluginsToRemoveAfterExtensionsUpdate:(id)arg1;
+- (id)systemBundleIdentifierForPluginIdentifier:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
 

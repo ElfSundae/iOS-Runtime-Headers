@@ -30,6 +30,8 @@
 - (double)skinnyKeyThreshold;
 - (bool)supportsInputTraits:(id)arg1 forKeyplane:(id)arg2;
 - (double)symbolFrameInset;
+- (double)variantAnnotationTextFontSize;
+- (struct CGPoint { double x1; double x2; })variantAnnotationTextOffset;
 - (id)variantGeometriesForGeometry:(id)arg1 variantCount:(unsigned long long)arg2 rowLimit:(long long)arg3 annotationIndex:(unsigned long long)arg4;
 
 @end

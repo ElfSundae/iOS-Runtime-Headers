@@ -4,8 +4,8 @@
 
 @interface HDCorrelationSampleSyncEntity : HDSampleSyncEntity
 
-+ (id)_baseDataObjectPredicate;
 + (id)_objectWithCodable:(id)arg1;
++ (id)_predicateForSyncSession:(id)arg1;
 + (Class)healthEntityClass;
 + (int)nanoSyncObjectType;
 + (id)syncEntityIdentifier;

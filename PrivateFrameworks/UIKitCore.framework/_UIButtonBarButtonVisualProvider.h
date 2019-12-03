@@ -2,7 +2,9 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface _UIButtonBarButtonVisualProvider : NSObject <NSCopying>
+@interface _UIButtonBarButtonVisualProvider : NSObject <NSCopying> {
+    _UIButtonBarButton * _button;
+}
 
 @property (nonatomic) bool backButtonConstraintsActive;
 @property (nonatomic, readonly) UIView *backIndicatorView;
@@ -24,9 +26,12 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
+- (void)resetButtonHasHighlighted;
 - (void)setBackButtonConstraintsActive:(bool)arg1;
 - (bool)supportsBackButtons;
+- (void)updateButton:(id)arg1 appearance:(id)arg2;
 - (void)updateButton:(id)arg1 forEnabledState:(bool)arg2;
+- (void)updateButton:(id)arg1 forFocusedState:(bool)arg2;
 - (void)updateButton:(id)arg1 forHighlightedState:(bool)arg2;
 - (void)updateButton:(id)arg1 forSelectedState:(bool)arg2;
 - (void)updateButton:(id)arg1 toUseButtonShapes:(bool)arg2;

@@ -3,28 +3,29 @@
  */
 
 @interface HKBloodPressureSeriesPresentationStyle : NSObject {
-    UIColor * _arrowColor;
-    struct CGSize { 
-        double width; 
-        double height; 
-    }  _arrowSize;
-    double  _arrowStrokeWidth;
-    UIColor * _fillColor;
+    UIColor * _diastolicFillColor;
+    UIColor * _diastolicSymbolColor;
+    UIColor * _systolicFillColor;
+    UIColor * _systolicSymbolColor;
+    double  _width;
 }
 
-@property (nonatomic, retain) UIColor *arrowColor;
-@property (nonatomic) struct CGSize { double x1; double x2; } arrowSize;
-@property (nonatomic) double arrowStrokeWidth;
-@property (nonatomic, retain) UIColor *fillColor;
+@property (nonatomic, retain) UIColor *diastolicFillColor;
+@property (nonatomic, retain) UIColor *diastolicSymbolColor;
+@property (nonatomic, retain) UIColor *systolicFillColor;
+@property (nonatomic, retain) UIColor *systolicSymbolColor;
+@property (nonatomic) double width;
 
 - (void).cxx_destruct;
-- (id)arrowColor;
-- (struct CGSize { double x1; double x2; })arrowSize;
-- (double)arrowStrokeWidth;
-- (id)fillColor;
-- (void)setArrowColor:(id)arg1;
-- (void)setArrowSize:(struct CGSize { double x1; double x2; })arg1;
-- (void)setArrowStrokeWidth:(double)arg1;
-- (void)setFillColor:(id)arg1;
+- (id)diastolicFillColor;
+- (id)diastolicSymbolColor;
+- (void)setDiastolicFillColor:(id)arg1;
+- (void)setDiastolicSymbolColor:(id)arg1;
+- (void)setSystolicFillColor:(id)arg1;
+- (void)setSystolicSymbolColor:(id)arg1;
+- (void)setWidth:(double)arg1;
+- (id)systolicFillColor;
+- (id)systolicSymbolColor;
+- (double)width;
 
 @end

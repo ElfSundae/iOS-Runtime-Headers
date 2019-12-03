@@ -62,7 +62,6 @@
 - (void)_adjustWiFiAutoAssociationLocked;
 - (void)_adjustWoWState;
 - (void)_createDynamicStore;
-- (void)_createWiFiManager;
 - (void)_handleDeviceAttachedCallback;
 - (void)_handleDevicePowerCallback;
 - (void)_handlePotentialDeviceChange:(struct __WiFiDeviceClient { }*)arg1;
@@ -75,8 +74,10 @@
 - (void)_performDeviceBlock:(id /* block */)arg1 useCache:(bool)arg2;
 - (void)_performPowerReading;
 - (void)_setCurrentNetwork:(struct __WiFiNetwork { }*)arg1;
+- (void)_setupWifiNotifications;
 - (id)_ssidFromNetwork:(struct __WiFiNetwork { }*)arg1;
 - (void)_threadedMain;
+- (void)_updateInitialWiFiState;
 - (void)_updateIsWiFiAssociatedAsync:(bool)arg1;
 - (void)_updateIsWiFiEnabled;
 - (double)_wifiMeasurementErrorForInterval:(double)arg1;

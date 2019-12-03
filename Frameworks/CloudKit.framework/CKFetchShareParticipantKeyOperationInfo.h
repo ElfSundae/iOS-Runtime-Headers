@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
  */
 
-@interface CKFetchShareParticipantKeyOperationInfo : CKDatabaseOperationInfo {
+@interface CKFetchShareParticipantKeyOperationInfo : CKDatabaseOperationInfo <NSSecureCoding> {
     NSDictionary * _baseTokensByShareID;
     NSDictionary * _childRecordIDsByShareID;
     NSArray * _shareIDs;

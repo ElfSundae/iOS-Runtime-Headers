@@ -3,7 +3,7 @@
  */
 
 @interface FAFamilyEligibilityRequester : NSObject {
-    AAUIAccountManager * _accountManager;
+    AIDAAccountManager * _accountManager;
     AAGrandSlamSigner * _grandSlamSigner;
     NSOperationQueue * _networkActivityQueue;
 }

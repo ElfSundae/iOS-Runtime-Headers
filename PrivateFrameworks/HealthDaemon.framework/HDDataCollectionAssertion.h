@@ -20,6 +20,7 @@
 - (void).cxx_destruct;
 - (double)collectionInterval;
 - (id)dataCollectionManager;
+- (id)description;
 - (id)initWithOwnerIdentifier:(id)arg1 sampleTypes:(id)arg2 observerState:(id)arg3 dataCollectionManager:(id)arg4;
 - (id)observerState;
 - (id)sampleTypes;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/BaseBoard.framework/BaseBoard
  */
 
-@interface BSSettingsDiff : NSObject <BSXPCCoding, NSCopying> {
+@interface BSSettingsDiff : NSObject <BSXPCCoding, NSCopying, NSSecureCoding> {
     BSMutableSettings * _changes;
     <BSSettingDescriptionProvider> * _descriptionProvider;
     NSMutableSet * _flagRemovals;
@@ -16,7 +16,9 @@
 @property (nonatomic, readonly) bool isEmpty;
 @property (readonly) Class superclass;
 
++ (bool)_isValidRemovalsSet:(id)arg1;
 + (id)diffFromSettings:(id)arg1 toSettings:(id)arg2;
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (unsigned long long)_diffTypesForSetting:(unsigned long long)arg1;
@@ -29,8 +31,10 @@
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionProvider;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 - (void)inspectChangesWithBlock:(id /* block */)arg1;
 - (bool)isEmpty;

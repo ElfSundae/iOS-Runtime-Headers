@@ -30,12 +30,13 @@
 @property (nonatomic, retain) NSString *text;
 @property (nonatomic) long long textAlignment;
 @property (nonatomic, retain) UIColor *textColor;
+@property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } textInset;
 
 + (id)_formattedStringsCache;
 
 - (void).cxx_destruct;
 - (id)_addDefaultAttributesToAttributedString:(id)arg1;
-- (id)_attributedAjudstedMultiPartStringFromString:(id)arg1;
+- (id)_attributedAdjustedMultiPartStringFromString:(id)arg1;
 - (void)_setupTextView;
 - (id)_textAttributes;
 - (void)_updateStrings;
@@ -44,6 +45,7 @@
 - (id)font;
 - (id)hitTest:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (struct CGSize { double x1; double x2; })intrinsicContentSize;
 - (void)layoutSubviews;
 - (long long)lineBreakMode;
 - (id)multiPartString;
@@ -58,9 +60,11 @@
 - (void)setText:(id)arg1;
 - (void)setTextAlignment:(long long)arg1;
 - (void)setTextColor:(id)arg1;
+- (void)setTextInset:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (id)text;
 - (long long)textAlignment;
 - (id)textColor;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })textInset;
 - (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;
 

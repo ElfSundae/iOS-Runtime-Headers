@@ -2,23 +2,19 @@
    Image: /System/Library/Frameworks/UserNotificationsUI.framework/UserNotificationsUI
  */
 
-@interface _UNNotificationExtensionRemoteViewController : UIViewController <_UNNotificationContentExtensionLegacyDelegate, _UNNotificationExtensionRemoteInterface> {
+@interface _UNNotificationExtensionRemoteViewController : UIViewController <_UNNotificationExtensionRemoteInterface> {
     bool  _didCheckActionResponseDelegate;
     UIViewController<UNNotificationContentExtension> * _extensionViewController;
     <_UNNotificationExtensionHostInterface> * _hostService;
     struct atomic_flag { 
-        bool _Value; 
+        _Atomic bool _Value; 
     }  _invalidationOnceFlag;
     UIScrollViewDelayedTouchesBeganGestureRecognizer * _touchDelayGestureRecognizer;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic) bool didCheckActionResponseDelegate;
 @property (nonatomic, retain) UIViewController<UNNotificationContentExtension> *extensionViewController;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, retain) <_UNNotificationExtensionHostInterface> *hostService;
-@property (readonly) Class superclass;
 
 + (id)_exportedInterface;
 + (bool)_isSecureForRemoteViewService;
@@ -29,7 +25,6 @@
 - (void)_didReceiveNotificationResponse:(id)arg1;
 - (id)_extensionBundleIdentifier;
 - (void)_invalidateExtensionContext;
-- (void)_loadAudioAccessoryViewForNotification:(id)arg1;
 - (void)_mediaPause;
 - (void)_mediaPlay;
 - (void)_performSelectorOnExtension:(SEL)arg1;
@@ -48,9 +43,6 @@
 - (id)hostService;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;
-- (void)notificationContentExtension:(id)arg1 setDismissEnabled:(bool)arg2;
-- (void)notificationContentExtensionDefaultAction:(id)arg1;
-- (void)notificationContentExtensionDismiss:(id)arg1;
 - (id)notificationExtensionContext;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;

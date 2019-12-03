@@ -4,7 +4,7 @@
 
 @interface SearchUISelectableGridCardSectionView : SearchUICardSectionView <TLKSelectableGridViewDelegate>
 
-@property (retain) TLKSelectableGridView *contentView;
+@property (nonatomic, retain) TLKSelectableGridView *contentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

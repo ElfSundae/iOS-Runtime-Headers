@@ -6,12 +6,14 @@
     NSString * _letters;
 }
 
-@property (retain) NSString *letters;
+@property (nonatomic, retain) NSString *letters;
 
 + (id)avatarImageRenderer;
 
 - (void).cxx_destruct;
+- (unsigned long long)hash;
 - (id)initWithSFImage:(id)arg1;
+- (bool)isEqual:(id)arg1;
 - (id)letters;
 - (void)loadImageWithCompletionHandler:(id /* block */)arg1;
 - (void)setLetters:(id)arg1;

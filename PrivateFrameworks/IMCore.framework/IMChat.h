@@ -4,13 +4,13 @@
 
 @interface IMChat : IMItemsController <IMSendProgressDelegate, INSpeakable> {
     IMAccount * _account;
+    bool  _allowedByScreenTime;
     NSArray * _attachments;
     NSDictionary * _bizIntent;
     <IMChatItemRules> * _chatItemRules;
     IMScheduledUpdater * _chatItemsUpdater;
     NSMutableDictionary * _chatProperties;
     void * _context;
-    TUConversation * _conversation;
     NSNumber * _countOfAttachmentsNotCachedLocally;
     NSNumber * _countOfMessagesMarkedAsSpam;
     NSString * _currentLocationGUID;
@@ -24,6 +24,7 @@
     NSData * _engramID;
     unsigned int  _forceMMS;
     NSArray * _frequentReplies;
+    NSString * _groupChatIdentifierUppercase;
     NSString * _groupID;
     NSString * _guid;
     NSMutableSet * _guids;
@@ -34,6 +35,7 @@
     unsigned int  _hasPendingMarkRead;
     bool  _hasRefreshedServiceForSending;
     bool  _hasSurfRequest;
+    NSString * _hashOfParticipantIDs;
     NSString * _identifier;
     unsigned int  _ignoreDowngradeStatusUpdates;
     IMMessage * _invitationForPendingParticipants;
@@ -48,6 +50,8 @@
     double  _latestTypingIndicatorTimeInterval;
     NSString * _localUserIsComposing;
     NSMutableArray * _messagesPendingJoin;
+    IMOrderingTools * _orderingTools;
+    NSString * _participantIDsHash;
     NSMutableDictionary * _participantProperties;
     NSMutableDictionary * _participantStates;
     NSArray * _participants;
@@ -68,17 +72,19 @@
 @property (nonatomic, readonly) bool allRecipientsFollowingLocation;
 @property (nonatomic, readonly) bool allRecipientsSharingLocation;
 @property (nonatomic, readonly) NSSet *allSiblingFMFHandles;
+@property (nonatomic) bool allowedByScreenTime;
 @property (nonatomic, readonly) NSArray *alternativeSpeakableMatches;
 @property (nonatomic, readonly, copy) NSArray *attachments;
 @property (nonatomic, copy) NSDictionary *bizIntent;
 @property (nonatomic, readonly) bool canHaveMultipleParticipants;
 @property (nonatomic, readonly) bool canLeaveChat;
 @property (nonatomic, readonly) NSString *chatIdentifier;
+@property (nonatomic, readonly, copy) NSArray *chatItems;
 @property (nonatomic, readonly) IMChatRegistry *chatRegistry;
 @property (nonatomic, readonly) unsigned char chatStyle;
 @property (nonatomic) void*contextInfo;
-@property (nonatomic, readonly) TUConversation *conversation;
 @property (nonatomic, readonly, copy) NSNumber *countOfAttachmentsNotCachedLocally;
+@property (nonatomic, retain) NSString *currentLocationGUID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) NSString *deviceIndependentID;
@@ -89,9 +95,11 @@
 @property (nonatomic) bool forceMMS;
 @property (nonatomic, retain) NSArray *frequentReplies;
 @property (getter=isGroupChat, nonatomic, readonly) bool groupChat;
+@property (nonatomic, retain) NSString *groupChatIdentifierUppercase;
 @property (nonatomic, retain) NSString *groupID;
 @property (nonatomic, readonly) NSString *guid;
 @property (nonatomic) bool hasHadSuccessfulQuery;
+@property (nonatomic, readonly) bool hasMessageFromMe;
 @property (nonatomic, readonly) bool hasMoreMessagesToLoad;
 @property (nonatomic, readonly) bool hasMoreRecentMessagesToLoad;
 @property (nonatomic, readonly) bool hasRecipientsFollowingLocation;
@@ -99,7 +107,9 @@
 @property (nonatomic, readonly) bool hasSiblingRecipientsSharingLocation;
 @property (nonatomic) bool hasSurfRequest;
 @property (nonatomic, readonly) bool hasUnhandledInvitation;
+@property (nonatomic, readonly) bool hasVerifiedBusiness;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, copy) NSString *hashOfParticipantIDs;
 @property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, retain) IMMessage *invitationForPendingParticipants;
 @property (nonatomic, readonly) bool isAppleChat;
@@ -121,6 +131,7 @@
 @property (nonatomic, readonly) IMMessage *lastMessage;
 @property (nonatomic, readonly) bool lastMessageExists;
 @property (nonatomic, readonly) long long lastMessageTimeStampOnLoad;
+@property (nonatomic, readonly) NSString *lastSeenMessageGuid;
 @property (nonatomic, readonly) IMMessage *lastSentMessage;
 @property (nonatomic, readonly) NSDate *lastSentMessageDate;
 @property (nonatomic, readonly) NSDate *lastTUConversationCreatedDate;
@@ -133,7 +144,9 @@
 @property (nonatomic, readonly) unsigned long long messageCount;
 @property (nonatomic, readonly) unsigned long long messageFailureCount;
 @property (nonatomic) unsigned long long numberOfMessagesToKeepLoaded;
+@property (nonatomic, retain) IMOrderingTools *orderingTools;
 @property (nonatomic, readonly) unsigned long long overallChatStatus;
+@property (nonatomic, readonly, copy) NSString *participantIDsHash;
 @property (nonatomic, readonly) NSArray *participants;
 @property (nonatomic, readonly) NSString *persistentID;
 @property (nonatomic, retain) NSString *personCentricID;
@@ -151,12 +164,9 @@
 
 // Image: /System/Library/PrivateFrameworks/IMCore.framework/IMCore
 
-+ (id)_GUIDsForKey:(id)arg1;
 + (Class)_NPSManagerClass;
 + (id)__im_adjustMessageSummaryInfoForSending:(id)arg1;
 + (void)_initializeFMF;
-+ (void)_removeGUID:(id)arg1 fromList:(id)arg2;
-+ (void)_storeGUID:(id)arg1 forKey:(id)arg2;
 + (Class)chatItemRulesClass;
 + (void)cleanWatermarkCache;
 + (bool)isGUIDInAttemptingListInScrutinyMode:(id)arg1;
@@ -177,9 +187,9 @@
 - (id)_archivedItemsToReplace:(id)arg1 numberOfMessagesBeforeGUID:(unsigned long long)arg2 numberOfMessagesAfterGUID:(unsigned long long)arg3;
 - (void)_calculateDowngradeState;
 - (void)_calculateDowngradeStateTimerFired;
-- (bool)_chatHasValidAccount:(id)arg1 forService:(id)arg2;
 - (void)_clearCachedIdentifier;
 - (void)_clearDowngradeMarkers;
+- (void)_clearPendingMessages;
 - (void)_clearUnreadCount;
 - (long long)_compareChat:(id)arg1 withDate:(id)arg2 withDate:(id)arg3;
 - (void)_configureLocationShareItem:(id)arg1;
@@ -191,6 +201,7 @@
 - (void)_engroupParticipantsUpdated;
 - (void)_fixItemForSendingMessageTime:(id)arg1;
 - (void)_fixSendingItemDateAndSortID:(id)arg1;
+- (id)_generatePersonCentricID;
 - (id)_getDeleteChatItemMap:(id)arg1;
 - (id)_getMessageChatItemMap:(id)arg1 withDeleteMap:(id)arg2 andAllChatItems:(id)arg3;
 - (id)_guids;
@@ -235,7 +246,6 @@
 - (void)_replaceStaleChatItems;
 - (void)_resetChatIdToLastMessageItemMap;
 - (bool)_sanityCheckAccounts;
-- (void)_sendCurrentLocationMessageUsingLocationManager:(id)arg1;
 - (void)_sendMessage:(id)arg1 adjustingSender:(bool)arg2 shouldQueue:(bool)arg3;
 - (bool)_serverBagPreventsScrutinyMode;
 - (void)_setAccount:(id)arg1;
@@ -272,6 +282,8 @@
 - (id)_tuDateForChat:(id)arg1;
 - (void)_unwatchHandleStatusChangedForHandle:(id)arg1;
 - (void)_updateChatItems;
+- (void)_updateChatItemsAsNotSpam;
+- (void)_updateChatItemsAsNotSpamEnumeratingItems:(id /* block */)arg1;
 - (void)_updateChatItemsWithReason:(id)arg1 block:(id /* block */)arg2;
 - (void)_updateChatItemsWithReason:(id)arg1 block:(id /* block */)arg2 shouldPost:(bool)arg3;
 - (void)_updateDisplayName:(id)arg1;
@@ -279,6 +291,7 @@
 - (void)_updateEngramID:(id)arg1;
 - (void)_updateLastAddressedHandleID:(id)arg1;
 - (void)_updateLastAddressedSIMID:(id)arg1;
+- (void)_updateLastSeenMessageGuid:(id)arg1;
 - (void)_updateLocationShareItemsForSender:(id)arg1;
 - (void)_watchHandleStatusChangedForHandle:(id)arg1;
 - (void)acceptInvitation;
@@ -286,12 +299,17 @@
 - (void)addPendingParticipants:(id)arg1;
 - (id)allChatProperties;
 - (id)allMessagesToReportAsSpam;
+- (bool)allParticipantsAreContacts;
 - (id)allPropertiesOfParticipant:(id)arg1;
 - (bool)allRecipientsFollowingLocation;
 - (bool)allRecipientsSharingLocation;
 - (id)allSiblingFMFHandles;
+- (bool)allowedByScreenTime;
+- (bool)allowedToShowConversation;
+- (bool)allowedToShowConversationSync;
 - (id)alternativeSpeakableMatches;
 - (id)attachments;
+- (bool)authorizationToSendCurrentLocationMessageDetermined;
 - (bool)authorizedToSendCurrentLocationMessage;
 - (void)autoReportSpam;
 - (void)beginHoldingUpdatesForKey:(id)arg1;
@@ -319,13 +337,15 @@
 - (bool)containsMessageFromContactOrMe;
 - (void*)contextInfo;
 - (id)conversation;
-- (id)conversation;
+- (id)conversationContext;
 - (id)countOfAttachmentsNotCachedLocally;
+- (id)currentLocationGUID;
 - (void)dealloc;
 - (void)declineInvitation;
 - (bool)deleteAllHistory;
 - (void)deleteChatItems:(id)arg1;
 - (void)deleteExtensionPayloadData;
+- (void)deleteIMMessageItems:(id)arg1;
 - (void)deleteTransfers:(id)arg1;
 - (id)description;
 - (id)deviceIndependentID;
@@ -340,10 +360,12 @@
 - (id)fmfHandles;
 - (bool)forceMMS;
 - (id)frequentReplies;
+- (id)groupChatIdentifierUppercase;
 - (id)groupID;
 - (id)guid;
 - (bool)hasHadSuccessfulQuery;
 - (bool)hasKnownParticipants;
+- (bool)hasMessageFromMe;
 - (bool)hasMoreMessagesToLoad;
 - (bool)hasMoreRecentMessagesToLoad;
 - (bool)hasRecipientsFollowingLocation;
@@ -354,6 +376,8 @@
 - (bool)hasSurfRequestForPaymentType:(unsigned long long)arg1;
 - (bool)hasSurfRequestNotFromMe:(id)arg1;
 - (bool)hasUnhandledInvitation;
+- (bool)hasVerifiedBusiness;
+- (id)hashOfParticipantIDs;
 - (id)init;
 - (void)initiateTUConversationWithVideoEnabled:(bool)arg1;
 - (id)invitationForPendingParticipants;
@@ -387,6 +411,7 @@
 - (bool)lastMessageExists;
 - (long long)lastMessageTimeStampOnLoad;
 - (id)lastRelatedIncomingFinishedMessageTextContentWithLimit:(long long)arg1;
+- (id)lastSeenMessageGuid;
 - (id)lastSentMessage;
 - (id)lastSentMessageDate;
 - (id)lastTUConversationCreatedDate;
@@ -400,6 +425,7 @@
 - (id)loadMessagesBeforeDate:(id)arg1 limit:(unsigned long long)arg2 loadImmediately:(bool)arg3;
 - (id)loadMessagesUpToGUID:(id)arg1 date:(id)arg2 limit:(unsigned long long)arg3 loadImmediately:(bool)arg4;
 - (id)loadMessagesUpToGUID:(id)arg1 limit:(unsigned long long)arg2;
+- (void)loadParticipantContactsIfNecessary;
 - (id)loadUnreadMessagesWithLimit:(unsigned long long)arg1 fallbackToMessagesUpToGUID:(id)arg2;
 - (id)localTypingMessageGUID;
 - (id)localUserIsComposing;
@@ -423,7 +449,9 @@
 - (id)messagesToReportAsSpamFromChatItems:(id)arg1;
 - (unsigned long long)numberOfMessagesToKeepLoaded;
 - (long long)numberOfTimesRespondedToThread;
+- (id)orderingTools;
 - (unsigned long long)overallChatStatus;
+- (id)participantIDsHash;
 - (id)participants;
 - (id)participantsWithState:(unsigned long long)arg1;
 - (unsigned long long)paymentTypeForMessage:(id)arg1;
@@ -435,6 +463,7 @@
 - (void)remove;
 - (void)removeParticipants:(id)arg1 reason:(id)arg2;
 - (void)removeParticipantsFromiMessageChat:(id)arg1 reason:(id)arg2;
+- (void)resortMessages;
 - (id)roomName;
 - (id)roomNameWithoutSuffix;
 - (void)saveWatermark;
@@ -444,17 +473,23 @@
 - (void)sendDowngradePingForMessage:(id)arg1 manualDowngrade:(bool)arg2;
 - (void)sendMessage:(id)arg1;
 - (void)sendMessageAcknowledgment:(long long)arg1 forChatItem:(id)arg2 withAssociatedMessageInfo:(id)arg3;
+- (void)sendMessageAcknowledgment:(long long)arg1 forChatItem:(id)arg2 withAssociatedMessageInfo:(id)arg3 withGuid:(id)arg4;
 - (void)sendMessageAcknowledgment:(long long)arg1 forChatItem:(id)arg2 withMessageSummaryInfo:(id)arg3;
+- (void)sendMessageAcknowledgment:(long long)arg1 forChatItem:(id)arg2 withMessageSummaryInfo:(id)arg3 withGuid:(id)arg4;
 - (void)sendProgress:(id)arg1 progressDidChange:(float)arg2 sendingMessages:(id)arg3 sendCount:(unsigned long long)arg4 totalCount:(unsigned long long)arg5 finished:(bool)arg6;
 - (id)sendProgressDelegate;
+- (void)setAllowedByScreenTime:(bool)arg1;
 - (void)setBizIntent:(id)arg1;
 - (void)setContextInfo:(void*)arg1;
+- (void)setCurrentLocationGUID:(id)arg1;
 - (void)setDisplayName:(id)arg1;
 - (void)setForceMMS:(bool)arg1;
 - (void)setFrequentReplies:(id)arg1;
+- (void)setGroupChatIdentifierUppercase:(id)arg1;
 - (void)setGroupID:(id)arg1;
 - (void)setHasHadSuccessfulQuery:(bool)arg1;
 - (void)setHasSurfRequest:(bool)arg1;
+- (void)setHashOfParticipantIDs:(id)arg1;
 - (void)setInvitationForPendingParticipants:(id)arg1;
 - (void)setIsFiltered:(bool)arg1;
 - (void)setLastAddressedHandleID:(id)arg1;
@@ -465,6 +500,7 @@
 - (void)setLocalUserIsRecording:(bool)arg1;
 - (void)setLocalUserIsTyping:(bool)arg1;
 - (void)setNumberOfMessagesToKeepLoaded:(unsigned long long)arg1;
+- (void)setOrderingTools:(id)arg1;
 - (void)setPersonCentricID:(id)arg1;
 - (void)setRecipient:(id)arg1;
 - (void)setRecipient:(id)arg1 locally:(bool)arg2;
@@ -484,16 +520,18 @@
 - (id)testChatItems;
 - (unsigned long long)unreadMessageCount;
 - (void)updateChatItemsIfNeeded;
+- (void)updateIsBlackholed:(bool)arg1;
 - (void)updateIsFiltered:(bool)arg1;
 - (void)updateMessage:(id)arg1;
 - (void)updateMessage:(id)arg1 flags:(unsigned long long)arg2;
 - (void)updateShouldForceToSMS:(bool)arg1;
 - (void)updateWasDetectedAsSMSSpam:(bool)arg1;
+- (void)updateWasDetectedAsiMessageSpam:(bool)arg1;
 - (void)updateWatermarks;
 - (void)userToggledReadReceiptSwitch:(bool)arg1;
 - (id)valueForChatProperty:(id)arg1;
 - (id)valueForProperty:(id)arg1 ofParticipant:(id)arg2;
-- (void)verifyChatShouldBeSMSSpam;
+- (void)verifyChatShouldBeSpamWithService:(id)arg1;
 - (void)verifyFiltering;
 - (id)vocabularyIdentifier;
 - (id)watermarkDate;
@@ -516,5 +554,6 @@
 - (id)__ck_watermarkDate;
 - (long long)__ck_watermarkMessageID;
 - (void)sendMessageAcknowledgment:(long long)arg1 forChatItem:(id)arg2;
+- (void)sendMessageAcknowledgment:(long long)arg1 forChatItem:(id)arg2 withGuid:(id)arg3;
 
 @end

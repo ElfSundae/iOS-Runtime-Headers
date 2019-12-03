@@ -3,7 +3,7 @@
  */
 
 @interface PKDashboardBalanceView : PKDashboardCollectionViewCell {
-    UIButton * _actionButton;
+    PKContinuousButton * _actionButton;
     NSString * _availableCredit;
     UILabel * _availableCreditLabel;
     NSString * _balance;
@@ -18,7 +18,7 @@
 
 @property (nonatomic, copy) NSString *availableCredit;
 @property (nonatomic, copy) NSString *balance;
-@property (nonatomic, readonly) UILabel *titleLabel;
+@property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) id /* block */ topUpAction;
 @property (nonatomic) bool topUpEnabled;
 @property (nonatomic, copy) NSString *topUpTitle;
@@ -39,7 +39,7 @@
 - (void)setTopUpEnabled:(bool)arg1;
 - (void)setTopUpTitle:(id)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
-- (id)titleLabel;
+- (id)title;
 - (id /* block */)topUpAction;
 - (bool)topUpEnabled;
 - (id)topUpTitle;

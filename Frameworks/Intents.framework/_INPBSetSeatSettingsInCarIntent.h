@@ -3,6 +3,7 @@
  */
 
 @interface _INPBSetSeatSettingsInCarIntent : PBCodable <NSCopying, NSSecureCoding, _INPBSetSeatSettingsInCarIntent> {
+    bool  __encodeLegacyGloryData;
     _INPBDataString * _carName;
     bool  _enableCooling;
     bool  _enableHeating;
@@ -20,6 +21,7 @@
     int  _seat;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic, retain) _INPBDataString *carName;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -41,15 +43,20 @@
 @property (nonatomic) int seat;
 @property (readonly) Class superclass;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (int)StringAsRelativeLevelSetting:(id)arg1;
 - (int)StringAsSeat:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)carName;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (bool)enableCooling;
 - (bool)enableHeating;
 - (bool)enableMassage;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasCarName;
 - (bool)hasEnableCooling;
 - (bool)hasEnableHeating;
@@ -59,6 +66,7 @@
 - (bool)hasRelativeLevelSetting;
 - (bool)hasSeat;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)intentMetadata;
 - (bool)isEqual:(id)arg1;
 - (id)level;

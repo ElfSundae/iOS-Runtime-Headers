@@ -11,6 +11,7 @@
 - (void)dealloc;
 - (id)hardwareLayout;
 - (bool)includeBarHeight;
+- (bool)isSpecializedInputMode;
 - (void)setViewControllerClass:(Class)arg1;
 - (Class)viewControllerClass;
 

@@ -28,7 +28,6 @@
 + (id)defaultOrderingTerms;
 + (bool)deleteFromLibrary:(id)arg1 deletionType:(int)arg2 persistentIDs:(const long long*)arg3 count:(unsigned long long)arg4;
 + (bool)deleteFromLibrary:(id)arg1 deletionType:(int)arg2 persistentIDs:(const long long*)arg3 count:(unsigned long long)arg4 usingConnection:(id)arg5;
-+ (id)directCollectionQueryWithAggregateQuery:(id)arg1 predicate:(id)arg2 usingSections:(bool)arg3;
 + (id)disambiguatedSQLForProperty:(id)arg1;
 + (id)disambiguatedSelectSQLForProperty:(id)arg1;
 + (id)entityFromURL:(id)arg1 inLibrary:(id)arg2;

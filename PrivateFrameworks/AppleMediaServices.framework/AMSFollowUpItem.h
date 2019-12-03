@@ -52,6 +52,7 @@
 - (id)logKey;
 - (id)metricsEvent;
 - (id)metricsQueue;
+- (id)postMetricsWithBag:(id)arg1;
 - (id)postMetricsWithBagContract:(id)arg1;
 - (long long)priority;
 - (void)setAccount:(id)arg1;

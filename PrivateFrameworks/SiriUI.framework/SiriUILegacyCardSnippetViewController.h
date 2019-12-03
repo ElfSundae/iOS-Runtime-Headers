@@ -13,6 +13,8 @@
 - (id)_legacyCardSectionViewController;
 - (void)_setVirgin:(bool)arg1;
 - (id)attributedSubtitle;
+- (bool)cardViewController:(id)arg1 shouldLoadIdentifiedCardSectionViewProvidersWithProviderManager:(id)arg2;
+- (void)cardViewControllerDidLoad:(id)arg1;
 - (void)endEditingAndCorrect:(bool)arg1;
 - (id)headerPunchOut;
 - (id)initWithSnippet:(id)arg1;

@@ -2,13 +2,14 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUUIPhotosAlbumViewController : PUPhotosAlbumViewController <PUPhotoPickerSelectionHandler, PUPhotoPickerServicesConsumer> {
+@interface PUUIPhotosAlbumViewController : PUPhotosAlbumViewController <PUPhotoPickerFileSizeToolbarProviderDelegate, PUPhotoPickerSelectionHandler, PUPhotoPickerServicesConsumer, PUPhotosGridViewSupplementalToolbarDataSource> {
     int  __albumFilter;
     PUUIImagePickerControllerHelper * __imagePickerControllerHelper;
     NSArray * __imagePickerMediaTypes;
     bool  _didDisappear;
+    PUPhotoPickerFileSizeToolbarProvider * _fileSizePickerToolbarProvider;
     UIBarButtonItem * _imagePickerCancelButton;
-    UIBarButtonItem * _imagePickerMultipleSelectionDoneButton;
+    UIBarButtonItem * _imagePickerSelectionDoneButton;
     struct UIEdgeInsets { 
         double top; 
         double left; 
@@ -17,11 +18,14 @@
     }  _lastKnownSafeAreaInsets;
     double  _lastKnownWidth;
     <PUPhotoPicker> * _photoPicker;
+    PUPhotoPickerResizeTaskDescriptor * _resizeTaskDescriptor;
 }
 
 @property (setter=_setAlbumFilter:, nonatomic) int _albumFilter;
 @property (readonly) PUUIImagePickerControllerHelper *_imagePickerControllerHelper;
 @property (setter=_setImagePickerMediaTypes:, nonatomic, copy) NSArray *_imagePickerMediaTypes;
+@property (getter=isAnyAssetDownloading, nonatomic, readonly) bool anyAssetDownloading;
+@property (getter=isAnyAssetSelected, nonatomic, readonly) bool anyAssetSelected;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) bool didDisappear;
@@ -30,12 +34,17 @@
 @property (nonatomic) double lastKnownWidth;
 @property (nonatomic) <PUPhotoPicker> *photoPicker;
 @property (nonatomic, readonly) bool referenceValuesDidChange;
+@property (nonatomic, retain) PUPhotoPickerResizeTaskDescriptor *resizeTaskDescriptor;
+@property (nonatomic, readonly) NSArray *selectedAssets;
+@property (nonatomic, readonly) PUSessionInfo *sessionInfo;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (int)_albumFilter;
 - (void)_handleImagePickerCancel:(id)arg1;
-- (void)_handleImagePickerMultipleSelectionDone:(id)arg1;
+- (void)_handleImagePickerMultipleSelectionDone;
+- (void)_handleImagePickerSelectionDone:(id)arg1;
+- (void)_handleImagePickerSingleSelectionDone;
 - (id)_imagePickerControllerHelper;
 - (id)_imagePickerMediaTypes;
 - (void)_scrollToBottomIfNeeded;
@@ -53,19 +62,24 @@
 - (void)handleToggleSelectionOfItemAtIndexPath:(id)arg1;
 - (id)init;
 - (id)initWithSpec:(id)arg1;
+- (bool)isAnyAssetDownloading;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })lastKnownSafeAreaInsets;
 - (double)lastKnownWidth;
 - (void)loadView;
 - (void)performPhotoPickerSelection;
 - (id)photoPicker;
+- (void)photoPickerFileSizeToolbarProvider:(id)arg1 didSelectResizeTaskDescriptor:(id)arg2;
+- (void)photoPickerFileSizeToolbarProvider:(id)arg1 presentSizePickerViewController:(id)arg2;
 - (bool)pu_wantsNavigationBarVisible;
 - (bool)referenceValuesDidChange;
+- (id)resizeTaskDescriptor;
 - (void)setAlbum:(id)arg1 existingFetchResult:(id)arg2;
 - (void)setDidDisappear:(bool)arg1;
 - (void)setLastKnownSafeAreaInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setLastKnownWidth:(double)arg1;
 - (void)setPhotoPicker:(id)arg1;
 - (void)setPhotoPickerMediaTypes:(id)arg1;
+- (void)setResizeTaskDescriptor:(id)arg1;
 - (bool)shouldShowMenu;
 - (bool)shouldShowSectionHeaders;
 - (double)topMarginForPhotosGlobalFooterView:(id)arg1;

@@ -52,6 +52,7 @@
 - (bool)deleteScopeWithIdentifier:(id)arg1 error:(id*)arg2;
 - (bool)didDropSomeRecordsForScope:(id)arg1;
 - (bool)disableInitialQueriesForScope:(id)arg1 error:(id*)arg2;
+- (bool)disablePrimaryScopeWithError:(id*)arg1;
 - (id)disabledDateForScope:(id)arg1;
 - (bool)discardStagedSyncAnchorForScope:(id)arg1 error:(id*)arg2;
 - (bool)discardStagedSyncAnchorWithScopeFilter:(id)arg1 error:(id*)arg2;
@@ -60,6 +61,7 @@
 - (bool)doesScopeNeedToPushChangesToTransport:(id)arg1;
 - (bool)doesScopeNeedToUpdateTransport:(id)arg1;
 - (id)downloadTransportGroupForScope:(id)arg1;
+- (bool)enablePrimaryScopeWithError:(id*)arg1;
 - (id)enumeratorForScopesIncludeInactive:(bool)arg1;
 - (id)enumeratorForScopesNeedingToPullChangesFromTransport;
 - (id)enumeratorForScopesNeedingToPushChangesToTransport;
@@ -89,6 +91,8 @@
 - (long long)indexForLocalScopeIdentifier:(id)arg1;
 - (id)initWithEngineStore:(id)arg1 name:(id)arg2;
 - (struct NSData { Class x1; }*)initialSyncAnchorForScope:(id)arg1;
+- (id)lastDateOfClearedPushRepositoryForScope:(id)arg1;
+- (id)lastDateOfCompletedPullFromTransportForScope:(id)arg1;
 - (id)libraryInfoForScope:(id)arg1;
 - (bool)markInitialQueryIsDoneForRecordsOfClass:(Class)arg1 forScope:(id)arg2 error:(id*)arg3;
 - (bool)openWithError:(id*)arg1;
@@ -142,6 +146,7 @@
 - (id)status;
 - (id)statusDictionaryForScope:(id)arg1;
 - (bool)storeEstimatedSize:(unsigned long long)arg1 estimatedAssetCount:(unsigned long long)arg2 forScope:(id)arg3 error:(id*)arg4;
+- (bool)storeLastDateOfClearedPushRepository:(id)arg1 forScope:(id)arg2 error:(id*)arg3;
 - (bool)storeScopeListSyncAnchor:(struct NSData { Class x1; }*)arg1 error:(id*)arg2;
 - (bool)storeSupportedFeatureVersionInLastSync:(unsigned long long)arg1 forScope:(id)arg2 error:(id*)arg3;
 - (bool)storeTransientSyncAnchor:(struct NSData { Class x1; }*)arg1 forScope:(id)arg2 error:(id*)arg3;

@@ -26,10 +26,12 @@
 - (id)description;
 - (void)downloadImageDataWithScale:(double)arg1 shouldWriteData:(bool)arg2 completion:(id /* block */)arg3;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (double)height;
 - (id)imageDataFromCacheWithScale:(double)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
+- (bool)isEqual:(id)arg1;
 - (id)passKitUIImageName;
 - (long long)type;
 - (id)urls;

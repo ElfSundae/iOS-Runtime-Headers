@@ -26,6 +26,7 @@
 
 @property (nonatomic, readonly) double bottomInsetPadding;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } keyboardFrame;
+@property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } keyboardFrameInViewCoordinates;
 @property (nonatomic) bool keyboardInteractionCancelled;
 @property (getter=isKeyboardOnscreenWithoutAccessoryView, nonatomic, readonly) bool keyboardOnscreenWithoutAccessoryView;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } keyboardScreenFrame;
@@ -61,6 +62,7 @@
 - (void)keyboardDidChangeFrame:(id)arg1;
 - (void)keyboardDidShowOrHide:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })keyboardFrame;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })keyboardFrameInViewCoordinates;
 - (bool)keyboardInteractionCancelled;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })keyboardScreenFrame;
 - (void)keyboardVisibilityWillChange;
@@ -70,6 +72,7 @@
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })navigationBarInsets;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })navigationBarInsetsWithoutPalette;
 - (id /* block */)overrideScrollBlock;
+- (void)primeWithKeyboardFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)scrollView;
 - (void)setKeyboardInteractionCancelled:(bool)arg1;
 - (void)setKeyboardScreenFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;

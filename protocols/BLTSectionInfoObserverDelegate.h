@@ -5,7 +5,7 @@
 
 @required
 
-- (void)sectionInfoObserver:(BLTSectionInfoObserver *)arg1 updatedSectionInfo:(BBSectionInfo *)arg2 withUniversalSectionID:(NSString *)arg3 displayName:(NSString *)arg4;
+- (void)sectionInfoObserver:(BLTSectionInfoObserver *)arg1 updatedSectionInfoForSectionIDs:(NSArray *)arg2;
 
 @optional
 

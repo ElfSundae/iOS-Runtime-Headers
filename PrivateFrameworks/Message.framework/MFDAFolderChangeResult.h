@@ -14,7 +14,7 @@
 @property (readonly) NSString *folderName;
 @property (readonly) long long statusCode;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)error;
 - (id)folderID;

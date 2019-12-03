@@ -5,7 +5,21 @@
 @interface GEORPAddress : PBCodable <NSCopying> {
     GEOPDAddressObject * _addressObject;
     NSString * _addressString;
+    struct { 
+        unsigned int read_addressObject : 1; 
+        unsigned int read_addressString : 1; 
+        unsigned int read_geoAddress : 1; 
+        unsigned int wrote_addressObject : 1; 
+        unsigned int wrote_addressString : 1; 
+        unsigned int wrote_geoAddress : 1; 
+    }  _flags;
     GEOAddress * _geoAddress;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
 }
 
 @property (nonatomic, retain) GEOPDAddressObject *addressObject;
@@ -15,7 +29,12 @@
 @property (nonatomic, readonly) bool hasAddressString;
 @property (nonatomic, readonly) bool hasGeoAddress;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_readAddressObject;
+- (void)_readAddressString;
+- (void)_readGeoAddress;
 - (id)addressObject;
 - (id)addressString;
 - (void)copyTo:(id)arg1;
@@ -27,8 +46,11 @@
 - (bool)hasAddressString;
 - (bool)hasGeoAddress;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAddressObject:(id)arg1;
 - (void)setAddressString:(id)arg1;

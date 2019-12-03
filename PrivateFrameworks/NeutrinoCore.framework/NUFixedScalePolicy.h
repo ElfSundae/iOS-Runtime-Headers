@@ -20,6 +20,7 @@
 - (id)description;
 - (id)init;
 - (id)initWithScale:(struct { long long x1; long long x2; })arg1;
+- (bool)isEqual:(id)arg1;
 - (struct { long long x1; long long x2; })scale;
 - (struct { long long x1; long long x2; })scaleForImageSize:(struct { long long x1; long long x2; })arg1;
 

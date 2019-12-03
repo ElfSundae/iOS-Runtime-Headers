@@ -6,6 +6,7 @@
     CDPContext * _cdpContext;
     CDPStateController * _cdpController;
     NSObject<OS_dispatch_queue> * _dispatchQueue;
+    bool  _failIfCDPNotEnabled;
     bool  _invalidateCalled;
     id /* block */  _responseHandler;
     SFSession * _sfSession;
@@ -14,6 +15,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *dispatchQueue;
+@property (nonatomic) bool failIfCDPNotEnabled;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) SFSession *sfSession;
 @property (readonly) Class superclass;
@@ -27,12 +29,12 @@
 - (void)cdpContext:(id)arg1 promptForInteractiveAuthenticationWithCompletion:(id /* block */)arg2;
 - (void)cdpContext:(id)arg1 promptForLocalSecretWithHandler:(id)arg2;
 - (void)cdpContext:(id)arg1 promptForRemoteSecretWithDevices:(id)arg2 offeringRemoteApproval:(bool)arg3 validator:(id)arg4;
-- (void)cdpContext:(id)arg1 promptToInformUserOfAccountLockOutWithCompletion:(id /* block */)arg2;
-- (void)cdpContext:(id)arg1 promptToInformUserOfAccountUnlockWithCompletion:(id /* block */)arg2;
 - (id)dispatchQueue;
+- (bool)failIfCDPNotEnabled;
 - (id)init;
 - (void)invalidate;
 - (void)setDispatchQueue:(id)arg1;
+- (void)setFailIfCDPNotEnabled:(bool)arg1;
 - (void)setSfSession:(id)arg1;
 - (id)sfSession;
 

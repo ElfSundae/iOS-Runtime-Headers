@@ -4,6 +4,7 @@
 
 @interface IKDataBinding : NSObject {
     NSSet * _dataBoundKeys;
+    NSDictionary * _entriesByKey;
     struct NSDictionary { Class x1; } * _keyValues;
     NSMutableSet * _unresolvedKeys;
 }
@@ -13,14 +14,16 @@
 @property (nonatomic, readonly) NSSet *unresolvedKeys;
 
 - (void).cxx_destruct;
-- (void)appendKeyValues:(struct NSDictionary { Class x1; }*)arg1;
 - (id)dataBoundKeys;
-- (id)initWithKeyValues:(struct NSDictionary { Class x1; }*)arg1;
+- (id)dataBoundKeysWithAnyOfAttributes:(unsigned long long)arg1;
+- (id)initWithEntries:(id)arg1;
 - (struct NSDictionary { Class x1; }*)keyValues;
+- (id)keysWithAnyOfAttributes:(unsigned long long)arg1;
 - (void)markResolvedForKey:(id)arg1;
 - (void)setKeyValues:(struct NSDictionary { Class x1; }*)arg1;
 - (void)setNeedsResolutionForAllKeys;
 - (void)setNeedsResolutionForKey:(id)arg1;
 - (id)unresolvedKeys;
+- (id)unresolvedKeysWithAnyOfAttributes:(unsigned long long)arg1;
 
 @end

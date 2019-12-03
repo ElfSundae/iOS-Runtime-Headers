@@ -3,6 +3,7 @@
  */
 
 @interface FCCurrentMagazineContentFetchOperation : FCOperation {
+    FCCachePolicy * _cachedPolicy;
     NSArray * _configArticleIDs;
     NSArray * _configIssueIDs;
     FCCloudContext * _context;
@@ -16,6 +17,7 @@
     NSString * _trendingArticleListID;
 }
 
+@property (nonatomic, retain) FCCachePolicy *cachedPolicy;
 @property (nonatomic, retain) NSArray *configArticleIDs;
 @property (nonatomic, retain) NSArray *configIssueIDs;
 @property (nonatomic, retain) FCCloudContext *context;
@@ -33,6 +35,7 @@
 - (void)_fetchCurrentFeatureHeadlinesWithCompletion:(id /* block */)arg1;
 - (id)_filterInaccessibleHeadlines:(id)arg1;
 - (id)_filterInaccessibleIssues:(id)arg1;
+- (id)cachedPolicy;
 - (id)configArticleIDs;
 - (id)configIssueIDs;
 - (id)context;
@@ -47,6 +50,7 @@
 - (id)resultCurrentFeatureHeadlines;
 - (id)resultCurrentIssues;
 - (id)resultTrendingHeadlines;
+- (void)setCachedPolicy:(id)arg1;
 - (void)setConfigArticleIDs:(id)arg1;
 - (void)setConfigIssueIDs:(id)arg1;
 - (void)setContext:(id)arg1;

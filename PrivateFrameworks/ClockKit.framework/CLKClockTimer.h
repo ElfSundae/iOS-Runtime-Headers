@@ -26,9 +26,7 @@
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
-- (void)_backgrounded:(id)arg1;
 - (void)_dumpIndentificationLogs;
-- (void)_foregrounded:(id)arg1;
 - (void)_handleTimePassed;
 - (void)_maybeClearLastSeenTimeComponents;
 - (struct NSNumber { Class x1; }*)_nextTokenWithIdentificationLog:(id /* block */)arg1;
@@ -42,6 +40,7 @@
 - (void)_updateNativeDisplayLink;
 - (void)dealloc;
 - (id)init;
+- (void)pause;
 - (struct NSNumber { Class x1; }*)start30fpsUpdatesWithHandler:(id /* block */)arg1 identificationLog:(id /* block */)arg2;
 - (struct NSNumber { Class x1; }*)startDisplayNativeUpdatesWithHandler:(id /* block */)arg1 identificationLog:(id /* block */)arg2;
 - (struct NSNumber { Class x1; }*)startMinuteUpdatesWithHandler:(id /* block */)arg1;
@@ -55,5 +54,6 @@
 - (void)stopMinuteUpdatesForToken:(struct NSNumber { Class x1; }*)arg1;
 - (void)stopSecondUpdatesForToken:(struct NSNumber { Class x1; }*)arg1;
 - (void)stopSubsecondUpdatesForToken:(id)arg1;
+- (void)unpause;
 
 @end

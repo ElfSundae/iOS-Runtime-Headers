@@ -8,6 +8,12 @@
 
 @property (nonatomic, readonly) double _iAd_cacheControlMaxAge;
 @property (readonly, copy) NSDictionary *allHeaderFields;
+@property (nonatomic, readonly) NSData *ams_actionData;
+@property (nonatomic, readonly) NSData *ams_actionDataV1;
+@property (nonatomic, readonly) NSData *ams_actionDataV1_5;
+@property (nonatomic, readonly) NSString *ams_actionName;
+@property (nonatomic, readonly) NSString *ams_actionNameV1;
+@property (nonatomic, readonly) NSString *ams_actionNameV1_5;
 @property (readonly) long long statusCode;
 @property (readonly) bool tsu_isSuccess;
 
@@ -20,7 +26,7 @@
 - (id)_allHTTPHeaderFieldsAsArrays;
 - (id)_clientCertificateChain;
 - (id)_clientCertificateState;
-- (id)_initWithCFURLResponse:(struct _CFURLResponse { }*)arg1;
+- (id)_initWithCFURLResponse:(id)arg1;
 - (id)_peerCertificateChain;
 - (struct __SecTrust { }*)_peerTrust;
 - (void)_setPeerTrust:(struct __SecTrust { }*)arg1;
@@ -32,6 +38,7 @@
 - (id)initWithURL:(id)arg1 statusCode:(long long)arg2 HTTPVersion:(id)arg3 headerFields:(id)arg4;
 - (id)initWithURL:(id)arg1 statusCode:(long long)arg2 headerFields:(id)arg3 requestTime:(double)arg4;
 - (long long)statusCode;
+- (id)valueForHTTPHeaderField:(id)arg1;
 
 // Image: /System/Library/Frameworks/Social.framework/Social
 
@@ -44,6 +51,20 @@
 // Image: /System/Library/Frameworks/iAd.framework/iAd
 
 - (double)_iAd_cacheControlMaxAge;
+
+// Image: /System/Library/PrivateFrameworks/AppleMediaServices.framework/AppleMediaServices
+
+- (long long)_anisetteType;
+- (id)ams_actionData;
+- (id)ams_actionDataV1;
+- (id)ams_actionDataV1_5;
+- (id)ams_actionName;
+- (id)ams_actionNameV1;
+- (id)ams_actionNameV1_5;
+
+// Image: /System/Library/PrivateFrameworks/DistributedEvaluation.framework/DistributedEvaluation
+
+- (bool)_fides_statusIsHTTPOK;
 
 // Image: /System/Library/PrivateFrameworks/GameCenterFoundation.framework/GameCenterFoundation
 

@@ -3,7 +3,6 @@
  */
 
 @interface EKEventGestureController : NSObject <EKICSPreviewControllerDelegate, UIAlertViewDelegate, UIDragInteractionDelegate, UIDropInteractionDelegate, UIGestureRecognizerDelegate> {
-    id /* block */  _alertSheetCompletionHandler;
     bool  _commitBlocked;
     long long  _consecutivePageTurnCount;
     EKCalendarDate * _currentDay;
@@ -17,7 +16,7 @@
     bool  _dragInitiationLocked;
     UIDragInteraction * _dragInteraction;
     bool  _dragLockDisabled;
-    _UIFeedbackDragSnappingBehavior * _dragSnappingFeedback;
+    _UIDragSnappingFeedbackGenerator * _dragSnappingFeedback;
     UILongPressGestureRecognizer * _draggingGestureRecognizer;
     EKDayOccurrenceView * _draggingView;
     EKDayOccurrenceView * _draggingViewSource;
@@ -55,6 +54,7 @@
     NSTimer * _scrollTimer;
     NSString * _sessionIdentifierForDebug;
     UITapGestureRecognizer * _tapGestureRecognizer;
+    UIView * _targetView;
     double  _timeSinceEnteredPageMargin;
     struct CGPoint { 
         double x; 
@@ -91,15 +91,19 @@
 - (double)_Debug_HoursSinceStartOfDay:(double)arg1;
 - (bool)__timedDelegateBeginEditingSessionAtPoint:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
 - (id)_acceptedExternalTypes;
+- (id)_acceptedFileExternalTypes;
+- (id)_acceptedNonFileExternalTypes;
 - (id)_acceptedTypes;
 - (void)_adjustNewEventDates:(id)arg1 withPoint:(struct CGPoint { double x1; double x2; })arg2;
 - (double)_alignedYOriginForAllDayOccurrence:(id)arg1 atPoint:(struct CGPoint { double x1; double x2; })arg2 floorAtAllDayRegionBottom:(bool)arg3;
+- (double)_allDayBottomPadding;
 - (void)_animateInNewEvent;
 - (bool)_beginEditingSessionAtPoint:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
 - (bool)_beginNewDragFromOffStateWithPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_calculateFrameForDraggingViewIncludingTravelTime:(bool)arg1;
 - (bool)_calendarCanAcceptManagedData:(id)arg1;
 - (void)_cancel;
+- (double)_cancelRegionMargin;
 - (double)_capOccurrenceViewYOrigin:(double)arg1;
 - (id)_captureImageOfDraggingView;
 - (void)_cleanUpAllStateWithTouchPoint:(struct CGPoint { double x1; double x2; })arg1 commit:(bool)arg2;
@@ -119,6 +123,7 @@
 - (void)_dragFailedToStart;
 - (long long)_dragInteraction:(id)arg1 dataOwnerForAddingToSession:(id)arg2 withTouchAtPoint:(struct CGPoint { double x1; double x2; })arg3;
 - (long long)_dragInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
+- (bool)_dragInteraction:(id)arg1 sessionSupportsSystemDrag:(id)arg2;
 - (void)_dragInteractionDidCancelLiftWithoutDragging:(id)arg1;
 - (int)_draggingState;
 - (long long)_dropInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
@@ -127,6 +132,7 @@
 - (void)_enableSystemPreviewForDrag:(id)arg1;
 - (struct CGPoint { double x1; double x2; })_estimateFinalDropOriginForTimedDelegate;
 - (id)_eventToUseAtInteractionStart:(struct CGPoint { double x1; double x2; })arg1;
+- (void)_extractFileFromSession:(id)arg1;
 - (id)_findFirstCalendar:(id)arg1;
 - (id)_findLocalDragItemInSession:(id)arg1;
 - (bool)_flingOrCancelDraggingViewIfNeeded;
@@ -166,7 +172,6 @@
 - (bool)_useNewDragAndDropAPI;
 - (id)_viewForTracking;
 - (void)_writeDraggingChangesToOccurrenceWithTouchPoint:(struct CGPoint { double x1; double x2; })arg1;
-- (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
 - (bool)canProposeNewTime:(id)arg1;
 - (bool)commitBlocked;
 - (void)dealloc;

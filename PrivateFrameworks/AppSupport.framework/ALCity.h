@@ -5,6 +5,7 @@
 @interface ALCity : NSObject {
     NSString * _countryName;
     NSString * _countryOverride;
+    bool  _displayNameIncludingCountryShowsOnlyCountry;
     int  _identifier;
     NSString * _identifierForCPCity;
     float  _latitude;
@@ -22,6 +23,7 @@
 @property (nonatomic, readonly) NSString *classicIdentifier;
 @property (nonatomic, retain) NSString *countryName;
 @property (nonatomic, retain) NSString *countryOverride;
+@property (nonatomic) bool displayNameIncludingCountryShowsOnlyCountry;
 @property (nonatomic) int identifier;
 @property (nonatomic) float latitude;
 @property (nonatomic, retain) NSString *localeCode;
@@ -41,6 +43,7 @@
 - (id)description;
 - (id)displayNameIncludingCountry:(bool)arg1;
 - (id)displayNameIncludingCountry:(bool)arg1 withFormat:(id)arg2;
+- (bool)displayNameIncludingCountryShowsOnlyCountry;
 - (void)ensureLocalized;
 - (unsigned long long)hash;
 - (int)identifier;
@@ -55,6 +58,7 @@
 - (id)properties;
 - (void)setCountryName:(id)arg1;
 - (void)setCountryOverride:(id)arg1;
+- (void)setDisplayNameIncludingCountryShowsOnlyCountry:(bool)arg1;
 - (void)setIdentifier:(int)arg1;
 - (void)setLatitude:(float)arg1;
 - (void)setLocaleCode:(id)arg1;

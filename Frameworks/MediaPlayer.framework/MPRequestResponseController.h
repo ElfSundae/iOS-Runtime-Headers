@@ -6,8 +6,10 @@
     NSObject<OS_dispatch_queue> * _calloutQueue;
     <MPRequestCancellationToken> * _cancelToken;
     <MPRequestResponseControllerDelegate> * _delegate;
+    NSError * _lastError;
     bool  _needsReload;
     long long  _numberOfObservers;
+    id  _pendingResponse;
     NSObject<OS_dispatch_queue> * _queue;
     id  _request;
     long long  _requestRevision;
@@ -15,6 +17,7 @@
     double  _retryInterval;
     NSObject<OS_dispatch_source> * _retryTimer;
     bool  _shouldAutomaticallyLoad;
+    unsigned long long  _stateHandle;
 }
 
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *calloutQueue;
@@ -29,6 +32,7 @@
 - (void)_responseDidInvalidate:(id)arg1;
 - (void)beginAutomaticResponseLoading;
 - (id)calloutQueue;
+- (void)dealloc;
 - (id)delegate;
 - (void)endAutomaticResponseLoading;
 - (id)init;

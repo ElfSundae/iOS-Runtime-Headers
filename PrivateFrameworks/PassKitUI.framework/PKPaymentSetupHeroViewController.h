@@ -35,7 +35,6 @@
 - (void)_terminateSetupFlow;
 - (bool)allowsManualEntry;
 - (id)delegate;
-- (unsigned long long)edgesForExtendedLayout;
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (void)explanationViewDidSelectSetupLater:(id)arg1;
 - (id)heroImageController;

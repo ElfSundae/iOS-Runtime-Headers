@@ -8,14 +8,14 @@
     EKEvent * _eventCopy;
     bool  _inlineDayViewRespectsSelectedCalendarsFilter;
     NSDate * _proposedTime;
-    bool  _showsInlineDayView;
 }
 
 @property (nonatomic) bool inlineDayViewRespectsSelectedCalendarsFilter;
 @property (nonatomic, retain) NSDate *proposedTime;
-@property (nonatomic) bool showsInlineDayView;
 
 - (void).cxx_destruct;
+- (void)_createNewEventCopy;
+- (void)_datesForPreviewViewControllerWithStartDate:(id*)arg1 endDate:(id*)arg2;
 - (id)_dayPreviewViewController;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (bool)configureWithCalendar:(id)arg1 preview:(bool)arg2;
@@ -24,10 +24,10 @@
 - (void)eventViewController:(id)arg1 didSelectReadOnlySubitem:(unsigned long long)arg2;
 - (bool)inlineDayViewRespectsSelectedCalendarsFilter;
 - (id)proposedTime;
+- (void)refreshCopiedEvents;
 - (void)reset;
+- (void)setEvent:(id)arg1 store:(id)arg2;
 - (void)setInlineDayViewRespectsSelectedCalendarsFilter:(bool)arg1;
 - (void)setProposedTime:(id)arg1;
-- (void)setShowsInlineDayView:(bool)arg1;
-- (bool)showsInlineDayView;
 
 @end

@@ -7,4 +7,8 @@
 
 - (void)mf_setAsSourceForPopoverPresentationController:(UIPopoverPresentationController *)arg1;
 
+@optional
+
+- (void)mf_setAsSourceWithExtendedRectForPopoverPresentationController:(UIPopoverPresentationController *)arg1;
+
 @end

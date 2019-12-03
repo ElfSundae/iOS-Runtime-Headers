@@ -3,6 +3,12 @@
  */
 
 @interface _UIAssetManager : NSObject {
+    struct { 
+        unsigned int isStarkAssetManager : 1; 
+        unsigned int isStandaloneAssetManager : 1; 
+        unsigned int isUIKitAssetsManager : 1; 
+        unsigned int isCoreGlyphsManager : 1; 
+    }  _assetManagerFlags;
     NSString * _assetManagerName;
     NSMapTable * _assetMap;
     struct os_unfair_lock_s { 
@@ -11,9 +17,6 @@
     NSBundle * _bundle;
     CUICatalog * _catalog;
     _UICache * _imageCache;
-    bool  _isStandaloneAssetManager;
-    bool  _isStarkAssetManager;
-    bool  _managingUIKitAssets;
     _UIAssetManager * _nextAssetManager;
     long long  _preferredGamut;
     long long  _preferredIdiom;
@@ -25,10 +28,12 @@
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
     }  _runtimeCatalogCreationLock;
+    NSDictionary * _systemSymbolNameAliases;
 }
 
 @property (nonatomic, readonly) NSBundle *bundle;
 @property (nonatomic, readonly) NSString *carFileName;
+@property (getter=_managingCoreGlyphs, nonatomic, readonly) bool managingCoreGlyphs;
 @property (getter=_managingUIKitAssets, nonatomic, readonly) bool managingUIKitAssets;
 @property (nonatomic, retain) _UIAssetManager *nextAssetManager;
 @property (nonatomic) double preferredScale;
@@ -53,20 +58,31 @@
 + (id)sharedRuntimeCatalog;
 + (bool)validStackImageFile:(id)arg1;
 
-- (id)_assetForName:(id)arg1 shouldCreateWhenNotPresent:(bool)arg2;
+- (id)_allImageNames;
+- (id)_appearanceNames;
+- (id)_assetForName:(id)arg1;
 - (id)_assetFromMapForName:(id)arg1;
 - (id)_assetFromMapForName:(id)arg1 lock:(bool)arg2;
 - (id)_catalog;
 - (void)_clearCachedResources;
 - (void)_clearCachedResources:(id)arg1;
+- (id)_defaultAppearanceNames;
 - (void)_disconnectImageAssets;
+- (bool)_hasMultipleAppearances;
+- (bool)_imageBelongsToCoreGlyphs:(id)arg1;
 - (bool)_imageBelongsToUIKit:(id)arg1;
+- (bool)_imageIsSystemImage:(id)arg1;
 - (id)_initWithName:(id)arg1 inBundle:(id)arg2 idiom:(long long)arg3 lock:(bool)arg4 allowMissingCatalog:(bool)arg5;
 - (id)_insertAssetIntoMap:(id)arg1 forName:(id)arg2;
 - (id)_insertAssetIntoMap:(id)arg1 forName:(id)arg2 lock:(bool)arg3;
+- (bool)_isSystemAssetManager;
+- (id)_lookUpObjectForTraitCollection:(id)arg1 withAccessorWithAppearanceName:(id /* block */)arg2;
+- (bool)_managingCoreGlyphs;
 - (bool)_managingUIKitAssets;
 - (void)_performBlockWithAssetLock:(id /* block */)arg1;
 - (id)_starkAssetManager;
+- (id)_symbolNameAliasForName:(id)arg1;
+- (id)_translateAppearanceNameToNative:(id)arg1;
 - (id)bundle;
 - (id)carFileName;
 - (id)colorNamed:(id)arg1 withTraitCollection:(id)arg2;
@@ -75,9 +91,10 @@
 - (id)description;
 - (void)disableCacheFlushing;
 - (id)imageNamed:(id)arg1;
+- (id)imageNamed:(id)arg1 configuration:(id)arg2;
+- (id)imageNamed:(id)arg1 configuration:(id)arg2 cachingOptions:(unsigned long long)arg3 attachCatalogImage:(bool)arg4;
 - (id)imageNamed:(id)arg1 idiom:(long long)arg2;
 - (id)imageNamed:(id)arg1 idiom:(long long)arg2 subtype:(unsigned long long)arg3;
-- (id)imageNamed:(id)arg1 scale:(double)arg2 gamut:(long long)arg3 layoutDirection:(long long)arg4 idiom:(long long)arg5 userInterfaceStyle:(long long)arg6 subtype:(unsigned long long)arg7 cachingOptions:(unsigned long long)arg8 sizeClassPair:(struct { long long x1; long long x2; })arg9 attachCatalogImage:(bool)arg10;
 - (id)imageNamed:(id)arg1 scale:(double)arg2 idiom:(long long)arg3 subtype:(unsigned long long)arg4;
 - (id)imageNamed:(id)arg1 withTrait:(id)arg2;
 - (id)initManagerWithoutCatalogWithName:(id)arg1;
@@ -86,6 +103,7 @@
 - (id)nextAssetManager;
 - (double)preferredScale;
 - (id)preferredTraitCollection;
+- (id)resolvedColorNamed:(id)arg1 withTraitCollection:(id)arg2;
 - (id)runtimeCatalog;
 - (void)setNextAssetManager:(id)arg1;
 - (void)setPreferredScale:(double)arg1;

@@ -20,7 +20,11 @@
 @property (nonatomic, retain) VUITextBadgeLayout *textBadgeLayout;
 @property (nonatomic, retain) VUITextLayout *titleLayout;
 
++ (void)_setAppImageDefaultSize:(id)arg1;
++ (void)_setLogoImageDefaultSize:(id)arg1;
++ (id)appImageLayout;
 + (id)layoutWithLayout:(id)arg1 element:(id)arg2;
++ (id)logoImageLayout;
 
 - (void).cxx_destruct;
 - (id)appImageLayout;

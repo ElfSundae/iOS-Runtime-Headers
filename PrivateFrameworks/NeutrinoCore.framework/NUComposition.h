@@ -20,6 +20,7 @@
 - (void).cxx_destruct;
 - (id)contents;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)debugDescription;
 - (id)description;
 - (unsigned long long)hash;
 - (id)identifier;

@@ -8,10 +8,14 @@
     AVCameraCalibrationData * cameraCalibrationData;
     AVDepthData * depthData;
     bool  didTryToDecodeDepthData;
+    bool  didTryToDecodeHairSegmentationMatte;
     bool  didTryToDecodePortraitEffectsMatte;
+    bool  didTryToDecodeSkinSegmentationMatte;
+    bool  didTryToDecodeTeethSegmentationMatte;
     NSDictionary * embeddedThumbnailPhotoFormat;
     struct __CVBuffer { } * embeddedThumbnailSourcePixelBuffer;
     unsigned int  expectedPhotoProcessingFlags;
+    AVSemanticSegmentationMatte * hairSegmentationMatte;
     bool  isRawPhoto;
     bool  lensStabilizationSupported;
     NSDictionary * metadata;
@@ -22,9 +26,13 @@
     AVPortraitEffectsMatte * portraitEffectsMatte;
     AVApplePortraitMetadata * portraitMetadata;
     struct __CVBuffer { } * previewPixelBuffer;
+    AVCapturePhotoPrivateClientMetadata * privateClientMetadata;
+    NSString * processedFileType;
     AVCaptureResolvedPhotoSettings * resolvedSettings;
     unsigned long long  sequenceCount;
+    AVSemanticSegmentationMatte * skinSegmentationMatte;
     NSString * sourceDeviceType;
+    AVSemanticSegmentationMatte * teethSegmentationMatte;
     struct { 
         long long value; 
         int timescale; 

@@ -5,6 +5,7 @@
 @interface SBOrientationTransformWrapperView : UIView {
     long long  _containerOrientation;
     long long  _contentOrientation;
+    NSMutableArray * _hitTestViews;
     _SBOrientationTransformedContentView * _transformedView;
 }
 
@@ -13,8 +14,11 @@
 @property (nonatomic, readonly) NSArray *contentViews;
 
 - (void).cxx_destruct;
+- (struct CGSize { double x1; double x2; })_referenceContainerSize;
 - (void)_updateGeometry;
 - (void)addContentView:(id)arg1;
+- (void)addGestureRecognizerToTransformedView:(id)arg1;
+- (void)addHitTestView:(id)arg1;
 - (void)bringContentSubviewToFront:(id)arg1;
 - (long long)containerOrientation;
 - (long long)contentOrientation;
@@ -26,8 +30,10 @@
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })convertTransformFromContainerInterfaceOrientationToContentInterfaceOrientation:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg1;
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })convertTransformFromContentInterfaceOrientationToContainerInterfaceOrientation:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg1;
 - (id)description;
+- (id)hitTest:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)layoutSubviews;
+- (void)removeGestureRecognizerFromTransformedView:(id)arg1;
 - (void)setBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setCenter:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setContainerOrientation:(long long)arg1;

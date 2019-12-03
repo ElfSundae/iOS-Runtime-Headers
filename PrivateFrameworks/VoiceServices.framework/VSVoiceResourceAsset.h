@@ -43,6 +43,7 @@
 - (id)resourceList;
 - (id)resourceMimeTypes;
 - (id)searchPathURL;
+- (id)serverVoiceNameForGender:(long long)arg1;
 - (void)setLanguages:(id)arg1;
 - (void)setPitch:(float)arg1;
 - (void)setRate:(float)arg1;

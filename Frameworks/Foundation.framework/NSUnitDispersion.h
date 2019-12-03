@@ -7,6 +7,7 @@
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
 + (id)baseUnit;
++ (void)initialize;
 + (id)partsPerMillion;
 
 // Image: /System/Library/Frameworks/HealthKit.framework/HealthKit

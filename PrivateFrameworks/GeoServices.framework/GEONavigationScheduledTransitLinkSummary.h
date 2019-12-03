@@ -4,11 +4,24 @@
 
 @interface GEONavigationScheduledTransitLinkSummary : PBCodable <NSCopying> {
     struct { 
-        unsigned int lineID : 1; 
-        unsigned int scheduledArrival : 1; 
-        unsigned int scheduledDeparture : 1; 
-    }  _has;
+        unsigned int has_lineID : 1; 
+        unsigned int has_scheduledArrival : 1; 
+        unsigned int has_scheduledDeparture : 1; 
+        unsigned int read_stopFrom : 1; 
+        unsigned int read_stopTo : 1; 
+        unsigned int wrote_lineID : 1; 
+        unsigned int wrote_scheduledArrival : 1; 
+        unsigned int wrote_scheduledDeparture : 1; 
+        unsigned int wrote_stopFrom : 1; 
+        unsigned int wrote_stopTo : 1; 
+    }  _flags;
     unsigned long long  _lineID;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     double  _scheduledArrival;
     double  _scheduledDeparture;
     GEONavigationTransitStopSummary * _stopFrom;
@@ -26,7 +39,11 @@
 @property (nonatomic, retain) GEONavigationTransitStopSummary *stopFrom;
 @property (nonatomic, retain) GEONavigationTransitStopSummary *stopTo;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_readStopFrom;
+- (void)_readStopTo;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -37,10 +54,13 @@
 - (bool)hasStopFrom;
 - (bool)hasStopTo;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (id)initWithTransitTripRouteStep:(id)arg1 originSummary:(id)arg2 destinationSummary:(id)arg3;
 - (bool)isEqual:(id)arg1;
 - (unsigned long long)lineID;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (double)scheduledArrival;
 - (double)scheduledDeparture;

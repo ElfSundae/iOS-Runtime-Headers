@@ -3,11 +3,10 @@
  */
 
 @interface HMDRemoteMessageNotifications : HMFObject {
-    NSObject<OS_dispatch_queue> * _propertyQueue;
+    <HMFLocking> * _lock;
     NSMapTable * _sessionNotificationPayloads;
 }
 
-@property (nonatomic, retain) NSObject<OS_dispatch_queue> *propertyQueue;
 @property (nonatomic, retain) NSMapTable *sessionNotificationPayloads;
 
 + (void)initialize;
@@ -21,10 +20,8 @@
 - (id)description;
 - (id)init;
 - (id)notificationPayloadWithIdentifier:(id)arg1 device:(id)arg2;
-- (id)propertyQueue;
 - (void)removeNotificationPayloadWithIdentifier:(id)arg1 device:(id)arg2;
 - (id)sessionNotificationPayloads;
-- (void)setPropertyQueue:(id)arg1;
 - (void)setSessionNotificationPayloads:(id)arg1;
 
 @end

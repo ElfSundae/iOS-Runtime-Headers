@@ -10,7 +10,7 @@
     }  _graph;
 }
 
-@property (nonatomic, readonly) struct Box { int (**x1)(); struct Graph {} *x2; struct IsoGroup {} *x3; struct Subset {} *x4; /* Warning: unhandled struct encoding: '{basic_string<char' */ struct x5; }*box; /* unknown property attribute:  std::__1::default_delete<DSPGraph::FileInjector> >}}}{function<void (double)>={type=[24C]}^{__base<void (double)>}}{function<void (DSPGraph::Box *)>={type=[24C]}^{__base<void (DSPGraph::Box *)>}}{function<void (DSPGraph::Box *)>={type=[24C]}^{__base<void (DSPGraph::Box *)>}}BBBBq} */
+@property (nonatomic, readonly) struct Box { int (**x1)(); struct Graph {} *x2; struct IsoGroup {} *x3; struct Subset {} *x4; /* Warning: unhandled struct encoding: '{basic_string<char' */ struct x5; }*box; /* unknown property attribute:  int)>}}}BBBBq} */
 @property (nonatomic, readonly) NSString *name;
 @property (nonatomic, readonly) long long numInputs;
 @property (nonatomic, readonly) long long numOutputs;

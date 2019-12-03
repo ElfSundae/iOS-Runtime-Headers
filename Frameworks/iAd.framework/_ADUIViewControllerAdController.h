@@ -24,7 +24,7 @@
 @property (nonatomic, retain) ADBannerView *bannerView;
 @property (nonatomic) bool canDisplayBannerAds;
 @property (nonatomic) bool canOwnSharedBanner;
-@property (nonatomic, readonly) UIViewController *contentViewController;
+@property (nonatomic) UIViewController *contentViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (getter=isDisplayingBannerAd, nonatomic, readonly) bool displayingBannerAd;
@@ -40,6 +40,7 @@
 + (id)_sharedBannerView;
 + (void)prepareInterstitialAds;
 
+- (void).cxx_destruct;
 - (void)_considerTakingBannerViewAnimated:(bool)arg1;
 - (void)_hideBannerView;
 - (void)_layoutContentAndBannerViewAnimated:(bool)arg1 completion:(id /* block */)arg2;
@@ -56,7 +57,6 @@
 - (bool)canDisplayBannerAds;
 - (bool)canOwnSharedBanner;
 - (id)contentViewController;
-- (void)dealloc;
 - (id)initWithContentViewController:(id)arg1;
 - (id)interstitialAd;
 - (void)interstitialAd:(id)arg1 didFailWithError:(id)arg2;
@@ -76,6 +76,7 @@
 - (void)setBannerView:(id)arg1;
 - (void)setCanDisplayBannerAds:(bool)arg1;
 - (void)setCanOwnSharedBanner:(bool)arg1;
+- (void)setContentViewController:(id)arg1;
 - (void)setInterstitialAd:(id)arg1;
 - (void)setInterstitialAdSection:(id)arg1;
 - (void)setInterstitialAuthUserName:(id)arg1;

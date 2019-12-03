@@ -11,6 +11,7 @@
 
 + (id)allocTempFileWithBase:(id)arg1 filename:(id*)arg2;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (bool)encrypt;
 - (bool)encryptIntoOutputFile;

@@ -2,13 +2,17 @@
    Image: /System/Library/PrivateFrameworks/CoreSuggestions.framework/CoreSuggestions
  */
 
-@interface SGSuggestionsService : NSObject <SGSuggestionsServiceContactsProtocol, SGSuggestionsServiceEventsProtocol, SGSuggestionsServiceFidesProtocol, SGSuggestionsServiceInternalProtocol, SGSuggestionsServiceMailProtocol> {
-    _PASLock * _cacheLock;
+@interface SGSuggestionsService : NSObject <SGSuggestionsServiceContactsProtocol, SGSuggestionsServiceEventsProtocol, SGSuggestionsServiceFidesProtocol, SGSuggestionsServiceInternalProtocol, SGSuggestionsServiceIpsosProtocol, SGSuggestionsServiceMailProtocol, SGSuggestionsServiceRemindersProtocol> {
     SGDaemonConnection * _daemonConnection;
     bool  _keepDirty;
     NSString * _machServiceName;
     <SGDSuggestManagerAllProtocol> * _managerForTesting;
     bool  _queuesRequestsIfBusy;
+    double  _syncTimeout;
+    struct _opaque_pthread_mutex_t { 
+        long long __sig; 
+        BOOL __opaque[56]; 
+    }  _syncTimeoutLock;
 }
 
 + (id)_daemonConnectionForMachServiceName:(id)arg1 protocol:(id)arg2 useCache:(bool)arg3;
@@ -21,8 +25,11 @@
 + (id)serviceForEvents;
 + (id)serviceForFides;
 + (id)serviceForInternal;
++ (id)serviceForIpsos;
 + (id)serviceForMail;
 + (id)serviceForMessages;
++ (id)serviceForReminders;
++ (id)serviceForURLs;
 + (id)wantedSearchableItemsFromItems:(id)arg1;
 
 - (void).cxx_destruct;
@@ -36,6 +43,9 @@
 - (void)allContactsLimitedTo:(unsigned long long)arg1 withCompletion:(id /* block */)arg2;
 - (id)allEventsLimitedTo:(unsigned long long)arg1 error:(id*)arg2;
 - (void)allEventsLimitedTo:(unsigned long long)arg1 withCompletion:(id /* block */)arg2;
+- (id)allRemindersLimitedTo:(unsigned long long)arg1 error:(id*)arg2;
+- (void)allRemindersLimitedTo:(unsigned long long)arg1 withCompletion:(id /* block */)arg2;
+- (id)cacheSnapshotFuture;
 - (bool)clearCachesFully:(bool)arg1 error:(id*)arg2;
 - (void)clearCachesFully:(bool)arg1 withCompletion:(id /* block */)arg2;
 - (id)cnContactMatchesForRecordId:(id)arg1 error:(id*)arg2;
@@ -50,8 +60,12 @@
 - (void)confirmEvent:(id)arg1 withCompletion:(id /* block */)arg2;
 - (bool)confirmEventByRecordId:(id)arg1 error:(id*)arg2;
 - (void)confirmEventByRecordId:(id)arg1 withCompletion:(id /* block */)arg2;
+- (bool)confirmRealtimeReminder:(id)arg1 error:(id*)arg2;
+- (void)confirmRealtimeReminder:(id)arg1 withCompletion:(id /* block */)arg2;
 - (bool)confirmRecord:(id)arg1 error:(id*)arg2;
 - (void)confirmRecord:(id)arg1 withCompletion:(id /* block */)arg2;
+- (bool)confirmReminderByRecordId:(id)arg1 error:(id*)arg2;
+- (void)confirmReminderByRecordId:(id)arg1 withCompletion:(id /* block */)arg2;
 - (id)contactFromRecordID:(id)arg1;
 - (id)contactFromRecordID:(id)arg1 error:(id*)arg2;
 - (void)contactFromRecordID:(id)arg1 withCompletion:(id /* block */)arg2;
@@ -91,16 +105,24 @@
 - (id)eventFromUniqueId:(id)arg1 error:(id*)arg2;
 - (void)eventFromUniqueId:(id)arg1 withCompletion:(id /* block */)arg2;
 - (void)eventsForSchemas:(id)arg1 usingStore:(id)arg2 completion:(id /* block */)arg3;
+- (id)foundInStringForRecordId:(id)arg1 style:(unsigned char)arg2 error:(id*)arg3;
+- (void)foundInStringForRecordId:(id)arg1 style:(unsigned char)arg2 withCompletion:(id /* block */)arg3;
 - (id)fullDownloadRequestBatch:(unsigned long long)arg1 error:(id*)arg2;
 - (void)fullDownloadRequestBatch:(unsigned long long)arg1 withCompletion:(id /* block */)arg2;
 - (id)harvestedSuggestionsFromSearchableItem:(id)arg1 options:(unsigned long long)arg2 error:(id*)arg3;
 - (void)harvestedSuggestionsFromSearchableItem:(id)arg1 options:(unsigned long long)arg2 withCompletion:(id /* block */)arg3;
 - (id)initWithMachServiceName:(id)arg1 protocol:(id)arg2;
 - (id)initWithMachServiceName:(id)arg1 protocol:(id)arg2 useCache:(bool)arg3;
+- (id)ipsosMessagesWithSearchableItems:(id)arg1 error:(id*)arg2;
+- (void)ipsosMessagesWithSearchableItems:(id)arg1 withCompletion:(id /* block */)arg2;
 - (bool)isEnabledWithError:(id*)arg1;
 - (void)isEventCandidateForURL:(id)arg1 andTitle:(id)arg2 withCompletion:(id /* block */)arg3;
 - (void)keepDirty:(bool)arg1;
 - (void)keysForSchemas:(id)arg1 completion:(id /* block */)arg2;
+- (bool)launchAppForSuggestedEventUsingLaunchInfo:(id)arg1 error:(id*)arg2;
+- (void)launchAppForSuggestedEventUsingLaunchInfo:(id)arg1 withCompletion:(id /* block */)arg2;
+- (id)launchInfoForSuggestedEventWithUniqueIdentifier:(id)arg1 sourceURL:(id)arg2 clientLocale:(id)arg3 error:(id*)arg4;
+- (void)launchInfoForSuggestedEventWithUniqueIdentifier:(id)arg1 sourceURL:(id)arg2 clientLocale:(id)arg3 withCompletion:(id /* block */)arg4;
 - (void)logEventInteractionForEventWithExternalIdentifier:(id)arg1 interface:(unsigned short)arg2 actionType:(unsigned short)arg3;
 - (void)logEventInteractionForEventWithUniqueKey:(id)arg1 interface:(unsigned short)arg2 actionType:(unsigned short)arg3;
 - (void)logMetricAutocompleteResult:(int)arg1 recordId:(id)arg2 contactIdentifier:(id)arg3 bundleId:(id)arg4;
@@ -111,9 +133,12 @@
 - (void)logMetricSearchResultsIncludedPureSuggestionWithBundleId:(id)arg1;
 - (void)logMetricSuggestedContactDetailShown:(id)arg1 contactIdentifier:(id)arg2 bundleId:(id)arg3;
 - (void)logMetricSuggestedContactDetailUsed:(id)arg1 contactIdentifier:(id)arg2 bundleId:(id)arg3;
+- (void)logSuggestionInteractionForRecordId:(id)arg1 interface:(unsigned short)arg2 actionType:(unsigned short)arg3;
 - (void)messagesToRefreshWithCompletion:(id /* block */)arg1;
 - (id)messagesToRefreshWithError:(id*)arg1;
 - (id)namesForDetail:(id)arg1 limitTo:(unsigned long long)arg2 prependMaybe:(bool)arg3 error:(id*)arg4;
+- (id)namesForDetail:(id)arg1 limitTo:(unsigned long long)arg2 prependMaybe:(bool)arg3 onlySignificant:(bool)arg4 error:(id*)arg5;
+- (void)namesForDetail:(id)arg1 limitTo:(unsigned long long)arg2 prependMaybe:(bool)arg3 onlySignificant:(bool)arg4 withCompletion:(id /* block */)arg5;
 - (void)namesForDetail:(id)arg1 limitTo:(unsigned long long)arg2 prependMaybe:(bool)arg3 withCompletion:(id /* block */)arg4;
 - (id)originFromRecordId:(id)arg1 error:(id*)arg2;
 - (void)originFromRecordId:(id)arg1 withCompletion:(id /* block */)arg2;
@@ -127,7 +152,8 @@
 - (void)purgeSpotlightReferencesWithBundleIdentifier:(id)arg1 uniqueIdentifiers:(id)arg2 completion:(id /* block */)arg3;
 - (bool)queuesRequestsIfBusy;
 - (void)realtimeSuggestionsFromURL:(id)arg1 title:(id)arg2 HTMLPayload:(id)arg3 extractionDate:(id)arg4 withCompletion:(id /* block */)arg5;
-- (void)refreshCacheSnapshot;
+- (id)recentURLsWithLimit:(unsigned int)arg1 error:(id*)arg2;
+- (void)recentURLsWithLimit:(unsigned int)arg1 withCompletion:(id /* block */)arg2;
 - (id)registerContactsChangeObserver:(id /* block */)arg1;
 - (id)registerEventsChangeObserver:(id /* block */)arg1;
 - (bool)rejectContact:(id)arg1 error:(id*)arg2;
@@ -140,8 +166,16 @@
 - (void)rejectEvent:(id)arg1 withCompletion:(id /* block */)arg2;
 - (bool)rejectEventByRecordId:(id)arg1 error:(id*)arg2;
 - (void)rejectEventByRecordId:(id)arg1 withCompletion:(id /* block */)arg2;
+- (bool)rejectRealtimeReminder:(id)arg1 error:(id*)arg2;
+- (void)rejectRealtimeReminder:(id)arg1 withCompletion:(id /* block */)arg2;
 - (bool)rejectRecord:(id)arg1 error:(id*)arg2;
 - (void)rejectRecord:(id)arg1 withCompletion:(id /* block */)arg2;
+- (bool)rejectReminderByRecordId:(id)arg1 error:(id*)arg2;
+- (void)rejectReminderByRecordId:(id)arg1 withCompletion:(id /* block */)arg2;
+- (bool)reminderAlarmTriggeredForRecordId:(id)arg1 error:(id*)arg2;
+- (void)reminderAlarmTriggeredForRecordId:(id)arg1 withCompletion:(id /* block */)arg2;
+- (id)reminderTitleForContent:(id)arg1 error:(id*)arg2;
+- (void)reminderTitleForContent:(id)arg1 withCompletion:(id /* block */)arg2;
 - (bool)removeAllStoredPseudoContacts:(id*)arg1;
 - (void)removeAllStoredPseudoContactsWithCompletion:(id /* block */)arg1;
 - (bool)reportMessagesFound:(id)arg1 lost:(id)arg2 error:(id*)arg3;
@@ -153,9 +187,9 @@
 - (bool)sendRTCLogs:(id*)arg1;
 - (void)setManagerForTesting:(id)arg1;
 - (void)setQueuesRequestsIfBusy:(bool)arg1;
+- (void)setSyncTimeout:(double)arg1;
 - (bool)sleep:(id*)arg1;
 - (void)sleepWithCompletion:(id /* block */)arg1;
-- (id)spotlightObserver;
 - (bool)spotlightReimportFromIdentifier:(id)arg1 forPersonHandle:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 error:(id*)arg5;
 - (void)spotlightReimportFromIdentifier:(id)arg1 forPersonHandle:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 withCompletion:(id /* block */)arg5;
 - (id)suggestContactMatchesWithFullTextSearch:(id)arg1 limitTo:(unsigned long long)arg2 error:(id*)arg3;
@@ -182,8 +216,11 @@
 - (id)suggestionsFromSearchableItem:(id)arg1 options:(unsigned long long)arg2 error:(id*)arg3;
 - (void)suggestionsFromSearchableItem:(id)arg1 options:(unsigned long long)arg2 withCompletion:(id /* block */)arg3;
 - (void)suggestionsFromURL:(id)arg1 title:(id)arg2 HTMLPayload:(id)arg3 withCompletion:(id /* block */)arg4;
+- (double)syncTimeout;
 - (bool)updateMessages:(id)arg1 state:(unsigned long long)arg2 error:(id*)arg3;
 - (void)updateMessages:(id)arg1 state:(unsigned long long)arg2 withCompletion:(id /* block */)arg3;
+- (id)urlsFoundBetweenStartDate:(id)arg1 endDate:(id)arg2 excludingBundleIdentifiers:(id)arg3 limit:(unsigned int)arg4 error:(id*)arg5;
+- (void)urlsFoundBetweenStartDate:(id)arg1 endDate:(id)arg2 excludingBundleIdentifiers:(id)arg3 limit:(unsigned int)arg4 withCompletion:(id /* block */)arg5;
 - (void)waitForEventWithIdentifier:(id)arg1 toAppearInEventStoreWithCompletion:(id /* block */)arg2;
 - (void)waitForEventWithIdentifier:(id)arg1 toAppearInEventStoreWithLastModificationDate:(id)arg2 completion:(id /* block */)arg3;
 

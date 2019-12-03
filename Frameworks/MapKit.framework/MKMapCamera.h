@@ -11,10 +11,12 @@
     double  _heading;
     MKMapView * _mapView;
     double  _pitch;
+    bool  _pitchAdjustsAltitude;
 }
 
 @property (nonatomic) double altitude;
 @property (nonatomic) struct CLLocationCoordinate2D { double x1; double x2; } centerCoordinate;
+@property (nonatomic) double centerCoordinateDistance;
 @property (nonatomic) double heading;
 @property (nonatomic) double pitch;
 @property (getter=_precisePitch, setter=_setPrecisePitch:, nonatomic) double precisePitch;
@@ -36,6 +38,7 @@
 - (bool)_validate;
 - (double)altitude;
 - (struct CLLocationCoordinate2D { double x1; double x2; })centerCoordinate;
+- (double)centerCoordinateDistance;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
@@ -45,6 +48,7 @@
 - (double)pitch;
 - (void)setAltitude:(double)arg1;
 - (void)setCenterCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg1;
+- (void)setCenterCoordinateDistance:(double)arg1;
 - (void)setHeading:(double)arg1;
 - (void)setPitch:(double)arg1;
 

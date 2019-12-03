@@ -35,7 +35,6 @@
 - (id)allowedCharacters;
 - (id)currencyCode;
 - (id)displayFormatPaddingCharacters;
-- (id)displayFormatPaddingPrefix;
 - (id)displayFormatPlaceholder;
 - (id)displayString;
 - (unsigned long long)fieldType;

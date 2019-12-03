@@ -4,8 +4,11 @@
 
 @interface GEOCountryConfiguration : NSObject <GEOResourceManifestTileGroupObserver, _GEOCountryConfigurationServerProxyDelegate> {
     NSString * _countryCode;
+    bool  _currentCountrySupportsNavigation;
+    geo_isolater * _currentCountrySupportsNavigationIsolater;
+    bool  _determinedCurrentCountrySupportsNavigation;
     bool  _hasURLAuthenticationTimeToLive;
-    NSObject<OS_dispatch_queue> * _isolationQueue;
+    geo_isolater * _isolater;
     <_GEOCountryConfigurationServerProxy> * _serverProxy;
     NSMutableDictionary * _supportedFeatures;
     NSMutableArray * _updateCompletionHandlers;
@@ -22,8 +25,11 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool shouldRequestLaneGuidance;
+@property (nonatomic, readonly) bool shouldUseGuidanceEventManager;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) double urlAuthenticationTimeToLive;
+@property (nonatomic, readonly) bool zilchPointsSupported;
 
 + (void)disableServerConnection;
 + (void)setUseLocalProxy:(bool)arg1;
@@ -34,7 +40,6 @@
 - (id)_countryDefaultForKey:(id)arg1 inCountry:(id)arg2 sourcePtr:(long long*)arg3 decoder:(id /* block */)arg4;
 - (id)_defaultForKey:(id)arg1 inCountry:(id)arg2 defaultValue:(id)arg3 sourcePtr:(long long*)arg4 decoder:(id /* block */)arg5;
 - (void)_resetSupportedFeatures;
-- (void)_updateCountryConfiguration:(id /* block */)arg1 callbackQueue:(id)arg2;
 - (id)countryCode;
 - (bool)countryCode:(id)arg1 supportsFeature:(long long)arg2;
 - (bool)currentCountrySupportsCarIntegration;
@@ -54,9 +59,12 @@
 - (void)resourceManifestManagerWillChangeActiveTileGroup:(id)arg1;
 - (void)serverProxy:(id)arg1 countryCodeDidChange:(id)arg2;
 - (void)serverProxyProvidersDidChange:(id)arg1;
+- (bool)shouldRequestLaneGuidance;
+- (bool)shouldUseGuidanceEventManager;
 - (void)updateCountryConfiguration:(id /* block */)arg1;
 - (void)updateCountryConfiguration:(id /* block */)arg1 callbackQueue:(id)arg2;
 - (void)updateProvidersForCurrentCountry;
 - (double)urlAuthenticationTimeToLive;
+- (bool)zilchPointsSupported;
 
 @end

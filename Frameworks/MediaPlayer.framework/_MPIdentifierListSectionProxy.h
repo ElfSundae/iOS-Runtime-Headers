@@ -33,5 +33,6 @@
 - (id)sectionedIdentifierList;
 - (void)setMutableItemIdentifiers:(id)arg1;
 - (void)updateItem:(id)arg1;
+- (void)updateSection;
 
 @end

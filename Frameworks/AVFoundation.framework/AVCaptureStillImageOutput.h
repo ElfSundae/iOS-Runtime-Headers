@@ -35,7 +35,7 @@
 - (bool)automaticallyEnablesStillImageStabilizationWhenAvailable;
 - (id)availableImageDataCVPixelFormatTypes;
 - (id)availableImageDataCodecTypes;
-- (bool)canAddConnectionForMediaType:(id)arg1;
+- (bool)canAddConnection:(id)arg1 failureReason:(id*)arg2;
 - (void)captureStillImageAsynchronouslyFromConnection:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)captureStillImageBracketAsynchronouslyFromConnection:(id)arg1 withSettingsArray:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)captureStillImageSurfaceAsynchronouslyFromConnection:(id)arg1 completionHandler:(id /* block */)arg2;
@@ -44,6 +44,7 @@
 - (void)dealloc;
 - (void)detachSafelyFromFigCaptureSession:(struct OpaqueFigCaptureSession { }*)arg1;
 - (id)firstActiveConnection;
+- (void)handleChangedActiveFormat:(id)arg1 forDevice:(id)arg2;
 - (void)handleNotification:(id)arg1 payload:(id)arg2;
 - (void)handleNotificationForPrepareRequest:(id)arg1 withPayload:(id)arg2;
 - (void)handleNotificationForRequest:(id)arg1 withPayload:(id)arg2 imageIsEV0:(bool*)arg3;
@@ -62,7 +63,6 @@
 - (bool)isStillImageStabilizationActive;
 - (bool)isStillImageStabilizationSupported;
 - (unsigned long long)maxBracketedCaptureStillImageCount;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (id)outputSettings;
 - (struct CGSize { double x1; double x2; })outputSizeForSourceFormat:(id)arg1;
 - (void)prepareToCaptureStillImageBracketFromConnection:(id)arg1 withSettingsArray:(id)arg2 completionHandler:(id /* block */)arg3;

@@ -34,6 +34,7 @@
 
 - (void).cxx_destruct;
 - (void)calculateDiffs;
+- (void)calculateDiffsAndAccumulateInsertedCount:(unsigned long long*)arg1 updatedCount:(unsigned long long*)arg2 deletedCount:(unsigned long long*)arg3;
 - (id)changedIndexes;
 - (id)changedObjects;
 - (id)currentItems;

@@ -3,6 +3,7 @@
  */
 
 @interface _INPBSearchForAccountsIntent : PBCodable <NSCopying, NSSecureCoding, _INPBSearchForAccountsIntent> {
+    bool  __encodeLegacyGloryData;
     _INPBDataString * _accountNickname;
     int  _accountType;
     struct { 
@@ -14,6 +15,7 @@
     int  _requestedBalanceType;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic, retain) _INPBDataString *accountNickname;
 @property (nonatomic) int accountType;
 @property (readonly, copy) NSString *debugDescription;
@@ -29,20 +31,26 @@
 @property (nonatomic) int requestedBalanceType;
 @property (readonly) Class superclass;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (int)StringAsAccountType:(id)arg1;
 - (int)StringAsRequestedBalanceType:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)accountNickname;
 - (int)accountType;
 - (id)accountTypeAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasAccountNickname;
 - (bool)hasAccountType;
 - (bool)hasIntentMetadata;
 - (bool)hasOrganizationName;
 - (bool)hasRequestedBalanceType;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)intentMetadata;
 - (bool)isEqual:(id)arg1;
 - (id)organizationName;

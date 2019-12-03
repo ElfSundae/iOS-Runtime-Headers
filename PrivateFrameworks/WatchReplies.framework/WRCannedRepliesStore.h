@@ -14,6 +14,7 @@
     NPSManager * _npsManager;
 }
 
++ (id)supportedLanguages;
 + (bool)supportsEnhancedEditing;
 
 - (void).cxx_destruct;

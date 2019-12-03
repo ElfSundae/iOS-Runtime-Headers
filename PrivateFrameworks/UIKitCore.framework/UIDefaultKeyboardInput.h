@@ -31,10 +31,12 @@
 @property (nonatomic) bool enablesReturnKeyAutomatically;
 @property (nonatomic) bool enablesReturnKeyOnNonWhiteSpaceContent;
 @property (nonatomic, readonly) UITextPosition *endOfDocument;
+@property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } floatingKeyboardEdgeInsets;
 @property (nonatomic) bool forceDefaultDictationInfo;
 @property (nonatomic) long long forceDictationKeyboardType;
 @property (nonatomic) bool forceDisableDictation;
 @property (nonatomic) bool forceEnableDictation;
+@property (nonatomic) bool forceFloatingKeyboard;
 @property (nonatomic) bool hasDefaultContents;
 @property (nonatomic, readonly) bool hasText;
 @property (readonly) unsigned long long hash;
@@ -66,11 +68,13 @@
 @property (nonatomic) long long selectionGranularity;
 @property (nonatomic, retain) UIColor *selectionHighlightColor;
 @property (nonatomic) int shortcutConversionType;
+@property (nonatomic) bool showDictationButton;
 @property (nonatomic) long long smartDashesType;
 @property (nonatomic) long long smartInsertDeleteType;
 @property (nonatomic) long long smartQuotesType;
 @property (nonatomic) long long spellCheckingType;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) bool supportsImagePaste;
 @property (nonatomic) bool suppressReturnKeyStyling;
 @property (nonatomic, copy) NSString *textContentType;
 @property (nonatomic, readonly) <UITextInputSuggestionDelegate> *textInputSuggestionDelegate;
@@ -83,6 +87,7 @@
 @property (nonatomic, readonly) <UITextInputTokenizer> *tokenizer;
 @property (nonatomic, retain) UIColor *underlineColorForSpelling;
 @property (nonatomic, retain) UIColor *underlineColorForTextAlternatives;
+@property (nonatomic) bool useAutomaticEndpointing;
 @property (nonatomic) bool useInterfaceLanguageForLocalization;
 @property (nonatomic) struct _NSRange { unsigned long long x1; unsigned long long x2; } validTextRange;
 

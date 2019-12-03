@@ -15,8 +15,11 @@
 + (id)initActivationCodeRequireSetup:(bool)arg1;
 + (id)initWithActivationCodeOnlyFlow;
 + (id)initWithAppName:(id)arg1 requireSetup:(bool)arg2;
++ (id)initWithAppName:(id)arg1 requireSetup:(bool)arg2 skipGeneralInstallConsent:(bool)arg3;
++ (id)initWithOptions:(id)arg1;
 + (id)initWithSetupFlowWithIccid:(id)arg1 showAddPlan:(bool)arg2;
 + (void)needsToRun:(id /* block */)arg1;
++ (void)needsToRunUsingMessageSession:(id)arg1 completion:(id /* block */)arg2;
 
 - (void).cxx_destruct;
 - (id)delegate;

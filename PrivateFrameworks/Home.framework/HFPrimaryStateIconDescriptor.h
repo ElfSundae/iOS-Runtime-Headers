@@ -5,6 +5,7 @@
 @interface HFPrimaryStateIconDescriptor : NSObject <HFIconDescriptor> {
     NSString * _identifier;
     long long  _primaryState;
+    bool  _shouldForceLTR;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -12,6 +13,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, readonly) long long primaryState;
+@property (nonatomic, readonly) bool shouldForceLTR;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -21,5 +23,6 @@
 - (id)initWithIdentifier:(id)arg1 primaryState:(long long)arg2;
 - (bool)isEqual:(id)arg1;
 - (long long)primaryState;
+- (bool)shouldForceLTR;
 
 @end

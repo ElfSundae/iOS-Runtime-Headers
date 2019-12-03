@@ -12,7 +12,7 @@
 @property (nonatomic) unsigned long long currentPageIndex;
 @property (getter=isTimerInstalled, nonatomic, readonly) bool timerInstalled;
 
-- (void)_fadeOutAnimationDidStop:(id)arg1 finished:(id)arg2;
+- (void)_fadeOutAnimationDidStop;
 - (double)_fadeOutDelay;
 - (double)_fadeOutDuration;
 - (void)_makeRoundedCorners;

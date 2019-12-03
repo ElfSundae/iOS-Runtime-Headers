@@ -7,6 +7,14 @@
     bool  _canStartShowingChrome;
     UIView * _containerView;
     <PGPictureInPictureViewControllerContentContainer> * _contentContainer;
+    struct { 
+        unsigned int prepareStopAnimationWithCompletionHandler : 1; 
+        unsigned int acquireInterfaceOrientationLock : 1; 
+        unsigned int relinquishInterfaceOrientationLock : 1; 
+        unsigned int handleTapGesture : 1; 
+        unsigned int handleDoubleTapGesture : 1; 
+        unsigned int performRotateAnimationWithRotation : 1; 
+    }  _contentContainerRespondsTo;
     PGLayerHostView * _contentView;
     long long  _controlsStyle;
     PGPictureInPictureControlsViewController * _controlsViewController;
@@ -49,7 +57,7 @@
 @property (nonatomic) bool canStartShowingChrome;
 @property (nonatomic) <PGPictureInPictureViewControllerContentContainer> *contentContainer;
 @property (nonatomic, readonly) UIView *contentContainerView;
-@property (nonatomic, readonly) long long controlsStyle;
+@property (nonatomic) long long controlsStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <PGPictureInPictureViewControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -104,6 +112,8 @@
 - (void)relinquishInterfaceOrientationLock;
 - (void)setCanStartShowingChrome:(bool)arg1;
 - (void)setContentContainer:(id)arg1;
+- (void)setControlsStyle:(long long)arg1;
+- (void)setControlsStyle:(long long)arg1 animated:(bool)arg2 completionHandler:(id /* block */)arg3;
 - (void)setDelegate:(id)arg1;
 - (void)setHostedWindowHostingHandle:(id)arg1;
 - (void)setLoadedTimeRanges:(id)arg1;

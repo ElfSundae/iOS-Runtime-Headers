@@ -19,13 +19,13 @@
 - (unsigned int)dayPassSessionCounter;
 - (void)dealloc;
 - (id)flow;
-- (id)initWithConfiguration:(id)arg1 endpoint:(id)arg2 parameters:(id)arg3 appRule:(id)arg4 flowProperties:(id)arg5 delegate:(id)arg6;
+- (id)initWithEndpoint:(id)arg1 parameters:(id)arg2 appRule:(id)arg3 flowProperties:(id)arg4 onRamp:(id)arg5 delegate:(id)arg6;
 - (unsigned long long)initialWindowSize;
 - (unsigned long long)maxFrameSize;
 - (void)pingWithCompletionHandler:(id /* block */)arg1;
 - (void)removeFlow:(unsigned long long)arg1;
 - (bool)selectBestEdge;
-- (void)sendUsageReportWithSuccess:(bool)arg1 rtt:(unsigned long long)arg2 geohash:(id)arg3 fallbackReason:(long long)arg4;
+- (void)sendUsageReportWithRTT:(unsigned long long)arg1 geohash:(id)arg2 fallbackReason:(long long)arg3;
 - (void)setFlow:(id)arg1;
 - (void)setWindow:(void*)arg1;
 - (void)startConnectionTimer;

@@ -5,7 +5,7 @@
 @interface AVTPresetResourceLoader : NSObject {
     NSObject<OS_dispatch_queue> * _callbackQueue;
     AVTUIEnvironment * _environment;
-    AVTInMemoryImageCache * _inMemoryImageCache;
+    <AVTImageCache> * _inMemoryImageCache;
     <AVTUILogger> * _logger;
     AVTInMemoryResourceCache * _presetCache;
     <AVTTaskScheduler> * _renderingScheduler;
@@ -14,7 +14,7 @@
 
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *callbackQueue;
 @property (nonatomic, readonly) AVTUIEnvironment *environment;
-@property (nonatomic, readonly) AVTInMemoryImageCache *inMemoryImageCache;
+@property (nonatomic, readonly) <AVTImageCache> *inMemoryImageCache;
 @property (nonatomic, readonly) <AVTUILogger> *logger;
 @property (nonatomic, readonly) AVTInMemoryResourceCache *presetCache;
 @property (nonatomic, readonly) <AVTTaskScheduler> *renderingScheduler;

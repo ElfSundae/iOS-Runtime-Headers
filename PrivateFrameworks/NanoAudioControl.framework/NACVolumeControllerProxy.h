@@ -4,16 +4,19 @@
 
 @interface NACVolumeControllerProxy : NSObject <NACVolumeController> {
     float  _EUVolumeLimit;
+    NSOrderedSet * _availableListeningModes;
+    NSString * _currentListeningMode;
     <NACVolumeControllerDelegate> * _delegate;
     NSNumber * _hapticIntensity;
     long long  _hapticState;
     NACEventThrottler * _hapticThrottler;
-    bool  _isObserving;
     long long  _lastReceivedHapticState;
     bool  _lastReceivedProminentHapticEnabled;
     float  _lastReceivedVolumeValue;
     float  _lastRecievedHapticIntensity;
     bool  _muted;
+    bool  _observingListeningModes;
+    bool  _observingVolume;
     bool  _prominentHapticEnabled;
     NSObject<OS_dispatch_source> * _setHapticStateTimer;
     NSObject<OS_dispatch_source> * _setHapticTimer;
@@ -25,10 +28,13 @@
     NACEventThrottler * _volumeThrottler;
     NSNumber * _volumeValue;
     bool  _volumeWarningEnabled;
+    long long  _volumeWarningState;
     NACXPCClient * _xpcClient;
 }
 
 @property (nonatomic, readonly) float EUVolumeLimit;
+@property (nonatomic, readonly) NSOrderedSet *availableListeningModes;
+@property (nonatomic, retain) NSString *currentListeningMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <NACVolumeControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -42,16 +48,20 @@
 @property (getter=isVolumeControlAvailable, nonatomic, readonly) bool volumeControlAvailable;
 @property (nonatomic, readonly) float volumeValue;
 @property (getter=isVolumeWarningEnabled, nonatomic, readonly) bool volumeWarningEnabled;
+@property (nonatomic, readonly) long long volumeWarningState;
 
 - (void).cxx_destruct;
 - (float)EUVolumeLimit;
 - (void)_EUVolumeLimitDidChange;
 - (void)_applicationDidBecomeActiveNotification:(id)arg1;
 - (void)_applicationWillResignActiveNotification:(id)arg1;
+- (void)_availableListeningModesDidChange;
 - (void)_cancelSetHapticStateTimer;
 - (void)_cancelSetHapticTimer;
 - (void)_cancelSetProminentHapticTimer;
 - (void)_cancelSetVolumeTimer;
+- (void)_currentListeningModeDidChange;
+- (void)_handleFailedToSetCurrentListeningModeNotification:(id)arg1;
 - (void)_hapticIntensityDidChange;
 - (void)_hapticStateDidChange;
 - (void)_hapticStateTimeout;
@@ -72,11 +82,16 @@
 - (void)_volumeTimout;
 - (void)_volumeValueDidChange;
 - (void)_volumeWarningDidChange;
+- (void)allowUserToExceedEUVolumeLimit;
+- (id)availableListeningModes;
 - (void)beginObservingHaptics;
+- (void)beginObservingListeningModes;
 - (void)beginObservingVolume;
+- (id)currentListeningMode;
 - (void)dealloc;
 - (id)delegate;
 - (void)endObservingHaptics;
+- (void)endObservingListeningModes;
 - (void)endObservingVolume;
 - (float)hapticIntensity;
 - (long long)hapticState;
@@ -86,6 +101,7 @@
 - (bool)isSystemMuted;
 - (bool)isVolumeControlAvailable;
 - (bool)isVolumeWarningEnabled;
+- (void)setCurrentListeningMode:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setHapticIntensity:(float)arg1;
 - (void)setHapticState:(long long)arg1;
@@ -95,5 +111,6 @@
 - (void)setVolumeValue:(float)arg1;
 - (void)setVolumeValue:(float)arg1 muted:(bool)arg2 overrideEULimit:(bool)arg3;
 - (float)volumeValue;
+- (long long)volumeWarningState;
 
 @end

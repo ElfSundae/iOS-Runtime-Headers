@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon
  */
 
-@interface HDDatabaseTransactionContext : NSObject <NSCopying> {
+@interface HDDatabaseTransactionContext : NSObject <NSCopying, NSMutableCopying> {
     NSMutableSet * _accessibilityAssertions;
     long long  _cacheScope;
     long long  _journalType;
@@ -10,33 +10,45 @@
 }
 
 @property (nonatomic, readonly, copy) NSSet *accessibilityAssertions;
-@property (nonatomic) long long cacheScope;
-@property (nonatomic) bool highPriority;
-@property (nonatomic) long long journalType;
-@property (nonatomic) bool requiresNewDatabaseConnection;
-@property (nonatomic) bool requiresSecureDelete;
-@property (nonatomic) bool skipJournalMerge;
+@property (nonatomic, readonly) long long cacheScope;
+@property (getter=isEmpty, nonatomic, readonly) bool empty;
+@property (nonatomic, readonly) bool highPriority;
+@property (nonatomic, readonly) long long journalType;
+@property (nonatomic, readonly) bool requiresNewDatabaseConnection;
+@property (nonatomic, readonly) bool requiresProtectedData;
+@property (nonatomic, readonly) bool requiresWrite;
+@property (nonatomic, readonly) bool skipJournalMerge;
+
++ (id)_cachedContextForOptions:(unsigned long long)arg1;
++ (id)contextForReading;
++ (id)contextForReadingProtectedData;
++ (id)contextForWriting;
++ (id)contextForWritingProtectedData;
++ (id)highPriorityContext;
 
 - (void).cxx_destruct;
 - (void)_applyOptions:(unsigned long long)arg1 enable:(bool)arg2;
+- (id)_initWithOptions:(unsigned long long)arg1;
+- (id)_initWithOptions:(unsigned long long)arg1 journalType:(long long)arg2 cacheScope:(long long)arg3 assertions:(id)arg4;
 - (id)accessibilityAssertions;
-- (void)addAccessibilityAssertion:(id)arg1;
 - (long long)cacheScope;
+- (bool)containsContext:(id)arg1 error:(id*)arg2;
+- (id)copyForReadingProtectedData;
+- (id)copyForWriting;
+- (id)copyForWritingProtectedData;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (unsigned long long)hash;
 - (bool)highPriority;
-- (bool)isCompatibleWithContext:(id)arg1 error:(id*)arg2;
+- (id)init;
+- (bool)isEmpty;
 - (bool)isEqual:(id)arg1;
 - (long long)journalType;
+- (id)mergedContextWithContext:(id)arg1 error:(id*)arg2;
+- (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (bool)requiresNewDatabaseConnection;
-- (bool)requiresSecureDelete;
-- (void)setCacheScope:(long long)arg1;
-- (void)setHighPriority:(bool)arg1;
-- (void)setJournalType:(long long)arg1;
-- (void)setRequiresNewDatabaseConnection:(bool)arg1;
-- (void)setRequiresSecureDelete:(bool)arg1;
-- (void)setSkipJournalMerge:(bool)arg1;
+- (bool)requiresProtectedData;
+- (bool)requiresWrite;
 - (bool)skipJournalMerge;
 
 @end

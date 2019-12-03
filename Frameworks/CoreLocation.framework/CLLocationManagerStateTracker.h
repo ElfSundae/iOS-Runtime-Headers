@@ -14,7 +14,6 @@
         bool updatingRanging; 
         bool updatingHeading; 
         double headingFilter; 
-        bool persistentMonitoringEnabled; 
         bool allowsLocationPrompts; 
         bool allowsAlteredAccessoryLocations; 
         bool dynamicAccuracyReductionEnabled; 
@@ -30,6 +29,7 @@
         bool updatingVehicleSpeed; 
         bool updatingVehicleHeading; 
         bool matchInfoEnabled; 
+        bool groundAltitudeEnabled; 
         bool courtesyPromptNeeded; 
     }  _state;
 }
@@ -44,11 +44,11 @@
 @property (nonatomic) double desiredAccuracy;
 @property (nonatomic) double distanceFilter;
 @property (nonatomic) bool dynamicAccuracyReductionEnabled;
+@property (nonatomic) bool groundAltitudeEnabled;
 @property (nonatomic) double headingFilter;
 @property (nonatomic) bool matchInfoEnabled;
 @property (nonatomic) bool paused;
-@property (nonatomic) int pausesLocationUpdatesAutomatically;
-@property (nonatomic) bool persistentMonitoringEnabled;
+@property int pausesLocationUpdatesAutomatically;
 @property (nonatomic) int previousAuthorizationStatus;
 @property (nonatomic) bool previousAuthorizationStatusValid;
 @property (nonatomic) bool requestingLocation;
@@ -75,6 +75,7 @@
 - (double)distanceFilter;
 - (bool)dumpState:(void*)arg1 withSize:(unsigned long long)arg2 hints:(struct os_state_hints_s { unsigned int x1; char *x2; unsigned int x3; unsigned int x4; }*)arg3;
 - (bool)dynamicAccuracyReductionEnabled;
+- (bool)groundAltitudeEnabled;
 - (double)headingFilter;
 - (void*)identifier;
 - (id)initInSilo:(id)arg1 withIdentifier:(void*)arg2;
@@ -84,7 +85,6 @@
 - (bool)matchInfoEnabled;
 - (bool)paused;
 - (int)pausesLocationUpdatesAutomatically;
-- (bool)persistentMonitoringEnabled;
 - (int)previousAuthorizationStatus;
 - (bool)previousAuthorizationStatusValid;
 - (bool)requestingLocation;
@@ -99,11 +99,11 @@
 - (void)setDesiredAccuracy:(double)arg1;
 - (void)setDistanceFilter:(double)arg1;
 - (void)setDynamicAccuracyReductionEnabled:(bool)arg1;
+- (void)setGroundAltitudeEnabled:(bool)arg1;
 - (void)setHeadingFilter:(double)arg1;
 - (void)setMatchInfoEnabled:(bool)arg1;
 - (void)setPaused:(bool)arg1;
 - (void)setPausesLocationUpdatesAutomatically:(int)arg1;
-- (void)setPersistentMonitoringEnabled:(bool)arg1;
 - (void)setPreviousAuthorizationStatus:(int)arg1;
 - (void)setPreviousAuthorizationStatusValid:(bool)arg1;
 - (void)setRequestingLocation:(bool)arg1;

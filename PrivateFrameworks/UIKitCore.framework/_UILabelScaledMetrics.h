@@ -17,6 +17,11 @@
         double width; 
         double height; 
     }  _targetSize;
+    struct CGSize { 
+        double width; 
+        double height; 
+    }  _unscaledAndPossiblyTooLargeSize;
+    double  _unscaledFirstBaselineOffset;
 }
 
 @property (nonatomic) double actualScaleFactor;
@@ -27,6 +32,8 @@
 @property (nonatomic) double scaledLineHeight;
 @property (nonatomic) struct CGSize { double x1; double x2; } scaledSize;
 @property (nonatomic) struct CGSize { double x1; double x2; } targetSize;
+@property (nonatomic) struct CGSize { double x1; double x2; } unscaledAndPossiblyTooLargeSize;
+@property (nonatomic) double unscaledFirstBaselineOffset;
 
 - (void).cxx_destruct;
 - (double)actualScaleFactor;
@@ -44,6 +51,10 @@
 - (void)setScaledLineHeight:(double)arg1;
 - (void)setScaledSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setTargetSize:(struct CGSize { double x1; double x2; })arg1;
+- (void)setUnscaledAndPossiblyTooLargeSize:(struct CGSize { double x1; double x2; })arg1;
+- (void)setUnscaledFirstBaselineOffset:(double)arg1;
 - (struct CGSize { double x1; double x2; })targetSize;
+- (struct CGSize { double x1; double x2; })unscaledAndPossiblyTooLargeSize;
+- (double)unscaledFirstBaselineOffset;
 
 @end

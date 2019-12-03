@@ -12,14 +12,43 @@
     NSMutableArray * _etaResults;
     GEOETAServiceResponseSummary * _etaServiceSummary;
     struct { 
-        unsigned int debugServerLatencyMs : 1; 
-        unsigned int status : 1; 
-    }  _has;
+        unsigned int has_debugServerLatencyMs : 1; 
+        unsigned int has_status : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_problemDetails : 1; 
+        unsigned int read_clientMetrics : 1; 
+        unsigned int read_datasetAbStatus : 1; 
+        unsigned int read_debugData : 1; 
+        unsigned int read_etaResultReferencePointDestinations : 1; 
+        unsigned int read_etaResultReferencePointOrigin : 1; 
+        unsigned int read_etaResults : 1; 
+        unsigned int read_etaServiceSummary : 1; 
+        unsigned int read_originPlaceSearchResponse : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_problemDetails : 1; 
+        unsigned int wrote_clientMetrics : 1; 
+        unsigned int wrote_datasetAbStatus : 1; 
+        unsigned int wrote_debugData : 1; 
+        unsigned int wrote_debugServerLatencyMs : 1; 
+        unsigned int wrote_etaResultReferencePointDestinations : 1; 
+        unsigned int wrote_etaResultReferencePointOrigin : 1; 
+        unsigned int wrote_etaResults : 1; 
+        unsigned int wrote_etaServiceSummary : 1; 
+        unsigned int wrote_originPlaceSearchResponse : 1; 
+        unsigned int wrote_status : 1; 
+    }  _flags;
     GEOPlaceSearchResponse * _originPlaceSearchResponse;
     struct GEOProblemDetail { int x1; int x2; struct { unsigned int x_3_1_1 : 1; unsigned int x_3_1_2 : 1; } x3; } * _problemDetails;
     unsigned long long  _problemDetailsCount;
     unsigned long long  _problemDetailsSpace;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     int  _status;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic, retain) GEOClientMetrics *clientMetrics;
@@ -42,18 +71,34 @@
 @property (nonatomic, readonly) struct GEOProblemDetail { int x1; int x2; struct { unsigned int x_3_1_1 : 1; unsigned int x_3_1_2 : 1; } x3; }*problemDetails;
 @property (nonatomic, readonly) unsigned long long problemDetailsCount;
 @property (nonatomic) int status;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 + (Class)etaResultReferencePointDestinationType;
 + (Class)etaResultType;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsStatus:(id)arg1;
+- (void)_addNoFlagsEtaResult:(id)arg1;
+- (void)_addNoFlagsEtaResultReferencePointDestination:(id)arg1;
+- (void)_addNoFlagsProblemDetail:(struct GEOProblemDetail { int x1; int x2; struct { unsigned int x_3_1_1 : 1; unsigned int x_3_1_2 : 1; } x3; })arg1;
+- (void)_readClientMetrics;
+- (void)_readDatasetAbStatus;
+- (void)_readDebugData;
+- (void)_readEtaResultReferencePointDestinations;
+- (void)_readEtaResultReferencePointOrigin;
+- (void)_readEtaResults;
+- (void)_readEtaServiceSummary;
+- (void)_readOriginPlaceSearchResponse;
+- (void)_readProblemDetails;
 - (void)addEtaResult:(id)arg1;
 - (void)addEtaResultReferencePointDestination:(id)arg1;
 - (void)addProblemDetail:(struct GEOProblemDetail { int x1; int x2; struct { unsigned int x_3_1_1 : 1; unsigned int x_3_1_2 : 1; } x3; })arg1;
 - (void)clearEtaResultReferencePointDestinations;
 - (void)clearEtaResults;
 - (void)clearProblemDetails;
+- (void)clearSensitiveFields;
+- (void)clearUnknownFields:(bool)arg1;
 - (id)clientMetrics;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -80,12 +125,15 @@
 - (bool)hasOriginPlaceSearchResponse;
 - (bool)hasStatus;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)originPlaceSearchResponse;
 - (struct GEOProblemDetail { int x1; int x2; struct { unsigned int x_3_1_1 : 1; unsigned int x_3_1_2 : 1; } x3; })problemDetailAtIndex:(unsigned long long)arg1;
 - (struct GEOProblemDetail { int x1; int x2; struct { unsigned int x_3_1_1 : 1; unsigned int x_3_1_2 : 1; } x3; }*)problemDetails;
 - (unsigned long long)problemDetailsCount;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setClientMetrics:(id)arg1;
 - (void)setDatasetAbStatus:(id)arg1;
@@ -102,6 +150,7 @@
 - (void)setStatus:(int)arg1;
 - (int)status;
 - (id)statusAsString:(int)arg1;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 
 @end

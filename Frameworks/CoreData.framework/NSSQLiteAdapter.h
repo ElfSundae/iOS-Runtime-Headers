@@ -10,7 +10,7 @@
 }
 
 + (id)generateStatementForCheckingMulticolumnConstraint:(id)arg1 onObjects:(id)arg2 usingSQLCore:(id)arg3;
-+ (id)generateStatementForCheckingUniqueAttributesOnObjects:(id)arg1 usingSQLCore:(id)arg2;
++ (id)generateStatementForCheckingUniquePropertiesOnObjects:(id)arg1 usingSQLCore:(id)arg2;
 + (id)generateSubselectForColumn:(id)arg1 givenObjects:(id)arg2;
 
 - (void)_cacheTriggers:(id)arg1 forEntity:(id)arg2;
@@ -26,9 +26,13 @@
 - (id)generateBatchDeleteUpdateHistoryStatementEntity:(id)arg1 andRelationship:(id)arg2;
 - (id)generateBatchDeleteUpdateHistoryStatementEntity:(id)arg1 andRelationship:(id)arg2 useInverse:(bool)arg3;
 - (bool)generateBatchDeleteUpdateHistoryTriggerForEntity:(id)arg1 andRelationship:(id)arg2 batchHistory:(struct __CFDictionary { }*)arg3 error:(id*)arg4;
+- (id)generateBinaryIndexStatementsForIndex:(id)arg1 onEntity:(id)arg2;
 - (bool)generateCorrelationTableTriggerStatementsForRelationship:(id)arg1 existing:(struct __CFDictionary { }*)arg2 correlationTableTriggers:(struct __CFDictionary { }*)arg3 error:(id*)arg4;
 - (id)generateDeleteHistoryTriggerForEntity:(id)arg1 error:(id*)arg2;
 - (id)generateDeleteStatementsForRequest:(id)arg1 error:(id*)arg2;
+- (id)generateDropBinaryIndexStatementsForIndex:(id)arg1 onEntity:(id)arg2;
+- (id)generateDropRTreeIndexStatementsForIndex:(id)arg1 onEntity:(id)arg2;
+- (id)generateRTreeIndexStatementsForIndex:(id)arg1 onEntity:(id)arg2;
 - (id)generateSQLStatmentForSourcesAndOrderKeysForDestination:(id)arg1 inManyToMany:(id)arg2;
 - (id)generateSQLStatmentForSourcesAndOrderKeysForDestination:(id)arg1 inToMany:(id)arg2;
 - (bool)generateTriggerForEntity:(id)arg1 alreadyCreated:(struct __CFDictionary { }*)arg2 correlations:(struct __CFDictionary { }*)arg3 batchHistory:(struct __CFDictionary { }*)arg4 fragments:(id)arg5 error:(id*)arg6;
@@ -43,7 +47,6 @@
 - (id)newCorrelationMasterReorderStatementPart2ForRelationship:(id)arg1;
 - (id)newCorrelationReorderStatementForRelationship:(id)arg1;
 - (id)newCountStatementWithFetchRequestContext:(id)arg1;
-- (id)newCreateBinaryIndexStatementsForIndex:(id)arg1 onEntity:(id)arg2;
 - (id)newCreateIndexStatementForColumn:(id)arg1;
 - (id)newCreateIndexStatementForColumnWithName:(id)arg1 inTableWithName:(id)arg2;
 - (id)newCreateIndexStatementForColumns:(id)arg1 name:(id)arg2;
@@ -51,12 +54,16 @@
 - (id)newCreateIndexStatementsForEntity:(id)arg1;
 - (id)newCreateIndexStatementsForEntity:(id)arg1 defaultIndicesOnly:(bool)arg2;
 - (id)newCreatePrimaryKeyTableStatement;
-- (id)newCreateRTreeIndexStatementsForIndex:(id)arg1 onEntity:(id)arg2;
 - (id)newCreateTableStatementForEntity:(id)arg1;
 - (id)newCreateTableStatementForManyToMany:(id)arg1;
 - (id)newCreateTempTableStatementForEntity:(id)arg1 withAttributesToConstrain:(id)arg2;
 - (id)newCreateTriggersForEntity:(id)arg1 existingRtreeTables:(id)arg2;
 - (id)newDeleteStatementWithRow:(id)arg1;
+- (id)newDropIndexStatementForColumn:(id)arg1;
+- (id)newDropIndexStatementForColumnWithName:(id)arg1 inTableWithName:(id)arg2;
+- (id)newDropIndexStatementForCorrelationTable:(id)arg1;
+- (id)newDropIndexStatementsForEntity:(id)arg1;
+- (id)newDropIndexStatementsForEntity:(id)arg1 defaultIndicesOnly:(bool)arg2;
 - (id)newDropTableStatementForTableNamed:(id)arg1;
 - (id)newDropTableStatementOrFailForTableNamed:(id)arg1;
 - (id)newGeneratorWithStatement:(id)arg1;

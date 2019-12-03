@@ -6,14 +6,40 @@
     GEOAddress * _address;
     NSMutableArray * _businessCategoryFilters;
     struct { 
-        unsigned int maxResultCount : 1; 
-        unsigned int sortOrder : 1; 
-        unsigned int isStrictMapRegion : 1; 
-        unsigned int structuredSearch : 1; 
-    }  _has;
+        unsigned int has_maxResultCount : 1; 
+        unsigned int has_sortOrder : 1; 
+        unsigned int has_isStrictMapRegion : 1; 
+        unsigned int has_structuredSearch : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_address : 1; 
+        unsigned int read_businessCategoryFilters : 1; 
+        unsigned int read_indexFilter : 1; 
+        unsigned int read_recentRouteInfo : 1; 
+        unsigned int read_searchString : 1; 
+        unsigned int read_searchSubstringDescriptors : 1; 
+        unsigned int read_viewportInfo : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_address : 1; 
+        unsigned int wrote_businessCategoryFilters : 1; 
+        unsigned int wrote_indexFilter : 1; 
+        unsigned int wrote_recentRouteInfo : 1; 
+        unsigned int wrote_searchString : 1; 
+        unsigned int wrote_searchSubstringDescriptors : 1; 
+        unsigned int wrote_viewportInfo : 1; 
+        unsigned int wrote_maxResultCount : 1; 
+        unsigned int wrote_sortOrder : 1; 
+        unsigned int wrote_isStrictMapRegion : 1; 
+        unsigned int wrote_structuredSearch : 1; 
+    }  _flags;
     GEOPDIndexQueryNode * _indexFilter;
     bool  _isStrictMapRegion;
     unsigned int  _maxResultCount;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     GEOPDRecentRouteInfo * _recentRouteInfo;
     NSString * _searchString;
     NSMutableArray * _searchSubstringDescriptors;
@@ -46,10 +72,20 @@
 @property (nonatomic, retain) GEOPDViewportInfo *viewportInfo;
 
 + (Class)businessCategoryFilterType;
++ (bool)isValid:(id)arg1;
 + (Class)searchSubstringDescriptorType;
 
 - (void).cxx_destruct;
 - (int)StringAsSortOrder:(id)arg1;
+- (void)_addNoFlagsBusinessCategoryFilter:(id)arg1;
+- (void)_addNoFlagsSearchSubstringDescriptor:(id)arg1;
+- (void)_readAddress;
+- (void)_readBusinessCategoryFilters;
+- (void)_readIndexFilter;
+- (void)_readRecentRouteInfo;
+- (void)_readSearchString;
+- (void)_readSearchSubstringDescriptors;
+- (void)_readViewportInfo;
 - (void)addBusinessCategoryFilter:(id)arg1;
 - (void)addSearchSubstringDescriptor:(id)arg1;
 - (id)address;
@@ -58,6 +94,7 @@
 - (unsigned long long)businessCategoryFiltersCount;
 - (void)clearBusinessCategoryFilters;
 - (void)clearSearchSubstringDescriptors;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -73,10 +110,13 @@
 - (bool)hasViewportInfo;
 - (unsigned long long)hash;
 - (id)indexFilter;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)isStrictMapRegion;
 - (unsigned int)maxResultCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)recentRouteInfo;
 - (id)searchString;

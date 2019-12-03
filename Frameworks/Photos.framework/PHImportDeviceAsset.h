@@ -8,12 +8,10 @@
 
 @property (nonatomic, readonly) NSArray *cameraFiles;
 
-+ (id)UTIForCameraFile:(id)arg1;
-+ (id)assetFileForFile:(id)arg1;
++ (id)assetFileForFile:(id)arg1 source:(id)arg2;
 + (void)validateCameraFile:(id)arg1;
 
 - (void).cxx_destruct;
-- (void)_loadSidecarFiles;
 - (id)assetId;
 - (int)burstPickType;
 - (id)burstUUID;
@@ -30,22 +28,23 @@
 - (bool)hasAdjustments;
 - (bool)hasAudioAttachment;
 - (struct CGSize { double x1; double x2; })imageSize;
-- (id)initWithCameraFile:(id)arg1 uti:(id)arg2 supportedType:(unsigned char)arg3;
+- (id)initWithSource:(id)arg1 cameraFile:(id)arg2 uti:(id)arg3 supportedType:(unsigned char)arg4;
+- (bool)isBase;
 - (bool)isLivePhoto;
 - (bool)isRAW;
-- (bool)isRendered;
+- (bool)isRender;
 - (bool)isSloMo;
+- (bool)isSpatialOverCapture;
 - (bool)isTagged;
 - (bool)isViewable;
 - (void)loadMetadataAsync:(id /* block */)arg1;
 - (void)loadMetadataSync;
-- (id)makeImportErrorforPath:(id)arg1 errorCode:(long long)arg2 userInfo:(id)arg3 file:(char *)arg4 line:(unsigned long long)arg5;
 - (id)mediaGroupId;
 - (id)originatingAssetID;
 - (id)parentFolderPath;
 - (bool)performAdditionalLivePhotoChecksWithImageAsset:(id)arg1;
 - (id)representedObject;
-- (id)source;
+- (id)spatialOverCaptureIdentifier;
 - (void)thumbnailUsingRequest:(id)arg1 atEnd:(id /* block */)arg2;
 
 @end

@@ -13,6 +13,7 @@
 @property (nonatomic) unsigned long long inputPrimitiveTopology;
 @property (nonatomic, copy) NSString *label;
 @property (nonatomic) unsigned long long maxTessellationFactor;
+@property (nonatomic) unsigned long long maxVertexAmplificationCount;
 @property (nonatomic) unsigned long long rasterSampleCount;
 @property (getter=isRasterizationEnabled, nonatomic) bool rasterizationEnabled;
 @property (nonatomic) unsigned long long sampleCount;
@@ -28,10 +29,18 @@
 @property (nonatomic, copy) MTLVertexDescriptor *vertexDescriptor;
 @property (nonatomic, retain) <MTLFunction> *vertexFunction;
 
+// Image: /System/Library/Frameworks/Metal.framework/Metal
+
 + (id)alloc;
 + (id)allocWithZone:(struct _NSZone { }*)arg1;
 
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)reset;
+
+// Image: /System/Library/PrivateFrameworks/ActivityRingsUI.framework/ActivityRingsUI
+
+- (void)configureForAdditiveBlending;
+- (void)configureForAlphaReductionBlending;
+- (void)configureForSourceOverBlending;
 
 @end

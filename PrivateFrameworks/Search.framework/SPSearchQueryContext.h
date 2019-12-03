@@ -10,6 +10,8 @@
     NSArray * _disabledDomains;
     SFSearchSuggestion * _engagedSuggestion;
     bool  _forceQueryEvenIfSame;
+    bool  _internalDebug;
+    bool  _internalValidation;
     bool  _isPasscodeLocked;
     NSString * _keyboardLanguage;
     NSString * _keyboardPrimaryLanguage;
@@ -18,6 +20,7 @@
     bool  _promoteLocalResults;
     bool  _promoteParsecResults;
     unsigned long long  _queryIdent;
+    double  _scaleFactor;
     NSArray * _searchDomains;
     NSArray * _searchEntities;
     NSString * _searchString;
@@ -34,6 +37,8 @@
 @property (nonatomic, retain) SFSearchSuggestion *engagedSuggestion;
 @property (nonatomic) bool forceQueryEvenIfSame;
 @property (nonatomic, readonly) bool hasMarkedText;
+@property (nonatomic) bool internalDebug;
+@property (nonatomic) bool internalValidation;
 @property (nonatomic) bool isPasscodeLocked;
 @property (nonatomic, retain) NSString *keyboardLanguage;
 @property (nonatomic, retain) NSString *keyboardPrimaryLanguage;
@@ -42,6 +47,7 @@
 @property (nonatomic) bool promoteLocalResults;
 @property (nonatomic) bool promoteParsecResults;
 @property (nonatomic) unsigned long long queryIdent;
+@property (nonatomic) double scaleFactor;
 @property (nonatomic, retain) NSArray *searchDomains;
 @property (nonatomic, retain) NSArray *searchEntities;
 @property (nonatomic, retain) NSString *searchString;
@@ -62,6 +68,8 @@
 - (bool)hasMarkedText;
 - (id)init;
 - (id)initWithSearchString:(id)arg1;
+- (bool)internalDebug;
+- (bool)internalValidation;
 - (bool)isPasscodeLocked;
 - (id)keyboardLanguage;
 - (id)keyboardPrimaryLanguage;
@@ -70,6 +78,7 @@
 - (bool)promoteLocalResults;
 - (bool)promoteParsecResults;
 - (unsigned long long)queryIdent;
+- (double)scaleFactor;
 - (id)searchDomains;
 - (id)searchEntities;
 - (id)searchString;
@@ -80,6 +89,8 @@
 - (void)setDisabledDomains:(id)arg1;
 - (void)setEngagedSuggestion:(id)arg1;
 - (void)setForceQueryEvenIfSame:(bool)arg1;
+- (void)setInternalDebug:(bool)arg1;
+- (void)setInternalValidation:(bool)arg1;
 - (void)setIsPasscodeLocked:(bool)arg1;
 - (void)setKeyboardLanguage:(id)arg1;
 - (void)setKeyboardPrimaryLanguage:(id)arg1;
@@ -88,6 +99,7 @@
 - (void)setPromoteLocalResults:(bool)arg1;
 - (void)setPromoteParsecResults:(bool)arg1;
 - (void)setQueryIdent:(unsigned long long)arg1;
+- (void)setScaleFactor:(double)arg1;
 - (void)setSearchDomains:(id)arg1;
 - (void)setSearchEntities:(id)arg1;
 - (void)setSearchString:(id)arg1;

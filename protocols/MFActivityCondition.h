@@ -5,7 +5,7 @@
 
 @required
 
-- (MFObservable *)conditionsObservable;
+- (EFObservable *)conditionsObservable;
 - (bool)isSatisfied;
 
 @end

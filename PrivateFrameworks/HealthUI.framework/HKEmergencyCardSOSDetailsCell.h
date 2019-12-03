@@ -14,6 +14,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (void)_updateTextColor;
 - (id)footerTextView;
 - (id)footerTextViewString;

@@ -18,7 +18,7 @@
 
 - (void).cxx_destruct;
 - (id)arrayWithObject:(id)arg1 forCount:(unsigned long long)arg2;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (id)description;
 - (unsigned long long)indexForIndexPath:(struct { unsigned long long x1; unsigned long long x2; })arg1;
 - (struct { unsigned long long x1; unsigned long long x2; })indexPathForIndex:(unsigned long long)arg1;

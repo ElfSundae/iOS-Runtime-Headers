@@ -3,20 +3,17 @@
  */
 
 @interface FCAMSPushHandler : NSObject {
-    <AMSPushHandlerContract> * _contract;
-    AMSPushHandler * _handler;
+    NFLazy * _lazyHandler;
 }
 
-@property (nonatomic, readonly) <AMSPushHandlerContract> *contract;
-@property (nonatomic, retain) AMSPushHandler *handler;
+@property (nonatomic, retain) NFLazy *lazyHandler;
 
 - (void).cxx_destruct;
-- (id)contract;
 - (void)handleNotification:(id)arg1;
 - (void)handleNotificationResponse:(id)arg1;
-- (id)handler;
 - (id)init;
-- (void)setHandler:(id)arg1;
+- (id)lazyHandler;
+- (void)setLazyHandler:(id)arg1;
 - (bool)shouldHandleNotification:(id)arg1;
 - (bool)shouldHandleNotificationResponse:(id)arg1;
 

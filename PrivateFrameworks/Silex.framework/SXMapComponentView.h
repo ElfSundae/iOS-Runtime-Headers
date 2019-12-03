@@ -2,13 +2,13 @@
    Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
  */
 
-@interface SXMapComponentView : SXMediaComponentView <MKMapViewDelegate, UIGestureRecognizerDelegate> {
+@interface SXMapComponentView : SXMediaComponentView <MKMapViewDelegate, SXFullscreenCanvasViewControllerDelegate, UIGestureRecognizerDelegate> {
     SXMediaEngageEvent * _activeMediaEngageEvent;
     NSArray * _annotations;
-    NSMutableDictionary * _cachedSnapshots;
+    NSCache * _cachedSnapshots;
     <SXDocumentTitleProviding> * _documentTitleProvider;
     UIBarButtonItem * _doneBarButtonItem;
-    UIViewController * _fullScreenCanvasViewController;
+    SXFullscreenCanvasViewController * _fullScreenCanvasViewController;
     UIImageView * _imageView;
     struct { 
         struct { 
@@ -23,14 +23,6 @@
     MKMapView * _mapView;
     UISegmentedControl * _segmentedControl;
     id /* block */  _snapShotCancelHandler;
-    struct CGSize { 
-        double width; 
-        double height; 
-    }  _snapShotSize;
-    struct CGSize { 
-        double width; 
-        double height; 
-    }  _snapShotViewportSize;
     SXMapSnapShotter * _snapShotter;
     UITapGestureRecognizer * _tapGesture;
     NSArray * _toolbarItems;
@@ -38,21 +30,19 @@
 
 @property (nonatomic, retain) SXMediaEngageEvent *activeMediaEngageEvent;
 @property (nonatomic, retain) NSArray *annotations;
-@property (nonatomic, retain) NSMutableDictionary *cachedSnapshots;
+@property (nonatomic, readonly) NSCache *cachedSnapshots;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) <SXDocumentTitleProviding> *documentTitleProvider;
 @property (nonatomic, retain) UIBarButtonItem *doneBarButtonItem;
-@property (nonatomic, retain) UIViewController *fullScreenCanvasViewController;
+@property (nonatomic, retain) SXFullscreenCanvasViewController *fullScreenCanvasViewController;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) UIImageView *imageView;
+@property (nonatomic, readonly) UIImageView *imageView;
 @property (nonatomic) struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; } mapRect;
 @property (nonatomic, retain) MKMapView *mapView;
 @property (nonatomic, retain) UISegmentedControl *segmentedControl;
 @property (nonatomic, copy) id /* block */ snapShotCancelHandler;
-@property (nonatomic) struct CGSize { double x1; double x2; } snapShotSize;
-@property (nonatomic) struct CGSize { double x1; double x2; } snapShotViewportSize;
-@property (nonatomic, retain) SXMapSnapShotter *snapShotter;
+@property (nonatomic, readonly) SXMapSnapShotter *snapShotter;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) UITapGestureRecognizer *tapGesture;
 @property (nonatomic, retain) NSArray *toolbarItems;
@@ -75,6 +65,7 @@
 - (void)enableMapViewInteraction:(bool)arg1;
 - (void)finishMediaEngageEvent;
 - (id)fullScreenCanvasViewController;
+- (void)fullScreenCanvasViewControllerWantsToDismiss:(id)arg1;
 - (void)handleDoneTap:(id)arg1;
 - (void)handleTap:(id)arg1;
 - (bool)hasSelectedAnnotations;
@@ -96,29 +87,22 @@
 - (id)segmentedControl;
 - (void)setActiveMediaEngageEvent:(id)arg1;
 - (void)setAnnotations:(id)arg1;
-- (void)setCachedSnapshots:(id)arg1;
 - (void)setDoneBarButtonItem:(id)arg1;
 - (void)setFullScreenCanvasViewController:(id)arg1;
-- (void)setImageView:(id)arg1;
 - (void)setMapRect:(struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setMapView:(id)arg1;
 - (void)setSegmentedControl:(id)arg1;
 - (void)setSnapShotCancelHandler:(id /* block */)arg1;
-- (void)setSnapShotSize:(struct CGSize { double x1; double x2; })arg1;
-- (void)setSnapShotViewportSize:(struct CGSize { double x1; double x2; })arg1;
-- (void)setSnapShotter:(id)arg1;
 - (void)setTapGesture:(id)arg1;
 - (void)setToolbarItems:(id)arg1;
 - (void)setupNavigationBar;
 - (void)setupToolbar;
-- (bool)shouldCreateSnapShot;
 - (id /* block */)snapShotCancelHandler;
-- (struct CGSize { double x1; double x2; })snapShotSize;
-- (struct CGSize { double x1; double x2; })snapShotViewportSize;
 - (id)snapShotter;
 - (void)submitEvents;
 - (void)submitMediaEngageCompleteEvent;
 - (id)tapGesture;
 - (id)toolbarItems;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end

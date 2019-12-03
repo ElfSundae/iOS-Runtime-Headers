@@ -3,6 +3,7 @@
  */
 
 @interface _GEOCountryConfigurationLocalProxy : NSObject <CoreTelephonyClientDataDelegate, _GEOCountryConfigurationServerProxy> {
+    id  _countryCodeOverrideChangeListener;
     <_GEOCountryConfigurationServerProxyDelegate> * _delegate;
     NSObject<OS_dispatch_queue> * _delegateQueue;
     NSObject<OS_dispatch_queue> * _queue;

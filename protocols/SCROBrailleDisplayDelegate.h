@@ -6,6 +6,7 @@
 @required
 
 - (void)brailleDidStartEditingWithDisplay:(SCROBrailleDisplay *)arg1;
+- (void)brailleDisplay:(SCROBrailleDisplay *)arg1 copyStringToClipboard:(NSString *)arg2;
 - (void)brailleDisplay:(SCROBrailleDisplay *)arg1 deletedUntranslatedText:(NSString *)arg2 speakLiterally:(bool)arg3;
 - (void)brailleDisplay:(SCROBrailleDisplay *)arg1 didDisplay:(NSAttributedString *)arg2;
 - (void)brailleDisplay:(SCROBrailleDisplay *)arg1 didMoveSelection:(unsigned long long)arg2;

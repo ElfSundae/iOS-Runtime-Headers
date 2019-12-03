@@ -11,6 +11,7 @@
 - (void).cxx_destruct;
 - (void)cancelNotificationsForCodeType:(long long)arg1;
 - (void)dealloc;
+- (void)didReceiveNotificationResponse:(id)arg1;
 - (void)notifyParsedCodeWithData:(id)arg1 codePayload:(id)arg2 shouldReplacePreviousNotifications:(bool)arg3 withReply:(id /* block */)arg4;
 - (id)serviceConnection;
 - (void)setServiceConnection:(id)arg1;

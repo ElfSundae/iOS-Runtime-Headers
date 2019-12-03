@@ -3,53 +3,59 @@
  */
 
 @interface HDDaemon : NSObject <HDDiagnosticObject, HDHealthDaemon, HDTaskServerClassProvider, HDXPCListenerDelegate> {
+    HDXPCAlarmScheduler * _alarmScheduler;
     <HDNanoAlertSuppressionService> * _alertSuppressionService;
     HDAnalyticsSubmissionCoordinator * _analyticsSubmissionCoordinator;
     HDBackgroundTaskScheduler * _backgroundTaskScheduler;
     _HKBehavior * _behavior;
     HDCloudSyncCoordinator * _cloudSyncCoordinator;
-    HDCoachingDiagnosticManager * _coachingDiagnosticManager;
-    HDCompanionWorkoutCreditManager * _companionWorkoutCreditManager;
     HDContentProtectionManager * _contentProtectionManager;
     NSDictionary * _daemonExtensionsByIdentifier;
-    NSMutableArray * _daemonLaunchObservers;
     bool  _daemonReady;
+    NSMutableArray * _daemonReadyBlocks;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _daemonReadyLock;
     <HDDaemonTester> * _daemonTester;
-    HDDemoDataGenerator * _demoDataFactory;
     struct MGNotificationTokenStruct { } * _deviceNameChangesToken;
     HDDevicePowerMonitor * _devicePowerMonitor;
-    int  _didStart;
+    struct atomic_flag { 
+        _Atomic bool _Value; 
+    }  _didStart;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _endpointLock;
     NSMutableSet * _endpoints;
     HDFeatureAvailabilityAssetManager * _featureAvailabilityAssetManager;
-    HDFitnessAppBadgeManager * _fitnessAppBadgeManager;
     NSString * _healthDirectoryPath;
     int  _languageChangeNotifyToken;
-    NSObject<OS_dispatch_queue> * _mainQueue;
     HDMaintenanceWorkCoordinator * _maintenanceWorkCoordinator;
     NSString * _medicalIDDirectoryPath;
+    long long  _numberOfDaemonReadyObserversAfterReady;
+    long long  _numberOfDaemonReadyObserversBeforeReady;
+    HDPeriodicActivity * _periodicActivity;
     HDPluginManager * _pluginManager;
     HDPrimaryProfile * _primaryProfile;
     HDProcessStateManager * _processStateManager;
     HDProfileManager * _profileManager;
     HDQueryManager * _queryManager;
+    NSObject<OS_dispatch_queue> * _queue;
     HDXPCListener * _serviceListener;
     HDTaskServerRegistry * _taskServerRegistry;
 }
 
+@property (nonatomic, readonly) HDXPCAlarmScheduler *alarmScheduler;
 @property (nonatomic, retain) <HDNanoAlertSuppressionService> *alertSuppressionService;
 @property (nonatomic, retain) HDAnalyticsSubmissionCoordinator *analyticsSubmissionCoordinator;
 @property (readonly) HDBackgroundTaskScheduler *backgroundTaskScheduler;
 @property (readonly) _HKBehavior *behavior;
 @property (nonatomic, readonly) HDCloudSyncCoordinator *cloudSyncCoordinator;
-@property (nonatomic, readonly) HDCoachingDiagnosticManager *coachingDiagnosticManager;
-@property (nonatomic, readonly) HDCompanionWorkoutCreditManager *companionWorkoutCreditManager;
 @property (nonatomic, readonly) HDContentProtectionManager *contentProtectionManager;
 @property (nonatomic) <HDDaemonTester> *daemonTester;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) HDDevicePowerMonitor *devicePowerMonitor;
 @property (nonatomic, readonly) HDFeatureAvailabilityAssetManager *featureAvailabilityAssetManager;
-@property (nonatomic, readonly) HDFitnessAppBadgeManager *fitnessAppBadgeManager;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) NSString *healthDirectoryPath;
 @property (readonly, copy) NSURL *healthDirectoryURL;
@@ -71,27 +77,23 @@
 - (void)_handleLaunchServicesEvent:(id)arg1 name:(id)arg2;
 - (void)_handleSigterm;
 - (void)_localeOrLanguageChanged:(id)arg1;
-- (bool)_motionTrackingAvailable;
 - (id)_newAnalyticsSubmissionCoordinator;
 - (id)_newBackgroundTaskScheduler;
 - (id)_newBehavior;
 - (id)_newCloudSyncCoordinator;
-- (id)_newCompanionWorkoutCreditManager;
 - (id)_newContentProtectionManager;
-- (id)_newMainQueue;
 - (id)_newPluginManager;
 - (id)_newPrimaryProfile;
 - (id)_newProcessStateManager;
 - (id)_newProfileManager;
-- (void)_notifyDaemonLaunchObservers;
-- (void)_periodicUpdates;
+- (id)_newReferenceOntologyAsset;
+- (void)_notifyDaemonReadyObservers;
 - (void)_registerForDeviceNameChanges;
 - (void)_registerLaunchEventDynamicallyForNotification:(const char *)arg1;
 - (void)_resetPrivacySettings;
 - (void)_setUpDistnotedEventHandler;
 - (void)_setUpLaunchEventHandlers;
 - (void)_setUpNotifydEventHandler;
-- (void)_setUpPedometerLaunchEventHandler;
 - (void)_setUpSignalHandlers;
 - (void)_setupMemoryWarningHandler;
 - (id)_setupSignal:(int)arg1 handler:(id /* block */)arg2;
@@ -99,13 +101,12 @@
 - (void)_terminationCleanup;
 - (void)_unregisterLaunchEventDynamicallyForNotification:(const char *)arg1;
 - (void)_updateCurrentDeviceName;
+- (id)alarmScheduler;
 - (id)alertSuppressionService;
 - (id)analyticsSubmissionCoordinator;
 - (id)backgroundTaskScheduler;
 - (id)behavior;
 - (id)cloudSyncCoordinator;
-- (id)coachingDiagnosticManager;
-- (id)companionWorkoutCreditManager;
 - (id)contentProtectionManager;
 - (id)createXPCListenerWithMachServiceName:(id)arg1;
 - (id)daemonExtensionWithIdentifier:(id)arg1;
@@ -114,10 +115,10 @@
 - (void)dealloc;
 - (id)devicePowerMonitor;
 - (id)diagnosticDescription;
+- (void)endpointInvalidated:(id)arg1;
 - (void)exitClean:(bool)arg1 reason:(id)arg2;
 - (id)exportObjectForListener:(id)arg1 client:(id)arg2 error:(id*)arg3;
 - (id)featureAvailabilityAssetManager;
-- (id)fitnessAppBadgeManager;
 - (id)healthDirectoryPath;
 - (id)healthDirectorySizeInBytes;
 - (id)healthDirectoryURL;
@@ -140,6 +141,7 @@
 - (id)processStateManager;
 - (id)profileManager;
 - (id)queryManager;
+- (void)registerDaemonReadyObserver:(id)arg1 queue:(id)arg2;
 - (void)registerForDaemonReady:(id)arg1;
 - (void)registerForLaunchNotification:(const char *)arg1;
 - (id)serviceListener;

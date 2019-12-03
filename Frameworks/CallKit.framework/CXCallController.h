@@ -8,7 +8,7 @@
 }
 
 @property (nonatomic, retain) CXCallObserver *callObserver;
-@property (nonatomic, retain) NSObject<OS_dispatch_queue> *completionQueue;
+@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *completionQueue;
 
 - (void).cxx_destruct;
 - (void)_requestTransaction:(id)arg1 completion:(id /* block */)arg2;
@@ -20,6 +20,5 @@
 - (void)requestTransactionWithAction:(id)arg1 completion:(id /* block */)arg2;
 - (void)requestTransactionWithActions:(id)arg1 completion:(id /* block */)arg2;
 - (void)setCallObserver:(id)arg1;
-- (void)setCompletionQueue:(id)arg1;
 
 @end

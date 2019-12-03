@@ -31,6 +31,8 @@
         bool hasIsReadyForVideoPlayback; 
         bool hasDidStartPreparingVideo; 
         bool hasDidFinishPreparingVideo; 
+        bool hasWillBeginLivePhotoPlayback; 
+        bool hasDidEndLivePhotoPlayback; 
     }  _delegateFlags;
     struct UIEdgeInsets { 
         double top; 
@@ -40,14 +42,18 @@
     }  _edgeInsets;
     UIView * _livePhotoView;
     bool  _loopsVideo;
-    bool  _muted;
     NUAVPlayerController * _nuAVPlayerController;
     NUAVPlayerView * _playerView;
+    NUCoalescer * _renderCoalescer;
     NURenderView * _renderView;
     NUMediaViewRenderer * _renderer;
     bool  _scrollUpdatesSuppressed;
     NUScrollView * _scrollView;
     long long  _transitionCount;
+    struct CGSize { 
+        double width; 
+        double height; 
+    }  _transitionTargetSize;
     bool  _videoPlayerVisible;
 }
 
@@ -68,6 +74,7 @@
 @property (nonatomic) double minimumZoomScale;
 @property (getter=isMuted, nonatomic) bool muted;
 @property (nonatomic) NSArray *pipelineFilters;
+@property (readonly) <NUMediaPlayer> *player;
 @property (nonatomic) bool scrollUpdatesSuppressed;
 @property (readonly) Class superclass;
 @property (getter=isVideoEnabled, nonatomic) bool videoEnabled;
@@ -85,7 +92,10 @@
 - (struct CGSize { double x1; double x2; })_imageSize;
 - (id)_layerRecursiveDescription;
 - (id)_livePhotoView;
+- (void)_livephotoPlaybackDidEnd;
+- (void)_livephotoPlaybackWillBegin;
 - (struct CGSize { double x1; double x2; })_masterSizeWithoutGeometry;
+- (void)_releaseAVObjects;
 - (id)_renderView;
 - (id)_renderer;
 - (void)_rendererDidCreateAVPlayerController:(id)arg1;
@@ -97,12 +107,14 @@
 - (void)_setLayerFilters:(id)arg1;
 - (void)_setPipelineFilters:(id)arg1 shouldUpdateContent:(bool)arg2;
 - (void)_setupViews;
-- (void)_startLoopPlayback;
-- (void)_stopLoopPlayback;
+- (void)_startVideoPlayback;
+- (void)_stopVideoPlayback;
 - (void)_transitionToInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)_updateContentInsets;
 - (void)_updateRenderContent;
+- (void)_updateRenderContentCoalesced:(bool)arg1;
 - (void)_updateVideoPlayerAlpha;
+- (id)_videoPlayerController;
 - (id)_videoPlayerView;
 - (id)_videoPlayerViewWithoutControls;
 - (id)_viewRecursiveDescription;
@@ -131,6 +143,7 @@
 - (double)maximumZoomScale;
 - (double)minimumZoomScale;
 - (id)pipelineFilters;
+- (id)player;
 - (void)playerController:(id)arg1 didUpdateElapsedTime:(double)arg2 duration:(double)arg3;
 - (void)playerControllerDidFinishPlaying:(id)arg1 duration:(double)arg2;
 - (void)playerControllerIsReadyForPlayback:(id)arg1;
@@ -161,6 +174,7 @@
 - (void)setZoomScale:(double)arg1;
 - (void)setZoomScaleToFit;
 - (void)set_masterSizeWithoutGeometry:(struct CGSize { double x1; double x2; })arg1;
+- (id)snapshotImage;
 - (id)viewForZoomingInScrollView:(id)arg1;
 - (void)waitForRender;
 - (double)zoomScale;

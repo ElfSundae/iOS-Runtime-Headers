@@ -3,8 +3,6 @@
  */
 
 @interface UITextMagnifierCaret : UITextMagnifier {
-    long long  _delayedAnimationType;
-    bool  _isAnimating;
     struct CGPoint { 
         double x; 
         double y; 
@@ -13,9 +11,9 @@
 }
 
 @property (nonatomic) struct CGPoint { double x1; double x2; } offset;
-@property (nonatomic) double yOffset;
 
 + (id)activeCaretMagnifier;
++ (Class)renderClass;
 + (id)sharedCaretMagnifier;
 
 - (struct CGPoint { double x1; double x2; })animationPoint;
@@ -26,17 +24,10 @@
 - (double)offsetFromMagnificationPoint;
 - (void)remove;
 - (void)setAnimationPoint:(struct CGPoint { double x1; double x2; })arg1;
-- (void)setAutoscrollDirections:(int)arg1;
-- (void)setMagnificationPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setOffset:(struct CGPoint { double x1; double x2; })arg1;
-- (void)setYOffset:(double)arg1;
-- (void)stopMagnifying:(bool)arg1;
 - (bool)terminalPointPlacedCarefully;
 - (void)updateFrameAndOffset;
-- (double)yOffset;
 - (void)zoomDownAnimation;
-- (void)zoomDownAnimationDidStop:(id)arg1 finished:(id)arg2;
 - (void)zoomUpAnimation;
-- (void)zoomUpAnimationDidStop:(id)arg1 finished:(id)arg2;
 
 @end

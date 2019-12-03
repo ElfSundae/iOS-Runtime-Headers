@@ -29,6 +29,13 @@
         long long __ss_align; 
         BOOL __ss_pad2[112]; 
     }  _serverAddress;
+    struct sockaddr_storage { 
+        unsigned char ss_len; 
+        unsigned char ss_family; 
+        BOOL __ss_pad1[6]; 
+        long long __ss_align; 
+        BOOL __ss_pad2[112]; 
+    }  _serverAddressIPv6;
     NSData * _softwareData;
     NSString * _stableGroupID;
     NSArray * _subscribedStreams;
@@ -53,7 +60,8 @@
 @property (readonly) NSString *relaySessionID;
 @property (readonly) NSData *relaySessionKey;
 @property (readonly) NSData *relaySessionToken;
-@property (readonly) const struct sockaddr { unsigned char x1; unsigned char x2; BOOL x3[14]; }*serverAddress;
+@property (readonly) const struct sockaddr_storage { unsigned char x1; unsigned char x2; BOOL x3[6]; long long x4; BOOL x5[112]; }*serverAddress;
+@property (readonly) const struct sockaddr_storage { unsigned char x1; unsigned char x2; BOOL x3[6]; long long x4; BOOL x5[112]; }*serverAddressIPv6;
 @property (readonly) NSData *softwareData;
 @property (readonly) NSString *stableGroupID;
 @property (readonly) NSArray *subscribedStreams;
@@ -79,7 +87,8 @@
 - (id)relaySessionID;
 - (id)relaySessionKey;
 - (id)relaySessionToken;
-- (const struct sockaddr { unsigned char x1; unsigned char x2; BOOL x3[14]; }*)serverAddress;
+- (const struct sockaddr_storage { unsigned char x1; unsigned char x2; BOOL x3[6]; long long x4; BOOL x5[112]; }*)serverAddress;
+- (const struct sockaddr_storage { unsigned char x1; unsigned char x2; BOOL x3[6]; long long x4; BOOL x5[112]; }*)serverAddressIPv6;
 - (id)softwareData;
 - (id)stableGroupID;
 - (id)subscribedStreams;

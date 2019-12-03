@@ -3,17 +3,17 @@
  */
 
 @interface LabelNavRouteLabeler : NSObject {
-    struct vector<std::__1::shared_ptr<md::NavLabel>, geo::StdAllocator<std::__1::shared_ptr<md::NavLabel>, lhp::Allocator> > { 
+    struct vector<std::__1::shared_ptr<md::NavLabel>, geo::StdAllocator<std::__1::shared_ptr<md::NavLabel>, mdm::Allocator> > { 
         struct shared_ptr<md::NavLabel> {} *__begin_; 
         struct shared_ptr<md::NavLabel> {} *__end_; 
-        struct __compressed_pair<std::__1::shared_ptr<md::NavLabel> *, geo::StdAllocator<std::__1::shared_ptr<md::NavLabel>, lhp::Allocator> > { 
+        struct __compressed_pair<std::__1::shared_ptr<md::NavLabel> *, geo::StdAllocator<std::__1::shared_ptr<md::NavLabel>, mdm::Allocator> > { 
             struct shared_ptr<md::NavLabel> {} *__value_; 
-            struct StdAllocator<std::__1::shared_ptr<md::NavLabel>, lhp::Allocator> { 
+            struct StdAllocator<std::__1::shared_ptr<md::NavLabel>, mdm::Allocator> { 
                 struct Allocator {} *_allocator; 
             } __value_; 
         } __end_cap_; 
     }  _activeSigns;
-    struct VKLabelNavArtworkCache { struct unique_ptr<LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> >, std::__1::default_delete<LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> > > > { struct __compressed_pair<LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> > *, std::__1::default_delete<LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> > > > { struct LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> > {} *x_1_2_1; } x_1_1_1; } x1; struct unique_ptr<LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> >, std::__1::default_delete<LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > > > { struct __compressed_pair<LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > *, std::__1::default_delete<LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > > > { struct LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > {} *x_1_2_1; } x_2_1_1; } x2; struct unique_ptr<LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> >, std::__1::default_delete<LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > > > { struct __compressed_pair<LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > *, std::__1::default_delete<LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > > > { struct LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > {} *x_1_2_1; } x_3_1_1; } x3; } * _artworkCache;
+    struct VKLabelNavArtworkCache { struct unique_ptr<geo::LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> >, std::__1::default_delete<geo::LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> > > > { struct __compressed_pair<geo::LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> > *, std::__1::default_delete<geo::LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> > > > { struct LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> > {} *x_1_2_1; } x_1_1_1; } x1; struct unique_ptr<geo::LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> >, std::__1::default_delete<geo::LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > > > { struct __compressed_pair<geo::LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > *, std::__1::default_delete<geo::LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > > > { struct LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > {} *x_1_2_1; } x_2_1_1; } x2; } * _artworkCache;
     bool  _checkIfRouteSubrangeChanged;
     bool  _checkOnRouteLabelsAlignment;
     unsigned long long  _countVisibleOffRouteRoadSigns;
@@ -33,13 +33,14 @@
     bool  _debugEnableShieldsOnRouteLine;
     bool  _disableTileParseForOneLayout;
     bool  _drawRoadSigns;
-    /* Warning: unhandled struct encoding: '{vector<VKLabelNavRoadLabel *, geo::StdAllocator<VKLabelNavRoadLabel *, lhp::Allocator> >="__begin_"^@"__end_"^@"__end_cap_"{__compressed_pair<VKLabelNavRoadLabel **, geo::StdAllocator<VKLabelNavRoadLabel *, lhp::Allocator> >="__value_"^@"__value_"{StdAllocator<VKLabelNavRoadLabel *, lhp::Allocator>="_allocator"^{Allocator}}}}' */ struct vector<VKLabelNavRoadLabel *, geo::StdAllocator<VKLabelNavRoadLabel *, lhp::Allocator> > { 
+    /* Warning: unhandled struct encoding: '{vector<VKLabelNavRoadLabel *, geo::StdAllocator<VKLabelNavRoadLabel *, mdm::Allocator> >="__begin_"^@"__end_"^@"__end_cap_"{__compressed_pair<VKLabelNavRoadLabel **, geo::StdAllocator<VKLabelNavRoadLabel *, mdm::Allocator> >="__value_"^@"__value_"{StdAllocator<VKLabelNavRoadLabel *, mdm::Allocator>="_allocator"^{Allocator}}}}' */ struct vector<VKLabelNavRoadLabel *, geo::StdAllocator<VKLabelNavRoadLabel *, mdm::Allocator> > { 
         __end_ **__begin_; 
     }  _externalCollisionLabelsForLayout;
     NSMutableArray * _fadingLabels;
     NSMutableArray * _guidanceStepInfos;
     bool  _hasPendingTilesInSnappingRegion;
     bool  _isOnRoute;
+    bool  _isStylesheetAnimating;
     NSMutableArray * _junctions;
     unsigned long long  _maxOnRoadGraphRoadSigns;
     unsigned long long  _maxVisibleOffRouteRoadSigns;
@@ -48,9 +49,41 @@
     float  _minSignOffsetDistance;
     unsigned long long  _minVisibleOffRoadGraphRoadSigns;
     unsigned long long  _minVisibleProceedToRouteRoadSigns;
+    bool  _needsDebugConsoleClear;
     bool  _needsLayout;
-    NSMutableSet * _pendingTiles;
+    struct unordered_set<std::__1::shared_ptr<md::LabelTile>, std::__1::hash<std::__1::shared_ptr<md::LabelTile> >, std::__1::equal_to<std::__1::shared_ptr<md::LabelTile> >, geo::StdAllocator<std::__1::shared_ptr<md::LabelTile>, mdm::Allocator> > { 
+        struct __hash_table<std::__1::shared_ptr<md::LabelTile>, std::__1::hash<std::__1::shared_ptr<md::LabelTile> >, std::__1::equal_to<std::__1::shared_ptr<md::LabelTile> >, geo::StdAllocator<std::__1::shared_ptr<md::LabelTile>, mdm::Allocator> > { 
+            struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::shared_ptr<md::LabelTile>, void *> *> *[], std::__1::__bucket_list_deallocator<geo::StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::shared_ptr<md::LabelTile>, void *> *> *, mdm::Allocator> > > { 
+                struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::shared_ptr<md::LabelTile>, void *> *> **, std::__1::__bucket_list_deallocator<geo::StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::shared_ptr<md::LabelTile>, void *> *> *, mdm::Allocator> > > { 
+                    struct __hash_node_base<std::__1::__hash_node<std::__1::shared_ptr<md::LabelTile>, void *> *> {} **__value_; 
+                    struct __bucket_list_deallocator<geo::StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::shared_ptr<md::LabelTile>, void *> *> *, mdm::Allocator> > { 
+                        struct __compressed_pair<unsigned long, geo::StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::shared_ptr<md::LabelTile>, void *> *> *, mdm::Allocator> > { 
+                            unsigned long long __value_; 
+                            struct StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::shared_ptr<md::LabelTile>, void *> *> *, mdm::Allocator> { 
+                                struct Allocator {} *_allocator; 
+                            } __value_; 
+                        } __data_; 
+                    } __value_; 
+                } __ptr_; 
+            } __bucket_list_; 
+            struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::shared_ptr<md::LabelTile>, void *> *>, geo::StdAllocator<std::__1::__hash_node<std::__1::shared_ptr<md::LabelTile>, void *>, mdm::Allocator> > { 
+                struct __hash_node_base<std::__1::__hash_node<std::__1::shared_ptr<md::LabelTile>, void *> *> { 
+                    struct __hash_node_base<std::__1::__hash_node<std::__1::shared_ptr<md::LabelTile>, void *> *> {} *__next_; 
+                } __value_; 
+                struct StdAllocator<std::__1::__hash_node<std::__1::shared_ptr<md::LabelTile>, void *>, mdm::Allocator> { 
+                    struct Allocator {} *_allocator; 
+                } __value_; 
+            } __p1_; 
+            struct __compressed_pair<unsigned long, std::__1::hash<std::__1::shared_ptr<md::LabelTile> > > { 
+                unsigned long long __value_; 
+            } __p2_; 
+            struct __compressed_pair<float, std::__1::equal_to<std::__1::shared_ptr<md::LabelTile> > > { 
+                float __value_; 
+            } __p3_; 
+        } __table_; 
+    }  _pendingTiles;
     bool  _preferRightSideLabelPlacement;
+    bool  _regenerateRoadSigns;
     VKLabelNavRoadGraph * _roadGraph;
     NSMutableSet * _roadNamesInGuidance;
     VKPolylineOverlay * _route;
@@ -73,17 +106,47 @@
         struct StylesheetManager<gss::PropertyID> {} *__ptr_; 
         struct __shared_weak_count {} *__cntrl_; 
     }  _styleManager;
-    NSMutableSet * _tiles;
+    struct unordered_set<std::__1::shared_ptr<md::LabelTile>, std::__1::hash<std::__1::shared_ptr<md::LabelTile> >, std::__1::equal_to<std::__1::shared_ptr<md::LabelTile> >, geo::StdAllocator<std::__1::shared_ptr<md::LabelTile>, mdm::Allocator> > { 
+        struct __hash_table<std::__1::shared_ptr<md::LabelTile>, std::__1::hash<std::__1::shared_ptr<md::LabelTile> >, std::__1::equal_to<std::__1::shared_ptr<md::LabelTile> >, geo::StdAllocator<std::__1::shared_ptr<md::LabelTile>, mdm::Allocator> > { 
+            struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::shared_ptr<md::LabelTile>, void *> *> *[], std::__1::__bucket_list_deallocator<geo::StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::shared_ptr<md::LabelTile>, void *> *> *, mdm::Allocator> > > { 
+                struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::shared_ptr<md::LabelTile>, void *> *> **, std::__1::__bucket_list_deallocator<geo::StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::shared_ptr<md::LabelTile>, void *> *> *, mdm::Allocator> > > { 
+                    struct __hash_node_base<std::__1::__hash_node<std::__1::shared_ptr<md::LabelTile>, void *> *> {} **__value_; 
+                    struct __bucket_list_deallocator<geo::StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::shared_ptr<md::LabelTile>, void *> *> *, mdm::Allocator> > { 
+                        struct __compressed_pair<unsigned long, geo::StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::shared_ptr<md::LabelTile>, void *> *> *, mdm::Allocator> > { 
+                            unsigned long long __value_; 
+                            struct StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::shared_ptr<md::LabelTile>, void *> *> *, mdm::Allocator> { 
+                                struct Allocator {} *_allocator; 
+                            } __value_; 
+                        } __data_; 
+                    } __value_; 
+                } __ptr_; 
+            } __bucket_list_; 
+            struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::shared_ptr<md::LabelTile>, void *> *>, geo::StdAllocator<std::__1::__hash_node<std::__1::shared_ptr<md::LabelTile>, void *>, mdm::Allocator> > { 
+                struct __hash_node_base<std::__1::__hash_node<std::__1::shared_ptr<md::LabelTile>, void *> *> { 
+                    struct __hash_node_base<std::__1::__hash_node<std::__1::shared_ptr<md::LabelTile>, void *> *> {} *__next_; 
+                } __value_; 
+                struct StdAllocator<std::__1::__hash_node<std::__1::shared_ptr<md::LabelTile>, void *>, mdm::Allocator> { 
+                    struct Allocator {} *_allocator; 
+                } __value_; 
+            } __p1_; 
+            struct __compressed_pair<unsigned long, std::__1::hash<std::__1::shared_ptr<md::LabelTile> > > { 
+                unsigned long long __value_; 
+            } __p2_; 
+            struct __compressed_pair<float, std::__1::equal_to<std::__1::shared_ptr<md::LabelTile> > > { 
+                float __value_; 
+            } __p3_; 
+        } __table_; 
+    }  _tiles;
     bool  _useRouteSubrange;
     NSMutableArray * _visibleLabels;
     NSMutableDictionary * _visibleLabelsByName;
 }
 
-@property (nonatomic, readonly) const /* Warning: unhandled struct encoding: '{vector<std::__1::shared_ptr<md::NavLabel>' */ struct *activeSigns; /* unknown property attribute:  lhp::Allocator>=^{Allocator}}}} */
-@property (nonatomic) /* Warning: unhandled struct encoding: '{VKLabelNavArtworkCache={unique_ptr<LRUCache<unsigned long' */ struct *artworkCache; /* unknown property attribute:  std::__1::hash<unsigned long> >}}}^{CGColor}^{CGColor}{VKGuidanceManeuverArrowMetrics={CGSize=dd}ddd{CGSize=dd}dddCddddddddddddddddBdddBB}} */
+@property (nonatomic, readonly) const /* Warning: unhandled struct encoding: '{vector<std::__1::shared_ptr<md::NavLabel>' */ struct *activeSigns; /* unknown property attribute:  mdm::Allocator>=^{Allocator}}}} */
+@property (nonatomic) /* Warning: unhandled struct encoding: '{VKLabelNavArtworkCache={unique_ptr<geo::LRUCache<unsigned long' */ struct *artworkCache; /* unknown property attribute:  std::__1::hash<unsigned long> >}}}^{CGColor}^{CGColor}{VKGuidanceManeuverArrowMetrics={CGSize=dd}ddd{CGSize=dd}dddCddddddddddddddddBdddBB}} */
 @property (nonatomic, retain) NSString *currentLocationText;
 @property (nonatomic, retain) NSString *currentRoadName;
-@property (nonatomic, readonly) /* Warning: unhandled struct encoding: '{NavCurrentRoadSign=^^?{basic_string<char' */ struct *currentRoadSign; /* unknown property attribute:  1>=[2f]}}BBBfBBff} */
+@property (nonatomic, readonly) /* Warning: unhandled struct encoding: '{NavCurrentRoadSign=^^?{basic_string<char' */ struct *currentRoadSign; /* unknown property attribute:  1>=[2f]}}BBBfBBBff} */
 @property (nonatomic, readonly) float currentRoadSignPixelHeight;
 @property (nonatomic, retain) NSString *currentShieldGroup;
 @property (nonatomic) bool debugDisableRoadSignLimit;
@@ -95,55 +158,61 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (bool)_addJunctionsForTile:(id)arg1;
-- (void)_addLabelsAtJunctions:(id)arg1 withContext:(struct NavContext { int (**x1)(); struct LabelManager {} *x2; struct LabelLayoutContext {} *x3; struct LabelNavLayoutContext {} *x4; }*)arg2 maxLabelsToAdd:(unsigned long long)arg3;
-- (void)_addLabelsForJunctions:(id)arg1 withContext:(struct NavContext { int (**x1)(); struct LabelManager {} *x2; struct LabelLayoutContext {} *x3; struct LabelNavLayoutContext {} *x4; }*)arg2 maxLabelsToAdd:(unsigned long long)arg3 useAllJunctions:(bool)arg4 placeShieldsFrontToBack:(bool)arg5;
+- (bool)_addJunctionsForTile:(const struct shared_ptr<md::LabelTile> { struct LabelTile {} *x1; struct __shared_weak_count {} *x2; }*)arg1;
+- (void)_addLabelsAtJunctions:(id)arg1 withContext:(struct NavContext { int (**x1)(); struct LabelManager {} *x2; struct MapNavLabeler {} *x3; struct LabelLayoutContext {} *x4; struct LabelNavLayoutContext {} *x5; }*)arg2 maxLabelsToAdd:(unsigned long long)arg3;
+- (void)_addLabelsForJunctions:(id)arg1 withContext:(struct NavContext { int (**x1)(); struct LabelManager {} *x2; struct MapNavLabeler {} *x3; struct LabelLayoutContext {} *x4; struct LabelNavLayoutContext {} *x5; }*)arg2 maxLabelsToAdd:(unsigned long long)arg3 useAllJunctions:(bool)arg4 placeShieldsFrontToBack:(bool)arg5;
 - (bool)_collideLabel:(id)arg1 activeLabel:(id)arg2 labelsToRemove:(id)arg3;
-- (void)_createOrUpdateLabelForRoad:(id)arg1 isShield:(bool)arg2 navContext:(struct NavContext { int (**x1)(); struct LabelManager {} *x2; struct LabelLayoutContext {} *x3; struct LabelNavLayoutContext {} *x4; }*)arg3;
-- (bool)_findRouteOverlappingJunctionFrom:(long long)arg1 routeJunctions:(struct vector<RouteJunctionInfo, geo::StdAllocator<RouteJunctionInfo, lhp::Allocator> > { struct RouteJunctionInfo {} *x1; struct RouteJunctionInfo {} *x2; struct __compressed_pair<RouteJunctionInfo *, geo::StdAllocator<RouteJunctionInfo, lhp::Allocator> > { struct RouteJunctionInfo {} *x_3_1_1; struct StdAllocator<RouteJunctionInfo, lhp::Allocator> { struct Allocator {} *x_2_2_1; } x_3_1_2; } x3; }*)arg2 lookBackward:(bool)arg3 firstOverlap:(long long*)arg4 secondOverlap:(long long*)arg5;
-- (void)_generateCurrentRoadSignWithContext:(struct NavContext { int (**x1)(); struct LabelManager {} *x2; struct LabelLayoutContext {} *x3; struct LabelNavLayoutContext {} *x4; }*)arg1;
+- (void)_createOrUpdateLabelForRoad:(id)arg1 isShield:(bool)arg2 navContext:(struct NavContext { int (**x1)(); struct LabelManager {} *x2; struct MapNavLabeler {} *x3; struct LabelLayoutContext {} *x4; struct LabelNavLayoutContext {} *x5; }*)arg3;
+- (bool)_findRouteOverlappingJunctionFrom:(long long)arg1 routeJunctions:(struct vector<RouteJunctionInfo, geo::StdAllocator<RouteJunctionInfo, mdm::Allocator> > { struct RouteJunctionInfo {} *x1; struct RouteJunctionInfo {} *x2; struct __compressed_pair<RouteJunctionInfo *, geo::StdAllocator<RouteJunctionInfo, mdm::Allocator> > { struct RouteJunctionInfo {} *x_3_1_1; struct StdAllocator<RouteJunctionInfo, mdm::Allocator> { struct Allocator {} *x_2_2_1; } x_3_1_2; } x3; }*)arg2 lookBackward:(bool)arg3 firstOverlap:(long long*)arg4 secondOverlap:(long long*)arg5;
+- (void)_generateCurrentRoadSignWithContext:(struct NavContext { int (**x1)(); struct LabelManager {} *x2; struct MapNavLabeler {} *x3; struct LabelLayoutContext {} *x4; struct LabelNavLayoutContext {} *x5; }*)arg1;
 - (void)_initalizeCurrentRoadInfo;
 - (void)_refreshGuidanceRoadNames;
 - (void)_reloadRouteJunctions;
-- (void)_tryAddLabel:(id)arg1 navContext:(struct NavContext { int (**x1)(); struct LabelManager {} *x2; struct LabelLayoutContext {} *x3; struct LabelNavLayoutContext {} *x4; }*)arg2 labelCollisionEnabled:(bool)arg3;
-- (void)_tryAddRoadSignForJunction:(id)arg1 navContext:(struct NavContext { int (**x1)(); struct LabelManager {} *x2; struct LabelLayoutContext {} *x3; struct LabelNavLayoutContext {} *x4; }*)arg2 labelCollisionEnabled:(bool)arg3;
-- (void)_tryAddRoadSignForRoad:(id)arg1 isShield:(bool)arg2 navContext:(struct NavContext { int (**x1)(); struct LabelManager {} *x2; struct LabelLayoutContext {} *x3; struct LabelNavLayoutContext {} *x4; }*)arg3 labelCollisionEnabled:(bool)arg4;
+- (void)_tryAddLabel:(id)arg1 navContext:(struct NavContext { int (**x1)(); struct LabelManager {} *x2; struct MapNavLabeler {} *x3; struct LabelLayoutContext {} *x4; struct LabelNavLayoutContext {} *x5; }*)arg2 labelCollisionEnabled:(bool)arg3;
+- (void)_tryAddRoadSignForJunction:(id)arg1 navContext:(struct NavContext { int (**x1)(); struct LabelManager {} *x2; struct MapNavLabeler {} *x3; struct LabelLayoutContext {} *x4; struct LabelNavLayoutContext {} *x5; }*)arg2 labelCollisionEnabled:(bool)arg3;
+- (void)_tryAddRoadSignForRoad:(id)arg1 isShield:(bool)arg2 navContext:(struct NavContext { int (**x1)(); struct LabelManager {} *x2; struct MapNavLabeler {} *x3; struct LabelLayoutContext {} *x4; struct LabelNavLayoutContext {} *x5; }*)arg3 labelCollisionEnabled:(bool)arg4;
 - (bool)_updateActiveRouteRange;
 - (void)_updateCurrentRoadInfo;
 - (void)_updatePreferredLabelPlacements;
 - (void)_updateRoadStarts;
 - (void)_updateRoadsInGuidance;
 - (void)_updateUniqueOffRouteRoads;
-- (const struct vector<std::__1::shared_ptr<md::NavLabel>, geo::StdAllocator<std::__1::shared_ptr<md::NavLabel>, lhp::Allocator> > { struct shared_ptr<md::NavLabel> {} *x1; struct shared_ptr<md::NavLabel> {} *x2; struct __compressed_pair<std::__1::shared_ptr<md::NavLabel> *, geo::StdAllocator<std::__1::shared_ptr<md::NavLabel>, lhp::Allocator> > { struct shared_ptr<md::NavLabel> {} *x_3_1_1; struct StdAllocator<std::__1::shared_ptr<md::NavLabel>, lhp::Allocator> { struct Allocator {} *x_2_2_1; } x_3_1_2; } x3; }*)activeSigns;
-- (struct VKLabelNavArtworkCache { struct unique_ptr<LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> >, std::__1::default_delete<LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> > > > { struct __compressed_pair<LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> > *, std::__1::default_delete<LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> > > > { struct LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> > {} *x_1_2_1; } x_1_1_1; } x1; struct unique_ptr<LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> >, std::__1::default_delete<LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > > > { struct __compressed_pair<LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > *, std::__1::default_delete<LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > > > { struct LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > {} *x_1_2_1; } x_2_1_1; } x2; struct unique_ptr<LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> >, std::__1::default_delete<LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > > > { struct __compressed_pair<LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > *, std::__1::default_delete<LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > > > { struct LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > {} *x_1_2_1; } x_3_1_1; } x3; }*)artworkCache;
+- (const struct vector<std::__1::shared_ptr<md::NavLabel>, geo::StdAllocator<std::__1::shared_ptr<md::NavLabel>, mdm::Allocator> > { struct shared_ptr<md::NavLabel> {} *x1; struct shared_ptr<md::NavLabel> {} *x2; struct __compressed_pair<std::__1::shared_ptr<md::NavLabel> *, geo::StdAllocator<std::__1::shared_ptr<md::NavLabel>, mdm::Allocator> > { struct shared_ptr<md::NavLabel> {} *x_3_1_1; struct StdAllocator<std::__1::shared_ptr<md::NavLabel>, mdm::Allocator> { struct Allocator {} *x_2_2_1; } x_3_1_2; } x3; }*)activeSigns;
+- (struct VKLabelNavArtworkCache { struct unique_ptr<geo::LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> >, std::__1::default_delete<geo::LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> > > > { struct __compressed_pair<geo::LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> > *, std::__1::default_delete<geo::LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> > > > { struct LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> > {} *x_1_2_1; } x_1_1_1; } x1; struct unique_ptr<geo::LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> >, std::__1::default_delete<geo::LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > > > { struct __compressed_pair<geo::LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > *, std::__1::default_delete<geo::LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > > > { struct LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > {} *x_1_2_1; } x_2_1_1; } x2; }*)artworkCache;
 - (void)clearSceneIsMemoryWarning:(bool)arg1;
-- (unsigned char)computeRoutePositionForPOIAtPixel:(const struct Matrix<float, 2, 1> { float x1[2]; }*)arg1 currentPosition:(unsigned char)arg2 context:(struct NavContext { int (**x1)(); struct LabelManager {} *x2; struct LabelLayoutContext {} *x3; struct LabelNavLayoutContext {} *x4; }*)arg3;
+- (unsigned char)computeRoutePositionForPOIAtPixel:(const struct Matrix<float, 2, 1> { float x1[2]; }*)arg1 currentPosition:(unsigned char)arg2 context:(struct NavContext { int (**x1)(); struct LabelManager {} *x2; struct MapNavLabeler {} *x3; struct LabelLayoutContext {} *x4; struct LabelNavLayoutContext {} *x5; }*)arg3;
 - (id)currentLocationText;
 - (id)currentRoadName;
-- (struct NavCurrentRoadSign { int (**x1)(); struct basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator> > { struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator> >::__rep, geo::StdAllocator<char, lhp::Allocator> > { struct __rep { union { struct __long { char *x_1_5_1; unsigned long long x_1_5_2; unsigned long long x_1_5_3; } x_1_4_1; struct __short { BOOL x_2_5_1[23]; struct { unsigned char x_2_6_1; } x_2_5_2; } x_1_4_2; struct __raw { unsigned long long x_3_5_1[3]; } x_1_4_3; } x_1_3_1; } x_1_2_1; struct StdAllocator<char, lhp::Allocator> { struct Allocator {} *x_2_3_1; } x_1_2_2; } x_2_1_1; } x2; struct shared_ptr<md::LabelStyle> { struct LabelStyle {} *x_3_1_1; struct __shared_weak_count {} *x_3_1_2; } x3; bool x4; struct shared_ptr<gss::StylesheetQuery<gss::PropertyID> > { struct StylesheetQuery<gss::PropertyID> {} *x_5_1_1; struct __shared_weak_count {} *x_5_1_2; } x5; struct { bool x_6_1_1; bool x_6_1_2; float x_6_1_3; float x_6_1_4; } x6; }*)currentRoadSign;
+- (struct NavCurrentRoadSign { int (**x1)(); struct basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, mdm::Allocator> > { struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, mdm::Allocator> >::__rep, geo::StdAllocator<char, mdm::Allocator> > { struct __rep { union { struct __long { char *x_1_5_1; unsigned long long x_1_5_2; unsigned long long x_1_5_3; } x_1_4_1; struct __short { BOOL x_2_5_1[23]; struct { unsigned char x_2_6_1; } x_2_5_2; } x_1_4_2; struct __raw { unsigned long long x_3_5_1[3]; } x_1_4_3; } x_1_3_1; } x_1_2_1; struct StdAllocator<char, mdm::Allocator> { struct Allocator {} *x_2_3_1; } x_1_2_2; } x_2_1_1; } x2; struct shared_ptr<md::LabelStyle> { struct LabelStyle {} *x_3_1_1; struct __shared_weak_count {} *x_3_1_2; } x3; struct shared_ptr<gss::StylesheetQuery<gss::PropertyID> > { struct StylesheetQuery<gss::PropertyID> {} *x_4_1_1; struct __shared_weak_count {} *x_4_1_2; } x4; struct { float x_5_1_1; float x_5_1_2; } x5; struct unique_ptr<md::NavLabelPart, std::__1::default_delete<md::NavLabelPart> > { struct __compressed_pair<md::NavLabelPart *, std::__1::default_delete<md::NavLabelPart> > { struct NavLabelPart {} *x_1_2_1; } x_6_1_1; } x6; }*)currentRoadSign;
 - (float)currentRoadSignPixelHeight;
 - (id)currentShieldGroup;
 - (void)dealloc;
 - (bool)debugDisableRoadSignLimit;
+- (void)debugDraw:(id)arg1 overlayConsole:(struct DebugConsole { int (**x1)(); struct Matrix<float, 2, 1> { float x_2_1_1[2]; } x2; struct Matrix<float, 2, 1> { float x_3_1_1[2]; } x3; struct Matrix<float, 2, 1> { float x_4_1_1[2]; } x4; struct Matrix<float, 2, 1> { float x_5_1_1[2]; } x5; int x6; int x7; unsigned long long x8; struct unique_ptr<ggl::RenderItem, std::__1::default_delete<ggl::RenderItem> > { struct __compressed_pair<ggl::RenderItem *, std::__1::default_delete<ggl::RenderItem> > { struct RenderItem {} *x_1_2_1; } x_9_1_1; } x9; struct unique_ptr<ggl::RenderItem, std::__1::default_delete<ggl::RenderItem> > { struct __compressed_pair<ggl::RenderItem *, std::__1::default_delete<ggl::RenderItem> > { struct RenderItem {} *x_1_2_1; } x_10_1_1; } x10; struct unique_ptr<ggl::DataWrite<ggl::ColoredText::My>, std::__1::default_delete<ggl::DataWrite<ggl::ColoredText::My> > > { struct __compressed_pair<ggl::DataWrite<ggl::ColoredText::My> *, std::__1::default_delete<ggl::DataWrite<ggl::ColoredText::My> > > { struct DataWrite<ggl::ColoredText::My> {} *x_1_2_1; } x_11_1_1; } x11; }*)arg2 navContext:(struct NavContext { int (**x1)(); struct LabelManager {} *x2; struct MapNavLabeler {} *x3; struct LabelLayoutContext {} *x4; struct LabelNavLayoutContext {} *x5; }*)arg3;
 - (bool)debugEnableShieldsOnRouteLine;
 - (bool)drawRoadSigns;
-- (void)grabTilesFromScene:(id)arg1;
+- (void)grabTilesFromScene:(const struct SceneContext { int (**x1)(); unsigned short x2; struct unordered_map<mdc::LayerDataRequestKey, geo::small_vector<geo::MercatorTile, 8>, mdc::LayerDataRequestKeyHash, std::__1::equal_to<mdc::LayerDataRequestKey>, std::__1::allocator<std::__1::pair<const mdc::LayerDataRequestKey, geo::small_vector<geo::MercatorTile, 8> > > > { struct __hash_table<std::__1::__hash_value_type<mdc::LayerDataRequestKey, geo::small_vector<geo::MercatorTile, 8> >, std::__1::__unordered_map_hasher<mdc::LayerDataRequestKey, std::__1::__hash_value_type<mdc::LayerDataRequestKey, geo::small_vector<geo::MercatorTile, 8> >, mdc::LayerDataRequestKeyHash, true>, std::__1::__unordered_map_equal<mdc::LayerDataRequestKey, std::__1::__hash_value_type<mdc::LayerDataRequestKey, geo::small_vector<geo::MercatorTile, 8> >, std::__1::equal_to<mdc::LayerDataRequestKey>, true>, std::__1::allocator<std::__1::__hash_value_type<mdc::LayerDataRequestKey, geo::small_vector<geo::MercatorTile, 8> > > > { struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<mdc::LayerDataRequestKey, geo::small_vector<geo::MercatorTile, 8> >, void *> *> *[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<mdc::LayerDataRequestKey, geo::small_vector<geo::MercatorTile, 8> >, void *> *> *> > > { struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<mdc::LayerDataRequestKey, geo::small_vector<geo::MercatorTile, 8> >, void *> *> **, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<mdc::LayerDataRequestKey, geo::small_vector<geo::MercatorTile, 8> >, void *> *> *> > > { struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<mdc::LayerDataRequestKey, geo::small_vector<geo::MercatorTile, 8> >, void *> *> {} **x_1_4_1; struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<mdc::LayerDataRequestKey, geo::small_vector<geo::MercatorTile, 8> >, void *> *> *> > { struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<mdc::LayerDataRequestKey, geo::small_vector<geo::MercatorTile, 8> >, void *> *> *> > { unsigned long long x_1_6_1; } x_2_5_1; } x_1_4_2; } x_1_3_1; } x_1_2_1; } x_3_1_1; } x3; }*)arg1;
 - (id)init;
 - (bool)isNavMode;
-- (void)layoutWithNavContext:(struct NavContext { int (**x1)(); struct LabelManager {} *x2; struct LabelLayoutContext {} *x3; struct LabelNavLayoutContext {} *x4; }*)arg1 externalCollisionLabels:(const struct vector<VKLabelNavRoadLabel *, geo::StdAllocator<VKLabelNavRoadLabel *, lhp::Allocator> > { id *x1; id x2; /* Warning: Unrecognized filer type: '_' using 'void*' */ void*x3; void*x4; BOOL x5; out void*x6; void*x7; const void*x8; short x9; short x10; void*x11; double x12; void*x13; void*x14; void*x15; int x16; const void*x17; oneway void*x18; unsigned long x19; void*x20; unsigned int x21/* : ? */; void*x22; long x23; inout void*x24; void x25; void*x26; out void*x27; double x28; unsigned long x29; void*x30; unsigned int x31/* : ? */; void*x32; long x33; void*x34; char *x35; char *x36; void*x37; void*x38; void*x39; void*x40; out SEL x41; SEL x42; unsigned short x43; void*x44; double x45; long x46; long x47; out BOOL x48; void*x49; void*x50; out const void*x51; oneway void*x52; unsigned long x53; void*x54; unsigned int x55/* : ? */; void*x56; long x57; inout void*x58; void x59; void*x60; out void*x61; double x62; unsigned long x63; void*x64; unsigned int x65/* : ? */; void*x66; long x67; void*x68; char *x69; void*x70; void*x71; long x72; void*x73; void*x74; SEL x75; SEL x76; long x77; long x78; out BOOL x79; }*)arg2;
+- (void)layoutWithNavContext:(struct NavContext { int (**x1)(); struct LabelManager {} *x2; struct MapNavLabeler {} *x3; struct LabelLayoutContext {} *x4; struct LabelNavLayoutContext {} *x5; }*)arg1 externalCollisionLabels:(const struct vector<VKLabelNavRoadLabel *, geo::StdAllocator<VKLabelNavRoadLabel *, mdm::Allocator> > { id *x1; id *x2; struct __compressed_pair<VKLabelNavRoadLabel **, geo::StdAllocator<VKLabelNavRoadLabel *, mdm::Allocator> > { id *x_3_1_1; struct StdAllocator<VKLabelNavRoadLabel *, mdm::Allocator> { struct Allocator {} *x_2_2_1; } x_3_1_2; } x3; }*)arg2;
+- (bool)needsDebugDraw;
 - (bool)needsLayout;
-- (unsigned char)orientationForRoadSign:(id)arg1 roadLabel:(id)arg2 navContext:(struct NavContext { int (**x1)(); struct LabelManager {} *x2; struct LabelLayoutContext {} *x3; struct LabelNavLayoutContext {} *x4; }*)arg3;
+- (unsigned char)orientationForRoadSign:(id)arg1 roadLabel:(id)arg2 navContext:(struct NavContext { int (**x1)(); struct LabelManager {} *x2; struct MapNavLabeler {} *x3; struct LabelLayoutContext {} *x4; struct LabelNavLayoutContext {} *x5; }*)arg3;
 - (id)route;
 - (struct PolylineCoordinate { unsigned int x1; float x2; })routeUserOffset;
-- (void)setArtworkCache:(struct VKLabelNavArtworkCache { struct unique_ptr<LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> >, std::__1::default_delete<LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> > > > { struct __compressed_pair<LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> > *, std::__1::default_delete<LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> > > > { struct LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> > {} *x_1_2_1; } x_1_1_1; } x1; struct unique_ptr<LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> >, std::__1::default_delete<LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > > > { struct __compressed_pair<LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > *, std::__1::default_delete<LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > > > { struct LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > {} *x_1_2_1; } x_2_1_1; } x2; struct unique_ptr<LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> >, std::__1::default_delete<LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > > > { struct __compressed_pair<LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > *, std::__1::default_delete<LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > > > { struct LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > {} *x_1_2_1; } x_3_1_1; } x3; }*)arg1;
+- (void)setArtworkCache:(struct VKLabelNavArtworkCache { struct unique_ptr<geo::LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> >, std::__1::default_delete<geo::LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> > > > { struct __compressed_pair<geo::LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> > *, std::__1::default_delete<geo::LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> > > > { struct LRUCache<unsigned long, VKRoadSignArtwork *, std::__1::hash<unsigned long> > {} *x_1_2_1; } x_1_1_1; } x1; struct unique_ptr<geo::LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> >, std::__1::default_delete<geo::LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > > > { struct __compressed_pair<geo::LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > *, std::__1::default_delete<geo::LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > > > { struct LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long> > {} *x_1_2_1; } x_2_1_1; } x2; }*)arg1;
 - (void)setCurrentLocationText:(id)arg1;
 - (void)setCurrentRoadName:(id)arg1;
 - (void)setCurrentShieldGroup:(id)arg1;
 - (void)setDebugDisableRoadSignLimit:(bool)arg1;
 - (void)setDebugEnableShieldsOnRouteLine:(bool)arg1;
 - (void)setDrawRoadSigns:(bool)arg1;
+- (void)setMaxVisibleRoadsigns:(unsigned int)arg1;
 - (void)setRoute:(id)arg1;
 - (void)setRouteUserOffset:(struct PolylineCoordinate { unsigned int x1; float x2; })arg1;
 - (void)setStyleManager:(struct shared_ptr<gss::StylesheetManager<gss::PropertyID> > { struct StylesheetManager<gss::PropertyID> {} *x1; struct __shared_weak_count {} *x2; })arg1;
+- (void)styleManagerDidChange:(bool)arg1;
+- (void)styleManagerDidFinishAnimating;
+- (void)styleManagerDidStartAnimating;
 
 @end

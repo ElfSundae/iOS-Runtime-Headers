@@ -9,6 +9,7 @@
     NSString * _cName;
     long long  _direction;
     AVCNetworkAddress * _localAddress;
+    unsigned int  _localSSRC;
     bool  _rateAdaptationEnabled;
     NSData * _receiveMasterKey;
     unsigned long long  _recommendedMTU;
@@ -35,6 +36,7 @@
 @property (nonatomic, copy) NSString *cName;
 @property (nonatomic) long long direction;
 @property (nonatomic, retain) AVCNetworkAddress *localAddress;
+@property (nonatomic) unsigned int localSSRC;
 @property (getter=isRateAdaptationEnabled, nonatomic) bool rateAdaptationEnabled;
 @property (nonatomic, retain) NSData *receiveMasterKey;
 @property (nonatomic) unsigned long long recommendedMTU;
@@ -79,6 +81,7 @@
 - (bool)isValidTextConfig;
 - (bool)isValidVideoConfig;
 - (id)localAddress;
+- (unsigned int)localSSRC;
 - (id)receiveMasterKey;
 - (unsigned long long)recommendedMTU;
 - (id)remoteAddress;
@@ -93,6 +96,7 @@
 - (void)setCName:(id)arg1;
 - (void)setDirection:(long long)arg1;
 - (void)setLocalAddress:(id)arg1;
+- (void)setLocalSSRC:(unsigned int)arg1;
 - (void)setRateAdaptationEnabled:(bool)arg1;
 - (void)setReceiveMasterKey:(id)arg1;
 - (void)setRecommendedMTU:(unsigned long long)arg1;

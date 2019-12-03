@@ -8,7 +8,10 @@
             struct SpeechITN {} *__value_; 
         } __ptr_; 
     }  _itn;
+    NSString * _language;
 }
+
+@property (nonatomic, copy) NSString *language;
 
 + (struct vector<quasar::Token, std::__1::allocator<quasar::Token> > { struct Token {} *x1; struct Token {} *x2; struct __compressed_pair<quasar::Token *, std::__1::allocator<quasar::Token> > { struct Token {} *x_3_1_1; } x3; })convertStringsToQuasarTokens:(id)arg1;
 + (void)initialize;
@@ -27,5 +30,8 @@
 - (id)initWithGeneralVoc:(id)arg1 withLexiconEnh:(id)arg2 withItnEnh:(id)arg3;
 - (id)initWithLanguage:(id)arg1 withSdapiConfig:(id)arg2 quasarConfig:(id)arg3;
 - (id)initWithQuasarConfig:(id)arg1;
+- (id)initWithQuasarConfig:(id)arg1 language:(id)arg2;
+- (id)language;
+- (void)setLanguage:(id)arg1;
 
 @end

@@ -24,13 +24,13 @@
 - (void).cxx_destruct;
 - (int)acquireLockGuard;
 - (void)addObject:(id)arg1;
-- (bool)castRayFrom:(void *)arg1 withDirection:(void *)arg2 usingCamera:(void *)arg3 result:(void *)arg4; // needs 4 arg types, found 2: struct RTCamera { int (**x1)(); unsigned long long x2; unsigned long long x3; float x4; float x5; int x6; float *x7; id **x8; /* Warning: Unrecognized filer type: '?' using 'void*' */ void*x9; void*x10; void*x11[4]; }*, /* Warning: unhandled struct encoding: '{RTIntersectionResult=f^{RTGeometry}@}' */ struct RTIntersectionResult { float x1; struct RTGeometry {} *x2; id x3; }*
+- (bool)castRayFrom:(void *)arg1 withDirection:(void *)arg2 usingCamera:(void *)arg3 result:(void *)arg4; // needs 4 arg types, found 2: struct RTCamera { int (**x1)(); unsigned long long x2; unsigned long long x3; float x4; float x5; int x6; float *x7; id **x8; struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x_9_1_1[4]; } x9; struct RTRaySegment {} *x10; float x11; float x12; float x13; float x14; float x15; float x16; float x17; float x18; float x19; float x20; }*, struct RTIntersectionResult { float x1; struct RTGeometry {} *x2; id x3; }*
 - (void)clear;
 - (void)dealloc;
 - (void)hitTestRayFrom:(void *)arg1 withDirection:(void *)arg2 usingCamera:(void *)arg3; // needs 3 arg types, found 1: id
 - (id)init;
 - (id)objects;
-- (id)raytraceSceneWithCamera:(void *)arg1 reflection:(void *)arg2 irradiance:(void *)arg3 size:(void *)arg4; // needs 4 arg types, found 3: const struct RTCamera { int (**x1)(); unsigned long long x2; unsigned long long x3; float x4; float x5; int x6; float *x7; id **x8; /* Warning: Unrecognized filer type: '?' using 'void*' */ void*x9; void*x10; void*x11[4]; }*, id, id
+- (id)raytraceSceneWithCamera:(void *)arg1 reflection:(void *)arg2 irradiance:(void *)arg3 size:(void *)arg4; // needs 4 arg types, found 3: const struct RTCamera { int (**x1)(); unsigned long long x2; unsigned long long x3; float x4; float x5; int x6; float *x7; id **x8; struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x_9_1_1[4]; } x9; struct RTRaySegment {} *x10; float x11; float x12; float x13; float x14; float x15; float x16; float x17; float x18; float x19; float x20; }*, id, id
 - (void)releaseLockGuard:(int)arg1;
 
 @end

@@ -10,6 +10,7 @@
     PKPaymentPass * _paymentPass;
     NSString * _productIdentifier;
     unsigned long long  _rank;
+    NSString * _serialNumber;
     long long  _status;
     NSString * _statusDescription;
     NSArray * _summaryMetadata;
@@ -23,6 +24,7 @@
 @property (nonatomic, retain) PKPaymentPass *paymentPass;
 @property (nonatomic, readonly) NSString *productIdentifier;
 @property (nonatomic) unsigned long long rank;
+@property (nonatomic, copy) NSString *serialNumber;
 @property (nonatomic) long long status;
 @property (nonatomic, readonly, copy) NSString *statusDescription;
 @property (nonatomic, readonly, copy) NSArray *summaryMetadata;
@@ -43,10 +45,12 @@
 - (id)paymentPass;
 - (id)productIdentifier;
 - (unsigned long long)rank;
+- (id)serialNumber;
 - (void)setIdentifier:(id)arg1;
 - (void)setPassURL:(id)arg1;
 - (void)setPaymentPass:(id)arg1;
 - (void)setRank:(unsigned long long)arg1;
+- (void)setSerialNumber:(id)arg1;
 - (void)setStatus:(long long)arg1;
 - (long long)status;
 - (id)statusDescription;

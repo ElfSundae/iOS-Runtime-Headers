@@ -63,10 +63,12 @@
 - (unsigned long long)purgeableState;
 - (bool)purgeableStateHasBeenSet;
 - (void)removeAllDebugMarkers;
+- (unsigned long long)resourceIndex;
 - (bool)resourceTrackingEnabled;
 - (unsigned int)resourceUsage;
 - (void)setChecksum:(unsigned int)arg1;
 - (void)setIsContentExposedToCPU:(bool)arg1;
 - (unsigned long long)setPurgeableState:(unsigned long long)arg1;
+- (void)setResourceIndex:(unsigned long long)arg1;
 
 @end

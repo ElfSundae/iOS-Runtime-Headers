@@ -4,6 +4,7 @@
 
 @interface MSRadarURLBuilder : NSObject {
     bool  _appendStandardDisclaimerToDescription;
+    bool  _appendSysdiagnoseHowTo;
     long long  _classification;
     long long  _component;
     NSArray * _extensionIdentifiers;
@@ -14,6 +15,7 @@
 }
 
 @property (nonatomic) bool appendStandardDisclaimerToDescription;
+@property (nonatomic) bool appendSysdiagnoseHowTo;
 @property (nonatomic) long long classification;
 @property (nonatomic) long long component;
 @property (nonatomic, copy) NSArray *extensionIdentifiers;
@@ -33,6 +35,7 @@
 
 - (void).cxx_destruct;
 - (bool)appendStandardDisclaimerToDescription;
+- (bool)appendSysdiagnoseHowTo;
 - (long long)classification;
 - (long long)component;
 - (id)extensionIdentifiers;
@@ -41,6 +44,7 @@
 - (id)radarDescription;
 - (long long)reproducibility;
 - (void)setAppendStandardDisclaimerToDescription:(bool)arg1;
+- (void)setAppendSysdiagnoseHowTo:(bool)arg1;
 - (void)setClassification:(long long)arg1;
 - (void)setComponent:(long long)arg1;
 - (void)setExtensionIdentifiers:(id)arg1;

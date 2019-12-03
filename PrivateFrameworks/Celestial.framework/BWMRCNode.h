@@ -16,6 +16,7 @@
         BOOL currentTemporalHysteresis; 
         char *name; 
     }  _documentScene;
+    bool  _hasPendingRectOfInterestUpdate;
     long long  _lastMRCCount;
     bool  _lowPowerModeEnabled;
     NSDictionary * _metadataIdentifierToSymbologyDictionary;
@@ -42,6 +43,9 @@
             double height; 
         } size; 
     }  _rectOfInterest;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _rectOfInterestLock;
     struct OpaqueFigSampleBufferProcessor { } * _sampleBufferProcessor;
     bool  _sceneLikelyToHaveQRCodes;
     struct os_unfair_lock_s { 

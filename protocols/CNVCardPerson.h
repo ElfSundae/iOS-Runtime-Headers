@@ -11,6 +11,7 @@
 - (NSArray *)calendarURIs;
 - (NSString *)cardDAVUID;
 - (NSString *)department;
+- (NSString *)downtimeWhitelist;
 - (NSArray *)emailAddresses;
 - (NSString *)firstName;
 - (NSDictionary *)imageCropRects;

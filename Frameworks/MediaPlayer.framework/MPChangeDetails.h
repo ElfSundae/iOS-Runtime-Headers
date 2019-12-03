@@ -7,6 +7,7 @@
     NSIndexSet * _deletedSections;
     NSArray * _insertedItemIndexPaths;
     NSIndexSet * _insertedSections;
+    bool  _isFlatCollection;
     NSMutableDictionary * _itemMoves;
     NSMutableDictionary * _sectionMoves;
     NSArray * _updatedItemIndexPaths;

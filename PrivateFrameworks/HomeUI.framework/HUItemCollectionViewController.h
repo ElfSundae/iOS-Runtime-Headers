@@ -10,6 +10,8 @@
     bool  _hasFinishedInitialLoad;
     HFItemManager * _itemManager;
     NSMutableSet * _registeredCellClasses;
+    bool  _viewVisible;
+    NSMutableArray * _viewVisibleFutures;
     bool  _visibilityUpdatesEnabled;
     bool  _wantsPreferredContentSize;
 }
@@ -26,6 +28,8 @@
 @property (nonatomic, retain) HFItemManager *itemManager;
 @property (nonatomic, readonly) NSMutableSet *registeredCellClasses;
 @property (readonly) Class superclass;
+@property (getter=isViewVisible, nonatomic) bool viewVisible;
+@property (nonatomic, readonly) NSMutableArray *viewVisibleFutures;
 @property (nonatomic) bool visibilityUpdatesEnabled;
 @property (nonatomic) bool wantsPreferredContentSize;
 
@@ -39,9 +43,11 @@
 - (id)childViewControllersAtViewWillDisappearTime;
 - (id)childViewControllersToPreload;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
+- (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
 - (id)deferredVisibilityUpdate;
+- (id)description;
 - (void)executionEnvironmentRunningStateDidChange:(id)arg1;
 - (id)foregroundUpdateFutures;
 - (bool)hasFinishedInitialLoad;
@@ -49,6 +55,7 @@
 - (id)hu_presentedItem;
 - (id)initWithItemManager:(id)arg1 collectionViewLayout:(id)arg2;
 - (bool)isLayoutDependentOnItemState;
+- (bool)isViewVisible;
 - (id)itemManager;
 - (void)itemManager:(id)arg1 didChangeOverallLoadingState:(unsigned long long)arg2;
 - (void)itemManager:(id)arg1 didChangeSourceItem:(id)arg2;
@@ -62,6 +69,7 @@
 - (void)itemManager:(id)arg1 didUpdateResultsForSourceItem:(id)arg2;
 - (id)itemManager:(id)arg1 futureToUpdateItems:(id)arg2 itemUpdateOptions:(id)arg3;
 - (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
+- (void)itemManagerDidFinishUpdate:(id)arg1;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)performBatchCollectionViewUpdatesForUpdateRequest:(id)arg1 reloadOnly:(bool)arg2;
 - (struct CGSize { double x1; double x2; })preferredContentSizeForCollectionViewContentSize:(struct CGSize { double x1; double x2; })arg1;
@@ -73,6 +81,7 @@
 - (void)setForegroundUpdateFutures:(id)arg1;
 - (void)setHasFinishedInitialLoad:(bool)arg1;
 - (void)setItemManager:(id)arg1;
+- (void)setViewVisible:(bool)arg1;
 - (void)setVisibilityUpdatesEnabled:(bool)arg1;
 - (void)setWantsPreferredContentSize:(bool)arg1;
 - (bool)shouldAutomaticallyForwardAppearanceMethods;
@@ -80,6 +89,7 @@
 - (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (id)viewVisibleFutures;
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;
 - (bool)visibilityUpdatesEnabled;

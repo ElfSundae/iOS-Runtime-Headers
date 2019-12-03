@@ -10,12 +10,15 @@
     id /* block */  _completionHandler;
     NSObject<OS_dispatch_queue> * _dispatchQueue;
     bool  _invalidateCalled;
-    double  _metricSeconds;
+    double  _metricBonjourTestSeconds;
+    double  _metricTotalSeconds;
+    double  _metricWiFiSetupSeconds;
     bool  _reachabilityEnabled;
     CUReachabilityMonitor * _reachabilityMonitor;
     unsigned int  _repairFlags;
     unsigned int  _setupFlags;
     SFSession * _sfSession;
+    unsigned long long  _startBonjourTestTicks;
     unsigned long long  _startTicks;
     NSObject<OS_dispatch_source> * _timeoutTimer;
 }
@@ -23,7 +26,9 @@
 @property (nonatomic, readonly) int bonjourTestState;
 @property (nonatomic, copy) id /* block */ completionHandler;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *dispatchQueue;
-@property (nonatomic, readonly) double metricSeconds;
+@property (nonatomic, readonly) double metricBonjourTestSeconds;
+@property (nonatomic, readonly) double metricTotalSeconds;
+@property (nonatomic, readonly) double metricWiFiSetupSeconds;
 @property (nonatomic) unsigned int repairFlags;
 @property (nonatomic) unsigned int setupFlags;
 @property (nonatomic, retain) SFSession *sfSession;
@@ -42,7 +47,9 @@
 - (id)dispatchQueue;
 - (id)init;
 - (void)invalidate;
-- (double)metricSeconds;
+- (double)metricBonjourTestSeconds;
+- (double)metricTotalSeconds;
+- (double)metricWiFiSetupSeconds;
 - (unsigned int)repairFlags;
 - (void)setCompletionHandler:(id /* block */)arg1;
 - (void)setDispatchQueue:(id)arg1;

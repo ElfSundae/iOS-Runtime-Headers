@@ -70,5 +70,7 @@
 - (id)timeMarkerLabels;
 - (double)timeMarkerPadding;
 - (id)titleLabel;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 
 @end

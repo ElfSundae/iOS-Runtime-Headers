@@ -4,6 +4,7 @@
 
 @interface GKPlayerInternal : GKInternalRepresentation {
     NSString * _alias;
+    NSNumber * _avatarType;
     union { 
         struct { 
             unsigned int _unused : 8; 
@@ -11,13 +12,20 @@
             unsigned int _underage : 1; 
             unsigned int _photoPending : 1; 
             unsigned int _findable : 1; 
+            unsigned int _defaultNickname : 1; 
             unsigned int _reserved : 18; 
         } ; 
         unsigned int _value; 
     }  _flags;
-    NSString * _friendLevel;
+    NSNumber * _friendBiDirectional;
+    NSNumber * _friendLevel;
+    NSNumber * _friendPlayedNearby;
+    NSNumber * _friendPlayedWith;
     NSString * _gamePlayerID;
+    NSString * _lastPersonalizationVersionDisplayed;
+    unsigned long long  _lastPrivacyNoticeVersionDisplayed;
     NSString * _messagesID;
+    NSArray * _monogramComponents;
     unsigned int  _numberOfAchievementPoints;
     unsigned int  _numberOfAchievements;
     unsigned short  _numberOfFriends;
@@ -31,13 +39,18 @@
 
 @property (nonatomic, retain) NSString *accountName;
 @property (nonatomic, retain) NSString *alias;
+@property (nonatomic, retain) NSNumber *avatarType;
 @property (nonatomic, retain) NSString *compositeName;
+@property (getter=isDefaultNickname, nonatomic) bool defaultNickname;
 @property (nonatomic, retain) NSArray *emailAddresses;
 @property (nonatomic, retain) NSString *facebookUserID;
 @property (getter=isFindable, nonatomic) bool findable;
 @property (nonatomic, retain) NSString *firstName;
 @property (nonatomic) unsigned int flags;
-@property (nonatomic, retain) NSString *friendLevel;
+@property (nonatomic, retain) NSNumber *friendBiDirectional;
+@property (nonatomic, retain) NSNumber *friendLevel;
+@property (nonatomic, retain) NSNumber *friendPlayedNearby;
+@property (nonatomic, retain) NSNumber *friendPlayedWith;
 @property (nonatomic, retain) NSArray *friends;
 @property (nonatomic, retain) NSString *gamePlayerID;
 @property (nonatomic, retain) NSString *guestIdentifier;
@@ -50,9 +63,12 @@
 @property (nonatomic, readonly) bool isLocalPlayer;
 @property (nonatomic, readonly) bool isUnknownPlayer;
 @property (nonatomic, retain) NSString *lastName;
+@property (nonatomic, retain) NSString *lastPersonalizationVersionDisplayed;
 @property (nonatomic, retain) NSDate *lastPlayedDate;
 @property (nonatomic, retain) GKGameInternal *lastPlayedGame;
+@property (nonatomic) unsigned long long lastPrivacyNoticeVersionDisplayed;
 @property (nonatomic, retain) NSString *messagesID;
+@property (nonatomic, retain) NSArray *monogramComponents;
 @property (nonatomic) unsigned int numberOfAchievementPoints;
 @property (nonatomic) unsigned int numberOfAchievements;
 @property (nonatomic) unsigned short numberOfChallenges;
@@ -80,6 +96,7 @@
 - (id)accountName;
 - (id)alias;
 - (bool)allowNearbyMultiplayer;
+- (id)avatarType;
 - (id)cacheKey;
 - (id)compositeName;
 - (id)conciseDescription;
@@ -90,7 +107,10 @@
 - (id)facebookUserID;
 - (id)firstName;
 - (unsigned int)flags;
+- (id)friendBiDirectional;
 - (id)friendLevel;
+- (id)friendPlayedNearby;
+- (id)friendPlayedWith;
 - (id)friends;
 - (id)gamePlayerID;
 - (id)guestIdentifier;
@@ -98,6 +118,7 @@
 - (id)iCloudUserID;
 - (bool)isAnonymousPlayer;
 - (bool)isAutomatchPlayer;
+- (bool)isDefaultNickname;
 - (bool)isEqual:(id)arg1;
 - (bool)isFindable;
 - (bool)isFriend;
@@ -109,10 +130,13 @@
 - (bool)isUnderage;
 - (bool)isUnknownPlayer;
 - (id)lastName;
+- (id)lastPersonalizationVersionDisplayed;
 - (id)lastPlayedDate;
 - (id)lastPlayedGame;
+- (unsigned long long)lastPrivacyNoticeVersionDisplayed;
 - (id)messagesID;
 - (id)minimalInternal;
+- (id)monogramComponents;
 - (unsigned int)numberOfAchievementPoints;
 - (unsigned int)numberOfAchievements;
 - (unsigned short)numberOfChallenges;
@@ -128,20 +152,28 @@
 - (void)setAccountName:(id)arg1;
 - (void)setAlias:(id)arg1;
 - (void)setAllowNearbyMultiplayer:(bool)arg1;
+- (void)setAvatarType:(id)arg1;
 - (void)setCompositeName:(id)arg1;
+- (void)setDefaultNickname:(bool)arg1;
 - (void)setEmailAddresses:(id)arg1;
 - (void)setFacebookUserID:(id)arg1;
 - (void)setFindable:(bool)arg1;
 - (void)setFirstName:(id)arg1;
 - (void)setFlags:(unsigned int)arg1;
+- (void)setFriendBiDirectional:(id)arg1;
 - (void)setFriendLevel:(id)arg1;
+- (void)setFriendPlayedNearby:(id)arg1;
+- (void)setFriendPlayedWith:(id)arg1;
 - (void)setFriends:(id)arg1;
 - (void)setGamePlayerID:(id)arg1;
 - (void)setICloudUserID:(id)arg1;
 - (void)setLastName:(id)arg1;
+- (void)setLastPersonalizationVersionDisplayed:(id)arg1;
 - (void)setLastPlayedDate:(id)arg1;
 - (void)setLastPlayedGame:(id)arg1;
+- (void)setLastPrivacyNoticeVersionDisplayed:(unsigned long long)arg1;
 - (void)setMessagesID:(id)arg1;
+- (void)setMonogramComponents:(id)arg1;
 - (void)setNumberOfAchievementPoints:(unsigned int)arg1;
 - (void)setNumberOfAchievements:(unsigned int)arg1;
 - (void)setNumberOfChallenges:(unsigned short)arg1;

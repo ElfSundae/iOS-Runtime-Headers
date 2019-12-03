@@ -8,9 +8,10 @@
     NSString * _uuid;
 }
 
-@property (nonatomic, readonly, retain) NSArray *tokens;
+@property (nonatomic, readonly) NSArray *tokens;
 @property (setter=setUUID:, nonatomic, copy) NSString *uuid;
 
+- (void).cxx_destruct;
 - (id)_initForCopy:(bool)arg1;
 - (void)addContentString:(id)arg1 category:(short)arg2 owningCategory:(short)arg3;
 - (void)addContentString:(id)arg1 identifier:(id)arg2 category:(short)arg3 owningCategory:(short)arg4;
@@ -18,7 +19,6 @@
 - (void)addSynonym:(id)arg1 category:(short)arg2 originalContentString:(id)arg3;
 - (void)clear;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)enumerateSynonymsForOriginalContentString:(id)arg1 handler:(id /* block */)arg2;
 - (id)initForReverse;

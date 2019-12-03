@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (void)eventEditViewController:(id)arg1 didCompleteWithAction:(long long)arg2;
+- (id)icon;
 - (int)interactionType;
 - (void)invalidate;
 - (id)localizedName;

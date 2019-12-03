@@ -5,12 +5,15 @@
 @interface _HKFitnessFriendActivitySnapshot : HKSample <ASCloudKitCodable, HDCoding, NSCopying> {
     double  _activeHours;
     double  _activeHoursGoal;
+    long long  _amm;
     double  _briskMinutes;
     double  _briskMinutesGoal;
     double  _energyBurned;
     double  _energyBurnedGoal;
     NSUUID * _friendUUID;
     bool  _hasCarriedForwardGoals;
+    double  _mmg;
+    double  _mmv;
     double  _pushCount;
     long long  _snapshotIndex;
     NSDate * _snapshotUploadedDate;
@@ -24,6 +27,7 @@
 @property (nonatomic) double activeHours;
 @property (nonatomic) double activeHoursGoal;
 @property (nonatomic, readonly) double activeHoursGoalPercentage;
+@property (nonatomic) long long amm;
 @property (nonatomic) double briskMinutes;
 @property (nonatomic) double briskMinutesGoal;
 @property (nonatomic, readonly) double briskMinutesGoalPercentage;
@@ -36,6 +40,11 @@
 @property (nonatomic, retain) NSUUID *friendUUID;
 @property (nonatomic) bool hasCarriedForwardGoals;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) double mmg;
+@property (nonatomic, readonly) HKQuantity *mmgQuantity;
+@property (nonatomic, readonly) double mmgp;
+@property (nonatomic) double mmv;
+@property (nonatomic, readonly) HKQuantity *mmvQuantity;
 @property (nonatomic) double pushCount;
 @property (nonatomic) long long snapshotIndex;
 @property (nonatomic, retain) NSDate *snapshotUploadedDate;
@@ -56,10 +65,12 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)_mostSignificantSnapshot:(id)arg1;
 - (double)activeHours;
 - (double)activeHoursGoal;
 - (double)activeHoursGoalPercentage;
 - (id)activitySummary;
+- (long long)amm;
 - (double)briskMinutes;
 - (double)briskMinutesGoal;
 - (double)briskMinutesGoalPercentage;
@@ -71,15 +82,21 @@
 - (id)friendUUID;
 - (bool)hasCarriedForwardGoals;
 - (id)initWithCoder:(id)arg1;
+- (double)mmg;
+- (double)mmgp;
+- (double)mmv;
 - (double)pushCount;
 - (void)setActiveHours:(double)arg1;
 - (void)setActiveHoursGoal:(double)arg1;
+- (void)setAmm:(long long)arg1;
 - (void)setBriskMinutes:(double)arg1;
 - (void)setBriskMinutesGoal:(double)arg1;
 - (void)setEnergyBurned:(double)arg1;
 - (void)setEnergyBurnedGoal:(double)arg1;
 - (void)setFriendUUID:(id)arg1;
 - (void)setHasCarriedForwardGoals:(bool)arg1;
+- (void)setMmg:(double)arg1;
+- (void)setMmv:(double)arg1;
 - (void)setPushCount:(double)arg1;
 - (void)setSnapshotIndex:(long long)arg1;
 - (void)setSnapshotUploadedDate:(id)arg1;
@@ -106,6 +123,10 @@
 + (struct _HKFitnessFriendActivitySnapshot { Class x1; }*)fitnessFriendActivitySnapshotWithRecord:(id)arg1 friendUUID:(id)arg2;
 
 - (id)codableSnapshot;
+- (bool)isAmm;
+- (double)mmPercent;
+- (id)mmgQuantity;
+- (id)mmvQuantity;
 - (id)recordWithZoneID:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon

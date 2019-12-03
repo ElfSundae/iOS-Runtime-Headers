@@ -31,6 +31,8 @@
 - (void)getResourceTreeWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2;
 - (id)initWithInspectorController:(id)arg1;
 - (void)navigateWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 url:(id)arg3;
+- (void)overrideSettingWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 setting:(long long)arg3 value:(bool*)arg4;
+- (void)overrideUserAgentWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 value:(id*)arg3;
 - (void)reloadWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 ignoreCache:(bool*)arg3 revalidateAllResources:(bool*)arg4;
 - (id)resourceTree;
 - (void)searchInResourceWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 frameId:(id)arg3 url:(id)arg4 query:(id)arg5 caseSensitive:(bool*)arg6 isRegex:(bool*)arg7 requestId:(id*)arg8;
@@ -38,6 +40,7 @@
 - (void)setCompositingBordersVisibleWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 visible:(bool)arg3;
 - (void)setCurrentFrameIdentifier:(id)arg1;
 - (void)setEmulatedMediaWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 media:(id)arg3;
+- (void)setForcedAppearanceWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 appearance:(long long)arg3;
 - (void)setShowPaintRectsWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 result:(bool)arg3;
 - (void)setShowRulersWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 result:(bool)arg3;
 - (void)snapshotNodeWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 nodeId:(int)arg3;

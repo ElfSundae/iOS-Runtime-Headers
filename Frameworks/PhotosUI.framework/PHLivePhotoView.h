@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PHLivePhotoView : UIView <ISChangeObserver> {
+@interface PHLivePhotoView : UIView <ISChangeObserver, PXLivePhotoView> {
     bool  __playbackRequested;
     ISPlayerItem * __playerItem;
     bool  __playingVitality;

@@ -16,7 +16,7 @@
 
 + (id)defaultProperties;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)effects;
 - (id)fill;

@@ -10,6 +10,7 @@
 @property (readonly) Class superclass;
 
 - (bool)canMoveItem:(id)arg1;
+- (id)limitedIndexPathForMovingIndexPath:(id)arg1 toProprosedIndexPath:(id)arg2;
 - (id)moveItem:(id)arg1 afterItem:(id)arg2;
 
 @end

@@ -25,6 +25,7 @@
 - (id)cell;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (id)cellText;
+- (bool)cellWrapsLongText;
 - (id)cells;
 - (id)descriptionLabelText;
 - (double)footerHeightForSection;

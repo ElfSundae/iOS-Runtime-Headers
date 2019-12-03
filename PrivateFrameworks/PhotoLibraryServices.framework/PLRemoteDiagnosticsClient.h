@@ -14,4 +14,6 @@
 + (id)_connectionForListenerEndpoint:(id)arg1;
 + (id)diagnosticsAgentWithErrorHandler:(id /* block */)arg1;
 
+- (void).cxx_destruct;
+
 @end

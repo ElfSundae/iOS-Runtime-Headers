@@ -3,29 +3,29 @@
  */
 
 @interface VCCompanionSyncOutgoingSession : VCCompanionSyncSession {
-    NSObject<OS_dispatch_queue> * _changesIsolationQueue;
-    NSMutableArray * _mutablePendingChanges;
-    NSMutableArray * _mutableSentChanges;
+    NSDictionary * _metadata;
+    NSMutableArray * _pendingChanges;
+    NSMutableArray * _sentChanges;
+    NSMutableArray * _syncedChanges;
 }
 
-@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *changesIsolationQueue;
-@property (nonatomic, readonly) NSMutableArray *mutablePendingChanges;
-@property (nonatomic, readonly) NSMutableArray *mutableSentChanges;
-@property (nonatomic, readonly) NSArray *pendingChanges;
-@property (nonatomic, readonly) NSArray *syncedChanges;
+@property (nonatomic) <VCCompanionSyncOutgoingSessionDelegate> *delegate;
+@property (nonatomic, readonly, copy) NSDictionary *metadata;
+@property (nonatomic, readonly) NSMutableArray *pendingChanges;
+@property (nonatomic, readonly) double progress;
+@property (nonatomic, readonly) NSMutableArray *sentChanges;
+@property (nonatomic, readonly) NSMutableArray *syncedChanges;
+
++ (long long)direction;
 
 - (void).cxx_destruct;
-- (id)changesIsolationQueue;
-- (id)initWithSYSession:(id)arg1 changeSetToSync:(id)arg2;
-- (void)markChangeAsSent:(id)arg1;
-- (id)mutablePendingChanges;
-- (id)mutableSentChanges;
-- (id)nextPendingChange;
+- (id)initWithSYSession:(id)arg1 service:(id)arg2 syncDataHandlers:(id)arg3 changeSet:(id)arg4 metadata:(id)arg5;
+- (id)metadata;
 - (id)pendingChanges;
-- (long long)sessionType;
-- (void)syncSession:(id)arg1 applyChanges:(id)arg2 completion:(id /* block */)arg3;
+- (double)progress;
+- (id)sentChanges;
 - (long long)syncSession:(id)arg1 enqueueChanges:(id /* block */)arg2 error:(id*)arg3;
-- (bool)syncSession:(id)arg1 resetDataStoreWithError:(id*)arg2;
+- (void)syncSession:(id)arg1 successfullySynced:(id)arg2;
 - (id)syncedChanges;
 
 @end

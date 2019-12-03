@@ -26,6 +26,7 @@
 - (void)cache:(id)arg1 willEvictObject:(id)arg2;
 - (void)clearCache;
 - (void)dealloc;
+- (void)evictResourceFromCache:(id)arg1 scope:(id)arg2;
 - (void)handleChangeForItemForKey:(id)arg1;
 - (id)initWithLockProvider:(id /* block */)arg1 totalCostLimit:(unsigned long long)arg2 logger:(id)arg3;
 - (id)logger;

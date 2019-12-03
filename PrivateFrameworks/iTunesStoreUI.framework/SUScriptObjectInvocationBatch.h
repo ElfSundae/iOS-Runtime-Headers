@@ -11,6 +11,7 @@
 
 @property SUScriptObject *rootObject;
 
+- (void).cxx_destruct;
 - (void)_delayedDequeueInvocations;
 - (id)batchProxyForObject:(id)arg1;
 - (void)checkOutBatchTarget:(id)arg1;

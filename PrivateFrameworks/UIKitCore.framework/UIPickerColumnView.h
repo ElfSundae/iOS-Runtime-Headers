@@ -65,6 +65,7 @@
 - (bool)_containsTable:(id)arg1;
 - (id)_createContainerViewWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)_createTableViewWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 containingFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_defaultFocusRegionFrame;
 - (double)_horizontalBiasForEndTables;
 - (void)_moveTableViewIfNecessary:(id)arg1 toContentOffset:(struct CGPoint { double x1; double x2; })arg2;
 - (void)_pickerTableViewDidChangeContentOffset:(id)arg1;
@@ -79,9 +80,13 @@
 - (struct CATransform3D { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; double x11; double x12; double x13; double x14; double x15; double x16; })_transformForTableWithPerspectiveTranslationX:(double)arg1;
 - (struct CATransform3D { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; double x11; double x12; double x13; double x14; double x15; double x16; })_transformForTableWithTranslationX:(double)arg1;
 - (bool)_usesCheckSelection;
+- (id)_viewToAddFocusLayer;
 - (id)_visibleCellClosestToPoint:(struct CGPoint { double x1; double x2; })arg1 inView:(id)arg2;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })_visibleGlobalRows;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })accessibilityFrame;
+- (id)accessibilityPath;
 - (void)beginUpdates;
+- (bool)canBecomeFocused;
 - (id)cellForRowAtIndexPath:(id)arg1;
 - (void)endUpdates;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 tableFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 middleBarHeight:(double)arg3 rowHeight:(double)arg4 pickerView:(id)arg5 transform:(struct CATransform3D { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; double x11; double x12; double x13; double x14; double x15; double x16; })arg6;

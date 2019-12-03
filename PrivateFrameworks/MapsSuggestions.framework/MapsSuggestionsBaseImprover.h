@@ -13,6 +13,8 @@
 + (bool)isEnabled;
 
 - (bool)improveEntry:(id)arg1;
+- (bool)improveUndecoratedSubtitle:(id)arg1 forEntry:(id)arg2;
+- (bool)improveUndecoratedTitle:(id)arg1 forEntry:(id)arg2;
 - (struct NSString { Class x1; }*)uniqueName;
 
 @end

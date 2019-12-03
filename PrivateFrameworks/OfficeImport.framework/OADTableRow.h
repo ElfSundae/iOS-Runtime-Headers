@@ -7,10 +7,10 @@
     float  mHeight;
 }
 
+- (void).cxx_destruct;
 - (id)addCell;
 - (id)cellAtIndex:(unsigned long long)arg1;
 - (unsigned long long)cellCount;
-- (void)dealloc;
 - (id)description;
 - (void)flipCellsRTL;
 - (float)height;

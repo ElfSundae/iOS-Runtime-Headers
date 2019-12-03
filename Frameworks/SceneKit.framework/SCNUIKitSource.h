@@ -7,8 +7,8 @@
     id  _uiWindow;
 }
 
-@property (nonatomic, retain) id uiView;
-@property (nonatomic, retain) id uiWindow;
+@property (nonatomic, retain) UIView *uiView;
+@property (nonatomic, retain) UIWindow *uiWindow;
 
 - (void)dealloc;
 - (id)init;
@@ -16,6 +16,7 @@
 - (id)prepareWindowIfNeeded;
 - (void)setUiView:(id)arg1;
 - (void)setUiWindow:(id)arg1;
+- (bool)supportsMetal;
 - (id)textureSource;
 - (id)uiView;
 - (id)uiWindow;

@@ -5,7 +5,7 @@
 
 @required
 
-- (<MiroClip> *)clipCollection:(UICollectionViewController<MiroEditorClipCollection> *)arg1 clipAtIndex:(long long)arg2;
+- (PMClipProvider *)clipCollection:(UICollectionViewController<MiroEditorClipCollection> *)arg1 clipProviderAtIndex:(long long)arg2;
 - (long long)clipCollectionClipCount:(UICollectionViewController<MiroEditorClipCollection> *)arg1;
 
 @end

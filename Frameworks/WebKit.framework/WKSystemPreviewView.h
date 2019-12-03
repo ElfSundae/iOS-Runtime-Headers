@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/WebKit.framework/WebKit
  */
 
-@interface WKSystemPreviewView : UIView <ASVThumbnailViewDelegate, QLPreviewItemDataProvider, WKWebViewContentProvider> {
+@interface WKSystemPreviewView : WKApplicationStateTrackingView <ASVThumbnailViewDelegate, QLPreviewItemDataProvider, WKWebViewContentProvider> {
     struct RetainPtr<NSData> { 
         void *m_ptr; 
     }  _data;
@@ -33,6 +33,8 @@
 @property (nonatomic, readonly) bool web_isBackground;
 @property (nonatomic, readonly) NSString *web_suggestedFilename;
 
++ (bool)web_requiresCustomSnapshotting;
+
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_layoutThumbnailView;
@@ -45,6 +47,7 @@
 - (void)web_findString:(id)arg1 options:(unsigned long long)arg2 maxCount:(unsigned long long)arg3;
 - (void)web_hideFindUI;
 - (id)web_initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 webView:(id)arg2 mimeType:(id)arg3;
+- (bool)web_isBackground;
 - (void)web_setContentProviderData:(id)arg1 suggestedFilename:(id)arg2;
 - (void)web_setFixedOverlayView:(id)arg1;
 - (void)web_setMinimumSize:(struct CGSize { double x1; double x2; })arg1;

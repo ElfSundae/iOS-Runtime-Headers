@@ -4,6 +4,7 @@
 
 @interface VSPreferences : NSObject {
     VSDevice * _device;
+    NSUserDefaults * _globalUserDefaults;
     NSUndoManager * _undoManager;
     NSUserDefaults * _userDefaults;
 }
@@ -12,6 +13,7 @@
 @property (nonatomic) long long cachedDeveloperProviderStatus;
 @property (nonatomic) long long cachedStoreProviderStatus;
 @property (nonatomic, retain) VSDevice *device;
+@property (nonatomic, retain) NSUserDefaults *globalUserDefaults;
 @property (nonatomic, readonly) bool hasSentWelcomeMessage;
 @property (nonatomic, readonly, copy) NSURL *overridingAppBootURL;
 @property (nonatomic, readonly) bool shouldAlwaysAllowRemoteInspection;
@@ -23,13 +25,18 @@
 - (void).cxx_destruct;
 - (void)_updateShouldSkipSetupWithNumber:(id)arg1;
 - (void)_updateValue:(id)arg1 forKey:(id)arg2;
+- (bool)allowInsecureAuthContext;
 - (long long)cachedAvailabilityStatus;
 - (long long)cachedDeveloperProviderStatus;
 - (long long)cachedStoreProviderStatus;
 - (id)device;
+- (id)globalUserDefaults;
 - (bool)hasChosenDesiredApp;
 - (bool)hasSentWelcomeMessage;
+- (bool)ignoreSetTopBoxProfile;
 - (bool)isInSTBMode;
+- (id)metricUserID;
+- (id)metricUserIDLastGenerated;
 - (void)noteDesiredApp:(id)arg1;
 - (void)noteDidSendWelcomeMessage;
 - (void)noteIsInSTBMode:(bool)arg1;
@@ -40,6 +47,9 @@
 - (void)setCachedDeveloperProviderStatus:(long long)arg1;
 - (void)setCachedStoreProviderStatus:(long long)arg1;
 - (void)setDevice:(id)arg1;
+- (void)setGlobalUserDefaults:(id)arg1;
+- (void)setIgnoreSetTopBoxProfile:(bool)arg1;
+- (void)setMetricUserID:(id)arg1;
 - (id)setTopBoxInfoAppAdamIdOverride;
 - (id)setTopBoxInfoBundleIdentifierOverride;
 - (bool)setTopBoxInfoIsSetTopBoxOverride;

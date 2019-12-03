@@ -9,6 +9,7 @@
     VSOptional * _authenticationToken;
     VSOptional * _identityProviderID;
     VSOptional * _optionalIdentityProviderDisplayName;
+    NSString * _preferredAppID;
     NSString * _username;
 }
 
@@ -20,6 +21,7 @@
 @property (nonatomic, retain) VSOptional *identityProviderID;
 @property (nonatomic, retain) VSOptional *keychainItem;
 @property (nonatomic, retain) VSOptional *optionalIdentityProviderDisplayName;
+@property (nonatomic, copy) NSString *preferredAppID;
 @property (nonatomic, copy) NSString *username;
 
 + (bool)supportsSecureCoding;
@@ -39,6 +41,7 @@
 - (bool)isEqual:(id)arg1;
 - (id)keychainItem;
 - (id)optionalIdentityProviderDisplayName;
+- (id)preferredAppID;
 - (void)setAccountDescription:(id)arg1;
 - (void)setAccountStore:(id)arg1;
 - (void)setAccountTypeDescription:(id)arg1;
@@ -46,6 +49,7 @@
 - (void)setIdentityProviderID:(id)arg1;
 - (void)setKeychainItem:(id)arg1;
 - (void)setOptionalIdentityProviderDisplayName:(id)arg1;
+- (void)setPreferredAppID:(id)arg1;
 - (void)setUsername:(id)arg1;
 - (id)username;
 

@@ -47,6 +47,7 @@
 - (void)_performPreviewStateTransitionsIfNeeded;
 - (bool)_shouldReportEvent;
 - (id)_supportedCaptureModes;
+- (bool)_supportsMomentCapture;
 - (bool)_toggleCameraDeviceSupport;
 - (double)_zoomAmount;
 - (bool)_zoomSupport;

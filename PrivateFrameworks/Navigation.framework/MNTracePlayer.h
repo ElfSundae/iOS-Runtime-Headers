@@ -12,7 +12,6 @@
     bool  _isPlaying;
     MNLocation * _lastReportedLocation;
     MNTracePlayerTimelineStream * _locationStream;
-    int  _mainTransportType;
     NSHashTable * _observers;
     MNTracePlayerScheduler * _scheduler;
     bool  _shouldPlayETARequests;
@@ -26,7 +25,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) double duration;
-@property (nonatomic, readonly) GEOETAUpdater *etaUpdater;
 @property (nonatomic) bool forceDirectionsResponsesFromTrace;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) bool isPaused;
@@ -35,6 +33,7 @@
 @property (nonatomic, readonly) double position;
 @property (nonatomic, readonly) NSData *selectedRouteID;
 @property (nonatomic, readonly) unsigned long long selectedRouteIndex;
+@property (nonatomic, readonly) MNSessionUpdateManager *sessionUpdater;
 @property (nonatomic) bool shouldPlayETARequests;
 @property (nonatomic) double speedMultiplier;
 @property (readonly) Class superclass;
@@ -49,7 +48,6 @@
 - (double)currentTime;
 - (void)dealloc;
 - (double)duration;
-- (id)etaUpdater;
 - (bool)forceDirectionsResponsesFromTrace;
 - (id)initWithPath:(id)arg1;
 - (id)initWithPath:(id)arg1 outError:(id*)arg2;
@@ -68,6 +66,7 @@
 - (void)resume;
 - (id)selectedRouteID;
 - (unsigned long long)selectedRouteIndex;
+- (id)sessionUpdater;
 - (void)setForceDirectionsResponsesFromTrace:(bool)arg1;
 - (void)setShouldPlayETARequests:(bool)arg1;
 - (void)setSpeedMultiplier:(double)arg1;

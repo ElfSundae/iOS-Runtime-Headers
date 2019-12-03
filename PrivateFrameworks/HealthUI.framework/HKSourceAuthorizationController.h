@@ -40,6 +40,7 @@
 - (id)_sortedTypes:(id)arg1;
 - (void)_updateAuthorizationStatusWithTypes:(id)arg1;
 - (bool)allTypesEnabled;
+- (bool)allTypesEnabledInSection:(long long)arg1;
 - (bool)anyTypeEnabled;
 - (bool)anyTypeRequested;
 - (void)commitAuthorizationStatuses;

@@ -18,8 +18,8 @@
 @property float movieStartPoint;
 @property (retain) NSString *name;
 
+- (void).cxx_destruct;
 - (id)data;
-- (void)dealloc;
 - (id)description;
 - (bool)isAudioOnly;
 - (bool)loop;

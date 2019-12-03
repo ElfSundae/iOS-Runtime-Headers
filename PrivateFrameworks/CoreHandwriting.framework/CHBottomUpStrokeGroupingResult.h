@@ -3,16 +3,14 @@
  */
 
 @interface CHBottomUpStrokeGroupingResult : CHStrokeGroupingResult {
-    NSSet * _nontextCandidates;
-    NSDictionary * _substrokesByStrokeIdentifier;
+    NSDictionary * _substrokePlacementsByStrokeIdentifier;
 }
 
-@property (nonatomic, readonly, retain) NSSet *nontextCandidates;
-@property (nonatomic, readonly, retain) NSDictionary *substrokesByStrokeIdentifier;
+@property (nonatomic, readonly, retain) NSDictionary *substrokePlacementsByStrokeIdentifier;
 
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
-- (id)initWithStrokeGroups:(id)arg1 createdStrokeGroups:(id)arg2 deletedStrokeGroups:(id)arg3 substrokesByStrokeIdentifier:(id)arg4 nontextCandidates:(id)arg5;
-- (id)nontextCandidates;
-- (id)substrokesByStrokeIdentifier;
+- (id)initWithStrokeGroups:(id)arg1 createdStrokeGroups:(id)arg2 deletedStrokeGroups:(id)arg3 substrokePlacementsByStrokeIdentifier:(id)arg4;
+- (id)substrokePlacementsByStrokeIdentifier;
 
 @end

@@ -11,6 +11,7 @@
 - (BOOL)color;
 - (void)configureBalloonView:(id)arg1;
 - (bool)isFromMe;
+- (id)sender;
 - (bool)shouldCacheSize;
 - (id)time;
 - (id)tuConversationUUID;

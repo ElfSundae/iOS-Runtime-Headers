@@ -7,7 +7,7 @@
 }
 
 @property (nonatomic, readonly) unsigned long long age;
-@property (nonatomic, readonly, copy) NSNumber *altDSID;
+@property (nonatomic, readonly, copy) NSString *altDSID;
 @property (nonatomic, readonly, copy) NSString *appleID;
 @property (nonatomic, readonly, copy) NSDictionary *dictionary;
 @property (nonatomic, readonly, copy) NSNumber *dsid;

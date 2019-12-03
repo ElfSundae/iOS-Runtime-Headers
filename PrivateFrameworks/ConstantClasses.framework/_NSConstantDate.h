@@ -5,7 +5,6 @@
 @interface _NSConstantDate : NSDate
 
 + (id)alloc;
-+ (void)load;
 
 - (void)dealloc;
 - (oneway void)release;

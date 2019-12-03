@@ -45,6 +45,9 @@
         } __end_cap_; 
     }  _control_points;
     unsigned long long  _current_animation_target_index;
+    <MTLTexture> * _depth_stencil_texture;
+    unsigned long long  _drawable_height;
+    unsigned long long  _drawable_width;
     unsigned long long  _frame_index;
     struct global_state_animator { 
         struct animator<float, 0> { 
@@ -107,22 +110,23 @@
         } __end_cap_; 
     }  _instance_state;
     double  _last_render_time;
-    CAMetalLayer * _layer;
     struct double4x4 { 
         /* Warning: Unrecognized filer type: ']' using 'void*' */ void*columns[4]; 
     }  _model_transform;
+    <MTLTexture> * _multisample_texture;
     bool  _needs_update;
     struct double4x4 { 
         /* Warning: Unrecognized filer type: ']' using 'void*' */ void*columns[4]; 
     }  _projection_transform;
+    LAUIRenderLoop * _render_loop;
     MTLRenderPassDescriptor * _render_pass_descriptor;
     bool  _reversed;
     struct vector<(anonymous namespace)::buffer_group, std::__1::allocator<(anonymous namespace)::buffer_group> >="__begin_"^{buffer_group {}  _ring_buffer;
     struct atomic<unsigned char> { 
-        unsigned char __a_; 
+        _Atomic unsigned char __a_; 
     }  _ring_end;
     struct atomic<unsigned char> { 
-        unsigned char __a_; 
+        _Atomic unsigned char __a_; 
     }  _ring_start;
     struct renderer_shared_state { 
         <MTLDevice> *device; 
@@ -154,7 +158,11 @@
         } __end_cap_; 
     }  _spline_state;
     <MTLBuffer> * _tesselation_factors;
-    MTKView * _view;
+    unsigned long long  _texture_index;
+    struct array<id<MTLTexture>, 2> { 
+        <MTLTexture> *__elems_[2]; 
+    }  _textures;
+    bool  _textures_dirty;
     struct double4x4 { 
         /* Warning: Unrecognized filer type: ']' using 'void*' */ void*columns[4]; 
     }  _view_transform;
@@ -166,7 +174,7 @@
 @property (getter=viewTransform, setter=setViewTransform:, nonatomic) struct double4x4 { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; } view_transform;
 @property (getter=isWireframeEnabled, setter=setWireframeEnabled:, nonatomic) bool wireframe_enabled;
 
-+ (struct renderer_shared_state { id x1; id x2; struct array<id<MTLRenderPipelineState>, 3> { /* Warning: unhandled array encoding: '[3@]}{array<id<MTLRenderPipelineState>, 3>=[3@]}@@@}' */ id x_3_1_1[3]; } x3; id x4; id x5; })sharedStateForDevice:(id)arg1;
++ (struct renderer_shared_state { id x1; id x2; id x3; id x4; struct array<id<MTLRenderPipelineState>, 3> { id x_5_1_1[3]; } x5; struct array<id<MTLRenderPipelineState>, 3> { id x_6_1_1[3]; } x6; id x7; id x8; id x9; })sharedStateForDevice:(id)arg1;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -178,13 +186,12 @@
 - (struct spline_instance_state { struct quatf { } x1; struct quatf { } x2; float x3; float x4; float x5; float x6; float x7; bool x8; float x9; int (*x10)(); })animationTargetForSpline:(unsigned long long)arg1 instance:(unsigned long long)arg2;
 - (void)dealloc;
 - (id)init;
-- (id)initWithMTKView:(id)arg1 sharedState:(const struct renderer_shared_state { id x1; id x2; struct array<id<MTLRenderPipelineState>, 3> { /* Warning: unhandled array encoding: '[3@]}{array<id<MTLRenderPipelineState>, 3>=[3@]}@@@}' */ id x_3_1_1[3]; } x3; id x4; id x5; }*)arg2;
-- (void)invalidateRenderPassDescriptor;
+- (id)initWithRenderLoop:(id)arg1 sharedState:(const struct renderer_shared_state { id x1; id x2; id x3; id x4; struct array<id<MTLRenderPipelineState>, 3> { id x_5_1_1[3]; } x5; struct array<id<MTLRenderPipelineState>, 3> { id x_6_1_1[3]; } x6; id x7; id x8; id x9; }*)arg2;
 - (bool)isWireframeEnabled;
 - (struct double4x4 { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })modelTransform;
 - (struct double4x4 { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })projectionTransform;
 - (void)releaseBuffers;
-- (bool)render;
+- (bool)renderAtTime:(double)arg1;
 - (void)setAnimationTargets:(const struct vector<LAUI_uniform_cubic_b_spline_renderer::spline_instance_state, std::__1::allocator<LAUI_uniform_cubic_b_spline_renderer::spline_instance_state> > { struct spline_instance_state {} *x1; struct spline_instance_state {} *x2; struct __compressed_pair<LAUI_uniform_cubic_b_spline_renderer::spline_instance_state *, std::__1::allocator<LAUI_uniform_cubic_b_spline_renderer::spline_instance_state> > { struct spline_instance_state {} *x_3_1_1; } x3; }*)arg1 forSpline:(unsigned long long)arg2 instance:(unsigned long long)arg3 withCompletion:(id /* block */)arg4;
 - (void)setAnimationTargets:(const struct vector<LAUI_uniform_cubic_b_spline_renderer::spline_state, std::__1::allocator<LAUI_uniform_cubic_b_spline_renderer::spline_state> > { struct spline_state {} *x1; struct spline_state {} *x2; struct __compressed_pair<LAUI_uniform_cubic_b_spline_renderer::spline_state *, std::__1::allocator<LAUI_uniform_cubic_b_spline_renderer::spline_state> > { struct spline_state {} *x_3_1_1; } x3; }*)arg1 forSpline:(unsigned long long)arg2 withCompletion:(id /* block */)arg3;
 - (void)setAnimationTargets:(const struct vector<LAUI_uniform_cubic_b_spline_renderer::global_state, std::__1::allocator<LAUI_uniform_cubic_b_spline_renderer::global_state> > { struct global_state {} *x1; struct global_state {} *x2; struct __compressed_pair<LAUI_uniform_cubic_b_spline_renderer::global_state *, std::__1::allocator<LAUI_uniform_cubic_b_spline_renderer::global_state> > { struct global_state {} *x_3_1_1; } x3; }*)arg1 withCompletion:(id /* block */)arg2;

@@ -4,6 +4,7 @@
 
 @interface FigVideoCaptureConnectionConfiguration : FigCaptureConnectionConfiguration {
     bool  _cameraIntrinsicMatrixDeliveryEnabled;
+    bool  _livePhotoMetadataWritingEnabled;
     bool  _mirroringEnabled;
     int  _orientation;
     int  _outputFormat;
@@ -14,9 +15,10 @@
 }
 
 @property (nonatomic) bool cameraIntrinsicMatrixDeliveryEnabled;
-@property (readonly) bool irisFrameHarvestingEnabled;
 @property (readonly) bool irisSDOFEnabled;
 @property (readonly) bool irisVISEnabled;
+@property (readonly) int irisVISMethod;
+@property (nonatomic) bool livePhotoMetadataWritingEnabled;
 @property (nonatomic) bool mirroringEnabled;
 @property (nonatomic) int orientation;
 @property (nonatomic) int outputFormat;
@@ -41,10 +43,11 @@
 - (struct FigCaptureVideoTransform { bool x1; int x2; struct { int x_3_1_1; int x_3_1_2; } x3; })depthDataTransformWithSourceDimensions;
 - (id)description;
 - (id)initWithXPCEncoding:(id)arg1;
-- (bool)irisFrameHarvestingEnabled;
 - (bool)irisSDOFEnabled;
 - (bool)irisVISEnabled;
+- (int)irisVISMethod;
 - (bool)isEqual:(id)arg1;
+- (bool)livePhotoMetadataWritingEnabled;
 - (bool)mirroringEnabled;
 - (int)orientation;
 - (int)outputFormat;
@@ -56,6 +59,7 @@
 - (bool)requiresScalingForInputTransForm:(struct FigCaptureVideoTransform { bool x1; int x2; struct { int x_3_1_1; int x_3_1_2; } x3; })arg1 nodeName:(id)arg2;
 - (int)retainedBufferCount;
 - (void)setCameraIntrinsicMatrixDeliveryEnabled:(bool)arg1;
+- (void)setLivePhotoMetadataWritingEnabled:(bool)arg1;
 - (void)setMirroringEnabled:(bool)arg1;
 - (void)setOrientation:(int)arg1;
 - (void)setOutputFormat:(int)arg1;

@@ -25,11 +25,14 @@
 @property (nonatomic, readonly) double tolerance;
 @property (nonatomic, readonly) bool useCoreDuetPowerBudgeting;
 
++ (void)checkInActivity:(id)arg1 codeBlock:(id /* block */)arg2;
+
 - (void).cxx_destruct;
 - (bool)_needsNetworkRequirement:(unsigned long long)arg1;
 - (id)debugDescription;
 - (id)description;
 - (id)identifier;
+- (id)init;
 - (id)initWithIdentifier:(id)arg1 repeat:(bool)arg2 shouldWakeDevice:(bool)arg3 useCoreDuetPowerBudgeting:(bool)arg4 runOnBattery:(bool)arg5 tolerance:(double)arg6 qualityOfService:(unsigned long long)arg7 networkRequirements:(unsigned long long)arg8;
 - (void)invalidate;
 - (unsigned long long)networkRequirements;

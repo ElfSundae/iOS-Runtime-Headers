@@ -4,6 +4,7 @@
 
 @interface UIWebFormAccessory : UIInputView {
     UIBarButtonItem * _autofill;
+    UIBarButtonItem * _autofillSpacer;
     UIBarButtonItemGroup * _buttonGroupAutoFill;
     UIBarButtonItemGroup * _buttonGroupNavigation;
     UIBarButtonItem * _clearButton;
@@ -11,9 +12,9 @@
     UIBarButtonItem * _flexibleSpaceItem;
     UIToolbar * _leftToolbar;
     UIBarButtonItem * _nextItem;
+    UIBarButtonItem * _nextPreviousSpacer;
     UIBarButtonItem * _previousItem;
     UIToolbar * _rightToolbar;
-    UIBarButtonItem * _spacer;
     UISegmentedControl * _tab;
     bool  _usesUCB;
     <UIWebFormAccessoryDelegate> * delegate;
@@ -38,7 +39,6 @@
 - (void)_refreshAutofillPresentation;
 - (void)_setRenderConfig:(id)arg1;
 - (id)_tab;
-- (void)_tabSegmentedControlDidChange:(id)arg1;
 - (void)_updateFrame;
 - (void)autoFill:(id)arg1;
 - (void)clear:(id)arg1;
@@ -54,6 +54,7 @@
 - (void)setClearVisible:(bool)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setNextEnabled:(bool)arg1;
+- (void)setNextPreviousItemsVisible:(bool)arg1;
 - (void)setPreviousEnabled:(bool)arg1;
 - (void)set_autofill:(id)arg1;
 - (void)set_clearButton:(id)arg1;

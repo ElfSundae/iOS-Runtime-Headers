@@ -14,6 +14,7 @@
 
 - (void).cxx_destruct;
 - (id)color;
+- (id)description;
 - (float)fraction;
 - (id)initWithColor:(id)arg1 fraction:(float)arg2;
 - (void)setColor:(id)arg1;

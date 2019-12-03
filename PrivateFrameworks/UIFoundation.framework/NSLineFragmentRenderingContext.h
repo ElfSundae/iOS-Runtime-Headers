@@ -15,7 +15,6 @@
         unsigned int _reserved : 25; 
     }  _flags;
     unsigned short * _glyphs;
-    NSGraphicsContext * _graphicsContext;
     struct CGRect { 
         struct CGPoint { 
             double x; 
@@ -35,6 +34,7 @@
     double  _rightControlWidth;
     void * _runs;
     CUIStyleEffectConfiguration * _styleEffects;
+    __NSImmutableTextStorage * _textStorage;
 }
 
 @property long long applicationFrameworkContext;
@@ -42,7 +42,6 @@
 @property (nonatomic, retain) CUIStyleEffectConfiguration *cuiStyleEffects;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, retain) NSGraphicsContext *graphicsContext;
 @property (readonly) unsigned long long hash;
 @property long long resolvedBaseWritingDirection;
 @property long long resolvedTextAlignment;
@@ -64,9 +63,8 @@
 - (double)elasticWidth;
 - (void)finalize;
 - (void)getMaximumAscender:(double*)arg1 minimumDescender:(double*)arg2;
-- (id)graphicsContext;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })imageBounds;
-- (id)initWithRuns:(struct __CFArray { }*)arg1 glyphOrigin:(double)arg2 lineFragmentWidth:(double)arg3 elasticWidth:(double)arg4 usesScreenFonts:(bool)arg5 isRTL:(bool)arg6;
+- (id)initWithTextStorage:(id)arg1 runs:(struct __CFArray { }*)arg2 glyphOrigin:(double)arg3 lineFragmentWidth:(double)arg4 elasticWidth:(double)arg5 usesScreenFonts:(bool)arg6 isRTL:(bool)arg7;
 - (bool)isRTL;
 - (double)lineFragmentWidth;
 - (oneway void)release;
@@ -75,7 +73,6 @@
 - (void)setApplicationFrameworkContext:(long long)arg1;
 - (void)setCuiCatalog:(id)arg1;
 - (void)setCuiStyleEffects:(id)arg1;
-- (void)setGraphicsContext:(id)arg1;
 - (void)setResolvedBaseWritingDirection:(long long)arg1;
 - (void)setResolvedTextAlignment:(long long)arg1;
 - (struct CGSize { double x1; double x2; })sizeWithBehavior:(long long)arg1 usesFontLeading:(bool)arg2 baselineDelta:(double*)arg3;

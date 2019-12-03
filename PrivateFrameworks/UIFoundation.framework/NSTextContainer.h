@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UIFoundation.framework/UIFoundation
  */
 
-@interface NSTextContainer : NSObject <NSCoding, NSTextLayoutOrientationProvider> {
+@interface NSTextContainer : NSObject <NSSecureCoding, NSTextLayoutOrientationProvider> {
     long long  _applicationFrameworkContext;
     NSDictionary * _attributesForExtraLineFragment;
     double  _cacheBoundsMaxY;
@@ -28,6 +28,7 @@
         unsigned int oldAPI : 1; 
         unsigned int _reserved : 8; 
     }  _tcFlags;
+    NSTextLayoutManager * _textLayoutManager;
     UIView<NSTextContainerView> * _textView;
 }
 
@@ -45,6 +46,7 @@
 // Image: /System/Library/PrivateFrameworks/UIFoundation.framework/UIFoundation
 
 + (void)initialize;
++ (bool)supportsSecureCoding;
 
 - (void)_commonInit;
 - (bool)_containerObservesTextViewFrameChanges;
@@ -54,6 +56,7 @@
 - (struct CGSize { double x1; double x2; })containerSize;
 - (bool)containsPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)coordinateAccess:(id /* block */)arg1;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
@@ -84,12 +87,14 @@
 - (void)setMaximumNumberOfLines:(unsigned long long)arg1;
 - (void)setMinimumLineFragmentWidth:(double)arg1;
 - (void)setSize:(struct CGSize { double x1; double x2; })arg1;
+- (void)setTextLayoutManager:(id)arg1;
 - (void)setTextView:(id)arg1;
 - (void)setWidthTracksTextView:(bool)arg1;
 - (struct CGSize { double x1; double x2; })size;
 - (struct NSEdgeInsets { double x1; double x2; double x3; double x4; })textContainerInsetsForView:(id)arg1;
 - (struct NSEdgeInsets { double x1; double x2; double x3; double x4; })textContainerInsetsForView_iOS:(id)arg1;
 - (struct CGPoint { double x1; double x2; })textContainerOrigin;
+- (id)textLayoutManager;
 - (id)textView;
 - (bool)widthTracksTextView;
 

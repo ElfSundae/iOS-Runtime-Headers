@@ -51,6 +51,7 @@
 - (bool)_isTypeEnabledAtIndexPath:(id)arg1;
 - (id)_localizedNameForSection:(long long)arg1 type:(id)arg2;
 - (id)_openAppCell;
+- (id)_researchStudyExplanationCell;
 - (bool)_shouldDisplayHealthRecordsRequests;
 - (bool)_shouldDisplayReadingSection;
 - (bool)_shouldDisplaySharingSection;

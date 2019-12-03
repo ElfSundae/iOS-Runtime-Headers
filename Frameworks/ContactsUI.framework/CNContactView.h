@@ -24,9 +24,7 @@
 @property (getter=isCellsLayoutCachingEnabled, nonatomic) bool cellsLayoutCachingEnabled;
 @property (nonatomic, retain) CNContact *contact;
 @property (nonatomic, retain) UIView *customHeaderView;
-@property (nonatomic) <ABContactViewDataSource> *dataSource;
 @property (nonatomic, readonly) CNContactHeaderView *defaultHeaderView;
-@property (nonatomic) <ABContactViewDelegate> *delegate;
 @property (nonatomic, copy) NSDictionary *labelTextAttributes;
 @property (nonatomic) bool needsUpdateVisibleCells;
 @property (nonatomic) struct CGSize { double x1; double x2; } oldSize;
@@ -37,6 +35,7 @@
 @property (nonatomic, copy) NSDictionary *valueTextAttributes;
 
 + (id)allCardProperties;
++ (id)allImageProperties;
 + (id)cellIdentifierForActions;
 + (id)cellIdentifierForClass:(Class)arg1;
 + (id)cellIdentifierForEditingProperty:(id)arg1;

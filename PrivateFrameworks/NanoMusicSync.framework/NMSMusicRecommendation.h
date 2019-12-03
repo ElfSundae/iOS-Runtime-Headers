@@ -5,12 +5,11 @@
 @interface NMSMusicRecommendation : NSObject <NSCopying> {
     MPArtworkCatalog * _artworkCatalog;
     NSString * _identifier;
+    NSMapTable * _itemSectionMap;
+    NSOrderedSet * _items;
     NSDate * _lastModifiedDate;
-    MPModelObject * _modelObject;
     bool  _selected;
     NSObject<OS_dispatch_queue> * _serializerQueue;
-    NSString * _storeRecommendationID;
-    NSArray * _storeRecommendationModelObjects;
     NSString * _subtitle;
     unsigned long long  _type;
 }
@@ -18,10 +17,9 @@
 @property (nonatomic, readonly) MPArtworkCatalog *artworkCatalog;
 @property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, readonly) bool isHeavyRotation;
+@property (nonatomic, readonly) NSOrderedSet *items;
 @property (nonatomic, readonly) NSDate *lastModifiedDate;
-@property (nonatomic, readonly) bool referencesOnlyLibraryContainers;
 @property (getter=isSelected, nonatomic) bool selected;
-@property (nonatomic, readonly) NSString *storeRecommendationID;
 @property (nonatomic, readonly) NSArray *storeRecommendationModelObjects;
 @property (nonatomic, readonly) NSString *subtitle;
 @property (nonatomic, readonly) NSString *title;
@@ -34,21 +32,22 @@
 - (id)_artworkCatalogsForLibraryRecommendationAlbumsWithCount:(unsigned long long)arg1;
 - (id)_artworkCatalogsForLibraryRecommendationPlaylistsWithCount:(unsigned long long)arg1;
 - (void)_commonInit;
+- (id)_stringForDayOfWeek:(long long)arg1;
 - (id)_tiledArtworkRequestForPlaylists:(id)arg1 albums:(id)arg2;
 - (id)artworkCatalog;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)identifier;
-- (id)initLibraryRecommendation;
-- (id)initWithPlaylist:(id)arg1 recommendationGroup:(id)arg2;
-- (id)initWithRecommendationGroup:(id)arg1;
+- (id)initWithItems:(id)arg1 itemSectionMap:(id)arg2;
+- (id)initWithLibraryRecommendation;
+- (id)initWithPlaylist:(id)arg1 section:(id)arg2;
 - (bool)isEqual:(id)arg1;
 - (bool)isHeavyRotation;
 - (bool)isSelected;
+- (id)items;
 - (id)lastModifiedDate;
-- (bool)referencesOnlyLibraryContainers;
+- (id)sectionForItemWithIdentifiers:(id)arg1;
 - (void)setSelected:(bool)arg1;
-- (id)storeRecommendationID;
 - (id)storeRecommendationModelObjects;
 - (id)subtitle;
 - (id)title;

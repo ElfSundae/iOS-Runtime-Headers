@@ -9,11 +9,11 @@
 
 @property (nonatomic, copy) NSString *name;
 
+- (void).cxx_destruct;
 - (void)addColor:(id)arg1 index:(int)arg2;
 - (unsigned long long)colorCount;
 - (id)colorForIndex:(int)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (id)init;

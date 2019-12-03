@@ -12,6 +12,7 @@
 @property (nonatomic, readonly, copy) id /* block */ requestCompletionBlock;
 @property (nonatomic, readonly) NSUUID *requestIdentifier;
 
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)initWithOptions:(id)arg1 completionBlock:(id /* block */)arg2;

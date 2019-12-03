@@ -4,14 +4,14 @@
 
 @interface HDContentProtectionManager : NSObject <HDDiagnosticObject> {
     double  _beganObservingTime;
-    int  _contentProtectionState;
+    _Atomic int  _contentProtectionState;
     double  _lastNotificationTime;
     double  _lastRecheckTime;
     int  _notifyToken;
     NSObject<OS_dispatch_queue> * _observationQueue;
     NSMapTable * _observers;
-    int  _shouldIgnoreUnlockedState;
-    int  _unlockedSinceBoot;
+    _Atomic bool  _shouldIgnoreUnlockedState;
+    _Atomic bool  _unlockedSinceBoot;
 }
 
 @property (readonly, copy) NSString *debugDescription;

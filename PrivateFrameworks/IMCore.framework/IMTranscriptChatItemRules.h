@@ -14,6 +14,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (bool)testShouldAppendNumberChanged:(id)arg1 previousItem:(id)arg2 showAllChanges:(bool)arg3;
 + (bool)testShouldShowReportSpamForChat:(id)arg1 items:(id)arg2;
 + (bool)testShouldShowSMSSpamForChat:(id)arg1 items:(id)arg2;
 

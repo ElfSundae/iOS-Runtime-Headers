@@ -9,8 +9,8 @@
     NSSet * _userActivities;
 }
 
-@property (nonatomic, readonly, copy) INIntent *intent;
-@property (nonatomic, readonly, copy) INIntentResponse *intentResponse;
+@property (nonatomic, readonly) INIntent *intent;
+@property (nonatomic, readonly) INIntentResponse *intentResponse;
 @property (nonatomic, readonly) long long type;
 @property (nonatomic, readonly, copy) NSSet *userActivities;
 

@@ -10,6 +10,8 @@
 - (long long)tableView:(UITableView *)arg1 accessoryTypeForRowWithIndexPath:(NSIndexPath *)arg2;
 - (bool)tableView:(UITableView *)arg1 canFocusRowAtIndexPath:(NSIndexPath *)arg2;
 - (bool)tableView:(UITableView *)arg1 canPerformAction:(SEL)arg2 forRowAtIndexPath:(NSIndexPath *)arg3 withSender:(id)arg4;
+- (UIContextMenuConfiguration *)tableView:(UITableView *)arg1 contextMenuConfigurationForRowAtIndexPath:(NSIndexPath *)arg2 point:(struct CGPoint { double x1; double x2; })arg3;
+- (void)tableView:(UITableView *)arg1 didBeginMultipleSelectionInteractionAtIndexPath:(NSIndexPath *)arg2;
 - (void)tableView:(UITableView *)arg1 didDeselectRowAtIndexPath:(NSIndexPath *)arg2;
 - (void)tableView:(UITableView *)arg1 didEndDisplayingCell:(UITableViewCell *)arg2 forRowAtIndexPath:(NSIndexPath *)arg3;
 - (void)tableView:(UITableView *)arg1 didEndDisplayingFooterView:(UIView *)arg2 forSection:(long long)arg3;
@@ -30,6 +32,9 @@
 - (long long)tableView:(UITableView *)arg1 indentationLevelForRowAtIndexPath:(NSIndexPath *)arg2;
 - (UISwipeActionsConfiguration *)tableView:(UITableView *)arg1 leadingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)arg2;
 - (void)tableView:(UITableView *)arg1 performAction:(SEL)arg2 forRowAtIndexPath:(NSIndexPath *)arg3 withSender:(id)arg4;
+- (UITargetedPreview *)tableView:(UITableView *)arg1 previewForDismissingContextMenuWithConfiguration:(UIContextMenuConfiguration *)arg2;
+- (UITargetedPreview *)tableView:(UITableView *)arg1 previewForHighlightingContextMenuWithConfiguration:(UIContextMenuConfiguration *)arg2;
+- (bool)tableView:(UITableView *)arg1 shouldBeginMultipleSelectionInteractionAtIndexPath:(NSIndexPath *)arg2;
 - (bool)tableView:(UITableView *)arg1 shouldHighlightRowAtIndexPath:(NSIndexPath *)arg2;
 - (bool)tableView:(UITableView *)arg1 shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)arg2;
 - (bool)tableView:(UITableView *)arg1 shouldShowMenuForRowAtIndexPath:(NSIndexPath *)arg2;
@@ -45,6 +50,8 @@
 - (void)tableView:(UITableView *)arg1 willDisplayCell:(UITableViewCell *)arg2 forRowAtIndexPath:(NSIndexPath *)arg3;
 - (void)tableView:(UITableView *)arg1 willDisplayFooterView:(UIView *)arg2 forSection:(long long)arg3;
 - (void)tableView:(UITableView *)arg1 willDisplayHeaderView:(UIView *)arg2 forSection:(long long)arg3;
+- (void)tableView:(UITableView *)arg1 willPerformPreviewActionForMenuWithConfiguration:(UIContextMenuConfiguration *)arg2 animator:(id <UIContextMenuInteractionCommitAnimating>)arg3;
 - (NSIndexPath *)tableView:(UITableView *)arg1 willSelectRowAtIndexPath:(NSIndexPath *)arg2;
+- (void)tableViewDidEndMultipleSelectionInteraction:(UITableView *)arg1;
 
 @end

@@ -206,6 +206,7 @@
     bool  _modelUsesFullColorEnamel;
     bool  _modelUsesTriColorEnamel;
     int  _numGroups;
+    NSObject<OS_dispatch_queue> * _pauseByNotificationQueueOverride;
     unsigned int  _program;
     unsigned long long  _shape;
     id /* block */  _shortenedBadgeBacksideStringProvider;
@@ -386,6 +387,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, retain) NSObject<OS_dispatch_queue> *pauseByNotificationQueueOverride;
 @property (nonatomic, copy) id /* block */ shortenedBadgeBacksideStringProvider;
 @property (readonly) Class superclass;
 @property (nonatomic) bool verticalPanningDisabled;
@@ -415,6 +417,7 @@
 - (void)_longPressInternalOnly:(id)arg1;
 - (float)_normalizeAngle:(float)arg1;
 - (void)_panned:(id)arg1;
+- (void)_pauseByNotification:(id)arg1;
 - (void)_setBackTextureNeedsRegeneration;
 - (void)_spin360Degrees;
 - (void)_tapped:(id)arg1;
@@ -427,6 +430,7 @@
 - (bool)gestureRecognizerShouldBegin:(id)arg1;
 - (id)init;
 - (id)initUsingEarnedShader:(bool)arg1;
+- (id)pauseByNotificationQueueOverride;
 - (double)playFlipInAnimation;
 - (double)playFlipOutAnimation;
 - (void)playRevealAnimationWithDuration:(double)arg1;
@@ -439,6 +443,7 @@
 - (void)setBadgeModelPath:(id)arg1 texturePath:(id)arg2 plistPath:(id)arg3;
 - (void)setConfiguration:(id)arg1;
 - (void)setFixedBadgeAngle:(double)arg1;
+- (void)setPauseByNotificationQueueOverride:(id)arg1;
 - (void)setShortenedBadgeBacksideStringProvider:(id /* block */)arg1;
 - (void)setVerticalPanningDisabled:(bool)arg1;
 - (id /* block */)shortenedBadgeBacksideStringProvider;

@@ -8,6 +8,7 @@
 
 @property (nonatomic, retain) NSMutableArray *localizedStrings;
 
++ (bool)isValid:(id)arg1;
 + (Class)localizedStringType;
 
 - (void).cxx_destruct;
@@ -24,6 +25,7 @@
 - (id)localizedStrings;
 - (unsigned long long)localizedStringsCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setLocalizedStrings:(id)arg1;
 - (void)writeTo:(id)arg1;

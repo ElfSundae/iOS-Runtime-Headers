@@ -36,7 +36,6 @@
 - (void)dealloc;
 - (id)editingStringForObjectValue:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (void)finalize;
 - (bool)getObjectValue:(out id*)arg1 forString:(id)arg2 errorDescription:(out id*)arg3;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
@@ -61,10 +60,12 @@
 + (id)hk_dateTimeDateIntervalFormatter;
 + (id)hk_dayIntervalFormatter;
 + (id)hk_hourDateIntervalFormatter;
++ (id)hk_hourDateIntervalWithDateFormatter;
 + (id)hk_hourMinuteOnlyDateIntervalFormatter;
 + (id)hk_hourOnlyDateIntervalFormatter;
 + (id)hk_monthDayYearIntervalFormatter;
 + (id)hk_monthIntervalFormatter;
++ (id)hk_monthYearIntervalFormatter;
 + (id)hk_sleepListDateIntervalFormatter;
 + (id)hk_yearIntervalFormatter;
 
@@ -75,11 +76,6 @@
 - (id)_px_substitutions;
 - (id)px_attributedStringFromDateInterval:(id)arg1 defaultAttributes:(id)arg2 emphasizedAttributes:(id)arg3;
 - (bool)px_customizesAttributedString;
-- (id)px_dateTemplateForGranularity:(unsigned long long)arg1;
-
-// Image: /System/Library/PrivateFrameworks/ScreenTimeUI.framework/ScreenTimeUI
-
-+ (id)st_sharedAbbreviatedDayIntervalDateFormatter;
-+ (id)st_sharedAbbreviatedHourIntervalDateFormatter;
+- (id)px_dateTemplateForGranularity:(unsigned long long)arg1 abbreviated:(bool)arg2;
 
 @end

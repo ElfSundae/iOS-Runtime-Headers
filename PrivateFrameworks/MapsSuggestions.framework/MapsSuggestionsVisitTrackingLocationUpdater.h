@@ -6,8 +6,13 @@
     CLVisit * _currentVisit;
     double  _distanceBuffer;
     CLLocation * _latestLocation;
-    NSHashTable * _locationObservers;
-    NSHashTable * _visitObservers;
+    MapsSuggestionsObservers * _locationObservers;
+    struct unique_ptr<MSg::Queue, std::__1::default_delete<MSg::Queue> > { 
+        struct __compressed_pair<MSg::Queue *, std::__1::default_delete<MSg::Queue> > { 
+            struct Queue {} *__value_; 
+        } __ptr_; 
+    }  _queue;
+    MapsSuggestionsObservers * _visitObservers;
     <MapsSuggestionsLocationUpdater> * _wrappedLocationUpdater;
 }
 
@@ -19,6 +24,7 @@
 
 + (bool)_isDefinitelyOutsideOfVisit:(id)arg1 location:(id)arg2 allowingBuffer:(double)arg3;
 
+- (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)initDecoratingLocationUpdater:(id)arg1;

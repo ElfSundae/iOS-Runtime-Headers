@@ -27,6 +27,7 @@
     }  _backingProgramWithTransform;
     NSString * _compileLog;
     NSString * _fileName;
+    bool  _isPrecompiledMetal;
     bool  _performFullCapture;
     bool  _programDirty;
     bool  _programWithTransformDirty;
@@ -49,6 +50,7 @@
 @property (copy) NSString *source;
 @property (copy) NSArray *uniforms;
 
++ (id)precompiledMetalShaderWithFile:(id)arg1 uniforms:(id)arg2;
 + (id)shader;
 + (id)shaderWithFileNamed:(id)arg1;
 + (id)shaderWithSource:(id)arg1;
@@ -69,7 +71,9 @@
 - (id)_generateMetalSource;
 - (id)_getLegacyUniformData;
 - (id)_getMetalFragmentFunctionName;
+- (id)_getMetalFragmentShaderSource;
 - (id)_getMetalVertexOutDefinition;
+- (id)_getMetalVertexShaderSource:(bool)arg1;
 - (id)_getShaderCompilationLog;
 - (struct shared_ptr<jet_program> { struct jet_program {} *x1; struct __shared_weak_count {} *x2; })_makeBackingProgramWithImplementation:(long long)arg1;
 - (void)_removeTargetNode:(id)arg1;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SearchFoundation.framework/SearchFoundation
  */
 
-@interface SFSearchResult : NSObject <NSCopying, NSSecureCoding, SFJSONSerializable, SFSearchResult, SearchUIAuxilliaryFieldProtocol, WBSCompletionListItem> {
+@interface SFSearchResult : NSObject <NSCopying, NSSecureCoding, SFJSONSerializable, SFSearchResult, WBSCompletionListItem> {
     SFActionItem * _action;
     NSString * _appleReferrer;
     NSString * _applicationBundleIdentifier;
@@ -25,6 +25,7 @@
     NSArray * _descriptions;
     bool  _doNotFold;
     NSNumber * _engagementScore;
+    NSData * _entityData;
     NSString * _fbr;
     NSDictionary * _featureScaling;
     NSString * _fileProviderDomainIdentifier;
@@ -91,21 +92,15 @@
     NSString * _userInput;
 }
 
-@property (readonly) SFActionItem *action;
 @property (nonatomic, retain) SFActionItem *action;
 @property (nonatomic, copy) NSString *appleReferrer;
 @property (nonatomic, copy) NSString *applicationBundleIdentifier;
-@property (readonly) NSString *auxiliaryBottomText;
 @property (nonatomic, copy) NSString *auxiliaryBottomText;
-@property (readonly) int auxiliaryBottomTextColor;
 @property (nonatomic) int auxiliaryBottomTextColor;
-@property (readonly) NSString *auxiliaryMiddleText;
 @property (nonatomic, copy) NSString *auxiliaryMiddleText;
-@property (readonly) NSString *auxiliaryTopText;
 @property (nonatomic, copy) NSString *auxiliaryTopText;
 @property (nonatomic) unsigned long long blockId;
 @property (nonatomic, copy) NSString *calendarIdentifier;
-@property (readonly) SFCard *card;
 @property (nonatomic, retain) SFCard *card;
 @property (nonatomic, copy) NSString *completedQuery;
 @property (nonatomic, copy) NSString *completion;
@@ -123,6 +118,7 @@
 @property (nonatomic) bool doNotFold;
 @property (nonatomic, readonly) unsigned long long engagementDestination;
 @property (nonatomic, retain) NSNumber *engagementScore;
+@property (nonatomic, retain) NSData *entityData;
 @property (nonatomic, copy) NSString *fbr;
 @property (nonatomic, copy) NSDictionary *featureScaling;
 @property (nonatomic, copy) NSString *fileProviderDomainIdentifier;
@@ -131,7 +127,6 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) SFImage *icon;
 @property (nonatomic, copy) NSString *identifier;
-@property (readonly) SFSearchResult *identifyingResult;
 @property (nonatomic, retain) SFCard *inlineCard;
 @property (nonatomic, copy) NSString *intendedQuery;
 @property (nonatomic) bool isCentered;
@@ -159,6 +154,7 @@
 @property (nonatomic, copy) NSString *nearbyBusinessesString;
 @property (nonatomic) unsigned long long origRank;
 @property (nonatomic, readonly) NSString *parsecDomainIdentifier;
+@property (nonatomic, readonly) long long parsecQueryID;
 @property (nonatomic) double personalizationScore;
 @property (nonatomic) int placement;
 @property (nonatomic) bool preventThumbnailImageScaling;
@@ -186,9 +182,7 @@
 @property (nonatomic, copy) NSString *srf;
 @property (nonatomic, copy) NSString *storeIdentifier;
 @property (readonly) Class superclass;
-@property (readonly) SFImage *thumbnail;
 @property (nonatomic, retain) SFImage *thumbnail;
-@property (readonly) SFRichText *title;
 @property (nonatomic, retain) SFText *title;
 @property (nonatomic, copy) NSString *titleNote;
 @property (nonatomic, retain) NSNumber *titleNoteSize;
@@ -229,6 +223,7 @@
 - (bool)doNotFold;
 - (void)encodeWithCoder:(id)arg1;
 - (id)engagementScore;
+- (id)entityData;
 - (id)fbr;
 - (id)featureScaling;
 - (id)fileProviderDomainIdentifier;
@@ -304,6 +299,7 @@
 - (void)setDescriptions:(id)arg1;
 - (void)setDoNotFold:(bool)arg1;
 - (void)setEngagementScore:(id)arg1;
+- (void)setEntityData:(id)arg1;
 - (void)setFbr:(id)arg1;
 - (void)setFeatureScaling:(id)arg1;
 - (void)setFileProviderDomainIdentifier:(id)arg1;
@@ -391,8 +387,13 @@
 
 + (id)safari_sfSearchResultWithUniqueIdentifier;
 
+- (id)_firstCardSectionOfClass:(Class)arg1 ofCard:(id)arg2 outIndex:(unsigned long long*)arg3;
 - (unsigned long long)engagementDestination;
 - (id)parsecDomainIdentifier;
+- (long long)parsecQueryID;
+- (id)safari_firstCardSectionOfClass:(Class)arg1;
+- (id)safari_firstInlineCardSectionOfClass:(Class)arg1;
+- (unsigned long long)safari_indexOfFirstInlineCardSectionOfClass:(Class)arg1;
 - (id)safari_loggingDescription;
 - (id)sfSearchResultValue;
 
@@ -401,10 +402,6 @@
 - (bool)collectAnonymousFeatures;
 - (id)objectForFeedback;
 - (void)setPropertiesOnResultCopy:(id)arg1;
-
-// Image: /System/Library/PrivateFrameworks/SearchUI.framework/SearchUI
-
-- (id)identifyingResult;
 
 // Image: /System/Library/PrivateFrameworks/Spotlight.framework/Spotlight
 

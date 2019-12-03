@@ -9,8 +9,8 @@
     NFWeakReference * _exportedObject;
     NSXPCInterface * _exportedObjectInterface;
     NSString * _machServiceName;
-    NSObject<OS_dispatch_queue> * _queue;
     NSXPCInterface * _remoteObjectInterface;
+    NSObject<OS_dispatch_queue> * _xpcQueue;
 }
 
 - (bool)_connectIfNeeded;

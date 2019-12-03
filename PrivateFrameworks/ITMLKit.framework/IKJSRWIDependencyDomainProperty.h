@@ -5,6 +5,7 @@
 @interface IKJSRWIDependencyDomainProperty : NSObject {
     IKJSRWIDependencyDomain * _domain;
     IKJSRWIDependencyDomainType * _domainType;
+    NSArray * _enumOptions;
     NSString * _name;
     NSString * _propertyType;
     NSString * _purpose;

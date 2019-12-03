@@ -5,12 +5,10 @@
 
 @required
 
-- (const struct __CFString { }*)collectionAccessoryButtonEventTrackerKey;
 - (NSString *)collectionAccessoryButtonTitle;
 - (unsigned long long)collectionAccessoryButtonType;
 - (double)collectionHeight;
 - (NSString *)collectionTitle;
-- (void)setCollectionAccessoryButtonEventTrackerKey:(const struct __CFString { }*)arg1;
 - (void)setCollectionAccessoryButtonTitle:(NSString *)arg1;
 - (void)setCollectionAccessoryButtonType:(unsigned long long)arg1;
 - (void)setCollectionHeight:(double)arg1;

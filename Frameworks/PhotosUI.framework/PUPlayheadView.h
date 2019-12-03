@@ -4,6 +4,7 @@
 
 @interface PUPlayheadView : UIView {
     UIView * _line;
+    UIView * _outline;
     bool  _tintColorForPlayhead;
 }
 

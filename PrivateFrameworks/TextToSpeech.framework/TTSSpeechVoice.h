@@ -16,7 +16,6 @@
     NSString * _nonCombinedVoiceId;
     <TTSSpeechService> * _service;
     NSString * _serviceIdentifier;
-    bool  _useVoiceBooster;
 }
 
 @property (nonatomic) bool canBeDownloaded;
@@ -31,13 +30,10 @@
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSString *nonCombinedVoiceId;
 @property (nonatomic, retain) NSString *serviceIdentifier;
-@property (nonatomic) bool useVoiceBooster;
 
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
-- (void)_initializeVoiceBooster;
-- (void)_routeChange:(id)arg1;
 - (bool)canBeDownloaded;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -66,7 +62,5 @@
 - (void)setNonCombinedVoiceId:(id)arg1;
 - (void)setService:(id)arg1;
 - (void)setServiceIdentifier:(id)arg1;
-- (void)setUseVoiceBooster:(bool)arg1;
-- (bool)useVoiceBooster;
 
 @end

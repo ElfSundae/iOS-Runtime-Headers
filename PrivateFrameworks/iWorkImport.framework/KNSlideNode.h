@@ -11,6 +11,7 @@
     bool  _collapsedInOutlineView;
     unsigned long long  _depth;
     NSSet * _digestsForDatasThatNeedDownloadForThumbnail;
+    bool  _hasBackgroundAlpha;
     bool  _hasBodyInOutlineView;
     bool  _hasExplicitBuilds;
     bool  _hasExplicitBuildsIsUpToDate;
@@ -38,6 +39,7 @@
 @property (nonatomic) unsigned long long depth;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, copy) NSSet *digestsForDatasThatNeedDownloadForThumbnail;
+@property (nonatomic, readonly) bool hasBackgroundAlpha;
 @property (nonatomic) bool hasBodyInOutlineView;
 @property (nonatomic, readonly) bool hasBuildEvents;
 @property (nonatomic, readonly) bool hasChildren;
@@ -51,7 +53,7 @@
 @property (nonatomic, readonly) KNSlideNode *nextSkippingCollapsed;
 @property (nonatomic, readonly) KNSlideNode *nextSkippingHidden;
 @property (nonatomic, readonly) KNSlideNode *previous;
-@property (nonatomic, retain) NSString *previousIdentifier;
+@property (nonatomic, copy) NSString *previousIdentifier;
 @property (nonatomic, readonly) KNSlideNode *previousSkippingCollapsed;
 @property (nonatomic, readonly) KNSlideNode *previousSkippingHidden;
 @property (nonatomic, retain) KNAbstractSlide *slide;
@@ -89,6 +91,7 @@
 - (id)descendantsOmittingSkippedSlideNodes:(bool)arg1 omittingCollapsedSlideNodes:(bool)arg2;
 - (void)didLoadSlide:(id)arg1;
 - (id)digestsForDatasThatNeedDownloadForThumbnail;
+- (bool)hasBackgroundAlpha;
 - (bool)hasBodyInOutlineView;
 - (bool)hasBuildEvents;
 - (bool)hasChildren;
@@ -103,13 +106,14 @@
 - (bool)isCollapsedInOutlineView;
 - (bool)isHidden;
 - (bool)isSlideNumberVisible;
-- (void)loadFromArchive:(const struct SlideNodeArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; struct RepeatedPtrField<TSP::Size> { struct Arena {} *x_7_1_1; int x_7_1_2; int x_7_1_3; struct Rep {} *x_7_1_4; } x7; struct RepeatedPtrField<TSP::DataReference> { struct Arena {} *x_8_1_1; int x_8_1_2; int x_8_1_3; struct Rep {} *x_8_1_4; } x8; struct RepeatedPtrField<KN::SlideNodeArchive_SlideSpecificHyperlinkMapEntry> { struct Arena {} *x_9_1_1; int x_9_1_2; int x_9_1_3; struct Rep {} *x_9_1_4; } x9; struct RepeatedPtrField<std::__1::basic_string<char> > { struct Arena {} *x_10_1_1; int x_10_1_2; int x_10_1_3; struct Rep {} *x_10_1_4; } x10; struct ArenaStringPtr { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > {} *x_11_1_1; } x11; }*)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const struct SlideNodeArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; struct RepeatedPtrField<TSP::Size> { struct Arena {} *x_7_1_1; int x_7_1_2; int x_7_1_3; struct Rep {} *x_7_1_4; } x7; struct RepeatedPtrField<TSP::DataReference> { struct Arena {} *x_8_1_1; int x_8_1_2; int x_8_1_3; struct Rep {} *x_8_1_4; } x8; struct RepeatedPtrField<KN::SlideNodeArchive_SlideSpecificHyperlinkMapEntry> { struct Arena {} *x_9_1_1; int x_9_1_2; int x_9_1_3; struct Rep {} *x_9_1_4; } x9; struct RepeatedPtrField<std::__1::basic_string<char> > { struct Arena {} *x_10_1_1; int x_10_1_2; int x_10_1_3; struct Rep {} *x_10_1_4; } x10; struct ArenaStringPtr { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > {} *x_11_1_1; } x11; }*)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)next;
 - (id)nextSkippingCollapsed;
 - (id)nextSkippingHidden;
 - (unsigned int)nextUntitledResolverIndex;
 - (unsigned long long)numberOfLinksToSlideNodeInStorage:(id)arg1 forSlideNodeUUIDString:(id)arg2;
+- (id)objectUUIDPath;
 - (void)p_addHyperlinkForObjectReferencedByMapping:(id)arg1 toSlideNode:(id)arg2;
 - (void)p_addOldModelDescendantsToSlideTree:(id)arg1 atDepth:(unsigned long long)arg2;
 - (unsigned long long)p_buildEventCount;
@@ -141,7 +145,7 @@
 - (unsigned long long)safeBuildEventCount;
 - (bool)safeHasBuildEvents;
 - (unsigned int)saveNextUntitledResolverIndex;
-- (void)saveToArchive:(struct SlideNodeArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; struct RepeatedPtrField<TSP::Size> { struct Arena {} *x_7_1_1; int x_7_1_2; int x_7_1_3; struct Rep {} *x_7_1_4; } x7; struct RepeatedPtrField<TSP::DataReference> { struct Arena {} *x_8_1_1; int x_8_1_2; int x_8_1_3; struct Rep {} *x_8_1_4; } x8; struct RepeatedPtrField<KN::SlideNodeArchive_SlideSpecificHyperlinkMapEntry> { struct Arena {} *x_9_1_1; int x_9_1_2; int x_9_1_3; struct Rep {} *x_9_1_4; } x9; struct RepeatedPtrField<std::__1::basic_string<char> > { struct Arena {} *x_10_1_1; int x_10_1_2; int x_10_1_3; struct Rep {} *x_10_1_4; } x10; struct ArenaStringPtr { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > {} *x_11_1_1; } x11; }*)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(struct SlideNodeArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; struct RepeatedPtrField<TSP::Size> { struct Arena {} *x_7_1_1; int x_7_1_2; int x_7_1_3; struct Rep {} *x_7_1_4; } x7; struct RepeatedPtrField<TSP::DataReference> { struct Arena {} *x_8_1_1; int x_8_1_2; int x_8_1_3; struct Rep {} *x_8_1_4; } x8; struct RepeatedPtrField<KN::SlideNodeArchive_SlideSpecificHyperlinkMapEntry> { struct Arena {} *x_9_1_1; int x_9_1_2; int x_9_1_3; struct Rep {} *x_9_1_4; } x9; struct RepeatedPtrField<std::__1::basic_string<char> > { struct Arena {} *x_10_1_1; int x_10_1_2; int x_10_1_3; struct Rep {} *x_10_1_4; } x10; struct ArenaStringPtr { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > {} *x_11_1_1; } x11; }*)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)setClassicUniqueID:(id)arg1;
 - (void)setCollapsed:(bool)arg1;
@@ -166,6 +170,7 @@
 - (bool)thumbnailsAreDirty;
 - (id)uniqueIdentifier;
 - (void)uniquifyTableNamesForUpgradeOrImport;
+- (void)updateHasBackgroundAlpha;
 - (void)upgradeSlideSpecificHyperlinksForSlideNodes:(id)arg1;
 - (void)upgradeSlideSpecificStorageHyperlinksForStorage:(id)arg1 withSlideNodes:(id)arg2;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;

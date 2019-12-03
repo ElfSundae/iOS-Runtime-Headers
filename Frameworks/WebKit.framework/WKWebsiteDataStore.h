@@ -3,18 +3,24 @@
  */
 
 @interface WKWebsiteDataStore : NSObject <NSSecureCoding, WKObject> {
+    struct RetainPtr<id<_WKWebsiteDataStoreDelegate> > { 
+        void *m_ptr; 
+    }  _delegate;
     struct ObjectStorage<API::WebsiteDataStore> { 
         struct type { 
-            unsigned char __lx[32]; 
+            unsigned char __lx[24]; 
         } data; 
     }  _websiteDataStore;
 }
 
 @property (setter=_setAllowsCellularAccess:, nonatomic) bool _allowsCellularAccess;
-@property (readonly) /* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*_apiObject;
+@property (setter=_setAllowsTLSFallback:, nonatomic) bool _allowsTLSFallback;
+@property (readonly) struct Object { int (**x1)(); id x2; }*_apiObject;
 @property (setter=_setBoundInterfaceIdentifier:, nonatomic) NSString *_boundInterfaceIdentifier;
 @property (setter=_setCacheStorageDirectory:, nonatomic) NSString *_cacheStorageDirectory;
-@property (setter=_setCacheStoragePerOriginQuota:, nonatomic) unsigned long long _cacheStoragePerOriginQuota;
+@property (nonatomic) <_WKWebsiteDataStoreDelegate> *_delegate;
+@property (nonatomic, readonly) NSURL *_indexedDBDatabaseDirectory;
+@property (setter=_setPerOriginStorageQuota:, nonatomic) unsigned long long _perOriginStorageQuota;
 @property (setter=_setProxyConfiguration:, nonatomic) NSDictionary *_proxyConfiguration;
 @property (setter=_setResourceLoadStatisticsDebugMode:, nonatomic) bool _resourceLoadStatisticsDebugMode;
 @property (setter=_setResourceLoadStatisticsEnabled:, nonatomic) bool _resourceLoadStatisticsEnabled;
@@ -39,24 +45,35 @@
 + (id)nonPersistentDataStore;
 + (bool)supportsSecureCoding;
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (bool)_allowsCellularAccess;
-- (/* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*)_apiObject;
+- (bool)_allowsTLSFallback;
+- (struct Object { int (**x1)(); id x2; }*)_apiObject;
 - (id)_boundInterfaceIdentifier;
 - (id)_cacheStorageDirectory;
-- (unsigned long long)_cacheStoragePerOriginQuota;
+- (void)_clearPrevalentDomain:(id)arg1 completionHandler:(id /* block */)arg2;
+- (id)_delegate;
 - (void)_fetchDataRecordsOfTypes:(id)arg1 withOptions:(unsigned long long)arg2 completionHandler:(id /* block */)arg3;
 - (void)_getAllStorageAccessEntriesFor:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)_getIsPrevalentDomain:(id)arg1 completionHandler:(id /* block */)arg2;
 - (bool)_hasRegisteredServiceWorker;
+- (id)_indexedDBDatabaseDirectory;
 - (id)_initWithConfiguration:(id)arg1;
+- (unsigned long long)_perOriginStorageQuota;
+- (void)_processStatisticsAndDataRecords:(id /* block */)arg1;
 - (id)_proxyConfiguration;
 - (bool)_resourceLoadStatisticsDebugMode;
 - (bool)_resourceLoadStatisticsEnabled;
 - (void)_resourceLoadStatisticsSetShouldSubmitTelemetry:(bool)arg1;
+- (void)_scheduleCookieBlockingUpdate:(id /* block */)arg1;
 - (id)_serviceWorkerRegistrationDirectory;
 - (void)_setAllowsCellularAccess:(bool)arg1;
+- (void)_setAllowsTLSFallback:(bool)arg1;
 - (void)_setBoundInterfaceIdentifier:(id)arg1;
 - (void)_setCacheStorageDirectory:(id)arg1;
-- (void)_setCacheStoragePerOriginQuota:(unsigned long long)arg1;
+- (void)_setPerOriginStorageQuota:(unsigned long long)arg1;
+- (void)_setPrevalentDomain:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)_setProxyConfiguration:(id)arg1;
 - (void)_setResourceLoadStatisticsDebugMode:(bool)arg1;
 - (void)_setResourceLoadStatisticsEnabled:(bool)arg1;
@@ -74,10 +91,14 @@
 - (bool)isPersistent;
 - (void)removeDataOfTypes:(id)arg1 forDataRecords:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)removeDataOfTypes:(id)arg1 modifiedSince:(id)arg2 completionHandler:(id /* block */)arg3;
+- (void)set_delegate:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/SafariShared.framework/SafariShared
 
 + (id)safari_allDataTypes;
 + (void)safari_clearHSTSSuperCookies;
++ (id)safari_dataStoreWithConfiguration:(id)arg1;
++ (id)safari_defaultDataStoreDisallowingTLSFallback;
++ (id)safari_nonPersistentDataStore;
 
 @end

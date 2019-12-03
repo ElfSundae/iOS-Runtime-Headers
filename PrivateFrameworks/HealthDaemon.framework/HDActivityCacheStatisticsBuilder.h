@@ -25,6 +25,7 @@
     HKQuantity * _lastDistanceWalkingValue;
     NSNumber * _lastExerciseMinuteValue;
     NSNumber * _lastFlightsClimbedValue;
+    NSNumber * _lastMoveMinuteValue;
     NSNumber * _lastPushCountValue;
     NSNumber * _lastStandHourValue;
     NSNumber * _lastStepCountValue;
@@ -100,6 +101,7 @@
 - (id)init;
 - (id)initWithDateInterval:(id)arg1 loggingName:(id)arg2;
 - (double)intervalDuration;
+- (long long)moveMinuteValue;
 - (long long)pushCountValue;
 - (void)setIntervalDuration:(double)arg1;
 - (void)setSourceOrderDelegate:(id)arg1;

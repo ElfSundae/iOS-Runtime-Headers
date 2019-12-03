@@ -16,14 +16,15 @@
 @property (nonatomic, retain) NSURL *mediaURL;
 @property (nonatomic, retain) PFVideoComplement *videoComplement;
 
+- (void).cxx_destruct;
 - (void)_cleanupIfNeededMediaAtURL:(id)arg1;
 - (void)cleanupResources;
-- (void)dealloc;
 - (id)fileExtension;
 - (id)initWithDictionary:(id)arg1;
 - (id)mediaData;
 - (long long)mediaType;
 - (id)mediaURL;
+- (id)photoLibrary;
 - (id)serializedDictionary;
 - (void)setFileExtension:(id)arg1;
 - (void)setMediaData:(id)arg1;

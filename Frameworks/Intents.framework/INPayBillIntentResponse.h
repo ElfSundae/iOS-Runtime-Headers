@@ -2,9 +2,7 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface INPayBillIntentResponse : INIntentResponse <INPayBillIntentResponseExport> {
-    _INPBPayBillIntentResponse * _responseMessagePBRepresentation;
-}
+@interface INPayBillIntentResponse : INIntentResponse <INPayBillIntentResponseExport>
 
 @property (nonatomic, copy) INBillDetails *billDetails;
 @property (nonatomic, readonly) long long code;
@@ -23,11 +21,10 @@
 + (int)_typeFromCode:(long long)arg1;
 + (bool)supportsSecureCoding;
 
-- (void).cxx_destruct;
+- (long long)_codeWithName:(id)arg1;
 - (id)_dictionaryRepresentation;
 - (id)_initWithCode:(long long)arg1 userActivity:(id)arg2;
 - (long long)_intentResponseCode;
-- (id)_responseMessagePBRepresentation;
 - (id)billDetails;
 - (long long)code;
 - (void)encodeWithCoder:(id)arg1;

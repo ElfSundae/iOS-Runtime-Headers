@@ -9,8 +9,8 @@
 @property (nonatomic, readonly, copy) HKQuantityType *quantityType;
 
 - (void).cxx_destruct;
-- (id)aggregateSensorData:(id)arg1 collector:(id)arg2 device:(id)arg3 requestedAggregationDate:(id)arg4 mode:(long long)arg5 error:(id*)arg6;
-- (double)defaultDataCollectionInterval;
+- (id)_aggregateForState:(id)arg1 collector:(id)arg2 device:(id)arg3 requestedAggregationDate:(id)arg4 mode:(long long)arg5 interval:(double)arg6;
+- (id)aggregateForState:(id)arg1 collector:(id)arg2 device:(id)arg3 requestedAggregationDate:(id)arg4 mode:(long long)arg5 freezeSeries:(bool)arg6 error:(id*)arg7;
 - (id)description;
 - (id)initForQuantityType:(id)arg1 dataCollectionManager:(id)arg2;
 - (id)objectType;

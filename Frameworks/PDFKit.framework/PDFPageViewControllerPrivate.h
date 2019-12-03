@@ -15,7 +15,7 @@
         double right; 
     }  pageMargins;
     PDFPageView * pageView;
-    UIView * pageViewContainerView;
+    PDFTextInputView * pageViewContainerView;
     PDFView * pdfView;
     PDFRenderingProperties * renderingProperties;
     UIScrollView * scrollView;

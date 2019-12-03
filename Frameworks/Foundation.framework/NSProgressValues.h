@@ -3,7 +3,11 @@
  */
 
 @interface NSProgressValues : NSObject <NSSecureCoding> {
-    _NSProgressFraction * _childFraction;
+    struct _NSProgressFraction { 
+        long long completed; 
+        long long total; 
+        bool overflowed; 
+    }  _childFraction;
     bool  _isCancellable;
     bool  _isCancelled;
     bool  _isPausable;
@@ -14,7 +18,11 @@
     NSString * _localizedDescription;
     long long  _portionOfParent;
     double  _remoteFractionCompleted;
-    _NSProgressFraction * _selfFraction;
+    struct _NSProgressFraction { 
+        long long completed; 
+        long long total; 
+        bool overflowed; 
+    }  _selfFraction;
     NSMutableDictionary * _userInfo;
     bool  _usingChildUserInfo;
 }
@@ -34,7 +42,7 @@
 - (id)initWithCoder:(id)arg1;
 - (bool)isFinished;
 - (bool)isIndeterminate;
-- (id)overallFraction;
+- (struct _NSProgressFraction { long long x1; long long x2; bool x3; })overallFraction;
 - (void)setCompletedUnitCount:(long long)arg1;
 - (void)setFinished:(bool)arg1;
 - (void)setFractionCompleted:(double)arg1;

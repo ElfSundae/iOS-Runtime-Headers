@@ -19,6 +19,7 @@
 + (id)diffsToActivate:(bool)arg1 withDate:(id)arg2;
 + (id)diffsToClearStatusCodeAndCompatibilityState;
 + (id)diffsToPair:(bool)arg1 withDate:(id)arg2;
++ (id)diffsToSetStatusCode:(unsigned long long)arg1;
 + (id)diffsToSetStatusCode:(unsigned long long)arg1 andCompatibilityState:(unsigned short)arg2;
 + (id)enclosedClassTypes;
 + (void)parseDiff:(id)arg1 forPropertyChange:(id)arg2 withBlock:(id /* block */)arg3;
@@ -31,7 +32,7 @@
 - (void)child:(id)arg1 didApplyDiff:(id)arg2;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned long long)count;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

@@ -16,7 +16,7 @@
 - (bool)_containsImagesInPath:(id)arg1;
 - (bool)haveCGCacheImages;
 - (id)imagePaths;
-- (id)imageWithTraitCollection:(id)arg1;
+- (id)imageWithConfiguration:(id)arg1;
 - (void)setHaveCGCacheImages:(bool)arg1;
 - (void)setImagePaths:(id)arg1;
 

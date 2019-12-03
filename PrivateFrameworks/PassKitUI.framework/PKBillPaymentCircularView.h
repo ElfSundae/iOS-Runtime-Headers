@@ -2,10 +2,13 @@
    Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
  */
 
-@interface PKBillPaymentCircularView : PKShapeView {
-    double  _endCircleAngle;
+@interface PKBillPaymentCircularView : UIView {
     UIImage * _image;
     UIImageView * _imageView;
+    UIColor * _primaryColor;
+    UIView * _primaryView;
+    UIColor * _secondaryColor;
+    UIView * _secondaryView;
     struct CGRect { 
         struct CGPoint { 
             double x; 
@@ -15,23 +18,24 @@
             double width; 
             double height; 
         } size; 
-    }  _lastBounds;
-    double  _startCircleAngle;
+    }  _shadowFrame;
 }
 
-@property (nonatomic) double endCircleAngle;
 @property (nonatomic, retain) UIImage *image;
-@property (nonatomic) double startCircleAngle;
+@property (nonatomic, copy) UIColor *primaryColor;
+@property (nonatomic, copy) UIColor *secondaryColor;
 
 - (void).cxx_destruct;
-- (double)endCircleAngle;
+- (id)_defaultSecondaryColor;
+- (void)_updateColors;
 - (id)image;
 - (id)init;
 - (void)layoutSubviews;
-- (void)setEndCircleAngle:(double)arg1;
+- (id)primaryColor;
+- (id)secondaryColor;
 - (void)setImage:(id)arg1;
-- (void)setStartCircleAngle:(double)arg1;
+- (void)setPrimaryColor:(id)arg1;
+- (void)setSecondaryColor:(id)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
-- (double)startCircleAngle;
 
 @end

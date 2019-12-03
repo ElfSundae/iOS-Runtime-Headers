@@ -7,6 +7,7 @@
 
 + (NSString *)cloudConfigSkipKey;
 
+- (id)init;
 - (void)setDelegate:(id <BFFFlowItemDelegate>)arg1;
 
 @optional
@@ -28,6 +29,5 @@
 - (void)startFlowItem:(bool)arg1;
 - (void)startOver;
 - (UIViewController *)viewController;
-- (void)willDisplayStartOver;
 
 @end

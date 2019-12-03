@@ -52,6 +52,7 @@
 
 + (id)styleWithResources:(id)arg1;
 
+- (void).cxx_destruct;
 - (id)alignmentInfo;
 - (unsigned long long)alignmentInfoIndex;
 - (id)borders;
@@ -59,7 +60,6 @@
 - (id)contentFormat;
 - (unsigned long long)contentFormatId;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)fill;
 - (unsigned long long)fillIndex;

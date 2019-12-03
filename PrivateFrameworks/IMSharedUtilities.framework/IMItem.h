@@ -19,6 +19,7 @@
     long long  _messageID;
     NSString * _parentChatID;
     NSString * _personCentric;
+    NSString * _replyToGUID;
     NSString * _roomName;
     NSDictionary * _senderInfo;
     NSString * _service;
@@ -51,6 +52,7 @@
 @property (nonatomic, copy) NSString *parentChatID;
 @property (nonatomic, retain) NSString *personCentric;
 @property (nonatomic, retain) NSString *personCentricID;
+@property (nonatomic, copy) NSString *replyToGUID;
 @property (nonatomic, retain) NSString *roomName;
 @property (nonatomic, retain) NSString *sender;
 @property (nonatomic, retain) NSDictionary *senderInfo;
@@ -67,6 +69,7 @@
 
 + (Class)classForIMItemType:(long long)arg1;
 + (Class)classForMessageItemDictionary:(id)arg1;
++ (id)stringGUID;
 + (bool)supportsSecureCoding;
 
 - (void)_setMessageID:(long long)arg1;
@@ -115,6 +118,7 @@
 - (id)personCentric;
 - (id)personCentricID;
 - (id)pluginSessionGUID;
+- (id)replyToGUID;
 - (id)roomName;
 - (id)sender;
 - (id)senderInfo;
@@ -135,6 +139,7 @@
 - (void)setParentChatID:(id)arg1;
 - (void)setPersonCentric:(id)arg1;
 - (void)setPersonCentricID:(id)arg1;
+- (void)setReplyToGUID:(id)arg1;
 - (void)setRoomName:(id)arg1;
 - (void)setSender:(id)arg1;
 - (void)setSenderInfo:(id)arg1;
@@ -153,6 +158,7 @@
 - (id)time;
 - (long long)type;
 - (id)unformattedID;
+- (bool)unsentIsFromMeItem;
 
 // Image: /System/Library/PrivateFrameworks/IMCore.framework/IMCore
 

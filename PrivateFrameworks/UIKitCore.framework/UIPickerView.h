@@ -43,7 +43,6 @@
     UIView * _topFrame;
     UIImageView * _topGradient;
     UIView * _topLineView;
-    bool  _usesModernStyle;
 }
 
 @property (setter=_setMagnifierEnabled:, nonatomic) bool _magnifierEnabled;
@@ -62,7 +61,6 @@
 @property (getter=_textColor, setter=_setTextColor:, nonatomic, retain) UIColor *textColor;
 @property (getter=_textShadowColor, setter=_setTextShadowColor:, nonatomic, retain) UIColor *textShadowColor;
 @property (getter=_usesDynamicRowHeight, setter=_setUsesDynamicRowHeight:) bool usesDynamicRowHeight;
-@property (getter=_usesModernStyle, setter=_setUsesModernStyle:) bool usesModernStyle;
 
 // Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 
@@ -74,9 +72,7 @@
 + (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1 forTraits:(id)arg2;
 
 - (void).cxx_destruct;
-- (void)_UIAppearance_setMagnifierLineColor:(id)arg1;
-- (void)_UIAppearance_setTextColor:(id)arg1;
-- (void)__scalarStatisticsForUserValueChangedEvent:(void *)arg1; // needs 1 arg types, found 5: short, /* Warning: Unrecognized filer type: '"' using 'void*' */ void*, char *, short, /* Warning: Unrecognized filer type: ',' using 'void*' */ void*
+- (void)__scalarStatisticsForUserValueChangedEvent;
 - (void)_addMagnifierLinesForRowHeight:(double)arg1;
 - (bool)_canHostViewControllerContentScrollView;
 - (void)_completeCurrentTest;
@@ -131,8 +127,6 @@
 - (void)_setTextShadowColor:(id)arg1;
 - (void)_setUsesCheckedSelection:(bool)arg1;
 - (void)_setUsesDynamicRowHeight:(bool)arg1;
-- (void)_setUsesModernStyle:(bool)arg1;
-- (bool)_shouldDrawWithModernStyle;
 - (struct CGSize { double x1; double x2; })_sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (bool)_soundsEnabled;
 - (double)_tableRowHeight;
@@ -143,7 +137,6 @@
 - (bool)_usesCheckSelection;
 - (bool)_usesCheckedSelection;
 - (bool)_usesDynamicRowHeight;
-- (bool)_usesModernStyle;
 - (double)_wheelShift;
 - (void)_willPlayClickSound;
 - (bool)allowsMultipleSelection;

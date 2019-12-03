@@ -11,13 +11,14 @@
 @property (nonatomic, readonly) bool failed;
 @property (getter=isFromMe, nonatomic, readonly) bool fromMe;
 @property (nonatomic, readonly) Class impactBalloonViewClass;
+@property (nonatomic, readonly) bool isBlackholed;
 @property (nonatomic, readonly) IMHandle *sender;
 @property (nonatomic, readonly) bool shouldCacheSize;
 @property (nonatomic, readonly) BOOL tailShape;
 @property (nonatomic, readonly) NSDate *time;
 
 - (unsigned long long)balloonCorners;
-- (struct CKBalloonDescriptor_t { BOOL x1; BOOL x2; BOOL x3; BOOL x4; unsigned long long x5; BOOL x6; bool x7; bool x8; bool x9; })balloonDescriptor;
+- (struct CKBalloonDescriptor_t { BOOL x1; BOOL x2; BOOL x3; BOOL x4; unsigned long long x5; BOOL x6; long long x7; long long x8; bool x9; bool x10; bool x11; })balloonDescriptor;
 - (BOOL)balloonOrientation;
 - (BOOL)balloonShape;
 - (Class)balloonViewClass;
@@ -30,6 +31,7 @@
 - (bool)displayDuringSend;
 - (bool)failed;
 - (Class)impactBalloonViewClass;
+- (bool)isBlackholed;
 - (bool)isEditable;
 - (bool)isFromMe;
 - (struct CGSize { double x1; double x2; })loadSizeThatFits:(struct CGSize { double x1; double x2; })arg1 textAlignmentInsets:(out struct UIEdgeInsets { double x1; double x2; double x3; double x4; }*)arg2;

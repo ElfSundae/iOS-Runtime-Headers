@@ -8,7 +8,7 @@
     NSUUID * _homeUUID;
     HMFTimer * _multiReadCoalesceTimer;
     NSMutableArray * _pendingReadRequests;
-    HMDCentralMessageDispatcher * _remoteDispatcher;
+    HMDMessageDispatcher * _remoteDispatcher;
     NSObject<OS_dispatch_queue> * _workQueue;
 }
 
@@ -21,7 +21,7 @@
 @property (nonatomic, retain) HMFTimer *multiReadCoalesceTimer;
 @property (nonatomic, readonly) NSMutableArray *pendingReadRequests;
 @property (nonatomic, readonly) HMDDevice *preferredDevice;
-@property (nonatomic, readonly) HMDCentralMessageDispatcher *remoteDispatcher;
+@property (nonatomic, readonly) HMDMessageDispatcher *remoteDispatcher;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *workQueue;
 

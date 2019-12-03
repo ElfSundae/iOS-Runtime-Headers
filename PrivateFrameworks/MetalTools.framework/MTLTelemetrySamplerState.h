@@ -4,6 +4,7 @@
 
 @interface MTLTelemetrySamplerState : MTLToolsSamplerState {
     MTLSamplerDescriptor * _descriptor;
+    bool  isAniso;
 }
 
 @property (nonatomic, readonly, copy) MTLSamplerDescriptor *descriptor;

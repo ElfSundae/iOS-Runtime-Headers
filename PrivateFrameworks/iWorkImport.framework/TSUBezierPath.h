@@ -62,6 +62,7 @@
 + (id)bezierPath;
 + (id)bezierPathWithCGPath:(struct CGPath { }*)arg1;
 + (id)bezierPathWithConvexHullOfPoints:(struct CGPoint { double x1; double x2; }*)arg1 count:(unsigned long long)arg2;
++ (id)bezierPathWithDefaultsForErrorCases;
 + (id)bezierPathWithOvalInRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 + (id)bezierPathWithRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 + (id)bezierPathWithRoundedRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 cornerRadius:(double)arg2;
@@ -184,6 +185,7 @@
 - (double)curvatureAt:(double)arg1;
 - (double)curvatureAt:(double)arg1 fromElement:(long long)arg2;
 - (void)curveToPoint:(struct CGPoint { double x1; double x2; })arg1 controlPoint1:(struct CGPoint { double x1; double x2; })arg2 controlPoint2:(struct CGPoint { double x1; double x2; })arg3;
+- (void)curveToPoint:(struct CGPoint { double x1; double x2; })arg1 controlPoint:(struct CGPoint { double x1; double x2; })arg2;
 - (void)dealloc;
 - (id)description;
 - (double)distanceToPoint:(struct CGPoint { double x1; double x2; })arg1 elementIndex:(unsigned long long*)arg2 tValue:(double*)arg3 threshold:(double)arg4 findClosestMatch:(bool)arg5;
@@ -206,7 +208,7 @@
 - (bool)hasAtLeastTwoVisuallyDistinctSubregions;
 - (unsigned long long)hash;
 - (id)init;
-- (id)initWithArchive:(const struct Path { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Path_Element> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; }*)arg1;
+- (id)initWithArchive:(const struct Path { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Path_Element> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; }*)arg1;
 - (id)initWithCString:(const char *)arg1;
 - (id)intersectBezierPath:(id)arg1;
 - (bool)intersectsRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 hasFill:(bool)arg2;
@@ -240,11 +242,13 @@
 - (id)p_aliasedPathInContext:(struct CGContext { }*)arg1 viewScale:(float)arg2 effectiveStrokeWidth:(float)arg3;
 - (id)p_bezierPathByRemovingRedundantElementAndSubregionsSmallerThanThreshold:(double)arg1;
 - (id)p_copyWithPointsInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 countingSubpaths:(unsigned long long*)arg2;
+- (id)p_elementCountForSubpaths;
 - (id)p_pathBySplittingAtPointGuaranteedToBeOnPath:(struct CGPoint { double x1; double x2; })arg1 controlPointDistanceEqual:(bool)arg2 elementIndex:(long long)arg3 parametricValue:(double)arg4;
 - (id)pathByCreatingHoleInPathAtPoint:(struct CGPoint { double x1; double x2; })arg1 withDiameter:(id /* block */)arg2 andThreshold:(double)arg3 updatingPatternOffsetsBySubpath:(id)arg4;
 - (id)pathByNormalizingClosedPathToRemoveSelfIntersections;
 - (id)pathBySplittingAtPointOnPath:(struct CGPoint { double x1; double x2; })arg1 controlPointDistanceEqual:(bool)arg2;
 - (id)pathByWobblingByUpTo:(double)arg1 subdivisions:(unsigned long long)arg2;
+- (id)pathSplitAtSubpathBoundariesWithSoftElementLimit:(unsigned long long)arg1 hardElementLimit:(unsigned long long)arg2;
 - (struct CGPoint { double x1; double x2; })pointAlongPathAtPercentage:(double)arg1;
 - (struct CGPoint { double x1; double x2; })pointAlongPathAtPercentage:(double)arg1 withFlattenedPath:(id)arg2 andLength:(double*)arg3 atStartIndex:(unsigned long long*)arg4;
 - (struct CGPoint { double x1; double x2; })pointAt:(double)arg1;
@@ -254,11 +258,12 @@
 - (void)recursiveSubdivideOntoPath:(id)arg1 withScaling:(struct { double x1; double x2; })arg2 inElementRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3 into:(id)arg4;
 - (void)recursiveSubdivideOntoPath:(id)arg1 withScaling:(struct { double x1; double x2; })arg2 into:(id)arg3;
 - (void)relativeCurveToPoint:(struct CGPoint { double x1; double x2; })arg1 controlPoint1:(struct CGPoint { double x1; double x2; })arg2 controlPoint2:(struct CGPoint { double x1; double x2; })arg3;
+- (void)relativeCurveToPoint:(struct CGPoint { double x1; double x2; })arg1 controlPoint:(struct CGPoint { double x1; double x2; })arg2;
 - (void)relativeLineToPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)relativeMoveToPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)removeAllPoints;
 - (struct CGPoint { double x1; double x2; })roundPoint:(struct CGPoint { double x1; double x2; })arg1 inContext:(struct CGContext { }*)arg2 strokeWidth:(int)arg3;
-- (void)saveToArchive:(struct Path { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Path_Element> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; }*)arg1;
+- (void)saveToArchive:(struct Path { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Path_Element> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; }*)arg1;
 - (void)setAssociatedPoints:(struct CGPoint { double x1; double x2; }*)arg1 atIndex:(long long)arg2;
 - (void)setFlatness:(double)arg1;
 - (void)setLineCapStyle:(unsigned long long)arg1;

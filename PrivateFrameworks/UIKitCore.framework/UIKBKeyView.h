@@ -5,9 +5,9 @@
 @interface UIKBKeyView : UIView <UIKBCacheableView> {
     struct CGColor { } * _activeBackgroundColor;
     id  _activeCompositingFilter;
-    int  _cachedAnchorCorner;
+    unsigned long long  _cachedAnchorCorner;
+    double  _cachedBackgroundOpacity;
     bool  _cachedControlKeyRenderingPreference;
-    double  _cachedOpacity;
     long long  _cachedSelector;
     unsigned long long  _cachedShiftState;
     NSString * _cachedTraitsHashString;
@@ -37,7 +37,7 @@
 @property (nonatomic, readonly) long long cacheDeferPriority;
 @property (nonatomic, readonly) bool cacheDeferable;
 @property (nonatomic, readonly) NSString *cacheKey;
-@property (nonatomic) int cachedAnchorCorner;
+@property (nonatomic) unsigned long long cachedAnchorCorner;
 @property (nonatomic) bool cachedControlKeyRenderingPreference;
 @property (readonly) long long cachedRenderFlags;
 @property (nonatomic) long long cachedSelector;
@@ -72,7 +72,7 @@
 - (bool)cacheDeferable;
 - (id)cacheKey;
 - (id)cacheKeysForRenderFlags:(id)arg1;
-- (int)cachedAnchorCorner;
+- (unsigned long long)cachedAnchorCorner;
 - (bool)cachedControlKeyRenderingPreference;
 - (long long)cachedRenderFlags;
 - (long long)cachedSelector;
@@ -81,6 +81,7 @@
 - (double)cachedWidth;
 - (void)changeBackgroundToActiveIfNecessary;
 - (void)changeBackgroundToEnabled;
+- (void)configureBackdropView:(id)arg1 forRenderConfig:(id)arg2;
 - (id)contentsKeyView;
 - (void)dealloc;
 - (long long)didInputSubTree:(id)arg1;
@@ -93,6 +94,7 @@
 - (id)factory;
 - (unsigned long long)focusableVariantCount;
 - (bool)hasRendered;
+- (void)hideKeyCap:(bool)arg1;
 - (long long)imageOrientationForLayer:(id)arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 keyplane:(id)arg2 key:(id)arg3;
 - (bool)keepNonPersistent;
@@ -106,7 +108,7 @@
 - (id)renderConfig;
 - (id)renderFlagsForTraits:(id)arg1;
 - (bool)requiresSublayers;
-- (void)setCachedAnchorCorner:(int)arg1;
+- (void)setCachedAnchorCorner:(unsigned long long)arg1;
 - (void)setCachedControlKeyRenderingPreference:(bool)arg1;
 - (void)setCachedSelector:(long long)arg1;
 - (void)setCachedShiftState:(unsigned long long)arg1;

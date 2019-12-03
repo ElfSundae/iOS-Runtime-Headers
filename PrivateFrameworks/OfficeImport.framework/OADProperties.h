@@ -10,8 +10,8 @@
 
 + (id)defaultProperties;
 
+- (void).cxx_destruct;
 - (void)changeParentPreservingEffectiveValues:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)fixPropertiesForChangingParentPreservingEffectiveValues:(id)arg1;
 - (void)flatten;

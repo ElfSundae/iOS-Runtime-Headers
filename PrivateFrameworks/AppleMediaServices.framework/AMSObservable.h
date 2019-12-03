@@ -51,6 +51,7 @@
 - (void)setStateLock:(id)arg1;
 - (id)stateLock;
 - (void)subscribe:(id)arg1;
+- (id)subscribeWithResultBlock:(id /* block */)arg1;
 - (void)unsubscribe:(id)arg1;
 - (void)unsubscribeAll;
 

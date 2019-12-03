@@ -14,9 +14,11 @@
     NSObject<TVPMediaItem> * _mediaItem;
     TVPMediaItemLoader * _mediaItemLoader;
     NSMapTable * _mediaSelectionToProgressMap;
+    unsigned long long  _numMediaSelectionsCompleted;
+    unsigned long long  _numMediaSelectionsThatWillReceiveDownloadProgress;
+    TVPReportingSession * _reportingSession;
     long long  _state;
     TVPStateMachine * _stateMachine;
-    AVMediaSelection * _videoMediaSelection;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -33,11 +35,13 @@
 @property (nonatomic, retain) NSObject<TVPMediaItem> *mediaItem;
 @property (nonatomic, retain) TVPMediaItemLoader *mediaItemLoader;
 @property (nonatomic, retain) NSMapTable *mediaSelectionToProgressMap;
+@property (nonatomic) unsigned long long numMediaSelectionsCompleted;
+@property (nonatomic) unsigned long long numMediaSelectionsThatWillReceiveDownloadProgress;
 @property (nonatomic, readonly) double progress;
+@property (nonatomic, retain) TVPReportingSession *reportingSession;
 @property (nonatomic) long long state;
 @property (nonatomic, retain) TVPStateMachine *stateMachine;
 @property (readonly) Class superclass;
-@property (nonatomic, retain) AVMediaSelection *videoMediaSelection;
 
 + (void)initialize;
 
@@ -64,10 +68,13 @@
 - (id)mediaItem;
 - (id)mediaItemLoader;
 - (id)mediaSelectionToProgressMap;
+- (unsigned long long)numMediaSelectionsCompleted;
+- (unsigned long long)numMediaSelectionsThatWillReceiveDownloadProgress;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (void)pause;
 - (double)progress;
 - (void)removeDelegate:(id)arg1;
+- (id)reportingSession;
 - (void)setDelegates:(id)arg1;
 - (void)setDownloadInitiationBackgroundTask:(unsigned long long)arg1;
 - (void)setDownloadIsComplete:(bool)arg1;
@@ -79,12 +86,13 @@
 - (void)setMediaItem:(id)arg1;
 - (void)setMediaItemLoader:(id)arg1;
 - (void)setMediaSelectionToProgressMap:(id)arg1;
+- (void)setNumMediaSelectionsCompleted:(unsigned long long)arg1;
+- (void)setNumMediaSelectionsThatWillReceiveDownloadProgress:(unsigned long long)arg1;
+- (void)setReportingSession:(id)arg1;
 - (void)setState:(long long)arg1;
 - (void)setStateMachine:(id)arg1;
-- (void)setVideoMediaSelection:(id)arg1;
 - (void)start;
 - (long long)state;
 - (id)stateMachine;
-- (id)videoMediaSelection;
 
 @end

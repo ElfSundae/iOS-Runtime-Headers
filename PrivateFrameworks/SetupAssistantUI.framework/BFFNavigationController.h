@@ -2,16 +2,24 @@
    Image: /System/Library/PrivateFrameworks/SetupAssistantUI.framework/SetupAssistantUI
  */
 
-@interface BFFNavigationController : PSRootController {
+@interface BFFNavigationController : PSRootController <UINavigationControllerDelegate> {
     bool  _animating;
     NSMutableDictionary * _appearanceHandlers;
     UIColor * _backgroundColor;
+    bool  _inBackground;
     NSMutableArray * _observers;
     long long  _pendingShowOperation;
+    bool  _pushWithoutDeferringTransitionsWhileInBackground;
 }
 
 @property (getter=isAnimating, nonatomic, readonly) bool animating;
 @property (nonatomic, retain) UIColor *backgroundColor;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (getter=isInBackground, nonatomic) bool inBackground;
+@property (nonatomic) bool pushWithoutDeferringTransitionsWhileInBackground;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (bool)_canShowTextServices;
@@ -21,6 +29,8 @@
 - (id)backgroundColor;
 - (id)init;
 - (bool)isAnimating;
+- (bool)isInBackground;
+- (id)navigationController:(id)arg1 animationControllerForOperation:(long long)arg2 fromViewController:(id)arg3 toViewController:(id)arg4;
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(bool)arg3;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(bool)arg3;
 - (id)popToRootViewControllerAnimated:(bool)arg1;
@@ -30,9 +40,13 @@
 - (long long)preferredStatusBarStyle;
 - (void)pushViewController:(id)arg1 animated:(bool)arg2;
 - (void)pushViewController:(id)arg1 completion:(id /* block */)arg2;
+- (bool)pushWithoutDeferringTransitionsWhileInBackground;
 - (void)removeDelegateObserver:(id)arg1;
+- (bool)respondsToSelector:(SEL)arg1;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setInBackground:(bool)arg1;
+- (void)setPushWithoutDeferringTransitionsWhileInBackground:(bool)arg1;
 - (void)setViewControllers:(id)arg1 animated:(bool)arg2;
 - (unsigned long long)supportedInterfaceOrientations;
 

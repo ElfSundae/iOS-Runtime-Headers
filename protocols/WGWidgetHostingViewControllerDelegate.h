@@ -6,12 +6,15 @@
 @required
 
 - (struct CGSize { double x1; double x2; })maxSizeForWidget:(WGWidgetHostingViewController *)arg1 forDisplayMode:(long long)arg2;
+- (void)registerWidgetForRefreshEvents:(WGWidgetHostingViewController *)arg1;
+- (void)unregisterWidgetForRefreshEvents:(WGWidgetHostingViewController *)arg1;
 
 @optional
 
 - (long long)activeLayoutModeForWidget:(WGWidgetHostingViewController *)arg1;
 - (void)brokenViewDidAppearForWidget:(WGWidgetHostingViewController *)arg1;
 - (void)contentAvailabilityDidChangeForWidget:(WGWidgetHostingViewController *)arg1;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })layoutMarginForWidget:(WGWidgetHostingViewController *)arg1;
 - (bool)managingContainerIsVisibleForWidget:(WGWidgetHostingViewController *)arg1;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })marginInsetsForWidget:(WGWidgetHostingViewController *)arg1;
 - (void)remoteViewControllerDidConnectForWidget:(WGWidgetHostingViewController *)arg1;

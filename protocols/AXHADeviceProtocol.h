@@ -6,8 +6,10 @@
 @required
 
 - (int)availableEars;
+- (int)availableInputEars;
 - (void)connect;
 - (bool)containsPeripheralWithUUID:(NSString *)arg1;
+- (unsigned long long)deviceType;
 - (NSString *)deviceUUID;
 - (bool)didLoadBasicProperties;
 - (bool)didLoadRequiredProperties;

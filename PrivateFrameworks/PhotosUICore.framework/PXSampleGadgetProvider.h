@@ -5,11 +5,13 @@
 @interface PXSampleGadgetProvider : PXGadgetProvider {
     bool  _hasLoadedData;
     bool  _includeHorizontal;
+    double  _minimumHeight;
     NSArray * _sampleGadgets;
 }
 
 @property (nonatomic) bool hasLoadedData;
 @property (nonatomic, readonly) bool includeHorizontal;
+@property (nonatomic) double minimumHeight;
 @property (nonatomic, retain) NSArray *sampleGadgets;
 
 - (void).cxx_destruct;
@@ -18,10 +20,12 @@
 - (bool)hasLoadedData;
 - (bool)includeHorizontal;
 - (id)init;
-- (id)initWithHorizontalGadget:(bool)arg1;
+- (id)initWithMinimumHeight:(double)arg1;
 - (void)loadDataForGadgets;
+- (double)minimumHeight;
 - (id)sampleGadgets;
 - (void)setHasLoadedData:(bool)arg1;
+- (void)setMinimumHeight:(double)arg1;
 - (void)setSampleGadgets:(id)arg1;
 
 @end

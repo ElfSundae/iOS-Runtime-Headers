@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/MarkupUI.framework/MarkupUI
  */
 
-@interface MarkupViewController : UIViewController <MUContentViewControllerDelegate, UINavigationBarDelegate, UIToolbarDelegate> {
+@interface MarkupViewController : UIViewController <MUContentViewControllerDelegate, PKRulerHostingDelegate, UINavigationBarDelegate, UIToolbarDelegate> {
     NSUndoManager * _akUndoManager;
     bool  _allowShakeToUndo;
     bool  _alreadyLoggedSavingForThisDocument;
@@ -54,6 +54,7 @@
     UIView * _whiteView;
 }
 
+@property (readonly) struct CGSize { double x1; double x2; } adjustedSourceImageSize;
 @property (nonatomic, retain) NSUndoManager *akUndoManager;
 @property (nonatomic) bool allEditingDisabled;
 @property (nonatomic) bool allowShakeToUndo;
@@ -126,6 +127,7 @@
 
 - (void).cxx_destruct;
 - (void)_bailFailedAnimateEnterMarkup;
+- (bool)_canShowWhileLocked;
 - (void)_cancel;
 - (void)_cleanupPlaceholderImage;
 - (void)_commonInit;
@@ -152,19 +154,23 @@
 - (void)_updateAndLoadSourceContent:(id)arg1 withArchivedModelData:(id)arg2 withCompletion:(id /* block */)arg3;
 - (void)_updateAppearanceForTraitCollection:(id)arg1;
 - (void)_updateConstraintsForBarPosition:(long long)arg1;
+- (void)_updateNavBarProperties;
 - (void)_updateundoBarButtonWithController:(id)arg1;
 - (bool)_useLegacyToolbar;
 - (bool)_writeToDataConsumer:(struct CGDataConsumer { }*)arg1 embedSourceImageAndEditModel:(bool)arg2 error:(id*)arg3;
 - (void)adjustContentInsetsForBars;
+- (struct CGSize { double x1; double x2; })adjustedSourceImageSize;
 - (id)akUndoManager;
 - (bool)allEditingDisabled;
 - (bool)allowShakeToUndo;
 - (bool)alreadyLoggedSavingForThisDocument;
 - (id)annotationController;
+- (void)annotationController:(id)arg1 detectedEditOfType:(unsigned long long)arg2;
 - (id)annotationControllerOfContentViewController:(id)arg1 willSetToolbarItems:(id)arg2;
 - (bool)annotationEditingEnabled;
 - (id)archivedModelData;
 - (id)backgroundColor;
+- (bool)canBecomeFirstResponder;
 - (bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)cancel:(id)arg1;
 - (id)cancelButton;
@@ -232,6 +238,8 @@
 - (long long)preferredStatusBarStyle;
 - (void)restoreToolModeForContentType;
 - (void)revert;
+- (bool)rulerHostWantsSharedRuler;
+- (id)rulerHostingView;
 - (void)setAkUndoManager:(id)arg1;
 - (void)setAllEditingDisabled:(bool)arg1;
 - (void)setAllowShakeToUndo:(bool)arg1;
@@ -320,6 +328,7 @@
 - (void)viewDidLoad;
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillLayoutSubviews;
+- (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
 - (id)whiteView;
 - (void)willBeginLoadingNewDocument;
 - (bool)writeToURL:(id)arg1 embeddingSourceImageAndEditModel:(bool)arg2 error:(id*)arg3;

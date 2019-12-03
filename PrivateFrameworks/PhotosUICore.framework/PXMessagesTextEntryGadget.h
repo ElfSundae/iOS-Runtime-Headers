@@ -10,9 +10,9 @@
     UITextField * _textEntryField;
 }
 
-@property (nonatomic, readonly) const struct __CFString { }*accessoryButtonEventTrackerKey;
 @property (nonatomic, readonly) NSString *accessoryButtonTitle;
 @property (nonatomic, readonly) unsigned long long accessoryButtonType;
+@property (nonatomic, readonly) Class collectionViewItemClass;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <PXGadgetDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -47,7 +47,7 @@
 - (void)setGadgetSpec:(id)arg1;
 - (void)setPriority:(long long)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
-- (void)userDidSelectAccessoryButton:(id)arg1;
+- (void)userDidSelectAccessoryButton:(struct NSObject { Class x1; }*)arg1;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
 

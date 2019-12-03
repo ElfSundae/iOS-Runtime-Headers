@@ -22,6 +22,7 @@
 @property (nonatomic, readonly) bool canPlayPhotoIris;
 @property (nonatomic, readonly) NSDate *creationDate;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic, readonly) unsigned long long deferredLogInfo;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) double duration;
 @property (getter=isFavorite, nonatomic, readonly) bool favorite;
@@ -36,6 +37,7 @@
 @property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } livePhotoDuration;
 @property (getter=isLivePhotoPlaceholder, nonatomic, readonly) bool livePhotoPlaceholder;
 @property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } livePhotoSynchronizedDisplayTime;
+@property (nonatomic, readonly) NSDate *localCreationDate;
 @property (nonatomic, readonly) NSString *localizedGeoDescription;
 @property (nonatomic, readonly) CLLocation *location;
 @property (nonatomic, readonly) unsigned long long mediaSubtypes;
@@ -62,6 +64,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSString *uniformTypeIdentifier;
 @property (nonatomic, readonly) NSString *uuid;
+@property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } videoKeyFrameSourceTime;
 
 + (bool)supportsSecureCoding;
 
@@ -71,6 +74,7 @@
 - (id)_contentQueue_suppressedTypes;
 - (id)_packageContentQueue;
 - (long long)_sendSourceFromMediaOrigin:(long long)arg1;
+- (id)_sidecarObjectForKey:(id)arg1;
 - (double)aspectRatio;
 - (id)assetAdjustments;
 - (id)browserItemPayload;
@@ -82,6 +86,7 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)creationDate;
 - (id)currentURLForType:(id)arg1;
+- (unsigned long long)deferredLogInfo;
 - (id)description;
 - (id)durableURLsSnapshot;
 - (id)durableURLsSnapshotApplyingSuppression:(bool)arg1;
@@ -104,6 +109,7 @@
 - (bool)isURLSuppressedForType:(id)arg1;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })livePhotoDuration;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })livePhotoSynchronizedDisplayTime;
+- (id)localCreationDate;
 - (id)localizedGeoDescription;
 - (id)location;
 - (long long)mediaOrigin;
@@ -130,8 +136,12 @@
 - (id)providedVideoURL;
 - (bool)representsBurst;
 - (id)reviewAssetFromPackageMetadata;
-- (id)sidecarObjectForKey:(id)arg1;
+- (id)sidecarDateForKey:(id)arg1;
+- (id)sidecarImageForKey:(id)arg1;
+- (id)sidecarNumberForKey:(id)arg1;
+- (id)sidecarPropertyListForKey:(id)arg1;
 - (id)sidecarSnapshot;
+- (struct { long long x1; int x2; unsigned int x3; long long x4; })sidecarTimeForKey:(id)arg1;
 - (id)suppressedTypesSnapshot;
 - (id)uniformTypeIdentifier;
 - (id)uuid;

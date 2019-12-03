@@ -8,6 +8,7 @@
     id  _delegate;
     bool  _didChangeStatusBarStyle;
     int  _entryViewInvisible;
+    bool  _firstItemWasInserted;
     CKSMSComposeRemoteViewController * _remoteViewController;
     CKSMSComposeQueuingRemoteViewControllerProxy * _remoteViewControllerProxy;
     bool  _safeToAdd;
@@ -17,6 +18,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) bool firstItemWasInserted;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) CKSMSComposeRemoteViewController *remoteViewController;
 @property (nonatomic, retain) CKSMSComposeQueuingRemoteViewControllerProxy *remoteViewControllerProxy;
@@ -29,11 +31,13 @@
 
 - (void).cxx_destruct;
 - (void)_addRemoteVCIfNeeded;
+- (bool)_canShowWhileLocked;
 - (bool)automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers;
 - (bool)canInsertMessage;
 - (void)dealloc;
 - (id)delegate;
 - (void)disableCameraAttachments;
+- (bool)firstItemWasInserted;
 - (void)forceCancelComposition;
 - (void)forceMMS;
 - (id)init;
@@ -41,6 +45,7 @@
 - (bool)insertAttachmentWithURL:(id)arg1 andDescription:(id)arg2;
 - (bool)insertData:(id)arg1 MIMEType:(id)arg2 exportedFilename:(id)arg3;
 - (bool)insertFilename:(id)arg1 MIMEType:(id)arg2 exportedFilename:(id)arg3 options:(id)arg4;
+- (void)insertItemForSendingAndCalculateEntryViewFrame:(id)arg1 withAlternateFilename:(id)arg2 completion:(id /* block */)arg3;
 - (bool)insertMessage:(id)arg1;
 - (bool)insertRichLinkWithURL:(id)arg1 andData:(id)arg2;
 - (id)remoteViewController;
@@ -50,20 +55,25 @@
 - (void)setContentText:(id)arg1;
 - (void)setContentURLs:(id)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setFirstItemWasInserted:(bool)arg1;
 - (void)setGameCenterModeWithPickerBlock:(id /* block */)arg1;
 - (void)setGameCenterPickedHandles:(id)arg1 playerNames:(id)arg2;
 - (void)setPendingAddresses:(id)arg1;
 - (void)setPhotoIDs:(id)arg1;
 - (void)setRemoteViewController:(id)arg1;
 - (void)setRemoteViewControllerProxy:(id)arg1;
+- (void)setShareSheetSessionID:(id)arg1;
 - (void)setText:(id)arg1 subject:(id)arg2 addresses:(id)arg3;
+- (void)setText:(id)arg1 subject:(id)arg2 addresses:(id)arg3 chatGUID:(id)arg4 groupName:(id)arg5;
 - (void)setTextEntryContentsVisible:(bool)arg1;
 - (void)setUICustomizationData:(id)arg1;
 - (void)setUTIs:(id)arg1;
 - (bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
+- (void)showInsertedItemInEntryView;
 - (void)smsComposeControllerAppeared;
 - (void)smsComposeControllerCancelled;
 - (void)smsComposeControllerDataInserted;
+- (void)smsComposeControllerEntryViewContentInserted;
 - (void)smsComposeControllerSendStartedWithText:(id)arg1;
 - (void)smsComposeControllerShouldSendMessageWithText:(id)arg1 toRecipients:(id)arg2 completion:(id /* block */)arg3;
 - (void)viewDidAppear:(bool)arg1;

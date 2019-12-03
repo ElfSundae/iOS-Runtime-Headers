@@ -3,6 +3,7 @@
  */
 
 @interface _INPBPlace : PBCodable <NSCopying, NSSecureCoding, _INPBPlace> {
+    bool  __encodeLegacyGloryData;
     struct { 
         unsigned int personalPlaceType : 1; 
     }  _has;
@@ -12,6 +13,7 @@
     _INPBString * _placeType;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) bool hasPersonalPlaceType;
@@ -26,17 +28,22 @@
 @property (readonly) Class superclass;
 
 + (Class)placeDescriptorsType;
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (int)StringAsPersonalPlaceType:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (void)addPlaceDescriptors:(id)arg1;
 - (void)clearPlaceDescriptors;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasPersonalPlaceType;
 - (bool)hasPlaceSubType;
 - (bool)hasPlaceType;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (int)personalPlaceType;
 - (id)personalPlaceTypeAsString:(int)arg1;

@@ -5,6 +5,7 @@
 
 @required
 
+- (void)attemptToEscrowPreRecord:(void *)arg1 context:(void *)arg2 completion:(void *)arg3; // needs 3 arg types, found 9: NSString *, CDPContext *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, NSError *, void*
 - (void)clearFollowUpWithContext:(void *)arg1 completion:(void *)arg2; // needs 2 arg types, found 8: CDPFollowUpContext *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, NSError *, void*
 - (void)deleteRecoveryKeyWithContext:(void *)arg1 uiProvider:(void *)arg2 completion:(void *)arg3; // needs 3 arg types, found 9: CDPContext *, <CDPStateUIProviderInternal> *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, NSError *, void*
 - (void)finishOfflineLocalSecretChangeWithContext:(void *)arg1 uiProvider:(void *)arg2 completion:(void *)arg3; // needs 3 arg types, found 9: CDPContext *, <CDPStateUIProviderInternal> *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, NSError *, void*

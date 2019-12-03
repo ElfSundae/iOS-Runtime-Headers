@@ -13,11 +13,13 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <PXGadgetProviderDelegate> *delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) <PXGadgetTransition> *gadgetTransition;
 @property (copy) NSArray *gadgets;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool invalidGadgets;
 @property (nonatomic) bool isPerformingChanges;
 @property (nonatomic) <PXGadgetDelegate> *nextGadgetResponder;
+@property (nonatomic, readonly) PXGadgetNavigationHelper *rootNavigationHelper;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) bool supportsDynamicRanking;
 
@@ -30,10 +32,10 @@
 - (void)gadget:(id)arg1 animateChanges:(id /* block */)arg2;
 - (void)gadget:(id)arg1 didChange:(unsigned long long)arg2;
 - (bool)gadget:(id)arg1 transitionToViewController:(struct NSObject { Class x1; }*)arg2 animated:(bool)arg3 completion:(id /* block */)arg4;
+- (id)gadgetTransition;
 - (struct NSObject { Class x1; }*)gadgetViewControllerHostingGadget:(id)arg1;
 - (id)gadgets;
 - (void)generateGadgets;
-- (id)gridPresentation;
 - (id)init;
 - (void)insertGadgets:(id)arg1 atIndexes:(id)arg2;
 - (bool)invalidGadgets;
@@ -41,13 +43,12 @@
 - (void)loadDataForGadgets;
 - (void)loadDataForPriority;
 - (id)nextGadgetResponder;
-- (id)oneUpPresentation;
 - (void)performChanges:(id /* block */)arg1;
 - (void)presentGadgetViewController:(struct NSObject { Class x1; }*)arg1 animated:(bool)arg2 completion:(id /* block */)arg3;
 - (void)removeAllGadgets;
 - (void)removeGadgets:(id)arg1;
 - (void)removeGadgetsAtIndexes:(id)arg1;
-- (bool)scrollGadgetToVisible:(id)arg1 animated:(bool)arg2;
+- (id)rootNavigationHelper;
 - (void)setDelegate:(id)arg1;
 - (void)setGadgets:(id)arg1;
 - (void)setInvalidGadgets:(bool)arg1;

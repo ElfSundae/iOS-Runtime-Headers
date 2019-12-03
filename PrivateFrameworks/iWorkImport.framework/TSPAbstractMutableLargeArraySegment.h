@@ -30,7 +30,7 @@
 - (id)bisectAtIndex:(unsigned long long)arg1;
 - (void)commonInit;
 - (unsigned long long)count;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (unsigned int)delayedArchivingPriority;
 - (id)delegate;
 - (unsigned long long)estimatedByteSize;
@@ -40,7 +40,7 @@
 - (id)initWithContext:(id)arg1;
 - (id)initWithDelegate:(id)arg1 shouldDelayArchiving:(bool)arg2 context:(id)arg3;
 - (void)insertObject:(id)arg1 atIndex:(unsigned long long)arg2;
-- (void)loadFromLargeArraySegmentMessage:(const struct LargeArraySegment { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct ArenaStringPtr { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > {} *x_5_1_1; } x5; bool x6; unsigned int x7; }*)arg1 unarchiver:(id)arg2;
+- (void)loadFromLargeArraySegmentMessage:(const struct LargeArraySegment { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct ArenaStringPtr { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > {} *x_5_1_1; } x5; bool x6; unsigned int x7; }*)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)loadStoreOutsideObjectArchiveFromUnarchiver:(id)arg1;
 - (id)mutableArrayWrapper;
@@ -50,7 +50,7 @@
 - (void)removeObjectAtIndex:(unsigned long long)arg1;
 - (void)replaceObjectAtIndex:(unsigned long long)arg1 withObject:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (void)saveToLargeArraySegmentMessage:(struct LargeArraySegment { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct ArenaStringPtr { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > {} *x_5_1_1; } x5; bool x6; unsigned int x7; }*)arg1 archiver:(id)arg2;
+- (void)saveToLargeArraySegmentMessage:(struct LargeArraySegment { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct ArenaStringPtr { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > {} *x_5_1_1; } x5; bool x6; unsigned int x7; }*)arg1 archiver:(id)arg2;
 - (void)setDelayedArchivingPriority:(unsigned int)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setEstimatedByteSize:(unsigned long long)arg1;

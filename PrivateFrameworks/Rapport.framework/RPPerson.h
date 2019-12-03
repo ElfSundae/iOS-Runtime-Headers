@@ -22,7 +22,7 @@
 @property (nonatomic, copy) NSString *identifier;
 @property (nonatomic, readonly, copy) NSString *name;
 @property (nonatomic, readonly) int proximity;
-@property (readonly) CURangingMeasurement *relativeLocation;
+@property (retain) CURangingMeasurement *relativeLocation;
 
 + (bool)supportsSecureCoding;
 
@@ -44,6 +44,7 @@
 - (unsigned int)removeRPDevice:(id)arg1;
 - (void)setDeviceDict:(struct NSMutableDictionary { Class x1; }*)arg1;
 - (void)setIdentifier:(id)arg1;
+- (void)setRelativeLocation:(id)arg1;
 - (unsigned int)updateWithRPDevice:(id)arg1;
 
 @end

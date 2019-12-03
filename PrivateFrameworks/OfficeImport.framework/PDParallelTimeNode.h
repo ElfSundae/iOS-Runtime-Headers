@@ -8,8 +8,8 @@
 
 @property (retain) PDParallelTimeNodeBuildInfo *buildInfo;
 
+- (void).cxx_destruct;
 - (id)buildInfo;
-- (void)dealloc;
 - (void)setBuildInfo:(id)arg1;
 
 @end

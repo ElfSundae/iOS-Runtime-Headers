@@ -16,7 +16,7 @@
 - (NSArray *)icons;
 - (NSArray *)interfaceActions;
 - (bool)isDateAllDay;
-- (unsigned long long)messageNumberOfLines;
+- (bool)isNumberOfLinesInfinite;
 - (NSArray *)overriddenActions;
 - (NSString *)primarySubtitleText;
 - (NSString *)primaryText;

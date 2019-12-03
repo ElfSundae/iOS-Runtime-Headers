@@ -8,8 +8,8 @@
     int  mType;
 }
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (int)direction;
 - (unsigned long long)hash;

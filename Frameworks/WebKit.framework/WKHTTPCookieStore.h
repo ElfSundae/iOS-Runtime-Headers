@@ -5,7 +5,7 @@
 @interface WKHTTPCookieStore : NSObject <WKObject> {
     struct ObjectStorage<API::HTTPCookieStore> { 
         struct type { 
-            unsigned char __lx[80]; 
+            unsigned char __lx[88]; 
         } data; 
     }  _cookieStore;
     struct HashMap<const void *, std::__1::unique_ptr<WKHTTPCookieStoreObserver, std::__1::default_delete<WKHTTPCookieStoreObserver> >, WTF::PtrHash<const void *>, WTF::HashTraits<const void *>, WTF::HashTraits<std::__1::unique_ptr<WKHTTPCookieStoreObserver, std::__1::default_delete<WKHTTPCookieStoreObserver> > > > { 
@@ -19,7 +19,7 @@
     }  _observers;
 }
 
-@property (readonly) /* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*_apiObject;
+@property (readonly) struct Object { int (**x1)(); id x2; }*_apiObject;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -27,7 +27,7 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (/* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*)_apiObject;
+- (struct Object { int (**x1)(); id x2; }*)_apiObject;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (void)deleteCookie:(id)arg1 completionHandler:(id /* block */)arg2;

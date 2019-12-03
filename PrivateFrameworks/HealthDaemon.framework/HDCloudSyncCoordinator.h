@@ -2,14 +2,18 @@
    Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon
  */
 
-@interface HDCloudSyncCoordinator : NSObject <HDDiagnosticObject, HDHealthDaemonReadyObserver, HDPeriodicActivityDelegate> {
+@interface HDCloudSyncCoordinator : NSObject <HDDatabaseJournalMergeObserver, HDDiagnosticObject, HDHealthDaemonReadyObserver, HDPeriodicActivityDelegate> {
     ACAccountStore * _accountStore;
     HDAsynchronousTaskTree * _activeTaskGroup;
     NSProgress * _activeTaskProgress;
+    APSConnection * _apsConnection;
+    bool  _cloudSyncEnabled;
+    bool  _cloudSyncValueLoaded;
     HDDaemon * _daemon;
-    bool  _hasiCloudAccount;
+    bool  _hasRestoreCompleted;
     NSString * _latestSyncEndLog;
     NSString * _latestSyncStartLog;
+    HKObserverSet * _observers;
     NSMutableArray * _pendingTaskGroups;
     NSMutableArray * _pendingTasksProgress;
     HDPeriodicActivity * _periodicActivity;
@@ -19,62 +23,81 @@
     NSDate * _queue_lastSuccessfulPullDate;
     NSDate * _queue_lastSuccessfulPushDate;
     bool  _queue_syncInProgress;
-    NSMutableDictionary * _waitForSyncObservations;
+    HDProfile * _unitTest_primaryProfileOverride;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) HDPeriodicActivity *periodicActivity;
+@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *queue;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (bool)_canPerformCloudSyncWithError:(id*)arg1;
-- (void)_checkiCloudAccountStatus;
-- (void)_considerMigratingHealthAccountDataclassState;
 - (id)_fetchDescriptionForProfile:(id)arg1 options:(unsigned long long)arg2 reason:(long long)arg3 taskTree:(id)arg4 resultHandler:(id /* block */)arg5;
 - (id)_lastLongTimeWithoutSuccessfulCloudSyncReportDateKeyWithError:(id*)arg1;
-- (void)_mergeCloudSyncJournalsForProfile:(id)arg1 progress:(id)arg2 taskTree:(id)arg3;
-- (void)_mergeCloudSyncJournalsWithTaskTree:(id)arg1 progress:(id)arg2;
 - (void)_persistPeriodicSyncError:(id)arg1;
-- (void)_prepareAllProfilesForSyncWithCompletion:(id /* block */)arg1;
-- (void)_queue_addCloudSyncProgressCompletion:(id /* block */)arg1;
+- (void)_prepareAllProfilesForSync;
+- (id)_primaryProfile;
+- (bool)_queue_canPerformCloudSyncWithError:(id*)arg1;
 - (void)_queue_checkLastSyncDate;
-- (long long)_queue_cloudSyncWaitStatusWithError:(id*)arg1;
 - (id)_queue_disableAndDeleteCloudSyncDataWithCompletion:(id /* block */)arg1;
+- (void)_queue_disableCloudSyncSupport;
+- (void)_queue_enableCloudSyncSupport;
 - (id)_queue_fetchCloudDescriptionWithOptions:(unsigned long long)arg1 reason:(long long)arg2 completion:(id /* block */)arg3;
 - (void)_queue_finishCloudSyncTaskProgressWithResult:(long long)arg1 error:(id)arg2;
+- (void)_queue_generateRestoreEventMergeComplete;
 - (id)_queue_getPersistedAccountInfo;
 - (bool)_queue_hasTooManyPendingTaskGroupsWithError:(id*)arg1;
+- (bool)_queue_isDeviceInManateeUnavailableCFUState;
 - (id)_queue_resetAllProfilesWithOptions:(unsigned long long)arg1 reason:(long long)arg2 completion:(id /* block */)arg3;
-- (bool)_queue_setWaitTimeoutDateIfNecessaryWithError:(id*)arg1;
+- (void)_queue_setStartDateForRestoreEventSyncComplete;
+- (void)_queue_setupCloudSyncSupportIfRequired;
+- (void)_queue_setupPeriodicActivity;
 - (void)_queue_startNextTaskGroup;
-- (id)_queue_syncAllProfilesWithOptions:(unsigned long long)arg1 reason:(long long)arg2 completion:(id /* block */)arg3;
-- (void)_queue_triggerSyncForiCloudLogin;
-- (id)_queue_waitOnHealthCloudSyncWithUUID:(id)arg1 startHandler:(id /* block */)arg2 completion:(id /* block */)arg3;
+- (id)_queue_syncProfilesWithIdentifiers:(id)arg1 withOptions:(unsigned long long)arg2 reason:(long long)arg3 completion:(id /* block */)arg4;
+- (void)_queue_triggerSyncForAccountChange;
 - (void)_resetPersistedPeriodicSyncErrors;
 - (id)_resetProfile:(id)arg1 options:(unsigned long long)arg2 reason:(long long)arg3 taskTree:(id)arg4;
-- (void)_respondToACAccountStoreDidChange;
 - (void)_setHealthAccountDataclassEnabled:(bool)arg1 completion:(id /* block */)arg2;
-- (void)_setupPeriodicActivity;
+- (void)_setupCloudSyncSupportIfRequired;
 - (bool)_shouldPerformLastSyncDateCheckInternalSetting;
 - (id)_syncProfile:(id)arg1 options:(unsigned long long)arg2 reason:(long long)arg3 taskTree:(id)arg4;
 - (bool)_unitTest_shouldSyncProfile:(id)arg1;
 - (void)_updateAggdKeysForPeriodicSyncError:(id)arg1;
 - (void)_updateCachedLastSyncDatesWithCompletion:(id /* block */)arg1;
-- (bool)createShareWithRecipient:(id)arg1 sampleTypes:(id)arg2 maxSampleAge:(id)arg3 profile:(id)arg4 error:(id*)arg5;
+- (void)accountConfigurationDidChangeWithCompletion:(id /* block */)arg1;
+- (id)activeTaskProgress;
+- (void)addCloudSyncProgressCompletion:(id /* block */)arg1;
+- (void)addObserver:(id)arg1 queue:(id)arg2;
+- (bool)canPerformCloudSyncWithError:(id*)arg1;
 - (void)daemonReady:(id)arg1;
+- (void)databaseJournalMergeDidCompleteForProfile:(id)arg1;
+- (void)dealloc;
 - (id)diagnosticDescription;
 - (id)disableAndDeleteAllSyncDataWithCompletion:(id /* block */)arg1;
 - (void)disableSyncLocallyWithCompletion:(id /* block */)arg1;
+- (void)enableSyncLocallyWithCompletion:(id /* block */)arg1;
 - (id)fetchCloudDescriptionWithOptions:(unsigned long long)arg1 reason:(long long)arg2 completion:(id /* block */)arg3;
 - (id)fetchCloudSyncProgressWithCompletion:(id /* block */)arg1;
 - (void)fetchSyncStatusWithCompletion:(id /* block */)arg1;
+- (id)hasErrorRequiringUserActionOnCloudSyncTaskTree:(id)arg1;
 - (id)initWithDaemon:(id)arg1;
+- (bool)isDeviceInManateeUnavailableCFUState;
+- (id)lastSuccessfulPullDate;
+- (id)lastSuccessfulPushDate;
 - (void)performPeriodicActivity:(id)arg1 completion:(id /* block */)arg2;
+- (id)periodicActivity;
 - (void)periodicActivity:(id)arg1 configureXPCActivityCriteria:(id)arg2;
+- (bool)persistErrorRequiringUserActionOnCloudSync:(id)arg1;
+- (bool)persistRestoreCompletionDate:(id)arg1 withError:(id*)arg2;
+- (id)queue;
+- (id)readErrorRequiringUserActionOnCloudSyncError:(id*)arg1;
+- (id)readRestoreCompletionDateWithError:(id*)arg1;
+- (void)removeObserver:(id)arg1;
 - (id)resetAllProfilesWithOptions:(unsigned long long)arg1 reason:(long long)arg2 completion:(id /* block */)arg3;
 - (id)syncAllProfilesWithOptions:(unsigned long long)arg1 reason:(long long)arg2 completion:(id /* block */)arg3;
 - (void)unitTest_performPeriodicSyncWithCompletion:(id /* block */)arg1;
-- (id)waitOnHealthCloudSyncWithUUID:(id)arg1 startHandler:(id /* block */)arg2 completion:(id /* block */)arg3;
+- (void)unitTest_setPrimaryProfileOverride:(id)arg1;
 
 @end

@@ -2,12 +2,12 @@
    Image: /System/Library/PrivateFrameworks/MediaControls.framework/MediaControls
  */
 
-@interface MRPlatterViewController : UIViewController <FBSDisplayLayoutObserver, MPAVRoutingViewControllerDelegate, MPAVRoutingViewControllerThemeDelegate, MediaControlsActionsDelegate, MediaControlsCollectionItemViewController, MediaControlsEndpointControllerDelegate, MediaControlsMasterVolumeSliderDelegate, MediaControlsPanelViewControllerDelegate> {
+@interface MRPlatterViewController : UIViewController <MPAVRoutingViewControllerDelegate, MPAVRoutingViewControllerThemeDelegate, MTVisualStylingRequiring, MediaControlsActionsDelegate, MediaControlsCollectionItemViewController, MediaControlsEndpointControllerDelegate, MediaControlsMasterVolumeSliderDelegate, MediaControlsPanelViewControllerDelegate, _MCStateDumpPropertyListTransformable> {
     double  __continuousCornerRadius;
     bool  _allowsNowPlayingAppLaunch;
     MPArtworkCatalog * _artworkCatalog;
+    MSVTimer * _artworkTimer;
     UIView * _backgroundView;
-    UIView * _bottomDividerView;
     UIView * _contentView;
     <MRPlatterViewControllerDelegate> * _delegate;
     NSArray * _displayElements;
@@ -28,6 +28,8 @@
     MediaControlsHeaderView * _nowPlayingHeaderView;
     bool  _onScreen;
     MediaControlsParentContainerView * _parentContainerView;
+    NSString * _placeholderDeviceIdentifier;
+    NSString * _placeholderString;
     MPAVEndpointRoute * _route;
     NSString * _routeUID;
     MediaControlsRoutingCornerView * _routingCornerView;
@@ -36,22 +38,24 @@
     NSMutableArray * _secondaryStringComponents;
     bool  _selected;
     long long  _selectedMode;
+    SFShareAudioViewController * _shareAudioViewController;
+    unsigned long long  _stateHandle;
     long long  _style;
     unsigned long long  _supportedModes;
-    UIView * _topDividerView;
     bool  _transitioning;
     MediaControlsTransitioningDelegate * _transitioningDelegate;
-    MTVibrantStylingProvider * _vibrantStylingProvider;
     MRMediaControlsVideoPickerFooterView * _videoPickerFooterView;
     MRMediaControlsVideoPickerHeaderView * _videoPickerHeaderView;
+    MTVisualStylingProvider * _visualStylingProvider;
     MediaControlsVolumeContainerView * _volumeContainerView;
+    id  _volumeControlAssertion;
 }
 
 @property (setter=_setContinuousCornerRadius:, nonatomic) double _continuousCornerRadius;
 @property (nonatomic) bool allowsNowPlayingAppLaunch;
 @property (nonatomic, retain) MPArtworkCatalog *artworkCatalog;
+@property (nonatomic, retain) MSVTimer *artworkTimer;
 @property (nonatomic, retain) UIView *backgroundView;
-@property (nonatomic, retain) UIView *bottomDividerView;
 @property (nonatomic, readonly) UIView *contentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <MRPlatterViewControllerDelegate> *delegate;
@@ -75,6 +79,9 @@
 @property (nonatomic, retain) MediaControlsHeaderView *nowPlayingHeaderView;
 @property (getter=isOnScreen, nonatomic) bool onScreen;
 @property (nonatomic, retain) MediaControlsParentContainerView *parentContainerView;
+@property (nonatomic, retain) NSString *placeholderDeviceIdentifier;
+@property (nonatomic, retain) NSString *placeholderString;
+@property (nonatomic, readonly, copy) NSArray *requiredVisualStyleCategories;
 @property (nonatomic, retain) MPAVEndpointRoute *route;
 @property (nonatomic, readonly) NSString *routeName;
 @property (nonatomic, readonly) NSString *routeUID;
@@ -84,22 +91,26 @@
 @property (nonatomic, retain) NSMutableArray *secondaryStringComponents;
 @property (getter=isSelected, nonatomic) bool selected;
 @property (nonatomic) long long selectedMode;
+@property (nonatomic, retain) SFShareAudioViewController *shareAudioViewController;
 @property (nonatomic, readonly) bool shouldDisplayPlatter;
 @property (nonatomic) long long style;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long supportedModes;
-@property (nonatomic, retain) UIView *topDividerView;
 @property (getter=isTransitioning, nonatomic) bool transitioning;
 @property (nonatomic, retain) MediaControlsTransitioningDelegate *transitioningDelegate;
-@property (nonatomic, retain) MTVibrantStylingProvider *vibrantStylingProvider;
 @property (nonatomic, retain) MRMediaControlsVideoPickerFooterView *videoPickerFooterView;
 @property (nonatomic, retain) MRMediaControlsVideoPickerHeaderView *videoPickerHeaderView;
 @property (nonatomic, retain) MediaControlsVolumeContainerView *volumeContainerView;
+@property (nonatomic, retain) id volumeControlAssertion;
 
 + (id)coverSheetPlatterViewController;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
+- (bool)_canToggleRoutingPicker;
 - (double)_continuousCornerRadius;
+- (void)_dismissShareAudioViewController;
+- (bool)_isExpanded;
 - (void)_platterViewControllerReceivedInteraction:(id)arg1;
 - (void)_presentRoutingViewControllerFromCoverSheet;
 - (void)_prewarmTVRemoteIfNeeded;
@@ -108,11 +119,15 @@
 - (void)_setContinuousCornerRadius:(double)arg1;
 - (void)_setRoutingPickerVisible:(bool)arg1 animated:(bool)arg2;
 - (bool)_shouldUseViewServiceToPresentTVRemote;
+- (void)_showPlaceholderArtwork;
+- (void)_showShareAudioViewController;
+- (id)_stateDumpObject;
 - (id)_tvAirplayIdentifier;
 - (id)_tvMediaRemoteIdentifier;
 - (void)_updateConfiguration;
-- (void)_updateControlCenterMetadata:(id)arg1;
+- (void)_updateControlCenterMetadata:(id)arg1 sectionMetadata:(id)arg2;
 - (void)_updateExplicitTreatmentString;
+- (void)_updateHardwareVolumeButtons;
 - (void)_updateHeaderUI;
 - (void)_updateOnScreenForStyle:(long long)arg1;
 - (void)_updatePlaceholderArtwork;
@@ -123,8 +138,8 @@
 - (void)_updateStyle;
 - (bool)allowsNowPlayingAppLaunch;
 - (id)artworkCatalog;
+- (id)artworkTimer;
 - (id)backgroundView;
-- (id)bottomDividerView;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })contentInsetsForRoutingViewController:(id)arg1;
 - (id)contentView;
 - (void)dealloc;
@@ -160,14 +175,18 @@
 - (id)languageOptionsViewController;
 - (struct CGSize { double x1; double x2; })lastKnownSize;
 - (void)layoutMonitor:(id)arg1 didUpdateDisplayLayout:(id)arg2 withContext:(id)arg3;
+- (void)loadView;
 - (long long)lockScreenInternalRoutePickerOverrideWithDefaultStyle:(long long)arg1;
 - (bool)lockScreenPresentsOverrideRoutePicker;
 - (id)mediaControls;
 - (id)nowPlayingHeaderView;
 - (id)parentContainerView;
+- (id)placeholderDeviceIdentifier;
+- (id)placeholderString;
 - (void)presentLanguageOptions;
 - (void)presentRatingActionSheet:(id)arg1 sourceView:(id)arg2;
 - (void)presentTVRemote;
+- (id)requiredVisualStyleCategories;
 - (id)route;
 - (id)routeName;
 - (id)routeUID;
@@ -175,13 +194,15 @@
 - (id /* block */)routingCornerViewTappedBlock;
 - (id)routingViewController;
 - (void)routingViewController:(id)arg1 didPickRoute:(id)arg2;
+- (void)routingViewController:(id)arg1 didSelectRoutingViewItem:(id)arg2;
 - (void)routingViewController:(id)arg1 willDisplayCell:(id)arg2;
+- (void)routingViewController:(id)arg1 willDisplayHeaderView:(id)arg2;
 - (id)secondaryStringComponents;
 - (long long)selectedMode;
 - (void)setAllowsNowPlayingAppLaunch:(bool)arg1;
 - (void)setArtworkCatalog:(id)arg1;
+- (void)setArtworkTimer:(id)arg1;
 - (void)setBackgroundView:(id)arg1;
-- (void)setBottomDividerView:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDisplayElements:(id)arg1;
 - (void)setDisplayMonitor:(id)arg1;
@@ -197,6 +218,8 @@
 - (void)setNowPlayingHeaderView:(id)arg1;
 - (void)setOnScreen:(bool)arg1;
 - (void)setParentContainerView:(id)arg1;
+- (void)setPlaceholderDeviceIdentifier:(id)arg1;
+- (void)setPlaceholderString:(id)arg1;
 - (void)setRoute:(id)arg1;
 - (void)setRoutingCornerView:(id)arg1;
 - (void)setRoutingCornerViewTappedBlock:(id /* block */)arg1;
@@ -205,15 +228,17 @@
 - (void)setSelected:(bool)arg1;
 - (void)setSelectedMode:(long long)arg1;
 - (void)setSelectedMode:(long long)arg1 animated:(bool)arg2;
+- (void)setShareAudioViewController:(id)arg1;
 - (void)setStyle:(long long)arg1;
 - (void)setSupportedModes:(unsigned long long)arg1;
-- (void)setTopDividerView:(id)arg1;
 - (void)setTransitioning:(bool)arg1;
 - (void)setTransitioningDelegate:(id)arg1;
-- (void)setVibrantStylingProvider:(id)arg1;
 - (void)setVideoPickerFooterView:(id)arg1;
 - (void)setVideoPickerHeaderView:(id)arg1;
+- (void)setVisualStylingProvider:(id)arg1 forCategory:(long long)arg2;
 - (void)setVolumeContainerView:(id)arg1;
+- (void)setVolumeControlAssertion:(id)arg1;
+- (id)shareAudioViewController;
 - (bool)shouldAutomaticallyForwardAppearanceMethods;
 - (bool)shouldDisplayPlatter;
 - (bool)shouldEnableSyncingForSlider:(id)arg1;
@@ -222,9 +247,7 @@
 - (bool)slider:(id)arg1 syncStateWillChangeFromState:(long long)arg2 toState:(long long)arg3;
 - (long long)style;
 - (unsigned long long)supportedModes;
-- (id)topDividerView;
 - (id)transitioningDelegate;
-- (id)vibrantStylingProvider;
 - (id)videoPickerFooterView;
 - (id)videoPickerHeaderView;
 - (void)viewDidAppear:(bool)arg1;
@@ -233,7 +256,9 @@
 - (void)viewDidLoad;
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;
+- (id)visualStylingProviderForCategory:(long long)arg1;
 - (id)volumeContainerView;
+- (id)volumeControlAssertion;
 - (void)willTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withCoordinator:(id)arg2;
 
 @end

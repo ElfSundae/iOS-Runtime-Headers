@@ -21,6 +21,7 @@
 @property (nonatomic, readonly) NSPointerArray *topRowStrokes;
 
 - (void).cxx_destruct;
+- (void)accumulateCellBordersConcurrently:(struct vector<TSTCell *, std::__1::allocator<TSTCell *> > { id *x1; id *x2; struct __compressed_pair<TSTCell *__strong *, std::__1::allocator<TSTCell *> > { id *x_3_1_1; } x3; })arg1 inRow:(struct TSUModelRowIndex { unsigned int x1; })arg2 atColumns:(struct vector<TSUModelColumnIndex, std::__1::allocator<TSUModelColumnIndex> > { struct TSUModelColumnIndex {} *x1; struct TSUModelColumnIndex {} *x2; struct __compressed_pair<TSUModelColumnIndex *, std::__1::allocator<TSUModelColumnIndex> > { struct TSUModelColumnIndex {} *x_3_1_1; } x3; }*)arg3;
 - (id)bottomRowStrokes;
 - (id)cellBorderAtCellID:(struct TSUCellCoord { unsigned int x1; unsigned short x2; bool x3; bool x4; })arg1;
 - (void)enumerateStrokesInRegion:(id)arg1 usingTopStrokeBlock:(id /* block */)arg2 usingBottomStrokeBlock:(id /* block */)arg3 usingLeftStrokeBlock:(id /* block */)arg4 usingRightStrokeBlock:(id /* block */)arg5;
@@ -46,6 +47,7 @@
 - (id)rightColumnStrokes;
 - (void)saveToArchiver:(id)arg1;
 - (void)setBordersWithCellMap:(id)arg1;
+- (void)setBordersWithConcurrentCellMap:(id)arg1 forTableInfo:(id)arg2;
 - (void)setCellBorder:(id)arg1 atCellID:(struct TSUCellCoord { unsigned int x1; unsigned short x2; bool x3; bool x4; })arg2;
 - (void)setMaxOrder:(int)arg1;
 - (void)setStroke:(id)arg1 forBottomOfRow:(unsigned int)arg2 order:(int)arg3 columnRange:(struct TSTSimpleRange { long long x1; unsigned long long x2; })arg4;

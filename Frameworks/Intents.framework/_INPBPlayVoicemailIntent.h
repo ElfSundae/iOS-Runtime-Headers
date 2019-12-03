@@ -3,11 +3,13 @@
  */
 
 @interface _INPBPlayVoicemailIntent : PBCodable <NSCopying, NSSecureCoding, _INPBPlayVoicemailIntent> {
+    bool  __encodeLegacyGloryData;
     NSString * _callRecordIdentifier;
     struct { }  _has;
     _INPBIntentMetadata * _intentMetadata;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic, copy) NSString *callRecordIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -17,13 +19,19 @@
 @property (nonatomic, retain) _INPBIntentMetadata *intentMetadata;
 @property (readonly) Class superclass;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)callRecordIdentifier;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasCallRecordIdentifier;
 - (bool)hasIntentMetadata;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)intentMetadata;
 - (bool)isEqual:(id)arg1;
 - (bool)readFrom:(id)arg1;

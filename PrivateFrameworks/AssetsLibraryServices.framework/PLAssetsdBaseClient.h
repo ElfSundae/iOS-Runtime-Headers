@@ -3,10 +3,10 @@
  */
 
 @interface PLAssetsdBaseClient : NSObject {
-    <PLXPCProxyCreating> * _proxyFactory;
+    <PLXPCProxyCreating><PLXPCAsyncProxyCreating> * _proxyFactory;
 }
 
-@property (readonly) <PLXPCProxyCreating> *proxyFactory;
+@property (readonly) <PLXPCProxyCreating><PLXPCAsyncProxyCreating> *proxyFactory;
 
 - (void).cxx_destruct;
 - (id)initWithQueue:(id)arg1 proxyCreating:(id)arg2 proxyGetter:(SEL)arg3;

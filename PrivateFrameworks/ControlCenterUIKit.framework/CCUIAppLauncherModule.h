@@ -27,9 +27,10 @@
 - (void).cxx_destruct;
 - (id)applicationIdentifier;
 - (id)contentModuleContext;
-- (id)contentViewController;
+- (id)contentViewControllerForContext:(id)arg1;
 - (id)displayName;
 - (void)handleTapWithTouchType:(long long)arg1;
+- (void)handleTouchDownWithTouchType:(long long)arg1;
 - (id)iconGlyph;
 - (id)init;
 - (id)launchURL;

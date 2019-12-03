@@ -4,15 +4,33 @@
 
 @interface GEORating : PBCodable <NSCopying> {
     struct { 
-        unsigned int maxScore : 1; 
-        unsigned int score : 1; 
-        unsigned int numberOfRatings : 1; 
-        unsigned int numberOfReviews : 1; 
-    }  _has;
+        unsigned int has_maxScore : 1; 
+        unsigned int has_score : 1; 
+        unsigned int has_numberOfRatings : 1; 
+        unsigned int has_numberOfReviews : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_uRL : 1; 
+        unsigned int read_provider : 1; 
+        unsigned int read_reviews : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_uRL : 1; 
+        unsigned int wrote_maxScore : 1; 
+        unsigned int wrote_provider : 1; 
+        unsigned int wrote_reviews : 1; 
+        unsigned int wrote_score : 1; 
+        unsigned int wrote_numberOfRatings : 1; 
+        unsigned int wrote_numberOfReviews : 1; 
+    }  _flags;
     double  _maxScore;
     int  _numberOfRatings;
     int  _numberOfReviews;
     NSString * _provider;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     NSMutableArray * _reviews;
     double  _score;
     NSString * _uRL;
@@ -34,11 +52,17 @@
 @property (nonatomic, retain) NSString *uRL;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
 + (Class)reviewType;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsReview:(id)arg1;
+- (void)_readProvider;
+- (void)_readReviews;
+- (void)_readURL;
 - (void)addReview:(id)arg1;
 - (void)clearReviews;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -50,6 +74,8 @@
 - (bool)hasScore;
 - (bool)hasURL;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (id)initWithSampleSizeForUserRatingScore:(unsigned int)arg1 normalizedUserRatingScore:(float)arg2;
 - (bool)isEqual:(id)arg1;
 - (double)maxScore;
@@ -57,6 +83,7 @@
 - (int)numberOfRatings;
 - (int)numberOfReviews;
 - (id)provider;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)reviewAtIndex:(unsigned long long)arg1;
 - (id)reviews;

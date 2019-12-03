@@ -5,10 +5,10 @@
 @interface GEOPerRouteInfo : PBCodable <NSCopying> {
     unsigned long long  _etaServiceTravelTime;
     struct { 
-        unsigned int routeUuid : 1; 
-        unsigned int etaServiceTravelTime : 1; 
-        unsigned int originalTravelTime : 1; 
-    }  _has;
+        unsigned int has_routeUuid : 1; 
+        unsigned int has_etaServiceTravelTime : 1; 
+        unsigned int has_originalTravelTime : 1; 
+    }  _flags;
     unsigned long long  _originalTravelTime;
     struct GEOSessionID { 
         unsigned long long _high; 
@@ -23,6 +23,8 @@
 @property (nonatomic) unsigned long long originalTravelTime;
 @property (nonatomic) struct GEOSessionID { unsigned long long x1; unsigned long long x2; } routeUuid;
 
++ (bool)isValid:(id)arg1;
+
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -35,6 +37,7 @@
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)originalTravelTime;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (struct GEOSessionID { unsigned long long x1; unsigned long long x2; })routeUuid;
 - (void)setEtaServiceTravelTime:(unsigned long long)arg1;

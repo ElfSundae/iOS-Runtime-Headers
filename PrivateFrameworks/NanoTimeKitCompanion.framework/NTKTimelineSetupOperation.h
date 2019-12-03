@@ -3,6 +3,7 @@
  */
 
 @interface NTKTimelineSetupOperation : NTKTimelineDataOperation {
+    CLKComplicationTemplate * _alwaysOnTemplate;
     CLKComplicationTimelineEntry * _currentEntry;
     unsigned long long  _directions;
     NSDate * _endDate;
@@ -16,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (void)_cancel;
+- (void)_getAlwaysOnTemplate;
 - (void)_getCurrentEntry;
 - (void)_getEndDate;
 - (void)_getPrivacyBehavior;

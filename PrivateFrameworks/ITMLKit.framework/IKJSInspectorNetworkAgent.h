@@ -19,6 +19,7 @@
 - (void)disableWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2;
 - (void)enableWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2;
 - (void)getResponseBodyWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 requestId:(id)arg3;
+- (void)getSerializedCertificateWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 requestId:(id)arg3;
 - (id)initWithInspectorController:(id)arg1;
 - (void)loadResourceWithErrorCallback:(id /* block */)arg1 successCallback:(id /* block */)arg2 frameId:(id)arg3 url:(id)arg4;
 - (id)registerLoaderWithIdentifier:(id)arg1;

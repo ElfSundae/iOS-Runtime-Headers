@@ -21,7 +21,6 @@
 - (void)_didChangeIdleBusyState:(bool)arg1;
 - (void)_hysteresisTimerDidFire:(id)arg1;
 - (int)busyCount;
-- (void)dealloc;
 - (void)didIdle;
 - (void)didUnidle;
 - (id)hysteresisTimer;

@@ -18,6 +18,7 @@
 @property (nonatomic) <SiriUIVideoPlayerViewControllerDelegate> *videoPlayerControllerDelegate;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_playbackDidFinish:(id)arg1;
 - (void)_registerObservers;
 - (void)_removeObservers;

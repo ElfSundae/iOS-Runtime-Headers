@@ -16,24 +16,36 @@
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *propertyAccessQueue;
 @property (nonatomic, copy) NSString *subsystem;
 
+// Image: /System/Library/PrivateFrameworks/AppleMediaServices.framework/AppleMediaServices
+
 + (id)_createLogConfigWithBaseConfig:(id)arg1 subystem:(id)arg2 category:(id)arg3;
 + (id)_createLogConfigWithSubsystem:(id)arg1 category:(id)arg2;
 + (bool)_debugLogsEnabled:(id)arg1;
 + (id)sharedAccountsAuthenticationPluginConfig;
 + (id)sharedAccountsConfig;
 + (id)sharedAccountsCookiesConfig;
++ (id)sharedAccountsDaemonConfig;
 + (id)sharedAccountsLogoutConfig;
 + (id)sharedAccountsMigrationConfig;
 + (id)sharedAccountsMigrationConfigOversize;
 + (id)sharedAccountsNotificationPluginConfig;
 + (id)sharedAccountsOversizeConfig;
 + (id)sharedAccountsStorefrontConfig;
++ (id)sharedAccountsSyncPluginConfig;
++ (id)sharedAnisetteConfig;
++ (id)sharedAttestationConfig;
 + (id)sharedBagCacheConfig;
 + (id)sharedBagConfig;
 + (id)sharedConfig;
 + (id)sharedConfigOversize;
++ (id)sharedDataMigrationConfig;
++ (id)sharedDeviceOffersConfig;
 + (id)sharedFollowUpConfig;
++ (id)sharedKeychainConfig;
++ (id)sharedMediaConfig;
++ (id)sharedMediaServiceOwnerConfig;
 + (id)sharedPrivacyConfig;
++ (id)sharedPurchaseConfig;
 + (id)sharedPushNotificationConfig;
 + (id)sharedUserNotificationConfig;
 
@@ -54,5 +66,9 @@
 - (void)setPropertyAccessQueue:(id)arg1;
 - (void)setSubsystem:(id)arg1;
 - (id)subsystem;
+
+// Image: /System/Library/PrivateFrameworks/AppStoreKit.framework/AppStoreKit
+
++ (id)ask_generalLogConfig;
 
 @end

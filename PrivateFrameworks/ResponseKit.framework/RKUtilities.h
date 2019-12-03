@@ -4,9 +4,10 @@
 
 @interface RKUtilities : NSObject
 
++ (id)addLikelySubtagsForLocaleIdentifier:(id)arg1;
++ (id)canonicalLanguageAndScriptCodeIdentifierForIdentifier:(id)arg1;
 + (id)getDeviceModel;
 + (bool)isDeviceSupportedForLSTMBasedLanguageIdentification:(id)arg1;
-+ (bool)isDeviceSupportedForPhotoSharingIntentDetection:(id)arg1;
 + (bool)isLanguageSupportedByNSLinguisticTaggerForLanguageIdentification:(id)arg1;
 + (bool)isLanguageSupportedBySmartPunctuation:(id)arg1;
 + (bool)isLanguageSupportedForLemmatization:(id)arg1;

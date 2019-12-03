@@ -3,10 +3,9 @@
  */
 
 @interface UISegmentedControl : UIControl <NSCoding, UIPopoverPresentationControllerDelegate, _UIBasicAnimationFactory, _UIHostedFocusSystemDelegate> {
-    bool  __hasTranslucentOptionsBackground;
     id  _appearanceStorage;
     UILongPressGestureRecognizer * _axLongPressGestureRecognizer;
-    UIView * _backgroundBarView;
+    UIColor * _backgroundTintColor;
     long long  _barStyle;
     double  _enabledAlpha;
     UISegment * _focusedSegment;
@@ -14,7 +13,6 @@
     _UIHostedFocusSystem * _internalFocusSystem;
     UIView * _removedSegment;
     struct { 
-        unsigned int style : 3; 
         unsigned int size : 2; 
         unsigned int delegateAlwaysNotifiesDelegateOfSegmentClicks : 1; 
         unsigned int momentaryClick : 1; 
@@ -26,12 +24,15 @@
         unsigned int useProportionalWidthSegments : 1; 
         unsigned int translucentBackground : 1; 
         unsigned int appearanceNeedsUpdate : 1; 
+        unsigned int selectionIndicatorDragged : 1; 
     }  _segmentedControlFlags;
     NSMutableArray * _segments;
     long long  _selectedSegment;
+    UIColor * _selectedSegmentTintColor;
+    UIImageView * _selectionImageView;
+    long long  _selectionIndicatorSegment;
 }
 
-@property (setter=_setTranslucentOptionsBackground:, nonatomic) bool _hasTranslucentOptionsBackground;
 @property (nonatomic) bool apportionsSegmentWidthsByContent;
 @property (nonatomic, retain) UILongPressGestureRecognizer *axLongPressGestureRecognizer;
 @property (readonly, copy) NSString *debugDescription;
@@ -44,16 +45,26 @@
 @property (nonatomic, retain) UIView *removedSegment;
 @property (nonatomic) long long segmentedControlStyle;
 @property (nonatomic) long long selectedSegmentIndex;
+@property (nonatomic, retain) UIColor *selectedSegmentTintColor;
 @property (readonly) Class superclass;
-@property (nonatomic, retain) UIColor *tintColor;
 
 // Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 
-+ (double)_cornerRadiusForTraitCollection:(id)arg1;
-+ (double)_dividerWidthForTraitCollection:(id)arg1;
-+ (double)_lineWidthForTraitCollection:(id)arg1;
-+ (id)_modernBackgroundSelected:(bool)arg1 highlighted:(bool)arg2 traitCollection:(id)arg3;
-+ (id)_modernDividerImageForTraitCollection:(id)arg1;
++ (struct CGColor { }*)_backgroundPrimaryColorSelected:(bool)arg1 highlighted:(bool)arg2 traitCollection:(id)arg3 tintColor:(id)arg4;
++ (double)_cornerRadiusForTraitCollection:(id)arg1 size:(int)arg2;
++ (struct CGColor { }*)_dividerPrimaryColorBackground:(bool)arg1 traitCollection:(id)arg2 tintColor:(id)arg3;
++ (double)_dividerWidthForTraitCollection:(id)arg1 size:(int)arg2;
++ (id)_fontForTraitCollection:(id)arg1 size:(int)arg2 selected:(bool)arg3;
++ (struct CATransform3D { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; double x11; double x12; double x13; double x14; double x15; double x16; })_hiddenSelectionTransform;
++ (struct CATransform3D { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; double x11; double x12; double x13; double x14; double x15; double x16; })_highlightSelectionTransform;
++ (double)_lineWidthForTraitCollection:(id)arg1 size:(int)arg2;
++ (id)_modernBackgroundSelected:(bool)arg1 disableShadow:(bool)arg2 highlighted:(bool)arg3 traitCollection:(id)arg4 tintColor:(id)arg5 size:(int)arg6;
++ (id)_modernDividerImageBackground:(bool)arg1 traitCollection:(id)arg2 tintColor:(id)arg3 size:(int)arg4;
++ (double)_sectionIndicatorInsetForTraitCollection:(id)arg1 size:(int)arg2;
++ (double)_sectionIndicatorOverflowForTraitCollection:(id)arg1 size:(int)arg2;
++ (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_selectionFrameForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 size:(int)arg2 traitCollection:(id)arg3 accessibilityView:(bool)arg4;
++ (id)_selectionOpacityAnimationFromValue:(float)arg1 toValue:(float)arg2;
++ (id)_selectionPopAnimationForKey:(id)arg1 fromValue:(id)arg2 toValue:(id)arg3;
 + (id)_tvDefaultTextColorDisabledSelected;
 + (id)_tvDefaultTextColorDisabledUserInterfaceStyleDark;
 + (id)_tvDefaultTextColorDisabledUserInterfaceStyleLight;
@@ -71,9 +82,11 @@
 - (void)_animateContentChangeWithAnimations:(id /* block */)arg1 completion:(id /* block */)arg2;
 - (id)_attributedTitleForSegmentAtIndex:(unsigned long long)arg1;
 - (void)_axLongPressHandler:(id)arg1;
+- (id)_backgroundTintColor;
 - (double)_backgroundVerticalPositionAdjustmentForBarMetrics:(long long)arg1;
 - (id)_badgeValueForSegmentAtIndex:(unsigned long long)arg1;
 - (double)_barHeight;
+- (struct { double x1; double x2; })_baselineOffsetsAtSize:(struct CGSize { double x1; double x2; })arg1;
 - (id)_basicAnimationForView:(id)arg1 withKeyPath:(id)arg2;
 - (void)_cancelDelayedFocusAction;
 - (void)_clearSelectedSegment;
@@ -85,59 +98,55 @@
 - (id)_createSegmentAtIndex:(int)arg1 position:(unsigned int)arg2 withInfo:(id)arg3;
 - (void)_diagnoseFocusabilityForReport:(id)arg1;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
+- (bool)_disableSlidingControl;
 - (void)_emitValueChanged;
 - (id)_focusMapContainerForFocusSystem:(id)arg1;
 - (bool)_focusSystem:(id)arg1 containsChildOfHostEnvironment:(id)arg2;
 - (void)_focusSystem:(id)arg1 didFinishUpdatingFocusInContext:(id)arg2;
 - (bool)_hasEnabledSegment;
-- (bool)_hasTranslucentOptionsBackground;
 - (void)_insertSegment:(int)arg1 withInfo:(id)arg2 animated:(bool)arg3;
 - (void)_insertSegmentWithAttributedTitle:(id)arg1 atIndex:(unsigned long long)arg2 animated:(bool)arg3;
+- (void)_insertSelectionViewForSegment:(id)arg1;
 - (id)_internalFocusSystem;
 - (struct CGSize { double x1; double x2; })_intrinsicSizeWithinSize:(struct CGSize { double x1; double x2; })arg1;
-- (bool)_isInMiniBar;
-- (bool)_isInTranslucentToolbar;
-- (id)_optionsBackgroundImage;
-- (bool)_optionsShadowHidden;
-- (void)_populateArchivedSubviews:(id)arg1;
 - (id)_preferredFocusEnvironmentsForFocusSystem:(id)arg1;
-- (void)_removeSegmentAnimationFinished:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (void)_resetForAppearanceChange;
 - (id)_segmentAtIndex:(int)arg1;
+- (long long)_segmentIndexToHighlight:(bool*)arg1;
 - (void)_selectFocusedSegment;
 - (void)_sendDelayedFocusActionIfNecessary;
 - (void)_setAppearanceIsTiled:(bool)arg1 leftCapWidth:(unsigned long long)arg2 rightCapWidth:(unsigned long long)arg3;
 - (void)_setAttributedTitle:(id)arg1 forSegmentAtIndex:(unsigned long long)arg2;
 - (void)_setAutosizeText:(bool)arg1;
 - (void)_setBackgroundImage:(id)arg1 forState:(unsigned long long)arg2 barMetrics:(long long)arg3;
+- (void)_setBackgroundTintColor:(id)arg1;
 - (void)_setBackgroundVerticalPositionAdjustment:(double)arg1 forBarMetrics:(long long)arg2;
 - (void)_setBadgeValue:(id)arg1 forSegmentAtIndex:(unsigned long long)arg2;
 - (void)_setControlSize:(int)arg1 andInvalidate:(bool)arg2;
-- (void)_setCurrentBackgroundImage:(id)arg1;
 - (void)_setDividerImage:(id)arg1 forLeftSegmentState:(unsigned long long)arg2 rightSegmentState:(unsigned long long)arg3 barMetrics:(long long)arg4;
 - (void)_setEnabled:(bool)arg1 forcePropagateToSegments:(bool)arg2;
 - (void)_setHighlightedSegmentHighlighted:(bool)arg1;
 - (void)_setNeedsAppearanceUpdate;
-- (void)_setOptionsBackgroundImage:(id)arg1;
-- (void)_setOptionsShadowHidden:(bool)arg1;
-- (void)_setSegmentedControlAppearance:(struct { id x1; double x2; struct { id x_3_1_1; id x_3_1_2; id x_3_1_3; unsigned char x_3_1_4; /* Warning: Unrecognized filer type: 'G' using 'void*' */ void*x_3_1_5; unsigned short x_3_1_6; int x_3_1_7; void*x_3_1_8; void*x_3_1_9; void*x_3_1_10; double x_3_1_11; double x_3_1_12; } x3; }*)arg1;
+- (void)_setNeedsBackgroundAndContentViewUpdate;
+- (void)_setSegmentedControlAppearance:(struct { id x1; double x2; double x3; struct { id x_4_1_1; id x_4_1_2; id x_4_1_3; id x_4_1_4; id x_4_1_5; struct CGSize { double x_6_2_1; double x_6_2_2; } x_4_1_6; } x4; struct { id x_5_1_1; id x_5_1_2; id x_5_1_3; id x_5_1_4; id x_5_1_5; struct CGSize { double x_6_2_1; double x_6_2_2; } x_5_1_6; } x5; struct { id x_6_1_1; id x_6_1_2; id x_6_1_3; id x_6_1_4; id x_6_1_5; struct CGSize { double x_6_2_1; double x_6_2_2; } x_6_1_6; } x6; struct { id x_7_1_1; id x_7_1_2; id x_7_1_3; id x_7_1_4; id x_7_1_5; struct CGSize { double x_6_2_1; double x_6_2_2; } x_7_1_6; } x7; bool x8; }*)arg1;
 - (void)_setSelected:(bool)arg1 forSegmentAtIndex:(int)arg2 forceInfoDisplay:(bool)arg3;
+- (void)_setSelected:(bool)arg1 highlighted:(bool)arg2 forSegmentAtIndex:(int)arg3 forceInfoDisplay:(bool)arg4;
 - (void)_setSelectedSegmentIndex:(long long)arg1 notify:(bool)arg2;
 - (void)_setSelectedSegmentIndex:(long long)arg1 notify:(bool)arg2 animate:(bool)arg3;
 - (void)_setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
-- (void)_setTranslucentOptionsBackground:(bool)arg1;
 - (void)_setUsesNewAnimations:(bool)arg1;
 - (bool)_shouldConsumeEventWithPresses:(id)arg1;
 - (bool)_shouldSelectSegmentAtIndex:(long long)arg1;
-- (void)_tapSegmentAtPoint:(struct CGPoint { double x1; double x2; })arg1;
+- (void)_tapSegmentAtPoint:(struct CGPoint { double x1; double x2; })arg1 touchDown:(bool)arg2;
 - (id)_tintColorArchivingKey;
 - (id)_uiktest_labelsWithState:(unsigned long long)arg1;
 - (id)_uiktest_segmentAtIndex:(unsigned long long)arg1;
 - (void)_updateAxLongPressGestureRecognizer;
 - (void)_updateDividerImageForSegmentAtIndex:(unsigned long long)arg1;
-- (void)_updateOptionsBackground;
-- (void)_updateTitleTextAttributes;
+- (void)_updateSelectionIndicator;
+- (void)_updateSelectionToSegment:(id)arg1 highlight:(bool)arg2 shouldAnimate:(bool)arg3 sameSegment:(bool)arg4;
 - (bool)_usesNewAnimations;
+- (id)_viewForLoweringBaselineLayoutAttribute:(int)arg1;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (void)addSegmentWithTitle:(id)arg1;
@@ -190,6 +199,7 @@
 - (void)selectSegment:(int)arg1;
 - (long long)selectedSegment;
 - (long long)selectedSegmentIndex;
+- (id)selectedSegmentTintColor;
 - (void)setAlpha:(double)arg1;
 - (void)setAlwaysNotifiesDelegateOfSegmentClicks:(bool)arg1;
 - (void)setApportionsSegmentWidthsByContent:(bool)arg1;
@@ -216,8 +226,8 @@
 - (void)setSegmentedControlStyle:(long long)arg1;
 - (void)setSelectedSegment:(long long)arg1;
 - (void)setSelectedSegmentIndex:(long long)arg1;
+- (void)setSelectedSegmentTintColor:(id)arg1;
 - (void)setSpringLoaded:(bool)arg1;
-- (void)setTintColor:(id)arg1;
 - (void)setTitle:(id)arg1 forSegment:(unsigned long long)arg2;
 - (void)setTitle:(id)arg1 forSegmentAtIndex:(unsigned long long)arg2;
 - (void)setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
@@ -249,6 +259,11 @@
 - (long long)_mapkit_selectedSegmentIndex;
 - (void)_mapkit_setSelectedSegmentIndex:(long long)arg1;
 - (void)_mapkit_setTitle:(id)arg1 forSegmentAtIndex:(long long)arg2 insertIfNeeded:(bool)arg3;
+
+// Image: /System/Library/PrivateFrameworks/AppSupportUI.framework/AppSupportUI
+
+- (struct { double x1; double x2; })_nui_additionalInsetsForBaselines;
+- (long long)_nui_baselineViewType;
 
 // Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
 

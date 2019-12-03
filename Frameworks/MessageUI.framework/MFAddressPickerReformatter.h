@@ -12,6 +12,7 @@
     NSArray * _reformattedAddresses;
 }
 
+- (void).cxx_destruct;
 - (void)_attemptUniquingDisplayedStrings;
 - (bool)_attemptUniquingDisplayedStringsUsingBlock:(id /* block */)arg1;
 - (unsigned long long)_defaultOptions;
@@ -25,7 +26,6 @@
 - (void)_truncateIdenticalLocalPartsWithDifferentDomainParts;
 - (void)_truncateIdenticalLocalPartsWithDifferentDomainPartsWithTailLength:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (void)_updateReformattedAddressesIfNecessary;
-- (void)dealloc;
 - (unsigned long long)numberOfReformattedAddresses;
 - (id)reformattedAddressAtIndex:(unsigned long long)arg1;
 - (id)reformattedAddressStringAtIndex:(unsigned long long)arg1;

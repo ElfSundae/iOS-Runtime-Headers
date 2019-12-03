@@ -35,6 +35,7 @@
 - (void)_hostDidEnterBackgroundForContextUUID:(id)arg1 completion:(id /* block */)arg2;
 - (void)_hostWillEnterForegroundForContextUUID:(id)arg1 completion:(id /* block */)arg2;
 - (void)_hostWillResignActiveForContextUUID:(id)arg1 completion:(id /* block */)arg2;
+- (void)_onGlobalStateQueueOnly_setPrincipalObject:(id)arg1 forUUID:(id)arg2;
 - (void)_setExtensionContexts:(id)arg1;
 - (void)_setExtensionPrincipalObjects:(id)arg1;
 - (void)_setExtensionServiceConnections:(id)arg1;

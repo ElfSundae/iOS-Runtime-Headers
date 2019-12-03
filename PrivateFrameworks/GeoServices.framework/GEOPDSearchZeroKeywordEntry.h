@@ -10,9 +10,9 @@
     }  _categoryIndexs;
     unsigned int  _dayOfWeek;
     struct { 
-        unsigned int dayOfWeek : 1; 
-        unsigned int hourOfDay : 1; 
-    }  _has;
+        unsigned int has_dayOfWeek : 1; 
+        unsigned int has_hourOfDay : 1; 
+    }  _flags;
     unsigned int  _hourOfDay;
     PBUnknownFields * _unknownFields;
 }
@@ -25,12 +25,15 @@
 @property (nonatomic) unsigned int hourOfDay;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (void)addCategoryIndex:(unsigned int)arg1;
 - (unsigned int)categoryIndexAtIndex:(unsigned long long)arg1;
 - (unsigned int*)categoryIndexs;
 - (unsigned long long)categoryIndexsCount;
 - (void)clearCategoryIndexs;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned int)dayOfWeek;
@@ -43,6 +46,7 @@
 - (unsigned int)hourOfDay;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setCategoryIndexs:(unsigned int*)arg1 count:(unsigned long long)arg2;
 - (void)setDayOfWeek:(unsigned int)arg1;

@@ -10,6 +10,7 @@
 @property (readonly) Class superclass;
 
 - (bool)canBePerformedByOpeningURL;
+- (id)icon;
 - (id)initWithURL:(id)arg1 result:(struct __DDResult { }*)arg2 context:(id)arg3;
 - (int)interactionType;
 - (id)localizedName;

@@ -81,30 +81,37 @@
 
 // Image: /System/Library/PrivateFrameworks/BulletinDistributorCompanion.framework/BulletinDistributorCompanion
 
-+ (bool)activePairedDeviceSupportIsGreaterEqualVersion:(unsigned int)arg1;
++ (bool)activePairedDeviceSupportIsGreaterEqualVersion:(unsigned long long)arg1;
 + (bool)activePairedDeviceSupportsAddBulletinReplyToken;
 + (bool)activePairedDeviceSupportsAttachmentFiles;
 + (bool)activePairedDeviceSupportsAuthorizationStatusLockScreenAndNCSettings;
 + (bool)activePairedDeviceSupportsCriticalAndGroupingSettings;
 + (bool)activePairedDeviceSupportsDisplayingSubtitle;
++ (bool)activePairedDeviceSupportsEmergencyAlerts;
 + (bool)activePairedDeviceSupportsFileBulletinAdd;
 + (bool)activePairedDeviceSupportsFileSettingSync;
++ (bool)activePairedDeviceSupportsIconsPerNotification;
 + (bool)activePairedDeviceSupportsMultiplteAttachments;
 + (bool)activePairedDeviceSupportsNSNullPListExtenion;
++ (bool)activePairedDeviceSupportsNoLocalRemoteNotificationInBulletinContext;
++ (bool)activePairedDeviceSupportsNotSendingTemporarySequenceNumbers;
 + (bool)activePairedDeviceSupportsSendingOnlyCategoryID;
 + (bool)activePairedDeviceSupportsSiriActionAppList;
++ (bool)activePairedDeviceSupportsSpokenNotificationSettings;
 + (bool)activePairedDeviceSupportsUserNotificationListDestination;
++ (id)versionForString:(id)arg1;
 
 - (unsigned long long)bltVersion;
+- (unsigned long long)watchOSVersion;
 
 // Image: /System/Library/PrivateFrameworks/DoNotDisturbServer.framework/DoNotDisturbServer
 
 - (unsigned long long)_dnds_pairedDeviceClass;
+- (unsigned long long)_dnds_syncProtocolVersion;
 
 // Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon
 
 - (bool)hd_isActive;
-- (bool)hd_isPaired;
 - (id)hd_lastActiveDate;
 - (id)hd_lastInactiveDate;
 - (id)hd_name;

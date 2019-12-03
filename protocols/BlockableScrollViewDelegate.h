@@ -5,6 +5,7 @@
 
 @required
 
+- (void)blockableScrollViewDidChangeFrameSize;
 - (bool)blockableScrollViewShouldAllowScrolling;
 
 @end

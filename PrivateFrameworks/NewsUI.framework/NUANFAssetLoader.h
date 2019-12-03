@@ -3,7 +3,8 @@
  */
 
 @interface NUANFAssetLoader : NSObject {
-    FCAsyncOnceOperation * _asyncOnceOperation;
+    FCAsyncOnceOperation * _assetURLsOperation;
+    FCAsyncOnceOperation * _assetsOperation;
     SXContext * _context;
     NSMutableDictionary * _fetchedResourceIDs;
     FCFlintResourceManager * _flintResourceManager;
@@ -11,7 +12,8 @@
     NSArray * _resourceIDs;
 }
 
-@property (nonatomic, retain) FCAsyncOnceOperation *asyncOnceOperation;
+@property (nonatomic, retain) FCAsyncOnceOperation *assetURLsOperation;
+@property (nonatomic, readonly) FCAsyncOnceOperation *assetsOperation;
 @property (nonatomic, retain) SXContext *context;
 @property (nonatomic, retain) NSMutableDictionary *fetchedResourceIDs;
 @property (nonatomic, retain) FCFlintResourceManager *flintResourceManager;
@@ -19,18 +21,23 @@
 @property (nonatomic, retain) NSArray *resourceIDs;
 
 - (void).cxx_destruct;
-- (id)asyncLoadAssertURLsOnceWithCompletion:(id /* block */)arg1;
-- (id)asyncOnceOperation;
+- (id)assetDownloadOperationForResource:(id)arg1 completion:(id /* block */)arg2;
+- (id)assetURLsOperation;
+- (id)assetsOperation;
+- (id)asyncLoadAssetURLsOnceWithCompletion:(id /* block */)arg1;
+- (id)asyncLoadAssetsOnceWithCompletion:(id /* block */)arg1;
 - (id)context;
 - (id)fetchedResourceIDs;
 - (id)flintResourceManager;
 - (id)initWithContext:(id)arg1 flintResourceManager:(id)arg2;
 - (id)loadAssetURLsWithCompletion:(id /* block */)arg1;
+- (id)loadAssetWithURL:(id)arg1 completion:(id /* block */)arg2;
+- (id)loadAssetsWithCompletion:(id /* block */)arg1;
 - (long long)relativePriority;
 - (id)resourceForID:(id)arg1;
 - (id)resourceIDForResourceURL:(id)arg1;
 - (id)resourceIDs;
-- (void)setAsyncOnceOperation:(id)arg1;
+- (void)setAssetURLsOperation:(id)arg1;
 - (void)setContext:(id)arg1;
 - (void)setFetchedResourceIDs:(id)arg1;
 - (void)setFlintResourceManager:(id)arg1;

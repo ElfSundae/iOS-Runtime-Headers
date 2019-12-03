@@ -32,6 +32,7 @@
 - (bool)handleSwitchCommand:(bool)arg1 withHUD:(bool)arg2 withDelay:(bool)arg3;
 - (bool)handleSwitchingKeyEvent:(id)arg1;
 - (void)hideSwitcher;
+- (void)hideSwitcherIfNeeded;
 - (id)init;
 - (id)inputModeIdentifierWithNextFlag:(bool)arg1;
 - (bool)isGlobeKeyDown;

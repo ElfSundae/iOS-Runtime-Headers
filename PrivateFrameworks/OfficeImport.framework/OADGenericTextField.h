@@ -10,7 +10,7 @@
 @property (nonatomic, copy) NSString *guid;
 @property (nonatomic, copy) NSString *type;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)guid;
 - (id)initWithGuid:(id)arg1 type:(id)arg2;
 - (bool)isSimilarToTextRun:(id)arg1;

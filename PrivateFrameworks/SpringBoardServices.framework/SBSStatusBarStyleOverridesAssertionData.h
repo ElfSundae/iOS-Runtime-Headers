@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SpringBoardServices.framework/SpringBoardServices
  */
 
-@interface SBSStatusBarStyleOverridesAssertionData : NSObject <NSSecureCoding> {
+@interface SBSStatusBarStyleOverridesAssertionData : NSObject <BSDescriptionProviding, NSSecureCoding> {
     bool  _exclusive;
     int  _pid;
     bool  _showsWhenForeground;
@@ -11,16 +11,23 @@
     NSString * _uniqueIdentifier;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (getter=isExclusive, nonatomic) bool exclusive;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) int pid;
 @property (nonatomic) bool showsWhenForeground;
 @property (nonatomic) int statusBarStyleOverrides;
 @property (nonatomic, copy) NSString *statusString;
+@property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *uniqueIdentifier;
 
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)description;
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
@@ -37,6 +44,8 @@
 - (bool)showsWhenForeground;
 - (int)statusBarStyleOverrides;
 - (id)statusString;
+- (id)succinctDescription;
+- (id)succinctDescriptionBuilder;
 - (id)uniqueIdentifier;
 
 @end

@@ -45,7 +45,6 @@
 + (bool)__shortStyleRestrictionExistsForComponents:(id)arg1 shortStyle:(long long)arg2;
 + (bool)__shouldCacheFallbackToGivenNameInitialForAbbreviatedNameFormatFamilyNameOnly;
 + (bool)__shouldFallbackToGivenNameInitialForAbbreviatedNameFormatFamilyNameOnly;
-+ (bool)__shouldReturnEmptyString;
 + (id)__stringByStrippingNonInitialPunctuationFromString:(id)arg1;
 + (id)__stringValueForShortStyle:(long long)arg1;
 + (id)__stringValueForStyle:(long long)arg1;

@@ -2,18 +2,17 @@
    Image: /System/Library/Frameworks/Metal.framework/Metal
  */
 
-@interface _MTLCommandEncoder : NSObject {
+@interface _MTLCommandEncoder : _MTLObjectWithLabel {
     _MTLCommandBuffer<MTLCommandBuffer> * _commandBuffer;
     <MTLDevice> * _device;
     unsigned long long  _globalTraceObjectID;
-    NSString * _label;
     unsigned long long  _labelTraceID;
     unsigned long long  _numThisEncoder;
 }
 
 @property (nonatomic, readonly) <MTLDevice> *device;
 @property (readonly) unsigned long long dispatchType;
-@property (getter=globalTraceObjectID, nonatomic) unsigned long long globalTraceObjectID;
+@property (nonatomic, readonly) unsigned long long globalTraceObjectID;
 @property (copy) NSString *label;
 @property (nonatomic) unsigned long long numThisEncoder;
 @property (getter=getType, nonatomic, readonly) unsigned long long type;
@@ -30,14 +29,11 @@
 - (unsigned long long)globalTraceObjectID;
 - (id)initWithCommandBuffer:(id)arg1;
 - (void)insertDebugSignpost:(id)arg1;
-- (id)label;
 - (void)memoryBarrierNotificationWithResources:(const id*)arg1 count:(unsigned long long)arg2;
 - (void)memoryBarrierNotificationWithScope:(unsigned long long)arg1;
 - (unsigned long long)numThisEncoder;
 - (void)popDebugGroup;
 - (void)pushDebugGroup:(id)arg1;
-- (void)setGlobalTraceObjectID:(unsigned long long)arg1;
-- (void)setLabel:(id)arg1;
 - (void)setNumThisEncoder:(unsigned long long)arg1;
 
 @end

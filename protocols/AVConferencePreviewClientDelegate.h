@@ -7,6 +7,8 @@
 
 - (void)cameraDidBecomeAvailableForUniqueID:(NSString *)arg1;
 - (void)cameraDidBecomeInterruptedForForUniqueID:(NSString *)arg1 reason:(long long)arg2;
+- (void)cameraZoomAvailabilityDidChange:(bool)arg1;
+- (void)cameraZoomAvailabilityDidChange:(bool)arg1 currentZoomFactor:(double)arg2 maxZoomFactor:(double)arg3;
 - (void)didChangeLocalScreenAttributes:(VideoAttributes *)arg1;
 - (void)didChangeLocalVideoAttributes:(VideoAttributes *)arg1;
 - (void)didGetSnapshot:(NSData *)arg1;

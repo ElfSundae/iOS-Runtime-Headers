@@ -5,8 +5,9 @@
 @interface HMDDataStreamController : NSObject <HMDDataStreamDelegate, HMFLogging> {
     HMDHAPAccessory * _accessory;
     NSMutableArray * _activeProtocols;
+    id /* block */  _dataStreamFactory;
     HMDDataStream * _defaultDataStream;
-    HMDNotificationRegistration * _notificationRegistration;
+    NSString * _logIdentifier;
     HMDDataStreamSetup * _setupInProgress;
     bool  _supportsDataStreamOverTCP;
     HMDService * _transferManagementService;
@@ -15,11 +16,12 @@
 
 @property (nonatomic) HMDHAPAccessory *accessory;
 @property (nonatomic, retain) NSMutableArray *activeProtocols;
+@property (readonly) id /* block */ dataStreamFactory;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, retain) HMDDataStream *defaultDataStream;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) HMDNotificationRegistration *notificationRegistration;
+@property (readonly) NSString *logIdentifier;
 @property (nonatomic, retain) HMDDataStreamSetup *setupInProgress;
 @property (readonly) Class superclass;
 @property (nonatomic) bool supportsDataStreamOverTCP;
@@ -37,6 +39,7 @@
 - (id)_getActiveProtocolWithClass:(Class)arg1;
 - (void)_handleAccessoryIsReachable;
 - (void)_initiateStreamSetup;
+- (void)_resetDefaultDataStream;
 - (id)accessory;
 - (id)activeProtocols;
 - (void)addBulkSendListener:(id)arg1 fileType:(id)arg2;
@@ -44,11 +47,14 @@
 - (void)dataStream:(id)arg1 didFailWithError:(id)arg2;
 - (void)dataStreamDidClose:(id)arg1;
 - (void)dataStreamDidOpen:(id)arg1;
+- (id /* block */)dataStreamFactory;
 - (id)defaultDataStream;
 - (void)handleAccessoryIsNotReachable:(id)arg1;
 - (void)handleAccessoryIsReachable:(id)arg1;
 - (id)initWithAccessory:(id)arg1 service:(id)arg2 workQueue:(id)arg3;
-- (id)notificationRegistration;
+- (id)initWithAccessory:(id)arg1 service:(id)arg2 workQueue:(id)arg3 dataStreamFactory:(id /* block */)arg4;
+- (void)invalidate;
+- (id)logIdentifier;
 - (void)registerForMessages;
 - (void)removeBulkSendListener:(id)arg1;
 - (void)sendTargetControlWhoAmIWithIdentifier:(unsigned int)arg1;
@@ -60,6 +66,7 @@
 - (void)setTransferManagementService:(id)arg1;
 - (void)setWorkQueue:(id)arg1;
 - (id)setupInProgress;
+- (void)startBulkSendSessionForFileType:(id)arg1 queue:(id)arg2 callback:(id /* block */)arg3;
 - (bool)supportsDataStreamOverTCP;
 - (id)transferManagementService;
 - (id)workQueue;

@@ -10,6 +10,7 @@
 - (NSString *)label;
 - (unsigned long long)maxTotalThreadsPerThreadgroup;
 - (unsigned long long)staticThreadgroupMemoryLength;
+- (bool)supportIndirectCommandBuffers;
 - (unsigned long long)threadExecutionWidth;
 
 @end

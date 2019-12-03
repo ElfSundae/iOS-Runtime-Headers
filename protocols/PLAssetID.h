@@ -5,7 +5,10 @@
 
 @required
 
-- (NSString *)cloudIdentifier;
+- (unsigned char)bundleScope;
+- (NSString *)directory;
+- (NSString *)filename;
+- (NSString *)libraryID;
 - (NSString *)uuid;
 
 @end

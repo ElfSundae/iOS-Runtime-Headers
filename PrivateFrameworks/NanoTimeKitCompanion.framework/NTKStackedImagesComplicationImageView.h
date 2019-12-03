@@ -2,10 +2,11 @@
    Image: /System/Library/PrivateFrameworks/NanoTimeKitCompanion.framework/NanoTimeKitCompanion
  */
 
-@interface NTKStackedImagesComplicationImageView : UIView <NTKComplicationImageView, NTKLegibilityView> {
+@interface NTKStackedImagesComplicationImageView : UIView <CLKMonochromeComplicationView, NTKComplicationImageView, NTKLegibilityView> {
     NTKColoringImageView * _backgroundImageView;
     UIColor * _color;
     CLKDevice * _device;
+    <CLKMonochromeFilterProvider> * _filterProvider;
     UIImageView * _foregroundAccentImageView;
     UIColor * _foregroundColor;
     NTKColoringImageView * _foregroundImageView;
@@ -27,6 +28,7 @@
 @property (nonatomic, readonly) UIColor *contentColor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) <CLKMonochromeFilterProvider> *filterProvider;
 @property (nonatomic, retain) UIColor *foregroundColor;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) CLKImageProvider *imageProvider;
@@ -44,6 +46,7 @@
 - (bool)_hasMultipartImages;
 - (bool)_hasShadowViews;
 - (void)_loadImageViewsIfNecessary;
+- (bool)_shouldIgnoreTwoPieceImage;
 - (void)_updateAlpha;
 - (void)_updateColors;
 - (void)_updateImageSubviewsMaxSize;
@@ -52,6 +55,7 @@
 - (void)_updateShadowViewImages;
 - (id)color;
 - (id)contentColor;
+- (id)filterProvider;
 - (id)foregroundColor;
 - (bool)hasMonochromeImage;
 - (id)imageProvider;
@@ -61,6 +65,7 @@
 - (double)multicolorAlpha;
 - (id)overrideColor;
 - (void)setColor:(id)arg1;
+- (void)setFilterProvider:(id)arg1;
 - (void)setForegroundColor:(id)arg1;
 - (void)setImageProvider:(id)arg1;
 - (void)setLegibilityEnabled:(bool)arg1;
@@ -72,6 +77,8 @@
 - (double)shadowBlur;
 - (id)shadowColor;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 - (bool)usesLegibility;
 
 @end

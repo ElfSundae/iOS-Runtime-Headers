@@ -6,16 +6,16 @@
     bool  _beepBeforeInstruction;
     unsigned long long  _distanceUnits;
     struct { 
-        unsigned int distanceUnits : 1; 
-        unsigned int maxAlternateRouteCount : 1; 
-        unsigned int voiceVolume : 1; 
-        unsigned int userPreferredTransportType : 1; 
-        unsigned int beepBeforeInstruction : 1; 
-        unsigned int muteSpeechOverride : 1; 
-        unsigned int pauseSpokenAudio : 1; 
-        unsigned int shouldUseGuidanceEventManager : 1; 
-        unsigned int speechEnabled : 1; 
-    }  _has;
+        unsigned int has_distanceUnits : 1; 
+        unsigned int has_maxAlternateRouteCount : 1; 
+        unsigned int has_voiceVolume : 1; 
+        unsigned int has_userPreferredTransportType : 1; 
+        unsigned int has_beepBeforeInstruction : 1; 
+        unsigned int has_muteSpeechOverride : 1; 
+        unsigned int has_pauseSpokenAudio : 1; 
+        unsigned int has_shouldUseGuidanceEventManager : 1; 
+        unsigned int has_speechEnabled : 1; 
+    }  _flags;
     unsigned long long  _maxAlternateRouteCount;
     bool  _muteSpeechOverride;
     bool  _pauseSpokenAudio;
@@ -47,6 +47,8 @@
 @property (nonatomic, retain) NSString *voiceLanguage;
 @property (nonatomic) unsigned long long voiceVolume;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsUserPreferredTransportType:(id)arg1;
 - (bool)beepBeforeInstruction;
@@ -71,6 +73,7 @@
 - (void)mergeFrom:(id)arg1;
 - (bool)muteSpeechOverride;
 - (bool)pauseSpokenAudio;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setBeepBeforeInstruction:(bool)arg1;
 - (void)setDistanceUnits:(unsigned long long)arg1;

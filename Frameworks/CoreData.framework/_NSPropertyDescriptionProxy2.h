@@ -4,6 +4,8 @@
 
 @interface _NSPropertyDescriptionProxy2 : _NSPropertyDescriptionProxy
 
++ (Class)classForKeyedUnarchiver;
+
 - (bool)_isDeallocating;
 - (bool)_tryRetain;
 - (Class)classForArchiver;

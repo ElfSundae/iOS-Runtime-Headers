@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/Celestial.framework/Celestial
  */
 
-@interface BWPixelTransferNode : BWNode {
+@interface BWPixelTransferNode : BWNode <BWNodeBackPressureSource> {
     bool  _appliesUprightExifOrientationTransformToInput;
     int  _cropMode;
     NSObject<OS_dispatch_semaphore> * _emitSampleBufferSemaphore;
@@ -47,6 +47,10 @@
     bool  _livePassesBuffersThroughWhenPossible;
     int  _liveRotationDegrees;
     bool  _liveUpdatesSampleBufferMetadataForIrisVIS;
+    struct { 
+        int width; 
+        int height; 
+    }  _liveValidOutputDimensions;
     bool  _liveZeroFillBuffers;
     bool  _lowSpeed;
     bool  _makeCurrentConfigurationLiveOnNextRenderCallback;
@@ -67,7 +71,17 @@
     bool  _rotationSessionZeroFillBuffers;
     struct OpaqueVTPixelTransferSession { } * _transferSession;
     bool  _updatesSampleBufferMetadataForIrisVIS;
+    struct { 
+        int width; 
+        int height; 
+    }  _validOutputDimensions;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (nonatomic, retain) NSObject<OS_dispatch_semaphore> *emitSampleBufferSemaphore;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (void)initialize;
 
@@ -80,8 +94,9 @@
 - (id)_supportedOutputPixelFormatsInPreferredOrder;
 - (void)_updateCameraIntrinsicsMatrixOnSampleBufferIfNeeded:(struct opaqueCMSampleBuffer { }*)arg1 inputCropRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (void)_updateLiveRotationAndFlipsToApplyUprightExifOrientation:(int)arg1;
-- (void)_updateMetadataForOutputSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1;
+- (void)_updateMetadataForOutputSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 destinationRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (void)_updateOutputRequirements;
+- (void)_updatePrimaryCaptureRect:(struct opaqueCMSampleBuffer { }*)arg1 inputDimensions:(struct { int x1; int x2; })arg2;
 - (void)_updateUprightExifOrientationOnSampleBufferIfNeeded:(struct opaqueCMSampleBuffer { }*)arg1;
 - (bool)_zeroFillBuffers;
 - (bool)appliesUprightExifOrientationTransformToInput;
@@ -94,6 +109,7 @@
 - (bool)expectsMarkerBuffers;
 - (bool)flipHorizontal;
 - (bool)flipVertical;
+- (void)handleDroppedSample:(id)arg1 forInput:(id)arg2;
 - (bool)hasNonLiveConfigurationChanges;
 - (bool)htpcCompressionSupported;
 - (id)init;
@@ -128,6 +144,8 @@
 - (void)setPassesBuffersThroughWhenPossible:(bool)arg1;
 - (void)setRotationDegrees:(int)arg1;
 - (void)setUpdatesSampleBufferMetadataForIrisVIS:(bool)arg1;
+- (void)setValidOutputDimensions:(struct { int x1; int x2; })arg1;
 - (bool)updatesSampleBufferMetadataForIrisVIS;
+- (struct { int x1; int x2; })validOutputDimensions;
 
 @end

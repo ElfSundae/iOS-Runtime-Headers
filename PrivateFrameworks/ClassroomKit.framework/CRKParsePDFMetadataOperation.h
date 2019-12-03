@@ -14,9 +14,12 @@
 
 - (void).cxx_destruct;
 - (id)book;
+- (id)fileName;
 - (id)filePath;
 - (id)initWithPDFBook:(id)arg1 filePath:(id)arg2 parseImage:(bool)arg3;
 - (void)main;
 - (bool)parseImage;
+- (id)titleFromDictionaryRef:(struct CGPDFDictionary { }*)arg1;
+- (void)updateTitleWithDictionaryRef:(struct CGPDFDictionary { }*)arg1;
 
 @end

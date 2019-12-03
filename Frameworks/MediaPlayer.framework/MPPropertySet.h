@@ -2,20 +2,25 @@
    Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
  */
 
-@interface MPPropertySet : NSObject <NSCopying, NSMutableCopying, NSSecureCoding> {
+@interface MPPropertySet : NSObject <NSCopying, NSMutableCopying, NSSecureCoding, _MPStateDumpPropertyListTransformable> {
     NSSet * _properties;
     NSDictionary * _relationships;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (getter=isEmpty, nonatomic, readonly) bool empty;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSSet *properties;
 @property (nonatomic, readonly) NSDictionary *relationships;
+@property (readonly) Class superclass;
 
 + (id)emptyPropertySet;
 + (id)propertySetWithProperties:(id)arg1;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)_stateDumpObject;
 - (bool)containsPropertySet:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)debugDescription;

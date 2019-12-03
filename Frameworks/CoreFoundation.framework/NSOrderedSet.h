@@ -5,10 +5,10 @@
 @interface NSOrderedSet : NSObject <FCOrderedCollectionAdditions, NSCopying, NSFastEnumeration, NSMutableCopying, NSSecureCoding>
 
 @property (readonly) unsigned long long count;
+@property (nonatomic, readonly) NSOrderedSet *ef_flatten;
 
 // Image: /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
 
-+ (id)_alloc;
 + (id)allocWithZone:(struct _NSZone { }*)arg1;
 + (id)newOrderedSetWithObjects:(const id*)arg1 count:(unsigned long long)arg2;
 + (id)orderedSet;
@@ -33,7 +33,7 @@
 - (bool)containsObject:(id)arg1 inRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned long long)count;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (unsigned long long)countForObject:(id)arg1;
 - (unsigned long long)countForObject:(id)arg1 inRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (id)description;
@@ -96,6 +96,10 @@
 - (id)sortedArrayUsingComparator:(id /* block */)arg1;
 - (id)sortedArrayWithOptions:(unsigned long long)arg1 usingComparator:(id /* block */)arg2;
 
+// Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
+
+- (id)CKDescriptionPropertiesWithPublic:(bool)arg1 private:(bool)arg2 shouldExpand:(bool)arg3;
+
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
 + (bool)supportsSecureCoding;
@@ -113,15 +117,51 @@
 - (id)_valueForKeyPath:(id)arg1 ofObjectAtIndex:(unsigned long long)arg2;
 - (void)addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void*)arg4;
 - (Class)classForCoder;
+- (id)differenceFromOrderedSet:(id)arg1;
+- (id)differenceFromOrderedSet:(id)arg1 withOptions:(unsigned long long)arg2;
+- (id)differenceFromOrderedSet:(id)arg1 withOptions:(unsigned long long)arg2 usingEquivalenceTest:(id /* block */)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (id)filteredOrderedSetUsingPredicate:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)orderedSetByApplyingDifference:(id)arg1;
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2 context:(void*)arg3;
 - (void)setValue:(id)arg1 forKey:(id)arg2;
 - (id)sortedArrayUsingDescriptors:(id)arg1;
 - (id)valueForKey:(id)arg1;
 - (id)valueForKeyPath:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/BaseBoard.framework/BaseBoard
+
+- (id)bs_compactMap:(id /* block */)arg1;
+- (bool)bs_containsObjectPassingTest:(id /* block */)arg1;
+- (id)bs_filter:(id /* block */)arg1;
+- (id)bs_firstObjectPassingTest:(id /* block */)arg1;
+- (id)bs_map:(id /* block */)arg1;
+- (id)bs_reduce:(id)arg1 block:(id /* block */)arg2;
+
+// Image: /System/Library/PrivateFrameworks/ContentKit.framework/ContentKit
+
+- (id)orderedSetByAddingObject:(id)arg1;
+- (id)orderedSetByAddingObjectsFromArray:(id)arg1;
+- (id)orderedSetByAddingObjectsFromOrderedSet:(id)arg1;
+- (id)wf_mapAndFilterObjectsUsingBlock:(id /* block */)arg1;
+- (id)wf_mapObjectsUsingBlock:(id /* block */)arg1;
+
+// Image: /System/Library/PrivateFrameworks/EmailFoundation.framework/EmailFoundation
+
+- (bool)ef_all:(id /* block */)arg1;
+- (bool)ef_any:(id /* block */)arg1;
+- (id)ef_anyPassingTest:(id /* block */)arg1;
+- (id)ef_compactMap:(id /* block */)arg1;
+- (unsigned long long)ef_countObjectsPassingTest:(id /* block */)arg1;
+- (id)ef_filter:(id /* block */)arg1;
+- (id)ef_flatMap:(id /* block */)arg1;
+- (id)ef_flatten;
+- (id)ef_objectAfterObject:(id)arg1;
+- (id)ef_objectBeforeObject:(id)arg1;
+- (id)ef_partition:(id /* block */)arg1;
+- (id)ef_subarrayWithRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 
 // Image: /System/Library/PrivateFrameworks/GameCenterFoundation.framework/GameCenterFoundation
 
@@ -134,6 +174,14 @@
 - (id)_gkMapDictionaryWithKeyPath:(id)arg1 valueKeyPath:(id)arg2;
 - (id)_gkSortedOrderedSetUsingDescriptors:(id)arg1;
 - (id)_gkValuesForKeyPath:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/IntentsFoundation.framework/IntentsFoundation
+
+- (id)if_compactMap:(id /* block */)arg1;
+- (id)if_map:(id /* block */)arg1;
+- (id)if_orderedSetByAddingObject:(id)arg1;
+- (id)if_orderedSetByAddingObjectsFromArray:(id)arg1;
+- (id)if_orderedSetByAddingObjectsFromOrderedSet:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/Memories.framework/Memories
 
@@ -164,6 +212,7 @@
 
 // Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
 
+- (id)_pl_prettyDescriptionWithIndent:(long long)arg1;
 - (unsigned long long)pl_indexOfObjectIdenticalTo:(id)arg1;
 - (bool)pl_isSortedUsingComparator:(id /* block */)arg1;
 - (id)pl_shortDescription;

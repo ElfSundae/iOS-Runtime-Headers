@@ -14,8 +14,8 @@
     MFPGraphicsState * mParentGraphicsState;
 }
 
+- (void).cxx_destruct;
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })containerTransform;
-- (void)dealloc;
 - (id)initWithParentGraphicsState:(id)arg1 containerTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg2;
 - (id)parentGraphicsState;
 

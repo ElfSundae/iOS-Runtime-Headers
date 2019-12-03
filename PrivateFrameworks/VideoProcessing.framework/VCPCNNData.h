@@ -27,11 +27,11 @@
 - (id)context;
 - (int)convertCPUData2GPU;
 - (int)convertGPUData2CPU;
+- (int)copyImage:(struct __CVBuffer { }*)arg1 withChunk:(int)arg2;
 - (float*)data;
 - (void)dealloc;
 - (id)init;
 - (id)initWithGPUContext:(id)arg1;
-- (int)initWithImage:(struct __CVBuffer { }*)arg1 forChunk:(int)arg2;
 - (id)initWithParameters:(int)arg1 height:(int)arg2 width:(int)arg3 context:(id)arg4;
 - (bool)isInputOutput;
 - (id)mpsImg;

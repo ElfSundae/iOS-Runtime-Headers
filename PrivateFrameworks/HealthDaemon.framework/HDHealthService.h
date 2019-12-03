@@ -7,7 +7,7 @@
     NSObject<OS_dispatch_queue> * _dataQueue;
     bool  _deliverData;
     HDDeviceEntity * _deviceEntity;
-    int  _deviceInformationLoaded;
+    _Atomic bool  _deviceInformationLoaded;
     HDHealthPeripheral * _healthPeripheral;
     NSMutableArray * _pendingCharacteristicBuffer;
     NSMutableArray * _pendingObjectBuffer;
@@ -22,7 +22,6 @@
 
 @property (nonatomic, readonly) bool characteristicsDiscovered;
 @property bool deliverData;
-@property (nonatomic) int deviceInformationLoaded;
 @property (nonatomic, readonly) HDHealthPeripheral *healthPeripheral;
 @property (nonatomic, retain) NSMutableArray *pendingWrites;
 @property (nonatomic, readonly) NSUUID *peripheralUUID;
@@ -49,7 +48,6 @@
 - (bool)deliverData;
 - (id)description;
 - (void)deviceDisconnecting;
-- (int)deviceInformationLoaded;
 - (void)deviceInformationSetOnPeripheral;
 - (void)executeFirstWrite;
 - (id)healthPeripheral;
@@ -72,7 +70,6 @@
 - (id)serviceManager;
 - (id)servicesInProfile;
 - (void)setDeliverData:(bool)arg1;
-- (void)setDeviceInformationLoaded:(int)arg1;
 - (void)setPendingWrites:(id)arg1;
 - (void)setProfile:(id)arg1;
 - (void)setServiceId:(id)arg1;

@@ -22,7 +22,6 @@
 @property (nonatomic, retain) NSError *error;
 @property (nonatomic) unsigned long long errorSourceIdentifier;
 @property (nonatomic, readonly) bool hasAppAssetPromise;
-@property (nonatomic, readonly) bool hasAutoEnabledExtensionTypes;
 @property (nonatomic, readonly) bool hasInitialODRAssetPromises;
 @property (nonatomic, readonly) bool hasInstallOptions;
 @property (nonatomic, readonly) bool hasPlaceholderPromise;
@@ -36,31 +35,34 @@
 @property (nonatomic, readonly) IXAppInstallCoordinatorSeed *seed;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSUUID *uniqueIdentifier;
-@property (getter=isUserInitiated, nonatomic) bool userInitiated;
 @property (nonatomic, readonly, copy) NSArray *validInstallTypes;
 
 + (void)_asynchronouslyEnumerateCoordinatorsForIntent:(unsigned long long)arg1 usingBlock:(id /* block */)arg2;
 + (void)_beginInstallForURL:(id)arg1 consumeSource:(bool)arg2 options:(id)arg3 completion:(id /* block */)arg4;
 + (id)_coordinatorForAppWithBundleID:(id)arg1 withClientID:(unsigned long long)arg2 intent:(unsigned long long)arg3 createIfNotExisting:(bool)arg4 created:(bool*)arg5 error:(id*)arg6;
++ (id)_coordinatorForAppWithBundleID:(id)arg1 withClientID:(unsigned long long)arg2 intent:(unsigned long long)arg3 createIfNotExisting:(bool)arg4 requireMatchingIntent:(bool)arg5 created:(bool*)arg6 error:(id*)arg7;
++ (void)_demoteAppToPlaceholderWithBundleID:(id)arg1 forReason:(unsigned long long)arg2 waitForDeletion:(bool)arg3 completion:(id /* block */)arg4;
 + (bool)_synchronouslyEnumerateCoordinatorsForIntent:(unsigned long long)arg1 error:(id*)arg2 usingBlock:(id /* block */)arg3;
 + (void)cancelCoordinatorForAppWithBundleID:(id)arg1 withReason:(id)arg2 client:(unsigned long long)arg3 completion:(id /* block */)arg4;
 + (bool)cancelCoordinatorForAppWithBundleID:(id)arg1 withReason:(id)arg2 client:(unsigned long long)arg3 error:(id*)arg4;
 + (void)cancelCoordinatorsForAppsWithBundleIDs:(id)arg1 withReason:(id)arg2 client:(unsigned long long)arg3 completion:(id /* block */)arg4;
 + (bool)cancelCoordinatorsForAppsWithBundleIDs:(id)arg1 withReason:(id)arg2 client:(unsigned long long)arg3 error:(id*)arg4;
 + (Class)classForIntent:(unsigned long long)arg1;
-+ (bool)coordinationIsEnabled;
 + (id)coordinatorForAppWithBundleID:(id)arg1 withClientID:(unsigned long long)arg2 createIfNotExisting:(bool)arg3 created:(bool*)arg4 error:(id*)arg5;
 + (int)daemonPid;
 + (bool)demoteAppToPlaceholderWithBundleID:(id)arg1 forReason:(unsigned long long)arg2 error:(id*)arg3;
++ (void)demoteAppToPlaceholderWithBundleID:(id)arg1 forReason:(unsigned long long)arg2 waitForDeletion:(bool)arg3 completion:(id /* block */)arg4;
 + (bool)demoteAppToPlaceholderWithBundleID:(id)arg1 forReason:(unsigned long long)arg2 waitForDeletion:(bool)arg3 error:(id*)arg4;
 + (void)enumerateCoordinatorsUsingBlock:(id /* block */)arg1;
 + (bool)enumerateCoordinatorsWithBlock:(id /* block */)arg1 error:(id*)arg2;
 + (bool)enumerateCoordinatorsWithError:(id*)arg1 usingBlock:(id /* block */)arg2;
++ (id)existingCoordinatorForAppWithBundleID:(id)arg1 error:(id*)arg2;
 + (void)installApplication:(id)arg1 consumeSource:(bool)arg2 options:(id)arg3 completion:(id /* block */)arg4;
 + (void)installApplication:(id)arg1 options:(id)arg2 completion:(id /* block */)arg3;
 + (bool)killDaemonForTesting;
 + (void)pauseCoordinatorForAppWithBundleID:(id)arg1 completion:(id /* block */)arg2;
 + (bool)pauseCoordinatorForAppWithBundleID:(id)arg1 error:(id*)arg2;
++ (bool)postNSCurrentLocaleDidChangeNotification;
 + (void)prioritizeCoordinatorForAppWithBundleID:(id)arg1 completion:(id /* block */)arg2;
 + (bool)prioritizeCoordinatorForAppWithBundleID:(id)arg1 error:(id*)arg2;
 + (bool)purgeAllCoordinatorsAndPromisesForCreator:(unsigned long long)arg1;
@@ -73,6 +75,7 @@
 + (bool)uninstallAppWithBundleID:(id)arg1 error:(id*)arg2;
 + (void)uninstallAppWithBundleID:(id)arg1 requestUserConfirmation:(bool)arg2 completion:(id /* block */)arg3;
 + (void)uninstallAppWithBundleID:(id)arg1 requestUserConfirmation:(bool)arg2 waitForDeletion:(bool)arg3 completion:(id /* block */)arg4;
++ (bool)uninstallAppWithBundleID:(id)arg1 requestUserConfirmation:(bool)arg2 waitForDeletion:(bool)arg3 error:(id*)arg4;
 
 - (void).cxx_destruct;
 - (oneway void)_clientDelegate_didCancelWithError:(id)arg1 client:(unsigned long long)arg2;
@@ -94,10 +97,10 @@
 - (unsigned long long)creatorIdentifier;
 - (void)dealloc;
 - (id)description;
+- (id)deviceSecurityPromiseWithError:(id*)arg1;
 - (id)error;
 - (unsigned long long)errorSourceIdentifier;
 - (bool)hasAppAssetPromise;
-- (bool)hasAutoEnabledExtensionTypes;
 - (bool)hasInitialODRAssetPromises;
 - (bool)hasInstallOptions;
 - (bool)hasPlaceholderPromise;
@@ -112,7 +115,6 @@
 - (bool)isComplete;
 - (bool)isEqual:(id)arg1;
 - (bool)isPaused:(bool*)arg1 withError:(id*)arg2;
-- (bool)isUserInitiated;
 - (id)localDescription;
 - (id)observer;
 - (id)observerCalloutQueue;
@@ -125,8 +127,8 @@
 - (id)seed;
 - (bool)setAppAssetPromise:(id)arg1 error:(id*)arg2;
 - (bool)setAppAssetPromiseResponsibleClient:(unsigned long long)arg1 error:(id*)arg2;
-- (bool)setAutoEnabledExtensionTypes:(id)arg1 error:(id*)arg2;
 - (void)setComplete:(bool)arg1;
+- (bool)setDeviceSecurityPromise:(id)arg1 error:(id*)arg2;
 - (void)setError:(id)arg1;
 - (void)setErrorSourceIdentifier:(unsigned long long)arg1;
 - (bool)setImportance:(unsigned long long)arg1 error:(id*)arg2;
@@ -137,7 +139,6 @@
 - (bool)setPlaceholderPromise:(id)arg1 error:(id*)arg2;
 - (bool)setPreparationPromise:(id)arg1 withError:(id*)arg2;
 - (bool)setUserDataPromise:(id)arg1 error:(id*)arg2;
-- (void)setUserInitiated:(bool)arg1;
 - (id)uniqueIdentifier;
 - (id)userDataPromiseWithError:(id*)arg1;
 - (id)userDataRestoreShouldBegin:(bool*)arg1;

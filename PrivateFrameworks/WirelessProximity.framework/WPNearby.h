@@ -5,17 +5,13 @@
 @interface WPNearby : WPClient {
     long long  _btBandwidthState;
     <WPNearbyDelegate> * _delegate;
-    NSMutableDictionary * _discoveredPeers;
     NSArray * _leCapablePeers;
-    NSMutableSet * _lePipePeers;
     NSMutableDictionary * _transfers;
 }
 
 @property long long btBandwidthState;
 @property (nonatomic) <WPNearbyDelegate> *delegate;
-@property (nonatomic, retain) NSMutableDictionary *discoveredPeers;
 @property (retain) NSArray *leCapablePeers;
-@property (retain) NSMutableSet *lePipePeers;
 @property (retain) NSMutableDictionary *transfers;
 
 + (unsigned char)clientTypeFromNearbyType:(long long)arg1;
@@ -26,7 +22,7 @@
 - (void)advertisingFailedToStart:(id)arg1 ofType:(unsigned char)arg2;
 - (void)advertisingPendingOfType:(unsigned char)arg1;
 - (void)advertisingStartedOfType:(unsigned char)arg1;
-- (void)advertisingStoppedOfType:(unsigned char)arg1;
+- (void)advertisingStoppedOfType:(unsigned char)arg1 withError:(id)arg2;
 - (void)bandwidthStateUpdated:(id)arg1;
 - (long long)btBandwidthState;
 - (void)central:(id)arg1 subscribed:(bool)arg2 toCharacteristic:(id)arg3 inService:(id)arg4;
@@ -41,28 +37,25 @@
 - (void)disconnectedDevice:(id)arg1 withError:(id)arg2;
 - (void)disconnectedDeviceOverLEPipe:(id)arg1 withError:(id)arg2;
 - (void)discoveredCharacteristicsAndServices:(id)arg1 forPeripheral:(id)arg2;
-- (id)discoveredPeers;
 - (void)failedToStartTrackingPeer:(id)arg1 error:(id)arg2;
 - (void)foundPeer:(id)arg1 ofType:(unsigned char)arg2;
 - (id)init;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2;
 - (void)invalidate;
 - (id)leCapablePeers;
-- (id)lePipePeers;
 - (void)lostPeer:(id)arg1 ofType:(unsigned char)arg2;
-- (void)pipeStateDidChange:(long long)arg1;
 - (void)populateClientGATT:(id /* block */)arg1;
 - (void)receivedData:(id)arg1 forCharacteristic:(id)arg2 inService:(id)arg3 forPeripheral:(id)arg4;
+- (void)receivedData:(id)arg1 fromEndpoint:(id)arg2 forPeripheral:(id)arg3;
 - (void)scanningFailedToStart:(id)arg1 ofType:(unsigned char)arg2;
 - (void)scanningStartedOfType:(unsigned char)arg1;
 - (void)scanningStoppedOfType:(unsigned char)arg1;
 - (void)sendData:(id)arg1 toPeer:(id)arg2;
 - (void)sentData:(id)arg1 forCharacteristic:(id)arg2 inService:(id)arg3 forPeripheral:(id)arg4 withError:(id)arg5;
+- (void)sentData:(id)arg1 toEndpoint:(id)arg2 forPeripheral:(id)arg3 withError:(id)arg4;
 - (void)setBtBandwidthState:(long long)arg1;
 - (void)setDelegate:(id)arg1;
-- (void)setDiscoveredPeers:(id)arg1;
 - (void)setLeCapablePeers:(id)arg1;
-- (void)setLePipePeers:(id)arg1;
 - (void)setTransfers:(id)arg1;
 - (void)startAdvertisingOfType:(long long)arg1 data:(id)arg2 priority:(long long)arg3 mode:(long long)arg4;
 - (void)startAdvertisingOfType:(long long)arg1 data:(id)arg2 priority:(long long)arg3 mode:(long long)arg4 options:(id)arg5;

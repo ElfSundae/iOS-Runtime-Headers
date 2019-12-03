@@ -6,14 +6,14 @@
     UIImageView * _iconImageView;
     UIView * _lineView;
     UIImageView * _ringImageView;
-    HKRingsView * _ringsView;
+    ARUIRingsView * _ringsView;
     UILabel * _typeLabel;
 }
 
 @property (nonatomic, retain) UIImageView *iconImageView;
 @property (nonatomic, retain) UIView *lineView;
 @property (nonatomic, retain) UIImageView *ringImageView;
-@property (nonatomic, retain) HKRingsView *ringsView;
+@property (nonatomic, retain) ARUIRingsView *ringsView;
 @property (nonatomic, retain) UILabel *typeLabel;
 
 + (double)preferredHeightForWorkout:(id)arg1 fittingWidth:(double)arg2;

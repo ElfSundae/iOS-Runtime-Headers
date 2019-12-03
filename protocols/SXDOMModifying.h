@@ -5,6 +5,6 @@
 
 @required
 
-- (SXDOM *)modifyDOM:(SXDOM *)arg1 context:(id <SXDOMModificationContext>)arg2;
+- (void)modifyDOM:(SXMutableDOM *)arg1 context:(id <SXDOMModificationContext>)arg2;
 
 @end

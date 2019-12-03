@@ -6,6 +6,7 @@
     NSString * _cloudKitUUID;
     NSString * _containerID;
     struct { 
+        unsigned int pcsReportManateeStatus : 1; 
         unsigned int operation : 1; 
         unsigned int options : 1; 
         unsigned int reason : 1; 
@@ -17,6 +18,7 @@
     int  _operation;
     NSString * _operationUUID;
     unsigned int  _options;
+    unsigned long long  _pcsReportManateeStatus;
     int  _reason;
     NSString * _syncCirclePrefix;
     NSString * _syncUUID;
@@ -33,12 +35,14 @@
 @property (nonatomic) bool hasOperation;
 @property (nonatomic, readonly) bool hasOperationUUID;
 @property (nonatomic) bool hasOptions;
+@property (nonatomic) bool hasPcsReportManateeStatus;
 @property (nonatomic) bool hasReason;
 @property (nonatomic, readonly) bool hasSyncCirclePrefix;
 @property (nonatomic, readonly) bool hasSyncUUID;
 @property (nonatomic) int operation;
 @property (nonatomic, retain) NSString *operationUUID;
 @property (nonatomic) unsigned int options;
+@property (nonatomic) unsigned long long pcsReportManateeStatus;
 @property (nonatomic) int reason;
 @property (nonatomic, retain) NSString *syncCirclePrefix;
 @property (nonatomic, retain) NSString *syncUUID;
@@ -61,6 +65,7 @@
 - (bool)hasOperation;
 - (bool)hasOperationUUID;
 - (bool)hasOptions;
+- (bool)hasPcsReportManateeStatus;
 - (bool)hasReason;
 - (bool)hasSyncCirclePrefix;
 - (bool)hasSyncUUID;
@@ -71,6 +76,7 @@
 - (id)operationAsString:(int)arg1;
 - (id)operationUUID;
 - (unsigned int)options;
+- (unsigned long long)pcsReportManateeStatus;
 - (bool)readFrom:(id)arg1;
 - (int)reason;
 - (id)reasonAsString:(int)arg1;
@@ -82,10 +88,12 @@
 - (void)setHasInternalSettingManateeEnabled:(bool)arg1;
 - (void)setHasOperation:(bool)arg1;
 - (void)setHasOptions:(bool)arg1;
+- (void)setHasPcsReportManateeStatus:(bool)arg1;
 - (void)setHasReason:(bool)arg1;
 - (void)setOperation:(int)arg1;
 - (void)setOperationUUID:(id)arg1;
 - (void)setOptions:(unsigned int)arg1;
+- (void)setPcsReportManateeStatus:(unsigned long long)arg1;
 - (void)setReason:(int)arg1;
 - (void)setSyncCirclePrefix:(id)arg1;
 - (void)setSyncUUID:(id)arg1;

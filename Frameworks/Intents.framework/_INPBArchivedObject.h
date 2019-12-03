@@ -3,11 +3,13 @@
  */
 
 @interface _INPBArchivedObject : PBCodable <NSCopying, NSSecureCoding, _INPBArchivedObject> {
+    bool  __encodeLegacyGloryData;
     struct { }  _has;
     NSData * _messageData;
     NSString * _typeName;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool hasMessageData;
@@ -17,12 +19,18 @@
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *typeName;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasMessageData;
 - (bool)hasTypeName;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)messageData;
 - (bool)readFrom:(id)arg1;

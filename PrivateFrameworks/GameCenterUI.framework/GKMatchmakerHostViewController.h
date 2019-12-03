@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/GameCenterUI.framework/GameCenterUI
  */
 
-@interface GKMatchmakerHostViewController : GKUIRemoteViewController <GKMatchmakerHostProtocol, GKMatchmakerServiceProtocol> {
+@interface GKMatchmakerHostViewController : GKExtensionRemoteViewController <GKMatchmakerHostProtocol, GKMatchmakerServiceProtocol> {
     GKMatchmakerViewController * _delegateWeak;
 }
 

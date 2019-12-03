@@ -7,7 +7,6 @@
     NSMutableDictionary * _allSubtypeParameters;
     BBSectionSubtypeParameters * _defaultSubtypeParameters;
     NSString * _displayName;
-    bool  _displaysCriticalBulletins;
     BBSectionIcon * _icon;
     unsigned long long  _messageNumberOfLines;
     bool  _orderSectionUsingRecencyDate;
@@ -20,7 +19,6 @@
 @property (nonatomic, retain) NSMutableDictionary *allSubtypeParameters;
 @property (nonatomic, retain) BBSectionSubtypeParameters *defaultSubtypeParameters;
 @property (nonatomic, copy) NSString *displayName;
-@property (nonatomic) bool displaysCriticalBulletins;
 @property (nonatomic, retain) BBSectionIcon *icon;
 @property (nonatomic) unsigned long long messageNumberOfLines;
 @property (nonatomic) bool orderSectionUsingRecencyDate;
@@ -36,7 +34,6 @@
 - (id)allSubtypes;
 - (id)defaultSubtypeParameters;
 - (id)displayName;
-- (bool)displaysCriticalBulletins;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)icon;
@@ -50,7 +47,6 @@
 - (void)setAllSubtypeParameters:(id)arg1;
 - (void)setDefaultSubtypeParameters:(id)arg1;
 - (void)setDisplayName:(id)arg1;
-- (void)setDisplaysCriticalBulletins:(bool)arg1;
 - (void)setIcon:(id)arg1;
 - (void)setMessageNumberOfLines:(unsigned long long)arg1;
 - (void)setOrderSectionUsingRecencyDate:(bool)arg1;

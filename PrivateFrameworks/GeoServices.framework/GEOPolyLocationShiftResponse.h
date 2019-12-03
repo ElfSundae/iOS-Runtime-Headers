@@ -17,6 +17,8 @@
 @property (nonatomic) double radius;
 @property (nonatomic) int status;
 
++ (bool)isValid:(id)arg1;
+
 - (int)StringAsStatus:(id)arg1;
 - (void)addParameters:(double)arg1;
 - (void)clearParameters;
@@ -32,6 +34,7 @@
 - (double)parametersAtIndex:(unsigned long long)arg1;
 - (unsigned long long)parametersCount;
 - (double)radius;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setParameters:(double*)arg1 count:(unsigned long long)arg2;
 - (void)setRadius:(double)arg1;

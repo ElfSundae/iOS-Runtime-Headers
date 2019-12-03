@@ -3,8 +3,8 @@
  */
 
 @interface PFDispatchQueueBlockOnDemandExtension : PFDispatchQueueExtension <PFDispatchQueueBlockOnDemandExecuting> {
-    unsigned long long  _countToExecute;
-    unsigned long long  _enqueuedCount;
+    _Atomic unsigned long long  _countToExecute;
+    _Atomic unsigned long long  _enqueuedCount;
     PFExtendedDispatchQueue * _queue;
 }
 

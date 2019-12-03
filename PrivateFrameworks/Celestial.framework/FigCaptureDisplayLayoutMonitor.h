@@ -5,24 +5,26 @@
 @interface FigCaptureDisplayLayoutMonitor : NSObject {
     struct OpaqueFigSimpleMutex { } * _appsLock;
     NSMutableArray * _fullScreenApps;
-    int  _globalLayoutState;
     FBSDisplayLayoutMonitor * _layoutMonitor;
+    FBSDisplayLayoutMonitorConfiguration * _layoutMonitorConfiguration;
     NSMutableArray * _layoutObservers;
     struct OpaqueFigSimpleMutex { } * _layoutObserversLock;
     NSMutableArray * _nonFullScreenApps;
+    NSMutableArray * _obscuredApps;
 }
 
 @property (getter=isOnHomeScreen, nonatomic, readonly) bool onHomeScreen;
 @property (getter=isOnLockScreen, nonatomic, readonly) bool onLockScreen;
 
 + (int)_openFrontBoardServicesFramework;
++ (void)initialize;
 + (id)sharedDisplayLayoutMonitor;
 
+- (id)_init;
 - (void)_updateCurrentLayout:(id)arg1;
-- (void)_updateObserversWithForegroundApps:(id)arg1 layoutState:(int)arg2;
+- (void)_updateObserversWithForegroundApps:(id)arg1 obscuredApps:(id)arg2;
 - (void)addLayoutObserver:(id)arg1;
 - (void)dealloc;
-- (id)init;
 - (bool)isOnHomeScreen;
 - (bool)isOnLockScreen;
 - (void)removeLayoutObserver:(id)arg1;

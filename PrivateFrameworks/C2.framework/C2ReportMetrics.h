@@ -4,6 +4,7 @@
 
 @interface C2ReportMetrics : NSObject <C2RequestDelegate> {
     bool  _ignoreRequestThrottle;
+    C2MetricOptions * _metricOptions;
     NSMutableURLRequest * _metricRequest;
     NSURLSessionTask * _metricTask;
     C2RequestOptions * _metricsTransportRequestOptions;
@@ -17,6 +18,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool ignoreRequestThrottle;
+@property (nonatomic, retain) C2MetricOptions *metricOptions;
 @property (nonatomic, retain) NSMutableURLRequest *metricRequest;
 @property (nonatomic, retain) NSURLSessionTask *metricTask;
 @property (nonatomic, retain) C2RequestOptions *metricsTransportRequestOptions;
@@ -47,6 +49,7 @@
 - (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(id /* block */)arg5;
 - (bool)ignoreRequestThrottle;
 - (id)initWithMetricRequest:(id)arg1 metricRequestOptions:(id)arg2 ignoreRequestThrottle:(bool)arg3 requestThrottleIdentifier:(id)arg4 requestThrottleLimit:(unsigned long long)arg5;
+- (id)metricOptions;
 - (id)metricRequest;
 - (id)metricTask;
 - (id)metricsTransportRequestOptions;
@@ -54,6 +57,7 @@
 - (unsigned long long)requestThrottleLimit;
 - (void)send;
 - (void)setIgnoreRequestThrottle:(bool)arg1;
+- (void)setMetricOptions:(id)arg1;
 - (void)setMetricRequest:(id)arg1;
 - (void)setMetricTask:(id)arg1;
 - (void)setMetricsTransportRequestOptions:(id)arg1;
@@ -66,6 +70,6 @@
 
 // Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
 
-+ (void)reportCKEventMetric:(id)arg1 proxy:(id)arg2;
++ (void)reportCKEventMetric:(id)arg1 proxy:(id)arg2 completionHandler:(id /* block */)arg3;
 
 @end

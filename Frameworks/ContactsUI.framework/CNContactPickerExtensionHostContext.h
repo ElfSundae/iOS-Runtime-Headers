@@ -19,6 +19,7 @@
 - (id)_derivedExtensionAuxiliaryHostProtocol;
 - (void)invalidateSelectionAnimated:(bool)arg1;
 - (void)pickerDidCancel;
+- (void)pickerDidSelectAddNewContact;
 - (void)pickerDidSelectContact:(id)arg1 property:(id)arg2;
 - (void)pickerDidSelectContacts:(id)arg1 properties:(id)arg2;
 - (void)setViewController:(id)arg1;

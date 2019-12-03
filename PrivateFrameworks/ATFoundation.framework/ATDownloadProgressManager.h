@@ -16,6 +16,7 @@
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
+- (void)assetLinkController:(id)arg1 didChangeDownloadStateForAssets:(id)arg2;
 - (void)assetLinkController:(id)arg1 didEnqueueAsset:(id)arg2;
 - (void)assetLinkController:(id)arg1 didFinishAsset:(id)arg2;
 - (void)assetLinkController:(id)arg1 didProcessFinishedAsset:(id)arg2;

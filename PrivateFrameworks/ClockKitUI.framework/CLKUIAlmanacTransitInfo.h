@@ -11,7 +11,8 @@
     }  _location;
     NSDate * _rise;
     NSDate * _set;
-    NSDate * _transit;
+    NSArray * _solarMidnights;
+    NSDate * _solarNoon;
 }
 
 @property (nonatomic) long long constantSun;
@@ -19,7 +20,8 @@
 @property (nonatomic) struct { double x1; double x2; } location;
 @property (nonatomic, retain) NSDate *rise;
 @property (nonatomic, retain) NSDate *set;
-@property (nonatomic, retain) NSDate *transit;
+@property (nonatomic, retain) NSArray *solarMidnights;
+@property (nonatomic, retain) NSDate *solarNoon;
 
 + (id)transitInfoForDate:(id)arg1;
 + (id)transitInfoForDate:(id)arg1 city:(id)arg2;
@@ -44,7 +46,9 @@
 - (void)setLocation:(struct { double x1; double x2; })arg1;
 - (void)setRise:(id)arg1;
 - (void)setSet:(id)arg1;
-- (void)setTransit:(id)arg1;
-- (id)transit;
+- (void)setSolarMidnights:(id)arg1;
+- (void)setSolarNoon:(id)arg1;
+- (id)solarMidnights;
+- (id)solarNoon;
 
 @end

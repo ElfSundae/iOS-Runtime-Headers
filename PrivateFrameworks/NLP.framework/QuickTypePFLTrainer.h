@@ -6,9 +6,6 @@
     unsigned long long  _batchSize;
     NSNumber * _learningRate;
     unsigned long long  _maxSequenceLength;
-    void * _model;
-    NSData * _modelData;
-    NSString * _seedModelPath;
     NSString * _updatedModelPath;
 }
 
@@ -17,17 +14,12 @@
 @property (nonatomic, readonly) unsigned long long maxSequenceLength;
 @property (nonatomic, readonly, copy) NSString *updatedModelPath;
 
-+ (float*)dumpMontreal:(void*)arg1 toFlatVectorWithDimension:(unsigned long long*)arg2;
-
 - (unsigned long long)batchSize;
 - (float*)copyWeightUpdates:(unsigned long long*)arg1;
-- (void)dealloc;
 - (id)evaluateOn:(id)arg1;
 - (id)initWithSeedModelPath:(id)arg1;
 - (id)learningRate;
-- (void)loadPretrainedModel:(id)arg1;
 - (unsigned long long)maxSequenceLength;
-- (id)privatizeUsingGamma:(double)arg1 andNu:(double)arg2;
 - (void)reset;
 - (void)setBatchSize:(unsigned long long)arg1;
 - (void)setLearningRate:(id)arg1;

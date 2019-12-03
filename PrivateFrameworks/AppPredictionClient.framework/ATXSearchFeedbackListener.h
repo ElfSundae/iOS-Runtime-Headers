@@ -4,23 +4,35 @@
 
 @interface ATXSearchFeedbackListener : NSObject <SFFeedbackListener> {
     unsigned char  _actionConsumerSubType;
-    PETGoalConversionEventTracker * _apAppPredicitonsShownTracker;
+    PETGoalConversionEventTracker * _apAppPredictionsShownTracker;
     unsigned char  _appConsumerSubType;
-    bool  _backgroundActionExecuted;
     bool  _cardWasEngaged;
     NSArray * _currentZKWItems;
+    struct { 
+        struct { 
+            unsigned long long lastEventTimestamp; 
+        } resultsDidBecomeVisible; 
+        struct { 
+            unsigned long long lastEventTimestamp; 
+        } didStartSearch; 
+        struct { 
+            unsigned long long lastEventTimestamp; 
+        } searchViewDidAppear; 
+        struct { 
+            unsigned long long lastEventTimestamp; 
+        } searchViewDidDisappear; 
+        struct { 
+            unsigned long long lastEventTimestamp; 
+        } didEngageResult; 
+        struct { 
+            unsigned long long lastEventTimestamp; 
+        } didEngageCardSection; 
+    }  _debounce;
     SFSearchResult * _engagedResult;
     NSMutableArray * _explicitlyDismissedActions;
-    unsigned long long  _lastDidEngageCardSectionTimeStamp;
-    unsigned long long  _lastDidEngageResultTimeStamp;
-    unsigned long long  _lastDidStartSearchTimeStamp;
-    unsigned long long  _lastResultsDidBecomeVisibleTimeStamp;
-    unsigned long long  _lastSearchViewDidAppearTimeStamp;
-    unsigned long long  _lastSearchViewDidDisappearTimeStamp;
     NSString * _query;
-    NSMutableArray * _testingActionFeedback;
-    NSMutableArray * _testingAppFeedback;
-    bool  _testingMode;
+    bool  _shouldDebounce;
+    NSObject<ATXSearchFeedbackListenerTarget> * _target;
     bool  _waitingForPredictedActionFeedback;
     bool  _waitingForPredictedAppFeedback;
 }
@@ -28,29 +40,30 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) bool shouldDebounce;
 @property (readonly) Class superclass;
 
++ (id)mergeNewSearchResults:(id)arg1 intoExistingResults:(id)arg2;
+
 - (void).cxx_destruct;
-- (void)_logZkwDisplayTime:(unsigned long long)arg1;
+- (bool)_isDuplicateEventWithState:(struct { unsigned long long x1; }*)arg1 timestamp:(unsigned long long)arg2 method:(SEL)arg3;
 - (void)_resetState;
-- (void)_sendActionFeedback:(id)arg1 searchResults:(id)arg2;
+- (void)_sendActionFeedback:(id)arg1 searchedActionType:(unsigned long long)arg2 engagedAppString:(id)arg3 searchResults:(id)arg4 executedInBackground:(bool)arg5;
 - (void)_sendAppFeedback:(id)arg1 searchResults:(id)arg2;
-- (void)_sendFeedbackAndDoLogging;
-- (void)_setActionConsumerSubType:(unsigned char)arg1;
-- (void)_setAppConsumerSubType:(unsigned char)arg1;
-- (void)_setBackgroundActionExecuted:(bool)arg1;
-- (void)_setCurrentZKWItems:(id)arg1 triggerEvent:(unsigned long long)arg2;
+- (void)_sendFeedbackForEngagement:(bool)arg1 actionExecutedInBackground:(bool)arg2;
+- (void)_setAppConsumerSubType:(unsigned char)arg1 actionConsumerSubType:(unsigned char)arg2;
 - (void)_setQuery:(id)arg1;
+- (void)_zkwItemsDidAppear:(id)arg1;
 - (void)cardViewDidDisappear:(id)arg1;
 - (void)didEngageCardSection:(id)arg1;
 - (void)didEngageResult:(id)arg1;
 - (void)didStartSearch:(id)arg1;
-- (void)disableTestingMode;
-- (void)enableTestingMode;
-- (id)getTestingAtxFeedback;
 - (id)init;
+- (id)initWithTarget:(id)arg1;
 - (void)resultsDidBecomeVisible:(id)arg1;
 - (void)searchViewDidAppear:(id)arg1;
 - (void)searchViewDidDisappear:(id)arg1;
+- (void)setShouldDebounce:(bool)arg1;
+- (bool)shouldDebounce;
 
 @end

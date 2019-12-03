@@ -10,7 +10,7 @@
 @property (nonatomic, readonly) NSString *mathMLTag;
 
 - (void).cxx_destruct;
-- (id)childSpeakableSegmentsWithSpeakingStyle:(int)arg1 upToDepth:(unsigned long long)arg2 parentTreePosition:(id)arg3 childIndex:(unsigned long long*)arg4;
+- (id)childSpeakableSegmentsWithSpeakingStyle:(long long)arg1 upToDepth:(unsigned long long)arg2 parentTreePosition:(id)arg3 childIndex:(unsigned long long*)arg4;
 - (id)children;
 - (id)description;
 - (bool)hasSimpleArrayOfChildren;
@@ -21,8 +21,8 @@
 - (id)mathMLString;
 - (id)mathMLTag;
 - (id)prefixForChildAtIndex:(unsigned long long)arg1;
-- (id)speakableDescriptionWithSpeakingStyle:(int)arg1 arePausesAllowed:(bool)arg2;
-- (id)speakableSegmentsWithSpeakingStyle:(int)arg1 upToDepth:(unsigned long long)arg2 treePosition:(id)arg3;
+- (id)speakableDescriptionWithSpeakingStyle:(long long)arg1 arePausesAllowed:(bool)arg2;
+- (id)speakableSegmentsWithSpeakingStyle:(long long)arg1 upToDepth:(unsigned long long)arg2 treePosition:(id)arg3;
 - (id)subExpressions;
 - (id)suffixForChildAtIndex:(unsigned long long)arg1;
 

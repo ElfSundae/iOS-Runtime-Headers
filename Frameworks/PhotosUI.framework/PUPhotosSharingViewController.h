@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUPhotosSharingViewController : UIViewController <PHAssetCollectionDataSource, PUActivityViewControllerDelegate, PUOneUpAssetTransitionViewController, PUOneUpPhotosSharingTransitionViewController, PUPhotoViewContentHelperDelegate, PUPhotosSharingCollectionViewLayoutDelegate, PUPhotosSharingTransitionViewController, PUScrollViewSpeedometerDelegate, PUTransitionViewAnimatorDelegate, PXPhotoLibraryUIChangeObserver, UIActivityViewControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate> {
+@interface PUPhotosSharingViewController : UIViewController <PHAssetCollectionDataSource, PUActivityViewControllerDelegate, PUOneUpAssetTransitionViewController, PUOneUpPhotosSharingTransitionViewController, PUPhotoViewContentHelperDelegate, PUPhotosSharingCollectionViewLayoutDelegate, PUPhotosSharingTransitionViewController, PUScrollViewSpeedometerDelegate, PUTransitionViewAnimatorDelegate, PXPhotoLibraryUIChangeObserver, UIActivityViewControllerAirDropDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate> {
     PXAssetBadgeManager * __badgeManager;
     PHCachingImageManager * __cachingImageManager;
     PUActivityViewController * __embeddedActivityViewController;
@@ -30,10 +30,10 @@
     UICollectionViewLayout * __transitionLayout;
     PUActivityViewController * __unembeddedActivityViewController;
     bool  __viewInSyncWithModel;
-    struct __CFString { } * _aggregateKey;
+    const struct __CFString { } * _aggregateKey;
     bool  _allowAirPlayActivity;
     NSMutableDictionary * _assetItemsByAssetIdentifier;
-    PUOneUpAssetTransitionInfo * _assetTransitionInfo;
+    PUAssetTransitionInfo * _assetTransitionInfo;
     double  _cachedEmbeddedActivityViewHeight;
     UIBarButtonItem * _cancelButton;
     bool  _defaultIrisEnabled;
@@ -46,7 +46,6 @@
     NSIndexPath * _inFlightReferenceIndexPath;
     bool  _inFlightRotation;
     NSMapTable * _indexPathsByOptionView;
-    bool  _lockScreenCamera;
     UICollectionView * _mainCollectionView;
     PUPhotosSharingCollectionViewLayout * _mainCollectionViewLayout;
     UIBarButtonItem * _nextButton;
@@ -86,10 +85,10 @@
 @property (setter=_setTransitionLayout:, nonatomic, retain) UICollectionViewLayout *_transitionLayout;
 @property (setter=_setUnembeddedActivityViewController:, nonatomic, retain) PUActivityViewController *_unembeddedActivityViewController;
 @property (getter=_isViewInSyncWithModel, setter=_setViewInSyncWithModel:, nonatomic) bool _viewInSyncWithModel;
-@property (nonatomic) struct __CFString { }*aggregateKey;
+@property (nonatomic) const struct __CFString { }*aggregateKey;
 @property (nonatomic) bool allowAirPlayActivity;
 @property (nonatomic, readonly) PHFetchResult *assetCollectionsFetchResult;
-@property (nonatomic, retain) PUOneUpAssetTransitionInfo *assetTransitionInfo;
+@property (nonatomic, retain) PUAssetTransitionInfo *assetTransitionInfo;
 @property (nonatomic, readonly) PHAsset *currentAsset;
 @property (nonatomic, readonly) NSIndexPath *currentIndexPath;
 @property (readonly, copy) NSString *debugDescription;
@@ -99,7 +98,6 @@
 @property (nonatomic, copy) NSArray *excludedActivityTypes;
 @property (nonatomic, readonly) NSPredicate *filterPredicate;
 @property (readonly) unsigned long long hash;
-@property (getter=isLockScreenCamera, nonatomic) bool lockScreenCamera;
 @property (setter=_setMainCollectionView:, nonatomic, retain) UICollectionView *mainCollectionView;
 @property (setter=_setMainCollectionViewLayout:, nonatomic, retain) PUPhotosSharingCollectionViewLayout *mainCollectionViewLayout;
 @property (nonatomic, retain) PHPerson *person;
@@ -148,6 +146,7 @@
 - (void)_handleTapAtIndexPath:(id)arg1;
 - (void)_handleTapInMainCollectionView:(id)arg1;
 - (double)_horizontalOffsetInCollectionView:(id)arg1 forCenteringOnItemAtIndexPath:(id)arg2;
+- (void)_incrementShareCountForSelectedAssets;
 - (unsigned long long)_indexForPhotoCollection:(id)arg1;
 - (id)_indexPathInCollectionView:(id)arg1 closestToContentOffsetX:(double)arg2;
 - (id)_indexPathInCollectionView:(id)arg1 closestToPoint:(struct CGPoint { double x1; double x2; })arg2;
@@ -220,11 +219,12 @@
 - (void)_updatePhotoForAsset:(id)arg1 cell:(id)arg2 atIndexPath:(id)arg3;
 - (void)_updatePreheatedAssets;
 - (void)_updateVisibleCells;
-- (id)_updatedActivityAssetItemsForAssets:(id)arg1;
+- (id)_updatedActivityAssetItemsForAssets:(id)arg1 outAssetIdentifiers:(id)arg2;
 - (id)_validIndexPathFromIndexPath:(id)arg1;
+- (void)activityViewControllerDidFinishAirdropTransfer:(id)arg1;
 - (bool)activityViewControllerShouldCancelAfterPreparationCanceled:(id)arg1;
 - (void)activityViewControllerWillStartAirdropTransfer:(id)arg1;
-- (struct __CFString { }*)aggregateKey;
+- (const struct __CFString { }*)aggregateKey;
 - (bool)allowAirPlayActivity;
 - (id)assetCollectionsFetchResult;
 - (id)assetTransitionInfo;
@@ -248,7 +248,6 @@
 - (bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (bool)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithPhotoCollectionsFetchResult:(id)arg1 assetsFetchResults:(id)arg2 filterPredicate:(id)arg3 selection:(id)arg4;
-- (bool)isLockScreenCamera;
 - (double)layout:(id)arg1 collectionView:(id)arg2 bottomBadgeInsetforItemAtIndexPath:(id)arg3;
 - (void)layout:(id)arg1 collectionView:(id)arg2 itemAtIndexPath:(id)arg3 didChangeToVisibleFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg4;
 - (id)layout:(id)arg1 collectionView:(id)arg2 referenceIndexPathWithOffsetX:(double*)arg3;
@@ -281,12 +280,11 @@
 - (void)scrollViewSpeedometer:(id)arg1 regimeDidChange:(long long)arg2 from:(long long)arg3;
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint { double x1; double x2; })arg2 targetContentOffset:(inout struct CGPoint { double x1; double x2; }*)arg3;
-- (void)setAggregateKey:(struct __CFString { }*)arg1;
+- (void)setAggregateKey:(const struct __CFString { }*)arg1;
 - (void)setAllowAirPlayActivity:(bool)arg1;
 - (void)setAssetTransitionInfo:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setExcludedActivityTypes:(id)arg1;
-- (void)setLockScreenCamera:(bool)arg1;
 - (void)setOneUpPhotosSharingTransitionContext:(id)arg1;
 - (void)setOneUpPhotosSharingTransitionInfo:(id)arg1;
 - (void)setPerson:(id)arg1;

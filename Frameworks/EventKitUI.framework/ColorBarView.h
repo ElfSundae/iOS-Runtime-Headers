@@ -5,16 +5,19 @@
 @interface ColorBarView : UIView {
     UIColor * _color;
     bool  _dashedLines;
+    bool  _hasRoundedCorners;
 }
 
 @property (nonatomic, retain) UIColor *color;
 @property (nonatomic) bool dashedLines;
+@property (nonatomic) bool hasRoundedCorners;
 
 - (void).cxx_destruct;
 - (id)color;
 - (bool)dashedLines;
-- (void)drawRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (bool)hasRoundedCorners;
 - (void)setColor:(id)arg1;
 - (void)setDashedLines:(bool)arg1;
+- (void)setHasRoundedCorners:(bool)arg1;
 
 @end

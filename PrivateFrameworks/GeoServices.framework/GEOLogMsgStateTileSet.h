@@ -8,6 +8,7 @@
 
 @property (nonatomic, retain) NSMutableArray *tileSetInfos;
 
++ (bool)isValid:(id)arg1;
 + (Class)tileSetInfoType;
 
 - (void).cxx_destruct;
@@ -20,6 +21,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setTileSetInfos:(id)arg1;
 - (id)tileSetInfoAtIndex:(unsigned long long)arg1;

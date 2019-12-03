@@ -10,6 +10,7 @@
     _MRCryptoPairingMessageProtobuf * _cryptoPairingMessage;
     _MRDeviceInfoMessageProtobuf * _deviceInfoMessage;
     unsigned int  _errorCode;
+    NSString * _errorDescription;
     _MRGameControllerMessageProtobuf * _gameController;
     _MRGameControllerPropertiesMessageProtobuf * _gameControllerProperties;
     _MRGenericMessageProtobuf * _genericMessage;
@@ -33,6 +34,12 @@
     _MRAVModifyOutputContextRequestProtobuf * _modifyOutputContextRequestMessage;
     _MRNotificationMessageProtobuf * _notificationMessage;
     _MRPlaybackQueueRequestProtobuf * _playbackQueueRequest;
+    _MRPlaybackSessionMigrateBeginMessageProtobuf * _playbackSessionMigrateBeginMessage;
+    _MRPlaybackSessionMigrateEndMessageProtobuf * _playbackSessionMigrateEndMessage;
+    _MRPlaybackSessionMigrateRequestMessageProtobuf * _playbackSessionMigrateRequestMessage;
+    _MRPlaybackSessionMigrateResponseMessageProtobuf * _playbackSessionMigrateResponseMessage;
+    _MRPlaybackSessionRequestMessageProtobuf * _playbackSessionRequestMessage;
+    _MRPlaybackSessionResponseMessageProtobuf * _playbackSessionResponseMessage;
     _MRPresentRouteAuthorizationStatusMessageProtobuf * _presentRouteAuthorizationStatusMessage;
     _MRPromptForRouteAuthorizationMessageProtobuf * _promptForRouteAuthorizationMessage;
     _MRPromptForRouteAuthorizationResponseMessageProtobuf * _promptForRouteAuthorizationResponseMessage;
@@ -58,6 +65,7 @@
     _MRSendVirtualTouchEventMessageProtobuf * _sendVirtualTouchEventMessage;
     _MRSendVoiceInputMessageProtobuf * _sendVoiceInputMessage;
     _MRSetArtworkMessageProtobuf * _setArtworkMessage;
+    _MRSetStateMessageProtobuf * _setDefaultSupportedCommandsMessage;
     _MRSetHiliteModeMessageProtobuf * _setHiliteModeMessage;
     _MRSetNowPlayingClientMessageProtobuf * _setNowPlayingClientMessage;
     _MRSetNowPlayingPlayerMessageProtobuf * _setNowPlayingPlayerMessage;
@@ -86,6 +94,7 @@
 @property (nonatomic, retain) _MRCryptoPairingMessageProtobuf *cryptoPairingMessage;
 @property (nonatomic, retain) _MRDeviceInfoMessageProtobuf *deviceInfoMessage;
 @property (nonatomic) unsigned int errorCode;
+@property (nonatomic, retain) NSString *errorDescription;
 @property (nonatomic, retain) _MRGameControllerMessageProtobuf *gameController;
 @property (nonatomic, retain) _MRGameControllerPropertiesMessageProtobuf *gameControllerProperties;
 @property (nonatomic, retain) _MRGenericMessageProtobuf *genericMessage;
@@ -105,6 +114,7 @@
 @property (nonatomic, readonly) bool hasCryptoPairingMessage;
 @property (nonatomic, readonly) bool hasDeviceInfoMessage;
 @property (nonatomic) bool hasErrorCode;
+@property (nonatomic, readonly) bool hasErrorDescription;
 @property (nonatomic, readonly) bool hasGameController;
 @property (nonatomic, readonly) bool hasGameControllerProperties;
 @property (nonatomic, readonly) bool hasGenericMessage;
@@ -123,6 +133,12 @@
 @property (nonatomic, readonly) bool hasModifyOutputContextRequestMessage;
 @property (nonatomic, readonly) bool hasNotificationMessage;
 @property (nonatomic, readonly) bool hasPlaybackQueueRequest;
+@property (nonatomic, readonly) bool hasPlaybackSessionMigrateBeginMessage;
+@property (nonatomic, readonly) bool hasPlaybackSessionMigrateEndMessage;
+@property (nonatomic, readonly) bool hasPlaybackSessionMigrateRequestMessage;
+@property (nonatomic, readonly) bool hasPlaybackSessionMigrateResponseMessage;
+@property (nonatomic, readonly) bool hasPlaybackSessionRequestMessage;
+@property (nonatomic, readonly) bool hasPlaybackSessionResponseMessage;
 @property (nonatomic, readonly) bool hasPresentRouteAuthorizationStatusMessage;
 @property (nonatomic, readonly) bool hasPromptForRouteAuthorizationMessage;
 @property (nonatomic, readonly) bool hasPromptForRouteAuthorizationResponseMessage;
@@ -148,6 +164,7 @@
 @property (nonatomic, readonly) bool hasSendVirtualTouchEventMessage;
 @property (nonatomic, readonly) bool hasSendVoiceInputMessage;
 @property (nonatomic, readonly) bool hasSetArtworkMessage;
+@property (nonatomic, readonly) bool hasSetDefaultSupportedCommandsMessage;
 @property (nonatomic, readonly) bool hasSetHiliteModeMessage;
 @property (nonatomic, readonly) bool hasSetNowPlayingClientMessage;
 @property (nonatomic, readonly) bool hasSetNowPlayingPlayerMessage;
@@ -173,6 +190,12 @@
 @property (nonatomic, retain) _MRAVModifyOutputContextRequestProtobuf *modifyOutputContextRequestMessage;
 @property (nonatomic, retain) _MRNotificationMessageProtobuf *notificationMessage;
 @property (nonatomic, retain) _MRPlaybackQueueRequestProtobuf *playbackQueueRequest;
+@property (nonatomic, retain) _MRPlaybackSessionMigrateBeginMessageProtobuf *playbackSessionMigrateBeginMessage;
+@property (nonatomic, retain) _MRPlaybackSessionMigrateEndMessageProtobuf *playbackSessionMigrateEndMessage;
+@property (nonatomic, retain) _MRPlaybackSessionMigrateRequestMessageProtobuf *playbackSessionMigrateRequestMessage;
+@property (nonatomic, retain) _MRPlaybackSessionMigrateResponseMessageProtobuf *playbackSessionMigrateResponseMessage;
+@property (nonatomic, retain) _MRPlaybackSessionRequestMessageProtobuf *playbackSessionRequestMessage;
+@property (nonatomic, retain) _MRPlaybackSessionResponseMessageProtobuf *playbackSessionResponseMessage;
 @property (nonatomic, retain) _MRPresentRouteAuthorizationStatusMessageProtobuf *presentRouteAuthorizationStatusMessage;
 @property (nonatomic, retain) _MRPromptForRouteAuthorizationMessageProtobuf *promptForRouteAuthorizationMessage;
 @property (nonatomic, retain) _MRPromptForRouteAuthorizationResponseMessageProtobuf *promptForRouteAuthorizationResponseMessage;
@@ -198,6 +221,7 @@
 @property (nonatomic, retain) _MRSendVirtualTouchEventMessageProtobuf *sendVirtualTouchEventMessage;
 @property (nonatomic, retain) _MRSendVoiceInputMessageProtobuf *sendVoiceInputMessage;
 @property (nonatomic, retain) _MRSetArtworkMessageProtobuf *setArtworkMessage;
+@property (nonatomic, retain) _MRSetStateMessageProtobuf *setDefaultSupportedCommandsMessage;
 @property (nonatomic, retain) _MRSetHiliteModeMessageProtobuf *setHiliteModeMessage;
 @property (nonatomic, retain) _MRSetNowPlayingClientMessageProtobuf *setNowPlayingClientMessage;
 @property (nonatomic, retain) _MRSetNowPlayingPlayerMessageProtobuf *setNowPlayingPlayerMessage;
@@ -231,6 +255,7 @@
 - (id)deviceInfoMessage;
 - (id)dictionaryRepresentation;
 - (unsigned int)errorCode;
+- (id)errorDescription;
 - (id)gameController;
 - (id)gameControllerProperties;
 - (id)genericMessage;
@@ -250,6 +275,7 @@
 - (bool)hasCryptoPairingMessage;
 - (bool)hasDeviceInfoMessage;
 - (bool)hasErrorCode;
+- (bool)hasErrorDescription;
 - (bool)hasGameController;
 - (bool)hasGameControllerProperties;
 - (bool)hasGenericMessage;
@@ -268,6 +294,12 @@
 - (bool)hasModifyOutputContextRequestMessage;
 - (bool)hasNotificationMessage;
 - (bool)hasPlaybackQueueRequest;
+- (bool)hasPlaybackSessionMigrateBeginMessage;
+- (bool)hasPlaybackSessionMigrateEndMessage;
+- (bool)hasPlaybackSessionMigrateRequestMessage;
+- (bool)hasPlaybackSessionMigrateResponseMessage;
+- (bool)hasPlaybackSessionRequestMessage;
+- (bool)hasPlaybackSessionResponseMessage;
 - (bool)hasPresentRouteAuthorizationStatusMessage;
 - (bool)hasPromptForRouteAuthorizationMessage;
 - (bool)hasPromptForRouteAuthorizationResponseMessage;
@@ -293,6 +325,7 @@
 - (bool)hasSendVirtualTouchEventMessage;
 - (bool)hasSendVoiceInputMessage;
 - (bool)hasSetArtworkMessage;
+- (bool)hasSetDefaultSupportedCommandsMessage;
 - (bool)hasSetHiliteModeMessage;
 - (bool)hasSetNowPlayingClientMessage;
 - (bool)hasSetNowPlayingPlayerMessage;
@@ -321,6 +354,12 @@
 - (id)modifyOutputContextRequestMessage;
 - (id)notificationMessage;
 - (id)playbackQueueRequest;
+- (id)playbackSessionMigrateBeginMessage;
+- (id)playbackSessionMigrateEndMessage;
+- (id)playbackSessionMigrateRequestMessage;
+- (id)playbackSessionMigrateResponseMessage;
+- (id)playbackSessionRequestMessage;
+- (id)playbackSessionResponseMessage;
 - (id)presentRouteAuthorizationStatusMessage;
 - (id)promptForRouteAuthorizationMessage;
 - (id)promptForRouteAuthorizationResponseMessage;
@@ -352,8 +391,10 @@
 - (void)setConnectionState:(id)arg1;
 - (void)setContentItemsChangedNotificationMessage:(id)arg1;
 - (void)setCryptoPairingMessage:(id)arg1;
+- (id)setDefaultSupportedCommandsMessage;
 - (void)setDeviceInfoMessage:(id)arg1;
 - (void)setErrorCode:(unsigned int)arg1;
+- (void)setErrorDescription:(id)arg1;
 - (void)setGameController:(id)arg1;
 - (void)setGameControllerProperties:(id)arg1;
 - (void)setGenericMessage:(id)arg1;
@@ -378,6 +419,12 @@
 - (id)setNowPlayingClientMessage;
 - (id)setNowPlayingPlayerMessage;
 - (void)setPlaybackQueueRequest:(id)arg1;
+- (void)setPlaybackSessionMigrateBeginMessage:(id)arg1;
+- (void)setPlaybackSessionMigrateEndMessage:(id)arg1;
+- (void)setPlaybackSessionMigrateRequestMessage:(id)arg1;
+- (void)setPlaybackSessionMigrateResponseMessage:(id)arg1;
+- (void)setPlaybackSessionRequestMessage:(id)arg1;
+- (void)setPlaybackSessionResponseMessage:(id)arg1;
 - (void)setPresentRouteAuthorizationStatusMessage:(id)arg1;
 - (void)setPromptForRouteAuthorizationMessage:(id)arg1;
 - (void)setPromptForRouteAuthorizationResponseMessage:(id)arg1;
@@ -404,6 +451,7 @@
 - (void)setSendVirtualTouchEventMessage:(id)arg1;
 - (void)setSendVoiceInputMessage:(id)arg1;
 - (void)setSetArtworkMessage:(id)arg1;
+- (void)setSetDefaultSupportedCommandsMessage:(id)arg1;
 - (void)setSetHiliteModeMessage:(id)arg1;
 - (void)setSetNowPlayingClientMessage:(id)arg1;
 - (void)setSetNowPlayingPlayerMessage:(id)arg1;

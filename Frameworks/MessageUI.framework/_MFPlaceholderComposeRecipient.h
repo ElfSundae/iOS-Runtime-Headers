@@ -4,7 +4,6 @@
 
 @interface _MFPlaceholderComposeRecipient : MFComposeRecipient
 
-- (void)dealloc;
 - (id)displayString;
 - (void)setDisplayString:(id)arg1;
 

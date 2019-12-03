@@ -11,7 +11,7 @@
             struct StringImpl {} *m_ptr; 
         } m_impl; 
     }  _urlString;
-    /* Warning: unhandled struct encoding: '{WeakObjCPtr<WKWebView>="m_weakReference"@}' */ struct WeakObjCPtr<WKWebView> { 
+    struct WeakObjCPtr<WKWebView> { 
         id m_weakReference; 
     }  _webView;
 }

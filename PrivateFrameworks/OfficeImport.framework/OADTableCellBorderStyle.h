@@ -17,10 +17,10 @@
 + (id)defaultObliqueStroke;
 + (id)defaultStyle;
 
+- (void).cxx_destruct;
 - (void)applyOverridesFrom:(id)arg1;
 - (id)bottomLeftToTopRightStroke;
 - (id)bottomStroke;
-- (void)dealloc;
 - (id)description;
 - (id)horzInsideStroke;
 - (id)leftStroke;

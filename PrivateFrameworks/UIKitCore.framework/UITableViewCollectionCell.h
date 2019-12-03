@@ -16,7 +16,6 @@
 @property (nonatomic) double indexBarExtentFromEdge;
 @property (nonatomic) bool insetsContentViewsToSafeArea;
 @property (nonatomic) bool layoutMarginsFollowReadableWidth;
-@property (nonatomic) double sectionBorderWidth;
 @property (nonatomic) int sectionLocation;
 @property (nonatomic, copy) UIColor *separatorColor;
 @property (nonatomic, retain) UIVisualEffect *separatorEffect;
@@ -33,7 +32,6 @@
 - (bool)drawsSeparatorAtTopOfSection;
 - (double)indexBarExtentFromEdge;
 - (bool)insetsContentViewsToSafeArea;
-- (double)sectionBorderWidth;
 - (id)separatorEffect;
 - (bool)separatorInsetIsRelativeToCellEdges;
 - (void)setBackgroundInset:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
@@ -43,7 +41,6 @@
 - (void)setDrawsSeparatorAtTopOfSection:(bool)arg1;
 - (void)setIndexBarExtentFromEdge:(double)arg1;
 - (void)setInsetsContentViewsToSafeArea:(bool)arg1;
-- (void)setSectionBorderWidth:(double)arg1;
 - (void)setSeparatorEffect:(id)arg1;
 - (void)setSeparatorInsetIsRelativeToCellEdges:(bool)arg1;
 

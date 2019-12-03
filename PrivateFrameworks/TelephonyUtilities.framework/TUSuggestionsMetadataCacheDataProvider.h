@@ -10,9 +10,11 @@
 @property (nonatomic, readonly) id suggestionsContactsObserver;
 @property (nonatomic, retain) NSObject<OS_dispatch_semaphore> *suggestionsServiceThrottleSemaphore;
 
++ (bool)canUseSiriSuggestions;
 + (id)newestSuggestedContactForDestinationID:(id)arg1;
 + (id)sharedService;
-+ (void)suggestedNamesForDestinationID:(id)arg1 withCompletion:(id /* block */)arg2;
++ (id)suggestedNamesForDestinationID:(id)arg1 onlySignificant:(bool)arg2 error:(id*)arg3;
++ (void)suggestedNamesForDestinationID:(id)arg1 onlySignificant:(bool)arg2 withCompletion:(id /* block */)arg3;
 
 - (void).cxx_destruct;
 - (id)init;

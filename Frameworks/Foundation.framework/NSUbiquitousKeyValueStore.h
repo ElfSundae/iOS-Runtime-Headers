@@ -25,9 +25,11 @@
 - (void)_adjustTimerForAutosync;
 - (void)_configurationDidChange;
 - (bool)_hasPendingSynchronize;
+- (id)_initWithStoreIdentifier:(id)arg1 usingEndToEndEncryption:(bool)arg2;
 - (void)_pleaseSynchronize:(id)arg1;
 - (bool)_postDidChangeNotificationExternalChanges:(id)arg1 sourceChangeCount:(long long)arg2;
 - (void)_registerToDaemon;
+- (id)_remotePreferencesSource;
 - (void)_rethrowException:(id)arg1;
 - (void)_scheduleRemoteSynchronization;
 - (void)_sendPingToDaemon;
@@ -35,6 +37,7 @@
 - (void)_setShouldAvoidSynchronize:(bool)arg1;
 - (bool)_shouldAvoidSynchronize;
 - (void)_sourceDidChange:(id)arg1;
+- (void)_sourceDidChangePassthroughNotification:(id)arg1;
 - (int)_storeChangeFromSourceChange:(int)arg1;
 - (void)_syncConcurrently;
 - (void)_syncConcurrentlyForced:(bool)arg1;
@@ -54,6 +57,7 @@
 - (id)initWithBundleIdentifier:(id)arg1;
 - (id)initWithBundleIdentifier:(id)arg1 storeIdentifier:(id)arg2;
 - (id)initWithBundleIdentifier:(id)arg1 storeIdentifier:(id)arg2 additionalStore:(bool)arg3;
+- (id)initWithBundleIdentifier:(id)arg1 storeIdentifier:(id)arg2 additionalStore:(bool)arg3 storeType:(long long)arg4;
 - (long long)longLongForKey:(id)arg1;
 - (unsigned long long)maximumDataLengthPerKey;
 - (unsigned long long)maximumKeyCount;

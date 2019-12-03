@@ -48,13 +48,15 @@
 - (struct CGSize { double x1; double x2; })dimensions;
 - (float)estimatedDataRate;
 - (id)extendedLanguageTag;
-- (void)finalize;
 - (id)formatDescriptions;
+- (bool)hasAudibleBooksContent;
+- (bool)hasAudioSampleDependencies;
 - (bool)hasMediaCharacteristic:(id)arg1;
 - (bool)hasMediaCharacteristics:(id)arg1;
 - (bool)hasProtectedContent;
 - (unsigned long long)hash;
 - (id)init;
+- (bool)isAudibleBooksContentAuthorized;
 - (bool)isDecodable;
 - (bool)isEnabled;
 - (bool)isEqual:(id)arg1;
@@ -62,6 +64,7 @@
 - (bool)isPlayable;
 - (bool)isSelfContained;
 - (id)languageCode;
+- (struct { long long x1; int x2; unsigned int x3; long long x4; })latentBaseDecodeTimeStampOfFirstTrackFragment;
 - (long long)layer;
 - (void)loadValuesAsynchronouslyForKeys:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)locale;
@@ -76,6 +79,7 @@
 - (struct CGSize { double x1; double x2; })naturalSize;
 - (int)naturalTimeScale;
 - (float)nominalFrameRate;
+- (float)peakDataRate;
 - (int)playabilityValidationResult;
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })preferredTransform;
 - (float)preferredVolume;
@@ -93,6 +97,13 @@
 // Image: /System/Library/Frameworks/Photos.framework/Photos
 
 - (id)commonMetadataStringValueForKey:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
+
++ (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })px_changeTranslationOfTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg1 forAssetSize:(struct CGSize { double x1; double x2; })arg2;
+
+- (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })px_preferredTransformBasedOnNaturalSize;
+- (struct CGSize { double x1; double x2; })px_transformedNaturalSize;
 
 // Image: /System/Library/PrivateFrameworks/VideoProcessing.framework/VideoProcessing
 

@@ -4,13 +4,13 @@
 
 @interface MTLIOAccelDeviceShmem : NSObject {
     MTLIOAccelDevice * _device;
-    /* Warning: unhandled struct encoding: '{_MTLIOAccelDeviceShmemPrivate="pool"@"MTLIOAccelDeviceShmemPool""entry"{?="tqe_next"@"MTLIOAccelDeviceShmem""tqe_prev"^@}"time_added"Q}' */ struct _MTLIOAccelDeviceShmemPrivate { 
+    struct _MTLIOAccelDeviceShmemPrivate { 
         MTLIOAccelDeviceShmemPool *pool; 
         struct { 
             MTLIOAccelDeviceShmem *tqe_next; 
             id *tqe_prev; 
-            unsigned long long time_added; 
         } entry; 
+        unsigned long long time_added; 
     }  _priv;
     unsigned int  _shmemID;
     unsigned int  _shmemSize;

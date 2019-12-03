@@ -5,30 +5,32 @@
 @interface BWFigCaptureDeviceClient : NSObject {
     int  _clientID;
     id /* block */  _deviceAvailabilityChangedHandler;
+    bool  _deviceSharingWithOtherClientsAllowed;
     int  _pid;
-    bool  _sharedDeviceInUseForFlashlight;
-    bool  _sharedDeviceInUseForVideo;
+    int  _releaseBehavior;
+    int  _stealingBehavior;
 }
 
 @property (nonatomic, readonly) int clientID;
 @property (nonatomic, copy) id /* block */ deviceAvailabilityChangedHandler;
+@property (nonatomic, readonly) bool deviceSharingWithOtherClientsAllowed;
 @property (nonatomic, readonly) int pid;
-@property (nonatomic) bool sharedDeviceInUseForFlashlight;
-@property (nonatomic) bool sharedDeviceInUseForVideo;
+@property (nonatomic) int releaseBehavior;
+@property (nonatomic, readonly) int stealingBehavior;
 
-+ (id)deviceClientWithPID:(int)arg1 clientIDOut:(int*)arg2;
-
+- (bool)canShareDeviceWithClientPID:(int)arg1 deviceAvailabilityChangedHandler:(id /* block */)arg2;
 - (int)clientID;
 - (void)dealloc;
+- (id)debugDescription;
 - (id)description;
 - (id /* block */)deviceAvailabilityChangedHandler;
-- (id)initWithPID:(int)arg1;
+- (bool)deviceSharingWithOtherClientsAllowed;
+- (id)initWithPID:(int)arg1 stealingBehavior:(int)arg2 deviceSharingWithOtherClientsAllowed:(bool)arg3 deviceAvailabilityChangedHandler:(id /* block */)arg4;
 - (bool)isEqual:(id)arg1;
 - (int)pid;
+- (int)releaseBehavior;
 - (void)setDeviceAvailabilityChangedHandler:(id /* block */)arg1;
-- (void)setSharedDeviceInUseForFlashlight:(bool)arg1;
-- (void)setSharedDeviceInUseForVideo:(bool)arg1;
-- (bool)sharedDeviceInUseForFlashlight;
-- (bool)sharedDeviceInUseForVideo;
+- (void)setReleaseBehavior:(int)arg1;
+- (int)stealingBehavior;
 
 @end

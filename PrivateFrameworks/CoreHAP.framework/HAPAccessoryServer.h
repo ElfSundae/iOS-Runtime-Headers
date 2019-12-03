@@ -18,13 +18,14 @@
     NSHashTable * _internalDelegates;
     <HAPKeyStore> * _keyStore;
     long long  _linkType;
+    <HMFLocking> * _lock;
     NSString * _name;
     unsigned long long  _pairSetupType;
     HAPAccessory * _primaryAccessory;
-    NSObject<OS_dispatch_queue> * _propertyQueue;
     bool  _reachable;
     bool  _securitySessionOpen;
     NSData * _setupHash;
+    unsigned long long  _stateNumber;
     bool  _supportsTimedWrite;
     HMFVersion * _version;
 }
@@ -49,10 +50,10 @@
 @property (nonatomic) unsigned long long pairSetupType;
 @property (getter=isPaired, nonatomic, readonly) bool paired;
 @property (nonatomic, retain) HAPAccessory *primaryAccessory;
-@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *propertyQueue;
 @property (getter=isReachable, nonatomic) bool reachable;
 @property (getter=isSecuritySessionOpen) bool securitySessionOpen;
 @property (nonatomic, copy) NSData *setupHash;
+@property (nonatomic) unsigned long long stateNumber;
 @property (nonatomic) bool supportsTimedWrite;
 @property (copy) HMFVersion *version;
 
@@ -91,13 +92,11 @@
 - (long long)linkType;
 - (void)listPairingsWithCompletionQueue:(id)arg1 completionHandler:(id /* block */)arg2;
 - (bool)matchesSetupID:(id)arg1;
+- (bool)matchesSetupID:(id)arg1 serverIdentifier:(id)arg2;
 - (id)name;
-- (void)notifyDelegateUpdatedCategory:(id)arg1;
-- (void)notifyDelegateUpdatedHasPairings:(bool)arg1;
-- (void)notifyDelegateUpdatedName:(id)arg1;
 - (unsigned long long)pairSetupType;
 - (id)primaryAccessory;
-- (id)propertyQueue;
+- (id)productData;
 - (void)readCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)reconfirm;
 - (void)removeInternalDelegate:(id)arg1;
@@ -118,12 +117,15 @@
 - (void)setReachable:(bool)arg1;
 - (void)setSecuritySessionOpen:(bool)arg1;
 - (void)setSetupHash:(id)arg1;
+- (void)setStateNumber:(unsigned long long)arg1;
 - (void)setSupportsTimedWrite:(bool)arg1;
 - (void)setVersion:(id)arg1;
 - (id)setupHash;
-- (void)startPairingWithConsentRequired:(bool)arg1;
+- (void)startPairingWithConsentRequired:(bool)arg1 config:(id)arg2 ownershipToken:(id)arg3;
+- (unsigned long long)stateNumber;
 - (bool)stopPairingWithError:(id*)arg1;
 - (bool)supportsTimedWrite;
+- (void)tearDownAndRestablishSession;
 - (bool)tryPairingPassword:(id)arg1 error:(id*)arg2;
 - (id)version;
 - (void)writeCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(id /* block */)arg4;

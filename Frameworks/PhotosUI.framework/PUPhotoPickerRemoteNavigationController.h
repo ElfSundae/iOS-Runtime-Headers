@@ -15,7 +15,6 @@
 - (bool)isInitialized;
 - (id)popToRootViewControllerAnimated:(bool)arg1;
 - (id)popToViewController:(id)arg1 animated:(bool)arg2;
-- (id)popViewControllerAnimated:(bool)arg1;
 - (void)pushViewController:(id)arg1 animated:(bool)arg2;
 - (id)remoteViewControllerdelegate;
 - (void)setInitialized:(bool)arg1;

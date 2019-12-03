@@ -7,7 +7,7 @@
 
 - (void)_lsPing:(void *)arg1 reply:(void *)arg2; // needs 2 arg types, found 7: NSString *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSString *, void*
 - (void)addObserver;
-- (void)createInstallProgressForApplication:(LSApplicationProxy *)arg1 withPhase:(unsigned long long)arg2 andPublishingString:(NSString *)arg3;
+- (void)createInstallProgressForApplication:(void *)arg1 withPhase:(void *)arg2 andPublishingString:(void *)arg3 reply:(void *)arg4; // needs 4 arg types, found 9: LSApplicationProxy *, unsigned long long, NSString *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSError *, void*
 - (void)installationEndedForApplication:(NSString *)arg1 withState:(unsigned long long)arg2;
 - (void)installationFailedForApplication:(void *)arg1 reply:(void *)arg2; // needs 2 arg types, found 7: NSString *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, void*
 - (void)removeObserver;

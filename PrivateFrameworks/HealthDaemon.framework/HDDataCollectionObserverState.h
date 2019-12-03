@@ -13,6 +13,7 @@
 + (id)dataCollectionObserverStateInBackground:(bool)arg1 hasRunningWorkout:(bool)arg2;
 
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)description;
 - (bool)hasRunningWorkout;
 - (bool)isEqual:(id)arg1;
 - (bool)isInBackground;

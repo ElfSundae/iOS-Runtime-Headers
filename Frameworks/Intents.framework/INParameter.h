@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface INParameter : NSObject <INParameter, NSCopying, NSObject, NSSecureCoding> {
+@interface INParameter : NSObject <NSCopying, NSSecureCoding> {
     NSMutableDictionary * _indexesForSubKeyPaths;
     Class  _parameterClass;
     NSString * _parameterKeyPath;
@@ -10,14 +10,8 @@
 
 @property (nonatomic, retain) NSMutableDictionary *_indexesForSubKeyPaths;
 @property (nonatomic, readonly, copy) NSString *_subscriptedKeyPath;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, retain) Class parameterClass;
 @property (nonatomic, copy) NSString *parameterKeyPath;
-@property (nonatomic, readonly) id parameterValue;
-@property (nonatomic, readonly) id parameterizedObject;
-@property (readonly) Class superclass;
 
 // Image: /System/Library/Frameworks/Intents.framework/Intents
 

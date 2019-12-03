@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
  */
 
-@interface MPCModelGenericAVItem : MPAVItem <AVAssetResourceLoaderDelegate, AVPlayerItemMetadataOutputPushDelegate, ICEnvironmentMonitorObserver, MPMusicSubscriptionLeasePlaybackParticipating, MPRTCReportingItemSessionCreating> {
+@interface MPCModelGenericAVItem : MPAVItem <AVAssetResourceLoaderDelegate, AVPlayerItemMetadataOutputPushDelegate, ICEnvironmentMonitorObserver, MPRTCReportingItemSessionCreating> {
     NSObject<OS_dispatch_queue> * _accessQueue;
     bool  _allowsAirPlayFromCloud;
     <MPCModelPlaybackAssetCacheProviding> * _assetCacheProvider;
@@ -18,6 +18,7 @@
     bool  _hasLoadedSubscriptionLeaseSession;
     bool  _hasLoadedSubscriptionPlaybackInformation;
     <MPCReportingIdentityPropertiesLoading> * _identityPropertiesLoader;
+    MPCModelGenericAVItemUserIdentityPropertySet * _identityPropertySet;
     bool  _isAssetSubscriptionProtectionType;
     bool  _isAutomaticallyRefreshingSuzeLeaseSession;
     bool  _isHLSAsset;
@@ -29,7 +30,6 @@
     bool  _lastPreparedForNonZeroRate;
     long long  _leasePlaybackPreventionState;
     ICMusicSubscriptionLeaseStatus * _leaseStatus;
-    NSNumber * _maximumSizeAllowedForCellularAccess;
     MPMediaLibrary * _mediaLibrary;
     MPModelGenericObject * _metadataGenericObject;
     MPCPlaybackRequestEnvironment * _playbackRequestEnvironment;
@@ -48,6 +48,7 @@
     NSObject<OS_dispatch_queue> * _subscriptionLeaseSessionLoadQueue;
     MPSubscriptionStatusPlaybackInformation * _subscriptionPlaybackInformation;
     NSObject<OS_dispatch_queue> * _subscriptionPlaybackInformationLoadQueue;
+    bool  _subscriptionRequired;
     MPCSuzeLeaseSession * _suzeLeaseSession;
     NSOperationQueue * _timedMetadataOperationQueue;
     MPCModelGenericAVItemTimedMetadataRequest * _timedMetadataRequest;
@@ -64,8 +65,6 @@
 @property (nonatomic, retain) MPModelGenericObject *genericObject;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) NSData *jingleTimedMetadata;
-@property (nonatomic, readonly) long long leasePlaybackPreventionState;
-@property (nonatomic, readonly, copy) ICMusicSubscriptionLeaseStatus *leaseStatus;
 @property (nonatomic, retain) MPMediaLibrary *mediaLibrary;
 @property (nonatomic, readonly, copy) MPCPlaybackRequestEnvironment *playbackRequestEnvironment;
 @property (getter=isRadioPlayback, nonatomic) bool radioPlayback;
@@ -76,6 +75,7 @@
 @property (nonatomic, readonly) bool shouldReportPlayEventsToStore;
 @property (getter=isSiriInitiated, nonatomic, copy) NSNumber *siriInitiated;
 @property (nonatomic) long long stationItemLikedState;
+@property (getter=isSubscriptionRequired, nonatomic) bool subscriptionRequired;
 @property (readonly) Class superclass;
 @property (nonatomic) bool supportsRadioTrackActions;
 @property (nonatomic, retain) NSDictionary *trackInfo;
@@ -96,7 +96,7 @@
 - (void)_getSubscriptionLeasePropertiesWithCompletion:(id /* block */)arg1;
 - (void)_getUnverifiedSubscriptionLeaseSessionWithCompletion:(id /* block */)arg1;
 - (void)_handlePlaybackFinishedTime:(double)arg1 didFinishByHittingEnd:(bool)arg2;
-- (void)_handleUpdatedLikedState:(long long)arg1 completion:(id /* block */)arg2;
+- (void)_handleUpdatedLikedState:(long long)arg1 forUserIdentity:(id)arg2 completion:(id /* block */)arg3;
 - (void)_invalidateContentItem;
 - (id)_isPrivateListeningEnabled;
 - (id)_modelPlaybackPosition;
@@ -113,6 +113,7 @@
 - (void)_subscriptionLeaseStatusDidChangeNotification:(id)arg1;
 - (void)_suzeLeaseSessionRenewDidFailNotification:(id)arg1;
 - (void)_timedMetadataResponseDidInvalidateNotification:(id)arg1;
+- (struct { long long x1; long long x2; long long x3; long long x4; long long x5; long long x6; long long x7; long long x8; })_timeoutValues;
 - (void)_updateAutomaticSubscriptionLeaseRefresh;
 - (void)_updateBookmarkTime:(double)arg1 isCheckpoint:(bool)arg2;
 - (void)_updateHasBeenPlayedWithElapsedTime:(double)arg1 completion:(id /* block */)arg2;
@@ -127,6 +128,7 @@
 - (long long)albumStoreID;
 - (unsigned long long)albumTrackCount;
 - (unsigned long long)albumTrackNumber;
+- (long long)albumYear;
 - (bool)allowsAirPlayFromCloud;
 - (bool)allowsEQ;
 - (bool)allowsExternalPlayback;
@@ -146,7 +148,9 @@
 - (id)cloudUniversalLibraryID;
 - (id)composer;
 - (unsigned long long)composerPersistentID;
+- (id)containerUniqueID;
 - (id)copyrightText;
+- (id)databaseID;
 - (void)dealloc;
 - (id)description;
 - (double)durationFromExternalMetadata;
@@ -157,7 +161,8 @@
 - (id)genre;
 - (unsigned long long)genrePersistentID;
 - (bool)hasStoreLyrics;
-- (id)initWithGenericObject:(id)arg1 itemProperties:(id)arg2 playbackRequestEnvironment:(id)arg3;
+- (bool)hasTimeSyncedLyrics;
+- (id)initWithGenericObject:(id)arg1 itemProperties:(id)arg2 playbackRequestEnvironment:(id)arg3 identityPropertySet:(id)arg4;
 - (bool)isAlwaysLive;
 - (bool)isAssetURLValid;
 - (bool)isExplicitTrack;
@@ -167,6 +172,7 @@
 - (bool)isRadioStreamPlayback;
 - (id)isSiriInitiated;
 - (bool)isStreamable;
+- (bool)isSubscriptionRequired;
 - (bool)isValidPlayerSubstituteForItem:(id)arg1;
 - (id)jingleTimedMetadata;
 - (long long)leasePlaybackPreventionState;
@@ -193,6 +199,7 @@
 - (void)notePlaybackFinishedByHittingEnd;
 - (void)nowPlayingInfoCenter:(id)arg1 lyricsForContentItem:(id)arg2 completion:(id /* block */)arg3;
 - (unsigned long long)persistentID;
+- (id)personID;
 - (id)playbackError;
 - (id)playbackInfo;
 - (id)playbackRequestEnvironment;
@@ -220,6 +227,7 @@
 - (void)setRating:(float)arg1;
 - (void)setSiriInitiated:(id)arg1;
 - (void)setStationItemLikedState:(long long)arg1;
+- (void)setSubscriptionRequired:(bool)arg1;
 - (void)setSupportsRadioTrackActions:(bool)arg1;
 - (void)setTrackInfo:(id)arg1;
 - (bool)shouldPreventPlayback;
@@ -230,8 +238,10 @@
 - (long long)stationItemLikedState;
 - (id)stationName;
 - (id)stationStringID;
+- (id)storeAccountID;
 - (id)storeFrontIdentifier;
 - (long long)storeItemInt64ID;
+- (long long)storePurchasedAdamID;
 - (long long)storeSubscriptionAdamID;
 - (bool)supportsLikedState;
 - (bool)supportsRadioTrackActions;
@@ -239,6 +249,8 @@
 - (long long)type;
 - (id)urlTimeMarkers;
 - (bool)useEmbeddedChapterData;
+- (id)useListeningHistory;
 - (float)userRating;
+- (bool)usesSubscriptionLease;
 
 @end

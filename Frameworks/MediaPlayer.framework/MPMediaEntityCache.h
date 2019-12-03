@@ -4,10 +4,13 @@
 
 @interface MPMediaEntityCache : NSObject {
     struct __CFDictionary { } * _concreteEntitiesByDataProviderEntityClass;
+    NSObject<OS_dispatch_queue> * _deallocLaterQueue;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _entityCacheMapLock;
     NSMutableArray * _entityTemporaryReferences;
     <MPMediaLibraryDataProviderPrivate> * _mediaLibraryDataProvider;
     bool  _mediaLibraryDataProviderRespondsToSupportsEntityChangeTrackingMethod;
-    NSObject<OS_dispatch_queue> * _queue;
     struct _opaque_pthread_rwlock_t { 
         long long __sig; 
         BOOL __opaque[192]; 
@@ -21,7 +24,6 @@
 - (void)_performWithExclusiveAccessForDataProviderEntityClass:(Class)arg1 block:(id /* block */)arg2;
 - (void)_performWithSharedAccessForDataProviderEntityClass:(Class)arg1 block:(id /* block */)arg2;
 - (id)collectionWithIdentifier:(long long)arg1 grouping:(long long)arg2 loadEntityBlock:(id /* block */)arg3;
-- (id)init;
 - (id)initWithMediaLibraryDataProvider:(id)arg1;
 - (id)itemWithIdentifier:(long long)arg1;
 - (id)itemWithIdentifier:(long long)arg1 loadEntityBlock:(id /* block */)arg2;

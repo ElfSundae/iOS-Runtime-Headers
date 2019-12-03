@@ -4,13 +4,13 @@
 
 @interface DUDefinitionDictionary : NSObject {
     bool  _activated;
-    ASAsset * _assetToUpgrade;
+    MAAsset * _assetToUpgrade;
     NSString * _definitionLanguage;
     struct __DCSDictionary { } * _dictionary;
     bool  _isAppleDictionary;
     bool  _isTTYDictionary;
     float  _progress;
-    ASAsset * _rawAsset;
+    MAAsset * _rawAsset;
 }
 
 @property (nonatomic) bool activated;
@@ -23,7 +23,7 @@
 @property (readonly) NSString *localizedSortName;
 @property (readonly) bool needsDownloadNewerVersion;
 @property float progress;
-@property (readonly) ASAsset *rawAsset;
+@property (readonly) MAAsset *rawAsset;
 
 + (id)displayNameForLanguageIdentifier:(id)arg1 forSorting:(bool)arg2;
 
@@ -31,6 +31,8 @@
 - (id)_definitionValueForTerm:(id)arg1;
 - (bool)_hasDefinitionForTerm:(id)arg1;
 - (bool)activated;
+- (bool)assetIsDeletable;
+- (bool)assetIsLocal;
 - (void)dealloc;
 - (id)definitionLanguage;
 - (id)description;

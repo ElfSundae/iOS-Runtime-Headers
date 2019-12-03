@@ -31,6 +31,7 @@
 
 - (void).cxx_destruct;
 - (void)addUpcomingMediaIntent:(id)arg1 withRank:(id)arg2;
+- (bool)appSupportsUpcomingMedia;
 - (id)bucketExpiredUpcomingMedia;
 - (id)bucketValidUpcomingMedia;
 - (id)containerExpiredUpcomingMedia;

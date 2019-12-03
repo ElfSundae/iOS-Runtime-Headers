@@ -10,8 +10,11 @@
     AMSURLRequestProperties * _properties;
     AMSURLAction * _receivedAction;
     NSURLResponse * _response;
-    NSURLSession * _session;
+    long long  _retryCount;
+    AMSURLSession * _session;
     NSURLSessionTask * _task;
+    NSObject<OS_dispatch_queue> * _taskQueue;
+    NSMutableDictionary * _userInfo;
 }
 
 @property (nonatomic, copy) id /* block */ completionBlock;
@@ -21,8 +24,11 @@
 @property (nonatomic, retain) AMSURLRequestProperties *properties;
 @property (nonatomic, retain) AMSURLAction *receivedAction;
 @property (nonatomic, retain) NSURLResponse *response;
-@property (nonatomic) NSURLSession *session;
+@property (nonatomic) long long retryCount;
+@property (nonatomic, retain) AMSURLSession *session;
 @property (nonatomic, retain) NSURLSessionTask *task;
+@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *taskQueue;
+@property (nonatomic, readonly) NSMutableDictionary *userInfo;
 
 + (id)createTaskInfoForTask:(id)arg1;
 + (void)removeTaskInfoForTask:(id)arg1;
@@ -36,9 +42,11 @@
 - (id)error;
 - (id)initWithTask:(id)arg1;
 - (id)metrics;
+- (void)migrateFromTaskInfo:(id)arg1;
 - (id)properties;
 - (id)receivedAction;
 - (id)response;
+- (long long)retryCount;
 - (id)session;
 - (void)setCompletionBlock:(id /* block */)arg1;
 - (void)setData:(id)arg1;
@@ -47,8 +55,11 @@
 - (void)setProperties:(id)arg1;
 - (void)setReceivedAction:(id)arg1;
 - (void)setResponse:(id)arg1;
+- (void)setRetryCount:(long long)arg1;
 - (void)setSession:(id)arg1;
 - (void)setTask:(id)arg1;
 - (id)task;
+- (id)taskQueue;
+- (id)userInfo;
 
 @end

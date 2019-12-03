@@ -7,7 +7,9 @@
     bool  _alwaysFocusable;
     int  _blendMode;
     UIColor * _color;
+    NSString * _compositingFilter;
     UIColor * _darkColor;
+    NSString * _darkCompositingFilter;
     UIColor * _darkHighlightOrSelectedColor;
     UIColor * _darkSeeMoreTextColor;
     NSString * _fontFamily;
@@ -39,7 +41,9 @@
 @property (nonatomic) bool alwaysFocusable;
 @property (nonatomic) int blendMode;
 @property (nonatomic, retain) UIColor *color;
+@property (nonatomic, retain) NSString *compositingFilter;
 @property (nonatomic, retain) UIColor *darkColor;
+@property (nonatomic, retain) NSString *darkCompositingFilter;
 @property (nonatomic, retain) UIColor *darkHighlightOrSelectedColor;
 @property (nonatomic, retain) UIColor *darkSeeMoreTextColor;
 @property (nonatomic, retain) NSString *fontFamily;
@@ -70,8 +74,10 @@
 - (id)attributedStringWithString:(id)arg1 view:(id)arg2;
 - (int)blendMode;
 - (id)color;
+- (id)compositingFilter;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)darkColor;
+- (id)darkCompositingFilter;
 - (id)darkHighlightOrSelectedColor;
 - (id)darkSeeMoreTextColor;
 - (id)defaultAttributesForLabel:(id)arg1;
@@ -97,7 +103,9 @@
 - (void)setBlendMode:(int)arg1;
 - (void)setColor:(id)arg1;
 - (void)setColorWithOpacityType:(long long)arg1;
+- (void)setCompositingFilter:(id)arg1;
 - (void)setDarkColor:(id)arg1;
+- (void)setDarkCompositingFilter:(id)arg1;
 - (void)setDarkHighlightOrSelectedColor:(id)arg1;
 - (void)setDarkSeeMoreTextColor:(id)arg1;
 - (void)setFontFamily:(id)arg1;

@@ -15,7 +15,7 @@
 }
 
 @property (nonatomic) bool allDay;
-@property (nonatomic) NSObject<OS_dispatch_queue> *calendarEventQueue;
+@property (nonatomic, retain) NSObject<OS_dispatch_queue> *calendarEventQueue;
 @property (nonatomic, retain) NSDate *end;
 @property (nonatomic, copy) NSString *eventDescription;
 @property (nonatomic, copy) NSString *location;
@@ -24,12 +24,12 @@
 @property (nonatomic, copy) NSString *summary;
 @property (nonatomic, copy) NSString *url;
 
+- (void).cxx_destruct;
 - (id)EKEventInEventStore:(id)arg1;
 - (bool)_eventIsEqualToCalendarEvent:(id)arg1;
 - (id)_recurrenceRuleFromDictionary:(id)arg1;
 - (bool)allDay;
 - (id)calendarEventQueue;
-- (void)dealloc;
 - (id)end;
 - (id)eventDescription;
 - (id)initWithDictionary:(id)arg1;

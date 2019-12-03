@@ -15,7 +15,6 @@
 - (void)_collectUncollectables_invokedFromDeallocAndFinalize;
 - (void)dealloc;
 - (id)delegate;
-- (void)finalize;
 - (id)init;
 - (id)initWithRequestQueue:(id)arg1 requestBlock:(id /* block */)arg2;
 - (void)requestMediaDataIfNecessary;

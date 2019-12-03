@@ -56,7 +56,6 @@
 - (long long)numberOfFiles;
 - (long long)numberOfItems;
 - (id)pasteboardTypes;
-- (id)pasteboardTypesByFidelityForItemAtIndex:(unsigned long long)arg1;
 - (long long)pendingOperationCount;
 - (void)setChangeCount:(long long)arg1;
 - (void)setItemProviders:(id)arg1;

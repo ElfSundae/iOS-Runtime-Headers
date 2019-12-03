@@ -9,7 +9,6 @@
     bool  _doUnFilteredScanning;
     bool  _hotspotHelperScanning;
     NSMutableSet * _hotspotPluginNetworks;
-    WFInterface * _interface;
     NSObject<OS_dispatch_queue> * _internalQueue;
     NSMutableSet * _networks;
     NSObject<OS_dispatch_queue> * _scanDispatchQueue;
@@ -19,6 +18,7 @@
     long long  _state;
     bool  _supportsHotspotHelper;
     bool  _supportsUnfilteredScanning;
+    WFClient * _wifiClient;
 }
 
 @property unsigned long long consecutiveZeroFilteredScanResults;
@@ -27,7 +27,6 @@
 @property bool doUnFilteredScanning;
 @property (nonatomic) bool hotspotHelperScanning;
 @property (nonatomic, retain) NSMutableSet *hotspotPluginNetworks;
-@property (nonatomic, retain) WFInterface *interface;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *internalQueue;
 @property (nonatomic, retain) NSMutableSet *networks;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *scanDispatchQueue;
@@ -37,15 +36,17 @@
 @property (nonatomic) long long state;
 @property (nonatomic) bool supportsHotspotHelper;
 @property (nonatomic) bool supportsUnfilteredScanning;
+@property (nonatomic, retain) WFClient *wifiClient;
 
 - (void).cxx_destruct;
 - (void)_cancelQueuedScan;
 - (void)_checkForNoNetworksFound;
 - (bool)_isScanning;
+- (id)_knownNetworks;
 - (void)_processNextScan;
 - (void)_queueScan;
 - (void)_scan;
-- (void)_scanningDidFinish;
+- (void)_scanningDidFinishWithError:(id)arg1;
 - (void)_scanningWillStart;
 - (void)_startHotspotPluginScan;
 - (void)_stopNetworkPluginScan;
@@ -58,8 +59,7 @@
 - (bool)hotspotHelperScanning;
 - (id)hotspotPluginNetworks;
 - (id)init;
-- (id)initWithScanInterval:(double)arg1 delegate:(id)arg2;
-- (id)interface;
+- (id)initWithClient:(id)arg1 scanInterval:(double)arg2 delegate:(id)arg3;
 - (id)internalQueue;
 - (id)networks;
 - (void)pause;
@@ -73,7 +73,6 @@
 - (void)setDoUnFilteredScanning:(bool)arg1;
 - (void)setHotspotHelperScanning:(bool)arg1;
 - (void)setHotspotPluginNetworks:(id)arg1;
-- (void)setInterface:(id)arg1;
 - (void)setInternalQueue:(id)arg1;
 - (void)setNetworks:(id)arg1;
 - (void)setScanDispatchQueue:(id)arg1;
@@ -83,11 +82,13 @@
 - (void)setState:(long long)arg1;
 - (void)setSupportsHotspotHelper:(bool)arg1;
 - (void)setSupportsUnfilteredScanning:(bool)arg1;
+- (void)setWifiClient:(id)arg1;
 - (id /* block */)singleScanBlock;
 - (void)start;
 - (long long)state;
 - (void)stop;
 - (bool)supportsHotspotHelper;
 - (bool)supportsUnfilteredScanning;
+- (id)wifiClient;
 
 @end

@@ -13,5 +13,6 @@
 + (void)showBannerWithTitle:(id)arg1 message:(id)arg2 duration:(double)arg3 completionHandler:(id /* block */)arg4;
 + (void)showBannerWithTitle:(id)arg1 player:(id)arg2 message:(id)arg3 completionHandler:(id /* block */)arg4;
 + (void)showBannerWithTitle:(id)arg1 player:(id)arg2 message:(id)arg3 touchHandler:(id /* block */)arg4;
++ (void)showWelcomeBannerWithTitle:(id)arg1 message:(id)arg2 completionHandler:(id /* block */)arg3;
 
 @end

@@ -5,36 +5,31 @@
 @interface ISMigrator : NSObject {
     NSString * _currentVersion;
     unsigned long long  _platform;
-    NSDictionary * _preferencesAfterMigration;
-    NSDictionary * _preferencesBeforeMigration;
+    unsigned long long  _previousSchemaVersion;
     NSString * _previousVersion;
 }
 
 @property (nonatomic, copy) NSString *currentVersion;
 @property (nonatomic) unsigned long long platform;
-@property (nonatomic, copy) NSDictionary *preferencesAfterMigration;
-@property (nonatomic, copy) NSDictionary *preferencesBeforeMigration;
+@property (nonatomic) unsigned long long previousSchemaVersion;
 @property (nonatomic, copy) NSString *previousVersion;
 
 + (unsigned long long)currentPlatform;
++ (id)migratorFromSchemaVersion:(unsigned long long)arg1;
 + (id)migratorFromVersion:(id)arg1 toVersion:(id)arg2;
 + (id)migratorFromVersion:(id)arg1 toVersion:(id)arg2 platform:(unsigned long long)arg3;
 
-- (id)appendRegionalVariantsToLanguageIdentifiers:(id)arg1 regionCode:(id)arg2;
+- (void).cxx_destruct;
 - (id)currentVersion;
-- (void)dealloc;
-- (id)importPreferredLanguagesForPreferences:(id)arg1;
-- (id)importPreferredLanguages_macOS_10_9_forPreferences:(id)arg1;
-- (bool)performMigration;
 - (id)performMigrationForPreferences:(id)arg1;
+- (id)performMigrationForUserPreferences:(id)arg1 systemPreferences:(id)arg2;
 - (unsigned long long)platform;
-- (id)preferencesAfterMigration;
-- (id)preferencesBeforeMigration;
+- (unsigned long long)previousSchemaVersion;
 - (id)previousVersion;
+- (bool)previousVersionIsOlderThanMacOS:(id)arg1 iOS:(id)arg2 watchOS:(id)arg3 tvOS:(id)arg4;
 - (void)setCurrentVersion:(id)arg1;
 - (void)setPlatform:(unsigned long long)arg1;
-- (void)setPreferencesAfterMigration:(id)arg1;
-- (void)setPreferencesBeforeMigration:(id)arg1;
+- (void)setPreviousSchemaVersion:(unsigned long long)arg1;
 - (void)setPreviousVersion:(id)arg1;
 
 @end

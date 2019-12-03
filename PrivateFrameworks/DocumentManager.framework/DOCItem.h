@@ -16,7 +16,10 @@
 @property (retain) FPItem *fileProviderItem;
 @property (nonatomic, copy) NSURL *fileURL;
 
++ (void)_fetchDocumentURLFromBookmarkableString:(id)arg1 completion:(id /* block */)arg2;
++ (id)_wrapperForURL:(id)arg1 error:(id*)arg2;
 + (id)documentsURLsForItems:(id)arg1;
++ (bool)isAnyFPItemAFault:(id)arg1;
 + (bool)isAnyItemAFault:(id)arg1;
 + (bool)supportsSecureCoding;
 

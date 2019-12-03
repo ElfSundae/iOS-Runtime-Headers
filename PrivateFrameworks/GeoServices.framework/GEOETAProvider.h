@@ -14,6 +14,7 @@
     }  _didStart;
     id /* block */  _errorHandler;
     id /* block */  _finishedHandler;
+    NSObject<OS_dispatch_queue> * _isolationQueue;
     GEOProtobufSession * _protobufSession;
     GEOProtobufSessionTask * _task;
     GEOMapServiceTraits * _traits;

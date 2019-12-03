@@ -4,7 +4,7 @@
 
 @interface HMDCameraSnapshotIDSRelay : HMFObject <HMFLogging, IDSServiceDelegate> {
     IDSService * _idsStreamService;
-    HMDCameraSessionID * _sessionID;
+    HMDCameraSnapshotSessionID * _sessionID;
     HMFOSTransaction * _snapshotRelayTransaction;
     NSObject<OS_dispatch_queue> * _workQueue;
 }
@@ -13,7 +13,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) IDSService *idsStreamService;
-@property (nonatomic, readonly) HMDCameraSessionID *sessionID;
+@property (nonatomic, readonly) HMDCameraSnapshotSessionID *sessionID;
 @property (nonatomic, retain) HMFOSTransaction *snapshotRelayTransaction;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *workQueue;

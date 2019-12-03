@@ -41,7 +41,6 @@
         } __tree_; 
     }  mSharedFormulasMap;
     EDReference * mSheetDimension;
-    TCImportTracing * mTracing;
     EDWorkbook * mWorkbook;
     OCPPackagePart * mWorkbookPart;
 }
@@ -67,10 +66,9 @@
 - (unsigned int)currentRowMinColumnIndex;
 - (id)currentSheet;
 - (unsigned int)currentSheetIndex;
-- (void)dealloc;
 - (double)defaultColumnWidth;
 - (double)defaultRowHeight;
-- (id)initWithWorkbookPart:(id)arg1 cancelDelegate:(id)arg2 tracing:(id)arg3;
+- (id)initWithWorkbookPart:(id)arg1 cancelDelegate:(id)arg2;
 - (bool)isCancelled;
 - (bool)isPredefinedDxfsBeingRead;
 - (bool)isPredefinedTableStylesRead;

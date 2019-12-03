@@ -17,6 +17,7 @@
 - (void).cxx_destruct;
 - (unsigned long long)cfCompareFlagsFromNSOptions:(unsigned long long)arg1;
 - (void)dealloc;
+- (id)description;
 - (struct __EmojiLocaleDataWrapper { }*)emojiLocaleDataRef;
 - (id)emojiTokens;
 - (id)emojiTokensForOptions:(unsigned long long)arg1 presentationStyle:(int)arg2;

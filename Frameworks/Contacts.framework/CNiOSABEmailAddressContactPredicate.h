@@ -9,6 +9,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (bool)_inputsAreValid;
+- (bool)_stringsAreNonEmpty:(id)arg1;
 - (struct __CFArray { }*)cn_copyPeopleInAddressBook:(void*)arg1 fetchRequest:(id)arg2 matchInfos:(id*)arg3 environment:(id)arg4 error:(struct __CFError {}**)arg5;
 - (id)cn_cursorForEncodedPeopleFromAddressBook:(void*)arg1 fetchRequest:(id)arg2 environment:(id)arg3 error:(id*)arg4;
 - (bool)cn_supportsEncodedFetching;

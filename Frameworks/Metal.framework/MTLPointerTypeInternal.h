@@ -7,6 +7,7 @@
     unsigned long long  _alignment;
     unsigned long long  _dataSize;
     unsigned long long  _dataType;
+    bool  _doRetain;
     bool  _elementIsArgumentBuffer;
     unsigned long long  _elementType;
     MTLType * _elementTypeInfo;
@@ -26,7 +27,9 @@
 - (id)elementTypeDescription;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (id)initWithElementType:(unsigned long long)arg1 elementTypeDescription:(id)arg2 access:(unsigned long long)arg3 alignment:(unsigned long long)arg4 dataSize:(unsigned long long)arg5 elementIsIndirectArgumentBuffer:(bool)arg6 isConstantBuffer:(bool)arg7;
+- (id)initWithElementType:(unsigned long long)arg1 elementTypeDescription:(id)arg2 access:(unsigned long long)arg3 alignment:(unsigned long long)arg4 dataSize:(unsigned long long)arg5 elementIsIndirectArgumentBuffer:(bool)arg6 isConstantBuffer:(bool)arg7 doRetain:(bool)arg8;
 - (bool)isConstantBuffer;
 - (void)setAlignment:(unsigned long long)arg1 dataSize:(unsigned long long)arg2;
+- (id)structType;
 
 @end

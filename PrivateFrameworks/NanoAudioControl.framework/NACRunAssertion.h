@@ -2,9 +2,11 @@
    Image: /System/Library/PrivateFrameworks/NanoAudioControl.framework/NanoAudioControl
  */
 
-@interface NACRunAssertion : NSObject
+@interface NACRunAssertion : NSObject {
+    NSObject<OS_os_transaction> * _transaction;
+}
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 
 @end

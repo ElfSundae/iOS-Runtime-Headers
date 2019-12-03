@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSLayoutConstraint *bannerWidthConstraint;
 @property (nonatomic, retain) NSLayoutConstraint *bannerYPositionConstraint;
 
+- (void).cxx_destruct;
 - (struct CGPoint { double x1; double x2; })_hiddenBannerPosition:(struct CGSize { double x1; double x2; })arg1;
 - (struct CGPoint { double x1; double x2; })_visibleBannerCenterPosition:(struct CGSize { double x1; double x2; })arg1;
 - (void)addBannerView:(id)arg1;
@@ -27,7 +28,6 @@
 - (id)bannerWidthConstraint;
 - (double)bannerWidthForViewSize:(struct CGSize { double x1; double x2; })arg1;
 - (id)bannerYPositionConstraint;
-- (void)dealloc;
 - (void)handleWindowPan:(id)arg1;
 - (void)handleWindowSingleTap:(id)arg1;
 - (void)hideBannerQuickly:(bool)arg1;

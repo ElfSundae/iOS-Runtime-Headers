@@ -20,9 +20,12 @@
 @property (readonly) Class superclass;
 
 - (void)_animateToPosition:(struct Matrix<double, 3, 1> { double x1[3]; })arg1 pitch:(double)arg2 yaw:(double)arg3 duration:(double)arg4 timingCurve:(id /* block */)arg5 completion:(id /* block */)arg6;
+- (void)_animateToPosition:(struct Matrix<double, 3, 1> { double x1[3]; })arg1 pitch:(double)arg2 yaw:(double)arg3 duration:(double)arg4 timingCurve:(id /* block */)arg5 forceDestination:(bool)arg6 completion:(id /* block */)arg7;
+- (void)_jumpToCenterPoint:(struct Matrix<double, 3, 1> { double x1[3]; })arg1 pitchRadians:(double)arg2 yawRadians:(double)arg3;
 - (struct { double x1; double x2; })_mercatorCenterCoordinateForMapRegion:(id)arg1;
 - (bool)allowDatelineWraparound;
 - (double)altitude;
+- (void)animateRegionWithDuration:(double)arg1 timingFunction:(id /* block */)arg2 stepHandler:(id /* block */)arg3 completionHandler:(id /* block */)arg4;
 - (bool)canEnter3DMode;
 - (bool)canEnter3DModeNoUpdate;
 - (bool)canRotate;
@@ -44,7 +47,7 @@
 - (void)exit3DMode;
 - (double)heading;
 - (float)idealPitchForNormalizedZoomLevel:(float)arg1;
-- (id)init;
+- (id)initWithMapDataAccess:(struct MapDataAccess { struct World {} *x1; unsigned char x2; id x3; struct CameraAccessInternal {} *x4; struct unique_ptr<md::CameraAccessCartographic, std::__1::default_delete<md::CameraAccessCartographic> > { struct __compressed_pair<md::CameraAccessCartographic *, std::__1::default_delete<md::CameraAccessCartographic> > { struct CameraAccessCartographic {} *x_1_2_1; } x_5_1_1; } x5; struct unique_ptr<md::CameraAccessGlobe, std::__1::default_delete<md::CameraAccessGlobe> > { struct __compressed_pair<md::CameraAccessGlobe *, std::__1::default_delete<md::CameraAccessGlobe> > { struct CameraAccessGlobe {} *x_1_2_1; } x_6_1_1; } x6; struct unique_ptr<md::CameraAccessMunin, std::__1::default_delete<md::CameraAccessMunin> > { struct __compressed_pair<md::CameraAccessMunin *, std::__1::default_delete<md::CameraAccessMunin> > { struct CameraAccessMunin {} *x_1_2_1; } x_7_1_1; } x7; }*)arg1 animationRunner:(struct AnimationRunner { struct MapEngine {} *x1; }*)arg2 runLoopController:(struct RunLoopController { struct MapEngine {} *x1; long long x2; long long x3; }*)arg3 cameraDelegate:(id)arg4;
 - (bool)isFullyPitched;
 - (bool)isPitched;
 - (id)mapCanvas;
@@ -58,6 +61,7 @@
 - (float)normalizedZoomLevelAdjustmentForTileSize:(long long)arg1;
 - (void)panWithOffset:(struct CGPoint { double x1; double x2; })arg1 relativeToScreenPoint:(struct CGPoint { double x1; double x2; })arg2 animated:(bool)arg3 duration:(double)arg4 completionHandler:(id /* block */)arg5;
 - (double)pitch;
+- (struct Matrix<double, 3, 1> { double x1[3]; })positionClampedToCameraRestriction:(struct Matrix<double, 3, 1> { double x1[3]; })arg1;
 - (double)presentationYaw;
 - (bool)restoreViewportFromInfo:(id)arg1;
 - (void)rotateToPitch:(double)arg1 withPoint:(const struct Matrix<double, 3, 1> { double x1[3]; }*)arg2 preserveAltitude:(bool)arg3 animated:(bool)arg4 exaggerate:(bool)arg5;
@@ -65,10 +69,13 @@
 - (void)setAllowDatelineWraparound:(bool)arg1;
 - (void)setCenterCoordinate3D:(struct { double x1; double x2; double x3; })arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4 duration:(double)arg5 animationStyle:(long long)arg6 timingCurve:(id /* block */)arg7 completion:(id /* block */)arg8;
 - (void)setCenterCoordinate:(struct { double x1; double x2; })arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4 duration:(double)arg5 animationStyle:(long long)arg6 timingCurve:(id /* block */)arg7 completion:(id /* block */)arg8;
+- (void)setCenterCoordinate:(struct { double x1; double x2; })arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4 duration:(double)arg5 animationStyle:(long long)arg6 timingCurve:(id /* block */)arg7 forceDestination:(bool)arg8 completion:(id /* block */)arg9;
+- (void)setCenterCoordinateDistanceRange:(struct { double x1; double x2; })arg1 duration:(double)arg2 timingFunction:(id /* block */)arg3;
 - (void)setGesturing:(bool)arg1;
 - (void)setMapCanvas:(id)arg1;
 - (void)setMapModel:(id)arg1;
 - (void)setMapRegion:(id)arg1 pitch:(double)arg2 yaw:(double)arg3 duration:(double)arg4 completion:(id /* block */)arg5;
+- (void)setRegionRestriction:(id)arg1 duration:(double)arg2 timingFunction:(id /* block */)arg3;
 - (void)setYaw:(double)arg1 animated:(bool)arg2;
 - (bool)snapMapIfNecessary:(bool)arg1;
 - (void)startTrackingAnnotation:(id)arg1 trackHeading:(bool)arg2 animated:(bool)arg3;

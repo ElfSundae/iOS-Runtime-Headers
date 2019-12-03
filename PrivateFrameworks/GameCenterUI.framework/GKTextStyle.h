@@ -42,6 +42,7 @@
 + (double)standardLeadingForFontTextStyle:(id)arg1;
 + (id)textStyle;
 
+- (void).cxx_destruct;
 - (id)UIKitFontTextStyleName;
 - (id)achievementLeaderboardPointsText;
 - (id)achievementLeaderboardRank;
@@ -78,7 +79,6 @@
 - (id)composeMessage;
 - (id)copy;
 - (id)copyWithBaseClass:(Class)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)detailSecondaryHeaderText;
 - (id)emphasized;

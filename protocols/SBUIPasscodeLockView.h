@@ -18,7 +18,6 @@
 - (NSString *)passcode;
 - (long long)passcodeLockViewState;
 - (bool)playsKeypadSounds;
-- (bool)proudLockShowsBiometricStates;
 - (void)reset;
 - (void)resetForFailedMesaAttemptWithStatusText:(NSString *)arg1 andSubtitle:(NSString *)arg2;
 - (void)resetForFailedPasscode;
@@ -36,7 +35,6 @@
 - (void)setPasscodeLockViewState:(long long)arg1;
 - (void)setPasscodeLockViewState:(long long)arg1 animated:(bool)arg2;
 - (void)setPlaysKeypadSounds:(bool)arg1;
-- (void)setProudLockShowsBiometricStates:(bool)arg1;
 - (void)setScreenOn:(bool)arg1;
 - (void)setShowsCancelButton:(bool)arg1;
 - (void)setShowsEmergencyCallButton:(bool)arg1;

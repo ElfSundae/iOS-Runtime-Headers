@@ -4,7 +4,7 @@
 
 @interface HMDCameraParameterSelection : HMFObject <HMFLogging> {
     HMDCameraAudioParameterSelection * _audioParameterSelection;
-    HMDCameraSessionID * _sessionID;
+    HMDCameraStreamSessionID * _sessionID;
     HMDCameraVideoParameterSelection * _videoParameterSelection;
 }
 
@@ -12,7 +12,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) HMDCameraSessionID *sessionID;
+@property (nonatomic, readonly) HMDCameraStreamSessionID *sessionID;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) HMDCameraVideoParameterSelection *videoParameterSelection;
 

@@ -5,7 +5,9 @@
 @interface BCSNotificationService : NSObject <BCSNotificationServiceProtocol>
 
 - (void)_cancelNotificationsForCodeType:(long long)arg1;
+- (void)_didReceiveNotificationResponse:(id)arg1;
 - (void)cancelNotificationsForCodeType:(long long)arg1;
+- (void)didReceiveNotificationResponse:(id)arg1;
 - (void)notifyParsedCodeWithData:(id)arg1 codePayload:(id)arg2 shouldReplacePreviousNotifications:(bool)arg3 reply:(id /* block */)arg4;
 
 @end

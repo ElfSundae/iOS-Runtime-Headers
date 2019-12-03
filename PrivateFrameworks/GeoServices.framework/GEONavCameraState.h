@@ -5,11 +5,11 @@
 @interface GEONavCameraState : PBCodable <NSCopying> {
     int  _distanceToManeuver;
     struct { 
-        unsigned int distanceToManeuver : 1; 
-        unsigned int speedBucket : 1; 
-        unsigned int upcomingManeuverType : 1; 
-        unsigned int isGroupedManeuver : 1; 
-    }  _has;
+        unsigned int has_distanceToManeuver : 1; 
+        unsigned int has_speedBucket : 1; 
+        unsigned int has_upcomingManeuverType : 1; 
+        unsigned int has_isGroupedManeuver : 1; 
+    }  _flags;
     bool  _isGroupedManeuver;
     int  _speedBucket;
     int  _upcomingManeuverType;
@@ -23,6 +23,8 @@
 @property (nonatomic) bool isGroupedManeuver;
 @property (nonatomic) int speedBucket;
 @property (nonatomic) int upcomingManeuverType;
+
++ (bool)isValid:(id)arg1;
 
 - (int)StringAsDistanceToManeuver:(id)arg1;
 - (int)StringAsSpeedBucket:(id)arg1;
@@ -41,6 +43,7 @@
 - (bool)isEqual:(id)arg1;
 - (bool)isGroupedManeuver;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setDistanceToManeuver:(int)arg1;
 - (void)setHasDistanceToManeuver:(bool)arg1;

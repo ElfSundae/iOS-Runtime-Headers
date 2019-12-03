@@ -7,8 +7,7 @@
 + (Class)_configurationClass;
 
 - (id)_clickConfiguration;
-- (id)initWithStyle:(long long)arg1;
-- (id)initWithStyle:(long long)arg1 coordinateSpace:(id)arg2;
+- (id)initWithCoordinateSpace:(id)arg1;
 - (void)pressedDown;
 - (void)pressedUp;
 - (void)userInteractionCancelled;

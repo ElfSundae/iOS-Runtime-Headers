@@ -23,7 +23,7 @@
 
 @optional
 
-- (void)addDownloadObserver:(void *)arg1 forData:(void *)arg2 completionHandler:(void *)arg3; // needs 3 arg types, found 18: id, TSPData *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, id, void*, void*, unsigned short, void*, long double, void*, void*, void*, void*, long long, void*
+- (void)addDownloadObserver:(void *)arg1 forData:(void *)arg2 completionHandler:(void *)arg3; // needs 3 arg types, found 10: id, TSPData *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, id, TSPData *, long long, void*
 - (bool)copyToTemporaryURL:(NSURL *)arg1;
 - (SFUCryptoKey *)decryptionKey;
 - (bool)needsDownload;

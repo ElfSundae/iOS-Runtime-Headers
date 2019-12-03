@@ -36,6 +36,7 @@
 
 - (void).cxx_destruct;
 - (id)_handleRecordChanges:(id)arg1;
+- (bool)allowsAnonymousAccount;
 - (long long)changeTypes;
 - (id)configurationsByRecordZoneID;
 - (id)desiredAssetKeys;

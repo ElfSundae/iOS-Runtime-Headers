@@ -48,6 +48,7 @@
 - (void)removeObserver:(id)arg1;
 - (id)secondaryValue;
 - (void)unitPreferencesDidUpdate;
+- (void)updateController:(id)arg1 didReceiveHighFrequencyUpdateForType:(id)arg2;
 - (void)updateController:(id)arg1 didReceiveUpdateForType:(id)arg2 samplesAdded:(id)arg3 objectsRemoved:(id)arg4;
 - (id)value;
 

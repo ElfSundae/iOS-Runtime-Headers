@@ -10,7 +10,7 @@
     bool  mStartNumberOverridden;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)initWithDocument:(id)arg1 level:(unsigned char)arg2;
 - (bool)isListLevelOverridden;

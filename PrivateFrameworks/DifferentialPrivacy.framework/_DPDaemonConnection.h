@@ -8,12 +8,14 @@
 
 @property (nonatomic, readonly) NSXPCConnection *daemonConnection;
 
++ (id)daemonAgentConnection;
 + (id)daemonConnection;
 
 - (void).cxx_destruct;
 - (id)daemonConnection;
 - (void)dealloc;
 - (id)init;
+- (id)initWithServiceName:(id)arg1 options:(unsigned long long)arg2;
 - (void)recordBitValues:(id)arg1 forKey:(id)arg2 withReply:(id /* block */)arg3;
 - (void)recordNumbers:(id)arg1 forKey:(id)arg2 withReply:(id /* block */)arg3;
 - (void)recordStrings:(id)arg1 forKey:(id)arg2 withReply:(id /* block */)arg3;

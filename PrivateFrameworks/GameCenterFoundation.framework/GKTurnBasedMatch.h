@@ -35,9 +35,11 @@
 @property (nonatomic, readonly, retain) NSString *matchID;
 @property (nonatomic, copy) NSString *message;
 @property (nonatomic, readonly, retain) NSArray *participants;
+@property (nonatomic, readonly) long long platform;
 @property (nonatomic, readonly) GKTurnBasedParticipant *playingWithParticipantOrFirstKnownPlayer;
 @property (nonatomic, readonly) GKTurnBasedParticipant *previousParticipant;
 @property (nonatomic, readonly) GKTurnBasedParticipant *previousParticipantOrFirstKnownPlayer;
+@property (nonatomic, retain) NSString *shortBundleVersion;
 @property (nonatomic, readonly) GKPlayer *showcasePlayer;
 @property (nonatomic) unsigned int state;
 @property (nonatomic, readonly) long long status;

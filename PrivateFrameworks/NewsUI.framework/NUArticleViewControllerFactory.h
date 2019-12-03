@@ -8,7 +8,6 @@
     <NUArticleAdManagerFactory> * _articleAdManagerFactory;
     <NUArticleDataProviderFactory> * _articleDataProviderFactory;
     <NUArticlePrefetcherType> * _articlePrefetcher;
-    <NUDynamicTypeProviding> * _dynamicTypeProviding;
     <NUDocumentSectionBlueprintProvider> * _headerBlueprintProvider;
     <NUArticleKeyCommandManager> * _keyCommandManager;
     NSHashTable * _loadingListeners;
@@ -22,7 +21,6 @@
 @property (nonatomic, readonly) <NUArticlePrefetcherType> *articlePrefetcher;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, readonly) <NUDynamicTypeProviding> *dynamicTypeProviding;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) <NUDocumentSectionBlueprintProvider> *headerBlueprintProvider;
 @property (nonatomic, readonly) <NUArticleKeyCommandManager> *keyCommandManager;
@@ -40,10 +38,9 @@
 - (id)createArticleViewControllerWithArticle:(id)arg1;
 - (id)createArticleViewControllerWithArticle:(id)arg1 issue:(id)arg2;
 - (id)createArticleWebViewControllerWithArticle:(id)arg1;
-- (id)dynamicTypeProviding;
 - (id)headerBlueprintProvider;
-- (id)initWithArticleDataProviderFactory:(id)arg1 articleAdManagerFactory:(id)arg2 dynamicTypeProviding:(id)arg3 appStateMonitor:(id)arg4 URLHandler:(id)arg5 keyCommandManager:(id)arg6 headerBlueprintProvider:(id)arg7 articlePrefetcher:(id)arg8 resolver:(id)arg9;
-- (id)initWithArticleDataProviderFactory:(id)arg1 articleAdManagerFactory:(id)arg2 dynamicTypeProviding:(id)arg3 appStateMonitor:(id)arg4 keyCommandManager:(id)arg5 headerBlueprintProvider:(id)arg6 articlePrefetcher:(id)arg7 resolver:(id)arg8;
+- (id)initWithArticleDataProviderFactory:(id)arg1 articleAdManagerFactory:(id)arg2 appStateMonitor:(id)arg3 URLHandler:(id)arg4 keyCommandManager:(id)arg5 headerBlueprintProvider:(id)arg6 articlePrefetcher:(id)arg7 resolver:(id)arg8;
+- (id)initWithArticleDataProviderFactory:(id)arg1 articleAdManagerFactory:(id)arg2 appStateMonitor:(id)arg3 keyCommandManager:(id)arg4 headerBlueprintProvider:(id)arg5 articlePrefetcher:(id)arg6 resolver:(id)arg7;
 - (id)keyCommandManager;
 - (id)loadingListeners;
 - (id)resolver;

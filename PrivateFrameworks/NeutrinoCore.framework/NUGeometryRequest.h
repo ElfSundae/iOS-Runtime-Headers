@@ -16,5 +16,6 @@
 - (id)scalePolicy;
 - (void)setScalePolicy:(id)arg1;
 - (void)submit:(id /* block */)arg1;
+- (id)submitSynchronous:(out id*)arg1;
 
 @end

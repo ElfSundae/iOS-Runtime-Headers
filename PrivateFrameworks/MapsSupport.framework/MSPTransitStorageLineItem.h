@@ -28,6 +28,7 @@
 @property (nonatomic, readonly) GEOMapItemIdentifier *identifier;
 @property (nonatomic, readonly) NSArray *incidents;
 @property (nonatomic, retain) NSMutableArray *incidents;
+@property (nonatomic, readonly) bool isBus;
 @property (nonatomic, readonly) bool isIncidentsTTLExpired;
 @property (nonatomic, readonly) NSArray *labelItems;
 @property (nonatomic, retain) MSPTransitStorageLine *line;
@@ -71,6 +72,7 @@
 - (id)incidentsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)incidentsCount;
 - (id)initWithLineItem:(id)arg1;
+- (bool)isBus;
 - (bool)isEqual:(id)arg1;
 - (bool)isIncidentsTTLExpired;
 - (id)labelItems;

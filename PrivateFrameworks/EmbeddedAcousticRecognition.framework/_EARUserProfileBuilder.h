@@ -117,6 +117,7 @@
 }
 
 + (void)initialize;
++ (bool)isEasyToRecognizeWord:(id)arg1 forLocale:(id)arg2;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;

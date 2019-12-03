@@ -11,9 +11,11 @@
     NSHashTable * _observerTable;
 }
 
+@property (readonly, copy) NSArray *allObservers;
 @property (readonly) unsigned long long count;
 
 - (void).cxx_destruct;
+- (id)allObservers;
 - (unsigned long long)count;
 - (id)initWithName:(id)arg1 loggingCategory:(id)arg2;
 - (void)notifyObservers:(id /* block */)arg1;

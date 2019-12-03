@@ -25,6 +25,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } duration;
 @property (getter=isExpectingPairedVideo, nonatomic, readonly) bool expectingPairedVideo;
+@property (nonatomic, readonly) struct CGSize { double x1; double x2; } finalExpectedPixelSize;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } irisStillDisplayTime;
 @property (nonatomic, readonly) NSString *irisStillImageUUID;
@@ -50,6 +51,7 @@
 - (id)creationDate;
 - (void)dealloc;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })duration;
+- (struct CGSize { double x1; double x2; })finalExpectedPixelSize;
 - (id)initWithAssetUUID:(id)arg1 captureSession:(unsigned short)arg2 creationDate:(id)arg3 captureOrientation:(long long)arg4 captureDevice:(long long)arg5 videoDimensions:(struct CGSize { double x1; double x2; })arg6 previewImageSurface:(void*)arg7;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })irisStillDisplayTime;
 - (id)irisStillImageUUID;

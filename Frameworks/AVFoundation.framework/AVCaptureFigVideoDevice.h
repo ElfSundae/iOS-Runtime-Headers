@@ -45,7 +45,6 @@
     long long  _autoFocusRangeRestriction;
     bool  _automaticallyAdjustsImageControlMode;
     bool  _automaticallyAdjustsVideoHDREnabled;
-    bool  _automaticallyEnablesLowLightBoostWhenAvailable;
     NSArray * _availableBoxedMetadataFormatDescriptions;
     bool  _avcaptureDeviceAutoFlashEnabled;
     AVCaptureDeviceControlRequestQueue * _biasedExposureControlRequests;
@@ -73,6 +72,8 @@
         float greenGain; 
         float blueGain; 
     }  _deviceWhiteBalanceGainsKVO;
+    long long  _digitalFlashMode;
+    NSDictionary * _digitalFlashSceneForPhotoOutput;
     struct { 
         long long value; 
         int timescale; 
@@ -114,6 +115,8 @@
         double y; 
     }  _focusPointOfInterest;
     NSArray * _formats;
+    bool  _geometricDistortionCorrectionEnabled;
+    bool  _globalToneMappingEnabled;
     struct { 
         float redGain; 
         float greenGain; 
@@ -135,16 +138,16 @@
     float  _lastCustomExposureISO;
     float  _lensPositionKVO;
     NSString * _localizedName;
-    bool  _lowLightBoostEnabled;
     bool  _lowLightVideoCaptureEnabled;
     AVCaptureDeviceControlRequestQueue * _manualExposureControlRequests;
     AVCaptureDeviceControlRequestQueue * _manualFocusControlRequests;
     AVCaptureDeviceControlRequestQueue * _manualWhiteBalanceControlRequests;
     double  _maxAvailableVideoZoomFactor;
     double  _minAvailableVideoZoomFactor;
+    long long  _nonDestructiveCropAspectRatio;
+    bool  _nonDestructiveCropEnabled;
     NSObject<OS_dispatch_queue> * _observedHighFrequencyPropertiesQueue;
     NSMutableDictionary * _observedHighFrequencyPropertyCounts;
-    long long  _origin;
     bool  _photoOutputFlashSceneEnabled;
     long long  _position;
     NSMutableDictionary * _propertyToFigCaptureSourcePropertyMap;
@@ -155,6 +158,7 @@
     long long  _shallowDepthOfFieldEffectStatus;
     bool  _smileDetectionEnabled;
     bool  _smoothAutoFocusEnabled;
+    bool  _spatialOverCaptureEnabled;
     bool  _subjectMonitoringEnabled;
     NSDictionary * _supportedOptionalFaceDetectionFeatures;
     AVCaptureSystemPressureState * _systemPressureState;
@@ -164,6 +168,13 @@
     long long  _torchMode;
     bool  _videoHDREnabled;
     bool  _videoHDRSuspended;
+    struct { 
+        long long value; 
+        int timescale; 
+        unsigned int flags; 
+        long long epoch; 
+    }  _videoMinFrameDurationOverride;
+    id  _videoMinFrameDurationOverrideOwner;
     long long  _videoZoomDownscaleStageHint;
     bool  _videoZoomDrawOverlay;
     float  _videoZoomFactor;
@@ -204,6 +215,8 @@
 - (id)_copyFormatsArray;
 - (void)_decrementObserverCountForHighFrequencyProperty:(id)arg1;
 - (struct { float x1; float x2; float x3; })_deviceWhiteBalanceGainsForChromaticityValues:(struct { float x1; float x2; })arg1 temperature:(double)arg2;
+- (id)_digitalFlashExposureTimes;
+- (long long)_digitalFlashStatus;
 - (void)_drainManualControlRequestQueue:(id)arg1;
 - (void)_drainManualControlRequestQueues;
 - (bool)_ensureWhiteBalanceCalibrationUnpacked;
@@ -236,6 +249,8 @@
 - (void)_setAdjustingWhiteBalance:(bool)arg1;
 - (void)_setBravoCameraSelectionBehavior:(id)arg1;
 - (void)_setDepthDataDeliveryEnabled:(bool)arg1;
+- (void)_setDigitalFlashModeInternal:(long long)arg1;
+- (void)_setDigitalFlashSceneForPhotoOutput:(id)arg1;
 - (int)_setExposureWithMode:(long long)arg1 duration:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2 ISO:(float)arg3 requestID:(int)arg4 newMaxFrameDuration:(struct { long long x1; int x2; unsigned int x3; long long x4; }*)arg5;
 - (int)_setFaceDetectionFeatureEnabled:(bool)arg1 enabledState:(bool*)arg2;
 - (void)_setFigCaptureSource:(struct OpaqueFigCaptureSource { }*)arg1;
@@ -245,6 +260,7 @@
 - (void)_setFlashAvailable:(bool)arg1;
 - (void)_setFlashSceneDetectedForPhotoOutput:(bool)arg1;
 - (int)_setFocusWithMode:(long long)arg1 lensPosition:(float)arg2 requestID:(int)arg3;
+- (void)_setGlobalToneMappingEnabledInternal:(bool)arg1;
 - (void)_setHighDynamicRangeScene:(bool)arg1;
 - (void)_setImageControlMode:(long long)arg1;
 - (void)_setIsStillImageStabilizationScene:(bool)arg1;
@@ -282,16 +298,19 @@
 - (id)availableBoxedMetadataFormatDescriptions;
 - (id)bravoCameraSelectionBehavior;
 - (bool)cachesFigCaptureSourceConfigurationChanges;
+- (id)cameraPoseMatrix;
 - (void)cancelVideoZoomRamp;
 - (struct { float x1; float x2; })chromaticityValuesForDeviceWhiteBalanceGains:(struct { float x1; float x2; float x3; })arg1;
+- (id)constituentDeviceWithDeviceType:(id)arg1;
 - (void)dealloc;
 - (struct OpaqueCMClock { }*)deviceClock;
 - (id)deviceFormatForSessionPreset:(id)arg1 videoFormat:(unsigned int)arg2;
-- (long long)deviceSourceOrigin;
 - (id)deviceType;
 - (struct { float x1; float x2; float x3; })deviceWhiteBalanceGains;
 - (struct { float x1; float x2; float x3; })deviceWhiteBalanceGainsForChromaticityValues:(struct { float x1; float x2; })arg1;
 - (struct { float x1; float x2; float x3; })deviceWhiteBalanceGainsForTemperatureAndTintValues:(struct { float x1; float x2; })arg1;
+- (long long)digitalFlashMode;
+- (id)digitalFlashSceneForPhotoOutput;
 - (double)dualCameraSwitchOverVideoZoomFactor;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })exposureDuration;
 - (long long)exposureMode;
@@ -303,6 +322,7 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })faceRectangle;
 - (int)faceRectangleAngle;
 - (struct OpaqueFigCaptureSource { }*)figCaptureSource;
+- (int)figCaptureSourceDeviceType;
 - (long long)flashMode;
 - (float)focalLength;
 - (long long)focusMode;
@@ -313,6 +333,7 @@
 - (bool)hasMediaType:(id)arg1;
 - (bool)hasTorch;
 - (bool)hevcAllowBFramesForHighCTUCount;
+- (bool)hevcAllowBFramesForHighCTUCountAndHighResolution;
 - (int)hevcTurboModeVersion;
 - (long long)imageControlMode;
 - (id)init;
@@ -325,6 +346,7 @@
 - (bool)isAutoRedEyeReductionSupported;
 - (bool)isCameraIntrinsicMatrixDeliverySupported;
 - (bool)isConnected;
+- (bool)isConstituentPhotoCalibrationDataSupported;
 - (bool)isDiagnosticsTestSupported:(id)arg1;
 - (bool)isExposureModeSupported:(long long)arg1;
 - (bool)isExposurePointOfInterestSupported;
@@ -339,8 +361,11 @@
 - (bool)isFlashSceneDetectedForPhotoOutput;
 - (bool)isFocusModeSupported:(long long)arg1;
 - (bool)isFocusPointOfInterestSupported;
-- (bool)isHDRSupported;
+- (bool)isGeometricDistortionCorrectionEnabled;
+- (bool)isGeometricDistortionCorrectionSupported;
+- (bool)isGlobalToneMappingEnabled;
 - (bool)isHEIFSupported;
+- (bool)isHEVCMemoryUsageMinimizationSupported;
 - (bool)isHEVCPreferred;
 - (bool)isHEVCRelaxedAverageBitRateTargetSupported;
 - (bool)isHEVCSupported;
@@ -355,12 +380,15 @@
 - (bool)isLockingWhiteBalanceWithCustomDeviceGainsSupported;
 - (bool)isLowLightVideoCaptureEnabled;
 - (bool)isMachineReadableCodeDetectionSupported;
+- (bool)isNonDestructiveCropEnabled;
+- (bool)isObjectDetectionSupported;
 - (bool)isRampingVideoZoom;
 - (bool)isRawStillImageCaptureSupported;
 - (bool)isSISSupported;
 - (bool)isSmileDetectionSupported;
 - (bool)isSmoothAutoFocusEnabled;
 - (bool)isSmoothAutoFocusSupported;
+- (bool)isSpatialOverCaptureEnabled;
 - (bool)isStillImageStabilizationScene;
 - (bool)isSubjectAreaChangeMonitoringEnabled;
 - (bool)isTorchActive;
@@ -385,13 +413,16 @@
 - (int)minMacroblocksForHighProfileAbove30fps;
 - (int)minMacroblocksForHighProfileUpTo30fps;
 - (id)modelID;
+- (long long)nonDestructiveCropAspectRatio;
 - (long long)position;
+- (int)powerConsumptionAt30FPSForOISMode:(int)arg1;
 - (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)arg1 userInfo:(id)arg2;
 - (bool)providesStortorgetMetadata;
 - (void)rampExponentiallyToVideoZoomFactor:(float)arg1 withDuration:(double)arg2;
 - (void)rampToVideoZoomFactor:(double)arg1 withRate:(float)arg2;
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2 context:(void*)arg3;
+- (void)resetVideoMinFrameDurationOverrideForOwner:(id)arg1;
 - (id)runDiagnosticsWithTestType:(id)arg1;
 - (void)setActiveColorSpace:(long long)arg1;
 - (void)setActiveDepthDataFormat:(id)arg1;
@@ -404,6 +435,7 @@
 - (void)setAutomaticallyAdjustsImageControlMode:(bool)arg1;
 - (void)setAutomaticallyAdjustsVideoHDREnabled:(bool)arg1;
 - (void)setCachesFigCaptureSourceConfigurationChanges:(bool)arg1;
+- (void)setDigitalFlashMode:(long long)arg1;
 - (void)setExposureMode:(long long)arg1;
 - (void)setExposureModeCustomWithDuration:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 ISO:(float)arg2 completionHandler:(id /* block */)arg3;
 - (void)setExposurePointOfInterest:(struct CGPoint { double x1; double x2; })arg1;
@@ -415,17 +447,23 @@
 - (void)setFocusMode:(long long)arg1;
 - (void)setFocusModeLockedWithLensPosition:(float)arg1 completionHandler:(id /* block */)arg2;
 - (void)setFocusPointOfInterest:(struct CGPoint { double x1; double x2; })arg1;
+- (void)setGeometricDistortionCorrectionEnabled:(bool)arg1;
+- (void)setGlobalToneMappingEnabled:(bool)arg1;
 - (void)setHighDynamicRangeSceneDetectionEnabled:(bool)arg1;
 - (void)setImageControlMode:(long long)arg1;
 - (void)setLowLightVideoCaptureEnabled:(bool)arg1;
+- (void)setNonDestructiveCropAspectRatio:(long long)arg1;
+- (void)setNonDestructiveCropEnabled:(bool)arg1;
 - (void)setProvidesStortorgetMetadata:(bool)arg1;
 - (void)setSmileDetectionEnabled:(bool)arg1;
 - (void)setSmoothAutoFocusEnabled:(bool)arg1;
+- (void)setSpatialOverCaptureEnabled:(bool)arg1;
 - (void)setSubjectAreaChangeMonitoringEnabled:(bool)arg1;
 - (void)setTorchMode:(long long)arg1;
 - (bool)setTorchModeOnWithLevel:(float)arg1 error:(id*)arg2;
 - (void)setVideoHDREnabled:(bool)arg1;
 - (void)setVideoHDRSuspended:(bool)arg1;
+- (void)setVideoMinFrameDurationOverride:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 forOwner:(id)arg2;
 - (void)setVideoZoomDownscaleStageHint:(long long)arg1;
 - (void)setVideoZoomDrawOverlay:(bool)arg1;
 - (void)setVideoZoomFactor:(double)arg1;
@@ -437,6 +475,7 @@
 - (bool)smileDetectionEnabled;
 - (id)supportedMetadataObjectIdentifiers;
 - (bool)supportsAVCaptureSessionPreset:(id)arg1;
+- (bool)supportsMultiCamCaptureWithDevice:(id)arg1;
 - (id)systemPressureState;
 - (struct { float x1; float x2; })temperatureAndTintValuesForDeviceWhiteBalanceGains:(struct { float x1; float x2; float x3; })arg1;
 - (float)torchLevel;
@@ -449,6 +488,7 @@
 - (double)videoZoomFactor;
 - (float)videoZoomRampAcceleration;
 - (long long)videoZoomUpscaleStageHint;
+- (id)virtualDeviceSwitchOverVideoZoomFactors;
 - (long long)whiteBalanceMode;
 
 @end

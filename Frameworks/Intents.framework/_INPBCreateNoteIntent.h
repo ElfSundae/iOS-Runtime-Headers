@@ -3,6 +3,7 @@
  */
 
 @interface _INPBCreateNoteIntent : PBCodable <NSCopying, NSSecureCoding, _INPBCreateNoteIntent> {
+    bool  __encodeLegacyGloryData;
     _INPBNoteContent * _content;
     _INPBDataString * _groupName;
     struct { }  _has;
@@ -10,6 +11,7 @@
     _INPBDataString * _title;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic, retain) _INPBNoteContent *content;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -23,16 +25,22 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) _INPBDataString *title;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)content;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (id)groupName;
 - (bool)hasContent;
 - (bool)hasGroupName;
 - (bool)hasIntentMetadata;
 - (bool)hasTitle;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)intentMetadata;
 - (bool)isEqual:(id)arg1;
 - (bool)readFrom:(id)arg1;

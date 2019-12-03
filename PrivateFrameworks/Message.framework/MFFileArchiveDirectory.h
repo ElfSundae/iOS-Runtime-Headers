@@ -23,10 +23,10 @@
 + (id)archiveDirectory;
 + (struct _NSRange { unsigned long long x1; unsigned long long x2; })rangeOfCentralDirectoryInData:(id)arg1;
 
+- (void).cxx_destruct;
 - (void)_scrubContentDirectory;
 - (id)archiveEntries;
 - (id)contents;
-- (void)dealloc;
 - (id)description;
 - (id)error;
 - (bool)inputWithData:(id)arg1;

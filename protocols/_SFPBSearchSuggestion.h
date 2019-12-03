@@ -31,8 +31,10 @@
 - (void)setSuggestion:(NSString *)arg1;
 - (void)setTopicIdentifier:(NSString *)arg1;
 - (void)setType:(int)arg1;
+- (void)setUtteranceText:(NSString *)arg1;
 - (NSString *)suggestion;
 - (NSString *)topicIdentifier;
 - (int)type;
+- (NSString *)utteranceText;
 
 @end

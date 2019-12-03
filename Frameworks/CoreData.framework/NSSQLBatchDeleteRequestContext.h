@@ -29,7 +29,7 @@
 - (void)dealloc;
 - (id)deleteStatements;
 - (void)executePrologue;
-- (void)executeRequestCore:(id*)arg1;
+- (bool)executeRequestCore:(id*)arg1;
 - (id)exernalDataReferenceStatements;
 - (id)externalDataReferencesToDelete;
 - (id)fetchContext;

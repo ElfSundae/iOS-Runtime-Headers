@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXCMMComposeRecipientViewController : UIViewController <CNContactViewControllerDelegate, PXCMMComposeRecipientDataSourceManagerDelegate, PXCMMComposeRecipientSelectionManagerDelegate, PXCMMComposeRecipientValidationManagerDelegate, PXPhotoRecipientViewControllerDelegate, UITableViewDataSource, UITableViewDelegate> {
+@interface PXCMMComposeRecipientViewController : UIViewController <CNContactViewControllerDelegate, PXCMMComposeRecipientDataSourceManagerDelegate, PXCMMComposeRecipientSelectionManagerDelegate, PXCMMComposeRecipientValidationManagerDelegate, PXDiagnosticsEnvironment, PXPhotoRecipientViewControllerDelegate, PXSettingsKeyObserver, UITableViewDataSource, UITableViewDelegate> {
     <PXCMMActionControllerDelegate> * _actionDelegate;
     NSProgress * _actionProgress;
     PXPhotoRecipientViewController * _addPeopleRecipientViewController;
@@ -91,6 +91,7 @@
 - (void)photoRecipientViewController:(id)arg1 didCompleteWithRecipients:(id)arg2;
 - (void)photoRecipientViewControllerDidCancel:(id)arg1;
 - (id)privacyMessageLabel;
+- (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint { double x1; double x2; })arg1 inCoordinateSpace:(id)arg2;
 - (id)recipientManager;
 - (id)recipientsDataSource;
 - (id)recipientsSelectionManager;
@@ -115,6 +116,7 @@
 - (void)setSendButton:(id)arg1;
 - (void)setTapToRadarButton:(id)arg1;
 - (void)setTransientRecipientSelection:(id)arg1;
+- (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (id)specManager;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

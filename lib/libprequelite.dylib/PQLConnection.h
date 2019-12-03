@@ -11,10 +11,13 @@
     double  _batchingPeriod;
     id /* block */  _batchingPolicyHandler;
     NSObject<OS_dispatch_source> * _batchingTimer;
+    id /* block */  _busyHandler;
     int  _cacheSize;
+    long long  _changesOverride;
     bool  _crashIfUsedAfterClose;
     unsigned long long  _currentStmtStart;
     struct sqlite3 { } * _db;
+    id /* block */  _didFinishBatchingHook;
     NSMutableArray * _flushNotifications;
     NSString * _label;
     NSError * _lastError;
@@ -26,6 +29,7 @@
     id /* block */  _profilingHook;
     int  _savePointLevel;
     NSObject<OS_dispatch_queue> * _serialQueue;
+    bool  _shouldUseWALJournalMode;
     int  _skipBatchStop;
     id /* block */  _sqliteErrorHandler;
     NSMutableArray * _stmtCacheCleanupQueue;
@@ -37,15 +41,18 @@
     bool  _useBatching;
     bool  _useQueue;
     int  _vacuumTracker;
+    id /* block */  _willBeginBatchingHook;
 }
 
 @property (nonatomic, copy) id /* block */ autoRollbackHandler;
 @property (nonatomic) int batchTransactionType;
+@property (nonatomic, copy) id /* block */ busyHandler;
 @property (nonatomic, readonly) long long changes;
 @property (nonatomic) bool crashIfUsedAfterClose;
 @property (nonatomic, readonly) double currentOperationDuration;
 @property (nonatomic, readonly) struct sqlite3 { }*dbHandle;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic, copy) id /* block */ didFinishBatchingHook;
 @property (nonatomic, readonly) bool isBatchSuspended;
 @property (nonatomic, readonly) bool isInBatch;
 @property (nonatomic, readonly) bool isInTransaction;
@@ -57,11 +64,13 @@
 @property (nonatomic, copy) id /* block */ preFlushHook;
 @property (nonatomic, copy) id /* block */ profilingHook;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *serialQueue;
+@property (nonatomic) bool shouldUseWALJournalMode;
 @property (nonatomic, copy) id /* block */ sqliteErrorHandler;
 @property (nonatomic) unsigned long long statementCacheMaxCount;
 @property (nonatomic) unsigned long long synchronousMode;
 @property (getter=isTraced, nonatomic) bool traced;
 @property (nonatomic, readonly, copy) NSURL *url;
+@property (nonatomic, copy) id /* block */ willBeginBatchingHook;
 
 // Image: /usr/lib/libprequelite.dylib
 
@@ -75,9 +84,11 @@
 - (void)_createCacheIfNeeded;
 - (id)_description:(bool)arg1;
 - (bool)_execute:(id)arg1 mustSucceed:(bool)arg2 bindings:(char *)arg3;
+- (bool)_executeStmt:(id)arg1 mustSucceed:(bool)arg2;
 - (void)_fireFlushNotifications;
 - (bool)_fullSync;
 - (bool)_incrementalVacuum:(unsigned long long)arg1;
+- (id)_newStatementForBuilder:(id /* block */)arg1;
 - (id)_newStatementForFormat:(id)arg1 arguments:(char *)arg2;
 - (bool)_performWithFlags:(unsigned int)arg1 action:(id /* block */)arg2 whenFlushed:(id /* block */)arg3;
 - (void)_resetState;
@@ -88,6 +99,7 @@
 - (long long)autovacuumableSpaceInBytes;
 - (bool)backupToURL:(id)arg1 progress:(id /* block */)arg2;
 - (int)batchTransactionType;
+- (id /* block */)busyHandler;
 - (long long)changes;
 - (bool)close:(id*)arg1;
 - (bool)crashIfUsedAfterClose;
@@ -97,9 +109,11 @@
 - (id)debugDescription;
 - (id)description;
 - (bool)destroyDatabaseWithError:(id*)arg1;
+- (id /* block */)didFinishBatchingHook;
 - (bool)execute:(id)arg1;
 - (bool)execute:(id)arg1 args:(char *)arg2;
 - (bool)executeRaw:(id)arg1;
+- (bool)executeSwift:(id /* block */)arg1 error:(id*)arg2;
 - (id)fetch:(id)arg1;
 - (id)fetch:(id)arg1 args:(char *)arg2;
 - (id)fetchObject:(id /* block */)arg1 sql:(id)arg2;
@@ -108,6 +122,9 @@
 - (id)fetchObjectOfClass:(Class)arg1 initializer:(SEL)arg2 sql:(id)arg3 args:(char *)arg4;
 - (id)fetchObjectOfClass:(Class)arg1 sql:(id)arg2;
 - (id)fetchObjectOfClass:(Class)arg1 sql:(id)arg2 args:(char *)arg3;
+- (id)fetchObjectOfClassSwift:(Class)arg1 query:(id /* block */)arg2 error:(id*)arg3;
+- (id)fetchObjectSwift:(id /* block */)arg1 query:(id /* block */)arg2 error:(id*)arg3;
+- (id)fetchSwift:(id /* block */)arg1 error:(id*)arg2;
 - (void)flush;
 - (void)forceBatchStart;
 - (void)groupInBatch:(id /* block */)arg1;
@@ -134,19 +151,24 @@
 - (id)serialQueue;
 - (void)setAutoRollbackHandler:(id /* block */)arg1;
 - (void)setBatchTransactionType:(int)arg1;
+- (void)setBusyHandler:(id /* block */)arg1;
 - (void)setCrashIfUsedAfterClose:(bool)arg1;
+- (void)setDidFinishBatchingHook:(id /* block */)arg1;
 - (void)setLabel:(id)arg1;
 - (void)setLastError:(id)arg1;
 - (void)setLockedHandler:(id /* block */)arg1;
 - (void)setPostFlushHook:(id /* block */)arg1;
 - (void)setPreFlushHook:(id /* block */)arg1;
 - (void)setProfilingHook:(id /* block */)arg1;
+- (void)setShouldUseWALJournalMode:(bool)arg1;
 - (void)setSqliteErrorHandler:(id /* block */)arg1;
 - (void)setStatementCacheMaxCount:(unsigned long long)arg1;
 - (void)setSynchronousMode:(unsigned long long)arg1;
 - (void)setTraced:(bool)arg1;
 - (bool)setUserVersion:(long long)arg1;
+- (void)setWillBeginBatchingHook:(id /* block */)arg1;
 - (bool)setupPragmas;
+- (bool)shouldUseWALJournalMode;
 - (id /* block */)sqliteErrorHandler;
 - (unsigned long long)statementCacheMaxCount;
 - (unsigned long long)synchronousMode;
@@ -158,6 +180,7 @@
 - (void)useSerialQueue;
 - (void)useSerialQueueWithTarget:(id)arg1;
 - (id)userVersion;
+- (id /* block */)willBeginBatchingHook;
 
 // Image: /System/Library/PrivateFrameworks/CloudDocsDaemon.framework/CloudDocsDaemon
 

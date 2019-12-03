@@ -5,6 +5,7 @@
 @interface BCCloudDataSyncManager : NSObject <BCCloudKitDatabaseObserver> {
     double  _backOffInterval;
     BCCloudKitController * _cloudKitController;
+    <BCCloudDataMapper> * _dataMapper;
     <BCCloudDataSyncManagerDelegate> * _delegate;
     bool  _processingCloudData;
     bool  _serverPushPostponed;
@@ -14,6 +15,7 @@
 
 @property (nonatomic) double backOffInterval;
 @property (nonatomic, retain) BCCloudKitController *cloudKitController;
+@property (nonatomic, retain) <BCCloudDataMapper> *dataMapper;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <BCCloudDataSyncManagerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -35,17 +37,21 @@
 - (void)_updateRetryParametersFromModifyRecordsOperationError:(id)arg1 batchSize:(unsigned long long)arg2;
 - (double)backOffInterval;
 - (id)cloudKitController;
+- (id)dataMapper;
 - (void)databaseController:(id)arg1 attachmentChanged:(bool)arg2;
 - (void)databaseController:(id)arg1 fetchedAllRecordsInZone:(id)arg2;
+- (void)databaseController:(id)arg1 reachabilityChanged:(bool)arg2;
 - (void)databaseController:(id)arg1 recordWithIDWasDeleted:(id)arg2 recordType:(id)arg3;
 - (void)databaseController:(id)arg1 recordsChanged:(id)arg2;
 - (id)delegate;
 - (void)fetchRecordForRecordID:(id)arg1 completion:(id /* block */)arg2;
 - (id)initWithCloudKitController:(id)arg1;
+- (id)initWithCloudKitController:(id)arg1 dataMapper:(id)arg2;
 - (bool)processingCloudData;
 - (bool)serverPushPostponed;
 - (void)setBackOffInterval:(double)arg1;
 - (void)setCloudKitController:(id)arg1;
+- (void)setDataMapper:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setProcessingCloudData:(bool)arg1;
 - (void)setServerPushPostponed:(bool)arg1;

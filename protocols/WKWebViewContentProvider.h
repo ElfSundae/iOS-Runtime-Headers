@@ -5,6 +5,8 @@
 
 @required
 
++ (bool)web_requiresCustomSnapshotting;
+
 - (void)web_computedContentInsetDidChange;
 - (UIView *)web_contentView;
 - (void)web_countStringMatches:(NSString *)arg1 options:(unsigned long long)arg2 maxCount:(unsigned long long)arg3;
@@ -27,6 +29,7 @@
 - (void)web_scrollViewDidScroll:(UIScrollView *)arg1;
 - (void)web_scrollViewDidZoom:(UIScrollView *)arg1;
 - (void)web_scrollViewWillBeginZooming:(UIScrollView *)arg1 withView:(UIView *)arg2;
+- (void)web_snapshotRectInContentViewCoordinates:(void *)arg1 snapshotWidth:(void *)arg2 completionHandler:(void *)arg3; // needs 3 arg types, found 8: struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }, double, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, struct CGImage { }*, void*
 - (NSString *)web_suggestedFilename;
 
 @end

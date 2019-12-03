@@ -3,6 +3,7 @@
  */
 
 @interface FCPersonalizationItemScoringConfig : NSObject {
+    double  _articleLengthAggregateWeight;
     double  _articleReadPenalty;
     double  _autofavoritedVoteCoefficient;
     double  _baselineRatePrior;
@@ -30,6 +31,9 @@
     double  _diversificationInitialPenalty;
     double  _diversificationPenalty;
     double  _diversificationPenaltyHalfLife;
+    double  _featuredMultiplierForFreeUsers;
+    double  _featuredMultiplierForPaidUsers;
+    double  _featuredMultiplierForTrialUsers;
     double  _firstPassArticleFilter;
     double  _firstPassDiversificationPenalty;
     double  _firstPassHalfLifeCoefficient;
@@ -51,6 +55,7 @@
     double  _subscribedTopicsScoreCoefficient;
 }
 
+@property (nonatomic, readonly) double articleLengthAggregateWeight;
 @property (nonatomic, readonly) double articleReadPenalty;
 @property (nonatomic, readonly) double autofavoritedVoteCoefficient;
 @property (nonatomic, readonly) double baselineRatePrior;
@@ -78,6 +83,9 @@
 @property (nonatomic, readonly) double diversificationInitialPenalty;
 @property (nonatomic, readonly) double diversificationPenalty;
 @property (nonatomic, readonly) double diversificationPenaltyHalfLife;
+@property (nonatomic, readonly) double featuredMultiplierForFreeUsers;
+@property (nonatomic, readonly) double featuredMultiplierForPaidUsers;
+@property (nonatomic, readonly) double featuredMultiplierForTrialUsers;
 @property (nonatomic, readonly) double firstPassArticleFilter;
 @property (nonatomic, readonly) double firstPassDiversificationPenalty;
 @property (nonatomic, readonly) double firstPassHalfLifeCoefficient;
@@ -99,6 +107,7 @@
 @property (nonatomic, readonly) double subscribedTopicsScoreCoefficient;
 
 - (void).cxx_destruct;
+- (double)articleLengthAggregateWeight;
 - (double)articleReadPenalty;
 - (double)autofavoritedVoteCoefficient;
 - (double)baselineRatePrior;
@@ -123,9 +132,13 @@
 - (double)ctrWithZeroSubscribed;
 - (double)decayFactor;
 - (double)democratizationFactor;
+- (id)dictionaryRepresentation;
 - (double)diversificationInitialPenalty;
 - (double)diversificationPenalty;
 - (double)diversificationPenaltyHalfLife;
+- (double)featuredMultiplierForFreeUsers;
+- (double)featuredMultiplierForPaidUsers;
+- (double)featuredMultiplierForTrialUsers;
 - (double)firstPassArticleFilter;
 - (double)firstPassDiversificationPenalty;
 - (double)firstPassHalfLifeCoefficient;
@@ -137,7 +150,8 @@
 - (double)globalScoreToCtrSlope;
 - (double)halfLifeCoefficient;
 - (double)headlineSeenPenalty;
-- (id)initWithBaselineRatePrior:(double)arg1 decayFactor:(double)arg2 democratizationFactor:(double)arg3 halfLifeCoefficient:(double)arg4 subscribedChannelScoreCoefficient:(double)arg5 ctrWithSubscribedChannel:(double)arg6 mutedVoteCoefficient:(double)arg7 personalizationCoefficient:(double)arg8 publisherAggregateWeight:(double)arg9 globalScoreCoefficient:(double)arg10 globalScoreCoefficientHalfLife:(double)arg11 globalScoreCoefficientInitialMultiplier:(double)arg12 globalScoreToCtrIntercept:(double)arg13 globalScoreToCtrSlope:(double)arg14 realTimeUserFeedbackCoefficient:(double)arg15 realTimeUserFeedbackPublishDateHalfLifeCoefficient:(double)arg16 realTimeUserFeedbackTagCoefficients:(id)arg17 cohortMembershipCtrCeiling:(double)arg18 cohortMembershipCurvature:(double)arg19 cohortMembershipFavoritedBoost:(double)arg20 cohortMembershipMinWeightedImpressions:(double)arg21 subscribedTopicsScoreCoefficient:(double)arg22 ctrWithZeroSubscribed:(double)arg23 ctrWithOneSubscribed:(double)arg24 ctrWithTwoSubscribed:(double)arg25 ctrWithThreeSubscribed:(double)arg26 autofavoritedVoteCoefficient:(double)arg27 ctrWithZeroAutofavorited:(double)arg28 ctrWithOneAutofavorited:(double)arg29 ctrWithTwoAutofavorited:(double)arg30 ctrWithThreeAutofavorited:(double)arg31 diversificationInitialPenalty:(double)arg32 diversificationPenalty:(double)arg33 diversificationPenaltyHalfLife:(double)arg34 channelTopicDiversificationInitialPenalty:(double)arg35 channelTopicDiversificationPenalty:(double)arg36 channelTopicDiversificationPenaltyHalfLife:(double)arg37 firstPassHalfLifeCoefficient:(double)arg38 firstPassRealTimeUserFeedbackPublishDateHalfLifeCoefficient:(double)arg39 firstPassDiversificationPenalty:(double)arg40 firstPassArticleFilter:(double)arg41 bundlePaidMultiplierForFreeUsers:(double)arg42 bundlePaidMultiplierForTrialUsers:(double)arg43 bundlePaidMultiplierForPaidUsers:(double)arg44 headlineSeenPenalty:(double)arg45 articleReadPenalty:(double)arg46;
+- (id)initWithBaselineRatePrior:(double)arg1 decayFactor:(double)arg2 democratizationFactor:(double)arg3 halfLifeCoefficient:(double)arg4 subscribedChannelScoreCoefficient:(double)arg5 ctrWithSubscribedChannel:(double)arg6 mutedVoteCoefficient:(double)arg7 personalizationCoefficient:(double)arg8 publisherAggregateWeight:(double)arg9 articleLengthAggregateWeight:(double)arg10 globalScoreCoefficient:(double)arg11 globalScoreCoefficientHalfLife:(double)arg12 globalScoreCoefficientInitialMultiplier:(double)arg13 globalScoreToCtrIntercept:(double)arg14 globalScoreToCtrSlope:(double)arg15 realTimeUserFeedbackCoefficient:(double)arg16 realTimeUserFeedbackPublishDateHalfLifeCoefficient:(double)arg17 realTimeUserFeedbackTagCoefficients:(id)arg18 cohortMembershipCtrCeiling:(double)arg19 cohortMembershipCurvature:(double)arg20 cohortMembershipFavoritedBoost:(double)arg21 cohortMembershipMinWeightedImpressions:(double)arg22 subscribedTopicsScoreCoefficient:(double)arg23 ctrWithZeroSubscribed:(double)arg24 ctrWithOneSubscribed:(double)arg25 ctrWithTwoSubscribed:(double)arg26 ctrWithThreeSubscribed:(double)arg27 autofavoritedVoteCoefficient:(double)arg28 ctrWithZeroAutofavorited:(double)arg29 ctrWithOneAutofavorited:(double)arg30 ctrWithTwoAutofavorited:(double)arg31 ctrWithThreeAutofavorited:(double)arg32 diversificationInitialPenalty:(double)arg33 diversificationPenalty:(double)arg34 diversificationPenaltyHalfLife:(double)arg35 channelTopicDiversificationInitialPenalty:(double)arg36 channelTopicDiversificationPenalty:(double)arg37 channelTopicDiversificationPenaltyHalfLife:(double)arg38 firstPassHalfLifeCoefficient:(double)arg39 firstPassRealTimeUserFeedbackPublishDateHalfLifeCoefficient:(double)arg40 firstPassDiversificationPenalty:(double)arg41 firstPassArticleFilter:(double)arg42 bundlePaidMultiplierForFreeUsers:(double)arg43 bundlePaidMultiplierForTrialUsers:(double)arg44 bundlePaidMultiplierForPaidUsers:(double)arg45 featuredMultiplierForFreeUsers:(double)arg46 featuredMultiplierForTrialUsers:(double)arg47 featuredMultiplierForPaidUsers:(double)arg48 headlineSeenPenalty:(double)arg49 articleReadPenalty:(double)arg50;
+- (id)initWithConfigurationSet:(long long)arg1 configurableValues:(id)arg2;
 - (double)mutedVoteCoefficient;
 - (double)personalizationCoefficient;
 - (double)publisherAggregateWeight;

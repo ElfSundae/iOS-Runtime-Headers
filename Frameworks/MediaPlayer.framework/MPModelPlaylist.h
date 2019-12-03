@@ -9,6 +9,7 @@
 @property (nonatomic, copy) MPModelCurator *curator;
 @property (getter=isCuratorPlaylist, nonatomic) bool curatorPlaylist;
 @property (nonatomic, copy) NSString *descriptionText;
+@property (nonatomic, readonly, copy) NSDate *downloadedDate;
 @property (nonatomic, copy) NSString *editorNotes;
 @property (nonatomic, copy) id /* block */ editorialArtworkCatalogBlock;
 @property (nonatomic) bool hasCleanContent;
@@ -40,6 +41,7 @@
 + (id)__curatorPlaylist_KEY;
 + (id)__curator_KEY;
 + (id)__descriptionText_KEY;
++ (id)__downloadedDate_KEY;
 + (id)__editorNotes_KEY;
 + (id)__editorialArtworkCatalogBlock_KEY;
 + (id)__hasCleanContent_KEY;
@@ -69,8 +71,6 @@
 + (id)requiredLibraryAddStatusObservationProperties;
 + (id)requiredLibraryRemovalProperties;
 + (id)requiredStoreLibraryPersonalizationProperties;
-+ (id)storeItemMetadataRequestItemIdentifierForIdentifiers:(id)arg1;
-+ (bool)storeItemMetadataRequestNeedsPersonalizationForIdentifiers:(id)arg1;
 + (bool)supportsKeepLocalStatusObservation;
 + (bool)supportsLibraryAddStatusObservation;
 + (bool)supportsLibraryRemoval;
@@ -91,6 +91,7 @@
 // Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
 
 + (id)mpc_remotePlaybackQueueRequiredProperties;
++ (id)mqf_requiredSectionPlaybackProperties;
 
 - (id)mpc_protoContainerRepresentation;
 

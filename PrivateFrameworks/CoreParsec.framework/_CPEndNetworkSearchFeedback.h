@@ -24,14 +24,13 @@
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic, copy) NSString *parsecStatus;
 @property (nonatomic, copy) NSString *partialClientIp;
-@property (nonatomic, readonly) bool requiresQueryId;
 @property (nonatomic) long long responseSize;
 @property (nonatomic) int statusCode;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long timestamp;
 @property (nonatomic, retain) _CPNetworkTimingData *timingData;
-@property (nonatomic, copy) NSString *uuid;
 @property (nonatomic, readonly, copy) NSString *uuid;
+@property (nonatomic, copy) NSString *uuid;
 
 - (void).cxx_destruct;
 - (id)_formatNetworkTimingData;
@@ -50,7 +49,6 @@
 - (id)parsecStatus;
 - (id)partialClientIp;
 - (bool)readFrom:(id)arg1;
-- (bool)requiresQueryId;
 - (long long)responseSize;
 - (void)setDuration:(double)arg1;
 - (void)setFbq:(id)arg1;

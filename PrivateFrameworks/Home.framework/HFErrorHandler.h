@@ -2,7 +2,11 @@
    Image: /System/Library/PrivateFrameworks/Home.framework/Home
  */
 
-@interface HFErrorHandler : NSObject
+@interface HFErrorHandler : NSObject {
+    bool  _presentingAlert;
+}
+
+@property (getter=isPresentingAlert, nonatomic) bool presentingAlert;
 
 + (id)_descriptionForHFErrorCode:(long long)arg1;
 + (id)_descriptionForHMErrorCode:(long long)arg1;
@@ -18,6 +22,9 @@
 - (void)handleError:(id)arg1;
 - (void)handleError:(id)arg1 operationType:(id)arg2 options:(id)arg3 retryBlock:(id /* block */)arg4 cancelBlock:(id /* block */)arg5;
 - (void)handleError:(id)arg1 retryBlock:(id /* block */)arg2 cancelBlock:(id /* block */)arg3;
+- (id)init;
+- (bool)isPresentingAlert;
 - (void)logError:(id)arg1 operationDescription:(id)arg2;
+- (void)setPresentingAlert:(bool)arg1;
 
 @end

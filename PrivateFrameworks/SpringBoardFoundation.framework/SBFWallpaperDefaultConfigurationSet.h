@@ -24,6 +24,7 @@
 + (bool)supportsSecureCoding;
 + (id)systemDefaultConfigurationSet;
 + (id)verifiedPNGOrJPEGURLForImageName:(id)arg1 inDirectory:(id)arg2;
++ (id)verifiedVideoURLForBaseName:(id)arg1 inDirectory:(id)arg2;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

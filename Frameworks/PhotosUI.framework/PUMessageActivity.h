@@ -2,17 +2,17 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUMessageActivity : UIMessageActivity <PUMomentShareActivity> {
-    PUActivityItemSourceController * _itemSourceController;
+@interface PUMessageActivity : UIMessageActivity <PXMomentShareSuggestionHandlingActivity> {
+    <PXActivityItemSourceController> * _itemSourceController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) PUActivityItemSourceController *itemSourceController;
+@property (nonatomic) <PXActivityItemSourceController> *itemSourceController;
 @property (readonly) Class superclass;
 
-+ (bool)wantsMomentShareLinkForAssetCount:(long long)arg1;
++ (bool)canPerformActivityAsIndividualItemsInSourceController:(id)arg1;
 
 - (void).cxx_destruct;
 - (void)_prepareWithMomentShareLink:(id)arg1;

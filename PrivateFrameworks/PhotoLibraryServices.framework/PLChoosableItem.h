@@ -16,8 +16,8 @@
 
 + (id)choosableItemsFromCloudResources:(id)arg1;
 
+- (void).cxx_destruct;
 - (long long)compareUsingWidth:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (long long)height;

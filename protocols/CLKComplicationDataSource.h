@@ -10,6 +10,7 @@
 
 @optional
 
+- (void)getAlwaysOnTemplateForComplication:(void *)arg1 withHandler:(void *)arg2; // needs 2 arg types, found 7: CLKComplication *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, CLKComplicationTemplate *, void*
 - (void)getLocalizableSampleTemplateForComplication:(void *)arg1 withHandler:(void *)arg2; // needs 2 arg types, found 7: CLKComplication *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, CLKComplicationTemplate *, void*
 - (void)getNextRequestedUpdateDateWithHandler:(void *)arg1; // needs 1 arg types, found 6: id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSDate *, void*
 - (void)getPlaceholderTemplateForComplication:(void *)arg1 withHandler:(void *)arg2; // needs 2 arg types, found 7: CLKComplication *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, CLKComplicationTemplate *, void*

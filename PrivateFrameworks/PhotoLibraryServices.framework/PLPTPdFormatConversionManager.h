@@ -18,8 +18,10 @@
 @property bool initialized;
 @property (retain) PHMediaFormatConversionManager *mediaFormatConversionManager;
 @property (retain) PFMediaCapabilities *peerMediaCapabilities;
+@property (nonatomic, readonly) bool peerSupportsAdjustmentBaseResources;
+@property (nonatomic, readonly) bool peerSupportsTranscodeChoice;
+@property (nonatomic, readonly) bool penultimateIsPublic;
 @property (readonly) Class superclass;
-@property (nonatomic, readonly) bool supportsTranscodeChoice;
 @property (retain) NSURL *temporaryDirectoryURL;
 
 - (void).cxx_destruct;
@@ -29,11 +31,15 @@
 - (id)convertedLivePhotoPairingIdentifiersByOriginalIdentifiers;
 - (void)dealloc;
 - (id)effectivePeerMediaCapabilites;
+- (bool)generatePosterFrameExportForVideoURL:(id)arg1 outputData:(id*)arg2 maximumSize:(struct CGSize { double x1; double x2; })arg3 error:(id*)arg4;
 - (id)init;
 - (bool)initialized;
 - (void)invalidate;
 - (id)mediaFormatConversionManager;
 - (id)peerMediaCapabilities;
+- (bool)peerSupportsAdjustmentBaseResources;
+- (bool)peerSupportsTranscodeChoice;
+- (bool)penultimateIsPublic;
 - (id)requestForOriginalAtPath:(id)arg1 isVideo:(bool)arg2 imageDimensions:(struct CGSize { double x1; double x2; })arg3 originalPairingIdentifier:(id)arg4;
 - (id)requestForPath:(id)arg1 isVideo:(bool)arg2 imageDimensions:(struct CGSize { double x1; double x2; })arg3;
 - (id)requestForRenderImagePath:(id)arg1 imageDimensions:(struct CGSize { double x1; double x2; })arg2 outputFilename:(id)arg3;
@@ -44,7 +50,6 @@
 - (void)setTemporaryDirectoryURL:(id)arg1;
 - (bool)setupTemporaryDirectory;
 - (id)sourceForPath:(id)arg1 isVideo:(bool)arg2 imageDimensions:(struct CGSize { double x1; double x2; })arg3;
-- (bool)supportsTranscodeChoice;
 - (id)temporaryDirectoryURL;
 
 @end

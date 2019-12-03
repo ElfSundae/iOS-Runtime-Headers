@@ -27,7 +27,7 @@
 - (bool)supportsGroupedShadows;
 - (bool)supportsSeriesLabels;
 - (id)userInterfaceName;
-- (Class)valueAxisClassForID:(id)arg1 scale:(int)arg2;
+- (Class)valueAxisClassForID:(id)arg1 scale:(long long)arg2;
 - (id)valueLabelPositioner;
 
 @end

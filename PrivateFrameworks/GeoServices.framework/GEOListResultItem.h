@@ -6,13 +6,13 @@
     unsigned long long  _businessId;
     bool  _eventuallyVisible;
     struct { 
-        unsigned int businessId : 1; 
-        unsigned int latency : 1; 
-        unsigned int resultType : 1; 
-        unsigned int tappedCount : 1; 
-        unsigned int eventuallyVisible : 1; 
-        unsigned int initiallyVisible : 1; 
-    }  _has;
+        unsigned int has_businessId : 1; 
+        unsigned int has_latency : 1; 
+        unsigned int has_resultType : 1; 
+        unsigned int has_tappedCount : 1; 
+        unsigned int has_eventuallyVisible : 1; 
+        unsigned int has_initiallyVisible : 1; 
+    }  _flags;
     bool  _initiallyVisible;
     long long  _latency;
     int  _resultType;
@@ -32,6 +32,8 @@
 @property (nonatomic) int resultType;
 @property (nonatomic) int tappedCount;
 
++ (bool)isValid:(id)arg1;
+
 - (int)StringAsResultType:(id)arg1;
 - (unsigned long long)businessId;
 - (void)copyTo:(id)arg1;
@@ -50,6 +52,7 @@
 - (bool)isEqual:(id)arg1;
 - (long long)latency;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (int)resultType;
 - (id)resultTypeAsString:(int)arg1;

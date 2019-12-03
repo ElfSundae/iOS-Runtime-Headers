@@ -24,6 +24,7 @@
         unsigned int flags; 
         long long epoch; 
     }  _livePhotoSynchronizedDisplayTime;
+    NSDate * _localCreationDate;
     CLLocation * _location;
     unsigned long long  _mediaSubtypes;
     unsigned long long  _mediaType;
@@ -53,9 +54,11 @@
 @property (nonatomic, readonly, copy) NSString *burstIdentifier;
 @property (nonatomic, readonly) bool canPlayLoopingVideo;
 @property (nonatomic, readonly) bool canPlayPhotoIris;
+@property (getter=isCloudPhotoLibraryEnabled, nonatomic, readonly) bool cloudPhotoLibraryEnabled;
 @property (getter=isContentAdjustmentAllowed, nonatomic, readonly) bool contentAdjustmentAllowed;
 @property (nonatomic, readonly) NSDate *creationDate;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic, readonly) unsigned long long deferredLogInfo;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) double duration;
 @property (getter=isFavorite, nonatomic, readonly) bool favorite;
@@ -74,6 +77,7 @@
 @property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } livePhotoSynchronizedDisplayTime;
 @property (getter=isLivePhotoVisibilityAdjustmentAllowed, nonatomic, readonly) bool livePhotoVisibilityAdjustmentAllowed;
 @property (nonatomic, readonly) unsigned long long livePhotoVisibilityState;
+@property (nonatomic, readonly) NSDate *localCreationDate;
 @property (nonatomic, readonly) NSString *localizedGeoDescription;
 @property (nonatomic, readonly) CLLocation *location;
 @property (nonatomic, readonly) unsigned long long mediaSubtypes;
@@ -101,12 +105,15 @@
 @property (nonatomic, readonly) PHLivePhoto *providedLivePhoto;
 @property (nonatomic, readonly) UIImage *providedPreviewImage;
 @property (nonatomic, readonly) NSURL *providedVideoURL;
+@property (nonatomic, readonly) unsigned long long reframeVariation;
 @property (nonatomic, readonly) bool representsBurst;
 @property (nonatomic, readonly) bool requiresConfidentiality;
 @property (getter=isResourceDownloadPossible, nonatomic, readonly) bool resourceDownloadPossible;
 @property (readonly) Class superclass;
+@property (getter=isTrimmableType, nonatomic, readonly) bool trimmableType;
 @property (nonatomic, readonly) NSString *uniformTypeIdentifier;
 @property (nonatomic, readonly) NSString *uuid;
+@property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } videoKeyFrameSourceTime;
 @property (nonatomic, readonly) PFVideoAVObjectBuilder *videoObjectBuilder;
 
 + (unsigned long long)_confidentialityWarningsVersionForAdjustments:(id)arg1;
@@ -136,12 +143,14 @@
 - (void)cancelContentEditingInputRequest:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)creationDate;
+- (unsigned long long)deferredLogInfo;
 - (double)duration;
 - (int)exifOrientationForImageVersion:(long long)arg1;
 - (bool)hasPhotoColorAdjustments;
 - (id)identifier;
 - (id)imageProperties;
 - (id)initWithAVAsset:(id)arg1 audioMix:(id)arg2 width:(unsigned long long)arg3 height:(unsigned long long)arg4 captureDate:(id)arg5 duration:(double)arg6 previewImage:(id)arg7 videoURL:(id)arg8 adjustments:(id)arg9 identifier:(id)arg10;
+- (id)initWithAVAsset:(id)arg1 audioMix:(id)arg2 width:(unsigned long long)arg3 height:(unsigned long long)arg4 captureDate:(id)arg5 duration:(double)arg6 previewImage:(id)arg7 videoURL:(id)arg8 unadjustedVideoURL:(id)arg9 adjustments:(id)arg10 identifier:(id)arg11;
 - (id)initWithConformingAsset:(id)arg1;
 - (id)initWithLivePhoto:(id)arg1 fullsizeUnadjustedImageURL:(id)arg2 fullsizeUnadjustedVideoURL:(id)arg3 assetAdjustments:(id)arg4 width:(unsigned long long)arg5 height:(unsigned long long)arg6 captureDate:(id)arg7 metadata:(id)arg8 duration:(double)arg9 previewImage:(id)arg10 identifier:(id)arg11;
 - (id)initWithPhoto:(id)arg1 mediaSubtypes:(unsigned long long)arg2 width:(unsigned long long)arg3 height:(unsigned long long)arg4 captureDate:(id)arg5 metadata:(id)arg6 burstIdentifier:(id)arg7 representedCount:(unsigned long long)arg8 fullsizeImageURL:(id)arg9 fullsizeUnadjustedImageURL:(id)arg10 assetAdjustments:(id)arg11 identifier:(id)arg12;
@@ -154,6 +163,7 @@
 - (id)inputForAdjustmentWithMediaProvider:(id)arg1 canHandleAdjustments:(id /* block */)arg2;
 - (bool)isAdjusted;
 - (bool)isAnimatedImage;
+- (bool)isCloudPhotoLibraryEnabled;
 - (bool)isContentAdjustmentAllowed;
 - (unsigned long long)isContentEqualTo:(id)arg1;
 - (bool)isFavorite;
@@ -167,9 +177,11 @@
 - (bool)isPhotoIrisPlaceholder;
 - (bool)isResourceDownloadPossible;
 - (bool)isTemporaryPlaceholder;
+- (bool)isTrimmableType;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })livePhotoDuration;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })livePhotoSynchronizedDisplayTime;
 - (unsigned long long)livePhotoVisibilityState;
+- (id)localCreationDate;
 - (id)localizedGeoDescription;
 - (id)location;
 - (unsigned long long)mediaSubtypes;
@@ -201,6 +213,7 @@
 - (id)providedVideoURL;
 - (id)providedVideoURLForImageVersion:(long long)arg1;
 - (id)providedVideoURLForVideoVersion:(long long)arg1;
+- (unsigned long long)reframeVariation;
 - (void)removeAllFilesAtReferencedURLs;
 - (bool)representsBurst;
 - (unsigned long long)requestContentEditingInputWithOptions:(id)arg1 completionHandler:(id /* block */)arg2;

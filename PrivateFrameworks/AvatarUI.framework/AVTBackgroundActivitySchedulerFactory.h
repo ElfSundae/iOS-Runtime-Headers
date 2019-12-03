@@ -5,5 +5,6 @@
 @interface AVTBackgroundActivitySchedulerFactory : NSObject
 
 + (id)schedulerFor12_1MigrationActivity;
++ (id)schedulerForUserRequestedBackupActivity;
 
 @end

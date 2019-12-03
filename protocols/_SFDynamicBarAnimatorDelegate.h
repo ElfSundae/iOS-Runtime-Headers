@@ -5,9 +5,10 @@
 
 @required
 
-- (bool)dynamicBarAnimator:(_SFDynamicBarAnimator *)arg1 canHideBarsByDraggingWithOffset:(double)arg2;
+- (bool)dynamicBarAnimator:(_SFDynamicBarAnimator *)arg1 canTransitionToState:(long long)arg2 byDraggingWithOffset:(double)arg3;
 - (double)dynamicBarAnimator:(_SFDynamicBarAnimator *)arg1 minimumTopBarHeightForOffset:(double)arg2;
 - (void)dynamicBarAnimatorOutputsDidChange:(_SFDynamicBarAnimator *)arg1;
+- (void)dynamicBarAnimatorStateDidChange:(_SFDynamicBarAnimator *)arg1;
 - (void)dynamicBarAnimatorWillEnterSteadyState:(_SFDynamicBarAnimator *)arg1;
 - (void)dynamicBarAnimatorWillLeaveSteadyState:(_SFDynamicBarAnimator *)arg1;
 

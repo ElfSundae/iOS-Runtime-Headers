@@ -3,13 +3,13 @@
  */
 
 @interface SearchUIScreenTimeTableCell : SearchUITableViewCell {
-    SearchUIVibrantLabel * _label;
+    TLKLabel * _label;
 }
 
-@property (retain) SearchUIVibrantLabel *label;
+@property (nonatomic, retain) TLKLabel *label;
 
 - (void).cxx_destruct;
-- (id)initWithRowModel:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
+- (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
 - (id)label;
 - (void)setLabel:(id)arg1;
 - (void)updateWithRowModel:(id)arg1;

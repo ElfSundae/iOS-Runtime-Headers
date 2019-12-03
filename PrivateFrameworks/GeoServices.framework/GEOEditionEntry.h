@@ -9,10 +9,10 @@
     unsigned int  _tileset;
 }
 
-@property unsigned int edition;
-@property bool invalidateOnly;
-@property unsigned int provider;
-@property unsigned int tileset;
+@property (nonatomic) unsigned int edition;
+@property (nonatomic) bool invalidateOnly;
+@property (nonatomic) unsigned int provider;
+@property (nonatomic) unsigned int tileset;
 
 - (unsigned int)edition;
 - (bool)invalidateOnly;

@@ -17,6 +17,8 @@
     UISearchController * _searchController;
     HLPHelpSearchResultTableViewController * _searchResultTableViewController;
     NSArray * _searchTerms;
+    UIView * _tableBackgroundView;
+    UIView * _tableFooterSeparatorView;
     UIView * _tableFooterView;
     HLPHelpUsageController * _usageController;
 }
@@ -32,6 +34,7 @@
 @property (nonatomic, retain) HLPHelpLocale *locale;
 @property (nonatomic, retain) NSMutableArray *openSections;
 @property (nonatomic, retain) UISearchController *searchController;
+@property (nonatomic, retain) HLPHelpSearchResultTableViewController *searchResultTableViewController;
 @property (nonatomic, retain) NSArray *searchTerms;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) UIView *tableFooterView;
@@ -39,6 +42,7 @@
 
 - (void).cxx_destruct;
 - (void)appendChildrenForSectionItem:(id)arg1;
+- (void)cancelSpotlightSearchDelay;
 - (void)closeSectionItem:(id)arg1;
 - (void)contentSizeCategoryDidChange:(id)arg1;
 - (void)copyrightButtonTapped;
@@ -59,6 +63,7 @@
 - (void)scrollToHelpItem:(id)arg1 deselectImmediately:(bool)arg2 animated:(bool)arg3;
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (id)searchController;
+- (id)searchResultTableViewController;
 - (id)searchTerms;
 - (void)setDelegate:(id)arg1;
 - (void)setDisplayHelpItems:(id)arg1;
@@ -68,17 +73,22 @@
 - (void)setLocale:(id)arg1;
 - (void)setOpenSections:(id)arg1;
 - (void)setSearchController:(id)arg1;
+- (void)setSearchResultTableViewController:(id)arg1;
 - (void)setSearchTerms:(id)arg1;
 - (void)setTableFooterView:(id)arg1;
 - (void)setUsageController:(id)arg1;
 - (void)showHelpBookInfo;
 - (void)showTopicItem:(id)arg1 fromTableView:(id)arg2;
+- (void)spotlightSearchDelay;
 - (id)tableFooterView;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateCellSelectionWithScollPosition:(long long)arg1 helpItem:(id)arg2 animated:(bool)arg3;
+- (void)updateFooterViewBackgroundColor;
 - (void)updateFooterViewLayout;
+- (void)updateSearchResultViewSeparatorValue;
 - (void)updateSearchResultsForSearchController:(id)arg1;
 - (void)updateWithHelpBookController:(id)arg1;
 - (id)usageController;

@@ -4,6 +4,7 @@
 
 @interface CAMLocationController : NSObject <CLLocationManagerDelegate> {
     NSObject<OS_dispatch_queue> * __authorizationQueue;
+    bool  __didRequestLocation;
     NSMutableArray * __enqueuedAssetsWaitingForLocation;
     CLLocationManager * __locationManager;
     bool  __monitoringLocation;
@@ -14,6 +15,7 @@
 }
 
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *_authorizationQueue;
+@property (setter=_setDidRequestLocation:, nonatomic) bool _didRequestLocation;
 @property (nonatomic, readonly) NSMutableArray *_enqueuedAssetsWaitingForLocation;
 @property (nonatomic, readonly) CLLocationManager *_locationManager;
 @property (getter=_isMonitoringLocation, nonatomic, readonly) bool _monitoringLocation;
@@ -33,9 +35,12 @@
 - (void).cxx_destruct;
 - (id)_authorizationQueue;
 - (void)_authorizeOrStartLocationManager;
+- (bool)_didRequestLocation;
 - (id)_enqueuedAssetsWaitingForLocation;
 - (bool)_isMonitoringLocation;
 - (id)_locationManager;
+- (void)_resetDidRequestLocation;
+- (void)_setDidRequestLocation:(bool)arg1;
 - (void)_startMonitoringLocationUpdates;
 - (void)_stopMonitoringLocationUpdates;
 - (void)_updateAssetsWaitingOnLocation;

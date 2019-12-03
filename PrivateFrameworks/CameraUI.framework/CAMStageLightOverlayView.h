@@ -12,6 +12,16 @@
     bool  _active;
     double  _bottomContentInset;
     long long  _orientation;
+    struct CGRect { 
+        struct CGPoint { 
+            double x; 
+            double y; 
+        } origin; 
+        struct CGSize { 
+            double width; 
+            double height; 
+        } size; 
+    }  _viewportFrame;
     bool  _visible;
 }
 
@@ -24,11 +34,12 @@
 @property (getter=isActive, nonatomic) bool active;
 @property (nonatomic) double bottomContentInset;
 @property (nonatomic) long long orientation;
+@property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } viewportFrame;
 @property (getter=isVisible, nonatomic) bool visible;
 
-+ (double)_circleDiameterForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 orientation:(long long)arg2;
-+ (bool)_useLargeLayoutForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
-+ (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })circleFrameForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 orientation:(long long)arg2 bottomContentInset:(double)arg3;
++ (double)_circleDiameterForViewportSize:(struct CGSize { double x1; double x2; })arg1 orientation:(long long)arg2;
++ (bool)_useLargeLayoutForViewportSize:(struct CGSize { double x1; double x2; })arg1;
++ (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })circleFrameForViewport:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 orientation:(long long)arg2 bottomContentInset:(double)arg3;
 
 - (void).cxx_destruct;
 - (unsigned long long)_activeTimerID;
@@ -53,7 +64,9 @@
 - (void)setBottomContentInset:(double)arg1;
 - (void)setOrientation:(long long)arg1;
 - (void)setOrientation:(long long)arg1 animated:(bool)arg2;
+- (void)setViewportFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setVisible:(bool)arg1;
 - (void)setVisible:(bool)arg1 animated:(bool)arg2;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })viewportFrame;
 
 @end

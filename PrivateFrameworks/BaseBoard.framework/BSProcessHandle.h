@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/BaseBoard.framework/BaseBoard
  */
 
-@interface BSProcessHandle : NSObject <BSXPCCoding, FBSProcess, FBSProcessIdentity, NSSecureCoding> {
+@interface BSProcessHandle : NSObject <BSDescriptionProviding, BSXPCCoding, NSSecureCoding, RBSProcessIdentifier> {
     BSAuditToken * _auditToken;
     NSString * _bundleID;
     NSString * _bundlePath;
@@ -17,16 +17,12 @@
 @property (nonatomic, copy) NSString *bundlePath;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, readonly, retain) FBSProcessHandle *handle;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSString *jobLabel;
-@property (nonatomic, readonly, copy) NSString *jobLabel;
 @property (nonatomic, readonly, copy) NSString *name;
 @property (nonatomic, readonly) int pid;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) BSMachPortTaskNameRight *taskNameRight;
-@property (nonatomic, readonly, retain) BSMachPortTaskNameRight *taskNameRight;
-@property (nonatomic, readonly) long long type;
 @property (getter=isValid, nonatomic, readonly) bool valid;
 
 // Image: /System/Library/PrivateFrameworks/BaseBoard.framework/BaseBoard
@@ -37,6 +33,7 @@
 + (id)processHandleForPID:(int)arg1;
 + (id)processHandleForPID:(int)arg1 bundleID:(id)arg2;
 + (id)processHandleForTaskNameRight:(id)arg1;
++ (id)processHandleForTaskNameRight:(id)arg1 bundleID:(id)arg2;
 + (id)processHandleForXPCConnection:(id)arg1;
 + (bool)supportsSecureCoding;
 
@@ -60,6 +57,7 @@
 - (id)initWithCurrentProcess;
 - (id)initWithPID:(int)arg1 bundleID:(id)arg2;
 - (id)initWithTaskNameRight:(id)arg1;
+- (id)initWithTaskNameRight:(id)arg1 bundleID:(id)arg2;
 - (id)initWithXPCDictionary:(id)arg1;
 - (bool)isValid;
 - (id)jobLabel;
@@ -72,10 +70,10 @@
 - (id)taskNameRight;
 - (id)valueForEntitlement:(id)arg1;
 
-// Image: /System/Library/PrivateFrameworks/FrontBoardServices.framework/FrontBoardServices
+// Image: /System/Library/PrivateFrameworks/RunningBoardServices.framework/RunningBoardServices
 
-- (bool)_fbs_isApplication;
-- (id)handle;
-- (long long)type;
+- (bool)matchesProcess:(id)arg1;
+- (id)processPredicate;
+- (int)rbs_pid;
 
 @end

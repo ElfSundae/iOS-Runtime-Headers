@@ -7,6 +7,7 @@
     bool  _allowsAccountModification;
     bool  _allowsDeletion;
     bool  _allowsExplicitContent;
+    bool  _allowsMusicSubscription;
     bool  _allowsRadioPurchases;
     bool  _allowsStorePurchases;
     NSMutableDictionary * _cachedSettings;
@@ -18,6 +19,7 @@
 @property (nonatomic, readonly) bool allowsAccountModification;
 @property (nonatomic, readonly) bool allowsDeletion;
 @property (nonatomic, readonly) bool allowsExplicitContent;
+@property (nonatomic, readonly) bool allowsMusicSubscription;
 @property (nonatomic, readonly) bool allowsRadioPurchases;
 @property (nonatomic, readonly) bool allowsStorePurchases;
 @property (readonly, copy) NSString *debugDescription;
@@ -39,6 +41,7 @@
 - (bool)allowsAccountModification;
 - (bool)allowsDeletion;
 - (bool)allowsExplicitContent;
+- (bool)allowsMusicSubscription;
 - (bool)allowsRadioPurchases;
 - (bool)allowsStorePurchases;
 - (void)dealloc;

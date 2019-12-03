@@ -12,6 +12,7 @@
 }
 
 @property (readonly, copy) IDSURI *URI;
+@property (readonly, copy) CKUserIdentityLookupInfo *cloudKitLookupInfo;
 @property (readonly, copy) CNContact *contact;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -19,10 +20,12 @@
 @property (readonly, copy) NSUUID *identifier;
 @property (getter=isLocal, readonly) bool local;
 @property (getter=isLocallyTracked) bool locallyTracked;
-@property (nonatomic, readonly) NSUUID *modelIdentifier;
-@property (nonatomic, retain) NSUUID *modelParentIdentifier;
+@property (readonly) Class modelClass;
+@property (nonatomic, readonly, copy) NSUUID *modelIdentifier;
+@property (nonatomic, copy) NSUUID *modelParentIdentifier;
 @property (readonly) Class superclass;
 @property (readonly) long long type;
+@property (readonly, copy) NSString *value;
 
 + (id)accountHandleForDestination:(id)arg1;
 + (id)logCategory;
@@ -32,6 +35,7 @@
 - (id)URI;
 - (id)attributeDescriptions;
 - (id)backingStoreObjectsWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
+- (id)cloudKitLookupInfo;
 - (id)contact;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -48,6 +52,7 @@
 - (bool)isLocallyTracked;
 - (id)logIdentifier;
 - (id)modelBackedObjects;
+- (Class)modelClass;
 - (id)modelIdentifier;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (id)modelParentIdentifier;
@@ -58,5 +63,6 @@
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (long long)type;
+- (id)value;
 
 @end

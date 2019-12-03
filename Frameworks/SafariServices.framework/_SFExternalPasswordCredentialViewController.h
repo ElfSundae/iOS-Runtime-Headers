@@ -14,12 +14,13 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_applicationDidEnterBackground:(id)arg1;
 - (id)_connectToServiceWithCompletion:(id /* block */)arg1;
 - (id)_remoteViewController;
+- (void)_sceneDidEnterBackground:(id)arg1;
 - (void)_setUpServiceProxyIfNeeded;
 - (void)autoFillWithExternalCredential:(id)arg1;
 - (void)dealloc;
+- (void)getCredentialForExternalCredential:(id)arg1 completion:(id /* block */)arg2;
 - (id)init;
 - (void)presentExternalPasswordCredentialRemoteViewController:(id)arg1;
 - (void)viewDidLoad;

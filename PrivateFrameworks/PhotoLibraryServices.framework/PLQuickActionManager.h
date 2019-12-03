@@ -10,7 +10,7 @@
     NSData * __cachedMostRecentPhotoData;
     bool  __mostRecentPhotoIsInvalid;
     id  _cameraWellObserver;
-    id  _localeObserver;
+    PLDatabaseContext * _databaseContext;
     NSOperationQueue * _operationQueue;
 }
 
@@ -21,15 +21,14 @@
 @property (setter=_setCachedMostRecentPhotoData:, nonatomic, retain) NSData *_cachedMostRecentPhotoData;
 @property (setter=_setMostRecentPhotoIsInvalid:, nonatomic) bool _mostRecentPhotoIsInvalid;
 
-+ (id)sharedManager;
-
+- (void).cxx_destruct;
 - (Class)_SBSApplicationShortcutCustomImageIconClass;
 - (Class)_SBSApplicationShortcutItemClass;
 - (Class)_SBSApplicationShortcutServiceClass;
 - (id)_appShortcutService;
 - (id)_buildFavoritesQuickAction;
 - (id)_buildMostRecentPhotoQuickAction;
-- (id)_buildOneYearAgoQuickAction:(id)arg1;
+- (id)_buildOneYearAgoQuickAction;
 - (id)_buildSearchQuickAction;
 - (id)_cachedMostRecentPhotoData;
 - (bool)_mostRecentPhotoIsInvalid;
@@ -39,13 +38,12 @@
 - (void)_setSBSApplicationShortcutCustomImageIconClass:(Class)arg1;
 - (void)_setSBSApplicationShortcutItemClass:(Class)arg1;
 - (void)_setSBSApplicationShortcutServiceClass:(Class)arg1;
-- (id)_shortcutImageNamed:(id)arg1;
-- (bool)_userHasPhotos:(id)arg1;
-- (bool)_userHasPhotosFromLastYear:(id)arg1;
+- (id)_shortcutSystemImageNamed:(id)arg1;
+- (bool)_userHasPhotos;
+- (bool)_userHasPhotosFromLastYear;
 - (void)buildQuickActionItems;
 - (void)cameraPreviewWellImageDidChange;
 - (void)dealloc;
-- (id)init;
-- (void)rebuildQuickActionForLocaleChanges;
+- (id)initWithDatabaseContext:(id)arg1;
 
 @end

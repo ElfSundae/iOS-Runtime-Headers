@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
  */
 
-@interface CKMessageEntryView : UIView <CKActionMenuControllerDelegate, CKActionMenuGestureRecognizerButtonDelegate, CKAudioRecorderDelegate, CKBrowserSwitcherFooterViewDelegate, CKInlineAudioReplyButtonDelegate, CKMessageEntryContentViewDelegate, CKMessageEntryRecordedAudioViewDelegate, CKMessageEntryViewStyleProtocol, UIGestureRecognizerDelegate, _UIBackdropViewGraphicsQualityChangeDelegate> {
+@interface CKMessageEntryView : UIView <CKActionMenuControllerDelegate, CKActionMenuGestureRecognizerButtonDelegate, CKAudioRecorderDelegate, CKBrowserSwitcherFooterViewDelegate, CKInlineAudioReplyButtonDelegate, CKMessageEntryContentViewDelegate, CKMessageEntryRecordedAudioViewDelegate, CKMessageEntryViewStyleProtocol, UIGestureRecognizerDelegate> {
     bool  _animatingLayoutChange;
     CKBrowserSwitcherFooterView * _appStrip;
     UIView * _appStripBackgroundBlurContainerView;
@@ -24,7 +24,8 @@
     CKComposition * _audioComposition;
     CKMessageEntryAudioHintView * _audioHintView;
     CKInlineAudioReplyButtonController * _audioReplyButton;
-    _UIBackdropView * _backdropView;
+    NSString * _backdropGroupName;
+    UIVisualEffectView * _blurView;
     CKEntryViewButton * _browserButton;
     UIView * _buttonAndTextAreaContainerView;
     bool  _characterCountHidden;
@@ -33,6 +34,7 @@
         double width; 
         double height; 
     }  _characterCountSize;
+    <_UIClickInteractionDelegate> * _clickInteractionDelegate;
     UILabel * _collpasedPlaceholderLabel;
     bool  _composingRecipient;
     UIView * _contentClipView;
@@ -44,13 +46,14 @@
         double bottom; 
         double right; 
     }  _coverInsets;
-    <CKMessageEntryViewDelegate><UIPreviewInteractionDelegate> * _delegate;
+    <CKMessageEntryViewDelegate> * _delegate;
     bool  _disablePluginButtons;
     unsigned long long  _displayMode;
     bool  _entryFieldCollapsed;
     CKScheduledUpdater * _entryFieldCollapsedUpdater;
     bool  _entryFieldUpdaterAnimatedValue;
     bool  _entryFieldUpdaterCollapsedValue;
+    UITraitCollection * _entryViewTraitCollection;
     bool  _extendAppStripBlurToKeyplaneTop;
     bool  _failedRecipients;
     UIView * _inputButtonContainerView;
@@ -60,9 +63,11 @@
     }  _inputButtonSize;
     UIInputContextHistory * _inputContextHistory;
     <CKMessageEntryViewInputDelegate> * _inputDelegate;
+    bool  _isTransitioningForBrowserSwitcher;
     NSArray * _keyCommands;
     bool  _keyboardVisible;
     UIView * _knockoutCoverView;
+    UIVisualEffectView * _knockoutVisualEffectView;
     <UITextInputTraits_Private> * _lastConfiguredInputDelegate;
     struct UIEdgeInsets { 
         double top; 
@@ -72,12 +77,10 @@
     }  _marginInsets;
     bool  _performingActionMenuSend;
     CKEntryViewButton * _photoButton;
-    <UIPreviewInteractionDelegate> * _previewInteractionDelegate;
     CKMessageEntryRecordedAudioView * _recordedAudioView;
     CKAudioRecorder * _recorder;
     CKEntryViewButton * _sendButton;
-    UILongPressGestureRecognizer * _sendButtonLongPressGestureRecognizer;
-    UIPreviewInteraction * _sendButtonPreviewInteraction;
+    _UIClickInteraction * _sendButtonClickInteraction;
     struct CGSize { 
         double width; 
         double height; 
@@ -115,12 +118,14 @@
 @property (nonatomic, retain) CKComposition *audioComposition;
 @property (nonatomic, retain) CKMessageEntryAudioHintView *audioHintView;
 @property (nonatomic, retain) CKInlineAudioReplyButtonController *audioReplyButton;
-@property (nonatomic, retain) _UIBackdropView *backdropView;
+@property (nonatomic, copy) NSString *backdropGroupName;
+@property (nonatomic, retain) UIVisualEffectView *blurView;
 @property (nonatomic, retain) CKEntryViewButton *browserButton;
 @property (nonatomic, retain) UIView *buttonAndTextAreaContainerView;
 @property (getter=isCharacterCountHidden, nonatomic) bool characterCountHidden;
 @property (nonatomic, retain) UILabel *characterCountLabel;
 @property (nonatomic) struct CGSize { double x1; double x2; } characterCountSize;
+@property (nonatomic) <_UIClickInteractionDelegate> *clickInteractionDelegate;
 @property (nonatomic, retain) UILabel *collpasedPlaceholderLabel;
 @property (getter=isComposingRecipient, nonatomic) bool composingRecipient;
 @property (nonatomic, retain) CKComposition *composition;
@@ -131,7 +136,7 @@
 @property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } coverInsets;
 @property (readonly) double coverViewWidth;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) <CKMessageEntryViewDelegate><UIPreviewInteractionDelegate> *delegate;
+@property (nonatomic) <CKMessageEntryViewDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (getter=shouldDisablePluginButtons, nonatomic) bool disablePluginButtons;
 @property (nonatomic) unsigned long long displayMode;
@@ -139,6 +144,7 @@
 @property (nonatomic, retain) CKScheduledUpdater *entryFieldCollapsedUpdater;
 @property (nonatomic) bool entryFieldUpdaterAnimatedValue;
 @property (nonatomic) bool entryFieldUpdaterCollapsedValue;
+@property (nonatomic, retain) UITraitCollection *entryViewTraitCollection;
 @property (nonatomic) bool extendAppStripBlurToKeyplaneTop;
 @property (getter=hasFailedRecipients, nonatomic) bool failedRecipients;
 @property (nonatomic, readonly) bool hasRecording;
@@ -148,20 +154,20 @@
 @property (nonatomic, retain) UIInputContextHistory *inputContextHistory;
 @property (nonatomic) <CKMessageEntryViewInputDelegate> *inputDelegate;
 @property (nonatomic, readonly) bool isAudioActionMenuVisible;
+@property (nonatomic) bool isTransitioningForBrowserSwitcher;
 @property (nonatomic, copy) NSArray *keyCommands;
 @property (getter=isKeyboardVisible, nonatomic) bool keyboardVisible;
 @property (nonatomic, retain) UIView *knockoutCoverView;
+@property (nonatomic, retain) UIVisualEffectView *knockoutVisualEffectView;
 @property (nonatomic) <UITextInputTraits_Private> *lastConfiguredInputDelegate;
 @property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } marginInsets;
 @property (getter=isPerformingActionMenuSend, nonatomic) bool performingActionMenuSend;
 @property (nonatomic, retain) CKEntryViewButton *photoButton;
-@property (nonatomic) <UIPreviewInteractionDelegate> *previewInteractionDelegate;
 @property (nonatomic, retain) CKMessageEntryRecordedAudioView *recordedAudioView;
 @property (nonatomic, retain) CKAudioRecorder *recorder;
 @property (getter=isRecording, nonatomic, readonly) bool recording;
 @property (nonatomic, retain) CKEntryViewButton *sendButton;
-@property (nonatomic, retain) UILongPressGestureRecognizer *sendButtonLongPressGestureRecognizer;
-@property (nonatomic, retain) UIPreviewInteraction *sendButtonPreviewInteraction;
+@property (nonatomic, retain) _UIClickInteraction *sendButtonClickInteraction;
 @property (nonatomic) struct CGSize { double x1; double x2; } sendButtonSize;
 @property (getter=isSendingMessage, nonatomic) bool sendingMessage;
 @property (nonatomic) bool shouldAllowImpactSend;
@@ -170,6 +176,7 @@
 @property (nonatomic, readonly) bool shouldEntryViewBeExpandedLayout;
 @property (nonatomic) bool shouldHideBackgroundView;
 @property (nonatomic) bool shouldKnockoutCoverView;
+@property (nonatomic) bool shouldOpaqueBackgroundView;
 @property (nonatomic, readonly) bool shouldShowAppStrip;
 @property (nonatomic) bool shouldShowCharacterCount;
 @property (nonatomic) bool shouldShowPluginButtons;
@@ -184,7 +191,6 @@
 @property (nonatomic, retain) CKMessageEntryWaveformView *waveformView;
 @property (nonatomic) struct CGSize { double x1; double x2; } waveformViewSize;
 
-+ (id)_imageNamesForPrecaching;
 + (id)audioButtonImage;
 + (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })contentViewInsetsForMarginInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1 shouldShowPluginButtons:(bool)arg2 shouldShowCharacterCount:(bool)arg3 shouldCoverSendButton:(bool)arg4;
 + (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })coverViewInsetsForMarginInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1 shouldShowPluginButtons:(bool)arg2 shouldShowCharacterCount:(bool)arg3;
@@ -194,15 +200,18 @@
 - (void).cxx_destruct;
 - (double)_accessoryViewFadeDuration;
 - (void)_addMessageToInputContextHistory:(id)arg1;
-- (void)_animateExpandWithCompletion:(id /* block */)arg1;
+- (void)_animateExpandForManualToggle:(bool)arg1 completion:(id /* block */)arg2;
 - (void)_animateToCompactLayoutCollapsing:(bool)arg1 completion:(id /* block */)arg2;
 - (id)_currentInputDelegate;
 - (unsigned long long)_durationBucketForAudioComposition:(id)arg1;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (void)_initializeInputContextHistory;
 - (bool)_isRunningInMVS;
 - (bool)_isSURFInShelf;
+- (void)_overrideUserInterfaceStyleForEntryViewStyleIfNeeded:(long long)arg1;
 - (void)_participantsDidChange:(id)arg1;
 - (BOOL)_sendButtonColor;
+- (void)_setBehaviorsForCurrentTransparencySetting;
 - (void)_setupWaveformView;
 - (bool)_shouldNotAnimateCollapseInteractive;
 - (void)_swipeDownGestureRecognized:(id)arg1;
@@ -220,6 +229,7 @@
 - (bool)actionMenuGestureRecognizerButtonShouldRecognizeGesture:(id)arg1;
 - (bool)actionMenuGestureRecognizerButtonShouldShowHint:(id)arg1;
 - (void)actionMenuGestureRecognizerButtonShowHint:(id)arg1;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })activeKeyboardHeight;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })adjustedCoverInsets;
 - (bool)animatingLayoutChange;
 - (id)appStrip;
@@ -241,10 +251,9 @@
 - (void)audioReplyButtonCancel:(id)arg1;
 - (void)audioReplyButtonStart:(id)arg1;
 - (void)audioReplyButtonStop:(id)arg1;
-- (id)backdropView;
-- (void)backdropView:(id)arg1 didChangeToGraphicsQuality:(long long)arg2;
-- (id)backdropView:(id)arg1 willChangeToGraphicsQuality:(long long)arg2;
+- (id)backdropGroupName;
 - (void)beginDeferringEntryFieldCollapsedStateChanges;
+- (id)blurView;
 - (double)bottomInsetForAppStrip;
 - (id)browserButton;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })browserButtonFrame;
@@ -254,6 +263,7 @@
 - (id)characterCountLabel;
 - (struct CGSize { double x1; double x2; })characterCountSize;
 - (void)clearAppStripSelection;
+- (id)clickInteractionDelegate;
 - (void)collapseGestureRecognized;
 - (void)collapsedPlaceholderLabelTapped:(id)arg1;
 - (id)collpasedPlaceholderLabel;
@@ -277,9 +287,10 @@
 - (id)entryFieldCollapsedUpdater;
 - (bool)entryFieldUpdaterAnimatedValue;
 - (bool)entryFieldUpdaterCollapsedValue;
+- (id)entryViewTraitCollection;
 - (void)expandGestureRecongnized;
 - (bool)extendAppStripBlurToKeyplaneTop;
-- (void)finishSmallBrowserSwitcherTransition;
+- (void)finishBrowserSwitcherCompactTransition;
 - (bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)handleContentViewChangeWithCompletion:(id /* block */)arg1;
 - (bool)hasFailedRecipients;
@@ -287,8 +298,8 @@
 - (bool)hasUnreachableEmergencyRecipient;
 - (id)hitTest:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
 - (id)initForFullscreenAppViewWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 marginInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg2 shouldAllowImpact:(bool)arg3 shouldShowSendButton:(bool)arg4 shouldShowSubject:(bool)arg5 shouldShowBrowserButton:(bool)arg6 shouldShowCharacterCount:(bool)arg7;
-- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 marginInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg2 shouldAllowImpact:(bool)arg3 shouldShowSendButton:(bool)arg4 shouldShowSubject:(bool)arg5 shouldShowPluginButtons:(bool)arg6 shouldShowCharacterCount:(bool)arg7;
-- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 marginInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg2 shouldShowSendButton:(bool)arg3 shouldShowSubject:(bool)arg4 shouldShowPluginButtons:(bool)arg5 shouldShowCharacterCount:(bool)arg6;
+- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 marginInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg2 shouldAllowImpact:(bool)arg3 shouldShowSendButton:(bool)arg4 shouldShowSubject:(bool)arg5 shouldShowPluginButtons:(bool)arg6 shouldShowCharacterCount:(bool)arg7 traitCollection:(id)arg8;
+- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 marginInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg2 shouldShowSendButton:(bool)arg3 shouldShowSubject:(bool)arg4 shouldShowPluginButtons:(bool)arg5 shouldShowCharacterCount:(bool)arg6 traitCollection:(id)arg7;
 - (id)inputButtonContainerView;
 - (struct CGSize { double x1; double x2; })inputButtonSize;
 - (id)inputContextHistory;
@@ -301,10 +312,13 @@
 - (bool)isPerformingActionMenuSend;
 - (bool)isPredictionBarEnabled;
 - (bool)isRecording;
+- (bool)isRunningInNotificationExtension;
 - (bool)isSendingMessage;
+- (bool)isTransitioningForBrowserSwitcher;
 - (void)keyCommandSend:(id)arg1;
 - (id)keyCommands;
 - (id)knockoutCoverView;
+- (id)knockoutVisualEffectView;
 - (id)lastConfiguredInputDelegate;
 - (bool)layoutIsCurrentlyCompact;
 - (void)layoutSubviews;
@@ -317,6 +331,7 @@
 - (void)messageEntryContentViewDidBeginEditing:(id)arg1 wasAlreadyActive:(bool)arg2;
 - (void)messageEntryContentViewDidChange:(id)arg1;
 - (void)messageEntryContentViewDidEndEditing:(id)arg1;
+- (void)messageEntryContentViewDidReturn:(id)arg1;
 - (void)messageEntryContentViewDidTapHandwritingKey:(id)arg1;
 - (struct CGSize { double x1; double x2; })messageEntryContentViewMaxShelfPluginViewSize:(id)arg1;
 - (void)messageEntryContentViewShelfDidChange:(id)arg1;
@@ -334,21 +349,18 @@
 - (double)placeholderHeight;
 - (void)playMenuItemAction:(id)arg1;
 - (bool)pluginButtonsEnabled;
-- (void)prepareForSmallBrowserSwitcherTransition;
+- (void)prepareForBrowserSwitcherCompactTransitionIsSnapshotting:(bool)arg1;
 - (void)presentAudioActionMenu;
-- (id)previewInteractionDelegate;
 - (id)recordedAudioView;
 - (id)recorder;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })safeAreaInsets;
 - (void)safeAreaInsetsDidChange;
 - (void)selectPluginAtIndexPath:(id)arg1;
 - (id)sendButton;
+- (id)sendButtonClickInteraction;
 - (struct CGPoint { double x1; double x2; })sendButtonConvertPointToScreen:(struct CGPoint { double x1; double x2; })arg1;
 - (bool)sendButtonEnabled;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })sendButtonFrameInScreenCoordinates;
-- (void)sendButtonLongPressGesture:(id)arg1;
-- (id)sendButtonLongPressGestureRecognizer;
-- (id)sendButtonPreviewInteraction;
 - (struct CGSize { double x1; double x2; })sendButtonSize;
 - (void)sendCurrentLocationMessage;
 - (void)sendMenuItemAction:(id)arg1;
@@ -364,12 +376,14 @@
 - (void)setAudioComposition:(id)arg1;
 - (void)setAudioHintView:(id)arg1;
 - (void)setAudioReplyButton:(id)arg1;
-- (void)setBackdropView:(id)arg1;
+- (void)setBackdropGroupName:(id)arg1;
+- (void)setBlurView:(id)arg1;
 - (void)setBrowserButton:(id)arg1;
 - (void)setButtonAndTextAreaContainerView:(id)arg1;
 - (void)setCharacterCountHidden:(bool)arg1;
 - (void)setCharacterCountLabel:(id)arg1;
 - (void)setCharacterCountSize:(struct CGSize { double x1; double x2; })arg1;
+- (void)setClickInteractionDelegate:(id)arg1;
 - (void)setCollpasedPlaceholderLabel:(id)arg1;
 - (void)setComposingRecipient:(bool)arg1;
 - (void)setComposition:(id)arg1;
@@ -385,6 +399,7 @@
 - (void)setEntryFieldCollapsedUpdater:(id)arg1;
 - (void)setEntryFieldUpdaterAnimatedValue:(bool)arg1;
 - (void)setEntryFieldUpdaterCollapsedValue:(bool)arg1;
+- (void)setEntryViewTraitCollection:(id)arg1;
 - (void)setExtendAppStripBlurToKeyplaneTop:(bool)arg1;
 - (void)setFailedRecipients:(bool)arg1;
 - (void)setFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
@@ -392,19 +407,19 @@
 - (void)setInputButtonSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setInputContextHistory:(id)arg1;
 - (void)setInputDelegate:(id)arg1;
+- (void)setIsTransitioningForBrowserSwitcher:(bool)arg1;
 - (void)setKeyCommands:(id)arg1;
 - (void)setKeyboardVisible:(bool)arg1;
 - (void)setKnockoutCoverView:(id)arg1;
+- (void)setKnockoutVisualEffectView:(id)arg1;
 - (void)setLastConfiguredInputDelegate:(id)arg1;
 - (void)setMarginInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setPerformingActionMenuSend:(bool)arg1;
 - (void)setPhotoButton:(id)arg1;
-- (void)setPreviewInteractionDelegate:(id)arg1;
 - (void)setRecordedAudioView:(id)arg1;
 - (void)setRecorder:(id)arg1;
 - (void)setSendButton:(id)arg1;
-- (void)setSendButtonLongPressGestureRecognizer:(id)arg1;
-- (void)setSendButtonPreviewInteraction:(id)arg1;
+- (void)setSendButtonClickInteraction:(id)arg1;
 - (void)setSendButtonSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setSendingMessage:(bool)arg1;
 - (void)setShouldAllowImpactSend:(bool)arg1;
@@ -412,6 +427,7 @@
 - (void)setShouldConfigureForFullscreenAppView:(bool)arg1;
 - (void)setShouldHideBackgroundView:(bool)arg1;
 - (void)setShouldKnockoutCoverView:(bool)arg1;
+- (void)setShouldOpaqueBackgroundView:(bool)arg1;
 - (void)setShouldShowCharacterCount:(bool)arg1;
 - (void)setShouldShowPluginButtons:(bool)arg1;
 - (void)setShouldShowSendButton:(bool)arg1;
@@ -423,6 +439,7 @@
 - (void)setUnreachableEmergencyRecipient:(bool)arg1;
 - (void)setWaveformView:(id)arg1;
 - (void)setWaveformViewSize:(struct CGSize { double x1; double x2; })arg1;
+- (void)setupKnockoutVisualEffect;
 - (bool)shouldAllowImpactSend;
 - (bool)shouldCenterCharacterCount;
 - (bool)shouldConfigureForFullscreenAppView;
@@ -430,6 +447,7 @@
 - (bool)shouldEntryViewBeExpandedLayout;
 - (bool)shouldHideBackgroundView;
 - (bool)shouldKnockoutCoverView;
+- (bool)shouldOpaqueBackgroundView;
 - (bool)shouldRecordForService:(id)arg1;
 - (bool)shouldShowAppStrip;
 - (bool)shouldShowCharacterCount;
@@ -446,9 +464,11 @@
 - (id)swipeGestureRecognizer;
 - (void)switcherView:(id)arg1 didMagnify:(bool)arg2;
 - (void)switcherView:(id)arg1 didSelectPluginAtIndex:(id)arg2;
+- (void)textEffectsWindowOffsetDidChange:(id)arg1;
 - (void)touchUpInsideDeleteAudioRecordingButton:(id)arg1;
 - (void)touchUpInsideSendButton:(id)arg1;
 - (void)updateAppStripFrame;
+- (void)updateBackgroundBlurVisualEffect;
 - (void)updateEntryView;
 - (void)updateTextViewsForShouldHideCaret:(bool)arg1;
 - (id)waveformView;

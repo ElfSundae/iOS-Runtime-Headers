@@ -24,6 +24,8 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) unsigned int type;
 
++ (void)initialize;
+
 - (void).cxx_destruct;
 - (id)CNIdentifierString;
 - (unsigned long long)_cfTypeID;

@@ -7,6 +7,8 @@
     int  _activityLevel;
     NSData * _authTag;
     NSData * _bleAdvertisementData;
+    NSData * _bleAuthTag;
+    SFDevice * _bleDevice;
     NSData * _bleDeviceAddress;
     unsigned int  _blePairState;
     NSString * _contactID;
@@ -43,6 +45,8 @@
 @property (nonatomic, readonly) int activityLevel;
 @property (nonatomic, readonly, copy) NSData *authTag;
 @property (nonatomic, readonly, copy) NSData *bleAdvertisementData;
+@property (nonatomic, readonly, copy) NSData *bleAuthTag;
+@property (nonatomic, retain) SFDevice *bleDevice;
 @property (nonatomic, readonly, copy) NSData *bleDeviceAddress;
 @property (nonatomic, readonly) unsigned int blePairState;
 @property (nonatomic, readonly, copy) NSString *contactID;
@@ -82,6 +86,8 @@
 - (int)activityLevel;
 - (id)authTag;
 - (id)bleAdvertisementData;
+- (id)bleAuthTag;
+- (id)bleDevice;
 - (id)bleDeviceAddress;
 - (unsigned int)blePairState;
 - (id)contactID;
@@ -104,6 +110,7 @@
 - (int)proximity;
 - (int)rawRSSI;
 - (id)relativeLocation;
+- (void)setBleDevice:(id)arg1;
 - (void)setIdentifier:(id)arg1;
 - (void)setIdentifierUUID:(id)arg1;
 - (void)setMobileDevice:(id)arg1;

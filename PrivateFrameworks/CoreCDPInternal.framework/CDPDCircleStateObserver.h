@@ -5,7 +5,6 @@
 @interface CDPDCircleStateObserver : NSObject <CDPDXPCEventListener> {
     int  _circleChangeToken;
     NSMutableArray * _circleObservers;
-    <CDPDCircleProxy> * _circleProxy;
     NSObject<OS_dispatch_queue> * _eventQueue;
     bool  _isObserving;
 }
@@ -19,9 +18,9 @@
 - (const char *)_notificationName;
 - (void)dealloc;
 - (void)eventReceived:(const char *)arg1 eventValue:(unsigned long long)arg2;
-- (id)initWithProxy:(id)arg1;
-- (void)observeChangeToState:(int)arg1 handler:(id /* block */)arg2;
-- (void)observeCircleStateWithChangeHandler:(id /* block */)arg1;
+- (id)init;
+- (void)observeChangeToState:(unsigned long long)arg1 circleProxy:(id)arg2 handler:(id /* block */)arg3;
+- (void)observeCircleStateWithCircleProxy:(id)arg1 changeHandler:(id /* block */)arg2;
 - (void)registerListener:(id)arg1;
 - (void)stopObservingCircleStatusChange;
 

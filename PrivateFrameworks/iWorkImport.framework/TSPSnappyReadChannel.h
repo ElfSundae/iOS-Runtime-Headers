@@ -18,6 +18,6 @@
 - (bool)processData:(id*)arg1 isDone:(bool)arg2 handler:(id /* block */)arg3;
 - (void)readWithHandler:(id /* block */)arg1;
 - (id)uncompressData:(id)arg1;
-- (id)uncompressDataFromSource:(struct SnappySource { int (**x1)(); id x2; unsigned long long x3; id x4; unsigned long long x5; char *x6; }*)arg1;
+- (id)uncompressDataFromSource:(struct SnappySource { int (**x1)(); id x2; unsigned long long x3; unsigned long long x4; id x5; unsigned long long x6; unsigned long long x7; char *x8; }*)arg1;
 
 @end

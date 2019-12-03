@@ -6,9 +6,8 @@
     unsigned long long  _evaluationLevel;
     NSArray * _evaluationPoints;
     bool  _intercept;
-    bool  _isSynchronous;
     unsigned long long  _maxSessionsLimit;
-    NSArray * _models;
+    <PMLMultiLabelRegressionModelProtocol> * _multiLabelRegressionModel;
     struct NSString { Class x1; } * _planId;
     NSArray * _positiveLabels;
     PMLSessionDescriptor * _sessionDescriptor;
@@ -25,9 +24,8 @@
 @property (nonatomic, readonly) NSArray *evaluationPoints;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) bool intercept;
-@property (nonatomic, readonly) bool isSynchronous;
 @property (nonatomic, readonly) unsigned long long maxSessionsLimit;
-@property (nonatomic, readonly) NSArray *models;
+@property (nonatomic, readonly) <PMLMultiLabelRegressionModelProtocol> *multiLabelRegressionModel;
 @property (nonatomic, readonly) NSString *planId;
 @property (nonatomic, readonly) NSArray *positiveLabels;
 @property (nonatomic, readonly) PMLSessionDescriptor *sessionDescriptor;
@@ -44,12 +42,11 @@
 - (unsigned long long)evaluationLevel;
 - (id)evaluationPoints;
 - (id)init;
-- (id)initWithPlanId:(struct NSString { Class x1; }*)arg1 store:(id)arg2 sessionDescriptor:(id)arg3 maxSessionsLimit:(unsigned long long)arg4 sessionsInBatch:(unsigned long long)arg5 supportPerLabel:(unsigned long long)arg6 labelAndWeights:(id)arg7 intercept:(bool)arg8 evaluationPoints:(id)arg9 tracker:(id)arg10 evaluationLevel:(unsigned long long)arg11;
+- (id)initWithPlanId:(struct NSString { Class x1; }*)arg1 store:(id)arg2 sessionDescriptor:(id)arg3 maxSessionsLimit:(unsigned long long)arg4 sessionsInBatch:(unsigned long long)arg5 supportPerLabel:(unsigned long long)arg6 labelAndWeights:(id)arg7 modelClassName:(id)arg8 intercept:(bool)arg9 evaluationPoints:(id)arg10 tracker:(id)arg11 evaluationLevel:(unsigned long long)arg12;
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
 - (bool)intercept;
-- (bool)isSynchronous;
 - (unsigned long long)maxSessionsLimit;
-- (id)models;
+- (id)multiLabelRegressionModel;
 - (struct NSString { Class x1; }*)planId;
 - (id)positiveLabels;
 - (id)run;

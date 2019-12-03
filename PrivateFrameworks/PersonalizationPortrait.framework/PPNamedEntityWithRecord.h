@@ -11,5 +11,6 @@
 - (id)description;
 - (id)initWithName:(id)arg1 category:(unsigned long long)arg2 language:(id)arg3 mostRelevantRecord:(id)arg4;
 - (id)mostRelevantRecord;
+- (double)sentimentScore;
 
 @end

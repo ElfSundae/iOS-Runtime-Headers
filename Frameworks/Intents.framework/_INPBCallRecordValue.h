@@ -3,6 +3,7 @@
  */
 
 @interface _INPBCallRecordValue : PBCodable <NSCopying, NSSecureCoding, _INPBCallRecordValue> {
+    bool  __encodeLegacyGloryData;
     int  _callCapability;
     _INPBCallMetrics * _callMetrics;
     int  _callType;
@@ -14,9 +15,11 @@
         unsigned int unseen : 1; 
     }  _has;
     NSString * _identifier;
+    _INPBInteger * _numberOfCalls;
     bool  _unseen;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic) int callCapability;
 @property (nonatomic, retain) _INPBCallMetrics *callMetrics;
 @property (nonatomic) int callType;
@@ -30,15 +33,21 @@
 @property (nonatomic, readonly) bool hasCaller;
 @property (nonatomic, readonly) bool hasDateCreated;
 @property (nonatomic, readonly) bool hasIdentifier;
+@property (nonatomic, readonly) bool hasNumberOfCalls;
 @property (nonatomic) bool hasUnseen;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSString *identifier;
+@property (nonatomic, retain) _INPBInteger *numberOfCalls;
 @property (readonly) Class superclass;
 @property (nonatomic) bool unseen;
+
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (int)StringAsCallCapability:(id)arg1;
 - (int)StringAsCallType:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (int)callCapability;
 - (id)callCapabilityAsString:(int)arg1;
 - (id)callMetrics;
@@ -48,16 +57,20 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dateCreated;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasCallCapability;
 - (bool)hasCallMetrics;
 - (bool)hasCallType;
 - (bool)hasCaller;
 - (bool)hasDateCreated;
 - (bool)hasIdentifier;
+- (bool)hasNumberOfCalls;
 - (bool)hasUnseen;
 - (unsigned long long)hash;
 - (id)identifier;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
+- (id)numberOfCalls;
 - (bool)readFrom:(id)arg1;
 - (void)setCallCapability:(int)arg1;
 - (void)setCallMetrics:(id)arg1;
@@ -68,6 +81,7 @@
 - (void)setHasCallType:(bool)arg1;
 - (void)setHasUnseen:(bool)arg1;
 - (void)setIdentifier:(id)arg1;
+- (void)setNumberOfCalls:(id)arg1;
 - (void)setUnseen:(bool)arg1;
 - (bool)unseen;
 - (void)writeTo:(id)arg1;

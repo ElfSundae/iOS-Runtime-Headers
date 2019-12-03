@@ -25,13 +25,13 @@
 - (void)callStatusChanged:(id)arg1;
 - (id)delegate;
 - (void)disconnectCall:(id)arg1;
+- (void)ensureUplinkMuted;
 - (void)getCall:(id /* block */)arg1;
+- (void)getLogEntryForCallWithUniqueProxyIdentifier:(id)arg1 completion:(id /* block */)arg2;
 - (bool)hasValidConnection;
 - (id)init;
 - (bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
-- (void)localMeterLevelForCall:(id)arg1 result:(id /* block */)arg2;
 - (void)queryIsTinCannable:(id)arg1;
-- (void)remoteMeterLevelForCall:(id)arg1 result:(id /* block */)arg2;
 - (void)remoteUplinkMuteChanged:(id)arg1;
 - (void)sessionViewControllerViewDidAppear;
 - (void)setClientRecordingInProgress:(bool)arg1;

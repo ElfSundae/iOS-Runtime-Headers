@@ -7,16 +7,13 @@
     float  _score;
 }
 
-@property (nonatomic, readonly) id bundleId;
 @property (nonatomic, readonly) id predictedItem;
 @property (nonatomic, readonly) float score;
 
-+ (id)bundleIdsFrom:(id)arg1;
 + (id)predictionsFrom:(id)arg1;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
-- (id)bundleId;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

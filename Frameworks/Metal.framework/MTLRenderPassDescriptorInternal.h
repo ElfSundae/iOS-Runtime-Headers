@@ -26,12 +26,13 @@
             float y; 
         } customSamplePositions[4]; 
         unsigned long long numCustomSamplePositions; 
+        <MTLRasterizationRateMap> *rasterizationRateMap; 
     }  _private;
 }
 
 + (id)renderPassDescriptor;
 
-- (const struct MTLRenderPassDescriptorPrivate { id x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; bool x5; bool x6; bool x7; unsigned long long x8; unsigned long long x9; unsigned long long x10; union { unsigned long long x_11_1_1; unsigned long long x_11_1_2; } x11; unsigned long long x12; unsigned long long x13; struct { float x_14_1_1; float x_14_1_2; } x14[4]; unsigned long long x15; }*)_descriptorPrivate;
+- (const struct MTLRenderPassDescriptorPrivate { id x1; id x2; unsigned long long x3; unsigned long long x4; unsigned long long x5; bool x6; bool x7; bool x8; unsigned long long x9; unsigned long long x10; unsigned long long x11; union { unsigned long long x_12_1_1; unsigned long long x_12_1_2; } x12; unsigned long long x13; unsigned long long x14; struct { float x_15_1_1; float x_15_1_2; } x15[4]; unsigned long long x16; id x17; }*)_descriptorPrivate;
 - (id)colorAttachments;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -48,6 +49,7 @@
 - (bool)isDitherEnabled;
 - (bool)isEqual:(id)arg1;
 - (bool)openGLModeEnabled;
+- (id)rasterizationRateMap;
 - (unsigned long long)renderTargetArrayLength;
 - (unsigned long long)renderTargetHeight;
 - (unsigned long long)renderTargetWidth;
@@ -58,6 +60,7 @@
 - (void)setFineGrainedBackgroundVisibilityEnabled:(bool)arg1;
 - (void)setImageblockSampleLength:(unsigned long long)arg1;
 - (void)setOpenGLModeEnabled:(bool)arg1;
+- (void)setRasterizationRateMap:(id)arg1;
 - (void)setRenderTargetArrayLength:(unsigned long long)arg1;
 - (void)setRenderTargetHeight:(unsigned long long)arg1;
 - (void)setRenderTargetWidth:(unsigned long long)arg1;

@@ -5,6 +5,7 @@
 
 @required
 
+- (NSString *)UTI;
 - (NSDate *)fileCreationDate;
 - (NSString *)fileExtension;
 - (NSDate *)fileModificationDate;
@@ -13,6 +14,5 @@
 - (bool)isDirectory;
 - (NSString *)path;
 - (NSURL *)url;
-- (NSString *)uti;
 
 @end

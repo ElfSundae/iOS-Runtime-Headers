@@ -35,4 +35,8 @@
 
 - (unsigned long long)inuickp_intrinsicInteractiveBehavior;
 
+// Image: /System/Library/PrivateFrameworks/SearchUICardKitProviderSupport.framework/SearchUICardKitProviderSupport
+
+- (bool)handleForCardViewController:(id)arg1 cardViewControllerDelegate:(id)arg2;
+
 @end

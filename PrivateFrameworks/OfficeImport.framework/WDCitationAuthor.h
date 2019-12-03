@@ -10,7 +10,7 @@
 @property (nonatomic, retain) NSString *first;
 @property (nonatomic, retain) NSString *last;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)first;
 - (id)initWithFirst:(id)arg1 last:(id)arg2;
 - (id)last;

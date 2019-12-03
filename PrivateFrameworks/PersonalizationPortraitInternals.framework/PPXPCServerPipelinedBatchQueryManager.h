@@ -4,7 +4,7 @@
 
 @interface PPXPCServerPipelinedBatchQueryManager : NSObject {
     NSObject<OS_dispatch_semaphore> * _concurrentRequestSem;
-    bool  _isInterrupted;
+    _Atomic bool  _isInterrupted;
     long long  _pipelineDepth;
     unsigned long long  _pipelinedCallTimeoutNsec;
     NSMutableDictionary * _queryReplyThrottleSemaphores;

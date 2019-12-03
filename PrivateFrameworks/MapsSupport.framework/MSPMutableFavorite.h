@@ -29,6 +29,8 @@
 - (id)abridgedBookmarkStorageForSpotlightStorage;
 - (id)bookmarkStorage;
 - (id)copyIfValidWithError:(out id*)arg1;
+- (id)debugTitle;
+- (id)description;
 - (void)ifMutablePlace:(id /* block */)arg1 ifMutableRoute:(id /* block */)arg2 ifMutableRegion:(id /* block */)arg3 ifMutableTransitLine:(id /* block */)arg4;
 - (void)ifPlace:(id /* block */)arg1 ifRoute:(id /* block */)arg2 ifRegion:(id /* block */)arg3 ifTransitLine:(id /* block */)arg4;
 - (id)init;

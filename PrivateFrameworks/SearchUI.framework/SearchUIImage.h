@@ -9,24 +9,27 @@
     bool  _useFastPathShadow;
 }
 
-@property bool needsTinting;
-@property (retain) SFImage *sfImage;
-@property (retain) UIImage *uiImage;
-@property bool useFastPathShadow;
+@property (nonatomic) bool needsTinting;
+@property (nonatomic, retain) SFImage *sfImage;
+@property (nonatomic, retain) UIImage *uiImage;
+@property (nonatomic) bool useFastPathShadow;
 
-+ (id)cachedImageFromSFImage:(id)arg1;
-+ (id)imageFromData:(id)arg1;
++ (id)imageForSuggestionCardSectionType:(int)arg1;
 + (id)imageWithSFImage:(id)arg1;
-+ (id)templatifiedImage:(id)arg1;
++ (id)imageWithSFImage:(id)arg1 variantForAppIcon:(unsigned long long)arg2;
 
 - (void).cxx_destruct;
 - (double)cornerRadius;
+- (unsigned long long)hash;
+- (id)imageData;
 - (id)initWithImage:(id)arg1;
 - (id)initWithSFImage:(id)arg1;
+- (bool)isEqual:(id)arg1;
 - (bool)isTemplate;
 - (id)loadImage;
 - (void)loadImageWithCompletionHandler:(id /* block */)arg1;
 - (bool)needsTinting;
+- (double)scale;
 - (void)setNeedsTinting:(bool)arg1;
 - (void)setSfImage:(id)arg1;
 - (void)setUiImage:(id)arg1;

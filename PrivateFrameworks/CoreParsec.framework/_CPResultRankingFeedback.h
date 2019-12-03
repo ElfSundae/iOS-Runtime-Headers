@@ -21,7 +21,6 @@
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic) unsigned int localResultPosition;
 @property (nonatomic) double personalizationScore;
-@property (nonatomic, readonly) bool requiresQueryId;
 @property (nonatomic, retain) _CPSearchResultForFeedback *result;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long timestamp;
@@ -49,7 +48,6 @@
 - (unsigned int)localResultPosition;
 - (double)personalizationScore;
 - (bool)readFrom:(id)arg1;
-- (bool)requiresQueryId;
 - (id)result;
 - (void)setDuplicateResults:(id)arg1;
 - (void)setHiddenResults:(id)arg1;

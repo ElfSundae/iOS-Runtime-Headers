@@ -2,10 +2,19 @@
    Image: /System/Library/Frameworks/EventKit.framework/EventKit
  */
 
-@interface EKAttachmentChange : EKObjectChange
+@interface EKAttachmentChange : EKObjectChange <EKOwnerIDProviding> {
+    EKObjectID * _ownerID;
+}
 
+@property (nonatomic, readonly) EKObjectID *ownerID;
+
++ (int)entityType;
 + (void)fetchAttachmentChangesInCalendar:(id)arg1 resultHandler:(id /* block */)arg2;
 + (void)fetchAttachmentChangesInSource:(id)arg1 resultHandler:(id /* block */)arg2;
 + (void)fetchAttachmentChangesInStore:(id)arg1 resultHandler:(id /* block */)arg2;
+
+- (void).cxx_destruct;
+- (id)initWithChangeProperties:(id)arg1;
+- (id)ownerID;
 
 @end

@@ -16,6 +16,9 @@
 
 // Image: /System/Library/Frameworks/CoreData.framework/CoreData
 
++ (id)entityDescription;
++ (id)entityDescriptionWithContext:(id)arg1;
++ (id)fetchRequest;
 + (bool)supportsSecureCoding;
 
 - (id)author;

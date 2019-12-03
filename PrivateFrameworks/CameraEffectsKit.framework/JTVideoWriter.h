@@ -18,7 +18,7 @@
     AVAssetWriterInputMetadataAdaptor * _faceMetadataAdaptor;
     NSString * _fileType;
     NSLock * _finishingLock;
-    bool  _finishingWritingMovie;
+    _Atomic bool  _finishingWritingMovie;
     bool  _forInternalRecord;
     AVAssetWriterInputMetadataAdaptor * _metadataAdaptor;
     AVAssetWriterInput * _movieARFrameAssetWriterInput;
@@ -29,7 +29,7 @@
     AVAssetWriterInput * _movieFaceMetadataAssetWriterInput;
     AVAssetWriterInput * _movieMetadataAssetWriterInput;
     AVAssetWriterInput * _movieVideoAssetWriterInput;
-    bool  _preparingWriter;
+    _Atomic bool  _preparingWriter;
     WriterReorderQ * _reorderQ;
     struct { 
         long long value; 
@@ -70,11 +70,11 @@
 + (id)JT_funcamCameraPositionMetadataIdentifier;
 + (id)JT_funcamCaptureInterfaceOrientationMetadataIdentifier;
 + (id)JT_metadataAssetTrackFromAsset:(id)arg1 metadataIdentifier:(id)arg2;
-+ (void)captureDevicePositionAndOrientationForFunCamVideo:(id)arg1 completion:(id /* block */)arg2;
 + (id)faceAnchorMetadataTrackForAsset:(id)arg1;
++ (void)metadataForVideo:(id)arg1 completion:(id /* block */)arg2;
 
 - (void).cxx_destruct;
-- (id)JT_cameraAndOrientationMetadata;
+- (id)JT_FunCamMetadata;
 - (bool)_canStart:(id*)arg1;
 - (void)_drainQueuedAudioBufferBeforeSessionStart_noLock;
 - (void)_queueAudioBufferBeforeSessionStart:(struct opaqueCMSampleBuffer { }*)arg1;

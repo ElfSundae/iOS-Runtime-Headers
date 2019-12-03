@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/BulletinDistributorCompanion.framework/BulletinDistributorCompanion
  */
 
-@interface BLTSectionInfoListBBProvider : NSObject <BLTSectionInfoListProvider, BLTSectionInfoObserverDelegate, LSApplicationWorkspaceObserverProtocol> {
+@interface BLTSectionInfoListBBProvider : NSObject <BLTSectionInfoListBBProvider, BLTSectionInfoObserverDelegate, LSApplicationWorkspaceObserverProtocol> {
     LSApplicationWorkspace * _appWorkspace;
     <BLTSectionInfoListProviderDelegate> * _delegate;
     BLTSectionInfoObserver * _observer;
@@ -25,8 +25,9 @@
 - (id)initWithSettingsGateway:(id)arg1;
 - (void)reloadSection:(id)arg1 completion:(id /* block */)arg2;
 - (void)reloadWithCompletion:(id /* block */)arg1;
+- (id)sectionInfoForSectionID:(id)arg1;
 - (void)sectionInfoObserver:(id)arg1 removedSectionWithSectionID:(id)arg2;
-- (void)sectionInfoObserver:(id)arg1 updatedSectionInfo:(id)arg2 withUniversalSectionID:(id)arg3 displayName:(id)arg4;
+- (void)sectionInfoObserver:(id)arg1 updatedSectionInfoForSectionIDs:(id)arg2;
 - (void)setDelegate:(id)arg1;
 
 @end

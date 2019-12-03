@@ -54,6 +54,7 @@
 - (void)start;
 - (void)stop;
 - (id)substitutions;
+- (void)toggleSystemOutputMute:(bool)arg1;
 - (id)ttyDevice;
 
 @end

@@ -22,7 +22,6 @@
 - (void).cxx_destruct;
 - (void)activate;
 - (id)controller;
-- (void)deactivate;
 - (void)dealloc;
 - (id)description;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;

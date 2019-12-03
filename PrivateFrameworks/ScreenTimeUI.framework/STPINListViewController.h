@@ -4,7 +4,6 @@
 
 @interface STPINListViewController : STListViewController <STRestrictionsPINControllerDelegate> {
     NSObject<STRootViewModelCoordinator> * _coordinator;
-    PSSpecifier * _showingPinSpecifier;
     id  _showingPinTarget;
 }
 
@@ -12,7 +11,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) PSSpecifier *showingPinSpecifier;
 @property (nonatomic, retain) id showingPinTarget;
 @property (readonly) Class superclass;
 
@@ -26,14 +24,12 @@
 - (void)didCancelEnteringPIN;
 - (id)init;
 - (id)initWithRootViewModelCoordinator:(id)arg1;
-- (void)restoreSpecifierTarget;
 - (void)setCoordinator:(id)arg1;
-- (void)setShowingPinSpecifier:(id)arg1;
 - (void)setShowingPinTarget:(id)arg1;
 - (bool)shouldDeferPushForSpecifierID:(id)arg1;
 - (bool)shouldShowPINSheetForSpecifier:(id)arg1;
 - (void)showPINSheet:(id)arg1;
-- (id)showingPinSpecifier;
+- (void)showPINSheet:(id)arg1 completion:(id /* block */)arg2;
 - (id)showingPinTarget;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (bool)validatePIN:(id)arg1;

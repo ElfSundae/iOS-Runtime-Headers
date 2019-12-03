@@ -3,22 +3,13 @@
  */
 
 @interface _ATXAppInfoManager : NSObject {
-    NSMutableDictionary * _appInfo;
     _ATXDataStore * _dataStore;
     NSMutableArray * _installDeltaLog;
     _ATXInternalInstallNotification * _installNotificationListener;
-    NSString * _lastAppActionLaunch;
-    NSDate * _lastAppActionLaunchDate;
-    NSString * _lastEnded;
-    NSString * _lastLaunch;
-    NSDate * _lastLaunchDate;
-    NSDate * _lastUnlockDate;
-    long long  _launchCount;
     struct _opaque_pthread_rwlock_t { 
         long long __sig; 
         BOOL __opaque[192]; 
     }  _rwlock;
-    long long  _spotlightLaunchCount;
     _ATXInternalUninstallNotification * _uninstallNotificationListener;
 }
 
@@ -26,10 +17,7 @@
 + (id)sortArrayAndComputeMedian:(id)arg1;
 
 - (void).cxx_destruct;
-- (void)_addLaunchInfoForBundle:(id)arg1 date:(id)arg2 updateLaunchBlock:(id /* block */)arg3;
-- (id)_getInfoOrCreateForBundleId:(id)arg1;
-- (bool)_hasBeenLaunchedForBundleId:(id)arg1;
-- (void)_setupInMemoryCacheWithAppInfoMapLocked:(id)arg1;
+- (id)_appInfoNoLockForBundleId:(id)arg1;
 - (void)addAverageSecondsBetweenAppActionsForActionKey:(id)arg1 average:(id)arg2;
 - (void)addAverageSecondsBetweenLaunchesForBundleId:(id)arg1 average:(id)arg2;
 - (void)addExtensionLaunchForBundleId:(id)arg1 date:(id)arg2;
@@ -63,10 +51,8 @@
 - (id)lastAppActionLaunch;
 - (id)lastAppActionLaunchDate;
 - (id)lastAppActionLaunchDateForActionKey:(id)arg1;
-- (id)lastAppEnded;
 - (id)lastAppLaunch;
 - (id)lastAppLaunchDate;
-- (id)lastAppLaunchWithHistory:(id)arg1;
 - (id)lastLaunchDateForBundleId:(id)arg1;
 - (id)lastUnlockDate;
 - (long long)launchedAppCount;
@@ -78,6 +64,7 @@
 - (void)removeAppLaunchesForBundleId:(id)arg1;
 - (void)removeInfoForAppAction:(id)arg1;
 - (void)removeInfoForAppActions:(id)arg1;
+- (id)secondMostRecentAppLaunch;
 - (void)startInstallDeltaRecording;
 - (id)stopInstallDeltaRecording;
 - (id)subGenreIdsForBundleId:(id)arg1;

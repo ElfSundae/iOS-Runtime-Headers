@@ -6,10 +6,13 @@
     NSString * _catacombDir;
 }
 
-+ (id)catacombWithDir:(id)arg1 withSerial:(id)arg2;
+@property (nonatomic, readonly, copy) NSString *catacombDir;
+
++ (id)catacombWithDir:(id)arg1;
 
 - (void).cxx_destruct;
 - (id)catacombCommitDir;
+- (id)catacombDir;
 - (id)catacombPrepareDir;
 - (int)commitWrite;
 - (id)content;

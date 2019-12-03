@@ -20,7 +20,10 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (void)ensureTechniqueAndCustomSensorCompatibility;
+- (id)imageSensorSettings;
+- (id)imageSensorSettingsForSuperWide;
 - (id)init;
+- (id)initPrivate;
 - (id)initialWorldMap;
 - (bool)isEqual:(id)arg1;
 - (bool)isLightEstimationEnabled;

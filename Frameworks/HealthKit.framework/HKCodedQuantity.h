@@ -40,6 +40,7 @@
 - (bool)isEqual:(id)arg1;
 - (id)localizedValue;
 - (id)numberValue;
+- (id)quantityRepresentationWithUCUMConverter:(id)arg1 error:(id*)arg2;
 - (id)rawValue;
 - (id)unitCoding;
 - (id)value;

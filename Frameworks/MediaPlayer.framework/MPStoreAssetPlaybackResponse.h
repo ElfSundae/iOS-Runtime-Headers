@@ -7,6 +7,9 @@
     NSDate * _expirationDate;
     NSArray * _fileAssetInfoList;
     MPStoreHLSAssetInfo * _hlsAssetInfo;
+    bool  _liveRadioStream;
+    NSArray * _radioStreamAssetInfoList;
+    bool  _subscriptionRequired;
     id  _suzeLeaseID;
 }
 
@@ -14,6 +17,9 @@
 @property (nonatomic, readonly, copy) NSDate *expirationDate;
 @property (nonatomic, readonly, copy) NSArray *fileAssetInfoList;
 @property (nonatomic, readonly) MPStoreHLSAssetInfo *hlsAssetInfo;
+@property (getter=isLiveRadioStream, nonatomic, readonly) bool liveRadioStream;
+@property (nonatomic, readonly, copy) NSArray *radioStreamAssetInfoList;
+@property (getter=isSubscriptionRequired, nonatomic, readonly) bool subscriptionRequired;
 @property (nonatomic, readonly) id suzeLeaseID;
 
 - (void).cxx_destruct;
@@ -23,7 +29,10 @@
 - (id)expirationDate;
 - (id)fileAssetInfoList;
 - (id)hlsAssetInfo;
+- (bool)isLiveRadioStream;
+- (bool)isSubscriptionRequired;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
+- (id)radioStreamAssetInfoList;
 - (id)suzeLeaseID;
 
 @end

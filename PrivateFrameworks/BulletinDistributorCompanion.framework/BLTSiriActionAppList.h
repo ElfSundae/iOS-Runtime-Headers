@@ -21,6 +21,7 @@
 
 - (void).cxx_destruct;
 - (bool)_handleAppListInstalled:(struct NSDictionary { Class x1; }*)arg1 removed:(id)arg2;
+- (id)_siriActionAppListStoreURL;
 - (void)applicationIconDidChange:(id)arg1;
 - (void)applicationsDidInstall:(id)arg1;
 - (void)applicationsDidUninstall:(id)arg1;

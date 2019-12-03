@@ -19,6 +19,7 @@
     bool  _ignoresQuietMode;
     bool  _pendInSetupIfNotAllowed;
     bool  _pendWhileKeyBagLocked;
+    unsigned long long  _presentationState;
     bool  _presented;
     bool  _suppressForKeynote;
 }
@@ -26,6 +27,7 @@
 @property (setter=_setAttachmentImage:, nonatomic, retain) UIImage *_attachmentImage;
 @property (setter=_setHeaderImage:, nonatomic, retain) UIImage *_headerImage;
 @property (setter=_setIgnoresQuietMode:, nonatomic) bool _ignoresQuietMode;
+@property (setter=_setPresentationState:, nonatomic) unsigned long long _presentationState;
 @property (nonatomic) bool allowInCar;
 @property (nonatomic) bool allowInSetup;
 @property (nonatomic) bool allowMessageInCar;
@@ -59,10 +61,12 @@
 - (bool)_isPresented;
 - (void)_noteVolumeOrLockPressed;
 - (id)_prepareNewAlertControllerWithLockedState:(bool)arg1 requirePasscodeForActions:(bool)arg2;
+- (unsigned long long)_presentationState;
 - (id)_publicDescription;
 - (void)_setAttachmentImage:(id)arg1;
 - (void)_setHeaderImage:(id)arg1;
 - (void)_setIgnoresQuietMode:(bool)arg1;
+- (void)_setPresentationState:(unsigned long long)arg1;
 - (void)_setPresented:(bool)arg1;
 - (id)alertController;
 - (void)alertItemDidAppear;
@@ -94,6 +98,7 @@
 - (bool)dismissesOverlaysOnLockScreen;
 - (void)doCleanupAfterDeactivationAnimation;
 - (bool)forcesModalAlertAppearance;
+- (bool)hideOnClonedDisplay;
 - (id)iconImage;
 - (bool)ignoreIfAlreadyDisplaying;
 - (id)init;
@@ -102,6 +107,7 @@
 - (bool)pendWhileKeyBagLocked;
 - (void)performUnlockAction;
 - (void)playPresentationSound;
+- (void)presentationStateDidChangeFromState:(unsigned long long)arg1 toState:(unsigned long long)arg2;
 - (bool)reappearsAfterLock;
 - (bool)reappearsAfterUnlock;
 - (void)setAllowInCar:(bool)arg1;
@@ -123,6 +129,7 @@
 - (bool)suppressForKeynote;
 - (bool)undimsScreen;
 - (bool)unlocksScreen;
+- (bool)wakeDisplay;
 - (void)willActivate;
 - (void)willDeactivateForReason:(int)arg1;
 - (void)willRelockForButtonPress:(bool)arg1;

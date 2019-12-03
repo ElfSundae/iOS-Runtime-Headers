@@ -7,6 +7,7 @@
 + (id)sharedStyle;
 
 - (struct CGSize { double x1; double x2; })_effectiveSizeForIconSize:(struct CGSize { double x1; double x2; })arg1 inView:(id)arg2;
+- (void)applyAutomaticScrollToEdgeBehaviorOnNavgationItem:(id)arg1;
 - (void)applyThemeToAllTableViews;
 - (void)applyThemeToLabel:(id)arg1;
 - (void)applyThemeToNavigationController:(id)arg1;

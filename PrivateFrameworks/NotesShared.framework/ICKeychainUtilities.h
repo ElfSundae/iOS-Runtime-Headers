@@ -7,7 +7,6 @@
 + (bool)addDevicePasscodeGuardedItem:(id)arg1 forIdentifier:(id)arg2 error:(id*)arg3;
 + (bool)addItem:(id)arg1 forIdentifier:(id)arg2 secAccessControlObject:(id)arg3 error:(id*)arg4;
 + (bool)addItemWithoutGuardian:(id)arg1 forIdentifier:(id)arg2 error:(id*)arg3;
-+ (bool)addTouchIDGuardedItem:(id)arg1 forIdentifier:(id)arg2 error:(id*)arg3;
 + (void)beginEvaluatePolicyReplyBlock;
 + (bool)biometricIDIsEnrolled;
 + (void)endEvaluatePolicyReplyBlock;

@@ -31,6 +31,7 @@
 + (id)getTimezoneFromMetadata:(id)arg1;
 + (id)getTitleFromMetadata:(id)arg1;
 + (id)getTopicFromMetadata:(id)arg1;
++ (void)stripContentInMetadata:(id)arg1;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;

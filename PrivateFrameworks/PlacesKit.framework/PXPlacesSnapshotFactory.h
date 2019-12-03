@@ -6,11 +6,14 @@
     NSTimer * _assetCountChangedTimer;
     PHFetchResult * _assetCountFetchResult;
     long long  _cachedCount;
-    NSString * _cachedFilePath;
-    UIImage * _cachedSnapshotImage;
+    NSString * _cachedFilePathDark;
+    NSString * _cachedFilePathLight;
+    UIImage * _cachedSnapshotImageDark;
     NSString * _cachedSnapshotImageIdentifier;
+    UIImage * _cachedSnapshotImageLight;
     NSObject<OS_dispatch_queue> * _concurentQueue;
     bool  _countCacheInvalidated;
+    long long  _currentUserInterfaceStyle;
     <PXPlacesSnapshotFactoryDelegate> * _delegate;
     bool  _isRegisteredForPhotoLibraryChanges;
     NSMutableArray * _localSearches;
@@ -25,6 +28,7 @@
 @property (nonatomic, retain) NSTimer *assetCountChangedTimer;
 @property (nonatomic, retain) PHFetchResult *assetCountFetchResult;
 @property (nonatomic) bool countCacheInvalidated;
+@property (nonatomic) long long currentUserInterfaceStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <PXPlacesSnapshotFactoryDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -50,6 +54,7 @@
 - (id)assetCountFetchResult;
 - (long long)assetCountWithForcedRefresh:(bool)arg1;
 - (bool)countCacheInvalidated;
+- (long long)currentUserInterfaceStyle;
 - (void)dealloc;
 - (id)delegate;
 - (id)init;
@@ -58,7 +63,7 @@
 - (void)photoLibraryDidChange:(id)arg1;
 - (id)placesAssetsFetchResult;
 - (id)placesCollection;
-- (void)removePreviousCachedImage;
+- (void)removePreviousCachedImages;
 - (void)requestAssetCountWithForcedRefresh:(bool)arg1 completion:(id /* block */)arg2;
 - (void)requestMapSnapshotForQuery:(id)arg1 snapshotOptions:(id)arg2 completion:(id /* block */)arg3;
 - (void)requestPlacesImageOfAsset:(id)arg1 withSnapshotOptions:(id)arg2 andCompletion:(id /* block */)arg3;
@@ -67,6 +72,7 @@
 - (void)setAssetCountChangedTimer:(id)arg1;
 - (void)setAssetCountFetchResult:(id)arg1;
 - (void)setCountCacheInvalidated:(bool)arg1;
+- (void)setCurrentUserInterfaceStyle:(long long)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setIsRegisteredForPhotoLibraryChanges:(bool)arg1;
 - (void)setLocalSearches:(id)arg1;

@@ -16,6 +16,7 @@
     UIButton * _nackButton;
     UIView * _privacyView;
     UIButton * _seeAllButton;
+    UIStackView * _seeAllButtonStack;
     UILabel * _titleLabel;
 }
 
@@ -31,6 +32,7 @@
 - (id)_buildButtonStack;
 - (id)_buildCarousel;
 - (id)_buildLogoStack;
+- (id)_buildSeeAllButtonStack;
 - (id)_buttonWithTitleForTV:(id)arg1 textStyle:(id)arg2;
 - (id)_imageViewForIndex:(unsigned long long)arg1;
 - (id)allowButton;

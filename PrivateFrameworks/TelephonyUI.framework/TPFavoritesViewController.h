@@ -3,7 +3,6 @@
  */
 
 @interface TPFavoritesViewController : UICollectionViewController {
-    CNAvatarViewControllerSettings * _avatarViewControllerSettings;
     CNContactFormatter * _contactFormatter;
     bool  _contentUnavailable;
     UIView * _contentUnavailableView;
@@ -12,7 +11,6 @@
     NSIndexSet * _sections;
 }
 
-@property (nonatomic, retain) CNAvatarViewControllerSettings *avatarViewControllerSettings;
 @property (nonatomic, retain) CNContactFormatter *contactFormatter;
 @property (nonatomic) bool contentUnavailable;
 @property (nonatomic, retain) UIView *contentUnavailableView;
@@ -20,8 +18,12 @@
 @property (nonatomic, copy) NSArray *favoritesEntries;
 @property (nonatomic, retain) NSIndexSet *sections;
 
++ (id)avatarViewControllerSettings;
+
 - (void).cxx_destruct;
-- (id)avatarViewControllerSettings;
+- (struct CGSize { double x1; double x2; })accessibleCellSizeFor:(id)arg1 layout:(id)arg2;
+- (id)cellHeightToFitWidgetContainedCollectionView:(id)arg1 layout:(id)arg2;
+- (struct CGSize { double x1; double x2; })cellSizeFor:(id)arg1 layout:(id)arg2;
 - (bool)collectionView:(id)arg1 canMoveItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
@@ -47,8 +49,8 @@
 - (void)postCNContactsClientDidDisplayFavoritesNotification;
 - (void)refreshView;
 - (void)refreshViewAnimated:(bool)arg1;
+- (void)relayoutCollectionView;
 - (id)sections;
-- (void)setAvatarViewControllerSettings:(id)arg1;
 - (void)setContactFormatter:(id)arg1;
 - (void)setContentUnavailable:(bool)arg1;
 - (void)setContentUnavailable:(bool)arg1 animated:(bool)arg2;
@@ -57,6 +59,7 @@
 - (void)setFavoritesEntries:(id)arg1;
 - (void)setFavoritesEntries:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)setSections:(id)arg1;
+- (bool)useAccessibileLayout;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(bool)arg1;
 

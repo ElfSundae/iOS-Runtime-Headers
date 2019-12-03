@@ -6,6 +6,8 @@
     id  _internal;
 }
 
+@property (getter=_isAudioAccessoryAccelerometerAvailable, nonatomic, readonly) bool _audioAccessoryAccelerometerAvailable;
+@property (setter=_setAudioAccessoryAccelerometerUpdateInterval:, nonatomic) double _audioAccessoryAccelerometerUpdateInterval;
 @property (getter=isAccelerometerActive, nonatomic, readonly) bool accelerometerActive;
 @property (getter=isAccelerometerAvailable, nonatomic, readonly) bool accelerometerAvailable;
 @property (readonly) CMAccelerometerData *accelerometerData;
@@ -26,31 +28,44 @@
 @property (getter=isMagnetometerAvailable, nonatomic, readonly) bool magnetometerAvailable;
 @property (readonly) CMMagnetometerData *magnetometerData;
 @property (nonatomic) double magnetometerUpdateInterval;
+@property (getter=isPredictedDeviceMotionAvailable, nonatomic, readonly) bool predictedDeviceMotionAvailable;
 @property (nonatomic) bool showsDeviceMovementDisplay;
 @property (getter=isSidebandSensorFusionAvailable, nonatomic, readonly) bool sidebandSensorFusionAvailable;
 
 + (unsigned long long)availableAttitudeReferenceFrames;
 + (bool)configureM7Activity:(bool)arg1 stepCounting:(bool)arg2 activityForceCodeTransition:(bool)arg3 stepCountingForceCodeTransition:(bool)arg4 threshold:(bool)arg5 onBodyDetection:(bool)arg6 ispMode:(unsigned char)arg7 predictionInterval:(float)arg8 logLevel:(BOOL)arg9 proactiveRevisitTime:(unsigned short)arg10;
++ (bool)deviceMotionInitialized:(struct Sample { double x1; struct { struct { double x_1_2_1; double x_1_2_2; double x_1_2_3; double x_1_2_4; } x_2_1_1; struct { float x_2_2_1; float x_2_2_2; float x_2_2_3; } x_2_1_2; struct { float x_3_2_1; float x_3_2_2; float x_3_2_3; } x_2_1_3; struct { float x_4_2_1; float x_4_2_2; float x_4_2_3; } x_2_1_4; int x_2_1_5; bool x_2_1_6; bool x_2_1_7; bool x_2_1_8; float x_2_1_9; } x2; struct { float x_3_1_1; } x3; bool x4; unsigned int x5; unsigned char x6; struct Status { unsigned short x_7_1_1; } x7; float x8; }*)arg1;
 + (void)dummySelector:(id)arg1;
 + (void)dumpDb:(long long)arg1 toURL:(id)arg2 onCompletion:(id /* block */)arg3;
 + (struct { int x1; double x2; union { struct { struct { float x_1_3_1; float x_1_3_2; float x_1_3_3; } x_1_2_1; struct { float x_2_3_1; float x_2_3_2; float x_2_3_3; } x_1_2_2; } x_3_1_1; struct { bool x_2_2_1; BOOL x_2_2_2[246]; } x_3_1_2; } x3; })gyroCalibrationDatabaseGetBiasFit;
 + (struct { int x1; double x2; union { struct { struct { float x_1_3_1; float x_1_3_2; float x_1_3_3; } x_1_2_1; struct { float x_2_3_1; float x_2_3_2; float x_2_3_3; } x_1_2_2; } x_3_1_1; struct { bool x_2_2_1; BOOL x_2_2_2[246]; } x_3_1_2; } x3; })gyroCalibrationDatabaseGetBiasFitAndEstimate:(struct { double x1; double x2; double x3; }*)arg1 atTemperature:(float)arg2;
 + (bool)hasRunMiniCal;
 + (void)initialize;
++ (bool)northAlignedReferenceFrame:(unsigned long long)arg1;
 + (void)setAllowInBackground:(bool)arg1;
 + (bool)setUrgentCalFlag;
 + (bool)startGyroMiniCalibration;
 + (bool)supportsGyroMiniCalibration;
 
+- (id)_audioAccessoryAccelerometerData;
+- (double)_audioAccessoryAccelerometerUpdateInterval;
+- (bool)_isAudioAccessoryAccelerometerAvailable;
+- (void)_isAudioAccessoryAccelerometerAvailablePrivate;
+- (void)_setAudioAccessoryAccelerometerUpdateInterval:(double)arg1;
+- (void)_setAudioAccessoryAccelerometerUpdateIntervalPrivate:(double)arg1;
+- (void)_startAudioAccessoryAccelerometerUpdatesPrivateToQueue:(id)arg1 withHandler:(id /* block */)arg2;
+- (void)_startAudioAccessoryAccelerometerUpdatesToQueue:(id)arg1 withHandler:(id /* block */)arg2;
 - (void)_startDeviceMotionErrorUpdatesToQueue:(id)arg1 withHandler:(id /* block */)arg2;
+- (void)_stopAudioAccessoryAccelerometerUpdates;
+- (void)_stopAudioAccessoryAccelerometerUpdatesPrivate;
 - (void)_stopDeviceMotionErrorUpdates;
 - (id)accelerometerData;
 - (double)accelerometerUpdateInterval;
 - (id)ambientPressureData;
 - (double)ambientPressureUpdateInterval;
-- (void)applyNorthReference:(struct Sample { double x1; struct { struct { double x_1_2_1; double x_1_2_2; double x_1_2_3; double x_1_2_4; } x_2_1_1; struct { float x_2_2_1; float x_2_2_2; float x_2_2_3; } x_2_1_2; struct { float x_3_2_1; float x_3_2_2; float x_3_2_3; } x_2_1_3; struct { float x_4_2_1; float x_4_2_2; float x_4_2_3; } x_2_1_4; int x_2_1_5; bool x_2_1_6; bool x_2_1_7; bool x_2_1_8; float x_2_1_9; } x2; bool x3; unsigned int x4; unsigned char x5; struct Status { unsigned short x_6_1_1; } x6; float x7; }*)arg1;
+- (void)applyInitialReference:(struct Sample { double x1; struct { struct { double x_1_2_1; double x_1_2_2; double x_1_2_3; double x_1_2_4; } x_2_1_1; struct { float x_2_2_1; float x_2_2_2; float x_2_2_3; } x_2_1_2; struct { float x_3_2_1; float x_3_2_2; float x_3_2_3; } x_2_1_3; struct { float x_4_2_1; float x_4_2_2; float x_4_2_3; } x_2_1_4; int x_2_1_5; bool x_2_1_6; bool x_2_1_7; bool x_2_1_8; float x_2_1_9; } x2; struct { float x_3_1_1; } x3; bool x4; unsigned int x5; unsigned char x6; struct Status { unsigned short x_7_1_1; } x7; float x8; }*)arg1;
+- (void)applyNorthReference:(struct Sample { double x1; struct { struct { double x_1_2_1; double x_1_2_2; double x_1_2_3; double x_1_2_4; } x_2_1_1; struct { float x_2_2_1; float x_2_2_2; float x_2_2_3; } x_2_1_2; struct { float x_3_2_1; float x_3_2_2; float x_3_2_3; } x_2_1_3; struct { float x_4_2_1; float x_4_2_2; float x_4_2_3; } x_2_1_4; int x_2_1_5; bool x_2_1_6; bool x_2_1_7; bool x_2_1_8; float x_2_1_9; } x2; struct { float x_3_1_1; } x3; bool x4; unsigned int x5; unsigned char x6; struct Status { unsigned short x_7_1_1; } x7; float x8; }*)arg1;
 - (unsigned long long)attitudeReferenceFrame;
-- (void)captureStarting;
 - (id)compensatedAmbientPressureData;
 - (double)compensatedAmbientPressureUpdateInterval;
 - (id)computeNonlinearPRTTFromDB:(id)arg1 where:(id)arg2;
@@ -81,16 +96,19 @@
 - (bool)isGyroAvailable;
 - (bool)isMagnetometerActive;
 - (bool)isMagnetometerAvailable;
+- (bool)isPredictedDeviceMotionAvailable;
 - (bool)isSidebandSensorFusionAvailable;
 - (id)magnetometerData;
 - (double)magnetometerUpdateInterval;
 - (void)onAccelerometer:(const struct Sample { double x1; struct { float x_2_1_1; float x_2_1_2; float x_2_1_3; } x2; }*)arg1;
 - (void)onAmbientPressure:(const struct Sample { double x1; struct { float x_2_1_1; float x_2_1_2; } x2; }*)arg1;
+- (void)onAudioAccessoryAccelerometer:(const struct Sample { double x1; struct { float x_2_1_1; float x_2_1_2; float x_2_1_3; } x2; unsigned long long x3; unsigned short x4; }*)arg1;
 - (void)onCompensatedAmbientPressure:(const struct Sample { double x1; struct { float x_2_1_1; float x_2_1_2; } x2; }*)arg1;
-- (void)onDeviceMotion:(const struct Sample { double x1; struct { struct { double x_1_2_1; double x_1_2_2; double x_1_2_3; double x_1_2_4; } x_2_1_1; struct { float x_2_2_1; float x_2_2_2; float x_2_2_3; } x_2_1_2; struct { float x_3_2_1; float x_3_2_2; float x_3_2_3; } x_2_1_3; struct { float x_4_2_1; float x_4_2_2; float x_4_2_3; } x_2_1_4; int x_2_1_5; bool x_2_1_6; bool x_2_1_7; bool x_2_1_8; float x_2_1_9; } x2; bool x3; unsigned int x4; unsigned char x5; struct Status { unsigned short x_6_1_1; } x6; float x7; }*)arg1;
+- (void)onDeviceMotion:(const struct Sample { double x1; struct { struct { double x_1_2_1; double x_1_2_2; double x_1_2_3; double x_1_2_4; } x_2_1_1; struct { float x_2_2_1; float x_2_2_2; float x_2_2_3; } x_2_1_2; struct { float x_3_2_1; float x_3_2_2; float x_3_2_3; } x_2_1_3; struct { float x_4_2_1; float x_4_2_2; float x_4_2_3; } x_2_1_4; int x_2_1_5; bool x_2_1_6; bool x_2_1_7; bool x_2_1_8; float x_2_1_9; } x2; struct { float x_3_1_1; } x3; bool x4; unsigned int x5; unsigned char x6; struct Status { unsigned short x_7_1_1; } x7; float x8; }*)arg1;
 - (void)onGeomagneticModel:(const struct { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; }*)arg1;
 - (void)onGyro:(const struct Sample { double x1; struct { float x_2_1_1; float x_2_1_2; float x_2_1_3; } x2; unsigned short x3; bool x4; }*)arg1;
-- (void)onMagnetometer:(const struct Sample { double x1; struct { float x_2_1_1; float x_2_1_2; float x_2_1_3; } x2; }*)arg1;
+- (void)onMagnetometer:(const struct Sample { double x1; struct { float x_2_1_1; float x_2_1_2; float x_2_1_3; } x2; float x3; }*)arg1;
+- (id)predictedDeviceMotionAtTimestamp:(double)arg1 error:(out id*)arg2;
 - (bool)readRawAmbientPressureSamplesFromDB:(id)arg1 toQueue:(id)arg2 where:(id)arg3 withHandler:(id /* block */)arg4;
 - (void)rebuildGytt;
 - (bool)sendDeviceMotionError:(int)arg1;
@@ -99,7 +117,6 @@
 - (void)setAccelerometerUpdateIntervalPrivate:(double)arg1;
 - (void)setAmbientPressureUpdateInterval:(double)arg1;
 - (void)setAmbientPressureUpdateIntervalPrivate:(double)arg1;
-- (void)setCaptureMode:(long long)arg1;
 - (void)setCompensatedAmbientPressureUpdateInterval:(double)arg1;
 - (void)setCompensatedAmbientPressureUpdateIntervalPrivate:(double)arg1;
 - (void)setDeviceMotionCallback:(int (*)arg1 info:(void*)arg2 interval:(double)arg3 fsync:(bool)arg4;
@@ -145,7 +162,6 @@
 - (void)startMagnetometerUpdates;
 - (void)startMagnetometerUpdatesPrivateToQueue:(id)arg1 withHandler:(id /* block */)arg2;
 - (void)startMagnetometerUpdatesToQueue:(id)arg1 withHandler:(id /* block */)arg2;
-- (void)startWatchdogCheckinsPrivate;
 - (void)stopAccelerometerUpdates;
 - (void)stopAccelerometerUpdatesPrivate;
 - (void)stopAmbientPressureUpdates;
@@ -159,7 +175,6 @@
 - (void)stopGyroUpdatesPrivate;
 - (void)stopMagnetometerUpdates;
 - (void)stopMagnetometerUpdatesPrivate;
-- (void)stopWatchdogCheckinsPrivate;
 - (bool)useAccelerometer;
 - (void)willResignActive:(id)arg1;
 - (void)willResignActivePrivate:(id)arg1;

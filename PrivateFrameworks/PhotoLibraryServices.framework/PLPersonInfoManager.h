@@ -3,21 +3,21 @@
  */
 
 @interface PLPersonInfoManager : NSObject {
+    PLLazyObject * _lazyAssetsdClient;
+    PLPhotoLibraryPathManager * _pathManager;
     NSMutableDictionary * _personDictsForPersonID;
-    NSString * _plistPath;
 }
 
-+ (id)sharedManager;
-
+- (void).cxx_destruct;
 - (void)_loadDictionariesIfNeeded;
+- (id)assetsdClient;
 - (void)clearCacheForPersonID:(id)arg1;
-- (void)dealloc;
 - (void)deleteEmailsAndPhonesForInvitationRecordGUID:(id)arg1;
 - (id)emailForPersonID:(id)arg1;
 - (id)emailsForInvitationRecordGUID:(id)arg1;
 - (id)firstNameForPersonID:(id)arg1;
 - (id)fullNameForPersonID:(id)arg1;
-- (id)init;
+- (id)initWithPathManager:(id)arg1 lazyAssetsdClient:(id)arg2;
 - (id)lastNameForPersonID:(id)arg1;
 - (id)personInfoForPersonID:(id)arg1;
 - (id)phonesForInvitationRecordGUID:(id)arg1;

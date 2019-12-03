@@ -8,6 +8,7 @@
 
 @property (nonatomic, retain) CKRecord *record;
 
++ (bool)_validateOptionalValueInRecord:(id)arg1 forKey:(id)arg2 type:(Class)arg3 encrypted:(bool)arg4 error:(id*)arg5;
 + (id)_valueInRecord:(id)arg1 forKey:(id)arg2 type:(Class)arg3 encrypted:(bool)arg4 error:(id*)arg5;
 + (bool)hasFutureSchema:(id)arg1;
 + (id)recordWithCKRecord:(id)arg1 error:(id*)arg2;

@@ -26,13 +26,14 @@
 - (void)fetchSyncedCloudTabDevicesAndCloseRequestsWithCompletionHandler:(id /* block */)arg1;
 - (void)fetchUserIdentityWithCompletionHandler:(id /* block */)arg1;
 - (void)generateDAVServerIDsForExistingBookmarksWithCompletionHandler:(id /* block */)arg1;
+- (void)getCloudTabDevicesWithCompletionHandler:(id /* block */)arg1;
 - (id)init;
 - (void)migrateToCloudKitWithCompletionHandler:(id /* block */)arg1;
 - (void)observeRemoteMigrationStateForSecondaryMigration;
 - (void)registerForPushNotificationsIfNeeded;
 - (void)resetToDAVDatabaseWithCompletionHandler:(id /* block */)arg1;
 - (void)saveCloudTabCloseRequestWithDictionaryRepresentation:(id)arg1 closeRequestUUIDString:(id)arg2 completionHandler:(id /* block */)arg3;
-- (void)saveTabsForCurrentDeviceWithDictionaryRepresentation:(id)arg1 deviceUUIDString:(id)arg2;
+- (void)saveTabsForCurrentDeviceWithDictionaryRepresentation:(id)arg1 deviceUUIDString:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)setUsesOpportunisticPushTopic:(bool)arg1;
 - (void)set_connection:(id)arg1;
 - (void)userAccountDidChange:(long long)arg1;

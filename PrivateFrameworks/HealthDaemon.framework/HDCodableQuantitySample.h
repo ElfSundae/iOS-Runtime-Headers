@@ -12,6 +12,7 @@
         unsigned int min : 1; 
         unsigned int mostRecent : 1; 
         unsigned int mostRecentDate : 1; 
+        unsigned int mostRecentDuration : 1; 
         unsigned int valueInCanonicalUnit : 1; 
         unsigned int valueInOriginalUnit : 1; 
         unsigned int final : 1; 
@@ -21,6 +22,7 @@
     double  _min;
     double  _mostRecent;
     double  _mostRecentDate;
+    double  _mostRecentDuration;
     NSString * _originalUnitString;
     NSMutableArray * _quantitySeriesDatas;
     HDCodableSample * _sample;
@@ -40,6 +42,7 @@
 @property (nonatomic) bool hasMin;
 @property (nonatomic) bool hasMostRecent;
 @property (nonatomic) bool hasMostRecentDate;
+@property (nonatomic) bool hasMostRecentDuration;
 @property (nonatomic, readonly) bool hasOriginalUnitString;
 @property (nonatomic, readonly) bool hasSample;
 @property (nonatomic) bool hasValueInCanonicalUnit;
@@ -49,6 +52,7 @@
 @property (nonatomic) double min;
 @property (nonatomic) double mostRecent;
 @property (nonatomic) double mostRecentDate;
+@property (nonatomic) double mostRecentDuration;
 @property (nonatomic, retain) NSString *originalUnitString;
 @property (nonatomic, retain) NSMutableArray *quantitySeriesDatas;
 @property (nonatomic, retain) HDCodableSample *sample;
@@ -77,6 +81,7 @@
 - (bool)hasMin;
 - (bool)hasMostRecent;
 - (bool)hasMostRecentDate;
+- (bool)hasMostRecentDuration;
 - (bool)hasOriginalUnitString;
 - (bool)hasSample;
 - (bool)hasValueInCanonicalUnit;
@@ -89,6 +94,7 @@
 - (double)min;
 - (double)mostRecent;
 - (double)mostRecentDate;
+- (double)mostRecentDuration;
 - (id)originalUnitString;
 - (id)quantitySeriesDataAtIndex:(unsigned long long)arg1;
 - (id)quantitySeriesDatas;
@@ -105,12 +111,14 @@
 - (void)setHasMin:(bool)arg1;
 - (void)setHasMostRecent:(bool)arg1;
 - (void)setHasMostRecentDate:(bool)arg1;
+- (void)setHasMostRecentDuration:(bool)arg1;
 - (void)setHasValueInCanonicalUnit:(bool)arg1;
 - (void)setHasValueInOriginalUnit:(bool)arg1;
 - (void)setMax:(double)arg1;
 - (void)setMin:(double)arg1;
 - (void)setMostRecent:(double)arg1;
 - (void)setMostRecentDate:(double)arg1;
+- (void)setMostRecentDuration:(double)arg1;
 - (void)setOriginalUnitString:(id)arg1;
 - (void)setQuantitySeriesDatas:(id)arg1;
 - (void)setSample:(id)arg1;

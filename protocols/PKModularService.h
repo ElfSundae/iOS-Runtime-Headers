@@ -3,11 +3,10 @@
 
 @protocol PKModularService <NSObject>
 
-@required
+@optional
 
 + (<PKModularService> *)initForPlugInKit;
-
-@optional
++ (<PKModularService> *)initForPlugInKitWithOptions:(NSDictionary *)arg1;
 
 - (void)beginUsing:(id <PKSubsystemServicePersonality>)arg1 withBundle:(NSBundle *)arg2;
 - (void)communicationsFailed:(id <PKSubsystemServicePersonality>)arg1;

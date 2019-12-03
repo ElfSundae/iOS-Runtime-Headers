@@ -6,6 +6,7 @@
     bool  _atomic;
     NSData * _clientChangeTokenData;
     NSDictionary * _conflictLosersToResolveByRecordID;
+    bool  _markAsParticipantNeedsNewInvitationToken;
     bool  _oplock;
     NSDictionary * _pluginFieldsForRecordDeletesByID;
     NSMutableDictionary * _recordByRequestID;
@@ -14,12 +15,15 @@
     NSDictionary * _recordIDsToDeleteToEtags;
     id /* block */  _recordPostedBlock;
     NSArray * _records;
+    NSDictionary * _requestedFieldsByRecordID;
     bool  _sendAllFields;
+    NSArray * _userPublicKeys;
 }
 
 @property (nonatomic) bool atomic;
 @property (nonatomic, retain) NSData *clientChangeTokenData;
 @property (nonatomic, retain) NSDictionary *conflictLosersToResolveByRecordID;
+@property (nonatomic) bool markAsParticipantNeedsNewInvitationToken;
 @property (nonatomic) bool oplock;
 @property (nonatomic, retain) NSDictionary *pluginFieldsForRecordDeletesByID;
 @property (nonatomic, retain) NSMutableDictionary *recordByRequestID;
@@ -28,7 +32,9 @@
 @property (nonatomic, retain) NSDictionary *recordIDsToDeleteToEtags;
 @property (nonatomic, copy) id /* block */ recordPostedBlock;
 @property (nonatomic, retain) NSArray *records;
+@property (nonatomic, retain) NSDictionary *requestedFieldsByRecordID;
 @property (nonatomic) bool sendAllFields;
+@property (nonatomic, retain) NSArray *userPublicKeys;
 
 - (void).cxx_destruct;
 - (bool)allowsAnonymousAccount;
@@ -36,8 +42,9 @@
 - (id)clientChangeTokenData;
 - (id)conflictLosersToResolveByRecordID;
 - (id)generateRequestOperations;
-- (id)initWithRecordsToSave:(id)arg1 recordIDsToDelete:(id)arg2 oplock:(bool)arg3 sendAllFields:(bool)arg4 clientChangeTokenData:(id)arg5;
+- (id)initWithRecordsToSave:(id)arg1 recordIDsToDelete:(id)arg2 oplock:(bool)arg3 sendAllFields:(bool)arg4 clientChangeTokenData:(id)arg5 requestedFieldsByRecordId:(id)arg6;
 - (int)isolationLevel;
+- (bool)markAsParticipantNeedsNewInvitationToken;
 - (int)operationType;
 - (bool)oplock;
 - (id)pluginFieldsForRecordDeletesByID;
@@ -50,10 +57,12 @@
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;
+- (id)requestedFieldsByRecordID;
 - (bool)sendAllFields;
 - (void)setAtomic:(bool)arg1;
 - (void)setClientChangeTokenData:(id)arg1;
 - (void)setConflictLosersToResolveByRecordID:(id)arg1;
+- (void)setMarkAsParticipantNeedsNewInvitationToken:(bool)arg1;
 - (void)setOplock:(bool)arg1;
 - (void)setPluginFieldsForRecordDeletesByID:(id)arg1;
 - (void)setRecordByRequestID:(id)arg1;
@@ -62,7 +71,10 @@
 - (void)setRecordIDsToDeleteToEtags:(id)arg1;
 - (void)setRecordPostedBlock:(id /* block */)arg1;
 - (void)setRecords:(id)arg1;
+- (void)setRequestedFieldsByRecordID:(id)arg1;
 - (void)setSendAllFields:(bool)arg1;
+- (void)setUserPublicKeys:(id)arg1;
+- (id)userPublicKeys;
 - (id)zoneIDsToLock;
 
 @end

@@ -3,14 +3,12 @@
  */
 
 @interface AVCaptureVisionDataOutputInternal : NSObject {
-    AVWeakReferencingDelegateStorage * delegateOverrideStorage;
-    AVWeakReferencingDelegateStorage * delegateStorage;
+    AVCaptureDataOutputDelegateCallbackHelper * delegateCallbackHelper;
     bool  featureBinningEnabled;
     bool  featureOrientationAssignmentEnabled;
     float  gaussianPyramidBaseOctaveDownscalingFactor;
     unsigned long long  gaussianPyramidOctavesCount;
     float  keypointDetectionThreshold;
-    struct localQueueOpaque { } * localQueue;
     struct { 
         long long value; 
         int timescale; 
@@ -30,9 +28,6 @@
         unsigned int flags; 
         long long epoch; 
     }  minFrameDuration;
-    NSObject<OS_dispatch_queue> * queue;
-    struct OpaqueFigSimpleMutex { } * queueMutex;
-    struct remoteQueueReceiverOpaque { } * remoteQueueReceiver;
     AVWeakReference * weakReference;
 }
 

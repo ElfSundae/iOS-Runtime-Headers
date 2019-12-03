@@ -34,6 +34,7 @@
 - (void)setCurrentTime:(double)arg1;
 - (void)setDisplayUpdater:(id)arg1;
 - (void)setDuration:(double)arg1;
+- (void)setImage:(id)arg1;
 - (void)setNeedsPrepareForDisplay;
 - (void)setPlayed:(bool)arg1;
 - (void)setPlaying:(bool)arg1;

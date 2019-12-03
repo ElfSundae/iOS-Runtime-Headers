@@ -42,6 +42,7 @@
         unsigned int hidNavBar : 1; 
     }  _tabBarControllerFlags;
     id  _tabBarItemsToViewControllers;
+    UIFocusGuide * _tabBarOffscreenFocusGuide;
     long long  _tabBarPosition;
     UIGestureRecognizer * _touchDetectionGestureRecognizer;
     UIViewController * _transientViewController;
@@ -76,7 +77,6 @@
 + (Class)_moreNavigationControllerClass;
 + (bool)_shouldSendLegacyMethodsFromViewWillTransitionToSize;
 + (bool)doesOverridePreferredInterfaceOrientationForPresentation;
-+ (bool)doesOverrideSupportedInterfaceOrientations;
 
 - (void).cxx_destruct;
 - (void)__viewWillLayoutSubviews;
@@ -85,16 +85,17 @@
 - (id)_accessoryView;
 - (id)_additionalViewControllersToCheckForUserActivity;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_adjustContentViewFrameForOffscreenFocus:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 viewController:(id)arg2;
-- (void)_adjustFloatingTabBarForContentScrollView:(id)arg1;
+- (void)_adjustTVTabBarForContentScrollView:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_adjustTabBarFrameForOffscreenFocus:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 barPosition:(long long)arg2;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_adjustTabBarFrameForSafeAreas:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)_allContainedViewControllers;
-- (bool)_allowSelectionWithinMoreList;
 - (bool)_allowsAutorotation;
 - (bool)_allowsCustomizing;
 - (id)_animator;
 - (id)_backdropBarGroupName;
 - (id)_backdropGroupName;
 - (bool)_canRestoreFocusAfterTransitionToRecalledItem:(id)arg1 inViewController:(id)arg2;
+- (void)_childViewController:(id)arg1 updatedObservedScrollView:(id)arg2;
 - (void)_configureTargetActionForTabBarItem:(id)arg1;
 - (id)_customAnimatorForFromViewController:(id)arg1 toViewController:(id)arg2;
 - (id)_customInteractionControllerForAnimator:(id)arg1;
@@ -117,7 +118,9 @@
 - (id)_interactor;
 - (void)_invalidateBarLayoutIfNecessary;
 - (bool)_isBarHidden;
-- (bool)_isFloaty;
+- (bool)_isFocusedTabVisible;
+- (bool)_isLegacyTabBar;
+- (bool)_isModernTVTabBar;
 - (bool)_isPresentationContextByDefault;
 - (bool)_isSupportedInterfaceOrientation:(long long)arg1;
 - (bool)_isTabBarFocused;
@@ -161,7 +164,6 @@
 - (bool)_shouldAdjustContentViewFrameForOffscreenFocus:(id)arg1 adjustedTabBarFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (bool)_shouldFocusViewControllerAfterTransition;
 - (bool)_shouldPersistViewWhenCoding;
-- (bool)_shouldSynthesizeSupportedOrientations;
 - (bool)_shouldUseOnePartRotation;
 - (void)_showBarWithTransition:(int)arg1 isExplicit:(bool)arg2;
 - (void)_showBarWithTransition:(int)arg1 isExplicit:(bool)arg2 duration:(double)arg3;
@@ -173,9 +175,9 @@
 - (void)_updateGestureRecognizersForTraitCollection:(id)arg1;
 - (void)_updateLayoutForStatusBarAndInterfaceOrientation;
 - (void)_updateLayoutForTraitCollection:(id)arg1;
-- (void)_updateOffscreenStatus:(bool)arg1;
+- (void)_updateOffscreenStatus:(bool)arg1 withFocusAnimationCoordinator:(id)arg2;
 - (void)_updateTabBarLayout;
-- (void)_updateViewControllerForFloatingTabBar:(id)arg1;
+- (void)_updateViewController:(id)arg1 forTabbarObservedScrollView:(id)arg2;
 - (id)_viewControllerForSelectAtIndex:(unsigned long long)arg1;
 - (id)_viewControllerForTabBarItem:(id)arg1;
 - (id)_viewControllersInTabBar;
@@ -217,7 +219,6 @@
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)pressesChanged:(id)arg1 withEvent:(id)arg2;
 - (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
-- (void)purgeMemoryForReason:(int)arg1;
 - (void)revealTabBarSelection;
 - (id)rotatingFooterView;
 - (id)rotatingHeaderView;
@@ -288,6 +289,12 @@
 
 // Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
 
+- (void)_px_prepareNavigationFromViewController:(id)arg1 options:(unsigned long long)arg2 completionHandler:(id /* block */)arg3;
+- (void)_switchToBarBarItem:(id)arg1 completionHandler:(id /* block */)arg2;
+- (bool)canRouteToDestination:(id)arg1;
+- (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(id /* block */)arg3;
+- (id)nextExistingParticipantOnRouteToDestination:(id)arg1;
+- (void)ppt_runTabSwitchingTestWithName:(id)arg1 options:(id)arg2 delegate:(id)arg3 completionHandler:(id /* block */)arg4;
 - (double)px_HDRFocus;
 - (bool)px_canPerformAddToTabAnimationForTab:(unsigned long long)arg1;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint { double x1; double x2; })arg1 inCoordinateSpace:(id)arg2;
@@ -299,6 +306,7 @@
 - (bool)px_isTabBarHidden;
 - (id)px_navigateToMemoryWithLocalIdentifier:(id)arg1;
 - (void)px_performAddToTabAnimation:(unsigned long long)arg1 withSnapshotView:(id)arg2;
+- (void)px_switchToTabForDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(id /* block */)arg3;
 
 // Image: /System/Library/PrivateFrameworks/iTunesStoreUI.framework/iTunesStoreUI
 

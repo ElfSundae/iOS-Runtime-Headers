@@ -25,7 +25,7 @@
 @property (nonatomic, readonly, copy) MPPropertySet *requestedProperties;
 
 - (void).cxx_destruct;
-- (id)genericObjectForRadioStationTrack:(id)arg1 contentItemID:(id)arg2;
+- (id)genericObjectForRadioStationTrack:(id)arg1 containerUniqueID:(id)arg2 userIdentity:(id)arg3;
 - (id)initWithRequestedProperties:(id)arg1;
 - (id)requestedProperties;
 

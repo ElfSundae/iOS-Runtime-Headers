@@ -73,7 +73,9 @@
 - (id)debugDescription;
 - (id)desiredKeys;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (bool)isEqual:(id)arg1;
 - (void)setAlertActionLocalizationKey:(id)arg1;
 - (void)setAlertBody:(id)arg1;
 - (void)setAlertLaunchImage:(id)arg1;

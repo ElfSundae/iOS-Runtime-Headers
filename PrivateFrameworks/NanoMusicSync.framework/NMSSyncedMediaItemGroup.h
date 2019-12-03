@@ -4,6 +4,6 @@
 
 @interface NMSSyncedMediaItemGroup : NMSMediaItemGroup
 
-- (id)libraryIdentifiersForContainerType:(unsigned long long)arg1;
+- (id)identifiersForContainerType:(unsigned long long)arg1;
 
 @end

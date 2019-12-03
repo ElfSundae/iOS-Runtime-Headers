@@ -5,6 +5,6 @@
 
 @required
 
-- (NFDefinition *)definitionForKey:(NSString *)arg1;
+- (NFDefinition *)definitionForKey:(NFKey *)arg1;
 
 @end

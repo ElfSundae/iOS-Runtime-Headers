@@ -13,6 +13,7 @@
 @property (nonatomic, readonly) ACAccount *account;
 @property (nonatomic, readonly) NSNumber *accountIdentifier;
 @property (nonatomic, readonly) NSString *actionType;
+@property (nonatomic, readonly) long long alertType;
 @property (nonatomic, readonly) NSDictionary *aps;
 @property (nonatomic, readonly) NSString *clientIdentifier;
 @property (nonatomic, readonly) NSString *logKey;
@@ -26,6 +27,7 @@
 - (id)account;
 - (id)accountIdentifier;
 - (id)actionType;
+- (long long)alertType;
 - (id)aps;
 - (id)clientIdentifier;
 - (id)initWithPayload:(id)arg1;

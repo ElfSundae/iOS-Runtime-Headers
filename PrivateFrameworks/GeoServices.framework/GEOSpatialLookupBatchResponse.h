@@ -4,8 +4,8 @@
 
 @interface GEOSpatialLookupBatchResponse : PBCodable <NSCopying> {
     struct { 
-        unsigned int statusCode : 1; 
-    }  _has;
+        unsigned int has_statusCode : 1; 
+    }  _flags;
     NSMutableArray * _responses;
     int  _statusCode;
 }
@@ -14,12 +14,14 @@
 @property (nonatomic, retain) NSMutableArray *responses;
 @property (nonatomic) int statusCode;
 
++ (bool)isValid:(id)arg1;
 + (Class)responseType;
 
 - (void).cxx_destruct;
 - (int)StringAsStatusCode:(id)arg1;
 - (void)addResponse:(id)arg1;
 - (void)clearResponses;
+- (void)clearSensitiveFields;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -28,6 +30,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)responseAtIndex:(unsigned long long)arg1;
 - (id)responses;

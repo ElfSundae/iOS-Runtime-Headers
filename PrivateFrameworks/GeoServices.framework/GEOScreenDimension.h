@@ -4,9 +4,9 @@
 
 @interface GEOScreenDimension : PBCodable <NSCopying> {
     struct { 
-        unsigned int height : 1; 
-        unsigned int width : 1; 
-    }  _has;
+        unsigned int has_height : 1; 
+        unsigned int has_width : 1; 
+    }  _flags;
     double  _height;
     PBUnknownFields * _unknownFields;
     double  _width;
@@ -18,7 +18,10 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic) double width;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -29,6 +32,7 @@
 - (double)height;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasHeight:(bool)arg1;
 - (void)setHasWidth:(bool)arg1;

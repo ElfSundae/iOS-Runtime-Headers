@@ -8,9 +8,10 @@
 - (<ICLegacyAccount> *)account;
 - (void)addNotesObject:(id <ICLegacyNote>)arg1;
 - (NSSet *)changes;
+- (bool)isDeletedOrInTrash;
 - (NSManagedObjectContext *)managedObjectContext;
 - (NSString *)name;
-- (<ICLegacyNote> *)newNoteInContext:(struct NoteContext { Class x1; id x2; id x3; id x4; id x5; unsigned long long x6; bool x7; bool x8; bool x9; bool x10; id x11; /* Warning: Unrecognized filer type: '1' using 'void*' */ void*x12; void*x13; }*)arg1;
+- (<ICLegacyNote> *)newNoteInContext:(struct NoteContext { Class x1; id x2; id x3; id x4; id x5; id x6; id x7; id x8; id x9; unsigned long long x10; bool x11; bool x12; bool x13; bool x14; id x15; }*)arg1;
 - (NSManagedObjectID *)objectID;
 - (<ICLegacyFolder> *)parentFolder;
 - (NSString *)title;

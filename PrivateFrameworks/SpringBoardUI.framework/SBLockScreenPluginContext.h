@@ -2,18 +2,22 @@
    Image: /System/Library/PrivateFrameworks/SpringBoardUI.framework/SpringBoardUI
  */
 
-@interface SBLockScreenPluginContext : NSObject <NSCopying> {
+@interface SBLockScreenPluginContext : NSObject <BSDescriptionProviding, NSCopying> {
     id /* block */  _auxiliaryAnimation;
     NSString * _name;
     <SBLockScreenPluginLifecycleObserver> * _observer;
-    <FBSProcess> * _process;
+    FBProcess<FBSProcess> * _process;
     NSDictionary * _userInfo;
 }
 
 @property (nonatomic, copy) id /* block */ auxiliaryAnimation;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, retain) <SBLockScreenPluginLifecycleObserver> *observer;
-@property (nonatomic, retain) <FBSProcess> *process;
+@property (nonatomic, retain) FBProcess<FBSProcess> *process;
+@property (readonly) Class superclass;
 @property (nonatomic, copy) NSDictionary *userInfo;
 
 + (id)contextWithName:(id)arg1;

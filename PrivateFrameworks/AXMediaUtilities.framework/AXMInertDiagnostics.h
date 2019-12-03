@@ -8,6 +8,7 @@
 + (bool)supportsSecureCoding;
 
 - (void)addMetric:(id)arg1;
+- (void)appendVisionObservations:(id)arg1;
 - (id)captureMetrics:(long long)arg1 name:(id)arg2 forTask:(id /* block */)arg3;
 - (void)clearMetrics;
 - (bool)diagnosticsEnabled;
@@ -16,5 +17,6 @@
 - (id)metrics;
 - (void)setDiagnosticsEnabled:(bool)arg1;
 - (id)startMeasurement:(long long)arg1 name:(id)arg2;
+- (id)visionObservations;
 
 @end

@@ -8,6 +8,7 @@
     NSString * _conversationID;
     NSUUID * _conversationIdentifier;
     NSArray * _draftAssetArchives;
+    NSString * _iMessageLoginID;
     NSArray * _recipientAddresses;
     NSArray * _recipientIdentifiers;
     NSString * _senderAddress;
@@ -19,6 +20,7 @@
 @property (nonatomic, retain) NSString *conversationID;
 @property (nonatomic, retain) NSUUID *conversationIdentifier;
 @property (nonatomic, copy) NSArray *draftAssetArchives;
+@property (setter=setiMessageLoginID:, nonatomic, retain) NSString *iMessageLoginID;
 @property (nonatomic, retain) NSArray *recipientAddresses;
 @property (nonatomic, retain) NSArray *recipientIdentifiers;
 @property (nonatomic, retain) NSString *senderAddress;
@@ -34,6 +36,7 @@
 - (id)description;
 - (id)draftAssetArchives;
 - (void)encodeWithCoder:(id)arg1;
+- (id)iMessageLoginID;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)recipientAddresses;
@@ -49,5 +52,6 @@
 - (void)setRecipientIdentifiers:(id)arg1;
 - (void)setSenderAddress:(id)arg1;
 - (void)setSenderIdentifier:(id)arg1;
+- (void)setiMessageLoginID:(id)arg1;
 
 @end

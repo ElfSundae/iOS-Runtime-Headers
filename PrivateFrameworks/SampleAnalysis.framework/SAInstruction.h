@@ -20,10 +20,11 @@
 
 + (id)classDictionaryKey;
 + (id)instructionWithBinary:(id)arg1 offsetIntoTextSegment:(unsigned long long)arg2;
++ (id)invalidInstruction;
 + (id)newInstanceWithoutReferencesFromSerializedBuffer:(const struct { unsigned char x1; unsigned char x2; unsigned long long x3; unsigned char x4[16]; }*)arg1 bufferLength:(unsigned long long)arg2;
 
 - (void).cxx_destruct;
-- (bool)addSelfToBuffer:(struct { unsigned char x1; unsigned char x2; unsigned long long x3; unsigned char x4[16]; }*)arg1 bufferLength:(unsigned long long)arg2 withCompletedSerializationDictionary:(struct NSMutableDictionary { Class x1; }*)arg3;
+- (bool)addSelfToBuffer:(struct { unsigned char x1; unsigned char x2; unsigned long long x3; unsigned char x4[16]; unsigned long long x5; unsigned long long x6; unsigned long long x7; unsigned long long x8; unsigned long long x9; unsigned long long x10; unsigned int x11; unsigned int x12; }*)arg1 bufferLength:(unsigned long long)arg2 withCompletedSerializationDictionary:(struct NSMutableDictionary { Class x1; }*)arg3;
 - (void)addSelfToSerializationDictionary:(struct NSMutableDictionary { Class x1; }*)arg1;
 - (id)binary;
 - (id)debugDescription;

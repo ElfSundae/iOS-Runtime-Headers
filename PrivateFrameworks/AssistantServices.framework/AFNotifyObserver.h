@@ -28,6 +28,7 @@
 - (void)_updateStateWithToken:(int)arg1;
 - (void)dealloc;
 - (id)description;
+- (void)getStateWithCompletion:(id /* block */)arg1;
 - (id)initWithName:(id)arg1 options:(unsigned long long)arg2 queue:(id)arg3 delegate:(id)arg4;
 - (void)invalidate;
 - (id)name;

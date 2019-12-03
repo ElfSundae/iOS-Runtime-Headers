@@ -10,7 +10,6 @@
     MNLocation * _lastLocation;
     GEOComposedWaypoint * _lastOrigin;
     GEONavigationMapMatcher * _mapMatcher;
-    bool  _requestNonRecommendedRoutes;
     MNActiveRouteInfo * _routeInfo;
     bool  _routingInProgress;
     MNCommuteDestinationSuggestion * _suggestion;
@@ -22,15 +21,16 @@
 @property (nonatomic, readonly) GEOComposedWaypoint *destination;
 @property (nonatomic) unsigned long long destinationID;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) bool requestNonRecommendedRoutes;
 @property (nonatomic, readonly) GEOComposedRoute *route;
 @property (nonatomic) bool routingInProgress;
 @property (nonatomic, readonly) MNCommuteDestinationSuggestion *suggestion;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (bool)_checkArrivalForLocation:(id)arg1 route:(id)arg2 destination:(id)arg3;
 - (id)_directionsRequestFeedback;
 - (void)_handleDirectionsResponse:(id)arg1 error:(id)arg2 forRequest:(id)arg3;
+- (void)_handleWaypoint:(id)arg1 fromLocation:(id)arg2 error:(id)arg3;
 - (id)_matchedLocationForLocation:(id)arg1;
 - (id)_matchedLocationForMatchResult:(id)arg1 originalLocation:(id)arg2;
 - (void)_requestRouteFromLocation:(id)arg1;
@@ -48,11 +48,9 @@
 - (id)etaUpdaterRoutesForETATrafficUpdateRequest:(id)arg1;
 - (void)etaUpdaterUpdatedETA:(id)arg1;
 - (id)initWithSuggestion:(id)arg1 traceManager:(id)arg2;
-- (bool)requestNonRecommendedRoutes;
 - (id)route;
 - (bool)routingInProgress;
 - (void)setDestinationID:(unsigned long long)arg1;
-- (void)setRequestNonRecommendedRoutes:(bool)arg1;
 - (void)setRoutingInProgress:(bool)arg1;
 - (void)startTracking;
 - (void)stopTracking;

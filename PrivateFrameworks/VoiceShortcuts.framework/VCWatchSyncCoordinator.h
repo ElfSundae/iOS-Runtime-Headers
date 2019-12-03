@@ -3,54 +3,47 @@
  */
 
 @interface VCWatchSyncCoordinator : NSObject <PSYSyncCoordinatorDelegate, VCCompanionSyncServiceDelegate> {
-    NSMutableDictionary * _pairedDeviceByPairingID;
-    int  _pairedDeviceDidChangeNotificationToken;
-    PSYSyncCoordinator * _psySyncCoordinator;
-    PSYServiceSyncSession * _psySyncSession;
-    NSObject<OS_dispatch_queue> * _serialQueue;
-    NSArray * _syncDataHandlers;
-    NSMutableDictionary * _syncServiceByPairingID;
+    VCDaemonXPCEventHandler * _eventHandler;
+    PSYSyncCoordinator * _pairedSyncCoordinator;
+    NSObject<OS_dispatch_queue> * _queue;
+    VCCompanionSyncService * _service;
+    NSMutableSet * _startedSessions;
+    <VCSyncDataEndpoint> * _syncDataEndpoint;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) VCDaemonXPCEventHandler *eventHandler;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) NSMutableDictionary *pairedDeviceByPairingID;
-@property (nonatomic, readonly) PSYSyncCoordinator *psySyncCoordinator;
-@property (nonatomic, retain) PSYServiceSyncSession *psySyncSession;
-@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *serialQueue;
+@property (nonatomic, readonly) PSYSyncCoordinator *pairedSyncCoordinator;
+@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *queue;
+@property (nonatomic, readonly) VCCompanionSyncService *service;
+@property (nonatomic, readonly) NSMutableSet *startedSessions;
 @property (readonly) Class superclass;
-@property (nonatomic, readonly) NSArray *syncDataHandlers;
-@property (nonatomic, readonly) NSMutableDictionary *syncServiceByPairingID;
-
-+ (void)initialize;
+@property (nonatomic, readonly) <VCSyncDataEndpoint> *syncDataEndpoint;
 
 - (void).cxx_destruct;
-- (void)actuallyStartSyncServiceForActivePairedDevice:(id)arg1;
-- (void)companionSyncServiceDidFinishSyncSession:(id)arg1;
+- (void)companionSyncService:(id)arg1 didFinishSyncSession:(id)arg2 withError:(id)arg3;
+- (void)companionSyncService:(id)arg1 didRejectSessionWithError:(id)arg2;
+- (void)companionSyncService:(id)arg1 outgoingSyncSession:(id)arg2 didUpdateProgress:(double)arg3;
+- (void)companionSyncService:(id)arg1 outgoingSyncSessionDidFinishSendingChanges:(id)arg2;
+- (long long)companionSyncService:(id)arg1 typeForSession:(id)arg2;
+- (bool)companionSyncServiceShouldStartSession:(id)arg1;
 - (void)dealloc;
-- (void)handleDidBecomeActiveNotification:(id)arg1;
-- (void)handleDidBecomeInactiveNotification:(id)arg1;
-- (void)handleDidPairNotification:(id)arg1;
+- (id)eventHandler;
+- (void)handleDeviceDidChangeVersionNotification;
 - (void)handleDidUnpairNotification:(id)arg1;
-- (id)initWithSyncDataHandlers:(id)arg1;
-- (bool)isRunningOnWatch;
-- (void)notifyPairedSyncThatSyncFinished;
-- (id)pairedDeviceByPairingID;
-- (id)psySyncCoordinator;
-- (id)psySyncSession;
-- (id)serialQueue;
-- (void)setPsySyncSession:(id)arg1;
-- (bool)shouldSyncWithActivePairedDevice:(id)arg1;
-- (void)start;
-- (void)startSyncToActivePairedDeviceIfAvailable;
-- (void)stopCompanionSyncServiceForPairingID:(id)arg1;
-- (void)subscribeToNanoRegistryNotifications;
+- (id)initWithSyncDataEndpoint:(id)arg1 eventHandler:(id)arg2;
+- (id)pairedSyncCoordinator;
+- (id)queue;
+- (void)requestSyncIfUnrestricted;
+- (id)service;
+- (void)startObservingWatchChangeNotifications;
+- (id)startedSessions;
+- (void)stopObservingWatchChangeNotifications;
 - (void)syncCoordinator:(id)arg1 beginSyncSession:(id)arg2;
 - (void)syncCoordinator:(id)arg1 didInvalidateSyncSession:(id)arg2;
 - (void)syncCoordinatorDidChangeSyncRestriction:(id)arg1;
-- (id)syncDataHandlers;
-- (id)syncServiceByPairingID;
-- (void)unsubscribeFromNanoRegistryNotifications;
+- (id)syncDataEndpoint;
 
 @end

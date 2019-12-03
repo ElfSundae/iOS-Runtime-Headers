@@ -5,6 +5,7 @@
 
 @required
 
+- (_UITextFieldCanvasView *)_canvasView;
 - (UIVisualEffectView *)_contentBackdropView;
 - (UIColor *)_currentTextColor;
 - (UIView *)_effectiveContentView;
@@ -15,7 +16,6 @@
 - (bool)_isFocused;
 - (long long)_keyboardAppearance;
 - (bool)_shouldDetermineInterfaceStyleTextColor;
-- (_UITextFieldContentView *)_textContentView;
 - (bool)_textShouldFillFieldEditorHeight;
 - (bool)_textShouldUseVibrancy;
 - (long long)_userInterfaceStyle;

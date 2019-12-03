@@ -13,5 +13,6 @@
 - (void)dealloc;
 - (void)generateEncryptedCertificateChainWithCompletion:(id /* block */)arg1;
 - (id)initWithContext:(id)arg1 publicKey:(id)arg2;
+- (int)keybagHandle;
 
 @end

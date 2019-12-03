@@ -5,17 +5,16 @@
 @interface AMSRichNotificationMetricsEvent : AMSMetricsEvent
 
 @property (nonatomic, retain) NSString *errorDescription;
-@property (nonatomic) bool explicitEnabled;
 @property (nonatomic) bool postedSuccessfully;
 
++ (id)_centerForBundleId:(id)arg1;
 + (id)eventFromMetricsDictionary:(id)arg1 centerBundleId:(id)arg2;
++ (id)eventFromNotificationCenterSettings:(id)arg1 centerBundleId:(id)arg2;
 
 - (id)errorDescription;
-- (bool)explicitEnabled;
-- (id)initWithTopic:(id)arg1 centerBundleId:(id)arg2;
+- (id)initWithTopic:(id)arg1 settings:(id)arg2 centerBundleId:(id)arg3;
 - (bool)postedSuccessfully;
 - (void)setErrorDescription:(id)arg1;
-- (void)setExplicitEnabled:(bool)arg1;
 - (void)setPostedSuccessfully:(bool)arg1;
 
 @end

@@ -4,7 +4,7 @@
 
 @interface HMDAccessorySettingGroupModel : HMDBackingStoreModelObject
 
-@property (nonatomic, retain) NSString *name;
+@property (nonatomic, copy) NSString *name;
 
 + (id)properties;
 + (id)schemaHashRoot;

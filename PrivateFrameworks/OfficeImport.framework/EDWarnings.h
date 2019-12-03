@@ -6,8 +6,8 @@
     NSMutableArray * mWarnings;
 }
 
+- (void).cxx_destruct;
 - (void)addWarning:(id)arg1;
-- (void)dealloc;
 - (void)reportWarningsWithAssociatedObject:(id)arg1;
 
 @end

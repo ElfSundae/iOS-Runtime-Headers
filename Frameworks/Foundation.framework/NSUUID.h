@@ -2,12 +2,16 @@
    Image: /System/Library/Frameworks/Foundation.framework/Foundation
  */
 
-@interface NSUUID : NSObject <AFSecurityDigestibleChunksProviding, ASDNotificationType, CRCoding, CRDataType, CREquatable, NSCopying, NSSecureCoding, PASerializable, PQLValuable, SASerializable>
+@interface NSUUID : NSObject <AFSecurityDigestibleChunksProviding, ASDNotificationType, BSXPCSecureCoding, CRCoding, CRDataType, CREquatable, HKUUIDProvider, HMBQueryableModelFieldCoder, HMFObject, NSCopying, NSSecureCoding, PASerializable, PQLValuable, SASerializable, _PASDistilledString>
 
 @property (readonly, copy) NSString *UUIDString;
+@property (nonatomic, readonly, copy) NSArray *attributeDescriptions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy) NSString *privateDescription;
+@property (readonly, copy) NSString *propertyDescription;
+@property (readonly, copy) NSString *shortDescription;
 @property (readonly) Class superclass;
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
@@ -18,6 +22,7 @@
 
 - (id)UUIDString;
 - (struct __CFString { }*)_cfUUIDString;
+- (Class)classForCoder;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)getUUIDBytes:(unsigned char)arg1;
@@ -30,10 +35,13 @@
 
 // Image: /System/Library/Frameworks/ARKit.framework/ARKit
 
++ (id)ar_UUIDWithCFUUIDRef:(struct __CFUUID { }*)arg1;
++ (id)ar_UUIDWithCVPixelBuffer:(struct __CVBuffer { }*)arg1;
 + (id)ar_UUIDWithData:(id)arg1;
 + (id)ar_UUIDWithIntegerValue:(unsigned long long)arg1;
 + (id)ar_zeroUUID;
 
+- (struct __CFUUID { }*)ar_CFUUIDRef;
 - (unsigned long long)ar_integerValue;
 
 // Image: /System/Library/Frameworks/CoreServices.framework/CoreServices
@@ -46,6 +54,7 @@
 
 + (id)hk_UUIDWithData:(id)arg1;
 
+- (id)hk_UUID;
 - (long long)hk_compare:(id)arg1;
 - (id)hk_dataForUUIDBytes;
 - (id)hk_shortRepresentation;
@@ -63,6 +72,17 @@
 
 - (id)convertToData;
 
+// Image: /System/Library/Frameworks/ImageCaptureCore.framework/ImageCaptureCore
+
+- (long long)compare:(id)arg1;
+
+// Image: /System/Library/Frameworks/PencilKit.framework/PencilKit
+
++ (id)PK_zero;
+
+- (long long)PK_compare:(id)arg1;
+- (id)PK_shortDescription;
+
 // Image: /System/Library/PrivateFrameworks/AXRuntime.framework/AXRuntime
 
 - (id)_axRecursivelyPropertyListCoercedRepresentationWithError:(id*)arg1;
@@ -70,6 +90,14 @@
 // Image: /System/Library/PrivateFrameworks/AssistantServices.framework/AssistantServices
 
 - (void)af_enumerateDigestibleChunksWithOptions:(unsigned long long)arg1 usingBlock:(id /* block */)arg2;
+
+// Image: /System/Library/PrivateFrameworks/BaseBoard.framework/BaseBoard
+
++ (bool)supportsBSXPCSecureCoding;
+
+- (id)bs_XPCObject;
+- (void)encodeWithBSXPCCoder:(id)arg1;
+- (id)initWithBSXPCCoder:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/ClassroomKit.framework/ClassroomKit
 
@@ -80,18 +108,46 @@
 - (id)initWithCPLArchiver:(id)arg1;
 - (id)plistArchiveWithCPLArchiver:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/Coherence.framework/Coherence
+
++ (id)TTZero;
+
+- (long long)TTCompare:(id)arg1;
+- (id)TTShortDescription;
+- (id)TTxorWith:(id)arg1;
+
 // Image: /System/Library/PrivateFrameworks/CoreRoutine.framework/CoreRoutine
 
 + (id)nilUUID;
 
+// Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
+
++ (id)_maps_UUIDWithData:(id)arg1;
+
+- (id)_maps_data;
+
 // Image: /System/Library/PrivateFrameworks/HMFoundation.framework/HMFoundation
 
++ (id)hmf_UUIDWithNamespace:(id)arg1 data:(id)arg2;
++ (id)hmf_zeroUUID;
++ (id)shortDescription;
 + (id)zeroUUID;
 
 - (bool)hmf_isEqualToUUID:(id)arg1;
 - (bool)hmf_isEqualToUUIDString:(id)arg1;
 - (id)initWithNamespace:(id)arg1 data:(id)arg2;
+- (id)privateDescription;
 - (id)shortDescription;
+
+// Image: /System/Library/PrivateFrameworks/HomeKitBackingStore.framework/HomeKitBackingStore
+
++ (id)hmbDecodeQueryableParameter:(id)arg1;
++ (id)hmbDescriptionForEncodedQueryableVariable:(id)arg1;
++ (id)hmbEncodeQueryableParameter:(id)arg1;
++ (id)hmbUUIDFromData:(id)arg1;
++ (id)hmbUUIDWithSQLite3Column:(struct sqlite3_stmt { }*)arg1 column:(int)arg2;
+
+- (id)data;
 
 // Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
 
@@ -108,7 +164,11 @@
 
 // Image: /System/Library/PrivateFrameworks/IconServices.framework/IconServices
 
++ (id)_IS_UUIDByXORingUUIDs:(id)arg1;
++ (id)_IS_UUIDWithBytes:(const char *)arg1 size:(unsigned long long)arg2;
 + (id)_IS_UUIDWithData:(id)arg1;
++ (id)_IS_UUIDWithString:(id)arg1;
++ (id)_IS_nullUUID;
 
 - (void)_IS_getUUIDBytes:(char *)arg1 hash64:(unsigned long long*)arg2;
 
@@ -128,7 +188,7 @@
 
 // Image: /System/Library/PrivateFrameworks/MetricsKit.framework/MetricsKit
 
-- (id)base62String;
+- (id)mt_base62String;
 
 // Image: /System/Library/PrivateFrameworks/Navigation.framework/Navigation
 
@@ -168,12 +228,30 @@
 - (void)populateReferencesUsingBufferPosition:(const void*)arg1 andDeserializationDictionary:(id)arg2 andDataBufferDictionary:(id)arg3;
 - (unsigned long long)sizeInBytesForSerializedVersion;
 
-// Image: /System/Library/PrivateFrameworks/PencilKit.framework/PencilKit
+// Image: /System/Library/PrivateFrameworks/ProactiveSupport.framework/ProactiveSupport
 
-+ (id)PK_zero;
+- (id)_pas_revivedString;
 
-- (long long)PK_compare:(id)arg1;
-- (id)PK_shortDescription;
+// Image: /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit
+
++ (id)CR_UUIDFromStdString:(const struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > { struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> > { struct __rep { union { struct __long { char *x_1_4_1; unsigned long long x_1_4_2; unsigned long long x_1_4_3; } x_1_3_1; struct __short { BOOL x_2_4_1[23]; struct { unsigned char x_2_5_1; } x_2_4_2; } x_1_3_2; struct __raw { unsigned long long x_3_4_1[3]; } x_1_3_3; } x_1_2_1; } x_1_1_1; } x1; }*)arg1;
++ (id)CR_repeatedCharUUID:(unsigned char)arg1;
++ (id)CR_zero;
++ (id)TTZero;
+
+- (long long)CR_compare:(id)arg1;
+- (id)CR_shortDescription;
+- (struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > { struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> > { struct __rep { union { struct __long { char *x_1_4_1; unsigned long long x_1_4_2; unsigned long long x_1_4_3; } x_1_3_1; struct __short { BOOL x_2_4_1[23]; struct { unsigned char x_2_5_1; } x_2_4_2; } x_1_3_2; struct __raw { unsigned long long x_3_4_1[3]; } x_1_3_3; } x_1_2_1; } x_1_1_1; } x1; })CR_toStdString;
+- (long long)TTCompare:(id)arg1;
+- (id)TTShortDescription;
+- (id)deltaSince:(id)arg1 in:(id)arg2;
+- (void)encodeWithCRCoder:(id)arg1;
+- (id)initWithCRCoder:(id)arg1;
+- (void)mergeWith:(id)arg1;
+- (void)realizeLocalChangesIn:(id)arg1;
+- (void)setDocument:(id)arg1;
+- (id)tombstone;
+- (void)walkGraph:(id /* block */)arg1;
 
 // Image: /System/Library/PrivateFrameworks/SampleAnalysis.framework/SampleAnalysis
 
@@ -185,6 +263,11 @@
 - (void)populateReferencesUsingBuffer:(const void*)arg1 bufferLength:(unsigned long long)arg2 andDeserializationDictionary:(id)arg3 andDataBufferDictionary:(id)arg4;
 - (unsigned long long)sizeInBytesForSerializedVersion;
 
+// Image: /System/Library/PrivateFrameworks/TelephonyUtilities.framework/TelephonyUtilities
+
++ (id)tu_UUIDv5ForData:(id)arg1 namespaceUUID:(id)arg2;
++ (id)tu_UUIDv5ForString:(id)arg1 namespaceUUID:(id)arg2;
+
 // Image: /System/Library/PrivateFrameworks/VisualVoicemail.framework/VisualVoicemail
 
 + (id)vm_UUIDv5ForData:(id)arg1 namespaceUUID:(id)arg2;
@@ -192,11 +275,12 @@
 
 // Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
 
-- (id)tsp_initWithMessage:(const struct UUID { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; unsigned long long x5; unsigned long long x6; }*)arg1;
-- (void)tsp_saveToMessage:(struct UUID { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; unsigned long long x5; unsigned long long x6; }*)arg1;
+- (id)tsp_initWithMessage:(const struct UUID { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; unsigned long long x5; unsigned long long x6; }*)arg1;
+- (void)tsp_saveToMessage:(struct UUID { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; unsigned long long x5; unsigned long long x6; }*)arg1;
 
 // Image: /usr/lib/libprequelite.dylib
 
++ (id)newFromSqliteStatement:(struct sqlite3_stmt { }*)arg1 atIndex:(int)arg2;
 + (id)newFromSqliteValue:(struct sqlite3_value { }*)arg1;
 
 - (void)sqliteBind:(struct sqlite3_stmt { }*)arg1 index:(int)arg2;

@@ -39,11 +39,13 @@
 - (id)findDSPConfigurationForCurrentState;
 - (id /* block */)getZeroTimestampBlock;
 - (id)initWithDeviceUID:(id)arg1 underlyingDevice:(id)arg2 deviceDSPDatabase:(id)arg3 plugin:(id)arg4;
+- (unsigned int)inputLatency;
 - (unsigned int)inputSafetyOffset;
 - (bool)isHidden;
 - (id)manufacturerName;
 - (id)modelName;
 - (id)modelUID;
+- (unsigned int)outputLatency;
 - (unsigned int)outputSafetyOffset;
 - (void)removeInputStream:(id)arg1;
 - (void)removeOutputStream:(id)arg1;

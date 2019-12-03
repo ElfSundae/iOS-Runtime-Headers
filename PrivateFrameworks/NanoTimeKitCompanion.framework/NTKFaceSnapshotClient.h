@@ -5,6 +5,7 @@
 @interface NTKFaceSnapshotClient : NSObject {
     NSXPCConnection * _connection;
     bool  _registrationNeeded;
+    NSObject<OS_dispatch_queue> * _snapshotFileQueue;
 }
 
 + (id)sharedInstance;

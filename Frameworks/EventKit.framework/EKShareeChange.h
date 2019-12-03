@@ -2,6 +2,19 @@
    Image: /System/Library/Frameworks/EventKit.framework/EventKit
  */
 
-@interface EKShareeChange : EKObjectChange
+@interface EKShareeChange : EKObjectChange <EKOwnerIDProviding> {
+    EKObjectID * _ownerID;
+}
+
+@property (nonatomic, readonly) EKObjectID *ownerID;
+
++ (int)entityType;
++ (void)fetchShareeChangesInCalendar:(id)arg1 resultHandler:(id /* block */)arg2;
++ (void)fetchShareeChangesInSource:(id)arg1 resultHandler:(id /* block */)arg2;
++ (void)fetchShareeChangesInStore:(id)arg1 resultHandler:(id /* block */)arg2;
+
+- (void).cxx_destruct;
+- (id)initWithChangeProperties:(id)arg1;
+- (id)ownerID;
 
 @end

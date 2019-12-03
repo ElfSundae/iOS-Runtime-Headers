@@ -18,7 +18,6 @@
 
 - (void).cxx_destruct;
 - (id)createTextSourceWithString:(id)arg1 dataSource:(id)arg2;
-- (id)createTextSourceWithString:(id)arg1 defaults:(id)arg2 dataSource:(id)arg3;
 - (id)documentLanguageProvider;
 - (id)fontAttributesConstructor;
 - (id)initWithSmartFieldFactory:(id)arg1 documentLanguageProvider:(id)arg2 fontAttributesConstructor:(id)arg3;

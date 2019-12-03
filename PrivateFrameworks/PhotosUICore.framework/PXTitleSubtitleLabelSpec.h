@@ -17,9 +17,12 @@
 
 @property (nonatomic) double distanceBetweenTitleBaselineAndSubtitleBaseline;
 @property (nonatomic) double interLabelSpacing;
+@property (nonatomic, readonly) double maximumTitleSubtitleHeight;
 @property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } padding;
 @property (nonatomic, retain) PXLabelSpec *subtitleLabelSpec;
 @property (nonatomic, retain) PXLabelSpec *titleLabelSpec;
+
++ (id)px_headerTitleSubtitleLabelSpecForZoomLevel:(long long)arg1 featureSpec:(id)arg2;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -27,6 +30,7 @@
 - (unsigned long long)hash;
 - (double)interLabelSpacing;
 - (bool)isEqual:(id)arg1;
+- (double)maximumTitleSubtitleHeight;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })padding;
 - (void)setDistanceBetweenTitleBaselineAndSubtitleBaseline:(double)arg1;
 - (void)setInterLabelSpacing:(double)arg1;

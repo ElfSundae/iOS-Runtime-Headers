@@ -10,8 +10,10 @@
 
 - (void).cxx_destruct;
 - (id)date;
-- (id)generateImageWithFormat:(int)arg1;
+- (unsigned long long)hash;
 - (id)initWithDate:(id)arg1 variant:(unsigned long long)arg2;
+- (bool)isEqual:(id)arg1;
+- (id)loadImage;
 - (void)setDate:(id)arg1;
 
 @end

@@ -5,13 +5,12 @@
 @interface _NSConstantDictionary : NSDictionary <NSFastEnumeration>
 
 + (id)alloc;
-+ (void)load;
 
 - (id)allKeys;
 - (id)allValues;
 - (unsigned long long)capacity;
 - (unsigned long long)count;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
 - (id)descriptionWithLocale:(id)arg1 indent:(unsigned long long)arg2;
 - (void)enumerateKeysAndObjectsUsingBlock:(id /* block */)arg1;

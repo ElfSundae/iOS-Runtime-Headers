@@ -5,7 +5,7 @@
 
 @required
 
-- (void)actionForMenu:(UIKeyboardSplitControlMenu *)arg1;
+- (void)actionForMenu:(id <_UIInputSwitcherSplitMenu>)arg1;
 - (NSString *)label;
 - (bool)visible;
 

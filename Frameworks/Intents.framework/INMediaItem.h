@@ -2,25 +2,34 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface INMediaItem : NSObject <INCacheableContainer, INImageProxyInjecting, INKeyImageProducing, NSCopying, NSSecureCoding, REDonatedActionIdentifierProviding> {
+@interface INMediaItem : NSObject <INCacheableContainer, INImageProxyInjecting, INJSONSerializable, INKeyImageProducing, NSCopying, NSSecureCoding, REDonatedActionIdentifierProviding> {
+    NSString * _artist;
     INImage * _artwork;
     NSString * _identifier;
+    NSDictionary * _namedEntities;
     NSString * _title;
+    NSDictionary * _topics;
     long long  _type;
 }
 
 @property (readonly) INImage *_keyImage;
+@property (nonatomic, readonly, copy) NSString *artist;
 @property (nonatomic, copy) INImage *artwork;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) NSString *identifier;
+@property (nonatomic, readonly, copy) NSDictionary *namedEntities;
+@property (nonatomic, readonly) NSString *siriRemembersID;
+@property (nonatomic, readonly) NSString *siriRemembersTokenString;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly, copy) NSString *title;
+@property (nonatomic, readonly, copy) NSDictionary *topics;
 @property (nonatomic, readonly) long long type;
 
 // Image: /System/Library/Frameworks/Intents.framework/Intents
 
++ (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -28,9 +37,11 @@
 - (id)_dictionaryRepresentation;
 - (void)_injectProxiesForImages:(id /* block */)arg1 completion:(id /* block */)arg2;
 - (id)_intents_cacheableObjects;
-- (id)_intents_readableDescriptionForLanguage:(id)arg1;
+- (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
+- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
 - (void)_intents_updateContainerWithCache:(id)arg1;
 - (id)_keyImage;
+- (id)artist;
 - (id)artwork;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -40,10 +51,20 @@
 - (id)identifier;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 title:(id)arg2 type:(long long)arg3 artwork:(id)arg4;
+- (id)initWithIdentifier:(id)arg1 title:(id)arg2 type:(long long)arg3 artwork:(id)arg4 artist:(id)arg5;
+- (id)initWithIdentifier:(id)arg1 title:(id)arg2 type:(long long)arg3 artwork:(id)arg4 artist:(id)arg5 topics:(id)arg6 namedEntities:(id)arg7;
 - (bool)isEqual:(id)arg1;
+- (id)namedEntities;
 - (void)setArtwork:(id)arg1;
+- (id)spokenPhrase;
 - (id)title;
+- (id)topics;
 - (long long)type;
+
+// Image: /System/Library/PrivateFrameworks/CoreKnowledge.framework/CoreKnowledge
+
+- (id)siriRemembersID;
+- (id)siriRemembersTokenString;
 
 // Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
 

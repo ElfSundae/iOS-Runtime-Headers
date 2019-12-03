@@ -12,6 +12,7 @@
 - (void)addCoreRecentsObservable:(CNObservable *)arg1;
 - (void)addDirectoryServerObservable:(CNObservable *)arg1;
 - (void)addDuetObservable:(void *)arg1 doOnTimeout:(void *)arg2; // needs 2 arg types, found 6: CNObservable *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, void*
+- (void)addLocalExtensionObservable:(CNObservable *)arg1;
 - (void)addSuggestionsObservable:(CNObservable *)arg1;
 - (void)addSupplementalObservable:(CNObservable *)arg1;
 - (CNObservable *)makeObservable;

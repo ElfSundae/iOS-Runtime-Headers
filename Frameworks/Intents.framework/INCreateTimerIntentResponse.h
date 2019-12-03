@@ -2,9 +2,7 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface INCreateTimerIntentResponse : INIntentResponse <INCreateTimerIntentResponseExport> {
-    _INPBCreateTimerIntentResponse * _responseMessagePBRepresentation;
-}
+@interface INCreateTimerIntentResponse : INIntentResponse <INCreateTimerIntentResponseExport>
 
 @property (nonatomic, readonly) long long code;
 @property (nonatomic, copy) INTimer *createdTimer;
@@ -19,11 +17,10 @@
 + (int)_typeFromCode:(long long)arg1;
 + (bool)supportsSecureCoding;
 
-- (void).cxx_destruct;
+- (long long)_codeWithName:(id)arg1;
 - (id)_dictionaryRepresentation;
 - (id)_initWithCode:(long long)arg1 userActivity:(id)arg2;
 - (long long)_intentResponseCode;
-- (id)_responseMessagePBRepresentation;
 - (long long)code;
 - (id)createdTimer;
 - (void)encodeWithCoder:(id)arg1;

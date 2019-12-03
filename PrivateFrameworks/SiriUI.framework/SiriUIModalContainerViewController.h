@@ -11,6 +11,7 @@
 @property (nonatomic) <SiriUIModalContainerViewControllerDelegate> *delegate;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)childViewControllerForHomeIndicatorAutoHidden;
 - (id)childViewControllerForStatusBarHidden;
 - (id)childViewControllerForStatusBarStyle;

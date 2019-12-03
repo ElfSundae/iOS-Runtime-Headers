@@ -4,6 +4,7 @@
 
 @interface MPMediaControlsConfiguration : NSObject <NSCopying, NSSecureCoding> {
     bool  _allowsNowPlayingApplicationLaunch;
+    long long  _initatorStyle;
     NSString * _presentingAppBundleID;
     NSString * _routingContextUID;
     bool  _shouldPreventAutorotation;
@@ -12,6 +13,7 @@
 }
 
 @property (nonatomic) bool allowsNowPlayingApplicationLaunch;
+@property (nonatomic) long long initatorStyle;
 @property (nonatomic, copy) NSString *presentingAppBundleID;
 @property (nonatomic, copy) NSString *routingContextUID;
 @property (nonatomic) bool shouldPreventAutorotation;
@@ -26,10 +28,12 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (long long)initatorStyle;
 - (bool)isEqual:(id)arg1;
 - (id)presentingAppBundleID;
 - (id)routingContextUID;
 - (void)setAllowsNowPlayingApplicationLaunch:(bool)arg1;
+- (void)setInitatorStyle:(long long)arg1;
 - (void)setPresentingAppBundleID:(id)arg1;
 - (void)setRoutingContextUID:(id)arg1;
 - (void)setShouldPreventAutorotation:(bool)arg1;

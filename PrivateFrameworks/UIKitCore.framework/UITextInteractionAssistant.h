@@ -14,11 +14,14 @@
         double y; 
     }  _autoscrollUntransformedExtentPoint;
     bool  _autoscrolled;
+    bool  _detaching;
     bool  _didUseStashedRange;
+    bool  _expectingCommit;
     UITextInteraction * _externalInteractions;
     bool  _externalTextInput;
     bool  _inGesture;
     UITextInteraction * _interactions;
+    UITextLinkInteraction * _linkInteraction;
     struct CGPoint { 
         double x; 
         double y; 
@@ -28,8 +31,9 @@
     UITextSelectionView * _selectionView;
     UITextRange * _stashedTextRange;
     bool  _suppressSystemUI;
+    UITouch * _synthesizedTouchForLollipopForwarding;
     UITextChecker * _textChecker;
-    long long  _textInteractionSet;
+    long long  _textInteractionMode;
     UIResponder<UITextInput> * _view;
     bool  _willHandoffLoupeMagnifier;
 }
@@ -39,6 +43,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly, retain) UIGestureRecognizer *doubleTapGesture;
+@property (nonatomic) bool expectingCommit;
 @property (nonatomic, retain) UITextInteraction *externalInteractions;
 @property (nonatomic, readonly) bool externalTextInput;
 @property (nonatomic, readonly) UIFieldEditor *fieldEditor;
@@ -46,6 +51,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool inGesture;
 @property (nonatomic, readonly, retain) UITextInteraction *interactions;
+@property (nonatomic, retain) UITextLinkInteraction *linkInteraction;
 @property (nonatomic, readonly, retain) UILongPressGestureRecognizer *loupeGesture;
 @property (nonatomic) struct CGPoint { double x1; double x2; } loupeGestureEndPoint;
 @property (nonatomic) bool needsGestureUpdate;
@@ -63,10 +69,12 @@
 - (id)_asText;
 - (id)_scrollable;
 - (id)_selectionView;
+- (void)_updateSelectionWithPoint:(struct CGPoint { double x1; double x2; })arg1 granularity:(long long)arg2 forceGranularity:(bool)arg3;
 - (void)activate;
 - (void)activateSelection;
 - (void)addGestureRecognizersToView:(id)arg1;
 - (void)attach;
+- (id)attributedTextInRange:(id)arg1;
 - (struct CGPoint { double x1; double x2; })autoscrollUntransformedExtentPoint;
 - (void)autoscrollWillNotStart;
 - (bool)autoscrolled;
@@ -89,11 +97,12 @@
 - (void)dealloc;
 - (void)detach;
 - (void)detach:(bool)arg1;
-- (void)didEndScrollingOverflow;
+- (void)didEndScrollingOrZooming;
 - (void)didEndSelectionInteraction;
 - (bool)didUseStashedSelection;
 - (id)doubleTapGesture;
 - (void)endFloatingCursor;
+- (bool)expectingCommit;
 - (void)extendSelectionToLoupeOrSetToPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)extendSelectionToPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (id)externalInteractions;
@@ -101,19 +110,21 @@
 - (id)fieldEditor;
 - (id)forcePressGesture;
 - (id)generatorForRange:(id)arg1 withOptions:(unsigned long long)arg2;
+- (bool)handleMultilingualAlternativeWithString:(id)arg1 range:(id)arg2;
 - (bool)hasReplacements;
 - (bool)inGesture;
 - (id)initWithResponder:(id)arg1;
 - (id)initWithView:(id)arg1;
-- (id)initWithView:(id)arg1 textInteractionSet:(long long)arg2;
+- (id)initWithView:(id)arg1 textInteractionMode:(long long)arg2;
 - (id)interactions;
 - (void)invalidate;
 - (bool)isValid;
 - (void)layoutChangedByScrolling:(bool)arg1;
-- (id)linkInteractionView;
+- (id)linkInteraction;
+- (void)lollipopGestureWithState:(long long)arg1 location:(struct CGPoint { double x1; double x2; })arg2 locationOfFirstTouch:(struct CGPoint { double x1; double x2; })arg3;
 - (id)loupeGesture;
 - (struct CGPoint { double x1; double x2; })loupeGestureEndPoint;
-- (void)loupeGestureWithState:(long long)arg1 atGesturePoint:(id /* block */)arg2 shouldCancel:(bool*)arg3;
+- (void)loupeGestureWithState:(long long)arg1 location:(id /* block */)arg2 translation:(id /* block */)arg3 velocity:(id /* block */)arg4 modifierFlags:(long long)arg5 shouldCancel:(bool*)arg6;
 - (Class)loupeInteractionClass;
 - (void)loupeMagnifierWithState:(long long)arg1 atPoint:(struct CGPoint { double x1; double x2; })arg2;
 - (bool)needsGestureUpdate;
@@ -125,11 +136,11 @@
 - (void)rangeSelectionStarted:(struct CGPoint { double x1; double x2; })arg1;
 - (void)rangedMagnifierWithState:(long long)arg1 atPoint:(struct CGPoint { double x1; double x2; })arg2;
 - (bool)requiresImmediateUpdate;
-- (void)resetGestureRecognizersForLinkInteraction;
 - (void)resetWillHandoffLoupeMagnifier;
 - (void)resignedFirstResponder;
 - (void)scheduleChineseTransliteration;
 - (void)scheduleDictationReplacementsForAlternatives:(id)arg1 range:(id)arg2;
+- (void)scheduleDictationReplacementsForMultilingualAlternatives:(id)arg1 range:(id)arg2;
 - (void)scheduleReplacements;
 - (void)scheduleReplacementsForRange:(id)arg1 withOptions:(unsigned long long)arg2;
 - (void)scheduleReplacementsWithOptions:(unsigned long long)arg1;
@@ -139,14 +150,16 @@
 - (void)selectAll:(id)arg1;
 - (void)selectWord;
 - (void)selectWordWithoutShowingCommands;
-- (void)selectionAnimationDidStop:(id)arg1 finished:(id)arg2;
+- (void)selectionAnimationDidStop;
 - (void)selectionChanged;
 - (Class)selectionInteractionClass;
 - (id)selectionView;
 - (void)setAutoscrollUntransformedExtentPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setAutoscrolled:(bool)arg1;
+- (void)setExpectingCommit:(bool)arg1;
 - (void)setExternalInteractions:(id)arg1;
 - (void)setFirstResponderIfNecessary;
+- (void)setFirstResponderIfNecessaryActivatingSelection:(bool)arg1;
 - (void)setGestureRecognizers;
 - (void)setInGesture:(bool)arg1;
 - (void)setLoupeGestureEndPoint:(struct CGPoint { double x1; double x2; })arg1;
@@ -156,6 +169,7 @@
 - (void)setWillHandoffLoupeMagnifier;
 - (bool)shouldEnqueueObserverUpdates;
 - (bool)shouldSuppressSelectionCommands;
+- (bool)showMultilingualDictationReplacementWithRange:(id)arg1;
 - (id)singleTapGesture;
 - (void)startAutoscroll:(struct CGPoint { double x1; double x2; })arg1;
 - (void)stashCurrentSelection;
@@ -164,13 +178,16 @@
 - (id)textSelectionView;
 - (void)updateAutoscroll:(id)arg1;
 - (void)updateFloatingCursorAtPoint:(struct CGPoint { double x1; double x2; })arg1;
+- (void)updateFloatingCursorAtPoint:(struct CGPoint { double x1; double x2; })arg1 velocity:(struct CGPoint { double x1; double x2; })arg2;
 - (void)updateSelectionWithPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)updateWithMagnifierTerminalPoint:(bool)arg1;
 - (bool)useGesturesForEditableContent;
 - (id)view;
 - (bool)viewCouldBecomeEditable:(id)arg1;
+- (bool)wantsLinkInteraction;
+- (void)willBeginFloatingCursor:(bool)arg1;
 - (void)willBeginSelectionInteraction;
 - (bool)willHandoffLoupeMagnifier;
-- (void)willStartScrollingOverflow;
+- (void)willStartScrollingOrZooming;
 
 @end

@@ -4,16 +4,19 @@
 
 @interface UIKeyboardPreferencesController : NSObject
 
+@property bool enableProKeyboard;
 @property long long handBias;
 @property (nonatomic, readonly) UIKeyboardPreferencesController<TIPreferencesControllerActions> *preferencesActions;
 
 + (id)sharedPreferencesController;
++ (id)valueForPreferenceKey:(id)arg1 domain:(id)arg2;
 
 - (void)_configurePreferences;
 - (bool)allEnabledInputModesAreValid;
 - (bool)boolForKey:(int)arg1;
 - (bool)boolForPreferenceKey:(id)arg1;
 - (void)dealloc;
+- (bool)enableProKeyboard;
 - (void)forwardInvocation:(id)arg1;
 - (long long)handBias;
 - (id)init;
@@ -27,6 +30,7 @@
 - (bool)respondsToSelector:(SEL)arg1;
 - (double)rivenSizeFactor:(double)arg1;
 - (void)saveInputModes:(id)arg1;
+- (void)setEnableProKeyboard:(bool)arg1;
 - (void)setEnabledDictationLanguages:(id)arg1;
 - (void)setHandBias:(long long)arg1;
 - (void)setLanguageAwareInputModeLastUsed:(id)arg1;
@@ -36,7 +40,6 @@
 - (bool)spaceConfirmationEnabled;
 - (void)synchronizePreferences;
 - (void)touchSynchronizePreferencesTimer;
-- (bool)typologyEnabled;
 - (id)valueForKey:(int)arg1;
 - (id)valueForPreferenceKey:(id)arg1;
 

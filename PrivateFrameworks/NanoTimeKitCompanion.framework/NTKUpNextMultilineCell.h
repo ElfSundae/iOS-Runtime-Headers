@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/NanoTimeKitCompanion.framework/NanoTimeKitCompanion
  */
 
-@interface NTKUpNextMultilineCell : NTKUpNextBaseCell {
+@interface NTKUpNextMultilineCell : NTKUpNextBaseCell <CLKMonochromeFilterProvider> {
     UIView * _accessoryView;
     UILayoutGuide * _bodyImageSizingLayoutGuide;
     CLKFont * _boldFont;
@@ -37,12 +37,24 @@
     NSArray * _withoutHeaderConstraints;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 + (struct CGSize { double x1; double x2; })suggestedBodyImageSizeForDevice:(id)arg1;
 
 - (void).cxx_destruct;
+- (id)colorForView:(id)arg1 accented:(bool)arg2;
 - (void)configureWithContent:(id)arg1;
+- (id)filterForView:(id)arg1 style:(long long)arg2;
+- (id)filterForView:(id)arg1 style:(long long)arg2 fraction:(double)arg3;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (void)prepareForReuse;
+- (void)setFilterProvider:(id)arg1;
 - (void)setPaused:(bool)arg1;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
 - (void)updateConstraints;
+- (void)updateMonochromeColor;
 
 @end

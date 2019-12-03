@@ -16,6 +16,9 @@
 + (id)successWithResolvedPerson:(id)arg1;
 + (id)unsupportedWithReason:(unsigned long long)arg1 alternativePeople:(id)arg2;
 
+- (id)_intentSlotValueForObject:(id)arg1 slotDescription:(id)arg2;
+- (id)_vocabularyValueForObject:(id)arg1 slotDescription:(id)arg2;
+
 // Image: /System/Library/PrivateFrameworks/IMAssistantCore.framework/IMAssistantCore
 
 + (bool)__imcore__containsNonSuccess:(id)arg1;

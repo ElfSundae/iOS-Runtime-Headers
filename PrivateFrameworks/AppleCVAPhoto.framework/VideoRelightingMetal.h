@@ -6,6 +6,7 @@
     <MTLTexture> * _alphaTexture;
     bool  _apiTransitionPeriod;
     UIColor * _backgroundColor;
+    CVAFilterMaskedVariableBlur * _blurPyramidForSkinFg;
     struct optional<float> { 
         bool m_initialized; 
         struct aligned_storage<float> { 
@@ -24,6 +25,7 @@
             } dummy_; 
         } m_storage; 
     }  _closestLeftCheekVertexID;
+    CVAFilterColorAlphaToFgBg * _colorAlphaToFgBg;
     NSData * _colorCubeUserData;
     <MTLCommandQueue> * _commandQueue;
     <MTLTexture> * _countTexture;
@@ -34,11 +36,11 @@
     <MTLTexture> * _dstTexture;
     <MTLTexture> * _dstUVTexture;
     void _face3DCenter;
-    struct optional<boost::accumulators::accumulator_set<double, boost::accumulators::stats<boost::accumulators::tag::rolling_variance, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na>, void> > { 
+    struct optional<boost::accumulators::accumulator_set<float, boost::accumulators::stats<boost::accumulators::tag::rolling_variance, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na>, void> > { 
         bool m_initialized; 
-        struct aligned_storage<boost::accumulators::accumulator_set<double, boost::accumulators::stats<boost::accumulators::tag::rolling_variance, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na>, void> > { 
+        struct aligned_storage<boost::accumulators::accumulator_set<float, boost::accumulators::stats<boost::accumulators::tag::rolling_variance, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na>, void> > { 
             union dummy_u { 
-                BOOL data[88]; 
+                BOOL data[72]; 
                 struct a8 { } aligner_; 
             } dummy_; 
         } m_storage; 
@@ -72,10 +74,20 @@
         float confidence; 
     }  _faceKitStreamedData;
     void _faceModelCenterProjected;
+    struct optional<boost::accumulators::accumulator_set<float, boost::accumulators::stats<boost::accumulators::tag::rolling_mean, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na>, void> > { 
+        bool m_initialized; 
+        struct aligned_storage<boost::accumulators::accumulator_set<float, boost::accumulators::stats<boost::accumulators::tag::rolling_mean, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na, mpl_::na>, void> > { 
+            union dummy_u { 
+                BOOL data[64]; 
+                struct a8 { } aligner_; 
+            } dummy_; 
+        } m_storage; 
+    }  _faceRelightingAngleFactorsRollingMean;
     MTLRenderPassDescriptor * _faceRenderDesc1;
     MTLRenderPassDescriptor * _faceRenderDesc2;
     MTLRenderPassDescriptor * _faceRenderDesc3;
     <MTLTexture> * _facemaskRegionTexture;
+    float  _focusDistance;
     long long  _frameIndex;
     long long  _frameIndexWhenFacekitAllowed;
     double  _gpuEndTime;
@@ -95,7 +107,7 @@
     <MTLLibrary> * _library;
     float  _lightMapsNearFarLerp;
     <MTLTexture> * _lightTexture;
-    struct CVAPhotoMetalContext { id x1; id x2; struct unique_ptr<CVAPerfEndTimeProfilerSet, std::__1::default_delete<CVAPerfEndTimeProfilerSet> > { struct __compressed_pair<CVAPerfEndTimeProfilerSet *, std::__1::default_delete<CVAPerfEndTimeProfilerSet> > { struct CVAPerfEndTimeProfilerSet {} *x_1_2_1; } x_3_1_1; } x3; bool x4; } * _metalContext;
+    struct CVAPhotoMetalContext { id x1; id x2; id x3; id x4; struct unique_ptr<CVAPerfEndTimeProfilerSet, std::__1::default_delete<CVAPerfEndTimeProfilerSet> > { struct __compressed_pair<CVAPerfEndTimeProfilerSet *, std::__1::default_delete<CVAPerfEndTimeProfilerSet> > { struct CVAPerfEndTimeProfilerSet {} *x_1_2_1; } x_5_1_1; } x5; bool x6; } * _metalContext;
     struct vector<FaceVertex, std::__1::allocator<FaceVertex> > { 
         struct FaceVertex {} *__begin_; 
         struct FaceVertex {} *__end_; 
@@ -109,6 +121,7 @@
     struct float4x4 { 
         /* Warning: Unrecognized filer type: ']' using 'void*' */ void*columns[4]; 
     }  _modelViewProjectionMatrix;
+    float  _portraitStyleStrength;
     struct float4x4 { 
         /* Warning: Unrecognized filer type: ']' using 'void*' */ void*columns[4]; 
     }  _projectionMatrix;
@@ -139,15 +152,9 @@
     <MTLTexture> * _texColorCubeStaticArray;
     <MTLTexture> * _texColorCubeUserData;
     <MTLTexture> * _texSelectedColorCube;
+    <MTLTexture> * _texSkinRGBAPyramid;
+    <MTLTexture> * _texSkinSegmentationAlias;
     <MTLTexture> * _texStub;
-    struct RelightingTransitionData { 
-        float proxyToFaceEffectLerp; 
-        float originalToRelightEffectLerp; 
-        float backgroundAlphaMultiplier; 
-        float colorCubeIntensity; 
-        float colorCubeLerpSelfToOther; 
-        int otherCubeType; 
-    }  _transitionData;
     bool  _trustAlpha;
     struct RelightUniforms { 
         /* Warning: Unrecognized filer type: '"' using 'void*' */ void*outSizeInv; 
@@ -155,15 +162,10 @@
     struct SlideUniforms { 
         float center_x; 
         float center_y; 
-        float radius; 
-        float bgColor_x; 
-        float bgColor_y; 
-        float bgColor_z; 
-        float width; 
-        float height; 
     }  _uniformBuffer_slide;
     <MTLTexture> * _vertCountTexture;
     CVAPhotoMTLRingBuffer * _vertexBuffer;
+    float  _vignettingScale;
 }
 
 @property (readonly) double gpuEndTime;
@@ -183,21 +185,22 @@
 - (void)encodeTCKernelToCommandBuffer:(id)arg1;
 - (void)encodeVertCountKernelToCommandBuffer:(id)arg1;
 - (void)generateModelNormals;
+- (id)getInternalColorCube:(int)arg1;
 - (double)gpuEndTime;
 - (double)gpuStartTime;
 - (void)initCommon;
 - (void)initKernelFunctions;
-- (id)initWithMetalContext:(struct CVAPhotoMetalContext { id x1; id x2; struct unique_ptr<CVAPerfEndTimeProfilerSet, std::__1::default_delete<CVAPerfEndTimeProfilerSet> > { struct __compressed_pair<CVAPerfEndTimeProfilerSet *, std::__1::default_delete<CVAPerfEndTimeProfilerSet> > { struct CVAPerfEndTimeProfilerSet {} *x_1_2_1; } x_3_1_1; } x3; bool x4; }*)arg1;
+- (id)initWithMetalContext:(struct CVAPhotoMetalContext { id x1; id x2; id x3; id x4; struct unique_ptr<CVAPerfEndTimeProfilerSet, std::__1::default_delete<CVAPerfEndTimeProfilerSet> > { struct __compressed_pair<CVAPerfEndTimeProfilerSet *, std::__1::default_delete<CVAPerfEndTimeProfilerSet> > { struct CVAPerfEndTimeProfilerSet {} *x_1_2_1; } x_5_1_1; } x5; bool x6; }*)arg1;
 - (id)loadCube:(id)arg1;
-- (void)loadRGBTransformMaps;
-- (void)loadRGBTransformMapsOnceTo:(id*)arg1 namePrefix:(const char *)arg2 forIntermediateResults:(bool)arg3;
+- (void)loadRGBTransformMapsForEffectVersion:(bool)arg1;
+- (void)loadRGBTransformMapsOnceTo:(id*)arg1 namePrefix:(const struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > { struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> > { struct __rep { union { struct __long { char *x_1_4_1; unsigned long long x_1_4_2; unsigned long long x_1_4_3; } x_1_3_1; struct __short { BOOL x_2_4_1[23]; struct { unsigned char x_2_5_1; } x_2_4_2; } x_1_3_2; struct __raw { unsigned long long x_3_4_1[3]; } x_1_3_3; } x_1_2_1; } x_1_1_1; } x1; }*)arg2 forIntermediateResults:(bool)arg3;
 - (float)relightingStability;
-- (void)renderWithSrcImage:(struct __CVBuffer { }*)arg1 srcAlpha:(struct __CVBuffer { }*)arg2 trustAlpha:(bool)arg3 dstImage:(struct __CVBuffer { }*)arg4 faceKitProcessOutput:(id)arg5 transitionData:(const struct RelightingTransitionData { float x1; float x2; float x3; float x4; float x5; int x6; }*)arg6 colorSim:(id)arg7 disparity:(id)arg8 singleCubeData:(id)arg9 properties:(id)arg10 callbackQueue:(id)arg11 callback:(id /* block */)arg12;
+- (void)renderWithSrcImage:(struct __CVBuffer { }*)arg1 srcAlpha:(struct __CVBuffer { }*)arg2 trustAlpha:(bool)arg3 yuvSourceDownsampled:(id)arg4 skinSegmentation:(struct __CVBuffer { }*)arg5 dstImage:(struct __CVBuffer { }*)arg6 faceKitProcessOutput:(id)arg7 portraitStyleStrength:(float)arg8 colorSim:(id)arg9 disparity:(id)arg10 focusDistance:(float)arg11 singleCubeData:(id)arg12 properties:(id)arg13 callbackQueue:(id)arg14 callback:(id /* block */)arg15;
 - (void)saveTexture:(id)arg1 toImage:(id)arg2;
 - (void)setModelVertices;
 - (void)updateFaceKitStreamedDataFromProcessOutput:(id)arg1;
 - (void)updateMatrixWithWidth:(int)arg1 height:(int)arg2 camera:(const struct vector<float, std::__1::allocator<float> > { float *x1; float *x2; struct __compressed_pair<float *, std::__1::allocator<float> > { float *x_3_1_1; } x3; }*)arg3 pose:(const struct vector<float, std::__1::allocator<float> > { float *x1; float *x2; struct __compressed_pair<float *, std::__1::allocator<float> > { float *x_3_1_1; } x3; }*)arg4;
 - (void)updateModelAndPose:(struct vector<float, std::__1::allocator<float> > { float *x1; float *x2; struct __compressed_pair<float *, std::__1::allocator<float> > { float *x_3_1_1; } x3; }*)arg1 camera:(struct vector<float, std::__1::allocator<float> > { float *x1; float *x2; struct __compressed_pair<float *, std::__1::allocator<float> > { float *x_3_1_1; } x3; }*)arg2;
-- (void)updateUniforms;
+- (void)updateUniforms:(bool)arg1;
 
 @end

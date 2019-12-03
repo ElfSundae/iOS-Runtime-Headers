@@ -14,35 +14,42 @@
     void inCallControlsDismissTimer;
     void isPipped;
     void mostActiveParticipantsController;
-    void shouldInitializeEffects;
+    void pipZoomControl;
+    void shouldShowZoomControls;
     void viewContent;
 }
 
 @property (nonatomic, readonly) TUCall *call;
+@property (nonatomic, readonly) UIViewController *childViewControllerForHomeIndicatorAutoHidden;
 @property (nonatomic) <CNKFaceTimeMultiwayConversationViewControllerDelegate> *delegate;
 @property (nonatomic) long long deviceOrientation;
 @property (nonatomic) bool effectsEnabled;
 @property (nonatomic, retain) NSTimer *inCallControlsDismissTimer;
 @property (nonatomic, readonly) UIViewController *pipViewController;
+@property (nonatomic, readonly) bool prefersHomeIndicatorAutoHidden;
 @property (nonatomic, readonly) bool wantsApplicationDismissalStyle;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)accessibilityConstraintController;
 - (id)call;
 - (void)cameraViewController:(id)arg1 didChangeEffectsState:(long long)arg2;
 - (void)cameraViewController:(id)arg1 didRenderFrame:(id)arg2;
+- (void)cameraViewController:(id)arg1 presentationRectWasPinchedWithState:(long long)arg2 scale:(double)arg3 velocity:(double)arg4;
 - (void)cameraViewControllerPresentationRectWasDoubleTapped:(id)arg1;
 - (id)childViewControllerForHomeIndicatorAutoHidden;
 - (void)dealloc;
 - (id)delegate;
 - (long long)deviceOrientation;
 - (void)didCaptureVideoFrame:(id)arg1;
+- (void)didCreateTableViewForInCallControlsViewController:(id)arg1;
 - (void)didSelectApp:(id)arg1;
 - (void)effectBrowserViewController:(id)arg1 dismissExpandedAppViewController:(id)arg2 animated:(bool)arg3 completion:(id /* block */)arg4;
 - (void)effectBrowserViewController:(id)arg1 presentExpandedAppViewController:(id)arg2 animated:(bool)arg3 completion:(id /* block */)arg4;
 - (void)effectBrowserViewController:(id)arg1 willChangeDockHeight:(double)arg2;
 - (bool)effectsEnabled;
 - (struct CGSize { double x1; double x2; })expandedAppViewControllerSizeForEffectBrowserViewController:(id)arg1;
+- (void)hideEffectsBrowser;
 - (id)inCallControlsDismissTimer;
 - (void)inCallControlsDragController:(id)arg1 didEndDragAt:(long long)arg2;
 - (void)inCallControlsDragController:(id)arg1 didStartDragTo:(long long)arg2;
@@ -76,5 +83,6 @@
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
 - (bool)wantsApplicationDismissalStyle;
+- (void)willMoveToParentViewController:(id)arg1;
 
 @end

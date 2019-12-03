@@ -21,8 +21,8 @@
 + (double)defaultAnimationDuration;
 + (id)itemOfferButtonStyleForItem:(id)arg1 offer:(id)arg2;
 
-- (void)_applyConfiguration:(struct { id x1; long long x2; struct UIEdgeInsets { double x_3_1_1; double x_3_1_2; double x_3_1_3; double x_3_1_4; } x3; id x4; })arg1;
-- (struct { id x1; long long x2; struct UIEdgeInsets { double x_3_1_1; double x_3_1_2; double x_3_1_3; double x_3_1_4; } x3; id x4; })_configurationForStyle:(id)arg1;
+- (void)_applyConfiguration:(struct { id x1; long long x2; long long x3; struct UIEdgeInsets { double x_4_1_1; double x_4_1_2; double x_4_1_3; double x_4_1_4; } x4; id x5; id x6; })arg1;
+- (struct { id x1; long long x2; long long x3; struct UIEdgeInsets { double x_4_1_1; double x_4_1_2; double x_4_1_3; double x_4_1_4; } x4; id x5; id x6; })_configurationForStyle:(id)arg1;
 - (void)_reloadButton;
 - (long long)animationHorizontalAlignment;
 - (bool)configureForItem:(id)arg1 offer:(id)arg2;

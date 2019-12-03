@@ -6,7 +6,6 @@
 @required
 
 + (<TSDMTLDataBuffer> *)newDataBufferWithVertexAttributes:(NSArray *)arg1 meshSize:(struct CGSize { double x1; double x2; })arg2 device:(id <MTLDevice>)arg3;
-+ (<TSDGLDataBuffer> *)newDataBufferWithVertexAttributes:(NSArray *)arg1 quadParticleCount:(unsigned long long)arg2 device:(id <MTLDevice>)arg3;
 + (<TSDMTLDataBuffer> *)newDataBufferWithVertexAttributes:(NSArray *)arg1 vertexCount:(unsigned long long)arg2 indexElementCount:(unsigned long long)arg3 device:(id <MTLDevice>)arg4;
 + (<TSDMTLDataBuffer> *)newDataBufferWithVertexRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 textureRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 device:(id <MTLDevice>)arg3;
 + (<TSDMTLDataBuffer> *)newDataBufferWithVertexRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 textureRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 meshSize:(struct CGSize { double x1; double x2; })arg3 device:(id <MTLDevice>)arg4;

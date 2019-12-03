@@ -2,21 +2,28 @@
    Image: /System/Library/Frameworks/Foundation.framework/Foundation
  */
 
-@interface NSIndexPath : NSObject <NSCopying, NSSecureCoding> {
+@interface NSIndexPath : NSObject <NSCopying, NSSecureCoding, _PASDistilledString> {
     unsigned long long * _indexes;
     unsigned long long  _length;
     void * _reserved;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) unsigned long long element;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) long long item;
 @property (readonly) unsigned long long length;
+@property (nonatomic, readonly) long long na_item;
+@property (nonatomic, readonly) long long na_row;
+@property (nonatomic, readonly) long long na_section;
 @property (getter=pu_isValid, nonatomic, readonly) bool pu_valid;
 @property (nonatomic, readonly) long long px_item;
 @property (nonatomic, readonly) long long px_kind;
 @property (nonatomic, readonly) long long px_section;
 @property (nonatomic, readonly) long long row;
 @property (nonatomic, readonly) long long section;
+@property (readonly) Class superclass;
 @property (nonatomic, readonly) long long tk_row;
 @property (nonatomic, readonly) long long tk_section;
 @property (nonatomic, readonly) unsigned long long upNextSection;
@@ -91,7 +98,7 @@
 
 - (id)dd_stringValue;
 
-// Image: /System/Library/PrivateFrameworks/GameCenterPrivateUI.framework/GameCenterPrivateUI
+// Image: /System/Library/PrivateFrameworks/GameCenterUI.framework/GameCenterUI
 
 - (bool)_gkIsGlobal;
 
@@ -104,8 +111,14 @@
 
 // Image: /System/Library/PrivateFrameworks/NetAppsUtilities.framework/NetAppsUtilities
 
++ (id)na_indexPathForItem:(long long)arg1 inSection:(long long)arg2;
++ (id)na_indexPathForRow:(long long)arg1 inSection:(long long)arg2;
+
 - (void)na_each:(id /* block */)arg1;
 - (id)na_indexPathStartingAtPosition:(unsigned long long)arg1;
+- (long long)na_item;
+- (long long)na_row;
+- (long long)na_section;
 
 // Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
 
@@ -134,6 +147,20 @@
 - (long long)px_kind;
 - (long long)px_section;
 
+// Image: /System/Library/PrivateFrameworks/ProactiveSupport.framework/ProactiveSupport
+
++ (id)_pas_fromVersionString:(id)arg1;
++ (id)_pas_fromVersionString:(id)arg1 withExceptions:(bool)arg2;
++ (id)_pas_fromVersionStringIfPossible:(id)arg1;
+
+- (id)_pas_asVersionString;
+- (bool)_pas_isEqualToVersionString:(id)arg1;
+- (bool)_pas_isGreaterThanOrEqualToVersionString:(id)arg1;
+- (bool)_pas_isGreaterThanVersionString:(id)arg1;
+- (bool)_pas_isLessThanOrEqualToVersionString:(id)arg1;
+- (bool)_pas_isLessThanVersionString:(id)arg1;
+- (id)_pas_revivedString;
+
 // Image: /System/Library/PrivateFrameworks/PrototypeTools.framework/PrototypeTools
 
 + (id)pt_indexPathForRow:(long long)arg1 inSection:(long long)arg2;
@@ -147,6 +174,20 @@
 - (id)indexPathByInsertingFirstIndex:(unsigned long long)arg1;
 - (id)initWithString:(id)arg1;
 - (id)stringValue;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoardHome.framework/SpringBoardHome
+
++ (id)indexPathWithFolderIconIndex:(unsigned long long)arg1 folderListIndex:(unsigned long long)arg2 iconIndex:(unsigned long long)arg3 listIndex:(unsigned long long)arg4;
++ (id)indexPathWithIconIndex:(unsigned long long)arg1 listIndex:(unsigned long long)arg2;
+
+- (unsigned long long)sbIconIndex;
+- (unsigned long long)sbListIndex;
+- (unsigned long long)sb_iconPathCount;
+- (id)sb_iconRelativePathComponents;
+- (id)sb_indexPathByAddingIndexPath:(id)arg1;
+- (id)sb_indexPathByAddingPathComponentWithListIndex:(unsigned long long)arg1 iconIndex:(unsigned long long)arg2;
+- (id)sb_indexPathByRemovingLastIconPathComponent;
+- (id)sb_lastIconPathComponent;
 
 // Image: /System/Library/PrivateFrameworks/TVMLKit.framework/TVMLKit
 

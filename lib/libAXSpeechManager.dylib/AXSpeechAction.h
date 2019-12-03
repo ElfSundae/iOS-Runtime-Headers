@@ -3,9 +3,8 @@
  */
 
 @interface AXSpeechAction : NSObject {
-    NSString * _IPAPhonemes;
     NSAttributedString * _attributedString;
-    unsigned int  _audioQueueFlags;
+    id /* block */  _audioBufferCallback;
     bool  _cannotInterrupt;
     id /* block */  _completionCallback;
     NSMutableArray * _emojiRangeReplacements;
@@ -26,15 +25,15 @@
     double  _speakingRate;
     long long  _state;
     NSString * _string;
+    bool  _synthesizeSilently;
     bool  _useMonarchStyleSpeechRate;
     NSString * _voiceIdentifier;
     double  _volume;
     long long  _wordCallbackPostProcessedOffset;
 }
 
-@property (nonatomic, copy) NSString *IPAPhonemes;
 @property (nonatomic, copy) NSAttributedString *attributedString;
-@property (nonatomic) unsigned int audioQueueFlags;
+@property (nonatomic, copy) id /* block */ audioBufferCallback;
 @property (nonatomic) bool cannotInterrupt;
 @property (nonatomic, copy) id /* block */ completionCallback;
 @property (nonatomic, retain) NSMutableArray *emojiRangeReplacements;
@@ -55,6 +54,7 @@
 @property (nonatomic) double speakingRate;
 @property (nonatomic) long long state;
 @property (nonatomic, copy) NSString *string;
+@property (nonatomic) bool synthesizeSilently;
 @property (nonatomic) bool useMonarchStyleSpeechRate;
 @property (nonatomic, retain) NSString *voiceIdentifier;
 @property (nonatomic) double volume;
@@ -62,12 +62,12 @@
 
 + (id)actionWithAttributedString:(id)arg1 shouldQueue:(bool)arg2;
 + (id)actionWithString:(id)arg1 shouldQueue:(bool)arg2;
++ (void)test_setUseMaxSpeechRate:(bool)arg1;
 
 - (void).cxx_destruct;
-- (id)IPAPhonemes;
 - (id)_detectLanguageFromContent;
 - (id)attributedString;
-- (unsigned int)audioQueueFlags;
+- (id /* block */)audioBufferCallback;
 - (bool)cannotInterrupt;
 - (id /* block */)completionCallback;
 - (id)description;
@@ -84,12 +84,11 @@
 - (void)preprocessAction;
 - (id)processedString;
 - (void)setAttributedString:(id)arg1;
-- (void)setAudioQueueFlags:(unsigned int)arg1;
+- (void)setAudioBufferCallback:(id /* block */)arg1;
 - (void)setCannotInterrupt:(bool)arg1;
 - (void)setCompletionCallback:(id /* block */)arg1;
 - (void)setEmojiRangeReplacements:(id)arg1;
 - (void)setFinalSpokenString:(id)arg1;
-- (void)setIPAPhonemes:(id)arg1;
 - (void)setIgnoreCustomSubstitutions:(bool)arg1;
 - (void)setLanguage:(id)arg1;
 - (void)setOnPauseCallback:(id /* block */)arg1;
@@ -106,6 +105,7 @@
 - (void)setSpeakingRate:(double)arg1;
 - (void)setState:(long long)arg1;
 - (void)setString:(id)arg1;
+- (void)setSynthesizeSilently:(bool)arg1;
 - (void)setUseMonarchStyleSpeechRate:(bool)arg1;
 - (void)setVoiceIdentifier:(id)arg1;
 - (void)setVolume:(double)arg1;
@@ -118,6 +118,7 @@
 - (double)speakingRate;
 - (long long)state;
 - (id)string;
+- (bool)synthesizeSilently;
 - (bool)useMonarchStyleSpeechRate;
 - (id)voiceIdentifier;
 - (double)volume;

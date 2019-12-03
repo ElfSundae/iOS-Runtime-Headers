@@ -15,6 +15,7 @@
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
+- (id)initWithAssetsDataSourceManager:(id)arg1;
 - (id)initWithPhotosDataSource:(id)arg1;
 - (id)photosDataSource;
 - (void)photosDataSource:(id)arg1 didChange:(id)arg2;

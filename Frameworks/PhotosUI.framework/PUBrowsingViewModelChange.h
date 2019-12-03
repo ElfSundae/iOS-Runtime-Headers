@@ -9,14 +9,18 @@
     bool  _currentAssetDidChange;
     bool  _currentAssetTransitionProgressDidChange;
     bool  _isAnimatingAnyTransitionDidChange;
+    bool  _isAttemptingToPlayVideoOverlayDidChange;
     bool  _isScrollingDidChange;
+    bool  _isScrubbingActivationDidChange;
     bool  _isScrubbingDidChange;
+    bool  _isVideoContentAllowedDidChange;
     NSMapTable * _mutableSharedViewModelChangesByAsset;
     NSMutableDictionary * _mutableViewModelChangesByAssetReference;
     bool  _presentingOverOneUpDidChange;
     bool  _reviewScreenBarsModelDidChange;
     bool  _secondScreenSizeDidChange;
     bool  _transitionDriverIdentifierDidChange;
+    bool  _videoOverlayPlayStateDidChange;
 }
 
 @property (nonatomic, readonly) NSMapTable *_mutableSharedViewModelChangesByAsset;
@@ -29,12 +33,16 @@
 @property (setter=_setCurrentAssetDidChange:, nonatomic) bool currentAssetDidChange;
 @property (setter=_setCurrentAssetTransitionProgressDidChange:, nonatomic) bool currentAssetTransitionProgressDidChange;
 @property (setter=_setAnimatingAnyTransitionDidChange:, nonatomic) bool isAnimatingAnyTransitionDidChange;
+@property (setter=_setIsAttemptingToPlayVideoOverlayDidChange:, nonatomic) bool isAttemptingToPlayVideoOverlayDidChange;
 @property (setter=_setIsScrollingDidChange:, nonatomic) bool isScrollingDidChange;
+@property (setter=_setIsScrubbingActivationDidChange:, nonatomic) bool isScrubbingActivationDidChange;
 @property (setter=_setIsScrubbingDidChange:, nonatomic) bool isScrubbingDidChange;
+@property (nonatomic) bool isVideoContentAllowedDidChange;
 @property (setter=_setPresentingOverOneUpDidChange:, nonatomic) bool presentingOverOneUpDidChange;
 @property (setter=_setReviewScreenBarsModelDidChange:, nonatomic) bool reviewScreenBarsModelDidChange;
 @property (setter=_setSecondScreenSizeDidChange:, nonatomic) bool secondScreenSizeDidChange;
 @property (setter=_setTransitionDriverIdentifierDidChange:, nonatomic) bool transitionDriverIdentifierDidChange;
+@property (setter=_setVideoOverlayPlayStateDidChange:, nonatomic) bool videoOverlayPlayStateDidChange;
 
 - (void).cxx_destruct;
 - (id)_mutableSharedViewModelChangesByAsset;
@@ -45,12 +53,15 @@
 - (void)_setChromeVisibilityDidChange:(bool)arg1;
 - (void)_setCurrentAssetDidChange:(bool)arg1;
 - (void)_setCurrentAssetTransitionProgressDidChange:(bool)arg1;
+- (void)_setIsAttemptingToPlayVideoOverlayDidChange:(bool)arg1;
 - (void)_setIsScrollingDidChange:(bool)arg1;
+- (void)_setIsScrubbingActivationDidChange:(bool)arg1;
 - (void)_setIsScrubbingDidChange:(bool)arg1;
 - (void)_setPresentingOverOneUpDidChange:(bool)arg1;
 - (void)_setReviewScreenBarsModelDidChange:(bool)arg1;
 - (void)_setSecondScreenSizeDidChange:(bool)arg1;
 - (void)_setTransitionDriverIdentifierDidChange:(bool)arg1;
+- (void)_setVideoOverlayPlayStateDidChange:(bool)arg1;
 - (id)assetSharedViewModelChangesByAsset;
 - (id)assetViewModelChangesByAssetReference;
 - (bool)assetsDataSourceDidChange;
@@ -60,11 +71,16 @@
 - (bool)currentAssetTransitionProgressDidChange;
 - (bool)hasChanges;
 - (bool)isAnimatingAnyTransitionDidChange;
+- (bool)isAttemptingToPlayVideoOverlayDidChange;
 - (bool)isScrollingDidChange;
+- (bool)isScrubbingActivationDidChange;
 - (bool)isScrubbingDidChange;
+- (bool)isVideoContentAllowedDidChange;
 - (bool)presentingOverOneUpDidChange;
 - (bool)reviewScreenBarsModelDidChange;
 - (bool)secondScreenSizeDidChange;
+- (void)setIsVideoContentAllowedDidChange:(bool)arg1;
 - (bool)transitionDriverIdentifierDidChange;
+- (bool)videoOverlayPlayStateDidChange;
 
 @end

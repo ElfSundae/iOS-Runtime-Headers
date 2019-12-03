@@ -22,6 +22,7 @@
 - (unsigned long long)activityProxyID;
 - (id)activityTitle;
 - (id)activityType;
+- (id)activityTypeWithActivity:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

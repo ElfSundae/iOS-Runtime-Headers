@@ -54,6 +54,7 @@
 - (id)serverWithErrorHandler:(id /* block */)arg1;
 - (void)setConversationsByGroupUUID:(id)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setDownlinkMuted:(bool)arg1 forRemoteParticipantsInConversation:(id)arg2;
 - (void)setHasRequestedInitialState:(bool)arg1;
 - (void)setMediaDelegate:(id)arg1;
 - (void)setShouldConnectToHost:(bool)arg1;

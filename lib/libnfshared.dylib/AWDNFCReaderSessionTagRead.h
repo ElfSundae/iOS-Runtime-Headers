@@ -9,11 +9,13 @@
         unsigned int timeDeltaFromReference : 1; 
         unsigned int timestamp : 1; 
         unsigned int payloadSize : 1; 
+        unsigned int rawCommandCount : 1; 
         unsigned int resultCode : 1; 
         unsigned int tagType : 1; 
         unsigned int type : 1; 
     }  _has;
     unsigned int  _payloadSize;
+    unsigned int  _rawCommandCount;
     unsigned int  _resultCode;
     unsigned int  _tagType;
     unsigned long long  _timeDeltaFromReference;
@@ -25,6 +27,7 @@
 @property (nonatomic) unsigned long long duration;
 @property (nonatomic) bool hasDuration;
 @property (nonatomic) bool hasPayloadSize;
+@property (nonatomic) bool hasRawCommandCount;
 @property (nonatomic) bool hasResultCode;
 @property (nonatomic) bool hasTagType;
 @property (nonatomic) bool hasTimeDeltaFromReference;
@@ -32,6 +35,7 @@
 @property (nonatomic) bool hasType;
 @property (nonatomic, readonly) bool hasUuidReference;
 @property (nonatomic) unsigned int payloadSize;
+@property (nonatomic) unsigned int rawCommandCount;
 @property (nonatomic) unsigned int resultCode;
 @property (nonatomic) unsigned int tagType;
 @property (nonatomic) unsigned long long timeDeltaFromReference;
@@ -47,6 +51,7 @@
 - (unsigned long long)duration;
 - (bool)hasDuration;
 - (bool)hasPayloadSize;
+- (bool)hasRawCommandCount;
 - (bool)hasResultCode;
 - (bool)hasTagType;
 - (bool)hasTimeDeltaFromReference;
@@ -57,17 +62,20 @@
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (unsigned int)payloadSize;
+- (unsigned int)rawCommandCount;
 - (bool)readFrom:(id)arg1;
 - (unsigned int)resultCode;
 - (void)setDuration:(unsigned long long)arg1;
 - (void)setHasDuration:(bool)arg1;
 - (void)setHasPayloadSize:(bool)arg1;
+- (void)setHasRawCommandCount:(bool)arg1;
 - (void)setHasResultCode:(bool)arg1;
 - (void)setHasTagType:(bool)arg1;
 - (void)setHasTimeDeltaFromReference:(bool)arg1;
 - (void)setHasTimestamp:(bool)arg1;
 - (void)setHasType:(bool)arg1;
 - (void)setPayloadSize:(unsigned int)arg1;
+- (void)setRawCommandCount:(unsigned int)arg1;
 - (void)setResultCode:(unsigned int)arg1;
 - (void)setTagType:(unsigned int)arg1;
 - (void)setTimeDeltaFromReference:(unsigned long long)arg1;

@@ -37,6 +37,7 @@
     bool  _pointOfInterestHandoffEnabled;
     NSString * _ppid;
     NSString * _preferredApp;
+    NSDictionary * _protocolDetails;
     NSDictionary * _protocols;
     NSString * _serialNumber;
     NSMutableArray * _sessionsList;
@@ -77,6 +78,7 @@
 @property bool pointOfInterestHandoffEnabled;
 @property (nonatomic, copy) NSString *ppid;
 @property (nonatomic, copy) NSString *preferredApp;
+@property (nonatomic, copy) NSDictionary *protocolDetails;
 @property (nonatomic, retain) NSDictionary *protocols;
 @property (nonatomic, copy) NSString *serialNumber;
 @property (nonatomic, readonly) NSArray *sessionsList;
@@ -119,6 +121,7 @@
 - (bool)pointOfInterestHandoffEnabled;
 - (id)ppid;
 - (id)preferredApp;
+- (id)protocolDetails;
 - (id)protocols;
 - (void)removeSession:(id)arg1;
 - (id)serialNumber;
@@ -155,6 +158,7 @@
 - (void)setPointOfInterestHandoffEnabled:(bool)arg1;
 - (void)setPpid:(id)arg1;
 - (void)setPreferredApp:(id)arg1;
+- (void)setProtocolDetails:(id)arg1;
 - (void)setProtocols:(id)arg1;
 - (void)setSerialNumber:(id)arg1;
 - (void)setVehicleInfoInitialData:(id)arg1;

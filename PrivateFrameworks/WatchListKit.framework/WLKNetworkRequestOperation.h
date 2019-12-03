@@ -3,6 +3,7 @@
  */
 
 @interface WLKNetworkRequestOperation : WLKAsyncOperation {
+    NSNumber * _DSID;
     NSData * _data;
     AMSURLRequestEncoder * _encoder;
     NSError * _error;
@@ -17,6 +18,7 @@
     NSURLSessionDataTask * _task;
 }
 
+@property (nonatomic, copy) NSNumber *DSID;
 @property (nonatomic, retain) NSData *data;
 @property (nonatomic, retain) AMSURLRequestEncoder *encoder;
 @property (nonatomic, retain) NSError *error;
@@ -31,6 +33,7 @@
 @property (nonatomic, retain) NSURLSessionDataTask *task;
 
 - (void).cxx_destruct;
+- (id)DSID;
 - (void)_finishExecutionIfPossibleWithError:(id)arg1;
 - (void)_startNetworkRequest;
 - (long long)_statusCodeForAMSResult:(id)arg1 error:(id)arg2;
@@ -53,6 +56,7 @@
 - (id)request;
 - (long long)responseStatusCode;
 - (id)session;
+- (void)setDSID:(id)arg1;
 - (void)setData:(id)arg1;
 - (void)setEncoder:(id)arg1;
 - (void)setError:(id)arg1;

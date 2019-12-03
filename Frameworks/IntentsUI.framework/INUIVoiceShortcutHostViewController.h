@@ -3,15 +3,13 @@
  */
 
 @interface INUIVoiceShortcutHostViewController : _UIRemoteViewController <INUIVoiceShortcutRemoteHostingInterface> {
-    <INUIVoiceShortcutRemoteViewControllerAddDelegate> * _addDelegate;
-    <INUIVoiceShortcutRemoteViewControllerEditDelegate> * _editDelegate;
+    <INUIVoiceShortcutRemoteViewControllerDelegate> * _delegate;
     long long  _mode;
 }
 
-@property (nonatomic) <INUIVoiceShortcutRemoteViewControllerAddDelegate> *addDelegate;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) <INUIVoiceShortcutRemoteViewControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) <INUIVoiceShortcutRemoteViewControllerEditDelegate> *editDelegate;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long mode;
 @property (readonly) Class superclass;
@@ -25,16 +23,13 @@
 + (id)serviceViewControllerInterface;
 
 - (void).cxx_destruct;
-- (id)addDelegate;
-- (id)editDelegate;
+- (id)delegate;
 - (long long)mode;
-- (void)remoteViewControllerAddDidCancel;
-- (void)remoteViewControllerDidAddVoiceShortcut:(id)arg1 error:(id)arg2;
+- (void)remoteViewControllerDidCancel;
+- (void)remoteViewControllerDidCreateVoiceShortcut:(id)arg1 error:(id)arg2;
 - (void)remoteViewControllerDidDeleteVoiceShortcutWithIdentifier:(id)arg1;
-- (void)remoteViewControllerDidEditVoiceShortcut:(id)arg1 error:(id)arg2;
-- (void)remoteViewControllerEditDidCancel;
-- (void)setAddDelegate:(id)arg1;
-- (void)setEditDelegate:(id)arg1;
+- (void)remoteViewControllerDidUpdateVoiceShortcut:(id)arg1 error:(id)arg2;
+- (void)setDelegate:(id)arg1;
 - (void)setMode:(long long)arg1;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
 

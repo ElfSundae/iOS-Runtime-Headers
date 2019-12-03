@@ -3,29 +3,23 @@
  */
 
 @interface MLInternalSettings : NSObject {
-    bool  _experimentalMode;
-    bool  _isNeuralNetworkEnergyEfficientPathForbidden;
     bool  _isNeuralNetworkGPUPathForbidden;
+    bool  _restrictNeuralNetworksFromUsingANE;
     bool  _restrictNeuralNetworksToUseCPUOnly;
-    bool  _restrictNeuralNetworksToUseNonEnergyEfficientMode;
 }
 
-@property bool experimentalMode;
-@property (nonatomic, readonly) bool isNeuralNetworkEnergyEfficientPathForbidden;
 @property (nonatomic, readonly) bool isNeuralNetworkGPUPathForbidden;
+@property bool restrictNeuralNetworksFromUsingANE;
 @property bool restrictNeuralNetworksToUseCPUOnly;
-@property bool restrictNeuralNetworksToUseNonEnergyEfficientMode;
 
++ (bool)deviceHasANE;
 + (id)globalSettings;
 
-- (bool)experimentalMode;
 - (id)init;
-- (bool)isNeuralNetworkEnergyEfficientPathForbidden;
 - (bool)isNeuralNetworkGPUPathForbidden;
+- (bool)restrictNeuralNetworksFromUsingANE;
 - (bool)restrictNeuralNetworksToUseCPUOnly;
-- (bool)restrictNeuralNetworksToUseNonEnergyEfficientMode;
-- (void)setExperimentalMode:(bool)arg1;
+- (void)setRestrictNeuralNetworksFromUsingANE:(bool)arg1;
 - (void)setRestrictNeuralNetworksToUseCPUOnly:(bool)arg1;
-- (void)setRestrictNeuralNetworksToUseNonEnergyEfficientMode:(bool)arg1;
 
 @end

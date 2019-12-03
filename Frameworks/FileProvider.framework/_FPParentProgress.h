@@ -3,10 +3,10 @@
  */
 
 @interface _FPParentProgress : NSProgress {
-    _FPProgressProxy * _progressProxy;
+    FPProgressProxy * _progressProxy;
 }
 
-@property (retain) _FPProgressProxy *progressProxy;
+@property (readonly) FPProgressProxy *progressProxy;
 
 - (void).cxx_destruct;
 - (id)progressProxy;

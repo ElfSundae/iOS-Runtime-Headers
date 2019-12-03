@@ -7,9 +7,7 @@
 }
 
 @property (nonatomic, readonly, copy) NSSet *autoFavoriteTagIDs;
-@property (nonatomic, readonly, copy) NSString *bundleIAP;
-@property (nonatomic, readonly) FCBundleSubscription *bundleSubscription;
-@property (nonatomic, readonly) unsigned long long bundleSubscriptionState;
+@property (nonatomic, readonly, copy) FCBundleSubscription *bundleSubscription;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, readonly, copy) <FCDerivedPersonalizationData><NSCoding> *derivedPersonalizationData;
 @property (readonly, copy) NSString *description;
@@ -18,16 +16,14 @@
 @property (nonatomic, readonly, copy) NSSet *mutedTagIDs;
 @property (nonatomic, readonly, copy) NSNumber *onboardingVersion;
 @property (nonatomic, readonly, copy) NSSet *purchasedTagIDs;
-@property (nonatomic, readonly, copy) NSArray *rankedPersonalSubscribedTagIDs;
+@property (nonatomic, readonly, copy) NSArray *rankedAllSubscribedTagIDs;
 @property (nonatomic, readonly, copy) NSDictionary *recentlyReadHistoryItems;
 @property (nonatomic, readonly, copy) NSArray *recentlySeenHistoryItems;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)autoFavoriteTagIDs;
-- (id)bundleIAP;
 - (id)bundleSubscription;
-- (unsigned long long)bundleSubscriptionState;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)derivedPersonalizationData;
 - (id)dictionary;
@@ -36,8 +32,9 @@
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (id)mutedTagIDs;
 - (id)onboardingVersion;
+- (void)prepareForUseWithCompletion:(id /* block */)arg1;
 - (id)purchasedTagIDs;
-- (id)rankedPersonalSubscribedTagIDs;
+- (id)rankedAllSubscribedTagIDs;
 - (id)recentlyReadHistoryItems;
 - (id)recentlySeenHistoryItems;
 

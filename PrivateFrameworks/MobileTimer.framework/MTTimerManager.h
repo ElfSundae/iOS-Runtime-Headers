@@ -24,15 +24,17 @@
 
 + (double)defaultDuration;
 + (void)setDefaultDuration:(double)arg1;
-+ (void)updateTimerShortcutItem;
 + (void)warmUp;
 
 - (void).cxx_destruct;
 - (void)_getCachedTimersWithFuture:(id)arg1 finishBlock:(id /* block */)arg2;
 - (id)_initWithConnectionProvidingBlock:(id /* block */)arg1 metrics:(id)arg2;
 - (id)_initWithConnectionProvidingBlock:(id /* block */)arg1 metrics:(id)arg2 notificationCenter:(id)arg3;
+- (id)_runningTimerFromCurrentTimer:(id)arg1 withDuration:(double)arg2;
 - (id)_updateCurrentTimerWithState:(unsigned long long)arg1;
 - (bool)_updateCurrentTimerWithStateSync:(unsigned long long)arg1;
+- (id)_updateTimer:(id)arg1 doSynchronous:(bool)arg2;
+- (id)_validateCanStartTimer:(id)arg1;
 - (id)addTimer:(id)arg1;
 - (id)cache;
 - (void)checkIn;

@@ -30,6 +30,7 @@
 - (void)removeAllObjects;
 - (void)removeObject:(id)arg1;
 - (void)removeObjectAtIndex:(unsigned long long)arg1;
+- (void)removeObjectsInArray:(id)arg1;
 - (void)replaceObjectAtIndex:(unsigned long long)arg1 withObject:(id)arg2;
 - (void)setArray:(id)arg1;
 - (void)setConcurrentQueue:(id)arg1;

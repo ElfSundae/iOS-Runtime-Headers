@@ -10,6 +10,7 @@
     NSArray * _assetTokenRequests;
     NSMutableDictionary * _assetZoneByKey;
     NSMutableOrderedSet * _items;
+    unsigned long long  _mmcsEncryptionSupport;
     NSMutableDictionary * _rerefAssetBatchesByZoneID;
 }
 
@@ -20,6 +21,7 @@
 @property (nonatomic, retain) NSArray *assetTokenRequests;
 @property (nonatomic, retain) NSMutableDictionary *assetZoneByKey;
 @property (nonatomic, retain) NSMutableOrderedSet *items;
+@property (nonatomic) unsigned long long mmcsEncryptionSupport;
 @property (nonatomic, retain) NSMutableDictionary *rerefAssetBatchesByZoneID;
 
 - (void).cxx_destruct;
@@ -37,8 +39,9 @@
 - (void)failBatch:(id)arg1;
 - (bool)hasSuccessfulAssetTokenRequests;
 - (bool)hasSuccessfulBatches;
-- (id)init;
+- (id)initWithMMCSEncryptionSupport:(unsigned long long)arg1;
 - (id)items;
+- (unsigned long long)mmcsEncryptionSupport;
 - (void)planAssetRequests;
 - (void)planGetChunkKeysBatches;
 - (void)planRegisterBatches;
@@ -50,6 +53,7 @@
 - (void)setAssetTokenRequests:(id)arg1;
 - (void)setAssetZoneByKey:(id)arg1;
 - (void)setItems:(id)arg1;
+- (void)setMmcsEncryptionSupport:(unsigned long long)arg1;
 - (void)setRerefAssetBatchesByZoneID:(id)arg1;
 
 @end

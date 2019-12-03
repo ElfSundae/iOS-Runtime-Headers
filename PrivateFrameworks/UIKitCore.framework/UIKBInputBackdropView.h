@@ -42,7 +42,7 @@
 @property (nonatomic, retain) UIKBBackdropView *inputBackdropRightView;
 @property (readonly) long long style;
 
-+ (bool)_retroactivelyRequiresConstraintBasedLayout;
++ (bool)requiresConstraintBasedLayout;
 
 - (void)_beginSplitTransitionIfNeeded:(double)arg1 gapWidth:(double)arg2;
 - (void)_endSplitTransitionIfNeeded:(bool)arg1;
@@ -59,7 +59,7 @@
 - (id)inputBackdropLeftView;
 - (id)inputBackdropRightView;
 - (void)layoutInputBackdropToFullWithRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
-- (void)layoutInputBackdropToSplitWithLeftViewRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 andRightViewRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 innerCorners:(int)arg3;
+- (void)layoutInputBackdropToSplitWithLeftViewRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 andRightViewRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 innerCorners:(unsigned long long)arg3;
 - (void)prepareForSnapshotting;
 - (void)restoreFromSnapshotting;
 - (void)setCaptureView:(id)arg1;

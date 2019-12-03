@@ -4,8 +4,8 @@
 
 @interface GEORPProblemStatusResponse : PBCodable <NSCopying> {
     struct { 
-        unsigned int statusCode : 1; 
-    }  _has;
+        unsigned int has_statusCode : 1; 
+    }  _flags;
     NSMutableArray * _problemStatus;
     int  _statusCode;
 }
@@ -14,6 +14,7 @@
 @property (nonatomic, retain) NSMutableArray *problemStatus;
 @property (nonatomic) int statusCode;
 
++ (bool)isValid:(id)arg1;
 + (Class)problemStatusType;
 
 - (void).cxx_destruct;
@@ -31,6 +32,7 @@
 - (id)problemStatus;
 - (id)problemStatusAtIndex:(unsigned long long)arg1;
 - (unsigned long long)problemStatusCount;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasStatusCode:(bool)arg1;
 - (void)setProblemStatus:(id)arg1;

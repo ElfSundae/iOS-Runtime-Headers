@@ -25,7 +25,7 @@
 }
 
 @property (nonatomic, retain) NSURL *baseURL;
-@property (nonatomic, retain) NSString *cacheFilePath;
+@property (nonatomic, copy) NSString *cacheFilePath;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) bool didScheduleCacheUpdate;

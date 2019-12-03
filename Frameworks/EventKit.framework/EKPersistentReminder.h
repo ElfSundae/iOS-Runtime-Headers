@@ -4,6 +4,7 @@
 
 @interface EKPersistentReminder : EKPersistentCalendarItem
 
++ (Class)meltedClass;
 + (id)reminderWithRandomUUID;
 
 - (id)completionDate;

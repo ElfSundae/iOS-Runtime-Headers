@@ -12,6 +12,7 @@
 + (id)_translateIdentifierToPrivacyAcknowledgement:(id)arg1 withVersion:(unsigned long long)arg2;
 + (void)acknowledgePrivacyLinkWithIdentifier:(id)arg1;
 + (void)acknowledgePrivacyLinkWithIdentifier:(id)arg1 URL:(id)arg2;
++ (id)appStorePrivacyIdentifiers;
 + (bool)shouldDisplayPrivacyLinkWithIdentifier:(id)arg1;
 + (id)storePrivacyIdentifiers;
 + (void)syncPrivacyAcknowledgementOnAccount:(id)arg1 URL:(id)arg2;

@@ -7,6 +7,7 @@
     UIApplicationShortcutIcon * _icon;
     NSString * _localizedSubtitle;
     NSString * _localizedTitle;
+    id  _targetContentIdentifier;
     NSString * _type;
     NSData * _userInfoData;
 }
@@ -17,6 +18,7 @@
 @property (nonatomic, copy) NSString *localizedSubtitle;
 @property (nonatomic, copy) NSString *localizedTitle;
 @property (nonatomic, readonly, copy) SBSApplicationShortcutItem *sbsShortcutItem;
+@property (nonatomic, copy) id targetContentIdentifier;
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, copy) NSDictionary *userInfo;
 @property (nonatomic, copy) NSData *userInfoData;
@@ -26,7 +28,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
-- (id)_initWithType:(id)arg1 localizedTitle:(id)arg2 localizedSubtitle:(id)arg3 icon:(id)arg4 userInfoData:(id)arg5 activationMode:(unsigned long long)arg6;
+- (id)_initWithType:(id)arg1 localizedTitle:(id)arg2 localizedSubtitle:(id)arg3 icon:(id)arg4 userInfoData:(id)arg5 activationMode:(unsigned long long)arg6 targetContentIdentifier:(id)arg7;
 - (unsigned long long)activationMode;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -45,9 +47,11 @@
 - (void)setIcon:(id)arg1;
 - (void)setLocalizedSubtitle:(id)arg1;
 - (void)setLocalizedTitle:(id)arg1;
+- (void)setTargetContentIdentifier:(id)arg1;
 - (void)setType:(id)arg1;
 - (void)setUserInfo:(id)arg1;
 - (void)setUserInfoData:(id)arg1;
+- (id)targetContentIdentifier;
 - (id)type;
 - (id)userInfo;
 - (id)userInfoData;

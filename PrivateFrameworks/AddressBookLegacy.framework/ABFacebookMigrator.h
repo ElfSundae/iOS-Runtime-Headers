@@ -6,7 +6,7 @@
     ACAccountStore * _accountStore;
     void * _addressBook;
     NSString * _destinationDescription;
-    long long  _facebookContactsCount;
+    unsigned long long  _facebookContactsCount;
     void * _facebookSource;
     bool  _mayHaveFacebookSource;
     int  _mergeDestinationSourceID;
@@ -16,7 +16,7 @@
 @property (nonatomic) void*addressBook;
 @property (getter=isCheckDone, nonatomic) bool checkDone;
 @property (nonatomic, retain) NSString *destinationDescription;
-@property (nonatomic) long long facebookContactsCount;
+@property (nonatomic) unsigned long long facebookContactsCount;
 @property (nonatomic) void*facebookSource;
 @property (nonatomic) bool mayHaveFacebookSource;
 @property (nonatomic) int mergeDestinationSourceID;
@@ -39,10 +39,11 @@
 - (void)dealloc;
 - (void)deleteFacebookContacts;
 - (id)destinationDescription;
-- (long long)facebookContactsCount;
+- (unsigned long long)facebookContactsCount;
 - (void*)facebookSource;
 - (int)findBestMergeDestinationSourceID;
 - (id)initWithAddressBook:(void*)arg1;
+- (id)initWithAddressBook:(void*)arg1 accountStore:(id)arg2;
 - (bool)isCheckDone;
 - (bool)mayHaveFacebookSource;
 - (int)mergeDestinationSourceID;
@@ -52,7 +53,7 @@
 - (void)setAddressBook:(void*)arg1;
 - (void)setCheckDone:(bool)arg1;
 - (void)setDestinationDescription:(id)arg1;
-- (void)setFacebookContactsCount:(long long)arg1;
+- (void)setFacebookContactsCount:(unsigned long long)arg1;
 - (void)setFacebookSource:(void*)arg1;
 - (void)setMayHaveFacebookSource:(bool)arg1;
 - (void)setMergeDestinationSourceID:(int)arg1;

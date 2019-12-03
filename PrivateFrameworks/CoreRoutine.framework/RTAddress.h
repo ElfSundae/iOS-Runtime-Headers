@@ -9,6 +9,7 @@
     NSString * _country;
     NSString * _countryCode;
     NSDate * _creationDate;
+    NSDate * _expirationDate;
     NSUUID * _identifier;
     NSString * _inlandWater;
     bool  _isIsland;
@@ -27,6 +28,7 @@
 @property (nonatomic, readonly, copy) NSString *country;
 @property (nonatomic, readonly, copy) NSString *countryCode;
 @property (nonatomic, retain) NSDate *creationDate;
+@property (nonatomic, readonly) NSDate *expirationDate;
 @property (nonatomic, readonly, copy) NSUUID *identifier;
 @property (nonatomic, readonly, copy) NSString *inlandWater;
 @property (nonatomic, readonly) bool isIsland;
@@ -51,11 +53,12 @@
 - (id)creationDate;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)expirationDate;
 - (unsigned long long)hash;
 - (id)identifier;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 subThoroughfare:(id)arg2 thoroughfare:(id)arg3 subLocality:(id)arg4 locality:(id)arg5 subAdministrativeArea:(id)arg6 administrativeArea:(id)arg7 administrativeAreaCode:(id)arg8 postalCode:(id)arg9 country:(id)arg10 countryCode:(id)arg11 inlandWater:(id)arg12 ocean:(id)arg13 areasOfInterest:(id)arg14 isIsland:(bool)arg15 creationDate:(id)arg16;
+- (id)initWithIdentifier:(id)arg1 subThoroughfare:(id)arg2 thoroughfare:(id)arg3 subLocality:(id)arg4 locality:(id)arg5 subAdministrativeArea:(id)arg6 administrativeArea:(id)arg7 administrativeAreaCode:(id)arg8 postalCode:(id)arg9 country:(id)arg10 countryCode:(id)arg11 inlandWater:(id)arg12 ocean:(id)arg13 areasOfInterest:(id)arg14 isIsland:(bool)arg15 creationDate:(id)arg16 expirationDate:(id)arg17;
 - (id)initWithThoroughfare:(id)arg1 locality:(id)arg2 administrativeArea:(id)arg3 postalCode:(id)arg4 country:(id)arg5 countryCode:(id)arg6;
 - (id)initWithThoroughfare:(id)arg1 subLocality:(id)arg2 locality:(id)arg3 subAdministrativeArea:(id)arg4 administrativeArea:(id)arg5 postalCode:(id)arg6 country:(id)arg7 countryCode:(id)arg8;
 - (id)inlandWater;

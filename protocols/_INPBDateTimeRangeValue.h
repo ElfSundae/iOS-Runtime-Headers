@@ -5,8 +5,10 @@
 
 @required
 
+- (bool)allDay;
 - (long long)endCalendar;
 - (_INPBDateTime *)endDateTime;
+- (bool)hasAllDay;
 - (bool)hasEndCalendar;
 - (bool)hasEndDateTime;
 - (bool)hasRecurrence;
@@ -14,8 +16,10 @@
 - (bool)hasStartDateTime;
 - (bool)hasValueMetadata;
 - (_INPBRecurrenceValue *)recurrence;
+- (void)setAllDay:(bool)arg1;
 - (void)setEndCalendar:(long long)arg1;
 - (void)setEndDateTime:(_INPBDateTime *)arg1;
+- (void)setHasAllDay:(bool)arg1;
 - (void)setHasEndCalendar:(bool)arg1;
 - (void)setHasStartCalendar:(bool)arg1;
 - (void)setRecurrence:(_INPBRecurrenceValue *)arg1;

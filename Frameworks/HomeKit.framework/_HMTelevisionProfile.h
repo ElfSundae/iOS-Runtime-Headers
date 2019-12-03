@@ -14,7 +14,6 @@
 
 - (void).cxx_destruct;
 - (void)_handleSourceDisplayOrderUpdated:(id)arg1;
-- (bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_notifyDelegateOfUpdatedSourceDisplayOrder:(id)arg1;
 - (void)_registerNotificationHandlers;
 - (id)delegate;

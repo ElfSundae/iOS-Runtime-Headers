@@ -10,7 +10,7 @@
 
 - (void).cxx_destruct;
 - (void)_completionSessionWithCompletionHandler:(id /* block */)arg1;
-- (void)getBestMatchesForTypedString:(id)arg1 limit:(unsigned long long)arg2 completionHandler:(id /* block */)arg3;
+- (void)getBestMatchesForTypedString:(id)arg1 limit:(unsigned long long)arg2 forQueryID:(long long)arg3 completionHandler:(id /* block */)arg4;
 - (id)init;
 - (void)userDidSelectCompletionMatch:(id)arg1 forTypedString:(id)arg2;
 

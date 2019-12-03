@@ -2,13 +2,11 @@
    Image: /System/Library/PrivateFrameworks/SiriTape.framework/SiriTape
  */
 
-@interface STAceRecorder : NSObject {
+@interface STAceRecorder : NSObject <STAceObjectHandler> {
     NSObject<OS_dispatch_queue> * _queue;
     NSMutableArray * _speechLogs;
     NSMutableDictionary * _timestampToAceObjs;
 }
-
-+ (id)sharedRecorder;
 
 - (void).cxx_destruct;
 - (bool)_createDirectoryIfNeededWithBaseURL:(id)arg1;

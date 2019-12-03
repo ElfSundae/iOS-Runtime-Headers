@@ -17,6 +17,7 @@
 - (id)indexXmlFilename;
 - (bool)isSageDocumentType:(id)arg1;
 - (bool)isTCMessageExceptionErrorDomain:(id)arg1;
+- (bool)isTextOnlyType:(id)arg1;
 - (id)needNewerVersionIndexXmlContentString;
 - (id)nestedDocumentFilename;
 - (id)newExportableDocumentTypesForFlag:(unsigned long long)arg1;

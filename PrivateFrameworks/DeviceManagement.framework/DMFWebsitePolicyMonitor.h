@@ -3,21 +3,20 @@
  */
 
 @interface DMFWebsitePolicyMonitor : NSObject {
-    NSUUID * _policyMonitorIdentifier;
+    NSUUID * _identifier;
     NSArray * _policyTypes;
 }
 
 @property (getter=isEnabled, readonly) bool enabled;
-@property (nonatomic, readonly) NSUUID *policyMonitorIdentifier;
+@property (nonatomic, readonly) NSUUID *identifier;
 @property (nonatomic, copy) NSArray *policyTypes;
 
 - (void).cxx_destruct;
-- (void)_fetchCategoriesIfNeededForWebsites:(id)arg1 response:(id /* block */)arg2;
-- (bool)askPermissionForWebsite:(id)arg1 error:(id*)arg2;
+- (void)_fetchCategoriesIfNeededForWebsiteURLs:(id)arg1 response:(id /* block */)arg2;
 - (void)dealloc;
+- (id)identifier;
 - (id)initWithPolicyChangeHandler:(id /* block */)arg1;
 - (bool)isEnabled;
-- (id)policyMonitorIdentifier;
 - (id)policyTypes;
 - (void)requestPoliciesForWebsites:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)setPolicyTypes:(id)arg1;

@@ -14,6 +14,8 @@
 @property (nonatomic, readonly) NSData *lensDistortionLookupTable;
 @property (nonatomic, readonly) float pixelSize;
 
+// Image: /System/Library/Frameworks/AVFoundation.framework/AVFoundation
+
 - (id)_distortionLookupTableFromCoefficients:(id)arg1 distortionCenter:(struct CGPoint { double x1; double x2; })arg2 pixelSize:(float)arg3 referenceDimensions:(struct CGSize { double x1; double x2; })arg4 lookupTableLength:(int)arg5;
 - (id)_initEmpty;
 - (id)cameraCalibrationDataWithExifOrientation:(unsigned int)arg1;
@@ -30,5 +32,9 @@
 - (struct CGPoint { double x1; double x2; })lensDistortionCenter;
 - (id)lensDistortionLookupTable;
 - (float)pixelSize;
+
+// Image: /System/Library/PrivateFrameworks/NeutrinoCore.framework/NeutrinoCore
+
+- (void)nu_updateDigest:(id)arg1;
 
 @end

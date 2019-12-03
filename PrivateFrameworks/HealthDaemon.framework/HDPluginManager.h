@@ -3,12 +3,14 @@
  */
 
 @interface HDPluginManager : NSObject {
+    NSArray * _allowablePluginDirectoryPaths;
     HDDaemon * _daemon;
     NSArray * _legacyPlugins;
     NSDictionary * _legacyPluginsByIdentifier;
     NSArray * _plugins;
 }
 
+@property (nonatomic, copy) NSArray *allowablePluginDirectoryPaths;
 @property (nonatomic) HDDaemon *daemon;
 @property (nonatomic, retain) NSDictionary *legacyPluginsByIdentifier;
 
@@ -16,7 +18,7 @@
 - (id)_builtInPluginClasses;
 - (id)_createLegacyPluginsFromClasses:(id)arg1;
 - (id)_createPluginsFromClasses:(id)arg1;
-- (id)_internalPluginsDirectoryPath;
+- (id)_internalPluginsDirectoryPaths;
 - (void)_loadPlugins;
 - (Class)_loadPrincipalClassConformingToProtocols:(id)arg1 fromBundleAtPath:(id)arg2;
 - (id)_loadPrincipalClassesConformingToProtocols:(id)arg1 fromBundlesInDirectoryAtPath:(id)arg2 error:(id*)arg3;
@@ -24,6 +26,7 @@
 - (id)_pluginDirectoryPaths;
 - (id)_pluginsDirectoryPath;
 - (id)_principalClassProtocols;
+- (id)allowablePluginDirectoryPaths;
 - (id)createExtensionsForDaemon:(id)arg1;
 - (id)createExtensionsForProfile:(id)arg1;
 - (id)daemon;
@@ -33,6 +36,7 @@
 - (id)pluginForIdentifier:(id)arg1;
 - (id)pluginsConformingToProtocol:(id)arg1;
 - (id)pluginsForProtocol:(id)arg1;
+- (void)setAllowablePluginDirectoryPaths:(id)arg1;
 - (void)setDaemon:(id)arg1;
 - (void)setLegacyPluginsByIdentifier:(id)arg1;
 

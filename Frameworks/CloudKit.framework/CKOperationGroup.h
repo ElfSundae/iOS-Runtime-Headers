@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
  */
 
-@interface CKOperationGroup : NSObject <NSSecureCoding> {
+@interface CKOperationGroup : NSObject <ICLoggable, NSSecureCoding> {
     NSString * _authPromptReason;
     CKOperationConfiguration * _defaultConfiguration;
     long long  _expectedReceiveSize;
@@ -16,13 +16,17 @@
 @property (nonatomic, readonly) long long approximateReceiveBytes;
 @property (nonatomic, readonly) long long approximateSendBytes;
 @property (copy) NSString *authPromptReason;
+@property (readonly, copy) NSString *debugDescription;
 @property (copy) CKOperationConfiguration *defaultConfiguration;
+@property (readonly, copy) NSString *description;
 @property long long expectedReceiveSize;
 @property long long expectedSendSize;
+@property (readonly) unsigned long long hash;
 @property (copy) NSString *name;
 @property (nonatomic, readonly, copy) NSString *operationGroupID;
 @property unsigned long long quantity;
 @property (nonatomic, copy) NSNumber *quantityNumber;
+@property (readonly) Class superclass;
 @property (nonatomic, retain) CKOperationGroupSystemImposedInfo *systemImposedInfo;
 
 // Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
@@ -88,6 +92,11 @@
 + (id)br_zoneConsolidation;
 + (id)br_zoneConsolidationManual;
 + (id)br_zoneHealthSimulation;
+
+// Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
+
+- (id)ic_loggingIdentifier;
+- (id)ic_loggingValues;
 
 // Image: /System/Library/PrivateFrameworks/PassKitCore.framework/PassKitCore
 

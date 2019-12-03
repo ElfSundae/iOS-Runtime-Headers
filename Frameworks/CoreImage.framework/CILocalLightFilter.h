@@ -10,11 +10,13 @@
     CIImage * inputLightMapImage;
     NSNumber * inputLightMapWidth;
     NSNumber * inputLocalLight;
+    NSNumber * inputSmartShadows;
 }
 
 + (id)customAttributes;
 
 - (id)_polyKernel;
+- (id)_shadowKernel;
 - (id)outputImage;
 
 @end

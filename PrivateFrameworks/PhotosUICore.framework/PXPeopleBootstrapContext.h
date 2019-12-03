@@ -20,7 +20,7 @@
 
 @property unsigned long long bootstrapType;
 @property (nonatomic, copy) id /* block */ cancelBlock;
-@property (nonatomic, readonly) NSString *displayName;
+@property (nonatomic, readonly) NSString *localizedName;
 @property (retain) PXPeopleNameSelection *nameSelection;
 @property (nonatomic, retain) <PXCMMPersonSuggestion> *personSuggestion;
 @property (nonatomic, copy) id /* block */ preCommitBlock;
@@ -39,8 +39,8 @@
 - (void).cxx_destruct;
 - (unsigned long long)bootstrapType;
 - (id /* block */)cancelBlock;
-- (id)displayName;
 - (id)init;
+- (id)localizedName;
 - (id)nameSelection;
 - (id)personSuggestion;
 - (id /* block */)preCommitBlock;

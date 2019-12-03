@@ -2,10 +2,9 @@
    Image: /System/Library/Frameworks/Metal.framework/Metal
  */
 
-@interface MTLCaptureScope : NSObject <MTLCaptureScope> {
+@interface MTLCaptureScope : _MTLObjectWithLabel <MTLCaptureScope> {
     <MTLCommandQueue> * _commandQueue;
     <MTLDevice> * _device;
-    NSString * _label;
 }
 
 @property (nonatomic, readonly) <MTLCommandQueue> *commandQueue;
@@ -22,7 +21,5 @@
 - (id)device;
 - (void)endScope;
 - (id)initWithDevice:(id)arg1 commandQueue:(id)arg2;
-- (id)label;
-- (void)setLabel:(id)arg1;
 
 @end

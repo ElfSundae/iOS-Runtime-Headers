@@ -45,6 +45,7 @@
 + (id)reuseIdentifier;
 
 - (void).cxx_destruct;
+- (id)_ckSymbolImageNamed:(id)arg1 preferredContentSizeCategory:(id)arg2 preferredFontTextStyle:(id)arg3;
 - (void)_configureButtonLayer:(id)arg1;
 - (void)_dismissUpdatingParticipantSpinner;
 - (void)_handleCommunicationAction:(id)arg1;

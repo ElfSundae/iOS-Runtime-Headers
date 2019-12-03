@@ -2,7 +2,9 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXCMMPhotoKitNotifyWhenReadyActionPerformer : PXCMMActionPerformer
+@interface PXCMMPhotoKitNotifyWhenReadyActionPerformer : PXCMMActionPerformer <PXCMMPhotoKitActionPerformer>
+
+@property (nonatomic, readonly) PXCMMPhotoKitSession *session;
 
 - (bool)_needsToNotifyForMomentShare:(id)arg1 localAssetCount:(long long)arg2;
 - (void)performBackgroundTask;

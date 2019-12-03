@@ -3,20 +3,20 @@
  */
 
 @interface SearchUIDragSource : NSObject <UIDragInteractionDelegate, UIDragInteractionDelegate_Private> {
-    <SearchUIDragObject> * _dragObject;
+    SearchUIRowModel * _dragObject;
     UIView * _dragSourceView;
-    SearchUIDropTarget * _dropTarget;
     UIView * _overrideDragPreviewView;
+    NSObject<OS_os_transaction> * _transaction;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (retain) <SearchUIDragObject> *dragObject;
+@property (nonatomic, retain) SearchUIRowModel *dragObject;
 @property UIView *dragSourceView;
-@property (retain) SearchUIDropTarget *dropTarget;
 @property (readonly) unsigned long long hash;
-@property (retain) UIView *overrideDragPreviewView;
+@property (nonatomic, retain) UIView *overrideDragPreviewView;
 @property (readonly) Class superclass;
+@property (retain) NSObject<OS_os_transaction> *transaction;
 
 + (id)dragSourceForView:(id)arg1 dragObject:(id)arg2;
 
@@ -26,19 +26,20 @@
 - (bool)_shouldPerformHitTestingForDragSessionInView:(id)arg1;
 - (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
 - (id)dragInteraction:(id)arg1 previewForLiftingItem:(id)arg2 session:(id)arg3;
+- (void)dragInteraction:(id)arg1 session:(id)arg2 didEndWithOperation:(unsigned long long)arg3;
 - (bool)dragInteraction:(id)arg1 sessionAllowsMoveOperation:(id)arg2;
 - (bool)dragInteraction:(id)arg1 sessionIsRestrictedToDraggingApplication:(id)arg2;
 - (void)dragInteraction:(id)arg1 sessionWillBegin:(id)arg2;
 - (id)dragObject;
 - (id)dragParametersForPreviewView:(id)arg1;
 - (id)dragSourceView;
-- (id)dropTarget;
 - (id)initWithView:(id)arg1 dragObject:(id)arg2;
 - (bool)isMailDrag;
 - (id)overrideDragPreviewView;
 - (void)setDragObject:(id)arg1;
 - (void)setDragSourceView:(id)arg1;
-- (void)setDropTarget:(id)arg1;
 - (void)setOverrideDragPreviewView:(id)arg1;
+- (void)setTransaction:(id)arg1;
+- (id)transaction;
 
 @end

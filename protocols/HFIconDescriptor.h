@@ -6,6 +6,7 @@
 @required
 
 - (NSString *)identifier;
+- (bool)shouldForceLTR;
 
 @optional
 

@@ -57,7 +57,6 @@
 - (id)externalDeviceHIDWithUUID:(id)arg1;
 - (id)externalDeviceHIDs;
 - (struct OpaqueFigEndpoint { }*)figEndpoint;
-- (void)finalize;
 - (id)init;
 - (id)initWithFigEndpoint:(struct OpaqueFigEndpoint { }*)arg1;
 - (bool)limitedUI;

@@ -14,6 +14,7 @@
 + (id)pairWithFirst:(id)arg1 second:(id)arg2;
 + (id)pairWithPair:(id)arg1;
 
+- (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)description;

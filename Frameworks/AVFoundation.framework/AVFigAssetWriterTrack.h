@@ -40,7 +40,6 @@
 - (bool)encoderSupportsMultiPass;
 - (void)endPassWithCompletionHandler:(id /* block */)arg1;
 - (struct OpaqueFigAssetWriter { }*)figAssetWriter;
-- (void)finalize;
 - (id)init;
 - (id)initWithFigAssetWriter:(struct OpaqueFigAssetWriter { }*)arg1 mediaType:(id)arg2 mediaFileType:(id)arg3 formatSpecification:(id)arg4 sourcePixelBufferAttributes:(id)arg5 multiPass:(bool)arg6 error:(id*)arg7;
 - (bool)isAboveHighWaterLevel;

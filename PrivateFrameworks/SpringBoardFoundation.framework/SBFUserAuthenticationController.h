@@ -2,12 +2,11 @@
    Image: /System/Library/PrivateFrameworks/SpringBoardFoundation.framework/SpringBoardFoundation
  */
 
-@interface SBFUserAuthenticationController : NSObject <SBFAuthenticationStatusProvider, SBFMobileKeyBagObserver, SBFPasscodeFieldChangeObserver, SBFUserAuthenticationModelDelegate> {
+@interface SBFUserAuthenticationController : NSObject <SBFAuthenticationAssertionProviding, SBFAuthenticationStatusProvider, SBFMobileKeyBagObserver, SBFPasscodeFieldChangeObserver, SBFUserAuthenticationModelDelegate> {
     SBFAuthenticationAssertionManager * _assertionManager;
     long long  _authenticationState;
     long long  _cachedAuthFlag;
     SBFMobileKeyBagState * _cachedExtendedState;
-    bool  _inSecureMode;
     SBFMobileKeyBag * _keybag;
     NSString * _lastIncorrectPasscodeAttempt;
     NSDate * _lastRevokedAuthenticationDate;
@@ -16,6 +15,7 @@
     <SBFAuthenticationPolicy> * _policy;
     NSMutableArray * _responders;
     struct __CFRunLoopObserver { } * _runLoopObserver;
+    SBFSecureDisplayCoordinator * _secureDisplayCoordinator;
     SBFAuthenticationAssertion * _transientAuthCheckingAssertion;
     PCPersistentTimer * _unblockTimer;
 }
@@ -23,6 +23,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool inSecureDisplayMode;
 @property (nonatomic, readonly) NSDate *lastRevokedAuthenticationDate;
 @property (getter=_policy, setter=_setPolicy:, nonatomic, retain) <SBFAuthenticationPolicy> *policy;
 @property (readonly) Class superclass;
@@ -64,7 +65,6 @@
 - (void)_setAuthState:(long long)arg1;
 - (void)_setModel:(id)arg1;
 - (void)_setPolicy:(id)arg1;
-- (void)_setSecureMode:(bool)arg1 postNotification:(bool)arg2;
 - (void)_setupPolicy:(id)arg1;
 - (void)_setup_runLoopObserverIfNecessary;
 - (bool)_shouldRevokeAuthenticationNow;
@@ -86,6 +86,7 @@
 - (void)deviceLockStateMayHaveChangedForModel:(id)arg1;
 - (bool)hasAuthenticatedAtLeastOnceSinceBoot;
 - (bool)hasPasscodeSet;
+- (bool)inSecureDisplayMode;
 - (id)initWithAssertionManager:(id)arg1 policy:(id)arg2;
 - (id)initWithAssertionManager:(id)arg1 policy:(id)arg2 keybag:(id)arg3 model:(id)arg4;
 - (bool)isAuthenticated;

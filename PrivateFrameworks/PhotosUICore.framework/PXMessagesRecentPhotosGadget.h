@@ -10,9 +10,9 @@
     UIViewController<PXPhotoLibraryPresenting> * _recentPhotosViewController;
 }
 
-@property (nonatomic, readonly) const struct __CFString { }*accessoryButtonEventTrackerKey;
 @property (nonatomic, readonly) NSString *accessoryButtonTitle;
 @property (nonatomic, readonly) unsigned long long accessoryButtonType;
+@property (nonatomic, readonly) Class collectionViewItemClass;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <PXGadgetDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -40,9 +40,7 @@
 - (id)gadgetSpec;
 - (unsigned long long)gadgetType;
 - (bool)hasContentToDisplay;
-- (bool)hasLoadedContentData;
 - (unsigned long long)headerStyle;
-- (void)loadContentData;
 - (id)localizedTitle;
 - (double)preferredHeight;
 - (long long)priority;
@@ -53,6 +51,6 @@
 - (void)setPriority:(long long)arg1;
 - (void)setRecentPhotosViewController:(id)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
-- (void)userDidSelectAccessoryButton:(id)arg1;
+- (void)userDidSelectAccessoryButton:(struct NSObject { Class x1; }*)arg1;
 
 @end

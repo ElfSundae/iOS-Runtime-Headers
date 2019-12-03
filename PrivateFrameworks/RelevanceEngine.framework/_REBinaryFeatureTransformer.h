@@ -3,17 +3,24 @@
  */
 
 @interface _REBinaryFeatureTransformer : REFeatureTransformer {
-    REFeatureValue * _threshold;
+    unsigned long long  _threshold;
 }
 
-- (void).cxx_destruct;
+@property (nonatomic) unsigned long long threshold;
+
++ (id)functionName;
+
 - (long long)_bitCount;
+- (unsigned long long)_createTransformFromValues:(unsigned long long*)arg1 count:(unsigned long long)arg2;
 - (unsigned long long)_featureCount;
 - (unsigned long long)_outputType;
-- (id)_transform:(id)arg1;
 - (bool)_validateWithFeatures:(id)arg1;
+- (void)configureWithInvocation:(id)arg1;
+- (void)dealloc;
 - (unsigned long long)hash;
-- (id)initWithThreshold:(id)arg1;
+- (id)init;
 - (bool)isEqual:(id)arg1;
+- (void)setThreshold:(unsigned long long)arg1;
+- (unsigned long long)threshold;
 
 @end

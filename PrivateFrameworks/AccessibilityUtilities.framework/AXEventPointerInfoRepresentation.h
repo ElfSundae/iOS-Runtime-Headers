@@ -3,6 +3,9 @@
  */
 
 @interface AXEventPointerInfoRepresentation : NSObject <AXEventRepresentationDescription, NSCopying, NSSecureCoding> {
+    double  _pointerAccelX;
+    double  _pointerAccelY;
+    double  _pointerAccelZ;
     double  _pointerButtonClickCount;
     double  _pointerButtonMask;
     double  _pointerButtonNumber;
@@ -15,6 +18,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) double pointerAccelX;
+@property (nonatomic) double pointerAccelY;
+@property (nonatomic) double pointerAccelZ;
 @property (nonatomic) double pointerButtonClickCount;
 @property (nonatomic) double pointerButtonMask;
 @property (nonatomic) double pointerButtonNumber;
@@ -32,6 +38,9 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
+- (double)pointerAccelX;
+- (double)pointerAccelY;
+- (double)pointerAccelZ;
 - (double)pointerButtonClickCount;
 - (double)pointerButtonMask;
 - (double)pointerButtonNumber;
@@ -39,6 +48,9 @@
 - (double)pointerX;
 - (double)pointerY;
 - (double)pointerZ;
+- (void)setPointerAccelX:(double)arg1;
+- (void)setPointerAccelY:(double)arg1;
+- (void)setPointerAccelZ:(double)arg1;
 - (void)setPointerButtonClickCount:(double)arg1;
 - (void)setPointerButtonMask:(double)arg1;
 - (void)setPointerButtonNumber:(double)arg1;

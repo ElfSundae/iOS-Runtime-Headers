@@ -68,7 +68,7 @@
 - (void)handleActiveConnectionChange:(id)arg1;
 - (void)handleAlarmForTimeStamp:(unsigned int)arg1;
 - (bool)handleRemoteVideoAttributesChange:(struct __CVBuffer { }*)arg1;
-- (id)initWithRTP:(struct tagHANDLE { int x1; }*)arg1 delegate:(id)arg2 reportingAgent:(struct opaqueRTCReporting { }*)arg3 dumpID:(unsigned int)arg4 reportingParentID:(int)arg5;
+- (id)initWithRTP:(struct tagHANDLE { int x1; }*)arg1 delegate:(id)arg2 reportingAgent:(struct opaqueRTCReporting { }*)arg3 dumpID:(unsigned int)arg4 reportingParentID:(int)arg5 statisticsCollector:(id)arg6;
 - (void*)networkReceivePackets;
 - (void)pauseVideo;
 - (void)processReceptionReportBlock:(struct tagRTCP_RRB { unsigned int x1; unsigned int x2 : 8; unsigned int x3 : 24; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; }*)arg1 arrivalNTPTime:(union tagNTP { unsigned long long x1; struct { unsigned int x_2_1_1; unsigned int x_2_1_2; } x2; })arg2;
@@ -76,7 +76,7 @@
 - (int)processVideoRTP;
 - (void)reportingVideoStreamEvent:(unsigned short)arg1;
 - (void)rtcpSendIntervalElapsed;
-- (int)scheduleDecodeForFrameWithBuffer:(char *)arg1 size:(unsigned long long)arg2 timestamp:(unsigned int)arg3 hostTime:(double)arg4 showFrame:(bool)arg5;
+- (int)scheduleDecodeForFrameWithBuffer:(struct VCVideoReceiverSampleBuffer_t { struct __CFAllocator {} *x1; struct tagVCVideoDecodingArgs { int x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; unsigned short x_2_1_4; unsigned char x_2_1_5; bool x_2_1_6; unsigned short x_2_1_7; bool x_2_1_8; double x_2_1_9; int x_2_1_10; unsigned short x_2_1_11; bool x_2_1_12; unsigned short x_2_1_13; double x_2_1_14; } x2; struct OpaqueCMBlockBuffer {} *x3; unsigned long long x4; struct OpaqueCMBlockBuffer {} *x5; struct VCBlockBuffer_t { struct OpaqueCMBlockBuffer {} *x_6_1_1; unsigned long long x_6_1_2; char *x_6_1_3; } x6; struct VCBlockBuffer_t { struct OpaqueCMBlockBuffer {} *x_7_1_1; unsigned long long x_7_1_2; char *x_7_1_3; } x7; struct VCBlockBuffer_t { struct OpaqueCMBlockBuffer {} *x_8_1_1; unsigned long long x_8_1_2; char *x_8_1_3; } x8; struct VCBlockBuffer_t { struct OpaqueCMBlockBuffer {} *x_9_1_1; unsigned long long x_9_1_2; char *x_9_1_3; } x9; }*)arg1 timestamp:(unsigned int)arg2 hostTime:(double)arg3 showFrame:(bool)arg4;
 - (void)scheduleDecodeForTimestamp:(unsigned int)arg1;
 - (void)scheduleVideoDecode:(unsigned int*)arg1 schedule_n:(int)arg2;
 - (void)setEnableCVO:(bool)arg1 cvoExtensionID:(unsigned long long)arg2;

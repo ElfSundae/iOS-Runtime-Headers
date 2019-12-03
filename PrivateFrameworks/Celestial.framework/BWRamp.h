@@ -17,13 +17,16 @@
 
 @property (nonatomic, readonly) float currentValue;
 @property (nonatomic, readonly) bool isRamping;
+@property (nonatomic, readonly) bool isRampingUp;
 
 + (void)initialize;
 
 - (float)currentValue;
 - (id)init;
 - (bool)isRamping;
+- (bool)isRampingUp;
 - (void)startRampFrom:(float)arg1 to:(float)arg2 iterations:(int)arg3 shape:(int)arg4;
+- (void)startRampFrom:(float)arg1 to:(float)arg2 iterations:(int)arg3 shape:(int)arg4 exponentialConvergenceFraction:(float)arg5;
 - (float)updateRampForNexIteration;
 
 @end

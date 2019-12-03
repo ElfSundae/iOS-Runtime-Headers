@@ -39,7 +39,7 @@
 - (void)dealloc;
 - (id)delegate;
 - (id)glyphFont;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (id)initWithLeftActionItem:(id)arg1 rightActionItem:(id)arg2 useSmallFonts:(bool)arg3 singleItemIsFullWidth:(bool)arg4;
 - (id)initWithLeftActionItem:(id)arg1 rightActionItem:(id)arg2 useSmallFonts:(bool)arg3 singleItemIsFullWidth:(bool)arg4 useMarginLayout:(bool)arg5;
 - (id)leftButton;

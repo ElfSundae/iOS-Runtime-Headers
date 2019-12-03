@@ -11,6 +11,7 @@
     SKUIItemOfferButton * _itemOfferButton;
     SKUIItemState * _itemState;
     long long  _itemStyle;
+    bool  _leftToRight;
     long long  _numberOfUserRatings;
     NSString * _price;
     UIImageView * _starRatingImageView;
@@ -30,6 +31,7 @@
 @property (nonatomic, retain) UIImage *itemImage;
 @property (nonatomic, readonly) SKUIItemOfferButton *itemOfferButton;
 @property (nonatomic, retain) SKUIItemState *itemState;
+@property (nonatomic) bool leftToRight;
 @property (nonatomic) long long numberOfUserRatings;
 @property (nonatomic, copy) NSString *price;
 @property (nonatomic, copy) SKUIGiftTheme *theme;
@@ -42,8 +44,8 @@
 - (struct CGSize { double x1; double x2; })_imageSize;
 - (void)_itemOfferConfirmAction:(id)arg1;
 - (id)_newLabel;
-- (double)_paddingLeft;
-- (double)_paddingRight;
+- (double)_paddingLeading;
+- (double)_paddingTrailing;
 - (void)_reloadItemState:(bool)arg1;
 - (void)_reloadSubtitles;
 - (void)_reloadUserRatingViews;
@@ -61,6 +63,7 @@
 - (id)itemOfferButton;
 - (id)itemState;
 - (void)layoutSubviews;
+- (bool)leftToRight;
 - (long long)numberOfUserRatings;
 - (id)price;
 - (void)setArtistName:(id)arg1;
@@ -69,6 +72,7 @@
 - (void)setItemImage:(id)arg1;
 - (void)setItemState:(id)arg1;
 - (void)setItemState:(id)arg1 animated:(bool)arg2;
+- (void)setLeftToRight:(bool)arg1;
 - (void)setNumberOfUserRatings:(long long)arg1;
 - (void)setPrice:(id)arg1;
 - (void)setTheme:(id)arg1;

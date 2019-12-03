@@ -15,6 +15,7 @@
 - (void)dealloc;
 - (id)formattedStringValue;
 - (id)init;
+- (id)initWithImageReaderOutput:(id)arg1;
 - (id)objectInternal;
 - (void)setObjectInternal:(id)arg1;
 - (id)stringValue;

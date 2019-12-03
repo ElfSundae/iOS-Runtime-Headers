@@ -21,7 +21,7 @@
     bool  _didFloatCursor;
     bool  _didSuppressSelectionGrabbers;
     _UIStatesFeedbackGenerator * _feedbackBehaviour;
-    bool  _hadSpacePanTap;
+    bool  _hadAddedTouch;
     bool  _isLongPressing;
     bool  _isPanning;
     bool  _isSpacePan;
@@ -51,7 +51,7 @@
 @property (nonatomic) bool didFloatCursor;
 @property (nonatomic) bool didSuppressSelectionGrabbers;
 @property (nonatomic, retain) _UIStatesFeedbackGenerator *feedbackBehaviour;
-@property (nonatomic) bool hadSpacePanTap;
+@property (nonatomic) bool hadAddedTouch;
 @property (nonatomic) bool isLongPressing;
 @property (nonatomic) bool isPanning;
 @property (nonatomic) bool isSpacePan;
@@ -92,7 +92,7 @@
 - (bool)didSuppressSelectionGrabbers;
 - (void)enableEnclosingScrollViewNestedPinching;
 - (id)feedbackBehaviour;
-- (bool)hadSpacePanTap;
+- (bool)hadAddedTouch;
 - (id)init;
 - (bool)isLongPressing;
 - (bool)isPanning;
@@ -118,7 +118,7 @@
 - (void)setDidFloatCursor:(bool)arg1;
 - (void)setDidSuppressSelectionGrabbers:(bool)arg1;
 - (void)setFeedbackBehaviour:(id)arg1;
-- (void)setHadSpacePanTap:(bool)arg1;
+- (void)setHadAddedTouch:(bool)arg1;
 - (void)setIsLongPressing:(bool)arg1;
 - (void)setIsPanning:(bool)arg1;
 - (void)setIsSpacePan:(bool)arg1;
@@ -135,6 +135,7 @@
 - (void)setWasNestedPinchingDisabled:(bool)arg1;
 - (void)setWasScrollingEnabled:(bool)arg1;
 - (void)setWeightedPoint:(id)arg1;
+- (bool)shouldAddForceGesture;
 - (double)spacePanDistance;
 - (bool)suppressTwoFingerPan;
 - (id)tapLogTimer;

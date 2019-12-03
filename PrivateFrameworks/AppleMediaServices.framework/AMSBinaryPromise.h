@@ -10,7 +10,10 @@
 
 + (id)_globalPromiseStorage;
 + (id)_globalPromiseStorageAccessQueue;
++ (id)promiseWithAll:(id)arg1;
++ (id)promiseWithAny:(id)arg1;
 + (id)promiseWithError:(id)arg1;
++ (id)promiseWithFlattenedPromises:(id)arg1;
 + (id)promiseWithPromise:(id)arg1;
 + (id)promiseWithSuccess;
 
@@ -20,8 +23,11 @@
 - (void)addFinishBlock:(id /* block */)arg1;
 - (void)addSuccessBlock:(id /* block */)arg1;
 - (id)backingPromise;
+- (bool)cancel;
+- (id)catchWithBlock:(id /* block */)arg1;
 - (id /* block */)completionHandlerAdapter;
 - (bool)finishWithError:(id)arg1;
+- (bool)finishWithPromise:(id)arg1;
 - (bool)finishWithSuccess;
 - (bool)finishWithSuccess:(bool)arg1 error:(id)arg2;
 - (id)init;
@@ -29,6 +35,7 @@
 - (bool)resultWithError:(id*)arg1;
 - (bool)resultWithTimeout:(double)arg1 error:(id*)arg2;
 - (void)setBackingPromise:(id)arg1;
+- (id)thenWithBlock:(id /* block */)arg1;
 - (void)waitUntilFinished;
 - (void)waitUntilFinishedWithTimeout:(double)arg1;
 

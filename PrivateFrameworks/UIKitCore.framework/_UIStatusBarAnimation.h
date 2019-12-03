@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface _UIStatusBarAnimation : NSObject <NSCopying> {
+@interface _UIStatusBarAnimation : NSObject <NSCopying, _UIStatusBarPrioritized> {
     id /* block */  _animationBlock;
     NSMutableArray * _completionHandlers;
     NSSet * _delayedDisplayItemPlacements;

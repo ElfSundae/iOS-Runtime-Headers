@@ -13,6 +13,7 @@
     NSString * _modelSmallPhotoURL3x;
     NSString * _name;
     NSString * _osVersion;
+    NSString * _swVersion;
 }
 
 @property (nonatomic, readonly) NSString *model;
@@ -25,6 +26,7 @@
 @property (nonatomic, readonly) NSString *modelSmallPhotoURL3x;
 @property (nonatomic, readonly) NSString *name;
 @property (nonatomic, readonly) NSString *osVersion;
+@property (nonatomic, readonly) NSString *swVersion;
 
 - (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
@@ -38,5 +40,6 @@
 - (id)modelSmallPhotoURL3x;
 - (id)name;
 - (id)osVersion;
+- (id)swVersion;
 
 @end

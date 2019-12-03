@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
  */
 
-@interface TPDocumentRoot : TSADocumentRoot <TPPageControllerDelegate, TSCEResolverContainer, TSDInfoUUIDPathPrefixComponentsProvider, TSTResolverContainerNameProvider, TSWPChangeSessionManager, TSWPChangeVisibility, TSWPDrawableOLC, TSWPStorageParent> {
+@interface TPDocumentRoot : TSADocumentRoot <TPPageControllerDelegate, TSCEResolverContainer, TSDInfoUUIDPathPrefixComponentsProvider, TSDPencilAnnotationSupportedDocument, TSTResolverContainerNameProvider, TSWPChangeSessionManager, TSWPChangeVisibility, TSWPDrawableOLC, TSWPStorageParent> {
     TSWPChangeSession * _activeChangeSession;
     TPBackgroundPaginationController * _backgroundPaginationController;
     TSWPStorage * _bodyStorage;
@@ -63,6 +63,7 @@
 @property (nonatomic, readonly) bool autoListRecognition;
 @property (nonatomic, readonly) bool autoListTermination;
 @property (nonatomic, readonly) TPBackgroundPaginationController *backgroundPaginationController;
+@property (nonatomic, readonly) NSString *blankPageTemplateName;
 @property (nonatomic, readonly) TSWPStorage *bodyStorage;
 @property (nonatomic, readonly) TPBookmarkController *bookmarkController;
 @property (nonatomic) double bottomMargin;
@@ -86,7 +87,6 @@
 @property (nonatomic) bool initiallyShowTwoUp;
 @property (nonatomic, readonly) bool isNewDocument;
 @property (nonatomic, readonly) bool isTrackingChanges;
-@property (nonatomic) bool laysOutBodyVertically;
 @property (nonatomic) double leftMargin;
 @property (nonatomic, retain) TSWPChangeSession *mostRecentChangeSession;
 @property (nonatomic) bool needsAdditionalViewStateValidation;
@@ -99,6 +99,7 @@
 @property (nonatomic, readonly) long long pageViewState;
 @property (nonatomic, copy) NSString *paperID;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } paperSize;
+@property (nonatomic, retain) <TSDPencilAnnotationRenderingDetailsFactoryHelper> *pencilAnnotationFactoryHelper;
 @property (nonatomic) double presentationAutoScrollSpeed;
 @property (nonatomic, readonly) bool preventsChangeTracking;
 @property (nonatomic, readonly) bool preventsComments;
@@ -135,6 +136,7 @@
 - (bool)autoListRecognition;
 - (bool)autoListTermination;
 - (id)backgroundPaginationController;
+- (id)blankPageTemplateName;
 - (id)bodyStorage;
 - (double)bodyWidth;
 - (id)bookmarkController;
@@ -159,7 +161,7 @@
 - (id)documentRoot;
 - (id)drawablesZOrder;
 - (id)equationEnvironment;
-- (bool)exportToPath:(id)arg1 exporter:(id)arg2 error:(id*)arg3;
+- (bool)exportToPath:(id)arg1 exporter:(id)arg2 delegate:(id)arg3 error:(id*)arg4;
 - (id)firstSection;
 - (id)floatingDrawables;
 - (id)flowInfoContainer;
@@ -177,6 +179,7 @@
 - (const struct __CFLocale { }*)hyphenationLocale;
 - (void)i_upgradeSectionsForPageTemplates;
 - (int)indexForObject:(id)arg1;
+- (unsigned long long)inheritedSectionIndexForSectionIndex:(unsigned long long)arg1;
 - (id)initForThemeImportWithContext:(id)arg1;
 - (id)initUsingDefaultThemeWithContext:(id)arg1;
 - (id)initWithContext:(id)arg1;
@@ -186,6 +189,7 @@
 - (void)invalidateViewState;
 - (bool)isChangeTrackingEnabled;
 - (bool)isDrawableOnPageMaster:(id)arg1;
+- (bool)isMasterInfo:(id)arg1;
 - (bool)isMultiPageForQuickLook;
 - (bool)isNewDocument;
 - (bool)isPendingTableNameUniquification;
@@ -240,8 +244,9 @@
 - (long long)pageViewState;
 - (id)paperID;
 - (struct CGSize { double x1; double x2; })paperSize;
+- (id)pencilAnnotationFactoryHelper;
 - (bool)prepareAndValidateSidecarViewStateRootWithVersionUUIDMismatch:(id)arg1 sidecarDocumentRevision:(id)arg2 originalDocumentViewStateRoot:(id)arg3;
-- (void)prepareNewDocumentWithTemplateBundle:(id)arg1 documentLocale:(id)arg2;
+- (void)prepareNewDocumentWithTemplateIdentifier:(id)arg1 bundle:(id)arg2 documentLocale:(id)arg3;
 - (double)presentationAutoScrollSpeed;
 - (bool)preventsChangeTracking;
 - (bool)preventsComments;
@@ -313,6 +318,7 @@
 - (bool)textIsLinked;
 - (bool)textIsVerticalAtCharIndex:(unsigned long long)arg1;
 - (bool)textIsVerticalForFootnoteReferenceStorage:(id)arg1;
+- (bool)textIsVerticalInStorage:(id)arg1 atCharIndex:(unsigned long long)arg2;
 - (id)theme;
 - (id)thumbnailController;
 - (id)thumbnailIdentifierForPageIndex:(unsigned long long)arg1;

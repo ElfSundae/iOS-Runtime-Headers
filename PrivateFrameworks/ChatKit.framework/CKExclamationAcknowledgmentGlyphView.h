@@ -3,12 +3,12 @@
  */
 
 @interface CKExclamationAcknowledgmentGlyphView : CKAcknowledgmentGlyphView {
-    UIImageView * _leftExclamationGlyph;
-    UIImageView * _rightExclamationGlyph;
+    CKAcknowledgmentGlyphImageView * _leftExclamationGlyph;
+    CKAcknowledgmentGlyphImageView * _rightExclamationGlyph;
 }
 
-@property (nonatomic, retain) UIImageView *leftExclamationGlyph;
-@property (nonatomic, retain) UIImageView *rightExclamationGlyph;
+@property (nonatomic, retain) CKAcknowledgmentGlyphImageView *leftExclamationGlyph;
+@property (nonatomic, retain) CKAcknowledgmentGlyphImageView *rightExclamationGlyph;
 
 - (void).cxx_destruct;
 - (long long)acknowledgmentType;

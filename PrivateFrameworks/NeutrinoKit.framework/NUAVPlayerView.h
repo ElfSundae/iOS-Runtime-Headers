@@ -4,9 +4,10 @@
 
 @interface NUAVPlayerView : UIView {
     <NUAVPlayerViewDelegate> * _delegate;
+    bool  _observerDetached;
     AVPlayer * _player;
     bool  _readyForDisplay;
-    int  _updateReadyForDisplayID;
+    _Atomic int  _updateReadyForDisplayID;
 }
 
 @property (nonatomic) <NUAVPlayerViewDelegate> *delegate;
@@ -17,9 +18,10 @@
 
 - (void).cxx_destruct;
 - (void)_setReadyForDisplay:(bool)arg1;
-- (void)_updateReadyForDisplayWithID:(void *)arg1; // needs 1 arg types, found 2: /* Warning: Unrecognized filer type: '' using 'void*' */ void*, int
+- (void)_updateReadyForDisplayWithID:(void *)arg1; // needs 1 arg types, found 2: _Atomic /* Warning: Unrecognized filer type: '' using 'void*' */ void*, int
 - (void)dealloc;
 - (id)delegate;
+- (void)dispose;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (bool)isReadyForDisplay;

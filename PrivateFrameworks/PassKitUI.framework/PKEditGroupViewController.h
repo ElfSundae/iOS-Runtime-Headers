@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
  */
 
-@interface PKEditGroupViewController : PKEditTableViewController <PKEditPassesDetailsResponder, PKGroupDelegate, UIViewControllerPreviewingDelegate> {
+@interface PKEditGroupViewController : PKEditTableViewController <PKEditPassesDetailsResponder, PKGroupDelegate, _UIContextMenuInteractionDelegate> {
     <PKEditGroupViewControllerDelegate> * _delegate;
     UIBarButtonItem * _deleteToolbarItem;
     UIBarButtonItem * _flexibleSpace;
@@ -11,7 +11,6 @@
         double width; 
         double height; 
     }  _imageSizeNeeded;
-    <UIViewControllerPreviewing> * _previewingContext;
     <PKGroupDelegate> * _savedDelegate;
     UITableView * _tableView;
     PKPass * _viewingPass;
@@ -26,20 +25,21 @@
 - (void)_deleteAllPassesInGroup;
 - (void)_deleteButtonPressed;
 - (void)configureCell:(id)arg1 atIndexPath:(id)arg2 withPass:(id)arg3;
+- (id)contextMenuInteraction:(id)arg1 actionsForMenuAtLocation:(struct CGPoint { double x1; double x2; })arg2 withSuggestedActions:(id)arg3;
+- (id)contextMenuInteraction:(id)arg1 previewForHighlightingAtLocation:(struct CGPoint { double x1; double x2; })arg2;
+- (bool)contextMenuInteractionShouldBegin:(id)arg1;
 - (void)dealloc;
 - (id)group;
 - (void)group:(id)arg1 didInsertPass:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)group:(id)arg1 didMovePassFromIndex:(unsigned long long)arg2 toIndex:(unsigned long long)arg3;
 - (void)group:(id)arg1 didRemovePass:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)group:(id)arg1 didUpdatePass:(id)arg2 atIndex:(unsigned long long)arg3;
-- (id)initWithGroup:(id)arg1 existingGroupsController:(id)arg2 delegate:(id)arg3;
+- (id)initWithGroup:(id)arg1 existingGroupsController:(id)arg2 placeholders:(id)arg3 delegate:(id)arg4;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)pass;
 - (id)passAtIndexPath:(id)arg1;
 - (bool)passExistsWithUniqueIdentifier:(id)arg1;
 - (void)prefetchItemsAtIndexPaths:(id)arg1;
-- (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
-- (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint { double x1; double x2; })arg2;
 - (bool)tableView:(id)arg1 canMoveRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;

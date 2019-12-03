@@ -2,14 +2,12 @@
    Image: /System/Library/PrivateFrameworks/HomeUI.framework/HomeUI
  */
 
-@interface HUQuickControlCollectionViewController : HUItemCollectionViewController <HUQuickControlCollectionViewDelegateLayout, HUQuickControlContentCharacteristicWriting, HUQuickControlInteractiveContentContaining, HUQuickControlItemUpdating> {
+@interface HUQuickControlCollectionViewController : HUItemCollectionViewController <HUQuickControlCollectionViewDelegateLayout, HUQuickControlContentCharacteristicWriting, HUQuickControlInteractiveContentContaining, HUQuickControlItemUpdating, HUQuickControlTouchContinuing> {
     HUQuickControlContentCharacteristicWritingUpdateAdapter * _characteristicWritingAdapter;
     <HUQuickControlContentCharacteristicWritingDelegate> * _characteristicWritingDelegate;
     bool  _disableItemUpdatesForOverrideCharacteristicValueChanges;
     HUQuickControlCollectionViewControllerLayoutOptions * _layoutOptions;
-    NSArray * _preferredFrameConstraints;
     <HULayoutAnchorProviding> * _preferredFrameLayoutGuide;
-    HULayoutContainerView * _preferredFrameLayoutObservingView;
     <HUQuickControlContentHosting> * _quickControlHost;
     bool  _userInteractionEnabled;
     NSMapTable * _viewControllersKeyedByItem;
@@ -25,9 +23,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) HUQuickControlCollectionItemManager *itemManager;
 @property (nonatomic, retain) HUQuickControlCollectionViewControllerLayoutOptions *layoutOptions;
-@property (nonatomic, copy) NSArray *preferredFrameConstraints;
 @property (nonatomic, retain) <HULayoutAnchorProviding> *preferredFrameLayoutGuide;
-@property (nonatomic, retain) HULayoutContainerView *preferredFrameLayoutObservingView;
 @property (nonatomic) <HUQuickControlContentHosting> *quickControlHost;
 @property (readonly) Class superclass;
 @property (getter=isUserInteractionEnabled, nonatomic) bool userInteractionEnabled;
@@ -37,21 +33,20 @@
 - (id)_allContentViewControllers;
 - (id)_allViewControllers;
 - (id)_controlItemsForItem:(id)arg1;
-- (id)_gridSectionSettingsForItemSize:(unsigned long long)arg1;
+- (id)_createCellContainerForViewController:(id)arg1 forItem:(id)arg2;
 - (void)_propagateInteractiveContentStateForChildViewControllers:(id)arg1;
 - (void)_reconfigureLayoutOptions;
-- (void)_reconfigurePreferredFrameConstraints;
-- (id)_supplementarySectionSettingsForItemSize:(unsigned long long)arg1;
 - (unsigned long long)_titlePositionForItem:(id)arg1;
-- (void)_updatePreferredLayoutAreaInset;
 - (id)_viewControllerForItem:(id)arg1;
 - (id)affectedCharacteristics;
 - (void)beginUserInteractionWithFirstTouchGestureRecognizer:(id)arg1;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (id)characteristicWritingAdapter;
 - (id)characteristicWritingDelegate;
+- (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
 - (bool)disableItemUpdatesForOverrideCharacteristicValueChanges;
+- (double)heightForSupplementaryViewAtIndexPath:(id)arg1;
 - (id)initWithItemManager:(id)arg1;
 - (id)intrinsicSizeDescriptorForItemAtIndexPath:(id)arg1 itemSize:(unsigned long long)arg2;
 - (bool)isUserInteractionEnabled;
@@ -60,21 +55,18 @@
 - (id)layoutOptions;
 - (void)loadView;
 - (id)overrideValueForCharacteristic:(id)arg1;
-- (id)preferredFrameConstraints;
 - (id)preferredFrameLayoutGuide;
-- (id)preferredFrameLayoutObservingView;
 - (id)quickControlHost;
 - (void)quickControlItemHost:(id)arg1 didUpdateVisibility:(bool)arg2;
 - (void)setCharacteristicWritingDelegate:(id)arg1;
 - (void)setDisableItemUpdatesForOverrideCharacteristicValueChanges:(bool)arg1;
 - (void)setLayoutOptions:(id)arg1;
-- (void)setPreferredFrameConstraints:(id)arg1;
 - (void)setPreferredFrameLayoutGuide:(id)arg1;
-- (void)setPreferredFrameLayoutObservingView:(id)arg1;
 - (void)setQuickControlHost:(id)arg1;
 - (void)setUserInteractionEnabled:(bool)arg1;
 - (id)viewControllersKeyedByItem;
 - (void)viewDidLoad;
+- (id)viewForTouchContinuation;
 - (void)viewLayoutMarginsDidChange;
 
 @end

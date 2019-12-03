@@ -3,11 +3,15 @@
  */
 
 @interface PKPaymentWebServiceTargetDevice : NSObject <PKPaymentWebServiceTargetDeviceProtocol> {
+    PKAssertion * _activePasscodeUpgradeFlowAssertion;
+    bool  _activePasscodeUpgradeFlowAssertionActive;
     PKPassLibrary * _passLibrary;
     PKPassUpgradeController * _passUpgradeController;
     PKPaymentService * _paymentService;
     PKAssertion * _provisioningAssertion;
     bool  _provisioningAssertionActive;
+    PKAssertion * _requiringUpgradedPasscodeAssertion;
+    bool  _requiringUpgradedPasscodeAssertionActive;
     PKSecureElement * _secureElement;
     PKAssertion * _verificationAssertion;
     bool  _verificationAssertionActive;
@@ -39,11 +43,15 @@
 - (id)deviceRegion;
 - (id)deviceVersion;
 - (void)downloadAllPaymentPassesForPaymentWebService:(id)arg1;
+- (void)endRequiringUpgradedPasscodeIfNecessary;
+- (void)enforceUpgradedPasscodePolicyWithCompletion:(id /* block */)arg1;
 - (void)featureApplicationsForProvisioningWithCompletion:(id /* block */)arg1;
 - (bool)felicaSecureElementIsAvailable;
 - (id)init;
 - (unsigned long long)maximumPaymentCards;
 - (void)noteForegroundVerificationObserverActive:(bool)arg1;
+- (void)notePasscodeUpgradeFlowDidEnd;
+- (void)notePasscodeUpgradeFlowWillBeginWithCompletion:(id /* block */)arg1;
 - (void)noteProvisioningDidBegin;
 - (void)noteProvisioningDidEnd;
 - (void)noteProvisioningUserInterfaceDidAppear;
@@ -87,11 +95,14 @@
 - (void)setMaximumPaymentCards:(unsigned long long)arg1;
 - (void)signatureForAuthToken:(id)arg1 webService:(id)arg2 completion:(id /* block */)arg3;
 - (void)startBackgroundVerificationObserverForPass:(id)arg1 verificationMethod:(id)arg2;
+- (void)startRequiringUpgradedPasscodeWithPasscodeMeetsPolicy:(bool)arg1;
+- (id)supportedFeatureIdentifiersForAccountProvisioningWithPaymentWebService:(id)arg1;
 - (id)supportedFeatureIdentifiersWithPaymentWebService:(id)arg1;
 - (bool)supportsAutomaticPassPresentation;
 - (bool)supportsCredentialType:(long long)arg1;
 - (bool)supportsExpressForAutomaticSelectionTechnologyType:(long long)arg1;
 - (id)trustedDeviceEnrollmentInfoForWebService:(id)arg1;
 - (void)updatedAccountsForProvisioningWithCompletion:(id /* block */)arg1;
+- (bool)willPassWithUniqueIdentifierAutomaticallyBecomeDefault:(id)arg1;
 
 @end

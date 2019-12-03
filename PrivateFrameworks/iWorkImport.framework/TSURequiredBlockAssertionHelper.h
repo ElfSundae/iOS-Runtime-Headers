@@ -4,7 +4,7 @@
 
 @interface TSURequiredBlockAssertionHelper : NSObject {
     NSString * _description;
-    bool  _didExecuteBlock;
+    _Atomic bool  _didExecuteBlock;
 }
 
 - (void)dealloc;

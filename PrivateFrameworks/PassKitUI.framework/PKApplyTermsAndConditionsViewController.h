@@ -15,6 +15,7 @@
 
 - (void).cxx_destruct;
 - (void)_terminateSetupFlow;
+- (void)dealloc;
 - (id)displayTitle;
 - (void)htmlTermsDataWithCompletion:(id /* block */)arg1;
 - (id)initWithController:(id)arg1 setupDelegate:(id)arg2 context:(long long)arg3 termsIdentifier:(id)arg4;

@@ -134,9 +134,6 @@
 - (bool)_needsUpdateCommentsTitle;
 - (bool)_needsUpdateTitle;
 - (id)_newBarButtonItemWithIdentifier:(long long)arg1 location:(long long)arg2;
-- (id)_newBarButtonItemWithImageName:(id)arg1 offset:(struct UIOffset { double x1; double x2; })arg2 landscapeImagePhoneName:(id)arg3 offset:(struct UIOffset { double x1; double x2; })arg4 location:(long long)arg5;
-- (id)_newBarButtonWithSystemItem:(long long)arg1 offset:(struct UIOffset { double x1; double x2; })arg2 landscapeImagePhoneOffset:(struct UIOffset { double x1; double x2; })arg3;
-- (id)_newCustomButtonItem;
 - (long long)_nextChromeVisibilityUpdateAnimationType;
 - (bool)_nextCommentsActionShouldBeginEditing;
 - (void)_peformSuggestionRevertAction;
@@ -146,10 +143,12 @@
 - (void)_performAllPhotosAction;
 - (void)_performAssetExplorerReviewScreenActionType:(unsigned long long)arg1;
 - (void)_performCancelAction;
+- (void)_performChangesWithCurrentVideoPlayer:(id /* block */)arg1;
 - (void)_performDuplicateActivityWithAssetsByAssetCollection:(id)arg1;
 - (void)_performEditAction;
 - (void)_performHideActivityWithAssetsByAssetCollection:(id)arg1;
 - (void)_performLikeAction:(bool)arg1;
+- (void)_performMuteAction:(bool)arg1;
 - (void)_performPlayPauseAction:(long long)arg1;
 - (void)_performRestoreAction;
 - (void)_performReviewAction;
@@ -185,6 +184,7 @@
 - (id)_tapGestureRecognizer;
 - (id)_title;
 - (id)_titleViewController;
+- (void)_toggleCTM;
 - (id)_toolbarButtonIdentifiers;
 - (id)_toolbarButtonItemCollection;
 - (void)_toolbarViewModel:(id)arg1 didChange:(id)arg2;

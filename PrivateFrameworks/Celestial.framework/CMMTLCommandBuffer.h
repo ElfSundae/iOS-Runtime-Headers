@@ -16,6 +16,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) <MTLDevice> *device;
 @property (readonly) NSError *error;
+@property (readonly) unsigned long long globalTraceObjectID;
 @property (readonly) unsigned long long hash;
 @property (readonly) double kernelEndTime;
 @property (readonly) double kernelStartTime;
@@ -32,6 +33,7 @@
 - (id)commandQueue;
 - (void)commit;
 - (id)computeCommandEncoder;
+- (id)computeCommandEncoderWithDispatchType:(unsigned long long)arg1;
 - (void)forwardInvocation:(id)arg1;
 - (id)initWithCMMTLCommandQueue:(id)arg1 unretained:(bool)arg2;
 - (id)renderCommandEncoderWithDescriptor:(id)arg1;

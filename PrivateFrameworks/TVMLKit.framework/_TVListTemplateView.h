@@ -13,6 +13,8 @@
     UIView * _listView;
     UIFocusContainerGuide * _previewFocusGuide;
     UIView * _previewView;
+    bool  _shouldAdjustListForTabBar;
+    bool  _shouldAdjustPreviewForTabBar;
 }
 
 @property (getter=isBackdropEnabled, nonatomic) bool backdropEnabled;
@@ -22,6 +24,8 @@
 @property (nonatomic, readonly) long long listAlignment;
 @property (nonatomic, retain) UIView *listView;
 @property (nonatomic, retain) UIView *previewView;
+@property (nonatomic) bool shouldAdjustListForTabBar;
+@property (nonatomic) bool shouldAdjustPreviewForTabBar;
 
 - (void).cxx_destruct;
 - (void)adjustScrollForListView:(id)arg1;
@@ -43,5 +47,9 @@
 - (void)setOverlayBlurOffset:(double)arg1;
 - (void)setPreviewView:(id)arg1;
 - (void)setSemanticContentAttribute:(long long)arg1;
+- (void)setShouldAdjustListForTabBar:(bool)arg1;
+- (void)setShouldAdjustPreviewForTabBar:(bool)arg1;
+- (bool)shouldAdjustListForTabBar;
+- (bool)shouldAdjustPreviewForTabBar;
 
 @end

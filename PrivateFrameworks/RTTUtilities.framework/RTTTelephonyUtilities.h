@@ -2,16 +2,26 @@
    Image: /System/Library/PrivateFrameworks/RTTUtilities.framework/RTTUtilities
  */
 
-@interface RTTTelephonyUtilities : NSObject <CoreTelephonyClientCarrierBundleDelegate, TUCallCapabilitiesDelegatePrivate> {
+@interface RTTTelephonyUtilities : NSObject <CoreTelephonyClientCarrierBundleDelegate, TUCallCapabilitiesDelegate, TUCallCapabilitiesDelegatePrivate> {
     ACAccountStore * _accountStore;
+    NSObject<OS_dispatch_queue> * _accountStoreQueue;
     unsigned long long  _activeContextCount;
+    NSSet * _allVoiceContexts;
+    NSNumber * _callCapabilitiesSupportsTelephonyCalls;
+    CNContactStore * _contactStore;
     CTXPCServiceSubscriptionContext * _defaultVoiceContext;
     bool  _headphoneJackSupportsTTY;
+    AXDispatchTimer * _icloudAccountConsolidator;
+    AXDispatchTimer * _icloudRelayConsolidator;
     CoreTelephonyClient * _telephonyClient;
     NSObject<OS_dispatch_queue> * _telephonyUpdateQueue;
 }
 
+@property (nonatomic, retain) NSObject<OS_dispatch_queue> *accountStoreQueue;
 @property (nonatomic) unsigned long long activeContextCount;
+@property (nonatomic, retain) NSSet *allVoiceContexts;
+@property (nonatomic, retain) NSNumber *callCapabilitiesSupportsTelephonyCalls;
+@property (nonatomic, retain) CNContactStore *contactStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, retain) CTXPCServiceSubscriptionContext *defaultVoiceContext;
 @property (readonly, copy) NSString *description;
@@ -29,6 +39,7 @@
 + (bool)isOnlyRTTSupportedForContext:(id)arg1;
 + (bool)isRTTSupported;
 + (bool)isRTTSupportedForContext:(id)arg1;
++ (bool)isRelayRTTSupported;
 + (bool)isTTYSupported;
 + (bool)isTTYSupportedForContext:(id)arg1;
 + (void)performCallCenterTask:(id /* block */)arg1;
@@ -44,17 +55,24 @@
 + (bool)softwareTTYIsSupportedForContext:(id)arg1;
 
 - (void).cxx_destruct;
+- (void)_icloudAccountChanged;
+- (id)accountStoreQueue;
 - (unsigned long long)activeContextCount;
 - (void)activeSubscriptionsDidChange;
+- (id)allVoiceContexts;
+- (id)callCapabilitiesSupportsTelephonyCalls;
 - (void)carrierSettingsDidChange;
 - (bool)contactIsTTYContact:(id)arg1;
 - (id)contactPathForCall:(id)arg1;
 - (bool)contactPathIsMe:(id)arg1;
+- (id)contactStore;
 - (unsigned long long)currentPreferredTransportMethod;
 - (unsigned long long)currentPreferredTransportMethodForContext:(id)arg1;
+- (bool)currentProcessHandlesCloudRelay;
 - (void)dealloc;
 - (id)defaultVoiceContext;
 - (void)didChangeOutgoingRelayCallerID;
+- (void)didChangeTelephonyCallingSupport;
 - (id)getCarrierValueForKey:(id)arg1 andContext:(id)arg2;
 - (id)getCarrierValueForKeyHierarchy:(id)arg1 andContext:(id)arg2;
 - (bool)headphoneJackSupportsTTY;
@@ -64,6 +82,7 @@
 - (id)init;
 - (bool)isTTYOverIMSSupportedForContext:(id)arg1;
 - (bool)isTTYSupportedForContext:(id)arg1;
+- (id)labelFromUUID:(id)arg1;
 - (void)listenForCloudRelayChanges;
 - (void)mediaServerDied;
 - (id)myPhoneNumber;
@@ -74,8 +93,12 @@
 - (id)relayNumberForContext:(id)arg1;
 - (bool)relayRTTIsSupported;
 - (void)reloadDefaultVoiceContext;
-- (void)reloadRelayPhoneNumbers;
+- (bool)reloadRelayPhoneNumbers;
+- (void)setAccountStoreQueue:(id)arg1;
 - (void)setActiveContextCount:(unsigned long long)arg1;
+- (void)setAllVoiceContexts:(id)arg1;
+- (void)setCallCapabilitiesSupportsTelephonyCalls:(id)arg1;
+- (void)setContactStore:(id)arg1;
 - (void)setDefaultVoiceContext:(id)arg1;
 - (void)setHeadphoneJackSupportsTTY:(bool)arg1;
 - (void)setTTYDictionaryAvailability:(bool)arg1;

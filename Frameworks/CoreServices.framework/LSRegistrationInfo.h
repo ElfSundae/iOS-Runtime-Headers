@@ -12,9 +12,7 @@
     unsigned long long  inoExec;
     unsigned int  itemFlags;
     unsigned int  options;
-    unsigned int  userID;
     unsigned int  version;
-    unsigned long long  volumeIdentifier;
 }
 
 + (bool)supportsSecureCoding;

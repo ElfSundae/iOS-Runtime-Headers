@@ -8,7 +8,7 @@
     int  mStyle;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)graphicProperties;
 - (id)init;

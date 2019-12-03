@@ -5,11 +5,11 @@
 @interface NCNotificationShortLookView : PLTitledPlatterView <NCAuxiliaryOptionsSupporting, NCNotificationStaticContentAccepting> {
     NCAuxiliaryOptionsView * _auxiliaryOptionsView;
     bool  _banner;
-    bool  _defersAnimatedUpdates;
     BSUIFontProvider * _fontProvider;
     NCNotificationGrabberView * _grabberView;
-    bool  _mainOverlayLayoutValid;
+    bool  _grabberVisible;
     NCNotificationContentView * _notificationContentView;
+    bool  _notificationContentViewHidden;
 }
 
 @property (nonatomic, retain) UIView *accessoryView;
@@ -20,16 +20,19 @@
 @property (getter=isDateAllDay, nonatomic) bool dateAllDay;
 @property (nonatomic) long long dateFormatStyle;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) bool defersAnimatedUpdates;
 @property (readonly, copy) NSString *description;
 @property (getter=_fontProvider, setter=_setFontProvider:, nonatomic, retain) BSUIFontProvider *fontProvider;
-@property (getter=_grabberView, nonatomic, readonly) NCNotificationGrabberView *grabberView;
+@property (getter=_isGrabberVisible, setter=_setGrabberVisible:, nonatomic) bool grabberVisible;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSArray *iconButtons;
 @property (nonatomic, copy) NSArray *icons;
 @property (nonatomic, retain) NSArray *interfaceActions;
-@property (nonatomic) unsigned long long messageNumberOfLines;
+@property (nonatomic) unsigned long long maximumNumberOfPrimaryLargeTextLines;
+@property (nonatomic) unsigned long long maximumNumberOfPrimaryTextLines;
+@property (nonatomic) unsigned long long maximumNumberOfSecondaryLargeTextLines;
+@property (nonatomic) unsigned long long maximumNumberOfSecondaryTextLines;
 @property (getter=_notificationContentView, nonatomic, readonly) NCNotificationContentView *notificationContentView;
+@property (getter=isNotificationContentViewHidden, nonatomic) bool notificationContentViewHidden;
 @property (nonatomic) unsigned long long numberOfOptionButtons;
 @property (nonatomic, readonly) NSArray *optionButtons;
 @property (nonatomic, copy) NSString *optionsSummaryText;
@@ -44,37 +47,34 @@
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, readonly) UIButton *utilityButton;
 
-+ (unsigned long long)_optionsForMainOverlayForRecipe:(long long)arg1;
-
 - (void).cxx_destruct;
 - (void)_configureAuxiliaryOptionsViewIfNecessary;
 - (void)_configureCustomContentView;
 - (void)_configureHeaderContentView;
 - (void)_configureNotificationContentViewIfNecessary;
 - (id)_fontProvider;
-- (id)_grabberView;
 - (bool)_isBanner;
+- (bool)_isGrabberVisible;
 - (void)_layoutAuxiliaryOptionsView;
 - (void)_layoutGrabber;
-- (void)_layoutMainOverlay;
 - (void)_layoutNotificationContentView;
 - (id)_newNotificationContentView;
 - (id)_notificationContentView;
-- (unsigned long long)_optionsForMainOverlay;
 - (void)_setBanner:(bool)arg1;
 - (void)_setFontProvider:(id)arg1;
-- (bool)_shouldShowGrabber;
+- (void)_setGrabberVisible:(bool)arg1;
 - (struct CGSize { double x1; double x2; })_sizeThatFitsContentWithSize:(struct CGSize { double x1; double x2; })arg1 withAuxiliaryOptionsViewVisible:(bool)arg2;
 - (id)accessoryView;
 - (bool)adjustForContentSizeCategoryChange;
 - (bool)adjustsFontForContentSizeCategory;
 - (bool)auxiliaryOptionsVisible;
-- (bool)defersAnimatedUpdates;
-- (id)initWithRecipe:(long long)arg1 options:(unsigned long long)arg2;
 - (id)interfaceActions;
+- (bool)isNotificationContentViewHidden;
 - (void)layoutSubviews;
-- (unsigned long long)messageNumberOfLines;
-- (void)nc_performDeferredActionsIfNeeded;
+- (unsigned long long)maximumNumberOfPrimaryLargeTextLines;
+- (unsigned long long)maximumNumberOfPrimaryTextLines;
+- (unsigned long long)maximumNumberOfSecondaryLargeTextLines;
+- (unsigned long long)maximumNumberOfSecondaryTextLines;
 - (unsigned long long)numberOfOptionButtons;
 - (id)optionButtons;
 - (id)optionsSummaryText;
@@ -85,9 +85,12 @@
 - (void)setAdjustsFontForContentSizeCategory:(bool)arg1;
 - (void)setAuxiliaryOptionsVisible:(bool)arg1;
 - (void)setBackgroundView:(id)arg1;
-- (void)setDefersAnimatedUpdates:(bool)arg1;
 - (void)setInterfaceActions:(id)arg1;
-- (void)setMessageNumberOfLines:(unsigned long long)arg1;
+- (void)setMaximumNumberOfPrimaryLargeTextLines:(unsigned long long)arg1;
+- (void)setMaximumNumberOfPrimaryTextLines:(unsigned long long)arg1;
+- (void)setMaximumNumberOfSecondaryLargeTextLines:(unsigned long long)arg1;
+- (void)setMaximumNumberOfSecondaryTextLines:(unsigned long long)arg1;
+- (void)setNotificationContentViewHidden:(bool)arg1;
 - (void)setNumberOfOptionButtons:(unsigned long long)arg1;
 - (void)setOptionsSummaryText:(id)arg1;
 - (void)setPrimarySubtitleText:(id)arg1;

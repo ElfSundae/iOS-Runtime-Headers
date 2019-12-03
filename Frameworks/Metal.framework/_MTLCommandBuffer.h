@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Metal.framework/Metal
  */
 
-@interface _MTLCommandBuffer : NSObject {
+@interface _MTLCommandBuffer : _MTLObjectWithLabel {
     bool  _StatEnabled;
     unsigned long long  _commitTime;
     bool  _completedCallbacksDone;
@@ -25,7 +25,6 @@
     bool  _hasPresent;
     unsigned long long  _kernelEndTime;
     unsigned long long  _kernelStartTime;
-    NSString * _label;
     unsigned long long  _labelTraceID;
     unsigned long long  _listIndex;
     struct _opaque_pthread_mutex_t { 
@@ -91,6 +90,7 @@
 - (bool)commitAndWaitUntilSubmitted;
 - (id)computeCommandEncoderWithDispatchType:(unsigned long long)arg1;
 - (void)dealloc;
+- (void*)debugBufferContentsWithLength:(unsigned long long*)arg1;
 - (id)description;
 - (void)didCompleteWithStartTime:(unsigned long long)arg1 endTime:(unsigned long long)arg2 error:(id)arg3;
 - (void)didSchedule:(unsigned long long)arg1 error:(id)arg2;
@@ -111,7 +111,6 @@
 - (double)kernelEndTime;
 - (double)kernelStartTime;
 - (void)kernelSubmitTime;
-- (id)label;
 - (unsigned long long)numEncoders;
 - (unsigned long long)numThisCommandBuffer;
 - (bool)ownedByParallelEncoder;
@@ -125,7 +124,6 @@
 - (void)runPerfCounterCallbackWithBlock:(id /* block */)arg1;
 - (void)setCommitted:(bool)arg1;
 - (void)setCurrentCommandEncoder:(id)arg1;
-- (void)setLabel:(id)arg1;
 - (void)setListIndex:(unsigned long long)arg1;
 - (void)setNumEncoders:(unsigned long long)arg1;
 - (void)setNumThisCommandBuffer:(unsigned long long)arg1;

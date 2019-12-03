@@ -24,7 +24,7 @@
 - (struct BidirectionalScatteringDistributionFunction { int (**x1)(); struct BSDFMaterialValues { struct CGColor {} *x_2_1_1; float x_2_1_2; struct CGColor {} *x_2_1_3; float x_2_1_4; float x_2_1_5; float x_2_1_6; float x_2_1_7; float x_2_1_8; float x_2_1_9; float x_2_1_10; float x_2_1_11; float x_2_1_12; float x_2_1_13; float x_2_1_14; float x_2_1_15; float x_2_1_16; } x2; }*)bsdf;
 - (void)conformToMatProperties;
 - (unsigned long long)count;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (id)init;
 - (id)initWithName:(id)arg1 physicallyPlausibleBSDF:(struct PhysicallyPlausibleDistribution { int (**x1)(); struct BSDFMaterialValues { struct CGColor {} *x_2_1_1; float x_2_1_2; struct CGColor {} *x_2_1_3; float x_2_1_4; float x_2_1_5; float x_2_1_6; float x_2_1_7; float x_2_1_8; float x_2_1_9; float x_2_1_10; float x_2_1_11; float x_2_1_12; float x_2_1_13; float x_2_1_14; float x_2_1_15; float x_2_1_16; } x2; }*)arg2;
 - (id)initWithName:(id)arg1 scatteringFunction:(id)arg2;

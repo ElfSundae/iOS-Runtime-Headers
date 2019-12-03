@@ -62,7 +62,7 @@
 - (id)dictionaryRepresentation;
 - (long long)epoch;
 - (id)exportToLegacyDictionary;
-- (id)exportToLegacyDictionaryFromFrameInstruction:(id)arg1 withTimeParam:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2;
+- (id)exportToLegacyDictionaryFromFrameInstruction:(id)arg1;
 - (id)exportToLegacyDictionaryFromParam:(id)arg1 withLoopFlavor:(id)arg2;
 - (int)flags;
 - (id)frameInstructions;

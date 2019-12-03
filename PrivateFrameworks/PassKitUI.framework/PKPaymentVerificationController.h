@@ -53,6 +53,7 @@
 - (void)_performStoreLookupForBankApp;
 - (void)_presentVerificationViewControllerForStepIdentifier:(id)arg1;
 - (void)_presentVerificatonEntryCompletionViewController;
+- (void)_queue_sharedPaymentWebServiceChanged;
 - (void)_requestDelegatePresentationOfViewController:(id)arg1;
 - (id)_textMessageFormattedPhoneNumber:(id)arg1;
 - (id)_voiceCallFormattedPhoneNumber:(id)arg1;

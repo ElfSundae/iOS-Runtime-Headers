@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
  */
 
-@interface CKRecipientSearchListController : MFAutocompleteResultsTableViewController <CKContactsSearchManagerDelegate, IDSBatchIDQueryControllerDelegate> {
+@interface CKRecipientSearchListController : CNAutocompleteResultsTableViewController <CKContactsSearchManagerDelegate, IDSBatchIDQueryControllerDelegate> {
     NSArray * _conversationCache;
     IMAccount * _defaultiMessageAccount;
     NSArray * _enteredRecipients;
@@ -12,6 +12,7 @@
     NSArray * _searchResults;
     bool  _smsEnabled;
     IDSBatchIDQueryController * _statusQueryController;
+    bool  shouldHideGroupsDonations;
 }
 
 @property (nonatomic, copy) NSArray *conversationCache;
@@ -25,14 +26,17 @@
 @property (nonatomic, retain) NSArray *prefilteredRecipients;
 @property (nonatomic, retain) CKContactsSearchManager *searchManager;
 @property (nonatomic, copy) NSArray *searchResults;
+@property (nonatomic) bool shouldHideGroupsDonations;
 @property (nonatomic) bool smsEnabled;
 @property (nonatomic, retain) IDSBatchIDQueryController *statusQueryController;
 @property (readonly) Class superclass;
 @property (nonatomic) bool suppressGroupSuggestions;
 
 - (void).cxx_destruct;
+- (id)_conversationList;
 - (BOOL)_serviceColorForRecipients:(id)arg1;
 - (id)_statusQueryController;
+- (void)batchQueryController:(id)arg1 updatedDestinationsStatus:(id)arg2 onService:(id)arg3 error:(id)arg4;
 - (void)cancelSearch;
 - (void)chatStateChanged:(id)arg1;
 - (void)contactsSearchManager:(id)arg1 finishedSearchingWithResults:(id)arg2;
@@ -43,15 +47,14 @@
 - (void)didSelectRecipient:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)enteredRecipients;
 - (bool)hasSearchResults;
-- (void)idStatusUpdatedForDestinations:(id)arg1;
 - (id)idsQueryStartTime;
+- (long long)idsStatusForAddress:(id)arg1;
 - (id)initWithStyle:(long long)arg1;
 - (void)invalidateOutstandingIDStatusRequests;
 - (void)invalidateSearchManager;
 - (bool)isSearchResultsHidden;
 - (void)loadView;
 - (id)prefilteredRecipients;
-- (Class)recipientTableViewCellClass;
 - (void)removeRecipient:(id)arg1;
 - (bool)scrollViewShouldScrollToTop:(id)arg1;
 - (void)scrollViewWillBeginDragging:(id)arg1;
@@ -65,13 +68,14 @@
 - (void)setPrefilteredRecipients:(id)arg1;
 - (void)setSearchManager:(id)arg1;
 - (void)setSearchResults:(id)arg1;
+- (void)setShouldHideGroupsDonations:(bool)arg1;
 - (void)setSmsEnabled:(bool)arg1;
 - (void)setStatusQueryController:(id)arg1;
 - (void)setSuppressGroupSuggestions:(bool)arg1;
+- (bool)shouldHideGroupsDonations;
 - (bool)smsEnabled;
 - (id)statusQueryController;
 - (bool)suppressGroupSuggestions;
-- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidAppearDeferredSetup;
 - (void)viewWillAppear:(bool)arg1;

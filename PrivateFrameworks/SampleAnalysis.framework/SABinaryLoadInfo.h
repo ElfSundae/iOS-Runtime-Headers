@@ -16,6 +16,7 @@
 @property unsigned long long textSegmentLoadAddress;
 
 + (id)binaryLoadInfoForAddress:(unsigned long long)arg1 inBinaryLoadInfos:(id)arg2;
++ (id)binaryLoadInfoForAddress:(unsigned long long)arg1 inBinaryLoadInfos:(id)arg2 libraryCache:(id)arg3;
 + (id)binaryLoadInfoForLiveProcessWithPid:(int)arg1;
 + (id)binaryLoadInfoForLiveProcessWithPid:(int)arg1 dataGatheringOptions:(unsigned long long)arg2;
 + (id)binaryLoadInfoWithBinary:(id)arg1 textSegmentLoadAddress:(unsigned long long)arg2 isInKernelAddressSpace:(bool)arg3;

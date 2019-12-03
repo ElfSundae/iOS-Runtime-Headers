@@ -4,7 +4,7 @@
 
 @interface BRCContainerScheduler : NSObject <APSConnectionDelegate, BRCAppLibraryDelegate, BRCClientZoneDelegate> {
     BRCContainerMetadataSyncPersistedState * _containerMetadataPersistedState;
-    struct _BRCOperation { Class x1; id x2; int x3; id x4; /* Warning: Unrecognized filer type: '1' using 'void*' */ void*x5; void*x6; unsigned char x7; void*x8; } * _containerMetadataSyncOperation;
+    struct _BRCOperation { Class x1; id x2; unsigned char x3[16]; } * _containerMetadataSyncOperation;
     BRCDeadlineSource * _containerMetadataSyncSource;
     unsigned int  _containerMetadataSyncState;
     NSString * _environmentName;
@@ -14,20 +14,20 @@
     BRCMigrateZonePCSOperation * _migrateZonePCSOperation;
     BRCDeadlineSource * _migrateZonePCSSource;
     NSMutableArray * _nextZoneHealthSyncDownBarriers;
-    struct _BRCOperation { Class x1; id x2; int x3; id x4; /* Warning: Unrecognized filer type: '1' using 'void*' */ void*x5; void*x6; unsigned char x7; void*x8; } * _periodicSyncOperation;
+    struct _BRCOperation { Class x1; id x2; unsigned char x3[16]; } * _periodicSyncOperation;
     APSConnection * _pushConnection;
     NSObject<OS_dispatch_queue> * _pushQueue;
     BRCFairSource * _pushSource;
     NSData * _pushToken;
     BRCAccountSession * _session;
     unsigned int  _sharedDBSyncState;
-    struct _BRCOperation { Class x1; id x2; int x3; id x4; /* Warning: Unrecognized filer type: '1' using 'void*' */ void*x5; void*x6; unsigned char x7; void*x8; } * _sharedDatabaseSyncOperation;
+    struct _BRCOperation { Class x1; id x2; unsigned char x3[16]; } * _sharedDatabaseSyncOperation;
     BRCDeadlineSource * _sharedDatabaseSyncSource;
     NSObject<OS_dispatch_group> * _syncGroup;
     BRCDeadlineScheduler * _syncScheduler;
     BRCSyncBudgetThrottle * _syncUpBudget;
     BRCZoneHealthSyncPersistedState * _zoneHealthPersistedState;
-    struct _BRCOperation { Class x1; id x2; int x3; id x4; /* Warning: Unrecognized filer type: '1' using 'void*' */ void*x5; void*x6; unsigned char x7; void*x8; } * _zoneHealthSyncOperation;
+    struct _BRCOperation { Class x1; id x2; unsigned char x3[16]; } * _zoneHealthSyncOperation;
     BRCDeadlineSource * _zoneHealthSyncSource;
     unsigned int  _zoneHealthSyncState;
 }

@@ -8,6 +8,7 @@
     NSString * _containerIdentifier;
     NSData * _encryptedData;
     long long  _environment;
+    CKDeviceToDeviceShareInvitationToken * _invitationToken;
     NSArray * _outOfNetworkMatches;
     CKUserIdentity * _ownerIdentity;
     long long  _participantPermission;
@@ -20,7 +21,8 @@
     CKRecordID * _rootRecordID;
     NSString * _rootRecordType;
     CKShare * _share;
-    NSArray * _sharedItemHierarchy;
+    NSArray * _sharedItemHierarchyIDs;
+    CKRecordZone * _sharedZone;
 }
 
 @property (nonatomic) bool acceptedInProcess;
@@ -29,6 +31,7 @@
 @property (nonatomic, copy) NSString *containerIdentifier;
 @property (nonatomic, retain) NSData *encryptedData;
 @property (nonatomic) long long environment;
+@property (nonatomic, copy) CKDeviceToDeviceShareInvitationToken *invitationToken;
 @property (nonatomic, retain) NSArray *outOfNetworkMatches;
 @property (nonatomic, retain) CKUserIdentity *ownerIdentity;
 @property (nonatomic) long long participantPermission;
@@ -42,7 +45,8 @@
 @property (nonatomic, copy) CKRecordID *rootRecordID;
 @property (nonatomic, retain) NSString *rootRecordType;
 @property (nonatomic, retain) CKShare *share;
-@property (nonatomic, copy) NSArray *sharedItemHierarchy;
+@property (nonatomic, copy) NSArray *sharedItemHierarchyIDs;
+@property (nonatomic, retain) CKRecordZone *sharedZone;
 
 // Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
 
@@ -64,6 +68,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)invitationToken;
 - (bool)isEqual:(id)arg1;
 - (id)outOfNetworkMatches;
 - (id)ownerIdentity;
@@ -82,6 +87,7 @@
 - (void)setContainerIdentifier:(id)arg1;
 - (void)setEncryptedData:(id)arg1;
 - (void)setEnvironment:(long long)arg1;
+- (void)setInvitationToken:(id)arg1;
 - (void)setOutOfNetworkMatches:(id)arg1;
 - (void)setOwnerIdentity:(id)arg1;
 - (void)setParticipantPermission:(long long)arg1;
@@ -94,9 +100,11 @@
 - (void)setRootRecordID:(id)arg1;
 - (void)setRootRecordType:(id)arg1;
 - (void)setShare:(id)arg1;
-- (void)setSharedItemHierarchy:(id)arg1;
+- (void)setSharedItemHierarchyIDs:(id)arg1;
+- (void)setSharedZone:(id)arg1;
 - (id)share;
-- (id)sharedItemHierarchy;
+- (id)sharedItemHierarchyIDs;
+- (id)sharedZone;
 
 // Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
 

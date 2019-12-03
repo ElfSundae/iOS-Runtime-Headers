@@ -18,17 +18,17 @@
 }
 
 @property (nonatomic, copy) NSString *adSpaceContextJSON;
-@property (nonatomic, copy) NSString *advertisingSection;
-@property (nonatomic, copy) NSString *authenticationUserName;
+@property (nonatomic, retain) NSString *advertisingSection;
+@property (nonatomic, retain) NSString *authenticationUserName;
 @property (nonatomic) float containerHeight;
 @property (nonatomic) float containerWidth;
 @property (nonatomic, copy) NSSet *context;
 @property (nonatomic) int creativeType;
-@property (nonatomic, copy) NSString *identifier;
+@property (nonatomic, retain) NSString *identifier;
 @property (nonatomic) long long options;
 @property (nonatomic) float reorientedContainerHeight;
 @property (nonatomic) float reorientedContainerWidth;
-@property (nonatomic, copy) NSURL *serverURL;
+@property (nonatomic, retain) NSURL *serverURL;
 
 + (bool)supportsSecureCoding;
 

@@ -4,6 +4,7 @@
 
 @interface UIBarButtonItemGroup : NSObject <NSCoding> {
     NSMutableArray * _barButtonItems;
+    unsigned long long  _expandStyle;
     bool  _hidden;
     bool  _locked;
     double  _minimumLeadingSpace;
@@ -17,6 +18,7 @@
 
 @property (nonatomic, copy) NSArray *barButtonItems;
 @property (getter=isDisplayingRepresentativeItem, nonatomic, readonly) bool displayingRepresentativeItem;
+@property (getter=_expandStyle, setter=_setExpandStyle:, nonatomic) unsigned long long expandStyle;
 @property (getter=_isHidden, setter=_setHidden:, nonatomic) bool hidden;
 @property (getter=_items, nonatomic, readonly) NSArray *items;
 @property (getter=_isLocked, setter=_setLocked:, nonatomic) bool locked;
@@ -29,6 +31,7 @@
 @property (getter=_sendActionsBeforeDismiss, setter=_setSendActionsBeforeDismiss:, nonatomic) bool sendActionsBeforeDismiss;
 
 - (void).cxx_destruct;
+- (unsigned long long)_expandStyle;
 - (bool)_isHidden;
 - (bool)_isLocked;
 - (id)_items;
@@ -40,6 +43,7 @@
 - (void)_removeRepresentative:(id)arg1;
 - (id)_representativeUI;
 - (bool)_sendActionsBeforeDismiss;
+- (void)_setExpandStyle:(unsigned long long)arg1;
 - (void)_setHidden:(bool)arg1;
 - (void)_setLocked:(bool)arg1;
 - (void)_setMinimumLeadingSpace:(double)arg1;

@@ -8,7 +8,7 @@
 
 + (id)paletteWithColours:(id)arg1;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)getColour:(int)arg1;
 - (id)init;
 - (id)initWithColours:(id)arg1;

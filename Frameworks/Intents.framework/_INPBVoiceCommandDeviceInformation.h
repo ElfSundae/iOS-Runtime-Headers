@@ -3,6 +3,7 @@
  */
 
 @interface _INPBVoiceCommandDeviceInformation : PBCodable <NSCopying, NSSecureCoding, _INPBVoiceCommandDeviceInformation> {
+    bool  __encodeLegacyGloryData;
     int  _deviceIdiom;
     struct { 
         unsigned int deviceIdiom : 1; 
@@ -11,6 +12,7 @@
     bool  _isHomePodInUltimateMode;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) int deviceIdiom;
@@ -20,14 +22,20 @@
 @property (nonatomic) bool isHomePodInUltimateMode;
 @property (readonly) Class superclass;
 
++ (bool)supportsSecureCoding;
+
 - (int)StringAsDeviceIdiom:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (int)deviceIdiom;
 - (id)deviceIdiomAsString:(int)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasDeviceIdiom;
 - (bool)hasIsHomePodInUltimateMode;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)isHomePodInUltimateMode;
 - (bool)readFrom:(id)arg1;

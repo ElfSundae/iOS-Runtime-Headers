@@ -3,6 +3,7 @@
  */
 
 @interface HUIconView : UIView <HUIconContentViewDelegate> {
+    long long  _contentMode;
     HUIconContentView * _currentIconContentView;
     bool  _disableContinuousAnimation;
     unsigned long long  _displayContext;
@@ -12,6 +13,7 @@
     UIVisualEffect * _vibrancyEffect;
 }
 
+@property (nonatomic) long long contentMode;
 @property (nonatomic, retain) HUIconContentView *currentIconContentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -29,6 +31,7 @@
 - (id)_defaultVibrancyEffect;
 - (void)_updateVisualEffectStateForVibrancyEffectChange:(bool)arg1;
 - (id)contentContainerView;
+- (long long)contentMode;
 - (id)currentIconContentView;
 - (bool)disableContinuousAnimation;
 - (unsigned long long)displayContext;
@@ -38,8 +41,10 @@
 - (id)iconDescriptor;
 - (unsigned long long)iconSize;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 contentMode:(long long)arg2;
 - (struct CGSize { double x1; double x2; })intrinsicContentSize;
 - (void)layoutSubviews;
+- (void)setContentMode:(long long)arg1;
 - (void)setCurrentIconContentView:(id)arg1;
 - (void)setDisableContinuousAnimation:(bool)arg1;
 - (void)setDisplayContext:(unsigned long long)arg1;

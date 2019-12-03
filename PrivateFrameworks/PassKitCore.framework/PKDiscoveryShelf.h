@@ -12,7 +12,9 @@
 + (bool)supportsSecureCoding;
 
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (bool)isEqual:(id)arg1;
 - (void)localizeWithBundle:(id)arg1;
 - (void)localizeWithBundle:(id)arg1 table:(id)arg2;
 - (void)setType:(long long)arg1;

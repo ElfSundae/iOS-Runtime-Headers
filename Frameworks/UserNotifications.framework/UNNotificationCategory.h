@@ -4,6 +4,8 @@
 
 @interface UNNotificationCategory : NSObject <NSCopying, NSMutableCopying, NSSecureCoding> {
     NSArray * _actions;
+    NSString * _actionsMenuTitle;
+    UNNotificationAction * _alternateAction;
     unsigned long long  _backgroundStyle;
     NSString * _categorySummaryFormat;
     NSString * _hiddenPreviewsBodyPlaceholder;
@@ -15,6 +17,8 @@
 }
 
 @property (nonatomic, readonly, copy) NSArray *actions;
+@property (nonatomic, readonly, copy) NSString *actionsMenuTitle;
+@property (nonatomic, readonly, copy) UNNotificationAction *alternateAction;
 @property (nonatomic, readonly) unsigned long long backgroundStyle;
 @property (nonatomic, readonly, copy) NSString *categorySummaryFormat;
 @property (nonatomic, readonly, copy) NSString *hiddenPreviewsBodyPlaceholder;
@@ -33,8 +37,10 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
-- (id)_initWithIdentifier:(id)arg1 actions:(id)arg2 minimalActions:(id)arg3 intentIdentifiers:(id)arg4 hiddenPreviewsBodyPlaceholder:(id)arg5 categorySummaryFormat:(id)arg6 options:(unsigned long long)arg7 backgroundStyle:(unsigned long long)arg8 listPriority:(unsigned long long)arg9;
+- (id)_initWithIdentifier:(id)arg1 actions:(id)arg2 minimalActions:(id)arg3 alternateAction:(id)arg4 intentIdentifiers:(id)arg5 hiddenPreviewsBodyPlaceholder:(id)arg6 categorySummaryFormat:(id)arg7 actionsMenuTitle:(id)arg8 options:(unsigned long long)arg9 backgroundStyle:(unsigned long long)arg10 listPriority:(unsigned long long)arg11;
 - (id)actions;
+- (id)actionsMenuTitle;
+- (id)alternateAction;
 - (unsigned long long)backgroundStyle;
 - (id)categorySummaryFormat;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

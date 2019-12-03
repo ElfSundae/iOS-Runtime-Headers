@@ -5,9 +5,6 @@
 @interface __NSPlaceholderDictionary : NSMutableDictionary
 
 + (id)allocWithZone:(struct _NSZone { }*)arg1;
-+ (id)immutablePlaceholder;
-+ (void)initialize;
-+ (id)mutablePlaceholder;
 
 - (unsigned long long)count;
 - (void)dealloc;

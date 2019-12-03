@@ -24,7 +24,10 @@
 - (void)handleFileURL:(id)arg1 extraMetadata:(id)arg2;
 - (void)handleRemoveSectionRequest:(id)arg1;
 - (void)handleSetNotificationsAlertLevelRequest:(id)arg1;
+- (void)handleSetNotificationsCriticalAlertRequest:(id)arg1;
 - (void)handleSetNotificationsGroupingRequest:(id)arg1;
+- (void)handleSetNotificationsSoundRequest:(id)arg1;
+- (void)handleSetRemoteGlobalSpokenSettingEnabledRequest:(id)arg1;
 - (void)handleSetSectionInfoRequest:(id)arg1;
 - (void)handleSetSectionInfoResponse:(id)arg1;
 - (void)handleSetSectionSubtypeParametersIconRequest:(id)arg1;
@@ -37,12 +40,15 @@
 - (void)removeSectionWithSectionID:(id)arg1 sent:(id /* block */)arg2;
 - (id)sectionInfoPreviouslySentMessageStore;
 - (id)sectionSubtypeParametersIconsPreviouslySentMessageStore;
+- (void)sendRemoteGlobalSpokenSettingEnabled:(bool)arg1 date:(id)arg2;
 - (void)sendSpooledRequestsNowWithSent:(id /* block */)arg1 withAcknowledgement:(id /* block */)arg2;
 - (void)setDelegate:(id)arg1;
+- (void)setNotificationsCriticalAlertEnabled:(int)arg1 sectionID:(id)arg2;
 - (void)setNotificationsGrouping:(int)arg1 sectionID:(id)arg2;
 - (void)setNotificationsGrouping:(int)arg1 sectionID:(id)arg2 spoolToFile:(bool)arg3;
 - (void)setNotificationsLevel:(unsigned long long)arg1 sectionID:(id)arg2 mirror:(bool)arg3;
 - (void)setNotificationsLevel:(unsigned long long)arg1 sectionID:(id)arg2 mirror:(bool)arg3 spoolToFile:(bool)arg4;
+- (void)setNotificationsSoundEnabled:(int)arg1 sectionID:(id)arg2;
 - (void)setSectionInfo:(id)arg1 completion:(id /* block */)arg2;
 - (void)setSectionInfo:(id)arg1 withQueue:(id)arg2 withSent:(id /* block */)arg3 withAcknowledgement:(id /* block */)arg4 spoolToFile:(bool)arg5;
 - (void)setSectionInfoPreviouslySentMessageStore:(id)arg1;

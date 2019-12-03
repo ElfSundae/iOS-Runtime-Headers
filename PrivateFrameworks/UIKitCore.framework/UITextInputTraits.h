@@ -22,10 +22,17 @@
     int  emptyContentReturnKeyType;
     bool  enablesReturnKeyAutomatically;
     bool  enablesReturnKeyOnNonWhiteSpaceContent;
+    struct UIEdgeInsets { 
+        double top; 
+        double left; 
+        double bottom; 
+        double right; 
+    }  floatingKeyboardEdgeInsets;
     bool  forceDefaultDictationInfo;
     long long  forceDictationKeyboardType;
     bool  forceDisableDictation;
     bool  forceEnableDictation;
+    bool  forceFloatingKeyboard;
     bool  hasDefaultContents;
     bool  hidePrediction;
     UIInputContextHistory * inputContextHistory;
@@ -48,6 +55,7 @@
     UIImage * selectionDragDotImage;
     UIColor * selectionHighlightColor;
     int  shortcutConversionType;
+    bool  showDictationButton;
     long long  smartDashesType;
     long long  smartInsertDeleteType;
     long long  smartQuotesType;
@@ -61,6 +69,7 @@
     struct __CFCharacterSet { } * textTrimmingSet;
     UIColor * underlineColorForSpelling;
     UIColor * underlineColorForTextAlternatives;
+    bool  useAutomaticEndpointing;
     bool  useInterfaceLanguageForLocalization;
     struct _NSRange { 
         unsigned long long location; 
@@ -91,10 +100,12 @@
 @property (nonatomic) int emptyContentReturnKeyType;
 @property (nonatomic) bool enablesReturnKeyAutomatically;
 @property (nonatomic) bool enablesReturnKeyOnNonWhiteSpaceContent;
+@property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } floatingKeyboardEdgeInsets;
 @property (nonatomic) bool forceDefaultDictationInfo;
 @property (nonatomic) long long forceDictationKeyboardType;
 @property (nonatomic) bool forceDisableDictation;
 @property (nonatomic) bool forceEnableDictation;
+@property (nonatomic) bool forceFloatingKeyboard;
 @property (nonatomic) bool hasDefaultContents;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool hidePrediction;
@@ -118,6 +129,7 @@
 @property (nonatomic, retain) UIImage *selectionDragDotImage;
 @property (nonatomic, retain) UIColor *selectionHighlightColor;
 @property (nonatomic) int shortcutConversionType;
+@property (nonatomic) bool showDictationButton;
 @property (nonatomic) long long smartDashesType;
 @property (nonatomic) long long smartInsertDeleteType;
 @property (nonatomic) long long smartQuotesType;
@@ -132,6 +144,7 @@
 @property (nonatomic) struct __CFCharacterSet { }*textTrimmingSet;
 @property (nonatomic, retain) UIColor *underlineColorForSpelling;
 @property (nonatomic, retain) UIColor *underlineColorForTextAlternatives;
+@property (nonatomic) bool useAutomaticEndpointing;
 @property (nonatomic) bool useInterfaceLanguageForLocalization;
 @property (nonatomic) struct _NSRange { unsigned long long x1; unsigned long long x2; } validTextRange;
 
@@ -139,6 +152,7 @@
 + (long long)configuredAppearanceForAppearance:(long long)arg1 withTraitEnvironment:(id)arg2;
 + (id)defaultTextInputTraits;
 + (bool)keyboardTypeRequiresASCIICapable:(long long)arg1;
++ (id)traitEnvironmentFromTraits:(id)arg1;
 + (id)traitsByAdoptingTraits:(id)arg1;
 + (id)traitsByAdoptingTraits:(id)arg1 lightweight:(bool)arg2;
 + (long long)translateToUIAutocapitalizationType:(unsigned long long)arg1;
@@ -178,10 +192,12 @@
 - (bool)enablesReturnKeyOnNonWhiteSpaceContent;
 - (void)extendedPathToObtainTraitsFrom:(id)arg1 lightweight:(bool)arg2;
 - (void)fastPathToObtainTraitsFrom:(id)arg1;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })floatingKeyboardEdgeInsets;
 - (bool)forceDefaultDictationInfo;
 - (long long)forceDictationKeyboardType;
 - (bool)forceDisableDictation;
 - (bool)forceEnableDictation;
+- (bool)forceFloatingKeyboard;
 - (bool)hasDefaultContents;
 - (bool)hidePrediction;
 - (id)init;
@@ -226,10 +242,12 @@
 - (void)setEmptyContentReturnKeyType:(int)arg1;
 - (void)setEnablesReturnKeyAutomatically:(bool)arg1;
 - (void)setEnablesReturnKeyOnNonWhiteSpaceContent:(bool)arg1;
+- (void)setFloatingKeyboardEdgeInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setForceDefaultDictationInfo:(bool)arg1;
 - (void)setForceDictationKeyboardType:(long long)arg1;
 - (void)setForceDisableDictation:(bool)arg1;
 - (void)setForceEnableDictation:(bool)arg1;
+- (void)setForceFloatingKeyboard:(bool)arg1;
 - (void)setHasDefaultContents:(bool)arg1;
 - (void)setHidePrediction:(bool)arg1;
 - (void)setInputContextHistory:(id)arg1;
@@ -253,6 +271,7 @@
 - (void)setSelectionDragDotImage:(id)arg1;
 - (void)setSelectionHighlightColor:(id)arg1;
 - (void)setShortcutConversionType:(int)arg1;
+- (void)setShowDictationButton:(bool)arg1;
 - (void)setSmartDashesType:(long long)arg1;
 - (void)setSmartInsertDeleteType:(long long)arg1;
 - (void)setSmartQuotesType:(long long)arg1;
@@ -268,9 +287,11 @@
 - (void)setToSecureValues;
 - (void)setUnderlineColorForSpelling:(id)arg1;
 - (void)setUnderlineColorForTextAlternatives:(id)arg1;
+- (void)setUseAutomaticEndpointing:(bool)arg1;
 - (void)setUseInterfaceLanguageForLocalization:(bool)arg1;
 - (void)setValidTextRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (int)shortcutConversionType;
+- (bool)showDictationButton;
 - (long long)smartDashesType;
 - (long long)smartInsertDeleteType;
 - (long long)smartQuotesType;
@@ -287,6 +308,7 @@
 - (id)underlineColorForSpelling;
 - (id)underlineColorForTextAlternatives;
 - (long long)updateResultComparedToTraits:(id)arg1;
+- (bool)useAutomaticEndpointing;
 - (bool)useInterfaceLanguageForLocalization;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })validTextRange;
 

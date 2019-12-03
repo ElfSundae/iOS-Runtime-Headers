@@ -11,9 +11,9 @@
 @property (nonatomic, retain) MFError *error;
 @property (nonatomic, retain) <MFDAStreamingContentConsumer> *streamConsumer;
 
+- (void).cxx_destruct;
 - (void)actionFailed:(long long)arg1 forTask:(id)arg2 error:(id)arg3;
 - (void)consumeData:(char *)arg1 length:(int)arg2 format:(int)arg3 mailMessage:(id)arg4;
-- (void)dealloc;
 - (void)didEndStreamingForMailMessage:(id)arg1;
 - (id)error;
 - (id)init;

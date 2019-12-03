@@ -2,13 +2,16 @@
    Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon
  */
 
-@interface HDObserverQueryServer : HDQueryServer {
+@interface HDObserverQueryServer : HDQueryServer <HDQuantitySeriesObserver> {
     NSNumber * _anchor;
     bool  _deliverOnUnlock;
+    bool  _observeUnfrozenSeries;
 }
 
-@property (nonatomic, readonly, copy) NSNumber *anchor;
-@property (nonatomic, readonly) bool deliverOnUnlock;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (Class)queryClass;
 + (id)requiredEntitlements;
@@ -20,10 +23,12 @@
 - (void)_queue_stop;
 - (bool)_shouldExecuteWhenProtectedDataIsUnavailable;
 - (bool)_shouldListenForUpdates;
-- (id)anchor;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(bool)arg2;
-- (bool)deliverOnUnlock;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
+- (void)profile:(id)arg1 didDiscardSeriesOfType:(id)arg2;
+- (void)profile:(id)arg1 didInsertQuantity:(id)arg2 type:(id)arg3 dateInterval:(id)arg4 series:(id)arg5 anchor:(id)arg6;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;
+- (id /* block */)transactionalQuantityInsertHandlerForProfile:(id)arg1 journaled:(bool)arg2 count:(long long)arg3;
 
 @end

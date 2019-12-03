@@ -11,5 +11,6 @@
 - (id)inspectorLocalizedValueLabelsTabName;
 - (int)legendBadgeType;
 - (id)seriesFillLabelUIString;
+- (id)userInterfaceName;
 
 @end

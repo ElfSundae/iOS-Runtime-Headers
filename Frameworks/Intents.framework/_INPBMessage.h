@@ -3,7 +3,7 @@
  */
 
 @interface _INPBMessage : PBCodable <NSCopying, NSSecureCoding, _INPBMessage> {
-    NSArray * _attachments;
+    bool  __encodeLegacyGloryData;
     struct { 
         int *list; 
         unsigned long long count; 
@@ -28,12 +28,12 @@
     NSArray * _recipients;
     _INPBMessage * _referencedMessage;
     _INPBContact * _sender;
+    NSString * _serviceName;
     _INPBDataString * _speakableGroupName;
     int  _type;
 }
 
-@property (nonatomic, copy) NSArray *attachments;
-@property (nonatomic, readonly) unsigned long long attachmentsCount;
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic, readonly) int*attributes;
 @property (nonatomic, readonly) unsigned long long attributesCount;
 @property (nonatomic, copy) NSString *content;
@@ -59,6 +59,7 @@
 @property (nonatomic, readonly) bool hasPaymentAmount;
 @property (nonatomic, readonly) bool hasReferencedMessage;
 @property (nonatomic, readonly) bool hasSender;
+@property (nonatomic, readonly) bool hasServiceName;
 @property (nonatomic, readonly) bool hasSpeakableGroupName;
 @property (nonatomic) bool hasType;
 @property (readonly) unsigned long long hash;
@@ -71,28 +72,26 @@
 @property (nonatomic, readonly) unsigned long long recipientsCount;
 @property (nonatomic, retain) _INPBMessage *referencedMessage;
 @property (nonatomic, retain) _INPBContact *sender;
+@property (nonatomic, copy) NSString *serviceName;
 @property (nonatomic, retain) _INPBDataString *speakableGroupName;
 @property (readonly) Class superclass;
 @property (nonatomic) int type;
 
-+ (Class)attachmentType;
 + (Class)recipientType;
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (int)StringAsAttributes:(id)arg1;
 - (int)StringAsEffect:(id)arg1;
 - (int)StringAsType:(id)arg1;
-- (void)addAttachment:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (void)addAttribute:(int)arg1;
 - (void)addRecipient:(id)arg1;
-- (id)attachmentAtIndex:(unsigned long long)arg1;
-- (id)attachments;
-- (unsigned long long)attachmentsCount;
 - (int)attributeAtIndex:(unsigned long long)arg1;
 - (int*)attributes;
 - (id)attributesAsString:(int)arg1;
 - (unsigned long long)attributesCount;
-- (void)clearAttachments;
 - (void)clearAttributes;
 - (void)clearRecipients;
 - (id)content;
@@ -100,9 +99,11 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dateLastMessageRead;
 - (id)dateSent;
+- (void)dealloc;
 - (id)dictionaryRepresentation;
 - (int)effect;
 - (id)effectAsString:(int)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)fileExtension;
 - (id)groupName;
 - (bool)hasContent;
@@ -119,10 +120,12 @@
 - (bool)hasPaymentAmount;
 - (bool)hasReferencedMessage;
 - (bool)hasSender;
+- (bool)hasServiceName;
 - (bool)hasSpeakableGroupName;
 - (bool)hasType;
 - (unsigned long long)hash;
 - (id)identifier;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)linkMetadata;
 - (id)locationName;
@@ -134,7 +137,7 @@
 - (unsigned long long)recipientsCount;
 - (id)referencedMessage;
 - (id)sender;
-- (void)setAttachments:(id)arg1;
+- (id)serviceName;
 - (void)setAttributes:(int*)arg1 count:(unsigned long long)arg2;
 - (void)setContent:(id)arg1;
 - (void)setConversationIdentifier:(id)arg1;
@@ -153,6 +156,7 @@
 - (void)setRecipients:(id)arg1;
 - (void)setReferencedMessage:(id)arg1;
 - (void)setSender:(id)arg1;
+- (void)setServiceName:(id)arg1;
 - (void)setSpeakableGroupName:(id)arg1;
 - (void)setType:(int)arg1;
 - (id)speakableGroupName;

@@ -3,12 +3,12 @@
  */
 
 @interface SCNMTLShadable : NSObject {
-    /* Warning: unhandled array encoding: '[31@]' */ id  _fragmentBuffers;
-    /* Warning: unhandled array encoding: '[16@]' */ id  _fragmentSamplers;
-    /* Warning: unhandled array encoding: '[31@]' */ id  _fragmentTextures;
-    /* Warning: unhandled array encoding: '[31@]' */ id  _vertexBuffers;
-    /* Warning: unhandled array encoding: '[16@]' */ id  _vertexSamplers;
-    /* Warning: unhandled array encoding: '[31@]' */ id  _vertexTextures;
+    id  _fragmentBuffers;
+    id  _fragmentSamplers;
+    id  _fragmentTextures;
+    id  _vertexBuffers;
+    id  _vertexSamplers;
+    id  _vertexTextures;
     long long  geometryModificationCount;
     long long  materialModificationCount;
 }

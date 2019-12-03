@@ -13,6 +13,7 @@
     NSDate * _lastReceivedCommandDate;
     MRNowPlayingArtwork * _nowPlayingArtwork;
     NSDictionary * _nowPlayingInfo;
+    NSMutableDictionary * _pendingPlaybackSessionMigrateEvents;
     _MRPlaybackQueueProtobuf * _playbackQueue;
     unsigned int  _playbackState;
     NSDate * _playbackStateDate;
@@ -38,8 +39,9 @@
 @property (nonatomic, copy) NSArray *supportedCommands;
 
 - (void).cxx_destruct;
-- (id)_onQueue_nowPlayingContentItem;
+- (void)_handePlaybackSessionMigrateRequest:(id)arg1 request:(id)arg2 completion:(id /* block */)arg3;
 - (void)_onQueue_sendTransaction:(unsigned long long)arg1 withPackets:(id)arg2;
+- (void)addPendingPlaybackSessionMigrateEvent:(id)arg1;
 - (void)addPendingRequest:(id)arg1;
 - (void)beginSendingTransactions;
 - (void)cacheContentItemChangesForPendingRequests:(id)arg1;
@@ -49,6 +51,7 @@
 - (id)debugDescription;
 - (id)description;
 - (void)endSendingTransactions;
+- (void)flushPendingPlaybackSessionMigrateEvents:(id /* block */)arg1;
 - (bool)hasReceivedCommandRecently;
 - (id)initWithPlayerPath:(id)arg1;
 - (double)invalidatationTimestamp;
@@ -59,7 +62,9 @@
 - (unsigned int)playbackState;
 - (id)playerPath;
 - (void)preProcessChangePlaybackRateCommandWithOptions:(id)arg1;
-- (void)preProcessCommand:(unsigned int)arg1 options:(id)arg2;
+- (bool)removePendingPlaybackSessionMigrateEvent:(id)arg1;
+- (unsigned int)resolveCommand:(unsigned int)arg1;
+- (id)resolveCommandOptions:(unsigned int)arg1 options:(id)arg2;
 - (void)restoreNowPlayingClientState;
 - (void)sendTransaction:(unsigned long long)arg1 withPackets:(id)arg2;
 - (void)setCapabilities:(unsigned long long)arg1;

@@ -15,8 +15,9 @@
 + (id)validatorWithObject:(id)arg1;
 
 - (void).cxx_destruct;
-- (bool)_checkTotal:(id)arg1 error:(id*)arg2;
+- (bool)_checkTotal:(id)arg1 withAPIType:(unsigned long long)arg2 error:(id*)arg3;
 - (id)initWithPaymentRequest:(id)arg1;
+- (bool)isValidWithAPIType:(unsigned long long)arg1 withError:(id*)arg2;
 - (bool)isValidWithError:(id*)arg1;
 
 @end

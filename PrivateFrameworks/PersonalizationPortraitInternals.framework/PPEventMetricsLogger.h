@@ -14,7 +14,6 @@
     double  _storeCreationDate;
 }
 
-+ (id)_portraitDirectoryAfterCreatingIfNeeded:(bool)arg1;
 + (id)defaultLogger;
 + (unsigned long long)numberOfDaysBetweenDate:(id)arg1 andDate:(id)arg2;
 + (bool)supportsSecureCoding;

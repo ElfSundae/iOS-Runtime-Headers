@@ -3,6 +3,7 @@
  */
 
 @interface RPIdentity : NSObject <NSSecureCoding> {
+    NSArray * _accessGroups;
     NSString * _accountID;
     NSString * _contactID;
     NSDate * _dateAcknowledged;
@@ -21,10 +22,13 @@
     NSString * _model;
     NSString * _name;
     bool  _present;
+    unsigned int  _revisionID;
+    NSString * _sendersKnownAlias;
     int  _type;
     bool  _userAdded;
 }
 
+@property (nonatomic, copy) NSArray *accessGroups;
 @property (nonatomic, copy) NSString *accountID;
 @property (nonatomic, copy) NSString *contactID;
 @property (nonatomic, copy) NSDate *dateAcknowledged;
@@ -43,6 +47,8 @@
 @property (nonatomic, copy) NSString *model;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic) bool present;
+@property (nonatomic) unsigned int revisionID;
+@property (nonatomic, copy) NSString *sendersKnownAlias;
 @property (nonatomic) int type;
 @property (nonatomic) bool userAdded;
 
@@ -50,6 +56,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)accessGroups;
 - (id)accountID;
 - (id)authTagForData:(id)arg1 type:(int)arg2 error:(id*)arg3;
 - (unsigned int)compareWithRPIdentity:(id)arg1;
@@ -75,6 +82,9 @@
 - (id)model;
 - (id)name;
 - (bool)present;
+- (unsigned int)revisionID;
+- (id)sendersKnownAlias;
+- (void)setAccessGroups:(id)arg1;
 - (void)setAccountID:(id)arg1;
 - (void)setContactID:(id)arg1;
 - (void)setDateAcknowledged:(id)arg1;
@@ -93,12 +103,15 @@
 - (void)setModel:(id)arg1;
 - (void)setName:(id)arg1;
 - (void)setPresent:(bool)arg1;
+- (void)setRevisionID:(unsigned int)arg1;
+- (void)setSendersKnownAlias:(id)arg1;
 - (void)setType:(int)arg1;
 - (void)setUserAdded:(bool)arg1;
 - (id)signData:(id)arg1 error:(id*)arg2;
 - (bool)signDataPtr:(const void*)arg1 dataLen:(unsigned long long)arg2 signatureBytes:(unsigned char)arg3 error:(id*)arg4;
 - (int)type;
 - (unsigned int)updateWithKeychainItem:(id)arg1 error:(id*)arg2;
+- (unsigned int)updateWithRPMessage:(id)arg1 error:(id*)arg2;
 - (bool)userAdded;
 - (bool)verifyAuthTag:(id)arg1 data:(id)arg2 type:(int)arg3 error:(id*)arg4;
 - (bool)verifyAuthTagPtr:(const void*)arg1 authTagLen:(unsigned long long)arg2 dataPtr:(const void*)arg3 dataLen:(unsigned long long)arg4 type:(int)arg5 error:(id*)arg6;

@@ -28,8 +28,10 @@
 - (void)addHistogram:(id)arg1;
 - (void)addHistogram:(id)arg1 decayingExistingCounts:(double)arg2;
 - (void)addValue:(id)arg1;
+- (void)addValue:(id)arg1 withCount:(double)arg2;
 - (id)countDictionary;
 - (unsigned long long)countForValue:(id)arg1;
+- (double)countForValueDouble:(id)arg1;
 - (unsigned long long)countOverAllValues;
 - (id)customIdentifier;
 - (id)description;

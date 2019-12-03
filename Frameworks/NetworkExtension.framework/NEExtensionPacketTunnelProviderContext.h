@@ -13,6 +13,7 @@
 + (id)_extensionAuxiliaryVendorProtocol;
 
 - (void)completeSession;
+- (id)extensionPoint;
 - (void)fetchVirtualInterfaceTypeWithCompletionHandler:(id /* block */)arg1;
 - (void)requestSocket:(bool)arg1 interface:(id)arg2 local:(id)arg3 remote:(id)arg4 completionHandler:(id /* block */)arg5;
 - (void)setTunnelConfiguration:(id)arg1 completionHandler:(id /* block */)arg2;

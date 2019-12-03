@@ -7,8 +7,10 @@
 @property (nonatomic, readonly) NSArray *browseCategories;
 @property (nonatomic) unsigned long long cachePolicy;
 @property (getter=isCancelled, nonatomic, readonly) bool cancelled;
+@property (nonatomic, readonly) GEOCategorySearchResultSection *categorySearchResultSection;
 @property (getter=isChainResultSet, nonatomic, readonly) bool chainResultSet;
 @property (nonatomic, readonly) GEOResolvedItem *clientResolvedResult;
+@property (nonatomic, readonly) struct { int x1; union { int x_2_1_1; int x_2_1_2; int x_2_1_3; } x2; } dataRequestKind;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, readonly) GEORelatedSearchSuggestion *defaultRelatedSuggestion;
 @property (readonly, copy) NSString *description;
@@ -24,6 +26,7 @@
 @property (nonatomic, readonly) NSString *resultSectionHeader;
 @property (nonatomic, readonly) NSArray *retainedSearchMetadata;
 @property (nonatomic, readonly) NSString *searchQuery;
+@property (nonatomic, readonly) NSArray *searchResultSections;
 @property (nonatomic, readonly) int searchResultType;
 @property (nonatomic, readonly) bool shouldEnableRedoSearch;
 @property (nonatomic, readonly) bool showDymSuggestionCloseButton;

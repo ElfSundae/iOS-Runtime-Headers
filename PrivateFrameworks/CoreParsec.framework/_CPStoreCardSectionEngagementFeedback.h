@@ -24,7 +24,6 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic) int productPageResult;
-@property (nonatomic, readonly) bool requiresQueryId;
 @property (nonatomic, copy) NSString *resultId;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long timestamp;
@@ -45,7 +44,6 @@
 - (id)jsonData;
 - (int)productPageResult;
 - (bool)readFrom:(id)arg1;
-- (bool)requiresQueryId;
 - (id)resultId;
 - (void)setActionCardType:(int)arg1;
 - (void)setCardSection:(id)arg1;

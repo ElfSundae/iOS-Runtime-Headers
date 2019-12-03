@@ -38,6 +38,7 @@
 - (id)recoveryValidatorWithDevices:(id)arg1 forMultipleICSC:(bool)arg2 withCompletionHandler:(id /* block */)arg3;
 - (void)remoteSecretValidator:(id)arg1 applyToJoinCircleWithJoinHandler:(id /* block */)arg2;
 - (void)secretValidator:(id)arg1 didFailRecovery:(id)arg2 withError:(id)arg3 completion:(id /* block */)arg4;
+- (void)secretValidator:(id)arg1 recoverSecureBackupWithContext:(id)arg2 completion:(id /* block */)arg3;
 - (bool)secretValidator:(id)arg1 shouldAcceptRecoveryError:(id*)arg2;
 - (void)secretValidatorWillAttemptRecovery;
 

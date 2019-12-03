@@ -5,12 +5,14 @@
 @interface WFGasQueryController : NSObject {
     <WFGasQueryControllerDelegate> * _delegate;
     NSMapTable * _gasResponseCache;
+    WFInterface * _interface;
     NSSet * _profiles;
     NSMutableSet * _resolvedNetworks;
 }
 
 @property (nonatomic) <WFGasQueryControllerDelegate> *delegate;
 @property (nonatomic, retain) NSMapTable *gasResponseCache;
+@property (nonatomic, retain) WFInterface *interface;
 @property (nonatomic, readonly) NSSet *profiles;
 @property (nonatomic, retain) NSMutableSet *resolvedNetworks;
 
@@ -20,6 +22,8 @@
 - (id)delegate;
 - (id)gasResponseCache;
 - (id)init;
+- (id)initWithInterface:(id)arg1;
+- (id)interface;
 - (id)profileForNetwork:(id)arg1;
 - (id)profiles;
 - (void)removeAllProfiles;
@@ -29,6 +33,7 @@
 - (id)resolvedNetworks;
 - (void)setDelegate:(id)arg1;
 - (void)setGasResponseCache:(id)arg1;
+- (void)setInterface:(id)arg1;
 - (void)setResolvedNetworks:(id)arg1;
 
 @end

@@ -19,9 +19,6 @@
 - (void)_cancelPressed;
 - (id)_secondaryButton;
 - (void)captureController:(id)arg1 didChangeStateTo:(long long)arg2;
-- (void)captureController:(id)arg1 requestsDismissCurrentViewControllerAnimated:(bool)arg2;
-- (void)captureController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(bool)arg3;
-- (void)captureController:(id)arg1 requestsPushViewController:(id)arg2 animated:(bool)arg3;
 - (void)captureController:(id)arg1 showLoading:(bool)arg2;
 - (void)didSelectSetupLater;
 - (void)explanationViewDidSelectContinue:(id)arg1;

@@ -2,21 +2,24 @@
    Image: /System/Library/PrivateFrameworks/FrontBoard.framework/FrontBoard
  */
 
-@interface FBProcessManager : NSObject <FBApplicationProcessDelegate, FBUIProcessManagerInternal> {
-    <FBApplicationInfoProvider> * _appInfoProvider;
+@interface FBProcessManager : NSObject <FBProcessDelegate> {
     NSObject<OS_dispatch_queue> * _callOutQueue;
-    FBApplicationProcess * _foregroundAppProcess;
     FBApplicationProcessWatchdogPolicy * _noDirectAccess_defaultWatchdogPolicy;
-    NSHashTable * _observers;
-    FBApplicationProcess * _preferredForegroundAppProcess;
-    NSMutableSet * _preventIdleSleepReasons;
-    NSMapTable * _processesByBundleID;
-    NSMapTable * _processesByPID;
-    NSObject<OS_dispatch_queue> * _processesQueue;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _processesLock;
+    NSMutableDictionary * _processesLock_processesByIdentity;
+    NSMutableDictionary * _processesLock_processesByPID;
     NSObject<OS_dispatch_queue> * _queue;
+    NSMutableOrderedSet * _queue_foregroundRunningProcesses;
+    <FBProcessManagerKeyboardFocusDelegate> * _queue_keyboardFocusDelegate;
+    RBSProcessMonitor * _queue_monitor;
+    NSMutableSet * _queue_monitorPredicates;
+    NSHashTable * _queue_observers;
+    FBProcess * _queue_preferredForegroundAppProcess;
+    BKSHIDEventDeferringToken * _queue_preferredForegroundToken;
+    FBProcess * _queue_previouslySelectedForegroundProcess;
     FBApplicationProcess * _systemAppProcess;
-    BKSProcessAssertion * _systemAppProcessAssertion;
-    NSMutableDictionary * _workspacesByClientIdentity;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -26,43 +29,43 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) FBApplicationProcess *systemApplicationProcess;
 
++ (id)_sharedInstanceCreateIfNeeded:(bool)arg1;
 + (id)sharedInstance;
++ (id)sharedInstanceIfExists;
 
 - (void).cxx_destruct;
-- (id)_processesQueue_processForPID:(int)arg1;
-- (id)_processesQueue_processesForBundleIdentifier:(id)arg1;
-- (void)_queue_addProcess:(id)arg1 completion:(id /* block */)arg2;
+- (id)_createProcessWithExecutionContext:(id)arg1;
+- (void)_queue_addForegroundRunningProcess:(id)arg1;
+- (void)_queue_addProcess:(id)arg1;
 - (void)_queue_evaluateForegroundEventRouting;
-- (void)_queue_notifyObserversUsingBlock:(id /* block */)arg1 completion:(id /* block */)arg2;
-- (id)_queue_reallyRegisterProcessForProcessHandle:(id)arg1;
-- (void)_queue_removeProcess:(id)arg1 withBundleID:(id)arg2 pid:(int)arg3;
+- (void)_queue_notifyObserversUsingBlock:(id /* block */)arg1;
+- (id)_queue_reallyRegisterProcessForHandle:(id)arg1;
+- (void)_queue_removeForegroundRunningProcess:(id)arg1;
+- (void)_queue_removeProcess:(id)arg1 withPID:(int)arg2;
 - (id)_serviceClientAddedWithProcessHandle:(id)arg1;
-- (void)_setPreferredForegroundApplicationProcess:(id)arg1;
-- (void)_setSystemIdleSleepDisabled:(bool)arg1 forReason:(id)arg2;
+- (void)_setPreferredForegroundApplicationProcess:(id)arg1 deferringToken:(id)arg2;
 - (void)addObserver:(id)arg1;
 - (id)allApplicationProcesses;
 - (id)allProcesses;
 - (id)applicationProcessForPID:(int)arg1;
 - (id)applicationProcessesForBundleIdentifier:(id)arg1;
-- (id)createApplicationProcessForBundleID:(id)arg1;
-- (id)createApplicationProcessForBundleID:(id)arg1 withExecutionContext:(id)arg2;
-- (id)currentProcess;
 - (void)dealloc;
 - (id)defaultWatchdogPolicy;
 - (id)description;
 - (id)init;
-- (void)invalidateClientWorkspace:(id)arg1;
+- (id)keyboardFocusDelegate;
+- (oneway void)launchProcessWithContext:(id)arg1;
 - (void)noteProcess:(id)arg1 didUpdateState:(id)arg2;
 - (void)noteProcessDidExit:(id)arg1;
-- (bool)ping;
+- (id)processForIdentity:(id)arg1;
 - (id)processForPID:(int)arg1;
 - (id)processesForBundleIdentifier:(id)arg1;
 - (id)registerProcessForAuditToken:(struct { unsigned int x1[8]; })arg1;
 - (id)registerProcessForHandle:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)setDefaultWatchdogPolicy:(id)arg1;
+- (void)setKeyboardFocusDelegate:(id)arg1;
 - (id)systemApplicationProcess;
 - (id)watchdogPolicyForProcess:(id)arg1 eventContext:(id)arg2;
-- (id)workspaceForSceneClientWithIdentity:(id)arg1;
 
 @end

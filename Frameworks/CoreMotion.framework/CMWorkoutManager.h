@@ -14,6 +14,7 @@
 - (id)_internal;
 - (void)dealloc;
 - (id)delegate;
+- (void)getPromptsNeededForWorkoutType:(long long)arg1 handler:(id /* block */)arg2;
 - (id)init;
 - (void)setDelegate:(id)arg1;
 - (void)setSuggestedStopTimeout:(double)arg1;

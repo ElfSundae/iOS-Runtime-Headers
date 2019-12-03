@@ -3,8 +3,8 @@
  */
 
 @interface NURenderPipelineState : NSObject <NSCopying> {
+    long long  _auxiliaryImageType;
     NURenderTagGroup * _currentGroup;
-    long long  _depthType;
     long long  _evaluationMode;
     unsigned long long  _groupCount;
     NSMutableArray * _groupStack;
@@ -27,8 +27,8 @@
     NSDictionary * _videoFrames;
 }
 
+@property long long auxiliaryImageType;
 @property (readonly) NURenderTagGroup *currentGroup;
-@property long long depthType;
 @property long long evaluationMode;
 @property (readonly) unsigned long long groupCount;
 @property long long mediaComponentType;
@@ -43,10 +43,10 @@
 
 - (void).cxx_destruct;
 - (bool)applyPipelineSettings:(id)arg1 error:(out id*)arg2;
+- (long long)auxiliaryImageType;
 - (id)beginGroupWithName:(id)arg1 error:(out id*)arg2;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)currentGroup;
-- (long long)depthType;
 - (id)description;
 - (bool)endGroupWithName:(id)arg1 error:(out id*)arg2;
 - (long long)evaluationMode;
@@ -62,7 +62,7 @@
 - (long long)sampleMode;
 - (struct { long long x1; long long x2; })scale;
 - (long long)serialNumber;
-- (void)setDepthType:(long long)arg1;
+- (void)setAuxiliaryImageType:(long long)arg1;
 - (void)setEvaluationMode:(long long)arg1;
 - (void)setMediaComponentType:(long long)arg1;
 - (void)setPipelineFilters:(id)arg1;

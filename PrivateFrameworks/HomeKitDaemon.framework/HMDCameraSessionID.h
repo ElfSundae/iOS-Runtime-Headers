@@ -3,8 +3,6 @@
  */
 
 @interface HMDCameraSessionID : HMFObject <NSCopying> {
-    NSString * _accessoryName;
-    NSString * _cameraProactiveSessionID;
     NSString * _cameraSessionAppID;
     NSString * _descriptionString;
     NSMutableDictionary * _deviceMilestones;
@@ -15,26 +13,21 @@
     bool  _spiClient;
 }
 
-@property (nonatomic, readonly) NSString *accessoryName;
-@property (nonatomic, readonly) NSString *cameraProactiveSessionID;
-@property (nonatomic, readonly) NSString *cameraSessionAppID;
-@property (nonatomic, readonly) NSString *descriptionString;
-@property (nonatomic, readonly) NSMutableDictionary *deviceMilestones;
-@property (nonatomic, readonly) NSString *deviceSectionName;
-@property (nonatomic, readonly) NSMutableDictionary *milestones;
-@property (nonatomic, readonly) HMDDevice *remoteDevice;
-@property (nonatomic, readonly) NSString *sessionID;
-@property (getter=isSPIClient, nonatomic, readonly) bool spiClient;
+@property (readonly) NSString *cameraSessionAppID;
+@property (readonly) NSString *descriptionString;
+@property (readonly) NSMutableDictionary *deviceMilestones;
+@property (readonly) NSString *deviceSectionName;
+@property (readonly) NSMutableDictionary *milestones;
+@property (readonly) HMDDevice *remoteDevice;
+@property (readonly) NSString *sessionID;
+@property (getter=isSPIClient, readonly) bool spiClient;
 
++ (id)applicationIdentiferForMessage:(id)arg1;
 + (id)millisecondsSince1970;
 
 - (void).cxx_destruct;
-- (id)_createDescriptionString;
-- (id)_extractSessionAppID:(id)arg1;
 - (void)_prepareDeviceMilestones;
-- (id)accessoryName;
 - (void)addParameterFor:(id)arg1 value:(id)arg2;
-- (id)cameraProactiveSessionID;
 - (id)cameraSessionAppID;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -42,9 +35,7 @@
 - (id)deviceMilestones;
 - (id)deviceSectionName;
 - (unsigned long long)hash;
-- (id)initWithAccessory:(id)arg1 service:(id)arg2 sessionID:(id)arg3 message:(id)arg4;
-- (id)initWithAccessory:(id)arg1 sessionID:(id)arg2 message:(id)arg3;
-- (id)initWithAccessoryName:(id)arg1 sessionID:(id)arg2 cameraSessionAppID:(id)arg3 cameraProactiveSessionID:(id)arg4 remoteDevice:(id)arg5 spiClient:(bool)arg6;
+- (id)initWithSessionID:(id)arg1 remoteDevice:(id)arg2 cameraSessionAppID:(id)arg3 descriptionString:(id)arg4 spiClient:(bool)arg5;
 - (bool)isEqual:(id)arg1;
 - (bool)isSPIClient;
 - (void)markMilestoneFor:(id)arg1;

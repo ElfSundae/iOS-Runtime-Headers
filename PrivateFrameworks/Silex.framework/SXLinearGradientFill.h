@@ -6,6 +6,4 @@
 
 @property (nonatomic, readonly) double angle;
 
-+ (id)typeString;
-
 @end

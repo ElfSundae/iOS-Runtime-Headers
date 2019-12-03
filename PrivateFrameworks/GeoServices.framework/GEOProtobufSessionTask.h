@@ -3,17 +3,26 @@
  */
 
 @interface GEOProtobufSessionTask : NSObject <GEODataSessionTaskDelegate> {
+    GEOApplicationAuditToken * _auditToken;
     bool  _completedAsCancelled;
     <GEODataSessionTask> * _dataTask;
     <GEOProtobufSessionTaskDelegate> * _delegate;
     NSObject<OS_dispatch_queue> * _delegateQueue;
     NSError * _error;
-    int  _requestKind;
+    struct { 
+        int type; 
+        union { 
+            int raw; 
+            int tile; 
+            int placeRequest; 
+        } subtype; 
+    }  _requestKind;
     unsigned int  _requestTypeCode;
     PBCodable * _response;
     Class  _responseClass;
     GEOProtobufSession * _session;
     unsigned long long  _taskIdentifier;
+    GEODataRequestThrottlerToken * _throttleToken;
 }
 
 @property (nonatomic, readonly) GEOClientMetrics *clientMetrics;
@@ -28,10 +37,13 @@
 @property (nonatomic, retain) NSError *error;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) unsigned long long incomingPayloadSize;
+@property (nonatomic, readonly) bool mptcpNegotiated;
 @property (nonatomic, readonly) unsigned long long outgoingPayloadSize;
+@property (nonatomic, readonly) bool receivedRNFNotification;
 @property (nonatomic, readonly) NSString *remoteAddressAndPort;
-@property (nonatomic, readonly) int requestKind;
+@property (nonatomic, readonly) struct { int x1; union { int x_2_1_1; int x_2_1_2; int x_2_1_3; } x2; } requestKind;
 @property (nonatomic, readonly) unsigned int requestTypeCode;
+@property (nonatomic, readonly) unsigned long long requestedMultipathServiceType;
 @property (nonatomic, readonly) PBCodable *response;
 @property (nonatomic, retain) PBCodable *response;
 @property (nonatomic, readonly) Class responseClass;
@@ -53,19 +65,23 @@
 - (id)debugDescription;
 - (id)delegate;
 - (id)delegateQueue;
+- (id)description;
 - (id)error;
 - (unsigned long long)incomingPayloadSize;
 - (id)init;
-- (id)initWithSession:(id)arg1 taskIdentifier:(unsigned long long)arg2 requestTypeCode:(unsigned int)arg3 responseClass:(Class)arg4 delegate:(id)arg5 delegateQueue:(id)arg6 requestKind:(int)arg7;
+- (id)initWithSession:(id)arg1 taskIdentifier:(unsigned long long)arg2 requestTypeCode:(unsigned int)arg3 responseClass:(Class)arg4 delegate:(id)arg5 delegateQueue:(id)arg6 requestKind:(struct { int x1; union { int x_2_1_1; int x_2_1_2; int x_2_1_3; } x2; })arg7 auditToken:(id)arg8 throttleToken:(id)arg9;
+- (bool)mptcpNegotiated;
 - (unsigned long long)outgoingPayloadSize;
 - (id)parseInnerProtobufFromData:(id)arg1;
 - (bool)parsePreambleWithReader:(id)arg1;
 - (bool)parseProtocolVersionWithReader:(id)arg1;
 - (id)parseResponseFromResponseData:(id)arg1;
 - (bool)parseResponseTypeWithReader:(id)arg1;
+- (bool)receivedRNFNotification;
 - (id)remoteAddressAndPort;
-- (int)requestKind;
+- (struct { int x1; union { int x_2_1_1; int x_2_1_2; int x_2_1_3; } x2; })requestKind;
 - (unsigned int)requestTypeCode;
+- (unsigned long long)requestedMultipathServiceType;
 - (id)response;
 - (Class)responseClass;
 - (id)session;

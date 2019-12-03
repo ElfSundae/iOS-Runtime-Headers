@@ -3,19 +3,24 @@
  */
 
 @interface GEOComposedWalkingRouteLeg : GEOComposedRouteLeg {
-    <GEOTransitRoutingIncidentMessage> * _transitRouteDetailsIncidentMessage;
-    <GEOTransitRoutingIncidentMessage> * _transitSteppingIncidentMessage;
+    unsigned long long  _transitIncidentMessageStepIndex;
 }
 
 @property (nonatomic, readonly) GEOComposedTransitWalkingRouteStep *arrivalStep;
 @property (nonatomic, readonly) GEOComposedWalkingRouteStep *lastWalkingStep;
+@property (nonatomic, readonly) unsigned long long transitIncidentMessageStepIndex;
 @property (nonatomic, readonly) <GEOTransitRoutingIncidentMessage> *transitRouteDetailsIncidentMessage;
 @property (nonatomic, readonly) <GEOTransitRoutingIncidentMessage> *transitSteppingIncidentMessage;
 
-- (void).cxx_destruct;
++ (bool)supportsSecureCoding;
+
+- (id)_transitIncidentMessageStep;
 - (id)arrivalStep;
-- (id)initWithComposedRoute:(id)arg1 stepRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 pointRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3 transitSteppingIncidentMessage:(id)arg4 transitRouteDetailsIncidentMessage:(id)arg5;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithComposedRoute:(id)arg1 stepRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 pointRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3 transitIncidentMessageStepIndex:(unsigned long long)arg4;
 - (id)lastWalkingStep;
+- (unsigned long long)transitIncidentMessageStepIndex;
 - (id)transitRouteDetailsIncidentMessage;
 - (id)transitSteppingIncidentMessage;
 

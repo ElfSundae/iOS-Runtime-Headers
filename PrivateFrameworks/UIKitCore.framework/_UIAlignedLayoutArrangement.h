@@ -14,6 +14,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) NSSet *invalidBaselineConstraints;
 @property (nonatomic) bool layoutFillsCanvas;
 @property (nonatomic) bool layoutUsesCanvasMarginsWhenFilling;
 @property (readonly) Class superclass;
@@ -27,6 +28,7 @@
 - (id)_alignmentPropertySource;
 - (long long)_attributeForConstraintGroupName:(id)arg1;
 - (long long)_axisForSpanningLayoutGuide;
+- (id)_baselineDependentConstraints;
 - (bool)_canvasConnectionConstraintsNeedUpdatePass;
 - (void)_clearAllConstraintsArrays;
 - (bool)_hasStaleConfiguration;
@@ -35,6 +37,7 @@
 - (long long)_layoutRelationForCanvasConnectionForAttribute:(long long)arg1;
 - (void)_removeConstraintGroupsAsNecessary;
 - (void)_removeIndividualConstraintsAsNecessary;
+- (bool)_requiresNotificationForHasBaselinePropertyChanges;
 - (void)_setUpConstraintForItem:(id)arg1 referenceItem:(id)arg2 attribute:(long long)arg3 inConstraintsTable:(id)arg4;
 - (bool)_spanningGuideConstraintsNeedUpdate;
 - (void)_updateArrangementConstraints;

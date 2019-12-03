@@ -14,6 +14,7 @@
 @property (nonatomic, copy) NSURL *url;
 @property (nonatomic) bool userDriven;
 @property (nonatomic, copy) NSString *utsId;
+@property (nonatomic, copy) NSURL *utsSearchUrl;
 
 + (id)contentDetailPage;
 + (id)contentDetailPageWithDictionary:(id)arg1 context:(id)arg2;
@@ -36,9 +37,11 @@
 - (void)setUrl:(id)arg1;
 - (void)setUserDriven:(bool)arg1;
 - (void)setUtsId:(id)arg1;
+- (void)setUtsSearchUrl:(id)arg1;
 - (id)showId;
 - (id)url;
 - (bool)userDriven;
 - (id)utsId;
+- (id)utsSearchUrl;
 
 @end

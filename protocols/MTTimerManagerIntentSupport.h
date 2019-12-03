@@ -10,4 +10,8 @@
 - (NAFuture *)timers;
 - (NAFuture *)updateTimer:(NSObject<MTTimerIntentSupport> *)arg1;
 
+@optional
+
+- (NAFuture *)sleepTimersWithState:(unsigned long long)arg1;
+
 @end

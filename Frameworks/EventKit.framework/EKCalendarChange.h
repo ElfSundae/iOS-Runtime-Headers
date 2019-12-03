@@ -4,6 +4,8 @@
 
 @interface EKCalendarChange : EKObjectChange
 
++ (int)entityType;
++ (void)fetchCalendarChangesInSource:(id)arg1 resultHandler:(id /* block */)arg2;
 + (void)fetchCalendarChangesInStore:(id)arg1 resultHandler:(id /* block */)arg2;
 
 @end

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface _UITextUndoOperationSetAttributes : NSUndoTextOperation {
+@interface _UITextUndoOperationSetAttributes : _UIUndoTextOperation {
     _NSAttributeRun * _attributes;
 }
 

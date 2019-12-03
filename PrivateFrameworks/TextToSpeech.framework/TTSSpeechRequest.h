@@ -4,6 +4,7 @@
 
 @interface TTSSpeechRequest : NSObject <NSSecureCoding> {
     NSAttributedString * _attributedText;
+    id /* block */  _audioBufferCallback;
     unsigned int  _audioQueueFlags;
     unsigned int  _audioSessionID;
     bool  _audioSessionIDIsValid;
@@ -25,14 +26,16 @@
     NSMutableArray * _replacedWords;
     TTSSpeechChannel * _speechChannel;
     bool  _supportsAccurateWordCallbacks;
+    bool  _synthesizeSilently;
+    unsigned long long  _synthesizerInstanceID;
     NSString * _text;
     bool  _useMonarchStyleRate;
-    bool  _useVoiceBooster;
     double  _volume;
     long long  _wordRangeCallbacksDispatched;
 }
 
 @property (nonatomic, copy) NSAttributedString *attributedText;
+@property (nonatomic, copy) id /* block */ audioBufferCallback;
 @property (nonatomic) unsigned int audioQueueFlags;
 @property (nonatomic) unsigned int audioSessionID;
 @property (nonatomic) bool audioSessionIDIsValid;
@@ -53,15 +56,17 @@
 @property (nonatomic, retain) NSMutableArray *replacedWords;
 @property (nonatomic, retain) TTSSpeechChannel *speechChannel;
 @property (nonatomic) bool supportsAccurateWordCallbacks;
+@property (nonatomic) bool synthesizeSilently;
+@property (nonatomic) unsigned long long synthesizerInstanceID;
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic) bool useMonarchStyleRate;
-@property (nonatomic) bool useVoiceBooster;
 @property (nonatomic) double volume;
 @property (nonatomic) long long wordRangeCallbacksDispatched;
 
 + (bool)supportsSecureCoding;
 
 - (id)attributedText;
+- (id /* block */)audioBufferCallback;
 - (unsigned int)audioQueueFlags;
 - (unsigned int)audioSessionID;
 - (bool)audioSessionIDIsValid;
@@ -87,6 +92,7 @@
 - (double)rate;
 - (id)replacedWords;
 - (void)setAttributedText:(id)arg1;
+- (void)setAudioBufferCallback:(id /* block */)arg1;
 - (void)setAudioQueueFlags:(unsigned int)arg1;
 - (void)setAudioSessionID:(unsigned int)arg1;
 - (void)setAudioSessionIDIsValid:(bool)arg1;
@@ -108,9 +114,10 @@
 - (void)setReplacedWords:(id)arg1;
 - (void)setSpeechChannel:(id)arg1;
 - (void)setSupportsAccurateWordCallbacks:(bool)arg1;
+- (void)setSynthesizeSilently:(bool)arg1;
+- (void)setSynthesizerInstanceID:(unsigned long long)arg1;
 - (void)setText:(id)arg1;
 - (void)setUseMonarchStyleRate:(bool)arg1;
-- (void)setUseVoiceBooster:(bool)arg1;
 - (void)setVolume:(double)arg1;
 - (void)setWordRangeCallbacksDispatched:(long long)arg1;
 - (id)speechChannel;
@@ -118,11 +125,13 @@
 - (void)speechRequestDidPauseForService:(id)arg1;
 - (void)speechRequestDidStartForService:(id)arg1;
 - (void)speechRequestDidStopWithSuccess:(bool)arg1 phonemesSpoken:(id)arg2 forService:(id)arg3 error:(id)arg4;
+- (void)speechRequestDidSynthesizeSilentlyToURL:(id)arg1 forService:(id)arg2;
 - (void)speechRequestMark:(long long)arg1 didStartForRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 forService:(id)arg3;
 - (bool)supportsAccurateWordCallbacks;
+- (bool)synthesizeSilently;
+- (unsigned long long)synthesizerInstanceID;
 - (id)text;
 - (bool)useMonarchStyleRate;
-- (bool)useVoiceBooster;
 - (long long)vocalizerFootprint;
 - (long long)vocalizerGender;
 - (double)volume;

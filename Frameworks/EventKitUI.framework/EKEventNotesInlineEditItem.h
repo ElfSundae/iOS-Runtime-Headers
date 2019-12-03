@@ -4,6 +4,16 @@
 
 @interface EKEventNotesInlineEditItem : EKEventEditItem <EKCalendarItemInlineEditItem, UITextViewDelegate> {
     CalendarNotesCell * _cell;
+    struct CGRect { 
+        struct CGPoint { 
+            double x; 
+            double y; 
+        } origin; 
+        struct CGSize { 
+            double width; 
+            double height; 
+        } size; 
+    }  _keyboardRect;
     NSString * _lastTextChange;
 }
 
@@ -13,6 +23,8 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_keyboardWillHide:(id)arg1;
+- (void)_keyboardWillShow:(id)arg1;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
 - (bool)isInline;
@@ -20,6 +32,7 @@
 - (void)reset;
 - (bool)saveAndDismissWithForce:(bool)arg1;
 - (id)searchStringForEventAutocomplete;
+- (void)tableViewDidScroll;
 - (void)textViewDidBeginEditing:(id)arg1;
 - (void)textViewDidChange:(id)arg1;
 - (void)textViewDidEndEditing:(id)arg1;

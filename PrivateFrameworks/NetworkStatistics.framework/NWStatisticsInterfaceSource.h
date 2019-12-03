@@ -62,7 +62,7 @@
 
 - (id)_currentSnapshot;
 - (id)description;
-- (int)handleDescriptor:(void*)arg1 length:(unsigned long long)arg2;
+- (int)handleDescriptor:(void*)arg1 length:(unsigned long long)arg2 events:(unsigned long long)arg3;
 - (id)initWithManager:(id)arg1 interface:(long long)arg2 threshold:(long long)arg3;
 
 @end

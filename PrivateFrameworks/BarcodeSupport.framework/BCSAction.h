@@ -7,12 +7,15 @@
     <BCSCodePayload> * _codePayload;
     <BCSParsedDataPrivate> * _data;
     NSURL * _url;
+    NSArray * appLinks;
     <BCSActionDelegate> * delegate;
+    bool  isInvalidDataAction;
+    bool  isWiFiAction;
     NSURL * urlThatCanBeOpened;
 }
 
 @property (nonatomic, readonly, copy) NSArray *actionPickerItems;
-@property (nonatomic, readonly) bool canSkipUnlock;
+@property (nonatomic, readonly, copy) NSArray *appLinks;
 @property (nonatomic, readonly) <BCSCodePayload> *codePayload;
 @property (nonatomic, readonly) long long codeType;
 @property (nonatomic, readonly) <BCSParsedDataPrivate> *data;
@@ -23,6 +26,8 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly, copy) NSString *extraPreviewText;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool isInvalidDataAction;
+@property (nonatomic, readonly) bool isWiFiAction;
 @property (nonatomic, readonly, copy) NSString *localizedActionDescription;
 @property (nonatomic, readonly, copy) NSString *localizedDefaultActionDescription;
 @property (nonatomic, readonly, copy) NSString *localizedDefaultActionTitle;
@@ -34,7 +39,7 @@
 
 - (void).cxx_destruct;
 - (id)actionPickerItems;
-- (bool)canSkipUnlock;
+- (id)appLinks;
 - (id)codePayload;
 - (long long)codeType;
 - (id)data;
@@ -45,6 +50,8 @@
 - (void)determineActionabilityWithCompletionHandler:(id /* block */)arg1;
 - (id)extraPreviewText;
 - (id)initWithData:(id)arg1 codePayload:(id)arg2;
+- (bool)isInvalidDataAction;
+- (bool)isWiFiAction;
 - (id)localizedActionDescription;
 - (id)localizedDefaultActionDescription;
 - (id)localizedDefaultActionTitle;

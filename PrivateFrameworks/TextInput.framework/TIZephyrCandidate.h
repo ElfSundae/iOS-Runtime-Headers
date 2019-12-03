@@ -4,6 +4,9 @@
 
 @interface TIZephyrCandidate : TIKeyboardCandidateSingle {
     unsigned long long  _ageForConnectionsMetrics;
+    int  _confidence;
+    bool  _continuousPathConversion;
+    double  _excessPathRatio;
     NSString * _fromBundleId;
     bool  _isFromPhraseDictionary;
     bool  _isFromTextChecker;
@@ -12,25 +15,35 @@
     _ICPredictedItem * _proactivePredictedItem;
     TIProactiveTrigger * _proactiveTrigger;
     NSString * _responseKitCategory;
+    bool  _shouldAccept;
+    bool  _shouldInsertSpaceAfterSelection;
     unsigned int  _usageTrackingMask;
     unsigned long long  _wordOriginFeedbackID;
 }
 
 @property (nonatomic) unsigned long long ageForConnectionsMetrics;
+@property (getter=confidence, nonatomic) int confidence;
+@property (getter=isContinuousPathConversion, nonatomic) bool continuousPathConversion;
+@property (nonatomic) double excessPathRatio;
 @property (nonatomic, copy) NSString *fromBundleId;
 @property (nonatomic) bool isFromPhraseDictionary;
 @property (nonatomic) bool isFromTextChecker;
 @property (nonatomic, copy) NSString *label;
 @property (nonatomic, copy) _ICPredictedItem *proactivePredictedItem;
+@property (getter=shouldAccept, nonatomic) bool shouldAccept;
+@property (getter=shouldInsertSpaceAfterSelection, nonatomic) bool shouldInsertSpaceAfterSelection;
 
 + (bool)supportsSecureCoding;
 + (int)type;
 
 - (void).cxx_destruct;
 - (unsigned long long)ageForConnectionsMetrics;
+- (id)candidateByReplacingWithCandidate:(id)arg1 input:(id)arg2 label:(id)arg3;
+- (int)confidence;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)encodeWithCandidateResultSetCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (double)excessPathRatio;
 - (id)fromBundleId;
 - (id)initWithCandidate:(id)arg1 forInput:(id)arg2 wordOriginFeedbackID:(unsigned long long)arg3;
 - (id)initWithCandidate:(id)arg1 forInput:(id)arg2 wordOriginFeedbackID:(unsigned long long)arg3 usageTrackingMask:(unsigned int)arg4;
@@ -40,6 +53,7 @@
 - (id)initWithCandidateResultSetCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (bool)isAutocorrection;
+- (bool)isContinuousPathConversion;
 - (bool)isFromPhraseDictionary;
 - (bool)isFromTextChecker;
 - (bool)isSecureContentCandidate;
@@ -48,11 +62,18 @@
 - (id)proactiveTrigger;
 - (id)responseKitCategory;
 - (void)setAgeForConnectionsMetrics:(unsigned long long)arg1;
+- (void)setConfidence:(int)arg1;
+- (void)setContinuousPathConversion:(bool)arg1;
+- (void)setExcessPathRatio:(double)arg1;
 - (void)setFromBundleId:(id)arg1;
 - (void)setIsFromPhraseDictionary:(bool)arg1;
 - (void)setIsFromTextChecker:(bool)arg1;
 - (void)setLabel:(id)arg1;
 - (void)setProactivePredictedItem:(id)arg1;
+- (void)setShouldAccept:(bool)arg1;
+- (void)setShouldInsertSpaceAfterSelection:(bool)arg1;
+- (bool)shouldAccept;
+- (bool)shouldInsertSpaceAfterSelection;
 - (unsigned int)usageTrackingMask;
 - (unsigned long long)wordOriginFeedbackID;
 

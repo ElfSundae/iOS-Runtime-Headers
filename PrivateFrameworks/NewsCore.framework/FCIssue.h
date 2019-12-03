@@ -6,6 +6,7 @@
     NSArray * _allArticleIDs;
     NSArray * _allowedStorefrontIDs;
     NSArray * _blockedStorefrontIDs;
+    NSArray * _bundleFeaturedArticleIDs;
     NSString * _coverArticleID;
     NSString * _coverDate;
     double  _coverImageAspectRatio;
@@ -35,6 +36,8 @@
 @property (nonatomic, readonly, copy) NSArray *allowedStorefrontIDs;
 @property (getter=isANF, nonatomic, readonly) bool anf;
 @property (nonatomic, readonly, copy) NSArray *blockedStorefrontIDs;
+@property (nonatomic, readonly) long long bodyTextLength;
+@property (nonatomic, readonly, copy) NSArray *bundleFeaturedArticleIDs;
 @property (getter=isBundlePaid, nonatomic, readonly) bool bundlePaid;
 @property (nonatomic, readonly, copy) NSString *coverArticleID;
 @property (nonatomic, readonly, copy) NSString *coverDate;
@@ -55,6 +58,7 @@
 @property (nonatomic, readonly) bool isBlockedExplicitContent;
 @property (nonatomic, readonly) bool isCurrent;
 @property (nonatomic, readonly) bool isDraft;
+@property (nonatomic, readonly) bool isFeatured;
 @property (nonatomic, readonly) bool isLocalDraft;
 @property (nonatomic, readonly, copy) NSString *issueDescription;
 @property (nonatomic, readonly) NTPBIssueRecord *issueRecord;
@@ -78,16 +82,20 @@
 @property (nonatomic, readonly, copy) NSArray *topicTagIDs;
 @property (nonatomic, readonly) long long type;
 
++ (bool)_fakeIssuesTimestamp;
+
 - (void).cxx_destruct;
 - (id)allArticleIDs;
 - (id)allowedStorefrontIDs;
 - (id)blockedStorefrontIDs;
+- (id)bundleFeaturedArticleIDs;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)coverArticleID;
 - (id)coverDate;
 - (double)coverImageAspectRatio;
 - (id)coverImageAssetHandle;
 - (id)coverImagePrimaryColor;
+- (id)description;
 - (void)enumerateTopicCohortsWithBlock:(id /* block */)arg1;
 - (id)globalCohorts;
 - (double)globalUserFeedback;
@@ -98,13 +106,12 @@
 - (id)identifier;
 - (id)init;
 - (id)initWithData:(id)arg1 sourceChannel:(id)arg2 assetManager:(id)arg3;
-- (id)initWithIdentifier:(id)arg1 type:(long long)arg2 title:(id)arg3 publicationDate:(id)arg4 coverDate:(id)arg5 metadataJSONAssetHandle:(id)arg6 coverImageAssetHandle:(id)arg7 coverImageAspectRatio:(double)arg8 coverImagePrimaryColor:(id)arg9 layeredCoverJSON:(id)arg10 layeredCoverAspectRatio:(double)arg11 layeredCoverPrimaryColor:(id)arg12 isCurrent:(bool)arg13 isDraft:(bool)arg14 isPaid:(bool)arg15 minimumNewsVersion:(long long)arg16 allArticleIDs:(id)arg17 coverArticleID:(id)arg18 allowedStorefrontIDs:(id)arg19 blockedStorefrontIDs:(id)arg20 topicTagIDs:(id)arg21 sourceChannel:(id)arg22 notificationDescription:(id)arg23 issueDescription:(id)arg24;
-- (id)initWithIdentifier:(id)arg1 type:(long long)arg2 title:(id)arg3 publicationDate:(id)arg4 coverDate:(id)arg5 metadataJSONAssetHandle:(id)arg6 coverImageAssetHandle:(id)arg7 coverImageHQAssetHandle:(id)arg8 coverImageLQAssetHandle:(id)arg9 coverImageAspectRatio:(double)arg10 coverImagePrimaryColor:(id)arg11 layeredCoverJSON:(id)arg12 layeredCoverAspectRatio:(double)arg13 layeredCoverPrimaryColor:(id)arg14 isCurrent:(bool)arg15 isDraft:(bool)arg16 isPaid:(bool)arg17 minimumNewsVersion:(long long)arg18 allArticleIDs:(id)arg19 coverArticleID:(id)arg20 allowedStorefrontIDs:(id)arg21 blockedStorefrontIDs:(id)arg22 PDFResourceIDs:(id)arg23 topicTagIDs:(id)arg24 sourceChannel:(id)arg25 notificationDescription:(id)arg26 issueDescription:(id)arg27;
+- (id)initWithIdentifier:(id)arg1 type:(long long)arg2 title:(id)arg3 publicationDate:(id)arg4 coverDate:(id)arg5 metadataJSONAssetHandle:(id)arg6 coverImageAssetHandle:(id)arg7 coverImageAspectRatio:(double)arg8 coverImagePrimaryColor:(id)arg9 layeredCoverJSON:(id)arg10 layeredCoverAspectRatio:(double)arg11 layeredCoverPrimaryColor:(id)arg12 isCurrent:(bool)arg13 isDraft:(bool)arg14 isPaid:(bool)arg15 minimumNewsVersion:(long long)arg16 allArticleIDs:(id)arg17 bundleFeaturedArticleIDs:(id)arg18 coverArticleID:(id)arg19 allowedStorefrontIDs:(id)arg20 blockedStorefrontIDs:(id)arg21 topicTagIDs:(id)arg22 sourceChannel:(id)arg23 notificationDescription:(id)arg24 issueDescription:(id)arg25;
+- (id)initWithIdentifier:(id)arg1 type:(long long)arg2 title:(id)arg3 publicationDate:(id)arg4 coverDate:(id)arg5 metadataJSONAssetHandle:(id)arg6 coverImageAssetHandle:(id)arg7 coverImageHQAssetHandle:(id)arg8 coverImageLQAssetHandle:(id)arg9 coverImageAspectRatio:(double)arg10 coverImagePrimaryColor:(id)arg11 layeredCoverJSON:(id)arg12 layeredCoverAspectRatio:(double)arg13 layeredCoverPrimaryColor:(id)arg14 isCurrent:(bool)arg15 isDraft:(bool)arg16 isPaid:(bool)arg17 minimumNewsVersion:(long long)arg18 allArticleIDs:(id)arg19 bundleFeaturedArticleIDs:(id)arg20 coverArticleID:(id)arg21 allowedStorefrontIDs:(id)arg22 blockedStorefrontIDs:(id)arg23 PDFResourceIDs:(id)arg24 topicTagIDs:(id)arg25 sourceChannel:(id)arg26 notificationDescription:(id)arg27 issueDescription:(id)arg28;
 - (id)initWithIssueRecord:(id)arg1 assetManager:(id)arg2 interestToken:(id)arg3 sourceChannel:(id)arg4;
 - (id)interestToken;
 - (bool)isANF;
 - (bool)isBlockedExplicitContent;
-- (bool)isBundlePaid;
 - (bool)isBundlePaid;
 - (bool)isCurrent;
 - (bool)isDraft;

@@ -8,6 +8,7 @@
     NSMutableArray * _clientHandlers;
     PHAExecutive * _executive;
     unsigned long long  _graphLoadCount;
+    PFDispatchQueue * _graphLoadQueue;
     NSObject<OS_dispatch_group> * _graphReady;
     NSObject<OS_dispatch_semaphore> * _invalidationSemaphore;
     PHAManager * _photoAnalysisManager;
@@ -54,6 +55,7 @@
 - (id)serviceUnavailableHandler;
 - (void)setExecutive:(id)arg1;
 - (void)setInvalidationSemaphore:(id)arg1;
+- (void)setJobProcessingConstraintsWithValues:(id)arg1 mask:(id)arg2 context:(id)arg3 reply:(id /* block */)arg4;
 - (void)setPhotoAnalysisManager:(id)arg1;
 - (void)setServiceUnavailableHandler:(id)arg1;
 - (void)setSharedOperationLock:(id)arg1;

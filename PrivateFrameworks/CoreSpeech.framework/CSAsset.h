@@ -52,12 +52,17 @@
 @property (nonatomic, readonly) NSString *keywordDetectorConfigPathRecognizer;
 @property (nonatomic, readonly) float keywordDetectorThreshold;
 @property (nonatomic, readonly) float keywordDetectorWaitTimeSinceVT;
+@property (nonatomic, readonly) NSString *languageDetectorConfigFile;
+@property (nonatomic, readonly) NSArray *languageDetectorSupportedLocale;
 @property (nonatomic, readonly) unsigned long long maxSpeakerVectorsToPersist;
 @property (nonatomic, readonly) NSString *path;
 @property (nonatomic, readonly) NSString *resourcePath;
 @property (nonatomic, readonly) NSString *speakerDetectorNDAPIConfigPath;
 @property (nonatomic, readonly) float speakerDetectorRetrainTriggerThreshold;
 @property (nonatomic, readonly) float speakerDetectorThreshold;
+@property (nonatomic, readonly) bool speakerDetectorThresholdAvailable;
+@property (nonatomic, readonly) NSString *spgConfigFile;
+@property (nonatomic, readonly) NSString *startOfSpeechDetectorConfigFile;
 
 + (id)assetForAssetType:(unsigned long long)arg1 resourcePath:(id)arg2 configVersion:(id)arg3;
 + (id)defaultFallBackAssetForHearst;
@@ -119,6 +124,7 @@
 - (float)VTSecondPassRecognizerThresholdOffsetFrom:(id)arg1;
 - (id)VTSecondPassRecognizerTokenFrom:(id)arg1;
 - (float)VTSecondPassRecognizerWaitTimeFrom:(id)arg1;
+- (float)VTSecondPassRejectLoggingThresholdFrom:(id)arg1;
 - (float)VTSecondPassRemoteVADMyriadThresholdFrom:(id)arg1;
 - (float)VTSecondPassRemoteVADThresholdFrom:(id)arg1;
 - (float)VTSecondPassThresholdFrom:(id)arg1;
@@ -127,9 +133,11 @@
 - (id)_decodeJson:(id)arg1;
 - (id)_sha1:(id)arg1;
 - (id)_sha256:(id)arg1;
+- (id)configFilepathForDictationOrigin:(unsigned long long)arg1;
 - (id)configVersion;
 - (bool)containsCategory:(id)arg1;
 - (bool)containsKey:(id)arg1 category:(id)arg2;
+- (id)createRTModelWithLocale:(id)arg1;
 - (id)description;
 - (id)dictionary;
 - (bool)getBoolForKey:(id)arg1 category:(id)arg2 default:(bool)arg3;
@@ -143,6 +151,8 @@
 - (id)keywordDetectorConfigPathRecognizer;
 - (float)keywordDetectorThreshold;
 - (float)keywordDetectorWaitTimeSinceVT;
+- (id)languageDetectorConfigFile;
+- (id)languageDetectorSupportedLocale;
 - (id)latestHearstRTModelForLocale:(id)arg1;
 - (unsigned long long)maxSpeakerVectorsToPersist;
 - (id)path;
@@ -150,5 +160,8 @@
 - (id)speakerDetectorNDAPIConfigPath;
 - (float)speakerDetectorRetrainTriggerThreshold;
 - (float)speakerDetectorThreshold;
+- (bool)speakerDetectorThresholdAvailable;
+- (id)spgConfigFile;
+- (id)startOfSpeechDetectorConfigFile;
 
 @end

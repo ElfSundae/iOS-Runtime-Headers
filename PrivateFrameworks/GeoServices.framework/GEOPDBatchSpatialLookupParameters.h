@@ -3,6 +3,20 @@
  */
 
 @interface GEOPDBatchSpatialLookupParameters : PBCodable <NSCopying> {
+    struct { 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_spatialEventLookups : 1; 
+        unsigned int read_spatialPlaceLookups : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_spatialEventLookups : 1; 
+        unsigned int wrote_spatialPlaceLookups : 1; 
+    }  _flags;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     NSMutableArray * _spatialEventLookups;
     NSMutableArray * _spatialPlaceLookups;
     PBUnknownFields * _unknownFields;
@@ -12,21 +26,30 @@
 @property (nonatomic, retain) NSMutableArray *spatialPlaceLookups;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
 + (Class)spatialEventLookupType;
 + (Class)spatialPlaceLookupType;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsSpatialEventLookup:(id)arg1;
+- (void)_addNoFlagsSpatialPlaceLookup:(id)arg1;
+- (void)_readSpatialEventLookups;
+- (void)_readSpatialPlaceLookups;
 - (void)addSpatialEventLookup:(id)arg1;
 - (void)addSpatialPlaceLookup:(id)arg1;
 - (void)clearSpatialEventLookups;
 - (void)clearSpatialPlaceLookups;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setSpatialEventLookups:(id)arg1;
 - (void)setSpatialPlaceLookups:(id)arg1;

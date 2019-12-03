@@ -4,9 +4,11 @@
 
 @interface UIApplicationSceneClientSettings : FBSSceneClientSettings <UIApplicationSceneClientSettings>
 
+@property (nonatomic, readonly) NSData *activationConditionsData;
 @property (nonatomic, readonly) NSArray *audioCategoriesDisablingVolumeHUD;
 @property (nonatomic, readonly) long long backgroundStyle;
 @property (nonatomic, readonly) double brightnessLevel;
+@property (nonatomic, readonly, copy) NSString *canvasTitle;
 @property (nonatomic, readonly) long long compatibilityMode;
 @property (nonatomic, readonly) double controlCenterAmbiguousActivationMargin;
 @property (nonatomic, readonly) long long controlCenterRevealMode;
@@ -30,10 +32,14 @@
 @property (nonatomic, readonly) unsigned long long proximityDetectionModes;
 @property (getter=isReachabilitySupported, nonatomic, readonly) bool reachabilitySupported;
 @property (nonatomic, readonly, copy) FBSDisplayMode *requestedDisplayMode;
+@property (nonatomic, readonly) long long sceneActivationBias;
 @property (nonatomic, readonly) unsigned long long screenEdgesDeferringSystemGestures;
+@property (nonatomic, readonly) double statusBarAlpha;
 @property (nonatomic, readonly) unsigned int statusBarContextID;
 @property (getter=isStatusBarForegroundTransparent, nonatomic, readonly) bool statusBarForegroundTransparent;
 @property (nonatomic, readonly) bool statusBarHidden;
+@property (nonatomic, readonly) long long statusBarModernStyle;
+@property (nonatomic, readonly, copy) NSDictionary *statusBarPartStyles;
 @property (nonatomic, readonly) long long statusBarStyle;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) unsigned long long supportedInterfaceOrientations;
@@ -42,9 +48,13 @@
 @property (nonatomic, readonly) bool wantsExclusiveForeground;
 @property (nonatomic, readonly) long long whitePointAdaptivityStyle;
 
+// Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
+
+- (id)activationConditionsData;
 - (id)audioCategoriesDisablingVolumeHUD;
 - (long long)backgroundStyle;
 - (double)brightnessLevel;
+- (id)canvasTitle;
 - (long long)compatibilityMode;
 - (double)controlCenterAmbiguousActivationMargin;
 - (long long)controlCenterRevealMode;
@@ -70,9 +80,14 @@
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })primaryWindowOverlayInsets;
 - (unsigned long long)proximityDetectionModes;
 - (id)requestedDisplayMode;
+- (long long)sceneActivationBias;
 - (unsigned long long)screenEdgesDeferringSystemGestures;
+- (bool)settings:(id)arg1 appendDescriptionToBuilder:(id)arg2 forFlag:(long long)arg3 object:(id)arg4 ofSetting:(unsigned long long)arg5;
+- (double)statusBarAlpha;
 - (unsigned int)statusBarContextID;
 - (bool)statusBarHidden;
+- (long long)statusBarModernStyle;
+- (id)statusBarPartStyles;
 - (long long)statusBarStyle;
 - (unsigned long long)supportedInterfaceOrientations;
 - (long long)userInterfaceStyle;
@@ -81,5 +96,9 @@
 - (unsigned long long)visibleMiniAlertCount;
 - (bool)wantsExclusiveForeground;
 - (long long)whitePointAdaptivityStyle;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoard.framework/SpringBoard
+
+- (long long)sb_effectiveInterfaceOrientation;
 
 @end

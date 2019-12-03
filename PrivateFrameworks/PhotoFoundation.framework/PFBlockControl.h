@@ -6,7 +6,7 @@
     id /* block */  _block;
     bool  _executeOnDealloc;
     PFDispatchQueue * _queue;
-    unsigned long long  _status;
+    _Atomic unsigned long long  _status;
     NSObject<OS_dispatch_group> * _workGroup;
 }
 

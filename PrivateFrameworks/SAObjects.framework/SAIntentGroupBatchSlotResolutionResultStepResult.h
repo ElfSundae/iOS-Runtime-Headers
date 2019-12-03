@@ -9,6 +9,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, copy) NSString *jsonEncodedSlotResolutionResult;
 @property (nonatomic, copy) NSString *keyPath;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *typeName;
@@ -20,9 +21,11 @@
 - (id)commandFailed;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+- (id)jsonEncodedSlotResolutionResult;
 - (id)keyPath;
 - (void)setBase64EncodedProtobufMessage:(id)arg1;
 - (void)setCommandFailed:(id)arg1;
+- (void)setJsonEncodedSlotResolutionResult:(id)arg1;
 - (void)setKeyPath:(id)arg1;
 - (void)setTypeName:(id)arg1;
 - (id)typeName;

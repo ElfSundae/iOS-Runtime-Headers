@@ -5,11 +5,13 @@
 @interface AEChatKitTransport : AEPackageTransport <AEPhotosAssetPackageFinalizer> {
     NSMutableDictionary * __alternateURLsByIdentifier;
     NSObject<OS_dispatch_group> * __packagePreparationGroup;
+    AEChatKitStatisticsManager * __statisticsManager;
     NSObject<OS_dispatch_queue> * __urlSidetableIsolationQueue;
 }
 
 @property (nonatomic, readonly) NSMutableDictionary *_alternateURLsByIdentifier;
 @property (nonatomic, readonly) NSObject<OS_dispatch_group> *_packagePreparationGroup;
+@property (nonatomic, readonly) AEChatKitStatisticsManager *_statisticsManager;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *_urlSidetableIsolationQueue;
 @property (nonatomic) <AEChatKitTransportDelegate> *delegate;
 
@@ -21,6 +23,8 @@
 - (id)_packagePreparationGroup;
 - (id)_persistedURLsFromURLs:(id)arg1 inBaseDirectory:(id)arg2 outError:(out id*)arg3;
 - (id)_preparePackageForCommit:(id)arg1 inBaseDirectory:(id)arg2 outError:(out id*)arg3;
+- (id)_statisticsManager;
+- (void)_unstagePackagesWithIdentifiers:(id)arg1 evictFiles:(bool)arg2;
 - (id)_urlSidetableIsolationQueue;
 - (id)_workQueue;
 - (void)commitPackage:(id)arg1;

@@ -12,6 +12,7 @@
     CXCallObserver * _callObserver;
     int  _connectedCallCount;
     NSObject<OS_dispatch_queue> * _dispatchQueue;
+    int  _familyBuddyToken;
     bool  _familyFailed;
     NSArray * _familyMembers;
     bool  _familyObserving;
@@ -34,6 +35,7 @@
     CUNetInterfaceMonitor * _netInterfaceMonitor;
     int  _powerSourceToken;
     bool  _powerUnlimited;
+    NSString * _primaryAppleID;
     bool  _primaryAppleIDActive;
     bool  _primaryAppleIDIsHSA2;
     int  _primaryAppleIDNotifyToken;
@@ -104,6 +106,14 @@
     }  _rotatingIdentifier48;
     NSData * _rotatingIdentifierData;
     NSObject<OS_dispatch_source> * _rotatingIdentifierTimer;
+    bool  _scChangesPending;
+    struct __SCDynamicStore { } * _scDynamicStore;
+    NSMutableArray * _scInitialKeys;
+    NSString * _scKeySystemName;
+    NSArray * _scNotificationKeys;
+    NSArray * _scNotificationPatterns;
+    NSString * _scPatternNetInterfaceIPv4;
+    NSString * _scPatternNetInterfaceIPv6;
     int  _screenBlankedToken;
     bool  _screenLocked;
     int  _screenLockedToken;
@@ -111,6 +121,7 @@
     bool  _screenSaverActive;
     int  _systemLockState;
     int  _systemLockStateToken;
+    NSString * _systemName;
     unsigned int  _wifiFlags;
     CUWiFiManager * _wifiManager;
     int  _wifiState;
@@ -164,6 +175,11 @@
 - (void)_screenOnMonitorStop;
 - (void)_screenSaverMonitorStart;
 - (void)_screenSaverMonitorStop;
+- (void)_systemConfigChanged:(id)arg1 initial:(bool)arg2;
+- (void)_systemConfigNetInterfaceChanged:(id)arg1 initial:(bool)arg2;
+- (void)_systemConfigSystemNameChanged:(bool)arg1;
+- (void)_systemConfigUpdateKeyPtr:(id*)arg1 name:(id)arg2 enabled:(bool)arg3 creator:(id /* block */)arg4;
+- (void)_systemConfigUpdateNotifications;
 - (void)_systemLockStateMonitorStart;
 - (void)_systemLockStateMonitorStop;
 - (void)_systemLockStateUpdate:(bool)arg1;

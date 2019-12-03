@@ -54,6 +54,10 @@
 
 - (id)codableRepresentationForSync;
 
+// Image: /System/Library/PrivateFrameworks/HealthRecordsUI.framework/HealthRecordsUI
+
+- (id)hr_dateWithoutTime;
+
 // Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
 
 + (id)displayStringForDate:(id)arg1 form:(long long)arg2 originalTimeZoneString:(id)arg3;
@@ -61,6 +65,5 @@
 - (id)displayString;
 - (id)displayStringWithPreferredForm:(long long)arg1 includeTimeZone:(bool)arg2;
 - (id)displayStringWithTimeZone;
-- (id)viewControllerTitleDisplayStringWithDateCache:(id)arg1;
 
 @end

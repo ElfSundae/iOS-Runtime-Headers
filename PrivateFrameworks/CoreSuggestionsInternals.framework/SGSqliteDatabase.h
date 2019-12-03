@@ -3,23 +3,9 @@
  */
 
 @interface SGSqliteDatabase : NSObject {
-    bool  _currentExclusivity;
-    struct sqlite3 { } * _db;
-    NSString * _filename;
-    struct atomic_flag { 
-        bool _Value; 
-    }  _isClosed;
-    bool  _isInMemory;
+    SGSqliteDatabaseImpl * _impl;
     unsigned long long  _lastBusyWaitEnded;
-    struct _opaque_pthread_mutex_t { 
-        long long __sig; 
-        BOOL __opaque[56]; 
-    }  _lock;
-    NSCache * _queryCache;
     NSMutableDictionary * _sqlarrays;
-    NSMutableArray * _statementsToFinalizeAsync;
-    int  _transactionDepth;
-    bool  _transactionRolledback;
 }
 
 @property (nonatomic, readonly) NSString *filename;
@@ -40,7 +26,6 @@
 + (id)protectedDatabaseWithFilename:(id)arg1 error:(id*)arg2;
 + (id)protectedDatabaseWithFilename:(id)arg1 flags:(int)arg2 error:(id*)arg3;
 + (id)randomlyNamedInMemoryPathWithBaseName:(id)arg1;
-+ (bool)shouldCacheSql:(const char *)arg1;
 + (id)sqliteDatabaseInMemoryWithError:(id*)arg1;
 + (id)sqliteDatabaseWithFilename:(id)arg1 error:(id*)arg2;
 + (id)sqliteDatabaseWithFilename:(id)arg1 flags:(int)arg2 error:(id*)arg3;
@@ -135,17 +120,12 @@
 - (bool)_handle_sqlite_error_code:(int)arg1 error:(id)arg2 onError:(id /* block */)arg3;
 - (unsigned long long)_pagesToVacuum;
 - (void)_prepAndRunQuery:(id)arg1 columns:(id)arg2 dictionary:(id)arg3 onError:(id /* block */)arg4;
-- (bool)_transactionWithExclusivity:(bool)arg1 transaction:(id /* block */)arg2;
-- (void)_txnBegin;
-- (void)_txnBeginExclusive;
-- (void)_txnEnd;
-- (void)_txnRollback;
+- (bool)_prepQuery:(id)arg1 onPrep:(id /* block */)arg2 onError:(id /* block */)arg3;
 - (void)clearCaches;
 - (void)closePermanently;
 - (id)corruptionMarkerPath;
 - (bool)createSnapshot:(id)arg1;
 - (id)dbErrorWithCode:(unsigned long long)arg1 sqliteReturnValue:(int)arg2 lastErrno:(int)arg3 query:(id)arg4;
-- (void)dealloc;
 - (id)description;
 - (id)filename;
 - (bool)frailReadTransaction:(id /* block */)arg1;
@@ -172,14 +152,13 @@
 - (bool)prepAndRunQuery:(id)arg1 onPrep:(id /* block */)arg2 onRow:(id /* block */)arg3 onError:(id /* block */)arg4;
 - (void)prepQuery:(id)arg1 onPrep:(id /* block */)arg2 onError:(id /* block */)arg3;
 - (void)readTransaction:(id /* block */)arg1;
-- (bool)runQuery:(struct sqlite3_stmt { }*)arg1 onRow:(id /* block */)arg2;
-- (bool)runQuery:(struct sqlite3_stmt { }*)arg1 onRow:(id /* block */)arg2 onError:(id /* block */)arg3;
+- (bool)runQuery:(id)arg1 onRow:(id /* block */)arg2 onError:(id /* block */)arg3;
 - (id)selectColumns:(id)arg1 fromTable:(id)arg2 whereClause:(id)arg3 onPrep:(id /* block */)arg4 onError:(id /* block */)arg5;
-- (bool)setUserVersion:(unsigned long long)arg1;
+- (bool)setUserVersion:(unsigned int)arg1;
 - (void)simulateOnDiskDatabase;
 - (id)tablesWithColumnNamed:(id)arg1;
 - (void)updateTable:(id)arg1 dictionary:(id)arg2 whereClause:(id)arg3 onError:(id /* block */)arg4;
-- (unsigned long long)userVersion;
+- (unsigned int)userVersion;
 - (void)vacuum;
 - (unsigned long long)vacuumMode;
 - (void)writeTransaction:(id /* block */)arg1;

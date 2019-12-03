@@ -3,13 +3,13 @@
  */
 
 @interface CSSearchClientConnection : NSObject {
-    CSClientConnectionConfiguration * _configuration;
+    SDConnectionConfiguration * _configuration;
     unsigned int  _outBatchCount;
     NSMutableOrderedSet * _pausedTasks;
     NSMutableDictionary * _queryTasks;
 }
 
-@property (nonatomic, retain) CSClientConnectionConfiguration *configuration;
+@property (nonatomic, retain) SDConnectionConfiguration *configuration;
 @property (nonatomic, readonly) unsigned int outBatchCount;
 @property (nonatomic, retain) NSMutableOrderedSet *pausedTasks;
 @property (nonatomic, retain) NSMutableDictionary *queryTasks;

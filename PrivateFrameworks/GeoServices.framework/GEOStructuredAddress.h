@@ -80,6 +80,7 @@
 
 + (Class)areaOfInterestType;
 + (Class)dependentLocalityType;
++ (bool)isValid:(id)arg1;
 + (Class)subPremiseType;
 
 - (void).cxx_destruct;
@@ -88,6 +89,7 @@
 - (void)addDependentLocality:(id)arg1;
 - (void)addGeoId:(long long)arg1;
 - (void)addSubPremise:(id)arg1;
+- (id)addressDictionary;
 - (id)administrativeArea;
 - (id)administrativeAreaCode;
 - (id)areaOfInterestAtIndex:(unsigned long long)arg1;
@@ -97,6 +99,7 @@
 - (void)clearDependentLocalitys;
 - (void)clearGeoIds;
 - (void)clearSubPremises;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)country;
@@ -130,8 +133,10 @@
 - (bool)hasThoroughfare;
 - (unsigned long long)hash;
 - (id)initWithAddressDictionary:(id)arg1;
+- (id)initWithPostalAddress:(id)arg1;
 - (id)initWithUrlRepresentation:(id)arg1;
 - (id)inlandWater;
+- (bool)isEmpty;
 - (bool)isEqual:(id)arg1;
 - (id)locality;
 - (void)mergeFrom:(id)arg1;
@@ -139,8 +144,10 @@
 - (id)postCode;
 - (id)postCodeExtension;
 - (id)postCodeFull;
+- (id)postalAddress;
 - (id)premise;
 - (id)premises;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAdministrativeArea:(id)arg1;
 - (void)setAdministrativeAreaCode:(id)arg1;

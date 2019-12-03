@@ -20,11 +20,13 @@
 @property (nonatomic, copy) NSDate *expirationDate;
 @property (nonatomic, readonly) PKFelicaPassProperties *felicaProperties;
 @property (getter=isInStation, nonatomic, readonly) bool inStation;
+@property (nonatomic, readonly) bool isEnRoute;
 @property (nonatomic, readonly, copy) NSDecimalNumber *transitBalance;
 @property (nonatomic, readonly, copy) NSString *transitBalanceCurrencyCode;
 
 // Image: /System/Library/PrivateFrameworks/PassKitCore.framework/PassKitCore
 
++ (Class)equalityClass;
 + (id)passPropertiesForPass:(id)arg1;
 + (bool)supportsSecureCoding;
 
@@ -39,9 +41,12 @@
 - (id)enrouteTransitTypes;
 - (id)expirationDate;
 - (id)felicaProperties;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTransitAppletState:(id)arg1 paymentApplication:(id)arg2;
 - (bool)isBlacklisted;
+- (bool)isEnRoute;
+- (bool)isEqual:(id)arg1;
 - (bool)isInStation;
 - (void)setAppletFormat:(id)arg1;
 - (void)setBalance:(id)arg1;

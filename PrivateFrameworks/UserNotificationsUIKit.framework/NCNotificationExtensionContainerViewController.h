@@ -14,6 +14,7 @@
     NCNotificationRequest * _notificationRequest;
     bool  _overridesDefaultTitle;
     NSMutableArray * _queuedRequests;
+    bool  _shouldPlayMediaAfterExpanded;
     NSMutableArray * _updatedActions;
     bool  _userInteractionEnabled;
 }
@@ -32,8 +33,8 @@
 @property (nonatomic, retain) NCMediaPlayPauseButton *mediaPlayPauseButton;
 @property (nonatomic, retain) NCNotificationRequest *notificationRequest;
 @property (nonatomic) bool overridesDefaultTitle;
-@property (nonatomic) NCNotificationAction *presentationSourceAction;
 @property (nonatomic, retain) NSMutableArray *queuedRequests;
+@property (nonatomic) bool shouldPlayMediaAfterExpanded;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly, copy) NSString *title;
 @property (nonatomic, retain) NSMutableArray *updatedActions;
@@ -41,10 +42,12 @@
 
 - (void).cxx_destruct;
 - (void)_addExtensionViewFromViewController:(id)arg1;
+- (bool)_canShowWhileLocked;
 - (double)_contentHeightForWidth:(double)arg1;
 - (void)_flushQueuedRequests;
 - (void)_loadExtensionViewControllerWithCompletion:(id /* block */)arg1;
 - (void)_mediaPlayPauseButtonTapped:(id)arg1;
+- (void)_playMediaAfterExpanded;
 - (id)_requestActionForActionIdentifier:(id)arg1;
 - (id)_responseForAction:(id)arg1 notification:(id)arg2 response:(id)arg3;
 - (void)_setupExtensionViewController:(id)arg1;
@@ -67,11 +70,8 @@
 - (id)extensionIdentifier;
 - (id)extensionViewController;
 - (id)initWithExtension:(id)arg1 forNotificationRequest:(id)arg2;
-- (void)loadAudioAccessoryView;
 - (id)mediaPlayPauseButton;
 - (void)notificationHost:(id)arg1 extensionDidCompleteResponse:(id)arg2 withOption:(unsigned long long)arg3;
-- (void)notificationHostExtension:(id)arg1 audioAccessoryViewLayerContextId:(unsigned int)arg2;
-- (void)notificationHostExtension:(id)arg1 setDismissEnabled:(bool)arg2;
 - (void)notificationHostExtension:(id)arg1 setTitle:(id)arg2;
 - (void)notificationHostExtension:(id)arg1 setUserNotificationActions:(id)arg2;
 - (void)notificationHostExtensionDidUpdateControls:(id)arg1;
@@ -83,7 +83,7 @@
 - (bool)overridesDefaultTitle;
 - (bool)performAction:(id)arg1 forNotification:(id)arg2;
 - (bool)performAction:(id)arg1 forNotification:(id)arg2 withUserInfo:(id)arg3;
-- (void)playAudioMessage;
+- (void)playMedia;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)preserveInputViews;
 - (id)queuedRequests;
@@ -101,9 +101,11 @@
 - (void)setNotificationRequest:(id)arg1;
 - (void)setOverridesDefaultTitle:(bool)arg1;
 - (void)setQueuedRequests:(id)arg1;
+- (void)setShouldPlayMediaAfterExpanded:(bool)arg1;
 - (void)setTitle:(id)arg1;
 - (void)setUpdatedActions:(id)arg1;
 - (void)setUserInteractionEnabled:(bool)arg1;
+- (bool)shouldPlayMediaAfterExpanded;
 - (struct CGSize { double x1; double x2; })sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize { double x1; double x2; })arg2;
 - (id)updatedActions;
 - (bool)userInteractionEnabled;

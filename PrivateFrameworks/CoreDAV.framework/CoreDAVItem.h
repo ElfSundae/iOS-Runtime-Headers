@@ -42,6 +42,7 @@
 - (void)parserFoundUnrecognizedElement:(id)arg1;
 - (void)parserSuggestsBaseURL:(id)arg1;
 - (id)payload;
+- (long long)payloadAsNSInteger;
 - (id)payloadAsString;
 - (void)setAttributes:(id)arg1;
 - (void)setExtraChildItems:(id)arg1;

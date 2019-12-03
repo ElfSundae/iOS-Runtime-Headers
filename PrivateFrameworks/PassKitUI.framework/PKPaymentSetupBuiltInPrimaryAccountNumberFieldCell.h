@@ -14,6 +14,7 @@
 - (id)cameraCaptureButton;
 - (void)dealloc;
 - (id)init;
+- (void)setEnabled:(bool)arg1;
 - (void)setPaymentSetupField:(id)arg1;
 - (void)setShowsCameraCaptureButton:(bool)arg1;
 - (bool)showsCameraCaptureButton;

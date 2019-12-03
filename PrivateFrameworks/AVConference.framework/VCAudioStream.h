@@ -2,31 +2,60 @@
    Image: /System/Library/PrivateFrameworks/AVConference.framework/AVConference
  */
 
-@interface VCAudioStream : VCMediaStream <VCAudioIODelegate, VCAudioIOSink, VCAudioIOSource, VCMediaStreamSyncSource> {
+@interface VCAudioStream : VCMediaStream <VCAudioIODelegate, VCAudioIOSink, VCMediaStreamSyncSource> {
     VCAudioIO * _audioIO;
     void * _audioMediaControlInfoGenerator;
-    struct tagVCAudioReceiver { struct tagVCAudioReceiverConfig { unsigned int x_1_1_1; struct tagVCAudioReceiverStream { struct tagHANDLE {} *x_2_2_1; unsigned short x_2_2_2; } x_1_1_2[3]; void *x_1_1_3; void *x_1_1_4; unsigned int x_1_1_5; int x_1_1_6; int x_1_1_7; bool x_1_1_8; struct opaqueRTCReporting {} *x_1_1_9; int x_1_1_10; bool x_1_1_11; struct __CFString {} *x_1_1_12; struct __CFString {} *x_1_1_13; unsigned short x_1_1_14; bool x_1_1_15; } x1; void *x2; void *x3; struct opaqueVCJitterBuffer {} *x4; bool x5; struct AudioStreamBasicDescription {} *x6; int x7; double x8; struct { long long x_9_1_1; int x_9_1_2; unsigned int x_9_1_3; long long x_9_1_4; } x9; struct tagVCRealTimeThread {} *x10; struct tagVCAudioReceiverReportingTask { struct opaqueRTCReporting {} *x_11_1_1; int x_11_1_2; struct tagHANDLE {} *x_11_1_3; } x11; bool x12; struct _opaque_pthread_mutex_t { long long x_13_1_1; BOOL x_13_1_2[56]; } x13; struct _opaque_pthread_mutex_t { long long x_14_1_1; BOOL x_14_1_2[56]; } x14; struct tagVCAudioDecoderList { struct tagDecoderSettings {} *x_15_1_1; unsigned int x_15_1_2; } x15; } * _audioReceiver;
     VCAudioTransmitter * _audioTransmitter;
     int  _clientPid;
     bool  _currentDTXEnable;
+    VCAudioPowerSpectrumSource * _inputAudioPowerSpectrumSource;
+    long long  _inputAudioPowerSpectrumToken;
     bool  _isMuted;
-    bool  _isRemoteMediaStalled;
-    bool  _isRemoteMuted;
-    unsigned int  _lastRTPTimestamp;
-    double  _lastReceivedAudioTimestamp;
-    int  _packetsSinceStallCount;
+    VCAudioPowerSpectrumSource * _outputAudioPowerSpectrumSource;
+    long long  _outputAudioPowerSpectrumToken;
     unsigned int  _pullAudioSamplesCount;
+    double  _remoteMediaStallTimeout;
     int  _reportingModuleID;
     unsigned int  _reportingSSRCCount;
     unsigned int * _reportingSSRCList;
     bool  _rtcpEnabledBeforeInterrupt;
     bool  _rtpEnabledBeforeInterrupt;
     bool  _sendActiveVoiceOnly;
+    struct _VCAudioStreamSinkContext { 
+        struct _METER_INFO { 
+            bool frequencyMeteringEnabled; 
+            struct opaqueVCFFTMeter {} *fftMeter; 
+        } soundMeter; 
+    }  _sinkContext;
+    struct _VCAudioStreamSourceContext { 
+        bool isRemoteMuted; 
+        struct _METER_INFO { 
+            bool frequencyMeteringEnabled; 
+            struct opaqueVCFFTMeter {} *fftMeter; 
+        } soundMeter; 
+        struct tagVCAudioReceiver {} *audioReceiver; 
+        unsigned int framesProcessed; 
+        float volume; 
+        bool shouldPostProcessSamples; 
+        bool isSendOnly; 
+        bool isRemoteMediaStalled; 
+        double lastReceivedAudioTimestamp; 
+        int packetsSinceStallCount; 
+        double remoteMediaStallTimeout; 
+        unsigned int awdTime; 
+        struct _VCSingleLinkedList { 
+            struct _VCSingleLinkedListEntry {} *head; 
+            bool initialized; 
+            int (*compare)(); 
+        } transports; 
+        <VCMediaStreamDelegate> *delegate; 
+        VCAudioStream *self; 
+        <VCMediaStreamSyncSourceDelegate> *syncSourceDelegate; 
+        <VCMomentsCollectorDelegate> *momentsCollectorDelegate; 
+    }  _sourceContext;
     NSNumber * _targetStreamID;
     AVTelephonyInterface * _telephonyInterface;
-    float  _volume;
     NSMutableArray * audioPayloads;
-    unsigned int  awdTime;
     unsigned int  conferenceID;
     VCAudioPayload * currentAudioPayload;
     VCAudioPayload * currentDTXPayload;
@@ -42,10 +71,6 @@
     int  preferredAudioCodec;
     long long  sampleRate;
     long long  samplesPerFrame;
-    struct _METER_INFO { 
-        bool frequencyMeteringEnabled; 
-        FFTMeter *fftMeter; 
-    }  soundMeter;
     struct _opaque_pthread_rwlock_t { 
         long long __sig; 
         BOOL __opaque[192]; 
@@ -75,6 +100,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool isValid;
 @property (getter=isMuted, nonatomic) bool muted;
+@property (nonatomic, readonly) void*realtimeSourceContext;
 @property (getter=isRemoteMuted, nonatomic) bool remoteMuted;
 @property (nonatomic) bool sendActiveVoiceOnly;
 @property (readonly) Class superclass;
@@ -110,6 +136,7 @@
 - (int)deviceRole;
 - (void)didResumeAudioIO:(id)arg1;
 - (void)didSuspendAudioIO:(id)arg1;
+- (void)didUpdateBasebandCodec:(const struct _VCRemoteCodecInfo { unsigned int x1; double x2; }*)arg1;
 - (bool)generateReceptionReportList:(struct _RTCP_RECEPTION_REPORT { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned char x9; }*)arg1 reportCount:(char *)arg2;
 - (struct __CFDictionary { }*)getClientSpecificUserInfo:(id)arg1;
 - (void)getCodecConfigForPayload:(int)arg1 block:(id /* block */)arg2;
@@ -132,6 +159,7 @@
 - (bool)isValid;
 - (double)lastReceivedRTCPPacketTime;
 - (double)lastReceivedRTPPacketTime;
+- (struct _METER_INFO { bool x1; struct opaqueVCFFTMeter {} *x2; }*)meterWithType:(int)arg1;
 - (void)onCallIDChanged;
 - (bool)onConfigureStreamWithConfiguration:(id)arg1 error:(id*)arg2;
 - (void)onPauseWithCompletionHandler:(id /* block */)arg1;
@@ -144,10 +172,10 @@
 - (int)operatingModeForAudioStreamMode:(long long)arg1;
 - (unsigned int)preferredAudioBitrateForPayload:(int)arg1;
 - (void)prepareAudio;
-- (void)processPulledSamples:(struct opaqueVCAudioBufferList { }*)arg1 rtpTimestamp:(unsigned int)arg2;
 - (void)pullAudioSamples:(struct opaqueVCAudioBufferList { }*)arg1;
-- (void)pullDecodedMeshMode:(struct opaqueVCAudioBufferList { }*)arg1;
 - (void)pushAudioSamples:(struct opaqueVCAudioBufferList { }*)arg1;
+- (void)pushSamplesOutputPowerSpectrum:(struct opaqueVCAudioBufferList { }*)arg1;
+- (void*)realtimeSourceContext;
 - (void)redundancyController:(id)arg1 redundancyPercentageDidChange:(unsigned int)arg2;
 - (void)registerActiveAudioStreamChangeNotifications;
 - (void)registerCodecRateModeChangeNotifications;
@@ -164,6 +192,7 @@
 - (void)setFrequencyMeteringEnabled:(bool)arg1 meterType:(int)arg2;
 - (void)setInputTimestamp:(unsigned int)arg1 packetTimestamp:(int)arg2 hostTime:(double)arg3;
 - (void)setIsValid:(bool)arg1;
+- (id)setLocalParticipantInfo:(id)arg1 networkSockets:(id)arg2 withError:(id*)arg3;
 - (void)setMuted:(bool)arg1;
 - (bool)setReceiverPayloads;
 - (void)setRemoteMuted:(bool)arg1;
@@ -174,8 +203,10 @@
 - (void)setSyncSourceDelegate:(id)arg1;
 - (void)setTargetStreamID:(id)arg1;
 - (void)setVolume:(float)arg1;
+- (void)setupAudioPowerSpectrum;
 - (bool)setupAudioStreamWithClientPid:(int)arg1;
 - (bool)setupPayloads;
+- (bool)setupSourceTransport:(id)arg1;
 - (void)startAudioWithCompletionHandler:(id /* block */)arg1;
 - (void)stateEnter;
 - (void)stateExit;
@@ -186,8 +217,7 @@
 - (id)syncSourceDelegate;
 - (id)targetStreamID;
 - (void)unregisterCodecRateModeChangeNotifications;
-- (void)updateRemoteMediaStallState:(double)arg1;
-- (void)updateSoundMeter:(int)arg1 sampleBuffer:(struct opaqueVCAudioBufferList { }*)arg2;
+- (void)updateSoundMeter:(struct _METER_INFO { bool x1; struct opaqueVCFFTMeter {} *x2; }*)arg1 isInputMeter:(bool)arg2 sampleBuffer:(struct opaqueVCAudioBufferList { }*)arg3;
 - (bool)validateAudioStreamConfigurations:(id)arg1;
 - (void)vcMediaStreamTransport:(id)arg1 updateSourceNTPTime:(double)arg2 rtpTimeStamp:(unsigned int)arg3;
 - (float)volume;

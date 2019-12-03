@@ -5,7 +5,6 @@
 @interface _NSConstantNumber : NSNumber
 
 + (id)alloc;
-+ (void)load;
 
 - (void)dealloc;
 - (oneway void)release;

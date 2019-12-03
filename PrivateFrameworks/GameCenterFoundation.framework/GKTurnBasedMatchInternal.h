@@ -21,6 +21,7 @@
     NSString * _message;
     unsigned char  _minPlayers;
     NSArray * _participants;
+    long long  _platform;
     NSString * _reason;
     NSString * _shortBundleVersion;
     unsigned int  _state;
@@ -46,6 +47,7 @@
 @property (nonatomic, retain) NSString *message;
 @property (nonatomic) unsigned char minPlayers;
 @property (nonatomic, retain) NSArray *participants;
+@property (nonatomic) long long platform;
 @property (nonatomic, retain) NSString *reason;
 @property (nonatomic, retain) NSString *shortBundleVersion;
 @property (nonatomic) unsigned int state;
@@ -78,6 +80,7 @@
 - (id)message;
 - (unsigned char)minPlayers;
 - (id)participants;
+- (long long)platform;
 - (long long)previousParticipantIndex;
 - (id)reason;
 - (void)setBundleID:(id)arg1;
@@ -98,6 +101,7 @@
 - (void)setMessage:(id)arg1;
 - (void)setMinPlayers:(unsigned char)arg1;
 - (void)setParticipants:(id)arg1;
+- (void)setPlatform:(long long)arg1;
 - (void)setReason:(id)arg1;
 - (void)setShortBundleVersion:(id)arg1;
 - (void)setState:(unsigned int)arg1;

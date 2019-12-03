@@ -9,7 +9,9 @@
     double  _cellScaleFactor;
     long long  _cellSizeSubclass;
     unsigned long long  _contentColorStyle;
+    bool  _drawsBorderForOnState;
     UIFont * _font;
+    long long  _iconContentMode;
     double  _iconSize;
     double  _secondaryContentDimmingFactor;
     UIVisualEffect * _secondaryVibrancyEffect;
@@ -24,8 +26,10 @@
 @property (nonatomic) unsigned long long contentColorStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) bool drawsBorderForOnState;
 @property (nonatomic, retain) UIFont *font;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) long long iconContentMode;
 @property (nonatomic) double iconSize;
 @property (nonatomic) double secondaryContentDimmingFactor;
 @property (nonatomic, retain) UIVisualEffect *secondaryVibrancyEffect;
@@ -42,7 +46,9 @@
 - (long long)cellSizeSubclass;
 - (unsigned long long)contentColorStyle;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (bool)drawsBorderForOnState;
 - (id)font;
+- (long long)iconContentMode;
 - (double)iconSize;
 - (id)initWithCellSizeSubclass:(long long)arg1;
 - (double)secondaryContentDimmingFactor;
@@ -52,7 +58,9 @@
 - (void)setCellInnerMargin:(double)arg1;
 - (void)setCellScaleFactor:(double)arg1;
 - (void)setContentColorStyle:(unsigned long long)arg1;
+- (void)setDrawsBorderForOnState:(bool)arg1;
 - (void)setFont:(id)arg1;
+- (void)setIconContentMode:(long long)arg1;
 - (void)setIconSize:(double)arg1;
 - (void)setSecondaryContentDimmingFactor:(double)arg1;
 - (void)setSecondaryVibrancyEffect:(id)arg1;

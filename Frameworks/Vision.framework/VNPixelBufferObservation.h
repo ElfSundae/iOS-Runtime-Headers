@@ -3,20 +3,24 @@
  */
 
 @interface VNPixelBufferObservation : VNObservation {
+    NSString * _featureName;
     struct __CVBuffer { } * _pixelBuffer;
 }
 
+@property (nonatomic, readonly, copy) NSString *featureName;
 @property (nonatomic, readonly) struct __CVBuffer { }*pixelBuffer;
 
 + (bool)supportsSecureCoding;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
-- (id)debugDescription;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)featureName;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithRequestRevision:(unsigned long long)arg1 CVPixelBuffer:(struct __CVBuffer { }*)arg2;
+- (id)initWithRequestRevision:(unsigned long long)arg1 featureName:(id)arg2 CVPixelBuffer:(struct __CVBuffer { }*)arg3;
 - (bool)isEqual:(id)arg1;
 - (struct __CVBuffer { }*)pixelBuffer;
 

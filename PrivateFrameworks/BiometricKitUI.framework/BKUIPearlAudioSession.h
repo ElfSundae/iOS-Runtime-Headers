@@ -5,6 +5,7 @@
 @interface BKUIPearlAudioSession : NSObject {
     AVAudioEngine * _audioEngine;
     AVAudioPlayerNode * _audioNode;
+    NSObject<OS_dispatch_queue> * _avPlayerNodeOperationQueue;
     AVAudioPCMBuffer * _completeSoundBuffer;
     AVAudioPCMBuffer * _endSoundBuffer;
     AVAudioPCMBuffer * _failSoundBuffer;
@@ -13,7 +14,6 @@
 }
 
 @property (nonatomic, readonly) AVAudioEngine *audioEngine;
-@property (nonatomic, readonly) AVAudioPlayerNode *audioNode;
 @property (nonatomic, readonly) AVAudioPCMBuffer *completeSoundBuffer;
 @property (nonatomic, readonly) AVAudioPCMBuffer *endSoundBuffer;
 @property (nonatomic, readonly) AVAudioPCMBuffer *failSoundBuffer;
@@ -24,12 +24,15 @@
 
 - (void).cxx_destruct;
 - (id)audioEngine;
-- (id)audioNode;
 - (id)completeSoundBuffer;
 - (id)endSoundBuffer;
 - (id)failSoundBuffer;
 - (id)init;
 - (id)lockSoundBuffer;
+- (void)play;
 - (id)scanSoundBuffer;
+- (void)scheduleBuffer:(id)arg1 atTime:(id)arg2 options:(unsigned long long)arg3 completionHandler:(id /* block */)arg4;
+- (void)scheduleBuffer:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)stop;
 
 @end

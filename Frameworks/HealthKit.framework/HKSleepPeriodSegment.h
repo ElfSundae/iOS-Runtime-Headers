@@ -12,9 +12,9 @@
 
 @property (nonatomic, readonly) long long category;
 @property (nonatomic, readonly) double duration;
-@property (nonatomic, readonly) NSDate *endDate;
+@property (nonatomic, readonly, copy) NSDate *endDate;
 @property (nonatomic, readonly, copy) NSArray *samples;
-@property (nonatomic, readonly) NSDate *startDate;
+@property (nonatomic, readonly, copy) NSDate *startDate;
 
 - (void).cxx_destruct;
 - (long long)category;

@@ -16,6 +16,7 @@
 @property (nonatomic) long long repeatMode;
 
 - (void).cxx_destruct;
+- (void)_evaluateDelegateBlockSync:(id /* block */)arg1;
 - (id)appContext;
 - (id)appPlaylist;
 - (void)cleanup;

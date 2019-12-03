@@ -4,12 +4,25 @@
 
 @interface GEOMapItemHandle : PBCodable <NSCopying> {
     GEOMapItemClientAttributes * _clientAttributes;
-    int  _handleType;
     struct { 
-        unsigned int handleType : 1; 
-    }  _has;
+        unsigned int has_handleType : 1; 
+        unsigned int read_clientAttributes : 1; 
+        unsigned int read_placeRefinementParameters : 1; 
+        unsigned int read_placeRequestData : 1; 
+        unsigned int wrote_clientAttributes : 1; 
+        unsigned int wrote_placeRefinementParameters : 1; 
+        unsigned int wrote_placeRequestData : 1; 
+        unsigned int wrote_handleType : 1; 
+    }  _flags;
+    int  _handleType;
     GEOPDPlaceRefinementParameters * _placeRefinementParameters;
     GEOMapItemInitialRequestData * _placeRequestData;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
 }
 
 @property (nonatomic, retain) GEOMapItemClientAttributes *clientAttributes;
@@ -21,8 +34,15 @@
 @property (nonatomic, retain) GEOPDPlaceRefinementParameters *placeRefinementParameters;
 @property (nonatomic, retain) GEOMapItemInitialRequestData *placeRequestData;
 
++ (id)handleDataForMapItem:(id)arg1;
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsHandleType:(id)arg1;
+- (void)_readClientAttributes;
+- (void)_readPlaceRefinementParameters;
+- (void)_readPlaceRequestData;
+- (void)clearSensitiveFields;
 - (id)clientAttributes;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -35,10 +55,13 @@
 - (bool)hasPlaceRefinementParameters;
 - (bool)hasPlaceRequestData;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)placeRefinementParameters;
 - (id)placeRequestData;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setClientAttributes:(id)arg1;
 - (void)setHandleType:(int)arg1;

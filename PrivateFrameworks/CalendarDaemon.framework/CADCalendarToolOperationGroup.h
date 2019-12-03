@@ -13,6 +13,7 @@
 + (bool)requiresEventOrReminderAccess;
 + (bool)requiresReminderAccess;
 
+- (void)CADPostSyntheticRouteHypothesis:(id)arg1 forEventWithExternalURL:(id)arg2 reply:(id /* block */)arg3;
 - (void)CADPurgeChangeTrackingReply:(id /* block */)arg1;
 - (bool)accessGrantedToPerformSelector:(SEL)arg1;
 

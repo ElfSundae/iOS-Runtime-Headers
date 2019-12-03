@@ -11,15 +11,15 @@
     bool  _didCheckMixedReplace;
     unsigned int  _didReceiveDataCount;
     unsigned long long  _didReceiveResponseDisposition;
+    bool  _ignoreLoaderEvents;
     bool  _isMixedReplace;
-    struct URLConnectionLoader { int (**x1)(); struct __CFAllocator {} *x2; int (**x3)(); unsigned char x4; unsigned char x5; struct InterfaceRequiredForLoader {} *x6; id x7; int (*x8)(); int (**x9)(); id x10; struct RedirectionRecorder {} *x11; unsigned char x12; unsigned char x13; unsigned char x14; id x15; double x16; struct URLProtocol {} *x17; id x18; struct CoreSchedulingSet {} *x19; double x20; double x21; unsigned long long x22; struct ConfigFlags { unsigned int x_23_1_1 : 1; unsigned int x_23_1_2 : 1; unsigned int x_23_1_3 : 1; unsigned int x_23_1_4 : 1; unsigned int x_23_1_5 : 1; unsigned int x_23_1_6 : 1; unsigned int x_23_1_7 : 1; unsigned int x_23_1_8 : 1; } x23; unsigned char x24; unsigned char x25; unsigned char x26; unsigned char x27; unsigned long long x28; unsigned int x29; unsigned char x30; } * _loader;
-    /* Warning: unhandled struct encoding: '{SessionConnectionLoadable=^^?qqqq^^?^^?@}' */ struct SessionConnectionLoadable { int (**x1)(); long long x2; long long x3; long long x4; long long x5; int (**x6)(); int (**x7)(); id x8; } * _loaderClient;
+    struct URLConnectionLoader { int (**x1)(); struct __CFAllocator {} *x2; int (**x3)(); unsigned char x4; unsigned char x5; struct InterfaceRequiredForLoader {} *x6; id x7; int (**x8)(); int (**x9)(); id x10; id x11; long long x12; struct RedirectionRecorder {} *x13; unsigned char x14; unsigned char x15; unsigned char x16; id x17; unsigned char x18; double x19; struct URLProtocol {} *x20; id x21; unsigned char x22; struct CoreSchedulingSet {} *x23; double x24; double x25; unsigned long long x26; struct ConfigFlags { unsigned int x_27_1_1 : 1; unsigned int x_27_1_2 : 1; unsigned int x_27_1_3 : 1; unsigned int x_27_1_4 : 1; unsigned int x_27_1_5 : 1; unsigned int x_27_1_6 : 1; unsigned int x_27_1_7 : 1; } x27; unsigned char x28; unsigned char x29; unsigned char x30; unsigned char x31; unsigned long long x32; unsigned int x33; unsigned char x34; } * _loader;
+    struct SessionConnectionLoadable { int (**x1)(); long long x2; long long x3; long long x4; long long x5; int (**x6)(); int (**x7)(); id x8; } * _loaderClient;
     unsigned long long  _maxDataSegmentCoalesceThreshhold;
     unsigned long long  _maxDataSegmentCount;
     long long  _pendingCompletion;
     NSObject<OS_dispatch_data> * _pendingData;
     NSError * _pendingError;
-    bool  _sentDidFinishCollectingMetrics;
     NSObject<OS_dispatch_data> * _sniffData;
     NSURLResponse * _sniffResponse;
     int  _state;
@@ -32,7 +32,7 @@
 @property (readonly) Class superclass;
 
 - (void)_ackBytes:(long long)arg1;
-- (void)_captureTCPIOConnection:(struct shared_ptr<TCPIOConnection> { struct TCPIOConnection {} *x1; struct __shared_weak_count {} *x2; })arg1;
+- (void)_captureTransportConnection:(struct shared_ptr<TransportConnection> { struct TransportConnection {} *x1; struct __shared_weak_count {} *x2; })arg1 extraBytes:(id)arg2;
 - (void)_capturedSocketInputStream:(id)arg1 outputStream:(id)arg2;
 - (void)_cleanup;
 - (void)_conditionalRequirementsChanged:(bool)arg1;
@@ -41,18 +41,18 @@
 - (void)_didReceiveChallenge:(id)arg1;
 - (void)_didReceiveConnectionCacheKey:(struct HTTPConnectionCacheKey { int (**x1)(); struct __CFAllocator {} *x2; int x3; unsigned long long x4; struct __CFString {} *x5; int x6; int x7; struct __CFDictionary {} *x8; unsigned long long x9; struct __CFDictionary {} *x10; struct shared_ptr<NetworkProxy> { struct NetworkProxy {} *x_11_1_1; struct __shared_weak_count {} *x_11_1_2; } x11; struct shared_ptr<const __CFString> { struct __CFString {} *x_12_1_1; struct __shared_weak_count {} *x_12_1_2; } x12; int x13; int x14; struct unique_ptr<const __CFDictionary, Deleter_CFRelease> { struct __compressed_pair<const __CFDictionary *, Deleter_CFRelease> { struct __CFDictionary {} *x_1_2_1; } x_15_1_1; } x15; struct unique_ptr<const __CFString, Deleter_CFRelease> { struct __compressed_pair<const __CFString *, Deleter_CFRelease> { struct __CFString {} *x_1_2_1; } x_16_1_1; } x16; }*)arg1;
 - (void)_didReceiveData:(id)arg1;
-- (void)_didReceiveResponse:(id)arg1 sniff:(bool)arg2;
+- (void)_didReceiveResponse:(id)arg1 sniff:(bool)arg2 rewrite:(bool)arg3;
 - (void)_didSendBodyData:(struct UploadProgressInfo { long long x1; long long x2; long long x3; })arg1;
-- (void)_didSendMetrics;
 - (void)_immediatePostDelegateTick;
 - (void)_needConnectedSocketToHost:(id)arg1 port:(unsigned long long)arg2 completion:(id /* block */)arg3;
 - (void)_needNewBodyStream;
-- (bool)_needSendingMetrics;
 - (void)_redirectRequest:(id)arg1 redirectResponse:(id)arg2 completion:(id /* block */)arg3;
+- (void)_sendResponseToDelegate:(id)arg1;
 - (void)_task_sendFinish;
 - (void)_tick;
 - (void)_tick_finishing;
 - (void)_tick_initialize;
+- (void)_tick_initialize_startLoad;
 - (void)_tick_running;
 - (void)_tick_sniffNow;
 - (void)_willSendRequestForEstablishedConnection:(id)arg1 completion:(id /* block */)arg2;
@@ -61,6 +61,7 @@
 - (void)cancelAuthenticationChallenge:(id)arg1;
 - (void)continueWithoutCredentialForAuthenticationChallenge:(id)arg1;
 - (void)dealloc;
+- (void)expectedProgressTargetChanged;
 - (id)initWithTask:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3;
 - (void)resume;
 - (void)setBytesPerSecondLimit:(long long)arg1;

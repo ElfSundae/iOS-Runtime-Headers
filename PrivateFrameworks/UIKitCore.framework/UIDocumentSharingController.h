@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface UIDocumentSharingController : UIViewController <UIActionSheetPresentationControllerDelegate, _UISharingPublicController> {
+@interface UIDocumentSharingController : UIViewController <UIActionSheetPresentationControllerDelegate, _UIRemoteViewControllerContaining, _UISharingPublicController> {
     <_UIDocumentSharingControllerDelegate_Private> * __privateDelegate;
     NSString * _appName;
     NSString * _auxiliaryActionTitle;
@@ -18,10 +18,12 @@
     NSString * _messageTemplate;
     UIViewController * _originalPresentingViewController;
     bool  _showOnlyAddPeople;
+    bool  _showRootFolder;
     UIViewController * _strongReferenceToOurself;
     UIImage * _thumbnail;
 }
 
+@property (nonatomic, readonly) _UIRemoteViewController *_containedRemoteViewController;
 @property (getter=_privateDelegate, setter=_setPrivateDelegate:, nonatomic) <_UIDocumentSharingControllerDelegate_Private> *_privateDelegate;
 @property (getter=_appName, setter=_setAppName:, nonatomic, copy) NSString *appName;
 @property (getter=_auxiliaryActionTitle, setter=_setAuxiliaryActionTitle:, nonatomic, copy) NSString *auxiliaryActionTitle;
@@ -41,6 +43,7 @@
 @property (getter=_originalPresentingViewController, setter=_setOriginalPresentingViewController:, nonatomic) UIViewController *originalPresentingViewController;
 @property (getter=_remoteViewController, nonatomic, readonly) _UIShareInvitationRemoteViewController *remoteViewController;
 @property (getter=_showOnlyAddPeople, setter=_setShowOnlyAddPeople:, nonatomic) bool showOnlyAddPeople;
+@property (getter=_showRootFolder, setter=_setShowRootFolder:, nonatomic) bool showRootFolder;
 @property (getter=_strongReferenceToOurself, setter=_setStrongReferenceToOurself:, nonatomic, retain) UIViewController *strongReferenceToOurself;
 @property (readonly) Class superclass;
 @property (getter=_thumbnail, setter=_setThumbnail:, nonatomic, copy) UIImage *thumbnail;
@@ -49,9 +52,11 @@
 - (id)_appName;
 - (id)_auxiliaryActionTitle;
 - (id)_childViewController;
+- (void)_cloudSharingControllerDidActivateShowSharedFolder;
 - (void)_cloudSharingControllerDidModifyPrimarySwitch:(bool)arg1;
 - (void)_cloudSharingControllerDidModifySecondarySwitch:(bool)arg1;
 - (bool)_collaborationUIEnabled;
+- (id)_containedRemoteViewController;
 - (id)_customPresentationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (void)_didDismiss;
 - (void)_dismissForActivityRepresentation:(id /* block */)arg1;
@@ -66,6 +71,7 @@
 - (id)_originalPresentingViewController;
 - (void)_performAuxiliaryActionWithCompletion:(id /* block */)arg1;
 - (void)_performHeaderActionWithCompletion:(id /* block */)arg1;
+- (void)_presentationControllerDidDismiss:(id)arg1;
 - (id)_privateDelegate;
 - (id)_remoteViewController;
 - (void)_representFullscreenAfterActivityDismissal:(id /* block */)arg1;
@@ -86,12 +92,14 @@
 - (void)_setOriginalPresentingViewController:(id)arg1;
 - (void)_setPrivateDelegate:(id)arg1;
 - (void)_setShowOnlyAddPeople:(bool)arg1;
+- (void)_setShowRootFolder:(bool)arg1;
 - (void)_setStrongReferenceToOurself:(id)arg1;
 - (void)_setThumbnail:(id)arg1;
 - (void)_shareDidChange:(id)arg1;
 - (void)_shareWasMadePrivate;
 - (id)_sharingViewPresentationController;
 - (bool)_showOnlyAddPeople;
+- (bool)_showRootFolder;
 - (id)_strongReferenceToOurself;
 - (id)_thumbnail;
 - (void)_updatePresentationStyleForLegacyAppearance;

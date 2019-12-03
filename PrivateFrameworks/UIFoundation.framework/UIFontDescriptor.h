@@ -46,6 +46,7 @@
 - (id)fontDescriptorWithMatrix:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg1;
 - (id)fontDescriptorWithSize:(double)arg1;
 - (id)fontDescriptorWithSymbolicTraits:(unsigned int)arg1;
+- (id)fontDescriptorWithSymbolicTraits:(unsigned int)arg1 mask:(unsigned int)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFontAttributes:(id)arg1;
@@ -82,5 +83,9 @@
 + (id)telephonyUIFootnoteShortFontDescriptor;
 + (id)telephonyUIPreferredFontDescriptorWithTextStyle:(id)arg1 addingSymbolicTraits:(unsigned int)arg2;
 + (id)telephonyUISubheadlineShortFontDescriptor;
+
+// Image: /System/Library/PrivateFrameworks/TestFlightCore.framework/TestFlightCore
+
++ (id)tf_systemFontWithTextStyle:(id)arg1 weight:(double)arg2 forTraitCollection:(id)arg3;
 
 @end

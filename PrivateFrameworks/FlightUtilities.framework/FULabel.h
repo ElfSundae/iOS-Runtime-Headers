@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/FlightUtilities.framework/FlightUtilities
  */
 
-@interface FULabel : UILabel {
+@interface FULabel : TLKLabel {
     FULabel * _associatedScalingLabel;
     NSAttributedString * _attributedStringValue;
     id /* block */  _onTap;

@@ -3,12 +3,14 @@
  */
 
 @interface _INPBSelectionItem : PBCodable <NSCopying, NSSecureCoding, _INPBSelectionItem> {
+    bool  __encodeLegacyGloryData;
     struct { }  _has;
     NSString * _uuid;
     _INPBIntentSlotValue * _value;
     NSString * _vocabularyValue;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool hasUuid;
@@ -20,13 +22,19 @@
 @property (nonatomic, retain) _INPBIntentSlotValue *value;
 @property (nonatomic, copy) NSString *vocabularyValue;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasUuid;
 - (bool)hasValue;
 - (bool)hasVocabularyValue;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setUuid:(id)arg1;

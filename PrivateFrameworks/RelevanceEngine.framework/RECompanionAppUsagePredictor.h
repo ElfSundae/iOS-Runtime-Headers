@@ -2,18 +2,20 @@
    Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
  */
 
-@interface RECompanionAppUsagePredictor : REPredictor {
+@interface RECompanionAppUsagePredictor : REPredictor <RECompanionAppUsagePredictorProperties> {
     NSDictionary * _predictions;
 }
+
+@property (nonatomic, readonly) NSDictionary *predictions;
 
 + (double)updateInterval;
 
 - (void).cxx_destruct;
+- (id)_init;
 - (void)_loadStoreIfNeeded;
-- (void)collectLoggableState:(id /* block */)arg1;
 - (void)dealloc;
 - (id)featureValueForFeature:(id)arg1 element:(id)arg2 engine:(id)arg3 trainingContext:(id)arg4;
-- (id)init;
+- (id)predictions;
 - (void)update;
 
 @end

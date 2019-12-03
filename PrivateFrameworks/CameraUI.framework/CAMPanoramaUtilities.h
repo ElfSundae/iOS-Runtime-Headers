@@ -4,12 +4,12 @@
 
 @interface CAMPanoramaUtilities : NSObject
 
++ (struct CGSize { double x1; double x2; })bufferSize;
 + (struct CGSize { double x1; double x2; })defaultPreviewSize;
-+ (struct CGSize { double x1; double x2; })maximumSize;
 + (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })panoramaViewLayoutInsetsForLayoutStyle:(long long)arg1;
-+ (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })panoramaViewPreviewInsetsForLayoutStyle:(long long)arg1;
-+ (struct CGSize { double x1; double x2; })previewSizeForAvailableWidth:(double)arg1 layoutStyle:(long long)arg2;
-+ (struct CGSize { double x1; double x2; })previewViewSizeForAvailableWidth:(double)arg1 layoutStyle:(long long)arg2;
++ (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })panoramaViewPreviewStripInsetsForLayoutStyle:(long long)arg1;
++ (struct CGSize { double x1; double x2; })panoramaViewSizeForCaptureSize:(struct CGSize { double x1; double x2; })arg1 availableWidth:(double)arg2 layoutStyle:(long long)arg3;
++ (struct CGSize { double x1; double x2; })previewStripSizeForCaptureSize:(struct CGSize { double x1; double x2; })arg1 availableWidth:(double)arg2 layoutStyle:(long long)arg3;
 + (double)singlePreviewFrameWidthForPreviewHeight:(double)arg1;
 
 @end

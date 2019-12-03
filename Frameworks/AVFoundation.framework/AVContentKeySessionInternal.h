@@ -6,6 +6,8 @@
     NSData * _appIdentifier;
     NSHashTable * _contentKeyRecipients;
     NSMutableArray * _cryptorsList;
+    NSObject<OS_dispatch_queue> * _delegateQueue;
+    NSObject<OS_dispatch_queue> * _delegateReadWriteQueue;
     AVWeakReferencingDelegateStorage * _delegateStorage;
     struct OpaqueFigContentKeySession { } * _figContentKeySession;
     bool  _internal;

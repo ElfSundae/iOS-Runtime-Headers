@@ -2,15 +2,15 @@
    Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
  */
 
-@interface MFModernAddressAtom : UIControl <MFModernAtomViewResembling> {
+@interface MFModernAddressAtom : UIControl <CNAtomViewResembling> {
     void * _addressBook;
     NSString * _addressIdentifier;
     unsigned int  _addressIsPhoneNumber;
-    MFModernAtomView * _atomView;
+    CNAtomView * _atomView;
     <MFModernAddressAtomDelegate> * _delegate;
     NSString * _displayString;
     double  _firstLineIndent;
-    NSString * _fullAddress;
+    <ECEmailAddressConvertible> * _fullAddress;
     int  _identifier;
     unsigned int  _isDisplayStringFromAddressBook;
     unsigned int  _maxWidth;
@@ -38,6 +38,7 @@
 
 + (id)copyDisplayStringForAddress:(id)arg1 usingAddressBook:(void*)arg2 useAbbreviatedName:(bool)arg3;
 
+- (void).cxx_destruct;
 - (void*)ABPerson;
 - (int)ABPropertyType;
 - (void)_displayStringDidChange;

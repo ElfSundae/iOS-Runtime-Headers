@@ -41,7 +41,6 @@
 - (void)_updateActiveBiometricOperation:(int)arg1;
 - (void)_updateDeviceLockState;
 - (void)dealloc;
-- (id)init;
-- (void)layoutMonitor:(id)arg1 didUpdateLayoutWithForegroundApps:(id)arg2 layoutState:(int)arg3;
+- (void)layoutMonitor:(id)arg1 didUpdateLayoutWithForegroundApps:(id)arg2 obscuredApps:(id)arg3;
 
 @end

@@ -7,6 +7,7 @@
     <MNLocationProviderDelegate> * _delegate;
     NSMutableArray * _priorityQueue;
     MNTraceEventRecorder * _recorder;
+    double  _simulationSpeedOverride;
     double  _time;
     NSArray * _traceEvents;
 }
@@ -29,9 +30,11 @@
 @property (nonatomic, readonly) bool isTracePlayer;
 @property (getter=isLocationServicesPreferencesDialogEnabled, nonatomic) bool locationServicesPreferencesDialogEnabled;
 @property (nonatomic) bool matchInfoEnabled;
+@property (nonatomic) double simulationSpeedOverride;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) double timeScale;
 @property (nonatomic, readonly) NSArray *traceEvents;
+@property (nonatomic, readonly) unsigned long long traceVersion;
 @property (nonatomic, readonly) bool usesCLMapCorrection;
 
 - (void).cxx_destruct;
@@ -41,6 +44,7 @@
 - (long long)activityType;
 - (id /* block */)authorizationRequestBlock;
 - (int)authorizationStatus;
+- (id)currentDate;
 - (double)currentTime;
 - (id)delegate;
 - (double)desiredAccuracy;
@@ -49,6 +53,7 @@
 - (id)effectiveBundleIdentifier;
 - (double)expectedGpsUpdateInterval;
 - (void)generateGuidance;
+- (void)generateGuidanceWithRequest:(id)arg1 response:(id)arg2 routeAttributes:(id)arg3 routeIndex:(unsigned int)arg4 withCompletion:(id /* block */)arg5;
 - (int)headingOrientation;
 - (void)insertVoiceEventAtTime:(double)arg1 completion:(id /* block */)arg2;
 - (bool)isLocationServicesPreferencesDialogEnabled;
@@ -66,6 +71,7 @@
 - (void)navigationSessionDidStart:(id)arg1;
 - (void)navigationSessionHideSecondaryStep:(id)arg1;
 - (void)navigationSessionWillReroute:(id)arg1;
+- (void)recordLocationsAlongRouteWithRecorder:(id)arg1;
 - (void)requestWhenInUseAuthorization;
 - (void)requestWhenInUseAuthorizationWithPrompt;
 - (void)resetForActiveTileGroupChanged;
@@ -79,6 +85,8 @@
 - (void)setHeadingOrientation:(int)arg1;
 - (void)setLocationServicesPreferencesDialogEnabled:(bool)arg1;
 - (void)setMatchInfoEnabled:(bool)arg1;
+- (void)setSimulationSpeedOverride:(double)arg1;
+- (double)simulationSpeedOverride;
 - (void)startUpdatingHeading;
 - (void)startUpdatingLocation;
 - (void)startUpdatingVehicleHeading;
@@ -89,6 +97,7 @@
 - (void)stopUpdatingVehicleSpeed;
 - (double)timeScale;
 - (id)traceEvents;
+- (unsigned long long)traceVersion;
 - (bool)usesCLMapCorrection;
 
 @end

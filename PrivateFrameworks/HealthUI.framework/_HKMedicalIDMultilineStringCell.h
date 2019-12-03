@@ -15,6 +15,7 @@
 - (void).cxx_destruct;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
 - (void)_updateTextColor;
+- (void)dealloc;
 - (id)description;
 - (id)detailLabel;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;

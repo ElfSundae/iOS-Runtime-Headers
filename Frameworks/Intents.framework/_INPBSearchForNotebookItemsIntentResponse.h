@@ -3,6 +3,7 @@
  */
 
 @interface _INPBSearchForNotebookItemsIntentResponse : PBCodable <NSCopying, NSSecureCoding, _INPBSearchForNotebookItemsIntentResponse> {
+    bool  __encodeLegacyGloryData;
     struct { 
         unsigned int sortType : 1; 
     }  _has;
@@ -12,6 +13,7 @@
     NSArray * _tasks;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) bool hasSortType;
@@ -26,11 +28,14 @@
 @property (nonatomic, readonly) unsigned long long tasksCount;
 
 + (Class)notesType;
++ (bool)supportsSecureCoding;
 + (Class)taskListsType;
 + (Class)tasksType;
 
 - (void).cxx_destruct;
 - (int)StringAsSortType:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (void)addNotes:(id)arg1;
 - (void)addTaskLists:(id)arg1;
 - (void)addTasks:(id)arg1;
@@ -39,8 +44,10 @@
 - (void)clearTasks;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasSortType;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)notes;
 - (id)notesAtIndex:(unsigned long long)arg1;

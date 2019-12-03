@@ -64,6 +64,7 @@
 
 + (id)createContextForCPU;
 + (id)createContextForGPU;
++ (id)dotGraphLoggingDirectory;
 + (void)setColorSpaceDefaultsForDeviceClass;
 + (void)setWorkingColorSpace:(id)arg1 outputColorSpace:(id)arg2 workingSpaceConformIntent:(int)arg3;
 + (bool)supportsSecureCoding;

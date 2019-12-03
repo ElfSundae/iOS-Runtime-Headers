@@ -6,6 +6,7 @@
     unsigned int  _audioSessionID;
     NSString * _bundleIdentifier;
     NSURL * _bundleURL;
+    NSArray * _emergencyHandles;
     NSArray * _emergencyLabeledHandles;
     NSArray * _handoffIdentifiers;
     NSData * _iconTemplateImageData;
@@ -28,6 +29,7 @@
 @property (nonatomic) unsigned int audioSessionID;
 @property (nonatomic, copy) NSString *bundleIdentifier;
 @property (nonatomic, copy) NSURL *bundleURL;
+@property (nonatomic, copy) NSArray *emergencyHandles;
 @property (nonatomic, copy) NSArray *emergencyLabeledHandles;
 @property (getter=isFaceTimeProvider, nonatomic, readonly) bool faceTimeProvider;
 @property (nonatomic, copy) NSArray *handoffIdentifiers;
@@ -58,6 +60,7 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)displayAppBundleIdentifier;
+- (id)emergencyHandles;
 - (id)emergencyLabeledHandles;
 - (void)encodeWithCoder:(id)arg1;
 - (id)handoffIdentifiers;
@@ -90,6 +93,7 @@
 - (void)setAudioSessionID:(unsigned int)arg1;
 - (void)setBundleIdentifier:(id)arg1;
 - (void)setBundleURL:(id)arg1;
+- (void)setEmergencyHandles:(id)arg1;
 - (void)setEmergencyLabeledHandles:(id)arg1;
 - (void)setHandoffIdentifiers:(id)arg1;
 - (void)setIconTemplateImageData:(id)arg1;

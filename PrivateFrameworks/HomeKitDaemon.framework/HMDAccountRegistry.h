@@ -5,7 +5,9 @@
 @interface HMDAccountRegistry : HMFObject <HMFLogging, NSFastEnumeration> {
     HMDAppleAccountManager * _appleAccountManager;
     NSObject<OS_dispatch_queue> * _clientQueue;
+    <HMFLocking> * _lock;
     HMDRemoteAccountManager * _remoteAccountManager;
+    bool  _started;
 }
 
 @property (nonatomic, readonly) NSArray *accounts;
@@ -15,8 +17,10 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) HMDRemoteAccountManager *remoteAccountManager;
+@property (readonly) bool started;
 @property (readonly) Class superclass;
 
++ (bool)automaticallyNotifiesObserversForKey:(id)arg1;
 + (id)logCategory;
 + (id)sharedRegistry;
 
@@ -34,7 +38,7 @@
 - (id)appleAccountManager;
 - (id)attributeDescriptions;
 - (id)clientQueue;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (bool)deviceExistsForDevice:(id)arg1;
 - (bool)deviceExistsForHandle:(id)arg1;
 - (id)deviceForDevice:(id)arg1;
@@ -45,7 +49,9 @@
 - (id)init;
 - (id)initWithAppleAccountManager:(id)arg1 remoteAccountManager:(id)arg2;
 - (id)remoteAccountManager;
+- (void)reset;
 - (void)start;
+- (bool)started;
 - (void)stop;
 
 @end

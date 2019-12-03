@@ -6,6 +6,7 @@
 
 @property (nonatomic, copy) id /* block */ artworkCatalogBlock;
 @property (nonatomic, copy) NSString *descriptionText;
+@property (nonatomic, readonly, copy) NSDate *downloadedDate;
 @property (nonatomic) long long episodesCount;
 @property (nonatomic) bool hasCleanContent;
 @property (nonatomic) bool hasExplicitContent;
@@ -22,6 +23,7 @@
 
 + (id)__artworkCatalogBlock_KEY;
 + (id)__descriptionText_KEY;
++ (id)__downloadedDate_KEY;
 + (id)__episodesCount_KEY;
 + (id)__hasCleanContent_KEY;
 + (id)__hasExplicitContent_KEY;
@@ -42,6 +44,8 @@
 - (struct MPLibraryAddStatusObserverConfiguration { bool x1; bool x2; bool x3; bool x4; bool x5; })libraryAddStatusObserverConfiguration;
 
 // Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
++ (id)mqf_requiredSectionPlaybackProperties;
 
 - (id)MPC_modelObjectWithStoreFrontLocalEquivalentModelObject:(id)arg1;
 

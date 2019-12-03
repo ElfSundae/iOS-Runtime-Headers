@@ -12,10 +12,10 @@
 @property (nonatomic, retain) NSMutableArray *animations;
 @property (nonatomic, retain) NSMutableArray *completions;
 
+- (void).cxx_destruct;
 - (void)animateAlongsideAnimations:(id /* block */)arg1 completion:(id /* block */)arg2;
 - (id)animations;
 - (id)completions;
-- (void)dealloc;
 - (id)init;
 - (id)initCoordinatorAnimated:(bool)arg1;
 - (bool)isAnimated;

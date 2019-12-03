@@ -2,29 +2,34 @@
    Image: /System/Library/PrivateFrameworks/CoreHAP.framework/CoreHAP
  */
 
-@interface HAPSecuritySession : HMFObject {
+@interface HAPSecuritySession : HMFObject <HMFLogging> {
     NSData * _broadcastKey;
-    NSObject<OS_dispatch_queue> * _clientQueue;
     <HAPSecuritySessionDelegate> * _delegate;
     HAPSecuritySessionEncryption * _encryption;
+    <HMFLocking> * _lock;
     struct PairingSessionPrivate { } * _pairingSession;
-    NSObject<OS_dispatch_queue> * _propertyQueue;
+    NSObject<OS_dispatch_queue> * _queue;
     unsigned long long  _resumeSessionID;
     unsigned long long  _role;
     unsigned long long  _state;
 }
 
-@property (nonatomic, retain) NSData *broadcastKey;
-@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *clientQueue;
+@property (readonly) NSData *broadcastKey;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly) <HAPSecuritySessionDelegate> *delegate;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, retain) HAPSecuritySessionEncryption *encryption;
+@property (readonly) unsigned long long hash;
 @property (getter=isOpen, readonly) bool open;
 @property (getter=isOpening, readonly) bool opening;
 @property (nonatomic) struct PairingSessionPrivate { }*pairingSession;
-@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *propertyQueue;
+@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *queue;
 @property (nonatomic, readonly) unsigned long long resumeSessionID;
 @property (nonatomic, readonly) unsigned long long role;
 @property unsigned long long state;
+@property (readonly) Class superclass;
+
++ (id)logCategory;
 
 - (void).cxx_destruct;
 - (id)_broadcastInfo;
@@ -35,13 +40,11 @@
 - (bool)_initializeSetupSession:(unsigned long long)arg1;
 - (void)_initiateClientSessionSetupExchange;
 - (id)_inputInfo;
-- (void)_invalidate;
 - (void)_notifyOpened;
 - (void)_notifyOpening;
 - (id)_outputInfo;
 - (void)_processSetupExchangeData:(id)arg1 error:(id)arg2;
 - (id)broadcastKey;
-- (id)clientQueue;
 - (void)close;
 - (void)closeWithError:(id)arg1;
 - (void)dealloc;
@@ -51,13 +54,12 @@
 - (id)description;
 - (id)encryptData:(id)arg1 additionalAuthenticatedData:(id)arg2 error:(id*)arg3;
 - (id)encryption;
-- (id)getBroadcastEncryptionKey;
 - (id)initWithRole:(unsigned long long)arg1 resumeSessionID:(unsigned long long)arg2 delegate:(id)arg3;
 - (bool)isOpen;
 - (bool)isOpening;
 - (void)open;
 - (struct PairingSessionPrivate { }*)pairingSession;
-- (id)propertyQueue;
+- (id)queue;
 - (void)reallyOpen;
 - (void)receivedSetupExchangeData:(id)arg1 error:(id)arg2;
 - (unsigned long long)resumeSessionID;

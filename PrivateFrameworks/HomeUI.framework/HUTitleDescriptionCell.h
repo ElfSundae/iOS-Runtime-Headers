@@ -13,6 +13,8 @@
     bool  _hideDescriptionIcon;
     bool  _hideTitle;
     NSArray * _horizontalLabelConstraints;
+    unsigned long long  _maxNumberOfDescriptionLines;
+    unsigned long long  _maxNumberOfTitleLines;
     double  _textAlpha;
     UIFont * _titleFont;
     UILabel * _titleLabel;
@@ -30,6 +32,8 @@
 @property (nonatomic) bool hideDescriptionIcon;
 @property (nonatomic) bool hideTitle;
 @property (nonatomic, retain) NSArray *horizontalLabelConstraints;
+@property (nonatomic) unsigned long long maxNumberOfDescriptionLines;
+@property (nonatomic) unsigned long long maxNumberOfTitleLines;
 @property (nonatomic) double textAlpha;
 @property (nonatomic, retain) UIFont *titleFont;
 @property (nonatomic, readonly) UILabel *titleLabel;
@@ -51,7 +55,8 @@
 - (bool)hideTitle;
 - (id)horizontalLabelConstraints;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
-- (id)labelWithText:(id)arg1 font:(id)arg2;
+- (unsigned long long)maxNumberOfDescriptionLines;
+- (unsigned long long)maxNumberOfTitleLines;
 - (void)prepareForReuse;
 - (void)setAdjustsTextColorWhenDisabled:(bool)arg1;
 - (void)setDescriptionFont:(id)arg1;
@@ -62,6 +67,8 @@
 - (void)setHideDescriptionIcon:(bool)arg1;
 - (void)setHideTitle:(bool)arg1;
 - (void)setHorizontalLabelConstraints:(id)arg1;
+- (void)setMaxNumberOfDescriptionLines:(unsigned long long)arg1;
+- (void)setMaxNumberOfTitleLines:(unsigned long long)arg1;
 - (void)setTextAlpha:(double)arg1;
 - (void)setTitleFont:(id)arg1;
 - (void)setTitleText:(id)arg1;

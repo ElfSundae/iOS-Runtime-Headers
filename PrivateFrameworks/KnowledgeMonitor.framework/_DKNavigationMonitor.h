@@ -18,6 +18,8 @@
 + (id)eventStream;
 + (void)setIsNavigating:(bool)arg1;
 
+- (void)deactivate;
+- (void)dealloc;
 - (bool)enabled;
 - (id)loadState;
 - (bool)navigating;

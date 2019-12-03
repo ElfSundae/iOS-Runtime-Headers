@@ -2,44 +2,42 @@
    Image: /System/Library/PrivateFrameworks/VoiceShortcuts.framework/VoiceShortcuts
  */
 
-@interface VCSpotlightSyncService : NSObject <VCVoiceShortcutSyncService> {
-    bool  _hasBeenStarted;
-    NSObject<OS_dispatch_queue> * _serialQueue;
-    VCVoiceShortcutManager * _voiceShortcutManager;
+@interface VCSpotlightSyncService : NSObject <VCSpotlightSyncOperationDelegate, WFDatabaseResultObserver> {
+    <VCDatabaseProvider> * _databaseProvider;
+    WFDebouncer * _debouncer;
+    CSSearchableIndex * _index;
+    bool  _isFetchingClientState;
+    NSObject<OS_dispatch_queue> * _queue;
+    VCSpotlightSyncOperation * _syncOperation;
+    WFDatabaseResult * _workflows;
 }
 
+@property (nonatomic, readonly) <VCDatabaseProvider> *databaseProvider;
+@property (nonatomic, readonly) WFDebouncer *debouncer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) bool hasBeenStarted;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *serialQueue;
+@property (nonatomic, readonly) CSSearchableIndex *index;
+@property (nonatomic) bool isFetchingClientState;
+@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *queue;
 @property (readonly) Class superclass;
-@property (nonatomic, readonly) NSString *syncServiceIdentifier;
-@property (nonatomic, readonly) VCVoiceShortcutManager *voiceShortcutManager;
-
-+ (void)initialize;
+@property (nonatomic, retain) VCSpotlightSyncOperation *syncOperation;
+@property (nonatomic, readonly) WFDatabaseResult *workflows;
 
 - (void).cxx_destruct;
-- (void)binChanges:(struct NSOrderedSet { Class x1; }*)arg1 intoAdded:(struct NSOrderedSet {}**)arg2 deleted:(struct NSOrderedSet {}**)arg3 inactiveChanges:(struct NSOrderedSet {}**)arg4;
-- (struct NSOrderedSet { Class x1; }*)changesInLocalStore;
-- (bool)deleteShortcutsIndex;
-- (bool)hasBeenStarted;
-- (id)inactiveShortcuts;
-- (bool)indexShortcuts:(id)arg1;
-- (id)initWithVoiceShortcutManager:(id)arg1;
-- (void)markChanges:(struct NSOrderedSet { Class x1; }*)arg1 asSynced:(bool)arg2;
-- (void)markShortcuts:(id)arg1 asSynced:(bool)arg2;
-- (void)requestFullResync;
+- (id)databaseProvider;
+- (void)databaseResult:(id)arg1 didUpdateObjects:(id)arg2 inserted:(id)arg3 removed:(id)arg4;
+- (id)debouncer;
+- (id)index;
+- (id)initWithDatabaseProvider:(id)arg1;
+- (bool)isFetchingClientState;
+- (id)queue;
 - (void)requestSync;
-- (bool)resetSpotlightSyncStateInLocalStore;
-- (id)serialQueue;
-- (void)setHasBeenStarted:(bool)arg1;
-- (bool)startSyncService:(id*)arg1;
+- (void)setIsFetchingClientState:(bool)arg1;
+- (void)setSyncOperation:(id)arg1;
 - (void)sync;
-- (id)syncServiceIdentifier;
-- (bool)unindexShortcutsWithIdentifiers:(id)arg1;
-- (void)updateSpotlightIndexWithShortcutChanges:(struct NSOrderedSet { Class x1; }*)arg1;
-- (id)voiceShortcutManager;
-- (void)voiceShortcutsDidChange;
+- (id)syncOperation;
+- (void)syncOperationFinishedWithRequestToRelaunch:(bool)arg1;
+- (id)workflows;
 
 @end

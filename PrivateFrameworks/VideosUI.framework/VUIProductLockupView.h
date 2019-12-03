@@ -8,7 +8,6 @@
     VUISeparatorView * _bottomSeparatorView;
     NSString * _contentDescription;
     bool  _contentDescriptionExpanded;
-    VUIContentRating * _contentRating;
     UIImage * _contentRatingImage;
     TVImageProxy * _coverArtImageProxy;
     _TVImageView * _coverArtImageView;
@@ -35,7 +34,6 @@
 @property (nonatomic, retain) VUISeparatorView *bottomSeparatorView;
 @property (nonatomic, copy) NSString *contentDescription;
 @property (nonatomic) bool contentDescriptionExpanded;
-@property (nonatomic, copy) VUIContentRating *contentRating;
 @property (nonatomic, retain) UIImage *contentRatingImage;
 @property (nonatomic, readonly) TVImageProxy *coverArtImageProxy;
 @property (nonatomic, retain) _TVImageView *coverArtImageView;
@@ -76,7 +74,6 @@
 - (id)bottomSeparatorView;
 - (id)contentDescription;
 - (bool)contentDescriptionExpanded;
-- (id)contentRating;
 - (id)contentRatingImage;
 - (id)coverArtImageProxy;
 - (id)coverArtImageView;
@@ -101,7 +98,6 @@
 - (void)setBottomSeparatorView:(id)arg1;
 - (void)setContentDescription:(id)arg1;
 - (void)setContentDescriptionExpanded:(bool)arg1;
-- (void)setContentRating:(id)arg1;
 - (void)setContentRatingImage:(id)arg1;
 - (void)setCoverArtImageProxy:(id)arg1 placeholderImage:(id)arg2;
 - (void)setCoverArtImageView:(id)arg1;

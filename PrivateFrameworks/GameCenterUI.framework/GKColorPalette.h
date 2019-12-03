@@ -17,7 +17,7 @@
 @property (readonly) UIColor *friendRequestTintColor;
 @property (readonly) UIColor *friendTintColor;
 @property (readonly) UIColor *localPlayerTintColor;
-@property (readonly) UIColor *monogramBackgroundColor;
+@property (readonly) UIColor *opaqueViewBackgroundColor;
 @property (readonly) UIColor *pinnedHeaderViewBackgroundColor;
 @property (readonly) UIColor *removeItemTextColor;
 @property (readonly) UIColor *selectedCellBackgroundColor;
@@ -47,7 +47,7 @@
 - (id)friendRequestTintColor;
 - (id)friendTintColor;
 - (id)localPlayerTintColor;
-- (id)monogramBackgroundColor;
+- (id)opaqueViewBackgroundColor;
 - (id)pinnedHeaderViewBackgroundColor;
 - (id)removeItemTextColor;
 - (id)selectedCellBackgroundColor;

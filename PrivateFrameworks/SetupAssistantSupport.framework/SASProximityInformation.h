@@ -3,6 +3,7 @@
  */
 
 @interface SASProximityInformation : NSObject <NSSecureCoding> {
+    NSData * _accessibilitySettings;
     NSNumber * _appAnalyticsOptIn;
     NSString * _appleID;
     bool  _automaticTimeZoneEnabled;
@@ -19,25 +20,28 @@
     NSNumber * _deviceToDeviceMigrationVersion;
     NSNumber * _findMyDeviceOptIn;
     NSString * _firstName;
+    NSNumber * _hasTransferrableTelephonyPlan;
     NSArray * _keyboards;
     NSDictionary * _localePreferences;
+    NSData * _locationServicesData;
     bool  _locationServicesOptIn;
     NSSet * _nearbyNetworks;
     NSObject<OS_dispatch_semaphore> * _nearbyNetworksSemaphore;
     NSArray * _networkPasswords;
     NSArray * _networks;
+    NSNumber * _preventSoftwareUpdateDeviceMigration;
     NSString * _productVersion;
     bool  _restoring;
     NSNumber * _siriOptIn;
     NSData * _siriVoiceProfileAvailabilityMetadata;
     NSNumber * _storageAvailable;
     NSNumber * _storageCapacity;
-    NSNumber * _storageUsedByAppContainers;
     NSNumber * _supportsDeviceToDeviceMigration;
     NSString * _timeZone;
     bool  _usesSameAccountForiTunes;
 }
 
+@property (retain) NSData *accessibilitySettings;
 @property (retain) NSNumber *appAnalyticsOptIn;
 @property (copy) NSString *appleID;
 @property bool automaticTimeZoneEnabled;
@@ -54,20 +58,22 @@
 @property (retain) NSNumber *deviceToDeviceMigrationVersion;
 @property (retain) NSNumber *findMyDeviceOptIn;
 @property (copy) NSString *firstName;
+@property NSNumber *hasTransferrableTelephonyPlan;
 @property (copy) NSArray *keyboards;
 @property (copy) NSDictionary *localePreferences;
+@property (retain) NSData *locationServicesData;
 @property bool locationServicesOptIn;
 @property (retain) NSSet *nearbyNetworks;
 @property (retain) NSObject<OS_dispatch_semaphore> *nearbyNetworksSemaphore;
 @property (copy) NSArray *networkPasswords;
 @property (copy) NSArray *networks;
+@property (retain) NSNumber *preventSoftwareUpdateDeviceMigration;
 @property (retain) NSString *productVersion;
 @property (getter=isRestoring) bool restoring;
 @property (retain) NSNumber *siriOptIn;
 @property (retain) NSData *siriVoiceProfileAvailabilityMetadata;
 @property (retain) NSNumber *storageAvailable;
 @property (retain) NSNumber *storageCapacity;
-@property (retain) NSNumber *storageUsedByAppContainers;
 @property (retain) NSNumber *supportsDeviceToDeviceMigration;
 @property (copy) NSString *timeZone;
 @property bool usesSameAccountForiTunes;
@@ -76,6 +82,7 @@
 
 - (void).cxx_destruct;
 - (id)_getFindMyDeviceOptIn;
+- (id)accessibilitySettings;
 - (id)appAnalyticsOptIn;
 - (id)appleID;
 - (bool)automaticTimeZoneEnabled;
@@ -92,6 +99,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)findMyDeviceOptIn;
 - (id)firstName;
+- (id)hasTransferrableTelephonyPlan;
 - (id)initWithCoder:(id)arg1;
 - (bool)isBackupEnabled;
 - (bool)isNetworkTransferrable:(struct __WiFiNetwork { }*)arg1;
@@ -99,13 +107,16 @@
 - (id)keyboards;
 - (void)loadInformation;
 - (id)localePreferences;
+- (id)locationServicesData;
 - (bool)locationServicesOptIn;
 - (id)nearbyNetworks;
 - (id)nearbyNetworksSemaphore;
 - (id)networkPasswords;
 - (id)networks;
 - (id)numberFromMCUserBoolSetting:(id)arg1;
+- (id)preventSoftwareUpdateDeviceMigration;
 - (id)productVersion;
+- (void)setAccessibilitySettings:(id)arg1;
 - (void)setAppAnalyticsOptIn:(id)arg1;
 - (void)setAppleID:(id)arg1;
 - (void)setAutomaticTimeZoneEnabled:(bool)arg1;
@@ -122,20 +133,22 @@
 - (void)setDeviceToDeviceMigrationVersion:(id)arg1;
 - (void)setFindMyDeviceOptIn:(id)arg1;
 - (void)setFirstName:(id)arg1;
+- (void)setHasTransferrableTelephonyPlan:(id)arg1;
 - (void)setKeyboards:(id)arg1;
 - (void)setLocalePreferences:(id)arg1;
+- (void)setLocationServicesData:(id)arg1;
 - (void)setLocationServicesOptIn:(bool)arg1;
 - (void)setNearbyNetworks:(id)arg1;
 - (void)setNearbyNetworksSemaphore:(id)arg1;
 - (void)setNetworkPasswords:(id)arg1;
 - (void)setNetworks:(id)arg1;
+- (void)setPreventSoftwareUpdateDeviceMigration:(id)arg1;
 - (void)setProductVersion:(id)arg1;
 - (void)setRestoring:(bool)arg1;
 - (void)setSiriOptIn:(id)arg1;
 - (void)setSiriVoiceProfileAvailabilityMetadata:(id)arg1;
 - (void)setStorageAvailable:(id)arg1;
 - (void)setStorageCapacity:(id)arg1;
-- (void)setStorageUsedByAppContainers:(id)arg1;
 - (void)setSupportsDeviceToDeviceMigration:(id)arg1;
 - (void)setTimeZone:(id)arg1;
 - (void)setUsesSameAccountForiTunes:(bool)arg1;
@@ -143,7 +156,6 @@
 - (id)siriVoiceProfileAvailabilityMetadata;
 - (id)storageAvailable;
 - (id)storageCapacity;
-- (id)storageUsedByAppContainers;
 - (id)supportsDeviceToDeviceMigration;
 - (id)timeZone;
 - (bool)usesSameAccountForiTunes;

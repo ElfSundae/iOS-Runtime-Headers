@@ -13,6 +13,7 @@
     double  _lastHeadingUpdateTimestamp;
     double  _lastMajorRelocalizationTimestamp;
     long long  _lastTrackingStateReason;
+    CMMotionManager * _motionManager;
     ARWorldAlignmentData * _relocalizedAlignmentData;
     bool  _relocalizing;
     float  _trackingAlignmentAngle;
@@ -22,6 +23,7 @@
 
 @property (nonatomic, readonly) long long alignment;
 @property (nonatomic, readonly) long long cameraPosition;
+@property (nonatomic, retain) CMMotionManager *motionManager;
 
 - (void).cxx_destruct;
 - (id)_deviceOrientationPoseDataFromDeviceOrientation:(id)arg1;
@@ -35,10 +37,12 @@
 - (id)initWithAlignment:(long long)arg1;
 - (id)initWithAlignment:(long long)arg1 cameraPosition:(long long)arg2;
 - (bool)isEqual:(id)arg1;
+- (id)motionManager;
 - (id)predictedResultDataAtTimestamp:(double)arg1 context:(id)arg2;
 - (id)processData:(id)arg1;
 - (void)requestResultDataAtTimestamp:(double)arg1 context:(id)arg2;
 - (unsigned long long)requiredSensorDataTypes;
 - (id)resultDataClasses;
+- (void)setMotionManager:(id)arg1;
 
 @end

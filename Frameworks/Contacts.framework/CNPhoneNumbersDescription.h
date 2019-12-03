@@ -36,5 +36,6 @@
 - (id /* block */)CNLabeledValueFromABSMultiValueTranform;
 - (bool)absPropertyID:(int*)arg1;
 - (unsigned int)absPropertyType;
+- (bool)isABSLabeledValueValue:(id)arg1 equalToValue:(id)arg2;
 
 @end

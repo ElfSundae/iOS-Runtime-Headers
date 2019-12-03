@@ -66,7 +66,6 @@
 - (bool)configureVpnOnDemandRules:(id)arg1;
 - (id)contentFilter;
 - (void)copyPasswordsFromSystemKeychain;
-- (id)copyProfileDictionary;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)descriptionWithOptions:(unsigned long long)arg1;
@@ -106,6 +105,7 @@
 - (id)initWithVPNPayload:(id)arg1 configurationName:(id)arg2 grade:(long long)arg3;
 - (bool)isEqual:(id)arg1;
 - (bool)isSupportedBySC;
+- (id)mergeArray:(id)arg1 withArray:(id)arg2;
 - (id)name;
 - (bool)needToUpdateKeychain;
 - (id)pathController;
@@ -118,6 +118,7 @@
 - (void)setApplication:(id)arg1;
 - (void)setApplicationIdentifier:(id)arg1;
 - (void)setApplicationName:(id)arg1;
+- (bool)setCalendarDomains:(id)arg1;
 - (bool)setCertificateContentFilter:(id)arg1;
 - (bool)setCertificates:(id)arg1;
 - (bool)setCertificatesAOVpn:(id)arg1;
@@ -125,9 +126,11 @@
 - (bool)setCertificatesVPN:(id)arg1;
 - (bool)setConfigurationSharedSecret:(id)arg1;
 - (bool)setConfigurationVPNPassword:(id)arg1;
+- (bool)setContactsDomains:(id)arg1;
 - (void)setContentFilter:(id)arg1;
 - (void)setDnsProxy:(id)arg1;
 - (void)setExternalIdentifier:(id)arg1;
+- (bool)setMailDomains:(id)arg1;
 - (void)setName:(id)arg1;
 - (void)setPathController:(id)arg1;
 - (void)setPayloadInfo:(id)arg1;
@@ -138,6 +141,8 @@
 - (bool)setPayloadInfoIdentityProxy:(id)arg1;
 - (bool)setPayloadInfoIdentityUserNameAndPassword:(id)arg1;
 - (bool)setProfileInfo:(id)arg1;
+- (bool)setRestrictDomains:(bool)arg1;
+- (bool)setSMBDomains:(id)arg1;
 - (void)setVPN:(id)arg1;
 - (void)syncWithKeychainInDomain:(long long)arg1;
 - (void)syncWithSystemKeychain;

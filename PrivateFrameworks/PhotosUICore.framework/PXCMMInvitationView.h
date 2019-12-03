@@ -2,40 +2,61 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXCMMInvitationView : UIView {
-    NSAttributedString * _attributedSubtitle1;
-    NSAttributedString * _attributedSubtitle2;
-    NSAttributedString * _attributedTitle;
+@interface PXCMMInvitationView : UICollectionViewCell <PXChangeObserver> {
+    <PXCMMInvitationViewDelegate> * _delegate;
     PXCMMPosterHeaderView * _headerView;
-    UIColor * _opaqueAncestorBackgroundColor;
     PXRoundedCornerOverlayView * _roundedCornerOverlayView;
-    UIFont * _subtitle1Font;
     UILabel * _subtitle1Label;
-    long long  _subtitle1TextStyle;
-    UIFont * _subtitle2Font;
     UILabel * _subtitle2Label;
-    long long  _subtitle2TextStyle;
-    UIFont * _titleFont;
     UILabel * _titleLabel;
-    long long  _titleTextStyle;
+    PXCMMInvitationViewModel * _viewModel;
 }
 
-@property (nonatomic, readonly) PXCMMPosterHeaderView *headerView;
-@property (getter=isHighlighted, nonatomic) bool highlighted;
-@property (nonatomic, copy) UIColor *opaqueAncestorBackgroundColor;
+@property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) <PXCMMInvitationViewDelegate> *delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } headerViewBounds;
+@property (nonatomic, readonly) UIView *previewView;
+@property (readonly) Class superclass;
+@property (nonatomic, retain) PXCMMInvitationViewModel *viewModel;
+
++ (struct CGSize { double x1; double x2; })posterHeaderViewSizeForSize:(struct CGSize { double x1; double x2; })arg1 scale:(double)arg2;
++ (struct CGSize { double x1; double x2; })posterImageSizeThatFits:(struct CGSize { double x1; double x2; })arg1 scale:(double)arg2;
++ (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1 viewModel:(id)arg2;
++ (id)subtitle1Color;
++ (struct UIFont { Class x1; }*)subtitle1Font;
++ (long long)subtitle1TextStyle;
++ (id)subtitle2Color;
++ (struct UIFont { Class x1; }*)subtitle2Font;
++ (long long)subtitle2TextStyle;
++ (id)titleBulletColor;
++ (struct UIFont { Class x1; }*)titleEmphasizedFont;
++ (struct UIFont { Class x1; }*)titleFont;
++ (long long)titleTextStyle;
 
 - (void).cxx_destruct;
+- (void)_contentSizeCategoryDidChange:(id)arg1;
 - (struct CGSize { double x1; double x2; })_performLayoutInWidth:(double)arg1 updateSubviewFrames:(bool)arg2;
-- (id)headerView;
+- (void)_tapGesture:(id)arg1;
+- (void)_updateHeaderView;
+- (void)_updateOpaqueAncestorBackgroundColor;
+- (bool)_updateSubtitle1;
+- (bool)_updateSubtitle2;
+- (bool)_updateTitle;
+- (id)delegate;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })headerViewBounds;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
-- (bool)isHighlighted;
 - (void)layoutSubviews;
-- (id)opaqueAncestorBackgroundColor;
-- (void)setAttributedSubtitle1:(id)arg1 withFont:(id)arg2 textStyle:(long long)arg3;
-- (void)setAttributedSubtitle2:(id)arg1 withFont:(id)arg2 textStyle:(long long)arg3;
-- (void)setAttributedTitle:(id)arg1 withFont:(id)arg2 textStyle:(long long)arg3;
-- (void)setHighlighted:(bool)arg1;
-- (void)setOpaqueAncestorBackgroundColor:(id)arg1;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void*)arg3;
+- (id)previewView;
+- (void)setDelegate:(id)arg1;
+- (void)setViewModel:(id)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
+- (bool)test_selected;
+- (id)test_subtitle1;
+- (id)test_subtitle2;
+- (id)test_title;
+- (id)viewModel;
 
 @end

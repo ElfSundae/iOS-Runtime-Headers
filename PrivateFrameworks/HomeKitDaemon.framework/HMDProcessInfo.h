@@ -5,8 +5,9 @@
 @interface HMDProcessInfo : HMFObject <HMFLogging> {
     HMDApplicationInfo * _appInfo;
     NSHashTable * _connectionProxies;
+    HMFLocationAuthorization * _locationAuthorization;
+    <HMFLocking> * _lock;
     int  _pid;
-    NSObject<OS_dispatch_queue> * _propertyQueue;
     NSArray * _runningReasons;
     unsigned long long  _state;
     bool  _viewService;
@@ -21,8 +22,8 @@
 @property (readonly, copy) NSString *description;
 @property (getter=isForegrounded, nonatomic, readonly) bool foreground;
 @property (readonly) unsigned long long hash;
+@property (readonly) HMFLocationAuthorization *locationAuthorization;
 @property (nonatomic, readonly) int pid;
-@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *propertyQueue;
 @property (nonatomic, retain) NSArray *runningReasons;
 @property (nonatomic) unsigned long long state;
 @property (readonly) Class superclass;
@@ -50,9 +51,9 @@
 - (bool)isSuspended;
 - (bool)isTerminated;
 - (bool)isViewService;
+- (id)locationAuthorization;
 - (id)logIdentifier;
 - (int)pid;
-- (id)propertyQueue;
 - (unsigned long long)proxyCount;
 - (void)removeConnectionProxy:(id)arg1;
 - (id)runningReasons;

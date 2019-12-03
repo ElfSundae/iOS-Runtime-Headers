@@ -7,27 +7,65 @@
     bool  _endsOnFwy;
     GEONameInfo * _exitNumber;
     unsigned int  _expectedTime;
-    NSMutableArray * _guidanceEvents;
     struct { 
-        unsigned int distance : 1; 
-        unsigned int expectedTime : 1; 
-        unsigned int hintFirstAnnouncementZilchIndex : 1; 
-        unsigned int junctionType : 1; 
-        unsigned int maneuverEndBasicIndex : 1; 
-        unsigned int maneuverEndZilchIndex : 1; 
-        unsigned int maneuverStartZilchIndex : 1; 
-        unsigned int maneuverType : 1; 
-        unsigned int overrideDrivingSide : 1; 
-        unsigned int overrideTransportType : 1; 
-        unsigned int stepID : 1; 
-        unsigned int endsOnFwy : 1; 
-        unsigned int maneuverLaneGuidanceSuppressed : 1; 
-        unsigned int shouldChainManeuver : 1; 
-        unsigned int stayOn : 1; 
-        unsigned int toFreeway : 1; 
-        unsigned int tollAhead : 1; 
-        unsigned int tollPrior : 1; 
-    }  _has;
+        unsigned int has_distance : 1; 
+        unsigned int has_expectedTime : 1; 
+        unsigned int has_hintFirstAnnouncementZilchIndex : 1; 
+        unsigned int has_junctionType : 1; 
+        unsigned int has_maneuverEndBasicIndex : 1; 
+        unsigned int has_maneuverEndZilchIndex : 1; 
+        unsigned int has_maneuverStartZilchIndex : 1; 
+        unsigned int has_maneuverType : 1; 
+        unsigned int has_overrideDrivingSide : 1; 
+        unsigned int has_overrideTransportType : 1; 
+        unsigned int has_stepID : 1; 
+        unsigned int has_endsOnFwy : 1; 
+        unsigned int has_maneuverLaneGuidanceSuppressed : 1; 
+        unsigned int has_shouldChainManeuver : 1; 
+        unsigned int has_stayOn : 1; 
+        unsigned int has_toFreeway : 1; 
+        unsigned int has_tollAhead : 1; 
+        unsigned int has_tollPrior : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_junctionElements : 1; 
+        unsigned int read_exitNumber : 1; 
+        unsigned int read_guidanceEvents : 1; 
+        unsigned int read_instructionSet : 1; 
+        unsigned int read_instructions : 1; 
+        unsigned int read_maneuverNames : 1; 
+        unsigned int read_notice : 1; 
+        unsigned int read_signposts : 1; 
+        unsigned int read_timeCheckpoints : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_junctionElements : 1; 
+        unsigned int wrote_exitNumber : 1; 
+        unsigned int wrote_guidanceEvents : 1; 
+        unsigned int wrote_instructionSet : 1; 
+        unsigned int wrote_instructions : 1; 
+        unsigned int wrote_maneuverNames : 1; 
+        unsigned int wrote_notice : 1; 
+        unsigned int wrote_signposts : 1; 
+        unsigned int wrote_timeCheckpoints : 1; 
+        unsigned int wrote_distance : 1; 
+        unsigned int wrote_expectedTime : 1; 
+        unsigned int wrote_hintFirstAnnouncementZilchIndex : 1; 
+        unsigned int wrote_junctionType : 1; 
+        unsigned int wrote_maneuverEndBasicIndex : 1; 
+        unsigned int wrote_maneuverEndZilchIndex : 1; 
+        unsigned int wrote_maneuverStartZilchIndex : 1; 
+        unsigned int wrote_maneuverType : 1; 
+        unsigned int wrote_overrideDrivingSide : 1; 
+        unsigned int wrote_overrideTransportType : 1; 
+        unsigned int wrote_stepID : 1; 
+        unsigned int wrote_endsOnFwy : 1; 
+        unsigned int wrote_maneuverLaneGuidanceSuppressed : 1; 
+        unsigned int wrote_shouldChainManeuver : 1; 
+        unsigned int wrote_stayOn : 1; 
+        unsigned int wrote_toFreeway : 1; 
+        unsigned int wrote_tollAhead : 1; 
+        unsigned int wrote_tollPrior : 1; 
+    }  _flags;
+    NSMutableArray * _guidanceEvents;
     int  _hintFirstAnnouncementZilchIndex;
     GEOInstructionSet * _instructionSet;
     NSString * _instructions;
@@ -44,6 +82,12 @@
     NSString * _notice;
     int  _overrideDrivingSide;
     int  _overrideTransportType;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     bool  _shouldChainManeuver;
     NSMutableArray * _signposts;
     bool  _stayOn;
@@ -52,6 +96,7 @@
     bool  _toFreeway;
     bool  _tollAhead;
     bool  _tollPrior;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic) unsigned int distance;
@@ -109,10 +154,12 @@
 @property (nonatomic) bool toFreeway;
 @property (nonatomic) bool tollAhead;
 @property (nonatomic) bool tollPrior;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 // Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
 
 + (Class)guidanceEventType;
++ (bool)isValid:(id)arg1;
 + (Class)maneuverNameType;
 + (Class)signpostType;
 
@@ -121,6 +168,19 @@
 - (int)StringAsManeuverType:(id)arg1;
 - (int)StringAsOverrideDrivingSide:(id)arg1;
 - (int)StringAsOverrideTransportType:(id)arg1;
+- (void)_addNoFlagsGuidanceEvent:(id)arg1;
+- (void)_addNoFlagsJunctionElement:(struct GEOJunctionElement { int x1; int x2; int x3; struct { unsigned int x_4_1_1 : 1; unsigned int x_4_1_2 : 1; unsigned int x_4_1_3 : 1; } x4; })arg1;
+- (void)_addNoFlagsManeuverName:(id)arg1;
+- (void)_addNoFlagsSignpost:(id)arg1;
+- (void)_readExitNumber;
+- (void)_readGuidanceEvents;
+- (void)_readInstructionSet;
+- (void)_readInstructions;
+- (void)_readJunctionElements;
+- (void)_readManeuverNames;
+- (void)_readNotice;
+- (void)_readSignposts;
+- (void)_readTimeCheckpoints;
 - (void)addGuidanceEvent:(id)arg1;
 - (void)addJunctionElement:(struct GEOJunctionElement { int x1; int x2; int x3; struct { unsigned int x_4_1_1 : 1; unsigned int x_4_1_2 : 1; unsigned int x_4_1_3 : 1; } x4; })arg1;
 - (void)addManeuverName:(id)arg1;
@@ -129,6 +189,7 @@
 - (void)clearJunctionElements;
 - (void)clearManeuverNames;
 - (void)clearSignposts;
+- (void)clearUnknownFields:(bool)arg1;
 - (id)continueInstructionForSpoken;
 - (id)continueInstructionsForSignView;
 - (void)copyTo:(id)arg1;
@@ -174,6 +235,8 @@
 - (unsigned long long)hash;
 - (int)hintFirstAnnouncementIndex;
 - (int)hintFirstAnnouncementZilchIndex;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (id)initialInstructionForSpoken;
 - (id)instructionSet;
 - (id)instructions;
@@ -208,6 +271,7 @@
 - (id)overrideTransportTypeAsString:(int)arg1;
 - (id)prepareInstructionForSpoken;
 - (id)proceedInstructionForSpoken;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)roadName;
 - (void)setDistance:(unsigned int)arg1;
@@ -266,6 +330,7 @@
 - (bool)toFreeway;
 - (bool)tollAhead;
 - (bool)tollPrior;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/Navigation.framework/Navigation

@@ -30,6 +30,7 @@
 
 - (void).cxx_destruct;
 - (id)_pendingActionWithUUID:(id)arg1;
+- (void)_performAction:(id)arg1;
 - (void)_performDelegateCallback:(id /* block */)arg1;
 - (void)_updatePendingTransactions;
 - (void)actionCompleted:(id)arg1;

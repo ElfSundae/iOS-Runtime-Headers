@@ -2,9 +2,8 @@
    Image: /System/Library/PrivateFrameworks/BridgePreferences.framework/BridgePreferences
  */
 
-@interface BPSSetupOptinViewController : BPSSetupPageViewController <BPSBuddyController, PBAutomationDocumentation> {
+@interface BPSSetupOptinViewController : BPSSetupPageViewController <BPSBuddyController> {
     UIButton * _alternateChoiceButton;
-    NSMutableDictionary * _automationBlocks;
     UILabel * _detailTextLabel;
     UILabel * _detailTextTitleLabel;
     UIButton * _learnMoreButton;
@@ -16,7 +15,6 @@
 }
 
 @property (nonatomic, retain) UIButton *alternateChoiceButton;
-@property (nonatomic, retain) NSMutableDictionary *automationBlocks;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) UILabel *detailTextLabel;
@@ -38,7 +36,6 @@
 - (id)alternateButtonTitle;
 - (id)alternateChoiceButton;
 - (void)applyConfirmedOptin:(bool)arg1;
-- (id)automationBlocks;
 - (id)detailAtrributedString;
 - (id)detailString;
 - (id)detailTextLabel;
@@ -61,7 +58,6 @@
 - (id)optinLocalizationStringsFile;
 - (id)scrollView;
 - (void)setAlternateChoiceButton:(id)arg1;
-- (void)setAutomationBlocks:(id)arg1;
 - (void)setDetailTextLabel:(id)arg1;
 - (void)setDetailTextTitleLabel:(id)arg1;
 - (void)setLearnMoreButton:(id)arg1;
@@ -77,7 +73,6 @@
 - (id)suggestedButtonTitle;
 - (id)suggestedChoiceButton;
 - (double)suggestedChoicePillDetailTextLabelVerticalOffset;
-- (void)viewDidAppear:(bool)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (bool)wantsAlternateChoicePillButton;

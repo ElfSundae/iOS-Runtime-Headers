@@ -6,7 +6,6 @@
     PKBarcodeStickerView * _barcodeView;
     long long  _bottomRightItem;
     UIView * _bottomRightItemView;
-    UIImageView * _contactlessLogoView;
     PKLinkedAppIconView * _linkedApp;
     UILabel * _logoLabel;
     bool  _showsBarcodeView;
@@ -31,6 +30,7 @@
 - (struct CGSize { double x1; double x2; })contentSize;
 - (void)createBodyContentViews;
 - (id)createContactlessLogoView;
+- (id)createExpiredLabel;
 - (void)createHeaderContentViews;
 - (void)dealloc;
 - (id)init;

@@ -10,6 +10,7 @@
 
 - (id)_init;
 - (bool)addFileToBackupUDID:(id)arg1 snapshotID:(unsigned long long)arg2 domainName:(id)arg3 relativePath:(id)arg4 fromPath:(id)arg5 error:(id*)arg6;
+- (bool)airTrafficShouldCreateAppPlaceholdersWithError:(id*)arg1;
 - (bool)allowiTunesBackup;
 - (bool)archiveLogsTo:(id)arg1 error:(id*)arg2;
 - (id)backgroundRestoreInfo;
@@ -30,6 +31,7 @@
 - (id)delegate;
 - (bool)deleteBackupUDID:(id)arg1 error:(id*)arg2;
 - (bool)deleteItemFromBackupUDID:(id)arg1 snapshotID:(unsigned long long)arg2 domainName:(id)arg3 relativePath:(id)arg4 error:(id*)arg5;
+- (id)disabledDomainInfos;
 - (bool)discountCameraRollQuota;
 - (bool)discountCameraRollQuotaForBackupUDID:(id)arg1 error:(id*)arg2;
 - (id)domainInfoForName:(id)arg1;
@@ -90,7 +92,6 @@
 - (void)setBackupEnabled:(bool)arg1 forDomainName:(id)arg2;
 - (void)setDelegate:(id)arg1;
 - (void)setRestoreQualityOfService:(long long)arg1;
-- (void)setRestoreQualityOfService:(long long)arg1 context:(id)arg2;
 - (void)setRestoreSessionWithBackupUDID:(id)arg1 snapshotUUID:(id)arg2;
 - (void)setSupportsiTunes:(bool)arg1;
 - (bool)setupBackupWithPasscode:(id)arg1 error:(id*)arg2;

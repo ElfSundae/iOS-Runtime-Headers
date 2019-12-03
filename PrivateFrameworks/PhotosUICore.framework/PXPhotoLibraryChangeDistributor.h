@@ -11,12 +11,15 @@
     NSObject<OS_dispatch_queue> * _queue;
 }
 
+@property (getter=areChangesPaused, nonatomic, readonly) bool changesPaused;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_notifyPausedStateChange;
+- (bool)areChangesPaused;
 - (id)beginPausingChangesWithTimeout:(double)arg1;
 - (void)dealloc;
 - (void)distributeChangeOnMainQueue:(id)arg1;

@@ -9,6 +9,7 @@
 @property (nonatomic) long long desiredArticlesCount;
 
 - (id)_filterTrendingHeadlines:(id)arg1;
+- (void)_performOperation;
 - (long long)desiredArticlesCount;
 - (void)performOperation;
 - (void)setDesiredArticlesCount:(long long)arg1;

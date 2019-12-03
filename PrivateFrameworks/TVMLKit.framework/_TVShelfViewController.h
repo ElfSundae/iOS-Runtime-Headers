@@ -38,9 +38,6 @@
 - (void).cxx_destruct;
 - (void)_delayedUpdatePreview;
 - (void)_didSettleOnItemAtIndexPath:(id)arg1;
-- (void)_ensureScrollViewSnaps;
-- (id)_findSnappingItemFromContentOffset:(inout struct CGPoint { double x1; double x2; }*)arg1 withVelocity:(struct CGPoint { double x1; double x2; })arg2;
-- (void)_snapTargetContentOffset:(inout struct CGPoint { double x1; double x2; }*)arg1 toItemIndexPath:(id)arg2 atItemOffset:(struct CGPoint { double x1; double x2; })arg3;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
 - (struct CGSize { double x1; double x2; })collectionView:(id)arg1 layout:(id)arg2 referenceSizeForHeaderInSection:(long long)arg3;
@@ -58,7 +55,6 @@
 - (id)preferredFocusEnvironments;
 - (unsigned long long)preferredScrollPosition;
 - (long long)prominentSectionIndex;
-- (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint { double x1; double x2; })arg2 targetContentOffset:(inout struct CGPoint { double x1; double x2; }*)arg3;
 - (void)setCentered:(bool)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setHideHeader:(bool)arg1;

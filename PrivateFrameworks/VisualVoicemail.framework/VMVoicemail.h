@@ -18,22 +18,28 @@
     NSURL * _transcriptionURL;
 }
 
+@property (getter=isBlocked, nonatomic, readonly) bool blocked;
 @property (getter=isBlocked, nonatomic) bool blocked;
 @property (nonatomic, copy) NSString *callbackDestinationID;
 @property (nonatomic, copy) NSString *callbackISOCountryCode;
 @property (nonatomic, readonly) NSString *callbackNumber;
 @property (nonatomic, readonly, copy) NSData *data;
+@property (getter=isDataAvailable, nonatomic, readonly) bool dataAvailable;
 @property (getter=isDataAvailable, nonatomic) bool dataAvailable;
 @property (nonatomic, readonly) NSString *dataPath;
 @property (nonatomic, retain) NSURL *dataURL;
 @property (nonatomic, retain) NSDate *date;
+@property (getter=isDeleted, nonatomic, readonly) bool deleted;
 @property (getter=isDeleted, nonatomic) bool deleted;
+@property (getter=isDetached, nonatomic, readonly) bool detached;
 @property (getter=isDetached, nonatomic) bool detached;
+@property (getter=isDownloading, nonatomic, readonly) bool downloading;
 @property (getter=isDownloading, nonatomic) bool downloading;
 @property (nonatomic) double duration;
 @property (nonatomic) unsigned long long flags;
 @property (nonatomic, readonly) bool hasCallbackNumber;
 @property (nonatomic) unsigned long long identifier;
+@property (nonatomic) long long mailboxType;
 @property (getter=isRead, nonatomic) bool read;
 @property (nonatomic, copy) NSString *receiverDestinationID;
 @property (nonatomic, copy) NSString *receiverISOCountryCode;
@@ -41,15 +47,19 @@
 @property (nonatomic, readonly) NSString *sender;
 @property (nonatomic, copy) NSString *senderDestinationID;
 @property (nonatomic, copy) NSString *senderISOCountryCode;
+@property (getter=isTemporary, nonatomic, readonly) bool temporary;
 @property (getter=isTemporary, nonatomic) bool temporary;
 @property (nonatomic, readonly) VMVoicemailTranscript *transcript;
 @property (getter=isTranscriptionAvailable, nonatomic) bool transcriptionAvailable;
 @property (getter=isTranscriptionRated, nonatomic, readonly) bool transcriptionRated;
 @property (nonatomic, readonly) unsigned long long transcriptionState;
 @property (nonatomic, retain) NSURL *transcriptionURL;
+@property (getter=isTrashed, nonatomic, readonly) bool trashed;
 @property (getter=isTrashed, nonatomic) bool trashed;
 @property (getter=isUnread, nonatomic, readonly) bool unread;
 
++ (unsigned long long)flagsByApplyingMailboxType:(long long)arg1 toFlags:(unsigned long long)arg2;
++ (long long)mailboxTypeForFlags:(unsigned long long)arg1;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -97,6 +107,8 @@
 - (bool)isTranscriptionRated;
 - (bool)isTrashed;
 - (bool)isUnread;
+- (long long)mailboxType;
+- (id)mailboxTypeDescription;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (id)receiverDestinationID;
 - (id)receiverISOCountryCode;
@@ -117,6 +129,7 @@
 - (void)setFlag:(unsigned long long)arg1 enabled:(bool)arg2;
 - (void)setFlags:(unsigned long long)arg1;
 - (void)setIdentifier:(unsigned long long)arg1;
+- (void)setMailboxType:(long long)arg1;
 - (void)setRead:(bool)arg1;
 - (void)setReceiverDestinationID:(id)arg1;
 - (void)setReceiverISOCountryCode:(id)arg1;

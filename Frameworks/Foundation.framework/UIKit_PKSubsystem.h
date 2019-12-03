@@ -16,9 +16,11 @@
 @property (readonly) Class superclass;
 
 + (id)initForPlugInKit;
++ (id)initForPlugInKitWithOptions:(id)arg1;
 + (id)sharedInstance;
 
 - (void)beginUsing:(id)arg1 withBundle:(id)arg2;
+- (void)dealloc;
 - (void)endUsing:(id)arg1;
 - (id)infoDictionary;
 - (bool)isPlugInKitProcess;

@@ -17,10 +17,14 @@
     NSArray * _certificateChain;
     NSDictionary * _enterpriseProfile;
     bool  _hidden;
+    NSString * _hotspotDeviceIdentifier;
+    bool  _instantHotspotJoin;
+    bool  _isInSaveDataMode;
     NSDate * _lastAssociationDate;
     bool  _managed;
     NSString * _originatorBundleIdentifier;
     NSString * _password;
+    bool  _personalHotspot;
     NSString * _previousPassword;
     NSDictionary * _scanAttributes;
     long long  _securityMode;
@@ -39,16 +43,19 @@
 @property (nonatomic, retain) NSArray *certificateChain;
 @property (nonatomic, retain) NSDictionary *enterpriseProfile;
 @property (getter=isHidden, nonatomic) bool hidden;
+@property (nonatomic, retain) NSString *hotspotDeviceIdentifier;
+@property (getter=isInstantHotspotJoin, nonatomic) bool instantHotspotJoin;
+@property (getter=isInSaveDataMode, nonatomic) bool isInSaveDataMode;
 @property (nonatomic, retain) NSDate *lastAssociationDate;
 @property (getter=isManaged, nonatomic) bool managed;
 @property (nonatomic, copy) NSString *originatorBundleIdentifier;
-@property (nonatomic, retain) NSString *password;
+@property (nonatomic, copy) NSString *password;
 @property (nonatomic, retain) NSString *previousPassword;
 @property (nonatomic, retain) NSDictionary *scanAttributes;
 @property (nonatomic) long long securityMode;
 @property (nonatomic, retain) NSString *ssid;
 @property (nonatomic) bool userProvidedPassword;
-@property (nonatomic, retain) NSString *username;
+@property (nonatomic, copy) NSString *username;
 
 + (id)mutableProfileForNetwork:(id)arg1;
 
@@ -58,7 +65,9 @@
 - (struct __SecIdentity { }*)TLSIdentity;
 - (id)bssid;
 - (id)certificateChain;
+- (void)dealloc;
 - (id)enterpriseProfile;
+- (id)hotspotDeviceIdentifier;
 - (id)initWithNetwork:(id)arg1;
 - (bool)isAdhoc;
 - (bool)isAutoJoinEnabled;
@@ -68,7 +77,10 @@
 - (bool)isHS20Network;
 - (bool)isHS20NetworkProvisioned;
 - (bool)isHidden;
+- (bool)isInSaveDataMode;
+- (bool)isInstantHotspotJoin;
 - (bool)isManaged;
+- (bool)isPersonalHotspot;
 - (id)lastAssociationDate;
 - (id)originatorBundleIdentifier;
 - (id)password;
@@ -85,6 +97,9 @@
 - (void)setHS20Network:(bool)arg1;
 - (void)setHS20NetworkProvisioned:(bool)arg1;
 - (void)setHidden:(bool)arg1;
+- (void)setHotspotDeviceIdentifier:(id)arg1;
+- (void)setInstantHotspotJoin:(bool)arg1;
+- (void)setIsInSaveDataMode:(bool)arg1;
 - (void)setLastAssociationDate:(id)arg1;
 - (void)setManaged:(bool)arg1;
 - (void)setOriginatorBundleIdentifier:(id)arg1;

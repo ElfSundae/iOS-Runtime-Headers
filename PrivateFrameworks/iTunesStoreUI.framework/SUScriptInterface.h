@@ -37,6 +37,7 @@
 @property (readonly) NSString *actionTypeDismissWindows;
 @property (readonly) NSString *actionTypeReturnToLibrary;
 @property (readonly) SUScriptAppleAccountStore *appleAccountStore;
+@property (getter=isApplePayAvailable, readonly) id applePayAvailable;
 @property (readonly) SUScriptApplication *application;
 @property (readonly) id applicationAccessibilityEnabled;
 @property (readonly) SUScriptKeyValueStore *applicationLocalStorage;
@@ -56,6 +57,7 @@
 @property (readonly) SUScriptKeyValueStore *deviceLocalStorage;
 @property (readonly) NSArray *deviceOffers;
 @property (readonly) NSString *deviceSerialNumber;
+@property (getter=isFinanceInterruption, readonly) id financeInterruption;
 @property (readonly) id globalRootObject;
 @property (readonly) NSString *gsToken;
 @property (readonly) unsigned long long hash;
@@ -93,6 +95,7 @@
 @property (readonly) NSString *tidState;
 @property (readonly) NSString *userAgent;
 @property (readonly) SUScriptViewController *viewController;
+@property (getter=isWalletAvailable, readonly) id walletAvailable;
 @property (retain) WebFrame *webFrame;
 @property (readonly) SUScriptWindow *window;
 
@@ -101,6 +104,7 @@
 + (id)webScriptNameForKeyName:(id)arg1;
 + (id)webScriptNameForSelector:(SEL)arg1;
 
+- (void).cxx_destruct;
 - (id)DOMElementWithElement:(id)arg1;
 - (void)_accessibilityPostLayoutChange;
 - (id)_className;
@@ -156,6 +160,7 @@
 - (id)cookieForDefaultURL;
 - (struct OpaqueJSContext { }*)copyJavaScriptContext;
 - (id)creditCardReaderAvailable;
+- (id)currentAttestationVersion;
 - (void)dealloc;
 - (void)deallocAuthentication;
 - (void)deallocCarrierBundlingController;
@@ -199,8 +204,11 @@
 - (id)init;
 - (void)initAuthentication;
 - (id)installedSoftwareApplications;
+- (id)isApplePayAvailable;
 - (bool)isExplicitContentDisabled;
+- (id)isFinanceInterruption;
 - (bool)isRunningTest;
+- (id)isWalletAvailable;
 - (bool)launchedToTest;
 - (void)log:(id)arg1;
 - (id)loggingEnabled;
@@ -253,6 +261,7 @@
 - (id)makeXMLHTTPStoreRequest;
 - (id)mediaLibrary;
 - (id)metricsController;
+- (id)minimumAttestationVersionForAction:(unsigned long long)arg1;
 - (id)navigationBar;
 - (id)navigationSimulator;
 - (void)openCreditCardReaderWithCompletionFunction:(id)arg1;
@@ -337,6 +346,7 @@
 - (void)setTidHeaders:(id)arg1;
 - (void)setTidState:(id)arg1;
 - (void)setUserAgent:(id)arg1;
+- (void)setWalletAvailable:(id)arg1;
 - (void)setWebFrame:(id)arg1;
 - (void)setWindow:(id)arg1;
 - (id)shouldDisplayPrivacyLinkWithIdentifier:(id)arg1;

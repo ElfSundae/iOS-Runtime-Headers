@@ -36,12 +36,13 @@
 + (void)_deepCollectEntitiesInArray:(id)arg1 entity:(id)arg2;
 + (id)_modelPathsFromBundles:(id)arg1;
 + (id)_newModelFromOptimizedEncoding:(id)arg1 error:(id*)arg2;
-+ (void)initialize;
 + (id)mergedModelFromBundles:(id)arg1;
 + (id)mergedModelFromBundles:(id)arg1 forStoreMetadata:(id)arg2;
 + (id)modelByMergingModels:(id)arg1;
 + (id)modelByMergingModels:(id)arg1 forStoreMetadata:(id)arg2;
 + (bool)supportsSecureCoding;
++ (bool)versionHashes:(id)arg1 compatibleWithStoreMetadata:(id)arg2;
++ (id)versionsHashesForModelAtURL:(id)arg1 error:(id*)arg2;
 
 - (void)_addEntities:(id)arg1 toConfiguration:(id)arg2;
 - (void)_addEntity:(id)arg1;
@@ -51,6 +52,8 @@
 - (id)_entitiesByVersionHash;
 - (id)_entityForName:(id)arg1;
 - (id)_entityVersionHashesByNameInStyle:(unsigned long long)arg1;
+- (id)_entityVersionHashesDigest;
+- (id)_entityVersionHashesDigestFrom:(id)arg1;
 - (void)_finalizeIndexes;
 - (void)_flattenProperties;
 - (bool)_hasEntityWithUniquenessConstraints;
@@ -78,10 +81,12 @@
 - (id)_sortedEntitiesForConfiguration:(id)arg1;
 - (void)_stripForMigration;
 - (void)_throwIfNotEditable;
+- (void)_traverseTombstonesAndMark:(bool)arg1;
+- (void)_unmarkTombstones;
 - (id)_versionIdentifiersAsArray;
 - (id)configurations;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

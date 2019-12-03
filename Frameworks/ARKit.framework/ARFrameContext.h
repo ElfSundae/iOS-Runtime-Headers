@@ -5,9 +5,12 @@
 @interface ARFrameContext : NSObject <ARResultDataContext> {
     NSMutableArray * _anchorsToAdd;
     NSMutableArray * _anchorsToRemove;
+    NSMutableSet * _collaborationData;
     bool  _didRelocalize;
     unsigned long long  _frameDebugOptions;
     ARImageData * _imageData;
+    ARLocationData * _locationData;
+    ARDeviceOrientationData * _orientationData;
     struct { 
         /* Warning: Unrecognized filer type: ']' using 'void*' */ void*columns[4]; 
     }  _relocalizationDeltaTransform;
@@ -23,12 +26,15 @@
     ARWorldMap * _worldMap;
 }
 
+@property (nonatomic, retain) NSMutableSet *collaborationData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) bool didRelocalize;
 @property (nonatomic) unsigned long long frameDebugOptions;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) ARImageData *imageData;
+@property (nonatomic, retain) ARLocationData *locationData;
+@property (nonatomic, retain) ARDeviceOrientationData *orientationData;
 @property (nonatomic) struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; } relocalizationDeltaTransform;
 @property (nonatomic) struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; } sessionTransform;
 @property (nonatomic, readonly) bool sessionTransformReset;
@@ -46,9 +52,13 @@
 - (id)anchorsToRemove;
 - (long long)cameraPosition;
 - (void)clearAddedAnchors;
+- (id)collaborationData;
 - (bool)didRelocalize;
 - (unsigned long long)frameDebugOptions;
 - (id)imageData;
+- (id)init;
+- (id)locationData;
+- (id)orientationData;
 - (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })relocalizationDeltaTransform;
 - (void)removeAnchor:(id)arg1;
 - (void)resetSessionTransform;
@@ -60,9 +70,12 @@
 - (bool)sessionTransformShouldResumeCameraHeading;
 - (bool)sessionTransformShouldResumeCameraPosition;
 - (bool)sessionTransformUpdated;
+- (void)setCollaborationData:(id)arg1;
 - (void)setDidRelocalize:(bool)arg1;
 - (void)setFrameDebugOptions:(unsigned long long)arg1;
 - (void)setImageData:(id)arg1;
+- (void)setLocationData:(id)arg1;
+- (void)setOrientationData:(id)arg1;
 - (void)setRelocalizationDeltaTransform:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })arg1;
 - (void)setSessionTransform:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })arg1;
 - (void)setWorldAlignment:(long long)arg1;

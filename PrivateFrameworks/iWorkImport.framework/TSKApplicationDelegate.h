@@ -43,6 +43,7 @@
 - (bool)isCanvasFullScreen;
 - (bool)isInBackground;
 - (bool)openURL:(id)arg1;
+- (bool)openURL:(id)arg1 sourceDocumentRoot:(id)arg2;
 - (bool)performanceModeEnabled;
 - (id)previewImageForType:(id)arg1;
 - (void)setCompatibilityDelegate:(id)arg1;

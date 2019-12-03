@@ -2,12 +2,16 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface UITabBarItem : UIBarItem <UISpringLoadedInteractionSupporting> {
+@interface UITabBarItem : UIBarItem <_UIBarAppearanceChangeObserver> {
     long long  __barMetrics;
     long long  __imageStyle;
     UIColor * __tintColor;
     SEL  _action;
     _UITabBarItemAppearanceStorage * _appearanceStorage;
+    struct UIOffset { 
+        double horizontal; 
+        double vertical; 
+    }  _badgeOffset;
     NSString * _badgeValue;
     struct UIEdgeInsets { 
         double top; 
@@ -27,6 +31,7 @@
     UIImage * _selectedImage;
     UIImage * _selectedTemplateImage;
     bool  _springLoaded;
+    UITabBarAppearance * _standardAppearance;
     struct { 
         unsigned int enabled : 1; 
         unsigned int style : 3; 
@@ -48,12 +53,15 @@
 @property (getter=_isSelected, setter=_setSelected:, nonatomic) bool _selected;
 @property (setter=_setTintColor:, nonatomic, retain) UIColor *_tintColor;
 @property (nonatomic, copy) UIColor *badgeColor;
+@property (nonatomic) struct UIOffset { double x1; double x2; } badgeOffset;
 @property (nonatomic, copy) NSString *badgeValue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) struct UIOffset { double x1; double x2; } landscapePhoneBadgeOffset;
+@property (nonatomic, retain) UIImage *landscapeSelectedImagePhone;
 @property (nonatomic, retain) UIImage *selectedImage;
-@property (getter=isSpringLoaded, nonatomic) bool springLoaded;
+@property (nonatomic, copy) UITabBarAppearance *standardAppearance;
 @property (readonly) Class superclass;
 @property (nonatomic) struct UIOffset { double x1; double x2; } titlePositionAdjustment;
 
@@ -64,7 +72,6 @@
 - (void).cxx_destruct;
 - (long long)_barMetrics;
 - (id)_createViewForTabBar:(id)arg1 asProxyView:(bool)arg2;
-- (id)_imageForState:(unsigned long long)arg1 metrics:(long long)arg2 position:(long long)arg3 type:(long long)arg4;
 - (long long)_imageStyle;
 - (id)_internalLandscapeSelectedImagePhone;
 - (id)_internalLandscapeTemplateImage;
@@ -86,15 +93,15 @@
 - (void)_setTitleTextAttributeValue:(id)arg1 forAttributeKey:(id)arg2 state:(unsigned long long)arg3;
 - (void)_showSelectedIndicator:(bool)arg1 changeSelection:(bool)arg2;
 - (id)_tintColor;
-- (void)_updateButtonForTintColor:(id)arg1 selected:(bool)arg2;
-- (id)_updateImageWithTintColor:(id)arg1 isSelected:(bool)arg2 getImageOffset:(struct UIOffset { double x1; double x2; }*)arg3;
 - (void)_updateToMatchCurrentState;
 - (void)_updateView;
 - (void)_updateViewAndPositionItems:(bool)arg1;
 - (void)_updateViewBadge;
 - (SEL)action;
 - (bool)animatedBadge;
+- (void)appearance:(id)arg1 categoriesChanged:(long long)arg2;
 - (id)badgeColor;
+- (struct UIOffset { double x1; double x2; })badgeOffset;
 - (id)badgeTextAttributesForState:(unsigned long long)arg1;
 - (id)badgeValue;
 - (id)description;
@@ -114,6 +121,7 @@
 - (bool)isSystemItem;
 - (id)landscapeImagePhone;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })landscapeImagePhoneInsets;
+- (struct UIOffset { double x1; double x2; })landscapePhoneBadgeOffset;
 - (id)landscapeSelectedImagePhone;
 - (id)largeContentSizeImage;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })largeContentSizeImageInsets;
@@ -122,6 +130,7 @@
 - (void)setAction:(SEL)arg1;
 - (void)setAnimatedBadge:(bool)arg1;
 - (void)setBadgeColor:(id)arg1;
+- (void)setBadgeOffset:(struct UIOffset { double x1; double x2; })arg1;
 - (void)setBadgeTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (void)setBadgeValue:(id)arg1;
 - (void)setEnabled:(bool)arg1;
@@ -130,17 +139,20 @@
 - (void)setImageInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setLandscapeImagePhone:(id)arg1;
 - (void)setLandscapeImagePhoneInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
+- (void)setLandscapePhoneBadgeOffset:(struct UIOffset { double x1; double x2; })arg1;
 - (void)setLandscapeSelectedImagePhone:(id)arg1;
 - (void)setLargeContentSizeImage:(id)arg1;
 - (void)setLargeContentSizeImageInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setSelectedImage:(id)arg1;
 - (void)setSpringLoaded:(bool)arg1;
+- (void)setStandardAppearance:(id)arg1;
 - (void)setTarget:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (void)setTitlePositionAdjustment:(struct UIOffset { double x1; double x2; })arg1;
 - (void)setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (void)setUnselectedImage:(id)arg1;
 - (void)setView:(id)arg1;
+- (id)standardAppearance;
 - (long long)systemItem;
 - (id)target;
 - (id)title;
@@ -148,6 +160,10 @@
 - (id)titleTextAttributesForState:(unsigned long long)arg1;
 - (id)unselectedImage;
 - (id)view;
+
+// Image: /System/Library/PrivateFrameworks/HealthToolbox.framework/HealthToolbox
+
+- (void)wd_setBadge:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/iTunesStoreUI.framework/iTunesStoreUI
 

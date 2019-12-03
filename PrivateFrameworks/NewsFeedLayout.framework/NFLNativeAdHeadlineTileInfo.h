@@ -6,6 +6,7 @@
 
 - (unsigned long long)bookmarkOffsetType;
 - (id)feedTileInfoForBookmarking;
+- (bool)isSelectable;
 - (bool)pageable;
 - (unsigned long long)tileInfoType;
 - (id)updatedTileInfoWithNewHeadline:(id)arg1;

@@ -5,18 +5,18 @@
 
 @required
 
-- (NSString *)albumTextForNowPlayingController:(MCDNowPlayingViewController *)arg1;
-- (NSString *)artistTextForNowPlayingController:(MCDNowPlayingViewController *)arg1;
-- (UIImage *)backgroundArtForNowPlayingController:(MCDNowPlayingViewController *)arg1;
-- (struct { double x1; double x2; double x3; double x4; double x5; float x6; float x7; bool x8; bool x9; })durationSnapshotForNowPlayingViewController:(MCDNowPlayingViewController *)arg1;
-- (bool)nowPlayingViewControllerIsPlaying:(MCDNowPlayingViewController *)arg1;
-- (bool)nowPlayingViewControllerIsShowingExplicitTrack:(MCDNowPlayingViewController *)arg1;
-- (NSString *)titleForNowPlayingController:(MCDNowPlayingViewController *)arg1;
+- (NSString *)albumTextForNowPlayingController:(_MCDNowPlayingViewController *)arg1;
+- (NSString *)artistTextForNowPlayingController:(_MCDNowPlayingViewController *)arg1;
+- (UIImage *)backgroundArtForNowPlayingController:(_MCDNowPlayingViewController *)arg1;
+- (struct { double x1; double x2; double x3; double x4; double x5; float x6; float x7; bool x8; bool x9; })durationSnapshotForNowPlayingViewController:(_MCDNowPlayingViewController *)arg1;
+- (bool)nowPlayingViewControllerIsPlaying:(_MCDNowPlayingViewController *)arg1;
+- (bool)nowPlayingViewControllerIsShowingExplicitTrack:(_MCDNowPlayingViewController *)arg1;
+- (NSString *)titleForNowPlayingController:(_MCDNowPlayingViewController *)arg1;
 
 @optional
 
-- (bool)likedForNowPlayingViewController:(MCDNowPlayingViewController *)arg1;
-- (long long)repeatTypeForNowPlayingViewController:(MCDNowPlayingViewController *)arg1;
-- (long long)shuffleTypeForNowPlayingViewController:(MCDNowPlayingViewController *)arg1;
+- (bool)likedForNowPlayingViewController:(_MCDNowPlayingViewController *)arg1;
+- (long long)repeatTypeForNowPlayingViewController:(_MCDNowPlayingViewController *)arg1;
+- (long long)shuffleTypeForNowPlayingViewController:(_MCDNowPlayingViewController *)arg1;
 
 @end

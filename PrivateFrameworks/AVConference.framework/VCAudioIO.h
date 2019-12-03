@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/AVConference.framework/AVConference
  */
 
-@interface VCAudioIO : NSObject <VCAudioIOControllerDelegate, VCAudioIOControllerSink, VCAudioIOControllerSource> {
+@interface VCAudioIO : NSObject <VCAudioIOControllerDelegate> {
     <VCAudioIOControllerControl> * _audioIOController;
     struct AudioStreamBasicDescription { 
         double mSampleRate; 
@@ -32,29 +32,40 @@
     id  _delegate;
     bool  _isControllerAudioFormatValid;
     bool  _isControllerReset;
-    bool  _isConverterNeeded;
     bool  _isGKVoiceChat;
     bool  _isMuted;
-    <VCAudioIODelegate><VCAudioIOSource><VCAudioIOSink> * _loadedDelegate;
-    unsigned int  _pullAudioSamplesCount;
     struct _VCAudioEndpointData { 
         struct SoundDec_t {} *converter; 
+        bool isConverterNeeded; 
         struct opaqueVCAudioBufferList {} *converterBuffer; 
         bool isLastHostTimeValid; 
         double lastHostTime; 
         unsigned int lastTimestamp; 
         unsigned int timestampOffset; 
         bool controllerChanged; 
+        bool isMuted; 
+        unsigned int framesProcessed; 
+        <VCAudioIOSink><VCAudioIOSource> *delegate; 
+        int (*clientCallback)(); 
+        void *clientContext; 
     }  _sinkData;
+    id  _sinkDelegate;
     struct _VCAudioEndpointData { 
         struct SoundDec_t {} *converter; 
+        bool isConverterNeeded; 
         struct opaqueVCAudioBufferList {} *converterBuffer; 
         bool isLastHostTimeValid; 
         double lastHostTime; 
         unsigned int lastTimestamp; 
         unsigned int timestampOffset; 
         bool controllerChanged; 
+        bool isMuted; 
+        unsigned int framesProcessed; 
+        <VCAudioIOSink><VCAudioIOSource> *delegate; 
+        int (*clientCallback)(); 
+        void *clientContext; 
     }  _sourceData;
+    id  _sourceDelegate;
     id /* block */  _startCompletionBlock;
     unsigned int  _state;
     struct _opaque_pthread_mutex_t { 
@@ -82,7 +93,6 @@
 + (id)controllerForDeviceRole:(int)arg1;
 
 - (struct AudioStreamBasicDescription { double x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; })clientAudioFormat;
-- (unsigned int)computeTimestampForControllerTime:(const struct _VCAudioIOControllerTime { unsigned int x1; unsigned long long x2; }*)arg1 hostTime:(double)arg2 endpoint:(struct _VCAudioEndpointData { struct SoundDec_t {} *x1; struct opaqueVCAudioBufferList {} *x2; bool x3; double x4; unsigned int x5; unsigned int x6; bool x7; }*)arg3;
 - (struct AudioStreamBasicDescription { double x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; })controllerFormat;
 - (void)controllerFormatChanged:(struct AudioStreamBasicDescription { double x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; })arg1;
 - (bool)createConverterForSource:(bool)arg1 error:(id*)arg2;
@@ -92,16 +102,15 @@
 - (void)didStart:(bool)arg1 error:(id)arg2;
 - (void)didStop:(bool)arg1 error:(id)arg2;
 - (void)didSuspend;
+- (void)didUpdateBasebandCodec:(const struct _VCRemoteCodecInfo { unsigned int x1; double x2; }*)arg1;
 - (unsigned char)direction;
 - (void)forceCleanup;
-- (id)initWithOperatingMode:(int)arg1 deviceRole:(int)arg2 direction:(unsigned char)arg3 allowAudioRecording:(bool)arg4 delegate:(id)arg5 clientPid:(int)arg6;
+- (id)initWithConfiguration:(struct _VCAudioIOInitConfiguration { int x1; int x2; unsigned char x3; bool x4; id x5; int x6; id x7; int (*x8)(); void *x9; id x10; int (*x11)(); void *x12; }*)arg1;
 - (bool)isGKVoiceChat;
 - (bool)isInputMeteringEnabled;
 - (bool)isMuted;
 - (bool)isOutputMeteringEnabled;
-- (void)pullAudioSamples:(struct opaqueVCAudioBufferList { }*)arg1 controllerTime:(const struct _VCAudioIOControllerTime { unsigned int x1; unsigned long long x2; }*)arg2;
 - (unsigned int)pullAudioSamplesCount;
-- (void)pushAudioSamples:(struct opaqueVCAudioBufferList { }*)arg1 controllerTime:(const struct _VCAudioIOControllerTime { unsigned int x1; unsigned long long x2; }*)arg2;
 - (bool)reconfigureWithOperatingMode:(int)arg1 deviceRole:(int)arg2 direction:(unsigned char)arg3 allowAudioRecording:(bool)arg4;
 - (void)releaseConverters;
 - (unsigned int)samplesPerFrame;
@@ -110,10 +119,10 @@
 - (void)setFarEndVersionInfo:(struct VoiceIOFarEndVersionInfo { unsigned char x1[64]; unsigned char x2[64]; unsigned int x3; }*)arg1;
 - (void)setInputMeteringEnabled:(bool)arg1;
 - (void)setIsGKVoiceChat:(bool)arg1;
-- (void)setMute:(bool)arg1;
 - (void)setMuted:(bool)arg1;
 - (void)setOutputMeteringEnabled:(bool)arg1;
 - (void)setRemoteCodecType:(unsigned int)arg1 sampleRate:(double)arg2;
+- (void)spatialAudioSourceIDChanged:(unsigned long long)arg1;
 - (void)startWithCompletionHandler:(id /* block */)arg1;
 - (unsigned int)state;
 - (void)stopWithCompletionHandler:(id /* block */)arg1;

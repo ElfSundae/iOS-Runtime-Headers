@@ -14,10 +14,10 @@
     PXUpdater * _updater;
 }
 
-@property (nonatomic, readonly) const struct __CFString { }*accessoryButtonEventTrackerKey;
 @property (nonatomic, readonly) NSString *accessoryButtonTitle;
 @property (nonatomic, readonly) unsigned long long accessoryButtonType;
 @property (nonatomic) <PXMessagesCMMSuggestionGadgetActionDelegate> *actionDelegate;
+@property (nonatomic, readonly) Class collectionViewItemClass;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <PXGadgetDelegate> *delegate;
 @property (readonly, copy) NSString *description;

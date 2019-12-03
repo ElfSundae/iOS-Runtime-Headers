@@ -4,8 +4,8 @@
 
 @interface GEOPlaceDataAmendment : PBCodable <NSCopying> {
     struct { 
-        unsigned int suppressSiriRating : 1; 
-    }  _has;
+        unsigned int has_suppressSiriRating : 1; 
+    }  _flags;
     bool  _suppressSiriRating;
     PBUnknownFields * _unknownFields;
 }
@@ -14,7 +14,10 @@
 @property (nonatomic) bool suppressSiriRating;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -23,6 +26,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasSuppressSiriRating:(bool)arg1;
 - (void)setSuppressSiriRating:(bool)arg1;

@@ -7,10 +7,10 @@
     bool  mIsEscher;
 }
 
+- (void).cxx_destruct;
 - (int)adjustValueAtIndex:(unsigned int)arg1;
 - (unsigned long long)adjustValueCount;
 - (id)adjustValues;
-- (void)dealloc;
 - (id)description;
 - (id)equivalentCustomGeometry;
 - (bool)hasAdjustValueAtIndex:(unsigned int)arg1;

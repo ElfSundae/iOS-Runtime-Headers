@@ -3,20 +3,20 @@
  */
 
 @interface _ExplorerDotLayer : CATransformLayer {
-    CALayer * _contentLayer;
-    CALayer * _lidLayer;
-    CAGradientLayer * _overlayLayer;
+    CALayer * _connectivityDotBackingLayer;
+    CALayer * _connectivityDotLayer;
+    CALayer * _noServicePillLayer;
 }
 
-@property (nonatomic, readonly) CALayer *contentLayer;
-@property (nonatomic, readonly) CALayer *lidLayer;
-@property (nonatomic, readonly) CAGradientLayer *overlayLayer;
+@property (nonatomic, readonly) CALayer *connectivityDotBackingLayer;
+@property (nonatomic, readonly) CALayer *connectivityDotLayer;
+@property (nonatomic, readonly) CALayer *noServicePillLayer;
 
 - (void).cxx_destruct;
-- (id)contentLayer;
+- (id)connectivityDotBackingLayer;
+- (id)connectivityDotLayer;
 - (id)init;
 - (void)layoutSublayers;
-- (id)lidLayer;
-- (id)overlayLayer;
+- (id)noServicePillLayer;
 
 @end

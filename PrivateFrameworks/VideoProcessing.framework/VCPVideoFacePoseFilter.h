@@ -3,10 +3,10 @@
  */
 
 @interface VCPVideoFacePoseFilter : NSObject {
-    struct Matrix<float, 12, 12> { 
+    struct Matrix<float, 12, 12, false> { 
         float m_data[144]; 
     }  _previousCovar;
-    struct Matrix<float, 12, 1> { 
+    struct Matrix<float, 12, 1, false> { 
         float m_data[12]; 
     }  _previousState;
     bool  _previousStateIsValid;

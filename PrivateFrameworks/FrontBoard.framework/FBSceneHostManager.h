@@ -4,8 +4,6 @@
 
 @interface FBSceneHostManager : NSObject <BSDescriptionProviding> {
     FBSceneHostWrapperView * _activeWrapperView;
-    long long  _contentState;
-    bool  _contentStateIsChanging;
     UIColor * _defaultBackgroundColorWhileHosting;
     UIColor * _defaultBackgroundColorWhileNotHosting;
     bool  _defaultClippingDisabled;
@@ -36,7 +34,6 @@
     FBScene * _scene;
 }
 
-@property (nonatomic, readonly) long long contentState;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, copy) UIColor *defaultBackgroundColorWhileHosting;
 @property (nonatomic, copy) UIColor *defaultBackgroundColorWhileNotHosting;
@@ -60,13 +57,11 @@
 - (id)_hostViewForRequester:(id)arg1;
 - (id)_hostViewForRequester:(id)arg1 enableAndOrderFront:(bool)arg2;
 - (id)_overrideRequesterIfNecessary:(id)arg1;
-- (void)_setContentState:(long long)arg1;
 - (id)_snapshotContextForFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 excludedContextIDs:(id)arg2 opaque:(bool)arg3 outTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; }*)arg4;
 - (id)_snapshotContextForFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 excludedLayers:(id)arg2 opaque:(bool)arg3;
 - (void)_updateActiveHostRequester;
 - (id)_wrapperViewForRequester:(id)arg1;
 - (void)addObserver:(id)arg1;
-- (long long)contentState;
 - (void)dealloc;
 - (id)defaultBackgroundColorWhileHosting;
 - (id)defaultBackgroundColorWhileNotHosting;
@@ -106,13 +101,9 @@
 - (void)setIdentifier:(id)arg1;
 - (void)setLayer:(id)arg1 alpha:(double)arg2 forRequester:(id)arg3;
 - (void)setLayer:(id)arg1 hidden:(bool)arg2 forRequester:(id)arg3;
-- (struct CGImage { }*)snapshotCGImageRefForFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 excludingContexts:(id)arg2 opaque:(bool)arg3 outTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; }*)arg4;
 - (id)snapshotContextForRequester:(id)arg1;
-- (struct __IOSurface { }*)snapshotIOSurfaceForFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 excludingContexts:(id)arg2 opaque:(bool)arg3 outTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; }*)arg4;
-- (id)snapshotUIImageForFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 excludingContexts:(id)arg2 opaque:(bool)arg3 outTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; }*)arg4;
 - (id)snapshotViewForSnapshot:(id)arg1;
 - (id)snapshotViewWithContext:(id)arg1;
-- (id)snapshotViewWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 excludingContexts:(id)arg2 opaque:(bool)arg3;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 

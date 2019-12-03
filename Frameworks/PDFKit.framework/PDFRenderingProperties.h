@@ -13,10 +13,8 @@
 @property (nonatomic) bool enableTileUpdates;
 @property (nonatomic) double greekingThreshold;
 @property (nonatomic) long long interpolationQuality;
-@property (setter=forceWebKitMainThread:, nonatomic) bool isForcingWebKitMainThread;
 @property (nonatomic) bool isUsingPDFExtensionView;
 @property (nonatomic) double lineWidthThreshold;
-@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *loupeWorkQueue;
 @property (nonatomic, retain) UIColor *pageColor;
 @property (setter=setPDFLayerController:, nonatomic) PDFLayerController *pdfLayerController;
 @property (setter=setPDFView:, nonatomic) PDFView *pdfView;
@@ -31,14 +29,11 @@
 - (bool)enableBackgroundImages;
 - (bool)enablePageShadows;
 - (bool)enableTileUpdates;
-- (void)forceWebKitMainThread:(bool)arg1;
 - (double)greekingThreshold;
 - (id)init;
 - (long long)interpolationQuality;
-- (bool)isForcingWebKitMainThread;
 - (bool)isUsingPDFExtensionView;
 - (double)lineWidthThreshold;
-- (id)loupeWorkQueue;
 - (id)pageColor;
 - (id)pdfLayerController;
 - (id)pdfView;

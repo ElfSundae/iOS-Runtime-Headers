@@ -5,6 +5,7 @@
 
 @required
 
+- (FCObservable *)observableContentOverlayBlueprintData;
 - (FCObservable *)observableFooterBlueprint;
 - (FCObservable *)observableHeaderBlueprint;
 

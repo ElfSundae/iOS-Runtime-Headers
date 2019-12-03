@@ -28,7 +28,6 @@
 - (void)_showPendingInvitesDialog;
 - (void)_showUnderageAlertWithEligibilityResponse:(id)arg1;
 - (void)_startFamilySetupFlowWithEligibilityResponse:(id)arg1;
-- (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
 - (void)dealloc;
 - (id)delegate;
 - (void)familySetupViewController:(id)arg1 didCompleteWithSuccess:(bool)arg2;

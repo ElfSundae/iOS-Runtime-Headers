@@ -7,6 +7,7 @@
     bool  _didCompleteLoad;
     bool  _didInitiateLoad;
     NSArray * _fetchResults;
+    PHPhotoLibrary * _photoLibrary;
     NSObject<OS_dispatch_queue> * _serialQueue;
     PXPlacesStore * _store;
 }
@@ -19,6 +20,7 @@
 @property (nonatomic) bool didInitiateLoad;
 @property (nonatomic, retain) NSArray *fetchResults;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, retain) PHPhotoLibrary *photoLibrary;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *serialQueue;
 @property (nonatomic, retain) PXPlacesStore *store;
 @property (readonly) Class superclass;
@@ -34,12 +36,14 @@
 - (id)fetchResults;
 - (id)initWithFetchResults:(id)arg1;
 - (void)loadWithCompletion:(id /* block */)arg1;
+- (id)photoLibrary;
 - (void)photoLibraryDidChange:(id)arg1;
 - (id)serialQueue;
 - (void)setCompletions:(id)arg1;
 - (void)setDidCompleteLoad:(bool)arg1;
 - (void)setDidInitiateLoad:(bool)arg1;
 - (void)setFetchResults:(id)arg1;
+- (void)setPhotoLibrary:(id)arg1;
 - (void)setSerialQueue:(id)arg1;
 - (void)setStore:(id)arg1;
 - (id)store;

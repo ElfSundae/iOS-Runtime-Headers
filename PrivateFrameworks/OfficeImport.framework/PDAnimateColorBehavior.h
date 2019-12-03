@@ -15,6 +15,7 @@
     OADColor * mTo;
 }
 
+- (void).cxx_destruct;
 - (double*)by;
 - (int)colorSpace;
 - (int)direction;

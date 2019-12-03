@@ -25,10 +25,12 @@
 - (void).cxx_destruct;
 - (id)IMEI;
 - (bool)_ensureTelephonyHandlesAreReady;
+- (void)_handleActiveSubscriptionsDidChange;
 - (id)_init;
-- (void)_invalidatePhoneNumber;
 - (id)_telephonyClient;
 - (id)_telephonySubscriptionContext;
+- (void)_updatePhoneNumberAllowingDidChangeNotification:(bool)arg1;
+- (void)activeSubscriptionsDidChange;
 - (void)dealloc;
 - (id)mobileSubscriberCountryCode;
 - (id)mobileSubscriberNetworkCode;
@@ -36,7 +38,6 @@
 - (void)phoneNumberAvailable:(id)arg1;
 - (void)phoneNumberChanged:(id)arg1;
 - (id)providerName;
-- (bool)sendSMSWithText:(id)arg1 toPhoneNumber:(id)arg2;
-- (void)subscriptionInfoDidChange;
+- (bool)sendSMSWithText:(id)arg1 toPhoneNumber:(id)arg2 error:(id*)arg3;
 
 @end

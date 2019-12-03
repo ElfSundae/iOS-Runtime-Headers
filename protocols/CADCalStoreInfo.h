@@ -6,6 +6,7 @@
 @required
 
 - (NSString *)accountIdentifier;
+- (NSString *)delegatedAccountOwnerAccountIdentifier;
 - (bool)isEnabled;
 - (bool)isLocalStore;
 - (int)rowID;

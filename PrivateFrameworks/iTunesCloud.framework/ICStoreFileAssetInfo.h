@@ -25,6 +25,7 @@
 @property (nonatomic, copy) NSData *md5;
 @property (nonatomic, copy) ICStoreFinanceItemMetadata *metadata;
 @property (nonatomic, readonly) long long protectionType;
+@property (nonatomic, readonly, copy) NSDictionary *responseDictionary;
 
 - (void).cxx_destruct;
 - (id)_metadataDictionary;
@@ -40,6 +41,7 @@
 - (id)md5;
 - (id)metadata;
 - (long long)protectionType;
+- (id)responseDictionary;
 - (void)setAssetURL:(id)arg1;
 - (void)setDownloadKey:(id)arg1;
 - (void)setExpectedProtectionType:(long long)arg1;

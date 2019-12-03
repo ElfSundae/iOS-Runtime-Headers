@@ -4,7 +4,7 @@
 
 @interface SearchUIKeyValueDataCardSectionView : SearchUICardSectionView
 
-@property (retain) TLKKeyValueView *contentView;
+@property (nonatomic, retain) TLKKeyValueView *contentView;
 
 + (int)separatorStyleForCardSection:(id)arg1;
 + (bool)supportsRecyclingForCardSection:(id)arg1;

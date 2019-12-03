@@ -5,6 +5,6 @@
 
 @required
 
-- (void)layoutMonitor:(FigCaptureDisplayLayoutMonitor *)arg1 didUpdateLayoutWithForegroundApps:(NSArray *)arg2 layoutState:(int)arg3;
+- (void)layoutMonitor:(FigCaptureDisplayLayoutMonitor *)arg1 didUpdateLayoutWithForegroundApps:(NSArray *)arg2 obscuredApps:(NSArray *)arg3;
 
 @end

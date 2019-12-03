@@ -6,8 +6,8 @@
     NSMutableString * mText;
 }
 
+- (void).cxx_destruct;
 - (unsigned long long)characterCount;
-- (void)dealloc;
 - (id)init;
 - (bool)isEmpty;
 - (bool)isSimilarToTextRun:(id)arg1;

@@ -48,6 +48,7 @@
 - (void)_createPosterImageView;
 - (void)_createVideoPlayerViewIfNeeded;
 - (void)_fadeFromCurtainViewIfVisible;
+- (void)_fadeFromPosterImageAndCurtainViewIfVisible;
 - (void)_fadeFromPosterImageIfVisible:(id /* block */)arg1;
 - (void)_fadeToCurtainView:(id /* block */)arg1;
 - (void)_fadeToPosterImage;
@@ -85,6 +86,7 @@
 - (double)fadeAnimationDuration;
 - (void)handleOrdinaryScreenWake;
 - (void)handleScreenOff;
+- (void)handleStyleDidChange;
 - (void)handleWristRaiseScreenWake;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (bool)isPausedViewEnabled;

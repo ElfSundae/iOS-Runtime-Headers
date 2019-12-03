@@ -31,7 +31,7 @@
 - (void)recursivelyPerformSelectorIfImplemented:(SEL)arg1 withObject:(id)arg2;
 - (void)selectChildRep:(id)arg1 extendingSelection:(bool)arg2;
 - (bool)shouldShowCollaboratorCursorHighlight;
-- (void)storage:(id)arg1 didChangeRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 delta:(long long)arg3 broadcastKind:(int)arg4;
+- (void)storage:(id)arg1 didChangeRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 delta:(long long)arg3 broadcastKind:(unsigned long long)arg4;
 - (void)updateChildrenFromLayout;
 - (void)willBeginEditingContainedRep;
 - (void)willEndEditingContainedRep;

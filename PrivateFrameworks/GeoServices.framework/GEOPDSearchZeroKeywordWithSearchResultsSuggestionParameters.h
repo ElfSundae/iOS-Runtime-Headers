@@ -6,11 +6,11 @@
     unsigned int  _blurredHourOfDay;
     unsigned int  _dayOfWeek;
     struct { 
-        unsigned int blurredHourOfDay : 1; 
-        unsigned int dayOfWeek : 1; 
-        unsigned int maxCategories : 1; 
-        unsigned int maxResultsPerCategory : 1; 
-    }  _has;
+        unsigned int has_blurredHourOfDay : 1; 
+        unsigned int has_dayOfWeek : 1; 
+        unsigned int has_maxCategories : 1; 
+        unsigned int has_maxResultsPerCategory : 1; 
+    }  _flags;
     unsigned int  _maxCategories;
     unsigned int  _maxResultsPerCategory;
     PBUnknownFields * _unknownFields;
@@ -26,8 +26,11 @@
 @property (nonatomic) unsigned int maxResultsPerCategory;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (unsigned int)blurredHourOfDay;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned int)dayOfWeek;
@@ -42,6 +45,7 @@
 - (unsigned int)maxCategories;
 - (unsigned int)maxResultsPerCategory;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setBlurredHourOfDay:(unsigned int)arg1;
 - (void)setDayOfWeek:(unsigned int)arg1;

@@ -2,10 +2,15 @@
    Image: /System/Library/PrivateFrameworks/AVConference.framework/AVConference
  */
 
-@interface VCVideoRuleCollectionsMoments : NSObject
+@interface VCVideoRuleCollectionsMoments : NSObject {
+    bool  _isHEIFAndHEVCFormatEnabled;
+}
 
 + (id)sharedInstance;
 
 - (int)getMomentsCapabilities;
+- (id)getMomentsImageTypes;
+- (id)getMomentsVideoCodecs;
+- (id)init;
 
 @end

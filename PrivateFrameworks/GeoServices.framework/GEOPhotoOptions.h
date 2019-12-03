@@ -4,8 +4,8 @@
 
 @interface GEOPhotoOptions : PBCodable <NSCopying> {
     struct { 
-        unsigned int photoType : 1; 
-    }  _has;
+        unsigned int has_photoType : 1; 
+    }  _flags;
     int  _maxPhotos;
     struct { 
         int *list; 
@@ -23,11 +23,14 @@
 @property (nonatomic) int photoType;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsPhotoSizes:(id)arg1;
 - (int)StringAsPhotoType:(id)arg1;
 - (void)addPhotoSize:(int)arg1;
 - (void)clearPhotoSizes;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -44,6 +47,7 @@
 - (unsigned long long)photoSizesCount;
 - (int)photoType;
 - (id)photoTypeAsString:(int)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasPhotoType:(bool)arg1;
 - (void)setMaxPhotos:(int)arg1;

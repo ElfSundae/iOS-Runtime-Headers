@@ -4,6 +4,7 @@
 
 @interface NEFilterSocketFlow : NEFilterFlow <NSCopying, NSSecureCoding> {
     NSUUID * _euuid;
+    long long  _generateIdentifierOnce;
     struct sockaddr_storage { 
         unsigned char ss_len; 
         unsigned char ss_family; 
@@ -24,6 +25,7 @@
     unsigned long long  _socketID;
     int  _socketProtocol;
     int  _socketType;
+    NSUUID * _socketUUID;
     NSUUID * _uuid;
 }
 
@@ -34,6 +36,7 @@
 @property unsigned long long socketID;
 @property int socketProtocol;
 @property int socketType;
+@property (readonly) NSUUID *socketUUID;
 @property (nonatomic, copy) NSUUID *uuid;
 
 + (bool)supportsSecureCoding;
@@ -43,6 +46,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)euuid;
+- (id)identifier;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSocketFamily:(int)arg1 socketType:(int)arg2 socketProtocol:(int)arg3 pid:(int)arg4 epid:(int)arg5 uuid:(unsigned char)arg6 euuid:(unsigned char)arg7 socketID:(unsigned long long)arg8;
 - (void)lastLocalAddress:(struct sockaddr { unsigned char x1; unsigned char x2; BOOL x3[14]; }*)arg1;
@@ -61,6 +65,7 @@
 - (unsigned long long)socketID;
 - (int)socketProtocol;
 - (int)socketType;
+- (id)socketUUID;
 - (id)uuid;
 
 @end

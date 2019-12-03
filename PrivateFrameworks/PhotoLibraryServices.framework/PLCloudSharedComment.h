@@ -28,7 +28,6 @@
 
 + (id)cloudSharedCommentWithGUID:(id)arg1 inLibrary:(id)arg2;
 + (id)cloudSharedCommentWithGUIDs:(id)arg1 inLibrary:(id)arg2;
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (id)insertNewCommentIntoAsset:(id)arg1 commentDate:(id)arg2 withText:(id)arg3 isLike:(bool)arg4 isMyComment:(bool)arg5 inLibrary:(id)arg6;
 
@@ -42,7 +41,6 @@
 - (id)commenterFirstName;
 - (id)commenterFullName;
 - (id)commenterLastName;
-- (void)dealloc;
 - (id)init;
 - (bool)isInterestingForAlbumsSorting;
 - (bool)isLikeBoolValue;

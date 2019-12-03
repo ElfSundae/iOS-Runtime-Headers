@@ -88,7 +88,6 @@
 - (void)setVisualStyle:(id)arg1;
 - (bool)shouldAdoptPresentedAppearance;
 - (bool)shouldPresentInFullscreen;
-- (bool)shouldRemovePresentersView;
 - (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
 - (id)visualStyle;
 

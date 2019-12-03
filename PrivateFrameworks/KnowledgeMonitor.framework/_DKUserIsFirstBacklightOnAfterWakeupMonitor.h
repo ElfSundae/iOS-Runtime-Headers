@@ -32,6 +32,8 @@
 - (bool)FirstWakeUINotificationEnabled;
 - (bool)SoftwareUpdateUINotificationEnabled;
 - (id)convertUTCToLocalTimeString:(id)arg1;
+- (void)deactivate;
+- (void)dealloc;
 - (bool)didQualifyingScreenLockEndInEligibilityPeriod;
 - (bool)eligibleForFirstWakeUINotification;
 - (id)firstWakeupEventWithValue:(bool)arg1;

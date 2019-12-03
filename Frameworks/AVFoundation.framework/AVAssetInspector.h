@@ -18,12 +18,15 @@
 @property (nonatomic, readonly) AVMetadataItem *creationDate;
 @property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } duration;
 @property (getter=isExportable, nonatomic, readonly) bool exportable;
+@property (nonatomic, readonly) long long firstFragmentSequenceNumber;
+@property (nonatomic, readonly) long long fragmentCount;
 @property (nonatomic, readonly) NSString *identifyingTag;
 @property (nonatomic, readonly) NSString *identifyingTagClass;
 @property (getter=_instanceIdentifier, nonatomic, readonly) NSString *instanceIdentifier;
 @property (nonatomic, readonly) NSString *lyrics;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } maximumVideoResolution;
 @property (getter=_mediaSelectionGroupDictionaries, nonatomic, readonly) NSArray *mediaSelectionGroupDictionaries;
+@property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } minimumTimeOffsetFromLive;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } naturalSize;
 @property (nonatomic, readonly) int naturalTimeScale;
 @property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } overallDurationHint;
@@ -54,10 +57,13 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)creationDate;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })duration;
+- (long long)firstFragmentSequenceNumber;
+- (long long)fragmentCount;
 - (bool)hasProtectedContent;
 - (id)identifyingTag;
 - (id)identifyingTagClass;
 - (bool)isCompatibleWithAirPlayVideo;
+- (bool)isCompatibleWithPhotosTranscodingServiceWithOptions:(id)arg1;
 - (bool)isCompatibleWithSavedPhotosAlbum;
 - (bool)isComposable;
 - (bool)isExportable;
@@ -67,6 +73,7 @@
 - (id)makePropertyListForProxyWithOptions:(id)arg1;
 - (struct CGSize { double x1; double x2; })maximumVideoResolution;
 - (id)metadataForFormat:(id)arg1;
+- (struct { long long x1; int x2; unsigned int x3; long long x4; })minimumTimeOffsetFromLive;
 - (struct CGSize { double x1; double x2; })naturalSize;
 - (int)naturalTimeScale;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })overallDurationHint;

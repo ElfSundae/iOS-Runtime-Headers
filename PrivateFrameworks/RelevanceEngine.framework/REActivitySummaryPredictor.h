@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
  */
 
-@interface REActivitySummaryPredictor : REPredictor {
+@interface REActivitySummaryPredictor : REPredictor <REActivitySummaryPredictorProperties> {
     float  _activeEnergyPercentComplete;
     float  _exerciseTimePercentComplete;
     NSSet * _queries;
@@ -17,16 +17,15 @@
 + (double)updateInterval;
 
 - (void).cxx_destruct;
+- (id)_init;
 - (void)_runQuery:(id)arg1;
 - (void)_startActivitySummaryQueryWithRetries:(long long)arg1;
 - (void)_stopQueries;
 - (void)_stopQuery:(id)arg1;
-- (void)_updateWithActivitySummary:(id)arg1;
+- (void)_updateWithActivitySummary:(id)arg1 completion:(id /* block */)arg2;
 - (float)activeEnergyPercentComplete;
-- (void)collectLoggableState:(id /* block */)arg1;
 - (float)exerciseTimePercentComplete;
 - (id)featureValueForFeature:(id)arg1 element:(id)arg2 engine:(id)arg3 trainingContext:(id)arg4;
-- (id)init;
 - (void)pause;
 - (void)resume;
 - (void)setActiveEnergyPercentComplete:(float)arg1;

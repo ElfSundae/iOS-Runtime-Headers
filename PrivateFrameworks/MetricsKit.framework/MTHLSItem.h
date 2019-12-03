@@ -5,6 +5,7 @@
 @interface MTHLSItem : NSObject <MTMediaPlaylistItem> {
     NSArray * _eventData;
     unsigned long long  _startOverallPosition;
+    long long  _startPosition;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -13,6 +14,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) unsigned long long overallPosition;
 @property (nonatomic) unsigned long long startOverallPosition;
+@property (nonatomic) long long startPosition;
 @property (readonly) Class superclass;
 
 + (id /* block */)comparator;
@@ -23,6 +25,8 @@
 - (id)initWithStartOverallPosition:(unsigned long long)arg1 metricsData:(id)arg2;
 - (void)setEventData:(id)arg1;
 - (void)setStartOverallPosition:(unsigned long long)arg1;
+- (void)setStartPosition:(long long)arg1;
 - (unsigned long long)startOverallPosition;
+- (long long)startPosition;
 
 @end

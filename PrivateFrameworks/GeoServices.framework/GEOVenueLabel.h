@@ -14,6 +14,7 @@
 
 - (void).cxx_destruct;
 - (id)detail;
+- (id)init;
 - (id)initWithLabel:(id)arg1;
 - (id)initWithName:(id)arg1;
 - (id)initWithName:(id)arg1 shortName:(id)arg2 detail:(id)arg3;

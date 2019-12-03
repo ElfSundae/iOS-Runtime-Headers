@@ -5,10 +5,10 @@
 @interface GEOMapsDestinationsWidget : PBCodable <NSCopying> {
     bool  _everExpanded;
     struct { 
-        unsigned int tappedItemIndex : 1; 
-        unsigned int everExpanded : 1; 
-        unsigned int initiallyExpanded : 1; 
-    }  _has;
+        unsigned int has_tappedItemIndex : 1; 
+        unsigned int has_everExpanded : 1; 
+        unsigned int has_initiallyExpanded : 1; 
+    }  _flags;
     bool  _initiallyExpanded;
     NSMutableArray * _proactiveItems;
     int  _tappedItemIndex;
@@ -22,6 +22,7 @@
 @property (nonatomic, retain) NSMutableArray *proactiveItems;
 @property (nonatomic) int tappedItemIndex;
 
++ (bool)isValid:(id)arg1;
 + (Class)proactiveItemType;
 
 - (void).cxx_destruct;
@@ -42,6 +43,7 @@
 - (id)proactiveItemAtIndex:(unsigned long long)arg1;
 - (id)proactiveItems;
 - (unsigned long long)proactiveItemsCount;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setEverExpanded:(bool)arg1;
 - (void)setHasEverExpanded:(bool)arg1;

@@ -15,6 +15,7 @@
 @property (nonatomic, retain) NSMapTable *observerMapTable;
 @property (nonatomic) int playbackReportToken;
 
++ (bool)_isAppRefreshEventType:(id)arg1;
 + (id)sharedMonitor;
 
 - (void).cxx_destruct;
@@ -27,6 +28,7 @@
 - (void)_handleEntitlementsDidChangeNotification:(id)arg1;
 - (void)_handleFavoritesRequestDidFinishNotification:(id)arg1;
 - (void)_handleLocationAuthorizationDidChangeNotification:(id)arg1;
+- (void)_handleLocationDidChangeNotification:(id)arg1;
 - (void)_handleMediaLibraryContentsDidChangeNotification:(id)arg1;
 - (void)_handleNowPlayingDidEndNotification:(id)arg1;
 - (void)_handleNowPlayingWillStartNotification:(id)arg1;

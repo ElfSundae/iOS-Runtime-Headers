@@ -7,16 +7,20 @@
         double x; 
         double y; 
     }  _digitizerLocation;
-    UITouch * _touch;
+    long long  _fingerIndex;
+    double  _timestamp;
+    long long  _touchPhase;
 }
 
 @property (nonatomic, readonly) struct CGPoint { double x1; double x2; } digitizerLocation;
-@property (nonatomic, retain) UITouch *touch;
+@property (nonatomic, readonly) long long fingerIndex;
+@property (nonatomic, readonly) double timestamp;
+@property (nonatomic, readonly) long long touchPhase;
 
-- (void).cxx_destruct;
 - (struct CGPoint { double x1; double x2; })digitizerLocation;
-- (id)initWithTouch:(id)arg1 digitizerLocation:(struct CGPoint { double x1; double x2; })arg2;
-- (void)setTouch:(id)arg1;
-- (id)touch;
+- (long long)fingerIndex;
+- (id)initWithTimestamp:(double)arg1 touchPhase:(long long)arg2 fingerIndex:(long long)arg3 digitizerLocation:(struct CGPoint { double x1; double x2; })arg4;
+- (double)timestamp;
+- (long long)touchPhase;
 
 @end

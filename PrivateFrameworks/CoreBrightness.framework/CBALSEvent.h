@@ -37,6 +37,7 @@
         float channelData[6]; 
         float CCT; 
         short AZOffsets[6]; 
+        float temperature; 
     }  _vendorData;
 }
 
@@ -47,11 +48,11 @@
 @property bool obstructed;
 @property int orientation;
 @property bool supportColor;
-@property struct { unsigned int x1; unsigned char x2; unsigned char x3; unsigned short x4; unsigned int x5; unsigned int x6; int x7; float x8; float x9[6]; float x10; short x11[6]; } vendorData;
+@property struct { unsigned int x1; unsigned char x2; unsigned char x3; unsigned short x4; unsigned int x5; unsigned int x6; int x7; float x8; float x9[6]; float x10; short x11[6]; float x12; } vendorData;
 
 - (struct { float x1[3]; struct { float x_2_1_1; float x_2_1_2; } x2; float x3; struct { int x_4_1_1; float x_4_1_2[6]; int x_4_1_3; float x_4_1_4; } x4; })colorSample;
 - (long long)compare:(id)arg1;
-- (struct { unsigned int x1; unsigned char x2; unsigned char x3; unsigned short x4; unsigned int x5; unsigned int x6; int x7; float x8; float x9[6]; float x10; short x11[6]; })copyVendorDataFromEvent:(struct __IOHIDEvent { }*)arg1;
+- (struct { unsigned int x1; unsigned char x2; unsigned char x3; unsigned short x4; unsigned int x5; unsigned int x6; int x7; float x8; float x9[6]; float x10; short x11[6]; float x12; })copyVendorDataFromEvent:(struct __IOHIDEvent { }*)arg1;
 - (void)dealloc;
 - (id)description;
 - (bool)firstALSSample;
@@ -68,8 +69,8 @@
 - (void)setObstructed:(bool)arg1;
 - (void)setOrientation:(int)arg1;
 - (void)setSupportColor:(bool)arg1;
-- (void)setVendorData:(struct { unsigned int x1; unsigned char x2; unsigned char x3; unsigned short x4; unsigned int x5; unsigned int x6; int x7; float x8; float x9[6]; float x10; short x11[6]; })arg1;
+- (void)setVendorData:(struct { unsigned int x1; unsigned char x2; unsigned char x3; unsigned short x4; unsigned int x5; unsigned int x6; int x7; float x8; float x9[6]; float x10; short x11[6]; float x12; })arg1;
 - (bool)supportColor;
-- (struct { unsigned int x1; unsigned char x2; unsigned char x3; unsigned short x4; unsigned int x5; unsigned int x6; int x7; float x8; float x9[6]; float x10; short x11[6]; })vendorData;
+- (struct { unsigned int x1; unsigned char x2; unsigned char x3; unsigned short x4; unsigned int x5; unsigned int x6; int x7; float x8; float x9[6]; float x10; short x11[6]; float x12; })vendorData;
 
 @end

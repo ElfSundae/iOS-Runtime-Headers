@@ -13,6 +13,7 @@
 + (id)__previewArtworkCatalogBlock_KEY;
 + (id)__staticAssets_KEY;
 + (id)__title_KEY;
++ (id)classesForSecureCoding;
 + (id)kind;
 
 - (id)humanDescription;
@@ -20,6 +21,6 @@
 
 // Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
 
-+ (id)mqf_requiredPlaybackProperties;
++ (id)mqf_requiredItemPlaybackProperties;
 
 @end

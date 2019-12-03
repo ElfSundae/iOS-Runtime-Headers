@@ -17,6 +17,7 @@
 - (id)createDeleteTransactionsRequestContext;
 - (id)createRequestContextForChangesWithTransactionIDs:(id)arg1;
 - (void)dealloc;
+- (void)executePrologue;
 - (bool)executeRequestUsingConnection:(id)arg1;
 - (id)fetchRequestContextForChanges;
 - (id)fetchRequestDescribingChanges;

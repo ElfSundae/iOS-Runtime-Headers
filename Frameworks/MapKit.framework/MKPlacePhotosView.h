@@ -9,7 +9,6 @@
     UIView * _bottomView;
     <MKPlacePhotosViewDelegate> * _delegate;
     NSArray * _fontConstraints;
-    UIImageView * _gradientView;
     UILabel * _licenseLabel;
     UINavigationBar * _navBar;
     UINavigationItem * _navItem;
@@ -18,11 +17,9 @@
     NSArray * _photos;
     UIScrollView * _scrollView;
     NSMutableArray * _singlePhotoArray;
-    NSLayoutConstraint * _statusBarHeightConstraint;
     UILabel * _subtitleLabel;
     unsigned long long  _textDisplayedForPage;
     UILabel * _titleLabel;
-    UIVisualEffectView * _topView;
 }
 
 @property (nonatomic) unsigned long long currentPage;
@@ -59,7 +56,6 @@
 - (void)stopActivityIndicator;
 - (void)toggleNavBar;
 - (void)updateDetails;
-- (void)updateStatusBarConstraint;
 - (void)updateTextForPage:(unsigned long long)arg1;
 - (void)willEnterForeground:(id)arg1;
 - (double)xPositionForPhotoAtIndex:(unsigned long long)arg1 numberOfPhotos:(unsigned long long)arg2 pageWidth:(double)arg3;

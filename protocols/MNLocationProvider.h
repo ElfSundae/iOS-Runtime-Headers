@@ -41,6 +41,12 @@
 - (void)stopUpdatingVehicleHeading;
 - (void)stopUpdatingVehicleSpeed;
 - (double)timeScale;
+- (unsigned long long)traceVersion;
 - (bool)usesCLMapCorrection;
+
+@optional
+
+- (id)initWithEffectiveBundle:(NSBundle *)arg1;
+- (id)initWithEffectiveBundleIdentifier:(NSString *)arg1;
 
 @end

@@ -8,6 +8,7 @@
     NSDictionary * _componentStyles;
     NSDictionary * _componentTextStyles;
     SXComponents * _components;
+    <SXDocumentStyle> * _documentStyle;
     NSDictionary * _resources;
     NSDictionary * _textStyles;
 }
@@ -17,6 +18,7 @@
 @property (nonatomic, readonly, copy) NSDictionary *componentStyles;
 @property (nonatomic, readonly, copy) NSDictionary *componentTextStyles;
 @property (nonatomic, readonly, copy) SXComponents *components;
+@property (nonatomic, readonly) <SXDocumentStyle> *documentStyle;
 @property (nonatomic, readonly, copy) NSDictionary *resources;
 @property (nonatomic, readonly, copy) NSDictionary *textStyles;
 
@@ -27,8 +29,9 @@
 - (id)componentTextStyles;
 - (id)components;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)documentStyle;
 - (id)init;
-- (id)initWithComponents:(id)arg1 componentLayouts:(id)arg2 componentStyles:(id)arg3 componentTextStyles:(id)arg4 textStyles:(id)arg5 resources:(id)arg6 autoPlacement:(id)arg7;
+- (id)initWithComponents:(id)arg1 componentLayouts:(id)arg2 componentStyles:(id)arg3 componentTextStyles:(id)arg4 textStyles:(id)arg5 resources:(id)arg6 autoPlacement:(id)arg7 documentStyle:(id)arg8;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (id)resources;
 - (id)textStyles;

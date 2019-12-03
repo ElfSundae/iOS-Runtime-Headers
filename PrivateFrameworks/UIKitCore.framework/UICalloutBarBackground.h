@@ -14,10 +14,9 @@
             double height; 
         } size; 
     }  _highlightRect;
-    UIVisualEffectView * _separatorView;
-    UIVisualEffectView * _tintView;
+    UIImageView * _selectionTintView;
+    UIImageView * _separatorView;
     double  m_dividerOffsets;
-    bool  m_isDisplayingVertically;
 }
 
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } highlightRect;
@@ -28,6 +27,6 @@
 - (void)layoutSubviews;
 - (void)setDividerOffsets:(double*)arg1;
 - (void)setHighlightRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
-- (void)setHighlighted:(bool)arg1 forFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 isDisplayingVertically:(bool)arg3;
+- (void)setHighlighted:(bool)arg1 forFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 
 @end

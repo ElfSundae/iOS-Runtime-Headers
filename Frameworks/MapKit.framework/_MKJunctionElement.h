@@ -14,9 +14,9 @@
     }  _rightBasePoint;
 }
 
-@property double angle;
-@property struct CGPoint { double x1; double x2; } leftBasePoint;
-@property struct CGPoint { double x1; double x2; } rightBasePoint;
+@property (nonatomic) double angle;
+@property (nonatomic) struct CGPoint { double x1; double x2; } leftBasePoint;
+@property (nonatomic) struct CGPoint { double x1; double x2; } rightBasePoint;
 
 - (double)angle;
 - (struct CGPoint { double x1; double x2; })leftBasePoint;

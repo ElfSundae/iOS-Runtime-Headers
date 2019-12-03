@@ -4,19 +4,20 @@
 
 @interface REFeatureValuePair : NSObject <NSCopying> {
     REFeature * _feature;
-    REFeatureValue * _value;
+    unsigned long long  _value;
 }
 
 @property (nonatomic, readonly) REFeature *feature;
-@property (nonatomic, readonly) REFeatureValue *value;
+@property (nonatomic, readonly) unsigned long long value;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (void)dealloc;
 - (id)description;
 - (id)feature;
 - (unsigned long long)hash;
-- (id)initWithFeature:(id)arg1 value:(id)arg2;
+- (id)initWithFeature:(id)arg1 value:(unsigned long long)arg2;
 - (bool)isEqual:(id)arg1;
-- (id)value;
+- (unsigned long long)value;
 
 @end

@@ -9,7 +9,7 @@
 
 @property (nonatomic, retain) OCPZipPackage *zipPackage;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (bool)isBinaryReader;
 - (id)read;
 - (void)restartReaderToUseDecryptedDocument;

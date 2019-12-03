@@ -12,6 +12,7 @@
 + (bool)contentTypeTree:(id)arg1 conformsToUTIType:(id)arg2;
 + (bool)contentTypeTree:(id)arg1 conformsToUTITypes:(id)arg2;
 + (id)contextDictionaryForSearchableItem:(id)arg1 userAction:(id)arg2;
++ (id)emailContextDictionaryForSearchableItem:(id)arg1;
 + (id)expectedSupportedUTIs;
 + (id)expectedUTIsForMechanism:(long long)arg1;
 + (long long)getInteractionMechanismForContentUTI:(id)arg1 typeTree:(id)arg2;
@@ -20,6 +21,7 @@
 + (bool)isLocationBasedItem:(id)arg1;
 + (id)knowledgeEventsForSearchableItem:(id)arg1 userAction:(id)arg2;
 + (id)mechanismUtiMap;
++ (id)messageContextDictionaryForSearchableItem:(id)arg1;
 + (id)policies;
 + (id)querySpotlightItemsWithStartDate:(id)arg1 endDate:(id)arg2 getMail:(bool)arg3 getMessages:(bool)arg4;
 + (id)safariUTIs;
@@ -27,5 +29,6 @@
 + (bool)uncachedUtType:(id)arg1 conformsTo:(id)arg2;
 + (bool)utType:(id)arg1 conformsTo:(id)arg2;
 + (id)utiConformCache;
++ (bool)whitelistedCSSearchableItem:(id)arg1;
 
 @end

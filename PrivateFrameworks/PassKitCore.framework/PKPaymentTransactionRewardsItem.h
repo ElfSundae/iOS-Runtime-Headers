@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PassKitCore.framework/PassKitCore
  */
 
-@interface PKPaymentTransactionRewardsItem : NSObject <NSSecureCoding> {
+@interface PKPaymentTransactionRewardsItem : NSObject <NSCopying, NSSecureCoding> {
     PKCurrencyAmount * _currencyAmount;
     NSDecimalNumber * _eligibleValue;
     unsigned long long  _eligibleValueUnit;
@@ -22,6 +22,7 @@
 
 - (void).cxx_destruct;
 - (void)_initWithRewardsDictionary:(id)arg1;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)currencyAmount;
 - (id)description;
 - (id)eligibleValue;
@@ -30,7 +31,7 @@
 - (unsigned long long)hash;
 - (id)identifier;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithRewardsDictionary:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToRewardsItem:(id)arg1;
 - (id)jsonDictionaryRepresentation;

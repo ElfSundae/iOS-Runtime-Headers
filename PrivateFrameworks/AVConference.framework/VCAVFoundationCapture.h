@@ -22,9 +22,27 @@
     bool  _isCapturing;
     bool  _isPreviewing;
     int  _lastClientRequestedFrameRate;
+    struct { 
+        long long value; 
+        int timescale; 
+        unsigned int flags; 
+        long long epoch; 
+    }  _lastPrintTimestamp;
+    struct { 
+        long long value; 
+        int timescale; 
+        unsigned int flags; 
+        long long epoch; 
+    }  _lastReceivedTimestamp;
     int  _lastRequestedFrameRate;
     int  _lastRequestedHeight;
     int  _lastRequestedWidth;
+    struct { 
+        long long value; 
+        int timescale; 
+        unsigned int flags; 
+        long long epoch; 
+    }  _lastSentTimestamp;
     AVCaptureMetadataOutput * _metadataOutput;
     struct __CVPixelBufferPool { } * _mirrorBufferPool;
     struct OpaqueVTImageRotationSession { } * _mirrorSession;
@@ -32,6 +50,7 @@
     NSMutableArray * _outputSynchronizerOutputs;
     int  _previewFrameCount;
     float  _processTimeSum;
+    int  _receivedFrameCount;
     NSMutableArray * _renderFrameTimes;
     struct CGSize { 
         double width; 
@@ -42,9 +61,13 @@
     struct OpaqueVTPixelTransferSession { } * _resizeTransferSession;
     struct __CVPixelBufferPool { } * _rotateBufferPool;
     struct OpaqueVTImageRotationSession { } * _rotationSession;
+    int  _sentFrameCount;
     struct OpaqueVTPixelTransferSession { } * _transferSession;
     AVCaptureVideoDataOutput * _videoCaptureOutput;
     AVCaptureDeviceInput * _videoDeviceInput;
+    NSObject<OS_dispatch_queue> * _viewPointCorrectionQueue;
+    bool  _viewPointCorrectionThermalEnabled;
+    float  _viewpointProcessTime;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -56,10 +79,12 @@
 
 - (void)attachMetadata:(id)arg1 toCVPixelBuffer:(struct __CVBuffer { }*)arg2;
 - (id)cameraFormatForWidth:(int)arg1 height:(int)arg2;
+- (id)cameraFormatForWidth:(int)arg1 height:(int)arg2 frameRate:(int)arg3;
 - (bool)cameraSupportsFormatWidth:(int)arg1 height:(int)arg2;
 - (bool)cameraSupportsNoQueueFormatWidth:(int)arg1 height:(int)arg2;
 - (void)captureOutput:(id)arg1 didOutputSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg2 fromConnection:(id)arg3;
 - (void)captureSessionNotification:(id)arg1;
+- (void)checkCameraZoomCapability;
 - (void)configureCaptureDeviceDepthFormat;
 - (int)copyColorInfo:(const struct __CFDictionary {}**)arg1;
 - (struct __CVBuffer { }*)copyPixelBuffer:(struct opaqueCMSampleBuffer { }*)arg1;
@@ -83,7 +108,8 @@
 - (void)initializeOutputs;
 - (void)initializeSynchronizedOutputs;
 - (void)initializeVideoCaptureOutput;
-- (bool)isFormatMaxFrameRateSupported:(id)arg1;
+- (bool)isBackCamera;
+- (bool)isFormatMaxFrameRateSupported:(id)arg1 frameRate:(int)arg2;
 - (bool)isFrontCamera;
 - (bool)isPreviewRunning;
 - (struct opaqueCMSampleBuffer { }*)newMirroredVideoSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 time:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2;
@@ -91,9 +117,13 @@
 - (struct opaqueCMSampleBuffer { }*)newRotatedVideoSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 time:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2 shouldMirror:(bool)arg3;
 - (void)prepareSynchronizedOutputs:(id)arg1;
 - (void)processSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 depthData:(id)arg2 faceData:(id)arg3 captureDevice:(id)arg4;
+- (void)processViewPointCorrection:(struct opaqueCMSampleBuffer { }*)arg1 metaData:(id)arg2 shouldProcess:(bool)arg3;
+- (void)resetViewPointLogging;
 - (void)sendImageDataForSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 depthData:(id)arg2 faceData:(id)arg3 captureDevice:(id)arg4 originalSize:(struct CGSize { double x1; double x2; })arg5;
 - (int)setCamera:(id)arg1 width:(int)arg2 height:(int)arg3 frameRate:(int)arg4;
 - (int)setCameraWithUID:(id)arg1;
+- (void)setCameraZoomFactor:(double)arg1;
+- (void)setCameraZoomFactor:(double)arg1 withRate:(double)arg2;
 - (void)setEffectsApplied:(bool)arg1;
 - (void)setFaceMeshTrackingEnabled:(bool)arg1;
 - (int)setFrameRate:(int)arg1;
@@ -102,13 +132,19 @@
 - (int)setVideoDeviceToWidth:(int)arg1 height:(int)arg2 frameRate:(int)arg3;
 - (void)setVideoOrientationAndMirroredForDevice:(id)arg1;
 - (void)setVideoStabilizationTo:(bool)arg1;
+- (void)setViewPointCorrectionEnabaled:(bool)arg1;
 - (int)setWidth:(int)arg1 height:(int)arg2 frameRate:(int)arg3;
 - (void)setupMirrorBufferPoolWithWidth:(int)arg1 height:(int)arg2;
 - (void)setupRotationBufferPoolWithWidth:(int)arg1 height:(int)arg2;
+- (bool)shouldAddDepthData;
+- (bool)shouldAddTrackedFacesData;
 - (bool)shouldResizeWithCaptureSize:(struct CGSize { double x1; double x2; })arg1 requestSize:(struct CGSize { double x1; double x2; })arg2;
+- (bool)shouldUseRearCameraVideoStabilization;
+- (bool)shouldUseViewpointCorrection;
 - (int)startCaptureWithWidth:(int)arg1 height:(int)arg2 frameRate:(int)arg3;
 - (int)startPreview;
 - (int)stop:(bool)arg1;
+- (bool)supportsViewpointCorrection;
 - (void)updateDepthFrameRate;
 - (void)updateRenderProcessFrameRate:(id)arg1;
 - (void)updateVideoCaptureServerWithSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 time:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2 frontCamera:(bool)arg3 shouldMirrorFrontPreview:(bool)arg4 isFromEffects:(bool)arg5;

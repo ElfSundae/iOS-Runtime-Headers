@@ -19,7 +19,7 @@
 - (bool)matchesWithoutOperatorComponentsKeyPath:(id)arg1;
 - (void)object:(id)arg1 didAddObservance:(id)arg2 recurse:(bool)arg3;
 - (void)object:(id)arg1 didRemoveObservance:(id)arg2 recurse:(bool)arg3;
-- (void)object:(id)arg1 withObservance:(id)arg2 didChangeValueForKeyOrKeys:(id)arg3 recurse:(bool)arg4 forwardingValues:(struct { id x1; })arg5;
-- (bool)object:(id)arg1 withObservance:(id)arg2 willChangeValueForKeyOrKeys:(id)arg3 recurse:(bool)arg4 forwardingValues:(struct { id x1; }*)arg5;
+- (void)object:(id)arg1 withObservance:(id)arg2 didChangeValueForKeyOrKeys:(id)arg3 recurse:(bool)arg4 forwardingValues:(struct { id x1; id x2; })arg5;
+- (bool)object:(id)arg1 withObservance:(id)arg2 willChangeValueForKeyOrKeys:(id)arg3 recurse:(bool)arg4 forwardingValues:(struct { id x1; id x2; }*)arg5;
 
 @end

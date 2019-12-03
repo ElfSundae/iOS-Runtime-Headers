@@ -3,18 +3,18 @@
  */
 
 @interface HDCloudSyncSession : HDSyncSession {
-    NSDictionary * _anchorClockForExcludedStores;
     NSSet * _excludedSyncStores;
+    HDCloudSyncSequenceRecord * _sequenceRecord;
 }
 
-@property (nonatomic, readonly) NSDictionary *anchorClockForExcludedStores;
+@property (nonatomic, retain) HDCloudSyncSequenceRecord *sequenceRecord;
 
 - (void).cxx_destruct;
-- (id)anchorClockForExcludedStores;
 - (id)excludedSyncStores;
 - (long long)maxEncodedBytesPerMessageForSyncEntityClass:(Class)arg1;
 - (id)newChangeWithSyncEntityClass:(Class)arg1;
-- (id)predicateForSyncEntityClass:(Class)arg1;
+- (id)sequenceRecord;
 - (void)setExcludedSyncStores:(id)arg1;
+- (void)setSequenceRecord:(id)arg1;
 
 @end

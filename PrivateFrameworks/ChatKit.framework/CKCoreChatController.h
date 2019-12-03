@@ -10,6 +10,8 @@
     CKFullScreenBalloonViewController * _fullScreenBalloonViewController;
     bool  _ignoreLastBalloonVisibleInMarkAsReadCheck;
     bool  _initialLayoutComplete;
+    bool  _isShowingLockoutView;
+    STLockoutViewController * _lockoutViewController;
     id /* block */  _overrideScrollBlock;
     UIProgressView * _progressBar;
     CKScheduledUpdater * _refreshServiceForSendingUpdater;
@@ -36,6 +38,8 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool ignoreLastBalloonVisibleInMarkAsReadCheck;
 @property (nonatomic) bool initialLayoutComplete;
+@property (nonatomic) bool isShowingLockoutView;
+@property (nonatomic, retain) STLockoutViewController *lockoutViewController;
 @property (nonatomic, copy) id /* block */ overrideScrollBlock;
 @property (nonatomic, retain) UIProgressView *progressBar;
 @property (nonatomic, retain) CKScheduledUpdater *refreshServiceForSendingUpdater;
@@ -59,6 +63,7 @@
 - (void)_downgradeStateChangedNotification:(id)arg1;
 - (id)_fullScreenBalloonViewControllerWithChatItem:(id)arg1 showActionMenu:(bool)arg2;
 - (void)_handleAddressBookChangedNotification:(id)arg1;
+- (id)_handleIDsForCurrentConversation;
 - (void)_handleTapEventForBalloonView:(id)arg1 atIndexPath:(id)arg2 showActionMenu:(bool)arg3;
 - (void)_increaseContrastDidChangeNotification:(id)arg1;
 - (void)_localeDidChangeNotification:(id)arg1;
@@ -104,8 +109,10 @@
 - (bool)initialLayoutComplete;
 - (bool)isSafeToMarkAsRead;
 - (bool)isSendingMessage;
+- (bool)isShowingLockoutView;
 - (void)keyboardWillHideViaGesture;
 - (void)loadView;
+- (id)lockoutViewController;
 - (id /* block */)overrideScrollBlock;
 - (void)parentControllerDidBecomeActive;
 - (void)parentControllerDidResume:(bool)arg1 animating:(bool)arg2;
@@ -128,6 +135,8 @@
 - (void)setFullScreenBalloonViewController:(id)arg1;
 - (void)setIgnoreLastBalloonVisibleInMarkAsReadCheck:(bool)arg1;
 - (void)setInitialLayoutComplete:(bool)arg1;
+- (void)setIsShowingLockoutView:(bool)arg1;
+- (void)setLockoutViewController:(id)arg1;
 - (void)setOverrideScrollBlock:(id /* block */)arg1;
 - (void)setProgressBar:(id)arg1;
 - (void)setRefreshServiceForSendingUpdater:(id)arg1;
@@ -147,6 +156,7 @@
 - (void)systemApplicationDidResume;
 - (void)systemApplicationWillEnterForeground;
 - (id)textInputContextIdentifier;
+- (id)traitCollectionForTranscriptCollectionViewController:(id)arg1;
 - (void)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 doubleTappedItemAtIndexPath:(id)arg3;
 - (void)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 longPressedForItemWithIndexPath:(id)arg3;
 - (void)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 tappedForChatItem:(id)arg3;

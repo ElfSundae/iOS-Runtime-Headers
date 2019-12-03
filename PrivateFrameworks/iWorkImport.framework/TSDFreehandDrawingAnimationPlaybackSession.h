@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
  */
 
-@interface TSDFreehandDrawingAnimationPlaybackSession : NSObject <TSDRepDynamicOverrideProvider> {
+@interface TSDFreehandDrawingAnimationPlaybackSession : NSObject <TSDDynamicOverrideProvider> {
     TSDFreehandDrawingInfo * _drawingInfo;
     double  _duration;
     double  _framesPerSecond;
@@ -21,6 +21,7 @@
 
 - (void).cxx_destruct;
 - (double)duration;
+- (id)dynamicOverrideForLayout:(id)arg1;
 - (id)dynamicOverrideForRep:(id)arg1;
 - (id)initWithFreehandDrawingInfo:(id)arg1 duration:(double)arg2 framesPerSecond:(double)arg3;
 - (void)p_updateShouldParameterizeStrokes;

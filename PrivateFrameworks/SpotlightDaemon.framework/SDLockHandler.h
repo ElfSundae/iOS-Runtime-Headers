@@ -4,7 +4,10 @@
 
 @interface SDLockHandler : NSObject
 
++ (void)_deviceLockSetUpMigrationCheck;
 + (void)_deviceLockSetup;
++ (void)_deviceLockSetupMKB;
++ (void)_deviceLockSetupSB;
 + (bool)deviceFirstUnlockedInMKB;
 + (bool)deviceFirstUnlockedInSB;
 + (bool)deviceUnlocked;

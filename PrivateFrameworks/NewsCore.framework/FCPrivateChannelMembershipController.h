@@ -29,14 +29,15 @@
 - (void).cxx_destruct;
 - (void)_fetchPrivateChannelMembershipsWithCompletion:(id /* block */)arg1;
 - (void)_refreshPublicMembershipsWithCompletion:(id /* block */)arg1;
-- (void)activityObservingApplicationDidBecomeActive;
+- (void)activityObservingApplicationWindowDidBecomeForeground;
 - (void)addItem:(id)arg1 toStore:(bool)arg2;
 - (void)addObserver:(id)arg1;
+- (id)allKnownRecordNamesWithinRecordZoneWithID:(id)arg1;
 - (void)changedMembershipsFrom:(id)arg1 toMemberships:(id)arg2;
 - (void)dealloc;
 - (id)feedDescriptorForDraftFeedForChannel:(id)arg1;
 - (void)fetchMembershipsWithIDs:(id)arg1 queue:(id)arg2 completionBlock:(id /* block */)arg3;
-- (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordIDs:(id)arg2;
+- (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordNames:(id)arg2;
 - (bool)hasMemberships;
 - (id)initWithContext:(id)arg1 pushNotificationCenter:(id)arg2 storeDirectory:(id)arg3;
 - (void)isAllowedToSeeArticleID:(id)arg1 completionBlock:(id /* block */)arg2;
@@ -44,6 +45,7 @@
 - (void)isAllowedToSeeIssueID:(id)arg1 completionBlock:(id /* block */)arg2;
 - (bool)isMemberOfChannelID:(id)arg1;
 - (void)loadLocalCachesFromStore;
+- (id)membershipChannelIDs;
 - (id)membershipReferences;
 - (id)membershipsByChannelID;
 - (id)referenceToMembershipForMembershipID:(id)arg1;

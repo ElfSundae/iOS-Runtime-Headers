@@ -14,6 +14,7 @@
         double right; 
     }  _edgeInsets;
     AKRectAnnotation * _editingAnnotaiton;
+    bool  _firstLoadZoomToFit;
     UIImageView * _imageView;
     bool  _inDoubleTapZoom;
     unsigned long long  _inkStyle;
@@ -34,6 +35,7 @@
     UIImage * _tentativePlaceholderImage;
     bool  _usePlaceholderAsDisplayImageIfPossible;
     bool  _wasZoomToFit;
+    bool  _zoomToFitRestoreValue;
 }
 
 @property (nonatomic) bool centersIgnoringContentInsets;
@@ -46,6 +48,7 @@
 @property double downsampledImageScale;
 @property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } edgeInsets;
 @property (nonatomic) AKRectAnnotation *editingAnnotaiton;
+@property (nonatomic) bool firstLoadZoomToFit;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) UIImageView *imageView;
 @property (nonatomic) bool inDoubleTapZoom;
@@ -64,12 +67,14 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) UIImage *tentativePlaceholderImage;
 @property (nonatomic) bool usePlaceholderAsDisplayImageIfPossible;
+@property (nonatomic) bool zoomToFitRestoreValue;
 
 - (void).cxx_destruct;
 - (void)_adjustScrollViewForKeyboardNotification:(id)arg1;
 - (void)_annotationDidEndEditing:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_annotationRectInOverlay:(id)arg1 pageIndex:(unsigned long long)arg2;
 - (void)_annotationWillBeginEditing:(id)arg1;
+- (bool)_canShowWhileLocked;
 - (void)_doubleTap:(id)arg1;
 - (void)_downsampleImageForDisplay:(struct CGImage { }*)arg1 fromImageSource:(struct CGImageSource { }*)arg2 withCompletionHandler:(id /* block */)arg3;
 - (bool)_imageIsSize:(struct CGSize { double x1; double x2; })arg1 isSmallerThanSize:(struct CGSize { double x1; double x2; })arg2;
@@ -116,6 +121,7 @@
 - (void)editCheckpointReachedForAnnotationController:(id)arg1;
 - (void)editDetectedForAnnotationController:(id)arg1;
 - (id)editingAnnotaiton;
+- (bool)firstLoadZoomToFit;
 - (struct CGSize { double x1; double x2; })idealContentSizeForScreenSize:(struct CGSize { double x1; double x2; })arg1 windowDecorationSize:(struct CGSize { double x1; double x2; })arg2;
 - (id)imageView;
 - (bool)inDoubleTapZoom;
@@ -144,6 +150,7 @@
 - (void)setDownsampledImageScale:(double)arg1;
 - (void)setEdgeInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setEditingAnnotaiton:(id)arg1;
+- (void)setFirstLoadZoomToFit:(bool)arg1;
 - (void)setImageView:(id)arg1;
 - (void)setInDoubleTapZoom:(bool)arg1;
 - (void)setInkStyle:(unsigned long long)arg1;
@@ -156,6 +163,7 @@
 - (void)setSourceImagePixelSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setTentativePlaceholderImage:(id)arg1;
 - (void)setUsePlaceholderAsDisplayImageIfPossible:(bool)arg1;
+- (void)setZoomToFitRestoreValue:(bool)arg1;
 - (void)setup;
 - (bool)shouldPlaceFormElementAtPoint:(struct CGPoint { double x1; double x2; })arg1 onOverlayAtPageIndex:(unsigned long long)arg2 forAnnotationController:(id)arg3;
 - (bool)shouldPlaceProposedFormElementAtRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 onOverlayAtPageIndex:(unsigned long long)arg2 forAnnotationController:(id)arg3;
@@ -175,5 +183,6 @@
 - (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })visibleContentRect;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })visibleContentRectInCoordinateSpace:(id)arg1;
+- (bool)zoomToFitRestoreValue;
 
 @end

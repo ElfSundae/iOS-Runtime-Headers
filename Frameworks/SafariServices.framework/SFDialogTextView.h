@@ -26,6 +26,7 @@
 - (void).cxx_destruct;
 - (void)_updateFontStyling;
 - (void)_updateText;
+- (void)_updateTextContainerInset;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })contentInsets;
 - (void)flashScrollIndicators;
 - (id)initWithCoder:(id)arg1;

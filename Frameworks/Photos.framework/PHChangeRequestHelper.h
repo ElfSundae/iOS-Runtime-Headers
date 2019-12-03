@@ -3,36 +3,42 @@
  */
 
 @interface PHChangeRequestHelper : NSObject {
-    id  _changeRequest;
+    <PHChangeRequest> * _changeRequest;
+    <PLClientAuthorization> * _clientAuthorization;
     bool  _isMutated;
-    bool  _isNew;
+    bool  _isNewRequest;
     NSMutableDictionary * _mutations;
     NSMutableSet * _nilMutations;
     NSManagedObjectID * _objectID;
     NSError * _placeholderRequestError;
+    PHPerformChangesRequest * _request;
     NSString * _uuid;
     NSString * _uuidSaveToken;
 }
 
-@property (nonatomic) id changeRequest;
+@property (nonatomic) <PHChangeRequest> *changeRequest;
+@property (getter=isClientEntitled, nonatomic, readonly) bool clientEntitled;
+@property (nonatomic, readonly) NSString *clientName;
 @property (getter=isMutated, nonatomic) bool mutated;
 @property (nonatomic, readonly) NSMutableDictionary *mutations;
-@property (getter=isNew, nonatomic) bool new;
+@property (getter=isNewRequest, nonatomic) bool newRequest;
 @property (nonatomic, readonly) NSMutableSet *nilMutations;
 @property (nonatomic, retain) NSManagedObjectID *objectID;
 @property (nonatomic, readonly) NSError *placeholderRequestError;
+@property (nonatomic) PHPerformChangesRequest *request;
 @property (nonatomic, readonly) NSString *uuid;
 @property (nonatomic, readonly) NSString *uuidSaveToken;
 
 + (id)changeRequestForObject:(id)arg1;
-+ (id)changeRequestWithXPCDict:(id)arg1 clientEntitlements:(id)arg2 clientName:(id)arg3 clientBundleID:(id)arg4 clientProcessID:(int)arg5 clientSender:(id)arg6;
++ (id)changeRequestWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
 
 - (void).cxx_destruct;
 - (bool)_generateUUIDIfNecessary:(id*)arg1;
-- (bool)_validateOrGenerateUUIDWithClientEntitled:(bool)arg1 changeRequest:(id)arg2;
+- (bool)_validateOrGenerateUUIDWithClientEntitled:(bool)arg1 request:(id)arg2 changeRequest:(id)arg3;
 - (bool)allowMutationToManagedObject:(id)arg1 propertyKey:(id)arg2 error:(id*)arg3;
 - (bool)applyMutationsToManagedObject:(id)arg1 error:(id*)arg2;
 - (id)changeRequest;
+- (id)clientName;
 - (id)createManagedObjectForInsertIntoPhotoLibrary:(id)arg1 error:(id*)arg2;
 - (id)description;
 - (void)didMutate;
@@ -41,9 +47,10 @@
 - (id)initForNewObjectWithChangeRequest:(id)arg1;
 - (id)initForNewObjectWithUUID:(id)arg1 changeRequest:(id)arg2;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2 changeRequest:(id)arg3;
-- (id)initWithXPCDict:(id)arg1 changeRequest:(id)arg2 clientEntitlements:(id)arg3;
+- (id)initWithXPCDict:(id)arg1 changeRequest:(id)arg2 request:(id)arg3 clientAuthorization:(id)arg4;
+- (bool)isClientEntitled;
 - (bool)isMutated;
-- (bool)isNew;
+- (bool)isNewRequest;
 - (id)mutations;
 - (id)nilMutations;
 - (id)objectID;
@@ -51,10 +58,12 @@
 - (id)placeholderRequestError;
 - (bool)prepareForPhotoLibraryCheck:(id)arg1 error:(id*)arg2;
 - (bool)prepareForServicePreflightCheck:(id*)arg1;
+- (id)request;
 - (void)setChangeRequest:(id)arg1;
 - (void)setMutated:(bool)arg1;
-- (void)setNew:(bool)arg1;
+- (void)setNewRequest:(bool)arg1;
 - (void)setObjectID:(id)arg1;
+- (void)setRequest:(id)arg1;
 - (id)uuid;
 - (id)uuidSaveToken;
 - (bool)validateMutationsToManagedObject:(id)arg1 error:(id*)arg2;

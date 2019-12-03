@@ -51,25 +51,22 @@
 - (id)layoutClips;
 - (id)logger;
 - (id)multiController;
-- (bool)multiOptionIsNotFirstOrLast:(id)arg1;
 - (bool)multiUpSupportedForAspect:(int)arg1;
 - (void)polishProject;
 - (id)project;
 - (void)removeIrisStylesFromFirstThreeClips;
 - (void)setActiveMemory:(id)arg1;
-- (void)setAlternateVideoScaleFactorXPostitionFor:(id)arg1 boundingRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (void)setConversionNeeded:(id)arg1;
 - (void)setEditController:(id)arg1;
 - (void)setLayoutClips:(id)arg1;
 - (void)setLogger:(id)arg1;
 - (void)setMultiController:(id)arg1;
-- (void)setPrimaryVideoScaleFactorYPostitionFor:(id)arg1 boundingRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (void)setProject:(id)arg1;
 - (void)setTransitionsController:(id)arg1;
+- (void)setVideoScaleFactorXPostitionFor:(id)arg1 boundingRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
+- (void)setVideoScaleFactorYPostitionFor:(id)arg1 boundingRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (float)sideScaleOffsetForScaleFactor:(float)arg1;
-- (void)stopTrackingLayoutClip:(id)arg1;
 - (id)transitionsController;
-- (id)turnAssetsIntoLayoutClips:(id)arg1 forClipAtIndex:(long long)arg2;
 - (id)videoFramingRangesFor:(id)arg1;
 
 @end

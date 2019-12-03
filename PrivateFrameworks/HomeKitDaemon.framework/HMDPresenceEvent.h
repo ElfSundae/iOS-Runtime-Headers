@@ -61,6 +61,7 @@
 - (id)executionSession;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithModel:(id)arg1 home:(id)arg2;
+- (bool)isActive;
 - (id)metricData;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (id)presenceMetricData;

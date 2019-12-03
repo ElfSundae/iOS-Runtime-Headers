@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
  */
 
-@interface MPRequest : NSObject <MPRequestCancellationToken, NSCopying> {
+@interface MPRequest : NSObject <MPRequestCancellationToken, NSCopying, _MPStateDumpPropertyListTransformable> {
     NSOperationQueue * _calloutQueue;
     NSError * _cancelationError;
     NSObject<OS_dispatch_queue> * _cleanupQueue;
@@ -31,6 +31,7 @@
 
 - (void).cxx_destruct;
 - (void)_performWithCompletion:(id /* block */)arg1;
+- (id)_stateDumpObject;
 - (id)calloutQueue;
 - (void)cancel;
 - (id)cancelationError;

@@ -14,6 +14,9 @@
 @property (nonatomic) double responseBodyBytesReceived;
 @property (nonatomic) double responseBodyDecodedSize;
 @property (nonatomic) double responseHeaderBytesReceived;
+@property (nonatomic, retain) RWIProtocolSecurityConnection *securityConnection;
+
+// Image: /System/Library/PrivateFrameworks/WebInspector.framework/WebInspector
 
 - (id)connectionIdentifier;
 - (long long)priority;
@@ -25,6 +28,7 @@
 - (double)responseBodyBytesReceived;
 - (double)responseBodyDecodedSize;
 - (double)responseHeaderBytesReceived;
+- (id)securityConnection;
 - (void)setConnectionIdentifier:(id)arg1;
 - (void)setPriority:(long long)arg1;
 - (void)setProtocol:(id)arg1;
@@ -35,5 +39,10 @@
 - (void)setResponseBodyBytesReceived:(double)arg1;
 - (void)setResponseBodyDecodedSize:(double)arg1;
 - (void)setResponseHeaderBytesReceived:(double)arg1;
+- (void)setSecurityConnection:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/ITMLKit.framework/ITMLKit
+
++ (id)ik_networkMetricsFromURLRequest:(id)arg1 response:(id)arg2 responseBody:(id)arg3 timingData:(id)arg4;
 
 @end

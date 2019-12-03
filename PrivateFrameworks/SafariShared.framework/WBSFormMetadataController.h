@@ -59,7 +59,7 @@
 - (id)metadataForActiveFormInPageWithMainFrame:(id)arg1;
 - (id)metadataForForm:(id)arg1 inFrame:(id)arg2 requestType:(unsigned long long)arg3;
 - (id)metadataForForm:(id)arg1 inFrame:(id)arg2 requestType:(unsigned long long)arg3 addUserEditedStateForUserNameAndPasswordFields:(bool)arg4;
-- (struct FrameMetadata { int (**x1)(); struct Vector<OpaqueJSValue *, 0, WTF::CrashOnOverflow, 16> { struct OpaqueJSValue {} **x_2_1_1; unsigned int x_2_1_2; unsigned int x_2_1_3; } x2; struct OpaqueJSValue {} *x3; struct OpaqueJSValue {} *x4; struct OpaqueJSContext {} *x5; id x6; }*)metadataForFrame:(id)arg1 requestType:(unsigned long long)arg2;
+- (struct FrameMetadata { int (**x1)(); struct Vector<OpaqueJSValue *, 0, WTF::CrashOnOverflow, 16> { struct OpaqueJSValue {} **x_2_1_1; unsigned int x_2_1_2; unsigned int x_2_1_3; } x2; struct OpaqueJSValue {} *x3; struct OpaqueJSValue {} *x4; struct OpaqueJSContext {} *x5; id x6; id x7; }*)metadataForFrame:(id)arg1 requestType:(unsigned long long)arg2;
 - (void)oneTimeCodeFieldBlurred:(id)arg1 inFrame:(id)arg2 page:(id)arg3 textFieldMetadata:(id)arg4 formMetadata:(id)arg5;
 - (void)oneTimeCodeFieldFocused:(id)arg1 withFieldMetadata:(id)arg2 inFrame:(id)arg3;
 - (void)otherCreditCardFieldBlurred:(id)arg1 inFrame:(id)arg2 textFieldMetadata:(id)arg3 formMetadata:(id)arg4;

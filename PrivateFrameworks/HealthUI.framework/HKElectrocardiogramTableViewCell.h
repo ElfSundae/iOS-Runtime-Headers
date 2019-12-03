@@ -23,6 +23,7 @@
 - (bool)bottomPaddingDisabled;
 - (id)cardView;
 - (id)initWithSample:(id)arg1 dateCache:(id)arg2 onboarding:(bool)arg3;
+- (void)prepareForReuse;
 - (id)sample;
 - (void)setBottomPaddingConstraint:(id)arg1;
 - (void)setBottomPaddingDisabled:(bool)arg1;

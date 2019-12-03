@@ -10,13 +10,11 @@
 @property (nonatomic, retain) NSMutableArray *listeners;
 @property (nonatomic, retain) <NAScheduler> *serializer;
 
-+ (bool)_isSchedulingRelatedNotification:(id)arg1 streamName:(id)arg2;
-+ (bool)_isSleepNotification:(id)arg1 streamName:(id)arg2;
-+ (bool)_isSyncNotification:(id)arg1 streamName:(id)arg2;
 + (double)_schedulingAssertionTimeout;
++ (double)defaultAssertionTimeOutForNotification:(id)arg1 type:(long long)arg2;
 
 - (void).cxx_destruct;
-- (void)_handleNotification:(id)arg1;
+- (void)_handleNotificationWithName:(id)arg1 type:(long long)arg2;
 - (void)_registerForAlarmNotifications;
 - (void)_registerForDarwinNotifications;
 - (void)_registerForDistributedNotifications;

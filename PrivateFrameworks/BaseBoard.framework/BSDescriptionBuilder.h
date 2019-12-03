@@ -15,6 +15,8 @@
 @property (nonatomic, retain) NSString *activeMultilinePrefix;
 @property (nonatomic) bool useDebugDescription;
 
+// Image: /System/Library/PrivateFrameworks/BaseBoard.framework/BaseBoard
+
 + (id)builderWithObject:(id)arg1;
 + (id)componentSeparator;
 + (id)descriptionForObject:(id)arg1;
@@ -23,7 +25,6 @@
 + (id)succinctDescriptionForObject:(id)arg1;
 
 - (void).cxx_destruct;
-- (id)_activeComponentString;
 - (int)activeComponent;
 - (id)activeMultilinePrefix;
 - (void)appendArraySection:(id)arg1 withName:(id)arg2 multilinePrefix:(id)arg3 skipIfEmpty:(bool)arg4;
@@ -51,6 +52,7 @@
 - (id)appendKeys:(id)arg1;
 - (id)appendObject:(id)arg1 withName:(id)arg2;
 - (id)appendObject:(id)arg1 withName:(id)arg2 skipIfNil:(bool)arg3;
+- (id)appendObjectWithName:(id)arg1 formatBlock:(id /* block */)arg2;
 - (id)appendObjectsAndNames:(id)arg1;
 - (id)appendObjectsAndNames:(id)arg1 args:(char *)arg2;
 - (id)appendPoint:(struct CGPoint { double x1; double x2; })arg1 withName:(id)arg2;
@@ -76,5 +78,9 @@
 - (void)setUseDebugDescription:(bool)arg1;
 - (void)tryAppendKey:(id)arg1;
 - (bool)useDebugDescription;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoard.framework/SpringBoard
+
+- (void)sbidletimerdescriptor_appendTimeInterval:(double)arg1 withName:(id)arg2;
 
 @end

@@ -27,7 +27,7 @@
 - (void)_snapToIndexPath:(id)arg1 animated:(bool)arg2;
 - (void)_updateHighlightForCell:(id)arg1 atIndexPath:(id)arg2;
 - (void)_updateHighlightForVisibleCellsAnimated:(bool)arg1;
-- (id)cellForClip:(id)arg1;
+- (id)cellForClipProvider:(id)arg1;
 - (bool)collectionView:(id)arg1 canMoveItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;

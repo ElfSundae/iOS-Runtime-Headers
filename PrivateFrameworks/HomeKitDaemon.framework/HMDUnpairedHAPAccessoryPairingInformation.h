@@ -4,13 +4,16 @@
 
 @interface HMDUnpairedHAPAccessoryPairingInformation : HMFObject {
     NSString * _accessoryName;
+    NSString * _accessoryServerIdentifier;
     NSUUID * _accessoryUUID;
     id /* block */  _addAccessoryCompletionHandler;
     id /* block */  _addAccessoryProgressHandler;
     bool  _allowAddUnauthenticatedAccessory;
+    HAPAccessoryConfiguration * _hapAccessoryConfiguration;
     NSString * _homeName;
     long long  _linkType;
     bool  _needsUserConsent;
+    NSData * _ownershipToken;
     HMFTimer * _pairingInterruptionTimer;
     HMFTimer * _pairingRetryTimer;
     bool  _provideNetworkCredentialsToAccessory;
@@ -22,13 +25,16 @@
 }
 
 @property (nonatomic, retain) NSString *accessoryName;
+@property (nonatomic, retain) NSString *accessoryServerIdentifier;
 @property (nonatomic, retain) NSUUID *accessoryUUID;
 @property (nonatomic, copy) id /* block */ addAccessoryCompletionHandler;
 @property (nonatomic, copy) id /* block */ addAccessoryProgressHandler;
 @property (nonatomic) bool allowAddUnauthenticatedAccessory;
+@property (nonatomic, readonly) HAPAccessoryConfiguration *hapAccessoryConfiguration;
 @property (nonatomic, retain) NSString *homeName;
 @property (nonatomic) long long linkType;
 @property (nonatomic) bool needsUserConsent;
+@property (nonatomic, retain) NSData *ownershipToken;
 @property (nonatomic, retain) HMFTimer *pairingInterruptionTimer;
 @property (nonatomic, retain) HMFTimer *pairingRetryTimer;
 @property (nonatomic) bool provideNetworkCredentialsToAccessory;
@@ -40,21 +46,27 @@
 
 - (void).cxx_destruct;
 - (id)accessoryName;
+- (id)accessoryServerIdentifier;
 - (id)accessoryUUID;
 - (id /* block */)addAccessoryCompletionHandler;
 - (id /* block */)addAccessoryProgressHandler;
 - (bool)allowAddUnauthenticatedAccessory;
 - (id)description;
+- (id)hapAccessoryConfiguration;
 - (id)homeName;
-- (id)initWithAccessoryDescription:(id)arg1 linkType:(long long)arg2 needsUserConsent:(bool)arg3 completionHandler:(id /* block */)arg4 progressHandler:(id /* block */)arg5;
-- (id)initWithAccessoryUUID:(id)arg1 accessoryName:(id)arg2 linkType:(long long)arg3 homeName:(id)arg4 setupCode:(id)arg5 completionHandler:(id /* block */)arg6 setupCodeProvider:(id /* block */)arg7;
+- (id)initWithAccessoryDescription:(id)arg1 linkType:(long long)arg2 needsUserConsent:(bool)arg3 completionHandler:(id /* block */)arg4 progressHandler:(id /* block */)arg5 wiFiPSK:(id)arg6 country:(id)arg7;
+- (id)initWithAccessoryUUID:(id)arg1 accessoryName:(id)arg2 linkType:(long long)arg3 homeName:(id)arg4 setupCode:(id)arg5 completionHandler:(id /* block */)arg6 setupCodeProvider:(id /* block */)arg7 wiFiPSK:(id)arg8 country:(id)arg9;
 - (long long)linkType;
+- (bool)matchesAccessoryServer:(id)arg1;
+- (bool)matchesUnpairedAccessory:(id)arg1;
 - (bool)needsUserConsent;
+- (id)ownershipToken;
 - (id)pairingInterruptionTimer;
 - (id)pairingRetryTimer;
 - (bool)provideNetworkCredentialsToAccessory;
 - (id)reconfirmTimer;
 - (void)setAccessoryName:(id)arg1;
+- (void)setAccessoryServerIdentifier:(id)arg1;
 - (void)setAccessoryUUID:(id)arg1;
 - (void)setAddAccessoryCompletionHandler:(id /* block */)arg1;
 - (void)setAddAccessoryProgressHandler:(id /* block */)arg1;
@@ -62,6 +74,7 @@
 - (void)setHomeName:(id)arg1;
 - (void)setLinkType:(long long)arg1;
 - (void)setNeedsUserConsent:(bool)arg1;
+- (void)setOwnershipToken:(id)arg1;
 - (void)setPairingInterruptionTimer:(id)arg1;
 - (void)setPairingRetryTimer:(id)arg1;
 - (void)setProvideNetworkCredentialsToAccessory:(bool)arg1;

@@ -6,11 +6,10 @@
     unsigned long long  _alternateRouteIndex;
     NSDate * _displayETA;
     unsigned long long  _displayRemainingMinutes;
+    GEOETATrafficUpdateResponse * _etaResponse;
     GEOETARoute * _etaRoute;
     GEOComposedRoute * _route;
-    NSUUID * _routeID;
-    NSArray * _routeIncidents;
-    GEORouteInitializerData * _routeInitializerData;
+    GEOComposedRouteTraffic * _traffic;
 }
 
 @property (nonatomic) unsigned long long alternateRouteIndex;
@@ -20,12 +19,14 @@
 @property (nonatomic, retain) GEOETARoute *etaRoute;
 @property (nonatomic, retain) GEOComposedRoute *route;
 @property (nonatomic, readonly) NSUUID *routeID;
-@property (nonatomic, retain) NSArray *routeIncidents;
+@property (nonatomic, retain) GEOComposedRouteTraffic *traffic;
+@property (nonatomic, readonly) GEOTransitRouteUpdateRequest *transitRouteUpdateRequest;
 
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (unsigned long long)alternateRouteIndex;
+- (id)description;
 - (id)displayETA;
 - (unsigned long long)displayRemainingMinutes;
 - (void)encodeWithCoder:(id)arg1;
@@ -33,17 +34,19 @@
 - (id)etaRoute;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRoute:(id)arg1;
+- (id)initWithRoute:(id)arg1 traffic:(id)arg2;
+- (id)initWithRoute:(id)arg1 trafficRoute:(id)arg2 routeInitalizerData:(id)arg3;
 - (id)route;
 - (id)routeID;
-- (id)routeIncidents;
 - (void)setAlternateRouteIndex:(unsigned long long)arg1;
 - (void)setDisplayETA:(id)arg1;
 - (void)setDisplayRemainingMinutes:(unsigned long long)arg1;
 - (void)setEtaResponse:(id)arg1;
 - (void)setEtaRoute:(id)arg1;
 - (void)setRoute:(id)arg1;
-- (void)setRouteID:(id)arg1;
-- (void)setRouteIncidents:(id)arg1;
+- (void)setTraffic:(id)arg1;
+- (id)traffic;
+- (id)transitRouteUpdateRequest;
 - (void)updateWithETARoute:(id)arg1 offsetInMeters:(double)arg2;
 
 @end

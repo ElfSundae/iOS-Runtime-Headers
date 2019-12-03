@@ -20,14 +20,14 @@
     <CPLEngineTransportResourcesDownloadTask> * _transportTask;
 }
 
-@property (nonatomic, readonly) id /* block */ cancelHandler;
+@property (nonatomic, readonly, copy) id /* block */ cancelHandler;
 @property (getter=isCancelledByEngine, nonatomic) bool cancelledByEngine;
 @property (nonatomic, retain) NSString *clientBundleID;
 @property (nonatomic, retain) CPLResource *cloudResource;
-@property (nonatomic, readonly) id /* block */ completionHandler;
-@property (nonatomic, readonly) id /* block */ didStartHandler;
-@property (nonatomic, readonly) id /* block */ launchHandler;
-@property (nonatomic, readonly) id /* block */ progressHandler;
+@property (nonatomic, readonly, copy) id /* block */ completionHandler;
+@property (nonatomic, readonly, copy) id /* block */ didStartHandler;
+@property (nonatomic, readonly, copy) id /* block */ launchHandler;
+@property (nonatomic, readonly, copy) id /* block */ progressHandler;
 @property (nonatomic) unsigned long long taskIdentifierForQueue;
 @property (nonatomic, copy) NSString *transportIdentifier;
 @property (nonatomic, retain) NSData *transportScope;

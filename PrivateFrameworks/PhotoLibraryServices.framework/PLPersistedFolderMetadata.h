@@ -44,7 +44,7 @@
 - (id)description;
 - (id)folder;
 - (id)init;
-- (id)initWithPLManagedFolder:(id)arg1;
+- (id)initWithPLManagedFolder:(id)arg1 pathManager:(id)arg2;
 - (id)initWithPersistedDataAtURL:(id)arg1;
 - (id)insertFolderFromDataInManagedObjectContext:(id)arg1;
 - (bool)isInTrash;

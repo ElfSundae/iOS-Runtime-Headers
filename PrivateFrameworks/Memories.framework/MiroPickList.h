@@ -50,6 +50,7 @@
 
 - (void).cxx_destruct;
 - (void)_assignTrimRangesChronologicallyToPickInfos:(id)arg1;
+- (void)_assignTrimRangesIntelligentlyToPickInfos:(id)arg1;
 - (id)_computeAdjustedPickOrder;
 - (double)_fractionOfPickInfo:(id)arg1 coveredByRanges:(id)arg2;
 - (id)_pickInfosForAssetID:(id)arg1;
@@ -82,6 +83,7 @@
 - (id)mediaAnalyzer;
 - (bool)penalizeNonLocalAssets;
 - (id)people;
+- (id)photoLibrary;
 - (id)photosCuratedAssetIDs;
 - (id)pickOrder;
 - (id)pickOrderFromSourceOrder;

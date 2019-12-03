@@ -8,6 +8,7 @@
     struct NSMutableSet { Class x1; } * _assertions;
     id /* block */  _authCompletionHandler;
     unsigned int  _clientID;
+    NSString * _cloudServiceID;
     unsigned long long  _controlFlags;
     RPCompanionLinkDevice * _destinationDevice;
     id /* block */  _deviceChangedHandler;
@@ -44,6 +45,7 @@
 @property (nonatomic, copy) NSString *appID;
 @property (nonatomic, copy) id /* block */ authCompletionHandler;
 @property (nonatomic) unsigned int clientID;
+@property (nonatomic, copy) NSString *cloudServiceID;
 @property (nonatomic) unsigned long long controlFlags;
 @property (nonatomic, retain) RPCompanionLinkDevice *destinationDevice;
 @property (nonatomic, copy) id /* block */ deviceChangedHandler;
@@ -91,6 +93,7 @@
 - (id)appID;
 - (id /* block */)authCompletionHandler;
 - (unsigned int)clientID;
+- (id)cloudServiceID;
 - (void)companionLinkAuthCompleted:(id)arg1;
 - (void)companionLinkChangedDevice:(id)arg1 changes:(unsigned int)arg2;
 - (void)companionLinkFoundDevice:(id)arg1;
@@ -139,6 +142,7 @@
 - (void)setAppID:(id)arg1;
 - (void)setAuthCompletionHandler:(id /* block */)arg1;
 - (void)setClientID:(unsigned int)arg1;
+- (void)setCloudServiceID:(id)arg1;
 - (void)setControlFlags:(unsigned long long)arg1;
 - (void)setDestinationDevice:(id)arg1;
 - (void)setDeviceChangedHandler:(id /* block */)arg1;

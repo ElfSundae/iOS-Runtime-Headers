@@ -45,9 +45,13 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })frameForDictationResultPlaceholder:(id)arg1;
 - (void)insertDictationResult:(NSArray *)arg1;
 - (id)insertDictationResultPlaceholder;
+- (void)insertText:(NSString *)arg1 alternatives:(NSArray *)arg2 style:(long long)arg3;
+- (UITextPlaceholder *)insertTextPlaceholderWithSize:(struct CGSize { double x1; double x2; })arg1;
 - (UITextPosition *)positionWithinRange:(UITextRange *)arg1 atCharacterOffset:(long long)arg2;
 - (void)removeDictationResultPlaceholder:(id)arg1 willInsertResult:(bool)arg2;
+- (void)removeTextPlaceholder:(UITextPlaceholder *)arg1;
 - (long long)selectionAffinity;
+- (void)setAttributedMarkedText:(NSAttributedString *)arg1 selectedRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (void)setSelectionAffinity:(long long)arg1;
 - (bool)shouldChangeTextInRange:(UITextRange *)arg1 replacementText:(NSString *)arg2;
 - (UIView *)textInputView;

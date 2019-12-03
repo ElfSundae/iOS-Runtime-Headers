@@ -6,6 +6,7 @@
 @optional
 
 - (void)messageCenter:(void *)arg1 activeDeviceChanged:(void *)arg2 acknowledgement:(void *)arg3; // needs 3 arg types, found 7: NMSMessageCenter *, IDSDevice *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, void*
+- (void)messageCenter:(NMSMessageCenter *)arg1 connectedDevicesChanged:(NSArray *)arg2;
 - (void)messageCenter:(NMSMessageCenter *)arg1 didReceiveIncomingFileTransfer:(NMSIncomingFileTransfer *)arg2;
 - (void)messageCenter:(NMSMessageCenter *)arg1 didReceiveUnknownRequest:(NMSIncomingRequest *)arg2;
 - (void)messageCenter:(NMSMessageCenter *)arg1 didResolveIDSIdentifier:(NSString *)arg2 forFileTransfer:(NMSOutgoingFileTransfer *)arg3;

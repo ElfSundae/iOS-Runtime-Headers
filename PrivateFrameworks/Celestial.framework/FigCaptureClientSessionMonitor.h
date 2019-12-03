@@ -18,7 +18,6 @@
     int  _clientType;
     FigCaptureDisplayLayoutMonitor * _displayLayoutMonitor;
     NSString * _extensionHostApplicationID;
-    int  _extensionHostApplicationState;
     bool  _haveExternalCMSession;
     id /* block */  _interruptionHandler;
     id  _interruptionStateChangeNotificationToken;
@@ -28,7 +27,6 @@
     bool  _layoutStateInitialized;
     int  _pid;
     int  _pidToInheritAppStateFrom;
-    int  _resolvedExtensionApplicationState;
     struct opaqueCMSession { } * _session;
     struct OpaqueFigSimpleMutex { } * _sessionLock;
     struct OpaqueFigSimpleMutex { } * _stateChangeLock;
@@ -43,7 +41,7 @@
 @property (nonatomic, readonly) struct opaqueCMSession { }*session;
 @property (readonly) Class superclass;
 
-+ (int)_applicationStateForBKSApplicationState:(unsigned int)arg1 clientType:(int)arg2 applicationID:(id)arg3;
++ (int)_applicationStateForBKSApplicationState:(unsigned int)arg1 clientType:(int)arg2;
 + (int)_applicationStateForClientLayoutState:(int)arg1 clientType:(int)arg2;
 + (bool)_isSupportedExtensionClientType:(int)arg1;
 + (id)_stringForApplicationState:(int)arg1;
@@ -63,8 +61,6 @@
 - (bool)_isApplicationStateMonitoringRequiredForClient;
 - (bool)_isCMSessionInterruptionObservingRequiredForClient;
 - (bool)_isDisplayLayoutMonitoringRequiredForClient;
-- (id)_logString;
-- (void)_notifyIfResolvedSupportedExtensionApplicationStateOrLayoutStateDidChangeUsingLayoutStateChanged:(bool)arg1;
 - (int)_registerCMSessionForObservation;
 - (id)_resolveApplicationID;
 - (int)_resolveApplicationState;
@@ -75,12 +71,14 @@
 - (int)applicationState;
 - (int)clientType;
 - (void)dealloc;
+- (id)debugDescription;
 - (id)description;
 - (id)init;
 - (id)initWithAVConferenceClientApplicationIDs:(id)arg1 applicationAndLayoutStateHandler:(id /* block */)arg2 interruptionHandler:(id /* block */)arg3;
 - (id)initWithClientAuditToken:(id)arg1 forThirdPartyTorch:(bool)arg2 applicationAndLayoutStateHandler:(id /* block */)arg3 interruptionHandler:(id /* block */)arg4;
 - (void)invalidate;
-- (void)layoutMonitor:(id)arg1 didUpdateLayoutWithForegroundApps:(id)arg2 layoutState:(int)arg3;
+- (void)layoutMonitor:(id)arg1 didUpdateLayoutWithForegroundApps:(id)arg2 obscuredApps:(id)arg3;
+- (id)loggingPrefix;
 - (int)observeSession:(struct opaqueCMSession { }*)arg1;
 - (struct opaqueCMSession { }*)session;
 

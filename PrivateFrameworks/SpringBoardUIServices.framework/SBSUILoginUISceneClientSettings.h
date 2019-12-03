@@ -11,6 +11,7 @@
 @property (nonatomic, readonly) long long rotationMode;
 @property (nonatomic, readonly, copy) NSString *statusBarUserNameOverride;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) unsigned long long wallpaperMode;
 
 - (long long)idleTimerMode;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
@@ -18,5 +19,6 @@
 - (long long)rotationMode;
 - (id)statusBarUserNameOverride;
 - (id)valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofSetting:(unsigned long long)arg3;
+- (unsigned long long)wallpaperMode;
 
 @end

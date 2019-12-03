@@ -20,6 +20,7 @@
 
 - (void).cxx_destruct;
 - (id)client;
+- (bool)inEmergencyMode;
 - (id)init;
 - (id)initWithQueue:(id)arg1;
 - (bool)isEmergencyNumberForDigits:(id)arg1 subscription:(id)arg2 error:(id*)arg3;

@@ -23,6 +23,8 @@
 - (int)addObject:(id)arg1 cacheKey:(id)arg2 size:(unsigned long long)arg3 cost:(double)arg4 retDidAddObject:(bool*)arg5;
 - (void)clearCache;
 - (id)copyObjectForKey:(id)arg1 cost:(double*)arg2;
+- (id)copyObjectForKeyDontUpdateAccessTime:(id)arg1 cost:(double*)arg2;
+- (id)copyObjectForKeyImpl:(id)arg1 cost:(double*)arg2 updateAccessTime:(bool)arg3;
 - (unsigned long long)currentSize;
 - (void)dealloc;
 - (unsigned long long)getCacheMemoryUsed;

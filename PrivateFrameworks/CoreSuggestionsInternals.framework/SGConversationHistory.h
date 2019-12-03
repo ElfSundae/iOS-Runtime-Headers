@@ -3,18 +3,15 @@
  */
 
 @interface SGConversationHistory : NSObject {
-    NSArray * _featurization;
     NSString * _likelyLanguage;
     NSArray * _messages;
 }
 
-@property (readonly) NSArray *featurization;
 @property (readonly) NSString *likelyLanguage;
 @property (readonly) NSArray *messages;
 
 - (void).cxx_destruct;
-- (id)featurization;
-- (id)initWithMessages:(id)arg1 featurization:(id)arg2;
+- (id)initWithMessages:(id)arg1;
 - (id)likelyLanguage;
 - (id)messages;
 

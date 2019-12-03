@@ -7,6 +7,7 @@
     NSArray * _accounts;
     bool  _cachesEnabled;
     bool  _isReadOnly;
+    bool  _networkDataAvailable;
     NSArray * _operationalAccountsCache;
     NSMutableDictionary * _serviceToAccountsMap;
     NSMutableDictionary * _serviceToActiveAccountsMap;
@@ -20,6 +21,7 @@
 @property (nonatomic, readonly) IMAccount *activeSMSAccount;
 @property (nonatomic, readonly) id bestAccountForStatus;
 @property (nonatomic, readonly) NSArray *connectedAccounts;
+@property (nonatomic) bool networkDataAvailable;
 @property (nonatomic, readonly) int numberOfAccounts;
 @property (nonatomic, readonly) NSArray *operationalAccounts;
 
@@ -38,8 +40,9 @@
 - (bool)_deactivateAccounts:(id)arg1;
 - (void)_disableCache;
 - (void)_enableCache;
-- (id)_operationalPhoneAccountForService:(id)arg1;
 - (void)_rebuildOperationalAccountsCache:(bool)arg1;
+- (void)_requestNetworkDataAvailability;
+- (bool)_shouldPerformDeferredSetup;
 - (bool)accountActive:(id)arg1;
 - (id)accountAtIndex:(int)arg1;
 - (bool)accountConnected:(id)arg1;
@@ -88,17 +91,22 @@
 - (bool)deactivateAccounts:(id)arg1;
 - (bool)deactivateAccounts:(id)arg1 withDisable:(bool)arg2;
 - (void)dealloc;
+- (void)deferredSetup;
 - (bool)deleteAccount:(id)arg1;
 - (bool)deleteAccount:(id)arg1 locally:(bool)arg2;
+- (id)iMessageAccountForLastAddressedHandle:(id)arg1 simID:(id)arg2;
 - (id)init;
 - (id)jabberAccount;
 - (id)mostLoggedInAccount;
+- (bool)networkDataAvailable;
 - (int)numberOfAccounts;
 - (id)operationalAccounts;
 - (id)operationalAccountsForService:(id)arg1;
 - (id)operationalAccountsWithCapability:(unsigned long long)arg1;
 - (bool)readOnly;
 - (void)setAccounts:(id)arg1;
+- (void)setNetworkDataAvailable:(bool)arg1;
+- (void)setNetworkDataAvailable:(bool)arg1;
 - (void)setReadOnly:(bool)arg1;
 
 // Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
@@ -107,7 +115,6 @@
 - (id)__ck_bestAccountForAddresses:(id)arg1;
 - (id)__ck_bestAccountForAddresses:(id)arg1 withFallbackService:(id)arg2;
 - (id)__ck_defaultAccountForService:(id)arg1;
-- (id)__ck_operationalPhoneAccountForService:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/IMAssistantCore.framework/IMAssistantCore
 

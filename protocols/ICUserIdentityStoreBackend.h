@@ -10,10 +10,13 @@
 - (<ICUserIdentityStoreBackendDelegate> *)delegate;
 - (void)identityPropertiesForDSID:(void *)arg1 completion:(void *)arg2; // needs 2 arg types, found 8: NSNumber *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, ICUserIdentityProperties *, NSError *, void*
 - (void)identityPropertiesForPrimaryICloudAccountWithCompletion:(void *)arg1; // needs 1 arg types, found 7: id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, ICUserIdentityProperties *, NSError *, void*
+- (void)localStoreAccountPropertiesWithCompletion:(void *)arg1; // needs 1 arg types, found 7: id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, ICLocalStoreAccountProperties *, NSError *, void*
+- (ICLocalStoreAccountProperties *)localStoreAccountPropertiesWithError:(id*)arg1;
 - (void)removeIdentityForDSID:(void *)arg1 completion:(void *)arg2; // needs 2 arg types, found 8: NSNumber *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, NSError *, void*
 - (void)replaceIdentityProperties:(void *)arg1 forDSID:(void *)arg2 completion:(void *)arg3; // needs 3 arg types, found 9: ICUserIdentityProperties *, NSNumber *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, NSError *, void*
 - (void)setDelegate:(id <ICUserIdentityStoreBackendDelegate>)arg1;
 - (void)setIdentityProperties:(void *)arg1 forDSID:(void *)arg2 completion:(void *)arg3; // needs 3 arg types, found 9: ICUserIdentityProperties *, NSNumber *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, NSError *, void*
+- (void)setLocalStoreAccountProperties:(void *)arg1 completion:(void *)arg2; // needs 2 arg types, found 8: ICLocalStoreAccountProperties *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, NSError *, void*
 - (void)synchronize;
 - (void)updateActiveAccountDSID:(void *)arg1 completion:(void *)arg2; // needs 2 arg types, found 7: NSNumber *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSError *, void*
 - (void)updateActiveLockerAccountDSID:(void *)arg1 completion:(void *)arg2; // needs 2 arg types, found 7: NSNumber *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSError *, void*

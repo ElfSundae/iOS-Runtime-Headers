@@ -11,6 +11,7 @@
         unsigned int modifiedDate : 1; 
         unsigned int enteredInError : 1; 
     }  _has;
+    NSString * _locale;
     double  _modifiedDate;
     NSString * _note;
     HDCodableSample * _sample;
@@ -25,11 +26,13 @@
 @property (nonatomic) bool hasEnteredInError;
 @property (nonatomic) bool hasExtractionVersion;
 @property (nonatomic, readonly) bool hasFHIRIdentifier;
+@property (nonatomic, readonly) bool hasLocale;
 @property (nonatomic) bool hasModifiedDate;
 @property (nonatomic, readonly) bool hasNote;
 @property (nonatomic, readonly) bool hasSample;
 @property (nonatomic, readonly) bool hasSortDate;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, retain) NSString *locale;
 @property (nonatomic) double modifiedDate;
 @property (nonatomic, retain) NSString *note;
 @property (nonatomic, retain) HDCodableSample *sample;
@@ -48,12 +51,14 @@
 - (bool)hasEnteredInError;
 - (bool)hasExtractionVersion;
 - (bool)hasFHIRIdentifier;
+- (bool)hasLocale;
 - (bool)hasModifiedDate;
 - (bool)hasNote;
 - (bool)hasSample;
 - (bool)hasSortDate;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
+- (id)locale;
 - (void)mergeFrom:(id)arg1;
 - (double)modifiedDate;
 - (id)note;
@@ -65,6 +70,7 @@
 - (void)setHasEnteredInError:(bool)arg1;
 - (void)setHasExtractionVersion:(bool)arg1;
 - (void)setHasModifiedDate:(bool)arg1;
+- (void)setLocale:(id)arg1;
 - (void)setModifiedDate:(double)arg1;
 - (void)setNote:(id)arg1;
 - (void)setSample:(id)arg1;

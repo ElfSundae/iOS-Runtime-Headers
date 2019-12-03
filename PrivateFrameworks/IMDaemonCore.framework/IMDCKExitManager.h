@@ -6,7 +6,6 @@
     NSObject<OS_dispatch_queue> * _ckQueue;
     IMDCKDatabaseManager * _databaseManager;
     NSError * _errorFetchingExitDate;
-    CKOperationConfiguration * _exitConfigurtation;
     NSDate * _exitRecordDate;
     CKRecordID * _exitRecordID;
     bool  _fetchedExitDateOnLaunch;
@@ -18,7 +17,6 @@
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *ckQueue;
 @property (nonatomic, retain) IMDCKDatabaseManager *databaseManager;
 @property (nonatomic, retain) NSError *errorFetchingExitDate;
-@property (nonatomic, retain) CKOperationConfiguration *exitConfigurtation;
 @property (nonatomic, retain) NSDate *exitRecordDate;
 @property (nonatomic, retain) CKRecordID *exitRecordID;
 @property (nonatomic) bool fetchedExitDateOnLaunch;
@@ -46,8 +44,9 @@
 - (id)databaseManager;
 - (void)dealloc;
 - (void)deleteExitRecordWithCompletion:(id /* block */)arg1;
+- (long long)derivedQualityOfService;
 - (id)errorFetchingExitDate;
-- (id)exitConfigurtation;
+- (id)exitConfiguration;
 - (id)exitRecordDate;
 - (void)exitRecordDateWithCompletion:(id /* block */)arg1;
 - (id)exitRecordID;
@@ -60,7 +59,6 @@
 - (void)sendCloudKitZoneFetchRequestToNoteFeatureIsOn;
 - (void)setDatabaseManager:(id)arg1;
 - (void)setErrorFetchingExitDate:(id)arg1;
-- (void)setExitConfigurtation:(id)arg1;
 - (void)setExitRecordDate:(id)arg1;
 - (void)setExitRecordID:(id)arg1;
 - (void)setFetchedExitDateOnLaunch:(bool)arg1;

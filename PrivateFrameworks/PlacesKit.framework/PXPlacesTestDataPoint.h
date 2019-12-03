@@ -7,7 +7,6 @@
         double latitude; 
         double longitude; 
     }  _coordinate;
-    PXImage * _image;
     NSString * _name;
 }
 

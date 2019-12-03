@@ -68,6 +68,14 @@
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
++ (id)_dictionaryIncludingOnlyItemsWithRegisteredTypeIdentifier:(id)arg1 fromMatchingDictionary:(id)arg2;
++ (bool)_evaluateActivationRule:(id)arg1 withDictionaryIfItMatchesActiveWebPageAlternative:(id)arg2 matchResult:(out long long*)arg3;
++ (bool)_evaluateActivationRule:(id)arg1 withInputItemsIfTheyMatchActiveWebPageAlternative:(id)arg2 matchResult:(out long long*)arg3;
++ (bool)_evaluateActivationRuleWithoutWorkarounds:(id)arg1 withExtensionItemsRepresentation:(id)arg2;
++ (bool)_genericValuesMatchActiveWebPageAlternativeWithExtensionItems:(id)arg1 attachmentsLens:(id /* block */)arg2 registeredTypeIdentifiersLens:(id /* block */)arg3 isActiveWebPageAttachmentCheck:(id /* block */)arg4;
++ (id)_inputItemsByApplyingActiveWebPageAlternative:(id)arg1 ifNeededByActivationRule:(id)arg2;
++ (bool)_inputItemsMatchActiveWebPageAlternative:(id)arg1;
++ (bool)_matchingDictionaryMatchesActiveWebPageAlternative:(id)arg1;
 + (bool)_shouldLogExtensionDiscovery;
 + (id)beginMatchingExtensionsWithAttributes:(id)arg1 completion:(id /* block */)arg2;
 + (void)endMatchingExtensions:(id)arg1;
@@ -85,6 +93,7 @@
 
 - (id)_allowedErrorClasses;
 - (id)_bareExtensionServiceConnection;
+- (bool)_beginUsingAndCreateExtensionAssertion:(id*)arg1 options:(unsigned long long)arg2 error:(id*)arg3;
 - (void)_cancelRequestWithError:(id)arg1 forExtensionContextWithUUID:(id)arg2 completion:(id /* block */)arg3;
 - (void)_completeRequestReturningItems:(id)arg1 forExtensionContextWithUUID:(id)arg2 completion:(id /* block */)arg3;
 - (void)_didCreateExtensionContext:(id)arg1;
@@ -102,6 +111,7 @@
 - (void)_hostWillEnterForegroundNote:(id)arg1;
 - (void)_hostWillResignActiveNote:(id)arg1;
 - (id)_initWithPKPlugin:(id)arg1;
+- (id)_inputItemsByApplyingActiveWebPageAlternativeIfNeeded:(id)arg1;
 - (bool)_isMarkedNew;
 - (bool)_isObservingHostAppStateChanges;
 - (bool)_isPhotoServiceAccessGranted;
@@ -159,7 +169,6 @@
 - (id)infoDictionary;
 - (id)init;
 - (bool)isEqual:(id)arg1;
-- (id)newAssertionToBeginUsingPluginWithOptions:(unsigned long long)arg1 error:(id*)arg2;
 - (id)objectForInfoDictionaryKey:(id)arg1;
 - (bool)optedIn;
 - (int)pidForRequestIdentifier:(id)arg1;
@@ -230,6 +239,11 @@
 - (id)_iconWithFormat:(int)arg1;
 - (unsigned long long)_mapExtensionType;
 
+// Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
+
+- (id)pu_supportedMediaTypes;
+- (bool)pu_supportsMediaType:(unsigned long long)arg1;
+
 // Image: /System/Library/Frameworks/QuickLook.framework/QuickLook
 
 - (bool)ql_isPreviewExtensionThatHaveCustomPresentationView;
@@ -250,14 +264,22 @@
 
 - (id)_cnd_requestWithInputItems:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/FileProviderDaemon.framework/FileProviderDaemon
+
+- (id)_freshCopy;
+
+// Image: /System/Library/PrivateFrameworks/GameCenterUI.framework/GameCenterUI
+
++ (id)_gkExtensionWithIdentifier:(id)arg1 error:(id*)arg2;
+
 // Image: /System/Library/PrivateFrameworks/IntentsCore.framework/IntentsCore
 
 - (void)_intents_startExtensionConnectionWithExtensionInputItems:(id)arg1 intent:(id)arg2 queue:(id)arg3 completion:(id /* block */)arg4;
 
-// Image: /System/Library/PrivateFrameworks/PhotosEditUI.framework/PhotosEditUI
+// Image: /System/Library/PrivateFrameworks/QuickLookSupport.framework/QuickLookSupport
 
-- (id)pu_supportedMediaTypes;
-- (bool)pu_supportsMediaType:(unsigned long long)arg1;
+- (bool)QL_isAppleExtension;
+- (id)QL_parentBundleID;
 
 // Image: /System/Library/PrivateFrameworks/SafariFoundation.framework/SafariFoundation
 
@@ -273,6 +295,8 @@
 // Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 
 - (id)__UIKit_upcall_icons;
+- (void)_instantiateAccessoryViewControllerWithInputItems:(id)arg1 connectionHandler:(id /* block */)arg2;
+- (void)_instantiateViewControllerWithInputItems:(id)arg1 asAccessory:(bool)arg2 listenerEndpoint:(id)arg3 connectionHandler:(id /* block */)arg4;
 - (void)instantiateViewControllerWithInputItems:(id)arg1 connectionHandler:(id /* block */)arg2;
 - (void)instantiateViewControllerWithInputItems:(id)arg1 listenerEndpoint:(id)arg2 connectionHandler:(id /* block */)arg3;
 

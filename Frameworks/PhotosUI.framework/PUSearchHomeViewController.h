@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUSearchHomeViewController : PXGadgetViewController <PXNavigationRoot> {
+@interface PUSearchHomeViewController : PXGadgetUIViewController <PXNavigationRoot> {
     UIBarButtonItem * _navigationDisplayModeButtonItem;
     PUSearchHomeGadgetDataSourceManager * _searchHomeDataSourceManager;
 }
@@ -13,7 +13,7 @@
 @property (nonatomic, readonly) UINavigationController *navigationController;
 @property (nonatomic, retain) UIBarButtonItem *navigationDisplayModeButtonItem;
 @property (nonatomic, readonly) NSString *navigationIdentifier;
-@property (nonatomic, readonly) PXNavigationListDataSourceManager *navigationListDataSourceManager;
+@property (nonatomic, readonly) PXNavigationListDataSectionManager *navigationListDataSourceManager;
 @property (nonatomic, readonly) NSString *navigationTitle;
 @property (nonatomic, retain) PUSearchHomeGadgetDataSourceManager *searchHomeDataSourceManager;
 @property (readonly) Class superclass;
@@ -24,6 +24,7 @@
 - (void)_activateSearchField;
 - (void)_clearSearchField;
 - (void)_configureSearchNavigationBar;
+- (void)_notifyAnalyticsSearchAction:(unsigned long long)arg1;
 - (void)gadget:(id)arg1 didChange:(unsigned long long)arg2;
 - (id)init;
 - (id)navigationDisplayModeButtonItem;
@@ -36,11 +37,12 @@
 - (void)ppt_prepareZeroKeywordRequest:(id /* block */)arg1;
 - (void)presentOneYearAgo;
 - (void)presentSiriSearchRequest:(id)arg1 resultCount:(unsigned long long)arg2;
-- (bool)pu_handleSecondTabTap;
+- (bool)pu_scrollToInitialPositionAnimated:(bool)arg1;
 - (id)px_gridPresentation;
+- (long long)scrollAnimationIdentifier;
 - (void)scrollViewDidScroll:(id)arg1;
 - (id)searchHomeDataSourceManager;
-- (void)selectZeroKeyword:(id)arg1 fromSectionWithType:(long long)arg2;
+- (void)selectZeroKeyword:(id)arg1;
 - (void)setNavigationDisplayModeButtonItem:(id)arg1;
 - (void)setSearchHomeDataSourceManager:(id)arg1;
 - (bool)shouldPreventPlaceholder;

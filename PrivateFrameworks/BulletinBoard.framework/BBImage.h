@@ -16,6 +16,7 @@
 
 + (id)imageWithData:(id)arg1;
 + (id)imageWithName:(id)arg1 inBundle:(id)arg2;
++ (id)imageWithName:(id)arg1 inBundlePath:(id)arg2;
 + (id)imageWithPath:(id)arg1;
 + (bool)supportsSecureCoding;
 

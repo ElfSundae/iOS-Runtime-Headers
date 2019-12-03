@@ -6,7 +6,6 @@
     _MRNowPlayingClientProtobuf * _client;
     NSArray * _nowPlayingClients;
     NSMutableArray * _playerClients;
-    NSObject<OS_dispatch_queue> * _serialQueue;
 }
 
 @property (nonatomic, readonly) _MRNowPlayingClientProtobuf *client;

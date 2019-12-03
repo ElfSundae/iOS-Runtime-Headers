@@ -11,7 +11,7 @@
     bool  _isVolumeControlAvailable;
     MRAVOutputDeviceSourceInfo * _outputDeviceSourceInfo;
     NSArray * _outputDevices;
-    NSMutableArray * _pendingModifications;
+    NSArray * _outputDevicesSnapshot;
     bool  _postOutputDeviceChangedScheduled;
     bool  _postOutputDevicesChangedScheduled;
     NSObject<OS_dispatch_queue> * _serialQueue;
@@ -21,6 +21,7 @@
 
 @property (nonatomic, readonly) AVOutputContext *avOutputContext;
 @property (nonatomic, copy) NSArray *outputDevices;
+@property (nonatomic, readonly) NSArray *outputDevicesSnapshot;
 @property (nonatomic, readonly) bool supportsVolumeControl;
 @property (nonatomic, readonly) unsigned int type;
 @property (nonatomic, readonly) NSString *uniqueIdentifier;
@@ -36,9 +37,6 @@
 + (id)sharedSystemScreenContext;
 
 - (void).cxx_destruct;
-- (void)_clearAnyCompletedModifications;
-- (void)_commitModification:(id)arg1;
-- (bool)_contextSupportsMultipleDevices;
 - (void)_handleDiscoverySessionOutputDevicesDidChangeNotification:(id)arg1;
 - (void)_handleOutputDeviceCanSetVolumeDidChangeNotification:(id)arg1;
 - (void)_handleOutputDeviceDidChangeNotification:(id)arg1;
@@ -46,12 +44,12 @@
 - (void)_handleOutputDeviceVolumeDidChangeNotification:(id)arg1;
 - (void)_handleOutputDevicesDidChangeNotification:(id)arg1;
 - (void)_outputContextChangeInitiatedNotification:(id)arg1;
-- (id)_pendingModifications;
 - (void)_registerNotifications;
 - (void)_reloadOutputDevicesForInitialLoad:(bool)arg1;
 - (void)_scheduleOutputContextDeviceDidChangeNotification;
 - (void)_scheduleOutputContextDevicesDidChangeNotification;
 - (void)_unregisterNotifications;
+- (void)addOutputDevices:(id)arg1 initiator:(id)arg2 withCallbackQueue:(id)arg3 block:(id /* block */)arg4;
 - (void)addOutputDevices:(id)arg1 withCallbackQueue:(id)arg2 block:(id /* block */)arg3;
 - (void)attemptLogicalDeviceRecovery;
 - (id)avOutputContext;
@@ -61,11 +59,16 @@
 - (bool)isVolumeControlAvailable;
 - (id)localDevice;
 - (id)outputDevices;
+- (id)outputDevicesSnapshot;
 - (void)removeAllOutputDevicesWithCallbackQueue:(id)arg1 block:(id /* block */)arg2;
+- (void)removeOutputDevices:(id)arg1 initiator:(id)arg2 withCallbackQueue:(id)arg3 block:(id /* block */)arg4;
 - (void)removeOutputDevices:(id)arg1 withCallbackQueue:(id)arg2 block:(id /* block */)arg3;
 - (void)setOutputDevices:(id)arg1;
+- (void)setOutputDevices:(id)arg1 initiator:(id)arg2 withCallbackQueue:(id)arg3 block:(id /* block */)arg4;
+- (void)setOutputDevices:(id)arg1 password:(id)arg2 initiator:(id)arg3 withCallbackQueue:(id)arg4 block:(id /* block */)arg5;
 - (void)setOutputDevices:(id)arg1 withCallbackQueue:(id)arg2 block:(id /* block */)arg3;
 - (void)setOutputDevices:(id)arg1 withPassword:(id)arg2 callbackQueue:(id)arg3 block:(id /* block */)arg4;
+- (void)setOutputDevicesSnapshot:(id)arg1;
 - (void)setVolume:(float)arg1;
 - (bool)supportsVolumeControl;
 - (unsigned int)type;

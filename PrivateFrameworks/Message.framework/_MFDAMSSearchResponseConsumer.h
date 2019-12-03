@@ -11,11 +11,11 @@
     unsigned int  totalCount;
 }
 
-@property (nonatomic, readonly, retain) NSDate *earliestDateAdded;
+@property (nonatomic, readonly) NSDate *earliestDateAdded;
 @property (nonatomic, retain) NSDate *latestDateToAdd;
-@property (nonatomic, readonly, retain) MFMailMessageStoreSearchResult *searchResult;
+@property (nonatomic, readonly) MFMailMessageStoreSearchResult *searchResult;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)earliestDateAdded;
 - (bool)handleItems:(id)arg1;
 - (id)initWithMaximumSize:(unsigned int)arg1 latency:(double)arg2;

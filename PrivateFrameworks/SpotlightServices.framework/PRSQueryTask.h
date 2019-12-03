@@ -15,6 +15,7 @@
     NSString * _queryString;
     NSObject<OS_dispatch_queue> * _queue;
     id  _representedObject;
+    double  _scaleFactor;
     NSDictionary * _server_features;
     PRSSearchSession * _session;
     bool  _started;
@@ -33,6 +34,7 @@
 @property (nonatomic, retain) NSString *queryString;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *queue;
 @property (nonatomic) id representedObject;
+@property double scaleFactor;
 @property (nonatomic, retain) NSDictionary *server_features;
 @property (nonatomic) PRSSearchSession *session;
 @property (nonatomic) bool started;
@@ -63,6 +65,7 @@
 - (id)queue;
 - (id)representedObject;
 - (void)resume;
+- (double)scaleFactor;
 - (id)server_features;
 - (id)session;
 - (void)setCanceled:(bool)arg1;
@@ -77,6 +80,7 @@
 - (void)setQueryString:(id)arg1;
 - (void)setQueue:(id)arg1;
 - (void)setRepresentedObject:(id)arg1;
+- (void)setScaleFactor:(double)arg1;
 - (void)setServer_features:(id)arg1;
 - (void)setSession:(id)arg1;
 - (void)setStarted:(bool)arg1;

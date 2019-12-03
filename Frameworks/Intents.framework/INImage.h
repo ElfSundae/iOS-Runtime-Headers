@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface INImage : NSObject <INCacheableObject, INImageExport, INImageProxyInjecting, INKeyImageProducing, NSCopying, NSSecureCoding> {
+@interface INImage : NSObject <INCacheableObject, INImageExport, INImageProxyInjecting, INJSONSerializable, INKeyImageProducing, NSCopying, NSSecureCoding, WFCodableAttributeContentConvertible> {
     NSString * _identifier;
     struct { 
         double width; 
@@ -33,6 +33,7 @@
 
 + (id)_bundleImageWithURL:(id)arg1;
 + (id)_classesInCluster;
++ (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 + (void)buildFromCachePayload:(id)arg1 identifier:(id)arg2 completion:(id /* block */)arg3;
 + (id)imageNamed:(id)arg1;
 + (id)imageWithImageData:(id)arg1;
@@ -60,7 +61,8 @@
 - (id)_initWithIdentifier:(id)arg1;
 - (id)_initWithURLRepresentation:(id)arg1;
 - (void)_injectProxiesForImages:(id /* block */)arg1 completion:(id /* block */)arg2;
-- (id)_intents_readableDescriptionForLanguage:(id)arg1;
+- (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
+- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
 - (bool)_isEligibleForProxying;
 - (bool)_isSupportedForDonation;
 - (id)_keyImage;
@@ -93,13 +95,18 @@
 + (id)imageWithCGImage:(struct CGImage { }*)arg1;
 + (id)imageWithUIImage:(id)arg1;
 
-- (id)_inui_downscaledPNGImageOfSize:(struct { double x1; double x2; })arg1 error:(id*)arg2;
-- (struct { double x1; double x2; })_inui_fetchImageSize;
 - (void)fetchUIImageWithCompletion:(id /* block */)arg1;
 
 // Image: /System/Library/PrivateFrameworks/CoreDuet.framework/CoreDuet
 
 - (id)cd_dataImage;
 - (id)cd_encodedDataImage;
+
+// Image: /System/Library/PrivateFrameworks/WorkflowKit.framework/WorkflowKit
+
++ (Class)wf_contentItemClass;
+
+- (id)wf_contentItemWithCodableAttribute:(id)arg1;
+- (void)wf_transformUsingCodableAttribute:(id)arg1 completionHandler:(id /* block */)arg2;
 
 @end

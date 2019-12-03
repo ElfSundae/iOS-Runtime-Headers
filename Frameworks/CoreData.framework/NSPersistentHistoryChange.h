@@ -13,6 +13,9 @@
 
 // Image: /System/Library/Frameworks/CoreData.framework/CoreData
 
++ (id)entityDescription;
++ (id)entityDescriptionWithContext:(id)arg1;
++ (id)fetchRequest;
 + (id)shortStringForChangeType:(long long)arg1;
 + (id)stringForChangeType:(long long)arg1;
 + (bool)supportsSecureCoding;

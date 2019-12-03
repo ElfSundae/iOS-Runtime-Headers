@@ -5,6 +5,8 @@
 
 @optional
 
+- (bool)_drawsFocusRingWhenChildrenFocused;
 - (long long)_focusTouchSensitivityStyle;
+- (UIView *)_viewToAddFocusLayer;
 
 @end

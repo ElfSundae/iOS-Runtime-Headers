@@ -18,7 +18,7 @@
     NSArray * mCallStackSymbols;
     NSLock * mLock;
     _CATObserverManager * mObserverManager;
-    int  mState;
+    _Atomic int  mState;
 }
 
 @property (retain) NSUUID *UUID;

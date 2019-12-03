@@ -20,6 +20,8 @@
 @property (nonatomic, readonly) NSHashTable *observers;
 @property (readonly) Class superclass;
 
++ (id)sharedInstance;
+
 - (void).cxx_destruct;
 - (void)_updateActiveFMFDevice:(id)arg1;
 - (id)activeFMFDeviceFuture;

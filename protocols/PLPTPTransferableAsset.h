@@ -7,7 +7,9 @@
 
 - (int)avalanchePickType;
 - (NSString *)avalancheUUID;
+- (bool)cloudPhotoLibraryEnabled;
 - (NSDate *)dateCreated;
+- (unsigned short)deferredProcessingNeeded;
 - (double)duration;
 - (int)embeddedThumbnailOffset;
 - (NSString *)filename;
@@ -33,13 +35,21 @@
 - (NSString *)pathForDiagnosticFile;
 - (NSString *)pathForFullsizeRenderImageFile;
 - (NSString *)pathForFullsizeRenderVideoFile;
+- (NSString *)pathForOriginalAdjustmentFile;
 - (NSString *)pathForOriginalFile;
+- (NSString *)pathForPenultimateFullsizeRenderImageFile;
+- (NSString *)pathForPenultimateFullsizeRenderVideoFile;
+- (NSString *)pathForSpatialOverCaptureContentFile;
+- (NSString *)pathForVideoComplementSpatialOverCaptureContentFile;
 - (<PLPTPTransferableAdditionalAssetAttributes> *)ptpAdditionalAttributes;
 - (unsigned long long)ptpCloudMasterOriginalFileSize;
 - (<PLPTPTransferableSidecarFile> *)ptpPhotoIrisSidecar;
 - (NSSet *)ptpSidecarFiles;
 - (short)savedAssetType;
+- (long long)snowplowTrashedState;
+- (struct CGSize { double x1; double x2; })spatialOverCaptureSize;
 - (id)uuid;
+- (struct CGSize { double x1; double x2; })videoComplementSpatialOverCaptureSize;
 - (long long)width;
 
 @end

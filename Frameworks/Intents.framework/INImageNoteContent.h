@@ -21,7 +21,7 @@
 - (id)_initWithImage:(id)arg1;
 - (void)_injectProxiesForImages:(id /* block */)arg1 completion:(id /* block */)arg2;
 - (id)_intents_cacheableObjects;
-- (id)_intents_readableDescriptionForLanguage:(id)arg1;
+- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
 - (void)_intents_updateContainerWithCache:(id)arg1;
 - (void)_setImage:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

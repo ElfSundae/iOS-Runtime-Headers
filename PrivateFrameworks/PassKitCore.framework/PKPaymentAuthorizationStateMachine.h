@@ -24,6 +24,7 @@
     PKPaymentWebService * _paymentWebService;
     PKPeerPaymentSession * _peerPaymentSession;
     unsigned long long  _prepareTransactionDetailsCounter;
+    NSArray * _remoteDevicesToUpdate;
     unsigned long long  _state;
     double  _updatePaymentDeviceTimeout;
 }
@@ -52,6 +53,7 @@
 @property (nonatomic, retain) PKPaymentWebService *paymentWebService;
 @property (nonatomic, retain) PKPeerPaymentSession *peerPaymentSession;
 @property (nonatomic) unsigned long long prepareTransactionDetailsCounter;
+@property (nonatomic, retain) NSArray *remoteDevicesToUpdate;
 @property (setter=_setState:, nonatomic) unsigned long long state;
 @property (readonly) Class superclass;
 @property (nonatomic) double updatePaymentDeviceTimeout;
@@ -70,18 +72,20 @@
 - (void)_clientCallbackTimedOut;
 - (id)_createNewRemotePaymentRequest;
 - (id)_dequeuePendingCallbackParam;
-- (void)_deviceUpdateDidTimeout;
+- (void)_deviceUpdateDidFailWithNoEiligbleRemoteDevices:(id)arg1;
 - (void)_dispatchNextCallbackParam;
 - (void)_enqeueDidAuthorizePurchaseWithParam:(id)arg1;
 - (void)_enqueueCallbackOfKind:(long long)arg1 withObject:(id)arg2;
 - (void)_enqueueDidAuthorizeAccountServicePaymentRequestWithApplePayTrustSignature:(id)arg1;
 - (void)_enqueueDidAuthorizeDisbursementWithVoucher:(id)arg1;
 - (void)_enqueueDidAuthorizePaymentWithByPassPayment:(id)arg1;
+- (void)_enqueueDidAuthorizePaymentWithInstallmentAuthorizationToken:(id)arg1;
 - (void)_enqueueDidAuthorizePaymentWithPayment:(id)arg1;
 - (void)_enqueueDidAuthorizePaymentWithRemotePayment:(id)arg1;
 - (void)_enqueueDidAuthorizePaymentWithToken:(id)arg1;
 - (void)_enqueueDidAuthorizePeerPaymentQuoteWithAuthorizedQuote:(id)arg1;
 - (void)_enqueueDidRequestMerchantSession;
+- (void)_enqueueDidSelectPaymentMethodWithBindToken:(id)arg1;
 - (void)_enqueueDidSelectPaymentMethodWithQuote:(id)arg1;
 - (void)_enqueueDidSelectPaymentPass:(id)arg1;
 - (void)_enqueueDidSelectPaymentPass:(id)arg1 paymentApplication:(id)arg2;
@@ -96,6 +100,7 @@
 - (void)_performAuthorizationWithParam:(id)arg1;
 - (void)_performCancelRemotePaymentRequest;
 - (void)_performDidAuthorizeCallbackWithParam:(id)arg1;
+- (void)_performInstallmentBind;
 - (void)_performNonceRequestWithParam:(id)arg1;
 - (void)_performPrepareTransactionDetailsRequestWithParam:(id)arg1;
 - (void)_performRewrapRequestWithParam:(id)arg1;
@@ -120,7 +125,8 @@
 - (id)_transactionWithPaymentToken:(id)arg1;
 - (id)_transactionWithPurchase:(id)arg1 paymentHash:(id)arg2;
 - (void)_unregisterForNotifications;
-- (void)_updateModelWithShippingMethods:(id)arg1 paymentSummaryItems:(id)arg2;
+- (void)_updateModelWithRemoteDevices:(id)arg1;
+- (void)_updateModelWithShippingMethods:(id)arg1 paymentSummaryItems:(id)arg2 contentItems:(id)arg3;
 - (id)aggregateDictionary;
 - (bool)awaitingClientCallbackReply;
 - (bool)awaitingWebServiceResponse;
@@ -188,6 +194,7 @@
 - (id)paymentWebService;
 - (id)peerPaymentSession;
 - (unsigned long long)prepareTransactionDetailsCounter;
+- (id)remoteDevicesToUpdate;
 - (void)setAggregateDictionary:(id)arg1;
 - (void)setAwaitingClientCallbackReply:(bool)arg1;
 - (void)setAwaitingWebServiceResponse:(bool)arg1;
@@ -209,6 +216,7 @@
 - (void)setPaymentWebService:(id)arg1;
 - (void)setPeerPaymentSession:(id)arg1;
 - (void)setPrepareTransactionDetailsCounter:(unsigned long long)arg1;
+- (void)setRemoteDevicesToUpdate:(id)arg1;
 - (void)setUpdatePaymentDeviceTimeout:(double)arg1;
 - (void)start;
 - (unsigned long long)state;

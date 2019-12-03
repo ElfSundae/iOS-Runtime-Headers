@@ -2,15 +2,15 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXNavigationListGadgetProvider : PXGadgetProvider <PXNavigationListDataSourceManagerObserver> {
-    PXNavigationListDataSourceManager * _dataSourceManager;
+@interface PXNavigationListGadgetProvider : PXGadgetProvider <PXNavigationListDataSectionManagerObserver> {
+    PXNavigationListDataSectionManager * _dataSourceManager;
     bool  _isPresentedInPicker;
     bool  _shouldShowNavigationListOnIpad;
     PXExtendedTraitCollection * _traitCollection;
     unsigned long long  _type;
 }
 
-@property (nonatomic, retain) PXNavigationListDataSourceManager *dataSourceManager;
+@property (nonatomic, retain) PXNavigationListDataSectionManager *dataSourceManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

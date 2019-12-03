@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
  */
 
-@interface _REFeatureComparisonCondition : REComparisonCondition {
+@interface _REFeatureComparisonCondition : REComparisonCondition <REAutomaticExportedInterface> {
     REFeature * _leftFeature;
     long long  _relation;
     REFeature * _rightFeature;
@@ -20,7 +20,6 @@
 - (bool)_requiresTwoFeatures;
 - (bool)_validForRanking;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (id)descriptionWithIndent:(unsigned long long)arg1;
 - (unsigned long long)hash;
 - (id)initWithLeftFeature:(id)arg1 relation:(long long)arg2 rightFeature:(id)arg3;
 - (bool)isEqual:(id)arg1;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/FrontBoardServices.framework/FrontBoardServices
  */
 
-@interface FBSOpenApplicationOptions : NSObject <BSXPCCoding, NSCopying> {
+@interface FBSOpenApplicationOptions : NSObject <BSXPCCoding, BSXPCSecureCoding, NSCopying> {
     NSMutableDictionary * _payload;
 }
 
@@ -14,6 +14,7 @@
 @property (nonatomic, readonly) NSURL *url;
 
 + (id)optionsWithDictionary:(id)arg1;
++ (bool)supportsBSXPCSecureCoding;
 
 - (void).cxx_destruct;
 - (void)_sanitizeAndValidatePayload;
@@ -22,7 +23,9 @@
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)dictionary;
+- (void)encodeWithBSXPCCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
+- (id)initWithBSXPCCoder:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 - (void)setDictionary:(id)arg1;
 - (id)succinctDescription;

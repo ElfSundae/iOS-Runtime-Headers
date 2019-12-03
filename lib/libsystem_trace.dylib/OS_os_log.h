@@ -4,8 +4,6 @@
 
 @interface OS_os_log : OS_object
 
-+ (void)load;
-
-- (void)_dispose;
+- (void)dealloc;
 
 @end

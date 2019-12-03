@@ -28,7 +28,7 @@
     }  _context;
 }
 
-@property (nonatomic, readonly, copy) PXMemoriesFeedWidgetLayoutMetrics *metrics;
+@property (nonatomic, copy) PXMemoriesFeedWidgetLayoutMetrics *metrics;
 
 - (struct CGSize { double x1; double x2; })estimatedSize;
 - (id)geometryKinds;

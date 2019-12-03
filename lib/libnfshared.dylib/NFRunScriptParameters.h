@@ -4,7 +4,6 @@
 
 @interface NFRunScriptParameters : NSObject <NSSecureCoding> {
     bool  _checkWhitelist;
-    bool  _deactivateAllApps;
     bool  _includeAPDUDuration;
     bool  _initialSelectBeforeRun;
     unsigned long long  _outFinalSWStatus;
@@ -14,7 +13,6 @@
 }
 
 @property bool checkWhitelist;
-@property bool deactivateAllApps;
 @property bool includeAPDUDuration;
 @property bool initialSelectBeforeRun;
 @property unsigned long long outFinalSWStatus;
@@ -25,7 +23,6 @@
 + (bool)supportsSecureCoding;
 
 - (bool)checkWhitelist;
-- (bool)deactivateAllApps;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (bool)includeAPDUDuration;
@@ -35,7 +32,6 @@
 - (double)outTotalAPDUExecutionDuration;
 - (id)seid;
 - (void)setCheckWhitelist:(bool)arg1;
-- (void)setDeactivateAllApps:(bool)arg1;
 - (void)setIncludeAPDUDuration:(bool)arg1;
 - (void)setInitialSelectBeforeRun:(bool)arg1;
 - (void)setOutFinalSWStatus:(unsigned long long)arg1;

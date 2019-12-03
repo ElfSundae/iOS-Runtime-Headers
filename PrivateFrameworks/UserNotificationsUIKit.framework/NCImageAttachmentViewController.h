@@ -20,6 +20,7 @@
 @property (nonatomic, retain) UIView *imageView;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)animatedImagePlayer;
 - (struct CGSize { double x1; double x2; })contentSize;
 - (void)dealloc;

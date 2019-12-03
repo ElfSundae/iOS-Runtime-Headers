@@ -14,6 +14,7 @@
     bool  _hasHLMSupport;
     bool  _hasIcfResistor;
     bool  _hasLPCDSupport;
+    bool  _hasLPEMSupport;
     bool  _hasMFW;
     unsigned long long  _middlewareVersion;
     unsigned long long  _siliconName;
@@ -31,6 +32,7 @@
 @property (nonatomic, readonly) bool hasHLMSupport;
 @property (nonatomic, readonly) bool hasIcfResistor;
 @property (nonatomic, readonly) bool hasLPCDSupport;
+@property (nonatomic, readonly) bool hasLPEMSupport;
 @property (nonatomic, readonly) bool hasMFW;
 @property (nonatomic, readonly) unsigned long long middlewareVersion;
 @property (nonatomic, readonly) unsigned long long siliconName;
@@ -51,6 +53,7 @@
 - (bool)hasHLMSupport;
 - (bool)hasIcfResistor;
 - (bool)hasLPCDSupport;
+- (bool)hasLPEMSupport;
 - (bool)hasMFW;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;

@@ -4,13 +4,15 @@
 
 @interface HDWorkoutSessionServer : NSObject <HDWorkoutDataSource, HDWorkoutSessionStateController, HKDataFlowLinkProcessor, HKStateMachineDelegate> {
     NSString * _applicationIdentifier;
-    HDXPCClient * _client;
+    HDHealthStoreClient * _client;
     NSString * _clientProcessBundleIdentifier;
     HKSource * _clientSource;
+    _HKCurrentWorkoutSnapshot * _currentWorkoutSnapshot;
     bool  _hasFailed;
     NSUUID * _identifier;
     BKSProcessAssertion * _invalidationAssertion;
     _HKExpiringCompletionTimer * _invalidationTimer;
+    NSObject<OS_dispatch_source> * _latestActivityUpdateTimer;
     HKObserverSet * _observers;
     NSObject<OS_dispatch_queue> * _persistenceQueue;
     HDWorkoutSessionEntity * _persistentEntity;
@@ -29,7 +31,7 @@
 }
 
 @property (nonatomic, readonly, copy) NSString *applicationIdentifier;
-@property (nonatomic, retain) HDXPCClient *client;
+@property (nonatomic, retain) HDHealthStoreClient *client;
 @property (nonatomic, readonly, copy) NSString *clientProcessBundleIdentifier;
 @property (nonatomic, readonly, copy) HKSource *clientSource;
 @property (readonly, copy) NSString *debugDescription;
@@ -48,7 +50,7 @@
 @property (readonly, copy) NSUUID *workoutDataProcessorUUID;
 
 + (bool)_finishSessionControllerForSessionEntity:(id)arg1 profile:(id)arg2 transaction:(id)arg3 error:(id*)arg4;
-+ (Class)_sessionControllerClassFromWorkoutConfiguration:(id)arg1;
++ (Class)_sessionControllerClassFromWorkoutConfiguration:(id)arg1 clientApplicationIdentifier:(id)arg2;
 + (id)clientTargetStateMachineForConfiguration:(id)arg1 sessionUUID:(id)arg2;
 + (bool)finishAllWorkoutSessionsForClient:(id)arg1 profile:(id)arg2 error:(id*)arg3;
 + (bool)finishAllWorkoutsExcludingSessions:(id)arg1 profile:(id)arg2 error:(id*)arg3;
@@ -58,27 +60,30 @@
 + (id)workoutSessionServerStateMachineForConfiguration:(id)arg1 sessionUUID:(id)arg2;
 
 - (void).cxx_destruct;
-- (id)_defaultConfigurationWithWorkoutConfiguration:(id)arg1;
-- (void)_deleteSessionAndFinishAssociatedBuilderAtDate:(id)arg1;
 - (id)_detailedDescriptionComponents;
 - (id)_detailedDescriptionString;
 - (bool)_enqueueEvent:(long long)arg1 stateMachine:(id)arg2 date:(id)arg3 error:(id*)arg4;
 - (void)_loadOrCreatePersistentEntity;
+- (bool)_persistenceQueue_resendWorkoutEventsToDataDestination:(id)arg1 error:(id*)arg2;
 - (bool)_persistenceQueue_storeSessionControllerState:(id)arg1 forRecoveryIdentifier:(id)arg2 error:(id*)arg3;
 - (void)_queue_cacheClientIdentifiers;
 - (id)_queue_currentWorkoutSessionConfiguration;
+- (void)_queue_deleteSessionAndFinishAssociatedBuilderAtDate:(id)arg1;
 - (void)_queue_evaluateRequestedTargetStateAtDate:(id)arg1;
 - (void)_queue_generateError:(id)arg1;
 - (void)_queue_generateEvent:(id)arg1;
 - (void)_queue_generateEventWithType:(long long)arg1 date:(id)arg2;
+- (void)_queue_generateMetadata:(id)arg1;
 - (void)_queue_invalidationTimerDidFire;
+- (void)_queue_latestActivityUpdateTimerDidFire;
 - (void)_queue_processStopEvent:(id)arg1;
 - (void)_queue_setTargetState:(long long)arg1 date:(id)arg2 completion:(id /* block */)arg3;
 - (void)_queue_setupSessionController;
 - (void)_queue_startInvalidationTimer;
+- (void)_queue_startLatestActivityUpdateTimer;
 - (void)_queue_stopInvalidationTimer;
-- (void)_recoverPersistedState;
-- (bool)_resendWorkoutEventsToDataDestination:(id)arg1 error:(id*)arg2;
+- (void)_queue_stopLatestActivityUpdateTimer;
+- (bool)_recoverPersistedState;
 - (id)_retrieveSessionControllerStateForRecoveryIdentifier:(id)arg1 error:(id*)arg2;
 - (void)addObserver:(id)arg1 queue:(id)arg2;
 - (id)applicationIdentifier;
@@ -87,6 +92,7 @@
 - (id)client;
 - (id)clientProcessBundleIdentifier;
 - (id)clientSource;
+- (id)currentWorkoutSnapshot;
 - (void)dealloc;
 - (id)description;
 - (void)didBecomeCurrent;
@@ -97,6 +103,7 @@
 - (void)finishAggregationWithDate:(id)arg1;
 - (void)generateError:(id)arg1;
 - (void)generateEvent:(id)arg1;
+- (void)generateMetadata:(id)arg1;
 - (id)identifier;
 - (id)initWithProfile:(id)arg1 configuration:(id)arg2 sessionUUID:(id)arg3 workoutManager:(id)arg4;
 - (bool)isActive;
@@ -124,6 +131,7 @@
 - (void)unitTest_generateStopEvent;
 - (void)unitTest_setSessionController:(id)arg1;
 - (void)unitTest_setStopEventGenerationWaitInterval:(double)arg1;
+- (bool)unitTest_updateLatestActivityDate:(id)arg1;
 - (id)workoutConfiguration;
 - (id)workoutDataAccumulator;
 - (void)workoutDataDestination:(id)arg1 didChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;

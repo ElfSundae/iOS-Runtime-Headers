@@ -9,7 +9,6 @@
     bool  _canHaveLeaveNowAlarm;
     unsigned long long  _disclosedSubitem;
     bool  _hasLeaveNowAlarm;
-    int  _lastSeenAllDayState;
     bool  _userChangedAlarm;
 }
 
@@ -19,7 +18,6 @@
 - (bool)_alarmsMatchCalendarItem;
 - (bool)_calendarItemHasLeaveNowAlarm;
 - (void)_updateAlarms;
-- (void)_updateDefaultAlarm;
 - (id)alarmsViewModel;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (bool)configureForCalendarConstraints:(id)arg1;

@@ -4,7 +4,6 @@
 
 @interface VCTextStream : VCMediaStream <VCTextReceiverDelegate, VCTextSender> {
     <VCTextReceiverDelegate> * _receiveDelegate;
-    long long  _streamToken;
     VCTextReceiver * _textReceiver;
     VCTextTransmitter * _textTransmitter;
 }
@@ -15,7 +14,6 @@
 @property (nonatomic, readonly) double lastReceivedRTCPPacketTime;
 @property (nonatomic, readonly) double lastReceivedRTPPacketTime;
 @property (nonatomic) <VCTextReceiverDelegate> *receiveDelegate;
-@property (nonatomic, readonly) long long streamToken;
 @property (readonly) Class superclass;
 
 - (void)dealloc;
@@ -40,7 +38,6 @@
 - (void)setReceiveDelegate:(id)arg1;
 - (bool)setupTextReceiverWithError:(id*)arg1;
 - (void)setupTextTransmitter;
-- (long long)streamToken;
 - (id)supportedPayloads;
 
 @end

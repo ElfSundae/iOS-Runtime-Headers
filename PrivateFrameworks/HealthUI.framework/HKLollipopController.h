@@ -25,6 +25,7 @@
 - (void).cxx_destruct;
 - (void)_bringViewsToFront;
 - (id)_lollipopAnnotationColor;
+- (id)_lollipopExtensionColor;
 - (double)_lollipopExtensionLength;
 - (double)_lollipopExtensionWidth;
 - (id)_lollipopFieldColor;
@@ -40,7 +41,7 @@
 - (id)extensionViews;
 - (id)fieldView;
 - (id)firstLollipopDate;
-- (id)initWithAnnotationDataSource:(id)arg1 parentView:(id)arg2 showSeparators:(bool)arg3 delegate:(id)arg4;
+- (id)initWithAnnotationDataSource:(id)arg1 parentView:(id)arg2 delegate:(id)arg3;
 - (bool)isVisible;
 - (id)lastFirstLollipopDate;
 - (id)lastSelectionLocation;

@@ -38,7 +38,9 @@
 - (id)effectSettings;
 - (double)grayscaleTintAlpha;
 - (double)grayscaleTintLevel;
+- (unsigned long long)hash;
 - (id)init;
+- (bool)isEqual:(id)arg1;
 - (bool)lightenGrayscaleWithSourceOver;
 - (double)saturationDeltaFactor;
 - (double)scale;

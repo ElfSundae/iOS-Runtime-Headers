@@ -20,7 +20,7 @@
 
 - (void).cxx_destruct;
 - (void)_snapToIndexPath:(id)arg1 animated:(bool)arg2;
-- (id)cellForClip:(id)arg1;
+- (id)cellForClipProvider:(id)arg1;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 layout:(id)arg2 didSnapToItemAtIndexPath:(id)arg3;

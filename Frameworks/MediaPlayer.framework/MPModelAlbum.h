@@ -10,6 +10,7 @@
 @property (getter=isCompilation, nonatomic) bool compilation;
 @property (nonatomic, copy) NSString *copyrightText;
 @property (nonatomic) long long discCount;
+@property (nonatomic, readonly, copy) NSDate *downloadedDate;
 @property (nonatomic, copy) NSString *editorNotes;
 @property (nonatomic, retain) MPModelGenre *genre;
 @property (nonatomic) bool hasCleanContent;
@@ -25,7 +26,6 @@
 @property (nonatomic, copy) NSDateComponents *releaseDateComponents;
 @property (nonatomic, retain) MPModelSong *representativeSong;
 @property (nonatomic, copy) NSString *shortEditorNotes;
-@property (nonatomic, readonly) bool shouldShowFullAlbum;
 @property (nonatomic, copy) id /* block */ songPopularityBlock;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic) long long trackCount;
@@ -40,6 +40,7 @@
 + (id)__compilation_KEY;
 + (id)__copyrightText_KEY;
 + (id)__discCount_KEY;
++ (id)__downloadedDate_KEY;
 + (id)__editorNotes_KEY;
 + (id)__genre_KEY;
 + (id)__hasCleanContent_KEY;
@@ -85,13 +86,10 @@
 
 // Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
 
++ (id)mqf_requiredSectionPlaybackProperties;
+
 - (id)MPC_modelObjectWithStoreFrontLocalEquivalentModelObject:(id)arg1;
-- (id)_radioStationMatchMetadata;
 - (id)mpc_protoContainerRepresentation;
 - (id)mpc_radioContentReference;
-
-// Image: /System/Library/PrivateFrameworks/NanoMusicSync.framework/NanoMusicSync
-
-- (bool)shouldShowFullAlbum;
 
 @end

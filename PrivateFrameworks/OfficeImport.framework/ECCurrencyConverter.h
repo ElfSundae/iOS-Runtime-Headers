@@ -11,7 +11,7 @@
 
 + (id)currencyConverter;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)lassoCurrencyCodeForDollar;
 - (id)lassoCurrencyCodeFromXl:(id)arg1;
 - (void)populateDictionaries;

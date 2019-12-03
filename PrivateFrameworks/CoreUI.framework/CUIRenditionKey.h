@@ -11,12 +11,38 @@
     }  _stackKey;
 }
 
+@property (nonatomic) long long themeAppearance;
+@property (nonatomic) long long themeDeploymentTarget;
+@property (nonatomic) long long themeDimension1;
+@property (nonatomic) long long themeDimension2;
+@property (nonatomic) long long themeDirection;
+@property (nonatomic) long long themeDisplayGamut;
+@property (nonatomic) long long themeElement;
+@property (nonatomic) long long themeGlyphSize;
+@property (nonatomic) long long themeGlyphWeight;
+@property (nonatomic) long long themeGraphicsClass;
+@property (nonatomic) long long themeIdentifier;
+@property (nonatomic) long long themeIdiom;
+@property (nonatomic) long long themeLayer;
+@property (nonatomic) long long themeLocalization;
+@property (nonatomic) long long themeMemoryClass;
+@property (nonatomic) long long themePart;
+@property (nonatomic) long long themePresentationState;
+@property (nonatomic) long long themePreviousState;
+@property (nonatomic) long long themePreviousValue;
+@property (nonatomic) long long themeScale;
+@property (nonatomic) long long themeSize;
+@property (nonatomic) long long themeSizeClassHorizontal;
+@property (nonatomic) long long themeSizeClassVertical;
+@property (nonatomic) long long themeState;
+@property (nonatomic) long long themeSubtype;
+@property (nonatomic) long long themeValue;
+
 + (void)initialize;
 + (id)renditionKey;
 + (id)renditionKeyWithKeyList:(const struct _renditionkeytoken { unsigned short x1; unsigned short x2; }*)arg1;
 
 - (void)_expandKeyIfNecessaryForCount:(long long)arg1;
-- (unsigned short)_systemTokenCount;
 - (void)copyValuesFromKeyList:(const struct _renditionkeytoken { unsigned short x1; unsigned short x2; }*)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -37,10 +63,13 @@
 - (void)setThemeDirection:(long long)arg1;
 - (void)setThemeDisplayGamut:(long long)arg1;
 - (void)setThemeElement:(long long)arg1;
+- (void)setThemeGlyphSize:(long long)arg1;
+- (void)setThemeGlyphWeight:(long long)arg1;
 - (void)setThemeGraphicsClass:(long long)arg1;
 - (void)setThemeIdentifier:(long long)arg1;
 - (void)setThemeIdiom:(long long)arg1;
 - (void)setThemeLayer:(long long)arg1;
+- (void)setThemeLocalization:(long long)arg1;
 - (void)setThemeMemoryClass:(long long)arg1;
 - (void)setThemePart:(long long)arg1;
 - (void)setThemePresentationState:(long long)arg1;
@@ -61,10 +90,13 @@
 - (long long)themeDirection;
 - (long long)themeDisplayGamut;
 - (long long)themeElement;
+- (long long)themeGlyphSize;
+- (long long)themeGlyphWeight;
 - (long long)themeGraphicsClass;
 - (long long)themeIdentifier;
 - (long long)themeIdiom;
 - (long long)themeLayer;
+- (long long)themeLocalization;
 - (long long)themeMemoryClass;
 - (long long)themePart;
 - (long long)themePresentationState;

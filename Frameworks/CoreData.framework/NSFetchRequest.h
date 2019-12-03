@@ -4,6 +4,7 @@
 
 @interface NSFetchRequest : NSPersistentStoreRequest <NSCoding, NSSecureCoding> {
     id * _additionalPrivateIvars;
+    unsigned long long  _allocationSize;
     unsigned long long  _batchSize;
     NSEntityDescription * _entity;
     unsigned long long  _fetchLimit;
@@ -18,8 +19,10 @@
         unsigned int entityIsName : 1; 
         unsigned int refreshesRefetched : 1; 
         unsigned int propertiesValidated : 1; 
+        unsigned int expressionsValidated : 1; 
         unsigned int disableCaching : 1; 
-        unsigned int _RESERVED : 19; 
+        unsigned int allocationType : 3; 
+        unsigned int _RESERVED : 15; 
     }  _flags;
     NSArray * _groupByProperties;
     NSPredicate * _havingPredicate;
@@ -58,6 +61,7 @@
 
 - (id)_XPCEncodedFlags;
 - (id)_asyncResultHandle;
+- (void)_bindExpressionDescriptionProperties:(id)arg1;
 - (id)_copyForDirtyContext;
 - (bool)_disablePersistentStoreResultCaching;
 - (void)_incrementInUseCounter;
@@ -72,6 +76,8 @@
 - (void)_throwIfNotEditable;
 - (void)_writeIntoData:(id)arg1 propertiesDict:(id)arg2 uniquedPropertyNames:(id)arg3 uniquedStrings:(id)arg4 uniquedData:(id)arg5 uniquedMappings:(id)arg6 entities:(id)arg7;
 - (id)affectedStores;
+- (unsigned long long)allocationSize;
+- (unsigned long long)allocationType;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)description;
@@ -103,6 +109,8 @@
 - (bool)returnsDistinctResults;
 - (bool)returnsObjectsAsFaults;
 - (void)setAffectedStores:(id)arg1;
+- (void)setAllocationSize:(unsigned long long)arg1;
+- (void)setAllocationType:(unsigned long long)arg1;
 - (void)setEntity:(id)arg1;
 - (void)setFetchBatchSize:(unsigned long long)arg1;
 - (void)setFetchLimit:(unsigned long long)arg1;

@@ -5,8 +5,10 @@
 
 @optional
 
+- (_SFDownload *)sfWebView:(_SFWebView *)arg1 didStartDownload:(_WKDownload *)arg2;
 - (void)sfWebViewDidBecomeFirstResponder:(_SFWebView *)arg1;
 - (void)sfWebViewDidChangeSafeAreaInsets:(_SFWebView *)arg1;
 - (void)sfWebViewDidEndFormControlInteraction:(_SFWebView *)arg1;
+- (void)sfWebViewDidStartFormControlInteraction:(_SFWebView *)arg1;
 
 @end

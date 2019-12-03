@@ -9,6 +9,7 @@
     NSString * _documentRef;
     <VUIAppDocumentUpdateContext> * _documentUpdateContext;
     NSMutableOrderedSet * _documentUpdateViewElements;
+    bool  _markDocumentDirtyForRefreshUpdate;
     NSString * _viewControllerIdentifier;
 }
 
@@ -21,6 +22,7 @@
 @property (nonatomic, retain) <VUIAppDocumentUpdateContext> *documentUpdateContext;
 @property (nonatomic, retain) NSMutableOrderedSet *documentUpdateViewElements;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) bool markDocumentDirtyForRefreshUpdate;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSString *viewControllerIdentifier;
 
@@ -38,7 +40,7 @@
 - (void)_unregisterDocumentUpdateEventDescriptors;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (id)appContext;
-- (void)appDocumentUpdateEventMonitor:(id)arg1 didReceiveEvent:(id)arg2;
+- (void)appDocumentDidReceiveEvent:(id)arg1;
 - (void)dealloc;
 - (bool)deferDocumentUpdateEventProcessing;
 - (id)deferredDocumentUpdateEventStore;
@@ -56,6 +58,7 @@
 - (id)initWithDocumentServiceRequest:(id)arg1 loadImmediately:(bool)arg2 documentRef:(id)arg3 viewControllerIdentifier:(id)arg4;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)interactionPreviewControllerForViewController:(id)arg1 presentingView:(id)arg2 presentingElement:(id)arg3;
+- (bool)markDocumentDirtyForRefreshUpdate;
 - (void)popoverPresentationController:(id)arg1 willRepositionPopoverToRect:(inout struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg2 inView:(inout id*)arg3;
 - (void)serviceRequest:(id)arg1 didCompleteWithStatus:(long long)arg2 errorDictionary:(id)arg3;
 - (void)setAppContext:(id)arg1;
@@ -64,6 +67,7 @@
 - (void)setDocumentRef:(id)arg1;
 - (void)setDocumentUpdateContext:(id)arg1;
 - (void)setDocumentUpdateViewElements:(id)arg1;
+- (void)setMarkDocumentDirtyForRefreshUpdate:(bool)arg1;
 - (void)setViewControllerIdentifier:(id)arg1;
 - (void)updateDocumentWithContextDictionary:(id)arg1 element:(id)arg2;
 - (void)updateServiceRequest:(id)arg1 documentDidChange:(id)arg2;

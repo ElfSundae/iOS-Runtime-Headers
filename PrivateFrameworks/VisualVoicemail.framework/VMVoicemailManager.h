@@ -60,6 +60,7 @@
 - (struct os_unfair_lock_s { unsigned int x1; })accessorLock;
 - (id)accounts;
 - (id)allVoicemails;
+- (id)asynchronousServerConnectionWithErrorHandler:(id /* block */)arg1;
 - (bool)canChangeGreeting;
 - (bool)canChangePassword;
 - (id)capabilities;
@@ -88,6 +89,12 @@
 - (id)markVoicemailsAsRead:(id)arg1;
 - (double)maximumGreetingDurationForAccountUUID:(id)arg1;
 - (long long)maximumPasscodeLengthForAccountUUID:(id)arg1;
+- (void)messageCountForMailboxType:(long long)arg1 completion:(id /* block */)arg2;
+- (long long)messageCountForMailboxType:(long long)arg1 error:(id*)arg2;
+- (void)messageCountForMailboxType:(long long)arg1 read:(bool)arg2 completion:(id /* block */)arg3;
+- (long long)messageCountForMailboxType:(long long)arg1 read:(bool)arg2 error:(id*)arg3;
+- (id)messagesForMailboxType:(long long)arg1 limit:(long long)arg2 offset:(long long)arg3 error:(id*)arg4;
+- (id)messagesForMailboxType:(long long)arg1 read:(bool)arg2 limit:(long long)arg3 offset:(long long)arg4 error:(id*)arg5;
 - (long long)minimumPasscodeLengthForAccountUUID:(id)arg1;
 - (void)obliterate;
 - (void)performAtomicAccessorBlock:(id /* block */)arg1;
@@ -101,7 +108,6 @@
 - (void)saveGreeting:(id)arg1 withCompletionHandler:(id /* block */)arg2;
 - (id)serialDispatchQueue;
 - (id)serverConnection;
-- (id)serverConnectionWithErrorHandler:(id /* block */)arg1;
 - (void)setAccounts:(id)arg1;
 - (void)setCapabilities:(id)arg1;
 - (void)setClient:(id)arg1;
@@ -127,7 +133,7 @@
 - (id)trashedMessages;
 - (id)uniqueIdentifierForVoiceMail:(id)arg1;
 - (long long)unreadCount;
-- (oneway void)updateAccounts:(id)arg1;
+- (void)updateAccounts:(id)arg1;
 - (id)voicemailWithIdentifier:(unsigned long long)arg1;
 - (id)voicemails;
 - (id)voicemailsPassingTest:(id /* block */)arg1;

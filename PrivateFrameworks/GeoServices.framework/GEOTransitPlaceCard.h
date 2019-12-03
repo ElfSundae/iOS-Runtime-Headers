@@ -4,9 +4,22 @@
 
 @interface GEOTransitPlaceCard : PBCodable <NSCopying> {
     struct { 
-        unsigned int transitCategory : 1; 
-    }  _has;
+        unsigned int has_transitCategory : 1; 
+        unsigned int read_incidentType : 1; 
+        unsigned int read_transitDepartureSequenceUsage : 1; 
+        unsigned int read_transitSystemName : 1; 
+        unsigned int wrote_incidentType : 1; 
+        unsigned int wrote_transitDepartureSequenceUsage : 1; 
+        unsigned int wrote_transitSystemName : 1; 
+        unsigned int wrote_transitCategory : 1; 
+    }  _flags;
     NSString * _incidentType;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     int  _transitCategory;
     GEOTransitDepartureSequenceUsage * _transitDepartureSequenceUsage;
     NSString * _transitSystemName;
@@ -21,8 +34,13 @@
 @property (nonatomic, retain) GEOTransitDepartureSequenceUsage *transitDepartureSequenceUsage;
 @property (nonatomic, retain) NSString *transitSystemName;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsTransitCategory:(id)arg1;
+- (void)_readIncidentType;
+- (void)_readTransitDepartureSequenceUsage;
+- (void)_readTransitSystemName;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -33,8 +51,11 @@
 - (bool)hasTransitSystemName;
 - (unsigned long long)hash;
 - (id)incidentType;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasTransitCategory:(bool)arg1;
 - (void)setIncidentType:(id)arg1;

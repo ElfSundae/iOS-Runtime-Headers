@@ -89,9 +89,9 @@
 @property (nonatomic, readonly) bool hasConnectingSessions;
 @property (nonatomic) bool hasReinitiateCapability;
 @property (nonatomic, readonly) bool hasUnfinishedSessions;
-@property (nonatomic, readonly, retain) IMHandle *imHandle;
+@property (nonatomic, readonly) IMHandle *imHandle;
 @property (nonatomic, retain) NSData *inFrequencyLevel;
-@property (nonatomic, readonly, retain) IMHandle *invitedBy;
+@property (nonatomic, readonly) IMHandle *invitedBy;
 @property (setter=setAudioMuted:, nonatomic) bool isAudioMuted;
 @property (nonatomic, readonly) bool isInitiator;
 @property (nonatomic, readonly) bool isLocalParticipant;
@@ -102,7 +102,7 @@
 @property (nonatomic, readonly) bool isVideoDegraded;
 @property (setter=setVideoDegraded:) bool isVideoDegraded;
 @property (setter=setVideoPaused:, nonatomic) bool isVideoPaused;
-@property (nonatomic, readonly, retain) NSString *name;
+@property (nonatomic, readonly) NSString *name;
 @property (nonatomic, retain) NSData *outFrequencyLevel;
 @property (nonatomic, retain) NSDictionary *properties;
 @property (nonatomic, readonly) unsigned int reasonChatEnded;
@@ -111,6 +111,7 @@
 @property (nonatomic) void*videoBackLayer;
 @property (nonatomic) void*videoLayer;
 
+- (void).cxx_destruct;
 - (long long)_activeCallID;
 - (id)_callInfoForCallID:(long long)arg1;
 - (id)_callInfoForReinitiate;

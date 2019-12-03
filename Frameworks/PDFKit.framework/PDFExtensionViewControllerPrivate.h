@@ -8,6 +8,7 @@
         double y; 
     }  bottomRightSelectionPoint;
     long long  currentGestureState;
+    bool  didCancelActiveSearch;
     struct CGSize { 
         double width; 
         double height; 
@@ -18,7 +19,6 @@
     NSMutableArray * searchResults;
     PDFSelection * searchSelection;
     NSString * searchString;
-    NSMutableArray * selectionRects;
     struct CGPoint { 
         double x; 
         double y; 

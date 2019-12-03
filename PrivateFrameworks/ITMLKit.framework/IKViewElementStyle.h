@@ -7,6 +7,7 @@
     IKCSSRule * _cssRule;
     bool  _filterBlockedStyles;
     NSArray * _mediaQueryList;
+    NSMutableDictionary * _overridingValuesByStyle;
     NSMutableDictionary * _styleDict;
 }
 
@@ -52,6 +53,7 @@
 @property (nonatomic, readonly) NSString *maxWidth;
 @property (nonatomic, retain) NSArray *mediaQueryList;
 @property (nonatomic, readonly) unsigned long long ordinalMaxLength;
+@property (nonatomic, retain) NSMutableDictionary *overridingValuesByStyle;
 @property (nonatomic, readonly) long long reflectImage;
 @property (nonatomic, readonly) NSString *rowHeight;
 @property (nonatomic, retain) NSMutableDictionary *styleDict;
@@ -80,6 +82,7 @@
 + (bool)isHiddenStyleRegistered;
 + (id)normalizeClassSelectorString:(id)arg1;
 + (unsigned long long)positionFromString:(id)arg1;
++ (id)propertiesForStyleName:(id)arg1;
 + (void)registerEdgeInsetStyle:(id)arg1 aliasName:(id)arg2 withPositionStyleNames:(id)arg3 inherited:(bool)arg4;
 + (void)registerHiddenStyle:(id)arg1;
 + (void)registerStyle:(id)arg1 aliasName:(id)arg2 withType:(unsigned long long)arg3 inherited:(bool)arg4;
@@ -112,6 +115,7 @@
 - (id)columnType;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)cssRule;
+- (id)cssValueForStyle:(id)arg1;
 - (id)debugDescription;
 - (id)description;
 - (id)dividerType;
@@ -147,10 +151,13 @@
 - (id)maxWidth;
 - (id)mediaQueryList;
 - (unsigned long long)ordinalMaxLength;
+- (id)overridingValuesByStyle;
+- (id)prototype;
 - (long long)reflectImage;
 - (bool)requiresDynamicEvaluation;
 - (id)rowHeight;
 - (void)setMediaQueryList:(id)arg1;
+- (void)setOverridingValuesByStyle:(id)arg1;
 - (void)setStyleDict:(id)arg1;
 - (id)styleDict;
 - (unsigned long long)textAlignment;
@@ -203,6 +210,7 @@
 - (id)tv_imageTreatment;
 - (double)tv_imageUpscaleFactor;
 - (double)tv_interitemSpacing;
+- (id)tv_layerFlipMode;
 - (double)tv_lineSpacing;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })tv_margin;
 - (double)tv_maxHeight;
@@ -219,10 +227,10 @@
 - (id)tv_ratingStyle;
 - (unsigned long long)tv_rowCount;
 - (id)tv_scrollMode;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })tv_scrollableBoundsInset;
 - (id)tv_searchStyle;
 - (void)tv_setStyleMetrics:(id)arg1;
 - (id)tv_shadow;
-- (id)tv_showcaseMode;
 - (id)tv_styleMetrics;
 - (long long)tv_textAlignment;
 - (id)tv_textHighlightStyle;

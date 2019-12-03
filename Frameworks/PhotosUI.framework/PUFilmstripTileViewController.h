@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUFilmstripTileViewController : PUImageTileViewController <PUAssetViewModelChangeObserver> {
+@interface PUFilmstripTileViewController : PUImageTileViewController <PUAssetViewModelChangeObserver, PUBrowsingVideoPlayerTimeObserver> {
     struct CGSize { 
         double width; 
         double height; 
@@ -33,6 +33,8 @@
 - (void)didChangeVisibleRect;
 - (id)loadView;
 - (void)setAssetViewModel:(id)arg1;
+- (void)videoPlayer:(id)arg1 currentTimeDidChange:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2;
+- (void)videoPlayer:(id)arg1 desiredSeekTimeDidChange:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 - (bool)wantsVisibleRectChanges;
 

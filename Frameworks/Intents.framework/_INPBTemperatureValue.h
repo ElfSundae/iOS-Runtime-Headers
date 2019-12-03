@@ -3,6 +3,7 @@
  */
 
 @interface _INPBTemperatureValue : PBCodable <NSCopying, NSSecureCoding, _INPBTemperatureValue> {
+    bool  __encodeLegacyGloryData;
     struct { 
         unsigned int magnitude : 1; 
         unsigned int unit : 1; 
@@ -12,6 +13,7 @@
     _INPBValueMetadata * _valueMetadata;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) bool hasMagnitude;
@@ -23,14 +25,20 @@
 @property (nonatomic) int unit;
 @property (nonatomic, retain) _INPBValueMetadata *valueMetadata;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (int)StringAsUnit:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasMagnitude;
 - (bool)hasUnit;
 - (bool)hasValueMetadata;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (double)magnitude;
 - (bool)readFrom:(id)arg1;

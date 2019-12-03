@@ -23,6 +23,7 @@
 - (id)sessionForOptions:(id)arg1;
 - (void)setPinnedSession:(id)arg1;
 - (void)setUnpinnedSession:(id)arg1;
+- (id)underlyingDelegateQueue;
 - (id)unpinnedSession;
 
 @end

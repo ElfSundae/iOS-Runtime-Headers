@@ -17,6 +17,7 @@
     UIKBSplitImageView * _keyCaps;
     UIKBKeyViewAnimator * _keyViewAnimator;
     UIKBTree * _keyplane;
+    UIView * _keyplaneMaskView;
     bool  _performingDeactivation;
     UIKBRenderConfig * _renderConfig;
     NSMutableDictionary * _renderedKeyViews;
@@ -40,15 +41,18 @@
 @property (nonatomic, readonly) bool keepNonPersistent;
 @property (nonatomic, retain) UIKBKeyViewAnimator *keyViewAnimator;
 @property (nonatomic, retain) UIKBTree *keyplane;
+@property (nonatomic, readonly) UIView *keyplaneMaskView;
 @property (nonatomic, retain) UIKBRenderConfig *renderConfig;
 @property (nonatomic, retain) UIKBRenderingContext *renderingContext;
 @property (readonly) Class superclass;
 
 - (bool)_canDrawContent;
+- (id)_existingVariantsKeyViewForKey:(id)arg1;
 - (void)_generateFactoryIfNeeded;
 - (void)_generateRenderingContextIfNeeded;
 - (bool)_shouldAllowKey:(id)arg1;
 - (bool)_shouldInheritScreenScaleAsContentScaleFactor;
+- (void)_updateKeyplaneMaskView;
 - (void)activateKeys;
 - (id)activeKeyViews;
 - (void)addKeyToDelayedDeactivationSet:(id)arg1;
@@ -61,8 +65,8 @@
 - (id)cacheToken;
 - (double)cachedWidth;
 - (void)cancelDelayedDeactivation;
-- (id)containingViewForKey:(id)arg1 withState:(int)arg2;
-- (int)cornerMaskForKey:(id)arg1 recursive:(bool)arg2;
+- (id)containingViewForKey:(id)arg1 withState:(int)arg2 wantsActiveOut:(bool*)arg3;
+- (unsigned long long)cornerMaskForKey:(id)arg1 recursive:(bool)arg2;
 - (void)deactivateAdaptiveKey:(id)arg1;
 - (void)deactivateKey:(id)arg1 previousState:(int)arg2;
 - (void)deactivateKeys;
@@ -74,14 +78,18 @@
 - (void)drawContentsOfRenderers:(id)arg1;
 - (id)emojiKeyManager;
 - (id)factory;
+- (void)hideKeyCaps:(bool)arg1;
 - (id)hitTest:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 keyplane:(id)arg2;
 - (bool)isPasscodeStyle;
 - (bool)keepNonPersistent;
 - (id)keyViewAnimator;
 - (id)keyplane;
+- (id)keyplaneMaskView;
+- (void)layoutSubviews;
 - (void)performDelayedDeactivation:(id)arg1;
 - (void)prepareForDisplay;
+- (void)purgeActiveKeyViews;
 - (void)purgeFactory;
 - (void)purgeKeyViews;
 - (void)purgeLayerContents;
@@ -90,6 +98,7 @@
 - (void)removeKeyFromDelayedDeactivationSet:(id)arg1;
 - (id)renderConfig;
 - (id)renderingContext;
+- (void)retestSelectedVariantIndexForKey:(id)arg1 atPoint:(struct CGPoint { double x1; double x2; })arg2;
 - (void)scheduleDelayedDeactivation;
 - (void)setCacheToken:(id)arg1;
 - (void)setContentScaleFactor:(double)arg1;
@@ -105,6 +114,7 @@
 - (bool)shouldAnimateInKeyView:(id)arg1;
 - (bool)shouldAnimateOutKeyView:(id)arg1;
 - (int)stateForKey:(id)arg1;
+- (void)updateFrameForKey:(id)arg1;
 - (bool)useDefaultKeyplaneCacheTokenForRenderFlags:(long long)arg1;
 - (bool)validForKeyplane:(id)arg1 withVisualStyle:(int)arg2;
 - (id)viewForKey:(id)arg1;

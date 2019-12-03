@@ -8,6 +8,7 @@
     <HUQuickControlViewInteractionDelegate> * _interactionDelegate;
     bool  _open;
     HUQuickControlViewProfile * _profile;
+    unsigned long long  _reachabilityState;
     bool  _userInteractionActive;
     id  _value;
 }
@@ -22,6 +23,7 @@
 @property (nonatomic) <HUQuickControlViewInteractionDelegate> *interactionDelegate;
 @property (nonatomic) bool open;
 @property (nonatomic, copy) HUQuickControlViewProfile *profile;
+@property (nonatomic) unsigned long long reachabilityState;
 @property (nonatomic, retain) id secondaryValue;
 @property (readonly) Class superclass;
 @property (getter=isUserInteractionActive, nonatomic) bool userInteractionActive;
@@ -35,6 +37,7 @@
 - (void)_setupIconView;
 - (void)_updateAppearance;
 - (void)_updateIconDescriptor;
+- (void)_updateUIForReachabilityState:(unsigned long long)arg1;
 - (id)backgroundOffColor;
 - (id)backgroundOnColor;
 - (void)beginUserInteractionWithFirstTouchGestureRecognizer:(id)arg1;
@@ -47,11 +50,13 @@
 - (bool)isUserInteractionActive;
 - (bool)open;
 - (id)profile;
+- (unsigned long long)reachabilityState;
 - (void)setCircleView:(id)arg1;
 - (void)setIconView:(id)arg1;
 - (void)setInteractionDelegate:(id)arg1;
 - (void)setOpen:(bool)arg1;
 - (void)setProfile:(id)arg1;
+- (void)setReachabilityState:(unsigned long long)arg1;
 - (void)setUserInteractionActive:(bool)arg1;
 - (void)setValue:(id)arg1;
 - (void)updateConstraints;

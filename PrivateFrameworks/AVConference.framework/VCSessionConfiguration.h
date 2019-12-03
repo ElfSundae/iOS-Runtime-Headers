@@ -8,7 +8,6 @@
     long long  _sessionMode;
 }
 
-@property (nonatomic, readonly) bool isContinuity;
 @property (nonatomic) unsigned long long maxRemoteParticipants;
 @property (nonatomic, retain) id reportingHierarchyToken;
 @property (nonatomic) long long sessionMode;
@@ -16,7 +15,6 @@
 - (bool)applyConfigurationUsingClientDict:(id)arg1;
 - (void)dealloc;
 - (id)initWithClientDictionary:(id)arg1;
-- (bool)isContinuity;
 - (unsigned long long)maxRemoteParticipants;
 - (id)reportingHierarchyToken;
 - (long long)sessionMode;

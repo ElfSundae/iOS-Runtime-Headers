@@ -192,6 +192,7 @@
 - (void)showOverlayWithProductPage:(id)arg1 metricsPageEvent:(id)arg2;
 - (void)skuiCollectionViewWillLayoutSubviews:(id)arg1;
 - (void)skui_viewWillAppear:(bool)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidDisappear:(bool)arg1;
 - (void)viewWillAppear:(bool)arg1;

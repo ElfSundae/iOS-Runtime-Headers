@@ -3,6 +3,27 @@
  */
 
 @interface UITextSelectionView : UIView {
+    bool  _isIndirectFloatingCaret;
+    struct CGRect { 
+        struct CGPoint { 
+            double x; 
+            double y; 
+        } origin; 
+        struct CGSize { 
+            double width; 
+            double height; 
+        } size; 
+    }  _previousGhostCaretRect;
+    struct CGRect { 
+        struct CGPoint { 
+            double x; 
+            double y; 
+        } origin; 
+        struct CGSize { 
+            double width; 
+            double height; 
+        } size; 
+    }  _stashedCaretRect;
     bool  m_activated;
     bool  m_activeCaret;
     bool  m_caretAnimating;
@@ -16,11 +37,13 @@
     UIView * m_floatingCaretView;
     bool  m_forceRangeView;
     UITextInteractionAssistant * m_interactionAssistant;
+    bool  m_isInstalledInSelectionContainerView;
     bool  m_isSuspended;
     struct __CFRunLoopObserver { } * m_observer;
     UITextRangeView * m_rangeView;
     NSArray * m_replacements;
     UITextSelection * m_selection;
+    bool  m_shouldEmphasizeNextSelectionRects;
     int  m_showingCommandsCounter;
     int  m_showingCommandsCounterForRotate;
     bool  m_visible;
@@ -32,25 +55,34 @@
 @property (nonatomic, readonly) UIView *floatingCaretView;
 @property (nonatomic) bool forceRangeView;
 @property (nonatomic, readonly) UITextInteractionAssistant *interactionAssistant;
+@property (nonatomic) bool isIndirectFloatingCaret;
+@property (nonatomic, readonly) bool isInstalledInSelectionContainerView;
+@property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } previousGhostCaretRect;
 @property (nonatomic, readonly) UITextRangeView *rangeView;
 @property (nonatomic, retain) NSArray *replacements;
 @property (nonatomic, readonly) UITextSelection *selection;
 @property (nonatomic, readonly) bool selectionCommandsShowing;
+@property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } stashedCaretRect;
 @property (nonatomic) bool visible;
 
 - (void).cxx_destruct;
-- (void)_showCommandsWithReplacements:(id)arg1 isForContextMenu:(bool)arg2;
+- (void)_hideCaret:(int)arg1;
+- (bool)_shouldUseIndirectFloatingCaret;
+- (void)_showCaret:(int)arg1;
+- (void)_showCommandsWithReplacements:(id)arg1 forDictation:(bool)arg2 afterDelay:(double)arg3;
+- (void)_showCommandsWithReplacements:(id)arg1 isForContextMenu:(bool)arg2 forDictation:(bool)arg3 rectsToEvade:(id)arg4;
 - (void)_showSelectionCommandsForContextMenu:(bool)arg1;
 - (void)activate;
 - (bool)affectedByScrollerNotification:(id)arg1;
 - (void)animateBoxShrinkOn:(id)arg1;
 - (void)animateCaret:(id)arg1 toPosition:(struct CGPoint { double x1; double x2; })arg2 withSize:(struct CGSize { double x1; double x2; })arg3;
 - (void)animateExpanderOn:(id)arg1;
-- (void)animatePulsingCaret:(id)arg1;
+- (void)animatePulsingDirectCaret:(id)arg1;
+- (void)animatePulsingIndirectCaret:(id)arg1;
 - (void)appearOrFadeIfNecessary;
 - (void)beginFloatingCaretView;
 - (void)beginFloatingCursorAtPoint:(struct CGPoint { double x1; double x2; })arg1;
-- (void)calculateAndShowReplacements:(id)arg1;
+- (void)calculateReplacementsWithGenerator:(id)arg1 andShowAfterDelay:(double)arg2;
 - (void)cancelDelayedCommandRequests;
 - (void)caretBlinkTimerFired:(id)arg1;
 - (bool)caretBlinks;
@@ -62,9 +94,9 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })clippedTargetRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)configureForHighlightMode;
 - (void)configureForReplacementMode;
-- (void)configureForRevealHighlightMode;
 - (void)configureForSelectionMode;
 - (void)deactivate;
+- (void)deactivateAndCollapseSelection:(bool)arg1;
 - (void)dealloc;
 - (void)deferredUpdateSelectionCommands;
 - (void)deferredUpdateSelectionRects;
@@ -95,9 +127,13 @@
 - (void)installIfNecessary;
 - (id)interactionAssistant;
 - (void)invalidate;
+- (bool)isIndirectFloatingCaret;
+- (bool)isInstalledInSelectionContainerView;
 - (bool)isValid;
 - (void)layoutChangedByScrolling:(bool)arg1;
+- (bool)point:(struct CGPoint { double x1; double x2; })arg1 isNearCursorRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (void)prepareForMagnification;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })previousGhostCaretRect;
 - (id)rangeView;
 - (void)removeFromSuperview;
 - (id)replacements;
@@ -113,8 +149,12 @@
 - (void)selectionWillScroll:(id)arg1;
 - (void)selectionWillTranslateForReachability:(id)arg1;
 - (void)setCaretBlinks:(bool)arg1;
+- (void)setEmphasisOnNextSelectionRects;
 - (void)setForceRangeView:(bool)arg1;
+- (void)setIsIndirectFloatingCaret:(bool)arg1;
+- (void)setPreviousGhostCaretRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setReplacements:(id)arg1;
+- (void)setStashedCaretRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setVisible:(bool)arg1;
 - (bool)shouldBeVisible;
 - (void)showCalloutBarAfterDelay:(double)arg1;
@@ -125,13 +165,15 @@
 - (void)showSelectionCommands;
 - (void)showSelectionCommandsAfterDelay:(double)arg1;
 - (void)startCaretBlinkIfNeeded;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })stashedCaretRect;
 - (void)textSelectionViewActivated:(id)arg1;
 - (void)tintColorDidChange;
 - (void)touchCaretBlinkTimer;
 - (void)updateBaseIsStartWithDocumentPoint:(struct CGPoint { double x1; double x2; })arg1;
-- (bool)updateCalloutBarRects:(id)arg1 effectsWindow:(id)arg2;
+- (bool)updateCalloutBarRects:(id)arg1 effectsWindow:(id)arg2 rectsToEvade:(id)arg3;
 - (void)updateDocumentHasContent:(bool)arg1;
 - (void)updateFloatingCursorAtPoint:(struct CGPoint { double x1; double x2; })arg1;
+- (void)updateFloatingCursorAtPoint:(struct CGPoint { double x1; double x2; })arg1 velocity:(struct CGPoint { double x1; double x2; })arg2;
 - (void)updateSelectionCommands;
 - (void)updateSelectionDots;
 - (void)updateSelectionRects;
@@ -141,6 +183,7 @@
 - (void)viewAnimate:(id)arg1;
 - (bool)visible;
 - (void)wilLResume:(id)arg1;
+- (void)willBeginFloatingCursor:(bool)arg1;
 - (void)willRotate:(id)arg1;
 - (void)windowDidResignOrBecomeKey;
 

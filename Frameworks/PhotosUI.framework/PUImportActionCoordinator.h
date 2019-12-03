@@ -4,7 +4,7 @@
 
 @interface PUImportActionCoordinator : NSObject {
     <PUImportActionCoordinatorDelegate> * _delegate;
-    PUImportController * _importController;
+    PXImportController * _importController;
     NSNumberFormatter * _percentageNumberFormatter;
     bool  _ppt_alwaysImportDuplicatesNoPrompt;
     bool  _ppt_alwaysPreferSelected;
@@ -13,7 +13,7 @@
 }
 
 @property (nonatomic) <PUImportActionCoordinatorDelegate> *delegate;
-@property (nonatomic, retain) PUImportController *importController;
+@property (nonatomic, retain) PXImportController *importController;
 @property (nonatomic, retain) NSNumberFormatter *percentageNumberFormatter;
 @property (nonatomic) bool ppt_alwaysImportDuplicatesNoPrompt;
 @property (nonatomic) bool ppt_alwaysPreferSelected;

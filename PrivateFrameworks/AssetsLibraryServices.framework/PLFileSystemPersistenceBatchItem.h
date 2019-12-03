@@ -8,10 +8,10 @@
 }
 
 @property (nonatomic, retain) NSMutableDictionary *attributes;
-@property (nonatomic, readonly, retain) NSURL *fileURL;
+@property (nonatomic, readonly) NSURL *fileURL;
 
+- (void).cxx_destruct;
 - (id)attributes;
-- (void)dealloc;
 - (id)description;
 - (id)fileURL;
 - (id)initWithFileURL:(id)arg1;

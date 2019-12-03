@@ -17,6 +17,7 @@
 + (id)bordersWithLeft:(id)arg1 right:(id)arg2 top:(id)arg3 bottom:(id)arg4 diagonal:(id)arg5 vertical:(id)arg6 horizontal:(id)arg7 resources:(id)arg8;
 + (id)bordersWithResources:(id)arg1;
 
+- (void).cxx_destruct;
 - (id)bottomBorder;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;

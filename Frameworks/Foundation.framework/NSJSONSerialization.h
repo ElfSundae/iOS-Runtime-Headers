@@ -24,4 +24,8 @@
 + (id)hk_stringForDisplayFromFHIRData:(id)arg1;
 + (id)hk_stringForDisplayFromFHIRJSONObject:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/TrackingAvoidance.framework/TrackingAvoidance
+
++ (id)JSONStringFromNSDictionary:(id)arg1 error:(id*)arg2;
+
 @end

@@ -31,6 +31,7 @@
 
 + (id)im_AKSecurityLevelKey;
 + (id)logHandle;
++ (id)restoreFailuresDirectory;
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
@@ -55,7 +56,9 @@
 - (bool)_isCKErrorPartialFailure:(id)arg1;
 - (bool)_isInExitState;
 - (bool)_isLogDumpAllowed;
+- (bool)_isRunningInAutomation;
 - (bool)_isSyncingPausedOverride;
+- (void)_metricForPCSReportManateeStatusWithReason:(id)arg1 linkedFunction:(int (*)arg2 timeoutInSec:(double)arg3 completion:(id /* block */)arg4;
 - (long long)_mininimumServerBagClientValue;
 - (unsigned long long)_mocEnabledStateFromAccountStatus:(long long)arg1;
 - (bool)_mocFeatureEnabled;
@@ -123,6 +126,7 @@
 - (id)imDefaults;
 - (id)init;
 - (id)initWithServerBag:(id)arg1 lockDownmanager:(id)arg2 deviceSupport:(id)arg3 imDefaults:(id)arg4;
+- (id)internalQueue;
 - (bool)isCKPartialError:(id)arg1;
 - (bool)isDeviceCharging;
 - (bool)isDeviceOnWifi;
@@ -141,14 +145,14 @@
 - (void)logDumpAndSendMessageTo:(id)arg1 forHours:(int)arg2 reason:(id)arg3;
 - (void)logDumpAndSendMessageTo:(id)arg1 forHours:(int)arg2 reason:(id)arg3 isInitialSync:(bool)arg4 requirePreviousPrompt:(bool)arg5 willSendBlock:(id /* block */)arg6;
 - (void)logDumpAndSendMessageTo:(id)arg1 forHours:(int)arg2 reason:(id)arg3 requirePreviousPrompt:(bool)arg4 willSendBlock:(id /* block */)arg5;
+- (bool)logDumpIsExpected;
 - (bool)logDumpIsNecessaryAfterSync;
 - (id)logHandle;
 - (void)logToPowerLogForLogDumpGUID:(id)arg1 logDumpCompleted:(bool)arg2 logDumpSucceeded:(bool)arg3 logDumpSendingCompleted:(bool)arg4 logDumpSendingSucceeded:(bool)arg5 reason:(id)arg6;
 - (unsigned long long)messageDatabaseSize;
-- (id)metricForPCSReportManateeStatusWithReason:(id)arg1;
+- (void)metricForPCSReportManateeStatusWithReason:(id)arg1 completion:(id /* block */)arg2;
 - (id)newfilteredArrayRemovingCKRecordDupes:(id)arg1;
 - (id)newfilteredArrayRemovingCKRecordIDDupes:(id)arg1;
-- (void)noteAllSyncedItemsPriorToSync;
 - (long long)overrideNumberOfChatsToFetch;
 - (long long)overrideNumberOfChatsToWrite;
 - (void)postSyncStateToCloudKit:(id)arg1;
@@ -186,6 +190,8 @@
 - (bool)shouldRepairAccountWithDeviceAccountSecurityLevel:(unsigned long long)arg1 serverAccountStatus:(long long)arg2;
 - (bool)shouldSyncToSRContainer;
 - (bool)shouldUseDevContainer;
+- (bool)shouldUseDevNickNameContainer;
+- (bool)signedIntoiCloudAndiMessageAndiCloudAccountMatchesiMessageAccount;
 - (void)submitPCSReportManateeStatuMetricWithPrefix:(id)arg1 andReason:(id)arg2;
 - (id)syncFailureMetricString:(id)arg1 isRecoverable:(bool)arg2 error:(id)arg3;
 - (id)syncState;

@@ -20,6 +20,8 @@
 
 - (bool)connected;
 - (int)connectedToken;
+- (void)deactivate;
+- (void)dealloc;
 - (int)disconnectedToken;
 - (bool)enabled;
 - (id)loadState;

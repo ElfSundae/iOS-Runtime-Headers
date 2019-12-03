@@ -22,6 +22,8 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)chartableCodedQuantitySetWithDate:(id)arg1 error:(id*)arg2;
+- (id)chartableCodedQuantityWithError:(id*)arg1;
 - (id)codings;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)encodeWithCoder:(id)arg1;

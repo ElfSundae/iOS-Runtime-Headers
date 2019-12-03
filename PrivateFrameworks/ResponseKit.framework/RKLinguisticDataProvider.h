@@ -10,7 +10,6 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (struct __LSMMap { }*)polarityMapForLanguageID:(id)arg1;
 - (id)polarityMapsByLanguageID;
 - (void)setPolarityMapsByLanguageID:(id)arg1;
 

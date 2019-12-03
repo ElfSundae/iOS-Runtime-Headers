@@ -5,6 +5,7 @@
 @interface PSSystemPolicyForApp : NSObject {
     NSString * _bundleIdentifier;
     bool  _forcePolicyOptions;
+    PSPhotosPolicyController * _photosPrivacyController;
     unsigned long long  _policyOptions;
 }
 
@@ -19,7 +20,7 @@
 - (id)_privacyAccessForService:(struct __CFString { }*)arg1;
 - (bool)_supportsBackgroundAppRefresh;
 - (id)assistantAndSearchSpecifiers;
-- (id)authLevelStringForStatus:(int)arg1;
+- (id)authLevelStringForStatus:(unsigned long long)arg1;
 - (id)backgroundAppRefreshSpecifier;
 - (id)bundleIdentifier;
 - (struct __CFBundle { }*)copyTCCBundleForService:(struct __CFString { }*)arg1;
@@ -32,11 +33,9 @@
 - (id)locationServicesSpecifier;
 - (id)locationStatus:(id)arg1;
 - (id)notificationSpecifier;
-- (id)photosAuthDescriptionForAppBundle:(struct __CFBundle { }*)arg1;
-- (Class)photosDetailClass;
-- (id)photosLocalizedStringForAuthType:(id)arg1;
 - (id)photosServicesSpecifier;
-- (id)photosStatus:(id)arg1;
+- (id)preferredLanguage:(id)arg1;
+- (id)preferredLanguageSpecifier;
 - (id)privacyAccessForSpecifier:(id)arg1;
 - (id)privacySpecifierForService:(struct __CFString { }*)arg1;
 - (id)privacySpecifiers;

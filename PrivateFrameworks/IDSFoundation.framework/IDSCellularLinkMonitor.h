@@ -12,21 +12,23 @@
     NSString * _dataIndicator;
     bool  _dataUsable;
     NSMutableDictionary * _notificationRegInfo;
-    unsigned long long  _radioAccessTechnology;
+    unsigned int  _radioAccessTechnology;
 }
 
 @property (readonly) NSString *cellularDataInterfaceName;
 @property (readonly) unsigned int cellularMTU;
 @property (readonly) bool dataUsable;
-@property (readonly) unsigned long long radioAccessTechnology;
+@property (readonly) unsigned int radioAccessTechnology;
 
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
 - (bool)_dataContextUsable:(id)arg1 dataStatus:(id)arg2;
 - (id)_getCTXPCServiceSubscriptionContext;
+- (id)_getCurrentDataSimContext:(id)arg1 inContextArray:(id)arg2;
 - (void)_setupCTServerConnection;
-- (bool)_updateCellularDataInterface;
+- (bool)_updateCellularDataInterface:(bool)arg1;
+- (bool)_updateCellularDataInterfaceNameByConnectionState:(int)arg1 isStateActiveRequired:(bool)arg2 interfaceName:(id)arg3;
 - (bool)_updateCellularMTU;
 - (void)_updateDataStatus;
 - (bool)_updateRadioAccessTechnology;
@@ -39,7 +41,7 @@
 - (bool)dropIPPackets:(id)arg1 localAddress:(struct sockaddr { unsigned char x1; unsigned char x2; BOOL x3[14]; }*)arg2 remoteAddress:(struct sockaddr { unsigned char x1; unsigned char x2; BOOL x3[14]; }*)arg3 isRelay:(bool)arg4 channelNumberMSB:(unsigned char)arg5;
 - (id)init;
 - (void)processCTConnectionStateChangeNotification:(id)arg1 connectionStatus:(id)arg2;
-- (unsigned long long)radioAccessTechnology;
+- (unsigned int)radioAccessTechnology;
 - (void)registerCellularDataStatusNotification:(bool)arg1;
 - (void)removeCellularLinkDelegate:(id)arg1;
 - (void)removePacketNotificationFilter;

@@ -16,7 +16,7 @@
 @property (nonatomic, readonly) bool success;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)error;
 - (void)handleResponse:(id)arg1 error:(id)arg2;
 - (id)serverId;

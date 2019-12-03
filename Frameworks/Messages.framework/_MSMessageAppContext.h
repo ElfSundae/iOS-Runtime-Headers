@@ -7,7 +7,6 @@
     <_MSMessageComposeExtensionImplProtocol> * _containingContext;
     <_MSMessageComposeExtensionImplProtocol> * _context;
     NSMapTable * _conversationsByIdentifier;
-    <_MSMessageComposeHostImplProtocol> * _hostContext;
     <_MSMessageComposeExtensionImplProtocol> * _keepAliveContext;
 }
 

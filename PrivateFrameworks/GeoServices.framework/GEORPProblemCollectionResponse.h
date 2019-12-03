@@ -4,8 +4,8 @@
 
 @interface GEORPProblemCollectionResponse : PBCodable <NSCopying> {
     struct { 
-        unsigned int statusCode : 1; 
-    }  _has;
+        unsigned int has_statusCode : 1; 
+    }  _flags;
     NSString * _problemId;
     int  _statusCode;
 }
@@ -14,6 +14,8 @@
 @property (nonatomic) bool hasStatusCode;
 @property (nonatomic, retain) NSString *problemId;
 @property (nonatomic) int statusCode;
+
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsStatusCode:(id)arg1;
@@ -27,6 +29,7 @@
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)problemId;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasStatusCode:(bool)arg1;
 - (void)setProblemId:(id)arg1;

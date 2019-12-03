@@ -16,17 +16,18 @@
 }
 
 @property (nonatomic, retain) <MFCollectingDataConsumer> *alternatePartConsumer;
-@property (nonatomic, readonly, retain) NSMutableData *bodyData;
+@property (nonatomic, readonly) NSMutableData *bodyData;
 @property (nonatomic, retain) <MFMessageDataConsumerFactory> *consumerFactory;
 @property (nonatomic, retain) <MFCollectingDataConsumer> *dataConsumer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly, retain) DAMailMessage *message;
+@property (nonatomic, readonly) DAMailMessage *message;
 @property (nonatomic) int requestedFormat;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) double timeOfLastActivity;
 
+- (void).cxx_destruct;
 - (id)alternatePartConsumer;
 - (id)bodyData;
 - (void)consumeData:(char *)arg1 length:(int)arg2 format:(int)arg3 mailMessage:(id)arg4;
@@ -34,7 +35,6 @@
 - (id)data;
 - (id)dataConsumer;
 - (id)dataConsumerForPart:(id)arg1;
-- (void)dealloc;
 - (bool)didBeginStreaming;
 - (void)didEndStreamingForMailMessage:(id)arg1;
 - (id)message;

@@ -16,7 +16,7 @@
 @property (readonly) bool isServiceAvailable;
 @property (retain) NSHashTable *observerObjects;
 @property (retain) NSObject<OS_dispatch_queue> *observerQueue;
-@property long long reachability;
+@property (nonatomic) long long reachability;
 @property (retain) NWPathEvaluator *serviceReachabilityEvaluator;
 
 + (id)sharedObserver;

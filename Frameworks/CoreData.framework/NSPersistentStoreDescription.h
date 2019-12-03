@@ -10,6 +10,7 @@
 }
 
 @property (copy) NSURL *URL;
+@property (retain) NSPersistentCloudKitContainerOptions *cloudKitContainerOptions;
 @property (copy) NSString *configuration;
 @property (nonatomic, readonly, copy) NSDictionary *options;
 @property (getter=isReadOnly) bool readOnly;
@@ -20,10 +21,13 @@
 @property double timeout;
 @property (copy) NSString *type;
 
+// Image: /System/Library/Frameworks/CoreData.framework/CoreData
+
 + (id)inMemoryPersistentStoreDescription;
 + (id)persistentStoreDescriptionWithURL:(id)arg1;
 
 - (id)URL;
+- (id)cloudKitContainerOptions;
 - (id)configuration;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -36,6 +40,7 @@
 - (id)mirroringDelegate;
 - (id)mirroringOptions;
 - (id)options;
+- (void)setCloudKitContainerOptions:(id)arg1;
 - (void)setConfiguration:(id)arg1;
 - (void)setMirroringDelegate:(id)arg1;
 - (void)setOption:(id)arg1 forKey:(id)arg2;
@@ -48,6 +53,7 @@
 - (void)setTimeout:(double)arg1;
 - (void)setType:(id)arg1;
 - (void)setURL:(id)arg1;
+- (void)setUsesPersistentHistoryTracking:(bool)arg1;
 - (void)setValue:(id)arg1 forPragmaNamed:(id)arg2;
 - (bool)shouldAddStoreAsynchronously;
 - (bool)shouldInferMappingModelAutomatically;
@@ -56,5 +62,14 @@
 - (id)sqlitePragmas;
 - (double)timeout;
 - (id)type;
+- (bool)usesPersistentHistoryTracking;
+
+// Image: /System/Library/PrivateFrameworks/WorkflowKit.framework/WorkflowKit
+
++ (id)wf_configurationInDirectory:(id)arg1 filename:(id)arg2;
++ (id)wf_inMemoryConfiguration;
++ (id)wf_legacyVoiceShortcutsConfiguration;
++ (id)wf_shortcutsConfiguration;
++ (id)wf_voiceShortcutsDirectoryURL;
 
 @end

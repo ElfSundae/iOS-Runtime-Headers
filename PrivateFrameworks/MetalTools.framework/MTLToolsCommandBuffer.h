@@ -14,6 +14,7 @@
     MTLToolsPointerArray * _fragmentRenderCommandEncoders;
     MTLToolsPointerArray * _parallelRenderCommandEncoders;
     MTLToolsPointerArray * _renderCommandEncoders;
+    MTLToolsPointerArray * _resourceStateCommandEncoders;
     NSMutableSet * _retainedObjects;
     struct ILayerLockingPolicy { int (**x1)(); } * _retainedObjectsLock;
 }
@@ -28,6 +29,7 @@
 @property (readonly) <MTLDevice> *device;
 @property (readonly) NSError *error;
 @property (nonatomic, readonly) MTLToolsPointerArray *fragmentRenderCommandEncoders;
+@property (readonly) unsigned long long globalTraceObjectID;
 @property (readonly) unsigned long long hash;
 @property (readonly) double kernelEndTime;
 @property (readonly) double kernelStartTime;
@@ -37,6 +39,7 @@
 @property (getter=isProfilingEnabled) bool profilingEnabled;
 @property (readonly) NSDictionary *profilingResults;
 @property (nonatomic, readonly) MTLToolsPointerArray *renderCommandEncoders;
+@property (nonatomic, readonly) MTLToolsPointerArray *resourceStateCommandEncoders;
 @property (nonatomic, readonly) NSMutableSet *retainedObjects;
 @property (nonatomic) struct ILayerLockingPolicy { int (**x1)(); }*retainedObjectsLock;
 @property (readonly) bool retainedReferences;
@@ -63,9 +66,14 @@
 - (id)computeCommandEncoderWithDispatchType:(unsigned long long)arg1;
 - (id)computeCommandEncoders;
 - (void)dealloc;
+- (void*)debugBufferContentsWithLength:(unsigned long long*)arg1;
 - (id)debugCommandEncoder;
+- (void)dropResourceGroups:(const id*)arg1 count:(unsigned long long)arg2;
+- (void)encodeCacheHintFinalize:(unsigned long long)arg1 resourceGroups:(const id*)arg2 count:(unsigned long long)arg3;
+- (void)encodeCacheHintTag:(unsigned long long)arg1 resourceGroups:(const id*)arg2 count:(unsigned long long)arg3;
 - (void)encodeSignalEvent:(id)arg1 value:(unsigned long long)arg2;
 - (void)encodeWaitForEvent:(id)arg1 value:(unsigned long long)arg2;
+- (void)encodeWaitForEvent:(id)arg1 value:(unsigned long long)arg2 timeout:(unsigned int)arg3;
 - (void)enqueue;
 - (id)error;
 - (void)executeSynchronizationNotifications:(int)arg1;
@@ -73,6 +81,7 @@
 - (id)fragmentRenderCommandEncoderWithDescriptor:(id)arg1;
 - (id)fragmentRenderCommandEncoders;
 - (unsigned long long)getListIndex;
+- (unsigned long long)globalTraceObjectID;
 - (id)initWithBaseObject:(id)arg1 parent:(id)arg2;
 - (bool)isProfilingEnabled;
 - (double)kernelEndTime;
@@ -81,13 +90,21 @@
 - (id)parallelRenderCommandEncoderWithDescriptor:(id)arg1;
 - (id)parallelRenderCommandEncoders;
 - (void)popDebugGroup;
+- (void)postCompletionHandlers;
+- (void)postScheduledHandlers;
+- (void)preCommit;
+- (void)preCompletionHandlers;
+- (void)preScheduledHandlers;
 - (void)presentDrawable:(id)arg1;
 - (void)presentDrawable:(id)arg1 afterMinimumDuration:(double)arg2;
 - (void)presentDrawable:(id)arg1 atTime:(double)arg2;
 - (id)profilingResults;
+- (unsigned long long)protectionOptions;
 - (void)pushDebugGroup:(id)arg1;
 - (id)renderCommandEncoderWithDescriptor:(id)arg1;
 - (id)renderCommandEncoders;
+- (id)resourceStateCommandEncoder;
+- (id)resourceStateCommandEncoders;
 - (id)retainedObjects;
 - (struct ILayerLockingPolicy { int (**x1)(); }*)retainedObjectsLock;
 - (bool)retainedReferences;
@@ -97,6 +114,8 @@
 - (id)sampledRenderCommandEncoderWithDescriptor:(id)arg1 programInfoBuffer:(struct { unsigned int x1 : 8; unsigned int x2 : 24; unsigned int x3; unsigned long long x4; unsigned long long x5; }*)arg2 capacity:(unsigned long long)arg3;
 - (void)setLabel:(id)arg1;
 - (void)setProfilingEnabled:(bool)arg1;
+- (void)setProtectionOptions:(unsigned long long)arg1;
+- (void)setResourceGroups:(const id*)arg1 count:(unsigned long long)arg2;
 - (void)setRetainedObjectsLock:(struct ILayerLockingPolicy { int (**x1)(); }*)arg1;
 - (unsigned long long)status;
 - (id)unwrapMTLRenderPassDescriptor:(id)arg1;

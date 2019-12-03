@@ -32,16 +32,15 @@
 
 - (void).cxx_destruct;
 - (void)_discernReachabilityForAccessory:(id)arg1;
-- (void)_doneAction:(id)arg1;
 - (void)_editDoneAction:(id)arg1;
 - (void)_layoutNoItemsLabel;
 - (void)_numberOfItemsDidChangeAnimated:(bool)arg1;
 - (void)_showAddView:(id)arg1;
-- (id)_tableView:(id)arg1 templateLayoutCellForCellsWithReuseIdentifier:(id)arg2;
 - (void)_updateAccessoryControllable:(bool)arg1 alarmsSettingReady:(bool)arg2;
 - (void)_updateNavigationItems:(bool)arg1;
 - (void)accessoryDidUpdateControllable:(id)arg1;
 - (void)accessoryDidUpdateReachability:(id)arg1;
+- (void)accessoryDidUpdateReachableTransports:(id)arg1;
 - (id)addButtonItem;
 - (void)alarmEditController:(id)arg1 didAddAlarm:(id)arg2;
 - (void)alarmEditController:(id)arg1 didDeleteAlarm:(id)arg2;
@@ -78,6 +77,7 @@
 - (void)setPresentationDelegate:(id)arg1;
 - (bool)shouldHideHeaderAboveSection:(long long)arg1;
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
+- (void)viewDidAppear:(bool)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(bool)arg1;

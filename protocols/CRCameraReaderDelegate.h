@@ -13,6 +13,7 @@
 
 - (void)cameraReader:(CRCameraReader *)arg1 didRecognizeObjects:(NSArray *)arg2;
 - (void)cameraReader:(CRCameraReader *)arg1 didRecognizedNewObjects:(NSArray *)arg2;
+- (NSAttributedString *)cameraReader:(CRCameraReader *)arg1 provideOverlayTextForRecognizedObject:(CRCameraReaderOutput *)arg2;
 - (bool)cameraReader:(CRCameraReader *)arg1 shouldReturnQRCode:(NSString *)arg2;
 - (void)cameraReaderDidDisplayMessage:(CRCameraReader *)arg1;
 - (void)cameraReaderDidFindTarget:(CRCameraReader *)arg1;

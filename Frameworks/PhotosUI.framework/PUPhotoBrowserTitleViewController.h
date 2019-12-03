@@ -105,7 +105,6 @@
 - (void)_updatePlayClockDescriptionIfNeeded;
 - (id)creationDate;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })currentPlaybackTime;
-- (void)dealloc;
 - (id)delegate;
 - (id)geoDescription;
 - (id)init;

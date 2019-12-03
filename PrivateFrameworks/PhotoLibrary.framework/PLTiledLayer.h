@@ -9,7 +9,7 @@
     unsigned int  _decodePixelFormat;
     NSObject<OS_dispatch_queue> * _decodeQueue;
     int  _decoderCount;
-    /* Warning: unhandled struct encoding: '{jpegDecoder=^{ajdec}@}' */ struct jpegDecoder { struct ajdec {} *x1; id x2; } * _decoders;
+    struct jpegDecoder { struct ajdec {} *x1; id x2; } * _decoders;
     int  _err;
     struct CGSize { 
         double width; 

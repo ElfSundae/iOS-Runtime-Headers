@@ -15,6 +15,7 @@
     NUJSContextPool * _sharedJavaScriptContextPool;
     NUGLContext * _sharedOpenGLContext;
     NUGLContextPool * _sharedOpenGLContextPool;
+    <NUSlowMotionVideoFactory> * _slomoFactory;
     <NUStorageFactory> * _surfaceFactory;
     NUPurgeableStoragePool * _surfaceStoragePool;
 }
@@ -31,6 +32,7 @@
 @property (nonatomic, retain) NUJSContextPool *sharedJavaScriptContextPool;
 @property (nonatomic, retain) NUGLContext *sharedOpenGLContext;
 @property (nonatomic, retain) NUGLContextPool *sharedOpenGLContextPool;
+@property (nonatomic, retain) <NUSlowMotionVideoFactory> *slomoFactory;
 @property (nonatomic, retain) <NUStorageFactory> *surfaceFactory;
 @property (nonatomic, retain) NUPurgeableStoragePool *surfaceStoragePool;
 
@@ -60,12 +62,14 @@
 - (void)setSharedJavaScriptContextPool:(id)arg1;
 - (void)setSharedOpenGLContext:(id)arg1;
 - (void)setSharedOpenGLContextPool:(id)arg1;
+- (void)setSlomoFactory:(id)arg1;
 - (void)setSurfaceFactory:(id)arg1;
 - (void)setSurfaceStoragePool:(id)arg1;
 - (id)sharedJavaScriptContextPool;
 - (id)sharedOpenGLContext;
 - (id)sharedOpenGLContextPool;
 - (void)shutdown;
+- (id)slomoFactory;
 - (void)start;
 - (id)surfaceFactory;
 - (id)surfaceStoragePool;

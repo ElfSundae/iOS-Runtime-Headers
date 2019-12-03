@@ -4,7 +4,7 @@
 
 @interface UIKBTextStyle : NSObject <NSCopying> {
     long long  _alignment;
-    int  _anchorCorner;
+    unsigned long long  _anchorCorner;
     NSString * _etchColor;
     struct CGPoint { 
         double x; 
@@ -28,7 +28,7 @@
 }
 
 @property (nonatomic) long long alignment;
-@property (nonatomic) int anchorCorner;
+@property (nonatomic) unsigned long long anchorCorner;
 @property (nonatomic, retain) NSString *etchColor;
 @property (nonatomic) struct CGPoint { double x1; double x2; } etchOffset;
 @property (nonatomic, retain) NSString *fontName;
@@ -48,7 +48,7 @@
 + (id)styleWithTextColor:(id)arg1;
 
 - (long long)alignment;
-- (int)anchorCorner;
+- (unsigned long long)anchorCorner;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)description;
@@ -67,7 +67,7 @@
 - (double)pathWeight;
 - (long long)selector;
 - (void)setAlignment:(long long)arg1;
-- (void)setAnchorCorner:(int)arg1;
+- (void)setAnchorCorner:(unsigned long long)arg1;
 - (void)setEtchColor:(id)arg1;
 - (void)setEtchOffset:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setFontName:(id)arg1;

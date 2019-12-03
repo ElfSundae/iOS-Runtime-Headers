@@ -36,9 +36,10 @@
     TSPObjectContext * _context;
     TSPDataAttributesSnapshot * _dataAttributesSnapshot;
     NSMutableArray * _dataFinalizeHandlers;
-    bool  _didWriteMetadata;
-    bool  _didWriteObjectContainer;
-    bool  _didWriteRootObject;
+    _Atomic bool  _didAttemptRecoveryByDirtyingAllComponents;
+    _Atomic bool  _didWriteMetadata;
+    _Atomic bool  _didWriteObjectContainer;
+    _Atomic bool  _didWriteRootObject;
     TSPDocumentRevision * _documentRevision;
     NSURL * _documentTargetURL;
     NSMutableSet * _duplicateUUIDs;
@@ -48,9 +49,10 @@
     NSObject<OS_dispatch_queue> * _externalReferenceQueue;
     NSMutableSet * _featureIdentifiers;
     unsigned long long  _fileFormatVersion;
-    bool  _isCancelled;
-    bool  _isRecoverableError;
+    _Atomic bool  _isCancelled;
+    _Atomic bool  _isRecoverableError;
     NSSet * _knownComponentLocators;
+    NSMapTable * _loadedObjects;
     TSPObject * _metadataObject;
     NSObject<OS_dispatch_queue> * _metadataQueue;
     NSHashTable * _modifiedObjectsDuringWrite;
@@ -105,7 +107,7 @@
             } __p3_; 
         } __table_; 
     }  _skippedComponents;
-    bool  _writeSuccess;
+    _Atomic bool  _writeSuccess;
     unsigned long long  _writeVersion;
     struct unordered_map<const long long, TSP::WrittenComponentInfo, TSP::IdentifierHash, std::__1::equal_to<const long long>, std::__1::allocator<std::__1::pair<const long long, TSP::WrittenComponentInfo> > > { 
         struct __hash_table<std::__1::__hash_value_type<const long long, TSP::WrittenComponentInfo>, std::__1::__unordered_map_hasher<const long long, std::__1::__hash_value_type<const long long, TSP::WrittenComponentInfo>, TSP::IdentifierHash, true>, std::__1::__unordered_map_equal<const long long, std::__1::__hash_value_type<const long long, TSP::WrittenComponentInfo>, std::__1::equal_to<const long long>, true>, std::__1::allocator<std::__1::__hash_value_type<const long long, TSP::WrittenComponentInfo> > > { 
@@ -189,6 +191,7 @@
 - (void)addDataFinalizeHandlerForSuccessfulSave:(id /* block */)arg1;
 - (void)addDelayedObject:(id)arg1 forComponentRootObject:(id)arg2 claimingComponent:(id)arg3 isDelayedObjectReferencedByObjectContainer:(bool)arg4 completion:(id /* block */)arg5;
 - (void)archiveComponent:(id)arg1 locator:(id)arg2 compressionAlgorithm:(long long)arg3 storeOutsideObjectArchive:(bool)arg4 rootObject:(id)arg5 withPackageWriter:(id)arg6;
+- (void)attemptDocumentRecovery;
 - (void)calculateExternalReferences;
 - (id)componentForObjectIdentifier:(long long)arg1 objectOrNil:(id)arg2;
 - (long long)componentIdentifierForObjectIdentifier:(long long)arg1 objectOrNil:(id)arg2 objectUUIDOrNil:(id)arg3 outComponentIsVersioned:(bool*)arg4;
@@ -200,7 +203,7 @@
 - (void)componentWriterNeedsDocumentRecovery:(id)arg1;
 - (void)componentWriterWantsDelayedObjects:(id)arg1 queue:(id)arg2 completion:(id /* block */)arg3;
 - (void)copyComponent:(id)arg1 locator:(id)arg2 packageWriter:(id)arg3;
-- (id)createPackageMetadataWritingDatasWithPackageWriter:(id)arg1 saveOperationState:(id)arg2;
+- (id)createPackageMetadataWritingDatasWithPackageWriter:(id)arg1 saveOperationState:(id)arg2 error:(id*)arg3;
 - (void)dealloc;
 - (void)didReferenceData:(id)arg1;
 - (bool)didWriteComponent:(id)arg1 wasCopied:(bool*)arg2;

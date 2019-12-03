@@ -5,18 +5,18 @@
 @interface PPNotificationHandler : NSObject {
     NSMapTable * _blockMap;
     struct atomic_flag { 
-        bool _Value; 
+        _Atomic bool _Value; 
     }  _hasWaiter;
     struct atomic_flag { 
-        bool _Value; 
+        _Atomic bool _Value; 
     }  _isFiring;
     NSString * _name;
-    unsigned int  _waitTime;
+    double  _waitSeconds;
 }
 
 @property (nonatomic, retain) NSMapTable *blockMap;
 @property (nonatomic, retain) NSString *name;
-@property (nonatomic) unsigned int waitTime;
+@property (nonatomic) double waitSeconds;
 
 - (void).cxx_destruct;
 - (void)_clearFlags;
@@ -25,11 +25,11 @@
 - (id)blockMap;
 - (id)description;
 - (void)fire;
-- (id)initWithName:(id)arg1 waitTime:(unsigned int)arg2;
+- (id)initWithName:(id)arg1 waitSeconds:(double)arg2;
 - (id)name;
 - (void)setBlockMap:(id)arg1;
 - (void)setName:(id)arg1;
-- (void)setWaitTime:(unsigned int)arg1;
-- (unsigned int)waitTime;
+- (void)setWaitSeconds:(double)arg1;
+- (double)waitSeconds;
 
 @end

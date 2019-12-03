@@ -2,11 +2,9 @@
    Image: /System/Library/Frameworks/FileProvider.framework/FileProvider
  */
 
-@interface FPCopyOperation : FPTransferOperation
+@interface FPCopyOperation : FPMoveOperation
 
-- (id)initWithItems:(id)arg1 destinationFolder:(id)arg2;
-- (id)initWithNamesAndSourceURLs:(id)arg1 destinationFolder:(id)arg2;
-- (id)initWithSourceURLs:(id)arg1 destinationFolder:(id)arg2;
-- (id)initWithSourceURLsAndNames:(id)arg1 destinationFolder:(id)arg2;
+- (bool)byCopy;
+- (unsigned long long)defaultLastUsedDatePolicy;
 
 @end

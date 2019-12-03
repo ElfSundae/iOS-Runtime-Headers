@@ -4,7 +4,7 @@
 
 @interface VUIOverlayView : UIView {
     NSArray * _badgeViewWrappers;
-    CAGradientLayer * _gradientLayer;
+    CALayer * _gradientLayer;
     UIView * _gradientView;
     VUIOverlayLayout * _overlayLayout;
     _TVProgressView * _progressView;
@@ -16,7 +16,7 @@
 }
 
 @property (nonatomic, retain) NSArray *badgeViewWrappers;
-@property (nonatomic, retain) CAGradientLayer *gradientLayer;
+@property (nonatomic, retain) CALayer *gradientLayer;
 @property (nonatomic, retain) UIView *gradientView;
 @property (nonatomic, retain) VUIOverlayLayout *overlayLayout;
 @property (nonatomic, retain) _TVProgressView *progressView;
@@ -27,6 +27,7 @@
 @property (nonatomic, retain) IKViewElement *viewElement;
 
 + (id)overlayViewFromElement:(id)arg1 overlayLayout:(id)arg2 existingView:(id)arg3;
++ (id)overlayViewFromMediaItem:(id)arg1 overlayLayout:(id)arg2 existingView:(id)arg3;
 
 - (void).cxx_destruct;
 - (id)badgeViewWrappers;

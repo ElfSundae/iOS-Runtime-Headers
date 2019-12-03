@@ -20,6 +20,7 @@
 - (void).cxx_destruct;
 - (void)_finishEnrichmentWithBodyDictionary:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)_newDefaultRequestBodyDictionary;
+- (id)_newDefaultRequestBodyDictionaryWithResponseCode:(long long)arg1 error:(id)arg2;
 - (void)_sendEnrichmentRequestWithURL:(id)arg1 preflightResponse:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)_sendPreflightRequestWithCompletionHandler:(id /* block */)arg1;
 - (void)_sendSilentSMSRequestWithMessage:(id)arg1 number:(id)arg2 preflightResponse:(id)arg3 completionHandler:(id /* block */)arg4;

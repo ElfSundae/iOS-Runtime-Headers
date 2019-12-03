@@ -3,11 +3,13 @@
  */
 
 @interface PKSpendingSummary : NSObject <NSSecureCoding> {
+    PKPaymentTransactionGroup * _adjustments;
     NSDate * _endDate;
     PKPaymentTransactionGroup * _interest;
     bool  _isLoading;
     NSArray * _orderedSpendingCategories;
     NSArray * _orderedSpendingPerMerchants;
+    PKPaymentTransactionGroup * _payments;
     PKCurrencyAmount * _previousMaxAmount;
     PKCurrencyAmount * _previousTotalSpending;
     PKPaymentTransactionGroup * _refunds;
@@ -19,11 +21,13 @@
     PKCurrencyAmount * _totalSpending;
 }
 
+@property (nonatomic, retain) PKPaymentTransactionGroup *adjustments;
 @property (nonatomic, retain) NSDate *endDate;
 @property (nonatomic, retain) PKPaymentTransactionGroup *interest;
 @property (nonatomic) bool isLoading;
 @property (nonatomic, copy) NSArray *orderedSpendingCategories;
 @property (nonatomic, copy) NSArray *orderedSpendingPerMerchants;
+@property (nonatomic, retain) PKPaymentTransactionGroup *payments;
 @property (nonatomic, retain) PKCurrencyAmount *previousMaxAmount;
 @property (nonatomic, retain) PKCurrencyAmount *previousTotalSpending;
 @property (nonatomic, retain) PKPaymentTransactionGroup *refunds;
@@ -37,6 +41,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)adjustments;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)endDate;
@@ -47,15 +52,18 @@
 - (bool)isLoading;
 - (id)orderedSpendingCategories;
 - (id)orderedSpendingPerMerchants;
+- (id)payments;
 - (id)previousMaxAmount;
 - (id)previousTotalSpending;
 - (id)refunds;
 - (id)rewards;
+- (void)setAdjustments:(id)arg1;
 - (void)setEndDate:(id)arg1;
 - (void)setInterest:(id)arg1;
 - (void)setIsLoading:(bool)arg1;
 - (void)setOrderedSpendingCategories:(id)arg1;
 - (void)setOrderedSpendingPerMerchants:(id)arg1;
+- (void)setPayments:(id)arg1;
 - (void)setPreviousMaxAmount:(id)arg1;
 - (void)setPreviousTotalSpending:(id)arg1;
 - (void)setRefunds:(id)arg1;

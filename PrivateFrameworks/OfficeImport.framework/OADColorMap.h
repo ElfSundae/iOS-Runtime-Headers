@@ -6,9 +6,9 @@
     NSMutableDictionary * mMappings;
 }
 
+- (void).cxx_destruct;
 - (void)addDefaultMappings:(bool)arg1;
 - (void)addMapping:(int)arg1 index:(int)arg2;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (id)init;

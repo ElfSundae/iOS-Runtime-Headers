@@ -11,6 +11,7 @@
 + (id)filesystemDeletionQueue;
 + (void)waitForAllDelayedDeletionsToFinish;
 
+- (void).cxx_destruct;
 - (void)addFilesystemDeletionInfo:(id)arg1;
 - (void)appendToXPCMessage:(id)arg1 managedObjectContext:(id)arg2;
 - (void)dealloc;

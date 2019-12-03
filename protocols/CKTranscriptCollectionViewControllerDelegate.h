@@ -5,6 +5,7 @@
 
 @required
 
+- (UITraitCollection *)traitCollectionForTranscriptCollectionViewController:(CKTranscriptCollectionViewController *)arg1;
 - (void)transcriptCollectionViewController:(CKTranscriptCollectionViewController *)arg1 balloonView:(CKBalloonView *)arg2 doubleTappedItemAtIndexPath:(NSIndexPath *)arg3;
 - (void)transcriptCollectionViewController:(CKTranscriptCollectionViewController *)arg1 balloonView:(CKBalloonView *)arg2 longPressedForItemWithIndexPath:(NSIndexPath *)arg3;
 - (void)transcriptCollectionViewController:(CKTranscriptCollectionViewController *)arg1 balloonView:(CKBalloonView *)arg2 tappedForChatItem:(CKChatItem *)arg3;
@@ -35,5 +36,12 @@
 - (void)transcriptCollectionViewControllerWillDisplayLastBalloon:(CKTranscriptCollectionViewController *)arg1;
 - (void)transcriptCollectionViewControllerWillInset:(CKTranscriptCollectionViewController *)arg1 targetContentInset:(inout struct UIEdgeInsets { double x1; double x2; double x3; double x4; }*)arg2;
 - (void)transcriptCollectionViewControllerWillScrollToBottom:(CKTranscriptCollectionViewController *)arg1;
+
+@optional
+
+- (void)transcriptCollectionViewController:(CKTranscriptCollectionViewController *)arg1 willDisplayBalloonForGUID:(NSString *)arg2;
+- (bool)transcriptCollectionViewControllerShouldForceOpaqueMask:(CKTranscriptCollectionViewController *)arg1;
+- (void)transcriptCollectionViewDidBeginMultipleSelectionInteractionAtIndexPath:(NSIndexPath *)arg1;
+- (bool)transcriptCollectionViewShouldBeginMultipleSelectionInteractionAtIndexPath:(NSIndexPath *)arg1;
 
 @end

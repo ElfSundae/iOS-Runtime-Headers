@@ -80,6 +80,7 @@
 - (id)thinKeycapsFontName;
 - (double)tinyPunctuationGlyphFontSize;
 - (struct CGPoint { double x1; double x2; })tinyPunctuationGlyphOffset;
+- (struct CGPoint { double x1; double x2; })variantAnnotationTextOffset;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })variantDisplayFrameInsets;
 - (id)variantGeometriesForGeometry:(id)arg1 variantCount:(unsigned long long)arg2 rowLimit:(long long)arg3 annotationIndex:(unsigned long long)arg4;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })variantPaddedFrameInsets;

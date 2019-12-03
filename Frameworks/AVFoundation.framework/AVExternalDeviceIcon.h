@@ -11,7 +11,6 @@
 @property (getter=isPrerendered, nonatomic, readonly) bool prerendered;
 
 - (void)dealloc;
-- (void)finalize;
 - (id)imageData;
 - (id)initWithDictionary:(id)arg1;
 - (bool)isPrerendered;

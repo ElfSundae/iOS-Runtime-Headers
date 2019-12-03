@@ -4,7 +4,6 @@
 
 @interface UITableViewCellEditingData : NSObject {
     UITableViewCell * _cell;
-    UITableViewCellDeleteConfirmationControl_Legacy * _deleteConfirmationControl;
     UITableViewCellEditControl * _editControl;
     long long  _editingStyle;
     UITableViewCellReorderControl * _reorderControl;
@@ -16,7 +15,6 @@
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)deleteConfirmationControl:(bool)arg1;
 - (id)editControl:(bool)arg1;
 - (id)initWithTableViewCell:(id)arg1 editingStyle:(long long)arg2;
 - (bool)isDataRequired;

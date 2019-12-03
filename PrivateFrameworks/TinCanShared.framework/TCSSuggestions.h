@@ -44,6 +44,7 @@
 - (id)_destinationsFromFavorites;
 - (void)_deviceDidPair:(id)arg1;
 - (void)_generateNewSuggestions;
+- (void)_handleDeviceFirstUnlock;
 - (void)_invalidate;
 - (void)_notifyObserversSuggestionsChanged;
 - (id)_performHousekeepingOnSuggestions:(id)arg1;
@@ -55,6 +56,7 @@
 - (void)_syncSuggestions;
 - (void)_updateGenerationTimestamps;
 - (void)addObserver:(id)arg1;
+- (void)batchQueryController:(id)arg1 updatedDestinationsStatus:(id)arg2 onService:(id)arg3 error:(id)arg4;
 - (id)contactStore;
 - (id)contacts;
 - (void)dealloc;
@@ -62,7 +64,6 @@
 - (void)destinationsDidChange:(id)arg1;
 - (void)generateNewSuggestionsIfNecessary;
 - (bool)generationTimerEnabled;
-- (void)idStatusUpdatedForDestinations:(id)arg1;
 - (id)initWithContactStore:(id)arg1 contacts:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (void)removeObserver:(id)arg1;

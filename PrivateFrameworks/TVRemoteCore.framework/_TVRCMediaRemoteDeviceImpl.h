@@ -72,6 +72,7 @@
 - (void)_volumeControlsDidUpdate:(id)arg1;
 - (id)alternateIdentifiers;
 - (void)connect;
+- (long long)connectionType;
 - (id)createBufferWithSettings:(id)arg1 packetCapacity:(unsigned long long)arg2 maxPacketSize:(unsigned long long)arg3;
 - (void)dealloc;
 - (id)device;

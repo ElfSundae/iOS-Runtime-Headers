@@ -9,7 +9,7 @@
 
 + (id)headerFooter;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)footerString;
 - (id)headerString;

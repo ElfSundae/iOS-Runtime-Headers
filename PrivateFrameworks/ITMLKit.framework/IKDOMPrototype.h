@@ -2,26 +2,27 @@
    Image: /System/Library/PrivateFrameworks/ITMLKit.framework/ITMLKit
  */
 
-@interface IKDOMPrototype : NSObject {
-    IKDOMElement * _domElement;
-    NSString * _identifier;
+@interface IKDOMPrototype : IKDOMConditional {
+    struct { 
+        bool parsedGrouping; 
+    }  _flags;
+    struct NSArray { Class x1; } * _grouping;
     _IKDOMPrototypeDerivationRules * _rules;
     NSString * _selector;
     NSString * _type;
 }
 
-@property (nonatomic, readonly) IKDOMElement *domElement;
-@property (nonatomic, readonly, copy) NSString *identifier;
+@property (nonatomic, readonly, copy) NSArray *grouping;
 @property (nonatomic, readonly, copy) _IKDOMPrototypeDerivationRules *rules;
 @property (nonatomic, readonly, copy) NSString *selector;
 @property (nonatomic, readonly, copy) NSString *type;
 
++ (struct NSArray { Class x1; }*)_groupingForDOMElement:(id)arg1;
 + (id)prototypeWithDOMElement:(id)arg1;
 
 - (void).cxx_destruct;
 - (id)_derivativeWithDataItem:(id)arg1;
-- (id)domElement;
-- (id)identifier;
+- (struct NSArray { Class x1; }*)grouping;
 - (id)initWithDOMElement:(id)arg1 selector:(id)arg2;
 - (id)instantiateDOMElement;
 - (id)rules;

@@ -8,10 +8,7 @@
     SiriUIAudioRoutePickerButton * _audioRoutePickerButton;
     _UIBackdropView * _backdropView;
     bool  _backdropViewVisible;
-    NSNumber * _cachedIsRightHandDrive;
-    bool  _carDisplaySnippetVisible;
-    UIView * _carPlayGatekeeperBackdropView;
-    bool  _carPlayGatekeeperBackdropViewVisible;
+    AFUISiriCarPlayView * _carPlayView;
     SiriUIConfiguration * _configuration;
     <AFUISiriViewDataSource> * _dataSource;
     <AFUISiriViewDelegate> * _delegate;
@@ -22,7 +19,6 @@
     bool  _flamesViewDeferred;
     UIView * _foregroundContainerView;
     UIView * _foregroundView;
-    UIView * _frozenBackdropSnapshotView;
     SiriUIHelpButton * _helpButton;
     bool  _helpButtonDeferred;
     bool  _inFluidDismissal;
@@ -51,7 +47,6 @@
 }
 
 @property (nonatomic, readonly) _UIBackdropView *backgroundBlurView;
-@property (nonatomic) bool carDisplaySnippetVisible;
 @property (nonatomic) <AFUISiriViewDataSource> *dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <AFUISiriViewDelegate> *delegate;
@@ -61,7 +56,6 @@
 @property (nonatomic) bool flamesViewPaused;
 @property (nonatomic, readonly) UIView *foregroundContainerView;
 @property (nonatomic, readonly) UIView *foregroundView;
-@property (nonatomic, retain) UIView *frozenBackdropSnapshotView;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool helpButtonDeferred;
 @property (getter=isInFluidDismissal, nonatomic) bool inFluidDismissal;
@@ -92,7 +86,7 @@
 - (void)_helpButtonTapped:(id)arg1;
 - (void)_hideLockViewWithResult:(long long)arg1;
 - (void)_hideLockViewWithResult:(long long)arg1 hideCompletion:(id /* block */)arg2;
-- (bool)_isRightHandDrive;
+- (bool)_isCarPlayMode:(long long)arg1;
 - (bool)_isTextInputEnabled;
 - (void)_layoutReportBugButton;
 - (void)_loadReportBugButtonTemplateImageInBackgroundWithCompletion:(id /* block */)arg1;
@@ -109,10 +103,10 @@
 - (bool)_showsReportBugButton;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_statusViewContainerFrame;
 - (void)_updateControlsAppearance;
+- (void)_updateSiriStatusViewForMode:(long long)arg1;
 - (float)audioLevelForSiriStatusView:(id)arg1;
 - (id)backgroundBlurView;
 - (void)cancelShowingPasscodeUnlock;
-- (bool)carDisplaySnippetVisible;
 - (void)configureReportBugButtonToShowHoldToTalkState:(bool)arg1;
 - (id)dataSource;
 - (void)dealloc;
@@ -124,11 +118,9 @@
 - (bool)flamesViewPaused;
 - (id)foregroundContainerView;
 - (id)foregroundView;
-- (id)frozenBackdropSnapshotView;
 - (bool)helpButtonDeferred;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 configuration:(id)arg2;
-- (bool)isCarPlayMode;
 - (bool)isInFluidDismissal;
 - (bool)isInUITrackingMode;
 - (bool)keepStatusViewHidden;
@@ -147,14 +139,12 @@
 - (void)setBackdropShouldRasterize:(bool)arg1;
 - (void)setBackdropVisible:(bool)arg1;
 - (void)setBugReportingAvailable:(bool)arg1;
-- (void)setCarDisplaySnippetVisible:(bool)arg1;
-- (void)setCarPlayGatekeeperBackdropVisible:(bool)arg1;
+- (void)setCarDisplaySnippetMode:(long long)arg1;
 - (void)setDataSource:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDisabled:(bool)arg1;
 - (void)setFlamesViewDeferred:(bool)arg1;
 - (void)setFlamesViewPaused:(bool)arg1;
-- (void)setFrozenBackdropSnapshotView:(id)arg1;
 - (void)setHelpButtonDeferred:(bool)arg1;
 - (void)setHelpButtonEmphasized:(bool)arg1;
 - (void)setInFluidDismissal:(bool)arg1;

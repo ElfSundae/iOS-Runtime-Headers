@@ -3,8 +3,8 @@
  */
 
 @interface PFQOSMeter : NSObject {
-    unsigned long long  _counts;
-    unsigned long long  _total;
+    _Atomic unsigned long long  _counts;
+    _Atomic unsigned long long  _total;
 }
 
 - (id)description;

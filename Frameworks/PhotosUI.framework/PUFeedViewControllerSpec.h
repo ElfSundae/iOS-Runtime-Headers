@@ -6,18 +6,18 @@
     double  _collectionViewContentInset;
     PUPhotosGridViewControllerSpec * _gridSpec;
     long long  _largeNumberOfSubjectsForLikes;
-    int  _largeTileFastImageFormat;
+    unsigned short  _largeTileFastImageFormat;
     struct CGSize { 
         double width; 
         double height; 
     }  _largeTileMaximumFillingSize;
-    int  _largeTileQualityImageFormat;
-    int  _mediumTileFastImageFormat;
+    unsigned short  _largeTileQualityImageFormat;
+    unsigned short  _mediumTileFastImageFormat;
     struct CGSize { 
         double width; 
         double height; 
     }  _mediumTileMaximumFillingSize;
-    int  _mediumTileQualityImageFormat;
+    unsigned short  _mediumTileQualityImageFormat;
     struct CGSize { 
         double width; 
         double height; 
@@ -30,27 +30,27 @@
     bool  _shouldShowInvitationsInPopover;
     bool  _shouldUseAspectThumbnails;
     bool  _shouldUseFullscreenLayout;
-    int  _smallTileFastImageFormat;
+    unsigned short  _smallTileFastImageFormat;
     struct CGSize { 
         double width; 
         double height; 
     }  _smallTileMaximumFittingSize;
     double  _smallTilePanoAspectRatio;
-    int  _smallTilePanoQualityImageFormat;
-    int  _smallTileQualityImageFormat;
-    int  _squareThumbnailFastImageFormat;
+    unsigned short  _smallTilePanoQualityImageFormat;
+    unsigned short  _smallTileQualityImageFormat;
+    unsigned short  _squareThumbnailFastImageFormat;
     struct CGSize { 
         double width; 
         double height; 
     }  _squareThumbnailMaximumSize;
-    int  _squareThumbnailQualityImageFormat;
+    unsigned short  _squareThumbnailQualityImageFormat;
     double  _standardSideMargins;
     struct CGSize { 
         double width; 
         double height; 
     }  _thumbnailSize;
-    int  _veryLargeTileFastImageFormat;
-    int  _veryLargeTileQualityImageFormat;
+    unsigned short  _veryLargeTileFastImageFormat;
+    unsigned short  _veryLargeTileQualityImageFormat;
 }
 
 @property (nonatomic, readonly) double collectionViewContentInset;
@@ -89,7 +89,7 @@
 - (id)defaultSubTitleTextAttributesForCollectionViewType:(long long)arg1;
 - (id)defaultTextAttributesForCollectionViewType:(long long)arg1;
 - (id)emphasizedTextAttributesForCollectionViewType:(long long)arg1;
-- (void)getFastImageFormat:(out int*)arg1 qualityImageFormat:(out int*)arg2 forSourceSize:(struct CGSize { double x1; double x2; })arg3 destinationSize:(struct CGSize { double x1; double x2; })arg4 allowCrop:(bool)arg5;
+- (void)getFastImageFormat:(out unsigned short*)arg1 qualityImageFormat:(out unsigned short*)arg2 forSourceSize:(struct CGSize { double x1; double x2; })arg3 destinationSize:(struct CGSize { double x1; double x2; })arg4 allowCrop:(bool)arg5;
 - (void)getReferenceMaximumLength:(double*)arg1 minimumNumberOfTilesToOmit:(long long*)arg2 forSectionType:(long long)arg3 collectionViewType:(long long)arg4;
 - (id)gridSpec;
 - (id)init;

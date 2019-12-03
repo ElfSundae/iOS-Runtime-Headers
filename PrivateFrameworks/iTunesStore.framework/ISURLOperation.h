@@ -11,6 +11,7 @@
     ISDataProvider * _dataProvider;
     SSHTTPArchive * _httpArchive;
     bool  _loadsHTTPFailures;
+    NSString * _logKey;
     long long  _networkRetryCount;
     NSArray * _passThroughErrors;
     ISURLRequestPerformance * _performanceMetrics;
@@ -41,6 +42,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) bool isURLBagRequest;
+@property (retain) NSString *logKey;
 @property (nonatomic, readonly) NSNumber *metricsLoadURLSamplingPercentage;
 @property (nonatomic, readonly) NSNumber *metricsLoadURLSamplingPercentageCachedResponses;
 @property (nonatomic, readonly) NSNumber *metricsLoadURLSessionDuration;
@@ -131,6 +133,7 @@
 - (id)init;
 - (id)initWithSessionManager:(id)arg1;
 - (bool)isUploadProgressRequested;
+- (id)logKey;
 - (id)metricsLoadURLSamplingPercentage;
 - (id)metricsLoadURLSamplingPercentageCachedResponses;
 - (id)metricsLoadURLSessionDuration;
@@ -144,6 +147,7 @@
 - (void)run;
 - (void)setAuthenticationContext:(id)arg1;
 - (void)setDataProvider:(id)arg1;
+- (void)setLogKey:(id)arg1;
 - (void)setPassThroughErrors:(id)arg1;
 - (void)setRequest:(id)arg1;
 - (void)setRequestProperties:(id)arg1;

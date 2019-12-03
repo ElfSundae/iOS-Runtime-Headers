@@ -2,10 +2,12 @@
    Image: /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
  */
 
-@interface NSNull : NSObject <AADataType, AFSecurityDigestibleChunksProviding, CAAction, NSCopying, NSSecureCoding, PQLBindable, SiriCoreSQLiteValue, TSDMixing, TSDPathPainter, TSSPropertyValueArchiving>
+@interface NSNull : NSObject <AADataType, AFSecurityDigestibleChunksProviding, CAAction, EFSQLBindable, EFSQLExpressable, EFSQLValueExpressable, IMJSONSerializableValueProviding, NSCopying, NSSecureCoding, PQLBindable, REDonatedActionIdentifierProviding, SiriCoreSQLiteValue, TSDMixing, TSDPathPainter, TSSPropertyValueArchiving, WFJSONObject, WFJavaScriptCoreBridgeableObject>
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) EFSQLBinding *ef_SQLBinding;
+@property (nonatomic, readonly, copy) NSString *ef_SQLExpression;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
@@ -16,6 +18,7 @@
 + (bool)supportsSecureCoding;
 
 - (unsigned long long)_cfTypeID;
+- (id)autorelease;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)description;
@@ -24,16 +27,6 @@
 - (oneway void)release;
 - (id)retain;
 - (unsigned long long)retainCount;
-
-// Image: /System/Library/Frameworks/CoreLocation.framework/CoreLocation
-
-- (id)cl_json_serializeKey;
-- (void)cl_json_serializeValue:(struct value_ostream { bool x1; struct ostream {} *x2; }*)arg1;
-
-// Image: /System/Library/Frameworks/CoreMotion.framework/CoreMotion
-
-- (id)cl_json_serializeKey;
-- (void)cl_json_serializeValue:(struct value_ostream { bool x1; struct ostream {} *x2; }*)arg1;
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
@@ -44,7 +37,7 @@
 
 // Image: /System/Library/Frameworks/Intents.framework/Intents
 
-- (id)_intents_readableDescriptionForLanguage:(id)arg1;
+- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
 
 // Image: /System/Library/Frameworks/MapKit.framework/MapKit
 
@@ -55,9 +48,18 @@
 - (id)CAMLType;
 - (void)runActionForKey:(id)arg1 object:(id)arg2 arguments:(id)arg3;
 
+// Image: /System/Library/PrivateFrameworks/AppAnalytics.framework/AppAnalytics
+
+- (id)toJsonValueAndReturnError:(id*)arg1;
+
 // Image: /System/Library/PrivateFrameworks/AssistantServices.framework/AssistantServices
 
 - (void)af_enumerateDigestibleChunksWithOptions:(unsigned long long)arg1 usingBlock:(id /* block */)arg2;
+
+// Image: /System/Library/PrivateFrameworks/EmailFoundation.framework/EmailFoundation
+
+- (id)ef_SQLBinding;
+- (id)ef_SQLExpression;
 
 // Image: /System/Library/PrivateFrameworks/MusicLibrary.framework/MusicLibrary
 
@@ -68,13 +70,17 @@
 
 - (void)nu_updateDigest:(id)arg1;
 
-// Image: /System/Library/PrivateFrameworks/News/AppAnalytics.framework/AppAnalytics
-
-- (id)toJsonValueAndReturnError:(id*)arg1;
-
 // Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
 
 - (void)sfu_appendJsonStringToString:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/PodcastsKit.framework/PodcastsKit
+
+- (id)im_jsonSerializableValue;
+
+// Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
+
+- (unsigned long long)re_actionIdentifierHashValue;
 
 // Image: /System/Library/PrivateFrameworks/SiriCore.framework/SiriCore
 
@@ -83,10 +89,6 @@
 - (id)siriCoreSQLiteValue_toNumber;
 - (id)siriCoreSQLiteValue_toString;
 - (long long)siriCoreSQLiteValue_type;
-
-// Image: /System/Library/PrivateFrameworks/Stocks/AppAnalytics.framework/AppAnalytics
-
-- (id)toJsonValueAndReturnError:(id*)arg1;
 
 // Image: /System/Library/PrivateFrameworks/TSReading.framework/TSReading
 
@@ -109,7 +111,7 @@
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (void)paintPath:(struct CGPath { }*)arg1 inContext:(struct CGContext { }*)arg2;
 - (void)saveToArchive:(struct Message { int (**x1)(); }*)arg1 archiver:(id)arg2;
-- (void)tsch_saveToArchive:(struct ChartsNSNumberDoubleArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; double x5; }*)arg1 archiver:(id)arg2;
+- (void)tsch_saveToArchive:(struct ChartsNSNumberDoubleArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; double x5; }*)arg1 archiver:(id)arg2;
 - (void)tsch_saveToProtobufString:(struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > { struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep, std::__1::allocator<char> > { struct __rep { union { struct __long { char *x_1_4_1; unsigned long long x_1_4_2; unsigned long long x_1_4_3; } x_1_3_1; struct __short { BOOL x_2_4_1[23]; struct { unsigned char x_2_5_1; } x_2_4_2; } x_1_3_2; struct __raw { unsigned long long x_3_4_1[3]; } x_1_3_3; } x_1_2_1; } x_1_1_1; } x1; }*)arg1;
 
 // Image: /usr/lib/libprequelite.dylib

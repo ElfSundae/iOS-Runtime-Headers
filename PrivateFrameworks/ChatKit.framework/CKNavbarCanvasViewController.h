@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
  */
 
-@interface CKNavbarCanvasViewController : UIViewController <CKDetailsContactsManagerDelegate, UIGestureRecognizerDelegate> {
+@interface CKNavbarCanvasViewController : UIViewController <CKDetailsContactsManagerDelegate, CKNavigationBarCanvasViewDelegate, UIGestureRecognizerDelegate> {
     CKAvatarPickerViewController * _avatarPickerViewController;
     CKCanvasBackButtonView * _backButtonView;
     UIButton * _callButton;
@@ -14,11 +14,14 @@
     CKLabel * _defaultLabel;
     <CKNavbarCanvasViewControllerDelegate> * _delegate;
     UIButton * _detailsButton;
+    UIButton * _doneButton;
     UIButton * _editCancelButtonView;
     bool  _editing;
     long long  _indicatorType;
+    bool  _isInEditingMode;
     NSString * _navbarTitle;
     UINavigationController * _proxyNavigationController;
+    bool  _shouldShowDoneButton;
     CNContactStore * _suggestionsEnabledContactStore;
 }
 
@@ -35,12 +38,15 @@
 @property (nonatomic) <CKNavbarCanvasViewControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) UIButton *detailsButton;
+@property (nonatomic, retain) UIButton *doneButton;
 @property (nonatomic, retain) UIButton *editCancelButtonView;
 @property (nonatomic) bool editing;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long indicatorType;
+@property (nonatomic) bool isInEditingMode;
 @property (nonatomic, retain) NSString *navbarTitle;
 @property (nonatomic) UINavigationController *proxyNavigationController;
+@property (nonatomic) bool shouldShowDoneButton;
 @property (nonatomic, retain) CNContactStore *suggestionsEnabledContactStore;
 @property (readonly) Class superclass;
 
@@ -51,8 +57,11 @@
 - (void)_configureForDefaultMode;
 - (void)_configureForEditMode;
 - (void)_contactPhotosEnabledChangedNotification:(id)arg1;
+- (void)_handleAddressBookChange:(id)arg1;
 - (void)_handleTranscriptScroll:(id)arg1;
 - (void)_initializeForTraitCollection:(id)arg1;
+- (bool)_isFaceTimeSupportedForIndividualCalls;
+- (bool)_isMuliwayAvaialble;
 - (id)_leftItemViewForTraitCollection:(id)arg1;
 - (void)_notifyDelegateThatViewControllerWantsResize;
 - (double)_preferredHeightForTraitCollection:(id)arg1;
@@ -72,6 +81,7 @@
 - (bool)canShowBackButtonView;
 - (id)canvasView;
 - (id)clearAllButtonView;
+- (void)collapse;
 - (void)configureForEditing:(bool)arg1;
 - (id)contactsManager;
 - (void)contactsManager:(id)arg1 didRequestCallTypeForEntity:(id)arg2 addresses:(id)arg3 abLabels:(id)arg4 faceTimeAudioEnabled:(bool)arg5;
@@ -82,6 +92,7 @@
 - (id)delegate;
 - (id)detailsButton;
 - (void)dismissModal;
+- (id)doneButton;
 - (id)editCancelButtonView;
 - (bool)editing;
 - (bool)gestureRecognizerShouldBegin:(id)arg1;
@@ -90,9 +101,11 @@
 - (id)initWithConversation:(id)arg1;
 - (id)initWithConversation:(id)arg1 navigationController:(id)arg2;
 - (bool)isFaceTimeVideoSupported;
+- (bool)isInEditingMode;
 - (bool)isMultiwayFaceTimeAudioSupported;
 - (void)loadView;
 - (void)multiwayStateChanged:(id)arg1;
+- (id)navBarTitleFromConversation:(id)arg1;
 - (id)navbarTitle;
 - (id)navigationItem;
 - (id)proxyNavigationController;
@@ -107,18 +120,24 @@
 - (void)setDefaultLabel:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDetailsButton:(id)arg1;
+- (void)setDoneButton:(id)arg1;
 - (void)setEditCancelButtonView:(id)arg1;
 - (void)setEditing:(bool)arg1;
 - (void)setIndicatorType:(long long)arg1;
+- (void)setIsInEditingMode:(bool)arg1;
 - (void)setNavbarTitle:(id)arg1;
 - (void)setProxyNavigationController:(id)arg1;
+- (void)setShouldShowDoneButton:(bool)arg1;
 - (void)setSuggestionsEnabledContactStore:(id)arg1;
 - (void)setUnreadCountTitleColor;
+- (bool)shouldShowDoneButton;
 - (void)showMapkitBusinessData;
 - (void)startAudioCommunicationUsingPreferredRouteIfAvailable:(bool)arg1;
 - (id)suggestionsEnabledContactStore;
+- (struct NSDirectionalEdgeInsets { double x1; double x2; double x3; double x4; })systemMinimumLayoutMarginsForView:(id)arg1;
 - (void)toggleExpansionState;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updateContentsForConversation:(id)arg1;
 - (void)updateTitle:(id)arg1 animated:(bool)arg2;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

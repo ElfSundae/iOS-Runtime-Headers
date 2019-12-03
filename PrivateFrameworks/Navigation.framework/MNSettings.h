@@ -3,7 +3,6 @@
  */
 
 @interface MNSettings : NSObject <NSSecureCoding> {
-    double  _alightSignalTimeBuffer;
     double  _backgroundTimeWindow;
     bool  _beepBeforeInstruction;
     unsigned long long  _distanceUnits;
@@ -12,22 +11,22 @@
     long long  _fakeTrafficIncidentAlert;
     double  _initialRequestDelay;
     double  _initialTraceSpeedMultiplier;
-    bool  _isConnectedToCarplay;
     bool  _isTracePlaybackCameraTestMode;
     unsigned long long  _maxAlternateRoutesCount;
     bool  _muteSpeechOverride;
     bool  _pauseSpokenAudio;
     bool  _shouldLoadETAUpdatesFromTrace;
-    bool  _shouldLoadInitialRouteFromTrace;
     bool  _shouldLoadReroutesFromTrace;
+    bool  _shouldRecordTrace;
     bool  _shouldUseGuidanceEventManager;
+    double  _simulationGPSError;
+    double  _simulationSpeed;
     bool  _speechEnabled;
     NSString * _voiceLanguage;
     unsigned long long  _voiceVolume;
     bool  _walkingVoiceGuidance;
 }
 
-@property (nonatomic, readonly) double alightSignalTimeBuffer;
 @property (nonatomic, readonly) double backgroundTimeWindow;
 @property (nonatomic, readonly) bool beepBeforeInstruction;
 @property (nonatomic, readonly) unsigned long long distanceUnits;
@@ -36,15 +35,16 @@
 @property (nonatomic, readonly) long long fakeTrafficIncidentAlert;
 @property (nonatomic, readonly) double initialRequestDelay;
 @property (nonatomic, readonly) double initialTraceSpeedMultiplier;
-@property (nonatomic, readonly) bool isConnectedToCarplay;
 @property (nonatomic, readonly) bool isTracePlaybackCameraTestMode;
 @property (nonatomic, readonly) unsigned long long maxAlternateRoutesCount;
 @property (nonatomic, readonly) bool muteSpeechOverride;
 @property (nonatomic, readonly) bool pauseSpokenAudio;
 @property (nonatomic, readonly) bool shouldLoadETAUpdatesFromTrace;
-@property (nonatomic, readonly) bool shouldLoadInitialRouteFromTrace;
 @property (nonatomic, readonly) bool shouldLoadReroutesFromTrace;
+@property (nonatomic, readonly) bool shouldRecordTrace;
 @property (nonatomic, readonly) bool shouldUseGuidanceEventManager;
+@property (nonatomic, readonly) double simulationGPSError;
+@property (nonatomic, readonly) double simulationSpeed;
 @property (nonatomic, readonly) bool speechEnabled;
 @property (nonatomic, readonly) NSString *voiceLanguage;
 @property (nonatomic, readonly) unsigned long long voiceVolume;
@@ -53,7 +53,6 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
-- (double)alightSignalTimeBuffer;
 - (double)backgroundTimeWindow;
 - (bool)beepBeforeInstruction;
 - (id)description;
@@ -66,15 +65,17 @@
 - (id)initWithCoder:(id)arg1;
 - (double)initialRequestDelay;
 - (double)initialTraceSpeedMultiplier;
-- (bool)isConnectedToCarplay;
 - (bool)isTracePlaybackCameraTestMode;
 - (unsigned long long)maxAlternateRoutesCount;
 - (bool)muteSpeechOverride;
 - (bool)pauseSpokenAudio;
+- (void)setVoiceLanguage:(id)arg1;
 - (bool)shouldLoadETAUpdatesFromTrace;
-- (bool)shouldLoadInitialRouteFromTrace;
 - (bool)shouldLoadReroutesFromTrace;
+- (bool)shouldRecordTrace;
 - (bool)shouldUseGuidanceEventManager;
+- (double)simulationGPSError;
+- (double)simulationSpeed;
 - (bool)speechEnabled;
 - (id)voiceLanguage;
 - (unsigned long long)voiceVolume;

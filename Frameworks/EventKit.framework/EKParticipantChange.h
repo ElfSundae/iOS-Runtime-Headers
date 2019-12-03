@@ -4,4 +4,9 @@
 
 @interface EKParticipantChange : EKObjectChange
 
++ (int)entityType;
++ (void)fetchParticipantChangesInCalendar:(id)arg1 resultHandler:(id /* block */)arg2;
++ (void)fetchParticipantChangesInSource:(id)arg1 resultHandler:(id /* block */)arg2;
++ (void)fetchParticipantChangesInStore:(id)arg1 resultHandler:(id /* block */)arg2;
+
 @end

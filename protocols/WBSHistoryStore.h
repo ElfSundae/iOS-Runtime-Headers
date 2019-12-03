@@ -7,6 +7,7 @@
 
 - (void)addOrUpdateItemsOnDatabaseQueue:(NSSet *)arg1;
 - (NSSet *)allVisitsForItemsOnDatabaseQueue:(NSSet *)arg1;
+- (void)assignHistoryItem:(void *)arg1 toTopicTags:(void *)arg2 completionHandler:(void *)arg3; // needs 3 arg types, found 9: WBSHistoryItem *, NSSet *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, NSError *, void*
 - (unsigned long long)cachedNumberOfDevicesInSyncCircle;
 - (void)checkIfLocalVisitExistsInAnyOfItems:(void *)arg1 withCompletion:(void *)arg2; // needs 2 arg types, found 7: NSSet *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, void*
 - (void)clearHistoryVisitsAddedAfterDate:(void *)arg1 beforeDate:(void *)arg2 completionHandler:(void *)arg3; // needs 3 arg types, found 7: NSDate *, NSDate *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, void*
@@ -17,6 +18,8 @@
 - (void)enumeratePriorVisitsInRedirectChainOnDatabaseQueue:(void *)arg1 items:(void *)arg2 enumerationBlock:(void *)arg3; // needs 3 arg types, found 8: NSSet *, NSSet *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, WBSHistoryVisit *, void*
 - (void)enumerateSubsequentVisitsInRedirectChainOnDatabaseQueue:(void *)arg1 items:(void *)arg2 enumerationBlock:(void *)arg3; // needs 3 arg types, found 8: NSSet *, NSSet *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, WBSHistoryVisit *, void*
 - (NSData *)fetchThrottlerData;
+- (void)fetchTopicsFromStartDate:(void *)arg1 toEndDate:(void *)arg2 completionHandler:(void *)arg3; // needs 3 arg types, found 9: NSDate *, NSDate *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSArray *, NSError *, void*
+- (void)fetchTopicsFromStartDate:(void *)arg1 toEndDate:(void *)arg2 limit:(void *)arg3 minimumItemCount:(void *)arg4 sortOrder:(void *)arg5 completionHandler:(void *)arg6; // needs 6 arg types, found 12: NSDate *, NSDate *, unsigned long long, unsigned long long, long long, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSArray *, NSError *, void*
 - (void)getAllTombstonesWithCompletion:(void *)arg1; // needs 1 arg types, found 6: id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSSet *, void*
 - (void)getServerChangeTokenDataWithCompletion:(void *)arg1; // needs 1 arg types, found 6: id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSData *, void*
 - (void)getVisitsAndTombstonesNeedingSyncWithVisitSyncWindow:(void *)arg1 completion:(void *)arg2; // needs 2 arg types, found 15: double, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSSet *, NSSet *, long long, id /* block */, void*, void, id /* block */, bool, void*, void*
@@ -47,8 +50,13 @@
 - (void)setPushThrottlerData:(NSData *)arg1;
 - (void)setServerChangeTokenData:(NSData *)arg1;
 - (void)setSyncCircleSizeRetrievalThrottlerData:(NSData *)arg1;
+- (void)setSyncsWithManateeContainer:(bool)arg1;
+- (void)setTitle:(void *)arg1 ofTag:(void *)arg2 completionHandler:(void *)arg3; // needs 3 arg types, found 9: NSString *, WBSHistoryTag *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, NSError *, void*
 - (NSData *)syncCircleSizeRetrievalThrottlerData;
+- (bool)syncsWithManateeContainer;
+- (void)tagsWithIdentifiers:(void *)arg1 type:(void *)arg2 level:(void *)arg3 creatingIfNecessary:(void *)arg4 withTitles:(void *)arg5 completionHandler:(void *)arg6; // needs 6 arg types, found 13: NSArray *, unsigned long long, long long, bool, NSArray *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSArray *, NSArray *, NSError *, void*
 - (void)updateHistoryAfterSuccessfulPersistedLongLivedSaveOperationWithGeneration:(void *)arg1 completion:(void *)arg2; // needs 2 arg types, found 6: long long, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, void*
+- (void)vacuumHistoryWithCompletionHandler:(void *)arg1; // needs 1 arg types, found 5: id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, void*
 - (void)visitIdentifiersMatchingExistingVisits:(void *)arg1 populateAssociatedVisits:(void *)arg2 completion:(void *)arg3; // needs 3 arg types, found 8: NSSet *, bool, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSSet *, void*
 - (void)visitTitleWasUpdated:(WBSHistoryVisit *)arg1;
 - (void)visitsWereAdded:(NSArray *)arg1;

@@ -3,6 +3,8 @@
  */
 
 @interface WBSReaderConfigurationManager : NSObject {
+    bool  _darkModeEnabled;
+    long long  _darkModeTheme;
     NSMutableDictionary * _fontFamilyNameForLanguageTag;
     WBSReaderFontManager * _fontManager;
     bool  _isOLEDDisplay;
@@ -16,6 +18,7 @@
 @property (nonatomic, readonly) bool canMakeTextSmaller;
 @property (nonatomic, readonly) NSDictionary *configurationToSave;
 @property (nonatomic, readonly) NSDictionary *configurationToSendToWebPage;
+@property (nonatomic) bool darkModeEnabled;
 @property (nonatomic) bool isOLEDDisplay;
 @property (nonatomic) bool javaScriptEnabled;
 @property (nonatomic, readonly) bool resettingTextSizeWouldHaveEffect;
@@ -29,6 +32,7 @@
 - (bool)canMakeTextSmaller;
 - (id)configurationToSave;
 - (id)configurationToSendToWebPage;
+- (bool)darkModeEnabled;
 - (id)fontForLanguageTag:(id)arg1;
 - (id)initWithPersistedSettingsAsDictionaryRepresentation:(id)arg1 fontManager:(id)arg2;
 - (id)initWithPersistedSettingsAsDictionaryRepresentation:(id)arg1 fontManager:(id)arg2 prefersLargerDefaultFontSize:(bool)arg3;
@@ -38,6 +42,7 @@
 - (void)makeTextSmaller;
 - (void)resetTextSize;
 - (bool)resettingTextSizeWouldHaveEffect;
+- (void)setDarkModeEnabled:(bool)arg1;
 - (void)setFont:(id)arg1 forLanguageTag:(id)arg2;
 - (void)setIsOLEDDisplay:(bool)arg1;
 - (void)setJavaScriptEnabled:(bool)arg1;

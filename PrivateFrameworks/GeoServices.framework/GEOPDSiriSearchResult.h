@@ -5,9 +5,22 @@
 @interface GEOPDSiriSearchResult : PBCodable <NSCopying> {
     NSMutableArray * _disambiguationLabels;
     struct { 
-        unsigned int isChainResultSet : 1; 
-    }  _has;
+        unsigned int has_isChainResultSet : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_disambiguationLabels : 1; 
+        unsigned int read_resultDetourInfos : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_disambiguationLabels : 1; 
+        unsigned int wrote_resultDetourInfos : 1; 
+        unsigned int wrote_isChainResultSet : 1; 
+    }  _flags;
     bool  _isChainResultSet;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     NSMutableArray * _resultDetourInfos;
     PBUnknownFields * _unknownFields;
 }
@@ -19,13 +32,19 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 + (Class)disambiguationLabelType;
++ (bool)isValid:(id)arg1;
 + (Class)resultDetourInfoType;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsDisambiguationLabel:(id)arg1;
+- (void)_addNoFlagsResultDetourInfo:(id)arg1;
+- (void)_readDisambiguationLabels;
+- (void)_readResultDetourInfos;
 - (void)addDisambiguationLabel:(id)arg1;
 - (void)addResultDetourInfo:(id)arg1;
 - (void)clearDisambiguationLabels;
 - (void)clearResultDetourInfos;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -35,9 +54,12 @@
 - (unsigned long long)disambiguationLabelsCount;
 - (bool)hasIsChainResultSet;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isChainResultSet;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)resultDetourInfoAtIndex:(unsigned long long)arg1;
 - (id)resultDetourInfos;

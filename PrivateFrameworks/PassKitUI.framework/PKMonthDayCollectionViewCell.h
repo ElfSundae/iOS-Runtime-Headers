@@ -20,6 +20,7 @@
 - (bool)isEnabled;
 - (void)layoutSubviews;
 - (void)setDayNumber:(long long)arg1;
+- (void)setDayNumber:(long long)arg1 withTitle:(id)arg2;
 - (void)setEnabled:(bool)arg1;
 - (void)setSelected:(bool)arg1;
 

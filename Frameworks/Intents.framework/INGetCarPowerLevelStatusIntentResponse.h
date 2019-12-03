@@ -2,9 +2,7 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface INGetCarPowerLevelStatusIntentResponse : INIntentResponse <INGetCarPowerLevelStatusIntentResponseExport> {
-    _INPBGetCarPowerLevelStatusIntentResponse * _responseMessagePBRepresentation;
-}
+@interface INGetCarPowerLevelStatusIntentResponse : INIntentResponse <INGetCarPowerLevelStatusIntentResponseExport>
 
 @property (nonatomic, copy) NSNumber *chargePercentRemaining;
 @property (nonatomic, copy) NSNumber *charging;
@@ -23,11 +21,10 @@
 + (int)_typeFromCode:(long long)arg1;
 + (bool)supportsSecureCoding;
 
-- (void).cxx_destruct;
+- (long long)_codeWithName:(id)arg1;
 - (id)_dictionaryRepresentation;
 - (id)_initWithCode:(long long)arg1 userActivity:(id)arg2;
 - (long long)_intentResponseCode;
-- (id)_responseMessagePBRepresentation;
 - (id)chargePercentRemaining;
 - (id)charging;
 - (long long)code;

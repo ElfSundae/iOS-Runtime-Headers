@@ -5,14 +5,14 @@
 @interface SXDocumentStyle : SXJSONObject <SXDocumentStyle>
 
 @property (nonatomic, readonly) UIColor *backgroundColor;
+@property (nonatomic, readonly) SXJSONArray *conditional;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, readonly) SXFill *fill;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) UIColor *topBackgroundColor;
 @property (nonatomic, readonly) SXJSONLinearGradient *topBackgroundGradient;
 
-- (id)fillWithValue:(id)arg1 withType:(int)arg2;
++ (id /* block */)valueClassBlockForPropertyWithName:(id)arg1;
 
 @end

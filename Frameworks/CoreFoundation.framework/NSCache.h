@@ -53,6 +53,11 @@
 - (id)objectForKeyedSubscript:(id)arg1;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 
+// Image: /System/Library/PrivateFrameworks/NanoTimeKitCompanion.framework/NanoTimeKitCompanion
+
+- (id)ntkCachedObjectForKey:(id)arg1 creationBlock:(id /* block */)arg2;
+- (id)ntkCachedObjectForKeyProvider:(id)arg1 creationBlock:(id /* block */)arg2;
+
 // Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
 
 - (id)px_objectForKey:(id)arg1 usingPromise:(id /* block */)arg2;

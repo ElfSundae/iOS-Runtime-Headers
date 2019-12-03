@@ -24,6 +24,7 @@
 - (void)eraseWithCompletion:(id /* block */)arg1;
 - (id)fetchAnisetteDataAndProvisionIfNecessary:(bool)arg1 error:(id*)arg2;
 - (void)fetchAnisetteDataAndProvisionIfNecessary:(bool)arg1 withCompletion:(id /* block */)arg2;
+- (void)fetchAttestationForRequest:(id)arg1 completion:(id /* block */)arg2;
 - (id)init;
 - (id)initForDevice:(id)arg1 provider:(id)arg2;
 - (id)initWithDaemonXPCEndpoint:(id)arg1;

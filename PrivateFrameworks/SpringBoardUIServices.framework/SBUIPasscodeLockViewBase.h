@@ -95,7 +95,6 @@
 @property (nonatomic) long long passcodeLockViewState;
 @property (nonatomic) bool playsKeypadSounds;
 @property (nonatomic) struct { bool x1; bool x2; double x3; bool x4; double x5; double x6; double x7; double x8; bool x9; bool x10; bool x11; unsigned long long x12; } proudLockConfiguration;
-@property (nonatomic) bool proudLockShowsBiometricStates;
 @property (nonatomic, retain) NSTimer *screenBrightnessChangedTimer;
 @property (getter=isScreenOn, nonatomic) bool screenOn;
 @property (nonatomic) bool shouldResetForFailedPasscodeAttempt;
@@ -213,7 +212,6 @@
 - (long long)passcodeLockViewState;
 - (bool)playsKeypadSounds;
 - (struct { bool x1; bool x2; double x3; bool x4; double x5; double x6; double x7; double x8; bool x9; bool x10; bool x11; unsigned long long x12; })proudLockConfiguration;
-- (bool)proudLockShowsBiometricStates;
 - (void)providerLegibilitySettingsChanged:(id)arg1;
 - (void)reset;
 - (void)resetForFailedMesaAttemptWithStatusText:(id)arg1 andSubtitle:(id)arg2;
@@ -245,7 +243,6 @@
 - (void)setPasscodeLockViewState:(long long)arg1 animated:(bool)arg2;
 - (void)setPlaysKeypadSounds:(bool)arg1;
 - (void)setProudLockConfiguration:(struct { bool x1; bool x2; double x3; bool x4; double x5; double x6; double x7; double x8; bool x9; bool x10; bool x11; unsigned long long x12; })arg1;
-- (void)setProudLockShowsBiometricStates:(bool)arg1;
 - (void)setScreenBrightnessChangedTimer:(id)arg1;
 - (void)setScreenOn:(bool)arg1;
 - (void)setShouldResetForFailedPasscodeAttempt:(bool)arg1;

@@ -41,6 +41,5 @@
 - (void)setRendererFlags:(unsigned int)arg1;
 - (void)setSecure:(bool)arg1;
 - (unsigned int)taskNamePortOfContextId:(unsigned int)arg1;
-- (unsigned int)taskPortOfContextId:(unsigned int)arg1;
 
 @end

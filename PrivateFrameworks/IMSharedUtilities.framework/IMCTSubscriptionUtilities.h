@@ -6,9 +6,10 @@
     NSMutableDictionary * _cachedCarrierSettings;
     CoreTelephonyClient * _coreTelephonyClient;
     IMCTXPCServiceSubscriptionInfo * _ctSubscriptionInfo;
-    IDSPhoneCertificateVendor * _phoneCertificateVendor;
-    NSString * _registeredPhoneNumber;
-    NSString * _registeredSIMID;
+    IDSPhoneSubscriptionSelector * _phoneSubscriptionSelector;
+    NSArray * _registeredPhoneNumbers;
+    NSArray * _registeredSIMIDs;
+    NSArray * _registeredSubscriptions;
 }
 
 @property (nonatomic, retain) NSMutableDictionary *cachedCarrierSettings;
@@ -19,9 +20,10 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) IDSPhoneCertificateVendor *phoneCertificateVendor;
-@property (nonatomic, copy) NSString *registeredPhoneNumber;
-@property (nonatomic, copy) NSString *registeredSIMID;
+@property (nonatomic, retain) IDSPhoneSubscriptionSelector *phoneSubscriptionSelector;
+@property (nonatomic, copy) NSArray *registeredPhoneNumbers;
+@property (nonatomic, copy) NSArray *registeredSIMIDs;
+@property (nonatomic, copy) NSArray *registeredSubscriptions;
 @property (readonly) Class superclass;
 
 + (id)sharedInstance;
@@ -52,15 +54,17 @@
 - (id)newSubscriptionContextWithPhoneNumber:(id)arg1 labelID:(id)arg2 isDefaultVoice:(id)arg3 isDefaultData:(id)arg4 slot:(long long)arg5;
 - (id)newSubscriptionContextWithSlot:(long long)arg1;
 - (unsigned long long)numberOfSubscriptions;
-- (id)phoneCertificateVendor;
-- (id)registeredPhoneNumber;
-- (id)registeredSIMID;
+- (id)phoneSubscriptionSelector;
+- (id)registeredPhoneNumbers;
+- (id)registeredSIMIDs;
+- (id)registeredSubscriptions;
 - (void)setCachedCarrierSettings:(id)arg1;
 - (void)setCoreTelephonyClient:(id)arg1;
 - (void)setCtSubscriptionInfo:(id)arg1;
-- (void)setPhoneCertificateVendor:(id)arg1;
-- (void)setRegisteredPhoneNumber:(id)arg1;
-- (void)setRegisteredSIMID:(id)arg1;
+- (void)setPhoneSubscriptionSelector:(id)arg1;
+- (void)setRegisteredPhoneNumbers:(id)arg1;
+- (void)setRegisteredSIMIDs:(id)arg1;
+- (void)setRegisteredSubscriptions:(id)arg1;
 - (id)stringForBundleType:(long long)arg1;
 - (void)subscriptionInfoDidChange;
 

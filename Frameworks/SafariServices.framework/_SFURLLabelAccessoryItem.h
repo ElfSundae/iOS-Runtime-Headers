@@ -4,53 +4,44 @@
 
 @interface _SFURLLabelAccessoryItem : NSObject {
     bool  _centerAligned;
-    struct CGSize { 
-        double width; 
-        double height; 
-    }  _interpolatedSize;
+    UIVisualEffectView * _effectView;
     struct CGSize { 
         double width; 
         double height; 
     }  _size;
     double  _spacing;
-    struct CGSize { 
-        double width; 
-        double height; 
-    }  _squishedSize;
-    double  _squishedSpacing;
-    double  _squishedVerticalOffset;
-    double  _verticalOffset;
-    SFCrossfadingImageView * _view;
+    UIVisualEffectView * _squishedEffectView;
+    UIImageView * _squishedView;
+    UIImageView * _view;
 }
 
 @property (nonatomic) bool centerAligned;
-@property (nonatomic) struct CGSize { double x1; double x2; } interpolatedSize;
+@property (nonatomic, retain) UIVisualEffectView *effectView;
+@property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } frame;
 @property (nonatomic) struct CGSize { double x1; double x2; } size;
 @property (nonatomic) double spacing;
-@property (nonatomic) struct CGSize { double x1; double x2; } squishedSize;
-@property (nonatomic) double squishedSpacing;
-@property (nonatomic) double squishedVerticalOffset;
-@property (nonatomic) double verticalOffset;
-@property (nonatomic, retain) SFCrossfadingImageView *view;
+@property (nonatomic, retain) UIVisualEffectView *squishedEffectView;
+@property (nonatomic, retain) UIImageView *squishedView;
+@property (nonatomic, retain) UIImageView *view;
+@property (nonatomic, readonly) UIView *viewForLayout;
 
 - (void).cxx_destruct;
 - (bool)centerAligned;
-- (struct CGSize { double x1; double x2; })interpolatedSize;
+- (id)effectView;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })frame;
 - (void)setCenterAligned:(bool)arg1;
-- (void)setInterpolatedSize:(struct CGSize { double x1; double x2; })arg1;
+- (void)setEffectView:(id)arg1;
+- (void)setFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setSpacing:(double)arg1;
-- (void)setSquishedSize:(struct CGSize { double x1; double x2; })arg1;
-- (void)setSquishedSpacing:(double)arg1;
-- (void)setSquishedVerticalOffset:(double)arg1;
-- (void)setVerticalOffset:(double)arg1;
+- (void)setSquishedEffectView:(id)arg1;
+- (void)setSquishedView:(id)arg1;
 - (void)setView:(id)arg1;
 - (struct CGSize { double x1; double x2; })size;
 - (double)spacing;
-- (struct CGSize { double x1; double x2; })squishedSize;
-- (double)squishedSpacing;
-- (double)squishedVerticalOffset;
-- (double)verticalOffset;
+- (id)squishedEffectView;
+- (id)squishedView;
 - (id)view;
+- (id)viewForLayout;
 
 @end

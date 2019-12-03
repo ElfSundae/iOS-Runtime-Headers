@@ -6,6 +6,9 @@
 @required
 
 - (void)applyUndoGroup:(TTMergeableStringUndoGroup *)arg1;
+
+@optional
+
 - (TTMergeableStringUndoGroup *)newCoalescingUndoGroup;
 
 @end

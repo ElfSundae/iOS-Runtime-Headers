@@ -6,7 +6,7 @@
     int  _cd_rc;
     int  _count;
     NSKnownKeysMappingStrategy * _keySearch;
-    /* Warning: unhandled array encoding: '[0@]' */ id  _values;
+    id  _values;
 }
 
 + (bool)accessInstanceVariablesDirectly;
@@ -23,12 +23,12 @@
 + (id)initWithSearchStrategy:(id)arg1;
 + (bool)supportsSecureCoding;
 
-- (unsigned long long)_countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3 forKeys:(bool)arg4;
+- (unsigned long long)_countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3 forKeys:(bool)arg4;
 - (bool)_isDeallocating;
 - (void)_recount;
 - (void)_setValues:(id*)arg1 retain:(bool)arg2;
 - (bool)_tryRetain;
-- (unsigned long long)_valueCountByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)_valueCountByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (void)addEntriesFromDictionary:(id)arg1;
 - (id)allKeys;
 - (id)allValues;
@@ -36,7 +36,7 @@
 - (Class)classForCoder;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned long long)count;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)getKeys:(id*)arg1;

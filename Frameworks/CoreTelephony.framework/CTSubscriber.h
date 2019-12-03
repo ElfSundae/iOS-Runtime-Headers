@@ -37,5 +37,6 @@
 - (bool)refreshCarrierToken;
 - (void)setDelegate:(id)arg1;
 - (void)setDescriptor:(id)arg1;
+- (id)typeAllocationCode;
 
 @end

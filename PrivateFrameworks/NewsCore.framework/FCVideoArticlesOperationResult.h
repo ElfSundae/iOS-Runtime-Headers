@@ -5,6 +5,8 @@
 @interface FCVideoArticlesOperationResult : NSObject {
     FCColorGradient * _backgroundColorGradient;
     NSString * _channelID;
+    FCColorGradient * _darkStyleBackgroundColorGradient;
+    FCColor * _darkStyleTitleColor;
     NTPBDiscoverMoreVideosInfo * _discoverMoreVideosInfo;
     NSArray * _headlines;
     NSString * _mutingChannelID;
@@ -13,29 +15,26 @@
     NSString * _titleText;
 }
 
-@property (nonatomic, copy) FCColorGradient *backgroundColorGradient;
-@property (nonatomic, copy) NSString *channelID;
-@property (nonatomic, copy) NTPBDiscoverMoreVideosInfo *discoverMoreVideosInfo;
-@property (nonatomic, retain) NSArray *headlines;
+@property (nonatomic, readonly, copy) FCColorGradient *backgroundColorGradient;
+@property (nonatomic, readonly, copy) NSString *channelID;
+@property (nonatomic, readonly, copy) FCColorGradient *darkStyleBackgroundColorGradient;
+@property (nonatomic, readonly, copy) FCColor *darkStyleTitleColor;
+@property (nonatomic, readonly, copy) NTPBDiscoverMoreVideosInfo *discoverMoreVideosInfo;
+@property (nonatomic, readonly) NSArray *headlines;
 @property (nonatomic, readonly, copy) NSString *mutingChannelID;
-@property (nonatomic, copy) NSString *subtitleText;
-@property (nonatomic, copy) FCColor *titleColor;
-@property (nonatomic, copy) NSString *titleText;
+@property (nonatomic, readonly, copy) NSString *subtitleText;
+@property (nonatomic, readonly, copy) FCColor *titleColor;
+@property (nonatomic, readonly, copy) NSString *titleText;
 
 - (void).cxx_destruct;
 - (id)backgroundColorGradient;
 - (id)channelID;
+- (id)darkStyleBackgroundColorGradient;
+- (id)darkStyleTitleColor;
 - (id)discoverMoreVideosInfo;
 - (id)headlines;
 - (id)initWithVideoGroupConfig:(id)arg1 headlines:(id)arg2;
 - (id)mutingChannelID;
-- (void)setBackgroundColorGradient:(id)arg1;
-- (void)setChannelID:(id)arg1;
-- (void)setDiscoverMoreVideosInfo:(id)arg1;
-- (void)setHeadlines:(id)arg1;
-- (void)setSubtitleText:(id)arg1;
-- (void)setTitleColor:(id)arg1;
-- (void)setTitleText:(id)arg1;
 - (id)subtitleText;
 - (id)titleColor;
 - (id)titleText;

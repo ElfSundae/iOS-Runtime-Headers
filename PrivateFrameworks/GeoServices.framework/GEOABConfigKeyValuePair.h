@@ -7,8 +7,21 @@
     GEOABConfigValue * _abConfigValue;
     int  _abConfigValueType;
     struct { 
-        unsigned int abConfigValueType : 1; 
-    }  _has;
+        unsigned int has_abConfigValueType : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_abConfigKey : 1; 
+        unsigned int read_abConfigValue : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_abConfigKey : 1; 
+        unsigned int wrote_abConfigValue : 1; 
+        unsigned int wrote_abConfigValueType : 1; 
+    }  _flags;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     PBUnknownFields * _unknownFields;
 }
 
@@ -20,12 +33,17 @@
 @property (nonatomic) bool hasAbConfigValueType;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsAbConfigValueType:(id)arg1;
+- (void)_readAbConfigKey;
+- (void)_readAbConfigValue;
 - (id)abConfigKey;
 - (id)abConfigValue;
 - (int)abConfigValueType;
 - (id)abConfigValueTypeAsString:(int)arg1;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -34,8 +52,11 @@
 - (bool)hasAbConfigValue;
 - (bool)hasAbConfigValueType;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAbConfigKey:(id)arg1;
 - (void)setAbConfigValue:(id)arg1;

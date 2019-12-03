@@ -7,11 +7,9 @@
     <WBSLogger> * _keyActionsLogger;
     <WBSCloudBookmarksMigrationCoordinatorLocalDataProvider> * _localDataProvider;
     bool  _migrationEnabled;
-    WBSCloudBookmarksMigrationRampEvaluator * _migrationRampEvaluator;
     WBSCloudBookmarksMigrationReadinessDecider * _migrationReadinessDecider;
     NSTimer * _migrationReadinessReevaluationTimer;
     NSObject<OS_dispatch_queue> * _processingQueue;
-    bool  _rampEnabled;
     bool  _readyToMigrate;
     long long  _skipReason;
     <WBSCloudBookmarksMigrationCoordinatorStorage> * _storage;
@@ -26,7 +24,6 @@
 @property (nonatomic, retain) <WBSLogger> *keyActionsLogger;
 @property (nonatomic, readonly) <WBSCloudBookmarksMigrationCoordinatorLocalDataProvider> *localDataProvider;
 @property (getter=isMigrationEnabled, nonatomic) bool migrationEnabled;
-@property (getter=isRampEnabled, nonatomic) bool rampEnabled;
 @property (nonatomic, readonly) <WBSCloudBookmarksMigrationCoordinatorStorage> *storage;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) <WBSSafariBookmarksSyncAgentProtocol> *syncAgent;
@@ -52,13 +49,11 @@
 - (id)init;
 - (id)initWithStorage:(id)arg1 syncAgent:(id)arg2 localDataProvider:(id)arg3 cloudTabDeviceProvider:(id)arg4 windowsDeviceEligibilityFetcher:(id)arg5;
 - (bool)isMigrationEnabled;
-- (bool)isRampEnabled;
 - (id)keyActionsLogger;
 - (id)localDataProvider;
 - (void)noteCloudTabDevicesChanged;
 - (void)setKeyActionsLogger:(id)arg1;
 - (void)setMigrationEnabled:(bool)arg1;
-- (void)setRampEnabled:(bool)arg1;
 - (void)startCoordinatingMigration;
 - (id)storage;
 - (id)syncAgent;

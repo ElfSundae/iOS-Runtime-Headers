@@ -4,12 +4,14 @@
 
 @interface PPNamedEntityRecord : _PASZonedObject <NSCopying, NSMutableCopying, NSSecureCoding> {
     unsigned char  _algorithm;
+    BOOL  _bucketizedSentimentScore;
     unsigned char  _changeType;
     float  _decayRate;
     PPNamedEntity * _entity;
     unsigned short  _extractionAssetVersion;
     NSString * _extractionOsBuild;
     float  _initialScore;
+    PPNamedEntityMetadata * _metadata;
     PPSource * _source;
 }
 
@@ -20,6 +22,8 @@
 @property (nonatomic, readonly) unsigned long long extractionAssetVersion;
 @property (nonatomic, readonly) NSString *extractionOsBuild;
 @property (nonatomic, readonly) double initialScore;
+@property (nonatomic, readonly) PPNamedEntityMetadata *metadata;
+@property (nonatomic, readonly) double sentimentScore;
 @property (nonatomic, readonly) PPSource *source;
 
 + (id)describeAlgorithm:(unsigned long long)arg1;
@@ -41,7 +45,9 @@
 - (double)initialScore;
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToNamedEntityRecord:(id)arg1;
+- (id)metadata;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
+- (double)sentimentScore;
 - (id)source;
 
 @end

@@ -19,7 +19,6 @@
 @property (setter=_setFadingInFromCustomAlpha:, nonatomic) bool _isFadingInFromCustomAlpha;
 
 - (void).cxx_destruct;
-- (void)_adjustLabelTrackingIfNecessary;
 - (void)_cleanUpCrossView;
 - (void)_crossFadeHiddingButton:(bool)arg1;
 - (id)_currentTextColorForBarStyle:(long long)arg1;
@@ -38,7 +37,6 @@
 - (void)_updateLabel;
 - (void)_updateLabelColor;
 - (void)_updateLabelContents;
-- (bool)_useSilverLookForBarStyle:(long long)arg1;
 - (id)description;
 - (id)font;
 - (id)initWithNavigationItem:(id)arg1;

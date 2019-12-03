@@ -5,6 +5,7 @@
 @interface UIKBRenderFactoryiPhone : UIKBRenderFactory
 
 - (struct CGPoint { double x1; double x2; })ZWNJKeyOffset;
+- (void)_configureTraitsForPopupStyle:(id)arg1 withKey:(id)arg2 onKeyplane:(id)arg3;
 - (void)_customizeGeometry:(id)arg1 forKey:(id)arg2 contents:(id)arg3;
 - (void)_customizePopupTraits:(id)arg1 forKey:(id)arg2 onKeyplane:(id)arg3;
 - (void)_customizeSymbolStyle:(id)arg1 forKey:(id)arg2 contents:(id)arg3;
@@ -40,6 +41,8 @@
 - (struct CGPoint { double x1; double x2; })more123KeyOffset;
 - (double)moreABCKeyFontSize;
 - (struct CGPoint { double x1; double x2; })moreABCKeyOffset;
+- (double)moreABCKeyWideCellFontSize;
+- (struct CGPoint { double x1; double x2; })moreABCKeyWideCellOffset;
 - (double)moreKeyFontSize;
 - (id)multitapCompleteKeyImageName;
 - (id)muttitapReverseKeyImageName;
@@ -65,6 +68,7 @@
 - (double)stringKeyFontSize;
 - (struct CGPoint { double x1; double x2; })stringKeyOffset;
 - (struct CGPoint { double x1; double x2; })undoKeyOffset;
+- (double)variantAnnotationTextFontSize;
 - (struct CGPoint { double x1; double x2; })variantAnnotationTextOffset;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })variantDisplayFrameInsets;
 - (id)variantGeometriesForGeometry:(id)arg1 variantCount:(unsigned long long)arg2 rowLimit:(long long)arg3 annotationIndex:(unsigned long long)arg4;

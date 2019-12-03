@@ -2,7 +2,9 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXCMMPhotoKitDeleteActionPerformer : PXCMMActionPerformer
+@interface PXCMMPhotoKitDeleteActionPerformer : PXCMMActionPerformer <PXCMMPhotoKitActionPerformer>
+
+@property (nonatomic, readonly) PXCMMPhotoKitSession *session;
 
 - (void)performBackgroundTask;
 - (void)performUserInteractionTask;

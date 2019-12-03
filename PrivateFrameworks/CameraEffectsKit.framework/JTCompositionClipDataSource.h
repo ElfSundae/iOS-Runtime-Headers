@@ -23,6 +23,7 @@
 - (id)clip;
 - (id)clipAtIndex:(long long)arg1;
 - (long long)clipCount;
+- (bool)containsEffectsThatRequireCustomRendering;
 - (id)currentClip;
 - (bool)dontRenderLiveTitles;
 - (bool)duckAllAudioClips;

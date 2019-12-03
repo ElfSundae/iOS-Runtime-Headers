@@ -19,7 +19,6 @@
 @property (nonatomic, readonly) UIStackView *stackView;
 
 - (void).cxx_destruct;
-- (void)_navigationBarDividingLine:(bool)arg1;
 - (void)_replaceLastArrangedViewWith:(id)arg1;
 - (void)changeReportDisplayed:(id)arg1;
 - (id)formattedReportController;

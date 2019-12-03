@@ -32,6 +32,7 @@
 - (id)flowDivertControlHandle;
 - (id)flowDivertDataHandle;
 - (id)getAgentResults:(id)arg1;
+- (id)getAgentResultsForSelf;
 - (id)getEffectiveAppRules:(id)arg1;
 - (id)getExecutableConditions:(id)arg1;
 - (id)initWithDelegate:(id)arg1 providerClass:(Class)arg2 configuration:(id)arg3;

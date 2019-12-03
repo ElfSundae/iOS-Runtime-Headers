@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
  */
 
-@interface SXComponentView : UIView <STTextCanvasRenderSource, SXAXAssistiveTechStatusChangeListener, SXComponentInteractable, SXTransitionableComponentView, UIGestureRecognizerDelegate, UIViewControllerPreviewingDelegate> {
+@interface SXComponentView : UIView <STTextCanvasRenderSource, SXAXAssistiveTechStatusChangeListener, SXComponentInteractable, SXTransitionableComponentView, UIGestureRecognizerDelegate> {
     <SXDOMObjectProviding> * _DOMObjectProvider;
     struct CGRect { 
         struct CGPoint { 
@@ -16,6 +16,7 @@
     }  _absoluteFrame;
     bool  _allowViewHierarchyRemoval;
     bool  _animationsAndBehaviorsEnabled;
+    UIView * _backgroundView;
     struct CGRect { 
         struct CGPoint { 
             double x; 
@@ -25,7 +26,13 @@
             double width; 
             double height; 
         } size; 
-    }  _backgroundFrame;
+    }  _backgroundViewFrame;
+    struct UIEdgeInsets { 
+        double top; 
+        double left; 
+        double bottom; 
+        double right; 
+    }  _borderInsets;
     <SXComponent> * _component;
     <SXComponentHosting> * _componentHost;
     unsigned long long  _componentIndex;
@@ -95,7 +102,9 @@
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } absoluteFrame;
 @property (nonatomic) bool allowViewHierarchyRemoval;
 @property (nonatomic) bool animationsAndBehaviorsEnabled;
-@property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } backgroundFrame;
+@property (nonatomic, readonly) UIView *backgroundView;
+@property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } backgroundViewFrame;
+@property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } borderInsets;
 @property (nonatomic, readonly) <SXComponent> *component;
 @property (nonatomic) <SXComponentHosting> *componentHost;
 @property (nonatomic) unsigned long long componentIndex;
@@ -146,7 +155,9 @@
 - (void)animationDidStart:(id)arg1;
 - (bool)animationsAndBehaviorsEnabled;
 - (void)assistiveTechnologyStatusDidChange;
-- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })backgroundFrame;
+- (id)backgroundView;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })backgroundViewFrame;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })borderInsets;
 - (id)classification;
 - (id)component;
 - (id)componentHost;
@@ -190,8 +201,6 @@
 - (id)presentationDelegate;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })presentationFrame;
 - (long long)presentationState;
-- (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
-- (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint { double x1; double x2; })arg2;
 - (void)provideInfosLayoutTo:(id)arg1;
 - (void)receivedInfo:(id)arg1 fromLayoutingPhaseWithIdentifier:(id)arg2;
 - (void)renderComponentStyle;
@@ -202,7 +211,8 @@
 - (void)setAbsoluteFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setAllowViewHierarchyRemoval:(bool)arg1;
 - (void)setAnimationsAndBehaviorsEnabled:(bool)arg1;
-- (void)setBackgroundFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (void)setBackgroundViewFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (void)setBorderInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setComponentHost:(id)arg1;
 - (void)setComponentIndex:(unsigned long long)arg1;
 - (void)setComponentLayoutMargins:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;

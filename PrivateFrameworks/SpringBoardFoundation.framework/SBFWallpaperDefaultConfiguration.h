@@ -9,6 +9,7 @@
     NSURL * _videoURL;
     UIColor * _wallpaperColor;
     NSString * _wallpaperColorName;
+    SBFGradient * _wallpaperGradient;
     long long  _wallpaperType;
 }
 
@@ -22,6 +23,7 @@
 @property (nonatomic, readonly, copy) NSURL *videoURL;
 @property (nonatomic, readonly, copy) UIColor *wallpaperColor;
 @property (nonatomic, readonly, copy) NSString *wallpaperColorName;
+@property (nonatomic, readonly, copy) SBFGradient *wallpaperGradient;
 @property (nonatomic, readonly) long long wallpaperType;
 
 + (bool)supportsSecureCoding;
@@ -36,6 +38,7 @@
 - (id)init;
 - (id)initColorWithColor:(id)arg1;
 - (id)initColorWithColorName:(id)arg1;
+- (id)initGradientWithGradient:(id)arg1;
 - (id)initProceduralWithIdentifier:(id)arg1 options:(id)arg2;
 - (id)initStaticWithImageURL:(id)arg1;
 - (id)initVideoWithStaticImageURL:(id)arg1 videoURL:(id)arg2;
@@ -49,6 +52,7 @@
 - (id)videoURL;
 - (id)wallpaperColor;
 - (id)wallpaperColorName;
+- (id)wallpaperGradient;
 - (long long)wallpaperType;
 
 @end

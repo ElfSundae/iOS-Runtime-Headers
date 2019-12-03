@@ -15,6 +15,7 @@
     NSString * _name;
     bool  _requestSourceName;
     bool  _requestSourceSupportsRouteGuidance;
+    bool  _supportsExitInfo;
 }
 
 @property (nonatomic) unsigned long long identifier;
@@ -29,6 +30,7 @@
 @property (retain) NSString *name;
 @property (nonatomic) bool requestSourceName;
 @property (nonatomic) bool requestSourceSupportsRouteGuidance;
+@property (nonatomic) bool supportsExitInfo;
 
 - (void).cxx_destruct;
 - (id)description;
@@ -58,5 +60,7 @@
 - (void)setName:(id)arg1;
 - (void)setRequestSourceName:(bool)arg1;
 - (void)setRequestSourceSupportsRouteGuidance:(bool)arg1;
+- (void)setSupportsExitInfo:(bool)arg1;
+- (bool)supportsExitInfo;
 
 @end

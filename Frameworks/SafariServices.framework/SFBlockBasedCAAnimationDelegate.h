@@ -12,6 +12,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)animationDelegateWithDidStopBlock:(id /* block */)arg1;
+
 - (void).cxx_destruct;
 - (void)animationDidStop:(id)arg1 finished:(bool)arg2;
 - (id /* block */)animationDidStopBlock;

@@ -18,12 +18,9 @@
 @property (readonly) UISimpleTextPrintFormatter *printFormatter;
 @property (readonly) Class superclass;
 
-+ (bool)providesCustomPrinter;
-+ (bool)shouldBeRemoteForContentType:(id)arg1;
-+ (id)supportedContentTypes;
-+ (Class)transformerClass;
-
 - (void).cxx_destruct;
+- (bool)_documentAttributesContainTextColors:(id)arg1;
+- (void)_setupTextViewColorsWithDocumentAttributes:(id)arg1;
 - (void)_updateConstraintConstants:(bool)arg1;
 - (bool)automaticallyUpdateScrollViewContentInset;
 - (bool)automaticallyUpdateScrollViewContentOffset;
@@ -38,6 +35,7 @@
 - (void)prepareForDrawingPages:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 ofSize:(struct CGSize { double x1; double x2; })arg2;
 - (id)printFormatter;
 - (id)printer;
+- (void)provideCurrentPageAndVisibleRectWithCompletionHandler:(id /* block */)arg1;
 - (id)registeredKeyCommands;
 - (id)scrollView;
 - (void)setAppearance:(id)arg1 animated:(bool)arg2;

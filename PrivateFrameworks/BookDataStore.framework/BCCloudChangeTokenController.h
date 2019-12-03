@@ -10,16 +10,13 @@
 }
 
 @property (nonatomic) BCCloudKitController *cloudKitController;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic) bool enableCloudSync;
-@property (readonly) unsigned long long hash;
 @property (nonatomic) NSManagedObjectContext *moc;
-@property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *zoneName;
 
 - (void).cxx_destruct;
 - (id)cloudKitController;
+- (bool)cloudSyncEnabled;
 - (void)deleteCloudDataWithCompletion:(id /* block */)arg1;
 - (void)dissociateCloudDataFromSyncWithCompletion:(id /* block */)arg1;
 - (bool)enableCloudSync;

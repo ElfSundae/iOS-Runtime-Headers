@@ -16,11 +16,13 @@
             unsigned int gesture : 1; 
             unsigned int synthesizedByAcceptingCandidate : 1; 
             unsigned int doubleSpace : 1; 
+            unsigned int rapidDelete : 1; 
         } fields; 
     }  _flags;
     NSString * _inputManagerHint;
     <NSCopying><NSObject><NSSecureCoding> * _object;
     NSString * _string;
+    double  _timestamp;
     TIKeyboardTouchEvent * _touchEvent;
 }
 
@@ -34,8 +36,10 @@
 @property (getter=isMultitap, nonatomic) bool multitap;
 @property (nonatomic, copy) <NSCopying><NSObject><NSSecureCoding> *object;
 @property (getter=isPopupVariant, nonatomic) bool popupVariant;
+@property (getter=isRapidDelete, nonatomic) bool rapidDelete;
 @property (nonatomic, copy) NSString *string;
 @property (getter=isSynthesizedByAcceptingCandidate, nonatomic) bool synthesizedByAcceptingCandidate;
+@property (nonatomic) double timestamp;
 @property (nonatomic, retain) TIKeyboardTouchEvent *touchEvent;
 @property (getter=isUppercase, nonatomic) bool uppercase;
 
@@ -54,6 +58,7 @@
 - (bool)isGesture;
 - (bool)isMultitap;
 - (bool)isPopupVariant;
+- (bool)isRapidDelete;
 - (bool)isSynthesizedByAcceptingCandidate;
 - (bool)isUppercase;
 - (id)object;
@@ -67,11 +72,14 @@
 - (void)setMultitap:(bool)arg1;
 - (void)setObject:(id)arg1;
 - (void)setPopupVariant:(bool)arg1;
+- (void)setRapidDelete:(bool)arg1;
 - (void)setString:(id)arg1;
 - (void)setSynthesizedByAcceptingCandidate:(bool)arg1;
+- (void)setTimestamp:(double)arg1;
 - (void)setTouchEvent:(id)arg1;
 - (void)setUppercase:(bool)arg1;
 - (id)string;
+- (double)timestamp;
 - (id)touchEvent;
 
 @end

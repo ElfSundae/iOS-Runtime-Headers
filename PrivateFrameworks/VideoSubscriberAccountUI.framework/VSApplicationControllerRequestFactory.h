@@ -8,6 +8,7 @@
 + (id)_authNRequestSAMLStringWithAuthenticationToken:(id)arg1 forced:(bool)arg2 error:(id*)arg3;
 + (id)_logoutSAMLRequestStringWithError:(id*)arg1;
 
+- (id)STBOptOutApplicationControllerRequest;
 - (id)accountMetadataApplicationControllerRequestWithAccountMetadataRequest:(id)arg1 authenticationToken:(id)arg2;
 - (id)authenticationApplicationControllerRequestWithAuthenticationToken:(id)arg1 forcedAuthentication:(bool)arg2;
 - (id)logoutApplicationControllerRequestWithAuthenticationToken:(id)arg1;

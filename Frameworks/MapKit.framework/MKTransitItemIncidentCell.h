@@ -5,50 +5,48 @@
 @interface MKTransitItemIncidentCell : MKCustomSeparatorTableViewCell {
     MKTransitIncidentItemCellBackgroundView * _backgroundView;
     NSLayoutConstraint * _bottomToBackgroundConstraint;
-    NSLayoutConstraint * _bottomToIconImageConstraint;
-    NSLayoutConstraint * _bottomToSummaryLabelConstraint;
-    NSLayoutConstraint * _bottomToTitleLabelConstraint;
-    NSLayoutConstraint * _bottomToUpdatedLabelConstraint;
+    NSLayoutConstraint * _bottomToLabelConstraint;
+    NSArray * _constraints;
     UIImageView * _incidentIconImageView;
     bool  _incidentIsBlocking;
     _MKUILabel * _lastUpdatedLabel;
-    NSLayoutConstraint * _lastUpdatedToSummaryConstraint;
-    UIButton * _moreDetailsButton;
+    NSLayoutConstraint * _lastUpdatedToTitleBaselineConstraint;
+    bool  _needsConstraintsRebuild;
     bool  _padBottom;
-    bool  _showMoreDetailsButton;
-    _MKUILabel * _summaryLabel;
-    NSLayoutConstraint * _summaryToTitleConstraint;
     _MKUILabel * _titleLabel;
     NSLayoutConstraint * _titleLabelToTopConstraint;
-    NSLayoutConstraint * _titleToButtonConstraint;
-    NSLayoutConstraint * _titleToTrailingConstraint;
+    NSLayoutConstraint * _titleToLastUpdatedLabelConstraint;
+    bool  _useCondensedWidthLayout;
 }
 
-@property (nonatomic, readonly) UIButton *moreDetailsButton;
 @property (nonatomic) bool padBottom;
 @property (nonatomic) long long position;
-@property (getter=isShowingMoreDetailsButton, nonatomic) bool showMoreDetailsButton;
 
 - (void).cxx_destruct;
 - (id)_blockingImage;
+- (void)_configureWithMessage:(id)arg1 referenceDate:(id)arg2 lastUpdated:(id)arg3 incidentIsBlocking:(bool)arg4 shouldShowImage:(bool)arg5 inSiri:(bool)arg6;
 - (void)_contentSizeCategoryDidChange;
+- (double)_leadingMargin;
 - (id)_nonBlockingImage;
+- (double)_trailingMargin;
 - (void)_updateBottomConstraints;
 - (void)_updateConstraintValues;
+- (void)configureViews;
 - (void)configureWithIncident:(id)arg1 referenceDate:(id)arg2 shouldShowImage:(bool)arg3 inSiri:(bool)arg4;
+- (void)configureWithIncidentMessage:(id)arg1 referenceDate:(id)arg2 shouldShowImage:(bool)arg3 inSiri:(bool)arg4;
 - (void)dealloc;
 - (void)didMoveToWindow;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (id)initWithReuseIdentifier:(id)arg1;
-- (bool)isShowingMoreDetailsButton;
-- (id)moreDetailsButton;
+- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (bool)padBottom;
 - (long long)position;
+- (void)rebuildConstraints;
 - (void)setLeadingSeparatorInset:(double)arg1;
 - (void)setPadBottom:(bool)arg1;
 - (void)setPosition:(long long)arg1;
 - (void)setSeparatorHidden:(bool)arg1;
-- (void)setShowMoreDetailsButton:(bool)arg1;
 - (void)setTrailingSeparatorInset:(double)arg1;
+- (void)updateConstraints;
 
 @end

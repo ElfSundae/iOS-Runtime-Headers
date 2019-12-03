@@ -51,7 +51,6 @@
 - (void)dealloc;
 - (id)description;
 - (id)dispatchQueue;
-- (id)init;
 - (id)initWithType:(long long)arg1;
 - (void)invalidate;
 - (id /* block */)invalidationHandler;
@@ -60,6 +59,7 @@
 - (void)nearby:(id)arg1 didDeferAdvertisingType:(long long)arg2;
 - (void)nearby:(id)arg1 didFailToStartAdvertisingOfType:(long long)arg2 withError:(id)arg3;
 - (void)nearby:(id)arg1 didStartAdvertisingType:(long long)arg2;
+- (void)nearby:(id)arg1 didStopAdvertisingType:(long long)arg2 withError:(id)arg3;
 - (void)nearbyDidUpdateState:(id)arg1;
 - (void)setAdvertiseRate:(long long)arg1;
 - (void)setAdvertiseStateChangedHandler:(id /* block */)arg1;

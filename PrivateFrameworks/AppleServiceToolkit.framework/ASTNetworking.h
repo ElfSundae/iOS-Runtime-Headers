@@ -21,7 +21,12 @@
 - (void)URLSession:(id)arg1 task:(id)arg2 didSendBodyData:(long long)arg3 totalBytesSent:(long long)arg4 totalBytesExpectedToSend:(long long)arg5;
 - (void)URLSession:(id)arg1 task:(id)arg2 needNewBodyStream:(id /* block */)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(id /* block */)arg5;
+- (bool)_didRefetchProxyServer;
 - (id)_downloadTaskWithDownloadConnection:(id)arg1 error:(id*)arg2;
+- (bool)_isValidEasyRider;
+- (int)_requestTimeInterval;
+- (void)_resetSessionToNewProxyServer;
+- (id)_sessionConfigurationWithSOCKSProxyServer:(id)arg1 port:(id)arg2;
 - (id)_taskWithConnection:(id)arg1 error:(id*)arg2;
 - (bool)_verifyMD5ForFileHandle:(id)arg1 task:(id)arg2;
 - (bool)_verifyResultOfTask:(id)arg1 connection:(id)arg2;

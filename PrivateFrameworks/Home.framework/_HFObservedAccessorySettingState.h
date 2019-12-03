@@ -4,16 +4,16 @@
 
 @interface _HFObservedAccessorySettingState : NSObject <NAIdentifiable> {
     NSSet * _selectionOptions;
-    HMAccessorySetting * _setting;
-    HMAccessorySettings * _settings;
+    HMSetting * _setting;
+    HMSettings * _settings;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) NSSet *selectionOptions;
-@property (nonatomic, readonly) HMAccessorySetting *setting;
-@property (nonatomic, readonly) HMAccessorySettings *settings;
+@property (nonatomic, readonly) HMSetting *setting;
+@property (nonatomic, readonly) HMSettings *settings;
 @property (readonly) Class superclass;
 
 + (id)na_identity;

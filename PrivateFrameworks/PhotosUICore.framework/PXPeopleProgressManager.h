@@ -3,7 +3,7 @@
  */
 
 @interface PXPeopleProgressManager : NSObject {
-    <PXPeopleProgressDataSource> * _dataSource;
+    PXPeopleProgressDataSource * _dataSource;
     bool  _monitoringProgress;
     bool  _processingComplete;
     unsigned long long  _processingStatus;
@@ -12,9 +12,8 @@
     double  _updateInterval;
 }
 
-@property (nonatomic, retain) <PXPeopleProgressDataSource> *dataSource;
+@property (nonatomic, retain) PXPeopleProgressDataSource *dataSource;
 @property (readonly) bool featureUnlocked;
-@property (readonly) bool hasFaceProcessingTodo;
 @property (getter=isMonitoringProgress, nonatomic) bool monitoringProgress;
 @property (readonly) bool processingComplete;
 @property (nonatomic) unsigned long long processingStatus;
@@ -31,7 +30,6 @@
 - (void)_updateWithStatus:(unsigned long long)arg1 progress:(double)arg2;
 - (id)dataSource;
 - (bool)featureUnlocked;
-- (bool)hasFaceProcessingTodo;
 - (bool)hasSubstantialProcessingUsingMinAssetCount:(bool)arg1;
 - (id)init;
 - (id)initWithDataSource:(id)arg1;

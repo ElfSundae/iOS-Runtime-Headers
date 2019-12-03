@@ -3,10 +3,10 @@
  */
 
 @interface MFMailMessageLibraryMailboxURLMigrationStep : NSObject {
-    MFSQLiteConnection * _sqliteConnection;
+    EDPersistenceDatabaseConnection * _sqliteConnection;
 }
 
-@property (nonatomic, retain) MFSQLiteConnection *sqliteConnection;
+@property (nonatomic, retain) EDPersistenceDatabaseConnection *sqliteConnection;
 
 - (void).cxx_destruct;
 - (void)_purgeFoldersMatchingPatterns:(id)arg1;

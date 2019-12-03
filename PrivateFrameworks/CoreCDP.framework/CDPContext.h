@@ -5,6 +5,7 @@
 @interface CDPContext : NSObject <NSCopying, NSSecureCoding> {
     bool  __alwaysCreateEscrowRecord;
     <CDPAuthProviderInternal> * __authProvider;
+    bool  __ignoreLockAssertErrors;
     NSString * __recoveryToken;
     bool  __useSecureBackupCachedPassphrase;
     NSString * _altDSID;
@@ -32,6 +33,7 @@
 
 @property (nonatomic) bool _alwaysCreateEscrowRecord;
 @property (nonatomic, retain) <CDPAuthProviderInternal> *_authProvider;
+@property (nonatomic) bool _ignoreLockAssertErrors;
 @property (nonatomic, copy) NSString *_recoveryToken;
 @property (nonatomic) bool _useSecureBackupCachedPassphrase;
 @property (nonatomic, copy) NSString *altDSID;
@@ -64,6 +66,7 @@
 - (void).cxx_destruct;
 - (bool)_alwaysCreateEscrowRecord;
 - (id)_authProvider;
+- (bool)_ignoreLockAssertErrors;
 - (id)_recoveryToken;
 - (bool)_useSecureBackupCachedPassphrase;
 - (id)altDSID;
@@ -72,6 +75,7 @@
 - (id)authenticationResults;
 - (id)cachedLocalSecret;
 - (unsigned long long)cachedLocalSecretType;
+- (id)cliqueConfiguration;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (bool)desiresAllRecords;
 - (bool)didUseSMSVerification;
@@ -114,6 +118,7 @@
 - (void)setType:(long long)arg1;
 - (void)set_alwaysCreateEscrowRecord:(bool)arg1;
 - (void)set_authProvider:(id)arg1;
+- (void)set_ignoreLockAssertErrors:(bool)arg1;
 - (void)set_recoveryToken:(id)arg1;
 - (void)set_useSecureBackupCachedPassphrase:(bool)arg1;
 - (id)sharingChannel;

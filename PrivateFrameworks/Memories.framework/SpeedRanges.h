@@ -20,7 +20,6 @@
 @property (nonatomic, retain) SpeedRanges *ramped;
 
 + (id)objectFromPlist:(id)arg1;
-+ (void)rangesFromSloMoAVURLAsset:(id)arg1 completion:(id /* block */)arg2;
 + (void)rangesFromSloMoAsset:(id)arg1 userAdjustedOnly:(bool)arg2 completion:(id /* block */)arg3;
 
 - (void).cxx_destruct;
@@ -31,7 +30,7 @@
 - (bool)containsObject:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned long long)count;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (id)delegate;
 - (id)description;
 - (void)didChange;

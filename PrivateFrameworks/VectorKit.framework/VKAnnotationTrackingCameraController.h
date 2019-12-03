@@ -49,7 +49,7 @@
 - (id)annotation;
 - (void)dealloc;
 - (long long)headingAnimationDisplayRate;
-- (id)init;
+- (id)initWithMapDataAccess:(struct MapDataAccess { }*)arg1 animationRunner:(struct AnimationRunner { }*)arg2 runLoopController:(struct RunLoopController { struct MapEngine {} *x1; long long x2; long long x3; }*)arg3 cameraDelegate:(id)arg4;
 - (bool)isAnimating;
 - (bool)isTrackingHeading;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;

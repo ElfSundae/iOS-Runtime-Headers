@@ -12,7 +12,7 @@
 @property (nonatomic) bool internalLink;
 @property (nonatomic, retain) NSString *link;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)fragment;
 - (bool)internalLink;

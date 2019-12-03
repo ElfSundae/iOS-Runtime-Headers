@@ -10,7 +10,6 @@
     bool  _hidePlaceholder;
     UILabel * _instructionLabel;
     UINavigationItem * _navItem;
-    UIColor * _placeholderColor;
     NSLayoutConstraint * _standardHeightConstraint;
     UILabel * _textPlaceholderLabel;
     UITextView * _textView;
@@ -27,7 +26,6 @@
 - (void).cxx_destruct;
 - (void)_addConstraintsForTraitCollection:(id)arg1;
 - (void)_cancelPost:(id)arg1;
-- (id)_placeholderColor;
 - (void)_setTitle:(id)arg1;
 - (void)contentSizeChanged;
 - (struct CGSize { double x1; double x2; })contentSizeForViewInPopover;

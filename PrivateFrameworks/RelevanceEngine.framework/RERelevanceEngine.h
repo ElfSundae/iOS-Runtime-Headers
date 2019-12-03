@@ -2,9 +2,14 @@
    Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
  */
 
-@interface RERelevanceEngine : NSObject <RELoggable> {
+@interface RERelevanceEngine : NSObject <REActivityTrackerDelegate, RERelevanceEngineProperties> {
+    REActivityTracker * _activityTracker;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _activityTrackerLock;
     NSMutableDictionary * _addedElementsByIdentifier;
     bool  _automaticallyResumeEngine;
+    NSObject<OS_dispatch_queue> * _callbackQueue;
     RERelevanceEngineConfiguration * _configuration;
     NSArray * _configurationSectionDescriptors;
     RELiveElementCoordinator * _coordinator;
@@ -15,6 +20,8 @@
     NSArray * _historicSectionDescriptors;
     NSDictionary * _inflectionFeatureValues;
     REFeatureMapGenerator * _inputFeatureMapGenerator;
+    bool  _loading;
+    REUpNextScheduler * _loadingScheduler;
     REEngineLocationManager * _locationManager;
     RERelevanceEngineLogger * _logger;
     REFeatureSet * _mlFeatures;
@@ -23,11 +30,13 @@
     REFeatureMapGenerator * _outputFeatureMapGenerator;
     RERelevanceEnginePreferencesController * _preferenceController;
     NSObject<OS_dispatch_queue> * _queue;
+    id /* block */  _resumeCompletionBlock;
     REFeatureSet * _rootFeatures;
     bool  _running;
     NSArray * _sectionDescriptors;
     NSMutableArray * _subsystems;
     RETrainingManager * _trainingManager;
+    bool  _updatedLoading;
 }
 
 @property (nonatomic) bool automaticallyResumeEngine;
@@ -49,9 +58,10 @@
 @property (nonatomic, readonly) REMLModelManager *modelManager;
 @property (nonatomic, readonly) NSString *name;
 @property (nonatomic, readonly) REFeatureSet *rootFeatures;
-@property (getter=isRunning, nonatomic, readonly) bool running;
+@property (getter=isRunning, readonly) bool running;
 @property (nonatomic, readonly) NSArray *sectionDescriptors;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *subsystemQueue;
+@property (nonatomic, readonly) NSArray *subsystems;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) RETrainingManager *trainingManager;
 @property (nonatomic, readonly) bool wantsImmutableContent;
@@ -60,17 +70,20 @@
 
 - (void).cxx_destruct;
 - (void)_addSubsystem:(id)arg1;
+- (void)_callbackQueue_notifyLoadingState;
 - (void)_captureAndStoreDiagnosticLogs:(id /* block */)arg1;
-- (id)_newLogFilePath;
+- (void)_notifyResumeCompleted;
 - (void)_queue_pauseSubsystem:(id)arg1;
 - (void)_queue_resumeSubsystem:(id)arg1;
+- (void)_queue_resumeWithTimeout:(double)arg1 completion:(id /* block */)arg2;
 - (void)_removeSubsystem:(id)arg1;
-- (void)_validateSectionDescriptors:(id)arg1;
+- (void)activityTracker:(id)arg1 didBeginActivity:(id)arg2;
+- (void)activityTracker:(id)arg1 didEndActivity:(id)arg2;
 - (void)addElement:(id)arg1 section:(id)arg2;
 - (void)addObserver:(id)arg1;
 - (void)addTrainingContext:(id)arg1;
 - (bool)automaticallyResumeEngine;
-- (void)collectLoggableState:(id /* block */)arg1;
+- (void)beginActivity:(id)arg1 forObject:(id)arg2;
 - (id)configuration;
 - (id)coordinator;
 - (id)dataSourceCatalog;
@@ -82,8 +95,15 @@
 - (id)effectivePreferences;
 - (id)elementAtPath:(id)arg1;
 - (id)elementFromDictionary:(id)arg1;
+- (id)elementRankerForSection:(id)arg1;
+- (void)endActivity:(id)arg1 forObject:(id)arg2;
+- (void)enumerateRankedContent:(id /* block */)arg1;
+- (void)enumerateRankedContentInSection:(id)arg1 usingBlock:(id /* block */)arg2;
 - (void)enumerateSectionDescriptorsWithOptions:(unsigned long long)arg1 includeHistoric:(bool)arg2 usingBlock:(id /* block */)arg3;
+- (id)featureProviderForElement:(id)arg1;
+- (id)featureProviderForElementAtPath:(id)arg1;
 - (id)featureTransmuter;
+- (void)gatherMetrics;
 - (id)historicSectionDescriptors;
 - (id)historicSectionForSection:(id)arg1;
 - (id)inflectionFeatureValues;
@@ -102,13 +122,16 @@
 - (id)pathForElement:(id)arg1;
 - (void)pause;
 - (void)pauseForSimulation;
+- (id)predictionForElement:(id)arg1;
 - (id)predictionForElementAtPath:(id)arg1;
 - (void)removeElement:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)removePreferencesForObject:(id)arg1;
 - (void)removeTrainingContext:(id)arg1;
+- (void)resetModelWithCompletion:(id /* block */)arg1;
 - (void)resume;
 - (void)resumeFromSimulation;
+- (void)resumeWithTimeout:(double)arg1 completion:(id /* block */)arg2;
 - (id)rootFeatures;
 - (void)saveModelFile;
 - (id)sectionDescriptors;
@@ -118,6 +141,8 @@
 - (void)storeDiagnosticLogs:(id /* block */)arg1;
 - (void)storeDiagnosticLogsToFile:(id /* block */)arg1;
 - (id)subsystemQueue;
+- (id)subsystems;
+- (void)trainPendingEventsWithCompletion:(id /* block */)arg1;
 - (void)trainWithPendingEvents;
 - (id)trainingManager;
 - (bool)wantsImmutableContent;

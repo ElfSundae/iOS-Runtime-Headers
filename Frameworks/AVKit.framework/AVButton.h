@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/AVKit.framework/AVKit
  */
 
-@interface AVButton : UIButton {
+@interface AVButton : UIButton <AVPlaybackControlsViewItem> {
     UIVisualEffectView * _backgroundEffectView;
     bool  _clampsHitRectInsetsWhenContainedInScrollableView;
     bool  _collapsed;
@@ -32,8 +32,11 @@
     NSTimer * _longPressTimer;
     double  _maximumForceSinceTrackingBegan;
     AVMicaPackage * _micaPackage;
+    double  _micaSnapshotAlpha;
     bool  _multipleTouchesEndsTracking;
     NSNumber * _previousHorizontalPositionOfLongPress;
+    bool  _removed;
+    long long  _tintEffectStyle;
     double  _trackingStartTime;
     bool  _treatsForcePressAsLongPress;
     AVUserInteractionObserverGestureRecognizer * _userInteractionGestureRecognizer;
@@ -46,6 +49,8 @@
 @property (nonatomic) bool clampsHitRectInsetsWhenContainedInScrollableView;
 @property (getter=isCollapsed, nonatomic) bool collapsed;
 @property (getter=isCollapsedOrExcluded, nonatomic, readonly) bool collapsedOrExcluded;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) bool disablesHighlightWhenLongPressed;
 @property (nonatomic) struct CGSize { double x1; double x2; } extrinsicContentSize;
 @property (nonatomic) double force;
@@ -54,6 +59,7 @@
 @property (nonatomic, copy) NSString *fullScreenImageName;
 @property (nonatomic) bool hasAlternateAppearance;
 @property (nonatomic) bool hasFullScreenAppearance;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) UIViewPropertyAnimator *highlightAnimator;
 @property (nonatomic) struct NSDirectionalEdgeInsets { double x1; double x2; double x3; double x4; } hitRectInsets;
 @property (nonatomic) double horizontalTranslationOfLongPress;
@@ -64,8 +70,12 @@
 @property (nonatomic) NSTimer *longPressTimer;
 @property (nonatomic) double maximumForceSinceTrackingBegan;
 @property (nonatomic, retain) AVMicaPackage *micaPackage;
+@property (nonatomic) double micaSnapshotAlpha;
 @property (nonatomic) bool multipleTouchesEndsTracking;
 @property (nonatomic, retain) NSNumber *previousHorizontalPositionOfLongPress;
+@property (getter=isRemoved, nonatomic) bool removed;
+@property (readonly) Class superclass;
+@property (nonatomic) long long tintEffectStyle;
 @property (nonatomic) double trackingStartTime;
 @property (nonatomic) bool treatsForcePressAsLongPress;
 @property (nonatomic, retain) AVUserInteractionObserverGestureRecognizer *userInteractionGestureRecognizer;
@@ -77,6 +87,7 @@
 
 - (void).cxx_destruct;
 - (void)_handleUserInteractionGestureRecognizer:(id)arg1;
+- (double)_imageViewAlpha;
 - (id)_preferredImageName;
 - (struct CGSize { double x1; double x2; })_preferredLayoutSize;
 - (void)_resetTrackedState;
@@ -109,10 +120,12 @@
 - (bool)isCollapsed;
 - (bool)isCollapsedOrExcluded;
 - (bool)isIncluded;
+- (bool)isRemoved;
 - (void)layoutSubviews;
 - (id)longPressTimer;
 - (double)maximumForceSinceTrackingBegan;
 - (id)micaPackage;
+- (double)micaSnapshotAlpha;
 - (bool)multipleTouchesEndsTracking;
 - (bool)pointInside:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
 - (id)previousHorizontalPositionOfLongPress;
@@ -129,6 +142,7 @@
 - (void)setFullScreenImageName:(id)arg1;
 - (void)setHasAlternateAppearance:(bool)arg1;
 - (void)setHasFullScreenAppearance:(bool)arg1;
+- (void)setHidden:(bool)arg1;
 - (void)setHighlightAnimator:(id)arg1;
 - (void)setHighlighted:(bool)arg1;
 - (void)setHitRectInsets:(struct NSDirectionalEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
@@ -141,8 +155,11 @@
 - (void)setLongPressTimer:(id)arg1;
 - (void)setMaximumForceSinceTrackingBegan:(double)arg1;
 - (void)setMicaPackage:(id)arg1;
+- (void)setMicaSnapshotAlpha:(double)arg1;
 - (void)setMultipleTouchesEndsTracking:(bool)arg1;
 - (void)setPreviousHorizontalPositionOfLongPress:(id)arg1;
+- (void)setRemoved:(bool)arg1;
+- (void)setTintEffectStyle:(long long)arg1;
 - (void)setTitle:(id)arg1 forState:(unsigned long long)arg2;
 - (void)setTrackingStartTime:(double)arg1;
 - (void)setTreatsForcePressAsLongPress:(bool)arg1;
@@ -150,6 +167,7 @@
 - (void)setUsesBackgroundEffectViewForTextOnlyButtons:(bool)arg1;
 - (void)setWasForcePressTriggered:(bool)arg1;
 - (void)setWasLongPressed:(bool)arg1;
+- (long long)tintEffectStyle;
 - (double)trackingStartTime;
 - (bool)treatsForcePressAsLongPress;
 - (id)userInteractionGestureRecognizer;

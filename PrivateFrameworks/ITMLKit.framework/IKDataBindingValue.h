@@ -2,6 +2,8 @@
    Image: /System/Library/PrivateFrameworks/ITMLKit.framework/ITMLKit
  */
 
-@interface IKDataBindingValue : NSObject
+@interface IKDataBindingValue : NSObject <NSCopying>
+
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 
 @end

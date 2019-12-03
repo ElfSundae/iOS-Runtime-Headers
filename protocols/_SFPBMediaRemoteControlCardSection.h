@@ -14,6 +14,7 @@
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;
 - (NSData *)jsonData;
+- (NSString *)playbackBundleIdentifier;
 - (NSString *)playbackRouteUniqueIdentifier;
 - (bool)playbackRouteUniqueIdentifierIsEncrypted;
 - (NSArray *)punchoutOptions;
@@ -26,6 +27,7 @@
 - (void)setCanBeHidden:(bool)arg1;
 - (void)setHasBottomPadding:(bool)arg1;
 - (void)setHasTopPadding:(bool)arg1;
+- (void)setPlaybackBundleIdentifier:(NSString *)arg1;
 - (void)setPlaybackRouteUniqueIdentifier:(NSString *)arg1;
 - (void)setPlaybackRouteUniqueIdentifierIsEncrypted:(bool)arg1;
 - (void)setPunchoutOptions:(NSArray *)arg1;

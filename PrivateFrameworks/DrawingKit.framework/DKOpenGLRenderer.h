@@ -35,6 +35,7 @@
     unsigned int  mColorProg;
     int  mColorProgColorUniformLocation;
     int  mColorProgModelViewProjectionUniformLocation;
+    int  mCompositeColorUniformLocation;
     unsigned int  mCompositeProg;
     int  mCompositeProgViewportUniformLocation;
     struct vector<Vertex, std::__1::allocator<Vertex> > { 
@@ -65,7 +66,9 @@
         } __end_cap_; 
     }  mPages;
     unsigned int  mPaperTex;
+    bool  mPaperTexIsShared;
     float  mParticleLifespan;
+    bool  mSharedContext;
     unsigned int  mTextureProg;
     int  mTextureProgModelViewProjectionUniformLocation;
     float  mTime;
@@ -133,7 +136,7 @@
 - (id)init;
 - (bool)initGL;
 - (id)initWithBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 scale:(double)arg2;
-- (id)initWithBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 scale:(double)arg2 bufferSize:(int)arg3;
+- (id)initWithBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 scale:(double)arg2 bufferSize:(int)arg3 sharedContext:(bool)arg4;
 - (void)initializeFrameBuffers;
 - (id)inkColor;
 - (bool)isUndoEnabled;

@@ -7,14 +7,14 @@
     NSString * _uuid;
 }
 
-@property (nonatomic, readonly, retain) NSString *assetUUID;
-@property (nonatomic, readonly, retain) UIImage *image;
+@property (nonatomic, readonly) NSString *assetUUID;
+@property (nonatomic, readonly) UIImage *image;
 
 + (id)notification;
 
+- (void).cxx_destruct;
 - (id)_init;
 - (id)assetUUID;
-- (void)dealloc;
 - (id)description;
 - (id)image;
 - (id)init;

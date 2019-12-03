@@ -10,6 +10,7 @@
     bool  _firstTouchDown;
     HUQuickControlSliderGestureTransformer * _gestureTransformer;
     bool  _hasSecondaryValue;
+    NSDate * _interactableStartTime;
     struct { 
         double minimum; 
         double maximum; 
@@ -31,6 +32,7 @@
 @property (nonatomic, retain) HUQuickControlSliderGestureTransformer *gestureTransformer;
 @property (nonatomic) bool hasSecondaryValue;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, retain) NSDate *interactableStartTime;
 @property (nonatomic) struct { double x1; double x2; } modelValue;
 @property (nonatomic, retain) UILongPressGestureRecognizer *panGestureRecognizer;
 @property (nonatomic, retain) HUElasticApplier *primaryValueSmoothingApplier;
@@ -42,7 +44,7 @@
 
 - (void).cxx_destruct;
 - (id)_allAppliers;
-- (void)_beginReceivingTouchesWithGestureRecognizer:(id)arg1 firstTouchDown:(bool)arg2;
+- (void)_beginReceivingTouchesWithGestureRecognizer:(id)arg1 isTouchContinuation:(bool)arg2;
 - (unsigned long long)_findClosestValueFromTouchLocation:(struct CGPoint { double x1; double x2; })arg1;
 - (void)_handleControlPanGesture:(id)arg1;
 - (void)_handleControlTapGesture:(id)arg1;
@@ -69,11 +71,13 @@
 - (void)gestureTransformer:(id)arg1 sliderValueDidChange:(double)arg2;
 - (bool)hasSecondaryValue;
 - (id)initWithControlView:(id)arg1 delegate:(id)arg2;
+- (id)interactableStartTime;
 - (bool)isFirstTouchDown;
 - (bool)isUserInteractionActive;
 - (struct { double x1; double x2; })modelValue;
 - (id)panGestureRecognizer;
 - (id)primaryValueSmoothingApplier;
+- (void)recordInteractionStart;
 - (id)secondaryValueSmoothingApplier;
 - (void)setActiveGestureValue:(double)arg1;
 - (void)setActiveGestureValueType:(unsigned long long)arg1;
@@ -82,6 +86,7 @@
 - (void)setFirstTouchDown:(bool)arg1;
 - (void)setGestureTransformer:(id)arg1;
 - (void)setHasSecondaryValue:(bool)arg1;
+- (void)setInteractableStartTime:(id)arg1;
 - (void)setModelValue:(struct { double x1; double x2; })arg1;
 - (void)setPanGestureRecognizer:(id)arg1;
 - (void)setPrimaryValueSmoothingApplier:(id)arg1;

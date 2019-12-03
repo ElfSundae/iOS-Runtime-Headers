@@ -17,9 +17,5 @@
 @property (nonatomic, retain) NSSet *syncStates;
 
 + (id)fetchRequest;
-+ (id)nonUserDataAttributes;
-
-- (id)initWithContext:(id)arg1 voiceShortcut:(id)arg2 error:(id*)arg3;
-- (bool)populateWithVoiceShortcut:(id)arg1 error:(id*)arg2;
 
 @end

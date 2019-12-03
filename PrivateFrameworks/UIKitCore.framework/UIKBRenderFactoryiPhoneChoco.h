@@ -14,7 +14,6 @@
 - (double)moreKeyFontSize;
 - (struct CGPoint { double x1; double x2; })popupSymbolTextOffset;
 - (struct CGPoint { double x1; double x2; })returnKeyOffset;
-- (id)thinKeycapsFontName;
 - (struct CGPoint { double x1; double x2; })variantAnnotationTextOffset;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })variantSymbolFrameInsets;
 - (struct CGPoint { double x1; double x2; })variantSymbolTextOffset;

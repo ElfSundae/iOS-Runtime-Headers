@@ -11,6 +11,7 @@
 @property (readonly) unsigned long long segmentCount;
 @property (retain) NSArray *segments;
 @property (readonly) NSArray *segmentsCopy;
+@property (nonatomic, readonly) struct { double x1; double x2; } timeRange;
 
 + (void)_mergeBoundarySegmentsInArray:(id)arg1;
 + (id)_mutableSegmentsByClippingToTimeRange:(struct { double x1; double x2; })arg1 withSegments:(id)arg2;
@@ -36,6 +37,8 @@
 - (id)segments;
 - (id)segmentsByClippingToTimeRange:(struct { double x1; double x2; })arg1;
 - (id)segmentsCopy;
+- (id)segmentsIntersectingTimeRange:(struct { double x1; double x2; })arg1;
 - (void)setSegments:(id)arg1;
+- (struct { double x1; double x2; })timeRange;
 
 @end

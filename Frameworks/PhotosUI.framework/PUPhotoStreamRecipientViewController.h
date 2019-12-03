@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUPhotoStreamRecipientViewController : UIViewController <CNContactPickerDelegate, IDSBatchIDQueryControllerDelegate, MFComposeRecipientViewDelegate, MFContactsSearchConsumer, UIPopoverPresentationControllerDelegate, UITableViewDataSource, UITableViewDelegate> {
+@interface PUPhotoStreamRecipientViewController : UIViewController <CNContactPickerDelegate, IDSBatchIDQueryControllerDelegate, MFComposeRecipientTextViewDelegate, MFContactsSearchConsumer, UIPopoverPresentationControllerDelegate, UITableViewDataSource, UITableViewDelegate> {
     double  _bottomTableOffset;
     CNContactPickerViewController * _contactPickerPresentedController;
     CNContactStore * _contactStore;
@@ -10,9 +10,8 @@
     id  _delegate;
     IDSBatchIDQueryController * _idsBatchIDQueryController;
     double  _lastHeight;
-    NSArray * _properties;
     UIScrollView * _recipientContainerView;
-    MFComposeRecipientView * _recipientView;
+    MFComposeRecipientTextView * _recipientView;
     struct CGSize { 
         double width; 
         double height; 
@@ -38,30 +37,25 @@
 + (void)recordRecentInvitationRecipient:(id)arg1 displayName:(id)arg2 date:(id)arg3;
 
 - (void).cxx_destruct;
-- (void)_addRecipientFromSelectedContactProperty:(id)arg1;
-- (void*)_addressBook;
+- (void)_addRecipientForContact:(id)arg1 address:(id)arg2 kind:(unsigned long long)arg3;
 - (void)_dismissContactPicker;
 - (void)_searchForRecipientWithText:(id)arg1;
 - (id)_searchManager;
 - (id)_selectedNormalizedPhoneForRecipient:(id)arg1;
 - (void)_setSearchResults:(id)arg1;
+- (void)batchQueryController:(id)arg1 updatedDestinationsStatus:(id)arg2 onService:(id)arg3 error:(id)arg4;
 - (void)beganNetworkActivity;
 - (double)bottomTableOffset;
 - (id)composeRecipientView:(id)arg1 composeRecipientForAddress:(id)arg2;
-- (id)composeRecipientView:(id)arg1 composeRecipientForRecord:(void*)arg2 identifier:(int)arg3;
-- (id)composeRecipientView:(id)arg1 composeRecipientForRecord:(void*)arg2 property:(int)arg3 identifier:(int)arg4;
 - (void)composeRecipientView:(id)arg1 didAddRecipient:(id)arg2;
 - (void)composeRecipientView:(id)arg1 didChangeSize:(struct CGSize { double x1; double x2; })arg2;
 - (void)composeRecipientView:(id)arg1 didFinishEnteringAddress:(id)arg2;
 - (void)composeRecipientView:(id)arg1 didRemoveRecipient:(id)arg2;
-- (void)composeRecipientView:(id)arg1 requestDeleteRecipientAtIndex:(int)arg2;
 - (void)composeRecipientView:(id)arg1 showPersonCardForAtom:(id)arg2;
 - (void)composeRecipientView:(id)arg1 textDidChange:(id)arg2;
 - (void)composeRecipientViewDidFinishPickingRecipient:(id)arg1;
-- (bool)composeRecipientViewIsShowingPeoplePicker:(id)arg1;
 - (void)composeRecipientViewRequestAddRecipient:(id)arg1;
-- (void)composeRecipientViewReturnPressed:(id)arg1;
-- (void)consumeSearchResults:(id)arg1 type:(unsigned long long)arg2 taskID:(id)arg3;
+- (void)consumeAutocompleteSearchResults:(id)arg1 taskID:(id)arg2;
 - (void)contactPicker:(id)arg1 didSelectContact:(id)arg2;
 - (void)contactPicker:(id)arg1 didSelectContactProperty:(id)arg2;
 - (void)contactPickerDidCancel:(id)arg1;
@@ -69,9 +63,8 @@
 - (void)dealloc;
 - (id)delegate;
 - (void)endedNetworkActivity;
-- (void)finishedSearchingForType:(unsigned long long)arg1;
+- (void)finishedSearchingForAutocompleteResults;
 - (void)finishedTaskWithID:(id)arg1;
-- (void)idStatusUpdatedForDestinations:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)makeRecipientViewFirstResponder;
 - (void)makeRecipientViewResignFirstResponder;
@@ -82,7 +75,6 @@
 - (void)setDelegate:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)viewDidAppear:(bool)arg1;

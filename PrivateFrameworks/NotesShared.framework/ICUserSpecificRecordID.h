@@ -12,9 +12,13 @@
 }
 
 @property (nonatomic) long long databaseScope;
+@property (nonatomic, readonly) CKRecordID *recordID;
+@property (nonatomic, readonly) NSString *recordName;
 @property (nonatomic, retain) NSString *recordType;
 @property (nonatomic, retain) NSString *shareOwnerName;
+@property (nonatomic, readonly) CKRecordID *sharedRecordID;
 @property (nonatomic, retain) NSString *sharedRecordName;
+@property (nonatomic, readonly) NSString *sharedRecordType;
 @property (nonatomic, retain) NSString *userSpecificOwnerName;
 @property (nonatomic, retain) NSString *zoneName;
 

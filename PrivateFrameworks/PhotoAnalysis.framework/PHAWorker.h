@@ -36,8 +36,8 @@
 - (void)cooldown;
 - (id)currentOperation;
 - (id)dataLoader;
-- (bool)dispatchAsyncToUserInitiatedRequestQueue:(id /* block */)arg1;
-- (bool)dispatchSyncToUserInitiatedRequestQueue:(id /* block */)arg1;
+- (void)dispatchAsyncToUserInitiatedRequestQueue:(id /* block */)arg1;
+- (void)dispatchSyncToUserInitiatedRequestQueue:(id /* block */)arg1;
 - (void)handleOperation:(id)arg1;
 - (bool)hasAdditionalJobsForScenario:(unsigned long long)arg1 requestReason:(unsigned long long)arg2;
 - (id)init;
@@ -59,13 +59,11 @@
 - (void)setLibraryScopedWorkerPreferencesValue:(id)arg1 forKey:(id)arg2;
 - (void)setWarmedUp:(bool)arg1;
 - (void)shutdown;
-- (bool)startAcknowledgeDeletionsJob:(id)arg1 error:(id*)arg2;
 - (bool)startAnalysisJob:(id)arg1 error:(id*)arg2;
 - (void)startup;
 - (id)statusAsDictionary;
-- (bool)stopAcknowledgeDeletionsJob:(id)arg1 error:(id*)arg2;
 - (bool)stopAnalysisJob:(id)arg1 error:(id*)arg2;
 - (void)updateLibraryScopedWorkerPreferencesWithEntriesFromDictionary:(id)arg1 keysToRemove:(id)arg2;
-- (void)warmup;
+- (void)warmupWithProgressBlock:(id /* block */)arg1;
 
 @end

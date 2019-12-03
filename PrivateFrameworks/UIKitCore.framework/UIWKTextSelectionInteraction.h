@@ -2,7 +2,9 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface UIWKTextSelectionInteraction : UITextSelectionInteraction
+@interface UIWKTextSelectionInteraction : UITextSelectionInteraction {
+    unsigned long long  _repeatedTapCount;
+}
 
 - (void)oneFingerDoubleTap:(id)arg1;
 - (void)oneFingerTap:(id)arg1;

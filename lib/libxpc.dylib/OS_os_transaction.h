@@ -4,7 +4,7 @@
 
 @interface OS_os_transaction : OS_object
 
-- (void)_dispose;
+- (void)dealloc;
 - (id)description;
 - (id)init;
 

@@ -6,29 +6,55 @@
     int  _altitude;
     double  _course;
     double  _courseAccuracy;
-    int  _formOfWay;
     struct { 
-        unsigned int course : 1; 
-        unsigned int courseAccuracy : 1; 
-        unsigned int heading : 1; 
-        unsigned int horizontalAccuracy : 1; 
-        unsigned int rawCourse : 1; 
-        unsigned int speed : 1; 
-        unsigned int speedAccuracy : 1; 
-        unsigned int timestamp : 1; 
-        unsigned int transitID : 1; 
-        unsigned int verticalAccuracy : 1; 
-        unsigned int altitude : 1; 
-        unsigned int formOfWay : 1; 
-        unsigned int levelOrdinal : 1; 
-        unsigned int matchQuality : 1; 
-        unsigned int referenceFrame : 1; 
-        unsigned int roadClass : 1; 
-        unsigned int transportType : 1; 
-        unsigned int type : 1; 
-        unsigned int isMatchedLocation : 1; 
-        unsigned int isShifted : 1; 
-    }  _has;
+        unsigned int has_courseAccuracy : 1; 
+        unsigned int has_course : 1; 
+        unsigned int has_heading : 1; 
+        unsigned int has_horizontalAccuracy : 1; 
+        unsigned int has_rawCourse : 1; 
+        unsigned int has_speedAccuracy : 1; 
+        unsigned int has_speed : 1; 
+        unsigned int has_timestamp : 1; 
+        unsigned int has_transitID : 1; 
+        unsigned int has_verticalAccuracy : 1; 
+        unsigned int has_altitude : 1; 
+        unsigned int has_formOfWay : 1; 
+        unsigned int has_levelOrdinal : 1; 
+        unsigned int has_matchQuality : 1; 
+        unsigned int has_referenceFrame : 1; 
+        unsigned int has_roadClass : 1; 
+        unsigned int has_transportType : 1; 
+        unsigned int has_type : 1; 
+        unsigned int has_isMatchedLocation : 1; 
+        unsigned int has_isShifted : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_latLng : 1; 
+        unsigned int read_rawCoordinate : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_courseAccuracy : 1; 
+        unsigned int wrote_course : 1; 
+        unsigned int wrote_heading : 1; 
+        unsigned int wrote_horizontalAccuracy : 1; 
+        unsigned int wrote_latLng : 1; 
+        unsigned int wrote_rawCoordinate : 1; 
+        unsigned int wrote_rawCourse : 1; 
+        unsigned int wrote_speedAccuracy : 1; 
+        unsigned int wrote_speed : 1; 
+        unsigned int wrote_timestamp : 1; 
+        unsigned int wrote_transitID : 1; 
+        unsigned int wrote_verticalAccuracy : 1; 
+        unsigned int wrote_altitude : 1; 
+        unsigned int wrote_formOfWay : 1; 
+        unsigned int wrote_levelOrdinal : 1; 
+        unsigned int wrote_matchQuality : 1; 
+        unsigned int wrote_referenceFrame : 1; 
+        unsigned int wrote_roadClass : 1; 
+        unsigned int wrote_transportType : 1; 
+        unsigned int wrote_type : 1; 
+        unsigned int wrote_isMatchedLocation : 1; 
+        unsigned int wrote_isShifted : 1; 
+    }  _flags;
+    int  _formOfWay;
     double  _heading;
     double  _horizontalAccuracy;
     bool  _isMatchedLocation;
@@ -38,6 +64,12 @@
     int  _matchQuality;
     GEOLatLng * _rawCoordinate;
     double  _rawCourse;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     int  _referenceFrame;
     int  _roadClass;
     double  _speed;
@@ -99,6 +131,8 @@
 
 // Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsFormOfWay:(id)arg1;
 - (int)StringAsMatchQuality:(id)arg1;
@@ -106,7 +140,11 @@
 - (int)StringAsRoadClass:(id)arg1;
 - (int)StringAsTransportType:(id)arg1;
 - (int)StringAsType:(id)arg1;
+- (void)_readLatLng;
+- (void)_readRawCoordinate;
 - (int)altitude;
+- (void)clearSensitiveFields;
+- (void)clearUnknownFields:(bool)arg1;
 - (struct { double x1; double x2; })coordinate;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -141,6 +179,8 @@
 - (unsigned long long)hash;
 - (double)heading;
 - (double)horizontalAccuracy;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (id)initWithGEOCoordinate:(struct { double x1; double x2; })arg1;
 - (id)initWithGEOCoordinate:(struct { double x1; double x2; })arg1 floorOrdinal:(int)arg2;
 - (id)initWithGEOCoordinate:(struct { double x1; double x2; })arg1 isUserLocation:(bool)arg2;
@@ -161,6 +201,7 @@
 - (void)mergeFrom:(id)arg1;
 - (id)rawCoordinate;
 - (double)rawCourse;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (int)referenceFrame;
 - (id)referenceFrameAsString:(int)arg1;
@@ -222,13 +263,13 @@
 
 // Image: /System/Library/Frameworks/CoreLocation.framework/CoreLocation
 
-- (id)_initWithCLClientLocation:(const struct { int x1; struct { double x_2_1_1; double x_2_1_2; } x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; int x11; double x12; int x13; struct { double x_14_1_1; double x_14_1_2; } x14; double x15; int x16; unsigned int x17; int x18; int x19; }*)arg1;
+- (id)_initWithCLClientLocation:(const struct { int x1; struct { double x_2_1_1; double x_2_1_2; } x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; int x11; double x12; int x13; struct { double x_14_1_1; double x_14_1_2; } x14; double x15; int x16; unsigned int x17; int x18; int x19; int x20; }*)arg1;
 
 // Image: /System/Library/PrivateFrameworks/Navigation.framework/Navigation
 
 + (id)locationWithCLLocation:(id)arg1 course:(double)arg2;
 
-- (struct { int x1; struct { double x_2_1_1; double x_2_1_2; } x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; int x11; double x12; int x13; struct { double x_14_1_1; double x_14_1_2; } x14; double x15; int x16; unsigned int x17; int x18; int x19; })clientLocation;
+- (struct { int x1; struct { double x_2_1_1; double x_2_1_2; } x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; int x11; double x12; int x13; struct { double x_14_1_1; double x_14_1_2; } x14; double x15; int x16; unsigned int x17; int x18; int x19; int x20; })clientLocation;
 - (id)initWithCLLocation:(id)arg1;
 - (id)initWithCLLocation:(id)arg1 course:(double)arg2;
 - (id)initWithCLLocation:(id)arg1 useMatchInfo:(bool)arg2;

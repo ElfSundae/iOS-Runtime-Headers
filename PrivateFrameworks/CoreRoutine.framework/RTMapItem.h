@@ -5,6 +5,8 @@
 @interface RTMapItem : NSObject <NSCopying, NSSecureCoding> {
     RTAddress * _address;
     NSDate * _creationDate;
+    NSString * _displayLanguage;
+    NSDate * _expirationDate;
     RTMapItemExtendedAttributes * _extendedAttributes;
     NSData * _geoMapItemHandle;
     NSUUID * _identifier;
@@ -18,6 +20,8 @@
 
 @property (nonatomic, readonly) RTAddress *address;
 @property (nonatomic, readonly) NSDate *creationDate;
+@property (nonatomic, readonly, copy) NSString *displayLanguage;
+@property (nonatomic, readonly) NSDate *expirationDate;
 @property (nonatomic, retain) RTMapItemExtendedAttributes *extendedAttributes;
 @property (nonatomic, readonly) NSData *geoMapItemHandle;
 @property (nonatomic, readonly, copy) NSUUID *identifier;
@@ -40,15 +44,16 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)creationDate;
 - (id)description;
+- (id)displayLanguage;
 - (void)encodeWithCoder:(id)arg1;
+- (id)expirationDate;
 - (id)extendedAttributes;
 - (id)geoMapItemHandle;
 - (unsigned long long)hash;
 - (id)identifier;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 name:(id)arg2 address:(id)arg3 location:(id)arg4 source:(unsigned long long)arg5 muid:(unsigned long long)arg6 resultProviderID:(long long)arg7 geoMapItemHandle:(id)arg8 creationDate:(id)arg9 extendedAttributes:(id)arg10;
-- (id)initWithMapItemMO:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 name:(id)arg2 address:(id)arg3 location:(id)arg4 source:(unsigned long long)arg5 muid:(unsigned long long)arg6 resultProviderID:(long long)arg7 geoMapItemHandle:(id)arg8 creationDate:(id)arg9 expirationDate:(id)arg10 extendedAttributes:(id)arg11 displayLanguage:(id)arg12;
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToMapItem:(id)arg1;
 - (id)location;

@@ -12,13 +12,13 @@
     }  _private;
 }
 
-@property (readonly) const /* Warning: unhandled struct encoding: '{MTLDepthStencilDescriptorPrivate=@@QB@}' */ struct MTLDepthStencilDescriptorPrivate { id x1; unsigned long long x2; bool x3; id x4; }*depthStencilPrivate;
+@property (readonly) const struct MTLDepthStencilDescriptorPrivate { id x1; id x2; unsigned long long x3; bool x4; id x5; }*depthStencilPrivate;
 
 - (id)backFaceStencil;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (unsigned long long)depthCompareFunction;
-- (const /* Warning: unhandled struct encoding: '{MTLDepthStencilDescriptorPrivate=@@QB@}' */ struct MTLDepthStencilDescriptorPrivate { id x1; unsigned long long x2; bool x3; id x4; }*)depthStencilPrivate;
+- (const struct MTLDepthStencilDescriptorPrivate { id x1; id x2; unsigned long long x3; bool x4; id x5; }*)depthStencilPrivate;
 - (id)description;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (id)frontFaceStencil;

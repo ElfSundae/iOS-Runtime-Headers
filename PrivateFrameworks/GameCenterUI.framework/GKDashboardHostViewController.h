@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/GameCenterUI.framework/GameCenterUI
  */
 
-@interface GKDashboardHostViewController : GKUIRemoteViewController <GKGameCenterDashboardServiceProtocol> {
+@interface GKDashboardHostViewController : GKExtensionRemoteViewController <GKGameCenterDashboardServiceProtocol> {
     NSObject * _dashboardAssetController;
     GKGameCenterViewController * _delegateWeak;
 }

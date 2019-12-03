@@ -63,6 +63,7 @@
 - (bool)_validateDOMOperation:(unsigned long long)arg1 newNode:(id)arg2 refNode:(id)arg3;
 - (void)addDOMObserver:(id)arg1;
 - (void)addEventListener:(id)arg1 :(id)arg2 :(bool)arg3;
+- (void)adoptFeatureWithName:(id)arg1 fromDOMNode:(id)arg2;
 - (id)appendChild:(id)arg1;
 - (id)asPrivateIKJSDOMNode;
 - (unsigned long long)childElementCount;
@@ -89,7 +90,7 @@
 - (id)ik_nodePath;
 - (id)ik_nodeWithId:(long long)arg1;
 - (id)ik_nodesWithIds:(id)arg1;
-- (id)ik_pathsForSearchQuery:(id)arg1 currentPath:(id)arg2;
+- (id)ik_pathsForSearchQuery:(id)arg1 compareOptions:(unsigned long long)arg2 currentPath:(id)arg3;
 - (id)initWithAppContext:(id)arg1 xmlNode:(struct _xmlNode { void *x1; int x2; char *x3; struct _xmlNode {} *x4; struct _xmlNode {} *x5; struct _xmlNode {} *x6; struct _xmlNode {} *x7; struct _xmlNode {} *x8; struct _xmlDoc {} *x9; struct _xmlNs {} *x10; char *x11; struct _xmlAttr {} *x12; struct _xmlNs {} *x13; void *x14; unsigned short x15; unsigned short x16; }*)arg2;
 - (id)insertBefore:(id)arg1 :(id)arg2;
 - (bool)isEqualNode:(id)arg1;

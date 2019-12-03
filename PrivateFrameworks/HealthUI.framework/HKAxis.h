@@ -53,7 +53,7 @@
 - (id)_cachedAxisLabelsInModelRange:(id)arg1 zoomScale:(double)arg2;
 - (struct HKRange { double x1; double x2; })_chartRangeForChartRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 zoomScale:(double)arg2 contentOffset:(struct CGPoint { double x1; double x2; })arg3;
 - (void)_drawTextBackgroundWithLabels:(id)arg1 font:(id)arg2 offset:(double)arg3 rect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg4 style:(id)arg5 renderView:(id)arg6;
-- (void)_drawTextForModelRange:(id)arg1 inRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint { double x1; double x2; })arg4 renderView:(id)arg5 style:(id)arg6 maximumLabelSize:(struct CGSize { double x1; double x2; }*)arg7;
+- (void)_drawTextForModelRange:(id)arg1 inRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint { double x1; double x2; })arg4 renderView:(id)arg5 style:(id)arg6 maximumLabelSize:(struct CGSize { double x1; double x2; }*)arg7 omitOffscreenLabels:(bool)arg8;
 - (id)_gridLinesForModelRange:(id)arg1 axisRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint { double x1; double x2; })arg4 style:(id)arg5 gridLineType:(long long)arg6;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_labelBackgroundRectWithLabels:(id)arg1 font:(id)arg2 offset:(double)arg3 rect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg4 style:(id)arg5;
 - (double)_maxLabelWidthFromLabels:(id)arg1 font:(id)arg2;
@@ -71,11 +71,12 @@
 - (long long)axisLabelEndings;
 - (id)chartableValueRange;
 - (void)clearAnnotations;
+- (void)clearCache;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (long long)dateZoomForZoomScale:(double)arg1;
 - (void)drawBaselineForModelRange:(id)arg1 chartRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint { double x1; double x2; })arg4 renderView:(id)arg5;
 - (void)drawGridlinesForModelRange:(id)arg1 chartRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint { double x1; double x2; })arg4 renderView:(id)arg5 blendMode:(int)arg6;
-- (void)drawLabelsWithModelRange:(id)arg1 chartRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint { double x1; double x2; })arg4 renderView:(id)arg5 maximumLabelSize:(struct CGSize { double x1; double x2; }*)arg6;
+- (void)drawLabelsWithModelRange:(id)arg1 chartRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint { double x1; double x2; })arg4 renderView:(id)arg5 maximumLabelSize:(struct CGSize { double x1; double x2; }*)arg6 omitOffscreenLabels:(bool)arg7;
 - (void)enumerateTickCoordinatesInModelRange:(id)arg1 zoomScale:(double)arg2 handler:(id /* block */)arg3;
 - (id)findAxisLabelsInModelRange:(id)arg1 zoomScale:(double)arg2;
 - (id)init;

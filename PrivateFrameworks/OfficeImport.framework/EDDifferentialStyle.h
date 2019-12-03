@@ -20,11 +20,11 @@
 
 + (id)differentialStyle;
 
+- (void).cxx_destruct;
 - (id)alignmentInfo;
 - (id)borders;
 - (id)contentFormat;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)fill;
 - (id)font;

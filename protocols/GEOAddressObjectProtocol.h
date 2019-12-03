@@ -11,6 +11,7 @@
 - (NSDictionary *)addressDictionary;
 - (NSString *)cityDisplayNameWithFallback:(bool)arg1;
 - (CNPostalAddress *)cnPostalAddress;
+- (NSString *)displayLanguage;
 - (NSString *)fullAddressNoCurrentCountryWithMultiline:(bool)arg1;
 - (NSString *)fullAddressWithMultiline:(bool)arg1;
 - (NSString *)fullAddressWithMultiline:(bool)arg1 relative:(GEOAddressObject *)arg2;

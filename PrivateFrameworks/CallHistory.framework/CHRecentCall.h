@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CallHistory.framework/CallHistory
  */
 
-@interface CHRecentCall : CHSynchronizable <NSCopying, NSSecureCoding> {
+@interface CHRecentCall : NSObject <NSCopying, NSSecureCoding> {
     NSString * _addressBookCallerIDMultiValueId;
     NSString * _addressBookRecordId;
     NSValue * _addressBookRecordRef;
@@ -29,6 +29,7 @@
     NSString * _devicePhoneId;
     NSNumber * _disconnectedCause;
     double  _duration;
+    NSNumber * _filteredOutReason;
     long long  _handleType;
     NSString * _isoCountryCode;
     CHHandle * _localParticipantHandle;
@@ -40,6 +41,7 @@
     bool  _multiCall;
     NSUUID * _outgoingLocalParticipantUUID;
     <CHPhoneBookManagerProtocol> * _phoneBookManager;
+    NSObject<OS_dispatch_queue> * _queue;
     bool  _read;
     NSSet * _remoteParticipantHandles;
     NSString * _serviceProvider;
@@ -47,6 +49,7 @@
     long long  _ttyType;
     NSString * _uniqueId;
     unsigned long long  _unreadCount;
+    long long  _verificationStatus;
 }
 
 @property (nonatomic, copy) NSString *addressBookCallerIDMultiValueId;
@@ -75,6 +78,7 @@
 @property (copy) NSString *devicePhoneId;
 @property (copy) NSNumber *disconnectedCause;
 @property (nonatomic) double duration;
+@property (copy) NSNumber *filteredOutReason;
 @property (nonatomic) long long handleType;
 @property (nonatomic, copy) NSString *isoCountryCode;
 @property (nonatomic, retain) CHHandle *localParticipantHandle;
@@ -86,6 +90,7 @@
 @property bool multiCall;
 @property (nonatomic, retain) NSUUID *outgoingLocalParticipantUUID;
 @property (retain) <CHPhoneBookManagerProtocol> *phoneBookManager;
+@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *queue;
 @property (nonatomic) bool read;
 @property (nonatomic, copy) NSSet *remoteParticipantHandles;
 @property (nonatomic, copy) NSString *serviceProvider;
@@ -93,6 +98,7 @@
 @property (nonatomic) long long ttyType;
 @property (nonatomic, copy) NSString *uniqueId;
 @property unsigned long long unreadCount;
+@property (nonatomic) long long verificationStatus;
 
 + (id)callCategoryAsString:(unsigned int)arg1;
 + (id)callHandleTypeAsString:(long long)arg1;
@@ -105,6 +111,29 @@
 + (unsigned int)getCallTypeForCategory:(unsigned int)arg1 andServiceProvider:(id)arg2;
 + (id)getLocationForCallerId:(id)arg1 andIsoCountryCode:(id)arg2;
 + (long long)mediaTypeForCallCategory:(unsigned int)arg1;
++ (id)predicateForCallsBetweenStartDate:(id)arg1 endDate:(id)arg2;
++ (id)predicateForCallsWithAnyMediaTypes:(id)arg1;
++ (id)predicateForCallsWithAnyRemoteParticipantHandleNormalizedValues:(id)arg1;
++ (id)predicateForCallsWithAnyRemoteParticipantHandleTypes:(id)arg1;
++ (id)predicateForCallsWithAnyRemoteParticipantHandleValues:(id)arg1;
++ (id)predicateForCallsWithAnyRemoteParticipantHandles:(id)arg1;
++ (id)predicateForCallsWithAnyServiceProviders:(id)arg1;
++ (id)predicateForCallsWithAnyTTYTypes:(id)arg1;
++ (id)predicateForCallsWithAnyUniqueIDs:(id)arg1;
++ (id)predicateForCallsWithCategory:(unsigned int)arg1;
++ (id)predicateForCallsWithMediaType:(long long)arg1;
++ (id)predicateForCallsWithRemoteParticipantCount:(long long)arg1;
++ (id)predicateForCallsWithRemoteParticipantHandle:(id)arg1;
++ (id)predicateForCallsWithRemoteParticipantHandleNormalizedValue:(id)arg1;
++ (id)predicateForCallsWithRemoteParticipantHandleType:(long long)arg1;
++ (id)predicateForCallsWithRemoteParticipantHandleValue:(id)arg1;
++ (id)predicateForCallsWithServiceProvider:(id)arg1;
++ (id)predicateForCallsWithStatus:(unsigned int)arg1;
++ (id)predicateForCallsWithStatusAnswered:(bool)arg1;
++ (id)predicateForCallsWithStatusOriginated:(bool)arg1;
++ (id)predicateForCallsWithStatusRead:(bool)arg1;
++ (id)predicateForCallsWithTTYType:(long long)arg1;
++ (id)predicateForCallsWithUniqueID:(id)arg1;
 + (id)serviceProviderForCallType:(unsigned int)arg1;
 + (bool)supportsSecureCoding;
 + (long long)ttyTypeForCallCategory:(unsigned int)arg1;
@@ -147,6 +176,7 @@
 - (id)callerNetworkFirstName;
 - (id)callerNetworkName;
 - (id)callerNetworkSecondName;
+- (bool)canCoalesceRemoteParticipantHandlesFromCall:(id)arg1;
 - (bool)canCoalesceSyncWithCall:(id)arg1 withStrategy:(id)arg2;
 - (bool)canCoalesceSyncWithCollapseIfEqualStrategyWithCall:(id)arg1;
 - (bool)canCoalesceSyncWithRecentsStrategyWithCall:(id)arg1;
@@ -167,8 +197,12 @@
 - (id)disconnectedCause;
 - (double)duration;
 - (void)encodeWithCoder:(id)arg1;
+- (void)execute:(id /* block */)arg1;
+- (void)executeSync:(id /* block */)arg1;
+- (id)executeSyncWithResult:(id /* block */)arg1;
 - (void)fetchAndSetContactIdentifierSync;
 - (void)fetchAndSetFullContactSync;
+- (id)filteredOutReason;
 - (void)fixCallTypeInfo;
 - (id)getLocalizedStringSync:(id)arg1;
 - (long long)handleType;
@@ -176,8 +210,6 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithQueue:(id)arg1;
-- (bool)isAddressBookContactASuggestion;
-- (bool)isAddressBookContactASuggestionSync;
 - (bool)isEqual:(id)arg1;
 - (id)isoCountryCode;
 - (id)localParticipantHandle;
@@ -191,6 +223,7 @@
 - (unsigned long long)numberOfOccurrencesSync;
 - (id)outgoingLocalParticipantUUID;
 - (id)phoneBookManager;
+- (id)queue;
 - (bool)read;
 - (id)remoteParticipantHandles;
 - (bool)representsCallAtDate:(id)arg1;
@@ -221,6 +254,7 @@
 - (void)setDevicePhoneId:(id)arg1;
 - (void)setDisconnectedCause:(id)arg1;
 - (void)setDuration:(double)arg1;
+- (void)setFilteredOutReason:(id)arg1;
 - (void)setHandleType:(long long)arg1;
 - (void)setIsoCountryCode:(id)arg1;
 - (void)setLocalParticipantHandle:(id)arg1;
@@ -239,10 +273,12 @@
 - (void)setTtyType:(long long)arg1;
 - (void)setUniqueId:(id)arg1;
 - (void)setUnreadCount:(unsigned long long)arg1;
+- (void)setVerificationStatus:(long long)arg1;
 - (id)timeToEstablish;
 - (long long)ttyType;
 - (id)uniqueId;
 - (unsigned long long)unreadCount;
 - (void)updateTTYAndMediaType;
+- (long long)verificationStatus;
 
 @end

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
  */
 
-@interface HMDTrigger : HMFObject <HMDBackingStoreObjectProtocol, HMDBulletinIdentifiers, HMDHomeMessageReceiver, HMFDumpState, HMFLogging, NSSecureCoding> {
+@interface HMDTrigger : HMFObject <HMDBackingStoreObjectProtocol, HMDBulletinIdentifiers, HMDDevicePreferenceDataSource, HMDHomeMessageReceiver, HMFDumpState, HMFLogging, NSSecureCoding> {
     NSMutableDictionary * _actionSetMappings;
     NSMutableArray * _actionSetUUIDs;
     bool  _active;
@@ -42,7 +42,7 @@
 @property (nonatomic, readonly) bool requiresDataVersion4;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long triggerType;
-@property (nonatomic, retain) NSUUID *uuid;
+@property (nonatomic, copy) NSUUID *uuid;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *workQueue;
 
 + (bool)hasMessageReceiverChildren;
@@ -54,6 +54,7 @@
 - (void)_activate:(bool)arg1 completionHandler:(id /* block */)arg2;
 - (void)_activateTriggerRequest:(id)arg1;
 - (void)_activateWithCompletion:(id /* block */)arg1;
+- (void)_addActionSet:(id)arg1;
 - (void)_executeActionSets:(id)arg1 captureCurrentState:(bool)arg2 completionHandler:(id /* block */)arg3;
 - (void)_executeActionSetsWithCompletionHandler:(id /* block */)arg1;
 - (void)_fillBaseObjectChangeModel:(id)arg1;
@@ -64,6 +65,7 @@
 - (void)_handleRemoveTriggerOwnedActionSetRequest:(id)arg1 postUpdate:(bool)arg2;
 - (void)_handleRenameRequest:(id)arg1;
 - (void)_handleTriggerUpdate:(id)arg1 message:(id)arg2;
+- (void)_handleUpdateActionSetRequest:(id)arg1;
 - (void)_handleUpdateActionSetRequest:(id)arg1 postUpdate:(bool)arg2;
 - (bool)_isTriggerFiredNotificationEntitled;
 - (void)_recentFireDateUpdated:(id)arg1;
@@ -84,6 +86,7 @@
 - (void)checkForNoActions;
 - (bool)compatible:(id)arg1 user:(id)arg2;
 - (void)configure:(id)arg1 messageDispatcher:(id)arg2 queue:(id)arg3;
+- (void)confirmResident;
 - (id)contextID;
 - (id)contextSPIUniqueIdentifier;
 - (void)dealloc;
@@ -135,6 +138,7 @@
 - (void)setWorkQueue:(id)arg1;
 - (bool)shouldActivateOnLocalDevice;
 - (bool)shouldEncodeLastFireDate:(id)arg1;
+- (bool)supportsDeviceWithCapabilities:(id)arg1;
 - (void)timerFired:(id)arg1;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;

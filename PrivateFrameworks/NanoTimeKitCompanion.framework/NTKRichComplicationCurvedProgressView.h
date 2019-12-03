@@ -9,6 +9,7 @@
     double  _curveWidth;
     double  _endAngle;
     NTKRichComplicationCurveView * _foregroundView;
+    long long  _progressFillStyle;
 }
 
 @property (nonatomic) double beginAngle;
@@ -18,10 +19,16 @@
 - (void).cxx_destruct;
 - (double)beginAngle;
 - (bool)clockwise;
+- (id)colorForView:(id)arg1 accented:(bool)arg2;
 - (double)endAngle;
-- (id)initWithCurveWidth:(double)arg1 padding:(double)arg2 beginAngle:(double)arg3 endAngle:(double)arg4 forDevice:(id)arg5;
+- (id)filterForView:(id)arg1 style:(long long)arg2;
+- (id)filterForView:(id)arg1 style:(long long)arg2 fraction:(double)arg3;
+- (id)initWithCurveWidth:(double)arg1 padding:(double)arg2 beginAngle:(double)arg3 endAngle:(double)arg4 forDevice:(id)arg5 withFilterStyle:(long long)arg6 progressFillStyle:(long long)arg7;
+- (id)overrideBackgroundGradientColorsForGradientColors:(id)arg1;
+- (id)overrideBackgroundGradientColorsForGradientColors:(id)arg1 locations:(id)arg2;
 - (void)setBeginAngle:(double)arg1;
 - (void)setClockwise:(bool)arg1;
 - (void)setEndAngle:(double)arg1;
+- (void)setProgress:(double)arg1;
 
 @end

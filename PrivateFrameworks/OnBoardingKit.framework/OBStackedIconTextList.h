@@ -3,14 +3,12 @@
  */
 
 @interface OBStackedIconTextList : UIStackView {
-    bool  _darkMode;
     unsigned long long  _dataDetectorTypes;
     NSMutableArray * _entries;
     double  _iconTextPadding;
     double  _itemSpacing;
 }
 
-@property (getter=isDarkMode, nonatomic) bool darkMode;
 @property (nonatomic) unsigned long long dataDetectorTypes;
 @property (nonatomic) double iconTextPadding;
 
@@ -20,8 +18,6 @@
 - (unsigned long long)dataDetectorTypes;
 - (double)iconTextPadding;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
-- (bool)isDarkMode;
-- (void)setDarkMode:(bool)arg1;
 - (void)setDataDetectorTypes:(unsigned long long)arg1;
 - (void)setIconTextPadding:(double)arg1;
 - (id)viewForFirstBaselineLayout;

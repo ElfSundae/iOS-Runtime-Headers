@@ -12,6 +12,8 @@
 @property (nonatomic, copy) GEOMapRegion *mapRegion;
 @property (nonatomic, copy) NSString *query;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) bool tracksRAPReportingOnly;
+@property (nonatomic, readonly, copy) NSDate *usageDate;
 
 + (Class)immutableObjectClass;
 + (id)immutableObjectProtocol;

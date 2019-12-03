@@ -15,9 +15,9 @@
     struct OpaqueFigCustomURLLoader { } * customURLLoader;
     NSObject<OS_dispatch_queue> * delegateQueue;
     int  loadingCancelled;
-    long long  makeResourceLoaderURLSessionSupportStuffOnlyOnce;
     NSMutableDictionary * pendingRequests;
     bool  preloadsEligibleContentKeys;
+    struct OpaqueFigXPCRemoteClient { } * remoteHandlerXPCRemoteClient;
     NSObject<OS_dispatch_queue> * stateQueue;
     AVWeakReference * weakReferenceToAsset;
     AVWeakReference * weakReferenceToDelegate;

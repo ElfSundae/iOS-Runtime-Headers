@@ -7,6 +7,7 @@
     <HMFSystemInfoNameDataSourceDelegate> * _delegate;
     HMFUnfairLock * _lock;
     NSString * _model;
+    NSString * _modelIdentifier;
     NSString * _name;
     struct MGNotificationTokenStruct { } * _notificationToken;
     long long  _productClass;
@@ -25,6 +26,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) NSString *model;
+@property (nonatomic, readonly, copy) NSString *modelIdentifier;
 @property (nonatomic, readonly, copy) NSString *name;
 @property (readonly) struct MGNotificationTokenStruct { }*notificationToken;
 @property (nonatomic, readonly) long long productClass;
@@ -43,6 +45,7 @@
 - (id)delegate;
 - (id)init;
 - (id)model;
+- (id)modelIdentifier;
 - (id)name;
 - (struct MGNotificationTokenStruct { }*)notificationToken;
 - (long long)productClass;

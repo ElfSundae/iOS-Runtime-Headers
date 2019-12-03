@@ -19,6 +19,7 @@
     NSArray * _havingDescriptiveLabelConstraints;
     bool  _highlighted;
     UIImageView * _imageView;
+    NSLayoutConstraint * _imageViewBaselineOrCenterYConstraint;
     NSLayoutConstraint * _imageViewBottomConstraint;
     NSLayoutConstraint * _imageViewTopConstraint;
     UILabel * _label;
@@ -74,6 +75,7 @@
 - (void)_loadDescriptiveLabel;
 - (void)_loadImageView;
 - (void)_prepareConstraintsForHavingDescriptiveText:(bool)arg1;
+- (void)_prepareConstraintsForImage:(id)arg1;
 - (void)_recomputeColors;
 - (void)_removeContentViewControllerContainerViewSubviews;
 - (void)_updateCheckImageView;
@@ -110,7 +112,6 @@
 - (void)setLabelContainerLeadingPinConstraint:(id)arg1;
 - (void)setLabelContainerTrailingPinConstraint:(id)arg1;
 - (void)setVisualStyle:(id)arg1;
-- (id)tintColor;
 - (void)tintColorDidChange;
 - (void)underlyingInterfaceActionRepresentationDidChange;
 - (void)updateHeightUsingAXEnforcedWidth:(double)arg1;

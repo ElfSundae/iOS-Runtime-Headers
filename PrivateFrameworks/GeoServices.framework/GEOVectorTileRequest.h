@@ -2,31 +2,60 @@
    Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
  */
 
-@interface GEOVectorTileRequest : PBRequest <NSCopying> {
+@interface GEOVectorTileRequest : PBCodable <NSCopying> {
     NSString * _accessKey;
     NSString * _countryCode;
     struct { 
-        unsigned int lineId : 1; 
-        unsigned int latitudeHint : 1; 
-        unsigned int longitudeHint : 1; 
-        unsigned int scale : 1; 
-        unsigned int size : 1; 
-        unsigned int style : 1; 
-        unsigned int version : 1; 
-        unsigned int x : 1; 
-        unsigned int y : 1; 
-        unsigned int z : 1; 
-        unsigned int preflight : 1; 
-    }  _has;
+        unsigned int has_lineId : 1; 
+        unsigned int has_latitudeHint : 1; 
+        unsigned int has_longitudeHint : 1; 
+        unsigned int has_scale : 1; 
+        unsigned int has_size : 1; 
+        unsigned int has_style : 1; 
+        unsigned int has_version : 1; 
+        unsigned int has_x : 1; 
+        unsigned int has_y : 1; 
+        unsigned int has_z : 1; 
+        unsigned int has_preflight : 1; 
+        unsigned int has_venuesPreflight : 1; 
+        unsigned int has_vloc : 1; 
+        unsigned int read_accessKey : 1; 
+        unsigned int read_countryCode : 1; 
+        unsigned int read_languageCode : 1; 
+        unsigned int wrote_accessKey : 1; 
+        unsigned int wrote_countryCode : 1; 
+        unsigned int wrote_languageCode : 1; 
+        unsigned int wrote_lineId : 1; 
+        unsigned int wrote_latitudeHint : 1; 
+        unsigned int wrote_longitudeHint : 1; 
+        unsigned int wrote_scale : 1; 
+        unsigned int wrote_size : 1; 
+        unsigned int wrote_style : 1; 
+        unsigned int wrote_version : 1; 
+        unsigned int wrote_x : 1; 
+        unsigned int wrote_y : 1; 
+        unsigned int wrote_z : 1; 
+        unsigned int wrote_preflight : 1; 
+        unsigned int wrote_venuesPreflight : 1; 
+        unsigned int wrote_vloc : 1; 
+    }  _flags;
     NSString * _languageCode;
     float  _latitudeHint;
     unsigned long long  _lineId;
     float  _longitudeHint;
     bool  _preflight;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     unsigned int  _scale;
     unsigned int  _size;
     unsigned int  _style;
+    bool  _venuesPreflight;
     unsigned int  _version;
+    bool  _vloc;
     unsigned int  _x;
     unsigned int  _y;
     unsigned int  _z;
@@ -44,7 +73,9 @@
 @property (nonatomic) bool hasScale;
 @property (nonatomic) bool hasSize;
 @property (nonatomic) bool hasStyle;
+@property (nonatomic) bool hasVenuesPreflight;
 @property (nonatomic) bool hasVersion;
+@property (nonatomic) bool hasVloc;
 @property (nonatomic) bool hasX;
 @property (nonatomic) bool hasY;
 @property (nonatomic) bool hasZ;
@@ -56,12 +87,19 @@
 @property (nonatomic) unsigned int scale;
 @property (nonatomic) unsigned int size;
 @property (nonatomic) unsigned int style;
+@property (nonatomic) bool venuesPreflight;
 @property (nonatomic) unsigned int version;
+@property (nonatomic) bool vloc;
 @property (nonatomic) unsigned int x;
 @property (nonatomic) unsigned int y;
 @property (nonatomic) unsigned int z;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_readAccessKey;
+- (void)_readCountryCode;
+- (void)_readLanguageCode;
 - (id)accessKey;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -78,11 +116,15 @@
 - (bool)hasScale;
 - (bool)hasSize;
 - (bool)hasStyle;
+- (bool)hasVenuesPreflight;
 - (bool)hasVersion;
+- (bool)hasVloc;
 - (bool)hasX;
 - (bool)hasY;
 - (bool)hasZ;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)languageCode;
 - (float)latitudeHint;
@@ -90,6 +132,7 @@
 - (float)longitudeHint;
 - (void)mergeFrom:(id)arg1;
 - (bool)preflight;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (unsigned int)scale;
 - (void)setAccessKey:(id)arg1;
@@ -101,7 +144,9 @@
 - (void)setHasScale:(bool)arg1;
 - (void)setHasSize:(bool)arg1;
 - (void)setHasStyle:(bool)arg1;
+- (void)setHasVenuesPreflight:(bool)arg1;
 - (void)setHasVersion:(bool)arg1;
+- (void)setHasVloc:(bool)arg1;
 - (void)setHasX:(bool)arg1;
 - (void)setHasY:(bool)arg1;
 - (void)setHasZ:(bool)arg1;
@@ -113,13 +158,17 @@
 - (void)setScale:(unsigned int)arg1;
 - (void)setSize:(unsigned int)arg1;
 - (void)setStyle:(unsigned int)arg1;
+- (void)setVenuesPreflight:(bool)arg1;
 - (void)setVersion:(unsigned int)arg1;
+- (void)setVloc:(bool)arg1;
 - (void)setX:(unsigned int)arg1;
 - (void)setY:(unsigned int)arg1;
 - (void)setZ:(unsigned int)arg1;
 - (unsigned int)size;
 - (unsigned int)style;
+- (bool)venuesPreflight;
 - (unsigned int)version;
+- (bool)vloc;
 - (void)writeTo:(id)arg1;
 - (unsigned int)x;
 - (unsigned int)y;

@@ -6,24 +6,28 @@
     NSOperationQueue * _fDeviceMotionLiteClientQueue;
     id /* block */  _fDeviceMotionLiteFusedHandler;
     NSString * _fDeviceMotionLitePhysicalDeviceID;
-    /* Warning: unhandled struct encoding: '{Dispatcher=^^?@}' */ struct Dispatcher { int (**x1)(); id x2; } * fAccelerometerDispatcher;
+    struct Dispatcher { int (**x1)(); id x2; } * fAccelerometerDispatcher;
     id /* block */  fAccelerometerHandler;
     NSOperationQueue * fAccelerometerQueue;
     double  fAccelerometerUpdateInterval;
-    /* Warning: unhandled struct encoding: '{Dispatcher=^^?@}' */ struct Dispatcher { int (**x1)(); id x2; } * fAmbientPressureDispatcher;
+    struct Dispatcher { int (**x1)(); id x2; } * fAmbientPressureDispatcher;
     id /* block */  fAmbientPressureHandler;
     NSOperationQueue * fAmbientPressureQueue;
     double  fAmbientPressureUpdateInterval;
     unsigned long long  fAttitudeReferenceFrame;
-    long long  fCaptureMode;
+    bool  fAudioAccessoryAccelerometerAvailable;
+    struct Dispatcher { int (**x1)(); id x2; } * fAudioAccessoryAccelerometerDispatcher;
+    id /* block */  fAudioAccessoryAccelerometerHandler;
+    NSOperationQueue * fAudioAccessoryAccelerometerQueue;
+    double  fAudioAccessoryAccelerometerUpdateInterval;
     bool  fCompassCalibrationHud;
-    /* Warning: unhandled struct encoding: '{Dispatcher=^^?@}' */ struct Dispatcher { int (**x1)(); id x2; } * fCompensatedAmbientPressureDispatcher;
+    struct Dispatcher { int (**x1)(); id x2; } * fCompensatedAmbientPressureDispatcher;
     id /* block */  fCompensatedAmbientPressureHandler;
     NSOperationQueue * fCompensatedAmbientPressureQueue;
     double  fCompensatedAmbientPressureUpdateInterval;
-    struct CLConnectionClient { id x1; unsigned char x2; unsigned long x3; unsigned char x4; /* Warning: Unrecognized filer type: 'a' using 'void*' */ void*x5; long x6; long x7; unsigned int x8/* : ? */; void*x9; BOOL x10; void*x11; long doublex12; const out void*x13; void*x14; void*x15; in void*x16; void*x17; void*x18; const void*x19; int (**x20)(); struct shared_ptr<int> { int *x_21_1_1; struct __shared_weak_count {} *x_21_1_2; } x21; } * fConnection;
+    struct CLConnectionClient { id x1; struct CLCallbackDropManager { int (**x_2_1_1)(); struct shared_ptr<int> { int *x_2_2_1; struct __shared_weak_count {} *x_2_2_2; } x_2_1_2; } x2; struct shared_ptr<CLConnectionClientInternal> { struct CLConnectionClientInternal {} *x_3_1_1; struct __shared_weak_count {} *x_3_1_2; } x3; struct CLConnectionClientNotificationContext {} *x4; } * fConnection;
     NSObject<OS_dispatch_queue> * fConnectionQueue;
-    /* Warning: unhandled struct encoding: '{Dispatcher=^^?@}' */ struct Dispatcher { int (**x1)(); id x2; } * fDeviceMotionDispatcher;
+    struct Dispatcher { int (**x1)(); id x2; } * fDeviceMotionDispatcher;
     id /* block */  fDeviceMotionErrorHandler;
     NSOperationQueue * fDeviceMotionErrorQueue;
     id /* block */  fDeviceMotionHandler;
@@ -51,14 +55,22 @@
             struct Client {} *__value_; 
         } __ptr_; 
     }  fGeomagneticModelProviderClient;
-    /* Warning: unhandled struct encoding: '{Dispatcher=^^?@}' */ struct Dispatcher { int (**x1)(); id x2; } * fGyroDispatcher;
+    struct Dispatcher { int (**x1)(); id x2; } * fGyroDispatcher;
     id /* block */  fGyroHandler;
     NSOperationQueue * fGyroQueue;
     double  fGyroUpdateInterval;
+    bool  fHaveGeomagneticModelData;
     bool  fHaveSentDeviceRequiresMovementError;
     bool  fHaveSentTrueNorthUnavailableError;
+    struct { 
+        double w; 
+        double x; 
+        double y; 
+        double z; 
+    }  fInitialReferenceRotation;
     bool  fIsApplicationActive;
     bool  fIsCompassCalibrated;
+    bool  fIsInitialReferenceAvailable;
     bool  fIsUsingCalibratedCompass;
     double  fLastAccelerometerNotificationTimestamp;
     double  fLastAmbientPressureNotificationTimestamp;
@@ -84,6 +96,16 @@
     struct Sample { 
         double timestamp; 
         struct { 
+            float x; 
+            float y; 
+            float z; 
+        } acceleration; 
+        unsigned long long sensorTime; 
+        unsigned short sequenceNumber; 
+    }  fLatestAudioAccessoryAccelerometerSample;
+    struct Sample { 
+        double timestamp; 
+        struct { 
             float pressure; 
             float temperature; 
         } pressureData; 
@@ -105,25 +127,26 @@
             float y; 
             float z; 
         } magneticField; 
+        float temperature; 
     }  fLatestMagnetometerSample;
-    /* Warning: unhandled struct encoding: '{Dispatcher=^^?@}' */ struct Dispatcher { int (**x1)(); id x2; } * fMagnetometerDispatcher;
+    struct Dispatcher { int (**x1)(); id x2; } * fMagnetometerDispatcher;
     id /* block */  fMagnetometerHandler;
     NSOperationQueue * fMagnetometerQueue;
     double  fMagnetometerUpdateInterval;
     int (* fPrivateAccelerometerDataCallback;
     void * fPrivateAccelerometerDataCallbackInfo;
-    /* Warning: unhandled struct encoding: '{Dispatcher=^^?@}' */ struct Dispatcher { int (**x1)(); id x2; } * fPrivateAccelerometerDataDispatcher;
+    struct Dispatcher { int (**x1)(); id x2; } * fPrivateAccelerometerDataDispatcher;
     int (* fPrivateDeviceMotionCallback;
     void * fPrivateDeviceMotionCallbackInfo;
-    /* Warning: unhandled struct encoding: '{Dispatcher=^^?@}' */ struct Dispatcher { int (**x1)(); id x2; } * fPrivateDeviceMotionDispatcher;
-    /* Warning: unhandled struct encoding: '{Dispatcher=^^?@}' */ struct Dispatcher { int (**x1)(); id x2; } * fPrivateDeviceMotionSensorStatusDispatcher;
+    struct Dispatcher { int (**x1)(); id x2; } * fPrivateDeviceMotionDispatcher;
+    struct Dispatcher { int (**x1)(); id x2; } * fPrivateDeviceMotionSensorStatusDispatcher;
     bool  fPrivateDeviceMotionUse9Axis;
     int (* fPrivateGyroDataCallback;
     void * fPrivateGyroDataCallbackInfo;
-    /* Warning: unhandled struct encoding: '{Dispatcher=^^?@}' */ struct Dispatcher { int (**x1)(); id x2; } * fPrivateGyroDataDispatcher;
+    struct Dispatcher { int (**x1)(); id x2; } * fPrivateGyroDataDispatcher;
     int (* fPrivateMagnetometerDataCallback;
     void * fPrivateMagnetometerDataCallbackInfo;
-    /* Warning: unhandled struct encoding: '{Dispatcher=^^?@}' */ struct Dispatcher { int (**x1)(); id x2; } * fPrivateMagnetometerDataDispatcher;
+    struct Dispatcher { int (**x1)(); id x2; } * fPrivateMagnetometerDataDispatcher;
     int (* fPrivateNotificationCallback;
     void * fPrivateNotificationCallbackInfo;
     int  fPrivatePowerConservationMode;
@@ -140,7 +163,6 @@
             struct CLIspDataVisitor {} *__value_; 
         } __ptr_; 
     }  fSidebandVisitor;
-    struct __CFRunLoopTimer { } * fWatchdogTimer;
 }
 
 @property (nonatomic, retain) NSOperationQueue *fDeviceMotionLiteClientQueue;

@@ -14,6 +14,7 @@
 @property (nonatomic, readonly) int legacyIdentifier;
 @property (readonly) Class superclass;
 
++ (id)os_log;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;

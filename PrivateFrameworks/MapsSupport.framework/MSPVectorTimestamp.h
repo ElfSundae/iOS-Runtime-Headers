@@ -17,6 +17,7 @@
 - (id)_initWithTimestampValues:(id)arg1;
 - (id)_timestampValues;
 - (bool)compare:(id)arg1 comparisonResult:(out long long*)arg2;
+- (long long)compare:(id)arg1 isComparable:(out bool*)arg2;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

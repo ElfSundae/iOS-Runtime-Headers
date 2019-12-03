@@ -17,6 +17,7 @@
 + (bool)isInternalInstall;
 + (bool)isNano;
 + (id)sanitizeEventInfoForLogging:(id)arg1;
++ (bool)supportBargeIn;
 + (bool)supportExternalPhraseSpotter;
 + (bool)supportPremiumAssets;
 + (bool)supportTTS;

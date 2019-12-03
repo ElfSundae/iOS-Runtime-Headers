@@ -11,21 +11,31 @@
     bool  _arrowVisible;
     long long  _backgroundStyle;
     UIVisualEffectView * _blurView;
+    UIColor * _contentBlendingColor;
     bool  _debugMode;
     UIView * _leftCapView;
+    UIView * _maskView;
     UIColor * _popoverBackgroundColor;
     bool  _popoverBackgroundColorIsOpaque;
+    long long  _requestedBackgroundStyle;
     UIView * _rightCapView;
+    bool  _wasPinned;
     bool  useShortMode;
+    UIView * viewToMaskWhenContentExtendsOverArrow;
 }
 
 @property (nonatomic, copy) UIColor *arrowBackgroundColor;
+@property (nonatomic, readonly) UIView *arrowView;
 @property (getter=isArrowVisible, nonatomic) bool arrowVisible;
 @property (nonatomic) long long backgroundStyle;
 @property (nonatomic, readonly) UIColor *contentBlendingColor;
 @property (getter=isDebugModeEnabled, nonatomic) bool debugModeEnabled;
+@property (nonatomic, readonly) bool hasComponentViews;
+@property (nonatomic, readonly) UIView *leftCapView;
 @property (nonatomic, copy) UIColor *popoverBackgroundColor;
+@property (nonatomic, readonly) UIView *rightCapView;
 @property (nonatomic) bool useShortMode;
+@property (nonatomic) UIView *viewToMaskWhenContentExtendsOverArrow;
 
 + (double)arrowBase;
 + (double)arrowHeight;
@@ -33,21 +43,26 @@
 
 - (void).cxx_destruct;
 - (void)_configureEffectView;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_contentViewFrame;
 - (void)_layoutArrowViewsLeftOrRight;
 - (void)_layoutArrowViewsNone;
 - (void)_layoutArrowViewsUpOrDown;
 - (void)_loadNecessaryViews;
-- (bool)_needsSeperateBlending;
 - (void)_removeEffectView;
+- (void)_resetComponentViews;
+- (long long)_resolvedBackgroundStyle;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_shadowInsets;
 - (struct CGSize { double x1; double x2; })_shadowOffset;
 - (double)_shadowOpacity;
 - (id)_shadowPath;
 - (double)_shadowRadius;
+- (bool)_shouldUseEqualContentInsetsOnAllSides;
+- (void)_updateBackgroundStyle;
 - (void)_updateChrome;
 - (id)arrowBackgroundColor;
 - (unsigned long long)arrowDirection;
 - (double)arrowOffset;
+- (id)arrowView;
 - (id)backgroundEffect;
 - (long long)backgroundStyle;
 - (id)contentBlendingColor;
@@ -60,12 +75,15 @@
 - (bool)isRightArrowPinnedToBottom;
 - (bool)isRightArrowPinnedToTop;
 - (void)layoutSubviews;
+- (id)leftCapView;
 - (double)maxNonPinnedOffset;
 - (double)minNonPinnedOffset;
 - (void)motionBegan:(long long)arg1 withEvent:(id)arg2;
 - (void)motionCancelled:(long long)arg1 withEvent:(id)arg2;
 - (void)motionEnded:(long long)arg1 withEvent:(id)arg2;
 - (id)popoverBackgroundColor;
+- (id)rightCapView;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })safeAreaInsetsForContentView;
 - (void)setArrowBackgroundColor:(id)arg1;
 - (void)setArrowDirection:(unsigned long long)arg1;
 - (void)setArrowOffset:(double)arg1;
@@ -76,11 +94,13 @@
 - (void)setDebugModeEnabled:(bool)arg1;
 - (void)setPopoverBackgroundColor:(id)arg1;
 - (void)setUseShortMode:(bool)arg1;
+- (void)setViewToMaskWhenContentExtendsOverArrow:(id)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (bool)useShortMode;
+- (id)viewToMaskWhenContentExtendsOverArrow;
 - (bool)wouldPinForOffset:(double)arg1;
 
 @end

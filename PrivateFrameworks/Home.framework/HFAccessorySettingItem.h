@@ -2,10 +2,11 @@
    Image: /System/Library/PrivateFrameworks/Home.framework/Home
  */
 
-@interface HFAccessorySettingItem : HFItem <HFAccessorySettingItemProtocol> {
+@interface HFAccessorySettingItem : HFItem <HFHomeKitSettingItemProtocol> {
     HFAccessorySettingsEntity * _entity;
-    <HFMediaProfileContainer> * _mediaProfileContainer;
-    HMAccessorySetting * _setting;
+    <HFHomeKitSettingsVendor> * _homeKitSettingsVendor;
+    HMSetting * _setting;
+    NSDictionary * _usageOptions;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -13,10 +14,11 @@
 @property (nonatomic, retain) HFAccessorySettingsEntity *entity;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) <HFHomeKitObject> *homeKitObject;
-@property (nonatomic, retain) <HFMediaProfileContainer> *mediaProfileContainer;
-@property (nonatomic, retain) HMAccessorySetting *setting;
+@property (nonatomic, retain) <HFHomeKitSettingsVendor> *homeKitSettingsVendor;
+@property (nonatomic, retain) HMSetting *setting;
 @property (nonatomic, readonly) NSString *settingKeyPath;
 @property (readonly) Class superclass;
+@property (nonatomic, retain) NSDictionary *usageOptions;
 
 - (void).cxx_destruct;
 - (void)_decorateHiddenOrDisabled:(id)arg1;
@@ -28,14 +30,16 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)entity;
 - (id)homeKitObject;
-- (id)initWithMediaProfileContainer:(id)arg1 setting:(id)arg2;
-- (id)mediaProfileContainer;
+- (id)homeKitSettingsVendor;
+- (id)initWithHomeKitSettingsVendor:(id)arg1 usageOptions:(id)arg2 setting:(id)arg3;
 - (void)setEntity:(id)arg1;
-- (void)setMediaProfileContainer:(id)arg1;
+- (void)setHomeKitSettingsVendor:(id)arg1;
 - (void)setSetting:(id)arg1;
+- (void)setUsageOptions:(id)arg1;
 - (id)setting;
 - (id)settingKeyPath;
 - (id)updateValue:(id)arg1;
+- (id)usageOptions;
 - (id)value;
 
 @end

@@ -2,11 +2,11 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXPeopleCandidateWidget : NSObject <PXChangeObserver, PXWidget> {
+@interface PXPeopleCandidateWidget : NSObject <PXChangeObserver, PXUIWidget> {
     NSLayoutConstraint * _avatarToLeadingConstraint;
     UIView * _contentView;
     PXPhotosDetailsContext * _context;
-    PXUIPeopleSuggestionDataSource * _dataSource;
+    PXPeopleSuggestionDataSource * _dataSource;
     bool  _dismissed;
     UILabel * _label;
     UIButton * _notNowButton;
@@ -23,7 +23,7 @@
 @property (nonatomic, retain) UIView *contentView;
 @property (nonatomic, readonly) long long contentViewAnchoringType;
 @property (nonatomic, retain) PXPhotosDetailsContext *context;
-@property (nonatomic, retain) PXUIPeopleSuggestionDataSource *dataSource;
+@property (nonatomic, retain) PXPeopleSuggestionDataSource *dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) bool dismissed;
@@ -38,6 +38,7 @@
 @property (nonatomic, readonly) NSString *localizedTitle;
 @property (nonatomic) UIButton *notNowButton;
 @property (nonatomic, retain) NSLayoutConstraint *notNowToTrailingConstraint;
+@property (nonatomic, retain) PXOneUpPresentation *oneUpPresentation;
 @property (nonatomic, retain) PHPerson *person;
 @property (getter=isSelecting, nonatomic) bool selecting;
 @property (nonatomic, readonly) PXSectionedSelectionManager *selectionManager;
@@ -57,6 +58,7 @@
 - (void)contentSizeCategoryDidChange:(id)arg1;
 - (id)contentView;
 - (id)context;
+- (void)controllerTraitCollectionDidChangeFrom:(id)arg1 to:(id)arg2;
 - (id)dataSource;
 - (bool)dismissed;
 - (bool)hasContentForCurrentInput;

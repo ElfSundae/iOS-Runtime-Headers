@@ -11,7 +11,7 @@
 - (SXFill *)fill;
 - (SXComponentMask *)mask;
 - (double)opacity;
-- (SXShadow *)shadow;
+- (SXComponentShadow *)shadow;
 - (SXDataTableStyle *)tableStyle;
 - (unsigned long long)traits;
 

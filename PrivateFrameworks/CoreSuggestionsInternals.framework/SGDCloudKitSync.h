@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CoreSuggestionsInternals.framework/CoreSuggestionsInternals
  */
 
-@interface SGDCloudKitSync : NSObject <APSConnectionDelegate, SGJournalCalendarObserver> {
+@interface SGDCloudKitSync : NSObject <APSConnectionDelegate> {
     SGFuture * _accountInfoFuture;
     APSConnection * _apsConnection;
     id /* block */  _callback;
@@ -17,6 +17,7 @@
     NSOperation * _inProgressDeleteZoneOperation;
     NSOperation * _inProgressFetchNewEntitiesOperation;
     NSOperation * _inProgressProcureSaltOperation;
+    _PASKVOHandler * _kvoHandler;
     bool  _noZone;
     NSOperationQueue * _opQueue;
     NSMutableArray * _operationsToAddToOpQueue;
@@ -25,6 +26,7 @@
     bool  _processingStateChanges;
     NSError * _procureSaltError;
     NSObject<OS_dispatch_queue> * _queue;
+    bool  _readyForNewEntities;
     bool  _requestedFetchNewEntitiesWhileRequestAlreadyInFlight;
     long long  _suspendCount;
 }
@@ -34,6 +36,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)_sharedInstanceConfigurationQueue;
++ (id)apsEnvironmentStringForContainer:(id)arg1;
++ (void)setSharedInstanceConfigurationBlock:(id /* block */)arg1;
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
@@ -47,9 +52,7 @@
 - (id)addDeleteAndRecreateZoneOperation;
 - (id)addDeleteZoneAttemptOperationWithRetries:(unsigned long long)arg1;
 - (id)addDeleteZoneOperation;
-- (void)addEntity:(id)arg1;
-- (void)addEvent:(id)arg1;
-- (void)addEvents:(id)arg1;
+- (void)addEntity:(id)arg1 withParentEntity:(id)arg2;
 - (id)addFetchNewEntitiesAttemptOperationWithRetries:(unsigned long long)arg1;
 - (id)addFetchNewEntitiesOperation;
 - (id)addManateeSanityCheckOperation;
@@ -59,15 +62,9 @@
 - (id)addProcureSaltOperation;
 - (id)addWriteOperationForRecordGetter:(id /* block */)arg1 deleteGetter:(id /* block */)arg2 withRetries:(unsigned long long)arg3;
 - (id)addWriteOperationForRecordGetter:(id /* block */)arg1 deleteGetter:(id /* block */)arg2 withRetries:(unsigned long long)arg3 isFirstTry:(bool)arg4;
-- (id)apsEnvironmentStringForContainer:(id)arg1;
-- (void)calendarDeleted;
-- (void)cancelEvent:(id)arg1;
-- (void)cancelEvents:(id)arg1;
 - (id)ckErrorForRecordId:(id)arg1 inError:(id)arg2;
 - (id)ckErrorForRecordZoneId:(id)arg1 inError:(id)arg2;
 - (void)clearErrors;
-- (void)confirmEventFromOtherDevice:(id)arg1;
-- (void)confirmEventFromThisDevice:(id)arg1;
 - (void)connection:(id)arg1 didChangeConnectedStatus:(bool)arg2;
 - (void)connection:(id)arg1 didFailToSendOutgoingMessage:(id)arg2 error:(id)arg3;
 - (void)connection:(id)arg1 didReceiveIncomingMessage:(id)arg2;
@@ -84,18 +81,16 @@
 - (void)failSalt;
 - (id)getUnderlyingError:(id)arg1;
 - (id)init;
-- (void)invokeNewEntitiesCallbackWithEntity:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
-- (void)orphanEvent:(id)arg1;
+- (id)invokeNewEntitiesCallbackWithEntity:(id)arg1;
 - (bool)pauseIfNeededAndReturnRetryEligibilityForError:(id)arg1;
+- (id)privacySalt;
 - (void)processStateChanges;
 - (id)recordZoneId;
-- (void)rejectEventFromOtherDevice:(id)arg1;
-- (void)rejectEventFromThisDevice:(id)arg1;
 - (void)resume;
 - (void)setDatabase:(id)arg1;
 - (void)setDeleteAllSyncedItemsCallback:(id /* block */)arg1;
 - (void)setNewEntitiesCallback:(id /* block */)arg1;
+- (void)setReadyForNewEntities:(bool)arg1;
 - (bool)shouldRecreateZoneForRecordError:(id)arg1 operationError:(id)arg2;
 - (id)shouldRemoveEventsFromEventKit;
 - (void)suspend;

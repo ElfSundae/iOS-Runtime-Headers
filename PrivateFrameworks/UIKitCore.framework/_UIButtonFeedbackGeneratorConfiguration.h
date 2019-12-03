@@ -5,7 +5,7 @@
 @interface _UIButtonFeedbackGeneratorConfiguration : _UIFeedbackGeneratorUserInteractionDrivenConfiguration
 
 + (id)defaultConfiguration;
-+ (id)destructiveConfiguration;
++ (id)prominentConfiguration;
 
 - (long long)requiredSupportLevel;
 

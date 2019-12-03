@@ -2,9 +2,11 @@
    Image: /System/Library/PrivateFrameworks/SampleAnalysis.framework/SampleAnalysis
  */
 
-@interface SAKernelCache : NSObject <SAJSONSerialization> {
+@interface SAKernelCache : NSObject <SAJSONSerialization, SALibraryCache> {
     NSArray * _binaryLoadInfos;
     unsigned long long  _loadAddress;
+    unsigned long long  _textSegmentsEndAddress;
+    unsigned long long  _textSegmentsStartAddress;
     NSUUID * _uuid;
 }
 

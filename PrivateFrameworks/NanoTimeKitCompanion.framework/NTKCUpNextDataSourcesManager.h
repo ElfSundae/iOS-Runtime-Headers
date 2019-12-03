@@ -4,52 +4,50 @@
 
 @interface NTKCUpNextDataSourcesManager : NSObject {
     NSObject<OS_dispatch_queue> * _fetchQueue;
-    NSSet * _firstPartyDataSourceIdentifiers;
-    NSSet * _firstPartyDonatedApplicationIdentifiers;
+    NSArray * _firstPartyDataSourceEntries;
     <NTKCUpNextDataSourcesManagerIdentifiersDelegate> * _firstPartyIdentifiersDelegate;
-    NSSet * _sportsDataSourceIdentifiers;
+    RERelevanceEngine * _relevanceEngine;
+    NSArray * _sportsDataSourceEntries;
     <NTKCUpNextDataSourcesManagerIdentifiersDelegate> * _sportsIdentifiersDelegate;
-    NSSet * _thirdPartyDataSourceIdentifiers;
-    NSSet * _thirdPartyDonatedApplicationIdentifiers;
+    NSArray * _thirdPartyDataSourceEntries;
     <NTKCUpNextDataSourcesManagerIdentifiersDelegate> * _thirdPartyIdentifiersDelegate;
     unsigned int  _watchVersion;
 }
 
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *fetchQueue;
-@property (copy) NSSet *firstPartyDataSourceIdentifiers;
-@property (copy) NSSet *firstPartyDonatedApplicationIdentifiers;
+@property (copy) NSArray *firstPartyDataSourceEntries;
 @property (nonatomic) <NTKCUpNextDataSourcesManagerIdentifiersDelegate> *firstPartyIdentifiersDelegate;
-@property (copy) NSSet *sportsDataSourceIdentifiers;
+@property (copy) NSArray *sportsDataSourceEntries;
 @property (nonatomic) <NTKCUpNextDataSourcesManagerIdentifiersDelegate> *sportsIdentifiersDelegate;
-@property (copy) NSSet *thirdPartyDataSourceIdentifiers;
-@property (copy) NSSet *thirdPartyDonatedApplicationIdentifiers;
+@property (copy) NSArray *thirdPartyDataSourceEntries;
 @property (nonatomic) <NTKCUpNextDataSourcesManagerIdentifiersDelegate> *thirdPartyIdentifiersDelegate;
 @property (nonatomic, readonly) unsigned int watchVersion;
 
 - (void).cxx_destruct;
 - (void)_appsChangedNotification:(id)arg1;
 - (void)_buildRows;
-- (void)_dataSourceChangedNotification:(id)arg1;
-- (id)_identifiersForThirdParyAppsThatSupportActivitesOrIntents;
+- (void)_dataSourcesChangedNotification:(id)arg1;
+- (id)_dedupeAndSortFirstPartyDataSourcesFromIdentifiers:(id)arg1;
+- (void)_dedupeAndSortThirdPartyDataSourcesFromIdentifiers:(id)arg1 completion:(id /* block */)arg2;
+- (void)_fetchThirdPartyBundleIdentifiersWithCompletion:(id /* block */)arg1;
+- (id)_firstPartyDataSourceEntries;
+- (void)_phoneDedupeFromIdentifiers:(id)arg1 completion:(id /* block */)arg2;
+- (id)_preGraceThirdPartyBundleIdentifiers;
 - (void)dealloc;
 - (void)fetchIdentifiers;
 - (id)fetchQueue;
-- (id)firstPartyDataSourceIdentifiers;
-- (id)firstPartyDonatedApplicationIdentifiers;
+- (id)firstPartyDataSourceEntries;
 - (id)firstPartyIdentifiersDelegate;
 - (id)initWatchVersion:(unsigned int)arg1;
-- (void)setFirstPartyDataSourceIdentifiers:(id)arg1;
-- (void)setFirstPartyDonatedApplicationIdentifiers:(id)arg1;
+- (void)setFirstPartyDataSourceEntries:(id)arg1;
 - (void)setFirstPartyIdentifiersDelegate:(id)arg1;
-- (void)setSportsDataSourceIdentifiers:(id)arg1;
+- (void)setSportsDataSourceEntries:(id)arg1;
 - (void)setSportsIdentifiersDelegate:(id)arg1;
-- (void)setThirdPartyDataSourceIdentifiers:(id)arg1;
-- (void)setThirdPartyDonatedApplicationIdentifiers:(id)arg1;
+- (void)setThirdPartyDataSourceEntries:(id)arg1;
 - (void)setThirdPartyIdentifiersDelegate:(id)arg1;
-- (id)sportsDataSourceIdentifiers;
+- (id)sportsDataSourceEntries;
 - (id)sportsIdentifiersDelegate;
-- (id)thirdPartyDataSourceIdentifiers;
-- (id)thirdPartyDonatedApplicationIdentifiers;
+- (id)thirdPartyDataSourceEntries;
 - (id)thirdPartyIdentifiersDelegate;
 - (unsigned int)watchVersion;
 

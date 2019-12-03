@@ -8,6 +8,7 @@
 + (bool)supportsSecureCoding;
 
 - (id)autorelease;
+- (Class)classForCoder;
 - (id)init;
 - (id)initWithBool:(bool)arg1;
 - (id)initWithChar:(BOOL)arg1;

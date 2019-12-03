@@ -6,29 +6,27 @@
 @required
 
 - (float)appLaunch;
-- (long long)collectionEndTimestamp;
-- (long long)collectionStartTimestamp;
-- (int)configuredLookbackTimeInDays;
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;
 - (NSData *)jsonData;
-- (float)onDevicePersonalData;
+- (float)onDeviceAddressBookData;
+- (float)onDeviceOtherPersonalData;
 - (float)other;
 - (float)parsec;
 - (float)punchout;
+- (float)querySuggestion;
 - (void)setAppLaunch:(float)arg1;
-- (void)setCollectionEndTimestamp:(long long)arg1;
-- (void)setCollectionStartTimestamp:(long long)arg1;
-- (void)setConfiguredLookbackTimeInDays:(int)arg1;
-- (void)setOnDevicePersonalData:(float)arg1;
+- (void)setOnDeviceAddressBookData:(float)arg1;
+- (void)setOnDeviceOtherPersonalData:(float)arg1;
 - (void)setOther:(float)arg1;
 - (void)setParsec:(float)arg1;
 - (void)setPunchout:(float)arg1;
+- (void)setQuerySuggestion:(float)arg1;
+- (void)setSiriSuggestions:(float)arg1;
 - (void)setThirdPartyInAppContent:(float)arg1;
 - (void)setTotalEngagements:(int)arg1;
-- (void)setTotalSessions:(int)arg1;
+- (float)siriSuggestions;
 - (float)thirdPartyInAppContent;
 - (int)totalEngagements;
-- (int)totalSessions;
 
 @end

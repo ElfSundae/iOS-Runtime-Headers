@@ -19,10 +19,12 @@
 - (void)dealloc;
 - (id)endpoint;
 - (void)getActionPredictionsForCandidateBundleIdentifiers:(id)arg1 candidateActionTypes:(id)arg2 consumerType:(unsigned long long)arg3 consumerSubType:(unsigned char)arg4 limit:(int)arg5 reply:(id /* block */)arg6;
+- (void)getActionPredictionsForContext:(id)arg1 includeBundleIds:(id)arg2 excludeBundleIds:(id)arg3 includeActionTypes:(id)arg4 excludeActionTypes:(id)arg5 limit:(unsigned long long)arg6 reply:(id /* block */)arg7;
 - (id)init;
 - (id)initAnonymousListener;
 - (id)initWithListener:(id)arg1 checkEntitlements:(bool)arg2;
 - (bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)sendFeedbackWithResponse:(id)arg1;
+- (void)shouldDisplayDailyRoutineForContext:(id)arg1 reply:(id /* block */)arg2;
 
 @end

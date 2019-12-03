@@ -7,7 +7,7 @@
     CAAnimation * _apertureAspectAnimation;
     unsigned long long  _apertureBladeCount;
     float  _barrelDistortion;
-    struct RTCamera { int (**x1)(); unsigned long long x2; unsigned long long x3; float x4; float x5; int x6; float *x7; id **x8; /* Warning: Unrecognized filer type: '?' using 'void*' */ void*x9; void*x10; void*x11[4]; } * _camera;
+    struct RTCamera { int (**x1)(); unsigned long long x2; unsigned long long x3; float x4; float x5; int x6; float *x7; id **x8; struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x_9_1_1[4]; } x9; struct RTRaySegment {} *x10; float x11; float x12; float x13; float x14; float x15; float x16; float x17; float x18; float x19; float x20; } * _camera;
     float  _chromaticAberration;
     float  _fStop;
     CAAnimation * _fStopAnimation;
@@ -90,7 +90,7 @@
 - (unsigned long long)projection;
 - (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })projectionMatrix;
 - (void)rayToforViewPort;
-- (struct RTCamera { int (**x1)(); unsigned long long x2; unsigned long long x3; float x4; float x5; int x6; float *x7; id **x8; /* Warning: Unrecognized filer type: '?' using 'void*' */ void*x9; void*x10; void*x11[4]; }*)rtCamera;
+- (struct RTCamera { int (**x1)(); unsigned long long x2; unsigned long long x3; float x4; float x5; int x6; float *x7; id **x8; struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x_9_1_1[4]; } x9; struct RTRaySegment {} *x10; float x11; float x12; float x13; float x14; float x15; float x16; float x17; float x18; float x19; float x20; }*)rtCamera;
 - (float)sensorAspect;
 - (void)sensorEnlargement;
 - (void)sensorShift;

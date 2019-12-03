@@ -14,14 +14,13 @@
 @property (readonly) Class superclass;
 @property (nonatomic) NSXPCConnection *xpcConnection;
 
-- (void)_doinstallApplication:(id)arg1 atURL:(id)arg2 withOptions:(id)arg3 installType:(unsigned long long)arg4 reply:(id /* block */)arg5;
+- (void).cxx_destruct;
+- (void)_doinstallApplication:(id)arg1 atURL:(id)arg2 withOptions:(id)arg3 installType:(unsigned long long)arg4 notificationJournaller:(id)arg5 reply:(id /* block */)arg6;
 - (void)_douninstallApplication:(id)arg1 withOptions:(id)arg2 uninstallType:(unsigned long long)arg3 reply:(id /* block */)arg4;
-- (void)_postProcessingForApp:(id)arg1 notification:(int)arg2;
+- (void)_postProcessingForApp:(id)arg1 type:(id)arg2 notification:(int)arg3;
 - (void)_preflightAppDeletion:(id)arg1;
 - (id)databaseQueue;
-- (void)dealloc;
 - (bool)dispatchRegistration:(id)arg1;
-- (int)getNotificationTypeForOperation:(unsigned long long)arg1;
 - (void)installApplication:(id)arg1 atURL:(id)arg2 withOptions:(id)arg3 installType:(unsigned long long)arg4 reply:(id /* block */)arg5;
 - (id)installPackage:(id)arg1 withIdentifier:(id)arg2 options:(id)arg3 error:(id*)arg4;
 - (bool)registerBundle:(id)arg1 withOptions:(id)arg2;

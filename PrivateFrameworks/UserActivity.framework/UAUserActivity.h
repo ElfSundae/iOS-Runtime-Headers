@@ -49,6 +49,7 @@
     bool  _sendToServerPending;
     unsigned long long  _suggestedActionType;
     bool  _supportsContinuationStreams;
+    NSString * _targetContentIdentifier;
     NSString * _teamIdentifier;
     NSString * _title;
     NSString * _typeIdentifier;
@@ -106,6 +107,7 @@
 @property (readonly) unsigned long long suggestedActionType;
 @property (readonly) Class superclass;
 @property bool supportsContinuationStreams;
+@property (copy) NSString *targetContentIdentifier;
 @property (copy) NSString *teamIdentifier;
 @property (copy) NSString *title;
 @property (copy) NSString *typeIdentifier;
@@ -285,6 +287,7 @@
 - (void)setStreamsData:(id)arg1;
 - (void)setSubtitle:(id)arg1;
 - (void)setSupportsContinuationStreams:(bool)arg1;
+- (void)setTargetContentIdentifier:(id)arg1;
 - (void)setTeamIdentifier:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (void)setTypeIdentifier:(id)arg1;
@@ -296,6 +299,7 @@
 - (id)subtitle;
 - (unsigned long long)suggestedActionType;
 - (bool)supportsContinuationStreams;
+- (id)targetContentIdentifier;
 - (id)teamID;
 - (id)teamIdentifier;
 - (void)tellDaemonAboutNewLSUserActivity;

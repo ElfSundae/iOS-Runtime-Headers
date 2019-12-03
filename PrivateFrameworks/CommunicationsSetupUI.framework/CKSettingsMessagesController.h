@@ -2,13 +2,14 @@
    Image: /System/Library/PrivateFrameworks/CommunicationsSetupUI.framework/CommunicationsSetupUI
  */
 
-@interface CKSettingsMessagesController : CNFRegListController <AKAppleIDAuthenticationDelegate, CNFRegWizardControllerDelegate, IMCloudKitEventHandler> {
+@interface CKSettingsMessagesController : CNFRegListController <AKAppleIDAuthenticationDelegate, CKOnboardingControllerDelegate, CNFRegWizardControllerDelegate, CNMeCardSharingSettingsViewControllerDelegate, IMCloudKitEventHandler> {
     id  _beginMappingID;
     CKNSExtension * _ckExtension;
     IMCTXPCServiceSubscriptionInfo * _ctSubscriptionInfo;
     CKFilteringListController * _filteringController;
     CKMultipleCTSubscriptionsController * _mmsAllowsGroupMessagingController;
     CKMultipleCTSubscriptionsController * _mmsMessagingController;
+    CKOnboardingController * _onboardingController;
     int  _profileToken;
     bool  _showingChildViewController;
 }
@@ -22,20 +23,26 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) CKMultipleCTSubscriptionsController *mmsAllowsGroupMessagingController;
 @property (nonatomic, retain) CKMultipleCTSubscriptionsController *mmsMessagingController;
+@property (nonatomic, retain) CKOnboardingController *onboardingController;
 @property (readonly) Class superclass;
 
 + (id)currentKeepMessages;
 + (bool)currentMessageAutoKeepForType:(int)arg1;
 + (int)currentMessageAutoKeepOptionForType:(int)arg1;
++ (id)removeFirstPartyExtensionFromArray:(id)arg1;
 
 - (void).cxx_destruct;
 - (bool)_allAccountsAreDeactivated;
 - (void)_clearMessagesAppExtensionSalt;
+- (bool)_imageForkedFromMeCard;
 - (bool)_isMadridAccountOperational;
 - (bool)_isMadridSwitchOn;
 - (bool)_isRaiseGestureSupported;
 - (bool)_isSMSDevice;
 - (id)_madridSettingsController;
+- (unsigned long long)_meCardSharingAudience;
+- (bool)_meCardSharingEnabled;
+- (void)_setUpBusinessChatGroupSpecifiers:(id)arg1;
 - (void)_setupAccountHandlers;
 - (void)_setupAccountHandlersForDisabling;
 - (void)_setupMMSGroupSpecifiers:(id)arg1 wantsMMSBasicGroup:(bool)arg2;
@@ -43,7 +50,9 @@
 - (void)_showAuthKitSignInIfNecessary;
 - (void)_showMadridSetupIfNecessary;
 - (void)_showMadridSetupIfNecessary:(bool)arg1;
-- (void)_showPrivacySheet:(id)arg1;
+- (void)_showPrivacySheetForBusinessChat:(id)arg1;
+- (void)_showPrivacySheetForiMessageFaceTime:(id)arg1;
+- (void)_showSetupMeCardAlert;
 - (void)_showSignInController;
 - (id)_smsRelayDevicesController;
 - (void)_startListeningForProfileChanges;
@@ -76,7 +85,8 @@
 - (id)getAccountSummaryForSpecifier:(id)arg1;
 - (id)getAudioMessageAutoKeep:(id)arg1;
 - (id)getKeepMessages:(id)arg1;
-- (id)getMessagesAccounts:(id)arg1;
+- (id)getNameAndPhotoSharingFooterText;
+- (id)getNameAndPhotoSharingSpecifierSummary:(id)arg1;
 - (id)getPreviewTranscodingEnabled:(id)arg1;
 - (id)getRaiseToListenEnabled:(id)arg1;
 - (id)getSMSRelayDevicesSummary:(id)arg1;
@@ -88,8 +98,8 @@
 - (id)isMadridEnabled:(id)arg1;
 - (bool)isPersonalCompanionEnabled;
 - (id)isSiriToneNotificationEnabled:(id)arg1;
+- (id)junkConversationsRowIdentifier;
 - (id)logName;
-- (id)madridAccountsMultipleSubscriptionsSpecifierIdentifiers;
 - (id)madridAccountsSpecifierIdentifiers;
 - (id)madridSigninButtonTextForSpecifier:(id)arg1;
 - (id)madridSigninSpecifiers;
@@ -98,8 +108,13 @@
 - (void)messageFilteringTapped:(id)arg1;
 - (id)mmsAllowsGroupMessagingController;
 - (id)mmsMessagingController;
+- (void)nameAndPhotoSharingForSpecifier:(id)arg1;
+- (id)nameAndPhotoSharingSpecifiers;
 - (void)newCarrierNotification;
 - (void)notifyThatConversationFilteringChanged;
+- (id)onboardingController;
+- (void)onboardingControllerDidFinish:(id)arg1;
+- (id)presentingViewControllerForOnboardingController:(id)arg1;
 - (id)raiseToListenSpecifierIdentifiers;
 - (id)readReceiptSpecifierIdentifiers;
 - (id)sendAsSMSIdentifiers;
@@ -113,15 +128,19 @@
 - (void)setKeepMessages:(id)arg1 specifier:(id)arg2;
 - (void)setMMSEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setMadridEnabled:(id)arg1 specifier:(id)arg2;
-- (void)setMessagesAccounts:(id)arg1 specifier:(id)arg2;
 - (void)setMmsAllowsGroupMessagingController:(id)arg1;
 - (void)setMmsMessagingController:(id)arg1;
+- (void)setOnboardingController:(id)arg1;
 - (void)setPreviewTranscodingEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setRaiseToListenEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setReadReceiptsEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setSiriToneNotificationEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setSpecifierLoading:(id)arg1 loading:(bool)arg2 animated:(bool)arg3;
 - (void)setWillSendGroupMMS:(id)arg1 specifier:(id)arg2;
+- (void)sharingSettingsViewController:(id)arg1 didSelectSharingAudience:(unsigned long long)arg2;
+- (void)sharingSettingsViewController:(id)arg1 didUpdateSharingState:(bool)arg2;
+- (void)sharingSettingsViewController:(id)arg1 didUpdateWithSharingResult:(id)arg2;
+- (void)sharingSettingsViewControllerDidUpdateContact:(id)arg1;
 - (bool)shouldReloadSpecifiersOnResume;
 - (bool)shouldShowAudioMessageSettings;
 - (bool)shouldShowBlacklistSettings;
@@ -129,16 +148,21 @@
 - (bool)shouldShowContactPhotoSettings;
 - (bool)shouldShowDeliveryReceipts;
 - (bool)shouldShowGenericSettings;
-- (bool)shouldShowIDSSubscriptions;
+- (bool)shouldShowJunkConversationsRow;
 - (bool)shouldShowMadridAccounts;
 - (bool)shouldShowMadridSignin;
 - (bool)shouldShowMadridSwitch;
+- (bool)shouldShowNicknames;
 - (bool)shouldShowRaiseToListenSwitch;
 - (bool)shouldShowReadReceipts;
 - (bool)shouldShowSMSRelaySettings;
 - (bool)shouldShowSendAsSMS;
 - (bool)shouldShowSiriSettings;
 - (bool)shouldShowiMessageFilteringSettings:(id)arg1;
+- (void)showAccountsMismatchedAlertForNicknames;
+- (void)showMeCardViewControllerWithNickname:(id)arg1;
+- (void)showMultiplePhoneNumbersAlerForNicknames;
+- (void)showNicknameOnboardingController;
 - (id)siriSettingsIdentifiers;
 - (id)smsRelaySettingsSpecifierIdentifiers;
 - (id)spamFilteringSpecifierIdentifiers;

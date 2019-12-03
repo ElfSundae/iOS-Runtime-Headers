@@ -3,6 +3,7 @@
  */
 
 @interface FMClient.VoiceAssistantDeviceName : NSObject <NSSecureCoding> {
+    void $__lazy_storage_$_syncAnchor;
     void deviceName;
     void ownerFirstName;
     void ownerLastName;
@@ -13,6 +14,7 @@
 @property (nonatomic, readonly) long long hash;
 @property (nonatomic, readonly) NSString *ownerFirstName;
 @property (nonatomic, readonly) NSString *ownerLastName;
+@property (nonatomic, copy) NSString *syncAnchor;
 
 + (bool)supportsSecureCoding;
 
@@ -27,5 +29,7 @@
 - (bool)isEqual:(id)arg1;
 - (id)ownerFirstName;
 - (id)ownerLastName;
+- (void)setSyncAnchor:(id)arg1;
+- (id)syncAnchor;
 
 @end

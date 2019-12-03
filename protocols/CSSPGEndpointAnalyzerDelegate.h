@@ -3,8 +3,9 @@
 
 @protocol CSSPGEndpointAnalyzerDelegate <NSObject>
 
-@required
+@optional
 
+- (void)spgEndpointAnalyzer:(CSSPGEndpointAnalyzer *)arg1 hasSilenceScoreEstimate:(double)arg2;
 - (void)spgEndpointAnalyzerDidDetectEndpoint:(CSSPGEndpointAnalyzer *)arg1;
 
 @end

@@ -2,44 +2,41 @@
    Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
  */
 
-@interface HMDRemoteDeviceInformation : HMFObject {
+@interface HMDRemoteDeviceInformation : HMFObject <HMFObject> {
     NSMutableArray * _confirmationHandlers;
     HMDDevice * _device;
-    NSMutableSet * _pendingPingIdentifiers;
-    bool  _pingConfirmed;
-    bool  _pinging;
+    <HMFLocking> * _lock;
     bool  _reachable;
     HMFTimer * _retryTimer;
-    bool  _shouldConfirm;
+    long long  _state;
 }
 
-@property (nonatomic, readonly) NSMutableArray *confirmationHandlers;
+@property (nonatomic, readonly, copy) NSArray *attributeDescriptions;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) HMDDevice *device;
-@property (nonatomic, readonly) NSMutableSet *pendingPingIdentifiers;
-@property (getter=isPingConfirmed, nonatomic) bool pingConfirmed;
-@property (getter=isPinging, nonatomic) bool pinging;
-@property (getter=isReachable, nonatomic) bool reachable;
+@property (readonly) unsigned long long hash;
+@property (readonly, copy) NSString *privateDescription;
+@property (readonly, copy) NSString *propertyDescription;
+@property (getter=isReachable) bool reachable;
 @property (nonatomic, retain) HMFTimer *retryTimer;
-@property (nonatomic) bool shouldConfirm;
+@property (readonly, copy) NSString *shortDescription;
+@property (readonly) long long state;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)attributeDescriptions;
+- (void)clearState:(long long)arg1;
 - (void)completeConfirmationsWithError:(id)arg1;
-- (id)confirmationHandlers;
-- (id)description;
 - (id)device;
 - (id)init;
 - (id)initWithDevice:(id)arg1;
-- (bool)isPingConfirmed;
-- (bool)isPinging;
 - (bool)isReachable;
-- (id)pendingPingIdentifiers;
 - (void)queueConfirmationHandler:(id /* block */)arg1 timeout:(double)arg2;
 - (id)retryTimer;
-- (void)setPingConfirmed:(bool)arg1;
-- (void)setPinging:(bool)arg1;
 - (void)setReachable:(bool)arg1;
 - (void)setRetryTimer:(id)arg1;
-- (void)setShouldConfirm:(bool)arg1;
-- (bool)shouldConfirm;
+- (void)setState:(long long)arg1;
+- (long long)state;
 
 @end

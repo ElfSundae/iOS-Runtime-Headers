@@ -4,6 +4,7 @@
 
 @interface MTKTextureLoaderKTX : MTKTextureLoaderData {
     NSData * _imageData;
+    bool  _packedRowStride;
     struct MTLPixelFormatInfo { 
         char *name; 
         unsigned int flags; 

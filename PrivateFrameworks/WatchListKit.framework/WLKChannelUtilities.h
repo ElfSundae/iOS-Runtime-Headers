@@ -4,6 +4,7 @@
 
 @interface WLKChannelUtilities : NSObject {
     NSObject<OS_dispatch_queue> * _accessQueue;
+    WLKChannelsResponse * _cachedResponse;
     NSDictionary * _channelsByBundleID;
     bool  _filtered;
 }

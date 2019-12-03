@@ -2,50 +2,51 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface UIScrollTestParameters : NSObject {
+@interface UIScrollTestParameters : NSObject <NSCopying> {
     int  _axis;
     id /* block */  _completionBlock;
-    NSString * _currentTest;
-    int  _delta;
+    double  _delta;
     CADisplayLink * _displayLink;
     id /* block */  _extraResultsBlock;
-    int  _iterations;
-    int  _scrollLength;
-    float  _startOffset;
+    long long  _iterations;
+    double  _length;
+    double  _startOffset;
+    NSString * _testName;
 }
 
 @property (nonatomic) int axis;
 @property (nonatomic, copy) id /* block */ completionBlock;
-@property (nonatomic, retain) NSString *currentTest;
-@property (nonatomic) int delta;
+@property (nonatomic) double delta;
 @property (nonatomic, retain) CADisplayLink *displayLink;
-@property (nonatomic, readonly) float endOffset;
+@property (nonatomic, readonly) double endOffset;
 @property (nonatomic, copy) id /* block */ extraResultsBlock;
-@property (nonatomic) int iterations;
-@property (nonatomic) int scrollLength;
-@property (nonatomic) float startOffset;
+@property (nonatomic) long long iterations;
+@property (nonatomic) double length;
+@property (nonatomic) double startOffset;
+@property (nonatomic, copy) NSString *testName;
 
 - (void).cxx_destruct;
 - (int)axis;
 - (id /* block */)completionBlock;
-- (id)currentTest;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
-- (int)delta;
+- (double)delta;
 - (id)displayLink;
-- (float)endOffset;
+- (double)endOffset;
 - (id /* block */)extraResultsBlock;
-- (id)initWithName:(id)arg1 iterations:(int)arg2 delta:(int)arg3 length:(int)arg4 startOffset:(float)arg5 scrollAxis:(int)arg6;
-- (int)iterations;
-- (int)scrollLength;
+- (id)init;
+- (long long)iterations;
+- (double)length;
 - (void)setAxis:(int)arg1;
 - (void)setCompletionBlock:(id /* block */)arg1;
-- (void)setCurrentTest:(id)arg1;
-- (void)setDelta:(int)arg1;
+- (void)setDelta:(double)arg1;
 - (void)setDisplayLink:(id)arg1;
 - (void)setExtraResultsBlock:(id /* block */)arg1;
-- (void)setIterations:(int)arg1;
-- (void)setScrollLength:(int)arg1;
-- (void)setStartOffset:(float)arg1;
-- (float)startOffset;
+- (void)setIterations:(long long)arg1;
+- (void)setLength:(double)arg1;
+- (void)setStartOffset:(double)arg1;
+- (void)setTestName:(id)arg1;
+- (double)startOffset;
+- (id)testName;
 
 @end

@@ -4,9 +4,9 @@
 
 @interface BBBulletin : NSObject <NSCopying, NSSecureCoding> {
     BBAccessoryIcon * _accessoryIconMask;
+    BBImage * _accessoryImage;
     NSMutableDictionary * _actions;
     NSArray * _additionalAttachments;
-    long long  _addressBookRecordID;
     NSSet * _alertSuppressionContexts;
     long long  _backgroundStyle;
     NSString * _bulletinID;
@@ -39,6 +39,8 @@
     BBContent * _modalAlertContent;
     NSString * _parentSectionID;
     NSArray * _peopleIDs;
+    bool  _preemptsPresentedAlert;
+    bool  _preemptsSTAR;
     bool  _preventAutomaticRemovalFromLockScreen;
     BBAttachmentMetadata * _primaryAttachment;
     NSDate * _publicationDate;
@@ -65,15 +67,17 @@
 }
 
 @property (nonatomic, retain) BBAccessoryIcon *accessoryIconMask;
+@property (nonatomic, retain) BBImage *accessoryImage;
 @property (nonatomic, copy) BBAction *acknowledgeAction;
 @property (nonatomic, retain) NSMutableDictionary *actions;
 @property (nonatomic, copy) NSArray *additionalAttachments;
-@property (nonatomic) long long addressBookRecordID;
 @property (nonatomic, readonly) NSSet *alertSuppressionAppIDs;
 @property (nonatomic, copy) NSSet *alertSuppressionAppIDs_deprecated;
 @property (nonatomic, copy) NSSet *alertSuppressionContexts;
 @property (nonatomic, readonly) bool allowsAddingToLockScreenWhenUnlocked;
 @property (nonatomic, readonly) bool allowsAutomaticRemovalFromLockScreen;
+@property (nonatomic, readonly) bool allowsPersistentBannersInCarPlay;
+@property (nonatomic, readonly) bool allowsSupplementaryActionsInCarPlay;
 @property (nonatomic, copy) BBAction *alternateAction;
 @property (nonatomic, readonly) NSString *alternateActionLabel;
 @property (nonatomic) long long backgroundStyle;
@@ -108,6 +112,7 @@
 @property (nonatomic) bool hasPrivateContent;
 @property (nonatomic, copy) NSString *header;
 @property (nonatomic, readonly) NSString *hiddenPreviewsBodyPlaceholder;
+@property (nonatomic, readonly) bool hideDismissActionInCarPlay;
 @property (nonatomic, readonly) long long iPodOutAlertType;
 @property (nonatomic, retain) BBSectionIcon *icon;
 @property (nonatomic) bool ignoresDowntime;
@@ -124,8 +129,10 @@
 @property (nonatomic, readonly) bool orderSectionUsingRecencyDate;
 @property (nonatomic, copy) NSString *parentSectionID;
 @property (nonatomic, copy) NSArray *peopleIDs;
+@property (nonatomic, readonly) bool playsMediaWhenRaised;
 @property (nonatomic, readonly) bool playsSoundForModify;
-@property (nonatomic, readonly) bool preemptsPresentedAlert;
+@property (nonatomic) bool preemptsPresentedAlert;
+@property (nonatomic) bool preemptsSTAR;
 @property (nonatomic, readonly) bool preservesUnlockActionCase;
 @property (nonatomic) bool preventAutomaticRemovalFromLockScreen;
 @property (nonatomic, readonly) bool preventLock;
@@ -145,7 +152,6 @@
 @property (nonatomic, readonly) NSString *secondaryContentRemoteViewControllerClassName;
 @property (nonatomic, copy) NSString *section;
 @property (nonatomic, readonly) NSString *sectionDisplayName;
-@property (nonatomic, readonly) bool sectionDisplaysCriticalBulletins;
 @property (nonatomic, copy) NSString *sectionID;
 @property (nonatomic, readonly) BBSectionIcon *sectionIcon;
 @property (nonatomic) long long sectionSubtype;
@@ -164,6 +170,7 @@
 @property (nonatomic, copy) NSString *summaryArgument;
 @property (nonatomic) unsigned long long summaryArgumentCount;
 @property (nonatomic, retain) NSMutableDictionary *supplementaryActionsByLayout;
+@property (nonatomic, readonly) bool suppressDelayForForwardedBulletins;
 @property (nonatomic, readonly) bool suppressesAlertsWhenAppIsActive;
 @property (nonatomic, readonly) bool suppressesMessageForPrivacy;
 @property (nonatomic, readonly) bool suppressesTitle;
@@ -202,6 +209,7 @@
 - (id)_sectionParameters;
 - (id)_sectionSubtypeParameters;
 - (id)accessoryIconMask;
+- (id)accessoryImage;
 - (id)acknowledgeAction;
 - (id)actionForResponse:(id)arg1;
 - (id)actionWithIdentifier:(id)arg1;
@@ -209,12 +217,13 @@
 - (void)addLifeAssertion:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (id)additionalAttachments;
-- (long long)addressBookRecordID;
 - (id)alertSuppressionAppIDs;
 - (id)alertSuppressionAppIDs_deprecated;
 - (id)alertSuppressionContexts;
 - (bool)allowsAddingToLockScreenWhenUnlocked;
 - (bool)allowsAutomaticRemovalFromLockScreen;
+- (bool)allowsPersistentBannersInCarPlay;
+- (bool)allowsSupplementaryActionsInCarPlay;
 - (id)alternateAction;
 - (id)alternateActionLabel;
 - (long long)backgroundStyle;
@@ -258,6 +267,7 @@
 - (unsigned long long)hash;
 - (id)header;
 - (id)hiddenPreviewsBodyPlaceholder;
+- (bool)hideDismissActionInCarPlay;
 - (long long)iPodOutAlertType;
 - (id)icon;
 - (bool)ignoresDowntime;
@@ -280,8 +290,10 @@
 - (bool)orderSectionUsingRecencyDate;
 - (id)parentSectionID;
 - (id)peopleIDs;
+- (bool)playsMediaWhenRaised;
 - (bool)playsSoundForModify;
 - (bool)preemptsPresentedAlert;
+- (bool)preemptsSTAR;
 - (bool)preservesUnlockActionCase;
 - (bool)preventAutomaticRemovalFromLockScreen;
 - (bool)preventLock;
@@ -311,15 +323,14 @@
 - (id)secondaryContentRemoteViewControllerClassName;
 - (id)section;
 - (id)sectionDisplayName;
-- (bool)sectionDisplaysCriticalBulletins;
 - (id)sectionID;
 - (id)sectionIcon;
 - (long long)sectionSubtype;
 - (void)setAccessoryIconMask:(id)arg1;
+- (void)setAccessoryImage:(id)arg1;
 - (void)setAcknowledgeAction:(id)arg1;
 - (void)setActions:(id)arg1;
 - (void)setAdditionalAttachments:(id)arg1;
-- (void)setAddressBookRecordID:(long long)arg1;
 - (void)setAlertSuppressionAppIDs_deprecated:(id)arg1;
 - (void)setAlertSuppressionContexts:(id)arg1;
 - (void)setAlternateAction:(id)arg1;
@@ -359,6 +370,8 @@
 - (void)setModalAlertContent:(id)arg1;
 - (void)setParentSectionID:(id)arg1;
 - (void)setPeopleIDs:(id)arg1;
+- (void)setPreemptsPresentedAlert:(bool)arg1;
+- (void)setPreemptsSTAR:(bool)arg1;
 - (void)setPreventAutomaticRemovalFromLockScreen:(bool)arg1;
 - (void)setPrimaryAttachment:(id)arg1;
 - (void)setPublicationDate:(id)arg1;
@@ -408,6 +421,7 @@
 - (id)supplementaryActions;
 - (id)supplementaryActionsByLayout;
 - (id)supplementaryActionsForLayout:(long long)arg1;
+- (bool)suppressDelayForForwardedBulletins;
 - (bool)suppressesAlertsWhenAppIsActive;
 - (bool)suppressesMessageForPrivacy;
 - (bool)suppressesTitle;
@@ -428,6 +442,7 @@
 
 // Image: /System/Library/PrivateFrameworks/BulletinDistributorCompanion.framework/BulletinDistributorCompanion
 
+- (id)bltContext;
 - (id)blt_uniqueKey;
 - (id)dateOrRecencyDate;
 - (bool)matchesPublisherBulletinID:(id)arg1 andRecordID:(id)arg2;

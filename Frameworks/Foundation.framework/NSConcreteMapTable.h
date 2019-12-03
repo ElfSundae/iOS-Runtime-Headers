@@ -72,11 +72,10 @@
 - (id)allValues;
 - (void)assign:(unsigned long long)arg1 key:(const void*)arg2 value:(const void*)arg3 isNew:(bool)arg4;
 - (void)checkCount:(const char *)arg1;
-- (Class)classForCoder;
 - (bool)containsKeys:(const void**)arg1 values:(const void**)arg2 count:(unsigned long long)arg3;
 - (id)copy;
 - (unsigned long long)count;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
 - (id)description;
 - (id)dump;

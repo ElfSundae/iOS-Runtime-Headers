@@ -15,6 +15,7 @@
     _SFNavigationBar * _navigationBar;
     unsigned long long  _navigationBarBehavior;
     _SFLinkPreviewHeader * _previewHeader;
+    UIView * _quickLookDocumentView;
     UIView * _scrollToTopView;
     bool  _shouldUseScrollToTopView;
     UIView * _statusBarBackgroundView;
@@ -32,8 +33,8 @@
 @property (nonatomic) double minimalUITopOffset;
 @property (nonatomic, retain) _SFNavigationBar *navigationBar;
 @property (nonatomic) unsigned long long navigationBarBehavior;
-@property (nonatomic, readonly) double navigationBarOffset;
 @property (nonatomic, retain) _SFLinkPreviewHeader *previewHeader;
+@property (nonatomic, retain) UIView *quickLookDocumentView;
 @property (nonatomic, readonly) UIView *scrollToTopView;
 @property (nonatomic) bool shouldUseScrollToTopView;
 @property (nonatomic, retain) UIView *statusBarBackgroundView;
@@ -55,8 +56,8 @@
 - (double)minimalUITopOffset;
 - (id)navigationBar;
 - (unsigned long long)navigationBarBehavior;
-- (double)navigationBarOffset;
 - (id)previewHeader;
+- (id)quickLookDocumentView;
 - (id)scrollToTopView;
 - (void)setBottomBarOffset:(double)arg1;
 - (void)setContentReadyForDisplay;
@@ -67,6 +68,7 @@
 - (void)setNavigationBar:(id)arg1;
 - (void)setNavigationBarBehavior:(unsigned long long)arg1;
 - (void)setPreviewHeader:(id)arg1;
+- (void)setQuickLookDocumentView:(id)arg1;
 - (void)setShouldUseScrollToTopView:(bool)arg1;
 - (void)setStatusBarBackgroundView:(id)arg1;
 - (void)setToolbar:(id)arg1;
@@ -76,8 +78,6 @@
 - (id)toolbar;
 - (double)topBarHeight;
 - (void)updateDismissButtonStyle:(long long)arg1;
-- (void)updateNavigationBarTintColor:(id)arg1;
 - (void)updatePreviewHeader;
-- (void)updateToolbarTintColor:(id)arg1;
 
 @end

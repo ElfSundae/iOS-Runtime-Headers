@@ -4,7 +4,6 @@
 
 @interface BBSectionInfoSettings : NSObject <NSCopying, NSSecureCoding> {
     unsigned long long  _alertType;
-    bool  _allowsNotifications;
     long long  _authorizationStatus;
     long long  _bulletinGroupingSetting;
     long long  _carPlaySetting;
@@ -15,6 +14,7 @@
     unsigned long long  _pushSettings;
     bool  _showsCustomSettingsLink;
     bool  _showsOnExternalDevices;
+    long long  _spokenNotificationSetting;
 }
 
 @property (nonatomic) unsigned long long alertType;
@@ -32,6 +32,8 @@
 @property (nonatomic) bool showsInNotificationCenter;
 @property (nonatomic) bool showsMessagePreview;
 @property (nonatomic) bool showsOnExternalDevices;
+@property (nonatomic) long long spokenNotificationSetting;
+@property (nonatomic, readonly, copy) NSDictionary *stateCapture;
 
 + (id)sectionInfoSettingsForManagedBundleID:(id)arg1;
 + (bool)supportsSecureCoding;
@@ -41,7 +43,6 @@
 - (id)_bulletinGroupingSettingDescription;
 - (id)_contentPreviewSettingDescription;
 - (unsigned long long)alertType;
-- (bool)allowsNotifications;
 - (bool)allowsNotifications;
 - (long long)authorizationStatus;
 - (long long)bulletinGroupingSetting;
@@ -60,7 +61,6 @@
 - (unsigned long long)pushSettings;
 - (void)setAlertType:(unsigned long long)arg1;
 - (void)setAllowsNotifications:(bool)arg1;
-- (void)setAllowsNotifications:(bool)arg1;
 - (void)setAuthorizationStatus:(long long)arg1;
 - (void)setBulletinGroupingSetting:(long long)arg1;
 - (void)setCarPlaySetting:(long long)arg1;
@@ -74,10 +74,13 @@
 - (void)setShowsInNotificationCenter:(bool)arg1;
 - (void)setShowsMessagePreview:(bool)arg1;
 - (void)setShowsOnExternalDevices:(bool)arg1;
+- (void)setSpokenNotificationSetting:(long long)arg1;
 - (bool)showsCustomSettingsLink;
 - (bool)showsInLockScreen;
 - (bool)showsInNotificationCenter;
 - (bool)showsMessagePreview;
 - (bool)showsOnExternalDevices;
+- (long long)spokenNotificationSetting;
+- (id)stateCapture;
 
 @end

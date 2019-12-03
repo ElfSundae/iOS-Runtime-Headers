@@ -6,8 +6,8 @@
     NSError * _currentError;
     GEORouteHypothesis * _currentHypothesis;
     NSObject<OS_dispatch_source> * _delayDispatchTimer;
+    geo_isolater * _isolater;
     GEOPlannedDestination * _plannedDestination;
-    NSObject<OS_dispatch_queue> * _serialQueue;
     unsigned long long  _state;
     bool  _unableToFindRouteForOriginalTransportType;
     id /* block */  _updateHandler;
@@ -37,7 +37,6 @@
 - (id)currentHypothesis;
 - (void)dealloc;
 - (id)description;
-- (void)didDismissUINotification:(unsigned long long)arg1 dismissalType:(unsigned long long)arg2;
 - (void)didPostUINotification:(unsigned long long)arg1;
 - (id)initWithPlannedDestination:(id)arg1;
 - (void)onlyPerformLocalUpdates;

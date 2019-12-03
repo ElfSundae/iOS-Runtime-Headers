@@ -10,7 +10,7 @@
     }  _lock;
     id  _owner;
     bool  _performsAtomicStateTransitions;
-    /* Warning: unhandled struct encoding: '{FigStateMachineStateConfiguration=B@@@}' */ struct FigStateMachineStateConfiguration { bool x1; id x2; id x3; } * _stateConfigurations;
+    struct FigStateMachineStateConfiguration { bool x1; id x2; id x3; id x4; } * _stateConfigurations;
     BOOL  _stateCount;
 }
 

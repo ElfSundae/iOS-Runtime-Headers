@@ -4,9 +4,9 @@
 
 @interface GEOURLTimePoint : PBCodable <NSCopying> {
     struct { 
-        unsigned int time : 1; 
-        unsigned int type : 1; 
-    }  _has;
+        unsigned int has_time : 1; 
+        unsigned int has_type : 1; 
+    }  _flags;
     double  _time;
     int  _type;
 }
@@ -15,6 +15,8 @@
 @property (nonatomic) bool hasType;
 @property (nonatomic) double time;
 @property (nonatomic) int type;
+
++ (bool)isValid:(id)arg1;
 
 - (int)StringAsType:(id)arg1;
 - (void)copyTo:(id)arg1;
@@ -26,6 +28,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasTime:(bool)arg1;
 - (void)setHasType:(bool)arg1;

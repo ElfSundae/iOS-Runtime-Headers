@@ -81,6 +81,7 @@
 - (id)smallCircleLayer;
 - (id)smallPersonImageLayer;
 - (id)smallRingLayer;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateStyleForAnnotation:(id)arg1;
 
 @end

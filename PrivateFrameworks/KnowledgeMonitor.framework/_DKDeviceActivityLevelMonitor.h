@@ -9,6 +9,7 @@
     bool  _enabled;
     _CDContextualKeyPath * _inUseStatus;
     bool  _initialized;
+    _CDContextualKeyPath * _keyPathForDeviceToppingOff;
     _CDContextualKeyPath * _keyPathForReducedPerfStateStatus;
     unsigned long long  _lastInUseStatus;
     NSDate * _lastSetActiveDate;
@@ -25,6 +26,7 @@
 @property (nonatomic) bool enabled;
 @property (nonatomic, retain) _CDContextualKeyPath *inUseStatus;
 @property (nonatomic) bool initialized;
+@property (nonatomic, retain) _CDContextualKeyPath *keyPathForDeviceToppingOff;
 @property (nonatomic, retain) _CDContextualKeyPath *keyPathForReducedPerfStateStatus;
 @property (nonatomic) unsigned long long lastInUseStatus;
 @property (nonatomic, retain) NSDate *lastSetActiveDate;
@@ -43,11 +45,14 @@
 - (void).cxx_destruct;
 - (id)context;
 - (unsigned long long)currentInUseStatus;
+- (void)deactivate;
+- (void)dealloc;
 - (id)debounceTimer;
 - (bool)enabled;
 - (void)handleUserActivity:(int)arg1;
 - (id)inUseStatus;
 - (bool)initialized;
+- (id)keyPathForDeviceToppingOff;
 - (id)keyPathForReducedPerfStateStatus;
 - (unsigned long long)lastInUseStatus;
 - (id)lastSetActiveDate;
@@ -60,6 +65,7 @@
 - (void)setEnabled:(bool)arg1;
 - (void)setInUseStatus:(id)arg1;
 - (void)setInitialized:(bool)arg1;
+- (void)setKeyPathForDeviceToppingOff:(id)arg1;
 - (void)setKeyPathForReducedPerfStateStatus:(id)arg1;
 - (void)setLastActivityDate:(id)arg1;
 - (void)setLastInUseStatus:(unsigned long long)arg1;

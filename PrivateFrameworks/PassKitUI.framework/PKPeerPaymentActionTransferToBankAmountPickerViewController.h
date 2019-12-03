@@ -2,9 +2,20 @@
    Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
  */
 
-@interface PKPeerPaymentActionTransferToBankAmountPickerViewController : PKPeerPaymentActionViewController <PKEnterCurrencyAmountViewDelegate, PKEnterValueNewBalanceViewDelegate> {
-    PKEnterCurrencyAmountView * _enterCurrencyAmountView;
-    PKEnterValueNewBalanceView * _newBalanceView;
+@interface PKPeerPaymentActionTransferToBankAmountPickerViewController : PKPeerPaymentActionViewController <PKEnterCurrencyAmountPassViewDelegate, PKEnterCurrencyAmountViewDelegate, PKEnterValueNewBalanceViewDelegate> {
+    PKEnterCurrencyAmountPassView * _amountPassView;
+    struct CGRect { 
+        struct CGPoint { 
+            double x; 
+            double y; 
+        } origin; 
+        struct CGSize { 
+            double width; 
+            double height; 
+        } size; 
+    }  _keyboardFrame;
+    bool  _keyboardVisible;
+    UIScrollView * _scrollView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -20,9 +31,14 @@
 - (bool)_shouldShakeWithNewAmount:(id)arg1;
 - (void)_updateBarButtonEnabledState;
 - (void)_updateCurrentAmount:(id)arg1 shouldGenerateNewSuggestions:(bool)arg2;
+- (void)_updateLayoutForKeyboardAction:(id /* block */)arg1;
+- (void)enterCurrencyAmountPassViewDidLoadPassSnapshot:(id)arg1;
 - (bool)enterCurrencyAmountView:(id)arg1 shouldChangeAmountFrom:(id)arg2 to:(id)arg3;
 - (void)enterCurrencyAmountViewDidChangeAmount:(id)arg1;
 - (id)initWithPaymentPass:(id)arg1 webService:(id)arg2 context:(long long)arg3;
+- (void)keyboardWillChange:(id)arg1;
+- (void)keyboardWillHide:(id)arg1;
+- (void)keyboardWillShow:(id)arg1;
 - (void)loadView;
 - (void)setCardBalance:(id)arg1;
 - (void)setMaxBalance:(id)arg1;

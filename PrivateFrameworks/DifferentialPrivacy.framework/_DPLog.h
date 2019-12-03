@@ -6,6 +6,7 @@
 
 + (id)daemon;
 + (id)framework;
++ (id)service;
 + (id)tool;
 
 @end

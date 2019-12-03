@@ -6,6 +6,8 @@
     NSString * _identifier;
     NSString * _issueID;
     NTPBDate * _lastBadgedPBDate;
+    NTPBDate * _lastEngagedPBDate;
+    NTPBDate * _lastRemovedFromMyMagazinesPBDate;
     NSString * _lastVisitedArticleID;
     NTPBDate * _lastVisitedPBDate;
     NSString * _lastVisitedPageID;
@@ -16,16 +18,22 @@
 @property (nonatomic, readonly) bool hasIdentifier;
 @property (nonatomic, readonly) bool hasIssueID;
 @property (nonatomic, readonly) bool hasLastBadgedPBDate;
+@property (nonatomic, readonly) bool hasLastEngagedPBDate;
+@property (nonatomic, readonly) bool hasLastRemovedFromMyMagazinesPBDate;
 @property (nonatomic, readonly) bool hasLastVisitedArticleID;
 @property (nonatomic, readonly) bool hasLastVisitedPBDate;
 @property (nonatomic, readonly) bool hasLastVisitedPageID;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) NSString *identifier;
 @property (nonatomic, readonly, copy) NSString *identifier;
+@property (nonatomic, retain) NSString *identifier;
 @property (nonatomic, readonly, copy) NSString *issueID;
 @property (nonatomic, retain) NSString *issueID;
 @property (nonatomic, readonly, copy) NSDate *lastBadgedDate;
 @property (nonatomic, retain) NTPBDate *lastBadgedPBDate;
+@property (nonatomic, readonly, copy) NSDate *lastEngagedDate;
+@property (nonatomic, retain) NTPBDate *lastEngagedPBDate;
+@property (nonatomic, readonly, copy) NSDate *lastRemovedFromMyMagazinesDate;
+@property (nonatomic, retain) NTPBDate *lastRemovedFromMyMagazinesPBDate;
 @property (nonatomic, readonly, copy) NSString *lastVisitedArticleID;
 @property (nonatomic, retain) NSString *lastVisitedArticleID;
 @property (nonatomic, readonly, copy) NSDate *lastVisitedDate;
@@ -43,6 +51,8 @@
 - (bool)hasIdentifier;
 - (bool)hasIssueID;
 - (bool)hasLastBadgedPBDate;
+- (bool)hasLastEngagedPBDate;
+- (bool)hasLastRemovedFromMyMagazinesPBDate;
 - (bool)hasLastVisitedArticleID;
 - (bool)hasLastVisitedPBDate;
 - (bool)hasLastVisitedPageID;
@@ -51,6 +61,8 @@
 - (bool)isEqual:(id)arg1;
 - (id)issueID;
 - (id)lastBadgedPBDate;
+- (id)lastEngagedPBDate;
+- (id)lastRemovedFromMyMagazinesPBDate;
 - (id)lastVisitedArticleID;
 - (id)lastVisitedPBDate;
 - (id)lastVisitedPageID;
@@ -59,6 +71,8 @@
 - (void)setIdentifier:(id)arg1;
 - (void)setIssueID:(id)arg1;
 - (void)setLastBadgedPBDate:(id)arg1;
+- (void)setLastEngagedPBDate:(id)arg1;
+- (void)setLastRemovedFromMyMagazinesPBDate:(id)arg1;
 - (void)setLastVisitedArticleID:(id)arg1;
 - (void)setLastVisitedPBDate:(id)arg1;
 - (void)setLastVisitedPageID:(id)arg1;
@@ -72,9 +86,13 @@
 
 - (id)asCKRecord;
 - (id)lastBadgedDate;
+- (id)lastEngagedDate;
+- (id)lastRemovedFromMyMagazinesDate;
 - (id)lastVisitedDate;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (void)setLastBadgedDate:(id)arg1;
+- (void)setLastEngagedDate:(id)arg1;
+- (void)setLastRemovedFromMyMagazinesDate:(id)arg1;
 - (void)setLastVisitedDate:(id)arg1;
 - (void)writeToKeyValuePair:(id)arg1;
 

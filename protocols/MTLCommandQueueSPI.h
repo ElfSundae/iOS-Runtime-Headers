@@ -6,6 +6,10 @@
 @required
 
 - (int)backgroundTrackingPID;
+- (NSObject<OS_dispatch_queue> *)commitQueue;
+- (bool)commitSynchronously;
+- (NSObject<OS_dispatch_queue> *)completionQueue;
+- (bool)disableCrossQueueHazardTracking;
 - (bool)executionEnabled;
 - (void)finish;
 - (unsigned long long)getBackgroundGPUPriority;
@@ -13,8 +17,7 @@
 - (bool)isOpenGLQueue;
 - (bool)isProfilingEnabled;
 - (unsigned long long)maxCommandBufferCount;
-- (unsigned long long)qosClass;
-- (long long)qosRelativePriority;
+- (unsigned long long)qosLevel;
 - (bool)setBackgroundGPUPriority:(unsigned long long)arg1;
 - (bool)setBackgroundGPUPriority:(unsigned long long)arg1 offset:(unsigned short)arg2;
 - (void)setBackgroundTrackingPID:(int)arg1;

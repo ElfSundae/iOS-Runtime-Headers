@@ -22,6 +22,7 @@
     <SGXPCActivityManagerProtocol> * _xpcActivityManager;
 }
 
++ (void)_logCallInteractions:(id)arg1;
 + (id)defaultInstance;
 + (id)sharedSingletonInstance;
 
@@ -30,10 +31,9 @@
 - (void)_doAdjustCriteriaForCTS;
 - (void)_doFrontfillHarvestOnFrontfillQueue;
 - (void)_performCollectWeeklyStats:(id)arg1;
-- (void)_performContactDetailCacheRebuildActivity:(id)arg1;
 - (void)_performHarvestActivity:(id)arg1 callback:(id /* block */)arg2;
 - (void)_performIdentityAnalysisActivity:(id)arg1;
-- (void)_performPMLTrainingActivity:(id)arg1;
+- (void)_performMobileAssetMetadataDownloadActivity:(id)arg1;
 - (void)_performProcessPendingGeocodesActivity:(id)arg1;
 - (void)_performSendRTCActivity;
 - (void)_performTrimActivity:(id)arg1;
@@ -45,7 +45,7 @@
 - (void)_registerForCTSVacuumActivity;
 - (void)_registerForCollectWeeklyStats;
 - (void)_registerForContactDetailCacheRebuildActivity;
-- (void)_registerForPMLTrainingActivity;
+- (void)_registerMobileAssetMetadataDownloadActivity;
 - (void)_registerProcessPendingGeocodesActivity;
 - (struct SGMEventICSSourceType_ { unsigned long long x1; })accountTypeFor:(id)arg1;
 - (id)accountTypeForBundle:(id)arg1;
@@ -56,6 +56,8 @@
 - (bool)hasAlreadyHarvestedSearchableItem:(id)arg1;
 - (struct SGMEventICSSourceType_ { unsigned long long x1; })icsTypeForBundle:(id)arg1;
 - (id)initWithHarvestStore:(id)arg1 xpcActivityManager:(id)arg2;
+- (void)performContactDetailCacheRebuildActivity:(id)arg1;
+- (void)performContactDetailCacheRebuildActivity:(id)arg1 usingContacts:(id)arg2;
 - (bool)processSearchableItem:(id)arg1 pipeline:(id)arg2 context:(id)arg3;
 - (bool)processSearchableItemForTesting:(id)arg1;
 - (void)registerForCTS;

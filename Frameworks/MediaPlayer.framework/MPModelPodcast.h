@@ -11,6 +11,8 @@
 @property (nonatomic) bool supportsSubscription;
 @property (nonatomic, copy) NSString *title;
 
+// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+
 + (id)__artworkCatalogBlock_KEY;
 + (id)__author_KEY;
 + (id)__feedURL_KEY;
@@ -21,5 +23,9 @@
 
 - (id)artworkCatalog;
 - (id)humanDescription;
+
+// Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
+
++ (id)mqf_requiredSectionPlaybackProperties;
 
 @end

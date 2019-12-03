@@ -10,6 +10,7 @@
     struct { 
         /* Warning: Unrecognized filer type: ']' using 'void*' */ void*columns[4]; 
     }  _identityExtrinsicMatrix;
+    BWStillImageNodeConfiguration * _nodeConfiguration;
     bool  _requiresRGBBasedPersonSegmentation;
     NSDictionary * _sensorIDDictionary;
 }
@@ -23,7 +24,7 @@
 - (void)dealloc;
 - (void)didSelectFormat:(id)arg1 forInput:(id)arg2 forAttachedMediaKey:(id)arg3;
 - (void)handleNodeError:(id)arg1 forInput:(id)arg2;
-- (id)initWithSensorIDDictionary:(id)arg1 cameraInfoByPortType:(id)arg2 disparityMapWidth:(unsigned long long)arg3 disparityMapHeight:(unsigned long long)arg4 depthIsAlwaysHighQuality:(bool)arg5;
+- (id)initWithNodeConfiguration:(id)arg1 sensorIDDictionary:(id)arg2 cameraInfoByPortType:(id)arg3 disparityMapWidth:(unsigned long long)arg4 disparityMapHeight:(unsigned long long)arg5 depthIsAlwaysHighQuality:(bool)arg6;
 - (id)nodeSubType;
 - (id)nodeType;
 - (void)prepareForCurrentConfigurationToBecomeLive;

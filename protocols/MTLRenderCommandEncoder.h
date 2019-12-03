@@ -63,6 +63,7 @@
 - (void)setTileTexture:(id <MTLTexture>)arg1 atIndex:(unsigned long long)arg2;
 - (void)setTileTextures:(const id*)arg1 withRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (void)setTriangleFillMode:(unsigned long long)arg1;
+- (void)setVertexAmplificationCount:(unsigned long long)arg1 viewMappings:(const struct { unsigned int x1; unsigned int x2; }*)arg2;
 - (void)setVertexBuffer:(id <MTLBuffer>)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setVertexBufferOffset:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setVertexBuffers:(const id*)arg1 offsets:(const unsigned long long*)arg2 withRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3;
@@ -81,9 +82,13 @@
 - (unsigned long long)tileWidth;
 - (void)updateFence:(id <MTLFence>)arg1 afterStages:(unsigned long long)arg2;
 - (void)useHeap:(id <MTLHeap>)arg1;
+- (void)useHeap:(id <MTLHeap>)arg1 stages:(unsigned long long)arg2;
 - (void)useHeaps:(const id*)arg1 count:(unsigned long long)arg2;
+- (void)useHeaps:(const id*)arg1 count:(unsigned long long)arg2 stages:(unsigned long long)arg3;
 - (void)useResource:(id <MTLResource>)arg1 usage:(unsigned long long)arg2;
+- (void)useResource:(id <MTLResource>)arg1 usage:(unsigned long long)arg2 stages:(unsigned long long)arg3;
 - (void)useResources:(const id*)arg1 count:(unsigned long long)arg2 usage:(unsigned long long)arg3;
+- (void)useResources:(const id*)arg1 count:(unsigned long long)arg2 usage:(unsigned long long)arg3 stages:(unsigned long long)arg4;
 - (void)waitForFence:(id <MTLFence>)arg1 beforeStages:(unsigned long long)arg2;
 
 @end

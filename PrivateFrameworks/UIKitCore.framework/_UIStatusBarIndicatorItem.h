@@ -8,16 +8,17 @@
 }
 
 @property (nonatomic, copy) NSArray *currentImageNamePrefixes;
+@property (nonatomic, readonly) bool flipsForRightToLeftLayoutDirection;
 @property (nonatomic, retain) _UIStatusBarImageView *imageView;
 @property (nonatomic, readonly) NSString *indicatorEntryKey;
 @property (nonatomic, readonly) bool isTemplateImage;
 
-+ (id)indicatorDisplayIdentifier;
-
 - (void).cxx_destruct;
+- (void)_create_imageView;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
 - (id)currentImageNamePrefixes;
 - (id)dependentEntryKeys;
+- (bool)flipsForRightToLeftLayoutDirection;
 - (id)imageForUpdate:(id)arg1;
 - (id)imageNameForUpdate:(id)arg1;
 - (id)imageView;
@@ -26,6 +27,7 @@
 - (void)setCurrentImageNamePrefixes:(id)arg1;
 - (void)setImageView:(id)arg1;
 - (bool)shouldUpdateIndicatorForIdentifier:(id)arg1;
+- (id)systemImageNameForUpdate:(id)arg1;
 - (id)viewForIdentifier:(id)arg1;
 
 @end

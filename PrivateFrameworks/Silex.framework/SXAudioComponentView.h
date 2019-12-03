@@ -4,6 +4,7 @@
 
 @interface SXAudioComponentView : SXMediaComponentView <AVPlayerViewControllerDelegate_AppStoreOnly, SXMediaPlaybackDelegate> {
     bool  _audioHasPlayed;
+    id /* block */  _cancelHandler;
     <SXHost> * _host;
     SXAudioComponentOverlayView * _overlayView;
     SXAVPlayer * _player;
@@ -13,6 +14,7 @@
 }
 
 @property (nonatomic) bool audioHasPlayed;
+@property (nonatomic, copy) id /* block */ cancelHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -28,11 +30,13 @@
 - (bool)allowHierarchyRemoval;
 - (unsigned long long)analyticsMediaType;
 - (bool)audioHasPlayed;
+- (id /* block */)cancelHandler;
+- (void)discardContents;
 - (void)hidePlaybackControls;
 - (id)host;
 - (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 analyticsReporting:(id)arg5 appStateMonitor:(id)arg6 resourceDataSource:(id)arg7 host:(id)arg8;
+- (void)layoutViews;
 - (void)loadAudio;
-- (void)loadComponent:(id)arg1;
 - (void)loadImage;
 - (id)overlayView;
 - (void)pauseMediaPlayback;
@@ -48,6 +52,7 @@
 - (void)renderContents;
 - (id)resourceDataSource;
 - (void)setAudioHasPlayed:(bool)arg1;
+- (void)setCancelHandler:(id /* block */)arg1;
 - (void)setPlayer:(id)arg1;
 - (void)setPlayerViewController:(id)arg1;
 - (void)setStartPlaybackWhenReady:(bool)arg1;

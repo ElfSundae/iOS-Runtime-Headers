@@ -10,6 +10,9 @@
     OCPPackageRelationshipCollection * mRelationships;
 }
 
+@property (readonly) OCPPackage *package;
+
+- (void).cxx_destruct;
 - (id)contentType;
 - (void)copyToFile:(id)arg1;
 - (id)data;

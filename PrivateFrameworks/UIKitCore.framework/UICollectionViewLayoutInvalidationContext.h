@@ -11,7 +11,7 @@
         double width; 
         double height; 
     }  _contentSizeAdjustment;
-    bool  _initiatedFromReloadData;
+    long long  _intent;
     NSMutableDictionary * _invalidatedDecorationIndexPaths;
     NSMutableSet * _invalidatedItemIndexPaths;
     NSMutableDictionary * _invalidatedSupplementaryIndexPaths;
@@ -31,7 +31,7 @@
 
 @property (nonatomic) struct CGPoint { double x1; double x2; } contentOffsetAdjustment;
 @property (nonatomic) struct CGSize { double x1; double x2; } contentSizeAdjustment;
-@property (getter=_initiatedFromReloadData, setter=_setInitiatedFromReloadData:, nonatomic) bool initiatedFromReloadData;
+@property (getter=_intent, setter=_setIntent:, nonatomic) long long intent;
 @property (setter=_setInteractiveMovementTarget:, nonatomic) struct CGPoint { double x1; double x2; } interactiveMovementTarget;
 @property (setter=_setInvalidateDataSourceCounts:, nonatomic) bool invalidateDataSourceCounts;
 @property (setter=_setInvalidateEverything:, nonatomic) bool invalidateEverything;
@@ -44,11 +44,11 @@
 @property (getter=_updateItems, setter=_setUpdateItems:, nonatomic, retain) NSArray *updateItems;
 
 - (void).cxx_destruct;
-- (bool)_initiatedFromReloadData;
+- (long long)_intent;
 - (void)_invalidateSupplementaryElementsOfKind:(id)arg1 atIndexPaths:(id)arg2;
 - (id)_invalidatedSupplementaryViews;
 - (bool)_retainExistingSizingInfoForEstimates;
-- (void)_setInitiatedFromReloadData:(bool)arg1;
+- (void)_setIntent:(long long)arg1;
 - (void)_setInteractiveMovementTarget:(struct CGPoint { double x1; double x2; })arg1;
 - (void)_setInvalidateDataSourceCounts:(bool)arg1;
 - (void)_setInvalidateEverything:(bool)arg1;

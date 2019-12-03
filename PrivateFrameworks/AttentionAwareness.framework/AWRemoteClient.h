@@ -3,65 +3,67 @@
  */
 
 @interface AWRemoteClient : NSObject <AWRemoteClient> {
+    NSSet * _allowedHIDEventsForRemoteEvent;
+    unsigned long long  _attentionLostEventMask;
     NSArray * _attentionLostTimeoutsSec;
+    int  _clientIndex;
+    struct { double x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; unsigned long long x5; unsigned long long x6; unsigned long long x7; unsigned long long x8; bool x9; bool x10; bool x11; } * _clientState;
     NSXPCConnection * _connection;
     unsigned long long  _eventMask;
     NSString * _identifier;
     bool  _invalid;
-    bool  _lastAttentionState;
     AWAttentionAwarenessConfiguration * _lastConfig;
     AWAttentionEvent * _lastEvent;
-    double  _lastNegativeEventTimeoutValueSec;
-    unsigned long long  _lastPositiveEventTime;
-    unsigned long long  _lastPositiveNonSampledEventTime;
-    unsigned long long  _pollingDeadline;
-    unsigned long long  _pollingStartTime;
+    unsigned long long  _notificationMask;
     <AWFrameworkClient> * _proxy;
     NSObject<OS_dispatch_queue> * _queue;
-    bool  _samplingClient;
+    bool  _sampleWhileAbsent;
     unsigned long long  _samplingDelay;
     unsigned long long  _samplingInterval;
     AWScheduler * _scheduler;
-    bool  _sentPollInitialized;
-    int  _supportedEventsNotify;
     unsigned long long  _tagIndex;
-    bool  _unitTestSampling;
 }
 
+@property (nonatomic, readonly) int clientIndex;
 @property (nonatomic, copy) NSString *identifier;
-@property (nonatomic) bool invalid;
+@property (nonatomic, readonly) bool invalid;
 @property (nonatomic, readonly) unsigned long long samplingDelay;
 @property (nonatomic, readonly) unsigned long long samplingInterval;
-@property (nonatomic) bool unitTestSampling;
 
 - (void).cxx_destruct;
-- (void)_reevaluateConfig;
+- (unsigned long long)_activeEventMask;
+- (bool)_interestedInHIDEvent:(struct __IOHIDEvent { }*)arg1 mask:(unsigned long long)arg2 metadata:(union { struct AWFaceDetectMetadata { bool x_1_1_1; double x_1_1_2; double x_1_1_3; double x_1_1_4; unsigned long long x_1_1_5; } x1; struct AWRemoteMetadata { long long x_2_1_1; long long x_2_1_2; } x2; }*)arg3;
+- (bool)_isSamplingClient;
 - (void)_resetAttentionLostTimer;
-- (void)_setClientConfig:(id)arg1 shouldReset:(bool)arg2;
+- (bool)_setClientConfig:(id)arg1 shouldReset:(bool)arg2 error:(id*)arg3;
+- (int)clientIndex;
 - (id)connection;
 - (void)deliverEvent:(id)arg1;
+- (void)deliverNotification:(unsigned long long)arg1;
 - (void)deliverPollEventType:(unsigned long long)arg1 event:(id)arg2;
 - (id)description;
 - (void)getLastEvent:(id /* block */)arg1;
 - (id)identifier;
-- (id)initWithProxy:(id)arg1 connection:(id)arg2 clientConfig:(id)arg3 error:(id*)arg4;
+- (id)initWithProxy:(id)arg1 connection:(id)arg2 clientConfig:(id)arg3 clientIndex:(int)arg4 scheduler:(id)arg5 error:(id*)arg6;
+- (void)initializeClientState;
 - (bool)invalid;
 - (void)invalidate;
+- (void)invalidateWithHandler:(id /* block */)arg1;
 - (unsigned long long)nextAttentionLostTime:(bool*)arg1;
-- (unsigned long long)nextSampleTimeForSampler:(id)arg1;
-- (unsigned long long)nextTimerForTime:(unsigned long long)arg1 attentionSampler:(id)arg2;
+- (unsigned long long)nextSampleTime;
+- (unsigned long long)nextTimerForTime:(unsigned long long)arg1;
 - (void)notifyEvent:(unsigned long long)arg1 timestamp:(unsigned long long)arg2;
+- (void)notifyEvent:(unsigned long long)arg1 timestamp:(unsigned long long)arg2 metadata:(union { struct AWFaceDetectMetadata { bool x_1_1_1; double x_1_1_2; double x_1_1_3; double x_1_1_4; unsigned long long x_1_1_5; } x1; struct AWRemoteMetadata { long long x_2_1_1; long long x_2_1_2; } x2; }*)arg3;
+- (void)notifyHIDEvent:(struct __IOHIDEvent { }*)arg1 mask:(unsigned long long)arg2 timestamp:(unsigned long long)arg3;
+- (void)pingWithReply:(id /* block */)arg1;
 - (void)pollWithTimeout:(unsigned long long)arg1 reply:(id /* block */)arg2;
-- (void)resetAttentionLostTimer;
+- (void)reevaluateConfig;
+- (void)resetAttentionLostTimerWithReply:(id /* block */)arg1;
 - (unsigned long long)samplingDelay;
 - (unsigned long long)samplingInterval;
-- (void)setClientConfig:(id)arg1 shouldReset:(bool)arg2;
+- (void)setClientConfig:(id)arg1 shouldReset:(bool)arg2 reply:(id /* block */)arg3;
 - (void)setIdentifier:(id)arg1;
-- (void)setInvalid:(bool)arg1;
-- (void)setUnitTestSampling:(bool)arg1;
-- (bool)unitTestSampling;
-- (void)updateDeadlinesForTime:(unsigned long long)arg1 attentionSampler:(id)arg2;
+- (void)updateDeadlinesForTime:(unsigned long long)arg1;
 - (void)updateEventTimesForMask:(unsigned long long)arg1 timestamp:(unsigned long long)arg2;
-- (void)useUnitTestSampling:(bool)arg1;
 
 @end

@@ -6,6 +6,7 @@
     bool  _expanded;
     NSArray * _expandedCellularPlacementsAffectedByAirplaneMode;
     NSArray * _expandedLeadingPlacements;
+    _UIStatusBarDisplayItemPlacementNetworkGroup * _expandedNetworkGroup;
     NSArray * _expandedTrailingPlacements;
     _UIStatusBarDisplayItemPlacementGroup * _secondaryWifiGroup;
     _UIStatusBar * _statusBar;
@@ -20,13 +21,14 @@
 @property (nonatomic) bool expanded;
 @property (nonatomic, readonly) NSArray *expandedCellularPlacementsAffectedByAirplaneMode;
 @property (nonatomic, readonly) NSArray *expandedLeadingPlacements;
+@property (nonatomic, readonly) _UIStatusBarDisplayItemPlacementNetworkGroup *expandedNetworkGroup;
 @property (nonatomic, readonly) NSArray *expandedTrailingPlacements;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) _UIStatusBarDisplayItemPlacementGroup *secondaryWifiGroup;
 @property (nonatomic) _UIStatusBar *statusBar;
-@property (nonatomic, readonly) _UIStatusBarStyleAttributes *styleAttributes;
 @property (readonly) Class superclass;
 
++ (double)bluetoothPaddingInset;
 + (double)cornerRadius;
 + (double)expandedItemSpacing;
 + (bool)hasCellularCapability;
@@ -35,6 +37,7 @@
 + (double)itemSpacing;
 + (double)regionSpacing;
 + (Class)visualProviderSubclassForScreen:(id)arg1;
++ (bool)wantsExpandedLeadingPlacements;
 
 - (void).cxx_destruct;
 - (void)_applyToAppearingRegions:(bool)arg1 block:(id /* block */)arg2;
@@ -48,9 +51,11 @@
 - (double)airplaneTravelOffsetInProposedPartWithIdentifier:(id*)arg1 animationType:(long long)arg2;
 - (id)animationForAirplaneMode;
 - (id)defaultAnimationForDisplayItemWithIdentifier:(id)arg1;
+- (id)displayItemIdentifiersForPartWithIdentifier:(id)arg1;
 - (bool)expanded;
 - (id)expandedCellularPlacementsAffectedByAirplaneMode;
 - (id)expandedLeadingPlacements;
+- (id)expandedNetworkGroup;
 - (id)expandedTrailingPlacements;
 - (id)init;
 - (void)modeUpdatedFromMode:(long long)arg1;
@@ -62,7 +67,7 @@
 - (void)setStatusBar:(id)arg1;
 - (id)setupInContainerView:(id)arg1;
 - (id)statusBar;
-- (id)styleAttributes;
+- (id)styleAttributesForStyle:(long long)arg1;
 - (void)updateDataForService:(id)arg1;
 - (void)updateDataForSystemNavigation:(id)arg1;
 - (id)willUpdateWithData:(id)arg1;

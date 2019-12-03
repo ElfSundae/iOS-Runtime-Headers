@@ -32,6 +32,7 @@
 @property (nonatomic, readonly, retain) NSString *uuid;
 @property (nonatomic, readonly) unsigned long long videosCount;
 
+- (void).cxx_destruct;
 - (long long)_countOfAssetType:(short)arg1;
 - (unsigned long long)approximateCount;
 - (id)assets;
@@ -39,7 +40,6 @@
 - (bool)canPerformEditOperation:(unsigned long long)arg1;
 - (bool)canShowAvalancheStacks;
 - (bool)canShowComments;
-- (void)dealloc;
 - (id)initWithTitle:(id)arg1 assets:(id)arg2;
 - (bool)isEmpty;
 - (id)keyAsset;

@@ -21,7 +21,9 @@
 - (id)backdropGroupName;
 - (long long)backdropStyle;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (unsigned long long)hash;
 - (bool)hidesBackdropView;
+- (bool)isEqual:(id)arg1;
 - (void)setBackdropColor:(id)arg1;
 - (void)setBackdropGroupName:(id)arg1;
 - (void)setBackdropStyle:(long long)arg1;

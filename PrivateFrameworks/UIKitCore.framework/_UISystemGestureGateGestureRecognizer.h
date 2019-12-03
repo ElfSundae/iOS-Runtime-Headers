@@ -12,14 +12,15 @@
 
 + (bool)_shouldDefaultToTouches;
 
-- (void)_delayTouch:(id)arg1 forEvent:(id)arg2;
 - (id)_gateGestureTypeString;
+- (void)_notifyWindowNoLongerAwaitingSystemGestureNotification:(id)arg1;
 - (void)_resetGestureRecognizer;
 - (void)_systemGestureStateChanged:(id)arg1;
 - (void)_timeOut;
 - (bool)canBePreventedByGestureRecognizer:(id)arg1;
 - (bool)canPreventGestureRecognizer:(id)arg1;
 - (void)dealloc;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;
 - (id)initWithWindow:(id)arg1 type:(unsigned char)arg2;
 - (void)setDelaysTouchesBegan:(bool)arg1;

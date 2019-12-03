@@ -13,6 +13,7 @@
     NSLayoutConstraint * _actionSequenceViewWidthAnchoredToConstantConstraint;
     NSLayoutConstraint * _actionSequenceViewWidthAnchoredToContentGuideConstraint;
     UIInterfaceActionVisualStyle * _activeTestingVisualStyle;
+    bool  _alignActionSeparatorLeadingEdgeWithContent;
     NSArray * _allowedActionLayoutAxisByPriority;
     UIInterfaceActionVisualStyle * _appliedVisualStyle;
     NSMutableArray * _arrangedScrollableHeaderViews;
@@ -27,6 +28,7 @@
     UIInterfaceActionRepresentationView * _preferredActionRepresentation;
     long long  _presentationStyle;
     double  _requiredActionRepresentationWidth;
+    bool  _scrubbingEnabled;
     double  _selectionHighlightContinuousCornerRadius;
     bool  _showsSeparatorAboveActions;
     bool  _springLoaded;
@@ -49,6 +51,7 @@
 @property (nonatomic, readonly) _UIInterfaceActionRepresentationsSequenceView *actionSequenceView;
 @property (nonatomic, readonly) NSLayoutConstraint *actionSequenceViewWidthAnchoredToConstantConstraint;
 @property (nonatomic, readonly) NSLayoutConstraint *actionSequenceViewWidthAnchoredToContentGuideConstraint;
+@property (getter=_alignActionSeparatorLeadingEdgeWithContent, setter=_setAlignActionSeparatorLeadingEdgeWithContent:, nonatomic) bool alignActionSeparatorLeadingEdgeWithContent;
 @property (nonatomic, retain) NSArray *allowedActionLayoutAxisByPriority;
 @property (nonatomic, retain) UIInterfaceActionVisualStyle *appliedVisualStyle;
 @property (nonatomic, readonly) NSArray *arrangedHeaderViews;
@@ -62,6 +65,7 @@
 @property (nonatomic, retain) UIInterfaceActionRepresentationView *preferredActionRepresentation;
 @property (nonatomic) long long presentationStyle;
 @property (nonatomic) double requiredActionRepresentationWidth;
+@property (nonatomic) bool scrubbingEnabled;
 @property (getter=_selectionHighlightContinuousCornerRadius, setter=_setSelectionHighlightContinuousCornerRadius:, nonatomic) double selectionHighlightContinuousCornerRadius;
 @property (nonatomic) bool showsSeparatorAboveActions;
 @property (getter=isSpringLoaded, nonatomic) bool springLoaded;
@@ -86,6 +90,7 @@
 - (void)_addBackgroudViewToViewHierarchy:(id)arg1;
 - (void)_addConstraintToActiveTopLevelViewArrangementConstraints:(id)arg1;
 - (id)_alertController;
+- (bool)_alignActionSeparatorLeadingEdgeWithContent;
 - (id)_allActionViews;
 - (void)_applyVisualStyle;
 - (void)_applyVisualStyleCornerRadius;
@@ -96,7 +101,7 @@
 - (void)_associateWeakSimultaneouslyPresentedGroupViews:(id)arg1 bidirectional:(bool)arg2;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_buttonEdgeInsetsFromGroupViewEdge;
 - (void)_commonInitWithActionGroup:(id)arg1 visualStyleProvider:(id)arg2 actionHandlerInvocationDelegate:(id)arg3;
-- (id)_constraintsToPinView:(id)arg1 layoutGuide:(id)arg2 identifier:(id)arg3;
+- (id)_constraintsToPinView:(id)arg1 toObject:(id)arg2 identifier:(id)arg3;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_contentEdgeFrame;
 - (id)_currentlyFocusedActionView;
 - (id)_defaultOrderingForActionRepresentationViews:(id)arg1;
@@ -122,6 +127,7 @@
 - (void)_scrollActionRepresentationViewToVisibleForAction:(id)arg1 animated:(bool)arg2;
 - (void)_scrollPreferredActionRepresentationViewToVisibleAnimated:(bool)arg1;
 - (double)_selectionHighlightContinuousCornerRadius;
+- (void)_setAlignActionSeparatorLeadingEdgeWithContent:(bool)arg1;
 - (void)_setAndApplyVisualStyle:(id)arg1;
 - (void)_setDrawsBackground:(bool)arg1;
 - (void)_setLayoutDebuggingIdentifier:(id)arg1;
@@ -135,6 +141,7 @@
 - (bool)_shouldAllowPassthroughToLayersBehindUsForTouches:(id)arg1;
 - (bool)_shouldInstallContentGuideConstraints;
 - (bool)_shouldShowSeparatorAboveActionsSequenceView;
+- (double)_topLevelItemsMargin;
 - (void)_updateActionSequenceScrollability;
 - (void)_updateActionSequenceViewActionLayoutAxis;
 - (void)_updateActionSequenceViewDebugLayoutIdentifier;
@@ -180,6 +187,7 @@
 - (void)removeArrangedHeaderView:(id)arg1;
 - (double)requiredActionRepresentationWidth;
 - (void)scrollToCenterForInterfaceAction:(id)arg1;
+- (bool)scrubbingEnabled;
 - (void)setActionGroup:(id)arg1;
 - (void)setActionHandlerInvocationDelegate:(id)arg1;
 - (void)setActionLayoutAxis:(long long)arg1;
@@ -187,9 +195,11 @@
 - (void)setActiveTestingVisualStyle:(id)arg1;
 - (void)setAllowedActionLayoutAxisByPriority:(id)arg1;
 - (void)setAppliedVisualStyle:(id)arg1;
+- (void)setFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setPreferredActionRepresentation:(id)arg1;
 - (void)setPresentationStyle:(long long)arg1;
 - (void)setRequiredActionRepresentationWidth:(double)arg1;
+- (void)setScrubbingEnabled:(bool)arg1;
 - (void)setShowsSeparatorAboveActions:(bool)arg1;
 - (void)setSimultaneouslyPresentedGroupViews:(id)arg1;
 - (void)setSpringLoaded:(bool)arg1;

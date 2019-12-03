@@ -3,7 +3,9 @@
  */
 
 @interface MultiplePauseResumeDataDownloadDelegate : NSObject <NSURLSessionDelegate, NSURLSessionDownloadDelegate> {
+    bool  _deleteTempFileOnce;
     bool  _expectDirectory;
+    bool  _expectZeroOffestResume;
     bool  _result;
     bool  _retryingWithResumeData;
     long long  _sizeOfEntity;
@@ -24,7 +26,7 @@
 - (bool)didTestPass;
 - (long long)getSizeOfEntity;
 - (id)getWaiter;
-- (id)initExpectingDirectory:(bool)arg1;
+- (id)initExpectingDirectory:(bool)arg1 deleteTempFileOnce:(bool)arg2;
 - (bool)isExpectingDirectory;
 - (bool)isRetryingWithResumeData;
 

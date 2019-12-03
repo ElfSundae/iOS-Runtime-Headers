@@ -27,6 +27,7 @@
 @property (nonatomic, readonly) bool supportsLeaderboardSets;
 @property (nonatomic, readonly) bool supportsLeaderboards;
 
++ (id)cacheKeyForPlayer:(id)arg1 bundleIdentifier:(id)arg2;
 + (id)cacheKeyForPlayer:(id)arg1 game:(id)arg2;
 + (id)cacheKeyForPlayer:(id)arg1 internal:(id)arg2;
 + (id)gameRecordForPlayer:(id)arg1 game:(id)arg2;
@@ -34,6 +35,7 @@
 + (id)internalRepresentationForPlayer:(id)arg1 game:(id)arg2;
 + (void)invalidateCaches;
 + (void)loadGameRecordForPlayer:(id)arg1 game:(id)arg2 withCompletionHandler:(id /* block */)arg3;
++ (void)loadGameRecordsForPlayer:(id)arg1 bundleIDs:(id)arg2 withCompletionHandler:(id /* block */)arg3;
 + (void)loadGameRecordsForPlayer:(id)arg1 games:(id)arg2 withCompletionHandler:(id /* block */)arg3;
 + (void)partitionGameRecords:(id)arg1 returniOS:(id*)arg2 returnMac:(id*)arg3;
 + (bool)supportsSecureCoding;
@@ -42,6 +44,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithInternalRepresentation:(id)arg1;
 - (id)initWithInternalRepresentation:(id)arg1 player:(id)arg2;

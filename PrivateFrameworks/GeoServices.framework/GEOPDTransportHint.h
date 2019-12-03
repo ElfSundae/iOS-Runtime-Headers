@@ -4,8 +4,8 @@
 
 @interface GEOPDTransportHint : PBCodable <NSCopying> {
     struct { 
-        unsigned int transportType : 1; 
-    }  _has;
+        unsigned int has_transportType : 1; 
+    }  _flags;
     int  _transportType;
     PBUnknownFields * _unknownFields;
 }
@@ -14,8 +14,11 @@
 @property (nonatomic) int transportType;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsTransportType:(id)arg1;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -24,6 +27,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasTransportType:(bool)arg1;
 - (void)setTransportType:(int)arg1;

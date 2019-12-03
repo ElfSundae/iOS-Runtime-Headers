@@ -17,12 +17,14 @@
             struct PreviewConverter {} *__value_; 
         } __ptr_; 
     }  _converter;
+    bool  _hasLoadedPreview;
     bool  _hasProcessedResponse;
-    bool  _hasSentDidReceiveResponse;
     long long  _lengthReceived;
     bool  _needsToCallDidFinishLoading;
-    struct RefPtr<WebCore::ResourceLoader, WTF::DumbPtrTraits<WebCore::ResourceLoader> > { 
-        struct ResourceLoader {} *m_ptr; 
+    struct WeakPtr<WebCore::ResourceLoader> { 
+        struct RefPtr<WTF::WeakPtrImpl, WTF::DumbPtrTraits<WTF::WeakPtrImpl> > { 
+            struct WeakPtrImpl {} *m_ptr; 
+        } m_impl; 
     }  _resourceLoader;
     struct ResourceResponse { 
         struct URL { 
@@ -44,7 +46,7 @@
             unsigned int m_pathEnd; 
             unsigned int m_queryEnd; 
         } m_url; 
-        struct AtomicString { 
+        struct AtomString { 
             struct String { 
                 struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { 
                     struct StringImpl {} *m_ptr; 
@@ -52,21 +54,21 @@
             } m_string; 
         } m_mimeType; 
         long long m_expectedContentLength; 
-        struct AtomicString { 
+        struct AtomString { 
             struct String { 
                 struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { 
                     struct StringImpl {} *m_ptr; 
                 } m_impl; 
             } m_string; 
         } m_textEncodingName; 
-        struct AtomicString { 
+        struct AtomString { 
             struct String { 
                 struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { 
                     struct StringImpl {} *m_ptr; 
                 } m_impl; 
             } m_string; 
         } m_httpStatusText; 
-        struct AtomicString { 
+        struct AtomString { 
             struct String { 
                 struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { 
                     struct StringImpl {} *m_ptr; 
@@ -126,6 +128,16 @@
                 } m_impl; 
             } connectionIdentifier; 
             unsigned char priority; 
+            struct String { 
+                struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { 
+                    struct StringImpl {} *m_ptr; 
+                } m_impl; 
+            } tlsProtocol; 
+            struct String { 
+                struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { 
+                    struct StringImpl {} *m_ptr; 
+                } m_impl; 
+            } tlsCipher; 
             bool complete; 
             struct HTTPHeaderMap { 
                 struct Vector<WebCore::HTTPHeaderMap::CommonHeader, 0, WTF::CrashOnOverflow, 6> { 
@@ -219,17 +231,21 @@
             void *m_ptr; 
         } m_nsResponse; 
     }  _response;
+    bool  _shouldDecidePolicyBeforeLoading;
 }
+
+@property (nonatomic, readonly) bool shouldDecidePolicyBeforeLoading;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_sendDidReceiveResponseIfNecessary;
+- (void)_loadPreviewIfNeeded;
 - (void)appendDataArray:(id)arg1;
 - (void)connection:(id)arg1 didFailWithError:(id)arg2;
 - (void)connection:(id)arg1 didReceiveData:(id)arg2 lengthReceived:(long long)arg3;
 - (void)connectionDidFinishLoading:(id)arg1;
 - (void)failed;
 - (void)finishedAppending;
-- (id)initWithResourceLoader:(struct ResourceLoader { int (**x1)(); unsigned int x2; struct RefPtr<WebCore::ResourceHandle, WTF::DumbPtrTraits<WebCore::ResourceHandle> > { struct ResourceHandle {} *x_3_1_1; } x3; struct RefPtr<WebCore::Frame, WTF::DumbPtrTraits<WebCore::Frame> > { struct Frame {} *x_4_1_1; } x4; struct RefPtr<WebCore::DocumentLoader, WTF::DumbPtrTraits<WebCore::DocumentLoader> > { struct DocumentLoader {} *x_5_1_1; } x5; struct ResourceResponse { struct URL { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_4_1; } x_1_3_1; } x_1_2_1; unsigned int x_1_2_2 : 1; unsigned int x_1_2_3 : 1; unsigned int x_1_2_4 : 1; unsigned int x_1_2_5 : 3; unsigned int x_1_2_6 : 26; unsigned int x_1_2_7; unsigned int x_1_2_8; unsigned int x_1_2_9; unsigned int x_1_2_10; unsigned int x_1_2_11; unsigned int x_1_2_12; unsigned int x_1_2_13; } x_6_1_1; struct AtomicString { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_4_1; } x_1_3_1; } x_2_2_1; } x_6_1_2; long long x_6_1_3; struct AtomicString { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_4_1; } x_1_3_1; } x_4_2_1; } x_6_1_4; struct AtomicString { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_4_1; } x_1_3_1; } x_5_2_1; } x_6_1_5; struct AtomicString { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_4_1; } x_1_3_1; } x_6_2_1; } x_6_1_6; } x6; }*)arg1 resourceResponse:(const struct ResourceResponse { struct URL { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_3_1; } x_1_2_1; } x_1_1_1; unsigned int x_1_1_2 : 1; unsigned int x_1_1_3 : 1; unsigned int x_1_1_4 : 1; unsigned int x_1_1_5 : 3; unsigned int x_1_1_6 : 26; unsigned int x_1_1_7; unsigned int x_1_1_8; unsigned int x_1_1_9; unsigned int x_1_1_10; unsigned int x_1_1_11; unsigned int x_1_1_12; unsigned int x_1_1_13; } x1; struct AtomicString { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_3_1; } x_1_2_1; } x_2_1_1; } x2; long long x3; struct AtomicString { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_3_1; } x_1_2_1; } x_4_1_1; } x4; struct AtomicString { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_3_1; } x_1_2_1; } x_5_1_1; } x5; struct AtomicString { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_3_1; } x_1_2_1; } x_6_1_1; } x6; }*)arg2;
+- (id)initWithResourceLoader:(struct ResourceLoader { int (**x1)(); struct WeakPtrFactory<WebCore::ResourceLoader> { struct RefPtr<WTF::WeakPtrImpl, WTF::DumbPtrTraits<WTF::WeakPtrImpl> > { struct WeakPtrImpl {} *x_1_2_1; } x_2_1_1; } x2; unsigned int x3; struct RefPtr<WebCore::ResourceHandle, WTF::DumbPtrTraits<WebCore::ResourceHandle> > { struct ResourceHandle {} *x_4_1_1; } x4; struct RefPtr<WebCore::Frame, WTF::DumbPtrTraits<WebCore::Frame> > { struct Frame {} *x_5_1_1; } x5; struct RefPtr<WebCore::DocumentLoader, WTF::DumbPtrTraits<WebCore::DocumentLoader> > { struct DocumentLoader {} *x_6_1_1; } x6; struct ResourceResponse { struct URL { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_4_1; } x_1_3_1; } x_1_2_1; unsigned int x_1_2_2 : 1; unsigned int x_1_2_3 : 1; unsigned int x_1_2_4 : 1; unsigned int x_1_2_5 : 3; unsigned int x_1_2_6 : 26; unsigned int x_1_2_7; unsigned int x_1_2_8; unsigned int x_1_2_9; unsigned int x_1_2_10; unsigned int x_1_2_11; unsigned int x_1_2_12; unsigned int x_1_2_13; } x_7_1_1; struct AtomString { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_4_1; } x_1_3_1; } x_2_2_1; } x_7_1_2; long long x_7_1_3; struct AtomString { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_4_1; } x_1_3_1; } x_4_2_1; } x_7_1_4; struct AtomString { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_4_1; } x_1_3_1; } x_5_2_1; } x_7_1_5; struct AtomString { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_4_1; } x_1_3_1; } x_6_2_1; } x_7_1_6; } x7; }*)arg1 resourceResponse:(const struct ResourceResponse { struct URL { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_3_1; } x_1_2_1; } x_1_1_1; unsigned int x_1_1_2 : 1; unsigned int x_1_1_3 : 1; unsigned int x_1_1_4 : 1; unsigned int x_1_1_5 : 3; unsigned int x_1_1_6 : 26; unsigned int x_1_1_7; unsigned int x_1_1_8; unsigned int x_1_1_9; unsigned int x_1_1_10; unsigned int x_1_1_11; unsigned int x_1_1_12; unsigned int x_1_1_13; } x1; struct AtomString { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_3_1; } x_1_2_1; } x_2_1_1; } x2; long long x3; struct AtomString { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_3_1; } x_1_2_1; } x_4_1_1; } x4; struct AtomString { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_3_1; } x_1_2_1; } x_5_1_1; } x5; struct AtomString { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_3_1; } x_1_2_1; } x_6_1_1; } x6; }*)arg2;
+- (bool)shouldDecidePolicyBeforeLoading;
 
 @end

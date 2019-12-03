@@ -16,12 +16,9 @@
 
 + (id)contextWithConsumer:(id)arg1 text:(id)arg2 operations:(id)arg3 searchQueries:(id)arg4;
 
+- (void).cxx_destruct;
 - (id)consumer;
-- (bool)consumerRespondsToAutocompleteCallbacks;
-- (bool)consumerRespondsToCorecipientCallbacks;
-- (bool)consumerRespondsToNetworkingMethods;
-- (bool)consumerRespondsToOldSortingCallbacks;
-- (void)dealloc;
+- (bool)consumerRespondsToCallbacks;
 - (bool)done;
 - (id)operations;
 - (id)searchQueries;

@@ -8,6 +8,7 @@
 + (bool)actionAvailableForContact:(id)arg1;
 
 - (bool)canBePerformedByOpeningURL;
+- (id)icon;
 - (id)localizedName;
 - (id)notificationIconBundleIdentifier;
 - (id)notificationTitle;

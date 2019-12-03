@@ -4,6 +4,7 @@
 
 @interface FCConfigurationManager : NSObject <FCCoreConfigurationManager, FCFeldsparIDProviderObserving, FCMagazinesConfigurationManager, FCNewsAppConfigurationManager> {
     NSObject<OS_dispatch_queue> * _accessQueue;
+    NSObject<OS_dispatch_queue> * _appConfigFetchQueue;
     NSHashTable * _appConfigObservers;
     bool  _attemptedAppConfigFetch;
     NSDictionary * _cachedWidgetConfigurationDict;
@@ -13,8 +14,8 @@
     NSData * _currentMagazinesConfiguration;
     <FCFeldsparIDProvider> * _feldsparIDProvider;
     FCKeyValueStore * _localStore;
+    FCAsyncSerialQueue * _remoteConfigManagerSerialQueue;
     RCConfigurationManager * _remoteConfigurationManager;
-    FCAsyncSerialQueue * _requestSerialQueue;
     bool  _runningUnitTests;
     NSArray * _segmentSetIDs;
     bool  _shouldIgnoreCache;
@@ -23,6 +24,7 @@
 }
 
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *accessQueue;
+@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *appConfigFetchQueue;
 @property (nonatomic, retain) NSHashTable *appConfigObservers;
 @property (nonatomic, readonly) <FCNewsAppConfiguration> *appConfiguration;
 @property (nonatomic) bool attemptedAppConfigFetch;
@@ -36,13 +38,14 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly, copy) NSString *feldsparID;
 @property (nonatomic, readonly) <FCFeldsparIDProvider> *feldsparIDProvider;
+@property (nonatomic, readonly) <FCNewsAppConfiguration> *fetchedAppConfiguration;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) <FCNewsAppConfiguration><FCJSONEncodableObjectProviding> *jsonEncodableAppConfiguration;
 @property (nonatomic, retain) FCKeyValueStore *localStore;
 @property (nonatomic, readonly) NSData *magazinesConfigurationData;
 @property (nonatomic, readonly) <FCNewsAppConfiguration> *possiblyUnfetchedAppConfiguration;
+@property (nonatomic, readonly) FCAsyncSerialQueue *remoteConfigManagerSerialQueue;
 @property (nonatomic, readonly) RCConfigurationManager *remoteConfigurationManager;
-@property (nonatomic, readonly) FCAsyncSerialQueue *requestSerialQueue;
 @property (getter=isRunningUnitTests, nonatomic) bool runningUnitTests;
 @property (nonatomic, copy) NSArray *segmentSetIDs;
 @property (nonatomic) bool shouldIgnoreCache;
@@ -62,15 +65,15 @@
 - (id)_configurationSettingsWithRequestInfos:(id)arg1 feldsparID:(id)arg2 storefrontID:(id)arg3 contextConfiguration:(id)arg4 useBackgroundRefreshRate:(bool)arg5;
 - (unsigned long long)_configurationSourceForSourceName:(id)arg1;
 - (id)_deserializeChangeTags:(id)arg1;
-- (void)_fetchAppConfigurationIfNeededWithCompletionQueue:(id)arg1 shouldRefresh:(bool)arg2 completion:(id /* block */)arg3;
-- (void)_fetchAppConfigurationWithConfigurationSettings:(id)arg1 completionQueue:(id)arg2 completion:(id /* block */)arg3;
-- (void)_fetchAppWidgetConfigurationIfNeededUseBackgroundRefreshRate:(bool)arg1 completionQueue:(id)arg2 completion:(id /* block */)arg3;
-- (void)_fetchMagazinesConfigurationIfNeededWithCompletionQueue:(id)arg1 completion:(id /* block */)arg2;
+- (void)_fetchAppConfigurationIfNeededWithCompletionQueue:(id)arg1 forceRefresh:(bool)arg2 completion:(id /* block */)arg3;
+- (void)_fetchRemoteAppWidgetConfigurationIfNeededUseBackgroundRefreshRate:(bool)arg1 completionQueue:(id)arg2 completion:(id /* block */)arg3;
+- (void)_fetchRemoteMagazinesConfigurationIfNeededWithCompletionQueue:(id)arg1 completion:(id /* block */)arg2;
 - (void)_loadConfigurationFromStore:(id)arg1;
 - (id)_mergeCachedDataWithWidgetConfigurationData:(id)arg1;
 - (id)_mergeRecords:(id)arg1 withCachedRecords:(id)arg2;
 - (id)_permanentURLForRequestKey:(id)arg1 storefrontID:(id)arg2;
 - (id)_recordIDForRequestKey:(id)arg1 storefrontID:(id)arg2;
+- (void)_refreshAppConfigurationWithConfigurationSettings:(id)arg1 force:(bool)arg2 completionQueue:(id)arg3 completion:(id /* block */)arg4;
 - (unsigned long long)_remoteConfigurationEnvironmentForContextIdentifier:(long long)arg1;
 - (id)_requestInfoForRequestKey:(id)arg1 storefrontID:(id)arg2 additionalChangeTags:(id)arg3;
 - (id)_responseKeyForRequestKey:(id)arg1;
@@ -79,6 +82,7 @@
 - (id)accessQueue;
 - (void)addAppConfigObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
+- (id)appConfigFetchQueue;
 - (id)appConfigObservers;
 - (id)appConfiguration;
 - (bool)attemptedAppConfigFetch;
@@ -98,6 +102,7 @@
 - (void)fetchConfigurationIfNeededWithCompletionQueue:(id)arg1 completion:(id /* block */)arg2;
 - (void)fetchMagazinesConfigurationIfNeededWithCompletionQueue:(id)arg1 completion:(id /* block */)arg2;
 - (void)fetchTrendingSearchesIfNeededWithCompletion:(id /* block */)arg1;
+- (id)fetchedAppConfiguration;
 - (id)init;
 - (id)initForTesting;
 - (id)initWithContextConfiguration:(id)arg1 contentHostDirectoryFileURL:(id)arg2 feldsparIDProvider:(id)arg3;
@@ -107,10 +112,10 @@
 - (id)magazinesConfigurationData;
 - (id)possiblyUnfetchedAppConfiguration;
 - (void)refreshAppConfigurationIfNeededWithCompletionQueue:(id)arg1 refreshCompletion:(id /* block */)arg2;
+- (id)remoteConfigManagerSerialQueue;
 - (id)remoteConfigurationManager;
 - (void)removeAppConfigObserver:(id)arg1;
 - (void)removeObserver:(id)arg1;
-- (id)requestSerialQueue;
 - (id)segmentSetIDs;
 - (void)setAppConfigObservers:(id)arg1;
 - (void)setAttemptedAppConfigFetch:(bool)arg1;

@@ -5,6 +5,7 @@
 @interface CNGeminiManager : NSObject <CoreTelephonyClientDelegate, TUCallProviderManagerDelegate> {
     TUCallProviderManager * _callProviderManager;
     CoreTelephonyClient * _coreTelephonyClient;
+    unsigned long long  _dataSourceExclusions;
     NSMapTable * _delegateToQueue;
     CNContactsEnvironment * _environment;
     NSObject<OS_dispatch_queue> * _queue;
@@ -12,6 +13,7 @@
 
 @property (nonatomic, retain) TUCallProviderManager *callProviderManager;
 @property (nonatomic, retain) CoreTelephonyClient *coreTelephonyClient;
+@property (nonatomic) unsigned long long dataSourceExclusions;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, retain) NSMapTable *delegateToQueue;
 @property (readonly, copy) NSString *description;
@@ -49,6 +51,7 @@
 - (id)contactForPhoneString:(id)arg1 contactStore:(id)arg2;
 - (id)coreTelephonyClient;
 - (void)danglingPlansDidUpdate:(id)arg1;
+- (unsigned long long)dataSourceExclusions;
 - (id)defaultSenderIdentityForInteractionsFromSenderIdentities:(id)arg1;
 - (id)delegateToQueue;
 - (id)environment;
@@ -82,6 +85,7 @@
 - (id)senderIdentityMatchingUUID:(id)arg1 fromSenderIdentities:(id)arg2;
 - (void)setCallProviderManager:(id)arg1;
 - (void)setCoreTelephonyClient:(id)arg1;
+- (void)setDataSourceExclusions:(unsigned long long)arg1;
 - (void)setDelegateToQueue:(id)arg1;
 - (void)setEnvironment:(id)arg1;
 - (void)setQueue:(id)arg1;

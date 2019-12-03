@@ -15,7 +15,7 @@
 - (id)allObjects;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned long long)count;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
 - (id)init;
 - (id)initWithCapacity:(unsigned long long)arg1;
@@ -30,6 +30,7 @@
 - (id)objectEnumerator;
 - (void)removeAllObjects;
 - (void)removeObject:(id)arg1;
+- (id)serializedRepresentation;
 - (void)setSet:(id)arg1;
 - (void)unionSet:(id)arg1;
 

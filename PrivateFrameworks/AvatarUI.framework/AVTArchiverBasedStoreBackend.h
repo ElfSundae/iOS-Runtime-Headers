@@ -33,8 +33,9 @@
 - (id)allAvatars;
 - (unsigned long long)avatarCountWithError:(id*)arg1;
 - (id)avatarsByIdentifiers;
+- (id)avatarsExcludingIdentifiers:(id)arg1 error:(id*)arg2;
 - (id)avatarsForFetchRequest:(id)arg1 error:(id*)arg2;
-- (id)avatarsWithIdentifier:(id)arg1 error:(id*)arg2;
+- (id)avatarsWithIdentifiers:(id)arg1 error:(id*)arg2;
 - (id)backendDelegate;
 - (bool)canCreateAvatarWithError:(id*)arg1;
 - (bool)deleteAvatarWithIdentifier:(id)arg1 error:(id*)arg2;

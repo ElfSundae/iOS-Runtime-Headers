@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface _UITextUndoOperationTyping : NSUndoTextOperation {
+@interface _UITextUndoOperationTyping : _UIUndoTextOperation {
     NSMutableAttributedString * _attributedString;
     struct _NSRange { 
         unsigned long long location; 

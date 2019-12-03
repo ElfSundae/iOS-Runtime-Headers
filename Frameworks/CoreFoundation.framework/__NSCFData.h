@@ -16,6 +16,7 @@
 - (bool)_providesConcreteBacking;
 - (bool)_tryRetain;
 - (const void*)bytes;
+- (Class)classForCoder;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;

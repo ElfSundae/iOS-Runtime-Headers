@@ -10,6 +10,7 @@
 
 - (id)CKStatusReportProperties;
 - (id)activityCreate;
+- (id)analyticsPayload;
 - (long long)databaseScope;
 - (id)flowControlKey;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;

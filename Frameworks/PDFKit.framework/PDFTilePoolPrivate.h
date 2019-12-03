@@ -3,14 +3,11 @@
  */
 
 @interface PDFTilePoolPrivate : NSObject {
-    bool  debugColorTileEdge;
-    NSMutableDictionary * freeSurfaces;
-    PDFTimer * recycleTimer;
+    int  surfaceType;
+    NSMutableDictionary * surfaces;
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
     }  surfacesLock;
-    int  tileRenderType;
-    NSMutableDictionary * usedSurfaces;
     NSObject<OS_dispatch_queue> * workQueue;
 }
 

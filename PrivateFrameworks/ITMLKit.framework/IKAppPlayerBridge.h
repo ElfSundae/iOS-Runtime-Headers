@@ -47,6 +47,7 @@
 + (id)makeFeatureJSObjectForFeature:(id)arg1;
 
 - (void).cxx_destruct;
+- (void)_evaluateDelegateBlockSync:(id /* block */)arg1;
 - (id)appContext;
 - (id)appPlayer;
 - (void)changeToMediaAtIndex:(unsigned long long)arg1;

@@ -4,9 +4,9 @@
 
 @interface GEOPDViewportInfo : PBCodable <NSCopying> {
     struct { 
-        unsigned int mapType : 1; 
-        unsigned int timeSinceMapViewportChanged : 1; 
-    }  _has;
+        unsigned int has_mapType : 1; 
+        unsigned int has_timeSinceMapViewportChanged : 1; 
+    }  _flags;
     GEOMapRegion * _mapRegion;
     int  _mapType;
     unsigned int  _timeSinceMapViewportChanged;
@@ -21,10 +21,12 @@
 @property (nonatomic) unsigned int timeSinceMapViewportChanged;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
 + (id)viewportInfoForTraits:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsMapType:(id)arg1;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -39,6 +41,7 @@
 - (int)mapType;
 - (id)mapTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasMapType:(bool)arg1;
 - (void)setHasTimeSinceMapViewportChanged:(bool)arg1;

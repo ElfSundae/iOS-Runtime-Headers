@@ -2,29 +2,27 @@
    Image: /System/Library/PrivateFrameworks/TemplateKit.framework/TemplateKit
  */
 
-@interface TLKTextAreaView : TLKStackView <NUIContainerStackViewDelegate, TLKTextAreaViewTesting> {
-    <TLKDetailsViewDelegate> * _buttonDelegate;
+@interface TLKTextAreaView : TLKStackView <TLKTextAreaViewTesting> {
+    <TLKTextAreaViewDelegate> * _buttonDelegate;
     NSMutableArray * _detailsFields;
     bool  _disableAllObservers;
-    UIButton * _footnoteButton;
+    TLKTextButton * _footnoteButton;
     NUIContainerStackView * _footnoteContainer;
     TLKRichTextField * _footnoteLabel;
-    unsigned long long  _style;
     TLKTitleContainerView * _titleContainer;
 }
 
-@property <TLKDetailsViewDelegate> *buttonDelegate;
+@property <TLKTextAreaViewDelegate> *buttonDelegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (retain) NSMutableArray *detailsFields;
-@property bool disableAllObservers;
-@property (retain) UIButton *footnoteButton;
-@property (retain) NUIContainerStackView *footnoteContainer;
-@property (retain) TLKRichTextField *footnoteLabel;
+@property (nonatomic, retain) NSMutableArray *detailsFields;
+@property (nonatomic) bool disableAllObservers;
+@property (nonatomic, retain) TLKTextButton *footnoteButton;
+@property (nonatomic, retain) NUIContainerStackView *footnoteContainer;
+@property (nonatomic, retain) TLKRichTextField *footnoteLabel;
 @property (readonly) unsigned long long hash;
-@property unsigned long long style;
 @property (readonly) Class superclass;
-@property (retain) TLKTitleContainerView *titleContainer;
+@property (nonatomic, retain) TLKTitleContainerView *titleContainer;
 
 + (id)footNoteLabelFont;
 
@@ -49,10 +47,7 @@
 - (void)setFootnoteButton:(id)arg1;
 - (void)setFootnoteContainer:(id)arg1;
 - (void)setFootnoteLabel:(id)arg1;
-- (void)setStyle:(unsigned long long)arg1;
 - (void)setTitleContainer:(id)arg1;
-- (unsigned long long)style;
-- (void)styleDidChange:(unsigned long long)arg1;
 - (id)textAreaLabelStrings;
 - (id)titleContainer;
 - (id)titleLabelString;

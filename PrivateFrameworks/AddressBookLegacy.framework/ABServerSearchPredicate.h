@@ -38,6 +38,7 @@
 - (id)initWithSearchString:(id)arg1 source:(void*)arg2 account:(id)arg3;
 - (id)initWithSearchString:(id)arg1 source:(void*)arg2 account:(id)arg3 includeSourceInResults:(bool)arg4;
 - (id)initWithSearchString:(id)arg1 source:(void*)arg2 account:(id)arg3 includeSourceInResults:(bool)arg4 includePhotosInResults:(bool)arg5;
+- (id)querySerializationIdentifier;
 - (void)runPredicate;
 - (void)runPredicateWithDelegate:(id)arg1;
 - (void)searchQuery:(id)arg1 finishedWithError:(id)arg2;
@@ -50,7 +51,6 @@
 - (void)setIncludeSourceInResults:(bool)arg1;
 - (void)setSearchString:(id)arg1;
 - (void)setSource:(void*)arg1;
-- (bool)shouldSerialize;
 - (void*)source;
 
 @end

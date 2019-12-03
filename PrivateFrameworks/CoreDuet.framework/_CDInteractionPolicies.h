@@ -7,7 +7,8 @@
     double  _maxLifespanInSeconds;
     unsigned long long  _maxNumberOfInteractions;
     unsigned long long  _maxNumberOfInteractionsDeletedInBatch;
-    NSDictionary * _specialPolicies;
+    NSDictionary * _specialPoliciesForBundleIds;
+    NSDictionary * _specialPoliciesForMechanisms;
 }
 
 @property (readonly) NSDate *dateOfOldestAllowedInteraction;
@@ -21,6 +22,7 @@
 - (void).cxx_destruct;
 - (id)dateOfOldestAllowedInteraction;
 - (id)dateOfOldestAllowedInteractionForMechanism:(long long)arg1;
+- (id)dateOfOldestAllowedInteractionForWhitelistedFirstPartyBundleIds;
 - (id)description;
 - (id)filterAndModifyInteractionsWithPolicies:(id)arg1 enforceDataLimits:(bool)arg2 enforcePrivacy:(bool)arg3;
 - (id)init;
@@ -29,5 +31,6 @@
 - (id)policyForMechanism:(long long)arg1;
 - (void)readConfigurationPlist;
 - (void)setupDefaultHardcodedPolicies;
+- (id)whitelistedFirstPartyBundleIds;
 
 @end

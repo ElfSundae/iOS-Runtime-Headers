@@ -9,6 +9,7 @@
     SSVPlayActivityEventContainerIDs * _containerIDs;
     unsigned long long  _containerType;
     NSString * _deviceName;
+    unsigned long long  _displayType;
     unsigned long long  _endReasonType;
     SSVPlayActivityEnqueuerProperties * _enqueuerProperties;
     NSDate * _eventDate;
@@ -22,6 +23,8 @@
     SSVPlayActivityEventItemIDs * _itemIDs;
     double  _itemStartTime;
     unsigned long long  _itemType;
+    unsigned long long  _lyricsDisplayedCharacterCount;
+    NSString * _lyricsLanguage;
     unsigned long long  _mediaType;
     bool  _offline;
     long long  _persistentID;
@@ -49,6 +52,7 @@
 @property (nonatomic, readonly) unsigned long long containerType;
 @property (nonatomic, readonly, copy) NSData *dataRepresentation;
 @property (nonatomic, readonly, copy) NSString *deviceName;
+@property (nonatomic, readonly) unsigned long long displayType;
 @property (nonatomic, readonly) unsigned long long endReasonType;
 @property (nonatomic, readonly, copy) SSVPlayActivityEnqueuerProperties *enqueuerProperties;
 @property (nonatomic, readonly, copy) NSDate *eventDate;
@@ -63,6 +67,8 @@
 @property (nonatomic, readonly, copy) SSVPlayActivityEventItemIDs *itemIDs;
 @property (nonatomic, readonly) double itemStartTime;
 @property (nonatomic, readonly) unsigned long long itemType;
+@property (nonatomic, readonly) unsigned long long lyricsDisplayedCharacterCount;
+@property (nonatomic, readonly, copy) NSString *lyricsLanguage;
 @property (nonatomic, readonly) unsigned long long mediaType;
 @property (getter=isOffline, nonatomic, readonly) bool offline;
 @property (nonatomic, readonly) long long persistentID;
@@ -94,6 +100,7 @@
 - (id)dataRepresentation;
 - (id)description;
 - (id)deviceName;
+- (unsigned long long)displayType;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)endReasonType;
 - (id)enqueuerProperties;
@@ -118,6 +125,8 @@
 - (id)itemIDs;
 - (double)itemStartTime;
 - (unsigned long long)itemType;
+- (unsigned long long)lyricsDisplayedCharacterCount;
+- (id)lyricsLanguage;
 - (unsigned long long)mediaType;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (long long)persistentID;

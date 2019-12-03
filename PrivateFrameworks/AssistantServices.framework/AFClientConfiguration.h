@@ -3,9 +3,8 @@
  */
 
 @interface AFClientConfiguration : NSObject <NSCopying, NSSecureCoding> {
+    AFAccessibilityState * _accessibilityState;
     long long  _deviceRingerSwitchState;
-    bool  _isAccessibilityVibrationDisabled;
-    bool  _isAccessibilityVoiceOverTouchEnabled;
     bool  _isDeviceInCarDNDMode;
     bool  _isDeviceInSetupFlow;
     bool  _isDeviceInStarkMode;
@@ -14,9 +13,8 @@
     AFAudioPlaybackRequest * _twoShotAudioPlaybackRequest;
 }
 
+@property (nonatomic, readonly, copy) AFAccessibilityState *accessibilityState;
 @property (nonatomic, readonly) long long deviceRingerSwitchState;
-@property (nonatomic, readonly) bool isAccessibilityVibrationDisabled;
-@property (nonatomic, readonly) bool isAccessibilityVoiceOverTouchEnabled;
 @property (nonatomic, readonly) bool isDeviceInCarDNDMode;
 @property (nonatomic, readonly) bool isDeviceInSetupFlow;
 @property (nonatomic, readonly) bool isDeviceInStarkMode;
@@ -29,15 +27,14 @@
 
 - (void).cxx_destruct;
 - (id)_descriptionWithIndent:(unsigned long long)arg1;
+- (id)accessibilityState;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (long long)deviceRingerSwitchState;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithAccessibilityState:(id)arg1 deviceRingerSwitchState:(long long)arg2 isDeviceInSetupFlow:(bool)arg3 isDeviceInCarDNDMode:(bool)arg4 isDeviceInStarkMode:(bool)arg5 outputVolume:(float)arg6 tapToSiriAudioPlaybackRequest:(id)arg7 twoShotAudioPlaybackRequest:(id)arg8;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDeviceRingerSwitchState:(long long)arg1 isDeviceInSetupFlow:(bool)arg2 isDeviceInCarDNDMode:(bool)arg3 isDeviceInStarkMode:(bool)arg4 isAccessibilityVoiceOverTouchEnabled:(bool)arg5 isAccessibilityVibrationDisabled:(bool)arg6 outputVolume:(float)arg7 tapToSiriAudioPlaybackRequest:(id)arg8 twoShotAudioPlaybackRequest:(id)arg9;
-- (bool)isAccessibilityVibrationDisabled;
-- (bool)isAccessibilityVoiceOverTouchEnabled;
 - (bool)isDeviceInCarDNDMode;
 - (bool)isDeviceInSetupFlow;
 - (bool)isDeviceInStarkMode;

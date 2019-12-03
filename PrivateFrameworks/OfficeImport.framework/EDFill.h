@@ -8,6 +8,7 @@
 
 + (id)fillWithResources:(id)arg1;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)initWithResources:(id)arg1;

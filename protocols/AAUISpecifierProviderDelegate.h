@@ -10,4 +10,8 @@
 - (void)specifierProvider:(id <AAUISpecifierProvider>)arg1 showViewController:(UIViewController *)arg2;
 - (void)specifierProvider:(id <AAUISpecifierProvider>)arg1 willBeginLoadingSpecifier:(PSSpecifier *)arg2;
 
+@optional
+
+- (void)specifierProvider:(id <AAUISpecifierProvider>)arg1 dataclassSwitchStateDidChange:(NSNumber *)arg2 withSpecifier:(PSSpecifier *)arg3;
+
 @end

@@ -6,8 +6,6 @@
     PXCapsuleButton * _actionButton;
     id /* block */  _actionButtonAction;
     NSString * _actionButtonTitle;
-    NSString * _caption;
-    UILabel * _captionLabel;
     bool  _containsUnverifiedPersons;
     NSString * _headline;
     struct _NSRange { 
@@ -16,21 +14,19 @@
     }  _headlineBoldRange;
     UILabel * _headlineLabel;
     bool  _loadingPeopleSuggestions;
-    NSArray * _namesForHeadline;
+    NSArray * _localizedNamesForHeadline;
     NSString * _subheadline;
     UILabel * _subheadlineLabel;
     PXUpdater * _updater;
     UIVisualEffectView * _visualEffectView;
 }
 
-@property (nonatomic, copy) NSString *caption;
 @property (nonatomic) bool containsUnverifiedPersons;
 @property (nonatomic, copy) NSString *headline;
 @property (getter=isLoadingPeopleSuggestions, nonatomic) bool loadingPeopleSuggestions;
-@property (nonatomic, copy) NSArray *namesForHeadline;
+@property (nonatomic, copy) NSArray *localizedNamesForHeadline;
 @property (nonatomic, copy) NSString *subheadline;
 
-+ (id)_captionLabelFont;
 + (id)_headlineLabelBoldFont;
 + (id)_headlineLabelFont;
 + (id)_subheadlineLabelFont;
@@ -45,20 +41,18 @@
 - (void)_updateActionButton;
 - (void)_updateLoadingPeopleSuggestions;
 - (void)_updateTitles;
-- (id)caption;
 - (bool)containsUnverifiedPersons;
 - (id)headline;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (bool)isLoadingPeopleSuggestions;
 - (void)layoutSubviews;
-- (id)namesForHeadline;
+- (id)localizedNamesForHeadline;
 - (void)setActionButtonWithTitle:(id)arg1 actionBlock:(id /* block */)arg2;
-- (void)setCaption:(id)arg1;
 - (void)setContainsUnverifiedPersons:(bool)arg1;
 - (void)setHeadline:(id)arg1;
 - (void)setHeadline:(id)arg1 boldRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (void)setLoadingPeopleSuggestions:(bool)arg1;
-- (void)setNamesForHeadline:(id)arg1;
+- (void)setLocalizedNamesForHeadline:(id)arg1;
 - (void)setSubheadline:(id)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (id)subheadline;

@@ -10,6 +10,7 @@
 + (id)generateKeyForObject:(id)arg1 andProperty:(id)arg2;
 
 - (void).cxx_destruct;
+- (id)deepCopy;
 - (id)init;
 - (id)objectForKey:(id)arg1;
 - (void)performWithEach:(id /* block */)arg1;

@@ -13,6 +13,7 @@
     _CLKTimeFormatterSubstringRange * _designatorRangeInTimeAndDesignatorTextWithoutMinutesIfZero;
     NSString * _designatorText;
     bool  _forcesLatinNumbers;
+    bool  _includeSeparatorInTimeSubstringFromSeparatorText;
     _CLKTimeFormatterSubstringRange * _lastBlinkerRangeInTimeText;
     struct NSNumber { Class x1; } * _minutesUpdateToken;
     NSHashTable * _observers;
@@ -45,6 +46,7 @@
 @property (nonatomic, readonly) struct _NSRange { unsigned long long x1; unsigned long long x2; } designatorRangeInTimeAndDesignatorTextWithoutMinutesIfZero;
 @property (nonatomic, readonly) NSString *designatorText;
 @property (nonatomic, readonly) bool forcesLatinNumbers;
+@property (nonatomic) bool includeSeparatorInTimeSubstringFromSeparatorText;
 @property (nonatomic, readonly) struct _NSRange { unsigned long long x1; unsigned long long x2; } lastBlinkerRangeInTimeText;
 @property (nonatomic, retain) NSDate *overrideDate;
 @property (nonatomic, readonly) struct _NSRange { unsigned long long x1; unsigned long long x2; } rangeInTimeSubstringFromSecondsSeparatorText;
@@ -97,6 +99,7 @@
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })designatorRangeInTimeAndDesignatorTextWithoutMinutesIfZero;
 - (id)designatorText;
 - (bool)forcesLatinNumbers;
+- (bool)includeSeparatorInTimeSubstringFromSeparatorText;
 - (id)init;
 - (id)initWithForcesLatinNumbers:(bool)arg1;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })lastBlinkerRangeInTimeText;
@@ -107,6 +110,7 @@
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })separatorRangeInTimeAndDesignatorText;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })separatorRangeInTimeText;
 - (void)setDelegate:(id)arg1;
+- (void)setIncludeSeparatorInTimeSubstringFromSeparatorText:(bool)arg1;
 - (void)setOverrideDate:(id)arg1;
 - (void)setPaused:(bool)arg1 forReason:(id)arg2;
 - (void)setShowSeconds:(bool)arg1;

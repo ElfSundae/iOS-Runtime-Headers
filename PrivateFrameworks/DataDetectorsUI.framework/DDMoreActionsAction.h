@@ -5,6 +5,7 @@
 @interface DDMoreActionsAction : DDAction
 
 - (id)alertActions;
+- (id)icon;
 - (int)interactionType;
 - (id)localizedName;
 - (id)viewController;

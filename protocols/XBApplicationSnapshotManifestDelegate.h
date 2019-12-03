@@ -5,6 +5,6 @@
 
 @required
 
-- (void)manifestDidPurgeSnapshotsWithProtectedContent:(XBApplicationSnapshotManifest *)arg1;
+- (void)manifest:(XBApplicationSnapshotManifest *)arg1 didPurgeProtectedContentSnapshotsWithGroupIdentifiers:(NSArray *)arg2;
 
 @end

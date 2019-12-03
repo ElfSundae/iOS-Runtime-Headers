@@ -11,7 +11,6 @@
     bool  __needsUpdateTableView;
     PUSlideshowMediaItem * __pendingMediaItem;
     OKProducerPreset * __pendingPreset;
-    _UIBackdropView * _backdropView;
     <PUSlideshowSettingsViewControllerDelegate> * _delegate;
     PUSlideshowSession * _session;
     PUSlideshowSettingsViewModel * _settingsViewModel;

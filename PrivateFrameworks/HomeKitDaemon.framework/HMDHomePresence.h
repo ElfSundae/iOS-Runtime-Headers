@@ -24,6 +24,7 @@
 - (bool)areUsersNotAtHome:(id)arg1;
 - (id)authorizedUsers;
 - (id)description;
+- (unsigned long long)hash;
 - (id)home;
 - (id)initWithHome:(id)arg1 userPresenceMap:(id)arg2 lastUpdateByDevice:(id)arg3;
 - (bool)isAnyUserAtHome;

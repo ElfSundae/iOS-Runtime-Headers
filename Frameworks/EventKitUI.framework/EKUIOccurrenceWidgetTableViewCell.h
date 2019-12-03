@@ -8,7 +8,6 @@
 + (id)_secondaryTextColor;
 + (id)cancelledDeclinedColorBarColor;
 + (id)invitationPrimaryTextColor;
-+ (id)needsReplyBackgroundColor;
 + (double)needsReplyStripeBackgroundAlpha;
 + (id)needsReplyStripeColor;
 + (id)normalBackgroundColor;
@@ -20,7 +19,6 @@
 + (id)strikethroughPrimaryTextColor;
 + (id)strikethroughSecondaryTextColor;
 + (id)strikethroughTimeTextColor;
-+ (id)tentativeBackgroundColor;
 + (double)tentativeStripeBackgroundAlpha;
 + (id)tentativeStripeColor;
 + (bool)vibrant;

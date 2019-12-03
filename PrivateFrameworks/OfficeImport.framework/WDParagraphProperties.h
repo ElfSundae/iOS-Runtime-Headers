@@ -4,15 +4,18 @@
 
 @interface WDParagraphProperties : NSObject <NSCopying> {
     WDCharacterProperties * mCharacterProperties;
-    unsigned int  mCharacterPropertiesOverridden;
+    bool  mCharacterPropertiesOverridden;
     WDDocument * mDocument;
     unsigned int  mOriginal;
-    struct { id x1; id x2; id x3; id x4; struct { unsigned char x_5_1_1; unsigned char x_5_1_2; } x5; id x6; long long x7; unsigned long long x8; unsigned long long x9; long long x10; long long x11; long long x12; long long x13; long long x14; short x15; short x16; short x17; short x18; short x19; short x20; short x21; short x22; short x23; unsigned short x24; unsigned short x25; unsigned short x26; unsigned short x27; unsigned short x28; BOOL x29; unsigned char x30; unsigned char x31; unsigned char x32; unsigned char x33; unsigned char x34; unsigned char x35; unsigned char x36; unsigned char x37; unsigned int x38 : 1; unsigned int x39 : 1; unsigned int x40 : 1; unsigned int x41 : 1; unsigned int x42 : 1; unsigned int x43 : 1; unsigned int x44 : 1; unsigned int x45 : 1; unsigned int x46 : 1; unsigned int x47 : 1; unsigned int x48 : 1; unsigned int x49 : 1; unsigned int x50 : 1; unsigned int x51 : 1; unsigned int x52 : 1; unsigned int x53 : 1; unsigned int x54 : 1; unsigned int x55 : 1; unsigned int x56 : 1; unsigned int x57 : 1; } * mOriginalProperties;
+    WDParagraphPropertiesValues * mOriginalProperties;
     unsigned int  mResolved;
     unsigned int  mTracked;
-    struct { id x1; id x2; id x3; id x4; struct { unsigned char x_5_1_1; unsigned char x_5_1_2; } x5; id x6; long long x7; unsigned long long x8; unsigned long long x9; long long x10; long long x11; long long x12; long long x13; long long x14; short x15; short x16; short x17; short x18; short x19; short x20; short x21; short x22; short x23; unsigned short x24; unsigned short x25; unsigned short x26; unsigned short x27; unsigned short x28; BOOL x29; unsigned char x30; unsigned char x31; unsigned char x32; unsigned char x33; unsigned char x34; unsigned char x35; unsigned char x36; unsigned char x37; unsigned int x38 : 1; unsigned int x39 : 1; unsigned int x40 : 1; unsigned int x41 : 1; unsigned int x42 : 1; unsigned int x43 : 1; unsigned int x44 : 1; unsigned int x45 : 1; unsigned int x46 : 1; unsigned int x47 : 1; unsigned int x48 : 1; unsigned int x49 : 1; unsigned int x50 : 1; unsigned int x51 : 1; unsigned int x52 : 1; unsigned int x53 : 1; unsigned int x54 : 1; unsigned int x55 : 1; unsigned int x56 : 1; unsigned int x57 : 1; } * mTrackedProperties;
+    WDParagraphPropertiesValues * mTrackedProperties;
 }
 
+@property (readonly) WDDocument *document;
+
+- (void).cxx_destruct;
 - (void)addTabStopAdded:(struct { short x1; unsigned char x2; unsigned char x3; }*)arg1;
 - (void)addTabStopDeletedPosition:(short)arg1;
 - (bool)anchorLock;
@@ -32,7 +35,6 @@
 - (bool)contextualSpacing;
 - (void)copyPropertiesInto:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)document;
 - (struct { unsigned char x1; unsigned char x2; })dropCap;
@@ -51,7 +53,7 @@
 - (id)initWithDocument:(id)arg1;
 - (bool)isAnchorLockOverridden;
 - (bool)isAnythingOverridden;
-- (bool)isAnythingOverriddenIn:(struct { id x1; id x2; id x3; id x4; struct { unsigned char x_5_1_1; unsigned char x_5_1_2; } x5; id x6; long long x7; unsigned long long x8; unsigned long long x9; long long x10; long long x11; long long x12; long long x13; long long x14; short x15; short x16; short x17; short x18; short x19; short x20; short x21; short x22; short x23; unsigned short x24; unsigned short x25; unsigned short x26; unsigned short x27; unsigned short x28; BOOL x29; unsigned char x30; unsigned char x31; unsigned char x32; unsigned char x33; unsigned char x34; unsigned char x35; unsigned char x36; unsigned char x37; unsigned int x38 : 1; unsigned int x39 : 1; unsigned int x40 : 1; unsigned int x41 : 1; unsigned int x42 : 1; unsigned int x43 : 1; unsigned int x44 : 1; unsigned int x45 : 1; unsigned int x46 : 1; unsigned int x47 : 1; unsigned int x48 : 1; unsigned int x49 : 1; unsigned int x50 : 1; unsigned int x51 : 1; unsigned int x52 : 1; unsigned int x53 : 1; unsigned int x54 : 1; unsigned int x55 : 1; unsigned int x56 : 1; unsigned int x57 : 1; }*)arg1;
+- (bool)isAnythingOverriddenIn:(id)arg1;
 - (bool)isBarBorderOverridden;
 - (bool)isBaseStyleOverridden;
 - (bool)isBetweenBorderOverridden;

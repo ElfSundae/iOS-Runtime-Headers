@@ -2,9 +2,10 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface _UIScreenFocusSystemManager : NSObject <BKSEventFocusObserving, _UIFocusMovementPerformerDelegate, _UIFocusSystemDelegate> {
+@interface _UIScreenFocusSystemManager : NSObject <BKSHIDEventDeliveryPolicyObserving, _UIFocusMovementPerformerDelegate, _UIFocusSystemDelegate> {
     bool  _allowsForwardingFocusMovementActions;
     UIFocusSystem * _focusSystem;
+    BKSHIDEventDeliveryPolicyObserver * _observer;
     UIScreen * _screen;
     _UIFocusScrollManager * _scrollManager;
 }
@@ -26,12 +27,13 @@
 - (bool)_focusSystem:(id)arg1 shouldRestoreFocusInContext:(id)arg2;
 - (bool)_handleFailedFocusMovementRequest:(id)arg1 withPerformer:(id)arg2;
 - (id)_preferredFocusEnvironmentsForFocusSystem:(id)arg1;
+- (bool)_shouldForwardFocusMovementRequest:(id)arg1;
 - (bool)_uiktest_allowsForwardingFocusMovementActions;
 - (void)_uiktest_setAllowsForwardingFocusMovementActions:(bool)arg1;
 - (void)dealloc;
 - (id)focusSystem;
-- (void)focusedDeferralPropertiesDidChange:(id)arg1;
 - (id)initWithScreen:(id)arg1 scrollManager:(id)arg2;
+- (void)observerDeliveryPolicyDidChange:(id)arg1;
 - (id)screen;
 - (id)scrollManager;
 

@@ -92,7 +92,7 @@
 - (void)_checkForUpdatesInAlbumDisposition:(int)arg1 params:(id)arg2;
 - (void)_continueAddingAssetCollectionsDisposition:(int)arg1 params:(id)arg2;
 - (void)_createAlbumDisposition:(int)arg1 params:(id)arg2;
-- (id)_createHardlinkedOrCopiedAssetsInAssetCollections:(id)arg1;
+- (id)_createCopiedAssetsInAssetCollections:(id)arg1;
 - (void)_deleteAlbumDisposition:(int)arg1 params:(id)arg2;
 - (void)_deleteAssetCollectionsDisposition:(int)arg1 params:(id)arg2;
 - (void)_deleteAssetFilesInAssetCollection:(id)arg1;
@@ -140,7 +140,6 @@
 - (void)continueAddingAssetCollections:(id)arg1 skipAssetCollections:(id)arg2 toAlbum:(id)arg3 info:(id)arg4;
 - (void)createAlbum:(id)arg1 info:(id)arg2;
 - (id)daemon;
-- (void)dealloc;
 - (id)delegate;
 - (void)deleteAlbum:(id)arg1 info:(id)arg2;
 - (void)deleteAssetCollections:(id)arg1 inAlbum:(id)arg2 info:(id)arg3;

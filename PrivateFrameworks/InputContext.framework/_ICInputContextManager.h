@@ -2,9 +2,9 @@
    Image: /System/Library/PrivateFrameworks/InputContext.framework/InputContext
  */
 
-@interface _ICInputContextManager : NSObject <_ICLexiconManaging, _ICPredictionManaging> {
+@interface _ICInputContextManager : NSObject <_ICFeedbackManaging, _ICLexiconManaging, _ICPredictionManaging> {
     struct _LXLexicon { } * _durableNamedEntityLexicon;
-    <_ICLexiconManaging> * _lexiconManager;
+    NSObject<_ICLexiconManaging> * _lexiconManager;
     _ICPredictionManager * _predictionManager;
     struct _LXLexicon { } * _recentNamedEntityLexicon;
 }
@@ -31,6 +31,8 @@
 - (id)loadLexicons:(id /* block */)arg1;
 - (id)loadLexiconsUsingFilter:(id /* block */)arg1;
 - (void)predictedItemSelected:(id)arg1;
+- (void)provideLexiconFeedbackForString:(id)arg1 type:(unsigned char)arg2 style:(unsigned char)arg3;
+- (void)providePredictionFeedbackForString:(id)arg1 type:(unsigned char)arg2 style:(unsigned char)arg3;
 - (void)removeContactObserver:(id /* block */)arg1;
 - (void)reset;
 - (id)searchForMeCardEmailAddresses;

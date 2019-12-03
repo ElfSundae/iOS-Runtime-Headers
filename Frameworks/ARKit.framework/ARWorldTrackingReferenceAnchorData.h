@@ -3,31 +3,38 @@
  */
 
 @interface ARWorldTrackingReferenceAnchorData : NSObject <ARResultData, NSSecureCoding> {
-    NSArray * _anchorIdentifiers;
+    NSSet * _addedAnchors;
+    NSSet * _receivedAnchors;
+    NSSet * _removedAnchors;
     double  _timestamp;
-    NSData * _visionTransformData;
+    NSSet * _updatedAnchors;
 }
 
-@property (nonatomic, readonly) NSArray *anchorIdentifiers;
-@property (nonatomic, readonly) struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; }*anchorVisionTransforms;
+@property (nonatomic, readonly) NSSet *addedAnchors;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, retain) NSSet *receivedAnchors;
+@property (nonatomic, readonly) NSSet *removedAnchors;
 @property (readonly) Class superclass;
 @property (nonatomic) double timestamp;
+@property (nonatomic, readonly) NSSet *updatedAnchors;
 
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
-- (id)anchorIdentifiers;
-- (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; }*)anchorVisionTransforms;
+- (id)addedAnchors;
 - (id)anchorsForCameraWithTransform:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })arg1 referenceOriginTransform:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })arg2 existingAnchors:(id)arg3 anchorsToRemove:(id)arg4;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithAnchorPosesDictionary:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithUpdatedAnchors:(id)arg1 addedAnchors:(id)arg2 removedAnchors:(id)arg3;
 - (bool)isEqual:(id)arg1;
+- (id)receivedAnchors;
+- (id)removedAnchors;
+- (void)setReceivedAnchors:(id)arg1;
 - (void)setTimestamp:(double)arg1;
 - (double)timestamp;
+- (id)updatedAnchors;
 
 @end

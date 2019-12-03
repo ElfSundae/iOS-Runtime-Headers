@@ -4,18 +4,18 @@
 
 @interface TLKIconsView : TLKStackView {
     NSMutableArray * _imageViews;
-    unsigned long long  _style;
+    unsigned long long  _prominence;
 }
 
 @property (nonatomic, retain) NSMutableArray *imageViews;
-@property (nonatomic) unsigned long long style;
+@property (nonatomic) unsigned long long prominence;
 
 - (void).cxx_destruct;
 - (id)imageViews;
 - (id)init;
+- (unsigned long long)prominence;
 - (void)setImageViews:(id)arg1;
-- (void)setStyle:(unsigned long long)arg1;
-- (unsigned long long)style;
+- (void)setProminence:(unsigned long long)arg1;
 - (void)updateIcons:(id)arg1;
 
 @end

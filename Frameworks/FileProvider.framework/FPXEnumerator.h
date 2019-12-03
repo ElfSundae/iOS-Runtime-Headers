@@ -4,6 +4,7 @@
 
 @interface FPXEnumerator : NSObject <FPXEnumerator> {
     FPXDomainContext * _domainContext;
+    bool  _forceFileURLs;
     bool  _invalidated;
     FPItemID * _observedItemID;
     <FPXEnumeratorObserver> * _observer;
@@ -19,14 +20,17 @@
 
 - (void).cxx_destruct;
 - (void)alternateContentsWereUpdatedAtURL:(id)arg1 forItem:(id)arg2;
+- (void)currentSyncAnchorWithCompletion:(id /* block */)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)enumerateChangesFromToken:(id)arg1 reply:(id /* block */)arg2;
 - (void)enumerateItemsFromPage:(id)arg1 reply:(id /* block */)arg2;
+- (void)forceAddFileURLsForItems:(id)arg1;
 - (void)forceItemUpdate:(id)arg1;
-- (id)initWithObservedItemID:(id)arg1 domainContext:(id)arg2 vendorEnumerator:(id)arg3 observer:(id)arg4;
+- (id)initWithObservedItemID:(id)arg1 domainContext:(id)arg2 vendorEnumerator:(id)arg3 observer:(id)arg4 forceFileURLs:(bool)arg5;
 - (void)invalidate;
 - (void)invalidateVendorEnumeration;
+- (void)keepAliveConnectionForRegisteredObserver:(id /* block */)arg1;
 - (id)observedItemID;
 - (id)observer;
 

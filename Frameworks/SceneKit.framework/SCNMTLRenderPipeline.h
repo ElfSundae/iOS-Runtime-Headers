@@ -12,7 +12,7 @@
     NSArray * _passBufferBindings;
     struct __C3DFXProgram { } * _program;
     struct { 
-        unsigned long long colorFormat[4]; 
+        unsigned long long colorFormat[8]; 
         unsigned long long depthFormat; 
         unsigned long long stencilFormat; 
         unsigned char sampleCount; 

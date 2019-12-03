@@ -21,6 +21,6 @@
 - (bool)isWordOrAbbreviation;
 - (id)latexMathModeDescription;
 - (void)setContent:(id)arg1;
-- (id)speakableDescriptionWithSpeakingStyle:(int)arg1 arePausesAllowed:(bool)arg2;
+- (id)speakableDescriptionWithSpeakingStyle:(long long)arg1 arePausesAllowed:(bool)arg2;
 
 @end

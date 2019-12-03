@@ -11,13 +11,16 @@
 @property (nonatomic, readonly) bool allowsMultipleSelection;
 @property (nonatomic, readonly) bool convertAutoloopsToGIF;
 @property (nonatomic, readonly) NSArray *mediaTypes;
+@property (nonatomic, readonly) long long modalPresentationStyle;
 @property (nonatomic, readonly) unsigned long long multipleSelectionLimit;
 @property (nonatomic, copy) NSDictionary *photoPickerProperties;
-@property (nonatomic, readonly) struct CGSize { double x1; double x2; } preferredViewSize;
 @property (nonatomic, copy) NSString *requestedClassName;
 @property (nonatomic, retain) NSUUID *requestedIdentifier;
+@property (nonatomic, readonly) bool requiresPickingConfirmation;
 @property (nonatomic, readonly) unsigned long long savingOptions;
+@property (nonatomic, readonly) bool showsFileSizePicker;
 @property (nonatomic, readonly) bool showsPrompt;
+@property (nonatomic, readonly) long long sourceType;
 
 + (bool)supportsSecureCoding;
 
@@ -30,15 +33,18 @@
 - (id)initWithRequestedClassName:(id)arg1 photoPickerProperties:(id)arg2;
 - (id)initWithRequestedIdentifier:(id)arg1 photoPickerProperties:(id)arg2;
 - (id)mediaTypes;
+- (long long)modalPresentationStyle;
 - (unsigned long long)multipleSelectionLimit;
 - (id)photoPickerProperties;
-- (struct CGSize { double x1; double x2; })preferredViewSize;
 - (id)requestedClassName;
 - (id)requestedIdentifier;
+- (bool)requiresPickingConfirmation;
 - (unsigned long long)savingOptions;
 - (void)setPhotoPickerProperties:(id)arg1;
 - (void)setRequestedClassName:(id)arg1;
 - (void)setRequestedIdentifier:(id)arg1;
+- (bool)showsFileSizePicker;
 - (bool)showsPrompt;
+- (long long)sourceType;
 
 @end

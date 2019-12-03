@@ -7,6 +7,7 @@
     NSMutableDictionary * _attachedMediaProperties;
     long long  _configurationID;
     BWNodeConnection * _connection;
+    bool  _discardsSampleDataTaggedToBeDropped;
     bool  _enabled;
     unsigned long long  _index;
     long long  _liveConfigurationID;
@@ -24,6 +25,7 @@
 @property (nonatomic) long long configurationID;
 @property (nonatomic) BWNodeConnection *connection;
 @property (nonatomic) int delayedBufferCount;
+@property (nonatomic) bool discardsSampleDataTaggedToBeDropped;
 @property (getter=isEnabled, nonatomic) bool enabled;
 @property (nonatomic, retain) BWFormat *format;
 @property (nonatomic, retain) BWFormatRequirements *formatRequirements;
@@ -48,6 +50,7 @@
 @property (nonatomic, readonly) BWVideoFormat *videoFormat;
 
 + (void)initialize;
++ (struct opaqueCMSampleBuffer { }*)newSampleDataToBeDroppedMarkerBufferFromSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1;
 
 - (void)_clearAllMediaProperties;
 - (void)_handleConfigurationLiveMessage:(id)arg1;
@@ -60,6 +63,7 @@
 - (void)dealloc;
 - (int)delayedBufferCount;
 - (id)description;
+- (bool)discardsSampleDataTaggedToBeDropped;
 - (id)format;
 - (id)formatRequirements;
 - (void)handleMessage:(id)arg1;
@@ -88,6 +92,7 @@
 - (void)setConfigurationID:(long long)arg1;
 - (void)setConnection:(id)arg1;
 - (void)setDelayedBufferCount:(int)arg1;
+- (void)setDiscardsSampleDataTaggedToBeDropped:(bool)arg1;
 - (void)setEnabled:(bool)arg1;
 - (void)setFormat:(id)arg1;
 - (void)setFormatRequirements:(id)arg1;

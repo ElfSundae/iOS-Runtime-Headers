@@ -12,8 +12,8 @@
 @property (nonatomic, retain) NSManagedObjectID *objectID;
 @property (nonatomic) long long orderValue;
 
+- (void).cxx_destruct;
 - (id)childManagedObject;
-- (void)dealloc;
 - (id)description;
 - (id)moc;
 - (id)objectID;

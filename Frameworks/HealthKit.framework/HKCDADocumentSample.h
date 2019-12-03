@@ -28,7 +28,7 @@
 - (long long)_omittedContentFlags;
 - (bool)_predicateMatchForKeyPath:(id)arg1 operatorType:(unsigned long long)arg2 pattern:(id)arg3;
 - (void)_processDocumentData:(id)arg1 extractedFields:(id)arg2;
-- (id)_validateConfiguration;
+- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
 - (bool)_validateDocumentContentWithError:(id*)arg1;
 - (id)description;
 - (id)document;

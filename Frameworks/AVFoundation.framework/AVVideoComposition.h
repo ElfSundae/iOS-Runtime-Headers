@@ -17,6 +17,8 @@
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } renderSize;
 @property (nonatomic, readonly) int sourceTrackIDForFrameTiming;
 
+// Image: /System/Library/Frameworks/AVFoundation.framework/AVFoundation
+
 + (id)_mutableVideoCompositionWithAsset:(id)arg1 applyingCIFiltersWithHandler:(id /* block */)arg2;
 + (void)initialize;
 + (id)videoCompositionWithAsset:(id)arg1 applyingCIFiltersWithHandler:(id /* block */)arg2;
@@ -45,7 +47,6 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (Class)customVideoCompositorClass;
 - (void)dealloc;
-- (void)finalize;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })frameDuration;
 - (id)init;
 - (id)instructionForFigInstruction:(void*)arg1;
@@ -67,5 +68,9 @@
 - (void)setSourceTrackIDForFrameTiming:(int)arg1;
 - (int)sourceTrackIDForFrameTiming;
 - (void)videoCompositionOutputColorPropertiesWithCustomCompositor:(id)arg1 formatDescriptions:(id)arg2 colorPrimaries:(id*)arg3 transferFunction:(id*)arg4 yCbCrMatrix:(id*)arg5;
+
+// Image: /System/Library/PrivateFrameworks/Memories.framework/Memories
+
+- (id)konaSerializeVideoComposition;
 
 @end

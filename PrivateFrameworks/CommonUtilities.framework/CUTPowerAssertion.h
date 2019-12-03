@@ -3,9 +3,7 @@
  */
 
 @interface CUTPowerAssertion : NSObject {
-    unsigned int  _assertion;
-    NSString * _identifier;
-    NSArray * _stack;
+    id  _internal;
 }
 
 - (void).cxx_destruct;

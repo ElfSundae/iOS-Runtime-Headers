@@ -11,5 +11,6 @@
 - (NSArray *)indexKeywords;
 - (NSArray *)medicalRecordCodings;
 - (NSArray *)medicalRecordPreferredSystems;
+- (HKMedicalCodingContext *)primaryCodingContext;
 
 @end

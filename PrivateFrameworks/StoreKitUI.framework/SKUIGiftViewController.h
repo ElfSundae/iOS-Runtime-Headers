@@ -37,7 +37,7 @@
 - (void)setOperationQueue:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidAppear:(bool)arg1;
-- (void)viewWillAppear:(bool)arg1;
+- (void)viewDidLoad;
 - (void)viewWillDisappear:(bool)arg1;
 
 @end

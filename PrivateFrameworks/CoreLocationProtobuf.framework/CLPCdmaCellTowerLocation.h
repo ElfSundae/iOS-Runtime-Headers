@@ -33,7 +33,9 @@
         unsigned int rscp : 1; 
         unsigned int serverHash : 1; 
         unsigned int zoneid : 1; 
+        unsigned int isLimitedService : 1; 
     }  _has;
+    bool  _isLimitedService;
     CLPLocation * _location;
     int  _ltmOffset;
     int  _mcc;
@@ -49,6 +51,7 @@
     double  _sectorLongitude;
     NSString * _sectorid;
     int  _serverHash;
+    NSString * _serviceProviderName;
     int  _sid;
     int  _zoneid;
 }
@@ -72,6 +75,7 @@
 @property (nonatomic) bool hasChannel;
 @property (nonatomic) bool hasDayLightSavings;
 @property (nonatomic) bool hasEcn0;
+@property (nonatomic) bool hasIsLimitedService;
 @property (nonatomic) bool hasLtmOffset;
 @property (nonatomic, readonly) bool hasNeighborGroup;
 @property (nonatomic, readonly) bool hasOperatorName;
@@ -82,7 +86,9 @@
 @property (nonatomic) bool hasSectorLongitude;
 @property (nonatomic, readonly) bool hasSectorid;
 @property (nonatomic) bool hasServerHash;
+@property (nonatomic, readonly) bool hasServiceProviderName;
 @property (nonatomic) bool hasZoneid;
+@property (nonatomic) bool isLimitedService;
 @property (nonatomic, retain) CLPLocation *location;
 @property (nonatomic) int ltmOffset;
 @property (nonatomic) int mcc;
@@ -98,6 +104,7 @@
 @property (nonatomic) double sectorLongitude;
 @property (nonatomic, retain) NSString *sectorid;
 @property (nonatomic) int serverHash;
+@property (nonatomic, retain) NSString *serviceProviderName;
 @property (nonatomic) int sid;
 @property (nonatomic) int zoneid;
 
@@ -133,6 +140,7 @@
 - (bool)hasChannel;
 - (bool)hasDayLightSavings;
 - (bool)hasEcn0;
+- (bool)hasIsLimitedService;
 - (bool)hasLtmOffset;
 - (bool)hasNeighborGroup;
 - (bool)hasOperatorName;
@@ -143,9 +151,11 @@
 - (bool)hasSectorLongitude;
 - (bool)hasSectorid;
 - (bool)hasServerHash;
+- (bool)hasServiceProviderName;
 - (bool)hasZoneid;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
+- (bool)isLimitedService;
 - (id)location;
 - (int)ltmOffset;
 - (int)mcc;
@@ -165,6 +175,7 @@
 - (double)sectorLongitude;
 - (id)sectorid;
 - (int)serverHash;
+- (id)serviceProviderName;
 - (void)setAppBundleId:(id)arg1;
 - (void)setBandclass:(int)arg1;
 - (void)setBsLatitude:(double)arg1;
@@ -182,6 +193,7 @@
 - (void)setHasChannel:(bool)arg1;
 - (void)setHasDayLightSavings:(bool)arg1;
 - (void)setHasEcn0:(bool)arg1;
+- (void)setHasIsLimitedService:(bool)arg1;
 - (void)setHasLtmOffset:(bool)arg1;
 - (void)setHasPnoffset:(bool)arg1;
 - (void)setHasRat:(bool)arg1;
@@ -190,6 +202,7 @@
 - (void)setHasSectorLongitude:(bool)arg1;
 - (void)setHasServerHash:(bool)arg1;
 - (void)setHasZoneid:(bool)arg1;
+- (void)setIsLimitedService:(bool)arg1;
 - (void)setLocation:(id)arg1;
 - (void)setLtmOffset:(int)arg1;
 - (void)setMcc:(int)arg1;
@@ -205,6 +218,7 @@
 - (void)setSectorLongitude:(double)arg1;
 - (void)setSectorid:(id)arg1;
 - (void)setServerHash:(int)arg1;
+- (void)setServiceProviderName:(id)arg1;
 - (void)setSid:(int)arg1;
 - (void)setZoneid:(int)arg1;
 - (int)sid;

@@ -29,7 +29,6 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)foregroundColorLookupTable;
-- (id)init;
 - (id)initWithColorFilter:(id)arg1 colorLookupCache:(id)arg2;
 - (float)interpolationFractionComplete;
 - (int)prepareForRenderingWithInputVideoFormat:(id)arg1;

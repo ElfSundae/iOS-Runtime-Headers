@@ -4,4 +4,7 @@
 
 @interface EKSourceChange : EKObjectChange
 
++ (int)entityType;
++ (void)fetchSourceChangesInStore:(id)arg1 resultHandler:(id /* block */)arg2;
+
 @end

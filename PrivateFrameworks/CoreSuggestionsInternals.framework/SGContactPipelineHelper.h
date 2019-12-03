@@ -13,16 +13,15 @@
 }
 
 + (bool)contactExistsInArray:(id)arg1 withName:(id)arg2;
-+ (id)contactStore;
-+ (id)dialingCodeForPhone:(id)arg1;
-+ (id)findContactInArray:(id)arg1 withDetailType:(unsigned long long)arg2 andValue:(id)arg3;
 + (id)findContactsForDetailType:(unsigned long long)arg1 andValue:(id)arg2;
 + (id)findContactsForPerson:(id)arg1 fetchingKeys:(id)arg2;
 + (id)normalizedDigits:(id)arg1;
++ (id)sharedInstance;
 
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
 - (bool)numberMatchesContactsForm:(id)arg1;
+- (bool)numberMatchesContactsForm:(id)arg1 usingPredicate:(id)arg2;
 
 @end

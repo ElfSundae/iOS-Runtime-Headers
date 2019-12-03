@@ -3,6 +3,7 @@
  */
 
 @interface PLAssetsdClient : NSObject {
+    PLAutoBindingProxyFactory * _autoBindingProxyFactory;
     PLAssetsdCloudClient * _cloudClient;
     PLAssetsdCloudInternalClient * _cloudInternalClient;
     PLAssetsdDebugClient * _debugClient;
@@ -11,13 +12,16 @@
     NSObject<OS_dispatch_queue> * _isolationQueue;
     PLAssetsdLibraryClient * _libraryClient;
     PLAssetsdLibraryInternalClient * _libraryInternalClient;
+    PLAssetsdLibraryManagementClient * _libraryManagementClient;
     PLAssetsdMigrationClient * _migrationClient;
+    PLAssetsdClientXPCConnection * _nonBindingProxyFactory;
     PLAssetsdNotificationClient * _notificationClient;
-    <PLXPCProxyCreating> * _proxyFactory;
+    PLAssetsdPhotoKitClient * _photoKitClient;
     PLAssetsdResourceClient * _resourceClient;
     PLAssetsdResourceInternalClient * _resourceInternalClient;
     PLAssetsdResourceWriteOnlyClient * _resourceWriteOnlyClient;
     PLAssetsdSyncClient * _syncClient;
+    PLAssetsdSystemLibraryURLReadOnlyClient * _systemLibraryURLReadOnlyClient;
 }
 
 @property (readonly) PLAssetsdCloudClient *cloudClient;
@@ -27,28 +31,41 @@
 @property (readonly) PLAssetsdDiagnosticsClient *diagnosticsClient;
 @property (readonly) PLAssetsdLibraryClient *libraryClient;
 @property (readonly) PLAssetsdLibraryInternalClient *libraryInternalClient;
+@property (readonly) PLAssetsdLibraryManagementClient *libraryManagementClient;
 @property (readonly) PLAssetsdMigrationClient *migrationClient;
 @property (readonly) PLAssetsdNotificationClient *notificationClient;
+@property (readonly) PLAssetsdPhotoKitClient *photoKitClient;
 @property (readonly) PLAssetsdResourceClient *resourceClient;
 @property (readonly) PLAssetsdResourceInternalClient *resourceInternalClient;
 @property (readonly) PLAssetsdSyncClient *syncClient;
 
++ (id)sharedSystemLibraryAssetsdClient;
+
 - (void).cxx_destruct;
+- (id)_setupClientClass:(Class)arg1 proxyGetter:(SEL)arg2 autoBinding:(bool)arg3;
+- (void)_updateLibraryStateConnectionInterrupted:(id)arg1;
+- (void)addPhotoLibraryUnavailabilityHandler:(id /* block */)arg1;
 - (id)cloudClient;
 - (id)cloudInternalClient;
 - (id)debugClient;
 - (id)demoClient;
 - (id)diagnosticsClient;
 - (id)init;
-- (id)initWithProxyFactory:(id)arg1;
+- (id)initWithNonBindingProxyFactory:(id)arg1 autoBindingProxyFactory:(id)arg2;
+- (id)initWithPhotoLibraryURL:(id)arg1;
 - (id)libraryClient;
 - (id)libraryInternalClient;
+- (id)libraryManagementClient;
 - (id)migrationClient;
 - (id)notificationClient;
+- (id)photoKitClient;
+- (void)prepareToShutdown;
 - (id)resourceClient;
 - (id)resourceInternalClient;
 - (id)resourceWriteOnlyClient;
 - (void)sendDaemonJob:(id)arg1 shouldRunSerially:(bool)arg2 replyHandler:(id /* block */)arg3;
 - (id)syncClient;
+- (id)systemLibraryURLReadOnlyClient;
+- (void)waitUntilConnectionSendsAllMessages;
 
 @end

@@ -6,7 +6,7 @@
 @required
 
 - (NSDate *)lastModulationDate;
-- (NSArray *)loadBudgets;
+- (NSArray *)loadBudgetsWithExpectedNames:(NSSet *)arg1;
 - (void)saveBudgets:(NSArray *)arg1;
 - (void)saveModulationDate:(NSDate *)arg1;
 - (void)updateBudget:(_DASBudget *)arg1;

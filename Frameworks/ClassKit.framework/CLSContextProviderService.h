@@ -5,7 +5,7 @@
 @interface CLSContextProviderService : NSObject {
     NSString * _appIdentifier;
     NSString * _appName;
-    int  _connectionCount;
+    _Atomic int  _connectionCount;
     NSExtension * _extension;
     CLSContextProviderExtensionContext * _extensionContext;
     CLSContextProviderExtensionHostContext * _extensionHostContext;

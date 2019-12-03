@@ -3,54 +3,74 @@
  */
 
 @interface SBSUIWallpaperPreviewView : UIView <SBFIrisWallpaperViewDelegate> {
+    UIButton * _cancelButton;
+    _SBUIWallpaperInstructionView * _cropInstructionView;
+    UIViewPropertyAnimator * _cropInstructionsAnimator;
     SBFLockScreenDateView * _dateView;
+    <SBSUIWallpaperPreviewViewDelegate> * _delegate;
+    UIViewPropertyAnimator * _effectInstructionsAnimator;
+    UILabel * _effectStateLabel;
+    UIViewPropertyAnimator * _fadeOutInstructionsAnimator;
+    UIView * _gradientView;
+    UIButton * _irisButton;
     _UILegibilityLabel * _irisInstructionsLabel1;
     _UILegibilityLabel * _irisInstructionsLabel2;
     bool  _irisPossible;
-    bool  _observingParallaxChanges;
-    SBSUIEffectsSegmentedControl * _segmentedControl;
-    bool  _usingSegmentedControl;
+    UIButton * _parallaxButton;
+    bool  _parallaxPossible;
+    UIButton * _setButton;
     SBFWallpaperView * _wallpaperView;
 }
 
+@property (nonatomic, retain) UIButton *cancelButton;
 @property (nonatomic, retain) SBFLockScreenDateView *dateView;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) <SBSUIWallpaperPreviewViewDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) _UILegibilityLabel *irisInstructionsLabel1;
-@property (nonatomic, retain) _UILegibilityLabel *irisInstructionsLabel2;
-@property (nonatomic, retain) SBSUIEffectsSegmentedControl *segmentedControl;
+@property (nonatomic, retain) UIButton *irisButton;
+@property (nonatomic, retain) UIButton *parallaxButton;
+@property (nonatomic, retain) UIButton *setButton;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) SBFWallpaperView *wallpaperView;
 
-+ (bool)shouldEnableParallaxForEffect:(unsigned long long)arg1;
-
 - (void).cxx_destruct;
-- (void)_effectChanged:(id)arg1;
+- (void)_fadeOutInstructionsWithDelay:(double)arg1 animated:(bool)arg2 completion:(id /* block */)arg3;
+- (void)_layoutCancelButton;
 - (void)_layoutDateView;
+- (void)_layoutGradientView;
+- (void)_layoutIrisButton;
 - (void)_layoutIrisInstructionLabels;
-- (void)_layoutSegmentedControl;
+- (void)_layoutParallaxButton;
+- (void)_layoutSetButton;
+- (void)_layoutStackedButtons;
 - (void)_layoutWallpaperView;
+- (id)_makeButtonWithVisualEffectBlur;
 - (double)_segmentedControlInset;
-- (void)_toggleMotion;
-- (void)_updateSegmentedControl;
+- (void)_userDidTapOnCancelButton:(id)arg1;
+- (void)_userDidTapOnIrisButton:(id)arg1;
+- (void)_userDidTapOnParallaxButton:(id)arg1;
+- (void)_userDidTapOnSetButton:(id)arg1;
+- (id)cancelButton;
 - (id)dateView;
 - (void)dealloc;
-- (void)fadeOutIrisInstructions;
+- (id)delegate;
+- (void)displayInstructionsForEffect:(unsigned long long)arg1 enabled:(bool)arg2 animated:(bool)arg3;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 wallpaperView:(id)arg2;
-- (id)irisInstructionsLabel1;
-- (id)irisInstructionsLabel2;
+- (id)irisButton;
 - (void)irisWallpaperViewPlaybackStateDidChange:(id)arg1;
 - (void)layoutSubviews;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
-- (id)segmentedControl;
-- (unsigned long long)selectedEffect;
+- (id)parallaxButton;
+- (id)setButton;
+- (void)setCancelButton:(id)arg1;
 - (void)setDateView:(id)arg1;
-- (void)setIrisInstructionsLabel1:(id)arg1;
-- (void)setIrisInstructionsLabel2:(id)arg1;
-- (void)setIrisInstructionsVisible:(bool)arg1 animated:(bool)arg2;
-- (void)setSegmentedControl:(id)arg1;
+- (void)setDelegate:(id)arg1;
+- (void)setIrisButton:(id)arg1;
+- (void)setParallaxButton:(id)arg1;
+- (void)setSetButton:(id)arg1;
+- (void)setWallpaperView:(id)arg1;
 - (bool)shouldEnableParallax;
+- (void)updateForChangedSettings:(id)arg1;
 - (id)wallpaperView;
 
 @end

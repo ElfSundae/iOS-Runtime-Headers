@@ -20,14 +20,16 @@
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } pixelSize;
 @property (nonatomic, readonly) NSString *uniformTypeIdentifier;
 
+- (void).cxx_destruct;
 - (struct CGImage { }*)CGImage;
 - (id)data;
 - (void)dealloc;
+- (id)description;
 - (id)initWithCGImage:(struct CGImage { }*)arg1;
 - (id)initWithCGImage:(struct CGImage { }*)arg1 ioSurface:(void*)arg2 CIImage:(id)arg3 backingData:(id)arg4 uniformTypeIdentifier:(id)arg5 size:(struct CGSize { double x1; double x2; })arg6;
 - (id)initWithIOSurface:(struct __IOSurface { }*)arg1;
-- (id)initWithUIImage:(id)arg1;
-- (id)initWithUIImage:(id)arg1 backingData:(id)arg2 uniformTypeIdentifier:(id)arg3;
+- (id)initWithPLImage:(struct NSObject { Class x1; }*)arg1;
+- (id)initWithPLImage:(struct NSObject { Class x1; }*)arg1 backingData:(id)arg2 uniformTypeIdentifier:(id)arg3;
 - (void*)ioSurface;
 - (struct CGSize { double x1; double x2; })pixelSize;
 - (id)uniformTypeIdentifier;

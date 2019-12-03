@@ -2,99 +2,91 @@
    Image: /System/Library/PrivateFrameworks/PlatterKit.framework/PlatterKit
  */
 
-@interface PLPlatterView : UIView <MTMaterialSettingsObserving, PLPlatter, PLPlatterInternal> {
+@interface PLPlatterView : UIView <MTMaterialGrouping, MTVisualStylingRequiring, PLPlatter, PLPlatterInternal> {
     bool  _backgroundBlurred;
     UIView * _backgroundView;
+    NSMutableDictionary * _categoriesToProviders;
     double  _cornerRadius;
     UIView * _customContentView;
-    bool  _hasShadow;
-    MTMaterialView * _mainOverlayView;
-    unsigned long long  _options;
-    long long  _recipe;
-    UIImageView * _shadowView;
+    NSString * _materialGroupNameBase;
+    long long  _materialRecipe;
+    NSBundle * _recipeBundle;
+    bool  _recipeDynamic;
+    NSDictionary * _recipeNamesByTraitCollection;
+    struct { 
+        float opacity; 
+        struct CGSize { 
+            double width; 
+            double height; 
+        } offset; 
+        double radius; 
+    }  _shadowAttributes;
+    PLShadowView * _shadowView;
     bool  _usesBackgroundView;
 }
 
 @property (getter=isBackgroundBlurred, nonatomic) bool backgroundBlurred;
+@property (nonatomic, readonly) MTMaterialShadowView *backgroundMaterialShadowView;
 @property (nonatomic, readonly) MTMaterialView *backgroundMaterialView;
 @property (nonatomic, retain) UIView *backgroundView;
 @property (nonatomic) double cornerRadius;
 @property (nonatomic, readonly) UIView *customContentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, copy) NSString *groupName;
 @property (nonatomic) bool hasShadow;
-@property (nonatomic) bool hasStackingShadow;
 @property (readonly) unsigned long long hash;
 @property (getter=isHighlighted, nonatomic) bool highlighted;
-@property (nonatomic, retain) MTMaterialView *mainOverlayView;
-@property (nonatomic, readonly) MTMaterialView *mainOverlayView;
-@property (nonatomic, readonly) unsigned long long options;
-@property (nonatomic) double overlayAlpha;
-@property (nonatomic, readonly) long long recipe;
+@property (nonatomic, copy) NSString *materialGroupNameBase;
+@property (nonatomic) long long materialRecipe;
+@property (getter=isRecipeDynamic, nonatomic) bool recipeDynamic;
+@property (nonatomic, readonly, copy) NSArray *requiredVisualStyleCategories;
+@property (nonatomic) struct { float x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; double x3; } shadowAttributes;
 @property (readonly) Class superclass;
 @property (nonatomic) bool usesBackgroundView;
-@property (nonatomic, readonly) MTVibrantStylingProvider *vibrantStylingProvider;
-
-// Image: /System/Library/PrivateFrameworks/PlatterKit.framework/PlatterKit
-
-+ (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_shadowImage:(id)arg1 frameForPlatterViewBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
-+ (id)_shadowImageMask;
 
 - (void).cxx_destruct;
 - (void)_configureBackgroundView:(id)arg1;
 - (void)_configureBackgroundViewIfNecessary;
 - (void)_configureCustomContentView;
 - (void)_configureCustomContentViewIfNecessary;
-- (void)_configureMainOverlayView;
-- (void)_configureMainOverlayViewIfNecessary;
-- (void)_configureShadowView;
 - (void)_configureShadowViewIfNecessary;
-- (void)_layoutMainOverlay;
+- (id)_initWithRecipe:(long long)arg1 orRecipeNamesByTraitCollection:(id)arg2 inBundle:(id)arg3;
+- (bool)_isMaterialViewSufficientlySpecified;
+- (void)_layoutShadowView;
 - (id)_newDefaultBackgroundView;
-- (unsigned long long)_optionsForBackgroundWithBlur:(bool)arg1;
-- (unsigned long long)_optionsForMainOverlay;
 - (void)_willRemoveCustomContent:(id)arg1;
+- (id)backgroundMaterialShadowView;
 - (id)backgroundMaterialView;
 - (id)backgroundView;
 - (struct CGSize { double x1; double x2; })contentSizeForSize:(struct CGSize { double x1; double x2; })arg1;
 - (double)cornerRadius;
 - (id)customContentView;
-- (void)dealloc;
-- (id)groupName;
 - (bool)hasShadow;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
-- (id)initWithRecipe:(long long)arg1 options:(unsigned long long)arg2;
+- (id)initWithRecipe:(long long)arg1;
+- (id)initWithRecipeNamesByTraitCollection:(id)arg1 inBundle:(id)arg2;
 - (bool)isBackgroundBlurred;
 - (bool)isHighlighted;
+- (bool)isRecipeDynamic;
 - (void)layoutSubviews;
-- (id)mainOverlayView;
-- (id)mainOverlayView;
-- (unsigned long long)options;
-- (long long)recipe;
+- (id)materialGroupNameBase;
+- (long long)materialRecipe;
+- (id)requiredVisualStyleCategories;
 - (void)setBackgroundBlurred:(bool)arg1;
 - (void)setBackgroundView:(id)arg1;
 - (void)setCornerRadius:(double)arg1;
-- (void)setGroupName:(id)arg1;
 - (void)setHasShadow:(bool)arg1;
 - (void)setHighlighted:(bool)arg1;
-- (void)setMainOverlayView:(id)arg1;
+- (void)setMaterialGroupNameBase:(id)arg1;
+- (void)setMaterialRecipe:(long long)arg1;
+- (void)setRecipeDynamic:(bool)arg1;
+- (void)setShadowAttributes:(struct { float x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; double x3; })arg1;
 - (void)setUsesBackgroundView:(bool)arg1;
-- (void)settings:(id)arg1 changedValueForKey:(id)arg2;
+- (void)setVisualStylingProvider:(id)arg1 forCategory:(long long)arg2;
+- (struct { float x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; double x3; })shadowAttributes;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFitsContentWithSize:(struct CGSize { double x1; double x2; })arg1;
-- (void)updateWithRecipe:(long long)arg1 options:(unsigned long long)arg2;
 - (bool)usesBackgroundView;
-- (id)vibrantStylingProvider;
-
-// Image: /System/Library/PrivateFrameworks/UserNotificationsUIKit.framework/UserNotificationsUIKit
-
-+ (double)_overlayAlphaForTransformScale:(double)arg1;
-+ (double)overlayAlphaForTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg1;
-
-- (bool)hasStackingShadow;
-- (double)overlayAlpha;
-- (void)setHasStackingShadow:(bool)arg1;
-- (void)setOverlayAlpha:(double)arg1;
+- (id)visualStylingProviderForCategory:(long long)arg1;
 
 @end

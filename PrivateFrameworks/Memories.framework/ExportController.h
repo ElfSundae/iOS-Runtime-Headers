@@ -3,8 +3,8 @@
  */
 
 @interface ExportController : NSObject {
-    bool  _playAltClips;
-    bool  _supportArbitraryAspectRatio;
+    double  _exportAspect;
+    NSArray * _exportedPaths;
     NSString * m_currentPreset;
     id  m_delegate;
     NSString * m_exportPath;
@@ -21,15 +21,15 @@
 
 @property (nonatomic, retain) NSString *currentPreset;
 @property (nonatomic) <ExportDelegate> *delegate;
+@property (nonatomic) double exportAspect;
 @property (nonatomic, retain) NSString *exportPath;
 @property (nonatomic) bool exportToPhotos;
+@property (nonatomic, retain) NSArray *exportedPaths;
 @property (nonatomic) unsigned long long exportingIndexPresets;
 @property (nonatomic, retain) <MovieControllerExportProtocol> *movieController;
-@property (nonatomic) bool playAltClips;
 @property (nonatomic, retain) NSArray *presets;
 @property (nonatomic, retain) NSTimer *progressTimer;
 @property (nonatomic, retain) Project *project;
-@property (getter=shouldSupportArbitraryAspectRatio, nonatomic) bool supportArbitraryAspectRatio;
 @property (nonatomic, retain) BEAlertController *testModeAutoExportCompletedAlert;
 
 + (unsigned long long)audioDataRateForPreset:(id)arg1;
@@ -63,8 +63,10 @@
 - (void)displayDiskSpaceError;
 - (void)displayError:(id)arg1;
 - (void)displayExportedToPhotos;
+- (double)exportAspect;
 - (id)exportPath;
 - (bool)exportToPhotos;
+- (id)exportedPaths;
 - (unsigned long long)exportingIndexPresets;
 - (id)hasExistingFile;
 - (void)informDelegateOfCompletion;
@@ -73,7 +75,6 @@
 - (id)movieController;
 - (void)nextPreset;
 - (void)noteSessionProgressed:(float)arg1;
-- (bool)playAltClips;
 - (id)presets;
 - (float)progress;
 - (id)progressTimer;
@@ -82,17 +83,16 @@
 - (void)serviceProgressTimer:(id)arg1;
 - (void)setCurrentPreset:(id)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setExportAspect:(double)arg1;
 - (void)setExportPath:(id)arg1;
 - (void)setExportToPhotos:(bool)arg1;
+- (void)setExportedPaths:(id)arg1;
 - (void)setExportingIndexPresets:(unsigned long long)arg1;
 - (void)setMovieController:(id)arg1;
-- (void)setPlayAltClips:(bool)arg1;
 - (void)setPresets:(id)arg1;
 - (void)setProgressTimer:(id)arg1;
 - (void)setProject:(id)arg1;
-- (void)setSupportArbitraryAspectRatio:(bool)arg1;
 - (void)setTestModeAutoExportCompletedAlert:(id)arg1;
-- (bool)shouldSupportArbitraryAspectRatio;
 - (void)startProgressTimer;
 - (void)stopProgressTimer;
 - (id)testModeAutoExportCompletedAlert;

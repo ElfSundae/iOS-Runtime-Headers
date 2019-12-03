@@ -5,11 +5,11 @@
 @interface MCProfileViewController : UITableViewController <PSStateRestoration> {
     MCUIProfile * _UIProfile;
     bool  _installComplete;
+    bool  _installingFromPurgatory;
     bool  _profileOffersReenroll;
     bool  _profileRemovable;
     <MCProfileViewControllerDelegate> * _profileViewControllerDelegate;
     long long  _profileViewMode;
-    bool  _wasSwizzled;
 }
 
 @property (nonatomic, retain) MCUIProfile *UIProfile;
@@ -17,12 +17,12 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool installComplete;
+@property (nonatomic) bool installingFromPurgatory;
 @property (nonatomic) bool profileOffersReenroll;
 @property (nonatomic) bool profileRemovable;
 @property (nonatomic) <MCProfileViewControllerDelegate> *profileViewControllerDelegate;
 @property (nonatomic) long long profileViewMode;
 @property (readonly) Class superclass;
-@property (nonatomic) bool wasSwizzled;
 
 - (void).cxx_destruct;
 - (id)UIProfile;
@@ -38,19 +38,20 @@
 - (id)initWithStyle:(long long)arg1;
 - (id)initWithStyle:(long long)arg1 profile:(id)arg2 profileViewMode:(long long)arg3;
 - (bool)installComplete;
+- (bool)installingFromPurgatory;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (bool)profileOffersReenroll;
 - (bool)profileRemovable;
 - (id)profileViewControllerDelegate;
 - (long long)profileViewMode;
 - (void)setInstallComplete:(bool)arg1;
+- (void)setInstallingFromPurgatory:(bool)arg1;
 - (void)setProfile:(id)arg1;
 - (void)setProfileOffersReenroll:(bool)arg1;
 - (void)setProfileRemovable:(bool)arg1;
 - (void)setProfileViewControllerDelegate:(id)arg1;
 - (void)setProfileViewMode:(long long)arg1;
 - (void)setUIProfile:(id)arg1;
-- (void)setWasSwizzled:(bool)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
@@ -58,6 +59,5 @@
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(bool)arg1;
-- (bool)wasSwizzled;
 
 @end

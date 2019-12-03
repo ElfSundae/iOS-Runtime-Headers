@@ -15,6 +15,7 @@
 
 - (void).cxx_destruct;
 - (struct PXAssetBadgeInfo { unsigned long long x1; double x2; long long x3; })badgeInfo;
+- (id)badgeInfoPromiseWithAdjustedBadges:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned long long)hash;
 - (id)initWithBadgeInfo:(struct PXAssetBadgeInfo { unsigned long long x1; double x2; long long x3; })arg1;

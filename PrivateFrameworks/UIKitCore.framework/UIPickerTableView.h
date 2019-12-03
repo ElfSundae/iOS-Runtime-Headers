@@ -31,7 +31,6 @@
     }  _selectionBarRect;
     long long  _selectionBarRow;
     UIColor * _textColor;
-    bool  _usesModernStyle;
     struct CGRect { 
         struct CGPoint { 
             double x; 
@@ -45,7 +44,6 @@
 }
 
 @property (getter=_textColor, setter=_setTextColor:, nonatomic, retain) UIColor *_textColor;
-@property (getter=_usesModernStyle, setter=_setUsesModernStyle:) bool _usesModernStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) bool generatorActivated;
@@ -55,6 +53,8 @@
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } selectionBarRect;
 @property (setter=_setSelectionBarRow:, nonatomic) long long selectionBarRow;
 @property (readonly) Class superclass;
+
++ (bool)_isInternalTableView;
 
 - (void).cxx_destruct;
 - (id)_anyDateLabel;
@@ -79,13 +79,11 @@
 - (void)_setPlaysFeedback:(bool)arg1;
 - (void)_setSelectionBarRow:(long long)arg1;
 - (void)_setTextColor:(id)arg1;
-- (void)_setUsesModernStyle:(bool)arg1;
 - (bool)_shouldWrapCells;
 - (id)_textColor;
 - (struct CATransform3D { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; double x11; double x12; double x13; double x14; double x15; double x16; })_transformForCellAtY:(double)arg1;
 - (double)_unitYForViewY:(double)arg1;
 - (void)_updateContentInsets;
-- (bool)_usesModernStyle;
 - (double)_viewYForUnitY:(double)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_visibleBounds;
 - (double)_yForY:(double)arg1;

@@ -6,7 +6,7 @@
     NSString * _annotationString;
     NSString * _cacheDisplayString;
     NSString * _cacheSecondaryDisplayString;
-    int  _clipCorners;
+    unsigned long long  _clipCorners;
     struct UIEdgeInsets { 
         double top; 
         double left; 

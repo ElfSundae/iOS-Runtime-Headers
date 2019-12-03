@@ -4,24 +4,26 @@
 
 @interface LSExtensionPointQuery : _LSQuery {
     NSString * _identifier;
+    unsigned int  _platform;
     NSString * _version;
 }
 
 @property (nonatomic, readonly) NSString *identifier;
+@property (nonatomic, readonly) unsigned int platform;
 @property (nonatomic, readonly) NSString *version;
 
-+ (id)extensionPointQueryForIdentifier:(id)arg1 withVersion:(id)arg2;
++ (id)extensionPointQueryForIdentifier:(id)arg1 platform:(unsigned int)arg2 version:(id)arg3;
 + (bool)supportsSecureCoding;
 
+- (void).cxx_destruct;
 - (void)_enumerateWithXPCConnection:(id)arg1 block:(id /* block */)arg2;
-- (id)_initWithIdentifier:(id)arg1 andVersion:(id)arg2;
-- (bool)_shouldCacheResolvedResults;
-- (void)dealloc;
+- (id)_initWithIdentifier:(id)arg1 platform:(unsigned int)arg2 version:(id)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)identifier;
 - (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
+- (unsigned int)platform;
 - (id)version;
 
 @end

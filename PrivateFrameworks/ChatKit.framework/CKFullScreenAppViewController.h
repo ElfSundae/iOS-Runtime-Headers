@@ -66,6 +66,7 @@
 @property (nonatomic) <CKFullScreenAppViewControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) CKDismissView *dismissView;
+@property (getter=isDismissing, nonatomic, readonly) bool dismissing;
 @property (nonatomic) bool fadesOutDuringStickerDrag;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } horizontalSwipeExclusionRect;
@@ -141,9 +142,12 @@
 - (id)initWithConversation:(id)arg1 plugin:(id)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })initialBrowserFrame;
 - (id)inputAccessoryView;
+- (bool)isDismissing;
 - (bool)isLoaded;
+- (bool)isPrimaryViewController;
 - (bool)isiMessage;
 - (long long)lastKnownDeviceOrientation;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })leftRightSafeAreaInsetRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)loadView;
 - (bool)mayBeKeptInViewHierarchy;
 - (id)navbarManager;
@@ -166,6 +170,7 @@
 - (void)setInDragAndDrop:(bool)arg1;
 - (void)setInTransition:(bool)arg1;
 - (void)setInitialBrowserFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (void)setIsPrimaryViewController:(bool)arg1;
 - (void)setIsiMessage:(bool)arg1;
 - (void)setLastKnownDeviceOrientation:(long long)arg1;
 - (void)setNavbarManager:(id)arg1;
@@ -183,7 +188,9 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })targetBrowserFrame;
 - (double)topAreaHeight;
 - (void)touchTrackerRecognized:(id)arg1;
+- (id)traitCollection;
 - (unsigned long long)transitionDirection;
+- (void)updateGrabberTitleAndIconForPlugin:(id)arg1;
 - (bool)usesDimmingView;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidLayoutSubviews;

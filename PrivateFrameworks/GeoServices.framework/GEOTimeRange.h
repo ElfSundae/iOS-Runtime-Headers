@@ -3,11 +3,11 @@
  */
 
 @interface GEOTimeRange : PBCodable <NSCopying> {
-    unsigned int  _from;
     struct { 
-        unsigned int from : 1; 
-        unsigned int to : 1; 
-    }  _has;
+        unsigned int has_from : 1; 
+        unsigned int has_to : 1; 
+    }  _flags;
+    unsigned int  _from;
     unsigned int  _to;
     PBUnknownFields * _unknownFields;
 }
@@ -18,7 +18,10 @@
 @property (nonatomic) unsigned int to;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -30,6 +33,7 @@
 - (id)initWithPlaceDataTimeRange:(struct GEOPDLocalTimeRange { unsigned int x1; unsigned int x2; struct { unsigned int x_3_1_1 : 1; unsigned int x_3_1_2 : 1; } x3; }*)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setFrom:(unsigned int)arg1;
 - (void)setHasFrom:(bool)arg1;

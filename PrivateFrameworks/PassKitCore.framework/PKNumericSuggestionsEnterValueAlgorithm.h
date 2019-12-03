@@ -36,6 +36,7 @@
 - (void)_generateCalculatedSuggestions;
 - (id)_generateDefaultSuggestions;
 - (id)_generateValuesToDefaults;
+- (bool)_lastInputExistsInGeneratedSuggestions:(id)arg1 withLastInput:(id)arg2;
 - (id)_maxAmountSuggestion;
 - (bool)_possibleAmountIsValidWithDefaultValue:(id)arg1 amount:(id)arg2;
 - (id)_possibleValueForAmount:(id)arg1;

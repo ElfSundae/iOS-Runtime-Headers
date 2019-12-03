@@ -18,11 +18,10 @@
 - (void)backgroundSessionDidFinishAppWake:(void *)arg1 reply:(void *)arg2; // needs 2 arg types, found 6: NSString *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, void*
 - (void)backgroundSessionDidStartAppWake:(void *)arg1 reply:(void *)arg2; // needs 2 arg types, found 6: NSString *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, void*
 - (void)backgroundTask:(void *)arg1 _willSendRequestForEstablishedConnection:(void *)arg2 reply:(void *)arg3; // needs 3 arg types, found 9: unsigned long long, NSURLRequest *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSURLRequest *, NSFileHandle *, void*
-- (void)backgroundTask:(void *)arg1 didCompleteWithError:(void *)arg2 info:(void *)arg3 reply:(void *)arg4; // needs 4 arg types, found 8: unsigned long long, NSError *, NSDictionary *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, void*
-- (void)backgroundTask:(void *)arg1 didFinishCollectingMetrics:(void *)arg2 reply:(void *)arg3; // needs 3 arg types, found 7: unsigned long long, NSURLSessionTaskMetrics *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, void*
+- (void)backgroundTask:(void *)arg1 didCompleteWithError:(void *)arg2 taskMetrics:(void *)arg3 info:(void *)arg4 reply:(void *)arg5; // needs 5 arg types, found 9: unsigned long long, NSError *, __CFN_TaskMetrics *, NSDictionary *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, void*
 - (void)backgroundTask:(void *)arg1 didReceiveChallenge:(void *)arg2 reply:(void *)arg3; // needs 3 arg types, found 9: unsigned long long, NSURLAuthenticationChallenge *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, long long, NSURLCredential *, void*
-- (void)backgroundTask:(unsigned long long)arg1 didReceiveResponse:(NSURLResponse *)arg2 timingData:(NSDictionary *)arg3;
-- (void)backgroundTask:(void *)arg1 didReceiveResponse:(void *)arg2 timingData:(void *)arg3 reply:(void *)arg4; // needs 4 arg types, found 9: unsigned long long, NSURLResponse *, NSDictionary *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, long long, void*
+- (void)backgroundTask:(unsigned long long)arg1 didReceiveResponse:(NSURLResponse *)arg2 transactionMetrics:(__CFN_TransactionMetrics *)arg3;
+- (void)backgroundTask:(void *)arg1 didReceiveResponse:(void *)arg2 transactionMetrics:(void *)arg3 reply:(void *)arg4; // needs 4 arg types, found 9: unsigned long long, NSURLResponse *, __CFN_TransactionMetrics *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, long long, void*
 - (void)backgroundTask:(unsigned long long)arg1 didSendBodyData:(long long)arg2 totalBytesSent:(long long)arg3 totalBytesExpectedToSend:(long long)arg4;
 - (void)backgroundTask:(void *)arg1 getAuthHeadersForResponse:(void *)arg2 reply:(void *)arg3; // needs 3 arg types, found 9: unsigned long long, NSURLResponse *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, NSDictionary *, void*
 - (void)backgroundTask:(unsigned long long)arg1 hasConnectionWaitingWithError:(NSError *)arg2;
@@ -41,6 +40,6 @@
 - (void)credStorage_setCredential:(NSURLCredential *)arg1 forProtectionSpace:(NSURLProtectionSpace *)arg2;
 - (void)credStorage_setDefaultCredential:(NSURLCredential *)arg1 forProtectionSpace:(NSURLProtectionSpace *)arg2;
 - (void)openFileAtPath:(void *)arg1 mode:(void *)arg2 withReply:(void *)arg3; // needs 3 arg types, found 8: NSString *, int, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSFileHandle *, void*
-- (void)willRetryBackgroundDataTask:(unsigned long long)arg1 withError:(NSError *)arg2 timingData:(NSDictionary *)arg3;
+- (void)willRetryBackgroundDataTask:(unsigned long long)arg1 withError:(NSError *)arg2 transactionMetrics:(__CFN_TransactionMetrics *)arg3;
 
 @end

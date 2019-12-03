@@ -8,10 +8,9 @@
     <_UIClickInteractionDelegate> * _delegate;
     <_UIClickInteractionDriving> * _driver;
     _UIClickFeedbackGenerator * _feedbackGenerator;
+    bool  _hapticsEnabled;
     <UIInteractionEffect> * _interactionEffect;
-    bool  _latching;
     Class  _overrideDriverClass;
-    bool  _selected;
     UIView * _view;
 }
 
@@ -21,13 +20,18 @@
 @property (nonatomic) <_UIClickInteractionDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) <_UIClickInteractionDriving> *driver;
+@property (nonatomic) bool driverCancelsTouchesInView;
+@property (nonatomic, readonly) bool driverPrefersCancelsTouchesInView;
+@property (nonatomic, readonly) UIGestureRecognizer *driverPrimaryGestureRecognizer;
 @property (nonatomic, retain) _UIClickFeedbackGenerator *feedbackGenerator;
+@property (nonatomic) bool hapticsEnabled;
+@property (nonatomic, readonly) bool hasDriverExceededAllowableMovement;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) <UIInteractionEffect> *interactionEffect;
-@property (getter=isLatching, nonatomic) bool latching;
+@property (nonatomic, readonly) bool isDriverCurrentlyAcceleratedByForce;
 @property (setter=_setOverrideDriverClass:, nonatomic) Class overrideDriverClass;
-@property (getter=isSelected, nonatomic) bool selected;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) double touchDuration;
 @property (nonatomic, readonly) UIView *view;
 
 - (void).cxx_destruct;
@@ -40,29 +44,34 @@
 - (void)_viewTraitCollectionDidChange:(id)arg1;
 - (double)allowableMovement;
 - (void)cancelInteraction;
-- (void)clickDriver:(id)arg1 didPerformStateChange:(unsigned long long)arg2;
+- (void)clickDriver:(id)arg1 didPerformEvent:(unsigned long long)arg2;
 - (void)clickDriver:(id)arg1 didUpdateHighlightProgress:(double)arg2;
+- (void)clickDriver:(id)arg1 shouldBegin:(id /* block */)arg2;
 - (bool)clickDriver:(id)arg1 shouldDelayGestureRecognizer:(id)arg2;
-- (bool)clickDriverShouldBegin:(id)arg1;
 - (bool)delaysOtherPanRecognizers;
 - (id)delegate;
 - (void)didMoveToView:(id)arg1;
 - (id)driver;
+- (bool)driverCancelsTouchesInView;
+- (bool)driverPrefersCancelsTouchesInView;
+- (id)driverPrimaryGestureRecognizer;
 - (id)feedbackGenerator;
+- (bool)hapticsEnabled;
+- (bool)hasDriverExceededAllowableMovement;
 - (id)init;
 - (id)interactionEffect;
-- (bool)isLatching;
-- (bool)isSelected;
+- (bool)isDriverCurrentlyAcceleratedByForce;
 - (struct CGPoint { double x1; double x2; })locationInCoordinateSpace:(id)arg1;
 - (Class)overrideDriverClass;
 - (void)setAllowableMovement:(double)arg1;
 - (void)setDelaysOtherPanRecognizers:(bool)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDriver:(id)arg1;
+- (void)setDriverCancelsTouchesInView:(bool)arg1;
 - (void)setFeedbackGenerator:(id)arg1;
+- (void)setHapticsEnabled:(bool)arg1;
 - (void)setInteractionEffect:(id)arg1;
-- (void)setLatching:(bool)arg1;
-- (void)setSelected:(bool)arg1;
+- (double)touchDuration;
 - (id)view;
 - (void)willMoveToView:(id)arg1;
 

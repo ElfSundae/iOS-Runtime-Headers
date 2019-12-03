@@ -6,7 +6,7 @@
     NSData * _hashAgilityValue;
 }
 
-@property (readonly) NSData *hashAgilityValue;
+@property (readonly, retain) NSData *hashAgilityValue;
 
 - (void).cxx_destruct;
 - (id)encodeAttributeWithError:(id*)arg1;

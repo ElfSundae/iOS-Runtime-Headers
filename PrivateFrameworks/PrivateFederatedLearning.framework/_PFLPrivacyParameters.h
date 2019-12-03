@@ -4,7 +4,6 @@
 
 @interface _PFLPrivacyParameters : NSObject {
     unsigned long long  _dimension;
-    double  _gamma;
     NSString * _identifier;
     long long  _maxRejection;
     double  _minCDProduct;
@@ -15,7 +14,6 @@
 }
 
 @property (nonatomic) unsigned long long dimension;
-@property (nonatomic) double gamma;
 @property (nonatomic) long long maxRejection;
 @property (nonatomic) double minCDProduct;
 @property (nonatomic) double normmax;
@@ -25,7 +23,6 @@
 
 - (void).cxx_destruct;
 - (unsigned long long)dimension;
-- (double)gamma;
 - (id)initWithIdentifier:(id)arg1;
 - (long long)maxRejection;
 - (double)minCDProduct;
@@ -36,7 +33,6 @@
 - (double)reconstructionProbability;
 - (double)rho;
 - (void)setDimension:(unsigned long long)arg1;
-- (void)setGamma:(double)arg1;
 - (void)setMaxRejection:(long long)arg1;
 - (void)setMinCDProduct:(double)arg1;
 - (void)setNormmax:(double)arg1;

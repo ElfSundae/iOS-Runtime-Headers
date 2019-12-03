@@ -33,6 +33,7 @@
 - (void).cxx_destruct;
 - (void)_handleIconButtonTap:(id)arg1;
 - (void)_setupConstraints;
+- (void)_updateBackgroundColorsBasedOnTraitCollection;
 - (void)_updateFullWidthAppearance;
 - (id)containerView;
 - (id)delegate;
@@ -56,6 +57,7 @@
 - (void)setTextFieldFont:(id)arg1;
 - (id)textField;
 - (id)textFieldFont;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateUIWithAnimation:(bool)arg1;
 
 @end

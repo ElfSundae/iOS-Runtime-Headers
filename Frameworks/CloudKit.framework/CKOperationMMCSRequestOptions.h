@@ -3,16 +3,20 @@
  */
 
 @interface CKOperationMMCSRequestOptions : NSObject <NSSecureCoding> {
+    bool  _chunkingLibraryCorruptionMode;
     bool  _resumableContainerLimpMode;
 }
 
+@property (nonatomic) bool chunkingLibraryCorruptionMode;
 @property (nonatomic) bool resumableContainerLimpMode;
 
 + (bool)supportsSecureCoding;
 
+- (bool)chunkingLibraryCorruptionMode;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (bool)resumableContainerLimpMode;
+- (void)setChunkingLibraryCorruptionMode:(bool)arg1;
 - (void)setResumableContainerLimpMode:(bool)arg1;
 
 @end

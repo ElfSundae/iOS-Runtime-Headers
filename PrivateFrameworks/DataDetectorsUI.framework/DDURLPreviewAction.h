@@ -2,23 +2,18 @@
    Image: /System/Library/PrivateFrameworks/DataDetectorsUI.framework/DataDetectorsUI
  */
 
-@interface DDURLPreviewAction : DDPreviewAction <SFSafariViewControllerDelegate>
+@interface DDURLPreviewAction : DDPreviewAction
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
-+ (id)ddPreviewActionItemsForSimpleDDActions:(id)arg1;
-+ (id)ddPreviewActionItemsForWebURL:(id)arg1;
 + (bool)handlesUrl:(id)arg1 result:(struct __DDResult { }*)arg2;
 + (id)previewActionsWithURL:(id)arg1 validatedURL:(id)arg2 result:(struct __DDResult { }*)arg3 context:(id)arg4;
 + (id)validatedURLWithURL:(id)arg1 result:(struct __DDResult { }*)arg2;
 
 - (id)commitURL;
 - (id)createViewController;
+- (id)menuActions;
 - (bool)requiresEmbeddingNavigationController;
 - (void)safariViewControllerDidFinish:(id)arg1;
 - (void)setPreviewMode:(bool)arg1;
+- (bool)showMenuTitle;
 
 @end

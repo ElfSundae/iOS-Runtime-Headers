@@ -8,7 +8,9 @@
     bool  _dictationUsingServerManualEndpointing;
     UIKeyboardDockView * _dockView;
     UIKeyboardDockItem * _globeDockItem;
+    bool  _isSuppressingDockItemTouch;
     UIKeyboardDockItem * _keyboardDockItem;
+    UIButton * _stopDictationButton;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -18,6 +20,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_dictationDidBeginNotification:(id)arg1;
 - (void)dealloc;
 - (void)dictationItemButtonWasPressed:(id)arg1 withEvent:(id)arg2;
@@ -28,6 +31,7 @@
 - (void)loadView;
 - (void)setDockView:(id)arg1;
 - (void)setKeyboardDockItem;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateDockItemsVisibility;
 - (void)viewDidLoad;
 

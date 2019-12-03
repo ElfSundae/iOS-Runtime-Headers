@@ -9,6 +9,7 @@
 - (_SFPBAppLinkCardSection *)appLinkCardSection;
 - (_SFPBAudioPlaybackCardSection *)audioPlaybackCardSection;
 - (_SFPBButtonCardSection *)buttonCardSection;
+- (_SFPBCompactRowCardSection *)compactRowCardSection;
 - (_SFPBDescriptionCardSection *)descriptionCardSection;
 - (_SFPBDetailedRowCardSection *)detailedRowCardSection;
 - (_SFPBFlightCardSection *)flightCardSection;
@@ -20,6 +21,7 @@
 - (NSData *)jsonData;
 - (_SFPBKeyValueDataCardSection *)keyValueDataCardSection;
 - (_SFPBMapCardSection *)mapCardSection;
+- (_SFPBMapPlaceCardSection *)mapPlaceCardSection;
 - (_SFPBMapsDetailedRowCardSection *)mapsDetailedRowCardSection;
 - (_SFPBMediaInfoCardSection *)mediaInfoCardSection;
 - (_SFPBMediaPlayerCardSection *)mediaPlayerCardSection;
@@ -37,6 +39,7 @@
 - (void)setAppLinkCardSection:(_SFPBAppLinkCardSection *)arg1;
 - (void)setAudioPlaybackCardSection:(_SFPBAudioPlaybackCardSection *)arg1;
 - (void)setButtonCardSection:(_SFPBButtonCardSection *)arg1;
+- (void)setCompactRowCardSection:(_SFPBCompactRowCardSection *)arg1;
 - (void)setDescriptionCardSection:(_SFPBDescriptionCardSection *)arg1;
 - (void)setDetailedRowCardSection:(_SFPBDetailedRowCardSection *)arg1;
 - (void)setFlightCardSection:(_SFPBFlightCardSection *)arg1;
@@ -45,6 +48,7 @@
 - (void)setImagesCardSection:(_SFPBImagesCardSection *)arg1;
 - (void)setKeyValueDataCardSection:(_SFPBKeyValueDataCardSection *)arg1;
 - (void)setMapCardSection:(_SFPBMapCardSection *)arg1;
+- (void)setMapPlaceCardSection:(_SFPBMapPlaceCardSection *)arg1;
 - (void)setMapsDetailedRowCardSection:(_SFPBMapsDetailedRowCardSection *)arg1;
 - (void)setMediaInfoCardSection:(_SFPBMediaInfoCardSection *)arg1;
 - (void)setMediaPlayerCardSection:(_SFPBMediaPlayerCardSection *)arg1;

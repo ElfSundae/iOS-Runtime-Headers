@@ -5,7 +5,6 @@
 @interface LSDocumentProxy : LSResourceProxy <NSSecureCoding> {
     NSString * _MIMEType;
     NSURL * _URL;
-    NSString * _containerOwnerApplicationIdentifier;
     bool  _isContentManaged;
     NSString * _name;
     struct { 
@@ -37,16 +36,17 @@
 + (id)documentProxyForURL:(id)arg1 sourceIsManaged:(bool)arg2;
 + (bool)supportsSecureCoding;
 
+- (void).cxx_destruct;
 - (id)MIMEType;
 - (id)URL;
-- (id)_boundDocumentProxy;
+- (struct optional<LaunchServices::BindingEvaluator> { union { BOOL x_1_1_1; struct BindingEvaluator { id x_2_2_1; id x_2_2_2; id x_2_2_3; id x_2_2_4; id x_2_2_5; struct LSVersionNumber { unsigned char x_6_3_1[32]; } x_2_2_6; bool x_2_2_7; unsigned long long x_2_2_8; unsigned int x_2_2_9; unsigned int x_2_2_10; struct vector<LSBundleClass, std::__1::allocator<LSBundleClass> > { unsigned int *x_11_3_1; unsigned int *x_11_3_2; struct __compressed_pair<LSBundleClass *, std::__1::allocator<LSBundleClass> > { unsigned int *x_3_4_1; } x_11_3_3; } x_2_2_11; id /* block */ x_2_2_12; id x_2_2_13; id /* block */ x_2_2_14; id x_2_2_15; } x_1_1_2; } x1; bool x2; })_bindingEvaluatorWithAuditToken:(const struct { unsigned int x1[8]; }*)arg1;
+- (id)_boundIconInfo;
 - (id)applicationsAvailableForOpeningByDraggingAndDroppingWithError:(id*)arg1;
 - (id)applicationsAvailableForOpeningFromAirDropWithError:(id*)arg1;
 - (id)applicationsAvailableForOpeningWithError:(id*)arg1;
 - (id)applicationsAvailableForOpeningWithHandlerRanks:(id)arg1 error:(id*)arg2;
-- (id)applicationsAvailableForOpeningWithTypeDeclarer:(bool)arg1 style:(unsigned char)arg2 XPCConnection:(id)arg3 error:(id*)arg4;
+- (id)applicationsAvailableForOpeningWithStyle:(unsigned char)arg1 limit:(unsigned long long)arg2 XPCConnection:(id)arg3 error:(id*)arg4;
 - (id)containerOwnerApplicationIdentifier;
-- (void)dealloc;
 - (id)debugDescription;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
@@ -66,9 +66,8 @@
 
 + (id)_sf_documentProxyForName:(id)arg1 type:(id)arg2 MIMEType:(id)arg3 sourceURL:(id)arg4;
 
-// Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
+// Image: /System/Library/PrivateFrameworks/IconServices.framework/IconServices
 
-- (struct CGSize { double x1; double x2; })_defaultStyleSize:(id)arg1;
-- (struct { int x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)_iconVariantDefinitions:(id)arg1;
+- (id)__IS_iconDataForVariant:(int)arg1 withOptions:(int)arg2;
 
 @end

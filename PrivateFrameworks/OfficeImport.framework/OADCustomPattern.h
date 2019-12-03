@@ -9,9 +9,9 @@
 
 + (id)defaultProperties;
 
+- (void).cxx_destruct;
 - (id)blipRef;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (void)fixPropertiesForChangingParentPreservingEffectiveValues:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithDefaults;

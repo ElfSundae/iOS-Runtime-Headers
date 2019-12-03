@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/TelephonyUtilities.framework/TelephonyUtilities
  */
 
-@interface TUCTCapabilitiesState : NSObject <NSCopying, NSSecureCoding, TUPubliclyAccessibleCopying> {
+@interface TUCTCapabilitiesState : NSObject <NSCopying, TUPubliclyAccessibleCopying, TUSecureCoding> {
     bool  _currentlyAvailable;
     bool  _emergencyCurrentlyAvailable;
     bool  _emergencySupported;
@@ -34,18 +34,25 @@
 @property (getter=isSupported, nonatomic) bool supported;
 
 + (bool)supportsSecureCoding;
++ (id)unarchivedObjectClasses;
++ (id)unarchivedObjectFromData:(id)arg1 error:(id*)arg2;
 
 - (void).cxx_destruct;
+- (id)archivedDataWithError:(id*)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)ctCapabilityInfo;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
+- (id)initWithCapabilityInfo:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)invalidateProvisioningURL;
 - (bool)isCurrentlyAvailable;
 - (bool)isEmergencyCurrentlyAvailable;
 - (bool)isEmergencySupported;
 - (bool)isEnabled;
+- (bool)isEqual:(id)arg1;
+- (bool)isEqualToCapabilitiesState:(id)arg1;
 - (bool)isProvisioningURLInvalid;
 - (bool)isRoamingEnabled;
 - (bool)isRoamingSupported;

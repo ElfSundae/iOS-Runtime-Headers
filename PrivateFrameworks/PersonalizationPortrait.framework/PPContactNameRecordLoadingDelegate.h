@@ -2,11 +2,10 @@
    Image: /System/Library/PrivateFrameworks/PersonalizationPortrait.framework/PersonalizationPortrait
  */
 
-@interface PPContactNameRecordLoadingDelegate : NSObject {
+@interface PPContactNameRecordLoadingDelegate : PPRecordLoadingDelegate {
     id /* block */  _contactNameRecordsCompletion;
     id /* block */  _contactNameRecordsHandler;
     id /* block */  _contactNameRecordsSetup;
-    NSString * _name;
     id /* block */  _recentContactNameRecordsCompletion;
     id /* block */  _recentContactNameRecordsHandler;
     id /* block */  _recentContactNameRecordsSetup;
@@ -16,7 +15,6 @@
 @property (nonatomic, copy) id /* block */ contactNameRecordsCompletion;
 @property (nonatomic, copy) id /* block */ contactNameRecordsHandler;
 @property (nonatomic, copy) id /* block */ contactNameRecordsSetup;
-@property (nonatomic, readonly) NSString *name;
 @property (nonatomic, copy) id /* block */ recentContactNameRecordsCompletion;
 @property (nonatomic, copy) id /* block */ recentContactNameRecordsHandler;
 @property (nonatomic, copy) id /* block */ recentContactNameRecordsSetup;
@@ -28,11 +26,17 @@
 - (id /* block */)contactNameRecordsSetup;
 - (id)description;
 - (id)initWithName:(id)arg1;
-- (id)name;
 - (id /* block */)recentContactNameRecordsCompletion;
 - (id /* block */)recentContactNameRecordsHandler;
 - (id /* block */)recentContactNameRecordsSetup;
+- (void)recentRecordLoadingCompletion;
+- (unsigned char)recentRecordLoadingHandler:(id)arg1;
+- (unsigned char)recentRecordLoadingSetup;
+- (void)recordLoadingCompletion;
+- (unsigned char)recordLoadingHandler:(id)arg1;
+- (unsigned char)recordLoadingSetup;
 - (id /* block */)resetContactNameRecordData;
+- (void)resetRecordData;
 - (void)setContactNameRecordsCompletion:(id /* block */)arg1;
 - (void)setContactNameRecordsHandler:(id /* block */)arg1;
 - (void)setContactNameRecordsSetup:(id /* block */)arg1;

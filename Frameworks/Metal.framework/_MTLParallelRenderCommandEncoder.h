@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Metal.framework/Metal
  */
 
-@interface _MTLParallelRenderCommandEncoder : NSObject <MTLParallelRenderCommandEncoder> {
+@interface _MTLParallelRenderCommandEncoder : _MTLObjectWithLabel <MTLParallelRenderCommandEncoder> {
     bool  _StatEnabled;
     _MTLCommandBuffer<MTLCommandBuffer> * _commandBuffer;
     id * _commandBuffers;
@@ -10,7 +10,6 @@
     unsigned long long  _commandBuffersSize;
     <MTLDevice> * _device;
     unsigned long long  _globalTraceObjectID;
-    NSString * _label;
     unsigned long long  _labelTraceID;
     struct _opaque_pthread_mutex_t { 
         long long __sig; 
@@ -42,7 +41,6 @@
 - (id)initWithCommandBuffer:(id)arg1 renderPassDescriptor:(id)arg2;
 - (void)insertDebugSignpost:(id)arg1;
 - (bool)isMemorylessRender;
-- (id)label;
 - (void)popDebugGroup;
 - (void)pushDebugGroup:(id)arg1;
 - (id)renderCommandEncoder;
@@ -51,7 +49,6 @@
 - (void)setColorStoreActionOptions:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setDepthStoreAction:(unsigned long long)arg1;
 - (void)setDepthStoreActionOptions:(unsigned long long)arg1;
-- (void)setLabel:(id)arg1;
 - (void)setStencilStoreAction:(unsigned long long)arg1;
 - (void)setStencilStoreActionOptions:(unsigned long long)arg1;
 

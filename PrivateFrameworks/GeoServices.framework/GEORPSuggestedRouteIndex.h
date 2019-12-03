@@ -11,9 +11,9 @@
     unsigned int  _directionsResponseIndex;
     unsigned int  _directionsResponseSuggestedRoutesIndex;
     struct { 
-        unsigned int directionsResponseIndex : 1; 
-        unsigned int directionsResponseSuggestedRoutesIndex : 1; 
-    }  _has;
+        unsigned int has_directionsResponseIndex : 1; 
+        unsigned int has_directionsResponseSuggestedRoutesIndex : 1; 
+    }  _flags;
 }
 
 @property (nonatomic, readonly) unsigned int*clusteredRouteRideSelections;
@@ -22,6 +22,8 @@
 @property (nonatomic) unsigned int directionsResponseSuggestedRoutesIndex;
 @property (nonatomic) bool hasDirectionsResponseIndex;
 @property (nonatomic) bool hasDirectionsResponseSuggestedRoutesIndex;
+
++ (bool)isValid:(id)arg1;
 
 - (void)addClusteredRouteRideSelections:(unsigned int)arg1;
 - (void)clearClusteredRouteRideSelections;
@@ -40,6 +42,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setClusteredRouteRideSelections:(unsigned int*)arg1 count:(unsigned long long)arg2;
 - (void)setDirectionsResponseIndex:(unsigned int)arg1;

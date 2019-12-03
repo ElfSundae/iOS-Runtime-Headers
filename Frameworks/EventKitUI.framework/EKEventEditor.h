@@ -4,6 +4,7 @@
 
 @interface EKEventEditor : EKCalendarItemEditor <EKEventAutocompleteResultsEditItemDelegate> {
     EKCalendarItemAlarmEditItem * _alarmEditItem;
+    EKEventAttachmentsEditItem * _attachmentsEditItem;
     EKEventAttendeesEditItem * _attendeesEditItem;
     EKEventAutocompleteResultsEditItem * _autocompleteEditItem;
     EKUIAutocompletePETTracker * _autocompletePETTracker;
@@ -66,6 +67,8 @@
 - (void)_showAutocompleteResults;
 - (void)_updateTitleEditItemSeparatorVisibility;
 - (id)_viewForSheet;
+- (id)attachmentsModifiedEvent;
+- (bool)attachmentsModifiedOnRecurrence;
 - (void)autocompleteResultsEditItem:(id)arg1 resultSelected:(id)arg2;
 - (void)autocompleteResultsEditItemDidHideResults:(id)arg1;
 - (void)autocompleteResultsEditItemDidShowResults:(id)arg1;
@@ -76,6 +79,8 @@
 - (unsigned long long)entityType;
 - (id)event;
 - (void)focus:(unsigned long long)arg1 select:(bool)arg2;
+- (bool)hasAttachmentChanges;
+- (bool)hasUnsavedChanges;
 - (void)loadView;
 - (id)notificationNamesForLocaleChange;
 - (struct CGSize { double x1; double x2; })preferredContentSize;
@@ -93,6 +98,7 @@
 - (bool)shouldAutorotate;
 - (bool)showAttachments;
 - (id)suggestionKey;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidDisappear:(bool)arg1;
 - (void)viewWillAppear:(bool)arg1;

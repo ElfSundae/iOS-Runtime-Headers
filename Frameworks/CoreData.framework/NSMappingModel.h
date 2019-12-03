@@ -17,8 +17,8 @@
 @property (retain) NSArray *entityMappings;
 @property (readonly, copy) NSDictionary *entityMappingsByName;
 
-+ (id)_modelPathsFromBundles:(id)arg1;
-+ (id)_newMappingModelFromPaths:(id)arg1 forSourceHashes:(id)arg2 destinationHashes:(id)arg3;
++ (id)_mappingModelFromBundles:(id)arg1 forSourceModel:(id)arg2 destinationModel:(id)arg3;
++ (id)_newMappingModelFromBundles:(id)arg1 forSourceHashes:(id)arg2 destinationHashes:(id)arg3;
 + (id)inferredMappingModelForSourceModel:(id)arg1 destinationModel:(id)arg2 error:(id*)arg3;
 + (void)initialize;
 + (id)mappingModelFromBundles:(id)arg1 forSourceModel:(id)arg2 destinationModel:(id)arg3;

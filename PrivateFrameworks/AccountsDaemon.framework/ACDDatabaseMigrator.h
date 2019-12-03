@@ -3,12 +3,18 @@
  */
 
 @interface ACDDatabaseMigrator : NSObject {
-    NSString * _databasePath;
+    NSURL * _databaseURL;
     NSManagedObjectContext * _migrationContext;
+    NSPersistentStoreCoordinator * _persistentStoreCoordinator;
     NSPersistentStoreCoordinator * _privateCoordinator;
-    NSPersistentStoreCoordinator * _realCoordinator;
-    NSMutableDictionary * _realOptions;
+    NSDictionary * _storeOptions;
 }
+
+@property (nonatomic, readonly) NSURL *databaseURL;
+@property (nonatomic, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (nonatomic, readonly, copy) NSDictionary *storeOptions;
+
++ (id)new;
 
 - (void).cxx_destruct;
 - (id)_compatibleModelForStoreAtURL:(id)arg1;
@@ -20,7 +26,11 @@
 - (void)_postProcessMigrationFromVersion:(long long)arg1 migrationData:(id)arg2;
 - (id)_setUpContextForMigration;
 - (long long)_versionForModel:(id)arg1;
-- (id)initForDatabaseAtPath:(id)arg1 persistentStoreCoordinator:(id)arg2 options:(id)arg3;
-- (bool)run;
+- (id)databaseURL;
+- (id)init;
+- (id)initForDatabaseAtURL:(id)arg1 persistentStoreCoordinator:(id)arg2 storeOptions:(id)arg3;
+- (id)persistentStoreCoordinator;
+- (bool)runReturningError:(id*)arg1;
+- (id)storeOptions;
 
 @end

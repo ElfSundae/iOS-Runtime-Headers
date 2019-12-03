@@ -3,6 +3,7 @@
  */
 
 @interface _HKFitnessFriendWorkout : HKSample <ASCloudKitCodable, HDCoding, NSCopying> {
+    long long  _amm;
     NSString * _bundleID;
     NSString * _deviceManufacturer;
     NSString * _deviceModel;
@@ -18,6 +19,7 @@
     unsigned long long  _workoutActivityType;
 }
 
+@property (nonatomic) long long amm;
 @property (nonatomic, retain) NSString *bundleID;
 @property (nonatomic, readonly) ASCodableCloudKitWorkout *codableWorkout;
 @property (readonly, copy) NSString *debugDescription;
@@ -40,10 +42,11 @@
 // Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
 
 + (id)fitnessFriendWorkoutFromHKWorkout:(id)arg1;
-+ (id)fitnessFriendworkoutWithActivityType:(unsigned long long)arg1 friendUUID:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 duration:(double)arg5 totalActiveEnergyBurned:(id)arg6 totalBasalEnergyBurned:(id)arg7 totalDistance:(id)arg8 goalType:(unsigned long long)arg9 goal:(id)arg10 bundleID:(id)arg11 isWatchWorkout:(bool)arg12 isIndoorWorkout:(bool)arg13 deviceManufacturer:(id)arg14 deviceModel:(id)arg15;
++ (id)fitnessFriendworkoutWithActivityType:(unsigned long long)arg1 friendUUID:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 duration:(double)arg5 totalActiveEnergyBurned:(id)arg6 totalBasalEnergyBurned:(id)arg7 totalDistance:(id)arg8 goalType:(unsigned long long)arg9 goal:(id)arg10 bundleID:(id)arg11 isWatchWorkout:(bool)arg12 isIndoorWorkout:(bool)arg13 deviceManufacturer:(id)arg14 deviceModel:(id)arg15 amm:(long long)arg16;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (long long)amm;
 - (id)bundleID;
 - (id)description;
 - (id)deviceManufacturer;
@@ -57,6 +60,7 @@
 - (id)initWithCoder:(id)arg1;
 - (bool)isIndoorWorkout;
 - (bool)isWatchWorkout;
+- (void)setAmm:(long long)arg1;
 - (void)setBundleID:(id)arg1;
 - (void)setDeviceManufacturer:(id)arg1;
 - (void)setDeviceModel:(id)arg1;

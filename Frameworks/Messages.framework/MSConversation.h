@@ -8,6 +8,7 @@
     <MSConversationDelegate> * _delegate;
     NSArray * _draftAssetArchives;
     NSData * _engramID;
+    NSString * _iMessageLoginID;
     NSUUID * _identifier;
     NSUUID * _localParticipantIdentifier;
     NSArray * _recipientAddresses;
@@ -21,6 +22,7 @@
 @property (nonatomic) <MSConversationDelegate> *delegate;
 @property (nonatomic, readonly, copy) NSArray *draftAssetArchives;
 @property (nonatomic, readonly) NSData *engramID;
+@property (nonatomic, readonly) NSString *iMessageLoginID;
 @property (nonatomic, readonly) NSUUID *identifier;
 @property (nonatomic, readonly) NSUUID *localParticipantIdentifier;
 @property (nonatomic, readonly) NSArray *recipientAddresses;
@@ -49,6 +51,7 @@
 - (id)delegate;
 - (id)draftAssetArchives;
 - (id)engramID;
+- (id)iMessageLoginID;
 - (id)identifier;
 - (id)inputMessagePayload;
 - (void)insertAttachment:(id)arg1 withAlternateFilename:(id)arg2 completionHandler:(id /* block */)arg3;

@@ -6,6 +6,7 @@
     NSDictionary * _configuration;
     NSMutableDictionary * _extensions;
     NSString * _generator;
+    NSDictionary * _labels;
     bool  _largerBetter;
     NSString * _name;
     NSString * _notes;
@@ -19,6 +20,7 @@
 @property (nonatomic, retain) NSDictionary *configuration;
 @property (nonatomic, retain) NSMutableDictionary *extensions;
 @property (nonatomic, retain) NSString *generator;
+@property (nonatomic, retain) NSDictionary *labels;
 @property (nonatomic) bool largerBetter;
 @property (nonatomic, readonly) unsigned long long measurementCount;
 @property (nonatomic, retain) NSString *name;
@@ -52,6 +54,7 @@
 - (id)initWithPath:(id)arg1 error:(id*)arg2;
 - (bool)isComparableTo:(id)arg1;
 - (bool)isLike:(id)arg1;
+- (id)labels;
 - (bool)largerBetter;
 - (unsigned long long)measurementCount;
 - (id)name;
@@ -61,6 +64,7 @@
 - (void)setConfiguration:(id)arg1;
 - (void)setExtensions:(id)arg1;
 - (void)setGenerator:(id)arg1;
+- (void)setLabels:(id)arg1;
 - (void)setLargerBetter:(bool)arg1;
 - (void)setName:(id)arg1;
 - (void)setNotes:(id)arg1;

@@ -2,7 +2,9 @@
    Image: /System/Library/Frameworks/Vision.framework/Vision
  */
 
-@interface VNFaceLandmarkDetectorRevision2 : VNFaceLandmarkDetector
+@interface VNFaceLandmarkDetectorRevision2 : VNFaceLandmarkDetectorDNN
+
++ (unsigned char)landmarkDetectorDNNVersion;
 
 - (id)espressoModelFileNameForConfigurationOptions:(id)arg1;
 - (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;

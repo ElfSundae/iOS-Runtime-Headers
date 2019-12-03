@@ -5,7 +5,7 @@
 @interface PXPeopleNamePickerTitleView : UIView <PXPhotoLibraryUIChangeObserver> {
     UIImageView * _avatarView;
     NSMutableArray * _fetchResults;
-    NSString * _name;
+    NSString * _localizedName;
     UITextField * _nameField;
     UIFont * _nameFont;
     PHPerson * _person;
@@ -18,7 +18,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) NSMutableArray *fetchResults;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *localizedName;
 @property (nonatomic, readonly) UITextField *nameField;
 @property (nonatomic, retain) UIFont *nameFont;
 @property (nonatomic, retain) PHPerson *person;
@@ -36,7 +36,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 person:(id)arg2;
-- (id)name;
+- (id)localizedName;
 - (id)nameField;
 - (id)nameFont;
 - (id)person;
@@ -47,7 +47,7 @@
 - (void)resetImages;
 - (void)setAvatarView:(id)arg1;
 - (void)setFetchResults:(id)arg1;
-- (void)setName:(id)arg1;
+- (void)setLocalizedName:(id)arg1;
 - (void)setNameFont:(id)arg1;
 - (void)setPerson:(id)arg1;
 - (void)setPlaceholder:(id)arg1;

@@ -4,8 +4,8 @@
 
 @interface PKPaymentSetupFieldBuiltInDateOfBirth : PKPaymentSetupFieldDate
 
-- (id)_locale;
 - (id)initWithIdentifier:(id)arg1 type:(unsigned long long)arg2;
 - (bool)isBuiltIn;
+- (bool)submissionStringMeetsAllRequirements;
 
 @end

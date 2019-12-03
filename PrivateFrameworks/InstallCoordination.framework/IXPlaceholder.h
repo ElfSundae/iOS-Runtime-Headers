@@ -17,6 +17,7 @@
 + (id)_iconDataForBundle:(struct __CFBundle { }*)arg1 error:(id*)arg2;
 + (id)_infoPlistLocalizationDictionaryForBundleURL:(id)arg1 error:(id*)arg2;
 + (id)_placeholderForBundle:(id)arg1 client:(unsigned long long)arg2 withParent:(id)arg3 installType:(unsigned long long)arg4 metadata:(id)arg5 error:(id*)arg6;
++ (id)errorStringForMISError:(int)arg1;
 + (id)placeholderForInstallable:(id)arg1 client:(unsigned long long)arg2 installType:(unsigned long long)arg3 metadata:(id)arg4 error:(id*)arg5;
 + (id)placeholderForRemovableSystemAppWithBundleID:(id)arg1 client:(unsigned long long)arg2 installType:(unsigned long long)arg3 error:(id*)arg4;
 + (bool)supportsSecureCoding;

@@ -9,5 +9,6 @@
 + (id)decayRate;
 + (id)osBuild;
 + (id)score;
++ (id)sentimentScore;
 
 @end

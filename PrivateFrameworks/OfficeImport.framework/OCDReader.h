@@ -3,13 +3,12 @@
  */
 
 @interface OCDReader : NSObject {
+    <OCDReaderDelegate> * _delegate;
     <TCCancelDelegate> * mCancelDelegate;
     NSData * mData;
-    <OCDReaderDelegate> * mDelegate;
     NSString * mFileName;
     bool  mIsThumbnail;
     NSError * mStartError;
-    TCImportTracing * mTracing;
 }
 
 @property (nonatomic, retain) <TCCancelDelegate> *cancelDelegate;
@@ -18,14 +17,13 @@
 @property (nonatomic, retain) NSString *fileName;
 @property (nonatomic) bool isThumbnail;
 @property (nonatomic, retain) NSError *startError;
-@property (nonatomic, retain) TCImportTracing *tracing;
 
+- (void).cxx_destruct;
 - (id)cancelDelegate;
 - (id)data;
-- (void)dealloc;
 - (id)delegate;
 - (id)fileName;
-- (id)initWithCancelDelegate:(id)arg1 tracing:(id)arg2;
+- (id)initWithCancelDelegate:(id)arg1;
 - (bool)isBinaryReader;
 - (bool)isThumbnail;
 - (id)read;
@@ -36,10 +34,8 @@
 - (void)setIsThumbnail:(bool)arg1;
 - (void)setStartError:(id)arg1;
 - (void)setStartErrorMessageFromException:(id)arg1;
-- (void)setTracing:(id)arg1;
 - (bool)start;
 - (id)startError;
-- (id)tracing;
 - (bool)verifyFileFormat;
 
 @end

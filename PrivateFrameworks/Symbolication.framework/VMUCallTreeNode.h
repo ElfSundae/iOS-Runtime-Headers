@@ -69,6 +69,7 @@
 - (id)sortedChildrenWithPseudoNode:(id)arg1 withCompare:(SEL)arg2;
 - (id)stringFromCallTreeIndentIfNoBranches:(bool)arg1;
 - (id)stringFromCallTreeIndentIfNoBranches:(bool)arg1 showPseudoNodes:(bool)arg2;
+- (id)stringFromCallTreeWithOptions:(unsigned long long)arg1;
 - (unsigned int)sumOfChildCounts;
 - (bool)symbolNameIsUnknown;
 

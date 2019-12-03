@@ -6,9 +6,9 @@
     NSMutableArray * mLevelStack;
 }
 
+- (void).cxx_destruct;
 - (int)currentContextChildDepth;
 - (int)currentContextDepth;
-- (void)dealloc;
 - (bool)hasLevels;
 - (id)init;
 - (bool)popLevel;

@@ -3,37 +3,29 @@
  */
 
 @interface NTKRingView : NTKColoringView {
-    double  _appearanceAnimationProgress;
     double  _fillFraction;
+    <CLKMonochromeFilterProvider> * _filterProvider;
     double  _radius;
-    double  _ringAnimationDelta;
     double  _ringWidth;
-    bool  _showsRingsBackground;
 }
 
-@property (nonatomic) double appearanceAnimationProgress;
 @property (nonatomic) double fillFraction;
-@property (nonatomic) double radius;
-@property (nonatomic) double ringAnimationDelta;
-@property (nonatomic) double ringWidth;
-@property (nonatomic) bool showsRingsBackground;
+@property (nonatomic) <CLKMonochromeFilterProvider> *filterProvider;
+@property (nonatomic, readonly) double radius;
+@property (nonatomic, readonly) double ringWidth;
 
+- (void).cxx_destruct;
 - (void)_drawBackgroundRings;
-- (void)_drawFillFractionRings;
 - (void)_drawRingWithRadius:(double)arg1 fillFraction:(double)arg2 alpha:(double)arg3;
-- (double)appearanceAnimationProgress;
 - (void)drawRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (double)fillFraction;
-- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (id)filterProvider;
+- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 radius:(double)arg2 ringWidth:(double)arg3;
 - (double)radius;
-- (double)ringAnimationDelta;
 - (double)ringWidth;
-- (void)setAppearanceAnimationProgress:(double)arg1;
 - (void)setFillFraction:(double)arg1;
-- (void)setRadius:(double)arg1;
-- (void)setRingAnimationDelta:(double)arg1;
-- (void)setRingWidth:(double)arg1;
-- (void)setShowsRingsBackground:(bool)arg1;
-- (bool)showsRingsBackground;
+- (void)setFilterProvider:(id)arg1;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 
 @end

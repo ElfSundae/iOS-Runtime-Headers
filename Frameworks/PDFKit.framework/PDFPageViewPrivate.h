@@ -3,8 +3,10 @@
  */
 
 @interface PDFPageViewPrivate : NSObject {
-    PDFAnnotation * activeWidgetAnnotation;
-    UIView * activeWidgetControl;
+    PDFAnnotation * activeAnnotation;
+    NSMutableDictionary * activeControls;
+    NSTextStorage * activeTextStorage;
+    PDFPageViewAnnotationController * annotationController;
     UIImage * backgroundImage;
     CALayer * backgroundLayer;
     int  backgroundQuality;
@@ -21,7 +23,6 @@
     NSMutableArray * pageSignatures;
     PDFRenderingProperties * renderingProperties;
     PDFPageLayerEffect * searchLayer;
-    PDFPageLayerEffect * selectionLayer;
     unsigned long long  visibilityDelegateIndex;
 }
 

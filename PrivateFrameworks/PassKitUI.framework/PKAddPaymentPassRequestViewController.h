@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
  */
 
-@interface PKAddPaymentPassRequestViewController : UITableViewController {
+@interface PKAddPaymentPassRequestViewController : UITableViewController <PKPaymentSetupViewControllerDelegate> {
     PKAddPaymentPassRequest * _addRequest;
     PKAddPaymentPassRequestConfiguration * _configuration;
     NSObject<OS_dispatch_source> * _datasourceTimeout;
@@ -19,9 +19,11 @@
     double  _offsetForTextfield;
     bool  _offsetForTextfieldWasCalculated;
     CLInUseAssertion * _passbookForegroundAssertion;
+    PKPasscodeUpgradeFlowController * _passcodeUpgradeFlowController;
     bool  _preconditionsValidated;
     OBPrivacyLinkController * _privacyController;
     PKPaymentProvisioningController * _provisioningController;
+    <PKPaymentSetupViewControllerDelegate> * _setupDelegate;
     bool  _singleTarget;
     NSString * _subtitle;
     RemoteUIController * _termsController;
@@ -30,10 +32,17 @@
     PKPaymentWebService * _webService;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <PKAddPaymentPassRequestViewControllerDelegate> *delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) bool hidePrivacy;
+@property (nonatomic) <PKPaymentSetupViewControllerDelegate> *setupDelegate;
 @property (nonatomic) bool singleTarget;
+@property (readonly) Class superclass;
 @property (nonatomic, readonly) PKPaymentWebService *webService;
+
++ (id)backgroundColor;
 
 - (void).cxx_destruct;
 - (void)_applyHeaderState;
@@ -45,6 +54,7 @@
 - (void)_performEligibility;
 - (void)_performMoreInfoItemPush;
 - (void)_performNextProvisioningStep;
+- (void)_performPasscodeUpgradeIfNeeded;
 - (void)_performPreconditionValidation;
 - (void)_performProvisioning:(id)arg1;
 - (void)_performTerms:(id)arg1;
@@ -61,13 +71,17 @@
 - (void)dealloc;
 - (id)delegate;
 - (bool)hidePrivacy;
+- (void)hostApplicationDidEnterBackground;
 - (id)initWithPaymentWebService:(id)arg1 configuration:(id)arg2;
 - (void)loadView;
+- (void)noteNavigationUserInterfaceDidDisappear;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setHidePrivacy:(bool)arg1;
+- (void)setSetupDelegate:(id)arg1;
 - (void)setSingleTarget:(bool)arg1;
+- (id)setupDelegate;
 - (bool)singleTarget;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;

@@ -5,11 +5,11 @@
 @interface MBTargetDeviceTransferTask : MBDeviceTransferTask <MBManagerDelegate> {
     id /* block */  _keychainTransferCompletionHandler;
     id /* block */  _preflightCompletionHandler;
-    bool  _startedDataTransfer;
-    bool  _startedKeychainDataImport;
-    bool  _startedKeychainDataTransfer;
-    bool  _startedKeychainTransfer;
-    bool  _startedPreflight;
+    _Atomic bool  _startedDataTransfer;
+    _Atomic bool  _startedKeychainDataImport;
+    _Atomic bool  _startedKeychainDataTransfer;
+    _Atomic bool  _startedKeychainTransfer;
+    _Atomic bool  _startedPreflight;
 }
 
 @property (nonatomic, copy) id /* block */ keychainTransferCompletionHandler;

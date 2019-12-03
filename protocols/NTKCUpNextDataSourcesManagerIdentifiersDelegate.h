@@ -5,6 +5,6 @@
 
 @required
 
-- (void)manager:(NTKCUpNextDataSourcesManager *)arg1 didUpdateDataSourceIdentifiers:(NSSet *)arg2 donatedIdentifiers:(NSSet *)arg3;
+- (void)manager:(NTKCUpNextDataSourcesManager *)arg1 didUpdateDataSourceEntries:(NSArray *)arg2;
 
 @end

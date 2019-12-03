@@ -22,7 +22,6 @@
 @property (nonatomic, readonly) bool fastHaptics;
 @property (nonatomic) unsigned int service;
 
-+ (int)_convertAssertion:(unsigned long long)arg1;
 + (int)_convertClickState:(unsigned long long)arg1;
 + (int)_convertForceFeel:(unsigned long long)arg1;
 + (id)interface;

@@ -3,11 +3,13 @@
  */
 
 @interface _INPBDistanceList : PBCodable <NSCopying, NSSecureCoding, _INPBDistanceList> {
+    bool  __encodeLegacyGloryData;
     _INPBCondition * _condition;
     NSArray * _distances;
     struct { }  _has;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic, retain) _INPBCondition *condition;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -18,8 +20,11 @@
 @property (readonly) Class superclass;
 
 + (Class)distanceType;
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (void)addDistance:(id)arg1;
 - (void)clearDistances;
 - (id)condition;
@@ -28,8 +33,10 @@
 - (id)distanceAtIndex:(unsigned long long)arg1;
 - (id)distances;
 - (unsigned long long)distancesCount;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasCondition;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setCondition:(id)arg1;

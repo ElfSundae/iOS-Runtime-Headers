@@ -34,6 +34,7 @@
 - (void)_setPageURL:(id)arg1 toIconUUID:(id)arg2;
 - (bool)_setRejectedResourceForPageURL:(id)arg1 iconURLString:(id)arg2;
 - (id)_setTimestampToNowForIconUUID:(id)arg1;
+- (void)fetchAllIconUUIDsWithCompletionHandler:(id /* block */)arg1;
 - (void)fetchAllKnownPageURLStringsWithCompletionHandler:(id /* block */)arg1;
 - (void)fetchPageURLStringsWithPrefixesIn:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)firstIconInfoMatchingIconURLStringIn:(id)arg1 completionHandler:(id /* block */)arg2;

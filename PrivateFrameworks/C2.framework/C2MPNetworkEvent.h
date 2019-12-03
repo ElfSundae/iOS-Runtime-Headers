@@ -28,6 +28,7 @@
         unsigned int optionsTimeoutIntervalForRequest : 1; 
         unsigned int optionsTimeoutIntervalForResource : 1; 
         unsigned int networkConnectionReused : 1; 
+        unsigned int networkIsDiscretionary : 1; 
         unsigned int optionsAllowExpensiveAccess : 1; 
         unsigned int optionsAllowPowerNapScheduling : 1; 
         unsigned int optionsAppleIdContext : 1; 
@@ -40,6 +41,7 @@
     C2MPError * _networkFatalError;
     NSString * _networkHostname;
     NSString * _networkInterfaceIdentifier;
+    bool  _networkIsDiscretionary;
     unsigned int  _networkPreviousAttemptCount;
     NSString * _networkProtocolName;
     NSString * _networkRemoteAddresssAndPort;
@@ -53,6 +55,8 @@
     bool  _optionsAllowExpensiveAccess;
     bool  _optionsAllowPowerNapScheduling;
     bool  _optionsAppleIdContext;
+    NSString * _optionsDiscretionaryNetworkBehavior;
+    NSString * _optionsDuetPreClearedMode;
     bool  _optionsOutOfProcess;
     bool  _optionsOutOfProcessForceDiscretionary;
     NSString * _optionsQualityOfService;
@@ -83,6 +87,7 @@
 @property (nonatomic, readonly) bool hasNetworkFatalError;
 @property (nonatomic, readonly) bool hasNetworkHostname;
 @property (nonatomic, readonly) bool hasNetworkInterfaceIdentifier;
+@property (nonatomic) bool hasNetworkIsDiscretionary;
 @property (nonatomic) bool hasNetworkPreviousAttemptCount;
 @property (nonatomic, readonly) bool hasNetworkProtocolName;
 @property (nonatomic, readonly) bool hasNetworkRemoteAddresssAndPort;
@@ -96,6 +101,8 @@
 @property (nonatomic) bool hasOptionsAllowExpensiveAccess;
 @property (nonatomic) bool hasOptionsAllowPowerNapScheduling;
 @property (nonatomic) bool hasOptionsAppleIdContext;
+@property (nonatomic, readonly) bool hasOptionsDiscretionaryNetworkBehavior;
+@property (nonatomic, readonly) bool hasOptionsDuetPreClearedMode;
 @property (nonatomic) bool hasOptionsOutOfProcess;
 @property (nonatomic) bool hasOptionsOutOfProcessForceDiscretionary;
 @property (nonatomic, readonly) bool hasOptionsQualityOfService;
@@ -124,6 +131,7 @@
 @property (nonatomic, retain) C2MPError *networkFatalError;
 @property (nonatomic, retain) NSString *networkHostname;
 @property (nonatomic, retain) NSString *networkInterfaceIdentifier;
+@property (nonatomic) bool networkIsDiscretionary;
 @property (nonatomic) unsigned int networkPreviousAttemptCount;
 @property (nonatomic, retain) NSString *networkProtocolName;
 @property (nonatomic, retain) NSString *networkRemoteAddresssAndPort;
@@ -137,6 +145,8 @@
 @property (nonatomic) bool optionsAllowExpensiveAccess;
 @property (nonatomic) bool optionsAllowPowerNapScheduling;
 @property (nonatomic) bool optionsAppleIdContext;
+@property (nonatomic, retain) NSString *optionsDiscretionaryNetworkBehavior;
+@property (nonatomic, retain) NSString *optionsDuetPreClearedMode;
 @property (nonatomic) bool optionsOutOfProcess;
 @property (nonatomic) bool optionsOutOfProcessForceDiscretionary;
 @property (nonatomic, retain) NSString *optionsQualityOfService;
@@ -171,6 +181,7 @@
 - (bool)hasNetworkFatalError;
 - (bool)hasNetworkHostname;
 - (bool)hasNetworkInterfaceIdentifier;
+- (bool)hasNetworkIsDiscretionary;
 - (bool)hasNetworkPreviousAttemptCount;
 - (bool)hasNetworkProtocolName;
 - (bool)hasNetworkRemoteAddresssAndPort;
@@ -184,6 +195,8 @@
 - (bool)hasOptionsAllowExpensiveAccess;
 - (bool)hasOptionsAllowPowerNapScheduling;
 - (bool)hasOptionsAppleIdContext;
+- (bool)hasOptionsDiscretionaryNetworkBehavior;
+- (bool)hasOptionsDuetPreClearedMode;
 - (bool)hasOptionsOutOfProcess;
 - (bool)hasOptionsOutOfProcessForceDiscretionary;
 - (bool)hasOptionsQualityOfService;
@@ -215,6 +228,7 @@
 - (id)networkFatalError;
 - (id)networkHostname;
 - (id)networkInterfaceIdentifier;
+- (bool)networkIsDiscretionary;
 - (unsigned int)networkPreviousAttemptCount;
 - (id)networkProtocolName;
 - (id)networkRemoteAddresssAndPort;
@@ -228,6 +242,8 @@
 - (bool)optionsAllowExpensiveAccess;
 - (bool)optionsAllowPowerNapScheduling;
 - (bool)optionsAppleIdContext;
+- (id)optionsDiscretionaryNetworkBehavior;
+- (id)optionsDuetPreClearedMode;
 - (bool)optionsOutOfProcess;
 - (bool)optionsOutOfProcessForceDiscretionary;
 - (id)optionsQualityOfService;
@@ -240,6 +256,7 @@
 - (unsigned long long)reportFrequency;
 - (unsigned long long)reportFrequencyBase;
 - (void)setHasNetworkConnectionReused:(bool)arg1;
+- (void)setHasNetworkIsDiscretionary:(bool)arg1;
 - (void)setHasNetworkPreviousAttemptCount:(bool)arg1;
 - (void)setHasNetworkRequestBodyBytesSent:(bool)arg1;
 - (void)setHasNetworkRequestHeaderSize:(bool)arg1;
@@ -274,6 +291,7 @@
 - (void)setNetworkFatalError:(id)arg1;
 - (void)setNetworkHostname:(id)arg1;
 - (void)setNetworkInterfaceIdentifier:(id)arg1;
+- (void)setNetworkIsDiscretionary:(bool)arg1;
 - (void)setNetworkPreviousAttemptCount:(unsigned int)arg1;
 - (void)setNetworkProtocolName:(id)arg1;
 - (void)setNetworkRemoteAddresssAndPort:(id)arg1;
@@ -287,6 +305,8 @@
 - (void)setOptionsAllowExpensiveAccess:(bool)arg1;
 - (void)setOptionsAllowPowerNapScheduling:(bool)arg1;
 - (void)setOptionsAppleIdContext:(bool)arg1;
+- (void)setOptionsDiscretionaryNetworkBehavior:(id)arg1;
+- (void)setOptionsDuetPreClearedMode:(id)arg1;
 - (void)setOptionsOutOfProcess:(bool)arg1;
 - (void)setOptionsOutOfProcessForceDiscretionary:(bool)arg1;
 - (void)setOptionsQualityOfService:(id)arg1;

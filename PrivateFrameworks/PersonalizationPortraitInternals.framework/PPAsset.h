@@ -4,8 +4,8 @@
 
 @interface PPAsset : NSObject
 
-+ (id)asset;
-+ (void)initialize;
++ (id)commonAsset;
++ (id)nonWatchAsset;
 + (id)notificationQueue;
 
 @end

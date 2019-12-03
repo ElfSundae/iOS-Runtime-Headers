@@ -11,6 +11,7 @@
     bool  _ignoreEndEditing;
     bool  _isCompositionExpirable;
     double  _maxContentWidthWhenExpanded;
+    double  _maxPreviewContentWidthWhenExpanded;
     bool  _needsEnsureSelectionVisible;
     bool  _needsEnsureTextViewVisible;
     bool  _needsTextLayout;
@@ -43,6 +44,7 @@
 @property (nonatomic) bool ignoreEndEditing;
 @property (nonatomic) bool isCompositionExpirable;
 @property (nonatomic) double maxContentWidthWhenExpanded;
+@property (nonatomic) double maxPreviewContentWidthWhenExpanded;
 @property (nonatomic) bool needsEnsureSelectionVisible;
 @property (nonatomic) bool needsEnsureTextViewVisible;
 @property (nonatomic) bool needsTextLayout;
@@ -101,10 +103,12 @@
 - (void)layoutSubviews;
 - (bool)makeActive;
 - (double)maxContentWidthWhenExpanded;
+- (double)maxPreviewContentWidthWhenExpanded;
 - (double)maxWidthForPreviewImagesInMessageEntryRichTextView:(id)arg1;
 - (void)messageEntryRichTextView:(id)arg1 didTapMediaObject:(id)arg2;
 - (void)messageEntryRichTextView:(id)arg1 pastedURL:(id)arg2;
 - (bool)messageEntryRichTextView:(id)arg1 shouldPasteMediaObjects:(id)arg2;
+- (bool)messageEntryRichTextView:(id)arg1 shouldRecognizeGesture:(id)arg2;
 - (void)messageEntryRichTextViewDidTapHandwritingKey:(id)arg1;
 - (void)messageEntryRichTextViewWasTapped:(id)arg1 isLongPress:(bool)arg2;
 - (bool)needsEnsureSelectionVisible;
@@ -133,6 +137,7 @@
 - (void)setIgnoreEndEditing:(bool)arg1;
 - (void)setIsCompositionExpirable:(bool)arg1;
 - (void)setMaxContentWidthWhenExpanded:(double)arg1;
+- (void)setMaxPreviewContentWidthWhenExpanded:(double)arg1;
 - (void)setNeedsEnsureSelectionVisible:(bool)arg1;
 - (void)setNeedsEnsureTextViewVisible:(bool)arg1;
 - (void)setNeedsTextLayout:(bool)arg1;
@@ -160,6 +165,7 @@
 - (id)subjectView;
 - (id)textAndSubjectDividerLine;
 - (id)textView;
+- (bool)textView:(id)arg1 shouldChangeTextInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 replacementText:(id)arg3;
 - (void)textViewDidBeginEditing:(id)arg1;
 - (void)textViewDidChange:(id)arg1;
 - (void)textViewDidEndEditing:(id)arg1;

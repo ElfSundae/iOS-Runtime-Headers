@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUImportOneUpViewController : UIViewController <PUImportActionCoordinatorDelegate, PUImportAssetsDataSourceManagerObserver, PUImportControllerNotificationsReceiver, PUImportOneUpCellDisplayDelegate, PUImportOneUpScrubberCellDisplayDelegate, PUImportOneUpTransitioning, PUReviewScrubberDataSource, PUReviewScrubberDelegate, PUSelectableAssetCollectionViewLayoutDelegate, PXChangeObserver, UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate> {
+@interface PUImportOneUpViewController : UIViewController <PUImportActionCoordinatorDelegate, PUImportOneUpCellDisplayDelegate, PUImportOneUpScrubberCellDisplayDelegate, PUImportOneUpTransitioning, PUReviewScrubberDataSource, PUReviewScrubberDelegate, PUSelectableAssetCollectionViewLayoutDelegate, PXChangeObserver, PXImportAssetsDataSourceManagerObserver, PXImportControllerNotificationsReceiver, UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate> {
     PUImportActionCoordinator * _actionCoordinator;
     bool  _allowsSelection;
     bool  _animatingTransition;
@@ -15,9 +15,9 @@
     UIBarButtonItem * _deleteBarButtonItem;
     bool  _hasPerformedNavigationToStartingAsset;
     UIBarButtonItem * _importBarButtonItem;
-    PUImportController * _importController;
-    PUImportAssetsDataSource * _importDataSource;
-    PUImportAssetsDataSourceManager * _importDataSourceManager;
+    PXImportController * _importController;
+    PXImportAssetsDataSource * _importDataSource;
+    PXImportAssetsDataSourceManager * _importDataSourceManager;
     NSIndexPath * _inFlightReferenceIndexPath;
     bool  _isCommitingPreview;
     NSMutableArray * _itemsNeedingRelayout;
@@ -25,7 +25,7 @@
     bool  _loadLargeThumbnailsInCustomOrder;
     PXMediaProvider * _mediaProvider;
     PXNavigationTitleView * _navigationTitleView;
-    PUImportAssetsDataSource * _pendingDataSource;
+    PXImportAssetsDataSource * _pendingDataSource;
     bool  _performingDataSourceChange;
     unsigned long long  _presentationFilter;
     UIBarButtonItem * _progressButtonItem;
@@ -57,9 +57,9 @@
 @property (nonatomic) bool hasPerformedNavigationToStartingAsset;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) UIBarButtonItem *importBarButtonItem;
-@property (nonatomic, retain) PUImportController *importController;
-@property (nonatomic, retain) PUImportAssetsDataSource *importDataSource;
-@property (nonatomic, retain) PUImportAssetsDataSourceManager *importDataSourceManager;
+@property (nonatomic, retain) PXImportController *importController;
+@property (nonatomic, retain) PXImportAssetsDataSource *importDataSource;
+@property (nonatomic, retain) PXImportAssetsDataSourceManager *importDataSourceManager;
 @property (nonatomic, readonly) NSIndexPath *inFlightReferenceIndexPath;
 @property (nonatomic) bool isCommitingPreview;
 @property (nonatomic, retain) NSMutableArray *itemsNeedingRelayout;
@@ -67,7 +67,7 @@
 @property (nonatomic) bool loadLargeThumbnailsInCustomOrder;
 @property (nonatomic, retain) PXMediaProvider *mediaProvider;
 @property (nonatomic, readonly) PXNavigationTitleView *navigationTitleView;
-@property (nonatomic, retain) PUImportAssetsDataSource *pendingDataSource;
+@property (nonatomic, retain) PXImportAssetsDataSource *pendingDataSource;
 @property (nonatomic) bool performingDataSourceChange;
 @property (nonatomic) unsigned long long presentationFilter;
 @property (nonatomic, readonly) UIBarButtonItem *progressButtonItem;
@@ -143,7 +143,7 @@
 - (id)importAssetAtIndexPath:(id)arg1;
 - (id)importBarButtonItem;
 - (id)importController;
-- (void)importControllerProgressDidChange:(id)arg1 completedItemCount:(id)arg2 totalItemCount:(id)arg3 context:(id)arg4;
+- (void)importControllerProgressDidChange:(id)arg1 completedItemCount:(id)arg2 totalItemCount:(id)arg3;
 - (id)importDataSource;
 - (id)importDataSourceManager;
 - (id)importDestinationForActionCoordinator:(id)arg1;
@@ -191,7 +191,7 @@
 - (void)reviewScrubber:(id)arg1 willDisplayCell:(id)arg2 atIndexPath:(id)arg3;
 - (void)reviewScrubberDidScrub:(id)arg1;
 - (void)reviewScrubberDidSelectItemAtIndexPath:(id)arg1;
-- (int)reviewScrubberImageFormat;
+- (unsigned short)reviewScrubberImageFormat;
 - (id)roundProgressView;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(bool)arg2;

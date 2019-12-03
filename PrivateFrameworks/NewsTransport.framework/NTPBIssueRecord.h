@@ -7,6 +7,7 @@
     NSMutableArray * _allowedStorefrontIDs;
     NTPBRecordBase * _base;
     NSMutableArray * _blockedStorefrontIDs;
+    NSMutableArray * _bundleFeaturedArticleIDs;
     NSString * _channelTagID;
     NSString * _coverArticleID;
     double  _coverAspectRatio;
@@ -44,6 +45,7 @@
 @property (nonatomic, retain) NSMutableArray *allowedStorefrontIDs;
 @property (nonatomic, retain) NTPBRecordBase *base;
 @property (nonatomic, retain) NSMutableArray *blockedStorefrontIDs;
+@property (nonatomic, retain) NSMutableArray *bundleFeaturedArticleIDs;
 @property (nonatomic, retain) NSString *channelTagID;
 @property (nonatomic, retain) NSString *coverArticleID;
 @property (nonatomic) double coverAspectRatio;
@@ -94,11 +96,13 @@
 + (Class)allArticleIDsType;
 + (Class)allowedStorefrontIDsType;
 + (Class)blockedStorefrontIDsType;
++ (Class)bundleFeaturedArticleIDsType;
 + (Class)topicTagIDsType;
 
 - (void)addAllArticleIDs:(id)arg1;
 - (void)addAllowedStorefrontIDs:(id)arg1;
 - (void)addBlockedStorefrontIDs:(id)arg1;
+- (void)addBundleFeaturedArticleIDs:(id)arg1;
 - (void)addTopicTagIDs:(id)arg1;
 - (id)allArticleIDs;
 - (id)allArticleIDsAtIndex:(unsigned long long)arg1;
@@ -110,10 +114,14 @@
 - (id)blockedStorefrontIDs;
 - (id)blockedStorefrontIDsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)blockedStorefrontIDsCount;
+- (id)bundleFeaturedArticleIDs;
+- (id)bundleFeaturedArticleIDsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)bundleFeaturedArticleIDsCount;
 - (id)channelTagID;
 - (void)clearAllArticleIDs;
 - (void)clearAllowedStorefrontIDs;
 - (void)clearBlockedStorefrontIDs;
+- (void)clearBundleFeaturedArticleIDs;
 - (void)clearTopicTagIDs;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)coverArticleID;
@@ -167,6 +175,7 @@
 - (void)setAllowedStorefrontIDs:(id)arg1;
 - (void)setBase:(id)arg1;
 - (void)setBlockedStorefrontIDs:(id)arg1;
+- (void)setBundleFeaturedArticleIDs:(id)arg1;
 - (void)setChannelTagID:(id)arg1;
 - (void)setCoverArticleID:(id)arg1;
 - (void)setCoverAspectRatio:(double)arg1;

@@ -16,17 +16,18 @@
 + (id)currentDeviceMigrationStateCreateIfNecessary:(bool)arg1 context:(id)arg2;
 + (id)deviceMigrationStateWithDeviceIdentifier:(id)arg1 context:(id)arg2;
 + (id)deviceMigrationStatesMatchingPredicate:(id)arg1 context:(id)arg2;
-+ (id)existingCloudObjectForRecordID:(id)arg1 context:(id)arg2;
++ (id)existingCloudObjectForRecordID:(id)arg1 accountID:(id)arg2 context:(id)arg3;
 + (id)identifierForDeviceIdentifier:(id)arg1;
-+ (id)newCloudObjectForRecord:(id)arg1 context:(id)arg2;
-+ (id)newDeviceMigrationStateWithDeviceIdentifier:(id)arg1 account:(id)arg2 context:(id)arg3;
++ (id)newCloudObjectForRecord:(id)arg1 accountID:(id)arg2 context:(id)arg3;
++ (id)newDeviceMigrationStateWithDeviceIdentifier:(id)arg1 account:(id)arg2;
 + (id)stringFromMigrationState:(short)arg1;
 
+- (id)cloudAccount;
 - (void)deleteFromLocalDatabase;
 - (id)ic_loggingValues;
 - (bool)isInICloudAccount;
 - (bool)isMigrating;
-- (void)mergeDataFromRecord:(id)arg1;
+- (void)mergeDataFromRecord:(id)arg1 accountID:(id)arg2;
 - (id)newlyCreatedRecord;
 - (void)objectWasDeletedFromCloud;
 - (void)objectWasDeletedFromCloudByAnotherDevice;

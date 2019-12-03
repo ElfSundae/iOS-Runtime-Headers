@@ -2,18 +2,20 @@
    Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
  */
 
-@interface REPortraitPredictor : REPredictor {
+@interface REPortraitPredictor : REPredictor <REPortraitPredictorProperties> {
     NSMutableDictionary * _namedEntityScores;
     PPNamedEntityStore * _namedEntityStore;
 }
 
+@property (nonatomic, readonly) NSDictionary *namedEntityScores;
+
 + (double)updateInterval;
 
 - (void).cxx_destruct;
+- (id)_init;
 - (void)_loadStoreIfNeeded;
-- (void)collectLoggableState:(id /* block */)arg1;
 - (void)dealloc;
-- (id)init;
+- (id)namedEntityScores;
 - (void)update;
 - (float)userAffinityToContent:(id)arg1;
 

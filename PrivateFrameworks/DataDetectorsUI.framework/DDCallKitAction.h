@@ -14,6 +14,7 @@
 - (void).cxx_destruct;
 - (long long)TTYType;
 - (id)callProvider;
+- (id)dialRequest;
 - (id)localizedName;
 - (void)setCallProvider:(id)arg1;
 

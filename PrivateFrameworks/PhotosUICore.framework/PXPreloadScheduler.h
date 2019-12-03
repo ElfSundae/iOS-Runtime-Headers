@@ -19,11 +19,14 @@
 - (bool)_isActive;
 - (void)_runLoopWillStartWaiting;
 - (void)_setActive:(bool)arg1;
+- (bool)_shouldExecutePendingBlock;
 - (void)_updateIsActive;
 - (void)dealloc;
 - (id)init;
 - (void)scheduleBackgroundTask:(id /* block */)arg1;
+- (void)scheduleDeferredBackgroundTask:(id /* block */)arg1;
 - (void)scheduleMainQueueTask:(id /* block */)arg1;
 - (void)scheduleMainQueueTaskAndWait:(id /* block */)arg1;
+- (void)scheduleTaskAfterCATransactionCommits:(id /* block */)arg1;
 
 @end

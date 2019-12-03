@@ -25,6 +25,7 @@
     unsigned int  imageQueueSlot;
     bool  isPaused;
     bool  isPresentationLayer;
+    bool  isPreviewing;
     bool  mirrored;
     double  oddScreenScale;
     double  oddScreenWidth;

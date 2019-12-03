@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
  */
 
-@interface PLCloudResource : PLManagedObject <PLCloudResource>
+@interface PLCloudResource : PLManagedObject <PLCloudResourceCommon, PLResourceAvailabilityMarking>
 
 @property (nonatomic, retain) PLManagedAsset *asset;
 @property (nonatomic, retain) NSString *assetUuid;
@@ -25,7 +25,8 @@
 @property (nonatomic, readonly) NSManagedObjectID *objectID;
 @property (nonatomic) short prefetchCount;
 @property (nonatomic, retain) NSDate *prunedAt;
-@property (nonatomic, readonly, retain) CPLScopedIdentifier *scopedIdentifier;
+@property (nonatomic, readonly) unsigned int resourceRecipeID;
+@property (nonatomic, readonly) CPLScopedIdentifier *scopedIdentifier;
 @property (nonatomic, readonly) unsigned long long sourceCplType;
 @property (nonatomic) int sourceType;
 @property (readonly) Class superclass;
@@ -35,31 +36,24 @@
 @property (nonatomic) long long width;
 
 + (bool)_countOfLocalCloudResourcesOfType:(unsigned long long)arg1 inManagedObjectContext:(id)arg2 forMediumSized:(bool)arg3 localCount:(unsigned long long*)arg4 unavailableCount:(unsigned long long*)arg5 error:(id*)arg6;
-+ (unsigned long long)bytesNeededToDownloadOriginalResourcesInLibrary:(id)arg1;
++ (unsigned long long)bytesForAllResourcesInLibrary:(id)arg1;
 + (bool)countOfLocalCloudResourcesOfType:(unsigned long long)arg1 inManagedObjectContext:(id)arg2 localCount:(unsigned long long*)arg3 unavailableCount:(unsigned long long*)arg4 error:(id*)arg5;
 + (bool)countOfMediumOriginalLocalCloudResourcesInManagedObjectContext:(id)arg1 localCount:(unsigned long long*)arg2 unavailableCount:(unsigned long long*)arg3 error:(id*)arg4;
 + (id)duplicateCloudResource:(id)arg1 forAsset:(id)arg2 withFilePath:(id)arg3 inManagedObjectContext:(id)arg4;
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (id)insertIntoPhotoLibrary:(id)arg1 forAsset:(id)arg2 withCPLResource:(id)arg3 adjusted:(bool)arg4 withCreationDate:(id)arg5;
 + (id)nonLocalResourcesInManagedObjectContext:(id)arg1 forAssetUUIDs:(id)arg2 cplResourceTypes:(id)arg3;
-+ (id)nonOriginalResourceTypes;
-+ (id)originalResourceTypes;
-+ (id)prunePurgeablePredicateForResourceTypes:(id)arg1 urgency:(long long)arg2;
-+ (id)purgeablePushedCloudResourcePredicateForResourceTypes:(id)arg1 urgency:(long long)arg2;
-+ (id)purgeableUploadedCloudResourcePredicateForResourceTypes:(id)arg1 urgency:(long long)arg2;
-+ (void)resetCloudResourcesStateForCloudInManagedObjectContext:(id)arg1 hardReset:(bool)arg2;
 + (void)resetPrefetchStateForResourcesWithResourceType:(long long)arg1 itemIdentifiers:(id)arg2 inLibrary:(id)arg3;
 
 - (void)_duplicatePropertiesFromCloudResource:(id)arg1 withFilePath:(id)arg2 forAssetUuid:(id)arg3;
 - (void)applyPropertiesFromCloudResource:(id)arg1;
 - (id)cplResourceIncludeFile:(bool)arg1;
 - (unsigned long long)cplType;
-- (void)createSidecarFileForMasterAssetIfNeeded:(id)arg1;
 - (id)description;
 - (void)markAsLocallyAvailableWithFilePath:(id)arg1;
 - (void)markAsNotLocallyAvailable;
 - (void)prepareForDeletion;
+- (unsigned int)resourceRecipeID;
 - (id)scopedIdentifier;
 - (void)setIsLocallyAvailable:(bool)arg1;
 - (void)setLastPrefetchDate:(id)arg1;

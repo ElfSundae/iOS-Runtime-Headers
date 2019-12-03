@@ -9,28 +9,28 @@
 @property (getter=_isPIPModePossible, nonatomic, readonly) bool PIPModePossible;
 @property (setter=_setDisplaysUsedForPlayback:, nonatomic, copy) NSArray *_displaysUsedForPlayback;
 @property (nonatomic, readonly) long long _externalProtectionStatus;
-@property (nonatomic) bool allowsOutOfBandTextTrackRendering;
-@property (nonatomic) bool allowsPixelBufferPoolSharing;
-@property (nonatomic) bool appliesMediaSelectionCriteriaAutomatically;
-@property (nonatomic, copy) NSString *audioOutputDeviceUniqueID;
+@property bool allowsOutOfBandTextTrackRendering;
+@property bool allowsPixelBufferPoolSharing;
+@property bool appliesMediaSelectionCriteriaAutomatically;
+@property (copy) NSString *audioOutputDeviceUniqueID;
 @property (getter=isAudioPlaybackEnabledAtAllRates, nonatomic, readonly) bool audioPlaybackEnabledAtAllRates;
 @property (retain) AVAudioSession *audioSession;
 @property (nonatomic, copy) NSString *captionPipelineStrategy;
 @property (nonatomic, copy) NSString *captionRenderingStrategy;
-@property (nonatomic) bool disallowsAMRAudio;
+@property bool disallowsAMRAudio;
 @property (getter=_disallowsAutoPauseOnRouteRemovalIfNoAudio, setter=_setDisallowsAutoPauseOnRouteRemovalIfNoAudio:, nonatomic) bool disallowsAutoPauseOnRouteRemovalIfNoAudio;
 @property (nonatomic, readonly) NSError *error;
 @property (nonatomic, retain) <AVLoggingIdentifier> *loggingIdentifier;
-@property (nonatomic) float maxRateForAudioPlayback;
-@property (nonatomic) float minRateForAudioPlayback;
-@property (nonatomic, copy) NSString *multichannelAudioStrategy;
+@property float maxRateForAudioPlayback;
+@property float minRateForAudioPlayback;
+@property (copy) NSString *multichannelAudioStrategy;
 @property (nonatomic) unsigned long long preferredVideoDecoderGPURegistryID;
 @property (nonatomic) bool preventsDisplaySleepDuringVideoPlayback;
 @property (nonatomic, readonly) long long status;
 
 // Image: /System/Library/Frameworks/AVFoundation.framework/AVFoundation
 
-+ (int)_createFigPlayerWithType:(long long)arg1 player:(struct OpaqueFigPlayer {}**)arg2;
++ (int)_createFigPlayerWithType:(long long)arg1 options:(const struct __CFDictionary { }*)arg2 player:(struct OpaqueFigPlayer {}**)arg3;
 + (bool)automaticallyNotifiesObserversOfAirPlayVideoActive;
 + (bool)automaticallyNotifiesObserversOfAutoSwitchStreamVariants;
 + (bool)automaticallyNotifiesObserversOfCurrentItem;
@@ -43,6 +43,7 @@
 + (bool)automaticallyNotifiesObserversOfVibrationPattern;
 + (long long)availableHDRModes;
 + (void)checkForAvailableHDRModesChanges;
++ (bool)eligibleForHDRPlayback;
 + (void)fireAvailableHDRModesDidChangeNotification;
 + (void)initialize;
 + (bool)isIAPDExtendedModeActive;
@@ -54,8 +55,8 @@
 + (id)playerWithFigPlayer:(struct OpaqueFigPlayer { }*)arg1;
 + (id)playerWithPlayerItem:(id)arg1;
 + (id)playerWithURL:(id)arg1;
-+ (long long)propertyStorageCachePolicy;
 + (void)registerForScreenConnectionChanges;
++ (bool)worksAroundConcurrentKVOCrash;
 
 - (bool)_CALayerDestinationIsTVOut;
 - (void)_addFPListeners;
@@ -64,7 +65,6 @@
 - (void)_advanceCurrentItemAccordingToFigPlaybackItem:(struct OpaqueFigPlaybackItem { }*)arg1;
 - (void)_advanceToNextItem;
 - (bool)_airPlayVideoActive;
-- (bool)_allowsVideoPlaybackWhileInBackground;
 - (id)_ancillaryPerformanceInformationForDisplay;
 - (bool)_applicationHasExternallyDisplayedAVPlayerLayerAndIsUnderDeviceLock;
 - (void)_applyLinkedListOfItemsToFigPlayerUsingBlock:(id /* block */)arg1;
@@ -84,9 +84,11 @@
 - (struct OpaqueFigPlayer { }*)_copyFigPlayer;
 - (id)_copyPerformanceDataForCurrentItem;
 - (void)_createAndConfigureFigPlayerWithType:(long long)arg1 completionHandler:(id /* block */)arg2;
+- (struct __CFDictionary { }*)_createDictionaryWithDimensionsOfReservedVideoMemory:(struct CGSize { double x1; double x2; })arg1;
 - (int)_createPrerollID;
 - (void)_detachClosedCaptionLayersFromFigPlayer:(struct OpaqueFigPlayer { }*)arg1;
 - (void)_detachFigPlayerFromSubtitleLayers;
+- (void)_detachVideoLayersForSuspension;
 - (void)_detachVideoLayersFromFigPlayer:(struct OpaqueFigPlayer { }*)arg1;
 - (void)_didEnterBackground:(id)arg1;
 - (void)_didFinishSuspension:(id)arg1;
@@ -100,10 +102,13 @@
 - (bool)_externalPlaybackActive;
 - (id)_externalPlaybackVideoGravity;
 - (long long)_externalProtectionStatus;
+- (long long)_externalProtectionStatusCopiedFromFig;
 - (long long)_extractFPExternalProtectionStatus:(id)arg1;
 - (id)_fpNotificationNames;
 - (bool)_hasAssociatedAVPlayerLayerInPIPMode;
 - (bool)_hasAssociatedOnscreenAVPlayerLayer;
+- (bool)_hasForegroundLayers;
+- (bool)_hostApplicationInForeground;
 - (long long)_inferredTimeControlStatusAndWaitingReason:(id*)arg1 forRate:(float)arg2;
 - (void)_insertItem:(id)arg1 afterItem:(id)arg2;
 - (bool)_isAirPlayVideoActive;
@@ -117,6 +122,7 @@
 - (long long)_itemOkayToPlayWhileTransitioningToBackground:(id)arg1;
 - (id)_items;
 - (id)_items_invokeOnIvarAccessQueue;
+- (void)_layerVisibilityChanged:(id)arg1;
 - (bool)_limitsBandwidthForCellularAccess;
 - (void)_logPerformanceDataForCurrentItem;
 - (void)_logPerformanceDataForPreviousItem;
@@ -124,7 +130,7 @@
 - (id)_nameForLogging;
 - (void)_noteNewNonForcedSubtitleDisplayEnabledForPlayerItem:(id)arg1;
 - (void)_noteNewPresentationSizeForPlayerItem:(id)arg1;
-- (bool)_outputObscuredDueToInsufficientExternalProtection;
+- (bool)_pausesAudioVisualPlaybackInBackground;
 - (id)_pendingFigPlayerProperties;
 - (id)_pendingFigPlayerPropertyForKey:(id)arg1;
 - (id)_performanceDictionary;
@@ -134,7 +140,6 @@
 - (void)_playerLayer:(id)arg1 replaceVideoLayer:(id)arg2 with:(id)arg3;
 - (float)_playerVolume;
 - (bool)_preventsSleepDuringVideoPlayback;
-- (id)_propertyStorage;
 - (float)_rate;
 - (id)_rateDidChangeNotificationPayloadForAVFRateChangeReason:(id)arg1 rateChangeIdentifier:(id)arg2;
 - (id)_rateDidChangeNotificationPayloadForFigRateChangeReason:(int)arg1 rateChangeIdentifier:(id)arg2;
@@ -145,10 +150,11 @@
 - (void)_removeItem:(id)arg1;
 - (void)_removeItemFromLinkedList_invokeOnIvarAccessQueue:(id)arg1;
 - (void)_removeLayer:(id)arg1;
+- (void)_removeLayer:(id)arg1 videoLayer:(id)arg2 closedCaptionLayer:(id)arg3 subtitleLayer:(id)arg4;
+- (void)_restoreVideoLayersForForeground;
 - (bool)_resumePlayback:(double)arg1 error:(id*)arg2;
-- (void)_runOnIvarAccessQueueOperationThatMayChangeCurrentItemWithPreflightBlock:(id /* block */)arg1 modificationBlock:(id /* block */)arg2;
+- (bool)_runOnIvarAccessQueueOperationThatMayChangeCurrentItemWithPreflightBlock:(id /* block */)arg1 modificationBlock:(id /* block */)arg2 error:(id*)arg3;
 - (void)_setActionAtItemEnd:(long long)arg1 allowingAdvance:(bool)arg2;
-- (void)_setAllowsVideoPlaybackWhileInBackground:(bool)arg1;
 - (void)_setAncillaryPerformanceInformationForDisplay:(id)arg1;
 - (void)_setCALayerDestinationIsTVOut:(bool)arg1;
 - (void)_setClientName:(id)arg1;
@@ -160,8 +166,10 @@
 - (void)_setDynamicallyChoosesInitialVariant:(bool)arg1;
 - (void)_setEQPreset:(int)arg1;
 - (void)_setFigPlaybackItemToMakeCurrent:(struct OpaqueFigPlaybackItem { }*)arg1;
+- (void)_setHostApplicationInForeground:(bool)arg1;
 - (void)_setLimitsBandwidthForCellularAccess:(bool)arg1;
 - (void)_setNeroVideoGravityOnFigPlayer;
+- (void)_setPausesAudioVisualPlaybackInBackground:(bool)arg1;
 - (void)_setPendingFigPlayerProperty:(id)arg1 forKey:(id)arg2;
 - (void)_setPreferredLanguageList:(id)arg1;
 - (void)_setPreventsSleepDuringVideoPlayback:(bool)arg1;
@@ -184,6 +192,7 @@
 - (void)_updateConnectionToSecondScreen;
 - (void)_updateCurrentItemPreferredPixelBufferAttributesAndVideoLayerSuppression;
 - (void)_updateDecoderPixelBufferAttributes:(id)arg1 onFigPlayer:(struct OpaqueFigPlayer { }*)arg2;
+- (void)_updatePixelBufferAttributesForLayer:(id)arg1;
 - (void)_updateProxyTimebaseFromNewCurrentItem;
 - (float)_userVolume;
 - (bool)_usesLegacyAutomaticWaitingBehavior;
@@ -208,6 +217,7 @@
 - (id)captionRenderingStrategy;
 - (id)currentItem;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })currentTime;
+- (struct { long long x1; int x2; unsigned int x3; long long x4; })currentUnfoldedTime;
 - (void)dealloc;
 - (id)defaultMediaSelectionCriteriaForMediaCharacteristic:(id)arg1;
 - (struct CGSize { double x1; double x2; })dimensionsOfReservedVideoMemory;
@@ -219,7 +229,6 @@
 - (long long)externalPlaybackType;
 - (id)externalPlaybackVideoGravity;
 - (struct __CFString { }*)figPlayerActionForActionAtItemEnd:(long long)arg1;
-- (void)finalize;
 - (id)init;
 - (id)initWithDispatchQueue:(id)arg1;
 - (id)initWithFigPlayer:(struct OpaqueFigPlayer { }*)arg1;
@@ -255,6 +264,7 @@
 - (void)removeAudioPlaybackRateLimits;
 - (void)removeTimeObserver:(id)arg1;
 - (void)replaceCurrentItemWithPlayerItem:(id)arg1;
+- (long long)resourceConservationLevelWhilePaused;
 - (void)seekToDate:(id)arg1;
 - (void)seekToDate:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)seekToTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
@@ -295,6 +305,7 @@
 - (void)setRate:(float)arg1 time:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2 atHostTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg3;
 - (void)setRate:(float)arg1 withVolumeRampDuration:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2;
 - (void)setRate:(float)arg1 withVolumeRampDuration:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2 playImmediately:(bool)arg3 rateChangeReason:(int)arg4;
+- (void)setResourceConservationLevelWhilePaused:(long long)arg1;
 - (void)setShouldReduceResourceUsage:(bool)arg1;
 - (void)setUsesAirPlayVideoWhileAirPlayScreenIsActive:(bool)arg1;
 - (void)setUsesAudioOnlyModeForExternalPlayback:(bool)arg1;

@@ -35,6 +35,7 @@
 @property (nonatomic, readonly, copy) NSString *mediaKind;
 @property (nonatomic, readonly) unsigned long long minimumRankOfTopHitToSuppressResult;
 @property (nonatomic, readonly) NSString *parsecDomainIdentifier;
+@property (nonatomic, readonly) long long parsecQueryID;
 @property (nonatomic, retain) <WBSParsecSearchSession> *parsecSearchSession;
 @property (nonatomic, readonly, copy) NSString *query;
 @property (nonatomic, readonly, copy) NSString *referrerForLoadingResult;
@@ -53,6 +54,9 @@
 @property (nonatomic, readonly) NSNumber *titleMaximumNumberOfLines;
 @property (nonatomic, readonly) long long type;
 @property (nonatomic, readonly) NSString *urlString;
+
++ (long long)typeForSFSearchResult:(id)arg1;
++ (long long)typeForSFSearchResult:(id)arg1 isOneLine:(bool)arg2;
 
 - (void).cxx_destruct;
 - (id)_genericResult;
@@ -91,6 +95,7 @@
 - (id)mediaKind;
 - (unsigned long long)minimumRankOfTopHitToSuppressResult;
 - (id)parsecDomainIdentifier;
+- (long long)parsecQueryID;
 - (id)parsecSearchSession;
 - (id)query;
 - (id)referrerForLoadingResult;

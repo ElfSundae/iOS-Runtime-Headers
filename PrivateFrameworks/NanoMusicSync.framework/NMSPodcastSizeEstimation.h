@@ -22,6 +22,7 @@
 - (void)_setupFromCache;
 - (unsigned long long)_totalAverageSize;
 - (double)_totalSizeDurationRatio;
+- (unsigned long long)averageEpisodeSize;
 - (bool)incrementSize:(unsigned long long)arg1 duration:(double)arg2 forFeedURL:(id)arg3;
 - (id)init;
 - (bool)isEmpty;

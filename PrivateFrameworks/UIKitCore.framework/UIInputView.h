@@ -62,7 +62,7 @@
 
 - (double)_additionalClipHeight;
 - (void)_beginSplitTransitionIfNeeded:(double)arg1 gapWidth:(double)arg2;
-- (int)_clipCornersOfView:(id)arg1;
+- (unsigned long long)_clipCornersOfView:(id)arg1;
 - (struct CGSize { double x1; double x2; })_defaultSize;
 - (bool)_disableSplitSupport;
 - (void)_endSplitTransitionIfNeeded:(bool)arg1;

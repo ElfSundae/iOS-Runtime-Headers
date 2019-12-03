@@ -2,9 +2,10 @@
    Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
  */
 
-@interface _MFMailCompositionContext : NSObject <MFMailCompositionAdditionalDonating> {
+@interface _MFMailCompositionContext : NSObject <MFMailCompositionAdditionalDonating, MFMailCompositionShareSheetRecipients> {
     NSArray * _UTITypes;
     MFAttachmentCompositionContext * _attachmentContext;
+    MFAttachmentComposeManager * _attachmentManager;
     NSString * _attachmentToMarkupContentID;
     NSString * _autosaveIdentifier;
     NSArray * _bccRecipients;
@@ -15,18 +16,24 @@
     int  _composeType;
     NSArray * _contentText;
     NSArray * _contentURLs;
+    NSString * _contentVariationAttachmentCID;
+    NSArray * _contentVariations;
+    unsigned long long  _defaultContentVariationIndex;
     NSMutableArray * _deferredAttachments;
     bool  _includeAttachments;
+    bool  _includeAttachmentsWhenAdding;
+    MFMailMessage * _legacyMessage;
     bool  _loadRest;
     MFMessageLoadingContext * _loadingContext;
     NSString * _messageBody;
     id  _originalContent;
-    MFMailMessage * _originalMessage;
+    EMMessage * _originalMessage;
     NSString * _originatingBundleID;
     NSArray * _photoIDs;
     bool  _prefersFirstLineSelection;
     bool  _registeredForDraw;
     NSString * _sendingAddress;
+    NSString * _shareSheetSessionID;
     bool  _showContentImmediately;
     bool  _showKeyboardImmediately;
     int  _sourceAccountManagement;
@@ -37,6 +44,7 @@
 
 @property (nonatomic, copy) NSArray *UTITypes;
 @property (nonatomic, readonly) MFAttachmentCompositionContext *attachmentContext;
+@property (nonatomic, readonly) MFAttachmentManager *attachmentManager;
 @property (nonatomic, retain) NSString *attachmentToMarkupContentID;
 @property (nonatomic, readonly) NSString *autosaveIdentifier;
 @property (nonatomic, copy) NSArray *bccRecipients;
@@ -47,16 +55,22 @@
 @property (nonatomic, readonly) int composeType;
 @property (nonatomic, copy) NSArray *contentText;
 @property (nonatomic, copy) NSArray *contentURLs;
+@property (nonatomic, retain) NSString *contentVariationAttachmentCID;
+@property (nonatomic, copy) NSArray *contentVariations;
 @property (nonatomic, readonly) NSString *contextID;
+@property (nonatomic) unsigned long long defaultContentVariationIndex;
 @property (nonatomic) bool includeAttachments;
+@property (nonatomic) bool includeAttachmentsWhenAdding;
+@property (nonatomic, readonly) MFMailMessage *legacyMessage;
 @property (nonatomic) bool loadRest;
 @property (nonatomic, retain) MFMessageLoadingContext *loadingContext;
 @property (nonatomic, retain) id originalContent;
-@property (nonatomic, readonly) MFMailMessage *originalMessage;
+@property (nonatomic, readonly) EMMessage *originalMessage;
 @property (nonatomic, copy) NSString *originatingBundleID;
 @property (nonatomic, copy) NSArray *photoIDs;
 @property (nonatomic) bool prefersFirstLineSelection;
 @property (nonatomic, copy) NSString *sendingAddress;
+@property (nonatomic, copy) NSString *shareSheetSessionID;
 @property (nonatomic) bool showContentImmediately;
 @property (nonatomic) bool showKeyboardImmediately;
 @property (nonatomic) int sourceAccountManagement;
@@ -64,12 +78,15 @@
 @property (nonatomic, copy) NSArray *toRecipients;
 @property (nonatomic) bool usingDefaultAccount;
 
++ (id)log;
++ (id)processMessageBody:(id)arg1 asHTML:(bool)arg2;
+
+- (void).cxx_destruct;
 - (id)UTITypes;
-- (void)_contextRegisterForDrawNotification;
-- (void)_contextUnregisterForDrawNotification;
 - (id)addAttachmentData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3;
 - (id)addAttachmentData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3 contentID:(id)arg4;
 - (id)attachmentContext;
+- (id)attachmentManager;
 - (id)attachmentToMarkupContentID;
 - (id)attachments;
 - (id)autosaveIdentifier;
@@ -81,27 +98,32 @@
 - (int)composeType;
 - (id)contentText;
 - (id)contentURLs;
-- (void)contextDidDraw:(id)arg1;
+- (id)contentVariationAttachmentCID;
+- (id)contentVariations;
 - (id)contextID;
 - (void)dealloc;
+- (unsigned long long)defaultContentVariationIndex;
 - (bool)hasDuetDonationContext;
 - (bool)includeAttachments;
+- (bool)includeAttachmentsWhenAdding;
 - (id)init;
-- (id)initDraftRestoreOfMessage:(id)arg1;
-- (id)initForwardOfMessage:(id)arg1;
-- (id)initOutboxRestoreOfMessage:(id)arg1;
+- (id)initDraftRestoreOfMessage:(id)arg1 legacyMessage:(id)arg2;
+- (id)initForwardOfMessage:(id)arg1 legacyMessage:(id)arg2;
+- (id)initOutboxRestoreOfMessage:(id)arg1 legacyMessage:(id)arg2;
 - (id)initRecoveredAutosavedMessageWithIdentifier:(id)arg1;
-- (id)initReplyAllToMessage:(id)arg1;
-- (id)initReplyToMessage:(id)arg1;
-- (id)initSendAgainDraftOfMessage:(id)arg1;
+- (id)initReplyAllToMessage:(id)arg1 legacyMessage:(id)arg2;
+- (id)initReplyToMessage:(id)arg1 legacyMessage:(id)arg2;
+- (id)initSendAgainDraftOfMessage:(id)arg1 legacyMessage:(id)arg2;
 - (id)initWithComposeType:(int)arg1;
 - (id)initWithComposeType:(int)arg1 RFC822Data:(id)arg2;
-- (id)initWithComposeType:(int)arg1 originalMessage:(id)arg2;
+- (id)initWithComposeType:(int)arg1 originalMessage:(id)arg2 legacyMessage:(id)arg3;
 - (id)initWithHandoffActivityPayload:(id)arg1;
 - (id)initWithURL:(id)arg1;
-- (id)initWithURL:(id)arg1 composeType:(int)arg2 originalMessage:(id)arg3;
+- (id)initWithURL:(id)arg1 composeType:(int)arg2 originalMessage:(id)arg3 legacyMessage:(id)arg4;
 - (void)insertAttachmentWithData:(id)arg1 fileName:(id)arg2 mimeType:(id)arg3 contentID:(id)arg4;
 - (void)insertAttachmentWithURL:(id)arg1;
+- (void)insertDeferredAttachmentsIntoBodyField:(id)arg1;
+- (id)legacyMessage;
 - (bool)loadRest;
 - (id)loadingContext;
 - (id)messageBody;
@@ -122,7 +144,11 @@
 - (void)setCloudPhotoIDs:(id)arg1;
 - (void)setContentText:(id)arg1;
 - (void)setContentURLs:(id)arg1;
+- (void)setContentVariationAttachmentCID:(id)arg1;
+- (void)setContentVariations:(id)arg1;
+- (void)setDefaultContentVariationIndex:(unsigned long long)arg1;
 - (void)setIncludeAttachments:(bool)arg1;
+- (void)setIncludeAttachmentsWhenAdding:(bool)arg1;
 - (void)setLoadRest:(bool)arg1;
 - (void)setLoadingContext:(id)arg1;
 - (void)setMessageBody:(id)arg1 isHTML:(bool)arg2;
@@ -131,6 +157,7 @@
 - (void)setPhotoIDs:(id)arg1;
 - (void)setPrefersFirstLineSelection:(bool)arg1;
 - (void)setSendingAddress:(id)arg1;
+- (void)setShareSheetSessionID:(id)arg1;
 - (void)setShowContentImmediately:(bool)arg1;
 - (void)setShowKeyboardImmediately:(bool)arg1;
 - (void)setSourceAccountManagement:(int)arg1;
@@ -138,11 +165,13 @@
 - (void)setToRecipients:(id)arg1;
 - (void)setUTITypes:(id)arg1;
 - (void)setUsingDefaultAccount:(bool)arg1;
+- (id)shareSheetSessionID;
 - (bool)showContentImmediately;
 - (bool)showKeyboardImmediately;
 - (int)sourceAccountManagement;
 - (id)subject;
 - (void)switchToReplyAllWithDelegate:(id)arg1;
+- (void)switchToReplyWithDelegate:(id)arg1;
 - (id)toRecipients;
 - (bool)usingDefaultAccount;
 

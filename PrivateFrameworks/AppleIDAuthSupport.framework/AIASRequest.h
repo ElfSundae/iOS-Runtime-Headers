@@ -8,6 +8,7 @@
     NSMutableData * _data;
     bool  _done;
     NSError * _error;
+    NSString * _networkTaskDescription;
     NSObject<OS_dispatch_semaphore> * _sema;
     NSURLSession * _session;
     bool  _success;
@@ -22,6 +23,7 @@
 @property bool done;
 @property (retain) NSError *error;
 @property (readonly) unsigned long long hash;
+@property (retain) NSString *networkTaskDescription;
 @property (retain) NSObject<OS_dispatch_semaphore> *sema;
 @property (retain) NSURLSession *session;
 @property bool success;
@@ -34,7 +36,8 @@
 - (id)data;
 - (bool)done;
 - (id)error;
-- (id)initWithURL:(id)arg1 data:(struct __CFDictionary { }*)arg2 clientInfo:(id)arg3 proxiedClientInfo:(id)arg4 companionClientInfo:(id)arg5;
+- (id)initWithURL:(id)arg1 data:(struct __CFDictionary { }*)arg2 clientInfo:(id)arg3 proxiedClientInfo:(id)arg4 companionClientInfo:(id)arg5 appleITeamId:(id)arg6 appleIClientId:(id)arg7;
+- (id)networkTaskDescription;
 - (void)resume;
 - (id)sema;
 - (id)session;
@@ -42,6 +45,7 @@
 - (void)setData:(id)arg1;
 - (void)setDone:(bool)arg1;
 - (void)setError:(id)arg1;
+- (void)setNetworkTaskDescription:(id)arg1;
 - (void)setSema:(id)arg1;
 - (void)setSession:(id)arg1;
 - (void)setSuccess:(bool)arg1;

@@ -23,6 +23,7 @@
 @property (readonly) Class superclass;
 
 + (void)addHTTPIfModifiedSinceToHeaders:(id)arg1 date:(id)arg2;
++ (id)getHTTPModifiedSinceFromHeaders:(id)arg1;
 
 - (void).cxx_destruct;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;

@@ -7,7 +7,7 @@
     id  mKey;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (bool)isInUse;
 - (id)key;

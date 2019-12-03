@@ -8,5 +8,6 @@
 - (bool)isOnScreen;
 - (bool)isOnScreenForVolumeDisplay;
 - (NSString *)volumeAudioCategory;
+- (UIWindowScene *)windowSceneForVolumeDisplay;
 
 @end

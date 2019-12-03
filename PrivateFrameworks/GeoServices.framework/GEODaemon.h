@@ -7,6 +7,7 @@
     NSMutableSet * _peers;
     NSMutableSet * _servers;
     NSObject<OS_dispatch_source> * _sigInfoSrc;
+    NSObject<OS_dispatch_source> * _sigTermSrc;
 }
 
 @property (nonatomic, readonly) NSSet *peers;
@@ -26,5 +27,7 @@
 - (void)peerDidConnect:(id)arg1;
 - (void)peerDidDisconnect:(id)arg1;
 - (id)peers;
+- (void)start;
+- (void)startServerClassIfNecessary:(Class)arg1;
 
 @end

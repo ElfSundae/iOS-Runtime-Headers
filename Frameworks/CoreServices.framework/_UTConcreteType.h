@@ -16,7 +16,6 @@
 - (bool)_isPublic;
 - (id)_kernelExtensionName;
 - (id)_localizedDescriptionDictionary;
-- (id)_localizedDescriptionWithPreferredLocalizations:(id)arg1 checkingParents:(bool)arg2;
 - (id)_pedigree;
 - (id)_unlocalizedDescription;
 - (bool)conformsToType:(id)arg1;

@@ -6,31 +6,35 @@
     UIImageView * _dashedLine;
     NSLayoutXAxisAnchor * _dashedLineCenterXAnchor;
     UILabel * _label;
-    NSLayoutYAxisAnchor * _labelLastBaselineAnchor;
     NSLayoutConstraint * _labelLeftConstraint;
     NSString * _labelText;
+    NSLayoutYAxisAnchor * _labelTopAnchor;
+    bool  _selected;
 }
 
 @property (nonatomic, retain) UIImageView *dashedLine;
-@property (nonatomic, readonly, copy) NSLayoutXAxisAnchor *dashedLineCenterXAnchor;
+@property (readonly) NSLayoutXAxisAnchor *dashedLineCenterXAnchor;
+@property (readonly) UIImage *dashedLineImage;
 @property (nonatomic, retain) UILabel *label;
-@property (nonatomic, readonly, copy) NSLayoutYAxisAnchor *labelLastBaselineAnchor;
 @property (nonatomic, retain) NSLayoutConstraint *labelLeftConstraint;
 @property (nonatomic, copy) NSString *labelText;
-
-+ (id)dashedLineImage;
+@property (readonly) NSLayoutYAxisAnchor *labelTopAnchor;
+@property (getter=isSelected, nonatomic) bool selected;
 
 - (void).cxx_destruct;
 - (id)dashedLine;
 - (id)dashedLineCenterXAnchor;
-- (id)init;
+- (id)dashedLineImage;
+- (id)initWithTintColor:(id)arg1;
+- (bool)isSelected;
 - (id)label;
-- (id)labelLastBaselineAnchor;
 - (id)labelLeftConstraint;
 - (id)labelText;
+- (id)labelTopAnchor;
 - (void)setDashedLine:(id)arg1;
 - (void)setLabel:(id)arg1;
 - (void)setLabelLeftConstraint:(id)arg1;
 - (void)setLabelText:(id)arg1;
+- (void)setSelected:(bool)arg1;
 
 @end

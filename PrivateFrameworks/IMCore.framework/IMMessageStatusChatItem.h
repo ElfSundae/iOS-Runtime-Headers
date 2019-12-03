@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/IMCore.framework/IMCore
  */
 
-@interface IMMessageStatusChatItem : IMTranscriptChatItem {
+@interface IMMessageStatusChatItem : IMTranscriptChatItem <IMChatTranscriptStatusItem> {
     unsigned long long  _count;
     long long  _expireStatusType;
     long long  _statusType;
@@ -12,12 +12,23 @@
 }
 
 @property (nonatomic, readonly) unsigned long long count;
+@property (nonatomic, readonly) NSDate *dateOfStatus;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) NSString *errorText;
 @property (nonatomic, readonly) long long expireStatusType;
+@property (getter=isFromMe, nonatomic, readonly) bool fromMe;
+@property (nonatomic, readonly) IMHandle *handle;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) bool isFromMe;
 @property (nonatomic, readonly) long long messageStatusType;
+@property (nonatomic, readonly) IMServiceImpl *service;
 @property (nonatomic, readonly) long long statusType;
+@property (readonly) Class superclass;
 @property (nonatomic, readonly) NSDate *time;
+@property (nonatomic, readonly) NSDate *transcriptDate;
+@property (nonatomic, readonly, copy) NSAttributedString *transcriptText;
+@property (nonatomic, readonly) bool wantsTail;
 
 // Image: /System/Library/PrivateFrameworks/IMCore.framework/IMCore
 
@@ -30,6 +41,7 @@
 - (id)_timeStale;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned long long)count;
+- (id)dateOfStatus;
 - (id)description;
 - (id)errorText;
 - (long long)expireStatusType;

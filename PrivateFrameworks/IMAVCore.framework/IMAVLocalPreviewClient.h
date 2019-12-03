@@ -14,13 +14,13 @@
 @property (nonatomic) unsigned int cameraType;
 @property (nonatomic, retain) AVConferencePreview *conferencePreview;
 @property (nonatomic, readonly) bool isPreviewRunning;
-@property (nonatomic) IMAVCamera *localCamera;
 @property (nonatomic) void*localVideoBackLayer;
 @property (nonatomic) void*localVideoLayer;
 
 + (struct CGSize { double x1; double x2; })localPortraitAspectRatio;
 + (id)sharedInstance;
 
+- (void).cxx_destruct;
 - (void)_avDaemonConnected;
 - (bool)_shouldPreviewBeRunning;
 - (void)_updatePreviewState;
@@ -43,7 +43,6 @@
 - (void)endAnimationToPreview;
 - (id)init;
 - (bool)isPreviewRunning;
-- (id)localCamera;
 - (id)localScreenAttributesForVideoAttributes:(id)arg1;
 - (void*)localVideoBackLayer;
 - (void*)localVideoLayer;
@@ -51,7 +50,6 @@
 - (void)setCameraOrientation:(unsigned int)arg1;
 - (void)setCameraType:(unsigned int)arg1;
 - (void)setConferencePreview:(id)arg1;
-- (void)setLocalCamera:(id)arg1;
 - (void)setLocalScreenAttributes:(id)arg1;
 - (void)setLocalVideoBackLayer:(void*)arg1;
 - (void)setLocalVideoLayer:(void*)arg1;

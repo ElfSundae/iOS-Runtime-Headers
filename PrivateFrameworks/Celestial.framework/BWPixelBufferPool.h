@@ -10,8 +10,10 @@
     NSString * _name;
     struct __CVPixelBufferPool { } * _pixelBufferPool;
     NSDictionary * _pixelBufferPoolAuxAttributes;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _pixelBufferPoolConfigurationLock;
     int  _pixelBufferPoolCreateError;
-    long long  _pixelBufferPoolOnce;
     BWVideoFormat * _videoFormat;
 }
 
@@ -19,11 +21,13 @@
 @property (nonatomic, readonly) struct __CVPixelBufferPool { }*cvPixelBufferPool;
 @property (nonatomic, readonly) struct __CFDictionary { }*cvPixelBufferPoolAuxAttributes;
 @property (readonly) NSString *name;
+@property (nonatomic, readonly) unsigned int pixelFormat;
 
 + (void)initialize;
 
 - (int)_ensurePool;
 - (void)_flush;
+- (struct __CVBuffer { }*)_newPixelBuffer;
 - (unsigned long long)capacity;
 - (struct __CVPixelBufferPool { }*)cvPixelBufferPool;
 - (struct __CFDictionary { }*)cvPixelBufferPoolAuxAttributes;
@@ -37,6 +41,7 @@
 - (id)initWithVideoFormat:(id)arg1 capacity:(unsigned long long)arg2 name:(id)arg3 memoryPool:(id)arg4;
 - (id)name;
 - (struct __CVBuffer { }*)newPixelBuffer;
+- (unsigned int)pixelFormat;
 - (int)preallocate;
 - (void)preallocateWithCompletionHandler:(id /* block */)arg1;
 - (void)prefetchWithCompletionHandler:(id /* block */)arg1;

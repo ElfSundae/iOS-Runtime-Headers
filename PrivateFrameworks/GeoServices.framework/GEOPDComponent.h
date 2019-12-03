@@ -6,15 +6,15 @@
     GEOPDAttribution * _attribution;
     int  _cacheControl;
     struct { 
-        unsigned int timestampFirstSeen : 1; 
-        unsigned int cacheControl : 1; 
-        unsigned int startIndex : 1; 
-        unsigned int status : 1; 
-        unsigned int ttl : 1; 
-        unsigned int type : 1; 
-        unsigned int valuesAvailable : 1; 
-        unsigned int version : 1; 
-    }  _has;
+        unsigned int has_timestampFirstSeen : 1; 
+        unsigned int has_cacheControl : 1; 
+        unsigned int has_startIndex : 1; 
+        unsigned int has_status : 1; 
+        unsigned int has_ttl : 1; 
+        unsigned int has_type : 1; 
+        unsigned int has_valuesAvailable : 1; 
+        unsigned int has_version : 1; 
+    }  _flags;
     GEOPDSource * _source;
     int  _startIndex;
     int  _status;
@@ -52,6 +52,7 @@
 @property (nonatomic) unsigned int version;
 @property (nonatomic, retain) NSMutableArray *versionDomains;
 
++ (bool)isValid:(id)arg1;
 + (Class)valueType;
 + (Class)versionDomainType;
 
@@ -64,6 +65,7 @@
 - (id)attribution;
 - (int)cacheControl;
 - (id)cacheControlAsString:(int)arg1;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)clearValues;
 - (void)clearVersionDomains;
 - (void)copyTo:(id)arg1;
@@ -83,6 +85,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAttribution:(id)arg1;
 - (void)setCacheControl:(int)arg1;

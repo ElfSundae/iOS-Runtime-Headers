@@ -8,7 +8,7 @@
 }
 
 @property (nonatomic) bool isWatchListed;
-@property (retain) NSString *watchListIdentifier;
+@property (nonatomic, retain) NSString *watchListIdentifier;
 
 + (void)generateWatchListReponseForWatchListIdentifier:(id)arg1 completion:(id /* block */)arg2;
 

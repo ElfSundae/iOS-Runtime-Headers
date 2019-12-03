@@ -4,6 +4,7 @@
 
 @interface UIPhysicalKeyboardEvent : UIPressesEvent {
     bool  __externalEvent;
+    bool  _canPrivatize;
     NSString * _commandModifiedInput;
     NSString * _hint;
     int  _inputFlags;
@@ -11,6 +12,7 @@
     NSString * _modifiedInput;
     long long  _modifierFlags;
     NSString * _privateInput;
+    long long  _privateModifierFlags;
     NSString * _shiftModifiedInput;
     NSString * _unmodifiedInput;
 }
@@ -20,13 +22,16 @@
 @property (nonatomic, readonly) long long _gsModifierFlags;
 @property (nonatomic, retain) NSString *_hint;
 @property (nonatomic) int _inputFlags;
+@property (nonatomic, readonly) bool _isARepeat;
 @property (nonatomic, readonly) bool _isGlobeKey;
 @property (nonatomic, readonly) bool _isKeyDown;
+@property (nonatomic, readonly) bool _isModifierKey;
 @property (nonatomic, readonly) long long _keyCode;
 @property (nonatomic, retain) NSString *_markedInput;
 @property (nonatomic, retain) NSString *_modifiedInput;
 @property (nonatomic) long long _modifierFlags;
 @property (nonatomic, retain) NSString *_privateInput;
+@property (nonatomic) long long _privateModifierFlags;
 @property (nonatomic, retain) NSString *_shiftModifiedInput;
 @property (nonatomic, retain) NSString *_unmodifiedInput;
 
@@ -38,16 +43,19 @@
 - (long long)_gsModifierFlags;
 - (id)_hint;
 - (int)_inputFlags;
+- (bool)_isARepeat;
 - (bool)_isExternalEvent;
 - (bool)_isGlobeKey;
 - (bool)_isKeyDown;
+- (bool)_isModifierKey;
 - (long long)_keyCode;
 - (id)_markedInput;
 - (bool)_matchesKeyCommand:(id)arg1;
 - (id)_modifiedInput;
 - (long long)_modifierFlags;
 - (id)_privateInput;
-- (void)_privatizeInput;
+- (long long)_privateModifierFlags;
+- (void)_privatize;
 - (void)_setHIDEvent:(struct __IOHIDEvent { }*)arg1 keyboard:(struct __GSKeyboard { }*)arg2;
 - (id)_shiftModifiedInput;
 - (id)_unmodifiedInput;
@@ -60,6 +68,7 @@
 - (void)set_modifiedInput:(id)arg1;
 - (void)set_modifierFlags:(long long)arg1;
 - (void)set_privateInput:(id)arg1;
+- (void)set_privateModifierFlags:(long long)arg1;
 - (void)set_shiftModifiedInput:(id)arg1;
 - (void)set_unmodifiedInput:(id)arg1;
 - (long long)type;

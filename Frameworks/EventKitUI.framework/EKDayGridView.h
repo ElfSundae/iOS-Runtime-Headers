@@ -34,6 +34,7 @@
     UIView * _leftBorderView;
     UIColor * _lineColor;
     NSMutableArray * _middleBorderViews;
+    bool  _needsLayoutInWindow;
     UIView * _occurrenceContainerView;
     long long  _orientation;
     unsigned int  _rightBorder;
@@ -42,6 +43,7 @@
     int  _selected;
     bool  _showsTimeLine;
     bool  _showsTimeMarker;
+    long long  _sizeClass;
     UIImageView * _timeDot;
     double  _timeInset;
     EKCurrentTimeMarkerView * _timeMarker;
@@ -86,9 +88,11 @@
 - (double)_dayWidth;
 - (id)_generateGridImage;
 - (void)_layoutHighlight;
+- (long long)_sizeClass;
 - (void)_updateTimeMarker;
 - (bool)animatesTimeMarker;
 - (double)bottomPadding;
+- (void)didMoveToWindow;
 - (double)eventHorizontalInset;
 - (double)fixedDayWidth;
 - (double)gridHeightScale;
@@ -98,7 +102,7 @@
 - (double)hoursToPadBottom;
 - (double)hoursToPadTop;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
-- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 backgroundColor:(id)arg2 opaque:(bool)arg3 numberOfDaysToDisplay:(unsigned long long)arg4;
+- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 sizeClass:(long long)arg2 backgroundColor:(id)arg3 opaque:(bool)arg4 numberOfDaysToDisplay:(unsigned long long)arg5;
 - (bool)isSelected;
 - (void)layoutSubviews;
 - (id)lineColor;
@@ -140,6 +144,7 @@
 - (double)timeWidth;
 - (void)tintColorDidChange;
 - (double)topPadding;
+- (void)updateHourHeight;
 - (void)updateMarkerPosition;
 - (bool)usesVibrantGridDrawing;
 - (void)viewTintColorDidChangeForView:(id)arg1 toColor:(id)arg2;

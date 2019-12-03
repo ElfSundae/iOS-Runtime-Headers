@@ -6,8 +6,11 @@
 
 @property (nonatomic, readonly) unsigned long long lifetimeType;
 
++ (id)_secureCodingLifetimeClasses;
 + (id)lifetimeForUserRequest;
++ (id)lifetimeMatchingScheduleWithIdentifier:(id)arg1;
 + (id)lifetimeUntilEndOfCalendarEventWithUniqueID:(id)arg1 occurrenceDate:(id)arg2;
++ (id)lifetimeUntilEndOfScheduleWithIdentifier:(id)arg1;
 + (id)lifetimeWithCalendarEventUniqueID:(id)arg1 occurrenceDate:(id)arg2;
 + (id)lifetimeWithCurrentLocation;
 + (id)lifetimeWithDateInterval:(id)arg1;

@@ -4,16 +4,14 @@
 
 @interface VKTransitPolylinePath : VKPolylinePath {
     unsigned long long  _lineID;
-    VKGGLTransitTile * _tile;
+    double  _vertexEqualityTolerance;
 }
 
-@property (nonatomic, readonly) unsigned long long lineID;
-@property (nonatomic, readonly) VKGGLTransitTile *tile;
+@property (nonatomic, readonly) double vertexEqualityTolerance;
 
-- (void)dealloc;
 - (id)description;
-- (id)initWithOverlay:(id)arg1 section:(id)arg2 points:(struct Matrix<float, 2, 1> { float x1[2]; }*)arg3 pointCount:(unsigned long long)arg4 reversePoints:(bool)arg5 transform:(struct { struct Matrix<float, 2, 1> { float x_1_1_1[2]; } x1; struct Matrix<float, 2, 1> { float x_2_1_1[2]; } x2; }*)arg6 routeStartIndex:(unsigned int)arg7 routeEndIndex:(unsigned int)arg8 lineID:(unsigned long long)arg9 tile:(id)arg10;
-- (unsigned long long)lineID;
-- (id)tile;
+- (id)initWithOverlay:(id)arg1 section:(id)arg2 points:(struct Matrix<float, 2, 1> { float x1[2]; }*)arg3 pointCount:(unsigned long long)arg4 reversePoints:(bool)arg5 transform:(struct { struct Matrix<float, 2, 1> { float x_1_1_1[2]; } x1; struct Matrix<float, 2, 1> { float x_2_1_1[2]; } x2; }*)arg6 routeStartIndex:(unsigned int)arg7 routeEndIndex:(unsigned int)arg8 lineID:(unsigned long long)arg9;
+- (id)initWithOverlay:(id)arg1 section:(id)arg2 points:(struct Matrix<float, 2, 1> { float x1[2]; }*)arg3 pointCount:(unsigned long long)arg4 reversePoints:(bool)arg5 transform:(struct { struct Matrix<float, 2, 1> { float x_1_1_1[2]; } x1; struct Matrix<float, 2, 1> { float x_2_1_1[2]; } x2; }*)arg6 routeStartIndex:(unsigned int)arg7 routeEndIndex:(unsigned int)arg8 lineID:(unsigned long long)arg9 tileZ:(unsigned int)arg10 vertexPrecision:(unsigned char)arg11;
+- (double)vertexEqualityTolerance;
 
 @end

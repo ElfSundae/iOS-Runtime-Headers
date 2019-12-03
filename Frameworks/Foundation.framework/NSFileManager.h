@@ -128,21 +128,24 @@
 - (id)stringWithFileSystemRepresentation:(const char *)arg1 length:(unsigned long long)arg2;
 - (id)subpathsAtPath:(id)arg1;
 - (id)subpathsOfDirectoryAtPath:(id)arg1 error:(id*)arg2;
+- (void)synchronouslyGetFileProviderServicesForItemAtURL:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)temporaryDirectory;
 - (bool)trashItemAtURL:(id)arg1 resultingItemURL:(id*)arg2 error:(id*)arg3;
 - (id)ubiquityIdentityToken;
 
 // Image: /System/Library/Frameworks/FileProvider.framework/FileProvider
 
+- (void)fp_createPathIfNeeded:(id)arg1;
 - (bool)fp_trashItemAtURL:(id)arg1 resultingItemURL:(id*)arg2 error:(id*)arg3;
-
-// Image: /System/Library/Frameworks/ModelIO.framework/ModelIO
-
-- (bool)mdltsu_grantUserWritePosixPermissionAtPath:(id)arg1 error:(id*)arg2;
+- (id)fp_trashURLForItemAtURL:(id)arg1 error:(id*)arg2;
 
 // Image: /System/Library/Frameworks/Photos.framework/Photos
 
 - (id)removeItemAtPath:(id)arg1 type:(unsigned long long)arg2 recursive:(bool)arg3;
+
+// Image: /System/Library/Frameworks/QuickLookThumbnailing.framework/QuickLookThumbnailing
+
++ (void)_QLTRemoveTemporaryDirectoryAtURL:(id)arg1;
 
 // Image: /System/Library/Frameworks/ReplayKit.framework/ReplayKit
 
@@ -151,25 +154,44 @@
 - (void)_srDeleteFilesWithPrefix:(id)arg1;
 - (unsigned long long)_srDeviceFreeDiskSpace;
 - (bool)_srDeviceHasSufficientFreeSpaceForRecording;
+- (bool)_srDeviceHasSufficientSpaceForCurrentRecording;
 - (id)_srGetCreationDateForFile:(id)arg1;
 - (void)_srMoveFileFromURL:(id)arg1 toURL:(id)arg2 completion:(id /* block */)arg3;
 - (void)_srRemoveFile:(id)arg1 completion:(id /* block */)arg2;
 - (void)_srSetupTempDirectory;
 - (long long)_srSizeOfTempDir:(id*)arg1;
 - (id)_srTempPath;
+- (id)dateSuffix;
+- (id)outputPath:(bool)arg1 bundleID:(id)arg2;
+- (id)trimmedOutputPath:(id)arg1;
 
 // Image: /System/Library/Frameworks/WebKit.framework/WebKit
 
 + (id)_web_createTemporaryFileForQuickLook:(id)arg1;
 
-// Image: /System/Library/PrivateFrameworks/AppStoreDaemon.framework/AppStoreDaemon
-
-- (id)_deleteLastValidComponentOfPath:(id)arg1;
-- (id)ensureDirectoryExistsAtPath:(id)arg1;
-
 // Image: /System/Library/PrivateFrameworks/AppleMediaServices.framework/AppleMediaServices
 
 + (bool)ams_ensureDirectoryExists:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/AssetsLibraryServices.framework/AssetsLibraryServices
+
+- (bool)createDirectoryIfNeededAtPath:(id)arg1 error:(id*)arg2;
+- (bool)directoryExistsAtPath:(id)arg1;
+- (bool)removeDirectoryAtPathIfEmpty:(id)arg1 ancestors:(int)arg2;
+- (id)tmpFileForVideoTranscodeToPhotoDataDirectory:(bool)arg1 withExtension:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/CalendarFoundation.framework/CalendarFoundation
+
++ (id)mimeTypeForFile:(id)arg1;
+
+- (bool)archivePathToFile:(id)arg1 toFile:(id)arg2 createPKZipArchive:(bool)arg3;
+- (bool)archivePathToFile:(id)arg1 toFile:(id)arg2 createPKZipArchive:(bool)arg3 error:(id*)arg4;
+- (bool)archiveURLToFile:(id)arg1 toFile:(id)arg2 createPKZipArchive:(bool)arg3;
+- (bool)archiveURLToFile:(id)arg1 toFile:(id)arg2 createPKZipArchive:(bool)arg3 error:(id*)arg4;
+- (id)archivedDataAtPath:(id)arg1 createPKZipArchive:(bool)arg2;
+- (id)archivedDataAtPath:(id)arg1 createPKZipArchive:(bool)arg2 error:(id*)arg3;
+- (bool)makeCompletePath:(id)arg1 mode:(int)arg2;
+- (id)makeUniqueDirectoryWithPath:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/ClassroomKit.framework/ClassroomKit
 
@@ -189,6 +211,7 @@
 - (void)br_setFavoriteRank:(id)arg1 onItemAtURL:(id)arg2;
 - (void)br_setLastOpenDate:(id)arg1 onItemAtURL:(id)arg2;
 - (void)br_setPutBackInfoOnItemAtURL:(id)arg1;
+- (id)br_topLevelSharedFolderForURL:(id)arg1 error:(id*)arg2;
 - (bool)br_trashItemAtURL:(id)arg1 resultingURL:(id*)arg2 error:(id*)arg3;
 - (int)brc_createTemporaryFdInDirectory:(id)arg1 withTemplate:(id)arg2 error:(id*)arg3;
 - (id)brc_createTemporaryFileInDirectory:(id)arg1 withTemplate:(id)arg2 error:(id*)arg3;
@@ -200,10 +223,7 @@
 - (bool)cplFileExistsAtURL:(id)arg1;
 - (bool)cplIsFileDoesNotExistError:(id)arg1;
 - (bool)cplIsFileExistsError:(id)arg1;
-- (bool)cplIsHardLinkNotPossibleError:(id)arg1;
-- (bool)cplLinkItemAtURL:(id)arg1 toURL:(id)arg2 error:(id*)arg3;
-- (bool)cplLinkOrCopyItemAtURL:(id)arg1 toURL:(id)arg2 shouldCopy:(bool)arg3 shouldApplyDataProtection:(bool)arg4 error:(id*)arg5;
-- (bool)cplMoveItemAtURL:(id)arg1 toURL:(id)arg2 shouldApplyDataProtection:(bool)arg3 error:(id*)arg4;
+- (bool)cplMoveItemAtURL:(id)arg1 toURL:(id)arg2 error:(id*)arg3;
 
 // Image: /System/Library/PrivateFrameworks/CommonUtilities.framework/CommonUtilities
 
@@ -233,6 +253,10 @@
 // Image: /System/Library/PrivateFrameworks/DCIMServices.framework/DCIMServices
 
 - (id)makeUniqueDirectoryWithPath:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/DocumentManagerCore.framework/DocumentManagerCore
+
+- (id)_doc_importItemAtURL:(id)arg1 toDestination:(long long)arg2 error:(id*)arg3;
 
 // Image: /System/Library/PrivateFrameworks/FMCoreLite.framework/FMCoreLite
 
@@ -280,8 +304,17 @@
 
 - (bool)__im_getItemsRemovedFromiCloudBackupsAtDirectoryPath:(id)arg1 outPaths:(id*)arg2 outRemovedPaths:(id*)arg3 error:(id*)arg4;
 - (bool)__im_getiCloudBackupAttributeForItemAtPath:(id)arg1 attributeValue:(bool*)arg2 error:(id*)arg3;
+- (bool)__im_isPathOnMissingVolume:(id)arg1;
+- (bool)__im_makeDirectoriesInPath:(id)arg1 mode:(unsigned int)arg2;
 - (bool)__im_setiCloudBackupAttribute:(bool)arg1 onDirectoryAndChildrenAtPath:(id)arg2 error:(id*)arg3;
 - (bool)__im_setiCloudBackupAttribute:(bool)arg1 onItemAtPath:(id)arg2 error:(id*)arg3;
+
+// Image: /System/Library/PrivateFrameworks/IntentsFoundation.framework/IntentsFoundation
+
+- (struct { unsigned int x1[8]; })if_auditTokenForExtendedAttributeNamed:(id)arg1 ofItemAtURL:(id)arg2;
+- (bool)if_boolForExtendedAttributeName:(id)arg1 ofItemAtURL:(id)arg2;
+- (bool)if_setAuditToken:(struct { unsigned int x1[8]; })arg1 forExtendedAttributeNamed:(id)arg2 ofItemAtURL:(id)arg3;
+- (bool)if_setBool:(bool)arg1 forExtendedAttributeNamed:(id)arg2 ofItemAtURL:(id)arg3;
 
 // Image: /System/Library/PrivateFrameworks/MIME.framework/MIME
 
@@ -298,6 +331,13 @@
 - (long long)mf_sizeForDirectoryAtPath:(id)arg1 error:(id*)arg2;
 - (long long)mf_sizeForDirectoryAtURL:(id)arg1 error:(id*)arg2;
 - (id)mf_valueForExtendedAttribute:(id)arg1 ofItemAtPath:(id)arg2 error:(id*)arg3;
+
+// Image: /System/Library/PrivateFrameworks/MediaMiningKit.framework/MediaMiningKit
+
++ (id)temporaryFilePathWithExtension:(id)arg1;
+
+- (bool)createDirectoryIfNecessary:(id)arg1;
+- (id)incrementalPathInDirectory:(id)arg1 withFilename:(id)arg2 andExtension:(id)arg3;
 
 // Image: /System/Library/PrivateFrameworks/Memories.framework/Memories
 
@@ -338,36 +378,12 @@
 
 // Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
 
-- (bool)sfu_applyFileAttributesFromDocumentAtURL:(id)arg1 toDocumentAtURL:(id)arg2 error:(id*)arg3;
-- (bool)sfu_changeFileProtectionAtURL:(id)arg1 fromProtection:(id)arg2 toProtection:(id)arg3 recursively:(bool)arg4 error:(id*)arg5;
-- (bool)sfu_changeFileProtectionAtURL:(id)arg1 toProtection:(id)arg2 recursively:(bool)arg3 error:(id*)arg4;
 - (unsigned long long)sfu_directoryUsage:(id)arg1;
-- (bool)sfu_hasAtLeastFileProtection:(id)arg1 atURL:(id)arg2 recursively:(bool)arg3;
-- (bool)sfu_hasAtMostFileProtection:(id)arg1 atURL:(id)arg2 recursively:(bool)arg3;
-- (bool)sfu_increaseFileProtectionAtURL:(id)arg1 toProtection:(id)arg2 recursively:(bool)arg3 error:(id*)arg4;
-- (void)sfu_logFileProtectionAtURL:(id)arg1 recursively:(bool)arg2;
 - (unsigned long long)sfu_pathUsage:(id)arg1;
 - (bool)sfu_setAttributes:(id)arg1 ofItemAtURL:(id)arg2 recursively:(bool)arg3 error:(id*)arg4;
-- (bool)sfup_changeFileProtectionAtURL:(id)arg1 fromProtection:(id)arg2 toProtection:(id)arg3 onlyIncreaseProtection:(bool)arg4 recursively:(bool)arg5 error:(id*)arg6;
-- (bool)sfup_fileProtection:(id)arg1 isGreaterThan:(id)arg2;
-- (bool)sfup_fileProtectionAtURL:(id)arg1 recursively:(bool)arg2 passesTest:(id /* block */)arg3;
-- (void)sfup_logFileProtectionAtURL:(id)arg1 recursively:(bool)arg2 indent:(id)arg3;
 - (bool)sfup_setAttributes:(id)arg1 ofItemAtURL:(id)arg2 recursively:(bool)arg3 error:(id*)arg4 shouldUpdateAttributesHandler:(id /* block */)arg5;
 - (bool)tsu_grantUserWritePosixPermissionAtPath:(id)arg1 error:(id*)arg2;
-
-// Image: /System/Library/PrivateFrameworks/PhotoAnalysis.framework/Frameworks/PhotosGraph.framework/Frameworks/MediaMiningKit.framework/MediaMiningKit
-
-+ (id)temporaryFilePathWithExtension:(id)arg1;
-
-- (bool)createDirectoryIfNecessary:(id)arg1;
-- (id)incrementalPathInDirectory:(id)arg1 withFilename:(id)arg2 andExtension:(id)arg3;
-
-// Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
-
-- (bool)createDirectoryIfNeededAtPath:(id)arg1 error:(id*)arg2;
-- (bool)directoryExistsAtPath:(id)arg1;
-- (bool)removeDirectoryAtPathIfEmpty:(id)arg1 ancestors:(int)arg2;
-- (id)tmpFileForVideoTranscodeToPhotoDataDirectory:(bool)arg1 withExtension:(id)arg2;
+- (bool)tsu_linkOrCopyItemAtURL:(id)arg1 toURL:(id)arg2 error:(id*)arg3;
 
 // Image: /System/Library/PrivateFrameworks/SafariCore.framework/SafariCore
 
@@ -376,6 +392,7 @@
 - (id)safari_autoFillQuirksDownloadDirectoryURL;
 - (id)safari_createTemporaryDirectoryWithTemplate:(id)arg1;
 - (id)safari_ensureDirectoryExists:(id)arg1;
+- (id)safari_frameworksDirectoryURLs;
 - (bool)safari_moveDownloadedFileAtURL:(id)arg1 toURL:(id)arg2;
 - (id)safari_nonContaineredSettingsDirectoryURL;
 - (id)safari_pathWithUniqueFilenameForPath:(id)arg1;
@@ -427,8 +444,15 @@
 - (unsigned long long)tv_onDiskSizeOfDirectoryAtPath:(id)arg1 status:(int*)arg2;
 - (unsigned long long)tv_onDiskSizeOfFileAtPath:(id)arg1 status:(int*)arg2;
 
+// Image: /System/Library/PrivateFrameworks/Trial.framework/Trial
+
+- (id)absolutePath:(id)arg1;
+- (id)createDirectoryForPath:(id)arg1 isDirectory:(bool)arg2 error:(id*)arg3;
+- (bool)removeDirectoryForPath:(id)arg1 isDirectory:(bool)arg2 error:(id*)arg3;
+
 // Image: /System/Library/PrivateFrameworks/UserNotificationsServer.framework/UserNotificationsServer
 
+- (id)uns_contentsSortedByLastModificationDateOfDirectoryAtPath:(id)arg1 error:(id*)arg2;
 - (bool)uns_moveOrDeleteItemAtURL:(id)arg1 toURL:(id)arg2 error:(id*)arg3;
 - (bool)uns_securelyMoveItemAtURL:(id)arg1 toURL:(id)arg2 error:(id*)arg3;
 
@@ -453,6 +477,16 @@
 - (id)_webkit_createTemporaryDirectoryWithTemplatePrefix:(id)arg1;
 - (id)_webkit_pathWithUniqueFilenameForPath:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/WiFiPolicy.framework/WiFiPolicy
+
++ (id)defaultsDomain;
++ (id)userCacheDirectoryPath;
++ (id)wifiCacheDirectoryPath;
+
+// Image: /System/Library/PrivateFrameworks/WorkflowKit.framework/WorkflowKit
+
+- (id)wf_uncachedContainerURLForSecurityApplicationGroupIdentifier:(id)arg1 error:(id*)arg2;
+
 // Image: /System/Library/PrivateFrameworks/iTunesStore.framework/iTunesStore
 
 + (bool)_storeMovePath:(id)arg1 toPath:(id)arg2;
@@ -466,6 +500,7 @@
 - (bool)sfu_setAttributes:(id)arg1 ofItemAtURL:(id)arg2 recursively:(bool)arg3 error:(id*)arg4;
 - (bool)sfup_setAttributes:(id)arg1 ofItemAtURL:(id)arg2 recursively:(bool)arg3 error:(id*)arg4 shouldUpdateAttributesHandler:(id /* block */)arg5;
 - (bool)tsu_canCloneItemAtURL:(id)arg1 toURL:(id)arg2;
+- (id)tsu_containerURLForDefaultSecurityApplicationGroupIdentifier;
 - (bool)tsu_grantUserWritePosixPermissionAtPath:(id)arg1 error:(id*)arg2;
 - (bool)tsu_linkOrCopyItemAtURL:(id)arg1 toURL:(id)arg2 error:(id*)arg3;
 - (bool)tsu_makeWritableItemAtURL:(id)arg1 permissionsOverride:(id)arg2 resetCreationDate:(bool)arg3 error:(id*)arg4;

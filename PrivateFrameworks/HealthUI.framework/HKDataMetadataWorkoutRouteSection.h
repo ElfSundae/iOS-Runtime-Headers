@@ -15,9 +15,9 @@
 @property (nonatomic, readonly) HKLocationReadings *locationReadings;
 
 - (void).cxx_destruct;
-- (void)_generateRouteImage;
 - (id)cell;
 - (id)cellForIndex:(unsigned long long)arg1 tableView:(id)arg2;
+- (void)generateRouteImage;
 - (id)generator;
 - (id)initWithLocationReadings:(id)arg1;
 - (id)locationFetcher;

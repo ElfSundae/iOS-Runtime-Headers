@@ -58,6 +58,7 @@
 + (id)initWithDictionary:(id)arg1 error:(id*)arg2;
 + (id)initWithURL:(id)arg1 error:(id*)arg2;
 + (bool)isHomedVersionSupported:(id)arg1;
++ (bool)isServiceType:(id)arg1 compatibleWithAccessoryCategoryType:(id)arg2;
 + (id)legacyV3DataForCloud;
 + (id)legacyV3DataForIDS;
 + (void)prepareMetadata;
@@ -107,6 +108,7 @@
 - (bool)isSecondsDownCounterCharacteristicType:(id)arg1;
 - (bool)isStandardCharacteristicType:(id)arg1;
 - (bool)isStandardServiceType:(id)arg1;
+- (bool)isTargetCharacteristic:(id)arg1;
 - (id)mapCharacteristicValueType:(id)arg1;
 - (id)mapFromAssistantCharacteristicValue:(id)arg1 name:(id)arg2;
 - (id)mapFromAssistantServiceName:(id)arg1;
@@ -116,6 +118,7 @@
 - (id)mapToAssistantCharacteristicValue:(id)arg1 name:(id)arg2 getActionType:(bool)arg3;
 - (id)mapToAssistantServiceName:(id)arg1;
 - (id)mapToAssistantServiceSubtypeName:(id)arg1;
+- (id)mapToAssistantServiceSubtypeName:(id)arg1 accessoryCategory:(id)arg2;
 - (id)mapToAssistantUnitName:(id)arg1;
 - (id)mapWriteCharacteristicFromAssistantName:(id)arg1;
 - (void)parseAndSetAllowableSecuringWrites:(id)arg1;
@@ -170,6 +173,7 @@
 - (bool)shouldFilterServiceOfTypeFromApp:(id)arg1;
 - (bool)shouldHomeAppShowTileForServiceType:(id)arg1;
 - (bool)shouldNotCacheCharacteristicOfType:(id)arg1;
+- (bool)shouldRefreshValueForCharacteristicWithType:(id)arg1 serviceType:(id)arg2;
 - (id)statusHAPCharacteristicTypesForServiceType;
 - (bool)supportsAuthorizationData:(id)arg1 forService:(id)arg2;
 - (bool)supportsLocalization:(id)arg1;

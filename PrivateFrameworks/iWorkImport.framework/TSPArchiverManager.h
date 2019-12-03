@@ -14,7 +14,7 @@
     NSObject<OS_dispatch_queue> * _archiversLowQueue;
     <TSPArchiverManagerDelegate> * _delegate;
     TSPDescriptionGenerator * _descriptionGenerator;
-    BOOL  _flags;
+    _Atomic BOOL  _flags;
 }
 
 @property (nonatomic, retain) TSPDescriptionGenerator *descriptionGenerator;

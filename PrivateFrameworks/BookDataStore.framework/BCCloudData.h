@@ -23,7 +23,7 @@
 + (id)propertyIDKey;
 
 - (void).cxx_destruct;
-- (void)configureFromCloudData:(id)arg1;
+- (void)configureFromCloudData:(id)arg1 withMergers:(id)arg2;
 - (id)configuredRecordFromAttributes;
 - (id)identifier;
 - (void)incrementEditGeneration;

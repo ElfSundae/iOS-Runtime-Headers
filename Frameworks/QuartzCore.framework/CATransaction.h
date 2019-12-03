@@ -50,6 +50,10 @@
 + (void)unlock;
 + (id)valueForKey:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/CoreMaterial.framework/CoreMaterial
+
++ (void)mt_addCompletionBlock:(id /* block */)arg1;
+
 // Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
 
 + (void)hk_performWithoutAnimations:(id /* block */)arg1;

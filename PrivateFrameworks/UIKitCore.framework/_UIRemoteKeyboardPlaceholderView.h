@@ -29,6 +29,7 @@
 - (void)_beginSplitTransitionIfNeeded:(double)arg1 gapWidth:(double)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_compatibleBounds;
 - (void)_endSplitTransitionIfNeeded:(bool)arg1;
+- (void)_isPlaceholderViewSelector;
 - (void)_setLeftOffset:(double)arg1 gapWidth:(double)arg2;
 - (void)_setProgress:(double)arg1 boundedBy:(double)arg2;
 - (id)associatedView;
@@ -45,6 +46,7 @@
 - (void)layoutSplitSubviewsWithLeftContentSize:(struct CGSize { double x1; double x2; })arg1 rightContentSize:(struct CGSize { double x1; double x2; })arg2;
 - (struct CGSize { double x1; double x2; })leftContentViewSize;
 - (id)placeheldView;
+- (bool)pointInside:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
 - (bool)refreshPlaceholder;
 - (struct CGSize { double x1; double x2; })rightContentViewSize;
 - (void)setAssociatedView:(id)arg1;

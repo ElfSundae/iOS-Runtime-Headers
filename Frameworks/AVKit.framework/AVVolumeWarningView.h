@@ -7,7 +7,7 @@
     bool  _stopping;
 }
 
-@property (nonatomic) UIViewPropertyAnimator *animator;
+@property (nonatomic, retain) UIViewPropertyAnimator *animator;
 @property (getter=isStopping, nonatomic) bool stopping;
 
 - (void).cxx_destruct;

@@ -12,8 +12,6 @@
 @property (nonatomic, readonly) <AVFigRouteDiscovererFactory> *routeDiscovererFactory;
 @property (readonly) Class superclass;
 
-+ (void)initialize;
-
 - (void)dealloc;
 - (id)init;
 - (id)initWithRouteDiscovererFactory:(id)arg1;

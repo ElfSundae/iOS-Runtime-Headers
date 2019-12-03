@@ -5,7 +5,7 @@
 @interface _CFXNotificationTokenRegistration : _CFXNotificationRegistrationBase {
     id /* block */  _handler;
     unsigned long long  _options;
-    bool  _registered;
+    _Atomic bool  _registered;
     unsigned long long  _token;
 }
 
@@ -36,7 +36,7 @@
 - (void*)observer;
 - (unsigned long long)options;
 - (id)queue;
-- (void)removeFromParent;
+- (void)removeFromParent:(unsigned long long)arg1;
 - (void)setQueue:(id)arg1;
 - (unsigned long long)token;
 

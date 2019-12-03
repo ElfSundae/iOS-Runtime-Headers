@@ -4,6 +4,7 @@
 
 @interface AVAssetWriterConfigurationState : NSObject {
     NSURL * _URL;
+    <AVAssetWriterDelegate> * _delegate;
     NSURL * _directoryForTemporaryFiles;
     NSArray * _inputGroups;
     NSArray * _inputs;
@@ -38,6 +39,7 @@
 }
 
 @property (nonatomic, copy) NSURL *URL;
+@property <AVAssetWriterDelegate> *delegate;
 @property (nonatomic, copy) NSURL *directoryForTemporaryFiles;
 @property (nonatomic, copy) NSArray *inputGroups;
 @property (nonatomic, copy) NSArray *inputs;
@@ -53,8 +55,10 @@
 @property (nonatomic) long long singlePassFileSize;
 @property (nonatomic) long long singlePassMediaDataSize;
 
+- (void).cxx_destruct;
 - (id)URL;
 - (void)dealloc;
+- (id)delegate;
 - (id)directoryForTemporaryFiles;
 - (id)inputGroups;
 - (id)inputs;
@@ -66,6 +70,7 @@
 - (float)preferredRate;
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })preferredTransform;
 - (float)preferredVolume;
+- (void)setDelegate:(id)arg1;
 - (void)setDirectoryForTemporaryFiles:(id)arg1;
 - (void)setInputGroups:(id)arg1;
 - (void)setInputs:(id)arg1;

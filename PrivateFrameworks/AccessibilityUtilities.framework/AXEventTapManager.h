@@ -25,7 +25,6 @@
 - (id)_copyCurrentEventTapPairs;
 - (void)_enumerateEventTapPairsUsingBlock:(id /* block */)arg1;
 - (void)_handleTestIOHIDEvent:(struct __IOHIDEvent { }*)arg1;
-- (id)_installEventTap:(id /* block */)arg1 identifier:(id)arg2 type:(int)arg3 skipDeviceMatching:(bool)arg4 wantsDigitizerEvents:(bool)arg5 wantsKeyboardEvents:(bool)arg6 wantsATVRemoteEvents:(bool)arg7 wantsLisaEvents:(bool)arg8 wantsMouseEvents:(bool)arg9 matchingServiceHandler:(id /* block */)arg10;
 - (void)_installEventTap:(id)arg1 skipDeviceMatching:(bool)arg2 wantsDigitizerEvents:(bool)arg3 wantsKeyboardEvents:(bool)arg4 wantsATVRemoteEvents:(bool)arg5 wantsLisaEvents:(bool)arg6 wantsMouseEvents:(bool)arg7;
 - (void)_installHIDFilter:(id)arg1 skipDeviceMatching:(bool)arg2 wantsDigitizerEvents:(bool)arg3 wantsKeyboardEvents:(bool)arg4 wantsATVRemoteEvents:(bool)arg5 wantsLisaEvents:(bool)arg6 wantsMouseEvents:(bool)arg7;
 - (void)_installSystemEventTap:(id)arg1;
@@ -43,6 +42,7 @@
 - (id)init;
 - (id)installEventTap:(id /* block */)arg1 identifier:(id)arg2 type:(int)arg3;
 - (id)installEventTap:(id /* block */)arg1 identifier:(id)arg2 type:(int)arg3 skipDeviceMatching:(bool)arg4 wantsDigitizerEvents:(bool)arg5 wantsKeyboardEvents:(bool)arg6 wantsATVRemoteEvents:(bool)arg7 wantsLisaEvents:(bool)arg8 wantsMouseEvents:(bool)arg9;
+- (id)installEventTap:(id /* block */)arg1 identifier:(id)arg2 type:(int)arg3 skipDeviceMatching:(bool)arg4 wantsDigitizerEvents:(bool)arg5 wantsKeyboardEvents:(bool)arg6 wantsATVRemoteEvents:(bool)arg7 wantsLisaEvents:(bool)arg8 wantsMouseEvents:(bool)arg9 matchingServiceHandler:(id /* block */)arg10;
 - (id)installKeyboardEventTap:(id /* block */)arg1 identifier:(id)arg2 matchingServiceHandler:(id /* block */)arg3;
 - (id /* block */)installationEventRepPost;
 - (id /* block */)installationGSCallback;

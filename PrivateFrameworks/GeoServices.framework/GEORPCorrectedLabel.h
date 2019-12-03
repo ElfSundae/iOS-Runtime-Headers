@@ -8,11 +8,29 @@
     NSMutableArray * _featureHandles;
     GEOMapRegion * _featureRegion;
     struct { 
-        unsigned int uid : 1; 
-        unsigned int localizedLabels : 1; 
-    }  _has;
+        unsigned int has_uid : 1; 
+        unsigned int has_localizedLabels : 1; 
+        unsigned int read_coordinate : 1; 
+        unsigned int read_correctedValue : 1; 
+        unsigned int read_featureHandles : 1; 
+        unsigned int read_featureRegion : 1; 
+        unsigned int read_originalValue : 1; 
+        unsigned int wrote_coordinate : 1; 
+        unsigned int wrote_correctedValue : 1; 
+        unsigned int wrote_featureHandles : 1; 
+        unsigned int wrote_featureRegion : 1; 
+        unsigned int wrote_originalValue : 1; 
+        unsigned int wrote_uid : 1; 
+        unsigned int wrote_localizedLabels : 1; 
+    }  _flags;
     bool  _localizedLabels;
     NSString * _originalValue;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     unsigned long long  _uid;
 }
 
@@ -31,8 +49,15 @@
 @property (nonatomic) unsigned long long uid;
 
 + (Class)featureHandleType;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsFeatureHandle:(id)arg1;
+- (void)_readCoordinate;
+- (void)_readCorrectedValue;
+- (void)_readFeatureHandles;
+- (void)_readFeatureRegion;
+- (void)_readOriginalValue;
 - (void)addFeatureHandle:(id)arg1;
 - (void)clearFeatureHandles;
 - (id)coordinate;
@@ -52,10 +77,13 @@
 - (bool)hasOriginalValue;
 - (bool)hasUid;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)localizedLabels;
 - (void)mergeFrom:(id)arg1;
 - (id)originalValue;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setCoordinate:(id)arg1;
 - (void)setCorrectedValue:(id)arg1;

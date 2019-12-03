@@ -13,6 +13,7 @@
 - (NSNumber *)interstitialDisabled;
 - (NSString *)localizedAppName;
 - (NSDictionary *)parameters;
+- (NSNumber *)prefersExecutionOnCompanion;
 - (NSString *)responseTemplate;
 - (void)setAppBundleId:(NSString *)arg1;
 - (void)setContinueRunning:(NSNumber *)arg1;
@@ -21,6 +22,7 @@
 - (void)setInterstitialDisabled:(NSNumber *)arg1;
 - (void)setLocalizedAppName:(NSString *)arg1;
 - (void)setParameters:(NSDictionary *)arg1;
+- (void)setPrefersExecutionOnCompanion:(NSNumber *)arg1;
 - (void)setResponseTemplate:(NSString *)arg1;
 - (void)setSteps:(NSArray *)arg1;
 - (void)setToggleState:(long long)arg1;

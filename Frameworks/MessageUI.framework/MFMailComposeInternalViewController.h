@@ -2,14 +2,15 @@
    Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
  */
 
-@interface MFMailComposeInternalViewController : UIViewController <MFMailComposeRemoteViewControllerDelegate, MFMailCompositionAdditionalDonating> {
+@interface MFMailComposeInternalViewController : UIViewController <MFMailComposeRemoteViewControllerDelegate, MFMailCompositionAdditionalDonating, MFMailCompositionShareSheetRecipients> {
     NSMutableArray * _attachments;
-    id  _autorotationDelegate;
     _UIAsyncInvocation * _cancellationInvocation;
     long long  _composeResult;
     NSError * _composeResultError;
     NSMutableDictionary * _compositionValues;
     unsigned int  _compositionValuesAreFinalized;
+    NSMutableArray * _contentVariations;
+    unsigned long long  _defaultContentVariationIndex;
     unsigned int  _delegateRespondsToBodyFinishedLoadingWithResult;
     unsigned int  _didAppear;
     unsigned int  _didEndDelayedPresentation;
@@ -25,19 +26,19 @@
 }
 
 @property (nonatomic, copy) NSArray *UTITypes;
-@property (nonatomic) id autorotationDelegate;
 @property (nonatomic, copy) NSArray *cloudPhotoIDs;
 @property (nonatomic, copy) NSArray *contentText;
 @property (nonatomic, copy) NSArray *contentURLs;
 @property (nonatomic) <MFMailComposeViewControllerDelegate> *mailComposeDelegate;
 @property (nonatomic, copy) NSArray *photoIDs;
+@property (nonatomic, copy) NSString *shareSheetSessionID;
 
+- (void).cxx_destruct;
 - (id)UTITypes;
 - (void)_beginDelayingCompositionPresenation;
 - (void)_cancelComposition:(id)arg1;
 - (void)_cancelRemoteServiceViewControllerRequest;
 - (void)_configureRemoteViewContoller;
-- (double)_delayedPresentationTimeout;
 - (void)_didEndDelayingCompositionPresentation;
 - (void)_endDelayingCompositionPresentation;
 - (void)_finishServiceViewControllerRequestWithSuccess:(bool)arg1;
@@ -50,8 +51,8 @@
 - (void)_setPlaceHolderSubject:(id)arg1;
 - (id)addAttachmentData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3;
 - (id)addAttachmentFileURL:(id)arg1 mimeType:(id)arg2;
+- (id)addContentVariationWithName:(id)arg1;
 - (bool)automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers;
-- (id)autorotationDelegate;
 - (void)autosaveWithHandler:(id /* block */)arg1;
 - (id)cloudPhotoIDs;
 - (void)compositionFinishedWithResult:(long long)arg1 error:(id)arg2;
@@ -66,9 +67,9 @@
 - (id)mailComposeDelegate;
 - (id)photoIDs;
 - (id)placeholderForFileName:(id)arg1 fileSize:(long long)arg2 mimeType:(id)arg3 contentID:(id)arg4 proxy:(id)arg5;
+- (id)remoteViewController;
 - (void)requestFramesForAttachmentsWithIdentifiers:(id)arg1 resultHandler:(id /* block */)arg2;
 - (id)securityScopeForURL:(id)arg1 proxy:(id)arg2;
-- (void)setAutorotationDelegate:(id)arg1;
 - (void)setAutosaveIdentifier:(id)arg1;
 - (void)setBccRecipients:(id)arg1;
 - (void)setCaretPosition:(unsigned long long)arg1;
@@ -77,16 +78,19 @@
 - (void)setContentText:(id)arg1;
 - (void)setContentURLs:(id)arg1;
 - (void)setContentVisible:(bool)arg1;
+- (void)setDefaultContentVariation:(id)arg1;
 - (void)setMailComposeDelegate:(id)arg1;
 - (void)setMessageBody:(id)arg1 isHTML:(bool)arg2;
 - (void)setPhotoIDs:(id)arg1;
 - (void)setPreferredSendingEmailAddress:(id)arg1;
+- (void)setShareSheetSessionID:(id)arg1;
 - (void)setShowKeyboardImmediately:(bool)arg1;
 - (void)setSourceAccountManagement:(int)arg1;
 - (void)setSubject:(id)arg1;
 - (void)setToRecipients:(id)arg1;
 - (void)setURL:(id)arg1;
 - (void)setUTITypes:(id)arg1;
+- (id)shareSheetSessionID;
 - (bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidLoad;

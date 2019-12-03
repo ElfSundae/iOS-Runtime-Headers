@@ -3,7 +3,7 @@
  */
 
 @interface RCWaveformGenerator : NSObject {
-    RCExtAudioFilePipe * _activeExtAudioFile;
+    AVAudioFile * _activeAudioFile;
     bool  _canceled;
     NSObject<OS_dispatch_semaphore> * _digestPausedSemaphore;
     unsigned long long  _framesConsumedSinceLastFlush;
@@ -59,12 +59,12 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_appendAveragePowerLevel:(float)arg1;
-- (void)_appendAveragePowerLevelsByDigestingTimeRange:(struct { double x1; double x2; })arg1 inExtAudioFile:(id)arg2 sourceFormat:(struct AudioStreamBasicDescription { double x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; }*)arg3 outputFormat:(struct AudioStreamBasicDescription { double x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; }*)arg4;
+- (void)_appendAveragePowerLevelsByDigestingTimeRange:(struct { double x1; double x2; })arg1 inAudioFile:(id)arg2;
 - (bool)_appendAveragePowerLevelsByDigestingWaveformSegments:(id)arg1;
 - (void)_appendPowerMeterValuesFromAudioPCMBuffer:(id)arg1;
 - (bool)_appendPowerMeterValuesFromDataInAudioFile:(id)arg1 progressBlock:(id /* block */)arg2;
 - (void)_appendPowerMeterValuesFromSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1;
-- (void)_onQueue_appendAveragePowerLevelsByDigestingTimeRange:(struct { double x1; double x2; })arg1 inExtAudioFile:(id)arg2 sourceFormat:(struct AudioStreamBasicDescription { double x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; }*)arg3 outputFormat:(struct AudioStreamBasicDescription { double x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; }*)arg4;
+- (void)_onQueue_appendAveragePowerLevelsByDigestingTimeRange:(struct { double x1; double x2; })arg1 inAudioFile:(id)arg2;
 - (void)_onQueue_appendPowerMeterValuesFromRawAudioData:(void*)arg1 frameCount:(long long)arg2 format:(const struct AudioStreamBasicDescription { double x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; }*)arg3 isPredigest:(bool)arg4;
 - (void)_onQueue_appendSegment:(id)arg1;
 - (void)_onQueue_digestAveragePowerLevel:(float)arg1;

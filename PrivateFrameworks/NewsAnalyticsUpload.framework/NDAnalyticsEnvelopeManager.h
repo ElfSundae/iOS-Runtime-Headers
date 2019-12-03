@@ -47,7 +47,7 @@
 - (void)setPayloadUploader:(id)arg1;
 - (void)setUploadScheduler:(id)arg1;
 - (void)submitEnvelopes:(id)arg1 withCompletion:(id /* block */)arg2;
-- (void)submitEnvelopes:(id)arg1 withForegroundUploadCompletion:(id /* block */)arg2;
+- (void)submitEnvelopes:(id)arg1 withSubmissionCompletion:(id /* block */)arg2 foregroundUploadCompletion:(id /* block */)arg3;
 - (id)uploadScheduler;
 - (void)uploadScheduler:(id)arg1 performUploadWithCompletion:(id /* block */)arg2;
 - (void)uploadSchedulerDidDropScheduledBackgroundUpload:(id)arg1;

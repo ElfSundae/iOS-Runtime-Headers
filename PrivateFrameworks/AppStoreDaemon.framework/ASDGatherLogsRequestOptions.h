@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/AppStoreDaemon.framework/AppStoreDaemon
  */
 
-@interface ASDGatherLogsRequestOptions : ASDRequestOptions {
+@interface ASDGatherLogsRequestOptions : NSObject <NSCopying> {
     bool  _verbose;
 }
 

@@ -3,6 +3,7 @@
  */
 
 @interface MiroPickInfo : NSObject <NSCopying> {
+    unsigned long long  _adjustedPickOrder;
     unsigned long long  _clipCompareResultFlags;
     float  _distance;
     float  _imageDistance;
@@ -14,6 +15,7 @@
     unsigned long long  _splitOrder;
 }
 
+@property (nonatomic) unsigned long long adjustedPickOrder;
 @property (nonatomic, readonly) double biasedDuration;
 @property (nonatomic, readonly) unsigned long long clipCompareResultFlags;
 @property (nonatomic) float distance;
@@ -28,11 +30,11 @@
 @property (nonatomic) float splitDistance;
 @property (nonatomic) unsigned long long splitOrder;
 
-+ (id)pickInfoWithItem:(id)arg1 score:(float)arg2 distance:(float)arg3 splitDistance:(float)arg4 pickOrder:(unsigned long long)arg5 sourceOrder:(unsigned long long)arg6 splitOrder:(unsigned long long)arg7 imageDistance:(float)arg8 clipCompareResultFlags:(unsigned long long)arg9;
++ (id)pickInfoWithItem:(id)arg1 score:(float)arg2 distance:(float)arg3 splitDistance:(float)arg4 pickOrder:(unsigned long long)arg5 adjustedPickOrder:(unsigned long long)arg6 sourceOrder:(unsigned long long)arg7 splitOrder:(unsigned long long)arg8 imageDistance:(float)arg9 clipCompareResultFlags:(unsigned long long)arg10;
 
 - (void).cxx_destruct;
 - (double)_idealDurationForBlueprint:(id)arg1 biased:(bool)arg2 max:(bool)arg3;
-- (float)_speedForVideoSegment:(id)arg1;
+- (unsigned long long)adjustedPickOrder;
 - (double)biasedDuration;
 - (unsigned long long)clipCompareResultFlags;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -47,6 +49,7 @@
 - (double)maxPleasantDuration;
 - (unsigned long long)pickOrder;
 - (float)score;
+- (void)setAdjustedPickOrder:(unsigned long long)arg1;
 - (void)setDistance:(float)arg1;
 - (void)setPickOrder:(unsigned long long)arg1;
 - (void)setScore:(float)arg1;

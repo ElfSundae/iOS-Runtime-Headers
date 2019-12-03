@@ -18,7 +18,11 @@
     id /* block */  _personChangedHandler;
     id /* block */  _personFoundHandler;
     id /* block */  _personLostHandler;
+    NSSet * _rangingPeople;
+    NSMutableSet * _rangingPersonIDs;
     NSObject<OS_dispatch_source> * _retryTimer;
+    id /* block */  _statusChangedHandler;
+    unsigned int  _statusFlags;
     bool  _targetUserSession;
     NSXPCConnection * _xpcCnx;
 }
@@ -35,6 +39,9 @@
 @property (nonatomic, copy) id /* block */ personChangedHandler;
 @property (nonatomic, copy) id /* block */ personFoundHandler;
 @property (nonatomic, copy) id /* block */ personLostHandler;
+@property (nonatomic, copy) NSSet *rangingPeople;
+@property (nonatomic, copy) id /* block */ statusChangedHandler;
+@property (nonatomic, readonly) unsigned int statusFlags;
 @property (nonatomic) bool targetUserSession;
 
 + (bool)supportsSecureCoding;
@@ -68,6 +75,7 @@
 - (id /* block */)personChangedHandler;
 - (id /* block */)personFoundHandler;
 - (id /* block */)personLostHandler;
+- (id)rangingPeople;
 - (void)removeAppleID:(id)arg1 completion:(id /* block */)arg2;
 - (void)setChangeFlags:(unsigned int)arg1;
 - (void)setDiscoveryFlags:(unsigned int)arg1;
@@ -79,10 +87,16 @@
 - (void)setPersonChangedHandler:(id /* block */)arg1;
 - (void)setPersonFoundHandler:(id /* block */)arg1;
 - (void)setPersonLostHandler:(id /* block */)arg1;
+- (void)setRangingPeople:(id)arg1;
+- (void)setStatusChangedHandler:(id /* block */)arg1;
 - (void)setTargetUserSession:(bool)arg1;
+- (id /* block */)statusChangedHandler;
+- (unsigned int)statusFlags;
 - (bool)targetUserSession;
+- (void)xpcPeopleStatusChanged:(unsigned int)arg1;
 - (void)xpcPersonChanged:(id)arg1 changes:(unsigned int)arg2;
 - (void)xpcPersonFound:(id)arg1;
+- (void)xpcPersonID:(id)arg1 deviceID:(id)arg2 updatedMeasurement:(id)arg3;
 - (void)xpcPersonLost:(id)arg1;
 
 @end

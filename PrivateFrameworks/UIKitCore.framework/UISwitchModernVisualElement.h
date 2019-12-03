@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface UISwitchModernVisualElement : UISwitchVisualElement <UIGestureRecognizerDelegate, UISwitchMVEGestureTrackingSessionElement> {
+@interface UISwitchModernVisualElement : UISwitchVisualElement <CAAnimationDelegate, UIGestureRecognizerDelegate, UISwitchMVEGestureTrackingSessionElement> {
     UISwitchMVEGestureTrackingSession * _gestureTrackingSession;
     bool  _isAlwaysAccessible;
     UIImageView * _knobView;
@@ -17,6 +17,7 @@
     bool  _pressed;
     bool  _showsOnOffLabel;
     UIView * _switchWellContainerView;
+    UIImageView * _switchWellImageView;
     UIView * _switchWellImageViewContainer;
     UIImageView * _switchWellOffImageView;
     UIImageView * _switchWellOnImageView;
@@ -39,12 +40,16 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) UIColor *thumbTintColor;
 
++ (id)_modernGradientImageWithOnColor:(id)arg1 traitCollection:(id)arg2;
++ (id)_modernThumbImageWithColor:(id)arg1 mask:(unsigned long long)arg2 traitCollection:(id)arg3;
 + (struct CGSize { double x1; double x2; })preferredContentSize;
 
 - (void).cxx_destruct;
 - (id)_accessibleOffImage;
 - (id)_accessibleOnImage;
 - (id)_defaultOnTintColor;
+- (void)_dynamicUserInterfaceTraitDidChange;
+- (id)_effectiveGradientImage;
 - (id)_effectiveOffImage;
 - (id)_effectiveOffImageTintColor;
 - (id)_effectiveOffTextColor;
@@ -67,16 +72,20 @@
 - (id)_labelOpacityAnimation;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_leftSwitchWellContainerBoundsOn:(bool)arg1 pressed:(bool)arg2;
 - (struct CGPoint { double x1; double x2; })_leftSwitchWellContainerPositionOn:(bool)arg1 pressed:(bool)arg2;
-- (id)_maskLayerForImageViews;
 - (struct CGPoint { double x1; double x2; })_offImagePosition;
 - (struct CGPoint { double x1; double x2; })_onImagePosition;
 - (void)_orderSubviews;
 - (void)_setPressed:(bool)arg1 on:(bool)arg2 animated:(bool)arg3 shouldAnimateLabels:(bool)arg4 completion:(id /* block */)arg5;
 - (id)_settings;
 - (bool)_shouldUseLightTintOverColor:(id)arg1;
+- (id)_switchKnobPositionSpringAnimationFromValue:(id)arg1 toValue:(id)arg2;
+- (id)_switchKnobWidthSpringAnimationFromValue:(id)arg1 toValue:(id)arg2 pressed:(bool)arg3;
 - (id)_switchSpringAnimationWithKeyPath:(id)arg1 fromValue:(id)arg2 toValue:(id)arg3 pressed:(bool)arg4;
+- (void)_switchToStaticMode:(bool)arg1;
 - (id)_switchTrackAnimationWithFromValue:(id)arg1 toValue:(id)arg2 on:(bool)arg3;
 - (id)_switchTrackColorAnimationWithFromValue:(id)arg1 toValue:(id)arg2;
+- (id)_switchTrackPositionAnimationWithFromValue:(id)arg1 toValue:(id)arg2 on:(bool)arg3;
+- (id)_switchTrackPositionSpringAnimationFromValue:(id)arg1 toValue:(id)arg2 on:(bool)arg3;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_switchWellContainerBoundsOn:(bool)arg1 pressed:(bool)arg2;
 - (struct CGPoint { double x1; double x2; })_switchWellContainerPositionOn:(bool)arg1 pressed:(bool)arg2;
 - (struct CGPoint { double x1; double x2; })_switchWellPositionOn:(bool)arg1 pressed:(bool)arg2;
@@ -86,9 +95,13 @@
 - (void)_transitionKnobToPressed:(bool)arg1 on:(bool)arg2 animated:(bool)arg3;
 - (void)_transitionWellViewToOn:(bool)arg1 animated:(bool)arg2;
 - (void)_transitionWellViewToPressed:(bool)arg1 animated:(bool)arg2;
+- (void)_transitionWellViewToPressed:(bool)arg1 on:(bool)arg2 animated:(bool)arg3;
 - (void)_updateDisplayAnimated:(bool)arg1;
+- (void)_updateDisplayWithAnimationIfNeeded;
 - (double)_wellBorderWidthPressed:(bool)arg1 on:(bool)arg2;
 - (struct CGColor { }*)_wellColorOn:(bool)arg1;
+- (struct CGPoint { double x1; double x2; })_wellPositionOn:(bool)arg1 forBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
+- (void)animationDidStop:(id)arg1 finished:(bool)arg2;
 - (bool)displayedOn;
 - (bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
@@ -118,5 +131,6 @@
 - (void)setTintColor:(id)arg1;
 - (bool)showsOnOffLabel;
 - (id)thumbTintColor;
+- (void)tintColorDidChange;
 
 @end

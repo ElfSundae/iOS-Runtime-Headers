@@ -6,6 +6,7 @@
 
 + (bool)handlesUrl:(id)arg1 result:(struct __DDResult { }*)arg2;
 
+- (id)icon;
 - (id)localizedName;
 - (void)performFromView:(id)arg1;
 

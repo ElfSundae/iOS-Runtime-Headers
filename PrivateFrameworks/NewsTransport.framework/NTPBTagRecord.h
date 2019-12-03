@@ -61,6 +61,7 @@
     NSData * _nameImageMetadata;
     double  _nameImageScaleFactor;
     NSString * _nameImageURL;
+    NSString * _paidBundleSubscriptionButtonConfigurationJson;
     NSString * _parentID;
     NSString * _primaryAudience;
     NSString * _publisherPaidAuthorizationURL;
@@ -129,6 +130,7 @@
 @property (nonatomic, readonly) bool hasNameImageMetadata;
 @property (nonatomic) bool hasNameImageScaleFactor;
 @property (nonatomic, readonly) bool hasNameImageURL;
+@property (nonatomic, readonly) bool hasPaidBundleSubscriptionButtonConfigurationJson;
 @property (nonatomic, readonly) bool hasParentID;
 @property (nonatomic, readonly) bool hasPrimaryAudience;
 @property (nonatomic, readonly) bool hasPublisherPaidAuthorizationURL;
@@ -168,6 +170,7 @@
 @property (nonatomic, retain) NSData *nameImageMetadata;
 @property (nonatomic) double nameImageScaleFactor;
 @property (nonatomic, retain) NSString *nameImageURL;
+@property (nonatomic, retain) NSString *paidBundleSubscriptionButtonConfigurationJson;
 @property (nonatomic, retain) NSString *parentID;
 @property (nonatomic, retain) NSString *primaryAudience;
 @property (nonatomic, retain) NSString *publisherPaidAuthorizationURL;
@@ -283,6 +286,7 @@
 - (bool)hasNameImageMetadata;
 - (bool)hasNameImageScaleFactor;
 - (bool)hasNameImageURL;
+- (bool)hasPaidBundleSubscriptionButtonConfigurationJson;
 - (bool)hasParentID;
 - (bool)hasPrimaryAudience;
 - (bool)hasPublisherPaidAuthorizationURL;
@@ -331,6 +335,7 @@
 - (id)nameImageMetadata;
 - (double)nameImageScaleFactor;
 - (id)nameImageURL;
+- (id)paidBundleSubscriptionButtonConfigurationJson;
 - (id)parentID;
 - (id)primaryAudience;
 - (id)publisherPaidAuthorizationURL;
@@ -411,6 +416,7 @@
 - (void)setNameImageMetadata:(id)arg1;
 - (void)setNameImageScaleFactor:(double)arg1;
 - (void)setNameImageURL:(id)arg1;
+- (void)setPaidBundleSubscriptionButtonConfigurationJson:(id)arg1;
 - (void)setParentID:(id)arg1;
 - (void)setPrimaryAudience:(id)arg1;
 - (void)setPublisherPaidAuthorizationURL:(id)arg1;

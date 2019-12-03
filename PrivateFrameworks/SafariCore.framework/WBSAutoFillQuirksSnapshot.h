@@ -6,6 +6,8 @@
     NSDictionary * _autoFillQuirks;
     NSSet * _domainsIneligibleForAutomaticLogin;
     NSArray * _domainsIneligibleForPasswordAuditing;
+    NSSet * _domainsIneligibleForStreamlinedLogin;
+    NSArray * _domainsToConsiderIdentical;
     NSArray * _domainsWithAssociatedCredentials;
     NSDictionary * _passwordRequirementsByDomain;
 }
@@ -14,6 +16,8 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly, copy) NSSet *domainsIneligibleForAutomaticLogin;
 @property (nonatomic, readonly, copy) NSArray *domainsIneligibleForPasswordAuditing;
+@property (nonatomic, readonly, copy) NSSet *domainsIneligibleForStreamlinedLogin;
+@property (nonatomic, readonly, copy) NSArray *domainsToConsiderIdentical;
 @property (nonatomic, readonly, copy) NSArray *domainsWithAssociatedCredentials;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) NSDictionary *passwordRequirementsByDomain;
@@ -22,10 +26,14 @@
 - (void).cxx_destruct;
 - (id)_domainsIneligibleForAutomaticLoginFromAutoFillQuirks:(id)arg1 error:(id*)arg2;
 - (id)_domainsIneligibleForPasswordAuditingFromAutoFillQuirks:(id)arg1 error:(id*)arg2;
+- (id)_domainsIneligibleForStreamlinedLoginFromAutoFillQuirks:(id)arg1 error:(id*)arg2;
+- (id)_domainsToConsiderIdenticalFromAutoFillQuirls:(id)arg1 error:(id*)arg2;
 - (id)_domainsWithAssociatedCredentialsFromAutoFillQuirks:(id)arg1 error:(id*)arg2;
 - (id)_passwordRequirementsByDomainFromAutoFillQuirks:(id)arg1 error:(id*)arg2;
 - (id)domainsIneligibleForAutomaticLogin;
 - (id)domainsIneligibleForPasswordAuditing;
+- (id)domainsIneligibleForStreamlinedLogin;
+- (id)domainsToConsiderIdentical;
 - (id)domainsWithAssociatedCredentials;
 - (id)init;
 - (id)initWithPlistData:(id)arg1 error:(id*)arg2;

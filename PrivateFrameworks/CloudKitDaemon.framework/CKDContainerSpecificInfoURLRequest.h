@@ -24,7 +24,6 @@
 - (bool)requireUserIDs;
 - (bool)requiresConfiguration;
 - (bool)requiresDeviceID;
-- (bool)requiresSignature;
 - (long long)serverType;
 - (void)setContainerIdentifier:(id)arg1;
 - (void)setContainerInfo:(id)arg1;

@@ -16,7 +16,10 @@
 @property (nonatomic) long long type;
 @property (nonatomic) MTVPAFKit *vpafKit;
 
++ (unsigned long long)startOverallPositionForItem:(id)arg1;
+
 - (void).cxx_destruct;
+- (id)eventDataForTransitioningEvents;
 - (id)initWithType:(long long)arg1 playlistItem:(id)arg2 vpafKit:(id)arg3;
 - (bool)isStopped;
 - (id)playlistItem;

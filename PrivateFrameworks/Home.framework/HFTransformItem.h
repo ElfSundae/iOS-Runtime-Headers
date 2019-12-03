@@ -16,6 +16,7 @@
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)init;
+- (id)initWithSourceItem:(id)arg1 resultKeyExclusionFilter:(id)arg2;
 - (id)initWithSourceItem:(id)arg1 resultKeyFilter:(id)arg2;
 - (id)initWithSourceItem:(id)arg1 transformationBlock:(id /* block */)arg2;
 - (id)initWithSourceItem:(id)arg1 updateOptionsTransformBlock:(id /* block */)arg2 resultsTransformBlock:(id /* block */)arg3;

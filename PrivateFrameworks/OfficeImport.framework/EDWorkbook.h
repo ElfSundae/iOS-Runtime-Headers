@@ -9,6 +9,7 @@
     NSDate * mDateBaseDate;
     ESDContainer * mEscherDrawingGroup;
     NSString * mFileName;
+    bool  mIsOutOfMemoryConditionDetected;
     ECMappingContext * mMappingContext;
     NSMutableArray * mOtherResources;
     EDProcessors * mProcessors;
@@ -21,6 +22,7 @@
 
 + (id)impliedColorMap;
 
+- (void).cxx_destruct;
 - (id)activeSheet;
 - (unsigned long long)activeSheetIndex;
 - (void)addOtherResources:(id)arg1;
@@ -38,8 +40,10 @@
 - (id)init;
 - (id)initWithFileName:(id)arg1 andStringOptimization:(bool)arg2;
 - (id)initWithStringOptimization:(bool)arg1;
+- (bool)isOutOfMemoryDetected;
 - (unsigned int)legacyDateBase;
 - (id)mappingContext;
+- (void)outOfMemoryDetected;
 - (id)processors;
 - (void)reduceMemoryIfPossible;
 - (void)removeSheetAtIndex:(unsigned long long)arg1;

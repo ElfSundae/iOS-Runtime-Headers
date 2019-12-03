@@ -48,12 +48,12 @@
     int  _width;
 }
 
-@property (readonly) int height;
-@property (readonly) struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[3]; } originalToRoiMatrix;
-@property (readonly) struct __CVBuffer { }*pixelBuffer;
-@property (readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } roiRectangle;
-@property (readonly) struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[3]; } roiToOriginalMatrix;
-@property (readonly) int width;
+@property (nonatomic, readonly) int height;
+@property (nonatomic, readonly) struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[3]; } originalToRoiMatrix;
+@property (nonatomic, readonly) struct __CVBuffer { }*pixelBuffer;
+@property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } roiRectangle;
+@property (nonatomic, readonly) struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[3]; } roiToOriginalMatrix;
+@property (nonatomic, readonly) int width;
 
 - (void).cxx_destruct;
 - (void)dealloc;

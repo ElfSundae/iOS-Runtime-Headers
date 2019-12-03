@@ -12,8 +12,8 @@
 @property (nonatomic, retain) UIView *footerView;
 @property (getter=isFooterVisible, nonatomic) bool footerVisible;
 
+- (void).cxx_destruct;
 - (id)contentView;
-- (void)dealloc;
 - (id)footerView;
 - (bool)isFooterVisible;
 - (void)layoutSubviews;

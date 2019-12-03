@@ -20,6 +20,7 @@
     bool  hasVideoMinFrameDurationObserver;
     NSMutableArray * inputPorts;
     long long  lastGetAudioLevelsTime;
+    bool  livePhotoMetadataWritingEnabled;
     AVCaptureInputPort * metadataInputPort;
     AVCaptureInputPort * metadataItemInputPort;
     AVWeakReference * outputWeakReference;

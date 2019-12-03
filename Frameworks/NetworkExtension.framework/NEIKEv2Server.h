@@ -36,11 +36,12 @@
 - (id)additionalIPv4ServerAddresses;
 - (id)additionalIPv6ServerAddresses;
 - (bool)checkRedirectCount;
-- (bool)chooseNextServerOrRedirectedResolvedAddress;
+- (id)chooseNextServerOrRedirectedResolvedAddress;
 - (void)dealloc;
 - (id)getServerOrRedirectedAddress;
 - (id)getViableServerAddressForPath:(id)arg1;
 - (unsigned long long)nextCount;
+- (id)normalizeServerAddress:(id)arg1 defaultPath:(id)arg2;
 - (id)redirectTimer;
 - (id)redirectedAddress;
 - (id)redirectedFromAddress;
@@ -58,7 +59,7 @@
 - (void)setResolvedAddresses:(id)arg1;
 - (void)setResolvedRedirectedAddresses:(id)arg1;
 - (void)setServerAddress:(id)arg1;
-- (void)setServerOrRedirectedResolvedAddress:(id)arg1;
+- (void)setServerOrRedirectedResolvedAddress:(id)arg1 defaultPath:(id)arg2;
 - (bool)startRedirectTimer;
 - (void)stopRedirectTimer;
 

@@ -24,11 +24,6 @@
     bool  _recording;
     id /* block */  _saveVideoToCameraRollCompletionBlock;
     bool  _systemRecording;
-    NSDate * _systemRecordingControlCenterEndClipEndTime;
-    NSDate * _systemRecordingControlCenterEndClipStartTime;
-    NSDate * _systemRecordingControlCenterStartClipEndTime;
-    NSDate * _systemRecordingControlCenterStartClipStartTime;
-    RPSystemRecordingIndicatorWindow * _systemRecordingIndicatorWindow;
     UIWindow * _windowToRecord;
 }
 
@@ -57,18 +52,11 @@
 @property (nonatomic, copy) id /* block */ saveVideoToCameraRollCompletionBlock;
 @property (readonly) Class superclass;
 @property (nonatomic) bool systemRecording;
-@property (nonatomic, retain) NSDate *systemRecordingControlCenterEndClipEndTime;
-@property (nonatomic, retain) NSDate *systemRecordingControlCenterEndClipStartTime;
-@property (nonatomic, retain) NSDate *systemRecordingControlCenterStartClipEndTime;
-@property (nonatomic, retain) NSDate *systemRecordingControlCenterStartClipStartTime;
-@property (nonatomic, retain) RPSystemRecordingIndicatorWindow *systemRecordingIndicatorWindow;
 @property (nonatomic, retain) UIWindow *windowToRecord;
 
 + (id)sharedRecorder;
 
 - (void).cxx_destruct;
-- (struct AudioBufferList { unsigned int x1; struct AudioBuffer { unsigned int x_2_1_1; unsigned int x_2_1_2; void *x_2_1_3; } x2[1]; }*)_audioBufferListFromData:(id)arg1;
-- (struct opaqueCMSampleBuffer { }*)_sampleBufferFromIOSurface:(struct __IOSurface { }*)arg1 timingInfo:(struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; struct { long long x_3_1_1; int x_3_1_2; unsigned int x_3_1_3; long long x_3_1_4; } x3; })arg2;
 - (void)_startRecordingWithMicrophoneEnabled:(bool)arg1 cameraEnabled:(bool)arg2 streamingEnabled:(bool)arg3 captureEnabled:(bool)arg4 handler:(id /* block */)arg5;
 - (id)activeBroadcastController;
 - (id)applicationWindow;
@@ -78,7 +66,7 @@
 - (long long)cameraPosition;
 - (id)cameraPreviewView;
 - (id /* block */)captureHandler;
-- (void)captureHandlerWithAudioSample:(id)arg1 absdData:(id)arg2 itemCount:(long long)arg3 bufferType:(long long)arg4 timingData:(id)arg5;
+- (void)captureHandlerWithAudioSample:(id)arg1 bufferType:(long long)arg2;
 - (void)captureHandlerWithSample:(id)arg1 timingData:(id)arg2;
 - (void)controlCenterDidDismiss;
 - (void)controlCenterWillPresent;
@@ -104,8 +92,10 @@
 - (unsigned long long)previousAudioSessionOptions;
 - (id)privateDelegate;
 - (int)processIDForAudioCapture;
+- (id)processQueue;
 - (void)recordingDidPause;
 - (void)recordingDidStopWithError:(id)arg1 movieURL:(id)arg2;
+- (void)recordingLockInterrupted:(id)arg1;
 - (void)recordingShouldResume;
 - (void)recordingTimerDidUpdate:(id)arg1;
 - (void)resumeRecording;
@@ -124,7 +114,6 @@
 - (void)setHasUserConsentForCamera:(bool)arg1;
 - (void)setHasUserConsentForMicrophone:(bool)arg1;
 - (void)setMicrophoneEnabled:(bool)arg1;
-- (void)setMicrophoneEnabledPersistent:(bool)arg1;
 - (void)setPaused:(bool)arg1;
 - (void)setPipViewController:(id)arg1;
 - (void)setPreviousAudioCategory:(id)arg1;
@@ -133,11 +122,6 @@
 - (void)setRecording:(bool)arg1;
 - (void)setSaveVideoToCameraRollCompletionBlock:(id /* block */)arg1;
 - (void)setSystemRecording:(bool)arg1;
-- (void)setSystemRecordingControlCenterEndClipEndTime:(id)arg1;
-- (void)setSystemRecordingControlCenterEndClipStartTime:(id)arg1;
-- (void)setSystemRecordingControlCenterStartClipEndTime:(id)arg1;
-- (void)setSystemRecordingControlCenterStartClipStartTime:(id)arg1;
-- (void)setSystemRecordingIndicatorWindow:(id)arg1;
 - (void)setWindowRotationLocked:(bool)arg1;
 - (void)setWindowToRecord:(id)arg1;
 - (void)startBroadcastWithHandler:(id /* block */)arg1;
@@ -145,7 +129,7 @@
 - (void)startRecordingWithHandler:(id /* block */)arg1;
 - (void)startRecordingWithMicrophoneEnabled:(bool)arg1 cameraEnabled:(bool)arg2 streamingEnabled:(bool)arg3 captureEnabled:(bool)arg4 handler:(id /* block */)arg5;
 - (void)startRecordingWithMicrophoneEnabled:(bool)arg1 handler:(id /* block */)arg2;
-- (void)startRecordingWithMicrophoneEnabled:(bool)arg1 windowToRecord:(id)arg2 systemRecording:(bool)arg3 handler:(id /* block */)arg4;
+- (void)startSystemRecordingWithMicrophoneEnabled:(bool)arg1 handler:(id /* block */)arg2;
 - (void)stopBroadcastWithHandler:(id /* block */)arg1;
 - (void)stopCaptureWithHandler:(id /* block */)arg1;
 - (void)stopRecordingAndSaveToCameraRoll:(id /* block */)arg1;
@@ -154,15 +138,10 @@
 - (void)stopRecordingWithVideoURLHandler:(id /* block */)arg1;
 - (void)stopSystemRecording:(id /* block */)arg1;
 - (bool)systemRecording;
-- (id)systemRecordingControlCenterEndClipEndTime;
-- (id)systemRecordingControlCenterEndClipStartTime;
-- (id)systemRecordingControlCenterStartClipEndTime;
-- (id)systemRecordingControlCenterStartClipStartTime;
-- (id)systemRecordingIndicatorWindow;
-- (void)updateCurrentState;
 - (void)updateProcessIDForAudioCapture:(int)arg1;
-- (void)updateRecordingAvailability;
-- (void)updateScreenRecordingState;
+- (void)updateRecordingAvailability:(id)arg1;
+- (void)updateRecordingAvailabilityWithHandler:(id /* block */)arg1;
+- (void)updateScreenRecordingStateWithCurrentState:(id)arg1;
 - (id)videoQueue;
 - (id)windowToRecord;
 

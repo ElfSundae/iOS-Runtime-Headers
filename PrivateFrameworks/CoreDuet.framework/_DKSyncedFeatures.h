@@ -9,6 +9,8 @@
     long long  _screenTimeSyncState;
 }
 
+@property long long screenTimeSyncState;
+
 + (id)sharedInstance;
 
 - (void)_fetchScreenTimeSyncState;
@@ -19,5 +21,7 @@
 - (bool)isIDSMessageGatingDisabled;
 - (bool)isSiriPortraitDisabled;
 - (bool)isSupergreenDisabledForTransports:(long long)arg1;
+- (long long)screenTimeSyncState;
+- (void)setScreenTimeSyncState:(long long)arg1;
 
 @end

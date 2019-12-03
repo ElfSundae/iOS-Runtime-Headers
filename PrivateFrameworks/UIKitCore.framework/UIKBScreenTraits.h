@@ -34,13 +34,15 @@
 @property (nonatomic, readonly) bool touchInput;
 @property (nonatomic, readonly) bool touchpadInput;
 
++ (id)fullScreenTraitsWithScreen:(id)arg1 orientation:(long long)arg2;
 + (id)traitsWithScreen:(id)arg1 orientation:(long long)arg2;
++ (id)traitsWithScreen:(id)arg1 orientation:(long long)arg2 ignoreRemoteKeyboard:(bool)arg3;
 
 - (void).cxx_destruct;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })bounds;
 - (id)description;
 - (long long)idiom;
-- (id)initWithScreen:(id)arg1 orientation:(long long)arg2;
+- (id)initWithScreen:(id)arg1 orientation:(long long)arg2 allowFloating:(bool)arg3 ignoreRemoteKeyboard:(bool)arg4;
 - (bool)isKeyboardMinorEdgeWidth;
 - (double)keyboardBarHeight;
 - (double)keyboardWidth;

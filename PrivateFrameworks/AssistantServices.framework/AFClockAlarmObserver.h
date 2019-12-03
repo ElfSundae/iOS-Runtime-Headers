@@ -38,7 +38,7 @@
 - (void)firingAlarmChanged:(id)arg1;
 - (void)firingAlarmDismissed:(id)arg1;
 - (void)getAlarmSnapshotWithCompletion:(id /* block */)arg1;
-- (void)getNotifiedFiringAlarmIDsWithCompletion:(id /* block */)arg1;
+- (void)getFiringAlarmIDsWithCompletion:(id /* block */)arg1;
 - (id)init;
 - (void)invalidate;
 - (void)removeListener:(id)arg1;

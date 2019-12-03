@@ -8,6 +8,10 @@
 @property (nonatomic, readonly) unsigned long long dynamicTextType;
 @property (nonatomic, readonly) bool textBakedIn;
 
++ (id)JT_fontWithName:(id)arg1;
++ (unsigned int)JT_symbolicTraitsFromName:(id)arg1;
++ (id)JT_systemFontDesignFromName:(id)arg1;
++ (double)JT_systemFontWeightFromName:(id)arg1;
 + (id)dynamicTextPlaceholderMap;
 + (id)placeHolderTextForDynamicTextType:(unsigned long long)arg1;
 + (bool)supportsSecureCoding;

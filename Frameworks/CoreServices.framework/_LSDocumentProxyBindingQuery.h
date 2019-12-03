@@ -6,27 +6,25 @@
     LSDocumentProxy * _documentProxy;
     NSString * _handlerRank;
     unsigned char  _style;
-    bool  _withTypeDeclarer;
 }
 
 @property (nonatomic, readonly, retain) LSDocumentProxy *documentProxy;
 @property (nonatomic, readonly, copy) NSString *handlerRank;
 @property (nonatomic, readonly) unsigned char style;
-@property (nonatomic, readonly) bool withTypeDeclarer;
 
 + (bool)supportsSecureCoding;
 
+- (void).cxx_destruct;
 - (void)_enumerateWithXPCConnection:(id)arg1 block:(id /* block */)arg2;
 - (bool)_requiresDatabaseMappingEntitlement;
-- (bool)_shouldCacheResolvedResults;
-- (int)calculatePriorityForApp:(id)arg1 cloudOwner:(id)arg2 preferredHandler:(id)arg3 typeIsWildcard:(bool)arg4;
-- (void)dealloc;
 - (id)documentProxy;
 - (void)encodeWithCoder:(id)arg1;
+- (void)filterOpenRestrictedBindings:(struct vector<LSBinding, std::__1::allocator<LSBinding> > { struct LSBinding {} *x1; struct LSBinding {} *x2; struct __compressed_pair<LSBinding *, std::__1::allocator<LSBinding> > { struct LSBinding {} *x_3_1_1; } x3; }*)arg1 connection:(id)arg2 context:(struct LSContext { id x1; }*)arg3 earlyYield:(id /* block */)arg4;
 - (id)handlerRank;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDocumentProxy:(id)arg1 withTypeDeclarer:(bool)arg2 style:(unsigned char)arg3 handlerRank:(id)arg4;
+- (id)initWithDocumentProxy:(id)arg1 style:(unsigned char)arg2 handlerRank:(id)arg3;
+- (bool)isEqual:(id)arg1;
 - (unsigned char)style;
-- (bool)withTypeDeclarer;
 
 @end

@@ -8,6 +8,8 @@
     bool  _valid;
 }
 
++ (void)_precacheTypesForIdentifiers:(id)arg1;
++ (id)_typeCache;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -20,5 +22,6 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
 - (bool)isEqual:(id)arg1;
+- (id)resolve;
 
 @end

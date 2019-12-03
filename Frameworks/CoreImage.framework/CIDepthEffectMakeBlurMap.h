@@ -10,6 +10,7 @@
     NSNumber * inputDraftMode;
     CIVector * inputFaceMidPoint;
     CIVector * inputFocusRect;
+    CIImage * inputHairImage;
     CIImage * inputImage;
     CIVector * inputLeftEyePosition;
     CIImage * inputMatteImage;
@@ -27,6 +28,7 @@
 @property (nonatomic, retain) NSNumber *inputDraftMode;
 @property (retain) CIVector *inputFaceMidPoint;
 @property (nonatomic, retain) CIVector *inputFocusRect;
+@property (retain) CIImage *inputHairImage;
 @property (retain) CIImage *inputImage;
 @property (retain) CIVector *inputLeftEyePosition;
 @property (retain) CIImage *inputMatteImage;
@@ -38,9 +40,11 @@
 
 - (id)blurMapV2:(id)arg1;
 - (id)blurMapV3:(id)arg1 shiftmap:(id)arg2 alphaImage:(id)arg3;
+- (id)blurMapV4:(id)arg1 shiftmap:(id)arg2 alphaImage:(id)arg3 hairImage:(id)arg4;
 - (id)calibrationData;
 - (id)faceMaskApply:(id)arg1 blurMap:(id)arg2;
-- (id)faceMaskParams:(id)arg1;
+- (id)faceMaskDelta:(id)arg1 extent:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 parameters:(id)arg3 distanceToAdd:(float*)arg4;
+- (id)faceMaskParams:(id)arg1 useNormalizedCoords:(bool)arg2;
 - (id)inputAperture;
 - (id)inputAuxDataMetadata;
 - (id)inputCalibrationData;
@@ -48,6 +52,7 @@
 - (id)inputDraftMode;
 - (id)inputFaceMidPoint;
 - (id)inputFocusRect;
+- (id)inputHairImage;
 - (id)inputImage;
 - (id)inputLeftEyePosition;
 - (id)inputMatteImage;
@@ -68,6 +73,7 @@
 - (void)setInputDraftMode:(id)arg1;
 - (void)setInputFaceMidPoint:(id)arg1;
 - (void)setInputFocusRect:(id)arg1;
+- (void)setInputHairImage:(id)arg1;
 - (void)setInputImage:(id)arg1;
 - (void)setInputLeftEyePosition:(id)arg1;
 - (void)setInputMatteImage:(id)arg1;

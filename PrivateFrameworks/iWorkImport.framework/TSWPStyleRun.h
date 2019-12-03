@@ -8,7 +8,7 @@
     TSWPCharacterStyle * _characterStyle;
     struct __CTFont { } * _ctFont;
     unsigned long long  _flags;
-    struct { 
+    struct TSWPFontHeightInfo { 
         double spaceBefore; 
         double attachmentHeight; 
         double ascent; 
@@ -16,6 +16,7 @@
         double leadingAbove; 
         double leadingBelow; 
         double spaceAfter; 
+        double verticalHeight; 
     }  _fontHeightInfo;
     unsigned long long  _runLength;
 }
@@ -25,7 +26,7 @@
 @property (nonatomic, retain) TSWPCharacterStyle *characterStyle;
 @property (nonatomic) struct __CTFont { }*ctFont;
 @property (nonatomic) unsigned long long flags;
-@property (nonatomic) struct { double x1; double x2; double x3; double x4; double x5; double x6; double x7; } fontHeightInfo;
+@property (nonatomic) struct TSWPFontHeightInfo { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; } fontHeightInfo;
 @property (nonatomic) unsigned long long runLength;
 
 - (void).cxx_destruct;
@@ -36,7 +37,7 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (struct __CTFont { }*)ctFont;
 - (unsigned long long)flags;
-- (struct { double x1; double x2; double x3; double x4; double x5; double x6; double x7; })fontHeightInfo;
+- (struct TSWPFontHeightInfo { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; })fontHeightInfo;
 - (id)init;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })range;
 - (unsigned long long)runLength;
@@ -45,7 +46,7 @@
 - (void)setCharacterStyle:(id)arg1;
 - (void)setCtFont:(struct __CTFont { }*)arg1;
 - (void)setFlags:(unsigned long long)arg1;
-- (void)setFontHeightInfo:(struct { double x1; double x2; double x3; double x4; double x5; double x6; double x7; })arg1;
+- (void)setFontHeightInfo:(struct TSWPFontHeightInfo { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; })arg1;
 - (void)setRunLength:(unsigned long long)arg1;
 
 @end

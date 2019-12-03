@@ -3,7 +3,7 @@
  */
 
 @interface BSAtomicSignal : NSObject {
-    bool  _flag;
+    _Atomic bool  _flag;
 }
 
 - (id)description;

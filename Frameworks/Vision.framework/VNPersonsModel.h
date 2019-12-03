@@ -38,5 +38,6 @@
 - (id)personUniqueIdentifiers;
 - (id)predictPersonFromFaceObservation:(id)arg1 limit:(unsigned long long)arg2 canceller:(id)arg3 error:(id*)arg4;
 - (id)upToDateFaceModelWithCanceller:(id)arg1 error:(id*)arg2;
+- (bool)updateInternalConfigurationWithModelFaceprintRequestRevision:(unsigned long long)arg1 error:(id*)arg2;
 
 @end

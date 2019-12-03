@@ -10,6 +10,8 @@
 @property (nonatomic, readonly) <_DKKnowledgeQuerying> *knowledgeStore;
 @property (nonatomic, readonly) _DKEventStream *stream;
 
++ (unsigned long long)currentVersion;
+
 - (void).cxx_destruct;
 - (id)bundleIDToSearchableItemsDictionaryFromEvents:(id)arg1;
 - (id)bundleIDToSearchableItemsDictionaryWithCreationDateInInterval:(id)arg1 limit:(long long)arg2 nextBatch:(bool*)arg3 latestCreationDate:(id*)arg4 error:(id*)arg5;

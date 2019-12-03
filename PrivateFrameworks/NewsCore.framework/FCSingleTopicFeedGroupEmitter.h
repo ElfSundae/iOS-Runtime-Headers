@@ -4,7 +4,8 @@
 
 @interface FCSingleTopicFeedGroupEmitter : FCSingleTagFeedGroupEmitter
 
++ (id)groupEmitterIdentifier;
+
 - (Class)classForGroupEmittingOperation;
-- (id)groupEmitterIdentifier;
 
 @end

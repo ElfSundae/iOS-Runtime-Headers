@@ -4,7 +4,9 @@
 
 @interface _UNNotificationExtensionHostViewController : _UIRemoteViewController <_UNNotificationExtensionHostInterface> {
     <_UNNotificationExtensionHostDelegate> * _delegate;
-    bool  _dismissEnabled;
+    NSExtension * _extension;
+    <NSCopying> * _extensionRequestIdentifier;
+    NSString * _notificationRequestIdentifier;
     UIColor * _playPauseMediaButtonColor;
     struct CGRect { 
         struct CGPoint { 
@@ -22,7 +24,9 @@
 }
 
 @property (nonatomic) <_UNNotificationExtensionHostDelegate> *delegate;
-@property (getter=isDismissEnabled, nonatomic) bool dismissEnabled;
+@property (nonatomic) NSExtension *extension;
+@property (nonatomic, copy) <NSCopying> *extensionRequestIdentifier;
+@property (nonatomic, copy) NSString *notificationRequestIdentifier;
 @property (nonatomic, retain) UIColor *playPauseMediaButtonColor;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } playPauseMediaButtonFrame;
 @property (nonatomic) unsigned long long playPauseMediaButtonType;
@@ -34,14 +38,13 @@
 
 - (void).cxx_destruct;
 - (bool)__shouldRemoteViewControllerFenceOperations;
-- (void)_extensionAudioAccessoryViewContextId:(unsigned int)arg1;
+- (bool)_canShowWhileLocked;
 - (void)_extensionDidCompleteNotificationResponse:(id)arg1 withOption:(unsigned long long)arg2;
 - (void)_extensionDidUpdateControls;
 - (void)_extensionMediaPlayingPaused;
 - (void)_extensionMediaPlayingStarted;
 - (void)_extensionRequestsDefaultAction;
 - (void)_extensionRequestsDismiss;
-- (void)_extensionRequestsToSetDismissEnabled:(bool)arg1;
 - (void)_extensionSetPlayPauseMediaButtonColor:(id)arg1;
 - (void)_extensionSetPlayPauseMediaButtonFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)_extensionSetPlayPauseMediaButtonType:(unsigned long long)arg1;
@@ -50,12 +53,16 @@
 - (void)_extensionWantsToBecomeFirstResponder:(bool)arg1;
 - (void)_extensionWantsToReceiveActionResponses:(bool)arg1;
 - (id)delegate;
-- (bool)isDismissEnabled;
+- (id)extension;
+- (id)extensionRequestIdentifier;
+- (id)notificationRequestIdentifier;
 - (id)playPauseMediaButtonColor;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })playPauseMediaButtonFrame;
 - (unsigned long long)playPauseMediaButtonType;
 - (void)setDelegate:(id)arg1;
-- (void)setDismissEnabled:(bool)arg1;
+- (void)setExtension:(id)arg1;
+- (void)setExtensionRequestIdentifier:(id)arg1;
+- (void)setNotificationRequestIdentifier:(id)arg1;
 - (void)setPlayPauseMediaButtonColor:(id)arg1;
 - (void)setPlayPauseMediaButtonFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setPlayPauseMediaButtonType:(unsigned long long)arg1;

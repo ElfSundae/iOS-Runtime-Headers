@@ -7,6 +7,7 @@
     bool  _canIssuePrivacyVouchers;
     UIBarButtonItem * _cancelButtonItem;
     bool  _cancellationAllowed;
+    UIViewController * _currentlyPresentedIdentityProviderAlert;
     <VSIdentityProviderViewControllerDelegate> * _delegate;
     VSIdentityProvider * _identityProvider;
     VSImageLoadOperation * _logoLoadOperation;
@@ -20,6 +21,7 @@
 @property (nonatomic) bool canIssuePrivacyVouchers;
 @property (nonatomic, retain) UIBarButtonItem *cancelButtonItem;
 @property (getter=isCancellationAllowed, nonatomic) bool cancellationAllowed;
+@property (nonatomic, retain) UIViewController *currentlyPresentedIdentityProviderAlert;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <VSIdentityProviderViewControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -50,12 +52,15 @@
 - (void)authenticationViewControllerDidCancel:(id)arg1;
 - (bool)canIssuePrivacyVouchers;
 - (id)cancelButtonItem;
+- (bool)currentAuthenticationViewControllerSupportsPreAuth;
+- (id)currentlyPresentedIdentityProviderAlert;
 - (void)dealloc;
 - (id)delegate;
 - (void)enqueueRequest:(id)arg1;
 - (id)identityProvider;
 - (void)identityProviderRequestManager:(id)arg1 didAuthenticateAccount:(id)arg2 forRequest:(id)arg3;
 - (void)identityProviderRequestManager:(id)arg1 finishedRequest:(id)arg2 withResult:(id)arg3;
+- (bool)identityProviderRequestManager:(id)arg1 requestsAlert:(id)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentityProvider:(id)arg1;
@@ -69,6 +74,7 @@
 - (void)setCanIssuePrivacyVouchers:(bool)arg1;
 - (void)setCancelButtonItem:(id)arg1;
 - (void)setCancellationAllowed:(bool)arg1;
+- (void)setCurrentlyPresentedIdentityProviderAlert:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setLogoLoadOperation:(id)arg1;
 - (void)setPrivateQueue:(id)arg1;

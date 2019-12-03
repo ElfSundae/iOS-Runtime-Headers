@@ -8,7 +8,6 @@
     bool  _isClientTodayWidget;
     bool  _isiPad;
     WKWebView * _myNewsPrivacyWebView;
-    double  _statusBarOffset;
     NSDictionary * _transparencyDetailsDictionary;
     NSString * _transparencyDetailsUnavailableMessage;
     UINavigationBar * _transparencyNavBar;
@@ -25,7 +24,6 @@
 @property (nonatomic) bool isClientTodayWidget;
 @property (nonatomic) bool isiPad;
 @property (nonatomic, retain) WKWebView *myNewsPrivacyWebView;
-@property (nonatomic) double statusBarOffset;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSDictionary *transparencyDetailsDictionary;
 @property (nonatomic, readonly) NSString *transparencyDetailsUnavailableMessage;
@@ -56,10 +54,8 @@
 - (void)setIsClientTodayWidget:(bool)arg1;
 - (void)setIsiPad:(bool)arg1;
 - (void)setMyNewsPrivacyWebView:(id)arg1;
-- (void)setStatusBarOffset:(double)arg1;
 - (void)setTransparencyDetailsDictionary:(id)arg1;
 - (void)setTransparencyNavBar:(id)arg1;
-- (double)statusBarOffset;
 - (id)transparencyDetailsDictionary;
 - (id)transparencyDetailsUnavailableMessage;
 - (id)transparencyNavBar;

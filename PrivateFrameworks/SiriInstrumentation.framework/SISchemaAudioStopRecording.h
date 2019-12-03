@@ -2,30 +2,26 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaAudioStopRecording : PBCodable <NSCopying> {
+@interface SISchemaAudioStopRecording : PBCodable <NSSecureCoding, SISchemaAudioStopRecording> {
     int  _endpointType;
-    struct { 
-        unsigned int endpointType : 1; 
-    }  _has;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) int endpointType;
-@property (nonatomic) bool hasEndpointType;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) NSData *jsonData;
+@property (readonly) Class superclass;
 
-- (int)StringAsEndpointType:(id)arg1;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
 - (int)endpointType;
-- (id)endpointTypeAsString:(int)arg1;
-- (bool)hasEndpointType;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (bool)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
+- (id)jsonData;
 - (bool)readFrom:(id)arg1;
 - (void)setEndpointType:(int)arg1;
-- (void)setHasEndpointType:(bool)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

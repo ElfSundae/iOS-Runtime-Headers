@@ -19,8 +19,6 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) AVAudioSession *targetAudioSession;
 
-+ (void)initialize;
-
 - (void).cxx_destruct;
 - (void)_addFigEndpointPickerNotifications;
 - (int)_configureFigEndpointPickerWithFeature:(unsigned long long)arg1;

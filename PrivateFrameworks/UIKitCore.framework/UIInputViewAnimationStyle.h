@@ -3,6 +3,8 @@
  */
 
 @interface UIInputViewAnimationStyle : NSObject <NSCopying> {
+    bool  _dontMerge;
+    bool  _isLegacy;
     bool  animated;
     double  duration;
     unsigned long long  extraOptions;
@@ -12,6 +14,7 @@
 
 @property (nonatomic) bool animated;
 @property (nonatomic, readonly) bool canDismissWithScrollView;
+@property (nonatomic) bool dontMerge;
 @property (nonatomic) double duration;
 @property (nonatomic) unsigned long long extraOptions;
 @property (nonatomic) bool force;
@@ -27,6 +30,7 @@
 - (id)controllerForStartPlacement:(id)arg1 endPlacement:(id)arg2;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
+- (bool)dontMerge;
 - (double)duration;
 - (id)endPlacementForInputViewSet:(id)arg1;
 - (unsigned long long)extraOptions;
@@ -35,7 +39,9 @@
 - (bool)isAnimationCompleted;
 - (bool)isEqual:(id)arg1;
 - (void)launchAnimation:(id /* block */)arg1 afterStarted:(id /* block */)arg2 completion:(id /* block */)arg3 forHost:(id)arg4 fromCurrentPosition:(bool)arg5;
+- (id)legacyAnimationCopy;
 - (void)setAnimated:(bool)arg1;
+- (void)setDontMerge:(bool)arg1;
 - (void)setDuration:(double)arg1;
 - (void)setExtraOptions:(unsigned long long)arg1;
 - (void)setForce:(bool)arg1;

@@ -2,9 +2,7 @@
    Image: /System/Library/Frameworks/Vision.framework/Vision
  */
 
-@interface VNCreateSceneprintRequest : VNImageBasedRequest <VNImageIdealImageSizeProviding> {
-    VNCanceller * _canceller;
-}
+@interface VNCreateSceneprintRequest : VNImageBasedRequest <VNImageIdealImageSizeProviding>
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -17,19 +15,18 @@
 
 + (Class)configurationClass;
 + (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
++ (id)descriptionForPrivateRevision:(unsigned long long)arg1;
 + (void)recordDefaultOptionsInDictionary:(id)arg1;
 + (const struct { unsigned long long x1; struct { int x_2_1_1; int x_2_1_2; } x2; struct { int x_3_1_1; int x_3_1_2; } x3; struct { int x_4_1_1; int x_4_1_2; } x4; }*)revisionAvailability;
++ (bool)supportsPrivateRevision:(unsigned long long)arg1;
 
-- (void).cxx_destruct;
 - (id)_applicableDetectorAndReturnError:(id*)arg1;
 - (id)_applicableDetectorForRequestRevision:(unsigned long long)arg1 applicableDetectorOptions:(id*)arg2 error:(id*)arg3;
 - (id)_detectorTypeForRequestRevision:(unsigned long long)arg1 options:(id)arg2 error:(id*)arg3;
 - (void)applyConfigurationOfRequest:(id)arg1;
+- (id)description;
 - (bool)hasCancellationHook;
 - (unsigned long long)imageCropAndScaleOption;
-- (id)initWithCompletionHandler:(id /* block */)arg1;
-- (id)initWithName:(id)arg1 options:(id)arg2 completionHandler:(id /* block */)arg3;
-- (bool)internalCancelInContext:(id)arg1 error:(id*)arg2;
 - (bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id*)arg3;
 - (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1;
 - (bool)returnAllResults;

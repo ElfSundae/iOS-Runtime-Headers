@@ -11,6 +11,7 @@
     PKFeatureApplication * _featureApplication;
     unsigned long long  _featureIdentifier;
     DIVerificationSession * _idVerificationSession;
+    PKPaymentInstallmentConfiguration * _installmentConfiguration;
     PKAssertion * _notificationSupressionAssertion;
     <PKSetupFlowControllerProtocol> * _parentFlowController;
     PKPaymentService * _paymentService;
@@ -32,6 +33,7 @@
 @property (nonatomic, readonly) PKFeatureApplication *featureApplication;
 @property (nonatomic, readonly) unsigned long long featureIdentifier;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, retain) PKPaymentInstallmentConfiguration *installmentConfiguration;
 @property (nonatomic, retain) <PKSetupFlowControllerProtocol> *parentFlowController;
 @property (nonatomic, readonly) PKPaymentProvisioningController *provisioningController;
 @property (readonly) Class superclass;
@@ -40,6 +42,7 @@
 - (void)_acquireAssertion;
 - (void)_deviceMetadataFields:(unsigned long long)arg1 completion:(id /* block */)arg2;
 - (id)_displayableErrorForError:(id)arg1 showDetailedErrorFlow:(bool)arg2;
+- (id)_fieldsViewControllerForPage:(id)arg1;
 - (void)_handleApplyResponse:(id)arg1 originalFeatureApplication:(id)arg2 error:(id)arg3 completion:(id /* block */)arg4;
 - (void)_handleCoreIDVPage:(id)arg1 totalPageCount:(long long)arg2 error:(id)arg3 completion:(id /* block */)arg4;
 - (void)_handleResponseError:(id)arg1 completion:(id /* block */)arg2;
@@ -68,6 +71,8 @@
 - (void)_queueTerminalStateFlowWithPage:(id)arg1;
 - (void)_reset;
 - (void)_startCoreIDVSessionWithStepInfo:(id)arg1 completion:(id /* block */)arg2;
+- (void)_startPaymentServiceListener;
+- (void)_stopPaymentServiceListener;
 - (void)_submitCoreIDVDocumentsPage:(id)arg1 selectedDocument:(id)arg2 frontImageData:(id)arg3 backImageData:(id)arg4 completion:(id /* block */)arg5;
 - (void)_submitCoreIDVFieldsPage:(id)arg1 completion:(id /* block */)arg2;
 - (id)applicationUpdatedAlertControllerWithHandler:(id /* block */)arg1;
@@ -80,15 +85,17 @@
 - (unsigned long long)featureIdentifier;
 - (id)initWithFeature:(unsigned long long)arg1 setupDelegate:(id)arg2 context:(long long)arg3 provisioningController:(id)arg4;
 - (id)initWithFeatureApplication:(id)arg1 setupDelegate:(id)arg2 context:(long long)arg3 provisioningController:(id)arg4;
+- (id)installmentConfiguration;
 - (void)nextViewControllerWithCompletion:(id /* block */)arg1;
 - (id)parentFlowController;
 - (id)provisioningController;
+- (void)setInstallmentConfiguration:(id)arg1;
 - (void)setParentFlowController:(id)arg1;
 - (void)submitActionIdentifier:(id)arg1 completion:(id /* block */)arg2;
 - (void)submitDocumentPage:(id)arg1 selectedDocument:(id)arg2 frontImage:(id)arg3 backImage:(id)arg4 completion:(id /* block */)arg5;
 - (void)submitFieldsPage:(id)arg1 completion:(id /* block */)arg2;
 - (void)termsAccepted:(bool)arg1 identifier:(id)arg2 completion:(id /* block */)arg3;
-- (void)termsDataForFeatureWithFormat:(id)arg1 completion:(id /* block */)arg2;
+- (void)termsDataForFeatureWithIdentifier:(id)arg1 format:(id)arg2 completion:(id /* block */)arg3;
 - (void)termsDataForIdentifier:(id)arg1 format:(id)arg2 completion:(id /* block */)arg3;
 - (void)termsShownWithIdentifier:(id)arg1;
 - (void)withdrawApplicationWithCompletion:(id /* block */)arg1;

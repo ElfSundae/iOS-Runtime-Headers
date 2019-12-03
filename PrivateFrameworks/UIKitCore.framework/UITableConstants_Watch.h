@@ -2,8 +2,11 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface UITableConstants_Watch : UITableConstants_IOS
+@interface UITableConstants_Watch : UITableConstants_Phone
 
 + (id)sharedConstants;
+
+- (id)defaultCheckmarkImageForCell:(id)arg1 inTableView:(id)arg2;
+- (id)defaultHeaderFooterBackgroundColorForView:(id)arg1 inTableView:(id)arg2;
 
 @end

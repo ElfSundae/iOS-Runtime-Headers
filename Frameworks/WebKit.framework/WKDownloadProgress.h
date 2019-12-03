@@ -3,7 +3,11 @@
  */
 
 @interface WKDownloadProgress : NSProgress {
-    struct Download { int (**x1)(); struct DownloadManager {} *x2; struct DownloadID { unsigned long long x_3_1_1; } x3; struct Vector<WTF::RefPtr<WebCore::BlobDataFileReference, WTF::DumbPtrTraits<WebCore::BlobDataFileReference> >, 0, WTF::CrashOnOverflow, 16> { struct RefPtr<WebCore::BlobDataFileReference, WTF::DumbPtrTraits<WebCore::BlobDataFileReference> > {} *x_4_1_1; unsigned int x_4_1_2; unsigned int x_4_1_3; } x4; struct RefPtr<WebKit::SandboxExtension, WTF::DumbPtrTraits<WebKit::SandboxExtension> > { struct SandboxExtension {} *x_5_1_1; } x5; struct RefPtr<WebKit::NetworkDataTask, WTF::DumbPtrTraits<WebKit::NetworkDataTask> > { struct NetworkDataTask {} *x_6_1_1; } x6; struct RetainPtr<NSURLSessionDownloadTask> { void *x_7_1_1; } x7; struct RetainPtr<NSProgress> { void *x_8_1_1; } x8; struct SessionID { unsigned long long x_9_1_1; } x9; struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_2_1; } x_10_1_1; } x10; bool x11; } * m_download;
+    struct WeakPtr<WebKit::Download> { 
+        struct RefPtr<WTF::WeakPtrImpl, WTF::DumbPtrTraits<WTF::WeakPtrImpl> > { 
+            struct WeakPtrImpl {} *m_ptr; 
+        } m_impl; 
+    }  m_download;
     struct RefPtr<WebKit::SandboxExtension, WTF::DumbPtrTraits<WebKit::SandboxExtension> > { 
         struct SandboxExtension {} *m_ptr; 
     }  m_sandboxExtension;
@@ -14,10 +18,11 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_publish;
-- (void)_unpublish;
 - (void)dealloc;
-- (id)initWithDownloadTask:(id)arg1 download:(struct Download { int (**x1)(); struct DownloadManager {} *x2; struct DownloadID { unsigned long long x_3_1_1; } x3; struct Vector<WTF::RefPtr<WebCore::BlobDataFileReference, WTF::DumbPtrTraits<WebCore::BlobDataFileReference> >, 0, WTF::CrashOnOverflow, 16> { struct RefPtr<WebCore::BlobDataFileReference, WTF::DumbPtrTraits<WebCore::BlobDataFileReference> > {} *x_4_1_1; unsigned int x_4_1_2; unsigned int x_4_1_3; } x4; struct RefPtr<WebKit::SandboxExtension, WTF::DumbPtrTraits<WebKit::SandboxExtension> > { struct SandboxExtension {} *x_5_1_1; } x5; struct RefPtr<WebKit::NetworkDataTask, WTF::DumbPtrTraits<WebKit::NetworkDataTask> > { struct NetworkDataTask {} *x_6_1_1; } x6; struct RetainPtr<NSURLSessionDownloadTask> { void *x_7_1_1; } x7; struct RetainPtr<NSProgress> { void *x_8_1_1; } x8; struct SessionID { unsigned long long x_9_1_1; } x9; struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_2_1; } x_10_1_1; } x10; bool x11; }*)arg2 URL:(id)arg3 sandboxExtension:(struct RefPtr<WebKit::SandboxExtension, WTF::DumbPtrTraits<WebKit::SandboxExtension> > { struct SandboxExtension {} *x1; })arg4;
+- (id)initWithDownloadTask:(id)arg1 download:(struct Download { int (**x1)(); struct WeakPtrFactory<WebKit::Download> { struct RefPtr<WTF::WeakPtrImpl, WTF::DumbPtrTraits<WTF::WeakPtrImpl> > { struct WeakPtrImpl {} *x_1_2_1; } x_2_1_1; } x2; struct DownloadManager {} *x3; struct DownloadID { unsigned long long x_4_1_1; } x4; struct Ref<WebKit::DownloadManager::Client, WTF::DumbPtrTraits<WebKit::DownloadManager::Client> > { struct Client {} *x_5_1_1; } x5; struct Vector<WTF::RefPtr<WebCore::BlobDataFileReference, WTF::DumbPtrTraits<WebCore::BlobDataFileReference> >, 0, WTF::CrashOnOverflow, 16> { struct RefPtr<WebCore::BlobDataFileReference, WTF::DumbPtrTraits<WebCore::BlobDataFileReference> > {} *x_6_1_1; unsigned int x_6_1_2; unsigned int x_6_1_3; } x6; struct RefPtr<WebKit::SandboxExtension, WTF::DumbPtrTraits<WebKit::SandboxExtension> > { struct SandboxExtension {} *x_7_1_1; } x7; struct RefPtr<WebKit::NetworkDataTask, WTF::DumbPtrTraits<WebKit::NetworkDataTask> > { struct NetworkDataTask {} *x_8_1_1; } x8; struct RetainPtr<NSURLSessionDownloadTask> { void *x_9_1_1; } x9; }*)arg2 URL:(id)arg3 sandboxExtension:(struct RefPtr<WebKit::SandboxExtension, WTF::DumbPtrTraits<WebKit::SandboxExtension> > { struct SandboxExtension {} *x1; })arg4;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
+- (void)performCancel;
+- (void)publish;
+- (void)unpublish;
 
 @end

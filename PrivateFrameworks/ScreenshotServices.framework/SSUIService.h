@@ -10,5 +10,6 @@
 - (void)_runPPTNamed:(id)arg1;
 - (id)init;
 - (void)showScreenshotUIForImage:(id)arg1 options:(id)arg2;
+- (void)showScreenshotUIForImage:(id)arg1 options:(id)arg2 withCompletion:(id /* block */)arg3;
 
 @end

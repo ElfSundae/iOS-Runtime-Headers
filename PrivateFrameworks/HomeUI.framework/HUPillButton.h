@@ -28,6 +28,7 @@
 + (bool)requiresConstraintBasedLayout;
 
 - (void).cxx_destruct;
+- (void)_didTap:(id)arg1;
 - (void)_setupConstraintSet;
 - (bool)adjustsFontSizeToFitWidth;
 - (id)backgroundView;
@@ -35,6 +36,7 @@
 - (id)buttonLabel;
 - (id)buttonText;
 - (id)constraintSet;
+- (id)description;
 - (void)didMoveToSuperview;
 - (id)initWithBackgroundStyle:(unsigned long long)arg1;
 - (void)layoutSubviews;

@@ -14,11 +14,13 @@
         double height; 
     }  _overrideSize;
     UIImageView * _placeholderArtworkView;
+    UILabel * _placeholderLabel;
+    NSString * _placeholderString;
     MPCPlayerPath * _playerPath;
     UILabel * _primaryLabel;
     MPUMarqueeView * _primaryMarqueeView;
     NSString * _primaryString;
-    MediaControlsRouteLabel * _routeLabel;
+    MPRouteLabel * _routeLabel;
     bool  _routing;
     MediaControlsRoutingButtonView * _routingButton;
     UILabel * _secondaryLabel;
@@ -26,8 +28,10 @@
     NSString * _secondaryString;
     UIView * _shadow;
     bool  _shouldUseOverrideSize;
+    bool  _showPlaceholderString;
     long long  _style;
     bool  _transitioning;
+    MTVisualStylingProvider * _visualStylingProvider;
 }
 
 @property (nonatomic, retain) MTMaterialView *artworkBackground;
@@ -38,11 +42,13 @@
 @property (nonatomic) bool marqueeEnabled;
 @property (nonatomic) struct CGSize { double x1; double x2; } overrideSize;
 @property (nonatomic, retain) UIImageView *placeholderArtworkView;
+@property (nonatomic, retain) UILabel *placeholderLabel;
+@property (nonatomic, copy) NSString *placeholderString;
 @property (nonatomic, copy) MPCPlayerPath *playerPath;
 @property (nonatomic, retain) UILabel *primaryLabel;
 @property (nonatomic, retain) MPUMarqueeView *primaryMarqueeView;
 @property (nonatomic, copy) NSString *primaryString;
-@property (nonatomic, retain) MediaControlsRouteLabel *routeLabel;
+@property (nonatomic, retain) MPRouteLabel *routeLabel;
 @property (getter=isRouting, nonatomic) bool routing;
 @property (nonatomic, retain) MediaControlsRoutingButtonView *routingButton;
 @property (nonatomic, retain) UILabel *secondaryLabel;
@@ -50,8 +56,10 @@
 @property (nonatomic, copy) NSString *secondaryString;
 @property (nonatomic, retain) UIView *shadow;
 @property (nonatomic) bool shouldUseOverrideSize;
+@property (nonatomic) bool showPlaceholderString;
 @property (nonatomic) long long style;
 @property (getter=isTransitioning, nonatomic) bool transitioning;
+@property (nonatomic, retain) MTVisualStylingProvider *visualStylingProvider;
 
 - (void).cxx_destruct;
 - (void)_handleContentSizeCategoryDidChangeNotification:(id)arg1;
@@ -73,6 +81,8 @@
 - (bool)marqueeEnabled;
 - (struct CGSize { double x1; double x2; })overrideSize;
 - (id)placeholderArtworkView;
+- (id)placeholderLabel;
+- (id)placeholderString;
 - (id)playerPath;
 - (id)primaryLabel;
 - (id)primaryMarqueeView;
@@ -90,6 +100,8 @@
 - (void)setMarqueeEnabled:(bool)arg1;
 - (void)setOverrideSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setPlaceholderArtworkView:(id)arg1;
+- (void)setPlaceholderLabel:(id)arg1;
+- (void)setPlaceholderString:(id)arg1;
 - (void)setPlayerPath:(id)arg1;
 - (void)setPrimaryLabel:(id)arg1;
 - (void)setPrimaryMarqueeView:(id)arg1;
@@ -102,14 +114,18 @@
 - (void)setSecondaryString:(id)arg1;
 - (void)setShadow:(id)arg1;
 - (void)setShouldUseOverrideSize:(bool)arg1;
+- (void)setShowPlaceholderString:(bool)arg1;
 - (void)setStyle:(long long)arg1;
 - (void)setTransitioning:(bool)arg1;
+- (void)setVisualStylingProvider:(id)arg1;
 - (id)shadow;
 - (bool)shouldUseOverrideSize;
+- (bool)showPlaceholderString;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (long long)style;
 - (void)tintColorDidChange;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateArtworkStyle;
+- (id)visualStylingProvider;
 
 @end

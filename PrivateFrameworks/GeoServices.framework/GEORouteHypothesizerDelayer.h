@@ -3,9 +3,10 @@
  */
 
 @interface GEORouteHypothesizerDelayer : NSObject {
+    GEOXPCActivity * _activity;
+    geo_isolater * _isolater;
     struct __CFBinaryHeap { } * _minHeap;
     GEORouteHypothesizer * _nextHypothesizer;
-    NSObject<OS_dispatch_queue> * _serialQueue;
 }
 
 + (void)checkin;

@@ -44,6 +44,7 @@
 // Image: /System/Library/Frameworks/QuartzCore.framework/QuartzCore
 
 - (id)CAMLType;
+- (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })CA_CGAffineTransformValue;
 - (id)CA_addValue:(id)arg1 multipliedBy:(int)arg2;
 - (unsigned long long)CA_copyNumericValue:(double)arg1;
 - (struct Object { int (**x1)(); struct Atomic { struct { int x_1_2_1; } x_2_1_1; } x2; }*)CA_copyRenderValue;

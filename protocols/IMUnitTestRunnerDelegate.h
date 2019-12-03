@@ -15,6 +15,5 @@
 - (void)unitTestRunner:(IMUnitTestRunner *)arg1 testSuiteDidFinish:(NSString *)arg2 withResult:(id <IMUnitTestRunnerResult>)arg3;
 - (void)unitTestRunner:(IMUnitTestRunner *)arg1 testSuiteWillStart:(NSString *)arg2;
 - (void)unitTestRunner:(IMUnitTestRunner *)arg1 willRunTestsInBundleAtPath:(NSString *)arg2;
-- (NSString *)unitTestRunnerGetPathToXCTestFramework:(IMUnitTestRunner *)arg1;
 
 @end

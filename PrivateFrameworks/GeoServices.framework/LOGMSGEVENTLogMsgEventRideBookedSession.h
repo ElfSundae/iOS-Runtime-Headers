@@ -7,19 +7,42 @@
     bool  _cancelled;
     bool  _contactedDriver;
     struct { 
-        unsigned int statusIssue : 1; 
-        unsigned int bookedUsingMaps : 1; 
-        unsigned int cancelled : 1; 
-        unsigned int contactedDriver : 1; 
-        unsigned int invalidVehicleLocation : 1; 
-        unsigned int missingVehicleLocation : 1; 
-        unsigned int tappedProactiveTrayItem : 1; 
-        unsigned int viewedDetails : 1; 
-        unsigned int viewedInProactiveTray : 1; 
-    }  _has;
+        unsigned int has_statusIssue : 1; 
+        unsigned int has_bookedUsingMaps : 1; 
+        unsigned int has_cancelled : 1; 
+        unsigned int has_contactedDriver : 1; 
+        unsigned int has_invalidVehicleLocation : 1; 
+        unsigned int has_missingVehicleLocation : 1; 
+        unsigned int has_tappedProactiveTrayItem : 1; 
+        unsigned int has_viewedDetails : 1; 
+        unsigned int has_viewedInProactiveTray : 1; 
+        unsigned int read_intentResponseFailures : 1; 
+        unsigned int read_rideAppId : 1; 
+        unsigned int read_rideAppVersion : 1; 
+        unsigned int read_rideBookedSessionId : 1; 
+        unsigned int wrote_intentResponseFailures : 1; 
+        unsigned int wrote_rideAppId : 1; 
+        unsigned int wrote_rideAppVersion : 1; 
+        unsigned int wrote_rideBookedSessionId : 1; 
+        unsigned int wrote_statusIssue : 1; 
+        unsigned int wrote_bookedUsingMaps : 1; 
+        unsigned int wrote_cancelled : 1; 
+        unsigned int wrote_contactedDriver : 1; 
+        unsigned int wrote_invalidVehicleLocation : 1; 
+        unsigned int wrote_missingVehicleLocation : 1; 
+        unsigned int wrote_tappedProactiveTrayItem : 1; 
+        unsigned int wrote_viewedDetails : 1; 
+        unsigned int wrote_viewedInProactiveTray : 1; 
+    }  _flags;
     NSMutableArray * _intentResponseFailures;
     bool  _invalidVehicleLocation;
     bool  _missingVehicleLocation;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     NSString * _rideAppId;
     NSString * _rideAppVersion;
     NSString * _rideBookedSessionId;
@@ -56,9 +79,15 @@
 @property (nonatomic) bool viewedInProactiveTray;
 
 + (Class)intentResponseFailureType;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsStatusIssue:(id)arg1;
+- (void)_addNoFlagsIntentResponseFailure:(id)arg1;
+- (void)_readIntentResponseFailures;
+- (void)_readRideAppId;
+- (void)_readRideAppVersion;
+- (void)_readRideBookedSessionId;
 - (void)addIntentResponseFailure:(id)arg1;
 - (bool)bookedUsingMaps;
 - (bool)cancelled;
@@ -81,6 +110,8 @@
 - (bool)hasViewedDetails;
 - (bool)hasViewedInProactiveTray;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (id)intentResponseFailureAtIndex:(unsigned long long)arg1;
 - (id)intentResponseFailures;
 - (unsigned long long)intentResponseFailuresCount;
@@ -88,6 +119,7 @@
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (bool)missingVehicleLocation;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)rideAppId;
 - (id)rideAppVersion;

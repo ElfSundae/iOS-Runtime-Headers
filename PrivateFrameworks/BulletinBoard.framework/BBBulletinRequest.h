@@ -7,9 +7,9 @@
 }
 
 @property (nonatomic, retain) BBAccessoryIcon *accessoryIconMask;
+@property (nonatomic, retain) BBImage *accessoryImage;
 @property (nonatomic, copy) BBAction *acknowledgeAction;
 @property (nonatomic, copy) NSArray *additionalAttachments;
-@property (nonatomic) long long addressBookRecordID;
 @property (nonatomic, copy) NSSet *alertSuppressionAppIDs_deprecated;
 @property (nonatomic, copy) NSSet *alertSuppressionContexts;
 @property (nonatomic, copy) BBAction *alternateAction;
@@ -46,6 +46,8 @@
 @property (nonatomic, retain) BBContent *modalAlertContent;
 @property (nonatomic, copy) NSString *parentSectionID;
 @property (nonatomic, copy) NSArray *peopleIDs;
+@property (nonatomic) bool preemptsPresentedAlert;
+@property (nonatomic) bool preemptsSTAR;
 @property (nonatomic) bool preventAutomaticRemovalFromLockScreen;
 @property (nonatomic, copy) BBAttachmentMetadata *primaryAttachment;
 @property (nonatomic) long long primaryAttachmentType;

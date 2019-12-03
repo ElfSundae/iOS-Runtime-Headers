@@ -3,8 +3,8 @@
  */
 
 @interface ConversationKit.RadarSession : Swift._SwiftObject {
+    void $__lazy_storage_$_encoder;
     void decoder;
-    void encoder.storage;
     void pendingTask;
     void session;
 }

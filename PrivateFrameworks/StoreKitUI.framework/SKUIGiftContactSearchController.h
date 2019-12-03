@@ -29,6 +29,7 @@
 - (void)dealloc;
 - (id)delegate;
 - (void)finishedSearchingForAutocompleteResults;
+- (void)makeChildLabelsSupportDarkMode:(id)arg1;
 - (long long)numberOfResults;
 - (void)resetSearch;
 - (void)searchForText:(id)arg1;

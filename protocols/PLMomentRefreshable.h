@@ -3,7 +3,7 @@
 
 @protocol PLMomentRefreshable <NSObject>
 
-@optional
+@required
 
 - (bool)hasChanges;
 

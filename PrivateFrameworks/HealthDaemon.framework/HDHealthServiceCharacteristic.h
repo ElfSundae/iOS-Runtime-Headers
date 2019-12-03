@@ -33,6 +33,7 @@
 - (id)_init;
 - (id)description;
 - (id)getBinaryValueWithError:(id*)arg1;
+- (void)unitTest_setUpdateTime:(id)arg1;
 - (id)updateTime;
 
 @end

@@ -2,7 +2,9 @@
    Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
  */
 
-@interface ICMedia : ICCloudSyncingObject <ICCloudObject>
+@interface ICMedia : ICCloudSyncingObject <ICCloudObject> {
+    ICAccount * placeholderAccount;
+}
 
 @property (nonatomic, retain) NSData *assetCryptoInitializationVector;
 @property (nonatomic, retain) NSData *assetCryptoTag;
@@ -11,32 +13,38 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) NSString *filename;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) ICAccount *placeholderAccount;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) NSSet *urlsToConsiderForCloudBackup;
 
 + (id)allMediaInContext:(id)arg1;
-+ (id)containerDirectoryURLForMediaWithIdentifier:(id)arg1;
++ (id)containerDirectoryURLForMediaWithIdentifier:(id)arg1 account:(id)arg2;
 + (void)deleteMedia:(id)arg1;
-+ (id)existingCloudObjectForRecordID:(id)arg1 context:(id)arg2;
-+ (id)exportableContainerDirectoryURLForMediaWithIdentifier:(id)arg1;
-+ (id)exportableMediaDirectoryURL;
-+ (id)exportableMediaURLForMediaWithIdentifier:(id)arg1 filename:(id)arg2;
++ (id)existingCloudObjectForRecordID:(id)arg1 accountID:(id)arg2 context:(id)arg3;
++ (id)exportableContainerDirectoryURLForMediaWithIdentifier:(id)arg1 account:(id)arg2;
++ (id)exportableMediaURLForMediaWithIdentifier:(id)arg1 filename:(id)arg2 account:(id)arg3;
++ (id)keyPathsForValuesAffectingIsSharedViaICloud;
 + (id)keyPathsForValuesAffectingParentCloudObject;
 + (id)mediaDirectoryURL;
 + (id)mediaIdentifiersForAccount:(id)arg1;
-+ (id)mediaURLForMediaWithIdentifier:(id)arg1 filename:(id)arg2;
++ (id)mediaURLForMediaWithIdentifier:(id)arg1 filename:(id)arg2 account:(id)arg3;
 + (id)mediaWithIdentifier:(id)arg1 context:(id)arg2;
-+ (id)newCloudObjectForRecord:(id)arg1 context:(id)arg2;
++ (id)newCloudObjectForRecord:(id)arg1 accountID:(id)arg2 context:(id)arg3;
 + (id)newMediaWithAttachment:(id)arg1 context:(id)arg2;
 + (id)newMediaWithAttachment:(id)arg1 forData:(id)arg2 filename:(id)arg3 context:(id)arg4 error:(id*)arg5;
 + (id)newMediaWithAttachment:(id)arg1 forFileWrapper:(id)arg2 context:(id)arg3 error:(id*)arg4;
 + (id)newMediaWithAttachment:(id)arg1 forURL:(id)arg2 context:(id)arg3 error:(id*)arg4;
-+ (id)newMediaWithIdentifier:(id)arg1 context:(id)arg2;
++ (id)newMediaWithIdentifier:(id)arg1 account:(id)arg2;
++ (id)newMediaWithIdentifier:(id)arg1 attachment:(id)arg2;
 + (void)purgeAllMediaFiles;
 + (void)purgeAllMediaInContext:(id)arg1;
 + (void)purgeMedia:(id)arg1;
-+ (void)purgeMediaFilesForIdentifiers:(id)arg1;
++ (void)purgeMediaFilesForIdentifiers:(id)arg1 account:(id)arg2;
 + (void)undeleteMedia:(id)arg1;
 
+- (void).cxx_destruct;
+- (void)accountWillChangeToAccount:(id)arg1;
+- (id)containerAccount;
 - (id)containerDirectoryURL;
 - (id)data;
 - (id)dataWithoutImageMarkupMetadata:(bool)arg1;
@@ -60,13 +68,16 @@
 - (id)mediaArchiveURL;
 - (id)mediaTarArchiveURL;
 - (id)mediaURL;
-- (void)mergeDataFromRecord:(id)arg1;
+- (void)mergeDataFromRecord:(id)arg1 accountID:(id)arg2;
 - (bool)needsToBePushedToCloud;
 - (id)newlyCreatedRecord;
+- (id)newlyCreatedRecordWithObfuscator:(id)arg1;
 - (void)objectWasPushedToCloudWithOperation:(id)arg1 serverRecord:(id)arg2;
 - (id)objectsToBeDeletedBeforeThisObject;
 - (id)parentCloudObject;
+- (id)parentCloudObjectForMinimumSupportedVersionPropagation;
 - (id)parentEncryptableObject;
+- (id)placeholderAccount;
 - (void)prepareForDeletion;
 - (id)recordType;
 - (id)recordZoneName;
@@ -74,11 +85,14 @@
 - (void)saveAndClearDecryptedData;
 - (void)setAttachment:(id)arg1;
 - (void)setFilename:(id)arg1;
+- (void)setPlaceholderAccount:(id)arg1;
 - (bool)shouldFallBackToCheckAllCryptoKeys;
+- (bool)shouldSyncMinimumSupportedNotesVersion;
 - (bool)supportsDeletionByTTL;
 - (void)updateFlagToExcludeFromCloudBackup;
+- (id)urlsToConsiderForCloudBackup;
 - (bool)writeData:(id)arg1 error:(id*)arg2;
-- (bool)writeDataFromAsset:(id)arg1 isArchivedDirectory:(bool)arg2 error:(id*)arg3;
+- (bool)writeDataFromAsset:(id)arg1 accountID:(id)arg2 isArchivedDirectory:(bool)arg3 error:(id*)arg4;
 - (bool)writeDataFromFileURL:(id)arg1 error:(id*)arg2;
 - (bool)writeDataFromFileWrapper:(id)arg1 error:(id*)arg2;
 - (void)writeDataFromItemProvider:(id)arg1 checkForMarkupData:(bool)arg2 completionBlock:(id /* block */)arg3;

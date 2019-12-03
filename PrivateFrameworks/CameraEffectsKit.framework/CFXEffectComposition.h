@@ -14,6 +14,7 @@
 @property (nonatomic, readonly) unsigned long long count;
 @property (nonatomic, readonly) NSArray *effects;
 @property (nonatomic, retain) NSMutableArray *filters;
+@property (nonatomic, readonly) bool hasFaceTrackedOverlays;
 @property (nonatomic, readonly) bool isEmpty;
 @property (nonatomic, readonly) NSArray *jtEffects;
 @property (nonatomic, retain) NSMutableArray *overlays;
@@ -28,6 +29,7 @@
 - (id)effects;
 - (id)filters;
 - (bool)hasEffectOfType:(id)arg1;
+- (bool)hasFaceTrackedOverlays;
 - (unsigned long long)indexOfEffect:(id)arg1;
 - (id)init;
 - (void)insertEffectAtIndex:(id)arg1 atIndex:(unsigned long long)arg2;

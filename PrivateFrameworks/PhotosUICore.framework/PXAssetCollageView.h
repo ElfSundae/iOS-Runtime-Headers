@@ -6,10 +6,12 @@
     bool  _allowAnimatedImagePlayback;
     bool  _allowLoopPlayback;
     bool  _allowVideoPlayback;
+    NSMutableDictionary * _assetViews;
     NSMutableDictionary * _assets;
     UIColor * _cornerBackgroundColor;
     double  _cornerRadius;
     NSMutableIndexSet * _hiddenItemIndexes;
+    PXLayoutPerformerOutput * _layoutOutput;
     PXUIMediaProvider * _mediaProvider;
     PXRoundedCornerOverlayView * _roundedCornerOverlayView;
     double  _spacing;
@@ -18,12 +20,15 @@
 @property (nonatomic) bool allowAnimatedImagePlayback;
 @property (nonatomic) bool allowLoopPlayback;
 @property (nonatomic) bool allowVideoPlayback;
+@property (nonatomic, readonly) NSMutableDictionary *assetViews;
 @property (nonatomic, readonly) NSMutableDictionary *assets;
 @property (nonatomic, retain) UIColor *cornerBackgroundColor;
 @property (nonatomic) double cornerRadius;
 @property (nonatomic, readonly) NSMutableIndexSet *hiddenItemIndexes;
+@property (nonatomic, readonly) PXLayoutPerformerOutput *layoutOutput;
 @property (nonatomic, readonly) PXUIMediaProvider *mediaProvider;
 @property (nonatomic, readonly) long long numberOfItems;
+@property (nonatomic, readonly) bool portraitBias;
 @property (nonatomic, readonly) PXRoundedCornerOverlayView *roundedCornerOverlayView;
 @property (nonatomic) double spacing;
 
@@ -42,6 +47,7 @@
 - (bool)allowAnimatedImagePlayback;
 - (bool)allowLoopPlayback;
 - (bool)allowVideoPlayback;
+- (id)assetViews;
 - (id)assets;
 - (id)cornerBackgroundColor;
 - (double)cornerRadius;
@@ -51,9 +57,11 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 mediaProvider:(id)arg2;
+- (id)layoutOutput;
 - (void)layoutSubviews;
 - (id)mediaProvider;
 - (long long)numberOfItems;
+- (bool)portraitBias;
 - (void)resetViewState;
 - (id)roundedCornerOverlayView;
 - (void)setAllowAnimatedImagePlayback:(bool)arg1;

@@ -7,7 +7,7 @@
     bool  mIsAnimateBackground;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)drawable;
 - (unsigned long long)hash;

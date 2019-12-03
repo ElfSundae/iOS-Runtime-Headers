@@ -4,18 +4,23 @@
 
 @interface RTTServer : HCServer {
     id /* block */  _actionCompletionBlock;
+    BKSProcessAssertion * _assertion;
     NSObject<OS_dispatch_queue> * _commonRequestQueue;
     NSLock * _dataResponseBlocksLock;
     NSMutableDictionary * _databaseResponseBlocks;
 }
 
 @property (nonatomic, copy) id /* block */ actionCompletionBlock;
+@property (nonatomic, retain) BKSProcessAssertion *assertion;
 
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
 - (void)_managerAXPIDState:(bool)arg1;
+- (void)_registerForServerSettingsUpdates;
+- (void)_takeStackshot;
 - (id /* block */)actionCompletionBlock;
+- (id)assertion;
 - (void)cancelCallPromptDisplay;
 - (bool)contactIsTTYContact:(id)arg1;
 - (void)dealloc;
@@ -25,6 +30,7 @@
 - (void)handleMessageError:(id)arg1 destructive:(bool)arg2;
 - (void)handleMessageWithPayload:(id)arg1 forIdentifier:(unsigned long long)arg2;
 - (id)init;
+- (void)primeRTTServer;
 - (void)registerForRemoteUpdates:(id /* block */)arg1 forCallUID:(id)arg2;
 - (void)registerForServiceUpdates:(id /* block */)arg1 forCallUID:(id)arg2;
 - (void)registerForUpdates:(id /* block */)arg1 forCallUID:(id)arg2;
@@ -32,7 +38,9 @@
 - (void)resetConnection;
 - (void)sendString:(id)arg1 forCallUID:(id)arg2;
 - (void)setActionCompletionBlock:(id /* block */)arg1;
+- (void)setAssertion:(id)arg1;
 - (void)setShouldSuppressIncomingNotification:(bool)arg1;
+- (void)setSystemOutputAudioMuted:(bool)arg1 withCallID:(id)arg2;
 - (void)setTTYDictionaryAvailability:(bool)arg1;
 - (id)valueForTTYSetting:(id)arg1;
 

@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/PDFKit.framework/PDFKit
  */
 
-@interface PDFAKDocumentAdaptor : NSObject <AKControllerDelegateProtocol> {
+@interface PDFAKDocumentAdaptor : NSObject <AKControllerDelegateProtocol, PKRulerHostingDelegate> {
     PDFAKDocumentAdaptorPrivate * _private;
 }
 
@@ -17,6 +17,9 @@
 @property (nonatomic) PDFView *pdfView;
 @property (readonly) Class superclass;
 
++ (bool)isHandlingEditDetected;
++ (void)setIsHandlingEditDetected:(bool)arg1;
+
 - (void).cxx_destruct;
 - (id)PDFAKControllerDelegate;
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })_compensatingAffineTransformForPage:(id)arg1;
@@ -29,8 +32,6 @@
 - (id)akDocumentModelController;
 - (id)akMainController;
 - (id)akToolbarView;
-- (id)characterIndexesForQuadPoints:(id)arg1 onPageAtIndex:(unsigned long long)arg2 forAnnotationController:(id)arg3;
-- (void)clearHighlightableSelectionForAnnotationController:(id)arg1;
 - (id)controller:(id)arg1 willSetToolbarItems:(id)arg2;
 - (void)controllerDidEnterToolMode:(id)arg1;
 - (void)controllerDidExitToolMode:(id)arg1;
@@ -47,7 +48,6 @@
 - (void)editCheckpointReachedForAnnotationController:(id)arg1;
 - (void)editDetectedForAnnotationController:(id)arg1;
 - (bool)hasHighlightableSelectionForAnnotationController:(id)arg1;
-- (id)highlightableSelectionCharacterIndexesOnPageAtIndex:(unsigned long long)arg1 forAnnotationController:(id)arg2;
 - (id)initWithPDFDocument:(id)arg1 andView:(id)arg2;
 - (void)installDrawingGestureRecognizer:(id)arg1 forPageAtIndex:(unsigned long long)arg2 forAnnotationController:(id)arg3;
 - (id)layerContainingQuickBackgroundForLoupeOnOverlayAtPageIndex:(unsigned long long)arg1 forAnnotationController:(id)arg2;
@@ -57,17 +57,18 @@
 - (id)pdfDocument;
 - (void)pdfDocument:(id)arg1 didExchangePage:(id)arg2 atIndex:(unsigned long long)arg3 withPage:(id)arg4 atIndex:(unsigned long long)arg5;
 - (void)pdfDocument:(id)arg1 didInsertPage:(id)arg2 atIndex:(unsigned long long)arg3;
-- (void)pdfDocument:(id)arg1 didInsertPagePlaceholder:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)pdfDocument:(id)arg1 didRemovePage:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)pdfDocument:(id)arg1 didReplacePagePlaceholder:(id)arg2 atIndex:(unsigned long long)arg3 withPage:(id)arg4;
+- (void)pdfDocumentDidRemoveAllPagesOrPlaceholders:(id)arg1;
 - (id)pdfView;
 - (void)penStrokeCompletedForAnnotationController:(id)arg1;
 - (id)popoverPresentingViewControllerForAnnotationController:(id)arg1;
 - (void)positionSketchOverlay:(id)arg1 forAnnotationController:(id)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })positioningRectForCandidatePicker;
-- (id)quadPointsForCharacterIndexes:(id)arg1 onPageAtIndex:(unsigned long long)arg2 forAnnotationController:(id)arg3;
 - (void)rotateLeft:(id)arg1;
 - (void)rotateRight:(id)arg1;
+- (bool)rulerHostWantsSharedRuler;
+- (id)rulerHostingView;
 - (void)setPDFAKControllerDelegate:(id)arg1;
 - (void)setPdfView:(id)arg1;
 - (bool)shouldPlaceFormElementAtPoint:(struct CGPoint { double x1; double x2; })arg1 onOverlayAtPageIndex:(unsigned long long)arg2 forAnnotationController:(id)arg3;

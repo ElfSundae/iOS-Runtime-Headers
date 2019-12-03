@@ -5,6 +5,7 @@
 @interface NETunnelProviderProtocol : NEVPNProtocol {
     long long  _authenticationMethod;
     NSString * _authenticationPluginType;
+    NSString * _designatedRequirement;
     NSString * _pluginType;
     NSString * _providerBundleIdentifier;
     NSDictionary * _providerConfiguration;
@@ -14,6 +15,7 @@
 
 @property long long authenticationMethod;
 @property (copy) NSString *authenticationPluginType;
+@property (copy) NSString *designatedRequirement;
 @property (readonly) NSString *pluginType;
 @property (copy) NSString *providerBundleIdentifier;
 @property (copy) NSDictionary *providerConfiguration;
@@ -32,6 +34,7 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (struct __SCNetworkInterface { }*)createInterface;
 - (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;
+- (id)designatedRequirement;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initFromLegacyDictionary:(id)arg1;
@@ -45,6 +48,7 @@
 - (void)removeKeychainItemsInDomain:(long long)arg1 keepIdentity:(bool)arg2;
 - (void)setAuthenticationMethod:(long long)arg1;
 - (void)setAuthenticationPluginType:(id)arg1;
+- (void)setDesignatedRequirement:(id)arg1;
 - (void)setPluginType:(id)arg1;
 - (void)setProviderBundleIdentifier:(id)arg1;
 - (void)setProviderConfiguration:(id)arg1;

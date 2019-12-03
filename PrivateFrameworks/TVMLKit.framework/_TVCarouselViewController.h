@@ -52,7 +52,6 @@
 - (void)updateWithViewElement:(id)arg1 layout:(id)arg2;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidDisappear:(bool)arg1;
-- (void)viewDidLayoutSubviews;
 - (struct CGSize { double x1; double x2; })viewSizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 
 @end

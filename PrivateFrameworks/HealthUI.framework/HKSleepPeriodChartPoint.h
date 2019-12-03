@@ -18,11 +18,11 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool highlighted;
 @property (nonatomic, retain) NSArray *inBedOffsets;
-@property (nonatomic, retain) NSNumber *lowerGoal;
+@property (nonatomic, copy) NSNumber *lowerGoal;
 @property (readonly) Class superclass;
-@property (nonatomic, retain) NSNumber *upperGoal;
+@property (nonatomic, copy) NSNumber *upperGoal;
 @property (nonatomic, retain) HKSleepChartPointUserInfo *userInfo;
-@property (nonatomic, retain) NSDate *xValue;
+@property (nonatomic, copy) NSDate *xValue;
 
 - (void).cxx_destruct;
 - (id)allYValues;

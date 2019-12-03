@@ -6,6 +6,7 @@
     NSDate * _expirationDate;
     ICRadioStationTrack * _parentTrack;
     NSDictionary * _responseDictionary;
+    long long  _responseVersion;
 }
 
 @property (nonatomic, readonly) ICRadioStationTrack *afterPromoContentTrack;
@@ -16,6 +17,7 @@
 @property (nonatomic, readonly, copy) ICStoreHLSAssetInfo *hlsAsset;
 @property (nonatomic, readonly) long long likeState;
 @property (nonatomic, readonly) ICRadioStationTrack *parentTrack;
+@property (nonatomic, readonly, copy) NSArray *radioStreamAssets;
 @property (nonatomic, readonly, copy) NSDictionary *serverTrackInfo;
 @property (getter=isSkippable, nonatomic, readonly) bool skippable;
 @property (nonatomic, readonly) double startTime;
@@ -26,16 +28,18 @@
 + (id)flattenedTracksWithTracks:(id)arg1;
 
 - (void).cxx_destruct;
+- (id)_hlsAssetFromAssetDictionary:(id)arg1;
 - (id)afterPromoContentTrack;
 - (id)beforePromoContentTrack;
 - (id)expirationDate;
 - (id)fileAssets;
 - (bool)hasStartTime;
 - (id)hlsAsset;
-- (id)initWithResponseDictionary:(id)arg1 expirationDate:(id)arg2;
+- (id)initWithResponseDictionary:(id)arg1 responseVersion:(long long)arg2 expirationDate:(id)arg3;
 - (bool)isSkippable;
 - (long long)likeState;
 - (id)parentTrack;
+- (id)radioStreamAssets;
 - (id)serverTrackInfo;
 - (double)startTime;
 - (long long)storeAdamID;

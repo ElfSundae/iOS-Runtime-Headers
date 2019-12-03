@@ -17,6 +17,7 @@
     unsigned long long  _c2MetricsReportFrequency;
     unsigned long long  _c2MetricsReportFrequencyBase;
     unsigned long long  _discretionaryNetworkBehavior;
+    unsigned long long  _duetPreClearedMode;
     NSString * _identifier;
     NSURL * _invokedURL;
     C2MetricOptions * _metricOptions;
@@ -25,6 +26,7 @@
     bool  _outOfProcessDiscretionary;
     NSString * _outOfProcessPoolName;
     long long  _qualityOfService;
+    bool  _redactRemoteEndpointFromNetworkMetrics;
     NSDictionary * _resolvedEndpointsWithHostname;
     id /* block */  _testBehavior_sessionGroupCreated;
     bool  _tlsPinning;
@@ -45,22 +47,25 @@
 @property (nonatomic) unsigned long long c2MetricsReportFrequency;
 @property (nonatomic) unsigned long long c2MetricsReportFrequencyBase;
 @property (nonatomic) unsigned long long discretionaryNetworkBehavior;
+@property (nonatomic) unsigned long long duetPreClearedMode;
 @property (nonatomic, readonly) double emptySessionExpiryInSeconds;
 @property (nonatomic, copy) NSString *identifier;
-@property (nonatomic, retain) NSURL *invokedURL;
-@property (nonatomic, retain) C2MetricOptions *metricOptions;
+@property (nonatomic, copy) NSURL *invokedURL;
+@property (nonatomic, copy) C2MetricOptions *metricOptions;
 @property (nonatomic) bool metricRequest;
-@property (nonatomic, retain) NSString *originalHost;
+@property (nonatomic, copy) NSString *originalHost;
 @property (nonatomic, readonly) bool outOfProcess;
 @property (nonatomic) bool outOfProcessDiscretionary;
 @property (nonatomic, copy) NSString *outOfProcessPoolName;
 @property (nonatomic) long long qualityOfService;
-@property (nonatomic, retain) NSDictionary *resolvedEndpointsWithHostname;
+@property (nonatomic) bool redactRemoteEndpointFromNetworkMetrics;
+@property (nonatomic, copy) NSDictionary *resolvedEndpointsWithHostname;
 @property (nonatomic, copy) id /* block */ testBehavior_sessionGroupCreated;
 @property (nonatomic) bool tlsPinning;
 @property (nonatomic) bool useAdaptiveTimeouts;
 
 + (id)stringForDiscretionaryNetworkBehavior:(unsigned long long)arg1;
++ (id)stringForDuetPreClearedMode:(unsigned long long)arg1;
 + (id)stringForQualityOfService:(long long)arg1;
 + (bool)supportsSecureCoding;
 + (bool)triesteMetricsEnabled;
@@ -84,12 +89,15 @@
 - (id)decorateTask:(id)arg1;
 - (id)defaultSessionConfigurationWithName:(id)arg1;
 - (unsigned long long)discretionaryNetworkBehavior;
+- (unsigned long long)duetPreClearedMode;
 - (double)emptySessionExpiryInSeconds;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)identifier;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)invokedURL;
+- (bool)isEqual:(id)arg1;
 - (id)metricOptions;
 - (bool)metricRequest;
 - (id)originalHost;
@@ -97,6 +105,7 @@
 - (bool)outOfProcessDiscretionary;
 - (id)outOfProcessPoolName;
 - (long long)qualityOfService;
+- (bool)redactRemoteEndpointFromNetworkMetrics;
 - (id)resolvedEndpointsWithHostname;
 - (id)sessionConfigurationNameWithRouteHost:(id)arg1;
 - (id)sessionConfigurationWithName:(id)arg1;
@@ -106,6 +115,7 @@
 - (void)setC2MetricsReportFrequency:(unsigned long long)arg1;
 - (void)setC2MetricsReportFrequencyBase:(unsigned long long)arg1;
 - (void)setDiscretionaryNetworkBehavior:(unsigned long long)arg1;
+- (void)setDuetPreClearedMode:(unsigned long long)arg1;
 - (void)setIdentifier:(id)arg1;
 - (void)setInvokedURL:(id)arg1;
 - (void)setMetricOptions:(id)arg1;
@@ -115,6 +125,7 @@
 - (void)setOutOfProcessDiscretionary:(bool)arg1;
 - (void)setOutOfProcessPoolName:(id)arg1;
 - (void)setQualityOfService:(long long)arg1;
+- (void)setRedactRemoteEndpointFromNetworkMetrics:(bool)arg1;
 - (void)setResolvedEndpointsWithHostname:(id)arg1;
 - (void)setTestBehavior_sessionGroupCreated:(id /* block */)arg1;
 - (void)setTlsPinning:(bool)arg1;

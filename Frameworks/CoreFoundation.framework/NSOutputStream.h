@@ -2,13 +2,11 @@
    Image: /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
  */
 
-@interface NSOutputStream : NSStream
+@interface NSOutputStream : NSStream {
+    unsigned char  _reserved;
+}
 
 @property (readonly) bool hasSpaceAvailable;
-
-// Image: /Developer/Library/PrivateFrameworks/DVTInstrumentsUtilities.framework/DVTInstrumentsUtilities
-
-- (bool)xr_writeStringWithFormat:(id)arg1;
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
@@ -20,10 +18,15 @@
 
 - (struct { long long x1; int x2; })_cfStreamError;
 - (unsigned long long)_cfTypeID;
+- (void)dealloc;
 - (bool)hasSpaceAvailable;
 - (id)initToBuffer:(char *)arg1 capacity:(unsigned long long)arg2;
 - (id)initToMemory;
 - (id)initWithURL:(id)arg1 append:(bool)arg2;
 - (long long)write:(const char *)arg1 maxLength:(unsigned long long)arg2;
+
+// Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
+
+- (void)re_writeString:(id)arg1;
 
 @end

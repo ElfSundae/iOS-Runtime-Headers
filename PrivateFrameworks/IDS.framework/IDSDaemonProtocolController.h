@@ -18,6 +18,7 @@
 - (id)connection;
 - (id)groupContextCacheMiddleware;
 - (id)groupContextDataSource;
+- (id)init;
 - (id)observer;
 - (void)setConnection:(id)arg1;
 - (void)setObserver:(id)arg1;

@@ -2,8 +2,12 @@
    Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
  */
 
-@interface _GEOTransitLine : NSObject <GEOTransitLine> {
+@interface _GEOTransitLine : NSObject <GEOTransitLine, NSSecureCoding> {
     GEOPBTransitLine * _line;
+    struct { 
+        double latitude; 
+        double longitude; 
+    }  _locationHint;
     <GEOTransitSystem> * _system;
 }
 
@@ -16,6 +20,7 @@
 @property (nonatomic, readonly) bool hasLineColorString;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) GEOMapItemIdentifier *identifier;
+@property (nonatomic, readonly) bool isBus;
 @property (nonatomic, readonly) NSString *lineColorString;
 @property (nonatomic, readonly) <GEOTransitArtworkDataSource> *modeArtwork;
 @property (nonatomic, readonly) unsigned long long muid;
@@ -26,14 +31,19 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) <GEOTransitSystem> *system;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (id)alternateArtwork;
 - (id)artwork;
 - (unsigned long long)departureTimeDisplayStyle;
 - (bool)departuresAreVehicleSpecific;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasLineColorString;
 - (id)identifier;
-- (id)initWithLine:(id)arg1 system:(id)arg2;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithLine:(id)arg1 system:(id)arg2 locationHint:(struct { double x1; double x2; })arg3;
+- (bool)isBus;
 - (id)lineColorString;
 - (id)modeArtwork;
 - (unsigned long long)muid;

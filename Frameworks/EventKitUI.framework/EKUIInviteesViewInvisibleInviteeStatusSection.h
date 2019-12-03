@@ -28,6 +28,7 @@
 
 - (void).cxx_destruct;
 - (bool)_isValidRow:(long long)arg1;
+- (id)actionsForRow:(id)arg1;
 - (id)cachedCellReuseIdentifier;
 - (bool)canEditRow:(id)arg1;
 - (bool)canSelectRow:(id)arg1;

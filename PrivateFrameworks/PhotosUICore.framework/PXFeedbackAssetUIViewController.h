@@ -6,6 +6,7 @@
     PHAsset * _asset;
     NSArray * _autoLoopFrameworkDiagnosticFileURLs;
     PXAutoloopVideoProcessTask * _autoLoopFrameworkDiagnosticsCurrentTask;
+    <PXFeedbackAssetUIViewControllerDelegate> * _delegate;
     PXFeedbackLikeItOrNotComboUIViewController * _feedbackController;
     UINavigationController * _navigationController;
     NSDictionary * _negativeFeedback;
@@ -17,6 +18,7 @@
 @property (nonatomic, retain) NSArray *autoLoopFrameworkDiagnosticFileURLs;
 @property (nonatomic, retain) PXAutoloopVideoProcessTask *autoLoopFrameworkDiagnosticsCurrentTask;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic, readonly) <PXFeedbackAssetUIViewControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) PXFeedbackLikeItOrNotComboUIViewController *feedbackController;
 @property (readonly) unsigned long long hash;
@@ -34,8 +36,9 @@
 - (id)autoLoopFrameworkDiagnosticsCurrentTask;
 - (void)autoloopVideoTaskStatusDidChange:(id)arg1;
 - (void)continueFiling;
+- (id)delegate;
 - (id)feedbackController;
-- (id)initWithAsset:(id)arg1;
+- (id)initWithAsset:(id)arg1 delegate:(id)arg2;
 - (id)longTitleText;
 - (id)navigationController;
 - (id)negativeFeedback;
@@ -51,6 +54,7 @@
 - (void)setPositiveFeedback:(id)arg1;
 - (void)setUserLikedIt:(bool)arg1;
 - (bool)shouldDisplaySecondaryFeedbackButtons;
+- (void)userDidFinish:(bool)arg1;
 - (void)userIndicatedDislike;
 - (void)userIndicatedLike;
 - (bool)userLikedIt;

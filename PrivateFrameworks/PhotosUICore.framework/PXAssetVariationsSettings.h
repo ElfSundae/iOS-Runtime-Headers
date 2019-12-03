@@ -4,10 +4,8 @@
 
 @interface PXAssetVariationsSettings : PXSettings {
     bool  _addSimulatedProgressComponent;
-    bool  _allowOrbPreview;
     bool  _invalidateCachedPreviews;
     long long  _layoutStyle;
-    long long  _selectionBehavior;
     double  _selectionDetailsDismissalDelay;
     bool  _showLoopBadges;
     bool  _showStatusInDisclosureLabel;
@@ -19,10 +17,8 @@
 }
 
 @property (nonatomic) bool addSimulatedProgressComponent;
-@property (nonatomic) bool allowOrbPreview;
 @property (nonatomic) bool invalidateCachedPreviews;
 @property (nonatomic) long long layoutStyle;
-@property (nonatomic) long long selectionBehavior;
 @property (nonatomic) double selectionDetailsDismissalDelay;
 @property (nonatomic) bool showLoopBadges;
 @property (nonatomic) bool showStatusInDisclosureLabel;
@@ -36,18 +32,14 @@
 + (id)sharedInstance;
 
 - (bool)addSimulatedProgressComponent;
-- (bool)allowOrbPreview;
 - (bool)invalidateCachedPreviews;
 - (long long)layoutStyle;
 - (id)parentSettings;
-- (long long)selectionBehavior;
 - (double)selectionDetailsDismissalDelay;
 - (void)setAddSimulatedProgressComponent:(bool)arg1;
-- (void)setAllowOrbPreview:(bool)arg1;
 - (void)setDefaultValues;
 - (void)setInvalidateCachedPreviews:(bool)arg1;
 - (void)setLayoutStyle:(long long)arg1;
-- (void)setSelectionBehavior:(long long)arg1;
 - (void)setSelectionDetailsDismissalDelay:(double)arg1;
 - (void)setShowLoopBadges:(bool)arg1;
 - (void)setShowStatusInDisclosureLabel:(bool)arg1;

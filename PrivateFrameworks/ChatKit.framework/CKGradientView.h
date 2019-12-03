@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
  */
 
-@interface CKGradientView : UIView {
+@interface CKGradientView : UIView <CKLayerDelegate> {
     NSArray * _colors;
     struct CGRect { 
         struct CGPoint { 
@@ -14,7 +14,7 @@
             double height; 
         } size; 
     }  _gradientFrame;
-    CALayer * _gradientLayer;
+    CKBaseLayer * _gradientLayer;
     UIImage * _maskImage;
     UIView<CKGradientReferenceView> * _referenceView;
     CATransformLayer * _trackingLayer;
@@ -23,7 +23,7 @@
 @property (nonatomic, retain) NSArray *colors;
 @property (nonatomic, readonly) UIImage *gradient;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } gradientFrame;
-@property (nonatomic, retain) CALayer *gradientLayer;
+@property (nonatomic, retain) CKBaseLayer *gradientLayer;
 @property (nonatomic, retain) UIImage *maskImage;
 @property (nonatomic) UIView<CKGradientReferenceView> *referenceView;
 @property (nonatomic, retain) CATransformLayer *trackingLayer;
@@ -32,6 +32,7 @@
 
 - (void).cxx_destruct;
 - (void)_removeAllAnimations:(bool)arg1;
+- (void)ckLayerDidBecomeVisible:(bool)arg1;
 - (id)colors;
 - (void)dealloc;
 - (id)description;

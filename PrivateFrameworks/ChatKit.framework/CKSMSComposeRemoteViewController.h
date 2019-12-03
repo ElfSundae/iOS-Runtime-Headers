@@ -17,12 +17,14 @@
 + (id)serviceViewControllerInterface;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)dealloc;
 - (id)delegate;
 - (void)setDelegate:(id)arg1;
 - (void)smsComposeControllerAppeared;
 - (void)smsComposeControllerCancelled;
 - (void)smsComposeControllerDataInserted;
+- (void)smsComposeControllerEntryViewContentInserted;
 - (void)smsComposeControllerSendStartedWithText:(id)arg1;
 - (void)smsComposeControllerShouldSendMessageWithText:(id)arg1 toRecipients:(id)arg2 completion:(id /* block */)arg3;
 - (void)viewServiceDidTerminateWithError:(id)arg1;

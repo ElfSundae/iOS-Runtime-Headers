@@ -19,6 +19,7 @@
     double  _minimumMarginBelowHeadline;
     double  _minimumMarginBelowStatus;
     HUNavigationBarLayoutOptions * _navigationBarOptions;
+    long long  _numberOfCameraCellsPerRow;
     NSNumber * _overrideNumberOfColumns;
     NSNumber * _overrideViewSizeSubclass;
     double  _rowSpacing;
@@ -37,6 +38,7 @@
     double  _sectionTopMargin;
     double  _sectionTrailingMargin;
     HUGridServiceCellLayoutOptions * _serviceCellOptions;
+    HUGridStatusBannerCellLayoutOptions * _statusBannerCellOptions;
     double  _statusDetailsBaselineToFirstSectionTitleBaselineDistance;
     UIFont * _statusDetailsFont;
     bool  _statusHidden;
@@ -73,9 +75,11 @@
 @property (nonatomic) double minimumMarginBelowHeadline;
 @property (nonatomic) double minimumMarginBelowStatus;
 @property (nonatomic, copy) HUNavigationBarLayoutOptions *navigationBarOptions;
+@property (nonatomic, readonly) long long numberOfCameraCellsPerRow;
 @property (nonatomic, readonly) long long numberOfColumns;
 @property (nonatomic, retain) NSNumber *overrideNumberOfColumns;
 @property (nonatomic, retain) NSNumber *overrideViewSizeSubclass;
+@property (nonatomic, readonly) double pointWidthForCurrentViewSizeSubclass;
 @property (nonatomic, readonly) double pointWidthForFullWidthCell;
 @property (nonatomic) double rowSpacing;
 @property (nonatomic, copy) HUGridSceneCellLayoutOptions *sceneCellOptions;
@@ -89,6 +93,7 @@
 @property (nonatomic) double sectionTopMargin;
 @property (nonatomic) double sectionTrailingMargin;
 @property (nonatomic, copy) HUGridServiceCellLayoutOptions *serviceCellOptions;
+@property (nonatomic, copy) HUGridStatusBannerCellLayoutOptions *statusBannerCellOptions;
 @property (nonatomic) double statusDetailsBaselineToFirstSectionTitleBaselineDistance;
 @property (nonatomic, retain) UIFont *statusDetailsFont;
 @property (nonatomic) bool statusHidden;
@@ -96,7 +101,6 @@
 @property (nonatomic, retain) UIFont *statusItemFont;
 @property (nonatomic, readonly) double statusListCellBottomMargin;
 @property (nonatomic, readonly) double statusListCellHeight;
-@property (nonatomic, readonly) double statusListCellTopMargin;
 @property (readonly) Class superclass;
 @property (nonatomic) double topOfViewToFirstStatusItemBaselineDistance;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } viewSize;
@@ -137,9 +141,11 @@
 - (double)minimumMarginBelowHeadline;
 - (double)minimumMarginBelowStatus;
 - (id)navigationBarOptions;
+- (long long)numberOfCameraCellsPerRow;
 - (long long)numberOfColumns;
 - (id)overrideNumberOfColumns;
 - (id)overrideViewSizeSubclass;
+- (double)pointWidthForCurrentViewSizeSubclass;
 - (double)pointWidthForFullWidthCell;
 - (double)pointWidthForNumberOfColumns:(long long)arg1;
 - (double)preferredSectionHeightForNumberOfSceneRows:(unsigned long long)arg1;
@@ -185,12 +191,14 @@
 - (void)setSectionTopMargin:(double)arg1;
 - (void)setSectionTrailingMargin:(double)arg1;
 - (void)setServiceCellOptions:(id)arg1;
+- (void)setStatusBannerCellOptions:(id)arg1;
 - (void)setStatusDetailsBaselineToFirstSectionTitleBaselineDistance:(double)arg1;
 - (void)setStatusDetailsFont:(id)arg1;
 - (void)setStatusHidden:(bool)arg1;
 - (void)setStatusItemBaselineToNextStatusItemBaselineDistance:(double)arg1;
 - (void)setStatusItemFont:(id)arg1;
 - (void)setTopOfViewToFirstStatusItemBaselineDistance:(double)arg1;
+- (id)statusBannerCellOptions;
 - (double)statusDetailsBaselineToFirstSectionTitleBaselineDistance;
 - (id)statusDetailsFont;
 - (bool)statusHidden;
@@ -198,7 +206,7 @@
 - (id)statusItemFont;
 - (double)statusListCellBottomMargin;
 - (double)statusListCellHeight;
-- (double)statusListCellTopMargin;
+- (double)statusListCellTopMargin:(bool)arg1 forStatusBannerWidth:(double)arg2 havingTitleAndDescription:(id)arg3 contentSizeCategory:(id)arg4;
 - (double)topOfViewToFirstStatusItemBaselineDistance;
 - (struct CGSize { double x1; double x2; })viewSize;
 - (long long)viewSizeSubclass;

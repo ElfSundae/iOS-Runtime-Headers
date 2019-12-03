@@ -9,11 +9,11 @@
 + (id)collection;
 + (id)collectionWithObject:(id)arg1;
 
+- (void).cxx_destruct;
 - (unsigned long long)addObject:(id)arg1;
 - (unsigned long long)addOrEquivalentObject:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned long long)count;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (unsigned long long)indexOfObject:(id)arg1;

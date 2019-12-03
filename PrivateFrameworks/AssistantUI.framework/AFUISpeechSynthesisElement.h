@@ -6,6 +6,7 @@
     NSDictionary * _analyticsContext;
     NSString * _animationIdentifier;
     SAUIAudioData * _audioData;
+    bool  _canUseServerTTS;
     id /* block */  _completion;
     bool  _delayed;
     <AFUISpeechSynthesisElementDelegate> * _delegate;
@@ -30,6 +31,7 @@
 @property (nonatomic, readonly) NSDictionary *analyticsContext;
 @property (nonatomic, readonly) NSString *animationIdentifier;
 @property (nonatomic, readonly) SAUIAudioData *audioData;
+@property (nonatomic) bool canUseServerTTS;
 @property (getter=_completion, nonatomic, readonly) id /* block */ completion;
 @property (getter=isDelayed, nonatomic) bool delayed;
 @property (nonatomic) <AFUISpeechSynthesisElementDelegate> *delegate;
@@ -61,14 +63,14 @@
 - (id)analyticsContext;
 - (id)animationIdentifier;
 - (id)audioData;
+- (bool)canUseServerTTS;
 - (id)delegate;
 - (id)description;
 - (bool)durationHasElapsed;
 - (void)executeCompletion;
 - (id)gender;
 - (id)identifier;
-- (id)init;
-- (id)initWithText:(id)arg1 audioData:(id)arg2 identifier:(id)arg3 language:(id)arg4 gender:(id)arg5 provisional:(bool)arg6 eligibleAfterDuration:(double)arg7 delayed:(bool)arg8 preparation:(id /* block */)arg9 completion:(id /* block */)arg10 animationIdentifier:(id)arg11 analyticsContext:(id)arg12 speakableContextInfo:(id)arg13;
+- (id)initWithText:(id)arg1 audioData:(id)arg2 identifier:(id)arg3 language:(id)arg4 gender:(id)arg5 provisional:(bool)arg6 eligibleAfterDuration:(double)arg7 delayed:(bool)arg8 preparation:(id /* block */)arg9 completion:(id /* block */)arg10 animationIdentifier:(id)arg11 analyticsContext:(id)arg12 speakableContextInfo:(id)arg13 canUseServerTTS:(bool)arg14 eligibilityChangedQueue:(id)arg15;
 - (bool)isDelayed;
 - (bool)isEligibleForProcessing;
 - (bool)isEligibleForSynthesis;
@@ -77,6 +79,7 @@
 - (id)language;
 - (bool)preparationBlockCompleted;
 - (id)presynthesizedAudioRequest;
+- (void)setCanUseServerTTS:(bool)arg1;
 - (void)setDelayed:(bool)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setIsPhonetic:(bool)arg1;

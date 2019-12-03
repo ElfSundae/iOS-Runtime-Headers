@@ -44,7 +44,6 @@
         double width; 
         double height; 
     }  _contentSize;
-    _UIPlatterShadowView * _diffuseShadowView;
     bool  _flipped;
     bool  _lifted;
     struct CGPoint { 
@@ -62,10 +61,11 @@
     UIView * _portalWrapperView;
     bool  _precisionMode;
     _DUIPreview * _preview;
-    _UIPlatterShadowView * _rimShadowView;
     double  _rotation;
+    _UIPlatterSoftShadowView * _shadowView;
     bool  _shadowVisible;
     double  _stackRotation;
+    bool  _transformAppliedExternally;
 }
 
 @property (nonatomic) struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; } additionalTransform;
@@ -82,7 +82,6 @@
 @property (nonatomic, readonly) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } contentInsets;
 @property (nonatomic, readonly) struct CGPoint { double x1; double x2; } contentOffset;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } contentSize;
-@property (nonatomic, readonly) _UIPlatterShadowView *diffuseShadowView;
 @property (getter=isFlipped, nonatomic) bool flipped;
 @property (getter=isLifted, nonatomic) bool lifted;
 @property (nonatomic) struct CGPoint { double x1; double x2; } offset;
@@ -94,11 +93,13 @@
 @property (nonatomic, readonly) UIView *portalWrapperView;
 @property (nonatomic) bool precisionMode;
 @property (nonatomic, readonly, copy) _DUIPreview *preview;
-@property (nonatomic, readonly) _UIPlatterShadowView *rimShadowView;
 @property (nonatomic) double rotation;
+@property (nonatomic, readonly) _UIPlatterSoftShadowView *shadowView;
 @property (getter=isShadowVisible, nonatomic) bool shadowVisible;
 @property (nonatomic) UIView *sourceView;
 @property (nonatomic) double stackRotation;
+@property (nonatomic, readonly) struct CATransform3D { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; double x11; double x12; double x13; double x14; double x15; double x16; } targetTransform;
+@property (nonatomic) bool transformAppliedExternally;
 
 - (void).cxx_destruct;
 - (void)_unmaskPlatterView;
@@ -117,8 +118,10 @@
 - (struct CGSize { double x1; double x2; })contentSize;
 - (void)didMoveToSuperview;
 - (void)didMoveToWindow;
-- (id)diffuseShadowView;
 - (id)initWithDUIPreview:(id)arg1;
+- (id)initWithDUIPreview:(id)arg1 imageComponent:(id)arg2;
+- (id)initWithDroppedItem:(id)arg1;
+- (id)initWithPreview:(id)arg1;
 - (bool)isBackgroundVisible;
 - (bool)isFlipped;
 - (bool)isLifted;
@@ -133,7 +136,6 @@
 - (id)portalWrapperView;
 - (bool)precisionMode;
 - (id)preview;
-- (id)rimShadowView;
 - (double)rotation;
 - (double)scaleFactor;
 - (struct CATransform3D { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; double x11; double x12; double x13; double x14; double x15; double x16; })scaleTransform;
@@ -158,11 +160,14 @@
 - (void)setShadowVisible:(bool)arg1;
 - (void)setSourceView:(id)arg1;
 - (void)setStackRotation:(double)arg1;
+- (void)setTransformAppliedExternally:(bool)arg1;
+- (id)shadowView;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (id)sourceView;
 - (double)stackRotation;
 - (void)takeCounterTransformsToAddToContainer:(id)arg1;
 - (struct CATransform3D { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; double x11; double x12; double x13; double x14; double x15; double x16; })targetTransform;
+- (bool)transformAppliedExternally;
 - (void)updateTransform;
 
 @end

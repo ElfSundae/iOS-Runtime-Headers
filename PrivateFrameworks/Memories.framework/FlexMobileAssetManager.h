@@ -49,7 +49,7 @@
 - (id)loadCachedSongs;
 - (id)mobileAssetForSongAsset:(id)arg1;
 - (id)purgeQueue;
-- (void)requestDownloadOfAsset:(id)arg1;
+- (void)requestDownloadOfAsset:(id)arg1 withOptions:(id)arg2;
 - (void)requestPurgeOfAsset:(id)arg1;
 - (void)setDownloadQueue:(id)arg1;
 - (void)setPurgeQueue:(id)arg1;

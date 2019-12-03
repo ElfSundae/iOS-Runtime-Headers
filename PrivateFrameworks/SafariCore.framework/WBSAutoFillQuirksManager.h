@@ -21,6 +21,7 @@
 
 - (void).cxx_destruct;
 - (id)_domainsIneligibleForPasswordAuditingFromCurrentSnapshot;
+- (id)_domainsToConsiderIdenticalFromCurrentSnapshot;
 - (id)_domainsWithAssociatedCredentialsFromCurrentSnapshot;
 - (id)_passwordRequirementsByDomainFromCurrentSnapshot;
 - (id)associatedDomainsManager;
@@ -29,6 +30,7 @@
 - (id)init;
 - (id)initWithBuiltInQuirksURL:(id)arg1 downloadsDirectoryURL:(id)arg2 resourceName:(id)arg3 resourceVersion:(id)arg4 updateDateDefaultsKey:(id)arg5 updateInterval:(double)arg6;
 - (bool)isAutomaticLoginDisallowedOnURL:(id)arg1;
+- (bool)isStreamlinedLoginDisallowedOnURL:(id)arg1;
 - (id)passwordAuditingEligibleDomainsManager;
 - (id)passwordGenerationManager;
 - (void)prepareForTermination;

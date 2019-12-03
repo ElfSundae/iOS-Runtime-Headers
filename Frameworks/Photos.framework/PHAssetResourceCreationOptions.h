@@ -4,6 +4,7 @@
 
 @interface PHAssetResourceCreationOptions : NSObject <NSCopying> {
     NSDate * _alternateImportImageDate;
+    int  _burstPickType;
     NSString * _originalFilename;
     bool  _shouldIngestInPlace;
     bool  _shouldMoveFile;
@@ -11,6 +12,7 @@
 }
 
 @property (nonatomic, retain) NSDate *alternateImportImageDate;
+@property (nonatomic) int burstPickType;
 @property (nonatomic, copy) NSString *originalFilename;
 @property (nonatomic) bool shouldIngestInPlace;
 @property (nonatomic) bool shouldMoveFile;
@@ -18,11 +20,13 @@
 
 - (void).cxx_destruct;
 - (id)alternateImportImageDate;
+- (int)burstPickType;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)initWithPropertyListRepresentation:(id)arg1;
 - (id)originalFilename;
 - (id)propertyListRepresentation;
 - (void)setAlternateImportImageDate:(id)arg1;
+- (void)setBurstPickType:(int)arg1;
 - (void)setOriginalFilename:(id)arg1;
 - (void)setShouldIngestInPlace:(bool)arg1;
 - (void)setShouldMoveFile:(bool)arg1;

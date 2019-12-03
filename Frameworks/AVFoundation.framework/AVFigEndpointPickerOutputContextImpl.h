@@ -25,22 +25,22 @@
 @property AVOutputContext *parentOutputContext;
 @property (readonly) bool providesControlForAllVolumeFeatures;
 @property (readonly) Class superclass;
+@property (readonly) bool supportsMultipleBluetoothOutputDevices;
 @property (readonly) bool supportsMultipleOutputDevices;
 @property (readonly) float volume;
 
 + (id)auxiliaryOutputContext;
 + (struct OpaqueFigEndpointPicker { }*)copySystemVideoPicker;
++ (id)defaultSharedOutputContextImpl;
 + (id)iTunesAudioContext;
-+ (void)initialize;
 + (bool)outputContextExistsWithRemoteOutputDevice;
 + (id)outputContextImplForControllingOutputDeviceGroupWithID:(id)arg1 options:(id)arg2;
-+ (id)outputContextImplForID:(id)arg1;
++ (id)outputContextImplForID:(id)arg1 type:(id)arg2;
 + (id)platformDependentScreenOrVideoContext;
 + (void)resetOutputDeviceForAllOutputContexts;
 + (id)sharedAudioPresentationOutputContext;
 + (id)sharedSystemAudioContext;
 + (id)sharedSystemScreenContext;
-+ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)ID;
@@ -52,11 +52,9 @@
 - (id)associatedAudioDeviceID;
 - (bool)canSetVolume;
 - (void)dealloc;
-- (void)encodeWithCoder:(id)arg1;
 - (id)endpointPickerUUID;
 - (unsigned long long)hash;
 - (id)init;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithContextUUID:(id)arg1;
 - (id)initWithFeature:(unsigned long long)arg1 options:(id)arg2;
 - (bool)isEqual:(id)arg1;
@@ -70,12 +68,13 @@
 - (id)parentOutputContext;
 - (void)pausePlaybackOnAllOutputDevicesWithCompletionHandler:(id /* block */)arg1;
 - (bool)providesControlForAllVolumeFeatures;
-- (void)removeOutputDevice:(id)arg1;
+- (void)removeOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)setOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)setOutputDevices:(id)arg1;
 - (void)setOutputDevices:(id)arg1 options:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)setParentOutputContext:(id)arg1;
 - (void)setVolume:(float)arg1;
+- (bool)supportsMultipleBluetoothOutputDevices;
 - (bool)supportsMultipleOutputDevices;
 - (float)volume;
 

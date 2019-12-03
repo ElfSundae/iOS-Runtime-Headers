@@ -11,6 +11,7 @@
 
 @property (nonatomic, readonly) GEOMapRegion *boundingRegion;
 @property (nonatomic, readonly) NSArray *browseCategories;
+@property (nonatomic, readonly) GEOCategorySearchResultSection *categorySearchResultSection;
 @property (getter=isChainResultSet, nonatomic, readonly) bool chainResultSet;
 @property (nonatomic, readonly) GEOResolvedItem *clientResolvedResult;
 @property (readonly, copy) NSString *debugDescription;
@@ -27,6 +28,7 @@
 @property (nonatomic, readonly) double requestResponseTime;
 @property (nonatomic, readonly) NSString *resultDisplayHeader;
 @property (nonatomic, readonly) NSArray *retainedSearchMetadata;
+@property (nonatomic, readonly) NSArray *searchResultSections;
 @property (nonatomic, readonly) int searchResultType;
 @property (nonatomic, readonly) NSString *sectionHeader;
 @property (nonatomic, readonly) bool shouldEnableRedoSearch;
@@ -40,6 +42,7 @@
 - (id)boundingRegion;
 - (id)browseCategories;
 - (void)cancel;
+- (id)categorySearchResultSection;
 - (id)clientResolvedResult;
 - (id)defaultRelatedSuggestion;
 - (id)description;
@@ -55,6 +58,7 @@
 - (double)requestResponseTime;
 - (id)resultDisplayHeader;
 - (id)retainedSearchMetadata;
+- (id)searchResultSections;
 - (int)searchResultType;
 - (id)sectionHeader;
 - (bool)shouldEnableRedoSearch;

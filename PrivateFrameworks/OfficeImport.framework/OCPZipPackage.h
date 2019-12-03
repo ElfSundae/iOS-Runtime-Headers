@@ -7,7 +7,7 @@
     NSMutableDictionary * mParts;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithArchive:(id)arg1;
 - (id)initWithData:(id)arg1;
 - (id)initWithPath:(id)arg1;

@@ -14,5 +14,6 @@
 - (void)locationSearchModel:(EKUILocationSearchModel *)arg1 selectedLocation:(EKStructuredLocation *)arg2 withError:(NSError *)arg3;
 - (void)mapSearchUpdated:(EKUILocationSearchModel *)arg1;
 - (void)recentsSearchUpdated:(EKUILocationSearchModel *)arg1;
+- (bool)shouldIncludeConferenceRoom:(EKUIConferenceRoom *)arg1;
 
 @end

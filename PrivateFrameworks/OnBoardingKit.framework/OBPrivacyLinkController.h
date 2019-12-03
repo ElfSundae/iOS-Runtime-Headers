@@ -6,12 +6,14 @@
     bool  _allowsOpeningSafari;
     NSArray * _bundleIdentifiers;
     NSArray * _bundles;
+    bool  _didOverrideShowUnifiedAbout;
     bool  _displayCaptionText;
     unsigned long long  _displayDeviceType;
     bool  _displayIcon;
     NSString * _displayLanguage;
     bool  _displayLargeIcon;
     bool  _presentedViewControllerShouldUseDarkMode;
+    bool  _showsLinkToUnifiedAbout;
 }
 
 @property bool allowsOpeningSafari;
@@ -24,6 +26,7 @@
 @property bool displayLargeIcon;
 @property (readonly) OBPrivacyFlow *flow;
 @property (nonatomic) bool presentedViewControllerShouldUseDarkMode;
+@property (nonatomic) bool showsLinkToUnifiedAbout;
 
 // Image: /System/Library/PrivateFrameworks/OnBoardingKit.framework/OnBoardingKit
 
@@ -53,6 +56,8 @@
 - (void)setDisplayLargeIcon:(bool)arg1;
 - (void)setLinkEnabled:(bool)arg1;
 - (void)setPresentedViewControllerShouldUseDarkMode:(bool)arg1;
+- (void)setShowsLinkToUnifiedAbout:(bool)arg1;
+- (bool)showsLinkToUnifiedAbout;
 - (void)viewDidAppear:(bool)arg1;
 
 // Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI

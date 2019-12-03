@@ -12,7 +12,10 @@
     AVKeyPathDependencyManager * dependencyManager;
     AVNetworkPlaybackPerfHUDLayer * hudLayer;
     bool  isConnectedToSecondScreen;
+    bool  isForScrubbingOnly;
+    bool  isLegibleDisplayEnabled;
     bool  isPIPModeEnabled;
+    bool  isPartOfForegroundScene;
     bool  isPresentationLayer;
     bool  isReadyForDisplay;
     struct OpaqueFigSimpleMutex { } * isReadyForDisplayMutex;
@@ -27,11 +30,9 @@
     CALayer * placeholderContentLayerDuringPIPMode;
     AVPlayer * player;
     AVPlayer * playerBeingObserved;
-    <AVCallbackCancellation> * playerCurrentItemHasVideoFrameEnqueuedKVOInvoker;
+    id  playerItemHasEnqueuedVideoFrameListener;
     bool  preventsChangesToSublayerHierarchy;
     NSObject<OS_dispatch_queue> * serialQueue;
-    bool  shouldObservePlayer;
-    NSString * subtitleGravity;
     FigSubtitleCALayer * subtitleLayer;
     NSString * videoGravity;
     FigVideoContainerLayer * videoLayer;

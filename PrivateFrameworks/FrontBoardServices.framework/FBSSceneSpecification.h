@@ -2,23 +2,38 @@
    Image: /System/Library/PrivateFrameworks/FrontBoardServices.framework/FrontBoardServices
  */
 
-@interface FBSSceneSpecification : NSObject <BSDescriptionProviding, NSCopying>
+@interface FBSSceneSpecification : NSObject <BSDescriptionProviding, NSCopying> {
+    bool  _forLocalSynchronousSceneClientProvider;
+}
 
+@property (nonatomic, readonly) NSDictionary *baseSceneComponentClassDictionary;
 @property (nonatomic, readonly) Class clientAgentClass;
-@property (nonatomic, readonly, copy) FBUISceneClientIdentity *clientIdentity;
 @property (nonatomic, readonly) Class clientSettingsClass;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) NSArray *finalActionHandlers;
+@property (nonatomic, readonly) NSArray *finalSettingsDiffActions;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) Class hostAgentClass;
+@property (nonatomic, readonly) NSArray *initialActionHandlers;
+@property (nonatomic, readonly) NSArray *initialSettingsDiffActions;
+@property (nonatomic, readonly) bool isInternal;
+@property (nonatomic, readonly) bool isUIKitManaged;
+@property (nonatomic, readonly) Class lifecycleMonitorClass;
+@property (nonatomic, readonly) Class sceneSubstrateClass;
 @property (nonatomic, readonly) Class settingsClass;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) Class transitionContextClass;
+@property (nonatomic, readonly) Class uiSceneMinimumClass;
+@property (nonatomic, readonly) NSString *uiSceneSessionRole;
 
 // Image: /System/Library/PrivateFrameworks/FrontBoardServices.framework/FrontBoardServices
 
++ (int (*)_swizzleMethodOnClass:(Class)arg1 originalSelector:(SEL)arg2 block:(id)arg3;
++ (void)initialize;
 + (id)specification;
 
+- (id)_copyForLocalSynchronousSceneClientProvider;
 - (Class)clientAgentClass;
 - (Class)clientSettingsClass;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -34,9 +49,20 @@
 - (id)succinctDescriptionBuilder;
 - (Class)transitionContextClass;
 
-// Image: /System/Library/PrivateFrameworks/FrontBoardUIServices.framework/FrontBoardUIServices
+// Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 
-- (id)clientIdentity;
-- (id)initWithClientIdentity:(id)arg1;
+- (id)baseSceneComponentClassDictionary;
+- (id)connectionHandlers;
+- (id)disconnectionHandlers;
+- (id)finalActionHandlers;
+- (id)finalSettingsDiffActions;
+- (id)initialActionHandlers;
+- (id)initialSettingsDiffActions;
+- (bool)isInternal;
+- (bool)isUIKitManaged;
+- (Class)lifecycleMonitorClass;
+- (Class)sceneSubstrateClass;
+- (Class)uiSceneMinimumClass;
+- (id)uiSceneSessionRole;
 
 @end

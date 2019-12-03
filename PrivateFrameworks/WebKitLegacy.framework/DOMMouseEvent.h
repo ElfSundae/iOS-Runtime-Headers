@@ -5,7 +5,7 @@
 @interface DOMMouseEvent : DOMUIEvent
 
 @property (readonly) bool altKey;
-@property (readonly) unsigned short button;
+@property (readonly) short button;
 @property (readonly) int clientX;
 @property (readonly) int clientY;
 @property (readonly) bool ctrlKey;
@@ -22,7 +22,7 @@
 @property (readonly) int y;
 
 - (bool)altKey;
-- (unsigned short)button;
+- (short)button;
 - (int)clientX;
 - (int)clientY;
 - (bool)ctrlKey;

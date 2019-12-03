@@ -4,10 +4,14 @@
 
 @interface SFDialogContentView : UIView <UITextFieldDelegate> {
     NSArray * _actionButtons;
+    NSLayoutConstraint * _actionButtonsLeadingConstraintForHorizontalStackAlignment;
+    NSLayoutConstraint * _actionButtonsLeadingConstraintForVerticalStackAlignment;
     UIStackView * _actionButtonsView;
     unsigned long long  _actionIndexTriggeredByEscapeKey;
+    unsigned long long  _actionIndexTriggeredByOptionReturnKey;
     unsigned long long  _actionIndexTriggeredByReturnKey;
     NSArray * _actions;
+    UIButton * _closeButton;
     _SFDialogView * _dialogView;
     bool  _hasAttemptedHardwareKeyboardFocus;
     SFDialogTextField * _inputTextField;
@@ -27,9 +31,11 @@
 
 - (void).cxx_destruct;
 - (void)_actionTriggered:(id)arg1;
+- (double)_desiredButtonsWidth;
 - (void)_escapeAction:(id)arg1;
 - (void)_focusInputTextField:(id)arg1;
 - (void)_invokeDelegateWithSelectedIndex:(unsigned long long)arg1;
+- (void)_optionReturnAction:(id)arg1;
 - (void)_returnAction:(id)arg1;
 - (void)_setText:(id)arg1 placeholder:(id)arg2 forTextField:(id)arg3;
 - (void)_updateActionButtons;

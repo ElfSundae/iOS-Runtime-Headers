@@ -21,6 +21,7 @@
 + (bool)shouldUseDailyAverageWithDateComponents:(id)arg1 sampleType:(id)arg2;
 + (id)sleepDateIntervalForThePastWeekWithCalendar:(id)arg1;
 + (id)sleepQueryWithStartDate:(id)arg1 endDate:(id)arg2 intervalComponents:(id)arg3 calendar:(id)arg4 healthStore:(id)arg5 completion:(id /* block */)arg6;
++ (id)sleepQueryWithStartDate:(id)arg1 endDate:(id)arg2 intervalComponents:(id)arg3 calendar:(id)arg4 predicate:(id)arg5 healthStore:(id)arg6 completion:(id /* block */)arg7;
 + (double)totalDurationFromCoalescedDateIntervals:(id)arg1;
 
 @end

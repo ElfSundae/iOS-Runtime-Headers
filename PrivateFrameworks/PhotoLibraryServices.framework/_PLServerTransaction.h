@@ -7,6 +7,7 @@
     NSCountedSet * _enqueuedChangeScopes;
 }
 
+- (void).cxx_destruct;
 - (void)_enqueueChangeScopes:(id)arg1;
 - (void)abortTransaction;
 - (void)addChangeScopes:(id)arg1;
@@ -15,7 +16,7 @@
 - (void)completeTransactionScope:(id)arg1;
 - (void)dealloc;
 - (id)generateChangeScopesDescription;
-- (id)init;
+- (id)initWithPathManager:(id)arg1;
 - (bool)isClientTransaction;
 - (void)popChangeScopesBatch;
 - (void)pushChangeScopesBatch;

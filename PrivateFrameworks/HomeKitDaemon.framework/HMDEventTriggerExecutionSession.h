@@ -10,6 +10,7 @@
     NSPredicate * _evaluationCondition;
     bool  _executionCompleteCalled;
     unsigned long long  _executionState;
+    NSMutableSet * _mediaProfiles;
     HomeKitEventTriggerExecutionSessionEvent * _metricEvent;
     NSArray * _monitorEvents;
     HMDPredicateUtilities * _predicateUtilities;
@@ -32,6 +33,7 @@
 @property (nonatomic) bool executionCompleteCalled;
 @property (nonatomic) unsigned long long executionState;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) NSMutableSet *mediaProfiles;
 @property (nonatomic, readonly) HomeKitEventTriggerExecutionSessionEvent *metricEvent;
 @property (nonatomic, retain) NSArray *monitorEvents;
 @property (nonatomic, readonly) bool needsUserConfirmation;
@@ -43,7 +45,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSMutableArray *triggerEvents;
 @property (nonatomic, readonly) HMDEventTriggerUserConfirmationSession *userConfirmationSession;
-@property (nonatomic, retain) NSMapTable *writeRequests;
+@property (nonatomic, readonly) NSMapTable *writeRequests;
 
 + (id)logCategory;
 
@@ -54,6 +56,7 @@
 - (void)_addEvent:(id)arg1 causingDevice:(id)arg2;
 - (void)_callExecutionComplete:(id)arg1;
 - (void)_callExecutionComplete:(id)arg1 callDelegate:(bool)arg2;
+- (void)_callExecutionCompleteIfNoMoreOutstandingRequests;
 - (id)_createMonitoringEvents:(id)arg1;
 - (void)_directlyExecuteActionSetsWithCompletionHandler:(id /* block */)arg1;
 - (void)_evaluateFiringTrigger;
@@ -80,8 +83,10 @@
 - (id)evaluationCondition;
 - (bool)executionCompleteCalled;
 - (unsigned long long)executionState;
+- (void)handleSessionPlaybackStateUpdatedNotification:(id)arg1;
 - (id)initWithEventTrigger:(id)arg1 predicateUtilities:(id)arg2 triggerEvent:(id)arg3 causingDevice:(id)arg4 workQueue:(id)arg5 actionSets:(id)arg6 evaluationCondition:(id)arg7 recurrences:(id)arg8 endEvents:(id)arg9 msgDispatcher:(id)arg10;
 - (id)logIdentifier;
+- (id)mediaProfiles;
 - (id)metricEvent;
 - (id)monitorEvents;
 - (bool)needsUserConfirmation;
@@ -97,7 +102,6 @@
 - (void)setRestoreInProgress:(bool)arg1;
 - (void)setSecureTriggerConfirmationTimer:(id)arg1;
 - (void)setStartCharacteristicsMonitorTimer:(id)arg1;
-- (void)setWriteRequests:(id)arg1;
 - (id)startCharacteristicsMonitorTimer;
 - (void)timerDidFire:(id)arg1;
 - (id)triggerEvents;

@@ -19,6 +19,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (bool)isEqual:(id)arg1;
+- (id)jsonDictionaryRepresentation;
 - (unsigned long long)reason;
 - (void)setAmount:(id)arg1;
 - (void)setReason:(unsigned long long)arg1;

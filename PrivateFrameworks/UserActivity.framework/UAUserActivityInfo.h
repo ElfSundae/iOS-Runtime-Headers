@@ -19,6 +19,7 @@
     NSDictionary * _encodingOptions;
     NSError * _error;
     NSDate * _expirationDate;
+    bool  _isActive;
     NSSet * _keywords;
     NSDate * _lastInterestingTime;
     NSDictionary * _options;
@@ -26,9 +27,11 @@
     bool  _payloadRequested;
     NSMutableDictionary * _payloads;
     SFPeerDevice * _peerDevice;
+    NSString * _peerDeviceType;
     NSString * _persistentIdentifier;
     NSURL * _referrerURL;
     NSSet * _requiredUserInfoKeys;
+    NSString * _targetContentIdentifier;
     NSString * _teamIdentifier;
     NSString * _title;
     unsigned long long  _type;
@@ -54,6 +57,7 @@
 @property (copy) NSDictionary *encodingOptions;
 @property (copy) NSError *error;
 @property (copy) NSDate *expirationDate;
+@property bool isActive;
 @property (copy) NSSet *keywords;
 @property (copy) NSDate *lastInterestingTime;
 @property (copy) NSDictionary *options;
@@ -61,9 +65,11 @@
 @property (getter=isPayloadRequested) bool payloadRequested;
 @property (copy) NSDictionary *payloads;
 @property (retain) SFPeerDevice *peerDevice;
+@property (copy) NSString *peerDeviceType;
 @property (copy) NSString *persistentIdentifier;
 @property (copy) NSURL *referrerURL;
 @property (copy) NSSet *requiredUserInfoKeys;
+@property (copy) NSString *targetContentIdentifier;
 @property (copy) NSString *teamIdentifier;
 @property (copy) NSString *title;
 @property unsigned long long type;
@@ -82,7 +88,6 @@
 - (id)bundleIdentifier;
 - (void)clearPayload;
 - (id)contentUserAction;
-- (id)copyUserActivityInfoWithUUID:(bool)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)dynamicActivityType;
@@ -98,10 +103,12 @@
 - (id)encodingOptions;
 - (id)error;
 - (id)expirationDate;
+- (void)fetchAllNearbyAppSuggestions:(id /* block */)arg1;
 - (id)initWithArchivedUserActivityInfo:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUUID:(id)arg1 type:(unsigned long long)arg2 options:(id)arg3;
 - (id)initWithUserActivityInfo:(id)arg1;
+- (bool)isActive;
 - (bool)isDirty;
 - (bool)isPayloadAvailable;
 - (bool)isPayloadRequested;
@@ -114,6 +121,7 @@
 - (id)payloadIdentifiers;
 - (id)payloads;
 - (id)peerDevice;
+- (id)peerDeviceType;
 - (id)persistentIdentifier;
 - (id)referrerURL;
 - (bool)requestPayloadWithCompletionHandler:(id /* block */)arg1;
@@ -133,6 +141,7 @@
 - (void)setEncodingOptions:(id)arg1;
 - (void)setError:(id)arg1;
 - (void)setExpirationDate:(id)arg1;
+- (void)setIsActive:(bool)arg1;
 - (void)setKeywords:(id)arg1;
 - (void)setLastInterestingTime:(id)arg1;
 - (void)setOptions:(id)arg1;
@@ -141,9 +150,11 @@
 - (void)setPayloadRequested:(bool)arg1;
 - (void)setPayloads:(id)arg1;
 - (void)setPeerDevice:(id)arg1;
+- (void)setPeerDeviceType:(id)arg1;
 - (void)setPersistentIdentifier:(id)arg1;
 - (void)setReferrerURL:(id)arg1;
 - (void)setRequiredUserInfoKeys:(id)arg1;
+- (void)setTargetContentIdentifier:(id)arg1;
 - (void)setTeamIdentifier:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (void)setType:(unsigned long long)arg1;
@@ -152,6 +163,7 @@
 - (void)setWebpageURL:(id)arg1;
 - (void)setWhen:(id)arg1;
 - (id)statusString;
+- (id)targetContentIdentifier;
 - (id)teamIdentifier;
 - (id)title;
 - (unsigned long long)type;

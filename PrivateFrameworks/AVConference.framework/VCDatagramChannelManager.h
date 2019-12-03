@@ -19,9 +19,9 @@
 
 - (id)addDatagramChannelWithDescriptor:(int)arg1 eventHandler:(id /* block */)arg2 error:(id*)arg3;
 - (id)addDatagramChannelWithDestination:(id)arg1 eventHandler:(id /* block */)arg2 error:(id*)arg3;
+- (id)datagramChannelWithChannelToken:(unsigned int)arg1;
 - (void)dealloc;
 - (void)executeBlockForIDSDestination:(id)arg1 blockToExecute:(id /* block */)arg2;
-- (void)executeBlockForToken:(unsigned int)arg1 blockToExecute:(id /* block */)arg2;
 - (id)init;
 - (id /* block */)readHandler;
 - (void)removeDatagramChannel:(id)arg1;

@@ -7,6 +7,7 @@
 
 + (NSArray *)scoreSortDescriptors;
 
+- (PHAssetCollection *)fetchAssetCollection;
 - (NSString *)localIdentifier;
 
 @end

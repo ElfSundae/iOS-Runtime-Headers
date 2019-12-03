@@ -16,6 +16,7 @@
 - (void).cxx_destruct;
 - (id)article;
 - (id)articleID;
+- (void)cancelAssetPrefetch;
 - (id)embedForType:(id)arg1;
 - (id)fileURLForBundleURL:(id)arg1;
 - (void)fileURLForURL:(id)arg1 onCompletion:(id /* block */)arg2 onError:(id /* block */)arg3;
@@ -23,6 +24,7 @@
 - (void)loadContextWithCompletionBlock:(id /* block */)arg1;
 - (id /* block */)loadImagesForImageRequest:(id)arg1 completionBlock:(id /* block */)arg2;
 - (void)performBlockForFontsInBundle:(id /* block */)arg1;
+- (void)prefetchAssets;
 - (void)registerFontsWithCompletion:(id /* block */)arg1;
 - (id)translateURL:(id)arg1;
 

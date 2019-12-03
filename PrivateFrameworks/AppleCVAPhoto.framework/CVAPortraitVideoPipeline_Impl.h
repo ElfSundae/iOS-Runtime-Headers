@@ -61,6 +61,7 @@
         bool _alreadyInCaptureScope; 
     }  _metalContext;
     NSObject<OS_dispatch_queue> * _notificationQueue;
+    float  _portraitStyleStrength;
     struct Preferences { 
         bool drawFocusMachineState; 
         int overlayShiftOnRendering; 
@@ -72,14 +73,6 @@
     }  _preferences;
     <CVAVideoPipelinePropertiesSPI> * _properties;
     float  _referenceLensPosition_um;
-    struct RelightingTransitionData { 
-        float proxyToFaceEffectLerp; 
-        float originalToRelightEffectLerp; 
-        float backgroundAlphaMultiplier; 
-        float colorCubeIntensity; 
-        float colorCubeLerpSelfToOther; 
-        int otherCubeType; 
-    }  _relightingTransitionData;
     struct unique_ptr<SdofStateMachine, std::__1::default_delete<SdofStateMachine> > { 
         struct __compressed_pair<SdofStateMachine *, std::__1::default_delete<SdofStateMachine> > { 
             struct SdofStateMachine {} *__value_; 
@@ -105,7 +98,6 @@
         float updateRate; 
         float sdofDeltaCanonicalDisparity; 
         float alphaCoeffFilterColorStd; 
-        float alphaGuidedFilterEps; 
         float alphaGammaExponent; 
         float focusCanonicalDisparity; 
         float backgroundCanonicalDisparity; 
@@ -148,9 +140,12 @@
         unsigned int maxDistToPushShiftEdgesRev; 
         int shiftPushingBgToFgShiftDifference; 
         float foregroundMaskDilationRadius; 
-        float lowResolutionMatteDownsamplingScale; 
+        float infConvolutionDownsampling; 
+        float laplacianLimitingDownsampling; 
+        float laplacianLimitingBlurSize; 
     }  _vmStaticParams;
     VideoRelightingMetal * _vrAccelerator;
+    <MTLTexture> * _yuvSourceDownsampledAlias;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -159,7 +154,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic, copy) <CVAVideoPipelineProperties> *videoPipelineProperties;
 
-+ (void)drawCanonicalDisparity:(struct __CVBuffer { }*)arg1 onColor:(struct __CVBuffer { }*)arg2 focusMachineState:(int)arg3 offsetX:(unsigned long long)arg4 offsetY:(unsigned long long)arg5;
++ (void)drawDisparity:(struct __CVBuffer { }*)arg1 onColor:(struct __CVBuffer { }*)arg2 canonical:(bool)arg3 rawShiftInvalidThreshold:(int)arg4 focusMachineState:(int)arg5 offsetX:(unsigned long long)arg6 offsetY:(unsigned long long)arg7;
 + (int)pixelBufferPoolCreateWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 pixelFormat:(unsigned int)arg3 pool:(struct __CVPixelBufferPool {}**)arg4;
 
 - (id).cxx_construct;
@@ -171,7 +166,7 @@
 - (id)internal_extractMatteWithRequest:(id)arg1 disparityPostprocessingResult:(id)arg2 usePostprocessedDisparity:(bool)arg3 dilateForegroundMask:(bool)arg4 gravity:(struct CVAVector { double x1; double x2; double x3; })arg5 transitionData:(const struct TransitionData { bool x1; }*)arg6 mattingCompletionHandler:(id /* block */)arg7 isFinalStage:(bool)arg8 status:(int*)arg9;
 - (int)internal_fixFocusPositionWithDisparityPostprocessingRequest:(id)arg1;
 - (id)internal_postprocessDisparityWithRequest:(id)arg1 disparityPostprocessingCompletionHandler:(id /* block */)arg2 isFinalStage:(bool)arg3 status:(int*)arg4;
-- (void)internal_relightWithRequest:(id)arg1 intermediateSourceBuffer:(struct __CVBuffer { }*)arg2 faceKitProcessOutput:(id)arg3 mattingResult:(id)arg4 singleCubeData:(id)arg5 transitionData:(const struct RelightingTransitionData { float x1; float x2; float x3; float x4; float x5; int x6; }*)arg6 portraitCompletionHandler:(id /* block */)arg7 timestamp:(long long)arg8 status:(int*)arg9;
+- (void)internal_relightWithRequest:(id)arg1 intermediateSourceBuffer:(struct __CVBuffer { }*)arg2 faceKitProcessOutput:(id)arg3 portraitStyleStrength:(float)arg4 mattingResult:(id)arg5 singleCubeData:(id)arg6 portraitCompletionHandler:(id /* block */)arg7 timestamp:(long long)arg8 status:(int*)arg9;
 - (void)internal_renderStageLightWithRequest:(id)arg1 mattingResult:(id)arg2 portraitCompletionHandler:(id /* block */)arg3 status:(int*)arg4;
 - (void)internal_renderWithRequest:(id)arg1 dstBuffer:(struct __CVBuffer { }*)arg2 mattingResult:(id)arg3 portraitCompletionHandler:(id /* block */)arg4 status:(int*)arg5 timestamp:(long long)arg6;
 - (int)postprocessDisparityWithRequest:(id)arg1;
@@ -184,7 +179,7 @@
 - (bool)validateDisparityPostprocessingRequest:(id)arg1 error:(id*)arg2;
 - (bool)validateMattingRequest:(id)arg1 error:(id*)arg2;
 - (bool)validatePortraitRequest:(id)arg1 error:(id*)arg2;
-- (bool)validateSegmentationPixelBuffer:(struct __CVBuffer { }*)arg1 matchFormat:(unsigned int)arg2 error:(id*)arg3;
+- (bool)validateSegmentationPixelBuffer:(struct __CVBuffer { }*)arg1 matchFormat:(id)arg2 error:(id*)arg3;
 - (id)videoPipelineProperties;
 
 @end

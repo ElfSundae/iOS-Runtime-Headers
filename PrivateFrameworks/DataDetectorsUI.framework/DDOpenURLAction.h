@@ -11,10 +11,12 @@
 - (id)appLink;
 - (bool)canBePerformedByOpeningURL;
 - (id)companionAction;
+- (id)icon;
 - (id)localizedName;
 - (id)notificationIconBundleIdentifier;
 - (id)notificationURL;
 - (void)performFromView:(id)arg1;
-- (bool)useAppLink;
+- (bool)shouldOpenInApp;
+- (bool)shouldOpenInSafari;
 
 @end

@@ -38,7 +38,7 @@
 - (void)_commitCurrentInteractiveReordering;
 - (id)_computeNextItemAttributesStartingFromItemAttributes:(id)arg1 withCurrentDragLocation:(struct CGPoint { double x1; double x2; })arg2;
 - (void)_configureInteraction;
-- (void)_configureReorderingDisplayLink;
+- (void)_configureReorderingDisplayLinkIfNeeded;
 - (bool)_delegateImplementsDidExit;
 - (bool)_delegateImplementsDropActionForIndexPath;
 - (bool)_delegateImplementsPerformDropFromIndexPathsWithAction;
@@ -69,6 +69,7 @@
 - (id)currentDropProposal;
 - (id)currentDropSession;
 - (id)currentIndexPath;
+- (void)deactivate;
 - (void)dealloc;
 - (id)delegate;
 - (id)description;

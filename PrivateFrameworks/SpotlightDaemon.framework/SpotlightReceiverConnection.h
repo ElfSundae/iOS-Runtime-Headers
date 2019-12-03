@@ -6,11 +6,11 @@
     NSSet * _INIntentClassNames;
     NSSet * _bundleIDs;
     NSArray * _contentTypes;
-    bool  _disabled;
+    _Atomic bool  _disabled;
     double  _minDate;
     NSMutableSet * _negativeSet;
     NSMutableSet * _positiveSet;
-    unsigned int  _requestCount;
+    _Atomic unsigned int  _requestCount;
     NSObject<OS_dispatch_queue> * _senderQueue;
     bool  _setupComplete;
     NSObject<OS_dispatch_semaphore> * _setupSemaphore;
@@ -25,7 +25,7 @@
 @property (nonatomic, readonly) NSSet *bundleIDs;
 @property (nonatomic, readonly) NSArray *contentTypes;
 @property (nonatomic) double minDate;
-@property (nonatomic, readonly) unsigned int requestCount;
+@property (nonatomic, readonly) _Atomic unsigned int requestCount;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *senderQueue;
 @property (nonatomic) bool setupComplete;
 @property (retain) NSObject<OS_dispatch_semaphore> *setupSemaphore;
@@ -56,7 +56,7 @@
 - (void)deleteFromBundle:(id)arg1 sinceDate:(id)arg2;
 - (void)deleteInteractionsWithGroupIdentifiers:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3;
 - (void)deleteInteractionsWithIdentifiers:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3;
-- (void)deleteUserActivitiesWithPersistentIdentifiers:(id)arg1 bundleID:(id)arg2;
+- (void)deleteUserActivitiesWithPersistentIdentifiers:(id)arg1 bundleID:(id)arg2 retainedData:(id)arg3;
 - (void)disableReceiver;
 - (bool)disabled;
 - (void)donateRelevantActions:(id)arg1 bundleID:(id)arg2;

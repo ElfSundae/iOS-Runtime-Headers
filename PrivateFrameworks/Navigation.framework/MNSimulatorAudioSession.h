@@ -4,6 +4,7 @@
 
 @interface MNSimulatorAudioSession : NSObject <MNAudioSession> {
     id  _delegate;
+    bool  _isSpeaking;
     MNTraceRouteSimulator * _simulator;
     unsigned long long  _voiceGuidanceLevel;
 }
@@ -22,6 +23,7 @@
 - (id)delegate;
 - (void)endSession;
 - (id)initWithSimulator:(id)arg1;
+- (bool)isSpeaking;
 - (void)prepareToAnnounce;
 - (void)setDelegate:(id)arg1;
 - (void)setSimulator:(id)arg1;

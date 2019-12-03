@@ -8,6 +8,7 @@
 
 @property (nonatomic, readonly) unsigned long long type;
 
++ (id)scenarioTriggerSettledStateToString:(unsigned long long)arg1;
 + (id)scenarioTriggerTypeToString:(unsigned long long)arg1;
 + (bool)supportsSecureCoding;
 

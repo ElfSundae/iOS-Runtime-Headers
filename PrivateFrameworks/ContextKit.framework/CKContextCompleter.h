@@ -4,9 +4,10 @@
 
 @interface CKContextCompleter : NSObject {
     unsigned long long  _couldHaveShown;
-    bool  _discarded;
+    _Atomic bool  _discarded;
     bool  _hideCompletions;
     NSDate * _hideCompletionsAfterDate;
+    bool  _hideZKW;
     NSString * _ignorePrefix;
     NSString * _input;
     unsigned long long  _mustPrefixMatchLength;

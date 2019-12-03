@@ -2,18 +2,24 @@
    Image: /System/Library/PrivateFrameworks/CompanionSync.framework/CompanionSync
  */
 
-@interface _SYMultiSuspendableQueue : NSObject {
+@interface _SYMultiSuspendableQueue : NSObject <SYStateLoggable> {
     NSMutableArray * _latestResumeBacktraces;
     NSMutableArray * _latestSuspendBacktraces;
+    NSString * _logDescriptor;
     NSObject<OS_dispatch_queue> * _queue;
-    int  _resumeCount;
+    _Atomic int  _resumeCount;
     unsigned long long  _stateHandle;
     NSObject<OS_dispatch_queue> * _targetQueue;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *dispatchQueue;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSString *name;
 @property (nonatomic, readonly) unsigned int qosClass;
+@property (nonatomic, readonly) PBCodable *stateForLogging;
+@property (readonly) Class superclass;
 @property (getter=isSuspended, nonatomic, readonly) bool suspended;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *targetQueue;
 
@@ -30,6 +36,7 @@
 - (id)name;
 - (unsigned int)qosClass;
 - (void)resume;
+- (id)stateForLogging;
 - (void)suspend;
 - (void)sync:(id /* block */)arg1;
 - (id)targetQueue;

@@ -5,6 +5,7 @@
 
 @required
 
-- (void)paymentProvisioningFlowController:(NPKPaymentProvisioningFlowController *)arg1 didTransitionFromStep:(unsigned long long)arg2 toStep:(unsigned long long)arg3 withContext:(NPKPaymentProvisioningFlowStepContext *)arg4;
+- (void)paymentProvisioningFlowController:(NPKPaymentProvisioningFlowController *)arg1 didEncounterError:(NSError *)arg2 requestContext:(NPKPaymentProvisioningFlowControllerRequestContext *)arg3;
+- (void)paymentProvisioningFlowController:(NPKPaymentProvisioningFlowController *)arg1 didTransitionFromStep:(int)arg2 toStep:(int)arg3 withContext:(NPKPaymentProvisioningFlowStepContext *)arg4;
 
 @end

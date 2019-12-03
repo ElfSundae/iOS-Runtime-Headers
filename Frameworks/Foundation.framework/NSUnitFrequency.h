@@ -8,8 +8,10 @@
 
 + (id)_measurementWithNaturalScale:(id)arg1 system:(unsigned long long)arg2;
 + (id)baseUnit;
++ (id)framesPerSecond;
 + (id)gigahertz;
 + (id)hertz;
++ (void)initialize;
 + (id)kilohertz;
 + (id)megahertz;
 + (id)microhertz;

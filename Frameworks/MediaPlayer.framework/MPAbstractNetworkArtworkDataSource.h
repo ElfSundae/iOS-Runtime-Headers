@@ -9,6 +9,7 @@
     NSMapTable * _catalogTaskMap;
     NSCache * _fallbackArtworkRepresentationCache;
     NSMutableDictionary * _pendingRequestToCompletionHandlers;
+    bool  _usesFallbackCache;
 }
 
 @property (nonatomic, retain) NSURLSession *URLSession;
@@ -22,6 +23,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSMutableDictionary *pendingRequestToCompletionHandlers;
 @property (readonly) Class superclass;
+@property (nonatomic) bool usesFallbackCache;
 
 + (void)_applyURLCachePolicy:(unsigned long long)arg1 cacheDiskPath:(id)arg2 toConfiguration:(id)arg3;
 
@@ -34,6 +36,7 @@
 - (bool)_isRepresentationSize:(struct CGSize { double x1; double x2; })arg1 validForCatalog:(id)arg2;
 - (void)_performAsyncBarrierBlock:(id /* block */)arg1;
 - (void)_performSyncBlock:(id /* block */)arg1;
+- (id)_requestForCatalog:(id)arg1 size:(struct CGSize { double x1; double x2; })arg2;
 - (id)accessQueue;
 - (bool)areRepresentationsAvailableForCatalog:(id)arg1;
 - (id)cacheKeyForCatalog:(id)arg1 size:(struct CGSize { double x1; double x2; })arg2;
@@ -55,10 +58,12 @@
 - (void)setFallbackArtworkRepresentationCache:(id)arg1;
 - (void)setPendingRequestToCompletionHandlers:(id)arg1;
 - (void)setURLSession:(id)arg1;
+- (void)setUsesFallbackCache:(bool)arg1;
 - (bool)shouldLookForLargerRepresentationsWhenBestRepresentationIsUnavailable;
 - (id)sortedSupportedSizesForCatalog:(id)arg1;
 - (id)supportedSizesForCatalog:(id)arg1;
 - (void)updateURLSessionWithCachePolicy:(unsigned long long)arg1 cachePath:(id)arg2;
+- (bool)usesFallbackCache;
 - (id)visualIdenticalityIdentifierForCatalog:(id)arg1;
 - (bool)wantsBackgroundImageDecompression;
 

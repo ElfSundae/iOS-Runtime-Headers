@@ -35,6 +35,7 @@
 - (id)context;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (void)handleRuntimeStateUpdate:(id)arg1;
 - (unsigned long long)hash;
 - (id)home;
 - (id)init;

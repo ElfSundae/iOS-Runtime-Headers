@@ -19,7 +19,8 @@
 @property (nonatomic) bool shouldCropToCircle;
 @property (nonatomic) struct CGSize { double x1; double x2; } size;
 @property (nonatomic, retain) UIImage *uiImage;
-@property bool useFastPathShadow;
+@property (nonatomic, readonly) UIImage *uiImageToRender;
+@property (nonatomic) bool useFastPathShadow;
 
 - (void).cxx_destruct;
 - (double)cornerRadius;
@@ -35,6 +36,7 @@
 - (bool)shouldCropToCircle;
 - (struct CGSize { double x1; double x2; })size;
 - (id)uiImage;
+- (id)uiImageToRender;
 - (bool)useFastPathShadow;
 
 @end

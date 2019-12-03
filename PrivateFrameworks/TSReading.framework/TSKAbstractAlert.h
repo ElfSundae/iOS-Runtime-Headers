@@ -26,6 +26,7 @@
 @property (nonatomic, readonly) bool inBackground;
 @property (nonatomic, retain) <TSKUIAlertProtocol> *retainedDelegate;
 
+- (void)_didPresentAlertView:(id)arg1;
 - (long long)addButtonWithTitle:(id)arg1;
 - (void)applicationDidEnterBackground:(id)arg1;
 - (void)applicationWillEnterForeground:(id)arg1;
@@ -37,7 +38,6 @@
 - (void)dealloc;
 - (id)delegate;
 - (void)didDismissWithButtonIndex:(long long)arg1;
-- (void)didPresentAlertView;
 - (void)dismissWithClickedButtonIndex:(long long)arg1 animated:(bool)arg2;
 - (void)enterBackground;
 - (long long)firstOtherButtonIndex;

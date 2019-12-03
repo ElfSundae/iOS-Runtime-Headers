@@ -26,11 +26,10 @@
 - (bool)copyStorage:(id)arg1 fromRect:(struct { struct { long long x_1_1_1; long long x_1_1_2; } x1; struct { long long x_2_1_1; long long x_2_1_2; } x2; })arg2 toImage:(id)arg3 atPoint:(struct { long long x1; long long x2; })arg4;
 - (id)extentPolicy;
 - (id)imageAccumulationNode;
-- (id)imageAccumulationNodeWithImageSize:(struct { long long x1; long long x2; })arg1 tileSize:(struct { long long x1; long long x2; })arg2 format:(id)arg3 colorSpace:(id)arg4;
+- (id)imageAccumulationNodeWithImageSize:(struct { long long x1; long long x2; })arg1 tileSize:(struct { long long x1; long long x2; })arg2 borderSize:(struct { long long x1; long long x2; })arg3 format:(id)arg4 colorSpace:(id)arg5;
 - (id)imageRequest;
 - (id)initWithImageRequest:(id)arg1;
 - (id)initWithRequest:(id)arg1;
-- (id)newRenderPipelineStateForEvaluationMode:(long long)arg1;
 - (bool)prepare:(out id*)arg1;
 - (id)regionToRender;
 - (bool)render:(out id*)arg1;

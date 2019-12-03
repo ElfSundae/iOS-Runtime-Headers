@@ -16,7 +16,7 @@
 }
 
 @property (nonatomic, readonly) TSCHChartAxisID *axisID;
-@property (nonatomic, readonly) int currentAxisScaleSetting;
+@property (nonatomic, readonly) long long currentAxisScaleSetting;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -47,7 +47,7 @@
 - (id)computeMajorGridlinesFromMinMaxInAnalysis:(id)arg1;
 - (id)computeMinorGridlinesFromMajorGridlinesInAnalysis:(id)arg1;
 - (id)context;
-- (int)currentAxisScaleSetting;
+- (long long)currentAxisScaleSetting;
 - (double)currentDataSetModelAverage;
 - (double)currentDataSetModelMax;
 - (double)currentDataSetModelMedian;

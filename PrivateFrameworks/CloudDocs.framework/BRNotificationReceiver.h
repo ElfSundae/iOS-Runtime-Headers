@@ -7,7 +7,7 @@
     unsigned long long  _batchingChanges;
     double  _batchingDelay;
     <BRNotificationReceiverDelegate> * _delegate;
-    int  _gatherDones;
+    _Atomic int  _gatherDones;
     NSObject<OS_dispatch_queue> * _ipcQueue;
     bool  _isInvalidated;
     bool  _isNetworkReachable;
@@ -20,7 +20,7 @@
     unsigned long long  _receivedChanges;
     <BRItemNotificationSending> * _sender;
     NSObject<OS_dispatch_source> * _source;
-    int  _suspendCount;
+    _Atomic int  _suspendCount;
     NSObject<OS_dispatch_source> * _timer;
 }
 

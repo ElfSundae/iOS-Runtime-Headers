@@ -22,7 +22,7 @@
 - (void)addChildNode:(id)arg1;
 - (id)childNodeAtIndex:(long long)arg1;
 - (bool)containsNodeAtIndexPath:(id)arg1;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (id)description;
 - (void)enumerateChildNodesUsingBlock:(id /* block */)arg1;
 - (void)enumerateChildNodesWithOptions:(unsigned long long)arg1 usingBlock:(id /* block */)arg2;

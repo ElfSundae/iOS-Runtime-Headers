@@ -19,6 +19,7 @@
 - (void).cxx_destruct;
 - (bool)_delegateRespondsToSelector:(SEL)arg1;
 - (bool)accessoryPaired;
+- (void)appendDemoData:(id)arg1;
 - (id)delegate;
 - (id)delegateQueue;
 - (id)demoData;

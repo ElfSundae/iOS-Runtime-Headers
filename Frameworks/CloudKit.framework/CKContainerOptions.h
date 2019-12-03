@@ -2,15 +2,17 @@
    Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
  */
 
-@interface CKContainerOptions : NSObject {
+@interface CKContainerOptions : NSObject <NSSecureCoding> {
     CKAccountOverrideInfo * _accountInfoOverride;
     bool  _bypassPCSEncryption;
     bool  _captureResponseHTTPHeaders;
     NSString * _encryptionServiceName;
     bool  _enforceNamedOperationGroups;
     bool  _forceEnableReadOnlyManatee;
+    unsigned long long  _mmcsEncryptionSupport;
+    NSString * _personaIdentifier;
     bool  _returnPCSMetadata;
-    bool  _useMMCSEncryptionV2;
+    CKUploadRequestConfiguration * _uploadRequestConfiguration;
     bool  _useZoneWidePCS;
     bool  _wantsSiloedContext;
 }
@@ -21,18 +23,27 @@
 @property (nonatomic, retain) NSString *encryptionServiceName;
 @property (nonatomic) bool enforceNamedOperationGroups;
 @property (nonatomic) bool forceEnableReadOnlyManatee;
+@property (nonatomic) unsigned long long mmcsEncryptionSupport;
+@property (nonatomic, retain) NSString *personaIdentifier;
 @property (nonatomic) bool returnPCSMetadata;
-@property (nonatomic) bool useMMCSEncryptionV2;
+@property (nonatomic, retain) CKUploadRequestConfiguration *uploadRequestConfiguration;
 @property (nonatomic) bool useZoneWidePCS;
 @property (nonatomic) bool wantsSiloedContext;
+
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)accountInfoOverride;
 - (bool)bypassPCSEncryption;
 - (bool)captureResponseHTTPHeaders;
+- (void)encodeWithCoder:(id)arg1;
 - (id)encryptionServiceName;
 - (bool)enforceNamedOperationGroups;
 - (bool)forceEnableReadOnlyManatee;
+- (id)init;
+- (id)initWithCoder:(id)arg1;
+- (unsigned long long)mmcsEncryptionSupport;
+- (id)personaIdentifier;
 - (bool)returnPCSMetadata;
 - (void)setAccountInfoOverride:(id)arg1;
 - (void)setBypassPCSEncryption:(bool)arg1;
@@ -40,11 +51,14 @@
 - (void)setEncryptionServiceName:(id)arg1;
 - (void)setEnforceNamedOperationGroups:(bool)arg1;
 - (void)setForceEnableReadOnlyManatee:(bool)arg1;
+- (void)setMmcsEncryptionSupport:(unsigned long long)arg1;
+- (void)setPersonaIdentifier:(id)arg1;
 - (void)setReturnPCSMetadata:(bool)arg1;
+- (void)setUploadRequestConfiguration:(id)arg1;
 - (void)setUseMMCSEncryptionV2:(bool)arg1;
 - (void)setUseZoneWidePCS:(bool)arg1;
 - (void)setWantsSiloedContext:(bool)arg1;
-- (bool)useMMCSEncryptionV2;
+- (id)uploadRequestConfiguration;
 - (bool)useZoneWidePCS;
 - (bool)wantsSiloedContext;
 

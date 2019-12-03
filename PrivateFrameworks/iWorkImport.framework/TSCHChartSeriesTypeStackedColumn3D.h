@@ -9,5 +9,6 @@
 - (id)g_genericToSpecificPropertyMap3DStackedColumn;
 - (id)genericToSpecificPropertyMap;
 - (bool)supportsRoundedCorners;
+- (id)userInterfaceName;
 
 @end

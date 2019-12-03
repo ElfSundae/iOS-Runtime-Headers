@@ -5,6 +5,20 @@
 @interface GEORPCurrentEnvironmentManifestURLs : PBCodable <NSCopying> {
     NSString * _environmentDisplayName;
     NSString * _environmentReleaseName;
+    struct { 
+        unsigned int read_environmentDisplayName : 1; 
+        unsigned int read_environmentReleaseName : 1; 
+        unsigned int read_urls : 1; 
+        unsigned int wrote_environmentDisplayName : 1; 
+        unsigned int wrote_environmentReleaseName : 1; 
+        unsigned int wrote_urls : 1; 
+    }  _flags;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     NSMutableArray * _urls;
 }
 
@@ -14,9 +28,14 @@
 @property (nonatomic, readonly) bool hasEnvironmentReleaseName;
 @property (nonatomic, retain) NSMutableArray *urls;
 
++ (bool)isValid:(id)arg1;
 + (Class)urlType;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsUrl:(id)arg1;
+- (void)_readEnvironmentDisplayName;
+- (void)_readEnvironmentReleaseName;
+- (void)_readUrls;
 - (void)addUrl:(id)arg1;
 - (void)clearUrls;
 - (void)copyTo:(id)arg1;
@@ -28,8 +47,11 @@
 - (bool)hasEnvironmentDisplayName;
 - (bool)hasEnvironmentReleaseName;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setEnvironmentDisplayName:(id)arg1;
 - (void)setEnvironmentReleaseName:(id)arg1;

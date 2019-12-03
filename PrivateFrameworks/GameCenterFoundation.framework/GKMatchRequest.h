@@ -19,6 +19,8 @@
 @property (retain) NSArray *playersToInvite;
 @property (copy) id /* block */ recipientResponseHandler;
 @property (retain) NSArray *recipients;
+@property bool restrictToAutomatch;
+@property (retain) GKTournament *tournamentForInvitePool;
 
 + (id)instanceMethodSignatureForSelector:(SEL)arg1;
 + (bool)instancesRespondToSelector:(SEL)arg1;
@@ -36,7 +38,9 @@
 - (id)initWithInternalRepresentation:(id)arg1;
 - (id)internal;
 - (id /* block */)inviteeResponseHandler;
+- (bool)isConfiguredForAutomatchOnly;
 - (bool)isEqual:(id)arg1;
+- (bool)isIncorrectlyInvitingPlayers;
 - (bool)isRecipientCountValid;
 - (bool)isTurnBasedValid;
 - (bool)isValidForHosted:(bool)arg1;
@@ -53,7 +57,9 @@
 - (void)setPlayersToInvite:(id)arg1;
 - (void)setRecipientResponseHandler:(id /* block */)arg1;
 - (void)setRecipients:(id)arg1;
+- (void)setTournamentForInvitePool:(id)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
+- (id)tournamentForInvitePool;
 - (id)valueForUndefinedKey:(id)arg1;
 
 @end

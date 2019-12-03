@@ -6,8 +6,9 @@
     HKActivitySummary * _activitySummary;
     double  _emptyRingAlpha;
     _HKShapeView * _maskView;
+    ARUIRingsViewRenderer * _renderer;
     double  _ringInsetPercentage;
-    HKRingsView * _ringsView;
+    ARUIRingsView * _ringsView;
     bool  _shouldBypassApplicationStateChecking;
 }
 
@@ -15,8 +16,6 @@
 @property (getter=_emptyRingAlpha, setter=_setEmptyRingAlpha:, nonatomic) double emptyRingAlpha;
 @property (getter=_ringInsetPercentage, setter=_setRingInsetPercentage:, nonatomic) double ringInsetPercentage;
 @property (getter=_shouldBypassApplicationStateChecking, setter=_setShouldBypassApplicationStateChecking:, nonatomic) bool shouldBypassApplicationStateChecking;
-
-+ (id)_iconSpriteImage;
 
 - (void).cxx_destruct;
 - (void)_displayIcons;
@@ -41,6 +40,7 @@
 - (id)activitySummary;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 renderer:(id)arg2;
 - (void)layoutSubviews;
 - (void)setActivitySummary:(id)arg1;
 - (void)setActivitySummary:(id)arg1 animated:(bool)arg2;

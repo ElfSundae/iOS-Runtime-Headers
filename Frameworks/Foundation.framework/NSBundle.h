@@ -4,16 +4,20 @@
 
 @interface NSBundle : NSObject {
     id  _cfBundle;
-    Class  _firstClass;
+    NSString * _firstClassName;
     unsigned long long  _flags;
     id  _initialPath;
-    id  _lock;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _lock;
     Class  _principalClass;
     unsigned long long  _reserved2;
     id  _resolvedPath;
 }
 
 @property (readonly, copy) NSURL *appStoreReceiptURL;
+@property (getter=wf_applicationGroups, nonatomic, readonly) NSArray *applicationGroups;
+@property (getter=wf_apsEnvironment, nonatomic, readonly) NSString *apsEnvironment;
 @property (readonly, copy) NSString *builtInPlugInsPath;
 @property (readonly, copy) NSURL *builtInPlugInsURL;
 @property (readonly, copy) NSString *bundleIdentifier;
@@ -21,13 +25,17 @@
 @property (readonly, copy) NSURL *bundleURL;
 @property (nonatomic, readonly) struct CCUILayoutSize { unsigned long long x1; unsigned long long x2; } ccui_prototypeModuleSize;
 @property (readonly, copy) NSString *developmentLocalization;
+@property (getter=wf_entitlements, nonatomic, readonly) NSDictionary *entitlements;
 @property (readonly, copy) NSArray *executableArchitectures;
 @property (readonly, copy) NSString *executablePath;
 @property (readonly, copy) NSURL *executableURL;
+@property (nonatomic, readonly) UIImage *icon;
 @property (readonly, copy) NSDictionary *infoDictionary;
+@property (getter=wf_keychainAccessGroups, nonatomic, readonly) NSArray *keychainAccessGroups;
 @property (getter=isLoaded, readonly) bool loaded;
 @property (readonly, copy) NSArray *localizations;
 @property (readonly, copy) NSDictionary *localizedInfoDictionary;
+@property (readonly, copy) NSArray *normalizedLocalizations;
 @property (nonatomic, readonly) NSLocale *preferredLocale;
 @property (readonly, copy) NSArray *preferredLocalizations;
 @property (readonly) Class principalClass;
@@ -40,12 +48,13 @@
 @property (readonly, copy) NSURL *sharedFrameworksURL;
 @property (readonly, copy) NSString *sharedSupportPath;
 @property (readonly, copy) NSURL *sharedSupportURL;
-@property (readonly, copy) NSString *xct_bundleLinkageInfo;
+@property (getter=wf_teamIdentifier, nonatomic, readonly) NSString *teamIdentifier;
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
 + (id)URLForResource:(id)arg1 withExtension:(id)arg2 subdirectory:(id)arg3 inBundleWithURL:(id)arg4;
 + (id)URLsForResourcesWithExtension:(id)arg1 subdirectory:(id)arg2 inBundleWithURL:(id)arg3;
++ (id)_bundleWithIdentifier:(id)arg1 andLibraryName:(id)arg2;
 + (id)allBundles;
 + (id)allFrameworks;
 + (id)bundleForClass:(Class)arg1;
@@ -140,6 +149,18 @@
 
 + (bool)cls_isDaemon;
 
+// Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
+
++ (id)hk_findContainedBundleWithIdentifier:(id)arg1 directoryURL:(id)arg2;
+
+- (id)hk_displayName;
+- (id)hk_findContainedBundleWithIdentifier:(id)arg1;
+- (id)hk_localizedClinicalReadAuthorizationUsageDescription;
+- (id)hk_localizedReadAuthorizationUsageDescription;
+- (id)hk_localizedResearchStudyUsageDescription;
+- (id)hk_localizedWriteAuthorizationUsageDescription;
+- (id)hk_name;
+
 // Image: /System/Library/Frameworks/MapKit.framework/MapKit
 
 + (id)_mapkitBundle;
@@ -172,6 +193,7 @@
 + (id)_rpLocalizedStringFromFrameworkBundleWithKey:(id)arg1;
 + (id)baseIdentifier:(id)arg1;
 + (id)bundleWithPID:(int)arg1;
++ (id)executablePathWithPID:(int)arg1;
 + (id)fallbackBundle;
 + (id)localizedBundle;
 
@@ -194,7 +216,11 @@
 // Image: /System/Library/PrivateFrameworks/AppleMediaServices.framework/AppleMediaServices
 
 + (id)ams_AppleMediaServicesBundle;
-+ (id)ams_iTunesBundle;
++ (id)ams_MusicBundle;
+
+// Image: /System/Library/PrivateFrameworks/AppleMediaServicesUI.framework/AppleMediaServicesUI
+
+- (struct UIImage { Class x1; }*)icon;
 
 // Image: /System/Library/PrivateFrameworks/AssistantUI.framework/AssistantUI
 
@@ -212,6 +238,17 @@
 
 + (id)bs_baseBoardUIBundle;
 
+// Image: /System/Library/PrivateFrameworks/BrailleTranslation.framework/BrailleTranslation
+
++ (id)brl_brailleTableBundleWithIdentifier:(id)arg1;
+
+- (id)brl_brailleTablesDictionary;
+- (id)brl_languageAgnosticTables;
+- (id)brl_supportedLocales;
+- (id)brl_supportedLocalesForTableWithIdentifier:(id)arg1;
+- (id)brl_supportedTablesForLocale:(id)arg1;
+- (bool)brl_tableIsLanguageAgnosticWithIdentifier:(id)arg1;
+
 // Image: /System/Library/PrivateFrameworks/CameraEffectsKit.framework/CameraEffectsKit
 
 + (id)cfxBundle;
@@ -219,6 +256,14 @@
 // Image: /System/Library/PrivateFrameworks/Catalyst.framework/Catalyst
 
 - (id)cat_localizedStringsForKey:(id)arg1 value:(id)arg2 table:(id)arg3;
+
+// Image: /System/Library/PrivateFrameworks/ContentKit.framework/ContentKit
+
+- (id)wf_applicationGroups;
+- (id)wf_apsEnvironment;
+- (id)wf_entitlements;
+- (id)wf_keychainAccessGroups;
+- (id)wf_teamIdentifier;
 
 // Image: /System/Library/PrivateFrameworks/ControlCenterUI.framework/ControlCenterUI
 
@@ -230,6 +275,18 @@
 
 - (void)ccui_associateWithModuleInstance:(id)arg1;
 - (id)ccui_displayName;
+
+// Image: /System/Library/PrivateFrameworks/CoreMaterial.framework/CoreMaterial
+
++ (id)coreMaterialBundle;
+
+- (id)URLForMaterialRecipe:(id)arg1;
+- (id)URLForMaterialRecipeDescendant:(id)arg1;
+- (id)URLForVisualStyleSet:(id)arg1;
+- (id)URLForVisualStyleSetDescendant:(id)arg1;
+- (id)URLsForMaterialRecipeDescendants;
+- (id)URLsForMaterialRecipes;
+- (id)URLsForVisualStyleSets;
 
 // Image: /System/Library/PrivateFrameworks/CoreRoutine.framework/CoreRoutine
 
@@ -243,10 +300,6 @@
 // Image: /System/Library/PrivateFrameworks/DoNotDisturbKit.framework/DoNotDisturbKit
 
 + (id)dndk_localizationBundle;
-
-// Image: /System/Library/PrivateFrameworks/FuseUI.framework/FuseUI
-
-+ (id)fuseUIBundle;
 
 // Image: /System/Library/PrivateFrameworks/GameCenterFoundation.framework/GameCenterFoundation
 
@@ -267,6 +320,7 @@
 - (id)_gkLocalizedName;
 - (id)_gkLocalizedStringForKey:(id)arg1 defaultValue:(id)arg2 arguments:(id)arg3;
 - (id)_gkLocalizedStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3 language:(id)arg4;
+- (id)_gkLocalizedStringFromLocaleName:(id)arg1 key:(id)arg2 tableName:(id)arg3 value:(id)arg4;
 - (id)_gkPathForChallengeSound;
 - (id)_gkPathForImageWithName:(id)arg1;
 - (id)_gkPathForInviteSound;
@@ -274,10 +328,15 @@
 - (id)_gkPathForSoundWithName:(id)arg1;
 - (id)_gkPreferredLanguage;
 - (bool)_gkShouldAddQuickActions;
+- (id)_gkSystemLocalizedStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3;
 
 // Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
 
 + (id)__geoBundle;
+
+// Image: /System/Library/PrivateFrameworks/HealthMenstrualCyclesUI.framework/HealthMenstrualCyclesUI
+
++ (id)hkmcui_bundle;
 
 // Image: /System/Library/PrivateFrameworks/HelpKit.framework/HelpKit
 
@@ -288,20 +347,24 @@
 
 - (id)_cachedMainBundleResourcePath;
 
-// Image: /System/Library/PrivateFrameworks/IMSharedUtilities.framework/Frameworks/XCTest.framework/XCTest
-
-- (id)xct_bundleLinkageInfo;
-- (id)xct_frameworkBundleVersion;
-
 // Image: /System/Library/PrivateFrameworks/IconServices.framework/IconServices
 
 + (id)__IS__frameworkBundle;
 + (id)__IS__frameworkLocalizedString:(id)arg1;
++ (id)__IS__iconsetResourceAssetsCatalogURL;
 + (id)__IS__iconsetResourceBundle;
 
 // Image: /System/Library/PrivateFrameworks/InAppMessages.framework/InAppMessages
 
 + (id)inAppMessagesBundle;
+
+// Image: /System/Library/PrivateFrameworks/InternationalSupport.framework/InternationalSupport
+
+- (id)localizedStringInDeviceLanguageForKey:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/IntlPreferences.framework/IntlPreferences
+
+- (id)normalizedLocalizations;
 
 // Image: /System/Library/PrivateFrameworks/MediaControls.framework/MediaControls
 
@@ -317,22 +380,10 @@
 
 + (id)mediaPlayerUIBundle;
 
-// Image: /System/Library/PrivateFrameworks/MediaSocial.framework/MediaSocial
-
-+ (id)mediaSocialBundle;
-
 // Image: /System/Library/PrivateFrameworks/Memories.framework/Memories
 
-+ (id)localizedFont:(id)arg1;
-+ (id)localizedFontName:(id)arg1;
-+ (float)localizedFontSize:(id)arg1;
-+ (id)localizedString:(id)arg1;
 + (id)localizedString:(id)arg1;
 + (float)localizedValue:(id)arg1;
-+ (id)nonLocalizedString:(id)arg1;
-+ (id)nonLocalizedString:(id)arg1;
-+ (id)nonLocalizedString:(id)arg1 valueIfMissing:(id)arg2;
-+ (id)nonLocalizedString:(id)arg1 valueIfMissing:(id)arg2;
 
 // Image: /System/Library/PrivateFrameworks/NanoMediaBridgeUI.framework/NanoMediaBridgeUI
 
@@ -341,6 +392,8 @@
 // Image: /System/Library/PrivateFrameworks/NanoMediaRemote.framework/NanoMediaRemote
 
 + (id)nanoMediaRemoteBundle;
+
+- (id)matchingPlaybackAppBundleIdentifierForOrigin:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/NanoMusicSync.framework/NanoMusicSync
 
@@ -353,13 +406,19 @@
 // Image: /System/Library/PrivateFrameworks/Navigation.framework/Navigation
 
 + (id)_navigationBundle;
++ (bool)_navigation_implementsSiriMethod;
 + (bool)_navigation_isRunningInSiri;
 
 - (id)_navigation_localizedStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3;
 
+// Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
+
++ (id)fc_feldsparCoreInternalExtrasBundle;
+
 // Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
 
 - (id)localizedDocumentStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3;
+- (id)localizedStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3 locale:(id)arg4;
 
 // Image: /System/Library/PrivateFrameworks/PassKitCore.framework/PassKitCore
 
@@ -371,7 +430,7 @@
 
 // Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
 
-+ (id)px_PhotosUICoreFrameworkBundle;
++ (id)px_bundle;
 
 // Image: /System/Library/PrivateFrameworks/PlacesKit.framework/PlacesKit
 
@@ -383,6 +442,7 @@
 
 // Image: /System/Library/PrivateFrameworks/SafariCore.framework/SafariCore
 
++ (id)safari_safariApplicationPlatformBundleIdentifier;
 + (id)safari_safariCoreBundle;
 
 - (id)safari_normalizedVersion;
@@ -412,17 +472,15 @@
 + (id)brailleDriverBundles;
 + (id)brailleDriverDeviceDetectionInfo;
 + (id)brailleTableBundleWithTableIdentifier:(id)arg1;
-+ (id)brailleTableIdentifiers;
-+ (long long)bundleIndexForBrailleDriverIdentifier:(id)arg1;
-+ (id)defaultBrailleTableForLanguageIdentifier:(id)arg1;
 + (bool)doesBrailleTableSupportContractions:(id)arg1;
 + (bool)doesBrailleTableSupportEightDot:(id)arg1;
 + (id)languageIdentifiersForBrailleTableIdentifier:(id)arg1;
-+ (id)nameForBrailleTableIdentifier:(id)arg1;
-+ (id)tableIdentifiersForLanguageIdentifier:(id)arg1;
 
-- (id)bundleSpecificTableIdentifierForTableIdentifier:(id)arg1;
 - (id)tableIdentifierForBundleSpecificTableIdentifier:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/ScreenshotServices.framework/ScreenshotServices
+
++ (id)_screenshotServicesServiceBundle;
 
 // Image: /System/Library/PrivateFrameworks/SiriUI.framework/SiriUI
 
@@ -441,6 +499,10 @@
 - (id)tv_imageNamed:(id)arg1;
 - (id)tv_launchImage;
 
+// Image: /System/Library/PrivateFrameworks/Tips.framework/Tips
+
++ (id)tps_bundleWithPath:(id)arg1;
+
 // Image: /System/Library/PrivateFrameworks/UIAccessibility.framework/UIAccessibility
 
 + (id)accessibilityBundleWithLastPathComponent:(id)arg1;
@@ -452,7 +514,6 @@
 
 // Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 
-+ (id)_typologyBundle;
 + (id)currentNibLoadingBundle;
 + (id)currentNibPath;
 + (void)popNibLoadingBundle;
@@ -474,10 +535,6 @@
 // Image: /System/Library/PrivateFrameworks/VideosUI.framework/VideosUI
 
 + (id)vui_videosUIBundle;
-
-// Image: /System/Library/PrivateFrameworks/iPhotoMigrationSupport.framework/iPhotoMigrationSupport
-
-+ (id)blj_localizedString:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/iTunesStore.framework/iTunesStore
 

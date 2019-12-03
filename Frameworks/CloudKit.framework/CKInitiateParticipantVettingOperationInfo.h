@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
  */
 
-@interface CKInitiateParticipantVettingOperationInfo : CKOperationInfo {
+@interface CKInitiateParticipantVettingOperationInfo : CKOperationInfo <NSSecureCoding> {
     NSString * _address;
     NSString * _participantID;
     CKShareMetadata * _shareMetadata;

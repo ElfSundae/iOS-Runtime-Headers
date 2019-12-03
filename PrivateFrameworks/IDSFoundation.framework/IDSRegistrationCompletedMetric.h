@@ -5,7 +5,7 @@
 @interface IDSRegistrationCompletedMetric : NSObject <CUTAWDMetric, CUTCoreAnalyticsMetric, CUTRTCMetric> {
     long long  _circleStatus;
     long long  _registrationError;
-    long long  _registrationType;
+    int  _registrationType;
     NSString * _serviceIdentifier;
     bool  _wasSuccessful;
 }
@@ -19,7 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSString *name;
 @property (nonatomic, readonly) long long registrationError;
-@property (nonatomic, readonly) long long registrationType;
+@property (nonatomic, readonly) int registrationType;
 @property (nonatomic, readonly) unsigned short rtcType;
 @property (nonatomic, readonly) NSString *serviceIdentifier;
 @property (readonly) Class superclass;
@@ -30,10 +30,10 @@
 - (id)awdRepresentation;
 - (long long)circleStatus;
 - (id)dictionaryRepresentation;
-- (id)initWithRegistrationType:(long long)arg1 serviceIdentifier:(id)arg2 wasSuccessful:(bool)arg3 registrationError:(long long)arg4 circleStatus:(long long)arg5;
+- (id)initWithRegistrationType:(int)arg1 serviceIdentifier:(id)arg2 wasSuccessful:(bool)arg3 registrationError:(long long)arg4 circleStatus:(long long)arg5;
 - (id)name;
 - (long long)registrationError;
-- (long long)registrationType;
+- (int)registrationType;
 - (unsigned short)rtcType;
 - (id)serviceIdentifier;
 - (bool)wasSuccessful;

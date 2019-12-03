@@ -4,9 +4,12 @@
 
 @interface LSApplicationRestrictionsManager : NSObject {
     NSSet * _blacklistedBundleIDs;
+    unsigned long long  _knownSystemAppDeletionState;
     NSNumber * _maximumRating;
     NSSet * _restrictedBundleIDs;
     NSObject<OS_dispatch_queue> * _restrictionsAccessQueue;
+    NSObject<OS_dispatch_queue> * _signerIdentitySyncQueue;
+    NSObject<OS_dispatch_source> * _signerIdentitySyncSource;
     NSNumber * _whitelistState;
     NSSet * _whitelistedBundleIDs;
 }
@@ -24,10 +27,12 @@
 + (id)activeRestrictionIdentifiers;
 + (id)sharedInstance;
 
+- (void).cxx_destruct;
 - (bool)_LSApplyRestrictedSet:(id)arg1 forRestriction:(id)arg2;
 - (id)_LSResolveIdentifiers:(id)arg1;
 - (id)_MCProfileConnection;
 - (id)_MCRestrictionManager;
+- (void)_syncTrustedSignerIdenties;
 - (id)allowedOpenInAppBundleIDsAfterApplyingFilterToAppBundleIDs:(id)arg1 originatingAppBundleID:(id)arg2 originatingAccountIsManaged:(bool)arg3;
 - (void)beginListeningForChanges;
 - (id)blacklistedBundleID;
@@ -35,7 +40,6 @@
 - (id)calculateSetDifference:(id)arg1 and:(id)arg2;
 - (bool)cleanRemovedSystemApplicationsList;
 - (void)clearAllValues;
-- (void)dealloc;
 - (void)handleMCEffectiveSettingsChanged;
 - (id)identifierForRemovedAppPrompt:(id)arg1;
 - (id)init;
@@ -52,6 +56,7 @@
 - (id)maximumRating;
 - (id)removedSystemApplicationIdentifiers;
 - (id)restrictedBundleIDs;
+- (void)scheduleSyncTrustedSignerIdenties;
 - (bool)setApplication:(id)arg1 removed:(bool)arg2;
 - (void)setBlacklistedBundleIDs:(id)arg1;
 - (void)setRemovedSystemApplicationIdentifiers:(id)arg1;

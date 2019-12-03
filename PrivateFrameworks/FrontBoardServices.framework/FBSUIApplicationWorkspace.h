@@ -2,18 +2,12 @@
    Image: /System/Library/PrivateFrameworks/FrontBoardServices.framework/FrontBoardServices
  */
 
-@interface FBSUIApplicationWorkspace : FBSWorkspace <FBSUIApplicationWorkspaceClientDelegate>
+@interface FBSUIApplicationWorkspace : FBSWorkspace
 
-@property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) <FBSUIApplicationWorkspaceDelegate> *delegate;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
+@property (nonatomic, readonly) <FBSUIApplicationWorkspaceDelegate> *delegate;
 
-- (Class)_clientClass;
-- (void)client:(id)arg1 handleExit:(id)arg2;
-- (void)client:(id)arg1 handleLaunch:(id)arg2 withCompletion:(id /* block */)arg3;
-- (void)clientHandleAssertionExpirationImminent:(id)arg1;
-- (bool)isUIApplicationWorkspace;
+- (id)delegate;
+- (id)initWithSerialQueue:(id)arg1;
+- (void)setDelegate:(id)arg1;
 
 @end

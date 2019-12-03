@@ -6,6 +6,7 @@
 
 + (id)parentVenueInfoWithPlaceItem:(id)arg1;
 
+- (bool)_canShowWhileLocked;
 - (id)parentIdentifiers;
 
 @end

@@ -14,9 +14,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)calendarEvent;
 - (void)clientApplicationDidEnterBackground;
-- (void)dealloc;
 - (void)didSetAdSpace;
 - (void)dismiss;
 - (void)eventEditViewController:(id)arg1 didCompleteWithAction:(long long)arg2;

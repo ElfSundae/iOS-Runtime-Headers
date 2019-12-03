@@ -2,40 +2,34 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaServerEventMetadata : PBCodable <NSCopying> {
-    struct { 
-        unsigned int timestampMs : 1; 
-    }  _has;
-    NSString * _siriDeviceID;
-    long long  _timestampMs;
+@interface SISchemaServerEventMetadata : PBCodable <NSSecureCoding, SISchemaServerEventMetadata> {
+    NSData * _siriDeviceID;
+    long long  _timestampNs;
     NSData * _turnID;
 }
 
-@property (nonatomic, readonly) bool hasSiriDeviceID;
-@property (nonatomic) bool hasTimestampMs;
-@property (nonatomic, readonly) bool hasTurnID;
-@property (nonatomic, retain) NSString *siriDeviceID;
-@property (nonatomic) long long timestampMs;
-@property (nonatomic, retain) NSData *turnID;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) NSData *jsonData;
+@property (nonatomic, copy) NSData *siriDeviceID;
+@property (readonly) Class superclass;
+@property (nonatomic) long long timestampNs;
+@property (nonatomic, copy) NSData *turnID;
 
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (bool)hasSiriDeviceID;
-- (bool)hasTimestampMs;
-- (bool)hasTurnID;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (bool)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
+- (id)jsonData;
 - (bool)readFrom:(id)arg1;
-- (void)setHasTimestampMs:(bool)arg1;
 - (void)setSiriDeviceID:(id)arg1;
-- (void)setTimestampMs:(long long)arg1;
+- (void)setTimestampNs:(long long)arg1;
 - (void)setTurnID:(id)arg1;
 - (id)siriDeviceID;
-- (long long)timestampMs;
+- (long long)timestampNs;
 - (id)turnID;
 - (void)writeTo:(id)arg1;
 

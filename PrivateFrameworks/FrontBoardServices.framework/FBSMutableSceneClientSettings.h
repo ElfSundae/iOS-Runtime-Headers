@@ -2,15 +2,21 @@
    Image: /System/Library/PrivateFrameworks/FrontBoardServices.framework/FrontBoardServices
  */
 
-@interface FBSMutableSceneClientSettings : FBSSceneClientSettings
+@interface FBSMutableSceneClientSettings : FBSSceneClientSettings <BSDebugDescriptionProviding, BSXPCSecureCoding>
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (setter=_setLayers:, nonatomic, copy) NSOrderedSet *layers;
 @property (nonatomic, copy) NSSet *occlusions;
 @property (nonatomic) long long preferredInterfaceOrientation;
 @property (nonatomic) double preferredLevel;
 @property (nonatomic, copy) NSString *preferredSceneHostIdentifier;
+@property (readonly) Class superclass;
 
 + (bool)_isMutable;
 
+- (void)_setLayers:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (id)otherSettings;

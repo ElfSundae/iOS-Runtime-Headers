@@ -34,6 +34,7 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)enumerateFlyoverRegions:(id /* block */)arg1;
+- (id)init;
 - (id)initWithData:(id)arg1;
 - (id)initWithFlyoverRegions:(id)arg1;
 - (struct GEOFlyoverRegion { unsigned int x1; unsigned int x2; unsigned int x3; struct { unsigned int x_4_1_1 : 1; unsigned int x_4_1_2 : 1; unsigned int x_4_1_3 : 1; } x4; }*)regionForID:(unsigned int)arg1;

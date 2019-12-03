@@ -5,13 +5,15 @@
 @interface SCNKeyedUnarchiver : NSKeyedUnarchiver {
     SCNAssetCatalog * _assetCatalog;
     NSDictionary * _context;
+    NSArray * _currentMorphTargets;
     NSURL * _documentURL;
-    id  lookUpFoundInstance;
-    NSString * lookUpKey;
+    id  _lookUpFoundInstance;
+    NSString * _lookUpKey;
 }
 
 @property (nonatomic, retain) SCNAssetCatalog *assetCatalog;
 @property (nonatomic, retain) NSDictionary *context;
+@property (nonatomic, retain) NSArray *currentMorphTargets;
 @property (nonatomic, readonly) NSURL *documentEnclosingURL;
 @property (nonatomic, retain) NSURL *documentURL;
 @property (nonatomic, retain) id lookUpFoundInstance;
@@ -19,6 +21,7 @@
 
 - (id)assetCatalog;
 - (id)context;
+- (id)currentMorphTargets;
 - (void)dealloc;
 - (id)documentEnclosingURL;
 - (id)documentURL;
@@ -27,6 +30,7 @@
 - (id)lookUpKey;
 - (void)setAssetCatalog:(id)arg1;
 - (void)setContext:(id)arg1;
+- (void)setCurrentMorphTargets:(id)arg1;
 - (void)setDocumentURL:(id)arg1;
 - (void)setLookUpFoundInstance:(id)arg1;
 - (void)setLookUpKey:(id)arg1;

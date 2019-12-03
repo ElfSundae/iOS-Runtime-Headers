@@ -10,9 +10,9 @@
 
 @property (nonatomic, readonly) bool isSetupComplete;
 
+- (void).cxx_destruct;
 - (void)_noteDisconnected;
 - (void)addHandler:(id)arg1;
-- (void)dealloc;
 - (void)forwardInvocation:(id)arg1;
 - (id)init;
 - (bool)isSetupComplete;

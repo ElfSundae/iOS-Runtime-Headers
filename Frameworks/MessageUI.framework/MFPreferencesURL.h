@@ -11,6 +11,7 @@
 + (id)accountURLForAccount:(id)arg1;
 + (id)addAccountURL;
 + (id)advancedAccountInfoURLForAccount:(id)arg1;
++ (id)blockedSenderURL;
 + (id)storageManagementURL;
 + (id)vipSenderListURL;
 

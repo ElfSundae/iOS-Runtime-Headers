@@ -23,16 +23,16 @@
 + (void)saveServerStateLocallyForSharingInvitationRelationships:(id)arg1 changeType:(long long)arg2 info:(id)arg3;
 + (void)sendServerPendingInvitationsForAlbumWithGUID:(id)arg1;
 
+- (void).cxx_destruct;
 - (id)MSASSharingRelationships;
 - (id)albumGUID;
 - (long long)daemonOperation;
-- (void)dealloc;
 - (id)description;
 - (void)encodeToXPCObject:(id)arg1;
 - (void)executeSaveServerStateLocallyForSharingACLRelationships;
 - (void)executeSaveServerStateLocallyForSharingInvitationRelationships;
 - (void)executeSendServerPendingInvitationsForAlbumWithGUID;
-- (id)initFromXPCObject:(id)arg1 connection:(id)arg2;
+- (id)initFromXPCObject:(id)arg1 libraryServicesManager:(id)arg2;
 - (long long)jobType;
 - (id)mstreamdInfoDictionary;
 - (long long)relationshipChangeType;

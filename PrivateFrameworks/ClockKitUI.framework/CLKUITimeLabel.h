@@ -78,6 +78,7 @@
 - (id)initWithTimeLabelOptions:(unsigned long long)arg1;
 - (id)initWithTimeLabelOptions:(unsigned long long)arg1 forDevice:(id)arg2;
 - (struct CGSize { double x1; double x2; })intrinsicSize;
+- (id)labelManagerContentView;
 - (void)layoutSubviews;
 - (double)maxWidth;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })opticalInsets;

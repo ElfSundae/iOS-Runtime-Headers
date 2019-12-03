@@ -9,6 +9,7 @@
 
 @property (nonatomic) unsigned long long usageCount;
 
+- (void).cxx_destruct;
 - (long long)compareUsageCount:(id)arg1;
 - (void)dealloc;
 - (id)feature;

@@ -6,7 +6,9 @@
     NSURLProtectionSpaceInternal * _internal;
 }
 
+@property (nonatomic, readonly) bool _sf_canAuthenticate;
 @property (nonatomic, readonly, copy) NSString *_sf_highLevelDomainAndPort;
+@property (nonatomic, readonly) NSArray *_sf_identities;
 @property (readonly, copy) NSString *authenticationMethod;
 @property (readonly, copy) NSString *host;
 @property (readonly) bool isProxy;
@@ -48,7 +50,9 @@
 
 // Image: /System/Library/Frameworks/SafariServices.framework/SafariServices
 
+- (bool)_sf_canAuthenticate;
 - (id)_sf_highLevelDomainAndPort;
+- (id)_sf_identities;
 
 // Image: /System/Library/PrivateFrameworks/SafariCore.framework/SafariCore
 

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/AirPortAssistant.framework/AirPortAssistant
  */
 
-@interface InfoDiagramCablingLayer : CALayer {
+@interface InfoDiagramCablingLayer : CALayer <CALayerDelegate> {
     CAShapeLayer * broadbandToWANInnerLineLayer;
     CAShapeLayer * broadbandToWANOuterLineLayer;
     <InfoDiagramCablingAnchorDelegate> * diagramAnchorPointDelegate;
@@ -17,11 +17,15 @@
 
 @property (nonatomic, retain) CAShapeLayer *broadbandToWANInnerLineLayer;
 @property (nonatomic, retain) CAShapeLayer *broadbandToWANOuterLineLayer;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) <InfoDiagramCablingAnchorDelegate> *diagramAnchorPointDelegate;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, retain) CAGradientLayer *internetGradientLayer;
 @property (nonatomic, retain) CAShapeLayer *internetInnerLineLayer;
 @property (nonatomic, retain) CAShapeLayer *internetOuterLineLayer;
 @property (nonatomic) bool isCompactWidth;
+@property (readonly) Class superclass;
 @property (nonatomic, retain) CAShapeLayer *swapArcArrowLayer;
 @property (nonatomic, retain) CAShapeLayer *swapArcLineLayer;
 @property (nonatomic) bool swapCabling;

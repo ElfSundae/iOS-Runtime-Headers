@@ -13,6 +13,8 @@
 }
 
 - (void).cxx_destruct;
+- (void)_importLocalContent;
+- (void)_setStashDataLocally:(bool)arg1;
 - (void)dealloc;
 - (id)initWithSourceDevicesController:(id)arg1 pairingCode:(id)arg2 wifiPSK:(id)arg3 ssid:(id)arg4 metrics:(id)arg5;
 - (void)loadView;

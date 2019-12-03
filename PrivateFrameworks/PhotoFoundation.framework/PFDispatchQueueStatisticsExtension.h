@@ -3,22 +3,22 @@
  */
 
 @interface PFDispatchQueueStatisticsExtension : PFDispatchQueueExtension {
-    unsigned long long  _completedCount;
-    unsigned long long  _enqueuedCount;
-    unsigned long long  _executingCount;
-    unsigned long long  _executionTime;
+    _Atomic unsigned long long  _completedCount;
+    _Atomic unsigned long long  _enqueuedCount;
+    _Atomic unsigned long long  _executingCount;
+    _Atomic unsigned long long  _executionTime;
     unsigned long long  _lastLogTime;
-    unsigned long long  _maxEnqueuedCount;
+    _Atomic unsigned long long  _maxEnqueuedCount;
     unsigned long long  _maxEnqueuedCountTrigger;
-    unsigned long long  _maxExecutionTime;
+    _Atomic unsigned long long  _maxExecutionTime;
     unsigned long long  _maxExecutionTimeTrigger;
-    unsigned long long  _maxWaitTime;
+    _Atomic unsigned long long  _maxWaitTime;
     unsigned long long  _maxWaitTimeTrigger;
-    unsigned long long  _totalWaitTime;
+    _Atomic unsigned long long  _totalWaitTime;
 }
 
 - (bool)_shouldLog;
-- (bool)_updateMaximum:(void *)arg1 value:(void *)arg2; // needs 2 arg types, found 3: /* Warning: Unrecognized filer type: '' using 'void*' */ void**, unsigned long long, unsigned long long
+- (bool)_updateMaximum:(void *)arg1 value:(void *)arg2; // needs 2 arg types, found 3: _Atomic /* Warning: Unrecognized filer type: '' using 'void*' */ void**, unsigned long long, unsigned long long
 - (void)blockCompletedAfterWait:(unsigned long long)arg1 executionTime:(unsigned long long)arg2 queue:(id)arg3;
 - (void)blockEnqueued:(id)arg1;
 - (Class)blockInfoClass;

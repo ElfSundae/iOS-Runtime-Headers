@@ -11,7 +11,7 @@
 @property (nonatomic, readonly) unsigned long long capabilitiesOfCPU;
 @property (nonatomic, readonly) unsigned long long capabilitiesOfNetwork;
 @property (nonatomic, readonly) id controller;
-@property id delegate;
+@property (nonatomic) id delegate;
 @property (nonatomic, readonly) bool isAVInterfaceReady;
 @property (nonatomic) void*localVideoBackLayer;
 @property (nonatomic) void*localVideoLayer;
@@ -25,9 +25,9 @@
 @property (nonatomic, readonly) bool systemSupportsBackFacingCamera;
 @property (nonatomic, readonly) bool systemSupportsFrontFacingCamera;
 
-+ (id)alloc;
 + (id)sharedInstance;
 
+- (void).cxx_destruct;
 - (void)_avChatDealloc:(id)arg1;
 - (long long)_checkNetworkForChat:(id)arg1 requiresWifi:(bool)arg2;
 - (void)_conferenceEnded:(id)arg1;

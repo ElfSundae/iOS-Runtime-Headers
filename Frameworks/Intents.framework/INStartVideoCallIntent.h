@@ -45,11 +45,13 @@
 
 // Image: /System/Library/PrivateFrameworks/CoreDuet.framework/CoreDuet
 
+- (id)cd_groupName;
 - (long long)cd_interactionMechanism;
 - (id)cd_recipients;
 - (bool)cd_saveToPeopleStore;
+- (id)cd_sender;
 
-// Image: /System/Library/PrivateFrameworks/VoiceShortcutsUI.framework/VoiceShortcutsUI
+// Image: /System/Library/PrivateFrameworks/WorkflowUI.framework/WorkflowUI
 
 - (id)vcui_keyPeople;
 

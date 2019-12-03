@@ -9,6 +9,7 @@
     struct __IOSurface { } * _ioSurfaceRef;
 }
 
+- (void).cxx_destruct;
 - (bool)_decodeImageToIOSurface;
 - (bool)_isJPEGImage:(struct CGImageSource { }*)arg1;
 - (void)dealloc;

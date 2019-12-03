@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/HomeKit.framework/HomeKit
  */
 
-@interface HMAccessorySettingGroup : NSObject <HFStateDumpBuildable, HMFLogging, _HMAccesorySettingGroupDelegate> {
+@interface HMAccessorySettingGroup : HMSettingGroup <HFStateDumpBuildable, HMFLogging, _HMAccesorySettingGroupDelegate> {
     HMAccessorySettingGroup * _group;
     NSMutableSet * _groups;
     _HMAccessorySettingGroup * _internal;

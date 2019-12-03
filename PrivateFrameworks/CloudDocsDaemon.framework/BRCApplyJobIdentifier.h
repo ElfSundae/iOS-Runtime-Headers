@@ -4,7 +4,7 @@
 
 @interface BRCApplyJobIdentifier : BRCIntAndZoneJobIdentifier
 
-- (id)initWithRank:(long long)arg1 zone:(id)arg2;
+- (id)initWithRank:(long long)arg1 zoneRowID:(id)arg2;
 - (long long)rank;
 - (long long)rejectedRowID;
 - (long long)serverItemRank;

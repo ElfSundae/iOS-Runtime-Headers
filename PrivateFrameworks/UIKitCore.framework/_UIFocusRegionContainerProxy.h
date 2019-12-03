@@ -7,6 +7,7 @@
     <UIFocusItemContainer> * _itemContainer;
 }
 
+@property (nonatomic) bool areChildrenFocused;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (getter=_isEligibleForFocusInteraction, nonatomic, readonly) bool eligibleForFocusInteraction;

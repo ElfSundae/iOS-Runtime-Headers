@@ -21,7 +21,7 @@
 - (void).cxx_destruct;
 - (id)description;
 - (id)firstItem;
-- (id)initWithMediaRemotePlaybackQueue:(struct _MRSystemAppPlaybackQueue { }*)arg1;
+- (id)initWithMediaRemotePlaybackQueue:(struct _MRSystemAppPlaybackQueue { }*)arg1 options:(id)arg2;
 - (id)mediaQuery;
 - (id)playbackItemMetadataForMediaItem:(id)arg1;
 - (long long)repeatType;

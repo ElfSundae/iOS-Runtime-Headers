@@ -5,6 +5,7 @@
 @interface VUIMetricsController : NSObject {
     MTMetricsKit * _activeMetricsKit;
     NSDictionary * _baseFields;
+    NSDictionary * _cachedOpenUrlData;
     NSString * _currentTabIdentifier;
     NSString * _exitEventDestinationUrl;
     bool  _isAppJustDeepLinkOpened;
@@ -24,6 +25,7 @@
 @property (nonatomic, retain) MTMetricsKit *activeMetricsKit;
 @property (nonatomic, copy) NSDictionary *baseFields;
 @property (nonatomic, readonly, copy) NSDictionary *baseFieldsForVPAF;
+@property (nonatomic, retain) NSDictionary *cachedOpenUrlData;
 @property (nonatomic, readonly, copy) NSString *currentTabIdentifier;
 @property (nonatomic, retain) NSString *exitEventDestinationUrl;
 @property (nonatomic, readonly, copy) NSDictionary *iTunesVPAF;
@@ -44,22 +46,27 @@
 - (id)_createMetricsKitForTopic:(id)arg1;
 - (void)_flushMetricsOnExit;
 - (void)_flushUnreportedEvents:(id)arg1;
+- (id)_getLocationAuthorizationStatus;
 - (void)_handleServerConfigChange:(id)arg1;
 - (void)_handleTabBarChange:(id)arg1;
 - (void)_handleWLKAppLibChange:(id)arg1;
+- (void)_handleWLKLocationManagerChange:(id)arg1;
 - (void)_handleWLKSettingsDidChange:(id)arg1;
 - (void)_initializeBaseFields;
 - (void)_recordEnter:(id)arg1;
 - (void)_recordEvent:(id)arg1 withEventData:(id)arg2;
 - (void)_recordExit:(id)arg1;
 - (void)_saveRecentEvents:(id)arg1;
+- (void)_setGDPRConsentStatus:(bool)arg1;
 - (void)_updateBaseFieldsWithData:(id)arg1;
 - (id)activeMetricsKit;
 - (id)baseFields;
 - (id)baseFieldsForVPAF;
+- (id)cachedOpenUrlData;
 - (id)currentTabIdentifier;
 - (id)exitEventDestinationUrl;
 - (void)flushMetrics;
+- (void)forceGDPRConsentStatus:(bool)arg1;
 - (id)getRecentEventsForDebuggerUI;
 - (id)iTunesVPAF;
 - (id)init;
@@ -77,6 +84,8 @@
 - (void)recordAppWillBackground;
 - (void)recordAppWillTerminate;
 - (void)recordClick:(id)arg1;
+- (void)recordDialog:(id)arg1;
+- (void)recordLog:(id)arg1;
 - (void)recordMedia:(id)arg1;
 - (void)recordOpenUrlLaunchWithExtURL:(id)arg1 andOptions:(id)arg2;
 - (void)recordPage:(id)arg1;
@@ -84,6 +93,7 @@
 - (id)savedRecentEvents;
 - (void)setActiveMetricsKit:(id)arg1;
 - (void)setBaseFields:(id)arg1;
+- (void)setCachedOpenUrlData:(id)arg1;
 - (void)setExitEventDestinationUrl:(id)arg1;
 - (void)setLastRecordedPageEventData:(id)arg1;
 - (void)setLoggerKit:(id)arg1;

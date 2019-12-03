@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SpringBoardFoundation.framework/SpringBoardFoundation
  */
 
-@interface SBFColorBoxes : NSObject {
+@interface SBFColorBoxes : NSObject <NSSecureCoding> {
     struct { unsigned char x1; unsigned char x2; unsigned char x3; unsigned char x4; } * _colorBoxesRowMajor;
     unsigned long long  _columnCount;
     unsigned long long  _downsampledBoxSize;
@@ -29,9 +29,9 @@
 @property (nonatomic, readonly) unsigned long long size;
 @property (nonatomic, readonly) unsigned char totalContrast8;
 
-+ (id)colorBoxesForImage:(id)arg1 colorBoxSize:(unsigned long long)arg2;
++ (id)colorBoxesForImage:(id)arg1;
++ (bool)supportsSecureCoding;
 
-- (void)_freeColorBoxes;
 - (struct { unsigned char x1; unsigned char x2; unsigned char x3; unsigned char x4; }*)colorBoxAtRow:(unsigned long long)arg1 col:(unsigned long long)arg2;
 - (struct { unsigned char x1; unsigned char x2; unsigned char x3; unsigned char x4; }*)colorBoxesRowMajor;
 - (unsigned long long)columnCount;
@@ -40,7 +40,9 @@
 - (id)description;
 - (unsigned long long)downsampledBoxSize;
 - (unsigned long long)effectiveDownsampleFactor;
+- (void)encodeWithCoder:(id)arg1;
 - (struct CGSize { double x1; double x2; })imageSize;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithColorBoxes:(struct { unsigned char x1; unsigned char x2; unsigned char x3; unsigned char x4; }*)arg1 size:(unsigned long long)arg2 rowCount:(unsigned long long)arg3 columnCount:(unsigned long long)arg4 totalContrast8:(unsigned char)arg5 imageSize:(struct CGSize { double x1; double x2; })arg6 downsampledBoxSize:(unsigned long long)arg7 effectiveDownsampleFactor:(unsigned long long)arg8 pixelHeight:(unsigned long long)arg9 pixelWidth:(unsigned long long)arg10;
 - (unsigned long long)pixelHeight;
 - (unsigned long long)pixelWidth;

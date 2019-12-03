@@ -28,6 +28,7 @@
 
 @property (nonatomic, readonly) unsigned int assertionIdentifier;
 @property (nonatomic, readonly) long long captureDevice;
+@property (nonatomic, readonly) long long captureDevicePosition;
 @property (nonatomic, readonly) long long captureMode;
 @property (nonatomic, readonly) long long captureOrientation;
 @property (nonatomic, readonly) bool capturedFromPhotoBooth;
@@ -47,6 +48,9 @@
 @property (nonatomic, readonly) bool shouldDelayRemotePersistence;
 @property (nonatomic, readonly) bool shouldExtractDiagnosticsFromMetadata;
 @property (nonatomic, readonly) bool shouldPersistDiagnosticsToSidecar;
+@property (nonatomic, readonly) bool shouldPersistToIncomingDirectory;
+@property (nonatomic, readonly) bool shouldProtectPersistence;
+@property (nonatomic, readonly) bool shouldProtectPersistenceForVideo;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) long long temporaryPersistenceOptions;
 @property (nonatomic, readonly) long long type;
@@ -57,6 +61,7 @@
 - (void).cxx_destruct;
 - (unsigned int)assertionIdentifier;
 - (long long)captureDevice;
+- (long long)captureDevicePosition;
 - (long long)captureMode;
 - (long long)captureOrientation;
 - (bool)capturedFromPhotoBooth;
@@ -80,6 +85,7 @@
 - (bool)shouldPersistDiagnosticsToSidecar;
 - (bool)shouldPersistToIncomingDirectory;
 - (bool)shouldProtectPersistence;
+- (bool)shouldProtectPersistenceForVideo;
 - (long long)temporaryPersistenceOptions;
 - (long long)type;
 - (long long)videoEncodingBehavior;

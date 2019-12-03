@@ -7,6 +7,7 @@
     NSMutableDictionary * _searchResultsBySection;
 }
 
+@property (nonatomic, readonly) NSArray *allSearchResults;
 @property (nonatomic) bool disableAutomaticUpdates;
 @property (nonatomic, retain) NSMutableDictionary *searchResultsBySection;
 
@@ -14,9 +15,10 @@
 
 - (void).cxx_destruct;
 - (void)addSearchResult:(id)arg1 toSection:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
-- (bool)addSearchResults:(id)arg1 removingFoundIdentifiers:(id)arg2 passingVisibilityTesting:(id)arg3;
+- (unsigned long long)addSearchResults:(id)arg1 removingFoundIdentifiers:(id)arg2 passingVisibilityTesting:(id)arg3;
 - (void)addSearchResults:(id)arg1 toSection:(unsigned long long)arg2;
 - (unsigned long long)addSearchResultsBySection:(id)arg1;
+- (id)allSearchResults;
 - (void)clear;
 - (unsigned long long)countForSection:(unsigned long long)arg1;
 - (void)dealloc;
@@ -26,6 +28,8 @@
 - (bool)hasSearchResults;
 - (bool)hideSearchResultsForIdentifier:(id)arg1;
 - (bool)hideSearchResultsForObjects:(id)arg1;
+- (id)indexPathOfObject:(id)arg1;
+- (id)indexPathOfSearchResult:(id)arg1;
 - (id)init;
 - (void)noteWillBeUndeletedOrUntrashed:(id)arg1;
 - (void)objectsDidChange:(id)arg1;
@@ -38,6 +42,7 @@
 - (id)searchResultAtRow:(long long)arg1 section:(unsigned long long)arg2;
 - (id)searchResultObjectsInSection:(unsigned long long)arg1;
 - (id)searchResultSectionForSectionIndex:(unsigned long long)arg1;
+- (id)searchResultWithObject:(id)arg1;
 - (id)searchResultsBySection;
 - (id)searchResultsBySectionForSearchResults:(id)arg1 passingVisibilityTesting:(id)arg2;
 - (id)searchResultsInSection:(unsigned long long)arg1;

@@ -3,17 +3,14 @@
  */
 
 @interface UISearchBarBackground : _UIBarBackgroundImageView <_UIBarPositioningInternal> {
-    unsigned int  _actingAsNavBar;
-    unsigned int  _barHasController;
     long long  _barPosition;
-    unsigned int  _barStyle;
+    long long  _barStyle;
     UIColor * _barTintColor;
-    unsigned int  _barTranslucence;
+    long long  _barTranslucence;
     NSMutableDictionary * _customBackgroundImages;
-    NSMutableDictionary * _generatedBackgroundImages;
     unsigned long long  _searchBarStyle;
-    unsigned int  _usesContiguousBarBackground;
-    unsigned int  _usesEmbeddedAppearance;
+    bool  _usesContiguousBarBackground;
+    bool  _usesEmbeddedAppearance;
 }
 
 @property (nonatomic, readonly) UIImage *backgroundImage;
@@ -33,16 +30,17 @@
 - (id)_backgroundImageForBarPosition:(long long)arg1 barMetrics:(long long)arg2;
 - (long long)_barPosition;
 - (id)_createBackgroundImageForBarStyle:(long long)arg1 alpha:(double)arg2;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (bool)_hasCustomBackgroundImage;
 - (void)_setBackgroundImage:(id)arg1 forBarPosition:(long long)arg2 barMetrics:(long long)arg3;
 - (void)_setBarPosition:(long long)arg1;
-- (void)_setBehavesAsIfSearchBarHasController:(bool)arg1;
 - (void)_updateBackgroundImage;
 - (void)_updateBackgroundImageIfPossible;
 - (id)backgroundImage;
 - (id)backgroundImagePrompt;
 - (long long)barStyle;
 - (id)barTintColor;
+- (void)didMoveToWindow;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (bool)isTranslucent;
 - (unsigned long long)searchBarStyle;

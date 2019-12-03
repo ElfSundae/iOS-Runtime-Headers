@@ -12,7 +12,6 @@
 - (void)dealloc;
 - (void)didAccessKVOForAllKeys;
 - (void)didAccessKVOForKey:(id)arg1;
-- (void)finalize;
 - (id)init;
 - (id)initWithCachePolicy:(long long)arg1 keysRequiringExplicitPerThreadSignal:(id)arg2;
 - (id)objectForKey:(id)arg1;

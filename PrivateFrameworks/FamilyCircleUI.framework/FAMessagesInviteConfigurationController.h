@@ -27,6 +27,7 @@
 
 - (void).cxx_destruct;
 - (id)_cachedImage;
+- (id)_colorForString:(id)arg1;
 - (id)_defaultIcon;
 - (id)_defaultImage;
 - (id)_linkMetadata;

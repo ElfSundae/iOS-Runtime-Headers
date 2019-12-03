@@ -6,6 +6,9 @@
     NSData * __TCPConnectionMetadata;
     NSData * __initialDataPayload;
     NSMutableArray * _afterConnectQueue;
+    int  _allowsCellularOverride;
+    int  _allowsConstrainedOverride;
+    int  _allowsExpensiveOverride;
     bool  _betterRouteDiscovered;
     NSString * _boundInterfaceIdentifier;
     int  _connectionState;
@@ -21,13 +24,11 @@
     bool  _disallowCellular;
     id /* block */  _disavow;
     bool  _doingWorkOnThisQueue;
-    NSDate * _earliestBeginDate;
     NSError * _error;
     long long  _expectedWorkload;
     NSMutableArray * _extraWork;
     NSMutableArray * _finalizationQueue;
     bool  _goneSecure;
-    NSString * _ledBellyServiceIdentifier;
     NSDictionary * _legacySocketStreamProperties;
     double  _loadingPriorityValue;
     int  _networkServiceType;
@@ -43,7 +44,6 @@
     bool  _readSignaled;
     struct __CFReadStream { } * _readStream;
     NSURLResponse * _response;
-    __NSURLSessionLocal * _session;
     struct BaseSocketStreamClient { int (**x1)(); } * _socketStreamClient;
     long long  _state;
     NSString * _taskDescription;
@@ -51,7 +51,8 @@
     NSObject<OS_dispatch_source> * _tickerTimeoutTimer;
     double  _timeWindowDelay;
     double  _timeWindowDuration;
-    NSObject<OS_dispatch_queue> * _workQueue;
+    NSUUID * _uniqueIdentifier;
+    NSObject<OS_dispatch_queue> * _workQueueForStreamTask;
     NSData * _writeBuffer;
     long long  _writeBufferAlreadyWrittenForNextWrite;
     bool  _writeEOF;
@@ -61,6 +62,7 @@
     }  _writeError;
     bool  _writeSignaled;
     struct __CFWriteStream { } * _writeStream;
+    float  priority;
     double  startTime;
 }
 
@@ -68,6 +70,7 @@
 @property (readonly) bool _goneSecure;
 @property (copy) NSData *_initialDataPayload;
 @property double _timeoutIntervalForResource;
+@property (readonly, copy) NSUUID *_uniqueIdentifier;
 @property long long countOfBytesClientExpectsToReceive;
 @property long long countOfBytesClientExpectsToSend;
 @property long long countOfBytesExpectedToReceive;
@@ -75,7 +78,6 @@
 @property long long countOfBytesReceived;
 @property long long countOfBytesSent;
 @property (copy) NSURLRequest *currentRequest;
-@property (copy) NSDate *earliestBeginDate;
 @property (copy) NSError *error;
 @property (copy) NSURLRequest *originalRequest;
 @property (copy) NSURLResponse *response;
@@ -84,17 +86,22 @@
 @property unsigned long long taskIdentifier;
 
 - (id)_TCPConnectionMetadata;
+- (void)_adoptEffectiveConfiguration:(id)arg1;
+- (int)_allowsCellularOverride;
+- (int)_allowsConstrainedOverride;
+- (int)_allowsExpensiveOverride;
 - (id)_boundInterfaceIdentifier;
+- (bool)_cacheOnly;
 - (struct __CFDictionary { }*)_copySocketStreamProperties;
 - (bool)_disallowCellular;
+- (id)_effectiveConfiguration;
 - (long long)_expectedWorkload;
 - (bool)_goneSecure;
-- (id)_initCommonWithSession:(id)arg1 disavow:(id /* block */)arg2;
+- (id)_initCommonWithGroup:(id)arg1 disavow:(id /* block */)arg2;
 - (id)_initWithExistingTask:(id)arg1 disavow:(id /* block */)arg2;
-- (id)_initWithSession:(id)arg1 disavow:(id /* block */)arg2;
+- (id)_initWithTaskGroup:(id)arg1 disavow:(id /* block */)arg2;
 - (void)_init_setupTimeoutTimer;
 - (id)_initialDataPayload;
-- (id)_ledBellyServiceIdentifier;
 - (id)_legacySocketStreamProperties;
 - (int)_networkServiceType;
 - (void)_onSessionQueue_cleanupAndBreakCycles;
@@ -128,11 +135,11 @@
 - (void)_onqueue_unscheduleStreams;
 - (void)_onqueue_writeData:(id)arg1 timeout:(double)arg2 completionHandler:(id /* block */)arg3;
 - (void)_onqueue_writeStreamEvent:(unsigned long long)arg1;
-- (void)_reportTimingDataToAWD:(id)arg1;
 - (void)_task_onqueue_didFinish;
 - (void)_task_onqueue_didReceiveDispatchData:(id)arg1 completionHandler:(id /* block */)arg2;
 - (double)_timeWindowDelay;
 - (double)_timeWindowDuration;
+- (id)_uniqueIdentifier;
 - (void)adjustConditionalConnectionProperties:(struct __CFDictionary { }*)arg1;
 - (void)cancel;
 - (void)captureStreams;
@@ -151,11 +158,11 @@
 - (void)dealloc;
 - (id)describePending:(id)arg1;
 - (id)description;
-- (id)earliestBeginDate;
 - (id)error;
-- (id)initWithHost:(id)arg1 port:(long long)arg2 session:(id)arg3 disavow:(id /* block */)arg4;
-- (id)initWithNetService:(id)arg1 session:(id)arg2 disavow:(id /* block */)arg3;
+- (id)initWithHost:(id)arg1 port:(long long)arg2 taskGroup:(id)arg3 disavow:(id /* block */)arg4;
+- (id)initWithNetService:(id)arg1 taskGroup:(id)arg2 disavow:(id /* block */)arg3;
 - (id)originalRequest;
+- (float)priority;
 - (void)readDataOfMinLength:(unsigned long long)arg1 maxLength:(unsigned long long)arg2 timeout:(double)arg3 completionHandler:(id /* block */)arg4;
 - (id)response;
 - (void)resume;
@@ -166,19 +173,21 @@
 - (void)setCountOfBytesReceived:(long long)arg1;
 - (void)setCountOfBytesSent:(long long)arg1;
 - (void)setCurrentRequest:(id)arg1;
-- (void)setEarliestBeginDate:(id)arg1;
 - (void)setError:(id)arg1;
 - (void)setOriginalRequest:(id)arg1;
+- (void)setPriority:(float)arg1;
 - (void)setResponse:(id)arg1;
 - (void)setState:(long long)arg1;
 - (void)setTaskDescription:(id)arg1;
 - (void)setTaskIdentifier:(unsigned long long)arg1;
 - (void)set_TCPConnectionMetadata:(id)arg1;
+- (void)set__allowsCellularOverride:(int)arg1;
+- (void)set_allowsConstrainedOverride:(int)arg1;
+- (void)set_allowsExpensiveOverride:(int)arg1;
 - (void)set_boundInterfaceIdentifier:(id)arg1;
 - (void)set_disallowCellular:(bool)arg1;
 - (void)set_expectedWorkload:(long long)arg1;
 - (void)set_initialDataPayload:(id)arg1;
-- (void)set_ledBellyServiceIdentifier:(id)arg1;
 - (void)set_legacySocketStreamProperties:(id)arg1;
 - (void)set_networkServiceType:(int)arg1;
 - (void)set_timeWindowDelay:(double)arg1;
@@ -189,6 +198,7 @@
 - (void)suspend;
 - (id)taskDescription;
 - (unsigned long long)taskIdentifier;
+- (id)workQueue;
 - (void)writeData:(id)arg1 timeout:(double)arg2 completionHandler:(id /* block */)arg3;
 
 @end

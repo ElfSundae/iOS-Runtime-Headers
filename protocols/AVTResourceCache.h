@@ -11,5 +11,6 @@
 @optional
 
 - (void)clearCache;
+- (void)evictResourceFromCache:(id <AVTCacheableResource>)arg1 scope:(id <AVTCacheableResourceScope>)arg2;
 
 @end

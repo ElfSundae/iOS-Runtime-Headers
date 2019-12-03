@@ -7,10 +7,10 @@
     BWInferenceVideoRequirement * _disparityInputVideoRequirement;
     NSArray * _inputVideoRequirements;
     FigMatting * _mattingProcessor;
+    <MTLCommandQueue> * _metalCommandQueue;
     NSArray * _outputVideoRequirements;
     BWInferenceVideoRequirement * _primaryFormatInputVideoRequirement;
     BWInferenceVideoRequirement * _refinedDepthOutputVideoRequirement;
-    BWInferenceVideoRequirement * _segmentationConfidenceInputVideoRequirement;
     BWInferenceVideoRequirement * _segmentationInputVideoRequirement;
     BWInferenceVideoRequirement * _segmentationOutputVideoRequirement;
     NSDictionary * _tuningParameters;
@@ -51,7 +51,7 @@
 - (id)outputVideoRequirements;
 - (int)prepareForExecution;
 - (id)preventionReasons;
-- (int)prewarm;
+- (int)prewarmUsingLimitedMemory:(bool)arg1;
 - (id)processorOptionsDictionary;
 - (id)propagatable;
 - (void)propagateInferenceResultsToInferenceDictionary:(id)arg1 usingStorage:(id)arg2 propagationSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg3;

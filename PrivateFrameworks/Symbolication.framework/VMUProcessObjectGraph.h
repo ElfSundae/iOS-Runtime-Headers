@@ -8,7 +8,6 @@
     VMUDebugTimer * _debugTimer;
     NSString * _executablePath;
     bool  _gotObjcClassStructureRanges;
-    bool  _javaScriptCoreUsingPoisoning;
     unsigned int  _kernPageSize;
     unsigned long long  _machAbsolute;
     VMUNodeToStringMap * _nodeLabels;
@@ -36,7 +35,6 @@
 @property (nonatomic, readonly) NSString *executablePath;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) bool is64bit;
-@property (nonatomic) bool javaScriptCoreUsingPoisoning;
 @property (nonatomic, readonly) unsigned int nodeCount;
 @property (nonatomic, readonly) unsigned int nodeNamespaceSize;
 @property (nonatomic) unsigned long long physicalFootprint;
@@ -72,17 +70,18 @@
 - (unsigned int)enumerateRegionsWithBlock:(id /* block */)arg1;
 - (id)executablePath;
 - (bool)hasLabelsForNodes;
-- (id)initWithArchived:(id)arg1 version:(long long)arg2 options:(unsigned long long)arg3;
+- (id)initWithArchived:(id)arg1 version:(long long)arg2 options:(unsigned long long)arg3 diskLogs:(id)arg4;
 - (id)initWithPid:(int)arg1 nodes:(struct _VMUBlockNode { unsigned long long x1; unsigned int x2 : 3; unsigned int x3 : 2; unsigned int x4 : 36; unsigned int x5 : 23; }*)arg2 nodeCount:(unsigned int)arg3 zoneNames:(id)arg4 classInfoMap:(id)arg5 regions:(id)arg6 pthreadOffsets:(id)arg7 userMarked:(void*)arg8;
 - (bool)is64bit;
-- (bool)javaScriptCoreUsingPoisoning;
 - (id)labelForNode:(unsigned int)arg1;
 - (void)markReachableNodesFromRoots:(void*)arg1 inMap:(void*)arg2;
-- (void)markReachableNodesFromRoots:(void*)arg1 inMap:(void*)arg2 showLeakedVMregions:(bool)arg3;
+- (void)markReachableNodesFromRoots:(void*)arg1 inMap:(void*)arg2 options:(unsigned int)arg3;
 - (id)nodeDescription:(unsigned int)arg1;
 - (id)nodeDescription:(unsigned int)arg1 withDestinationNode:(unsigned int)arg2 referenceInfo:(struct { unsigned long long x1; unsigned int x2; unsigned long long x3; })arg3;
 - (id)nodeDescription:(unsigned int)arg1 withOffset:(unsigned long long)arg2;
 - (id)nodeDescription:(unsigned int)arg1 withOffset:(unsigned long long)arg2 showLabel:(bool)arg3;
+- (bool)nodeDetailIsAutoreleasePoolContentPage:(struct { unsigned long long x1; unsigned int x2 : 60; unsigned int x3 : 4; id x4; })arg1;
+- (bool)nodeIsAutoreleasePoolContentPage:(unsigned int)arg1;
 - (id)nodeOffsetDescription:(struct { unsigned long long x1; unsigned int x2; unsigned long long x3; })arg1 withSourceNode:(unsigned int)arg2 destinationNode:(unsigned int)arg3;
 - (unsigned int)nodeReferencedFromDataRegion:(id)arg1 byGlobalSymbol:(id)arg2;
 - (unsigned long long)physicalFootprint;
@@ -101,7 +100,6 @@
 - (void)setBinaryImagesDescription:(id)arg1;
 - (void)setBinarySectionName:(id)arg1 forRange:(struct _VMURange { unsigned long long x1; unsigned long long x2; })arg2;
 - (void)setDebugTimer:(id)arg1;
-- (void)setJavaScriptCoreUsingPoisoning:(bool)arg1;
 - (void)setLabel:(id)arg1 forNode:(unsigned int)arg2;
 - (void)setPhysicalFootprint:(unsigned long long)arg1;
 - (void)setPhysicalFootprintPeak:(unsigned long long)arg1;

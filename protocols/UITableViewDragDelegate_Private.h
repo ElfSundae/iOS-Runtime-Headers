@@ -6,5 +6,6 @@
 @optional
 
 - (long long)_tableView:(UITableView *)arg1 dataOwnerForDragSession:(id <UIDragSession>)arg2 atIndexPath:(NSIndexPath *)arg3;
+- (bool)_tableView:(UITableView *)arg1 dragSessionSupportsSystemDrag:(id <UIDragSession>)arg2;
 
 @end

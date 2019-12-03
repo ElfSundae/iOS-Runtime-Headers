@@ -26,6 +26,7 @@
 
 // Image: /System/Library/PrivateFrameworks/AXRuntime.framework/AXRuntime
 
++ (bool)_isSerializableAccessibilityElement;
 + (void)initialize;
 + (bool)registerRemoteElement:(id)arg1;
 + (id)remoteElementForBlock:(id /* block */)arg1;
@@ -34,13 +35,17 @@
 
 - (void).cxx_destruct;
 - (id)_accessibilityActiveKeyboard;
+- (unsigned long long)_accessibilityAutomationType;
 - (id)_accessibilityFirstElement;
+- (id)_accessibilityHandwritingElement;
 - (void)_accessibilityIncreaseSelection:(id)arg1;
+- (bool)_accessibilityIsGroupedParent;
 - (id)_accessibilityLastElement;
 - (id)_accessibilityResponderElement;
 - (id)_accessibilitySortedElementsWithin;
 - (id)_accessibilityTextOperations;
 - (id)_accessibilityTextViewTextOperationResponder;
+- (void)_getRemoteValuesOffMainThread:(id /* block */)arg1;
 - (id)_remoteElementWithAttribute:(long long)arg1 limitToRemoteSubviews:(bool)arg2;
 - (id)accessibilityContainer;
 - (id)accessibilityElements;
@@ -73,9 +78,9 @@
 - (bool)_accessibilityEnumerateSiblingsWithParent:(id*)arg1 options:(id)arg2 usingBlock:(id /* block */)arg3;
 - (bool)_accessibilityIsRemoteElement;
 - (id)_ancestorElementThatSupportsActivationAction;
+- (id)_iosAccessibilityAttributeValue:(long long)arg1;
+- (id)_iosAccessibilityAttributeValue:(long long)arg1 forParameter:(id)arg2;
 - (bool)accessibilityActivate;
-- (id)accessibilityAttributeValue:(long long)arg1;
-- (id)accessibilityAttributeValue:(long long)arg1 forParameter:(id)arg2;
 - (bool)accessibilityViewIsModal;
 - (void)platformCleanup;
 

@@ -19,6 +19,7 @@
 - (void).cxx_destruct;
 - (int)annotatedItemStyle;
 - (id)attribution;
+- (id)init;
 - (id)initWithAnnotatedItemList:(id)arg1 attribution:(id)arg2;
 - (id)initWithPictureItemContainer:(id)arg1 textItemContainer:(id)arg2 title:(id)arg3 annotatedItemStyle:(int)arg4 attribution:(id)arg5;
 - (id)pictureItemContainer;

@@ -3,12 +3,12 @@
  */
 
 @interface VNFaceBBoxAligner : VNDetector {
+    bool  _modelFilesWereMemmapped;
     <VNModelFile> * mFaceBoxAlignerModelFileHandle;
     struct shared_ptr<vision::mod::FaceBoxPoseAligner<signed char> > { 
         struct FaceBoxPoseAligner<signed char> {} *__ptr_; 
         struct __shared_weak_count {} *__cntrl_; 
     }  mFaceBoxPoseAlignerImpl;
-    bool  modelFilesWereMemmapped;
 }
 
 + (bool)shouldDumpDebugIntermediates;

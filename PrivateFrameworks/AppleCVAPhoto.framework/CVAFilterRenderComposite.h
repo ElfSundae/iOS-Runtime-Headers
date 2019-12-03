@@ -13,7 +13,7 @@
 @property (readonly) NSString *label;
 
 - (void).cxx_destruct;
-- (void)encodeToCommandBuffer:(id)arg1 srcForegroundTex:(id)arg2 srcBackgroundTex:(id)arg3 srcCocTex:(id)arg4 dstYTex:(id)arg5 dstUVTex:(id)arg6 fgColorLut:(id)arg7 bgColorLut:(id)arg8 frameNumber:(unsigned int)arg9 seedGeneratorFactor:(unsigned int)arg10 noiseBits:(int)arg11 noiseBitsFactor:(float)arg12 cubeIntensity:(float)arg13;
+- (void)encodeToCommandBuffer:(id)arg1 srcForegroundTex:(id)arg2 srcBackgroundTex:(id)arg3 srcCocTex:(id)arg4 dstYTex:(id)arg5 dstUVTex:(id)arg6 fgColorLut:(id)arg7 bgColorLut:(id)arg8 frameNumber:(unsigned int)arg9 seedGeneratorFactor:(unsigned int)arg10 noiseBits:(int)arg11 noiseBitsFactor:(float)arg12 cubeIntensity:(float)arg13 maxBlurRadius:(struct optional<float> { bool x1; struct aligned_storage<float> { union dummy_u { BOOL x_1_2_1[4]; struct a4 { } x_1_2_2; } x_2_1_1; } x2; })arg14;
 - (id)initWithDevice:(id)arg1 library:(id)arg2 error:(id*)arg3;
 - (id)label;
 

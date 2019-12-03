@@ -30,6 +30,7 @@
 @property (nonatomic, readonly) UIView *view;
 
 - (void)_addOneFingerForceGestures:(id)arg1 toView:(id)arg2;
+- (void)addGestureRecognizersToView:(id)arg1;
 - (void)addNonEditableForceTextSelectionGestureRecognizersToView:(id)arg1;
 - (void)addSelectionViewIfNeeded;
 - (void)clearSelection;

@@ -6,16 +6,13 @@
     id /* block */  _action;
     id  _buffer;
     PFCoalescerContext * _context;
-    long long  _fireSequenceNumber;
     double  _initialDelay;
     bool  _initialDelayTimerIsArmed;
     NSObject<OS_dispatch_queue> * _isolationQueue;
     NSString * _label;
     long long  _lastUpdateResetSequenceNumber;
-    long long  _mode;
     long long  _queueType;
     long long  _resetSequenceNumber;
-    long long  _sequenceNumber;
     id /* block */  _snapshotAndDrainHandler;
     NSObject<OS_dispatch_source> * _source;
     NSObject<OS_dispatch_queue> * _sourceQueue;
@@ -34,7 +31,6 @@
 @property bool initialDelayTimerIsArmed;
 @property (retain) NSObject<OS_dispatch_queue> *isolationQueue;
 @property (retain) NSString *label;
-@property long long mode;
 @property long long queueType;
 @property (copy) id /* block */ snapshotAndDrainHandler;
 @property (retain) NSObject<OS_dispatch_source> *source;
@@ -60,20 +56,21 @@
 + (id)setCoalescerWithLabel:(id)arg1 target:(id)arg2 queue:(id)arg3 action:(id /* block */)arg4;
 
 - (void).cxx_destruct;
+- (void)_resetWhileLocked;
 - (id /* block */)action;
 - (id)buffer;
 - (id)context;
 - (void)dealloc;
-- (void)dispatch_after:(unsigned long long)arg1 queue:(id)arg2 block:(id /* block */)arg3;
 - (id)init;
 - (id)initWithLabel:(id)arg1 target:(id)arg2 buffer:(id)arg3 queue:(id)arg4 bufferDrainer:(id /* block */)arg5 action:(id /* block */)arg6;
 - (double)initialDelay;
 - (bool)initialDelayTimerIsArmed;
 - (id)isolationQueue;
 - (id)label;
-- (long long)mode;
+- (void)performEventActionWithTarget:(id)arg1;
 - (long long)queueType;
 - (void)reset;
+- (void)resetAndShutDown;
 - (void)setAction:(id /* block */)arg1;
 - (void)setBuffer:(id)arg1;
 - (void)setContext:(id)arg1;
@@ -81,7 +78,6 @@
 - (void)setInitialDelayTimerIsArmed:(bool)arg1;
 - (void)setIsolationQueue:(id)arg1;
 - (void)setLabel:(id)arg1;
-- (void)setMode:(long long)arg1;
 - (void)setQueueType:(long long)arg1;
 - (void)setSnapshotAndDrainHandler:(id /* block */)arg1;
 - (void)setSource:(id)arg1;

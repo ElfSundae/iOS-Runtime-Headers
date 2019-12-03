@@ -22,6 +22,8 @@
 @property (nonatomic, readonly) Project *project;
 @property (nonatomic) bool useNonSpecialDurations;
 
++ (id)rangeModelsBySplittingRangeModels:(id)arg1 outsideRange:(id)arg2;
+
 - (void).cxx_destruct;
 - (void)_clipClip:(id)arg1;
 - (void)_fitToDuration;

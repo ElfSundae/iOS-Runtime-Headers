@@ -3,18 +3,20 @@
  */
 
 @interface PICurvesFilter : CIFilter {
-    NSData * inputBlueData;
-    NSNumber * inputGrayChoice;
-    NSData * inputGreenData;
-    CIImage * inputImage;
-    NSData * inputRGBData;
-    NSData * inputRedData;
+    CIImage * _inputImage;
+    CIImage * _inputTableImage;
 }
 
-+ (id)curvesKernels;
+@property (retain) CIImage *inputImage;
+@property (retain) CIImage *inputTableImage;
+
++ (id)curvesKernel;
 
 - (void).cxx_destruct;
-- (id)makeImageFromCurveData;
+- (id)inputImage;
+- (id)inputTableImage;
 - (id)outputImage;
+- (void)setInputImage:(id)arg1;
+- (void)setInputTableImage:(id)arg1;
 
 @end

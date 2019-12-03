@@ -25,7 +25,6 @@
 - (void)_startEditingFirstCell;
 - (void)cancel:(id)arg1;
 - (id)contactViewCache;
-- (id)defaultValueForPropertyCell:(id)arg1;
 - (void)done:(id)arg1;
 - (id)initWithContact:(id)arg1 propertyKey:(id)arg2 editNames:(bool)arg3;
 - (bool)isPresentingModalViewController;

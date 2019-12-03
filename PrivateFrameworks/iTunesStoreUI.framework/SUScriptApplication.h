@@ -41,6 +41,7 @@
 - (id)exitStoreReasonOther;
 - (id)exitStoreReasonPurchase;
 - (void)exitStoreWithReason:(id)arg1;
+- (id)hostIdentifier;
 - (id)iconBadgeNumber;
 - (id)identifier;
 - (id)isDelayingTerminate;

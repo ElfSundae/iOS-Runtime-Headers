@@ -10,6 +10,7 @@
 @property (nonatomic, readonly) NSSet *allKeys;
 @property (nonatomic, readonly) NSDictionary *rawValues;
 
+- (void).cxx_destruct;
 - (id)URLForKey:(id)arg1;
 - (id)_initWithKeys:(id)arg1 forDictionary:(id)arg2;
 - (id)allKeys;
@@ -17,7 +18,6 @@
 - (id)arrayForKey:(id)arg1 withValuesOfClass:(Class)arg2;
 - (bool)boolForKey:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)dictionaryForKey:(id)arg1;
 - (id)init;
 - (id)numberForKey:(id)arg1;

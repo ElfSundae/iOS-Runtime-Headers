@@ -9,7 +9,10 @@
 + (id)sharedInstance;
 
 - (int)getMomentsCapabilities;
-- (int)getMomentsCapabilitiesForSupportedDevices;
+- (id)getMomentsImageTypes;
+- (id)getMomentsVideoCodecs;
 - (id)initWithHardwareSettings:(id)arg1;
+- (bool)isSupportedChipID;
+- (bool)isSupportedDeviceClass;
 
 @end

@@ -13,6 +13,8 @@
     bool  _isPushTriggerFired;
     NSUUID * _metricUUID;
     bool  _preferAnonymousRequests;
+    NSString * _sourceApplicationBundleIdentifier;
+    NSString * _sourceApplicationSecondaryIdentifier;
     NSDate * _startTime;
 }
 
@@ -26,6 +28,8 @@
 @property (nonatomic, readonly) bool isPushTriggerFired;
 @property (nonatomic, readonly) NSUUID *metricUUID;
 @property (nonatomic, readonly) bool preferAnonymousRequests;
+@property (nonatomic, readonly) NSString *sourceApplicationBundleIdentifier;
+@property (nonatomic, readonly) NSString *sourceApplicationSecondaryIdentifier;
 @property (nonatomic, readonly) NSDate *startTime;
 
 + (bool)supportsSecureCoding;
@@ -44,6 +48,8 @@
 - (bool)isPushTriggerFired;
 - (id)metricUUID;
 - (bool)preferAnonymousRequests;
+- (id)sourceApplicationBundleIdentifier;
+- (id)sourceApplicationSecondaryIdentifier;
 - (id)startTime;
 
 @end

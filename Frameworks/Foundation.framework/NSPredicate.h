@@ -10,7 +10,10 @@
     unsigned int  reserved;
 }
 
+@property (nonatomic, readonly) bool ef_matchesEverything;
+@property (nonatomic, readonly) bool ef_matchesNothing;
 @property (readonly, copy) NSString *predicateFormat;
+@property (nonatomic, readonly) NSPredicate *wf_photoLibraryFilteringPredicate;
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
@@ -44,6 +47,7 @@
 
 // Image: /System/Library/Frameworks/CoreData.framework/CoreData
 
+- (id)_keypathsForDerivedPropertyValidation:(id*)arg1;
 - (id)minimalFormInContext:(id)arg1;
 
 // Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
@@ -82,9 +86,24 @@
 
 - (id)CKDPQueryFiltersWithTranslator:(id)arg1 error:(id*)arg2;
 
-// Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon
+// Image: /System/Library/PrivateFrameworks/ContentKit.framework/ContentKit
 
-+ (id)_hd_predicateForCompatibilityVersion:(long long)arg1;
+- (id)wf_photoLibraryFilteringPredicate;
+
+// Image: /System/Library/PrivateFrameworks/Email.framework/Email
+
+- (id)em_searchableIndexQueryGenerator;
+
+// Image: /System/Library/PrivateFrameworks/EmailFoundation.framework/EmailFoundation
+
++ (id)ef_matchEverythingPredicate;
++ (id)ef_matchNothingPredicate;
+
+- (bool)ef_matchesEverything;
+- (bool)ef_matchesNothing;
+- (id)predicateNodeFromPropertyMapper:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon
 
 - (id)_sqlPredicateForSelect;
 
@@ -95,9 +114,27 @@
 
 - (id)FCCKPQueryFiltersWithTranslator:(id)arg1 error:(id*)arg2;
 
+// Image: /System/Library/PrivateFrameworks/PodcastsKit.framework/PodcastsKit
+
++ (id)falsePredicate;
++ (id)predicateForDateKey:(id)arg1 isGreaterThanDate:(id)arg2;
++ (id)predicateForDateKey:(id)arg1 isGreaterThanOrEqualToDate:(id)arg2;
++ (id)predicateForDateKey:(id)arg1 isLessThanDate:(id)arg2;
++ (id)predicateForDateKey:(id)arg1 isLessThanOrEqualToDate:(id)arg2;
++ (id)truePredicate;
+
+- (id)AND:(id)arg1;
+- (id)OR:(id)arg1;
+
 // Image: /System/Library/PrivateFrameworks/SpotlightServices.framework/SpotlightServices
 
-+ (id)_predicateForItemsWithAttribute:(id)arg1;
++ (id)_predicateForItemsWithAttribute:(int)arg1;
+
+// Image: /System/Library/PrivateFrameworks/TrackingAvoidance.framework/TrackingAvoidance
+
++ (id)predicateForTAEventsClass:(Class)arg1;
++ (id)predicateForTAEventsClass:(Class)arg1 andEventSubtype:(unsigned long long)arg2;
++ (id)predicateForTAEventsInDateInterval:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/VideoProcessing.framework/VideoProcessing
 

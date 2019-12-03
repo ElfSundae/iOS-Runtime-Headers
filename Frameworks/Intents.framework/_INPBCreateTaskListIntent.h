@@ -3,6 +3,7 @@
  */
 
 @interface _INPBCreateTaskListIntent : PBCodable <NSCopying, NSSecureCoding, _INPBCreateTaskListIntent> {
+    bool  __encodeLegacyGloryData;
     _INPBDataString * _groupName;
     struct { }  _has;
     _INPBIntentMetadata * _intentMetadata;
@@ -10,6 +11,7 @@
     _INPBDataString * _title;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) _INPBDataString *groupName;
@@ -23,18 +25,23 @@
 @property (nonatomic, readonly) unsigned long long taskTitlesCount;
 @property (nonatomic, retain) _INPBDataString *title;
 
++ (bool)supportsSecureCoding;
 + (Class)taskTitlesType;
 
 - (void).cxx_destruct;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (void)addTaskTitles:(id)arg1;
 - (void)clearTaskTitles;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (id)groupName;
 - (bool)hasGroupName;
 - (bool)hasIntentMetadata;
 - (bool)hasTitle;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)intentMetadata;
 - (bool)isEqual:(id)arg1;
 - (bool)readFrom:(id)arg1;

@@ -6,5 +6,6 @@
 @required
 
 - (void)addButtonPressedForPaymentPass:(PKPaymentPass *)arg1;
+- (void)verifyButtonPressedForPaymentPass:(PKPaymentPass *)arg1;
 
 @end

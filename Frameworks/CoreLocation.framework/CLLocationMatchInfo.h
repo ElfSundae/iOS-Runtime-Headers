@@ -8,7 +8,7 @@
 
 @property (nonatomic, readonly) struct CLLocationCoordinate2D { double x1; double x2; } matchCoordinate;
 @property (nonatomic, readonly) double matchCourse;
-@property (nonatomic, readonly) NSData *matchDataArray;
+@property (nonatomic, readonly, copy) NSData *matchDataArray;
 @property (nonatomic, readonly) int matchFormOfWay;
 @property (nonatomic, readonly) long long matchQuality;
 @property (nonatomic, readonly) int matchRoadClass;

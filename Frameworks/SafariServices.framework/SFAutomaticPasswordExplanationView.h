@@ -23,8 +23,8 @@
     NSLayoutConstraint * _strongPasswordButtonHeightConstraint;
     NSLayoutConstraint * _strongPasswordButtonWidthConstraint;
     NSLayoutConstraint * _useCustomPasswordBaselineToBottomConstraint;
-    UIButton * _useCustomPasswordButton;
     NSLayoutConstraint * _useCustomPasswordButtonWidthConstraint;
+    UIButton * _useOtherPasswordButton;
     UIButton * _useStrongPasswordButton;
     NSLayoutConstraint * _wideContentLeadingConstraint;
     double  _wideContentMaximumPadding;
@@ -39,7 +39,7 @@
 @property (nonatomic) long long keyboardAppearance;
 @property (nonatomic, readonly) UILabel *passwordRetrievalExpalantionLabel;
 @property (readonly) Class superclass;
-@property (nonatomic, readonly) UIButton *useCustomPasswordButton;
+@property (nonatomic, readonly) UIButton *useOtherPasswordButton;
 @property (nonatomic, readonly) UIButton *useStrongPasswordButton;
 
 - (void).cxx_destruct;
@@ -65,7 +65,7 @@
 - (void)setKeyboardAppearance:(long long)arg1;
 - (struct CGSize { double x1; double x2; })systemLayoutSizeFittingSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)updateConstraints;
-- (id)useCustomPasswordButton;
+- (id)useOtherPasswordButton;
 - (id)useStrongPasswordButton;
 
 @end

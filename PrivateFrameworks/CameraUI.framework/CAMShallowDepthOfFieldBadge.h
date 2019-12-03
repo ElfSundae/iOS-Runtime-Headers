@@ -3,13 +3,13 @@
  */
 
 @interface CAMShallowDepthOfFieldBadge : UIView {
-    CAMBadgeTextView * __disabledTextView;
-    CAMBadgeTextView * __enabledTextView;
+    CEKBadgeTextView * __disabledTextView;
+    CEKBadgeTextView * __enabledTextView;
     long long  _shallowDepthOfFieldStatus;
 }
 
-@property (nonatomic, readonly) CAMBadgeTextView *_disabledTextView;
-@property (nonatomic, readonly) CAMBadgeTextView *_enabledTextView;
+@property (nonatomic, readonly) CEKBadgeTextView *_disabledTextView;
+@property (nonatomic, readonly) CEKBadgeTextView *_enabledTextView;
 @property (nonatomic) long long shallowDepthOfFieldStatus;
 
 - (void).cxx_destruct;

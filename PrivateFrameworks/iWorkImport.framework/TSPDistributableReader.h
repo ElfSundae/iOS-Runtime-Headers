@@ -6,7 +6,7 @@
     TSPDatabase * _database;
     TSPDistributableFileManager * _fileManager;
     bool  _hasReadTangierVersionRoot;
-    bool  _isCancelled;
+    _Atomic bool  _isCancelled;
 }
 
 @property (readonly, copy) NSString *debugDescription;

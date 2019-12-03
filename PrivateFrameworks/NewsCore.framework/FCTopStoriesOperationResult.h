@@ -4,6 +4,7 @@
 
 @interface FCTopStoriesOperationResult : NSObject {
     FCColorGradient * _backgroundColorGradient;
+    FCColorGradient * _darkStyleBackgroundColorGradient;
     NSArray * _mandatoryHeadlines;
     NSArray * _optionalHeadlines;
     NSDate * _publishDate;
@@ -12,6 +13,7 @@
 }
 
 @property (nonatomic, copy) FCColorGradient *backgroundColorGradient;
+@property (nonatomic, readonly, copy) FCColorGradient *darkStyleBackgroundColorGradient;
 @property (copy) NSArray *mandatoryHeadlines;
 @property (copy) NSArray *optionalHeadlines;
 @property (copy) NSDate *publishDate;
@@ -20,6 +22,7 @@
 
 - (void).cxx_destruct;
 - (id)backgroundColorGradient;
+- (id)darkStyleBackgroundColorGradient;
 - (id)initWithTopStoriesGroupConfig:(id)arg1 mandatoryHeadlines:(id)arg2 optionalHeadlines:(id)arg3 topStoriesMetadataByArticleID:(id)arg4 publishDate:(id)arg5 subtitle:(id)arg6;
 - (id)mandatoryHeadlines;
 - (id)optionalHeadlines;

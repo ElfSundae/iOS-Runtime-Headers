@@ -11,7 +11,6 @@
     double  _paddingFromTimeToDesignator;
     NSDate * _previousWeek;
     bool  _shouldRecomputeText;
-    UIFont * _timeDesignatorFont;
     NSDate * _today;
     NSDate * _tomorrow;
     NSDate * _yesterday;

@@ -13,6 +13,7 @@
 - (void)addAttributesWeakly:(id)arg1 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (void)appendAttributedString:(id)arg1;
 - (void)beginEditing;
+- (Class)classForCoder;
 - (void)deleteCharactersInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (void)endEditing;
 - (void)insertAttributedString:(id)arg1 atIndex:(unsigned long long)arg2;
@@ -33,6 +34,16 @@
 
 - (void)addAttributesPreservingOriginals:(id)arg1 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 
+// Image: /System/Library/PrivateFrameworks/Coherence.framework/Coherence
+
+- (void)appendStorage:(id)arg1 fromRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
+- (void)appendString:(id)arg1;
+- (id)emptyCopy;
+- (void)insertStorage:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)removeObjectsInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
+- (void)replaceStorageInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 withStorage:(id)arg2 fromRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3;
+- (id)storageFromRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
+
 // Image: /System/Library/PrivateFrameworks/DataDetectorsCore.framework/DataDetectorsCore
 
 - (void)dd_appendAttributedString:(id)arg1;
@@ -51,7 +62,7 @@
 - (bool)dd_urlifyClientRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 index:(unsigned long long)arg2 context:(id)arg3;
 - (bool)dd_urlifyResult:(id)arg1 withBlock:(id /* block */)arg2 referenceDate:(id)arg3 context:(id)arg4;
 
-// Image: /System/Library/PrivateFrameworks/DocumentManager.framework/DocumentManager
+// Image: /System/Library/PrivateFrameworks/DocumentManagerExecutables.framework/DocumentManagerExecutables
 
 + (id)_doc_attributedStringForTitle:(id)arg1 textAttributes:(id)arg2 tagColors:(id)arg3 tagDrawingTraits:(struct { double x1; double x2; double x3; long long x4; })arg4;
 + (id)_doc_gridAttributedStringForTitle:(id)arg1 tagColors:(id)arg2 font:(id)arg3 layoutDirection:(long long)arg4;
@@ -63,6 +74,10 @@
 - (double)scaleFontSizeByAmount:(double)arg1 minimumFontSize:(double)arg2;
 - (double)scaleNumericAttribute:(id)arg1 byAmount:(double)arg2;
 - (void)scaleToFitWidth:(double)arg1;
+
+// Image: /System/Library/PrivateFrameworks/HealthRecordsUI.framework/HealthRecordsUI
+
++ (id)wd_stringWithString:(id)arg1 highlightingStrings:(id)arg2 baseColor:(id)arg3 baseFont:(id)arg4 highlightingBaseColor:(id)arg5 highlightColor:(id)arg6 highlightFont:(id)arg7;
 
 // Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
 
@@ -92,11 +107,16 @@
 - (void)ic_addForgroundColorInRangesWhereNoColorAlreadyExists:(struct UIColor { Class x1; }*)arg1;
 - (void)ic_addTextBlocks:(id)arg1 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (void)ic_convertParagraphStyleToBodyInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
-- (void)setParagraphStyleForWritingDirection:(long long)arg1 andAlignment:(bool)arg2;
+- (void)ic_setParagraphStyleForWritingDirection:(long long)arg1 andAlignment:(bool)arg2;
 
 // Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
 
 - (void)pk_addLinkURL:(id)arg1 toRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 withColor:(id)arg3 isUnderlined:(bool)arg4;
+
+// Image: /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit
+
+- (void)ic_appendAttributedSubstring:(id)arg1 fromRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
+- (void)ic_replaceCharactersInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 withAttributedSubstring:(id)arg2 fromRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3;
 
 // Image: /System/Library/PrivateFrameworks/ScreenReaderCore.framework/ScreenReaderCore
 
@@ -111,6 +131,10 @@
 // Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
 
 - (void)sxaxApplyLowerPitchTokenToRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
+
+// Image: /System/Library/PrivateFrameworks/TVMLKit.framework/TVMLKit
+
+- (void)tv_addLanguageAwareness:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/TextToSpeech.framework/TextToSpeech
 

@@ -33,6 +33,7 @@
 + (id)_fetchPeopleSuggestionsForAssetCollection:(id)arg1;
 + (id)_fetchPreviewAssetsForAssetCollection:(id)arg1;
 + (id)fastSuggestionWithAssetCollection:(id)arg1;
++ (id)sharedCachingImageManager;
 + (id)suggestionWithAssetCollection:(id)arg1;
 
 - (void).cxx_destruct;

@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithContentItem:(id)arg1;
+- (bool)isValidWithAPIType:(unsigned long long)arg1 withError:(id*)arg2;
 - (bool)isValidWithError:(id*)arg1;
 - (id)item;
 

@@ -9,6 +9,7 @@
 @property (nonatomic, readonly) double automaticTrafficIncidentRerouteDelay;
 @property (nonatomic, readonly) double averageWalkingSpeed;
 @property (nonatomic, readonly) double defaultExpirationOffset;
+@property (nonatomic, readonly) int endValidDistanceOffset;
 @property (nonatomic, readonly) double exitRegionSize;
 @property (nonatomic, readonly) double extraLocationWaitTimeInterval;
 @property (nonatomic, readonly) double fastWalkingSpeed;
@@ -21,8 +22,10 @@
 @property (nonatomic, readonly) double locationReuseThreshold;
 @property (nonatomic, readonly) double locationUpdateTimerInterval;
 @property (nonatomic, readonly) double locationUpdatesDesiredAccuracyForDriving;
+@property (nonatomic, readonly) double locationUpdatesDesiredAccuracyForTransit;
 @property (nonatomic, readonly) double locationUpdatesDesiredAccuracyForWalking;
 @property (nonatomic, readonly) double locationUpdatesDesiredAccuracyWhileStationaryForDriving;
+@property (nonatomic, readonly) double locationUpdatesDesiredAccuracyWhileStationaryForTransit;
 @property (nonatomic, readonly) double locationUpdatesDesiredAccuracyWhileStationaryForWalking;
 @property (nonatomic, readonly) double maxDistanceFromOriginToSuppressReroute;
 @property (nonatomic, readonly) unsigned long long maxRandomJitterForHypothesisWakeup;
@@ -53,7 +56,6 @@
 @property (nonatomic, readonly) bool shouldAutomaticallyRerouteTrafficIncidents;
 @property (nonatomic, readonly) bool shouldLazyLoadRoutes;
 @property (nonatomic, readonly) bool shouldMatchToLAR;
-@property (nonatomic, readonly) bool shouldPreloadSubscriptions;
 @property (nonatomic, readonly) bool shouldRequestInlineShields;
 @property (nonatomic, readonly) bool shouldRequestLaneGuidance;
 @property (nonatomic, readonly) bool shouldRunNavigationInDaemon;
@@ -63,7 +65,10 @@
 @property (nonatomic, readonly) bool shouldUseServerSideETAs;
 @property (nonatomic, readonly) double slowWalkingSpeed;
 @property (nonatomic, readonly) double staleLocationUseTimerInterval;
+@property (nonatomic, readonly) int startValidDistanceOffset;
+@property (nonatomic, readonly) bool transitListInstructionTimeText;
 @property (nonatomic, readonly) bool transitTTLSupported;
+@property (nonatomic, readonly) bool transitTextInPlanningArtwork;
 @property (nonatomic, readonly) double updateTimeout;
 @property (nonatomic, readonly) bool useConservativeDepartureForRefreshTimer;
 
@@ -74,6 +79,7 @@
 - (double)automaticTrafficIncidentRerouteDelay;
 - (double)averageWalkingSpeed;
 - (double)defaultExpirationOffset;
+- (int)endValidDistanceOffset;
 - (double)exitRegionSize;
 - (double)extraLocationWaitTimeInterval;
 - (double)fastWalkingSpeed;
@@ -86,8 +92,10 @@
 - (double)locationReuseThreshold;
 - (double)locationUpdateTimerInterval;
 - (double)locationUpdatesDesiredAccuracyForDriving;
+- (double)locationUpdatesDesiredAccuracyForTransit;
 - (double)locationUpdatesDesiredAccuracyForWalking;
 - (double)locationUpdatesDesiredAccuracyWhileStationaryForDriving;
+- (double)locationUpdatesDesiredAccuracyWhileStationaryForTransit;
 - (double)locationUpdatesDesiredAccuracyWhileStationaryForWalking;
 - (double)maxDistanceFromOriginToSuppressReroute;
 - (unsigned long long)maxRandomJitterForHypothesisWakeup;
@@ -118,7 +126,6 @@
 - (bool)shouldAutomaticallyRerouteTrafficIncidents;
 - (bool)shouldLazyLoadRoutes;
 - (bool)shouldMatchToLAR;
-- (bool)shouldPreloadSubscriptions;
 - (bool)shouldRequestInlineShields;
 - (bool)shouldRequestLaneGuidance;
 - (bool)shouldRunNavigationInDaemon;
@@ -128,7 +135,10 @@
 - (bool)shouldUseServerSideETAs;
 - (double)slowWalkingSpeed;
 - (double)staleLocationUseTimerInterval;
+- (int)startValidDistanceOffset;
+- (bool)transitListInstructionTimeText;
 - (bool)transitTTLSupported;
+- (bool)transitTextInPlanningArtwork;
 - (double)updateTimeout;
 - (bool)useConservativeDepartureForRefreshTimer;
 

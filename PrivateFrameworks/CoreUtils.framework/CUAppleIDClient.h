@@ -8,7 +8,7 @@
     NSData * _myCertificateData;
     struct __SecIdentity { } * _myIdentity;
     CUAppleIDClient * _myInfoClient;
-    struct __SecKey { struct __CFRuntimeBase { unsigned long long x_1_1_1; unsigned long long x_1_1_2; } x1; struct __SecKeyDescriptor {} *x2; void *x3; } * _mySecretKey;
+    struct __SecKey { struct __CFRuntimeBase { unsigned long long x_1_1_1; _Atomic unsigned long long x_1_1_2; } x1; struct __SecKeyDescriptor {} *x2; void *x3; } * _mySecretKey;
     NSData * _mySecretKeyData;
     NSString * _mySecretKeyType;
     NSData * _myValidationData;
@@ -16,7 +16,7 @@
     NSArray * _peerAppleIDs;
     struct __SecCertificate { } * _peerCertificate;
     NSData * _peerCertificateData;
-    struct __SecKey { struct __CFRuntimeBase { unsigned long long x_1_1_1; unsigned long long x_1_1_2; } x1; struct __SecKeyDescriptor {} *x2; void *x3; } * _peerPublicKey;
+    struct __SecKey { struct __CFRuntimeBase { unsigned long long x_1_1_1; _Atomic unsigned long long x_1_1_2; } x1; struct __SecKeyDescriptor {} *x2; void *x3; } * _peerPublicKey;
     bool  _peerSignatureVerified;
     bool  _peerValidated;
     NSData * _peerValidationData;
@@ -38,9 +38,9 @@
 - (void).cxx_destruct;
 - (struct __SecCertificate { }*)_getMyCertificateAndReturnError:(id*)arg1;
 - (struct __SecIdentity { }*)_getMyIdentityAndReturnError:(id*)arg1;
-- (struct __SecKey { struct __CFRuntimeBase { unsigned long long x_1_1_1; unsigned long long x_1_1_2; } x1; struct __SecKeyDescriptor {} *x2; void *x3; }*)_getMySecretKeyAndReturnError:(id*)arg1;
+- (struct __SecKey { struct __CFRuntimeBase { unsigned long long x_1_1_1; _Atomic unsigned long long x_1_1_2; } x1; struct __SecKeyDescriptor {} *x2; void *x3; }*)_getMySecretKeyAndReturnError:(id*)arg1;
 - (struct __SecCertificate { }*)_getPeerCertificateAndReturnError:(id*)arg1;
-- (struct __SecKey { struct __CFRuntimeBase { unsigned long long x_1_1_1; unsigned long long x_1_1_2; } x1; struct __SecKeyDescriptor {} *x2; void *x3; }*)_getPeerPublicKeyAndReturnError:(id*)arg1;
+- (struct __SecKey { struct __CFRuntimeBase { unsigned long long x_1_1_1; _Atomic unsigned long long x_1_1_2; } x1; struct __SecKeyDescriptor {} *x2; void *x3; }*)_getPeerPublicKeyAndReturnError:(id*)arg1;
 - (bool)_validatePeerHashes:(id)arg1;
 - (id)copyMyAppleIDAndReturnError:(id*)arg1;
 - (id)copyMyCertificateDataAndReturnError:(id*)arg1;

@@ -7,6 +7,7 @@
     NSDateInterval * _dateInterval;
     unsigned long long  _mergeStrategy;
     unsigned long long  _options;
+    bool  _requireQuantityType;
 }
 
 @property (nonatomic, readonly) id /* block */ completionHandler;
@@ -30,6 +31,7 @@
 - (void)client_deliverStatistics:(id)arg1 forQuery:(id)arg2;
 - (id /* block */)completionHandler;
 - (id)initWithQuantityType:(id)arg1 quantitySamplePredicate:(id)arg2 options:(unsigned long long)arg3 completionHandler:(id /* block */)arg4;
+- (id)initWithSampleType:(id)arg1 samplePredicate:(id)arg2 options:(unsigned long long)arg3 completionHandler:(id /* block */)arg4;
 - (unsigned long long)mergeStrategy;
 - (unsigned long long)options;
 - (void)queue_deliverError:(id)arg1;

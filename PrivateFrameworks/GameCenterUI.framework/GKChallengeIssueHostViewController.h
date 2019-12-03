@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/GameCenterUI.framework/GameCenterUI
  */
 
-@interface GKChallengeIssueHostViewController : GKUIRemoteViewController <GKChallengeIssueHostProtocol> {
+@interface GKChallengeIssueHostViewController : GKExtensionRemoteViewController <GKChallengeIssueHostProtocol> {
     GKHostedChallengeIssueController * _delegateWeak;
 }
 

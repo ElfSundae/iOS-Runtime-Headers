@@ -14,6 +14,7 @@
     TPiOSMarginAdjustLayout * _marginAdjustLayout;
     <TPMasterDrawableProvider> * _masterDrawableProvider;
     TSURetainedPointerKeyDictionary * _oldChildLayouts;
+    bool  _overrideAllowFootnotes;
     unsigned long long  _pageCount;
     unsigned long long  _pageNumber;
     bool  _shouldHeaderFooterBeVisible;
@@ -27,6 +28,7 @@
 @property (nonatomic, readonly) TSDFill *backgroundFill;
 @property (nonatomic, readonly) TPBodyLayout *bodyLayout;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } bodyRect;
+@property (nonatomic, readonly) bool canHavePreviousPageFootnotes;
 @property (nonatomic, readonly) <NSFastEnumeration> *childTextLayoutsForExteriorWrap;
 @property (nonatomic, readonly) unsigned long long columnCount;
 @property (nonatomic, readonly) bool columnsAreLeftToRight;
@@ -36,6 +38,7 @@
 @property (nonatomic, readonly) TPiOSMarginAdjustLayout *marginAdjustLayout;
 @property (nonatomic, readonly) bool marginsAreMirrored;
 @property (nonatomic, readonly) <TPMasterDrawableProvider> *masterDrawableProvider;
+@property (nonatomic) bool overrideAllowFootnotes;
 @property (nonatomic, readonly) unsigned long long pageCount;
 @property (nonatomic, readonly) unsigned long long pageIndex;
 @property (nonatomic, readonly) unsigned long long pageNumber;
@@ -61,6 +64,7 @@
 - (double)blockHeightAvailableForFootnotes;
 - (id)bodyLayout;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })bodyRect;
+- (bool)canHavePreviousPageFootnotes;
 - (id)childTextLayoutsForExteriorWrap;
 - (unsigned long long)columnCount;
 - (bool)columnsAreLeftToRight;
@@ -68,6 +72,7 @@
 - (void)dealloc;
 - (id)dependentLayouts;
 - (id)dependentsOfTextLayout:(id)arg1;
+- (bool)descendersCannotClip;
 - (void)endResizeWrapInvalidationCluster;
 - (void)evacuateOldChildLayoutCache;
 - (id)existingAttachmentLayoutForInfo:(id)arg1;
@@ -92,6 +97,7 @@
 - (void)invalidateSize;
 - (bool)isReadyForBodyLayout;
 - (bool)isRootLayoutForInspectorGeometry;
+- (bool)isRootLevelForInlineGeometry;
 - (bool)isValidating;
 - (id)layoutForChildInfo:(id)arg1;
 - (id)layoutMargins;
@@ -106,6 +112,7 @@
 - (struct CGSize { double x1; double x2; })maximumFrameSizeForChild:(id)arg1;
 - (int)naturalAlignmentForTextLayout:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })nonAutosizedFrameForTextLayout:(id)arg1;
+- (bool)overrideAllowFootnotes;
 - (void)p_addLayoutIfAttached:(id)arg1;
 - (void)p_addLayoutsForInfos:(id)arg1 toArray:(id)arg2;
 - (id)p_childLayoutInParentLayout:(id)arg1 forChildInfo:(id)arg2;
@@ -141,6 +148,7 @@
 - (void)replaceChild:(id)arg1 with:(id)arg2;
 - (void)setChildren:(id)arg1;
 - (void)setNeedsInflation;
+- (void)setOverrideAllowFootnotes:(bool)arg1;
 - (void)setValidating:(bool)arg1;
 - (bool)shouldHeaderFooterBeVisible:(long long)arg1;
 - (bool)shouldProvideGuidesDuringExclusiveAlignmentOperation;

@@ -2,18 +2,19 @@
    Image: /System/Library/PrivateFrameworks/Message.framework/Message
  */
 
-@interface MFDADeferredStoreDraftOperation : MFOfflineCacheOperation <MFDAOfflineCacheOperation> {
+@interface MFDADeferredStoreDraftOperation : _MFOfflineCacheOperation {
     NSString * _folderID;
     NSString * _messageIDHeader;
 }
 
++ (id)log;
 + (bool)supportsSecureCoding;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithMessageIDHeader:(id)arg1 mailbox:(id)arg2;
-- (bool)performWithAccount:(id)arg1 offlineCache:(id)arg2;
+- (bool)translateToLocalActionWithConnection:(id)arg1;
 
 @end

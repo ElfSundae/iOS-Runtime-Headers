@@ -3,10 +3,10 @@
  */
 
 @interface UIStoryboardScene : NSObject {
-    UIViewController * sceneViewController;
+    id  sceneViewController;
 }
 
-@property (nonatomic, retain) UIViewController *sceneViewController;
+@property (nonatomic, retain) id sceneViewController;
 
 - (void)dealloc;
 - (id)sceneViewController;

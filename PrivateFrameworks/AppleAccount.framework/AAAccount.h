@@ -40,9 +40,6 @@
 @property (nonatomic, copy) NSString *username;
 
 + (id)accountTypeString;
-+ (id)dataclassesBoundToPrimaryAccount;
-+ (id)dataclassesBoundToSingleAccount;
-+ (id)dataclassesBoundToSyncAccount;
 
 - (void).cxx_destruct;
 - (id)_childAccounts;

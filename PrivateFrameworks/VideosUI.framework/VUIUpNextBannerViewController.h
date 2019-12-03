@@ -19,6 +19,7 @@
 @property (nonatomic, retain) _TVShelfViewController *shelfViewController;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) IKViewElement *viewElement;
+@property (nonatomic, readonly) UIView *visualEffectView;
 
 - (void).cxx_destruct;
 - (id)_focusedMediaInfoForElementAtIndex:(long long)arg1;
@@ -47,5 +48,6 @@
 - (void)shelfViewController:(id)arg1 didSettleOnItemAtIndexPath:(id)arg2;
 - (void)updateWithElement:(id)arg1;
 - (id)viewElement;
+- (id)visualEffectView;
 
 @end

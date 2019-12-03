@@ -3,17 +3,16 @@
  */
 
 @interface HMDResidentDeviceManager : HMFObject <HMDBackingStoreObjectProtocol, HMDHomeMessageReceiver, HMFLogging, HMFTimerDelegate, NSSecureCoding> {
-    NSObject<OS_dispatch_queue> * _clientQueue;
     bool  _confirming;
+    NSHashTable * _dataSources;
     <HMDResidentDeviceManagerDelegate> * _delegate;
     bool  _firstHomeZoneFetch;
     bool  _firstLegacyFetch;
     HMDHome * _home;
     long long  _lastAtHomeLevel;
-    HMFMessageDispatcher * _messageDispatcher;
+    <HMFLocking> * _lock;
     NSUUID * _primaryResidentUUID;
-    NSObject<OS_dispatch_queue> * _propertyQueue;
-    HMDCentralMessageDispatcher * _remoteMessageDispatcher;
+    NSObject<OS_dispatch_queue> * _queue;
     bool  _residentAvailable;
     NSMutableSet * _residentDevices;
     HMFTimer * _residentMonitorTimer;
@@ -22,25 +21,24 @@
 }
 
 @property (nonatomic, readonly) NSArray *availableResidentDevices;
-@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *clientQueue;
 @property (getter=isConfirming, nonatomic) bool confirming;
-@property (getter=isCurrentDeviceAvaliableResident, nonatomic, readonly) bool currentDeviceAvaliableResident;
+@property (getter=isCurrentDeviceAvailableResident, nonatomic, readonly) bool currentDeviceAvailableResident;
+@property (getter=isCurrentDevicePrimaryResident, nonatomic, readonly) bool currentDevicePrimaryResident;
 @property (readonly, copy) NSString *debugDescription;
 @property <HMDResidentDeviceManagerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (getter=hasFirstHomeZoneFetch, nonatomic) bool firstHomeZoneFetch;
 @property (getter=hasFirstLegacyFetch, nonatomic) bool firstLegacyFetch;
+@property (nonatomic, readonly) bool hasTrustZoneCapableResident;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) HMDHome *home;
 @property (nonatomic) long long lastAtHomeLevel;
-@property (nonatomic, readonly) HMFMessageDispatcher *messageDispatcher;
+@property (readonly) HMDMessageDispatcher *messageDispatcher;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, copy) NSSet *messageReceiverChildren;
 @property (nonatomic, readonly) NSUUID *messageTargetUUID;
 @property (nonatomic, readonly) HMDResidentDevice *primaryResidentDevice;
-@property (nonatomic, retain) NSUUID *primaryResidentUUID;
-@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *propertyQueue;
-@property (nonatomic, readonly) HMDCentralMessageDispatcher *remoteMessageDispatcher;
+@property (nonatomic, readonly) NSUUID *primaryResidentUUID;
 @property (getter=isResidentAvailable, nonatomic, readonly) bool residentAvailable;
 @property (nonatomic, readonly, copy) NSArray *residentDevices;
 @property (retain) HMFTimer *residentMonitorTimer;
@@ -57,20 +55,18 @@
 - (void).cxx_destruct;
 - (void)__currentDeviceUpdated:(id)arg1 completion:(id /* block */)arg2;
 - (void)__handleAppleAccountResolved:(id)arg1;
+- (void)__handleConfirmationRequest:(id)arg1;
 - (void)_addResidentDevice:(id)arg1;
 - (void)_addResidentDeviceWithModel:(id)arg1 message:(id)arg2;
 - (void)_confirmResidentDevice:(id)arg1 electionParameters:(id)arg2 againstDevices:(id)arg3 completionBlock:(id /* block */)arg4;
 - (void)_electResidentDevice;
 - (id)_electionParameters;
 - (id)_electionParameters:(id)arg1;
-- (void)_handleCloudManagerDidCompleteInitialFetchNotification:(id)arg1;
+- (void)_handleCloudZoneReadyNotification:(id)arg1;
 - (void)_handleConfirmResidentDevice:(id)arg1;
 - (void)_handleResidentDeviceUpdateEnabled:(id)arg1;
 - (void)_handleResidentElectionParameters:(id)arg1;
 - (bool)_isAtHome;
-- (void)_notifyClientsOfAddedResidentDevice:(id)arg1;
-- (void)_notifyClientsOfRemovedResidentDevice:(id)arg1;
-- (id)_orderedDevicesForElection;
 - (void)_pingResident;
 - (void)_registerForMessages;
 - (void)_removeResidentDevice:(id)arg1;
@@ -84,15 +80,15 @@
 - (void)_updateDischargingTimer:(long long)arg1;
 - (void)_updateReachability:(bool)arg1 forResidentDevice:(id)arg2;
 - (void)_updateResidentAvailability;
+- (void)addDataSource:(id)arg1;
 - (void)atHomeLevelChanged:(long long)arg1;
 - (id)availableResidentDevices;
-- (id)clientQueue;
-- (long long)compareResidentDevice:(id)arg1 electionParameters:(id)arg2;
 - (long long)compareResidentDeviceA:(id)arg1 electionParametersA:(id)arg2 residentDeviceB:(id)arg3 electionParametersB:(id)arg4;
-- (void)conditionallyConfirmOnBoot;
 - (void)configureWithHome:(id)arg1;
 - (void)confirmAsResident;
 - (void)confirmOnAvailability;
+- (void)confirmPrimaryResident;
+- (void)confirmWithCompletionHandler:(id /* block */)arg1;
 - (void)dealloc;
 - (id)debugDescription;
 - (id)delegate;
@@ -109,11 +105,13 @@
 - (void)handleResidentDeviceIsReachable:(id)arg1;
 - (bool)hasFirstHomeZoneFetch;
 - (bool)hasFirstLegacyFetch;
+- (bool)hasTrustZoneCapableResident;
 - (id)home;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (bool)isConfirming;
-- (bool)isCurrentDeviceAvaliableResident;
+- (bool)isCurrentDeviceAvailableResident;
+- (bool)isCurrentDevicePrimaryResident;
 - (bool)isResidentAvailable;
 - (bool)isResidentSupported;
 - (long long)lastAtHomeLevel;
@@ -127,8 +125,7 @@
 - (id)ourSelf;
 - (id)primaryResidentDevice;
 - (id)primaryResidentUUID;
-- (id)propertyQueue;
-- (id)remoteMessageDispatcher;
+- (void)removeDataSource:(id)arg1;
 - (void)removeResidentDevice:(id)arg1;
 - (id)residentDeviceForDevice:(id)arg1;
 - (id)residentDevices;
@@ -141,16 +138,14 @@
 - (void)setFirstLegacyFetch:(bool)arg1;
 - (void)setHome:(id)arg1;
 - (void)setLastAtHomeLevel:(long long)arg1;
-- (void)setPrimaryResidentUUID:(id)arg1;
 - (void)setResidentAvailable:(bool)arg1;
-- (void)setResidentDevices:(id)arg1;
 - (void)setResidentMonitorTimer:(id)arg1;
 - (void)setResidentSupported:(bool)arg1;
 - (id)shortDescription;
 - (void)timerDidFire:(id)arg1;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
-- (void)updatePrimaryResidentWithUUID:(id)arg1;
+- (void)updatePrimaryResidentWithUUID:(id)arg1 actions:(id)arg2;
 - (void)updateResidentAvailability;
 - (id)uuid;
 

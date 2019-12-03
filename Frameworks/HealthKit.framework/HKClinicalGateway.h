@@ -22,9 +22,9 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly, copy) NSString *displayableDescription;
 @property (nonatomic, readonly, copy) NSString *externalID;
+@property (nonatomic, readonly) bool hasLogo;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) NSURL *informationURL;
-@property (getter=hasMultipleLocations, nonatomic, readonly) bool multiple;
 @property (nonatomic, readonly, copy) NSURL *passwordResetURL;
 @property (nonatomic, readonly, copy) NSURL *patientPortalURL;
 @property (nonatomic, readonly, copy) NSString *phoneNumber;
@@ -34,6 +34,8 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly, copy) NSString *title;
 @property (nonatomic, readonly) long long type;
+
+// Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
 
 + (bool)supportsSecureCoding;
 
@@ -58,5 +60,9 @@
 - (id)subtitle;
 - (id)title;
 - (long long)type;
+
+// Image: /System/Library/PrivateFrameworks/HealthRecordsUI.framework/HealthRecordsUI
+
+- (bool)hasLogo;
 
 @end

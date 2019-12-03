@@ -58,11 +58,11 @@
 
 - (void).cxx_destruct;
 - (void)_updateOverlayTransform;
+- (long long)accessibilityContainerType;
 - (id)accessibilityCustomRotorMembershipForRep:(id)arg1;
 - (id)accessibilityElements;
 - (id)accessibilityLabel;
 - (bool)accessibilityRepIsSelectable:(id)arg1;
-- (unsigned long long)accessibilityTraits;
 - (id)canvas;
 - (id)delegate;
 - (id)description;

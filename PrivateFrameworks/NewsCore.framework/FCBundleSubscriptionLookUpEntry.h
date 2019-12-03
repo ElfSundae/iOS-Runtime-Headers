@@ -8,6 +8,7 @@
     bool  _hasShownRenewalNotice;
     NSString * _identifier;
     bool  _inTrialPeriod;
+    bool  _isAmplifyUser;
     bool  _isPurchaser;
     NSString * _purchaseID;
     unsigned long long  _purchaseValidationState;
@@ -18,6 +19,7 @@
 @property (nonatomic) bool hasShownRenewalNotice;
 @property (nonatomic, copy) NSString *identifier;
 @property (nonatomic) bool inTrialPeriod;
+@property (nonatomic) bool isAmplifyUser;
 @property (nonatomic) bool isPurchaser;
 @property (nonatomic, copy) NSString *purchaseID;
 @property (nonatomic) unsigned long long purchaseValidationState;
@@ -32,8 +34,9 @@
 - (bool)hasShownRenewalNotice;
 - (id)identifier;
 - (bool)inTrialPeriod;
-- (id)initWithEntryID:(id)arg1 bundleChannelIDs:(id)arg2 purchaseID:(id)arg3 purchaseValidationState:(unsigned long long)arg4 dateOfExpiration:(id)arg5 hasShownRenewalNotice:(bool)arg6 inTrialPeriod:(bool)arg7 isPurchaser:(bool)arg8;
+- (id)initWithEntryID:(id)arg1 bundleChannelIDs:(id)arg2 purchaseID:(id)arg3 purchaseValidationState:(unsigned long long)arg4 dateOfExpiration:(id)arg5 hasShownRenewalNotice:(bool)arg6 inTrialPeriod:(bool)arg7 isPurchaser:(bool)arg8 isAmplifyUser:(bool)arg9;
 - (id)initWithEntryID:(id)arg1 dictionaryRepresentation:(id)arg2;
+- (bool)isAmplifyUser;
 - (bool)isPurchaser;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (id)purchaseID;
@@ -43,6 +46,7 @@
 - (void)setHasShownRenewalNotice:(bool)arg1;
 - (void)setIdentifier:(id)arg1;
 - (void)setInTrialPeriod:(bool)arg1;
+- (void)setIsAmplifyUser:(bool)arg1;
 - (void)setIsPurchaser:(bool)arg1;
 - (void)setPurchaseID:(id)arg1;
 - (void)setPurchaseValidationState:(unsigned long long)arg1;

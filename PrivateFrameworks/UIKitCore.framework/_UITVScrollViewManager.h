@@ -9,6 +9,10 @@
     long long  _scrollStyle;
     UIScrollView * _scrollView;
     UIView * _snapshotViewForWindow;
+    struct CGPoint { 
+        double x; 
+        double y; 
+    }  _targetOffset;
     bool  _useCustomMaskForScrolling;
 }
 
@@ -21,6 +25,7 @@
 @property (nonatomic) UIScrollView *scrollView;
 @property (nonatomic, retain) UIView *snapshotViewForWindow;
 @property (readonly) Class superclass;
+@property (nonatomic) struct CGPoint { double x1; double x2; } targetOffset;
 @property (nonatomic) bool useCustomMaskForScrolling;
 
 - (void).cxx_destruct;
@@ -43,8 +48,10 @@
 - (void)setScrollStyle:(long long)arg1;
 - (void)setScrollView:(id)arg1;
 - (void)setSnapshotViewForWindow:(id)arg1;
+- (void)setTargetOffset:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setUseCustomMaskForScrolling:(bool)arg1;
 - (id)snapshotViewForWindow;
+- (struct CGPoint { double x1; double x2; })targetOffset;
 - (bool)useCustomMaskForScrolling;
 
 @end

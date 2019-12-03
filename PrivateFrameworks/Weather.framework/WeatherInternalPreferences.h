@@ -7,13 +7,17 @@
 }
 
 @property (readonly) bool isInternalInstall;
+@property (readonly) bool isV3Enabled;
 @property (retain) <WeatherPreferencesPersistence> *persistence;
+@property (readonly) bool shouldShowUpdateTimestamp;
 
 + (id)sharedInternalPreferences;
 
 - (void).cxx_destruct;
 - (bool)isInternalInstall;
+- (bool)isV3Enabled;
 - (id)persistence;
 - (void)setPersistence:(id)arg1;
+- (bool)shouldShowUpdateTimestamp;
 
 @end

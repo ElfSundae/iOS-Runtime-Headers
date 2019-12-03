@@ -4,4 +4,8 @@
 
 @interface PLAssetsdMigrationClient : PLAssetsdBaseClient
 
+- (void)cleanupModelForDataMigrationForRestoreType:(long long)arg1;
+- (void)dataMigrationWillFinish;
+- (void)moveiPhotoLibraryMediaWithReply:(id /* block */)arg1;
+
 @end

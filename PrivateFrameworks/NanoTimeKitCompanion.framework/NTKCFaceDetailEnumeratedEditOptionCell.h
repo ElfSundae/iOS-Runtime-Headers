@@ -15,7 +15,7 @@
 - (void).cxx_destruct;
 - (bool)active;
 - (id)editOption;
-- (id)initWithEditOption:(id)arg1;
+- (id)initWithEditOption:(id)arg1 overrideText:(id)arg2;
 - (double)rowHeight;
 - (void)setActive:(bool)arg1;
 

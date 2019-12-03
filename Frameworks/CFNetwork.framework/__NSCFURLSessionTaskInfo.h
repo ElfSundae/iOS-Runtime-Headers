@@ -7,8 +7,6 @@
     NSURL * _AVAssetURL;
     AVURLAsset * _AVURLAsset;
     NSURL * _URL;
-    NSURLSessionTaskMetrics * __backgroundTaskMetrics;
-    NSDictionary * __backgroundTaskTimingData;
     NSDictionary * __backgroundTrailers;
     bool  __doesSZExtractorConsumeExtractedData;
     <SZExtractor> * __extractor;
@@ -36,6 +34,7 @@
     NSDate * _earliestBeginDate;
     NSError * _error;
     bool  _establishedConnection;
+    unsigned long long  _expectedProgressTarget;
     bool  _expectingResumeCallback;
     NSURL * _fileURL;
     bool  _hasStarted;
@@ -47,6 +46,7 @@
     NSDictionary * _options;
     NSURLRequest * _originalRequest;
     NSString * _pathToDownloadTaskFile;
+    NSString * _personaUniqueString;
     unsigned int  _qos;
     NSDictionary * _resolvedMediaSelectionPlist;
     bool  _respondedToWillBeginDelayedRequestCallback;
@@ -55,22 +55,22 @@
     unsigned long long  _retryCount;
     NSString * _sessionID;
     bool  _shouldCancelOnDisconnect;
+    bool  _startedUserInitiated;
     long long  _state;
     NSString * _storagePartitionIdentifier;
     unsigned long long  _suspendCount;
     NSString * _taskDescription;
     unsigned long long  _taskKind;
+    __CFN_TaskMetrics * _taskMetrics;
     NSURL * _temporaryDestinationURL;
     double  _timeoutIntervalForResource;
-    NSString * _uniqueIdentifier;
+    NSUUID * _uniqueIdentifier;
 }
 
 @property unsigned long long AVAssetDownloadToken;
 @property (copy) NSURL *AVAssetURL;
 @property (retain) AVURLAsset *AVURLAsset;
 @property (copy) NSURL *URL;
-@property (retain) NSURLSessionTaskMetrics *_backgroundTaskMetrics;
-@property (copy) NSDictionary *_backgroundTaskTimingData;
 @property (retain) NSDictionary *_backgroundTrailers;
 @property (nonatomic) bool _doesSZExtractorConsumeExtractedData;
 @property (nonatomic, retain) <SZExtractor> *_extractor;
@@ -98,6 +98,7 @@
 @property (copy) NSDate *earliestBeginDate;
 @property (copy) NSError *error;
 @property bool establishedConnection;
+@property unsigned long long expectedProgressTarget;
 @property bool expectingResumeCallback;
 @property (copy) NSURL *fileURL;
 @property bool hasStarted;
@@ -109,6 +110,7 @@
 @property (copy) NSDictionary *options;
 @property (copy) NSURLRequest *originalRequest;
 @property (copy) NSString *pathToDownloadTaskFile;
+@property (copy) NSString *personaUniqueString;
 @property unsigned int qos;
 @property (copy) NSDictionary *resolvedMediaSelectionPlist;
 @property bool respondedToWillBeginDelayedRequestCallback;
@@ -117,23 +119,24 @@
 @property unsigned long long retryCount;
 @property (copy) NSString *sessionID;
 @property bool shouldCancelOnDisconnect;
+@property bool startedUserInitiated;
 @property long long state;
 @property (copy) NSString *storagePartitionIdentifier;
 @property unsigned long long suspendCount;
 @property (copy) NSString *taskDescription;
 @property unsigned long long taskKind;
+@property (retain) __CFN_TaskMetrics *taskMetrics;
 @property (copy) NSURL *temporaryDestinationURL;
 @property double timeoutIntervalForResource;
-@property (copy) NSString *uniqueIdentifier;
+@property (copy) NSUUID *uniqueIdentifier;
 
 + (bool)supportsSecureCoding;
 
+- (void).cxx_destruct;
 - (unsigned long long)AVAssetDownloadToken;
 - (id)AVAssetURL;
 - (id)AVURLAsset;
 - (id)URL;
-- (id)_backgroundTaskMetrics;
-- (id)_backgroundTaskTimingData;
 - (id)_backgroundTrailers;
 - (bool)_doesSZExtractorConsumeExtractedData;
 - (id)_extractor;
@@ -155,7 +158,6 @@
 - (long long)countOfBytesSent;
 - (double)creationTime;
 - (id)currentRequest;
-- (void)dealloc;
 - (id)destinationURL;
 - (bool)disablesRetry;
 - (long long)discretionaryOverride;
@@ -164,6 +166,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)error;
 - (bool)establishedConnection;
+- (unsigned long long)expectedProgressTarget;
 - (bool)expectingResumeCallback;
 - (id)fileURL;
 - (bool)hasStarted;
@@ -183,6 +186,7 @@
 - (id)options;
 - (id)originalRequest;
 - (id)pathToDownloadTaskFile;
+- (id)personaUniqueString;
 - (unsigned int)qos;
 - (id)resolvedMediaSelectionPlist;
 - (bool)respondedToWillBeginDelayedRequestCallback;
@@ -216,6 +220,7 @@
 - (void)setEarliestBeginDate:(id)arg1;
 - (void)setError:(id)arg1;
 - (void)setEstablishedConnection:(bool)arg1;
+- (void)setExpectedProgressTarget:(unsigned long long)arg1;
 - (void)setExpectingResumeCallback:(bool)arg1;
 - (void)setFileURL:(id)arg1;
 - (void)setHasStarted:(bool)arg1;
@@ -227,6 +232,7 @@
 - (void)setOptions:(id)arg1;
 - (void)setOriginalRequest:(id)arg1;
 - (void)setPathToDownloadTaskFile:(id)arg1;
+- (void)setPersonaUniqueString:(id)arg1;
 - (void)setQos:(unsigned int)arg1;
 - (void)setResolvedMediaSelectionPlist:(id)arg1;
 - (void)setRespondedToWillBeginDelayedRequestCallback:(bool)arg1;
@@ -235,27 +241,29 @@
 - (void)setRetryCount:(unsigned long long)arg1;
 - (void)setSessionID:(id)arg1;
 - (void)setShouldCancelOnDisconnect:(bool)arg1;
+- (void)setStartedUserInitiated:(bool)arg1;
 - (void)setState:(long long)arg1;
 - (void)setStoragePartitionIdentifier:(id)arg1;
 - (void)setSuspendCount:(unsigned long long)arg1;
 - (void)setTaskDescription:(id)arg1;
 - (void)setTaskKind:(unsigned long long)arg1;
+- (void)setTaskMetrics:(id)arg1;
 - (void)setTemporaryDestinationURL:(id)arg1;
 - (void)setTimeoutIntervalForResource:(double)arg1;
 - (void)setURL:(id)arg1;
 - (void)setUniqueIdentifier:(id)arg1;
-- (void)set_backgroundTaskMetrics:(id)arg1;
-- (void)set_backgroundTaskTimingData:(id)arg1;
 - (void)set_backgroundTrailers:(id)arg1;
 - (void)set_doesSZExtractorConsumeExtractedData:(bool)arg1;
 - (void)set_extractor:(id)arg1;
 - (void)set_hasSZExtractor:(bool)arg1;
 - (bool)shouldCancelOnDisconnect;
+- (bool)startedUserInitiated;
 - (long long)state;
 - (id)storagePartitionIdentifier;
 - (unsigned long long)suspendCount;
 - (id)taskDescription;
 - (unsigned long long)taskKind;
+- (id)taskMetrics;
 - (id)temporaryDestinationURL;
 - (double)timeoutIntervalForResource;
 - (id)uniqueIdentifier;

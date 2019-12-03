@@ -3,6 +3,7 @@
  */
 
 @interface EKEventDetailExtendedNotesViewController : UIViewController <EKEditItemViewControllerProtocol> {
+    NSString * _notes;
     UITextView * _textView;
 }
 
@@ -13,11 +14,15 @@
 @property (nonatomic) bool useCustomBackButton;
 
 - (void).cxx_destruct;
-- (id)_textView;
+- (void)_updateConstraints;
 - (id)init;
+- (void)loadTextView;
 - (void)loadView;
 - (id)notes;
 - (void)setNotes:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
+- (void)updateTextView;
+- (void)viewDidLoad;
+- (void)viewSafeAreaInsetsDidChange;
 
 @end

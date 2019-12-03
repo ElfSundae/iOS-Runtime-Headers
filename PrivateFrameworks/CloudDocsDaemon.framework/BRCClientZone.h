@@ -43,7 +43,7 @@
     CKOperationGroup * _syncDownGroup;
     BRCSyncDownOperation * _syncDownOperation;
     BRCSyncOperationThrottle * _syncDownThrottle;
-    unsigned int  _syncState;
+    _Atomic unsigned int  _syncState;
     NSArray * _syncThrottles;
     float  _syncUpBatchSizeMultiplier;
     BRCSyncBudgetThrottle * _syncUpBudget;

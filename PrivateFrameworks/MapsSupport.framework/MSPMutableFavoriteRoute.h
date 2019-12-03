@@ -6,10 +6,13 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) GEOComposedWaypoint *endWaypoint;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) GEOStorageRouteRequestStorage *routeRequestStorage;
+@property (nonatomic, readonly) GEOComposedWaypoint *startWaypoint;
 @property (nonatomic, readonly) NSUUID *storageIdentifier;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) int transportType;
 
 + (Class)immutableObjectClass;
 + (id)immutableObjectProtocol;

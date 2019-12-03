@@ -136,8 +136,8 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)autoResizeForAspectRatio:(float)arg1 useLowPriorityMode:(bool)arg2 gpuPriority:(int)arg3;
-- (void)autoSetupNetBaseName:(id)arg1 weights:(id)arg2 scaleConfig:(int)arg3 setupMode:(int)arg4 computePath:(int)arg5 autoAspectRatio:(float)arg6 forceReset:(bool)arg7 useLowPriorityMode:(bool)arg8 gpuPriority:(int)arg9;
+- (void)autoResizeForAspectRatio:(float)arg1 useLowPriorityMode:(bool)arg2 gpuPriority:(unsigned int)arg3;
+- (void)autoSetupNetBaseName:(id)arg1 weights:(id)arg2 scaleConfig:(int)arg3 setupMode:(int)arg4 computePath:(int)arg5 autoAspectRatio:(float)arg6 forceReset:(bool)arg7 useLowPriorityMode:(bool)arg8 gpuPriority:(unsigned int)arg9;
 - (id)basename;
 - (struct shared_ptr<Espresso::blob<float, 3> > { struct blob<float, 3> {} *x1; struct __shared_weak_count {} *x2; })boxBlobForScale:(int)arg1;
 - (struct shared_ptr<Espresso::abstract_context> { struct abstract_context {} *x1; struct __shared_weak_count {} *x2; })context_cpu;
@@ -162,6 +162,7 @@
 - (void)processBlobNoRotation:(const struct shared_ptr<Espresso::blob<unsigned char __attribute__((ext_vector_type(4))), 2> >=^{blob<unsigned char __attribute__((ext_vector_type(4))), 2> {}*)arg1 tex:(id)arg2 doBGRA2RGBA:(bool)arg3;
 - (void)processPyramid:(struct shared_ptr<Espresso::fast_pyramid_resizer> { struct fast_pyramid_resizer {} *x1; struct __shared_weak_count {} *x2; })arg1;
 - (void)processPyramid:(struct shared_ptr<Espresso::fast_pyramid_resizer> { struct fast_pyramid_resizer {} *x1; struct __shared_weak_count {} *x2; })arg1 gpu_resizer:(id)arg2;
+- (void)processVimageNoRotation:(const struct vImage_Buffer { void *x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; }*)arg1 tex:(id)arg2 doBGRA2RGBA:(bool)arg3;
 - (void)reset;
 - (struct shared_ptr<Espresso::fast_pyramid_resizer> { struct fast_pyramid_resizer {} *x1; struct __shared_weak_count {} *x2; })resizerAtIndex:(int)arg1;
 - (int)resizerCount;
@@ -171,6 +172,8 @@
 - (int)scaleConfig;
 - (int)scalingMode;
 - (void)setBasename:(id)arg1;
+- (void)setContextCpu:(id)arg1;
+- (void)setContextMetal:(id)arg1;
 - (void)setContext_cpu:(struct shared_ptr<Espresso::abstract_context> { struct abstract_context {} *x1; struct __shared_weak_count {} *x2; })arg1;
 - (void)setContext_metal:(struct shared_ptr<Espresso::abstract_context> { struct abstract_context {} *x1; struct __shared_weak_count {} *x2; })arg1;
 - (void)setCpin:(int)arg1;

@@ -8,7 +8,7 @@
 
 + (id)defaultProperties;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (void)fixPropertiesForChangingParentPreservingEffectiveValues:(id)arg1;
 - (bool)hasImageFill;

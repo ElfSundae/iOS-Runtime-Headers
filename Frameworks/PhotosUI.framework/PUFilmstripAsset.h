@@ -19,6 +19,7 @@
 @property (nonatomic, readonly) bool canPlayPhotoIris;
 @property (nonatomic, readonly) NSDate *creationDate;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic, readonly) unsigned long long deferredLogInfo;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) double duration;
 @property (getter=isFavorite, nonatomic, readonly) bool favorite;
@@ -28,6 +29,7 @@
 @property (nonatomic, readonly) bool isPhotoIrisPlaceholder;
 @property (nonatomic, readonly) bool isTemporaryPlaceholder;
 @property (getter=isLivePhoto, nonatomic, readonly) bool livePhoto;
+@property (nonatomic, readonly) NSDate *localCreationDate;
 @property (nonatomic, readonly) NSString *localizedGeoDescription;
 @property (nonatomic, readonly) CLLocation *location;
 @property (nonatomic, readonly) unsigned long long mediaSubtypes;
@@ -44,6 +46,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSString *uniformTypeIdentifier;
 @property (nonatomic, readonly) NSString *uuid;
+@property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } videoKeyFrameSourceTime;
 
 - (id)_asset;
 - (bool)_isSourceTimeAccurate;
@@ -57,6 +60,7 @@
 - (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)creationDate;
+- (unsigned long long)deferredLogInfo;
 - (double)duration;
 - (bool)hasPhotoColorAdjustments;
 - (unsigned long long)hash;
@@ -70,6 +74,7 @@
 - (bool)isPhotoIrisPlaceholder;
 - (bool)isTemporaryPlaceholder;
 - (void)loadSourceTimeWithCompletionHandler:(id /* block */)arg1;
+- (id)localCreationDate;
 - (id)localizedGeoDescription;
 - (id)location;
 - (unsigned long long)mediaSubtypes;

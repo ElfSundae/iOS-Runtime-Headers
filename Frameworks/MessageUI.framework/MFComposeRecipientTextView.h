@@ -4,6 +4,16 @@
 
 @interface MFComposeRecipientTextView : MFComposeHeaderView <MFComposeRecipientAtomDelegate, MFRecipientDraggingDelegate, NSLayoutManagerDelegate, UITextViewDelegate> {
     UIButton * _addButton;
+    struct CGRect { 
+        struct CGPoint { 
+            double x; 
+            double y; 
+        } origin; 
+        struct CGSize { 
+            double width; 
+            double height; 
+        } size; 
+    }  _addButtonFrame;
     UIView * _atomContainerView;
     NSMutableDictionary * _atomLayoutOptionsByRecipient;
     NSMutableDictionary * _atomPresentationOptionsByRecipient;
@@ -75,13 +85,14 @@
 
 + (id)defaultFont;
 
-- (id)_accessibilityToString;
+- (void).cxx_destruct;
 - (void)_addAddressAtomSubview:(id)arg1;
 - (void)_addButtonTapped:(id)arg1;
 - (void)_addRecord:(void*)arg1 identifier:(int)arg2;
 - (id)_atomAttachmentForRecipient:(id)arg1;
 - (unsigned long long)_atomPresentationOptionsForRecipient:(id)arg1;
 - (id)_atomViewAtCharacterIndex:(unsigned long long)arg1;
+- (id)_attributedStringWithAtomizedRecipients;
 - (id)_baseAttributes;
 - (void)_beginAtomViewAnimations;
 - (bool)_canAddAdditionalAtoms;
@@ -115,6 +126,7 @@
 - (void)_tapGestureRecognized:(id)arg1;
 - (id)_textContainerExclusionPathsWithAddButton:(bool)arg1;
 - (bool)_textViewContainsAtomizedRecipients;
+- (id)_toString;
 - (void)_updateAddButtonVisibility;
 - (void)_updateInactiveTextView;
 - (bool)_useRightToLeftLayout;
@@ -148,7 +160,7 @@
 - (void)dragEnteredAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)dragExited;
 - (void)dragMovedToPoint:(struct CGPoint { double x1; double x2; })arg1;
-- (id)dragPreviewForDraggedItem:(id)arg1;
+- (id)dragPreviewForDraggedItem:(id)arg1 withContainer:(id)arg2;
 - (void)dropItems:(id)arg1;
 - (bool)editable;
 - (bool)expanded;

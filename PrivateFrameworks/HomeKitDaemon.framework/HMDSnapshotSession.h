@@ -3,7 +3,7 @@
  */
 
 @interface HMDSnapshotSession : HMFObject <HMFLogging> {
-    HMDCameraSessionID * _sessionID;
+    HMDCameraSnapshotSessionID * _sessionID;
     NSMutableArray * _sessionMessages;
     HMDSnapshotCompletionTimer * _snapshotCompletionTimer;
     <HMDCameraGetSnapshotProtocol> * _snapshotGetter;
@@ -14,7 +14,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) HMDCameraSessionID *sessionID;
+@property (nonatomic, readonly) HMDCameraSnapshotSessionID *sessionID;
 @property (nonatomic, readonly) NSMutableArray *sessionMessages;
 @property (nonatomic, retain) HMDSnapshotCompletionTimer *snapshotCompletionTimer;
 @property (nonatomic, readonly) <HMDCameraGetSnapshotProtocol> *snapshotGetter;

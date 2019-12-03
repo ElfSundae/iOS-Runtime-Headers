@@ -4,7 +4,7 @@
 
 @interface MSPOrderedReplica : MSPReplica
 
-+ (void)_switchForEdit:(id)arg1 caseIsInsertRecord:(id /* block */)arg2 caseIsEditContents:(id /* block */)arg3 caseIsEditPosition:(id /* block */)arg4;
++ (void)_switchForEdit:(id)arg1 caseIsInsertRecord:(id /* block */)arg2 caseIsEditContents:(id /* block */)arg3 caseIsEditPosition:(id /* block */)arg4 caseIsRemoveTombstone:(id /* block */)arg5;
 + (id)allowedEditClasses;
 
 - (bool)_containerSerializationRequiresTrackingPositionEdits;

@@ -7,12 +7,14 @@
     NSString * _bundleIdentifier;
     NSData * _iconData;
     NSString * _name;
+    NSString * _shortVersionString;
 }
 
 @property (nonatomic, retain) NSData *badgeIconData;
 @property (nonatomic, copy) NSString *bundleIdentifier;
 @property (nonatomic, retain) NSData *iconData;
 @property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *shortVersionString;
 
 + (bool)supportsSecureCoding;
 
@@ -28,5 +30,7 @@
 - (void)setBundleIdentifier:(id)arg1;
 - (void)setIconData:(id)arg1;
 - (void)setName:(id)arg1;
+- (void)setShortVersionString:(id)arg1;
+- (id)shortVersionString;
 
 @end

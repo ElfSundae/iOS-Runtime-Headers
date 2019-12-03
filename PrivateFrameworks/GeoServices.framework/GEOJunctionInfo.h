@@ -5,15 +5,16 @@
 @interface GEOJunctionInfo : PBCodable <NSCopying> {
     int  _drivingSide;
     struct { 
-        unsigned int drivingSide : 1; 
-        unsigned int junctionType : 1; 
-        unsigned int maneuverType : 1; 
-    }  _has;
+        unsigned int has_drivingSide : 1; 
+        unsigned int has_junctionType : 1; 
+        unsigned int has_maneuverType : 1; 
+    }  _flags;
     struct GEOJunctionElement { int x1; int x2; int x3; struct { unsigned int x_4_1_1 : 1; unsigned int x_4_1_2 : 1; unsigned int x_4_1_3 : 1; } x4; } * _junctionElements;
     unsigned long long  _junctionElementsCount;
     unsigned long long  _junctionElementsSpace;
     int  _junctionType;
     int  _maneuverType;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic) int drivingSide;
@@ -24,12 +25,17 @@
 @property (nonatomic, readonly) unsigned long long junctionElementsCount;
 @property (nonatomic) int junctionType;
 @property (nonatomic) int maneuverType;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
+- (void).cxx_destruct;
 - (int)StringAsDrivingSide:(id)arg1;
 - (int)StringAsJunctionType:(id)arg1;
 - (int)StringAsManeuverType:(id)arg1;
 - (void)addJunctionElement:(struct GEOJunctionElement { int x1; int x2; int x3; struct { unsigned int x_4_1_1 : 1; unsigned int x_4_1_2 : 1; unsigned int x_4_1_3 : 1; } x4; })arg1;
 - (void)clearJunctionElements;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -50,6 +56,7 @@
 - (int)maneuverType;
 - (id)maneuverTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setDrivingSide:(int)arg1;
 - (void)setHasDrivingSide:(bool)arg1;
@@ -58,6 +65,7 @@
 - (void)setJunctionElements:(struct GEOJunctionElement { int x1; int x2; int x3; struct { unsigned int x_4_1_1 : 1; unsigned int x_4_1_2 : 1; unsigned int x_4_1_3 : 1; } x4; }*)arg1 count:(unsigned long long)arg2;
 - (void)setJunctionType:(int)arg1;
 - (void)setManeuverType:(int)arg1;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 
 @end

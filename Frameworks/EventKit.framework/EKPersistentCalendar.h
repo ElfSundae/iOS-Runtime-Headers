@@ -40,6 +40,7 @@
 
 + (id)calendarWithRandomUUID;
 + (id)defaultPropertiesToLoad;
++ (Class)meltedClass;
 + (id)relations;
 
 - (id)UUID;
@@ -60,10 +61,12 @@
 - (bool)isColorDisplayOnly;
 - (bool)isPublished;
 - (id)notes;
+- (id)notifications;
 - (id)ownerIdentityAddress;
 - (id)ownerIdentityDisplayName;
 - (id)ownerIdentityEmail;
 - (id)ownerIdentityFirstName;
+- (int)ownerIdentityId;
 - (id)ownerIdentityLastName;
 - (id)ownerIdentityPhoneNumber;
 - (id)publishedURL;
@@ -89,10 +92,12 @@
 - (void)setInvitationStatus:(unsigned long long)arg1;
 - (void)setIsPublished:(bool)arg1;
 - (void)setNotes:(id)arg1;
+- (void)setNotifications:(id)arg1;
 - (void)setOwnerIdentityAddress:(id)arg1;
 - (void)setOwnerIdentityDisplayName:(id)arg1;
 - (void)setOwnerIdentityEmail:(id)arg1;
 - (void)setOwnerIdentityFirstName:(id)arg1;
+- (void)setOwnerIdentityId:(int)arg1;
 - (void)setOwnerIdentityLastName:(id)arg1;
 - (void)setOwnerIdentityPhoneNumber:(id)arg1;
 - (void)setPublished:(bool)arg1;

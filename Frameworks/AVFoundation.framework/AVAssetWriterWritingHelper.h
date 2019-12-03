@@ -3,6 +3,7 @@
  */
 
 @interface AVAssetWriterWritingHelper : AVAssetWriterHelper <AVAssetWriterFigAssetWriterNotificationHandlerDelegate> {
+    void * _callbackContextToken;
     struct OpaqueFigAssetWriter { } * _figAssetWriter;
     NSObject<OS_dispatch_queue> * _figAssetWriterAccessQueue;
     AVAssetWriterFigAssetWriterNotificationHandler * _notificationHandler;
@@ -26,9 +27,9 @@
 - (void)didReceiveFigAssetWriterNotificationWithSuccess:(bool)arg1 error:(id)arg2;
 - (void)endSessionAtSourceTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (id)figTrackReferences;
-- (void)finalize;
 - (void)finishWriting;
 - (void)finishWritingWithCompletionHandler:(id /* block */)arg1;
+- (void)flush;
 - (id)initWithConfigurationState:(id)arg1;
 - (id)initWithConfigurationState:(id)arg1 error:(id*)arg2;
 - (void)startSessionAtSourceTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;

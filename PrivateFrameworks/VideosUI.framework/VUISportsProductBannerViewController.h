@@ -18,7 +18,6 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) double topThreshold;
 @property (nonatomic, retain) VUIProductUberBackgroundView *uberBackgroundView;
-@property (nonatomic, readonly) long long uberLayoutInterfaceStyle;
 @property (nonatomic, retain) IKViewElement *viewElement;
 @property (nonatomic, retain) UIView *whiteBackgroundView;
 
@@ -38,7 +37,6 @@
 - (struct CGSize { double x1; double x2; })size;
 - (double)topThreshold;
 - (id)uberBackgroundView;
-- (long long)uberLayoutInterfaceStyle;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (id)viewElement;

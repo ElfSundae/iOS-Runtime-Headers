@@ -23,6 +23,10 @@
 @property (nonatomic, copy) HKStrokeStyle *strokeStyle;
 @property (nonatomic, copy) HKStrokeStyle *tiledStrokeStyle;
 
++ (id)_sleepCircleImageWithWidth:(double)arg1 diameter:(double)arg2 color:(id)arg3;
++ (id)asleepImageCompatibleWithFont:(id)arg1 withColor:(id)arg2;
++ (id)inBedImageCompatibleWithFont:(id)arg1 withColor:(id)arg2;
+
 - (void).cxx_destruct;
 - (void)_addAnnotationForValue:(double)arg1;
 - (void)_assertCoordinateCompatibility:(id)arg1;
@@ -36,6 +40,7 @@
 - (bool)blockCoordinate:(id)arg1 greaterThan:(id)arg2;
 - (bool)blockCoordinate:(id)arg1 lessThan:(id)arg2;
 - (bool)blockCoordinateIsVisibleInsideOfChartRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 blockCoordinate:(id)arg2;
+- (void)clearCaches;
 - (id)coordinatesForBlock:(id)arg1 blockPath:(struct { long long x1; long long x2; })arg2 xAxis:(id)arg3 yAxis:(id)arg4;
 - (struct CGSize { double x1; double x2; })cornerRadii;
 - (id)defaultFillStyles;

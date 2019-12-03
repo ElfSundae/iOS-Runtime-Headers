@@ -9,11 +9,13 @@
     NSMutableArray * _abIMHandles;
     NSString * _abLastName;
     NSString * _abNickname;
+    CNContact * _cnContact;
     NSMutableArray * _loginIMHandles;
     IMPerson * _person;
 }
 
 @property (nonatomic, readonly) IMHandle *bestIMHandle;
+@property (nonatomic, readonly) CNContact *cnContact;
 @property (nonatomic, readonly) NSString *email;
 @property (nonatomic, readonly) NSArray *emails;
 @property (nonatomic, readonly) NSString *firstName;
@@ -25,7 +27,9 @@
 @property (nonatomic, readonly) IMPerson *person;
 
 + (id)fallbackUserName;
++ (id)firstNameFromFallbackUserName;
 + (id)imHandleForService:(id)arg1;
++ (id)lastNameFromFallbackUserName;
 + (id)me;
 
 - (void).cxx_destruct;
@@ -33,6 +37,7 @@
 - (bool)addIMHandle:(id)arg1;
 - (bool)addLoginIMHandle:(id)arg1;
 - (id)bestIMHandle;
+- (id)cnContact;
 - (id)description;
 - (id)email;
 - (id)emails;
@@ -51,6 +56,7 @@
 - (bool)removeIMHandle:(id)arg1;
 - (bool)removeLoginIMHandle:(id)arg1;
 - (void)resetABPerson;
+- (void)setCNContact:(id)arg1;
 - (void)setFirstName:(id)arg1 lastName:(id)arg2;
 - (void)setIMPerson:(id)arg1;
 

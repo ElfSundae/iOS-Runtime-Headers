@@ -50,6 +50,7 @@
 - (id)description;
 - (id)details;
 - (void)encodeWithCoder:(id)arg1;
+- (id)exportTransactionDataFeatureDescriptor;
 - (unsigned long long)feature;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
@@ -84,6 +85,7 @@
 - (unsigned long long)stateReason;
 - (id)supportedFeatures;
 - (bool)supportsAddFundingSource;
+- (bool)supportsExportTransactionData;
 - (bool)supportsExtendedFetch;
 - (bool)supportsRedeemRewards;
 - (bool)supportsRequestPhysicalCard;

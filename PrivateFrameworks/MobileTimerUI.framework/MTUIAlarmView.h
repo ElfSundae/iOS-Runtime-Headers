@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/MobileTimerUI.framework/MobileTimerUI
  */
 
-@interface MTUIAlarmView : UIView {
+@interface MTUIAlarmView : NUIContainerGridView {
     id  _contentSizeFontAdjustObserver;
     NSArray * _currentConstraints;
     UILabel * _detailLabel;
@@ -13,8 +13,8 @@
     NSString * _repeatText;
     bool  _shouldAddLayoutConstraints;
     long long  _style;
-    bool  _switchVisible;
     MTUIDigitalClockLabel * _timeLabel;
+    NSDictionary * _viewsByIdentifier;
 }
 
 @property (nonatomic, retain) NSArray *currentConstraints;
@@ -42,6 +42,7 @@
 - (id)repeatFont;
 - (id)repeatText;
 - (void)setCurrentConstraints:(id)arg1;
+- (void)setLayoutMargins:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setName:(id)arg1;
 - (void)setName:(id)arg1 andRepeatText:(id)arg2 textColor:(id)arg3;
 - (void)setNameFont:(id)arg1;
@@ -54,7 +55,6 @@
 - (long long)style;
 - (void)tearDownContentSizeChangeObserver;
 - (id)timeLabel;
-- (void)updateConstraints;
 - (void)updatePreferredMaxLayoutWidthForDetailContainerLabels;
 - (id)viewsByIdentifier;
 

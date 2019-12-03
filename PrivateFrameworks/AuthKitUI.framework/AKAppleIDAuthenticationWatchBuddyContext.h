@@ -18,6 +18,7 @@
 - (void)dismissBasicLoginUIWithCompletion:(id /* block */)arg1;
 - (id)password;
 - (void)presentBasicLoginUIWithCompletion:(id /* block */)arg1;
+- (void)presentBiometricOrPasscodeValidationForAppleID:(id)arg1 completion:(id /* block */)arg2;
 - (void)presentLoginAlertWithError:(id)arg1 title:(id)arg2 message:(id)arg3 completion:(id /* block */)arg4;
 - (id)remoteUIStyle;
 - (void)setPassword:(id)arg1;

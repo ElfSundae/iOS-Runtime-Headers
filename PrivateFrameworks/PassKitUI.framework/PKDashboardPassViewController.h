@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
  */
 
-@interface PKDashboardPassViewController : PKDashboardViewController <BKOperationDelegate, PKForegroundActiveArbiterObserver> {
+@interface PKDashboardPassViewController : PKDashboardViewController <BKOperationDelegate, PKForegroundActiveArbiterObserver, _PKUIKVisibilityBackdropViewDelegate> {
     struct CGSize { 
         double width; 
         double height; 
@@ -10,7 +10,7 @@
     BKPresenceDetectOperation * _fingerDetectionOperation;
     bool  _fingerPresent;
     NSObject<OS_dispatch_source> * _fingerTimer;
-    _UIBackdropView * _footerBackground;
+    _PKUIKVisibilityBackdropView * _footerBackground;
     bool  _footerVisible;
     struct { 
         bool foreground; 
@@ -44,11 +44,13 @@
 - (void)loadView;
 - (void)operation:(id)arg1 presenceStateChanged:(bool)arg2;
 - (void)setFrontmostPass:(id)arg1;
+- (void)showStatement:(id)arg1 account:(id)arg2;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidDisappear:(bool)arg1;
 - (void)viewSafeAreaInsetsDidChange;
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;
 - (void)viewWillLayoutSubviews;
+- (long long)visibilityBackdropView:(id)arg1 preferredStyleForTraitCollection:(id)arg2;
 
 @end

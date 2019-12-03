@@ -6,6 +6,7 @@
     <CNUIUserActionCurator> * _actionCurator;
     <CNUIUserActionRecorder> * _actionRecorder;
     NSString * _channelIdentifier;
+    BSServiceConnectionEndpoint * _connectionEndpoint;
     <CNUIUserActionDialRequestOpener> * _dialRequestOpener;
     <CNUIUserActionURLOpener> * _urlOpener;
     <CNUIUserActionUserActivityOpener> * _userActivityOpener;
@@ -14,6 +15,7 @@
 @property (nonatomic, retain) <CNUIUserActionCurator> *actionCurator;
 @property (nonatomic, retain) <CNUIUserActionRecorder> *actionRecorder;
 @property (nonatomic, copy) NSString *channelIdentifier;
+@property (nonatomic, copy) BSServiceConnectionEndpoint *connectionEndpoint;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) <CNUIUserActionDialRequestOpener> *dialRequestOpener;
@@ -30,12 +32,14 @@
 - (id)actionCurator;
 - (id)actionRecorder;
 - (id)channelIdentifier;
+- (id)connectionEndpoint;
 - (id)dialRequestOpener;
 - (id)init;
 - (id)initWithContactStore:(id)arg1 applicationWorkspace:(id)arg2;
 - (void)setActionCurator:(id)arg1;
 - (void)setActionRecorder:(id)arg1;
 - (void)setChannelIdentifier:(id)arg1;
+- (void)setConnectionEndpoint:(id)arg1;
 - (void)setDialRequestOpener:(id)arg1;
 - (void)setUrlOpener:(id)arg1;
 - (void)setUserActivityOpener:(id)arg1;

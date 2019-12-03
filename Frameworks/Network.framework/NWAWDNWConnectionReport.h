@@ -79,7 +79,11 @@
         unsigned int ipv4Available : 1; 
         unsigned int ipv6Available : 1; 
         unsigned int isDaemon : 1; 
+        unsigned int isPathConstrained : 1; 
+        unsigned int isPathExpensive : 1; 
         unsigned int multipathConfigured : 1; 
+        unsigned int prohibitsConstrained : 1; 
+        unsigned int prohibitsExpensive : 1; 
         unsigned int resolutionRequired : 1; 
         unsigned int synthesizedExtraIPv6Address : 1; 
         unsigned int synthesizedIPv6Address : 1; 
@@ -100,6 +104,9 @@
     bool  _ipv6Available;
     unsigned long long  _ipv6DNSServerCount;
     bool  _isDaemon;
+    bool  _isPathConstrained;
+    bool  _isPathExpensive;
+    NWAWDNWL2Report * _l2Report;
     unsigned long long  _multipathBytesInCell;
     unsigned long long  _multipathBytesInInitial;
     unsigned long long  _multipathBytesInWiFi;
@@ -112,6 +119,8 @@
     unsigned long long  _packetsOut;
     unsigned long long  _pathTriggerMilliseconds;
     NSString * _processName;
+    bool  _prohibitsConstrained;
+    bool  _prohibitsExpensive;
     unsigned long long  _proxyMilliseconds;
     unsigned long long  _rTTvariance;
     unsigned long long  _resolutionMilliseconds;
@@ -192,6 +201,9 @@
 @property (nonatomic) bool hasIpv6Available;
 @property (nonatomic) bool hasIpv6DNSServerCount;
 @property (nonatomic) bool hasIsDaemon;
+@property (nonatomic) bool hasIsPathConstrained;
+@property (nonatomic) bool hasIsPathExpensive;
+@property (nonatomic, readonly) bool hasL2Report;
 @property (nonatomic) bool hasMultipathBytesInCell;
 @property (nonatomic) bool hasMultipathBytesInInitial;
 @property (nonatomic) bool hasMultipathBytesInWiFi;
@@ -204,6 +216,8 @@
 @property (nonatomic) bool hasPacketsOut;
 @property (nonatomic) bool hasPathTriggerMilliseconds;
 @property (nonatomic, readonly) bool hasProcessName;
+@property (nonatomic) bool hasProhibitsConstrained;
+@property (nonatomic) bool hasProhibitsExpensive;
 @property (nonatomic) bool hasProxyMilliseconds;
 @property (nonatomic) bool hasRTTvariance;
 @property (nonatomic) bool hasResolutionMilliseconds;
@@ -235,6 +249,9 @@
 @property (nonatomic) bool ipv6Available;
 @property (nonatomic) unsigned long long ipv6DNSServerCount;
 @property (nonatomic) bool isDaemon;
+@property (nonatomic) bool isPathConstrained;
+@property (nonatomic) bool isPathExpensive;
+@property (nonatomic, retain) NWAWDNWL2Report *l2Report;
 @property (nonatomic) unsigned long long multipathBytesInCell;
 @property (nonatomic) unsigned long long multipathBytesInInitial;
 @property (nonatomic) unsigned long long multipathBytesInWiFi;
@@ -247,6 +264,8 @@
 @property (nonatomic) unsigned long long packetsOut;
 @property (nonatomic) unsigned long long pathTriggerMilliseconds;
 @property (nonatomic, retain) NSString *processName;
+@property (nonatomic) bool prohibitsConstrained;
+@property (nonatomic) bool prohibitsExpensive;
 @property (nonatomic) unsigned long long proxyMilliseconds;
 @property (nonatomic) unsigned long long rTTvariance;
 @property (nonatomic) unsigned long long resolutionMilliseconds;
@@ -354,6 +373,9 @@
 - (bool)hasIpv6Available;
 - (bool)hasIpv6DNSServerCount;
 - (bool)hasIsDaemon;
+- (bool)hasIsPathConstrained;
+- (bool)hasIsPathExpensive;
+- (bool)hasL2Report;
 - (bool)hasMultipathBytesInCell;
 - (bool)hasMultipathBytesInInitial;
 - (bool)hasMultipathBytesInWiFi;
@@ -366,6 +388,8 @@
 - (bool)hasPacketsOut;
 - (bool)hasPathTriggerMilliseconds;
 - (bool)hasProcessName;
+- (bool)hasProhibitsConstrained;
+- (bool)hasProhibitsExpensive;
 - (bool)hasProxyMilliseconds;
 - (bool)hasRTTvariance;
 - (bool)hasResolutionMilliseconds;
@@ -399,6 +423,9 @@
 - (unsigned long long)ipv6DNSServerCount;
 - (bool)isDaemon;
 - (bool)isEqual:(id)arg1;
+- (bool)isPathConstrained;
+- (bool)isPathExpensive;
+- (id)l2Report;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)multipathBytesInCell;
 - (unsigned long long)multipathBytesInInitial;
@@ -412,6 +439,8 @@
 - (unsigned long long)packetsOut;
 - (unsigned long long)pathTriggerMilliseconds;
 - (id)processName;
+- (bool)prohibitsConstrained;
+- (bool)prohibitsExpensive;
 - (unsigned long long)proxyMilliseconds;
 - (unsigned long long)rTTvariance;
 - (bool)readFrom:(id)arg1;
@@ -471,6 +500,8 @@
 - (void)setHasIpv6Available:(bool)arg1;
 - (void)setHasIpv6DNSServerCount:(bool)arg1;
 - (void)setHasIsDaemon:(bool)arg1;
+- (void)setHasIsPathConstrained:(bool)arg1;
+- (void)setHasIsPathExpensive:(bool)arg1;
 - (void)setHasMultipathBytesInCell:(bool)arg1;
 - (void)setHasMultipathBytesInInitial:(bool)arg1;
 - (void)setHasMultipathBytesInWiFi:(bool)arg1;
@@ -482,6 +513,8 @@
 - (void)setHasPacketsIn:(bool)arg1;
 - (void)setHasPacketsOut:(bool)arg1;
 - (void)setHasPathTriggerMilliseconds:(bool)arg1;
+- (void)setHasProhibitsConstrained:(bool)arg1;
+- (void)setHasProhibitsExpensive:(bool)arg1;
 - (void)setHasProxyMilliseconds:(bool)arg1;
 - (void)setHasRTTvariance:(bool)arg1;
 - (void)setHasResolutionMilliseconds:(bool)arg1;
@@ -513,6 +546,9 @@
 - (void)setIpv6Available:(bool)arg1;
 - (void)setIpv6DNSServerCount:(unsigned long long)arg1;
 - (void)setIsDaemon:(bool)arg1;
+- (void)setIsPathConstrained:(bool)arg1;
+- (void)setIsPathExpensive:(bool)arg1;
+- (void)setL2Report:(id)arg1;
 - (void)setMultipathBytesInCell:(unsigned long long)arg1;
 - (void)setMultipathBytesInInitial:(unsigned long long)arg1;
 - (void)setMultipathBytesInWiFi:(unsigned long long)arg1;
@@ -525,6 +561,8 @@
 - (void)setPacketsOut:(unsigned long long)arg1;
 - (void)setPathTriggerMilliseconds:(unsigned long long)arg1;
 - (void)setProcessName:(id)arg1;
+- (void)setProhibitsConstrained:(bool)arg1;
+- (void)setProhibitsExpensive:(bool)arg1;
 - (void)setProxyMilliseconds:(unsigned long long)arg1;
 - (void)setRTTvariance:(unsigned long long)arg1;
 - (void)setResolutionMilliseconds:(unsigned long long)arg1;

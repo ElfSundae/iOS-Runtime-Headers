@@ -22,6 +22,8 @@
 + (void)setIsLocked:(bool)arg1;
 + (bool)shouldMergeUnchangedEvents;
 
+- (void)deactivate;
+- (void)dealloc;
 - (void)receiveNotificationEvent:(id)arg1;
 - (void)start;
 - (void)stop;

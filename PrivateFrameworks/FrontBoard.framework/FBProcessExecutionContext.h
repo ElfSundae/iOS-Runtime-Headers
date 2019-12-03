@@ -7,6 +7,7 @@
     bool  _checkForLeaks;
     bool  _disableASLR;
     NSDictionary * _environment;
+    RBSProcessIdentity * _identity;
     unsigned int  _launchAssertionFlags;
     long long  _launchIntent;
     NSURL * _standardErrorURL;
@@ -14,13 +15,13 @@
     bool  _waitForDebugger;
     double  _watchdogExtension;
     <FBProcessWatchdogProviding> * _watchdogProvider;
-    double  _watchdogScaleFactor;
 }
 
 @property (nonatomic, copy) NSArray *arguments;
 @property (nonatomic) bool checkForLeaks;
 @property (nonatomic) bool disableASLR;
 @property (nonatomic, copy) NSDictionary *environment;
+@property (nonatomic, copy) RBSProcessIdentity *identity;
 @property (nonatomic) unsigned int launchAssertionFlags;
 @property (nonatomic) long long launchIntent;
 @property (nonatomic, retain) NSURL *standardErrorURL;
@@ -28,7 +29,6 @@
 @property (nonatomic) bool waitForDebugger;
 @property (nonatomic) double watchdogExtension;
 @property (nonatomic, retain) <FBProcessWatchdogProviding> *watchdogProvider;
-@property (nonatomic) double watchdogScaleFactor;
 
 - (void).cxx_destruct;
 - (id)_initWithExecutionContext:(id)arg1;
@@ -38,7 +38,8 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (bool)disableASLR;
 - (id)environment;
-- (id)init;
+- (id)identity;
+- (id)initWithIdentity:(id)arg1;
 - (unsigned int)launchAssertionFlags;
 - (long long)launchIntent;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
@@ -46,6 +47,7 @@
 - (void)setCheckForLeaks:(bool)arg1;
 - (void)setDisableASLR:(bool)arg1;
 - (void)setEnvironment:(id)arg1;
+- (void)setIdentity:(id)arg1;
 - (void)setLaunchAssertionFlags:(unsigned int)arg1;
 - (void)setLaunchIntent:(long long)arg1;
 - (void)setStandardErrorURL:(id)arg1;
@@ -53,12 +55,10 @@
 - (void)setWaitForDebugger:(bool)arg1;
 - (void)setWatchdogExtension:(double)arg1;
 - (void)setWatchdogProvider:(id)arg1;
-- (void)setWatchdogScaleFactor:(double)arg1;
 - (id)standardErrorURL;
 - (id)standardOutputURL;
 - (bool)waitForDebugger;
 - (double)watchdogExtension;
 - (id)watchdogProvider;
-- (double)watchdogScaleFactor;
 
 @end

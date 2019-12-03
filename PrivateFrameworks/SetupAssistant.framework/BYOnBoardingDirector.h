@@ -5,8 +5,8 @@
 @interface BYOnBoardingDirector : NSObject
 
 + (bool)_boolForPreferenceKey:(id)arg1 usingPreferencesController:(bool)arg2;
-+ (bool)needsToShowAnyFeatureUsingPreferencesController:(bool)arg1;
-+ (bool)needsToShowFeature:(long long)arg1;
-+ (bool)needsToShowFeature:(long long)arg1 usingPreferencesController:(bool)arg2;
++ (bool)needsToShowAnyFeatureUsingPreferencesController:(bool)arg1 usingDeviceProvider:(id)arg2;
++ (bool)needsToShowFeature:(long long)arg1 usingDeviceProvider:(id)arg2;
++ (bool)needsToShowFeature:(long long)arg1 usingPreferencesController:(bool)arg2 usingDeviceProvider:(id)arg3;
 
 @end

@@ -60,6 +60,7 @@
 - (bool)addSubscriptionForTagID:(id)arg1 type:(unsigned long long)arg2 origin:(unsigned long long)arg3 groupID:(id)arg4 notificationsEnabled:(bool)arg5 eventInitiationLevel:(long long)arg6;
 - (void)addSubscriptionsForTagIDs:(id)arg1 typeProvider:(id /* block */)arg2 originProvider:(id /* block */)arg3 eventInitiationLevelProvider:(id /* block */)arg4 completion:(id /* block */)arg5;
 - (void)addSubscriptionsForTagIDs:(id)arg1 typeProvider:(id /* block */)arg2 originProvider:(id /* block */)arg3 groupID:(id)arg4 notificationsEnabled:(bool)arg5 eventInitiationLevelProvider:(id /* block */)arg6 completion:(id /* block */)arg7;
+- (id)allKnownRecordNamesWithinRecordZoneWithID:(id)arg1;
 - (id)allSubscribedTagIDs;
 - (void)assignOrderToTagSubscriptionsIfNeeded;
 - (id)autoFavoriteTagIDs;
@@ -67,7 +68,8 @@
 - (bool)canHelpRestoreZoneName:(id)arg1;
 - (id)groupableTagIDs;
 - (void)handleSyncCompletion;
-- (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordIDs:(id)arg2;
+- (void)handleSyncDidResetLocalDataForRecordZoneWithID:(id)arg1;
+- (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordNames:(id)arg2;
 - (bool)hasAutoFavoriteSubscriptionForTagID:(id)arg1;
 - (bool)hasIgnoredSubscriptionForTagID:(id)arg1;
 - (bool)hasMutedSubscriptionForTagID:(id)arg1;

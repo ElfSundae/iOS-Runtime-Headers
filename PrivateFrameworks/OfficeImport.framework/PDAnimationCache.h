@@ -53,8 +53,8 @@
 + (void)mapAnimationInfo:(id)arg1 cacheData:(id)arg2 state:(id)arg3;
 + (void)mapCommonData:(id)arg1 cacheData:(id)arg2 state:(id)arg3;
 
+- (void).cxx_destruct;
 - (id)build;
-- (void)dealloc;
 - (double)delay;
 - (double)direction;
 - (double)duration;

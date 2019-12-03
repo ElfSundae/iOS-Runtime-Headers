@@ -71,7 +71,19 @@
 
 // Image: /System/Library/Frameworks/MapKit.framework/MapKit
 
+- (void)_mapkit_removeArrangedSubview:(id)arg1;
+- (void)_mapkit_setArrangedSubviews:(id)arg1;
 - (long long)_mk_axis;
 - (void)set_mk_axis:(long long)arg1;
+
+// Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
+
++ (id)mf_baselineAlignedHorizontalStackView;
++ (id)mf_baselineAlignedVerticalStackView;
++ (id)mf_equalSpacingHorizontalStackView;
++ (id)mf_equallyFilledHorizontalStackView;
++ (id)mf_equallyFilledVerticalStackView;
+
+- (void)mf_addArrangedSubviews:(id)arg1;
 
 @end

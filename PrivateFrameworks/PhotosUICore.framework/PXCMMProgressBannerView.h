@@ -4,9 +4,9 @@
 
 @interface PXCMMProgressBannerView : UIView <PXChangeObserver> {
     UILabel * _activityLabel;
-    PXCMMAssetsProgressListener * _assetsProgressListener;
     <PXCMMProgressBannerViewLayoutDelegate> * _layoutDelegate;
     double  _layoutHeight;
+    PXMomentShareStatusPresentation * _momentShareStatusPresentation;
     UILabel * _pauseLabel;
     UIProgressView * _progressView;
     UIVisualEffectView * _visualEffectView;
@@ -27,9 +27,9 @@
 - (void)_updatePauseTitle;
 - (void)_updateProgress;
 - (id)init;
-- (id)initWithAssetsProgressListener:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (id)initWithMomentShareStatusPresentation:(id)arg1;
 - (id)layoutDelegate;
 - (double)layoutHeight;
 - (void)layoutSubviews;

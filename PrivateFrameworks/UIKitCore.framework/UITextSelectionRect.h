@@ -4,6 +4,7 @@
 
 @interface UITextSelectionRect : NSObject
 
+@property (nonatomic, readonly) bool _drawsOwnHighlight;
 @property (nonatomic, readonly) bool containsEnd;
 @property (nonatomic, readonly) bool containsStart;
 @property (getter=_isImpl, nonatomic, readonly) UITextSelectionRectImpl *isImpl;
@@ -18,6 +19,7 @@
 + (bool)startIsHorizontal:(id)arg1;
 + (id)startRectFromRects:(id)arg1;
 
+- (bool)_drawsOwnHighlight;
 - (id)_isImpl;
 - (bool)containsEnd;
 - (bool)containsStart;

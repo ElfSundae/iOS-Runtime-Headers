@@ -21,6 +21,8 @@
 @property (readonly) unsigned int seed;
 @property (readonly) long long width;
 
+// Image: /System/Library/Frameworks/IOSurface.framework/IOSurface
+
 + (bool)supportsSecureCoding;
 
 - (unsigned long long)_cfTypeID;
@@ -72,5 +74,11 @@
 - (int)unlockWithOptions:(unsigned int)arg1 seed:(unsigned int*)arg2;
 - (long long)width;
 - (long long)widthOfPlaneAtIndex:(unsigned long long)arg1;
+
+// Image: /System/Library/PrivateFrameworks/BaseBoard.framework/BaseBoard
+
++ (id)bs_IOSurfaceWithWidth:(long long)arg1 height:(long long)arg2 options:(unsigned long long*)arg3;
+
+- (id)CGImageBuilder;
 
 @end

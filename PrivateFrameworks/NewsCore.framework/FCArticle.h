@@ -7,7 +7,7 @@
     FCArticleContentManifest * _contentManifest;
     NSError * _fetchError;
     NSObject<OS_dispatch_group> * _fetchGroup;
-    FCHeadline * _headline;
+    <FCHeadlineProviding> * _headline;
     FCFetchOperation * _headlineFetchOperation;
 }
 
@@ -15,7 +15,7 @@
 @property (nonatomic, retain) FCArticleContentManifest *contentManifest;
 @property (nonatomic, retain) NSError *fetchError;
 @property (nonatomic, retain) NSObject<OS_dispatch_group> *fetchGroup;
-@property (nonatomic, retain) FCHeadline *headline;
+@property (nonatomic, retain) <FCHeadlineProviding> *headline;
 @property (nonatomic, retain) FCFetchOperation *headlineFetchOperation;
 
 - (void).cxx_destruct;

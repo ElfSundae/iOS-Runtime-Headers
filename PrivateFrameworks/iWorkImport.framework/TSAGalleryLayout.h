@@ -56,7 +56,8 @@
 @property (nonatomic, readonly) bool shrinkTextToFit;
 @property (nonatomic, readonly) double textScaleFactor;
 
-+ (double)p_constrainedDimensionForDimension:(double)arg1 min:(double)arg2 max:(double)arg3;
++ (double)p_constrainedImageContainerHeightForHeight:(double)arg1;
++ (double)p_constrainedImageContainerWidthForWidth:(double)arg1 maxLayoutWidth:(double)arg2;
 
 - (void).cxx_destruct;
 - (id)additionalGuides;
@@ -66,6 +67,7 @@
 - (unsigned long long)autosizeFlagsForTextLayout:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })autosizedFrameForTextLayout:(id)arg1 textSize:(struct CGSize { double x1; double x2; })arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })boundsForStandardKnobs;
+- (struct CGPoint { double x1; double x2; })calculateOffsetForGalleryItem:(id)arg1 withFacesRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (id)children;
 - (unsigned long long)columnCount;
 - (bool)columnsAreLeftToRight;
@@ -74,6 +76,7 @@
 - (id)currentItem;
 - (void)dealloc;
 - (id)dependentsOfTextLayout:(id)arg1;
+- (bool)descendersCannotClip;
 - (double)gapForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;
 - (id)imageContainerGeometry;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })imageContainerRect;
@@ -90,10 +93,12 @@
 - (void)invalidateSize;
 - (id)layoutMargins;
 - (struct CGSize { double x1; double x2; })minimumSize;
+- (bool)needsToValidateChildrenForInlineLayout;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })nonAutosizedFrameForTextLayout:(id)arg1;
 - (id)p_galleryInfo;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })p_imageRectInImageContainerForItem:(id)arg1 dragOffset:(struct CGPoint { double x1; double x2; })arg2;
-- (struct CGSize { double x1; double x2; })p_maximumLayoutSize;
+- (void)p_invalidateOwningAttachmentSize;
+- (struct CGSize { double x1; double x2; })p_maxLayoutSize;
 - (double)p_minScaleForItem:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })pageControlBoundingRect;
 - (id)pathForClippingConnectionLines;

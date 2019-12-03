@@ -20,9 +20,9 @@
 + (id)runWithCharIndex:(unsigned long long)arg1 fontIndex:(unsigned long long)arg2 resources:(id)arg3;
 + (id)runWithResources:(id)arg1;
 
+- (void).cxx_destruct;
 - (void)adjustIndex:(unsigned long long)arg1;
 - (unsigned long long)charIndex;
-- (void)dealloc;
 - (id)description;
 - (id)effects;
 - (id)font;

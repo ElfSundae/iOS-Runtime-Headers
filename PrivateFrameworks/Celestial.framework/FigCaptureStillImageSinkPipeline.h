@@ -2,11 +2,10 @@
    Image: /System/Library/PrivateFrameworks/Celestial.framework/Celestial
  */
 
-@interface FigCaptureStillImageSinkPipeline : FigCapturePipeline <FigCaptureStillImageSinkPipeline> {
+@interface FigCaptureStillImageSinkPipeline : FigCaptureSinkPipeline <FigCaptureStillImageSinkPipeline> {
     BWFigVideoCaptureDevice * _captureDevice;
     BWSISNode * _legacySISNode;
     BWPortraitHDRStagingNode * _portraitHDRStagingNode;
-    NSString * _sinkID;
     BWStillImageCoordinatorNode * _stillImageCoordinatorNode;
     BWDepthConverterNode * _stillImageDepthConverterNode;
     BWStillImageBravoDisparityNode * _stillImageDisparityNode;
@@ -25,12 +24,11 @@
 
 + (void)initialize;
 
-- (int)_buildStillImageSinkPipelineWithConfiguration:(id)arg1 sourceStillImageOutput:(id)arg2 telephotoSourceStillImageOutput:(id)arg3 infraredOutput:(id)arg4 captureStatusDelegate:(id)arg5 inferenceScheduler:(id)arg6 graph:(id)arg7 clientIsCameraOrDerivative:(bool)arg8;
+- (int)_buildStillImageSinkPipelineWithConfiguration:(id)arg1 sourceOutputsByPortType:(id)arg2 captureStatusDelegate:(id)arg3 inferenceScheduler:(id)arg4 graph:(id)arg5;
 - (void)dealloc;
 - (void)enablePrepareTimeAllocationsForDeferredPrepare;
-- (id)initWithConfiguration:(id)arg1 captureDevice:(id)arg2 sourceStillImageOutput:(id)arg3 telephotoSourceStillImageOutput:(id)arg4 infraredOutput:(id)arg5 captureStatusDelegate:(id)arg6 inferenceScheduler:(id)arg7 graph:(id)arg8 clientIsCameraOrDerivative:(bool)arg9;
+- (id)initWithConfiguration:(id)arg1 captureDevice:(id)arg2 sourceOutputsByPortType:(id)arg3 captureStatusDelegate:(id)arg4 inferenceScheduler:(id)arg5 graph:(id)arg6 name:(id)arg7;
 - (id)portraitHDRStagingNode;
-- (id)sinkID;
 - (id)stillImageCoordinatorNode;
 - (id)stillImageSinkNode;
 

@@ -34,6 +34,7 @@
 @property (nonatomic, readonly) bool serviceRequiresHost;
 @property (nonatomic, readonly) bool serviceRequiresSingleAccount;
 @property (nonatomic, readonly) bool serviceShouldBeAlwaysLoggedIn;
+@property (nonatomic, readonly) bool serviceSupportsAuthorization;
 @property (nonatomic, readonly) bool serviceSupportsOneSessionForAllAccounts;
 @property (nonatomic, readonly) bool serviceSupportsPresence;
 @property (nonatomic, readonly) bool serviceSupportsRegistration;
@@ -86,6 +87,7 @@
 - (bool)serviceRequiresHost;
 - (bool)serviceRequiresSingleAccount;
 - (bool)serviceShouldBeAlwaysLoggedIn;
+- (bool)serviceSupportsAuthorization;
 - (bool)serviceSupportsOneSessionForAllAccounts;
 - (bool)serviceSupportsPresence;
 - (bool)serviceSupportsRegistration;

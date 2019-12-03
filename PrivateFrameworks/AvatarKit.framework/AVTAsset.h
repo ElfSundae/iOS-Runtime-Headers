@@ -6,45 +6,66 @@
     NSString * _ao;
     AVTAssetInfo * _assetInfo;
     NSString * _bundlePath;
-    SCNNode * _cachedNode;
+    id  _cachedResource;
+    long long  _componentType;
     bool  _forceHighTessellation;
-    NSString * _highlights;
+    NSDictionary * _highlights;
+    bool  _imageMirror;
+    struct CGSize { 
+        double width; 
+        double height; 
+    }  _imageOffset;
+    double  _imageScale;
+    NSDictionary * _layers;
     NSArray * _morphVariants;
-    unsigned long long  _numberOfEditableColor;
+    NSDictionary * _perAssetMain;
     unsigned long long  _refCount;
+    unsigned char  _resourceType;
     NSDictionary * _specializationSettings;
-    long long  _type;
     NSString * _uid;
+    struct { 
+        bool mirroringEnabled; 
+        struct { 
+            /* Warning: Unrecognized filer type: ']' using 'void*' */ void*columns[3]; 
+        } transform; 
+    }  _uvRemappingInfo;
 }
 
 @property (readonly) NSString *ao;
-@property (readonly) bool forceHighTessellation;
-@property (readonly) NSString *highlights;
+@property (readonly) long long componentType;
+@property (readonly) bool imageMirror;
+@property (readonly) struct CGSize { double x1; double x2; } imageOffset;
+@property (readonly) double imageScale;
+@property (readonly) bool is2DAsset;
+@property (readonly) bool is3DAsset;
+@property (readonly) NSDictionary *layers;
 @property (readonly) NSArray *morphVariants;
-@property (readonly) unsigned long long numberOfEditableColor;
 @property (readonly) NSDictionary *specializationSettings;
-@property (readonly) long long type;
 @property (readonly) NSString *uid;
+@property (readonly) struct { bool x1; struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x_2_1_1[3]; } x2; } uvRemappingInfo;
 
 - (void).cxx_destruct;
 - (id)ao;
 - (id)assetInfo;
-- (id)bundlePath;
-- (id)cachedNode;
-- (id)componentPath;
+- (id)cachedResource;
+- (long long)componentType;
 - (void)decrUseCount;
 - (id)description;
-- (bool)forceHighTessellation;
 - (void)freeCache;
-- (id)highlights;
+- (bool)imageMirror;
+- (struct CGSize { double x1; double x2; })imageOffset;
+- (double)imageScale;
 - (void)incrUseCount;
 - (id)initWithType:(long long)arg1 path:(id)arg2 packID:(id)arg3;
+- (id)instantiateResource;
+- (bool)is2DAsset;
+- (bool)is3DAsset;
+- (id)layers;
 - (id)morphVariants;
-- (unsigned long long)numberOfEditableColor;
-- (void)setBundlePath:(id)arg1;
-- (void)setCachedNode:(id)arg1;
+- (id)perAssetMain;
+- (id)resourceForCaching:(bool)arg1;
 - (id)specializationSettings;
-- (long long)type;
 - (id)uid;
+- (struct { bool x1; struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x_2_1_1[3]; } x2; })uvRemappingInfo;
 
 @end

@@ -18,6 +18,7 @@
     CXNamespace * mOAXDrawing2010Namespace;
     CXNamespace * mOAXLockedCanvasNamespace;
     CXNamespace * mOAXMainNamespace;
+    CXNamespace * mOAXMathNamespace;
     CXNamespace * mOAXPictureNamespace;
     CXNamespace * mOAXTableNamespace;
     CXNamespace * mOAXWordProcessingMLNamespace;
@@ -39,13 +40,16 @@
 @property (nonatomic, retain) CXNamespace *OAXDrawing2010Namespace;
 @property (nonatomic, retain) CXNamespace *OAXLockedCanvasNamespace;
 @property (nonatomic, retain) CXNamespace *OAXMainNamespace;
+@property (nonatomic, retain) CXNamespace *OAXMathNamespace;
 @property (nonatomic, retain) CXNamespace *OAXPictureNamespace;
 @property (nonatomic, retain) CXNamespace *OAXTableNamespace;
 @property (nonatomic, retain) CXNamespace *OAXWordProcessingMLNamespace;
 @property (nonatomic, copy) id /* block */ clientChartGraphicPropertyDefaultsBlock;
+@property id documentState;
 @property (nonatomic, retain) NSMutableDictionary *sourceURLToTargetBlipIndexMap;
 @property (nonatomic, retain) NSMutableDictionary *sourceURLToTargetBulletBlipIndexMap;
 
+- (void).cxx_destruct;
 - (id)OAXChart2012Namespace;
 - (id)OAXChartDrawingNamespace;
 - (id)OAXChartNamespace;
@@ -53,6 +57,7 @@
 - (id)OAXDrawing2010Namespace;
 - (id)OAXLockedCanvasNamespace;
 - (id)OAXMainNamespace;
+- (id)OAXMathNamespace;
 - (id)OAXPictureNamespace;
 - (id)OAXTableNamespace;
 - (id)OAXWordProcessingMLNamespace;
@@ -65,7 +70,6 @@
 - (id /* block */)clientChartGraphicPropertyDefaultsBlock;
 - (id)colorMap;
 - (id)colorScheme;
-- (void)dealloc;
 - (id)documentState;
 - (id)drawableForShapeId:(unsigned int)arg1;
 - (id)fontScheme;
@@ -92,6 +96,7 @@
 - (void)setOAXDrawing2010Namespace:(id)arg1;
 - (void)setOAXLockedCanvasNamespace:(id)arg1;
 - (void)setOAXMainNamespace:(id)arg1;
+- (void)setOAXMathNamespace:(id)arg1;
 - (void)setOAXPictureNamespace:(id)arg1;
 - (void)setOAXTableNamespace:(id)arg1;
 - (void)setOAXWordProcessingMLNamespace:(id)arg1;

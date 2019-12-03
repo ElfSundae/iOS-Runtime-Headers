@@ -4,22 +4,22 @@
 
 @interface WebCoreAVFLoaderDelegate : NSObject <AVAssetResourceLoaderDelegate> {
     struct WeakPtr<WebCore::MediaPlayerPrivateAVFoundationObjC> { 
-        struct RefPtr<WTF::WeakReference<WebCore::MediaPlayerPrivateAVFoundationObjC>, WTF::DumbPtrTraits<WTF::WeakReference<WebCore::MediaPlayerPrivateAVFoundationObjC> > > { 
-            struct WeakReference<WebCore::MediaPlayerPrivateAVFoundationObjC> {} *m_ptr; 
-        } m_ref; 
+        struct RefPtr<WTF::WeakPtrImpl, WTF::DumbPtrTraits<WTF::WeakPtrImpl> > { 
+            struct WeakPtrImpl {} *m_ptr; 
+        } m_impl; 
     }  m_player;
-    struct GenericTaskQueue<WebCore::Timer, std::__1::atomic<unsigned int> > { 
-        struct WeakPtrFactory<WebCore::GenericTaskQueue<WebCore::Timer, std::__1::atomic<unsigned int> > > { 
-            struct RefPtr<WTF::WeakReference<WebCore::GenericTaskQueue<WebCore::Timer, std::__1::atomic<unsigned int> > >, WTF::DumbPtrTraits<WTF::WeakReference<WebCore::GenericTaskQueue<WebCore::Timer, std::__1::atomic<unsigned int> > > > > { 
-                struct WeakReference<WebCore::GenericTaskQueue<WebCore::Timer, std::__1::atomic<unsigned int> > > {} *m_ptr; 
-            } m_ref; 
-        } m_weakFactory; 
+    struct GenericTaskQueue<WebCore::Timer> { 
+        struct WeakPtrFactory<WebCore::GenericTaskQueue<WebCore::Timer> > { 
+            struct RefPtr<WTF::WeakPtrImpl, WTF::DumbPtrTraits<WTF::WeakPtrImpl> > { 
+                struct WeakPtrImpl {} *m_ptr; 
+            } m_impl; 
+        } m_weakPtrFactory; 
         struct TaskDispatcher<WebCore::Timer> { 
             struct WeakPtrFactory<WebCore::TaskDispatcher<WebCore::Timer> > { 
-                struct RefPtr<WTF::WeakReference<WebCore::TaskDispatcher<WebCore::Timer> >, WTF::DumbPtrTraits<WTF::WeakReference<WebCore::TaskDispatcher<WebCore::Timer> > > > { 
-                    struct WeakReference<WebCore::TaskDispatcher<WebCore::Timer> > {} *m_ptr; 
-                } m_ref; 
-            } m_weakFactory; 
+                struct RefPtr<WTF::WeakPtrImpl, WTF::DumbPtrTraits<WTF::WeakPtrImpl> > { 
+                    struct WeakPtrImpl {} *m_ptr; 
+                } m_impl; 
+            } m_weakPtrFactory; 
             struct Deque<WTF::Function<void ()>, 0>="m_start"Q"m_end"Q"m_buffer"{VectorBuffer<WTF::Function<void ()>, 0>="m_buffer"^{Function<void ()> {} m_pendingTasks; 
             unsigned int m_capacity; 
             unsigned int m_size; 
@@ -34,7 +34,7 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)initWithPlayer:(struct WeakPtr<WebCore::MediaPlayerPrivateAVFoundationObjC> { struct RefPtr<WTF::WeakReference<WebCore::MediaPlayerPrivateAVFoundationObjC>, WTF::DumbPtrTraits<WTF::WeakReference<WebCore::MediaPlayerPrivateAVFoundationObjC> > > { struct WeakReference<WebCore::MediaPlayerPrivateAVFoundationObjC> {} *x_1_1_1; } x1; }*)arg1;
+- (id)initWithPlayer:(struct WeakPtr<WebCore::MediaPlayerPrivateAVFoundationObjC> { struct RefPtr<WTF::WeakPtrImpl, WTF::DumbPtrTraits<WTF::WeakPtrImpl> > { struct WeakPtrImpl {} *x_1_1_1; } x1; }*)arg1;
 - (void)resourceLoader:(id)arg1 didCancelLoadingRequest:(id)arg2;
 - (bool)resourceLoader:(id)arg1 shouldWaitForLoadingOfRequestedResource:(id)arg2;
 - (bool)resourceLoader:(id)arg1 shouldWaitForResponseToAuthenticationChallenge:(id)arg2;

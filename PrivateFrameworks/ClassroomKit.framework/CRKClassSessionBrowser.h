@@ -59,7 +59,7 @@
 - (void)delegateLostConnectionToClassSession:(id)arg1;
 - (void)delegateLostConnectionToInvitationSession:(id)arg1;
 - (id)delegateNeedsClientIdentityForGroup:(id)arg1;
-- (id)delegateNeedsClientIdentityInvitationSession;
+- (id)delegateNeedsClientIdentityForInvitationSessionWithEndpoint:(id)arg1;
 - (id)delegateNeedsTrustedAnchorCertificatesForGroup:(id)arg1;
 - (void)dewhitelistEndpoint:(id)arg1 forSessionClass:(Class)arg2;
 - (id)enrolledControlGroupIdentifiers;

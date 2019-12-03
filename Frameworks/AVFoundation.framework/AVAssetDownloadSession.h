@@ -21,6 +21,7 @@
 + (id)assetDownloadSessionWithAsset:(id)arg1 destinationURL:(id)arg2 options:(id)arg3;
 + (id)assetDownloadSessionWithDownloadToken:(unsigned long long)arg1;
 + (id)assetDownloadSessionWithURL:(id)arg1 destinationURL:(id)arg2 options:(id)arg3;
++ (void)registerDownloadLocation:(id)arg1 forURLAsset:(id)arg2;
 
 - (id)URL;
 - (void)_addFigAssetDownloaderListeners;
@@ -55,7 +56,6 @@
 - (unsigned long long)downloadToken;
 - (id)error;
 - (unsigned long long)fileSize;
-- (void)finalize;
 - (id)init;
 - (id)initWithAsset:(id)arg1 destinationURL:(id)arg2 options:(id)arg3;
 - (id)initWithDownloadToken:(unsigned long long)arg1;

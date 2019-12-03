@@ -6,6 +6,7 @@
 @required
 
 - (unsigned long long)cacheCost;
+- (unsigned long long)inkVersion;
 - (bool)lockPurgeableResourcesAddToSet:(NSMutableSet *)arg1;
 - (bool)needsCompute;
 

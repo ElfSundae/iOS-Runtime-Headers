@@ -5,8 +5,6 @@
 
 @required
 
-- (long long)actionType;
-- (NSString *)actionTypeDescription;
 - (bool)allowsMultipleSelection;
 - (void)cancelPhotoPicker;
 - (bool)convertAutoloopsToGIF;
@@ -16,16 +14,13 @@
 - (void)didSelectMultipleMediaItemsWithInfoDictionaries:(NSArray *)arg1;
 - (NSArray *)mediaTypes;
 - (unsigned long long)multipleSelectionLimit;
-- (void)performAppearanceUpdateUsing:(PUPhotoPickerAppearance *)arg1;
 - (void)performPhotosSelection;
 - (void)performTraitCollectionUpdateUsingData:(void *)arg1 completion:(void *)arg2; // needs 2 arg types, found 7: NSData *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSNumber *, void*
 - (void)presentViewController:(UIViewController *)arg1;
 - (NSDictionary *)properties;
+- (bool)requiresPickingConfirmation;
 - (unsigned long long)savingOptions;
-- (long long)secondaryActionType;
-- (void)setActionType:(long long)arg1;
-- (void)setActionTypeDescription:(NSString *)arg1;
-- (void)setSecondaryActionType:(long long)arg1;
+- (bool)showsFileSizePicker;
 - (bool)showsPrompt;
 
 @end

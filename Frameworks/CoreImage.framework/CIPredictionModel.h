@@ -20,23 +20,23 @@
 }
 
 @property (nonatomic, readonly) NSSet *featureNames;
-@property (nonatomic) struct CIPredictionModelImageFeatures { id x1; long long x2; unsigned int x3; } inputImageFeatures;
+@property (nonatomic) struct CIPredictionModelImageFeatures { id x1; long long x2; long long x3; unsigned int x4; } inputImageFeatures;
 @property (nonatomic, retain) MLModel *model;
-@property (nonatomic) struct CIPredictionModelImageFeatures { id x1; long long x2; unsigned int x3; } outputImageFeatures;
+@property (nonatomic) struct CIPredictionModelImageFeatures { id x1; long long x2; long long x3; unsigned int x4; } outputImageFeatures;
 
 - (void)dealloc;
 - (id)featureNames;
 - (id)featureValueForName:(id)arg1;
 - (id)initWithModel:(id)arg1;
-- (struct CIPredictionModelImageFeatures { id x1; long long x2; unsigned int x3; })inputImageFeatures;
+- (struct CIPredictionModelImageFeatures { id x1; long long x2; long long x3; unsigned int x4; })inputImageFeatures;
 - (id)model;
-- (struct CIPredictionModelImageFeatures { id x1; long long x2; unsigned int x3; })outputImageFeatures;
+- (struct CIPredictionModelImageFeatures { id x1; long long x2; long long x3; unsigned int x4; })outputImageFeatures;
 - (struct __CVBuffer { }*)predictUsingInputBuffer:(struct __CVBuffer { }*)arg1 error:(id*)arg2;
 - (bool)processInputFeatureWithName:(id)arg1 featureDescription:(id)arg2;
 - (bool)processInputModel:(id)arg1;
 - (bool)processOutputFeatureWithName:(id)arg1 featureDescription:(id)arg2;
-- (void)setInputImageFeatures:(struct CIPredictionModelImageFeatures { id x1; long long x2; unsigned int x3; })arg1;
+- (void)setInputImageFeatures:(struct CIPredictionModelImageFeatures { id x1; long long x2; long long x3; unsigned int x4; })arg1;
 - (void)setModel:(id)arg1;
-- (void)setOutputImageFeatures:(struct CIPredictionModelImageFeatures { id x1; long long x2; unsigned int x3; })arg1;
+- (void)setOutputImageFeatures:(struct CIPredictionModelImageFeatures { id x1; long long x2; long long x3; unsigned int x4; })arg1;
 
 @end

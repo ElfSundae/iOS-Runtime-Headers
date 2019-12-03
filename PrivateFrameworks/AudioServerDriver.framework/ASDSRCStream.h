@@ -18,7 +18,7 @@
 }
 
 @property (nonatomic, readonly) long long maximumFramesPerIOCycle;
-@property (nonatomic, retain) NSArray *underlyingStreams;
+@property (nonatomic, copy) NSArray *underlyingStreams;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;

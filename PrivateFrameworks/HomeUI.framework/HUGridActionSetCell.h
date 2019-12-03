@@ -11,7 +11,7 @@
     HFItem * _item;
     HUPieProgressView * _progressView;
     HUGridSceneCellLayoutOptions * _sceneCellLayoutOptions;
-    _HUGridActionSetTitleAndDescriptionView * _titleAndDescriptionView;
+    HUGridActionSetTitleAndDescriptionView * _titleAndDescriptionView;
 }
 
 @property (nonatomic, retain) UIView *accessoryView;
@@ -25,7 +25,7 @@
 @property (nonatomic, retain) HUPieProgressView *progressView;
 @property (nonatomic) HUGridSceneCellLayoutOptions *sceneCellLayoutOptions;
 @property (readonly) Class superclass;
-@property (nonatomic, retain) _HUGridActionSetTitleAndDescriptionView *titleAndDescriptionView;
+@property (nonatomic, retain) HUGridActionSetTitleAndDescriptionView *titleAndDescriptionView;
 
 + (Class)layoutOptionsClass;
 + (bool)requiresConstraintBasedLayout;

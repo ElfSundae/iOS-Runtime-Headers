@@ -32,6 +32,7 @@
 
 + (bool)_destroyPersistentStoreAtURL:(id)arg1 options:(id)arg2 error:(id*)arg3;
 + (id)_figureOutWhereExternalReferencesEndedUpRelativeTo:(id)arg1;
++ (bool)_rekeyPersistentStoreAtURL:(id)arg1 options:(id)arg2 withKey:(id)arg3 error:(id*)arg4;
 + (bool)_replacePersistentStoreAtURL:(id)arg1 destinationOptions:(id)arg2 withPersistentStoreFromURL:(id)arg3 sourceOptions:(id)arg4 error:(id*)arg5;
 + (bool)accessInstanceVariablesDirectly;
 + (id)cachedModelForPersistentStoreWithURL:(id)arg1 options:(id)arg2 error:(id*)arg3;
@@ -49,15 +50,18 @@
 - (bool)_isMetadataDirty;
 - (id)_newOrderedRelationshipInformationForRelationship:(id)arg1 forObjectWithID:(id)arg2 withContext:(id)arg3 error:(id*)arg4;
 - (Class)_objectIDClass;
+- (id)_persistentStoreCoordinator;
 - (void)_preflightCrossCheck;
 - (bool)_prepareForExecuteRequest:(id)arg1 withContext:(id)arg2 error:(id*)arg3;
 - (id)_rawMetadata__;
+- (void)_rebuildIndiciesSynchronously:(bool)arg1;
 - (void)_resetObjectIDFactoriesForStoreUUIDChange;
+- (void)_setCoreSpotlightDelegate:(id)arg1;
 - (void)_setMetadataDirty:(bool)arg1;
+- (void)_setPersistentStoreCoordinator:(id)arg1;
 - (void)_setupObserver;
 - (id)_storeInfoForEntityDescription:(id)arg1;
 - (bool)_unload:(id*)arg1;
-- (void)_updateAncillaryVersionHashesInMetadata:(id)arg1;
 - (void)_updateMetadata;
 - (id)_updatedMetadataWithSeed:(id)arg1 includeVersioning:(bool)arg2;
 - (id)ancillaryModels;
@@ -95,7 +99,6 @@
 - (id)reopenQueryGenerationWithIdentifier:(id)arg1 error:(id*)arg2;
 - (void)setIdentifier:(id)arg1;
 - (void)setMetadata:(id)arg1;
-- (void)setPersistentStoreCoordinator:(id)arg1;
 - (void)setReadOnly:(bool)arg1;
 - (void)setURL:(id)arg1;
 - (bool)supportsConcurrentRequestHandling;

@@ -4,6 +4,7 @@
 
 @interface PBSessionRequester : NSObject <NSURLSessionDataDelegate> {
     NSURL * _URL;
+    NSString * _apsRelayTopic;
     NSArray * _clientCertificates;
     NSDictionary * _connectionProperties;
     NSURLSessionTask * _currentTask;
@@ -33,6 +34,8 @@
     unsigned long long  _lastGoodDataOffset;
     NSString * _logRequestToFile;
     NSString * _logResponseToFile;
+    unsigned long long  _nwActivityDomain;
+    unsigned long long  _nwActivityLabel;
     NSMutableArray * _requests;
     long long  _responseStatusCode;
     NSMutableArray * _responses;
@@ -46,6 +49,7 @@
 }
 
 @property (nonatomic, retain) NSURL *URL;
+@property (nonatomic, copy) NSString *apsRelayTopic;
 @property (nonatomic, retain) NSArray *clientCertificates;
 @property (nonatomic, retain) NSURLSessionTask *currentTask;
 @property (readonly, copy) NSString *debugDescription;
@@ -59,6 +63,8 @@
 @property (nonatomic, retain) NSString *logRequestToFile;
 @property (nonatomic, retain) NSString *logResponseToFile;
 @property bool needsCancel;
+@property (nonatomic) unsigned long long nwActivityDomain;
+@property (nonatomic) unsigned long long nwActivityLabel;
 @property (nonatomic, readonly) unsigned long long requestResponseTime;
 @property (nonatomic, readonly) NSArray *requests;
 @property (nonatomic, retain) NSURLSession *session;
@@ -95,6 +101,7 @@
 - (bool)_tryParseData;
 - (void)addInternalRequest:(id)arg1;
 - (void)addRequest:(id)arg1;
+- (id)apsRelayTopic;
 - (void)cancel;
 - (void)cancelWithErrorCode:(long long)arg1;
 - (void)cancelWithErrorCode:(long long)arg1 description:(id)arg2;
@@ -120,6 +127,8 @@
 - (id)newSessionTaskOnSession:(id)arg1 withURLRequest:(id)arg2;
 - (id)newSessionWithDelegate:(id)arg1 delegateQueue:(id)arg2;
 - (id)newSessionWithDelegate:(id)arg1 delegateQueue:(id)arg2 connectionProperties:(id)arg3;
+- (unsigned long long)nwActivityDomain;
+- (unsigned long long)nwActivityLabel;
 - (void)pause;
 - (bool)readResponsePreamble:(id)arg1;
 - (id)requestPreamble;
@@ -129,6 +138,7 @@
 - (id)responseForRequest:(id)arg1;
 - (void)resume;
 - (id)session;
+- (void)setApsRelayTopic:(id)arg1;
 - (void)setClientCertificates:(id)arg1;
 - (void)setCurrentTask:(id)arg1;
 - (void)setDelegate:(id)arg1;
@@ -140,6 +150,8 @@
 - (void)setLogResponseToFile:(id)arg1;
 - (void)setNeedsCancel;
 - (void)setNeedsCancel:(bool)arg1;
+- (void)setNwActivityDomain:(unsigned long long)arg1;
+- (void)setNwActivityLabel:(unsigned long long)arg1;
 - (void)setSession:(id)arg1;
 - (void)setShouldHandleCookies:(bool)arg1;
 - (void)setTimeoutSeconds:(double)arg1;

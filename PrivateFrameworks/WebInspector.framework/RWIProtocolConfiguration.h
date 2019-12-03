@@ -7,6 +7,7 @@
     struct AugmentableInspectorController { int (**x1)(); } * _controller;
     RWIProtocolCSSDomainEventDispatcher * _cssEventDispatcher;
     <RWIProtocolCSSDomainHandler> * _cssHandler;
+    <RWIProtocolDOMDebuggerDomainHandler> * _domDebuggerHandler;
     RWIProtocolDOMDomainEventDispatcher * _domEventDispatcher;
     <RWIProtocolDOMDomainHandler> * _domHandler;
     RWIProtocolDOMStorageDomainEventDispatcher * _domStorageEventDispatcher;
@@ -20,6 +21,7 @@
 @property (nonatomic, readonly) RWIProtocolConsoleDomainEventDispatcher *consoleEventDispatcher;
 @property (nonatomic, readonly) RWIProtocolCSSDomainEventDispatcher *cssEventDispatcher;
 @property (setter=setCSSHandler:, nonatomic, retain) <RWIProtocolCSSDomainHandler> *cssHandler;
+@property (setter=setDOMDebuggerHandler:, nonatomic, retain) <RWIProtocolDOMDebuggerDomainHandler> *domDebuggerHandler;
 @property (nonatomic, readonly) RWIProtocolDOMDomainEventDispatcher *domEventDispatcher;
 @property (setter=setDOMHandler:, nonatomic, retain) <RWIProtocolDOMDomainHandler> *domHandler;
 @property (nonatomic, readonly) RWIProtocolDOMStorageDomainEventDispatcher *domStorageEventDispatcher;
@@ -33,6 +35,7 @@
 - (id)cssEventDispatcher;
 - (id)cssHandler;
 - (void)dealloc;
+- (id)domDebuggerHandler;
 - (id)domEventDispatcher;
 - (id)domHandler;
 - (id)domStorageEventDispatcher;
@@ -43,6 +46,7 @@
 - (id)pageEventDispatcher;
 - (id)pageHandler;
 - (void)setCSSHandler:(id)arg1;
+- (void)setDOMDebuggerHandler:(id)arg1;
 - (void)setDOMHandler:(id)arg1;
 - (void)setDOMStorageHandler:(id)arg1;
 - (void)setNetworkHandler:(id)arg1;

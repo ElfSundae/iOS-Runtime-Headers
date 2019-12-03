@@ -9,6 +9,7 @@
 
 - (id)_smartCamCombinedModelImageSaliencyObservationsForRevision:(unsigned long long)arg1 performedInContext:(id)arg2 error:(id*)arg3;
 - (bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id*)arg3;
+- (bool)warmUpRequestPerformer:(id)arg1 error:(id*)arg2;
 - (bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 
 @end

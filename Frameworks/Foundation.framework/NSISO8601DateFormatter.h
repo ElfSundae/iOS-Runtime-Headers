@@ -11,8 +11,6 @@
 @property unsigned long long formatOptions;
 @property (copy) NSTimeZone *timeZone;
 
-// Image: /System/Library/Frameworks/Foundation.framework/Foundation
-
 + (id)stringFromDate:(id)arg1 timeZone:(id)arg2 formatOptions:(unsigned long long)arg3;
 + (bool)supportsSecureCoding;
 
@@ -30,9 +28,5 @@
 - (id)stringFromDate:(id)arg1;
 - (id)timeZone;
 - (void)updateFormatter;
-
-// Image: /System/Library/PrivateFrameworks/ScreenTimeUI.framework/ScreenTimeUI
-
-+ (id)st_sharedISO8601CurfewDateFormatter;
 
 @end

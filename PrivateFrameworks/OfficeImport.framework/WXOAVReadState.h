@@ -8,8 +8,8 @@
     WXReadState * mWxState;
 }
 
+- (void).cxx_destruct;
 - (id)currentParagraph;
-- (void)dealloc;
 - (id)initWithWXReadState:(id)arg1;
 - (id)nextVmlShapeIdToTextBoxMap;
 - (void)setCurrentParagraph:(id)arg1;

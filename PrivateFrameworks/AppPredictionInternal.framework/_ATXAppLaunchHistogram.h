@@ -55,6 +55,7 @@
 - (void)resetHistogram:(id)arg1;
 - (double)totalLaunches;
 - (double)totalLaunchesForBundleIds:(id)arg1;
+- (double)totalLaunchesForBundleIds:(id)arg1 forDate:(id)arg2 distanceScale:(float)arg3;
 - (double)totalTimeOfDayLaunchesForDate:(id)arg1;
 - (double)totalTimeOfDayLaunchesForDate:(id)arg1 distanceScale:(float)arg2;
 - (double)totalTimeOfDayLaunchesForElapsedTime:(double)arg1;

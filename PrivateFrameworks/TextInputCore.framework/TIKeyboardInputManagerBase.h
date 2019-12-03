@@ -5,19 +5,18 @@
 @interface TIKeyboardInputManagerBase : NSObject {
     bool  _hasHandledInput;
     TIInputMode * _inputMode;
-    TIKeyboardSecureCandidateRenderer * _secureCandidateRenderer;
 }
 
 @property (nonatomic, readonly) NSString *currentInputModeIdentifier;
 @property (nonatomic, readonly) bool hasHandledInput;
 @property (nonatomic, readonly) TIInputMode *inputMode;
-@property (nonatomic, retain) TIKeyboardSecureCandidateRenderer *secureCandidateRenderer;
 
 - (void).cxx_destruct;
 - (void)addSynthesizedTouchToInput:(id)arg1;
 - (void)adjustPhraseBoundaryInForwardDirection:(bool)arg1;
 - (void)adjustPhraseBoundaryInForwardDirection:(bool)arg1 granularity:(int)arg2;
 - (void)candidateRejected:(id)arg1;
+- (void)candidatesOfferedFeedback:(id)arg1 keyboardState:(id)arg2;
 - (void)clearHumanReadableTrace;
 - (id)configurationPropertyList;
 - (id)currentInputModeIdentifier;
@@ -36,16 +35,17 @@
 - (bool)isHardwareKeyboardAutocorrectionEnabled;
 - (id)keyboardConfiguration;
 - (void)lastAcceptedCandidateCorrected;
+- (void)logDiscoverabilityEvent:(int)arg1 userInfo:(id)arg2;
 - (long long)performHitTestForTouchEvent:(id)arg1 keyboardState:(id)arg2;
 - (id)resourceInputModes;
 - (void)resume;
-- (id)secureCandidateRenderer;
+- (void)runMaintenanceTask;
 - (void)setOriginalInput:(id)arg1;
-- (void)setSecureCandidateRenderer:(id)arg1;
 - (void)skipHitTestForTouchEvent:(id)arg1 keyboardState:(id)arg2;
+- (struct _NSRange { unsigned long long x1; unsigned long long x2; })smartSelectionRangeForTextInDocument:(id)arg1 inRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 language:(id)arg3 tokenizedRanges:(id)arg4 options:(unsigned long long)arg5;
 - (void)storeLanguageModelDynamicDataIncludingCache;
 - (void)suspend;
 - (void)syncToKeyboardState:(id)arg1;
-- (void)textAccepted:(id)arg1 fromPredictiveInputBar:(bool)arg2;
+- (void)textAccepted:(id)arg1 fromPredictiveInputBar:(bool)arg2 withInput:(id)arg3;
 
 @end

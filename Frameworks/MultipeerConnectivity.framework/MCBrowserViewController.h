@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MultipeerConnectivity.framework/MultipeerConnectivity
  */
 
-@interface MCBrowserViewController : UIViewController <MCNearbyServiceBrowserDelegate, MCSessionPrivateDelegate, UIAlertViewDelegate, UINavigationBarDelegate, UITableViewDataSource, UITableViewDelegate> {
+@interface MCBrowserViewController : UIViewController <MCNearbyServiceBrowserDelegate, MCSessionPrivateDelegate, UINavigationBarDelegate, UITableViewDataSource, UITableViewDelegate> {
     MCNearbyServiceBrowser * _browser;
     NSObject<OS_dispatch_queue> * _callbackQueue;
     UIBarButtonItem * _cancelButton;

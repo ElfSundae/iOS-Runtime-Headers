@@ -25,7 +25,7 @@
 - (id)price;
 - (id)subscriptionType;
 
-// Image: /System/Library/PrivateFrameworks/ManagedConfiguration.framework/MDM.framework/MDM
+// Image: /System/Library/PrivateFrameworks/MDM.framework/MDM
 
 - (id)MCExternalVersionIdentifier;
 

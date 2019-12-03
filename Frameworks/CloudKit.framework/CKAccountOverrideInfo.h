@@ -3,6 +3,7 @@
  */
 
 @interface CKAccountOverrideInfo : NSObject <NSCopying, NSSecureCoding> {
+    NSString * _accountID;
     NSDictionary * _accountPropertyOverrides;
     bool  _accountWantsFlowControl;
     bool  _accountWantsPushRegistration;
@@ -13,6 +14,7 @@
     NSString * _secondEmail;
 }
 
+@property (nonatomic, copy) NSString *accountID;
 @property (nonatomic, copy) NSDictionary *accountPropertyOverrides;
 @property (nonatomic) bool accountWantsFlowControl;
 @property (nonatomic) bool accountWantsPushRegistration;
@@ -26,6 +28,7 @@
 
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
+- (id)accountID;
 - (id)accountPropertyOverrides;
 - (bool)accountWantsFlowControl;
 - (bool)accountWantsPushRegistration;
@@ -35,6 +38,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initAnonymousAccount;
+- (id)initWithAccountID:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithEmail:(id)arg1 password:(id)arg2;
 - (bool)isEqual:(id)arg1;
@@ -42,6 +46,7 @@
 - (id)overridesByDataclass;
 - (id)password;
 - (id)secondEmail;
+- (void)setAccountID:(id)arg1;
 - (void)setAccountPropertyOverrides:(id)arg1;
 - (void)setAccountWantsFlowControl:(bool)arg1;
 - (void)setAccountWantsPushRegistration:(bool)arg1;

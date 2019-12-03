@@ -21,7 +21,10 @@
 @property (nonatomic, readonly) NSArray *scheduledAlertsAndNotifications;
 @property (nonatomic, readonly) NSArray *scheduledObjects;
 
++ (id /* block */)_dateIntervalFilter:(id)arg1;
++ (id)_filterScheduledObjects:(id)arg1 withBlock:(id /* block */)arg2;
 + (id)_nextScheduledObjectInSets:(id)arg1;
++ (id /* block */)_scheduledObjectComparator;
 + (void)_sort:(id)arg1;
 
 - (void).cxx_destruct;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
  */
 
-@interface CKDChainPCSData : CKDPCSData {
+@interface CKDChainPCSData : CKDPCSData <NSSecureCoding> {
     CKEncryptedData * _encryptedChainPCSPrivateKey;
 }
 

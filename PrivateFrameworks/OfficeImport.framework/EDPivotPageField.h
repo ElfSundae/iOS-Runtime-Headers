@@ -10,8 +10,8 @@
 
 + (id)pivotPageField;
 
+- (void).cxx_destruct;
 - (id)cap;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)fieldId;
 - (id)init;

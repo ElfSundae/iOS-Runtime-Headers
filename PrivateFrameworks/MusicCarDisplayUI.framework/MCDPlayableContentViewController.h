@@ -8,6 +8,7 @@
     bool  _hasLoaded;
     bool  _hasSectionedContent;
     MCDPCModel * _model;
+    NSOperationQueue * _modelInvalidationQueue;
     MCDPCContainer * _rootContainer;
     NSArray * _stackToRebuild;
 }
@@ -16,6 +17,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, retain) NSOperationQueue *modelInvalidationQueue;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -25,12 +27,13 @@
 - (void)_nowPlayingIdentifiersChanged:(id)arg1;
 - (void)_populateStack;
 - (void)_setupView;
-- (void)_updateStackForPlaying:(bool)arg1;
 - (id)bundleID;
 - (id)currentStack;
 - (id)initWithBundleID:(id)arg1;
 - (id)initWithBundleID:(id)arg1 stack:(id)arg2;
+- (id)modelInvalidationQueue;
 - (void)refreshNavigationStackForLaunch;
+- (void)setModelInvalidationQueue:(id)arg1;
 - (void)setViewControllers:(id)arg1 animated:(bool)arg2;
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;

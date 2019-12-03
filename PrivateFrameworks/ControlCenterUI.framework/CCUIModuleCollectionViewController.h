@@ -16,7 +16,6 @@
     NSDictionary * _moduleViewControllerByIdentifier;
     CCUIControlCenterPositionProvider * _portraitPositionProvider;
     CCUIModuleSettingsManager * _settingsManager;
-    CCUIExpandedModuleBackgroundView * _sharedExpandedModuleBackgroundView;
 }
 
 @property (nonatomic, readonly) NSArray *childViewControllersForAppearancePropagation;
@@ -31,6 +30,8 @@
 
 - (void).cxx_destruct;
 - (id)_activePositionProvider;
+- (void)_beginAppearanceTransition:(bool)arg1 affectedModule:(id)arg2;
+- (bool)_canShowWhileLocked;
 - (id)_currentLayoutOptions;
 - (long long)_interfaceOrientation;
 - (id)_moduleInstances;
@@ -39,12 +40,10 @@
 - (void)_refreshPositionProviders;
 - (void)_removeAndTearDownModuleViewControllerFromHierarchy:(id)arg1;
 - (id)_setupAndAddModuleViewControllerToHierarchy:(id)arg1;
-- (bool)_shouldApplyBackgroundEffects;
 - (id)_sizesForModuleIdentifiers:(id)arg1 moduleInstanceByIdentifier:(id)arg2 interfaceOrientation:(long long)arg3;
 - (void)_updateEnabledModuleIdentifiers;
 - (void)_updateHomeGestureDismissalAllowed;
 - (void)_updateModuleControllers;
-- (id)backgroundViewForContentModuleContainerViewController:(id)arg1;
 - (id)childViewControllersForAppearancePropagation;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })compactModeFrameForContentModuleContainerViewController:(id)arg1;
 - (bool)contentModuleContainerViewController:(id)arg1 canBeginInteractionWithModule:(id)arg2;
@@ -53,14 +52,17 @@
 - (void)contentModuleContainerViewController:(id)arg1 didFinishInteractionWithModule:(id)arg2;
 - (void)contentModuleContainerViewController:(id)arg1 didOpenExpandedModule:(id)arg2;
 - (void)contentModuleContainerViewController:(id)arg1 willCloseExpandedModule:(id)arg2;
+- (void)contentModuleContainerViewController:(id)arg1 willDismissViewController:(id)arg2;
 - (void)contentModuleContainerViewController:(id)arg1 willOpenExpandedModule:(id)arg2;
+- (void)contentModuleContainerViewController:(id)arg1 willPresentViewController:(id)arg2;
+- (void)contentModuleContainerViewControllerDismissPresentedContent:(id)arg1;
 - (id)delegate;
 - (void)didUpdateHomeGestureDismissalAllowed:(bool)arg1 forModuleWithIdentifier:(id)arg2;
 - (void)dismissExpandedModuleAnimated:(bool)arg1 completion:(id /* block */)arg2;
 - (void)dismissPresentedContentAnimated:(bool)arg1 completion:(id /* block */)arg2;
+- (void)displayWillTurnOff;
 - (void)expandModuleWithIdentifier:(id)arg1;
 - (unsigned long long)expandedModuleCount;
-- (void)expandedModuleDidChangeSizeWithIdentifier:(id)arg1;
 - (id)initWithModuleInstanceManager:(id)arg1;
 - (bool)isAtMaxHeight;
 - (bool)isHomeGestureDismissalAllowed;
@@ -76,7 +78,6 @@
 - (id)relevantSnapHeightsForOrientation:(long long)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setModuleCollectionView:(id)arg1;
-- (bool)shouldApplyBackgroundEffectsForContentModuleContainerViewController:(id)arg1;
 - (bool)shouldAutomaticallyForwardAppearanceMethods;
 - (struct CGSize { double x1; double x2; })sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize { double x1; double x2; })arg2;
 - (void)viewDidAppear:(bool)arg1;

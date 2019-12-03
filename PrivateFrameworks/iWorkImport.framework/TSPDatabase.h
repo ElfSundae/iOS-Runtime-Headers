@@ -21,7 +21,7 @@
 - (id)initReadonlyWithPath:(id)arg1 error:(id*)arg2;
 - (id)initWithPath:(id)arg1 error:(id*)arg2;
 - (bool)insertDataStateWithSize:(int)arg1 identifier:(long long*)arg2 error:(id*)arg3;
-- (bool)insertObjectWithIdentifier:(long long)arg1 stateIdentifier:(const /* Warning: unhandled struct encoding: '{ObjectStateIdentifier=BqB@}' */ struct ObjectStateIdentifier { bool x1; long long x2; bool x3; id x4; }*)arg2 classType:(int)arg3 error:(id*)arg4;
+- (bool)insertObjectWithIdentifier:(long long)arg1 stateIdentifier:(const struct ObjectStateIdentifier { bool x1; long long x2; bool x3; id x4; }*)arg2 classType:(int)arg3 error:(id*)arg4;
 - (bool)insertRelationshipWithSourceIdentifier:(long long)arg1 targetIdentifier:(long long)arg2 error:(id*)arg3;
 - (bool)lastObjectIdentifier:(long long*)arg1 error:(id*)arg2;
 - (bool)needsUpgradeFromSchemaVersion:(int)arg1;

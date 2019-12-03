@@ -30,6 +30,7 @@
 + (id)webScriptNameForKeyName:(id)arg1;
 + (id)webScriptNameForSelector:(SEL)arg1;
 
+- (void).cxx_destruct;
 - (id)DOMElementWithElement:(id)arg1;
 - (void)_checkOutAfterVisibilityChange;
 - (id)_className;

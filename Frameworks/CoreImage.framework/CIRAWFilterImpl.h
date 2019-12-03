@@ -29,6 +29,7 @@
     NSNumber * inputDisableGamutMap;
     NSNumber * inputDraftMode;
     NSNumber * inputEV;
+    NSNumber * inputEnableEDRMode;
     NSNumber * inputEnableNoiseTracking;
     NSNumber * inputEnableSharpening;
     NSNumber * inputEnableVendorLensCorrection;
@@ -74,6 +75,7 @@
 + (id)filterWithImageURL:(id)arg1 options:(id)arg2;
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
 + (id)optionKeys;
++ (id)supportedRawCameraModels;
 
 - (id)RAWFiltersValueForKeyPath:(id)arg1;
 - (id)activeKeys;
@@ -85,6 +87,7 @@
 - (id)defaultInputBaselineExposureAmount;
 - (id)defaultInputBiasAmount;
 - (id)defaultInputColorNoiseReductionAmount;
+- (id)defaultInputEnableEDRMode;
 - (id)defaultInputEnableVendorLensCorrection;
 - (id)defaultInputHueMagBMAmount;
 - (id)defaultInputHueMagCBAmount;
@@ -145,6 +148,7 @@
 - (void)setInputDisableGamutMap:(id)arg1;
 - (void)setInputDraftMode:(id)arg1;
 - (void)setInputEV:(id)arg1;
+- (void)setInputEnableEDRMode:(id)arg1;
 - (void)setInputEnableNoiseTracking:(id)arg1;
 - (void)setInputEnableSharpening:(id)arg1;
 - (void)setInputEnableVendorLensCorrection:(id)arg1;

@@ -5,6 +5,7 @@
 
 @required
 
+- (void)didChangeArrangedBarItems:(id <_SFBarRegistrationToken>)arg1;
 - (void)didCompleteBarRegistrationWithToken:(id <_SFBarRegistrationToken>)arg1;
 
 @end

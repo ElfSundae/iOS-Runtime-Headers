@@ -2,30 +2,26 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaSiriCue : PBCodable <NSCopying> {
-    struct { 
-        unsigned int siriCueType : 1; 
-    }  _has;
+@interface SISchemaSiriCue : PBCodable <NSSecureCoding, SISchemaSiriCue> {
     int  _siriCueType;
 }
 
-@property (nonatomic) bool hasSiriCueType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic) int siriCueType;
+@property (readonly) Class superclass;
 
-- (int)StringAsSiriCueType:(id)arg1;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (bool)hasSiriCueType;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (bool)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
+- (id)jsonData;
 - (bool)readFrom:(id)arg1;
-- (void)setHasSiriCueType:(bool)arg1;
 - (void)setSiriCueType:(int)arg1;
 - (int)siriCueType;
-- (id)siriCueTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

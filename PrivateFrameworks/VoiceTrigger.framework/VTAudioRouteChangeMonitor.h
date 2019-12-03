@@ -19,6 +19,6 @@
 - (unsigned long long)_updateHearstConnectionStatus;
 - (unsigned long long)hearstConnectionStatus;
 - (id)init;
-- (void)updateActiveAudioRouteStatus;
+- (void)updateExternalRouteConnectionStatus;
 
 @end

@@ -16,6 +16,7 @@
 
 - (bool)deviceOriented;
 - (bool)includesInvalidContent;
+- (id)initWithFormat:(id)arg1;
 - (void)setDeviceOriented:(bool)arg1;
 - (void)setIncludesInvalidContent:(bool)arg1;
 - (void)setVideoContentMode:(long long)arg1;

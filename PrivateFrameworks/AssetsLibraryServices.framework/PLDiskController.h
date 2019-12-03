@@ -13,8 +13,12 @@
     double  _lastFSCheck;
 }
 
++ (long long)diskSpaceAvailableForPath:(id)arg1;
 + (long long)diskSpaceAvailableForUse;
++ (long long)fileSystemSizeForPath:(id)arg1;
 + (long long)freeDiskSpaceThreshold;
++ (bool)freeSpaceBelowDesiredSpaceThresholdForPath:(id)arg1;
++ (id)mountPointForPath:(id)arg1;
 + (id)sharedInstance;
 
 - (void)_actuallyUpdateCookie;

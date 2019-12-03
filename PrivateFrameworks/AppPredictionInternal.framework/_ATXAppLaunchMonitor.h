@@ -8,9 +8,10 @@
     _PASQueueLock * _history;
     NSObject<OS_dispatch_queue> * _logQueue;
     PETScalarEventTracker * _updateLaunchHistoryTracker;
+    NSUserDefaults * _userDefaults;
 }
 
-+ (void)_logAppLaunch:(id)arg1 fromDock:(bool)arg2;
++ (void)_logAppLaunch:(id)arg1 from:(unsigned long long)arg2;
 + (void)_logPredictionForBundleId:(id)arg1 launchReason:(id)arg2 consumerType:(unsigned long long)arg3 consumerSubType:(unsigned char)arg4;
 + (void)logAppLaunchForBundleId:(id)arg1 launchReason:(id)arg2;
 + (void)mergeAppLaunches:(id)arg1 andBacklightTransitions:(id)arg2 callingAppLaunchBlock:(id /* block */)arg3;
@@ -28,12 +29,12 @@
 - (void)clearIntentHistogramHistory;
 - (id)dailyDose;
 - (void)dealloc;
-- (id)getLastAppsFromDuetWithStartDate:(id)arg1 endDate:(id)arg2;
 - (void)handleAppLaunchNotification:(id)arg1 reason:(id)arg2 date:(id)arg3;
 - (void)handleBacklightChangeNotificationWithValue:(int)arg1 date:(id)arg2;
 - (id)init;
 - (id)initWithAppInfoManager:(id)arg1 appLaunchHistogramManager:(id)arg2 appLaunchSequenceManager:(id)arg3 appDailyDose:(id)arg4 duetHelper:(id)arg5;
 - (id)initWithInMemoryStore;
+- (void)processDonationsForPreviousAppSessionEndIfNeeded;
 - (void)registerForAppChange;
 - (void)registerForBacklightChange;
 - (void)start;

@@ -85,6 +85,7 @@
 - (void)loadView;
 - (id)onBoardingBundleIdentifier;
 - (id)onBoardingBundleIdentifiers;
+- (long long)preferredUserInterfaceStyle;
 - (long long)privacyLinkPosition;
 - (void)removeAllButtons;
 - (id)scrollView;

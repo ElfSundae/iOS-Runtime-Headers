@@ -13,6 +13,7 @@
 - (void).cxx_destruct;
 - (id)headerLabel;
 - (id)initWithReuseIdentifier:(id)arg1;
+- (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
 - (void)setHeaderLabel:(id)arg1;
 

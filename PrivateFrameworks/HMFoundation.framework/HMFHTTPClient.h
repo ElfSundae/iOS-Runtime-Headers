@@ -2,18 +2,17 @@
    Image: /System/Library/PrivateFrameworks/HMFoundation.framework/HMFoundation
  */
 
-@interface HMFHTTPClient : HMFObject <HMFLogging, HMFNetMonitorDelegate, HMFTimerDelegate, NSURLSessionDelegate, _HMFNetServiceMonitorDelegate> {
+@interface HMFHTTPClient : HMFObject <HMFLogging, HMFNetMonitorDelegate, HMFTimerDelegate, NSURLSessionDelegate> {
     bool  _active;
     bool  _allowAnonymousConnection;
     NSURL * _baseURL;
-    NSObject<OS_dispatch_queue> * _clientQueue;
+    HMFHTTPClientConfiguration * _configuration;
     <HMFHTTPClientDelegate> * _delegate;
     HMFExponentialBackoffTimer * _delegatedPingTimer;
-    HMFUnfairLock * _lock;
+    <HMFLocking> * _lock;
     HMFNetService * _netService;
-    _HMFNetServiceMonitor * _netServiceMonitor;
-    unsigned long long  _options;
     bool  _pinging;
+    NSObject<OS_dispatch_queue> * _queue;
     HMFNetMonitor * _reachabilityMonitor;
     NSOperationQueue * _reachabilityProbeQueue;
     bool  _reachable;
@@ -23,14 +22,13 @@
 @property (getter=isActive, nonatomic) bool active;
 @property (nonatomic) bool allowAnonymousConnection;
 @property (nonatomic, readonly, copy) NSURL *baseURL;
-@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *clientQueue;
+@property (readonly, copy) HMFHTTPClientConfiguration *configuration;
 @property (readonly, copy) NSString *debugDescription;
 @property <HMFHTTPClientDelegate> *delegate;
 @property (nonatomic, retain) HMFExponentialBackoffTimer *delegatedPingTimer;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) HMFNetService *netService;
-@property (nonatomic, readonly) _HMFNetServiceMonitor *netServiceMonitor;
 @property (nonatomic, readonly) unsigned long long options;
 @property (getter=isPinging, nonatomic) bool pinging;
 @property (nonatomic, readonly) HMFNetMonitor *reachabilityMonitor;
@@ -45,27 +43,26 @@
 - (void).cxx_destruct;
 - (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;
 - (void)URLSession:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(id /* block */)arg3;
-- (void)__initializeWithOptions:(unsigned long long)arg1;
+- (void)__initializeWithConfiguration:(id)arg1;
 - (bool)allowAnonymousConnection;
 - (id)attributeDescriptions;
 - (id)baseURL;
 - (void)cancelPendingRequests;
-- (id)clientQueue;
+- (id)configuration;
 - (void)dealloc;
 - (id)delegate;
 - (id)delegatedPingTimer;
 - (id)init;
+- (id)initWithBaseURL:(id)arg1 configuration:(id)arg2;
 - (id)initWithBaseURL:(id)arg1 options:(unsigned long long)arg2;
 - (id)initWithNetService:(id)arg1 options:(unsigned long long)arg2;
+- (id)initWithService:(id)arg1 configuration:(id)arg2;
+- (void)invalidate;
 - (bool)isActive;
 - (bool)isPinging;
 - (bool)isReachable;
-- (bool)isValid;
 - (id)logIdentifier;
-- (void)monitor:(id)arg1 didUpdateNetService:(id)arg2;
-- (void)monitor:(id)arg1 didUpdateReachability:(bool)arg2;
 - (id)netService;
-- (id)netServiceMonitor;
 - (void)networkMonitorIsReachable:(id)arg1;
 - (void)networkMonitorIsUnreachable:(id)arg1;
 - (unsigned long long)options;
@@ -79,7 +76,6 @@
 - (void)setAllowAnonymousConnection:(bool)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDelegatedPingTimer:(id)arg1;
-- (void)setNetService:(id)arg1;
 - (void)setPinging:(bool)arg1;
 - (void)setReachable:(bool)arg1;
 - (void)startDelegatedPingTimer;

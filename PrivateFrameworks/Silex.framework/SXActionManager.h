@@ -19,6 +19,7 @@
 - (void).cxx_destruct;
 - (id)activityManager;
 - (void)commitPreviewViewController:(id)arg1;
+- (id)contextMenuConfigurationForAction:(id)arg1;
 - (id)currentPreview;
 - (id)initWithActionActivityManager:(id)arg1 viewManager:(id)arg2;
 - (void)notifyPostActionHandlers:(id)arg1 action:(id)arg2 state:(unsigned long long)arg3;

@@ -3,7 +3,6 @@
  */
 
 @interface FCUserInfo : FCPrivateDataController <FCTagSettingsDelegate> {
-    bool  _iCloudAccountChanged;
     NSDictionary * _readOnlyUserInfo;
     FCTagSettings * _tagSettings;
     bool  _useParsecResults;
@@ -21,7 +20,7 @@
 @property (nonatomic, copy) NSString *feldsparID;
 @property (nonatomic) bool hasShownProgressivePersonalizationWelcomeBrick;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) bool iCloudAccountChanged;
+@property (nonatomic, copy) NSString *lastAppLaunchUpsellInstanceID;
 @property (nonatomic) bool marketingNotificationsEnabled;
 @property (nonatomic, readonly) bool mightNeedToUpdateOnboardingVersion;
 @property (nonatomic, copy) NSNumber *monthlyALaCarteSubscriptionMeteredCount;
@@ -34,6 +33,7 @@
 @property (nonatomic, readonly) bool shouldShowDefaultForYou;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) FCTagSettings *tagSettings;
+@property (nonatomic, copy) NSNumber *upsellAppLaunchCount;
 @property (nonatomic, readonly) bool useParsecResults;
 @property (nonatomic) bool userHasCompletedFavoritesSetup;
 @property (nonatomic, retain) FCMTWriterLock *userInfoLock;
@@ -59,7 +59,6 @@
 - (void).cxx_destruct;
 - (void)_modifyUserInfoWithBlock:(id /* block */)arg1;
 - (void)_persistNotificationsUserID:(id)arg1;
-- (void)_removeiCloudDataValues;
 - (void)_setUserInfoValue:(id)arg1 forKey:(id)arg2;
 - (id)_userInfoValueForKey:(id)arg1;
 - (id)aLaCarteSubscriptionMeteredCountLastResetDate;
@@ -67,6 +66,7 @@
 - (void)accessTokenRemovedForTagID:(id)arg1 userInitiated:(bool)arg2;
 - (void)addModifyTagSettingsCommandToCommandQueue:(id)arg1;
 - (void)addObserver:(id)arg1;
+- (id)allKnownRecordNamesWithinRecordZoneWithID:(id)arg1;
 - (id)asCKRecord;
 - (id)bundleSubscriptionMeteredCountLastResetDate;
 - (bool)canHelpRestoreZoneName:(id)arg1;
@@ -75,11 +75,12 @@
 - (id)dateLastViewedSaved;
 - (id)editorialArticleVersion;
 - (id)feldsparID;
-- (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordIDs:(id)arg2;
+- (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordNames:(id)arg2;
+- (void)handleSyncWithDeletedUserInfoRecord;
 - (void)handleSyncWithUserInfoRecord:(id)arg1;
 - (bool)hasShownProgressivePersonalizationWelcomeBrick;
-- (bool)iCloudAccountChanged;
-- (id)initWithContext:(id)arg1 pushNotificationCenter:(id)arg2 storeDirectory:(id)arg3 iCloudAccountChanged:(bool)arg4;
+- (id)initWithContext:(id)arg1 pushNotificationCenter:(id)arg2 storeDirectory:(id)arg3;
+- (id)lastAppLaunchUpsellInstanceID;
 - (void)loadLocalCachesFromStore;
 - (void)markSavedAsViewed;
 - (bool)marketingNotificationsEnabled;
@@ -103,7 +104,7 @@
 - (void)setEditorialArticleVersion:(id)arg1;
 - (void)setFeldsparID:(id)arg1;
 - (void)setHasShownProgressivePersonalizationWelcomeBrick:(bool)arg1;
-- (void)setICloudAccountChanged:(bool)arg1;
+- (void)setLastAppLaunchUpsellInstanceID:(id)arg1;
 - (void)setMarketingNotificationsEnabled:(bool)arg1;
 - (void)setMonthlyALaCarteSubscriptionMeteredCount:(id)arg1;
 - (void)setMonthlyBundleSubscriptionMeteredCount:(id)arg1;
@@ -111,6 +112,7 @@
 - (void)setOnboardingVersionNumber:(id)arg1;
 - (void)setReadOnlyUserInfo:(id)arg1;
 - (void)setTagSettings:(id)arg1;
+- (void)setUpsellAppLaunchCount:(id)arg1;
 - (void)setUserHasCompletedFavoritesSetup:(bool)arg1;
 - (void)setUserInfoLock:(id)arg1;
 - (void)setUserStartDate:(id)arg1;
@@ -119,6 +121,7 @@
 - (void)syncWithCompletion:(id /* block */)arg1;
 - (id)tagSettings;
 - (void)updateOnboardingVersion;
+- (id)upsellAppLaunchCount;
 - (bool)useParsecResults;
 - (bool)userHasCompletedFavoritesSetup;
 - (id)userInfoLock;

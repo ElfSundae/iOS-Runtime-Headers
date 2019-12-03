@@ -17,7 +17,6 @@
 + (id)_fetchOrCreateSalt;
 + (double)defaultLogoDimension;
 + (id)imageManagerWithHealthRecordsStore:(id)arg1;
-+ (id)standardTableViewCellSpacerImage;
 
 - (void).cxx_destruct;
 - (id)_hashedSaltedStringFromString:(id)arg1;
@@ -30,7 +29,7 @@
 - (id)fetchedImages;
 - (id)fileOperationQueue;
 - (id)healthRecordsStore;
-- (id)init;
+- (id)initWithHealthRecordsStore:(id)arg1;
 - (id)loadStoredLogoForBrand:(id)arg1;
 - (void)onMainQueue:(id /* block */)arg1;
 - (id)outstandingRequests;

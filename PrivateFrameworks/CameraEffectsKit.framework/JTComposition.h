@@ -80,6 +80,7 @@
 - (void).cxx_destruct;
 - (id)AVComposition;
 - (bool)CARenderingRequiredForClip:(id)arg1;
+- (float)JT_preferredRenderScale;
 - (void)addAudioPointsToArray:(id)arg1 atFrameTime:(int)arg2 volume:(double)arg3;
 - (void)addBackTracksIfRemoved;
 - (bool)addVolumeRampToTrackGroup:(id)arg1 forClip:(id)arg2 shouldUseDucking:(bool)arg3;

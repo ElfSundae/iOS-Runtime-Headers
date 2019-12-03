@@ -27,6 +27,8 @@
     bool  _showSelection;
     bool  _showsBorderLines;
     bool  _showsLabel;
+    long long  _targetSizeClass;
+    NSMutableDictionary * _temporaryViewCache;
     bool  _usesSmallText;
 }
 
@@ -50,11 +52,14 @@
 - (void).cxx_destruct;
 - (double)_allDayAreaHeightForEventCount:(long long)arg1;
 - (double)_borderLineWidth;
+- (void)_clearTemporaryViews;
 - (void)_configureOccurrenceViewMarginAndPadding:(id)arg1;
 - (id)_findSelectedCopySubviewOfView:(id)arg1;
 - (double)_height;
+- (void)_saveTemporaryViews;
 - (id)_selectedCopyView;
 - (void)_setUpBirthdayCountViewIfNeeded;
+- (long long)_sizeClass;
 - (void)addViewToScroller:(id)arg1;
 - (bool)allowsOccurrenceSelection;
 - (void)configureOccurrenceViewForGestureController:(id)arg1;
@@ -68,6 +73,7 @@
 - (bool)forceSingleColumnLayout;
 - (bool)hideOccurrenceBackground;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 sizeClass:(long long)arg2;
 - (bool)isAllDayLabelHighlighted;
 - (void)layoutSubviews;
 - (int)maxVisibleRows;

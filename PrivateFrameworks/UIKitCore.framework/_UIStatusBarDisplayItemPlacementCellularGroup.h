@@ -7,6 +7,7 @@
     _UIStatusBarDisplayItemPlacement * _callForwardingPlacement;
     _UIStatusBarDisplayItemPlacement * _namePlacement;
     NSArray * _placementsAffectedByAirplaneMode;
+    _UIStatusBarDisplayItemPlacement * _rawPlacement;
     _UIStatusBarDisplayItemPlacement * _signalStrengthPlacement;
     _UIStatusBarDisplayItemPlacement * _typePlacement;
     _UIStatusBarDisplayItemPlacement * _warningPlacement;
@@ -16,6 +17,7 @@
 @property (nonatomic, retain) _UIStatusBarDisplayItemPlacement *callForwardingPlacement;
 @property (nonatomic, retain) _UIStatusBarDisplayItemPlacement *namePlacement;
 @property (nonatomic, retain) NSArray *placementsAffectedByAirplaneMode;
+@property (nonatomic, retain) _UIStatusBarDisplayItemPlacement *rawPlacement;
 @property (nonatomic, retain) _UIStatusBarDisplayItemPlacement *signalStrengthPlacement;
 @property (nonatomic, retain) _UIStatusBarDisplayItemPlacement *typePlacement;
 @property (nonatomic, retain) _UIStatusBarDisplayItemPlacement *warningPlacement;
@@ -25,10 +27,12 @@
 - (id)callForwardingPlacement;
 - (id)namePlacement;
 - (id)placementsAffectedByAirplaneMode;
+- (id)rawPlacement;
 - (void)setBadgePlacement:(id)arg1;
 - (void)setCallForwardingPlacement:(id)arg1;
 - (void)setNamePlacement:(id)arg1;
 - (void)setPlacementsAffectedByAirplaneMode:(id)arg1;
+- (void)setRawPlacement:(id)arg1;
 - (void)setSignalStrengthPlacement:(id)arg1;
 - (void)setTypePlacement:(id)arg1;
 - (void)setWarningPlacement:(id)arg1;

@@ -6,6 +6,7 @@
     MPSectionedCollection * _radioStationTracks;
 }
 
++ (bool)requiresNetwork;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;

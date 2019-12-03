@@ -10,6 +10,7 @@
     NSString * _inputMode;
     bool  _interfaceIdiomIsPad;
     bool  _isAlphabeticPlane;
+    bool  _isKanaPlane;
     NSString * _layoutTag;
     long long  _userInterfaceIdiom;
 }
@@ -21,7 +22,9 @@
 @property (nonatomic, copy) NSString *inputMode;
 @property (nonatomic) bool interfaceIdiomIsPad;
 @property (nonatomic) bool isAlphabeticPlane;
+@property (nonatomic) bool isKanaPlane;
 @property (nonatomic, copy) NSString *layoutTag;
+@property (nonatomic, readonly) NSString *softwareLayout;
 @property (nonatomic) long long userInterfaceIdiom;
 
 + (bool)supportsSecureCoding;
@@ -40,6 +43,7 @@
 - (bool)interfaceIdiomIsPad;
 - (bool)isAlphabeticPlane;
 - (bool)isEqual:(id)arg1;
+- (bool)isKanaPlane;
 - (id)layoutTag;
 - (void)setCanMultitap:(bool)arg1;
 - (void)setDiacriticForwardCompose:(bool)arg1;
@@ -49,8 +53,10 @@
 - (void)setInterfaceIdiomIsPad;
 - (void)setInterfaceIdiomIsPad:(bool)arg1;
 - (void)setIsAlphabeticPlane:(bool)arg1;
+- (void)setIsKanaPlane:(bool)arg1;
 - (void)setLayoutTag:(id)arg1;
 - (void)setUserInterfaceIdiom:(long long)arg1;
+- (id)softwareLayout;
 - (long long)userInterfaceIdiom;
 
 @end

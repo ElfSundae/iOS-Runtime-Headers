@@ -42,5 +42,6 @@
 - (double)scaleFactor;
 - (void)setKeyView:(id)arg1;
 - (void)updateInkColor;
+- (struct { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; double x2; })viewPointFromDataPoint:(struct { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; double x2; })arg1;
 
 @end

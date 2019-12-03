@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Social.framework/Social
  */
 
-@interface SLComposeViewController : UIViewController <SLRemoteComposeViewControllerDelegateProtocol> {
+@interface SLComposeViewController : UIViewController <SLRemoteComposeViewControllerDelegateProtocol, _UIRemoteViewControllerContaining> {
     id /* block */  _completionHandler;
     bool  _didCompleteSheet;
     bool  _didFailLoadingRemoteViewController;
@@ -25,9 +25,14 @@
     bool  _wasPresented;
 }
 
+@property (nonatomic, readonly) _UIRemoteViewController *_containedRemoteViewController;
 @property (nonatomic, copy) id /* block */ completionHandler;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (retain) UIViewController *remoteViewController;
 @property (nonatomic, readonly) NSString *serviceType;
+@property (readonly) Class superclass;
 
 + (id)_extensionIdentifierForServiceType:(id)arg1;
 + (bool)_isAvailableForMediaShareExtension:(id)arg1;
@@ -54,8 +59,10 @@
 - (bool)_addURL:(id)arg1 type:(long long)arg2 preview:(id)arg3;
 - (bool)_addVideoAsset:(id)arg1 preview:(id)arg2;
 - (bool)_addVideoData:(id)arg1 preview:(id)arg2;
+- (id)_containedRemoteViewController;
 - (void)_handleRemoteViewFailure;
 - (void)_instantiateAndBeginExtensionIfNeeded;
+- (void)_instantiateAndBeginExtensionIfNeededWithCompletion:(id /* block */)arg1;
 - (id)_urlForUntypedAsset:(id)arg1;
 - (bool)_useCustomDimmingView;
 - (bool)addAttachment:(id)arg1;

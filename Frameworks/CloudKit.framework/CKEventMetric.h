@@ -11,6 +11,8 @@
     bool  _hasBeenSubmitted;
     bool  _inferredAllowsCellular;
     bool  _inferredPreferAnonymousRequests;
+    NSString * _inferredSourceApplicationBundleIdentifier;
+    NSString * _inferredSourceApplicationSecondaryIdentifier;
     bool  _isCKInternalMetric;
     bool  _isPushTriggerFired;
     NSUUID * _metricUUID;
@@ -25,6 +27,8 @@
 @property (nonatomic) bool hasBeenSubmitted;
 @property (nonatomic) bool inferredAllowsCellular;
 @property (nonatomic) bool inferredPreferAnonymousRequests;
+@property (nonatomic) NSString *inferredSourceApplicationBundleIdentifier;
+@property (nonatomic) NSString *inferredSourceApplicationSecondaryIdentifier;
 @property (nonatomic) bool isCKInternalMetric;
 @property (nonatomic) bool isPushTriggerFired;
 @property (nonatomic, readonly) NSUUID *metricUUID;
@@ -44,6 +48,8 @@
 - (bool)hasBeenSubmitted;
 - (bool)inferredAllowsCellular;
 - (bool)inferredPreferAnonymousRequests;
+- (id)inferredSourceApplicationBundleIdentifier;
+- (id)inferredSourceApplicationSecondaryIdentifier;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithEventName:(id)arg1;
 - (id)initWithEventName:(id)arg1 atTime:(id)arg2;
@@ -54,6 +60,8 @@
 - (void)setHasBeenSubmitted:(bool)arg1;
 - (void)setInferredAllowsCellular:(bool)arg1;
 - (void)setInferredPreferAnonymousRequests:(bool)arg1;
+- (void)setInferredSourceApplicationBundleIdentifier:(id)arg1;
+- (void)setInferredSourceApplicationSecondaryIdentifier:(id)arg1;
 - (void)setIsCKInternalMetric:(bool)arg1;
 - (void)setIsPushTriggerFired:(bool)arg1;
 - (void)setMetricValue:(id)arg1 forKey:(id)arg2;

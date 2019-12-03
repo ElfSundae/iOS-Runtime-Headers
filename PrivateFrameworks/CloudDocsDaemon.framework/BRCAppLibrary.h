@@ -5,9 +5,9 @@
 @interface BRCAppLibrary : NSObject <BRCForegroundClient> {
     NSMutableSet * _XPCClientsUsingUbiquity;
     bool  _activated;
-    unsigned long long  _activeAliasQueries;
-    unsigned long long  _activeQueries;
-    unsigned long long  _activeRecursiveQueries;
+    _Atomic unsigned long long  _activeAliasQueries;
+    _Atomic unsigned long long  _activeQueries;
+    _Atomic unsigned long long  _activeRecursiveQueries;
     NSString * _appLibraryID;
     BRContainer * _containerMetadata;
     NSString * _containerMetadataEtag;
@@ -132,8 +132,8 @@
 - (id)documentsPath;
 - (struct PQLResultSet { Class x1; }*)enumerateUserVisibleChildrenDirectoriesOfItemGlobalID:(id)arg1 db:(id)arg2;
 - (struct PQLResultSet { Class x1; }*)enumerateUserVisibleChildrenOfItemGlobalID:(id)arg1 sortOrder:(unsigned char)arg2 offset:(unsigned long long)arg3 limit:(unsigned long long)arg4 db:(id)arg5;
-- (struct BRCDirectoryItem { Class x1; id x2; id x3; id x4; id x5; id x6; id x7; id x8; unsigned long long x9; unsigned long long x10; unsigned long long x11; }*)fetchRootItem;
-- (struct BRCDirectoryItem { Class x1; id x2; id x3; id x4; id x5; id x6; id x7; id x8; unsigned long long x9; unsigned long long x10; unsigned long long x11; }*)fetchRootItemInDB:(id)arg1;
+- (struct BRCDirectoryItem { Class x1; id x2; id x3; id x4; id x5; id x6; id x7; id x8; id x9; id x10; unsigned int x11; id x12; unsigned long long x13; id x14; bool x15; unsigned long long x16; unsigned long long x17; unsigned long long x18; }*)fetchRootItem;
+- (struct BRCDirectoryItem { Class x1; id x2; id x3; id x4; id x5; id x6; id x7; id x8; id x9; id x10; unsigned int x11; id x12; unsigned long long x13; id x14; bool x15; unsigned long long x16; unsigned long long x17; unsigned long long x18; }*)fetchRootItemInDB:(id)arg1;
 - (id)fileID;
 - (void)freeFileCoordinationSlotsAfterDelayForRead:(bool)arg1;
 - (id)fsEventsMonitor;

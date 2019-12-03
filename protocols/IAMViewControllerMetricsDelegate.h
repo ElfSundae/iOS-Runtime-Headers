@@ -5,6 +5,6 @@
 
 @optional
 
-- (void)viewController:(UIViewController *)arg1 willDismissWithAction:(long long)arg2;
+- (void)viewController:(UIViewController *)arg1 didReportDismissalAction:(long long)arg2;
 
 @end

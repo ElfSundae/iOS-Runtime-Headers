@@ -149,6 +149,7 @@
 - (bool)isOfflineHLS;
 - (bool)isSubscriptionRequired;
 - (long long)likedState;
+- (long long)likedState:(id)arg1;
 - (void)loadMediaItemWithCompletionHandler:(id /* block */)arg1;
 - (id)localNetworkContentURL;
 - (id)mediaItem;
@@ -158,6 +159,7 @@
 - (id)protectedContentSupportStorageURL;
 - (bool)requiresPlayWhileDownload;
 - (void)setCachedLocalPlaybackAssetFilePath:(id)arg1 protectionType:(unsigned long long)arg2 assetQuality:(unsigned long long)arg3 withCompletionHandler:(id /* block */)arg4;
+- (void)setLikedState:(long long)arg1 forUserIdentity:(id)arg2 withCompletionHandler:(id /* block */)arg3;
 - (void)setLikedState:(long long)arg1 withCompletionHandler:(id /* block */)arg2;
 - (bool)shouldRememberBookmarkTime;
 - (bool)shouldReportPlayEventsToStore;

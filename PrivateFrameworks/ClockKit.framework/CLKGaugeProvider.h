@@ -23,6 +23,7 @@
 
 - (void).cxx_destruct;
 - (id)JSONObjectRepresentation;
+- (id)_init;
 - (id)accessibilityLabel;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)encodeWithCoder:(id)arg1;

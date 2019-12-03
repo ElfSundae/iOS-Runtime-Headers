@@ -8,8 +8,8 @@
     bool  streamingDone;
 }
 
+- (void).cxx_destruct;
 - (id)data;
-- (void)dealloc;
 - (id)initWithData:(id)arg1 streaming:(bool)arg2 streamingDone:(bool)arg3;
 - (bool)streaming;
 - (bool)streamingDone;

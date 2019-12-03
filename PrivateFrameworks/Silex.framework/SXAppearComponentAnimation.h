@@ -4,8 +4,6 @@
 
 @interface SXAppearComponentAnimation : SXComponentAnimation
 
-+ (id)typeString;
-
 - (Class)handlerClass;
 
 @end

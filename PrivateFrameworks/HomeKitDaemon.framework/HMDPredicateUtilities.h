@@ -3,10 +3,12 @@
  */
 
 @interface HMDPredicateUtilities : HMFObject <HMFLogging> {
+    unsigned long long  _cameraSignificantEvent;
     HMDHome * _home;
     NSString * _logString;
 }
 
+@property unsigned long long cameraSignificantEvent;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -18,6 +20,7 @@
 
 - (void).cxx_destruct;
 - (id)addDeltaToNow:(id)arg1;
+- (unsigned long long)cameraSignificantEvent;
 - (id)comparePresence:(id)arg1 operatorType:(id)arg2 homePresence:(id)arg3;
 - (id)compareValueOfCharacteristic:(id)arg1 againstValue:(id)arg2 operatorType:(id)arg3;
 - (bool)containsPresenceEvents:(id)arg1;
@@ -33,6 +36,7 @@
 - (id)rewritePredicate:(id)arg1 forDaemon:(bool)arg2 message:(id)arg3;
 - (id)rewritePredicateForClient:(id)arg1;
 - (id)rewritePredicateForDaemon:(id)arg1 message:(id)arg2;
+- (void)setCameraSignificantEvent:(unsigned long long)arg1;
 - (id)sunrise;
 - (id)sunset;
 - (id)updatePredicate:(id)arg1 currentCharacteristicInPredicate:(id*)arg2 conditionModified:(bool*)arg3 removedCharacteristic:(id)arg4 underService:(id)arg5 underAccessory:(id)arg6;

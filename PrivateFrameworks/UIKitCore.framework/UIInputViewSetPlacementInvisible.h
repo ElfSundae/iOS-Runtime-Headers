@@ -20,12 +20,13 @@
 - (bool)inputViewWillAppear;
 - (bool)isEqual:(id)arg1;
 - (bool)isInteractive;
+- (bool)isInvisible;
 - (bool)isUndocked;
-- (unsigned long long)notificationsForTransitionToPlacement:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })remoteIntrinsicContentSizeForInputViewInSet:(id)arg1 includingIAV:(bool)arg2;
 - (void)setDirty;
 - (bool)showsInputViews;
 - (bool)showsKeyboard;
+- (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })transform;
 - (id)verticalConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
 - (id)widthConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
 

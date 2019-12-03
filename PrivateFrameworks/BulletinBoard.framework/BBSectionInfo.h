@@ -6,9 +6,7 @@
     NSString * _appName;
     NSArray * _dataProviderIDs;
     NSString * _displayName;
-    bool  _displaysCriticalBulletins;
     NSString * _factorySectionID;
-    NSArray * _filters;
     bool  _hideWeeApp;
     BBSectionIcon * _icon;
     BBSectionInfoSettings * _managedSectionInfoSettings;
@@ -37,10 +35,8 @@
 @property (nonatomic) long long criticalAlertSetting;
 @property (nonatomic, copy) NSArray *dataProviderIDs;
 @property (nonatomic, copy) NSString *displayName;
-@property (nonatomic) bool displaysCriticalBulletins;
 @property (nonatomic) bool enabled;
 @property (nonatomic, copy) NSString *factorySectionID;
-@property (nonatomic, copy) NSArray *filters;
 @property (nonatomic, readonly) bool hasEnabledSettings;
 @property (nonatomic) bool hideWeeApp;
 @property (nonatomic, copy) BBSectionIcon *icon;
@@ -60,6 +56,8 @@
 @property (nonatomic) long long sectionType;
 @property (nonatomic) bool showsCustomSettingsLink;
 @property (nonatomic) bool showsOnExternalDevices;
+@property (nonatomic) long long spokenNotificationSetting;
+@property (nonatomic, readonly, copy) NSDictionary *stateCapture;
 @property (nonatomic, copy) NSString *subsectionID;
 @property (nonatomic) long long subsectionPriority;
 @property (nonatomic, copy) NSArray *subsections;
@@ -84,6 +82,7 @@
 - (bool)_isDeliveredQuietly;
 - (void)_replaceSubsection:(id)arg1;
 - (id)_subsectionForID:(id)arg1;
+- (id)_suppressedSettingsList:(unsigned long long)arg1;
 - (unsigned long long)alertType;
 - (bool)allowsNotifications;
 - (id)appName;
@@ -101,14 +100,12 @@
 - (id)description;
 - (long long)disabledSettingForSetting:(long long)arg1;
 - (id)displayName;
-- (bool)displaysCriticalBulletins;
-- (id)effectiveSectionInfoWithDefaultContentPreviewSetting:(long long)arg1;
-- (id)effectiveSectionInfoWithFactoryInfo:(id)arg1 defaultContentPreviewSetting:(long long)arg2;
+- (id)effectiveSectionInfoWithDefaultContentPreviewSetting:(long long)arg1 globalSpokenNotificationSetting:(long long)arg2;
+- (id)effectiveSectionInfoWithFactoryInfo:(id)arg1 defaultContentPreviewSetting:(long long)arg2 globalSpokenNotificationSetting:(long long)arg3;
 - (long long)emergencySetting;
 - (bool)enabled;
 - (void)encodeWithCoder:(id)arg1;
 - (id)factorySectionID;
-- (id)filters;
 - (bool)hasEnabledSettings;
 - (unsigned long long)hash;
 - (bool)hideWeeApp;
@@ -145,11 +142,9 @@
 - (void)setCriticalAlertSetting:(long long)arg1;
 - (void)setDataProviderIDs:(id)arg1;
 - (void)setDisplayName:(id)arg1;
-- (void)setDisplaysCriticalBulletins:(bool)arg1;
 - (void)setEmergencySetting:(long long)arg1;
 - (void)setEnabled:(bool)arg1;
 - (void)setFactorySectionID:(id)arg1;
-- (void)setFilters:(id)arg1;
 - (void)setHideWeeApp:(bool)arg1;
 - (void)setIcon:(id)arg1;
 - (void)setLockScreenSetting:(long long)arg1;
@@ -168,6 +163,7 @@
 - (void)setShowsInNotificationCenter:(bool)arg1;
 - (void)setShowsMessagePreview:(bool)arg1;
 - (void)setShowsOnExternalDevices:(bool)arg1;
+- (void)setSpokenNotificationSetting:(long long)arg1;
 - (void)setSubsectionID:(id)arg1;
 - (void)setSubsectionPriority:(long long)arg1;
 - (void)setSubsections:(id)arg1;
@@ -179,12 +175,13 @@
 - (bool)showsInNotificationCenter;
 - (bool)showsMessagePreview;
 - (bool)showsOnExternalDevices;
+- (long long)spokenNotificationSetting;
+- (id)stateCapture;
 - (id)subsectionID;
 - (long long)subsectionPriority;
 - (id)subsections;
 - (bool)suppressFromSettings;
 - (unsigned long long)suppressedSettings;
-- (void)updateWithDefaultFilters:(id)arg1;
 - (void)updateWithDefaultSectionInfo:(id)arg1;
 - (bool)usesManagedSettings;
 - (unsigned long long)version;
@@ -193,6 +190,8 @@
 // Image: /System/Library/PrivateFrameworks/BulletinDistributorCompanion.framework/BulletinDistributorCompanion
 
 - (void)bltApplyNotificationLevel:(unsigned long long)arg1;
+- (bool)blt_overrideSendToNotificationCenter;
+- (bool)blt_overrideShowsAlerts;
 - (id)dataProviderIDs;
 - (void)enableAlertsForGizmo:(bool)arg1;
 - (id)factorySectionID;
@@ -205,10 +204,14 @@
 
 // Image: /System/Library/PrivateFrameworks/UserNotificationsServer.framework/UserNotificationsServer
 
+- (long long)uns_BBSectionInfoSettingForUNNotificationSetting:(long long)arg1;
 - (long long)uns_notificationSettingForBBSectionInfoSetting:(long long)arg1;
 - (id)uns_notificationSettings;
+- (id)uns_notificationSource;
 - (void)uns_setPropertiesFromAuthorizationOptions:(unsigned long long)arg1;
+- (void)uns_setPropertiesFromNotificationSettings:(id)arg1 systemSettings:(id)arg2;
 - (void)uns_setPropertiesFromSourceSettingsDescription:(id)arg1;
 - (void)uns_setPropertiesFromTopicRecord:(id)arg1;
+- (id)uns_topicSettings;
 
 @end

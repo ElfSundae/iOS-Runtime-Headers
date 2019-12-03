@@ -5,17 +5,36 @@
 @interface GEOTrafficRerouteFeedbackCollection : PBCodable <NSCopying> {
     NSData * _directionResponseID;
     struct { 
-        unsigned int oldRouteHistoricTravelTime : 1; 
-        unsigned int oldRouteTravelTime : 1; 
-        unsigned int reroutedRouteHistoricTravelTime : 1; 
-        unsigned int reroutedRouteTravelTime : 1; 
-        unsigned int oldRouteBlocked : 1; 
-    }  _has;
+        unsigned int has_oldRouteHistoricTravelTime : 1; 
+        unsigned int has_oldRouteTravelTime : 1; 
+        unsigned int has_reroutedRouteHistoricTravelTime : 1; 
+        unsigned int has_reroutedRouteTravelTime : 1; 
+        unsigned int has_oldRouteBlocked : 1; 
+        unsigned int read_directionResponseID : 1; 
+        unsigned int read_oldRouteID : 1; 
+        unsigned int read_oldRouteIncidents : 1; 
+        unsigned int read_reroutedRouteID : 1; 
+        unsigned int wrote_directionResponseID : 1; 
+        unsigned int wrote_oldRouteID : 1; 
+        unsigned int wrote_oldRouteIncidents : 1; 
+        unsigned int wrote_reroutedRouteID : 1; 
+        unsigned int wrote_oldRouteHistoricTravelTime : 1; 
+        unsigned int wrote_oldRouteTravelTime : 1; 
+        unsigned int wrote_reroutedRouteHistoricTravelTime : 1; 
+        unsigned int wrote_reroutedRouteTravelTime : 1; 
+        unsigned int wrote_oldRouteBlocked : 1; 
+    }  _flags;
     bool  _oldRouteBlocked;
     unsigned int  _oldRouteHistoricTravelTime;
     NSData * _oldRouteID;
     NSMutableArray * _oldRouteIncidents;
     unsigned int  _oldRouteTravelTime;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     unsigned int  _reroutedRouteHistoricTravelTime;
     NSData * _reroutedRouteID;
     unsigned int  _reroutedRouteTravelTime;
@@ -39,9 +58,15 @@
 @property (nonatomic, retain) NSData *reroutedRouteID;
 @property (nonatomic) unsigned int reroutedRouteTravelTime;
 
++ (bool)isValid:(id)arg1;
 + (Class)oldRouteIncidentsType;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsOldRouteIncidents:(id)arg1;
+- (void)_readDirectionResponseID;
+- (void)_readOldRouteID;
+- (void)_readOldRouteIncidents;
+- (void)_readReroutedRouteID;
 - (void)addOldRouteIncidents:(id)arg1;
 - (void)clearOldRouteIncidents;
 - (void)copyTo:(id)arg1;
@@ -58,6 +83,8 @@
 - (bool)hasReroutedRouteID;
 - (bool)hasReroutedRouteTravelTime;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (bool)oldRouteBlocked;
@@ -67,6 +94,7 @@
 - (id)oldRouteIncidentsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)oldRouteIncidentsCount;
 - (unsigned int)oldRouteTravelTime;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (unsigned int)reroutedRouteHistoricTravelTime;
 - (id)reroutedRouteID;

@@ -3,29 +3,36 @@
  */
 
 @interface FPXIndexOneBatchOperation : FPOperation {
-    NSObject<OS_dispatch_queue> * _cleanupQueue;
+    id /* block */  _canIndexFromCurrentState;
+    NSArray * _deletedItemIDs;
     FPXDomainContext * _domainContext;
-    id /* block */  _fetchCompletedBlock;
-    bool  _hasMoreChanges;
-    FPXIndexState * _indexState;
+    NSError * _fetchError;
     FPXSpotlightIndexer * _indexer;
     bool  _isInitialIndexing;
-    unsigned long long * _logSection;
+    unsigned long long  _logSection;
+    NSData * _nextAnchor;
+    NSArray * _updatedItems;
 }
 
-@property (nonatomic, copy) id /* block */ fetchCompletedBlock;
+@property (nonatomic, copy) id /* block */ canIndexFromCurrentState;
+@property (nonatomic, retain) NSArray *deletedItemIDs;
+@property (nonatomic, retain) NSError *fetchError;
+@property (nonatomic, retain) NSData *nextAnchor;
+@property (nonatomic, retain) NSArray *updatedItems;
 
 - (void).cxx_destruct;
-- (void)_handleInsertedItems:(id)arg1 deletedItems:(id)arg2 needsMoreWork:(bool)arg3 state:(id)arg4 error:(id)arg5;
-- (void)_indexOneChangesBatchFromChangeToken:(id)arg1;
-- (void)_indexOnePageFromPage:(id)arg1;
-- (void)_startIndexing;
-- (id /* block */)fetchCompletedBlock;
+- (id /* block */)canIndexFromCurrentState;
+- (id)deletedItemIDs;
+- (id)fetchError;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
-- (void)handleInsertedItems:(id)arg1 deletedItems:(id)arg2 needsMoreWork:(bool)arg3 state:(id)arg4 error:(id)arg5;
 - (id)initWithIndexer:(id)arg1 isInitialIndexing:(bool)arg2 queue:(id)arg3;
 - (void)main;
-- (id)observerItemID;
-- (void)setFetchCompletedBlock:(id /* block */)arg1;
+- (id)nextAnchor;
+- (void)setCanIndexFromCurrentState:(id /* block */)arg1;
+- (void)setDeletedItemIDs:(id)arg1;
+- (void)setFetchError:(id)arg1;
+- (void)setNextAnchor:(id)arg1;
+- (void)setUpdatedItems:(id)arg1;
+- (id)updatedItems;
 
 @end

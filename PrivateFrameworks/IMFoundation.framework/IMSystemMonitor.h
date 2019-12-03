@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/IMFoundation.framework/IMFoundation
  */
 
-@interface IMSystemMonitor : NSObject {
+@interface IMSystemMonitor : NSObject <IDSFoundationSystemMonitor> {
     bool  _active;
     bool  _backingUp;
     int  _dataProtectionState;
@@ -48,6 +48,9 @@
 @property (nonatomic, retain) NSString *_userID;
 @property (nonatomic, readonly, retain) NSDate *dateScreenLightLastChanged;
 @property (nonatomic, readonly, retain) NSDate *dateSystemLockLastChanged;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (setter=setActive:, nonatomic) bool isActive;
 @property (nonatomic, readonly) bool isBackingUp;
 @property (nonatomic) bool isFastUserSwitched;
@@ -63,6 +66,7 @@
 @property (nonatomic) struct _opaque_pthread_mutex_t { long long x1; BOOL x2[56]; } ivarLock;
 @property (nonatomic) bool receivesMemoryWarnings;
 @property (nonatomic) long long resignActiveCount;
+@property (readonly) Class superclass;
 @property (nonatomic, readonly) double systemIdleTime;
 @property (nonatomic, readonly) bool systemIsShuttingDown;
 @property (nonatomic, readonly) bool systemIsSleeping;

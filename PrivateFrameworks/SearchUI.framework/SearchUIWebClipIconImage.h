@@ -6,12 +6,15 @@
     UIWebClip * _webClip;
 }
 
-@property (retain) UIWebClip *webClip;
+@property (nonatomic, retain) UIWebClip *webClip;
 
 - (void).cxx_destruct;
 - (id)generateImageWithFormat:(int)arg1;
+- (unsigned long long)hash;
 - (id)initWithWebClip:(id)arg1 variant:(unsigned long long)arg2;
+- (bool)isEqual:(id)arg1;
 - (void)setWebClip:(id)arg1;
+- (id)uniqueIdentifier;
 - (id)webClip;
 
 @end

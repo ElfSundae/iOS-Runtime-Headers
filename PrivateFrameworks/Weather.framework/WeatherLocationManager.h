@@ -68,6 +68,7 @@
 - (double)distanceFilter;
 - (id)effectiveBundleIdentifier;
 - (int)forceLoadingAuthorizationStatus;
+- (void)forceLocationManagerAuthorization;
 - (void)forceLocationUpdate;
 - (bool)hasCrossedHourBoundary;
 - (id)init;

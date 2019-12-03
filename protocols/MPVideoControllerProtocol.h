@@ -9,7 +9,7 @@
 - (bool)allowsDetailScrubbing;
 - (bool)allowsWirelessPlayback;
 - (bool)alwaysAllowHidingControlsOverlay;
-- (int)artworkImageStyle;
+- (long long)artworkImageStyle;
 - (bool)attemptAutoPlayWhenControlsHidden;
 - (bool)autoPlayWhenLikelyToKeepUp;
 - (UIView *)backgroundView;
@@ -37,7 +37,7 @@
 - (void)setAllowsDetailScrubbing:(bool)arg1;
 - (void)setAllowsWirelessPlayback:(bool)arg1;
 - (void)setAlwaysAllowHidingControlsOverlay:(bool)arg1;
-- (void)setArtworkImageStyle:(int)arg1;
+- (void)setArtworkImageStyle:(long long)arg1;
 - (void)setAttemptAutoPlayWhenControlsHidden:(bool)arg1;
 - (void)setAutoPlayWhenLikelyToKeepUp:(bool)arg1;
 - (void)setBackstopColor:(UIColor *)arg1;

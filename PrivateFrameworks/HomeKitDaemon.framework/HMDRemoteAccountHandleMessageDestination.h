@@ -3,10 +3,12 @@
  */
 
 @interface HMDRemoteAccountHandleMessageDestination : HMDRemoteMessageDestination {
+    NSDictionary * _deviceCapabilities;
     HMDAccountHandle * _handle;
     bool  _multicast;
 }
 
+@property (readonly, copy) NSDictionary *deviceCapabilities;
 @property (readonly, copy) HMDAccountHandle *handle;
 @property (getter=isMulticast, readonly) bool multicast;
 
@@ -16,10 +18,12 @@
 - (id)debugDescription;
 - (id)description;
 - (id)descriptionWithPointer:(bool)arg1;
+- (id)deviceCapabilities;
 - (id)handle;
 - (unsigned long long)hash;
 - (id)initWithTarget:(id)arg1;
 - (id)initWithTarget:(id)arg1 handle:(id)arg2 multicast:(bool)arg3;
+- (id)initWithTarget:(id)arg1 handle:(id)arg2 multicast:(bool)arg3 deviceCapabilities:(id)arg4;
 - (bool)isEqual:(id)arg1;
 - (bool)isMulticast;
 - (id)remoteDestinationString;

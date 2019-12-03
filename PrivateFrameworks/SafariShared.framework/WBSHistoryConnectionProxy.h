@@ -11,6 +11,7 @@
 
 - (void).cxx_destruct;
 - (id /* block */)_defaultProxyErrorHandlerWithSimpleReplyCompletionHandler:(id /* block */)arg1;
+- (void)_setupConnection;
 - (void)beginHistoryAccessSession:(id /* block */)arg1;
 - (void)beginURLCompletionSession:(id /* block */)arg1;
 - (id)connectionProxyQueue;

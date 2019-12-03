@@ -11,7 +11,6 @@
 @property (readonly, copy) NSArray *accessories;
 @property (readonly) bool allowUnauthenticatedRequests;
 @property (getter=isEnabled, readonly) bool enabled;
-@property (nonatomic, readonly) bool hf_effectivelyEnabled;
 
 // Image: /System/Library/Frameworks/HomeKit.framework/HomeKit
 
@@ -37,6 +36,6 @@
 
 // Image: /System/Library/PrivateFrameworks/Home.framework/Home
 
-- (bool)hf_effectivelyEnabled;
+- (bool)hf_effectivelyEnabledForSupportedMultiuserLanguages:(id)arg1 currentUserIsOwner:(bool)arg2;
 
 @end

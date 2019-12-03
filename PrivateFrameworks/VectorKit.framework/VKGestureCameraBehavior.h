@@ -69,6 +69,7 @@
 - (void)stopPinchingWithFocusPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)stopPitchingWithFocusPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)stopRotatingWithFocusPoint:(struct CGPoint { double x1; double x2; })arg1;
+- (bool)tapAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)tapZoom:(struct CGPoint { double x1; double x2; })arg1 levels:(double)arg2 completionHandler:(id /* block */)arg3;
 - (void)transferGestureState:(id)arg1;
 - (void)updatePan:(struct CGPoint { double x1; double x2; })arg1 lastScreenPoint:(struct CGPoint { double x1; double x2; })arg2;

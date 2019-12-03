@@ -7,6 +7,7 @@
     HFWallpaperSlice * _blurredWallpaperSlice;
     UIView * _ccMaterialView;
     double  _cornerRadius;
+    HFWallpaperSlice * _darkModeBlurredWallpaperSlice;
     HUGridCellBackgroundDisplayOptions * _displayOptions;
     UIVisualEffectView * _effectView;
     struct CGRect { 
@@ -26,15 +27,17 @@
 @property (nonatomic, retain) HFWallpaperSlice *blurredWallpaperSlice;
 @property (nonatomic, retain) UIView *ccMaterialView;
 @property (nonatomic) double cornerRadius;
+@property (nonatomic, retain) HFWallpaperSlice *darkModeBlurredWallpaperSlice;
 @property (nonatomic, retain) HUGridCellBackgroundDisplayOptions *displayOptions;
 @property (nonatomic, retain) UIVisualEffectView *effectView;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } normalizedWallpaperRect;
 @property (getter=isPressed, nonatomic) bool pressed;
 
++ (id)_sharedBlurEffect;
+
 - (void).cxx_destruct;
 - (void)_createCCMaterialViewIfNecessary;
 - (void)_createEffectViewIfNecessary;
-- (id)_highlightedBackgroundColor;
 - (bool)_isUsingControlCenterDisplayStyle;
 - (id)_normalBackgroundColor;
 - (bool)_shouldUseCCMaterialView;
@@ -49,7 +52,7 @@
 - (id)blurredWallpaperSlice;
 - (id)ccMaterialView;
 - (double)cornerRadius;
-- (void)didMoveToSuperview;
+- (id)darkModeBlurredWallpaperSlice;
 - (id)displayOptions;
 - (id)effectView;
 - (bool)isPressed;
@@ -58,6 +61,7 @@
 - (void)setBlurredWallpaperSlice:(id)arg1;
 - (void)setCcMaterialView:(id)arg1;
 - (void)setCornerRadius:(double)arg1;
+- (void)setDarkModeBlurredWallpaperSlice:(id)arg1;
 - (void)setDisplayOptions:(id)arg1;
 - (void)setEffectView:(id)arg1;
 - (void)setNormalizedWallpaperRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;

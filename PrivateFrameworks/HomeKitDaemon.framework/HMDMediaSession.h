@@ -8,7 +8,6 @@
     HMDMediaEndpoint * _endpoint;
     NSString * _logID;
     NSMutableSet * _mediaProfiles;
-    HMFMessageDispatcher * _msgDispatcher;
     NSObject<OS_dispatch_queue> * _propertyQueue;
     NSString * _sessionIdentifier;
     NSMutableArray * _setPlaybackStateCompletionHandlers;
@@ -29,7 +28,6 @@
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, copy) NSSet *messageReceiverChildren;
 @property (nonatomic, readonly) NSUUID *messageTargetUUID;
-@property (nonatomic, readonly) HMFMessageDispatcher *msgDispatcher;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *propertyQueue;
 @property (nonatomic, readonly, copy) NSString *sessionIdentifier;
 @property (nonatomic, retain) NSMutableArray *setPlaybackStateCompletionHandlers;
@@ -81,7 +79,6 @@
 - (id)mediaProfiles;
 - (id)messageReceiveQueue;
 - (id)messageTargetUUID;
-- (id)msgDispatcher;
 - (id)propertyQueue;
 - (void)readProperties:(id)arg1 completion:(id /* block */)arg2;
 - (void)registerForSessionUpdates:(bool)arg1;

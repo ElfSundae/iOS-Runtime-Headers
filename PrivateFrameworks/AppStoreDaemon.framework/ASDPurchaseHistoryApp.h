@@ -4,12 +4,16 @@
 
 @interface ASDPurchaseHistoryApp : NSObject <NSSecureCoding> {
     NSString * _bundleID;
+    NSString * _circularIconURLString;
     long long  _contentRatingFlags;
     NSDate * _datePurchased;
     NSString * _developerName;
     bool  _familyShared;
     bool  _firstParty;
+    long long  _genreID;
+    NSString * _genreName;
     bool  _hasMessagesExtension;
+    bool  _hasP3;
     bool  _hidden;
     bool  _hiddenFromSpringboard;
     NSString * _iconURLString;
@@ -27,15 +31,24 @@
     long long  _storeItemID;
     bool  _supportsIPad;
     bool  _supportsIPhone;
+    bool  _supportsLayeredImage;
+    NSString * _title;
+    bool  _watchAppDeliveredIniOSApp;
+    bool  _watchAppRunsIndependently;
+    bool  _watchOnly;
 }
 
 @property (copy) NSString *bundleID;
+@property (copy) NSString *circularIconURLString;
 @property long long contentRatingFlags;
 @property (copy) NSDate *datePurchased;
 @property (copy) NSString *developerName;
 @property (getter=isFamilyShared) bool familyShared;
 @property (getter=isFirstParty) bool firstParty;
+@property long long genreID;
+@property (copy) NSString *genreName;
 @property bool hasMessagesExtension;
+@property bool hasP3;
 @property (getter=isHidden) bool hidden;
 @property (getter=isHiddenFromSpringboard) bool hiddenFromSpringboard;
 @property (copy) NSString *iconURLString;
@@ -53,6 +66,11 @@
 @property long long storeItemID;
 @property bool supportsIPad;
 @property bool supportsIPhone;
+@property bool supportsLayeredImage;
+@property (copy) NSString *title;
+@property bool watchAppDeliveredIniOSApp;
+@property bool watchAppRunsIndependently;
+@property bool watchOnly;
 
 + (bool)supportsSecureCoding;
 
@@ -60,11 +78,15 @@
 - (int)_bitfieldForBooleanProperties;
 - (void)_setBooleanPropertiesForBitfield:(int)arg1;
 - (id)bundleID;
+- (id)circularIconURLString;
 - (long long)contentRatingFlags;
 - (id)datePurchased;
 - (id)developerName;
 - (void)encodeWithCoder:(id)arg1;
+- (long long)genreID;
+- (id)genreName;
 - (bool)hasMessagesExtension;
+- (bool)hasP3;
 - (id)iconURLString;
 - (id)initWithCoder:(id)arg1;
 - (bool)is32BitOnly;
@@ -84,12 +106,16 @@
 - (id)redownloadParams;
 - (id)requiredCapabilities;
 - (void)setBundleID:(id)arg1;
+- (void)setCircularIconURLString:(id)arg1;
 - (void)setContentRatingFlags:(long long)arg1;
 - (void)setDatePurchased:(id)arg1;
 - (void)setDeveloperName:(id)arg1;
 - (void)setFamilyShared:(bool)arg1;
 - (void)setFirstParty:(bool)arg1;
+- (void)setGenreID:(long long)arg1;
+- (void)setGenreName:(id)arg1;
 - (void)setHasMessagesExtension:(bool)arg1;
+- (void)setHasP3:(bool)arg1;
 - (void)setHidden:(bool)arg1;
 - (void)setHiddenFromSpringboard:(bool)arg1;
 - (void)setIconURLString:(id)arg1;
@@ -107,8 +133,18 @@
 - (void)setStoreItemID:(long long)arg1;
 - (void)setSupportsIPad:(bool)arg1;
 - (void)setSupportsIPhone:(bool)arg1;
+- (void)setSupportsLayeredImage:(bool)arg1;
+- (void)setTitle:(id)arg1;
+- (void)setWatchAppDeliveredIniOSApp:(bool)arg1;
+- (void)setWatchAppRunsIndependently:(bool)arg1;
+- (void)setWatchOnly:(bool)arg1;
 - (long long)storeItemID;
 - (bool)supportsIPad;
 - (bool)supportsIPhone;
+- (bool)supportsLayeredImage;
+- (id)title;
+- (bool)watchAppDeliveredIniOSApp;
+- (bool)watchAppRunsIndependently;
+- (bool)watchOnly;
 
 @end

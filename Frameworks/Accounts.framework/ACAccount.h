@@ -6,13 +6,13 @@
     bool  _accountAccessAvailable;
     NSString * _accountDescription;
     id /* block */  _accountPropertiesTransformer;
+    ACAccountStore * _accountStore;
     ACAccountType * _accountType;
     bool  _active;
     bool  _authenticated;
     NSString * _authenticationType;
     NSArray * _childAccounts;
     NSString * _clientToken;
-    bool  _creatingFromManagedObject;
     ACAccountCredential * _credential;
     NSString * _credentialType;
     <NSObject> * _credentialsDidChangeObserver;
@@ -31,7 +31,6 @@
     ACAccount * _parentAccount;
     NSString * _parentAccountIdentifier;
     NSMutableDictionary * _properties;
-    ACAccountStore * _store;
     bool  _supportsAuthentication;
     ACMutableTrackedSet * _trackedEnabledDataclasses;
     ACMutableTrackedSet * _trackedProvisionedDataclasses;
@@ -42,6 +41,18 @@
 }
 
 @property (setter=_aa_setRawPassword:, nonatomic, copy) NSString *_aa_rawPassword;
+@property (nonatomic, copy) NSString *_cn_altDSID;
+@property (nonatomic, readonly, copy) NSString *_cn_appleAccountAppleID;
+@property (nonatomic, readonly, copy) NSArray *_cn_appleAccountAppleIDAliases;
+@property (nonatomic, copy) NSString *_cn_appleID;
+@property (nonatomic, copy) NSNumber *_cn_dsid;
+@property (nonatomic, copy) NSString *_cn_firstName;
+@property (nonatomic, readonly) bool _cn_isCardDAV;
+@property (nonatomic, readonly) bool _cn_isChildDelegateAccount;
+@property (nonatomic, readonly) bool _cn_isLDAP;
+@property (nonatomic, readonly) bool _cn_isPrimaryAccount;
+@property (nonatomic, copy) NSString *_cn_lastName;
+@property (nonatomic, copy) NSString *_cn_principalPath;
 @property (nonatomic, readonly) NSNumber *_ss_DSID;
 @property (nonatomic, readonly) NSString *_ss_altDSID;
 @property (nonatomic, readonly) NSString *_ss_hashedDescription;
@@ -51,6 +62,7 @@
 @property (nonatomic, readonly) bool _ss_isiCloudAccount;
 @property (nonatomic, readonly) bool _ss_isiTunesAccount;
 @property (setter=_ss_setSecureToken:, nonatomic, copy) NSString *_ss_secureToken;
+@property (setter=aa_setAccountClass:, nonatomic, copy) NSString *aa_accountClass;
 @property (nonatomic, readonly) NSDictionary *aa_accountFirstDisplayAlert;
 @property (nonatomic, readonly) NSDictionary *aa_accountFooterButton;
 @property (nonatomic, readonly) NSString *aa_accountFooterText;
@@ -68,16 +80,17 @@
 @property (nonatomic, readonly) NSString *aa_fmipToken;
 @property (nonatomic, readonly) NSString *aa_formattedUsername;
 @property (nonatomic, readonly) bool aa_hasOptionalTerms;
-@property (nonatomic, readonly) NSString *aa_hsaToken;
+@property (nonatomic, readonly) bool aa_isAuthKitAccount;
 @property (setter=aa_setCloudDocsMigrationComplete:, nonatomic) bool aa_isCloudDocsMigrationComplete;
+@property (nonatomic, readonly) bool aa_isFamilyEligible;
 @property (nonatomic, readonly) bool aa_isManagedAppleID;
 @property (nonatomic, readonly) bool aa_isNotesMigrated;
 @property (setter=aa_setPrimaryAccount:, nonatomic) bool aa_isPrimaryAccount;
 @property (setter=aa_setPrimaryEmailVerified:, nonatomic) bool aa_isPrimaryEmailVerified;
+@property (nonatomic, readonly) bool aa_isRemindersMigrated;
 @property (nonatomic, readonly) bool aa_isSandboxAccount;
 @property (nonatomic, readonly) bool aa_isSuspended;
 @property (setter=aa_setSyncedAccount:, nonatomic) bool aa_isSyncedAccount;
-@property (setter=aa_setUndergoingRepair:, nonatomic) bool aa_isUndergoingRepair;
 @property (setter=aa_setUsesCloudDocs:, nonatomic) bool aa_isUsingCloudDocs;
 @property (nonatomic, readonly) bool aa_isUsingiCloud;
 @property (setter=aa_setLastKnownQuota:, nonatomic, copy) NSNumber *aa_lastKnownQuota;
@@ -94,7 +107,6 @@
 @property (nonatomic, readonly) NSString *aa_protocolVersion;
 @property (nonatomic, readonly, copy) AARegionInfo *aa_regionInfo;
 @property (setter=aa_setRepairState:, nonatomic) NSNumber *aa_repairState;
-@property (nonatomic, readonly) int aa_repairerPID;
 @property (nonatomic, readonly) bool aa_serviceUnavailable;
 @property (nonatomic, readonly) NSDictionary *aa_serviceUnavailableInfo;
 @property (nonatomic, readonly, copy) AASuspensionInfo *aa_suspensionInfo;
@@ -113,17 +125,29 @@
 @property (nonatomic, readonly) NSString *ams_creditsString;
 @property (getter=ams_isDemoAccount, nonatomic, readonly) bool ams_demoAccount;
 @property (nonatomic, readonly) NSString *ams_firstName;
+@property (setter=ams_setFreePasswordPromptSetting:, nonatomic) unsigned long long ams_freePasswordPromptSetting;
 @property (nonatomic, readonly) NSString *ams_fullName;
 @property (getter=ams_isiCloudAccount, nonatomic, readonly) bool ams_iCloudAccount;
 @property (getter=ams_isiTunesAccount, nonatomic, readonly) bool ams_iTunesAccount;
 @property (nonatomic, readonly) NSString *ams_lastName;
 @property (getter=ams_isLocalAccount, nonatomic, readonly) bool ams_localAccount;
 @property (getter=ams_isManagedAppleID, nonatomic, readonly) bool ams_managedAppleID;
+@property (setter=ams_setMergedPrivacyAcknowledgement:, nonatomic) bool ams_mergedPrivacyAcknowledgement;
+@property (setter=ams_setPaidPasswordPromptSetting:, nonatomic) unsigned long long ams_paidPasswordPromptSetting;
+@property (nonatomic, readonly) NSDictionary *ams_privacyAcknowledgement;
+@property (getter=ams_isPrivateListeningEnabled, nonatomic, readonly) bool ams_privateListeningEnabled;
 @property (getter=ams_isSandboxAccount, nonatomic, readonly) bool ams_sandboxAccount;
 @property (nonatomic, readonly) unsigned long long ams_securityLevel;
 @property (nonatomic, readonly) NSString *ams_storefront;
 @property (getter=isAuthenticated, nonatomic) bool authenticated;
 @property (nonatomic, readonly) NSString *authenticationType;
+@property (nonatomic, readonly) NSNumber *bu_DSID;
+@property (nonatomic, readonly) NSString *bu_firstName;
+@property (nonatomic, readonly) NSString *bu_fullName;
+@property (nonatomic, readonly) bool bu_isManagedAppleID;
+@property (nonatomic, readonly) NSString *bu_lastName;
+@property (nonatomic, readonly) NSString *bu_storefront;
+@property (readonly) NSString *calAccountFullName;
 @property bool calAttachmentDownloadHasTakenPlace;
 @property (readonly) NSArray *calCalDAVChildAccounts;
 @property (retain) NSString *calCollectionSetName;
@@ -152,15 +176,18 @@
 @property bool calServerSyncHasTakenPlace;
 @property (copy) NSURL *calServerURL;
 @property bool calSkipCredentialVerification;
+@property (readonly) bool calSupportsPush;
 @property bool calUseExternalURL;
 @property bool calUseKerberos;
 @property bool calUseSSL;
 @property (copy) NSString *calWebServicesRecordGUID;
+@property (nonatomic, readonly) NSString *cal_personaIdentifier;
 @property (nonatomic, readonly) NSArray *childAccounts;
 @property (nonatomic, readonly) NSDictionary *ck_accountProperties;
 @property (nonatomic, readonly) ACAccount *ck_cloudKitAccount;
 @property (nonatomic, readonly) NSDictionary *ck_dataclassProperties;
 @property (nonatomic, readonly) NSString *ck_identifier;
+@property (nonatomic, readonly) NSString *ck_personaIdentifier;
 @property (nonatomic, readonly) NSString *clientToken;
 @property (nonatomic, readonly) bool cls_isEligibleAccount;
 @property (nonatomic, retain) NSDictionary *communicationServiceRules;
@@ -182,10 +209,18 @@
 @property (getter=ic_isActiveLockerAccount, setter=ic_setActiveLockerAccount:, nonatomic) bool ic_activeLockerAccount;
 @property (setter=ic_setAgeVerificationExpirationDate:, nonatomic, copy) NSDate *ic_ageVerificationExpirationDate;
 @property (setter=ic_setAltDSID:, nonatomic, copy) NSString *ic_altDSID;
+@property (setter=ic_setAutomaticDownloadKinds:, nonatomic, copy) NSSet *ic_automaticDownloadKinds;
 @property (getter=ic_isCloudBackupEnabled, nonatomic, readonly) bool ic_cloudBackupEnabled;
+@property (setter=ic_setCloudLibraryStateReason:, nonatomic, copy) NSDictionary *ic_cloudLibraryStateReason;
 @property (setter=ic_setFirstName:, nonatomic, copy) NSString *ic_firstName;
+@property (nonatomic, readonly, copy) NSArray *ic_homeUserIdentifiers;
 @property (setter=ic_setLastName:, nonatomic, copy) NSString *ic_lastName;
+@property (getter=ic_isLocalAccount, nonatomic, readonly) bool ic_localAccount;
+@property (getter=ic_isManageable, nonatomic, readonly) bool ic_manageable;
 @property (getter=ic_isManagedAppleID, setter=ic_setManagedAppleID:, nonatomic) bool ic_managedAppleID;
+@property (setter=ic_setMergeWithCloudLibraryPreference:, nonatomic, copy) NSNumber *ic_mergeWithCloudLibraryPreference;
+@property (setter=ic_setPrivateListeningEnabled:, nonatomic, copy) NSNumber *ic_privateListeningEnabled;
+@property (nonatomic, readonly, copy) NSDictionary *ic_privateListeningEnabledForHomeUsers;
 @property (getter=ic_isSandboxed, setter=ic_setSandboxed:, nonatomic) bool ic_sandboxed;
 @property (setter=ic_setStorefront:, nonatomic, copy) NSString *ic_storefront;
 @property (getter=ic_isSubscriptionStatusEnabled, setter=ic_setSubscriptionStatusEnabled:, nonatomic) bool ic_subscriptionStatusEnabled;
@@ -194,6 +229,12 @@
 @property (nonatomic, retain) NSDate *lastCredentialRenewalRejectionDate;
 @property (nonatomic, retain) NSString *mcAccountIdentifier;
 @property (nonatomic, retain) NSString *mcConfigurationProfileIdentifier;
+@property (nonatomic, retain) NSNumber *mcEASAccountEnableNotes;
+@property (nonatomic, retain) NSNumber *mcEnableCalendarsUserOverridable;
+@property (nonatomic, retain) NSNumber *mcEnableContactsUserOverridable;
+@property (nonatomic, retain) NSNumber *mcEnableMailUserOverridable;
+@property (nonatomic, retain) NSNumber *mcEnableNotesUserOverridable;
+@property (nonatomic, retain) NSNumber *mcEnableRemindersUserOverridable;
 @property (nonatomic, retain) NSString *mcPayloadUUID;
 @property (nonatomic, retain) NSString *mcProfileUUID;
 @property (nonatomic, readonly) NSDictionary *messagePayload;
@@ -215,19 +256,19 @@
 
 // Image: /System/Library/Frameworks/Accounts.framework/Accounts
 
-+ (id)_createNewAccountUID;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (void)_applyDirtyStateFromAccount:(id)arg1;
 - (void)_clearCachedChildAccounts;
 - (void)_clearCachedCredentials;
 - (void)_clearDirtyProperties;
 - (id)_encodeProtobuf;
 - (id)_encodeProtobufData;
-- (id)_initWithManagedAccount:(id)arg1 accountStore:(id)arg2 withDirtyStateFromAccount:(id)arg3;
 - (id)_initWithProtobuf:(id)arg1;
 - (id)_initWithProtobufData:(id)arg1;
 - (void)_installCredentialsChangedObserver;
+- (bool)_isDifferentFrom:(id)arg1;
 - (void)_loadAllCachedProperties;
 - (void)_loadCachedPropertiesWithoutCredentials;
 - (void)_markAccountPropertyDirty:(id)arg1;
@@ -255,6 +296,7 @@
 - (id)clientToken;
 - (struct __SecIdentity { }*)copySecIdentity;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (bool)correctPersonaScopedForAccount;
 - (id)creationDate;
 - (id)credential;
 - (id)credentialType;
@@ -264,7 +306,6 @@
 - (void)dealloc;
 - (id)defaultAutodiscoverDomainForChildType:(id)arg1;
 - (id)description;
-- (id)diffAccount:(id)arg1;
 - (id)dirtyAccountProperties;
 - (id)dirtyDataclassProperties;
 - (id)dirtyProperties;
@@ -280,6 +321,7 @@
 - (id)initWithManagedAccount:(id)arg1 accountStore:(id)arg2;
 - (bool)isActive;
 - (bool)isAuthenticated;
+- (bool)isDataSeparatedAccount;
 - (bool)isDirty;
 - (bool)isEnabledForDataclass:(id)arg1;
 - (bool)isEnabledToSyncDataclass:(id)arg1;
@@ -293,6 +335,7 @@
 - (id)owningBundleID;
 - (id)parentAccount;
 - (id)parentAccountIdentifier;
+- (id)personaIdentifier;
 - (id)portableCopy;
 - (id)propertiesForDataclass:(id)arg1;
 - (id)propertyForKey:(id)arg1;
@@ -309,7 +352,6 @@
 - (void)setActive:(bool)arg1;
 - (void)setAuthenticated:(bool)arg1;
 - (void)setAuthenticationType:(id)arg1;
-- (void)setCreatingFromManagedObject:(bool)arg1;
 - (void)setCreationDate:(id)arg1;
 - (void)setCredential:(id)arg1;
 - (void)setCredentialType:(id)arg1;
@@ -354,16 +396,15 @@
 
 // Image: /System/Library/PrivateFrameworks/AppleAccount.framework/AppleAccount
 
-+ (id)aa_dataclassesBoundToPrimaryAppleAccount;
-+ (id)aa_dataclassesBoundToSingleAppleAccount;
-
 - (void)_aa_clearRawPassword;
 - (id)_aa_rawPassword;
 - (void)_aa_setAltDSID:(id)arg1;
 - (void)_aa_setAppleID:(id)arg1;
 - (void)_aa_setPrimaryEmail:(id)arg1;
 - (void)_aa_setRawPassword:(id)arg1;
+- (bool)_hasMailDataclassProperties;
 - (id)_registeredBundles;
+- (id)aa_accountClass;
 - (id)aa_accountFirstDisplayAlert;
 - (id)aa_accountFooterButton;
 - (id)aa_accountFooterText;
@@ -375,7 +416,6 @@
 - (id)aa_authTokenWithError:(id*)arg1;
 - (id)aa_childMailAccount;
 - (id)aa_cloudKitAccount;
-- (void)aa_configureCerts;
 - (id)aa_displayName;
 - (id)aa_firstName;
 - (id)aa_fmfAccount;
@@ -383,17 +423,19 @@
 - (id)aa_fmipToken;
 - (id)aa_formattedUsername;
 - (bool)aa_hasOptionalTerms;
-- (id)aa_hsaToken;
 - (id)aa_hsaTokenWithError:(id*)arg1;
+- (bool)aa_isAccountClass:(id)arg1;
+- (bool)aa_isAuthKitAccount;
 - (bool)aa_isCloudDocsMigrationComplete;
+- (bool)aa_isFamilyEligible;
 - (bool)aa_isManagedAppleID;
 - (bool)aa_isNotesMigrated;
 - (bool)aa_isPrimaryAccount;
 - (bool)aa_isPrimaryEmailVerified;
+- (bool)aa_isRemindersMigrated;
 - (bool)aa_isSandboxAccount;
 - (bool)aa_isSuspended;
 - (bool)aa_isSyncedAccount;
-- (bool)aa_isUndergoingRepair;
 - (bool)aa_isUsingCloudDocs;
 - (bool)aa_isUsingiCloud;
 - (id)aa_lastKnownQuota;
@@ -409,15 +451,13 @@
 - (id)aa_primaryEmail;
 - (id)aa_protocolVersion;
 - (id)aa_regionInfo;
-- (void)aa_removeCerts;
 - (id)aa_repairState;
-- (int)aa_repairerPID;
 - (bool)aa_serviceUnavailable;
 - (id)aa_serviceUnavailableInfo;
+- (void)aa_setAccountClass:(id)arg1;
 - (void)aa_setAuthToken:(id)arg1;
 - (void)aa_setCloudDocsMigrationComplete:(bool)arg1;
 - (void)aa_setFirstName:(id)arg1;
-- (void)aa_setHSAToken:(id)arg1;
 - (void)aa_setLastKnownQuota:(id)arg1;
 - (void)aa_setLastName:(id)arg1;
 - (void)aa_setMDMServerToken:(id)arg1;
@@ -429,11 +469,12 @@
 - (void)aa_setPrimaryEmailVerified:(bool)arg1;
 - (void)aa_setRepairState:(id)arg1;
 - (void)aa_setSyncedAccount:(bool)arg1;
-- (void)aa_setUndergoingRepair:(bool)arg1;
 - (void)aa_setUseCellular:(bool)arg1 forDataclass:(id)arg2;
 - (void)aa_setUsesCloudDocs:(bool)arg1;
 - (id)aa_suspensionInfo;
 - (id)aa_syncStoreIdentifier;
+- (bool)aa_updateAccountClassIfNecessary;
+- (bool)aa_updateTokensWithProvisioningResponse:(id)arg1;
 - (void)aa_updateWithProvisioningResponse:(id)arg1;
 - (bool)aa_useCellularForDataclass:(id)arg1;
 - (id)appleID;
@@ -462,28 +503,48 @@
 // Image: /System/Library/PrivateFrameworks/AppleMediaServices.framework/AppleMediaServices
 
 + (id)_defaultValueForAccountFlag:(id)arg1;
++ (id)_getSetCookiesForResponse:(id)arg1;
++ (id)_getSetGlobalCookiesForResponse:(id)arg1;
 + (bool)_isAccountFlagValue:(id)arg1 validForAccountFlag:(id)arg2;
 + (bool)_isAccountFlagWritable:(id)arg1;
 
-- (id)_accountPropertyForKey:(id)arg1 dataProtectionClass:(unsigned long long)arg2 expectedClass:(Class)arg3 error:(id*)arg4;
+- (id)_accountPropertyForKey:(id)arg1 dataProtectionClass:(unsigned long long)arg2 expectedClasses:(id)arg3 error:(id*)arg4;
 - (id)_accountPropertyForKey:(id)arg1 expectedClass:(Class)arg2;
 - (id)_cookiesMatchingProperties:(id)arg1;
 - (id)_createCookieStorage;
+- (id)_hashedActiveState;
+- (id)_hashedIdentifiers;
+- (id)_hashedMultiUserIdentifiers;
+- (id)_hashedStorefront;
 - (void)_setAccountProperty:(id)arg1 forKey:(id)arg2 dataProtectionClass:(unsigned long long)arg3 expectedClass:(Class)arg4;
 - (void)_setAccountProperty:(id)arg1 forKey:(id)arg2 expectedClass:(Class)arg3;
-- (void)_setCookies:(id)arg1;
+- (bool)_updateCookiesWithCookiesToAdd:(id)arg1 cookiesToRemove:(id)arg2;
 - (id)ams_DSID;
 - (id)ams_accountFlagValueForAccountFlag:(id)arg1;
 - (id)ams_accountFlags;
-- (void)ams_addCookies:(id)arg1;
+- (bool)ams_addCookies:(id)arg1;
+- (bool)ams_addCookiesForResponse:(id)arg1;
+- (bool)ams_addCookiesForResult:(id)arg1;
+- (bool)ams_addGlobalCookiesForResponse:(id)arg1;
+- (bool)ams_addGlobalCookiesForResult:(id)arg1;
+- (void)ams_addHomeUserIdentifier:(id)arg1;
+- (id)ams_allStorefronts;
 - (id)ams_altDSID;
+- (long long)ams_biometricsState;
 - (id)ams_cookies;
 - (id)ams_cookiesForURL:(id)arg1;
 - (id)ams_creditsString;
+- (id)ams_delta:(id)arg1;
 - (bool)ams_didAgreeToTerms;
 - (bool)ams_encryptAccountFlags;
 - (id)ams_firstName;
+- (unsigned long long)ams_freePasswordPromptSetting;
 - (id)ams_fullName;
+- (id)ams_homeID;
+- (id)ams_homeIdentifier;
+- (id)ams_homeUserID;
+- (id)ams_homeUserIdentifiers;
+- (bool)ams_isActiveForMediaType:(id)arg1;
 - (bool)ams_isDemoAccount;
 - (bool)ams_isDuplicate:(id)arg1;
 - (bool)ams_isHSA2;
@@ -491,39 +552,77 @@
 - (bool)ams_isInGoodStanding;
 - (bool)ams_isLocalAccount;
 - (bool)ams_isManagedAppleID;
+- (bool)ams_isPrivateListeningEnabled;
+- (bool)ams_isPrivateListeningEnabledForHomeUserIdentifier:(id)arg1;
 - (bool)ams_isSandboxAccount;
 - (bool)ams_isValidPayment;
 - (bool)ams_isiCloudAccount;
 - (bool)ams_isiCloudFamily;
 - (bool)ams_isiTunesAccount;
+- (id)ams_lastAuthenticationServerResponse;
 - (id)ams_lastName;
+- (long long)ams_mergePrivacyAcknowledgement:(id)arg1;
+- (bool)ams_mergedPrivacyAcknowledgement;
+- (unsigned long long)ams_paidPasswordPromptSetting;
 - (id)ams_password;
 - (bool)ams_postAccountFlagsWithBagContract:(id)arg1;
+- (id)ams_privacyAcknowledgement;
 - (id)ams_rawPassword;
+- (id)ams_registerSuccessCriteria;
 - (void)ams_removeAllCookies;
 - (void)ams_removeCookies:(id)arg1;
 - (void)ams_removeCookiesMatchingProperties:(id)arg1;
+- (void)ams_removeHomeUserIdentifier:(id)arg1;
 - (bool)ams_requiresAuthKitUpdate;
 - (id)ams_secureToken;
 - (unsigned long long)ams_securityLevel;
 - (void)ams_setAccountFlagValue:(id)arg1 forAccountFlag:(id)arg2;
 - (void)ams_setAccountFlags:(id)arg1;
+- (void)ams_setActive:(bool)arg1 forMediaType:(id)arg2;
 - (void)ams_setAgreedToTerms:(bool)arg1;
 - (void)ams_setAltDSID:(id)arg1;
+- (void)ams_setBiometricsState:(long long)arg1;
 - (void)ams_setCreditsString:(id)arg1;
 - (void)ams_setDSID:(id)arg1;
 - (void)ams_setFirstName:(id)arg1;
+- (void)ams_setFreePasswordPromptSetting:(unsigned long long)arg1;
+- (void)ams_setHomeID:(id)arg1;
+- (void)ams_setHomeIdentifier:(id)arg1;
+- (void)ams_setHomeUserID:(id)arg1;
 - (void)ams_setInGoodStanding:(bool)arg1;
 - (void)ams_setLastName:(id)arg1;
+- (void)ams_setManagedAppleID:(bool)arg1;
+- (void)ams_setMergedPrivacyAcknowledgement:(bool)arg1;
+- (void)ams_setPaidPasswordPromptSetting:(unsigned long long)arg1;
 - (void)ams_setPassword:(id)arg1;
+- (void)ams_setPrivateListeningEnabled:(bool)arg1 forHomeUserIdentifier:(id)arg2;
 - (void)ams_setRawPassword:(id)arg1;
+- (void)ams_setRegisterSuccessCriteria:(id)arg1;
+- (void)ams_setServerResponse:(id)arg1;
 - (void)ams_setStorefront:(id)arg1;
+- (void)ams_setStorefront:(id)arg1 forMediaType:(id)arg2;
 - (void)ams_setValidPayment:(bool)arg1;
 - (void)ams_setValue:(bool)arg1 forAccountFlag:(id)arg2;
 - (void)ams_setiCloudFamily:(bool)arg1;
 - (id)ams_storefront;
+- (id)ams_storefrontForMediaType:(id)arg1;
 - (bool)ams_valueForAccountFlag:(id)arg1;
 - (id)hashedDescription;
+
+// Image: /System/Library/PrivateFrameworks/BookUtility.framework/BookUtility
+
++ (id)bu_activeStoreAccount;
++ (id)bu_localStoreAccount;
++ (id)bu_storeAccountWithDSID:(id)arg1;
+
+- (id)bu_DSID;
+- (id)bu_firstName;
+- (id)bu_fullName;
+- (bool)bu_isManagedAppleID;
+- (id)bu_lastName;
+- (void)bu_removeWithCompletion:(id /* block */)arg1;
+- (id)bu_signOut;
+- (id)bu_storefront;
 
 // Image: /System/Library/PrivateFrameworks/CalendarFoundation.framework/CalendarFoundation
 
@@ -540,6 +639,7 @@
 - (id)_updateURL:(id)arg1 withHost:(id)arg2 port:(id)arg3 useSSL:(id)arg4;
 - (bool)_useSSLForSchemeString:(id)arg1;
 - (void)addPrincipal:(id)arg1 withUID:(id)arg2;
+- (id)calAccountFullName;
 - (bool)calAttachmentDownloadHasTakenPlace;
 - (id)calCalDAVChildAccounts;
 - (id)calCollectionSetName;
@@ -570,10 +670,12 @@
 - (bool)calServerSyncHasTakenPlace;
 - (id)calServerURL;
 - (bool)calSkipCredentialVerification;
+- (bool)calSupportsPush;
 - (bool)calUseExternalURL;
 - (bool)calUseKerberos;
 - (bool)calUseSSL;
 - (id)calWebServicesRecordGUID;
+- (id)cal_personaIdentifier;
 - (void)createDictionaryForPrincipalWithUID:(id)arg1;
 - (id)diffWithAccount:(id)arg1;
 - (id)firstDifferentPropertyWithAccount:(id)arg1;
@@ -630,6 +732,29 @@
 - (id)ck_cloudKitAccount;
 - (id)ck_dataclassProperties;
 - (id)ck_identifier;
+- (id)ck_personaIdentifier;
+
+// Image: /System/Library/PrivateFrameworks/ContactsFoundation.framework/ContactsFoundation
+
+- (id)_cn_altDSID;
+- (id)_cn_appleAccountAppleID;
+- (id)_cn_appleAccountAppleIDAliases;
+- (id)_cn_appleID;
+- (id)_cn_dsid;
+- (id)_cn_firstName;
+- (bool)_cn_isCardDAV;
+- (bool)_cn_isChildDelegateAccount;
+- (bool)_cn_isLDAP;
+- (bool)_cn_isPrimaryAccount;
+- (id)_cn_lastName;
+- (id)_cn_principalPath;
+- (void)setPropertiesFromDelegateInfo:(id)arg1;
+- (void)set_cn_altDSID:(id)arg1;
+- (void)set_cn_appleID:(id)arg1;
+- (void)set_cn_dsid:(id)arg1;
+- (void)set_cn_firstName:(id)arg1;
+- (void)set_cn_lastName:(id)arg1;
+- (void)set_cn_principalPath:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/GameCenterFoundation.framework/GameCenterFoundation
 
@@ -651,6 +776,10 @@
 - (id)description;
 - (id)messagePayload;
 
+// Image: /System/Library/PrivateFrameworks/HomeUI.framework/HomeUI
+
+- (bool)hasSameAppleMusicServiceAltDSID:(id)arg1;
+
 // Image: /System/Library/PrivateFrameworks/ManagedConfiguration.framework/ManagedConfiguration
 
 - (bool)MCIsManaged;
@@ -659,13 +788,27 @@
 - (id)mcBackingPayload;
 - (id)mcBackingProfile;
 - (id)mcConfigurationProfileIdentifier;
+- (id)mcEASAccountEnableNotes;
+- (id)mcEnableCalendarsUserOverridable;
+- (id)mcEnableContactsUserOverridable;
+- (id)mcEnableMailUserOverridable;
+- (id)mcEnableNotesUserOverridable;
+- (id)mcEnableRemindersUserOverridable;
 - (id)mcPayloadUUID;
 - (id)mcProfileUUID;
+- (bool)mc_isUserEnrollmentAccount;
 - (void)setCommunicationServiceRules:(id)arg1;
 - (void)setMcAccountIdentifier:(id)arg1;
 - (void)setMcConfigurationProfileIdentifier:(id)arg1;
+- (void)setMcEASAccountEnableNotes:(id)arg1;
+- (void)setMcEnableCalendarsUserOverridable:(id)arg1;
+- (void)setMcEnableContactsUserOverridable:(id)arg1;
+- (void)setMcEnableMailUserOverridable:(id)arg1;
+- (void)setMcEnableNotesUserOverridable:(id)arg1;
+- (void)setMcEnableRemindersUserOverridable:(id)arg1;
 - (void)setMcPayloadUUID:(id)arg1;
 - (void)setMcProfileUUID:(id)arg1;
+- (void)unenrollAccountWithCompletionHandler:(id /* block */)arg1;
 
 // Image: /System/Library/PrivateFrameworks/MobileSync.framework/MobileSync
 
@@ -678,10 +821,25 @@
 // Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
 
 - (bool)ic_hasICloudEmailAddress;
+- (bool)ic_hasPersonaIdentifier;
+- (bool)ic_isBasicAccountClass;
+- (bool)ic_isFullAccountClass;
+- (bool)ic_isICloudNotesAccount;
 - (bool)ic_isManagedAppleID;
+- (bool)ic_isNotesEnabled;
 - (bool)ic_isNotesMigrated;
 - (bool)ic_isPrimaryAppleAccount;
+- (bool)ic_shouldCreateSeparatePersistentStore;
 - (bool)ic_supportsHTMLNotes;
+- (bool)ic_supportsModernNotes;
+
+// Image: /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit
+
+- (bool)rem_didChooseToMigrate;
+- (bool)rem_didFinishMigration;
+- (bool)rem_isManagedAppleID;
+- (bool)rem_isPrimaryAppleAccount;
+- (bool)rem_isRemindersMigrated;
 
 // Image: /System/Library/PrivateFrameworks/Stocks/StocksCore.framework/StocksCore
 
@@ -706,20 +864,32 @@
 - (id)ic_DSID;
 - (id)ic_ageVerificationExpirationDate;
 - (id)ic_altDSID;
+- (id)ic_automaticDownloadKinds;
+- (id)ic_cloudLibraryStateReason;
 - (id)ic_firstName;
+- (id)ic_homeUserIdentifiers;
 - (bool)ic_isActiveLockerAccount;
 - (bool)ic_isCloudBackupEnabled;
+- (bool)ic_isLocalAccount;
+- (bool)ic_isManageable;
 - (bool)ic_isManagedAppleID;
 - (bool)ic_isSandboxed;
 - (bool)ic_isSubscriptionStatusEnabled;
 - (id)ic_lastName;
+- (id)ic_mergeWithCloudLibraryPreference;
+- (id)ic_privateListeningEnabled;
+- (id)ic_privateListeningEnabledForHomeUsers;
 - (void)ic_setActiveLockerAccount:(bool)arg1;
 - (void)ic_setAgeVerificationExpirationDate:(id)arg1;
 - (void)ic_setAltDSID:(id)arg1;
+- (void)ic_setAutomaticDownloadKinds:(id)arg1;
+- (void)ic_setCloudLibraryStateReason:(id)arg1;
 - (void)ic_setDSID:(id)arg1;
 - (void)ic_setFirstName:(id)arg1;
 - (void)ic_setLastName:(id)arg1;
 - (void)ic_setManagedAppleID:(bool)arg1;
+- (void)ic_setMergeWithCloudLibraryPreference:(id)arg1;
+- (void)ic_setPrivateListeningEnabled:(id)arg1;
 - (void)ic_setSandboxed:(bool)arg1;
 - (void)ic_setStorefront:(id)arg1;
 - (void)ic_setSubscriptionStatusEnabled:(bool)arg1;

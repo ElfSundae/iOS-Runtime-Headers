@@ -33,6 +33,7 @@
 @property (nonatomic, copy) id /* block */ zonePurgedBlock;
 
 - (void).cxx_destruct;
+- (bool)allowsAnonymousAccount;
 - (id)changedZoneIDs;
 - (id)deletedZoneIDs;
 - (id)generateRequestOperations;

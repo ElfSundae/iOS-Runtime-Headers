@@ -10,8 +10,11 @@
     NSArray * _currentNormalizedActiveRegions;
     NSObject<OS_dispatch_queue> * _dispatchQueue;
     id /* block */  _enabledInputModeIdentifiersProviderBlock;
-    TIMobileAssetMediator * _mobileAssetMediator;
+    <TIInputModePreferenceProvider> * _inputModePreferenceProvider;
+    <TIMobileAssetMediator> * _mobileAssetMediator;
     NSMutableArray * _notificationTokens;
+    TIRequestedInputModes * _requestedInputModes;
+    NSArray * _requestedInputModes_mainThreadCache;
     TIMobileAssetTimer * _timer;
 }
 
@@ -25,7 +28,11 @@
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *dispatchQueue;
 @property (nonatomic, copy) id /* block */ enabledInputModeIdentifiersProviderBlock;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) TIMobileAssetMediator *mobileAssetMediator;
+@property (nonatomic, readonly) <TIInputModePreferenceProvider> *inputModePreferenceProvider;
+@property (nonatomic, readonly) <TIMobileAssetMediator> *mobileAssetMediator;
+@property (nonatomic, readonly) double requestExpirationInterval;
+@property (nonatomic, readonly) TIRequestedInputModes *requestedInputModes;
+@property (nonatomic, copy) NSArray *requestedInputModes_mainThreadCache;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) TIMobileAssetTimer *timer;
 
@@ -38,6 +45,7 @@
 
 - (void).cxx_destruct;
 - (id)activeInputModeLevels;
+- (id)activeInputModes;
 - (void)addAssets:(id)arg1;
 - (long long)amountOfPurgeableAssetsWithUrgency:(int)arg1;
 - (void)appleKeyboardsInternalSettingsChanged:(id)arg1;
@@ -56,7 +64,9 @@
 - (id)enabledInputModes;
 - (void)gatherStatistics:(id)arg1;
 - (id)init;
-- (id)initWithEnabledInputModesProvider:(id /* block */)arg1;
+- (id)initForTestingWithMobileAssetMediator:(id)arg1 requestedInputModes:(id)arg2 inputModePreferenceProvider:(id)arg3 enabledInputModesProvider:(id /* block */)arg4;
+- (id)initWithMobileAssetMediator:(id)arg1 requestedInputModes:(id)arg2 inputModePreferenceProvider:(id)arg3 enabledInputModesProvider:(id /* block */)arg4;
+- (id)inputModePreferenceProvider;
 - (id)levelsForInputMode:(id)arg1;
 - (id)mobileAssetMediator;
 - (void)newAssetInstalled:(id)arg1;
@@ -66,10 +76,15 @@
 - (id)recursiveDescription;
 - (void)registerCacheDeleteCallbacks;
 - (void)registerForNotifications;
+- (void)requestAssetDownloadForLanguage:(id)arg1 completion:(id /* block */)arg2;
+- (double)requestExpirationInterval;
+- (id)requestedInputModes;
+- (id)requestedInputModes_mainThreadCache;
 - (void)scheduleNextDownload;
 - (void)setCurrentActiveRegions:(id)arg1;
 - (void)setCurrentNormalizedActiveRegions:(id)arg1;
 - (void)setEnabledInputModeIdentifiersProviderBlock:(id /* block */)arg1;
+- (void)setRequestedInputModes_mainThreadCache:(id)arg1;
 - (void)setTimer:(id)arg1;
 - (void)startDownloadingUninstalledAssetsForInputModeLevels:(id)arg1 regions:(id)arg2;
 - (void)submitStatistics:(id)arg1;
@@ -77,7 +92,7 @@
 - (long long)tryToPurgeAssetAmount:(long long)arg1 urgency:(int)arg2;
 - (void)unregisterForNotifications;
 - (void)updateAssetDownloadingEnabled;
-- (id)updateInputModesAndGetNewLevels;
+- (void)updateInputModesAndLevels;
 - (void)updateInstalledAssets;
 - (id)updatedActiveRegions;
 

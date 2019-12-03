@@ -3,7 +3,7 @@
  */
 
 @interface BSMachPortTaskNameRight : BSMachPortSendRight {
-    BSAuditToken * _auditToken;
+    BSAuditToken * _critical_auditToken;
     int  _pid;
 }
 
@@ -15,6 +15,7 @@
 
 - (void).cxx_destruct;
 - (id)auditToken;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)init;

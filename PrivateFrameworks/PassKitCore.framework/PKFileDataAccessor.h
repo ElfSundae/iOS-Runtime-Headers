@@ -36,6 +36,7 @@
 - (id)processingQueue;
 - (id)remoteAssetManager;
 - (bool)remoteAssetsDownloaded;
+- (bool)remoteAssetsDownloadedForScreenScale:(double)arg1 suffix:(id)arg2;
 - (id)resourceValueForKey:(id)arg1;
 - (void)revocationStatusWithCompletion:(id /* block */)arg1;
 - (id)serializedFileWrapper;

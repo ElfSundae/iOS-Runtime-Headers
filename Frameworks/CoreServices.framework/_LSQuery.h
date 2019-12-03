@@ -14,7 +14,6 @@
 - (void)_enumerateWithXPCConnection:(id)arg1 block:(id /* block */)arg2;
 - (id)_init;
 - (bool)_requiresDatabaseMappingEntitlement;
-- (bool)_shouldCacheResolvedResults;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

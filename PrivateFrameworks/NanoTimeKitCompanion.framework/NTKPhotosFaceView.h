@@ -56,6 +56,7 @@
 - (void)_nextPhotoReadyAnimated:(bool)arg1 completion:(id /* block */)arg2;
 - (void)_operationIsDone;
 - (bool)_preloadNextPhoto;
+- (void)_resetTapAnimationState;
 - (bool)_shouldAnimationContinue:(bool)arg1;
 - (void)_startBackgroundRefill;
 - (void)_startScrubbingAnimated:(bool)arg1 withCompletion:(id /* block */)arg2;
@@ -63,6 +64,7 @@
 - (void)_unloadSnapshotContentViews;
 - (void)_updateContents:(bool)arg1;
 - (void)_updateDateAttributesAnimated:(bool)arg1;
+- (void)_updateDateAttributesAnimated:(bool)arg1 completion:(id /* block */)arg2;
 - (void)_updateForResourceDirectoryChange:(id)arg1;
 - (void)_updateImageToBlur;
 - (void)_updateReader:(bool)arg1;
@@ -70,6 +72,7 @@
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 - (id)presentedPhoto;
 - (void)readerDidChange:(id)arg1;
+- (void)setNoPhotosViewVisible:(bool)arg1;
 - (void)setPresentedPhoto:(id)arg1;
 
 @end

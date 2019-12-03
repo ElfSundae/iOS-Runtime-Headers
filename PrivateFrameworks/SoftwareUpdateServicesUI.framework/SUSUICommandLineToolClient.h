@@ -24,14 +24,17 @@
 - (id)_remoteInterfaceWithErrorHandler:(id /* block */)arg1;
 - (void)dealloc;
 - (id)delegate;
+- (void)downloadDidFinish;
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
 - (void)invalidate;
 - (void)reboot:(bool)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setPasscodePolicy:(unsigned long long)arg1;
 - (void)showAuthenticationUIWithOptions:(unsigned long long)arg1 result:(id /* block */)arg2;
 - (void)showEmergencyCallUIWithOptions:(unsigned long long)arg1 result:(id /* block */)arg2;
-- (void)showMiniAlert:(unsigned long long)arg1 usingFakeData:(bool)arg2;
+- (void)showFollowUp:(unsigned long long)arg1;
+- (void)showMiniAlert:(unsigned long long)arg1 usingFakeData:(bool)arg2 errorCode:(id)arg3;
 - (void)simulateComingFromOTAUpdate;
 - (void)toggleSettingsBadge:(bool)arg1;
 

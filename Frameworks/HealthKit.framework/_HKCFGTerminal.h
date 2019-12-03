@@ -4,6 +4,8 @@
 
 @interface _HKCFGTerminal : _HKCFGExpression
 
++ (id)_terminalMatchingDoubleWithCondition:(id /* block */)arg1;
++ (id)_terminalMatchingIntegerWithCondition:(id /* block */)arg1;
 + (id)terminalMatchingAnyDouble;
 + (id)terminalMatchingAnyInteger;
 + (id)terminalMatchingCharacterInSet:(id)arg1;

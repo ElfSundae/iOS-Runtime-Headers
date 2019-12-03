@@ -24,4 +24,8 @@
 - (int)timeScale;
 - (bool)use2160Pcontent:(bool)arg1;
 
+@optional
+
+- (bool)containsEffectsThatRequireCustomRendering;
+
 @end

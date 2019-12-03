@@ -33,7 +33,7 @@
 - (void)_setCacheVersion:(int)arg1;
 - (id)_versionPath;
 - (unsigned long long)cacheItemLimit;
-- (id)cacheNumberForKey:(id)arg1;
+- (id)cacheNumberForKey:(id)arg1 inGroup:(id)arg2;
 - (int)cacheVersion;
 - (struct CGImage { }*)copyImageForKey:(id)arg1 inGroup:(id)arg2;
 - (void)dealloc;

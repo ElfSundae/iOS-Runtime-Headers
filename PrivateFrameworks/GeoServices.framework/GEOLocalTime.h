@@ -4,9 +4,9 @@
 
 @interface GEOLocalTime : PBCodable <NSCopying> {
     struct { 
-        unsigned int timeRoundedToHour : 1; 
-        unsigned int timezoneOffsetFromGmtInHours : 1; 
-    }  _has;
+        unsigned int has_timeRoundedToHour : 1; 
+        unsigned int has_timezoneOffsetFromGmtInHours : 1; 
+    }  _flags;
     unsigned long long  _timeRoundedToHour;
     float  _timezoneOffsetFromGmtInHours;
     PBUnknownFields * _unknownFields;
@@ -18,7 +18,10 @@
 @property (nonatomic) float timezoneOffsetFromGmtInHours;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -30,6 +33,7 @@
 - (id)initWithDate:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasTimeRoundedToHour:(bool)arg1;
 - (void)setHasTimezoneOffsetFromGmtInHours:(bool)arg1;

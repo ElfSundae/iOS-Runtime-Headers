@@ -2,9 +2,7 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface INSearchCallHistoryIntentResponse : INIntentResponse <INSearchCallHistoryIntentResponseExport> {
-    _INPBSearchCallHistoryIntentResponse * _responseMessagePBRepresentation;
-}
+@interface INSearchCallHistoryIntentResponse : INIntentResponse <INSearchCallHistoryIntentResponseExport>
 
 @property (nonatomic, copy) NSArray *callRecords;
 @property (nonatomic, readonly) long long code;
@@ -19,11 +17,10 @@
 + (int)_typeFromCode:(long long)arg1;
 + (bool)supportsSecureCoding;
 
-- (void).cxx_destruct;
+- (long long)_codeWithName:(id)arg1;
 - (id)_dictionaryRepresentation;
 - (id)_initWithCode:(long long)arg1 userActivity:(id)arg2;
 - (long long)_intentResponseCode;
-- (id)_responseMessagePBRepresentation;
 - (id)callRecords;
 - (long long)code;
 - (void)encodeWithCoder:(id)arg1;

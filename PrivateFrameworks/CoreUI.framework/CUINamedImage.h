@@ -74,8 +74,8 @@
 
 // Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 
-- (id)UIImageWithVectorImage:(id)arg1;
+- (id)UIImageWithAsset:(id)arg1 configuration:(id)arg2 flippedHorizontally:(bool)arg3 optionalVectorImage:(id)arg4;
+- (id)configuration;
 - (id)imageObj;
-- (id)traitCollection;
 
 @end

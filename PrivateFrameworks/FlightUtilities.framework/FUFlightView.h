@@ -5,8 +5,8 @@
 @interface FUFlightView : UIView <FUFlightInfoViewProtocol, UIPageViewControllerDataSource, UIPageViewControllerDelegate> {
     NSArray * _allLegs;
     UIVisualEffectView * _backBlurView;
-    UIView * _borderLineViewLandscape;
-    UIView * _borderLineViewPortrait;
+    TLKProminenceView * _borderLineViewLandscape;
+    TLKProminenceView * _borderLineViewPortrait;
     NSLayoutConstraint * _bottomMapConstraint;
     NSMutableArray * _controllers;
     long long  _currentFocus;
@@ -17,6 +17,7 @@
     NSArray * _flights;
     bool  _highlightCurrentFlightLeg;
     bool  _ignoreMapUpdate;
+    bool  _landscapeMode;
     NSLayoutConstraint * _lanscapeConstraint1;
     NSLayoutConstraint * _lanscapeConstraint2;
     NSLayoutConstraint * _lanscapeConstraint3;
@@ -44,8 +45,8 @@
 }
 
 @property (nonatomic) UIVisualEffectView *backBlurView;
-@property (nonatomic) UIView *borderLineViewLandscape;
-@property (nonatomic) UIView *borderLineViewPortrait;
+@property (nonatomic) TLKProminenceView *borderLineViewLandscape;
+@property (nonatomic) TLKProminenceView *borderLineViewPortrait;
 @property (nonatomic, retain) NSLayoutConstraint *bottomMapConstraint;
 @property (nonatomic) long long currentFocus;
 @property (readonly, copy) NSString *debugDescription;
@@ -73,6 +74,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (unsigned long long)absoluteLegIndex;
 - (void)addTrack:(id)arg1;
 - (id)allLegs;
@@ -89,6 +91,7 @@
 - (id)currentLeg;
 - (id)delegate;
 - (id)departureCamera;
+- (void)didMoveToWindow;
 - (unsigned long long)displayStyle;
 - (id)errorView;
 - (void)fitMap:(bool)arg1;
@@ -110,6 +113,7 @@
 - (id)leadingMapConstraint;
 - (id)loadingView;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })mapInsets;
+- (bool)mapOnly;
 - (id)mapView;
 - (void)mapView:(id)arg1 regionDidChangeAnimated:(bool)arg2;
 - (id)mapView:(id)arg1 rendererForOverlay:(id)arg2;
@@ -156,12 +160,14 @@
 - (void)showInfo;
 - (bool)showInfoPanel;
 - (void)showLoading;
+- (void)tlk_updateForAppearance:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateBorderLines;
 - (void)updateConstraints;
+- (void)updateMapAppearance;
 - (void)updateMapArcs;
 - (void)updateMapCamera;
-- (void)updateOrienationConstraints;
+- (void)updateOrientationConstraints;
 - (void)updatePageControllerScrolling;
 
 @end

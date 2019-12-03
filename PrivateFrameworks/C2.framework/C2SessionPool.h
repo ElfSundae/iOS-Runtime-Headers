@@ -10,6 +10,7 @@
     NSMutableDictionary * _sessionGroupForSessionConfigurationName;
     C2SessionTLSCache * _sessionTLSCache;
     bool  _testBehavior_disableAutomaticCleanup;
+    NSObject<OS_dispatch_queue> * _underlyingDelegateQueue;
     NSMapTable * _useCountByObject;
 }
 
@@ -24,6 +25,7 @@
 @property (nonatomic, retain) C2SessionTLSCache *sessionTLSCache;
 @property (readonly) Class superclass;
 @property (nonatomic) bool testBehavior_disableAutomaticCleanup;
+@property (nonatomic, retain) NSObject<OS_dispatch_queue> *underlyingDelegateQueue;
 @property (nonatomic, retain) NSMapTable *useCountByObject;
 
 - (void).cxx_destruct;
@@ -53,9 +55,11 @@
 - (void)setSessionGroupForSessionConfigurationName:(id)arg1;
 - (void)setSessionTLSCache:(id)arg1;
 - (void)setTestBehavior_disableAutomaticCleanup:(bool)arg1;
+- (void)setUnderlyingDelegateQueue:(id)arg1;
 - (void)setUseCountByObject:(id)arg1;
 - (bool)testBehavior_cleanUp;
 - (bool)testBehavior_disableAutomaticCleanup;
+- (id)underlyingDelegateQueue;
 - (id)useCountByObject;
 
 @end

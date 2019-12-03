@@ -5,7 +5,7 @@
 
 @required
 
-- (NSString *)displayName;
+- (NSString *)localizedName;
 - (bool)matchesRecipientInRecipients:(NSArray *)arg1;
 
 @end

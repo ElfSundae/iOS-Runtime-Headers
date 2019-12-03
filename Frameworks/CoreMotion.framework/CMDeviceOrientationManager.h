@@ -8,6 +8,7 @@
 
 + (void)dummySelector:(id)arg1;
 + (void)initialize;
++ (bool)isAlwaysOn;
 + (bool)isAvailable;
 
 - (void)dealloc;
@@ -23,8 +24,10 @@
 - (bool)orientationNotificationsDisabled;
 - (void)setDeviceOrientationCallbackModePrivate:(int)arg1;
 - (void)signalAndReleaseSemaphoreIfNecessaryPrivate;
+- (void)start;
 - (void)startDeviceOrientationUpdatesPrivateToQueue:(id)arg1 withHandler:(id /* block */)arg2;
 - (void)startDeviceOrientationUpdatesToQueue:(id)arg1 withHandler:(id /* block */)arg2;
+- (void)stop;
 - (void)stopDeviceOrientationUpdates;
 - (void)stopDeviceOrientationUpdatesPrivate;
 - (id)stringForOrientation:(int)arg1;

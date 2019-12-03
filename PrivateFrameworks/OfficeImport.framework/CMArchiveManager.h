@@ -3,6 +3,7 @@
  */
 
 @interface CMArchiveManager : NSObject <TCCancelDelegate> {
+    bool  _noDecorations;
     bool  mAutoCommit;
     double  mCommitInterval;
     NSMutableDictionary * mDrawableCache;
@@ -20,6 +21,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property bool noDecorations;
 @property (copy) NSString *passphrase;
 @property (readonly) Class superclass;
 
@@ -47,6 +49,7 @@
 - (bool)isOnPhone;
 - (bool)isProgressive;
 - (bool)isThumbnail;
+- (bool)noDecorations;
 - (unsigned long long)pageCount;
 - (id)passphrase;
 - (void)pauseProgressiveMappingOnPath:(id)arg1;
@@ -63,6 +66,7 @@
 - (void)setHTMLWidth:(int)arg1;
 - (void)setIsOnPhone:(bool)arg1;
 - (void)setIsThumbnail:(bool)arg1;
+- (void)setNoDecorations:(bool)arg1;
 - (void)setPageCount:(unsigned long long)arg1;
 - (void)setPassphrase:(id)arg1;
 - (void)setResourcePathPrefix:(id)arg1;

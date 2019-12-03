@@ -11,6 +11,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSString *refId;
+@property (nonatomic, retain) SAStartLocalRequest *startLocalRequest;
 @property (nonatomic, retain) SAStartRequest *startRequest;
 @property (readonly) Class superclass;
 
@@ -20,7 +21,9 @@
 - (id)encodedClassName;
 - (id)groupIdentifier;
 - (bool)requiresResponse;
+- (void)setStartLocalRequest:(id)arg1;
 - (void)setStartRequest:(id)arg1;
+- (id)startLocalRequest;
 - (id)startRequest;
 
 @end

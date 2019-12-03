@@ -6,7 +6,7 @@
     struct CGColor { } * backgroundColor;
     unsigned int  backgroundGraphicCount;
     id * backgroundGraphics;
-    /* Warning: unhandled struct encoding: '{?={CGRect={CGPoint=dd}{CGSize=dd}}^{CGColor}I^@}' */ struct { struct CGRect { struct CGPoint { double x_1_2_1; double x_1_2_2; } x_1_1_1; struct CGSize { double x_2_2_1; double x_2_2_2; } x_1_1_2; } x1; struct CGColor {} *x2; unsigned int x3; id *x4; } * borders;
+    struct { struct CGRect { struct CGPoint { double x_1_2_1; double x_1_2_2; } x_1_1_1; struct CGSize { double x_2_2_1; double x_2_2_2; } x_1_1_2; } x1; struct CGColor {} *x2; unsigned int x3; id *x4; } * borders;
     struct CGRect { 
         struct CGPoint { 
             double x; 

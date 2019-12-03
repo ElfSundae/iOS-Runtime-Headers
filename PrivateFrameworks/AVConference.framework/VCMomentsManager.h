@@ -25,7 +25,7 @@
 - (void)registerBlocksForService;
 - (void)registerMomentsMessenger:(id)arg1 withStreamToken:(long long)arg2;
 - (void)setDelegate:(id)arg1;
-- (void)streamToken:(long long)arg1 didEndProcessingRequest:(id)arg2 URL:(id)arg3 error:(id)arg4;
+- (void)streamToken:(long long)arg1 didEndProcessingRequest:(id)arg2 stillImageURL:(id)arg3 movieURL:(id)arg4 error:(id)arg5;
 - (void)streamToken:(long long)arg1 didFinishRequest:(id)arg2 didSucceed:(bool)arg3;
 - (void)streamToken:(long long)arg1 didStartProcessingRequest:(id)arg2 error:(id)arg3;
 - (void)streamTokenDidCleanupAllRequests:(long long)arg1;

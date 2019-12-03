@@ -7,6 +7,7 @@
     NSString * _alertabilityPredicate;
     NSString * _availabilityPredicate;
     NSArray * _availableCountryCodes;
+    NSArray * _availableSuffixes;
     HKUnit * _canonicalUnit;
     NSDate * _createdDate;
     unsigned char  _creatorDevice;
@@ -17,6 +18,11 @@
     unsigned char  _earnDateStrategy;
     unsigned char  _earnLimit;
     NSString * _goalExpression;
+    NSString * _graceGoalExpression;
+    NSString * _gracePredicate;
+    NSString * _graceProgressExpression;
+    NSString * _graceValueExpression;
+    NSString * _graceVisibilityPredicate;
     unsigned long long  _key;
     unsigned char  _minimumEngineVersion;
     struct { 
@@ -59,6 +65,7 @@
 @property (nonatomic, retain) NSString *availabilityPredicate;
 @property (nonatomic, retain) NSDateComponents *availabilityStart;
 @property (nonatomic, retain) NSArray *availableCountryCodes;
+@property (nonatomic, retain) NSArray *availableSuffixes;
 @property (nonatomic, retain) HKUnit *canonicalUnit;
 @property (nonatomic, retain) NSDate *createdDate;
 @property (nonatomic) unsigned char creatorDevice;
@@ -69,6 +76,11 @@
 @property (nonatomic) unsigned char earnDateStrategy;
 @property (nonatomic) unsigned char earnLimit;
 @property (nonatomic, retain) NSString *goalExpression;
+@property (nonatomic, retain) NSString *graceGoalExpression;
+@property (nonatomic, retain) NSString *gracePredicate;
+@property (nonatomic, retain) NSString *graceProgressExpression;
+@property (nonatomic, retain) NSString *graceValueExpression;
+@property (nonatomic, retain) NSString *graceVisibilityPredicate;
 @property (nonatomic) unsigned long long key;
 @property (nonatomic) unsigned char minimumEngineVersion;
 @property (nonatomic, retain) NSString *predicate;
@@ -86,13 +98,14 @@
 
 - (void).cxx_destruct;
 - (id)_displayStringForAlertDates:(id)arg1;
-- (id)_displayStringForAvailableCountryCodes:(id)arg1;
+- (id)_displayStringForStringValues:(id)arg1;
 - (id)alertDates;
 - (id)alertabilityPredicate;
 - (id)availabilityEnd;
 - (id)availabilityPredicate;
 - (id)availabilityStart;
 - (id)availableCountryCodes;
+- (id)availableSuffixes;
 - (id)canonicalUnit;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)createdDate;
@@ -107,6 +120,11 @@
 - (unsigned char)earnLimit;
 - (void)encodeWithCoder:(id)arg1;
 - (id)goalExpression;
+- (id)graceGoalExpression;
+- (id)gracePredicate;
+- (id)graceProgressExpression;
+- (id)graceValueExpression;
+- (id)graceVisibilityPredicate;
 - (unsigned long long)hash;
 - (id)initWithCodable:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -121,6 +139,7 @@
 - (void)setAvailabilityPredicate:(id)arg1;
 - (void)setAvailabilityStart:(id)arg1;
 - (void)setAvailableCountryCodes:(id)arg1;
+- (void)setAvailableSuffixes:(id)arg1;
 - (void)setCanonicalUnit:(id)arg1;
 - (void)setCreatedDate:(id)arg1;
 - (void)setCreatorDevice:(unsigned char)arg1;
@@ -131,6 +150,11 @@
 - (void)setEarnDateStrategy:(unsigned char)arg1;
 - (void)setEarnLimit:(unsigned char)arg1;
 - (void)setGoalExpression:(id)arg1;
+- (void)setGraceGoalExpression:(id)arg1;
+- (void)setGracePredicate:(id)arg1;
+- (void)setGraceProgressExpression:(id)arg1;
+- (void)setGraceValueExpression:(id)arg1;
+- (void)setGraceVisibilityPredicate:(id)arg1;
 - (void)setKey:(unsigned long long)arg1;
 - (void)setMinimumEngineVersion:(unsigned char)arg1;
 - (void)setPredicate:(id)arg1;

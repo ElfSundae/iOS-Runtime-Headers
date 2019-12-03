@@ -11,6 +11,9 @@
 - (id)destinationURIs;
 - (void)encodeWithCoder:(id)arg1;
 - (id)groupID;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (bool)isEqual:(id)arg1;
+- (bool)isEqualToIDSDestinationDefaultPairedDevice:(id)arg1;
 
 @end

@@ -21,6 +21,7 @@
 + (id)colorWithHexString:(id)arg1;
 + (id)colorWithPBColor:(id)arg1;
 + (id)colorWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
++ (id)nullableColorWithHexString:(id)arg1;
 + (id)whiteColor;
 
 - (double)alpha;

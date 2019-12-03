@@ -10,7 +10,6 @@
     UINavigationBar * _navigationBar;
     UIView * _separator;
     _TVRTextField * _textField;
-    UIView * _textFieldBackgroundView;
     UIView * _textFieldWrapper;
 }
 
@@ -26,7 +25,6 @@
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic, retain) _TVRTextField *textField;
-@property (nonatomic, retain) UIView *textFieldBackgroundView;
 @property (nonatomic, retain) UIView *textFieldWrapper;
 @property (nonatomic, copy) NSString *title;
 
@@ -55,13 +53,11 @@
 - (void)setSeparator:(id)arg1;
 - (void)setText:(id)arg1;
 - (void)setTextField:(id)arg1;
-- (void)setTextFieldBackgroundView:(id)arg1;
 - (void)setTextFieldWrapper:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (id)text;
 - (id)textField;
-- (id)textFieldBackgroundView;
 - (bool)textFieldShouldReturn:(id)arg1;
 - (id)textFieldWrapper;
 - (id)title;

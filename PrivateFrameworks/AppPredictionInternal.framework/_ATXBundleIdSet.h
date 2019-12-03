@@ -3,14 +3,14 @@
  */
 
 @interface _ATXBundleIdSet : NSObject {
-    struct _CFBurstTrie { } * _trie;
+    _PASCFBurstTrie * _trie;
 }
 
 + (id)sharedInstance;
 
+- (void).cxx_destruct;
 - (bool)containsBundleId:(id)arg1;
-- (void)dealloc;
 - (id)init;
-- (struct _CFBurstTrie { }*)trie;
+- (id)trie;
 
 @end

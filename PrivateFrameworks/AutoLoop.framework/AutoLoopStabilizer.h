@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/AutoLoop.framework/AutoLoop
  */
 
-@interface AutoLoopStabilizer : NSObject {
+@interface AutoLoopStabilizer : NSObject <ICFlowControl> {
     int  _analysisResult;
     bool  _didDrop;
     bool  _disableGPUStabilization;
@@ -53,8 +53,8 @@
     bool  _useLimitedTime;
     float  alwaysAcceptedTripodCropRatio;
     int  canceledAnalysis;
-    float  confidenceForSmoothingAccept;
     float  confidenceHighQualityThreshold;
+    float  cropRatioMinimum;
     struct CGRect { 
         struct CGPoint { 
             double x; 
@@ -66,13 +66,13 @@
         } size; 
     }  cropRect;
     NSString * currentStatusString;
-    bool  didSkipFrames;
     bool  doLoopClosureCorrection;
     bool  drawFeaturesFlag;
     long long  droppedEndFrameCount;
     long long  droppedStartFrameCount;
     NSDictionary * featuresDictionary;
     unsigned long long  frameSearchLength;
+    void * icCorrectionResultRef;
     struct CGSize { 
         double width; 
         double height; 
@@ -89,20 +89,17 @@
         unsigned int flags; 
         long long epoch; 
     }  refFrameTime;
-    ICHomographyWrapper * stabilizingHomographies;
-    StableVideoWriter * stableVideoWriter;
     NSURL * statsFileOutURL;
 }
 
 @property (nonatomic) float alwaysAcceptedTripodCropRatio;
 @property (nonatomic, readonly) int analysisResult;
 @property int canceledAnalysis;
-@property (nonatomic) float confidenceForSmoothingAccept;
 @property (nonatomic) float confidenceHighQualityThreshold;
+@property (nonatomic) float cropRatioMinimum;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } cropRect;
 @property (retain) NSString *currentStatusString;
 @property (nonatomic) bool didDrop;
-@property (nonatomic, readonly) bool didSkipFrames;
 @property (nonatomic) bool disableGPUStabilization;
 @property bool doLoopClosureCorrection;
 @property (nonatomic) bool drawFeaturesFlag;
@@ -111,6 +108,7 @@
 @property (retain) NSDictionary *featuresDictionary;
 @property (nonatomic) struct { long long x1; int x2; unsigned int x3; long long x4; } firstFrameTimeAfterDrop;
 @property (nonatomic) unsigned long long frameSearchLength;
+@property (nonatomic, readonly) void*icCorrectionResultRef;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } inputMovieDimensions;
 @property (nonatomic) struct { long long x1; int x2; unsigned int x3; long long x4; } lastFrameTimeAfterDrop;
 @property (nonatomic, readonly) int lastStabilizationResult;
@@ -129,8 +127,6 @@
 @property float progressValue;
 @property (nonatomic) struct { long long x1; int x2; unsigned int x3; long long x4; } refFrameTime;
 @property (nonatomic, retain) NSArray *skipFrameTimes;
-@property (readonly, retain) ICHomographyWrapper *stabilizingHomographies;
-@property (nonatomic, retain) StableVideoWriter *stableVideoWriter;
 @property (nonatomic, retain) NSURL *statsFileOutURL;
 @property (nonatomic, copy) id /* block */ statusUpdateBlock;
 @property (nonatomic) struct { long long x1; int x2; unsigned int x3; long long x4; } trimLength;
@@ -138,25 +134,25 @@
 @property (nonatomic) bool useLimitedTime;
 
 - (void).cxx_destruct;
-- (bool)CheckForTripodOKInHomographies:(struct HomographyRecordVector { struct HomographyInfoRecord {} **x1; struct HomographyInfoRecord {} **x2; struct __compressed_pair<HomographyInfoRecord **, std::__1::allocator<HomographyInfoRecord *> > { struct HomographyInfoRecord {} **x_3_1_1; } x3; }*)arg1 firstIndex:(unsigned long long)arg2 lastIndex:(unsigned long long)arg3 cropRectOut:(struct FloatRect { struct Point2f { float x_1_1_1; float x_1_1_2; } x1; struct Point2f { float x_2_1_1; float x_2_1_2; } x2; }*)arg4 minConfidence:(float)arg5 confidenceOut:(float*)arg6;
-- (float)CropRatio:(const struct FloatRect { struct Point2f { float x_1_1_1; float x_1_1_2; } x1; struct Point2f { float x_2_1_1; float x_2_1_2; } x2; }*)arg1;
+- (bool)CheckForTripodOKInHomographies:(const void*)arg1 firstIndex:(unsigned long long)arg2 lastIndex:(unsigned long long)arg3 refIndex:(unsigned long long)arg4 cropRectOut:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg5 minConfidence:(float)arg6 confidenceOut:(float*)arg7;
+- (float)CropRatio:(const struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg1;
 - (bool)CropRectValid:(const struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg1;
-- (int)FindAcceptableTripodSegmentForInput:(struct HomographyRecordVector { struct HomographyInfoRecord {} **x1; struct HomographyInfoRecord {} **x2; struct __compressed_pair<HomographyInfoRecord **, std::__1::allocator<HomographyInfoRecord *> > { struct HomographyInfoRecord {} **x_3_1_1; } x3; }*)arg1;
-- (unsigned long long)FindFrameIndexForReferenceTimeInHomographies:(const struct HomographyRecordVector { struct HomographyInfoRecord {} **x1; struct HomographyInfoRecord {} **x2; struct __compressed_pair<HomographyInfoRecord **, std::__1::allocator<HomographyInfoRecord *> > { struct HomographyInfoRecord {} **x_3_1_1; } x3; }*)arg1;
-- (struct { long long x1; int x2; unsigned int x3; long long x4; })GetPreciseReferenceTimeFromHomographies:(const struct HomographyRecordVector { struct HomographyInfoRecord {} **x1; struct HomographyInfoRecord {} **x2; struct __compressed_pair<HomographyInfoRecord **, std::__1::allocator<HomographyInfoRecord *> > { struct HomographyInfoRecord {} **x_3_1_1; } x3; }*)arg1;
-- (void)SetMinimumTripodCropRatio:(float)arg1;
-- (void)SetSkipFrameTimesFromArray:(struct vector<CMTime, std::__1::allocator<CMTime> > { struct { /* ? */ } *x1; struct { /* ? */ } *x2; struct __compressed_pair<CMTime *, std::__1::allocator<CMTime> > { struct { /* ? */ } *x_3_1_1; } x3; }*)arg1;
+- (int)FindAcceptableTripodSegmentForInput:(const void*)arg1 frameTimes:(const struct vector<CMTime, std::__1::allocator<CMTime> > { struct { /* ? */ } *x1; struct { /* ? */ } *x2; struct __compressed_pair<CMTime *, std::__1::allocator<CMTime> > { struct { /* ? */ } *x_3_1_1; } x3; }*)arg2;
+- (unsigned long long)FindFrameIndexForReferenceTimeInHomographies:(const struct vector<CMTime, std::__1::allocator<CMTime> > { struct { /* ? */ } *x1; struct { /* ? */ } *x2; struct __compressed_pair<CMTime *, std::__1::allocator<CMTime> > { struct { /* ? */ } *x_3_1_1; } x3; }*)arg1;
+- (struct { long long x1; int x2; unsigned int x3; long long x4; })GetPreciseReferenceTimeFromHomographies:(const struct vector<CMTime, std::__1::allocator<CMTime> > { struct { /* ? */ } *x1; struct { /* ? */ } *x2; struct __compressed_pair<CMTime *, std::__1::allocator<CMTime> > { struct { /* ? */ } *x_3_1_1; } x3; }*)arg1;
+- (void)ICReportProgress:(float)arg1;
+- (bool)ICShouldBeCanceled;
 - (float)alwaysAcceptedTripodCropRatio;
 - (int)analysisResult;
-- (int)analyzeForAutoloopWithDirect:(bool)arg1 toAnalysisOutput:(id*)arg2;
+- (int)analyzeForAutoloopWithDirect:(bool)arg1 toAnalysisOutput:(void**)arg2;
 - (int)canceledAnalysis;
-- (float)confidenceForSmoothingAccept;
 - (float)confidenceHighQualityThreshold;
+- (float)cropRatioMinimum;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })cropRect;
 - (id)currentStatusString;
+- (void)dealloc;
 - (struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; })determinePreciseTimeRange;
 - (bool)didDrop;
-- (bool)didSkipFrames;
 - (bool)disableGPUStabilization;
 - (bool)doLoopClosureCorrection;
 - (bool)drawFeaturesFlag;
@@ -165,9 +161,9 @@
 - (id)featuresDictionary;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })firstFrameTimeAfterDrop;
 - (unsigned long long)frameSearchLength;
-- (void)frameTimesToPassThruHomographies:(const struct vector<CMTime, std::__1::allocator<CMTime> > { struct { /* ? */ } *x1; struct { /* ? */ } *x2; struct __compressed_pair<CMTime *, std::__1::allocator<CMTime> > { struct { /* ? */ } *x_3_1_1; } x3; }*)arg1;
 - (bool)getNaturalTimeScaleForVideoTrackInAsset;
 - (id)getVideoTrack;
+- (void*)icCorrectionResultRef;
 - (id)init;
 - (struct CGSize { double x1; double x2; })inputMovieDimensions;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })lastFrameTimeAfterDrop;
@@ -184,13 +180,14 @@
 - (bool)onlyProcessForHighQualityTripod;
 - (bool)optimizeProcessingForMemory;
 - (id)presentationTimesOfFramesToSkip;
-- (int)processStabilizationAnalysis:(id)arg1 forcePassThru:(bool)arg2 forceSequentialTripod:(bool)arg3;
+- (int)processStabilizationAnalysis:(void*)arg1 forcePassThru:(bool)arg2 forceSmoothing:(bool)arg3 forceSequentialTripod:(bool)arg4;
+- (int)processStabilizationAnalysisForCinematicL1:(void*)arg1;
 - (float)progressValue;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })refFrameTime;
 - (void)setAlwaysAcceptedTripodCropRatio:(float)arg1;
 - (void)setCanceledAnalysis:(int)arg1;
-- (void)setConfidenceForSmoothingAccept:(float)arg1;
 - (void)setConfidenceHighQualityThreshold:(float)arg1;
+- (void)setCropRatioMinimum:(float)arg1;
 - (void)setCurrentStatusString:(id)arg1;
 - (void)setDidDrop:(bool)arg1;
 - (void)setDisableGPUStabilization:(bool)arg1;
@@ -216,24 +213,18 @@
 - (void)setProgressValue:(float)arg1;
 - (void)setRefFrameTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (void)setSkipFrameTimes:(id)arg1;
-- (bool)setStabilizerLimitedTimes;
-- (void)setStableVideoWriter:(id)arg1;
 - (void)setStatsFileOutURL:(id)arg1;
 - (void)setStatusUpdateBlock:(id /* block */)arg1;
 - (void)setTrimLength:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (void)setTrimStart:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
-- (void)setUpLoopClosures;
 - (void)setUseLimitedTime:(bool)arg1;
 - (id)skipFrameTimes;
-- (id)stabilizingHomographies;
-- (id)stableVideoWriter;
 - (id)statsFileOutURL;
 - (id /* block */)statusUpdateBlock;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })trimLength;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })trimStart;
-- (bool)tripodOKWithTrimming:(const struct HomographyRecordVector { struct HomographyInfoRecord {} **x1; struct HomographyInfoRecord {} **x2; struct __compressed_pair<HomographyInfoRecord **, std::__1::allocator<HomographyInfoRecord *> > { struct HomographyInfoRecord {} **x_3_1_1; } x3; }*)arg1 minConfidence:(float)arg2;
+- (bool)tripodOKWithTrimming:(const void*)arg1 frameTimes:(const struct vector<CMTime, std::__1::allocator<CMTime> > { struct { /* ? */ } *x1; struct { /* ? */ } *x2; struct __compressed_pair<CMTime *, std::__1::allocator<CMTime> > { struct { /* ? */ } *x_3_1_1; } x3; }*)arg2 minConfidence:(float)arg3;
 - (bool)updateStabilizerStatus;
-- (bool)updateVideoProgress;
 - (bool)useLimitedTime;
 
 @end

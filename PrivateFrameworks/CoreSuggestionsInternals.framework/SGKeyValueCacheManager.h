@@ -14,6 +14,7 @@
 - (void).cxx_destruct;
 - (id)cacheOfType:(unsigned long long)arg1;
 - (id)cacheOfType:(unsigned long long)arg1 forceReadFromDisk:(bool)arg2;
+- (void)deleteValueByRecordIdSet:(id)arg1;
 - (id)init;
 - (id)initInMemory;
 - (id)initWithBasePath:(id)arg1;

@@ -35,10 +35,12 @@
 @property (nonatomic) bool enablesReturnKeyOnNonWhiteSpaceContent;
 @property (nonatomic, readonly) UITextPosition *endOfDocument;
 @property (readonly) DOMNode *firstChild;
+@property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } floatingKeyboardEdgeInsets;
 @property (nonatomic) bool forceDefaultDictationInfo;
 @property (nonatomic) long long forceDictationKeyboardType;
 @property (nonatomic) bool forceDisableDictation;
 @property (nonatomic) bool forceEnableDictation;
+@property (nonatomic) bool forceFloatingKeyboard;
 @property (nonatomic) bool hasDefaultContents;
 @property (nonatomic, readonly) bool hasText;
 @property (readonly) unsigned long long hash;
@@ -85,11 +87,13 @@
 @property (nonatomic) long long selectionGranularity;
 @property (nonatomic, retain) UIColor *selectionHighlightColor;
 @property (nonatomic) int shortcutConversionType;
+@property (nonatomic) bool showDictationButton;
 @property (nonatomic) long long smartDashesType;
 @property (nonatomic) long long smartInsertDeleteType;
 @property (nonatomic) long long smartQuotesType;
 @property (nonatomic) long long spellCheckingType;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) bool supportsImagePaste;
 @property (nonatomic) bool suppressReturnKeyStyling;
 @property (copy) NSString *textContent;
 @property (nonatomic, copy) NSString *textContentType;
@@ -103,6 +107,7 @@
 @property (nonatomic, readonly) <UITextInputTokenizer> *tokenizer;
 @property (nonatomic, retain) UIColor *underlineColorForSpelling;
 @property (nonatomic, retain) UIColor *underlineColorForTextAlternatives;
+@property (nonatomic) bool useAutomaticEndpointing;
 @property (nonatomic) bool useInterfaceLanguageForLocalization;
 @property (nonatomic) struct _NSRange { unsigned long long x1; unsigned long long x2; } validTextRange;
 @property (nonatomic, readonly) WebArchive *webArchive;
@@ -111,7 +116,7 @@
 
 + (id)_nodeFromJSWrapper:(struct OpaqueJSValue { }*)arg1;
 
-- (struct Element { int (**x1)(); struct Weak<WebCore::JSDOMObject> { struct WeakImpl {} *x_2_1_1; } x2; int x3; unsigned int x4; struct ContainerNode {} *x5; struct TreeScope {} *x6; struct Node {} *x7; struct Node {} *x8; union DataUnion { struct RenderObject {} *x_9_1_1; struct NodeRareDataBase {} *x_9_1_2; } x9; struct Node {} *x10; struct Node {} *x11; struct QualifiedName { struct RefPtr<WebCore::QualifiedName::QualifiedNameImpl, WTF::DumbPtrTraits<WebCore::QualifiedName::QualifiedNameImpl> > { struct QualifiedNameImpl {} *x_1_2_1; } x_12_1_1; } x12; struct RefPtr<WebCore::ElementData, WTF::DumbPtrTraits<WebCore::ElementData> > { struct ElementData {} *x_13_1_1; } x13; }*)_linkElement;
+- (struct Element { int (**x1)(); struct Weak<WebCore::JSDOMObject> { struct WeakImpl {} *x_2_1_1; } x2; unsigned int x3; unsigned int x4; struct ContainerNode {} *x5; struct TreeScope {} *x6; struct Node {} *x7; struct Node {} *x8; union DataUnion { struct RenderObject {} *x_9_1_1; struct NodeRareDataBase {} *x_9_1_2; } x9; struct WeakPtrFactory<WebCore::ContainerNode> { struct RefPtr<WTF::WeakPtrImpl, WTF::DumbPtrTraits<WTF::WeakPtrImpl> > { struct WeakPtrImpl {} *x_1_2_1; } x_10_1_1; } x10; struct Node {} *x11; struct Node {} *x12; struct QualifiedName { struct RefPtr<WebCore::QualifiedName::QualifiedNameImpl, WTF::DumbPtrTraits<WebCore::QualifiedName::QualifiedNameImpl> > { struct QualifiedNameImpl {} *x_1_2_1; } x_13_1_1; } x13; struct RefPtr<WebCore::ElementData, WTF::DumbPtrTraits<WebCore::ElementData> > { struct ElementData {} *x_14_1_1; } x14; }*)_linkElement;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_renderRect:(bool*)arg1;
 - (struct RootObject { }*)_rootObject;
 - (struct _WKQuad { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGPoint { double x_2_1_1; double x_2_1_2; } x2; struct CGPoint { double x_3_1_1; double x_3_1_2; } x3; struct CGPoint { double x_4_1_1; double x_4_1_2; } x4; })absoluteQuad;
@@ -201,7 +206,6 @@
 
 // Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
 
-- (void)_fixParagraphsAndQuotesFromMicrosoftNodesToRemove:(id)arg1;
 - (id)mf_appendBlockPlaceholder;
 - (id)mf_blockNodeAncestor;
 - (id)mf_childNodeAtIndex:(int)arg1;
@@ -212,7 +216,6 @@
 - (id)mf_findElementWithTag:(id)arg1 className:(id)arg2 andIdName:(id)arg3;
 - (id)mf_firstDescendantBlockQuote;
 - (id)mf_firstSibling;
-- (void)mf_fixParagraphsAndQuotesFromMicrosoft;
 - (id)mf_highestContainingBlockQuote;
 - (bool)mf_isAtBeginningOfContainerNode:(id)arg1;
 - (bool)mf_isAtEndOfContainerNode:(id)arg1;
@@ -247,6 +250,7 @@
 - (void)_deleteByWord;
 - (void)_deleteForwardAndNotify:(bool)arg1;
 - (void)_deleteToEndOfLine;
+- (void)_deleteToEndOfParagraph;
 - (void)_deleteToStartOfLine;
 - (void)_expandSelectionToBackwardDeletionCluster;
 - (void)_expandSelectionToStartOfWordBeforeCaretSelection;
@@ -276,11 +280,10 @@
 - (id)_moveToStartOfParagraph:(bool)arg1 withHistory:(id)arg2;
 - (id)_moveToStartOfWord:(bool)arg1 withHistory:(id)arg2;
 - (id)_moveUp:(bool)arg1 withHistory:(id)arg2;
-- (id)_newPhraseBoundaryGestureRecognizer;
 - (id)_nextAssistedNode;
+- (id)_normalizedStringForRangeComparison:(id)arg1;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })_nsrangeForTextRange:(id)arg1;
 - (long long)_opposingDirectionFromDirection:(long long)arg1;
-- (void)_phraseBoundaryGesture:(id)arg1;
 - (id)_positionAtStartOfWords:(unsigned long long)arg1 beforePosition:(id)arg2;
 - (id)_positionFromPosition:(id)arg1 inDirection:(long long)arg2 offset:(long long)arg3 withAffinityDownstream:(bool)arg4;
 - (id)_positionFromPosition:(id)arg1 pastTextUnit:(long long)arg2 inDirection:(long long)arg3;
@@ -294,6 +297,7 @@
 - (id)_rangeOfLineEnclosingPosition:(id)arg1;
 - (id)_rangeOfParagraphEnclosingPosition:(id)arg1;
 - (id)_rangeOfSentenceEnclosingPosition:(id)arg1;
+- (id)_rangeOfSmartSelectionIncludingRange:(id)arg1;
 - (id)_rangeOfText:(id)arg1 endingAtPosition:(id)arg2;
 - (id)_rangeOfTextUnit:(long long)arg1 enclosingPosition:(id)arg2;
 - (id)_rangeSpanningTextUnit:(long long)arg1 andPosition:(id)arg2;
@@ -329,6 +333,7 @@
 - (id)_textFormElement;
 - (id)_textRangeFromNSRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (id)_textSelectingContainer;
+- (void)_transpose;
 - (void)_unmarkText;
 - (void)_updateSelectionWithTextRange:(id)arg1 withAffinityDownstream:(bool)arg2;
 - (bool)_usesAsynchronousProtocol;
@@ -492,6 +497,7 @@
 - (void)unmarkText;
 - (void)updateAutoscroll:(id)arg1;
 - (void)updateFloatingCursorAtPoint:(struct CGPoint { double x1; double x2; })arg1;
+- (void)updateFloatingCursorAtPoint:(struct CGPoint { double x1; double x2; })arg1 velocity:(struct CGPoint { double x1; double x2; })arg2;
 - (void)updateSelection;
 - (id)urlScheme;
 - (id)webFrame;

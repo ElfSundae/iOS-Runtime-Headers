@@ -15,6 +15,7 @@
 + (id)agilePasswordKeyEncryptorNamespace;
 + (id)allocTempFileWithBase:(id)arg1 outFilename:(id*)arg2 tempDirectory:(id*)arg3;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (bool)decrypt;
 - (bool)decryptIntoOutputFile;

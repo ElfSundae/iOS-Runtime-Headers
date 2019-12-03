@@ -16,8 +16,10 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)fingerIdentifiersAtEventIndex:(unsigned long long)arg1;
 - (double)forceForFingerIdentifier:(id)arg1 atEventIndex:(unsigned long long)arg2;
+- (unsigned long long)hash;
 - (id)initForLeftToRightSwipe:(bool)arg1;
 - (id)initWithCoder:(id)arg1;
+- (bool)isEqual:(id)arg1;
 - (bool)isLandscape;
 - (bool)isLeftToRightSwipe;
 - (unsigned long long)numberOfEvents;

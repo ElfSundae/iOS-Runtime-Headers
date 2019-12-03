@@ -4,7 +4,7 @@
 
 @interface HDSeriesBuilderEntity : HDHealthEntity
 
-+ (const struct { id x1; unsigned char x2; }*)columnDefinitionsWithCount:(unsigned long long*)arg1;
++ (const struct { id x1; id x2; unsigned char x3; }*)columnDefinitionsWithCount:(unsigned long long*)arg1;
 + (id)createPersistentEntityForBuilderIdentifier:(id)arg1 seriesType:(id)arg2 state:(long long)arg3 profile:(id)arg4 error:(id*)arg5;
 + (id)databaseTable;
 + (bool)discardBuilderWithIdentifier:(id)arg1 profile:(id)arg2 error:(id*)arg3;

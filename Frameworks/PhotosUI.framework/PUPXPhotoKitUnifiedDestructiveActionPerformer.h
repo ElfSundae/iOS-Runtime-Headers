@@ -6,6 +6,7 @@
 
 + (id)_containedPerformerClasses;
 + (bool)canPerformOnAsset:(id)arg1 inAssetCollection:(id)arg2 person:(id)arg3;
++ (bool)canPerformOnSubsetOfSelection;
 + (id)createBarButtonItemWithTarget:(id)arg1 action:(SEL)arg2;
 
 - (void)_handleActionPick:(id)arg1 forPerformerClass:(Class)arg2;

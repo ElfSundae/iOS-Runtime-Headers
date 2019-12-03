@@ -8,20 +8,20 @@
     bool  _called;
     bool  _cancelled;
     struct { 
-        unsigned int muid : 1; 
-        unsigned int bookedUsingMaps : 1; 
-        unsigned int called : 1; 
-        unsigned int cancelled : 1; 
-        unsigned int isAsync : 1; 
-        unsigned int routed : 1; 
-        unsigned int shared : 1; 
-        unsigned int tappedCancelReservation : 1; 
-        unsigned int tappedChangeReservation : 1; 
-        unsigned int tappedProactiveTrayItem : 1; 
-        unsigned int viewedDetailsFromPlacecard : 1; 
-        unsigned int viewedInPlacecard : 1; 
-        unsigned int viewedInProactiveTray : 1; 
-    }  _has;
+        unsigned int has_muid : 1; 
+        unsigned int has_bookedUsingMaps : 1; 
+        unsigned int has_called : 1; 
+        unsigned int has_cancelled : 1; 
+        unsigned int has_isAsync : 1; 
+        unsigned int has_routed : 1; 
+        unsigned int has_shared : 1; 
+        unsigned int has_tappedCancelReservation : 1; 
+        unsigned int has_tappedChangeReservation : 1; 
+        unsigned int has_tappedProactiveTrayItem : 1; 
+        unsigned int has_viewedDetailsFromPlacecard : 1; 
+        unsigned int has_viewedInPlacecard : 1; 
+        unsigned int has_viewedInProactiveTray : 1; 
+    }  _flags;
     bool  _isAsync;
     unsigned long long  _muid;
     bool  _routed;
@@ -63,6 +63,8 @@
 @property (nonatomic) bool viewedInPlacecard;
 @property (nonatomic) bool viewedInProactiveTray;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (id)appId;
 - (bool)bookedUsingMaps;
@@ -91,6 +93,7 @@
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)muid;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (bool)routed;
 - (void)setAppId:(id)arg1;

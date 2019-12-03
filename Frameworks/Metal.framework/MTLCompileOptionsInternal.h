@@ -10,6 +10,7 @@
     bool  _glBufferBindPoints;
     unsigned long long  _languageVersion;
     NSDictionary * _preprocessorMacros;
+    unsigned char  _sourceLanguage;
     bool  _tracingEnabled;
     bool  _userSetLanguageVersion;
 }
@@ -20,10 +21,12 @@
 - (void)dealloc;
 - (bool)debuggingEnabled;
 - (id)description;
+- (id)exportDictionary;
 - (bool)fastMathEnabled;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (bool)glBufferBindPoints;
 - (unsigned long long)hash;
+- (void)importDictionary:(id)arg1;
 - (id)init;
 - (bool)isEqual:(id)arg1;
 - (unsigned long long)languageVersion;
@@ -35,7 +38,9 @@
 - (void)setGlBufferBindPoints:(bool)arg1;
 - (void)setLanguageVersion:(unsigned long long)arg1;
 - (void)setPreprocessorMacros:(id)arg1;
+- (void)setSourceLanguage:(unsigned char)arg1;
 - (void)setTracingEnabled:(bool)arg1;
+- (unsigned char)sourceLanguage;
 - (bool)tracingEnabled;
 
 @end

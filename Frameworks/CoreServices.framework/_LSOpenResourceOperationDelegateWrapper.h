@@ -12,7 +12,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithOperation:(id)arg1 wrappedDelegate:(id)arg2;
 - (void)openResourceOperation:(id)arg1 didFailWithError:(id)arg2;
 - (void)openResourceOperation:(id)arg1 didFinishCopyingResource:(id)arg2;

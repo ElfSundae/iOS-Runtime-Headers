@@ -6,5 +6,6 @@
 @required
 
 - (void)setNotificationsLevel:(unsigned long long)arg1 sectionID:(NSString *)arg2 mirror:(bool)arg3 fromRemote:(bool)arg4;
+- (void)transportUpdateRemoteGlobalSpokenSettingEnabled:(bool)arg1 date:(NSDate *)arg2;
 
 @end

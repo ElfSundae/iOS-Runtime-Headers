@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
  */
 
-@interface REBayesianMLModel : REMLModel {
+@interface REBayesianMLModel : REMLModel <REBayesianMLModelProperties> {
     struct BayesianModel { 
         struct _opaque_pthread_rwlock_t { 
             long long __sig; 
@@ -39,6 +39,7 @@
         double m_dSumPredictions; 
         double m_dLogScore; 
         double m_dNormalizedLogScore; 
+        double m_dEpsilon; 
         int m_nModelVersion; 
         unsigned long long m_nCalibrationCurveTrue[10]; 
         unsigned long long m_nCalibrationCurveCount[10]; 
@@ -52,13 +53,19 @@
     unsigned long long  _numberOfFeatures;
 }
 
+@property (nonatomic, readonly) REExportedTable *content;
+
 + (unsigned long long)featureBitWidth;
 + (unsigned long long)maxFeatureCount;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_clearModel;
+- (float)_getAveragePrediction;
+- (float)_getNormalizedEntropy;
 - (long long)_getNumberOfCoordinates;
+- (unsigned long long)_getTotalExampleCount;
+- (unsigned long long)_getTotalPositiveCount;
 - (void)_loadFeatureVector:(struct vector<unsigned long long, std::__1::allocator<unsigned long long> > { unsigned long long *x1; unsigned long long *x2; struct __compressed_pair<unsigned long long *, std::__1::allocator<unsigned long long> > { unsigned long long *x_3_1_1; } x3; }*)arg1 fromFeatureMap:(id)arg2;
 - (bool)_loadModelFromURL:(id)arg1 error:(id*)arg2;
 - (unsigned long long)_maxFeatureCoordinates;
@@ -67,8 +74,8 @@
 - (bool)_saveModelToURL:(id)arg1 error:(id*)arg2;
 - (bool)_saveModelToURL:(id)arg1 includeDebugData:(bool)arg2 error:(id*)arg3;
 - (void)_trainWithFeatures:(id)arg1 positiveEvent:(id)arg2;
-- (void)collectLoggableState:(id /* block */)arg1;
-- (id)initWithFeatureSet:(id)arg1;
+- (id)content;
+- (id)initWithFeatureSet:(id)arg1 priorMean:(float)arg2 modelVarianceEpsilon:(float)arg3;
 - (void)logCoreAnalyticsMetrics;
 
 @end

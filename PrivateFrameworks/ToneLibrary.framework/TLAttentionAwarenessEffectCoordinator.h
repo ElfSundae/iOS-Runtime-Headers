@@ -5,12 +5,34 @@
 @interface TLAttentionAwarenessEffectCoordinator : NSObject {
     NSObject<OS_dispatch_queue> * _accessQueue;
     NSString * _accessQueueLabel;
+    struct AudioTimeStamp { 
+        double mSampleTime; 
+        unsigned long long mHostTime; 
+        double mRateScalar; 
+        unsigned long long mWordClockTime; 
+        struct SMPTETime { 
+            short mSubframes; 
+            short mSubframeDivisor; 
+            unsigned int mCounter; 
+            unsigned int mType; 
+            unsigned int mFlags; 
+            short mHours; 
+            short mMinutes; 
+            short mSeconds; 
+            short mFrames; 
+        } mSMPTETime; 
+        unsigned int mFlags; 
+        unsigned int mReserved; 
+    }  _audioTimeStamp;
     NSMutableSet * _effectAudioTapContexts;
     struct { 
         bool shouldBypassLowPassFilter; 
         float volumeForLowPassFilterGlobalGain; 
         float effectMix; 
     }  _effectParameters;
+    long long  _postEffectIssueDetectorID;
+    long long  _preEffectIssueDetectorID;
+    CAReporter * _reporter;
 }
 
 @property (nonatomic) struct { bool x1; float x2; float x3; } effectParameters;

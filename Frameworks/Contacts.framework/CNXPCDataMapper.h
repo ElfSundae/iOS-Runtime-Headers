@@ -12,6 +12,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, retain) NSString *legacyTetheredSyncComputerAnchor;
+@property (nonatomic, retain) NSString *legacyTetheredSyncDeviceAnchor;
 @property (nonatomic, retain) <CNContactsLogger> *logger;
 @property (nonatomic, retain) <CNXPCDataMapperService> *serviceProxy;
 @property (readonly) Class superclass;
@@ -22,18 +24,20 @@
 
 - (void).cxx_destruct;
 - (id)accountsMatchingPredicate:(id)arg1 error:(id*)arg2;
+- (id)authorizedKeysForContactKeys:(id)arg1 error:(id*)arg2;
 - (id)changeHistoryWithFetchRequest:(id)arg1 error:(id*)arg2;
-- (bool)clearChangeHistoryForClientIdentifier:(id)arg1 toChangeAnchor:(id)arg2 error:(id*)arg3;
 - (id)connection;
 - (id)contactCountForFetchRequest:(id)arg1 error:(id*)arg2;
 - (id)contactObservableForFetchRequest:(id)arg1;
 - (id)contactWithUserActivityUserInfo:(id)arg1 keysToFetch:(id)arg2;
 - (id)containersMatchingPredicate:(id)arg1 error:(id*)arg2;
+- (id)currentHistoryToken;
 - (void)dealloc;
 - (id)defaultContainerIdentifier;
+- (bool)executeChangeHistoryClearRequest:(id)arg1 error:(id*)arg2;
 - (id)executeFetchRequest:(id)arg1 progressiveResults:(id /* block */)arg2 completion:(id /* block */)arg3;
 - (bool)executeSaveRequest:(id)arg1 error:(id*)arg2;
-- (bool)executeSaveRequest:(id)arg1 response:(id*)arg2 error:(id*)arg3;
+- (bool)executeSaveRequest:(id)arg1 response:(id*)arg2 authorizationContext:(id)arg3 error:(id*)arg4;
 - (id)favoritesEntryDictionariesAtPath:(id)arg1 error:(id*)arg2;
 - (bool)fetchAndDecodeEncodedContactsForFetchRequest:(id)arg1 error:(id*)arg2 cancelationToken:(id)arg3 batchHandler:(id /* block */)arg4;
 - (bool)fetchContactsForFetchRequest:(id)arg1 error:(id*)arg2 batchHandler:(id /* block */)arg3;
@@ -44,9 +48,10 @@
 - (id)initWithContactsEnvironment:(id)arg1 connection:(id)arg2;
 - (id)initWithContactsEnvironment:(id)arg1 managedConfiguration:(id)arg2;
 - (id)logger;
+- (id)mapTableFromMatchInfoDictionary:(id)arg1;
 - (id)meContactIdentifiers:(id*)arg1;
 - (id)policyForContainerWithIdentifier:(id)arg1 error:(id*)arg2;
-- (bool)registerChangeHistoryClientIdentifier:(id)arg1 error:(id*)arg2;
+- (bool)registerChangeHistoryClientIdentifier:(id)arg1 forContainerIdentifier:(id)arg2 error:(id*)arg3;
 - (bool)reindexSearchableItemsWithIdentifiers:(id)arg1 error:(id*)arg2;
 - (id)remoteResultForSelector:(SEL)arg1 error:(id*)arg2;
 - (id)remoteResultForSelector:(SEL)arg1 parameters:(id)arg2 error:(id*)arg3;
@@ -54,6 +59,7 @@
 - (id)remoteResultForSelector:(SEL)arg1 query:(id)arg2 queryParameter:(id)arg3 error:(id*)arg4;
 - (void)requestAccessForEntityType:(long long)arg1 completionHandler:(id /* block */)arg2;
 - (bool)requestAccessForEntityType:(long long)arg1 error:(id*)arg2;
+- (id)sectionListOffsetsForSortOrder:(long long)arg1 error:(id*)arg2;
 - (id)serverSearchContainersMatchingPredicate:(id)arg1 error:(id*)arg2;
 - (id)serviceProxy;
 - (bool)setBestMeIfNeededForGivenName:(id)arg1 familyName:(id)arg2 email:(id)arg3 error:(id*)arg4;
@@ -64,7 +70,7 @@
 - (void)setServiceProxy:(id)arg1;
 - (id)subgroupsOfGroupWithIdentifier:(id)arg1 error:(id*)arg2;
 - (id)unifiedContactCountWithError:(id*)arg1;
-- (bool)unregisterChangeHistoryClientIdentifier:(id)arg1 error:(id*)arg2;
+- (bool)unregisterChangeHistoryClientIdentifier:(id)arg1 forContainerIdentifier:(id)arg2 error:(id*)arg3;
 - (id)userActivityUserInfoForContact:(id)arg1;
 - (id)verifyIndexWithError:(id*)arg1;
 - (bool)writeFavoritesPropertyListData:(id)arg1 toPath:(id)arg2 error:(id*)arg3;

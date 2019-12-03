@@ -2,17 +2,13 @@
    Image: /System/Library/PrivateFrameworks/SearchUI.framework/SearchUI
  */
 
-@interface SearchUITableView : UITableView {
-    unsigned long long  _searchUIStyle;
-}
+@interface SearchUITableView : UITableView
 
-@property (nonatomic) unsigned long long searchUIStyle;
-
-- (void)_setSeparatorBackdropOverlayBlendMode:(long long)arg1;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (bool)allowsHeaderViewsToFloat;
+- (void)didMoveToWindow;
 - (id)init;
 - (void)safeAreaInsetsDidChange;
-- (unsigned long long)searchUIStyle;
-- (void)setSearchUIStyle:(unsigned long long)arg1;
+- (void)tlk_updateForAppearance:(id)arg1;
 
 @end

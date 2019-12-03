@@ -26,9 +26,11 @@
 
 - (void).cxx_destruct;
 - (void)_dirtyConfigurationAndReloadIfNeeded;
+- (long long)_preferredModalPresentationStyle;
 - (void)_reconfigureRootViewController;
 - (bool)allowsManualEntry;
 - (void)cancel:(id)arg1;
+- (id)init;
 - (id)initWithProvisioningController:(id)arg1 context:(long long)arg2;
 - (void)loadView;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(bool)arg3;
@@ -44,7 +46,11 @@
 - (bool)shouldAutorotate;
 - (bool)showsWelcomeViewController;
 - (unsigned long long)supportedInterfaceOrientations;
+- (void)viewController:(id)arg1 didExitPasscodeUpgradeForPasscodeUpgradeFlowController:(id)arg2 withShouldContinue:(bool)arg3 error:(id)arg4;
+- (void)viewController:(id)arg1 didExitPasscodeUpgradeWithShouldContinue:(bool)arg2 error:(id)arg3;
 - (void)viewController:(id)arg1 didShowProvisioningError:(id)arg2;
+- (void)viewController:(id)arg1 requestPasscodeUpgradeForPasscodeUpgradeFlowController:(id)arg2 completion:(id /* block */)arg3;
+- (void)viewController:(id)arg1 requestPasscodeUpgradeWithCompletion:(id /* block */)arg2;
 - (void)viewControllerDidCancelSetupFlow:(id)arg1;
 - (void)viewControllerDidShowEligibilityIssue:(id)arg1;
 - (void)viewControllerDidTerminateSetupFlow:(id)arg1;

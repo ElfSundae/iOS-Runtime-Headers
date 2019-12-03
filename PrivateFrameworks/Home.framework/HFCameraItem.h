@@ -2,38 +2,32 @@
    Image: /System/Library/PrivateFrameworks/Home.framework/Home
  */
 
-@interface HFCameraItem : HFItem <HFHomeKitItemProtocol, HFItemBuilderItem, HFServiceLikeBuilderCreating, HFServiceLikeItem> {
-    HMCameraProfile * _cameraProfile;
-    <HFCharacteristicValueSource> * _valueSource;
-}
+@interface HFCameraItem : HFAccessoryProfileItem <HFCompoundItemProtocol>
 
-@property (nonatomic, readonly) HMAccessory *accessory;
-@property (nonatomic, readonly) HMCameraProfile *cameraProfile;
+@property (nonatomic, readonly) NSArray *allHomeKitObjects;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) <HFHomeKitObject> *homeKitObject;
+@property (nonatomic, readonly) bool isCompoundItem;
+@property (nonatomic, readonly) unsigned long long numberOfCompoundItems;
+@property (nonatomic, readonly) <HFHomeKitObject> *primaryHomeKitObject;
 @property (readonly) Class superclass;
-@property (nonatomic, readonly) <HFCharacteristicValueSource> *valueSource;
 
-+ (id)cameraDemoURLWithName:(id)arg1 extension:(id)arg2;
+// Image: /System/Library/PrivateFrameworks/Home.framework/Home
+
++ (bool)cameraContainsMotionServiceItem:(id)arg1;
 + (void)getErrorDescription:(out id*)arg1 detailedErrorDescription:(out id*)arg2 forCameraStreamError:(id)arg3;
 
-- (void).cxx_destruct;
 - (id)_subclass_updateWithOptions:(id)arg1;
-- (id)accessories;
-- (id)accessory;
-- (id)cameraProfile;
-- (id)copyWithValueSource:(id)arg1;
-- (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (id)demoMovieURL;
-- (id)demoSnapshotURL;
 - (id)description;
-- (id)homeKitObject;
-- (id)init;
-- (id)initWithValueSource:(id)arg1 cameraProfile:(id)arg2;
-- (id)serviceLikeBuilderInHome:(id)arg1;
-- (id)services;
-- (id)valueSource;
+- (bool)isCompoundItem;
+- (unsigned long long)numberOfCompoundItems;
+- (id)primaryHomeKitObject;
+
+// Image: /System/Library/PrivateFrameworks/HomeUI.framework/HomeUI
+
+- (id)hu_containedAccessories;
+- (id)hu_containedServices;
 
 @end

@@ -2,24 +2,19 @@
    Image: /System/Library/PrivateFrameworks/AppPredictionInternal.framework/AppPredictionInternal
  */
 
-@interface ATXBBNotificationManager : NSObject <BBObserverDelegate> {
+@interface ATXBBNotificationManager : NSObject {
     bool  _debugOutput;
-    BBObserver * _observer;
+    NSObject<OS_dispatch_queue> * _queue;
     NSMutableDictionary * _recentNotifications;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
++ (id)sharedInstance;
 
 - (void).cxx_destruct;
-- (bool)_addNotificationForBundleId:(id)arg1 withPublicationDate:(id)arg2;
 - (bool)_purgeNotificationsWithMinDate:(id)arg1;
+- (void)addNotificationForBundleId:(id)arg1 withPublicationDate:(id)arg2;
 - (id)init;
-- (id)initWithDebugOutput:(bool)arg1 withObserverEnabled:(bool)arg2;
-- (void)observer:(id)arg1 addBulletin:(id)arg2 forFeed:(unsigned long long)arg3 playLightsAndSirens:(bool)arg4 withReply:(id /* block */)arg5;
-- (void)observer:(id)arg1 noteServerConnectionStateChanged:(bool)arg2;
+- (id)initWithDebugOutput:(bool)arg1;
 - (id)recentNotifications;
 
 @end

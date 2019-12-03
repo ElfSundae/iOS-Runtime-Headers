@@ -7,7 +7,8 @@
     id /* block */  _completionHandler;
     <UIPrintInteractionControllerDelegate> * _delegate;
     bool  _hidesNumberOfCopies;
-    bool  _isManagedContent;
+    UIWindowScene * _hostingWindowScene;
+    bool  _isContentManaged;
     NSObject<OS_dispatch_queue> * _previewQueue;
     <UIPrintInteractionControllerActivityDelegate> * _printActivityDelegate;
     UIPrintFormatter * _printFormatter;
@@ -23,7 +24,8 @@
 }
 
 @property (nonatomic) <UIPrintInteractionControllerDelegate> *delegate;
-@property (nonatomic) bool isManagedContent;
+@property (nonatomic, retain) UIWindowScene *hostingWindowScene;
+@property (nonatomic) bool isContentManaged;
 @property (nonatomic, readonly) long long pageCount;
 @property (nonatomic, retain) NSArray *pageRanges;
 @property (nonatomic, retain) UIPrintPaper *paper;
@@ -67,13 +69,13 @@
 - (void)_generatePrintPreview:(id /* block */)arg1;
 - (id)_getChosenPaperFromDelegateForPaperList:(id)arg1;
 - (double)_getCutLengthFromDelegateForPaper:(id)arg1;
-- (id)_init;
 - (void)_manualPrintPage;
-- (id)_newPDFPreviewURLWithPath:(id)arg1 isManagedContent:(bool)arg2;
+- (id)_newPDFPreviewURLWithPath:(id)arg1 isContentManaged:(bool)arg2;
 - (struct CGContext { }*)_newSaveContext:(id)arg1 withMediaRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (id)_paperForContentType:(long long)arg1;
 - (id)_paperForPDFItem:(id)arg1 withDuplexMode:(long long)arg2;
 - (void)_preparePrintInfo;
+- (bool)_presentAnimated:(bool)arg1 hostingScene:(id)arg2 completionHandler:(id /* block */)arg3;
 - (id)_printItem:(id)arg1;
 - (struct CGSize { double x1; double x2; })_printItemContentSize;
 - (void)_printPage;
@@ -93,8 +95,9 @@
 - (void)dealloc;
 - (id)delegate;
 - (void)dismissAnimated:(bool)arg1;
+- (id)hostingWindowScene;
 - (id)init;
-- (bool)isManagedContent;
+- (bool)isContentManaged;
 - (long long)pageCount;
 - (id)pageRanges;
 - (id)paper;
@@ -111,8 +114,10 @@
 - (id)printingItem;
 - (id)printingItems;
 - (bool)savePDFToURL:(id)arg1 completionHandler:(id /* block */)arg2;
+- (bool)savePDFToURL:(id)arg1 showProgress:(bool)arg2 completionHandler:(id /* block */)arg3;
 - (void)setDelegate:(id)arg1;
-- (void)setIsManagedContent:(bool)arg1;
+- (void)setHostingWindowScene:(id)arg1;
+- (void)setIsContentManaged:(bool)arg1;
 - (void)setPageRanges:(id)arg1;
 - (void)setPaper:(id)arg1;
 - (void)setPrintActivityDelegate:(id)arg1;

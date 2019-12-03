@@ -15,5 +15,6 @@
 - (void)hashesDidChange;
 - (id)initWithStore:(id)arg1;
 - (void)processNewConfirmOrRejectEventHashes:(id)arg1;
+- (void)processNewConfirmedOrRejectedReminderHashes:(id)arg1;
 
 @end

@@ -10,11 +10,13 @@
 @property (nonatomic) bool enabled;
 @property (nonatomic, retain) <PXNavigationListItem> *listItem;
 
++ (id)_symbolConfigurationForFont:(id)arg1;
 + (id)cellFont;
 
 - (void).cxx_destruct;
 - (id)_currentCellColor;
 - (void)_updateCellStyle;
+- (void)_updateFonts;
 - (bool)enabled;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;

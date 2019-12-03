@@ -7,6 +7,7 @@
     <CSSpIdSpeakerRecognizerDelegate> * _delegate;
     NSString * _invocationStyle;
     NSDictionary * _lastSpeakerIdInfo;
+    CSMediaPlayingMonitor * _mediaPlayingMonitor;
     unsigned long long  _myriadResult;
     unsigned long long  _numTISamplesProcessed;
     bool  _processingEnded;
@@ -14,6 +15,7 @@
     CSSpIdContext * _spIdCtx;
     unsigned long long  _tiEndInSampleCount;
     CSSpIdProcessor * _tiSpIdProcessor;
+    CSVolumeMonitor * _volumeMonitor;
 }
 
 @property (nonatomic, retain) <CSAudioFileWriter> *dbgTiUttLogger;
@@ -23,6 +25,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSString *invocationStyle;
 @property (nonatomic, retain) NSDictionary *lastSpeakerIdInfo;
+@property (nonatomic, retain) CSMediaPlayingMonitor *mediaPlayingMonitor;
 @property (nonatomic) unsigned long long myriadResult;
 @property (nonatomic) unsigned long long numTISamplesProcessed;
 @property (nonatomic) bool processingEnded;
@@ -31,6 +34,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long tiEndInSampleCount;
 @property (nonatomic, retain) CSSpIdProcessor *tiSpIdProcessor;
+@property (nonatomic, retain) CSVolumeMonitor *volumeMonitor;
 
 - (void).cxx_destruct;
 - (void)_endAudioProcessing;
@@ -41,6 +45,7 @@
 - (id)initWithContext:(id)arg1 delegate:(id)arg2;
 - (id)invocationStyle;
 - (id)lastSpeakerIdInfo;
+- (id)mediaPlayingMonitor;
 - (unsigned long long)myriadResult;
 - (unsigned long long)numTISamplesProcessed;
 - (void)processAudioChunk:(id)arg1;
@@ -48,10 +53,12 @@
 - (bool)processingEnded;
 - (id)queue;
 - (void)recordingStoppedForReason:(long long)arg1;
+- (void)setCVTTriggerPhraseDetected;
 - (void)setDbgTiUttLogger:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setInvocationStyle:(id)arg1;
 - (void)setLastSpeakerIdInfo:(id)arg1;
+- (void)setMediaPlayingMonitor:(id)arg1;
 - (void)setMyriadResult:(unsigned long long)arg1;
 - (void)setNumTISamplesProcessed:(unsigned long long)arg1;
 - (void)setProcessingEnded:(bool)arg1;
@@ -59,10 +66,12 @@
 - (void)setSpIdCtx:(id)arg1;
 - (void)setTiEndInSampleCount:(unsigned long long)arg1;
 - (void)setTiSpIdProcessor:(id)arg1;
+- (void)setVolumeMonitor:(id)arg1;
 - (id)spIdCtx;
 - (void)speakerIdProcessor:(id)arg1 hasSpeakerIdInfo:(id)arg2;
 - (void)speakerIdProcessorFinishedProcessing:(id)arg1 withSpeakerInfo:(id)arg2;
 - (unsigned long long)tiEndInSampleCount;
 - (id)tiSpIdProcessor;
+- (id)volumeMonitor;
 
 @end

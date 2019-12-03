@@ -3,8 +3,8 @@
  */
 
 @interface PKContinuousButton : UIButton {
+    UIColor * _activityIndicatorColor;
     UIActivityIndicatorView * _activityIndicatorView;
-    long long  _activityIndicatorViewStyle;
     UIColor * _appliedInputColor;
     long long  _backdropStyle;
     _UIBackdropView * _backdropView;
@@ -20,28 +20,24 @@
         long long highlightEffect; 
         long long disabledEffect; 
     }  _configuration;
+    NSMutableSet * _disabledImageStates;
     UIColor * _disabledInputColor;
     bool  _enabled;
     CAFilter * _highlightFilter;
     UIColor * _highlightInputColor;
     bool  _highlighted;
+    UIImage * _image;
     CAShapeLayer * _layer;
     UIColor * _normalInputColor;
+    UIColor * _overrideTitleColor;
     bool  _selected;
     UIColor * _selectedInputColor;
-    UIColor * _tintColor;
-    bool  _titleColorShouldBeTintColor;
-    struct UIEdgeInsets { 
-        double top; 
-        double left; 
-        double bottom; 
-        double right; 
-    }  _touchMargins;
+    bool  _showSpinner;
     bool  _updatingBackdropSettings;
 }
 
 @property (nonatomic) bool blurDisabled;
-@property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } touchMargins;
+@property (nonatomic) bool showSpinner;
 
 + (id)_filterInputColorForEffect:(long long)arg1;
 + (Class)layerClass;
@@ -49,10 +45,12 @@
 - (void).cxx_destruct;
 - (void)_accessibilitySettingsDidChange:(id)arg1;
 - (void)_createHighlightFilterIfNecessary;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (bool)_shouldAnimatePropertyWithKey:(id)arg1;
 - (void)_updateBackdropSettings;
+- (void)_updateColor;
 - (void)_updateFilter;
-- (void)_updateTintColorWithColor:(id)arg1;
+- (void)_updateTitleColor;
 - (bool)blurDisabled;
 - (void)dealloc;
 - (id)init;
@@ -63,16 +61,16 @@
 - (void)layoutSubviews;
 - (void)pk_applyAppearance:(id)arg1;
 - (id)pk_childrenForAppearance;
-- (bool)pointInside:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
 - (void)setBlurDisabled:(bool)arg1;
 - (void)setEnabled:(bool)arg1;
 - (void)setHighlighted:(bool)arg1;
+- (void)setImageEnabled:(bool)arg1 forState:(unsigned long long)arg2;
 - (void)setSelected:(bool)arg1;
-- (void)setTouchMargins:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
-- (void)showSpinner:(bool)arg1;
+- (void)setShowSpinner:(bool)arg1;
+- (bool)showSpinner;
 - (void)tintColorDidChange;
-- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })touchMargins;
-- (void)updateSpinnerViewStyleWithStyle:(long long)arg1;
+- (void)updateActivityIndicatorColorWithColor:(id)arg1;
+- (void)updateImageView;
 - (void)updateTitleColorWithColor:(id)arg1;
 - (void)updateWithImage:(id)arg1;
 

@@ -6,6 +6,7 @@
     NSString * _symbol;
 }
 
+@property (readonly) Class _effectiveUnitClass;
 @property (readonly, copy) NSString *symbol;
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
@@ -13,6 +14,7 @@
 + (id)new;
 + (bool)supportsSecureCoding;
 
+- (Class)_effectiveUnitClass;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)description;
@@ -37,5 +39,9 @@
 - (id)hk_equivalentQuantityWithValue:(double)arg1;
 - (id)hk_equivalentUnit;
 - (id)hk_equivalentUnitWithConstant:(double)arg1 coefficient:(double)arg2;
+
+// Image: /System/Library/Frameworks/Intents.framework/Intents
+
+- (id)_intents_stringRepresentation;
 
 @end

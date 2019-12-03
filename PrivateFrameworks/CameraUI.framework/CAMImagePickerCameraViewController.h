@@ -47,11 +47,13 @@
 - (long long)_cameraFlashMode;
 - (id)_cameraOverlayView;
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })_cameraViewTransform;
+- (bool)_canShowWhileLocked;
 - (long long)_captureDeviceForImagePickerCameraDevice:(long long)arg1;
 - (long long)_captureModeForImagePickerCameraCaptureMode:(long long)arg1;
 - (id)_containingImagePickerController;
 - (void)_createCropOverlayIfNecessary;
 - (id)_cropOverlay;
+- (id)_currentCancelButtonTitle;
 - (long long)_flashModeForImagePickerCameraFlashMode:(long long)arg1;
 - (void)_handleCapturedImagePickerPhotoWithCropOverlayOutput:(id)arg1;
 - (void)_handleCapturedImagePickerVideoAtPath:(id)arg1 withEditingMetadata:(id)arg2;

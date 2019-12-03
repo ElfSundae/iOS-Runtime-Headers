@@ -14,6 +14,7 @@
     <MTLComputePipelineState> * _box_norm_float4_pass_vert_kernel;
     <MTLComputePipelineState> * _box_norm_float_pass_vert_kernel;
     <MTLDeviceSPI> * _device;
+    <MTLResourceGroupSPI> * _intermediateTextureResourceGroup;
     NSString * _label;
     <MTLLibrary> * _library;
     struct { 

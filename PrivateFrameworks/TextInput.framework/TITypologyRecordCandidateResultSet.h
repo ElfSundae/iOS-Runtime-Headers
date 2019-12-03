@@ -14,9 +14,12 @@
 
 - (void).cxx_destruct;
 - (void)applyToStatistic:(id)arg1;
+- (id)currentKeyboardState;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)keyboardState;
+- (void)removeContextFromKeyboardState;
+- (void)replaceDocumentState:(id)arg1;
 - (id)resultSet;
 - (void)setKeyboardState:(id)arg1;
 - (void)setResultSet:(id)arg1;

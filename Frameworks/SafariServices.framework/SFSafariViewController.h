@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/SafariServices.framework/SafariServices
  */
 
-@interface SFSafariViewController : UIViewController <SFBrowserRemoteViewControllerDelegate, SFInteractiveDismissControllerDelegate, SFQueueingServiceViewControllerProxyDelegate> {
+@interface SFSafariViewController : UIViewController <SFBrowserRemoteViewControllerDelegate, SFInteractiveDismissControllerDelegate, SFQueueingServiceViewControllerProxyDelegate, _SFLinkPreviewHeaderDelegate> {
     _WKActivatedElementInfo * _activatedElementInfo;
     NSMutableDictionary * _activitiesMap;
     NSArray * _activityItemsForCustomActivities;
@@ -23,12 +23,15 @@
     NSURL * _initialURL;
     SFInteractiveDismissController * _interactiveDismissController;
     SFSafariLaunchPlaceholderView * _launchPlaceholderView;
+    UIView * _linkPreviewHitTestView;
     UIColor * _preferredBarTintColor;
     UIColor * _preferredControlTintColor;
     NSArray * _previewActions;
     SFBrowserRemoteViewController * _remoteViewController;
+    bool  _remoteViewControllerHasBeenAdded;
     SFQueueingServiceViewControllerProxy<SFServiceViewControllerProtocol> * _serviceProxy;
     bool  _swipeGestureEnabled;
+    _SFURLTextPreviewViewController * _textPreviewViewController;
     struct UIEdgeInsets { 
         double top; 
         double left; 
@@ -59,6 +62,7 @@
 - (id)_activatedElementInfo;
 - (void)_addRemoteView;
 - (void)_addRemoteViewControllerIfNeeded;
+- (bool)_allowsUserInteractionWhenPreviewedInContextMenu;
 - (void)_boundingPathMayHaveChangedForView:(id)arg1 relativeToBoundsOriginOnly:(bool)arg2;
 - (void)_connectToService;
 - (id)_defaultPreviewActionItems;
@@ -66,7 +70,7 @@
 - (id)_fetchExcludedActivityTypesForURL:(id)arg1 title:(id)arg2;
 - (void)_forwardNotificationToViewService:(id)arg1;
 - (id)_previewActions;
-- (void)_removeRemoteView;
+- (void)_removeRemoteViewController;
 - (void)_restartServiceViewController;
 - (void)_setActivatedElementInfo:(id)arg1;
 - (void)_setEdgeSwipeDismissalEnabled:(bool)arg1;
@@ -76,6 +80,8 @@
 - (void)_setUpWithURL:(id)arg1 configuration:(id)arg2;
 - (bool)_showingLinkPreview;
 - (bool)_showingLinkPreviewWithMinimalUI;
+- (void)_updateLinkPreviewHitTestView;
+- (void)_updatePreviewViewControllerWithLinkPreviewEnabled:(bool)arg1 animated:(bool)arg2;
 - (void)_updateScrollViewIndicatorInsets;
 - (id)childViewControllerForHomeIndicatorAutoHidden;
 - (id)childViewControllerForStatusBarStyle;
@@ -93,10 +99,12 @@
 - (void)interactiveDismissControllerDidBegin:(id)arg1;
 - (void)interactiveDismissControllerDidCancel:(id)arg1;
 - (void)interactiveDismissControllerDidEnd:(id)arg1;
+- (void)linkPreviewHeader:(id)arg1 didEnableLinkPreview:(bool)arg2;
 - (void)loadView;
 - (id)preferredBarTintColor;
 - (id)preferredControlTintColor;
 - (id)previewActionItems;
+- (void)remoteViewController:(id)arg1 didDecideShouldShowLinkPreviews:(bool)arg2;
 - (void)remoteViewController:(id)arg1 didFinishInitialLoad:(bool)arg2;
 - (void)remoteViewController:(id)arg1 executeCustomActivityProxyID:(id)arg2;
 - (void)remoteViewController:(id)arg1 fetchActivityViewControllerInfoForURL:(id)arg2 title:(id)arg3;

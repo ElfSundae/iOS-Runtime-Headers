@@ -73,6 +73,7 @@
 - (void)deleteChatZone;
 - (void)deleteDeDupeSaltZone;
 - (void)deleteMessageZone;
+- (long long)derivedQualityOfService;
 - (void)fetchChatZoneToCheckManateeStatus:(id /* block */)arg1;
 - (id)init;
 - (id)messageRecordZone;

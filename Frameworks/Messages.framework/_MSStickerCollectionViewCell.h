@@ -4,7 +4,6 @@
 
 @interface _MSStickerCollectionViewCell : UICollectionViewCell {
     CALayer * _borderLayer;
-    <MSStickerPrivate> * _sticker;
     MSStickerView * _stickerView;
 }
 

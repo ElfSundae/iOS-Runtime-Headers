@@ -4,6 +4,6 @@
 
 @interface SearchUIRemoteAppIcon : SearchUIImage
 
-+ (id)imageFromData:(id)arg1;
+- (id)loadImage;
 
 @end

@@ -16,7 +16,7 @@
 - (void)getWillNanoPresentNotificationForSectionID:(id)arg1 subsectionIDs:(id)arg2 completion:(id /* block */)arg3;
 - (void)sendBulletinSummary:(id)arg1;
 - (void)setSubscriber:(id)arg1;
-- (void)subscribeToSectionID:(id)arg1 forFullBulletins:(bool)arg2 withAck:(bool)arg3;
+- (void)subscribeToSectionID:(id)arg1 forFullBulletins:(bool)arg2 withAck:(bool)arg3 ackAllowedOnLocalConnection:(bool)arg4;
 - (void)subscribeWithMachServiceName:(id)arg1;
 - (id)subscriber;
 - (void)unsubscribeFromSectionID:(id)arg1;

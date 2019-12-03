@@ -12,7 +12,6 @@
 
 + (id)customAttributes;
 
-- (id)_CIParallelogramTile;
 - (id)outputImage;
 
 @end

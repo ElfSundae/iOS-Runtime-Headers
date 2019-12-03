@@ -21,6 +21,7 @@
 - (void)_startListeningToIDSIDQueryControllerIfNecessary;
 - (void)_startListeningToIDSServiceAvailabilityIfNecessary;
 - (void)addIDSServiceAvailabilityListener:(id)arg1 selector:(SEL)arg2;
+- (bool)areFavoritesAvailable;
 - (id)conferenceURLForDestinationID:(id)arg1;
 - (id)conferenceURLForPhoneNumber:(id)arg1;
 - (void)dealloc;

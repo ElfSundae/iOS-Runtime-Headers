@@ -15,10 +15,10 @@
     WLKChannelDetails * _channelDetails;
     NSString * _channelID;
     NSArray * _closedCaptionLocales;
+    WLKComingSoonInfo * _comingSoonInfo;
     WLKBasicContentMetadata * _content;
     NSString * _contentID;
     long long  _contentSourceType;
-    NSDictionary * _dictionary;
     NSNumber * _duration;
     NSDate * _endAirTime;
     bool  _entitled;
@@ -40,6 +40,7 @@
     bool  _subtitled;
     NSArray * _subtitledLocales;
     NSURL * _tvAppDeeplinkURL;
+    NSString * _videoColorRange;
     NSString * _videoQuality;
 }
 
@@ -58,10 +59,10 @@
 @property (nonatomic, readonly, copy) WLKChannelDetails *channelDetails;
 @property (nonatomic, readonly, copy) NSString *channelID;
 @property (nonatomic, readonly, copy) NSArray *closedCaptionLocales;
+@property (nonatomic, readonly, copy) WLKComingSoonInfo *comingSoonInfo;
 @property (nonatomic, readonly) WLKBasicContentMetadata *content;
 @property (nonatomic, readonly, copy) NSString *contentID;
 @property (nonatomic, readonly) long long contentSourceType;
-@property (nonatomic, readonly, copy) NSDictionary *dictionary;
 @property (nonatomic, readonly) NSNumber *duration;
 @property (nonatomic, readonly, copy) NSDate *endAirTime;
 @property (getter=isEntitled, nonatomic, readonly) bool entitled;
@@ -83,6 +84,7 @@
 @property (getter=isSubtitled, nonatomic, readonly) bool subtitled;
 @property (nonatomic, readonly, copy) NSArray *subtitledLocales;
 @property (nonatomic, readonly, copy) NSURL *tvAppDeeplinkURL;
+@property (nonatomic, readonly, copy) NSString *videoColorRange;
 @property (nonatomic, readonly, copy) NSString *videoQuality;
 
 + (id)playablesWithDictionaries:(id)arg1 context:(id)arg2;
@@ -105,11 +107,11 @@
 - (id)channelDetails;
 - (id)channelID;
 - (id)closedCaptionLocales;
+- (id)comingSoonInfo;
 - (id)content;
 - (id)contentID;
 - (long long)contentSourceType;
 - (id)description;
-- (id)dictionary;
 - (id)duration;
 - (id)endAirTime;
 - (id)externalID;
@@ -139,6 +141,7 @@
 - (id)subscriptionOffers;
 - (id)subtitledLocales;
 - (id)tvAppDeeplinkURL;
+- (id)videoColorRange;
 - (id)videoQuality;
 
 @end

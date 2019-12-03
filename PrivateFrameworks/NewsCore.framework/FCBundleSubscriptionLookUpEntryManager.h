@@ -12,7 +12,7 @@
 
 - (void).cxx_destruct;
 - (id)_bundleSubscriptionLookupEntryForPurchaseID:(id)arg1;
-- (void)addBundleChannelIDs:(id)arg1 purchaseID:(id)arg2 inTrialPeriod:(bool)arg3 isPurchaser:(bool)arg4;
+- (void)addBundleChannelIDs:(id)arg1 purchaseID:(id)arg2 inTrialPeriod:(bool)arg3 isPurchaser:(bool)arg4 isAmplifyUser:(bool)arg5;
 - (id)bundleSubscriptionLookUpEntry;
 - (void)cleanupStaleExpiredEntry;
 - (id)initWithLocalStore:(id)arg1;

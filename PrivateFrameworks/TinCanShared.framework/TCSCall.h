@@ -9,13 +9,10 @@
     NSDate * _dateConnected;
     int  _disconnectedReason;
     NSString * _handleValue;
-    long long  _inputAudioPowerSpectrumToken;
     bool  _isConnected;
+    bool  _isNilCall;
     bool  _isOutgoing;
     bool  _isRemoteUplinkMuted;
-    float  _lastLocalMeterLevel;
-    float  _lastRemoteMeterLevel;
-    long long  _outputAudioPowerSpectrumToken;
     int  _status;
     NSString * _uniqueProxyIdentifier;
 }
@@ -25,13 +22,11 @@
 @property (nonatomic, readonly, copy) NSDate *dateConnected;
 @property (nonatomic, readonly) int disconnectedReason;
 @property (nonatomic, readonly, copy) NSString *handleValue;
-@property (nonatomic, readonly) long long inputAudioPowerSpectrumToken;
 @property (nonatomic, readonly) bool isActive;
 @property (nonatomic, readonly) bool isConnected;
 @property (nonatomic, readonly) bool isIncoming;
 @property (nonatomic, readonly) bool isOutgoing;
 @property (nonatomic, readonly) bool isRemoteUplinkMuted;
-@property (nonatomic, readonly) long long outputAudioPowerSpectrumToken;
 @property (nonatomic, readonly) int status;
 @property (nonatomic, readonly, copy) NSString *uniqueProxyIdentifier;
 
@@ -48,7 +43,6 @@
 - (unsigned long long)hash;
 - (id)initWithCall:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (long long)inputAudioPowerSpectrumToken;
 - (bool)isActive;
 - (bool)isConnected;
 - (bool)isEqual:(id)arg1;
@@ -56,9 +50,6 @@
 - (bool)isIncoming;
 - (bool)isOutgoing;
 - (bool)isRemoteUplinkMuted;
-- (float)localMeterLevel;
-- (long long)outputAudioPowerSpectrumToken;
-- (float)remoteMeterLevel;
 - (void)setCallCenter:(id)arg1;
 - (void)setUplinkMuted:(bool)arg1 completion:(id /* block */)arg2;
 - (int)status;

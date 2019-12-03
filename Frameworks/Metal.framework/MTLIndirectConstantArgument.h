@@ -10,6 +10,8 @@
     unsigned long long  _pixelFormat;
 }
 
+- (unsigned long long)bufferALUType;
+- (unsigned long long)bufferPixelFormat;
 - (void)dealloc;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (unsigned long long)indirectConstantAlignment;

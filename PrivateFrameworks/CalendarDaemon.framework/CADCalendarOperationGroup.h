@@ -10,6 +10,8 @@
 
 - (void)CADCalendar:(id)arg1 hasEvents:(id /* block */)arg2;
 - (void)CADCalendar:(id)arg1 hasReminders:(id /* block */)arg2;
+- (void)CADCalendar:(id)arg1 removeAllCalendarItems:(id /* block */)arg2;
 - (void)CADDatabaseGetCalendarsWithFaultedProperties:(id)arg1 reply:(id /* block */)arg2;
+- (int)_tryPerformBlockWithCalendarID:(id)arg1 forAction:(unsigned long long)arg2 withBlock:(id /* block */)arg3;
 
 @end

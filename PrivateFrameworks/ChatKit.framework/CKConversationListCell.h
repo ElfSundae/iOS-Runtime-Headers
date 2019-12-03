@@ -12,6 +12,8 @@
     NSDate * _searchMessageDate;
     NSString * _searchMessageGUID;
     NSString * _searchSummaryText;
+    bool  _shouldHidePreviewSummary;
+    UILabel * _summaryBlockedLabel;
     UILabel * _summaryLabel;
     bool  _verified;
 }
@@ -21,10 +23,12 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) NSObject<CKConversationListCellDelegate> *delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) CKLabel *fromLabel;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSDate *searchMessageDate;
 @property (nonatomic, copy) NSString *searchMessageGUID;
 @property (nonatomic, copy) NSString *searchSummaryText;
+@property (nonatomic) bool shouldHidePreviewSummary;
 @property (readonly) Class superclass;
 @property (nonatomic) bool verified;
 
@@ -40,6 +44,7 @@
 - (id)conversation;
 - (void)dealloc;
 - (id)delegate;
+- (id)fromLabel;
 - (void)increaseContrastDidChange;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)prepareForReuse;
@@ -52,15 +57,19 @@
 - (void)setSearchMessageDate:(id)arg1;
 - (void)setSearchMessageGUID:(id)arg1;
 - (void)setSearchSummaryText:(id)arg1;
+- (void)setShouldHidePreviewSummary:(bool)arg1;
 - (void)setVerified:(bool)arg1;
+- (bool)shouldHidePreviewSummary;
 - (bool)showingEditControl;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
+- (id)summaryAttributedTextForBlockedConversationWithIcon:(bool)arg1;
+- (void)updateBlockedSummaryLabelIfNeeded;
 - (void)updateContentsForConversation:(id)arg1;
 - (void)updateContentsForConversation:(id)arg1 fastPreview:(bool)arg2;
 - (void)updateForEditing:(bool)arg1;
 - (void)updateFromLabelWithText:(id)arg1;
 - (void)updateSummaryTextForConversation:(id)arg1 fastPreview:(bool)arg2;
-- (void)updateUnreadIndicatorWithImage:(id)arg1;
+- (void)updateUnreadIndicatorWithImage:(id)arg1 tintColor:(id)arg2;
 - (void)updateWithSearchResult:(id)arg1;
 - (bool)verified;
 

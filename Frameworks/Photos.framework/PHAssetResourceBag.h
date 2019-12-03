@@ -9,6 +9,7 @@
     bool  _didValidateForInsertion;
     bool  _hasAdjustments;
     bool  _hasRAW;
+    bool  _hasSpatialOverCapture;
     unsigned long long  _mediaSubtype;
     long long  _mediaType;
     PHExternalAssetResource * _primaryResource;
@@ -20,14 +21,15 @@
 @property (nonatomic, readonly) bool didValidateForInsertion;
 @property (nonatomic, readonly) bool hasAdjustments;
 @property (nonatomic, readonly) bool hasRAW;
+@property (nonatomic, readonly) bool hasSpatialOverCapture;
 @property (nonatomic, readonly) unsigned long long mediaSubtype;
 @property (nonatomic, readonly) long long mediaType;
 @property (nonatomic, readonly) PHExternalAssetResource *primaryResource;
 @property (getter=isValid, nonatomic, readonly) bool valid;
 
 + (id)_primaryAssetResource:(id)arg1;
-+ (bool)_supportsAssetResourceTypes:(id)arg1 mediaType:(long long*)arg2 mediaSubtype:(unsigned long long*)arg3;
-+ (bool)supportsAssetResourceTypes:(id)arg1 mediaType:(long long*)arg2;
++ (bool)_supportsAssetResourceTypes:(id)arg1 mediaType:(long long*)arg2 mediaSubtype:(unsigned long long*)arg3 importedBy:(short)arg4;
++ (bool)supportsAssetResourceTypes:(id)arg1 mediaType:(long long*)arg2 importedBy:(short)arg3;
 
 - (void).cxx_destruct;
 - (bool)_extractValidatedAdjustmentsURL:(id*)arg1 fromResource:(id)arg2 photoLibrary:(id)arg3 error:(id*)arg4;
@@ -43,6 +45,7 @@
 - (bool)didValidateForInsertion;
 - (bool)hasAdjustments;
 - (bool)hasRAW;
+- (bool)hasSpatialOverCapture;
 - (id)initWithAssetResources:(id)arg1 assetCreationRequest:(id)arg2;
 - (bool)isValid;
 - (unsigned long long)mediaSubtype;

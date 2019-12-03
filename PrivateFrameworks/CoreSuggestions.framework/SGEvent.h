@@ -48,6 +48,8 @@
 @property (nonatomic, readonly) NSString *title;
 @property (nonatomic, readonly) NSString *uniqueKey;
 
+// Image: /System/Library/PrivateFrameworks/CoreSuggestions.framework/CoreSuggestions
+
 + (id)eventWithRecordId:(id)arg1 origin:(id)arg2 uniqueKey:(id)arg3 opaqueKey:(id)arg4 title:(id)arg5 notes:(id)arg6 start:(id)arg7 startTimeZone:(id)arg8 end:(id)arg9 endTimeZone:(id)arg10 isAllDay:(bool)arg11 creationDate:(id)arg12 lastModifiedDate:(id)arg13 locations:(id)arg14 tags:(id)arg15 URL:(id)arg16;
 + (bool)supportsSecureCoding;
 
@@ -72,6 +74,7 @@
 - (id)geocodeStartTimeZone;
 - (void)geocodeWithCallback:(id /* block */)arg1;
 - (id)geocodedEventWithStartDate:(id)arg1 startTimeZone:(id)arg2 endDate:(id)arg3 endTimeZone:(id)arg4 locations:(id)arg5;
+- (unsigned long long)geocodingMode;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRecordId:(id)arg1 origin:(id)arg2 uniqueKey:(id)arg3 opaqueKey:(id)arg4 title:(id)arg5 notes:(id)arg6 start:(id)arg7 startTimeZone:(id)arg8 end:(id)arg9 endTimeZone:(id)arg10 isAllDay:(bool)arg11 creationDate:(id)arg12 lastModifiedDate:(id)arg13 locations:(id)arg14 tagStrings:(id)arg15 URL:(id)arg16 naturalLanguageEventIdentifier:(id)arg17 naturalLanguageEventAttributes:(unsigned long long)arg18 schemaOrg:(id)arg19;
@@ -90,7 +93,10 @@
 - (id)naturalLanguageEventTypeIdentifier;
 - (id)notes;
 - (id)opaqueKey;
+- (id)poiFilters;
 - (id)schemaOrg;
+- (bool)shouldAllowNotificationsInCalendar;
+- (bool)shouldAllowNotificationsInCalendarForBundleId:(id)arg1 appIsInForeground:(bool)arg2;
 - (id)start;
 - (id)startDateComponents;
 - (id)startTimeZone;
@@ -98,5 +104,14 @@
 - (id)title;
 - (id)toEKEventWithStore:(id)arg1;
 - (id)uniqueKey;
+
+// Image: /System/Library/PrivateFrameworks/CoreSuggestionsUI.framework/CoreSuggestionsUI
+
++ (id)formatEvents:(id)arg1;
++ (bool)sameDayEvents:(id)arg1;
+
+- (id)formattedStartDate;
+- (id)formattedStartTime;
+- (id)timeZoneOrGMT;
 
 @end

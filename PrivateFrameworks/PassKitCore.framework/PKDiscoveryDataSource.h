@@ -24,7 +24,6 @@
 - (void)_addDismissActionToArticleLayouts:(id)arg1;
 - (id)_articleLayoutForItemIdentifier:(id)arg1;
 - (bool)_queue_updateArticleLayouts:(id)arg1;
-- (bool)_shouldUpdateArticleLayout:(id)arg1 withArticleLayout:(id)arg2;
 - (void)_updateArticlesWithCompletion:(id /* block */)arg1;
 - (id)articleLayouts;
 - (id)cachedDiscoveryArticleLayoutForItemWithIdentifier:(id)arg1;

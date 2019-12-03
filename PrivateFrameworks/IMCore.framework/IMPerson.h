@@ -60,6 +60,7 @@
 - (void)appendID:(id)arg1 toProperty:(id)arg2;
 - (id)cnContact;
 - (id)cnContactID;
+- (id)cnContactWithKeys:(id)arg1;
 - (id)companyName;
 - (bool)containsHandle:(id)arg1 forServiceProperty:(id)arg2;
 - (void)dealloc;
@@ -77,6 +78,7 @@
 - (id)imageDataWithoutLoading;
 - (id)init;
 - (id)initWithABRecordID:(int)arg1;
+- (id)initWithContact:(id)arg1;
 - (bool)isCompany;
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToIMPerson:(id)arg1;
@@ -100,6 +102,7 @@
 - (void)setValues:(id)arg1 forProperty:(id)arg2;
 - (unsigned long long)status;
 - (id)uniqueID;
+- (void)updateCNContact:(id)arg1;
 - (id)valuesForIMProperty:(id)arg1;
 - (id)valuesForProperty:(id)arg1;
 

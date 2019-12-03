@@ -18,6 +18,7 @@
 
 + (bool)supportsSecureCoding;
 
+- (void).cxx_destruct;
 - (void)addLocalObserver:(id)arg1;
 - (void)applicationIconDidChange:(id)arg1;
 - (void)applicationInstallsArePrioritized:(id)arg1 arePaused:(id)arg2;
@@ -36,7 +37,6 @@
 - (void)applicationsWillInstall:(id)arg1;
 - (void)applicationsWillUninstall:(id)arg1;
 - (unsigned long long)currentObserverCount;
-- (void)dealloc;
 - (void)deviceManagementPolicyDidChange:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

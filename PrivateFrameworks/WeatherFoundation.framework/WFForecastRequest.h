@@ -22,6 +22,7 @@
 @property (nonatomic, retain) NSData *rawAPIData;
 @property (nonatomic, retain) NSString *trackingParameter;
 
++ (id)forecastRequestForLocation:(id)arg1 completionHandler:(id /* block */)arg2;
 + (id)forecastRequestForLocation:(id)arg1 date:(id)arg2 completionHandler:(id /* block */)arg3;
 
 - (void).cxx_destruct;

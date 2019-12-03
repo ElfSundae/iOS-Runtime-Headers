@@ -5,7 +5,7 @@
 @interface PXPeopleDetailSettingsViewController : UIViewController <PXPeopleDataSourceDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout> {
     UICollectionView * _collectionView;
     PXPeoplePersonDataSource * _dataSource;
-    PXUIPeopleSuggestionDataSource * _suggestionDataSource;
+    PXPeopleSuggestionDataSource * _suggestionDataSource;
 }
 
 @property (nonatomic, retain) UICollectionView *collectionView;
@@ -13,7 +13,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) PXUIPeopleSuggestionDataSource *suggestionDataSource;
+@property (nonatomic, retain) PXPeopleSuggestionDataSource *suggestionDataSource;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

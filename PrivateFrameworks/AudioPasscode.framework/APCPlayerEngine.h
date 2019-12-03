@@ -48,6 +48,7 @@
 - (bool)startEngine;
 - (bool)startEngineAtTime:(unsigned long long)arg1;
 - (bool)startEngineAtTime:(unsigned long long)arg1 withBeginning:(id /* block */)arg2;
+- (bool)startEngineAtTime:(unsigned long long)arg1 withBeginning:(id /* block */)arg2 callbackTime:(unsigned long long)arg3;
 - (void)stopEngine:(bool)arg1 withCompletion:(id /* block */)arg2;
 - (void)stopEngineAfterMinimumLoops:(unsigned long long)arg1 withCompletion:(id /* block */)arg2;
 - (id /* block */)stopEngineCompletion;

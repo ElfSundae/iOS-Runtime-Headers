@@ -7,8 +7,6 @@
     <PDCloudStorePassManager> * _passManager;
 }
 
-+ (void)invalidateServerChangeTokens;
-
 - (void).cxx_destruct;
 - (bool)_canInitializeContainer;
 - (id)_catalogOfRecord;
@@ -19,12 +17,13 @@
 - (bool)canInitializeContainer;
 - (void)cloudStoreAccountChanged:(id)arg1;
 - (id)initWithDataSource:(id)arg1 passManager:(id)arg2;
-- (void)processFetchedCloudStoreDataWithModifiedRecords:(id)arg1 deletedRecords:(id)arg2 operationGroupName:(id)arg3 operationGroupNameSuffix:(id)arg4 shouldUpdateLocalDatabase:(bool)arg5 userInfo:(id)arg6 completion:(id /* block */)arg7;
+- (void)invalidateServerChangeTokens;
+- (void)processFetchedCloudStoreDataWithModifiedRecords:(id)arg1 deletedRecords:(id)arg2 request:(id)arg3 completion:(id /* block */)arg4;
 - (void)readCachedContainerValues;
 - (id)recordTypeForRecordID:(id)arg1;
 - (void)saveCachedContainerValues;
 - (void)setContainerState:(unsigned long long)arg1 operationGroupNameSuffix:(id)arg2 retryCount:(unsigned long long)arg3 completion:(id /* block */)arg4;
-- (bool)shouldFetchAndStoreCloudDataAtStartup;
-- (void)updateCloudStoreWithLocalItems:(id)arg1 recordSpecificKeys:(id)arg2 completion:(id /* block */)arg3;
+- (void)shouldFetchAndStoreCloudDataAtStartupWithCompletion:(id /* block */)arg1;
+- (void)updateCloudStoreWithLocalItems:(id)arg1 recordSpecificKeys:(id)arg2 groupName:(id)arg3 groupNameSuffix:(id)arg4 qualityOfService:(long long)arg5 completion:(id /* block */)arg6;
 
 @end

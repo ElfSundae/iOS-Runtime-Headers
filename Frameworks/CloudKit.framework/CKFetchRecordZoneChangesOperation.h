@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
  */
 
-@interface CKFetchRecordZoneChangesOperation : CKDatabaseOperation <MSPCloudRequest> {
+@interface CKFetchRecordZoneChangesOperation : CKDatabaseOperation {
     NSDictionary * _assetTransferOptionsByRecordTypeAndKey;
     NSDictionary * _configurationsByRecordZoneID;
     bool  _fetchAllChanges;
@@ -22,11 +22,8 @@
 
 @property (nonatomic, retain) NSDictionary *assetTransferOptionsByRecordTypeAndKey;
 @property (nonatomic, copy) NSDictionary *configurationsByRecordZoneID;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic) bool fetchAllChanges;
 @property (nonatomic, copy) id /* block */ fetchRecordZoneChangesCompletionBlock;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSDictionary *optionsByRecordZoneID;
 @property (nonatomic, retain) NSMutableDictionary *perItemErrors;
 @property (nonatomic, copy) id /* block */ perRecordChangeCompletionBlock;
@@ -35,11 +32,9 @@
 @property (nonatomic, copy) id /* block */ recordZoneChangeTokensUpdatedBlock;
 @property (nonatomic, copy) id /* block */ recordZoneFetchCompletionBlock;
 @property (nonatomic, copy) NSArray *recordZoneIDs;
-@property (nonatomic, readonly) bool shouldEnqueueDependenciesWhenPerformingAsCloudRequest;
 @property (nonatomic) bool shouldFetchAssetContents;
 @property (nonatomic) bool shouldReportAllPerItemFailures;
 @property (nonatomic, retain) NSMutableDictionary *statusByZoneID;
-@property (readonly) Class superclass;
 @property (nonatomic, retain) NSMutableSet *zoneIDsWithPendingArchivedRecords;
 
 // Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
@@ -92,12 +87,6 @@
 - (bool)shouldReportAllPerItemFailures;
 - (id)statusByZoneID;
 - (id)zoneIDsWithPendingArchivedRecords;
-
-// Image: /System/Library/PrivateFrameworks/MapsSupport.framework/MapsSupport
-
-- (void)addCloudAccessCompletionBlock:(id /* block */)arg1;
-- (unsigned long long)maximumRetries;
-- (void)setNetworkBehaviorIsDiscretionary:(bool)arg1;
 
 // Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
 

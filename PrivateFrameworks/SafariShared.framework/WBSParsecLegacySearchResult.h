@@ -15,6 +15,7 @@
     MKMapItem * _mapItem;
     NSString * _mediaKind;
     unsigned long long  _minimumRankOfTopHitToSuppressResult;
+    long long  _parsecQueryID;
     NSString * _query;
     NSString * _referrerForLoadingResult;
     NSString * _sectionBundleIdentifier;
@@ -44,6 +45,7 @@
 @property (nonatomic, readonly, copy) NSString *mediaKind;
 @property (nonatomic, readonly) unsigned long long minimumRankOfTopHitToSuppressResult;
 @property (nonatomic, readonly) NSString *parsecDomainIdentifier;
+@property (nonatomic) long long parsecQueryID;
 @property (nonatomic, readonly, copy) NSString *query;
 @property (nonatomic, readonly, copy) NSString *referrerForLoadingResult;
 @property (nonatomic, copy) NSString *sectionBundleIdentifier;
@@ -81,10 +83,12 @@
 - (id)mediaKind;
 - (unsigned long long)minimumRankOfTopHitToSuppressResult;
 - (id)parsecDomainIdentifier;
+- (long long)parsecQueryID;
 - (id)query;
 - (id)referrerForLoadingResult;
 - (id)sectionBundleIdentifier;
 - (id)sectionHeader;
+- (void)setParsecQueryID:(long long)arg1;
 - (void)setSectionBundleIdentifier:(id)arg1;
 - (void)setSfSearchResultValue:(id)arg1;
 - (id)sfSearchResultValue;

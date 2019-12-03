@@ -14,6 +14,8 @@
 @property (nonatomic) double fahrenheit;
 @property (nonatomic) double kelvin;
 
+// Image: /System/Library/PrivateFrameworks/WeatherFoundation.framework/WeatherFoundation
+
 + (bool)supportsSecureCoding;
 
 - (void)_resetTemperatureValues;
@@ -35,5 +37,12 @@
 - (void)setFahrenheit:(double)arg1;
 - (void)setKelvin:(double)arg1;
 - (double)temperatureForUnit:(int)arg1;
+
+// Image: /System/Library/PrivateFrameworks/NanoWeatherComplicationsCompanion.framework/NanoWeatherComplicationsCompanion
+
+- (long long)nwk_compare:(id)arg1;
+- (double)nwk_percentageBetweenLow:(id)arg1 high:(id)arg2;
+- (long long)nwm_compare:(id)arg1;
+- (double)nwm_percentageBetweenLow:(id)arg1 high:(id)arg2;
 
 @end

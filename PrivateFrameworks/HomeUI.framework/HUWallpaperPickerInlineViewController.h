@@ -2,13 +2,14 @@
    Image: /System/Library/PrivateFrameworks/HomeUI.framework/HomeUI
  */
 
-@interface HUWallpaperPickerInlineViewController : UICollectionViewController <HUWallpaperPhotoCellDelegate, UICollectionViewDelegateFlowLayout, UIDropInteractionDelegate> {
+@interface HUWallpaperPickerInlineViewController : UICollectionViewController <HUWallpaperPhotoCellDelegate, UICollectionViewDelegateFlowLayout, UIDropInteractionDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
     HFWallpaper * _customWallpaper;
     HUWallpaperPhotoCell * _customWallpaperCell;
     <HUWallpaperPickerInlineViewControllerDelegate> * _delegate;
     UIDropInteraction * _dropInteraction;
     UICollectionViewFlowLayout * _flowLayout;
     NSMutableDictionary * _imageCache;
+    UIImagePickerController * _imagePicker;
     struct CGSize { 
         double width; 
         double height; 
@@ -29,11 +30,12 @@
 @property (nonatomic, retain) UICollectionViewFlowLayout *flowLayout;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSMutableDictionary *imageCache;
+@property (nonatomic, retain) UIImagePickerController *imagePicker;
 @property (nonatomic) struct CGSize { double x1; double x2; } imageSize;
 @property (nonatomic, retain) NSArray *namedWallpapers;
 @property (readonly) unsigned long long numberOfWallpapers;
 @property (nonatomic) unsigned long long numberOfWallpapersFittingInWidth;
-@property (nonatomic) UIImage *originalCustomImage;
+@property (nonatomic, retain) UIImage *originalCustomImage;
 @property (nonatomic, readonly) double preferedHeight;
 @property (nonatomic, retain) NSIndexPath *selectedIndexPath;
 @property (readonly) HFWallpaper *selectedWallpaper;
@@ -56,6 +58,8 @@
 - (id)dropInteraction:(id)arg1 sessionDidUpdate:(id)arg2;
 - (id)flowLayout;
 - (id)imageCache;
+- (id)imagePicker;
+- (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
 - (struct CGSize { double x1; double x2; })imageSize;
 - (id)init;
 - (id)namedWallpapers;
@@ -74,6 +78,7 @@
 - (void)setDropInteraction:(id)arg1;
 - (void)setFlowLayout:(id)arg1;
 - (void)setImageCache:(id)arg1;
+- (void)setImagePicker:(id)arg1;
 - (void)setImageSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setImageSizeToFitWidth:(double)arg1 forNumberOfWallpapers:(unsigned long long)arg2;
 - (void)setNamedWallpapers:(id)arg1;

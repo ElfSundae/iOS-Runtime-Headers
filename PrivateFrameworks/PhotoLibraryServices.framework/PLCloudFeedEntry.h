@@ -18,7 +18,6 @@
 + (id)allEntriesInLibrary:(id)arg1;
 + (id)allEntriesInManagedObjectContext:(id)arg1;
 + (id)entityForFilter:(long long)arg1 inManagedObjectContext:(id)arg2;
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (id)entriesSortDescriptorsAscending:(bool)arg1;
 + (id)entryWithURIRepresentation:(id)arg1 inLibrary:(id)arg2;

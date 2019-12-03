@@ -4,10 +4,8 @@
 
 @interface __NSDictionary0 : NSDictionary
 
-+ (id)_alloc;
 + (id)allocWithZone:(struct _NSZone { }*)arg1;
 
-- (id)_init;
 - (id)autorelease;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

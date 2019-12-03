@@ -21,6 +21,8 @@
     long long  _dragCapture;
     UIPanGestureRecognizer * _dragRecognizer;
     bool  _dragging;
+    NSDecimalNumber * _effectiveDisplayAmount;
+    bool  _enabled;
     PKEnterCurrencyAmountView * _enterCurrencyAmountView;
     UISelectionFeedbackGenerator * _feedbackGenerator;
     PKBillPaymentCircularView * _handleView;
@@ -34,6 +36,7 @@
     double  _maximumPaymentAmount;
     double  _minimumPaymentAmount;
     bool  _needsInitialDisplay;
+    NSDecimalNumber * _overrideDisplayAmount;
     double  _overrideGradientStartAngle;
     PKBillPaymentRingGradientState * _overrideGradientState;
     NSDecimalNumber * _pinnedAmount;
@@ -98,6 +101,7 @@
     NSDictionary * _suggestedAmoutImages;
     UITapGestureRecognizer * _tapRecognizer;
     PKCurvedTextLabel * _topCurvedTextLabel;
+    bool  _userSelectedAngleChange;
 }
 
 @property (nonatomic, readonly, copy) NSDecimalNumber *amount;
@@ -107,6 +111,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <PKBillPaymentRingViewDelegate> *delegate;
 @property (readonly, copy) NSString *description;
+@property (getter=isEnabled, nonatomic) bool enabled;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool isSmall;
 @property (nonatomic, readonly) double ringWidth;
@@ -133,7 +138,6 @@
 - (void)_dragRecognizerChanged:(id)arg1;
 - (void)_dragStarted:(id)arg1;
 - (id)_gradientStateForSuggestedAmount:(id)arg1;
-- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_insetBounds;
 - (bool)_isAmount:(id)arg1 withinRoundingUnitOfAmount:(id)arg2;
 - (double)_offsetAngle:(double)arg1;
 - (double)_offsetCurrentAngle;
@@ -153,6 +157,9 @@
 - (void)_tapRecognized:(id)arg1;
 - (id)_targetGradientStateForAngle:(double)arg1;
 - (unsigned long long)_unnormalizedAngleIndexForAngle:(double)arg1;
+- (void)_updateCurvedText;
+- (bool)_updateEffectiveDisplayAmount;
+- (void)_updateForEnabledState;
 - (void)_updateHandleImage;
 - (void)_updateInterestText;
 - (void)_updatePausedState;
@@ -174,20 +181,20 @@
 - (id)init;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)initWithSuggestedAmountList:(id)arg1 delegate:(id)arg2 dataSource:(id)arg3;
+- (bool)isEnabled;
 - (bool)isSmall;
 - (void)layoutSubviews;
 - (void)prepareForInitialDisplayWithAmount:(id)arg1;
 - (void)renderLoop:(id)arg1 drawAtTime:(double)arg2;
-- (struct CGSize { double x1; double x2; })ringSizeWhenIsSmall:(bool)arg1;
 - (double)ringWidth;
 - (void)setAmount:(id)arg1 animated:(bool)arg2;
 - (void)setAngle:(double)arg1 animated:(bool)arg2 forExplicitAmount:(id)arg3 userInitiated:(bool)arg4;
 - (void)setDataSource:(id)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setEnabled:(bool)arg1;
 - (void)setHandleScale:(double)arg1 animated:(bool)arg2;
 - (void)setIsSmall:(bool)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
-- (struct CGSize { double x1; double x2; })smallRingSize;
 - (double)targetAngle;
 
 @end

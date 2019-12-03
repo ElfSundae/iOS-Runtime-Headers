@@ -8,22 +8,41 @@
     int  _artworkUse;
     int  _badge;
     struct { 
-        unsigned int artworkType : 1; 
-        unsigned int artworkUse : 1; 
-        unsigned int badge : 1; 
-    }  _has;
+        unsigned int has_artworkType : 1; 
+        unsigned int has_artworkUse : 1; 
+        unsigned int has_badge : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_accessibilityString : 1; 
+        unsigned int read_iconFallbackShield : 1; 
+        unsigned int read_icon : 1; 
+        unsigned int read_shield : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_accessibilityString : 1; 
+        unsigned int wrote_iconFallbackShield : 1; 
+        unsigned int wrote_icon : 1; 
+        unsigned int wrote_shield : 1; 
+        unsigned int wrote_artworkType : 1; 
+        unsigned int wrote_artworkUse : 1; 
+        unsigned int wrote_badge : 1; 
+    }  _flags;
     GEOPBTransitIcon * _icon;
     GEOPBTransitShield * _iconFallbackShield;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     GEOPBTransitShield * _shield;
     PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic, retain) NSString *accessibilityString;
 @property (nonatomic, readonly) NSString *accessibilityText;
-@property (nonatomic, readonly) long long artworkSourceType;
+@property (nonatomic, readonly) int artworkSourceType;
 @property (nonatomic) int artworkType;
 @property (nonatomic) int artworkUse;
-@property (nonatomic, readonly) long long artworkUseType;
+@property (nonatomic, readonly) int artworkUseType;
 @property (nonatomic) int badge;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -43,22 +62,30 @@
 @property (nonatomic, retain) GEOPBTransitShield *shield;
 @property (nonatomic, readonly) <GEOTransitShieldDataSource> *shieldDataSource;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) <GEOTransitTextDataSource> *textDataSource;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
+
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsArtworkType:(id)arg1;
 - (int)StringAsArtworkUse:(id)arg1;
 - (int)StringAsBadge:(id)arg1;
+- (void)_readAccessibilityString;
+- (void)_readIcon;
+- (void)_readIconFallbackShield;
+- (void)_readShield;
 - (id)accessibilityString;
 - (id)accessibilityText;
-- (long long)artworkSourceType;
+- (int)artworkSourceType;
 - (int)artworkType;
 - (id)artworkTypeAsString:(int)arg1;
 - (int)artworkUse;
 - (id)artworkUseAsString:(int)arg1;
-- (long long)artworkUseType;
+- (int)artworkUseType;
 - (int)badge;
 - (id)badgeAsString:(int)arg1;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -76,8 +103,11 @@
 - (id)iconDataSource;
 - (id)iconFallbackShield;
 - (id)iconFallbackShieldDataSource;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAccessibilityString:(id)arg1;
 - (void)setArtworkType:(int)arg1;
@@ -91,6 +121,7 @@
 - (void)setShield:(id)arg1;
 - (id)shield;
 - (id)shieldDataSource;
+- (id)textDataSource;
 - (id)unknownFields;
 - (void)writeTo:(id)arg1;
 

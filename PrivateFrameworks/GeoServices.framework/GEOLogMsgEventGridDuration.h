@@ -8,11 +8,11 @@
     int  _endState;
     NSMutableArray * _endStateErrorReasons;
     struct { 
-        unsigned int displayType : 1; 
-        unsigned int durationMs : 1; 
-        unsigned int endState : 1; 
-        unsigned int previousState : 1; 
-    }  _has;
+        unsigned int has_displayType : 1; 
+        unsigned int has_durationMs : 1; 
+        unsigned int has_endState : 1; 
+        unsigned int has_previousState : 1; 
+    }  _flags;
     int  _previousState;
 }
 
@@ -27,6 +27,7 @@
 @property (nonatomic) int previousState;
 
 + (Class)endStateErrorReasonType;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsDisplayType:(id)arg1;
@@ -55,6 +56,7 @@
 - (void)mergeFrom:(id)arg1;
 - (int)previousState;
 - (id)previousStateAsString:(int)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setDisplayType:(int)arg1;
 - (void)setDurationMs:(unsigned int)arg1;

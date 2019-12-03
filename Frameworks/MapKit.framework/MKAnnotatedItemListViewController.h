@@ -31,6 +31,7 @@
 @property (nonatomic, readonly) double viewControllerTopPadding;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)analyticsDelegate;
 - (id)annotatedItemListViewController;
 - (id)attribution;
@@ -39,7 +40,8 @@
 - (id)headerTitle;
 - (double)headerTopPadding;
 - (id)infoCardChildPossibleActions;
-- (void)infoCardThemeChanged:(id)arg1;
+- (id)infoCardChildUnactionableUIElements;
+- (void)infoCardThemeChanged;
 - (id)initWithChildViewController:(id)arg1 title:(id)arg2 attribution:(id)arg3;
 - (id)initWithPictureItemContainer:(id)arg1 title:(id)arg2 attribution:(id)arg3;
 - (id)initWithTextItemContainer:(id)arg1 title:(id)arg2 attribution:(id)arg3;

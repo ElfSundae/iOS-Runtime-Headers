@@ -8,6 +8,7 @@
     double  _downloadProgress;
     NSDate * _downloadRequestDate;
     unsigned long long  _downloadState;
+    bool  _isAvailable;
     unsigned long long  _lastKnownPersistenceState;
     NSString * _localIdentifier;
     long long  _mediaType;
@@ -40,6 +41,8 @@
 - (void).cxx_destruct;
 - (id)asset;
 - (id)avAsset;
+- (struct CGImage { }*)cgimageWithSize:(struct CGSize { double x1; double x2; })arg1;
+- (struct CGImage { }*)cgimageWithSize:(struct CGSize { double x1; double x2; })arg1 imageManager:(id)arg2;
 - (void)dealloc;
 - (id)derivativeFilePath;
 - (id)description;
@@ -70,6 +73,9 @@
 - (long long)mediaType;
 - (id)modificationDate;
 - (id)mostUsefulResource;
+- (id)privateFileURL;
+- (id)privateFileURLForResource:(id)arg1;
+- (id)privateVideoFileURL;
 - (void)queryLastKnownPersistenceState;
 - (int)requestExportSessionWithResultHandler:(id /* block */)arg1 progressHandler:(id /* block */)arg2;
 - (int)requestImageDataWithResultHandler:(id /* block */)arg1;

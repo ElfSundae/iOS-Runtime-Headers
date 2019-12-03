@@ -3,10 +3,10 @@
  */
 
 @interface EMAccountAuthentication : NSObject {
-    <EMAccountFactory> * _accountFactory;
+    <EDAccountFactory> * _accountFactory;
 }
 
-@property (nonatomic, readonly) <EMAccountFactory> *accountFactory;
+@property (nonatomic, readonly) <EDAccountFactory> *accountFactory;
 
 + (id)log;
 

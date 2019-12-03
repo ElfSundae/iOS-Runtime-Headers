@@ -19,6 +19,7 @@
 - (void).cxx_destruct;
 - (id)applePayEnabled;
 - (id)attentionDetectionEnabled;
+- (id)description;
 - (id)dictionary;
 - (id)identificationEnabled;
 - (id)initWithDictionary:(id)arg1 effective:(bool)arg2;

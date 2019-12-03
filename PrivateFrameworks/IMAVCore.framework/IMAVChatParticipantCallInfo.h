@@ -51,6 +51,7 @@
 @property (nonatomic, retain) NSData *remoteSKEData;
 @property (nonatomic) long long state;
 
+- (void).cxx_destruct;
 - (unsigned int)callID;
 - (void)dealloc;
 - (id)description;

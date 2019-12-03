@@ -17,7 +17,6 @@
 @property (readonly) NSString *displayName;
 @property (readonly) NSArray *handles;
 @property (readonly) unsigned long long hash;
-@property (readonly) NSString *idsCanonicalDestination;
 @property (readonly) NSArray *idsCanonicalDestinations;
 @property (readonly) NSString *isoCountryCode;
 @property (readonly) long long mostRecentCallType;
@@ -33,7 +32,6 @@
 - (id)destinationId;
 - (id)displayName;
 - (id)handles;
-- (id)idsCanonicalDestination;
 - (id)idsCanonicalDestinations;
 - (id)init;
 - (id)initWithAutocompleteResult:(id)arg1;

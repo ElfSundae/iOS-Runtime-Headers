@@ -3,13 +3,18 @@
  */
 
 @interface AFMyriadMonitor : NSObject <AFNotifyObserverDelegate> {
-    AFNotifyObserver * _beganObserver;
-    struct __CFNotificationCenter { } * _center;
-    NSMutableArray * _completions;
+    AFNotifyObserver * _beginObserver;
+    AFQueue * _completions;
+    bool  _didRequestCurrentDecisionResult;
+    bool  _ignoreMyriadEvents;
+    bool  _ignoreRepostMyriadNotification;
+    bool  _isRegisteredForMyriadEventNotification;
     AFNotifyObserver * _lostObserver;
+    double  _myriadEventMonitorTimeout;
     NSObject<OS_dispatch_queue> * _myriadMonitorQueue;
+    AFNotifyObserver * _repostedWonObserver;
     long long  _state;
-    NSObject<OS_dispatch_source> * _timer;
+    AFWatchdogTimer * _timer;
     AFNotifyObserver * _wonObserver;
 }
 
@@ -18,18 +23,28 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (void)clear;
 + (id)sharedMonitor;
-+ (void)waitForMyriadDecisionWithCompletion:(id /* block */)arg1;
 
 - (void).cxx_destruct;
+- (void)_clear;
+- (void)_dequeueBlocksWithSignal:(long long)arg1;
+- (void)_deregisterFromMyriadEventNotifications;
+- (void)_deregisterFromRepostedDecisionResultsObservers;
+- (void)_fetchCurrentMyraidDecision;
 - (void)_flushCompletions:(bool)arg1;
-- (void)addCompletion:(id /* block */)arg1;
-- (void)clear;
+- (void)_ignoreRepostMyriadNotification:(bool)arg1;
+- (id)_myriadStateToString:(long long)arg1;
+- (void)_registerForMyriadEvents;
+- (void)_resultSeenWithValue:(bool)arg1;
+- (void)_setDecisionIsPending;
 - (void)dealloc;
+- (void)dequeueBlocksWaitingForMyriadDecision;
+- (bool)didWin;
+- (void)ignoreMyriadEvents:(bool)arg1;
 - (id)init;
 - (void)notifyObserver:(id)arg1 didReceiveNotificationWithToken:(int)arg2;
-- (void)resultSeenWithValue:(bool)arg1;
-- (void)setDecisionIsPending;
+- (void)startMonitoringWithTimeoutInterval:(double)arg1;
+- (void)stopMonitoring;
+- (void)waitForMyriadDecisionWithCompletion:(id /* block */)arg1;
 
 @end

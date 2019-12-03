@@ -11,6 +11,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool isValid;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSURLSession *urlSession;
 
@@ -20,6 +21,7 @@
 - (void)dealloc;
 - (id)initWithAuthentication:(id)arg1;
 - (void)invalidate;
+- (bool)isValid;
 - (id)urlSession;
 
 @end

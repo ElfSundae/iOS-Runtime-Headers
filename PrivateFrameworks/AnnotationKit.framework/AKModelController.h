@@ -3,7 +3,7 @@
  */
 
 @interface AKModelController : NSObject {
-    NSMutableOrderedSet * _mutablePageModelControllers;
+    AKSparseMutableControllerArray * _mutablePageModelControllers;
 }
 
 @property (readonly) NSArray *pageModelControllers;

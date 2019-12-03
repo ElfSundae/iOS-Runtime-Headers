@@ -3,6 +3,7 @@
  */
 
 @interface UIKBTree : NSObject <NSCopying> {
+    bool  _isFloating;
     NSMutableDictionary * cache;
     NSString * effectiveLayoutTag;
     NSString * layoutTag;
@@ -14,6 +15,7 @@
 
 @property (nonatomic, retain) NSMutableDictionary *cache;
 @property (nonatomic, retain) NSString *effectiveLayoutTag;
+@property (nonatomic) bool isFloating;
 @property (nonatomic, retain) NSString *layoutTag;
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSMutableDictionary *properties;
@@ -48,6 +50,7 @@
 - (void)addWriteboardKeyToCachedKeyListWithShape:(id)arg1 rendering:(int)arg2;
 - (void)addkeyToCachedKeyList:(id)arg1;
 - (bool)allowRetestAfterCommittingDownActions;
+- (bool)allowsStartingContinuousPath;
 - (id)alternateKeyplaneName;
 - (id)attributeSet:(bool)arg1;
 - (id)autolocalizedKeyCacheIterator;
@@ -65,7 +68,7 @@
 - (void)centerKeys:(id)arg1 inRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 scale:(double)arg3;
 - (void)clearManualAddedKey;
 - (void)clearTransientCaches;
-- (int)clipCorners;
+- (unsigned long long)clipCorners;
 - (id)componentName;
 - (bool)containsDividerVariant;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -107,6 +110,7 @@
 - (id)initWithType:(int)arg1;
 - (id)initWithType:(int)arg1 withName:(id)arg2 withProperties:(id)arg3 withSubtrees:(id)arg4 withCache:(id)arg5;
 - (void)insertKey:(id)arg1 withFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 andShiftKeys:(id)arg3 scale:(double)arg4;
+- (void)insetKeys:(id)arg1 withInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg2 scale:(double)arg3;
 - (long long)intForProperty:(id)arg1;
 - (int)interactionType;
 - (bool)isAlphabeticPlane;
@@ -114,8 +118,10 @@
 - (bool)isEqualToTree:(id)arg1;
 - (bool)isExemptFromInputManagerHitTesting;
 - (bool)isExemptFromInputManagerLayout;
+- (bool)isFloating;
 - (bool)isGenerated;
 - (bool)isHashed;
+- (bool)isKanaPlane;
 - (bool)isLeafType;
 - (bool)isLetters;
 - (bool)isRightToLeftSensitive;
@@ -132,6 +138,7 @@
 - (id)keyplaneForKey:(id)arg1;
 - (id)keys;
 - (id)keysByKeyName:(id)arg1;
+- (id)keysForDisplayRowAtIndex:(unsigned long long)arg1;
 - (id)keysForMergeConditions;
 - (id)keysOrderedByPosition;
 - (id)keysOrderedByPositionRTL;
@@ -177,6 +184,8 @@
 - (void)replaceKey:(id)arg1 withKey:(id)arg2;
 - (void)repositionKeys:(id)arg1 withOffset:(struct CGPoint { double x1; double x2; })arg2 scale:(double)arg3;
 - (id)representedString;
+- (void)resizeKeys:(id)arg1 withOffset:(struct CGPoint { double x1; double x2; })arg2 scale:(double)arg3;
+- (double)resizingOffset;
 - (id)rightSpaceKey;
 - (void)scaleKeys:(id)arg1 withFactor:(struct CGSize { double x1; double x2; })arg2 scale:(double)arg3;
 - (id)scriptSwitchKey;
@@ -187,7 +196,7 @@
 - (void)setAttributes:(id)arg1;
 - (void)setCache:(id)arg1;
 - (void)setCachedGestureLayout:(id)arg1;
-- (void)setClipCorners:(int)arg1;
+- (void)setClipCorners:(unsigned long long)arg1;
 - (void)setDisabled:(bool)arg1;
 - (void)setDisplayRowHint:(int)arg1;
 - (void)setDisplayString:(id)arg1;
@@ -204,6 +213,7 @@
 - (void)setGroupNeighbor:(unsigned long long)arg1;
 - (void)setHighlightedVariantsList:(id)arg1;
 - (void)setInteractionType:(int)arg1;
+- (void)setIsFloating:(bool)arg1;
 - (void)setIsGenerated:(bool)arg1;
 - (void)setLayoutTag:(id)arg1;
 - (void)setLayoutTag:(id)arg1 passingKeyTest:(id /* block */)arg2;
@@ -216,6 +226,7 @@
 - (void)setProperties:(id)arg1;
 - (void)setRendering:(int)arg1;
 - (void)setRepresentedString:(id)arg1;
+- (void)setResizingOffset:(double)arg1;
 - (void)setSecondaryDisplayStrings:(id)arg1;
 - (void)setSecondaryRepresentedStrings:(id)arg1;
 - (void)setSelectedVariantIndex:(long long)arg1;
@@ -249,6 +260,8 @@
 - (id)subtrees;
 - (bool)subtreesAreOrdered;
 - (id)subtreesWithProperty:(id)arg1 value:(id)arg2;
+- (id)supplementaryKeyList;
+- (bool)supportsContinuousPath;
 - (bool)supportsType:(long long)arg1;
 - (long long)textAlignment;
 - (int)type;
@@ -269,5 +282,6 @@
 - (void)zipAttributes;
 - (void)zipGeometries:(bool)arg1 attributes:(bool)arg2;
 - (void)zipGeometrySet;
+- (void)zipOnlyGeometrySet;
 
 @end

@@ -26,12 +26,13 @@
 - (void)_archiveFileTransfer:(id)arg1;
 - (id)_attachmentStoreSharedInstance;
 - (void)_clearProgressForTransferGUID:(id)arg1;
+- (struct IMPreviewConstraints { double x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; double x3; bool x4; })_clientPreviewConstraints;
 - (void)_completeProgressForTransferGUID:(id)arg1;
 - (id)_createWrapperForTransfer:(id)arg1;
 - (id)_dictionaryRepresentationsForFileTransfers:(id)arg1 toSave:(bool)arg2;
 - (id)_getNewFileTransferForStoredAttachmentPayloadDataWithTransferGUID:(id)arg1 messageGUID:(id)arg2;
 - (void)_handleFileTransfer:(id)arg1 acceptedWithPath:(id)arg2 autoRename:(bool)arg3 overwrite:(bool)arg4 postNotification:(bool)arg5;
-- (void)_handleFileTransfer:(id)arg1 createdWithProperties:(id)arg2 fromPid:(int)arg3;
+- (void)_handleFileTransfer:(id)arg1 createdWithProperties:(id)arg2 withAuditToken:(struct { unsigned int x1[8]; })arg3;
 - (void)_handleFileTransfer:(id)arg1 updatedWithProperties:(id)arg2;
 - (void)_handleFileTransferRemoved:(id)arg1;
 - (void)_handleFileTransferStopped:(id)arg1;
@@ -46,6 +47,8 @@
 - (bool)_shouldUpdateSyncStats:(id)arg1 originalSyncState:(long long)arg2;
 - (id)_statsCollector;
 - (id)_temporaryPathForGUID:(id)arg1 filename:(id)arg2;
+- (id)_transcodeControllerSharedInstance;
+- (bool)_transferRequiresPreviewSizing:(id)arg1;
 - (void)_transferTimerTick:(id)arg1;
 - (void)_updateContextStamp;
 - (void)_updateSyncStatsForAttachments:(id)arg1 incrementTotalAttachmentCount:(unsigned long long)arg2;
@@ -79,18 +82,19 @@
 - (void)markTransferAsNotSyncSuccessFullyUsingCKRecord:(id)arg1;
 - (void)markTransferAsNotSyncSuccessfullyDownloadedFromCloud:(id)arg1;
 - (bool)populateLocalURLsForTransfer:(id)arg1 fromCKRecord:(id)arg2;
-- (void)registerStandaloneTransfer:(id)arg1;
 - (void)removeTransferForGUID:(id)arg1;
 - (void)removeUnassignedTransfers;
 - (void)resetSyncStateForRecord:(id)arg1 toState:(long long)arg2;
 - (void)resetTransfer:(id)arg1 andPostReason:(long long)arg2;
 - (void)resetTransferAndPostError:(id)arg1 error:(id)arg2;
 - (void)setContextStamp:(id)arg1;
+- (void)sizePreviewsForTransferGUIDs:(id)arg1;
 - (void)startFinalizingTransfer:(id)arg1;
 - (void)startTransfer:(id)arg1;
 - (id)transferForGUID:(id)arg1;
 - (void)updateTransfer:(id)arg1;
 - (void)updateTransfer:(id)arg1 currentBytes:(unsigned long long)arg2 totalBytes:(unsigned long long)arg3;
+- (void)updateTransfer:(id)arg1 withPreviewSize:(id)arg2 forConstraints:(struct IMPreviewConstraints { double x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; double x3; bool x4; })arg3;
 - (void)updateTransferAsWaitingForAccept:(id)arg1;
 - (id)updateTransfersWithCKRecord:(id)arg1 recordWasFetched:(bool)arg2 downloadAsset:(bool*)arg3;
 

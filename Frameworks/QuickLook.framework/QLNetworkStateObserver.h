@@ -5,6 +5,13 @@
 @interface QLNetworkStateObserver : NSObject <QLNetworkStateListener, RadiosPreferencesDelegate> {
     NSMutableArray * _completionBlocks;
     int  _iCloudDriveReachabilityToken;
+    struct { 
+        long long version; 
+        void *info; 
+        int (*retain)(); 
+        int (*release)(); 
+        int (*copyDescription)(); 
+    }  _networkReachabilityContext;
     unsigned long long  _networkState;
     NSObject<OS_dispatch_queue> * _queue;
     RadiosPreferences * _radiosPreferences;

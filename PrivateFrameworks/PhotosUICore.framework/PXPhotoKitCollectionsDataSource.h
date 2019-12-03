@@ -8,6 +8,7 @@
     NSDictionary * __collectionsIndexPathsByCollection;
     NSDictionary * __keyAssetsFetchResultsByCollection;
     NSArray * __virtualCollections;
+    PHFetchResult * _collectionsFetchResult;
     PXPhotoKitCollectionsDataSourceManagerConfiguration * _configuration;
     NSDictionary * _itemFetchResultByCollection;
 }
@@ -17,6 +18,7 @@
 @property (nonatomic, readonly) NSDictionary *_collectionsIndexPathsByCollection;
 @property (nonatomic, readonly) NSDictionary *_keyAssetsFetchResultsByCollection;
 @property (nonatomic, readonly) NSArray *_virtualCollections;
+@property (nonatomic, readonly) PHFetchResult *collectionsFetchResult;
 @property (nonatomic, readonly) PXPhotoKitCollectionsDataSourceManagerConfiguration *configuration;
 @property (nonatomic, readonly) NSDictionary *itemFetchResultByCollection;
 
@@ -31,15 +33,21 @@
 - (id)_collectionsIndexPathsByCollection;
 - (id)_keyAssetsFetchResultsByCollection;
 - (id)_virtualCollections;
+- (long long)assetCollectionsCountForFetchResult:(id)arg1;
+- (long long)assetCollectionsCountForSection:(long long)arg1;
 - (id)collectionAtIndexPath:(id)arg1;
 - (id)collectionListForSection:(long long)arg1;
+- (id)collectionsFetchResult;
+- (long long)collectionsListCountForFetchResult:(id)arg1;
+- (long long)collectionsListCountForSection:(long long)arg1;
 - (id)configuration;
+- (id)content;
 - (long long)countForCollection:(id)arg1;
 - (void)enumerateCollectionsUsingBlock:(id /* block */)arg1;
 - (id)indexPathForCollection:(id)arg1;
 - (struct PXSimpleIndexPath { unsigned long long x1; long long x2; long long x3; long long x4; })indexPathForObjectReference:(id)arg1;
 - (id)init;
-- (id)initWithCollectionListBySection:(id)arg1 collectionsFetchResultBySection:(id)arg2 keyAssetsFetchResultsByCollection:(id)arg3 collectionsIndexPathsByCollection:(id)arg4 itemFetchResultByCollection:(id)arg5 virtualCollections:(id)arg6 dataSourceConfiguration:(id)arg7;
+- (id)initWithCollectionListBySection:(id)arg1 collectionsFetchResultBySection:(id)arg2 keyAssetsFetchResultsByCollection:(id)arg3 collectionsIndexPathsByCollection:(id)arg4 itemFetchResultByCollection:(id)arg5 virtualCollections:(id)arg6 collectionsFetchResult:(id)arg7 dataSourceConfiguration:(id)arg8;
 - (id)itemFetchResultByCollection;
 - (long long)numberOfItemsInSection:(long long)arg1;
 - (long long)numberOfSections;

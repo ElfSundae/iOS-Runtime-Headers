@@ -5,20 +5,20 @@
 
 @required
 
-- (long long)collectionEndTimestamp;
-- (long long)collectionStartTimestamp;
-- (int)configuredLookbackTimeInDays;
+- (float)image;
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;
 - (NSData *)jsonData;
 - (float)other;
-- (void)setCollectionEndTimestamp:(long long)arg1;
-- (void)setCollectionStartTimestamp:(long long)arg1;
-- (void)setConfiguredLookbackTimeInDays:(int)arg1;
+- (float)querySuggestion;
+- (float)recentResult;
+- (void)setImage:(float)arg1;
 - (void)setOther:(float)arg1;
+- (void)setQuerySuggestion:(float)arg1;
+- (void)setRecentResult:(float)arg1;
 - (void)setTotalEngagements:(int)arg1;
-- (void)setTotalSessions:(int)arg1;
+- (void)setZkw:(float)arg1;
 - (int)totalEngagements;
-- (int)totalSessions;
+- (float)zkw;
 
 @end

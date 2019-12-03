@@ -18,12 +18,14 @@
     id  _progressSubscriberOrSubscribers;
     NSFileProviderProxy * _provider;
     NSFileAccessNode * _symbolicLinkDestination;
+    bool  _symbolicLinkIsFirmlink;
     unsigned long long  _symbolicLinkReferenceCount;
 }
 
 - (id)_childrenExcludingExcessNodes:(bool)arg1 excludingReactors:(bool)arg2;
 - (void)_forEachRelevantAccessClaimExcludingClaimsFromSuperarbiter:(bool)arg1 performProcedure:(id /* block */)arg2;
 - (bool)_mayContainCriticalDebuggingInformationExcludingReactors:(bool)arg1;
+- (void)_setLinkDestination:(id)arg1;
 - (void)addAccessClaim:(id)arg1;
 - (void)addPresenter:(id)arg1;
 - (void)addProgressPublisher:(id)arg1;
@@ -78,6 +80,7 @@
 - (id)sensitiveSubarbiterDescription;
 - (void)setArbitrationBoundary;
 - (void)setChild:(id)arg1 forName:(id)arg2 normalizedName:(id)arg3;
+- (void)setFirmlinkDestination:(id)arg1;
 - (void)setParent:(id)arg1 name:(id)arg2;
 - (bool)setProvider:(id)arg1;
 - (void)setSymbolicLinkDestination:(id)arg1;

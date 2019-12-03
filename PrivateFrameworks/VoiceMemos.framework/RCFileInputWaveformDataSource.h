@@ -33,6 +33,7 @@
 - (void)setLoadingProgress:(float)arg1;
 - (bool)setPaused:(bool)arg1;
 - (void)setSourceTimeRange:(struct { double x1; double x2; })arg1;
+- (bool)shouldMergeLiveWaveform;
 - (struct { double x1; double x2; })sourceTimeRange;
 - (void)startLoading;
 - (id)synchronouslyApproximateWaveformSegmentsByReadingCurrentFileAheadTimeRange:(struct { double x1; double x2; })arg1;

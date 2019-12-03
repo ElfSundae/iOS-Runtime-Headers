@@ -7,8 +7,8 @@
 
 + (NSArray *)allDatabaseColumnNames;
 + (NSSet *)checkConstraints;
-+ (const struct { id x1; unsigned char x2; }*)columnDefinitionsWithCount:(unsigned long long*)arg1;
-+ (NSArray *)columnsDefinition;
++ (const struct { id x1; id x2; unsigned char x3; }*)columnDefinitionsWithCount:(unsigned long long*)arg1;
++ (NSString *)createTableSQL;
 + (NSString *)databaseName;
 + (NSString *)databaseTable;
 + (HDSQLiteStatement *)deleteStatementWithProperty:(NSString *)arg1 database:(HDSQLiteDatabase *)arg2;
@@ -21,8 +21,10 @@
 + (NSArray *)indices;
 + (bool)isTemporary;
 + (NSSet *)joinClausesForProperty:(NSString *)arg1;
++ (HDSQLiteOrderingTerm *)orderingTermForSortDescriptor:(NSSortDescriptor *)arg1;
 + (NSArray *)privateSubEntities;
 + (NSArray *)tableAliases;
++ (NSArray *)uniquedColumns;
 
 - (NSUUID *)UUIDForProperty:(NSString *)arg1 database:(HDSQLiteDatabase *)arg2;
 - (bool)booleanForProperty:(NSString *)arg1 database:(HDSQLiteDatabase *)arg2;
@@ -34,9 +36,5 @@
 - (NSString *)stringForProperty:(NSString *)arg1 database:(HDSQLiteDatabase *)arg2;
 - (id)valueForProperty:(NSString *)arg1 database:(HDSQLiteDatabase *)arg2;
 - (void)willDeleteFromDatabase:(HDSQLiteDatabase *)arg1;
-
-@optional
-
-+ (NSString *)columnNameForSortIdentifier:(NSString *)arg1;
 
 @end

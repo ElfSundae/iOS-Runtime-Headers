@@ -5,14 +5,12 @@
 @interface SFDeviceAssetManager : NSObject {
     bool  _activateCalled;
     NSURL * _cacheDirectory;
-    NSDictionary * _cachedMpnMappingTable;
     NSDictionary * _cachedProductMappingsTable;
     NSMutableDictionary * _cachedQueryPaths;
     MAAsset * _deviceAssetManagement;
     NSObject<OS_dispatch_queue> * _dispatchQueue;
     bool  _invalidateCalled;
     bool  _invalidateDone;
-    NSDictionary * _mpnMappingTable;
     NSString * _networkStatus;
     NSDictionary * _productTypesMappingTable;
     CUReachabilityMonitor * _reachabilityMonitor;
@@ -36,15 +34,12 @@
 - (id)init;
 - (void)invalidate;
 - (id)localCacheWithFileName:(id)arg1;
-- (id)locallyCachedMPNsForProductType:(id)arg1;
 - (id)locallyCachedProductMappings;
 - (id)locallyCachedQueryResults;
 - (void)logNetworkStatus;
 - (void)mappedProductTypeForProductType:(id)arg1 completionHandler:(id /* block */)arg2;
-- (id)mpnMappingFileNameForProductType:(id)arg1;
 - (id)networkStatus;
 - (void)onqueue_activate;
-- (id)onqueue_assetMappedMPNForMPN:(id)arg1 forProductType:(id)arg2;
 - (id)onqueue_assetMappedProductTypeForProductType:(id)arg1;
 - (void)onqueue_downloadAsset:(id)arg1 ucat:(struct LogCategory { int x1; int x2; char *x3; unsigned int x4; char *x5; char *x6; int x7; struct LogCategory {} *x8; struct LogOutput {} *x9; struct LogOutput {} *x10; unsigned long long x11; unsigned long long x12; unsigned int x13; unsigned int x14; char *x15; struct LogCategoryPrivate {} *x16; }*)arg2 queryLogString:(id)arg3 withCompletionHandler:(id /* block */)arg4;
 - (void)onqueue_executeNextMAQueryForTask:(id)arg1;
@@ -58,15 +53,15 @@
 - (id)onqueue_sharingManagementAsset;
 - (void)onqueue_updateMetaDataWithCompletionHandler:(id /* block */)arg1;
 - (void)onqueue_updateSharingManagementAssetIfNecessary;
-- (void)onqueue_validateMPNInQuery:(id)arg1;
 - (void)onqueue_validateProductTypeInQuery:(id)arg1;
+- (void)onqueue_variantsMatchingQuery:(id)arg1 completionHandler:(id /* block */)arg2;
 - (bool)pathInLocalCache:(id)arg1;
 - (void)purgeAssetsMatchingQuery:(id)arg1;
 - (void)setDispatchQueue:(id)arg1;
 - (void)setUseProcessLocalCache:(bool)arg1;
 - (void)storeEntries:(id)arg1 inLocalCacheWithFileName:(id)arg2;
-- (void)storeMPNsInLocalCache:(id)arg1 forProductType:(id)arg2;
 - (void)storeProductMappingsInLocalCache:(id)arg1;
 - (bool)useProcessLocalCache;
+- (void)variantsMatchingQuery:(id)arg1 completionHandler:(id /* block */)arg2;
 
 @end

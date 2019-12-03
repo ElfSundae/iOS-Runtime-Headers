@@ -6,6 +6,6 @@
 @required
 
 - (NMROrigin *)origin;
-- (void)sendMediaRemoteCommand:(unsigned int)arg1 options:(NSDictionary *)arg2 launchApp:(bool)arg3;
+- (void)sendMediaRemoteCommand:(void *)arg1 options:(void *)arg2 launchApp:(void *)arg3 completion:(void *)arg4; // needs 4 arg types, found 9: unsigned int, NSDictionary *, bool, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSError *, void*
 
 @end

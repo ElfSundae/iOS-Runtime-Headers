@@ -12,7 +12,7 @@
 @property (nonatomic, retain) PDAnimationInfoData *mediaData;
 @property (nonatomic, retain) PDMediaNode *mediaNode;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)entranceData;
 - (id)exitData;

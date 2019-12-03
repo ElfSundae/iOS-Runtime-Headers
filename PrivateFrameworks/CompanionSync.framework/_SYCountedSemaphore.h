@@ -3,10 +3,10 @@
  */
 
 @interface _SYCountedSemaphore : NSObject {
-    int  _count;
-    bool  _invalidated;
-    unsigned int  _sem_port;
-    int  _signals;
+    _Atomic int  _count;
+    _Atomic bool  _invalidated;
+    _Atomic unsigned int  _sem_port;
+    _Atomic int  _signals;
 }
 
 - (void)_ensureSemaphore;

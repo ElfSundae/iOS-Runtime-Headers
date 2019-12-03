@@ -9,7 +9,6 @@
 
 @optional
 
-- (bool)isPhoneFlow;
 - (void)popViewController:(UIViewController *)arg1;
 - (void)receivedResponse;
 - (void)setDefaultNavigationItems:(UIViewController *)arg1;

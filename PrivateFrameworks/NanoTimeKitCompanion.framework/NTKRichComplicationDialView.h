@@ -7,7 +7,10 @@
     CALayer * _largeTickLayer;
     double  _largeTickPositionY;
     CAReplicatorLayer * _largeTicksReplicatorLayer;
+    double  _largeTicksTransformAngle;
     float  _progress;
+    float  _progressDirection;
+    long long  _smallTickCountPerLargeTick;
     CALayer * _smallTickLayer;
     double  _smallTickPositionY;
     CAReplicatorLayer * _smallTicksReplicatorLayer;
@@ -15,15 +18,20 @@
 
 @property (nonatomic, readonly) CALayer *largeTickLayer;
 @property (nonatomic) float progress;
+@property (nonatomic) float progressDirection;
 @property (nonatomic, readonly) CALayer *smallTickLayer;
 
 - (void).cxx_destruct;
-- (id)initWithLargeTickCount:(long long)arg1 largeTickSize:(struct CGSize { double x1; double x2; })arg2 smallTickSize:(struct CGSize { double x1; double x2; })arg3 dialRange:(double)arg4 startAngle:(double)arg5;
+- (void)_updateTicksRotationTransform;
+- (id)initWithLargeTickCount:(long long)arg1 smallTickCountPerLargeTick:(long long)arg2 largeTickSize:(struct CGSize { double x1; double x2; })arg3 smallTickSize:(struct CGSize { double x1; double x2; })arg4 dialRange:(double)arg5 startAngle:(double)arg6;
 - (id)initWithTickCount:(long long)arg1 tickSize:(struct CGSize { double x1; double x2; })arg2 dialRange:(double)arg3 startAngle:(double)arg4;
 - (id)largeTickLayer;
 - (void)layoutSubviews;
 - (float)progress;
+- (float)progressDirection;
+- (void)setLargeTicksTransformAngle:(double)arg1;
 - (void)setProgress:(float)arg1;
+- (void)setProgressDirection:(float)arg1;
 - (id)smallTickLayer;
 
 @end

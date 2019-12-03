@@ -3,59 +3,38 @@
  */
 
 @interface ConversationKit.ParticipantView : UIView {
-    void associatedVideoProvider;
-    void audioVisualizationView;
-    void avatarToLabelLayoutGuide;
-    void backgroundBackdropView;
+    void alertView;
+    void backgroundEffectsView;
     void bottomBar;
-    void bottomBarButton;
-    void bottomBarHideTimer;
-    void bottomBarLabel;
-    void contactGlowView;
-    void contactView;
     void contentView;
-    void debugProminenceLabel;
+    void customCornerRadius;
+    void debugLabel;
     void delegate;
-    void labelState;
-    void lastConfigurationHashValue;
-    void loggingIdentifier;
-    void overallLayoutState;
-    void overlayBackdropView;
-    void overlayConstraints;
-    void overlayIconView;
-    void overlaySpinner;
-    void overlaySubtitleLabel;
-    void overlayTitleLabelContainerView;
-    void overlayViewBottomLayoutGuide;
-    void overlayViewTopLayoutGuide;
-    void participantIdentifier;
-    void pausedVideoView;
-    void squareLayoutGuide;
-    void style;
-    void videoTransform;
+    void hideAlertViewTimer;
+    void hideBottomBarTimer;
+    void isExpanded;
+    void isInRoster;
+    union { in /* Warning: Unrecognized filer type: 'u' using 'void*' */ void*x1; long x2; long x3; }  loggingIdentifier;
+    void monogramView;
+    void mostRecentViewModelHash;
+    union { in /* Warning: Unrecognized filer type: 'u' using 'void*' */ void*x1; long x2; long x3; }  participantIdentifier;
+    void videoOverlayView;
     void videoView;
 }
 
-@property (nonatomic, readonly) UIVisualEffectView *bottomBar;
-@property (nonatomic, readonly) UILabel *bottomBarLabel;
-@property (nonatomic, readonly) UIVisualEffectView *overlayBackdropView;
-@property (nonatomic, readonly) UIImageView *overlayIconView;
-@property (nonatomic, readonly) UILabel *overlaySubtitleLabel;
-@property (nonatomic) long long style;
+@property (nonatomic, readonly) _TtC15ConversationKit19ParticipantInfoView *bottomBar;
+@property (nonatomic) bool isExpanded;
+@property (nonatomic) bool isInRoster;
 
 - (void).cxx_destruct;
-- (bool)accessibilityIsShowingVideo;
 - (id)bottomBar;
-- (id)bottomBarLabel;
 - (void)dealloc;
-- (void)didTapExpandButton;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (bool)isExpanded;
+- (bool)isInRoster;
 - (void)layoutSubviews;
-- (id)overlayBackdropView;
-- (id)overlayIconView;
-- (id)overlaySubtitleLabel;
-- (void)setStyle:(long long)arg1;
-- (long long)style;
+- (void)setIsExpanded:(bool)arg1;
+- (void)setIsInRoster:(bool)arg1;
 
 @end

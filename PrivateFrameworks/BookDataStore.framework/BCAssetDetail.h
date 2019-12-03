@@ -14,6 +14,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) long long editGeneration;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool isAudiobook;
 @property (nonatomic) bool isFinished;
 @property (nonatomic, copy) NSDate *lastOpenDate;
 @property (nonatomic, readonly, copy) NSDate *modificationDate;
@@ -38,10 +39,11 @@
 
 + (id)propertyIDKey;
 
-- (void)_configureFromAssetDetail:(id)arg1;
-- (void)configureFromCloudData:(id)arg1;
+- (void)_configureFromAssetDetail:(id)arg1 withMergers:(id)arg2;
+- (void)configureFromCloudData:(id)arg1 withMergers:(id)arg2;
 - (id)debugDescription;
 - (id)identifier;
+- (bool)isAudiobook;
 - (bool)isEqualExceptForDate:(id)arg1;
 - (id)mutableCopy;
 - (id)recordType;

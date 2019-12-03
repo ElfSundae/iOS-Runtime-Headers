@@ -3,6 +3,7 @@
  */
 
 @interface PDFViewPrivate : NSObject {
+    unsigned long long  activeMarkupStyle;
     PDFAKOverlayAdaptor * akOverlayAdaptor;
     bool  autoScale;
     double  blockingWaitDuration;
@@ -11,6 +12,7 @@
     unsigned long long  currentPageIndex;
     PDFSelection * currentSelection;
     PDFAnnotation * currentTextWidget;
+    bool  dataDetectorsEnabled;
     bool  debugDrawCGPDFNodeLayer;
     <PDFViewDelegate> * delegate;
     bool  delegateOrdersPageDrawing;
@@ -34,8 +36,8 @@
         double y; 
     }  documentViewCenterBeforeRotation;
     PDFDocumentViewController * documentViewController;
+    UITapGestureRecognizer * doubleTapGestureRecognizer;
     UIDragInteraction * dragInteraction;
-    bool  enableSelectionDrawing;
     struct CGRect { 
         struct CGPoint { 
             double x; 
@@ -69,7 +71,6 @@
     unsigned long long  lastVerticalScrollDirection;
     unsigned long long  lastVisiblePage;
     UILongPressGestureRecognizer * longPressGestureRecognizer;
-    bool  needsRotationZoomFix;
     struct UIEdgeInsets { 
         double top; 
         double left; 
@@ -78,16 +79,17 @@
     }  pageBreakMargins;
     PDFTimer * pageSyncTimer;
     NSDictionary * pageViewControllerOptions;
-    PDFPanGestureRecognizer * panGestureRecognizer;
     PDFPasswordViewController * passwordViewController;
-    NSObject<PDFViewPopupManager> * popupManager;
     PDFRenderingProperties * renderingProperties;
+    struct UIEdgeInsets { 
+        double top; 
+        double left; 
+        double bottom; 
+        double right; 
+    }  savedSafeAreaInsets;
     bool  scaling;
-    unsigned long long  scrollEntry;
     PDFScrollView * scrollView;
-    bool  scrollingChangesPages;
     bool  showsScrollIndicators;
-    UISwipeGestureRecognizer * swipeGestureRecognizer;
     UITapGestureRecognizer * tapGestureRecognizer;
     PDFTimer * tilesSyncTimer;
     PDFViewLayout * viewLayout;

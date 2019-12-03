@@ -40,6 +40,7 @@
 - (unsigned long long)documentPageIndex;
 - (bool)doingPagination;
 - (unsigned long long)footnoteIndex;
+- (struct _NSRange { unsigned long long x1; unsigned long long x2; })footnoteRangeInBodyTextRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (id)initWithBodyStorage:(id)arg1;
 - (bool)isPaginationComplete;
 - (bool)isPaginationCompleteThroughDocumentPageIndex:(unsigned long long)arg1;

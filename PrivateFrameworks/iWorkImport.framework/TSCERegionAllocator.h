@@ -21,7 +21,7 @@
 - (void)dealloc;
 - (id)initWithInitialCapacity:(unsigned long long)arg1;
 - (void*)malloc:(unsigned long long)arg1;
-- (struct TSCEASTNodeArray { char *x1; unsigned long long x2; unsigned long long x3; id x4; }*)managedNodeArrayWithCapacity:(unsigned long long)arg1;
+- (struct TSCEASTNodeArray { char *x1; unsigned long long x2; unsigned long long x3; id x4; bool x5; }*)managedNodeArrayWithCapacity:(unsigned long long)arg1;
 - (void)reset;
 
 @end

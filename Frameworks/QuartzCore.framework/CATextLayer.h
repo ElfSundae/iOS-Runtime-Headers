@@ -17,6 +17,8 @@
 @property (copy) id truncationString;
 @property (getter=isWrapped) bool wrapped;
 
+// Image: /System/Library/Frameworks/QuartzCore.framework/QuartzCore
+
 + (bool)CA_automaticallyNotifiesObservers:(Class)arg1;
 + (id)defaultValueForKey:(id)arg1;
 + (bool)needsDisplayForKey:(id)arg1;
@@ -54,5 +56,9 @@
 - (id)truncationMode;
 - (id)truncationString;
 - (bool)wrapped;
+
+// Image: /System/Library/PrivateFrameworks/CoreMaterial.framework/CoreMaterial
+
+- (void)mt_applyVisualStying:(id)arg1;
 
 @end

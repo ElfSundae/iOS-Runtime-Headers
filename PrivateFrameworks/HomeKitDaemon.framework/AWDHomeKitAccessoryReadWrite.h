@@ -14,10 +14,13 @@
         unsigned int errorCode : 1; 
         unsigned int source : 1; 
         unsigned int transportType : 1; 
+        unsigned int underlyingErrorCode : 1; 
+        unsigned int isCached : 1; 
         unsigned int isRemote : 1; 
         unsigned int isTimedWrite : 1; 
         unsigned int isWrite : 1; 
     }  _has;
+    bool  _isCached;
     bool  _isRemote;
     bool  _isTimedWrite;
     bool  _isWrite;
@@ -26,6 +29,8 @@
     NSString * _transaction;
     NSString * _transportProtocolVersion;
     int  _transportType;
+    unsigned int  _underlyingErrorCode;
+    NSString * _underlyingErrorDomain;
     AWDHomeKitVendorInformation * _vendorDetails;
 }
 
@@ -36,6 +41,7 @@
 @property (nonatomic) bool hasCertified;
 @property (nonatomic) bool hasDuration;
 @property (nonatomic) bool hasErrorCode;
+@property (nonatomic) bool hasIsCached;
 @property (nonatomic) bool hasIsRemote;
 @property (nonatomic) bool hasIsTimedWrite;
 @property (nonatomic) bool hasIsWrite;
@@ -44,7 +50,10 @@
 @property (nonatomic, readonly) bool hasTransaction;
 @property (nonatomic, readonly) bool hasTransportProtocolVersion;
 @property (nonatomic) bool hasTransportType;
+@property (nonatomic) bool hasUnderlyingErrorCode;
+@property (nonatomic, readonly) bool hasUnderlyingErrorDomain;
 @property (nonatomic, readonly) bool hasVendorDetails;
+@property (nonatomic) bool isCached;
 @property (nonatomic) bool isRemote;
 @property (nonatomic) bool isTimedWrite;
 @property (nonatomic) bool isWrite;
@@ -53,6 +62,8 @@
 @property (nonatomic, retain) NSString *transaction;
 @property (nonatomic, retain) NSString *transportProtocolVersion;
 @property (nonatomic) int transportType;
+@property (nonatomic) unsigned int underlyingErrorCode;
+@property (nonatomic, retain) NSString *underlyingErrorDomain;
 @property (nonatomic, retain) AWDHomeKitVendorInformation *vendorDetails;
 
 + (Class)characteristicsType;
@@ -77,6 +88,7 @@
 - (bool)hasCertified;
 - (bool)hasDuration;
 - (bool)hasErrorCode;
+- (bool)hasIsCached;
 - (bool)hasIsRemote;
 - (bool)hasIsTimedWrite;
 - (bool)hasIsWrite;
@@ -85,8 +97,11 @@
 - (bool)hasTransaction;
 - (bool)hasTransportProtocolVersion;
 - (bool)hasTransportType;
+- (bool)hasUnderlyingErrorCode;
+- (bool)hasUnderlyingErrorDomain;
 - (bool)hasVendorDetails;
 - (unsigned long long)hash;
+- (bool)isCached;
 - (bool)isEqual:(id)arg1;
 - (bool)isRemote;
 - (bool)isTimedWrite;
@@ -100,12 +115,15 @@
 - (void)setHasCertified:(bool)arg1;
 - (void)setHasDuration:(bool)arg1;
 - (void)setHasErrorCode:(bool)arg1;
+- (void)setHasIsCached:(bool)arg1;
 - (void)setHasIsRemote:(bool)arg1;
 - (void)setHasIsTimedWrite:(bool)arg1;
 - (void)setHasIsWrite:(bool)arg1;
 - (void)setHasSource:(bool)arg1;
 - (void)setHasTimestamp:(bool)arg1;
 - (void)setHasTransportType:(bool)arg1;
+- (void)setHasUnderlyingErrorCode:(bool)arg1;
+- (void)setIsCached:(bool)arg1;
 - (void)setIsRemote:(bool)arg1;
 - (void)setIsTimedWrite:(bool)arg1;
 - (void)setIsWrite:(bool)arg1;
@@ -114,6 +132,8 @@
 - (void)setTransaction:(id)arg1;
 - (void)setTransportProtocolVersion:(id)arg1;
 - (void)setTransportType:(int)arg1;
+- (void)setUnderlyingErrorCode:(unsigned int)arg1;
+- (void)setUnderlyingErrorDomain:(id)arg1;
 - (void)setVendorDetails:(id)arg1;
 - (int)source;
 - (id)sourceAsString:(int)arg1;
@@ -122,6 +142,8 @@
 - (id)transportProtocolVersion;
 - (int)transportType;
 - (id)transportTypeAsString:(int)arg1;
+- (unsigned int)underlyingErrorCode;
+- (id)underlyingErrorDomain;
 - (id)vendorDetails;
 - (void)writeTo:(id)arg1;
 

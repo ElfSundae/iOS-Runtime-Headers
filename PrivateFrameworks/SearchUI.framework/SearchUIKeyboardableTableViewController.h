@@ -3,16 +3,16 @@
  */
 
 @interface SearchUIKeyboardableTableViewController : UITableViewController <UIGestureRecognizerDelegate> {
-    double  _keyboardHeight;
+    double  _currentKeyboardHeight;
     <SearchUIKeyboardableTableViewScrollDelegate> * _scrollDelegate;
     bool  _shouldHideTableCellsUnderKeyboard;
     UIControl<UITextInput> * _textField;
 }
 
+@property (nonatomic) double currentKeyboardHeight;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property double keyboardHeight;
 @property <SearchUIKeyboardableTableViewScrollDelegate> *scrollDelegate;
 @property (nonatomic) bool shouldHideTableCellsUnderKeyboard;
 @property (readonly) Class superclass;
@@ -25,8 +25,10 @@
 - (bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (bool)cellsVisibleUnderKeyboard;
 - (double)contentHeight;
+- (double)currentKeyboardHeight;
 - (void)deletePressed;
 - (void)downArrowPressed:(id)arg1;
+- (void)escapeButtonPressed;
 - (bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)goBack;
 - (void)hideCellsBelowKeyboardIfNecessary;
@@ -37,12 +39,11 @@
 - (bool)isLeftToRightOrientation;
 - (bool)isOnCard;
 - (void)keyboardFrameChanged:(id)arg1;
-- (double)keyboardHeight;
 - (void)leftArrowPressed;
 - (void)moveCursorToBeginning;
 - (void)moveCursorToEnd;
 - (void)moveCursorToPosition:(id)arg1;
-- (void)returnPressed;
+- (void)returnKeyPressed;
 - (void)rightArrowPressed;
 - (id)scrollDelegate;
 - (void)scrollIndexPathToVisible:(id)arg1;
@@ -50,7 +51,7 @@
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint { double x1; double x2; })arg2 targetContentOffset:(inout struct CGPoint { double x1; double x2; }*)arg3;
 - (void)selectHighlightedRow;
-- (void)setKeyboardHeight:(double)arg1;
+- (void)setCurrentKeyboardHeight:(double)arg1;
 - (void)setScrollDelegate:(id)arg1;
 - (void)setShouldHideTableCellsUnderKeyboard:(bool)arg1;
 - (void)setTableView:(id)arg1;
@@ -59,7 +60,6 @@
 - (void)showKeyboard;
 - (id)textField;
 - (void)upArrowPressed:(id)arg1;
-- (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLayoutSubviews;
 
 @end

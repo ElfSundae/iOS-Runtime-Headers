@@ -7,9 +7,9 @@
     int  _eventKey;
     unsigned long long  _eventValue;
     struct { 
-        unsigned int eventValue : 1; 
-        unsigned int eventKey : 1; 
-    }  _has;
+        unsigned int has_eventValue : 1; 
+        unsigned int has_eventKey : 1; 
+    }  _flags;
 }
 
 @property (nonatomic, retain) NSString *eventDetail;
@@ -18,6 +18,8 @@
 @property (nonatomic, readonly) bool hasEventDetail;
 @property (nonatomic) bool hasEventKey;
 @property (nonatomic) bool hasEventValue;
+
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsEventKey:(id)arg1;
@@ -35,6 +37,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setEventDetail:(id)arg1;
 - (void)setEventKey:(int)arg1;

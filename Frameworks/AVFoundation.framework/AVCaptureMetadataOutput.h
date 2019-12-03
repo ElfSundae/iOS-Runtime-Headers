@@ -9,6 +9,7 @@
 @property (nonatomic, readonly) NSArray *availableMetadataObjectTypes;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, readonly) id delegateOverride;
+@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *delegateOverrideCallbackQueue;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSArray *metadataObjectTypes;
@@ -30,14 +31,17 @@
 - (void)_updateRemoteQueue:(struct remoteQueueReceiverOpaque { }*)arg1;
 - (void)attachSafelyToFigCaptureSession:(struct OpaqueFigCaptureSession { }*)arg1;
 - (id)availableMetadataObjectTypes;
-- (bool)canAddConnectionForMediaType:(id)arg1;
+- (bool)canAddConnection:(id)arg1 failureReason:(id*)arg2;
 - (id)connectionMediaTypes;
 - (void)dealloc;
 - (id)delegateOverride;
+- (id)delegateOverrideCallbackQueue;
 - (void)detachSafelyFromFigCaptureSession:(struct OpaqueFigCaptureSession { }*)arg1;
+- (long long)faceTrackingMaxFaces;
 - (id)init;
 - (bool)isFaceTrackingMetadataObjectTypesAvailable;
 - (bool)isFaceTrackingSupported;
+- (bool)isFaceTrackingUsesFaceRecognition;
 - (bool)isOfflineVideoStabilizationMotionMetadataObjectTypesAvailable;
 - (bool)isOfflineVideoStabilizationMotionMetadataSupported;
 - (id)metadataObjectTypes;
@@ -45,7 +49,9 @@
 - (id)metadataObjectsDelegate;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })rectOfInterest;
 - (void)setDelegateOverride:(id)arg1 delegateOverrideCallbackQueue:(id)arg2;
+- (void)setFaceTrackingMaxFaces:(long long)arg1;
 - (void)setFaceTrackingMetadataObjectTypesAvailable:(bool)arg1;
+- (void)setFaceTrackingUsesFaceRecognition:(bool)arg1;
 - (void)setMetadataObjectTypes:(id)arg1;
 - (void)setMetadataObjectsDelegate:(id)arg1 queue:(id)arg2;
 - (void)setOfflineVideoStabilizationMotionMetadataObjectTypesAvailable:(bool)arg1;

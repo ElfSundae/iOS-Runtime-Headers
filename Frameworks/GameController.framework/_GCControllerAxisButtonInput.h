@@ -2,12 +2,12 @@
    Image: /System/Library/Frameworks/GameController.framework/GameController
  */
 
-@interface _GCControllerAxisButtonInput : _GCControllerButtonInput {
-    _GCControllerAxisInput * _axis;
+@interface _GCControllerAxisButtonInput : GCControllerButtonInput {
+    GCControllerAxisInput * _axis;
     bool  _positive;
 }
 
-@property (nonatomic) _GCControllerAxisInput *axis;
+@property (nonatomic) GCControllerAxisInput *axis;
 @property (getter=isPositive, nonatomic, readonly) bool positive;
 
 - (void).cxx_destruct;
@@ -22,8 +22,6 @@
 - (bool)isAnalog;
 - (bool)isPositive;
 - (void)setAxis:(id)arg1;
-- (bool)setHIDValue:(struct __IOHIDValue { }*)arg1;
-- (bool)setHIDValue:(struct __IOHIDValue { }*)arg1 queue:(id)arg2;
 - (float)value;
 
 @end

@@ -74,6 +74,7 @@
 - (id)interactiveCanvasController:(id)arg1 dragItemForSmartField:(id)arg2 interaction:(id)arg3 session:(id)arg4;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })interactiveCanvasController:(id)arg1 expandVisibleBoundsForTiling:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (void)interactiveCanvasController:(id)arg1 interactedWithHyperlink:(id)arg2 info:(id)arg3 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg4 touchPoint:(struct CGPoint { double x1; double x2; })arg5 touchAndHold:(bool)arg6;
+- (bool)interactiveCanvasController:(id)arg1 shouldBeginInteraction:(id)arg2 atPoint:(struct CGPoint { double x1; double x2; })arg3;
 - (void)invalidateLayoutsAndFrames;
 - (bool)isCanvasInteractive;
 - (double)lineHeight;

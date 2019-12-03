@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
  */
 
-@interface FCAssetHandle : NSObject <TSAssetHandleType> {
+@interface FCAssetHandle : NSObject <TSAssetDataProviderType, TSAssetHandleType> {
     NSString * _assetKey;
     NTPBAsset * _assetMetadata;
     unsigned long long  _countOfPenalizedDownloadAttempts;
@@ -20,9 +20,11 @@
     NFUnfairLock * _stateLock;
 }
 
+@property (nonatomic, readonly) <TSAssetDataProviderType> *assetDataProvider;
 @property (nonatomic, copy) NSString *assetKey;
 @property (retain) NTPBAsset *assetMetadata;
 @property unsigned long long countOfPenalizedDownloadAttempts;
+@property (nonatomic, readonly) NSData *data;
 @property (retain) <FCAssetDataProvider> *dataProvider;
 @property (retain) NSDate *dateOfLastDownloadAttempt;
 @property (nonatomic) <FCAssetHandleDelegate> *delegate;
@@ -33,6 +35,7 @@
 @property (nonatomic, retain) FCOperation *fetchOperation;
 @property (readonly, copy) NSString *filePath;
 @property (nonatomic, retain) FCInterestToken *holdToken;
+@property (nonatomic, readonly) bool isRawFileConsumable;
 @property (nonatomic) long long lifetimeHint;
 @property (copy) NSString *rawFilePath;
 @property (nonatomic, retain) NSURL *remoteURL;
@@ -88,14 +91,20 @@
 - (id)stateLock;
 - (id)uniqueKey;
 
-// Image: /System/Library/PrivateFrameworks/News/TeaUI.framework/TeaUI
+// Image: /System/Library/PrivateFrameworks/NewsFeed.framework/NewsFeed
 
+- (id)assetDataProvider;
+- (id)data;
 - (void)downloadWithGroup:(id)arg1;
 - (id)fallbackImage;
+- (bool)isRawFileConsumable;
 
-// Image: /System/Library/PrivateFrameworks/Stocks/TeaUI.framework/TeaUI
+// Image: /System/Library/PrivateFrameworks/NewsSubscription.framework/NewsSubscription
 
+- (id)assetDataProvider;
+- (id)data;
 - (void)downloadWithGroup:(id)arg1;
 - (id)fallbackImage;
+- (bool)isRawFileConsumable;
 
 @end

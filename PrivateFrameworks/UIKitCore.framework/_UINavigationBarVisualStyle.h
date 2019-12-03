@@ -11,9 +11,7 @@
 
 @property (nonatomic, readonly) double _legacyButtonFontSize;
 @property (nonatomic, readonly) double _legacyButtonImagePadding;
-@property (nonatomic, readonly) double _legacyLeftEdgeMargin;
 @property (nonatomic, readonly) double _legacyLeftTitleMargin;
-@property (nonatomic, readonly) double _legacyRightEdgeMargin;
 @property (nonatomic, readonly) double _legacyRightTitleMargin;
 @property (nonatomic, readonly) double backButtonIndicatorSpacing;
 @property (nonatomic, readonly) double backIndicatorBottomMargin;
@@ -62,9 +60,7 @@
 - (id)_legacyButtonFontForStyle:(long long)arg1;
 - (double)_legacyButtonFontSize;
 - (double)_legacyButtonImagePadding;
-- (double)_legacyLeftEdgeMargin;
 - (double)_legacyLeftTitleMargin;
-- (double)_legacyRightEdgeMargin;
 - (double)_legacyRightTitleMargin;
 - (double)backButtonAnimationClippingPadding;
 - (double)backButtonIndicatorSpacing;

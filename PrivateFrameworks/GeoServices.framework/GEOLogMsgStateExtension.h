@@ -4,11 +4,11 @@
 
 @interface GEOLogMsgStateExtension : PBCodable <NSCopying> {
     struct { 
-        unsigned int hasRideBookingAppEnabled : 1; 
-        unsigned int hasRideBookingAppInstalled : 1; 
-        unsigned int hasTableBookingAppEnabled : 1; 
-        unsigned int hasTableBookingAppInstalled : 1; 
-    }  _has;
+        unsigned int has_hasRideBookingAppEnabled : 1; 
+        unsigned int has_hasRideBookingAppInstalled : 1; 
+        unsigned int has_hasTableBookingAppEnabled : 1; 
+        unsigned int has_hasTableBookingAppInstalled : 1; 
+    }  _flags;
     bool  _hasRideBookingAppEnabled;
     bool  _hasRideBookingAppInstalled;
     bool  _hasTableBookingAppEnabled;
@@ -23,6 +23,8 @@
 @property (nonatomic) bool hasRideBookingAppInstalled;
 @property (nonatomic) bool hasTableBookingAppEnabled;
 @property (nonatomic) bool hasTableBookingAppInstalled;
+
++ (bool)isValid:(id)arg1;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -39,6 +41,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasHasRideBookingAppEnabled:(bool)arg1;
 - (void)setHasHasRideBookingAppInstalled:(bool)arg1;

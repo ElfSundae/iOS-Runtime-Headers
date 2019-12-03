@@ -53,6 +53,7 @@
 - (id)invitationWithUpdatedParticipantsFetchResult:(id)arg1;
 - (id)invitationWithUpdatedPreviewAssetsFetchResult:(id)arg1;
 - (id)momentShare;
+- (id)momentShareStatus;
 - (id)owner;
 - (id)participantsFetchResult;
 - (id)posterAsset;

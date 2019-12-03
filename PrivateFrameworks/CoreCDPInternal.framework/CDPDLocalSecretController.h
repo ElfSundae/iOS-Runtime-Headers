@@ -17,13 +17,15 @@
 @property (nonatomic, retain) <CDPStateUIProviderInternal> *uiProvider;
 
 - (void).cxx_destruct;
+- (void)_attemptToEscrowPreRecord:(id)arg1 completion:(id /* block */)arg2;
 - (id)_cdpStateMachine;
 - (void)_collectLocalSecretWithCompletion:(id /* block */)arg1;
 - (void)_createContextForSecret:(bool)arg1 withCompletion:(id /* block */)arg2;
-- (void)_handleCompletionStatus:(bool)arg1;
+- (void)_handleCompletionStatus:(bool)arg1 preRecord:(bool)arg2;
 - (void)_localSecretChangedTo:(id)arg1 secretType:(unsigned long long)arg2 completion:(id /* block */)arg3;
 - (void)_repairWithStateMachine:(id)arg1 completion:(id /* block */)arg2;
 - (void)_setContextWithAuthResults:(id)arg1;
+- (void)attemptToEscrowPreRecord:(id)arg1 completion:(id /* block */)arg2;
 - (id)circleController;
 - (void)circleController:(id)arg1 secureBackupRecordsArePresentWithCompletion:(id /* block */)arg2;
 - (id)circlePeerIDForSecureBackupController:(id)arg1;

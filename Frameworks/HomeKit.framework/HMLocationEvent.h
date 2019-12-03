@@ -2,11 +2,13 @@
    Image: /System/Library/Frameworks/HomeKit.framework/HomeKit
  */
 
-@interface HMLocationEvent : HMEvent <HFLocationBasedEvent, NSCopying, NSMutableCopying, NSSecureCoding, _HMLocationHandlerDelegate> {
+@interface HMLocationEvent : HMEvent <HFLocationBasedEvent, NSCopying, NSMutableCopying, NSSecureCoding> {
+    HMFLocationAuthorization * _authorization;
     int  _locationAuthorization;
     CLRegion * _region;
 }
 
+@property (readonly) HMFLocationAuthorization *authorization;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -22,13 +24,15 @@
 
 - (void).cxx_destruct;
 - (void)__configureWithContext:(id)arg1 eventTrigger:(id)arg2;
+- (void)__locationAuthorizationUpdated:(id)arg1;
 - (void)_handleEventUpdatedNotification:(id)arg1;
 - (bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_retrieveLocationEvent;
 - (id)_serializeForAdd;
 - (void)_updateRegion:(id)arg1 completionHandler:(id /* block */)arg2;
+- (id)authorization;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)didUpdateAuthorization:(int)arg1;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDict:(id)arg1 region:(id)arg2;

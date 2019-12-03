@@ -8,11 +8,10 @@
 
 @property (nonatomic, readonly) void*espressoContext;
 
-+ (void*)sharedEspressoContext:(int)arg1;
-+ (bool)supportANE;
++ (void*)sharedEspressoContext;
 + (bool)supportGPU;
 
 - (void*)espressoContext;
-- (id)initNewContext:(bool)arg1 espressoEngine:(int)arg2;
+- (id)initNewContext;
 
 @end

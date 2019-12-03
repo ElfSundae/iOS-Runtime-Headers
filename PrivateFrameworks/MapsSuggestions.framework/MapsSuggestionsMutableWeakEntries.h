@@ -8,6 +8,7 @@
 }
 
 @property (nonatomic, readonly) unsigned long long count;
+@property (nonatomic, readonly) NSArray *strongArray;
 
 - (void).cxx_destruct;
 - (void)addWeakObject:(id)arg1;

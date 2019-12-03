@@ -6,7 +6,6 @@
 
 @property (nonatomic, readonly) SXJSONArray *colorStops;
 
-+ (id)typeString;
 + (id /* block */)valueClassBlockForPropertyWithName:(id)arg1;
 
 @end

@@ -7,11 +7,18 @@
     bool  _HTTPShouldHandleCookies;
     NSURL * _URL;
     NSDictionary * _additionalHTTPHeaders;
-    bool  _allowsCellularAccess;
     GEOApplicationAuditToken * _auditToken;
     NSData * _bodyData;
     NSData * _cachedData;
-    int  _kind;
+    unsigned long long  _constraints;
+    struct { 
+        int type; 
+        union { 
+            int raw; 
+            int tile; 
+            int placeRequest; 
+        } subtype; 
+    }  _kind;
     double  _timeoutInterval;
 }
 

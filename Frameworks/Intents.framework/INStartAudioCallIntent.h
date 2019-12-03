@@ -11,6 +11,7 @@
 @property (nonatomic, readonly) long long destinationType;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long preferredCallProvider;
+@property (nonatomic) long long recordTypeForRedialing;
 @property (readonly) Class superclass;
 @property (setter=setTTYType:, nonatomic) long long ttyType;
 @property (nonatomic, readonly) bool useSpeaker;
@@ -39,12 +40,14 @@
 - (id)initWithDestinationType:(long long)arg1 contacts:(id)arg2;
 - (id)parametersByName;
 - (long long)preferredCallProvider;
+- (long long)recordTypeForRedialing;
 - (void)setAudioRoute:(long long)arg1;
 - (void)setContacts:(id)arg1;
 - (void)setDestinationType:(long long)arg1;
 - (void)setDomain:(id)arg1;
 - (void)setParametersByName:(id)arg1;
 - (void)setPreferredCallProvider:(long long)arg1;
+- (void)setRecordTypeForRedialing:(long long)arg1;
 - (void)setTTYType:(long long)arg1;
 - (void)setUseSpeaker:(bool)arg1;
 - (void)setVerb:(id)arg1;
@@ -62,11 +65,13 @@
 
 // Image: /System/Library/PrivateFrameworks/CoreDuet.framework/CoreDuet
 
+- (id)cd_groupName;
 - (long long)cd_interactionMechanism;
 - (id)cd_recipients;
 - (bool)cd_saveToPeopleStore;
+- (id)cd_sender;
 
-// Image: /System/Library/PrivateFrameworks/VoiceShortcutsUI.framework/VoiceShortcutsUI
+// Image: /System/Library/PrivateFrameworks/WorkflowUI.framework/WorkflowUI
 
 - (id)vcui_keyPeople;
 

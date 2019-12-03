@@ -11,8 +11,8 @@
 
 + (id)defaultObject;
 
+- (void).cxx_destruct;
 - (void)changeParentTextListStylePreservingEffectiveValues:(id)arg1;
-- (void)dealloc;
 - (id)defaultProperties;
 - (id)description;
 - (void)enumerateParagraphPropertiesUsingBlock:(id /* block */)arg1;

@@ -17,11 +17,16 @@
         } ipv6_signature; 
         int is_active; 
         int mtu; 
+        unsigned int ipv4_netmask; 
+        unsigned int ipv4_broadcast; 
         unsigned int expensive : 1; 
+        unsigned int constrained : 1; 
         unsigned int tx_start : 1; 
         unsigned int ack_priority : 1; 
         unsigned int carrier_aggregation : 1; 
-        unsigned int __pad_bits : 4; 
+        unsigned int multilayer_packet_logging : 1; 
+        unsigned int has_netmask : 1; 
+        unsigned int has_broadcast : 1; 
         unsigned char __pad[3]; 
     }  details;
     unsigned int  generation;
@@ -29,7 +34,6 @@
     BOOL  name;
     int  subtype;
     int  type;
-    unsigned long long  update_time;
 }
 
 @property (readonly, copy) NSString *debugDescription;

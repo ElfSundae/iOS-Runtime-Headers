@@ -14,6 +14,7 @@
 - (int)legendBadgeType;
 - (bool)supportsSymbolDrawing;
 - (bool)supportsSymbolFillForSymbolType:(int)arg1;
+- (id)userInterfaceName;
 - (unsigned long long)valueDimensions;
 
 @end

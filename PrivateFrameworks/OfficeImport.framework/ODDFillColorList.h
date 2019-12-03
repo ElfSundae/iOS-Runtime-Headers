@@ -8,9 +8,9 @@
     int  mMethod;
 }
 
+- (void).cxx_destruct;
 - (id)colorAtIndex:(unsigned long long)arg1 count:(unsigned long long)arg2 state:(id)arg3;
 - (id)cycleColorAtIndex:(unsigned long long)arg1;
-- (void)dealloc;
 - (void)getComponentsForIndex:(unsigned long long)arg1 hue:(float*)arg2 saturation:(float*)arg3 brightness:(float*)arg4 state:(id)arg5;
 - (id)repeatColorAtIndex:(unsigned long long)arg1;
 - (void)setColors:(id)arg1;

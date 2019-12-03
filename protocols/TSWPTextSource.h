@@ -8,7 +8,7 @@
 - (bool)adjustRangesByDelta:(long long)arg1;
 - (TSWPAttachment *)attachmentAtCharIndex:(unsigned long long)arg1;
 - (TSWPAttachment *)attachmentOrFootnoteAtCharIndex:(unsigned long long)arg1;
-- (void)attributesAtCharIndex:(void *)arg1 attributesOfInterest:(void *)arg2 attributesTable:(void *)arg3 effectiveRange:(void *)arg4; // needs 4 arg types, found 3: unsigned long long, bool, /* Warning: unhandled array encoding: '[19@]32^{_NSRange=QQ}40' */ id
+- (void)attributesAtCharIndex:(unsigned long long)arg1 attributesOfInterest:(bool)arg2 attributesTable:(id)arg3 effectiveRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; }*)arg4;
 - (unsigned long long)charIndexMappedFromStorage:(unsigned long long)arg1;
 - (unsigned long long)charIndexMappedToStorage:(unsigned long long)arg1;
 - (unsigned long long)charIndexRemappedFromStorage:(unsigned long long)arg1;
@@ -35,8 +35,8 @@
 
 @optional
 
-- (void)enumerateSmartFieldsWithAttributeKind:(void *)arg1 inRange:(void *)arg2 usingBlock:(void *)arg3; // needs 3 arg types, found 19: unsigned int, struct _NSRange { unsigned long long x1; unsigned long long x2; }, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, id, void*, inout unsigned short, void*, void*, in void*, void*, void*, unsigned long long, unsigned long long, void*, bool*, void*
-- (void)enumerateWithAttributeKind:(void *)arg1 inRange:(void *)arg2 usingBlock:(void *)arg3; // needs 3 arg types, found 19: unsigned int, struct _NSRange { unsigned long long x1; unsigned long long x2; }, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, id, void*, inout unsigned short, void*, void*, in void*, void*, void*, unsigned long long, unsigned long long, void*, bool*, void*
+- (void)enumerateSmartFieldsWithAttributeKind:(void *)arg1 inRange:(void *)arg2 usingBlock:(void *)arg3; // needs 3 arg types, found 10: unsigned int, struct _NSRange { unsigned long long x1; unsigned long long x2; }, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, id, struct _NSRange { unsigned long long x1; unsigned long long x2; }, bool*, void*
+- (void)enumerateWithAttributeKind:(void *)arg1 inRange:(void *)arg2 usingBlock:(void *)arg3; // needs 3 arg types, found 10: unsigned int, struct _NSRange { unsigned long long x1; unsigned long long x2; }, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, id, struct _NSRange { unsigned long long x1; unsigned long long x2; }, bool*, void*
 - (bool)hasSmartFieldsInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (NSString *)substringWithRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 

@@ -5,8 +5,6 @@
 @interface PDCloudStoreNotificationCoordinator : NSObject <PDCloudStoreContainerDelegate, PDPushNotificationConsumer, PDScheduledActivityClient, PKCloudStoreCoordinatorDelegate> {
     PDApplePayCloudStoreContainer * _applePayContainer;
     NSMutableArray * _containers;
-    NSMutableDictionary * _containersCurrentlyProcessingPushNotifications;
-    NSMutableDictionary * _containersThatShouldProcessPushNotifications;
     NSHashTable * _observers;
     PDPassCloudStoreContainer * _passContainer;
     PDPushNotificationManager * _pushNotificationManager;
@@ -20,8 +18,6 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) PDPassCloudStoreContainer *passContainer;
 @property (readonly) Class superclass;
-
-+ (void)invalidateServerChangeTokens;
 
 - (void).cxx_destruct;
 - (id)_backgroundActivityNameForBackgroundInterval:(unsigned long long)arg1;
@@ -40,6 +36,7 @@
 - (void)_scheduleCloudStoreContainerSetupBackgroundActivityWithNextInterval:(unsigned long long)arg1;
 - (void)_scheduleFirstCloudStoreContainerSetupBackgroundActivityIfNeccessary;
 - (bool)_shouldScheduleInitalCloudStoreContainerSetupBackgroundActivity;
+- (void)_syncOriginatingTransactionsToCloudStore;
 - (void)_unregisterForPushNotifications;
 - (void)_unscheduleBackgroundContainerSetupActivities;
 - (void)allItemsOfItemType:(unsigned long long)arg1 storeLocally:(bool)arg2 completion:(id /* block */)arg3;
@@ -54,16 +51,19 @@
 - (void)cloudStoreStatusWithCompletion:(id /* block */)arg1;
 - (void)handlePushNotificationForTopic:(id)arg1 userInfo:(id)arg2;
 - (id)initWithPushNotificationManager:(id)arg1;
-- (void)itemOfItemType:(unsigned long long)arg1 recordName:(id)arg2 completion:(id /* block */)arg3;
+- (void)invalidateServerChangeTokens;
+- (void)itemOfItemType:(unsigned long long)arg1 recordName:(id)arg2 qualityOfService:(long long)arg3 completion:(id /* block */)arg4;
 - (void)noteAccountDeleted;
 - (void)noteCloudSyncPassesSwitchChanged;
 - (id)passContainer;
 - (void)performScheduledActivityWithIdentifier:(id)arg1 activityCriteria:(id)arg2;
 - (id)pushNotificationTopics;
+- (void)recreateZone:(id)arg1 completion:(id /* block */)arg2;
 - (void)registerObserver:(id)arg1;
 - (void)removeItemsWithRecordNames:(id)arg1 itemType:(unsigned long long)arg2 completion:(id /* block */)arg3;
 - (void)resetApplePayManateeViewWithCompletion:(id /* block */)arg1;
 - (void)resetContainerWithIdentifier:(id)arg1 completion:(id /* block */)arg2;
+- (void)scheduleTransactionDeviceDataSyncBackgroundActivity;
 - (void)setApplePayContainer:(id)arg1;
 - (void)setPassContainer:(id)arg1;
 - (void)setupCloudDatabaseForContainerName:(id)arg1 completion:(id /* block */)arg2;

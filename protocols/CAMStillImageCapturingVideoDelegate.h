@@ -5,9 +5,11 @@
 
 @optional
 
-- (void)didCompleteCapturingVideoForStillImageRequests;
-- (void)startShowingLivePhotoIndicator;
-- (void)stopShowingLivePhotoIndicator;
-- (void)willStartCapturingVideoForStillImageRequests;
+- (void)stillImageRequestWillStartCapturingCTMVideoWithCaptureInFlight:(bool)arg1;
+- (void)stillImageRequestsDidCompleteCapturingLivePhotoVideo;
+- (void)stillImageRequestsDidStopCapturingCTMVideo;
+- (void)stillImageRequestsWillRequestCTMVideoCaptureEnd;
+- (void)stillImageRequestsWillRequestCTMVideoCaptureStart;
+- (void)stillImageRequestsWillStartCapturingLivePhotoVideo;
 
 @end

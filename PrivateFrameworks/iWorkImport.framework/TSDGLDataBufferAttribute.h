@@ -8,7 +8,7 @@
     int  _componentCount;
     TSDGLDataArrayBuffer * _dataArrayBuffer;
     TSDGLDataBuffer * _dataBuffer;
-    int  _dataType;
+    long long  _dataType;
     bool  _isNormalized;
     int  _locationInShader;
     NSString * _name;
@@ -19,22 +19,22 @@
 @property (nonatomic, readonly) int componentCount;
 @property (nonatomic) TSDGLDataArrayBuffer *dataArrayBuffer;
 @property (nonatomic) TSDGLDataBuffer *dataBuffer;
-@property (nonatomic, readonly) int dataType;
+@property (nonatomic, readonly) long long dataType;
 @property (nonatomic, readonly) bool isNormalized;
 @property (nonatomic) int locationInShader;
 @property (nonatomic, copy) NSString *name;
 
-+ (id)attributeWithName:(id)arg1 bufferUsage:(unsigned int)arg2 dataType:(int)arg3 normalized:(bool)arg4 componentCount:(unsigned long long)arg5;
++ (id)attributeWithName:(id)arg1 bufferUsage:(unsigned int)arg2 dataType:(long long)arg3 normalized:(bool)arg4 componentCount:(unsigned long long)arg5;
 
+- (void).cxx_destruct;
 - (unsigned long long)bufferOffset;
 - (unsigned int)bufferUsage;
 - (int)componentCount;
 - (id)dataArrayBuffer;
 - (id)dataBuffer;
-- (int)dataType;
-- (void)dealloc;
+- (long long)dataType;
 - (id)description;
-- (id)initWithName:(id)arg1 bufferUsage:(unsigned int)arg2 dataType:(int)arg3 normalized:(bool)arg4 componentCount:(unsigned long long)arg5;
+- (id)initWithName:(id)arg1 bufferUsage:(unsigned int)arg2 dataType:(long long)arg3 normalized:(bool)arg4 componentCount:(unsigned long long)arg5;
 - (bool)isNormalized;
 - (int)locationInShader;
 - (id)name;

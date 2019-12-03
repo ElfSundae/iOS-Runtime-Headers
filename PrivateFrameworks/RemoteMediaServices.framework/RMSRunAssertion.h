@@ -2,9 +2,11 @@
    Image: /System/Library/PrivateFrameworks/RemoteMediaServices.framework/RemoteMediaServices
  */
 
-@interface RMSRunAssertion : NSObject
+@interface RMSRunAssertion : NSObject {
+    NSObject<OS_os_transaction> * _transaction;
+}
 
-- (void)dealloc;
-- (id)init;
+- (void).cxx_destruct;
+- (id)initWithDescription:(id)arg1;
 
 @end

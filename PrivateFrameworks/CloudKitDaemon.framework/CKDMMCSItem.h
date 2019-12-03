@@ -46,6 +46,7 @@
     NSData * _referenceSignature;
     NSString * _requestor;
     NSMutableArray * _sectionItems;
+    bool  _shouldReadAssetContentUsingClientProxy;
     bool  _shouldReadRawEncryptedData;
     NSData * _signature;
     bool  _temporary;
@@ -100,6 +101,7 @@
 @property (nonatomic, retain) NSData *referenceSignature;
 @property (nonatomic, retain) NSString *requestor;
 @property (nonatomic, retain) NSMutableArray *sectionItems;
+@property (nonatomic) bool shouldReadAssetContentUsingClientProxy;
 @property (nonatomic) bool shouldReadRawEncryptedData;
 @property (nonatomic, retain) NSData *signature;
 @property (getter=isTemporary, nonatomic) bool temporary;
@@ -163,6 +165,7 @@
 - (unsigned long long)paddedFileSize;
 - (double)progress;
 - (id)putPackageSectionIdentifier;
+- (id)readBytesOfInMemoryAssetContentWithProxy:(id)arg1 offset:(unsigned long long)arg2 length:(unsigned long long)arg3 error:(id*)arg4;
 - (id)recordID;
 - (id)recordKey;
 - (id)recordType;
@@ -212,6 +215,7 @@
 - (void)setReferenceSignature:(id)arg1;
 - (void)setRequestor:(id)arg1;
 - (void)setSectionItems:(id)arg1;
+- (void)setShouldReadAssetContentUsingClientProxy:(bool)arg1;
 - (void)setShouldReadRawEncryptedData:(bool)arg1;
 - (void)setSignature:(id)arg1;
 - (void)setTemporary:(bool)arg1;
@@ -222,6 +226,7 @@
 - (void)setWrappedAssetKey:(id)arg1;
 - (void)setWriter:(id)arg1;
 - (void)setupForGetChunkKeysWithAsset:(id)arg1;
+- (bool)shouldReadAssetContentUsingClientProxy;
 - (bool)shouldReadRawEncryptedData;
 - (id)signature;
 - (id)trackingUUID;

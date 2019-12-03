@@ -7,7 +7,6 @@
         double width; 
         double height; 
     }  _centerToSelectionPointOffset;
-    UIImageView * _dragDotView;
     int  _position;
     UIWebSelectionView * _selectionView;
     int  _textPosition;

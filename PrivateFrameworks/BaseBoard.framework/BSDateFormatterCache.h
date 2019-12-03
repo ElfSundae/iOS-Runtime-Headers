@@ -26,6 +26,7 @@
     NSNumberFormatter * _timerNumberFormatter;
 }
 
++ (id)formatterForDateAsTimeNoAMPMWithLocale:(id)arg1;
 + (id)sharedInstance;
 
 - (void).cxx_destruct;

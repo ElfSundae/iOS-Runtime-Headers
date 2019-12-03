@@ -23,7 +23,9 @@
 - (struct HeapHistoryEvent { struct HeapHistoryEvent {} *x1; void *x2; bool x3; }*)latestEvent;
 - (unsigned long long)maxAvailableSizeWithAlignment:(unsigned long long)arg1;
 - (id)newBufferWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2;
+- (id)newBufferWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2 offset:(unsigned long long)arg3;
 - (id)newTextureWithDescriptor:(id)arg1;
+- (id)newTextureWithDescriptor:(id)arg1 offset:(unsigned long long)arg2;
 - (struct HeapHistoryEvent { struct HeapHistoryEvent {} *x1; void *x2; bool x3; }*)oldestEvent;
 - (void)removeResourceFromHistory:(id)arg1;
 - (void)setLatestEvent:(struct HeapHistoryEvent { struct HeapHistoryEvent {} *x1; void *x2; bool x3; }*)arg1;
@@ -31,5 +33,7 @@
 - (unsigned long long)setPurgeableState:(unsigned long long)arg1;
 - (void)validateHeapResourceOptions:(unsigned long long)arg1 isTexture:(bool)arg2 isIOSurface:(bool)arg3;
 - (void)validateHeapTextureUsage:(unsigned long long)arg1 options:(unsigned long long)arg2;
+- (void)validateOffset:(unsigned long long)arg1 withRequirements:(struct { unsigned long long x1; unsigned long long x2; })arg2;
+- (void)validatePixelFormatWithHeap:(unsigned long long)arg1;
 
 @end

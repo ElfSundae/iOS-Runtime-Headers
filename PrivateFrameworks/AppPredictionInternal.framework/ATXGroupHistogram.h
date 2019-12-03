@@ -3,7 +3,6 @@
  */
 
 @interface ATXGroupHistogram : NSObject {
-    id /* block */  _getGroup;
     NSMutableDictionary * _histogram;
     bool  _isTotalScoreValid;
     struct _opaque_pthread_mutex_t { 
@@ -14,10 +13,10 @@
 }
 
 - (void).cxx_destruct;
-- (void)addScoreForBundleId:(id)arg1 score:(double)arg2;
+- (double)_getTotalScore;
+- (void)addScore:(double)arg1 group:(id)arg2;
 - (void)dealloc;
-- (double)getScoreForBundleId:(id)arg1;
-- (double)getTotalScore;
-- (id)initWithGroupLookup:(id /* block */)arg1;
+- (double)getScoreForGroup:(id)arg1;
+- (id)init;
 
 @end

@@ -24,6 +24,7 @@
         double width; 
         double height; 
     }  _sceneSize;
+    bool  _wasInvalidated;
     struct CGPoint { 
         double x; 
         double y; 

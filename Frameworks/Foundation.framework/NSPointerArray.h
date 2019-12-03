@@ -20,10 +20,11 @@
 
 - (void)addPointer:(void*)arg1;
 - (id)allObjects;
+- (Class)classForCoder;
 - (void)compact;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned long long)count;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
@@ -41,6 +42,11 @@
 
 - (void)bds_chainSuccessAndErrorCompletionSelectorCallsForSelector:(SEL)arg1 successSoFar:(bool)arg2 errorSoFar:(id)arg3 completion:(id /* block */)arg4;
 
+// Image: /System/Library/PrivateFrameworks/DocumentManager.framework/DocumentManager
+
+- (bool)doc_containsPointer:(void*)arg1;
+- (long long)doc_indexOfPointer:(void*)arg1;
+
 // Image: /System/Library/PrivateFrameworks/HMFoundation.framework/HMFoundation
 
 - (void)hmf_addObject:(id)arg1;
@@ -50,11 +56,8 @@
 // Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
 
 - (void)tsu_enumerateNonNullPointersUsingBlock:(id /* block */)arg1;
+- (unsigned long long)tsu_indexOfPointer:(void*)arg1;
 - (void)tsu_insertRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
-
-// Image: /System/Library/PrivateFrameworks/PhotoEditSupport.framework/PhotoEditSupport
-
-- (id)bl_firstObject;
 
 // Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
 

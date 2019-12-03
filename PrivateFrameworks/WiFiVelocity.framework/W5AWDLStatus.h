@@ -9,6 +9,7 @@
     NSData * _awdlOpMode;
     NSData * _awdlPeerDatabase;
     NSData * _awdlSecondaryMasterChannel;
+    NSData * _awdlSidecarDiagnostics;
     NSData * _awdlStrategy;
     NSData * _awdlSyncChannelSequence;
     NSData * _awdlSyncEnabled;
@@ -26,6 +27,7 @@
 @property (nonatomic, copy) NSData *awdlOpMode;
 @property (nonatomic, copy) NSData *awdlPeerDatabase;
 @property (nonatomic, copy) NSData *awdlSecondaryMasterChannel;
+@property (nonatomic, copy) NSData *awdlSidecarDiagnostics;
 @property (nonatomic, copy) NSData *awdlStrategy;
 @property (nonatomic, copy) NSData *awdlSyncChannelSequence;
 @property (nonatomic, copy) NSData *awdlSyncEnabled;
@@ -44,6 +46,7 @@
 - (id)awdlOpMode;
 - (id)awdlPeerDatabase;
 - (id)awdlSecondaryMasterChannel;
+- (id)awdlSidecarDiagnostics;
 - (id)awdlStrategy;
 - (id)awdlSyncChannelSequence;
 - (id)awdlSyncEnabled;
@@ -67,6 +70,7 @@
 - (void)setAwdlOpMode:(id)arg1;
 - (void)setAwdlPeerDatabase:(id)arg1;
 - (void)setAwdlSecondaryMasterChannel:(id)arg1;
+- (void)setAwdlSidecarDiagnostics:(id)arg1;
 - (void)setAwdlStrategy:(id)arg1;
 - (void)setAwdlSyncChannelSequence:(id)arg1;
 - (void)setAwdlSyncEnabled:(id)arg1;

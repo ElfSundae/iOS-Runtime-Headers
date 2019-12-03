@@ -4,6 +4,7 @@
 
 @interface CXCallControllerHost : NSObject <CXCallControllerHostConnectionDelegate, NSXPCListenerDelegate> {
     NSMutableDictionary * _callUUIDToCallMap;
+    NSMutableDictionary * _callUUIDToPublicCallUUIDMap;
     int  _clientsShouldConnectToken;
     NSMutableSet * _connections;
     <CXCallControllerHostDelegate> * _delegate;
@@ -13,6 +14,7 @@
 }
 
 @property (nonatomic, retain) NSMutableDictionary *callUUIDToCallMap;
+@property (nonatomic, retain) NSMutableDictionary *callUUIDToPublicCallUUIDMap;
 @property (nonatomic, readonly) int clientsShouldConnectToken;
 @property (nonatomic, retain) NSMutableSet *connections;
 @property (readonly, copy) NSString *debugDescription;
@@ -27,11 +29,13 @@
 - (void).cxx_destruct;
 - (id)_callsForCallControllerHostConnection:(id)arg1;
 - (void)_performDelegateCallback:(id /* block */)arg1;
+- (id)_sanitizedCallFromCall:(id)arg1 forCallControllerHostConnection:(id)arg2;
 - (void)addOrUpdateCall:(id)arg1;
 - (void)callControllerHostConnection:(id)arg1 requestCalls:(id /* block */)arg2;
 - (void)callControllerHostConnection:(id)arg1 requestTransaction:(id)arg2 completion:(id /* block */)arg3;
 - (void)callControllerHostConnectionInvalidated:(id)arg1;
 - (id)callUUIDToCallMap;
+- (id)callUUIDToPublicCallUUIDMap;
 - (int)clientsShouldConnectToken;
 - (id)connections;
 - (void)dealloc;
@@ -43,6 +47,7 @@
 - (id)queue;
 - (void)removeCall:(id)arg1;
 - (void)setCallUUIDToCallMap:(id)arg1;
+- (void)setCallUUIDToPublicCallUUIDMap:(id)arg1;
 - (void)setConnections:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDelegateQueue:(id)arg1;

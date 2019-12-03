@@ -3,7 +3,7 @@
  */
 
 @interface PKPaymentAuthorizationRemoteAlertViewController : SBUIRemoteAlertServiceViewController <PKCompactNavigationContainerControllerDelegate, PKPaymentAuthorizationHostProtocol, PKPaymentAuthorizationServiceViewControllerDelegate, PKPaymentSetupDelegate, PKPaymentSetupViewControllerDelegate, SBSHardwareButtonEventConsuming> {
-    LAUIHorizontalArrowView * _cameraArrowView;
+    NSString * _applicationBindToken;
     long long  _coachingState;
     bool  _didDismiss;
     bool  _didSendAuthorizationDidFinish;
@@ -17,9 +17,10 @@
     NSString * _hostLocalizedAppName;
     NSString * _hostTeamID;
     PKInAppPaymentService * _inAppPaymentService;
+    bool  _invalidated;
     bool  _isPerformingPaymentSetup;
     <BSInvalidatable> * _lockButtonObserver;
-    PKCompactNavigationContainerController * _navigationContainer;
+    PKPaymentAuthorizationServiceCompactNavigationContainerController * _navigationContainer;
     PKPaymentAuthorizationServiceNavigationController * _navigationController;
     PKAssertion * _notificationSuppressionAssertion;
     bool  _paymentAuthorizationPresented;
@@ -27,9 +28,7 @@
     PKPaymentRequest * _paymentRequest;
     PKPaymentSetupNavigationController * _paymentSetupNavigationController;
     bool  _paymentSetupWasRequired;
-    bool  _pearlViewsInserted;
     PKPeerPaymentAccount * _peerPaymentAccount;
-    LAUIPhysicalButtonView * _physicalButtonView;
     bool  _shouldAcquireLockButtonObserver;
     int  _statusBarVisibility;
 }
@@ -48,10 +47,12 @@
 + (bool)_shouldForwardViewWillTransitionToSize;
 
 - (void).cxx_destruct;
+- (void)_bindFeatureApplication:(id)arg1 completion:(id /* block */)arg2;
 - (void)_canPresentPaymentRequest:(id)arg1 completion:(id /* block */)arg2;
 - (id)_configuredPaymentSetupNavigationController;
 - (void)_dismiss;
 - (void)_handlePaymentRequestPresentationResultType:(long long)arg1 relevantUniqueID:(id)arg2 firstAttempt:(bool)arg3;
+- (void)_invalidate;
 - (void)_invalidateLockButtonObserver;
 - (bool)_peerPaymentIdentityVerificationRequired;
 - (int)_preferredStatusBarVisibility;
@@ -59,11 +60,12 @@
 - (void)_presentAddCardAlert;
 - (void)_presentAlertWithTitle:(id)arg1 message:(id)arg2 actionTitle:(id)arg3 actionHandler:(id /* block */)arg4;
 - (void)_presentAlertWithTitle:(id)arg1 message:(id)arg2 cancelTitle:(id)arg3 actionTitle:(id)arg4 actionHandler:(id /* block */)arg5;
-- (void)_presentAmpEnrollmentAuthorization;
+- (void)_presentAlertWithTitle:(id)arg1 message:(id)arg2 cancelTitle:(id)arg3 actionTitle:(id)arg4 actionHandler:(id /* block */)arg5 finalError:(id)arg6;
+- (void)_presentApplyForFeature:(unsigned long long)arg1;
 - (void)_presentInvalidAlert;
 - (void)_presentLostModeAlertWithRelevantUniqueID:(id)arg1;
 - (void)_presentPassNotSupportedAlertWithRelevantUniqueID:(id)arg1;
-- (void)_presentPaymentAuthorization;
+- (void)_presentPaymentAuthorizationWithRelevantUniqueID:(id)arg1;
 - (void)_presentPaymentSetup;
 - (void)_presentPeerPaymentIdentityVerification;
 - (void)_presentPeerPaymentIdentityVerificationAlert;
@@ -74,7 +76,6 @@
 - (bool)_shouldBlockHardwareCancels;
 - (bool)_shouldRemoveViewFromHierarchyOnDisappear;
 - (void)_updatePearlViews;
-- (void)_willAppearInRemoteViewController;
 - (void)authorizationDidAuthorizeApplePayTrustSignature:(id)arg1;
 - (void)authorizationDidAuthorizeDisbursement:(id)arg1;
 - (void)authorizationDidAuthorizePayment:(id)arg1;
@@ -95,10 +96,11 @@
 - (void)consumeDoublePressUpForButtonKind:(long long)arg1;
 - (void)consumeSinglePressUpForButtonKind:(long long)arg1;
 - (void)dealloc;
+- (void)didInvalidateForRemoteAlert;
 - (bool)dismissAfterPaymentSetup;
 - (void)dismissWithRemoteOrigination:(bool)arg1;
 - (id)exportedObject;
-- (void)handleHomeButtonPressed;
+- (void)handleButtonActions:(id)arg1;
 - (id)hostConnection;
 - (id)inAppPaymentService;
 - (id)init;
@@ -111,15 +113,14 @@
 - (void)setHostConnection:(id)arg1;
 - (void)setInAppPaymentService:(id)arg1;
 - (void)setPaymentRequest:(id)arg1;
-- (void)setUserInfo:(id)arg1;
 - (bool)shouldAutorotate;
 - (struct CGSize { double x1; double x2; })sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize { double x1; double x2; })arg2;
 - (unsigned long long)supportedInterfaceOrientations;
+- (void)viewController:(id)arg1 canProceedWithInstallment:(bool)arg2 featureApplication:(id)arg3 completion:(id /* block */)arg4;
 - (void)viewControllerDidCancelSetupFlow:(id)arg1;
 - (void)viewControllerDidTerminateSetupFlow:(id)arg1;
 - (void)viewDidDisappear:(bool)arg1;
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;
-- (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
 
 @end

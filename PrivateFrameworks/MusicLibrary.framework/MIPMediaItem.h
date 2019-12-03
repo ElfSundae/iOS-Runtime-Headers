@@ -27,6 +27,7 @@
     long long  _familyAccountId;
     int  _fileKind;
     long long  _fileSize;
+    NSData * _flattenedChapterData;
     NSString * _grouping;
     struct { 
         unsigned int accountId : 1; 
@@ -69,6 +70,7 @@
         unsigned int year : 1; 
         unsigned int cloudAssetAvailable : 1; 
         unsigned int explicitContent : 1; 
+        unsigned int hasChapterData : 1; 
         unsigned int hasLocalAsset : 1; 
         unsigned int hidden : 1; 
         unsigned int inUsersCloudLibrary : 1; 
@@ -78,6 +80,7 @@
         unsigned int rememberBookmark : 1; 
         unsigned int userDisabled : 1; 
     }  _has;
+    bool  _hasChapterData;
     bool  _hasLocalAsset;
     bool  _hidden;
     bool  _inUsersCloudLibrary;
@@ -148,10 +151,12 @@
 @property (nonatomic) long long familyAccountId;
 @property (nonatomic) int fileKind;
 @property (nonatomic) long long fileSize;
+@property (nonatomic, retain) NSData *flattenedChapterData;
 @property (nonatomic, retain) NSString *grouping;
 @property (nonatomic) bool hasAccountId;
 @property (nonatomic, readonly) bool hasArtworkId;
 @property (nonatomic) bool hasBookmarkTimeMilliseconds;
+@property (nonatomic) bool hasChapterData;
 @property (nonatomic, readonly) bool hasChapterMetadataUrl;
 @property (nonatomic) bool hasCloudAssetAvailable;
 @property (nonatomic) bool hasCloudMatchedStatus;
@@ -173,7 +178,9 @@
 @property (nonatomic) bool hasFamilyAccountId;
 @property (nonatomic) bool hasFileKind;
 @property (nonatomic) bool hasFileSize;
+@property (nonatomic, readonly) bool hasFlattenedChapterData;
 @property (nonatomic, readonly) bool hasGrouping;
+@property (nonatomic) bool hasHasChapterData;
 @property (nonatomic) bool hasHasLocalAsset;
 @property (nonatomic) bool hasHidden;
 @property (nonatomic) bool hasInUsersCloudLibrary;
@@ -296,10 +303,12 @@
 - (long long)familyAccountId;
 - (int)fileKind;
 - (long long)fileSize;
+- (id)flattenedChapterData;
 - (id)grouping;
 - (bool)hasAccountId;
 - (bool)hasArtworkId;
 - (bool)hasBookmarkTimeMilliseconds;
+- (bool)hasChapterData;
 - (bool)hasChapterMetadataUrl;
 - (bool)hasCloudAssetAvailable;
 - (bool)hasCloudMatchedStatus;
@@ -321,7 +330,9 @@
 - (bool)hasFamilyAccountId;
 - (bool)hasFileKind;
 - (bool)hasFileSize;
+- (bool)hasFlattenedChapterData;
 - (bool)hasGrouping;
+- (bool)hasHasChapterData;
 - (bool)hasHasLocalAsset;
 - (bool)hasHidden;
 - (bool)hasInUsersCloudLibrary;
@@ -424,9 +435,11 @@
 - (void)setFamilyAccountId:(long long)arg1;
 - (void)setFileKind:(int)arg1;
 - (void)setFileSize:(long long)arg1;
+- (void)setFlattenedChapterData:(id)arg1;
 - (void)setGrouping:(id)arg1;
 - (void)setHasAccountId:(bool)arg1;
 - (void)setHasBookmarkTimeMilliseconds:(bool)arg1;
+- (void)setHasChapterData:(bool)arg1;
 - (void)setHasCloudAssetAvailable:(bool)arg1;
 - (void)setHasCloudMatchedStatus:(bool)arg1;
 - (void)setHasCloudPlaybackEndpointType:(bool)arg1;
@@ -443,6 +456,7 @@
 - (void)setHasFamilyAccountId:(bool)arg1;
 - (void)setHasFileKind:(bool)arg1;
 - (void)setHasFileSize:(bool)arg1;
+- (void)setHasHasChapterData:(bool)arg1;
 - (void)setHasHasLocalAsset:(bool)arg1;
 - (void)setHasHidden:(bool)arg1;
 - (void)setHasInUsersCloudLibrary:(bool)arg1;

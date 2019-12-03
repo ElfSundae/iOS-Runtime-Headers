@@ -13,6 +13,7 @@
 
 @property (nonatomic, readonly) NSDictionary *additionalDocumentPropertiesForWrite;
 @property (nonatomic, readonly) NSDictionary *additionalDocumentSupportPropertiesForWrite;
+@property (nonatomic, readonly) long long archiveValidationMode;
 @property (nonatomic, readonly) bool areNewExternalReferencesToDataAllowed;
 @property (nonatomic, readonly) NSUUID *baseUUIDForObjectUUID;
 @property (nonatomic, retain) TSPObjectContext *context;

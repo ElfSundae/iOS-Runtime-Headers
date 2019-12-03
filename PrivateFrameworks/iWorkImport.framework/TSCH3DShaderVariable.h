@@ -4,6 +4,7 @@
 
 @interface TSCH3DShaderVariable : NSObject <NSCopying> {
     unsigned long long  mArraySize;
+    unsigned long long  mComponentCount;
     NSArray * mElements;
     TSCH3DShaderVariable * mGenericName;
     bool  mIsSpecial;

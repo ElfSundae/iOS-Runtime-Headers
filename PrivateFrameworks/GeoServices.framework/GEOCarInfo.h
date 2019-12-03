@@ -14,13 +14,33 @@
         unsigned long long size; 
     }  _engineTypes;
     struct { 
-        unsigned int screenResolution : 1; 
-        unsigned int brightness : 1; 
-        unsigned int colorRange : 1; 
-        unsigned int deviceConnection : 1; 
-        unsigned int navAidedDrivingStatus : 1; 
-        unsigned int destinationSharingEnabled : 1; 
-    }  _has;
+        unsigned int has_screenResolution : 1; 
+        unsigned int has_brightness : 1; 
+        unsigned int has_colorRange : 1; 
+        unsigned int has_deviceConnection : 1; 
+        unsigned int has_navAidedDrivingStatus : 1; 
+        unsigned int has_destinationSharingEnabled : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_engineTypes : 1; 
+        unsigned int read_inputMethods : 1; 
+        unsigned int read_carName : 1; 
+        unsigned int read_manufacturer : 1; 
+        unsigned int read_model : 1; 
+        unsigned int read_screenDimension : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_engineTypes : 1; 
+        unsigned int wrote_inputMethods : 1; 
+        unsigned int wrote_screenResolution : 1; 
+        unsigned int wrote_carName : 1; 
+        unsigned int wrote_manufacturer : 1; 
+        unsigned int wrote_model : 1; 
+        unsigned int wrote_screenDimension : 1; 
+        unsigned int wrote_brightness : 1; 
+        unsigned int wrote_colorRange : 1; 
+        unsigned int wrote_deviceConnection : 1; 
+        unsigned int wrote_navAidedDrivingStatus : 1; 
+        unsigned int wrote_destinationSharingEnabled : 1; 
+    }  _flags;
     struct { 
         int *list; 
         unsigned long long count; 
@@ -29,6 +49,12 @@
     NSString * _manufacturer;
     NSString * _model;
     int  _navAidedDrivingStatus;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     GEOScreenDimension * _screenDimension;
     struct GEOScreenResolution { 
         double _height; 
@@ -68,18 +94,28 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 + (id)carInfoWithTraits:(id)arg1;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsDeviceConnection:(id)arg1;
 - (int)StringAsEngineTypes:(id)arg1;
 - (int)StringAsInputMethods:(id)arg1;
 - (int)StringAsNavAidedDrivingStatus:(id)arg1;
+- (void)_addNoFlagsEngineType:(int)arg1;
+- (void)_addNoFlagsInputMethod:(int)arg1;
+- (void)_readCarName;
+- (void)_readEngineTypes;
+- (void)_readInputMethods;
+- (void)_readManufacturer;
+- (void)_readModel;
+- (void)_readScreenDimension;
 - (void)addEngineType:(int)arg1;
 - (void)addInputMethod:(int)arg1;
 - (int)brightness;
 - (id)carName;
 - (void)clearEngineTypes;
 - (void)clearInputMethods;
+- (void)clearUnknownFields:(bool)arg1;
 - (int)colorRange;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -104,6 +140,8 @@
 - (bool)hasScreenDimension;
 - (bool)hasScreenResolution;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (id)initWithTraits:(id)arg1;
 - (int)inputMethodAtIndex:(unsigned long long)arg1;
 - (int*)inputMethods;
@@ -115,6 +153,7 @@
 - (id)model;
 - (int)navAidedDrivingStatus;
 - (id)navAidedDrivingStatusAsString:(int)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)screenDimension;
 - (struct GEOScreenResolution { double x1; double x2; struct { unsigned int x_3_1_1 : 1; unsigned int x_3_1_2 : 1; } x3; })screenResolution;

@@ -6,23 +6,21 @@
 @required
 
 - (NSSet *)autoFavoriteTagIDs;
-- (NSString *)bundleIAP;
-- (unsigned long long)bundleSubscriptionState;
+- (FCBundleSubscription *)bundleSubscription;
 - (<FCDerivedPersonalizationData><NSCoding> *)derivedPersonalizationData;
 - (NSSet *)mutedTagIDs;
 - (NSNumber *)onboardingVersion;
 - (NSSet *)purchasedTagIDs;
-- (NSArray *)rankedPersonalSubscribedTagIDs;
+- (NSArray *)rankedAllSubscribedTagIDs;
 - (NSDictionary *)recentlyReadHistoryItems;
 - (NSArray *)recentlySeenHistoryItems;
 - (void)setAutoFavoriteTagIDs:(NSSet *)arg1;
-- (void)setBundleIAP:(NSString *)arg1;
-- (void)setBundleSubscriptionState:(unsigned long long)arg1;
+- (void)setBundleSubscription:(FCBundleSubscription *)arg1;
 - (void)setDerivedPersonalizationData:(id <FCDerivedPersonalizationData><NSCoding>)arg1;
 - (void)setMutedTagIDs:(NSSet *)arg1;
 - (void)setOnboardingVersion:(NSNumber *)arg1;
 - (void)setPurchasedTagIDs:(NSSet *)arg1;
-- (void)setRankedPersonalSubscribedTagIDs:(NSArray *)arg1;
+- (void)setRankedAllSubscribedTagIDs:(NSArray *)arg1;
 - (void)setRecentlyReadHistoryItems:(NSDictionary *)arg1;
 - (void)setRecentlySeenHistoryItems:(NSArray *)arg1;
 

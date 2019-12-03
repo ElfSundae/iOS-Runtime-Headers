@@ -22,6 +22,7 @@
 
 + (id)sharedInstance;
 
+- (void).cxx_destruct;
 - (bool)__isLocalObjectValidOnQueue:(id)arg1;
 - (bool)__isRemoteObjectValidOnQueue:(id)arg1;
 - (void)_cleanUpConnection;

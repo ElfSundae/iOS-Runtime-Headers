@@ -5,6 +5,5 @@
 @interface SGSignificantPhonenumberModel : SGModel
 
 + (id)newTransformerInstanceForLanguage:(id)arg1;
-+ (id)temporaryKeyMap;
 
 @end

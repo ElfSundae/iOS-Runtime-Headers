@@ -10,7 +10,7 @@
 @property (nonatomic) long long applicationState;
 @property (nonatomic) bool isRegisteredForEvents;
 
-+ (void)load;
++ (void)beginMonitoringApplicationState;
 + (id)sharedInstance;
 
 - (void)applicationDidBecomeActive:(id)arg1;

@@ -40,6 +40,7 @@
 
 - (void).cxx_destruct;
 - (void)_alignmentSegmentChanged:(id)arg1;
+- (bool)_canShowWhileLocked;
 - (void)_commonInit;
 - (void)_sendFontAction;
 - (void)_sendTextAttributesAction;

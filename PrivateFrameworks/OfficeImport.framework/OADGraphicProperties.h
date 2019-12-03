@@ -18,7 +18,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)effects;
 - (id)exts;

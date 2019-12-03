@@ -4,9 +4,9 @@
 
 @interface GEOLogMsgStateMapViewLocation : PBCodable <NSCopying> {
     struct { 
-        unsigned int locationBucket : 1; 
-        unsigned int isCurrentLocationInViewport : 1; 
-    }  _has;
+        unsigned int has_locationBucket : 1; 
+        unsigned int has_isCurrentLocationInViewport : 1; 
+    }  _flags;
     bool  _isCurrentLocationInViewport;
     int  _locationBucket;
     GEOTouristInfo * _touristInfo;
@@ -18,6 +18,8 @@
 @property (nonatomic) bool isCurrentLocationInViewport;
 @property (nonatomic) int locationBucket;
 @property (nonatomic, retain) GEOTouristInfo *touristInfo;
+
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsLocationBucket:(id)arg1;
@@ -34,6 +36,7 @@
 - (int)locationBucket;
 - (id)locationBucketAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasIsCurrentLocationInViewport:(bool)arg1;
 - (void)setHasLocationBucket:(bool)arg1;

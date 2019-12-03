@@ -5,6 +5,8 @@
 @interface PKService : NSObject <NSXPCListenerDelegate> {
     NSObject<OS_dispatch_queue> * __sync;
     <PKServiceDelegate> * _delegate;
+    NSObject<OS_dispatch_source> * _firstHostRequestTimer;
+    bool  _isSystemService;
     NSMutableDictionary * _personalities;
     NSXPCListener * _serviceListener;
     bool  _shared;
@@ -17,7 +19,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (retain) <PKServiceDelegate> *delegate;
 @property (readonly, copy) NSString *description;
+@property (retain) NSObject<OS_dispatch_source> *firstHostRequestTimer;
 @property (readonly) unsigned long long hash;
+@property bool isSystemService;
 @property (retain) NSMutableDictionary *personalities;
 @property (retain) NSXPCListener *serviceListener;
 @property bool shared;
@@ -34,18 +38,22 @@
 - (void)_prepareToRun;
 - (bool)_processDefaultSubsystemName:(id)arg1;
 - (id)_sync;
+- (void)beganUsingServicePersonality:(id)arg1;
 - (void)cancelTermination;
 - (void)checkEnvironment:(id)arg1;
+- (void)checkIn;
 - (id)configuredSubsystemList;
 - (id)connectionForPlugInNamed:(id)arg1;
 - (void)copyAppStoreReceipt:(id /* block */)arg1;
 - (id)defaultsForPlugInNamed:(id)arg1;
 - (id)delegate;
-- (id)discoverSubsystemNamed:(id)arg1 logMissing:(bool)arg2;
+- (id)discoverSubsystemNamed:(id)arg1 options:(id)arg2 logMissing:(bool)arg3;
 - (void)discoverSubsystems;
 - (id)embeddedPrincipalForPlugInNamed:(id)arg1;
+- (id)firstHostRequestTimer;
 - (id)hostPrincipalForPlugInNamed:(id)arg1;
 - (id)init;
+- (bool)isSystemService;
 - (void)launchContainingApplicationForPlugInNamed:(id)arg1;
 - (bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)mergeSubsystemList:(id)arg1 from:(id)arg2;
@@ -59,6 +67,8 @@
 - (void)scheduleTermination:(double)arg1;
 - (id)serviceListener;
 - (void)setDelegate:(id)arg1;
+- (void)setFirstHostRequestTimer:(id)arg1;
+- (void)setIsSystemService:(bool)arg1;
 - (void)setPersonalities:(id)arg1;
 - (void)setServiceListener:(id)arg1;
 - (void)setShared:(bool)arg1;

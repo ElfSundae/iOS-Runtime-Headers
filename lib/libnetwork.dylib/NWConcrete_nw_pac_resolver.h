@@ -7,6 +7,8 @@
     struct __CFString { } * bundleIdentifier;
     NSObject<OS_nw_context> * context;
     struct __CFURL { } * endpointURL;
+    unsigned int  is_dry_run;
+    BOOL  logging_id_str;
     struct __CFString { } * pacScript;
     struct __CFURL { } * pacURL;
     id /* block */  result_block;

@@ -5,6 +5,7 @@
 @interface IMDAccount : NSObject <IMSystemMonitorListener> {
     NSString * _account;
     NSMutableDictionary * _accountDefaults;
+    long long  _accountType;
     int  _disconnectReason;
     bool  _isLoading;
     bool  _isManaged;
@@ -19,6 +20,7 @@
 @property (nonatomic, readonly, retain) NSDictionary *accountDefaults;
 @property (nonatomic, readonly, retain) NSString *accountID;
 @property (nonatomic, readonly, retain) NSDictionary *accountInfoToPost;
+@property (nonatomic, readonly) long long accountType;
 @property (nonatomic, readonly) bool canMakeDowngradeRoutingChecks;
 @property (nonatomic, readonly) bool isActive;
 @property (nonatomic, readonly) bool isDisabled;
@@ -45,6 +47,7 @@
 - (id)accountDefaults;
 - (id)accountID;
 - (id)accountInfoToPost;
+- (long long)accountType;
 - (bool)canMakeDowngradeRoutingChecks;
 - (void)changeStatus:(id)arg1;
 - (void)createSessionIfNecessary;

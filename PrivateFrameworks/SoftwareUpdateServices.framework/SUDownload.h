@@ -14,12 +14,14 @@
 
 + (bool)supportsSecureCoding;
 
+- (bool)allowCellularDownload;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)descriptor;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (bool)isValidDownload;
 - (id)metadata;
 - (id)progress;
 - (void)setDescriptor:(id)arg1;

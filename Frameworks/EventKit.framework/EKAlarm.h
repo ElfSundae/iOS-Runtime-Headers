@@ -47,6 +47,7 @@
 
 - (void).cxx_destruct;
 - (id)UUID;
+- (bool)_reset;
 - (id)absoluteDate;
 - (id)acknowledgedDate;
 - (void)addSnoozedAlarm:(id)arg1;

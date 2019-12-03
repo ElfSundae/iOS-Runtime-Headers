@@ -7,9 +7,9 @@
     float  mRadius;
 }
 
+- (void).cxx_destruct;
 - (id)color;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (id)init;

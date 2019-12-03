@@ -5,12 +5,10 @@
 @interface PHResourceAvailabilityChangeRequest : PHResourceAvailabilityRequest {
     PHResourceAvailabilityDataStoreManager * _dataStoreManager;
     <PHResourceAvailabilityChangeRequestDelegate> * _delegate;
-    NSError * _error;
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
     }  _lock;
     bool  _networkAccessAllowed;
-    bool  _success;
     bool  _transient;
     bool  _wantsProgress;
 }
@@ -21,12 +19,17 @@
 @property (nonatomic) bool wantsProgress;
 
 - (void).cxx_destruct;
+- (void)_assetsdClientXPCConnectionInterruptedNotification:(id)arg1;
+- (id)_availabilityRequestOptions;
 - (void)_cplDownloadFinishedNotification:(id)arg1;
 - (void)_cplDownloadStatusNotification:(id)arg1;
+- (void)_handleLocalAvailabilityChangeForResource:(id)arg1 mutableInfo:(id)arg2 fileURL:(id*)arg3 uti:(id*)arg4 orientation:(unsigned int*)arg5 data:(id*)arg6;
+- (bool)_prepareForChangeRequestWithLibrary:(id)arg1 asset:(id*)arg2 resource:(id*)arg3 error:(id*)arg4;
+- (void)abortClientSide;
 - (void)cancel;
 - (id)delegate;
-- (id)initWithAssetObjectID:(id)arg1 resourceIdentity:(id)arg2;
-- (id)initWithPlistDictionary:(id)arg1;
+- (id)initWithPlistDictionary:(id)arg1 photoLibrary:(id)arg2;
+- (id)initWithTaskIdentifier:(id)arg1 assetObjectID:(id)arg2 resourceIdentity:(id)arg3;
 - (bool)isNetworkAccessAllowed;
 - (bool)isTransient;
 - (id)plistDictionary;

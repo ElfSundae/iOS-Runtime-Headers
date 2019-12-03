@@ -3,9 +3,9 @@
  */
 
 @interface HDDemoDataBaseSampleGeneratorObjectCollection : NSObject {
-    NSMutableArray * _objectsFromPhone;
+    NSMutableSet * _objectsFromPhone;
     NSMutableDictionary * _objectsFromPhoneApps;
-    NSMutableArray * _objectsFromWatch;
+    NSMutableSet * _objectsFromWatch;
     NSMutableDictionary * _workoutUUIDToAssocatedObjectUUIDs;
 }
 

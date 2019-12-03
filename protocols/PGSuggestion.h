@@ -24,4 +24,9 @@
 - (NSDate *)universalStartDate;
 - (long long)version;
 
+@optional
+
+- (bool)isInvalid;
+- (NSArray *)reasons;
+
 @end

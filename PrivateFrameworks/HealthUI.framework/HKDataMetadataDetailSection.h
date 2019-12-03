@@ -2,8 +2,9 @@
    Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
  */
 
-@interface HKDataMetadataDetailSection : HKDataMetadataSimpleSection {
+@interface HKDataMetadataDetailSection : HKDataMetadataSimpleSection <HKDataMetadataDetailSectionDataReceiver> {
     HKDisplayTypeController * _displayTypeController;
+    HKDataMetadataDataSource * _metadataDataSource;
     NSObject<HKDataMetadataObject> * _object;
     HKUnitPreferenceController * _unitController;
 }

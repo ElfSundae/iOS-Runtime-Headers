@@ -3,11 +3,14 @@
  */
 
 @interface MNNavigationDetails : NSObject <NSSecureCoding> {
-    MNActiveRouteDetails * _activeRouteDetails;
     NSArray * _alternateRoutes;
     unsigned long long  _closestStepIndex;
     MNActiveRouteInfo * _currentRoute;
     NSString * _currentVoiceLanguage;
+    int  _desiredNavigationType;
+    int  _desiredTransportType;
+    GEODirectionsRequest * _directionsRequest;
+    GEODirectionsResponse * _directionsResponse;
     NSString * _displayString;
     double  _distanceUntilManeuver;
     double  _distanceUntilSign;
@@ -15,10 +18,14 @@
     GEONavigationGuidanceState * _guidanceState;
     int  _headingOrientation;
     bool  _isDetour;
-    bool  _isInVehicle;
+    bool  _isInPreArrivalState;
     MNLocation * _location;
     int  _navigationState;
+    int  _navigationType;
+    GEOComposedWaypoint * _originalDestination;
+    GEOComposedWaypoint * _originalOrigin;
     NSArray * _possibleCommuteDestinations;
+    NSArray * _previewRoutes;
     double  _proceedToRouteDistance;
     unsigned long long  _reconnectionRouteIndex;
     double  _remainingDistance;
@@ -26,7 +33,8 @@
     NSMapTable * _routeIDLookup;
     unsigned long long  _routeIndex;
     NSMutableDictionary * _routeLookup;
-    MNRoutePlanningDetails * _routePlanningDetails;
+    unsigned long long  _selectedPreviewRouteIndex;
+    MNStartNavigationDetails * _startNavigationDetails;
     unsigned long long  _state;
     double  _timeUntilManeuver;
     double  _timeUntilSign;
@@ -39,11 +47,14 @@
     NSMutableDictionary * _trafficIncidentAlerts;
 }
 
-@property (nonatomic, readonly) MNActiveRouteDetails *activeRouteDetails;
 @property (nonatomic, readonly) NSArray *alternateRoutes;
 @property (nonatomic) unsigned long long closestStepIndex;
 @property (nonatomic, readonly) GEOComposedRoute *currentRoute;
 @property (nonatomic, retain) NSString *currentVoiceLanguage;
+@property (nonatomic) int desiredNavigationType;
+@property (nonatomic) int desiredTransportType;
+@property (nonatomic, retain) GEODirectionsRequest *directionsRequest;
+@property (nonatomic, retain) GEODirectionsResponse *directionsResponse;
 @property (nonatomic, retain) NSString *displayString;
 @property (nonatomic) double distanceUntilManeuver;
 @property (nonatomic) double distanceUntilSign;
@@ -51,18 +62,23 @@
 @property (nonatomic, retain) GEONavigationGuidanceState *guidanceState;
 @property (nonatomic) int headingOrientation;
 @property (nonatomic) bool isDetour;
-@property (nonatomic) bool isInVehicle;
+@property (nonatomic) bool isInPreArrivalState;
 @property (nonatomic, readonly) unsigned long long legIndex;
 @property (nonatomic, retain) MNLocation *location;
 @property (nonatomic) int navigationState;
-@property (nonatomic, readonly) int navigationType;
+@property (nonatomic) int navigationType;
+@property (nonatomic, retain) GEOComposedWaypoint *originalDestination;
+@property (nonatomic, retain) GEOComposedWaypoint *originalOrigin;
 @property (nonatomic, readonly) NSArray *possibleCommuteDestinations;
+@property (nonatomic, readonly) NSArray *previewRoutes;
 @property (nonatomic) double proceedToRouteDistance;
 @property (nonatomic, readonly) unsigned long long reconnectionRouteIndex;
 @property (nonatomic) double remainingDistance;
 @property (nonatomic) double remainingTime;
+@property (nonatomic, readonly) NSMapTable *routeIDLookup;
 @property (nonatomic, readonly) unsigned long long routeIndex;
-@property (nonatomic, retain) MNRoutePlanningDetails *routePlanningDetails;
+@property (nonatomic, readonly) NSMutableDictionary *routeLookup;
+@property (nonatomic, readonly) unsigned long long selectedPreviewRouteIndex;
 @property (nonatomic) unsigned long long state;
 @property (nonatomic, readonly) unsigned long long stepIndex;
 @property (nonatomic) double timeUntilManeuver;
@@ -72,19 +88,22 @@
 @property (nonatomic) bool traceIsPlaying;
 @property (nonatomic, copy) NSString *tracePath;
 @property (nonatomic) double tracePosition;
-@property (retain) NSMutableDictionary *trackedCommuteDestinations;
+@property (nonatomic, retain) NSMutableDictionary *trackedCommuteDestinations;
 
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (void)_updateRouteIDLookup;
-- (id)activeRouteDetails;
 - (id)alternateRoutes;
 - (unsigned long long)closestStepIndex;
 - (void)copySerializableValuesFrom:(id)arg1;
 - (id)currentRoute;
 - (id)currentVoiceLanguage;
 - (id)description;
+- (int)desiredNavigationType;
+- (int)desiredTransportType;
+- (id)directionsRequest;
+- (id)directionsResponse;
 - (id)displayString;
 - (double)distanceUntilManeuver;
 - (double)distanceUntilSign;
@@ -95,25 +114,35 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (bool)isDetour;
-- (bool)isInVehicle;
+- (bool)isInPreArrivalState;
 - (unsigned long long)legIndex;
 - (id)location;
 - (int)navigationState;
 - (int)navigationType;
+- (id)originalDestination;
+- (id)originalOrigin;
 - (id)possibleCommuteDestinations;
+- (id)previewRoutes;
 - (double)proceedToRouteDistance;
 - (unsigned long long)reconnectionRouteIndex;
 - (double)remainingDistance;
 - (double)remainingTime;
-- (id)removeTrafficIncidentAlertWithDetails:(id)arg1;
+- (id)removeTrafficIncidentAlert:(id)arg1;
+- (id)routeIDLookup;
 - (unsigned long long)routeIndex;
 - (id)routeInfoForID:(id)arg1;
 - (id)routeInfoForRoute:(id)arg1;
-- (id)routePlanningDetails;
-- (void)setActiveRouteDetails:(id)arg1 withAlternateRoutes:(id)arg2;
+- (id)routeLookup;
+- (id)routeLookupIDs;
+- (unsigned long long)selectedPreviewRouteIndex;
 - (void)setAlternateRoutes:(id)arg1;
 - (void)setClosestStepIndex:(unsigned long long)arg1;
+- (void)setCurrentRoute:(id)arg1 withAlternateRoutes:(id)arg2;
 - (void)setCurrentVoiceLanguage:(id)arg1;
+- (void)setDesiredNavigationType:(int)arg1;
+- (void)setDesiredTransportType:(int)arg1;
+- (void)setDirectionsRequest:(id)arg1;
+- (void)setDirectionsResponse:(id)arg1;
 - (void)setDisplayString:(id)arg1;
 - (void)setDistanceUntilManeuver:(double)arg1;
 - (void)setDistanceUntilSign:(double)arg1;
@@ -121,13 +150,16 @@
 - (void)setGuidanceState:(id)arg1;
 - (void)setHeadingOrientation:(int)arg1;
 - (void)setIsDetour:(bool)arg1;
-- (void)setIsInVehicle:(bool)arg1;
+- (void)setIsInPreArrivalState:(bool)arg1;
 - (void)setLocation:(id)arg1;
 - (void)setNavigationState:(int)arg1;
+- (void)setNavigationType:(int)arg1;
+- (void)setOriginalDestination:(id)arg1;
+- (void)setOriginalOrigin:(id)arg1;
+- (void)setPreviewRoutes:(id)arg1 withSelectedRouteIndex:(unsigned long long)arg2;
 - (void)setProceedToRouteDistance:(double)arg1;
 - (void)setRemainingDistance:(double)arg1;
 - (void)setRemainingTime:(double)arg1;
-- (void)setRoutePlanningDetails:(id)arg1;
 - (void)setState:(unsigned long long)arg1;
 - (void)setTimeUntilManeuver:(double)arg1;
 - (void)setTimeUntilSign:(double)arg1;
@@ -147,8 +179,9 @@
 - (id)tracePath;
 - (double)tracePosition;
 - (id)trackedCommuteDestinations;
-- (void)updateETAResponseForRoute:(id)arg1;
+- (void)updateETATrafficForRoute:(id)arg1;
+- (void)updateLocationFromDetails:(id)arg1;
 - (void)updatePossibleCommuteDestinations:(id)arg1;
-- (id)updateWithTrafficIncidentAlertDetails:(id)arg1;
+- (id)updateWithTrafficIncidentAlert:(id)arg1;
 
 @end

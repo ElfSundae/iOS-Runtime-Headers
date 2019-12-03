@@ -14,6 +14,7 @@
     NSString * _serviceBundleIdentifier;
     BKSProcessAssertion * _serviceProcessAssertion;
     NSXPCConnection * _serviceSessionConnection;
+    bool  _serviceSessionConnectionResumed;
     int  _sessionRequestNotifyToken;
 }
 

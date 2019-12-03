@@ -3,15 +3,17 @@
  */
 
 @interface DNDState : NSObject <NSCopying, NSSecureCoding> {
-    bool  _active;
     NSArray * _activeModeAssertionMetadata;
-    bool  _willSuppressInterruptions;
+    unsigned long long  _suppressionState;
 }
 
 @property (getter=isActive, nonatomic, readonly) bool active;
 @property (nonatomic, readonly, copy) NSArray *activeModeAssertionMetadata;
 @property (nonatomic, readonly, copy) NSArray *activeModeIdentifiers;
+@property (nonatomic, readonly) unsigned long long suppressionState;
 @property (nonatomic, readonly) bool willSuppressInterruptions;
+
+// Image: /System/Library/PrivateFrameworks/DoNotDisturb.framework/DoNotDisturb
 
 + (bool)supportsSecureCoding;
 
@@ -22,10 +24,16 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithActive:(bool)arg1 willSuppressInterruptions:(bool)arg2 activeModeAssertionMetadata:(id)arg3;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithSuppressionState:(unsigned long long)arg1 activeModeAssertionMetadata:(id)arg2;
 - (bool)isActive;
 - (bool)isEqual:(id)arg1;
+- (unsigned long long)suppressionState;
 - (bool)willSuppressInterruptions;
+
+// Image: /System/Library/PrivateFrameworks/CoverSheet.framework/CoverSheet
+
+- (bool)sb_isBedtimeModeActive;
+- (bool)sb_isDrivingModeActive;
 
 @end

@@ -3,31 +3,31 @@
  */
 
 @interface PPTopicReadOnlyServerRequestHandler : NSObject <PPTopicReadOnlyServerProtocol> {
-    PPBundleIdResolver * _bundleIdResolver;
+    _PASBundleIdResolver * _bundleIdResolver;
     NSString * _clientProcessName;
     <PPTopicClientProtocol> * _clientProxy;
     PPXPCServerPipelinedBatchQueryManager * _queryManager;
 }
 
-@property (nonatomic, retain) PPBundleIdResolver *bundleIdResolver;
+@property (nonatomic, retain) _PASBundleIdResolver *bundleIdResolver;
 @property (nonatomic, copy) NSString *clientProcessName;
+
++ (id)filterQIDDictionary:(id)arg1 withWhitelistOfProcess:(id)arg2;
++ (id)filterScoredTopicsNotInWhitelist:(id)arg1 withWhitelistOfProcess:(id)arg2;
++ (id)filterTopicRecordsNotInWhitelist:(id)arg1 withWhitelistOfProcess:(id)arg2;
 
 - (void).cxx_destruct;
 - (id)bundleIdResolver;
 - (id)clientProcessName;
-- (void)feedbackEngagedMappedTopics:(id)arg1 forMapping:(id)arg2;
-- (void)feedbackEngagedTopics:(id)arg1;
-- (void)feedbackMappedTopicsOverallEngagement:(id)arg1 forMapping:(id)arg2;
-- (void)feedbackTopicsOverallEngagement:(id)arg1;
-- (void)feedbackUsedMappedTopics:(id)arg1 forMapping:(id)arg2;
-- (void)feedbackUsedTopics:(id)arg1;
 - (id)init;
 - (void)rankedTopicsWithQuery:(id)arg1 queryId:(unsigned long long)arg2;
+- (void)registerFeedback:(id)arg1 completion:(id /* block */)arg2;
 - (void)scoresForTopicMapping:(id)arg1 query:(id)arg2 queryId:(unsigned long long)arg3;
 - (void)setBundleIdResolver:(id)arg1;
 - (void)setClientProcessName:(id)arg1;
 - (void)setRemoteObjectProxy:(id)arg1;
 - (void)topicRecordsWithQuery:(id)arg1 queryId:(unsigned long long)arg2;
 - (void)unblockPendingQueries;
+- (void)unmapMappedTopicIdentifier:(id)arg1 mappingIdentifier:(id)arg2 completion:(id /* block */)arg3;
 
 @end

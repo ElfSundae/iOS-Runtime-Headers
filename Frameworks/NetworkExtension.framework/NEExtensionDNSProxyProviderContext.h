@@ -11,7 +11,7 @@
 
 + (id)_extensionAuxiliaryVendorProtocol;
 
-- (void)setInitialFlowDivertControlSocket:(id)arg1 extraValidation:(bool)arg2;
+- (id)extensionPoint;
 - (void)setSystemDNSSettings:(id)arg1;
 
 @end

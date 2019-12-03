@@ -32,6 +32,9 @@
     struct RetainPtr<PDFHostViewController> { 
         void *m_ptr; 
     }  _hostViewController;
+    struct RetainPtr<WKKeyboardScrollViewAnimator> { 
+        void *m_ptr; 
+    }  _keyboardScrollingAnimator;
     struct CGSize { 
         double width; 
         double height; 
@@ -52,8 +55,11 @@
             } point; 
             bool includeSnapshot; 
             bool includeLinkIndicator; 
+            bool linkIndicatorShouldHaveLegacyMargins; 
         } request; 
+        bool canBeValid; 
         bool nodeAtPositionIsFocusedElement; 
+        bool nodeAtPositionHasDoubleClickHandler; 
         bool hasSelectionAtPosition; 
         bool isSelectable; 
         bool isNearMarkedText; 
@@ -63,6 +69,7 @@
         bool isAttachment; 
         bool isAnimatedImage; 
         bool isElement; 
+        unsigned long long containerScrollingNodeID; 
         bool isDataDetectorLink; 
         bool preventTextInteraction; 
         struct FloatPoint { 
@@ -207,7 +214,7 @@
     struct RetainPtr<NSString> { 
         void *m_ptr; 
     }  _suggestedFilename;
-    /* Warning: unhandled struct encoding: '{WeakObjCPtr<WKWebView>="m_weakReference"@}' */ struct WeakObjCPtr<WKWebView> { 
+    struct WeakObjCPtr<WKWebView> { 
         id m_weakReference; 
     }  _webView;
 }
@@ -221,6 +228,8 @@
 @property (nonatomic, readonly) NSData *web_dataRepresentation;
 @property (nonatomic, readonly) bool web_isBackground;
 @property (nonatomic, readonly) NSString *web_suggestedFilename;
+
++ (bool)web_requiresCustomSnapshotting;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -255,7 +264,7 @@
 - (void)pdfHostViewController:(id)arg1 goToURL:(id)arg2;
 - (void)pdfHostViewController:(id)arg1 updatePageCount:(long long)arg2;
 - (void)pdfHostViewControllerExtensionProcessDidCrash:(id)arg1;
-- (struct Optional<WebKit::InteractionInformationAtPosition> { bool x1; union storage_t<WebKit::InteractionInformationAtPosition> { unsigned char x_2_1_1; struct InteractionInformationAtPosition { struct InteractionInformationRequest { struct IntPoint { int x_1_4_1; int x_1_4_2; } x_1_3_1; bool x_1_3_2; bool x_1_3_3; } x_2_2_1; bool x_2_2_2; bool x_2_2_3; bool x_2_2_4; bool x_2_2_5; bool x_2_2_6; bool x_2_2_7; bool x_2_2_8; bool x_2_2_9; bool x_2_2_10; bool x_2_2_11; bool x_2_2_12; bool x_2_2_13; struct FloatPoint { float x_14_3_1; float x_14_3_2; } x_2_2_14; struct URL { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_5_1; } x_1_4_1; } x_15_3_1; unsigned int x_15_3_2 : 1; unsigned int x_15_3_3 : 1; unsigned int x_15_3_4 : 1; unsigned int x_15_3_5 : 3; unsigned int x_15_3_6 : 26; unsigned int x_15_3_7; unsigned int x_15_3_8; unsigned int x_15_3_9; unsigned int x_15_3_10; unsigned int x_15_3_11; unsigned int x_15_3_12; unsigned int x_15_3_13; } x_2_2_15; struct URL { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_5_1; } x_1_4_1; } x_16_3_1; unsigned int x_16_3_2 : 1; unsigned int x_16_3_3 : 1; unsigned int x_16_3_4 : 1; unsigned int x_16_3_5 : 3; unsigned int x_16_3_6 : 26; unsigned int x_16_3_7; unsigned int x_16_3_8; unsigned int x_16_3_9; unsigned int x_16_3_10; unsigned int x_16_3_11; unsigned int x_16_3_12; unsigned int x_16_3_13; } x_2_2_16; } x_2_1_2; } x2; })positionInformationForActionSheetAssistant:(id)arg1;
+- (struct Optional<WebKit::InteractionInformationAtPosition> { bool x1; union storage_t<WebKit::InteractionInformationAtPosition> { unsigned char x_2_1_1; struct InteractionInformationAtPosition { struct InteractionInformationRequest { struct IntPoint { int x_1_4_1; int x_1_4_2; } x_1_3_1; bool x_1_3_2; bool x_1_3_3; bool x_1_3_4; } x_2_2_1; bool x_2_2_2; bool x_2_2_3; bool x_2_2_4; bool x_2_2_5; bool x_2_2_6; bool x_2_2_7; bool x_2_2_8; bool x_2_2_9; bool x_2_2_10; bool x_2_2_11; bool x_2_2_12; bool x_2_2_13; unsigned long long x_2_2_14; bool x_2_2_15; bool x_2_2_16; struct FloatPoint { float x_17_3_1; float x_17_3_2; } x_2_2_17; struct URL { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_5_1; } x_1_4_1; } x_18_3_1; unsigned int x_18_3_2 : 1; unsigned int x_18_3_3 : 1; unsigned int x_18_3_4 : 1; unsigned int x_18_3_5 : 3; unsigned int x_18_3_6 : 26; unsigned int x_18_3_7; unsigned int x_18_3_8; unsigned int x_18_3_9; unsigned int x_18_3_10; unsigned int x_18_3_11; unsigned int x_18_3_12; unsigned int x_18_3_13; } x_2_2_18; struct URL { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_5_1; } x_1_4_1; } x_19_3_1; unsigned int x_19_3_2 : 1; unsigned int x_19_3_3 : 1; unsigned int x_19_3_4 : 1; unsigned int x_19_3_5 : 3; unsigned int x_19_3_6 : 26; unsigned int x_19_3_7; unsigned int x_19_3_8; unsigned int x_19_3_9; unsigned int x_19_3_10; unsigned int x_19_3_11; unsigned int x_19_3_12; unsigned int x_19_3_13; } x_2_2_19; } x_2_1_2; } x2; })positionInformationForActionSheetAssistant:(id)arg1;
 - (void)web_beginAnimatedResizeWithUpdates:(id /* block */)arg1;
 - (void)web_computedContentInsetDidChange;
 - (id)web_contentView;
@@ -275,6 +284,7 @@
 - (void)web_setFixedOverlayView:(id)arg1;
 - (void)web_setMinimumSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)web_setOverlaidAccessoryViewsInset:(struct CGSize { double x1; double x2; })arg1;
+- (void)web_snapshotRectInContentViewCoordinates:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 snapshotWidth:(double)arg2 completionHandler:(id /* block */)arg3;
 - (id)web_suggestedFilename;
 
 @end

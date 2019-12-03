@@ -6,6 +6,7 @@
     NSObject<OS_nw_interface> * _internalInterface;
 }
 
+@property (getter=isConstrained, nonatomic, readonly) bool constrained;
 @property (nonatomic, readonly) NWInterface *delegateInterface;
 @property (getter=isExpensive, nonatomic, readonly) bool expensive;
 @property (nonatomic, readonly) unsigned long long generation;
@@ -39,6 +40,9 @@
 - (unsigned long long)interfaceIndex;
 - (id)interfaceName;
 - (id)internalInterface;
+- (id)ipv4Broadcast;
+- (id)ipv4Netmask;
+- (bool)isConstrained;
 - (bool)isDeepEqual:(id)arg1;
 - (bool)isExpensive;
 - (bool)isShallowEqual:(id)arg1;

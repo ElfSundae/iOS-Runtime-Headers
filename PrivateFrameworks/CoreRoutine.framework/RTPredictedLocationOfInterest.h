@@ -8,7 +8,7 @@
     long long  _modeOfTransportation;
     NSDate * _nextEntryTime;
     RTReceipt * _receipt;
-    RTSource * _source;
+    NSArray * _sources;
 }
 
 @property (nonatomic, readonly) double confidence;
@@ -17,6 +17,7 @@
 @property (nonatomic, readonly) NSDate *nextEntryTime;
 @property (nonatomic, retain) RTReceipt *receipt;
 @property (nonatomic, readonly) RTSource *source;
+@property (nonatomic, readonly) NSArray *sources;
 
 + (bool)supportsSecureCoding;
 
@@ -26,8 +27,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithLocationOfInterest:(id)arg1 confidence:(double)arg2 nextEntryTime:(id)arg3 modeOfTransportation:(long long)arg4 source:(id)arg5;
-- (id)initWithLocationOfInterest:(id)arg1 confidence:(double)arg2 nextEntryTime:(id)arg3 modeOfTransportation:(long long)arg4 source:(id)arg5 receipt:(id)arg6;
+- (id)initWithLocationOfInterest:(id)arg1 confidence:(double)arg2 nextEntryTime:(id)arg3 modeOfTransportation:(long long)arg4 sources:(id)arg5;
+- (id)initWithLocationOfInterest:(id)arg1 confidence:(double)arg2 nextEntryTime:(id)arg3 modeOfTransportation:(long long)arg4 sources:(id)arg5 receipt:(id)arg6;
 - (bool)isEqual:(id)arg1;
 - (id)locationOfInterest;
 - (long long)modeOfTransportation;
@@ -37,5 +38,6 @@
 - (void)setModeOfTransportation:(long long)arg1;
 - (void)setReceipt:(id)arg1;
 - (id)source;
+- (id)sources;
 
 @end

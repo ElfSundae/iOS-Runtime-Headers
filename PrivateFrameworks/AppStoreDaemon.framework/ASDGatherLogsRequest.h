@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/AppStoreDaemon.framework/AppStoreDaemon
  */
 
-@interface ASDGatherLogsRequest : ASDEphemeralRequest {
+@interface ASDGatherLogsRequest : NSObject {
     NSObject<OS_dispatch_queue> * _accessQueue;
     NSObject<OS_dispatch_queue> * _calloutQueue;
     NSXPCConnection * _connection;

@@ -18,23 +18,23 @@
 @property (nonatomic, retain) NSArray *msASComments;
 @property (nonatomic, retain) NSDictionary *mstreamdInfoDictionary;
 
++ (void)assetsdLocallyProcessAddedComments:(id)arg1 assetGUID:(id)arg2 albumGUID:(id)arg3 info:(id)arg4 libraryServicesManager:(id)arg5;
 + (void)deleteSharedCommentFromServer:(id)arg1;
-+ (id)directoryPathForInFlightComments:(bool)arg1;
 + (void)locallyProcessAddedComments:(id)arg1 assetGUID:(id)arg2 albumGUID:(id)arg3 info:(id)arg4;
 + (void)locallyProcessDeletedComments:(id)arg1 info:(id)arg2;
 + (void)publishCommentToServer:(id)arg1;
 
+- (void).cxx_destruct;
 - (id)albumGUID;
 - (id)assetGUID;
 - (id)commentGUID;
 - (long long)daemonOperation;
-- (void)dealloc;
 - (id)description;
 - (void)encodeToXPCObject:(id)arg1;
 - (void)executeDeleteCommentFromServer;
 - (void)executeProcessServerNotificationOfCommentChanges;
 - (void)executePublishCommentToServer;
-- (id)initFromXPCObject:(id)arg1 connection:(id)arg2;
+- (id)initFromXPCObject:(id)arg1 libraryServicesManager:(id)arg2;
 - (long long)jobType;
 - (id)msASComments;
 - (id)mstreamdInfoDictionary;

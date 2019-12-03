@@ -2,7 +2,11 @@
    Image: /System/Library/PrivateFrameworks/NeutrinoCore.framework/NeutrinoCore
  */
 
-@interface NUImageRenderRequest : NURenderRequest {
+@interface NUImageRenderRequest : NURenderRequest <NUTimeBased> {
+    struct { 
+        long long width; 
+        long long height; 
+    }  _borderSize;
     NUColorSpace * _colorSpace;
     <NUExtentPolicy> * _extentPolicy;
     NUPixelFormat * _pixelFormat;
@@ -13,24 +17,24 @@
         long long width; 
         long long height; 
     }  _tileSize;
-    struct { 
-        long long value; 
-        int timescale; 
-        unsigned int flags; 
-        long long epoch; 
-    }  _time;
 }
 
+@property struct { long long x1; long long x2; } borderSize;
 @property (nonatomic, retain) NUColorSpace *colorSpace;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (retain) <NUExtentPolicy> *extentPolicy;
+@property (readonly) unsigned long long hash;
 @property (retain) NUPixelFormat *pixelFormat;
 @property (retain) <NURegionPolicy> *regionPolicy;
 @property (retain) <NUScalePolicy> *scalePolicy;
+@property (readonly) Class superclass;
 @property (retain) <NUMutableImage> *targetImage;
 @property struct { long long x1; long long x2; } tileSize;
-@property struct { long long x1; int x2; unsigned int x3; long long x4; } time;
+@property (nonatomic) struct { long long x1; int x2; unsigned int x3; long long x4; } time;
 
 - (void).cxx_destruct;
+- (struct { long long x1; long long x2; })borderSize;
 - (id)colorSpace;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -40,6 +44,7 @@
 - (id)pixelFormat;
 - (id)regionPolicy;
 - (id)scalePolicy;
+- (void)setBorderSize:(struct { long long x1; long long x2; })arg1;
 - (void)setColorSpace:(id)arg1;
 - (void)setExtentPolicy:(id)arg1;
 - (void)setPixelFormat:(id)arg1;
@@ -47,9 +52,7 @@
 - (void)setScalePolicy:(id)arg1;
 - (void)setTargetImage:(id)arg1;
 - (void)setTileSize:(struct { long long x1; long long x2; })arg1;
-- (void)setTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (id)targetImage;
 - (struct { long long x1; long long x2; })tileSize;
-- (struct { long long x1; int x2; unsigned int x3; long long x4; })time;
 
 @end

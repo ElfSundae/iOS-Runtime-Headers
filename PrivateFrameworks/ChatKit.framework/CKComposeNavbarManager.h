@@ -27,6 +27,7 @@
 - (id)defaultNavbarCanvasViewController;
 - (id)init;
 - (void)setAvatarNavbarCanvasViewController:(id)arg1;
+- (void)setCanvasViewControllerDelegate:(id)arg1;
 - (void)setContentView:(id)arg1;
 - (void)setCustomStatusBackgroundView:(id)arg1;
 - (void)setDefaultNavbarCanvasViewController:(id)arg1;

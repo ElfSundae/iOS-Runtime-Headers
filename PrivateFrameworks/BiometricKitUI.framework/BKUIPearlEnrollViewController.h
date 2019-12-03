@@ -20,6 +20,7 @@
     <BKUIPearlEnrollViewControllerDelegate> * _delegate;
     BKDevicePearl * _device;
     BKEnrollPearlOperation * _enrollOperation;
+    bool  _enrollOperationInProgress;
     BKUIPearlEnrollView * _enrollView;
     NSLayoutConstraint * _enrollViewTopConstraint;
     UIButton * _escapeHatchButton;
@@ -30,11 +31,14 @@
     UILayoutGuide * _instructionBaselineLayoutGuide;
     BKUIPearlInstructionView * _instructionView;
     NSArray * _instructionViewConstraints;
+    NSLayoutConstraint * _instructionViewTopConstraint;
     bool  _isDisplayZoomEnabled;
     NSDate * _lastFaceFoundDate;
     _UIBackdropView * _lightTrayBackdrop;
     UIButton * _nextStateButton;
     UIView * _nextStateButtonContainer;
+    NSLayoutConstraint * _nextStateButtonContainerBottomConstraintShort;
+    NSLayoutConstraint * _nextStateButtonContainerBottomConstraintTall;
     NSLayoutConstraint * _nextStateButtonContainerHorizontalPositionConstraint;
     int  _pendingSubstate;
     NSMutableArray * _poseStatus;
@@ -66,7 +70,10 @@
 @property (nonatomic) bool inBuddy;
 @property (nonatomic) bool inDemo;
 @property (nonatomic, retain) UILayoutGuide *instructionBaselineLayoutGuide;
+@property (nonatomic, retain) NSLayoutConstraint *instructionViewTopConstraint;
 @property (nonatomic) bool isDisplayZoomEnabled;
+@property (nonatomic, retain) NSLayoutConstraint *nextStateButtonContainerBottomConstraintShort;
+@property (nonatomic, retain) NSLayoutConstraint *nextStateButtonContainerBottomConstraintTall;
 @property (nonatomic, readonly) int state;
 @property (readonly) Class superclass;
 
@@ -76,6 +83,7 @@
 + (void)preloadWithCompletion:(id /* block */)arg1;
 
 - (void).cxx_destruct;
+- (void)_cancelEnroll;
 - (void)_checkForCompletion;
 - (void)_cleanUpHaptics;
 - (void)_cleanupEnroll;
@@ -84,9 +92,11 @@
 - (void)_configureInstructionView:(id)arg1 forState:(int)arg2 substate:(int)arg3;
 - (id)_constraintsForInstructionView:(id)arg1 state:(int)arg2 position:(long long)arg3;
 - (id)_detailTextForState:(int)arg1 substate:(int)arg2;
+- (void)_enableEnrollUI;
 - (void)_endEnrollFlowWithError:(id)arg1;
 - (id)_escapeHatchTitleForState:(int)arg1;
 - (int)_firstVisibleState;
+- (id)_getAuthContextForCredentialError:(id*)arg1;
 - (id)_instructionTextForState:(int)arg1 substate:(int)arg2;
 - (id)_locStateNameForState:(int)arg1;
 - (id)_nextStateButtonTitleForState:(int)arg1;
@@ -102,8 +112,10 @@
 - (void)_updateLeftBarButtonItem;
 - (bool)_validateEnrolledPoses:(id)arg1;
 - (void)animateInstruction;
+- (void)animateToSuccessCompletionLayout:(long long)arg1;
 - (void)animateWithOrientation:(long long)arg1;
 - (void)cancelEnroll;
+- (void)cancelEnrollForRotationIfNeeded:(long long)arg1;
 - (id)credential;
 - (bool)darkBackground;
 - (void)dealloc;
@@ -124,14 +136,17 @@
 - (void)event:(long long)arg1 params:(id)arg2 reply:(id /* block */)arg3;
 - (void)fadeCurrentSound:(double)arg1 completion:(id /* block */)arg2;
 - (void)finalizeInstructionAnimation;
-- (id)getAuthContextForCredentialError:(id*)arg1;
+- (void)forceDarkBackground:(bool)arg1 animated:(bool)arg2;
 - (id)getEnrollview;
 - (id)identity;
 - (bool)inBuddy;
 - (bool)inDemo;
 - (id)initWithPreloadedState:(id)arg1;
 - (id)instructionBaselineLayoutGuide;
+- (id)instructionViewTopConstraint;
 - (bool)isDisplayZoomEnabled;
+- (id)nextStateButtonContainerBottomConstraintShort;
+- (id)nextStateButtonContainerBottomConstraintTall;
 - (void)nextStateButtonPressed:(id)arg1;
 - (void)operation:(id)arg1 faceDetectStateChanged:(id)arg2;
 - (void)playHaptic:(unsigned long long)arg1 withDelay:(double)arg2 gain:(double)arg3;
@@ -144,7 +159,6 @@
 - (void)setCustomDetailString:(id)arg1 forState:(int)arg2;
 - (void)setCustomInstructionString:(id)arg1 forState:(int)arg2;
 - (void)setDarkBackground:(bool)arg1;
-- (void)setDarkBackground:(bool)arg1 animated:(bool)arg2;
 - (void)setDelegate:(id)arg1;
 - (void)setEnrollMovieViewHidden:(bool)arg1;
 - (void)setEnrollViewTopConstraint:(id)arg1;
@@ -152,7 +166,10 @@
 - (void)setInBuddy:(bool)arg1;
 - (void)setInDemo:(bool)arg1;
 - (void)setInstructionBaselineLayoutGuide:(id)arg1;
+- (void)setInstructionViewTopConstraint:(id)arg1;
 - (void)setIsDisplayZoomEnabled:(bool)arg1;
+- (void)setNextStateButtonContainerBottomConstraintShort:(id)arg1;
+- (void)setNextStateButtonContainerBottomConstraintTall:(id)arg1;
 - (void)setSplashImageView:(id)arg1;
 - (void)setState:(int)arg1 animated:(bool)arg2;
 - (void)setState:(int)arg1 animated:(bool)arg2 afterDelay:(double)arg3;

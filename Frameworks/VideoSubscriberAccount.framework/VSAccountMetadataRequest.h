@@ -3,6 +3,7 @@
  */
 
 @interface VSAccountMetadataRequest : NSObject <NSCopying, NSSecureCoding> {
+    NSString * _accountProviderAuthenticationToken;
     NSArray * _attributeNames;
     NSString * _channelIdentifier;
     NSArray * _featuredAccountProviderIdentifiers;
@@ -16,6 +17,7 @@
     NSString * _verificationToken;
 }
 
+@property (nonatomic, copy) NSString *accountProviderAuthenticationToken;
 @property (nonatomic, copy) NSArray *attributeNames;
 @property (nonatomic, copy) NSString *channelIdentifier;
 @property (nonatomic, copy) NSArray *featuredAccountProviderIdentifiers;
@@ -31,6 +33,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)accountProviderAuthenticationToken;
 - (id)attributeNames;
 - (id)channelIdentifier;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -46,6 +49,7 @@
 - (bool)isEqual:(id)arg1;
 - (bool)isInterruptionAllowed;
 - (id)localizedVideoTitle;
+- (void)setAccountProviderAuthenticationToken:(id)arg1;
 - (void)setAttributeNames:(id)arg1;
 - (void)setChannelIdentifier:(id)arg1;
 - (void)setFeaturedAccountProviderIdentifiers:(id)arg1;

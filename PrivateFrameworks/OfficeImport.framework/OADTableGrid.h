@@ -6,10 +6,10 @@
     NSMutableArray * mColumns;
 }
 
+- (void).cxx_destruct;
 - (id)addColumn;
 - (id)columnAtIndex:(unsigned long long)arg1;
 - (unsigned long long)columnCount;
-- (void)dealloc;
 - (id)description;
 - (void)flipColumnsRTL;
 - (id)init;

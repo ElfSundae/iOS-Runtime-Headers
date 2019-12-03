@@ -5,6 +5,6 @@
 
 @required
 
-- (double)sectionItemHeightFor:(double)arg1 traitCollection:(UITraitCollection *)arg2;
+- (double)sectionItemHeightForSize:(struct CGSize { double x1; double x2; })arg1 traitCollection:(UITraitCollection *)arg2;
 
 @end

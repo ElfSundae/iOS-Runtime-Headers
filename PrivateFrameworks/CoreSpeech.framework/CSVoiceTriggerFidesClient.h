@@ -17,8 +17,10 @@
 - (void).cxx_destruct;
 - (id)_lastTriggerDataWithResult:(id)arg1;
 - (void)_logDESRecordWithType:(long long)arg1 result:(id)arg2;
+- (id)_medicalIDAge;
+- (id)_medicalIDName;
 - (id)audioBuffer;
-- (id)initWithAudioBuffer:(id)arg1;
+- (id)init;
 - (id)queue;
 - (void)setAudioBuffer:(id)arg1;
 - (void)setQueue:(id)arg1;

@@ -7,6 +7,7 @@
 - (id)attachmentBalloonSubtitleTextColor;
 - (id)attachmentBalloonTitleTextColor;
 - (id)blue_sendButtonColor;
+- (id)browserBackgroundColor;
 - (id)conversationListDateColor;
 - (id)conversationListGroupCountColor;
 - (id)conversationListSenderColor;
@@ -26,6 +27,7 @@
 - (id)transcriptBigEmojiColor;
 - (id)transcriptDeemphasizedTextColor;
 - (id)transcriptNavBarTextColor;
+- (id)transcriptNicknameTextColor;
 - (id)transcriptTextColor;
 
 @end

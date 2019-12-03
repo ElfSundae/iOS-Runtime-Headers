@@ -33,7 +33,9 @@
 - (id)delegate;
 - (id)delegateWrapper;
 - (void)endAudioPowerUpdate;
-- (void)getAutoDownloadedVoiceAssets:(id /* block */)arg1;
+- (void)estimateDurationWithRequest:(id)arg1 reply:(id /* block */)arg2;
+- (void)forwardStreamObject:(id)arg1;
+- (void)getAutoDownloadedVoiceAssetsWithClientID:(id)arg1 reply:(id /* block */)arg2;
 - (void)getLocalVoiceAssets:(id /* block */)arg1;
 - (void)getLocalVoiceResources:(id /* block */)arg1;
 - (void)getLogToFile:(id /* block */)arg1;
@@ -44,12 +46,13 @@
 - (id)init;
 - (bool)isSystemSpeaking;
 - (bool)isSystemSpeakingOnBehalfOfCurrentConnection;
+- (void)killDaemon;
 - (void)pauseCurrentSpeechRequestAtMark:(long long)arg1;
 - (id)presynthesizedAudioRequest;
 - (void)prewarmIfNeededWithRequest:(id)arg1;
 - (bool)queryPhaticCapabilityWithRequest:(id)arg1;
 - (id)request;
-- (void)setAutoDownloadedVoiceAssets:(id)arg1;
+- (void)setAutoDownloadedVoiceAssets:(id)arg1 withClientID:(id)arg2;
 - (void)setDelegate:(id)arg1;
 - (void)setDelegateWrapper:(id)arg1;
 - (void)setIdentifier:(id)arg1;

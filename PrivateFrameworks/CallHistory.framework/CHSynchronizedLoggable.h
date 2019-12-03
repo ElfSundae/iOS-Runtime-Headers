@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CallHistory.framework/CallHistory
  */
 
-@interface CHSynchronizedLoggable : NSObject <CHLoggerProtocol, CHSynchronizableProtocol> {
+@interface CHSynchronizedLoggable : NSObject {
     CHLogger * _logger;
     CHSynchronizable * _synchronizable;
 }

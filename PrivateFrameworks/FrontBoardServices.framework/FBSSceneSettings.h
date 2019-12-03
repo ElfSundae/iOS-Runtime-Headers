@@ -3,8 +3,8 @@
  */
 
 @interface FBSSceneSettings : NSObject <BSDebugDescriptionProviding, NSCopying, NSMutableCopying> {
-    bool  _backgrounded;
     FBSDisplayConfiguration * _displayConfiguration;
+    bool  _foreground;
     struct CGRect { 
         struct CGPoint { 
             double x; 
@@ -17,22 +17,22 @@
     }  _frame;
     NSSet * _ignoreOcclusionReasons;
     long long  _interfaceOrientation;
+    long long  _isOccluded;
     double  _level;
     bool  _occluded;
     bool  _occludedHasBeenCalculated;
     NSArray * _occlusions;
     BSSettings * _otherSettings;
+    bool  _prefersProcessTaskSuspensionWhileSceneForeground;
     BSSettings * _transientLocalSettings;
 }
 
 @property (getter=isBackgrounded, nonatomic, readonly) bool backgrounded;
-@property (nonatomic, readonly) Class canvasClass;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly, copy) FBSDisplayConfiguration *displayConfiguration;
 @property (nonatomic, readonly, copy) FBSDisplayIdentity *displayIdentity;
-@property (getter=isEffectivelyBackgrounded, nonatomic, readonly) bool effectivelyBackgrounded;
-@property (getter=fb_isUnderLock, nonatomic, readonly) bool fb_underLock;
+@property (getter=isForeground, nonatomic, readonly) bool foreground;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } frame;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) long long interfaceOrientation;
@@ -65,6 +65,7 @@
 - (long long)interfaceOrientation;
 - (bool)isBackgrounded;
 - (bool)isEqual:(id)arg1;
+- (bool)isForeground;
 - (bool)isIgnoringOcclusions;
 - (bool)isOccluded;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
@@ -72,6 +73,8 @@
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (id)occlusions;
 - (id)otherSettings;
+- (bool)prefersProcessTaskSuspensionWhileSceneForeground;
+- (void)setPrefersProcessTaskSuspensionWhileSceneForeground:(bool)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 - (id)transientLocalSettings;
@@ -80,12 +83,13 @@
 // Image: /System/Library/PrivateFrameworks/FrontBoard.framework/FrontBoard
 
 - (id)fb_fallbackSpecification;
-- (bool)fb_isUnderLock;
-- (bool)isEffectivelyBackgrounded;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoard.framework/SpringBoard
+
+- (bool)sb_isEligbleForDeviceOrientationUpdates;
 
 // Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 
-- (Class)canvasClass;
 - (bool)isUISubclass;
 
 @end

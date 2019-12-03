@@ -12,16 +12,20 @@
     unsigned long long  _numberOfLabels;
     unsigned long long  _numberOfTokens;
     unsigned long long  _numberOfVocabularyEntries;
+    bool  _performedLanguageRecognition;
+    NSString * _recognizedLanguage;
     struct __CFStringTokenizer { } * _tokenizer;
     NSDictionary * _vocabularyMap;
 }
 
 @property (readonly, copy) NLModelConfiguration *configuration;
 @property (readonly) unsigned long long numberOfInstances;
+@property (readonly) NSString *recognizedLanguage;
 
 - (void).cxx_destruct;
 - (void)_generateMaps;
 - (void)_generateMapsWithModelTrainer:(id)arg1;
+- (void)_performLanguageRecognition;
 - (id)configuration;
 - (void)dealloc;
 - (id)documentFrequencyMap;
@@ -34,6 +38,7 @@
 - (unsigned long long)numberOfLabels;
 - (unsigned long long)numberOfTokens;
 - (unsigned long long)numberOfVocabularyEntries;
+- (id)recognizedLanguage;
 - (struct __CFStringTokenizer { }*)tokenizer;
 - (id)vocabularyMap;
 

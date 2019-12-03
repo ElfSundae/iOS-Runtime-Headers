@@ -4,18 +4,23 @@
 
 @interface GEORouteName : PBCodable <NSCopying> {
     struct { 
-        unsigned int lastZilchStitchedIndex : 1; 
-    }  _has;
+        unsigned int has_lastZilchStitchedIndex : 1; 
+    }  _flags;
     int  _lastZilchStitchedIndex;
     GEONameInfo * _nameInfo;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic) bool hasLastZilchStitchedIndex;
 @property (nonatomic, readonly) bool hasNameInfo;
 @property (nonatomic) int lastZilchStitchedIndex;
 @property (nonatomic, retain) GEONameInfo *nameInfo;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
+
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -27,10 +32,12 @@
 - (int)lastZilchStitchedIndex;
 - (void)mergeFrom:(id)arg1;
 - (id)nameInfo;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasLastZilchStitchedIndex:(bool)arg1;
 - (void)setLastZilchStitchedIndex:(int)arg1;
 - (void)setNameInfo:(id)arg1;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 
 @end

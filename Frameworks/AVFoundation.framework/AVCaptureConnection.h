@@ -44,7 +44,7 @@
 - (void)_setVideoMinFrameDuration:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (void)_setVideoMirrored:(bool)arg1;
 - (void)_updateActiveVideoStabilizationMode:(long long)arg1 bumpChangeSeed:(bool)arg2;
-- (void)_updateCameraIntrinsicMatrixDeliverySupported;
+- (bool)_updateCameraIntrinsicMatrixDeliverySupported;
 - (void)_updateMaxScaleAndCropFactorForFormat:(id)arg1;
 - (void)_updatePropertiesForFormat:(id)arg1;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })_videoMaxFrameDuration;
@@ -57,9 +57,10 @@
 - (void)dealloc;
 - (id)description;
 - (bool)enablesVideoStabilizationWhenAvailable;
-- (id)figCaptureConnectionConfigurationForSessionPreset:(id)arg1;
+- (id)figCaptureConnectionConfigurationForSessionPreset:(id)arg1 allConnections:(id)arg2;
 - (float)getAvgAudioLevelForChannel:(id)arg1;
 - (float)getPeakAudioLevelForChannel:(id)arg1;
+- (void)handleChangedActiveFormat:(id)arg1 forDevice:(id)arg2;
 - (id)initWithInputPort:(id)arg1 videoPreviewLayer:(id)arg2;
 - (id)initWithInputPorts:(id)arg1 output:(id)arg2;
 - (void)inputPortFormatDescriptionChanged:(id)arg1;
@@ -70,6 +71,8 @@
 - (bool)isDebugMetadataSidecarFileEnabled;
 - (bool)isEnabled;
 - (bool)isLive;
+- (bool)isLivePhotoMetadataWritingSupported;
+- (bool)isTrulyDisabled;
 - (bool)isVideoFieldModeSupported;
 - (bool)isVideoMaxFrameDurationSet;
 - (bool)isVideoMaxFrameDurationSupported;
@@ -81,6 +84,7 @@
 - (bool)isVideoRetainedBufferCountHintSupported;
 - (bool)isVideoStabilizationEnabled;
 - (bool)isVideoStabilizationSupported;
+- (bool)livePhotoMetadataWritingEnabled;
 - (id)mediaType;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (id)output;
@@ -91,6 +95,7 @@
 - (void)setDebugMetadataSidecarFileEnabled:(bool)arg1;
 - (void)setEnabled:(bool)arg1;
 - (void)setEnablesVideoStabilizationWhenAvailable:(bool)arg1;
+- (void)setLivePhotoMetadataWritingEnabled:(bool)arg1;
 - (void)setPreferredVideoStabilizationMode:(long long)arg1;
 - (void)setVideoFieldMode:(long long)arg1;
 - (void)setVideoMaxFrameDuration:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;

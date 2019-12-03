@@ -19,7 +19,6 @@
     NSMutableArray * _cachedInterpolatedAnimationPoints;
     NSMutableArray * _cachedInterpolatedAnimationStrokes;
     NSMutableArray * _cachedInterpolatedBrushStrokes;
-    struct CGColor { } * _cgColor;
     NSMutableArray * _computedAnimationFrames;
     DKDrawingStroke * _currentBrushStroke;
     DKDrawing * _currentDrawing;

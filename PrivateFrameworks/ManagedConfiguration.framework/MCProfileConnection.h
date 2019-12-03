@@ -3,6 +3,7 @@
  */
 
 @interface MCProfileConnection : NSObject <MCProfileConnectionXPCProtocol> {
+    id /* block */  MAIDSignInReplyBlock;
     <MCInteractionDelegate> * _interactionDelegate;
     NSObject<OS_dispatch_queue> * _notificationSyncQueue;
     NSMutableArray * _notificationTokens;
@@ -37,27 +38,37 @@
 - (void)_createAndResumePublicXPCConnection;
 - (void)_createAndResumeXPCConnection;
 - (void)_defaultsDidChange;
+- (void)_destroyPublicXPCConnectionAndInvalidate:(bool)arg1;
+- (void)_destroyXPCConnectionAndInvalidate:(bool)arg1;
 - (void)_detectProfiledCrashes;
+- (id)_disallowedRestrictionErrorForRestrictionKey:(id)arg1;
 - (void)_effectiveSettingsDidChange:(id)arg1;
 - (int)_getPasscodeComplianceWarningExpiryDate:(id)arg1 lastLockDate:(id)arg2 outLocalizedTitle:(id*)arg3 outLocalizedMessage:(id*)arg4;
-- (id)_init;
+- (id)_handleQueueProfileError:(id)arg1 forTargetDevice:(unsigned long long)arg2;
 - (void)_internalDefaultsDidChange;
 - (id)_localizedCertificateSourceDescriptionFromMDMName:(id)arg1 exchangeName:(id)arg2 exchangeCount:(long long)arg3 profileName:(id)arg4 profileCount:(long long)arg5;
 - (id)_localizedRestrictionSourceDescriptionFromMDMName:(id)arg1 exchangeName:(id)arg2 exchangeCount:(long long)arg3 profileName:(id)arg4 profileCount:(long long)arg5;
 - (id)_localizedSourceDescriptionForType:(long long)arg1 MDMName:(id)arg2 exchangeName:(id)arg3 exchangeCount:(long long)arg4 profileName:(id)arg5 profileCount:(long long)arg6;
 - (bool)_managedMayWriteUnmanagedContacts;
 - (bool)_openSensitiveURLString:(id)arg1 unlock:(bool)arg2;
+- (id)_organizationFromDict:(id)arg1;
+- (id)_organizationsFromArray:(id)arg1;
 - (void)_passcodeDidChange;
 - (void)_passcodePolicyDidChange;
 - (void)_profileListDidChange;
 - (void)_queueCreateAndResumePublicXPCConnection;
 - (void)_queueCreateAndResumeXPCConnection;
+- (void)_queueDataForAcceptance:(id)arg1 originalFileName:(id)arg2 originatingBundleID:(id)arg3 transitionToUI:(bool)arg4 completion:(id /* block */)arg5;
 - (id)_queueDataForAcceptance:(id)arg1 originalFileName:(id)arg2 originatingBundleID:(id)arg3 transitionToUI:(bool)arg4 outError:(id*)arg5;
+- (id)_requestTypesFromDict:(id)arg1;
 - (void)_restrictionDidChange;
+- (void)_setAllowedGrandfatheredRestrictionFeature:(id)arg1 forRestrictionKey:(id)arg2;
 - (id)_settingsLockedDownByRestrictions:(id)arg1;
 - (id)_sharedDeviceConfiguration;
 - (bool)_shouldApplyContactsFilterForBundleID:(id)arg1 sourceAccountManagement:(int)arg2 outAllowManagedAccounts:(bool*)arg3 outAllowUnmanagedAccounts:(bool*)arg4;
 - (bool)_shouldApplyContactsFilterForTargetBundleID:(id)arg1 targetAccountManagement:(int)arg2 outAllowManagedAccounts:(bool*)arg3 outAllowUnmanagedAccounts:(bool*)arg4;
+- (id)_soldToIdsFromDict:(id)arg1;
+- (id)_transmogrifyRestrictionDictionaryForUserEnrollment:(id)arg1 outError:(id*)arg2;
 - (bool)_unmanagedMayReadManagedContacts;
 - (id)acceptedFileExtensions;
 - (id)acceptedMIMETypes;
@@ -77,10 +88,12 @@
 - (id)allowedOpenInAppBundleIDsAfterApplyingFilterToAppBundleIDs:(id)arg1 originatingAppBundleID:(id)arg2 originatingAccountIsManaged:(bool)arg3;
 - (int)appWhitelistState;
 - (bool)applyRestrictionDictionary:(id)arg1 appsAndOptions:(id)arg2 clientType:(id)arg3 clientUUID:(id)arg4 localizedClientDescription:(id)arg5 localizedWarningMessage:(id)arg6 outRestrictionChanged:(bool*)arg7 outEffectiveSettingsChanged:(bool*)arg8 outError:(id*)arg9;
+- (int)applyRestrictionDictionary:(id)arg1 clientType:(id)arg2 clientUUID:(id)arg3 localizedClientDescription:(id)arg4 localizedWarningMessage:(id)arg5 complianceBlocking:(int)arg6 displayImmediateAlert:(bool)arg7 limitForUserEnrollment:(bool)arg8 outRestrictionChanged:(bool*)arg9 outEffectiveSettingsChanged:(bool*)arg10 outError:(id*)arg11;
 - (int)applyRestrictionDictionary:(id)arg1 clientType:(id)arg2 clientUUID:(id)arg3 localizedClientDescription:(id)arg4 localizedWarningMessage:(id)arg5 complianceBlocking:(int)arg6 displayImmediateAlert:(bool)arg7 outRestrictionChanged:(bool*)arg8 outEffectiveSettingsChanged:(bool*)arg9 outError:(id*)arg10;
 - (bool)applyRestrictionDictionary:(id)arg1 clientType:(id)arg2 clientUUID:(id)arg3 localizedClientDescription:(id)arg4 localizedWarningMessage:(id)arg5 outRestrictionChanged:(bool*)arg6 outEffectiveSettingsChanged:(bool*)arg7 outError:(id*)arg8;
 - (bool)applyRestrictionDictionary:(id)arg1 clientType:(id)arg2 clientUUID:(id)arg3 outRestrictionChanged:(bool*)arg4 outEffectiveSettingsChanged:(bool*)arg5 outError:(id*)arg6;
 - (bool)areSettingsLockedDownByRestrictions:(id)arg1;
+- (id)associatedDomainsForManagedApps;
 - (id)autonomousSingleAppModePermittedBundleIDs;
 - (int)boolRestrictionForFeature:(id)arg1;
 - (bool)canSendMail:(id)arg1 sourceAccountManagement:(int)arg2;
@@ -93,11 +106,14 @@
 - (void)checkIn;
 - (void)checkInAsynchronously;
 - (void)checkInIfNeeded;
+- (void)checkInWithCompletion:(id /* block */)arg1;
 - (bool)clearPasscodeWithEscrowKeybagData:(id)arg1 secret:(id)arg2 outError:(id*)arg3;
 - (id)clientRestrictionsForClientUUID:(id)arg1;
 - (id)cloudConfigurationDetails;
 - (void)cloudConfigurationUIDidCompleteWasApplied:(bool)arg1;
 - (bool)communicationServiceRulesExistForBundleID:(id)arg1 forCommunicationServiceType:(id)arg2;
+- (id)companionBundleIDToWatchBundleIDsMap;
+- (void)createMDMUnlockTokenIfNeededWithPasscode:(id)arg1 completionBlock:(id /* block */)arg2;
 - (bool)currentPasscodeIsCompliantWithGlobalRestrictionsOutError:(id*)arg1;
 - (bool)currentPasscodeIsCompliantWithProfileRestrictionsOutError:(id*)arg1;
 - (void)dealloc;
@@ -133,6 +149,7 @@
 - (void)doMCICDidFinishInstallationWithIdentifier:(id)arg1 error:(id)arg2 completion:(id /* block */)arg3;
 - (void)doMCICDidFinishPreflightWithError:(id)arg1 completion:(id /* block */)arg2;
 - (void)doMCICDidRequestCurrentPasscodeWithCompletion:(id /* block */)arg1;
+- (void)doMCICDidRequestMAIDSignIn:(id)arg1 personaID:(id)arg2 completion:(id /* block */)arg3;
 - (void)doMCICDidRequestShowUserWarnings:(id)arg1 completion:(id /* block */)arg2;
 - (void)doMCICDidRequestUserInput:(id)arg1 completion:(id /* block */)arg2;
 - (void)doMCICDidUpdateStatus:(id)arg1 completion:(id /* block */)arg2;
@@ -157,6 +174,7 @@
 - (id)effectiveParametersForValueSetting:(id)arg1;
 - (int)effectiveRestrictedBoolValueForSetting:(id)arg1;
 - (id)effectiveRestrictions;
+- (id)effectiveRestrictionsForPairedDevice;
 - (id)effectiveUserSettings;
 - (id)effectiveValueForSetting:(id)arg1;
 - (id)effectiveValuesForIntersectionSetting:(id)arg1;
@@ -174,6 +192,7 @@
 - (id)filteredOpenInOriginatingAccounts:(id)arg1 targetAppBundleID:(id)arg2 targetAccountManagement:(int)arg3;
 - (id)filteredOpenInOriginatingContactsAccounts:(id)arg1 targetAppBundleID:(id)arg2 targetAccountManagement:(int)arg3;
 - (void)flush;
+- (id)getMachineInfo;
 - (void)getPasscodeComplianceWarningLastLockDate:(id)arg1 completionBlock:(id /* block */)arg2;
 - (int)getPasscodeComplianceWarningLastLockDate:(id)arg1 outLocalizedTitle:(id*)arg2 outLocalizedMessage:(id*)arg3;
 - (unsigned long long)gracePeriod;
@@ -184,6 +203,7 @@
 - (bool)hasHealthDataSubmissionAllowedBeenSet;
 - (bool)hasWheelchairDataSubmissionAllowedBeenSet;
 - (int)hostMayPairWithOptions:(id)arg1 challenge:(id)arg2;
+- (id)init;
 - (void)installProfileData:(id)arg1 interactionDelegate:(id)arg2;
 - (void)installProfileData:(id)arg1 options:(id)arg2 interactionDelegate:(id)arg3;
 - (id)installProfileData:(id)arg1 options:(id)arg2 outError:(id*)arg3;
@@ -203,6 +223,7 @@
 - (id)installedSystemProfileWithIdentifier:(id)arg1;
 - (id)installedUserProfileDataWithIdentifier:(id)arg1;
 - (id)installedUserProfileWithIdentifier:(id)arg1;
+- (void)invalidateRestrictionCache;
 - (bool)isAccessibilitySpeechAllowed;
 - (bool)isActivationLockAllowed;
 - (bool)isActivityContinuationAllowed;
@@ -235,6 +256,7 @@
 - (bool)isAutomaticAppUpdatesModificationAllowed;
 - (bool)isAutomaticDateAndTimeEnforced;
 - (bool)isAwaitingDeviceConfigured;
+- (bool)isBiometricAuthForSignInWithAppleAllowed;
 - (bool)isBluetoothModificationAllowed;
 - (bool)isBoolSettingLockedDownByRestrictions:(id)arg1;
 - (bool)isBundleIDAccountBasedForDragDrop:(id)arg1;
@@ -253,8 +275,10 @@
 - (bool)isConferenceRoomDisplaySettingsUIAllowedOutAsk:(bool*)arg1;
 - (bool)isContactlessPaymentAllowed;
 - (bool)isContentProtectionInEffect;
+- (bool)isContinuousPathKeyboardAllowed;
 - (bool)isControlCenterAllowedInApps;
 - (bool)isDeviceNameModificationAllowed;
+- (bool)isDeviceSleepAllowed;
 - (bool)isDiagnosticSubmissionAllowed;
 - (bool)isDiagnosticSubmissionModificationAllowed;
 - (bool)isDictationAllowed;
@@ -291,6 +315,7 @@
 - (bool)isMultitaskingAllowed;
 - (bool)isMusicArtistActivityAllowed;
 - (bool)isMusicServiceAllowed;
+- (bool)isNetworkDriveAccessInFilesAllowed;
 - (bool)isNewsAllowed;
 - (bool)isNewsTodayAllowed;
 - (bool)isNotificationsModificationAllowedForBundleID:(id)arg1;
@@ -298,7 +323,9 @@
 - (bool)isOnDeviceAppInstallationAllowed;
 - (bool)isOpenInRestrictionInEffect;
 - (bool)isParentalControlsAllowPasscodeAccessToNonWhitelistedAppsUIForcedByRestrictions;
+- (bool)isPasscodeCompliantWithNamedPolicy:(id)arg1 outError:(id*)arg2;
 - (bool)isPasscodeModificationAllowed;
+- (bool)isPasscodeNagDaemonEnabled;
 - (bool)isPasscodeRequired;
 - (bool)isPasscodeRequiredByPolicy;
 - (bool)isPasscodeRequiredByProfiles;
@@ -337,6 +364,7 @@
 - (bool)isTodayViewModificationAllowed;
 - (bool)isUIAppInstallationAllowed;
 - (bool)isURLManaged:(id)arg1;
+- (bool)isUSBDriveAccessInFilesAllowed;
 - (bool)isUSBRestrictedModeAllowed;
 - (bool)isUninstalledAppNearMeSuggestionsAllowed;
 - (bool)isUnionSettingLockedDownByRestrictions:(id)arg1;
@@ -349,10 +377,12 @@
 - (bool)isWebTextDefineAllowed;
 - (bool)isWheelchairDataSubmissionAllowed;
 - (bool)isWiFiPasswordSharingAllowed;
+- (bool)isWiFiPowerModificationAllowed;
 - (bool)isWiFiWhitelistingEnforced;
 - (bool)isiCloudDriveAllowed;
 - (bool)isiTunesAllowed;
 - (id)knownAirPrintIPPURLStrings;
+- (id)listInstalledProvisioningProfileUUIDsWithManagedOnly:(bool)arg1;
 - (id)localizedDescriptionOfCurrentPasscodeConstraints;
 - (id)localizedDescriptionOfDefaultNewPasscodeConstraints;
 - (id)localizedRestrictionSourceDescriptionForFeatures:(id)arg1;
@@ -367,6 +397,7 @@
 - (id)managedMedia;
 - (id)managedSystemConfigurationServiceIDs;
 - (id)managedWiFiNetworkNames;
+- (id)managingOrganizationInformation;
 - (void)markStoredProfileForPurposeAsInstalled:(int)arg1;
 - (bool)mayEnterPasscodeToAccessNonWhitelistedApps;
 - (bool)mayOpenFromManagedToUnmanaged;
@@ -379,8 +410,7 @@
 - (bool)mayShowLocalAccountsForTargetBundleID:(id)arg1 targetAccountManagement:(int)arg2;
 - (bool)mayShowLocalContactsAccountsForBundleID:(id)arg1 sourceAccountManagement:(int)arg2;
 - (bool)mayShowLocalContactsAccountsForTargetBundleID:(id)arg1 targetAccountManagement:(int)arg2;
-- (void)migratePostDataMigrator;
-- (void)migratePostMDMDataMigratorWithContext:(int)arg1 completion:(id /* block */)arg2;
+- (void)migrateCleanupMigratorWithContext:(int)arg1 completion:(id /* block */)arg2;
 - (void)migrateWithContext:(int)arg1 passcodeWasSetInBackup:(bool)arg2 completion:(id /* block */)arg3;
 - (int)minimumNewPasscodeEntryScreenTypeWithOutSimplePasscodeType:(int*)arg1;
 - (bool)mustInstallProfileNonInteractively:(id)arg1;
@@ -388,6 +418,7 @@
 - (int)newPasscodeEntryScreenTypeWithOutSimplePasscodeType:(int*)arg1;
 - (void)notifyClientsToRecomputeCompliance;
 - (void)notifyDeviceUnlocked;
+- (void)notifyDeviceUnlockedAndPasscodeRequired;
 - (void)notifyKeybagUpdated;
 - (void)notifyUserHasSeenComplianceMessageWithLastLockDate:(id)arg1;
 - (id)objectForFeature:(id)arg1;
@@ -408,23 +439,21 @@
 - (id)passcodeExpiryDate;
 - (id)passcodeExpiryDateOutError:(id*)arg1;
 - (id)peekProfileDataFromPurgatoryForDeviceType:(unsigned long long)arg1;
-- (void)performBootTimeChecks;
 - (id)permittedAutoLockSeconds;
 - (id)popProfileDataFromHeadOfInstallationQueue;
-- (id)popProfileDataFromPurgatoryForDeviceType:(unsigned long long)arg1;
 - (id)popProvisioningProfileDataFromHeadOfInstallationQueue;
 - (void)preflightUserInputResponses:(id)arg1 forPayloadIndex:(unsigned long long)arg2;
-- (void)processProfilesPostMigrate;
-- (void)processProfilesPostRestore;
 - (void)profileDataStoredForPurpose:(int)arg1 completionBlock:(id /* block */)arg2;
 - (id)profileFromProfileData:(id)arg1 outError:(id*)arg2;
 - (id)provisionalEnrollmentExpirationDate;
 - (id)publicXPCConnection;
+- (void)queueFileDataForAcceptance:(id)arg1 originalFileName:(id)arg2 forBundleID:(id)arg3 completion:(id /* block */)arg4;
 - (id)queueFileDataForAcceptance:(id)arg1 originalFileName:(id)arg2 forBundleID:(id)arg3 outError:(id*)arg4;
 - (id)queueFileDataForAcceptance:(id)arg1 originalFileName:(id)arg2 outError:(id*)arg3;
 - (id)queueFileDataForProfileInstallation:(id)arg1 originalFileName:(id)arg2 outError:(id*)arg3;
 - (id)queueProfileDataForAcceptance:(id)arg1 outError:(id*)arg2;
 - (id)queueProfileDataForInstallation:(id)arg1 outError:(id*)arg2;
+- (void)recomputeProfileRestrictionsWithCompletionBlock:(id /* block */)arg1;
 - (void)recomputeUserComplianceWarning;
 - (void)recomputeUserComplianceWarningSynchronously;
 - (void)removeActiveClassroomRole:(id)arg1;
@@ -455,7 +484,9 @@
 - (void)resetAllSettingsToDefaults;
 - (void)resetAllSettingsToDefaultsIsUserInitiated:(bool)arg1 completion:(id /* block */)arg2;
 - (void)resetAllSettingsToDefaultsIsUserInitiated:(bool)arg1 waitUntilCompleted:(bool)arg2 completion:(id /* block */)arg3;
+- (void)resetPasscodeMetadataWithCompletion:(id /* block */)arg1;
 - (void)respondToCurrentPasscodeRequestContinue:(bool)arg1 passcode:(id)arg2;
+- (void)respondToMAIDAuthenticationRequest:(bool)arg1 error:(id)arg2 isCancelled:(bool)arg3;
 - (void)respondToWarningsContinueInstallation:(bool)arg1;
 - (id)restrictedAppBundleIDs;
 - (id)restrictedAppBundleIDsExcludingRemovedSystemApps;
@@ -478,10 +509,17 @@
 - (void)retrieveAndStoreCloudConfigurationDetailsCompletionBlock:(id /* block */)arg1;
 - (void)retrieveCloudConfigurationDetailsCompletionBlock:(id /* block */)arg1;
 - (void)retrieveCloudConfigurationFromURL:(id)arg1 username:(id)arg2 password:(id)arg3 anchorCertificates:(id)arg4 completionBlock:(id /* block */)arg5;
+- (void)retrieveDeviceUploadOrganizationsInfoWithCredentials:(id)arg1 completionBlock:(id /* block */)arg2;
+- (void)retrieveDeviceUploadRequestTypesWithCredentials:(id)arg1 completionBlock:(id /* block */)arg2;
+- (void)retrieveDeviceUploadSoldToIdsForOrganization:(id)arg1 credentials:(id)arg2 completionBlock:(id /* block */)arg3;
 - (void)setActiveClassroomRoles:(id)arg1;
 - (void)setActivityContinuationAllowed:(bool)arg1;
 - (void)setAirPlaySecuritySettingsUIAllowed:(bool)arg1;
 - (void)setAirPlaySettingsUIAllowed:(bool)arg1 ask:(bool)arg2 completion:(id /* block */)arg3;
+- (void)setAllowedGrandfatheredRestrictionBoolFeature:(id)arg1;
+- (void)setAllowedGrandfatheredRestrictionIntersectionFeature:(id)arg1;
+- (void)setAllowedGrandfatheredRestrictionUnionFeature:(id)arg1;
+- (void)setAllowedGrandfatheredRestrictionValueFeature:(id)arg1;
 - (void)setAsk:(bool)arg1 forBoolSetting:(id)arg2 configurationUUID:(id)arg3 toSystem:(bool)arg4 user:(bool)arg5 passcode:(id)arg6;
 - (void)setAsk:(bool)arg1 forBoolSetting:(id)arg2 configurationUUID:(id)arg3 toSystem:(bool)arg4 user:(bool)arg5 passcode:(id)arg6 completion:(id /* block */)arg7;
 - (void)setAsk:(bool)arg1 forBoolSetting:(id)arg2 configurationUUID:(id)arg3 toSystem:(bool)arg4 user:(bool)arg5 passcode:(id)arg6 waitUntilCompleted:(bool)arg7 completion:(id /* block */)arg8;
@@ -503,6 +541,7 @@
 - (void)setClassroomStudentRoleEnabled:(bool)arg1;
 - (void)setConferenceRoomDisplayModeEnabled:(bool)arg1 ask:(bool)arg2 completion:(id /* block */)arg3;
 - (void)setConferenceRoomDisplaySettingsUIAllowed:(bool)arg1 ask:(bool)arg2 completion:(id /* block */)arg3;
+- (void)setContinuousPathKeyboardAllowed:(bool)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDriverDoNotDisturbModificationsAllowed:(bool)arg1;
 - (void)setExplicitContentAllowed:(bool)arg1 ask:(bool)arg2 completion:(id /* block */)arg3;
@@ -572,6 +611,7 @@
 - (void)storeCloudConfigurationDetails:(id)arg1 waitUntilCompleted:(bool)arg2 completion:(id /* block */)arg3;
 - (void)storeProfileData:(id)arg1 configurationSource:(int)arg2 purpose:(int)arg3;
 - (void)storeProfileData:(id)arg1 configurationSource:(int)arg2 purpose:(int)arg3 completionBlock:(id /* block */)arg4;
+- (void)submitDeviceUploadRequest:(id)arg1 credentials:(id)arg2 completionBlock:(id /* block */)arg3;
 - (void)submitUserInputResponses:(id)arg1;
 - (id)trustedCodeSigningIdentities;
 - (void)unenrollWithCompletionBlock:(id /* block */)arg1;
@@ -591,6 +631,7 @@
 - (int)userMode;
 - (id)userSettings;
 - (id)userSettingsForCurrentUser;
+- (id)userSettingsForPairedDevice;
 - (id)userSettingsForSystem;
 - (id)userValueForIntersectionSetting:(id)arg1;
 - (id)userValueForSetting:(id)arg1;

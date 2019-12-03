@@ -27,7 +27,7 @@
 - (bool)expanded;
 - (bool)external;
 - (void)faceDidChange;
-- (id)initWithTableView:(id)arg1 face:(id)arg2 inGallery:(bool)arg3 external:(bool)arg4;
+- (id)initWithTableViewController:(id)arg1 face:(id)arg2 inGallery:(bool)arg3 external:(bool)arg4;
 - (void)setDelegate:(id)arg1;
 - (void)setExpanded:(bool)arg1;
 - (void)setExternal:(bool)arg1;

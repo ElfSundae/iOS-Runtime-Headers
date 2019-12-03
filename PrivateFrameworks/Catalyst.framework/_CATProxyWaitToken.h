@@ -5,7 +5,7 @@
 @interface _CATProxyWaitToken : NSObject {
     bool  _isExclusive;
     id  _resourceProxy;
-    bool  mFinished;
+    _Atomic bool  mFinished;
     NSObject<OS_dispatch_group> * mGroup;
 }
 

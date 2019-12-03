@@ -16,7 +16,6 @@
 - (id)allKeys;
 - (unsigned long long)count;
 - (id)init;
-- (void)lockedEnumerateKeysAndObjectsUsingBlock:(id /* block */)arg1;
 - (id)objectForKey:(id)arg1;
 - (void)removeAllObjects;
 - (void)removeObjectForKey:(id)arg1;

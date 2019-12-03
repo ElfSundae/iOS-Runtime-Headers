@@ -13,6 +13,7 @@
         unsigned int timestamp : 1; 
         unsigned int completionReason : 1; 
     }  _has;
+    NWAWDNWL2Report * _l2Report;
     unsigned long long  _timestamp;
 }
 
@@ -24,7 +25,9 @@
 @property (nonatomic) bool hasCompletionReason;
 @property (nonatomic) bool hasDurationMsecs;
 @property (nonatomic) bool hasFragmentsQuenched;
+@property (nonatomic, readonly) bool hasL2Report;
 @property (nonatomic) bool hasTimestamp;
+@property (nonatomic, retain) NWAWDNWL2Report *l2Report;
 @property (nonatomic) unsigned long long timestamp;
 
 - (void).cxx_destruct;
@@ -42,9 +45,11 @@
 - (bool)hasCompletionReason;
 - (bool)hasDurationMsecs;
 - (bool)hasFragmentsQuenched;
+- (bool)hasL2Report;
 - (bool)hasTimestamp;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
+- (id)l2Report;
 - (void)mergeFrom:(id)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setActivity:(id)arg1;
@@ -55,6 +60,7 @@
 - (void)setHasDurationMsecs:(bool)arg1;
 - (void)setHasFragmentsQuenched:(bool)arg1;
 - (void)setHasTimestamp:(bool)arg1;
+- (void)setL2Report:(id)arg1;
 - (void)setTimestamp:(unsigned long long)arg1;
 - (unsigned long long)timestamp;
 - (void)writeTo:(id)arg1;

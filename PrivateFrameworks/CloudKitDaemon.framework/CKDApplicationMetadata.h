@@ -4,15 +4,19 @@
 
 @interface CKDApplicationMetadata : NSObject {
     bool  _allowCustomAccounts;
+    bool  _allowUnverifiedAccount;
     bool  _allowsParticipantPII;
     bool  _allowsPowerNapScheduling;
+    NSString * _applicationContainerPath;
     NSString * _applicationIdentifier;
     NSString * _apsEnvironmentString;
+    NSString * _associatedApplicationBundleID;
     bool  _canAccessProtectionData;
     bool  _canAccessZoneProtectionData;
     bool  _canMasquerade;
     bool  _canSetDeviceIdentifier;
     bool  _canSetEnvironment;
+    bool  _canSetExplicitCodeOperationURL;
     bool  _canUseNonLegacyShareURL;
     NSString * _clientPrefix;
     bool  _displaysSystemAcceptPrompt;
@@ -23,18 +27,23 @@
     long long  _isApplication;
     bool  _isCKSystemService;
     bool  _isOOPUI;
+    NSString * _pushBundleID;
 }
 
 @property (nonatomic) bool allowCustomAccounts;
+@property (nonatomic) bool allowUnverifiedAccount;
 @property (nonatomic) bool allowsParticipantPII;
 @property (nonatomic) bool allowsPowerNapScheduling;
+@property (nonatomic, retain) NSString *applicationContainerPath;
 @property (nonatomic, retain) NSString *applicationIdentifier;
 @property (nonatomic, retain) NSString *apsEnvironmentString;
+@property (nonatomic, retain) NSString *associatedApplicationBundleID;
 @property (nonatomic) bool canAccessProtectionData;
 @property (nonatomic) bool canAccessZoneProtectionData;
 @property (nonatomic) bool canMasquerade;
 @property (nonatomic) bool canSetDeviceIdentifier;
 @property (nonatomic) bool canSetEnvironment;
+@property (nonatomic) bool canSetExplicitCodeOperationURL;
 @property (nonatomic) bool canUseNonLegacyShareURL;
 @property (nonatomic, retain) NSString *clientPrefix;
 @property (nonatomic) bool displaysSystemAcceptPrompt;
@@ -45,18 +54,23 @@
 @property (nonatomic) long long isApplication;
 @property (nonatomic) bool isCKSystemService;
 @property (nonatomic) bool isOOPUI;
+@property (nonatomic, retain) NSString *pushBundleID;
 
 - (void).cxx_destruct;
 - (bool)allowCustomAccounts;
+- (bool)allowUnverifiedAccount;
 - (bool)allowsParticipantPII;
 - (bool)allowsPowerNapScheduling;
+- (id)applicationContainerPath;
 - (id)applicationIdentifier;
 - (id)apsEnvironmentString;
+- (id)associatedApplicationBundleID;
 - (bool)canAccessProtectionData;
 - (bool)canAccessZoneProtectionData;
 - (bool)canMasquerade;
 - (bool)canSetDeviceIdentifier;
 - (bool)canSetEnvironment;
+- (bool)canSetExplicitCodeOperationURL;
 - (bool)canUseNonLegacyShareURL;
 - (id)clientPrefix;
 - (bool)displaysSystemAcceptPrompt;
@@ -68,16 +82,21 @@
 - (long long)isApplication;
 - (bool)isCKSystemService;
 - (bool)isOOPUI;
+- (id)pushBundleID;
 - (void)setAllowCustomAccounts:(bool)arg1;
+- (void)setAllowUnverifiedAccount:(bool)arg1;
 - (void)setAllowsParticipantPII:(bool)arg1;
 - (void)setAllowsPowerNapScheduling:(bool)arg1;
+- (void)setApplicationContainerPath:(id)arg1;
 - (void)setApplicationIdentifier:(id)arg1;
 - (void)setApsEnvironmentString:(id)arg1;
+- (void)setAssociatedApplicationBundleID:(id)arg1;
 - (void)setCanAccessProtectionData:(bool)arg1;
 - (void)setCanAccessZoneProtectionData:(bool)arg1;
 - (void)setCanMasquerade:(bool)arg1;
 - (void)setCanSetDeviceIdentifier:(bool)arg1;
 - (void)setCanSetEnvironment:(bool)arg1;
+- (void)setCanSetExplicitCodeOperationURL:(bool)arg1;
 - (void)setCanUseNonLegacyShareURL:(bool)arg1;
 - (void)setClientPrefix:(id)arg1;
 - (void)setDisplaysSystemAcceptPrompt:(bool)arg1;
@@ -88,5 +107,6 @@
 - (void)setIsApplication:(long long)arg1;
 - (void)setIsCKSystemService:(bool)arg1;
 - (void)setIsOOPUI:(bool)arg1;
+- (void)setPushBundleID:(id)arg1;
 
 @end

@@ -4,6 +4,7 @@
 
 @interface AKUndoController : NSObject {
     AKController * _controller;
+    bool  _externalSourceTrackingChanged;
     NSMutableSet * _observedAnnotations;
     NSMutableSet * _observedPageModelControllers;
     bool  _undoGroupHasChangesToMultipleProperties;
@@ -13,6 +14,7 @@
 }
 
 @property AKController *controller;
+@property bool externalSourceTrackingChanged;
 @property (retain) NSMutableSet *observedAnnotations;
 @property (retain) NSMutableSet *observedPageModelControllers;
 @property bool undoGroupHasChangesToMultipleProperties;
@@ -33,6 +35,7 @@
 - (void)_undoActionForSelectionState:(id)arg1;
 - (id)controller;
 - (void)dealloc;
+- (bool)externalSourceTrackingChanged;
 - (id)initWithController:(id)arg1;
 - (void)observePageControllerRequestsDisableRegistration:(id)arg1;
 - (void)observePageControllerRequestsEnableRegistration:(id)arg1;
@@ -42,6 +45,7 @@
 - (id)observedAnnotations;
 - (id)observedPageModelControllers;
 - (void)setController:(id)arg1;
+- (void)setExternalSourceTrackingChanged:(bool)arg1;
 - (void)setObservedAnnotations:(id)arg1;
 - (void)setObservedPageModelControllers:(id)arg1;
 - (void)setUndoGroupHasChangesToMultipleProperties:(bool)arg1;

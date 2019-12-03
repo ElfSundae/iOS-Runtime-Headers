@@ -16,7 +16,7 @@
     }  _has;
     NSString * _label;
     double  _latitude;
-    unsigned long long  _locationType;
+    int  _locationType;
     double  _longitude;
     double  _quality;
 }
@@ -36,12 +36,12 @@
 @property (nonatomic) bool hasQuality;
 @property (nonatomic, retain) NSString *label;
 @property (nonatomic) double latitude;
-@property (nonatomic) unsigned long long locationType;
+@property (nonatomic) int locationType;
 @property (nonatomic) double longitude;
 @property (nonatomic) double quality;
 
 - (void).cxx_destruct;
-- (unsigned long long)StringAsLocationType:(id)arg1;
+- (int)StringAsLocationType:(id)arg1;
 - (double)accuracy;
 - (id)address;
 - (id)airportCode;
@@ -63,8 +63,8 @@
 - (bool)isEqual:(id)arg1;
 - (id)label;
 - (double)latitude;
-- (unsigned long long)locationType;
-- (id)locationTypeAsString:(unsigned long long)arg1;
+- (int)locationType;
+- (id)locationTypeAsString:(int)arg1;
 - (double)longitude;
 - (void)mergeFrom:(id)arg1;
 - (double)quality;
@@ -80,7 +80,7 @@
 - (void)setHasQuality:(bool)arg1;
 - (void)setLabel:(id)arg1;
 - (void)setLatitude:(double)arg1;
-- (void)setLocationType:(unsigned long long)arg1;
+- (void)setLocationType:(int)arg1;
 - (void)setLongitude:(double)arg1;
 - (void)setQuality:(double)arg1;
 - (void)writeTo:(id)arg1;

@@ -18,6 +18,7 @@
 - (void)controlChannel:(id)arg1 sendReliableMessage:(id)arg2 didSucceed:(bool)arg3 toParticipant:(id)arg4;
 - (void)dealloc;
 - (id)initWithControlChannel:(id)arg1 remoteVersion:(id)arg2;
+- (id)messageForTopic:(id)arg1 command:(id)arg2;
 - (id)newDictionaryFromUnpackedMessage:(id)arg1;
 - (id)newDictionaryFromUnpackedMomentsMessage:(id)arg1;
 - (id)newPackedMessageFromDictionary:(id)arg1;

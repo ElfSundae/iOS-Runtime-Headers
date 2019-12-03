@@ -27,6 +27,7 @@
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
++ (id)_strictlyUnarchivedObjectOfClasses:(id)arg1 fromData:(id)arg2 error:(id*)arg3;
 + (Class)classForClassName:(id)arg1;
 + (void)initialize;
 + (void)setClass:(Class)arg1 forClassName:(id)arg2;
@@ -45,11 +46,13 @@
 - (unsigned int)_currentUniqueIdentifier;
 - (id)_decodeArrayOfObjectsForKey:(id)arg1;
 - (id)_decodePropertyListForKey:(id)arg1;
+- (void)_enableStrictSecureDecodingMode;
 - (id)_initForReadingFromData:(id)arg1 error:(id*)arg2 throwLegacyExceptions:(bool)arg3;
 - (id)_initWithStream:(struct __CFReadStream { }*)arg1 data:(id)arg2 topDict:(struct __CFDictionary { }*)arg3;
 - (void)_replaceObject:(id)arg1 withObject:(id)arg2;
 - (void)_setAllowedClassNames:(id)arg1;
 - (void)_temporaryMapReplaceObject:(id)arg1 withObject:(id)arg2;
+- (bool)_validateAllowedClassesContainsClass:(Class)arg1 forKey:(id)arg2;
 - (bool)_validatePropertyListClass:(Class)arg1 forKey:(id)arg2;
 - (id)allowedClasses;
 - (bool)allowsKeyedCoding;
@@ -91,14 +94,14 @@
 - (unsigned int)systemVersion;
 - (long long)versionForClassName:(id)arg1;
 
-// Image: /Developer/Library/PrivateFrameworks/DVTInstrumentsUtilities.framework/DVTInstrumentsUtilities
-
-+ (id)xr_unarchiveSecureCodingObjectFromData:(id)arg1 ofClasses:(id)arg2 withError:(id*)arg3;
-
 // Image: /System/Library/Frameworks/ClassKit.framework/ClassKit
 
 + (id)cls_secureUnarchiveObjectOfClass:(Class)arg1 withData:(id)arg2;
 + (id)cls_secureUnarchiveObjectOfClasses:(id)arg1 withData:(id)arg2;
+
+// Image: /System/Library/Frameworks/CoreServices.framework/CoreServices
+
++ (id)ls_unarchivedObjectOfClass:(Class)arg1 fromData:(id)arg2 error:(id*)arg3;
 
 // Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
 
@@ -113,6 +116,15 @@
 // Image: /System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities
 
 + (id)secureUnarchiveData:(id)arg1 withExpectedClass:(Class)arg2 otherAllowedClasses:(id)arg3;
+
+// Image: /System/Library/PrivateFrameworks/AssetsLibraryServices.framework/AssetsLibraryServices
+
++ (id)pl_safeUnarchiveObjectFromData:(id)arg1 class:(Class)arg2;
++ (id)pl_safeUnarchiveObjectFromData:(id)arg1 classes:(id)arg2;
++ (id)pl_safeUnarchiveObjectFromFile:(id)arg1 class:(Class)arg2;
++ (id)pl_safeUnarchiveObjectFromFile:(id)arg1 classes:(id)arg2;
+
+- (id)pl_safeInitForReadingFromData:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/Catalyst.framework/Catalyst
 
@@ -133,11 +145,17 @@
 + (id)sy_unarchivedObjectFromData:(id)arg1;
 + (id)sy_whitelistedClasses;
 
+// Image: /System/Library/PrivateFrameworks/ContentKit.framework/ContentKit
+
++ (void)wf_securelyUnarchiveObjectWithData:(id)arg1 allowedClasses:(id)arg2 completionHandler:(id /* block */)arg3;
+
+- (id)wf_unarchiveRootObjectAndFinishWithAllowedClasses:(id)arg1;
+
 // Image: /System/Library/PrivateFrameworks/CoreMediaStream.framework/CoreMediaStream
 
++ (id)MSSafeUnarchiveAllowedClasses;
 + (id)MSSafeUnarchiveObjectWithData:(id)arg1 outError:(id*)arg2;
 + (id)MSSafeUnarchiveObjectWithFile:(id)arg1 outError:(id*)arg2;
-+ (id)allowedClasses;
 
 // Image: /System/Library/PrivateFrameworks/DigitalTouchShared.framework/DigitalTouchShared
 
@@ -148,29 +166,27 @@
 
 + (id)dnds_secureLegacyUnarchiverForReadingFromData:(id)arg1 error:(id*)arg2;
 
-// Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
+// Image: /System/Library/PrivateFrameworks/FusionPluginKit.framework/FusionPluginKit
 
-+ (id)_geo_unarchiveSecureCodingObjectOfClass:(Class)arg1 withData:(id)arg2;
-+ (id)_geo_unarchiveSecureCodingObjectOfClasses:(id)arg1 withData:(id)arg2;
++ (id)_unarchiveObjectFromVersion1XPCObject:(id)arg1 allowedClasses:(id)arg2;
++ (id)unarchiveDataToObject:(id)arg1 allowedClasses:(id)arg2;
++ (id)unarchiveXPCObject:(id)arg1 allowedClasses:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/FusionPluginServices.framework/FusionPluginServices
+
++ (id)_unarchiveObjectFromVersion1XPCObject:(id)arg1 allowedClasses:(id)arg2;
++ (id)unarchiveDataToObject:(id)arg1 allowedClasses:(id)arg2;
++ (id)unarchiveXPCObject:(id)arg1 allowedClasses:(id)arg2;
 
 // Image: /System/Library/PrivateFrameworks/HMFoundation.framework/HMFoundation
 
 + (id)deserializeObjectWithData:(id)arg1 allowedClass:(Class)arg2 frameworkClasses:(id)arg3;
 + (id)deserializeObjectWithData:(id)arg1 allowedClasses:(id)arg2;
++ (id)hmf_unarchivedObjectOfClass:(Class)arg1 fromClassName:(id)arg2 fromData:(id)arg3 error:(id*)arg4;
 
 // Image: /System/Library/PrivateFrameworks/IDSFoundation.framework/IDSFoundation
 
 + (id)ids_secureUnarchiveObjectOfClass:(Class)arg1 withData:(id)arg2;
-
-// Image: /System/Library/PrivateFrameworks/IMSharedUtilities.framework/Frameworks/XCTest.framework/XCTest
-
-+ (id)xct_unarchivedObjectOfClass:(Class)arg1 fromData:(id)arg2;
-+ (id)xct_unarchivedObjectOfClasses:(id)arg1 fromData:(id)arg2;
-
-// Image: /System/Library/PrivateFrameworks/ImageCapture.framework/ImageCapture
-
-+ (id)icUnarchivedObjectFromData:(id)arg1 withKey:(id)arg2;
-+ (id)icWhitelistedClasses;
 
 // Image: /System/Library/PrivateFrameworks/NanoMailKitServer.framework/NanoMailKitServer
 
@@ -197,14 +213,10 @@
 + (id)secureUnarchiveObjectOfClasses:(id)arg1 withData:(id)arg2;
 + (id)secureUnarchiveObjectOfClasses:(id)arg1 withFile:(id)arg2;
 
-// Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
+// Image: /System/Library/PrivateFrameworks/SharedWebCredentials.framework/SharedWebCredentials
 
-+ (id)pl_safeUnarchiveObjectFromData:(id)arg1 class:(Class)arg2;
-+ (id)pl_safeUnarchiveObjectFromData:(id)arg1 classes:(id)arg2;
-+ (id)pl_safeUnarchiveObjectFromFile:(id)arg1 class:(Class)arg2;
-+ (id)pl_safeUnarchiveObjectFromFile:(id)arg1 classes:(id)arg2;
-
-- (id)pl_safeInitForReadingFromData:(id)arg1;
++ (id)swc_unarchivedObjectOfClass:(Class)arg1 fromData:(id)arg2 error:(id*)arg3;
++ (id)swc_unarchivedObjectOfClasses:(id)arg1 fromData:(id)arg2 error:(id*)arg3;
 
 // Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
 

@@ -13,6 +13,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSDateInterval *resultInterval;
+@property (nonatomic, readonly, copy) NSDictionary *samplesBySource;
 @property (readonly) Class superclass;
 
 + (id)_preferredSourceFromSources:(id)arg1 sourceOrder:(id)arg2;
@@ -25,12 +26,14 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dateInterval;
 - (id)dateIntervalsForCategoryValue:(long long)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)endDate;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithResultInterval:(id)arg1 dateIntervalsByCategoryValue:(id)arg2 samplesBySource:(id)arg3;
 - (id)preferredDateIntervals;
 - (id)resultInterval;
+- (id)samplesBySource;
 - (id)startDate;
 
 @end

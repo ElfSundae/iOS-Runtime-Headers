@@ -7,6 +7,7 @@
     NSHashTable * __playerViews;
     UIScrollView * __scrollView;
     bool  _decelerating;
+    bool  _enabled;
     NSDate * _estimatedScrollEndDate;
     bool  _hasTargetContentOffset;
     bool  _scrolling;
@@ -22,6 +23,7 @@
 @property (setter=_setScrollView:, nonatomic) UIScrollView *_scrollView;
 @property (nonatomic, readonly) bool canPerformVitality;
 @property (getter=isDecelerating, nonatomic) bool decelerating;
+@property (getter=isEnabled, nonatomic) bool enabled;
 @property (nonatomic, retain) NSDate *estimatedScrollEndDate;
 @property (nonatomic) bool hasTargetContentOffset;
 @property (getter=isScrolling, nonatomic) bool scrolling;
@@ -44,10 +46,12 @@
 - (bool)hasTargetContentOffset;
 - (id)init;
 - (bool)isDecelerating;
+- (bool)isEnabled;
 - (bool)isScrolling;
 - (void)performChanges:(id /* block */)arg1;
 - (void)removePlayerView:(id)arg1;
 - (void)setDecelerating:(bool)arg1;
+- (void)setEnabled:(bool)arg1;
 - (void)setEstimatedScrollEndDate:(id)arg1;
 - (void)setHasTargetContentOffset:(bool)arg1;
 - (void)setScrolling:(bool)arg1;

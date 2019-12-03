@@ -5,7 +5,7 @@
 @interface NSPropertyDescription : NSObject <NSCoding, NSCopying, NSSecureCoding> {
     NSEntityDescription * _entity;
     short  _entitysReferenceIDForProperty;
-    void * _extraIvars;
+    struct _NSExtraPropertyIVars { id x1; long long x2; long long x3; } * _extraIvars;
     NSString * _name;
     struct __propertyDescriptionFlags { 
         unsigned int _isReadOnly : 1; 
@@ -64,7 +64,7 @@
 - (void)_createCachesAndOptimizeState;
 - (long long)_entitysReferenceID;
 - (bool)_epsilonEquals:(id)arg1 rhs:(id)arg2 withFlags:(int)arg3;
-- (struct _NSExtraPropertyIVars { id x1; long long x2; }*)_extraIVars;
+- (struct _NSExtraPropertyIVars { id x1; long long x2; long long x3; }*)_extraIVars;
 - (bool)_hasMaxValueInExtraIvars;
 - (bool)_hasMinValueInExtraIvars;
 - (id)_initWithName:(id)arg1;

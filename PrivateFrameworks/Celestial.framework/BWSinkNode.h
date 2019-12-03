@@ -9,6 +9,7 @@
     NSMutableArray * _handlersToCallWhenActive;
     NSMutableArray * _handlersToCallWhenIdle;
     long long  _liveConfigurationID;
+    NSString * _sinkID;
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
     }  _stateLock;
@@ -18,6 +19,7 @@
 @property (readonly) NSString *currentStateDebugString;
 @property (readonly) bool isActive;
 @property (readonly) long long liveConfigurationID;
+@property (nonatomic, readonly, copy) NSString *sinkID;
 
 + (void)initialize;
 
@@ -27,12 +29,13 @@
 - (id)currentStateDebugString;
 - (void)dealloc;
 - (void)didReachEndOfDataForInput:(id)arg1;
-- (id)init;
+- (id)initWithSinkID:(id)arg1;
 - (bool)isActive;
 - (long long)liveConfigurationID;
 - (id)nodeType;
 - (void)notifyWhenActive:(id /* block */)arg1;
 - (void)notifyWhenConfigurationID:(long long)arg1 becomesLive:(id /* block */)arg2;
 - (void)notifyWhenIdle:(id /* block */)arg1;
+- (id)sinkID;
 
 @end

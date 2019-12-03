@@ -19,7 +19,6 @@
 - (void).cxx_destruct;
 - (void)cancel;
 - (void)execute;
-- (void)finishWithError:(id)arg1;
 - (id)init;
 - (id)request;
 - (id /* block */)responseHandler;

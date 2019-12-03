@@ -17,6 +17,7 @@
     NSURL * _metadataURL;
     bool  _pinned;
     NSString * _title;
+    NSData * _userQueryData;
     NSString * _uuid;
 }
 
@@ -34,10 +35,12 @@
 @property (nonatomic, retain) NSURL *metadataURL;
 @property (getter=isPinned, nonatomic) bool pinned;
 @property (nonatomic, retain) NSString *title;
+@property (nonatomic, retain) NSData *userQueryData;
 @property (nonatomic, retain) NSString *uuid;
 
 + (bool)isValidPath:(id)arg1;
 
+- (void).cxx_destruct;
 - (bool)_readMetadata;
 - (void)_saveMetadata;
 - (bool)allowsOverwrite;
@@ -46,12 +49,11 @@
 - (id)customKeyAssetUUID;
 - (bool)customSortAscending;
 - (int)customSortKey;
-- (void)dealloc;
 - (id)description;
 - (id)genericAlbum;
 - (id)importSessionID;
 - (id)init;
-- (id)initWithPLGenericAlbum:(id)arg1;
+- (id)initWithPLGenericAlbum:(id)arg1 pathManager:(id)arg2;
 - (id)initWithPersistedDataAtURL:(id)arg1;
 - (id)initWithTitle:(id)arg1 uuid:(id)arg2 cloudGUID:(id)arg3 kind:(id)arg4 assetUUIDs:(id)arg5 persistedAlbumDataDirectory:(id)arg6;
 - (id)insertAlbumFromDataInManagedObjectContext:(id)arg1;
@@ -75,9 +77,11 @@
 - (void)setMetadataURL:(id)arg1;
 - (void)setPinned:(bool)arg1;
 - (void)setTitle:(id)arg1;
+- (void)setUserQueryData:(id)arg1;
 - (void)setUuid:(id)arg1;
 - (id)title;
 - (void)updateChildrenOrderingInAlbum:(id)arg1 includePendingAssetChanges:(bool)arg2;
+- (id)userQueryData;
 - (id)uuid;
 
 @end

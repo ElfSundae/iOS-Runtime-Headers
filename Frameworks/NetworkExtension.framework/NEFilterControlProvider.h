@@ -18,7 +18,6 @@
 - (id)URLAppendStringMap;
 - (void)handleNewFlow:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)handleRemediationForFlow:(id)arg1 completionHandler:(id /* block */)arg2;
-- (void)handleReport:(id)arg1;
 - (void)notifyRulesChanged;
 - (id)remediationMap;
 - (void)setRemediationMap:(id)arg1;

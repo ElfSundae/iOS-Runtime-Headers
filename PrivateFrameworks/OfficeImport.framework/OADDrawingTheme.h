@@ -15,12 +15,12 @@
 @property (nonatomic, readonly) OADFontScheme *fontScheme;
 @property (nonatomic, readonly) OADStyleMatrix *styleMatrix;
 
+- (void).cxx_destruct;
 - (void)applyThemeOverrides:(id)arg1 colorMapOverride:(id)arg2;
 - (id)colorContext;
 - (id)colorMap;
 - (id)colorPalette;
 - (id)colorScheme;
-- (void)dealloc;
 - (id)description;
 - (id)fontScheme;
 - (unsigned long long)hash;

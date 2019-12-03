@@ -9,8 +9,10 @@
 
 @optional
 
-- (NSString *)contextualDescriptionWithDateCache:(HKDateCache *)arg1;
+- (NSAttributedString *)attributedSupplementaryStringWithDisplayType:(HKDisplayType *)arg1 unitController:(HKUnitPreferenceController *)arg2 font:(UIFont *)arg3;
 - (NSDate *)date;
+- (NSString *)lastUpdatedDescriptionWithDateCache:(HKDateCache *)arg1;
+- (NSString *)lastUpdatedShortDescriptionWithDateCache:(HKDateCache *)arg1;
 - (NSString *)stringWithDisplayType:(HKDisplayType *)arg1 unitController:(HKUnitPreferenceController *)arg2;
 
 @end

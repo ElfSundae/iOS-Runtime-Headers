@@ -4,8 +4,9 @@
 
 @interface SearchUISectionHeaderCardSectionView : SearchUICardSectionView
 
-@property (retain) TLKSectionHeaderView *contentView;
+@property (nonatomic, retain) TLKSectionHeaderView *contentView;
 
++ (int)separatorStyleForCardSection:(id)arg1;
 + (bool)supportsRecyclingForCardSection:(id)arg1;
 
 - (id)setupContentView;

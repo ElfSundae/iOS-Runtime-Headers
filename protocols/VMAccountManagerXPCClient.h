@@ -5,6 +5,6 @@
 
 @required
 
-- (oneway void)updateAccounts:(NSArray *)arg1;
+- (void)updateAccounts:(NSArray *)arg1;
 
 @end

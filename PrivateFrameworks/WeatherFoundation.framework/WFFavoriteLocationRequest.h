@@ -6,7 +6,7 @@
     id /* block */  _resultHandler;
 }
 
-@property (readonly) id /* block */ resultHandler;
+@property (nonatomic, readonly) id /* block */ resultHandler;
 
 - (void).cxx_destruct;
 - (void)handleCancellation;

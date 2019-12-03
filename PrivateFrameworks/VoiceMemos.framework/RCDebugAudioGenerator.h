@@ -3,6 +3,7 @@
  */
 
 @interface RCDebugAudioGenerator : NSObject {
+    NSObject<OS_dispatch_queue> * _completionQueue;
     id /* block */  _curveFunction;
     double  _duration;
     id /* block */  _generateCompletionHandler;
@@ -11,6 +12,7 @@
     NSURL * _outputURL;
 }
 
+@property (nonatomic, retain) NSObject<OS_dispatch_queue> *completionQueue;
 @property (nonatomic, readonly) id /* block */ curveFunction;
 @property (nonatomic, readonly) double duration;
 @property (nonatomic, readonly) id /* block */ generateCompletionHandler;
@@ -24,8 +26,9 @@
 - (void).cxx_destruct;
 - (id)_generateLPCMAudioSamplesWithDuration:(double)arg1 curveFunction:(id /* block */)arg2 samplesPerSecond:(double)arg3 intervalBetweenPeaks:(double)arg4;
 - (void)_onBackgroundQueueGenerateAudio;
-- (void)_onMainQueueGenerateFailedWithError:(id)arg1;
-- (void)_onMainQueueGenerateFinished;
+- (void)_onQueueGenerateFailedWithError:(id)arg1;
+- (void)_onQueueGenerateFinished;
+- (id)completionQueue;
 - (id /* block */)curveFunction;
 - (double)duration;
 - (id /* block */)generateCompletionHandler;
@@ -33,6 +36,7 @@
 - (double)intervalBetweenPeaks;
 - (id)outputSettings;
 - (id)outputURL;
+- (void)setCompletionQueue:(id)arg1;
 - (bool)startWithCompletionHandler:(id /* block */)arg1;
 
 @end

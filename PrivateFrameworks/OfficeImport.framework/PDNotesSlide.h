@@ -6,7 +6,7 @@
     PDNotesMaster * mNotesMaster;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (void)doneWithContent;
 - (id)init;

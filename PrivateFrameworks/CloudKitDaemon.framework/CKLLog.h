@@ -12,6 +12,7 @@
     double  _startTimeOffset;
     NSMutableArray * _streamObservers;
     OSActivityStream * _streamSource;
+    bool  _wantsSimulatorLogs;
 }
 
 @property (nonatomic, retain) NSDate *absoluteStartDate;
@@ -27,6 +28,7 @@
 @property (nonatomic, retain) NSMutableArray *streamObservers;
 @property (nonatomic, retain) OSActivityStream *streamSource;
 @property (readonly) Class superclass;
+@property (nonatomic) bool wantsSimulatorLogs;
 
 - (void).cxx_destruct;
 - (void)_configureStreamSource:(id)arg1;
@@ -37,8 +39,7 @@
 - (id)archiveSource;
 - (bool)colorOutput;
 - (id /* block */)completionHandler;
-- (id)initForHost;
-- (id)initForSimulator;
+- (id)initForHostStream;
 - (id)initWithArchiveAtURL:(id)arg1;
 - (id)initWithRemoteDevice:(id)arg1;
 - (bool)persistence:(id)arg1 results:(id)arg2 error:(id)arg3;
@@ -53,6 +54,7 @@
 - (void)setStartTimeOffset:(double)arg1;
 - (void)setStreamObservers:(id)arg1;
 - (void)setStreamSource:(id)arg1;
+- (void)setWantsSimulatorLogs:(bool)arg1;
 - (unsigned long long)source;
 - (double)startTimeOffset;
 - (void)streamDidFail:(id)arg1 error:(id)arg2;
@@ -60,5 +62,6 @@
 - (void)streamLogsWithCompletion:(id /* block */)arg1;
 - (id)streamObservers;
 - (id)streamSource;
+- (bool)wantsSimulatorLogs;
 
 @end

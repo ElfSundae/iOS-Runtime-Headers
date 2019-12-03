@@ -18,7 +18,6 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)defaultInput;
-- (void)finalize;
 - (id)init;
 - (id)initWithInputs:(id)arg1 defaultInput:(id)arg2;
 - (id)initWithInputs:(id)arg1 provisionalInputs:(id)arg2 defaultInput:(id)arg3;

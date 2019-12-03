@@ -34,6 +34,7 @@
 - (id)init;
 - (void)interrupt;
 - (bool)isRunning;
+- (bool)isSpawnedProcessDisclaimed;
 - (void)launch;
 - (bool)launchAndReturnError:(id*)arg1;
 - (id)launchPath;
@@ -47,6 +48,7 @@
 - (void)setExecutableURL:(id)arg1;
 - (void)setLaunchPath:(id)arg1;
 - (void)setQualityOfService:(long long)arg1;
+- (void)setSpawnedProcessDisclaimed:(bool)arg1;
 - (void)setStandardError:(id)arg1;
 - (void)setStandardInput:(id)arg1;
 - (void)setStandardOutput:(id)arg1;
@@ -63,43 +65,28 @@
 
 // Image: /System/Library/PrivateFrameworks/WiFiVelocity.framework/WiFiVelocity
 
-+ (bool)__checkLaunchPath:(id)arg1;
-+ (void)applebtDumpPacketLogWithFileName:(id)arg1 timeout:(double)arg2 queue:(id)arg3 errorBlock:(id /* block */)arg4 completeBlock:(id /* block */)arg5;
-+ (void)arpWithTimeout:(double)arg1 arguments:(id)arg2 queue:(id)arg3 errorBlock:(id /* block */)arg4 completeBlock:(id /* block */)arg5;
-+ (void)bluetoothReporterWithTimeout:(double)arg1 queue:(id)arg2 errorBlock:(id /* block */)arg3 completeBlock:(id /* block */)arg4;
-+ (void)cctoolWithTimeout:(double)arg1 queue:(id)arg2 errorBlock:(id /* block */)arg3 completeBlock:(id /* block */)arg4;
-+ (void)curlWithAddress:(id)arg1 interfaceName:(id)arg2 timeout:(double)arg3 queue:(id)arg4 errorBlock:(id /* block */)arg5 completeBlock:(id /* block */)arg6;
-+ (void)darwinupListWithTimeout:(double)arg1 queue:(id)arg2 errorBlock:(id /* block */)arg3 completeBlock:(id /* block */)arg4;
-+ (void)dittoWithSource:(id)arg1 destination:(id)arg2 timeout:(double)arg3 queue:(id)arg4 errorBlock:(id /* block */)arg5 completeBlock:(id /* block */)arg6;
-+ (void)fullSystemProfilerWithTimeout:(double)arg1 queue:(id)arg2 errorBlock:(id /* block */)arg3 completeBlock:(id /* block */)arg4;
-+ (void)ifconfigWithTimeout:(double)arg1 arguments:(id)arg2 queue:(id)arg3 errorBlock:(id /* block */)arg4 completeBlock:(id /* block */)arg5;
-+ (void)ioregWithTimeout:(double)arg1 queue:(id)arg2 errorBlock:(id /* block */)arg3 updateBlock:(id /* block */)arg4 completeBlock:(id /* block */)arg5;
-+ (void)ipconfigWithInterfaceName:(id)arg1 timeout:(double)arg2 queue:(id)arg3 errorBlock:(id /* block */)arg4 completeBlock:(id /* block */)arg5;
-+ (void)kextstatWithTimeout:(double)arg1 queue:(id)arg2 errorBlock:(id /* block */)arg3 completeBlock:(id /* block */)arg4;
-+ (void)killallWithProcessName:(id)arg1 timeout:(double)arg2 queue:(id)arg3 errorBlock:(id /* block */)arg4 completeBlock:(id /* block */)arg5;
-+ (void)miniSystemProfilerWithTimeout:(double)arg1 queue:(id)arg2 errorBlock:(id /* block */)arg3 completeBlock:(id /* block */)arg4;
-+ (void)mobilewifitoolWithTimeout:(double)arg1 arguments:(id)arg2 queue:(id)arg3 errorBlock:(id /* block */)arg4 completeBlock:(id /* block */)arg5;
-+ (void)monitorModeWithInterfaceName:(id)arg1 outputPath:(id)arg2 timeout:(double)arg3 queue:(id)arg4 startBlock:(id /* block */)arg5 endBlock:(id /* block */)arg6;
-+ (void)ndpWithTimeout:(double)arg1 arguments:(id)arg2 queue:(id)arg3 errorBlock:(id /* block */)arg4 completeBlock:(id /* block */)arg5;
-+ (void)netstatWithTimeout:(double)arg1 arguments:(id)arg2 queue:(id)arg3 errorBlock:(id /* block */)arg4 completeBlock:(id /* block */)arg5;
-+ (void)nvramBootArgsWithTimeout:(double)arg1 queue:(id)arg2 errorBlock:(id /* block */)arg3 completeBlock:(id /* block */)arg4;
-+ (void)pingWithAddress:(id)arg1 count:(long long)arg2 trafficClass:(id)arg3 dataLength:(unsigned long long)arg4 interfaceName:(id)arg5 timeout:(double)arg6 wait:(double)arg7 interval:(double)arg8 queue:(id)arg9 errorBlock:(id /* block */)arg10 completeBlock:(id /* block */)arg11;
-+ (void)pingWithTimeout:(double)arg1 arguments:(id)arg2 queue:(id)arg3 errorBlock:(id /* block */)arg4 completeBlock:(id /* block */)arg5;
-+ (void)pmsetEverythingWithTimeout:(double)arg1 queue:(id)arg2 errorBlock:(id /* block */)arg3 completeBlock:(id /* block */)arg4;
-+ (void)runTaskWithLaunchPath:(id)arg1 arguments:(id)arg2 timeout:(double)arg3 queue:(id)arg4 errorBlock:(id /* block */)arg5 updateBlock:(id /* block */)arg6 completeBlock:(id /* block */)arg7;
-+ (void)runTaskWithLaunchPath:(id)arg1 arguments:(id)arg2 timeout:(double)arg3 queue:(id)arg4 startBlock:(id /* block */)arg5 updateBlock:(id /* block */)arg6 endBlock:(id /* block */)arg7;
-+ (void)scutilWithTimeout:(double)arg1 queue:(id)arg2 errorBlock:(id /* block */)arg3 completeBlock:(id /* block */)arg4;
-+ (void)securityWithTimeout:(double)arg1 arguments:(id)arg2 queue:(id)arg3 errorBlock:(id /* block */)arg4 completeBlock:(id /* block */)arg5;
-+ (void)spindumpWithTimeout:(double)arg1 queue:(id)arg2 errorBlock:(id /* block */)arg3 completeBlock:(id /* block */)arg4;
-+ (void)swversWithTimeout:(double)arg1 queue:(id)arg2 errorBlock:(id /* block */)arg3 completeBlock:(id /* block */)arg4;
-+ (void)sysctlHWModelWithTimeout:(double)arg1 queue:(id)arg2 errorBlock:(id /* block */)arg3 completeBlock:(id /* block */)arg4;
-+ (void)sysdiagnoseWithTimeout:(double)arg1 outputPath:(id)arg2 queue:(id)arg3 errorBlock:(id /* block */)arg4 completeBlock:(id /* block */)arg5;
-+ (void)syslogWithTimeout:(double)arg1 outputURL:(id)arg2 queue:(id)arg3 errorBlock:(id /* block */)arg4 completeBlock:(id /* block */)arg5;
-+ (void)tarWithSource:(id)arg1 destination:(id)arg2 timeout:(double)arg3 queue:(id)arg4 errorBlock:(id /* block */)arg5 completeBlock:(id /* block */)arg6;
-+ (void)tcpdumpWithInterfaceName:(id)arg1 outputPath:(id)arg2 timeout:(double)arg3 queue:(id)arg4 startBlock:(id /* block */)arg5 endBlock:(id /* block */)arg6;
-+ (void)topWithTimeout:(double)arg1 queue:(id)arg2 errorBlock:(id /* block */)arg3 completeBlock:(id /* block */)arg4;
-+ (void)tracerouteWithAddress:(id)arg1 maxTTL:(long long)arg2 waittime:(long long)arg3 queries:(long long)arg4 interfaceName:(id)arg5 timeout:(double)arg6 queue:(id)arg7 errorBlock:(id /* block */)arg8 completeBlock:(id /* block */)arg9;
-+ (void)untarWithSource:(id)arg1 destination:(id)arg2 timeout:(double)arg3 queue:(id)arg4 errorBlock:(id /* block */)arg5 completeBlock:(id /* block */)arg6;
-+ (void)wlCurpowerWithTimeout:(double)arg1 queue:(id)arg2 errorBlock:(id /* block */)arg3 completeBlock:(id /* block */)arg4;
++ (bool)runTaskWithLaunchPath:(id)arg1 arguments:(id)arg2 error:(id*)arg3;
++ (bool)runTaskWithLaunchPath:(id)arg1 arguments:(id)arg2 launchHandler:(id /* block */)arg3 didLaunch:(bool*)arg4 error:(id*)arg5;
++ (void)runTaskWithLaunchPath:(id)arg1 arguments:(id)arg2 launchHandler:(id /* block */)arg3 reply:(id /* block */)arg4;
++ (bool)runTaskWithLaunchPath:(id)arg1 arguments:(id)arg2 outputData:(id)arg3 error:(id*)arg4;
++ (bool)runTaskWithLaunchPath:(id)arg1 arguments:(id)arg2 outputData:(id)arg3 launchHandler:(id /* block */)arg4 didLaunch:(bool*)arg5 error:(id*)arg6;
++ (void)runTaskWithLaunchPath:(id)arg1 arguments:(id)arg2 outputData:(id)arg3 launchHandler:(id /* block */)arg4 reply:(id /* block */)arg5;
++ (void)runTaskWithLaunchPath:(id)arg1 arguments:(id)arg2 outputData:(id)arg3 reply:(id /* block */)arg4;
++ (bool)runTaskWithLaunchPath:(id)arg1 arguments:(id)arg2 outputFileHandle:(id)arg3 error:(id*)arg4;
++ (bool)runTaskWithLaunchPath:(id)arg1 arguments:(id)arg2 outputFileHandle:(id)arg3 launchHandler:(id /* block */)arg4 didLaunch:(bool*)arg5 error:(id*)arg6;
++ (void)runTaskWithLaunchPath:(id)arg1 arguments:(id)arg2 outputFileHandle:(id)arg3 launchHandler:(id /* block */)arg4 reply:(id /* block */)arg5;
++ (void)runTaskWithLaunchPath:(id)arg1 arguments:(id)arg2 outputFileHandle:(id)arg3 reply:(id /* block */)arg4;
++ (bool)runTaskWithLaunchPath:(id)arg1 arguments:(id)arg2 outputFilePath:(id)arg3 error:(id*)arg4;
++ (bool)runTaskWithLaunchPath:(id)arg1 arguments:(id)arg2 outputFilePath:(id)arg3 launchHandler:(id /* block */)arg4 didLaunch:(bool*)arg5 error:(id*)arg6;
++ (void)runTaskWithLaunchPath:(id)arg1 arguments:(id)arg2 outputFilePath:(id)arg3 launchHandler:(id /* block */)arg4 reply:(id /* block */)arg5;
++ (void)runTaskWithLaunchPath:(id)arg1 arguments:(id)arg2 outputFilePath:(id)arg3 reply:(id /* block */)arg4;
++ (void)runTaskWithLaunchPath:(id)arg1 arguments:(id)arg2 reply:(id /* block */)arg3;
++ (bool)runTaskWithLaunchPath:(id)arg1 arguments:(id)arg2 timeout:(double)arg3 outputData:(id)arg4 errorData:(id)arg5 launchHandler:(id /* block */)arg6 didLaunch:(bool*)arg7 error:(id*)arg8;
++ (void)runTaskWithLaunchPath:(id)arg1 arguments:(id)arg2 timeout:(double)arg3 outputData:(id)arg4 errorData:(id)arg5 launchHandler:(id /* block */)arg6 reply:(id /* block */)arg7;
++ (bool)runTaskWithLaunchPath:(id)arg1 arguments:(id)arg2 timeout:(double)arg3 outputFileHandle:(id)arg4 errorFileHandle:(id)arg5 launchHandler:(id /* block */)arg6 didLaunch:(bool*)arg7 error:(id*)arg8;
++ (void)runTaskWithLaunchPath:(id)arg1 arguments:(id)arg2 timeout:(double)arg3 outputFileHandle:(id)arg4 errorFileHandle:(id)arg5 launchHandler:(id /* block */)arg6 reply:(id /* block */)arg7;
++ (bool)runTaskWithLaunchPath:(id)arg1 arguments:(id)arg2 timeout:(double)arg3 outputFilePath:(id)arg4 errorFilePath:(id)arg5 redirectErrorToOutput:(bool)arg6 launchHandler:(id /* block */)arg7 didLaunch:(bool*)arg8 error:(id*)arg9;
++ (void)runTaskWithLaunchPath:(id)arg1 arguments:(id)arg2 timeout:(double)arg3 outputFilePath:(id)arg4 errorFilePath:(id)arg5 redirectErrorToOutput:(bool)arg6 launchHandler:(id /* block */)arg7 reply:(id /* block */)arg8;
++ (void)runTaskWithLaunchPath:(id)arg1 arguments:(id)arg2 timeout:(double)arg3 startBlock:(id /* block */)arg4 updateBlock:(id /* block */)arg5 endBlock:(id /* block */)arg6;
 
 @end

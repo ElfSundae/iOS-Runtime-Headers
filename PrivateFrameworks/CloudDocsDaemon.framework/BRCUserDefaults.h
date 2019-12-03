@@ -90,6 +90,7 @@
 @property (nonatomic, readonly) double maximumDocumentAgeToBeGreedy;
 @property (nonatomic, readonly) NSDictionary *migrationThrottleParams;
 @property (nonatomic, readonly) long long minAutomaticallyEvictableFilesize;
+@property (nonatomic, readonly) double minFetchQuotaInterval;
 @property (nonatomic, readonly) long long minFileSizeForGraveyard;
 @property (nonatomic, readonly) long long minFileSizeForThumbnailTransfer;
 @property (nonatomic, readonly) long long minimalSizeToShowAdditionalDescription;
@@ -314,6 +315,7 @@
 - (double)maximumDocumentAgeToBeGreedy;
 - (id)migrationThrottleParams;
 - (long long)minAutomaticallyEvictableFilesize;
+- (double)minFetchQuotaInterval;
 - (long long)minFileSizeForGraveyard;
 - (long long)minFileSizeForThumbnailTransfer;
 - (long long)minimalSizeToShowAdditionalDescription;

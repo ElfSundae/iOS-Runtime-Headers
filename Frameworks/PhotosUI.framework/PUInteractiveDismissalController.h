@@ -13,6 +13,7 @@
         bool respondsToTilingView; 
         bool respondsToDesignatedTileController; 
     }  _delegateFlags;
+    bool  _isHandlingDismissalInteraction;
 }
 
 @property (setter=_setInterruptibleViewControllerTransition:, nonatomic, retain) <PUInterruptibleViewControllerTransition> *_interruptibleViewControllerTransition;
@@ -21,6 +22,7 @@
 @property (setter=_setViewHostingGestureRecognizers:, nonatomic, retain) UIView *_viewHostingGestureRecognizers;
 @property (nonatomic) <PUInteractiveDismissalControllerDelegate> *delegate;
 @property (nonatomic, readonly) PUTileController *designatedTileController;
+@property (nonatomic, readonly) bool isHandlingDismissalInteraction;
 @property (nonatomic, readonly) PUTilingView *tilingView;
 @property (nonatomic, readonly) <PUTilingViewControllerTransition> *tilingViewControllerTransition;
 
@@ -49,6 +51,7 @@
 - (id)designatedTileController;
 - (void)endDismissal:(bool)arg1;
 - (void)invalidateDelegateData;
+- (bool)isHandlingDismissalInteraction;
 - (void)setDelegate:(id)arg1;
 - (id)tilingView;
 - (id)tilingViewControllerTransition;

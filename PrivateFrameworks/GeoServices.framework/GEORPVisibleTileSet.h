@@ -4,9 +4,9 @@
 
 @interface GEORPVisibleTileSet : PBCodable <NSCopying> {
     struct { 
-        unsigned int identifier : 1; 
-        unsigned int style : 1; 
-    }  _has;
+        unsigned int has_identifier : 1; 
+        unsigned int has_style : 1; 
+    }  _flags;
     unsigned int  _identifier;
     int  _style;
     struct GEORPVisibleTileKey { unsigned int x1; unsigned int x2; unsigned int x3; struct { unsigned int x_4_1_1 : 1; unsigned int x_4_1_2 : 1; unsigned int x_4_1_3 : 1; } x4; } * _tileKeys;
@@ -20,6 +20,8 @@
 @property (nonatomic) int style;
 @property (nonatomic, readonly) struct GEORPVisibleTileKey { unsigned int x1; unsigned int x2; unsigned int x3; struct { unsigned int x_4_1_1 : 1; unsigned int x_4_1_2 : 1; unsigned int x_4_1_3 : 1; } x4; }*tileKeys;
 @property (nonatomic, readonly) unsigned long long tileKeysCount;
+
++ (bool)isValid:(id)arg1;
 
 - (int)StringAsStyle:(id)arg1;
 - (void)addTileKey:(struct GEORPVisibleTileKey { unsigned int x1; unsigned int x2; unsigned int x3; struct { unsigned int x_4_1_1 : 1; unsigned int x_4_1_2 : 1; unsigned int x_4_1_3 : 1; } x4; })arg1;
@@ -35,6 +37,7 @@
 - (unsigned int)identifier;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasIdentifier:(bool)arg1;
 - (void)setHasStyle:(bool)arg1;

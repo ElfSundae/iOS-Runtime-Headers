@@ -18,6 +18,7 @@
 - (void).cxx_destruct;
 - (bool)beginRealTimeTask;
 - (bool)compileModel:(id)arg1 options:(id)arg2 qos:(unsigned int)arg3 error:(id*)arg4;
+- (bool)compiledModelExistsFor:(id)arg1;
 - (id)conn;
 - (void)dealloc;
 - (bool)doEvaluateDirectWithModel:(id)arg1 request:(id)arg2 qos:(unsigned int)arg3 error:(id*)arg4;
@@ -30,6 +31,7 @@
 - (id)initWithRestrictedAccessAllowed:(bool)arg1;
 - (bool)loadModel:(id)arg1 options:(id)arg2 qos:(unsigned int)arg3 error:(id*)arg4;
 - (bool)loadRealTimeModel:(id)arg1 options:(id)arg2 qos:(unsigned int)arg3 error:(id*)arg4;
+- (void)purgeCompiledModel:(id)arg1;
 - (id)queues;
 - (bool)unloadModel:(id)arg1 options:(id)arg2 qos:(unsigned int)arg3 error:(id*)arg4;
 - (bool)unloadRealTimeModel:(id)arg1 options:(id)arg2 qos:(unsigned int)arg3 error:(id*)arg4;

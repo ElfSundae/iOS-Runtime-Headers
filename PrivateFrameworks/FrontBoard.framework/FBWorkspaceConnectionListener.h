@@ -2,19 +2,26 @@
    Image: /System/Library/PrivateFrameworks/FrontBoard.framework/FrontBoard
  */
 
-@interface FBWorkspaceConnectionListener : NSObject <BSXPCConnectionListenerHandler> {
-    NSObject<OS_dispatch_queue> * _connectionDispatcherQueue;
+@interface FBWorkspaceConnectionListener : NSObject <BSServiceConnectionListenerDelegate> {
+    BSServiceConnectionListener * _listener;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly, copy) BSServiceConnectionEndpoint *endpoint;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)_sharedDomain;
++ (id)sharedDomainIdentifier;
++ (bool)sharedDomainUsesDefaultShellEndpoint;
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
-- (void)handleIncomingConnection:(id)arg1 forService:(id)arg2;
+- (id)_initWithDomain:(id)arg1;
+- (void)dealloc;
+- (id)endpoint;
 - (id)init;
+- (void)listener:(id)arg1 didReceiveConnection:(id)arg2 withContext:(id)arg3;
 
 @end

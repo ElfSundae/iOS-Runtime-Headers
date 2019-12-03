@@ -131,6 +131,7 @@
 - (void)siriBackgroundConnection:(id)arg1 didEncounterIntermediateError:(id)arg2;
 - (void)siriBackgroundConnection:(id)arg1 didOpenWithConnectionType:(id)arg2 routeId:(id)arg3 delay:(double)arg4;
 - (void)siriBackgroundConnection:(id)arg1 didReceiveAceObject:(id)arg2;
+- (void)siriBackgroundConnection:(id)arg1 willStartConnectionWithHTTPHeader:(id)arg2;
 - (void)siriBackgroundConnection:(id)arg1 willStartWithConnectionType:(id)arg2;
 - (void)siriBackgroundConnectionDidClose:(id)arg1;
 - (bool)siriConnectionUsesPeerManagedSync;

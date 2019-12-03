@@ -37,7 +37,7 @@
 - (void).cxx_destruct;
 - (void)_advancingToOnboardingPageNumber:(long long)arg1;
 - (void)_didStepBackward;
-- (void)_wrappingUpOnboarding;
+- (void)_wrapUpOnboardingWithAtrialFibrillationDetectionEnabled:(bool)arg1;
 - (id)availability;
 - (unsigned long long)currentPageNumber;
 - (id)dateCache;

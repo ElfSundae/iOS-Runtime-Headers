@@ -6,7 +6,8 @@
     NSObject<OS_nw_browse_descriptor> * _internalDescriptor;
 }
 
-@property (nonatomic, retain) NWInterface *interface;
+@property (nonatomic, readonly) NSString *bonjourServiceDomain;
+@property (nonatomic, readonly) NSString *bonjourServiceType;
 @property (nonatomic, retain) NSObject<OS_nw_browse_descriptor> *internalDescriptor;
 @property (nonatomic, readonly, copy) NSString *privateDescription;
 
@@ -17,6 +18,8 @@
 + (bool)supportsBrowseCallback;
 
 - (void).cxx_destruct;
+- (id)bonjourServiceDomain;
+- (id)bonjourServiceType;
 - (void)browseWithCompletionHandler:(id /* block */)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)createProtocolBufferObject;
@@ -25,10 +28,8 @@
 - (id)encodedData;
 - (id)initWithDescriptor:(id)arg1;
 - (id)initWithEncodedData:(id)arg1;
-- (id)interface;
 - (id)internalDescriptor;
 - (id)privateDescription;
-- (void)setInterface:(id)arg1;
 - (void)setInternalDescriptor:(id)arg1;
 
 @end

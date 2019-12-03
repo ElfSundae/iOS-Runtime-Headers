@@ -5,15 +5,16 @@
 @interface UITextDragAssistant : NSObject <UIDragInteractionDelegate_Private, UIDropInteractionDelegate_Private, UITextDragDropSupport, UITextPasteSessionDelegate, _UITextPasteProgressSupport> {
     UIDragInteraction * _currentDragInteraction;
     <UIDragSession> * _currentDragSession;
-    UITextPosition * _currentDropPosition;
     UITextDropProposal * _currentDropProposal;
+    UITextRange * _currentDropRange;
     <UIDropSession> * _currentDropSession;
+    id /* block */  _delayedPreviewProvider;
     UIDragInteraction * _dragInteraction;
     NSArray * _draggedTextRanges;
     _UITextDragCaretView * _dropCaret;
     UIDropInteraction * _dropInteraction;
     UITextPasteController * _dropPasteController;
-    <UITextPasteSession> * _dropPasteSession;
+    <UITextDropPasteSession> * _dropPasteSession;
     struct { 
         unsigned int viewSupportsGhostedRanges : 1; 
         unsigned int geometrySupportsSameViewOperations : 1; 
@@ -26,6 +27,10 @@
         unsigned int forceEditable : 1; 
         unsigned int delegateSupportsProposalForDrop : 1; 
         unsigned int delegateSupportsSessionDidUpdate : 1; 
+        unsigned int delegateSupportsRangeForDrop : 1; 
+        unsigned int delegateSupportsPositionForDrop : 1; 
+        unsigned int delegateSupportsWillMoveCaret : 1; 
+        unsigned int delegateSupportsDidMoveCaret : 1; 
         unsigned int viewSupportsTextStorage : 1; 
         unsigned int textStorageDidChange : 1; 
         unsigned int dropPerformed : 1; 
@@ -75,31 +80,32 @@
 - (long long)_dragInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 - (bool)_dragInteractionShouldBecomeDraggingSourceDelegate:(id)arg1;
 - (long long)_dropInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
-- (id)_dropRangeForPosition:(id)arg1;
-- (id)_dropRequestWithPosition:(id)arg1 inSession:(id)arg2;
+- (void)_dropInteraction:(id)arg1 delayedPreviewProviderForDroppingItem:(id)arg2 previewProvider:(id /* block */)arg3;
+- (id)_dropRequestWithRange:(id)arg1 inSession:(id)arg2;
+- (id)_dropRequestWithRange:(id)arg1 suggestedProposal:(id)arg2 inSession:(id)arg3;
 - (void)_forDraggedTextRangesDo:(id /* block */)arg1;
 - (void)_ghostDraggedTextRanges:(bool)arg1;
 - (bool)_hasDraggedTextRange:(id)arg1;
 - (void)_initializeDragSession:(id)arg1 withInteraction:(id)arg2;
 - (id)_itemsForDraggedRange:(id)arg1;
 - (void)_liftOrDrag:(long long)arg1 didEndWithOperation:(unsigned long long)arg2;
-- (void)_performDropToPosition:(id)arg1 inSession:(id)arg2;
+- (void)_performDropToRange:(id)arg1 inSession:(id)arg2;
 - (void)_performSameViewOperation:(id)arg1;
+- (id)_positionInSession:(id)arg1;
 - (void)_prepareSameViewOperation:(unsigned long long)arg1 forItems:(id)arg2 fromRanges:(id)arg3 toRange:(id)arg4;
 - (id)_previewForIrrelevantItemFromPreview:(id)arg1;
-- (id)_previewForTopmostItem:(id)arg1 withDefault:(id)arg2;
+- (id)_previewForTopmostItem:(id)arg1;
+- (id)_rangeInSession:(id)arg1;
 - (void)_restoreResponderIfNeededForOperation:(unsigned long long)arg1;
 - (id)_shrinkingPreview:(id)arg1 toPosition:(id)arg2;
 - (void)_stopObservingTextStorage;
-- (id)_suggestedProposalForPosition:(id)arg1 inSession:(id)arg2 allowCancel:(bool)arg3;
-- (double)_textPasteBlockingTimeout;
+- (id)_suggestedProposalForRequest:(id)arg1;
 - (long long)_textPasteRangeBehavior;
 - (id)_textPasteSelectableRangeForResult:(id)arg1 fromRange:(id)arg2;
-- (bool)_textPasteShouldBlockPasting;
 - (id)_textRangeForDraggingFromPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)_textStorageDidProcessEditing;
-- (void)_updateDropCaretToPosition:(id)arg1;
-- (void)_updateDropProposalForPosition:(id)arg1 inSession:(id)arg2 allowCancel:(bool)arg3;
+- (bool)_updateCurrentDropProposalInSession:(id)arg1 usingRequest:(id)arg2;
+- (void)_updateDropCaretToRange:(id)arg1 session:(id)arg2;
 - (bool)_viewHasOtherDragInteraction;
 - (bool)accessibilityCanDrag;
 - (id)dragInteraction;
@@ -131,11 +137,14 @@
 - (id)initWithView:(id)arg1 geometry:(id)arg2;
 - (void)installDragInteractionIfNeeded;
 - (void)installDropInteractionIfNeeded;
+- (void)invalidateDropCaret;
 - (bool)isDragActive;
 - (bool)isDropActive;
 - (void)notifyTextInteraction;
 - (void)textPasteSessionDidEndPasting:(id)arg1;
+- (void)textPasteSessionDidRevealPasteResult:(id)arg1;
 - (void)textPasteSessionWillBeginPasting:(id)arg1;
+- (void)textPasteSessionWillHidePasteResult:(id)arg1;
 - (id)view;
 
 @end

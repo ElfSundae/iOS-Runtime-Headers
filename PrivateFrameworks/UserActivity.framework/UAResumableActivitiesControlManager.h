@@ -19,7 +19,6 @@
 - (void).cxx_destruct;
 - (id)advertisedItemUUID;
 - (id)allUUIDsOfType:(unsigned long long)arg1;
-- (void)broadcastPing:(id /* block */)arg1;
 - (void)callDidSaveDelegate:(id)arg1;
 - (void)callWillSaveDelegate:(id)arg1;
 - (void)callWillSaveDelegate:(id)arg1 completionHandler:(id /* block */)arg2;
@@ -31,12 +30,13 @@
 - (id)delegate;
 - (id)dynamicUserActivities;
 - (id)enabledUUIDs;
+- (void)fetchMoreAppSuggestions;
 - (bool)getAdvertisedBytes:(id)arg1 completionHandler:(id /* block */)arg2;
-- (void)getCurrentPeersAndClear:(bool)arg1 completionHandler:(id /* block */)arg2;
 - (id)getSysdiagnoseStringsIncludingPrivateData:(bool)arg1;
 - (id)init;
 - (void)injectBTLEItem:(id)arg1 type:(unsigned long long)arg2 identifier:(id)arg3 title:(id)arg4 activityPayload:(id)arg5 frameworkPayload:(id)arg6 payloadDelay:(double)arg7;
 - (id)matchingUUIDForString:(id)arg1;
+- (void)peerDevices:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)recentActions:(bool)arg1;
 - (int)recordingPath;
 - (void)rendevous:(id)arg1 domain:(id)arg2 active:(bool)arg3;
@@ -50,10 +50,8 @@
 - (void)setLocalReflect:(bool)arg1;
 - (void)setRecordingPath:(int)arg1;
 - (id)simulatorStatus;
-- (void)startAdvertisingPingWithTimeInterval:(double)arg1;
 - (id)status;
 - (id)status:(id)arg1 options:(id)arg2;
-- (void)stopAdvertisingPing;
 - (void)synchronize;
 - (void)terminateServer;
 

@@ -8,6 +8,7 @@
     AVAsset * asset;
     int  cancelledRequestIDThreshold;
     AVCustomVideoCompositorSession * customVideoCompositorSession;
+    NSObject<OS_dispatch_queue> * generateImagesAsyncQueue;
     struct OpaqueFigAssetImageGenerator { } * generator;
     NSObject<OS_dispatch_queue> * imageRequestQueue;
     struct CGSize { 

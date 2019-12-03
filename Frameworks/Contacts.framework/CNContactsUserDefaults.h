@@ -14,6 +14,7 @@
 + (void)flushSharedInstance;
 + (id)sharedDefaults;
 
+- (id)changeNotificationName;
 - (id)countryCode;
 - (long long)displayNameOrder;
 - (id)filteredGroupAndContainerIDs;

@@ -3,6 +3,7 @@
  */
 
 @interface _UIViewControllerOneToOneTransitionContext : _UIViewControllerTransitionContext {
+    bool  __isDeferred;
     struct CGRect { 
         struct CGPoint { 
             double x; 
@@ -51,6 +52,7 @@
     UIViewController * _toViewController;
 }
 
+@property (setter=_setIsDeferred:, nonatomic) bool _isDeferred;
 @property (setter=_setFromEndFrame:, nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } fromEndFrame;
 @property (setter=_setFromStartFrame:, nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } fromStartFrame;
 @property (getter=_fromView, setter=_setFromView:, nonatomic, retain) UIView *fromView;
@@ -62,10 +64,12 @@
 
 - (void).cxx_destruct;
 - (id)_fromView;
+- (bool)_isDeferred;
 - (void)_setFromEndFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)_setFromStartFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)_setFromView:(id)arg1;
 - (void)_setFromViewController:(id)arg1;
+- (void)_setIsDeferred:(bool)arg1;
 - (void)_setToEndFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)_setToStartFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)_setToView:(id)arg1;

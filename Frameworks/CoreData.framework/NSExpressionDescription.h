@@ -13,7 +13,7 @@
     id  _reservedtype1_6;
     void * _reservedtype2_1;
     void * _reservedtype2_2;
-    void * _reservedtype2_3;
+    NSAttributeDescription * _underlyingAttribute;
 }
 
 @property (retain) NSExpression *expression;
@@ -23,6 +23,7 @@
 
 - (unsigned long long)_propertyType;
 - (void)_writeIntoData:(id)arg1 propertiesDict:(id)arg2 uniquedPropertyNames:(id)arg3 uniquedStrings:(id)arg4 uniquedData:(id)arg5 entitiesSlots:(id)arg6 fetchRequests:(id)arg7;
+- (id)attributeValueClassName;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)description;
@@ -33,5 +34,8 @@
 - (id)initWithCoder:(id)arg1;
 - (void)setExpression:(id)arg1;
 - (void)setExpressionResultType:(unsigned long long)arg1;
+- (void)setUnderlyingAttribute:(id)arg1;
+- (id)underlyingAttribute;
+- (id)valueTransformerName;
 
 @end

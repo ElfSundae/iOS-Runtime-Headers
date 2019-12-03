@@ -14,7 +14,6 @@
 
 - (void)dealloc;
 - (id)description;
-- (void)finalize;
 - (id)init;
 - (id)makeDerivedIdentifier;
 - (id)name;

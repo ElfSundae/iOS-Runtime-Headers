@@ -5,7 +5,6 @@
 @interface TSWPEquationInlineRep : TSDMediaRep <CALayerDelegate, TSDMagicMoveMatching> {
     CALayer * _equationLayer;
     bool  _layerContentsAreFlipped;
-    bool  _showEquationHighlight;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -15,7 +14,6 @@
 @property (nonatomic, readonly) TSWPEquationLayout *equationLayout;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool layerContentsAreFlipped;
-@property (nonatomic) bool showEquationHighlight;
 @property (readonly) Class superclass;
 
 + (double)magicMoveAttributeMatchPercentBetweenOutgoingObject:(id)arg1 incomingObject:(id)arg2 mixingTypeContext:(id)arg3;
@@ -40,9 +38,7 @@
 - (id)resizedGeometryForTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg1;
 - (void)setEquationLayer:(id)arg1;
 - (void)setLayerContentsAreFlipped:(bool)arg1;
-- (void)setShowEquationHighlight:(bool)arg1;
 - (bool)shouldAllowReplacementFromPaste;
-- (bool)showEquationHighlight;
 - (void)willBeRemoved;
 
 @end

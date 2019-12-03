@@ -10,13 +10,13 @@
 }
 
 @property (nonatomic, retain) <CKKnowledgeStoreDelegate> *delegate;
+@property (nonatomic, readonly) NSURL *filePathURL;
 @property (nonatomic, readonly) long long hash;
 @property (nonatomic, readonly) NSString *name;
-@property (nonatomic, readonly) NSString *path;
 
 + (id)defaultKnowledgeStore;
 + (id)defaultSynchedKnowledgeStore;
-+ (id)directoryPath;
++ (id)directoryURL;
 + (id)inMemoryKnowledgeStore;
 + (id)knowledgeStoreWithName:(id)arg1;
 + (id)synchedKnowledgeStoreWithName:(id)arg1;
@@ -32,6 +32,7 @@
 - (id)entitiesAndReturnError:(id*)arg1;
 - (void)entitiesWithCompletionHandler:(id /* block */)arg1;
 - (id)entityWithIdentifier:(id)arg1;
+- (id)filePathURL;
 - (long long)hash;
 - (void)importContentsOfJSONLDAtPath:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)importTriplesFromFileAtPath:(id)arg1 completionHandler:(id /* block */)arg2;
@@ -44,7 +45,6 @@
 - (id)keysMatching:(id)arg1 error:(id*)arg2;
 - (void)keysWithCompletionHandler:(id /* block */)arg1;
 - (id)name;
-- (id)path;
 - (bool)removeAllValuesAndReturnError:(id*)arg1;
 - (void)removeAllValuesWithCompletionHandler:(id /* block */)arg1;
 - (void)removeEntity:(id)arg1 completionHandler:(id /* block */)arg2;

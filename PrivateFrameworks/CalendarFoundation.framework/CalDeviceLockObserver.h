@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CalendarFoundation.framework/CalendarFoundation
  */
 
-@interface CalDeviceLockObserver : NSObject {
+@interface CalDeviceLockObserver : NSObject <CalDeviceLockObservable> {
     NSObject<OS_dispatch_queue> * _callbackQueue;
     bool  _internalHasBeenUnlockedSinceBoot;
     CalDarwinNotificationListener * _notificationListener;
@@ -11,13 +11,17 @@
 }
 
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *callbackQueue;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool hasBeenUnlockedSinceBoot;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) bool internalHasBeenUnlockedSinceBoot;
 @property (nonatomic, retain) CalDarwinNotificationListener *notificationListener;
 @property (nonatomic, copy) id /* block */ stateChangedCallback;
+@property (readonly) Class superclass;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *workQueue;
 
-+ (bool)_latestKeyBagValueForHasBeenUnlockedSinceBoot;
++ (bool)hasBeenUnlockedSinceBoot;
 + (id)stateChangedNotificationName;
 
 - (void).cxx_destruct;

@@ -30,7 +30,7 @@
 @property (nonatomic) struct CGSize { double x1; double x2; } maximumVideoResolution;
 @property (nonatomic, readonly) AVObservationController *observationController;
 @property (nonatomic, readonly) AVPlayer *player;
-@property (nonatomic) AVPlayerLayer *playerLayer;
+@property (nonatomic, readonly) AVPlayerLayer *playerLayer;
 @property (getter=isPlaying, nonatomic) bool playing;
 @property (nonatomic, retain) AVDisplayCriteria *preferredDisplayCriteria;
 @property (getter=isReady, nonatomic) bool ready;

@@ -10,6 +10,7 @@
     bool  _matchOncePerTerm;
     unsigned long long  _matcherCount;
     const void ** _matchers;
+    unsigned long long  _options;
     NSString * _queryString;
     unsigned long long  _queryTermCount;
     NSMutableArray * _tokenizedQueryTerms;
@@ -23,6 +24,7 @@
 @property (nonatomic) bool matchOncePerTerm;
 @property (nonatomic) unsigned long long matcherCount;
 @property (nonatomic) const void**matchers;
+@property (nonatomic) unsigned long long options;
 @property (nonatomic, readonly) NSString *queryString;
 @property (nonatomic) unsigned long long queryTermCount;
 @property (nonatomic, readonly) NSArray *queryTerms;
@@ -44,6 +46,7 @@
 - (bool)matchOncePerTerm;
 - (unsigned long long)matcherCount;
 - (const void**)matchers;
+- (unsigned long long)options;
 - (id)queryString;
 - (unsigned long long)queryTermCount;
 - (id)queryTerms;
@@ -54,6 +57,7 @@
 - (void)setMatchOncePerTerm:(bool)arg1;
 - (void)setMatcherCount:(unsigned long long)arg1;
 - (void)setMatchers:(const void**)arg1;
+- (void)setOptions:(unsigned long long)arg1;
 - (void)setQueryTermCount:(unsigned long long)arg1;
 - (void)setTokenizedQueryTerms:(id)arg1;
 - (void)setTokenizer:(void*)arg1;

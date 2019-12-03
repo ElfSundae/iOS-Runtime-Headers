@@ -2,9 +2,10 @@
    Image: /System/Library/PrivateFrameworks/MusicCarDisplayUI.framework/MusicCarDisplayUI
  */
 
-@interface MCDBrowsableContentTableViewController : UIViewController <MCDErrorViewDelegate, MCDPCContainerDelegate, UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate> {
+@interface MCDBrowsableContentTableViewController : UIViewController <CARSessionObserving, MCDErrorViewDelegate, MCDPCContainerDelegate, UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate> {
     UIView * _MCD_tableView;
     UIAlertController * _alertController;
+    CARSessionStatus * _carSessionStatus;
     MCDPCContainer * _container;
     long long  _count;
     bool  _currentlyPlayingApp;
@@ -13,10 +14,10 @@
     bool  _didFinishInitialLoad;
     bool  _didFinishInitialViewAppear;
     bool  _didPushToNowPlayingAtLaunch;
-    AVExternalDevice * _externalDevice;
     bool  _hasCarScreen;
     bool  _hasNoBrowsableContent;
     bool  _hasTabbedBrowsing;
+    bool  _isRootTableViewController;
     bool  _limited;
     MPWeakTimer * _loadingTimer;
     MCDNowPlayingButton * _nowPlayingButton;

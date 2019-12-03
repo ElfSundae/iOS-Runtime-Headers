@@ -33,7 +33,6 @@
 - (void)_configureForEditMode:(long long)arg1;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (void)_curvedComplicationCircleRadius:(double*)arg1 centerAngle:(double*)arg2 maxAngularWidth:(double*)arg3 circleCenter:(struct CGPoint { double x1; double x2; }*)arg4 interior:(bool*)arg5 forSlot:(id)arg6;
-- (id)_curvedPickerMaskForSlot:(id)arg1;
 - (struct CGPoint { double x1; double x2; })_dateComplicationCenterOffset;
 - (id)_dateComplicationFontForStyle:(unsigned long long)arg1;
 - (struct CGPoint { double x1; double x2; })_dateComplicationRightAlignment;
@@ -56,6 +55,7 @@
 - (void)_loadLayoutRules;
 - (void)_loadScene;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
+- (id)_pickerMaskForSlot:(id)arg1;
 - (double)_secondHandAlphaForEditMode:(long long)arg1;
 - (bool)_shouldFreezeSceneForEditMode:(long long)arg1;
 - (id)_slotForUtilitySlot:(long long)arg1;
@@ -68,6 +68,7 @@
 - (long long)_utilitySlotForSlot:(id)arg1;
 - (double)_verticalPaddingForStatusBar;
 - (double)alphaForDimmedState;
+- (void)cleanupAfterEditing;
 - (unsigned long long)dateStyle;
 - (unsigned long long)density;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;

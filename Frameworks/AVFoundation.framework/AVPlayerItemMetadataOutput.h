@@ -23,7 +23,6 @@
 - (void)dealloc;
 - (id)delegate;
 - (id)delegateQueue;
-- (void)finalize;
 - (id)init;
 - (id)initWithIdentifiers:(id)arg1;
 - (void)setAdvanceIntervalForDelegateInvocation:(double)arg1;

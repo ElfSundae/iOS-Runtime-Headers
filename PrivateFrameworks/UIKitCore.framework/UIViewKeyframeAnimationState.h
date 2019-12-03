@@ -9,13 +9,12 @@
     bool  _inFrame;
     NSMutableSet * _keyframeLayers;
     NSMutableDictionary * _keyframeLayersForCurrentKeyFrameDict;
-    NSMapTable * _viewToKeyframesMap;
 }
 
 - (void).cxx_destruct;
-- (bool)_addPendingKeyframeValue:(id)arg1 forKey:(id)arg2 view:(id)arg3;
-- (void)_generatePendingKeyframeAnimations;
+- (id)_createDeferredAnimationForKey:(id)arg1;
 - (bool)_isKeyframeAnimation;
+- (id)_updateAnimationFrameWithAnimationProperties:(id)arg1;
 - (void)addKeyframeWithRelativeStartTime:(double)arg1 relativeDuration:(double)arg2 animations:(id /* block */)arg3;
 - (id)animationForLayer:(id)arg1 forKey:(id)arg2 forView:(id)arg3;
 - (void)cleanupTrackedLayers;

@@ -2,12 +2,13 @@
    Image: /System/Library/PrivateFrameworks/AppPredictionUI.framework/AppPredictionUI
  */
 
-@interface APUIShortLookViewController : UIViewController <APUIIntentHandlingViewControllerDelegate, APUILongLookViewControllerDataSource, APUILongLookViewControllerDelegate, CRKCardPresentationDelegate, CRKCardViewControllerDelegate, PLPreviewInteractionManagerDelegate, PLPreviewInteractionPresenting, SearchUIResultShortLook> {
+@interface APUIShortLookViewController : UIViewController <APUIIntentHandlingViewControllerDelegate, APUILongLookViewControllerDataSource, APUILongLookViewControllerDelegate, CRKCardPresentationDelegate, CRKCardViewControllerDelegate, PLClickPresentationInteractionManagerDelegate, PLClickPresentationInteractionPresenting, SearchUIResultShortLook> {
     bool  _acceptPlatterTaps;
     bool  _actionCompletedSuccessfully;
     ATXAction * _atxAction;
     NSString * _bundleId;
     CRKCardPresentation * _cardPresentation;
+    PLClickPresentationInteractionManager * _clickPresentationInteractionManager;
     UIViewController<CRKCardViewControlling> * _currentCardViewController;
     <APUIShortLookViewControllerDelegate> * _delegate;
     long long  _dismissalReason;
@@ -16,10 +17,8 @@
     APUIIntentHandlingViewController * _intentHandlingViewController;
     INInteraction * _interaction;
     double  _preferredPlatterContentHeight;
-    APUILongLookViewController<PLPreviewInteractionPresentable> * _presentableViewController;
-    PLPreviewInteractionManager * _previewInteractionManager;
+    APUILongLookViewController<PLClickPresentationInteractionPresentable> * _presentableViewController;
     bool  _representsVoiceShortcut;
-    bool  _safeToReleaseLongLookViewController;
     SFSearchResult * _searchResult;
     APUITVIntentHandler * _tvIntentHandler;
     NSUserActivity * _userActivity;
@@ -31,6 +30,7 @@
 @property (nonatomic, copy) NSString *bundleId;
 @property (nonatomic, retain) CRKCardPresentation *cardPresentation;
 @property (nonatomic, readonly) <CRKCardViewControllerDelegate> *cardViewControllerDelegate;
+@property (nonatomic, readonly) PLClickPresentationInteractionManager *clickPresentationInteractionManager;
 @property (nonatomic, retain) UIViewController<CRKCardViewControlling> *currentCardViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <APUIShortLookViewControllerDelegate> *delegate;
@@ -38,11 +38,11 @@
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } finalDismissedFrameOfViewForPreview;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } finalPresentedFrameOfViewForPreview;
 @property (readonly) unsigned long long hash;
+@property (getter=isHighlighted, nonatomic) bool highlighted;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } initialPresentedFrameOfViewForPreview;
 @property (nonatomic, retain) INIntent *intent;
 @property (nonatomic, retain) APUIIntentHandlingViewController *intentHandlingViewController;
 @property (nonatomic, retain) INInteraction *interaction;
-@property (nonatomic, readonly) PLPreviewInteractionManager *previewInteractionManager;
 @property (nonatomic, retain) SFSearchResult *searchResult;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSUserActivity *userActivity;
@@ -69,7 +69,12 @@
 - (void)cardViewControllerBoundsDidChange:(id)arg1;
 - (id)cardViewControllerDelegate;
 - (void)cardViewControllerDidLoad:(id)arg1;
-- (id)containerViewForPreviewInteractionManager:(id)arg1;
+- (id)clickPresentationInteractionManager;
+- (void)clickPresentationInteractionManager:(id)arg1 willDismissPresentedContentWithTrigger:(long long)arg2;
+- (void)clickPresentationInteractionManagerDidEndUserInteraction:(id)arg1;
+- (bool)clickPresentationInteractionManagerShouldAutomaticallyTransitionToPreviewAfterDelay:(id)arg1;
+- (void)clickPresentationInteractionManagerWillBeginUserInteraction:(id)arg1;
+- (id)containerViewForclickPresentationInteractionManager:(id)arg1;
 - (id)currentCardViewController;
 - (id)delegate;
 - (bool)fetchViewControllerForContentViewInLongLook:(id)arg1 completion:(id /* block */)arg2;
@@ -89,12 +94,7 @@
 - (bool)longLookPlatterShouldShowUtilityButton:(id)arg1;
 - (double)preferredContentHeightForLongLook:(id)arg1;
 - (bool)presentImmediately:(id /* block */)arg1;
-- (id)presentedViewControllerForPreviewInteractionManager:(id)arg1;
-- (id)previewInteractionManager;
-- (void)previewInteractionManager:(id)arg1 willDismissPresentedContentWithTrigger:(long long)arg2;
-- (void)previewInteractionManagerDidEndUserInteraction:(id)arg1;
-- (bool)previewInteractionManagerShouldAutomaticallyTransitionToPreviewAfterDelay:(id)arg1;
-- (void)previewInteractionManagerWillBeginUserInteraction:(id)arg1;
+- (id)presentedViewControllerForClickPresentationInteractionManager:(id)arg1;
 - (id)searchResult;
 - (void)setAtxAction:(id)arg1;
 - (void)setBundleId:(id)arg1;
@@ -109,6 +109,7 @@
 - (void)setView:(id)arg1;
 - (id)titleForLongLookHeaderInLongLook:(id)arg1;
 - (id)userActivity;
+- (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLoad;
 - (id)viewForPreview;
 

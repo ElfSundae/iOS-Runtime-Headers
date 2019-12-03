@@ -2,42 +2,23 @@
    Image: /System/Library/Frameworks/CoreData.framework/CoreData
  */
 
-@interface PFCloudKitHistoryAnalyzerContext : NSObject {
-    NSMutableSet * _allDeletedRecordIDs;
-    NSSet * _deletedRecordIDs;
-    NSDictionary * _entityNameToObjectIDs;
-    bool  _isFinished;
-    NSMutableDictionary * _objectIDToDeletedRecordID;
-    NSMutableDictionary * _objectIDToState;
-    NSMutableSet * _processedTransactionIDs;
-    NSArray * _sortedStates;
-    CKRecordZoneID * _zoneID;
+@interface PFCloudKitHistoryAnalyzerContext : PFHistoryAnalyzerContext {
+    NSManagedObjectContext * _managedObjectContext;
+    NSMutableDictionary * _objectIDToAnalyzerStateCache;
 }
 
-@property (nonatomic, readonly) NSSet *allDeletedRecordIDs;
-@property (nonatomic, readonly) NSSet *deletedRecordIDs;
-@property (nonatomic, readonly) NSDictionary *entityNameToObjectIDs;
-@property (nonatomic, readonly) bool isFinished;
-@property (nonatomic, readonly) NSDictionary *objectIDToDeletedRecordID;
-@property (nonatomic, readonly) NSDictionary *objectIDToState;
-@property (nonatomic, readonly) NSSet *processedTransactionIDs;
-@property (nonatomic, readonly) NSArray *sortedStates;
-@property (nonatomic, readonly) CKRecordZoneID *zoneID;
+@property (nonatomic, readonly) NSManagedObjectContext *managedObjectContext;
 
-- (id)allDeletedRecordIDs;
+- (id)analyzerStateForChangedObjectID:(id)arg1 error:(id*)arg2;
+- (id)cloudKitAnalyzerOptions;
 - (void)dealloc;
-- (id)deletedRecordIDs;
-- (id)entityNameToObjectIDs;
-- (void)finishProcessing;
-- (id)initWithZone:(id)arg1;
-- (bool)isFinished;
-- (id)objectIDToDeletedRecordID;
-- (id)objectIDToState;
-- (void)processChange:(id)arg1;
-- (void)processTransaction:(id)arg1 fromImporter:(bool)arg2;
-- (id)processedTransactionIDs;
-- (void)reset;
-- (id)sortedStates;
-- (id)zoneID;
+- (id)fetchSortedStates:(id*)arg1;
+- (bool)finishProcessing:(id*)arg1;
+- (id)initWithOptions:(id)arg1 managedObjectContext:(id)arg2;
+- (id)managedObjectContext;
+- (id)newAnalyzerStateForChange:(id)arg1 error:(id*)arg2;
+- (bool)processChange:(id)arg1 error:(id*)arg2;
+- (bool)reset:(id*)arg1;
+- (bool)resetStateForObjectID:(id)arg1 error:(id*)arg2;
 
 @end

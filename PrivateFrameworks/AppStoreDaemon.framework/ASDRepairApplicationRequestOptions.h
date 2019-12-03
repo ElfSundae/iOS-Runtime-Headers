@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/AppStoreDaemon.framework/AppStoreDaemon
  */
 
-@interface ASDRepairApplicationRequestOptions : ASDRequestOptions {
+@interface ASDRepairApplicationRequestOptions : NSObject <NSCopying, NSSecureCoding> {
     NSNumber * _accountDSID;
     NSString * _bundleID;
     long long  _claimStyle;

@@ -20,6 +20,7 @@
 - (id)countQueue;
 - (void)didEngageResultWithRankingItem:(id)arg1 startDate:(id)arg2 protectionClass:(id)arg3;
 - (void)fetchBundleRenderAndEngagementInfo;
+- (void)fetchBundleRenderAndEngagementInfo:(id)arg1;
 - (id)fetchResults;
 - (id)getSyntheticTestRankingItem;
 - (id)getSyntheticTestRankingItemsForStressTest;

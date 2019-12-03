@@ -3,17 +3,22 @@
  */
 
 @interface MKCoreLocationProvider : NSObject <CLLocationManagerDelegate, CLLocationManagerVehicleDelegate, MKLocationProvider> {
-    bool  _alternate;
-    NSObject<OS_dispatch_queue> * _authorizationQueue;
+    long long  _activityType;
     id /* block */  _authorizationRequestBlock;
     int  _authorizationStatus;
     CLLocationManager * _clLocationManager;
+    NSObject<OS_dispatch_queue> * _coreLocationQueue;
     <MKLocationProviderDelegate> * _delegate;
+    double  _desiredAccuracy;
+    double  _distanceFilter;
     NSBundle * _effectiveBundle;
     NSString * _effectiveBundleIdentifier;
     double  _expectedGpsUpdateInterval;
     bool  _hasQueriedAuthorization;
+    int  _headingOrientation;
+    geo_isolater * _isolation;
     bool  _locationServicesPreferencesDialogEnabled;
+    bool  _matchInfoEnabled;
     bool  _waitingForAuthorization;
 }
 

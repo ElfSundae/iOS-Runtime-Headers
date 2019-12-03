@@ -6,6 +6,4 @@
 
 @property (nonatomic, readonly) NSString *imageIdentifier;
 
-+ (id)typeString;
-
 @end

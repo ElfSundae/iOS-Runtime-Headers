@@ -2,10 +2,18 @@
    Image: /System/Library/PrivateFrameworks/Message.framework/Message
  */
 
-@interface MFFileCompressionQueueActivityManager : NSObject
+@interface MFFileCompressionQueueActivityManager : NSObject <EFLoggable>
 
-+ (void)compressFilesInQueue:(id)arg1 shouldDefer:(id /* block */)arg2;
-+ (void)registerActivity:(id)arg1 withCompressionQueue:(id)arg2;
-+ (void)unregisterActivity;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
++ (void)_registerXPCActivity;
++ (void)_unregisterXPCActivity;
++ (bool)compressFilesInQueue:(id)arg1 shouldDefer:(id /* block */)arg2;
++ (id)log;
++ (void)scheduleActivityIfNeeded;
++ (void)unregisterXPCActivity;
 
 @end

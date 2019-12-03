@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/Navigation.framework/Navigation
  */
 
-@interface MNTrafficIncidentAlert : NSObject {
+@interface MNTrafficIncidentAlert : NSObject <NSSecureCoding> {
     NSDate * _alertDate;
     NSData * _alertID;
     unsigned long long  _alertType;
@@ -11,6 +11,7 @@
         float offset; 
     }  _alternateEndValidCoordinateRange;
     GEOComposedRoute * _alternateRoute;
+    GEOComposedRouteTraffic * _alternateRouteTraffic;
     double  _distanceToIncident;
     struct { 
         unsigned int index; 
@@ -25,6 +26,7 @@
     bool  _isAutomaticReroute;
     GEOETARoute * _oldETARoute;
     GEOComposedRoute * _originalRoute;
+    GEOComposedRouteTraffic * _originalRouteTraffic;
     struct { 
         unsigned int index; 
         float offset; 
@@ -39,6 +41,7 @@
 @property (nonatomic, readonly) unsigned long long alertType;
 @property (nonatomic, readonly) struct { unsigned int x1; float x2; } alternateEndValidCoordinateRange;
 @property (nonatomic, readonly) GEOComposedRoute *alternateRoute;
+@property (nonatomic, readonly) GEOComposedRouteTraffic *alternateRouteTraffic;
 @property (nonatomic) double distanceToIncident;
 @property (nonatomic, readonly) struct { unsigned int x1; float x2; } endValidCoordinateRange;
 @property (nonatomic, retain) NSDate *eta;
@@ -50,10 +53,12 @@
 @property (nonatomic, readonly) GEORouteIncident *oldETARouteIncident;
 @property (nonatomic, readonly) double oldEstimatedTime;
 @property (nonatomic, readonly) GEOComposedRoute *originalRoute;
+@property (nonatomic, readonly) GEOComposedRouteTraffic *originalRouteTraffic;
 @property (nonatomic, readonly) unsigned long long secondsSaved;
 @property (nonatomic, readonly) NSArray *spokenTexts;
 @property (nonatomic, readonly) struct { unsigned int x1; float x2; } startValidCoordinateRange;
 
++ (bool)supportsSecureCoding;
 + (id)trafficIncidentAlertForDetails:(id)arg1;
 
 - (void).cxx_destruct;
@@ -69,12 +74,15 @@
 - (unsigned long long)alertType;
 - (struct { unsigned int x1; float x2; })alternateEndValidCoordinateRange;
 - (id)alternateRoute;
+- (id)alternateRouteTraffic;
 - (double)distanceToIncident;
+- (void)encodeWithCoder:(id)arg1;
 - (struct { unsigned int x1; float x2; })endValidCoordinateRange;
 - (id)eta;
 - (id)etaResponseID;
 - (struct { unsigned int x1; float x2; })incidentCoordinate;
-- (id)initWithRoute:(id)arg1 etaRoute:(id)arg2 etaResponse:(id)arg3;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithRoute:(id)arg1 traffic:(id)arg2 etaRoute:(id)arg3 etaResponse:(id)arg4;
 - (id)initWithTrafficIncidentAlertDetails:(id)arg1;
 - (bool)isAutomaticReroute;
 - (bool)isSimilarTo:(id)arg1;
@@ -83,6 +91,7 @@
 - (id)oldETARouteIncident;
 - (double)oldEstimatedTime;
 - (id)originalRoute;
+- (id)originalRouteTraffic;
 - (unsigned long long)secondsSaved;
 - (void)setDistanceToIncident:(double)arg1;
 - (void)setEta:(id)arg1;

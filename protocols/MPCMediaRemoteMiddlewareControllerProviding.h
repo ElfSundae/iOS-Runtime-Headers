@@ -6,5 +6,6 @@
 @required
 
 - (MPCMediaRemoteController *)controller;
+- (MPCFuture *)controllerFuture;
 
 @end

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
  */
 
-@interface RETrainingManager : RERelevanceEngineSubsystem <RELoggable, RERemoteTrainingClientListenerDelegate> {
+@interface RETrainingManager : RERelevanceEngineSubsystem <RERemoteTrainingClientListenerDelegate, RETrainingManagerProperties> {
     RELiveElementCoordinator * _coordinator;
     RETrainingContext * _currentTrainingContext;
     NSMutableArray * _interactionTypes;
@@ -17,22 +17,21 @@
 }
 
 @property (retain) RETrainingContext *currentTrainingContext;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
+@property (nonatomic, readonly) NSMutableArray *trainingEvents;
+@property (nonatomic, readonly) RETrainingScheduler *trainingScheduler;
 
 - (void).cxx_destruct;
-- (void)_performTrainingWithForced:(bool)arg1;
-- (void)_queue_trainElement:(id)arg1 featureMap:(id)arg2 isPositiveEvent:(bool)arg3 interaction:(id)arg4 context:(id)arg5;
+- (void)_performTraining:(bool)arg1 completion:(id /* block */)arg2;
+- (void)_performTrainingForPredictionElement:(id)arg1 isPositiveEvent:(bool)arg2 interaction:(id)arg3 context:(id)arg4;
+- (void)_queue_trainElementWithIdentifier:(id)arg1 relevanceProviders:(id)arg2 featureMap:(id)arg3 isPositiveEvent:(bool)arg4 interaction:(id)arg5 context:(id)arg6;
 - (void)addTrainingContext:(id)arg1;
-- (void)collectLoggableState:(id /* block */)arg1;
 - (id)currentTrainingContext;
 - (void)dealloc;
 - (void)flushTraining;
 - (id)initWithRelevanceEngine:(id)arg1;
 - (void)makeContextCurrent:(id)arg1;
-- (void)manuallyPerformTraining;
+- (void)manuallyPerformTrainingWithCompletion:(id /* block */)arg1;
+- (void)performTrainingForElement:(id)arg1 isPositiveEvent:(bool)arg2 interaction:(id)arg3;
 - (void)performTrainingForElement:(id)arg1 isPositiveEvent:(bool)arg2 interaction:(id)arg3 context:(id)arg4;
 - (void)performTrainingForElementWithIdentifier:(id)arg1 isPositiveEvent:(bool)arg2 interaction:(id)arg3;
 - (void)performTrainingForElementWithIdentifier:(id)arg1 isPositiveEvent:(bool)arg2 interaction:(id)arg3 context:(id)arg4;
@@ -40,5 +39,7 @@
 - (void)remoteTrainingClientListenerDidDisconnectContext:(id)arg1;
 - (void)removeTrainingContext:(id)arg1;
 - (void)setCurrentTrainingContext:(id)arg1;
+- (id)trainingEvents;
+- (id)trainingScheduler;
 
 @end

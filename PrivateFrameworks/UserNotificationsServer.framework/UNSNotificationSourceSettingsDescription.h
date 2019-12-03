@@ -12,6 +12,7 @@
     bool  _supportsLockScreen;
     bool  _supportsNotificationCenter;
     bool  _supportsSounds;
+    bool  _supportsSpoken;
 }
 
 @property (nonatomic) bool alwaysShowPreviews;
@@ -23,6 +24,7 @@
 @property (nonatomic) bool supportsLockScreen;
 @property (nonatomic) bool supportsNotificationCenter;
 @property (nonatomic) bool supportsSounds;
+@property (nonatomic) bool supportsSpoken;
 
 + (id)notificationSourceSettingsDescriptionFromDictionary:(id)arg1;
 
@@ -41,11 +43,13 @@
 - (void)setSupportsLockScreen:(bool)arg1;
 - (void)setSupportsNotificationCenter:(bool)arg1;
 - (void)setSupportsSounds:(bool)arg1;
+- (void)setSupportsSpoken:(bool)arg1;
 - (bool)supportsAlerts;
 - (bool)supportsBadges;
 - (bool)supportsCarPlay;
 - (bool)supportsLockScreen;
 - (bool)supportsNotificationCenter;
 - (bool)supportsSounds;
+- (bool)supportsSpoken;
 
 @end

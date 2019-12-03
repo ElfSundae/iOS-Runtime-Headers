@@ -67,6 +67,7 @@
 - (void)exposeAllFrames;
 - (void)exposeKernelFramesOnly;
 - (void)exposeUserFramesOnly;
+- (bool)hasKernelStack;
 - (bool)hasStack;
 - (bool)hasUserStack;
 - (id)instructionForKernelAddress:(unsigned long long)arg1 symbolicationOffByOne:(bool)arg2;

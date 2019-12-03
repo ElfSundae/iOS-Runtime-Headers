@@ -7,8 +7,8 @@
     id  _value;
 }
 
-@property (readonly, copy) NSString *label;
-@property (readonly, copy) id value;
+@property (readonly) NSString *label;
+@property (readonly) id value;
 
 + (id)labeledValueWithLabel:(id)arg1 value:(id)arg2;
 

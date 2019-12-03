@@ -107,6 +107,7 @@
 - (struct opaqueCMFormatDescription { }*)sourceFormatHint;
 - (id)sourcePixelBufferAttributes;
 - (long long)status;
+- (void)stopRequestingMediaData;
 - (int)trackID;
 - (id)trackReferences;
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })transform;

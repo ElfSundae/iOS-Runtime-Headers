@@ -3,6 +3,7 @@
  */
 
 @interface _CPStartNetworkSearchFeedback : PBCodable <NSSecureCoding, _CPFeedbackUUID, _CPProcessableFeedback, _CPStartNetworkSearchFeedback> {
+    NSData * _bodyData;
     int  _endpoint;
     NSDictionary * _headers;
     NSString * _input;
@@ -16,6 +17,7 @@
     unsigned long long  _whichTrigger;
 }
 
+@property (nonatomic, copy) NSData *bodyData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) NSDictionary *dictionaryRepresentation;
@@ -27,7 +29,6 @@
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic) int lookupSelectionType;
 @property (nonatomic) unsigned long long queryId;
-@property (nonatomic, readonly) bool requiresQueryId;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long timestamp;
 @property (nonatomic) int triggerEvent;
@@ -40,6 +41,8 @@
 + (id)startSearchFeedbackWithUUID;
 
 - (void).cxx_destruct;
+- (id)bodyData;
+- (void)clearTrigger;
 - (id)dictionaryRepresentation;
 - (int)endpoint;
 - (id)feedbackJSON;
@@ -56,7 +59,7 @@
 - (int)lookupSelectionType;
 - (unsigned long long)queryId;
 - (bool)readFrom:(id)arg1;
-- (bool)requiresQueryId;
+- (void)setBodyData:(id)arg1;
 - (void)setEndpoint:(int)arg1;
 - (void)setHeaders:(id)arg1;
 - (void)setHeaders:(id)arg1 forKey:(id)arg2;

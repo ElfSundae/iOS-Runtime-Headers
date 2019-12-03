@@ -7,10 +7,39 @@
     GEOFormattedString * _contactOther;
     GEOFormattedString * _contactWork;
     GEOFormattedString * _custom;
+    struct { 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_contactHome : 1; 
+        unsigned int read_contactOther : 1; 
+        unsigned int read_contactWork : 1; 
+        unsigned int read_custom : 1; 
+        unsigned int read_home : 1; 
+        unsigned int read_pointOfInterest : 1; 
+        unsigned int read_streetAddress : 1; 
+        unsigned int read_unknown : 1; 
+        unsigned int read_work : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_contactHome : 1; 
+        unsigned int wrote_contactOther : 1; 
+        unsigned int wrote_contactWork : 1; 
+        unsigned int wrote_custom : 1; 
+        unsigned int wrote_home : 1; 
+        unsigned int wrote_pointOfInterest : 1; 
+        unsigned int wrote_streetAddress : 1; 
+        unsigned int wrote_unknown : 1; 
+        unsigned int wrote_work : 1; 
+    }  _flags;
     GEOFormattedString * _home;
     GEOFormattedString * _pointOfInterest;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     GEOFormattedString * _streetAddress;
     GEOFormattedString * _unknown;
+    PBUnknownFields * _unknownFields;
     GEOFormattedString * _work;
 }
 
@@ -31,9 +60,22 @@
 @property (nonatomic, retain) GEOFormattedString *pointOfInterest;
 @property (nonatomic, retain) GEOFormattedString *streetAddress;
 @property (nonatomic, retain) GEOFormattedString *unknown;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic, retain) GEOFormattedString *work;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_readContactHome;
+- (void)_readContactOther;
+- (void)_readContactWork;
+- (void)_readCustom;
+- (void)_readHome;
+- (void)_readPointOfInterest;
+- (void)_readStreetAddress;
+- (void)_readUnknown;
+- (void)_readWork;
+- (void)clearUnknownFields:(bool)arg1;
 - (id)contactHome;
 - (id)contactOther;
 - (id)contactWork;
@@ -53,9 +95,12 @@
 - (bool)hasWork;
 - (unsigned long long)hash;
 - (id)home;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)pointOfInterest;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setContactHome:(id)arg1;
 - (void)setContactOther:(id)arg1;
@@ -68,6 +113,7 @@
 - (void)setWork:(id)arg1;
 - (id)streetAddress;
 - (id)unknown;
+- (id)unknownFields;
 - (id)work;
 - (void)writeTo:(id)arg1;
 

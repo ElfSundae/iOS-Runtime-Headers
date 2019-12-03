@@ -10,6 +10,7 @@
     UIView * _clippingContainerView;
     UICollectionReusableView<SiriUIReusableView> * _footerView;
     UICollectionReusableView<SiriUIReusableView> * _headerView;
+    UIView * _materialView;
     UIView * _snippetBackgroundView;
     struct UIEdgeInsets { 
         double top; 

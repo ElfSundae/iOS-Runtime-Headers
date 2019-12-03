@@ -5,7 +5,7 @@
 @interface BWInferenceSchedulerInference : NSObject <BWInferenceExecutable, BWInferenceJobProvider, BWInferencePreventable, BWInferencePropagatable, BWInferenceSubmittable> {
     unsigned long long  _identifier;
     float  _maximumFramesPerSecond;
-    double  _previousExecutionTimeInSeconds;
+    _Atomic double  _previousExecutionTimeInSeconds;
     unsigned int  _priority;
     <BWInferenceProvider> * _provider;
 }

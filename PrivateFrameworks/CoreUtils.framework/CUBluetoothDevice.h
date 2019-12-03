@@ -9,6 +9,7 @@
     NSString * _addressString;
     int  _colorCode;
     unsigned int  _connectedServices;
+    unsigned int  _deviceFlags;
     NSUUID * _identifier;
     bool  _magicPaired;
     NSString * _manufacturer;
@@ -25,6 +26,7 @@
 @property (nonatomic, copy) NSString *addressString;
 @property (nonatomic) int colorCode;
 @property (nonatomic) unsigned int connectedServices;
+@property (nonatomic) unsigned int deviceFlags;
 @property (nonatomic, copy) NSUUID *identifier;
 @property (nonatomic) bool magicPaired;
 @property (nonatomic, copy) NSString *manufacturer;
@@ -42,6 +44,7 @@
 - (int)colorCode;
 - (unsigned int)connectedServices;
 - (id)description;
+- (unsigned int)deviceFlags;
 - (unsigned long long)hash;
 - (id)identifier;
 - (id)init;
@@ -58,6 +61,7 @@
 - (void)setAddressString:(id)arg1;
 - (void)setColorCode:(int)arg1;
 - (void)setConnectedServices:(unsigned int)arg1;
+- (void)setDeviceFlags:(unsigned int)arg1;
 - (void)setIdentifier:(id)arg1;
 - (void)setMagicPaired:(bool)arg1;
 - (void)setManufacturer:(id)arg1;

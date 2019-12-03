@@ -6,10 +6,14 @@
     NSSQLiteAdapter * _adapter;
     NSMutableDictionary * _addedEntityMigrations;
     NSMutableDictionary * _attributeExtensionsToUpdate;
+    NSMutableArray * _cloudKitUpdateStatements;
     NSSQLiteConnection * _connection;
     NSMutableDictionary * _copiedEntityMigrations;
+    NSMutableArray * _derivationsToDrop;
+    NSMutableArray * _derivationsToRun;
     NSSQLModel * _dstModel;
     NSArray * _existingTableNames;
+    bool  _hasCloudKitTables;
     bool  _hasPKTableChanges;
     NSMutableDictionary * _historyMigrationPropertyDataForEntityCache;
     NSMutableArray * _indexesToCreate;
@@ -28,7 +32,9 @@
 }
 
 @property (nonatomic, readonly) NSSQLiteAdapter *adapter;
+@property (nonatomic, readonly) NSSQLiteConnection *connection;
 @property (nonatomic, readonly) NSSQLModel *dstModel;
+@property (nonatomic) bool hasCloudKitTables;
 @property (nonatomic, retain) NSMutableDictionary *historyMigrationCache;
 @property (nonatomic, readonly) NSSQLModel *srcModel;
 
@@ -39,8 +45,8 @@
 - (void)_addReindexedProperty:(id)arg1 toSetForEntity:(id)arg2;
 - (long long)_countNullsInColumn:(id)arg1 forEntity:(id)arg2;
 - (long long)_countUnreferencedPrimaryKeysForEntity:(id)arg1 inForeignKeyColumnName:(id)arg2 fromTable:(id)arg3;
-- (void)_determineAncillaryModelIndexesForMigration;
 - (void)_determineAttributeTriggerToMigrateForAttributeNamed:(id)arg1 withSourceEntity:(id)arg2 andDestinationEntity:(id)arg3;
+- (void)_determineDerivedAttributesToMigrateForSourceEntity:(id)arg1 andDestinationEntity:(id)arg2;
 - (void)_determineIndexesToMigrateForSourceEntity:(id)arg1 andDestinationEntity:(id)arg2;
 - (void)_determinePropertyDependenciesOnIDForEntity:(id)arg1;
 - (void)_determineRTreeExtensionsToMigrateForAttributeNamed:(id)arg1 withSourceEntity:(id)arg2 andDestinationEntity:(id)arg3;
@@ -54,6 +60,7 @@
 - (bool)_sourceTableIsClean:(id)arg1;
 - (id)adapter;
 - (bool)clearTombstoneColumnsForRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
+- (id)connection;
 - (id)createEntityMigrationStatements;
 - (id)createStatementsForUpdatingEntityKeys;
 - (void)dealloc;
@@ -61,9 +68,11 @@
 - (id)dstModel;
 - (id)entityMigrationDescriptionForEntity:(id)arg1;
 - (void)generatePKTableUpdateStatements;
+- (bool)hasCloudKitTables;
 - (id)historyMigrationCache;
 - (id)initWithStore:(id)arg1 destinationModel:(id)arg2 mappingModel:(id)arg3;
 - (bool)performMigration:(id*)arg1;
+- (void)setHasCloudKitTables:(bool)arg1;
 - (void)setHistoryMigrationCache:(id)arg1;
 - (bool)shiftTombstones;
 - (id)srcModel;

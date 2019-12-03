@@ -18,7 +18,7 @@
 @property (nonatomic, readonly) UIColor *strokeColor;
 @property (nonatomic, readonly) double strokeWidth;
 
-+ (id)markerStyleForTraitCollection:(id)arg1 state:(long long)arg2 styleAttributes:(id)arg3;
++ (id)markerStyleForTraitCollection:(id)arg1 state:(long long)arg2 styleAttributes:(id)arg3 coordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg4;
 
 - (void).cxx_destruct;
 - (id)glyphColor;

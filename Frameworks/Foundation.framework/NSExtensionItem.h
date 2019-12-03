@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Foundation.framework/Foundation
  */
 
-@interface NSExtensionItem : NSObject <NSCopying, NSSecureCoding> {
+@interface NSExtensionItem : NSObject <NSCopying, NSSecureCoding, WFNaming> {
     NSMutableDictionary * _userInfo;
 }
 
@@ -11,6 +11,7 @@
 @property (nonatomic, copy) NSAttributedString *attributedContentText;
 @property (nonatomic, copy) NSAttributedString *attributedTitle;
 @property (nonatomic, copy) NSDictionary *userInfo;
+@property (nonatomic, readonly, copy) NSString *wfName;
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
@@ -42,5 +43,9 @@
 
 - (id)ak_context;
 - (void)ak_setContext:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/ContentKit.framework/ContentKit
+
+- (id)wfName;
 
 @end

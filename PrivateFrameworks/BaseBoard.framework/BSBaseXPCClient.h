@@ -3,7 +3,7 @@
  */
 
 @interface BSBaseXPCClient : NSObject {
-    bool  _clientInvalidated;
+    int  _clientInvalidated;
     NSObject<OS_xpc_object> * _connection;
     BSAtomicSignal * _invalidationSignal;
     int  _notifyToken;

@@ -12,11 +12,9 @@
 @property (getter=isPulsingAnimationEnabled, nonatomic) bool pulsingAnimationEnabled;
 
 - (void).cxx_destruct;
-- (bool)areTopCornersRounded;
 - (id)backgroundColorWithTintColor:(id)arg1;
 - (id)backgroundImageName;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (int)cornerStyle;
 - (double)foregroundAlpha;
 - (id)foregroundStyle;
 - (double)glowAnimationDuration;

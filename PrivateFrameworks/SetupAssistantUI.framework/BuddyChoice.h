@@ -4,7 +4,7 @@
 
 @interface BuddyChoice : NSObject {
     UIAlertController * _alertController;
-    BuddyChoiceController * _choiceController;
+    UIViewController * _choiceController;
     id /* block */  _condition;
     id /* block */  _confirmationCompletion;
     UIViewController * _nextController;
@@ -13,7 +13,7 @@
 }
 
 @property (nonatomic, retain) UIAlertController *alertController;
-@property (nonatomic) BuddyChoiceController *choiceController;
+@property (nonatomic) UIViewController *choiceController;
 @property (nonatomic, copy) id /* block */ condition;
 @property (nonatomic, copy) id /* block */ confirmationCompletion;
 @property (nonatomic, retain) Class nextControllerClass;

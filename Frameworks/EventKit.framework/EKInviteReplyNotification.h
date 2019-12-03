@@ -2,37 +2,50 @@
    Image: /System/Library/Frameworks/EventKit.framework/EventKit
  */
 
-@interface EKInviteReplyNotification : EKObject
+@interface EKInviteReplyNotification : EKNotification
 
 @property (nonatomic, readonly) bool alerted;
-@property (nonatomic, readonly) EKCalendar *calendar;
 @property (nonatomic, readonly) NSString *calendarName;
-@property (nonatomic, readonly) NSDate *creationDate;
+@property (nonatomic, copy) NSDate *creationDate;
+@property (nonatomic, copy) NSString *inReplyTo;
 @property (nonatomic, readonly) EKCalendar *inviteReplyCalendar;
-@property (nonatomic, readonly) NSString *shareeDisplayName;
+@property (nonatomic, copy) NSString *shareeDisplayName;
 @property (nonatomic, readonly) NSString *shareeEmailAddress;
-@property (nonatomic, readonly) NSString *shareeFirstName;
-@property (nonatomic, readonly) NSString *shareeLastName;
+@property (nonatomic, copy) NSString *shareeFirstName;
+@property (nonatomic, copy) NSString *shareeLastName;
 @property (nonatomic, readonly) NSString *shareePhoneNumber;
-@property (nonatomic, readonly) NSURL *shareeURL;
-@property (nonatomic, readonly) unsigned long long status;
+@property (nonatomic) unsigned long long shareeStatus;
+@property (nonatomic, copy) NSURL *shareeURL;
+@property (nonatomic, copy) NSString *summary;
 
 + (Class)frozenClass;
 + (id)knownRelationshipSingleValueKeys;
++ (id)sourceForInviteReplyNotification:(id)arg1;
 
+- (void)_setInviteReplyCalendar:(id)arg1;
 - (bool)alerted;
-- (id)calendar;
 - (id)calendarName;
 - (void)clearAlertedStatus;
 - (id)creationDate;
+- (id)inReplyTo;
+- (id)initWithInviteReplyCalendar:(id)arg1;
 - (id)inviteReplyCalendar;
-- (id)shareeAddressURL;
+- (void)setCreationDate:(id)arg1;
+- (void)setInReplyTo:(id)arg1;
+- (void)setShareeDisplayName:(id)arg1;
+- (void)setShareeFirstName:(id)arg1;
+- (void)setShareeLastName:(id)arg1;
+- (void)setShareeStatus:(unsigned long long)arg1;
+- (void)setShareeURL:(id)arg1;
+- (void)setSummary:(id)arg1;
 - (id)shareeDisplayName;
 - (id)shareeEmailAddress;
 - (id)shareeFirstName;
 - (id)shareeLastName;
 - (id)shareePhoneNumber;
+- (unsigned long long)shareeStatus;
 - (id)shareeURL;
-- (unsigned long long)status;
+- (id)summary;
+- (bool)validate:(id*)arg1;
 
 @end

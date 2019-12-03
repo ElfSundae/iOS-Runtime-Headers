@@ -21,6 +21,7 @@
 - (id)diagdconn;
 - (id /* block */)dropnoteHandler;
 - (id)initWithLiveSource:(id)arg1;
+- (void)invalidate;
 - (void)setDiagdconn:(id)arg1;
 - (void)setDropnoteHandler:(id /* block */)arg1;
 - (void)setDroppedEventHandler:(id /* block */)arg1;

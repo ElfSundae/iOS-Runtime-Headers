@@ -17,7 +17,6 @@
     id /* block */  _logRequestObjectBlock;
     NSOutputStream * _outputStream;
     bool  _shouldCompress;
-    <CKDProtobufMessageSigningDelegate> * _signingDelegate;
     struct z_stream_s { 
         char *next_in; 
         unsigned int avail_in; 
@@ -46,15 +45,13 @@
 @property bool haveFinishedStreaming;
 @property (nonatomic, copy) id /* block */ logRequestObjectBlock;
 @property (nonatomic) bool shouldCompress;
-@property (nonatomic) <CKDProtobufMessageSigningDelegate> *signingDelegate;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)_compressBodyData:(id)arg1 shouldFlush:(bool)arg2;
 - (id)_dataForMessage:(id)arg1;
 - (bool)_finishStreaming:(id)arg1;
-- (id)_prepareMescalSignature:(id)arg1;
-- (void)_prepareObjectForStreaming:(id)arg1 shouldSign:(bool)arg2;
+- (void)_prepareObjectForStreaming:(id)arg1;
 - (long long)_streamNextObject:(id)arg1;
 - (void)_tearDownOutputStream;
 - (long long)_writeDataToStream:(id)arg1;
@@ -74,10 +71,8 @@
 - (void)setHaveFinishedStreaming:(bool)arg1;
 - (void)setLogRequestObjectBlock:(id /* block */)arg1;
 - (void)setShouldCompress:(bool)arg1;
-- (void)setSigningDelegate:(id)arg1;
 - (void)setStreamedObjects:(id)arg1;
 - (bool)shouldCompress;
-- (id)signingDelegate;
 - (void)stream:(id)arg1 handleEvent:(unsigned long long)arg2;
 - (void)tearDown;
 

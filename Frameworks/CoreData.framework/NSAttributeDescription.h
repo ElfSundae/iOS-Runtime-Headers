@@ -16,6 +16,7 @@
 @property (retain) id defaultValue;
 @property bool isFileBackedFuture;
 @property bool preserveValueOnDeletionInPersistentHistory;
+@property bool preservesValueInHistoryOnDeletion;
 @property (copy) NSString *valueTransformerName;
 @property (readonly, copy) NSData *versionHash;
 
@@ -24,6 +25,7 @@
 + (id)stringForAttributeType:(unsigned long long)arg1;
 + (bool)supportsSecureCoding;
 
+- (bool)_attributeTypeIsSchemaEqual:(unsigned long long)arg1;
 - (Class)_attributeValueClass;
 - (long long)_canConvertPredicate:(id)arg1 andWarning:(id)arg2;
 - (bool)_comparePredicatesAndWarnings:(id)arg1;
@@ -55,12 +57,14 @@
 - (bool)isFileBackedFuture;
 - (bool)isIndexed;
 - (bool)preserveValueOnDeletionInPersistentHistory;
+- (bool)preservesValueInHistoryOnDeletion;
 - (void)setAllowsExternalBinaryDataStorage:(bool)arg1;
 - (void)setAttributeType:(unsigned long long)arg1;
 - (void)setAttributeValueClassName:(id)arg1;
 - (void)setDefaultValue:(id)arg1;
 - (void)setIsFileBackedFuture:(bool)arg1;
 - (void)setPreserveValueOnDeletionInPersistentHistory:(bool)arg1;
+- (void)setPreservesValueInHistoryOnDeletion:(bool)arg1;
 - (void)setStoresBinaryDataExternally:(bool)arg1;
 - (void)setValueTransformerName:(id)arg1;
 - (bool)storesBinaryDataExternally;

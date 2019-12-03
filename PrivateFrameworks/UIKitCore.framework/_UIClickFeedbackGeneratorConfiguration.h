@@ -11,18 +11,20 @@
 
 @property (nonatomic, retain) _UIFeedback<_UIFeedbackDiscretePlayable> *clickDownAudioFeedback;
 @property (nonatomic, retain) _UIFeedback<_UIFeedbackDiscretePlayable> *clickDownFeedback;
+@property (nonatomic, readonly) _UIFeedback<_UIFeedbackDiscretePlayable> *clickDownPattern;
 @property (nonatomic, retain) _UIFeedback<_UIFeedbackDiscretePlayable> *clickUpAudioFeedback;
 @property (nonatomic, retain) _UIFeedback<_UIFeedbackDiscretePlayable> *clickUpFeedback;
+@property (nonatomic, readonly) _UIFeedback<_UIFeedbackDiscretePlayable> *clickUpPattern;
 
 + (id)defaultConfiguration;
-+ (id)latchingOffConfiguration;
-+ (id)latchingOnConfiguration;
 
 - (void).cxx_destruct;
 - (id)clickDownAudioFeedback;
 - (id)clickDownFeedback;
+- (id)clickDownPattern;
 - (id)clickUpAudioFeedback;
 - (id)clickUpFeedback;
+- (id)clickUpPattern;
 - (id)feedbackKeyPaths;
 - (long long)requiredSupportLevel;
 - (void)setClickDownAudioFeedback:(id)arg1;

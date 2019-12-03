@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/NanoTimeKitCompanion.framework/NanoTimeKitCompanion
  */
 
-@interface NTKSolarWaypoint : NSObject {
+@interface NTKSolarWaypoint : NSObject <NTKCacheableKeyProvider> {
     NSString * _localizedName;
     double  _percentageThroughPeriodForWaypointDate;
     NTKSolarTimeModel * _solarTimeModel;
@@ -10,9 +10,13 @@
     NSDate * _waypointDate;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSString *localizedName;
 @property (nonatomic, readonly) double percentageThroughPeriodForWaypointDate;
 @property (nonatomic, readonly) NTKSolarTimeModel *solarTimeModel;
+@property (readonly) Class superclass;
 @property (nonatomic, readonly) long long type;
 @property (nonatomic, readonly) NSDate *waypointDate;
 
@@ -20,6 +24,7 @@
 - (id)description;
 - (id)initWithType:(long long)arg1 solarTimeModel:(id)arg2;
 - (id)localizedName;
+- (id)ntkCacheableKey;
 - (double)percentageThroughPeriodForWaypointDate;
 - (id)solarTimeModel;
 - (long long)type;

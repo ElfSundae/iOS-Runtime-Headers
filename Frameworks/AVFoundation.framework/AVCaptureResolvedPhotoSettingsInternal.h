@@ -6,12 +6,19 @@
     bool  EV0PhotoDeliveryEnabled;
     bool  HDREnabled;
     bool  adjustedPhotoFiltersEnabled;
-    bool  dualCameraFusionEnabled;
+    struct { 
+        int width; 
+        int height; 
+    }  deferredPhotoProxyDimensions;
     struct { 
         int width; 
         int height; 
     }  embeddedThumbnailDimensions;
     bool  flashEnabled;
+    struct { 
+        int width; 
+        int height; 
+    }  hairSegmentationMatteDimensions;
     struct { 
         int width; 
         int height; 
@@ -22,6 +29,20 @@
         int height; 
     }  photoDimensions;
     NSArray * photoManifest;
+    struct { 
+        struct { 
+            long long value; 
+            int timescale; 
+            unsigned int flags; 
+            long long epoch; 
+        } start; 
+        struct { 
+            long long value; 
+            int timescale; 
+            unsigned int flags; 
+            long long epoch; 
+        } duration; 
+    }  photoProcessingTimeRange;
     struct { 
         int width; 
         int height; 
@@ -39,10 +60,23 @@
         int height; 
     }  rawPhotoDimensions;
     bool  redEyeReductionEnabled;
+    struct { 
+        int width; 
+        int height; 
+    }  skinSegmentationMatteDimensions;
+    struct { 
+        int width; 
+        int height; 
+    }  spatialOverCapturePhotoDimensions;
     bool  squareCropEnabled;
     bool  stillImageStabilizationEnabled;
+    struct { 
+        int width; 
+        int height; 
+    }  teethSegmentationMatteDimensions;
     bool  turboModeEnabled;
     long long  uniqueID;
+    bool  virtualDeviceFusionEnabled;
 }
 
 - (void)dealloc;

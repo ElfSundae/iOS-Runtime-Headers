@@ -11,13 +11,12 @@
     unsigned long long  _currentPageBeingLaidOut;
     <TPPageControllerDelegate> * _delegate;
     unsigned long long  _didLayOutPageIndex;
-    bool  _exportingFixedLayoutEPUB;
     TPTextFlowLayoutController * _flowController;
     TPFootnoteLayoutController * _footnoteLayoutController;
     double  _horizontalGapBetweenPages;
     bool  _isObservingNotifications;
-    int  _isScrolling;
-    int  _isZooming;
+    _Atomic int  _isScrolling;
+    _Atomic int  _isZooming;
     unsigned long long  _lastKnownPageCount;
     bool  _layoutInvalidationPending;
     TSUMutablePointerSet * _layoutObservers;
@@ -41,6 +40,7 @@
     TPPaginationState * _paginationState;
     NSMutableArray * _sectionHints;
     bool  _shouldUpdatePageCount;
+    bool  _textLayoutMustIncludeAdornments;
     double  _verticalGapBetweenPages;
     TPTextWrapController * _wrapController;
 }
@@ -51,7 +51,6 @@
 @property (nonatomic, readonly) <TPPageControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) TPDocumentRoot *documentRoot;
-@property (getter=isExportingFixedLayoutEPUB, nonatomic) bool exportingFixedLayoutEPUB;
 @property (nonatomic, readonly) unsigned long long firstPageIndexNeedingLayout;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) double horizontalPageSeparation;
@@ -61,6 +60,7 @@
 @property (nonatomic, readonly) unsigned long long pageCount;
 @property (nonatomic, readonly) NSMutableArray *sectionHints;
 @property (readonly) Class superclass;
+@property (getter=textLayoutMustIncludeAdornments, nonatomic) bool textLayoutMustIncludeAdornments;
 @property (nonatomic, readonly) double verticalPageSeparation;
 
 - (id).cxx_construct;
@@ -82,7 +82,7 @@
 - (struct CGSize { double x1; double x2; })canvasSizeToFitAllPagesForPageViewState:(long long)arg1;
 - (bool)caresAboutStorageChanges;
 - (unsigned long long)contentFlagsForPageIndex:(unsigned long long)arg1;
-- (void)d_timePagination;
+- (void)d_timePaginationResettingMetrics:(bool)arg1;
 - (id)d_wrapController;
 - (void)dealloc;
 - (id)delegate;
@@ -102,6 +102,7 @@
 - (id)i_columnPriorToPageIndex:(unsigned long long)arg1;
 - (id)i_firstChildHintAfterPageIndex:(unsigned long long)arg1;
 - (id)i_flowLayoutController;
+- (void)i_forceRestartPaginationForServer;
 - (void)i_inflateColumnsInBodyLayout:(id)arg1;
 - (void)i_inflateFootnotesInFootnoteContainer:(id)arg1;
 - (void)i_inflateTextFlowsOnPage:(id)arg1;
@@ -120,7 +121,6 @@
 - (void)i_unregisterPageLayout:(id)arg1;
 - (id)initWithDelegate:(id)arg1;
 - (void)invalidateAllPageLayoutsSizeAndPosition;
-- (bool)isExportingFixedLayoutEPUB;
 - (bool)isPaginationComplete;
 - (bool)isPaginationCompleteForSelection:(id)arg1 inFlow:(id)arg2;
 - (bool)isPaginationCompleteThroughPageIndex:(unsigned long long)arg1;
@@ -144,7 +144,7 @@
 - (void)p_checkForBackUp;
 - (bool)p_couldBeFirstPageIndex:(unsigned long long)arg1 forPartitionedAttachmentCharIndex:(unsigned long long)arg2;
 - (void)p_destroyBodyLayoutState;
-- (bool)p_didLayout;
+- (bool)p_didLayOut;
 - (unsigned long long)p_firstPageColumn;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })p_footnoteLayoutRangeForPageIndex:(unsigned long long)arg1 forcePagination:(bool)arg2 allowAfterPaginationPoint:(bool)arg3;
 - (void)p_forceRestartPaginationAndResetMetricsCache:(bool)arg1;
@@ -154,16 +154,16 @@
 - (void)p_invalidatePageIndex:(unsigned long long)arg1;
 - (bool)p_isBodyLayoutComplete;
 - (bool)p_isPaginationComplete;
+- (unsigned long long)p_lastValidCharIndex;
+- (unsigned long long)p_lastValidFootnoteIndex;
 - (id)p_lastValidPageHint;
 - (id)p_lastValidTextPageHint:(out unsigned long long*)arg1;
 - (unsigned long long)p_lastValidTextPageIndex;
 - (void)p_layOutFootnotesIntoPageLayout:(id)arg1;
-- (unsigned long long)p_layoutEndCharIndex;
-- (unsigned long long)p_layoutEndFootnoteIndex;
-- (void)p_layoutIntoPageLayout:(id)arg1 outDidSync:(bool*)arg2;
-- (void)p_layoutNextPageForLayoutController:(id)arg1 dirtyRange:(id)arg2;
-- (bool)p_layoutNextPageOnceWithOffscreenLayoutController;
-- (void)p_layoutTextIntoPageLayout:(id)arg1 outDidSync:(bool*)arg2;
+- (void)p_layOutIntoPageLayout:(id)arg1 outDidSync:(out bool*)arg2;
+- (void)p_layOutNextPageForLayoutController:(id)arg1 dirtyRange:(id)arg2;
+- (bool)p_layOutNextPageOnceWithOffscreenLayoutController;
+- (void)p_layOutTextIntoPageLayout:(id)arg1 didSync:(out bool*)arg2 initialFootnoteIndex:(out unsigned long long*)arg3;
 - (void)p_notifyObserversDidInvalidate;
 - (void)p_notifyObserversDidLayoutWhileSyncing:(bool)arg1;
 - (void)p_notifyObserversWillLayoutWhileSyncing:(bool)arg1;
@@ -185,6 +185,7 @@
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })p_pageRangeForSelection:(id)arg1 includingEmptyPages:(bool)arg2 outEndIsValid:(bool*)arg3 forcePagination:(bool)arg4;
 - (void)p_paginateThroughPageIndex:(unsigned long long)arg1 forLayoutController:(id)arg2 clearOffscreenInfos:(bool)arg3;
 - (id)p_paginationState;
+- (void)p_performPaginationResetAndMetricsReset:(bool)arg1;
 - (void)p_performWithCachedPageLayouts:(id /* block */)arg1;
 - (void)p_preparePageHintForNextPage;
 - (void)p_preparePaginationStateForNextPage;
@@ -233,7 +234,6 @@
 - (void)paginateThroughPageIndex:(unsigned long long)arg1 forLayoutController:(id)arg2;
 - (bool)performBackgroundPagination;
 - (void)preprocessChanges:(id)arg1 forChangeSource:(id)arg2;
-- (void)processHeaderFooterPropertyChanged;
 - (void)removeLayoutObserver:(id)arg1;
 - (void)restoreFromLayoutState:(id)arg1;
 - (void)saveIntoLayoutState:(id)arg1;
@@ -242,10 +242,11 @@
 - (unsigned long long)sectionIndexForPageIndex:(unsigned long long)arg1 forcePagination:(bool)arg2;
 - (unsigned long long)sectionPageIndexForPageIndex:(unsigned long long)arg1 forcePagination:(bool)arg2;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })sectionPageRangeForPageIndex:(unsigned long long)arg1 forcePagination:(bool)arg2 outEndIsValid:(bool*)arg3;
-- (void)setExportingFixedLayoutEPUB:(bool)arg1;
 - (void)setObserver:(id)arg1;
+- (void)setTextLayoutMustIncludeAdornments:(bool)arg1;
 - (bool)shouldHeaderFooterBeVisibleForPageIndex:(unsigned long long)arg1;
 - (void)teardown;
+- (bool)textLayoutMustIncludeAdornments;
 - (id)textWrapper;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })validPageRangeForSelection:(id)arg1;
 - (double)verticalPageSeparation;

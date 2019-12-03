@@ -53,7 +53,7 @@
 @property (readonly) NSDictionary *faceModel;
 @property (readonly) NSArray *facesArray;
 @property (readonly) struct __CVBuffer { }*fixedPointDisparityPixelBuffer;
-@property float focusDistanceToMaxAllowedFocusDistanceRatio;
+@property (readonly) float focusDistanceToMaxAllowedFocusDistanceRatio;
 @property (readonly) unsigned short focusMapHeight;
 @property (readonly) unsigned short focusMapWidth;
 @property (readonly) NSArray *focusRegion;
@@ -101,7 +101,6 @@
 - (bool)isFocalPlaneLocked;
 - (float)phaseToBlurFactor;
 - (struct __CVBuffer { }*)segmentationPixelBuffer;
-- (void)setFocusDistanceToMaxAllowedFocusDistanceRatio:(float)arg1;
 - (struct __CVBuffer { }*)sourceColorPixelBuffer;
 - (struct CVAVector { double x1; double x2; double x3; })sourceColorPixelBufferGlobalMotion;
 - (struct CVAVector { double x1; double x2; double x3; })sourceColorPixelBufferGravity;

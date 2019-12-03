@@ -7,6 +7,7 @@
     id /* block */  _completionBlock;
     NSString * _defaultButtonText;
     double  _dismissAfterTimeInterval;
+    bool  _dismissOnLock;
     bool  _displayInAppWhitelistModes;
     bool  _displayOnLockScreen;
     NSString * _identifier;
@@ -20,6 +21,7 @@
 @property (nonatomic, copy) id /* block */ completionBlock;
 @property (nonatomic, retain) NSString *defaultButtonText;
 @property (nonatomic) double dismissAfterTimeInterval;
+@property (nonatomic) bool dismissOnLock;
 @property (nonatomic) bool displayInAppWhitelistModes;
 @property (nonatomic) bool displayOnLockScreen;
 @property (nonatomic, retain) NSString *identifier;
@@ -33,6 +35,7 @@
 - (id /* block */)completionBlock;
 - (id)defaultButtonText;
 - (double)dismissAfterTimeInterval;
+- (bool)dismissOnLock;
 - (bool)displayInAppWhitelistModes;
 - (bool)displayOnLockScreen;
 - (id)identifier;
@@ -43,6 +46,7 @@
 - (void)setCompletionBlock:(id /* block */)arg1;
 - (void)setDefaultButtonText:(id)arg1;
 - (void)setDismissAfterTimeInterval:(double)arg1;
+- (void)setDismissOnLock:(bool)arg1;
 - (void)setDisplayInAppWhitelistModes:(bool)arg1;
 - (void)setDisplayOnLockScreen:(bool)arg1;
 - (void)setIdentifier:(id)arg1;

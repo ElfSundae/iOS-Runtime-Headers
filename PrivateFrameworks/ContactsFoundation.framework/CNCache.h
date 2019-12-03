@@ -32,6 +32,7 @@
 - (id)allObjects;
 - (id)boundingStrategies;
 - (void)callDidEvictHandlersIfNecessary;
+- (id)description;
 - (id)didEvictHandlers;
 - (id)evictedKeysAndValues;
 - (id)init;

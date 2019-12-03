@@ -6,6 +6,7 @@
     int  _activeDownloadPolicyType;
     bool  _autoDownload;
     int  _downloadFeeAgreementStatus;
+    bool  _downloadOnly;
     bool  _enabledFor2G;
     bool  _enabledFor3G;
     bool  _enabledFor4G;
@@ -19,6 +20,7 @@
 @property (nonatomic) int activeDownloadPolicyType;
 @property (getter=isAutoDownload, nonatomic) bool autoDownload;
 @property (nonatomic) int downloadFeeAgreementStatus;
+@property (getter=isDownloadOnly, nonatomic) bool downloadOnly;
 @property (getter=isEnabledFor2G, nonatomic) bool enabledFor2G;
 @property (getter=isEnabledFor3G, nonatomic) bool enabledFor3G;
 @property (getter=isEnabledFor4G, nonatomic) bool enabledFor4G;
@@ -45,6 +47,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (bool)isAutoDownload;
+- (bool)isDownloadOnly;
 - (bool)isEnabledFor2G;
 - (bool)isEnabledFor3G;
 - (bool)isEnabledFor4G;
@@ -58,6 +61,7 @@
 - (void)setActiveDownloadPolicyType:(int)arg1;
 - (void)setAutoDownload:(bool)arg1;
 - (void)setDownloadFeeAgreementStatus:(int)arg1;
+- (void)setDownloadOnly:(bool)arg1;
 - (void)setEnabledFor2G:(bool)arg1;
 - (void)setEnabledFor3G:(bool)arg1;
 - (void)setEnabledFor4G:(bool)arg1;

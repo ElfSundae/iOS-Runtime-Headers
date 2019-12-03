@@ -5,7 +5,6 @@
 @interface WFHotspotCell : UITableViewCell <WFNetworkCell> {
     WFAssociationStateView * _associationStateView;
     unsigned long long  _bars;
-    bool  _connectionError;
     WFHotspotDetails * _hotspotDetails;
     WFHotspotDetailsView * _hotspotDetailsView;
     UILabel * _nameLabel;
@@ -14,8 +13,6 @@
     UIStackView * _stackView;
     NSLayoutConstraint * _stackViewBottomConstraint;
     NSLayoutConstraint * _stackViewTopConstraint;
-    long long  _state;
-    NSString * _subtitle;
     NSString * _title;
 }
 
@@ -44,7 +41,6 @@
 - (id)associationStateView;
 - (void)awakeFromNib;
 - (unsigned long long)bars;
-- (bool)connectionError;
 - (id)hotspotDetails;
 - (id)hotspotDetailsView;
 - (id)nameLabel;
@@ -69,7 +65,6 @@
 - (id)stackViewBottomConstraint;
 - (id)stackViewTopConstraint;
 - (long long)state;
-- (id)subtitle;
 - (id)title;
 - (void)traitCollectionDidChange:(id)arg1;
 

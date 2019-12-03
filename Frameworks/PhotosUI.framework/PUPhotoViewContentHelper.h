@@ -27,6 +27,12 @@
     UIView * _contentView;
     double  _cornerRadius;
     unsigned long long  _cornersToRound;
+    struct CGSize { 
+        double width; 
+        double height; 
+    }  _customPaddingForBadgeElements;
+    UIView * _darkContentOverlay;
+    double  _darkContentOverlayAlpha;
     <PUPhotoViewContentHelperDelegate> * _delegate;
     struct { 
         bool respondsToLivePhotoWillBeginPlaybackWithStyle; 
@@ -34,6 +40,7 @@
     PXFeatureSpec * _featureSpec;
     long long  _fillMode;
     bool  _flattensBadgeView;
+    bool  _hasLayerBackgroundColor;
     bool  _hasPendingPlaybackRequest;
     bool  _hasTransform;
     bool  _highlighted;
@@ -79,6 +86,7 @@
     PUTextBannerView * _textBannerView;
     NSString * _title;
     NSString * _titleFontName;
+    UIView * _transitionSnapshotView;
     bool  _useOverlay;
 }
 
@@ -102,6 +110,9 @@
 @property (nonatomic, readonly) UIView *contentView;
 @property (nonatomic) double cornerRadius;
 @property (nonatomic, readonly) unsigned long long cornersToRound;
+@property (nonatomic) struct CGSize { double x1; double x2; } customPaddingForBadgeElements;
+@property (nonatomic, retain) UIView *darkContentOverlay;
+@property (nonatomic) double darkContentOverlayAlpha;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <PUPhotoViewContentHelperDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -135,6 +146,7 @@
 @property (getter=isTextBannerVisible, nonatomic) bool textBannerVisible;
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSString *titleFontName;
+@property (nonatomic, retain) UIView *transitionSnapshotView;
 @property (nonatomic) bool useOverlay;
 
 + (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_imageContentFrameForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 imageSize:(struct CGSize { double x1; double x2; })arg2 fillMode:(long long)arg3;
@@ -165,6 +177,7 @@
 - (void)_updateHighlight;
 - (void)_updateIfNeeded;
 - (void)_updateImageView;
+- (void)_updateLayerBackgroundColorIfNeeded;
 - (void)_updateLayerCornerRadius;
 - (void)_updateLivePhotoView;
 - (void)_updateLivePhotoViewPreparing;
@@ -188,9 +201,13 @@
 - (id)collectionTileLayoutTemplate;
 - (double)contentAlpha;
 - (id)contentView;
+- (void)contentViewDynamicUserInterfaceTraitDidChange;
 - (struct CGSize { double x1; double x2; })contentViewSizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (double)cornerRadius;
 - (unsigned long long)cornersToRound;
+- (struct CGSize { double x1; double x2; })customPaddingForBadgeElements;
+- (id)darkContentOverlay;
+- (double)darkContentOverlayAlpha;
 - (id)delegate;
 - (id)featureSpec;
 - (long long)fillMode;
@@ -235,6 +252,9 @@
 - (void)setCornerRadius:(double)arg1;
 - (void)setCornerRadius:(double)arg1 cornersToRound:(unsigned long long)arg2 useOverlay:(bool)arg3 overlayColor:(id)arg4;
 - (void)setCornersToRound:(unsigned long long)arg1;
+- (void)setCustomPaddingForBadgeElements:(struct CGSize { double x1; double x2; })arg1;
+- (void)setDarkContentOverlay:(id)arg1;
+- (void)setDarkContentOverlayAlpha:(double)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setFeatureSpec:(id)arg1;
 - (void)setFillMode:(long long)arg1;
@@ -261,6 +281,7 @@
 - (void)setTextBannerVisible:(bool)arg1;
 - (void)setTitle:(id)arg1;
 - (void)setTitleFontName:(id)arg1;
+- (void)setTransitionSnapshotView:(id)arg1;
 - (void)setUseOverlay:(bool)arg1;
 - (void)set_crossfadeImageView:(id)arg1;
 - (bool)shouldPrepareForPlayback;
@@ -271,6 +292,7 @@
 - (id)textBannerView;
 - (id)title;
 - (id)titleFontName;
+- (id)transitionSnapshotView;
 - (void)updatePhotoImageWithoutReconfiguring:(id)arg1;
 - (bool)useOverlay;
 

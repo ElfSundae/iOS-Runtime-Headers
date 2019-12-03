@@ -5,11 +5,13 @@
 @interface ASDProgress : NSObject <NSCopying, NSSecureCoding> {
     NSString * _bundleID;
     long long  _completedUnitCount;
+    bool  _reportRemotely;
     long long  _totalUnitCount;
 }
 
 @property (retain) NSString *bundleID;
 @property long long completedUnitCount;
+@property bool reportRemotely;
 @property long long totalUnitCount;
 
 + (bool)supportsSecureCoding;
@@ -21,8 +23,10 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (bool)reportRemotely;
 - (void)setBundleID:(id)arg1;
 - (void)setCompletedUnitCount:(long long)arg1;
+- (void)setReportRemotely:(bool)arg1;
 - (void)setTotalUnitCount:(long long)arg1;
 - (long long)totalUnitCount;
 

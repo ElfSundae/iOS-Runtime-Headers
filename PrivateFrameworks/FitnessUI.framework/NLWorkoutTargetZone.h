@@ -30,6 +30,7 @@
 - (id)description;
 - (bool)enabled;
 - (id)initWithType:(long long)arg1 min:(double)arg2 max:(double)arg3 currentValue:(double)arg4;
+- (bool)isEqual:(id)arg1;
 - (bool)isSingleThreshold;
 - (double)max;
 - (double)min;

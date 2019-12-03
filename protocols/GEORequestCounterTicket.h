@@ -5,6 +5,7 @@
 
 @required
 
-- (void)requestCompletedWithResult:(unsigned char)arg1 mode:(unsigned char)arg2 xmitBytes:(long long)arg3 recvBytes:(long long)arg4;
+- (void)requestCompletedWithResult:(unsigned char)arg1 xmitBytes:(long long)arg2 recvBytes:(long long)arg3;
+- (void)startingRequestWithTask:(NSURLSessionTask *)arg1;
 
 @end

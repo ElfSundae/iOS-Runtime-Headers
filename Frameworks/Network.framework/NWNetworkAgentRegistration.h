@@ -27,12 +27,15 @@
 
 - (void).cxx_destruct;
 - (bool)addNetworkAgentToInterfaceNamed:(id)arg1;
+- (bool)assignDiscoveredEndpoints:(id)arg1 toClient:(id)arg2;
 - (bool)assignNexusData:(id)arg1 toClient:(id)arg2;
+- (bool)assignResolvedEndpoints:(id)arg1 toClient:(id)arg2;
 - (bool)createReadSourceWithRegistrationSocket:(int)arg1;
 - (void)dealloc;
 - (int)dupRegistrationFileDescriptor;
 - (void)handleMessageFromAgent;
 - (id)initWithNetworkAgentClass:(Class)arg1;
+- (id)initWithNetworkAgentClass:(Class)arg1 queue:(id)arg2;
 - (bool)isRegistered;
 - (id)networkAgent;
 - (Class)networkAgentClass;

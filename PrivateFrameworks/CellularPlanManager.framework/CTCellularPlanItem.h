@@ -38,27 +38,27 @@
 @property (nonatomic, readonly) bool isSelected;
 @property (nonatomic, retain) NSNumber *isSelectedOverride;
 @property (nonatomic) bool isSimStateValid;
-@property (nonatomic) NSString *label;
+@property (nonatomic, retain) NSString *label;
 @property (nonatomic) long long lockState;
 @property (nonatomic, readonly) NSString *name;
-@property (nonatomic) NSString *phoneNumber;
+@property (nonatomic, retain) NSString *phoneNumber;
 @property (nonatomic, readonly) CTCellularPlan *plan;
 @property (nonatomic) bool shouldAppearDisabled;
 @property (nonatomic) bool shouldAutoSelectWhenInRange;
 @property (nonatomic, readonly) bool shouldDisplay;
 @property (nonatomic) bool shouldDisplayType;
 @property (nonatomic) long long type;
-@property (nonatomic) CTUserLabel *userLabel;
+@property (nonatomic, retain) CTUserLabel *userLabel;
 @property (nonatomic, readonly) NSString *uuid;
 
 + (bool)supportsSecureCoding;
 
+- (void).cxx_destruct;
 - (id)carrierName;
 - (id)companionSimLabelId;
 - (id)companionSlotUuid;
 - (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)iccid;

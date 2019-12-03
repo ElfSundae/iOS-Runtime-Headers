@@ -4,9 +4,9 @@
 
 @interface GEOPDSearchStructureIntentRequestType : PBCodable <NSCopying> {
     struct { 
-        unsigned int intentType : 1; 
-        unsigned int structureType : 1; 
-    }  _has;
+        unsigned int has_intentType : 1; 
+        unsigned int has_structureType : 1; 
+    }  _flags;
     int  _intentType;
     int  _structureType;
     PBUnknownFields * _unknownFields;
@@ -18,9 +18,12 @@
 @property (nonatomic) int structureType;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsIntentType:(id)arg1;
 - (int)StringAsStructureType:(id)arg1;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -32,6 +35,7 @@
 - (id)intentTypeAsString:(int)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasIntentType:(bool)arg1;
 - (void)setHasStructureType:(bool)arg1;

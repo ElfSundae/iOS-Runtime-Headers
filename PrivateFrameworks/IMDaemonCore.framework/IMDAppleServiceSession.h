@@ -9,13 +9,12 @@
 
 @property (nonatomic, readonly, retain) NSString *GUID;
 @property (nonatomic, readonly, retain) NSArray *aliases;
-@property (nonatomic, readonly, retain) NSString *callerID;
 @property (nonatomic, readonly, retain) NSString *callerURI;
 @property (nonatomic, readonly, retain) IDSAccount *idsAccount;
-@property (nonatomic, readonly, retain) NSArray *idsAccounts;
 @property (nonatomic, readonly) NSArray *registeredURIs;
-@property (nonatomic, readonly) NSString *serviceType;
 @property (nonatomic, readonly, retain) NSArray *vettedAliases;
+
++ (id)idsAccounts;
 
 - (id)GUID;
 - (id)_aliasStringsForIDSAccount:(id)arg1;
@@ -29,18 +28,12 @@
 - (void)addAliases:(id)arg1 account:(id)arg2;
 - (id)aliases;
 - (void)authenticateAccount:(id)arg1;
-- (id)callerID;
 - (id)callerURI;
 - (id)callerURIForIDSAccount:(id)arg1;
-- (id)certForURI:(id)arg1;
-- (id)certForURI:(id)arg1 onIDSAccount:(id)arg2;
-- (void)clearCallerID;
-- (void)clearCallerIDForAccount:(id)arg1;
 - (void)dealloc;
 - (id)idsAccount;
 - (id)idsAccountForFromURI:(id)arg1 toURI:(id)arg2;
 - (id)idsAccountForURI:(id)arg1 IDSServiceName:(id)arg2;
-- (id)idsAccounts;
 - (id)imdAccountForIDSAccount:(id)arg1;
 - (id)initWithAccount:(id)arg1 service:(id)arg2;
 - (void)loginServiceSessionWithAccount:(id)arg1;
@@ -52,7 +45,7 @@
 - (id)registeredURIs;
 - (void)removeAliases:(id)arg1 account:(id)arg2;
 - (void)reregister;
-- (id)serviceType;
+- (void)resetCallerIDForIDSAccount:(id)arg1;
 - (void)sessionDidBecomeActive;
 - (void)sessionWillBecomeInactiveWithAccount:(id)arg1;
 - (void)unregisterAccount:(id)arg1;

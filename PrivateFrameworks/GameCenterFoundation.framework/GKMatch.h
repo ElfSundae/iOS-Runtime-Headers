@@ -179,6 +179,8 @@
 - (void)setVersion:(unsigned char)arg1;
 - (bool)shouldStartRelay:(id)arg1;
 - (id)stateChangeQueue;
+- (id)stringForGKPeerConnectionState:(int)arg1;
+- (id)stringForGKPlayerConnectionState:(long long)arg1;
 - (void)updateRelayConnectionForPlayer:(id)arg1;
 - (void)updateRelayInfo:(id)arg1 forPlayer:(id)arg2;
 - (void)updateRelayInfoFromCallback:(id)arg1 forPlayer:(id)arg2;

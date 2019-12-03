@@ -10,7 +10,7 @@
     HDCodableMedicalRecord * _medicalRecord;
     NSString * _panelName;
     HDCodableFHIRIdentifierList * _results;
-    HDCodableMedicalCoding * _status;
+    HDCodableMedicalCoding * _statusCoding;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -25,13 +25,13 @@
 @property (nonatomic, readonly) bool hasMedicalRecord;
 @property (nonatomic, readonly) bool hasPanelName;
 @property (nonatomic, readonly) bool hasResults;
-@property (nonatomic, readonly) bool hasStatus;
+@property (nonatomic, readonly) bool hasStatusCoding;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSData *issueDate;
 @property (nonatomic, retain) HDCodableMedicalRecord *medicalRecord;
 @property (nonatomic, retain) NSString *panelName;
 @property (nonatomic, retain) HDCodableFHIRIdentifierList *results;
-@property (nonatomic, retain) HDCodableMedicalCoding *status;
+@property (nonatomic, retain) HDCodableMedicalCoding *statusCoding;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -51,7 +51,7 @@
 - (bool)hasMedicalRecord;
 - (bool)hasPanelName;
 - (bool)hasResults;
-- (bool)hasStatus;
+- (bool)hasStatusCoding;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (id)issueDate;
@@ -67,8 +67,8 @@
 - (void)setMedicalRecord:(id)arg1;
 - (void)setPanelName:(id)arg1;
 - (void)setResults:(id)arg1;
-- (void)setStatus:(id)arg1;
-- (id)status;
+- (void)setStatusCoding:(id)arg1;
+- (id)statusCoding;
 - (void)writeTo:(id)arg1;
 
 @end

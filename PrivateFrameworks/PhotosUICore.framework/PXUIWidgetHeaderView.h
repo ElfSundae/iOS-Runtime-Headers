@@ -30,7 +30,6 @@
     double  _horizontalSpacingBetweenTitleAndSubtitle;
     bool  _isPerformingChanges;
     bool  _isPerformingUpdates;
-    PXViewLayoutHelper * _layoutHelper;
     long long  _layoutStyle;
     double  _minimumDistanceBetweenLastBaselineAndBottom;
     double  _minimumDistanceBetweenTopAndFirstBaseline;
@@ -63,7 +62,6 @@
 @property (nonatomic) <PXUIWidgetHeaderViewDelegate> *delegate;
 @property (nonatomic) double distanceBetweenTitleBaselineAndSubtitleBaseline;
 @property (nonatomic) double horizontalSpacingBetweenTitleAndSubtitle;
-@property (nonatomic, readonly) PXViewLayoutHelper *layoutHelper;
 @property (nonatomic) long long layoutStyle;
 @property (nonatomic) double minimumDistanceBetweenLastBaselineAndBottom;
 @property (nonatomic) double minimumDistanceBetweenTopAndFirstBaseline;
@@ -115,7 +113,6 @@
 - (id)delegate;
 - (double)distanceBetweenTitleBaselineAndSubtitleBaseline;
 - (double)horizontalSpacingBetweenTitleAndSubtitle;
-- (id)layoutHelper;
 - (long long)layoutStyle;
 - (void)layoutSubviews;
 - (double)minimumDistanceBetweenLastBaselineAndBottom;

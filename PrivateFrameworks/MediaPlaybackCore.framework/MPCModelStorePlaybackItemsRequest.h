@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
  */
 
-@interface MPCModelStorePlaybackItemsRequest : MPModelRequest <MPCModelPlaybackRequestEnvironmentConsuming, MPCModelPlaybackRequesting, MPCModelRequestRTCReporting, MPCModelStorePreviousRequestStoring, MPModelRequestDetailedKeepLocalStatusRequesting> {
+@interface MPCModelStorePlaybackItemsRequest : MPModelRequest <MPCModelPlaybackRequest, MPCModelPlaybackRequestEnvironmentConsuming, MPCModelRequestRTCReporting, MPCModelStorePreviousRequestStoring, MPModelRequestDetailedKeepLocalStatusRequesting> {
     bool  _allowLocalEquivalencies;
     NSString * _clientIdentifier;
     NSArray * _playbackPrioritizedIndexPaths;
@@ -21,7 +21,6 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSArray *playbackPrioritizedIndexPaths;
 @property (nonatomic, copy) MPCPlaybackRequestEnvironment *playbackRequestEnvironment;
-@property (nonatomic, readonly) MPSectionedCollection *playbackSourceModelObjects;
 @property (nonatomic, retain) MPModelResponse *previousResponse;
 @property (nonatomic, readonly, copy) NSString *rtcReportingPlayQueueSourceIdentifier;
 @property (nonatomic, copy) MPSectionedCollection *sectionedModelObjects;
@@ -31,6 +30,7 @@
 @property (nonatomic) bool wantsDetailedKeepLocalRequestableResponse;
 
 + (void)MPC_consumeSiriAssetInfo:(id)arg1 withCompletion:(id /* block */)arg2;
++ (bool)requiresNetwork;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -43,12 +43,10 @@
 - (id)newOperationWithResponseHandler:(id /* block */)arg1;
 - (id)playbackPrioritizedIndexPaths;
 - (id)playbackRequestEnvironment;
-- (id)playbackSourceModelObjects;
 - (id)previousResponse;
 - (id)rtcReportingPlayQueueSourceIdentifier;
 - (id)sectionedModelObjects;
 - (void)setAllowLocalEquivalencies:(bool)arg1;
-- (void)setAllowsPlaybackResponseBatching:(bool)arg1;
 - (void)setClientIdentifier:(id)arg1;
 - (void)setPlaybackPrioritizedIndexPaths:(id)arg1;
 - (void)setPlaybackRequestEnvironment:(id)arg1;

@@ -204,6 +204,7 @@
 - (void)setDelegate:(id)arg1;
 - (void)setMescalPrimeEnabledForXHRRequests:(bool)arg1;
 - (void)setTabBarItems:(id)arg1;
+- (void)setUserInterfaceOverrideOnTabBarController:(id)arg1 forViewController:(id)arg2;
 - (bool)shouldIgnoreJSValidation;
 - (void)showErrorViewForLaunchFailure;
 - (void)showErrorViewWithTitle:(id)arg1 message:(id)arg2;

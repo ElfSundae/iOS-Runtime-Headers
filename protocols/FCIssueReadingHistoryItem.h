@@ -9,6 +9,8 @@
 - (NSString *)identifier;
 - (NSString *)issueID;
 - (NSDate *)lastBadgedDate;
+- (NSDate *)lastEngagedDate;
+- (NSDate *)lastRemovedFromMyMagazinesDate;
 - (NSString *)lastVisitedArticleID;
 - (NSDate *)lastVisitedDate;
 - (NSString *)lastVisitedPageID;

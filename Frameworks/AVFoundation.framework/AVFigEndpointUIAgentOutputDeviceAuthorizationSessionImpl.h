@@ -17,8 +17,6 @@
 @property AVOutputDeviceAuthorizationSession *parentAuthorizationSession;
 @property (readonly) Class superclass;
 
-+ (void)initialize;
-
 - (void).cxx_destruct;
 - (void)_finishedWithPrompt;
 - (void)_notifyCurrentRequestOfTerminalStatus:(long long)arg1 error:(id)arg2;

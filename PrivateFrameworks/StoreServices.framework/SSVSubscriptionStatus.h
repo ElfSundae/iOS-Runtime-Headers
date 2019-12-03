@@ -26,7 +26,6 @@
     bool  _subscriptionPurchaser;
 }
 
-@property (nonatomic, readonly) unsigned long long MP_capabilities;
 @property (nonatomic) unsigned long long acceptedStoreTermsVersion;
 @property (nonatomic, copy) NSNumber *accountIdentifier;
 @property (nonatomic, copy) NSArray *accountPermissions;
@@ -53,8 +52,6 @@
 @property (nonatomic, copy) NSDate *subscriptionExpirationDate;
 @property (getter=isSubscriptionPurchaser, nonatomic) bool subscriptionPurchaser;
 @property (readonly) Class superclass;
-
-// Image: /System/Library/PrivateFrameworks/StoreServices.framework/StoreServices
 
 - (void).cxx_destruct;
 - (void)_setSubscribed:(bool)arg1;
@@ -111,9 +108,5 @@
 - (void)setSubscriptionPurchaser:(bool)arg1;
 - (void)setValuesUsingStatusDictionary:(id)arg1;
 - (id)subscriptionExpirationDate;
-
-// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
-
-- (unsigned long long)MP_capabilities;
 
 @end

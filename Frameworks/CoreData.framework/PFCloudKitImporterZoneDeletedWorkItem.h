@@ -12,7 +12,6 @@
 - (id)deletedRecordZoneID;
 - (id)description;
 - (void)doWorkWithCompletion:(id /* block */)arg1;
-- (id)initWithDeletedRecordZoneID:(id)arg1 options:(id)arg2 metadata:(id)arg3 request:(id)arg4;
-- (bool)wipeCloudMetadataFromMirroredObjects:(id*)arg1;
+- (id)initWithDeletedRecordZoneID:(id)arg1 options:(id)arg2 request:(id)arg3;
 
 @end

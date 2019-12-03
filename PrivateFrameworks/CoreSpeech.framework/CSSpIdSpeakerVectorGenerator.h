@@ -26,7 +26,7 @@
 - (id)delegate;
 - (id)description;
 - (void)endAudio;
-- (id)initWithCSSpIdType:(unsigned long long)arg1 withSysConfigFilepath:(id)arg2 sysConfigRoot:(id)arg3 delegate:(id)arg4;
+- (id)initWithCSSpIdType:(unsigned long long)arg1 withSysConfigFilepath:(id)arg2 sysConfigRoot:(id)arg3 delegate:(id)arg4 queue:(id)arg5;
 - (void)processAudioData:(id)arg1;
 - (id)psrAudioProcessor;
 - (void)psrAudioProcessor:(id)arg1 finishedWithFinalSpeakerVector:(id)arg2 speakerVectorSize:(unsigned long long)arg3 processedAudioDurationMs:(unsigned long long)arg4;

@@ -2,14 +2,23 @@
    Image: /System/Library/Frameworks/ARKit.framework/ARKit
  */
 
-@interface ARSCNView : SCNView <ARInternalSessionObserver, _SCNSceneRendererDelegate> {
+@interface ARSCNView : SCNView <ARInternalSessionObserver, ARPresentationDelegate, ARSessionProviding, _SCNSceneRendererDelegate> {
     NSMutableArray * _addedAnchors;
     NSObject<OS_dispatch_semaphore> * _anchorsSemaphore;
     unsigned long long  _arDebugOptions;
+    ARSinglePassRenderer * _arSinglePassRenderer;
+    bool  _attemptRenderSynchronisationARFrame;
+    bool  _automaticallyOccludesVirtualContent;
     bool  _automaticallyUpdatesLighting;
     SCNNode * _cameraNode;
     <SCNCaptureDeviceOutputConsumer> * _captureDeviceOutputConsumer;
+    ARSCNCompositor * _compositor;
+    long long  _compositorAlgorithm;
     double  _contentsScale;
+    ARPresentationFrame * _currentPresentationFrame;
+    struct { 
+        /* Warning: Unrecognized filer type: ']' using 'void*' */ void*columns[4]; 
+    }  _currentReferenceTransform;
     ARPointCloud * _currentlyVisibleDebugPointerCloud;
     long long  _developerPreferredFramesPerSecond;
     bool  _drawsCameraImage;
@@ -18,18 +27,29 @@
     SCNNode * _featurePointNode;
     long long  _frameToRemoveRotationSnapshotOn;
     long long  _interfaceOrientation;
+    double  _lastFrameInterval;
     double  _lastFrameTimestamp;
     long long  _lastInterfaceOrientation;
+    bool  _lastRendersMotionBlur;
     SCNNode * _lightNode;
     NSMutableDictionary * _nodesByAnchorIdentifier;
     NSObject<OS_dispatch_semaphore> * _nodesSemaphore;
+    unsigned long long  _occlusionExcludedBitMask;
     NSMutableDictionary * _occlusionGeometryNodesByAnchorIdentifier;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _occlusionLock;
     id  _originalBackgroundContents;
+    ARPresentation * _presentation;
     bool  _providesOcclusionGeometry;
     NSMutableArray * _removedAnchors;
     bool  _renderThreadFixed;
+    bool  _rendersCameraGrain;
+    bool  _rendersMotionBlur;
     UIView * _rotationSnapshot;
     long long  _rotationSnapshotState;
+    bool  _runningWithSegmentation;
+    bool  _segmentationUseEstimatedDepthData;
     ARSession * _session;
     bool  _shouldRestrictFrameRate;
     long long  _targetFramesPerSecond;
@@ -44,7 +64,10 @@
 }
 
 @property (nonatomic) long long actualPreferredFramesPerSecond;
+@property (nonatomic) bool automaticallyOccludesVirtualContent;
 @property (nonatomic) bool automaticallyUpdatesLighting;
+@property (nonatomic) long long compositorAlgorithm;
+@property (nonatomic, readonly) ARFrame *currentRenderFrame;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <ARSCNViewDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -52,9 +75,14 @@
 @property bool drawsCameraImage;
 @property long long frameToRemoveRotationSnapshotOn;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned long long occlusionExcludedBitMask;
 @property (nonatomic) bool providesOcclusionGeometry;
+@property (nonatomic) bool rendersCameraGrain;
+@property (nonatomic) bool rendersMotionBlur;
 @property long long rotationSnapshotState;
+@property (nonatomic) bool runningWithSegmentation;
 @property (nonatomic, retain) SCNScene *scene;
+@property (nonatomic) bool segmentationUseEstimatedDepthData;
 @property (nonatomic, retain) ARSession *session;
 @property bool shouldRestrictFrameRate;
 @property (readonly) Class superclass;
@@ -65,6 +93,7 @@
 - (void)_addOcclusionGeometryForAnchor:(id)arg1;
 - (id)_anchorForNode:(id)arg1 inFrame:(id)arg2;
 - (void)_commonInit;
+- (void)_drawAtTime:(double)arg1;
 - (void)_forceUpdateCamera;
 - (id)_hitTest:(struct CGPoint { double x1; double x2; })arg1 frame:(id)arg2 types:(unsigned long long)arg3;
 - (void)_loadWarpKernalForLensType:(unsigned long long)arg1;
@@ -78,18 +107,25 @@
 - (void)_updateFramesPerSecondWithTarget:(long long)arg1 shouldRestrictFrameRate:(bool)arg2;
 - (void)_updateLighting:(id)arg1;
 - (void)_updateNode:(id)arg1 forAnchor:(id)arg2 frame:(id)arg3;
+- (void)_updateOcclusionCompositor;
 - (void)_updatePreferredFramesPerSecond;
 - (void)_updateProbesWithFrame:(id)arg1;
 - (struct __CVBuffer { }*)_warpPixelBuffer:(struct __CVBuffer { }*)arg1 withCamera:(id)arg2;
 - (long long)actualPreferredFramesPerSecond;
 - (id)anchorForNode:(id)arg1;
+- (bool)automaticallyOccludesUsingSegmentation;
+- (bool)automaticallyOccludesVirtualContent;
 - (bool)automaticallyUpdatesLighting;
 - (void)cleanupLingeringRotationState;
+- (id)compositor;
+- (long long)compositorAlgorithm;
+- (id)currentRenderFrame;
 - (unsigned long long)debugOptions;
 - (id)description;
 - (long long)developerPreferredFramesPerSecond;
 - (void)didMoveToWindow;
 - (bool)drawsCameraImage;
+- (bool)drawsCameraImageAndNilPresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (long long)frameToRemoveRotationSnapshotOn;
 - (id)hitTest:(struct CGPoint { double x1; double x2; })arg1 types:(unsigned long long)arg2;
@@ -98,10 +134,18 @@
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 options:(id)arg2;
 - (void)layoutSubviews;
 - (id)nodeForAnchor:(id)arg1;
+- (unsigned long long)occlusionExcludedBitMask;
 - (id)occlusionGeometryNodeForAnchor:(id)arg1;
 - (long long)preferredFramesPerSecond;
+- (void)presentationIsReadyForNextRender:(id)arg1;
 - (bool)providesOcclusionGeometry;
+- (id)raycastQueryFromPoint:(struct CGPoint { double x1; double x2; })arg1 allowingTarget:(long long)arg2 alignment:(long long)arg3;
+- (bool)rendersCameraGrain;
+- (bool)rendersMotionBlur;
 - (long long)rotationSnapshotState;
+- (bool)runningWithSegmentation;
+- (id)sceneRenderer;
+- (bool)segmentationUseEstimatedDepthData;
 - (id)session;
 - (void)session:(id)arg1 cameraDidChangeTrackingState:(id)arg2;
 - (void)session:(id)arg1 didAddAnchors:(id)arg2;
@@ -116,19 +160,29 @@
 - (void)sessionShouldAttemptRelocalization:(id)arg1 completion:(id /* block */)arg2;
 - (void)sessionWasInterrupted:(id)arg1;
 - (void)setActualPreferredFramesPerSecond:(long long)arg1;
+- (void)setAutomaticallyOccludesUsingSegmentation:(bool)arg1;
+- (void)setAutomaticallyOccludesVirtualContent:(bool)arg1;
 - (void)setAutomaticallyUpdatesLighting:(bool)arg1;
+- (void)setCompositorAlgorithm:(long long)arg1;
 - (void)setDebugOptions:(unsigned long long)arg1;
+- (void)setDelegate:(id)arg1;
 - (void)setDeveloperPreferredFramesPerSecond:(long long)arg1;
 - (void)setDrawsCameraImage:(bool)arg1;
 - (void)setFrameToRemoveRotationSnapshotOn:(long long)arg1;
+- (void)setOcclusionExcludedBitMask:(unsigned long long)arg1;
 - (void)setPointOfView:(id)arg1;
 - (void)setPreferredFramesPerSecond:(long long)arg1;
 - (void)setProvidesOcclusionGeometry:(bool)arg1;
+- (void)setRendersCameraGrain:(bool)arg1;
+- (void)setRendersMotionBlur:(bool)arg1;
 - (void)setRotationSnapshotState:(long long)arg1;
+- (void)setRunningWithSegmentation:(bool)arg1;
 - (void)setScene:(id)arg1;
+- (void)setSegmentationUseEstimatedDepthData:(bool)arg1;
 - (void)setSession:(id)arg1;
 - (void)setShouldRestrictFrameRate:(bool)arg1;
 - (void)setTargetFramesPerSecond:(long long)arg1;
+- (void)setupCompositor;
 - (bool)shouldRestrictFrameRate;
 - (long long)targetFramesPerSecond;
 - (void)unprojectPoint:(struct CGPoint { double x1; double x2; })arg1 ontoPlaneWithTransform:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })arg2;

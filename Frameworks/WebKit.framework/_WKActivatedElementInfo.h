@@ -9,6 +9,7 @@
     struct RetainPtr<NSURL> { 
         void *m_ptr; 
     }  _URL;
+    bool  _animatedImage;
     struct CGRect { 
         struct CGPoint { 
             double x; 
@@ -22,9 +23,12 @@
     struct RefPtr<WebKit::ShareableBitmap, WTF::DumbPtrTraits<WebKit::ShareableBitmap> > { 
         struct ShareableBitmap {} *m_ptr; 
     }  _image;
-    struct CGPoint { 
-        double x; 
-        double y; 
+    struct RetainPtr<NSURL> { 
+        void *m_ptr; 
+    }  _imageURL;
+    struct IntPoint { 
+        int m_x; 
+        int m_y; 
     }  _interactionLocation;
     struct RetainPtr<NSString> { 
         void *m_ptr; 
@@ -40,25 +44,29 @@
 
 @property (nonatomic, readonly) NSString *ID;
 @property (nonatomic, readonly) NSURL *URL;
-@property (nonatomic, readonly) struct CGPoint { double x1; double x2; } _interactionLocation;
+@property (nonatomic, readonly) struct IntPoint { int x1; int x2; } _interactionLocation;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } boundingRect;
 @property (nonatomic, readonly, copy) UIImage *image;
+@property (nonatomic, readonly) NSURL *imageURL;
+@property (nonatomic, readonly) bool isAnimatedImage;
 @property (nonatomic, readonly) NSString *title;
 @property (nonatomic, readonly) long long type;
 @property (nonatomic, readonly) NSDictionary *userInfo;
 
-+ (id)activatedElementInfoWithInteractionInformationAtPosition:(const struct InteractionInformationAtPosition { struct InteractionInformationRequest { struct IntPoint { int x_1_2_1; int x_1_2_2; } x_1_1_1; bool x_1_1_2; bool x_1_1_3; } x1; bool x2; bool x3; bool x4; bool x5; bool x6; bool x7; bool x8; bool x9; bool x10; bool x11; bool x12; bool x13; struct FloatPoint { float x_14_1_1; float x_14_1_2; } x14; struct URL { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_3_1; } x_1_2_1; } x_15_1_1; unsigned int x_15_1_2 : 1; unsigned int x_15_1_3 : 1; unsigned int x_15_1_4 : 1; unsigned int x_15_1_5 : 3; unsigned int x_15_1_6 : 26; unsigned int x_15_1_7; unsigned int x_15_1_8; unsigned int x_15_1_9; unsigned int x_15_1_10; unsigned int x_15_1_11; unsigned int x_15_1_12; unsigned int x_15_1_13; } x15; struct URL { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_3_1; } x_1_2_1; } x_16_1_1; unsigned int x_16_1_2 : 1; unsigned int x_16_1_3 : 1; unsigned int x_16_1_4 : 1; unsigned int x_16_1_5 : 3; unsigned int x_16_1_6 : 26; unsigned int x_16_1_7; unsigned int x_16_1_8; unsigned int x_16_1_9; unsigned int x_16_1_10; unsigned int x_16_1_11; unsigned int x_16_1_12; unsigned int x_16_1_13; } x16; }*)arg1;
++ (id)activatedElementInfoWithInteractionInformationAtPosition:(const struct InteractionInformationAtPosition { struct InteractionInformationRequest { struct IntPoint { int x_1_2_1; int x_1_2_2; } x_1_1_1; bool x_1_1_2; bool x_1_1_3; bool x_1_1_4; } x1; bool x2; bool x3; bool x4; bool x5; bool x6; bool x7; bool x8; bool x9; bool x10; bool x11; bool x12; bool x13; unsigned long long x14; bool x15; bool x16; struct FloatPoint { float x_17_1_1; float x_17_1_2; } x17; struct URL { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_3_1; } x_1_2_1; } x_18_1_1; unsigned int x_18_1_2 : 1; unsigned int x_18_1_3 : 1; unsigned int x_18_1_4 : 1; unsigned int x_18_1_5 : 3; unsigned int x_18_1_6 : 26; unsigned int x_18_1_7; unsigned int x_18_1_8; unsigned int x_18_1_9; unsigned int x_18_1_10; unsigned int x_18_1_11; unsigned int x_18_1_12; unsigned int x_18_1_13; } x18; struct URL { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_3_1; } x_1_2_1; } x_19_1_1; unsigned int x_19_1_2 : 1; unsigned int x_19_1_3 : 1; unsigned int x_19_1_4 : 1; unsigned int x_19_1_5 : 3; unsigned int x_19_1_6 : 26; unsigned int x_19_1_7; unsigned int x_19_1_8; unsigned int x_19_1_9; unsigned int x_19_1_10; unsigned int x_19_1_11; unsigned int x_19_1_12; unsigned int x_19_1_13; } x19; }*)arg1;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)ID;
 - (id)URL;
-- (id)_initWithInteractionInformationAtPosition:(const struct InteractionInformationAtPosition { struct InteractionInformationRequest { struct IntPoint { int x_1_2_1; int x_1_2_2; } x_1_1_1; bool x_1_1_2; bool x_1_1_3; } x1; bool x2; bool x3; bool x4; bool x5; bool x6; bool x7; bool x8; bool x9; bool x10; bool x11; bool x12; bool x13; struct FloatPoint { float x_14_1_1; float x_14_1_2; } x14; struct URL { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_3_1; } x_1_2_1; } x_15_1_1; unsigned int x_15_1_2 : 1; unsigned int x_15_1_3 : 1; unsigned int x_15_1_4 : 1; unsigned int x_15_1_5 : 3; unsigned int x_15_1_6 : 26; unsigned int x_15_1_7; unsigned int x_15_1_8; unsigned int x_15_1_9; unsigned int x_15_1_10; unsigned int x_15_1_11; unsigned int x_15_1_12; unsigned int x_15_1_13; } x15; struct URL { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_3_1; } x_1_2_1; } x_16_1_1; unsigned int x_16_1_2 : 1; unsigned int x_16_1_3 : 1; unsigned int x_16_1_4 : 1; unsigned int x_16_1_5 : 3; unsigned int x_16_1_6 : 26; unsigned int x_16_1_7; unsigned int x_16_1_8; unsigned int x_16_1_9; unsigned int x_16_1_10; unsigned int x_16_1_11; unsigned int x_16_1_12; unsigned int x_16_1_13; } x16; }*)arg1;
-- (id)_initWithType:(long long)arg1 URL:(id)arg2 location:(struct CGPoint { double x1; double x2; })arg3 title:(id)arg4 ID:(id)arg5 rect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg6 image:(struct ShareableBitmap { unsigned int x1; struct IntSize { int x_2_1_1; int x_2_1_2; } x2; struct Configuration { bool x_3_1_1; struct ColorSpaceData { struct RetainPtr<CGColorSpace *> { void *x_1_3_1; } x_2_2_1; } x_3_1_2; } x3; struct RefPtr<WebKit::SharedMemory, WTF::DumbPtrTraits<WebKit::SharedMemory> > { struct SharedMemory {} *x_4_1_1; } x4; void *x5; }*)arg7;
-- (id)_initWithType:(long long)arg1 URL:(id)arg2 location:(struct CGPoint { double x1; double x2; })arg3 title:(id)arg4 ID:(id)arg5 rect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg6 image:(struct ShareableBitmap { unsigned int x1; struct IntSize { int x_2_1_1; int x_2_1_2; } x2; struct Configuration { bool x_3_1_1; struct ColorSpaceData { struct RetainPtr<CGColorSpace *> { void *x_1_3_1; } x_2_2_1; } x_3_1_2; } x3; struct RefPtr<WebKit::SharedMemory, WTF::DumbPtrTraits<WebKit::SharedMemory> > { struct SharedMemory {} *x_4_1_1; } x4; void *x5; }*)arg7 userInfo:(id)arg8;
-- (struct CGPoint { double x1; double x2; })_interactionLocation;
+- (id)_initWithInteractionInformationAtPosition:(const struct InteractionInformationAtPosition { struct InteractionInformationRequest { struct IntPoint { int x_1_2_1; int x_1_2_2; } x_1_1_1; bool x_1_1_2; bool x_1_1_3; bool x_1_1_4; } x1; bool x2; bool x3; bool x4; bool x5; bool x6; bool x7; bool x8; bool x9; bool x10; bool x11; bool x12; bool x13; unsigned long long x14; bool x15; bool x16; struct FloatPoint { float x_17_1_1; float x_17_1_2; } x17; struct URL { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_3_1; } x_1_2_1; } x_18_1_1; unsigned int x_18_1_2 : 1; unsigned int x_18_1_3 : 1; unsigned int x_18_1_4 : 1; unsigned int x_18_1_5 : 3; unsigned int x_18_1_6 : 26; unsigned int x_18_1_7; unsigned int x_18_1_8; unsigned int x_18_1_9; unsigned int x_18_1_10; unsigned int x_18_1_11; unsigned int x_18_1_12; unsigned int x_18_1_13; } x18; struct URL { struct String { struct RefPtr<WTF::StringImpl, WTF::DumbPtrTraits<WTF::StringImpl> > { struct StringImpl {} *x_1_3_1; } x_1_2_1; } x_19_1_1; unsigned int x_19_1_2 : 1; unsigned int x_19_1_3 : 1; unsigned int x_19_1_4 : 1; unsigned int x_19_1_5 : 3; unsigned int x_19_1_6 : 26; unsigned int x_19_1_7; unsigned int x_19_1_8; unsigned int x_19_1_9; unsigned int x_19_1_10; unsigned int x_19_1_11; unsigned int x_19_1_12; unsigned int x_19_1_13; } x19; }*)arg1;
+- (id)_initWithType:(long long)arg1 URL:(id)arg2 imageURL:(id)arg3 location:(const struct IntPoint { int x1; int x2; }*)arg4 title:(id)arg5 ID:(id)arg6 rect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg7 image:(struct ShareableBitmap { unsigned int x1; struct IntSize { int x_2_1_1; int x_2_1_2; } x2; struct Configuration { bool x_3_1_1; struct ColorSpaceData { struct RetainPtr<CGColorSpace *> { void *x_1_3_1; } x_2_2_1; } x_3_1_2; } x3; struct RefPtr<WebKit::SharedMemory, WTF::DumbPtrTraits<WebKit::SharedMemory> > { struct SharedMemory {} *x_4_1_1; } x4; void *x5; }*)arg8;
+- (id)_initWithType:(long long)arg1 URL:(id)arg2 imageURL:(id)arg3 location:(const struct IntPoint { int x1; int x2; }*)arg4 title:(id)arg5 ID:(id)arg6 rect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg7 image:(struct ShareableBitmap { unsigned int x1; struct IntSize { int x_2_1_1; int x_2_1_2; } x2; struct Configuration { bool x_3_1_1; struct ColorSpaceData { struct RetainPtr<CGColorSpace *> { void *x_1_3_1; } x_2_2_1; } x_3_1_2; } x3; struct RefPtr<WebKit::SharedMemory, WTF::DumbPtrTraits<WebKit::SharedMemory> > { struct SharedMemory {} *x_4_1_1; } x4; void *x5; }*)arg8 userInfo:(id)arg9;
+- (struct IntPoint { int x1; int x2; })_interactionLocation;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })boundingRect;
 - (id)image;
+- (id)imageURL;
+- (bool)isAnimatedImage;
 - (id)title;
 - (long long)type;
 - (id)userInfo;

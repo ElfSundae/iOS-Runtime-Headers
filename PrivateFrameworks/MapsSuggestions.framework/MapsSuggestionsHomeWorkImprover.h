@@ -12,7 +12,6 @@
 
 + (bool)isEnabled;
 
-- (void)_moveTitlesIfNecessaryInSuggestion:(id)arg1;
 - (bool)improveEntry:(id)arg1;
 
 @end

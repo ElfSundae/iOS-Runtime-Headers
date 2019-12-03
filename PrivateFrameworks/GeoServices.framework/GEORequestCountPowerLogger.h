@@ -3,6 +3,7 @@
  */
 
 @interface GEORequestCountPowerLogger : NSObject {
+    GEOXPCActivity * _activity;
     NSMutableDictionary * _clientInfo;
     NSString * _eventName;
     NSObject<OS_dispatch_queue> * _queue;

@@ -9,8 +9,8 @@
 
 @property (nonatomic, retain) NSMutableArray *attributeNames;
 
+- (void).cxx_destruct;
 - (id)attributeNames;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (id)init;

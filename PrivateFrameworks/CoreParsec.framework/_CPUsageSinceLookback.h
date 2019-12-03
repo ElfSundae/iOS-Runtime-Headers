@@ -9,6 +9,7 @@
     long long  _collectionStartTimestamp;
     int  _configuredLookbackTimeInDays;
     _CPDeviceContext * _context;
+    int  _totalEngagements;
     int  _totalUsagesInCollectionPeriod;
 }
 
@@ -23,6 +24,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
 @property (readonly) Class superclass;
+@property (nonatomic) int totalEngagements;
 @property (nonatomic) int totalUsagesInCollectionPeriod;
 
 - (void).cxx_destruct;
@@ -39,14 +41,15 @@
 - (bool)isEqual:(id)arg1;
 - (id)jsonData;
 - (bool)readFrom:(id)arg1;
-- (bool)requiresQueryId;
 - (void)setActiveDaysInCollectionPeriod:(int)arg1;
 - (void)setClient:(int)arg1;
 - (void)setCollectionEndTimestamp:(long long)arg1;
 - (void)setCollectionStartTimestamp:(long long)arg1;
 - (void)setConfiguredLookbackTimeInDays:(int)arg1;
 - (void)setContext:(id)arg1;
+- (void)setTotalEngagements:(int)arg1;
 - (void)setTotalUsagesInCollectionPeriod:(int)arg1;
+- (int)totalEngagements;
 - (int)totalUsagesInCollectionPeriod;
 - (void)writeTo:(id)arg1;
 

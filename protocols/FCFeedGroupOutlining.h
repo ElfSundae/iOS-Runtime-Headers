@@ -10,6 +10,10 @@
 - (FCColor *)cardBackgroundColor;
 - (NSDate *)creationDate;
 - (NSString *)ctaText;
+- (FCColorGradient *)darkStyleBackgroundGradient;
+- (FCColor *)darkStyleCardBackgroundColor;
+- (FCColorGradient *)darkStyleSauceGradient;
+- (FCColor *)darkStyleTitleColor;
 - (NTPBDiscoverMoreVideosInfo *)discoverMoreVideosInfo;
 - (FCFeedEdition *)edition;
 - (NSString *)eyebrowText;

@@ -41,10 +41,6 @@
 - (void)setObjects:(id)arg1 forKeys:(id)arg2;
 - (void)setObjects:(const id*)arg1 forKeys:(const id*)arg2 count:(unsigned long long)arg3;
 
-// Image: /Developer/Library/PrivateFrameworks/DVTInstrumentsUtilities.framework/DVTInstrumentsUtilities
-
-- (void)xr_setNullableObject:(id)arg1 forKey:(id)arg2;
-
 // Image: /System/Library/CoreServices/RawCamera.bundle/RawCamera
 
 - (id)makeSerializable;
@@ -71,6 +67,7 @@
 - (Class)classForCoder;
 - (id)initWithContentsOfFile:(id)arg1;
 - (id)initWithContentsOfURL:(id)arg1;
+- (id)initWithContentsOfURL:(id)arg1 error:(id*)arg2;
 - (void)setValue:(id)arg1 forKey:(id)arg2;
 
 // Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
@@ -85,6 +82,10 @@
 
 - (void)vs_setObjectUnlessNil:(id)arg1 forKey:(id)arg2;
 
+// Image: /System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities
+
+- (void)axSafelyAddEntriesFromDictionary:(id)arg1;
+
 // Image: /System/Library/PrivateFrameworks/AirPortAssistant.framework/AirPortAssistant
 
 - (id)mutableCopyDeep;
@@ -96,6 +97,10 @@
 // Image: /System/Library/PrivateFrameworks/AppleMediaServices.framework/AppleMediaServices
 
 - (void)ams_setNullableObject:(id)arg1 forKey:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/AskPermission.framework/AskPermission
+
+- (void)ap_setNullableObject:(id)arg1 forKey:(id)arg2;
 
 // Image: /System/Library/PrivateFrameworks/AssetExplorer.framework/AssetExplorer
 
@@ -151,9 +156,27 @@
 - (void)_cn_setNonNilObject:(id)arg1 forKey:(id)arg2;
 - (void)_cn_setObject:(id)arg1 orPlaceholder:(id)arg2 forKey:(id)arg3;
 
+// Image: /System/Library/PrivateFrameworks/ContentKit.framework/ContentKit
+
+- (id)wf_popObjectForKey:(id)arg1;
+
 // Image: /System/Library/PrivateFrameworks/CoreDAV.framework/CoreDAV
 
 - (void)CDVAddObjectsAndKeys:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/CoreMaterial.framework/CoreMaterial
+
+- (void)_processAdditionalInfo:(id)arg1 forFilter:(id)arg2;
+- (void)setAverageColorEnabled:(bool)arg1 includingOptimizations:(bool)arg2 withAdditionalInfoPromise:(id /* block */)arg3;
+- (void)setBlurRadius:(double)arg1 ignoringIdentity:(bool)arg2 includingOptimizations:(bool)arg3 withAdditionalInfoPromise:(id /* block */)arg4;
+- (void)setBrightness:(double)arg1 ignoringIdentity:(bool)arg2 includingOptimizations:(bool)arg3 withAdditionalInfoPromise:(id /* block */)arg4;
+- (void)setColorMatrix:(struct CAColorMatrix { float x1; float x2; float x3; float x4; float x5; float x6; float x7; float x8; float x9; float x10; float x11; float x12; float x13; float x14; float x15; float x16; float x17; float x18; float x19; float x20; })arg1 ignoringIdentity:(bool)arg2 includingOptimizations:(bool)arg3 withAdditionalInfoPromise:(id /* block */)arg4;
+- (void)setLuminanceAmount:(double)arg1 values:(id)arg2 ignoringIdentity:(bool)arg3 includingOptimizations:(bool)arg4 withAdditionalInfoPromise:(id /* block */)arg5;
+- (void)setSaturation:(double)arg1 ignoringIdentity:(bool)arg2 includingOptimizations:(bool)arg3 withAdditionalInfoPromise:(id /* block */)arg4;
+- (void)setTintColor:(id)arg1 includingOptimizations:(bool)arg2 withAdditionalInfoPromise:(id /* block */)arg3;
+- (void)setValue:(id)arg1 forProperty:(id)arg2 ofFilter:(id)arg3;
+- (void)setZoom:(double)arg1 ignoringIdentity:(bool)arg2 includingOptimizations:(bool)arg3 withAdditionalInfoPromise:(id /* block */)arg4;
+- (void)sortFiltersWithOrder:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/CoreMediaStream.framework/CoreMediaStream
 
@@ -172,26 +195,27 @@
 
 - (void)cr_setNonNilObject:(id)arg1 forKey:(id)arg2;
 
-// Image: /System/Library/PrivateFrameworks/CrashReporterSupport.framework/CrashReporterSupport
-
-- (void)logCounter_countLogTypes_internal:(id)arg1;
-- (unsigned long long)logCounter_getForSubtype:(id)arg1;
-- (void)logCounter_incrementForSubtype:(id)arg1;
-- (void)logCounter_incrementForSubtype_internal:(id)arg1;
-- (bool)logCounter_isLog:(id)arg1 byKey:(id)arg2 count:(unsigned long long*)arg3 withinLimit:(unsigned long long*)arg4 withOptions:(id)arg5;
-
 // Image: /System/Library/PrivateFrameworks/DataAccess.framework/Frameworks/DACardDAV.framework/DACardDAV
 
 - (void)addObjectsAndKeys:(id)arg1;
-
-// Image: /System/Library/PrivateFrameworks/DataAccess.framework/Frameworks/DAEAS.framework/DAEAS
-
-- (void)setObject:(id)arg1 forInt:(int)arg2;
 
 // Image: /System/Library/PrivateFrameworks/DifferentialPrivacy.framework/DifferentialPrivacy
 
 - (void)dp_addBoolForKey:(id)arg1;
 - (void)dp_addStringForKey:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/DoNotDisturbServer.framework/DoNotDisturbServer
+
+- (void)dnds_setSafeLocalDateForTimestamp:(id)arg1 key:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/EmailFoundation.framework/EmailFoundation
+
+- (void)ef_removeObjectsPassingTest:(id /* block */)arg1;
+- (void)ef_setOptionalObject:(id)arg1 forKey:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/ExchangeSync.framework/Frameworks/DAEAS.framework/DAEAS
+
+- (void)setObject:(id)arg1 forInt:(int)arg2;
 
 // Image: /System/Library/PrivateFrameworks/FMCoreLite.framework/FMCoreLite
 
@@ -210,6 +234,14 @@
 
 - (void)_gkAddEntriesFromFormEncodedString:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/Home.framework/Home
+
+- (void)hf_setMinimumDisplayPriority:(long long)arg1;
+
+// Image: /System/Library/PrivateFrameworks/HomeKitBackingStore.framework/HomeKitBackingStore
+
++ (id)hmbDictionaryFromOPACKData:(id)arg1 error:(id*)arg2;
+
 // Image: /System/Library/PrivateFrameworks/IMDaemonCore.framework/IMDaemonCore
 
 - (void)setAsString:(id)arg1 forKey:(id)arg2;
@@ -219,6 +251,12 @@
 + (id)nonRetainingDictionary;
 + (id)nonRetainingKeyAndValueDictionary;
 + (id)retainingKeyDictionary;
+
+// Image: /System/Library/PrivateFrameworks/IntentsFoundation.framework/IntentsFoundation
+
+- (id)if_popObjectForKey:(id)arg1;
+- (void)if_setBoolIfYES:(bool)arg1 forKey:(id)arg2;
+- (void)if_setObjectIfNonNil:(id)arg1 forKey:(id)arg2;
 
 // Image: /System/Library/PrivateFrameworks/MIME.framework/MIME
 
@@ -275,9 +313,16 @@
 - (void)mf_setBool:(bool)arg1 forKey:(id)arg2;
 - (void)mf_setInteger:(int)arg1 forKey:(id)arg2;
 
+// Image: /System/Library/PrivateFrameworks/MessageLegacy.framework/MessageLegacy
+
+- (void)mf_addObject:(id)arg1 forKey:(id)arg2;
+- (id)mf_objectForKey:(id)arg1 ofClass:(Class)arg2;
+- (void)mf_setBool:(bool)arg1 forKey:(id)arg2;
+- (void)mf_setInteger:(int)arg1 forKey:(id)arg2;
+
 // Image: /System/Library/PrivateFrameworks/MetricsKit.framework/MetricsKit
 
-- (void)removeNaNValues;
+- (void)mt_removeNaNValues;
 
 // Image: /System/Library/PrivateFrameworks/MusicLibrary.framework/MusicLibrary
 
@@ -314,7 +359,31 @@
 // Image: /System/Library/PrivateFrameworks/Notes.framework/Notes
 
 - (void)ic_addKey:(id)arg1 forNonNilObject:(id)arg2;
+- (void)ic_removeObjectForNonNilKey:(id)arg1;
 - (void)ic_setNonNilObject:(id)arg1 forKey:(id)arg2;
+- (void)ic_setNonNilObject:(id)arg1 forNonNilKey:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
+
+- (void)ic_addZoneID:(id)arg1 forAccountID:(id)arg2;
+- (void)ic_removeZoneID:(id)arg1 forAccountID:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/OSAnalytics.framework/OSAnalytics
+
+- (void)addTurnstileInfoDesc:(struct stackshot_thread_turnstileinfo { unsigned long long x1; unsigned long long x2; unsigned char x3; unsigned char x4; unsigned long long x5; }*)arg1 count:(unsigned int)arg2;
+- (void)addWaitInfoDesc:(struct stackshot_thread_waitinfo { unsigned long long x1; unsigned long long x2; unsigned long long x3; unsigned char x4; }*)arg1 count:(unsigned int)arg2;
+- (void)osa_logCounter_countLogTypes_internal:(id)arg1 forOwner:(id)arg2;
+- (unsigned long long)osa_logCounter_getForSubtype:(id)arg1 forOwner:(id)arg2;
+- (void)osa_logCounter_incrementForSubtype:(id)arg1 signature:(id)arg2 filepath:(const char *)arg3;
+- (void)osa_logCounter_incrementForSubtype_internal:(id)arg1 signature:(id)arg2 filepath:(const char *)arg3;
+- (bool)osa_logCounter_isLog:(id)arg1 byKey:(id)arg2 count:(unsigned long long*)arg3 withinLimit:(unsigned long long*)arg4 withOptions:(id)arg5;
+- (void)osa_logCounter_recordNixedDuplicate:(const char *)arg1;
+
+// Image: /System/Library/PrivateFrameworks/OSAnalyticsPrivate.framework/OSAnalyticsPrivate
+
+- (void)_accumulateKey:(id)arg1 value:(long long)arg2;
+- (void)_accumulateKey:(id)arg1 value:(long long)arg2;
+- (void)_recordRetirement:(id)arg1 reason:(id)arg2;
 
 // Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
 
@@ -338,38 +407,20 @@
 - (void)setObjectOrNull:(id)arg1 forKey:(id)arg2;
 - (void)setUnsignedLongLong:(unsigned long long)arg1 forKey:(id)arg2;
 
-// Image: /System/Library/PrivateFrameworks/PhotoEditSupport.framework/PhotoEditSupport
-
-- (void)bl_copyObjectFromDictionary:(id)arg1 forKey:(id)arg2;
-- (void)bl_copyObjectFromDictionaryRemoveIfNotPresent:(id)arg1 forKey:(id)arg2;
-- (void)bl_copyObjectsFromDictionary:(id)arg1 forKeys:(id)arg2;
-- (void)bl_copyObjectsFromDictionaryRemoveIfNotPresent:(id)arg1 forKeys:(id)arg2;
-- (void)bl_setAffineTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg1 forKey:(id)arg2;
-- (void)bl_setBool:(bool)arg1 forKey:(id)arg2;
-- (void)bl_setBoolIfNotPresent:(bool)arg1 forKey:(id)arg2;
-- (void)bl_setDouble:(double)arg1 forKey:(id)arg2;
-- (void)bl_setDoubleIfNotPresent:(double)arg1 forKey:(id)arg2;
-- (void)bl_setFloat:(float)arg1 forKey:(id)arg2;
-- (void)bl_setFloatIfNotPresent:(float)arg1 forKey:(id)arg2;
-- (void)bl_setInt:(int)arg1 forKey:(id)arg2;
-- (void)bl_setIntIfNotPresent:(int)arg1 forKey:(id)arg2;
-- (void)bl_setInteger:(long long)arg1 forKey:(id)arg2;
-- (void)bl_setNonRetainedObject:(id)arg1 forKey:(id)arg2;
-- (void)bl_setObject:(id)arg1 forIndex:(int)arg2;
-- (void)bl_setObjectIfNotNil:(id)arg1 forKey:(id)arg2;
-- (void)bl_setObjectIfNotPresent:(id)arg1 forKey:(id)arg2;
-- (void)bl_setPointAsString:(struct CGPoint { double x1; double x2; })arg1 forKey:(id)arg2;
-- (void)bl_setPointAsStringIfNotPresent:(struct CGPoint { double x1; double x2; })arg1 forKey:(id)arg2;
-- (void)bl_setRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 forKey:(id)arg2;
-- (void)bl_setRectAsString:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 forKey:(id)arg2;
-- (void)bl_setRectAsStringIfNotPresent:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 forKey:(id)arg2;
-- (void)bl_setRectIfNotPresent:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 forKey:(id)arg2;
-
 // Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
 
 - (void)_pl_setNonNilObject:(id)arg1 forKey:(id)arg2;
 - (void)pl_applyOrientation:(long long)arg1 toNormalizedPointWithXKey:(id)arg2 yKey:(id)arg3;
 - (void)pl_enforceCorrectValuesForMinKey:(id)arg1 maxKey:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/PlugInKit.framework/PlugInKit
+
+- (id)_createOrConvertToMutableDictionaryFromDictionary:(id)arg1;
+- (id)_mutableDictionaryAtKeyPath:(struct NSArray { Class x1; }*)arg1;
+- (void)_overlayCustomValueAtKeyPath:(struct NSArray { Class x1; }*)arg1 intoTargetDictionary:(id)arg2 fromSourceDictionary:(id)arg3 handler:(id /* block */)arg4;
+- (void)_overlayValueAtKey:(id)arg1 intoTargetDictionary:(id)arg2 fromSourceDictionary:(id)arg3 targetTakePrecedent:(bool)arg4 nestedDictionaryHandler:(id /* block */)arg5;
+- (void)pk_overlayDictionary:(id)arg1 existingValuesTakePrecedent:(bool)arg2 exceptKeyPaths:(struct NSSet { Class x1; }*)arg3 exemptionHandler:(id /* block */)arg4;
+- (void)pk_removeItemsAtKeyPaths:(struct NSSet { Class x1; }*)arg1;
 
 // Image: /System/Library/PrivateFrameworks/ProVideo.framework/ProVideo
 
@@ -390,13 +441,13 @@
 - (void)scrc_mergeEntriesFromDictionary:(id)arg1;
 - (void)scrc_mergeEntriesFromDictionary:(id)arg1 factory:(id)arg2;
 
-// Image: /System/Library/PrivateFrameworks/SoftwareUpdateServices.framework/SoftwareUpdateServices
+// Image: /System/Library/PrivateFrameworks/SoftwareUpdateCoreSupport.framework/SoftwareUpdateCoreSupport
 
 - (void)setSafeObject:(id)arg1 forKey:(id)arg2;
 
-// Image: /System/Library/PrivateFrameworks/Symptoms.framework/Frameworks/SymptomEvaluator.framework/SymptomEvaluator
+// Image: /System/Library/PrivateFrameworks/SoftwareUpdateServices.framework/SoftwareUpdateServices
 
-- (void)setActions:(id)arg1 forProcess:(id)arg2;
+- (void)setSafeObject:(id)arg1 forKey:(id)arg2;
 
 // Image: /System/Library/PrivateFrameworks/TSUtility.framework/TSUtility
 
@@ -410,6 +461,17 @@
 // Image: /System/Library/PrivateFrameworks/TVPlayback.framework/TVPlayback
 
 - (void)tvp_setObjectIfNotNil:(id)arg1 forKey:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/TrialServer.framework/TrialServer
+
++ (id)dictionaryFromXPCObject:(id)arg1;
++ (id)dictionaryWithKeys:(id)arg1 values:(id)arg2;
+
+- (id)getContextValueWithName:(id)arg1;
+- (void)keys:(id*)arg1 values:(id*)arg2;
+- (id)setContextValueWithName:(id)arg1 value:(id)arg2;
+- (id)tri_contextValueWithName:(id)arg1;
+- (id)tri_setContextValueWithName:(id)arg1 value:(id)arg2;
 
 // Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 
@@ -459,10 +521,6 @@
 // Image: /System/Library/PrivateFrameworks/WatchListKit.framework/WatchListKit
 
 - (void)wlk_setObjectUnlessNil:(id)arg1 forKey:(id)arg2;
-
-// Image: /System/Library/PrivateFrameworks/iPhotoMigrationSupport.framework/iPhotoMigrationSupport
-
-- (void)blj_setObjectIfNotNil:(id)arg1 forKey:(id)arg2;
 
 // Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
 

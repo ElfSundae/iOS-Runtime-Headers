@@ -5,6 +5,10 @@
 
 @required
 
+- (NSArray *)appLinks;
 - (NSDictionary *)debugDescriptionDictionary;
+- (NSString *)extraPreviewText;
+- (bool)isInvalidDataAction;
+- (bool)isWiFiAction;
 
 @end

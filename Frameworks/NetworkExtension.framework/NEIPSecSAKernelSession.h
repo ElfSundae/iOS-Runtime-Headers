@@ -11,6 +11,7 @@
 - (bool)addLarvalSA:(id)arg1;
 - (bool)addSA:(id)arg1;
 - (void)dealloc;
+- (id)description;
 - (id)initWithName:(id)arg1 delegate:(id)arg2;
 - (id)initWithName:(id)arg1 delegate:(id)arg2 pfkeySocket:(int)arg3;
 - (struct NEIPSecDB_s { }*)internalSession;

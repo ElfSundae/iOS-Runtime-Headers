@@ -18,6 +18,8 @@
 - (void)_performRecoveryWithContext:(id)arg1 uiProvider:(id)arg2 authProvider:(id)arg3 errorProviuder:(id)arg4 resultParser:(id)arg5 secureBackUpController:(id)arg6 completion:(id /* block */)arg7;
 - (void)_removeObserver;
 - (void)_startObservingConnectionStateForRepairWithStateMachine:(id)arg1;
+- (void)attemptToEscrowPreRecord:(id)arg1 context:(id)arg2 completion:(id /* block */)arg3;
+- (void)attemptToEscrowPreRecord:(id)arg1 preRecordUUID:(id)arg2 secretType:(unsigned long long)arg3 context:(id)arg4 completion:(id /* block */)arg5;
 - (void)clearFollowUpWithContext:(id)arg1 completion:(id /* block */)arg2;
 - (void)dealloc;
 - (void)deleteRecoveryKeyWithContext:(id)arg1 uiProvider:(id)arg2 completion:(id /* block */)arg3;

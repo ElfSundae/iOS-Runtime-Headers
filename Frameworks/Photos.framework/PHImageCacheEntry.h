@@ -3,6 +3,7 @@
  */
 
 @interface PHImageCacheEntry : NSObject <PHRecyclableObject> {
+    NSDictionary * _additionalInfo;
     NSError * _error;
     NSMutableArray * _handlersWaitingOnResult;
     struct CGImage { } * _imageRef;
@@ -13,6 +14,7 @@
     }  _lock;
 }
 
+@property (nonatomic, readonly) NSDictionary *additionalInfo;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -22,13 +24,15 @@
 - (void).cxx_destruct;
 - (void)_callWaiters:(id)arg1 wasCancelled:(bool)arg2;
 - (void)addNotifyHandler:(id /* block */)arg1;
+- (id)additionalInfo;
 - (void)cancel;
 - (struct CGImage { }*)createImageRef;
 - (void)dealloc;
+- (bool)hasImageRef;
 - (int)imageRequestIDForPopulatingCache;
 - (id)init;
 - (bool)isCancelled;
-- (void)populateWithImageRef:(struct CGImage { }*)arg1 error:(id)arg2 unlockBeforeNotfiyingWaiters:(struct os_unfair_lock_s { unsigned int x1; }*)arg3;
+- (void)populateWithImageRef:(struct CGImage { }*)arg1 additionalInfo:(id)arg2 error:(id)arg3 executeBeforeNotifyingWaitersBlock:(id /* block */)arg4;
 - (void)prepareForReuse;
 - (void)setImageRequestIDForPopulatingCache:(int)arg1;
 

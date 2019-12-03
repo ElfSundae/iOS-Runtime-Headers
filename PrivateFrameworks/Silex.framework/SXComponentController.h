@@ -74,6 +74,8 @@
 - (void)setNestedComponentViews:(id)arg1;
 - (void)setSortedComponentViews:(id)arg1;
 - (id)sortedComponentViews;
+- (void)updatePresentationStateForNestedComponentView:(id)arg1 presentationState:(long long)arg2;
+- (void)updatePresentationStateForNestedComponentViews:(id)arg1 presentationState:(long long)arg2;
 - (void)updateVisibilityStatesForComponentViews:(id)arg1;
 - (void)updateVisibilityStatesForComponentViews:(id)arg1 parentComponent:(id)arg2 withOffset:(struct CGPoint { double x1; double x2; })arg3;
 - (void)updateVisibilityStatesForComponentViews:(id)arg1 toState:(long long)arg2;
@@ -81,6 +83,5 @@
 - (void)viewport:(id)arg1 appearStateChangedFromState:(unsigned long long)arg2;
 - (void)viewport:(id)arg1 boundsDidChangeFromBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (void)viewport:(id)arg1 dynamicBoundsDidChangeFromBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
-- (struct CGSize { double x1; double x2; })viewportSize;
 
 @end

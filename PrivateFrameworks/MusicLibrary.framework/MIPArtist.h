@@ -4,6 +4,7 @@
 
 @interface MIPArtist : PBCodable <NSCopying> {
     NSString * _artworkId;
+    NSString * _cloudUniversalLibraryId;
     struct { 
         unsigned int persistentId : 1; 
         unsigned int storeId : 1; 
@@ -15,7 +16,9 @@
 }
 
 @property (nonatomic, retain) NSString *artworkId;
+@property (nonatomic, retain) NSString *cloudUniversalLibraryId;
 @property (nonatomic, readonly) bool hasArtworkId;
+@property (nonatomic, readonly) bool hasCloudUniversalLibraryId;
 @property (nonatomic, readonly) bool hasName;
 @property (nonatomic) bool hasPersistentId;
 @property (nonatomic, readonly) bool hasSortName;
@@ -27,11 +30,13 @@
 
 - (void).cxx_destruct;
 - (id)artworkId;
+- (id)cloudUniversalLibraryId;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (bool)hasArtworkId;
+- (bool)hasCloudUniversalLibraryId;
 - (bool)hasName;
 - (bool)hasPersistentId;
 - (bool)hasSortName;
@@ -43,6 +48,7 @@
 - (long long)persistentId;
 - (bool)readFrom:(id)arg1;
 - (void)setArtworkId:(id)arg1;
+- (void)setCloudUniversalLibraryId:(id)arg1;
 - (void)setHasPersistentId:(bool)arg1;
 - (void)setHasStoreId:(bool)arg1;
 - (void)setName:(id)arg1;

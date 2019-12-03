@@ -3,25 +3,49 @@
  */
 
 @interface AltTileFetcher : NSObject {
+    struct _retain_ptr<GEOApplicationAuditToken *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> { 
+        int (**_vptr$_retain_ptr)(); 
+        GEOApplicationAuditToken *_obj; 
+        struct _retain_objc { } _retain; 
+        struct _release_objc { } _release; 
+    }  _auditToken;
     GEOTileLoader * _geoTileLoader;
-    struct map<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob>, GEOTileKeyComp, std::__1::allocator<std::__1::pair<const _GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob> > > > { 
-        struct __tree<std::__1::__value_type<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob> >, std::__1::__map_value_compare<_GEOTileKey, std::__1::__value_type<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob> >, GEOTileKeyComp, true>, std::__1::allocator<std::__1::__value_type<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob> > > > { 
-            struct __tree_end_node<std::__1::__tree_node_base<void *> *> {} *__begin_node_; 
-            struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob> >, void *> > > { 
-                struct __tree_end_node<std::__1::__tree_node_base<void *> *> { 
-                    struct __tree_node_base<void *> {} *__left_; 
+    struct unordered_map<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob>, GEOTileKeyHashFunc, GEOTileKeyEqualsFunc, std::__1::allocator<std::__1::pair<const _GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob> > > > { 
+        struct __hash_table<std::__1::__hash_value_type<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob> >, std::__1::__unordered_map_hasher<_GEOTileKey, std::__1::__hash_value_type<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob> >, GEOTileKeyHashFunc, true>, std::__1::__unordered_map_equal<_GEOTileKey, std::__1::__hash_value_type<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob> >, GEOTileKeyEqualsFunc, true>, std::__1::allocator<std::__1::__hash_value_type<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob> > > > { 
+            struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob> >, void *> *> *[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob> >, void *> *> *> > > { 
+                struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob> >, void *> *> **, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob> >, void *> *> *> > > { 
+                    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob> >, void *> *> {} **__value_; 
+                    struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob> >, void *> *> *> > { 
+                        struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob> >, void *> *> *> > { 
+                            unsigned long long __value_; 
+                        } __data_; 
+                    } __value_; 
+                } __ptr_; 
+            } __bucket_list_; 
+            struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob> >, void *> *>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob> >, void *> > > { 
+                struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob> >, void *> *> { 
+                    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob> >, void *> *> {} *__next_; 
                 } __value_; 
-            } __pair1_; 
-            struct __compressed_pair<unsigned long, std::__1::__map_value_compare<_GEOTileKey, std::__1::__value_type<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob> >, GEOTileKeyComp, true> > { 
+            } __p1_; 
+            struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<_GEOTileKey, std::__1::__hash_value_type<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob> >, GEOTileKeyHashFunc, true> > { 
                 unsigned long long __value_; 
-            } __pair3_; 
-        } __tree_; 
+            } __p2_; 
+            struct __compressed_pair<float, std::__1::__unordered_map_equal<_GEOTileKey, std::__1::__hash_value_type<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob> >, GEOTileKeyEqualsFunc, true> > { 
+                float __value_; 
+            } __p3_; 
+        } __table_; 
     }  _keyToJobMap;
     struct Mutex { 
         void *mMutex; 
     }  _mutex;
     unsigned int  _numDownloads;
     NSString * _tileLoaderClientIdentifier;
+    struct _retain_ptr<GEOVectorTileDecoder *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> { 
+        int (**_vptr$_retain_ptr)(); 
+        GEOVectorTileDecoder *_obj; 
+        struct _retain_objc { } _retain; 
+        struct _release_objc { } _release; 
+    }  _vectorTileDecoder;
 }
 
 - (id).cxx_construct;
@@ -30,10 +54,10 @@
 - (void)cancelRequests;
 - (void)dealloc;
 - (void)fetchDataForJob:(struct shared_ptr<altitude::GeoServicesLoadJob> { struct GeoServicesLoadJob {} *x1; struct __shared_weak_count {} *x2; }*)arg1;
-- (struct shared_ptr<altitude::GeoServicesLoadJob> { struct GeoServicesLoadJob {} *x1; struct __shared_weak_count {} *x2; })getJobForKey:(const struct _GEOTileKey { unsigned int x1 : 6; unsigned int x2 : 26; unsigned int x3 : 26; unsigned int x4 : 6; unsigned int x5 : 8; unsigned int x6 : 8; unsigned int x7 : 8; unsigned int x8 : 1; unsigned int x9 : 7; unsigned char x10[4]; }*)arg1;
-- (id)init;
+- (struct shared_ptr<altitude::GeoServicesLoadJob> { struct GeoServicesLoadJob {} *x1; struct __shared_weak_count {} *x2; })getJobForKey:(const struct _GEOTileKey { unsigned int x1 : 7; unsigned int x2 : 1; union { struct _GEOStandardTileKey { unsigned int x_1_2_1 : 40; unsigned int x_1_2_2 : 6; unsigned int x_1_2_3 : 26; unsigned int x_1_2_4 : 26; unsigned int x_1_2_5 : 14; unsigned int x_1_2_6 : 4; unsigned int x_1_2_7 : 4; } x_3_1_1; struct _GEORegionalResourceKey { unsigned int x_2_2_1 : 32; unsigned int x_2_2_2 : 8; unsigned int x_2_2_3 : 6; unsigned int x_2_2_4 : 8; unsigned int x_2_2_5 : 8; } x_3_1_2; struct _GEOSputnikMetadataKey { unsigned int x_3_2_1 : 32; unsigned int x_3_2_2 : 24; unsigned int x_3_2_3 : 14; unsigned int x_3_2_4 : 8; } x_3_1_3; struct _GEOFlyoverKey { unsigned int x_4_2_1 : 6; unsigned int x_4_2_2 : 26; unsigned int x_4_2_3 : 26; unsigned int x_4_2_4 : 8; unsigned int x_4_2_5 : 24; unsigned int x_4_2_6 : 14; unsigned int x_4_2_7 : 8; unsigned int x_4_2_8 : 8; } x_3_1_4; struct _GEOTransitLineSelectionKey { unsigned int x_5_2_1 : 6; unsigned int x_5_2_2 : 25; unsigned int x_5_2_3 : 25; unsigned int x_5_2_4 : 64; } x_3_1_5; struct _GEOTileOverlayKey { unsigned int x_6_2_1 : 6; unsigned int x_6_2_2 : 26; unsigned int x_6_2_3 : 26; unsigned int x_6_2_4 : 8; unsigned int x_6_2_5 : 32; } x_3_1_6; } x3; }*)arg1;
+- (id)initWithToken:(id)arg1;
 - (void)purgeExpired:(double)arg1;
-- (void)reportCorruptTile:(const struct _GEOTileKey { unsigned int x1 : 6; unsigned int x2 : 26; unsigned int x3 : 26; unsigned int x4 : 6; unsigned int x5 : 8; unsigned int x6 : 8; unsigned int x7 : 8; unsigned int x8 : 1; unsigned int x9 : 7; unsigned char x10[4]; }*)arg1;
+- (void)reportCorruptTile:(const struct _GEOTileKey { unsigned int x1 : 7; unsigned int x2 : 1; union { struct _GEOStandardTileKey { unsigned int x_1_2_1 : 40; unsigned int x_1_2_2 : 6; unsigned int x_1_2_3 : 26; unsigned int x_1_2_4 : 26; unsigned int x_1_2_5 : 14; unsigned int x_1_2_6 : 4; unsigned int x_1_2_7 : 4; } x_3_1_1; struct _GEORegionalResourceKey { unsigned int x_2_2_1 : 32; unsigned int x_2_2_2 : 8; unsigned int x_2_2_3 : 6; unsigned int x_2_2_4 : 8; unsigned int x_2_2_5 : 8; } x_3_1_2; struct _GEOSputnikMetadataKey { unsigned int x_3_2_1 : 32; unsigned int x_3_2_2 : 24; unsigned int x_3_2_3 : 14; unsigned int x_3_2_4 : 8; } x_3_1_3; struct _GEOFlyoverKey { unsigned int x_4_2_1 : 6; unsigned int x_4_2_2 : 26; unsigned int x_4_2_3 : 26; unsigned int x_4_2_4 : 8; unsigned int x_4_2_5 : 24; unsigned int x_4_2_6 : 14; unsigned int x_4_2_7 : 8; unsigned int x_4_2_8 : 8; } x_3_1_4; struct _GEOTransitLineSelectionKey { unsigned int x_5_2_1 : 6; unsigned int x_5_2_2 : 25; unsigned int x_5_2_3 : 25; unsigned int x_5_2_4 : 64; } x_3_1_5; struct _GEOTileOverlayKey { unsigned int x_6_2_1 : 6; unsigned int x_6_2_2 : 26; unsigned int x_6_2_3 : 26; unsigned int x_6_2_4 : 8; unsigned int x_6_2_5 : 32; } x_3_1_6; } x3; }*)arg1;
 - (void)updateJobPriority:(struct shared_ptr<altitude::GeoServicesLoadJob> { struct GeoServicesLoadJob {} *x1; struct __shared_weak_count {} *x2; }*)arg1;
 
 @end

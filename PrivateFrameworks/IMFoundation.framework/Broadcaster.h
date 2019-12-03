@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/IMFoundation.framework/IMFoundation
  */
 
-@interface Broadcaster : NSProxy {
+@interface Broadcaster : NSProxy <IDSSendXPCProtocol> {
     id /* block */  _completion;
     int  _curXPCMessagePriority;
     IMMessageContext * _messageContext;
@@ -12,6 +12,10 @@
 }
 
 @property (nonatomic) int curXPCMessagePriority;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (int)curXPCMessagePriority;
 - (void)dealloc;

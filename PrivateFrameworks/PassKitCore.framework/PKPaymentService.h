@@ -3,7 +3,7 @@
  */
 
 @interface PKPaymentService : NSObject <PKPaymentServiceExportedInterface, PKXPCServiceDelegate> {
-    bool  _cachedFieldPropertiesValid;
+    _Atomic bool  _cachedFieldPropertiesValid;
     <PKPaymentServiceDelegate> * _delegate;
     bool  _forceConnectionOnResume;
     bool  _hasPaymentDeviceFieldProperties;
@@ -63,6 +63,7 @@
 - (void)didUpdateDefaultPaymentPassWithUniqueIdentifier:(id)arg1;
 - (void)disbursementVoucherWithDisbursementSource:(unsigned long long)arg1 disbursementTarget:(unsigned long long)arg2 bundleIdentifier:(id)arg3 teamIdentifier:(id)arg4 completion:(id /* block */)arg5;
 - (void)downloadAllPaymentPasses;
+- (void)enforceUpgradedPasscodePolicyWithCompletion:(id /* block */)arg1;
 - (id)expressPassInformationForMode:(id)arg1;
 - (id)expressPassInformationWithPassUniqueIdentifier:(id)arg1;
 - (id)expressPassesInformation;
@@ -81,6 +82,8 @@
 - (void)initializeSecureElementIfNecessaryWithCompletion:(id /* block */)arg1;
 - (void)insertOrUpdatePaymentTransaction:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentApplication:(id)arg3 completion:(id /* block */)arg4;
 - (void)insertOrUpdateValueAddedServiceTransaction:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentTransaction:(id)arg3 completion:(id /* block */)arg4;
+- (void)installmentPlansWithTransactionReferennceIdentifier:(id)arg1 completion:(id /* block */)arg2;
+- (void)installmentTransactionsForInstallmentPlanIdentifier:(id)arg1 completion:(id /* block */)arg2;
 - (void)mapsMerchantsWithCompletion:(id /* block */)arg1;
 - (id)messagesAppLaunchTokenForPassWithUniqueIdentifier:(id)arg1;
 - (void)messagesForPaymentPassWithUniqueIdentifier:(id)arg1 completion:(id /* block */)arg2;
@@ -115,6 +118,7 @@
 - (void)removeExpressPassesWithCardType:(long long)arg1 completion:(id /* block */)arg2;
 - (void)removeMapsDataForTransactionWithIdentifier:(id)arg1 forPassUniqueIdentifier:(id)arg2 issueReportIdentifier:(id)arg3 completion:(id /* block */)arg4;
 - (void)removeProductsCache;
+- (void)requiresUpgradedPasscodeWithCompletion:(id /* block */)arg1;
 - (void)sanitizeExpressPasses;
 - (void)scheduleAutomaticPresentationAvailableNotificationForPassWithUniqueIdentifier:(id)arg1 handler:(id /* block */)arg2;
 - (void)scheduleDeviceCheckInWithStartTimeOffset:(double)arg1;
@@ -143,13 +147,12 @@
 - (void)submitTransactionAnswerForTransaction:(id)arg1 questionType:(unsigned long long)arg2 answer:(id)arg3 completion:(id /* block */)arg4;
 - (void)submitVerificationCode:(id)arg1 verificationData:(id)arg2 forDPANIdentifier:(id)arg3;
 - (void)submitVerificationCode:(id)arg1 verificationData:(id)arg2 forDPANIdentifier:(id)arg3 completion:(id /* block */)arg4;
-- (bool)supportsDisbursements;
 - (void)transactionCountByPeriodForPassWithUniqueIdentifier:(id)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 calendar:(id)arg4 unit:(unsigned long long)arg5 includePurchaseTotal:(bool)arg6 completion:(id /* block */)arg7;
 - (void)transactionWithReferenceIdentifier:(id)arg1 completion:(id /* block */)arg2;
 - (void)transactionWithServiceIdentifier:(id)arg1 completion:(id /* block */)arg2;
 - (void)transactionWithTransactionIdentifier:(id)arg1 completion:(id /* block */)arg2;
 - (id)transactionsAppLaunchTokenForPassWithUniqueIdentifier:(id)arg1;
-- (void)transactionsForPaymentPassWithUniqueIdentifier:(id)arg1 matchingMapsMerchantIdentifier:(unsigned long long)arg2 orMapsBrandIdentifier:(unsigned long long)arg3 orMerchantCleanName:(id)arg4 withTransactionSource:(unsigned long long)arg5 withBackingData:(unsigned long long)arg6 limit:(long long)arg7 completion:(id /* block */)arg8;
+- (void)transactionsForPaymentPassWithUniqueIdentifier:(id)arg1 matchingMerchant:(id)arg2 withTransactionSource:(unsigned long long)arg3 withBackingData:(unsigned long long)arg4 limit:(long long)arg5 completion:(id /* block */)arg6;
 - (void)transactionsForPaymentPassWithUniqueIdentifier:(id)arg1 withMapsIdentifier:(unsigned long long)arg2 withTransactionSource:(unsigned long long)arg3 withBackingData:(unsigned long long)arg4 limit:(long long)arg5 completion:(id /* block */)arg6;
 - (void)transactionsForPaymentPassWithUniqueIdentifier:(id)arg1 withPeerPaymentCounterpartHandle:(id)arg2 withTransactionSource:(unsigned long long)arg3 withBackingData:(unsigned long long)arg4 limit:(long long)arg5 completion:(id /* block */)arg6;
 - (void)transactionsForPaymentPassWithUniqueIdentifier:(id)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 limit:(long long)arg4 completion:(id /* block */)arg5;
@@ -164,5 +167,6 @@
 - (void)valueAddedServiceTransactionWithIdentifier:(id)arg1 completion:(id /* block */)arg2;
 - (void)valueAddedServiceTransactionsForPassWithUniqueIdentifier:(id)arg1 limit:(long long)arg2 completion:(id /* block */)arg3;
 - (void)valueAddedServiceTransactionsForPaymentTransaction:(id)arg1 limit:(long long)arg2 completion:(id /* block */)arg3;
+- (bool)willPassWithUniqueIdentifierAutomaticallyBecomeDefault:(id)arg1;
 
 @end

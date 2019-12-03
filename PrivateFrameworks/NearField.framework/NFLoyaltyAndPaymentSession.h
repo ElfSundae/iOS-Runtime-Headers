@@ -4,6 +4,7 @@
 
 @interface NFLoyaltyAndPaymentSession : NFSession {
     NFApplet * _activeApplet;
+    NSSet * _activeKeys;
     NSDictionary * _appletsById;
     NFApplet * _defaultApplet;
     NFWeakReference * _delegate;
@@ -15,6 +16,7 @@
 }
 
 @property (readonly) NFApplet *activeApplet;
+@property (readonly) NSSet *activeKeys;
 @property (readonly) NFApplet *defaultApplet;
 @property <NFLoyaltyAndPaymentSessionDelegate> *delegate;
 @property (readonly) unsigned long long numberOfActiveSecureElements;
@@ -23,6 +25,7 @@
 - (bool)_startDeferredCardEmulationWithAuthorization:(id)arg1 error:(id*)arg2;
 - (bool)_startHostCardEmulation:(id*)arg1;
 - (id)activeApplet;
+- (id)activeKeys;
 - (id)allApplets;
 - (id)appletWithIdentifier:(id)arg1;
 - (void)dealloc;
@@ -53,6 +56,7 @@
 - (unsigned long long)numberOfActiveSecureElements;
 - (bool)setActivePaymentApplet:(id)arg1;
 - (bool)setActivePaymentApplet:(id)arg1 error:(id*)arg2;
+- (bool)setActivePaymentApplet:(id)arg1 keys:(id)arg2 error:(id*)arg3;
 - (bool)setActivePaymentApplet:(id)arg1 makeDefault:(bool)arg2;
 - (void)setDelegate:(id)arg1;
 - (bool)setHostCards:(id)arg1;
@@ -61,8 +65,6 @@
 - (bool)startDeferredCardEmulation:(unsigned char)arg1 authorization:(id)arg2;
 - (bool)startDeferredCardEmulation:(unsigned char)arg1 authorization:(id)arg2 error:(id*)arg3;
 - (bool)startExpressMode:(id*)arg1;
-- (bool)startHostCardEmulation;
-- (bool)startHostCardEmulation:(id*)arg1;
 - (bool)stopCardEmulation;
 - (bool)stopCardEmulation:(id*)arg1;
 - (id)transitAppletState:(id)arg1 error:(id*)arg2;

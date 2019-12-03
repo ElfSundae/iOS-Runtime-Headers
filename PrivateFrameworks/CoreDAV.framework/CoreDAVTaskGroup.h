@@ -31,8 +31,6 @@
 @property (nonatomic) <CoreDAVTaskManager> *taskManager;
 @property (nonatomic) double timeoutInterval;
 
-// Image: /System/Library/PrivateFrameworks/CoreDAV.framework/CoreDAV
-
 - (void).cxx_destruct;
 - (void)_tearDownAllTasks;
 - (id)accountInfoProvider;
@@ -63,9 +61,5 @@
 - (void)taskGroupWillCancelWithError:(id)arg1;
 - (id)taskManager;
 - (double)timeoutInterval;
-
-// Image: /System/Library/PrivateFrameworks/BookmarkDAV.framework/BookmarkDAV
-
-- (void)bdv_applyOverrideTimeoutIntervalIfNeeded;
 
 @end

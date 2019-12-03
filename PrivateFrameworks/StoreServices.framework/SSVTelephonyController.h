@@ -26,6 +26,7 @@
 @property (nonatomic, readonly, copy) NSString *registrationStatus;
 @property (readonly) Class superclass;
 
++ (bool)_hasRequiredTelephonyEntitlement;
 + (id)sharedController;
 
 - (void).cxx_destruct;
@@ -40,6 +41,7 @@
 - (void)_updateOperatorName;
 - (void)_updatePhoneNumber;
 - (void)_updateRegistrationStatus;
+- (void)activeSubscriptionsDidChange;
 - (void)dealloc;
 - (void)displayStatusChanged:(id)arg1 status:(id)arg2;
 - (id)mobileSubscriberCountryCode;
@@ -51,7 +53,6 @@
 - (void)phoneNumberChanged:(id)arg1;
 - (id)providerName;
 - (id)registrationStatus;
-- (bool)sendSMSWithText:(id)arg1 toPhoneNumber:(id)arg2 countryCode:(id)arg3;
-- (void)subscriptionInfoDidChange;
+- (bool)sendSMSWithText:(id)arg1 toPhoneNumber:(id)arg2 countryCode:(id)arg3 error:(id*)arg4;
 
 @end

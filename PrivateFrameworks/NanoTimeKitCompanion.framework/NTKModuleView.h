@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/NanoTimeKitCompanion.framework/NanoTimeKitCompanion
  */
 
-@interface NTKModuleView : UIControl <NTKContainerViewLayoutDelegate, NTKControl> {
+@interface NTKModuleView : UIControl <CLKMonochromeComplicationView, NTKContainerViewLayoutDelegate, NTKControl> {
     NTKFaceColorScheme * _colorScheme;
     double  _contentHeight;
     double  _contentHeightOffset;
@@ -15,6 +15,7 @@
     UIView * _highlightView;
     UIColor * _overrideColor;
     UIColor * _secondaryForegroundColor;
+    <CLKMonochromeFilterProvider> * filterProvider;
 }
 
 @property (nonatomic, retain) NTKFaceColorScheme *colorScheme;
@@ -24,6 +25,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) CLKDevice *device;
+@property (nonatomic) <CLKMonochromeFilterProvider> *filterProvider;
 @property (nonatomic, retain) UIColor *foregroundColor;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double highlightAlpha;
@@ -37,6 +39,8 @@
 + (double)cornerRadiusForComplicationFamily:(long long)arg1 forDevice:(id)arg2;
 
 - (void).cxx_destruct;
+- (void)_applyMonochromeTransitionFraction:(double)arg1 fromFaceColor:(unsigned long long)arg2 toFaceColor:(unsigned long long)arg3;
+- (void)_enumerateAllForegroundColoringViewsWithBlock:(id /* block */)arg1;
 - (void)_enumerateForegroundColoringViewsWithBlock:(id /* block */)arg1;
 - (void)_enumerateSecondaryForegroundColoringViewsWithBlock:(id /* block */)arg1;
 - (void)_layoutContentView;
@@ -49,6 +53,7 @@
 - (double)contentHeightOffset;
 - (id)contentView;
 - (id)device;
+- (id)filterProvider;
 - (id)foregroundColor;
 - (double)highlightAlpha;
 - (id)highlightBackgroundColor;
@@ -63,6 +68,7 @@
 - (void)setContentHeight:(double)arg1;
 - (void)setContentHeightOffset:(double)arg1;
 - (void)setDevice:(id)arg1;
+- (void)setFilterProvider:(id)arg1;
 - (void)setForegroundColor:(id)arg1;
 - (void)setHighlightAlpha:(double)arg1;
 - (void)setHighlightBackgroundColor:(id)arg1;
@@ -71,6 +77,8 @@
 - (void)setOverrideColor:(id)arg1;
 - (void)setSecondaryForegroundColor:(id)arg1;
 - (bool)shouldCancelTouchesInScrollview;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 - (id)viewsAndSpacingArrayForSpace:(double)arg1 view:(id)arg2;
 - (id)viewsAndSpacingArrayForSpace:(double)arg1 view:(id)arg2 space:(double)arg3 view:(id)arg4;
 

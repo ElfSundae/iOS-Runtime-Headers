@@ -28,5 +28,6 @@
 - (id)initWithLayoutMetrics:(id)arg1 barButtonItem:(id)arg2;
 - (double)minimumLayoutWidthGivenMinimumSpaceWidth:(double)arg1;
 - (long long)spacerType;
+- (bool)suppressSpacing;
 
 @end

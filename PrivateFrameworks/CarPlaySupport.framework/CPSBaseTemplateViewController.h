@@ -8,6 +8,7 @@
     bool  _didDisappear;
     bool  _isPopping;
     <CPTemplateDelegate> * _templateDelegate;
+    NAFuture * _templateProviderFuture;
     <CPSTemplateViewControllerDelegate> * _viewControllerDelegate;
 }
 
@@ -20,16 +21,19 @@
 @property (nonatomic) bool isPopping;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) <CPTemplateDelegate> *templateDelegate;
+@property (nonatomic, readonly) NAFuture *templateProviderFuture;
 @property (nonatomic) <CPSTemplateViewControllerDelegate> *viewControllerDelegate;
 
 - (void).cxx_destruct;
 - (void)_addGestureRecognizerIfNecessary;
 - (void)_backGestureFired:(id)arg1;
 - (id)_barButtonItemForIdentifier:(id)arg1;
+- (void)_cleanup;
 - (void)_cps_viewControllerWasPopped;
 - (void)_dismissTemplateViewController;
 - (void)_updateLeadingBarButtons;
 - (void)_updateTrailingBarButtons;
+- (void)_viewDidLoad;
 - (id)associatedTemplate;
 - (id)backGestureRecognizer;
 - (bool)didDisappear;
@@ -50,6 +54,7 @@
 - (void)setTrailingNavigationBarButtons:(id)arg1;
 - (void)setViewControllerDelegate:(id)arg1;
 - (id)templateDelegate;
+- (id)templateProviderFuture;
 - (id)viewControllerDelegate;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidDisappear:(bool)arg1;

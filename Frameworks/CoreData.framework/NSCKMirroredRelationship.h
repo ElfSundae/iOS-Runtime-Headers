@@ -2,49 +2,38 @@
    Image: /System/Library/Frameworks/CoreData.framework/CoreData
  */
 
-@interface NSCKMirroredRelationship : NSObject <PFAncillaryModelObject> {
-    NSString * _ckRecordID;
-    NSData * _ckRecordSystemFields;
-    NSString * _entityName;
-    NSNumber * _fetchedPKNum;
-    bool  _isDeleted;
-    bool  _isPending;
-    bool  _isUploaded;
-    NSString * _recordName;
-    NSString * _relatedEntityName;
-    NSString * _relatedRecordName;
-    NSString * _relationshipName;
-}
+@interface NSCKMirroredRelationship : NSManagedObject
 
-@property (nonatomic, readonly) NSString *ckRecordID;
-@property (nonatomic, readonly) NSData *ckRecordSystemFields;
-@property (nonatomic, readonly) NSString *entityName;
-@property (nonatomic, readonly) NSNumber *fetchedPKNum;
-@property (nonatomic, readonly) bool isDeleted;
-@property (nonatomic, readonly) bool isPending;
-@property (nonatomic, readonly) bool isUploaded;
-@property (nonatomic, readonly) NSString *recordName;
-@property (nonatomic, readonly) NSString *relatedEntityName;
-@property (nonatomic, readonly) NSString *relatedRecordName;
-@property (nonatomic, readonly) NSString *relationshipName;
+@property (nonatomic, retain) NSString *cdEntityName;
+@property (nonatomic, retain) NSString *ckRecordID;
+@property (nonatomic, retain) NSData *ckRecordSystemFields;
+@property (nonatomic, retain) NSNumber *isPending;
+@property (nonatomic, retain) NSNumber *isUploaded;
+@property (nonatomic, retain) NSNumber *needsDelete;
+@property (nonatomic, retain) NSString *recordName;
+@property (nonatomic, retain) NSCKRecordZoneMetadata *recordZone;
+@property (nonatomic, retain) NSString *relatedEntityName;
+@property (nonatomic, retain) NSString *relatedRecordName;
+@property (nonatomic, retain) NSString *relationshipName;
 
-- (id)ckRecordID;
-- (id)ckRecordSystemFields;
-- (void)dealloc;
-- (id)entityName;
-- (id)fetchedPKNum;
-- (id)initWithFetchResult:(id)arg1 andSQLEntity:(id)arg2;
-- (id)initWithMirroredManyToMany:(id)arg1;
-- (bool)isDeleted;
-- (bool)isPending;
-- (bool)isUploaded;
-- (id)recordName;
-- (id)relatedEntityName;
-- (id)relatedRecordName;
-- (id)relationshipName;
-- (void)setBindValue:(id)arg1;
-- (void)setPending:(bool)arg1 deleted:(bool)arg2 uploaded:(bool)arg3;
-- (void)updatePKNumFromInsert:(long long)arg1;
++ (id)countMirroredRelationshipsInStore:(id)arg1 matchingPredicate:(id)arg2 withManagedObjectContext:(id)arg3 error:(id*)arg4;
++ (id)countMirroredRelationshipsInStore:(id)arg1 withManagedObjectContext:(id)arg2 error:(id*)arg3;
++ (id)entityPath;
++ (id)fetchMirroredRelationshipsForObject:(id)arg1 withRecordID:(id)arg2 relatedToObjectsByRelationship:(id)arg3 inManagedObjectContext:(id)arg4 error:(id*)arg5;
++ (id)fetchMirroredRelationshipsMatchingPredicate:(id)arg1 fromStore:(id)arg2 inManagedObjectContext:(id)arg3 error:(id*)arg4;
++ (id)fetchMirroredRelationshipsMatchingRelatingRecords:(id)arg1 andRelatingRecordIDs:(id)arg2 fromStore:(id)arg3 inManagedObjectContext:(id)arg4 error:(id*)arg5;
++ (id)fetchPendingMirroredRelationshipsInStore:(id)arg1 withManagedObjectContext:(id)arg2 error:(id*)arg3;
++ (id)insertMirroredRelationshipForManyToMany:(id)arg1 inZoneWithMetadata:(id)arg2 inStore:(id)arg3 withManagedObjectContext:(id)arg4;
++ (id)markRelationshipsForDeletedRecordIDs:(id)arg1 withManagedObjectContext:(id)arg2 error:(id*)arg3;
++ (id)mirroredRelationshipForManyToMany:(id)arg1 inStore:(id)arg2 withManagedObjectContext:(id)arg3 error:(id*)arg4;
++ (id)mirroredRelationshipForObject:(id)arg1 relatedToObject:(id)arg2 relatedByRelationship:(id)arg3 error:(id*)arg4;
++ (id)orderRelationships:(id)arg1;
++ (bool)purgeMirroredRelationshipsWithRecordIDs:(id)arg1 withManagedObjectContext:(id)arg2 error:(id*)arg3;
++ (bool)updateMirroredRelationshipsMatchingRecords:(id)arg1 forStore:(id)arg2 withManagedObjectContext:(id)arg3 usingBlock:(id /* block */)arg4 error:(id*)arg5;
+
+- (id)createRecordID;
+- (id)createRecordIDForRecord;
+- (id)createRecordIDForRelatedRecord;
 - (bool)updateRelationshipValueUsingImportContext:(id)arg1 andManagedObjectContext:(id)arg2 isDelete:(bool)arg3 error:(id*)arg4;
 
 @end

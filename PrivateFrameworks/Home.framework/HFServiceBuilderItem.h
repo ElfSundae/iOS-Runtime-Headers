@@ -10,9 +10,11 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) HMHome *home;
 @property (nonatomic, readonly) <HFHomeKitObject> *homeKitObject;
 @property (nonatomic, readonly) HFServiceBuilder *serviceBuilder;
 @property (nonatomic, readonly) HFServiceItem *serviceItem;
+@property (nonatomic, readonly) NSSet *services;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) <HFCharacteristicValueSource> *valueSource;
 
@@ -25,6 +27,7 @@
 - (id)init;
 - (id)initWithServiceBuilder:(id)arg1;
 - (id)initWithServiceBuilder:(id)arg1 valueSource:(id)arg2;
+- (id)namingComponentForHomeKitObject;
 - (id)serviceBuilder;
 - (id)serviceItem;
 - (id)services;

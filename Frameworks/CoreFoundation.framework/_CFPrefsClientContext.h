@@ -3,7 +3,7 @@
  */
 
 @interface _CFPrefsClientContext : NSObject {
-    id  _cfprefsd;
+    _Atomic id  _cfprefsd;
     bool  _didDeferKVONotifications;
     NSObject<OS_xpc_object> * _entitlements;
     bool  _hasInFlightKVONotifications;

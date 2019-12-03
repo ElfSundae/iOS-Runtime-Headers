@@ -10,21 +10,25 @@
     _MRNowPlayingPlayerPathProtobuf * _playerPath;
     NSObject<OS_dispatch_queue> * _serialQueue;
     NSMutableDictionary * _transactionCallbacks;
-    float  _volume;
-    unsigned int  _volumeCapabilities;
+    NSNumber * _volume;
+    NSNumber * _volumeCapabilities;
+    NSMutableArray * _volumeCapabilitiesCompletions;
+    NSMutableArray * _volumeCompletions;
 }
 
 @property (nonatomic, copy) _MRDeviceInfoMessageProtobuf *deviceInfo;
 @property (nonatomic, readonly) _MROriginProtobuf *origin;
 @property (nonatomic, readonly) _MRNowPlayingPlayerPathProtobuf *playerPath;
-@property (nonatomic) float volume;
-@property (nonatomic) unsigned int volumeCapabilities;
+@property (nonatomic, retain) NSNumber *volume;
+@property (nonatomic, retain) NSNumber *volumeCapabilities;
 
 - (void).cxx_destruct;
 - (id)debugDescription;
 - (id)deviceInfo;
 - (id)existingNowPlayingClientRequestsForPlayerPath:(id)arg1;
 - (void)handleDeviceInfoRequestWithCompletion:(id /* block */)arg1;
+- (void)handleVolumeCapabilitiesRequestWithCompletion:(id /* block */)arg1;
+- (void)handleVolumeRequestWithCompletion:(id /* block */)arg1;
 - (id)initWithOrigin:(id)arg1;
 - (id)nowPlayingClientRequestsForPlayerPath:(id)arg1;
 - (id)nowPlayingClients;
@@ -34,10 +38,10 @@
 - (void)restoreNowPlayingClientState;
 - (void)setDeviceInfo:(id)arg1;
 - (void)setTransactionCallback:(id /* block */)arg1 forName:(unsigned long long)arg2;
-- (void)setVolume:(float)arg1;
-- (void)setVolumeCapabilities:(unsigned int)arg1;
+- (void)setVolume:(id)arg1;
+- (void)setVolumeCapabilities:(id)arg1;
 - (id /* block */)transactionCallbackForName:(unsigned long long)arg1;
-- (float)volume;
-- (unsigned int)volumeCapabilities;
+- (id)volume;
+- (id)volumeCapabilities;
 
 @end

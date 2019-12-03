@@ -2,25 +2,20 @@
    Image: /System/Library/PrivateFrameworks/AvatarKit.framework/AvatarKit
  */
 
-@interface AVTAvatarPose : NSObject {
+@interface AVTAvatarPose : NSObject <NSCopying> {
     double  _bakedAnimationBlendFactor;
-    struct SCNVector4 { 
-        float x; 
-        float y; 
-        float z; 
-        float w; 
+    bool  _hasNeckOrientation;
+    bool  _hasNeckPosition;
+    struct { 
+        /* Warning: Unrecognized filer type: '}' using 'void*' */ void*vector; 
     }  _neckOrientation;
-    struct SCNVector3 { 
-        float x; 
-        float y; 
-        float z; 
-    }  _neckPosition;
+    void _neckPosition;
     NSMutableDictionary * _weights;
 }
 
 @property (nonatomic) double bakedAnimationBlendFactor;
-@property (nonatomic) struct SCNVector4 { float x1; float x2; float x3; float x4; } neckOrientation;
-@property (nonatomic) struct SCNVector3 { float x1; float x2; float x3; } neckPosition;
+@property (nonatomic) struct { } neckOrientation;
+@property (nonatomic) void neckPosition;
 
 // Image: /System/Library/PrivateFrameworks/AvatarKit.framework/AvatarKit
 
@@ -28,15 +23,21 @@
 + (id)neutralPose;
 
 - (void).cxx_destruct;
+- (bool)affectsPhysicsSimulation;
 - (double)bakedAnimationBlendFactor;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)description;
 - (id)dictionaryRepresentation;
 - (id)initWithDictionaryRepresentation:(id)arg1;
-- (struct SCNVector4 { float x1; float x2; float x3; float x4; })neckOrientation;
-- (struct SCNVector3 { float x1; float x2; float x3; })neckPosition;
+- (id)initWithWeights:(id)arg1 neckPosition:(/* Warning: Unrecognized filer type: '2' using 'void*' */ void**)arg2 neckOrientation:(struct { }*)arg3 bakedAnimationBlendFactor:(double)arg4;
+- (struct { })neckOrientation;
+- (void)neckPosition;
+- (id)poseByMergingPose:(id)arg1;
 - (void)setBakedAnimationBlendFactor:(double)arg1;
-- (void)setNeckOrientation:(struct SCNVector4 { float x1; float x2; float x3; float x4; })arg1;
-- (void)setNeckPosition:(struct SCNVector3 { float x1; float x2; float x3; })arg1;
+- (void)setNeckOrientation:(struct { })arg1;
+- (void)setNeckPosition;
 - (void)setWeight:(double)arg1 forBlendShapeNamed:(id)arg2;
+- (void)setWeights:(id)arg1;
 - (double)weightForBlendShapeNamed:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/AvatarUI.framework/AvatarUI

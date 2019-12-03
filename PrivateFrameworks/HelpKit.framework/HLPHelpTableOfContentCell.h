@@ -6,7 +6,6 @@
     bool  _RTL;
     UIImageView * _arrowImageView;
     NSLayoutConstraint * _arrowImageViewLeadingConstraint;
-    NSLayoutConstraint * _arrowImageViewWidthConstraint;
     bool  _closed;
     HLPHelpItem * _helpItem;
     bool  _ignoreLevels;
@@ -17,6 +16,7 @@
     UIImageView * _sectionImageView;
     NSLayoutConstraint * _sectionImageWidthConstraint;
     bool  _showFirstLevelIcon;
+    bool  _updateSeparatorInsetAutomatically;
 }
 
 @property (nonatomic) bool RTL;
@@ -28,6 +28,7 @@
 @property (nonatomic, retain) TPSURLSessionItem *sectionImageURLSessionItem;
 @property (nonatomic, retain) UIImageView *sectionImageView;
 @property (nonatomic) bool showFirstLevelIcon;
+@property (nonatomic) bool updateSeparatorInsetAutomatically;
 
 - (void).cxx_destruct;
 - (bool)RTL;
@@ -56,9 +57,11 @@
 - (void)setSectionImageURLSessionItem:(id)arg1;
 - (void)setSectionImageView:(id)arg1;
 - (void)setShowFirstLevelIcon:(bool)arg1;
+- (void)setUpdateSeparatorInsetAutomatically:(bool)arg1;
 - (bool)showFirstLevelIcon;
 - (void)toggle;
 - (void)updateConstraints;
+- (bool)updateSeparatorInsetAutomatically;
 - (void)updateToggleImageAnimated:(bool)arg1;
 
 @end

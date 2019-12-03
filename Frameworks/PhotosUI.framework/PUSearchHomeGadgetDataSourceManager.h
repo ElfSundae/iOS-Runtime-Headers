@@ -2,13 +2,17 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUSearchHomeGadgetDataSourceManager : PXGadgetDataSourceManager {
+@interface PUSearchHomeGadgetDataSourceManager : PXGadgetDataSourceManager <PXSettingsKeyObserver> {
     long long  _filteringState;
     PUSearchZeroKeywordGadgetProvider * _zeroKeywordGadgetProvider;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) long long filteringState;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) bool isExpectedToLoadNonEmptyDataSourceSoon;
+@property (readonly) Class superclass;
 @property (nonatomic, retain) PUSearchZeroKeywordGadgetProvider *zeroKeywordGadgetProvider;
 
 - (void).cxx_destruct;
@@ -18,11 +22,13 @@
 - (long long)filteringState;
 - (id)gadgetProviders;
 - (id /* block */)gadgetSortComparator;
+- (id)init;
 - (bool)isExpectedToLoadNonEmptyDataSourceSoon;
 - (void)ppt_prepareZeroKeywordRequest:(id /* block */)arg1;
 - (void)refreshData;
 - (void)setFilteringState:(long long)arg1;
 - (void)setZeroKeywordGadgetProvider:(id)arg1;
+- (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (id)zeroKeywordGadgetProvider;
 
 @end

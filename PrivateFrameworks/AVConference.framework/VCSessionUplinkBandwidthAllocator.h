@@ -15,7 +15,7 @@
 - (void)_assignCurrentTables;
 - (id)_audioEntriesForTargetBitrate:(unsigned int)arg1;
 - (bool)_isAvailableStreamConfiguration:(id)arg1;
-- (id)_videoEntriesForTargetBitrate:(unsigned int)arg1 ignorePausedOnDemandStreams:(bool)arg2;
+- (id)_videoEntriesForTargetBitrate:(unsigned int)arg1 ignorePausedOnDemandStreams:(bool)arg2 remainingBitrate:(unsigned int*)arg3;
 - (void)addBandwidthAllocationTableEntry:(id)arg1 updateNow:(bool)arg2;
 - (id)audioRepairStreamIDsForStreamIDs;
 - (id)audioRepairStreamIDsforTargetBitrate:(unsigned int)arg1;
@@ -27,6 +27,7 @@
 - (bool)isVideoEnabled;
 - (void)setRedundancyEnabled:(bool)arg1;
 - (void)setVideoEnabled:(bool)arg1;
+- (id)videoMediaBitratesForTargetNetworkBitrate:(unsigned int)arg1 ignorePausedOnDemandStreams:(bool)arg2;
 - (id)videoRepairStreamIDsForStreamIDs;
 - (id)videoRepairStreamIDsforTargetBitrate:(unsigned int)arg1 ignorePausedOnDemandStreams:(bool)arg2;
 - (id)videoStreamIDsforTargetBitrate:(unsigned int)arg1 ignorePausedOnDemandStreams:(bool)arg2;

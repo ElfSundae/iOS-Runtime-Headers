@@ -5,7 +5,11 @@
 @interface _TVCollectionViewLockupCell : TVContainerCollectionViewCell <TVAuxiliaryViewSelecting> {
     UIView<TVAuxiliaryViewSelecting> * __selectingView;
     <TVCollectionViewLockupCellDelegate> * _delegate;
-    bool  _isFocusWithinCell;
+    struct { 
+        bool respondsToDidUnfocus; 
+        bool respondsToDidSelect; 
+        bool respondsToLayeredImageContainerLayerWithinCollectionViewCell; 
+    }  _delegateFlags;
     bool  _pressIsAnimating;
     bool  _unpressOnEndAnimating;
 }

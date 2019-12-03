@@ -20,12 +20,16 @@
     NSIndexSet * _indicesOfChatItemsToBeRemovedWithoutFading;
     NSMutableDictionary * _initialParentLayoutAttributes;
     NSMutableIndexSet * _insertedAssociatedLayoutAttributes;
-    bool  _invalidatedViaBoundsChange;
     bool  _isResting;
+    NSDate * _lastTouchTime;
     NSArray * _layoutAttributes;
     NSArray * _oldAssociatedLayoutAttributes;
     double  _prevTimestamp;
     bool  _sizeCategoryIsAccessibilitySizeCategory;
+    struct CGSize { 
+        double width; 
+        double height; 
+    }  _sizeForRotation;
     struct CGPoint { 
         double x; 
         double y; 
@@ -58,12 +62,13 @@
 @property (nonatomic, retain) NSIndexSet *indicesOfChatItemsToBeRemovedWithoutFading;
 @property (nonatomic, retain) NSMutableDictionary *initialParentLayoutAttributes;
 @property (nonatomic, retain) NSMutableIndexSet *insertedAssociatedLayoutAttributes;
-@property (nonatomic) bool invalidatedViaBoundsChange;
 @property (nonatomic) bool isResting;
+@property (nonatomic, retain) NSDate *lastTouchTime;
 @property (nonatomic, copy) NSArray *layoutAttributes;
 @property (nonatomic, copy) NSArray *oldAssociatedLayoutAttributes;
 @property (nonatomic) double prevTimestamp;
 @property (nonatomic) bool sizeCategoryIsAccessibilitySizeCategory;
+@property (nonatomic) struct CGSize { double x1; double x2; } sizeForRotation;
 @property (nonatomic) struct CGPoint { double x1; double x2; } targetContentOffset;
 @property (nonatomic) bool useFastQuanta;
 @property (getter=isUsingInitialLayoutAttributesForRotation, nonatomic) bool useInitialLayoutAttributesForRotation;
@@ -74,7 +79,6 @@
 
 - (void).cxx_destruct;
 - (void)_dealloc;
-- (void)_invalidateLayoutForDisplayLink;
 - (double)anchorYPosition;
 - (id)associatedLayoutAttributes;
 - (double)bezierPointForPercentage:(double)arg1 anchor1:(double)arg2 anchor2:(double)arg3 control1:(double)arg4 control2:(double)arg5;
@@ -98,10 +102,10 @@
 - (id)initialParentLayoutAttributes;
 - (id)insertedAssociatedLayoutAttributes;
 - (void)invalidateDisplayLink;
-- (bool)invalidatedViaBoundsChange;
 - (bool)isHoldingBoundsInvalidation;
 - (bool)isResting;
 - (bool)isUsingInitialLayoutAttributesForRotation;
+- (id)lastTouchTime;
 - (id)layoutAttributes;
 - (id)layoutAttributesForDecorationViewOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (id)layoutAttributesForElementsInRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
@@ -127,12 +131,13 @@
 - (void)setInitialIndex:(unsigned long long)arg1 forParentOfAssociatedItemInsertedAtIndex:(unsigned long long)arg2;
 - (void)setInitialParentLayoutAttributes:(id)arg1;
 - (void)setInsertedAssociatedLayoutAttributes:(id)arg1;
-- (void)setInvalidatedViaBoundsChange:(bool)arg1;
 - (void)setIsResting:(bool)arg1;
+- (void)setLastTouchTime:(id)arg1;
 - (void)setLayoutAttributes:(id)arg1;
 - (void)setOldAssociatedLayoutAttributes:(id)arg1;
 - (void)setPrevTimestamp:(double)arg1;
 - (void)setSizeCategoryIsAccessibilitySizeCategory:(bool)arg1;
+- (void)setSizeForRotation:(struct CGSize { double x1; double x2; })arg1;
 - (void)setTargetContentOffset:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setUseFastQuanta:(bool)arg1;
 - (void)setUseInitialLayoutAttributesForRotation:(bool)arg1;
@@ -141,6 +146,7 @@
 - (bool)shouldInvalidateLayoutForBoundsChange:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)sizeCategoryDidChange:(id)arg1;
 - (bool)sizeCategoryIsAccessibilitySizeCategory;
+- (struct CGSize { double x1; double x2; })sizeForRotation;
 - (struct CGPoint { double x1; double x2; })targetContentOffset;
 - (void)updateAssociatedLayoutAttributesIfNecessary;
 - (void)updateAttributesForAnchorYChangeWithAttributes:(id)arg1;

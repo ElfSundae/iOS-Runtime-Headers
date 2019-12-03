@@ -2,15 +2,18 @@
    Image: /System/Library/PrivateFrameworks/VectorKit.framework/VectorKit
  */
 
-@interface VKMapSnapshotCreator : NSObject <MapEngineDelegate, VKImageCanvasDelegate> {
+@interface VKMapSnapshotCreator : NSObject <MapEngineDelegate, VKNotificationObserverDelegate> {
     id /* block */  _completion;
     bool  _didBecomeFullyDrawn;
     bool  _didSoftDealloc;
-    unsigned char  _emphasis;
+    struct VKEdgeInsets { 
+        float top; 
+        float left; 
+        float bottom; 
+        float right; 
+    }  _edgeInsets;
     VKGlobeImageCanvas * _globeCanvas;
     bool  _hasFailedTiles;
-    NSLocale * _locale;
-    GEOResourceManifestConfiguration * _manifestConfiguration;
     VKMapImageCanvas * _mapCanvas;
     struct { 
         unsigned char timePeriod; 
@@ -24,8 +27,12 @@
             struct MapEngine {} *__value_; 
         } __ptr_; 
     }  _mapEngine;
-    long long  _mapType;
-    VKMemoryObserver * _memoryObserver;
+    int  _mapType;
+    VKNotificationObserver * _notificationObserver;
+    GEOPOICategoryFilter * _pointsOfInterestFilter;
+    VKRouteContext * _routeContext;
+    <VKRouteOverlay> * _routeOverlay;
+    unsigned long long  _signpostId;
     struct shared_ptr<md::TaskContext> { 
         struct TaskContext {} *__ptr_; 
         struct __shared_weak_count {} *__cntrl_; 
@@ -34,12 +41,16 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) struct VKEdgeInsets { float x1; float x2; float x3; float x4; } edgeInsets;
 @property (nonatomic) unsigned char emphasis;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long labelScaleFactor;
 @property (nonatomic) bool localizeLabels;
 @property (nonatomic) struct { unsigned char x1; unsigned char x2; unsigned char x3; unsigned char x4; bool x5; } mapDisplayStyle;
-@property (nonatomic) long long mapType;
+@property (nonatomic) int mapType;
+@property (nonatomic, retain) GEOPOICategoryFilter *pointsOfInterestFilter;
+@property (nonatomic, retain) VKRouteContext *routeContext;
+@property (nonatomic, retain) <VKRouteOverlay> *routeOverlay;
 @property (nonatomic) bool showsBuildings;
 @property (nonatomic) bool showsPointLabels;
 @property (nonatomic) bool showsPointsOfInterest;
@@ -53,36 +64,47 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (struct LabelSettings { struct LabelSettings_Presentation { struct LabelSettings {} *x_1_1_1; } x1; struct LabelSettings_Navigation { struct LabelSettings {} *x_2_1_1; } x2; struct LabelSettings_Markers { struct LabelSettings {} *x_3_1_1; } x3; struct shared_ptr<md::LabelManager> { struct LabelManager {} *x_4_1_1; struct __shared_weak_count {} *x_4_1_2; } x4; struct unique_ptr<md::LabelSettingsData, std::__1::default_delete<md::LabelSettingsData> > { struct __compressed_pair<md::LabelSettingsData *, std::__1::default_delete<md::LabelSettingsData> > { struct LabelSettingsData {} *x_1_2_1; } x_5_1_1; } x5; }*)_labelSettings;
 - (void)_transferSettingsFrom:(id)arg1 to:(id)arg2;
 - (id)activeCanvas;
 - (void)addCustomFeatureDataSource:(id)arg1;
 - (void)cancel;
 - (void)cancelFlushingTileDecodes:(bool)arg1;
 - (void)dealloc;
+- (void)didFinishLoadingData;
+- (void)didFinishLoadingDataWithError:(id)arg1;
 - (void)didPresent;
-- (void)didReceiveMemoryWarning:(id)arg1;
+- (void)didReceiveMemoryWarning;
+- (void)didStartLoadingData;
+- (void)didUpdateSceneStatus:(unsigned char)arg1;
+- (struct VKEdgeInsets { float x1; float x2; float x3; float x4; })edgeInsets;
 - (unsigned char)emphasis;
-- (void)imageCanvasDidBecomeFullyDrawn:(id)arg1 hasFailedTiles:(bool)arg2;
-- (void)imageCanvasWillBecomeFullyDrawn:(id)arg1;
-- (id)initWithSize:(struct CGSize { double x1; double x2; })arg1 scale:(double)arg2 homeQueue:(id)arg3;
-- (id)initWithSize:(struct CGSize { double x1; double x2; })arg1 scale:(double)arg2 homeQueue:(id)arg3 manifestConfiguration:(id)arg4 locale:(id)arg5;
-- (bool)isRoadClassDisabled:(int)arg1;
+- (id)initWithSize:(struct CGSize { double x1; double x2; })arg1 scale:(double)arg2 homeQueue:(id)arg3 signpostId:(unsigned long long)arg4 auditToken:(id)arg5;
+- (void)labelManagerDidLayout;
+- (void)labelMarkerDidChangeState:(const struct shared_ptr<md::LabelMarker> { }*)arg1;
 - (long long)labelScaleFactor;
 - (bool)localizeLabels;
 - (void)lookAtX:(unsigned long long)arg1 y:(unsigned long long)arg2 z:(unsigned long long)arg3;
 - (struct { unsigned char x1; unsigned char x2; unsigned char x3; unsigned char x4; bool x5; })mapDisplayStyle;
-- (long long)mapType;
+- (int)mapType;
 - (void)nearestVenueDidChange:(const struct Venue { unsigned long long x1; unsigned long long x2; struct vector<md::VenueBuilding, std::__1::allocator<md::VenueBuilding> > { struct VenueBuilding {} *x_3_1_1; struct VenueBuilding {} *x_3_1_2; struct __compressed_pair<md::VenueBuilding *, std::__1::allocator<md::VenueBuilding> > { struct VenueBuilding {} *x_3_2_1; } x_3_1_3; } x3; struct Polygon2<double> { struct vector<gm::Matrix<double, 2, 1>, std::__1::allocator<gm::Matrix<double, 2, 1> > > { struct Matrix<double, 2, 1> {} *x_1_2_1; struct Matrix<double, 2, 1> {} *x_1_2_2; struct __compressed_pair<gm::Matrix<double, 2, 1> *, std::__1::allocator<gm::Matrix<double, 2, 1> > > { struct Matrix<double, 2, 1> {} *x_3_3_1; } x_1_2_3; } x_4_1_1; } x4; struct ConvexHull2<double> { struct vector<gm::Matrix<double, 2, 1>, std::__1::allocator<gm::Matrix<double, 2, 1> > > { struct Matrix<double, 2, 1> {} *x_1_2_1; struct Matrix<double, 2, 1> {} *x_1_2_2; struct __compressed_pair<gm::Matrix<double, 2, 1> *, std::__1::allocator<gm::Matrix<double, 2, 1> > > { struct Matrix<double, 2, 1> {} *x_3_3_1; } x_1_2_3; } x_5_1_1; } x5; }*)arg1 building:(const struct VenueBuilding { struct vector<md::VenueLevel, std::__1::allocator<md::VenueLevel> > { struct VenueLevel {} *x_1_1_1; struct VenueLevel {} *x_1_1_2; struct __compressed_pair<md::VenueLevel *, std::__1::allocator<md::VenueLevel> > { struct VenueLevel {} *x_3_2_1; } x_1_1_3; } x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; unsigned long long x5; short x6; struct Matrix<double, 2, 1> { double x_7_1_1[2]; } x7; struct ConvexHull2<double> { struct vector<gm::Matrix<double, 2, 1>, std::__1::allocator<gm::Matrix<double, 2, 1> > > { struct Matrix<double, 2, 1> {} *x_1_2_1; struct Matrix<double, 2, 1> {} *x_1_2_2; struct __compressed_pair<gm::Matrix<double, 2, 1> *, std::__1::allocator<gm::Matrix<double, 2, 1> > > { struct Matrix<double, 2, 1> {} *x_3_3_1; } x_1_2_3; } x_8_1_1; } x8; }*)arg2;
+- (id)pointsOfInterestFilter;
 - (void)removeCustomFeatureDataSource:(id)arg1;
-- (void)renderRequest:(id)arg1 completion:(id /* block */)arg2;
 - (void)renderSnapshot:(id /* block */)arg1;
+- (id)routeContext;
+- (id)routeOverlay;
+- (void)selectedLabelMarkerWillDisappear:(const struct shared_ptr<md::LabelMarker> { }*)arg1;
 - (void)setCenterCoordinate:(struct { double x1; double x2; })arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4;
+- (void)setEdgeInsets:(struct VKEdgeInsets { float x1; float x2; float x3; float x4; })arg1;
 - (void)setEmphasis:(unsigned char)arg1;
 - (void)setLabelScaleFactor:(long long)arg1;
 - (void)setLocalizeLabels:(bool)arg1;
 - (void)setMapDisplayStyle:(struct { unsigned char x1; unsigned char x2; unsigned char x3; unsigned char x4; bool x5; })arg1;
 - (void)setMapRegion:(id)arg1 pitch:(double)arg2 yaw:(double)arg3;
-- (void)setMapType:(long long)arg1;
+- (void)setMapType:(int)arg1;
+- (void)setPointsOfInterestFilter:(id)arg1;
+- (void)setRouteContext:(id)arg1;
+- (void)setRouteOverlay:(id)arg1;
 - (void)setShowsBuildings:(bool)arg1;
 - (void)setShowsPointLabels:(bool)arg1;
 - (void)setShowsPointsOfInterest:(bool)arg1;
@@ -94,6 +116,7 @@
 - (struct CGSize { double x1; double x2; })size;
 - (void)softDealloc;
 - (bool)wantsTimerTick;
+- (void)willBecomeFullyDrawn;
 - (void)willLayoutWithTimestamp:(double)arg1;
 
 // Image: /System/Library/Frameworks/MapKit.framework/MapKit

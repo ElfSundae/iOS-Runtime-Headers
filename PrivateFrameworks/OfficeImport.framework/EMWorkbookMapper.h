@@ -2,9 +2,7 @@
    Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
  */
 
-@interface EMWorkbookMapper : CMMapper <CMMapperRoot> {
-    EDWorkbook * edWorkbook;
-    CMArchiveManager * mArchiver;
+@interface EMWorkbookMapper : CMDocumentMapper <CMMapperRoot> {
     OIXMLElement * mBodyElement;
     NSString * mFileName;
     bool  mHasPushedFirstSheet;
@@ -30,6 +28,7 @@
     OIXMLDocument * mXhtmlDoc;
 }
 
+@property (readonly) EDWorkbook *document;
 @property (retain) NSString *fileName;
 
 + (id)borderStyleCache;
@@ -44,20 +43,20 @@
 - (id)archiver;
 - (id)blipAtIndex:(unsigned int)arg1;
 - (id)copySheetMapperWithEdSheet:(id)arg1;
-- (void)dealloc;
 - (id)documentTitle;
 - (id)fileName;
 - (void)finishMappingWithState:(id)arg1;
 - (bool)hasMultipleSheets;
 - (id)headElementForFrontPage;
-- (id)initWithEDWorkbook:(id)arg1 archiver:(id)arg2;
+- (id)initWithDocument:(id)arg1 archiver:(id)arg2;
 - (void)mapElement:(id)arg1 atIndex:(unsigned long long)arg2 withState:(id)arg3 isLastElement:(bool)arg4;
 - (void)mapStylesheetData:(id)arg1 name:(id)arg2 atElement:(id)arg3;
 - (void)mapStylesheetNamed:(id)arg1 atElement:(id)arg2;
 - (struct CGSize { double x1; double x2; })pageSizeForDevice;
+- (void)setElementCount:(unsigned long long)arg1;
 - (void)setFileName:(id)arg1;
 - (void)startMappingWithState:(id)arg1;
 - (id)styleMatrix;
-- (id)workbook;
+- (id)tabTitleDrawingAttributes;
 
 @end

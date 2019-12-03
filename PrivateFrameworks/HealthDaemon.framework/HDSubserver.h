@@ -3,14 +3,14 @@
  */
 
 @interface HDSubserver : NSObject <HDDiagnosticObject> {
-    HDXPCClient * _client;
+    HDHealthStoreClient * _client;
     HDDaemon * _daemon;
     HDProfile * _profile;
     NSObject<OS_dispatch_queue> * _queue;
     HDHealthStoreServer * _server;
 }
 
-@property (nonatomic, readonly) HDXPCClient *client;
+@property (nonatomic, readonly) HDHealthStoreClient *client;
 @property (nonatomic, readonly) HDDaemon *daemon;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

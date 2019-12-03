@@ -30,7 +30,6 @@
     bool  _wasAskedToLoadContentData;
 }
 
-@property (nonatomic, readonly) const struct __CFString { }*accessoryButtonEventTrackerKey;
 @property (nonatomic, readonly) NSString *accessoryButtonTitle;
 @property (nonatomic, readonly) unsigned long long accessoryButtonType;
 @property (nonatomic, retain) NSArray *assets;
@@ -39,6 +38,7 @@
 @property (nonatomic, copy) NSAttributedString *caption;
 @property (nonatomic, retain) UILabel *captionLabel;
 @property (nonatomic, retain) PXAssetCollageView *collageView;
+@property (nonatomic, readonly) Class collectionViewItemClass;
 @property (nonatomic, retain) _PXSharedAlbumActivityGadgetContentView *contentView;
 @property (nonatomic, retain) PXAssetReference *currentAssetReference;
 @property (readonly, copy) NSString *debugDescription;
@@ -61,8 +61,6 @@
 @property (nonatomic, readonly) bool supportsSelection;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } visibleContentRect;
 @property (nonatomic) bool wasAskedToLoadContentData;
-
-// Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
 
 + (void)preloadResources;
 
@@ -95,11 +93,9 @@
 - (id)gadgetSpec;
 - (unsigned long long)gadgetType;
 - (bool)hasContentToDisplay;
-- (bool)hasLoadedContentData;
 - (id)headerView;
 - (id)init;
 - (bool)isContentViewLoaded;
-- (void)loadContentData;
 - (id)mediaProvider;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (id)oneUpHiddenAssetReferences;
@@ -132,9 +128,5 @@
 - (id)uniqueGadgetIdentifier;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })visibleContentRect;
 - (bool)wasAskedToLoadContentData;
-
-// Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
-
-- (id)px_sharePresentation;
 
 @end

@@ -16,7 +16,6 @@
 - (long long)currentOffset;
 - (void)dealloc;
 - (id)description;
-- (void)finalize;
 - (id)init;
 - (id)initWithLoadingRequest:(id)arg1 requestedOffset:(long long)arg2 requestedLength:(long long)arg3 requestsAllDataToEndOfResource:(bool)arg4 canSupplyIncrementalDataImmediately:(bool)arg5;
 - (long long)requestedLength;

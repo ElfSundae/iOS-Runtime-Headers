@@ -3,6 +3,8 @@
  */
 
 @interface MTLDebugRenderCommandEncoder : MTLToolsRenderCommandEncoder {
+    unsigned long long  _amplificationMode;
+    unsigned long long  _amplificationValue;
     struct { 
         unsigned long long pixelFormat; 
         unsigned long long sampleCount; 
@@ -27,23 +29,47 @@
     MTLRenderPassDescriptor * _descriptor;
     unsigned int  _dirtyBits;
     unsigned int  _encoderState;
-    /* Warning: unhandled struct encoding: '{?="isValid"B"hasBeenUsed"B"type"Q"object"@"baseLevel"Q"bufferLength"Q"bufferOffset"Q"threadgroupMemoryLength"Q"threadgroupMemoryOffset"Q"hasLodClamp"B"lodMinClamp"f"lodMaxClamp"f}]' */ struct { 
+    struct { 
         bool isValid; 
         bool hasBeenUsed; 
         unsigned long long type; 
         id object; 
+        unsigned long long baseLevel; 
+        unsigned long long bufferLength; 
+        unsigned long long bufferOffset; 
+        unsigned long long threadgroupMemoryLength; 
+        unsigned long long threadgroupMemoryOffset; 
+        bool hasLodClamp; 
+        float lodMinClamp; 
+        float lodMaxClamp; 
     }  _fragmentBuffers;
-    /* Warning: unhandled struct encoding: '{?="isValid"B"hasBeenUsed"B"type"Q"object"@"baseLevel"Q"bufferLength"Q"bufferOffset"Q"threadgroupMemoryLength"Q"threadgroupMemoryOffset"Q"hasLodClamp"B"lodMinClamp"f"lodMaxClamp"f}]' */ struct { 
+    struct { 
         bool isValid; 
         bool hasBeenUsed; 
         unsigned long long type; 
         id object; 
+        unsigned long long baseLevel; 
+        unsigned long long bufferLength; 
+        unsigned long long bufferOffset; 
+        unsigned long long threadgroupMemoryLength; 
+        unsigned long long threadgroupMemoryOffset; 
+        bool hasLodClamp; 
+        float lodMinClamp; 
+        float lodMaxClamp; 
     }  _fragmentSamplers;
-    /* Warning: unhandled struct encoding: '{?="isValid"B"hasBeenUsed"B"type"Q"object"@"baseLevel"Q"bufferLength"Q"bufferOffset"Q"threadgroupMemoryLength"Q"threadgroupMemoryOffset"Q"hasLodClamp"B"lodMinClamp"f"lodMaxClamp"f}]' */ struct { 
+    struct { 
         bool isValid; 
         bool hasBeenUsed; 
         unsigned long long type; 
         id object; 
+        unsigned long long baseLevel; 
+        unsigned long long bufferLength; 
+        unsigned long long bufferOffset; 
+        unsigned long long threadgroupMemoryLength; 
+        unsigned long long threadgroupMemoryOffset; 
+        bool hasLodClamp; 
+        float lodMinClamp; 
+        float lodMaxClamp; 
     }  _fragmentTextures;
     unsigned long long  _frontFacingWinding;
     unsigned int  _frontStencilRef;
@@ -97,7 +123,10 @@
         unsigned int maxIndirectSamplersPerDevice; 
         unsigned int maxViewportCount; 
         unsigned int maxCustomSamplePositions; 
+        unsigned int maxVertexAmplificationFactor; 
+        unsigned int maxVertexAmplificationCount; 
         unsigned int maxTextureBufferWidth; 
+        unsigned int maxComputeAttributes; 
         unsigned int maxFramebufferStorageBits; 
         unsigned int linearTextureArrayAlignmentBytes; 
         unsigned int linearTextureArrayAlignmentSlice; 
@@ -122,37 +151,77 @@
             struct { /* ? */ } *__value_; 
         } __end_cap_; 
     }  _scissorRects;
-    /* Warning: unhandled struct encoding: '{?="isValid"B"hasBeenUsed"B"type"Q"object"@"baseLevel"Q"bufferLength"Q"bufferOffset"Q"threadgroupMemoryLength"Q"threadgroupMemoryOffset"Q"hasLodClamp"B"lodMinClamp"f"lodMaxClamp"f}' */ struct { 
+    struct { 
         bool isValid; 
         bool hasBeenUsed; 
         unsigned long long type; 
         id object; 
+        unsigned long long baseLevel; 
+        unsigned long long bufferLength; 
+        unsigned long long bufferOffset; 
+        unsigned long long threadgroupMemoryLength; 
+        unsigned long long threadgroupMemoryOffset; 
+        bool hasLodClamp; 
+        float lodMinClamp; 
+        float lodMaxClamp; 
     }  _tessellationFactorBufferArgument;
     unsigned long long  _tessellationFactorBufferInstanceStride;
     float  _tessellationFactorScale;
-    /* Warning: unhandled struct encoding: '{?="isValid"B"hasBeenUsed"B"type"Q"object"@"baseLevel"Q"bufferLength"Q"bufferOffset"Q"threadgroupMemoryLength"Q"threadgroupMemoryOffset"Q"hasLodClamp"B"lodMinClamp"f"lodMaxClamp"f}]' */ struct { 
+    struct { 
         bool isValid; 
         bool hasBeenUsed; 
         unsigned long long type; 
         id object; 
+        unsigned long long baseLevel; 
+        unsigned long long bufferLength; 
+        unsigned long long bufferOffset; 
+        unsigned long long threadgroupMemoryLength; 
+        unsigned long long threadgroupMemoryOffset; 
+        bool hasLodClamp; 
+        float lodMinClamp; 
+        float lodMaxClamp; 
     }  _threadgroupMemoryArguments;
-    /* Warning: unhandled struct encoding: '{?="isValid"B"hasBeenUsed"B"type"Q"object"@"baseLevel"Q"bufferLength"Q"bufferOffset"Q"threadgroupMemoryLength"Q"threadgroupMemoryOffset"Q"hasLodClamp"B"lodMinClamp"f"lodMaxClamp"f}]' */ struct { 
+    struct { 
         bool isValid; 
         bool hasBeenUsed; 
         unsigned long long type; 
         id object; 
+        unsigned long long baseLevel; 
+        unsigned long long bufferLength; 
+        unsigned long long bufferOffset; 
+        unsigned long long threadgroupMemoryLength; 
+        unsigned long long threadgroupMemoryOffset; 
+        bool hasLodClamp; 
+        float lodMinClamp; 
+        float lodMaxClamp; 
     }  _tileBuffers;
-    /* Warning: unhandled struct encoding: '{?="isValid"B"hasBeenUsed"B"type"Q"object"@"baseLevel"Q"bufferLength"Q"bufferOffset"Q"threadgroupMemoryLength"Q"threadgroupMemoryOffset"Q"hasLodClamp"B"lodMinClamp"f"lodMaxClamp"f}]' */ struct { 
+    struct { 
         bool isValid; 
         bool hasBeenUsed; 
         unsigned long long type; 
         id object; 
+        unsigned long long baseLevel; 
+        unsigned long long bufferLength; 
+        unsigned long long bufferOffset; 
+        unsigned long long threadgroupMemoryLength; 
+        unsigned long long threadgroupMemoryOffset; 
+        bool hasLodClamp; 
+        float lodMinClamp; 
+        float lodMaxClamp; 
     }  _tileSamplers;
-    /* Warning: unhandled struct encoding: '{?="isValid"B"hasBeenUsed"B"type"Q"object"@"baseLevel"Q"bufferLength"Q"bufferOffset"Q"threadgroupMemoryLength"Q"threadgroupMemoryOffset"Q"hasLodClamp"B"lodMinClamp"f"lodMaxClamp"f}]' */ struct { 
+    struct { 
         bool isValid; 
         bool hasBeenUsed; 
         unsigned long long type; 
         id object; 
+        unsigned long long baseLevel; 
+        unsigned long long bufferLength; 
+        unsigned long long bufferOffset; 
+        unsigned long long threadgroupMemoryLength; 
+        unsigned long long threadgroupMemoryOffset; 
+        bool hasLodClamp; 
+        float lodMinClamp; 
+        float lodMaxClamp; 
     }  _tileTextures;
     unsigned long long  _triangleFillMode;
     unsigned int  _unknownStoreActions;
@@ -161,24 +230,49 @@
             __begin_ ***__first_; 
         } __map_; 
     }  _updatedFences;
-    /* Warning: unhandled struct encoding: '{?="isValid"B"hasBeenUsed"B"type"Q"object"@"baseLevel"Q"bufferLength"Q"bufferOffset"Q"threadgroupMemoryLength"Q"threadgroupMemoryOffset"Q"hasLodClamp"B"lodMinClamp"f"lodMaxClamp"f}]' */ struct { 
+    unsigned long long  _vertexAmplificationCount;
+    struct { 
         bool isValid; 
         bool hasBeenUsed; 
         unsigned long long type; 
         id object; 
+        unsigned long long baseLevel; 
+        unsigned long long bufferLength; 
+        unsigned long long bufferOffset; 
+        unsigned long long threadgroupMemoryLength; 
+        unsigned long long threadgroupMemoryOffset; 
+        bool hasLodClamp; 
+        float lodMinClamp; 
+        float lodMaxClamp; 
     }  _vertexBuffers;
     struct { unsigned long long x1; unsigned long long x2; } * _vertexBuiltinArguments;
-    /* Warning: unhandled struct encoding: '{?="isValid"B"hasBeenUsed"B"type"Q"object"@"baseLevel"Q"bufferLength"Q"bufferOffset"Q"threadgroupMemoryLength"Q"threadgroupMemoryOffset"Q"hasLodClamp"B"lodMinClamp"f"lodMaxClamp"f}]' */ struct { 
+    struct { 
         bool isValid; 
         bool hasBeenUsed; 
         unsigned long long type; 
         id object; 
+        unsigned long long baseLevel; 
+        unsigned long long bufferLength; 
+        unsigned long long bufferOffset; 
+        unsigned long long threadgroupMemoryLength; 
+        unsigned long long threadgroupMemoryOffset; 
+        bool hasLodClamp; 
+        float lodMinClamp; 
+        float lodMaxClamp; 
     }  _vertexSamplers;
-    /* Warning: unhandled struct encoding: '{?="isValid"B"hasBeenUsed"B"type"Q"object"@"baseLevel"Q"bufferLength"Q"bufferOffset"Q"threadgroupMemoryLength"Q"threadgroupMemoryOffset"Q"hasLodClamp"B"lodMinClamp"f"lodMaxClamp"f}]' */ struct { 
+    struct { 
         bool isValid; 
         bool hasBeenUsed; 
         unsigned long long type; 
         id object; 
+        unsigned long long baseLevel; 
+        unsigned long long bufferLength; 
+        unsigned long long bufferOffset; 
+        unsigned long long threadgroupMemoryLength; 
+        unsigned long long threadgroupMemoryOffset; 
+        bool hasLodClamp; 
+        float lodMinClamp; 
+        float lodMaxClamp; 
     }  _vertexTextures;
     struct vector<MTLViewport, std::__1::allocator<MTLViewport> > { 
         struct { /* ? */ } *__begin_; 
@@ -215,7 +309,7 @@
 @property (nonatomic, readonly) unsigned long long resolvedSampleCount;
 @property (nonatomic, readonly) struct { unsigned long long x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; } scissorRect;
 @property (nonatomic, readonly) /* Warning: unhandled struct encoding: '{vector<MTLScissorRect' */ struct *scissorRects; /* unknown property attribute:  std::__1::allocator<MTLScissorRect> >=^{?}}} */
-@property (nonatomic, readonly) struct { bool x1; bool x2; unsigned long long x3; id x4; unsigned long long x5; unsigned long long x6; unsigned long long x7; unsigned long long x8; bool x9; float x10; float x11; } tessellationFactorBufferArgument;
+@property (nonatomic, readonly) struct { bool x1; bool x2; unsigned long long x3; id x4; unsigned long long x5; unsigned long long x6; unsigned long long x7; unsigned long long x8; unsigned long long x9; bool x10; float x11; float x12; } tessellationFactorBufferArgument;
 @property (nonatomic, readonly) unsigned long long tessellationFactorBufferInstanceStride;
 @property (nonatomic, readonly) float tessellationFactorScale;
 @property (nonatomic, readonly) unsigned long long triangleFillMode;
@@ -272,6 +366,7 @@
 - (void)enumerateVertexBuffersUsingBlock:(id /* block */)arg1;
 - (void)enumerateVertexSamplersUsingBlock:(id /* block */)arg1;
 - (void)enumerateVertexTexturesUsingBlock:(id /* block */)arg1;
+- (void)executeCommandsInBuffer:(id)arg1 indirectBuffer:(id)arg2 indirectBufferOffset:(unsigned long long)arg3;
 - (void)executeCommandsInBuffer:(id)arg1 withRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (void)filterCounterRangeWithFirstBatch:(unsigned int)arg1 lastBatch:(unsigned int)arg2 filterIndex:(unsigned int)arg3;
 - (id)formattedDescription:(unsigned long long)arg1;
@@ -336,7 +431,11 @@
 - (void)setTileSamplerStates:(const id*)arg1 withRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (void)setTileTexture:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)setTileTextures:(const id*)arg1 withRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
+- (void)setTransformFeedbackState:(unsigned long long)arg1;
 - (void)setTriangleFillMode:(unsigned long long)arg1;
+- (void)setTriangleFrontFillMode:(unsigned long long)arg1 backFillMode:(unsigned long long)arg2;
+- (void)setVertexAmplificationCount:(unsigned long long)arg1 viewMappings:(const struct { unsigned int x1; unsigned int x2; }*)arg2;
+- (void)setVertexAmplificationMode:(unsigned long long)arg1 value:(unsigned long long)arg2;
 - (void)setVertexBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setVertexBufferOffset:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)setVertexBuffers:(const id*)arg1 offsets:(const unsigned long long*)arg2 withRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3;
@@ -351,16 +450,20 @@
 - (void)setViewport:(struct { double x1; double x2; double x3; double x4; double x5; double x6; })arg1;
 - (void)setViewports:(const struct { double x1; double x2; double x3; double x4; double x5; double x6; }*)arg1 count:(unsigned long long)arg2;
 - (void)setVisibilityResultMode:(unsigned long long)arg1 offset:(unsigned long long)arg2;
-- (struct { bool x1; bool x2; unsigned long long x3; id x4; unsigned long long x5; unsigned long long x6; unsigned long long x7; unsigned long long x8; bool x9; float x10; float x11; })tessellationFactorBufferArgument;
+- (struct { bool x1; bool x2; unsigned long long x3; id x4; unsigned long long x5; unsigned long long x6; unsigned long long x7; unsigned long long x8; unsigned long long x9; bool x10; float x11; float x12; })tessellationFactorBufferArgument;
 - (unsigned long long)tessellationFactorBufferInstanceStride;
 - (float)tessellationFactorScale;
 - (unsigned long long)triangleFillMode;
 - (void)updateFence:(id)arg1 afterStages:(unsigned long long)arg2;
 - (void)updatePipelineData;
 - (void)useHeap:(id)arg1;
+- (void)useHeap:(id)arg1 stages:(unsigned long long)arg2;
 - (void)useHeaps:(const id*)arg1 count:(unsigned long long)arg2;
+- (void)useHeaps:(const id*)arg1 count:(unsigned long long)arg2 stages:(unsigned long long)arg3;
 - (void)useResource:(id)arg1 usage:(unsigned long long)arg2;
+- (void)useResource:(id)arg1 usage:(unsigned long long)arg2 stages:(unsigned long long)arg3;
 - (void)useResources:(const id*)arg1 count:(unsigned long long)arg2 usage:(unsigned long long)arg3;
+- (void)useResources:(const id*)arg1 count:(unsigned long long)arg2 usage:(unsigned long long)arg3 stages:(unsigned long long)arg4;
 - (void)validateCommonDrawErrors:(unsigned long long)arg1 instanceCount:(unsigned long long)arg2 baseInstance:(unsigned long long)arg3 maxVertexID:(unsigned long long)arg4;
 - (void)validateDrawIndexedPrimitives:(unsigned long long)arg1 indexCount:(unsigned long long)arg2 indexType:(unsigned long long)arg3 indexBuffer:(id)arg4 indexBufferOffset:(unsigned long long)arg5 instanceCount:(unsigned long long)arg6 function:(const char *)arg7;
 - (void)validateDrawPrimitives:(unsigned long long)arg1 vertexStart:(unsigned long long)arg2 vertexCount:(unsigned long long)arg3 instanceCount:(unsigned long long)arg4 function:(const char *)arg5;

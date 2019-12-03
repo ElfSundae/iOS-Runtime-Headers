@@ -6,14 +6,16 @@
     long long  _appErrorCode;
     NSString * _appErrorDomain;
     struct { 
-        unsigned int appErrorCode : 1; 
-    }  _has;
+        unsigned int has_appErrorCode : 1; 
+    }  _flags;
 }
 
 @property (nonatomic) long long appErrorCode;
 @property (nonatomic, retain) NSString *appErrorDomain;
 @property (nonatomic) bool hasAppErrorCode;
 @property (nonatomic, readonly) bool hasAppErrorDomain;
+
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (long long)appErrorCode;
@@ -27,6 +29,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAppErrorCode:(long long)arg1;
 - (void)setAppErrorDomain:(id)arg1;

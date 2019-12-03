@@ -5,6 +5,7 @@
 
 @required
 
+- (void)addInjectedEvent:(NSDictionary *)arg1;
 - (bool)repeatLastGuidanceAnnouncement:(MNLocation *)arg1;
 - (void)stop;
 - (double)timeSinceLastAnnouncement;

@@ -4,4 +4,9 @@
 
 @interface EKReminderChange : EKCalendarItemChange
 
++ (int)entityType;
++ (void)fetchReminderChangesInCalendar:(id)arg1 resultHandler:(id /* block */)arg2;
++ (void)fetchReminderChangesInSource:(id)arg1 resultHandler:(id /* block */)arg2;
++ (void)fetchReminderChangesInStore:(id)arg1 resultHandler:(id /* block */)arg2;
+
 @end

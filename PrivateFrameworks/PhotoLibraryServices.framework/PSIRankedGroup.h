@@ -10,7 +10,7 @@
 @property (nonatomic, readonly) PSIGroup *group;
 @property (nonatomic) double score;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)group;
 - (id)initWithGroup:(id)arg1 score:(double)arg2;
 - (double)score;

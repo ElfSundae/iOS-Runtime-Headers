@@ -29,7 +29,6 @@
 - (void)cancelLoading;
 - (void)dealloc;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })duration;
-- (void)finalize;
 - (unsigned long long)hash;
 - (id)initWithURL:(id)arg1 playbackItem:(struct OpaqueFigPlaybackItem { }*)arg2 trackIDs:(id)arg3 dynamicBehavior:(bool)arg4;
 - (bool)isEqual:(id)arg1;

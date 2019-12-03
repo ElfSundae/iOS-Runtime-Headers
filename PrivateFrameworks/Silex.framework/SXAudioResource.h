@@ -11,6 +11,4 @@
 @property (nonatomic, readonly) NSString *identifier;
 @property (readonly) Class superclass;
 
-+ (id)typeString;
-
 @end

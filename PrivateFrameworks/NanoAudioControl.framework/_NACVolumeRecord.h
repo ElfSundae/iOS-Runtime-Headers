@@ -9,6 +9,7 @@
     bool  _volumeControlAvailable;
     float  _volumeValue;
     bool  _volumeWarningEnabled;
+    long long  _volumeWarningState;
 }
 
 @property (nonatomic) float EUVolumeLimit;
@@ -17,6 +18,7 @@
 @property (getter=isVolumeControlAvailable, nonatomic) bool volumeControlAvailable;
 @property (nonatomic) float volumeValue;
 @property (getter=isVolumeWarningEnabled, nonatomic) bool volumeWarningEnabled;
+@property (nonatomic) long long volumeWarningState;
 
 + (bool)supportsSecureCoding;
 
@@ -33,6 +35,8 @@
 - (void)setVolumeControlAvailable:(bool)arg1;
 - (void)setVolumeValue:(float)arg1;
 - (void)setVolumeWarningEnabled:(bool)arg1;
+- (void)setVolumeWarningState:(long long)arg1;
 - (float)volumeValue;
+- (long long)volumeWarningState;
 
 @end

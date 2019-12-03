@@ -28,6 +28,7 @@
 // Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 
 + (bool)_supportsTouchContinuation;
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (double)_allowableSeparation;
@@ -85,9 +86,5 @@
 // Image: /System/Library/PrivateFrameworks/AnnotationKit.framework/AnnotationKit
 
 - (unsigned long long)akNumberOfTapsRequired;
-
-// Image: /System/Library/PrivateFrameworks/IMSharedUtilities.framework/Frameworks/XCTest.framework/XCTest
-
-- (id)_automationName;
 
 @end

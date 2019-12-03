@@ -16,5 +16,6 @@
 - (bool)hasSecondaryValue;
 - (id)primaryValueConstraints;
 - (id)secondaryValueConstraints;
+- (bool)supportsTouchContinuation;
 
 @end

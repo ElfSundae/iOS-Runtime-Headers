@@ -9,6 +9,7 @@
     long long  proximity;
     NSUUID * proximityUUID;
     long long  rssi;
+    double  timestamp;
 }
 
 @end

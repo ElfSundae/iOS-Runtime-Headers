@@ -16,7 +16,7 @@
 
 - (id)_valueToFaceBundleStringDict;
 - (unsigned long long)color;
-- (bool)optionExistsInOSVersion:(unsigned int)arg1;
+- (bool)optionExistsInDevice:(id)arg1;
 - (long long)swatchStyle;
 
 @end

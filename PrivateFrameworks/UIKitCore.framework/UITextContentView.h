@@ -75,6 +75,8 @@
 @property (nonatomic, readonly) UIView *textInputView;
 @property (nonatomic, readonly) <UITextInputTokenizer> *tokenizer;
 
++ (id)excludedElementsForHTML;
+
 - (void).cxx_destruct;
 - (void)_addShortcut:(id)arg1;
 - (unsigned long long)_allowedLinkTypes;
@@ -172,6 +174,7 @@
 - (void)insertDictationResult:(id)arg1 withCorrectionIdentifier:(id)arg2;
 - (id)insertDictationResultPlaceholder;
 - (void)insertText:(id)arg1;
+- (id)insertTextPlaceholderWithSize:(struct CGSize { double x1; double x2; })arg1;
 - (id)interactionAssistant;
 - (bool)isDragInteractionEnabled;
 - (bool)isEditable;
@@ -208,6 +211,7 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })rectForSelection:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (void)removeDictationResultPlaceholder:(id)arg1 willInsertResult:(bool)arg2;
 - (void)removeFromSuperview;
+- (void)removeTextPlaceholder:(id)arg1;
 - (void)replace:(id)arg1;
 - (void)replaceRange:(id)arg1 withText:(id)arg2;
 - (void)resetDataDetectorsResultsWithWebLock;

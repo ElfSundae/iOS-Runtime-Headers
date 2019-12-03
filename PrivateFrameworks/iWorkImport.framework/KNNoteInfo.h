@@ -14,6 +14,7 @@
             double height; 
         } size; 
     }  _frameForPrinting;
+    unsigned long long  _initialCharacterIndexForExporting;
     NSObject<TSDContainerInfo> * _parentInfo;
     bool  _shrinkTextForPrinting;
     NSObject<TSDContainerInfo> * parentInfo;
@@ -23,7 +24,7 @@
 @property (getter=isAttachedToBodyText, nonatomic, readonly) bool attachedToBodyText;
 @property (nonatomic, readonly) bool autoListRecognition;
 @property (nonatomic, readonly) bool autoListTermination;
-@property (nonatomic, readonly) NSArray *childInfos;
+@property (nonatomic, readonly, copy) NSArray *childInfos;
 @property (nonatomic, retain) TSWPStorage *containedStorage;
 @property (nonatomic, readonly) long long contentWritingDirection;
 @property (readonly, copy) NSString *debugDescription;
@@ -32,7 +33,9 @@
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } frameForPrinting;
 @property (nonatomic, copy) TSDInfoGeometry *geometry;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned long long initialCharacterIndexForExporting;
 @property (getter=isInlineWithText, nonatomic, readonly) bool inlineWithText;
+@property (nonatomic, readonly) bool isMaster;
 @property (nonatomic) bool matchesObjectPlaceholderGeometry;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
 @property (nonatomic, readonly) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
@@ -64,6 +67,7 @@
 - (id)infoForSelectionPath:(id)arg1;
 - (id)initWithContext:(id)arg1;
 - (id)initWithContext:(id)arg1 containedStorage:(id)arg2;
+- (unsigned long long)initialCharacterIndexForExporting;
 - (bool)isAnchoredToText;
 - (bool)isAttachedToBodyText;
 - (bool)isFloatingAboveText;
@@ -71,7 +75,7 @@
 - (bool)isSelectable;
 - (bool)isThemeContent;
 - (Class)layoutClass;
-- (void)loadFromArchive:(const struct NoteArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct Reference {} *x5; }*)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const struct NoteArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct Reference {} *x5; }*)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)objectUUIDPath;
 - (id)owningAttachment;
@@ -80,11 +84,12 @@
 - (bool)preventsChangeTracking;
 - (bool)preventsComments;
 - (Class)repClass;
-- (void)saveToArchive:(struct NoteArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct Reference {} *x5; }*)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(struct NoteArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct Reference {} *x5; }*)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)setContainedStorage:(id)arg1;
 - (void)setFrameForPrinting:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setGeometry:(id)arg1;
+- (void)setInitialCharacterIndexForExporting:(unsigned long long)arg1;
 - (void)setOwningAttachment:(id)arg1;
 - (void)setParentInfo:(id)arg1;
 - (void)setPrimitiveGeometry:(id)arg1;

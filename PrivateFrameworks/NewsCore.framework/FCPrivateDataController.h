@@ -56,6 +56,8 @@
 + (bool)requiresPushNotificationSupport;
 
 - (void).cxx_destruct;
+- (id)_allKnownRecordIDsForSyncManager:(id)arg1;
+- (void)_handleSyncDidResetLocalDataForSyncManager:(id)arg1;
 - (void)_markAsDirtyAndNotifyObservers:(bool)arg1;
 - (id)_newSyncState;
 - (void)_notifyObservers;
@@ -67,6 +69,7 @@
 - (void)addCommandToCommandQueue:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)addStateObserver:(id)arg1;
+- (id)allKnownRecordNamesWithinRecordZoneWithID:(id)arg1;
 - (void)assertReadyForUse;
 - (bool)canHelpPruneZoneName:(id)arg1;
 - (bool)canHelpRestoreZoneName:(id)arg1;
@@ -79,8 +82,10 @@
 - (void)disableSyncing;
 - (void)enableSyncing;
 - (void)forceSyncWithCompletion:(id /* block */)arg1;
+- (void)handleResetWithReplacementRecords:(id)arg1;
 - (void)handleSyncCompletion;
-- (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordIDs:(id)arg2;
+- (void)handleSyncDidResetLocalDataForRecordZoneWithID:(id)arg1;
+- (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordNames:(id)arg2;
 - (bool)hasBeenPreparedForUse;
 - (id)init;
 - (id)initWithContext:(id)arg1 pushNotificationCenter:(id)arg2 storeDirectory:(id)arg3;
@@ -91,7 +96,7 @@
 - (id)jsonEncodableObject;
 - (void)loadLocalCachesFromStore;
 - (id)localStore;
-- (void)manualDirty;
+- (void)markAsDirty;
 - (void)mergeLocalStoreWithCloud;
 - (id)observers;
 - (void)performFirstSyncWithCallbackQueue:(id)arg1 completion:(id /* block */)arg2;

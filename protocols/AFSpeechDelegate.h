@@ -5,10 +5,8 @@
 
 @optional
 
-- (void)assistantConnection:(AFConnection *)arg1 recognitionUpdateDidFinishWithError:(NSError *)arg2;
 - (void)assistantConnection:(AFConnection *)arg1 recognitionUpdateWillBeginForTask:(NSString *)arg2;
 - (void)assistantConnection:(AFConnection *)arg1 recognitionUpdateWithPhrases:(NSArray *)arg2 utterances:(NSArray *)arg3 refId:(NSString *)arg4;
-- (void)assistantConnection:(AFConnection *)arg1 recognitionWithPhrases:(NSArray *)arg2 utterances:(NSArray *)arg3;
 - (void)assistantConnection:(AFConnection *)arg1 recognizedAdditionalSpeechInterpretation:(AFSpeechInterpretation *)arg2 refId:(NSString *)arg3;
 - (void)assistantConnection:(AFConnection *)arg1 speechRecognitionDidFail:(NSError *)arg2;
 - (void)assistantConnection:(AFConnection *)arg1 speechRecognized:(SASSpeechRecognized *)arg2;

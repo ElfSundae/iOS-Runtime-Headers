@@ -9,6 +9,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (id)parentRepForMagnification;
 - (void)updateFromLayout;
 
 @end

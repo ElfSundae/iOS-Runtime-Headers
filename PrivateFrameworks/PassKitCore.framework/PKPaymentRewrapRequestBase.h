@@ -16,7 +16,7 @@
 @property (nonatomic, retain) PKWrappedPayment *wrappedPayment;
 
 - (void).cxx_destruct;
-- (id)_urlRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 appleAccountInformation:(id)arg3;
+- (id)_urlRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 rewrapData:(id)arg3 appleAccountInformation:(id)arg4;
 - (id)applicationData;
 - (id)bodyDictionary;
 - (id)endpointName;

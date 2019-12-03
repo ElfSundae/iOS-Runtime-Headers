@@ -5,7 +5,6 @@
 @interface CKTranscriptPreviewController : CKViewController <CKTranscriptCollectionViewControllerDelegate> {
     CKTranscriptCollectionView * _collectionView;
     CKConversation * _conversation;
-    NSObject<CKTranscriptPreviewControllerDelegate> * _delegate;
     struct UIEdgeInsets { 
         double top; 
         double left; 
@@ -18,7 +17,6 @@
 @property (nonatomic, retain) CKTranscriptCollectionView *collectionView;
 @property (nonatomic, retain) CKConversation *conversation;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) NSObject<CKTranscriptPreviewControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } layoutMargins;
@@ -28,22 +26,22 @@
 - (void).cxx_destruct;
 - (id)collectionView;
 - (id)conversation;
-- (void)dealloc;
-- (id)delegate;
 - (id)initWithConversation:(id)arg1 transcriptWidth:(double)arg2 layoutMargins:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg3;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })layoutMargins;
 - (void)loadView;
-- (id)previewActions;
 - (void)setCollectionView:(id)arg1;
 - (void)setConversation:(id)arg1;
-- (void)setDelegate:(id)arg1;
 - (void)setLayoutMargins:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setTranscriptWidth:(double)arg1;
 - (id)textInputContextIdentifier;
+- (id)traitCollectionForTranscriptCollectionViewController:(id)arg1;
 - (void)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 doubleTappedItemAtIndexPath:(id)arg3;
 - (void)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 longPressedForItemWithIndexPath:(id)arg3;
 - (void)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 tappedForChatItem:(id)arg3;
+- (bool)transcriptCollectionViewController:(id)arg1 balloonViewDidRequestCommitPayload:(id)arg2 forPlugin:(id)arg3 allowAllCommits:(bool)arg4 error:(id*)arg5;
+- (bool)transcriptCollectionViewController:(id)arg1 balloonViewDidRequestCommitSticker:(id)arg2 forPlugin:(id)arg3 allowAllCommits:(bool)arg4 error:(id*)arg5;
 - (void)transcriptCollectionViewController:(id)arg1 balloonViewDidRequestPresentationStyle:(unsigned long long)arg2 forChatItem:(id)arg3 allowAllStyles:(bool)arg4;
+- (void)transcriptCollectionViewController:(id)arg1 balloonViewDidRequestStartEditingPayload:(id)arg2 forPlugin:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)transcriptCollectionViewController:(id)arg1 balloonViewTitleTappedForItemWithIndexPath:(id)arg2;
 - (void)transcriptCollectionViewController:(id)arg1 collectionViewContentSizeDidChange:(struct CGSize { double x1; double x2; })arg2;
 - (void)transcriptCollectionViewController:(id)arg1 didDeselectItemAtIndexPath:(id)arg2;

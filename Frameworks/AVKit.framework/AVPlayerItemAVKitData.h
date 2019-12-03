@@ -3,14 +3,14 @@
  */
 
 @interface AVPlayerItemAVKitData : NSObject <NSCopying> {
-    NSArray * _externalMetadata;
+    NSMutableDictionary * _customPropertyStorage;
 }
 
-@property (nonatomic, retain) NSArray *externalMetadata;
+@property (nonatomic, readonly) NSMutableDictionary *customPropertyStorage;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (id)externalMetadata;
-- (void)setExternalMetadata:(id)arg1;
+- (id)customPropertyStorage;
+- (id)init;
 
 @end

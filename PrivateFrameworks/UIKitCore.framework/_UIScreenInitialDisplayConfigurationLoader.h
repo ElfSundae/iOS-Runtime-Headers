@@ -5,7 +5,6 @@
 @interface _UIScreenInitialDisplayConfigurationLoader : NSObject {
     UISDisplayContext * _context;
     bool  _hasRequestedPreload;
-    NSObject<OS_dispatch_queue> * _queue;
 }
 
 @property (nonatomic, readonly) UISDisplayContext *initialDisplayContext;

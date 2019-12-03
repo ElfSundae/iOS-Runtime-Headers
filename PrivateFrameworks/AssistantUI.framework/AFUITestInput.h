@@ -3,10 +3,10 @@
  */
 
 @interface AFUITestInput : NSObject {
-    AFUIRequestOptions * _requestOptions;
+    SASRequestOptions * _requestOptions;
 }
 
-@property (nonatomic, readonly) AFUIRequestOptions *requestOptions;
+@property (nonatomic, readonly) SASRequestOptions *requestOptions;
 
 + (id)_baseRequestOptions;
 

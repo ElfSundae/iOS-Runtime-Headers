@@ -4,7 +4,6 @@
 
 @interface NSSQLAttribute : NSSQLColumn
 
-@property (getter=isConstrained, nonatomic) bool constrained;
 @property (nonatomic, readonly) NSSet *triggerKeys;
 
 - (void)_setIsBackedByTrigger:(bool)arg1;
@@ -15,10 +14,8 @@
 - (id)initForReadOnlyFetchWithExpression:(id)arg1;
 - (id)initWithEntity:(id)arg1 propertyDescription:(id)arg2;
 - (bool)isBackedByTrigger;
-- (bool)isConstrained;
+- (bool)isDerivedAttribute;
 - (bool)isFileBackedFuture;
-- (bool)isUnique;
-- (void)setConstrained:(bool)arg1;
 - (bool)shouldIndex;
 - (id)triggerKeys;
 

@@ -9,6 +9,7 @@
     id /* block */  _configurationBlock;
     id /* block */  _factory;
     <NFDefinitionContainer> * _privateAccessContainer;
+    <NFDefinitionContainer> * _privateAccessWeakContainer;
     Protocol * _protocol;
     unsigned long long  _scope;
     unsigned long long  _source;
@@ -20,7 +21,6 @@
 @property (nonatomic, retain) Class cls;
 @property (nonatomic, copy) id /* block */ configurationBlock;
 @property (nonatomic, copy) id /* block */ factory;
-@property (nonatomic, retain) <NFDefinitionContainer> *privateAccessContainer;
 @property (nonatomic, retain) Protocol *protocol;
 @property (nonatomic) unsigned long long scope;
 @property (nonatomic) unsigned long long source;
@@ -47,7 +47,6 @@
 - (void)setCls:(Class)arg1;
 - (void)setConfigurationBlock:(id /* block */)arg1;
 - (void)setFactory:(id /* block */)arg1;
-- (void)setPrivateAccessContainer:(id)arg1;
 - (void)setProtocol:(id)arg1;
 - (void)setScope:(unsigned long long)arg1;
 - (void)setSource:(unsigned long long)arg1;
@@ -56,6 +55,7 @@
 - (id /* block */)validationBlock;
 - (id)withConfiguration:(id /* block */)arg1;
 - (id)withPrivateAccessInContainer:(id)arg1;
+- (id)withPrivateAccessInWeakContainer:(id)arg1;
 - (id)withValidation:(id /* block */)arg1;
 
 @end

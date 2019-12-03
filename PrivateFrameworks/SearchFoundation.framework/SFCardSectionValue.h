@@ -7,6 +7,7 @@
     SFAppLinkCardSection * _appLinkCardSection;
     SFAudioPlaybackCardSection * _audioPlaybackCardSection;
     SFButtonCardSection * _buttonCardSection;
+    SFCompactRowCardSection * _compactRowCardSection;
     SFDescriptionCardSection * _descriptionCardSection;
     SFDetailedRowCardSection * _detailedRowCardSection;
     SFFlightCardSection * _flightCardSection;
@@ -15,6 +16,7 @@
     SFImagesCardSection * _imagesCardSection;
     SFKeyValueDataCardSection * _keyValueDataCardSection;
     SFMapCardSection * _mapCardSection;
+    SFMapPlaceCardSection * _mapPlaceCardSection;
     SFMapsDetailedRowCardSection * _mapsDetailedRowCardSection;
     SFMediaInfoCardSection * _mediaInfoCardSection;
     SFMediaPlayerCardSection * _mediaPlayerCardSection;
@@ -45,6 +47,7 @@
 @property (nonatomic, retain) SFAppLinkCardSection *appLinkCardSection;
 @property (nonatomic, retain) SFAudioPlaybackCardSection *audioPlaybackCardSection;
 @property (nonatomic, retain) SFButtonCardSection *buttonCardSection;
+@property (nonatomic, retain) SFCompactRowCardSection *compactRowCardSection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) SFDescriptionCardSection *descriptionCardSection;
@@ -58,6 +61,7 @@
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic, retain) SFKeyValueDataCardSection *keyValueDataCardSection;
 @property (nonatomic, retain) SFMapCardSection *mapCardSection;
+@property (nonatomic, retain) SFMapPlaceCardSection *mapPlaceCardSection;
 @property (nonatomic, retain) SFMapsDetailedRowCardSection *mapsDetailedRowCardSection;
 @property (nonatomic, retain) SFMediaInfoCardSection *mediaInfoCardSection;
 @property (nonatomic, retain) SFMediaPlayerCardSection *mediaPlayerCardSection;
@@ -91,6 +95,7 @@
 - (id)appLinkCardSection;
 - (id)audioPlaybackCardSection;
 - (id)buttonCardSection;
+- (id)compactRowCardSection;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)descriptionCardSection;
 - (id)detailedRowCardSection;
@@ -105,6 +110,7 @@
 - (id)jsonData;
 - (id)keyValueDataCardSection;
 - (id)mapCardSection;
+- (id)mapPlaceCardSection;
 - (id)mapsDetailedRowCardSection;
 - (id)mediaInfoCardSection;
 - (id)mediaPlayerCardSection;
@@ -122,6 +128,7 @@
 - (void)setAppLinkCardSection:(id)arg1;
 - (void)setAudioPlaybackCardSection:(id)arg1;
 - (void)setButtonCardSection:(id)arg1;
+- (void)setCompactRowCardSection:(id)arg1;
 - (void)setDescriptionCardSection:(id)arg1;
 - (void)setDetailedRowCardSection:(id)arg1;
 - (void)setFlightCardSection:(id)arg1;
@@ -130,6 +137,7 @@
 - (void)setImagesCardSection:(id)arg1;
 - (void)setKeyValueDataCardSection:(id)arg1;
 - (void)setMapCardSection:(id)arg1;
+- (void)setMapPlaceCardSection:(id)arg1;
 - (void)setMapsDetailedRowCardSection:(id)arg1;
 - (void)setMediaInfoCardSection:(id)arg1;
 - (void)setMediaPlayerCardSection:(id)arg1;

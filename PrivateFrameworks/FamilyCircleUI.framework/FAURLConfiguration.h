@@ -4,19 +4,9 @@
 
 @interface FAURLConfiguration : NSObject
 
-+ (id)acceptFamilyInviteV2URL;
-+ (id)addChildAccountV2URL;
-+ (id)addFamilyMemberInlineV2URL;
-+ (id)addFamilyMemberV2URL;
-+ (id)familyInviteSentV2URL;
-+ (id)familyMemberDetailsUIV2URL;
-+ (id)fetchFamilyInviteV2URL;
-+ (id)getFamilyInvitationsUIURL;
-+ (id)initiateFamilyV2URL;
-+ (id)inviteViaMessagesURL;
++ (void)URLForEndpoint:(id)arg1 withCompletion:(id /* block */)arg2;
++ (void)fetchAAURLConfigurationWithCompletion:(id /* block */)arg1;
 + (id)new;
-+ (id)startFamilyInviteV2URL;
-+ (id)urlForKey:(id)arg1 error:(id*)arg2;
 
 - (id)init;
 

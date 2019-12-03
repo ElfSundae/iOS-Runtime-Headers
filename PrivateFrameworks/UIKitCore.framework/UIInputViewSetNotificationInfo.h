@@ -3,6 +3,7 @@
  */
 
 @interface UIInputViewSetNotificationInfo : NSObject {
+    bool  _assistantOnScreenOnly;
     struct CGPoint { 
         double x; 
         double y; 
@@ -49,6 +50,7 @@
     bool  _wasCausedRemotely;
 }
 
+@property (nonatomic) bool assistantOnScreenOnly;
 @property (nonatomic) struct CGPoint { double x1; double x2; } beginCenter;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } beginFrame;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } bounds;
@@ -65,6 +67,7 @@
 
 + (id)info;
 
+- (bool)assistantOnScreenOnly;
 - (struct CGPoint { double x1; double x2; })beginCenter;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })beginFrame;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })bounds;
@@ -84,6 +87,7 @@
 - (void)populateWithAnimationStyle:(id)arg1;
 - (id)privateUserInfo;
 - (id)rotationUserInfo;
+- (void)setAssistantOnScreenOnly:(bool)arg1;
 - (void)setBeginCenter:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setBeginFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;

@@ -9,9 +9,9 @@
 
 + (id)styleMatrixReferenceWithMatrixIndex:(unsigned long long)arg1 color:(id)arg2;
 
+- (void).cxx_destruct;
 - (id)color;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)initWithMatrixIndex:(unsigned long long)arg1 color:(id)arg2;
 - (unsigned long long)matrixIndex;

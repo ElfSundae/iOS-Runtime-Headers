@@ -7,10 +7,12 @@
 
 - (NSArray *)allViewControllers;
 - (<SKUITabBarControllerDelegate> *)delegate;
+- (long long)forcedUserInterfaceStyle;
 - (void)hideBarWithTransition:(int)arg1;
 - (unsigned long long)selectedIndex;
 - (UIViewController *)selectedViewController;
 - (void)setDelegate:(id <SKUITabBarControllerDelegate>)arg1;
+- (void)setForcedUserInterfaceStyle:(long long)arg1;
 - (void)setSelectedIndex:(unsigned long long)arg1;
 - (void)setSelectedViewController:(UIViewController *)arg1;
 - (void)setTransientViewController:(UIViewController *)arg1;
@@ -27,6 +29,5 @@
 - (UIViewController *)floatingOverlayViewController;
 - (UINavigationController *)moreNavigationController;
 - (void)setFloatingOverlayViewController:(UIViewController *)arg1 animated:(bool)arg2;
-- (void)setTabBarBackdropStyle:(long long)arg1;
 
 @end

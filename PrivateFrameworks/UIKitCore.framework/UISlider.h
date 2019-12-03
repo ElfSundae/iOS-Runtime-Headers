@@ -15,6 +15,7 @@
     float  _maxValue;
     UIImageView * _maxValueImageView;
     UIColor * _minTintColor;
+    UIView * _minTrackClipView;
     UIImageView * _minTrackView;
     float  _minValue;
     UIImageView * _minValueImageView;
@@ -35,7 +36,6 @@
     UIView * _thumbViewNeue;
     NSArray * _trackColors;
     bool  _trackIsArtworkBased;
-    bool  _useLookNeue;
     float  _value;
 }
 
@@ -61,6 +61,7 @@
 // Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 
 + (bool)_allowActionsToQueue;
++ (id)_modernThumbImageWithTraitCollection:(id)arg1 tintColor:(id)arg2;
 
 - (void).cxx_destruct;
 - (id)__distributionStatisticsForUserInteractionDuration;
@@ -101,19 +102,21 @@
 - (void)_setModulationFeedbackGenerator:(id)arg1;
 - (void)_setThumbEnabled:(bool)arg1;
 - (void)_setThumbImage:(id)arg1 forStates:(unsigned long long)arg2;
-- (void)_setThumbTintColor:(id)arg1 forStates:(unsigned long long)arg2;
 - (void)_setTrackEnabled:(bool)arg1;
 - (void)_setUseLookNeue:(bool)arg1;
 - (void)_setValue:(float)arg1 andSendAction:(bool)arg2;
 - (void)_setValue:(float)arg1 minValue:(float)arg2 maxValue:(float)arg3 andSendAction:(bool)arg4;
 - (void)_setupFeedback;
-- (void)_sliderAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
-- (void)_sliderAnimationWillStart:(id)arg1 context:(id)arg2;
+- (bool)_shouldBeginTrackingAtPoint:(struct CGPoint { double x1; double x2; })arg1 pointInKnob:(struct CGPoint { double x1; double x2; }*)arg2 inKnob:(bool*)arg3;
+- (void)_sliderAnimationDidStop:(bool)arg1;
+- (void)_sliderAnimationWillStart;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_thumbHitEdgeInsets;
 - (id)_thumbImageForState:(unsigned long long)arg1;
 - (bool)_trackEnabled;
+- (void)_traitCollectionDidChangeInternal:(const struct _UITraitCollectionChangeDescription { id x1; id x2; bool x3; bool x4; bool x5; bool x6; bool x7; bool x8; bool x9; bool x10; bool x11; }*)arg1;
 - (void)_updateAppearanceForEnabled:(bool)arg1;
 - (void)_updateMaxTrackColorForInitialization:(bool)arg1;
+- (void)_updateMinimumTrackTintColor;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })alignmentRectInsets;
 - (bool)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (bool)cancelMouseTracking;

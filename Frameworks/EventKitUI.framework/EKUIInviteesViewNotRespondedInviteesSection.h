@@ -14,6 +14,7 @@
     NSMutableDictionary * _participantAddressesToAvailabilityType;
     NSMutableDictionary * _participantAddressesToParticipantIndex;
     id /* block */  _participantRemoved;
+    id /* block */  _participantSetRole;
     id /* block */  _participantTapped;
     NSMutableArray * _participants;
     unsigned long long  _reuseIdentifierVersion;
@@ -34,6 +35,7 @@
 @property (nonatomic, retain) NSMutableDictionary *participantAddressesToAvailabilityType;
 @property (nonatomic, retain) NSMutableDictionary *participantAddressesToParticipantIndex;
 @property (nonatomic, copy) id /* block */ participantRemoved;
+@property (nonatomic, copy) id /* block */ participantSetRole;
 @property (nonatomic, copy) id /* block */ participantTapped;
 @property (nonatomic, retain) NSMutableArray *participants;
 @property (nonatomic) unsigned long long reuseIdentifierVersion;
@@ -57,6 +59,7 @@
 - (void)_setParticipantIndex:(id)arg1 forParticipantAddress:(id)arg2;
 - (void)_updateCell:(id)arg1 forParticipantAtIndex:(long long)arg2 animated:(bool)arg3;
 - (void)_updateCellForParticipantWithAddress:(id)arg1;
+- (id)actionsForRow:(id)arg1;
 - (id /* block */)addInviteesTapped;
 - (id)availabilityRequestsQueue;
 - (id)cachedAddInviteeCellReuseIdentifier;
@@ -80,6 +83,7 @@
 - (id)participantAddressesToAvailabilityType;
 - (id)participantAddressesToParticipantIndex;
 - (id /* block */)participantRemoved;
+- (id /* block */)participantSetRole;
 - (id /* block */)participantTapped;
 - (id)participants;
 - (void)reloadAndRegisterReusableCellsWithTableView:(id)arg1;
@@ -97,6 +101,7 @@
 - (void)setParticipantAddressesToAvailabilityType:(id)arg1;
 - (void)setParticipantAddressesToParticipantIndex:(id)arg1;
 - (void)setParticipantRemoved:(id /* block */)arg1;
+- (void)setParticipantSetRole:(id /* block */)arg1;
 - (void)setParticipantTapped:(id /* block */)arg1;
 - (void)setParticipants:(id)arg1;
 - (void)setReuseIdentifierVersion:(unsigned long long)arg1;

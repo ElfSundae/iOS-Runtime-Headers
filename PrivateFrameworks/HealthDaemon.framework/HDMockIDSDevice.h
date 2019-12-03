@@ -6,6 +6,7 @@
     NSString * _backgroundAtrialFibrillationVersion;
     NSString * _buildType;
     NSString * _electrocardiogramVersion;
+    NSArray * _identities;
     bool  _isActive;
     NSString * _modelNumber;
     NSString * _name;
@@ -24,6 +25,7 @@
 @property (nonatomic, copy) NSString *backgroundAtrialFibrillationVersion;
 @property (nonatomic, copy) NSString *buildType;
 @property (nonatomic, copy) NSString *electrocardiogramVersion;
+@property (nonatomic, copy) NSArray *identities;
 @property (nonatomic) bool isActive;
 @property (nonatomic, readonly) bool isDefaultPairedDevice;
 @property (nonatomic, readonly) bool isLocallyPaired;
@@ -49,6 +51,7 @@
 - (id)hd_deviceIdentifier;
 - (bool)hd_isEquivalentToDevice:(id)arg1;
 - (id)hd_shortDescription;
+- (id)identities;
 - (bool)isActive;
 - (bool)isDefaultPairedDevice;
 - (bool)isLocallyPaired;
@@ -59,10 +62,12 @@
 - (id)productBuildVersion;
 - (id)productType;
 - (id)regionCode;
+- (unsigned long long)relationship;
 - (id)service;
 - (void)setBackgroundAtrialFibrillationVersion:(id)arg1;
 - (void)setBuildType:(id)arg1;
 - (void)setElectrocardiogramVersion:(id)arg1;
+- (void)setIdentities:(id)arg1;
 - (void)setIsActive:(bool)arg1;
 - (void)setModelNumber:(id)arg1;
 - (void)setName:(id)arg1;

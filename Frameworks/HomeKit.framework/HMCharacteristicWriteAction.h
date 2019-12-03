@@ -18,7 +18,6 @@
 // Image: /System/Library/Frameworks/HomeKit.framework/HomeKit
 
 + (id)_actionWithInfo:(id)arg1 home:(id)arg2;
-+ (id)_lookupActionWithInfo:(id)arg1 inArray:(id)arg2;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -27,13 +26,25 @@
 - (bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (id)_serializeForAdd;
 - (void)_updateTargetValue:(id)arg1 completionHandler:(id /* block */)arg2;
+- (id)allowedTargetValueClasses;
 - (id)characteristic;
+- (id)commonInitWith:(id)arg1 targetValue:(id)arg2;
+- (id)encodeAsProtoBuf;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCharacteristic:(id)arg1 targetValue:(id)arg2;
+- (id)initWithCharacteristic:(id)arg1 targetValue:(id)arg2 uuid:(id)arg3;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithProtoBuf:(id)arg1 home:(id)arg2;
+- (id)initWithUUID:(id)arg1;
+- (bool)isEqual:(id)arg1;
+- (bool)isKindOfAllowedTargetValueClass:(id)arg1;
+- (bool)isValid;
+- (bool)requiresDeviceUnlock;
 - (void)setCharacteristic:(id)arg1;
 - (void)setTargetValue:(id)arg1;
 - (id)targetValue;
+- (unsigned long long)type;
 - (void)updateTargetValue:(id)arg1 completionHandler:(id /* block */)arg2;
 
 // Image: /System/Library/PrivateFrameworks/Home.framework/Home

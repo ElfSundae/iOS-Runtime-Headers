@@ -10,7 +10,7 @@
     NSMutableDictionary * _sessionDemultiplexerForIdentifier;
 }
 
-@property (nonatomic) NSObject<OS_dispatch_queue> *demuxManagerQueue;
+@property (nonatomic, retain) NSObject<OS_dispatch_queue> *demuxManagerQueue;
 @property (copy) NSArray *protocolClasses;
 @property (nonatomic, retain) NSURLSessionConfiguration *proxySessionConfigurationConnect;
 @property (nonatomic, retain) NSURLSessionConfiguration *proxySessionConfigurationLegacy;
@@ -18,10 +18,10 @@
 
 + (id)sharedManager;
 
+- (void).cxx_destruct;
 - (void)configVersionDidChange;
 - (void)contentProxyURLConnectDidChange;
 - (void)contentProxyURLDidChange;
-- (void)dealloc;
 - (id)demuxManagerQueue;
 - (id)init;
 - (long long)pretapRequestCountForIdentifier:(id)arg1;

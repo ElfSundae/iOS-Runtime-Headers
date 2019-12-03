@@ -4,7 +4,9 @@
 
 @interface HDCodableActivityCache : PBCodable <HDDecoding, NSCopying> {
     double  _activeHours;
+    double  _activeHoursGoal;
     double  _briskMinutes;
+    double  _briskMinutesGoal;
     long long  _cacheIndex;
     NSMutableArray * _dailyBriskMinutesStatistics;
     NSMutableArray * _dailyEnergyBurnedStatistics;
@@ -15,7 +17,9 @@
     long long  _flightsClimbed;
     struct { 
         unsigned int activeHours : 1; 
+        unsigned int activeHoursGoal : 1; 
         unsigned int briskMinutes : 1; 
+        unsigned int briskMinutesGoal : 1; 
         unsigned int cacheIndex : 1; 
         unsigned int deepBreathingDuration : 1; 
         unsigned int energyBurned : 1; 
@@ -37,7 +41,9 @@
 }
 
 @property (nonatomic) double activeHours;
+@property (nonatomic) double activeHoursGoal;
 @property (nonatomic) double briskMinutes;
+@property (nonatomic) double briskMinutesGoal;
 @property (nonatomic) long long cacheIndex;
 @property (nonatomic, retain) NSMutableArray *dailyBriskMinutesStatistics;
 @property (nonatomic, retain) NSMutableArray *dailyEnergyBurnedStatistics;
@@ -49,7 +55,9 @@
 @property (nonatomic) double energyBurnedGoalDate;
 @property (nonatomic) long long flightsClimbed;
 @property (nonatomic) bool hasActiveHours;
+@property (nonatomic) bool hasActiveHoursGoal;
 @property (nonatomic) bool hasBriskMinutes;
+@property (nonatomic) bool hasBriskMinutesGoal;
 @property (nonatomic) bool hasCacheIndex;
 @property (nonatomic) bool hasDeepBreathingDuration;
 @property (nonatomic) bool hasEnergyBurned;
@@ -75,11 +83,14 @@
 + (Class)dailyEnergyBurnedStatisticsType;
 
 - (void).cxx_destruct;
+- (id)_decodeCodableActivityStatisticsQuantityInfos:(id)arg1;
 - (double)activeHours;
+- (double)activeHoursGoal;
 - (void)addDailyBriskMinutesStatistics:(id)arg1;
 - (void)addDailyEnergyBurnedStatistics:(id)arg1;
 - (bool)applyToObject:(id)arg1;
 - (double)briskMinutes;
+- (double)briskMinutesGoal;
 - (long long)cacheIndex;
 - (void)clearDailyBriskMinutesStatistics;
 - (void)clearDailyEnergyBurnedStatistics;
@@ -102,7 +113,9 @@
 - (double)energyBurnedGoalDate;
 - (long long)flightsClimbed;
 - (bool)hasActiveHours;
+- (bool)hasActiveHoursGoal;
 - (bool)hasBriskMinutes;
+- (bool)hasBriskMinutesGoal;
 - (bool)hasCacheIndex;
 - (bool)hasDeepBreathingDuration;
 - (bool)hasEnergyBurned;
@@ -123,7 +136,9 @@
 - (id)sample;
 - (long long)sequence;
 - (void)setActiveHours:(double)arg1;
+- (void)setActiveHoursGoal:(double)arg1;
 - (void)setBriskMinutes:(double)arg1;
+- (void)setBriskMinutesGoal:(double)arg1;
 - (void)setCacheIndex:(long long)arg1;
 - (void)setDailyBriskMinutesStatistics:(id)arg1;
 - (void)setDailyEnergyBurnedStatistics:(id)arg1;
@@ -133,7 +148,9 @@
 - (void)setEnergyBurnedGoalDate:(double)arg1;
 - (void)setFlightsClimbed:(long long)arg1;
 - (void)setHasActiveHours:(bool)arg1;
+- (void)setHasActiveHoursGoal:(bool)arg1;
 - (void)setHasBriskMinutes:(bool)arg1;
+- (void)setHasBriskMinutesGoal:(bool)arg1;
 - (void)setHasCacheIndex:(bool)arg1;
 - (void)setHasDeepBreathingDuration:(bool)arg1;
 - (void)setHasEnergyBurned:(bool)arg1;

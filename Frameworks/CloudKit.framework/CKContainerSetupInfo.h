@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
  */
 
-@interface CKContainerSetupInfo : NSObject <NSSecureCoding> {
+@interface CKContainerSetupInfo : NSObject <NSCopying, NSSecureCoding> {
     CKAccountOverrideInfo * _accountInfoOverride;
     bool  _bypassPCSEncryption;
     bool  _captureResponseHTTPHeaders;
@@ -13,9 +13,10 @@
     bool  _forceEnableReadOnlyManatee;
     bool  _holdAllOperations;
     bool  _masqueradeAsThirdPartyApp;
+    unsigned long long  _mmcsEncryptionSupport;
+    NSString * _personaIdentifier;
     bool  _returnPCSMetadata;
     NSString * _sourceApplicationBundleIdentifier;
-    bool  _useMMCSEncryptionV2;
     bool  _useZoneWidePCS;
     bool  _wantsSiloedContext;
 }
@@ -30,9 +31,10 @@
 @property (nonatomic) bool forceEnableReadOnlyManatee;
 @property (nonatomic) bool holdAllOperations;
 @property (nonatomic) bool masqueradeAsThirdPartyApp;
+@property (nonatomic) unsigned long long mmcsEncryptionSupport;
+@property (nonatomic, retain) NSString *personaIdentifier;
 @property (nonatomic) bool returnPCSMetadata;
 @property (nonatomic, retain) NSString *sourceApplicationBundleIdentifier;
-@property (nonatomic) bool useMMCSEncryptionV2;
 @property (nonatomic) bool useZoneWidePCS;
 @property (nonatomic) bool wantsSiloedContext;
 
@@ -45,12 +47,15 @@
 - (unsigned int)clientSDKVersion;
 - (id)containerEncryptionServiceName;
 - (id)containerID;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)fakeEntitlements;
 - (bool)forceEnableReadOnlyManatee;
 - (bool)holdAllOperations;
 - (id)initWithCoder:(id)arg1;
 - (bool)masqueradeAsThirdPartyApp;
+- (unsigned long long)mmcsEncryptionSupport;
+- (id)personaIdentifier;
 - (bool)returnPCSMetadata;
 - (void)setAccountInfoOverride:(id)arg1;
 - (void)setBypassPCSEncryption:(bool)arg1;
@@ -62,13 +67,13 @@
 - (void)setForceEnableReadOnlyManatee:(bool)arg1;
 - (void)setHoldAllOperations:(bool)arg1;
 - (void)setMasqueradeAsThirdPartyApp:(bool)arg1;
+- (void)setMmcsEncryptionSupport:(unsigned long long)arg1;
+- (void)setPersonaIdentifier:(id)arg1;
 - (void)setReturnPCSMetadata:(bool)arg1;
 - (void)setSourceApplicationBundleIdentifier:(id)arg1;
-- (void)setUseMMCSEncryptionV2:(bool)arg1;
 - (void)setUseZoneWidePCS:(bool)arg1;
 - (void)setWantsSiloedContext:(bool)arg1;
 - (id)sourceApplicationBundleIdentifier;
-- (bool)useMMCSEncryptionV2;
 - (bool)useZoneWidePCS;
 - (bool)wantsSiloedContext;
 

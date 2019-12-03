@@ -5,7 +5,7 @@
 
 @required
 
-- (OISFUBufferedInputStream *)bufferedInputStreamForEntry:(NSString *)arg1;
+- (SFUBufferedInputStream *)bufferedInputStreamForEntry:(NSString *)arg1;
 - (void)copyEntry:(NSString *)arg1 toFile:(NSString *)arg2;
 - (unsigned int)crc32ForEntry:(NSString *)arg1;
 - (bool)hasEntryWithName:(NSString *)arg1;

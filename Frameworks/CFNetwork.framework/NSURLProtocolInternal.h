@@ -5,11 +5,9 @@
 @interface NSURLProtocolInternal : NSObject {
     NSCachedURLResponse * cachedResponse;
     <NSURLProtocolClient> * client;
-    NSLock * mutex;
     NSURLRequest * request;
 }
 
 - (void)dealloc;
-- (id)init;
 
 @end

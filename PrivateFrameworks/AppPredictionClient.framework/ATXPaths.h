@@ -10,5 +10,6 @@
 + (id)appPredictionDirectoryFile:(id)arg1;
 + (void)createDataVault:(id)arg1;
 + (void)createDirectoriesIfNeeded;
++ (id)magicalMomentsPredictionTablesRootDirectory;
 
 @end

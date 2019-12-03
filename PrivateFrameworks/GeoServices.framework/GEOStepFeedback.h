@@ -6,13 +6,28 @@
     bool  _completedStep;
     double  _completionTimeStamp;
     struct { 
-        unsigned int completionTimeStamp : 1; 
-        unsigned int routeIndex : 1; 
-        unsigned int stepID : 1; 
-        unsigned int completedStep : 1; 
-        unsigned int lightGuidance : 1; 
-    }  _has;
+        unsigned int has_completionTimeStamp : 1; 
+        unsigned int has_routeIndex : 1; 
+        unsigned int has_stepID : 1; 
+        unsigned int has_completedStep : 1; 
+        unsigned int has_lightGuidance : 1; 
+        unsigned int read_routeID : 1; 
+        unsigned int read_tripID : 1; 
+        unsigned int wrote_completionTimeStamp : 1; 
+        unsigned int wrote_routeID : 1; 
+        unsigned int wrote_tripID : 1; 
+        unsigned int wrote_routeIndex : 1; 
+        unsigned int wrote_stepID : 1; 
+        unsigned int wrote_completedStep : 1; 
+        unsigned int wrote_lightGuidance : 1; 
+    }  _flags;
     bool  _lightGuidance;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     NSData * _routeID;
     unsigned int  _routeIndex;
     unsigned int  _stepID;
@@ -34,7 +49,11 @@
 @property (nonatomic) unsigned int stepID;
 @property (nonatomic, retain) NSData *tripID;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_readRouteID;
+- (void)_readTripID;
 - (bool)completedStep;
 - (double)completionTimeStamp;
 - (void)copyTo:(id)arg1;
@@ -49,9 +68,12 @@
 - (bool)hasStepID;
 - (bool)hasTripID;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)lightGuidance;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)routeID;
 - (unsigned int)routeIndex;

@@ -12,7 +12,7 @@
 @property (nonatomic, readonly, copy) _SFKeySpecifier *keySpecifier;
 
 + (Class)_attributesClass;
-+ (id)_specifierForSecKey:(struct __SecKey { }*)arg1;
++ (id)_specifierForSecKey:(struct __SecKey { struct __CFRuntimeBase { unsigned long long x_1_1_1; _Atomic unsigned long long x_1_1_2; } x1; struct __SecKeyDescriptor {} *x2; void *x3; }*)arg1;
 
 - (void).cxx_destruct;
 - (id)initRandomKeyWithSpecifier:(id)arg1;

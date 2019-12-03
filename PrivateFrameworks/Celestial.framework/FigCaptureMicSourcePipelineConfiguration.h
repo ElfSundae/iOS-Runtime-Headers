@@ -4,28 +4,28 @@
 
 @interface FigCaptureMicSourcePipelineConfiguration : NSObject {
     bool  _audioSourceNodeShouldCallEndInterruption;
-    FigCaptureSourceConfiguration * _cameraConfiguration;
+    FigCaptureSourceConfiguration * _cameraConfigurationForStereoAudioCapture;
     NSData * _clientAuditToken;
     NSNumber * _clientPID;
     unsigned int  _clientVersionOfLinkedSDK;
     bool  _configuresAppAudioSession;
     FigCaptureSourceConfiguration * _micConfiguration;
     NSArray * _micConnectionConfigurations;
-    FigAudioCaptureConnectionConfiguration * _movieFileAudioConnectionConfiguration;
+    BWZoomCommandHandler * _zoomCommandHandlerForStereoAudioCapture;
 }
 
 @property (nonatomic) bool audioSourceNodeShouldCallEndInterruption;
-@property (nonatomic, retain) FigCaptureSourceConfiguration *cameraConfiguration;
+@property (nonatomic, retain) FigCaptureSourceConfiguration *cameraConfigurationForStereoAudioCapture;
 @property (nonatomic, retain) NSData *clientAuditToken;
 @property (nonatomic, retain) NSNumber *clientPID;
 @property (nonatomic) unsigned int clientVersionOfLinkedSDK;
 @property (nonatomic) bool configuresAppAudioSession;
 @property (nonatomic, retain) FigCaptureSourceConfiguration *micConfiguration;
 @property (nonatomic, retain) NSArray *micConnectionConfigurations;
-@property (nonatomic, retain) FigAudioCaptureConnectionConfiguration *movieFileAudioConnectionConfiguration;
+@property (nonatomic, retain) BWZoomCommandHandler *zoomCommandHandlerForStereoAudioCapture;
 
 - (bool)audioSourceNodeShouldCallEndInterruption;
-- (id)cameraConfiguration;
+- (id)cameraConfigurationForStereoAudioCapture;
 - (id)clientAuditToken;
 - (id)clientPID;
 - (unsigned int)clientVersionOfLinkedSDK;
@@ -33,15 +33,16 @@
 - (void)dealloc;
 - (id)micConfiguration;
 - (id)micConnectionConfigurations;
-- (id)movieFileAudioConnectionConfiguration;
+- (id)micConnectionConfigurationsForMicSourcePosition:(int)arg1;
 - (void)setAudioSourceNodeShouldCallEndInterruption:(bool)arg1;
-- (void)setCameraConfiguration:(id)arg1;
+- (void)setCameraConfigurationForStereoAudioCapture:(id)arg1;
 - (void)setClientAuditToken:(id)arg1;
 - (void)setClientPID:(id)arg1;
 - (void)setClientVersionOfLinkedSDK:(unsigned int)arg1;
 - (void)setConfiguresAppAudioSession:(bool)arg1;
 - (void)setMicConfiguration:(id)arg1;
 - (void)setMicConnectionConfigurations:(id)arg1;
-- (void)setMovieFileAudioConnectionConfiguration:(id)arg1;
+- (void)setZoomCommandHandlerForStereoAudioCapture:(id)arg1;
+- (id)zoomCommandHandlerForStereoAudioCapture;
 
 @end

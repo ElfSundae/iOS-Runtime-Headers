@@ -31,6 +31,7 @@
 - (id)barButtonItemForIdentifier:(id)arg1;
 - (id)barSpec;
 - (id)init;
+- (void)invalidateBarButtonItemWithIdentifier:(id)arg1;
 - (void)invalidateBars;
 - (id)leftBarButtonItemIdentifiers;
 - (id)rightBarButtonItemIdentifiers;

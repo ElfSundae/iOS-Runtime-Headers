@@ -6,9 +6,11 @@
     unsigned long long  _heading;
     bool  _isInitialMovement;
     bool  _isVelocityBased;
+    unsigned long long  _linearHeading;
     _UIFocusMovementInfo * _primaryMovementInfo;
     unsigned long long  _secondaryHeading;
     _UIFocusMovementInfo * _secondaryMovementInfo;
+    bool  _shouldLoadScrollableContainer;
     struct CGVector { 
         double dx; 
         double dy; 
@@ -21,13 +23,17 @@
 @property (setter=_setHeading:, nonatomic) unsigned long long heading;
 @property (getter=_isInitialMovement, setter=_setIsInitialMovement:, nonatomic) bool isInitialMovement;
 @property (getter=_isVelocityBased, setter=_setIsVelocityBased:, nonatomic) bool isVelocityBased;
+@property (getter=_linearHeading, setter=_setLinearHeading:, nonatomic) unsigned long long linearHeading;
 @property (nonatomic, readonly) _UIFocusMovementInfo *primaryMovementInfo;
 @property (getter=_secondaryHeading, setter=_setSecondaryHeading:, nonatomic) unsigned long long secondaryHeading;
 @property (nonatomic, readonly) _UIFocusMovementInfo *secondaryMovementInfo;
+@property (getter=_shouldLoadScrollableContainer, setter=_setShouldLoadScrollableContainer:, nonatomic) bool shouldLoadScrollableContainer;
 @property (readonly) Class superclass;
 @property (getter=_velocity, setter=_setVelocity:, nonatomic) struct CGVector { double x1; double x2; } velocity;
 
 + (id)_movementWithHeading:(unsigned long long)arg1 isInitial:(bool)arg2;
++ (id)_movementWithHeading:(unsigned long long)arg1 linearHeading:(unsigned long long)arg2 isInitial:(bool)arg3;
++ (id)_movementWithHeading:(unsigned long long)arg1 linearHeading:(unsigned long long)arg2 shouldLoadScrollableContainer:(bool)arg3 isInitial:(bool)arg4;
 + (id)_movementWithHeading:(unsigned long long)arg1 secondaryHeading:(unsigned long long)arg2 velocity:(struct CGVector { double x1; double x2; })arg3 isInitial:(bool)arg4;
 + (id)_movementWithHeading:(unsigned long long)arg1 velocity:(struct CGVector { double x1; double x2; })arg2 isInitial:(bool)arg3;
 + (id)_movementWithVelocity:(struct CGVector { double x1; double x2; })arg1 isInitial:(bool)arg2;
@@ -35,13 +41,18 @@
 
 - (void).cxx_destruct;
 - (bool)_isInitialMovement;
+- (bool)_isLinearMovement;
 - (bool)_isVelocityBased;
+- (unsigned long long)_linearHeading;
 - (unsigned long long)_secondaryHeading;
 - (void)_setHeading:(unsigned long long)arg1;
 - (void)_setIsInitialMovement:(bool)arg1;
 - (void)_setIsVelocityBased:(bool)arg1;
+- (void)_setLinearHeading:(unsigned long long)arg1;
 - (void)_setSecondaryHeading:(unsigned long long)arg1;
+- (void)_setShouldLoadScrollableContainer:(bool)arg1;
 - (void)_setVelocity:(struct CGVector { double x1; double x2; })arg1;
+- (bool)_shouldLoadScrollableContainer;
 - (struct CGVector { double x1; double x2; })_velocity;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;

@@ -13,6 +13,7 @@
         double width; 
         double height; 
     }  _keyboardSize;
+    UIBarButtonItem * _nextButton;
     UIScrollView * _scrollView;
     NSArray * _tableData;
 }
@@ -29,6 +30,7 @@
 
 - (void).cxx_destruct;
 - (void)addNewPlanWithUserInfo:(id)arg1;
+- (bool)canBeShownFromSuspendedState;
 - (void)configureCell:(id)arg1 atIndexPath:(id)arg2;
 - (id)delegate;
 - (id)enterActivationLabel;
@@ -47,6 +49,7 @@
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 replacementString:(id)arg3;
 - (void)textFieldDidBeginEditing:(id)arg1;
 - (void)textFieldDidEndEditing:(id)arg1;
 - (bool)textFieldShouldReturn:(id)arg1;

@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Photos.framework/Photos
  */
 
-@interface PHMomentShare : PHAssetCollection <PXMediaTypeAggregating> {
+@interface PHMomentShare : PHAssetCollection <PXDisplayMomentShare, PXMediaTypeAggregating> {
     unsigned long long  _assetCount;
     NSDate * _creationDate;
     NSDate * _expiryDate;
@@ -28,14 +28,70 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) NSDate *endDate;
+@property (nonatomic, readonly) unsigned long long estimatedAssetCount;
 @property (nonatomic, readonly) NSDate *expiryDate;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool isAggregation;
+@property (nonatomic, readonly) bool isEnriched;
+@property (nonatomic, readonly) bool isEnrichmentComplete;
+@property (nonatomic, readonly) bool isRecent;
+@property (nonatomic, readonly) NSString *localizedDateDescription;
+@property (nonatomic, readonly) NSString *localizedDebugDescription;
+@property (nonatomic, readonly) NSArray *localizedLocationNames;
+@property (nonatomic, readonly) NSString *localizedSmartDescription;
+@property (nonatomic, readonly) NSString *localizedSubtitle;
 @property (nonatomic, readonly) NSString *localizedTitle;
 @property (nonatomic, readonly) short mode;
 @property (nonatomic, readonly) unsigned long long photosCount;
 @property (nonatomic, readonly) PHMomentSharePreview *preview;
 @property (nonatomic, readonly) NSData *previewData;
+@property (nonatomic, readonly) double promotionScore;
 @property (nonatomic, readonly) short publishState;
+@property (nonatomic, readonly) bool px_canRearrangeContent;
+@property (nonatomic, readonly) unsigned short px_highlightEnrichmentState;
+@property (nonatomic, readonly) long long px_highlightKind;
+@property (nonatomic, readonly) bool px_isAllPhotosSmartAlbum;
+@property (nonatomic, readonly) bool px_isCloudMultipleContributorsEnabled;
+@property (nonatomic, readonly) bool px_isFavoriteMemoriesSmartFolder;
+@property (nonatomic, readonly) bool px_isFavoritesSmartAlbum;
+@property (nonatomic, readonly) bool px_isFolder;
+@property (nonatomic, readonly) bool px_isHiddenSmartAlbum;
+@property (nonatomic, readonly) bool px_isImportHistoryCollection;
+@property (nonatomic, readonly) bool px_isImportSessionCollection;
+@property (nonatomic, readonly) bool px_isImportedAlbum;
+@property (nonatomic, readonly) bool px_isMacSyncedAlbum;
+@property (nonatomic, readonly) bool px_isMacSyncedEventsFolder;
+@property (nonatomic, readonly) bool px_isMacSyncedFacesFolder;
+@property (nonatomic, readonly) bool px_isMediaTypeSmartAlbum;
+@property (nonatomic, readonly) bool px_isMediaTypesFolder;
+@property (nonatomic, readonly) bool px_isMemoriesVirtualCollection;
+@property (nonatomic, readonly) bool px_isMomentsVirtualCollection;
+@property (nonatomic, readonly) bool px_isMyPhotoStreamAlbum;
+@property (nonatomic, readonly) bool px_isOwnedSharedAlbum;
+@property (nonatomic, readonly) bool px_isPeopleVirtualCollection;
+@property (nonatomic, readonly) bool px_isPhotosVirtualCollection;
+@property (nonatomic, readonly) bool px_isPlacesSmartAlbum;
+@property (nonatomic, readonly) bool px_isProject;
+@property (nonatomic, readonly) bool px_isProjectsFolder;
+@property (nonatomic, readonly) bool px_isRecentlyAddedSmartAlbum;
+@property (nonatomic, readonly) bool px_isRecentlyDeletedSmartAlbum;
+@property (nonatomic, readonly) bool px_isRecentlyEditedSmartAlbum;
+@property (nonatomic, readonly) bool px_isRecentsSmartAlbum;
+@property (nonatomic, readonly) bool px_isRegularAlbum;
+@property (nonatomic, readonly) bool px_isRegularFolder;
+@property (nonatomic, readonly) bool px_isRootSmartAlbum;
+@property (nonatomic, readonly) bool px_isScreenRecordingsSmartAlbum;
+@property (nonatomic, readonly) bool px_isSharedActivityVirtualCollection;
+@property (nonatomic, readonly) bool px_isSharedAlbum;
+@property (nonatomic, readonly) bool px_isSharedAlbumsFolder;
+@property (nonatomic, readonly) bool px_isSmartAlbum;
+@property (nonatomic, readonly) bool px_isSmartFolder;
+@property (nonatomic, readonly) bool px_isStandInAlbum;
+@property (nonatomic, readonly) bool px_isTopLevelFolder;
+@property (nonatomic, readonly) bool px_isTransientPlacesCollection;
+@property (nonatomic, readonly) bool px_isUserCreated;
+@property (nonatomic, readonly) bool px_isUserSmartAlbum;
+@property (nonatomic, readonly) long long px_momentShareType;
 @property (nonatomic, readonly) NSString *scopeIdentifier;
 @property (nonatomic, readonly) NSURL *shareURL;
 @property (nonatomic, readonly) bool shouldIgnoreBudgets;
@@ -98,5 +154,6 @@
 // Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
 
 - (long long)aggregateMediaType;
+- (long long)px_momentShareType;
 
 @end

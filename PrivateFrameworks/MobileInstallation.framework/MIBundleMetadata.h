@@ -3,6 +3,7 @@
  */
 
 @interface MIBundleMetadata : NSObject <NSCopying, NSSecureCoding> {
+    unsigned long long  _autoInstallOverride;
     NSString * _installBuildVersion;
     NSDate * _installDate;
     unsigned long long  _installType;
@@ -12,6 +13,7 @@
     NSString * _watchKitAppExecutableHash;
 }
 
+@property (nonatomic) unsigned long long autoInstallOverride;
 @property (nonatomic, copy) NSString *installBuildVersion;
 @property (nonatomic, copy) NSDate *installDate;
 @property (nonatomic) unsigned long long installType;
@@ -24,6 +26,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (unsigned long long)autoInstallOverride;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
@@ -36,6 +39,7 @@
 - (id)placeholderFailureUnderlyingError;
 - (unsigned long long)placeholderFailureUnderlyingErrorSource;
 - (bool)serializeToURL:(id)arg1 error:(id*)arg2;
+- (void)setAutoInstallOverride:(unsigned long long)arg1;
 - (void)setInstallBuildVersion:(id)arg1;
 - (void)setInstallDate:(id)arg1;
 - (void)setInstallType:(unsigned long long)arg1;

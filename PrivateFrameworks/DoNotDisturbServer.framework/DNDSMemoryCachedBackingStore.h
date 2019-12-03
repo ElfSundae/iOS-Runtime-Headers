@@ -2,21 +2,27 @@
    Image: /System/Library/PrivateFrameworks/DoNotDisturbServer.framework/DoNotDisturbServer
  */
 
-@interface DNDSMemoryCachedBackingStore : NSObject <DNDSBackingStore> {
-    NSArray * _cache;
-    NSDate * _lastUpdateDate;
-    NSObject<OS_dispatch_queue> * _queue;
+@interface DNDSMemoryCachedBackingStore : NSObject <DNDSBackingStore, DNDSBackingStoreDelegate> {
+    <DNDSBackingStoreRecord> * _cache;
+    <DNDSBackingStoreDelegate> * _delegate;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _lock;
     <DNDSBackingStore> * _underlyingBackingStore;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) <DNDSBackingStoreDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)backingStore:(id)arg1 migrateDictionaryRepresentation:(id)arg2 fromVersionNumber:(unsigned long long)arg3 toVersionNumber:(unsigned long long)arg4;
+- (id)delegate;
 - (id)initWithUnderlyingBackingStore:(id)arg1;
-- (id)readAllRecordsWithError:(id*)arg1 lastUpdateDate:(out id*)arg2;
-- (bool)writeAllRecords:(id)arg1 withError:(id*)arg2;
+- (id)readRecordWithError:(id*)arg1;
+- (void)setDelegate:(id)arg1;
+- (unsigned long long)writeRecord:(id)arg1 error:(id*)arg2;
 
 @end

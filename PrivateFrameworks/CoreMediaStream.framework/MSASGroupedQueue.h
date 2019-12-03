@@ -28,7 +28,6 @@
 
 - (void).cxx_destruct;
 - (void)assertBusyAssertion;
-- (void)dealloc;
 - (void)deassertBusyAssertion;
 - (void)flushQueueCompletionBlock:(id /* block */)arg1;
 - (bool)hasEnqueuedItems;

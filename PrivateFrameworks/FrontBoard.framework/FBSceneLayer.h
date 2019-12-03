@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/FrontBoard.framework/FrontBoard
  */
 
-@interface FBSceneLayer : NSObject <BSDescriptionProviding> {
+@interface FBSceneLayer : NSObject <BSDescriptionProviding, NSCopying> {
     long long  _alignment;
     unsigned int  _contextID;
     NSString * _externalSceneID;
@@ -27,6 +27,7 @@
 - (void).cxx_destruct;
 - (long long)alignment;
 - (unsigned int)contextID;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

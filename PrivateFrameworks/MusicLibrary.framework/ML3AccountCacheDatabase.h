@@ -10,7 +10,6 @@
 
 - (void).cxx_destruct;
 - (id)_cacheEntryForDSID:(unsigned long long)arg1;
-- (void)_lookupAltDSIDForDSID:(unsigned long long)arg1 completion:(id /* block */)arg2;
 - (void)_setCacheEntry:(id)arg1 forDSID:(unsigned long long)arg2;
 - (id)appleIDForDSID:(unsigned long long)arg1;
 - (bool)getPropertiesForDSID:(unsigned long long)arg1 appleID:(id*)arg2 altDSID:(id*)arg3;

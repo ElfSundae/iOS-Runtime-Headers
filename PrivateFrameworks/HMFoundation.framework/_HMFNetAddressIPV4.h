@@ -10,6 +10,7 @@
 
 - (unsigned long long)addressFamily;
 - (id)addressString;
+- (id)dataUsingEncoding:(unsigned long long)arg1;
 - (void)dealloc;
 - (unsigned long long)hash;
 - (id)init;

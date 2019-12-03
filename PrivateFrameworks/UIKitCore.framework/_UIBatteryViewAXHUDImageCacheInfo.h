@@ -9,6 +9,7 @@
     bool  _reverseLayoutDirection;
     double  _scale;
     bool  _showBolt;
+    UIColor * _tintColor;
 }
 
 @property (nonatomic, retain) UIImage *cachedImage;
@@ -17,9 +18,10 @@
 @property (nonatomic) bool reverseLayoutDirection;
 @property (nonatomic) double scale;
 @property (nonatomic) bool showBolt;
+@property (nonatomic, retain) UIColor *tintColor;
 
 - (void).cxx_destruct;
-- (bool)cacheMatchesCapacity:(double)arg1 fillColor:(id)arg2 showingBolt:(bool)arg3 reverseLayout:(bool)arg4 scale:(double)arg5;
+- (bool)cacheMatchesCapacity:(double)arg1 fillColor:(id)arg2 tintColor:(id)arg3 showingBolt:(bool)arg4 reverseLayout:(bool)arg5 scale:(double)arg6;
 - (id)cachedImage;
 - (double)capacity;
 - (id)fillColor;
@@ -31,6 +33,8 @@
 - (void)setReverseLayoutDirection:(bool)arg1;
 - (void)setScale:(double)arg1;
 - (void)setShowBolt:(bool)arg1;
+- (void)setTintColor:(id)arg1;
 - (bool)showBolt;
+- (id)tintColor;
 
 @end

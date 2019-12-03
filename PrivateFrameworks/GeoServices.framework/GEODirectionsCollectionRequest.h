@@ -8,6 +8,7 @@
 
 @property (nonatomic, retain) NSMutableArray *requestElements;
 
++ (bool)isValid:(id)arg1;
 + (Class)requestElementsType;
 
 - (void).cxx_destruct;
@@ -20,6 +21,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)requestElements;
 - (id)requestElementsAtIndex:(unsigned long long)arg1;

@@ -6,6 +6,7 @@
 
 - (bool)canBeShownFromSuspendedState;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (long long)preferredStatusBarStyle;
 - (unsigned long long)supportedInterfaceOrientations;
 
 @end

@@ -11,6 +11,8 @@
 @property (nonatomic, readonly) struct GEOFlyoverRegion { unsigned int x1; unsigned int x2; unsigned int x3; struct { unsigned int x_4_1_1 : 1; unsigned int x_4_1_2 : 1; unsigned int x_4_1_3 : 1; } x4; }*regions;
 @property (nonatomic, readonly) unsigned long long regionsCount;
 
++ (bool)isValid:(id)arg1;
+
 - (void)addRegion:(struct GEOFlyoverRegion { unsigned int x1; unsigned int x2; unsigned int x3; struct { unsigned int x_4_1_1 : 1; unsigned int x_4_1_2 : 1; unsigned int x_4_1_3 : 1; } x4; })arg1;
 - (void)clearRegions;
 - (void)copyTo:(id)arg1;
@@ -21,6 +23,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (struct GEOFlyoverRegion { unsigned int x1; unsigned int x2; unsigned int x3; struct { unsigned int x_4_1_1 : 1; unsigned int x_4_1_2 : 1; unsigned int x_4_1_3 : 1; } x4; })regionAtIndex:(unsigned long long)arg1;
 - (struct GEOFlyoverRegion { unsigned int x1; unsigned int x2; unsigned int x3; struct { unsigned int x_4_1_1 : 1; unsigned int x_4_1_2 : 1; unsigned int x_4_1_3 : 1; } x4; }*)regions;

@@ -27,7 +27,7 @@
 @property (nonatomic, readonly) long long type;
 
 - (void).cxx_destruct;
-- (void)_setSelected:(bool)arg1;
+- (void)_setSelected:(bool)arg1 affectingChildren:(bool)arg2;
 - (id)arrayForDisplay:(bool)arg1;
 - (bool)bypassIfUnique;
 - (id)childItems;

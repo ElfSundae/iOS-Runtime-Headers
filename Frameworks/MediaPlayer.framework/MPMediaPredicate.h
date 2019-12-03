@@ -17,7 +17,9 @@
 - (bool)evaluateEntity:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProtobufferDecodableObject:(id)arg1;
+- (id)initWithProtobufferDecodableObject:(id)arg1 library:(id)arg2;
 - (id)protobufferEncodableObject;
+- (id)protobufferEncodableObjectFromLibrary:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/VideosUI.framework/VideosUI
 

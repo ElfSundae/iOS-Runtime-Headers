@@ -17,7 +17,7 @@
 @property (nonatomic, readonly) bool cameraCapable;
 @property (nonatomic, readonly) bool cameraConnected;
 @property (nonatomic) <IMAVControllerDelegate> *delegate;
-@property (nonatomic, readonly, retain) NSArray *delegates;
+@property (nonatomic, readonly) NSArray *delegates;
 @property (nonatomic, readonly) bool hasActiveConference;
 @property (nonatomic, readonly) bool hasRunningConference;
 @property (nonatomic, readonly) bool microphoneCapable;
@@ -26,6 +26,7 @@
 
 + (id)sharedInstance;
 
+- (void).cxx_destruct;
 - (id)_delegates;
 - (void)_dumpCaps;
 - (bool)_ready;
@@ -43,7 +44,6 @@
 - (bool)cameraCapable;
 - (bool)cameraConnected;
 - (void)cancelVCRequestWithBuddy:(id)arg1 vcProps:(id)arg2 forAccount:(id)arg3 conferenceID:(id)arg4 reason:(id)arg5;
-- (void)dealloc;
 - (void)declineVCRequestWithBuddy:(id)arg1 response:(unsigned int)arg2 vcProps:(id)arg3 conferenceID:(id)arg4;
 - (void)declineVCRequestWithBuddy:(id)arg1 response:(unsigned int)arg2 vcProps:(id)arg3 forAccount:(id)arg4 conferenceID:(id)arg5;
 - (id)delegate;

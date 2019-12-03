@@ -20,8 +20,8 @@
 + (bool)supportsSecureCoding;
 
 - (void)_acceptSubpredicates:(id)arg1 flags:(unsigned long long)arg2;
+- (id)_copySubpredicateDescription:(id)arg1;
 - (id)_predicateOperator;
-- (id)_subpredicateDescription:(id)arg1;
 - (void)acceptVisitor:(id)arg1 flags:(unsigned long long)arg2;
 - (void)allowEvaluation;
 - (unsigned long long)compoundPredicateType;
@@ -45,6 +45,7 @@
 
 // Image: /System/Library/Frameworks/CoreData.framework/CoreData
 
+- (id)_keypathsForDerivedPropertyValidation:(id*)arg1;
 - (id)minimalFormInContext:(id)arg1;
 
 // Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
@@ -70,6 +71,14 @@
 // Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
 
 - (id)CKDPQueryFiltersWithTranslator:(id)arg1 error:(id*)arg2;
+
+// Image: /System/Library/PrivateFrameworks/Email.framework/Email
+
+- (id)em_searchableIndexQueryGenerator;
+
+// Image: /System/Library/PrivateFrameworks/EmailFoundation.framework/EmailFoundation
+
+- (id)predicateNodeFromPropertyMapper:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon
 

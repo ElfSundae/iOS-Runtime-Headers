@@ -16,7 +16,7 @@
 + (unsigned long long)countSubDirectoryInDirectory:(id)arg1;
 
 - (void).cxx_destruct;
-- (bool)copyWeightsAndBiasesForLayerNamed:(id)arg1 combinedWeightBiasesOut:(float**)arg2 weightCountOut:(unsigned int*)arg3 biasCountOut:(unsigned int*)arg4;
+- (bool)copyWeightsAndBiasesForLayerNamed:(id)arg1 combinedWeightBiasesOut:(float**)arg2 weightCountOut:(unsigned long long*)arg3 biasCountOut:(unsigned long long*)arg4;
 - (unsigned long long)imageCount;
 - (id)init;
 - (id)mlp;

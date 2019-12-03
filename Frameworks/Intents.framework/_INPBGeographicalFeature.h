@@ -3,11 +3,13 @@
  */
 
 @interface _INPBGeographicalFeature : PBCodable <NSCopying, NSSecureCoding, _INPBGeographicalFeature> {
+    bool  __encodeLegacyGloryData;
     NSArray * _geographicalFeatureDescriptors;
     _INPBString * _geographicalFeatureType;
     struct { }  _has;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, copy) NSArray *geographicalFeatureDescriptors;
@@ -18,18 +20,23 @@
 @property (readonly) Class superclass;
 
 + (Class)geographicalFeatureDescriptorsType;
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (void)addGeographicalFeatureDescriptors:(id)arg1;
 - (void)clearGeographicalFeatureDescriptors;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (id)geographicalFeatureDescriptors;
 - (id)geographicalFeatureDescriptorsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)geographicalFeatureDescriptorsCount;
 - (id)geographicalFeatureType;
 - (bool)hasGeographicalFeatureType;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setGeographicalFeatureDescriptors:(id)arg1;

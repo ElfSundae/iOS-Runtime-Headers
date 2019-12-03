@@ -103,9 +103,17 @@
 - (id)systemVersion;
 - (long long)userInterfaceIdiom;
 
-// Image: /System/Library/Frameworks/ContactsUI.framework/ContactsUI
+// Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
 
-- (bool)cn_hasSensorArray;
++ (bool)mf_isSmalliPhone;
+
+// Image: /System/Library/Frameworks/VisionKit.framework/VisionKit
+
++ (bool)dc_requiresCompactLandscapeIcons;
+
+// Image: /System/Library/PrivateFrameworks/BiometricKitUI.framework/BiometricKitUI
+
+- (bool)bkui_IsInternalInstall;
 
 // Image: /System/Library/PrivateFrameworks/CameraEffectsKit.framework/CameraEffectsKit
 
@@ -118,6 +126,7 @@
 - (bool)canEncode2160P;
 - (bool)canEncode2160P:(bool)arg1;
 - (bool)canEncodeHEVC2160P;
+- (unsigned long long)cpuFamily;
 - (id)deviceCharacteristicsDict;
 - (bool)enoughMemoryFor2160P;
 - (bool)enoughMemoryForRendering12MPPhoto;
@@ -165,21 +174,12 @@
 
 // Image: /System/Library/PrivateFrameworks/HomeUI.framework/HomeUI
 
-+ (id)hu_modelSpecificLocalizedStringKeyWithGreenTeaForKey:(id)arg1;
-
-// Image: /System/Library/PrivateFrameworks/MaterialKit.framework/MaterialKit
-
-+ (id)mt_lowQualityDevicesForBaseLuminanceOverlay;
-+ (id)mt_lowQualityDevicesForDynamicBlurRadius;
-+ (id)mt_mediumQualityDevicesForDynamicBlurRadius;
-
-- (long long)mt_baseLuminanceOverlayGraphicsQuality;
-- (id)mt_currentProduct;
-- (long long)mt_dynamicBlurRadiusGraphicsQuality;
++ (id)hu_modelAndNetworkLocalizedStringKeyForKey:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/Memories.framework/Memories
 
 - (bool)canEncode2160P;
+- (bool)canSupportHEVC;
 - (bool)enoughMemoryFor2160P;
 - (bool)enoughMemoryForRendering12MPPhoto;
 - (bool)enoughPowerFor2160P;
@@ -200,12 +200,42 @@
 
 + (bool)ic_isLargeiPad;
 + (bool)ic_isPlusiPhone;
++ (bool)ic_isSmalliPhone;
 + (bool)ic_isiPad;
 + (bool)ic_isiPhone;
 
 // Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
 
 + (id)platformString;
+
+// Image: /System/Library/PrivateFrameworks/Settings/WallpaperSettings.framework/WallpaperSettings
+
+- (bool)ws_hasFaceID;
+
+// Image: /System/Library/PrivateFrameworks/SettingsFoundation.framework/SettingsFoundation
+
+- (id)sf_colorCodedSerialNumber;
+- (id)sf_configString;
+- (id)sf_deviceSubTypeString;
+- (bool)sf_deviceSupportsDisplayZoom;
+- (id)sf_deviceType;
+- (bool)sf_isAppleTV;
+- (bool)sf_isAudioAccessory;
+- (bool)sf_isCarrierInstall;
+- (bool)sf_isChinaRegionCellularDevice;
+- (bool)sf_isInternalInstall;
+- (bool)sf_isiPad;
+- (bool)sf_isiPhone;
+- (id)sf_monthAndYearOfManufacture;
+- (id)sf_plantCode;
+- (id)sf_productType;
+- (id)sf_regionCode;
+- (id)sf_regulatoryDeviceVariant;
+- (id)sf_screenClassString;
+- (id)sf_serialNumber;
+- (id)sf_udidString;
+- (unsigned long long)sf_weekOfManufacture;
+- (unsigned long long)sf_yearOfManufacture;
 
 // Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
 
@@ -219,24 +249,19 @@
 
 - (id)_currentProduct;
 - (id)_deviceInfoForKey:(struct __CFString { }*)arg1;
-- (long long)_graphicsQualityIncludingMediumN41:(bool)arg1;
-- (id)_lowQualityDevicesForCoverSheetBlur;
-- (id)_lowQualityDevicesForDashBoardPresentation;
-- (id)_lowQualityDevicesForHomeScreenBlur;
-- (id)_lowQualityDevicesForSearchTransitions;
-- (id)_mediumQualityDevicesForCoverSheetBlur;
 - (id)_mediumQualityDevicesForHomeScreenBlur;
-- (id)_mediumQualityProductsIncludingN41:(bool)arg1;
-- (long long)sbf_bannerGraphicsQuality;
-- (long long)sbf_controlCenterGraphicsQuality;
-- (long long)sbf_coverSheetBlurGraphicsQuality;
-- (long long)sbf_dashBoardPresentationGraphicsQuality;
-- (long long)sbf_homeScreenBlurGraphicsQuality;
-- (long long)sbf_searchTransitionGraphicsQuality;
+- (long long)sbf_animatedBlurRadiusGraphicsQuality;
+- (long long)sbf_homeGrabberGraphicsQuality;
 
 // Image: /System/Library/PrivateFrameworks/TSUtility.framework/TSUtility
 
 + (id)platformString;
+
+// Image: /System/Library/PrivateFrameworks/TestFlightCore.framework/TestFlightCore
+
++ (bool)tf_deviceHasFaceID;
++ (bool)tf_deviceHasTopPowerButton;
++ (id)tf_screenshotInstructionImageName;
 
 // Image: /System/Library/PrivateFrameworks/WiFiKitUI.framework/WiFiKitUI
 

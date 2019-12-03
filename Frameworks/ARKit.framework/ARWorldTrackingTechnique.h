@@ -4,11 +4,11 @@
 
 @interface ARWorldTrackingTechnique : ARImageBasedTechnique {
     bool  _allowPoseGraphUpdates;
-    ARWorldTrackingReferenceAnchorData * _anchorData;
+    NSMutableSet * _anchorsReceived;
     ARWorldTrackingPoseData * _cachedPoseData;
     bool  _didClearMap;
-    bool  _didRelocalize;
     ARWorldTrackingErrorData * _errorData;
+    bool  _hasQualityKeyframe;
     struct map<CV3DVIOError, double, std::__1::less<CV3DVIOError>, std::__1::allocator<std::__1::pair<const CV3DVIOError, double> > > { 
         struct __tree<std::__1::__value_type<CV3DVIOError, double>, std::__1::__map_value_compare<CV3DVIOError, std::__1::__value_type<CV3DVIOError, double>, std::__1::less<CV3DVIOError>, true>, std::__1::allocator<std::__1::__value_type<CV3DVIOError, double> > > { 
             struct __tree_end_node<std::__1::__tree_node_base<void *> *> {} *__begin_node_; 
@@ -23,17 +23,22 @@
         } __tree_; 
     }  _lastErrorLogTimestamp;
     double  _lastMajorRelocalizationTimestamp;
-    double  _lastPoseMajorRelocalizationTimestamp;
+    double  _lastPoseMetaDataTimestamp;
     double  _lastPoseTrackingMapTimestamp;
     double  _lastQualityKeyframeTimestamp;
     double  _lastRelocalizationTimestamp;
     double  _minVergenceAngleCosine;
     struct CV3DMLModel { struct { unsigned int x_1_1_1; unsigned int x_1_1_2; unsigned int x_1_1_3; } x1; struct CV3DMLModelData {} *x2; } * _mlModel;
     ARWorldTrackingOptions * _mutableOptions;
-    NSDictionary * _objectDetectionOptions;
     NSHashTable * _observers;
     NSObject<OS_dispatch_semaphore> * _observersSemaphore;
-    long long  _previousKeyframeCount;
+    double  _originTimestamp;
+    NSMutableSet * _participantAnchors;
+    bool  _participantAnchorsEnabled;
+    int  _previousKeyframeCount;
+    struct { 
+        /* Warning: Unrecognized filer type: ']' using 'void*' */ void*columns[4]; 
+    }  _referenceOriginTransform;
     long long  _reinitializationAttempts;
     long long  _reinitializationAttemptsAtInitialization;
     bool  _relocalizingAfterSensorDataDrop;
@@ -50,30 +55,34 @@
         unsigned int minimumSupportHorizontal; 
         unsigned int minimumSupportVertical; 
     }  _surfaceDetectionParameters;
+    ARTrackedRaycastPostProcessor * _trackedRaycastPostProcessor;
     bool  _useFixedIntrinsics;
     struct CV3DVIOContext { } * _vioHandle;
     long long  _vioHandleState;
     NSObject<OS_dispatch_semaphore> * _vioHandleStateSemaphore;
     NSObject<OS_dispatch_semaphore> * _vioObjectDetectionSemaphore;
+    unsigned long long  _vioSessionIdentifier;
 }
 
 @property (retain) ARWorldTrackingOptions *mutableOptions;
 @property (nonatomic, readonly, copy) ARWorldTrackingOptions *options;
+@property struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; } referenceOriginTransform;
+@property (retain) ARTrackedRaycastPostProcessor *trackedRaycastPostProcessor;
 @property (nonatomic) struct CV3DVIOContext { }*vioHandle;
+@property (readonly) unsigned long long vioSessionIdentifier;
 
 + (bool)isSupported;
-+ (bool)supportsVideoResolution:(struct CGSize { double x1; double x2; })arg1;
++ (bool)supportsVideoResolution:(struct CGSize { double x1; double x2; })arg1 forDeviceType:(id)arg2;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_addIntrinsicsToDictionary:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[3]; })arg1 dictionary:(struct __CFDictionary { }*)arg2;
 - (void)_didFailWithError:(id)arg1;
 - (id)_featurePointDataFromDictionary:(id)arg1;
 - (void)_initializeSurfaceDetection;
 - (long long)_initializeVIOHandle;
 - (long long)_mappingStatusFromStateDetails:(id)arg1 timestamp:(double)arg2;
+- (void)_reportCollaborationData:(id)arg1 type:(int)arg2 metadata:(const void*)arg3;
 - (void)_reportError:(double)arg1 error:(int)arg2;
-- (void)_reportSignificantEvent:(int)arg1 data:(id)arg2;
 - (void)_updatePose:(double)arg1 frame:(struct __CVBuffer { }*)arg2 rotationMatrix:(const double*)arg3 translationVector:(const double*)arg4 trackingState:(int)arg5 stateDetails:(id)arg6;
 - (void)_updatePoseDataTrackingState:(id)arg1 vioTrackingState:(int)arg2 stateDetails:(id)arg3;
 - (void)addObserver:(id)arg1;
@@ -83,10 +92,13 @@
 - (void)clearMap;
 - (void)dealloc;
 - (bool)deterministicMode;
+- (void)didUpdateRaycastResult:(struct CV3DHitTestResults { struct CV3DHitTestResult {} *x1; unsigned long long x2; }*)arg1;
 - (id)getObservers;
+- (void)hitTestIntent:(struct CV3DHitTestIntent { double x1[3]; double x2[3]; double x3; double x4; struct __CFUUID {} *x5; int x6; int x7; int x8; int x9; double x10; }*)arg1 forRay:(id)arg2 isTracked:(bool)arg3;
 - (id)init;
 - (id)initWithOptions:(id)arg1;
 - (void)initializeSceneUnderstandingIfNeeded;
+- (void)invalidateAllRaycasts;
 - (bool)isEqual:(id)arg1;
 - (void)loadSurfaceData:(id)arg1;
 - (void)mergeResultData:(id)arg1 intoData:(id)arg2 context:(id)arg3;
@@ -96,19 +108,30 @@
 - (void)prepare;
 - (void)prepareResultData:(id)arg1 forContext:(id)arg2;
 - (id)processData:(id)arg1;
+- (void)pushCollaborationData:(id)arg1;
+- (id)raycast:(id)arg1;
+- (id)raycastResultFrom:(struct CV3DHitTestResult { struct __CFUUID {} *x1; double x2[16]; int x3; int x4; int x5; struct __CFUUID {} *x6; }*)arg1;
+- (id)raycastResultsFrom:(struct CV3DHitTestResults { struct CV3DHitTestResult {} *x1; unsigned long long x2; }*)arg1 forRay:(id)arg2;
 - (bool)reconfigurableFrom:(id)arg1;
 - (void)reconfigureFrom:(id)arg1;
+- (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })referenceOriginTransform;
 - (void)removeObserver:(id)arg1;
 - (void)removeReferenceAnchors:(id)arg1;
 - (unsigned long long)requiredSensorDataTypes;
 - (double)requiredTimeInterval;
 - (id)resultDataClasses;
-- (id)serializeMapData;
+- (id)serializeMapData:(bool)arg1;
 - (id)serializeSurfaceData;
 - (void)setMutableOptions:(id)arg1;
+- (void)setReferenceOriginTransform:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })arg1;
+- (void)setTrackedRaycastPostProcessor:(id)arg1;
 - (void)setVioHandle:(struct CV3DVIOContext { }*)arg1;
-- (bool)setupObjectDetection:(id)arg1;
+- (void)stopAllRaycasts;
+- (void)stopRaycast:(id)arg1;
+- (id)trackedRaycast:(id)arg1 updateHandler:(id /* block */)arg2;
+- (id)trackedRaycastPostProcessor;
 - (struct CV3DVIOContext { }*)vioHandle;
 - (long long)vioHandleState;
+- (unsigned long long)vioSessionIdentifier;
 
 @end

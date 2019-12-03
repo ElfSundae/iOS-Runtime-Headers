@@ -9,6 +9,7 @@
 @property (nonatomic, readonly) CNUIIDSAvailabilityProvider *idsAvailabilityProvider;
 
 + (id)IDSRelevantPropertiesForContact:(id)arg1;
++ (id)descriptorForCopyingStrippedContact:(id)arg1;
 + (id)descriptorForRequiredKeys;
 
 - (void).cxx_destruct;

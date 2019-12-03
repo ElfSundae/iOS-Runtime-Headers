@@ -43,6 +43,7 @@
 @property (nonatomic, retain) ADWebView *webView;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } webViewFrame;
 
+- (void).cxx_destruct;
 - (id)URL;
 - (void)_dismissButtonTapped;
 - (void)_dismissKeyboard;
@@ -99,6 +100,9 @@
 - (void)webProcessPlugInWillDestroyBrowserContextController;
 - (id)webView;
 - (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(id /* block */)arg3;
+- (void)webView:(id)arg1 didFailNavigation:(id)arg2 withError:(id)arg3;
+- (void)webView:(id)arg1 didFailProvisionalNavigation:(id)arg2 withError:(id)arg3;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })webViewFrame;
+- (void)webViewWebContentProcessDidTerminate:(id)arg1;
 
 @end

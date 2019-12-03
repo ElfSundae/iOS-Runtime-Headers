@@ -13,9 +13,12 @@
     UIDragInteraction * _dragInteraction;
     bool  _isLoaded;
     bool  _isLoading;
+    bool  _isSavingEdits;
     long long  _lastScrollViewUpdateInterfaceOrientation;
     bool  _loadingFailed;
     <QLItemViewControllerPresentingDelegate> * _presentingDelegate;
+    PUProgressIndicatorView * _saveEditProgressView;
+    NSObject<OS_dispatch_queue> * _saveEditsQueue;
 }
 
 @property (nonatomic, readonly) UIView *accessoryView;
@@ -30,18 +33,16 @@
 @property (readonly) unsigned long long hash;
 @property bool isLoaded;
 @property bool isLoading;
+@property (nonatomic) bool isSavingEdits;
 @property bool loadingFailed;
 @property (nonatomic) <QLItemViewControllerPresentingDelegate> *presentingDelegate;
 @property (nonatomic, readonly) NSArray *registeredKeyCommands;
+@property (nonatomic, retain) PUProgressIndicatorView *saveEditProgressView;
+@property (nonatomic, retain) NSObject<OS_dispatch_queue> *saveEditsQueue;
 @property (readonly) Class superclass;
 
-+ (double)maxLoadingTimeForItem:(id)arg1;
-+ (bool)providesCustomPrinter;
-+ (bool)shouldBeRemoteForContentType:(id)arg1;
 + (bool)shouldBeRemoteForMediaContentType:(id)arg1;
 + (id)supportedAudiovisualContentTypes;
-+ (id)supportedContentTypes;
-+ (Class)transformerClass;
 
 - (void).cxx_destruct;
 - (void)_addDragInteractionIfNeeded;
@@ -55,7 +56,6 @@
 - (bool)automaticallyUpdateScrollViewContentInset;
 - (bool)automaticallyUpdateScrollViewContentOffset;
 - (bool)automaticallyUpdateScrollViewIndicatorInset;
-- (void)beginPreviewHostAppearanceTransitionIfNeeded:(bool)arg1 animated:(bool)arg2;
 - (void)buttonPressedWithIdentifier:(id)arg1 completionHandler:(id /* block */)arg2;
 - (bool)canEnterFullScreen;
 - (bool)canPerformFirstTimeAppearanceActions:(unsigned long long)arg1;
@@ -69,15 +69,21 @@
 - (id)delegate;
 - (id)description;
 - (bool)didAppearOnce;
+- (void)didFinishSavingEdits;
+- (void)didStartSavingEdits;
 - (id)dragInteraction;
 - (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
 - (id)draggableView;
-- (void)endPreviewHostAppearanceTransitionIfNeeded:(bool)arg1;
+- (id)editProgressIndicatorMessage;
+- (void)editedCopyToSaveChangesWithOutputType:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)excludedToolbarButtonIdentifiersForTraitCollection:(id)arg1;
 - (id)fullscreenBackgroundColor;
+- (void)handlePerformedKeyCommandIfNeeded:(id)arg1;
+- (void)hideSaveEditProgressIndicator;
 - (id)init;
 - (bool)isLoaded;
 - (bool)isLoading;
+- (bool)isSavingEdits;
 - (void)loadPreviewControllerIfNeededWithContents:(id)arg1 context:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(id /* block */)arg3;
 - (bool)loadingFailed;
@@ -89,6 +95,7 @@
 - (long long)preferredWhitePointAdaptivityStyle;
 - (void)preloadViewControllerForContext:(id)arg1;
 - (void)prepareForActionSheetPresentation;
+- (void)prepareForInvalidationWithCompletionHandler:(id /* block */)arg1;
 - (bool)presenterShouldHandleLoadingView:(id)arg1 readyToDisplay:(id /* block */)arg2;
 - (id)presentingDelegate;
 - (void)previewBecameFullScreen:(bool)arg1 animated:(bool)arg2;
@@ -99,6 +106,9 @@
 - (void)previewWillDisappear:(bool)arg1;
 - (void)previewWillFinishAppearing;
 - (id)registeredKeyCommands;
+- (id)saveEditProgressView;
+- (id)saveEditsQueue;
+- (void)savePreviewEditedCopyWithCompletionHandler:(id /* block */)arg1;
 - (id)scrollView;
 - (void)setAppearance:(id)arg1;
 - (void)setAppearance:(id)arg1 animated:(bool)arg2;
@@ -109,16 +119,23 @@
 - (void)setDragInteraction:(id)arg1;
 - (void)setIsLoaded:(bool)arg1;
 - (void)setIsLoading:(bool)arg1;
+- (void)setIsSavingEdits:(bool)arg1;
 - (void)setLoadingFailed:(bool)arg1;
 - (void)setPresentingDelegate:(id)arg1;
+- (void)setSaveEditProgressView:(id)arg1;
+- (void)setSaveEditsQueue:(id)arg1;
 - (bool)shouldAcceptTouch:(id)arg1 ofGestureRecognizer:(id)arg2;
 - (bool)shouldAlwaysRunFullscreen;
 - (bool)shouldRecognizeGestureRecognizer:(id)arg1;
+- (void)showSaveEditsProgressIndicatorAfterDelay;
+- (bool)supportsScrollingUpAndDownUsingKeyCommands;
 - (id)toolbarButtonsForTraitCollection:(id)arg1;
 - (void)transitionDidFinish:(bool)arg1 didComplete:(bool)arg2;
 - (void)transitionDidStart:(bool)arg1;
 - (void)transitionWillFinish:(bool)arg1 didComplete:(bool)arg2;
 - (id)transitioningView;
+- (void)updateInterfaceAfterSavingEdits;
+- (void)updateInterfaceForSavingEdits;
 - (void)updateScrollViewContentOffset;
 - (void)updateScrollViewContentOffset:(bool)arg1 withPreviousAppearance:(id)arg2;
 

@@ -4,10 +4,12 @@
 
 @interface HMDRemovedUser : HMFObject <NSSecureCoding> {
     NSDate * _expirationDate;
+    bool  _removalInProgress;
     HMDUser * _user;
 }
 
 @property (nonatomic, readonly) NSDate *expirationDate;
+@property (getter=isRemovalInProgress) bool removalInProgress;
 @property (nonatomic, readonly) HMDUser *user;
 
 + (id)removedUserWithUser:(id)arg1;
@@ -22,6 +24,8 @@
 - (bool)isEqualToUser:(id)arg1;
 - (bool)isEqualToUserID:(id)arg1;
 - (bool)isExpired;
+- (bool)isRemovalInProgress;
+- (void)setRemovalInProgress:(bool)arg1;
 - (id)user;
 
 @end

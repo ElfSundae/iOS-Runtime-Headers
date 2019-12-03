@@ -5,6 +5,7 @@
 
 @required
 
+- (NSArray *)actionsForRow:(NSIndexPath *)arg1;
 - (bool)canEditRow:(NSIndexPath *)arg1;
 - (bool)canSelectRow:(NSIndexPath *)arg1;
 - (void)cancelOutstandingOperations;

@@ -4,14 +4,14 @@
 
 @interface GKExtensionHostContext : NSExtensionContext <GKExtensionHostProtocol> {
     GKGame * _game;
-    GKUIRemoteViewController * _remoteViewControllerWeak;
+    GKExtensionRemoteViewController * _remoteViewControllerWeak;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) GKGame *game;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) GKUIRemoteViewController *remoteViewController;
+@property (nonatomic) GKExtensionRemoteViewController *remoteViewController;
 @property (readonly) Class superclass;
 
 - (void)dealloc;

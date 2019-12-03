@@ -4,7 +4,7 @@
 
 @interface BCCloudKitController : NSObject <BDSCloudKitSupportSignOutDeleteWithoutInstance> {
     NSObject<OS_dispatch_queue> * _accessQueue;
-    BDSCoalescingCallBlock * _coalescedAttachment;
+    BUCoalescingCallBlock * _coalescedAttachment;
     <BCContainerConfiguration> * _configuration;
     CKContainer * _container;
     bool  _didChangeContainer;
@@ -16,7 +16,7 @@
 }
 
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *accessQueue;
-@property (nonatomic, retain) BDSCoalescingCallBlock *coalescedAttachment;
+@property (nonatomic, retain) BUCoalescingCallBlock *coalescedAttachment;
 @property (nonatomic, retain) <BCContainerConfiguration> *configuration;
 @property (nonatomic, retain) CKContainer *container;
 @property (nonatomic) bool didChangeContainer;
@@ -49,7 +49,6 @@
 - (void)p_getAccountInfo;
 - (void)p_getNecessaryAccountInfoFromContainer:(id)arg1 completion:(id /* block */)arg2;
 - (void)p_identityChanged:(id)arg1;
-- (void)p_internetReachabilityChanged:(id)arg1;
 - (void)p_updateAttachment;
 - (id)privateCloudDatabaseController;
 - (bool)serviceMode;

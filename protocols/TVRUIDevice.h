@@ -6,22 +6,28 @@
 @required
 
 - (void)connect;
+- (<TVRUIDeviceDelegate> *)delegate;
 - (void)disconnectSystemInitiated;
 - (void)disconnectUserInitiated;
+- (void)disconnectWithTimeOut;
 - (bool)hasIdentifier:(NSString *)arg1;
 - (NSString *)identifier;
 - (bool)isConnected;
 - (bool)isConnecting;
 - (bool)isEqualToDevice:(id <TVRUIDevice>)arg1;
+- (bool)isPaired;
 - (NSString *)model;
 - (NSString *)name;
 - (void)setDelegate:(id <TVRUIDeviceDelegate>)arg1;
+- (bool)supportsDonatingIntents;
 - (bool)supportsTouchEvents;
 
 @optional
 
 - (void)cancelAuthenitcationChallenge;
+- (bool)captionsEnabled;
 - (NSString *)currentText;
+- (NSDictionary *)deviceContextInformation;
 - (id)keyboardAttributes;
 - (void)sendAuthenticationCode:(NSString *)arg1;
 - (void)sendButtonEvent:(TVRUIButtonEvent *)arg1;
@@ -31,6 +37,7 @@
 - (void)sendTouchEvent:(TVRUITouchEvent *)arg1;
 - (void)startVoiceRecorder;
 - (void)stopVoiceRecorder;
+- (bool)supportsCaptionsToggle;
 - (bool)supportsLaunchingApplications;
 - (bool)supportsVolumeControl;
 

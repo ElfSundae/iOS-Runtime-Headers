@@ -3,6 +3,7 @@
  */
 
 @interface _INPBContactValue : PBCodable <NSCopying, NSSecureCoding, _INPBContactValue> {
+    bool  __encodeLegacyGloryData;
     NSArray * _aliases;
     _INPBContactHandle * _contactHandle;
     NSString * _customIdentifier;
@@ -20,6 +21,7 @@
     NSString * _namePrefix;
     NSString * _nameSuffix;
     NSString * _nickName;
+    NSString * _phonemeData;
     NSString * _phoneticFirstName;
     NSString * _phoneticLastName;
     NSString * _phoneticMiddleName;
@@ -30,6 +32,7 @@
     _INPBValueMetadata * _valueMetadata;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic, copy) NSArray *aliases;
 @property (nonatomic, readonly) unsigned long long aliasesCount;
 @property (nonatomic, retain) _INPBContactHandle *contactHandle;
@@ -51,6 +54,7 @@
 @property (nonatomic, readonly) bool hasNamePrefix;
 @property (nonatomic, readonly) bool hasNameSuffix;
 @property (nonatomic, readonly) bool hasNickName;
+@property (nonatomic, readonly) bool hasPhonemeData;
 @property (nonatomic, readonly) bool hasPhoneticFirstName;
 @property (nonatomic, readonly) bool hasPhoneticLastName;
 @property (nonatomic, readonly) bool hasPhoneticMiddleName;
@@ -67,6 +71,7 @@
 @property (nonatomic, copy) NSString *namePrefix;
 @property (nonatomic, copy) NSString *nameSuffix;
 @property (nonatomic, copy) NSString *nickName;
+@property (nonatomic, copy) NSString *phonemeData;
 @property (nonatomic, copy) NSString *phoneticFirstName;
 @property (nonatomic, copy) NSString *phoneticLastName;
 @property (nonatomic, copy) NSString *phoneticMiddleName;
@@ -78,9 +83,12 @@
 @property (nonatomic, retain) _INPBValueMetadata *valueMetadata;
 
 + (Class)aliasesType;
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (int)StringAsSuggestionType:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (void)addAliases:(id)arg1;
 - (id)aliases;
 - (id)aliasesAtIndex:(unsigned long long)arg1;
@@ -90,6 +98,7 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)customIdentifier;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (id)firstName;
 - (id)fullName;
 - (id)handle;
@@ -105,6 +114,7 @@
 - (bool)hasNamePrefix;
 - (bool)hasNameSuffix;
 - (bool)hasNickName;
+- (bool)hasPhonemeData;
 - (bool)hasPhoneticFirstName;
 - (bool)hasPhoneticLastName;
 - (bool)hasPhoneticMiddleName;
@@ -115,6 +125,7 @@
 - (bool)hasValueMetadata;
 - (unsigned long long)hash;
 - (id)image;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)isMe;
 - (id)lastName;
@@ -122,6 +133,7 @@
 - (id)namePrefix;
 - (id)nameSuffix;
 - (id)nickName;
+- (id)phonemeData;
 - (id)phoneticFirstName;
 - (id)phoneticLastName;
 - (id)phoneticMiddleName;
@@ -144,6 +156,7 @@
 - (void)setNamePrefix:(id)arg1;
 - (void)setNameSuffix:(id)arg1;
 - (void)setNickName:(id)arg1;
+- (void)setPhonemeData:(id)arg1;
 - (void)setPhoneticFirstName:(id)arg1;
 - (void)setPhoneticLastName:(id)arg1;
 - (void)setPhoneticMiddleName:(id)arg1;

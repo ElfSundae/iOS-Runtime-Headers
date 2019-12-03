@@ -23,6 +23,7 @@
 
 + (struct NSObject { Class x1; }*)albumListWithFilter:(int)arg1 inPhotoLibrary:(id)arg2;
 
+- (void).cxx_destruct;
 - (void)_invalidateAllAlbums;
 - (id)_prettyDescription;
 - (id)_typeDescription;

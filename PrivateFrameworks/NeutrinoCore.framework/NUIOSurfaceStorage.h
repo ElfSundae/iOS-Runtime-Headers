@@ -11,9 +11,9 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly) NUPixelFormat *format;
+@property (nonatomic, readonly) NUPixelFormat *format;
 @property (readonly) unsigned long long hash;
-@property (readonly) struct { long long x1; long long x2; } size;
+@property (nonatomic, readonly) struct { long long x1; long long x2; } size;
 @property (readonly) long long sizeInBytes;
 @property (readonly) Class superclass;
 @property (readonly) NURegion *validRegion;

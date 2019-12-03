@@ -10,7 +10,7 @@
 @property (nonatomic) <_ASPasswordCredentialAuthenticationViewControllerDelegate> *delegate;
 
 - (void).cxx_destruct;
-- (void)_finishWithCredential:(id)arg1 completion:(id /* block */)arg2;
+- (void)_finishWithCredential:(id)arg1 error:(id)arg2 completion:(id /* block */)arg3;
 - (void)_nonUIRequestDidRequireUserInteraction;
 - (void)_requestDidFailWithError:(id)arg1 completion:(id /* block */)arg2;
 - (id)delegate;

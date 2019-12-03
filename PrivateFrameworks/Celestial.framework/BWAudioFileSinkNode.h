@@ -34,7 +34,7 @@
 - (void)configurationWithID:(long long)arg1 updatedFormat:(id)arg2 didBecomeLiveForInput:(id)arg3;
 - (void)dealloc;
 - (void)didReachEndOfDataForInput:(id)arg1;
-- (id)init;
+- (id)initWithSinkID:(id)arg1;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })lastFileDuration;
 - (unsigned long long)lastFileSize;
 - (id)nodeSubType;

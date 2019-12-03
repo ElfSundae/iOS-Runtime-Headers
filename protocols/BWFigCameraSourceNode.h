@@ -8,7 +8,7 @@
 - (BWFigVideoCaptureDevice *)captureDevice;
 - (BWFigVideoCaptureStream *)captureStream;
 - (NSDictionary *)colorInfoForOutput:(BWNodeOutput *)arg1;
-- (BWNodeOutput *)detectedFacesOutput;
+- (BWNodeOutput *)detectedObjectsOutput;
 - (void)setVideoCaptureOutputColorInfoOverride:(NSDictionary *)arg1;
 - (void)setVideoCaptureOutputPixelBufferAttachmentModificationAllowed:(bool)arg1;
 - (BWNodeOutput *)stillImageOutput;

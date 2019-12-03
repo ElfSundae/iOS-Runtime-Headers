@@ -3,6 +3,7 @@
  */
 
 @interface VUITabItemCollectionViewCell : UICollectionViewCell {
+    IKImageElement * _imageElement;
     TVImageLayout * _imageLayout;
     _TVImageView * _imageView;
     NSShadow * _shadow;
@@ -11,6 +12,7 @@
     IKViewElement * _viewElement;
 }
 
+@property (nonatomic, retain) IKImageElement *imageElement;
 @property (nonatomic, retain) TVImageLayout *imageLayout;
 @property (nonatomic, retain) _TVImageView *imageView;
 @property (nonatomic, retain) NSShadow *shadow;
@@ -25,11 +27,16 @@
 - (void).cxx_destruct;
 - (id)_imageLayout;
 - (id)_titleLayout;
+- (id)imageElement;
 - (id)imageLayout;
 - (id)imageView;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (id)largeContentImage;
+- (id)largeContentTitle;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
+- (bool)scalesLargeContentImage;
+- (void)setImageElement:(id)arg1;
 - (void)setImageLayout:(id)arg1;
 - (void)setImageView:(id)arg1;
 - (void)setShadow:(id)arg1;

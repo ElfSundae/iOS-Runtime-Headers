@@ -22,6 +22,7 @@
 - (id)supportedValueLabelsAxisCombinations;
 - (bool)supportsCalloutLines;
 - (bool)supportsValueLabelsSeriesName;
+- (id)userInterfaceName;
 - (id)userInterfaceNameForLabelPosition:(id)arg1;
 - (unsigned long long)valueDimensions;
 

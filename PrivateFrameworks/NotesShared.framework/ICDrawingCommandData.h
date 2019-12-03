@@ -60,7 +60,7 @@
 @property (nonatomic) struct CGPoint { double x1; double x2; } clipNormal;
 @property (nonatomic) struct CGPoint { double x1; double x2; } clipOrigin;
 @property (nonatomic, retain) struct CGColor { }*color;
-@property (nonatomic) struct ICDrawingCommandID { unsigned int x1; id x2; } commandID;
+@property (nonatomic) struct ICDrawingCommandID { unsigned int x1; id x2; unsigned int x3; } commandID;
 @property bool isClipped;
 @property (nonatomic) struct { double x1; double x2; double x3; } parameters;
 @property (nonatomic, readonly) /* Warning: unhandled struct encoding: '{vector<ICDrawingOutputPoint' */ struct *points; /* unknown property attribute:  std::__1::allocator<ICDrawingOutputPoint> >=^{?}}} */
@@ -74,7 +74,7 @@
 - (struct CGPoint { double x1; double x2; })clipNormal;
 - (struct CGPoint { double x1; double x2; })clipOrigin;
 - (struct CGColor { }*)color;
-- (struct ICDrawingCommandID { unsigned int x1; id x2; })commandID;
+- (struct ICDrawingCommandID { unsigned int x1; id x2; unsigned int x3; })commandID;
 - (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
@@ -95,7 +95,7 @@
 - (void)setClipNormal:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setClipOrigin:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setColor:(struct CGColor { }*)arg1;
-- (void)setCommandID:(struct ICDrawingCommandID { unsigned int x1; id x2; })arg1;
+- (void)setCommandID:(struct ICDrawingCommandID { unsigned int x1; id x2; unsigned int x3; })arg1;
 - (void)setIsClipped:(bool)arg1;
 - (void)setParameters:(struct { double x1; double x2; double x3; })arg1;
 - (void)setType:(unsigned int)arg1;

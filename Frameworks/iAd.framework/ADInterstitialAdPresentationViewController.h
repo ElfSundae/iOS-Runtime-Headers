@@ -8,15 +8,16 @@
 }
 
 @property (nonatomic, retain) ADCountdownButton *closeButton;
-@property (nonatomic, readonly) ADInterstitialAd *interstitialAd;
+@property (nonatomic) ADInterstitialAd *interstitialAd;
 
+- (void).cxx_destruct;
 - (id)closeButton;
-- (void)dealloc;
 - (id)initForInterstitialAd:(id)arg1;
 - (id)interstitialAd;
 - (void)loadView;
 - (bool)prefersStatusBarHidden;
 - (void)setCloseButton:(id)arg1;
+- (void)setInterstitialAd:(id)arg1;
 - (bool)shouldTestVisibilityAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidDisappear:(bool)arg1;

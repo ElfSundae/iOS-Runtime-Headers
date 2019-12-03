@@ -10,7 +10,7 @@
 }
 
 @property (readonly) unsigned long long cachedHash;
-@property (nonatomic, copy) id /* block */ deallocationBlock;
+@property (copy) id /* block */ deallocationBlock;
 @property (nonatomic, readonly) NSUUID *identifier;
 @property (readonly) id observedObject;
 

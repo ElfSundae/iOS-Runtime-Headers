@@ -9,7 +9,11 @@
     unsigned int  _cellFormatKind;
     TSKFormat * _currencyFormat;
     TSKFormat * _dateFormat;
-    double  _doubleValue;
+    struct TSUDecimal { 
+        struct { 
+            unsigned long long w[2]; 
+        } _decimal; 
+    }  _decimalValue;
     TSKFormat * _durationFormat;
     unsigned short  _explicitFlags;
     TSWPStorage * _formattedRichTextStorage;
@@ -29,7 +33,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) bool isApplySpareFormatOnly;
 @property (nonatomic, readonly) bool isFormulaSyntaxError;
-@property (nonatomic, readonly) double numberOrCurrencyDoubleValue;
+@property (nonatomic, readonly) struct TSUDecimal { struct { unsigned long long x_1_1_1[2]; } x1; } numberOrCurrencyDecimalValue;
 @property (nonatomic, readonly) TSWPStorage *richTextOrErrorTextStorageValue;
 @property (nonatomic, readonly, copy) NSString *stringValue;
 @property (readonly) Class superclass;
@@ -41,6 +45,7 @@
 + (id)formatAndValueFromCell:(id)arg1 useAllSpareFormats:(bool)arg2 forceNoContent:(bool)arg3;
 + (id)formatAndValueFromRichTextCell:(id)arg1 updatingStorageWithBlock:(id /* block */)arg2;
 
+- (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)applyToCell:(id)arg1;
 - (id)cellValueWithLocale:(id)arg1;
@@ -56,13 +61,12 @@
 - (id)initFromPropertyCommandMessage:(const struct Message { int (**x1)(); }*)arg1 unarchiver:(id)arg2;
 - (bool)isApplySpareFormatOnly;
 - (bool)isFormulaSyntaxError;
-- (double)numberOrCurrencyDoubleValue;
+- (struct TSUDecimal { struct { unsigned long long x_1_1_1[2]; } x1; })numberOrCurrencyDecimalValue;
 - (id)objectByRemovingPropertiesInMap:(id)arg1 addingPropertiesInMap:(id)arg2 updateInverseResetPropertyMap:(id)arg3 updateInverseSetPropertyMap:(id)arg4;
 - (id)p_copyStorage:(id)arg1;
 - (id)p_formatForFormatType:(unsigned int)arg1;
 - (id)richTextOrErrorTextStorageValue;
 - (void)saveToPropertyCommandMessage:(struct Message { int (**x1)(); }*)arg1 archiver:(id)arg2;
-- (void)setDateValue:(id)arg1;
 - (id)stringValue;
 - (int)valueType;
 

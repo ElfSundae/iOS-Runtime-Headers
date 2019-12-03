@@ -5,7 +5,7 @@
 
 @required
 
-- (NSArray *)assetsToResolve;
+- (NSArray *)assetsToFetch;
 - (LPSpecializationMetadata *)resolve;
 
 @end

@@ -4,21 +4,19 @@
 
 @interface CSSearchableIndex : NSObject {
     CSIndexingQueue * _activityQueue;
-    int  _awakeNotifyToken;
     bool  _batchOpen;
     NSMutableArray * _batchedItemIdentifiersToDelete;
     NSMutableArray * _batchedItemsToIndex;
     NSString * _bundleIdentifier;
     NSObject<OS_dispatch_queue> * _delegateQueue;
     <CSSearchableIndexDelegate> * _indexDelegate;
-    int  _indexID;
+    NSNumber * _indexID;
     NSString * _name;
     long long  _options;
     NSString * _protectionClass;
 }
 
 @property (nonatomic, readonly) CSIndexingQueue *activityQueue;
-@property (nonatomic) int awakeNotifyToken;
 @property (nonatomic) bool batchOpen;
 @property (nonatomic, retain) NSMutableArray *batchedItemIdentifiersToDelete;
 @property (nonatomic, retain) NSMutableArray *batchedItemsToIndex;
@@ -26,7 +24,7 @@
 @property (readonly) CSIndexConnection *connection;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *delegateQueue;
 @property <CSSearchableIndexDelegate> *indexDelegate;
-@property (nonatomic, readonly) int indexID;
+@property (nonatomic, readonly) NSNumber *indexID;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic) long long options;
 @property (nonatomic, copy) NSString *protectionClass;
@@ -37,6 +35,7 @@
 + (id)codedIdentifiers:(id)arg1;
 + (id)codedNSUAPersistentIdentifiers:(id)arg1;
 + (id)codedUniqueIdentifiers:(id)arg1;
++ (id)computePartialPathWithOID:(id)arg1 pathKeyIdx:(unsigned long long)arg2 pathDictionary:(id)arg3 attributeValues:(id)arg4 depth:(long long)arg5;
 + (id)defaultSearchableIndex;
 + (void)initialize;
 + (bool)isIndexingAvailable;
@@ -44,24 +43,26 @@
 + (id)mainBundleID;
 + (id)mainBundleLocalizedString;
 + (void)notifyIndexDelegates;
++ (id)partialPathAttributes;
++ (void)volumeMountedAtURL:(id)arg1 withOptions:(id)arg2;
 
 - (void).cxx_destruct;
-- (void)_cancelAwakeNotifyToken;
+- (void)_bulkFetchPartialPathsForObjects:(id)arg1 protectionClass:(id)arg2 bundleID:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)_changeStateOfSearchableItemsWithUIDs:(id)arg1 toState:(long long)arg2 forUser:(unsigned int)arg3 forBundleID:(id)arg4 forUTIType:(id)arg5;
-- (void)_checkInWithIndexDelegate:(id)arg1 reason:(id)arg2;
 - (void)_commonInit;
+- (void)_delegateCheckIn:(id)arg1;
 - (void)_deleleActionsWithIdentifiers:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)_deleteActionsBeforeTime:(double)arg1 completionHandler:(id /* block */)arg2;
+- (void)_fetchAttributes:(id)arg1 protectionClass:(id)arg2 bundleID:(id)arg3 items:(id)arg4 includeParents:(bool)arg5 completionHandler:(id /* block */)arg6;
 - (void)_indexActivities:(id)arg1 flush:(bool)arg2;
 - (id)_initWithName:(id)arg1 protectionClass:(id)arg2 bundleIdentifier:(id)arg3 options:(long long)arg4;
 - (void)_issueCommand:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)_issueNonLaunchingCommand:(id)arg1;
 - (id)_itemsBySanitizingItemsForSpotlight:(id)arg1;
 - (void)_makeActivityQueueIfNecessary;
-- (void)_performIndexJob:(id)arg1 acknowledgementHandler:(id /* block */)arg2;
-- (void)_registerAwakeNotifyToken;
+- (void)_setFPAttributes:(id)arg1;
 - (void)_setMailMessageAttributes:(id)arg1;
-- (void)_slowFetchAttributes:(id)arg1 protectionClass:(id)arg2 bundleID:(id)arg3 identifiers:(id)arg4 completionHandler:(id /* block */)arg5;
-- (void)_standardizeItems:(id)arg1;
+- (long long)_standardizeItems:(id)arg1;
 - (bool)_supportsBatching;
 - (id)_validateClientState:(id)arg1;
 - (id)_validateOperation;
@@ -71,11 +72,11 @@
 - (id)activityQueue;
 - (void)addInteraction:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)addInteraction:(id)arg1 completionHandler:(id /* block */)arg2;
-- (int)awakeNotifyToken;
 - (bool)batchOpen;
 - (id)batchedItemIdentifiersToDelete;
 - (id)batchedItemsToIndex;
 - (void)beginIndexBatch;
+- (void)bulkFetchAttributes:(id)arg1 protectionClass:(id)arg2 bundleID:(id)arg3 objects:(id)arg4 attributeKeyIndex:(long long)arg5 includeParents:(bool)arg6 completionHandler:(id /* block */)arg7;
 - (id)bundleIdentifier;
 - (void)changeStateOfSearchableItemsWithUIDs:(id)arg1 toState:(long long)arg2;
 - (id)connection;
@@ -105,7 +106,7 @@
 - (void)fetchLastClientStateWithProtectionClass:(id)arg1 forBundleID:(id)arg2 clientStateName:(id)arg3 options:(long long)arg4 completionHandler:(id /* block */)arg5;
 - (void)flushUserActivities;
 - (id)indexDelegate;
-- (int)indexID;
+- (id)indexID;
 - (void)indexSearchableItems:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)indexSearchableItems:(id)arg1 deleteSearchableItemsWithIdentifiers:(id)arg2 clientState:(id)arg3 clientStateName:(id)arg4 protectionClass:(id)arg5 forBundleID:(id)arg6 options:(long long)arg7 completionHandler:(id /* block */)arg8;
 - (void)indexSearchableItems:(id)arg1 deleteSearchableItemsWithIdentifiers:(id)arg2 clientState:(id)arg3 completionHandler:(id /* block */)arg4;
@@ -121,13 +122,11 @@
 - (id)name;
 - (long long)options;
 - (void)performDataMigrationWithTimeout:(double)arg1 completionHandler:(id /* block */)arg2;
-- (void)performIndexJob:(id)arg1;
-- (void)performIndexJob:(id)arg1 acknowledgementHandler:(id /* block */)arg2;
+- (void)performIndexJob:(id)arg1 protectionClass:(id)arg2 acknowledgementHandler:(id /* block */)arg3;
 - (id)protectionClass;
 - (void)provideDataForBundle:(id)arg1 identifier:(id)arg2 type:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)provideFileURLForBundle:(id)arg1 identifier:(id)arg2 type:(id)arg3 completionHandler:(id /* block */)arg4;
 - (id)requestQueue;
-- (void)setAwakeNotifyToken:(int)arg1;
 - (void)setBatchOpen:(bool)arg1;
 - (void)setBatchedItemIdentifiersToDelete:(id)arg1;
 - (void)setBatchedItemsToIndex:(id)arg1;

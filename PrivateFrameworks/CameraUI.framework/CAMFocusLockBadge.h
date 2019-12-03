@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CameraUI.framework/CameraUI
  */
 
-@interface CAMFocusLockBadge : CAMBadgeTextView {
+@interface CAMFocusLockBadge : CEKBadgeTextView {
     bool  _exposureLocked;
     bool  _focusLocked;
 }

@@ -37,6 +37,7 @@
 - (void)dealloc;
 - (id)delegate;
 - (bool)enableBackgroundFingerDetection:(bool)arg1 error:(id*)arg2;
+- (void)forceBioLockout;
 - (bool)hasEnrolledIdentities;
 - (id)init;
 - (bool)isFingerOn;

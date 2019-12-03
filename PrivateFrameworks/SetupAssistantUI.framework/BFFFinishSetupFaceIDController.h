@@ -6,7 +6,7 @@
     BFFFinishSetupFaceIDViewController * _viewController;
 }
 
-+ (id)followUpFaceIDController;
++ (id)finishSetupFaceIDController;
 
 - (void).cxx_destruct;
 - (id)createViewControllerWithPasscode:(id)arg1 completion:(id /* block */)arg2;

@@ -10,7 +10,7 @@
 @property (nonatomic, readonly) CUTCheckpointRange *sendToClient;
 @property (nonatomic, readonly) CUTCheckpointRange *storeInMessageStore;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (id)initWithStartDate:(id)arg1 endDate:(id)arg2 name:(id)arg3 uniqueIdentifier:(id)arg4;
 - (id)sendToClient;

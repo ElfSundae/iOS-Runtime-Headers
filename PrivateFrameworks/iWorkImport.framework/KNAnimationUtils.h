@@ -14,9 +14,9 @@
 + (void)initialize;
 + (bool)isAnimationTestingEnabled;
 + (bool)isCustomEffectTimingCurveEditingEnabled;
++ (bool)isDiscreteGPUAquisitionDisabled;
 + (bool)isDiscreteGPUNeededInShow:(id)arg1;
 + (bool)isDisplayLoggingEnabled;
-+ (bool)isFPSGraphEnabled;
 + (bool)isFPSLoggingEnabled;
 + (bool)isFPSLoggingTimerDisabled;
 + (bool)isGLStateValidationEnabled;

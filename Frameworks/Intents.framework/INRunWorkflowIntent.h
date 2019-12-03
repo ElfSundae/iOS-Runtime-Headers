@@ -7,9 +7,13 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, copy) INArchivedObject *stepIntentResponse;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly, copy) INSpeakableString *workflow;
 
+// Image: /System/Library/Frameworks/Intents.framework/Intents
+
+- (id)_categoryVerb;
 - (id)_dictionaryRepresentation;
 - (long long)_intentCategory;
 - (id)_metadata;
@@ -21,9 +25,18 @@
 - (id)parametersByName;
 - (void)setDomain:(id)arg1;
 - (void)setParametersByName:(id)arg1;
+- (void)setStepIntentResponse:(id)arg1;
 - (void)setVerb:(id)arg1;
 - (void)setWorkflow:(id)arg1;
+- (id)stepIntentResponse;
 - (id)verb;
 - (id)workflow;
+
+// Image: /System/Library/PrivateFrameworks/WorkflowKit.framework/WorkflowKit
+
+- (id)initWithWorkflowReference:(id)arg1;
+- (id)initWithWorkflowReference:(id)arg1 includeIcon:(bool)arg2;
+- (void)setIconForAssociatedApplicationInWorkflow:(id)arg1;
+- (id)workflowForIntentInDatabase:(id)arg1;
 
 @end

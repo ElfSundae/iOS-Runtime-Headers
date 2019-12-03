@@ -11,13 +11,14 @@
 
 + (struct _HDDeleteObjectDataDefn { bool x1; long long x2; long long x3; long long x4; })_deleteInfoForObjectWithUUID:(id)arg1 database:(id)arg2 error:(id*)arg3;
 + (Class)_deletedEntityClass;
++ (Class)_entityClassForDeletion;
 + (id)_insertBaseDataObject:(id)arg1 withProvenance:(id)arg2 inDatabase:(id)arg3 error:(id*)arg4;
 + (bool)_insertDataObject:(id)arg1 insertionContext:(id)arg2 provenanceEntityID:(long long)arg3 profile:(id)arg4 database:(id)arg5 insertedEntityID:(id*)arg6 error:(id*)arg7;
 + (id)_insertDataObject:(id)arg1 withProvenanceID:(id)arg2 inDatabase:(id)arg3 error:(id*)arg4;
 + (id)_objectWithPredicate:(id)arg1 encodingOptions:(id)arg2 profile:(id)arg3 error:(id*)arg4;
 + (id)_primitiveInsertDataObject:(id)arg1 insertionContext:(id)arg2 entityClass:(Class)arg3 provenanceEntityID:(long long)arg4 profile:(id)arg5 database:(id)arg6 error:(id*)arg7;
 + (bool)_removeObjectWithPersistentID:(long long)arg1 database:(id)arg2 error:(id*)arg3;
-+ (bool)_shouldReplaceExistingObject:(id)arg1 withObject:(id)arg2;
++ (bool)_shouldReplaceExistingObject:(id)arg1 withObject:(id)arg2 dataEntityClass:(Class)arg3;
 + (id)_sourceBundleIdentifierForSourceEntities:(id)arg1 profile:(id)arg2 error:(id*)arg3;
 + (bool)_validateObjectsToInsert:(id)arg1 insertionContext:(id)arg2 profile:(id)arg3 error:(id*)arg4;
 + (bool)acceptsObject:(id)arg1;
@@ -25,9 +26,9 @@
 + (id)anyInDatabase:(id)arg1 predicate:(id)arg2 error:(id*)arg3;
 + (Class)baseDataEntityClass;
 + (id)codableObjectsFromObjectCollection:(id)arg1;
-+ (const struct { id x1; unsigned char x2; }*)columnDefinitionsWithCount:(unsigned long long*)arg1;
-+ (id)columnNameForSortIdentifier:(id)arg1;
++ (const struct { id x1; id x2; unsigned char x3; }*)columnDefinitionsWithCount:(unsigned long long*)arg1;
 + (id)columnNamesForTimeOffset;
++ (long long)compareForReplacmentWithObject:(id)arg1 existingObject:(id)arg2;
 + (long long)countOfObjectsWithPredicate:(id)arg1 healthDatabase:(id)arg2 error:(id*)arg3;
 + (id)dataEntityForObject:(id)arg1 profile:(id)arg2 error:(id*)arg3;
 + (id)databaseTable;
@@ -39,16 +40,18 @@
 + (id)entityEnumeratorWithProfile:(id)arg1;
 + (bool)enumerateAssociatedObjectsForIdentifier:(long long)arg1 inDatabase:(id)arg2 error:(id*)arg3 associatedObjectHandler:(id /* block */)arg4;
 + (id)foreignKeys;
-+ (bool)generateSyncObjectsForSession:(id)arg1 predicate:(id)arg2 syncAnchorRange:(struct HDSyncAnchorRange { long long x1; long long x2; })arg3 maxEncodedBytesPerMessage:(long long)arg4 profile:(id)arg5 error:(id*)arg6 handler:(id /* block */)arg7;
++ (bool)generateSyncObjectsForSession:(id)arg1 predicate:(id)arg2 syncAnchorRange:(struct HDSyncAnchorRange { long long x1; long long x2; })arg3 maxEncodedBytesPerMessage:(long long)arg4 profile:(id)arg5 messageHandler:(id)arg6 error:(id*)arg7;
 + (id)insertDataObject:(id)arg1 withProvenance:(id)arg2 inDatabase:(id)arg3 persistentID:(id)arg4 error:(id*)arg5;
 + (void)insertDataObjects:(id)arg1 insertionContext:(id)arg2 profile:(id)arg3 completionHandler:(id /* block */)arg4;
 + (bool)isBackedByTable;
++ (bool)isConcreteEntity;
 + (id)joinClausesForProperty:(id)arg1;
 + (bool)journalObjects:(id)arg1 insertionContext:(id)arg2 profile:(id)arg3 error:(id*)arg4;
 + (id)mergeDataObject:(id)arg1 provenance:(id)arg2 profile:(id)arg3 database:(id)arg4 error:(id*)arg5 insertHandler:(id /* block */)arg6;
 + (id /* block */)objectInsertionFilterForProfile:(id)arg1;
 + (id)objectWithID:(id)arg1 encodingOptions:(id)arg2 profile:(id)arg3 error:(id*)arg4;
 + (id)objectWithUUID:(id)arg1 encodingOptions:(id)arg2 profile:(id)arg3 error:(id*)arg4;
++ (id)orderingTermForSortDescriptor:(id)arg1;
 + (bool)participatesInInsertion;
 + (id)predicateForObjectsFromAppleWatchSources:(bool)arg1 profile:(id)arg2 error:(id*)arg3;
 + (id)predicateForObjectsFromLocalSourceWithBundleIdentifier:(id)arg1 profile:(id)arg2 error:(id*)arg3;
@@ -56,8 +59,9 @@
 + (long long)preferredEntityType;
 + (id)propertyForSyncProvenance;
 + (long long)protectionClass;
++ (bool)replaceExistingObject:(id)arg1 existingObjectID:(id)arg2 replacementObject:(id)arg3 replacementObjectID:(id)arg4 profile:(id)arg5 database:(id)arg6 error:(id*)arg7;
 + (bool)requiresSampleTypePredicate;
-+ (long long)shouldInsertObject:(id)arg1 sourceID:(id)arg2 profile:(id)arg3 objectToReplace:(id*)arg4 objectID:(id*)arg5 error:(id*)arg6;
++ (long long)shouldInsertObject:(id)arg1 sourceID:(id)arg2 profile:(id)arg3 database:(id)arg4 objectToReplace:(id*)arg5 objectID:(id*)arg6 error:(id*)arg7;
 + (id)sourceIDForObjectID:(id)arg1 type:(long long)arg2 profile:(id)arg3 errorOut:(id*)arg4;
 + (id)sourceIDsForObjectsOfType:(long long)arg1 profile:(id)arg2 predicate:(id)arg3 error:(id*)arg4;
 + (bool)supportsObjectMerging;

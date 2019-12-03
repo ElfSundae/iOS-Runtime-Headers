@@ -4,8 +4,8 @@
 
 @interface GEOPDCategory : PBCodable <NSCopying> {
     struct { 
-        unsigned int level : 1; 
-    }  _has;
+        unsigned int has_level : 1; 
+    }  _flags;
     int  _level;
     NSMutableArray * _localizedNames;
     PBUnknownFields * _unknownFields;
@@ -19,11 +19,13 @@
 + (id)_allCategoriesForPlaceData:(id)arg1 type:(unsigned int)arg2;
 + (id)categoryNamesForPlaceData:(id)arg1 type:(unsigned int)arg2;
 + (bool)hasCategoryNamesForPlaceData:(id)arg1 type:(unsigned int)arg2;
++ (bool)isValid:(id)arg1;
 + (Class)localizedNameType;
 
 - (void).cxx_destruct;
 - (void)addLocalizedName:(id)arg1;
 - (void)clearLocalizedNames;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -36,6 +38,7 @@
 - (id)localizedNames;
 - (unsigned long long)localizedNamesCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasLevel:(bool)arg1;
 - (void)setLevel:(int)arg1;

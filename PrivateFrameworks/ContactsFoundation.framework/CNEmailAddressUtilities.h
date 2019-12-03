@@ -6,5 +6,6 @@
 
 + (id)aliasedDomains;
 + (id)expandAliasedDomainsInAddress:(id)arg1;
++ (id)safeUserVisibleEmailAddress:(id)arg1;
 
 @end

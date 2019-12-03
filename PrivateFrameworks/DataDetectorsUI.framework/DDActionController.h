@@ -49,9 +49,9 @@
 - (bool)isPerformingAction;
 - (bool)isPresentingInPopover;
 - (void)performAction:(id)arg1;
-- (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (void)prepareForPopoverPresentation:(id)arg1;
 - (id)presentationController:(id)arg1 viewControllerForAdaptivePresentationStyle:(long long)arg2;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (void)setAlertController:(id)arg1;
 - (void)setBaseView:(id)arg1;
 - (void)setCurrentAction:(id)arg1;

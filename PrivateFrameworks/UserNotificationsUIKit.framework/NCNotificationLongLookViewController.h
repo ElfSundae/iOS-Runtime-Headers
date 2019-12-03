@@ -2,12 +2,12 @@
    Image: /System/Library/PrivateFrameworks/UserNotificationsUIKit.framework/UserNotificationsUIKit
  */
 
-@interface NCNotificationLongLookViewController : NCNotificationViewController <NCLongLookDefaultPresentationControllerDelegate, NCNotificationCustomContentDelegate, NCNotificationLongLookViewDelegate, PLExpandedPlatterDismissing, PLExpandedPlatterPresentable, PLExpandedPlatterPresentationControllerDelegate, PLExpandedPlatterPresentationViewDelegate, PLPreviewInteractionPresentable> {
+@interface NCNotificationLongLookViewController : NCNotificationViewController <NCLongLookDefaultPresentationControllerDelegate, NCNotificationCustomContentDelegate, NCNotificationLongLookViewDelegate, PLClickPresentationInteractionPresentable, PLExpandedPlatterDismissing, PLExpandedPlatterPresentable, PLExpandedPlatterPresentationControllerDelegate, PLExpandedPlatterPresentationViewDelegate> {
     id  _cancelTouchesToken;
     <PLExpandedPlatterDismissing> * _dismisser;
     NCLongLookTransitioningDelegate * _longLookTransitionDelegate;
     id /* block */  _notificationTapBlock;
-    <PLPreviewInteractionPresenting> * _presenter;
+    <PLClickPresentationInteractionPresenting> * _presenter;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -15,7 +15,7 @@
 @property (nonatomic) <PLExpandedPlatterDismissing> *dismisser;
 @property (readonly) unsigned long long hash;
 @property (getter=_notificationTapBlock, setter=_setNotificationTapBlock:, nonatomic, copy) id /* block */ notificationTapBlock;
-@property (nonatomic) <PLPreviewInteractionPresenting> *presenter;
+@property (nonatomic) <PLClickPresentationInteractionPresenting> *presenter;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) UIView *viewForTouchContinuation;
 @property (nonatomic, readonly) UIView *viewWithContent;
@@ -23,6 +23,7 @@
 + (void)initialize;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)_expandedPlatterPresentationViewLoadingIfNecessary:(bool)arg1;
 - (id)_expandedPlatterPresentationViewScrollView;
 - (id)_extensionIdentifier;
@@ -34,6 +35,11 @@
 - (id)_longLookViewIfLoaded;
 - (id)_longLookViewLoadingIfNecessary;
 - (id)_longLookViewScrollView;
+- (unsigned long long)_maximumNumberOfPrimaryLargeTextLinesForProvidedStaticContent;
+- (unsigned long long)_maximumNumberOfPrimaryTextLinesForProvidedStaticContent;
+- (unsigned long long)_maximumNumberOfSecondaryLargeTextLinesForProvidedStaticContent;
+- (unsigned long long)_maximumNumberOfSecondaryTextLinesForProvidedStaticContent;
+- (unsigned long long)_maximumNumberOfTextLinesForProvidedStaticContentWithDefaultNumber:(unsigned long long)arg1 isPrimary:(bool)arg2 isLarge:(bool)arg3;
 - (id /* block */)_notificationTapBlock;
 - (void)_notificationViewControllerViewDidLoad;
 - (struct CGSize { double x1; double x2; })_preferredCustomContentSizeForSize:(struct CGSize { double x1; double x2; })arg1 parentContentContainerBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
@@ -56,19 +62,22 @@
 - (void)customContentDidLoadExtension:(id)arg1;
 - (void)customContentDidUpdateTitle:(id)arg1;
 - (bool)dismissPresentedViewControllerAndClearNotification:(bool)arg1 animated:(bool)arg2 completion:(id /* block */)arg3;
-- (void)dismissViewControllerAnimated:(bool)arg1 completion:(id /* block */)arg2;
+- (void)dismissViewControllerWithTransition:(int)arg1 completion:(id /* block */)arg2;
 - (id)dismisser;
 - (void)expandedPlatterPresentable:(id)arg1 requestsDismissalWithTrigger:(long long)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })expandedPlatterPresentationController:(id)arg1 frameForTransitionViewInPresentationSuperview:(id)arg2;
 - (id)expandedPlatterPresentationController:(id)arg1 keyboardAssertionForGestureWindow:(id)arg2;
 - (bool)expandedPlatterPresentationControllerShouldAllowKeyboardOnAppearance:(id)arg1;
+- (bool)expandedPlatterPresentationControllerShouldProvideBackground:(id)arg1;
 - (id)expandedPlatterViewForPresentationView:(id)arg1;
 - (id)hideHomeAffordanceAnimationSettingsForExpandedPlatterPresentationController:(id)arg1;
 - (bool)isContentExtensionVisible:(id)arg1;
 - (bool)isLookStyleLongLook;
 - (void)loadView;
+- (bool)notificationLongLookView:(id)arg1 tapGestureRecognizerShouldReceiveTouch:(id)arg2;
 - (void)notificationLongLookView:(id)arg1 willInteractWithURL:(id)arg2;
-- (void)presentLongLookAnimated:(bool)arg1 completion:(id /* block */)arg2;
+- (void)playMedia;
+- (void)presentLongLookAnimated:(bool)arg1 trigger:(long long)arg2 completion:(id /* block */)arg3;
 - (id)presenter;
 - (void)preserveInputViews;
 - (bool)resignFirstResponder;

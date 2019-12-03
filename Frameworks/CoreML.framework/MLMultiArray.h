@@ -57,14 +57,14 @@
 - (id)objectAtIndexedSubscript:(long long)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (unsigned long long)offsetForKeyedSubscript:(id)arg1;
-- (id)sequeeze;
-- (id)sequeezeDimensions:(id)arg1 error:(id*)arg2;
 - (void)setNumber:(id)arg1 atOffset:(unsigned long long)arg2;
 - (void)setObject:(id)arg1 atIndexedSubscript:(long long)arg2;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (bool)setRangeWithRawData:(id)arg1 destIndex:(unsigned long long)arg2 error:(id*)arg3;
 - (id)shape;
 - (id)sliceAtOrigin:(id)arg1 shape:(id)arg2 squeeze:(bool)arg3 error:(id*)arg4;
+- (id)squeeze;
+- (id)squeezeDimensions:(id)arg1 error:(id*)arg2;
 - (id)strides;
 - (bool)vectorizeIntoMultiArray:(id)arg1 storageOrder:(long long)arg2 error:(id*)arg3;
 

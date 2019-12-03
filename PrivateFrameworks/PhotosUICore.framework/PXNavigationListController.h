@@ -2,11 +2,11 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXNavigationListController : UIViewController <PXNavigationListDataSourceManagerObserver, UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate> {
+@interface PXNavigationListController : UIViewController <PXNavigationListDataSectionManagerObserver, UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate> {
     bool  __needsUpdateRowHeight;
     <PXNavigationListContainer> * _container;
-    PXNavigationListDataSource * _dataSource;
-    PXNavigationListDataSourceManager * _dataSourceManager;
+    PXNavigationListDataSection * _dataSection;
+    PXNavigationListDataSectionManager * _dataSectionManager;
     bool  _isTableViewUpdating;
     double  _rowHeight;
     NSUserActivity * _siriActionActivity;
@@ -17,8 +17,8 @@
 @property (nonatomic) bool allowsNavigation;
 @property (nonatomic) <PXNavigationListContainer> *container;
 @property (nonatomic, readonly) double contentHeight;
-@property (nonatomic, retain) PXNavigationListDataSource *dataSource;
-@property (nonatomic, readonly) PXNavigationListDataSourceManager *dataSourceManager;
+@property (nonatomic, retain) PXNavigationListDataSection *dataSection;
+@property (nonatomic, readonly) PXNavigationListDataSectionManager *dataSectionManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -36,26 +36,25 @@
 - (bool)_needsUpdateRowHeight;
 - (void)_preferredContentSizeChanged:(id)arg1;
 - (double)_rowHeightForCurrentFont;
-- (void)_setDataSource:(id)arg1 changeDetails:(id)arg2;
 - (void)_setNeedsUpdateRowHeight:(bool)arg1;
 - (void)_updateCell:(id)arg1 atIndexPath:(id)arg2;
 - (void)_updateCellSeparatorStyle:(id)arg1 forRowAtIndexPath:(id)arg2;
+- (void)_updateTableView;
 - (bool)allowsNavigation;
 - (id)container;
 - (double)contentHeight;
-- (id)dataSource;
-- (id)dataSourceManager;
+- (id)dataSection;
+- (id)dataSectionManager;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDataSourceManager:(id)arg1;
+- (id)initWithDataSectionManager:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (bool)isTableViewUpdating;
-- (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void*)arg3;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (double)rowHeight;
 - (void)setAllowsNavigation:(bool)arg1;
 - (void)setContainer:(id)arg1;
-- (void)setDataSource:(id)arg1;
+- (void)setDataSection:(id)arg1;
 - (void)setIsTableViewUpdating:(bool)arg1;
 - (void)setRowHeight:(double)arg1;
 - (void)setSiriActionActivity:(id)arg1;

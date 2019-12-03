@@ -8,6 +8,7 @@
     NSLayoutConstraint * _minimumHeightConstraint;
     _UIInterfaceActionSeparatableSequenceView * _separatedContentSequenceView;
     long long  _sizingSeparatedContentSequenceViewToFitDisabledCount;
+    bool  _visualCornerForcedOverride;
     unsigned long long  _visualCornerPosition;
     UIInterfaceActionVisualStyle * _visualStyle;
 }
@@ -16,6 +17,7 @@
 @property (nonatomic, retain) NSArray *arrangedActionRepresentationViews;
 @property (nonatomic, readonly) NSLayoutConstraint *minimumHeightConstraint;
 @property (nonatomic, readonly) _UIInterfaceActionSeparatableSequenceView *separatedContentSequenceView;
+@property (nonatomic) bool visualCornerForcedOverride;
 @property (nonatomic) unsigned long long visualCornerPosition;
 @property (nonatomic, retain) UIInterfaceActionVisualStyle *visualStyle;
 
@@ -46,10 +48,12 @@
 - (id)separatedContentSequenceView;
 - (void)setActionLayoutAxis:(long long)arg1;
 - (void)setArrangedActionRepresentationViews:(id)arg1;
+- (void)setVisualCornerForcedOverride:(bool)arg1;
 - (void)setVisualCornerPosition:(unsigned long long)arg1;
 - (void)setVisualStyle:(id)arg1;
 - (struct CGSize { double x1; double x2; })systemLayoutSizeFittingSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)updateConstraints;
+- (bool)visualCornerForcedOverride;
 - (unsigned long long)visualCornerPosition;
 - (id)visualStyle;
 

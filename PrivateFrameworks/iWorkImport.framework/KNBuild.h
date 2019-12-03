@@ -94,6 +94,7 @@
 @property (nonatomic, readonly) bool supports3DChartRotationAngle;
 @property (nonatomic, readonly) bool supportsActionRotationAngle;
 @property (nonatomic, readonly) bool supportsActionRotationDirection;
+@property (nonatomic, readonly) bool supportsActionScale;
 @property (nonatomic, readonly) bool supportsBounce;
 @property (nonatomic, readonly) bool supportsCustomDetail;
 @property (nonatomic, readonly) bool supportsCustomEffectTimingCurve1;
@@ -108,6 +109,7 @@
 @property (nonatomic, readonly) bool supportsDuration;
 @property (nonatomic, readonly) bool supportsIncludeEndpoints;
 @property (nonatomic, readonly) bool supportsJiggleIntensity;
+@property (nonatomic, readonly) bool supportsOpacity;
 @property (nonatomic, readonly) bool supportsRandomNumberSeedInspection;
 @property (nonatomic, readonly) bool supportsScaleAmount;
 @property (nonatomic, readonly) bool supportsShine;
@@ -205,7 +207,7 @@
 - (bool)isOnSlide;
 - (unsigned long long)lastActiveChunkIndexInBuild;
 - (unsigned long long)lastChunkIndexOnSlide;
-- (void)loadFromArchive:(const struct BuildArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct ArenaStringPtr { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > {} *x_5_1_1; } x5; struct Reference {} *x6; struct BuildAttributesArchive {} *x7; double x8; int x9; }*)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const struct BuildArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct ArenaStringPtr { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > {} *x_5_1_1; } x5; struct Reference {} *x6; struct BuildAttributesArchive {} *x7; double x8; int x9; }*)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)localizedEffect;
 - (id)p_buildChunkIDMap;
@@ -217,7 +219,7 @@
 - (bool)p_supportsCustomEffectTimingCurveForLayoutStyles:(id)arg1;
 - (bool)p_supportsCustomTextDeliveryOptionsForAttributes:(id)arg1;
 - (long long)randomNumberSeed;
-- (void)saveToArchive:(struct BuildArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct ArenaStringPtr { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > {} *x_5_1_1; } x5; struct Reference {} *x6; struct BuildAttributesArchive {} *x7; double x8; int x9; }*)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(struct BuildArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct ArenaStringPtr { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > {} *x_5_1_1; } x5; struct Reference {} *x6; struct BuildAttributesArchive {} *x7; double x8; int x9; }*)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)setAttributes:(id)arg1;
 - (void)setDelivery:(id)arg1;
@@ -229,6 +231,7 @@
 - (bool)supportsAcceleration;
 - (bool)supportsActionRotationAngle;
 - (bool)supportsActionRotationDirection;
+- (bool)supportsActionScale;
 - (bool)supportsBounce;
 - (bool)supportsCustomDetail;
 - (bool)supportsCustomEffectTimingCurve1;
@@ -243,6 +246,7 @@
 - (bool)supportsDuration;
 - (bool)supportsIncludeEndpoints;
 - (bool)supportsJiggleIntensity;
+- (bool)supportsOpacity;
 - (bool)supportsRandomNumberSeedInspection;
 - (bool)supportsScaleAmount;
 - (bool)supportsShine;

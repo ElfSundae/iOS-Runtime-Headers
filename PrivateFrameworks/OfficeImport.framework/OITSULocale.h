@@ -5,12 +5,13 @@
 @interface OITSULocale : NSObject {
     NSString * _activeCurrencyCode;
     NSString * _activeNoMinusSignCurrencyCode;
+    NSString * _amString;
     NSCache * _cachedLocalizedStrings;
     NSString * _currencyCode;
     NSString * _currencyDecimalSeparator;
     struct __CFNumberFormatter { } * _currencyFormatter;
     NSString * _currencyGroupingSeparator;
-    int  _dateComponentOrdering;
+    long long  _dateComponentOrdering;
     OITSUDateParserLibrary * _dateParserLibrary;
     NSString * _decimalSeparator;
     NSString * _documentLanguageIdentifier;
@@ -19,7 +20,7 @@
         long long __sig; 
         BOOL __opaque[56]; 
     }  _formattersMutex;
-    struct __CFLocale { } * _gregorianCalendarLocale;
+    NSLocale * _gregorianCalendarLocale;
     NSString * _groupingSeparator;
     unsigned long long  _groupingSize;
     bool  _isAutoUpdating;
@@ -36,6 +37,7 @@
     NSMutableArray * _numberFormatters;
     NSString * _percentSymbol;
     struct __CFNumberFormatter { } * _plainFormatter;
+    NSString * _pmString;
     NSMutableArray * _scientificNumberFormatters;
     NSArray * _shortMonthSymbols;
     NSArray * _shortStandaloneMonthSymbols;
@@ -47,13 +49,14 @@
     NSArray * _weekdaySymbols;
 }
 
+@property (readonly) NSString *amString;
 @property (readonly) NSString *arrayRowSeparator;
 @property (readonly) struct __CFLocale { }*cfGregorianCalendarLocale;
 @property (readonly) struct __CFLocale { }*cfLocale;
 @property (readonly) NSString *currencyCode;
 @property (readonly) NSString *currencyDecimalSeparator;
 @property (readonly) NSString *currencyGroupingSeparator;
-@property (readonly) int dateComponentOrdering;
+@property (readonly) long long dateComponentOrdering;
 @property (readonly) OITSUDateParserLibrary *dateParserLibrary;
 @property (readonly) NSString *decimalSeparator;
 @property (readonly) NSString *documentLanguageIdentifier;
@@ -68,6 +71,7 @@
 @property (readonly) NSString *localeIdentifier;
 @property (readonly) NSArray *monthSymbols;
 @property (readonly) NSString *percentSymbol;
+@property (readonly) NSString *pmString;
 @property (readonly) NSArray *shortMonthSymbols;
 @property (readonly) NSArray *shortStandaloneMonthSymbols;
 @property (readonly) NSArray *shortStandaloneWeekdaySymbols;
@@ -78,9 +82,12 @@
 @property (readonly) NSString *trueString;
 @property (readonly) NSArray *weekdaySymbols;
 
++ (id)allSupportedTemplatePickerLanguages;
++ (id)allSupportedTier1Languages;
++ (id)allSupportedTier3Languages;
 + (id)applicationLocale;
 + (unsigned long long)autoupdatingCurrentLocaleChangeCount;
-+ (id)cacheKeyForCFLocale:(struct __CFLocale { }*)arg1;
++ (id)cacheKeyForLocale:(id)arg1;
 + (id)canonicalizeLocaleIdentifier:(id)arg1;
 + (id)canonicalizeLocaleIdentifierWithLanguageAndRegionOnly:(id)arg1;
 + (id)canonicalizeLocaleIdentifierWithLanguageAndScriptOnly:(id)arg1;
@@ -88,17 +95,23 @@
 + (id)canonicalizeLocaleIdentifierWithLanguageScriptAndRegionOnly:(id)arg1;
 + (id)currentLocale;
 + (id)deducedScriptForLocale:(id)arg1;
++ (id)displayNameForCode:(id)arg1 ofType:(id)arg2 displayStandalone:(bool)arg3;
 + (void)initialize;
 + (id)localeForLocaleIdentifier:(id)arg1 documentLanguageIdentifier:(id)arg2;
-+ (bool)localeIsAutoUpdating:(struct __CFLocale { }*)arg1;
++ (id)localeIDWithDefaultRegionCode:(id)arg1;
++ (id)localeIDWithoutDefaultRegionCode:(id)arg1 avoidAmbiguousCases:(bool)arg2;
++ (bool)localeIsAutoUpdating:(id)arg1;
 + (id)preferredLanguages;
++ (id)preferredLocale;
 + (void)saveLocaleForReuse:(id)arg1;
 + (void)setLocalizedStringBundle:(struct __CFBundle { }*)arg1;
++ (id)simplifiedDisplayNameForLocaleID:(id)arg1 displayStandalone:(bool)arg2;
 
 - (id)URLForResource:(id)arg1 withExtension:(id)arg2 subdirectory:(id)arg3;
 - (id)URLForResource:(id)arg1 withExtension:(id)arg2 subdirectory:(id)arg3 inBundle:(struct __CFBundle { }*)arg4;
 - (id)URLForResource:(id)arg1 withExtension:(id)arg2 subdirectory:(id)arg3 inBundleWithURL:(id)arg4;
 - (void)_initializeNumberFormatterStringFromDoubleCache;
+- (id)amString;
 - (id)arrayRowSeparator;
 - (struct __CFLocale { }*)cfGregorianCalendarLocale;
 - (struct __CFLocale { }*)cfLocale;
@@ -108,12 +121,12 @@
 - (id)currencyCode;
 - (id)currencyDecimalSeparator;
 - (id)currencyGroupingSeparator;
-- (int)dateComponentOrdering;
+- (long long)dateComponentOrdering;
 - (id)dateParserLibrary;
 - (void)dealloc;
 - (id)decimalSeparator;
 - (id)description;
-- (id)displayLanguageName;
+- (id)displayLanguageNameWithStandalone:(bool)arg1;
 - (id)documentLanguageIdentifier;
 - (id)falseString;
 - (id)gregorianCalendarLocale;
@@ -135,9 +148,11 @@
 - (bool)localizedCaseInsensitiveIsEqual:(id)arg1 toString:(id)arg2;
 - (long long)localizedCompare:(id)arg1 toString:(id)arg2;
 - (id)localizedStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3;
+- (id)localizedStringWithFormat:(id)arg1;
 - (id)monthSymbols;
 - (id)numberFormatterStringFromDouble:(double)arg1 withFormat:(id)arg2 useDecimalPlaces:(bool)arg3 minDecimalPlaces:(unsigned short)arg4 decimalPlaces:(unsigned short)arg5 showThousandsSeparator:(bool)arg6 currencyCode:(id)arg7 suppressMinusSign:(bool)arg8;
 - (id)percentSymbol;
+- (id)pmString;
 - (void)returnNumberFormatter:(struct __CFNumberFormatter { }*)arg1;
 - (void)returnScientificNumberFormatter:(struct __CFNumberFormatter { }*)arg1;
 - (void)setLocaleSpecificStorage:(id)arg1 forKey:(id)arg2;
@@ -145,7 +160,7 @@
 - (id)shortStandaloneMonthSymbols;
 - (id)shortStandaloneWeekdaySymbols;
 - (id)shortWeekdaySymbols;
-- (id)simplifiedDisplayName;
+- (id)simplifiedDisplayNameWithStandalone:(bool)arg1;
 - (id)standaloneMonthSymbols;
 - (id)standaloneWeekdaySymbols;
 - (id)timeZone;

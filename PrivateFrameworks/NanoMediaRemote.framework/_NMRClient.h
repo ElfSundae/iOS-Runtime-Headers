@@ -10,7 +10,8 @@
 + (id)sharedClient;
 
 - (void).cxx_destruct;
-- (id)_proxy;
+- (id)_proxyWithErrorHandler:(id /* block */)arg1;
+- (id)_synchronousProxyWithErrorHandler:(id /* block */)arg1;
 - (void)discoverAndConnectEndpoints;
 - (void)fetchCompanionCloudAvailabilityWithCompletionHandler:(id /* block */)arg1;
 - (id)init;

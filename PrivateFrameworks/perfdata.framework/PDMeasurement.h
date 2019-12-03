@@ -5,7 +5,9 @@
 @interface PDMeasurement : NSObject {
     NSString * _cachedMetricFilter;
     PDContainer * _container;
+    bool  _context;
     unsigned long long  _group;
+    NSDictionary * _labels;
     bool  _largerBetter;
     NSNumber * _maximum;
     NSNumber * _mean;
@@ -14,6 +16,7 @@
     NSNumber * _minimum;
     NSNumber * _sampleCount;
     NSNumber * _standardDeviation;
+    bool  _summary;
     NSString * _unitString;
     NSNumber * _value;
     NSDictionary * _variables;
@@ -21,8 +24,10 @@
 
 @property (nonatomic, retain) NSString *cachedMetricFilter;
 @property (nonatomic) PDContainer *container;
+@property (getter=isContext, nonatomic) bool context;
 @property (nonatomic) unsigned long long group;
 @property (nonatomic, readonly) unsigned long long histogramBucketCount;
+@property (nonatomic, retain) NSDictionary *labels;
 @property (nonatomic) bool largerBetter;
 @property (nonatomic, retain) NSNumber *maximum;
 @property (nonatomic, retain) NSNumber *mean;
@@ -32,6 +37,7 @@
 @property (nonatomic, readonly) unsigned long long percentileCount;
 @property (nonatomic, retain) NSNumber *sampleCount;
 @property (nonatomic, retain) NSNumber *standardDeviation;
+@property (getter=isSummary, nonatomic) bool summary;
 @property (nonatomic, retain) NSString *unitString;
 @property (nonatomic, retain) NSNumber *value;
 @property (nonatomic, retain) NSDictionary *variables;
@@ -48,7 +54,10 @@
 - (bool)isComparableTo:(id)arg1;
 - (bool)isComparableTo:(id)arg1 ignoringNullableVariables:(id)arg2;
 - (bool)isComparableTo:(id)arg1 ignoringVariables:(id)arg2;
+- (bool)isContext;
 - (bool)isLike:(id)arg1;
+- (bool)isSummary;
+- (id)labels;
 - (bool)largerBetter;
 - (bool)matchesMetricFilter:(id)arg1;
 - (bool)matchesVariables:(id)arg1 ignoringMissing:(bool)arg2;
@@ -64,7 +73,9 @@
 - (id)sampleCount;
 - (void)setCachedMetricFilter:(id)arg1;
 - (void)setContainer:(id)arg1;
+- (void)setContext:(bool)arg1;
 - (void)setGroup:(unsigned long long)arg1;
+- (void)setLabels:(id)arg1;
 - (void)setLargerBetter:(bool)arg1;
 - (void)setMaximum:(id)arg1;
 - (void)setMean:(id)arg1;
@@ -73,6 +84,7 @@
 - (void)setMinimum:(id)arg1;
 - (void)setSampleCount:(id)arg1;
 - (void)setStandardDeviation:(id)arg1;
+- (void)setSummary:(bool)arg1;
 - (void)setUnitString:(id)arg1;
 - (void)setValue:(id)arg1;
 - (void)setVariables:(id)arg1;

@@ -4,12 +4,14 @@
 
 @interface AVCDOSDataOutputStorage : NSObject {
     AVCaptureOutput<AVCaptureDataOutputDelegateOverride> * _dataOutput;
+    NSObject<OS_dispatch_queue> * _delegateOverrideCallbackQueue;
     NSMutableArray * _mdoTimeStampHistoryQueue;
     NSMutableArray * _synchronizedDataQueue;
     NSMutableArray * _timestampAdjustmentsDataQueue;
 }
 
 @property (nonatomic, readonly) AVCaptureOutput<AVCaptureDataOutputDelegateOverride> *dataOutput;
+@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *delegateOverrideCallbackQueue;
 @property (getter=isLive, nonatomic, readonly) bool live;
 @property (nonatomic, retain) NSMutableArray *mdoTimeStampHistoryQueue;
 @property (nonatomic, readonly) NSMutableArray *synchronizedDataQueue;
@@ -17,6 +19,7 @@
 
 - (id)dataOutput;
 - (void)dealloc;
+- (id)delegateOverrideCallbackQueue;
 - (id)initWithDataOutput:(id)arg1;
 - (bool)isLive;
 - (id)mdoTimeStampHistoryQueue;

@@ -6,6 +6,7 @@
     long long  _axis;
     bool  _hasEstablishedBaseValues;
     bool  _inLayoutArrangementUpdateSection;
+    NSMutableSet * _invalidBaselineConstraints;
     bool  _layoutFillsCanvas;
     bool  _layoutUsesCanvasMarginsWhenFilling;
     NSMutableSet * _newlyHiddenItems;
@@ -20,17 +21,20 @@
 @property (nonatomic) bool hasEstablishedBaseValues;
 @property (readonly) unsigned long long hash;
 @property (getter=isInLayoutArrangementUpdateSection, nonatomic) bool inLayoutArrangementUpdateSection;
+@property (nonatomic, readonly) NSSet *invalidBaselineConstraints;
 @property (nonatomic) bool layoutFillsCanvas;
 @property (nonatomic) bool layoutUsesCanvasMarginsWhenFilling;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_invalidateBaselineConstraint:(id)arg1;
 - (id)_newlyHiddenItems;
 - (id)_newlyUnhiddenItems;
 - (long long)axis;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (bool)hasEstablishedBaseValues;
 - (id)init;
+- (id)invalidBaselineConstraints;
 - (bool)isInLayoutArrangementUpdateSection;
 - (bool)layoutFillsCanvas;
 - (bool)layoutUsesCanvasMarginsWhenFilling;

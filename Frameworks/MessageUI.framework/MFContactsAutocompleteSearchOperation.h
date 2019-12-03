@@ -5,8 +5,8 @@
 @interface MFContactsAutocompleteSearchOperation : MFContactsSearchOperation <CNAutocompleteFetchDelegate> {
     CNAutocompleteStore * _autocompleteStore;
     CNAutocompleteFetchContext * _fetchContext;
-    MFPromise * _fetchRequestPromise;
-    MFCancelationToken * _fetchRequestToken;
+    EFPromise * _fetchRequestPromise;
+    EFCancelationToken * _fetchRequestToken;
     bool  _includeContacts;
     bool  _includeRecents;
     bool  _includeServers;
@@ -26,8 +26,9 @@
 @property (nonatomic) bool simulateResults;
 @property (readonly) Class superclass;
 
-+ (id)operationWithAddressBook:(void*)arg1 owner:(id)arg2 text:(id)arg3 taskID:(id)arg4 properties:(id)arg5 autocompleteStore:(id)arg6;
++ (id)operationWithOwner:(id)arg1 text:(id)arg2 taskID:(id)arg3 autocompleteStore:(id)arg4;
 
+- (void).cxx_destruct;
 - (id)_simulatedRecipientResults;
 - (void)autocompleteFetch:(id)arg1 didFailWithError:(id)arg2;
 - (void)autocompleteFetch:(id)arg1 didReceiveResults:(id)arg2;
@@ -35,7 +36,6 @@
 - (id)autocompleteStore;
 - (void)cancel;
 - (void)configureForSearchTypes:(unsigned long long)arg1;
-- (void)dealloc;
 - (id)fetchContext;
 - (bool)includeContacts;
 - (bool)includeRecents;

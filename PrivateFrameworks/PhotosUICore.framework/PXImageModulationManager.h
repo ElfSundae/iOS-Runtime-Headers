@@ -7,6 +7,7 @@
     bool  _active;
     bool  _applicationActive;
     CAContext * _coreAnimationContext;
+    bool  _currentScreenSupportsHDR;
     bool  _enabled;
     NSHashTable * _imageLayerModulators;
     double  _imageModulationIntensity;
@@ -23,6 +24,7 @@
         bool finalRequestedEDRHeadroomFactor; 
         bool desiredDynamicRange; 
         bool imageLayerModulators; 
+        bool currentScreenSupportsHDR; 
     }  _needsUpdateFlags;
     double  _requestedEDRHeadroomFactor;
     PXRequestedEDRHeadroomFactorFilter * _requestedEDRHeadroomFactorFilter;
@@ -34,6 +36,7 @@
 @property (getter=isActive, nonatomic, readonly) bool active;
 @property (getter=isApplicationActive, nonatomic) bool applicationActive;
 @property (nonatomic, retain) CAContext *coreAnimationContext;
+@property (nonatomic, readonly) bool currentScreenSupportsHDR;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (getter=isEnabled, nonatomic, readonly) bool enabled;
@@ -57,6 +60,7 @@
 - (void)_applicationDidBecomeActive:(id)arg1;
 - (void)_applicationDidResignActive:(id)arg1;
 - (void)_invalidateActive;
+- (void)_invalidateCurrentScreenSupportsHDR;
 - (void)_invalidateDesiredDynamicRange;
 - (void)_invalidateEnabled;
 - (void)_invalidateFinalRequestedEDRHeadroomFactor;
@@ -70,6 +74,7 @@
 - (void)_setNeedsUpdate;
 - (void)_updateActiveIfNeeded;
 - (void)_updateCoreAnimationContext;
+- (void)_updateCurrentScreenSupportsHDRIfNeeded;
 - (void)_updateDesiredDynamicRangeIfNeeded;
 - (void)_updateEnabledIfNeeded;
 - (void)_updateFinalRequestedEDRHeadroomFactorIfNeeded;
@@ -83,6 +88,7 @@
 - (void)checkInImageLayerModulator:(id)arg1;
 - (id)checkoutImageLayerModulatorWithOptions:(struct { long long x1; float x2; })arg1;
 - (id)coreAnimationContext;
+- (bool)currentScreenSupportsHDR;
 - (void)dealloc;
 - (void)didPerformChanges;
 - (id)imageLayerModulators;
@@ -103,6 +109,7 @@
 - (void)setActive:(bool)arg1;
 - (void)setApplicationActive:(bool)arg1;
 - (void)setCoreAnimationContext:(id)arg1;
+- (void)setCurrentScreenSupportsHDR:(bool)arg1;
 - (void)setEnabled:(bool)arg1;
 - (void)setHDRFocus:(double)arg1;
 - (void)setImageModulationIntensity:(double)arg1;

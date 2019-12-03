@@ -11,6 +11,7 @@
 }
 
 - (void).cxx_destruct;
+- (id)cacheKey;
 - (void)cleanUp;
 - (bool)complete:(out id*)arg1;
 - (id)histogramRequest;

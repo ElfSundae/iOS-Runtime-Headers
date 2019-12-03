@@ -31,6 +31,7 @@
 
 + (id)_relationForKey:(id)arg1;
 + (bool)_shouldRetainPropertyForKey:(id)arg1;
++ (Class)alternateUniverseClass;
 + (id)defaultPropertiesToLoad;
 + (Class)frozenClass;
 + (Class)meltedClass;
@@ -79,8 +80,10 @@
 - (id)eventStore;
 - (id)existingMeltedObject;
 - (bool)existsInStore;
-- (struct EKPersistentObject { Class x1; struct _opaque_pthread_mutex_t { long long x_2_1_1; BOOL x_2_1_2[56]; } x2; id x3; id x4; id x5; }*)frozenObject;
+- (Class)frozenClass;
+- (struct EKPersistentObject { Class x1; struct _opaque_pthread_mutex_t { long long x_2_1_1; BOOL x_2_1_2[56]; } x2; id x3; id x4; id x5; unsigned int x6; id x7; id x8; }*)frozenObject;
 - (id)init;
+- (id)initWithAlternateUniverseObject:(struct EKPersistentObject { Class x1; struct _opaque_pthread_mutex_t { long long x_2_1_1; BOOL x_2_1_2[56]; } x2; id x3; id x4; id x5; unsigned int x6; id x7; id x8; }*)arg1 inEventStore:(id)arg2 withUpdatedChildObjects:(id)arg3;
 - (id)initWithObject:(id)arg1;
 - (bool)isCompletelyEqual:(id)arg1;
 - (bool)isDirty;

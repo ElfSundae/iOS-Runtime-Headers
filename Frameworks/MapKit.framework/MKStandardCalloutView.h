@@ -28,9 +28,12 @@
             } size; 
         } desiredBounds; 
     }  _anchor;
+    bool  _animatingMapToShow;
+    UIVisualEffectView * _backdropView;
     MKSmallCalloutView * _calloutView;
     _MKCalloutLayer * _contentStrokeLayer;
-    _MKCalloutContentView * _contentView;
+    UIView * _contentView;
+    bool  _dismissed;
     struct { 
         unsigned int animated : 1; 
         unsigned int didMoveCalled : 1; 
@@ -50,12 +53,15 @@
         } size; 
     }  _frame;
     _MKCalloutLayer * _maskLayer;
+    _MKStandardCalloutMaskView * _maskView;
     UIMotionEffectGroup * _motionEffect;
 }
 
 + (double)defaultHeight;
++ (Class)layerClass;
 
 - (void).cxx_destruct;
+- (void)_adaptToUserInterfaceStyle;
 - (void)_addAccessoryTargetForView:(id)arg1;
 - (void)_calculateActualAnchorPoint:(struct CGPoint { double x1; double x2; }*)arg1 frame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg2 forDesiredAnchorPoint:(struct CGPoint { double x1; double x2; })arg3 boundaryRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg4;
 - (void)_calloutAccessoryControlTapped:(id)arg1;
@@ -80,6 +86,7 @@
 - (void)didMoveToWindow;
 - (void)dismissAnimated:(bool)arg1 completionBlock:(id /* block */)arg2;
 - (void)forceAnchorPosition:(long long)arg1;
+- (bool)hasPendingVisibility;
 - (id)initWithAnnotationView:(id)arg1;
 - (bool)isLeftAnchored;
 - (void)motionEffectDidUpdate:(id)arg1;
@@ -95,5 +102,6 @@
 - (void)setTitle:(id)arg1;
 - (void)showAnimated:(bool)arg1 completionBlock:(id /* block */)arg2;
 - (id)subtitle;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end

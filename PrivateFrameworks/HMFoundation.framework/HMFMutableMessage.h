@@ -15,8 +15,11 @@
 @property (getter=isRemote, nonatomic) bool remote;
 @property (nonatomic) unsigned long long remoteRestriction;
 @property (nonatomic, retain) NSString *remoteSourceID;
+@property (nonatomic) bool requiresNoSPIEntitlement;
+@property (nonatomic) bool requiresSPIEntitlement;
 @property (nonatomic, copy) id /* block */ responseHandler;
 @property (getter=isSecureRemote, nonatomic) bool secureRemote;
+@property (nonatomic) double timeout;
 @property (nonatomic) HMFMessageTransport *transport;
 @property (nonatomic, copy) NSDictionary *userInfo;
 
@@ -29,6 +32,7 @@
 - (void)setHeaders:(id)arg1;
 - (void)setName:(id)arg1;
 - (void)setQualityOfService:(long long)arg1;
+- (void)setTimeout:(double)arg1;
 - (void)setTransport:(id)arg1;
 - (void)setUserInfo:(id)arg1;
 - (void)setUserInfoValue:(id)arg1 forKey:(id)arg2;
@@ -43,8 +47,13 @@
 - (void)setRemote:(bool)arg1;
 - (void)setRemoteRestriction:(unsigned long long)arg1;
 - (void)setRemoteSourceID:(id)arg1;
+- (void)setRequiresCameraClipsEntitlement;
+- (void)setRequiresMultiUserSetupEntitlement;
 - (void)setRequiresNoSPIEntitlement;
+- (void)setRequiresNoSPIEntitlement:(bool)arg1;
 - (void)setRequiresSPIEntitlement;
+- (void)setRequiresSPIEntitlement:(bool)arg1;
+- (void)setRequiresSetupPayloadEntitlement;
 - (void)setSecureRemote:(bool)arg1;
 
 @end

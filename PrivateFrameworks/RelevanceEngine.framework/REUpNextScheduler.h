@@ -4,8 +4,11 @@
 
 @interface REUpNextScheduler : NSObject {
     double  _delay;
+    NSObject<OS_dispatch_queue> * _originalQueue;
     NSObject<OS_dispatch_queue> * _queue;
-    NSLock * _scheduledLock;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _scheduledLock;
     id /* block */  _updateBlock;
     id /* block */  _updateCompletionBlock;
     bool  _updateScheduled;
@@ -23,10 +26,11 @@
 
 - (void).cxx_destruct;
 - (void)_queue_performUpdate;
+- (void)dealloc;
 - (double)delay;
 - (id)initWithQueue:(id)arg1 delay:(double)arg2 updateBlock:(id /* block */)arg3 updateCompletionBlock:(id /* block */)arg4;
 - (bool)isScheduled;
-- (void)performImmediately;
+- (bool)performImmediately;
 - (id)queue;
 - (void)schedule;
 - (id /* block */)updateBlock;

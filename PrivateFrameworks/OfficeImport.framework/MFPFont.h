@@ -9,8 +9,8 @@
     int  mUnit;
 }
 
+- (void).cxx_destruct;
 - (struct __CTFont { }*)createCTFontWithGraphics:(id)arg1;
-- (void)dealloc;
 - (unsigned int)flags;
 - (id)name;
 - (void)setFlags:(unsigned int)arg1;

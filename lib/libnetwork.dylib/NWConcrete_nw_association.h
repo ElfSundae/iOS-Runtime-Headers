@@ -8,10 +8,12 @@
     struct nw_hash_table { } * connected_flow_handles;
     void * deactivation_timer;
     unsigned int  dormant;
+    unsigned int  dry_run_count;
     NSObject<OS_nw_endpoint> * endpoint;
     NSObject<OS_nw_path_evaluator> * evaluator;
     struct nw_hash_table { } * handles;
-    NSObject<OS_nw_parameters> * parameters;
+    unsigned int  in_force_update;
+    NSObject<OS_nw_path_parameters> * path_parameters;
     NSObject<OS_nw_path> * previous_path;
 }
 

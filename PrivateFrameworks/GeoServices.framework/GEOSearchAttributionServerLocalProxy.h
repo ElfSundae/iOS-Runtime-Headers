@@ -4,10 +4,14 @@
 
 @interface GEOSearchAttributionServerLocalProxy : NSObject <GEOResourceManifestTileGroupObserver, GEOSearchAttributionServerProxy> {
     GEOSearchAttributionManifest * _attributionManifest;
-    NSLock * _attributionManifestLock;
-    NSObject<OS_dispatch_queue> * _isolationQueue;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _attributionManifestLock;
+    geo_isolater * _isolater;
     NSMapTable * _listeners;
-    NSLock * _listenersLock;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _listenersLock;
     NSMutableArray * _updateManifestCompletionHandlers;
     NSMutableArray * _updateManifestErrorHandlers;
     bool  _updatingManifest;

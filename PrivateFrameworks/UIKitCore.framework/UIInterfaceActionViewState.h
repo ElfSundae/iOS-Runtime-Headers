@@ -9,7 +9,6 @@
     bool  _isHighlighted;
     bool  _isPreferred;
     bool  _isPressed;
-    UIColor * _legacyPresentationTintColor;
     unsigned long long  _visualCornerPosition;
 }
 
@@ -19,7 +18,6 @@
 @property (nonatomic, readonly) bool isHighlighted;
 @property (nonatomic, readonly) bool isPreferred;
 @property (nonatomic, readonly) bool isPressed;
-@property (nonatomic, readonly) UIColor *legacyPresentationTintColor;
 @property (nonatomic, readonly) unsigned long long visualCornerPosition;
 
 + (id)_nullViewStateForActionType:(long long)arg1;
@@ -34,7 +32,6 @@
 - (void)_collectStateFromAction:(id)arg1;
 - (void)_collectStateFromActionRepresentationView:(id)arg1;
 - (void)_collectStateFromActionViewState:(id)arg1;
-- (id)_legacyPresentationTintColorForActionRepresentationDescendantView:(id)arg1;
 - (bool)_stateEqualToActionViewState:(id)arg1;
 - (id)action;
 - (id)actionViewStateContext;
@@ -45,7 +42,6 @@
 - (bool)isHighlighted;
 - (bool)isPreferred;
 - (bool)isPressed;
-- (id)legacyPresentationTintColor;
 - (unsigned long long)visualCornerPosition;
 
 @end

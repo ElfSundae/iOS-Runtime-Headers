@@ -14,7 +14,7 @@
 @property (nonatomic, copy) NSData *accountFlagsData;
 @property (nonatomic, readonly) NSDictionary *cloudAssetCountPerType;
 @property (nonatomic, readonly) NSDate *cloudAssetCountPerTypeLastCheckDate;
-@property (getter=isConnectedToNetwork, nonatomic) bool connectedToNetwork;
+@property (getter=isConnectedToNetwork, nonatomic, readonly) bool connectedToNetwork;
 @property (nonatomic) <CPLStatusDelegate> *delegate;
 @property (nonatomic, copy) NSArray *disabledFeatures;
 @property (nonatomic, copy) NSDate *exitDeleteTime;
@@ -26,12 +26,12 @@
 @property (nonatomic) bool iCloudLibraryExists;
 @property (nonatomic) bool iCloudLibraryHasBeenWiped;
 @property (nonatomic, copy) NSDate *initialSyncDate;
+@property (nonatomic, readonly) bool isConstrainedNetwork;
 @property (nonatomic) bool isExceedingQuota;
 @property (nonatomic, copy) NSDate *lastCompletePrefetchDate;
 @property (nonatomic, copy) NSDate *lastPruneDate;
 @property (nonatomic, copy) NSDate *lastSuccessfulSyncDate;
-
-+ (id)statusForSharedLibrary;
+@property (nonatomic) bool lowDiskSpace;
 
 - (void).cxx_destruct;
 - (bool)_deleteInitialSyncMarkerWithError:(id*)arg1;
@@ -58,10 +58,12 @@
 - (id)initWithClientLibraryBaseURLForCPLEngine:(id)arg1;
 - (id)initialSyncDate;
 - (bool)isConnectedToNetwork;
+- (bool)isConstrainedNetwork;
 - (bool)isExceedingQuota;
 - (id)lastCompletePrefetchDate;
 - (id)lastPruneDate;
 - (id)lastSuccessfulSyncDate;
+- (bool)lowDiskSpace;
 - (void)refetchFromDisk;
 - (void)setAccountFlagsData:(id)arg1;
 - (void)setCloudAssetCountPerType:(id)arg1 updateCheckDate:(bool)arg2;
@@ -69,7 +71,7 @@
 - (void)setDelegate:(id)arg1;
 - (void)setDisabledFeatures:(id)arg1;
 - (void)setExitDeleteTime:(id)arg1;
-- (void)setHasCellularBudget:(bool)arg1 hasBatteryBudget:(bool)arg2 isBudgetValid:(bool)arg3;
+- (void)setHasCellularBudget:(bool)arg1 hasBatteryBudget:(bool)arg2 isConstrainedNetwork:(bool)arg3 isBudgetValid:(bool)arg4;
 - (void)setHasChangesToProcess:(bool)arg1;
 - (void)setICloudLibraryClientVersionTooOld:(bool)arg1;
 - (void)setICloudLibraryExists:(bool)arg1;
@@ -79,6 +81,7 @@
 - (void)setLastCompletePrefetchDate:(id)arg1;
 - (void)setLastPruneDate:(id)arg1;
 - (void)setLastSuccessfulSyncDate:(id)arg1;
+- (void)setLowDiskSpace:(bool)arg1;
 - (id)statusDescription;
 - (bool)writeInitialSyncMarker:(id*)arg1;
 

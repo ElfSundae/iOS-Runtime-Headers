@@ -13,6 +13,7 @@
     NSSet * _constrainPersonIdType;
     NSSet * _constrainPersonIds;
     NSSet * _ignoreContactIdentifiers;
+    bool  _inferActiveInteractions;
     unsigned long long  _maxNumberOfPeopleSuggested;
     bool  _requireOutgoingInteraction;
     bool  _useFuture;
@@ -29,6 +30,7 @@
 @property (retain) NSSet *constrainPersonIdType;
 @property (retain) NSSet *constrainPersonIds;
 @property (retain) NSSet *ignoreContactIdentifiers;
+@property bool inferActiveInteractions;
 @property unsigned long long maxNumberOfPeopleSuggested;
 @property bool requireOutgoingInteraction;
 @property bool useFuture;
@@ -47,7 +49,9 @@
 - (id)constrainPersonIdType;
 - (id)constrainPersonIds;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)description;
 - (id)ignoreContactIdentifiers;
+- (bool)inferActiveInteractions;
 - (id)init;
 - (unsigned long long)maxNumberOfPeopleSuggested;
 - (bool)requireOutgoingInteraction;
@@ -61,6 +65,7 @@
 - (void)setConstrainPersonIdType:(id)arg1;
 - (void)setConstrainPersonIds:(id)arg1;
 - (void)setIgnoreContactIdentifiers:(id)arg1;
+- (void)setInferActiveInteractions:(bool)arg1;
 - (void)setMaxNumberOfPeopleSuggested:(unsigned long long)arg1;
 - (void)setRequireOutgoingInteraction:(bool)arg1;
 - (void)setUseFuture:(bool)arg1;

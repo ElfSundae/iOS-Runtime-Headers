@@ -12,7 +12,6 @@
 - (id)allKeys;
 - (long long)currentSize;
 - (void)dealloc;
-- (void)finalize;
 - (id)initWithURL:(id)arg1;
 - (bool)isPlayableOffline;
 - (id)lastModifiedDateOfEntryForKey:(id)arg1;

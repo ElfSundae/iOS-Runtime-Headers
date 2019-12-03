@@ -3,18 +3,18 @@
  */
 
 @interface WKWebProcessPlugInBrowserContextController : NSObject <WKObject> {
-    /* Warning: unhandled struct encoding: '{WeakObjCPtr<id<WKWebProcessPlugInEditingDelegate> >="m_weakReference"@}' */ struct WeakObjCPtr<id<WKWebProcessPlugInEditingDelegate> > { 
+    struct WeakObjCPtr<id<WKWebProcessPlugInEditingDelegate> > { 
         id m_weakReference; 
     }  _editingDelegate;
-    /* Warning: unhandled struct encoding: '{WeakObjCPtr<id<WKWebProcessPlugInFormDelegatePrivate> >="m_weakReference"@}' */ struct WeakObjCPtr<id<WKWebProcessPlugInFormDelegatePrivate> > { 
+    struct WeakObjCPtr<id<WKWebProcessPlugInFormDelegatePrivate> > { 
         id m_weakReference; 
     }  _formDelegate;
-    /* Warning: unhandled struct encoding: '{WeakObjCPtr<id<WKWebProcessPlugInLoadDelegate> >="m_weakReference"@}' */ struct WeakObjCPtr<id<WKWebProcessPlugInLoadDelegate> > { 
+    struct WeakObjCPtr<id<WKWebProcessPlugInLoadDelegate> > { 
         id m_weakReference; 
     }  _loadDelegate;
     struct ObjectStorage<WebKit::WebPage> { 
         struct type { 
-            unsigned char __lx[2296]; 
+            unsigned char __lx[2488]; 
         } data; 
     }  _page;
     struct RetainPtr<_WKRemoteObjectRegistry> { 
@@ -22,7 +22,7 @@
     }  _remoteObjectRegistry;
 }
 
-@property (readonly) /* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*_apiObject;
+@property (readonly) struct Object { int (**x1)(); id x2; }*_apiObject;
 @property (nonatomic, readonly) struct OpaqueWKBundlePage { }*_bundlePageRef;
 @property (setter=_setDefersLoading:, nonatomic) bool _defersLoading;
 @property (setter=_setEditingDelegate:) <WKWebProcessPlugInEditingDelegate> *_editingDelegate;
@@ -44,7 +44,7 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (/* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*)_apiObject;
+- (struct Object { int (**x1)(); id x2; }*)_apiObject;
 - (struct OpaqueWKBundlePage { }*)_bundlePageRef;
 - (bool)_defersLoading;
 - (id)_editingDelegate;

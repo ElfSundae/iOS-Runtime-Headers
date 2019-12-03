@@ -4,7 +4,7 @@
 
 @interface TSKAccessControllerReadTicket : NSObject <TSKAccessControllerReadTicket> {
     TSKAccessController * _accessController;
-    int  _accessCount;
+    _Atomic int  _accessCount;
 }
 
 @property (readonly, copy) NSString *debugDescription;

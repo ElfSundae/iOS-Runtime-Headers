@@ -25,14 +25,12 @@
 - (void)_setupConnectionIfNeeded;
 - (void)addEventObserver:(id)arg1 forDeviceWithIdentifier:(id)arg2;
 - (void)beginDeviceQuery;
-- (void)beginWifiMonitoring;
 - (void)cancelAuthChallengeForDeviceWithIdentifier:(id)arg1;
 - (void)closeConnectionToDeviceWithIdentifier:(id)arg1 withType:(unsigned long long)arg2;
 - (void)deviceQueryUpdatedDiscoveredDevices:(id)arg1;
 - (void)deviceUpdatedState:(id)arg1;
-- (void)deviceWithState:(id)arg1 encounteredAuthChallengeOfType:(long long)arg2 codeToEnterOnDevice:(id)arg3;
+- (void)deviceWithState:(id)arg1 encounteredAuthChallengeOfType:(long long)arg2 attributes:(long long)arg3 codeToEnterOnDevice:(id)arg4;
 - (void)endDeviceQuery;
-- (void)endWifiMonitoring;
 - (id)eventObserversByID;
 - (void)fetchActiveMREndpointUIDWithCompletion:(id /* block */)arg1;
 - (void)fulfillAuthChallengeForDeviceWithIdentifier:(id)arg1 withLocallyEnteredCode:(id)arg2;
@@ -41,6 +39,7 @@
 - (id)remoteObject;
 - (void)removeEventObserver:(id)arg1 forDeviceWithIdentifier:(id)arg2;
 - (void)sendButtonEvent:(id)arg1 toDeviceWithIdentifier:(id)arg2;
+- (void)sendEvent:(id)arg1 toDeviceWithIdentifier:(id)arg2 options:(id)arg3 response:(id /* block */)arg4;
 - (void)sendGameControllerEvent:(id)arg1 toDeviceWithIdentifier:(id)arg2;
 - (void)sendInputReturnKeyToDeviceWithIdentifier:(id)arg1;
 - (void)sendInputText:(id)arg1 toDeviceWithIdentifier:(id)arg2;
@@ -52,7 +51,6 @@
 - (void)setXpcConnection:(id)arg1;
 - (void)startVoiceRecordingForDeviceWithIdentifier:(id)arg1;
 - (void)stopVoiceRecordingForDeviceWithIdentifier:(id)arg1;
-- (void)wifiStateUpdatedWithOldState:(long long)arg1 andNewState:(long long)arg2;
 - (id)xpcConnection;
 
 @end

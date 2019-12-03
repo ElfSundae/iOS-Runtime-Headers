@@ -5,13 +5,13 @@
 @interface INUIAppIntentDeliverer : NSObject {
     BKSApplicationStateMonitor * _appStateMonitor;
     NSObject<OS_dispatch_group> * _assertionSetupGroup;
-    AFWatchdogTimer * _assertionTimer;
+    INWatchdogTimer * _assertionTimer;
     BKSProcessAssertion * _backgroundLaunchAssertion;
     NSString * _bundleIdentifier;
     <INUIIntentBackgroundHandlingAssertion> * _intentBackgroundHandlingAssertion;
     NSObject<OS_dispatch_queue> * _queue;
     AFSafetyBlock * _requestCompletionBlock;
-    AFWatchdogTimer * _requestTimer;
+    INWatchdogTimer * _requestTimer;
 }
 
 @property (nonatomic, readonly, copy) NSString *bundleIdentifier;

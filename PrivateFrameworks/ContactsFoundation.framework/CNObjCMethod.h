@@ -15,7 +15,7 @@
 
 + (id)methodWithName:(id)arg1 implementation:(int (*)arg2 typeEncoding:(id)arg3;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (int (*)implementation;
 - (id)initWithMethod:(struct objc_method { }*)arg1;
 - (id)initWithName:(id)arg1 implementation:(int (*)arg2 typeEncoding:(id)arg3;

@@ -12,7 +12,7 @@
 + (id)emptyDiff;
 
 - (void).cxx_destruct;
-- (bool)applyToABPerson:(void*)arg1 propertyDescription:(id)arg2 error:(id*)arg3;
+- (bool)applyToABPerson:(void*)arg1 propertyDescription:(id)arg2 logger:(id)arg3 error:(id*)arg4;
 - (id)description;
 - (id)initWithUpdates:(id)arg1;
 - (bool)isEmpty;

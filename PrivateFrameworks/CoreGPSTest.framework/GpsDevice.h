@@ -50,17 +50,17 @@
             } __r_; 
         } gnssDeviceLibraryName; 
         unsigned int logLevel; 
+        unsigned int secondaryLogLevel; 
         unsigned long long logMask; 
         bool clearNvStore; 
-        bool doPeriodic; 
+        bool printNmeaMessage; 
+        bool enableB13LteFilter; 
         bool doCw; 
         bool doModulated; 
         bool doPowerMode; 
         bool doHostWakeGpio; 
         bool doTimeMarkGpio; 
         bool doCommPing; 
-        bool doCommLoopback; 
-        bool doFirmwareLoad; 
         int periodicDurationSec; 
         int cwDurationSec; 
         int cwBandwidthHz; 
@@ -80,7 +80,7 @@
 }
 
 @property /* Warning: unhandled struct encoding: '{GpsFactoryTest={Options={basic_string<char' */ struct *fTestDevice; /* unknown property attribute:  256>=[256c]}} */
-@property /* Warning: unhandled struct encoding: '{Options={basic_string<char' */ struct  fTestOptions; /* unknown property attribute:  std::__1::allocator<char> >={__rep=(?={__long=*QQ}{__short=[23c]{?=C}}{__raw=[3Q]})}}}IQBBBBBBBBBBiiiiC(Subband=ii)iiiiii} */
+@property /* Warning: unhandled struct encoding: '{Options={basic_string<char' */ struct  fTestOptions; /* unknown property attribute:  std::__1::allocator<char> >={__rep=(?={__long=*QQ}{__short=[23c]{?=C}}{__raw=[3Q]})}}}IIQBBBBBBBBBiiiiC(Subband=ii)iiiiii} */
 
 - (id).cxx_construct;
 - (void).cxx_destruct;

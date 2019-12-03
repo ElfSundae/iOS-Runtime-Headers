@@ -13,6 +13,7 @@
     unsigned long long  _reason;
     double  _retryDelay;
     bool  _shouldIgnoreCache;
+    bool  _shouldIgnoreExpiration;
     bool  _shouldRequireCachedResults;
     NSNumber * _timeoutInterval;
     ICUserIdentity * _userIdentity;
@@ -32,13 +33,12 @@
 @property (nonatomic, copy) NSString *requestingBundleVersion;
 @property (nonatomic) double retryDelay;
 @property (nonatomic) bool shouldIgnoreCache;
+@property (nonatomic) bool shouldIgnoreExpiration;
 @property (nonatomic) bool shouldRequireCachedResults;
 @property (nonatomic, readonly, copy) ICStorePlatformRequest *storePlatformRequest;
 @property (nonatomic, copy) NSNumber *timeoutInterval;
 @property (nonatomic, copy) ICUserIdentity *userIdentity;
 @property (nonatomic, retain) ICUserIdentityStore *userIdentityStore;
-
-+ (id)itemIdentifiersForModelObjects:(id)arg1;
 
 - (void).cxx_destruct;
 - (bool)allowLocalEquivalencies;
@@ -66,11 +66,13 @@
 - (void)setRequestingBundleVersion:(id)arg1;
 - (void)setRetryDelay:(double)arg1;
 - (void)setShouldIgnoreCache:(bool)arg1;
+- (void)setShouldIgnoreExpiration:(bool)arg1;
 - (void)setShouldRequireCachedResults:(bool)arg1;
 - (void)setTimeoutInterval:(id)arg1;
 - (void)setUserIdentity:(id)arg1;
 - (void)setUserIdentityStore:(id)arg1;
 - (bool)shouldIgnoreCache;
+- (bool)shouldIgnoreExpiration;
 - (bool)shouldRequireCachedResults;
 - (id)storePlatformRequest;
 - (id)timeoutInterval;

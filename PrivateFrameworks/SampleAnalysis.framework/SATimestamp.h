@@ -31,13 +31,14 @@
 - (void)addSelfToSerializationDictionary:(struct NSMutableDictionary { Class x1; }*)arg1;
 - (void)applyMachTimebase:(struct mach_timebase_info { unsigned int x1; unsigned int x2; })arg1;
 - (long long)compare:(id)arg1;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)debugDescription;
 - (bool)isEqualToTimestamp:(id)arg1;
 - (unsigned long long)machAbsTime;
 - (double)machAbsTimeSeconds;
 - (unsigned long long)machContTime;
 - (double)machContTimeSeconds;
-- (void)populateReferencesUsingBuffer:(const void*)arg1 bufferLength:(unsigned long long)arg2 andDeserializationDictionary:(struct NSMutableDictionary { Class x1; }*)arg3 andDataBufferDictionary:(struct NSMutableDictionary { Class x1; }*)arg4;
+- (void)populateReferencesUsingBuffer:(const struct { unsigned char x1; unsigned char x2; unsigned long long x3; unsigned long long x4; double x5; }*)arg1 bufferLength:(unsigned long long)arg2 andDeserializationDictionary:(struct NSMutableDictionary { Class x1; }*)arg3 andDataBufferDictionary:(struct NSMutableDictionary { Class x1; }*)arg4;
 - (void)setMachAbsTime:(unsigned long long)arg1;
 - (void)setMachAbsTimeSeconds:(double)arg1;
 - (void)setMachContTime:(unsigned long long)arg1;

@@ -30,17 +30,25 @@
 @property (getter=isLocationServicesPreferencesDialogEnabled, nonatomic) bool locationServicesPreferencesDialogEnabled;
 @property (nonatomic) bool matchInfoEnabled;
 @property (nonatomic) <GEOMotionContextProviderDelegate> *motionDelegate;
+@property (nonatomic) int navigationType;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) double timeScale;
 @property (nonatomic, readonly) MNTraceEventRecorder *traceEventRecorder;
 @property (nonatomic) <MNNavigationTraceManagerDelegate> *traceManagerDelegate;
 @property (nonatomic, readonly) MNTracePlayer *tracePlayer;
 @property (nonatomic, readonly) MNTraceRecorder *traceRecorder;
+@property (nonatomic, readonly) unsigned long long traceVersion;
 @property (nonatomic, readonly) bool usesCLMapCorrection;
 
 - (void).cxx_destruct;
+- (id)_defaultTraceExtension;
+- (id)_defaultTraceNameForDestination:(id)arg1;
 - (bool)_isNavigating;
+- (void)_recordEnvironmentInfo:(id)arg1;
+- (void)_recordStylesheet:(id)arg1;
 - (unsigned long long)_startIndexForNavigation;
+- (id)_tracePathForTraceName:(id)arg1;
+- (id)_validFilenameForTraceName:(id)arg1;
 - (long long)activityType;
 - (id /* block */)authorizationRequestBlock;
 - (int)authorizationStatus;
@@ -58,7 +66,10 @@
 - (bool)isTracePlayer;
 - (bool)matchInfoEnabled;
 - (id)motionDelegate;
-- (void)openWithRoutePlanningDetails:(id)arg1;
+- (int)navigationType;
+- (void)openForPlaybackWithTracePath:(id)arg1;
+- (void)openForRecordingWithTraceRecordingData:(id)arg1 traceNameOverride:(id)arg2;
+- (void)openForSimulationWithRoute:(id)arg1 traceRecordingData:(id)arg2 traceNameOverride:(id)arg3;
 - (void)requestWhenInUseAuthorization;
 - (void)requestWhenInUseAuthorizationWithPrompt;
 - (void)resetForActiveTileGroupChanged;
@@ -73,8 +84,10 @@
 - (void)setLocationServicesPreferencesDialogEnabled:(bool)arg1;
 - (void)setMatchInfoEnabled:(bool)arg1;
 - (void)setMotionDelegate:(id)arg1;
+- (void)setNavigationType:(int)arg1;
 - (void)setTraceManagerDelegate:(id)arg1;
 - (void)startMotionUpdates;
+- (void)startSimulationWithRoute:(id)arg1 request:(id)arg2 response:(id)arg3 routeAttributes:(id)arg4 routeIndex:(unsigned int)arg5 traceNameOverride:(id)arg6;
 - (void)startUpdatingHeading;
 - (void)startUpdatingLocation;
 - (void)startUpdatingVehicleHeading;
@@ -106,6 +119,7 @@
 - (void)tracePlayerDidStayOnRoute:(id)arg1;
 - (void)tracePlayerDidStop:(id)arg1;
 - (id)traceRecorder;
+- (unsigned long long)traceVersion;
 - (bool)usesCLMapCorrection;
 
 @end

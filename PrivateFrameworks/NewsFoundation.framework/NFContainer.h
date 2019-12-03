@@ -28,14 +28,17 @@
 - (id)init;
 - (id)initAsPrivateContainer;
 - (id)initWithAssemblies:(id)arg1;
+- (id)initWithBundleAssemblies:(id)arg1;
+- (id)initWithBundleAssemblies:(id)arg1 assemblies:(id)arg2;
 - (id)initWithFrameworkAssemblies:(id)arg1;
 - (id)initWithFrameworkAssemblies:(id)arg1 assemblies:(id)arg2;
 - (id)pool;
 - (id)privateContainers;
 - (id)proxyResolver;
-- (id)register:(id)arg1 name:(id)arg2 createDefinitionBlock:(id /* block */)arg3;
+- (id)register:(id)arg1 createDefinitionBlock:(id /* block */)arg2;
 - (id)registerClass:(Class)arg1 factory:(id /* block */)arg2;
 - (id)registerClass:(Class)arg1 name:(id)arg2 factory:(id /* block */)arg3;
+- (id)registerKey:(id)arg1 factory:(id /* block */)arg2;
 - (id)registerProtocol:(id)arg1 factory:(id /* block */)arg2;
 - (id)registerProtocol:(id)arg1 name:(id)arg2 factory:(id /* block */)arg3;
 - (id)resolver;

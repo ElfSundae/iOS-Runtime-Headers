@@ -12,7 +12,10 @@
 + (bool)deviceIsPhone;
 + (bool)deviceIsPod;
 + (bool)deviceIsSmallPhone;
++ (bool)deviceIsWatch;
 + (bool)isInternalInstall;
 + (id)messagePayloadFromDictionary:(id)arg1 andIdentifier:(unsigned long long)arg2;
++ (bool)supportsLEA2;
++ (bool)watchSupportsPairingHearingAids;
 
 @end

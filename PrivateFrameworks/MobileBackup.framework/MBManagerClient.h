@@ -3,7 +3,8 @@
  */
 
 @interface MBManagerClient : MBManager <MBConnectionHandler> {
-    MBConnection * _conn;
+    MBConnection * _connnection;
+    int  _enabledToken;
     NSObject<OS_dispatch_queue> * _eventQueue;
     int  _iTunesRestoreEndedNotificationToken;
     bool  _iTunesRestoreStarted;
@@ -18,14 +19,15 @@
 @property (nonatomic) bool shouldSupportiTunes;
 
 - (void)_backupDidBeginNotification;
-- (void)_establishConnection;
 - (bool)_isBackupAgent2Running;
+- (id)_makeConnection;
 - (bool)_restoreApplicationWithBundleID:(id)arg1 failed:(bool)arg2 qos:(id)arg3 context:(id)arg4 error:(id*)arg5;
 - (id)_sendRequest:(id)arg1 arguments:(id)arg2;
 - (id)_sendRequest:(id)arg1 arguments:(id)arg2 error:(id*)arg3;
 - (void)accountChanged;
 - (bool)acquireLockWithBackupUDID:(id)arg1 owner:(id)arg2 timeout:(double)arg3 error:(id*)arg4;
 - (bool)addFileToBackupUDID:(id)arg1 snapshotID:(unsigned long long)arg2 domainName:(id)arg3 relativePath:(id)arg4 fromPath:(id)arg5 error:(id*)arg6;
+- (bool)airTrafficShouldCreateAppPlaceholdersWithError:(id*)arg1;
 - (bool)allowiTunesBackup;
 - (bool)archiveLogsTo:(id)arg1 error:(id*)arg2;
 - (id)backgroundRestoreInfo;
@@ -38,7 +40,7 @@
 - (void)clearRestoreSession;
 - (void)connection:(id)arg1 didReceiveMessage:(id)arg2;
 - (void)connectionWasInterrupted:(id)arg1;
-- (void)connectionWasInvalid:(id)arg1;
+- (void)connectionWasInvalidated:(id)arg1;
 - (bool)countCameraRollQuota;
 - (bool)countCameraRollQuotaForBackupUDID:(id)arg1 error:(id*)arg2;
 - (unsigned long long)countOfRestoreFailuresForDataclass:(id)arg1 assetType:(id)arg2;
@@ -49,6 +51,7 @@
 - (bool)deleteBackupUDID:(id)arg1 error:(id*)arg2;
 - (bool)deleteItemFromBackupUDID:(id)arg1 snapshotID:(unsigned long long)arg2 domainName:(id)arg3 relativePath:(id)arg4 error:(id*)arg5;
 - (bool)deleteSnapshotID:(unsigned long long)arg1 fromBackupUDID:(id)arg2 error:(id*)arg3;
+- (id)disabledDomainInfos;
 - (bool)discountCameraRollQuota;
 - (bool)discountCameraRollQuotaForBackupUDID:(id)arg1 error:(id*)arg2;
 - (id)domainInfoForName:(id)arg1;
@@ -66,7 +69,6 @@
 - (bool)inheritSnapshot:(id)arg1 fromDevice:(id)arg2 error:(id*)arg3;
 - (id)initWithDelegate:(id)arg1 eventQueue:(id)arg2;
 - (void)insufficientFreeSpaceToRestore;
-- (void)invalidate;
 - (bool)isBackupEnabled;
 - (bool)isBackupEnabledForDomainName:(id)arg1;
 - (bool)isLocalBackupPasswordSetWithError:(id*)arg1;

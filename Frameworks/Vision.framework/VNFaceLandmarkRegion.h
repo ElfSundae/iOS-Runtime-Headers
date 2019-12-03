@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Vision.framework/Vision
  */
 
-@interface VNFaceLandmarkRegion : NSObject {
+@interface VNFaceLandmarkRegion : NSObject <NSCopying, NSSecureCoding, VNRequestRevisionProviding> {
     struct CGRect { 
         struct CGPoint { 
             double x; 
@@ -14,15 +14,26 @@
         } size; 
     }  _faceBoundingBox;
     unsigned long long  _pointCount;
+    unsigned long long  _requestRevision;
 }
 
+@property struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } faceBoundingBox;
 @property unsigned long long pointCount;
+@property (nonatomic, readonly) unsigned long long requestRevision;
 
++ (bool)supportsSecureCoding;
+
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })faceBoundingBox;
 - (unsigned long long)hash;
-- (id)initWithFaceBoundingBox:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithRequestRevision:(unsigned long long)arg1 faceBoundingBox:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (bool)isEqual:(id)arg1;
 - (unsigned long long)pointCount;
+- (unsigned long long)requestRevision;
+- (void)setFaceBoundingBox:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setPointCount:(unsigned long long)arg1;
 
 @end

@@ -13,6 +13,7 @@
     unsigned int  _isInteractive;
     unsigned int  _isUsingLegibility;
     bool  _lastLongPressGestureWasCancelled;
+    UIColor * _legibilityGradientColor;
     UILongPressGestureRecognizer * _longPressGesture;
     NTKAlbumEmptyView * _noPhotosView;
     bool  _noPhotosViewVisible;
@@ -35,6 +36,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) bool isInteractive;
+@property (nonatomic, readonly) NTKAlbumEmptyView *noPhotosView;
 @property (getter=isNoPhotosViewVisible, nonatomic) bool noPhotosViewVisible;
 @property (nonatomic, readonly) NTKPhotoImageView *posterImageView;
 @property (readonly) Class superclass;
@@ -66,11 +68,9 @@
 - (void)_configureForEditMode:(long long)arg1;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (bool)_curtainViewVisible;
-- (id)_digitalTimeLabelStyle;
+- (id)_digitalTimeLabelStyleFromViewMode:(long long)arg1 faceBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (double)_editSpeedForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_endScrubbingAnimationFromUIViewAnimateWithDuration;
-- (void)_fadeFromCurtainViewWithDuration:(double)arg1 completion:(id /* block */)arg2;
-- (void)_fadeToCurtainViewWithDuration:(double)arg1 completion:(id /* block */)arg2;
 - (bool)_fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2;
 - (void)_handleLongPress:(id)arg1;
 - (void)_handleOrdinaryScreenWake;
@@ -118,10 +118,13 @@
 - (void)imageViewDidBeginPlaying:(id)arg1;
 - (void)imageViewDidEndPlaying:(id)arg1;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
+- (bool)isCheapCopy;
 - (bool)isInteractive;
 - (bool)isNoPhotosViewVisible;
 - (void)layoutSubviews;
+- (id)noPhotosView;
 - (id)posterImageView;
+- (bool)screenWillGoDark;
 - (void)setNoPhotosViewVisible:(bool)arg1;
 
 @end

@@ -8,7 +8,6 @@
     PSIGroup * _group;
     NSValue * _rangeMatchingToken;
     PSIQueryToken * _searchToken;
-    NSArray * _tripIds;
 }
 
 @property (nonatomic, retain) NSArray *assetIds;
@@ -16,11 +15,10 @@
 @property (nonatomic, retain) PSIGroup *group;
 @property (nonatomic, retain) NSValue *rangeMatchingToken;
 @property (nonatomic, retain) PSIQueryToken *searchToken;
-@property (nonatomic, retain) NSArray *tripIds;
 
+- (void).cxx_destruct;
 - (id)assetIds;
 - (id)collectionIds;
-- (void)dealloc;
 - (id)group;
 - (id)rangeMatchingToken;
 - (void)reset;
@@ -30,7 +28,5 @@
 - (void)setGroup:(id)arg1;
 - (void)setRangeMatchingToken:(id)arg1;
 - (void)setSearchToken:(id)arg1;
-- (void)setTripIds:(id)arg1;
-- (id)tripIds;
 
 @end

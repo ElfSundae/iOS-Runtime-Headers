@@ -4,18 +4,24 @@
 
 @interface _DPStrings : NSObject
 
++ (id)agentMachServiceName;
 + (id)algorithmParametersPath;
++ (bool)appleInternalConfigExists;
 + (id)bitValueMapDirectoryPath;
 + (id)budgetPropertiesPath;
++ (id)configDirectoryPath;
++ (id)daemonMachServiceName;
 + (id)databaseDirectoryPath;
 + (id)defaultBudgetKey;
 + (id)errorDomain;
 + (id)ipsDirectoryPath;
++ (bool)isDPrivacyAgentD;
 + (id)keyNamesPath;
 + (id)keyPropertiesPath;
-+ (id)machServiceName;
 + (id)reportsDirectoryPath;
 + (id)runtimeBlacklistDirectoryPath;
++ (id)sandboxName;
++ (id)submissionServiceAccessEntitlement;
 + (id)systemBlacklistDirectoryPath;
 + (id)unitTestBitValueMapDirectoryPath:(id)arg1;
 + (id)unitTestDatabaseDirectoryPath:(id)arg1;

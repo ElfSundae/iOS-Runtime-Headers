@@ -18,6 +18,7 @@
 @property (copy) NSString *percentEncodedUser;
 @property (copy) NSNumber *port;
 @property (copy) NSString *query;
+@property (nonatomic, copy) NSDictionary *queryDictionary;
 @property (copy) NSArray *queryItems;
 @property (readonly) struct _NSRange { unsigned long long x1; unsigned long long x2; } rangeOfFragment;
 @property (readonly) struct _NSRange { unsigned long long x1; unsigned long long x2; } rangeOfHost;
@@ -90,7 +91,9 @@
 + (id)parsec_componentsWithString:(id)arg1;
 + (id)parsec_componentsWithURL:(id)arg1 resolvingAgainstBaseURL:(bool)arg2;
 
-- (id)parsec_componentsForEmbeddedAMPURL;
+- (struct _NSRange { unsigned long long x1; unsigned long long x2; })embeddedAMPURLRange;
+- (id)parsec_componentsAfterRemovingSubdomains;
+- (id)parsec_componentsForEmbeddedAMPURLFromRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (id)parsec_normalizedURLStringForDeepLinkIngest;
 - (id)parsec_normalizedURLStringForDeepLinkWhitelist;
 - (id)parsec_normalizedURLStringForLDAModel;
@@ -108,7 +111,7 @@
 
 // Image: /System/Library/PrivateFrameworks/MetricsKit.framework/MetricsKit
 
-+ (id)queryParameterStringForDictionary:(id)arg1;
++ (id)mt_queryParameterStringForDictionary:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
 
@@ -129,6 +132,12 @@
 
 - (bool)containsQueryItemWithName:(id)arg1;
 - (id)firstQueryItemWithName:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/WorkflowKit.framework/WorkflowKit
+
+- (void)addValuesFromQueryDictionary:(id)arg1;
+- (id)queryDictionary;
+- (void)setQueryDictionary:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
 

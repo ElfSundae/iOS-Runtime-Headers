@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CoreRecognition.framework/CoreRecognition
  */
 
-@interface CRMLEmbossedCardholderModel : CRMLModel
+@interface CRMLEmbossedCardholderModel : CRMLCCModel
 
 - (int)classCount;
 - (const int*)codeMap;

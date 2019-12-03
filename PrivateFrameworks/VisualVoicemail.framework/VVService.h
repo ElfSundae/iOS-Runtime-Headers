@@ -17,6 +17,7 @@
     struct __CFString { } * _lastConnectionTypeUsed;
     NSRecursiveLock * _lock;
     int  _mailboxUsage;
+    bool  _mailboxUsageUpdated;
     Class  _notificationInterpreter;
     unsigned long long  _numFailedAttemptsToSyncOverWifi;
     NSString * _password;
@@ -56,6 +57,7 @@
 @property (getter=isCellularNetworkAvailable, nonatomic) bool cellularNetworkAvailable;
 @property (nonatomic, readonly, copy) NSString *isoCountryCode;
 @property (nonatomic) struct __CFString { }*lastConnectionTypeUsed;
+@property (getter=isMailboxUsageUpdated, nonatomic) bool mailboxUsageUpdated;
 @property (nonatomic) unsigned long long numFailedAttemptsToSyncOverWifi;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *serialDispatchQueue;
 @property (nonatomic, copy) NSString *serviceDestinationID;
@@ -131,6 +133,7 @@
 - (id)initWithServiceIdentifier:(id)arg1 destinationID:(id)arg2 isoCountryCode:(id)arg3 subscription:(id)arg4 stateRequestController:(id)arg5;
 - (bool)isCellularNetworkAvailable;
 - (bool)isInSync;
+- (bool)isMailboxUsageUpdated;
 - (bool)isMessageWaiting;
 - (bool)isOfflineDueToRoaming;
 - (bool)isOnline;
@@ -152,6 +155,8 @@
 - (int)maximumPasswordLength;
 - (int)maximumRecordedNameDuration;
 - (int)minimumPasswordLength;
+- (void)movePendingMessagesToInboxTask:(id)arg1;
+- (void)movePendingMessagesToTrashTask:(id)arg1;
 - (void)moveRecordsWithIdentifiersToInbox:(id)arg1;
 - (void)moveRecordsWithIdentifiersToTrash:(id)arg1;
 - (Class)notificationInterpreterClass;
@@ -188,6 +193,7 @@
 - (void)setLastUsedConnectionType:(struct __CFString { }*)arg1;
 - (void)setMailboxRequiresSetup:(bool)arg1;
 - (void)setMailboxUsage:(int)arg1;
+- (void)setMailboxUsageUpdated:(bool)arg1;
 - (void)setMessageWaiting:(bool)arg1;
 - (void)setNumFailedAttemptsToSyncOverWifi:(unsigned long long)arg1;
 - (void)setOnline:(bool)arg1;

@@ -7,7 +7,6 @@
     PXSharedAlbumHeaderView * _headerView;
     PXFeedInvitationSectionInfo * _invitationSectionInfo;
     PXSharedAlbumInvitationView * _invitationView;
-    UIView * _separatorView;
     bool  _showFooter;
     bool  _showHeader;
     bool  _useInPopover;
@@ -20,7 +19,6 @@
 @property (nonatomic, retain) PXSharedAlbumHeaderView *headerView;
 @property (nonatomic, retain) PXFeedInvitationSectionInfo *invitationSectionInfo;
 @property (nonatomic, retain) PXSharedAlbumInvitationView *invitationView;
-@property (nonatomic, retain) UIView *separatorView;
 @property (nonatomic) bool showFooter;
 @property (nonatomic) bool showHeader;
 @property (readonly) Class superclass;
@@ -42,12 +40,10 @@
 - (id)invitationView;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
-- (id)separatorView;
 - (void)setDateLabel:(id)arg1;
 - (void)setHeaderView:(id)arg1;
 - (void)setInvitationSectionInfo:(id)arg1;
 - (void)setInvitationView:(id)arg1;
-- (void)setSeparatorView:(id)arg1;
 - (void)setShowFooter:(bool)arg1;
 - (void)setShowHeader:(bool)arg1;
 - (void)setUseInPopover:(bool)arg1;

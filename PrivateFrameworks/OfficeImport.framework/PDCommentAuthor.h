@@ -10,8 +10,8 @@
     NSString * mName;
 }
 
+- (void).cxx_destruct;
 - (unsigned int)colorIndex;
-- (void)dealloc;
 - (id)description;
 - (unsigned int)id;
 - (id)init;

@@ -34,9 +34,9 @@
 - (id)activeMemory;
 - (void)adjustChosenTransitionsToAdhereToContentRules:(id)arg1;
 - (void)applyClipEffectsBasedOnTransitions;
-- (void)applyDeterminedKenBurnsTreatments:(id)arg1 forAlternate:(bool)arg2;
+- (void)applyDeterminedKenBurnsTreatments:(id)arg1 forAspect:(id)arg2;
 - (void)applyKenBurnsForBurstClip:(id)arg1;
-- (void)applyKenBurnsOrEffectForKenBurnsClip:(id)arg1 transitionInfo:(id)arg2;
+- (void)applyKenBurnsOrEffectForKenBurnsClip:(id)arg1;
 - (void)applyMultiUpTransitionTreatmentToLayoutClip:(id)arg1;
 - (void)applyPanoStyleToClip:(id)arg1;
 - (void)applyTransitionToLayoutClip:(id)arg1;
@@ -45,7 +45,7 @@
 - (void)assignRemainingKenBurnsAnyClipTreatments;
 - (void)assignRequiredCutsAndMultiTransitionsIn:(id)arg1;
 - (void)assignTransitionsToLayoutClips;
-- (bool)attemptToTransitionFromClip:(id)arg1 toClip:(id)arg2 withTransitionSettings:(id)arg3 altSettings:(id)arg4;
+- (bool)attemptToTransitionFromClip:(id)arg1 toClip:(id)arg2 withSettingsFromLayoutClip:(id)arg3;
 - (id)clipBeforeClip:(id)arg1;
 - (bool)clipHasMediaLimitations:(id)arg1;
 - (bool)clipShouldTrimToSelection:(id)arg1;
@@ -60,7 +60,7 @@
 - (id)layoutClips;
 - (int)maxTransitionDurationFromClip:(id)arg1 toClip:(id)arg2 transitionName:(id)arg3;
 - (id)multiTransitions;
-- (id)nextKBPanAndZoomSetForNumberOfEdits:(int)arg1 following:(id)arg2 forAlt:(bool)arg3;
+- (id)nextKBPanAndZoomSetForNumberOfEdits:(int)arg1 following:(id)arg2 forAspect:(id)arg3;
 - (int)numberOfMultiTransitionsNeeded;
 - (int)numberOfPotentialTransitionPoints;
 - (int)numberOfTransitionClipsInLayoutClips;
@@ -81,7 +81,6 @@
 - (void)setTransitions:(id)arg1;
 - (void)shuffleTransitionsInArray:(id)arg1;
 - (id)specialTransitions;
-- (double)startZoomForLayoutClip:(id)arg1;
 - (bool)transitionAcceptableBetween:(id)arg1 secondClip:(id)arg2;
 - (bool)transitionCandidate:(id)arg1 validForLayoutClip:(id)arg2;
 - (bool)transitionDictatesKenBurnsMotion:(id)arg1;

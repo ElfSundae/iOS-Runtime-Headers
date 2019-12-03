@@ -15,6 +15,7 @@
 - (void)cancelWriting;
 - (id)initWithConfigurationState:(id)arg1;
 - (id)initWithURL:(id)arg1 fileType:(id)arg2;
+- (void)setDelegate:(id)arg1;
 - (void)setDirectoryForTemporaryFiles:(id)arg1;
 - (void)setMetadata:(id)arg1;
 - (void)setMovieFragmentInterval:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;

@@ -13,9 +13,7 @@
 @property (readonly) Class superclass;
 
 + (id)_eventWithState:(bool)arg1;
-+ (id)entitlements;
 + (id)eventStream;
-+ (bool)shouldMergeUnchangedEvents;
 
 - (void).cxx_destruct;
 - (id)dndStateService;

@@ -2,55 +2,62 @@
    Image: /System/Library/PrivateFrameworks/TemplateKit.framework/TemplateKit
  */
 
-@interface TLKDescriptionView : TLKView <NUIContainerBoxViewDelegate, NUIContainerStackViewDelegate> {
+@interface TLKDescriptionView : TLKView <NUIContainerViewDelegate> {
     <TLKDescriptionViewDelegate> * _delegate;
-    UITextView * _detailsTextView;
+    TLKTextView * _detailsTextView;
+    TLKTextButton * _footnoteButton;
+    NSString * _footnoteButtonText;
     TLKImage * _image;
     NUIContainerBoxView * _imageAndDescriptionBoxView;
     TLKImageView * _imageView;
     UIBezierPath * _imageViewExclusionPath;
-    UIButton * _moreButton;
+    TLKTextButton * _moreButton;
     UIBezierPath * _moreButtonExclusionPath;
     NSString * _moreButtonText;
+    TLKStackView * _stackView;
     TLKMultilineText * _text;
     TLKMultilineText * _title;
-    UILabel * _titleLabel;
+    TLKLabel * _titleLabel;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property <TLKDescriptionViewDelegate> *delegate;
 @property (readonly, copy) NSString *description;
-@property (retain) UITextView *detailsTextView;
+@property (nonatomic, retain) TLKTextView *detailsTextView;
+@property (nonatomic, retain) TLKTextButton *footnoteButton;
+@property (nonatomic, retain) NSString *footnoteButtonText;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) TLKImage *image;
-@property (retain) NUIContainerBoxView *imageAndDescriptionBoxView;
-@property (retain) TLKImageView *imageView;
-@property (retain) UIBezierPath *imageViewExclusionPath;
-@property (retain) UIButton *moreButton;
-@property (retain) UIBezierPath *moreButtonExclusionPath;
+@property (nonatomic, retain) NUIContainerBoxView *imageAndDescriptionBoxView;
+@property (nonatomic, retain) TLKImageView *imageView;
+@property (nonatomic, retain) UIBezierPath *imageViewExclusionPath;
+@property (nonatomic, retain) TLKTextButton *moreButton;
+@property (nonatomic, retain) UIBezierPath *moreButtonExclusionPath;
 @property (nonatomic, retain) NSString *moreButtonText;
+@property (nonatomic, retain) TLKStackView *stackView;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) TLKMultilineText *text;
 @property (nonatomic, retain) TLKMultilineText *title;
-@property (retain) UILabel *titleLabel;
+@property (nonatomic, retain) TLKLabel *titleLabel;
 
 - (void).cxx_destruct;
-- (long long)containerBoxView:(id)arg1 horizontalAlignmentForArrangedSubview:(id)arg2;
-- (long long)containerBoxView:(id)arg1 verticalAlignmentForArrangedSubview:(id)arg2;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3;
-- (struct CGSize { double x1; double x2; })containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize { double x1; double x2; })arg2 forArrangedSubview:(id)arg3;
 - (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize { double x1; double x2; })arg2 forReason:(long long)arg3;
 - (void)containerViewDidLayoutArrangedSubviews:(id)arg1;
 - (id)delegate;
 - (id)detailTextViewText;
 - (id)detailsTextView;
+- (void)didMoveToWindow;
 - (id)exclusionPathsForTextView;
+- (id)footnoteButton;
+- (void)footnoteButtonPressed;
+- (id)footnoteButtonText;
 - (id)image;
 - (id)imageAndDescriptionBoxView;
 - (id)imageExclusionPath;
 - (id)imageView;
 - (id)imageViewExclusionPath;
-- (id)init;
 - (id)moreButton;
 - (id)moreButtonExclusionPath;
 - (bool)moreButtonIsHidden;
@@ -60,6 +67,9 @@
 - (void)observedPropertiesChanged;
 - (void)setDelegate:(id)arg1;
 - (void)setDetailsTextView:(id)arg1;
+- (void)setExclusionPathInContainer:(id)arg1 includeMoreButton:(bool)arg2;
+- (void)setFootnoteButton:(id)arg1;
+- (void)setFootnoteButtonText:(id)arg1;
 - (void)setImage:(id)arg1;
 - (void)setImageAndDescriptionBoxView:(id)arg1;
 - (void)setImageView:(id)arg1;
@@ -67,14 +77,19 @@
 - (void)setMoreButton:(id)arg1;
 - (void)setMoreButtonExclusionPath:(id)arg1;
 - (void)setMoreButtonText:(id)arg1;
+- (void)setStackView:(id)arg1;
 - (void)setText:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (void)setTitleLabel:(id)arg1;
+- (id)setupContentView;
 - (bool)shouldHideMoreButtonForTextView:(id)arg1;
 - (void)simulateMoreButtonPress;
-- (void)styleDidChange:(unsigned long long)arg1;
+- (id)stackView;
 - (id)text;
+- (struct CGSize { double x1; double x2; })textSizeForTextView:(id)arg1 width:(double)arg2 lineCount:(unsigned long long)arg3;
 - (id)title;
 - (id)titleLabel;
+- (void)tlk_updateForAppearance:(id)arg1;
+- (bool)usesDefaultInsets;
 
 @end

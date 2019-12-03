@@ -31,6 +31,8 @@
 + (unsigned long long)maxPixelSizeForResourceType:(unsigned long long)arg1;
 + (id)normalizedResourcesFromResources:(id)arg1 resourcePerResourceType:(id*)arg2;
 + (unsigned long long)resourceTypeFromShortDecription:(id)arg1;
++ (bool)resourceTypeSupportsResourceExpunge:(unsigned long long)arg1;
++ (bool)resourceTypeTrackedForUpload:(unsigned long long)arg1;
 + (id)shortDescriptionForResourceType:(unsigned long long)arg1;
 + (bool)shouldIgnoreResourceTypeOnUpload:(unsigned long long)arg1;
 + (bool)supportsSecureCoding;
@@ -55,6 +57,7 @@
 - (bool)isTrackedForUpload;
 - (id)itemIdentifier;
 - (id)itemScopedIdentifier;
+- (id)redactedDescription;
 - (unsigned long long)resourceType;
 - (void)setCanGenerateDerivative:(bool)arg1;
 - (void)setIdentity:(id)arg1;
@@ -62,8 +65,6 @@
 - (void)setItemScopedIdentifier:(id)arg1;
 - (void)setResourceType:(unsigned long long)arg1;
 - (void)setSourceResourceType:(unsigned long long)arg1;
-- (bool)shouldApplyDataProtection;
-- (bool)shouldCopy;
 - (unsigned long long)sourceResourceType;
 
 // Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices

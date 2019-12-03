@@ -23,6 +23,7 @@
 - (int)currentSyncBubbledIDWithReturnedError:(id*)arg1;
 - (bool)deleteUserSessionBlobWithReturnedError:(id*)arg1;
 - (bool)deleteUserSessionSecureBlobWithReturnedError:(id*)arg1;
+- (bool)fetchReplacementVoucherPort:(unsigned int)arg1 foraccountID:(id)arg2 withTargetPort:(unsigned int*)arg3 generationSet:(bool)arg4 withreturnedError:(id*)arg5;
 - (id)foregroundUserSessionAtrributesWithReturnedError:(id*)arg1;
 - (id)getBackupkeyForInodeOrCryptoID:(unsigned long long)arg1 withreturnValue:(int*)arg2;
 - (bool)getDeviceLockStateForUser:(int)arg1 extendedState:(bool)arg2 withLockStateInfo:(int*)arg3;

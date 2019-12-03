@@ -18,7 +18,10 @@
 @property (nonatomic, readonly, copy) MPCPrivateListeningStateSource *privateListeningStateSource;
 @property (nonatomic, readonly, copy) NSString *requestingBundleIdentifier;
 @property (nonatomic, readonly, copy) NSString *requestingBundleVersion;
+@property (nonatomic, readonly) ICUserIdentity *userIdentity;
 
++ (id)activeAccountRequestEnvironment;
++ (id)requestEnvironmentWithUserIdentity:(id)arg1;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -31,9 +34,12 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithUserIdentity:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (id)privateListeningStateSource;
+- (id)rectifiedPlaybackRequestEnvironmentForAccountManager:(id)arg1 reasons:(id*)arg2;
 - (id)requestingBundleIdentifier;
 - (id)requestingBundleVersion;
+- (id)userIdentity;
 
 @end

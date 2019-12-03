@@ -12,7 +12,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
-- (void)_configureImage:(id)arg1;
+- (void)_configureImage:(id)arg1 assumePreconfigured:(bool)arg2;
 - (void)_preheatBitmapData;
 - (id)data;
 - (unsigned long long)hash;

@@ -20,6 +20,7 @@
 @property (nonatomic, retain) <CDPDSecureBackupProxy> *secureBackupProxy;
 @property (nonatomic, readonly) <CDPStateUIProviderInternal> *uiProvider;
 
++ (id)_printableAccountInfo:(id)arg1;
 + (id)_sanitizedInfoDictionary:(id)arg1;
 
 - (void).cxx_destruct;
@@ -60,6 +61,8 @@
 - (id)initWithContext:(id)arg1 proxy:(id)arg2;
 - (id)initWithContext:(id)arg1 uiProvider:(id)arg2 delegate:(id)arg3;
 - (void)isEligibleForCDPWithCompletion:(id /* block */)arg1;
+- (void)performEscrowRecoveryWithRecoveryContext:(id)arg1 completion:(id /* block */)arg2;
+- (id)performEscrowRecoveryWithRecoveryContext:(id)arg1 error:(id*)arg2;
 - (void)recoverSecureBackupWithContext:(id)arg1 completion:(id /* block */)arg2;
 - (id)secureBackupProxy;
 - (void)setCachedAccountInfo:(id)arg1;

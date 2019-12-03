@@ -26,8 +26,10 @@
 - (id)bodyKey;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
+- (bool)isEqual:(id)arg1;
 - (id)ledeKey;
 - (void)localizeWithBundle:(id)arg1;
 - (void)localizeWithBundle:(id)arg1 table:(id)arg2;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
  */
 
-@interface SXFullscreenCanvasController : NSObject <SXDragManagerDataSource, SXFullscreenCaptionViewDelegate, SXFullscreenImageViewDelegate, SXFullscreenNavigationBarViewDelegate, SXItemizedScrollViewDataSource, SXItemizedScrollViewDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate> {
+@interface SXFullscreenCanvasController : NSObject <SXDragManagerDataSource, SXFullscreenCanvasViewControllerDelegate, SXFullscreenCaptionViewDelegate, SXFullscreenImageViewDelegate, SXFullscreenNavigationBarViewDelegate, SXItemizedScrollViewDataSource, SXItemizedScrollViewDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate> {
     UIView * _backgroundView;
     SXFullscreenCanvasViewController * _canvasViewController;
     SXFullscreenCaptionView * _captionView;
@@ -131,8 +131,10 @@
 - (id)dragManager;
 - (id)dragManager:(id)arg1 dragableAtLocation:(struct CGPoint { double x1; double x2; })arg2;
 - (struct CGSize { double x1; double x2; })fitSizeForRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (void)fullScreenCanvasViewControllerWantsToDismiss:(id)arg1;
 - (void)fullScreenImageViewDidStartZooming:(id)arg1;
 - (void)fullScreenImageViewDidStopZooming:(id)arg1;
+- (void)fullscreenCanvasViewController:(id)arg1 willTransitionToSize:(struct CGSize { double x1; double x2; })arg2 withTransitionCoordinator:(id)arg3;
 - (void)fullscreenNavigationBarViewDoneButtonPressed:(id)arg1;
 - (bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (bool)gestureRecognizerShouldBegin:(id)arg1;
@@ -195,6 +197,7 @@
 - (void)setTapGestureRecognizer:(id)arg1;
 - (void)setup;
 - (void)setupGestureRecognizersInView:(id)arg1;
+- (void)setupKeyCommandsForCanvasViewController:(id)arg1;
 - (void)setupScrollViewIfNeededWithActiveIndex:(unsigned long long)arg1;
 - (unsigned long long)sharingPolicy;
 - (id)showable;
@@ -215,7 +218,6 @@
 - (bool)verticalSwipingIsActive;
 - (id)viewForDragManager:(id)arg1;
 - (long long)viewIndexForPoint:(struct CGPoint { double x1; double x2; })arg1;
-- (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 transitionCoordinator:(id)arg2;
 - (void)willStartTransformingWithGestureRecognizer:(id)arg1 completionBlock:(id /* block */)arg2;
 
 @end

@@ -18,6 +18,7 @@
 @property (nonatomic, readonly) CLKDevice *device;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) <NTKAstronomyVistaViewObserver> *observer;
+@property (nonatomic, readonly) CLKUIQuadView *quadView;
 @property (nonatomic, retain) NUScene *scene;
 @property (readonly) Class superclass;
 
@@ -28,10 +29,10 @@
 - (id)device;
 - (id)generateAnimationArrayFromVista:(unsigned long long)arg1 toVista:(unsigned long long)arg2;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 forDevice:(id)arg2;
-- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 forDevice:(id)arg2 options:(unsigned long long)arg3;
 - (void)layoutSubviews;
 - (id)observer;
-- (void)renderSynchronouslyWithImageQueueDiscard:(bool)arg1;
+- (id)quadView;
+- (void)renderSynchronouslyWithImageQueueDiscard:(bool)arg1 inGroup:(id)arg2;
 - (id)rotatable:(unsigned long long)arg1;
 - (id)scene;
 - (void)setMinFrameInterval:(int)arg1;
@@ -41,6 +42,7 @@
 - (void)setVista:(unsigned long long)arg1;
 - (void)setZoomFraction:(float)arg1 targetDiameter:(float)arg2;
 - (void)showSupplemental:(bool)arg1 animated:(bool)arg2;
+- (id)snapshotImage;
 - (void)startAnimation;
 - (void)stopAnimation;
 - (void)universeAnimationFinished:(id)arg1;

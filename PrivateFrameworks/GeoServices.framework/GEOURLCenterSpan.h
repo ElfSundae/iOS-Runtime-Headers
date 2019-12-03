@@ -4,11 +4,11 @@
 
 @interface GEOURLCenterSpan : PBCodable <NSCopying> {
     struct { 
-        unsigned int latitude : 1; 
-        unsigned int latitudeDelta : 1; 
-        unsigned int longitude : 1; 
-        unsigned int longitudeDelta : 1; 
-    }  _has;
+        unsigned int has_latitudeDelta : 1; 
+        unsigned int has_latitude : 1; 
+        unsigned int has_longitudeDelta : 1; 
+        unsigned int has_longitude : 1; 
+    }  _flags;
     double  _latitude;
     double  _latitudeDelta;
     double  _longitude;
@@ -23,6 +23,8 @@
 @property (nonatomic) double latitudeDelta;
 @property (nonatomic) double longitude;
 @property (nonatomic) double longitudeDelta;
+
++ (bool)isValid:(id)arg1;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -39,6 +41,7 @@
 - (double)longitude;
 - (double)longitudeDelta;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasLatitude:(bool)arg1;
 - (void)setHasLatitudeDelta:(bool)arg1;

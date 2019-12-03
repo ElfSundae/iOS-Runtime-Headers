@@ -2,9 +2,8 @@
    Image: /System/Library/PrivateFrameworks/DocumentManagerUICore.framework/DocumentManagerUICore
  */
 
-@interface DOCStackedThumbnailView : UIView <DOCAppearanceProtocol> {
+@interface DOCStackedThumbnailView : UIView {
     NSArray * _URLs;
-    DOCAppearance * _appearance;
     NSArray * _items;
     NSArray * _thumbnailImageViews;
     struct CGSize { 
@@ -13,30 +12,25 @@
     }  _topThumbnailSize;
 }
 
-@property (nonatomic, retain) NSArray *URLs;
-@property (nonatomic, retain) DOCAppearance *appearance;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (nonatomic, retain) NSArray *items;
-@property (readonly) Class superclass;
+@property (nonatomic, copy) NSArray *URLs;
+@property (nonatomic, copy) NSArray *items;
 @property (nonatomic, retain) NSArray *thumbnailImageViews;
 @property (nonatomic) struct CGSize { double x1; double x2; } topThumbnailSize;
 
 - (void).cxx_destruct;
 - (id)URLs;
-- (id)appearance;
 - (void)createThumbnailViewsWithCount:(unsigned long long)arg1 createViewForIndex:(id /* block */)arg2;
 - (id)initWithTopThumbnailSize:(struct CGSize { double x1; double x2; })arg1;
+- (struct CGSize { double x1; double x2; })intrinsicContentSize;
 - (id)items;
-- (void)setAppearance:(id)arg1;
+- (void)layoutSubviews;
 - (void)setItems:(id)arg1;
 - (void)setThumbnailImageViews:(id)arg1;
 - (void)setTopThumbnailSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setURLs:(id)arg1;
+- (struct CGSize { double x1; double x2; })systemLayoutSizeFittingSize:(struct CGSize { double x1; double x2; })arg1;
 - (id)thumbnailImageViews;
 - (struct CGSize { double x1; double x2; })topThumbnailSize;
-- (void)updateAppearance:(id)arg1;
 - (void)updateItems;
 - (void)updateURLs;
 

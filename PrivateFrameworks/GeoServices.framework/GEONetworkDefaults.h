@@ -5,7 +5,7 @@
 @interface GEONetworkDefaults : NSObject <_GEONetworkDefaultsServerProxyDelegate> {
     NSMutableArray * _completionHandlers;
     NSDictionary * _networkDefaults;
-    NSObject<OS_dispatch_queue> * _networkDefaultsIsolation;
+    geo_isolater * _networkDefaultsIsolation;
     <_GEONetworkDefaultsServerProxy> * _serverProxy;
 }
 
@@ -22,6 +22,7 @@
 - (void).cxx_destruct;
 - (bool)_needsUpdate;
 - (id)allKeys;
+- (void)allKeysAndValues:(id /* block */)arg1;
 - (id)init;
 - (void)serverProxy:(id)arg1 networkDefaultsDidChange:(id)arg2;
 - (void)updateIfNecessary:(id /* block */)arg1;

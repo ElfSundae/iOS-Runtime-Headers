@@ -14,7 +14,7 @@
 - (void).cxx_destruct;
 - (unsigned int)_commandForMediaButtonEvent:(id)arg1;
 - (id)_commandOptionsForMediaButtonEvent:(id)arg1 command:(unsigned int)arg2;
-- (struct _MRHIDButtonEvent { unsigned int x1; unsigned int x2; bool x3; })_createMRHIDButtonEvent:(id)arg1 error:(id*)arg2;
+- (struct _MRHIDButtonEvent { unsigned int x1; unsigned int x2; bool x3; })_createMRHIDButtonEventTemplateWithButtonType:(long long)arg1;
 - (struct _MRHIDTouchEvent { union _MRHIDPoint { struct { float x_1_2_1; float x_1_2_2; } x_1_1_1; float x_1_1_2[2]; } x1; unsigned int x2; unsigned long long x3; unsigned int x4; })_createMRHIDTouchEvent:(id)arg1;
 - (bool)_isMediaButtonEvent:(id)arg1;
 - (id)origin;

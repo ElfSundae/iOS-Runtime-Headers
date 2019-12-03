@@ -3,21 +3,17 @@
  */
 
 @interface NSConcreteTask : NSTask {
+    _Atomic unsigned long long  __exitRunningInfo;
     NSMutableDictionary * _dictionary;
     NSObject<OS_dispatch_source> * _dsrc;
-    bool  _hasExeced;
-    bool  _hasPostedDeathNotification;
-    bool  _isRunning;
-    struct _opaque_pthread_mutex_t { 
-        long long __sig; 
-        BOOL __opaque[56]; 
+    _Atomic bool  _isSpawnedProcessDisclaimed;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
     }  _lock;
     int  _pid;
-    int  _platformExitInfo;
     BOOL  _qos;
     long long  _suspendCount;
     id /* block */  _terminationHandler;
-    bool  _terminationRun;
     NSPort * _tmpPort;
 }
 
@@ -32,6 +28,7 @@
 - (id)init;
 - (void)interrupt;
 - (bool)isRunning;
+- (bool)isSpawnedProcessDisclaimed;
 - (void)launch;
 - (bool)launchAndReturnError:(id*)arg1;
 - (id)launchPath;
@@ -46,6 +43,7 @@
 - (void)setLaunchPath:(id)arg1;
 - (void)setPreferredArchitectures:(id)arg1;
 - (void)setQualityOfService:(long long)arg1;
+- (void)setSpawnedProcessDisclaimed:(bool)arg1;
 - (void)setStandardError:(id)arg1;
 - (void)setStandardInput:(id)arg1;
 - (void)setStandardOutput:(id)arg1;

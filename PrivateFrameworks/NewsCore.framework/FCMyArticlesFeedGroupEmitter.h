@@ -12,7 +12,6 @@
 @property (nonatomic, readonly) bool emitsSingleRefreshSessionGroups;
 @property (nonatomic, readonly) bool emitsSingletonGroups;
 @property (nonatomic, readonly, copy) NSSet *emittableGroupTypes;
-@property (nonatomic, readonly, copy) NSString *groupEmitterIdentifier;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) <FCHeadlineClusterOrdering> *headlineClusterOrderer;
 @property (nonatomic, retain) <FCHeadlineClustering> *headlineClusterer;
@@ -21,10 +20,11 @@
 @property (nonatomic, readonly) bool requiresHeavyweightContent;
 @property (readonly) Class superclass;
 
++ (id)groupEmitterIdentifier;
+
 - (void).cxx_destruct;
 - (bool)canMergeHeadlinesFromGroup:(id)arg1 intoGroup:(id)arg2;
 - (id)emittableGroupTypes;
-- (id)groupEmitterIdentifier;
 - (id)headlineClusterOrderer;
 - (id)headlineClusterer;
 - (id)initWithHeadlineClusterer:(id)arg1 headlineClusterOrderer:(id)arg2;
@@ -34,6 +34,6 @@
 - (void)setHeadlineClusterer:(id)arg1;
 - (bool)supportsPagination;
 - (bool)wantsToEmitGroupInContext:(id)arg1 fromCursor:(id)arg2 toCursor:(id)arg3;
-- (bool)wantsToInsertGroup:(id)arg1 withContext:(id)arg2;
+- (bool)wantsToInsertGroupInContext:(id)arg1;
 
 @end

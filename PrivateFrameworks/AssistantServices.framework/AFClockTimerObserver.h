@@ -32,7 +32,7 @@
 - (void)dealloc;
 - (void)firingTimerChanged:(id)arg1;
 - (void)firingTimerDismissed:(id)arg1;
-- (void)getNotifiedFiringTimerIDsWithCompletion:(id /* block */)arg1;
+- (void)getFiringTimerIDsWithCompletion:(id /* block */)arg1;
 - (void)getTimerSnapshotWithCompletion:(id /* block */)arg1;
 - (id)init;
 - (void)invalidate;

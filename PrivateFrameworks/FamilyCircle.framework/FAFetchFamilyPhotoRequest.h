@@ -24,7 +24,6 @@
 @property (readonly, copy) NSNumber *memberDSID;
 @property (readonly, copy) NSString *memberHashedDSID;
 @property double monogramDiameter;
-@property long long monogramStyle;
 @property (copy) NSString *phoneNumber;
 @property (readonly) unsigned long long requestedSize;
 @property double requiredHeight;
@@ -45,7 +44,6 @@
 - (id)memberDSID;
 - (id)memberHashedDSID;
 - (double)monogramDiameter;
-- (long long)monogramStyle;
 - (id)phoneNumber;
 - (id)requestOptions;
 - (unsigned long long)requestedSize;
@@ -55,7 +53,6 @@
 - (void)setEmailAddress:(id)arg1;
 - (void)setFullname:(id)arg1;
 - (void)setMonogramDiameter:(double)arg1;
-- (void)setMonogramStyle:(long long)arg1;
 - (void)setPhoneNumber:(id)arg1;
 - (void)setRequiredHeight:(double)arg1;
 - (void)setRequiredWidth:(double)arg1;

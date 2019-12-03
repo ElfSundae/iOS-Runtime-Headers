@@ -10,9 +10,9 @@
 
 + (unsigned long long)precedenceLevel;
 
+- (void).cxx_destruct;
 - (unsigned int)approximateSize;
 - (id)cachedValueForKey:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)download;
 - (id)fileWrapper;

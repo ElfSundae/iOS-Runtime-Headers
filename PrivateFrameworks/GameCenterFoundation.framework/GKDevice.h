@@ -38,6 +38,7 @@
 - (bool)isGameKitAvailable;
 - (bool)isProductType:(unsigned int)arg1;
 - (id)osVersion;
+- (id)platformBuildVersion;
 - (id)processNameHeader;
 - (id)protocolVersionHeader;
 - (void)removeLockStatusObserver:(id)arg1;

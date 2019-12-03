@@ -16,9 +16,12 @@
 + (id)sharedExtensionProxy;
 
 - (void).cxx_destruct;
-- (void)_fetchListenerEndpointWithCompletionBlock:(id /* block */)arg1;
 - (void)applicationInstallsDidStart:(id)arg1;
+- (void)beginExtensionRequestWithCompletionBlock:(id /* block */)arg1;
+- (void)configureInstructorExtensionAfterFetchError:(id)arg1 completionBlock:(id /* block */)arg2;
 - (void)dealloc;
+- (void)establishEndpointWithCompletionBlock:(id /* block */)arg1;
+- (void)fetchListenerEndpointFromClassroomBundleWithURL:(id)arg1 completionBlock:(id /* block */)arg2;
 - (void)fetchListenerEndpointWithCompletionBlock:(id /* block */)arg1;
 - (id)init;
 - (bool)proxiesContainClassroomApp:(id)arg1;

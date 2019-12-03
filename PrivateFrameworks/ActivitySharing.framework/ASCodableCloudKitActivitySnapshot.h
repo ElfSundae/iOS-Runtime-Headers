@@ -5,6 +5,7 @@
 @interface ASCodableCloudKitActivitySnapshot : PBCodable <NSCopying> {
     double  _activeHours;
     double  _activeHoursGoal;
+    long long  _amm;
     double  _briskMinutes;
     double  _briskMinutesGoal;
     double  _energyBurned;
@@ -12,10 +13,13 @@
     struct { 
         unsigned int activeHours : 1; 
         unsigned int activeHoursGoal : 1; 
+        unsigned int amm : 1; 
         unsigned int briskMinutes : 1; 
         unsigned int briskMinutesGoal : 1; 
         unsigned int energyBurned : 1; 
         unsigned int energyBurnedGoal : 1; 
+        unsigned int mmg : 1; 
+        unsigned int mmv : 1; 
         unsigned int pushCount : 1; 
         unsigned int snapshotIndex : 1; 
         unsigned int stepCount : 1; 
@@ -23,6 +27,8 @@
         unsigned int walkingAndRunningDistance : 1; 
         unsigned int wheelchairUse : 1; 
     }  _has;
+    double  _mmg;
+    double  _mmv;
     double  _pushCount;
     ASCodableCloudKitSample * _sample;
     long long  _snapshotIndex;
@@ -35,16 +41,20 @@
 
 @property (nonatomic) double activeHours;
 @property (nonatomic) double activeHoursGoal;
+@property (nonatomic) long long amm;
 @property (nonatomic) double briskMinutes;
 @property (nonatomic) double briskMinutesGoal;
 @property (nonatomic) double energyBurned;
 @property (nonatomic) double energyBurnedGoal;
 @property (nonatomic) bool hasActiveHours;
 @property (nonatomic) bool hasActiveHoursGoal;
+@property (nonatomic) bool hasAmm;
 @property (nonatomic) bool hasBriskMinutes;
 @property (nonatomic) bool hasBriskMinutesGoal;
 @property (nonatomic) bool hasEnergyBurned;
 @property (nonatomic) bool hasEnergyBurnedGoal;
+@property (nonatomic) bool hasMmg;
+@property (nonatomic) bool hasMmv;
 @property (nonatomic) bool hasPushCount;
 @property (nonatomic, readonly) bool hasSample;
 @property (nonatomic) bool hasSnapshotIndex;
@@ -53,6 +63,8 @@
 @property (nonatomic) bool hasTimeZoneOffsetFromUTCForNoon;
 @property (nonatomic) bool hasWalkingAndRunningDistance;
 @property (nonatomic) bool hasWheelchairUse;
+@property (nonatomic) double mmg;
+@property (nonatomic) double mmv;
 @property (nonatomic) double pushCount;
 @property (nonatomic, retain) ASCodableCloudKitSample *sample;
 @property (nonatomic) long long snapshotIndex;
@@ -65,6 +77,7 @@
 - (void).cxx_destruct;
 - (double)activeHours;
 - (double)activeHoursGoal;
+- (long long)amm;
 - (double)briskMinutes;
 - (double)briskMinutesGoal;
 - (void)copyTo:(id)arg1;
@@ -75,10 +88,13 @@
 - (double)energyBurnedGoal;
 - (bool)hasActiveHours;
 - (bool)hasActiveHoursGoal;
+- (bool)hasAmm;
 - (bool)hasBriskMinutes;
 - (bool)hasBriskMinutesGoal;
 - (bool)hasEnergyBurned;
 - (bool)hasEnergyBurnedGoal;
+- (bool)hasMmg;
+- (bool)hasMmv;
 - (bool)hasPushCount;
 - (bool)hasSample;
 - (bool)hasSnapshotIndex;
@@ -90,27 +106,35 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (double)mmg;
+- (double)mmv;
 - (double)pushCount;
 - (bool)readFrom:(id)arg1;
 - (id)sample;
 - (void)setActiveHours:(double)arg1;
 - (void)setActiveHoursGoal:(double)arg1;
+- (void)setAmm:(long long)arg1;
 - (void)setBriskMinutes:(double)arg1;
 - (void)setBriskMinutesGoal:(double)arg1;
 - (void)setEnergyBurned:(double)arg1;
 - (void)setEnergyBurnedGoal:(double)arg1;
 - (void)setHasActiveHours:(bool)arg1;
 - (void)setHasActiveHoursGoal:(bool)arg1;
+- (void)setHasAmm:(bool)arg1;
 - (void)setHasBriskMinutes:(bool)arg1;
 - (void)setHasBriskMinutesGoal:(bool)arg1;
 - (void)setHasEnergyBurned:(bool)arg1;
 - (void)setHasEnergyBurnedGoal:(bool)arg1;
+- (void)setHasMmg:(bool)arg1;
+- (void)setHasMmv:(bool)arg1;
 - (void)setHasPushCount:(bool)arg1;
 - (void)setHasSnapshotIndex:(bool)arg1;
 - (void)setHasStepCount:(bool)arg1;
 - (void)setHasTimeZoneOffsetFromUTCForNoon:(bool)arg1;
 - (void)setHasWalkingAndRunningDistance:(bool)arg1;
 - (void)setHasWheelchairUse:(bool)arg1;
+- (void)setMmg:(double)arg1;
+- (void)setMmv:(double)arg1;
 - (void)setPushCount:(double)arg1;
 - (void)setSample:(id)arg1;
 - (void)setSnapshotIndex:(long long)arg1;

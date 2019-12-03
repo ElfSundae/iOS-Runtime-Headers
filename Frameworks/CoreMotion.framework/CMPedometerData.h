@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CoreMotion.framework/CoreMotion
  */
 
-@interface CMPedometerData : NSObject <HDCoreMotionDatum, NSCopying, NSSecureCoding> {
+@interface CMPedometerData : NSObject <HDCoreMotionDatum, NSCopying, NSSecureCoding, SRSampling> {
     NSNumber * fActiveTime;
     NSNumber * fCurrentCadence;
     NSNumber * fCurrentPace;
@@ -11,6 +11,7 @@
     NSNumber * fElevationAscended;
     NSNumber * fElevationDescended;
     NSDate * fEndDate;
+    NSDate * fFirstStepTime;
     NSNumber * fFloorsAscended;
     NSNumber * fFloorsDescended;
     NSNumber * fIsOdometerDistance;
@@ -23,6 +24,7 @@
     NSNumber * fWorkoutType;
 }
 
+@property (nonatomic, readonly) NSNumber *activeTime;
 @property (nonatomic, readonly) NSNumber *averageActivePace;
 @property (nonatomic, readonly) NSNumber *currentCadence;
 @property (nonatomic, readonly) NSNumber *currentPace;
@@ -33,6 +35,7 @@
 @property (nonatomic, readonly) NSNumber *elevationAscended;
 @property (nonatomic, readonly) NSNumber *elevationDescended;
 @property (nonatomic, readonly) NSDate *endDate;
+@property (nonatomic, readonly) NSDate *firstStepTime;
 @property (nonatomic, readonly) NSNumber *floorsAscended;
 @property (nonatomic, readonly) NSNumber *floorsDescended;
 @property (readonly) unsigned long long hash;
@@ -51,6 +54,7 @@
 
 - (id)activeTime;
 - (id)averageActivePace;
+- (id)binarySampleRepresentation;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)currentCadence;
 - (id)currentPace;
@@ -62,10 +66,12 @@
 - (id)elevationDescended;
 - (void)encodeWithCoder:(id)arg1;
 - (id)endDate;
+- (id)firstStepTime;
 - (id)floorsAscended;
 - (id)floorsDescended;
+- (id)initWithBinarySampleRepresentation:(id)arg1 metadata:(id)arg2 timestamp:(double)arg3;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithStartDate:(double)arg1 endDate:(double)arg2 steps:(int)arg3 distance:(double)arg4 floorsAscended:(id)arg5 floorsDescended:(id)arg6 recordID:(long long)arg7 currentPace:(id)arg8 currentCadence:(id)arg9 activeTime:(id)arg10 sourceId:(id)arg11 isOdometerDistance:(id)arg12 isOdometerPace:(id)arg13 pushes:(int)arg14 workoutType:(int)arg15 elevationAscended:(id)arg16 elevationDescended:(id)arg17 distanceSource:(int)arg18;
+- (id)initWithStartDate:(double)arg1 endDate:(double)arg2 steps:(int)arg3 distance:(double)arg4 floorsAscended:(id)arg5 floorsDescended:(id)arg6 recordID:(long long)arg7 currentPace:(id)arg8 currentCadence:(id)arg9 firstStepTime:(double)arg10 activeTime:(id)arg11 sourceId:(id)arg12 isOdometerDistance:(id)arg13 isOdometerPace:(id)arg14 pushes:(int)arg15 workoutType:(int)arg16 elevationAscended:(id)arg17 elevationDescended:(id)arg18 distanceSource:(int)arg19;
 - (bool)isOdometerDistance;
 - (bool)isOdometerPace;
 - (id)numberOfPushes;
@@ -77,10 +83,10 @@
 
 // Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon
 
+- (long long)hd_compare:(id)arg1;
 - (id)hd_datestamp;
 - (id)hd_epochDatestamp;
 - (bool)hd_hasWorkout;
-- (long long)hd_recordID;
 - (id)hd_sourceID;
 - (id)hd_unitForType:(id)arg1;
 

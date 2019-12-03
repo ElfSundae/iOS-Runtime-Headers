@@ -139,5 +139,6 @@
 - (bool)processLogArchiveWithPath:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 errorOut:(id*)arg4;
 - (bool)processNotificationsWithIntervalTimeoutInSeconds:(unsigned long long)arg1 errorOut:(id*)arg2;
 - (bool)processNotificationsWithIntervalTimeoutInSeconds:(unsigned long long)arg1 shouldCalculateAnimationFramerate:(bool)arg2 targetQueue:(id)arg3 errorOut:(id*)arg4;
+- (bool)processTraceFileWithPath:(id)arg1 errorOut:(id*)arg2;
 
 @end

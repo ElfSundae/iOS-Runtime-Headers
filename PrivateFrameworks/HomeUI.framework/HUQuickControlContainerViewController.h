@@ -2,14 +2,16 @@
    Image: /System/Library/PrivateFrameworks/HomeUI.framework/HomeUI
  */
 
-@interface HUQuickControlContainerViewController : UIViewController <HUItemPresentationContainer, HUPresentationDelegate, HUPresentationDelegateHost, HUQuickControlContainerViewDelegate, HUQuickControlContentHosting, HUQuickControlViewControllerCoordinatorDelegate, HUViewControllerCustomDissmissing> {
+@interface HUQuickControlContainerViewController : UIViewController <HUItemPresentationContainer, HUPresentationDelegate, HUPresentationDelegateHost, HUQuickControlContainerViewDelegate, HUQuickControlContentHosting, HUQuickControlTouchContinuing, HUQuickControlViewControllerCoordinatorDelegate, HUViewControllerCustomDismissing> {
     HUQuickControlViewController * _activeControlViewController;
+    UILayoutGuide * _availableContentLayoutGuide;
     HUQuickControlContainerView * _controlContainerView;
     <HUQuickControlContainerViewControllerDelegate> * _delegate;
     <HUOpenURLHandling> * _detailViewURLHandler;
     UITapGestureRecognizer * _dismissGestureRecognizer;
     HMHome * _home;
     HFItem<NSCopying> * _item;
+    UIPanGestureRecognizer * _panGestureRecognizer;
     HUAnimationApplier * _presentationApplier;
     unsigned long long  _presentationState;
     bool  _presentedDetailView;
@@ -28,6 +30,7 @@
 }
 
 @property (nonatomic, retain) HUQuickControlViewController *activeControlViewController;
+@property (nonatomic, retain) UILayoutGuide *availableContentLayoutGuide;
 @property (nonatomic, retain) HUQuickControlContainerView *controlContainerView;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <HUQuickControlContainerViewControllerDelegate> *delegate;
@@ -38,6 +41,7 @@
 @property (nonatomic, readonly) HMHome *home;
 @property (nonatomic, readonly) HFItem *hu_presentedItem;
 @property (nonatomic, readonly) HFItem<NSCopying> *item;
+@property (nonatomic, retain) UIPanGestureRecognizer *panGestureRecognizer;
 @property (nonatomic, retain) HUAnimationApplier *presentationApplier;
 @property (nonatomic) <HUPresentationDelegate> *presentationDelegate;
 @property (nonatomic) unsigned long long presentationState;
@@ -49,35 +53,33 @@
 + (id)_blurAnimationSettingsForPresenting:(bool)arg1;
 + (id)_controlAlphaAnimationSettingsForPresenting:(bool)arg1;
 + (id)_controlScaleAnimationSettingsForPresenting:(bool)arg1;
-+ (id)_detailChromeAnimationSettingsForPresenting:(bool)arg1;
++ (id)_detailChromeAnimationSettings;
 + (id)_easeOutTimingFunction;
 + (id)_sourceViewTransitionAnimationSettingsForPresenting:(bool)arg1;
-+ (id)_statusBarHidingAnimationSettingsForPresenting:(bool)arg1;
 
 - (void).cxx_destruct;
 - (void)_backButtonPressed:(id)arg1;
 - (void)_controlDidDismiss;
 - (void)_createControlContainerViewWithSourceRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)_dismissDetailsViewControllerAnimated:(bool)arg1 dismissControl:(bool)arg2;
-- (void)_handleDismissGesture:(id)arg1;
+- (void)_dismissQuickControls;
 - (void)_performTransitionToPresentationState:(unsigned long long)arg1 animated:(bool)arg2 initialProgress:(double)arg3 completion:(id /* block */)arg4;
 - (id)_prepareDetailViewController;
-- (id)_presentControlOfType:(unsigned long long)arg1 animated:(bool)arg2;
 - (void)_settingsButtonPressed:(id)arg1;
 - (void)_updateActiveControlViewController;
-- (void)_updateAlternateControlButtonVisibility;
 - (void)_updateControlStatusText;
 - (void)_updateIconDescriptorAnimated:(bool)arg1;
 - (void)_updateReachabilityStateForActiveControl;
 - (void)_updateUserInteractionEnabledForActiveControl;
 - (id)activeControlViewController;
-- (void)alternateControlButtonPressedInContainerView:(id)arg1;
+- (id)availableContentLayoutGuide;
 - (void)beginReceivingTouchesWithGestureRecognizer:(id)arg1;
 - (id)controlContainerView;
 - (void)controllerCoordinator:(id)arg1 didUpdateIconDescriptor:(id)arg2 showOffState:(bool)arg3;
 - (void)controllerCoordinator:(id)arg1 didUpdateReachability:(bool)arg2;
 - (void)controllerCoordinator:(id)arg1 didUpdateStatusWithPrimaryText:(id)arg2 secondaryText:(id)arg3;
 - (id)delegate;
+- (id)description;
 - (id)detailViewURLHandler;
 - (void)detailsButtonPressedInContainerView:(id)arg1;
 - (id)dismissControlAnimated:(bool)arg1;
@@ -91,7 +93,7 @@
 - (bool)isControlDismissedOrDismissing;
 - (bool)isControlPresentedOrPresenting;
 - (id)item;
-- (id)presentAlternateActionViewControllerAnimated:(bool)arg1;
+- (id)panGestureRecognizer;
 - (void)presentControlFromSourceRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 animated:(bool)arg2;
 - (id)presentDetailViewControllerAnimated:(bool)arg1;
 - (id)presentationApplier;
@@ -102,10 +104,12 @@
 - (void)quickControlContent:(id)arg1 showAuxiliaryView:(id)arg2;
 - (void)quickControlContentDidUpdateDesiredVisbilityState:(id)arg1;
 - (void)setActiveControlViewController:(id)arg1;
+- (void)setAvailableContentLayoutGuide:(id)arg1;
 - (void)setControlContainerView:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDetailViewURLHandler:(id)arg1;
 - (void)setDismissGestureRecognizer:(id)arg1;
+- (void)setPanGestureRecognizer:(id)arg1;
 - (void)setPresentationApplier:(id)arg1;
 - (void)setPresentationDelegate:(id)arg1;
 - (void)setPresentationState:(unsigned long long)arg1;
@@ -117,6 +121,9 @@
 - (id)viewControllerCoordinator;
 - (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLoad;
+- (id)viewForTouchContinuation;
 - (void)viewWillAppear:(bool)arg1;
+- (void)viewWillDisappear:(bool)arg1;
+- (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
 
 @end

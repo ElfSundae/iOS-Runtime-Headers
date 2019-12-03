@@ -5,7 +5,7 @@
 @interface _DKSyncCompositeOperation : _DKSyncOperation {
     NSHashTable * _children;
     NSMutableArray * _errors;
-    bool  _isReadyToStart;
+    _Atomic bool  _isReadyToStart;
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
     }  _lock;

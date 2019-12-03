@@ -2,16 +2,11 @@
    Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
  */
 
-@interface HMDLostModeMessageFilter : HMDMessageFilter {
-    bool  _deviceLost;
-}
+@interface HMDLostModeMessageFilter : HMFMessageFilter
 
-@property (getter=isDeviceLost, nonatomic) bool deviceLost;
++ (bool)canInitWithMessage:(id)arg1;
++ (id)policyClasses;
 
-- (void)_deviceLostStateNotification:(id)arg1;
-- (bool)acceptMessage:(id)arg1 target:(id)arg2 errorReason:(id*)arg3;
-- (id)initWithName:(id)arg1;
-- (bool)isDeviceLost;
-- (void)setDeviceLost:(bool)arg1;
+- (bool)acceptWithPolicies:(id)arg1 error:(id*)arg2;
 
 @end

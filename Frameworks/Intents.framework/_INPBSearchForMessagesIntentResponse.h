@@ -3,11 +3,13 @@
  */
 
 @interface _INPBSearchForMessagesIntentResponse : PBCodable <NSCopying, NSSecureCoding, _INPBSearchForMessagesIntentResponse> {
+    bool  __encodeLegacyGloryData;
     struct { }  _has;
     NSArray * _messages;
     NSArray * _searchResults;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -19,15 +21,20 @@
 
 + (Class)messagesType;
 + (Class)searchResultsType;
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (void)addMessages:(id)arg1;
 - (void)addSearchResults:(id)arg1;
 - (void)clearMessages;
 - (void)clearSearchResults;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)messages;
 - (id)messagesAtIndex:(unsigned long long)arg1;

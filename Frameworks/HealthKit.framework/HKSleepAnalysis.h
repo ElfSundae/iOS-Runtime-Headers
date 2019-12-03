@@ -8,7 +8,7 @@
     double  _averageTimeAsleep;
     double  _averageTimeInBed;
     long long  _consistencyCount;
-    bool  _containsAsleepSamples;
+    long long  _numberOfAsleepSamples;
     NSArray * _sleepDays;
 }
 
@@ -17,7 +17,7 @@
 @property (nonatomic, readonly) double averageTimeAsleep;
 @property (nonatomic, readonly) double averageTimeInBed;
 @property (nonatomic, readonly) long long consistencyCount;
-@property (nonatomic, readonly) bool containsAsleepSamples;
+@property (nonatomic, readonly) long long numberOfAsleepSamples;
 @property (nonatomic, readonly, copy) NSArray *sleepDays;
 
 + (id)emptyAnalysis;
@@ -28,8 +28,8 @@
 - (double)averageTimeAsleep;
 - (double)averageTimeInBed;
 - (long long)consistencyCount;
-- (bool)containsAsleepSamples;
-- (id)initWithSleepDays:(id)arg1 containsAsleepSamples:(bool)arg2 consistencyCount:(long long)arg3 averageEfficiency:(double)arg4 averageTimeInBed:(double)arg5 averageTimeAlseep:(double)arg6 averageNumberOfInterruptions:(long long)arg7;
+- (id)initWithSleepDays:(id)arg1 numberOfAsleepSamples:(long long)arg2 consistencyCount:(long long)arg3 averageEfficiency:(double)arg4 averageTimeInBed:(double)arg5 averageTimeAlseep:(double)arg6 averageNumberOfInterruptions:(long long)arg7;
+- (long long)numberOfAsleepSamples;
 - (id)sleepDays;
 
 @end

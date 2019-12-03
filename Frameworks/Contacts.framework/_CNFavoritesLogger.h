@@ -31,6 +31,7 @@
 - (id)log;
 - (void)readingFavorites:(id /* block */)arg1;
 - (void)rematchingFavorites:(id /* block */)arg1;
+- (void)reportFavoritesAccessedBeforeFirstUnlock;
 - (id)summaryLog;
 - (void)writingFavorites:(id /* block */)arg1;
 

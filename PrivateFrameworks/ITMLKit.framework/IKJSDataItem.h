@@ -3,8 +3,8 @@
  */
 
 @interface IKJSDataItem : IKJSDataObservable <IKJSDataItem, NSObject, _IKJSDataItem, _IKJSDataItemProxy> {
-    bool  _hole;
     NSString * _identifier;
+    NSString * _prototypeIdentifier;
     NSString * _type;
 }
 
@@ -12,30 +12,23 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (getter=isHole, nonatomic, readonly) bool hole;
 @property (nonatomic, retain) NSString *identifier;
+@property (nonatomic, copy) NSString *prototypeIdentifier;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSString *type;
-
-+ (id)makeHoleDataItem;
 
 - (void).cxx_destruct;
 - (id)asPrivateIKJSDataItem;
 - (id)dataDictionary;
-- (id)getPropertyPath:(id)arg1;
 - (id)identifier;
 - (id)init;
 - (id)initConstructor:(id)arg1 :(id)arg2;
 - (id)initWithType:(id)arg1;
 - (id)initWithType:(id)arg1 identifier:(id)arg2;
-- (id)initWithValue:(id)arg1 internal:(bool)arg2;
-- (bool)isHole;
-- (void)resetValueForPropertyPath:(id)arg1;
+- (id)initWithValue:(id)arg1;
+- (id)prototypeIdentifier;
 - (void)setIdentifier:(id)arg1;
-- (void)setPropertyPath:(id)arg1 :(id)arg2;
-- (void)setValue:(id)arg1 forPropertyPath:(id)arg2;
-- (void)touchPropertyPath:(id)arg1;
+- (void)setPrototypeIdentifier:(id)arg1;
 - (id)type;
-- (id)valueForPropertyPath:(id)arg1 boxed:(bool)arg2;
 
 @end

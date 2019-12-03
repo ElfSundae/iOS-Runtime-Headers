@@ -41,8 +41,6 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) unsigned long long supportedTechnologies;
 
-// Image: /System/Library/PrivateFrameworks/PassKitCore.framework/PassKitCore
-
 + (bool)hardwareSupportsExpressForAutomaticSelectionTechnologyType:(long long)arg1;
 + (bool)hardwareSupportsExpressMode:(id)arg1;
 + (bool)isInFailForward;
@@ -105,9 +103,5 @@
 - (unsigned long long)supportedTechnologies;
 - (bool)supportsExpressModeForExpressPassType:(long long)arg1;
 - (void)unregisterObserver:(id)arg1;
-
-// Image: /System/Library/PrivateFrameworks/NanoPassKit.framework/NanoPassKit
-
-- (void)npkSafePairingStateWithCompletion:(id /* block */)arg1;
 
 @end

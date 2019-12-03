@@ -39,6 +39,7 @@
 - (void).cxx_destruct;
 - (void)_commonInit;
 - (void)_resetLocalizedBuilder:(bool)arg1;
+- (void)_resetLocalizedStrings:(bool)arg1;
 - (id)_updateLocalizedOperatingHoursString:(unsigned long long)arg1;
 - (void)_updateLocalizedString;
 - (void)calculateWidthsForData:(id)arg1;

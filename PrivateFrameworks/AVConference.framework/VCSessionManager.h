@@ -35,6 +35,7 @@
 - (void)vcSession:(id)arg1 participantID:(id)arg2 remoteAudioPausedDidChange:(bool)arg3;
 - (void)vcSession:(id)arg1 participantID:(id)arg2 remoteVideoEnabledDidChange:(bool)arg3;
 - (void)vcSession:(id)arg1 participantID:(id)arg2 remoteVideoPausedDidChange:(bool)arg3;
+- (void)vcSession:(id)arg1 participantID:(id)arg2 spatialAudioSourceIDDidChange:(unsigned long long)arg3;
 - (void)vcSession:(id)arg1 participantID:(id)arg2 videoEnabled:(bool)arg3 didSucceed:(bool)arg4 error:(id)arg5;
 - (void)vcSession:(id)arg1 participantID:(id)arg2 videoPaused:(bool)arg3 didSucceed:(bool)arg4 error:(id)arg5;
 - (void)vcSession:(id)arg1 removeParticipantWithID:(id)arg2 didSucceed:(bool)arg3 error:(id)arg4;

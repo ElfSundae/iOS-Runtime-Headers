@@ -17,6 +17,7 @@
     long long  _contentViewAnchoringType;
     PXPhotosDetailsContext * _context;
     PXSharingSuggestionDataSource * _dataSource;
+    unsigned long long  _options;
     unsigned long long  _sharingStream;
     PXWidgetSpec * _spec;
     double  _targetPrefetchWidth;
@@ -47,6 +48,7 @@
 @property (nonatomic, readonly) NSString *localizedDisclosureTitle;
 @property (nonatomic, readonly) NSString *localizedSubtitle;
 @property (nonatomic, readonly) NSString *localizedTitle;
+@property (nonatomic) unsigned long long options;
 @property (getter=isSelecting, nonatomic) bool selecting;
 @property (nonatomic, readonly) PXSectionedSelectionManager *selectionManager;
 @property (nonatomic) unsigned long long sharingStream;
@@ -78,14 +80,14 @@
 - (id)context;
 - (id)dataSource;
 - (bool)hasContentForCurrentInput;
-- (id)init;
-- (id)initWithSharingStream:(unsigned long long)arg1;
+- (id)initWithSharingStream:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (bool)isUserInteractionEnabled;
 - (void)loadContentData;
 - (id)localizedTitle;
 - (void)memberTappedAtIndexPath:(id)arg1 forPeopleStripController:(id)arg2;
 - (double)minimumInteritemSpacing;
 - (double)minimumLineSpacing;
+- (unsigned long long)options;
 - (void)peopleDataSource:(id)arg1 didAddMembersAtIndexPaths:(id)arg2;
 - (void)peopleDataSource:(id)arg1 didApplyIncrementalChanges:(id)arg2;
 - (void)peopleDataSource:(id)arg1 didRemoveMembersAtIndexPaths:(id)arg2;
@@ -100,6 +102,7 @@
 - (void)setContentSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setContext:(id)arg1;
 - (void)setDataSource:(id)arg1;
+- (void)setOptions:(unsigned long long)arg1;
 - (void)setSharingStream:(unsigned long long)arg1;
 - (void)setSpec:(id)arg1;
 - (void)setTargetPrefetchWidth:(double)arg1;

@@ -10,6 +10,7 @@
 
 - (id)JPEGDataWithCompressionQuality:(double)arg1 actions:(id /* block */)arg2;
 - (id)PNGDataWithActions:(id /* block */)arg1;
+- (void)_prepareContextForReuse:(struct CGContext { }*)arg1;
 - (bool)allowsImageOutput;
 - (id)imageWithActions:(id /* block */)arg1;
 - (id)init;

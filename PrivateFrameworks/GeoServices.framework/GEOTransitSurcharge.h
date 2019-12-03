@@ -4,12 +4,13 @@
 
 @interface GEOTransitSurcharge : PBCodable <NSCopying> {
     struct { 
-        unsigned int numberOfLegs : 1; 
-        unsigned int paymentType : 1; 
-    }  _has;
+        unsigned int has_numberOfLegs : 1; 
+        unsigned int has_paymentType : 1; 
+    }  _flags;
     unsigned int  _numberOfLegs;
     int  _paymentType;
     NSMutableArray * _surchargeUnits;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic) bool hasNumberOfLegs;
@@ -17,13 +18,16 @@
 @property (nonatomic) unsigned int numberOfLegs;
 @property (nonatomic) int paymentType;
 @property (nonatomic, retain) NSMutableArray *surchargeUnits;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
 + (Class)surchargeUnitType;
 
 - (void).cxx_destruct;
 - (int)StringAsPaymentType:(id)arg1;
 - (void)addSurchargeUnit:(id)arg1;
 - (void)clearSurchargeUnits;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -36,6 +40,7 @@
 - (unsigned int)numberOfLegs;
 - (int)paymentType;
 - (id)paymentTypeAsString:(int)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasNumberOfLegs:(bool)arg1;
 - (void)setHasPaymentType:(bool)arg1;
@@ -45,6 +50,7 @@
 - (id)surchargeUnitAtIndex:(unsigned long long)arg1;
 - (id)surchargeUnits;
 - (unsigned long long)surchargeUnitsCount;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -9,6 +9,7 @@
 - (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })cameraTransform;
 - (ARPointCloud *)featurePoints;
 - (ARLightEstimate *)lightEstimate;
+- (struct __CVBuffer { }*)segmentationBuffer;
 - (double)timestamp;
 - (unsigned long long)worldAlignmentModifiers;
 - (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })worldAlignmentTransform;

@@ -10,7 +10,9 @@
     id  _importInfo;
     id /* block */  _interruptionHandler;
     id /* block */  _invalidationHandler;
-    id  _lock;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _lock;
     <NSObject> * _otherInfo;
     NSXPCInterface * _remoteObjectInterface;
     id  _repliesExpected;
@@ -24,6 +26,7 @@
 }
 
 @property (readonly) int auditSessionIdentifier;
+@property (nonatomic, readonly) bool ccs_hasEntitlementForListingModuleIdentifiers;
 @property (nonatomic, readonly) bool cls_isAppExtension;
 @property (nonatomic, readonly, copy) NSString *cls_signingIdentifier;
 @property (nonatomic, readonly, copy) NSString *cx_applicationIdentifier;
@@ -36,6 +39,7 @@
 @property (readonly, retain) NSXPCListenerEndpoint *endpoint;
 @property (retain) NSXPCInterface *exportedInterface;
 @property (retain) id exportedObject;
+@property (nonatomic, readonly) FPXPCSanitizer *fp_sanitizer;
 @property (nonatomic, readonly) bool hk_isAppExtension;
 @property (nonatomic, readonly, copy) NSString *hk_signingIdentifier;
 @property (copy) id /* block */ interruptionHandler;
@@ -46,6 +50,7 @@
 @property (retain) NSXPCInterface *remoteObjectInterface;
 @property (readonly, retain) id remoteObjectProxy;
 @property (readonly, copy) NSString *serviceName;
+@property bool shouldHandleInvalidation;
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
@@ -117,6 +122,7 @@
 - (id)remoteObjectProxyWithUserInfo:(id)arg1 errorHandler:(id /* block */)arg2;
 - (id)replacementObjectForEncoder:(id)arg1 object:(id)arg2;
 - (void)resume;
+- (void)scheduleSendBarrierBlock:(id /* block */)arg1;
 - (id)serviceName;
 - (void)setDelegate:(id)arg1;
 - (void)setExportedInterface:(id)arg1;
@@ -139,6 +145,7 @@
 - (id)cx_applicationIdentifier;
 - (id)cx_bundleIdentifier;
 - (id)cx_capabilities;
+- (bool)cx_clientSandboxCanAccessFileURL:(id)arg1;
 - (id)cx_developerTeamIdentifier;
 - (id)cx_processName;
 
@@ -156,6 +163,7 @@
 - (bool)fp_hasSandboxAccessToFile:(id)arg1 accessType:(const char *)arg2 logLevel:(unsigned long long)arg3;
 - (bool)fp_hasSandboxAccessToFile:(id)arg1 logLevel:(unsigned long long)arg2;
 - (bool)fp_isNonSandboxedConnection;
+- (id)fp_sanitizer;
 - (id)fp_valueForEntitlement:(id)arg1;
 
 // Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
@@ -169,14 +177,14 @@
 - (bool)sl_clientHasEntitlement:(id)arg1;
 - (id)sl_localizedClientName;
 
+// Image: /System/Library/PrivateFrameworks/AuthKit.framework/AuthKit
+
+- (void)setShouldHandleInvalidation:(bool)arg1;
+- (bool)shouldHandleInvalidation;
+
 // Image: /System/Library/PrivateFrameworks/CarPlaySupport.framework/CarPlaySupport
 
 - (id)cp_bundleIdentifier;
-
-// Image: /System/Library/PrivateFrameworks/CellularPlanManager.framework/CellularPlanManager
-
-- (id)initCellularPlanDatabaseClient;
-- (id)initVinylTestClient;
 
 // Image: /System/Library/PrivateFrameworks/ClassroomKit.framework/ClassroomKit
 
@@ -189,6 +197,7 @@
 
 // Image: /System/Library/PrivateFrameworks/ControlCenterServices.framework/ControlCenterServices
 
+- (bool)ccs_hasEntitlementForListingModuleIdentifiers;
 - (bool)ccs_hasEntitlementForModuleIdentifier:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/CoreSuggestionsInternals.framework/CoreSuggestionsInternals
@@ -226,7 +235,7 @@
 // Image: /System/Library/PrivateFrameworks/TelephonyUtilities.framework/TelephonyUtilities
 
 + (id)callServicesClientXPCInterface;
-+ (id)callServicesDaemonDelegateXPCInterface;
++ (id)callServicesServerXPCInterface;
 
 - (id)processBundleIdentifier;
 - (id)processName;
@@ -238,10 +247,14 @@
 // Image: /System/Library/PrivateFrameworks/UserNotificationsServer.framework/UserNotificationsServer
 
 - (id)uns_clientBundleProxy;
+- (bool)uns_hasEntitlement:(id)arg1 capability:(id)arg2;
+- (bool)uns_isAllowedToReadSettings;
 - (bool)uns_isAllowedToRequestUserNotificationsForBundleIdentifier:(id)arg1;
+- (bool)uns_isAllowedToWriteSettings;
 
 // Image: /usr/lib/libnfshared.dylib
 
 - (id)NF_userInfo;
+- (id)NF_whitelistChecker;
 
 @end

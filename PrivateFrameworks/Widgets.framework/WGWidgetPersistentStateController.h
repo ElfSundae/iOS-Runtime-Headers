@@ -3,7 +3,10 @@
  */
 
 @interface WGWidgetPersistentStateController : NSObject <NSXPCListenerDelegate, _NCWidgetController_Host_IPC> {
+    bool  _canCacheState;
     WGWidgetDiscoveryController * _discoveryController;
+    struct _MKBEvent { } * _keybagEvent;
+    NSObject<OS_dispatch_queue> * _keybagQueue;
     NSXPCListener * _listener;
     NSMutableDictionary * _widgetIdentifiersToCachedState;
 }

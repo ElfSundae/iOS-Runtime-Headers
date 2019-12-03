@@ -6,7 +6,7 @@
     OITSUImage * m_image;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)getImage;
 
 @end

@@ -9,6 +9,9 @@
 
 @property (nonatomic, readonly) NSString *containerIdentifier;
 @property (nonatomic, readonly) long long environment;
+@property (readonly, copy) NSString *hmbDescription;
+
+// Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
 
 + (bool)supportsSecureCoding;
 
@@ -25,5 +28,9 @@
 - (id)initWithContainerIdentifier:(id)arg1 environment:(long long)arg2;
 - (id)initWithDictionaryRepresentation:(id)arg1;
 - (bool)isEqual:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/HomeKitBackingStore.framework/HomeKitBackingStore
+
+- (id)hmbDescription;
 
 @end

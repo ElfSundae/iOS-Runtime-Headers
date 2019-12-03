@@ -11,10 +11,9 @@
 }
 
 - (void).cxx_destruct;
+- (void)_releaseSignallingBlock;
 - (id)init;
-- (void)releaseSignallingBlock;
-- (void)resetAndPerformBlock:(id /* block */)arg1 usingSignallingBlock:(id /* block */)arg2;
-- (void)resetWithSignallingBlock:(id /* block */)arg1;
+- (void)reset;
 - (void)signalCancellation;
 - (bool)tryToPerformBlock:(id /* block */)arg1 usingSignallingBlock:(id /* block */)arg2;
 - (bool)wasSignalled;

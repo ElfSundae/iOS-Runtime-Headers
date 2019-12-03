@@ -22,6 +22,7 @@
 @property (nonatomic) long long numberOfActiveBars;
 @property (nonatomic) long long numberOfBars;
 @property (nonatomic, readonly) long long overriddenVerticalAlignment;
+@property (nonatomic, readonly) bool prefersBaselineAlignment;
 @property (nonatomic) long long signalMode;
 @property (nonatomic) bool smallSize;
 @property (readonly) Class superclass;

@@ -11,13 +11,17 @@
 - (void)clearSteps;
 - (bool)continueRunning;
 - (bool)hasContinueRunning;
+- (bool)hasRequestsIntentExecution;
 - (bool)hasUnderlyingIntent;
 - (bool)hasUnderlyingIntentResponse;
 - (bool)hasUtterance;
 - (bool)hasWaitingForResume;
+- (bool)requestsIntentExecution;
 - (void)setContinueRunning:(bool)arg1;
 - (void)setHasContinueRunning:(bool)arg1;
+- (void)setHasRequestsIntentExecution:(bool)arg1;
 - (void)setHasWaitingForResume:(bool)arg1;
+- (void)setRequestsIntentExecution:(bool)arg1;
 - (void)setSteps:(NSArray *)arg1;
 - (void)setUnderlyingIntent:(_INPBArchivedObject *)arg1;
 - (void)setUnderlyingIntentResponse:(_INPBArchivedObject *)arg1;

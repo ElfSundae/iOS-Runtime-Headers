@@ -4,7 +4,7 @@
 
 @interface CMPickupManager : NSObject {
     <CMPickupDelegate> * _delegate;
-    /* Warning: unhandled struct encoding: '{Dispatcher=^^?@}' */ struct Dispatcher { int (**x1)(); id x2; } * fDispatcher;
+    struct Dispatcher { int (**x1)(); id x2; } * fDispatcher;
     NSObject<OS_dispatch_queue> * fPrivateQueue;
 }
 

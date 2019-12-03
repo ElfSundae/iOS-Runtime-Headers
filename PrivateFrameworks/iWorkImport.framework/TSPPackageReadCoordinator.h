@@ -3,12 +3,13 @@
  */
 
 @interface TSPPackageReadCoordinator : TSPReadCoordinatorBase <TSPPersistedObjectUUIDMapDelegate, TSPReadCoordinator> {
+    long long  _archiveValidationMode;
     bool  _areExternalDataReferencesAllowed;
     TSPPackageMetadata * _cachedMetadata;
     NSObject<OS_dispatch_group> * _completionGroup;
     NSMutableSet * _componentIdentifiersWithDuplicatedUUIDs;
     NSObject<OS_dispatch_queue> * _componentQueue;
-    NSMutableArray * _componentsToUpgrade;
+    NSArray * _componentsToUpgrade;
     TSPObjectContext * _context;
     bool  _didRequireUpgrade;
     TSPObject * _documentObject;
@@ -92,6 +93,7 @@
     NSSet * _unsupportedFeatureIdentifiers;
 }
 
+@property (nonatomic, readonly) long long archiveValidationMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool didRequireUpgrade;
@@ -109,6 +111,7 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (long long)archiveValidationMode;
 - (id)baseObjectUUID;
 - (bool)canRetainObjectReferencedByWeakLazyReference;
 - (id)context;
@@ -121,18 +124,20 @@
 - (id)externalObjectForIdentifier:(long long)arg1 componentIdentifier:(long long)arg2 isReadFinished:(bool)arg3;
 - (id)featureIdentifiers;
 - (unsigned long long)fileFormatVersion;
-- (unsigned long long)fileFormatVersionFromMetadataMessage:(const struct PackageMetadata { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::ComponentInfo> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TSP::DataInfo> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; struct RepeatedField<unsigned int> { int x_7_1_1; int x_7_1_2; union Pointer { struct Arena {} *x_3_2_1; struct Rep {} *x_3_2_2; } x_7_1_3; } x7; int x8; struct RepeatedField<unsigned int> { int x_9_1_1; int x_9_1_2; union Pointer { struct Arena {} *x_3_2_1; struct Rep {} *x_3_2_2; } x_9_1_3; } x9; int x10; struct RepeatedField<unsigned int> { int x_11_1_1; int x_11_1_2; union Pointer { struct Arena {} *x_3_2_1; struct Rep {} *x_3_2_2; } x_11_1_3; } x11; int x12; struct RepeatedPtrField<TSP::ComponentInfo> { struct Arena {} *x_13_1_1; int x_13_1_2; int x_13_1_3; struct Rep {} *x_13_1_4; } x13; }*)arg1;
+- (unsigned long long)fileFormatVersionFromMetadataMessage:(const struct PackageMetadata { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::ComponentInfo> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TSP::DataInfo> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; struct RepeatedField<unsigned int> { int x_7_1_1; int x_7_1_2; union Pointer { struct Arena {} *x_3_2_1; struct Rep {} *x_3_2_2; } x_7_1_3; } x7; int x8; struct RepeatedField<unsigned int> { int x_9_1_1; int x_9_1_2; union Pointer { struct Arena {} *x_3_2_1; struct Rep {} *x_3_2_2; } x_9_1_3; } x9; int x10; struct RepeatedField<unsigned int> { int x_11_1_1; int x_11_1_2; union Pointer { struct Arena {} *x_3_2_1; struct Rep {} *x_3_2_2; } x_11_1_3; } x11; int x12; struct RepeatedPtrField<TSP::ComponentInfo> { struct Arena {} *x_13_1_1; int x_13_1_2; int x_13_1_3; struct Rep {} *x_13_1_4; } x13; }*)arg1;
 - (bool)hasDocumentVersionUUID;
 - (id)init;
-- (id)initWithContext:(id)arg1 package:(id)arg2 packageURLOrNil:(id)arg3 finalizeHandlerQueue:(id)arg4 areExternalDataReferencesAllowed:(bool)arg5 skipDocumentUpgrade:(bool)arg6;
+- (id)initWithContext:(id)arg1 package:(id)arg2 packageURL:(id)arg3 finalizeHandlerQueue:(id)arg4 areExternalDataReferencesAllowed:(bool)arg5 skipDocumentUpgrade:(bool)arg6 archiveValidationMode:(long long)arg7;
 - (bool)isReadingFromDocument;
 - (bool)losesDataOnWrite;
 - (id)metadataObject;
 - (long long)metadataObjectIdentifier;
 - (id)newObjectUUIDForObjectIdentifier:(long long)arg1;
 - (id)objectContainer;
+- (id)p_allComponentsInPackage;
 - (void)p_readComponent:(id)arg1 additionalComponents:(id)arg2 requireUpgrade:(bool)arg3 completionQueue:(id)arg4 completion:(id /* block */)arg5;
 - (void)p_readComponent:(id)arg1 completionQueue:(id)arg2 completion:(id /* block */)arg3;
+- (void)p_validateComponent:(id)arg1 completion:(id /* block */)arg2;
 - (unsigned char)packageIdentifier;
 - (void)persistedObjectUUIDMap:(id)arg1 foundDuplicateUUID:(id)arg2 firstObjectLocation:(struct ObjectLocation { long long x1; long long x2; })arg3 secondObjectLocation:(struct ObjectLocation { long long x1; long long x2; })arg4;
 - (id)persistedObjectUUIDMap:(id)arg1 needsDescriptionForComponentIdentifier:(long long)arg2 objectIdentifier:(long long)arg3;
@@ -160,5 +165,6 @@
 - (id)unarchivedObjectForIdentifier:(long long)arg1 isReadFinished:(bool)arg2;
 - (id)unsupportedFeatureIdentifiers;
 - (void)updateObjectContextForSuccessfulRead;
+- (void)validateArchiveWithCompletion:(id /* block */)arg1;
 
 @end

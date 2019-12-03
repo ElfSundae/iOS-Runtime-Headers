@@ -22,6 +22,7 @@
 @property (nonatomic, readonly, copy) NSString *identifier;
 @property (nonatomic, copy) NSString *namespacedIdentifier;
 @property (nonatomic, readonly) bool pageable;
+@property (getter=isSelectable, nonatomic, readonly) bool selectable;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) unsigned long long tileInfoType;
 @property (nonatomic, readonly) NSArray *underlyingFeedElements;
@@ -43,6 +44,7 @@
 - (id)initWithHeadline:(id)arg1 groupIdentifier:(id)arg2 aggregated:(bool)arg3;
 - (bool)isAggregated;
 - (bool)isEqual:(id)arg1;
+- (bool)isSelectable;
 - (id)namespacedIdentifier;
 - (bool)pageable;
 - (void)setHeadline:(id)arg1;

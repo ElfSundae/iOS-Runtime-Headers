@@ -12,5 +12,6 @@
 - (NSString *)exifTimestampString;
 - (NSString *)originatingAssetIdentifier;
 - (long long)ptpTrashedState;
+- (PLSpatialOverCaptureInformation *)spatialOverCaptureInformation;
 
 @end

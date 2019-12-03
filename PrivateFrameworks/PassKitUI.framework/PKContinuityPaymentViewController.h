@@ -7,7 +7,7 @@
     bool  _authenticating;
     PKAuthenticator * _authenticator;
     PKPaymentAuthorizationFooterView * _authorizationView;
-    _UIBackdropView * _backdropView;
+    UIVisualEffectView * _backdropView;
     PKContinuityPaymentCardSummaryView * _cardView;
     NSArray * _compactConstraints;
     UIView * _compactRegion;
@@ -40,6 +40,7 @@
 
 - (void).cxx_destruct;
 - (long long)_authenticatorPolicy;
+- (bool)_canShowWhileLocked;
 - (void)_cancelPassphrasePressed;
 - (void)_didCancel;
 - (void)_didFailWithError:(id)arg1;
@@ -63,7 +64,7 @@
 - (void)_updateUserIntentRequired;
 - (void)authenticator:(id)arg1 didRequestUserAction:(long long)arg2;
 - (void)authenticator:(id)arg1 didTransitionToCoachingState:(long long)arg2;
-- (void)authenticator:(id)arg1 didTransitionToPearlState:(long long)arg2;
+- (void)authenticator:(id)arg1 didTransitionToFaceIDState:(long long)arg2;
 - (void)authenticatorDidEncounterFingerOff:(id)arg1;
 - (void)authenticatorDidEncounterFingerOn:(id)arg1;
 - (void)authenticatorDidEncounterMatchMiss:(id)arg1;

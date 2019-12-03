@@ -5,7 +5,7 @@
 @interface XBLaunchImageDataProvider : NSObject <XBSnapshotDataProvider> {
     UIImage * _cachedImage;
     XBSnapshotDataProviderContext * _context;
-    XBDisplaySnapshot * _snapshot;
+    _FBSSnapshot * _snapshot;
 }
 
 @property (nonatomic, readonly, retain) XBSnapshotDataProviderContext *context;
@@ -17,7 +17,7 @@
 - (void).cxx_destruct;
 - (id)context;
 - (id)fetchImage;
-- (id)initWithRequest:(id)arg1 contextID:(unsigned int)arg2;
+- (id)initWithRequest:(id)arg1 contextID:(unsigned int)arg2 opaque:(bool)arg3;
 - (void)invalidateImage;
 
 @end

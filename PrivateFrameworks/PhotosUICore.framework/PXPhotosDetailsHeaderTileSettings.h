@@ -10,7 +10,6 @@
     bool  _forceMiroCompelling;
     double  _maximumAbsoluteHeight;
     double  _maximumHeightRelativeToScreenHeight;
-    double  _movieLessTVHeight;
     bool  _showAlways;
     bool  _showSlideshow;
 }
@@ -22,7 +21,6 @@
 @property (nonatomic) bool forceMiroCompelling;
 @property (nonatomic) double maximumAbsoluteHeight;
 @property (nonatomic) double maximumHeightRelativeToScreenHeight;
-@property (nonatomic) double movieLessTVHeight;
 @property (nonatomic) bool showAlways;
 @property (nonatomic) bool showSlideshow;
 
@@ -36,7 +34,6 @@
 - (bool)forceMiroCompelling;
 - (double)maximumAbsoluteHeight;
 - (double)maximumHeightRelativeToScreenHeight;
-- (double)movieLessTVHeight;
 - (id)parentSettings;
 - (void)setAspectRatio:(double)arg1;
 - (void)setDefaultValues;
@@ -46,7 +43,6 @@
 - (void)setForceMiroCompelling:(bool)arg1;
 - (void)setMaximumAbsoluteHeight:(double)arg1;
 - (void)setMaximumHeightRelativeToScreenHeight:(double)arg1;
-- (void)setMovieLessTVHeight:(double)arg1;
 - (void)setShowAlways:(bool)arg1;
 - (void)setShowSlideshow:(bool)arg1;
 - (bool)showAlways;

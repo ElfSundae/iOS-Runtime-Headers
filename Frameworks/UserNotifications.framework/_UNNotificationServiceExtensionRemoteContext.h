@@ -5,7 +5,7 @@
 @interface _UNNotificationServiceExtensionRemoteContext : _UNNotificationServiceExtensionContext <_UNNotificationServiceExtensionRemoteXPCInterface> {
     UNNotificationServiceExtension * _extensionInstance;
     struct atomic_flag { 
-        bool _Value; 
+        _Atomic bool _Value; 
     }  _hasRepliedFlag;
 }
 

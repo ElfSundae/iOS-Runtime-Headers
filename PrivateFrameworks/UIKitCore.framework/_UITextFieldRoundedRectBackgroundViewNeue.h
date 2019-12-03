@@ -2,12 +2,12 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface _UITextFieldRoundedRectBackgroundViewNeue : UIImageView {
+@interface _UITextFieldRoundedRectBackgroundViewNeue : UIView {
     double  _cornerRadius;
     bool  _disabled;
     UIColor * _fillColor;
     bool  _hasFlexibleCornerRadius;
-    double  _lineWidth;
+    double  _lineWidthPixels;
     UIColor * _strokeColor;
 }
 

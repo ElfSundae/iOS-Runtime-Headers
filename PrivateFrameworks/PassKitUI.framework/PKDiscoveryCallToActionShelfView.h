@@ -5,6 +5,7 @@
 @interface PKDiscoveryCallToActionShelfView : PKDiscoveryShelfView {
     PKContinuousButton * _button;
     PKDiscoveryCallToAction * _callToAction;
+    PKDiscoveryCallToActionShelf * _ctaShelf;
     <PKDiscoveryCardViewDelegate> * _delegate;
     UILabel * _editorialDescriptionLabel;
     UIImageView * _iconImageView;

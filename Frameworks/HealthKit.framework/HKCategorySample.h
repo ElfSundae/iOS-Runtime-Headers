@@ -15,6 +15,7 @@
 
 // Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
 
++ (id)_categorySamplesSplittingDurationWithType:(id)arg1 value:(long long)arg2 startDate:(id)arg3 endDate:(id)arg4 device:(id)arg5 metadata:(id)arg6;
 + (bool)_isConcreteObjectClass;
 + (id)categorySampleWithType:(id)arg1 value:(long long)arg2 startDate:(id)arg3 endDate:(id)arg4;
 + (id)categorySampleWithType:(id)arg1 value:(long long)arg2 startDate:(id)arg3 endDate:(id)arg4 device:(id)arg5 metadata:(id)arg6;
@@ -23,8 +24,7 @@
 
 - (id)_bedtimeAlarmWithCalendar:(id)arg1;
 - (void)_setValue:(long long)arg1;
-- (id)_timeZoneName;
-- (id)_validateConfiguration;
+- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
 - (id)_valueDescription;
 - (id)categoryType;
 - (void)encodeWithCoder:(id)arg1;
@@ -40,6 +40,21 @@
 
 - (bool)addCodableRepresentationToCollection:(id)arg1;
 - (id)codableRepresentationForSync;
+
+// Image: /System/Library/PrivateFrameworks/HealthMenstrualCycles.framework/HealthMenstrualCycles
+
++ (id)hkmc_categorySampleWithCervicalMucusQuality:(long long)arg1 date:(id)arg2;
++ (id)hkmc_categorySampleWithMenstrualFlow:(long long)arg1 date:(id)arg2 startOfCycle:(bool)arg3;
++ (id)hkmc_categorySampleWithMenstrualSymptom:(unsigned long long)arg1 date:(id)arg2;
++ (id)hkmc_categorySampleWithOvulationTestResult:(long long)arg1 date:(id)arg2;
++ (id)hkmc_categorySampleWithSexualActivity:(long long)arg1 date:(id)arg2;
++ (id)hkmc_intermenstrualBleedingCategorySampleWithDate:(id)arg1;
+
+- (long long)hkmc_daySummaryCervicalMucusQuality;
+- (long long)hkmc_daySummaryMenstrualFlow;
+- (long long)hkmc_daySummaryOvulationTestResult;
+- (long long)hkmc_daySummarySexualActivity;
+- (unsigned long long)hkmc_daySummarySymptom;
 
 // Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
 

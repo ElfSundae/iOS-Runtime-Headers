@@ -44,6 +44,7 @@
 
 // Image: /System/Library/PrivateFrameworks/UIFoundation.framework/UIFoundation
 
++ (float)_defaultHyphenationFactor;
 + (long long)_defaultWritingDirection;
 + (id)defaultParagraphStyle;
 + (long long)defaultWritingDirectionForLanguage:(id)arg1;
@@ -59,6 +60,7 @@
 - (bool)allowsDefaultTighteningForTruncation;
 - (bool)allowsHangingPunctuation;
 - (long long)baseWritingDirection;
+- (long long)compositionLanguage;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (double)defaultTabInterval;
@@ -86,7 +88,17 @@
 - (id)textBlocks;
 - (id)textLists;
 - (float)tighteningFactorForTruncation;
+- (bool)usesDefaultHyphenation;
 - (bool)usesOpticalAlignment;
+
+// Image: /System/Library/Frameworks/VisionKit.framework/VisionKit
+
++ (bool)dc_isRTL;
++ (id)dc_mutableDefaultParagraphStyle;
+
+// Image: /System/Library/PrivateFrameworks/AppStoreKit.framework/AppStoreKit
+
+- (id)paragraphStyleWithBaseWritingDirection:(long long)arg1;
 
 // Image: /System/Library/PrivateFrameworks/DocumentCamera.framework/DocumentCamera
 
@@ -102,6 +114,10 @@
 
 + (bool)ic_isRTL;
 + (id)ic_mutableDefaultParagraphStyle;
+
+// Image: /System/Library/PrivateFrameworks/TVMLKit.framework/TVMLKit
+
+- (id)tv_paragraphStyleWithBaseWritingDirection:(long long)arg1;
 
 // Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 

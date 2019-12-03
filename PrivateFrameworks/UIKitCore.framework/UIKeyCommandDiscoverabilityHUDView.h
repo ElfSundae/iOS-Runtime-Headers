@@ -54,6 +54,7 @@
 - (id)discoverabilityHUDColumnView:(id)arg1 descriptionStringForKeyCommand:(id)arg2;
 - (id)discoverabilityHUDColumnView:(id)arg1 inputStringForKeyCommand:(id)arg2;
 - (id)discoverabilityHUDColumnView:(id)arg1 modifiersStringForKeyCommand:(id)arg2;
+- (id)hitTest:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
 - (id)initWithKeyCommands:(id)arg1 keyboard:(struct __GSKeyboard { }*)arg2;
 - (void)recalculatePages;
 - (void)scrollViewDidEndDecelerating:(id)arg1;

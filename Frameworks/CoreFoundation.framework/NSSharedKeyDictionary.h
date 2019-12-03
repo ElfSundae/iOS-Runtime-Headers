@@ -4,6 +4,7 @@
 
 @interface NSSharedKeyDictionary : NSMutableDictionary {
     unsigned long long  _count;
+    bool  _doKVO;
     int (* _ifkIMP;
     NSSharedKeySet * _keyMap;
     unsigned long long  _mutations;
@@ -17,7 +18,7 @@
 - (Class)classForCoder;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned long long)count;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateKeysAndObjectsWithOptions:(unsigned long long)arg1 usingBlock:(id /* block */)arg2;
@@ -30,5 +31,6 @@
 - (id)objectForKey:(id)arg1;
 - (void)removeObjectForKey:(id)arg1;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
+- (void)setObservationInfo:(void*)arg1;
 
 @end

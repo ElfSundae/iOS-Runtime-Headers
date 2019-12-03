@@ -3,7 +3,6 @@
  */
 
 @interface IMDCKSyncController : IMDCKAbstractSyncController <IMDCKAbstractSyncControllerDelegate, IMDXPCEventStreamHandlerDelegate, IMSystemMonitorListener> {
-    CKFetchRecordZonesOperation * _cloudKitMetricsFetchOp;
     long long  _initialSyncAttempts;
     NSDate * _lastLogDumpDate;
     NSDate * _lastRestoreFailureLogDumpDate;
@@ -14,7 +13,6 @@
     NSDate * _syncStartDate;
 }
 
-@property (nonatomic, retain) CKFetchRecordZonesOperation *cloudKitMetricsFetchOp;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -53,7 +51,6 @@
 - (bool)_hasDumpedLogsInPastHour;
 - (bool)_hasDumpedRestoreFailureLogsInPastHour;
 - (void)_ifCloudKitAbleToSyncIsFullSync:(bool)arg1 activity:(id)arg2 callBlock:(id /* block */)arg3;
-- (bool)_isSyncingToStingRay;
 - (void)_kickOffNightlyPeriodicSyncIfApplicable;
 - (void)_logIMAutomaticHistorySyncDidNotOccurMetricsUnderFirstUnlock:(bool)arg1 isSyncing:(bool)arg2 deviceConditionsAllowSync:(bool)arg3 syncNotCompletedRecently:(bool)arg4;
 - (long long)_manualSyncAttemptCount;
@@ -98,7 +95,6 @@
 - (void)clearAnalyticDefaultsAndLocalSyncState;
 - (void)clearCKRelatedDefaults;
 - (void)clearLocalCloudKitSyncState;
-- (id)cloudKitMetricsFetchOp;
 - (void)collectLogsIfNeeded;
 - (void)dealloc;
 - (bool)enforceAccountsMatchForMocAndShowDialogIfNeeded;
@@ -129,7 +125,6 @@
 - (id)reloadTimer;
 - (void)sendRestoreFailuresLogDumps;
 - (void)sendRestoreFailuresLogDumpsIfNeeded;
-- (void)setCloudKitMetricsFetchOp:(id)arg1;
 - (void)setInitialSyncAttempts:(long long)arg1;
 - (void)setLastLogDumpDate:(id)arg1;
 - (void)setLastRestoreFailureLogDumpDate:(id)arg1;

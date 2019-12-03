@@ -12,11 +12,13 @@
 
 - (void).cxx_destruct;
 - (id)addressBookCache;
+- (unsigned long long)cachedCount;
 - (void)cleanUpAddressBookCache_sync;
 - (void)dealloc;
 - (id)description;
 - (id)fetchAddressBookInfoFromCacheForKey:(id)arg1;
 - (id)init;
+- (void)insertAddressBookInfoDictionaryIntoCache:(id)arg1;
 - (void)insertAddressBookInfoIntoCache:(id)arg1 forKey:(id)arg2;
 - (void)registerForContactsNotifications;
 - (void)revertAddressBook:(id)arg1;

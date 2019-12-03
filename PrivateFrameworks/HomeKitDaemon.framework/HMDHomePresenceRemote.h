@@ -8,16 +8,15 @@
 
 @property (nonatomic, readonly) NSDictionary *userPresenceMap;
 
-+ (id)presenceRemoteWithDictionary:(id)arg1 presenceIdentifierDict:(id)arg2;
-
 - (void).cxx_destruct;
-- (void)_initializeWithPresenceIdentifierMap:(id)arg1;
-- (void)_initializeWithPresenceMap:(id)arg1;
 - (bool)areUsersAtHome:(id)arg1;
 - (bool)areUsersNotAtHome:(id)arg1;
 - (id)description;
-- (id)initWithDictionary:(id)arg1 presenceIdentifierDict:(id)arg2;
+- (unsigned long long)hash;
+- (id)initWithPresenceByPairingIdentity:(id)arg1;
+- (id)initWithPresenceByUserId:(id)arg1;
 - (bool)isAnyUserAtHome;
+- (bool)isEqual:(id)arg1;
 - (bool)isNoUserAtHome;
 - (bool)isUserAtHome:(id)arg1;
 - (bool)isUserNotAtHome:(id)arg1;

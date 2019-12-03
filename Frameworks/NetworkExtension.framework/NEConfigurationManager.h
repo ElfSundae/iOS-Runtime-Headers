@@ -21,6 +21,7 @@
     bool  _isVPNPublicAPI;
     NSMutableDictionary * _loadedConfigurations;
     NSMutableDictionary * _loadedIndex;
+    NSObject<OS_dispatch_queue> * _outerQueue;
     NSString * _pluginType;
     NSObject<OS_dispatch_queue> * _queue;
     NSUUID * _userUUID;
@@ -44,11 +45,12 @@
 @property bool isVPNPublicAPI;
 @property (retain) NSMutableDictionary *loadedConfigurations;
 @property (retain) NSMutableDictionary *loadedIndex;
+@property (nonatomic, retain) NSObject<OS_dispatch_queue> *outerQueue;
 @property (readonly) NSString *pluginType;
 @property (readonly) NSObject<OS_dispatch_queue> *queue;
 @property (readonly) NSUUID *userUUID;
 
-+ (long long)configuration:(id)arg1 overlapsWithOtherConfiguration:(id)arg2;
++ (long long)configuration:(id)arg1 overlapsWithOtherConfiguration:(id)arg2 sameTypeCount:(unsigned long long*)arg3;
 + (bool)configurationIsEnabled:(id)arg1;
 + (void)disableConfiguration:(id)arg1 onDemandOnly:(bool)arg2;
 + (id)sharedManager;
@@ -74,14 +76,15 @@
 - (void)didLoadConfiguration:(id)arg1;
 - (void)didLoadConfiguration:(id)arg1 withSignature:(id)arg2;
 - (id)errorWithCode:(long long)arg1 specifics:(id)arg2;
-- (void)fetchCarrierBundleNATKeepAliveIntervalOverCell:(id)arg1 handler:(id /* block */)arg2;
 - (void)fetchClientListenerWithBundleID:(id)arg1 completionQueue:(id)arg2 handler:(id /* block */)arg3;
 - (void)fetchUpgradeInfoForPluginType:(id)arg1 completionQueue:(id)arg2 handler:(id /* block */)arg3;
 - (id)filterIndexWithFilter:(id)arg1;
 - (long long)generation;
+- (id)getConfigurationUserUUID:(id)arg1;
 - (void)getCurrentIndexWithCompletionHandler:(id /* block */)arg1;
-- (void)handleApplicationsRemoved:(id)arg1 withCompletionHandler:(id /* block */)arg2;
-- (void)handleFileRemovedWithCompletionHandler:(id /* block */)arg1;
+- (id)getCurrentUserUUIDForConfigurationID:(id)arg1 fromIndex:(id)arg2;
+- (void)handleApplicationsRemoved:(id)arg1 completionQueue:(id)arg2 withCompletionHandler:(id /* block */)arg3;
+- (void)handleFileRemovedWithCompletionQueue:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)handlePluginTypesRemoved:(id)arg1 configuration:(id)arg2 vpn:(id)arg3 updateSCPreferences:(struct __SCPreferences { }*)arg4;
 - (bool)hasReadPermission;
 - (bool)hasVPNAPIEntitlement;
@@ -94,6 +97,7 @@
 - (bool)isNEHelper;
 - (bool)isVPNPrivateAPI;
 - (bool)isVPNPublicAPI;
+- (void)loadConfigurationAndUserWithID:(id)arg1 withCompletionQueue:(id)arg2 handler:(id /* block */)arg3;
 - (void)loadConfigurationWithID:(id)arg1 withCompletionQueue:(id)arg2 handler:(id /* block */)arg3;
 - (void)loadConfigurations:(id)arg1 withFilter:(id)arg2 completionQueue:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)loadConfigurationsInternal:(id)arg1 withCompletionHandler:(id /* block */)arg2;
@@ -103,9 +107,10 @@
 - (id)loadedIndex;
 - (id)makeMutableCopyOfIndex:(id)arg1;
 - (void)notifyChanges;
+- (id)outerQueue;
 - (id)pluginType;
 - (void)postChangeNotification;
-- (void)postChangeNotificationWithGeneration:(long long)arg1 andFlags:(unsigned long long)arg2;
+- (void)postChangeNotificationWithGeneration:(long long)arg1 andFlags:(unsigned long long)arg2 onlyIfChanged:(bool)arg3;
 - (void)postGeneration;
 - (id)queue;
 - (id)readIndexFromDiskWithError:(id*)arg1;
@@ -136,9 +141,10 @@
 - (void)setIsVPNPublicAPI:(bool)arg1;
 - (void)setLoadedConfigurations:(id)arg1;
 - (void)setLoadedIndex:(id)arg1;
+- (void)setOuterQueue:(id)arg1;
 - (void)setSCPreferencesSignature:(id)arg1;
 - (void)showObsoleteAppAlert;
-- (void)syncWithSystemConfigurationWithAppNameCallback:(id /* block */)arg1 completionHandler:(id /* block */)arg2;
+- (void)syncConfigurationsWithSC:(id)arg1 completionQueue:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)triggerLocalAuthenticationForConfigurationWithID:(id)arg1 withCompletionQueue:(id)arg2 handler:(id /* block */)arg3;
 - (void)updateSCPreferencesSignatureOnDisk;
 - (void)upgradeLegacyPluginConfigurationsWithUpgradeInfo:(id)arg1 completionQueue:(id)arg2 handler:(id /* block */)arg3;

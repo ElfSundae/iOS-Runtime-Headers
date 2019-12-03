@@ -7,7 +7,6 @@
     NSArray * _cookies;
     NSDictionary * _data;
     NSDate * _expirationDate;
-    NSString * _logKey;
     NSString * _profile;
     NSString * _profileVersion;
 }
@@ -16,7 +15,6 @@
 @property (nonatomic, retain) NSArray *cookies;
 @property (nonatomic, retain) NSDictionary *data;
 @property (nonatomic, retain) NSDate *expirationDate;
-@property (nonatomic, retain) NSString *logKey;
 @property (nonatomic, retain) NSString *profile;
 @property (nonatomic, retain) NSString *profileVersion;
 
@@ -27,14 +25,12 @@
 - (id)data;
 - (id)expirationDate;
 - (id)initWithFrozenDataSource:(id)arg1;
-- (id)logKey;
 - (id)profile;
 - (id)profileVersion;
 - (void)setBagKeySet:(id)arg1;
 - (void)setCookies:(id)arg1;
 - (void)setData:(id)arg1;
 - (void)setExpirationDate:(id)arg1;
-- (void)setLogKey:(id)arg1;
 - (void)setProfile:(id)arg1;
 - (void)setProfileVersion:(id)arg1;
 

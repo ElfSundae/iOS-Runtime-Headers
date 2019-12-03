@@ -5,9 +5,9 @@
 
 @required
 
-- (NSString *)displayName;
 - (NSString *)emailAddressString;
 - (NSString *)firstName;
+- (NSString *)localizedName;
 - (NSString *)phoneNumberString;
 
 @end

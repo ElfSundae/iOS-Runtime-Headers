@@ -3,23 +3,25 @@
  */
 
 @interface SXWebViewFactory : NSObject <SXWebViewFactory> {
+    WKWebsiteDataStore * _dataStore;
     WKProcessPool * _processPool;
     NSPointerArray * _webViews;
 }
 
+@property (nonatomic, readonly) WKWebsiteDataStore *dataStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) WKProcessPool *processPool;
+@property (nonatomic, readonly) WKProcessPool *processPool;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSPointerArray *webViews;
 
 - (void).cxx_destruct;
 - (void)assignRelatedWebViewToConfiguration:(id)arg1;
 - (id)createWebViewWithUserContentController:(id)arg1;
-- (id)initWithProcessPool:(id)arg1;
+- (id)dataStore;
+- (id)initWithProcessPool:(id)arg1 websiteDataStore:(id)arg2;
 - (id)processPool;
-- (void)setProcessPool:(id)arg1;
 - (void)setWebViews:(id)arg1;
 - (id)webViews;
 

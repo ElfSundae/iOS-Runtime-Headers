@@ -20,11 +20,14 @@
 
 - (void).cxx_destruct;
 - (void)_createCustomControlledAccountTapped:(id)arg1;
+- (void)_dismissAndBecomeFirstResponder;
+- (void)_presentPrimaryAppleIDSignInController:(id)arg1;
 - (id)_specifierForAOLAccount;
 - (id)_specifierForCustomControlledAccountWithName:(id)arg1 accountTypeID:(id)arg2;
 - (id)_specifierForExchangeAccount;
 - (id)_specifierForGmailAccount;
 - (id)_specifierForOutlookAccount;
+- (id)_specifierForPrimaryiCloudAccount;
 - (id)_specifierForRegionalAccountType:(id)arg1;
 - (id)_specifierForYahooAccount;
 - (id)_specifierForiCloudAccount;
@@ -36,6 +39,8 @@
 - (void)setSpecifier:(id)arg1;
 - (void)setupViewControllerDidDismiss:(id)arg1;
 - (bool)shouldAddSpecifierForAccountTypeID:(id)arg1;
+- (void)signInControllerDidCancel;
+- (void)signInControllerDidCompleteWithSuccess:(bool)arg1 error:(id)arg2;
 - (id)specifierForOtherAccounts;
 - (id)specifiers;
 - (id)viewProvidersManager;

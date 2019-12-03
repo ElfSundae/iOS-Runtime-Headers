@@ -3,7 +3,7 @@
  */
 
 @interface STDeviceBedtimeListController : PSListController <STUIDateTimePickerCellDelegate> {
-    STUser * _affectedUser;
+    STUIUser * _affectedUser;
     PSSpecifier * _atBedtimeGroupSpecifier;
     PSSpecifier * _atBedtimeSpecifier;
     STDeviceBedtime * _bedtime;
@@ -24,7 +24,7 @@
     NSArray * _weekdaySpecifiers;
 }
 
-@property (nonatomic, retain) STUser *affectedUser;
+@property (nonatomic, retain) STUIUser *affectedUser;
 @property (nonatomic, retain) PSSpecifier *atBedtimeGroupSpecifier;
 @property (nonatomic, retain) PSSpecifier *atBedtimeSpecifier;
 @property (nonatomic, copy) STDeviceBedtime *bedtime;
@@ -54,6 +54,7 @@
 - (void)_didEndEditingDailySchedule:(id)arg1;
 - (void)_didFinishEditingBedtime;
 - (void)_showCustomizeDailyScheduleListController:(id)arg1;
+- (void)_showOrHidePickerSpecifierForSpecifier:(id)arg1;
 - (id)_simpleEndTime:(id)arg1;
 - (id)_simpleStartTime:(id)arg1;
 - (id)affectedUser;
@@ -99,7 +100,6 @@
 - (void)setStartTimeSpecifier:(id)arg1;
 - (void)setWeekdaySpecifiers:(id)arg1;
 - (bool)shouldShowCompatibilityAlert;
-- (void)showPickerSpecifierForSpecifier:(id)arg1;
 - (id)specifiers;
 - (id)startTimePickerSpecifier;
 - (id)startTimeSpecifier;

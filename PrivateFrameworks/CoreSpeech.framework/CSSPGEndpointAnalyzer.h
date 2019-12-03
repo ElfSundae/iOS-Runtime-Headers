@@ -7,6 +7,8 @@
     <CSSPGEndpointAnalyzerDelegate> * _delegate;
     float  _endpointThreshold;
     bool  _hasReported;
+    bool  _isAnalyzeMode;
+    double  _lastSilencePosterior;
     NSObject<OS_dispatch_queue> * _queue;
 }
 
@@ -17,6 +19,8 @@
 @property (nonatomic) float endpointThreshold;
 @property (nonatomic) bool hasReported;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) bool isAnalyzeMode;
+@property (nonatomic) double lastSilencePosterior;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *queue;
 @property (readonly) Class superclass;
 
@@ -27,15 +31,23 @@
 - (void)dealloc;
 - (id)delegate;
 - (float)endpointThreshold;
+- (long long)getFrameDurationMs;
 - (bool)hasReported;
+- (id)init;
+- (id)initWithAnalyzeMode;
 - (id)initWithEndpointThreshold:(float)arg1;
+- (bool)isAnalyzeMode;
+- (double)lastSilencePosterior;
 - (id)queue;
 - (void)reset;
 - (void)setCaesuraSPG:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setEndpointThreshold:(float)arg1;
 - (void)setHasReported:(bool)arg1;
+- (void)setIsAnalyzeMode:(bool)arg1;
+- (void)setLastSilencePosterior:(double)arg1;
 - (void)setQueue:(id)arg1;
+- (void)silenceDurationEstimateAvailable:(float*)arg1 numEstimates:(unsigned long long)arg2 clientProcessedAudioMs:(float)arg3;
 - (void)start;
 - (void)stop;
 

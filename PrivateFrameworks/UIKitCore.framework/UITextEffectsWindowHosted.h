@@ -4,12 +4,12 @@
 
 @interface UITextEffectsWindowHosted : UITextEffectsWindow
 
-- (bool)_isConstrainedByScreenJail;
 - (bool)_isFullscreen;
 - (bool)_isTextEffectsWindowHosting;
 - (bool)_isTextEffectsWindowNotificationOwner;
 - (bool)_isWindowServerHostingManaged;
 - (long long)_orientationForRootTransform;
+- (long long)_orientationForSceneTransform;
 - (long long)_orientationForViewTransform;
 - (void)_sceneBoundsDidChange;
 - (bool)_usesWindowServerHitTesting;

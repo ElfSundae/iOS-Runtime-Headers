@@ -8,11 +8,17 @@
     double  _now;
     unsigned long long  _outgoingPayloadSize;
     long long  _rawPointer;
-    int  _requestKind;
+    struct { 
+        int type; 
+        union { 
+            int raw; 
+            int tile; 
+            int placeRequest; 
+        } subtype; 
+    }  _requestKind;
     double  _startTime;
     unsigned int  _taskIdentifier;
     long long  _urlTaskPointer;
-    long long  _xpcTaskPointer;
 }
 
 + (const char *)decoderType;

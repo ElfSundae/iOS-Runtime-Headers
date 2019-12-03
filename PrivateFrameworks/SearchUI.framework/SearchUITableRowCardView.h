@@ -4,13 +4,12 @@
 
 @interface SearchUITableRowCardView : SearchUICardSectionView
 
-@property (retain) TLKGridRowView *contentView;
+@property (nonatomic, retain) TLKGridRowView *contentView;
 
 + (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })defaultLayoutMargins;
 + (bool)hasOnlyImages:(id)arg1;
 + (bool)isAHeader:(id)arg1;
 + (double)largestImageSizeForSection:(id)arg1;
-+ (int)separatorStyleForCardSection:(id)arg1;
 + (bool)supportsRecyclingForCardSection:(id)arg1;
 
 - (id)setupContentView;

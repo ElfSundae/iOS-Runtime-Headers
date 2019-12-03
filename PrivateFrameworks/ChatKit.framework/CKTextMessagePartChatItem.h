@@ -6,6 +6,7 @@
     UIItemProvider * _dragItemProvider;
 }
 
+@property (nonatomic, readonly) bool containsExcessiveLineHeightCharacters;
 @property (nonatomic, readonly) bool containsHyperlink;
 @property (nonatomic, readonly, copy) NSAttributedString *fallbackCorruptText;
 @property (nonatomic, readonly, copy) NSAttributedString *subject;
@@ -17,13 +18,14 @@
 - (id)_time;
 - (Class)balloonViewClass;
 - (id)composition;
+- (bool)containsExcessiveLineHeightCharacters;
 - (bool)containsHyperlink;
 - (id)dragItemProvider;
 - (id)fallbackCorruptText;
 - (Class)impactBalloonViewClass;
 - (id)loadTranscriptText;
 - (id)pasteboardItems;
-- (id)sendAnimationText;
+- (id)sendAnimationTextWithColor:(id)arg1;
 - (bool)shouldUseBigEmoji;
 - (bool)showMoneyResults;
 - (id)subject;

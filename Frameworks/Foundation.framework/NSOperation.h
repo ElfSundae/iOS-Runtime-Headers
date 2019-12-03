@@ -3,9 +3,43 @@
  */
 
 @interface NSOperation : NSObject <FCOperationIdentifying, ICLoggable, RCOperationIdentifying> {
-    id  _private;
-    int  _private1;
-    int  _private1b;
+    struct { 
+        NSOperation *__prevOp; 
+        NSOperation *__nextOp; 
+        NSOperation *__nextPriOp; 
+        NSOperationQueue *__queue; 
+        NSMutableArray *__dependencies; 
+        NSHashTable *__down_dependencies; 
+        long long __unfinished_deps; 
+        id /* block */ __completion; 
+        void *__obsInfo; 
+        void *__implicitObsInfo; 
+        double __thread_prio; 
+        char *__nameBuffer; 
+        NSObject<OS_voucher> *_voucher; 
+        id /* block */ __schedule; 
+        struct _opaque_pthread_mutex_t { 
+            long long __sig; 
+            BOOL __opaque[56]; 
+        } __wait_mutex; 
+        struct _opaque_pthread_cond_t { 
+            long long __sig; 
+            BOOL __opaque[40]; 
+        } __wait_cond; 
+        struct os_unfair_lock_s { 
+            unsigned int _os_unfair_lock_opaque; 
+        } __lock; 
+        bool _shouldRemoveDependenciesAfterFinish; 
+        _Atomic unsigned char __state; 
+        BOOL __prio; 
+        _Atomic bool __cached_isReady; 
+        _Atomic bool __isCancelled; 
+        _Atomic unsigned char __propertyQoS; 
+        _Atomic unsigned char __isExecutingObserverCount; 
+        _Atomic unsigned char __isFinishedObserverCount; 
+        _Atomic unsigned char __isReadyObserverCount; 
+        _Atomic unsigned char __isCancelledObserverCount; 
+    }  _iop;
 }
 
 @property (getter=isAsynchronous, readonly) bool asynchronous;
@@ -22,7 +56,6 @@
 @property long long qualityOfService;
 @property long long queuePriority;
 @property (getter=isReady, readonly) bool ready;
-@property (nonatomic) bool shouldEnqueueDependenciesWhenPerformingAsCloudRequest;
 @property (readonly) Class superclass;
 @property double threadPriority;
 
@@ -41,7 +74,6 @@
 + (id)keyPathsForValuesAffectingReady;
 
 - (id)__graphDescription:(unsigned long long)arg1;
-- (id)_activity;
 - (id /* block */)_copyCompletionBlock;
 - (id)_implicitObservationInfo;
 - (void)addDependency:(id)arg1;
@@ -82,10 +114,10 @@
 
 - (void)cat_addDependencies:(id)arg1;
 
-// Image: /System/Library/PrivateFrameworks/MapsSupport.framework/MapsSupport
+// Image: /System/Library/PrivateFrameworks/MediaServices.framework/MediaServices
 
-- (void)setShouldEnqueueDependenciesWhenPerformingAsCloudRequest:(bool)arg1;
-- (bool)shouldEnqueueDependenciesWhenPerformingAsCloudRequest;
+- (void)decreasePriority;
+- (void)increasePriority;
 
 // Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
 

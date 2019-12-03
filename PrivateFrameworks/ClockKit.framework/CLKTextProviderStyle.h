@@ -7,6 +7,7 @@
     double  _minimumScaleFactor;
     NSDictionary * _otherAttributes;
     bool  _shouldEmbedTintColors;
+    bool  _shouldStyleForTritium;
     CLKFont * _smallCapsBaseFont;
     bool  _uppercase;
 }
@@ -15,6 +16,7 @@
 @property (nonatomic) double minimumScaleFactor;
 @property (nonatomic, copy) NSDictionary *otherAttributes;
 @property (nonatomic) bool shouldEmbedTintColors;
+@property (nonatomic) bool shouldStyleForTritium;
 @property (nonatomic, copy) CLKFont *smallCapsBaseFont;
 @property (nonatomic) bool uppercase;
 
@@ -23,6 +25,7 @@
 + (id)styleWithFont:(id)arg1 smallCapsBaseFont:(id)arg2 uppercase:(bool)arg3 otherAttributes:(id)arg4;
 + (id)styleWithFont:(id)arg1 smallCapsBaseFont:(id)arg2 uppercase:(bool)arg3 otherAttributes:(id)arg4 minimumScaleFactor:(double)arg5;
 + (id)styleWithFont:(id)arg1 smallCapsBaseFont:(id)arg2 uppercase:(bool)arg3 otherAttributes:(id)arg4 minimumScaleFactor:(double)arg5 shouldEmbedTintColor:(bool)arg6;
++ (id)styleWithFont:(id)arg1 smallCapsBaseFont:(id)arg2 uppercase:(bool)arg3 otherAttributes:(id)arg4 minimumScaleFactor:(double)arg5 shouldEmbedTintColor:(bool)arg6 shouldStyleForTritium:(bool)arg7;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -35,9 +38,11 @@
 - (void)setMinimumScaleFactor:(double)arg1;
 - (void)setOtherAttributes:(id)arg1;
 - (void)setShouldEmbedTintColors:(bool)arg1;
+- (void)setShouldStyleForTritium:(bool)arg1;
 - (void)setSmallCapsBaseFont:(id)arg1;
 - (void)setUppercase:(bool)arg1;
 - (bool)shouldEmbedTintColors;
+- (bool)shouldStyleForTritium;
 - (id)smallCapsBaseFont;
 - (bool)uppercase;
 

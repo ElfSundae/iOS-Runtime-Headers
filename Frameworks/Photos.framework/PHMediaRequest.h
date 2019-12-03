@@ -2,45 +2,40 @@
    Image: /System/Library/Frameworks/Photos.framework/Photos
  */
 
-@interface PHMediaRequest : NSObject <PHRecyclableObject> {
+@interface PHMediaRequest : NSObject {
     PHAsset * _asset;
-    bool  _cancelled;
-    unsigned long long  _contextID;
+    _Atomic bool  _cancelled;
     long long  _contextType;
+    NSString * _identifierString;
     unsigned long long  _managerID;
     int  _requestID;
+    unsigned long long  _requestIndex;
+    unsigned long long  _signpostID;
 }
 
-@property (nonatomic, retain) PHAsset *asset;
+@property (nonatomic, readonly) PHAsset *asset;
 @property (getter=isCancelled, nonatomic, readonly) bool cancelled;
-@property (nonatomic) unsigned long long contextID;
-@property (nonatomic) long long contextType;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (nonatomic) unsigned long long managerID;
-@property (nonatomic) int requestID;
-@property (readonly) Class superclass;
+@property (nonatomic, readonly) long long contextType;
+@property (nonatomic, readonly) unsigned long long managerID;
+@property (nonatomic, readonly) int requestID;
+@property (nonatomic, readonly) unsigned long long requestIndex;
+@property (nonatomic) unsigned long long signpostID;
 @property (getter=isSynchronous, nonatomic, readonly) bool synchronous;
 
 - (void).cxx_destruct;
 - (id)asset;
 - (void)cancel;
-- (unsigned long long)contextID;
 - (long long)contextType;
-- (void)handleAvailabilityChangeForResource:(id)arg1 locallyAvailable:(bool)arg2 info:(id)arg3 error:(id)arg4;
+- (void)handleAvailabilityChangeForResource:(id)arg1 url:(id)arg2 info:(id)arg3 error:(id)arg4;
 - (id)identifierString;
-- (id)initWithRequestID:(int)arg1 contextID:(unsigned long long)arg2 managerID:(unsigned long long)arg3 asset:(id)arg4;
+- (id)initWithRequestID:(int)arg1 requestIndex:(unsigned long long)arg2 contextType:(long long)arg3 managerID:(unsigned long long)arg4 asset:(id)arg5;
 - (bool)isCancelled;
 - (bool)isSynchronous;
 - (unsigned long long)managerID;
-- (void)prepareForReuse;
 - (int)requestID;
-- (void)setAsset:(id)arg1;
-- (void)setContextID:(unsigned long long)arg1;
-- (void)setContextType:(long long)arg1;
-- (void)setManagerID:(unsigned long long)arg1;
-- (void)setRequestID:(int)arg1;
+- (unsigned long long)requestIndex;
+- (void)setSignpostID:(unsigned long long)arg1;
+- (unsigned long long)signpostID;
 - (void)startRequest;
 
 @end

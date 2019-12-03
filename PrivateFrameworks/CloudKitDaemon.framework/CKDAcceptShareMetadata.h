@@ -4,6 +4,7 @@
 
 @interface CKDAcceptShareMetadata : NSObject {
     bool  _acceptedInProcess;
+    NSData * _dugongInvitationProtectionInfo;
     NSString * _etag;
     NSString * _oonParticipantID;
     NSData * _oonProtectionInfo;
@@ -16,6 +17,7 @@
 }
 
 @property (nonatomic) bool acceptedInProcess;
+@property (nonatomic, retain) NSData *dugongInvitationProtectionInfo;
 @property (nonatomic, retain) NSString *etag;
 @property (nonatomic, retain) NSString *oonParticipantID;
 @property (nonatomic, retain) NSData *oonProtectionInfo;
@@ -28,6 +30,7 @@
 
 - (void).cxx_destruct;
 - (bool)acceptedInProcess;
+- (id)dugongInvitationProtectionInfo;
 - (id)etag;
 - (id)oonParticipantID;
 - (id)oonProtectionInfo;
@@ -36,6 +39,7 @@
 - (id)publicPCSData;
 - (id)publicPCSEtag;
 - (void)setAcceptedInProcess:(bool)arg1;
+- (void)setDugongInvitationProtectionInfo:(id)arg1;
 - (void)setEtag:(id)arg1;
 - (void)setOonParticipantID:(id)arg1;
 - (void)setOonProtectionInfo:(id)arg1;

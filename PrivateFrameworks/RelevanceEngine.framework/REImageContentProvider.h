@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
  */
 
-@interface REImageContentProvider : NSObject <NSCoding, NSCopying> {
+@interface REImageContentProvider : NSObject <NSCopying, NSSecureCoding> {
     REImage * _onePieceImage;
     REImage * _twoPieceBackgroundImage;
     REImage * _twoPieceForegroundImage;
@@ -15,6 +15,7 @@
 + (id)imageContentProviderFromClockKitImageProvider:(id)arg1;
 + (id)imageContentProviderWithOnePieceImage:(id)arg1;
 + (id)imageContentProviderWithOnePieceImage:(id)arg1 twoPieceForegroundImage:(id)arg2 twoPieceBackgroundImage:(id)arg3;
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)clockKitImageProviderRepresentation;

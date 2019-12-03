@@ -12,6 +12,7 @@
 
 + (bool)isValidSignature:(id)arg1;
 + (bool)isValidV2Signature:(id)arg1;
++ (id)signatureForStreamingAsset;
 + (id)signatureWithFileDescriptor:(int)arg1 error:(id*)arg2;
 
 - (char *)_newSignatureByFinishingGenerator;

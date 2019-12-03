@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/VoiceShortcutsUI.framework/VoiceShortcutsUI
  */
 
-@interface VCUIActionDonationDetailsViewController : UIViewController <VCUICreateVoiceShortcutViewControllerDelegate> {
+@interface VCUIActionDonationDetailsViewController : UIViewController <VCUIShortcutViewControllerDelegate> {
     <VCActionDonation> * _donation;
 }
 
@@ -17,10 +17,10 @@
 
 - (void).cxx_destruct;
 - (void)createVoiceShortcut;
-- (void)createVoiceShortcutViewController:(id)arg1 didCreateVoiceShortcut:(id)arg2;
-- (void)createVoiceShortcutViewControllerDidCancel:(id)arg1;
 - (id)donation;
 - (id)initWithDonation:(id)arg1;
 - (void)loadView;
+- (void)shortcutViewController:(id)arg1 didCreateShortcut:(id)arg2;
+- (void)shortcutViewControllerDidCancel:(id)arg1;
 
 @end

@@ -10,6 +10,7 @@
 
 - (void).cxx_destruct;
 - (id)domainsIneligibleForPasswordAuditing;
+- (id)init;
 - (id)initWithDomainsIneligibleForPasswordAuditing:(id)arg1;
 - (void)setDomainsIneligibleForPasswordAuditing:(id)arg1;
 

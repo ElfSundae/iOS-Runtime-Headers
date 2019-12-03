@@ -32,6 +32,7 @@
 + (id)sharedManager;
 
 - (void).cxx_destruct;
+- (void)batchQueryController:(id)arg1 updatedDestinationsStatus:(id)arg2 onService:(id)arg3 error:(id)arg4;
 - (id /* block */)batchQueryControllerCreationBlock;
 - (id)batchQuerySearchAudioController;
 - (id)batchQuerySearchMultiwayController;
@@ -39,7 +40,6 @@
 - (void)beginQueryWithDestinations:(id)arg1;
 - (void)cancelQueries;
 - (void)dealloc;
-- (void)idStatusUpdatedForDestinations:(id)arg1 service:(id)arg2;
 - (id)idsFaceTimeAudioStatuses;
 - (id)idsFaceTimeMultiwayStatuses;
 - (id)idsFaceTimeVideoStatuses;

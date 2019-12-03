@@ -6,10 +6,10 @@
     bool  _alwaysShowExtended;
     AVTAvatarColorVariationStore * _colorVariationStore;
     NSArray * _extendedItems;
+    <AVTAvatarAttributeEditorHeaderPicker> * _headerAccessory;
     NSString * _identifier;
     NSString * _localizedName;
     NSArray * _primaryItems;
-    <AVTAvatarAttributeEditorColorSectionProtocol> * _subSection;
 }
 
 @property (nonatomic, readonly) bool alwaysShowExtended;
@@ -18,11 +18,11 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly, copy) NSArray *extendedItems;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, retain) <AVTAvatarAttributeEditorHeaderPicker> *headerAccessory;
 @property (nonatomic, readonly, copy) NSString *identifier;
-@property (nonatomic, readonly, copy) NSString *localizedName;
+@property (nonatomic, copy) NSString *localizedName;
 @property (nonatomic, readonly, copy) NSArray *primaryItems;
 @property (nonatomic, readonly, copy) NSArray *sectionItems;
-@property (nonatomic, readonly) <AVTAvatarAttributeEditorColorSectionProtocol> *subSection;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -30,13 +30,15 @@
 - (id)colorVariationStore;
 - (id)description;
 - (id)extendedItems;
+- (id)headerAccessory;
 - (id)identifier;
-- (id)initWithPrimaryItems:(id)arg1 extendedItems:(id)arg2 colorVariationStore:(id)arg3 localizedName:(id)arg4 identifier:(id)arg5 alwaysShowExtended:(bool)arg6 subSection:(id)arg7;
+- (id)initWithPrimaryItems:(id)arg1 extendedItems:(id)arg2 colorVariationStore:(id)arg3 localizedName:(id)arg4 identifier:(id)arg5 alwaysShowExtended:(bool)arg6;
 - (id)localizedName;
 - (id)primaryItems;
 - (id)sectionItems;
+- (void)setHeaderAccessory:(id)arg1;
+- (void)setLocalizedName:(id)arg1;
 - (bool)shouldDisplaySeparatorBeforeSection:(id)arg1;
 - (bool)shouldDisplayTitle;
-- (id)subSection;
 
 @end

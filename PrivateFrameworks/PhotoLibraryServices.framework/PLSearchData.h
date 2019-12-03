@@ -8,4 +8,6 @@
 @property (nonatomic, retain) NSData *data;
 @property (nonatomic) bool valid;
 
++ (id)entityName;
+
 @end

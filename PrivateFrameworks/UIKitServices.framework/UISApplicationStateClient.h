@@ -2,20 +2,27 @@
    Image: /System/Library/PrivateFrameworks/UIKitServices.framework/UIKitServices
  */
 
-@interface UISApplicationStateClient : FBSServiceFacilityClient {
+@interface UISApplicationStateClient : NSObject <BSInvalidatable> {
     NSString * _bundleIdentifier;
+    NSObject<OS_dispatch_queue> * _queue;
+    BSServiceConnection * _queue_connection;
+    bool  _queue_invalidated;
 }
 
 @property (nonatomic, copy) NSString *badgeValue;
-@property (nonatomic) double minimumBackgroundFetchInterval;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) double nextWakeIntervalSinceReferenceDate;
+@property (readonly) Class superclass;
 @property (nonatomic) bool usesBackgroundNetwork;
 
 - (void).cxx_destruct;
+- (id)_remoteTarget;
 - (id)badgeValue;
-- (void)configureConnectMessage:(id)arg1;
+- (void)dealloc;
 - (id)initWithBundleIdentifier:(id)arg1;
-- (double)minimumBackgroundFetchInterval;
+- (void)invalidate;
 - (double)nextWakeIntervalSinceReferenceDate;
 - (void)setBadgeValue:(id)arg1;
 - (void)setMinimumBackgroundFetchInterval:(double)arg1;

@@ -7,14 +7,36 @@
     NSData * _directionsResponseId;
     GEORPUserSearchInput * _endWaypoint;
     struct { 
-        unsigned int problematicLineIndex : 1; 
-        unsigned int problematicStepIndex : 1; 
-    }  _has;
+        unsigned int has_problematicLineIndex : 1; 
+        unsigned int has_problematicStepIndex : 1; 
+        unsigned int read_clientSuggestedRoutes : 1; 
+        unsigned int read_directionsResponseId : 1; 
+        unsigned int read_endWaypoint : 1; 
+        unsigned int read_instructionCorrections : 1; 
+        unsigned int read_overviewScreenshotImageData : 1; 
+        unsigned int read_problematicRouteIndexs : 1; 
+        unsigned int read_startWaypoint : 1; 
+        unsigned int wrote_clientSuggestedRoutes : 1; 
+        unsigned int wrote_directionsResponseId : 1; 
+        unsigned int wrote_endWaypoint : 1; 
+        unsigned int wrote_instructionCorrections : 1; 
+        unsigned int wrote_overviewScreenshotImageData : 1; 
+        unsigned int wrote_problematicRouteIndexs : 1; 
+        unsigned int wrote_startWaypoint : 1; 
+        unsigned int wrote_problematicLineIndex : 1; 
+        unsigned int wrote_problematicStepIndex : 1; 
+    }  _flags;
     NSMutableArray * _instructionCorrections;
     NSData * _overviewScreenshotImageData;
     unsigned int  _problematicLineIndex;
     NSMutableArray * _problematicRouteIndexs;
     unsigned int  _problematicStepIndex;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     GEORPUserSearchInput * _startWaypoint;
 }
 
@@ -36,9 +58,20 @@
 
 + (Class)clientSuggestedRouteType;
 + (Class)instructionCorrectionType;
++ (bool)isValid:(id)arg1;
 + (Class)problematicRouteIndexType;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsClientSuggestedRoute:(id)arg1;
+- (void)_addNoFlagsInstructionCorrection:(id)arg1;
+- (void)_addNoFlagsProblematicRouteIndex:(id)arg1;
+- (void)_readClientSuggestedRoutes;
+- (void)_readDirectionsResponseId;
+- (void)_readEndWaypoint;
+- (void)_readInstructionCorrections;
+- (void)_readOverviewScreenshotImageData;
+- (void)_readProblematicRouteIndexs;
+- (void)_readStartWaypoint;
 - (void)addClientSuggestedRoute:(id)arg1;
 - (void)addInstructionCorrection:(id)arg1;
 - (void)addProblematicRouteIndex:(id)arg1;
@@ -61,6 +94,8 @@
 - (bool)hasProblematicStepIndex;
 - (bool)hasStartWaypoint;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (id)instructionCorrectionAtIndex:(unsigned long long)arg1;
 - (id)instructionCorrections;
 - (unsigned long long)instructionCorrectionsCount;
@@ -72,6 +107,7 @@
 - (id)problematicRouteIndexs;
 - (unsigned long long)problematicRouteIndexsCount;
 - (unsigned int)problematicStepIndex;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setClientSuggestedRoutes:(id)arg1;
 - (void)setDirectionsResponseId:(id)arg1;

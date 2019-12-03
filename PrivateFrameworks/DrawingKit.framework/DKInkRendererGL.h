@@ -69,5 +69,6 @@
 - (id)snapshot;
 - (bool)supportsBleedAnimation;
 - (void)teardown;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end

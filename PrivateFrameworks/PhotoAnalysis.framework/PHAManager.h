@@ -9,15 +9,16 @@
     PHAJobCoordinator * _jobCoordinator;
     NSURL * _libraryURL;
     PHAMonitoring * _monitoring;
-    NSDictionary * _photoAnalysisWorkersByType;
+    NSMutableDictionary * _photoAnalysisWorkersByType;
     PHPhotoLibrary * _photoLibrary;
+    unsigned long long  _processedAssetCount;
 }
 
 @property (readonly) PHAExecutive *executive;
 @property (readonly) PHAGraphManager *graphManager;
 @property (readonly) PHAJobCoordinator *jobCoordinator;
 @property (retain) NSURL *libraryURL;
-@property (retain) NSDictionary *photoAnalysisWorkersByType;
+@property (retain) NSMutableDictionary *photoAnalysisWorkersByType;
 @property (retain) PHPhotoLibrary *photoLibrary;
 @property (getter=isQuiescent, readonly) bool quiescent;
 
@@ -25,11 +26,12 @@
 + (void)enumerateWorkerClassesUsingBlock:(id /* block */)arg1;
 
 - (void).cxx_destruct;
-- (id)autoloopServiceWorker;
 - (void)backgroundActivityDidBegin;
 - (void)checkForQuiescence;
 - (id)description;
+- (void)disableTurboMode;
 - (void)dumpAnalysisStatusWithContext:(id)arg1 reply:(id /* block */)arg2;
+- (void)enableTurboMode;
 - (void)enumerateWorkersUsingBlock:(id /* block */)arg1;
 - (id)executive;
 - (id)faceClassificationServiceWorker;
@@ -43,23 +45,24 @@
 - (id)initWithPhotoLibraryURL:(id)arg1 executive:(id)arg2;
 - (bool)isInitialSyncActive;
 - (bool)isQuiescent;
-- (bool)isTurboMode;
 - (id)jobCoordinator;
 - (id)libraryURL;
 - (id)monitoring;
 - (id)photoAnalysisWorkersByType;
 - (id)photoLibrary;
 - (bool)photosIsConnected;
+- (void)reportTurboEnabledWithContext:(id)arg1 reply:(id /* block */)arg2;
 - (void)requestLocalizedSceneAncestryInformationWithContext:(id)arg1 reply:(id /* block */)arg2;
-- (id)sceneClassificationServiceWorker;
 - (void)setLibraryURL:(id)arg1;
 - (void)setPhotoAnalysisWorkersByType:(id)arg1;
 - (void)setPhotoLibrary:(id)arg1;
-- (void)setTurboMode;
 - (void)shutdown;
+- (void)startTurboProcessing;
 - (id)statusAsDictionary;
+- (void)stopAllBackgroundActivities;
 - (void)stopBackgroundActivity;
-- (id)taxonomyServiceWorker;
 - (void)triggerBackgroundActivity;
+- (void)turboConstraintsWereRemoved;
+- (bool)turboIsEnabled;
 
 @end

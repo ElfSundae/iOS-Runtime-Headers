@@ -40,8 +40,10 @@
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (bool)hasThreeDTouchEnabled;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProtobuf:(id)arg1;
+- (bool)isEqual:(id)arg1;
 - (id)jsonData;
 - (void)setContactIdentifier:(id)arg1;
 - (void)setContactIdentifiers:(id)arg1;

@@ -4,9 +4,13 @@
 
 @interface FBSApplicationDataStoreRepositoryClient : FBSServiceFacilityClient <FBSApplicationDataStoreRepositoryClient> {
     NSHashTable * _observers;
-    NSObject<OS_dispatch_queue> * _observersQueue;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _observersLock;
     NSMutableDictionary * _pendingChangesToPrefetchedKeys;
-    NSObject<OS_dispatch_queue> * _prefetchedDataQueue;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _prefetchedDataLock;
     NSMutableDictionary * _prefetchedKeyValues;
     NSCountedSet * _prefetchedKeys;
 }

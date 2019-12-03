@@ -2,58 +2,75 @@
    Image: /System/Library/PrivateFrameworks/PersonalizationPortraitInternals.framework/PersonalizationPortraitInternals
  */
 
-@interface PPLocalNamedEntityStore : PPNamedEntityStore {
+@interface PPLocalNamedEntityStore : PPNamedEntityStore <PPFeedbackProcessing> {
     _PASNotificationToken * _assetUpdateNotificationToken;
     int  _bundleIdBlacklistNotificationToken;
-    _PASLock * _cacheLock;
-    PPKVOObserver * _defaultsOverrideObserver;
-    PPDeletionTracker * _deletionTracker;
-    unsigned long long  _hardFetchLimit;
-    bool  _isCacheInvalidated;
+    PPMObjectsDeletion * _deletionTracker;
+    PPMNamedEntitiesDonation * _donationTracker;
+    PPMFeedbackRegistered * _feedbackTracker;
+    PPM2FeedbackPortraitRegistered * _feedbackTracker2;
+    _Atomic bool  _isCacheInvalidated;
     _PASLock * _lock;
-    id  _remoteDeletionObserver;
+    PPNamedEntityStorage * _storage;
+    PPLocalTopicStore * _topicStoreForNamedEntityMapping;
 }
 
+@property (nonatomic, readonly) PPNamedEntityStorage *storage;
+
++ (id)_aggregateRecords:(id)arg1 scoringDate:(id)arg2 perRecordDecayRate:(float)arg3 decayRate:(float)arg4;
++ (void)_filterBlacklistedNamedEntityRecords:(id)arg1;
++ (id)_loadScoreInterpreter;
++ (bool)_yesWithProbability:(double)arg1;
 + (id)defaultStore;
++ (id)ppFeedbackItemToPPPBFeedbackItem:(id)arg1;
++ (id)recordsForNamedEntities:(id)arg1 source:(id)arg2 algorithm:(unsigned long long)arg3;
++ (float)resolvedPerRecordDecayRateForRecord:(id)arg1 perRecordDecayRate:(float)arg2;
++ (struct PPScoredItem { Class x1; }*)scoredEntityFromRecords:(id)arg1 scoringDate:(id)arg2 perRecordDecayRate:(float)arg3 decayRate:(float)arg4 sourceStats:(id)arg5 scoreInterpreter:(id)arg6;
++ (void)sortAndTruncate:(id)arg1 queryLimit:(unsigned long long)arg2;
 
 - (void).cxx_destruct;
-- (id)_cached_namedEntityRecordsWithQuery:(id)arg1;
-- (void)_clearQueryCacheWithLockWitness:(id)arg1;
 - (id)_coalesceScoredNamedEntities:(id)arg1;
-- (bool)_deleteAllExtractionsWithPredicate:(id)arg1 fromStreams:(id)arg2 deletedCount:(unsigned long long*)arg3 namedEntitiesRemoved:(id)arg4 error:(id*)arg5;
-- (bool)_deleteAllNamedEntitiesWithPredicate:(id)arg1 loggingBundleId:(id)arg2 deletedCount:(unsigned long long*)arg3 error:(id*)arg4;
+- (bool)_donateLocationNamedEntityToLocationStore:(id)arg1 source:(id)arg2 locationAlgorithm:(unsigned short)arg3 error:(id*)arg4;
+- (bool)_donateTopicsFromEntities:(id)arg1 source:(id)arg2 cloudSync:(bool)arg3 sentimentScore:(double)arg4 error:(id*)arg5;
+- (id)_feedbackItemToNamedEntityMapForFeedback:(id)arg1 error:(id*)arg2;
 - (id)_filterBlacklistedScoredNamedEntities:(id)arg1;
 - (id)_filterOutInvalidNamesFromEntities:(id)arg1;
-- (void)_loadNamedEntitiesOverrideFromDefaults:(id)arg1;
-- (id)_namedEntitiesOverride;
-- (id)_rankedNamedEntitiesWithQuery:(id)arg1 usingFakeDataSource:(id)arg2;
-- (double)_scoreEntityRecord:(id)arg1 query:(id)arg2 scoringDate:(id)arg3;
+- (bool)_logFeedbackSessionsWithFeedback:(id)arg1 error:(id*)arg2;
+- (id)_mapsSearchQueryResultWithError:(id*)arg1;
+- (void)_petLoggingForQuery:(id)arg1 resultCount:(unsigned long long)arg2 clientProcessName:(id)arg3 hasError:(bool)arg4;
+- (void)_registerMapsQueryPrefetching;
+- (bool)_shouldIgnoreHomeOrWorkAddress:(id)arg1;
 - (bool)_shouldSuppressRepeatedImpressions:(id)arg1;
-- (bool)_signalNamedEntitiesRemoved:(id)arg1;
-- (bool)clearWithError:(id*)arg1;
+- (bool)_unlimitedNamedEntityRecordsWithQuery:(id)arg1 error:(id*)arg2 block:(id /* block */)arg3;
+- (bool)clearWithError:(id*)arg1 deletedCount:(unsigned long long*)arg2;
+- (bool)cloudSyncWithError:(id*)arg1;
 - (void)dealloc;
-- (bool)deleteAllNamedEntitiesFromSourcesWithBundleId:(id)arg1 documentIds:(id)arg2 error:(id*)arg3;
-- (bool)deleteAllNamedEntitiesFromSourcesWithBundleId:(id)arg1 error:(id*)arg2;
-- (bool)deleteAllNamedEntitiesFromSourcesWithBundleId:(id)arg1 groupId:(id)arg2 olderThan:(id)arg3 error:(id*)arg4;
-- (bool)deleteAllNamedEntitiesFromSourcesWithBundleId:(id)arg1 groupIds:(id)arg2 error:(id*)arg3;
-- (bool)donateLocationNamedEntities:(id)arg1 bundleId:(id)arg2 error:(id*)arg3;
+- (bool)deleteAllNamedEntitiesFromSourcesWithBundleId:(id)arg1 deletedCount:(unsigned long long*)arg2 error:(id*)arg3;
+- (bool)deleteAllNamedEntitiesFromSourcesWithBundleId:(id)arg1 documentIds:(id)arg2 deletedCount:(unsigned long long*)arg3 error:(id*)arg4;
+- (bool)deleteAllNamedEntitiesFromSourcesWithBundleId:(id)arg1 groupId:(id)arg2 olderThan:(id)arg3 deletedCount:(unsigned long long*)arg4 error:(id*)arg5;
+- (bool)deleteAllNamedEntitiesFromSourcesWithBundleId:(id)arg1 groupIds:(id)arg2 deletedCount:(unsigned long long*)arg3 error:(id*)arg4;
+- (bool)deleteAllNamedEntitiesOlderThanDate:(id)arg1 deletedCount:(unsigned long long*)arg2 error:(id*)arg3;
+- (void)disableSyncForBundleIds:(id)arg1;
+- (bool)donateLocationNamedEntities:(id)arg1 bundleId:(id)arg2 groupId:(id)arg3 error:(id*)arg4;
 - (bool)donateMapItem:(id)arg1 forPlaceName:(id)arg2 error:(id*)arg3;
-- (bool)donateNamedEntities:(id)arg1 source:(id)arg2 algorithm:(unsigned long long)arg3 cloudSync:(bool)arg4 decayRate:(double)arg5 error:(id*)arg6;
-- (void)feedbackEngagedNamedEntities:(id)arg1;
-- (void)feedbackEngagedNamedEntities:(id)arg1 clientIdentifier:(id)arg2;
-- (void)feedbackNamedEntitiesOverallEngagement:(id)arg1;
-- (void)feedbackNamedEntitiesOverallEngagement:(id)arg1 clientIdentifier:(id)arg2;
-- (void)feedbackUsedNamedEntities:(id)arg1;
-- (void)feedbackUsedNamedEntities:(id)arg1 clientIdentifier:(id)arg2;
+- (bool)donateNamedEntities:(id)arg1 source:(id)arg2 algorithm:(unsigned long long)arg3 cloudSync:(bool)arg4 sentimentScore:(double)arg5 error:(id*)arg6;
 - (bool)flushDonationsWithError:(id*)arg1;
-- (id)initWithRecordFetchLimit:(unsigned long long)arg1 useQueryCache:(bool)arg2;
+- (id)getScoredNamedEntityFeaturesWithNamedEntity:(id)arg1 excludingSourceBundleId:(id)arg2 decayRate:(double)arg3 error:(id*)arg4 strictFiltering:(bool)arg5 scoreInterpreter:(id)arg6;
+- (id)init;
+- (id)initWithStorage:(id)arg1 topicStoreForNamedEntityMapping:(id)arg2;
 - (bool)iterNamedEntityRecordsWithQuery:(id)arg1 error:(id*)arg2 block:(id /* block */)arg3;
 - (bool)iterRankedNamedEntitiesWithQuery:(id)arg1 error:(id*)arg2 block:(id /* block */)arg3;
 - (id)mapItemForPlaceName:(id)arg1 error:(id*)arg2;
 - (bool)monitorNamedEntityRecordChangesWithError:(id*)arg1 setup:(id /* block */)arg2 handler:(id /* block */)arg3 finish:(id /* block */)arg4;
 - (id)namedEntityRecordsWithQuery:(id)arg1 error:(id*)arg2;
+- (id)namedEntityToMatchedStringMappingForNamedEntities:(id)arg1 timestamp:(double)arg2 error:(id*)arg3;
+- (void)processFeedback:(id)arg1;
 - (id)rankedNamedEntitiesWithQuery:(id)arg1 error:(id*)arg2;
+- (id)rankedNamedEntitiesWithQuery:(id)arg1 error:(id*)arg2 clientProcessName:(id)arg3;
+- (void)registerFeedback:(id)arg1 completion:(id /* block */)arg2;
 - (bool)removeMapItemForPlaceName:(id)arg1 error:(id*)arg2;
 - (bool)removeMapItemsBeforeCutoffDate:(id)arg1 error:(id*)arg2;
+- (id)sourceStatsExcludedAlgorithms:(id)arg1;
+- (id)storage;
 
 @end

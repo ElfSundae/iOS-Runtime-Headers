@@ -5,9 +5,12 @@
 @interface TSDGLDataArrayBuffer : NSObject <TSDGLDataBufferAccessor> {
     unsigned long long  _GLDataBufferEntrySize;
     unsigned long long  _bufferCount;
+    unsigned long long  _bufferIndex;
     unsigned int  _bufferUsage;
     unsigned long long  _currentBufferIndex;
     unsigned long long  _dataTypeSizeInBytes;
+    NSArray * _metalDataBuffers;
+    bool  _usesMetalBuffer;
     NSMutableArray * _vertexAttributes;
     NSMutableDictionary * mAttributeOffsetsDictionary;
     char * mGLData;
@@ -27,6 +30,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (unsigned long long)GLDataBufferEntrySize;
 - (char *)GLDataPointer;
 - (struct { float x1; float x2; })GLPoint2DForAttribute:(id)arg1 atIndex:(unsigned long long)arg2;
@@ -38,14 +42,18 @@
 - (void)addIndexRangeNeedsUpdate:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (unsigned long long)bufferCount;
 - (unsigned long long)currentBufferIndex;
+- (char *)dataPointer;
 - (void)dealloc;
 - (id)description;
 - (void)disableVertexAttributeArrayBuffersWithShader:(id)arg1;
+- (void)enableArrayBufferWithDevice:(id)arg1;
 - (void)enableVertexAttributeArrayBuffersWithShader:(id)arg1;
+- (void)encodeArrayBufferWithEncoder:(id)arg1 atIndex:(long long)arg2;
 - (bool)hasUpdatedData;
 - (id)initWithVertexAttributes:(id)arg1 vertexCount:(unsigned long long)arg2 bufferCount:(unsigned long long)arg3;
 - (unsigned long long)p_bufferOffsetOfAttribute:(id)arg1 atIndex:(unsigned long long)arg2 component:(unsigned long long)arg3;
 - (void)p_setupGLDataBufferIfNecessary;
+- (void)p_setupMetalDataBufferIfNecessaryWithDevice:(id)arg1;
 - (void)setCGFloat:(double)arg1 forAttribute:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)setCurrentBufferIndex:(unsigned long long)arg1;
 - (void)setGLPoint2D:(struct { float x1; float x2; })arg1 forAttribute:(id)arg2 atIndex:(unsigned long long)arg3;
@@ -53,6 +61,7 @@
 - (void)setGLPoint4D:(struct { float x1; float x2; float x3; float x4; })arg1 forAttribute:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)setGLfloat:(float)arg1 forAttribute:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)swapGLDataBuffers;
+- (void)swapGPUDataBuffers;
 - (void)updateDataBufferIfNecessary;
 - (unsigned long long)vertexCount;
 

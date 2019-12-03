@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CameraUI.framework/CameraUI
  */
 
-@interface CAMFlashBadge : CAMBadgeView {
+@interface CAMFlashBadge : CEKBadgeView {
     UIImage * __contentImage;
     NSString * __contentSizeCategory;
 }

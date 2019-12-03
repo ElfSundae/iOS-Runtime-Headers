@@ -25,6 +25,7 @@
 - (void)prepareInsertStatementForRelationship:(id)arg1;
 - (void)prepareInsertStatementWithRow:(id)arg1;
 - (void)prepareInsertStatementWithRow:(id)arg1 includeConstraints:(bool)arg2;
+- (void)prepareInsertStatementWithRow:(id)arg1 includeConstraints:(bool)arg2 includeOnConflict:(bool)arg3;
 - (void)prepareMasterReorderStatementForRelationship:(id)arg1;
 - (void)prepareMasterReorderStatementPart2ForRelationship:(id)arg1;
 - (void)prepareReorderStatementForRelationship:(id)arg1;

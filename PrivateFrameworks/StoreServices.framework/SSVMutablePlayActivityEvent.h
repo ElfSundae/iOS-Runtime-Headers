@@ -10,6 +10,7 @@
 @property (nonatomic, copy) SSVPlayActivityEventContainerIDs *containerIDs;
 @property (nonatomic) unsigned long long containerType;
 @property (nonatomic, copy) NSString *deviceName;
+@property (nonatomic) unsigned long long displayType;
 @property (nonatomic) unsigned long long endReasonType;
 @property (nonatomic, copy) SSVPlayActivityEnqueuerProperties *enqueuerProperties;
 @property (nonatomic, copy) NSDate *eventDate;
@@ -24,6 +25,8 @@
 @property (nonatomic, copy) SSVPlayActivityEventItemIDs *itemIDs;
 @property (nonatomic) double itemStartTime;
 @property (nonatomic) unsigned long long itemType;
+@property (nonatomic) unsigned long long lyricsDisplayedCharacterCount;
+@property (nonatomic, copy) NSString *lyricsLanguage;
 @property (nonatomic) unsigned long long mediaType;
 @property (getter=isOffline, nonatomic) bool offline;
 @property (nonatomic) long long persistentID;
@@ -50,6 +53,7 @@
 - (void)setContainerIDs:(id)arg1;
 - (void)setContainerType:(unsigned long long)arg1;
 - (void)setDeviceName:(id)arg1;
+- (void)setDisplayType:(unsigned long long)arg1;
 - (void)setEndReasonType:(unsigned long long)arg1;
 - (void)setEnqueuerProperties:(id)arg1;
 - (void)setEventDate:(id)arg1;
@@ -64,6 +68,8 @@
 - (void)setItemIDs:(id)arg1;
 - (void)setItemStartTime:(double)arg1;
 - (void)setItemType:(unsigned long long)arg1;
+- (void)setLyricsDisplayedCharacterCount:(unsigned long long)arg1;
+- (void)setLyricsLanguage:(id)arg1;
 - (void)setMediaType:(unsigned long long)arg1;
 - (void)setOffline:(bool)arg1;
 - (void)setPersistentID:(long long)arg1;

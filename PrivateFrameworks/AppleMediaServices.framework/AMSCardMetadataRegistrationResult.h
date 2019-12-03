@@ -3,7 +3,6 @@
  */
 
 @interface AMSCardMetadataRegistrationResult : NSObject {
-    NSData * _artwork;
     NSString * _cardArtwork;
     long long  _cardType;
     NSString * _descriptionLong;
@@ -14,7 +13,6 @@
     NSString * _suffix;
 }
 
-@property (nonatomic, retain) NSData *artwork;
 @property (nonatomic, retain) NSString *cardArtwork;
 @property (nonatomic) long long cardType;
 @property (nonatomic, retain) NSString *descriptionLong;
@@ -25,7 +23,6 @@
 @property (nonatomic, retain) NSString *suffix;
 
 - (void).cxx_destruct;
-- (id)artwork;
 - (id)cardArtwork;
 - (long long)cardType;
 - (id)descriptionLong;
@@ -35,7 +32,6 @@
 - (id)initWithCardArtwork:(id)arg1 cardType:(long long)arg2 descriptionLong:(id)arg3 descriptionShort:(id)arg4 paymentNetwork:(long long)arg5 serialNumber:(id)arg6 suffix:(id)arg7;
 - (long long)paymentNetwork;
 - (id)serialNumber;
-- (void)setArtwork:(id)arg1;
 - (void)setCardArtwork:(id)arg1;
 - (void)setCardType:(long long)arg1;
 - (void)setDescriptionLong:(id)arg1;

@@ -18,6 +18,7 @@
 - (id)initWithRecipientIdentifiers:(id)arg1 senderIdentifier:(id)arg2;
 - (id)initWithRecipientIdentifiers:(id)arg1 senderIdentifiers:(id)arg2;
 - (bool)isEqual:(id)arg1;
+- (id)mostRecentTextEntries:(unsigned long long)arg1;
 - (id)recipientIdentifiers;
 - (id)senderIdentifier;
 - (id)senderIdentifiers;

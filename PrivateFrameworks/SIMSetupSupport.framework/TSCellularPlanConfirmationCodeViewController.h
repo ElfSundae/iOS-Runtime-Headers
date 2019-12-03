@@ -11,6 +11,7 @@
     UITableView * _infoTableView;
     NSLayoutConstraint * _infoTableViewHeightConstraint;
     bool  _isMidOperation;
+    UIBarButtonItem * _nextButton;
     long long  _userConsentResponse;
 }
 
@@ -25,6 +26,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (bool)canBeShownFromSuspendedState;
 - (void)confirm:(id)arg1;
 - (id)confirmationCode;
 - (id)confirmationCodeTitleLabel;
@@ -40,6 +42,7 @@
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 replacementString:(id)arg3;
 - (bool)textFieldShouldReturn:(id)arg1;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidLayoutSubviews;

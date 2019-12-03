@@ -57,6 +57,7 @@
 - (id)key;
 - (id)nilValue;
 - (SEL)readSelector;
+- (void)resetGuardianManagedValueOnContact:(id)arg1;
 - (bool)setABValue:(void*)arg1 onABPerson:(void*)arg2 error:(struct __CFError {}**)arg3;
 - (bool)setCNValue:(id)arg1 onABPerson:(void*)arg2 withDependentPropertiesContext:(id)arg3 error:(id*)arg4;
 - (void)setCNValue:(id)arg1 onContact:(id)arg2;
@@ -74,6 +75,6 @@
 - (id)CNValueFromABSValue:(void*)arg1;
 - (bool)absPropertyID:(int*)arg1;
 - (unsigned int)absPropertyType;
-- (bool)isValidABSValue:(void*)arg1 error:(struct __CFError {}**)arg2;
+- (bool)convertABSValue:(void*)arg1 toCNValue:(id*)arg2 error:(struct __CFError {}**)arg3;
 
 @end

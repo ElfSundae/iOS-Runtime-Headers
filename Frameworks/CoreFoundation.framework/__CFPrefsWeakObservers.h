@@ -4,8 +4,9 @@
 
 @interface __CFPrefsWeakObservers : NSObject <NSMutableCopying> {
     unsigned long long  count;
-    /* Warning: unhandled struct encoding: '{__cfobservers_t="slot"@"next"^{__cfobservers_t}}' */ struct __cfobservers_t { 
+    struct __cfobservers_t { 
         id slot; 
+        struct __cfobservers_t {} *next; 
     }  values;
 }
 

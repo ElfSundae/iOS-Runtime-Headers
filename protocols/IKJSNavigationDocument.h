@@ -5,6 +5,7 @@
 
 @required
 
+- (NSString *)OPTION_RETAIN_CONTEXT;
 - (void)clear;
 - (void)dismissModal;
 - (NSArray *)documents;

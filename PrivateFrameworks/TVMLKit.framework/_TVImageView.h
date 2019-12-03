@@ -20,6 +20,7 @@
     TVImageProxy * _imageProxy;
     UIImageView * _imageView;
     UIImage * _placeholderImage;
+    UIImageSymbolConfiguration * _preferredSymbolConfiguration;
     bool  _rendersImageAsTemplates;
     bool  _selected;
 }
@@ -35,6 +36,7 @@
 @property (getter=isImageLoaded, nonatomic) bool imageLoaded;
 @property (nonatomic, retain) TVImageProxy *imageProxy;
 @property (nonatomic, retain) UIImage *placeholderImage;
+@property (setter=_setPreferredSymbolConfiguration:, nonatomic, retain) UIImageSymbolConfiguration *preferredSymbolConfiguration;
 
 - (void).cxx_destruct;
 - (double)_continuousCornerRadius;
@@ -53,6 +55,7 @@
 - (void)_setEnableEdgeAntialiasingOnSelected:(bool)arg1;
 - (void)_setFocusedColor:(id)arg1;
 - (void)_setImage:(id)arg1;
+- (void)_setPreferredSymbolConfiguration:(id)arg1;
 - (void)_setTintColor:(id)arg1;
 - (id)_tintColor;
 - (void)_updateCornerRadius;
@@ -71,6 +74,7 @@
 - (bool)isImageLoaded;
 - (void)layoutSubviews;
 - (id)placeholderImage;
+- (id)preferredSymbolConfiguration;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setCompletion:(id /* block */)arg1;
 - (void)setContentMode:(long long)arg1;
@@ -85,6 +89,7 @@
 - (void)setPlaceholderImage:(id)arg1;
 - (void)setSelected:(bool)arg1 animated:(bool)arg2;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)willMoveToWindow:(id)arg1;
 
 @end

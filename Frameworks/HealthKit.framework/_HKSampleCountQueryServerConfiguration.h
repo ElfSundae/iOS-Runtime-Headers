@@ -3,10 +3,10 @@
  */
 
 @interface _HKSampleCountQueryServerConfiguration : HKQueryServerConfiguration <NSSecureCoding> {
-    NSSet * _sampleTypes;
+    NSSet * _sampleQueryDescriptions;
 }
 
-@property (nonatomic, copy) NSSet *sampleTypes;
+@property (nonatomic, copy) NSSet *sampleQueryDescriptions;
 
 + (bool)supportsSecureCoding;
 
@@ -14,7 +14,7 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)sampleTypes;
-- (void)setSampleTypes:(id)arg1;
+- (id)sampleQueryDescriptions;
+- (void)setSampleQueryDescriptions:(id)arg1;
 
 @end

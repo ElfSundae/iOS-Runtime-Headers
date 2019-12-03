@@ -9,8 +9,8 @@
 }
 
 - (void)dealloc;
-- (id)initWithStructs:(const /* Warning: unhandled struct encoding: '{TCEnumerationStruct=i@}' */ struct TCEnumerationStruct { int x1; id x2; }*)arg1 count:(int)arg2;
-- (id)initWithStructs:(const /* Warning: unhandled struct encoding: '{TCEnumerationStruct=i@}' */ struct TCEnumerationStruct { int x1; id x2; }*)arg1 count:(int)arg2 caseSensitive:(bool)arg3;
+- (id)initWithStructs:(const struct TCEnumerationStruct { int x1; id x2; }*)arg1 count:(int)arg2;
+- (id)initWithStructs:(const struct TCEnumerationStruct { int x1; id x2; }*)arg1 count:(int)arg2 caseSensitive:(bool)arg3;
 - (id)stringForValue:(int)arg1;
 - (long long)valueForString:(id)arg1;
 

@@ -5,6 +5,7 @@
 @interface NTKZeusComplicationView : UIView <NTKComplicationDisplay, NTKZeusComplicationDisplay> {
     CLKDevice * _device;
     bool  _highlighted;
+    bool  _legibilityEnabled;
     NTKZeusColorPalette * _palette;
     unsigned long long  _style;
     bool  canUseCurvedText;
@@ -18,6 +19,7 @@
 @property (nonatomic) <NTKComplicationDisplayObserver> *displayObserver;
 @property (readonly) unsigned long long hash;
 @property (getter=isHighlighted, nonatomic) bool highlighted;
+@property (nonatomic) bool legibilityEnabled;
 @property (nonatomic, readonly) NTKZeusColorPalette *palette;
 @property (nonatomic) bool shouldUseTemplateColors;
 @property (nonatomic) unsigned long long style;
@@ -26,6 +28,7 @@
 + (id)viewForComplicationType:(unsigned long long)arg1;
 
 - (void).cxx_destruct;
+- (void)_updateLegibility;
 - (void)applyPalette:(id)arg1;
 - (void)applyTransitionFraction:(double)arg1 fromPalette:(id)arg2 toPalette:(id)arg3;
 - (bool)canUseCurvedText;
@@ -34,10 +37,12 @@
 - (id)displayObserver;
 - (id)init;
 - (bool)isHighlighted;
+- (bool)legibilityEnabled;
 - (id)palette;
 - (void)setCanUseCurvedText:(bool)arg1;
 - (void)setDisplayObserver:(id)arg1;
 - (void)setHighlighted:(bool)arg1;
+- (void)setLegibilityEnabled:(bool)arg1;
 - (void)setStyle:(unsigned long long)arg1;
 - (unsigned long long)style;
 

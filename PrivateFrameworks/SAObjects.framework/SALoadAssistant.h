@@ -9,6 +9,7 @@
 @property (nonatomic, copy) NSString *assistantId;
 @property (nonatomic, copy) NSString *connectionMode;
 @property (nonatomic, copy) NSString *connectionType;
+@property (nonatomic, copy) NSString *dataSharingOptInStatus;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -31,6 +32,7 @@
 - (id)assistantId;
 - (id)connectionMode;
 - (id)connectionType;
+- (id)dataSharingOptInStatus;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 - (id)language;
@@ -45,6 +47,7 @@
 - (void)setAssistantId:(id)arg1;
 - (void)setConnectionMode:(id)arg1;
 - (void)setConnectionType:(id)arg1;
+- (void)setDataSharingOptInStatus:(id)arg1;
 - (void)setLanguage:(id)arg1;
 - (void)setLinkedAssistantId:(id)arg1;
 - (void)setLinkedSessionValidationData:(id)arg1;

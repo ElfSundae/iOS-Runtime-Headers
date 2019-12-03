@@ -4,7 +4,7 @@
 
 @interface CKInlineNotificationView : UIView {
     bool  _animatingVisibility;
-    _UIBackdropView * _backdropView;
+    UIVisualEffectView * _backdropView;
     UIView * _bottomLineView;
     UIView * _clippingView;
     UIView * _containerView;
@@ -14,7 +14,7 @@
 
 @property (nonatomic, readonly) bool _shouldSuppressLayout;
 @property (nonatomic) bool animatingVisibility;
-@property (nonatomic, retain) _UIBackdropView *backdropView;
+@property (nonatomic, retain) UIVisualEffectView *backdropView;
 @property (nonatomic, retain) UIView *bottomLineView;
 @property (nonatomic, retain) UIView *clippingView;
 @property (nonatomic, retain) UIView *containerView;

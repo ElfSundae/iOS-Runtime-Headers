@@ -4,12 +4,10 @@
 
 @interface CKDDeviceManager : NSObject {
     NSMutableDictionary * _deviceIDs;
-    NSString * _deviceIdentifier;
     NSObject<OS_dispatch_queue> * _queue;
 }
 
 @property (nonatomic, retain) NSMutableDictionary *deviceIDs;
-@property (nonatomic, readonly) NSString *deviceIdentifier;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *queue;
 
 + (id)sharedManager;
@@ -20,8 +18,7 @@
 - (id)_savedDeviceIdentifierForContext:(id)arg1;
 - (id)_serviceForContext:(id)arg1;
 - (id)deviceIDs;
-- (id)deviceIdentifier;
-- (void)fetchDeviceIdentifierForContext:(id)arg1 withCompletionHandler:(id /* block */)arg2;
+- (id)deviceIdentifierForContext:(id)arg1;
 - (id)init;
 - (id)queue;
 - (void)setDeviceIDs:(id)arg1;

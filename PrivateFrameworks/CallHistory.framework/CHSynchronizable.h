@@ -2,11 +2,15 @@
    Image: /System/Library/PrivateFrameworks/CallHistory.framework/CallHistory
  */
 
-@interface CHSynchronizable : NSObject <CHSynchronizableProtocol> {
+@interface CHSynchronizable : NSObject <CHSynchronizable> {
     NSObject<OS_dispatch_queue> * _queue;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly) NSObject<OS_dispatch_queue> *queue;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)execute:(id /* block */)arg1;

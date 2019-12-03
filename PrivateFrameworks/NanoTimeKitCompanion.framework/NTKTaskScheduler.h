@@ -5,7 +5,7 @@
 @interface NTKTaskScheduler : NSObject
 
 - (void)cancelAllTasks;
-- (void)cancelTaskForToken:(struct NSNumber { Class x1; }*)arg1;
-- (struct NSNumber { Class x1; }*)scheduleTask:(id /* block */)arg1;
+- (void)cancelTaskForToken:(struct NSString { Class x1; }*)arg1;
+- (struct NSString { Class x1; }*)scheduleTask:(id /* block */)arg1 identifier:(id)arg2;
 
 @end

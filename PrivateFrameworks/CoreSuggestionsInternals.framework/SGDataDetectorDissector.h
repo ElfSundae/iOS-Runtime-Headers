@@ -7,6 +7,7 @@
 }
 
 + (void)initialize;
++ (void)resetUnusedScannersForTesting;
 + (bool)stringHasDatesOrTimes:(id)arg1;
 
 - (id)detectionsInPlainText:(id)arg1 withEligibleRegions:(id)arg2 ddSignature:(struct __DDResult {}**)arg3;

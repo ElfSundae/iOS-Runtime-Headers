@@ -2,13 +2,14 @@
    Image: /System/Library/Frameworks/Foundation.framework/Foundation
  */
 
-@interface NSNumber : NSValue <AADataType, AFSecurityDigestibleChunksProviding, ASDNotificationType, ASParsingLeafNode, ATXScoreLogSerializable, CKLParsedObject, CKRecordValue, CRCoding, CRDataType, CREquatable, CUByteCodable, HFPropertyListConvertible, LPCSSText, NSFetchRequestResult, PQLValuable, REDonatedActionIdentifierProviding, SiriCoreSQLiteValue, TSCHChartGridValue, TSDMixing, _DKDeduping>
+@interface NSNumber : NSValue <AADataType, AFSecurityDigestibleChunksProviding, ASDNotificationType, ASParsingLeafNode, ATXScoreLogSerializable, CKLParsedObject, CKRecordValue, CRCoding, CRDataType, CREquatable, CUByteCodable, EFSQLBindable, EFSQLExpressable, EFSQLNumericValueExpressable, HFPropertyListConvertible, HMBQueryableModelFieldCoder, IMJSONSerializableValueProviding, INCodableAttributeRelationComparing, INJSONSerializable, LPCSSText, MAPropertyTypeProtocol, NSFetchRequestResult, PQLValuable, RBSProcessIdentifier, REDonatedActionIdentifierProviding, SiriCoreSQLiteValue, TSCHChartGridValue, TSDMixing, WFJSONObject, WFJavaScriptCoreBridgeableObject, WFNaming, WFPropertyListObject, WFSerializableContent, _DKDeduping, _PASDistilledString>
 
 @property (nonatomic, readonly) double CGFloatValue;
 @property (nonatomic, readonly) long long PHAssetExportRequestVariantValue;
 @property (nonatomic, readonly) unsigned long long PXDataSourceIdentifierValue;
 @property (readonly) long long _cn_reputationScoreValue;
 @property (nonatomic, readonly) double _cn_timeIntervalValue;
+@property (nonatomic, readonly) unsigned long long bl_hlsUnsignedIntegerValue;
 @property (readonly) bool boolValue;
 @property (readonly) BOOL charValue;
 @property (nonatomic, readonly) int chartGridValueType;
@@ -16,6 +17,8 @@
 @property (readonly) struct { unsigned int x1 : 8; unsigned int x2 : 4; unsigned int x3 : 1; unsigned int x4 : 1; unsigned int x5 : 18; unsigned short x6[8]; } decimalValue;
 @property (readonly, copy) NSString *description;
 @property (readonly) double doubleValue;
+@property (nonatomic, readonly) EFSQLBinding *ef_SQLBinding;
+@property (nonatomic, readonly, copy) NSString *ef_SQLExpression;
 @property (readonly) float floatValue;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) NSNumber *hf_absoluteValue;
@@ -27,6 +30,7 @@
 @property (readonly) long long integerValue;
 @property (readonly) long long longLongValue;
 @property (readonly) long long longValue;
+@property (readonly) long long matissePropertyType;
 @property (nonatomic, readonly) NSNumber *safari_percentageFromSamplingRate;
 @property (readonly) short shortValue;
 @property (readonly, copy) NSString *stringValue;
@@ -37,6 +41,7 @@
 @property (readonly) unsigned long long unsignedLongLongValue;
 @property (readonly) unsigned long long unsignedLongValue;
 @property (readonly) unsigned short unsignedShortValue;
+@property (nonatomic, readonly, copy) NSString *wfName;
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
@@ -114,20 +119,19 @@
 
 - (long long)_cn_reputationScoreValue;
 
-// Image: /System/Library/Frameworks/CoreLocation.framework/CoreLocation
-
-- (id)cl_json_serializeKey;
-- (void)cl_json_serializeValue:(struct value_ostream { bool x1; struct ostream {} *x2; }*)arg1;
-
-// Image: /System/Library/Frameworks/CoreMotion.framework/CoreMotion
-
-- (id)cl_json_serializeKey;
-- (void)cl_json_serializeValue:(struct value_ostream { bool x1; struct ostream {} *x2; }*)arg1;
-
 // Image: /System/Library/Frameworks/Intents.framework/Intents
 
++ (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
+
+- (bool)_intents_compareValue:(id)arg1 relation:(unsigned long long)arg2;
+- (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
 - (bool)_intents_isDouble;
 - (bool)_intents_isInteger;
+- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
+
+// Image: /System/Library/Frameworks/LinkPresentation.framework/LinkPresentation
+
+- (id)_lp_CSSText;
 
 // Image: /System/Library/Frameworks/MapKit.framework/MapKit
 
@@ -171,6 +175,10 @@
 - (unsigned int)MIDIEntity;
 - (unsigned int)MIDIObject;
 
+// Image: /System/Library/PrivateFrameworks/AppAnalytics.framework/AppAnalytics
+
+- (id)toJsonValueAndReturnError:(id*)arg1;
+
 // Image: /System/Library/PrivateFrameworks/AppPredictionInternal.framework/AppPredictionInternal
 
 - (void)atx_writeToFile:(struct __sFILE { char *x1; int x2; int x3; short x4; short x5; struct __sbuf { char *x_6_1_1; int x_6_1_2; } x6; int x7; void *x8; int (*x9)(); int (*x10)(); int (*x11)(); int (*x12)(); struct __sbuf { char *x_13_1_1; int x_13_1_2; } x13; struct __sFILEX {} *x14; int x15; unsigned char x16[3]; unsigned char x17[1]; struct __sbuf { char *x_18_1_1; int x_18_1_2; } x18; int x19; long long x20; }*)arg1;
@@ -178,6 +186,10 @@
 // Image: /System/Library/PrivateFrameworks/AssistantServices.framework/AssistantServices
 
 - (void)af_enumerateDigestibleChunksWithOptions:(unsigned long long)arg1 usingBlock:(id /* block */)arg2;
+
+// Image: /System/Library/PrivateFrameworks/BookLibrary.framework/BookLibrary
+
+- (unsigned long long)bl_hlsUnsignedIntegerValue;
 
 // Image: /System/Library/PrivateFrameworks/Catalyst.framework/Catalyst
 
@@ -213,6 +225,13 @@
 - (double)_cn_timeIntervalValue;
 - (void)_cn_times:(id /* block */)arg1;
 
+// Image: /System/Library/PrivateFrameworks/ContentKit.framework/ContentKit
+
++ (id)objectWithWFSerializedRepresentation:(id)arg1;
+
+- (id)wfName;
+- (id)wfSerializedRepresentation;
+
 // Image: /System/Library/PrivateFrameworks/CoreDuet.framework/CoreDuet
 
 - (id)dedup;
@@ -244,7 +263,19 @@
 - (const char *)encodedBytesAndReturnLength:(unsigned long long*)arg1 error:(id*)arg2;
 - (id)encodedDataAndReturnError:(id*)arg1;
 
-// Image: /System/Library/PrivateFrameworks/DataAccess.framework/Frameworks/DAEAS.framework/DAEAS
+// Image: /System/Library/PrivateFrameworks/DoNotDisturbServer.framework/DoNotDisturbServer
+
++ (id)dnds_numberWithDate:(id)arg1;
++ (id)dnds_safeNumberWithDate:(id)arg1;
+
+- (id)dnds_dateValue;
+
+// Image: /System/Library/PrivateFrameworks/EmailFoundation.framework/EmailFoundation
+
+- (id)ef_SQLBinding;
+- (id)ef_SQLExpression;
+
+// Image: /System/Library/PrivateFrameworks/ExchangeSync.framework/Frameworks/DAEAS.framework/DAEAS
 
 + (bool)acceptsTopLevelLeaves;
 + (bool)expectsContent;
@@ -283,6 +314,12 @@
 - (id)hf_smallerNumber:(id)arg1;
 - (id)hf_valueRoundedToNearestStepValue:(id)arg1 relativeToBaseValue:(id)arg2;
 
+// Image: /System/Library/PrivateFrameworks/HomeKitBackingStore.framework/HomeKitBackingStore
+
++ (id)hmbDecodeQueryableParameter:(id)arg1;
++ (id)hmbDescriptionForEncodedQueryableVariable:(id)arg1;
++ (id)hmbEncodeQueryableParameter:(id)arg1;
+
 // Image: /System/Library/PrivateFrameworks/IMFoundation.framework/IMFoundation
 
 - (id)localizedString;
@@ -297,13 +334,17 @@
 - (unsigned long long)ik_unit;
 - (id)ik_unitStringValue;
 
-// Image: /System/Library/PrivateFrameworks/LinkPresentation.framework/LinkPresentation
+// Image: /System/Library/PrivateFrameworks/KnowledgeGraphKit.framework/KnowledgeGraphKit
 
-- (id)_lp_CSSText;
+- (long long)matissePropertyType;
 
 // Image: /System/Library/PrivateFrameworks/MediaRemote.framework/MediaRemote
 
 - (bool)_BoolValue;
+
+// Image: /System/Library/PrivateFrameworks/MediaServices.framework/MediaServices
+
++ (bool)isNumber:(id)arg1 equalTo:(id)arg2;
 
 // Image: /System/Library/PrivateFrameworks/MusicLibrary.framework/MusicLibrary
 
@@ -322,10 +363,6 @@
 - (bool)nu_isInfinite;
 - (bool)nu_isInteger;
 - (bool)nu_isNaN;
-
-// Image: /System/Library/PrivateFrameworks/News/AppAnalytics.framework/AppAnalytics
-
-- (id)toJsonValueAndReturnError:(id*)arg1;
 
 // Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
 
@@ -367,9 +404,34 @@
 
 - (unsigned long long)PXDataSourceIdentifierValue;
 
+// Image: /System/Library/PrivateFrameworks/PodcastsKit.framework/PodcastsKit
+
+- (id)im_jsonSerializableValue;
+
+// Image: /System/Library/PrivateFrameworks/ProactiveSupport.framework/ProactiveSupport
+
+- (id)_pas_revivedString;
+
 // Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
 
 - (unsigned long long)re_actionIdentifierHashValue;
+
+// Image: /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit
+
+- (id)deltaSince:(id)arg1 in:(id)arg2;
+- (void)encodeWithCRCoder:(id)arg1;
+- (id)initWithCRCoder:(id)arg1;
+- (void)mergeWith:(id)arg1;
+- (void)realizeLocalChangesIn:(id)arg1;
+- (void)setDocument:(id)arg1;
+- (id)tombstone;
+- (void)walkGraph:(id /* block */)arg1;
+
+// Image: /System/Library/PrivateFrameworks/RunningBoardServices.framework/RunningBoardServices
+
+- (bool)matchesProcess:(id)arg1;
+- (id)processPredicate;
+- (int)rbs_pid;
 
 // Image: /System/Library/PrivateFrameworks/SafariShared.framework/SafariShared
 
@@ -384,10 +446,6 @@
 - (id)siriCoreSQLiteValue_toNumber;
 - (id)siriCoreSQLiteValue_toString;
 - (long long)siriCoreSQLiteValue_type;
-
-// Image: /System/Library/PrivateFrameworks/Stocks/AppAnalytics.framework/AppAnalytics
-
-- (id)toJsonValueAndReturnError:(id*)arg1;
 
 // Image: /System/Library/PrivateFrameworks/StoreServices.framework/StoreServices
 
@@ -409,6 +467,10 @@
 - (double)tsu_CGFloatValue;
 - (bool)tsu_isFloatingPointType;
 
+// Image: /System/Library/PrivateFrameworks/VideosUI.framework/VideosUI
+
+- (id)vui_languageAwareDescription;
+
 // Image: /System/Library/PrivateFrameworks/VoiceMemos.framework/VoiceMemos
 
 - (long long)rc_persistentIDValue;
@@ -429,19 +491,19 @@
 // Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
 
 + (id)numberWithCGFloat:(double)arg1;
-+ (id)tsch_instanceWithArchive:(const struct ChartsNSNumberDoubleArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; double x5; }*)arg1 unarchiver:(id)arg2;
++ (id)tsch_instanceWithArchive:(const struct ChartsNSNumberDoubleArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; double x5; }*)arg1 unarchiver:(id)arg2;
 + (id)tsch_numberWithStyleInt:(int)arg1;
 + (id)tsch_numberWithStyleProperty:(int)arg1;
-+ (id)tsch_optionalNumberWithArchive:(const struct ChartsNSNumberDoubleArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; double x5; }*)arg1 unarchiver:(id)arg2;
-+ (void)tsch_saveOptionalNumber:(id)arg1 toArchive:(struct ChartsNSNumberDoubleArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; double x5; }*)arg2 archiver:(id)arg3;
++ (id)tsch_optionalNumberWithArchive:(const struct ChartsNSNumberDoubleArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; double x5; }*)arg1 unarchiver:(id)arg2;
++ (void)tsch_saveOptionalNumber:(id)arg1 toArchive:(struct ChartsNSNumberDoubleArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; double x5; }*)arg2 archiver:(id)arg3;
 
 - (double)CGFloatValue;
 - (int)chartGridValueType;
 - (bool)isFloatingPointType;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
-- (id)tsch_initWithArchive:(const struct ChartsNSNumberDoubleArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; double x5; }*)arg1 unarchiver:(id)arg2;
-- (void)tsch_saveToArchive:(struct ChartsNSNumberDoubleArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; double x5; }*)arg1 archiver:(id)arg2;
+- (id)tsch_initWithArchive:(const struct ChartsNSNumberDoubleArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; double x5; }*)arg1 unarchiver:(id)arg2;
+- (void)tsch_saveToArchive:(struct ChartsNSNumberDoubleArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; double x5; }*)arg1 archiver:(id)arg2;
 - (int)tsch_styleIntValue;
 - (int)tsch_stylePropertyValue;
 - (int)tss_propertyValue;
@@ -449,6 +511,7 @@
 
 // Image: /usr/lib/libprequelite.dylib
 
++ (id)newFromSqliteStatement:(struct sqlite3_stmt { }*)arg1 atIndex:(int)arg2;
 + (id)newFromSqliteValue:(struct sqlite3_value { }*)arg1;
 
 - (void)sqliteBind:(struct sqlite3_stmt { }*)arg1 index:(int)arg2;

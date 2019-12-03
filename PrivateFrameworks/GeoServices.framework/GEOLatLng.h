@@ -3,10 +3,10 @@
  */
 
 @interface GEOLatLng : PBCodable <NSCopying> {
-    bool  _gtLog;
     struct { 
-        unsigned int gtLog : 1; 
-    }  _has;
+        unsigned int has_gtLog : 1; 
+    }  _flags;
+    bool  _gtLog;
     double  _lat;
     double  _lng;
     PBUnknownFields * _unknownFields;
@@ -19,7 +19,10 @@
 @property (nonatomic) double lng;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(bool)arg1;
 - (struct { double x1; double x2; })coordinate;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -34,6 +37,7 @@
 - (double)lat;
 - (double)lng;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setGtLog:(bool)arg1;
 - (void)setHasGtLog:(bool)arg1;

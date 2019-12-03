@@ -4,15 +4,42 @@
 
 @interface GEOFormatArgument : PBCodable <GEOServerFormatToken, NSCopying> {
     GEOPBTransitArtwork * _artwork;
-    int  _format;
+    GEOCountdownData * _countdownData;
     struct { 
-        unsigned int format : 1; 
-        unsigned int valInt1 : 1; 
-        unsigned int valInt2 : 1; 
-    }  _has;
+        unsigned int has_format : 1; 
+        unsigned int has_valInt1 : 1; 
+        unsigned int has_valInt2 : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_valInt3s : 1; 
+        unsigned int read_artwork : 1; 
+        unsigned int read_countdownData : 1; 
+        unsigned int read_price : 1; 
+        unsigned int read_timestampDatas : 1; 
+        unsigned int read_token : 1; 
+        unsigned int read_valString : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_valInt3s : 1; 
+        unsigned int wrote_artwork : 1; 
+        unsigned int wrote_countdownData : 1; 
+        unsigned int wrote_price : 1; 
+        unsigned int wrote_timestampDatas : 1; 
+        unsigned int wrote_token : 1; 
+        unsigned int wrote_valString : 1; 
+        unsigned int wrote_format : 1; 
+        unsigned int wrote_valInt1 : 1; 
+        unsigned int wrote_valInt2 : 1; 
+    }  _flags;
+    int  _format;
     GEOPrice * _price;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     NSMutableArray * _timestampDatas;
     NSString * _token;
+    PBUnknownFields * _unknownFields;
     unsigned int  _valInt1;
     unsigned int  _valInt2;
     struct { 
@@ -25,10 +52,13 @@
 
 @property (nonatomic, retain) GEOPBTransitArtwork *artwork;
 @property (nonatomic, readonly) <GEOTransitArtworkDataSource> *artworkValue;
+@property (nonatomic, retain) GEOCountdownData *countdownData;
+@property (nonatomic, readonly) <GEOServerFormatTokenCountdownValue> *countdownValue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) int format;
 @property (nonatomic, readonly) bool hasArtwork;
+@property (nonatomic, readonly) bool hasCountdownData;
 @property (nonatomic) bool hasFormat;
 @property (nonatomic, readonly) bool hasPrice;
 @property (nonatomic, readonly) bool hasToken;
@@ -45,6 +75,7 @@
 @property (nonatomic, readonly) NSString *token;
 @property (nonatomic, retain) NSString *token;
 @property (nonatomic, readonly) long long type;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic) unsigned int valInt1;
 @property (nonatomic) unsigned int valInt2;
 @property (nonatomic, readonly) unsigned int*valInt3s;
@@ -54,24 +85,38 @@
 @property (nonatomic, readonly) unsigned int value2;
 @property (nonatomic, readonly) NSArray *value3s;
 
++ (bool)isValid:(id)arg1;
 + (Class)timestampDataType;
 
 - (void).cxx_destruct;
 - (int)StringAsFormat:(id)arg1;
+- (void)_addNoFlagsTimestampData:(id)arg1;
+- (void)_addNoFlagsValInt3:(unsigned int)arg1;
+- (void)_readArtwork;
+- (void)_readCountdownData;
+- (void)_readPrice;
+- (void)_readTimestampDatas;
+- (void)_readToken;
+- (void)_readValInt3s;
+- (void)_readValString;
 - (void)addTimestampData:(id)arg1;
 - (void)addValInt3:(unsigned int)arg1;
 - (id)artwork;
 - (id)artworkValue;
 - (void)clearTimestampDatas;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)clearValInt3s;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)countdownData;
+- (id)countdownValue;
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (int)format;
 - (id)formatAsString:(int)arg1;
 - (bool)hasArtwork;
+- (bool)hasCountdownData;
 - (bool)hasFormat;
 - (bool)hasPrice;
 - (bool)hasToken;
@@ -79,12 +124,16 @@
 - (bool)hasValInt2;
 - (bool)hasValString;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)price;
 - (id)priceValue;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setArtwork:(id)arg1;
+- (void)setCountdownData:(id)arg1;
 - (void)setFormat:(int)arg1;
 - (void)setHasFormat:(bool)arg1;
 - (void)setHasValInt1:(bool)arg1;
@@ -103,6 +152,7 @@
 - (unsigned long long)timestampDatasCount;
 - (id)token;
 - (long long)type;
+- (id)unknownFields;
 - (unsigned int)valInt1;
 - (unsigned int)valInt2;
 - (unsigned int)valInt3AtIndex:(unsigned long long)arg1;

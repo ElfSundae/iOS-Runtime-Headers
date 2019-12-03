@@ -4,6 +4,7 @@
 
 @interface WFHealthManager : NSObject {
     NSSet * _currentNetworkIssues;
+    <WFHealthManagerDelegate> * _delegate;
     NWPathEvaluator * _evaluator;
     WFInterface * _interface;
     WFNetworkScanRecord * _network;
@@ -12,6 +13,7 @@
 
 @property (nonatomic, readonly) bool currentNetworkHasNoInternetConnection;
 @property (nonatomic, retain) NSSet *currentNetworkIssues;
+@property (nonatomic) <WFHealthManagerDelegate> *delegate;
 @property (nonatomic, retain) NWPathEvaluator *evaluator;
 @property (nonatomic, retain) WFInterface *interface;
 @property (nonatomic, retain) WFNetworkScanRecord *network;
@@ -23,6 +25,7 @@
 - (bool)currentNetworkHasNoInternetConnection;
 - (id)currentNetworkIssues;
 - (void)dealloc;
+- (id)delegate;
 - (id)evaluator;
 - (id)initWithInterface:(id)arg1;
 - (id)interface;
@@ -31,6 +34,7 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (id)profile;
 - (void)setCurrentNetworkIssues:(id)arg1;
+- (void)setDelegate:(id)arg1;
 - (void)setEvaluator:(id)arg1;
 - (void)setInterface:(id)arg1;
 - (void)setNetwork:(id)arg1;

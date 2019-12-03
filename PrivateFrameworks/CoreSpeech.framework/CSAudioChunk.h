@@ -20,6 +20,7 @@
 @property (nonatomic, readonly) bool remoteVADAvailable;
 @property (nonatomic, readonly) unsigned long long sampleByteDepth;
 @property (nonatomic, readonly) unsigned long long startSampleCount;
+@property (nonatomic, readonly) NSObject<OS_xpc_object> *xpcObject;
 
 - (void).cxx_destruct;
 - (id)_fidesRecordInfo;
@@ -27,8 +28,8 @@
 - (id)dataForChannel:(unsigned long long)arg1;
 - (id)dataWithRemoteVADWithScaleFactor:(float)arg1 numAudioSamplesPerRemoteVAD:(unsigned long long)arg2;
 - (unsigned long long)hostTime;
-- (id)initWithData:(id)arg1 numChannels:(unsigned long long)arg2 numSamples:(unsigned long long)arg3 sampleByteDepth:(unsigned long long)arg4 startSampleCount:(unsigned long long)arg5 hostTime:(unsigned long long)arg6;
 - (id)initWithData:(id)arg1 numChannels:(unsigned long long)arg2 numSamples:(unsigned long long)arg3 sampleByteDepth:(unsigned long long)arg4 startSampleCount:(unsigned long long)arg5 hostTime:(unsigned long long)arg6 remoteVAD:(id)arg7;
+- (id)initWithXPCObject:(id)arg1;
 - (unsigned long long)numChannels;
 - (unsigned long long)numSamples;
 - (id)remoteVAD;
@@ -40,5 +41,6 @@
 - (unsigned long long)startSampleCount;
 - (id)subChunkFrom:(unsigned long long)arg1 numSamples:(unsigned long long)arg2;
 - (id)subChunkFrom:(unsigned long long)arg1 numSamples:(unsigned long long)arg2 forChannel:(unsigned long long)arg3;
+- (id)xpcObject;
 
 @end

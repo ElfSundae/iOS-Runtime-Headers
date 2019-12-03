@@ -2,7 +2,8 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface INInteraction : NSObject <CRContent, INImageProxyInjecting, INInteractionExport, INKeyImageProducing, NSCopying, NSSecureCoding> {
+@interface INInteraction : NSObject <CRContent, INFileEnumerable, INImageProxyInjecting, INInteractionExport, INKeyImageProducing, NSCopying, NSSecureCoding> {
+    NSUUID * _contextExtensionUUID;
     NSDateInterval * _dateInterval;
     long long  _direction;
     bool  _donatedBySiri;
@@ -14,7 +15,8 @@
     SAUISnippet * _snippet;
 }
 
-@property (nonatomic, readonly) bool _donatedBySiri;
+@property (setter=_setContextExtensionUUID:, nonatomic, copy) NSUUID *_contextExtensionUUID;
+@property (setter=_setDonatedBySiri:, nonatomic) bool _donatedBySiri;
 @property (readonly) unsigned long long _indexingHash;
 @property (readonly) INImage *_keyImage;
 @property (readonly, copy) CSSearchableItem *_searchableItem;
@@ -36,6 +38,7 @@
 
 // Image: /System/Library/Frameworks/Intents.framework/Intents
 
++ (unsigned long long)_searchableItemVersion;
 + (void)deleteAllInteractionsWithCompletion:(id /* block */)arg1;
 + (void)deleteInteractionsWithGroupIdentifier:(id)arg1 completion:(id /* block */)arg2;
 + (void)deleteInteractionsWithIdentifiers:(id)arg1 completion:(id /* block */)arg2;
@@ -43,15 +46,21 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (void)_commonInit;
 - (long long)_compareSubProducerOne:(id)arg1 subProducerTwo:(id)arg2;
+- (id)_contextExtensionUUID;
 - (id)_dictionaryRepresentation;
 - (void)_donateInteractionWithBundleId:(id)arg1 completion:(id /* block */)arg2;
 - (bool)_donatedBySiri;
 - (unsigned long long)_indexingHash;
+- (id)_init;
 - (void)_injectProxiesForImages:(id /* block */)arg1 completion:(id /* block */)arg2;
+- (void)_intents_enumerateFileURLsWithBlock:(id /* block */)arg1 mutate:(bool)arg2;
+- (void)_intents_enumerateFilesWithBlock:(id /* block */)arg1 mutate:(bool)arg2;
 - (id)_keyImage;
 - (id)_searchableItem;
 - (id)_searchableItemIncludingData:(bool)arg1;
+- (void)_setContextExtensionUUID:(id)arg1;
 - (void)_setDonatedBySiri:(bool)arg1;
 - (void)_setIntent:(id)arg1;
 - (void)_setIntentResponse:(id)arg1;
@@ -95,5 +104,24 @@
 // Image: /System/Library/PrivateFrameworks/Cards.framework/Cards
 
 - (id)underlyingInteraction;
+
+// Image: /System/Library/PrivateFrameworks/CoreDuetContext.framework/CoreDuetContext
+
+- (id)contextMetadataWithBundleIdentifier:(id)arg1 eventUUID:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/CoreSuggestionsInternals.framework/CoreSuggestionsInternals
+
++ (id)fromSchemas:(id)arg1;
+
+- (bool)canConvertToSchemaOrg;
+- (id)toSchemas;
+
+// Image: /System/Library/PrivateFrameworks/IntentsCore.framework/IntentsCore
+
+- (void)inc_associateFileURLsWithAuditToken:(struct { unsigned int x1[8]; })arg1;
+
+// Image: /System/Library/PrivateFrameworks/MobileTimer.framework/MobileTimer
+
+- (void)mtSetIntentDonorFromSource:(id)arg1;
 
 @end

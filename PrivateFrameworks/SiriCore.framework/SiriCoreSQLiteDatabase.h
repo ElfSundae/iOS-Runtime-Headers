@@ -18,13 +18,14 @@
 - (bool)alterTableWithName:(id)arg1 addColumn:(id)arg2 error:(id*)arg3;
 - (bool)alterTableWithName:(id)arg1 renameTo:(id)arg2 error:(id*)arg3;
 - (bool)beginTransactionWithError:(id*)arg1;
+- (bool)checkpointWriteAheadLogWithError:(id*)arg1;
 - (bool)closeWithError:(id*)arg1;
 - (bool)commitTransactionWithError:(id*)arg1;
-- (unsigned long long)countValuesInTableWithName:(id)arg1 columnName:(id)arg2 behavior:(long long)arg3 criterion:(id)arg4 range:(id)arg5 error:(id*)arg6;
+- (unsigned long long)countValuesInTableWithName:(id)arg1 columnName:(id)arg2 behavior:(long long)arg3 indexedBy:(id)arg4 criterion:(id)arg5 range:(id)arg6 error:(id*)arg7;
 - (bool)createIndex:(id)arg1 error:(id*)arg2;
 - (bool)createTable:(id)arg1 error:(id*)arg2;
 - (long long)dataProtectionClass;
-- (bool)deleteFromTableWithName:(id)arg1 criterion:(id)arg2 error:(id*)arg3;
+- (bool)deleteFromTableWithName:(id)arg1 indexedBy:(id)arg2 criterion:(id)arg3 error:(id*)arg4;
 - (bool)dropIndexWithName:(id)arg1 error:(id*)arg2;
 - (bool)dropTableWithName:(id)arg1 error:(id*)arg2;
 - (id)executeQuery:(id)arg1;
@@ -45,10 +46,10 @@
 - (bool)rollbackToSavepointWithName:(id)arg1 error:(id*)arg2;
 - (bool)rollbackTransactionWithError:(id*)arg1;
 - (bool)savepointWithName:(id)arg1 error:(id*)arg2;
-- (id)selectRecordsFromTableWithName:(id)arg1 columnNames:(id)arg2 behavior:(long long)arg3 criterion:(id)arg4 order:(id)arg5 range:(id)arg6 recordBuilder:(id)arg7 error:(id*)arg8;
-- (id)selectValueMapsFromTableWithName:(id)arg1 columnNames:(id)arg2 behavior:(long long)arg3 criterion:(id)arg4 order:(id)arg5 range:(id)arg6 error:(id*)arg7;
-- (id)selectValueTuplesFromTableWithName:(id)arg1 columnNames:(id)arg2 behavior:(long long)arg3 criterion:(id)arg4 order:(id)arg5 range:(id)arg6 error:(id*)arg7;
-- (id)selectValuesFromTableWithName:(id)arg1 columnName:(id)arg2 behavior:(long long)arg3 criterion:(id)arg4 order:(id)arg5 range:(id)arg6 error:(id*)arg7;
+- (id)selectRecordsFromTableWithName:(id)arg1 columnNames:(id)arg2 behavior:(long long)arg3 indexedBy:(id)arg4 criterion:(id)arg5 order:(id)arg6 range:(id)arg7 recordBuilder:(id)arg8 error:(id*)arg9;
+- (id)selectValueMapsFromTableWithName:(id)arg1 columnNames:(id)arg2 behavior:(long long)arg3 indexedBy:(id)arg4 criterion:(id)arg5 order:(id)arg6 range:(id)arg7 error:(id*)arg8;
+- (id)selectValueTuplesFromTableWithName:(id)arg1 columnNames:(id)arg2 behavior:(long long)arg3 indexedBy:(id)arg4 criterion:(id)arg5 order:(id)arg6 range:(id)arg7 error:(id*)arg8;
+- (id)selectValuesFromTableWithName:(id)arg1 columnName:(id)arg2 behavior:(long long)arg3 indexedBy:(id)arg4 criterion:(id)arg5 order:(id)arg6 range:(id)arg7 error:(id*)arg8;
 - (bool)updateTableWithName:(id)arg1 valueMap:(id)arg2 criterion:(id)arg3 error:(id*)arg4;
 - (bool)vacuumWithError:(id*)arg1;
 

@@ -2,11 +2,11 @@
    Image: /System/Library/PrivateFrameworks/TVMLKit.framework/TVMLKit
  */
 
-@interface _TVAppDocumentController : UIViewController <IKAppDocumentDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, _TVIKAppDocumentDelegate, _TVModalPresenterFocusing, _TVPagePerformanceDelegate> {
+@interface _TVAppDocumentController : TVDocumentViewController <IKAppDocumentDelegate, UIGestureRecognizerDelegate, _TVApplicationInspectorDocumentProvider, _TVIKAppDocumentDelegate, _TVModalPresenterFocusing, _TVPagePerformanceDelegate> {
+    bool  _adoptsContext;
     <_TVAppDocumentControllerDelegate> * _appDelegate;
     IKAppDocument * _appDocument;
     bool  _applicationDeactivatedOnMenu;
-    <_TVAppDocumentControllerDelegate> * _delegate;
     struct { 
         bool hasMediaQueryEvaluator; 
         bool hasWillHostTemplateViewController; 
@@ -26,11 +26,11 @@
     bool  _visualEffectDisablementNeeded;
 }
 
+@property (nonatomic) bool adoptsContext;
 @property (nonatomic) <_TVAppDocumentControllerDelegate> *appDelegate;
 @property (nonatomic, retain) IKAppDocument *appDocument;
 @property (nonatomic, readonly) bool applicationDeactivatedOnMenu;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) <_TVAppDocumentControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) bool dismissAppOnMenu;
 @property (nonatomic, readonly) <UIFocusItemContainer> *focusItemContainer;
@@ -63,19 +63,18 @@
 - (void)_updateModalPresentationStateWithTemplateView:(id)arg1;
 - (void)_updateTemplateViewController;
 - (void)_willHostTemplateViewController:(id)arg1 usesTransitions:(bool*)arg2;
-- (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
+- (id)activeDocument;
+- (bool)adoptsContext;
 - (id)appDelegate;
 - (id)appDocument;
 - (bool)applicationDeactivatedOnMenu;
 - (bool)automaticallyAdjustsScrollViewInsets;
 - (id)childViewControllerForHomeIndicatorAutoHidden;
 - (id)childViewControllerForStatusBarHidden;
-- (id)contentScrollView;
 - (id)currentImpressionableElements;
 - (id)customAnimatorForNavigationControllerOperation:(long long)arg1 fromViewController:(id)arg2;
 - (id)customAnimatorForNavigationControllerOperation:(long long)arg1 toViewController:(id)arg2;
 - (void)dealloc;
-- (id)delegate;
 - (void)didHostTemplateViewController:(id)arg1 usedTransitions:(bool)arg2;
 - (bool)dismissAppOnMenu;
 - (bool)document:(id)arg1 evaluateStyleMediaQuery:(id)arg2;
@@ -97,16 +96,15 @@
 - (id)pagePerformance;
 - (void)pagePerformanceController:(id)arg1 didUpdateMetrics:(id)arg2;
 - (id)pagePerformanceView;
-- (void)popoverPresentationController:(id)arg1 willRepositionPopoverToRect:(inout struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg2 inView:(inout id*)arg3;
 - (bool)ppt_isLoading;
 - (id)preferredFocusEnvironments;
 - (long long)preferredStatusBarStyle;
 - (void)reload;
 - (void)replaceAppDocumentWithAppDocument:(id)arg1;
 - (void)scrollToTop;
+- (void)setAdoptsContext:(bool)arg1;
 - (void)setAppDelegate:(id)arg1;
 - (void)setAppDocument:(id)arg1;
-- (void)setDelegate:(id)arg1;
 - (void)setDismissAppOnMenu:(bool)arg1;
 - (void)setMediaQueryEvaluator:(id)arg1;
 - (void)setMenuGestureHandler:(id /* block */)arg1;
@@ -125,7 +123,6 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (struct CGSize { double x1; double x2; })tv_adjustedWindowSizeForDocument:(id)arg1;
 - (bool)tv_isPresentedModalForDocument:(id)arg1;
-- (void)tvmlkit_handleEvent:(id)arg1 forElement:(id)arg2 andSourceView:(id)arg3;
 - (void)updatePreferredFocusedViewStateForFocus:(bool)arg1;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidDisappear:(bool)arg1;

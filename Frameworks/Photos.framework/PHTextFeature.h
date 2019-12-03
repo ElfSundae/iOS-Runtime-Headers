@@ -16,6 +16,9 @@
 
 // Image: /System/Library/Frameworks/Photos.framework/Photos
 
++ (id)_momentLocalIdentifierByAssetLocalIdentifiersForAssets:(id)arg1;
++ (id)_textFeaturesByMomentLocalIdentifierForMomentLocalIdentifiers:(id)arg1 inPhotoLibrary:(id)arg2;
++ (id)fetchTextFeaturesByAssetLocalIdentifierForAssets:(id)arg1;
 + (id)stringForOrigin:(unsigned long long)arg1;
 + (id)stringForType:(long long)arg1;
 + (bool)supportsSecureCoding;
@@ -37,7 +40,7 @@
 - (long long)type;
 - (float)weight;
 
-// Image: /System/Library/PrivateFrameworks/PhotoAnalysis.framework/Frameworks/PhotosGraph.framework/PhotosGraph
+// Image: /System/Library/PrivateFrameworks/PhotosGraph.framework/PhotosGraph
 
 + (id)pg_textFeatureForFeature:(id)arg1;
 

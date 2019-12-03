@@ -9,8 +9,11 @@
     }  _viewController;
 }
 
+@property (nonatomic, readonly) NSString *calendarType;
+
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (id)calendarType;
 - (void)clear:(id)arg1;
 - (void)controlBeginEditing;
 - (void)controlEndEditing;

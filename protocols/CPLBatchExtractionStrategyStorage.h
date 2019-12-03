@@ -12,6 +12,7 @@
 - (<NSFastEnumeration> *)allChangesWithScopeIdentifier:(NSString *)arg1;
 - (<NSFastEnumeration> *)allNonDeletedChangesWithClass:(Class)arg1 scopeIdentifier:(NSString *)arg2;
 - (CPLRecordChange *)changeWithScopedIdentifier:(CPLScopedIdentifier *)arg1;
+- (unsigned long long)effectiveResourceSizeToUploadForUploadIdentifier:(NSString *)arg1;
 - (bool)hasChangesInScopeWithIdentifier:(NSString *)arg1;
 - (bool)removeChange:(CPLRecordChange *)arg1 error:(id*)arg2;
 

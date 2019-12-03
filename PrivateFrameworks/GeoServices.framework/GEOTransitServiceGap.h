@@ -8,10 +8,11 @@
     unsigned int  _appearsBeforeSuggestedRouteIndex;
     GEOFormattedString * _displayMessage;
     struct { 
-        unsigned int absEndTime : 1; 
-        unsigned int absStartTime : 1; 
-        unsigned int appearsBeforeSuggestedRouteIndex : 1; 
-    }  _has;
+        unsigned int has_absEndTime : 1; 
+        unsigned int has_absStartTime : 1; 
+        unsigned int has_appearsBeforeSuggestedRouteIndex : 1; 
+    }  _flags;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic) unsigned int absEndTime;
@@ -30,11 +31,15 @@
 @property (nonatomic, readonly) unsigned long long routeListInsertBeforeIndex;
 @property (nonatomic, readonly) NSDate *startDate;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
+
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (unsigned int)absEndTime;
 - (unsigned int)absStartTime;
 - (unsigned int)appearsBeforeSuggestedRouteIndex;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -49,6 +54,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (unsigned long long)routeListInsertBeforeIndex;
 - (void)setAbsEndTime:(unsigned int)arg1;
@@ -59,6 +65,7 @@
 - (void)setHasAbsStartTime:(bool)arg1;
 - (void)setHasAppearsBeforeSuggestedRouteIndex:(bool)arg1;
 - (id)startDate;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 
 @end

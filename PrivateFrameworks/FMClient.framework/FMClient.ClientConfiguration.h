@@ -4,7 +4,7 @@
 
 @interface FMClient.ClientConfiguration : NSObject <NSSecureCoding> {
     void deviceNameSyncEnabled;
-    void deviceNameSyncInterval;
+    union { in /* Warning: Unrecognized filer type: 'u' using 'void*' */ void*x1; long x2; long x3; }  deviceNameSyncInterval;
     void nearbyScanDuration;
     void nearbyScanEnabled;
     void nearbyScanWhileAuthenticated;

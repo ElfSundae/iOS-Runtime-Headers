@@ -4,7 +4,6 @@
 
 @interface UIKeyboardHiddenViewController_Save : UIKeyboardHiddenViewController
 
-- (long long)customModalPresentationStyle;
 - (void)setAutofillVC:(id)arg1;
 
 @end

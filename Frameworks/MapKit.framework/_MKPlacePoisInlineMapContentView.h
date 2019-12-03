@@ -17,6 +17,7 @@
 - (double)mapViewHeight;
 - (void)setLocationsNumber:(unsigned long long)arg1;
 - (void)setVisible:(bool)arg1;
+- (bool)useImageView;
 - (bool)visible;
 
 @end

@@ -15,8 +15,10 @@
     NSObject<OS_dispatch_source> * _readSource;
     bool  _readSourceClosed;
     bool  _readyForData;
+    NSMutableSet * _uniqueWriteErrors;
     NSFileHandle * _writeBufferFileHandle;
     NSObject<OS_dispatch_source> * _writeSource;
+    long long  _writeSourceState;
 }
 
 @property (readonly, retain) NSFileHandle *fileHandleForReading;

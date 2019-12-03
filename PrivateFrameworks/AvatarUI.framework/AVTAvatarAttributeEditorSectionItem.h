@@ -29,8 +29,6 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly, copy) id /* block */ thumbnailProvider;
 
-+ (id)defaultThumbnail;
-
 - (void).cxx_destruct;
 - (id /* block */)avatarUpdater;
 - (id)cachedThumbnail;

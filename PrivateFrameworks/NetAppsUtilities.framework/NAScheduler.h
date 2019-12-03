@@ -16,5 +16,6 @@
 // Image: /System/Library/PrivateFrameworks/MobileTimer.framework/MobileTimer
 
 + (id)mtMainThreadScheduler;
++ (id)mtSerialSchedulerForObject:(id)arg1;
 
 @end

@@ -2,25 +2,39 @@
    Image: /System/Library/PrivateFrameworks/DocumentManagerUICore.framework/DocumentManagerUICore
  */
 
-@interface DOCVisualEffectLabel : UIView {
+@interface DOCVisualEffectLabel : UIVisualEffectView {
     UILabel * _label;
-    UIVisualEffectView * _visualEffectView;
 }
 
-@property (nonatomic, copy) UIVisualEffect *effect;
-@property (nonatomic, readonly) UILabel *label;
-@property (nonatomic, readonly) UIVisualEffectView *visualEffectView;
+@property (nonatomic) bool adjustsFontForContentSizeCategory;
+@property (nonatomic, copy) UIFont *font;
+@property (nonatomic, retain) UILabel *label;
+@property (nonatomic) long long lineBreakMode;
+@property (nonatomic) long long numberOfLines;
+@property (nonatomic, copy) NSString *text;
+@property (nonatomic) long long textAlignment;
+@property (nonatomic, copy) UIColor *textColor;
 
 - (void).cxx_destruct;
-- (void)DOCVisualEffectLabelSharedInitWithEffect:(id)arg1;
-- (id)effect;
-- (id)initWithCoder:(id)arg1;
+- (bool)adjustsFontForContentSizeCategory;
+- (id)font;
 - (id)initWithEffect:(id)arg1;
-- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
-- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 effect:(id)arg2;
+- (struct CGSize { double x1; double x2; })intrinsicContentSize;
 - (id)label;
-- (void)setEffect:(id)arg1;
+- (long long)lineBreakMode;
+- (long long)numberOfLines;
+- (void)setAdjustsFontForContentSizeCategory:(bool)arg1;
+- (void)setFont:(id)arg1;
+- (void)setLabel:(id)arg1;
+- (void)setLineBreakMode:(long long)arg1;
+- (void)setNumberOfLines:(long long)arg1;
+- (void)setText:(id)arg1;
+- (void)setTextAlignment:(long long)arg1;
+- (void)setTextColor:(id)arg1;
+- (struct CGSize { double x1; double x2; })systemLayoutSizeFittingSize:(struct CGSize { double x1; double x2; })arg1;
+- (id)text;
+- (long long)textAlignment;
+- (id)textColor;
 - (id)viewForLastBaselineLayout;
-- (id)visualEffectView;
 
 @end

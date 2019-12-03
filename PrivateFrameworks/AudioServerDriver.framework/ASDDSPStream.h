@@ -3,9 +3,11 @@
  */
 
 @interface ASDDSPStream : ASDStream {
-    struct unique_ptr<ca::concurrent::guarded_lookup_hash_table<unsigned long long, ASDDSPGraphHelper *, 3>, std::__1::default_delete<ca::concurrent::guarded_lookup_hash_table<unsigned long long, ASDDSPGraphHelper *, 3> > > { 
-        struct __compressed_pair<ca::concurrent::guarded_lookup_hash_table<unsigned long long, ASDDSPGraphHelper *, 3> *, std::__1::default_delete<ca::concurrent::guarded_lookup_hash_table<unsigned long long, ASDDSPGraphHelper *, 3> > > { 
-            struct guarded_lookup_hash_table<unsigned long long, ASDDSPGraphHelper *, 3> {} *__value_; 
+    NSString * _DSPCaptureDirectory;
+    long long  _DSPCaptureType;
+    struct unique_ptr<caulk::concurrent::guarded_lookup_hash_table<unsigned long long, ASDDSPGraphHelper *, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences>, std::__1::default_delete<caulk::concurrent::guarded_lookup_hash_table<unsigned long long, ASDDSPGraphHelper *, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences> > > { 
+        struct __compressed_pair<caulk::concurrent::guarded_lookup_hash_table<unsigned long long, ASDDSPGraphHelper *, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences> *, std::__1::default_delete<caulk::concurrent::guarded_lookup_hash_table<unsigned long long, ASDDSPGraphHelper *, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences> > > { 
+            struct guarded_lookup_hash_table<unsigned long long, ASDDSPGraphHelper *, caulk::concurrent::guarded_lookup_hash_table_must_count_dereferences> {} *__value_; 
         } __ptr_; 
     }  _clientToGraphMap;
     ASDStreamDSPConfiguration * _currentDSPConfiguration;
@@ -33,14 +35,16 @@
         } __ptr_; 
     }  _streamHelper;
     NSArray * _underlyingStreams;
+    NSObject<OS_dispatch_source> * mHUPSource;
 }
 
 @property (nonatomic, retain) ASDStreamDSPConfiguration *currentDSPConfiguration;
 @property (nonatomic) long long graphAudioValidationMode;
 @property (nonatomic, readonly) ASDDSPGraph *hardwareDSP;
+@property (nonatomic, readonly) bool isRunning;
 @property (nonatomic) bool keepGraphInitialized;
 @property (nonatomic, readonly) long long maximumFramesPerIOCycle;
-@property (nonatomic, retain) NSArray *underlyingStreams;
+@property (nonatomic, copy) NSArray *underlyingStreams;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -58,13 +62,22 @@
 - (bool)changePhysicalFormat:(id)arg1;
 - (id)clientDSPForClient:(unsigned int)arg1;
 - (id)currentDSPConfiguration;
+- (void)dealloc;
 - (id)diagnosticDescriptionWithIndent:(id)arg1 walkTree:(bool)arg2;
 - (id)driverClassName;
+- (bool)enableBasicDSPCaptureOnGraph:(id)arg1 withLevel:(id)arg2 andDebugType:(long long)arg3;
+- (void)enableDSPCaptureByType:(long long)arg1 withGraph:(id)arg2;
+- (void)enableDSPCaptureInAction;
+- (id)getASDAudioDefaultsPath;
+- (long long)getAudioDebugTypeWithDict:(id)arg1;
+- (id)getDSPCaptureDirectory;
+- (long long)getDSPCaptureTypeFromDefault;
 - (long long)graphAudioValidationMode;
 - (bool)graphStructureIsValid:(id)arg1 clientID:(unsigned long long)arg2;
 - (id)hardwareDSP;
 - (id)initWithDirection:(unsigned int)arg1 withPlugin:(id)arg2;
 - (id)initWithOwningDevice:(id)arg1 underlyingStreams:(id)arg2 direction:(unsigned int)arg3 plugin:(id)arg4;
+- (bool)isRunning;
 - (bool)keepGraphInitialized;
 - (long long)maximumFramesPerIOCycle;
 - (id /* block */)processOutputBlock;

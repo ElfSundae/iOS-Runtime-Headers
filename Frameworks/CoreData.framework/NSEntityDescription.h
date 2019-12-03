@@ -17,12 +17,13 @@
         unsigned int _hasAttributesWithExternalDataReferences : 1; 
         unsigned int _hasNonstandardPrimitiveProperties : 2; 
         unsigned int _hasUniqueProperties : 1; 
+        unsigned int _hasChildrenWithUniqueProperties : 1; 
         unsigned int _validationUniqueProperties : 1; 
         unsigned int _isPersistentHistoryEntity : 1; 
         unsigned int _hasAttributesWithFileBackedFutures : 1; 
-        unsigned int _reservedEntityDescription : 17; 
+        unsigned int _reservedEntityDescription : 16; 
     }  _entityDescriptionFlags;
-    void * _extraIvars;
+    struct _ExtraEntityIVars { id x1; id x2; id x3; id x4; id x5; id x6; int x7; int x8; void *x9; } * _extraIvars;
     id  _flattenedSubentities;
     Class  _instanceClass;
     id ** _kvcPropertyAccessors;
@@ -71,6 +72,7 @@
 + (id)insertNewObjectForEntityForName:(id)arg1 inManagedObjectContext:(id)arg2;
 + (bool)supportsSecureCoding;
 
+- (void)_addFactoryToRetainList:(id)arg1;
 - (void)_addIndexForProperty:(id)arg1;
 - (void)_addProperty:(id)arg1;
 - (void)_addSubentity:(id)arg1;
@@ -78,6 +80,7 @@
 - (id)_allPropertyNames;
 - (id)_attributeNamed:(id)arg1;
 - (id)_checkForNonCascadeNoInverses;
+- (id)_checkSelfForNonCascadeNoInverses;
 - (id)_collectSubentities;
 - (void)_commonCachesAndOptimizedState;
 - (id)_constraintAsIndex:(id)arg1;
@@ -86,6 +89,7 @@
 - (void)_dropIndexes;
 - (Class)_entityClass;
 - (id)_extensionsOfParentConstraint:(id)arg1;
+- (struct _ExtraEntityIVars { id x1; id x2; id x3; id x4; id x5; id x6; int x7; int x8; void *x9; }*)_extraIVars;
 - (void)_finalizeIndexes;
 - (void)_flattenProperties;
 - (id)_flattenedSubentities;
@@ -97,12 +101,13 @@
 - (bool)_hasPropertiesIndexedBySpotlight;
 - (bool)_hasPropertiesStoredInTruthFile;
 - (bool)_hasUniqueProperties;
-- (bool)_hasUniquePropertiesDownInheritanceHiearchy;
-- (bool)_hasUniquePropertiesUncached;
-- (bool)_hasUniquedAttributeWithName:(id)arg1;
+- (bool)_hasUniquePropertiesRaw;
+- (bool)_hasUniquedPropertyNamed:(id)arg1;
 - (id)_indexDescriptionFromJSONArray:(id)arg1;
 - (id)_indexElementFromJSONArray:(id)arg1;
+- (unsigned long long)_inheritanceDepth;
 - (id)_initWithName:(id)arg1;
+- (void)_initializeExtraIVars;
 - (bool)_isDeallocating;
 - (bool)_isEditable;
 - (bool)_isFlattened;
@@ -124,8 +129,10 @@
 - (void)_nukeMOClassName__;
 - (unsigned long long)_offsetRelationshipIndex:(unsigned long long)arg1 fromSuperEntity:(id)arg2 andIsToMany:(bool)arg3;
 - (id)_oldCompoundIndexStyleIndexes;
+- (id)_propertiesMatchingBlock:(id /* block */)arg1;
 - (id)_propertiesOfType:(unsigned long long)arg1;
 - (id)_propertiesOnlySubsetFromIndexes:(id)arg1;
+- (bool)_propertyKeys:(id)arg1 matchingBlock:(id /* block */)arg2;
 - (id)_propertyNamed:(id)arg1;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; }*)_propertyRangesByType;
 - (id)_propertySearchMapping;
@@ -138,6 +145,8 @@
 - (void)_removeSubentity:(id)arg1;
 - (void)_restoreValidation;
 - (id)_rootEntity;
+- (void)_setHasUniqueProperties:(bool)arg1;
+- (void)_setHasUniquePropertiesUpInheritanceHierachy;
 - (void)_setIndexes:(id)arg1;
 - (void)_setIndexesFromJSONObject:(id)arg1 supplemental:(bool)arg2;
 - (void)_setIsEditable:(bool)arg1;
@@ -147,6 +156,8 @@
 - (void)_setProperties:(id)arg1 preserveIndices:(bool)arg2;
 - (void)_setSubentities:(id)arg1 preserveIndices:(bool)arg2;
 - (void)_setSuperentity:(id)arg1;
+- (void)_setUniquenessConstraints:(id)arg1;
+- (void)_setValidationRequiredUniquePropertiesUpInheritanceHierachy;
 - (bool)_skipValidation;
 - (Class)_snapshotClass;
 - (id)_sortedSubentities;
@@ -166,7 +177,7 @@
 - (id)compoundIndexes;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)coreSpotlightDisplayNameExpression;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
 - (id)description;
 - (id)elementID;

@@ -4,6 +4,7 @@
 
 @interface PXFeedSectionInfo : NSObject <PLAssetContainer, PXInboxModel, PXInboxPreviewItem> {
     NSString * _albumTitle;
+    long long  _cachedInboxModelType;
     PLCloudFeedEntry * _cloudFeedEntry;
     NSDate * _date;
     NSIndexSet * _excludedAssetIndexes;
@@ -24,6 +25,7 @@
 @property (nonatomic, readonly, retain) NSOrderedSet *assets;
 @property (nonatomic, readonly) unsigned long long assetsCount;
 @property (nonatomic, readonly) NSArray *assetsForOneUp;
+@property (nonatomic) long long cachedInboxModelType;
 @property (nonatomic, readonly) bool canShowAvalancheStacks;
 @property (nonatomic, readonly) bool canShowComments;
 @property (nonatomic, readonly) PLCloudFeedEntry *cloudFeedEntry;
@@ -36,6 +38,7 @@
 @property (nonatomic, copy) NSIndexSet *excludedAssetIndexes;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) NSString *inboxModelTitle;
+@property (nonatomic, readonly) long long inboxModelType;
 @property (nonatomic, retain) PLCloudSharedAlbumInvitationRecord *invitationRecord;
 @property (nonatomic, readonly) bool isEmpty;
 @property (nonatomic, readonly) bool isMine;
@@ -62,7 +65,6 @@
 @property (nonatomic, retain) PLManagedAsset *tertiaryKeyAsset;
 @property (nonatomic, readonly, retain) NSString *title;
 @property (nonatomic, readonly, copy) NSString *transientIdentifier;
-@property (nonatomic, readonly) long long type;
 @property (nonatomic, readonly) bool userIsSender;
 @property (nonatomic, readonly, retain) NSString *uuid;
 @property (nonatomic, readonly) unsigned long long videosCount;
@@ -90,6 +92,7 @@
 - (id)assetsForItemAtIndex:(long long)arg1 maximumCount:(long long)arg2;
 - (id)assetsForOneUp;
 - (id)batchIDForItemAtIndex:(long long)arg1;
+- (long long)cachedInboxModelType;
 - (bool)canPerformEditOperation:(unsigned long long)arg1;
 - (bool)canShowAvalancheStacks;
 - (bool)canShowComments;
@@ -110,12 +113,14 @@
 - (bool)hasMultipleAssetsForItemAtIndex:(long long)arg1;
 - (bool)hasPlayableAssetForItemAtIndex:(long long)arg1;
 - (id)inboxModelTitle;
+- (long long)inboxModelType;
 - (long long)indexOfFirstItemFromLastBatch;
 - (long long)indexOfItemWithAsset:(id)arg1;
 - (long long)indexOfItemWithComment:(id)arg1;
 - (id)initWithCloudFeedEntry:(id)arg1;
 - (id)invitationRecord;
 - (bool)isEmpty;
+- (bool)isEqual:(id)arg1;
 - (bool)isLoaded;
 - (bool)isMine;
 - (bool)isSeen;
@@ -136,6 +141,7 @@
 - (long long)sectionType;
 - (id)senderNames;
 - (void)setAlbumTitle:(id)arg1;
+- (void)setCachedInboxModelType:(long long)arg1;
 - (void)setDate:(id)arg1;
 - (void)setExcludedAssetIndexes:(id)arg1;
 - (void)setInvitationRecord:(id)arg1;
@@ -153,7 +159,6 @@
 - (id)tertiaryKeyAsset;
 - (id)title;
 - (id)transientIdentifier;
-- (long long)type;
 - (long long)typeForItemAtIndex:(long long)arg1;
 - (void)updateFromCloudFeedEntry;
 - (bool)userIsSender;

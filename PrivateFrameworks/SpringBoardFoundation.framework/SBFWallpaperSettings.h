@@ -2,20 +2,26 @@
    Image: /System/Library/PrivateFrameworks/SpringBoardFoundation.framework/SpringBoardFoundation
  */
 
-@interface SBFWallpaperSettings : _UISettings {
-    long long  _blurReplacementMode;
-    bool  _replaceBlurs;
+@interface SBFWallpaperSettings : PTSettings {
+    SBFWallpaperParallaxSettings * _homeScreenParallaxSettings;
+    SBFWallpaperParallaxSettings * _lockScreenParallaxSettings;
+    PTOutlet * _resetWallpaperOutlet;
 }
 
-@property (nonatomic) long long blurReplacementMode;
-@property (nonatomic) bool replaceBlurs;
+@property (nonatomic, retain) SBFWallpaperParallaxSettings *homeScreenParallaxSettings;
+@property (nonatomic, retain) SBFWallpaperParallaxSettings *lockScreenParallaxSettings;
+@property (nonatomic, retain) PTOutlet *resetWallpaperOutlet;
 
 + (id)settingsControllerModule;
 
-- (long long)blurReplacementMode;
-- (bool)replaceBlurs;
-- (void)setBlurReplacementMode:(long long)arg1;
+- (void).cxx_destruct;
+- (id)homeScreenParallaxSettings;
+- (id)lockScreenParallaxSettings;
+- (id)parallaxSettingsForVariant:(long long)arg1;
+- (id)resetWallpaperOutlet;
 - (void)setDefaultValues;
-- (void)setReplaceBlurs:(bool)arg1;
+- (void)setHomeScreenParallaxSettings:(id)arg1;
+- (void)setLockScreenParallaxSettings:(id)arg1;
+- (void)setResetWallpaperOutlet:(id)arg1;
 
 @end

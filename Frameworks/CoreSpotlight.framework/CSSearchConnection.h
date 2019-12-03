@@ -10,7 +10,7 @@
 @property (nonatomic, readonly) bool previouslyInitialized;
 @property (nonatomic, retain) NSMutableDictionary *queries;
 
-+ (void)initialize;
++ (id)sharedCSUserFSConnection;
 + (id)sharedSearchConnection;
 
 - (void).cxx_destruct;
@@ -19,6 +19,7 @@
 - (void)handleError:(id)arg1;
 - (void)handleReply:(id)arg1;
 - (id)init;
+- (id)initWithMachServiceName:(id)arg1;
 - (bool)previouslyInitialized;
 - (id)queries;
 - (id)queryForID:(id)arg1;

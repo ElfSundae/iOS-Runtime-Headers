@@ -15,8 +15,6 @@
 + (id)voicemailServerXPCInterface;
 
 - (void).cxx_destruct;
-- (void)_handleXPCConnectionEstablished:(id)arg1;
-- (void)_handleXPCDisconnectNotification:(id)arg1;
 - (id)clientConnection;
 - (void)dealloc;
 - (id)init;

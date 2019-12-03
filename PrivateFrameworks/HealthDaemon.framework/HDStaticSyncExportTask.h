@@ -27,6 +27,7 @@
 + (id)_dataForChanges:(id)arg1;
 + (id)_estimateSyncEntityClassesWithChangesForSession:(id)arg1 profile:(id)arg2;
 + (bool)_updateAnchorRangeMap:(id)arg1 withChange:(id)arg2 outError:(id*)arg3;
++ (long long)nextSyncAnchorForEntity:(Class)arg1 session:(id)arg2 startSyncAnchor:(long long)arg3 profile:(id)arg4 error:(id*)arg5;
 
 - (void).cxx_destruct;
 - (long long)_exportQueue_archiveChanges:(id)arg1 session:(id)arg2 error:(id*)arg3;

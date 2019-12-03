@@ -7,8 +7,8 @@
     NSMutableDictionary * mFieldNameToValueMap;
 }
 
+- (void).cxx_destruct;
 - (void)cacheValueforCurrentField:(id)arg1;
-- (void)dealloc;
 - (id)init;
 - (void)setCurrentField:(id)arg1;
 - (id)valueForCurrentField;

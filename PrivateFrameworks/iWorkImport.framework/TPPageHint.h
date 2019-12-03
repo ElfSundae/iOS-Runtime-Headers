@@ -15,6 +15,7 @@
         unsigned long long location; 
         unsigned long long length; 
     }  _footnoteLayoutRange;
+    bool  _hasForcedFootnotes;
     NSArray * _hints;
     unsigned long long  _pageColumn;
     long long  _pageKind;
@@ -31,6 +32,7 @@
 @property (nonatomic, readonly) <TSDHint> *firstChildHint;
 @property (nonatomic) struct _NSRange { unsigned long long x1; unsigned long long x2; } footnoteAutoNumberRange;
 @property (nonatomic) struct _NSRange { unsigned long long x1; unsigned long long x2; } footnoteLayoutRange;
+@property (nonatomic) bool hasForcedFootnotes;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) <TSDHint> *lastChildHint;
 @property (nonatomic, readonly) bool lastLineIsEmptyAndHasListLabel;
@@ -42,6 +44,7 @@
 @property (nonatomic, readonly) struct _NSRange { unsigned long long x1; unsigned long long x2; } range;
 @property (nonatomic, retain) NSSet *startingPartitionedAttachments;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) bool terminatedByBreak;
 @property (nonatomic, readonly) NSObject<TSWPTopicNumberHints> *topicNumbers;
 
 - (void).cxx_destruct;
@@ -56,8 +59,9 @@
 - (id)flowTopicNumbers;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })footnoteAutoNumberRange;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })footnoteLayoutRange;
+- (bool)hasForcedFootnotes;
 - (id)hints;
-- (id)initWithArchive:(const struct PageHintArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TP::TargetHintArchive> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TP::AnchorPosArchive> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_7_1_1; int x_7_1_2; int x_7_1_3; struct Rep {} *x_7_1_4; } x7; struct RepeatedPtrField<TSP::UUID> { struct Arena {} *x_8_1_1; int x_8_1_2; int x_8_1_3; struct Rep {} *x_8_1_4; } x8; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_9_1_1; int x_9_1_2; int x_9_1_3; struct Rep {} *x_9_1_4; } x9; struct RepeatedPtrField<TP::TargetHintArchive> { struct Arena {} *x_10_1_1; int x_10_1_2; int x_10_1_3; struct Rep {} *x_10_1_4; } x10; struct RepeatedPtrField<TP::TopicNumberHintsArchive> { struct Arena {} *x_11_1_1; int x_11_1_2; int x_11_1_3; struct Rep {} *x_11_1_4; } x11; }*)arg1 unarchiver:(id)arg2;
+- (id)initWithArchive:(const struct PageHintArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TP::TargetHintArchive> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TP::AnchorPosArchive> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_7_1_1; int x_7_1_2; int x_7_1_3; struct Rep {} *x_7_1_4; } x7; struct RepeatedPtrField<TSP::UUID> { struct Arena {} *x_8_1_1; int x_8_1_2; int x_8_1_3; struct Rep {} *x_8_1_4; } x8; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_9_1_1; int x_9_1_2; int x_9_1_3; struct Rep {} *x_9_1_4; } x9; struct RepeatedPtrField<TP::TargetHintArchive> { struct Arena {} *x_10_1_1; int x_10_1_2; int x_10_1_3; struct Rep {} *x_10_1_4; } x10; struct RepeatedPtrField<TP::TopicNumberHintsArchive> { struct Arena {} *x_11_1_1; int x_11_1_2; int x_11_1_3; struct Rep {} *x_11_1_4; } x11; }*)arg1 unarchiver:(id)arg2;
 - (id)lastChildHint;
 - (id)lastColumn;
 - (id)lastHint;
@@ -65,22 +69,23 @@
 - (unsigned long long)lineCount;
 - (unsigned long long)nextWidowPullsDownFromCharIndex;
 - (void)offsetStartCharIndexBy:(long long)arg1 charIndex:(unsigned long long)arg2;
-- (void)p_archiveHint:(id)arg1 intoArchive:(struct TargetHintArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct Point {} *x5; struct Size {} *x6; struct Range {} *x7; struct Range {} *x8; struct DoublePoint {} *x9; struct DoubleSize {} *x10; unsigned int x11; unsigned int x12; unsigned int x13; bool x14; bool x15; bool x16; }*)arg2;
-- (void)p_archiveTopicNumbers:(id)arg1 intoArchive:(struct TopicNumberHintsArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TP::TopicNumberEntryArchive> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; unsigned int x6; unsigned int x7; }*)arg2 archiver:(id)arg3;
+- (void)p_archiveHint:(id)arg1 intoArchive:(struct TargetHintArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct Point {} *x5; struct Size {} *x6; struct Range {} *x7; struct Range {} *x8; struct DoublePoint {} *x9; struct DoubleSize {} *x10; unsigned int x11; unsigned int x12; unsigned int x13; bool x14; bool x15; bool x16; bool x17; }*)arg2;
+- (void)p_archiveTopicNumbers:(id)arg1 intoArchive:(struct TopicNumberHintsArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TP::TopicNumberEntryArchive> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; unsigned int x6; unsigned int x7; }*)arg2 archiver:(id)arg3;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })p_range;
-- (bool)p_unarchiveHint:(id)arg1 fromArchive:(const struct TargetHintArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct Point {} *x5; struct Size {} *x6; struct Range {} *x7; struct Range {} *x8; struct DoublePoint {} *x9; struct DoubleSize {} *x10; unsigned int x11; unsigned int x12; unsigned int x13; bool x14; bool x15; bool x16; }*)arg2;
-- (void)p_unarchiveTopicNumbers:(id)arg1 fromArchive:(const struct TopicNumberHintsArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TP::TopicNumberEntryArchive> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; unsigned int x6; unsigned int x7; }*)arg2 unarchiver:(id)arg3;
+- (bool)p_unarchiveHint:(id)arg1 fromArchive:(const struct TargetHintArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct Point {} *x5; struct Size {} *x6; struct Range {} *x7; struct Range {} *x8; struct DoublePoint {} *x9; struct DoubleSize {} *x10; unsigned int x11; unsigned int x12; unsigned int x13; bool x14; bool x15; bool x16; bool x17; }*)arg2;
+- (void)p_unarchiveTopicNumbers:(id)arg1 fromArchive:(const struct TopicNumberHintsArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TP::TopicNumberEntryArchive> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; unsigned int x6; unsigned int x7; }*)arg2 unarchiver:(id)arg3;
 - (unsigned long long)pageColumn;
 - (long long)pageKind;
 - (unsigned long long)pageRow;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })range;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })rangeAndChildHints:(out id*)arg1;
-- (void)saveToArchive:(struct PageHintArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TP::TargetHintArchive> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TP::AnchorPosArchive> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_7_1_1; int x_7_1_2; int x_7_1_3; struct Rep {} *x_7_1_4; } x7; struct RepeatedPtrField<TSP::UUID> { struct Arena {} *x_8_1_1; int x_8_1_2; int x_8_1_3; struct Rep {} *x_8_1_4; } x8; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_9_1_1; int x_9_1_2; int x_9_1_3; struct Rep {} *x_9_1_4; } x9; struct RepeatedPtrField<TP::TargetHintArchive> { struct Arena {} *x_10_1_1; int x_10_1_2; int x_10_1_3; struct Rep {} *x_10_1_4; } x10; struct RepeatedPtrField<TP::TopicNumberHintsArchive> { struct Arena {} *x_11_1_1; int x_11_1_2; int x_11_1_3; struct Rep {} *x_11_1_4; } x11; }*)arg1 archiver:(id)arg2 context:(id)arg3;
+- (void)saveToArchive:(struct PageHintArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TP::TargetHintArchive> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TP::AnchorPosArchive> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_7_1_1; int x_7_1_2; int x_7_1_3; struct Rep {} *x_7_1_4; } x7; struct RepeatedPtrField<TSP::UUID> { struct Arena {} *x_8_1_1; int x_8_1_2; int x_8_1_3; struct Rep {} *x_8_1_4; } x8; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_9_1_1; int x_9_1_2; int x_9_1_3; struct Rep {} *x_9_1_4; } x9; struct RepeatedPtrField<TP::TargetHintArchive> { struct Arena {} *x_10_1_1; int x_10_1_2; int x_10_1_3; struct Rep {} *x_10_1_4; } x10; struct RepeatedPtrField<TP::TopicNumberHintsArchive> { struct Arena {} *x_11_1_1; int x_11_1_2; int x_11_1_3; struct Rep {} *x_11_1_4; } x11; }*)arg1 archiver:(id)arg2 context:(id)arg3;
 - (void)setAnchoredDrawablePositions:(id)arg1;
 - (void)setChildHints:(id)arg1;
 - (void)setFlowHints:(id)arg1 flowTopicNumbers:(id)arg2;
 - (void)setFootnoteAutoNumberRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (void)setFootnoteLayoutRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
+- (void)setHasForcedFootnotes:(bool)arg1;
 - (void)setHints:(id)arg1 topicNumbers:(id)arg2;
 - (void)setPageColumn:(unsigned long long)arg1;
 - (void)setPageKind:(long long)arg1;
@@ -89,6 +94,7 @@
 - (id)startingPartitionedAttachments;
 - (bool)syncsFlowRanges:(id)arg1 withEndOfPageHint:(id)arg2;
 - (bool)syncsWithEndOfPageHint:(id)arg1 bodyStorage:(id)arg2 flowRanges:(id)arg3;
+- (bool)terminatedByBreak;
 - (id)topicNumbers;
 - (void)trimToCharIndex:(unsigned long long)arg1 inTarget:(id)arg2 removeFootnoteReferenceCount:(unsigned long long)arg3 removeAutoNumberFootnoteCount:(unsigned long long)arg4;
 - (void)updateRangeForIndexPath:(id)arg1 withStorage:(id)arg2;

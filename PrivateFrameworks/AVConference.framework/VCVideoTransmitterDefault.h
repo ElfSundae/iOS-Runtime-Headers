@@ -3,8 +3,12 @@
  */
 
 @interface VCVideoTransmitterDefault : VCVideoTransmitterBase {
-    struct tagHANDLE { int x1; } * _videoTransmitter;
+    struct tagHANDLE { int x1; } * _videoTransmitterHandle;
 }
+
+@property (readonly) struct tagHANDLE { int x1; }*videoTransmitterHandle;
+
++ (double)minKeyFrameGenerationIntervalForMode:(int)arg1;
 
 - (void)collectChannelMetrics:(struct { unsigned int x1; unsigned int x2; double x3; }*)arg1 interval:(float)arg2;
 - (void)computeTimestamp:(unsigned int*)arg1 hostTime:(double*)arg2 forFrame:(struct opaqueCMSampleBuffer { }*)arg3;
@@ -13,12 +17,15 @@
 - (void)generateKeyFrame;
 - (void)handleActiveConnectionChange:(id)arg1;
 - (id)initWithConfig:(id)arg1;
+- (unsigned int)parameterSetForPayload:(int)arg1;
 - (void)setFECRatio:(double)arg1;
 - (void)setIsServerBasedBandwidthProbingEnabled:(bool)arg1;
 - (void)setKeyFrameOnlyStreamID:(unsigned short)arg1;
 - (void)setStreamIDs:(unsigned short*)arg1 numOfStreamIDs:(unsigned char)arg2 repairedStreamIDs:(unsigned short*)arg3 numOfRepairedStreamIDs:(unsigned char)arg4;
+- (void)setTargetBitrate:(unsigned int)arg1;
 - (unsigned int)setTemporaryMaximumBitrate:(unsigned int)arg1;
 - (void)startVideo;
 - (void)stopVideo;
+- (struct tagHANDLE { int x1; }*)videoTransmitterHandle;
 
 @end

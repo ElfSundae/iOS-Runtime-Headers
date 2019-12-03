@@ -3,7 +3,7 @@
  */
 
 @interface NTKCompanionRemoteComplicationManager : NSObject <NTKComplicationCollectionObserver, NTKRemoteComplicationProvider> {
-    NRDevice * _device;
+    CLKDevice * _device;
     NSDictionary * _installedComplications;
     NTKComplicationCollection * _remoteComplications;
     NSObject<OS_dispatch_queue> * _serialQueue;
@@ -12,7 +12,7 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, retain) NRDevice *device;
+@property (nonatomic, retain) CLKDevice *device;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSDictionary *installedComplications;
 @property (nonatomic, retain) NTKComplicationCollection *remoteComplications;
@@ -27,6 +27,7 @@
 - (void)_appStartedInstall;
 - (void)_fetchInstalledApps;
 - (void)_load;
+- (void)_queue_reloadApps;
 - (void)_reloadApps;
 - (id)_safeComplications;
 - (id)_safeInstalledComplications;

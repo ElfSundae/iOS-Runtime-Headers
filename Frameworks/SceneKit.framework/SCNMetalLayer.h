@@ -24,6 +24,7 @@
 @property (nonatomic, readonly) <MTLCommandQueue> *commandQueue;
 @property (nonatomic, readonly) void*context;
 @property (nonatomic, readonly) <MTLRenderCommandEncoder> *currentRenderCommandEncoder;
+@property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } currentViewport;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) unsigned long long debugOptions;
 @property (nonatomic) <SCNSceneRendererDelegate> *delegate;
@@ -44,6 +45,8 @@
 @property (readonly) Class superclass;
 @property (nonatomic) bool syncTimeWithCoreAnimation;
 @property (nonatomic, copy) SCNTechnique *technique;
+@property (getter=isTemporalAntialiasingEnabled, nonatomic) bool temporalAntialiasingEnabled;
+@property (nonatomic) bool usesReverseZ;
 
 + (id)_kvoKeysForwardedToRenderer;
 + (bool)automaticallyNotifiesObserversForKey:(id)arg1;
@@ -76,6 +79,7 @@
 - (id)currentRenderCommandEncoder;
 - (id)currentRenderPassDescriptor;
 - (double)currentTime;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })currentViewport;
 - (void)dealloc;
 - (unsigned long long)debugOptions;
 - (id)delegate;
@@ -91,6 +95,7 @@
 - (bool)isJitteringEnabled;
 - (bool)isNodeInsideFrustum:(id)arg1 withPointOfView:(id)arg2;
 - (bool)isPlaying;
+- (bool)isTemporalAntialiasingEnabled;
 - (id)layer;
 - (bool)loops;
 - (id)nodesInsideFrustumWithPointOfView:(id)arg1;
@@ -139,6 +144,8 @@
 - (void)setShowsStatistics:(bool)arg1;
 - (void)setSyncTimeWithCoreAnimation:(bool)arg1;
 - (void)setTechnique:(id)arg1;
+- (void)setTemporalAntialiasingEnabled:(bool)arg1;
+- (void)setUsesReverseZ:(bool)arg1;
 - (void)set_showsAuthoringEnvironment:(bool)arg1;
 - (bool)showsStatistics;
 - (unsigned long long)stencilPixelFormat;
@@ -147,5 +154,6 @@
 - (bool)syncTimeWithCoreAnimation;
 - (id)technique;
 - (struct SCNVector3 { float x1; float x2; float x3; })unprojectPoint:(struct SCNVector3 { float x1; float x2; float x3; })arg1;
+- (bool)usesReverseZ;
 
 @end

@@ -7,6 +7,8 @@
     VCPCNNModelEspresso * _modelEspresso;
 }
 
++ (id)sharedModel:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)computeLandmarks:(float*)arg1;
 - (void)dealloc;

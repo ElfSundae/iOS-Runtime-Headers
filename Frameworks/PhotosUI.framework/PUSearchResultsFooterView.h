@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUSearchResultsFooterView : UIView {
+@interface PUSearchResultsFooterView : UIView <PXSettingsKeyObserver> {
     <PUSearchResultsFooterViewDelegate> * _delegate;
     UILabel * _descriptionLabel;
     NSLayoutConstraint * _fileRadarToIndexViewConstraint;
@@ -15,16 +15,20 @@
     UIButton * _tapToRadarButton;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <PUSearchResultsFooterViewDelegate> *delegate;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, retain) UILabel *descriptionLabel;
 @property (nonatomic, retain) NSLayoutConstraint *fileRadarToIndexViewConstraint;
 @property (nonatomic, retain) NSLayoutConstraint *fileRadarToNoResultsConstraint;
 @property (nonatomic, retain) NSLayoutConstraint *fileRadarToSelfConstraint;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, retain) PUSearchResultsIndexingProgressView *indexingProgressView;
 @property (getter=isIndexingViewHidden, nonatomic) bool indexingViewHidden;
 @property (nonatomic, retain) NSLayoutConstraint *indexingViewToNoResultsConstraint;
 @property (nonatomic, retain) NSLayoutConstraint *indexingViewToSelfConstraint;
 @property (nonatomic, retain) UILabel *noResultsLabel;
+@property (readonly) Class superclass;
 @property (nonatomic, retain) UIButton *tapToRadarButton;
 
 + (id)_preferredBoldLabelFont;
@@ -33,6 +37,7 @@
 - (void).cxx_destruct;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
 - (void)_didSelectTapToRadarButton:(id)arg1;
+- (void)_updateTapRadarConstraints;
 - (id)delegate;
 - (id)descriptionLabel;
 - (id)fileRadarToIndexViewConstraint;
@@ -58,6 +63,7 @@
 - (void)setIndexingViewToSelfConstraint:(id)arg1;
 - (void)setNoResultsLabel:(id)arg1;
 - (void)setTapToRadarButton:(id)arg1;
+- (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)showNoResultsContentForString:(id)arg1 suggestionsVisible:(bool)arg2;
 - (id)tapToRadarButton;
 

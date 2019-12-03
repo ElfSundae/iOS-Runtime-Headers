@@ -21,11 +21,12 @@
 - (void).cxx_destruct;
 - (id)_allScopedIdentifierInCollection:(id)arg1 withScopeIdentifier:(id)arg2;
 - (void)_fillStatus:(id)arg1;
-- (void)_fillStatus:(id)arg1 withClientCacheRecord:(id)arg2 cloudCacheRecord:(id)arg3 isConfirmed:(bool)arg4 isInIDMapping:(bool)arg5;
+- (void)_fillStatus:(id)arg1 withClientCacheRecord:(id)arg2 cloudCacheRecord:(id)arg3 isConfirmed:(bool)arg4 isStaged:(bool)arg5 isInIDMapping:(bool)arg6;
 - (void)_removeScopedIdentifiersFromSet:(id)arg1 withScopeIdentifier:(id)arg2;
 - (void)_removeStatusesInDictionary:(id)arg1 withScopeIdentifier:(id)arg2;
 - (id)_statusFromCachesWithRecordScopedIdentifier:(id)arg1;
 - (bool)acknowledgeChangedStatuses:(id)arg1 error:(id*)arg2;
+- (id)allStatusChanges;
 - (bool)deleteRecordsForScopeIndex:(long long)arg1 maxCount:(long long)arg2 deletedCount:(long long*)arg3 error:(id*)arg4;
 - (bool)discardNotificationForRecordWithScopedIdentifier:(id)arg1 error:(id*)arg2;
 - (bool)hasStatusChanges;

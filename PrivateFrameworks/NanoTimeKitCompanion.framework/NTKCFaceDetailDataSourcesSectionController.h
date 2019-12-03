@@ -22,14 +22,14 @@
 + (bool)hasDataSourcesSectionForFace:(id)arg1 inGallery:(bool)arg2;
 
 - (void).cxx_destruct;
-- (void)_buildRowsWithDataSourceIdentifiers:(id)arg1 donatedAppIdentifiers:(id)arg2;
+- (void)_buildRowsWithDataSourceEntries:(id)arg1;
 - (id)_getDisabledDataSources;
 - (void)_updatedDisabledDataSources:(id)arg1;
 - (id)delegate;
 - (void)faceDidChange;
 - (id)headerTitle;
 - (id)manager;
-- (void)manager:(id)arg1 didUpdateDataSourceIdentifiers:(id)arg2 donatedIdentifiers:(id)arg3;
+- (void)manager:(id)arg1 didUpdateDataSourceEntries:(id)arg2;
 - (void)setDelegate:(id)arg1;
 - (void)setHeaderTitle:(id)arg1;
 - (void)setManager:(id)arg1;

@@ -5,6 +5,7 @@
 @interface FLFollowUpItem : NSObject <NSSecureCoding> {
     NSArray * _actions;
     NSString * _bundleIconName;
+    NSString * _categoryIdentifier;
     NSString * _clientIdentifier;
     NSString * _delegateMachServiceName;
     unsigned long long  _displayStyle;
@@ -27,6 +28,7 @@
 @property (nonatomic, retain) NSData *_userInfoData;
 @property (copy) NSArray *actions;
 @property (nonatomic, copy) NSString *bundleIconName;
+@property (copy) NSString *categoryIdentifier;
 @property (nonatomic, copy) NSString *clientIdentifier;
 @property (nonatomic, copy) NSString *delegateMachServiceName;
 @property unsigned long long displayStyle;
@@ -51,6 +53,7 @@
 - (id)_userInfoData;
 - (id)actions;
 - (id)bundleIconName;
+- (id)categoryIdentifier;
 - (id)clientIdentifier;
 - (id)delegateMachServiceName;
 - (id)description;
@@ -69,6 +72,7 @@
 - (id)representingBundlePath;
 - (void)setActions:(id)arg1;
 - (void)setBundleIconName:(id)arg1;
+- (void)setCategoryIdentifier:(id)arg1;
 - (void)setClientIdentifier:(id)arg1;
 - (void)setDelegateMachServiceName:(id)arg1;
 - (void)setDisplayStyle:(unsigned long long)arg1;

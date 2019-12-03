@@ -8,8 +8,8 @@
     bool  _partial;
 }
 
+- (void).cxx_destruct;
 - (id)data;
-- (void)dealloc;
 - (id)initWithData:(id)arg1;
 - (id)initWithData:(id)arg1 partial:(bool)arg2 incomplete:(bool)arg3;
 

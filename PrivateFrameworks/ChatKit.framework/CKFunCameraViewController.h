@@ -58,6 +58,7 @@
 - (void)stageAssetArchive:(id)arg1 skipShelf:(bool)arg2 completionHandler:(id /* block */)arg3;
 - (void)startEditingPayload:(id)arg1;
 - (void)startEditingPayload:(id)arg1 dismiss:(bool)arg2;
+- (id)traitCollection;
 - (void)viewDidDisappear:(bool)arg1;
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillLayoutSubviews;

@@ -13,6 +13,7 @@
     TSKTreeNode * _sidebarOrder;
     TSSStylesheet * _stylesheet;
     TNTheme * _theme;
+    TNHyperlinkController * _tn_hyperlinkController;
     TNUIState * _uiState;
 }
 
@@ -33,6 +34,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) unsigned long long tableCount;
 @property (nonatomic, readonly) TNTheme *theme;
+@property (nonatomic, retain) TNHyperlinkController *tn_hyperlinkController;
 @property (nonatomic, retain) TNUIState *uiState;
 @property (nonatomic, readonly) TNDocumentViewController *viewController;
 
@@ -80,7 +82,7 @@
 - (void)performDeferredUpgradeImportOperationsOnNewThreadForCharts:(id)arg1;
 - (void)performDeferredUpgradeImportOperationsRequiringCalcEngine;
 - (bool)prepareAndValidateSidecarViewStateRootWithVersionUUIDMismatch:(id)arg1 sidecarDocumentRevision:(id)arg2 originalDocumentViewStateRoot:(id)arg3;
-- (void)prepareNewDocumentWithTemplateBundle:(id)arg1 documentLocale:(id)arg2;
+- (void)prepareNewDocumentWithTemplateIdentifier:(id)arg1 bundle:(id)arg2 documentLocale:(id)arg3;
 - (id)previewImageForSize:(struct CGSize { double x1; double x2; })arg1;
 - (id)printerID;
 - (void)removeAllSheets;
@@ -110,6 +112,7 @@
 - (void)setStylesheetForUpgradeToSingleStylesheet:(id)arg1;
 - (void)setTheme:(id)arg1;
 - (void)setThemeForTemplateImport:(id)arg1;
+- (void)setTn_hyperlinkController:(id)arg1;
 - (void)setUIState:(id)arg1 forChart:(id)arg2;
 - (void)setUiState:(id)arg1;
 - (void)sheet:(id)arg1 insertedDrawable:(id)arg2;
@@ -122,6 +125,7 @@
 - (unsigned long long)tableCount;
 - (void)tableUID:(const struct UUIDData<TSP::UUIDData> { union { unsigned char x_1_1_1[16]; struct { unsigned char x_2_2_1; unsigned char x_2_2_2; unsigned char x_2_2_3; unsigned char x_2_2_4; unsigned char x_2_2_5; unsigned char x_2_2_6; unsigned char x_2_2_7; unsigned char x_2_2_8; unsigned char x_2_2_9; unsigned char x_2_2_10; unsigned char x_2_2_11; unsigned char x_2_2_12; unsigned char x_2_2_13; unsigned char x_2_2_14; unsigned char x_2_2_15; unsigned char x_2_2_16; } x_1_1_2; struct { unsigned long long x_3_2_1; unsigned long long x_3_2_2; } x_1_1_3; } x1; }*)arg1 changedToTableUID:(const struct UUIDData<TSP::UUIDData> { union { unsigned char x_1_1_1[16]; struct { unsigned char x_2_2_1; unsigned char x_2_2_2; unsigned char x_2_2_3; unsigned char x_2_2_4; unsigned char x_2_2_5; unsigned char x_2_2_6; unsigned char x_2_2_7; unsigned char x_2_2_8; unsigned char x_2_2_9; unsigned char x_2_2_10; unsigned char x_2_2_11; unsigned char x_2_2_12; unsigned char x_2_2_13; unsigned char x_2_2_14; unsigned char x_2_2_15; unsigned char x_2_2_16; } x_1_1_2; struct { unsigned long long x_3_2_1; unsigned long long x_3_2_2; } x_1_1_3; } x1; }*)arg2;
 - (id)theme;
+- (id)tn_hyperlinkController;
 - (id)uiState;
 - (id)uniqueNameForSheet:(id)arg1 appendNewTag:(bool)arg2;
 - (id)untitledSheetName;

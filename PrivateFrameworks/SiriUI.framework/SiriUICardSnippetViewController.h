@@ -4,13 +4,16 @@
 
 @interface SiriUICardSnippetViewController : SiriUISnippetViewController <CRKCardPresentationDelegate, CRKCardViewControllerDelegate, SiriUICardLoadingObserver, SiriUICardSnippetViewDataSource, SiriUICardSnippetViewDelegate, SiriUIModalContainerViewControllerDelegate, _SiriUICardLoaderDelegate> {
     _SiriUICardLoader * _cardLoader;
+    id /* block */  _cardLoadingCompletionhandler;
     NSObject<OS_dispatch_group> * _cardLoadingGroup;
+    NSTimer * _cardLoadingTimer;
     CRKCardPresentation * _cardPresentation;
     UIViewController<CRKCardViewControlling> * _cardViewController;
     struct CGSize { 
         double width; 
         double height; 
     }  _contentSize;
+    bool  _isCardLoading;
     SACardSnippet * _newlyLoadedCardSnippet;
     SiriUIModalContainerViewController * _presentedModalContainerViewController;
     NSMutableDictionary * _referenceableCommandsByIdentifierMap;
@@ -36,7 +39,7 @@
 - (id)_cardViewController;
 - (void)_forwardProgressEvent:(unsigned long long)arg1 toCardViewController:(id)arg2 animated:(bool)arg3;
 - (void)_forwardProgressEventToCardViewController:(unsigned long long)arg1;
-- (void)_logReferencedCommands;
+- (void)_insertCardViewController:(id)arg1;
 - (id)_metricsContextOfEventsForCard:(id)arg1;
 - (id)_metricsContextOfEventsForCardSection:(id)arg1 inCard:(id)arg2;
 - (void)_removeCardViewControllerFromParentViewController:(id)arg1;
@@ -77,6 +80,7 @@
 - (void)modalContainerViewControllerViewDidDisappear:(id)arg1;
 - (void)modalContainerViewControllerViewWillDisappear:(id)arg1;
 - (unsigned long long)navigationIndexOfCardViewController:(id)arg1;
+- (bool)performBeganEditingCommand:(id)arg1 forCardViewController:(id)arg2;
 - (bool)performNextCardCommand:(id)arg1 forCardViewController:(id)arg2;
 - (bool)performPunchoutCommand:(id)arg1 forCardViewController:(id)arg2;
 - (bool)performReferentialCommand:(id)arg1 forCardViewController:(id)arg2;
@@ -86,8 +90,10 @@
 - (void)setSnippet:(id)arg1;
 - (void)siriDidDeactivate;
 - (void)siriDidReceiveViewsWithDialogPhase:(id)arg1;
+- (void)siriDidScrollVisible:(bool)arg1;
 - (void)siriDidStartSpeakingWithIdentifier:(id)arg1;
 - (void)siriDidStopSpeakingWithIdentifier:(id)arg1 speechQueueIsEmpty:(bool)arg2;
+- (void)siriWillBeginScrolling;
 - (id)snippet;
 - (Class)transparentHeaderViewClass;
 - (bool)usePlatterStyle;

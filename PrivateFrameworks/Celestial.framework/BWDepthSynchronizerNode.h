@@ -20,6 +20,7 @@
     int  _lastReceivedImageID;
     int  _maxQueueDepth;
     int  _numEODMessagesReceived;
+    bool  _separateDepthComponentsEnabled;
     bool  _streaming;
 }
 
@@ -34,6 +35,7 @@
 - (void)_cleanupDepthBufferQueue;
 - (int)_frameCaptureID:(struct opaqueCMSampleBuffer { }*)arg1;
 - (bool)_isDepthExpectedForSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1;
+- (void)_setupDepthMediaConfigurationForOutput:(id)arg1 inputAttachedMediaKey:(id)arg2 outputAttachedMediaKey:(id)arg3;
 - (void)_tryToEmitBuffers;
 - (void)configurationWithID:(long long)arg1 updatedFormat:(id)arg2 didBecomeLiveForInput:(id)arg3;
 - (void)dealloc;
@@ -45,7 +47,7 @@
 - (void)handleNodeError:(id)arg1 forInput:(id)arg2;
 - (void)handleStillImageReferenceFrameBracketedCaptureSequenceNumber:(int)arg1 forInput:(id)arg2;
 - (id)imageInput;
-- (id)initForStreaming:(bool)arg1;
+- (id)initForStreaming:(bool)arg1 separateDepthComponentsEnabled:(bool)arg2;
 - (id)nodeSubType;
 - (id)nodeType;
 - (void)renderSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 forInput:(id)arg2;

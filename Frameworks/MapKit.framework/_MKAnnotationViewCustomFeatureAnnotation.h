@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MapKit.framework/MapKit
  */
 
-@interface _MKAnnotationViewCustomFeatureAnnotation : NSObject <VKCustomFeatureAnnotation> {
+@interface _MKAnnotationViewCustomFeatureAnnotation : NSObject <NSSecureCoding, VKCustomFeatureAnnotation> {
     MKAnnotationView * _annotationView;
     struct { 
         double latitude; 
@@ -20,11 +20,16 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (id)annotationView;
 - (struct { double x1; double x2; })coordinate;
+- (void)encodeWithCoder:(id)arg1;
 - (id)feature;
+- (id)initWithCoder:(id)arg1;
 - (void)setAnnotationView:(id)arg1;
 - (void)setCoordinate:(struct { double x1; double x2; })arg1;
+- (void)setCustomFeature:(id)arg1;
 
 @end

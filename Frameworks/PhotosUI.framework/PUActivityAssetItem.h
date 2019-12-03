@@ -2,24 +2,31 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUActivityAssetItem : NSObject {
+@interface PUActivityAssetItem : NSObject <NSCopying> {
     PHAsset * _asset;
-    bool  _useStillImage;
+    bool  _excludeLiveness;
+    bool  _excludeLocation;
 }
 
 @property (nonatomic, readonly) PHAsset *asset;
-@property (nonatomic) bool useStillImage;
+@property (nonatomic) bool excludeLiveness;
+@property (nonatomic) bool excludeLocation;
 
 + (id)itemsForAssets:(id)arg1;
 
 - (void).cxx_destruct;
 - (id)asset;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)description;
+- (bool)excludeLiveness;
+- (bool)excludeLocation;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithAsset:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToActivityAssetItem:(id)arg1;
 - (id)localIdentifier;
-- (void)setUseStillImage:(bool)arg1;
-- (bool)useStillImage;
+- (void)setExcludeLiveness:(bool)arg1;
+- (void)setExcludeLocation:(bool)arg1;
 
 @end

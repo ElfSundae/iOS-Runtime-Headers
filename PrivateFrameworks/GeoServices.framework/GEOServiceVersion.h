@@ -4,8 +4,8 @@
 
 @interface GEOServiceVersion : PBCodable <NSCopying> {
     struct { 
-        unsigned int minimumVersion : 1; 
-    }  _has;
+        unsigned int has_minimumVersion : 1; 
+    }  _flags;
     unsigned int  _minimumVersion;
     PBUnknownFields * _unknownFields;
     NSMutableArray * _versionDomains;
@@ -16,10 +16,12 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic, retain) NSMutableArray *versionDomains;
 
++ (bool)isValid:(id)arg1;
 + (Class)versionDomainType;
 
 - (void).cxx_destruct;
 - (void)addVersionDomain:(id)arg1;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)clearVersionDomains;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -30,6 +32,7 @@
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (unsigned int)minimumVersion;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasMinimumVersion:(bool)arg1;
 - (void)setMinimumVersion:(unsigned int)arg1;

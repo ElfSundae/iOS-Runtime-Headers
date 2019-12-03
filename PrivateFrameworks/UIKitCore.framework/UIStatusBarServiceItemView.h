@@ -21,8 +21,7 @@
 - (id)_crossfadeContentsImage;
 - (void)_crossfadeStepAnimation;
 - (bool)_crossfaded;
-- (void)_finalAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
-- (void)_loopAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
+- (void)_loopAnimationDidStopInDirection:(bool)arg1;
 - (bool)_loopingNecessary;
 - (id)_serviceContentsImage;
 - (id)accessibilityHUDRepresentation;

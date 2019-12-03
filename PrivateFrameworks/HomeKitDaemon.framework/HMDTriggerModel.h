@@ -4,7 +4,7 @@
 
 @interface HMDTriggerModel : HMDBackingStoreModelObject
 
-@property (nonatomic, retain) NSNumber *active;
+@property (nonatomic, copy) NSNumber *active;
 @property (nonatomic, retain) NSArray *currentActionSets;
 @property (nonatomic, copy) NSDate *mostRecentFireDate;
 @property (nonatomic, retain) NSString *name;

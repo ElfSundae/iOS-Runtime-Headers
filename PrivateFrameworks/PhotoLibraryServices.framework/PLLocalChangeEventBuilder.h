@@ -8,6 +8,7 @@
     NSMutableArray * _deletedAlbumCloudGUIDs;
     NSMutableArray * _deletedAssetCloudGUIDs;
     NSMutableArray * _deletedFaceCropCloudGUIDs;
+    NSMutableArray * _deletedInternalResourceUUIDToResourceTypeMappings;
     NSMutableArray * _deletedMemoryCloudGUIDs;
     NSMutableSet * _deletedObjectIDs;
     NSMutableArray * _deletedOwnedMomentShareCloudGUIDs;

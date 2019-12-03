@@ -13,7 +13,7 @@
 - (NSArray *)outputMetadataRequirements;
 - (NSArray *)outputVideoRequirements;
 - (NSSet *)preventionReasons;
-- (int)prewarm;
+- (int)prewarmUsingLimitedMemory:(bool)arg1;
 - (void)propagateInferenceResultsToInferenceDictionary:(NSMutableDictionary *)arg1 usingStorage:(BWInferenceProviderStorage *)arg2 propagationSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg3;
 - (int)type;
 

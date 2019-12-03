@@ -4,7 +4,7 @@
 
 @interface MFAddressBookManager : NSObject {
     void * _addressBook;
-    struct __CFDictionary { } * _clients;
+    NSHashTable * _clients;
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
     }  _lock;
@@ -13,7 +13,8 @@
 + (bool)isAuthorizedToUseAddressBook;
 + (id)sharedManager;
 
-- (id)_clientWeakReferences;
+- (void).cxx_destruct;
+- (id)_clientsArray;
 - (void)_handleAddressBookChangeNotification;
 - (void)_handleAddressBookPrefsChangeNotification;
 - (void)addClient:(id)arg1;

@@ -3,7 +3,7 @@
  */
 
 @interface MDLArchiveAssetResolver : NSObject <MDLAssetResolver> {
-    NSDictionary * _archiveDictionary;
+    NSMutableDictionary * _archiveDictionary;
     NSURL * _archiveURL;
     NSString * _rootUSDPath;
 }
@@ -14,9 +14,11 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)addResolvedAssetNamed:(id)arg1 offset:(unsigned long long)arg2 fileSize:(unsigned long long)arg3;
+- (id)assetNamesInArchive;
 - (bool)canResolveAssetNamed:(id)arg1;
-- (id)firstAssetPathInArchive;
 - (id)initWithURL:(id)arg1;
+- (void)removeAssetNamed:(id)arg1;
 - (id)resolveAssetNamed:(id)arg1;
 - (id)resolveInsideArchiveWithAssetNamed:(id)arg1;
 

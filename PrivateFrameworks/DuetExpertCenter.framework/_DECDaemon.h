@@ -3,7 +3,6 @@
  */
 
 @interface _DECDaemon : NSObject <NSXPCListenerDelegate> {
-    _DECInternalConsumerManager * _consumerManager;
     _DECExpertManager * _expertManager;
     NSXPCListener * _listener;
     NSObject<OS_dispatch_queue> * _queue;

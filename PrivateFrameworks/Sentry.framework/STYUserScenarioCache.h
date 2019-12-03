@@ -56,8 +56,11 @@
 - (id)responsivenessThresholdsForWhitelistedCategories;
 - (id)responsivenessThresholdsForWhitelistedNames;
 - (id)responsivenessThresholdsForWhitelistedSubsystems;
+- (id)scenarioForFrontboardLaunchWatchdog:(id)arg1;
+- (id)scenarioFromSignpostEvent:(id)arg1 error:(id*)arg2;
 - (id)scenarioFromSignpostInterval:(id)arg1 error:(id*)arg2;
 - (id)scenarioGroupForSignpostInterval:(id)arg1;
+- (id)scenarioIdForSignpostEmittedEvent:(id)arg1;
 - (id)scenarioIdForSignpostInterval:(id)arg1;
 - (id)scenarioObjects;
 - (bool)scenarioWhitelisted:(id)arg1 error:(id*)arg2;

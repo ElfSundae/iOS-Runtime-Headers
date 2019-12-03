@@ -21,7 +21,7 @@
 - (void)_queue_queuePending;
 - (void)_queue_sendRequest:(id)arg1 type:(unsigned short)arg2 withTimeout:(id)arg3 isTrafficRestricted:(bool)arg4 didSend:(id /* block */)arg5 didQueue:(id /* block */)arg6;
 - (void)_queue_startTimerWithFireDate:(id)arg1;
-- (void)handleFileURL:(id)arg1;
+- (bool)handleFileURL:(id)arg1;
 - (id)init;
 - (void)queuePending;
 - (void)sendNow;

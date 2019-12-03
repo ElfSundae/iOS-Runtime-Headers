@@ -88,6 +88,7 @@
 - (void)setInvalidationPromise:(id)arg1;
 - (id)stateMachine;
 - (id)tapGestureRecognizer;
+- (bool)useLightForegroundColor;
 - (void)viewport:(id)arg1 appearStateChangedFromState:(unsigned long long)arg2;
 
 @end

@@ -14,6 +14,7 @@
 
 - (void).cxx_destruct;
 - (id /* block */)callback;
+- (id)description;
 - (id)initWithPlayerPath:(id)arg1 queue:(id)arg2 invalidationCallback:(id /* block */)arg3;
 - (id)playerPath;
 - (id)queue;

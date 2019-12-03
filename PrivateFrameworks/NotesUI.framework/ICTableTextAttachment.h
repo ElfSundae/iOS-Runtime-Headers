@@ -18,7 +18,7 @@
 - (void)fixAttachmentForAttributedString:(id)arg1 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 forPlainText:(bool)arg3 forStandardizedText:(bool)arg4;
 - (struct CGSize { double x1; double x2; })lastAttachmentSize;
 - (double)lastAvailableWidth;
-- (id)printableTextContent;
+- (id)printableTextContentForAppearanceType:(unsigned long long)arg1;
 - (void)setLastAttachmentSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setLastAvailableWidth:(double)arg1;
 

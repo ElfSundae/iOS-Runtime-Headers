@@ -4,7 +4,6 @@
 
 @interface __NSPlaceholderDate : NSDate
 
-+ (id)immutablePlaceholder;
 + (void)initialize;
 
 - (void)dealloc;

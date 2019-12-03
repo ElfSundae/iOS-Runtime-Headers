@@ -17,6 +17,7 @@
 @property (nonatomic, readonly, copy) NSString *itemKind;
 @property (nonatomic, readonly) long long numberOfUserRatings;
 @property (nonatomic, readonly) long long numberOfUserRatingsForCurrentVersion;
+@property (nonatomic, readonly, copy) NSString *offerName;
 @property (nonatomic, readonly, copy) NSArray *offers;
 @property (nonatomic, readonly, copy) NSURL *productPageURL;
 @property (nonatomic, readonly) float userRating;
@@ -42,6 +43,7 @@
 - (id)itemKind;
 - (long long)numberOfUserRatings;
 - (long long)numberOfUserRatingsForCurrentVersion;
+- (id)offerName;
 - (id)offers;
 - (id)productPageURL;
 - (float)userRating;

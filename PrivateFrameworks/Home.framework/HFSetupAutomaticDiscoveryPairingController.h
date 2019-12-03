@@ -6,6 +6,7 @@
     NSTimer * _accessoryNotFoundFatalTimeoutTimer;
     NSTimer * _accessoryNotFoundSoftTimeoutTimer;
     HMAccessorySetupCompletedInfo * _completedInfo;
+    HFSetupPairingContext * _context;
     HFDiscoveredAccessory * _discoveredAccessoryToPair;
     HMHome * _home;
     NSSet * _pairedAccessories;
@@ -13,8 +14,6 @@
     NSHashTable * _pairingObservers;
     unsigned long long  _phase;
     NSDate * _phaseStartDate;
-    HMSetupAccessoryDescription * _setupAccessoryDescription;
-    <HMSetupRemoteService> * _setupRemoteService;
     HFSetupAccessoryResult * _setupResult;
     NSString * _statusDescription;
     NSString * _statusTitle;
@@ -23,6 +22,7 @@
 @property (nonatomic, retain) NSTimer *accessoryNotFoundFatalTimeoutTimer;
 @property (nonatomic, retain) NSTimer *accessoryNotFoundSoftTimeoutTimer;
 @property (nonatomic, retain) HMAccessorySetupCompletedInfo *completedInfo;
+@property (nonatomic, readonly) HFSetupPairingContext *context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) HFDiscoveredAccessory *discoveredAccessoryToPair;
@@ -33,8 +33,6 @@
 @property (nonatomic, retain) NSHashTable *pairingObservers;
 @property (nonatomic) unsigned long long phase;
 @property (nonatomic, retain) NSDate *phaseStartDate;
-@property (nonatomic, readonly) HMSetupAccessoryDescription *setupAccessoryDescription;
-@property (nonatomic) <HMSetupRemoteService> *setupRemoteService;
 @property (nonatomic, retain) HFSetupAccessoryResult *setupResult;
 @property (nonatomic, retain) NSString *statusDescription;
 @property (nonatomic, retain) NSString *statusTitle;
@@ -53,11 +51,12 @@
 - (void)addPairingObserver:(id)arg1;
 - (id)cancel;
 - (id)completedInfo;
+- (id)context;
 - (void)dealloc;
 - (id)description;
 - (id)discoveredAccessoryToPair;
 - (id)home;
-- (id)initWithSetupAccessoryDescription:(id)arg1 setupRemoteService:(id)arg2;
+- (id)initWithContext:(id)arg1;
 - (id)pairedAccessories;
 - (id)pairingFuture;
 - (id)pairingObservers;
@@ -74,12 +73,9 @@
 - (void)setPairingObservers:(id)arg1;
 - (void)setPhase:(unsigned long long)arg1;
 - (void)setPhaseStartDate:(id)arg1;
-- (void)setSetupRemoteService:(id)arg1;
 - (void)setSetupResult:(id)arg1;
 - (void)setStatusDescription:(id)arg1;
 - (void)setStatusTitle:(id)arg1;
-- (id)setupAccessoryDescription;
-- (id)setupRemoteService;
 - (id)setupResult;
 - (void)startWithHome:(id)arg1;
 - (id)statusDescription;

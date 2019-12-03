@@ -14,6 +14,7 @@
     NSString * _suggestion;
     NSString * _topicIdentifier;
     int  _type;
+    NSString * _utteranceText;
 }
 
 @property (nonatomic, copy) NSString *bundleIdentifier;
@@ -32,6 +33,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *topicIdentifier;
 @property (nonatomic) int type;
+@property (nonatomic, copy) NSString *utteranceText;
 
 - (void).cxx_destruct;
 - (void)addDuplicateSuggestions:(id)arg1;
@@ -65,9 +67,11 @@
 - (void)setSuggestion:(id)arg1;
 - (void)setTopicIdentifier:(id)arg1;
 - (void)setType:(int)arg1;
+- (void)setUtteranceText:(id)arg1;
 - (id)suggestion;
 - (id)topicIdentifier;
 - (int)type;
+- (id)utteranceText;
 - (void)writeTo:(id)arg1;
 
 @end

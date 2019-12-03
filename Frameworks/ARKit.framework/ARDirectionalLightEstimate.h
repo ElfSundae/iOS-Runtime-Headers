@@ -28,7 +28,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDirectionalLightEstimate:(id)arg1;
-- (id)initWithSphericalHarmonics:(struct { float x1[9]; })arg1 temperature:(double)arg2;
+- (id)initWithSphericalHarmonics:(struct { float x1[9]; })arg1 ambientIntensity:(double)arg2 temperature:(double)arg3;
 - (id)lightEstimateByApplyingRotation:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[3]; })arg1;
 - (void)primaryLightDirection;
 - (double)primaryLightIntensity;

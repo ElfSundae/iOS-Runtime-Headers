@@ -2,11 +2,12 @@
    Image: /System/Library/PrivateFrameworks/UserNotificationsUIKit.framework/UserNotificationsUIKit
  */
 
-@interface NCNotificationViewController : UIViewController <NCLegibilitySettingsAdjusting, NCNotificationCustomContentDelegate, PLContentSizeCategoryAdjusting, PLExpandedPlatterPresentationControllerDelegate, UIScrollViewDelegate> {
+@interface NCNotificationViewController : UIViewController <NCNotificationCustomContentDelegate, PLContentSizeCategoryAdjusting, PLExpandedPlatterPresentationControllerDelegate, UIScrollViewDelegate> {
     <UIViewControllerTransitionCoordinator> * _activeTransitionCoordinator;
     UIView * _associatedView;
     <NCAuxiliaryOptionsProviding> * _auxiliaryOptionsContentProvider;
     bool  _canPan;
+    bool  _contentReplacedWithSnapshot;
     UIView<PLContentSizeManaging> * _contentSizeManagingView;
     UIPanGestureRecognizer * _customContentHomeAffordanceGestureRecognizer;
     bool  _customContentHomeAffordanceVisible;
@@ -15,14 +16,15 @@
     <NCNotificationViewControllerDelegate> * _delegate;
     bool  _didQueryCanPan;
     id /* block */  _dismissalCompletion;
-    NSString * _groupName;
+    bool  _hasShadow;
     bool  _interactionEnabled;
     struct UIView { Class x1; } * _lookView;
+    NSString * _materialGroupNameBase;
     long long  _ncTransitionAnimationState;
+    bool  _notificationContentViewHidden;
     NCNotificationRequest * _notificationRequest;
     NSPointerArray * _observers;
     id /* block */  _pendingPresentationTransitionDidEndBlock;
-    NCNotificationAction * _presentationSourceAction;
     bool  _revealAdditionalContentOnPresentation;
     bool  _shouldRestorePresentingShortLookOnDismiss;
     <NCNotificationStaticContentProviding> * _staticContentProvider;
@@ -34,6 +36,7 @@
 @property (nonatomic, retain) <NCAuxiliaryOptionsProviding> *auxiliaryOptionsContentProvider;
 @property (getter=isCoalescedNotificationBundle, nonatomic, readonly) bool coalescedNotificationBundle;
 @property (getter=hasCommittedToPresentingCustomContentProvidingViewController, nonatomic, readonly) bool committedToPresentingCustomContentProvidingViewController;
+@property (getter=isContentReplacedWithSnapshot, nonatomic) bool contentReplacedWithSnapshot;
 @property (nonatomic) UIPanGestureRecognizer *customContentHomeAffordanceGestureRecognizer;
 @property (getter=isCustomContentHomeAffordanceVisible, nonatomic) bool customContentHomeAffordanceVisible;
 @property (nonatomic, retain) <NCNotificationCustomContentProviding> *customContentProvider;
@@ -43,16 +46,17 @@
 @property (readonly, copy) NSString *description;
 @property (getter=_dismissalCompletion, setter=_setDismissalCompletion:, nonatomic, copy) id /* block */ dismissalCompletion;
 @property (getter=isDragging, nonatomic, readonly) bool dragging;
-@property (nonatomic, readonly) NSString *effectiveGroupName;
-@property (nonatomic, retain) NSString *groupName;
+@property (nonatomic) bool hasShadow;
 @property (readonly) unsigned long long hash;
 @property (getter=isInteractionEnabled, nonatomic) bool interactionEnabled;
 @property (getter=isLookStyleLongLook, nonatomic, readonly) bool lookStyleLongLook;
+@property (nonatomic, retain) NSString *materialGroupNameBase;
+@property (getter=isNotPresentingOrHasCommittedToDismissingCustomContentProvidingViewController, nonatomic, readonly) bool notPresentingOrHasCommittedToDismissingCustomContentProvidingViewController;
+@property (getter=isNotificationContentViewHidden, nonatomic) bool notificationContentViewHidden;
 @property (nonatomic, retain) NCNotificationRequest *notificationRequest;
 @property (getter=_notificationViewControllerView, nonatomic, readonly) NCNotificationViewControllerView *notificationViewControllerView;
 @property (getter=_pendingPresentationTransitionDidEndBlock, setter=_setPendingPresentationTransitionDidEndBlock:, nonatomic, copy) id /* block */ pendingPresentationTransitionDidEndBlock;
 @property (nonatomic, copy) NSString *preferredContentSizeCategory;
-@property (nonatomic) NCNotificationAction *presentationSourceAction;
 @property (getter=_presentedLongLookViewController, nonatomic, readonly) NCNotificationViewController *presentedLongLookViewController;
 @property (getter=_isPresentingCustomContentProvidingViewController, nonatomic, readonly) bool presentingCustomContentProvidingViewController;
 @property (nonatomic) bool revealAdditionalContentOnPresentation;
@@ -61,10 +65,6 @@
 @property (getter=_shouldRestorePresentingShortLookOnDismiss, setter=_setShouldRestorePresentingShortLookOnDismiss:, nonatomic) bool shouldRestorePresentingShortLookOnDismiss;
 @property (nonatomic, retain) <NCNotificationStaticContentProviding> *staticContentProvider;
 @property (readonly) Class superclass;
-
-+ (long long)backgroundMaterialRecipeForDarkAppearance:(bool)arg1 options:(unsigned long long*)arg2;
-+ (id)groupNameWithBase:(id)arg1 recipe:(long long)arg2 options:(unsigned long long)arg3;
-+ (unsigned long long)overlayMaterialOptionsForRecipe:(long long)arg1;
 
 - (void).cxx_destruct;
 - (id)_activeTransitionCoordinator;
@@ -85,6 +85,10 @@
 - (struct UIView { Class x1; }*)_lookView;
 - (struct UIView { Class x1; }*)_lookViewIfLoaded;
 - (struct UIView { Class x1; }*)_lookViewLoadingIfNecessary:(bool)arg1;
+- (unsigned long long)_maximumNumberOfPrimaryLargeTextLinesForProvidedStaticContent;
+- (unsigned long long)_maximumNumberOfPrimaryTextLinesForProvidedStaticContent;
+- (unsigned long long)_maximumNumberOfSecondaryLargeTextLinesForProvidedStaticContent;
+- (unsigned long long)_maximumNumberOfSecondaryTextLinesForProvidedStaticContent;
 - (id)_notificationViewControllerView;
 - (void)_notificationViewControllerViewDidLoad;
 - (void)_notifyObserversWithBlock:(id /* block */)arg1;
@@ -110,15 +114,12 @@
 - (void)_updateWithProvidedAuxiliaryOptionsContent;
 - (void)_updateWithProvidedCustomContent;
 - (void)_updateWithProvidedStaticContent;
-- (void)addAudioAccessoryObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (bool)adjustForContentSizeCategoryChange;
-- (void)adjustForLegibilitySettingsChange:(id)arg1;
 - (bool)adjustsFontForContentSizeCategory;
 - (id)associatedView;
 - (id)auxiliaryOptionsContentProvider;
 - (void)contentProvider:(id)arg1 performAction:(id)arg2 animated:(bool)arg3;
-- (void)contentProvider:(id)arg1 requestsPresentingLongLookAnimated:(bool)arg2;
 - (void)customContent:(id)arg1 forwardAction:(id)arg2 forNotification:(id)arg3 withUserInfo:(id)arg4;
 - (void)customContent:(id)arg1 requestPermissionToExecuteAction:(id)arg2 forNotification:(id)arg3 withUserInfo:(id)arg4 completionHandler:(id /* block */)arg5;
 - (id)customContentHomeAffordanceGestureRecognizer;
@@ -134,51 +135,54 @@
 - (bool)dismissPresentedViewControllerAndClearNotification:(bool)arg1 animated:(bool)arg2;
 - (bool)dismissPresentedViewControllerAndClearNotification:(bool)arg1 animated:(bool)arg2 completion:(id /* block */)arg3;
 - (void)dismissViewControllerWithTransition:(int)arg1 completion:(id /* block */)arg2;
-- (id)effectiveGroupName;
-- (void)expandAndPlayAudioMessage;
+- (void)expandAndPlayMedia;
 - (id)expandedPlatterPresentationController:(id)arg1 keyboardAssertionForGestureWindow:(id)arg2;
-- (id)groupName;
 - (bool)hasCommittedToPresentingCustomContentProvidingViewController;
+- (bool)hasShadow;
 - (id)hideHomeAffordanceAnimationSettingsForExpandedPlatterPresentationController:(id)arg1;
 - (id)initWithNotificationRequest:(id)arg1;
 - (id)initWithNotificationRequest:(id)arg1 revealingAdditionalContentOnPresentation:(bool)arg2;
+- (void)invalidateContentProviders;
 - (bool)isCoalescedNotificationBundle;
 - (bool)isContentExtensionVisible:(id)arg1;
+- (bool)isContentReplacedWithSnapshot;
 - (bool)isCustomContentHomeAffordanceVisible;
 - (bool)isDragging;
 - (bool)isInteractionEnabled;
 - (bool)isLookStyleLongLook;
+- (bool)isNotPresentingOrHasCommittedToDismissingCustomContentProvidingViewController;
+- (bool)isNotificationContentViewHidden;
 - (bool)isShortLook;
 - (void)loadView;
+- (id)materialGroupNameBase;
+- (long long)materialRecipe;
 - (long long)ncTransitionAnimationState;
 - (id)notificationRequest;
 - (id)notificationUsageTrackingState;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (bool)prefersStatusBarHidden;
-- (void)presentLongLookAnimated:(bool)arg1 completion:(id /* block */)arg2;
+- (void)presentLongLookAnimated:(bool)arg1 trigger:(long long)arg2 completion:(id /* block */)arg3;
 - (void)presentViewController:(id)arg1 animated:(bool)arg2 completion:(id /* block */)arg3;
-- (id)presentationSourceAction;
 - (void)preserveInputViews;
-- (void)reloadAuxiliaryOptionsContentProvider;
 - (void)reloadContentProviders;
-- (void)reloadStaticContentProvider;
-- (void)removeAudioAccesoryObserver:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (bool)restoreInputViews;
 - (bool)revealAdditionalContentOnPresentation;
 - (void)setAdjustsFontForContentSizeCategory:(bool)arg1;
 - (void)setAssociatedView:(id)arg1;
 - (void)setAuxiliaryOptionsContentProvider:(id)arg1;
+- (void)setContentReplacedWithSnapshot:(bool)arg1;
 - (void)setCustomContentHomeAffordanceGestureRecognizer:(id)arg1;
 - (void)setCustomContentHomeAffordanceVisible:(bool)arg1;
 - (void)setCustomContentProvider:(id)arg1;
 - (void)setDelegate:(id)arg1;
-- (void)setGroupName:(id)arg1;
+- (void)setHasShadow:(bool)arg1;
 - (void)setHasUpdatedContent;
 - (void)setInteractionEnabled:(bool)arg1;
+- (void)setMaterialGroupNameBase:(id)arg1;
 - (void)setNCTransitionAnimationState:(long long)arg1;
+- (void)setNotificationContentViewHidden:(bool)arg1;
 - (void)setNotificationRequest:(id)arg1;
-- (void)setPresentationSourceAction:(id)arg1;
 - (void)setRevealAdditionalContentOnPresentation:(bool)arg1;
 - (void)setStaticContentProvider:(id)arg1;
 - (id)settleHomeAffordanceAnimationBehaviorDescriptionForExpandedPlatterPresentationController:(id)arg1;
@@ -195,6 +199,7 @@
 - (void)viewDidLoad;
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;
+- (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
 
 @end

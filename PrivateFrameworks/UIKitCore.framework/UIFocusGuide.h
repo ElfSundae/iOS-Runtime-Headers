@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface UIFocusGuide : UILayoutGuide <_UIFocusGuideRegionDelegate, _UIFocusRegionContainer, _UILegacyFocusRegion> {
+@interface UIFocusGuide : UILayoutGuide <UIFocusItem, _UIFocusGuideRegionDelegate, _UIFocusRegionContainer, _UILegacyFocusRegion> {
     bool  _automaticallyDisableWhenIntersectingFocus;
     bool  _automaticallyPreferOwningView;
     bool  _didSetPreferredFocusedEnvironments;
@@ -10,13 +10,17 @@
     NSArray * _preferredFocusEnvironments;
 }
 
+@property (nonatomic) bool areChildrenFocused;
 @property (getter=_automaticallyDisableWhenIntersectingFocus, setter=_setAutomaticallyDisableWhenIntersectingFocus:, nonatomic) bool automaticallyDisableWhenIntersectingFocus;
 @property (getter=_automaticallyPreferOwningView, setter=_setAutomaticallyPreferOwningView:, nonatomic) bool automaticallyPreferOwningView;
+@property (nonatomic, readonly) bool canBecomeFocused;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (getter=_isEligibleForFocusInteraction, nonatomic, readonly) bool eligibleForFocusInteraction;
 @property (getter=isEnabled, nonatomic) bool enabled;
 @property (nonatomic, readonly) <UIFocusItemContainer> *focusItemContainer;
+@property (nonatomic, readonly) <UIFocusItem> *focusItemForSorting;
+@property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } frame;
 @property (readonly) unsigned long long hash;
 @property (getter=_linearFocusMovementSequences, nonatomic, readonly, copy) NSArray *linearFocusMovementSequences;
 @property (nonatomic, readonly) <UIFocusEnvironment> *parentFocusEnvironment;
@@ -53,6 +57,8 @@
 - (id)focusGuideRegion:(id)arg1 preferredFocusEnvironmentsForMovementRequest:(id)arg2;
 - (void)focusGuideRegion:(id)arg1 willParticipateAsDestinationRegionInFocusUpdate:(id)arg2;
 - (id)focusItemContainer;
+- (id)focusItemForSorting;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })frame;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (bool)isEnabled;

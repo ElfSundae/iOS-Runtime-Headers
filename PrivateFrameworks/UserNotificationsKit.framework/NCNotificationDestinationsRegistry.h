@@ -36,5 +36,6 @@
 - (void)setDestinations:(struct NSMutableDictionary { Class x1; }*)arg1;
 - (void)setReadyDestinations:(struct NSMutableDictionary { Class x1; }*)arg1;
 - (void)unregisterDestination:(id)arg1;
+- (void)unregisterDestinationForIdentifier:(id)arg1;
 
 @end

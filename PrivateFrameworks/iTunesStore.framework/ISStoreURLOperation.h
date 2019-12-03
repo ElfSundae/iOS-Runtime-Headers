@@ -81,9 +81,11 @@
 - (void).cxx_destruct;
 - (id)SAPSession;
 - (id)URLBagContext;
+- (id)_absintheHeaders;
 - (id)_account;
 - (void)_addStandardQueryParametersForURL:(id)arg1;
 - (bool)_authenticateWithContext:(id)arg1 error:(id*)arg2;
+- (id)_buyParams;
 - (bool)_canSendTokenToURL:(id)arg1;
 - (void)_continueTouchIDSession;
 - (id)_copyAuthenticationContext;
@@ -95,6 +97,7 @@
 - (id)_resolvedURLInBagContext:(id)arg1 bagTrusted:(bool*)arg2;
 - (void)_runURLOperation;
 - (void)_setStoreFrontIdentifier:(id)arg1 isTransient:(bool)arg2;
+- (bool)_shouldRetryForAbsintheWithResponse:(id)arg1;
 - (bool)_shouldRetryForTouchIDChallengeWithError:(id)arg1;
 - (id)_ssBag_copyGUIDPatternsFromBag:(id)arg1;
 - (id)_ssBag_copyGUIDSchemesFromBag:(id)arg1;
@@ -112,6 +115,7 @@
 - (bool)ignorePreexistingSecureToken;
 - (id)init;
 - (bool)isURLBagRequest;
+- (id)logKey;
 - (long long)machineDataStyle;
 - (bool)needsAuthentication;
 - (bool)needsTermsAndConditionsAcceptance;

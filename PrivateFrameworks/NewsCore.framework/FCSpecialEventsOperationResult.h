@@ -6,6 +6,7 @@
     NSString * _actionTitle;
     NSString * _actionUrlString;
     FCColorGradient * _backgroundColorGradient;
+    FCColorGradient * _darkStyleBackgroundColorGradient;
     NSString * _fontName;
     double  _fontSize;
     double  _fontSizeiPad;
@@ -30,6 +31,7 @@
 @property (nonatomic, copy) NSString *actionTitle;
 @property (nonatomic, copy) NSString *actionUrlString;
 @property (nonatomic, copy) FCColorGradient *backgroundColorGradient;
+@property (nonatomic, readonly, copy) FCColorGradient *darkStyleBackgroundColorGradient;
 @property (nonatomic, copy) NSString *fontName;
 @property (nonatomic) double fontSize;
 @property (nonatomic, readonly) double fontSizeiPad;
@@ -54,6 +56,7 @@
 - (id)actionTitle;
 - (id)actionUrlString;
 - (id)backgroundColorGradient;
+- (id)darkStyleBackgroundColorGradient;
 - (id)fontName;
 - (double)fontSize;
 - (double)fontSizeiPad;

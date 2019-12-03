@@ -15,7 +15,6 @@
 - (id)assetWriterInput;
 - (void)dealloc;
 - (id)description;
-- (void)finalize;
 - (id)init;
 - (id)initWithAssetWriterInput:(id)arg1;
 

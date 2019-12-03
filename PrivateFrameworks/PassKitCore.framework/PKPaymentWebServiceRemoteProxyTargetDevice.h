@@ -31,11 +31,12 @@
 - (void)deviceMetadataWithFields:(unsigned long long)arg1 completion:(id /* block */)arg2;
 - (void)didRegisterWithRegionMap:(id)arg1 primaryRegionTopic:(id)arg2;
 - (void)downloadAllPaymentPasses;
+- (void)endRequiringUpgradedPasscodeIfNecessary;
+- (void)enforceUpgradedPasscodePolicyWithCompletion:(id /* block */)arg1;
 - (void)featureApplicationsForProvisioningWithCompletion:(id /* block */)arg1;
 - (void)getConfigurationDataWithCompletion:(id /* block */)arg1;
 - (void)getContextWithCompletion:(id /* block */)arg1;
 - (void)getProvisioningDataWithCompletion:(id /* block */)arg1;
-- (void)getRegistrationDataWithAuthToken:(id)arg1 completion:(id /* block */)arg2;
 - (void)getRegistrationDataWithCompletion:(id /* block */)arg1;
 - (void)getTrustedDeviceEnrollmentInfoWithCompletion:(id /* block */)arg1;
 - (void)handlePotentialExpressPass:(id)arg1 withCompletion:(id /* block */)arg2;
@@ -43,6 +44,8 @@
 - (id)init;
 - (id)initWithWebService:(id)arg1 connection:(id)arg2;
 - (void)invalidateRemoteProxyTargetDevice;
+- (void)notePasscodeUpgradeFlowDidEnd;
+- (void)notePasscodeUpgradeFlowWillBeginWithCompletion:(id /* block */)arg1;
 - (void)noteProvisioningDidBegin;
 - (void)noteProvisioningDidEnd;
 - (void)noteProvisioningUserInterfaceDidAppear;
@@ -53,13 +56,15 @@
 - (void)performDeviceCheckInWithCompletion:(id /* block */)arg1;
 - (void)queueConnectionToTrustedServiceManagerForPushTopic:(id)arg1 withCompletion:(id /* block */)arg2;
 - (void)removePass:(id)arg1 completion:(id /* block */)arg2;
-- (void)renewAppleAccountWithCompletion:(id /* block */)arg1;
+- (void)renewAppleAccountWithCompletionHandler:(id /* block */)arg1;
 - (void)secureElementOwnershipStateForCurrentUserWithCompletion:(id /* block */)arg1;
 - (void)setDefaultPaymentPassUniqueIdentifier:(id)arg1;
 - (void)setNewAuthRandom:(id /* block */)arg1;
 - (void)setNewAuthRandomIfNecessaryReturningPairingState:(id /* block */)arg1;
 - (void)signData:(id)arg1 signatureEntanglementMode:(unsigned long long)arg2 withCompletion:(id /* block */)arg3;
+- (void)startRequiringUpgradedPasscodeWithPasscodeMeetsPolicy:(bool)arg1;
 - (void)storePassOwnershipToken:(id)arg1 withIdentifier:(id)arg2;
+- (void)supportedFeatureIdentifiersForAccountProvisioningWithCompletion:(id /* block */)arg1;
 - (void)supportedFeatureIdentifiersWithCompletion:(id /* block */)arg1;
 - (void)supportsAccountsWithCompletion:(id /* block */)arg1;
 - (void)supportsPeerPaymentRegistrationWithCompletion:(id /* block */)arg1;
@@ -67,5 +72,6 @@
 - (void)updatedAccountsForProvisioningWithCompletion:(id /* block */)arg1;
 - (void)validateAddPreconditionsWithCompletion:(id /* block */)arg1;
 - (void)validateTransferPreconditionsWithCompletion:(id /* block */)arg1;
+- (void)willPassWithUniqueIdentifierAutomaticallyBecomeDefault:(id)arg1 completion:(id /* block */)arg2;
 
 @end

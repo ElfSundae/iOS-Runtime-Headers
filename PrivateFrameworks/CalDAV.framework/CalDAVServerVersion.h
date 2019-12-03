@@ -30,13 +30,14 @@
     bool  _supportsTimeRangeFilter;
     bool  _supportsTimeRangeFilterOnInbox;
     bool  _supportsTimeRangeFilterWithoutEndDate;
-    bool  _supportsTodoTimeRangeFilter;
     double  _version;
 }
 
 @property (nonatomic) bool alwaysSupportsFreebusyOnOutbox;
 @property (nonatomic, retain) NSSet *complianceClasses;
+@property (nonatomic, readonly) bool requiresOpeningAttachmentAsLink;
 @property (nonatomic, copy) NSString *serverHeader;
+@property (nonatomic, readonly) bool shouldUseDeleteAndAddInsteadOfMoveBetweenCalendars;
 @property (nonatomic, copy) NSString *supportedCalendarComponentSets;
 @property (nonatomic) bool supportsAutoSchedule;
 @property (nonatomic) bool supportsCalendarAudit;
@@ -61,7 +62,6 @@
 @property (nonatomic) bool supportsTimeRangeFilter;
 @property (nonatomic) bool supportsTimeRangeFilterOnInbox;
 @property (nonatomic) bool supportsTimeRangeFilterWithoutEndDate;
-@property (nonatomic) bool supportsTodoTimeRangeFilter;
 @property (nonatomic, readonly) NSString *type;
 @property (nonatomic) double version;
 
@@ -82,6 +82,7 @@
 - (id)init;
 - (bool)isEqual:(id)arg1;
 - (id)propertyValue;
+- (bool)requiresOpeningAttachmentAsLink;
 - (id)serverHeader;
 - (void)setAlwaysSupportsFreebusyOnOutbox:(bool)arg1;
 - (void)setComplianceClasses:(id)arg1;
@@ -110,8 +111,8 @@
 - (void)setSupportsTimeRangeFilter:(bool)arg1;
 - (void)setSupportsTimeRangeFilterOnInbox:(bool)arg1;
 - (void)setSupportsTimeRangeFilterWithoutEndDate:(bool)arg1;
-- (void)setSupportsTodoTimeRangeFilter:(bool)arg1;
 - (void)setVersion:(double)arg1;
+- (bool)shouldUseDeleteAndAddInsteadOfMoveBetweenCalendars;
 - (id)supportedCalendarComponentSets;
 - (bool)supportsAutoSchedule;
 - (bool)supportsCalendarAudit;
@@ -136,7 +137,6 @@
 - (bool)supportsTimeRangeFilter;
 - (bool)supportsTimeRangeFilterOnInbox;
 - (bool)supportsTimeRangeFilterWithoutEndDate;
-- (bool)supportsTodoTimeRangeFilter;
 - (id)type;
 - (double)version;
 

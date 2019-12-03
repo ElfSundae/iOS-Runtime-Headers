@@ -3,17 +3,11 @@
  */
 
 @interface NUIContainerBoxView : NUIContainerView <_NUIBoxArrangementContainer, _UIMultilineTextContentSizing> {
-    struct { 
-        unsigned int delegateHorizontal : 1; 
-        unsigned int delegateVertical : 1; 
-    }  _boxFlags;
-    long long  _horizontalAlignment;
-    long long  _verticalAlignment;
     struct _NUIBoxArrangement { 
         <_NUIBoxArrangementContainer> *container; 
-        bool baselineRelative; 
         long long horzDist; 
         long long vertDist; 
+        bool hasValidMeasurement; 
         struct vector<_NUIBoxArrangementCell, std::__1::allocator<_NUIBoxArrangementCell> > { 
             struct _NUIBoxArrangementCell {} *__begin_; 
             struct _NUIBoxArrangementCell {} *__end_; 
@@ -21,6 +15,10 @@
                 struct _NUIBoxArrangementCell {} *__value_; 
             } __end_cap_; 
         } cells; 
+        struct CGSize { 
+            double width; 
+            double height; 
+        } measureSize; 
         struct vector<CGRect, std::__1::allocator<CGRect> > { 
             struct CGRect {} *__begin_; 
             struct CGRect {} *__end_; 
@@ -28,32 +26,43 @@
                 struct CGRect {} *__value_; 
             } __end_cap_; 
         } viewFrames; 
-    }  _visibleArrangement;
+        struct { 
+            double baseLineFromTop; 
+            double baseLineFromBottom; 
+        } maxBaseLinePair; 
+    }  _arrangement;
+    struct { 
+        unsigned int horzAlign : 8; 
+        unsigned int vertAlign : 8; 
+    }  _boxFlags;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) <NUIContainerBoxViewDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long horizontalAlignment;
 @property (readonly) Class superclass;
 @property (nonatomic) long long verticalAlignment;
 
++ (id)containerBoxViewWithArrangedSubviews:(id)arg1;
+
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (long long)_effectiveHorizontalAlignmentForArrangedSubview:(id)arg1;
-- (long long)_effectiveVerticalAlignmentForArrangedSubview:(id)arg1;
+- (long long)_effectiveAlignmentForArrangedSubview:(id)arg1 inAxis:(long long)arg2;
 - (id)arrangedDescription;
 - (struct CGSize { double x1; double x2; })calculateArrangedSizeFittingSize:(struct CGSize { double x1; double x2; })arg1;
+- (id)calculateViewForFirstBaselineLayout;
+- (id)calculateViewForLastBaselineLayout;
 - (void)dealloc;
+- (id)debugDictionary;
 - (long long)horizontalAlignment;
 - (id)initWithArrangedSubviews:(id)arg1;
-- (bool)invalidateIntrinsicContentSizeRequiringArrangedSubviewRemeasurement:(bool)arg1;
+- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)layoutArrangedSubviewsInBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (bool)needsBaselineDebugBoundingBoxesForArrangedSubview:(id)arg1;
 - (void)populateBoxArrangementCells:(struct vector<_NUIBoxArrangementCell, std::__1::allocator<_NUIBoxArrangementCell> > { struct _NUIBoxArrangementCell {} *x1; struct _NUIBoxArrangementCell {} *x2; struct __compressed_pair<_NUIBoxArrangementCell *, std::__1::allocator<_NUIBoxArrangementCell> > { struct _NUIBoxArrangementCell {} *x_3_1_1; } x3; }*)arg1;
-- (void)setBaselineRelativeArrangement:(bool)arg1;
-- (void)setDelegate:(id)arg1;
 - (void)setHorizontalAlignment:(long long)arg1;
+- (bool)setNeedsInvalidation:(long long)arg1;
 - (void)setVerticalAlignment:(long long)arg1;
 - (long long)verticalAlignment;
 

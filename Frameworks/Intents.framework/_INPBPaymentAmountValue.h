@@ -3,6 +3,7 @@
  */
 
 @interface _INPBPaymentAmountValue : PBCodable <NSCopying, NSSecureCoding, _INPBPaymentAmountValue> {
+    bool  __encodeLegacyGloryData;
     int  _amountType;
     struct { 
         unsigned int amountType : 1; 
@@ -10,6 +11,7 @@
     _INPBCurrencyAmountValue * _value;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic) int amountType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -19,15 +21,21 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) _INPBCurrencyAmountValue *value;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (int)StringAsAmountType:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (int)amountType;
 - (id)amountTypeAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasAmountType;
 - (bool)hasValue;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAmountType:(int)arg1;

@@ -54,5 +54,6 @@
 - (id)thumbnailContainerView;
 - (id)thumbnailImageView;
 - (id)titleLabel;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end

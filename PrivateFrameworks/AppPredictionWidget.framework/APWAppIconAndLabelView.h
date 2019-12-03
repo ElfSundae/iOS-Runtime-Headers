@@ -5,13 +5,13 @@
 @interface APWAppIconAndLabelView : UIControl {
     NSString * _bundleIdentifier;
     UIButton * _iconButton;
+    UITraitCollection * _iconLabelTraitCollection;
     UILabel * _label;
-    UITraitCollection * _traitCollection;
 }
 
 @property (nonatomic, copy) NSString *bundleIdentifier;
+@property (nonatomic, readonly) UITraitCollection *iconLabelTraitCollection;
 @property (nonatomic, readonly) UIView *iconView;
-@property (nonatomic, readonly) UITraitCollection *traitCollection;
 
 + (void)_applyKerning:(double)arg1 whitespaceKerning:(double)arg2 toAttributedString:(id)arg3;
 + (id)_attributedStringForAppName:(id)arg1 font:(id)arg2 bounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3 minimumLetterSpacing:(double)arg4;
@@ -28,11 +28,11 @@
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)bundleIdentifier;
+- (id)iconLabelTraitCollection;
 - (id)iconView;
 - (id)initWithTraitCollection:(id)arg1;
 - (bool)isAccessibilityElement;
 - (void)setBundleIdentifier:(id)arg1;
-- (id)traitCollection;
 - (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;
 

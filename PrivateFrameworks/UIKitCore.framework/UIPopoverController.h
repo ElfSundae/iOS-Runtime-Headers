@@ -178,14 +178,12 @@
 - (id)_layoutInfoFromLayoutInfo:(id)arg1 forCurrentKeyboardStateAndHostingWindow:(id)arg2;
 - (id)_managingSplitViewController;
 - (bool)_manuallyHandlesContentViewControllerAppearanceCalls;
-- (void)_modalAnimation:(id)arg1 finished:(id)arg2 context:(id)arg3;
+- (void)_modalAnimationFinishedEndIgnoringInteractiveEvents:(bool)arg1;
 - (void)_modalTransition:(int)arg1 fromViewController:(id)arg2 toViewController:(id)arg3 target:(id)arg4 didEndSelector:(SEL)arg5;
 - (void)_moveAwayFromTheKeyboard:(id)arg1;
 - (void)_newViewControllerWasPushed:(id)arg1;
-- (void)_newViewControllerWillBePushed:(id)arg1;
 - (void)_performHierarchyCheckOnViewController:(id)arg1;
 - (long long)_popoverBackgroundStyle;
-- (bool)_popoverBackgroundViewWantsDefaultContentAppearance;
 - (long long)_popoverControllerStyle;
 - (Class)_popoverLayoutInfoForChromeClass:(Class)arg1;
 - (void)_postludeForDismissal;

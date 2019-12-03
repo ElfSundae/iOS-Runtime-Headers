@@ -36,6 +36,7 @@
         unsigned int flags; 
         long long epoch; 
     }  _renderTime;
+    bool  _scaleAnimationTransformInfoToOutputSize;
 }
 
 @property (nonatomic) struct PVTransformAnimationInfo { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct CGPoint { double x_2_1_1; double x_2_1_2; } x2; double x3; double x4; } animationTransformInfo;
@@ -50,6 +51,7 @@
 @property (nonatomic, retain) NSArray *pickerPreviewEffectList;
 @property (nonatomic) int priority;
 @property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } renderTime;
+@property (nonatomic) bool scaleAnimationTransformInfoToOutputSize;
 
 - (void).cxx_destruct;
 - (struct PVTransformAnimationInfo { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct CGPoint { double x_2_1_1; double x_2_1_2; } x2; double x3; double x4; })animationTransformInfo;
@@ -69,6 +71,7 @@
 - (int)priority;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })renderTime;
 - (id)renderWithInputs:(id)arg1 inputIDs:(id)arg2 time:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg3 metadata:(id)arg4;
+- (bool)scaleAnimationTransformInfoToOutputSize;
 - (void)setAnimationTransformInfo:(struct PVTransformAnimationInfo { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct CGPoint { double x_2_1_1; double x_2_1_2; } x2; double x3; double x4; })arg1;
 - (void)setChildCode:(unsigned int)arg1;
 - (void)setCustomRenderingProperties:(struct NSDictionary { Class x1; }*)arg1;
@@ -76,6 +79,8 @@
 - (void)setParentCode:(unsigned int)arg1;
 - (void)setPickerPreviewEffectList:(id)arg1;
 - (void)setPriority:(int)arg1;
+- (void)setScaleAnimationTransformInfoToOutputSize:(bool)arg1;
+- (void)setTransformAnimationInfo:(struct PVTransformAnimationInfo { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct CGPoint { double x_2_1_1; double x_2_1_2; } x2; double x3; double x4; })arg1 scaleToOutput:(bool)arg2;
 - (id)sourceIGNodeUsingGraphBuilder:(id)arg1;
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })sourceTransform;
 

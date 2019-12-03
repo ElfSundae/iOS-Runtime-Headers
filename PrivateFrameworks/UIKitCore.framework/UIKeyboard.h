@@ -61,11 +61,13 @@
 + (void)removeAllDynamicDictionaries;
 + (bool)respondsToProxGesture;
 + (void)setPredictionViewPrewarmsPredictiveCandidates:(bool)arg1;
++ (void)setSuppressionPolicyDelegate:(id)arg1;
 + (bool)shouldMinimizeForHardwareKeyboard;
 + (struct CGSize { double x1; double x2; })sizeForInterfaceOrientation:(long long)arg1;
 + (struct CGSize { double x1; double x2; })sizeForInterfaceOrientation:(long long)arg1 ignoreInputView:(bool)arg2;
 + (id)snapshotViewForPredictionViewTransition;
 + (bool)splitKeyboardEnabled;
++ (id)suppressionPolicyDelegate;
 
 - (void)_acceptCurrentCandidate;
 - (id)_baseKeyForRepresentedString:(id)arg1;
@@ -73,6 +75,7 @@
 - (void)_deactivateForBackgrounding;
 - (void)_didChangeKeyplaneWithContext:(id)arg1;
 - (bool)_disableTouchInput;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_floatingKeyboardDraggableRect;
 - (long long)_focusTouchSensitivityStyle;
 - (long long)_focusedSound;
 - (id)_getAutocorrection;
@@ -142,7 +145,7 @@
 - (bool)isAutomatic;
 - (bool)isMinimized;
 - (long long)keyboardIdiom;
-- (void)keyboardMinMaximized:(id)arg1 finished:(id)arg2 context:(id)arg3;
+- (void)keyboardMinMaximized:(bool)arg1;
 - (void)manualKeyboardWasOrderedIn;
 - (void)manualKeyboardWasOrderedOut;
 - (void)manualKeyboardWillBeOrderedIn;
@@ -207,5 +210,10 @@
 
 + (double)__ck_appStripVerticalPadding;
 + (bool)__ck_isUsingCompactHeightPredictionBar;
+
+// Image: /System/Library/PrivateFrameworks/NotesUI.framework/NotesUI
+
++ (bool)ic_isInFloatingKeyboardMode;
++ (bool)ic_isShiftKeyPressed;
 
 @end

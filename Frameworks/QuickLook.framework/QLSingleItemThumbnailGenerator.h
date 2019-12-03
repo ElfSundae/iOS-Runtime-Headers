@@ -23,7 +23,6 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
-- (id)_concurrentQueue;
 - (void)_handleThumbnailGenerationFinishedWithThumbnail:(id)arg1 size:(struct CGSize { double x1; double x2; })arg2 clientCompletionBlock:(id /* block */)arg3;
 - (void)_provideThumbnailForUbiquitousURLWithSize:(struct CGSize { double x1; double x2; })arg1 completionBlock:(id /* block */)arg2;
 - (void)encodeWithCoder:(id)arg1;

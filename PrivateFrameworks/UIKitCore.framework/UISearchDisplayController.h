@@ -93,6 +93,8 @@
 @property (nonatomic, copy) NSString *searchResultsTitle;
 @property (readonly) Class superclass;
 
++ (void)_uiibSetRequiresSearchDisplayControllerSupport;
+
 - (void).cxx_destruct;
 - (double)_activationGapHeight;
 - (double)_additionalNonCollapsingHeightAboveSearchBar;
@@ -119,7 +121,6 @@
 - (void)_enableParentScrollViews;
 - (void)_hideVisibleRefreshControl;
 - (void)_hoistSearchBar;
-- (void)_indexBarFrameChanged:(id)arg1;
 - (bool)_isCancelButtonManagementDisabled;
 - (bool)_isSearchBarInBar;
 - (void)_keyboardWillHide:(id)arg1;

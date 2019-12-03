@@ -3,11 +3,15 @@
  */
 
 @interface WebAccessibilityObjectWrapperBase : NSObject {
+    unsigned int  _identifier;
     struct AccessibilityObject { int (**x1)(); unsigned int x2; unsigned int x3; struct Vector<WTF::RefPtr<WebCore::AccessibilityObject, WTF::DumbPtrTraits<WebCore::AccessibilityObject> >, 0, WTF::CrashOnOverflow, 16> { struct RefPtr<WebCore::AccessibilityObject, WTF::DumbPtrTraits<WebCore::AccessibilityObject> > {} *x_4_1_1; unsigned int x_4_1_2; unsigned int x_4_1_3; } x4; bool x5; int x6; int x7; struct AccessibilityIsIgnoredFromParentData { struct AccessibilityObject {} *x_8_1_1; bool x_8_1_2; bool x_8_1_3; bool x_8_1_4; } x8; bool x9; bool x10; struct RetainPtr<WebAccessibilityObjectWrapper> { void *x_11_1_1; } x11; } * m_object;
 }
 
+@property (nonatomic) unsigned int identifier;
+
 + (void)accessibilitySetShouldRepostNotifications:(bool)arg1;
 
+- (id)_accessibilityWebDocumentView;
 - (id)accessibilityMathPostscriptPairs;
 - (id)accessibilityMathPrescriptPairs;
 - (struct AccessibilityObject { int (**x1)(); unsigned int x2; unsigned int x3; struct Vector<WTF::RefPtr<WebCore::AccessibilityObject, WTF::DumbPtrTraits<WebCore::AccessibilityObject> >, 0, WTF::CrashOnOverflow, 16> { struct RefPtr<WebCore::AccessibilityObject, WTF::DumbPtrTraits<WebCore::AccessibilityObject> > {} *x_4_1_1; unsigned int x_4_1_2; unsigned int x_4_1_3; } x4; bool x5; int x6; int x7; struct AccessibilityIsIgnoredFromParentData { struct AccessibilityObject {} *x_8_1_1; bool x_8_1_2; bool x_8_1_3; bool x_8_1_4; } x8; bool x9; bool x10; struct RetainPtr<WebAccessibilityObjectWrapper> { void *x_11_1_1; } x11; }*)accessibilityObject;
@@ -17,16 +21,18 @@
 - (void)accessibilityPostedNotification:(id)arg1 userInfo:(id)arg2;
 - (id)ariaLandmarkRoleDescription;
 - (id)attachmentView;
+- (struct AccessibilityObjectInterface { int (**x1)(); }*)axBackingObject;
 - (id)baseAccessibilityDescription;
 - (id)baseAccessibilityHelpText;
+- (void)baseAccessibilitySetFocus:(bool)arg1;
 - (id)baseAccessibilitySpeechHint;
 - (id)baseAccessibilityTitle;
 - (struct CGPath { }*)convertPathToScreenSpace:(struct Path { struct CGPath {} *x1; }*)arg1;
-- (struct CGPoint { double x1; double x2; })convertPointToScreenSpace:(struct FloatPoint { float x1; float x2; }*)arg1;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })convertRectToSpace:(struct FloatRect { struct FloatPoint { float x_1_1_1; float x_1_1_2; } x1; struct FloatSize { float x_2_1_1; float x_2_1_2; } x2; }*)arg1 space:(int)arg2;
 - (void)detach;
-- (bool)fileUploadButtonReturnsValueInTitle;
+- (unsigned int)identifier;
 - (id)initWithAccessibilityObject:(struct AccessibilityObject { int (**x1)(); unsigned int x2; unsigned int x3; struct Vector<WTF::RefPtr<WebCore::AccessibilityObject, WTF::DumbPtrTraits<WebCore::AccessibilityObject> >, 0, WTF::CrashOnOverflow, 16> { struct RefPtr<WebCore::AccessibilityObject, WTF::DumbPtrTraits<WebCore::AccessibilityObject> > {} *x_4_1_1; unsigned int x_4_1_2; unsigned int x_4_1_3; } x4; bool x5; int x6; int x7; struct AccessibilityIsIgnoredFromParentData { struct AccessibilityObject {} *x_8_1_1; bool x_8_1_2; bool x_8_1_3; bool x_8_1_4; } x8; bool x9; bool x10; struct RetainPtr<WebAccessibilityObjectWrapper> { void *x_11_1_1; } x11; }*)arg1;
-- (bool)titleTagShouldBeUsedInDescriptionField;
+- (void)setIdentifier:(unsigned int)arg1;
 - (bool)updateObjectBackingStore;
 
 @end

@@ -12,6 +12,7 @@
     <MTLTexture> * _hybridDownsamplingIntermediateR32Texture;
     <MTLTexture> * _hybridDownsamplingIntermediateR8Texture;
     <MTLTexture> * _hybridDownsamplingIntermediateTexture;
+    <MTLResourceGroupSPI> * _intermediateTextureResourceGroup;
     NSString * _label;
     <MTLComputePipelineState> * _linearResampler;
     <MTLComputePipelineState> * _linearResamplerOneComponent;

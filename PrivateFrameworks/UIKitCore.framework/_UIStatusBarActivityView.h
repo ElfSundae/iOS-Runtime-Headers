@@ -23,6 +23,7 @@
 @property (nonatomic, retain) CALayer *mainLayer;
 @property (nonatomic, readonly) long long overriddenVerticalAlignment;
 @property (nonatomic, retain) CALayer *pointLayer;
+@property (nonatomic, readonly) bool prefersBaselineAlignment;
 @property (readonly) Class superclass;
 @property (nonatomic) double thickness;
 @property (nonatomic, readonly) bool wantsCrossfade;

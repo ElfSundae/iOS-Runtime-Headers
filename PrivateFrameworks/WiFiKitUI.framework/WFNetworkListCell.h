@@ -6,7 +6,6 @@
     WFAssociationStateView * _associationStateView;
     unsigned long long  _bars;
     bool  _connectionError;
-    WFHotspotDetails * _hotspotDetails;
     UIImageView * _lockImageView;
     UILabel * _nameLabel;
     bool  _personalHotspot;
@@ -16,7 +15,6 @@
     UIStackView * _stackView;
     NSLayoutConstraint * _stackViewBottomConstraint;
     NSLayoutConstraint * _stackViewTopConstraint;
-    long long  _state;
     NSString * _subtitle;
     UILabel * _subtitleLabel;
     NSString * _title;
@@ -52,8 +50,7 @@
 - (void)awakeFromNib;
 - (unsigned long long)bars;
 - (bool)connectionError;
-- (id)hotspotDetails;
-- (id)imageFromSignalBars:(long long)arg1;
+- (id)imageFromSignalBars:(unsigned long long)arg1;
 - (id)lockImageView;
 - (id)nameLabel;
 - (bool)personalHotspot;
@@ -81,7 +78,6 @@
 - (id)stackView;
 - (id)stackViewBottomConstraint;
 - (id)stackViewTopConstraint;
-- (long long)state;
 - (id)subtitle;
 - (id)subtitleLabel;
 - (id)title;

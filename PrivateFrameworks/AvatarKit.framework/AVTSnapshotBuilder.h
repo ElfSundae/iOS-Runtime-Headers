@@ -22,6 +22,8 @@
 
 - (void).cxx_destruct;
 - (void)_applyOptions:(id)arg1;
+- (struct UIImage { Class x1; }*)_imageWithSize:(struct CGSize { double x1; double x2; })arg1 scale:(double)arg2 options:(id)arg3;
+- (struct UIImage { Class x1; }*)_imageWithSize:(struct CGSize { double x1; double x2; })arg1 scale:(double)arg2 options:(id)arg3 useACopy:(bool)arg4;
 - (void)_renderer:(id)arg1 didBuildSubdivDataForHash:(id)arg2 dataProvider:(id /* block */)arg3;
 - (id)_renderer:(id)arg1 subdivDataForHash:(id)arg2;
 - (struct UIImage { Class x1; }*)animatedImageWithSize:(struct CGSize { double x1; double x2; })arg1 scale:(double)arg2 options:(id)arg3;
@@ -31,6 +33,6 @@
 - (id)renderer;
 - (void)renderer:(id)arg1 didApplyAnimationsAtTime:(double)arg2;
 - (void)setAvatar:(id)arg1;
-- (void)setupAvatarWithOptions:(id)arg1;
+- (void)setupAvatarWithOptions:(id)arg1 useACopy:(bool)arg2;
 
 @end

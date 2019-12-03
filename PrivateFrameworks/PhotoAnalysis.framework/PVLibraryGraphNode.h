@@ -4,6 +4,8 @@
 
 @interface PVLibraryGraphNode : MANode <PVAssetProtocol, PVFaceProtocol, PVMomentProtocol, PVPersonProtocol>
 
+@property (nonatomic, readonly) unsigned short ageType;
+@property (nonatomic, readonly) NSString *anonymizedName;
 @property (nonatomic, readonly) struct CLLocationCoordinate2D { double x1; double x2; } approximateCoordinate;
 @property (nonatomic, readonly) double centerX;
 @property (nonatomic, readonly) double centerY;
@@ -19,6 +21,7 @@
 @property (nonatomic, readonly) unsigned long long faceCount;
 @property (nonatomic, readonly) NSData *faceprintData;
 @property (nonatomic, readonly) bool favorite;
+@property (nonatomic, readonly) NSString *filename;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) bool hidden;
 @property (nonatomic) bool isVerified;
@@ -27,8 +30,10 @@
 @property (readonly) NSString *localIdentifier;
 @property (nonatomic, readonly) struct CLLocationCoordinate2D { double x1; double x2; } locationCoordinate;
 @property (nonatomic) long long manualOrder;
-@property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly) NSString *originalFilename;
 @property (nonatomic, readonly) NSString *personLocalIdentifier;
+@property (nonatomic, readonly) unsigned long long pixelHeight;
+@property (nonatomic, readonly) unsigned long long pixelWidth;
 @property (nonatomic) long long qualityMeasure;
 @property (nonatomic, readonly) double size;
 @property (nonatomic, readonly) NSDate *startDate;
@@ -38,6 +43,8 @@
 + (id)dateForTimeInterval:(double)arg1;
 + (double)timeIntervalForDate:(id)arg1;
 
+- (unsigned short)ageType;
+- (id)anonymizedName;
 - (struct CLLocationCoordinate2D { double x1; double x2; })approximateCoordinate;
 - (double)centerX;
 - (double)centerY;
@@ -45,6 +52,7 @@
 - (id)clsDistanceIdentity;
 - (long long)clusterSequenceNumber;
 - (id)creationDate;
+- (id)dateCreated;
 - (id)distanceIdentity;
 - (id)endDate;
 - (unsigned long long)estimatedAssetCount;
@@ -52,6 +60,7 @@
 - (unsigned long long)faceCountInFaceGroup;
 - (id)faceprintData;
 - (bool)favorite;
+- (id)filename;
 - (bool)hidden;
 - (bool)isDirty;
 - (bool)isVerified;
@@ -59,8 +68,11 @@
 - (id)localIdentifier;
 - (struct CLLocationCoordinate2D { double x1; double x2; })locationCoordinate;
 - (long long)manualOrder;
-- (id)name;
+- (id)originalFilename;
 - (id)personLocalIdentifier;
+- (id)personLocalIdentifiers;
+- (unsigned long long)pixelHeight;
+- (unsigned long long)pixelWidth;
 - (void)pv_addMergeCandidatePersons:(id)arg1;
 - (long long)qualityMeasure;
 - (void)setIsVerified:(bool)arg1;

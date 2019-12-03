@@ -10,8 +10,8 @@
 @property (nonatomic) short category;
 @property (nonatomic, copy) NSString *synonym;
 
+- (void).cxx_destruct;
 - (short)category;
-- (void)dealloc;
 - (id)initWithSynonym:(id)arg1 category:(short)arg2;
 - (void)setCategory:(short)arg1;
 - (void)setSynonym:(id)arg1;

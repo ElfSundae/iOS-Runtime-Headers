@@ -4,6 +4,7 @@
 
 @interface DESJSONPredicate : NSObject
 
++ (bool)_testStrings:(id)arg1 test:(id)arg2 caseInsensitive:(bool)arg3;
 + (bool)evaluateAnd:(id)arg1 onObj:(id)arg2;
 + (bool)evaluateArrayOp:(id)arg1 onObj:(id)arg2;
 + (bool)evaluateBoolOp:(id)arg1 onObj:(id)arg2;

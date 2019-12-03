@@ -2,31 +2,15 @@
    Image: /System/Library/Frameworks/WebKit.framework/WebKit
  */
 
-@interface WKPaymentAuthorizationViewControllerDelegate : NSObject <PKPaymentAuthorizationViewControllerDelegate, PKPaymentAuthorizationViewControllerPrivateDelegate> {
-    bool  _didReachFinalState;
-    struct BlockPtr<void (PKPaymentRequestPaymentMethodUpdate *)>="m_block"@? {}  _didSelectPaymentMethodCompletion;
-    struct BlockPtr<void (PKPaymentRequestShippingContactUpdate *)>="m_block"@? {}  _didSelectShippingContactCompletion;
-    struct BlockPtr<void (PKPaymentRequestShippingMethodUpdate *)>="m_block"@? {}  _didSelectShippingMethodCompletion;
-    struct BlockPtr<void (PKPaymentAuthorizationResult *)>="m_block"@? {}  _paymentAuthorizedCompletion;
-    struct RetainPtr<NSArray> { 
-        void *m_ptr; 
-    }  _paymentSummaryItems;
-    struct BlockPtr<void (PKPaymentMerchantSession *, NSError *)>="m_block"@? {}  _sessionBlock;
-    struct RetainPtr<NSArray> { 
-        void *m_ptr; 
-    }  _shippingMethods;
-    struct WebPaymentCoordinatorProxy { int (**x1)(); struct WeakPtrFactory<WebKit::WebPaymentCoordinatorProxy> { struct RefPtr<WTF::WeakReference<WebKit::WebPaymentCoordinatorProxy>, WTF::DumbPtrTraits<WTF::WeakReference<WebKit::WebPaymentCoordinatorProxy> > > { struct WeakReference<WebKit::WebPaymentCoordinatorProxy> {} *x_1_2_1; } x_2_1_1; } x2; struct WebPageProxy {} *x3; int x4; int x5; struct RetainPtr<PKPaymentAuthorizationViewController> { void *x_6_1_1; } x6; struct RetainPtr<WKPaymentAuthorizationViewControllerDelegate> { void *x_7_1_1; } x7; struct Optional<WebKit::WebPaymentCoordinatorProxyAdditions> { bool x_8_1_1; union storage_t<WebKit::WebPaymentCoordinatorProxyAdditions> { unsigned char x_2_2_1; struct WebPaymentCoordinatorProxyAdditions { int (**x_2_3_1)(); struct WebPaymentCoordinatorProxy {} *x_2_3_2; struct WeakObjCPtr<PKPaymentSetupViewController> { id x_3_4_1; } x_2_3_3; /* Warning: Unrecognized filer type: ')' using 'void*' */ void*x_2_3_4; } x_2_2_2; void*x_2_2_3; } x_8_1_2; } x8; } * _webPaymentCoordinatorProxy;
-}
+@interface WKPaymentAuthorizationViewControllerDelegate : WKPaymentAuthorizationDelegate <PKPaymentAuthorizationViewControllerDelegate, PKPaymentAuthorizationViewControllerPrivateDelegate>
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id).cxx_construct;
-- (void).cxx_destruct;
-- (id)initWithPaymentCoordinatorProxy:(struct WebPaymentCoordinatorProxy { int (**x1)(); struct WeakPtrFactory<WebKit::WebPaymentCoordinatorProxy> { struct RefPtr<WTF::WeakReference<WebKit::WebPaymentCoordinatorProxy>, WTF::DumbPtrTraits<WTF::WeakReference<WebKit::WebPaymentCoordinatorProxy> > > { struct WeakReference<WebKit::WebPaymentCoordinatorProxy> {} *x_1_2_1; } x_2_1_1; } x2; struct WebPageProxy {} *x3; int x4; int x5; struct RetainPtr<PKPaymentAuthorizationViewController> { void *x_6_1_1; } x6; struct RetainPtr<WKPaymentAuthorizationViewControllerDelegate> { void *x_7_1_1; } x7; struct Optional<WebKit::WebPaymentCoordinatorProxyAdditions> { bool x_8_1_1; union storage_t<WebKit::WebPaymentCoordinatorProxyAdditions> { unsigned char x_2_2_1; struct WebPaymentCoordinatorProxyAdditions { int (**x_2_3_1)(); struct WebPaymentCoordinatorProxy {} *x_2_3_2; struct WeakObjCPtr<PKPaymentSetupViewController> { id x_3_4_1; } x_2_3_3; /* Warning: Unrecognized filer type: ')' using 'void*' */ void*x_2_3_4; } x_2_2_2; void*x_2_2_3; } x_8_1_2; } x8; }*)arg1;
-- (void)invalidate;
+- (void)_getPaymentServicesMerchantURL:(id /* block */)arg1;
+- (id)initWithRequest:(id)arg1 presenter:(struct PaymentAuthorizationPresenter { int (**x1)(); struct WeakPtrFactory<WebKit::PaymentAuthorizationPresenter> { struct RefPtr<WTF::WeakPtrImpl, WTF::DumbPtrTraits<WTF::WeakPtrImpl> > { struct WeakPtrImpl {} *x_1_2_1; } x_2_1_1; } x2; struct Client {} *x3; }*)arg2;
 - (void)paymentAuthorizationViewController:(id)arg1 didAuthorizePayment:(id)arg2 handler:(id /* block */)arg3;
 - (void)paymentAuthorizationViewController:(id)arg1 didRequestMerchantSession:(id /* block */)arg2;
 - (void)paymentAuthorizationViewController:(id)arg1 didSelectPaymentMethod:(id)arg2 handler:(id /* block */)arg3;

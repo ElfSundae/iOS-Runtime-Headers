@@ -5,12 +5,9 @@
 
 @required
 
-- (unsigned int)orientation;
 - (unsigned int)recipeID;
-- (short)resourceType;
+- (unsigned int)resourceType;
 - (<PLUniformTypeIdentifierIdentity> *)uniformTypeIdentifierID;
-- (long long)unorientedHeight;
-- (long long)unorientedWidth;
-- (short)version;
+- (unsigned int)version;
 
 @end

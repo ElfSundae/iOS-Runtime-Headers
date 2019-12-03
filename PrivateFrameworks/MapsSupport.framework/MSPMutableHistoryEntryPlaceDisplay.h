@@ -10,6 +10,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSUUID *supersededSearchStorageIdentifier;
+@property (nonatomic, readonly) bool tracksRAPReportingOnly;
+@property (nonatomic, readonly, copy) NSDate *usageDate;
 
 + (Class)immutableObjectClass;
 + (id)immutableObjectProtocol;

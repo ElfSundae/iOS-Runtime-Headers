@@ -21,7 +21,6 @@
     }  mWorldTransform;
 }
 
-- (void)dealloc;
 - (id)initWithDefaults;
 - (id)initWithGraphicsState:(id)arg1;
 - (void)multiplyWorldTransformBy:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg1 order:(int)arg2;

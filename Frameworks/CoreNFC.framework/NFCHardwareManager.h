@@ -4,6 +4,7 @@
 
 @interface NFCHardwareManager : NSObject <NFCHardwareManagerCallbacks, NFCSessionCallbacks> {
     NSMutableArray * _delegates;
+    NSMutableDictionary * _queuedReaderSessions;
     NFCSession * _xpcSession;
 }
 
@@ -18,11 +19,13 @@
 - (void)addNFCHardwareManagerCallbacksListener:(id)arg1;
 - (bool)areFeaturesSupported:(unsigned long long)arg1 outError:(id*)arg2;
 - (void)dealloc;
+- (void)dequeueReaderSession:(id)arg1;
 - (void)didInvalidate;
 - (id)getDelegates;
+- (id)getReaderSessionWithKey:(id)arg1;
 - (void)hardwareFailedToLoad;
 - (id)init;
-- (void)queueReaderSession:(id)arg1 showSharingUI:(unsigned long long)arg2 scanText:(id)arg3 completionHandler:(id /* block */)arg4;
+- (void)queueReaderSession:(id)arg1 sessionConfig:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)removeNFCHardwareManagerCallbacksListener:(id)arg1;
 
 @end

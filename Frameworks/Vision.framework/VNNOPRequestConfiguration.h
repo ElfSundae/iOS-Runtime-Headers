@@ -9,7 +9,7 @@
 }
 
 @property (nonatomic) double detectorExecutionTimeInterval;
-@property (nonatomic, copy) VNSupportedImageSize *detectorPreferredImageSize;
+@property (nonatomic, retain) VNSupportedImageSize *detectorPreferredImageSize;
 @property (nonatomic) bool detectorWantsAnisotropicScaling;
 
 - (void).cxx_destruct;

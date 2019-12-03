@@ -6,12 +6,12 @@
     NSString * _baseICUFormatString;
     struct __CFNumberFormatter { } * _bigNumberFormatter;
     struct __CFNumberFormatter { } * _currencyFormatter;
-    unsigned short  _currencySymbol;
     struct __CFDateFormatter { } * _dateFormatter;
     struct __CFNumberFormatter { } * _doubleFormatter;
     NSString * _excelFormatString;
     int  _formatType;
     struct __CFNumberFormatter { } * _genericFormatter;
+    bool  _hasLocales;
     bool  _isNegativeRed;
     struct __CFNumberFormatter { } * _percentFormatter;
 }

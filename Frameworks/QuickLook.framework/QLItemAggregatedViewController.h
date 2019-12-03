@@ -19,7 +19,6 @@
 - (bool)automaticallyUpdateScrollViewContentInset;
 - (bool)automaticallyUpdateScrollViewContentOffset;
 - (bool)automaticallyUpdateScrollViewIndicatorInset;
-- (void)beginPreviewHostAppearanceTransitionIfNeeded:(bool)arg1 animated:(bool)arg2;
 - (void)buttonPressedWithIdentifier:(id)arg1 completionHandler:(id /* block */)arg2;
 - (bool)canEnterFullScreen;
 - (bool)canPerformFirstTimeAppearanceActions:(unsigned long long)arg1;
@@ -27,16 +26,18 @@
 - (bool)canShowNavBar;
 - (bool)canShowToolBar;
 - (bool)canSwipeToDismiss;
+- (bool)canToggleFullScreen;
 - (id)currentPreviewViewController;
 - (id)delegate;
 - (id)draggableView;
-- (void)endPreviewHostAppearanceTransitionIfNeeded:(bool)arg1;
 - (id)excludedToolbarButtonIdentifiersForTraitCollection:(id)arg1;
 - (id)fullscreenBackgroundColor;
+- (void)handlePerformedKeyCommandIfNeeded:(id)arg1;
 - (id)parallaxView;
 - (void)performFirstTimeAppearanceActions:(unsigned long long)arg1;
 - (struct CGSize { double x1; double x2; })preferredContentSize;
 - (long long)preferredWhitePointAdaptivityStyle;
+- (void)prepareForInvalidationWithCompletionHandler:(id /* block */)arg1;
 - (void)previewBecameFullScreen:(bool)arg1 animated:(bool)arg2;
 - (void)previewDidAppear:(bool)arg1;
 - (void)previewDidDisappear:(bool)arg1;
@@ -47,6 +48,7 @@
 - (id)printer;
 - (id)registeredKeyCommands;
 - (id)safeAreaLayoutGuide;
+- (void)savePreviewEditedCopyWithCompletionHandler:(id /* block */)arg1;
 - (id)scrollView;
 - (void)setAppearance:(id)arg1 animated:(bool)arg2;
 - (void)setCurrentPreviewViewController:(id)arg1;
@@ -61,7 +63,5 @@
 - (void)transitionDidStart:(bool)arg1;
 - (void)transitionWillFinish:(bool)arg1 didComplete:(bool)arg2;
 - (id)transitioningView;
-- (void)viewDidAppear:(bool)arg1;
-- (void)viewWillAppear:(bool)arg1;
 
 @end

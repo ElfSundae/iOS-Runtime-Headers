@@ -19,20 +19,20 @@
     NTKHandView * _hourHandView;
     NTKHandView * _hourHandView_clientSide;
     UIColor * _inlayColor;
-    CALayer * _minuteHandDot;
     CALayer * _minuteHandTransitionBodyLayer;
     CALayer * _minuteHandTransitionPegLayer;
     CALayer * _minuteHandTransitionStemLayer;
     NTKHandView * _minuteHandView;
     NTKHandView * _minuteHandView_clientSide;
     NSDate * _overrideDate;
-    CALayer * _secondHandDot;
     NTKHandView * _secondHandView;
     NTKHandView * _secondHandView_clientSide;
     bool  _shouldRestoreSecondHandAfterScrubbing;
     bool  _showDebugClientSideHands;
+    unsigned long long  _style;
     double  _timeOffset;
     bool  _timeScrubbing;
+    NSTimeZone * _timeZone;
 }
 
 @property (nonatomic, readonly) NSCalendar *calendar;
@@ -45,16 +45,18 @@
 @property (nonatomic, retain) NTKHandView *hourHandView;
 @property (nonatomic, readonly) NTKHandView *hourHandView_clientSide;
 @property (nonatomic, retain) UIColor *inlayColor;
-@property (nonatomic, retain) CALayer *minuteHandDot;
+@property (nonatomic, readonly) UIView *minuteHandDot;
 @property (nonatomic, retain) NTKHandView *minuteHandView;
 @property (nonatomic, readonly) NTKHandView *minuteHandView_clientSide;
 @property (nonatomic, readonly) NSDate *overrideDate;
+@property (nonatomic, readonly) UIView *secondHandDot;
 @property (nonatomic, retain) NTKHandView *secondHandView;
 @property (nonatomic, readonly) NTKHandView *secondHandView_clientSide;
 @property (nonatomic) bool shouldRestoreSecondHandAfterScrubbing;
 @property (nonatomic) bool showDebugClientSideHands;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) bool timeScrubbing;
+@property (nonatomic, retain) NSTimeZone *timeZone;
 
 + (long long)preferredCountOfInstancesToCache;
 
@@ -67,16 +69,17 @@
 - (void)_enumerateHandViews:(id /* block */)arg1;
 - (void)_enumerateSecondHandViewsWithBlock:(id /* block */)arg1;
 - (void)_handleDisplayLink;
+- (double)_minuteHandDotDiameter;
 - (void)_removeColorTransitionViews;
 - (void)_removeHourMinuteHandsTransitionLayers;
 - (void)_repointDebugHandsToCurrentTime;
 - (void)_significantTimeChanged;
 - (void)_startNewTimeAnimation;
 - (void)_stopTimeAnimation;
+- (double)_timeAnimationFramesPerSecondForDevice:(id)arg1;
 - (void)applyHourMinuteHandsStrokeColor:(id)arg1 fillColor:(id)arg2;
 - (void)applyHourMinuteHandsTransitionFraction:(double)arg1 fromStrokeColor:(id)arg2 fromFillColor:(id)arg3 toStrokeColor:(id)arg4 toFillColor:(id)arg5;
 - (void)applySecondHandColor:(id)arg1;
-- (void)applySecondHandDotColor:(id)arg1;
 - (void)applySecondHandTransitionFraction:(double)arg1 fromColor:(id)arg2 toColor:(id)arg3;
 - (id)calendar;
 - (long long)dataMode;
@@ -88,6 +91,7 @@
 - (id)hourHandView;
 - (id)hourHandView_clientSide;
 - (id)initForDevice:(id)arg1;
+- (id)initForDevice:(id)arg1 withStyle:(unsigned long long)arg2;
 - (id)inlayColor;
 - (bool)isFrozen;
 - (void)layoutSubviews;
@@ -96,24 +100,25 @@
 - (id)minuteHandView_clientSide;
 - (id)overrideDate;
 - (void)scrubToDate:(id)arg1 animated:(bool)arg2;
+- (id)secondHandDot;
 - (id)secondHandView;
 - (id)secondHandView_clientSide;
 - (void)setDataMode:(long long)arg1;
 - (void)setFrozen:(bool)arg1;
 - (void)setHourHandView:(id)arg1;
 - (void)setInlayColor:(id)arg1;
-- (void)setMinuteHandDot:(id)arg1;
 - (void)setMinuteHandView:(id)arg1;
 - (void)setOverrideDate:(id)arg1 duration:(double)arg2;
 - (void)setSecondHandView:(id)arg1;
 - (void)setShouldRestoreSecondHandAfterScrubbing:(bool)arg1;
 - (void)setShowDebugClientSideHands:(bool)arg1;
 - (void)setTimeOffset:(double)arg1;
-- (void)setupDefaultMinuteHandDotIfNecessary;
+- (void)setTimeZone:(id)arg1;
 - (bool)shouldRestoreSecondHandAfterScrubbing;
 - (bool)showDebugClientSideHands;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (void)startScrubbingAnimated:(bool)arg1 withCompletion:(id /* block */)arg2;
 - (bool)timeScrubbing;
+- (id)timeZone;
 
 @end

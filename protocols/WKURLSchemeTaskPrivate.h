@@ -6,5 +6,6 @@
 @required
 
 - (void)_didPerformRedirection:(NSURLResponse *)arg1 newRequest:(NSURLRequest *)arg2;
+- (bool)_requestOnlyIfCached;
 
 @end

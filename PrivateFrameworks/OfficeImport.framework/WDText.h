@@ -9,6 +9,10 @@
     int  mTextType;
 }
 
+@property (readonly) WDDocument *document;
+@property (readonly) WDTableCell *tableCell;
+
+- (void).cxx_destruct;
 - (void)addBlock:(id)arg1;
 - (id)addParagraph;
 - (id)addParagraphAtIndex:(int)arg1;
@@ -19,9 +23,9 @@
 - (id)blockIterator;
 - (id)blocks;
 - (id)content;
-- (void)dealloc;
 - (id)description;
 - (id)document;
+- (id)firstParagraph;
 - (unsigned long long)indexOfBlock:(id)arg1;
 - (id)initWithDocument:(id)arg1 textType:(int)arg2;
 - (id)initWithDocument:(id)arg1 textType:(int)arg2 tableCell:(id)arg3;
@@ -29,6 +33,7 @@
 - (id)lastBlock;
 - (id)newBlockIterator;
 - (id)newRunIterator;
+- (id)paragraphs;
 - (void)removeLastBlock;
 - (void)removeLastCharacter:(unsigned short)arg1;
 - (id)runIterator;

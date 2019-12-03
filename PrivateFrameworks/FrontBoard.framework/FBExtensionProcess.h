@@ -3,26 +3,32 @@
  */
 
 @interface FBExtensionProcess : FBProcess {
-    bool  _XPCBundle;
-    FBExtensionInfo * _extensionInfo;
-    NSString * _hostBundleID;
+    FBSExtensionInfo * _extensionInfo;
     int  _hostPID;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _hostProcessLock;
+    FBProcess * _lock_hostProcess;
 }
 
-@property (getter=isXPCBundle, nonatomic, readonly) bool XPCBundle;
-@property (nonatomic, readonly) FBExtensionInfo *extensionInfo;
-@property (nonatomic, readonly, copy) NSString *hostBundleID;
+@property (nonatomic, readonly) FBSExtensionInfo *extensionInfo;
 @property (nonatomic, readonly) int hostPID;
 @property (nonatomic, readonly) FBProcess *hostProcess;
 
+// Image: /System/Library/PrivateFrameworks/FrontBoard.framework/FrontBoard
+
 - (void).cxx_destruct;
 - (id)extensionInfo;
-- (id)hostBundleID;
 - (int)hostPID;
 - (id)hostProcess;
-- (id)initWithBundleID:(id)arg1 pid:(int)arg2 callOutQueue:(id)arg3;
+- (id)initWithHandle:(id)arg1 identity:(id)arg2 executionContext:(id)arg3;
+- (id)initWithHandle:(id)arg1 identity:(id)arg2 hostPID:(int)arg3;
+- (id)initWithHandle:(id)arg1 identity:(id)arg2 hostProcess:(id)arg3;
 - (bool)isExtensionProcess;
-- (bool)isXPCBundle;
 - (id)succinctDescriptionBuilder;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoard.framework/SpringBoard
+
+- (id)sb_bundleIdentifierWithFallback;
 
 @end

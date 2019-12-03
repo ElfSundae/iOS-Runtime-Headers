@@ -11,6 +11,7 @@
     NSMutableDictionary * _multiValueAdditions;
     NSMutableDictionary * _multiValueRemovals;
     NSMutableDictionary * _singleValueChanges;
+    bool  _skipsPersistentObjectCopy;
 }
 
 @property (nonatomic) bool isDeleted;
@@ -28,6 +29,7 @@
 - (bool)_isNewAndUnsaved;
 - (id)_semanticIdentifierToObjectMapForObjects:(id)arg1;
 - (void)addChanges:(id)arg1;
+- (void)addChangesAndUpdateUniqueMultiValueObjects:(id)arg1;
 - (void)addToChanges:(id)arg1 forMultiValueKey:(id)arg2 basedOn:(id)arg3;
 - (void)changeSingleValue:(id)arg1 forKey:(id)arg2 basedOn:(id)arg3;
 - (void)changeSingleValue:(id)arg1 forKey:(id)arg2 basedOn:(id)arg3 and:(id)arg4;
@@ -48,15 +50,20 @@
 - (id)initWithChangeSet:(id)arg1 changesToSkip:(id)arg2;
 - (id)initWithSingleValueChanges:(id)arg1 multiValueAdditions:(id)arg2 multiValueRemovals:(id)arg3;
 - (bool)isDeleted;
+- (bool)isEffectivelyEqual:(id)arg1;
+- (bool)isEqual:(id)arg1;
 - (bool)isModified;
 - (bool)isNew;
 - (bool)isSaved;
 - (bool)isUndeleted;
+- (bool)isUniqueAddedObject:(id)arg1 forKey:(id)arg2;
 - (void)markChangesAsSaved;
 - (id)multiValueAdditions;
 - (id)multiValueRemovals;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (void)removeFromChanges:(id)arg1 forMultiValueKey:(id)arg2 basedOn:(id)arg3;
+- (void)replaceMultiChangeAddedObject:(id)arg1 withObject:(id)arg2 forKey:(id)arg3;
+- (void)replaceUniqueMultiValueObjectsWithUpdatedObjects:(id)arg1;
 - (void)rollbackChanges;
 - (void)setIsDeleted:(bool)arg1;
 - (void)setIsModified:(bool)arg1;
@@ -66,12 +73,15 @@
 - (void)setMultiValueAdditions:(id)arg1;
 - (void)setMultiValueRemovals:(id)arg1;
 - (void)setSingleValueChanges:(id)arg1;
+- (void)setSkipsPersistentObjectCopy:(bool)arg1;
 - (id)singleValueChanges;
+- (bool)skipsPersistentObjectCopy;
 - (id)summary;
 - (id)unsavedMultiValueAddedObjectsForKey:(id)arg1;
 - (id)unsavedMultiValueRemovedObjectsForKey:(id)arg1;
 - (id)valueForSingleValueKey:(id)arg1 basedOn:(id)arg2;
 - (id)valueForSingleValueKey:(id)arg1 basedOn:(id)arg2 and:(id)arg3;
 - (id)valuesForMultiValueKey:(id)arg1 basedOn:(id)arg2;
+- (id)valuesForMultiValueKey:(id)arg1 basedOnSet:(id)arg2;
 
 @end

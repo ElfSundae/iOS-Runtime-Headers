@@ -38,7 +38,8 @@
 - (void)dealloc;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })duration;
 - (id)figChapterGroupInfo;
-- (void)finalize;
+- (long long)firstFragmentSequenceNumber;
+- (long long)fragmentCount;
 - (bool)hasProtectedContent;
 - (id)initWithURL:(id)arg1;
 - (bool)isComposable;

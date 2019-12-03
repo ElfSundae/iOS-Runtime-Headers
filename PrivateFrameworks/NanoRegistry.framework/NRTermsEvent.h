@@ -41,6 +41,7 @@
 - (void)setTermsText:(id)arg1;
 - (void)setWritable:(bool)arg1;
 - (id)termsDigest;
+- (id)termsText;
 - (void)updateEventDate;
 - (bool)writable;
 

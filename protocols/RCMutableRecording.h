@@ -7,6 +7,7 @@
 
 - (NSString *)customLabel;
 - (NSDate *)date;
+- (bool)downloading;
 - (double)duration;
 - (bool)editing;
 - (NSDate *)evictionDate;
@@ -16,8 +17,10 @@
 - (NSString *)path;
 - (bool)pendingRestore;
 - (bool)playable;
+- (bool)recordedOnWatch;
 - (void)setCustomLabel:(NSString *)arg1;
 - (void)setDate:(NSDate *)arg1;
+- (void)setDownloading:(bool)arg1;
 - (void)setDuration:(double)arg1;
 - (void)setEditing:(bool)arg1;
 - (void)setEvictionDate:(NSDate *)arg1;
@@ -27,6 +30,7 @@
 - (void)setPath:(NSString *)arg1;
 - (void)setPendingRestore:(bool)arg1;
 - (void)setPlayable:(bool)arg1;
+- (void)setRecordedOnWatch:(bool)arg1;
 - (void)setSynced:(bool)arg1;
 - (void)setTitle:(NSString *)arg1;
 - (void)setUniqueID:(NSString *)arg1;

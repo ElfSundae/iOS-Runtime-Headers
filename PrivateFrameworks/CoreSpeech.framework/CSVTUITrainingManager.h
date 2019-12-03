@@ -3,9 +3,10 @@
  */
 
 @interface CSVTUITrainingManager : NSObject <CSEndpointAnalyzerDelegate, CSVTUIAudioSessionDelegate, CSVTUITrainingSessionDelegate> {
-    CSVAD2EndpointAnalyzer * _audioAnalyzer;
+    CSNNVADEndpointAnalyzer * _audioAnalyzer;
     <CSVTUIAudioSession> * _audioSession;
     id /* block */  _cleanupCompletion;
+    CSAsset * _currentAsset;
     CSVTUITrainingSession * _currentTrainingSession;
     <CSVTUITrainingManagerDelegate> * _delegate;
     CSVTUIKeywordDetector * _keywordDetector;

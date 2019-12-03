@@ -8,6 +8,7 @@
     NSString * _idsDeviceId;
     bool  _isActiveDevice;
     bool  _isAutoMeCapable;
+    bool  _isCompanionDevice;
     bool  _isThisDevice;
 }
 
@@ -16,9 +17,10 @@
 @property (nonatomic, copy) NSString *idsDeviceId;
 @property (nonatomic) bool isActiveDevice;
 @property (nonatomic) bool isAutoMeCapable;
+@property (nonatomic) bool isCompanionDevice;
 @property (nonatomic) bool isThisDevice;
 
-+ (id)deviceWithId:(id)arg1 name:(id)arg2 idsDeviceId:(id)arg3 isActive:(bool)arg4 isThisDevice:(bool)arg5 isAutoMeCapable:(bool)arg6;
++ (id)deviceWithId:(id)arg1 name:(id)arg2 idsDeviceId:(id)arg3 isActive:(bool)arg4 isThisDevice:(bool)arg5 isCompanionDevice:(bool)arg6 isAutoMeCapable:(bool)arg7;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -33,6 +35,7 @@
 - (id)initWithCoder:(id)arg1;
 - (bool)isActiveDevice;
 - (bool)isAutoMeCapable;
+- (bool)isCompanionDevice;
 - (bool)isEqual:(id)arg1;
 - (bool)isThisDevice;
 - (void)setDeviceId:(id)arg1;
@@ -40,6 +43,7 @@
 - (void)setIdsDeviceId:(id)arg1;
 - (void)setIsActiveDevice:(bool)arg1;
 - (void)setIsAutoMeCapable:(bool)arg1;
+- (void)setIsCompanionDevice:(bool)arg1;
 - (void)setIsThisDevice:(bool)arg1;
 - (void)updateIsActive:(bool)arg1 isThisDevice:(bool)arg2;
 

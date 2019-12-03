@@ -7,6 +7,7 @@
     SEL  _action;
     UIAlertController * _alertController;
     QLToolbarButtonItemRepresentation * _currentItemRepresentation;
+    bool  _disappearsOnTap;
     bool  _enabled;
     bool  _forceToNavBar;
     NSString * _identifier;
@@ -15,13 +16,14 @@
     unsigned long long  _placement;
     bool  _roundedSelectedIndicator;
     bool  _selected;
+    NSString * _systemImageName;
     long long  _systemItem;
     id  _target;
     NSString * _title;
-    QLToolbarUnderlyingButton * _underlyingButton;
 }
 
 @property (copy) NSString *accessibilityIdentifier;
+@property bool disappearsOnTap;
 @property bool enabled;
 @property bool forceToNavBar;
 @property (readonly) NSString *identifier;
@@ -30,6 +32,7 @@
 @property unsigned long long placement;
 @property bool roundedSelectedIndicator;
 @property bool selected;
+@property (nonatomic, copy) NSString *systemImageName;
 @property long long systemItem;
 @property (copy) NSString *title;
 
@@ -38,6 +41,7 @@
 - (void).cxx_destruct;
 - (id)accessibilityIdentifier;
 - (id)barButtonWithTarget:(id)arg1 action:(SEL)arg2 maxSize:(struct CGSize { double x1; double x2; })arg3;
+- (bool)disappearsOnTap;
 - (bool)enabled;
 - (void)encodeWithCoder:(id)arg1;
 - (bool)forceToNavBar;
@@ -54,6 +58,7 @@
 - (bool)roundedSelectedIndicator;
 - (bool)selected;
 - (void)setAccessibilityIdentifier:(id)arg1;
+- (void)setDisappearsOnTap:(bool)arg1;
 - (void)setEnabled:(bool)arg1;
 - (void)setForceToNavBar:(bool)arg1;
 - (void)setImage:(id)arg1;
@@ -61,8 +66,10 @@
 - (void)setPlacement:(unsigned long long)arg1;
 - (void)setRoundedSelectedIndicator:(bool)arg1;
 - (void)setSelected:(bool)arg1;
+- (void)setSystemImageName:(id)arg1;
 - (void)setSystemItem:(long long)arg1;
 - (void)setTitle:(id)arg1;
+- (id)systemImageName;
 - (long long)systemItem;
 - (id)title;
 

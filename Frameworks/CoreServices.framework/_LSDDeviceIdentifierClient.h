@@ -6,8 +6,9 @@
 
 - (void)clearAllIdentifiersOfType:(long long)arg1;
 - (void)clearIdentifiersForUninstallationWithVendorName:(id)arg1 bundleIdentifier:(id)arg2;
+- (unsigned int)findAppBundleForExecutableURL:(id)arg1 withContext:(struct LSContext { id x1; }*)arg2;
 - (void)generateIdentifiersWithVendorName:(id)arg1 bundleIdentifier:(id)arg2;
-- (void)getClientProcessVendorNameAndBundleIdentifierWithCompletionHandler:(id /* block */)arg1;
+- (void)getClientProcessVendorNameBundleIdentifierAndRestrictedIDAccessWithCompletionHandler:(id /* block */)arg1;
 - (void)getIdentifierOfType:(long long)arg1 completionHandler:(id /* block */)arg2;
 - (void)getIdentifierOfType:(long long)arg1 vendorName:(id)arg2 bundleIdentifier:(id)arg3 completionHandler:(id /* block */)arg4;
 - (bool)hasEntitlementToClearAllIdentifiersOfType:(long long)arg1;

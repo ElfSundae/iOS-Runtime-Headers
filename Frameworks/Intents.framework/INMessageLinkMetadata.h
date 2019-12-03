@@ -2,9 +2,11 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface INMessageLinkMetadata : NSObject <NSCopying, NSSecureCoding> {
+@interface INMessageLinkMetadata : NSObject <INJSONSerializable, NSCopying, NSSecureCoding> {
     NSString * _albumArtist;
     NSString * _albumName;
+    NSString * _appleTvSubtitle;
+    NSString * _appleTvTitle;
     NSString * _artistGenre;
     NSString * _artistName;
     NSString * _audioBookAuthor;
@@ -19,6 +21,8 @@
     NSArray * _imageURLs;
     NSString * _itemType;
     long long  _linkMediaType;
+    NSString * _movieBundleGenre;
+    NSString * _movieBundleName;
     NSString * _movieGenre;
     NSString * _movieName;
     NSString * _musicVideoArtist;
@@ -48,10 +52,13 @@
     NSString * _tvEpisodeSeasonName;
     NSString * _tvSeasonGenre;
     NSString * _tvSeasonName;
+    NSString * _tvShowName;
 }
 
 @property (nonatomic, copy) NSString *albumArtist;
 @property (nonatomic, copy) NSString *albumName;
+@property (nonatomic, copy) NSString *appleTvSubtitle;
+@property (nonatomic, copy) NSString *appleTvTitle;
 @property (nonatomic, copy) NSString *artistGenre;
 @property (nonatomic, copy) NSString *artistName;
 @property (nonatomic, copy) NSString *audioBookAuthor;
@@ -60,12 +67,17 @@
 @property (nonatomic, copy) NSString *bookAuthor;
 @property (nonatomic, copy) NSString *bookName;
 @property (nonatomic, copy) NSString *creator;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSString *iTunesStoreFrontIdentifier;
 @property (nonatomic, copy) NSString *iTunesStoreIdentifier;
 @property (nonatomic, copy) NSArray *iconURLs;
 @property (nonatomic, copy) NSArray *imageURLs;
 @property (nonatomic, copy) NSString *itemType;
 @property (nonatomic) long long linkMediaType;
+@property (nonatomic, copy) NSString *movieBundleGenre;
+@property (nonatomic, copy) NSString *movieBundleName;
 @property (nonatomic, copy) NSString *movieGenre;
 @property (nonatomic, copy) NSString *movieName;
 @property (nonatomic, copy) NSString *musicVideoArtist;
@@ -89,19 +101,25 @@
 @property (nonatomic, copy) NSString *songArtist;
 @property (nonatomic, copy) NSString *songTitle;
 @property (nonatomic, copy) NSString *summary;
+@property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *tvEpisodeEpisodeName;
 @property (nonatomic, copy) NSString *tvEpisodeGenre;
 @property (nonatomic, copy) NSString *tvEpisodeSeasonName;
 @property (nonatomic, copy) NSString *tvSeasonGenre;
 @property (nonatomic, copy) NSString *tvSeasonName;
+@property (nonatomic, copy) NSString *tvShowName;
 
++ (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
+- (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
 - (id)albumArtist;
 - (id)albumName;
+- (id)appleTvSubtitle;
+- (id)appleTvTitle;
 - (id)artistGenre;
 - (id)artistName;
 - (id)audioBookAuthor;
@@ -122,9 +140,12 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSiteName:(id)arg1 summary:(id)arg2 title:(id)arg3 itemType:(id)arg4 originalURL:(id)arg5 imageURLs:(id)arg6 iconURLs:(id)arg7 creator:(id)arg8 linkMediaType:(long long)arg9 iTunesStoreIdentifier:(id)arg10 iTunesStoreFrontIdentifier:(id)arg11 songTitle:(id)arg12 songArtist:(id)arg13 songAlbum:(id)arg14 albumName:(id)arg15 albumArtist:(id)arg16 musicVideoName:(id)arg17 musicVideoArtist:(id)arg18 artistName:(id)arg19 artistGenre:(id)arg20 playlistName:(id)arg21 playlistCurator:(id)arg22 radioName:(id)arg23 radioCurator:(id)arg24 softwareName:(id)arg25 softwareGenre:(id)arg26 softwarePlatform:(id)arg27 bookName:(id)arg28 bookAuthor:(id)arg29 audioBookName:(id)arg30 audioBookAuthor:(id)arg31 audioBookNarrator:(id)arg32 podcastName:(id)arg33 podcastArtist:(id)arg34 podcastEpisodeName:(id)arg35 podcastEpisodePodcastName:(id)arg36 podcastEpisodeArtist:(id)arg37 podcastEpisodeReleaseDate:(id)arg38 tvEpisodeEpisodeName:(id)arg39 tvEpisodeSeasonName:(id)arg40 tvEpisodeGenre:(id)arg41 tvSeasonName:(id)arg42 tvSeasonGenre:(id)arg43 movieName:(id)arg44 movieGenre:(id)arg45;
+- (id)initWithSiteName:(id)arg1 summary:(id)arg2 title:(id)arg3 itemType:(id)arg4 originalURL:(id)arg5 imageURLs:(id)arg6 iconURLs:(id)arg7 creator:(id)arg8 linkMediaType:(long long)arg9 iTunesStoreIdentifier:(id)arg10 iTunesStoreFrontIdentifier:(id)arg11 songTitle:(id)arg12 songArtist:(id)arg13 songAlbum:(id)arg14 albumName:(id)arg15 albumArtist:(id)arg16 musicVideoName:(id)arg17 musicVideoArtist:(id)arg18 artistName:(id)arg19 artistGenre:(id)arg20 playlistName:(id)arg21 playlistCurator:(id)arg22 radioName:(id)arg23 radioCurator:(id)arg24 softwareName:(id)arg25 softwareGenre:(id)arg26 softwarePlatform:(id)arg27 bookName:(id)arg28 bookAuthor:(id)arg29 audioBookName:(id)arg30 audioBookAuthor:(id)arg31 audioBookNarrator:(id)arg32 podcastName:(id)arg33 podcastArtist:(id)arg34 podcastEpisodeName:(id)arg35 podcastEpisodePodcastName:(id)arg36 podcastEpisodeArtist:(id)arg37 podcastEpisodeReleaseDate:(id)arg38 tvEpisodeEpisodeName:(id)arg39 tvEpisodeSeasonName:(id)arg40 tvEpisodeGenre:(id)arg41 tvSeasonName:(id)arg42 tvSeasonGenre:(id)arg43 movieName:(id)arg44 movieGenre:(id)arg45 tvShowName:(id)arg46 movieBundleName:(id)arg47 movieBundleGenre:(id)arg48 appleTvTitle:(id)arg49 appleTvSubtitle:(id)arg50;
 - (bool)isEqual:(id)arg1;
 - (id)itemType;
 - (long long)linkMediaType;
+- (id)movieBundleGenre;
+- (id)movieBundleName;
 - (id)movieGenre;
 - (id)movieName;
 - (id)musicVideoArtist;
@@ -142,6 +163,8 @@
 - (id)radioName;
 - (void)setAlbumArtist:(id)arg1;
 - (void)setAlbumName:(id)arg1;
+- (void)setAppleTvSubtitle:(id)arg1;
+- (void)setAppleTvTitle:(id)arg1;
 - (void)setArtistGenre:(id)arg1;
 - (void)setArtistName:(id)arg1;
 - (void)setAudioBookAuthor:(id)arg1;
@@ -156,6 +179,8 @@
 - (void)setImageURLs:(id)arg1;
 - (void)setItemType:(id)arg1;
 - (void)setLinkMediaType:(long long)arg1;
+- (void)setMovieBundleGenre:(id)arg1;
+- (void)setMovieBundleName:(id)arg1;
 - (void)setMovieGenre:(id)arg1;
 - (void)setMovieName:(id)arg1;
 - (void)setMusicVideoArtist:(id)arg1;
@@ -185,6 +210,7 @@
 - (void)setTvEpisodeSeasonName:(id)arg1;
 - (void)setTvSeasonGenre:(id)arg1;
 - (void)setTvSeasonName:(id)arg1;
+- (void)setTvShowName:(id)arg1;
 - (id)siteName;
 - (id)softwareGenre;
 - (id)softwareName;
@@ -199,5 +225,6 @@
 - (id)tvEpisodeSeasonName;
 - (id)tvSeasonGenre;
 - (id)tvSeasonName;
+- (id)tvShowName;
 
 @end

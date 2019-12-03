@@ -10,7 +10,6 @@
     MPModelKind * _sectionKind;
     MPPropertySet * _sectionProperties;
     NSArray * _sectionSortDescriptors;
-    bool  _shouldIncludeContentItemID;
 }
 
 @property (nonatomic, retain) Class itemClass;
@@ -22,10 +21,12 @@
 @property (nonatomic, retain) MPModelKind *sectionKind;
 @property (nonatomic, copy) MPPropertySet *sectionProperties;
 @property (nonatomic, copy) NSArray *sectionSortDescriptors;
-@property (nonatomic) bool shouldIncludeContentItemID;
 
 // Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
 
++ (id)preferredQueue;
++ (bool)requiresNetwork;
++ (id)sharedNetworkQueue;
 + (id)sharedQueue;
 + (bool)supportsSecureCoding;
 
@@ -56,8 +57,6 @@
 - (void)setSectionKind:(id)arg1;
 - (void)setSectionProperties:(id)arg1;
 - (void)setSectionSortDescriptors:(id)arg1;
-- (void)setShouldIncludeContentItemID:(bool)arg1;
-- (bool)shouldIncludeContentItemID;
 
 // Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
 

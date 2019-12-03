@@ -3,11 +3,13 @@
  */
 
 @interface CPSessionConfiguration : NSObject {
+    unsigned long long  _contentStyle;
     CARSessionStatus * _currentStatus;
     <CPSessionConfigurationDelegate> * _delegate;
     unsigned long long  _limitedUserInterfaces;
 }
 
+@property (nonatomic) unsigned long long contentStyle;
 @property (nonatomic, retain) CARSessionStatus *currentStatus;
 @property (nonatomic) <CPSessionConfigurationDelegate> *delegate;
 @property (nonatomic) unsigned long long limitedUserInterfaces;
@@ -16,12 +18,16 @@
 
 - (void).cxx_destruct;
 - (void)_limitedUIDidChange:(id)arg1;
+- (void)_nightModeDidChange:(id)arg1;
 - (void)_updateLimitedUIStatus;
+- (void)_updateNightMode;
+- (unsigned long long)contentStyle;
 - (id)currentStatus;
 - (void)dealloc;
 - (id)delegate;
 - (id)initWithDelegate:(id)arg1;
 - (unsigned long long)limitedUserInterfaces;
+- (void)setContentStyle:(unsigned long long)arg1;
 - (void)setCurrentStatus:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setLimitedUserInterfaces:(unsigned long long)arg1;

@@ -2,18 +2,23 @@
    Image: /System/Library/PrivateFrameworks/FrontBoardServices.framework/FrontBoardServices
  */
 
-@interface FBSSerialQueue : NSObject {
+@interface FBSSerialQueue : NSObject <BSServiceDispatchingQueue> {
     NSMutableArray * _blocks;
+    bool  _callingOut;
     unsigned long long  _dequeueID;
     unsigned long long  _enqueueID;
     unsigned long long  _lastSynchronizingWorkspaceName;
     NSArray * _mainRunLoopModes;
     NSObject<OS_dispatch_queue> * _queue;
     struct __CFRunLoopSource { } * _runLoopSource;
-    bool  _runLoopSourceHandlingBlock;
     NSObject<OS_dispatch_semaphore> * _synchronizingEnqueueSemaphore;
     NSObject<OS_dispatch_queue> * _targetQueue;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)queueWithDispatchQueue:(id)arg1;
 + (id)queueWithMainRunLoopModes:(id)arg1;
@@ -24,8 +29,10 @@
 - (bool)_performNext;
 - (void)_performNextFromRunLoopSource;
 - (void)_queue_performAsync:(id /* block */)arg1;
+- (bool)_queue_performNextIfPossible;
 - (void)_setSynchronizingEnqueueSemaphore:(id)arg1 forWorkspaceWithName:(unsigned long long)arg2;
 - (void)assertOnQueue;
+- (id)backingQueueIfExists;
 - (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
@@ -33,5 +40,6 @@
 - (bool)isEqual:(id)arg1;
 - (void)performAfter:(double)arg1 withBlock:(id /* block */)arg2;
 - (void)performAsync:(id /* block */)arg1;
+- (void)performAsync:(id /* block */)arg1 withHandoff:(id)arg2;
 
 @end

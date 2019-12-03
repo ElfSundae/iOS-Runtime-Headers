@@ -4,9 +4,11 @@
 
 @interface MPCModelRadioContentReference : NSObject <NSCopying, NSSecureCoding> {
     ICRadioContentReference * _ICRadioContentReference;
+    MPIdentifierSet * _referenceModelObjectIdentifiers;
 }
 
 @property (nonatomic, readonly) ICRadioContentReference *ICRadioContentReference;
+@property (nonatomic, readonly) MPIdentifierSet *referenceModelObjectIdentifiers;
 
 + (id)referenceWithMPModelObject:(id)arg1;
 + (bool)supportsSecureCoding;
@@ -17,5 +19,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithICRadioContentReference:(id)arg1;
+- (id)referenceModelObjectIdentifiers;
 
 @end

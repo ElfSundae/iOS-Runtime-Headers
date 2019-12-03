@@ -8,6 +8,7 @@
 @property (nonatomic, copy) UIApplicationShortcutIcon *icon;
 @property (nonatomic, copy) NSString *localizedSubtitle;
 @property (nonatomic, copy) NSString *localizedTitle;
+@property (nonatomic, copy) id targetContentIdentifier;
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, copy) NSDictionary *userInfo;
 

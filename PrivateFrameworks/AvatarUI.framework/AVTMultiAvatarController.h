@@ -2,12 +2,13 @@
    Image: /System/Library/PrivateFrameworks/AvatarUI.framework/AvatarUI
  */
 
-@interface AVTMultiAvatarController : NSObject <AVTAvatarDisplayingController, AVTNotifyingContainerViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate> {
-    AVTPlusButtonView * _addItemView;
+@interface AVTMultiAvatarController : NSObject <AVTAvatarDisplayingController, AVTAvatarRecordDataSourceObserver, AVTNotifyingContainerViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate> {
+    AVTCarouselPlusButtonView * _addItemView;
     <AVTAvatarListItem> * _addListItem;
     bool  _allowsCreate;
     <AVTViewCarouselLayout> * _avtViewLayout;
     AVTViewSession * _avtViewSession;
+    NSNumber * _cachedCanCreateValue;
     AVTCenteringCollectionViewDelegate * _centeringDelegate;
     UICollectionView * _collectionView;
     AVTZIndexEngagementListCollectionViewLayout * _collectionViewLayout;
@@ -31,11 +32,12 @@
     <AVTPresenterDelegate> * presenterDelegate;
 }
 
-@property (nonatomic, retain) AVTPlusButtonView *addItemView;
+@property (nonatomic, retain) AVTCarouselPlusButtonView *addItemView;
 @property (nonatomic, retain) <AVTAvatarListItem> *addListItem;
 @property (nonatomic) bool allowsCreate;
 @property (nonatomic, retain) <AVTViewCarouselLayout> *avtViewLayout;
 @property (nonatomic, retain) AVTViewSession *avtViewSession;
+@property (nonatomic) NSNumber *cachedCanCreateValue;
 @property (nonatomic, retain) AVTCenteringCollectionViewDelegate *centeringDelegate;
 @property (nonatomic, retain) UICollectionView *collectionView;
 @property (nonatomic, retain) AVTZIndexEngagementListCollectionViewLayout *collectionViewLayout;
@@ -70,6 +72,7 @@
 - (id)avtViewLayout;
 - (id)avtViewSession;
 - (void)buildCollectionViewAndConfigureLayoutIfNeeded;
+- (id)cachedCanCreateValue;
 - (id)cellForRecordItem:(id)arg1;
 - (id)centeringDelegate;
 - (id)collectionView;
@@ -82,6 +85,10 @@
 - (void)createAddItemViewIfNeeded;
 - (void)createAvatar;
 - (id)dataSource;
+- (void)dataSource:(id)arg1 didAddRecord:(id)arg2 atIndex:(unsigned long long)arg3;
+- (void)dataSource:(id)arg1 didEditRecord:(id)arg2 atIndex:(unsigned long long)arg3;
+- (void)dataSource:(id)arg1 didRemoveRecord:(id)arg2 atIndex:(unsigned long long)arg3;
+- (void)dealloc;
 - (double)decelerationRate;
 - (id)delegate;
 - (void)displayAvatarForRecord:(id)arg1 animated:(bool)arg2;
@@ -127,6 +134,7 @@
 - (void)setAllowsCreate:(bool)arg1 animated:(bool)arg2;
 - (void)setAvtViewLayout:(id)arg1;
 - (void)setAvtViewSession:(id)arg1;
+- (void)setCachedCanCreateValue:(id)arg1;
 - (void)setCenteringDelegate:(id)arg1;
 - (void)setCollectionView:(id)arg1;
 - (void)setCollectionViewLayout:(id)arg1;
@@ -141,6 +149,7 @@
 - (void)setRecordListItems:(id)arg1;
 - (void)setView:(id)arg1;
 - (bool)shouldCurrentlyDisplayedRecordTransitionToLive;
+- (void)significantRecordChangeInDataSource:(id)arg1;
 - (void)stopUsingAVTViewSessionSynchronously:(bool)arg1 completionHandler:(id /* block */)arg2;
 - (id)thumbnailRenderer;
 - (void)transitionCell:(id)arg1 indexPath:(id)arg2 toStartFocusingAnimated:(bool)arg3 session:(id)arg4 completionHandler:(id /* block */)arg5;
@@ -150,6 +159,7 @@
 - (void)transitionCenterCellToStartFocusing:(id)arg1 indexPath:(id)arg2;
 - (id)transitionCoordinator;
 - (void)transitionCurrentDisplayedRecordAnimated:(bool)arg1;
+- (void)updateCachedCanCreateValueIfNeeded;
 - (void)updateDisplayedRecordIfNeeded;
 - (void)useAVTViewFromSession:(id)arg1 withLayout:(id)arg2;
 - (id)view;

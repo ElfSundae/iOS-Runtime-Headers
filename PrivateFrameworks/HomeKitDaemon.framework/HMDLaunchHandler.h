@@ -2,18 +2,23 @@
    Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
  */
 
-@interface HMDLaunchHandler : HMFObject {
+@interface HMDLaunchHandler : HMFObject <HMFLogging> {
     NSObject<OS_dispatch_queue> * _handlerQueue;
     NSMutableSet * _registeredRelaunchClients;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *handlerQueue;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSMutableSet *registeredRelaunchClients;
+@property (readonly) Class superclass;
 
 + (bool)_fileExistsAtPath:(id)arg1;
 + (bool)_removeFileAtPath:(id)arg1 error:(id*)arg2;
 + (int)_setJetsamPriorityUsingCommand:(int)arg1;
 + (bool)_writeDictionary:(id)arg1 toFileURL:(id)arg2 error:(id*)arg3;
++ (id)logCategory;
 + (id)relaunchPlistPath;
 + (id)sharedHandler;
 

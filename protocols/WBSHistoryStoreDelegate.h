@@ -5,6 +5,7 @@
 
 @required
 
+- (void)historyStore:(id <WBSHistoryStore>)arg1 didAddVisits:(NSArray *)arg2;
 - (void)historyStore:(id <WBSHistoryStore>)arg1 didPrepareToDeleteWithDeletionPlan:(WBSHistoryDeletionPlan *)arg2;
 - (void)historyStore:(id <WBSHistoryStore>)arg1 didRemoveItems:(NSArray *)arg2;
 - (void)historyStore:(id <WBSHistoryStore>)arg1 didRemoveVisits:(NSArray *)arg2;

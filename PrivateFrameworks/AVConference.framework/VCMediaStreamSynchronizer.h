@@ -11,7 +11,6 @@
     id /* block */  _destinationHandler;
     unsigned int  _destinationPlayoutSampleRTPTimestamp;
     int  _destinationRTPTimestampWraps;
-    struct tagHANDLE { int x1; } * _hSoundPlayer;
     NSObject<OS_dispatch_queue> * _mediaStreamSynchronizerQueue;
     struct tagVCMediaStreamSyncTime { 
         double ntpTime; 
@@ -22,6 +21,7 @@
     double  _sourcePlayoutSampleSystemTime;
     int  _sourceRTPTimestampWraps;
     int  _sourceState;
+    struct tagHANDLE { int x1; } * _videoPlayerHandle;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -32,7 +32,7 @@
 + (long long)differenceBetweenRtpTimestamp:(unsigned int)arg1 rtpTimestamp:(unsigned int)arg2;
 
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })calculatePlayoutTimeWithRTPTimestamp:(unsigned int)arg1;
-- (void)callDestinationAlarmHandlerWithTimestamp:(unsigned int)arg1 pending:(int)arg2 behind:(double)arg3;
+- (void)callDestinationAlarmHandlerWithTimestamp:(unsigned int)arg1 isClosing:(bool)arg2;
 - (void)dealloc;
 - (id)initWithSourceSampleRate:(unsigned int)arg1 destinationSampleRate:(unsigned int)arg2;
 - (void)scheduleDestinationPlaybackWithRTPTimestamp:(unsigned int)arg1;

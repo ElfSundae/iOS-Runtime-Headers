@@ -10,7 +10,7 @@
     }  _windowFeatures;
 }
 
-@property (readonly) /* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*_apiObject;
+@property (readonly) struct Object { int (**x1)(); id x2; }*_apiObject;
 @property (nonatomic, readonly) NSNumber *_dialogDisplay;
 @property (nonatomic, readonly) NSNumber *_fullscreenDisplay;
 @property (nonatomic, readonly) NSNumber *_locationBarVisibility;
@@ -28,7 +28,7 @@
 @property (nonatomic, readonly) NSNumber *x;
 @property (nonatomic, readonly) NSNumber *y;
 
-- (/* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*)_apiObject;
+- (struct Object { int (**x1)(); id x2; }*)_apiObject;
 - (id)_dialogDisplay;
 - (id)_fullscreenDisplay;
 - (id)_locationBarVisibility;

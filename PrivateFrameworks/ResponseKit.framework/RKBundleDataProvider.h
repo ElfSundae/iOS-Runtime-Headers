@@ -28,7 +28,6 @@
 - (id)initWithAssetPlist:(id)arg1;
 - (id)initWithBundle:(id)arg1;
 - (id)localizationsByLanguageID;
-- (struct __LSMMap { }*)polarityMapForLanguageID:(id)arg1;
 - (id)polarityMapsByLanguageID;
 - (void)setLocalizationsByLanguageID:(id)arg1;
 - (id)stringsFromTable:(id)arg1 forLanguageIdentifier:(id)arg2;

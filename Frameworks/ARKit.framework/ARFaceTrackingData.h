@@ -2,7 +2,8 @@
    Image: /System/Library/Frameworks/ARKit.framework/ARKit
  */
 
-@interface ARFaceTrackingData : NSObject <ARResultData, NSCopying, NSSecureCoding> {
+@interface ARFaceTrackingData : NSObject <NSCopying, NSSecureCoding> {
+    NSUUID * _anchorIdentifier;
     struct vector<float, std::__1::allocator<float> > { 
         float *__begin_; 
         float *__end_; 
@@ -32,17 +33,14 @@
 
 @property (nonatomic, readonly) const float*blendShapeCoefficients;
 @property (nonatomic, readonly) unsigned long long blendShapeCoefficientsCount;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) void gazePoint;
-@property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) NSUUID *identifier;
 @property (nonatomic, readonly) const /* Warning: Unrecognized filer type: '' using 'void*' */ void**imageVertices;
 @property (nonatomic, readonly) bool isValid;
 @property (nonatomic, readonly) struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; } leftEyeTransform;
 @property (nonatomic, readonly) unsigned long long normalCount;
 @property (nonatomic, readonly) const /* Warning: Unrecognized filer type: '' using 'void*' */ void**normals;
 @property (nonatomic, readonly) struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; } rightEyeTransform;
-@property (readonly) Class superclass;
 @property (nonatomic, readonly) float tongueOut;
 @property (nonatomic, readonly) NSDictionary *trackingData;
 @property (nonatomic, readonly) NSError *trackingError;
@@ -56,17 +54,17 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_extractMetaDataAndTransformToMirrored:(bool)arg1;
-- (id)anchorsForCameraWithTransform:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })arg1 referenceOriginTransform:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })arg2 existingAnchors:(id)arg3 anchorsToRemove:(id)arg4;
 - (const float*)blendShapeCoefficients;
 - (unsigned long long)blendShapeCoefficientsCount;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)gazePoint;
+- (id)identifier;
 - (const /* Warning: Unrecognized filer type: '1' using 'void*' */ void**)imageVertices;
 - (id)initPrivate;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithTrackingData:(id)arg1;
-- (id)initWithTrackingData:(id)arg1 transformToMirrored:(bool)arg2;
+- (id)initWithTrackingData:(id)arg1 anchorIdentifier:(id)arg2;
+- (id)initWithTrackingData:(id)arg1 transformToMirrored:(bool)arg2 anchorIdentifier:(id)arg3;
 - (bool)isEqual:(id)arg1;
 - (bool)isValid;
 - (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })leftEyeTransform;

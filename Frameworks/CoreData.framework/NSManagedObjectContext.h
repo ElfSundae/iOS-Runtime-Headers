@@ -41,7 +41,8 @@
         unsigned int _pushSecureDelete : 1; 
         unsigned int _refreshAfterSave : 1; 
         unsigned int _allowAncillary : 1; 
-        unsigned int _reservedFlags : 2; 
+        unsigned int _generatedMutatedIDsNotification : 1; 
+        unsigned int _reservedFlags : 1; 
     }  _flags;
     int  _ignoreChangeNotification;
     id  _infoByGID;
@@ -51,14 +52,12 @@
     NSMutableSet * _lockedObjects;
     long long  _objectStoreLockCount;
     id  _parentObjectStore;
+    NSArray * _persistentStoreIdentifiers;
     id  _queueOwner;
     long long  _referenceCallbackRegistration;
     id  _referenceQueue;
     NSMutableSet * _refreshedObjects;
     void * _reserved1;
-    id  _reserved3;
-    id  _reserved4;
-    id  _reserved6;
     int  _spinLock;
     short  _undoTransactionID;
     NSMutableSet * _unprocessedChanges;
@@ -66,14 +65,17 @@
     NSMutableSet * _unprocessedInserts;
 }
 
+@property (setter=_setPersistentStoresScope:, copy) NSArray *_persistentStoresScope;
 @property (nonatomic) bool automaticallyMergesChangesFromParent;
 @property (readonly) unsigned long long concurrencyType;
-@property (nonatomic, retain) NSString *debugName;
 @property (nonatomic, readonly) NSSet *deletedObjects;
 @property (nonatomic, readonly) bool hasChanges;
+@property (nonatomic, retain) NSString *ic_debugName;
+@property (nonatomic, readonly) bool ic_isMainThreadContext;
 @property (nonatomic, readonly) NSSet *insertedObjects;
 @property (retain) id mergePolicy;
 @property (copy) NSString *name;
+@property (nonatomic, retain) NSString *name;
 @property (retain) NSManagedObjectContext *parentContext;
 @property (retain) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic) bool propagatesDeletesAtEndOfEvent;
@@ -100,13 +102,16 @@
 + (void)mergeChangesFromRemoteContextSave:(id)arg1 intoContexts:(id)arg2;
 + (id)new;
 
+- (void)_addObjectIDsInsertUpdatedByDATriggers:(id)arg1;
+- (void)_addObjectIDsUpdatedByDATriggers:(id)arg1;
 - (void)_addObjectIDsUpdatedByTriggers:(id)arg1;
+- (void)_advanceQueryGenerationForSave;
 - (id)_allOrderKeysForDestination:(id)arg1 inRelationship:(id)arg2 error:(id*)arg3;
 - (bool)_allowAncillaryEntities;
 - (bool)_attemptCoalesceChangesForFetch;
 - (void)_automaticallyMergeChangesFromContextDidSaveNotification:(id)arg1;
 - (unsigned int)_batchRetainedObjects:(id*)arg1 forCount:(unsigned int)arg2 withIDs:(id*)arg3 optionalHandler:(id)arg4 withInlineStorage:(bool)arg5;
-- (void)_changeIDsForManagedObjects:(id)arg1 toIDs:(id)arg2;
+- (id)_changeIDsForManagedObjects:(id)arg1 toIDs:(id)arg2;
 - (id)_changeTrackingToken__;
 - (bool)_checkObjectForExistenceAndCacheRow:(id)arg1;
 - (void)_clearChangedThisTransaction:(id)arg1;
@@ -142,6 +147,7 @@
 - (id)_executeAsynchronousFetchRequest:(id)arg1;
 - (unsigned long long)_fetchLimitForRequest:(id)arg1;
 - (void)_forceInsertionForObject:(id)arg1;
+- (void)_forceMoveInsertToUpdatedList:(id)arg1;
 - (void)_forceRegisterLostFault:(id)arg1;
 - (void)_forceRemoveFromDeletedObjects:(id)arg1;
 - (void)_forgetObject:(id)arg1 propagateToObjectStore:(bool)arg2;
@@ -165,7 +171,7 @@
 - (bool)_isImportContext;
 - (bool)_isPreflightSaveInProgress;
 - (bool)_isXPCServerContext;
-- (void)_managedObjectContextEditor:(id)arg1 didCommit:(bool)arg2 contextInfo:(struct { id x1; void *x2; }*)arg3;
+- (void)_managedObjectContextEditor:(id)arg1 didCommit:(bool)arg2 contextInfo:(struct { id x1; SEL x2; void *x3; }*)arg3;
 - (id)_mappedForParentStoreID:(id)arg1;
 - (void)_mergeChangesFromDidSaveDictionary:(id)arg1 usingObjectIDs:(bool)arg2;
 - (void)_mergeChangesFromRemoteContextSave:(id)arg1;
@@ -184,6 +190,7 @@
 - (id)_parentStore;
 - (void)_performCoordinatorActionAndWait:(id /* block */)arg1;
 - (void)_persistentStoreDidUpdateAdditionalRowsWithNewVersions:(id)arg1;
+- (id)_persistentStoresScope;
 - (void)_postContextDidMergeChangesNotificationWithUserInfo:(id)arg1;
 - (void)_postContextDidSaveNotificationWithUserInfo:(id)arg1;
 - (void)_postObjectsDidChangeNotificationWithUserInfo:(id)arg1;
@@ -210,13 +217,14 @@
 - (void)_registerAsyncReferenceCallback;
 - (void)_registerClearStateWithUndoManager;
 - (void)_registerForNotificationsWithCoordinator:(id)arg1;
+- (void)_registerMutatedObjectIDsNotifications;
 - (void)_registerObject:(id)arg1 withID:(id)arg2;
 - (void)_registerUndoForDeletedObjects:(id)arg1 withDeletedChanges:(id)arg2;
 - (void)_registerUndoForInsertedObjects:(id)arg1;
 - (void)_registerUndoForModifiedObjects:(id)arg1;
 - (void)_registerUndoForOperation:(SEL)arg1 withObjects:(id)arg2 withExtraArguments:(id)arg3;
 - (void)_resetAllChanges;
-- (id)_retainedCurrentQueryGeneration;
+- (id)_retainedCurrentQueryGeneration:(id)arg1;
 - (id)_retainedObjectWithID:(id)arg1;
 - (id)_retainedObjectWithID:(id)arg1 error:(id*)arg2;
 - (id)_retainedObjectWithID:(id)arg1 optionalHandler:(id)arg2 withInlineStorage:(bool)arg3;
@@ -232,6 +240,7 @@
 - (void)_setIsUbiquityImportContext:(bool)arg1;
 - (void)_setParentContext:(id)arg1;
 - (void)_setPersistentStoreCoordinator:(id)arg1;
+- (void)_setPersistentStoresScope:(id)arg1;
 - (void)_setPostSaveNotifications:(bool)arg1;
 - (bool)_setQueryGenerationFromToken:(id)arg1 error:(id*)arg2;
 - (void)_setRetainsRegisteredObjects:(bool)arg1;
@@ -278,11 +287,11 @@
 - (void)detectConflictsForObject:(id)arg1;
 - (void)discardEditing;
 - (void)encodeWithCoder:(id)arg1;
+- (bool)evictFuture:(id)arg1 withError:(id*)arg2;
 - (id)executeFetchRequest:(id)arg1 error:(id*)arg2;
 - (id)executeRequest:(id)arg1 error:(id*)arg2;
 - (id)executeRequest:(id)arg1 withContext:(id)arg2 error:(id*)arg3;
 - (id)existingObjectWithID:(id)arg1 error:(id*)arg2;
-- (void)finalize;
 - (bool)hasChanges;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
@@ -383,12 +392,17 @@
 
 // Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
 
-- (id)debugName;
+- (id)ic_debugName;
+- (bool)ic_isMainThreadContext;
+- (void)ic_performBlock:(id /* block */)arg1 andPerformBlockOnMainThread:(id /* block */)arg2;
+- (void)ic_performBlockAndWait:(id /* block */)arg1 andPerformBlockAndWaitOnMainThread:(id /* block */)arg2;
 - (bool)ic_save;
 - (bool)ic_saveWithLogDescription:(id)arg1;
-- (void)setDebugName:(id)arg1;
+- (void)setIc_debugName:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
+
++ (bool)shouldHavePhotoLibrary;
 
 - (id)deleteObjectsWithIncrementalSave:(id)arg1;
 - (id)enumerateObjectsFromFetchRequest:(id)arg1 count:(unsigned long long*)arg2 batchSize:(unsigned long long)arg3 usingBlock:(id /* block */)arg4;
@@ -396,11 +410,68 @@
 - (id)enumerateWithIncrementalSaveUsingObjects:(id)arg1 shouldRefreshAfterSave:(bool)arg2 withBlock:(id /* block */)arg3;
 - (id)enumerateWithIncrementalSaveUsingObjects:(id)arg1 withBlock:(id /* block */)arg2;
 - (bool)isUserInterfaceContext;
+- (id)libraryBundle;
 - (id)pathManager;
 - (id)photoLibrary;
 - (bool)pl_executeBatchUpdateRequest:(id)arg1 withBatchSize:(unsigned long long)arg2 error:(id*)arg3;
+- (bool)pl_performWithOptions:(unsigned long long)arg1 andBlock:(id /* block */)arg2;
 - (void)pl_refresh;
 - (id)pl_resultWithError:(id*)arg1 block:(id /* block */)arg2;
+
+// Image: /System/Library/PrivateFrameworks/PodcastsKit.framework/PodcastsKit
+
+- (id)_allOrderedSyncInfoSinceRevision:(long long)arg1 revisionProperty:(id)arg2;
+- (long long)_largestRevisionForRevisionProperty:(id)arg1;
+- (unsigned long long)_nextSortOrderWithRequest:(id)arg1;
+- (id)_objectsInEntity:(id)arg1 predicate:(id)arg2 sortDescriptors:(id)arg3 resultType:(unsigned long long)arg4 returnsObjectsAsFaults:(bool)arg5 limit:(long long)arg6;
+- (id)_objectsInEntity:(id)arg1 predicate:(id)arg2 sortDescriptors:(id)arg3 resultType:(unsigned long long)arg4 returnsObjectsAsFaults:(bool)arg5 limit:(long long)arg6 propertiesToFetch:(id)arg7 batchSize:(unsigned long long)arg8;
+- (id)_predicateForUuid:(id)arg1;
+- (id)allOrderedSyncInfoSinceRevision:(long long)arg1;
+- (id)allOrderedSyncInfoWithArtworkUpdatesSinceRevision:(long long)arg1;
+- (id)cacheKeyForObject:(id)arg1;
+- (id)cacheKeyForUuid:(id)arg1 entityName:(id)arg2;
+- (unsigned long long)countOfObjectsInEntity:(id)arg1 predicate:(id)arg2;
+- (unsigned long long)countOfPodcasts;
+- (long long)currentSyncAnchorRevision;
+- (id)dictionaryForEpisodeUuid:(id)arg1;
+- (id)dictionaryForPodcastUuid:(id)arg1;
+- (id)dictionaryWithProperties:(id)arg1 episodeUuid:(id)arg2;
+- (id)dictionaryWithProperties:(id)arg1 podcastUuid:(id)arg2;
+- (id)episodeForUuid:(id)arg1;
+- (id)episodeForUuid:(id)arg1 returnsObjectAsFault:(bool)arg2;
+- (id)episodeIdWithUuid:(id)arg1;
+- (id)episodeIdsForPodcastUuid:(id)arg1 sortOptions:(int)arg2;
+- (id)existingEpisodeWithID:(id)arg1;
+- (id)existingPodcastPlaylistSettingsWithID:(id)arg1;
+- (id)existingPodcastWithID:(id)arg1;
+- (unsigned long long)nextSortOrderForNotSubscribedPodcasts;
+- (unsigned long long)nextSortOrderForSubscribedPodcasts;
+- (id)objectDictionariesInEntity:(id)arg1 predicate:(id)arg2 sortDescriptors:(id)arg3 propertiesToFetch:(id)arg4 includeObjectId:(bool)arg5;
+- (id)objectDictionariesInEntity:(id)arg1 predicate:(id)arg2 sortDescriptors:(id)arg3 propertiesToFetch:(id)arg4 includeObjectId:(bool)arg5 limit:(unsigned long long)arg6 distinct:(bool)arg7 groupBy:(id)arg8;
+- (id)objectDictionaryForUuid:(id)arg1 entityName:(id)arg2;
+- (id)objectDictionaryForUuid:(id)arg1 entityName:(id)arg2 byAddingComputedProperties:(id)arg3 toFetchedObjectDictionary:(id)arg4;
+- (id)objectDictionaryForUuid:(id)arg1 propertiesToFetch:(id)arg2 entityName:(id)arg3;
+- (id)objectForUuid:(id)arg1 entityName:(id)arg2;
+- (id)objectForUuid:(id)arg1 entityName:(id)arg2 returnsObjectAsFault:(bool)arg3;
+- (id)objectIdForUuid:(id)arg1 entityName:(id)arg2;
+- (id)objectIdsInEntity:(id)arg1 predicate:(id)arg2 sortDescriptors:(id)arg3;
+- (id)objectsInEntity:(id)arg1 predicate:(id)arg2 propertiesToFetch:(id)arg3 batchSize:(unsigned long long)arg4;
+- (id)objectsInEntity:(id)arg1 predicate:(id)arg2 sortDescriptors:(id)arg3;
+- (id)objectsInEntity:(id)arg1 predicate:(id)arg2 sortDescriptors:(id)arg3 returnsObjectsAsFaults:(bool)arg4;
+- (id)objectsInEntity:(id)arg1 predicate:(id)arg2 sortDescriptors:(id)arg3 returnsObjectsAsFaults:(bool)arg4 limit:(long long)arg5;
+- (void)performBlockAndWaitWithSave:(id /* block */)arg1;
+- (id)podcastForFeedUrl:(id)arg1;
+- (id)podcastForPodcastPID:(long long)arg1;
+- (id)podcastForUuid:(id)arg1;
+- (id)podcastIdWithUuid:(id)arg1;
+- (id)podcastPlaylistSettingsForUuid:(id)arg1;
+- (bool)saveInCurrentBlock;
+- (id)syncInfosByUuids:(id)arg1;
+- (id)titlesOfObjectsInEntity:(id)arg1 predicate:(id)arg2;
+- (id)uuidCache;
+- (id)valueForProperty:(id)arg1 episodeUuid:(id)arg2;
+- (id)valueForProperty:(id)arg1 objectUuid:(id)arg2 entityName:(id)arg3;
+- (id)valueForProperty:(id)arg1 podcastUuid:(id)arg2;
 
 // Image: /System/Library/PrivateFrameworks/SlideshowKit.framework/Frameworks/OpusFoundation.framework/OpusFoundation
 

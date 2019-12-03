@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PassKitCore.framework/PassKitCore
  */
 
-@interface PKPaymentProvisioningController : NSObject <CLLocationManagerDelegate, PKPaymentWebServiceDelegate> {
+@interface PKPaymentProvisioningController : NSObject <CLLocationManagerDelegate, PKPaymentServiceDelegate, PKPaymentWebServiceDelegate> {
     NSSet * _allowedFeatureIdentifiers;
     NSArray * _allowedPaymentNetworks;
     NSMutableArray * _associatedCredentials;
@@ -19,7 +19,9 @@
     NSObject<OS_dispatch_source> * _locationTimer;
     PKPaymentSetupMoreInfoItem * _marketExpressInfoItem;
     NSArray * _moreInfoItems;
+    PKPaymentService * _paymentService;
     PKPaymentSetupProductModel * _paymentSetupProductModel;
+    bool  _preflightCompleted;
     NSString * _productIdentifier;
     PKPaymentPass * _provisionedPass;
     NSString * _provisioningNonce;
@@ -32,6 +34,7 @@
     PKPaymentRequirementsResponse * _requirementsResponse;
     long long  _state;
     NSSet * _supportedFeatureIdentifierStrings;
+    NSSet * _supportedFeatureIdentifierStringsForAccountProvisioning;
     unsigned long long  _targetDeviceSupportsTypeF;
     NSMutableSet * _tasks;
     PKPaymentWebService * _webService;
@@ -49,6 +52,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) NSString *localizedProgressDescription;
 @property (nonatomic, readonly) NSArray *moreInfoItems;
+@property (getter=isPasscodeUpgradeRequired, nonatomic, readonly) bool passcodeUpgradeRequired;
 @property (nonatomic, readonly) PKPaymentSetupProductModel *paymentSetupProductModel;
 @property (nonatomic, readonly, copy) NSString *productIdentifier;
 @property (nonatomic, readonly) PKPaymentPass *provisionedPass;
@@ -75,6 +79,8 @@
 - (id)_doesDisplayableErrorConstitutePreflightFailure:(id)arg1;
 - (void)_downloadMoreInfoItemURLs:(id)arg1 withMetadata:(id)arg2 completion:(id /* block */)arg3;
 - (void)_downloadRemoteAssetsForPaymentPass:(id)arg1 paymentCredential:(id)arg2 completion:(id /* block */)arg3;
+- (void)_endRequiringUpgradedPasscodeIfNecessary;
+- (bool)_featureApplicationInValidStateToPresent:(id)arg1;
 - (id)_fetchOrCreateProductsForIdentifier:(unsigned long long)arg1;
 - (id)_filterPaymentSetupProducts:(id)arg1;
 - (void)_handleProvisioningError:(id)arg1 forRequest:(id)arg2;
@@ -98,6 +104,9 @@
 - (void)_setState:(long long)arg1 notify:(bool)arg2;
 - (void)_setupAccountCredentialForProvisioning:(id)arg1 completion:(id /* block */)arg2;
 - (void)_startLocationSearchWithTimeout:(double)arg1 completion:(id /* block */)arg2;
+- (void)_startRequiringUpgradedPasscodeWithPasscodeMeetsPolicy:(bool)arg1;
+- (id)_supportedFeatureIdentifierStrings;
+- (id)_supportedFeatureIdentifierStringsForAccountProvisioning;
 - (void)_updateCredentialWithPaymentPass:(id)arg1 completion:(id /* block */)arg2;
 - (void)_updateCredentialWithPaymentPassAssets:(id)arg1 completion:(id /* block */)arg2;
 - (void)_updateLocalizedProgressAndInvalidateTimer;
@@ -114,24 +123,33 @@
 - (void)browsableBankAppsWithCompletionHandler:(id /* block */)arg1;
 - (id)credentialProvisioningQueue;
 - (void)dealloc;
+- (void)declineTerms;
 - (id)displayableErrorForError:(id)arg1;
 - (id)displayableErrorForProvisioningError:(id)arg1;
 - (id)eligibilityResponse;
+- (void)featureApplicationAdded:(id)arg1;
+- (void)featureApplicationChanged:(id)arg1;
+- (void)featureApplicationRemoved:(id)arg1;
 - (bool)hasCreditPaymentPass;
 - (bool)hasDebitPaymentPass;
 - (bool)hasPaymentPass;
 - (void)ingestPaymentPassForCredential:(id)arg1 completion:(id /* block */)arg2;
 - (id)initWithWebService:(id)arg1;
 - (id)initWithWebService:(id)arg1 paymentSetupRequest:(id)arg2;
+- (bool)isPasscodeUpgradeRequired;
 - (id)localizedProgressDescription;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
+- (void)makePaymentPassDefault:(id)arg1;
 - (id)moreInfoItems;
 - (void)noteProvisioningUserInterfaceDidAppear;
 - (void)noteProvisioningUserInterfaceDidDisappear;
+- (void)passcodeUpgradeCompleted:(bool)arg1;
 - (id)passesWithPaymentMethodType:(unsigned long long)arg1;
 - (id)paymentSetupProductModel;
 - (void)paymentWebService:(id)arg1 didCompleteTSMConnectionForTaskID:(unsigned long long)arg2;
 - (void)paymentWebService:(id)arg1 didQueueTSMConnectionForTaskID:(unsigned long long)arg2;
+- (void)performDeviceCheckInIfNeeded:(id /* block */)arg1;
+- (void)preflightPasscodeUpgradeWithCompletion:(id /* block */)arg1;
 - (void)preflightWithCompletion:(id /* block */)arg1;
 - (id)productIdentifier;
 - (id)provisionedPass;
@@ -157,7 +175,7 @@
 - (void)resolveRequirementsUsingProduct:(id)arg1;
 - (void)resolveRequirementsUsingProvisioningMethodMetadata:(id)arg1;
 - (void)retrieveAccountCredentials:(id /* block */)arg1;
-- (void)retrieveAllAvaialbleCredentials:(id /* block */)arg1;
+- (void)retrieveAllAvailableCredentials:(id /* block */)arg1;
 - (void)retrieveRemoteCredentials:(id /* block */)arg1;
 - (void)setAllowedFeatureIdentifiers:(id)arg1;
 - (void)setAllowedPaymentNetworks:(id)arg1;
@@ -168,7 +186,6 @@
 - (void)setupFeatures:(id /* block */)arg1;
 - (void)setupProductForProvisioning:(id)arg1 includePurchases:(bool)arg2 withCompletionHandler:(id /* block */)arg3;
 - (long long)state;
-- (id)supportedFeatureIdentifierStrings;
 - (bool)suppressDefaultCardholderNameField;
 - (void)updatePaymentSetupProductModelWithCompletionHandler:(id /* block */)arg1;
 - (void)updateRemoteCredentials:(id)arg1 withCompletionHandler:(id /* block */)arg2;
@@ -176,6 +193,7 @@
 - (void)validatePreconditionsAndRegister:(id /* block */)arg1;
 - (void)validatePreconditionsRegisterAndAssociateRemoteCredentials:(id /* block */)arg1;
 - (id)webService;
+- (bool)willPassWithUniqueIdentifierAutomaticallyBecomeDefault:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
 

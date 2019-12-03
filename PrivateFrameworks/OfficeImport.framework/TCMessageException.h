@@ -13,7 +13,7 @@
 + (void)raise:(id)arg1;
 + (void)raiseUntaggedMessage:(id)arg1;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)getEntry;
 - (id)initWithMessage:(id)arg1;

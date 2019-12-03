@@ -7,7 +7,6 @@
     NSArray * _invalidationObservers;
     MPCMediaRemoteMiddleware * _middleware;
     MPCFuture * _playbackStateFuture;
-    MPCPlayerRequest * _playerRequest;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -18,21 +17,18 @@
 @property (nonatomic, readonly) NSArray *invalidationObservers;
 @property (nonatomic, retain) MPCMediaRemoteMiddleware *middleware;
 @property (nonatomic, retain) MPCFuture *playbackStateFuture;
-@property (nonatomic, retain) MPCPlayerRequest *playerRequest;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)execute;
-- (id)initWithMiddleware:(id)arg1 playerRequest:(id)arg2;
+- (id)initWithMiddleware:(id)arg1;
 - (id /* block */)invalidationHandler;
 - (id)invalidationObservers;
 - (id)middleware;
 - (id)playbackStateFuture;
-- (id)playerRequest;
 - (void)setInvalidationHandler:(id /* block */)arg1;
 - (void)setMiddleware:(id)arg1;
 - (void)setPlaybackStateFuture:(id)arg1;
-- (void)setPlayerRequest:(id)arg1;
 - (id)timeoutDescription;
 
 @end

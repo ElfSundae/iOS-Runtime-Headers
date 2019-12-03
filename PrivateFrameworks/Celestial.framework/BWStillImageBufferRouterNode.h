@@ -37,7 +37,7 @@
 - (void)didReachEndOfDataForInput:(id)arg1;
 - (void)didSelectFormat:(id)arg1 forInput:(id)arg2;
 - (void)handleNodeError:(id)arg1 forInput:(id)arg2;
-- (void)handleStillImagePrewarmWithRequestedStillImageCaptureSettings:(id)arg1 resolvedStillImageCaptureSettings:(id)arg2 resolvedPhotoManifest:(id)arg3 forInput:(id)arg4;
+- (void)handleStillImagePrewarmWithRequestedStillImageCaptureSettings:(id)arg1 resolvedStillImageCaptureSettings:(id)arg2 photoManifest:(id)arg3 forInput:(id)arg4;
 - (void)handleStillImageReferenceFrameBracketedCaptureSequenceNumber:(int)arg1 forInput:(id)arg2;
 - (id)initWithInputPortTypes:(id)arg1 HDRSupported:(bool)arg2 SISSupported:(bool)arg3 GNRSISSupported:(bool)arg4 LTMHDRSupported:(bool)arg5 depthDataDeliveryEnabled:(bool)arg6;
 - (id)inputForPortType:(id)arg1;

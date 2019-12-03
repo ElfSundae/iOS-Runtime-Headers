@@ -2,30 +2,21 @@
    Image: /System/Library/PrivateFrameworks/IDS.framework/IDS
  */
 
-@interface _IDSDevice : NSObject <IDSDaemonListenerProtocol> {
+@interface _IDSDevice : NSObject {
     CUTWeakReference * _account;
     bool  _cloudConnected;
     bool  _connected;
     bool  _immutableCloudConnected;
     NSDictionary * _info;
-    NSInputStream * _inputStreamForSocket;
     bool  _nearby;
     int  _nearbyToken;
-    id /* block */  _openSocketCompletionHandler;
-    NSString * _openSocketCompletionHandlerID;
-    NSObject<OS_dispatch_queue> * _openSocketCompletionHandlerQueue;
-    NSOutputStream * _outputStreamForSocket;
-    NSString * _serviceToken;
-    int  _socket;
+    CUTWeakReference * _serviceReference;
 }
 
 @property (getter=isCloudConnected, nonatomic, readonly) bool cloudConnected;
 @property (getter=isConnected, nonatomic, readonly) bool connected;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) NSString *deviceColor;
 @property (nonatomic, readonly) NSString *enclosureColor;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSArray *identities;
 @property (nonatomic, readonly) bool isActive;
 @property (nonatomic, readonly) bool isDefaultPairedDevice;
@@ -47,7 +38,6 @@
 @property (nonatomic, readonly) NSData *pushToken;
 @property (nonatomic, readonly) NSString *service;
 @property (nonatomic, readonly) unsigned long long serviceMinCompatibilityVersion;
-@property (readonly) Class superclass;
 @property (nonatomic, readonly) bool supportsApplePay;
 @property (nonatomic, readonly) bool supportsHandoff;
 @property (nonatomic, readonly) bool supportsMMSRelay;
@@ -61,13 +51,10 @@
 - (void).cxx_destruct;
 - (void)_addIdentity:(id)arg1;
 - (void)_cloudConnectedStateChanged;
-- (void)_connect;
 - (void)_connectedStateChanged;
 - (void)_nearbyStateChanged;
 - (void)_setAccount:(id)arg1;
-- (void)closeSocket:(int)arg1;
-- (void)closeSocketForDomain:(id)arg1;
-- (void)closeStreamPairWithInputStream:(id)arg1 outputStream:(id)arg2;
+- (void)_setService:(id)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)deviceColor;
@@ -90,7 +77,6 @@
 - (id)modelIdentifier;
 - (id)name;
 - (id)nsuuid;
-- (void)openSocketWithOptions:(id)arg1 completionHandler:(id /* block */)arg2 onQueue:(id)arg3;
 - (unsigned long long)pairingProtocolVersion;
 - (id)productBuildVersion;
 - (id)productName;
@@ -99,8 +85,6 @@
 - (id)service;
 - (unsigned long long)serviceMinCompatibilityVersion;
 - (void)setNSUUID:(id)arg1;
-- (void)setStreamPairWithInputStream:(id)arg1 outputStream:(id)arg2;
-- (int)socketForDomain:(id)arg1;
 - (bool)supportsApplePay;
 - (bool)supportsHandoff;
 - (bool)supportsMMSRelay;
@@ -110,6 +94,5 @@
 - (bool)supportsiCloudPairing;
 - (id)uniqueID;
 - (id)uniqueIDOverride;
-- (void)xpcObject:(id)arg1 objectContext:(id)arg2;
 
 @end

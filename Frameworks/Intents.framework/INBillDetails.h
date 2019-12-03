@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface INBillDetails : NSObject <NSCopying, NSSecureCoding> {
+@interface INBillDetails : NSObject <INJSONSerializable, NSCopying, NSSecureCoding> {
     INCurrencyAmount * _amountDue;
     INBillPayee * _billPayee;
     long long  _billType;
@@ -16,16 +16,22 @@
 @property (nonatomic, copy) INCurrencyAmount *amountDue;
 @property (nonatomic, copy) INBillPayee *billPayee;
 @property (nonatomic) long long billType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, copy) NSDateComponents *dueDate;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, copy) INCurrencyAmount *lateFee;
 @property (nonatomic, copy) INCurrencyAmount *minimumDue;
 @property (nonatomic, copy) NSDateComponents *paymentDate;
 @property (nonatomic) long long paymentStatus;
+@property (readonly) Class superclass;
 
++ (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
+- (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
 - (id)amountDue;
 - (id)billPayee;
 - (long long)billType;

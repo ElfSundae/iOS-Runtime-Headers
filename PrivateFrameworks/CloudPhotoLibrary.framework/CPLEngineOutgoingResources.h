@@ -15,6 +15,7 @@
 @property (nonatomic, readonly) unsigned long long sizeOfResourcesToUpload;
 @property (readonly) Class superclass;
 
+- (unsigned long long)availableResourceSizeForUploadIdentifier:(id)arg1;
 - (unsigned long long)countOfOriginalImages;
 - (unsigned long long)countOfOriginalOthers;
 - (unsigned long long)countOfOriginalVideos;
@@ -26,6 +27,6 @@
 - (bool)shouldUploadResource:(id)arg1;
 - (unsigned long long)sizeOfOriginalResourcesToUpload;
 - (unsigned long long)sizeOfResourcesToUpload;
-- (bool)storeResourcesToUpload:(id)arg1 withUploadIdentifier:(id)arg2 error:(id*)arg3;
+- (bool)storeResourcesToUpload:(id)arg1 withUploadIdentifier:(id)arg2 shouldCheckResources:(bool)arg3 error:(id*)arg4;
 
 @end

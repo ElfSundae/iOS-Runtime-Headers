@@ -9,7 +9,7 @@
     NSMutableDictionary * _coalescedJobResultsByAssetLocalIdentifier;
     NSObject<OS_dispatch_queue> * _commandDispatchQueue;
     NSMapTable * _jobToAssetsAnalyzingOperationMapTable;
-    unsigned long long  _lastPerformedJobScenario;
+    _Atomic unsigned long long  _lastPerformedJobScenario;
     NSNumber * _lastRecordedDarkWakeState;
     unsigned int  _visionAlgorithmUmbrellaVersion;
 }
@@ -21,10 +21,13 @@
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned int visionAlgorithmUmbrellaVersion;
 
++ (id)analysisLog;
 + (id /* block */)assetResourceLargestToSmallestComparator;
 + (id /* block */)assetResourceSmallestToLargestComparator;
 + (id)defaultImageCreationOptions;
++ (void)disableANEForRequest:(id)arg1;
 + (void)initialize;
++ (id)preferredAssetResourcesForAnalyzingAsset:(id)arg1;
 
 - (void).cxx_destruct;
 - (void)_checkForDarkWakeStateTransition;
@@ -53,15 +56,12 @@
 - (id)localFileURLForAssetResource:(id)arg1 error:(id*)arg2;
 - (void)performVisionForcedCleanup;
 - (void)performVisionForcedCleanupWithOptions:(id)arg1;
-- (id)preferredAssetResourcesForAnalyzingAsset:(id)arg1;
 - (bool)processAsset:(id)arg1 error:(id*)arg2;
 - (void)setAnalysisJobCancelled:(bool)arg1;
 - (void)setVisionAlgorithmUmbrellaVersion:(unsigned int)arg1;
 - (void)shutdown;
-- (bool)startAcknowledgeDeletionsJob:(id)arg1 error:(id*)arg2;
 - (bool)startAnalysisJob:(id)arg1 error:(id*)arg2;
 - (void)startup;
-- (bool)stopAcknowledgeDeletionsJob:(id)arg1 error:(id*)arg2;
 - (bool)stopAnalysisJob:(id)arg1 error:(id*)arg2;
 - (bool)supportsCoalescingResults;
 - (unsigned int)visionAlgorithmUmbrellaVersion;

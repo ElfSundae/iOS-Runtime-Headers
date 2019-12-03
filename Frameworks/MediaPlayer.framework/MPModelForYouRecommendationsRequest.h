@@ -5,10 +5,12 @@
 @interface MPModelForYouRecommendationsRequest : MPStoreModelRequest {
     NSURL * _customForYouURL;
     long long  _filteringPolicy;
+    long long  _requestEndpoint;
 }
 
 @property (nonatomic, copy) NSURL *customForYouURL;
 @property (nonatomic) long long filteringPolicy;
+@property (nonatomic) long long requestEndpoint;
 
 + (id)allSupportedItemProperties;
 + (id)allSupportedSectionProperties;
@@ -22,7 +24,9 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)newOperationWithResponseHandler:(id /* block */)arg1;
+- (long long)requestEndpoint;
 - (void)setCustomForYouURL:(id)arg1;
 - (void)setFilteringPolicy:(long long)arg1;
+- (void)setRequestEndpoint:(long long)arg1;
 
 @end

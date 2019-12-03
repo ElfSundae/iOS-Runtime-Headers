@@ -10,6 +10,7 @@
     bool  isWorking;
     PDFRenderingProperties * renderingProperties;
     bool  willForceUpdate;
+    NSObject<OS_dispatch_queue> * workQueue;
 }
 
 - (void).cxx_destruct;

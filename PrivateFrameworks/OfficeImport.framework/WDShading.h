@@ -12,9 +12,9 @@
 + (id)autoForegroundColor;
 + (id)nilShading;
 
+- (void).cxx_destruct;
 - (id)background;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)foreground;
 - (unsigned long long)hash;

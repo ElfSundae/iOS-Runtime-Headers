@@ -6,6 +6,7 @@
     unsigned long long  _batchSize;
     _CDEventIndexerBookmark * _bookmark;
     id /* block */  _completion;
+    long long  _currentVersion;
     NSDate * _indexDate;
     NSObject<OS_os_transaction> * _transaction;
 }
@@ -13,6 +14,7 @@
 @property (nonatomic) unsigned long long batchSize;
 @property (nonatomic, retain) _CDEventIndexerBookmark *bookmark;
 @property (nonatomic, copy) id /* block */ completion;
+@property (nonatomic) long long currentVersion;
 @property (nonatomic, readonly) NSDate *indexDate;
 @property (nonatomic, retain) NSObject<OS_os_transaction> *transaction;
 
@@ -20,6 +22,7 @@
 - (unsigned long long)batchSize;
 - (id)bookmark;
 - (id /* block */)completion;
+- (long long)currentVersion;
 - (id)description;
 - (id)indexDate;
 - (id)init;
@@ -28,6 +31,7 @@
 - (void)setBatchSize:(unsigned long long)arg1;
 - (void)setBookmark:(id)arg1;
 - (void)setCompletion:(id /* block */)arg1;
+- (void)setCurrentVersion:(long long)arg1;
 - (void)setTransaction:(id)arg1;
 - (id)transaction;
 

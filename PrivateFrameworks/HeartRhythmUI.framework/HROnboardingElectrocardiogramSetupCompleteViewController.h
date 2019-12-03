@@ -4,8 +4,6 @@
 
 @interface HROnboardingElectrocardiogramSetupCompleteViewController : HROnboardingBaseViewController <HRLinkTextViewDelegate, HRStackedButtonViewDelegate> {
     UIActivityIndicatorView * _activityIndicatorView;
-    UIImageView * _appleWatchImageView;
-    HRLinkTextView * _atrialFibrillationLearnMoreLinkTextView;
     UILabel * _bodyLabel;
     UILabel * _classificationLabel;
     NSLayoutConstraint * _contentViewBottomConstraint;
@@ -20,8 +18,6 @@
 }
 
 @property (nonatomic, retain) UIActivityIndicatorView *activityIndicatorView;
-@property (nonatomic, retain) UIImageView *appleWatchImageView;
-@property (nonatomic, retain) HRLinkTextView *atrialFibrillationLearnMoreLinkTextView;
 @property (nonatomic, retain) UILabel *bodyLabel;
 @property (nonatomic, retain) UILabel *classificationLabel;
 @property (nonatomic, retain) NSLayoutConstraint *contentViewBottomConstraint;
@@ -37,9 +33,6 @@
 - (void).cxx_destruct;
 - (id)_bodyFont;
 - (id)_bodyFontTextStyle;
-- (double)_bodyLastBaselineToAtrialFibrillationLearnMoreFirstBaseline;
-- (id)_bodyTextForSetupCompleteState:(long long)arg1;
-- (double)_cardBottomToBodyFirstBaseline;
 - (id)_classificationAttributedTextForElectrocardiogram:(id)arg1;
 - (double)_classificationTextDistance;
 - (void)_electrocardiogramCardViewTapped:(id)arg1;
@@ -48,13 +41,11 @@
 - (void)_setUpConstraints;
 - (void)_setUpElectrocardiogramQuery;
 - (void)_setUpUI;
-- (bool)_shouldShowAtrialFibrillationLearnMore;
+- (void)_setupBodyLabelForSetupCompleteState:(long long)arg1;
 - (void)_stopElectrocardiogramQuery;
-- (double)_titleLastBaselineToClassificationFirstBaseline;
+- (id)_subheadlineFont;
 - (void)_updateUIForElectrocardiogram:(id)arg1;
 - (id)activityIndicatorView;
-- (id)appleWatchImageView;
-- (id)atrialFibrillationLearnMoreLinkTextView;
 - (id)bodyLabel;
 - (id)classificationLabel;
 - (id)contentViewBottomConstraint;
@@ -65,8 +56,6 @@
 - (id)initForOnboarding:(bool)arg1;
 - (void)linkTextView:(id)arg1 didTapOnLinkInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (void)setActivityIndicatorView:(id)arg1;
-- (void)setAppleWatchImageView:(id)arg1;
-- (void)setAtrialFibrillationLearnMoreLinkTextView:(id)arg1;
 - (void)setBodyLabel:(id)arg1;
 - (void)setClassificationLabel:(id)arg1;
 - (void)setContentViewBottomConstraint:(id)arg1;

@@ -17,7 +17,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property int maxIterations;
 @property float minimumMagnitude;
 @property long long noiseMechanism;
 @property struct { float x1; float x2; } noiseScaleFactors;
@@ -33,13 +32,11 @@
 - (id)initWithMaxIterationCount:(int)arg1 noiseScaleFactors:(struct { float x1; float x2; })arg2 minimumMagnitude:(float)arg3 noiseMechanism:(long long)arg4 inplaceNorm:(bool)arg5;
 - (id)initWithMaxIterationCount:(int)arg1 noiseScaleFactors:(struct { float x1; float x2; })arg2 minimumMagnitude:(float)arg3 seed:(int)arg4 noiseMechanism:(long long)arg5 inplaceNorm:(bool)arg6;
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
-- (int)maxIterations;
 - (float)minimumMagnitude;
 - (long long)noiseMechanism;
 - (struct { float x1; float x2; })noiseScaleFactors;
-- (struct _PMLPreNoiseScaleFactorAndNoiseSampler { id x1; })samplerWithScaleFactorFor:(id)arg1 usingNorm:(bool)arg2;
-- (float)scaleAndAddNoiseToDenseVector:(id)arg1 usingNorm:(bool)arg2;
-- (void)setMaxIterations:(int)arg1;
+- (struct _PMLPreNoiseScaleFactorAndNoiseSampler { id x1; float x2; })samplerWithScaleFactorFor:(id)arg1 usingNorm:(bool)arg2;
+- (bool)scaleAndAddNoiseToDenseVector:(id)arg1 usingNorm:(bool)arg2 scaleFactor:(float*)arg3;
 - (void)setMinimumMagnitude:(float)arg1;
 - (void)setNoiseMechanism:(long long)arg1;
 - (void)setNoiseScaleFactors:(struct { float x1; float x2; })arg1;

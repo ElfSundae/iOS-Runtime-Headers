@@ -12,22 +12,30 @@
     struct __CVBuffer { } * _origPixelBuffer;
     CIContext * _passedInCIContext;
     struct __CFArray { } * _pixelBufferReps;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _pixelBufferRepsLock;
 }
 
 @property (readonly) unsigned long long height;
 @property (readonly) unsigned long long width;
 
 + (int)_helpReadOrientationFromOptionsDictionary:(id)arg1;
++ (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })computeCenterCropRectFromCropRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 inImageSize:(struct CGSize { double x1; double x2; })arg2 calculatedScaleX:(double*)arg3 calculatedScaleY:(double*)arg4;
 + (struct CGColorSpace { }*)copyColorspaceForFormat:(unsigned int)arg1 bitmapInfo:(unsigned int*)arg2;
-+ (struct __CFDictionary { }*)pixelBufferAttributes;
++ (const struct __CFDictionary { }*)ioSurfaceBackedPixelBufferAttributes;
 
 - (void).cxx_destruct;
 - (id)_baseCIImage;
 - (struct __CVBuffer { }*)_baseCVPixelBuffer;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_calculateTargetRectFromCropRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (bool)_cropCIImage:(id)arg1 outBuffer:(struct __CVBuffer {}**)arg2 width:(unsigned long long)arg3 height:(unsigned long long)arg4 format:(unsigned int)arg5 cropRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg6 performCrop:(bool)arg7 options:(id)arg8 error:(id*)arg9;
 - (bool)_cropCVPixelBuffer:(struct __CVBuffer { }*)arg1 outBuffer:(struct __CVBuffer {}**)arg2 width:(unsigned long long)arg3 height:(unsigned long long)arg4 format:(unsigned int)arg5 cropRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg6 performCrop:(bool)arg7 options:(id)arg8 error:(id*)arg9;
 - (bool)_cropImageSourceManager:(id)arg1 outBuffer:(struct __CVBuffer {}**)arg2 width:(unsigned long long)arg3 height:(unsigned long long)arg4 format:(unsigned int)arg5 cropRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg6 performCrop:(bool)arg7 options:(id)arg8 error:(id*)arg9;
+- (void)_dumpIntermediateImage:(struct __CVBuffer { }*)arg1 withOptions:(id)arg2;
+- (bool)_isRectOutOfBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)_optionsWithOverridingOptions:(id)arg1;
+- (struct __CVBuffer { }*)_retrieveBufferFromCacheIfFoundWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 format:(unsigned int)arg3;
 - (bool)_useCoreImageForFormat:(unsigned int)arg1;
 - (id)augmentedBuffersWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 format:(unsigned int)arg3 options:(id)arg4 augmentationOptions:(id)arg5 error:(id*)arg6;
 - (id)augmentedCroppedBuffersWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 format:(unsigned int)arg3 cropRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg4 options:(id)arg5 augmentationOptions:(id)arg6 error:(id*)arg7;

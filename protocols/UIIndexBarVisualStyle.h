@@ -16,6 +16,7 @@
 
 @optional
 
+- (long long)_accessibility_indexForEntryAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)deflectionReset:(bool)arg1;
 - (void)deflectionUpdated;
 - (void)displayEntriesUpdated;

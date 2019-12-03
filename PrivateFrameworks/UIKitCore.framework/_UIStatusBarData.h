@@ -14,6 +14,7 @@
     _UIStatusBarDataEntry * _carPlayEntry;
     _UIStatusBarDataCellularEntry * _cellularEntry;
     _UIStatusBarDataStringEntry * _dateEntry;
+    _UIStatusBarDataStringEntry * _deviceNameEntry;
     _UIStatusBarDataBoolEntry * _electronicTollCollectionEntry;
     _UIStatusBarDataStringEntry * _forwardNavigationEntry;
     _UIStatusBarDataEntry * _liquidDetectionEntry;
@@ -23,6 +24,7 @@
     _UIStatusBarDataEntry * _nikeEntry;
     _UIStatusBarDataStringEntry * _personNameEntry;
     _UIStatusBarDataBoolEntry * _quietModeEntry;
+    _UIStatusBarDataBoolEntry * _radarEntry;
     _UIStatusBarDataEntry * _rotationLockEntry;
     _UIStatusBarDataCellularEntry * _secondaryCellularEntry;
     _UIStatusBarDataStringEntry * _shortTimeEntry;
@@ -31,6 +33,7 @@
     _UIStatusBarDataThermalEntry * _thermalEntry;
     _UIStatusBarDataStringEntry * _timeEntry;
     _UIStatusBarDataEntry * _ttyEntry;
+    _UIStatusBarDataVoiceControlEntry * _voiceControlEntry;
     _UIStatusBarDataIntegerEntry * _volumeEntry;
     _UIStatusBarDataEntry * _vpnEntry;
     _UIStatusBarDataWifiEntry * _wifiEntry;
@@ -47,8 +50,10 @@
 @property (nonatomic, copy) _UIStatusBarDataEntry *carPlayEntry;
 @property (nonatomic, copy) _UIStatusBarDataCellularEntry *cellularEntry;
 @property (nonatomic, copy) _UIStatusBarDataStringEntry *dateEntry;
+@property (nonatomic, copy) _UIStatusBarDataStringEntry *deviceNameEntry;
 @property (nonatomic, copy) _UIStatusBarDataBoolEntry *electronicTollCollectionEntry;
 @property (getter=isEmpty, nonatomic, readonly) bool empty;
+@property (nonatomic, readonly) NSSet *existingEntryKeys;
 @property (nonatomic, copy) _UIStatusBarDataStringEntry *forwardNavigationEntry;
 @property (nonatomic, copy) _UIStatusBarDataEntry *liquidDetectionEntry;
 @property (nonatomic, copy) _UIStatusBarDataLocationEntry *locationEntry;
@@ -57,6 +62,7 @@
 @property (nonatomic, copy) _UIStatusBarDataEntry *nikeEntry;
 @property (nonatomic, copy) _UIStatusBarDataStringEntry *personNameEntry;
 @property (nonatomic, copy) _UIStatusBarDataBoolEntry *quietModeEntry;
+@property (nonatomic, copy) _UIStatusBarDataBoolEntry *radarEntry;
 @property (nonatomic, copy) _UIStatusBarDataEntry *rotationLockEntry;
 @property (nonatomic, copy) _UIStatusBarDataCellularEntry *secondaryCellularEntry;
 @property (nonatomic, copy) _UIStatusBarDataStringEntry *shortTimeEntry;
@@ -65,6 +71,7 @@
 @property (nonatomic, copy) _UIStatusBarDataThermalEntry *thermalEntry;
 @property (nonatomic, copy) _UIStatusBarDataStringEntry *timeEntry;
 @property (nonatomic, copy) _UIStatusBarDataEntry *ttyEntry;
+@property (nonatomic, copy) _UIStatusBarDataVoiceControlEntry *voiceControlEntry;
 @property (nonatomic, copy) _UIStatusBarDataIntegerEntry *volumeEntry;
 @property (nonatomic, copy) _UIStatusBarDataEntry *vpnEntry;
 @property (nonatomic, copy) _UIStatusBarDataWifiEntry *wifiEntry;
@@ -86,11 +93,14 @@
 - (id)carPlayEntry;
 - (id)cellularEntry;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)dataByApplyingOverlay:(id)arg1;
 - (id)dataByApplyingUpdate:(id)arg1 keys:(id)arg2;
 - (id)dateEntry;
 - (id)description;
+- (id)deviceNameEntry;
 - (id)electronicTollCollectionEntry;
 - (void)encodeWithCoder:(id)arg1;
+- (id)existingEntryKeys;
 - (id)forwardNavigationEntry;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
@@ -104,6 +114,7 @@
 - (id)nikeEntry;
 - (id)personNameEntry;
 - (id)quietModeEntry;
+- (id)radarEntry;
 - (id)rotationLockEntry;
 - (id)secondaryCellularEntry;
 - (void)setActivityEntry:(id)arg1;
@@ -117,6 +128,7 @@
 - (void)setCarPlayEntry:(id)arg1;
 - (void)setCellularEntry:(id)arg1;
 - (void)setDateEntry:(id)arg1;
+- (void)setDeviceNameEntry:(id)arg1;
 - (void)setElectronicTollCollectionEntry:(id)arg1;
 - (void)setForwardNavigationEntry:(id)arg1;
 - (void)setLiquidDetectionEntry:(id)arg1;
@@ -126,6 +138,7 @@
 - (void)setNikeEntry:(id)arg1;
 - (void)setPersonNameEntry:(id)arg1;
 - (void)setQuietModeEntry:(id)arg1;
+- (void)setRadarEntry:(id)arg1;
 - (void)setRotationLockEntry:(id)arg1;
 - (void)setSecondaryCellularEntry:(id)arg1;
 - (void)setShortTimeEntry:(id)arg1;
@@ -134,6 +147,7 @@
 - (void)setThermalEntry:(id)arg1;
 - (void)setTimeEntry:(id)arg1;
 - (void)setTtyEntry:(id)arg1;
+- (void)setVoiceControlEntry:(id)arg1;
 - (void)setVolumeEntry:(id)arg1;
 - (void)setVpnEntry:(id)arg1;
 - (void)setWifiEntry:(id)arg1;
@@ -144,6 +158,7 @@
 - (id)timeEntry;
 - (id)ttyEntry;
 - (id)updateFromData:(id)arg1;
+- (id)voiceControlEntry;
 - (id)volumeEntry;
 - (id)vpnEntry;
 - (id)wifiEntry;

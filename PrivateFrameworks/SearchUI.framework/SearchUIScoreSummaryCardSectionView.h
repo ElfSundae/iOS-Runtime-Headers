@@ -2,14 +2,14 @@
    Image: /System/Library/PrivateFrameworks/SearchUI.framework/SearchUI
  */
 
-@interface SearchUIScoreSummaryCardSectionView : SearchUICardSectionView <NUIContainerBoxViewDelegate> {
+@interface SearchUIScoreSummaryCardSectionView : SearchUICardSectionView <NUIContainerViewDelegate> {
     TLKSplitHeaderView * _splitHeaderView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (retain) TLKSplitHeaderView *splitHeaderView;
+@property (nonatomic, retain) TLKSplitHeaderView *splitHeaderView;
 @property (readonly) Class superclass;
 
 + (id)dragTitleForCardSection:(id)arg1;

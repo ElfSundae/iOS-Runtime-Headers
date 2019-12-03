@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/MapsSupport.framework/MapsSupport
  */
 
-@interface MSPFavoritesReplicaMergeOptions : NSObject <MSPReplicaMergeOptions> {
+@interface MSPFavoritesReplicaMergeOptions : NSObject <MSPFavoritesReplicaMergeOptions> {
     bool  _deserializationAllowed;
 }
 

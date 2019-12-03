@@ -14,6 +14,7 @@
 
 @optional
 
+- (void)balloonView:(CKBalloonView *)arg1 willInsertPluginViewAsSubview:(UIView<CKTranscriptPluginView> *)arg2;
 - (void)tuConversationBalloonJoinButtonTapped:(CKBalloonView *)arg1;
 
 @end

@@ -8,11 +8,13 @@
         unsigned int timeDeltaFromReference : 1; 
         unsigned int timestamp : 1; 
         unsigned int cardValidationStatus : 1; 
+        unsigned int sPID : 1; 
         unsigned int sessionStatus : 1; 
         unsigned int spStatusCode : 1; 
         unsigned int state : 1; 
         unsigned int technology : 1; 
     }  _has;
+    unsigned int  _sPID;
     unsigned int  _sessionStatus;
     unsigned int  _spStatusCode;
     unsigned int  _state;
@@ -24,6 +26,7 @@
 
 @property (nonatomic) unsigned int cardValidationStatus;
 @property (nonatomic) bool hasCardValidationStatus;
+@property (nonatomic) bool hasSPID;
 @property (nonatomic) bool hasSessionStatus;
 @property (nonatomic) bool hasSpStatusCode;
 @property (nonatomic) bool hasState;
@@ -31,6 +34,7 @@
 @property (nonatomic) bool hasTimeDeltaFromReference;
 @property (nonatomic) bool hasTimestamp;
 @property (nonatomic, readonly) bool hasUuidReference;
+@property (nonatomic) unsigned int sPID;
 @property (nonatomic) unsigned int sessionStatus;
 @property (nonatomic) unsigned int spStatusCode;
 @property (nonatomic) unsigned int state;
@@ -46,6 +50,7 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (bool)hasCardValidationStatus;
+- (bool)hasSPID;
 - (bool)hasSessionStatus;
 - (bool)hasSpStatusCode;
 - (bool)hasState;
@@ -57,15 +62,18 @@
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (bool)readFrom:(id)arg1;
+- (unsigned int)sPID;
 - (unsigned int)sessionStatus;
 - (void)setCardValidationStatus:(unsigned int)arg1;
 - (void)setHasCardValidationStatus:(bool)arg1;
+- (void)setHasSPID:(bool)arg1;
 - (void)setHasSessionStatus:(bool)arg1;
 - (void)setHasSpStatusCode:(bool)arg1;
 - (void)setHasState:(bool)arg1;
 - (void)setHasTechnology:(bool)arg1;
 - (void)setHasTimeDeltaFromReference:(bool)arg1;
 - (void)setHasTimestamp:(bool)arg1;
+- (void)setSPID:(unsigned int)arg1;
 - (void)setSessionStatus:(unsigned int)arg1;
 - (void)setSpStatusCode:(unsigned int)arg1;
 - (void)setState:(unsigned int)arg1;

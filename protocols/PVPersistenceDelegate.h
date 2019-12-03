@@ -8,7 +8,7 @@
 - (NSMutableArray *)allAlgorithmicFaceGroups:(id*)arg1;
 - (NSArray *)allPersons:(id*)arg1;
 - (NSString *)associateFace:(PVFace *)arg1 withFaceCrop:(PVFaceCrop *)arg2 error:(id*)arg3;
-- (void)buildPersonsWithFaceClusterer:(void *)arg1 keyFaceUpdateBlock:(void *)arg2 canceler:(void *)arg3 context:(void *)arg4; // needs 4 arg types, found 9: <PVFaceClusteringProtocol> *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSArray *, void*, PVCanceler *, PVContext *
+- (void)buildPersonsWithFaceClusterer:(void *)arg1 keyFaceUpdateBlock:(void *)arg2 canceler:(void *)arg3 context:(void *)arg4 extendTimeoutBlock:(void *)arg5; // needs 5 arg types, found 14: <PVFaceClusteringProtocol> *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSArray *, void*, PVCanceler *, PVContext *, id /* block */, void*, void, id /* block */, void*
 - (bool)cleanupGroupedFacesWithClusterSequenceNumberSetToZeroWithCanceler:(PVCanceler *)arg1 error:(id*)arg2;
 - (bool)cleanupUngroupedFacesWithNonZeroClusterSequenceNumbersWithCanceler:(PVCanceler *)arg1 error:(id*)arg2;
 - (bool)clearDirtyStateOnFaceCrops:(NSArray *)arg1 error:(id*)arg2;
@@ -27,7 +27,7 @@
 - (NSSet *)faceLocalIdentifiersInFaceGroupWithLocalIdentifier:(NSString *)arg1 error:(id*)arg2;
 - (NSDictionary *)faceprintsByFaceLocalIdentifiers:(NSArray *)arg1 version:(unsigned int)arg2 error:(id*)arg3;
 - (NSSet *)facesAlgorithmicallyGroupedWithFacesWithClusterSequenceNumbers:(NSSet *)arg1 includeSingletons:(bool)arg2 error:(id*)arg3;
-- (NSArray *)facesForClusteringWithLocalIdentifiers:(NSArray *)arg1 faceprintVersion:(unsigned int)arg2 excludeClustered:(bool)arg3;
+- (NSArray *)facesForClusteringWithLocalIdentifiers:(NSArray *)arg1 faceprintVersion:(unsigned int)arg2 excludeClustered:(bool)arg3 groupingIdentifiers:(NSMutableArray *)arg4;
 - (NSSet *)facesForFaceLocalIdentifiers:(NSArray *)arg1 error:(id*)arg2;
 - (NSArray *)facesForPersonWithLocalIdentifier:(NSString *)arg1 error:(id*)arg2;
 - (NSArray *)facesFromAsset:(PHAsset *)arg1;

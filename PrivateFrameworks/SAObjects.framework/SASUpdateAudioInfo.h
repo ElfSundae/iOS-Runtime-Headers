@@ -5,6 +5,7 @@
 @interface SASUpdateAudioInfo : SABaseCommand <SAServerBoundCommand>
 
 @property (nonatomic, copy) NSString *aceId;
+@property (nonatomic, copy) NSString *audioDestination;
 @property (nonatomic, copy) NSString *audioSource;
 @property (nonatomic) int codec;
 @property (readonly, copy) NSString *debugDescription;
@@ -31,6 +32,7 @@
 + (id)updateAudioInfo;
 + (id)updateAudioInfoWithDictionary:(id)arg1 context:(id)arg2;
 
+- (id)audioDestination;
 - (id)audioSource;
 - (int)codec;
 - (id)deviceIdentifier;
@@ -47,6 +49,7 @@
 - (id)productId;
 - (id)recordingInfo;
 - (bool)requiresResponse;
+- (void)setAudioDestination:(id)arg1;
 - (void)setAudioSource:(id)arg1;
 - (void)setCodec:(int)arg1;
 - (void)setDeviceIdentifier:(id)arg1;

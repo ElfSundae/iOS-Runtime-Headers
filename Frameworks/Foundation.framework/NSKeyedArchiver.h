@@ -81,11 +81,6 @@
 - (unsigned int)systemVersion;
 - (long long)versionForClassName:(id)arg1;
 
-// Image: /Developer/Library/PrivateFrameworks/DVTInstrumentsUtilities.framework/DVTInstrumentsUtilities
-
-+ (id)xr_archiveSecureCodingObject:(id)arg1 withError:(id*)arg2;
-+ (id)xr_deepCopy:(id)arg1;
-
 // Image: /System/Library/PrivateFrameworks/CalendarFoundation.framework/CalendarFoundation
 
 + (id)CalArchivedDataWithRootObject:(id)arg1 ofClasses:(id)arg2 error:(id*)arg3;
@@ -99,6 +94,12 @@
 
 + (id)cpl_archivedDataWithRootObject:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/ContentKit.framework/ContentKit
+
++ (id)wf_securelyArchivedDataWithRootObject:(id)arg1;
++ (id)wf_securelyArchivedDataWithRootObject:(id)arg1 deletionResponsibility:(long long)arg2;
++ (id)wf_securelyArchivedDataWithRootObject:(id)arg1 fileCoder:(id)arg2;
+
 // Image: /System/Library/PrivateFrameworks/DigitalTouchShared.framework/DigitalTouchShared
 
 + (id)_et_secureArchivedDataWithRootObject:(id)arg1;
@@ -107,9 +108,19 @@
 
 + (id)dnds_secureLegacyArchiver;
 
-// Image: /System/Library/PrivateFrameworks/IMSharedUtilities.framework/Frameworks/XCTest.framework/XCTest
+// Image: /System/Library/PrivateFrameworks/FusionPluginKit.framework/FusionPluginKit
 
-+ (id)xct_archivedDataWithRootObject:(id)arg1;
++ (id)archiveObject:(id)arg1;
++ (void)archiveObject:(id)arg1 to:(id)arg2;
++ (id)archiveObjectToData:(id)arg1;
++ (id)archiveObjectToDict:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/FusionPluginServices.framework/FusionPluginServices
+
++ (id)archiveObject:(id)arg1;
++ (void)archiveObject:(id)arg1 to:(id)arg2;
++ (id)archiveObjectToData:(id)arg1;
++ (id)archiveObjectToDict:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/NanoRegistry.framework/NanoRegistry
 

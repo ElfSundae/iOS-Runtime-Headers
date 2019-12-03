@@ -36,6 +36,7 @@
 - (bool)allowRowSelection;
 - (bool)haveTwoColumns;
 - (id)infoCardChildPossibleActions;
+- (id)infoCardChildUnactionableUIElements;
 - (id)init;
 - (void)placeCardActionSectionView:(id)arg1 buttonWithActionItemPressed:(id)arg2;
 - (void)sectionView:(id)arg1 didSelectRow:(id)arg2 atIndex:(unsigned long long)arg3;

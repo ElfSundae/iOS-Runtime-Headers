@@ -3,6 +3,7 @@
  */
 
 @interface MNLocationManager : NSObject <GEOResourceManifestTileGroupObserver, MNLocationProviderDelegate> {
+    NSHashTable * _accessRequesters;
     NSBundle * _effectiveBundle;
     NSString * _effectiveBundleIdentifier;
     double  _expectedGpsUpdateInterval;
@@ -10,13 +11,13 @@
     CLHeading * _heading;
     NSHashTable * _headingObservers;
     bool  _isLastLocationStale;
-    MNLocation * _lastGoodLocation;
     MNLocation * _lastLocation;
     NSLock * _lastLocationLock;
     bool  _lastLocationPushed;
     double  _lastLocationReportTime;
     double  _lastLocationUpdateTime;
     NSDate * _lastUpdatedHeadingDate;
+    CLInUseAssertion * _locationAssertion;
     id /* block */  _locationCorrector;
     NSError * _locationError;
     NSHashTable * _locationListeners;
@@ -59,7 +60,9 @@
 + (id)sharedLocationManager;
 
 - (void).cxx_destruct;
-- (void)_locationProvider:(id)arg1 didUpdateLocation:(id)arg2;
+- (void)_clearLocationAssertion;
+- (void)_createLocationAssertion;
+- (bool)_hasLocationAssertion;
 - (void)_reportLocationFailureWithError:(id)arg1;
 - (void)_reportLocationReset;
 - (void)_reportLocationStatus:(SEL)arg1;
@@ -69,6 +72,7 @@
 - (void)_setTrackingHeading:(bool)arg1;
 - (void)_setTrackingLocation:(bool)arg1;
 - (void)_startLocationUpdateWithObserver:(id)arg1 desiredAccuracy:(double)arg2;
+- (void)_updateForNewLocation:(id)arg1 rawLocation:(id)arg2;
 - (long long)activityType;
 - (void)addLocationListener:(id)arg1;
 - (void)dealloc;
@@ -106,7 +110,10 @@
 - (unsigned long long)locationProviderType;
 - (id)locationRecorder;
 - (void)pushLocation:(id)arg1;
+- (void)removeLocationAccessFor:(id)arg1;
+- (void)removeLocationAccessForAll;
 - (void)removeLocationListener:(id)arg1;
+- (void)requestLocationAccessFor:(id)arg1;
 - (void)resourceManifestManager:(id)arg1 didChangeActiveTileGroup:(id)arg2 fromOldTileGroup:(id)arg3;
 - (void)setActivityType:(long long)arg1;
 - (void)setDesiredAccuracy:(double)arg1;

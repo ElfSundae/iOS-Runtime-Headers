@@ -20,7 +20,6 @@
 @property (nonatomic, copy) NSString *input;
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic) unsigned long long queryId;
-@property (nonatomic, readonly) bool requiresQueryId;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long timestamp;
 @property (nonatomic) int triggerEvent;
@@ -40,7 +39,6 @@
 - (id)jsonData;
 - (unsigned long long)queryId;
 - (bool)readFrom:(id)arg1;
-- (bool)requiresQueryId;
 - (void)setIndexType:(int)arg1;
 - (void)setInput:(id)arg1;
 - (void)setQueryId:(unsigned long long)arg1;

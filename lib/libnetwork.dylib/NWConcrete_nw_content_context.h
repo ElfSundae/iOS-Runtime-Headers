@@ -10,11 +10,13 @@
     NSObject<OS_nw_error> * error;
     unsigned int  expiration_checked;
     unsigned long long  expiration_milliseconds;
+    unsigned int  has_packet_id;
     BOOL  identifier;
     unsigned int  is_final;
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
     }  lock;
+    unsigned char  packet_id;
     NSObject<OS_nw_array> * protocol_metadatas;
     double  relative_priority;
 }
@@ -28,5 +30,6 @@
 - (void)dealloc;
 - (id)description;
 - (id)initWithIdentifier:(const char *)arg1;
+- (id)redactedDescription;
 
 @end

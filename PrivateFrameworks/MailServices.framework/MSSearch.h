@@ -17,6 +17,7 @@
 + (id)findMessageData:(id)arg1 matchingCriterion:(id)arg2 shouldFetch:(bool)arg3 onServer:(bool)arg4 onlyInboxes:(bool)arg5 delegate:(id)arg6;
 + (void)setUnitTestingResultsArray:(id)arg1;
 
+- (void).cxx_destruct;
 - (void)_delegateDidFindResults:(id)arg1;
 - (void)_delegateDidFinishWithError:(id)arg1;
 - (void)_findMessageData:(id)arg1 matchingCriterion:(id)arg2 options:(unsigned long long)arg3;
@@ -25,7 +26,6 @@
 - (id)_initWithDelegate:(id)arg1;
 - (bool)_unitTestsAreEnabled;
 - (void)cancel;
-- (void)dealloc;
 - (id)delegate;
 - (void)foundResults:(id)arg1 error:(id)arg2;
 - (id)initWithRemoteObjectInterface:(id)arg1;

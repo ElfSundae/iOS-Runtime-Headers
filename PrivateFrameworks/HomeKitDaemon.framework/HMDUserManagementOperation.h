@@ -45,7 +45,7 @@
 @property (nonatomic) bool lastOperationFailed;
 @property (nonatomic, retain) HMDUserManagementOperationManager *operationManager;
 @property (nonatomic, readonly) unsigned long long operationType;
-@property (nonatomic, retain) HAPPairingIdentity *ownerPairingIdentity;
+@property (nonatomic, copy) HAPPairingIdentity *ownerPairingIdentity;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *propertyQueue;
 @property (getter=isReady, nonatomic, readonly) bool ready;
 @property (nonatomic) unsigned long long state;
@@ -53,6 +53,7 @@
 @property (nonatomic, readonly) HMDUser *user;
 
 + (id)addUserManagementOperationForUser:(id)arg1 accessory:(id)arg2 model:(id)arg3;
++ (void)initialize;
 + (id)operationWithDictionary:(id)arg1 home:(id)arg2;
 + (id)removeUserManagementOperationForUser:(id)arg1 accessory:(id)arg2 model:(id)arg3;
 + (id)shortDescription;

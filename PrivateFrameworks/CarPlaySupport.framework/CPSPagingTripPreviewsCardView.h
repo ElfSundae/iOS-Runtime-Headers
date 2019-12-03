@@ -10,6 +10,7 @@
     NSLayoutConstraint * _contentBottomConstraint;
     NSLayoutConstraint * _contentTopConstraint;
     NSMutableDictionary * _estimatesForTripIdentifiers;
+    UIButton * _moreRoutesButton;
     CPSRouteOverviewView * _overviewView;
     CPSPagingControlView * _pageControl;
     bool  _showMoreRoutes;
@@ -26,6 +27,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) NSMutableDictionary *estimatesForTripIdentifiers;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) UIButton *moreRoutesButton;
 @property (nonatomic, readonly) CPSRouteOverviewView *overviewView;
 @property (nonatomic, readonly) CPSPagingControlView *pageControl;
 @property (nonatomic) bool showMoreRoutes;
@@ -36,6 +38,7 @@
 - (id)_linearFocusItems;
 - (void)_setOverviewCollapsed:(bool)arg1;
 - (void)_toggleMoreRoutesButtonPressed:(id)arg1;
+- (void)_updateButtonColors;
 - (id)alternateRoutesHeightConstraint;
 - (void)alternateRoutesView:(id)arg1 didSelectRouteChoice:(id)arg2;
 - (id)borderedAlternatesView;
@@ -45,6 +48,7 @@
 - (id)contentTopConstraint;
 - (id)estimatesForTripIdentifiers;
 - (id)initWithTripDelegate:(id)arg1 trips:(id)arg2 textConfiguration:(id)arg3;
+- (id)moreRoutesButton;
 - (id)overviewView;
 - (id)pageControl;
 - (void)pagingControlView:(id)arg1 didSelectPageIndex:(unsigned long long)arg2;

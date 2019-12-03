@@ -3,6 +3,7 @@
  */
 
 @interface _UIActionSheetPresentationController : UIPopoverPresentationController <_UIActionSheetCompactPresentationControllerDelegate> {
+    bool  __shouldUseCompactPresentationControllerWhenPresentedInSheet;
     <UIActionSheetPresentationControllerDelegate> * _actionSheetDelegate;
     bool  _avoidsKeyboardDisabled;
     _UIActionSheetCompactPresentationController * _compactPresentationController;
@@ -10,6 +11,7 @@
     bool  _dismissActionUsesShorterHeightWhenCompactVertically;
 }
 
+@property (setter=_setShouldUseCompactPresentationControllerWhenPresentedInSheet:, nonatomic) bool _shouldUseCompactPresentationControllerWhenPresentedInSheet;
 @property (nonatomic) <UIActionSheetPresentationControllerDelegate> *actionSheetDelegate;
 @property (nonatomic) bool avoidsKeyboardDisabled;
 @property (nonatomic, retain) _UIActionSheetCompactPresentationController *compactPresentationController;
@@ -25,7 +27,9 @@
 - (id)_exceptionStringForNilSourceViewOrBarButtonItem;
 - (long long)_presentationContextForViewController:(id)arg1;
 - (id)_presentationControllerForTraitCollection:(id)arg1;
+- (void)_setShouldUseCompactPresentationControllerWhenPresentedInSheet:(bool)arg1;
 - (bool)_shouldPresentedViewControllerControlStatusBarAppearance;
+- (bool)_shouldUseCompactPresentationControllerWhenPresentedInSheet;
 - (id)_visualStyleForTraitCollection:(id)arg1;
 - (void)actionSheetCompactPresentationControllerDidDismiss:(id)arg1;
 - (bool)actionSheetCompactPresentationControllerShouldPresentInCurrentContext:(id)arg1;

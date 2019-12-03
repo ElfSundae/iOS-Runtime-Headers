@@ -16,11 +16,8 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) SSMetricsConfiguration *metricsConfiguration;
 @property (setter=_setMetricsPageEvent:, nonatomic, retain) SSMetricsPageEvent *metricsPageEvent;
-@property (nonatomic, readonly) bool mpIsPersonalizedOffer;
 @property (nonatomic, readonly) NSDictionary *responseDictionary;
 @property (readonly) Class superclass;
-
-// Image: /System/Library/PrivateFrameworks/StoreServices.framework/StoreServices
 
 - (void)_enumerateItemsWithBlock:(id /* block */)arg1;
 - (void)_setMetricsPageEvent:(id)arg1;
@@ -38,14 +35,5 @@
 - (id)responseDictionary;
 - (void)setExpirationDate:(id)arg1;
 - (id)valueForProperty:(id)arg1;
-
-// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
-
-+ (bool)mpFakeCompletionDataForBuys;
-+ (bool)mpShowBuysWithNoCompletionOffer;
-+ (bool)mpVerboseCMCLogging;
-
-- (id)mpCompletionOfferResponseDictionaryWithLocalAlbumsCollection:(id)arg1;
-- (bool)mpIsPersonalizedOffer;
 
 @end

@@ -2,20 +2,21 @@
    Image: /System/Library/Frameworks/ContactsUI.framework/ContactsUI
  */
 
-@interface CNAvatarCardController : NSObject <CNAvatarCardControllerOrbTransitionDelegate, CNAvatarCardViewControllerDelegate, UIPreviewInteractionDelegatePrivate> {
+@interface CNAvatarCardController : NSObject <CNAvatarCardControllerOrbTransitionDelegate, CNAvatarCardViewControllerDelegate, UIGestureRecognizerDelegate, _UIClickPresentationInteractionDelegate> {
     NSArray * _actionCategories;
     bool  _actionsNeedRefresh;
     UIAlertController * _alertController;
     CNAvatarView * _avatarView;
+    UIVisualEffectView * _backgroundVisualEffectView;
     bool  _bypassActionValidation;
     NSArray * _cardControllerConstraints;
     CNAvatarCardViewController * _cardViewController;
+    _UIClickPresentationInteraction * _clickPresentationInteraction;
     NSArray * _contacts;
     <CNAvatarCardControllerDelegate> * _delegate;
     CNContactOrbHeaderView * _headerView;
     UIView * _highlightView;
     long long  _presentationResult;
-    UIPreviewInteraction * _previewInteraction;
     UIGestureRecognizer * _rolloverGestureRecognizer;
     struct CGRect { 
         struct CGPoint { 
@@ -36,9 +37,11 @@
 @property (nonatomic) bool actionsNeedRefresh;
 @property (nonatomic, retain) UIAlertController *alertController;
 @property (nonatomic) CNAvatarView *avatarView;
+@property (nonatomic, retain) UIVisualEffectView *backgroundVisualEffectView;
 @property (nonatomic) bool bypassActionValidation;
 @property (nonatomic, retain) NSArray *cardControllerConstraints;
 @property (nonatomic, retain) CNAvatarCardViewController *cardViewController;
+@property (nonatomic, retain) _UIClickPresentationInteraction *clickPresentationInteraction;
 @property (nonatomic, retain) CNContact *contact;
 @property (nonatomic, retain) NSArray *contacts;
 @property (readonly, copy) NSString *debugDescription;
@@ -51,7 +54,6 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic) long long presentationResult;
 @property (nonatomic, readonly) UIViewController *presentingViewController;
-@property (nonatomic, retain) UIPreviewInteraction *previewInteraction;
 @property (nonatomic, retain) UIGestureRecognizer *rolloverGestureRecognizer;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } sourceRect;
 @property (nonatomic, retain) UIView *sourceView;
@@ -59,36 +61,42 @@
 @property (nonatomic, retain) UITapGestureRecognizer *tapGestureRecognizer;
 @property (getter=isVisible, nonatomic, readonly) bool visible;
 
-+ (bool)avatarCardEnabled;
++ (bool)avatarCardEnabledForTraitCollection:(id)arg1;
 + (id)descriptorForRequiredKeys;
 + (id)descriptorForRequiredKeysIncludingAvatarViewDescriptors:(bool)arg1;
-+ (bool)showsWithTapAndHold;
++ (id)previewHeaderViewControllerForContacts:(id)arg1;
 
 - (void).cxx_destruct;
-- (id)_previewInteraction:(id)arg1 viewControllerPresentationForPresentingViewController:(id)arg2;
-- (id)_previewInteractionHighlighterForPreviewTransition:(id)arg1;
-- (bool)_previewInteractionShouldFinishTransitionToPreview:(id)arg1;
 - (void)_setupAlertController;
 - (void)_setupCardViewControllerWithContacts:(id)arg1;
 - (void)_setupForCardControllerPresentation;
-- (void)_updateCard;
 - (void)_updateHeaderViewFrame;
 - (id)actionCategories;
 - (bool)actionsNeedRefresh;
 - (id)alertController;
 - (id)avatarView;
+- (id)backgroundVisualEffectView;
 - (bool)bypassActionValidation;
 - (id)cardControllerConstraints;
 - (id)cardViewController;
 - (id)cardViewController:(id)arg1 orderedPropertiesForProperties:(id)arg2 category:(id)arg3;
 - (void)cardViewControllerDidDismiss:(id)arg1;
 - (void)cardViewControllerWillDismiss:(id)arg1;
+- (void)cleanupAfterDisplay;
+- (id)clickPresentationInteraction;
+- (id)clickPresentationInteraction:(id)arg1 presentationForPresentingViewController:(id)arg2;
+- (id)clickPresentationInteraction:(id)arg1 previewForHighlightingAtLocation:(struct CGPoint { double x1; double x2; })arg2;
+- (void)clickPresentationInteractionEnded:(id)arg1 wasCancelled:(bool)arg2;
+- (bool)clickPresentationInteractionShouldBegin:(id)arg1;
+- (bool)clickPresentationInteractionShouldPresent:(id)arg1;
 - (void)configurePreviewInteraction;
 - (id)contact;
 - (id)contacts;
 - (id)delegate;
 - (void)dismissAnimated:(bool)arg1;
 - (void)dismissAnimated:(bool)arg1 completionHandler:(id /* block */)arg2;
+- (bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (bool)hasActions;
 - (id)headerView;
 - (id)highlightView;
 - (bool)isVisible;
@@ -96,23 +104,26 @@
 - (id)name;
 - (void)orbTransitionDidEndTransition:(id)arg1;
 - (void)orbTransitionDidPrepareTransition:(id)arg1 withContainerView:(id)arg2;
+- (void)prepareForDisplay;
+- (void)prepareWithContacts:(id)arg1 store:(id)arg2;
+- (void)prepareWithContacts:(id)arg1 storeProvider:(id /* block */)arg2;
 - (id)preparedViewControllerForPresentationWithGestureRecognizer:(id)arg1;
 - (void)presentAnimated:(bool)arg1;
 - (void)presentAnimated:(bool)arg1 completionHandler:(id /* block */)arg2;
 - (long long)presentationResult;
 - (id)presentingViewController;
-- (id)previewInteraction;
-- (void)previewInteraction:(id)arg1 didUpdatePreviewTransition:(double)arg2 ended:(bool)arg3;
-- (void)previewInteractionDidCancel:(id)arg1;
-- (bool)previewInteractionShouldBegin:(id)arg1;
+- (bool)readyForContactsMatching:(id)arg1;
+- (id)refetchContactsMatching:(id)arg1 storeProvider:(id /* block */)arg2;
 - (id)rolloverGestureRecognizer;
 - (void)setActionCategories:(id)arg1;
 - (void)setActionsNeedRefresh:(bool)arg1;
 - (void)setAlertController:(id)arg1;
 - (void)setAvatarView:(id)arg1;
+- (void)setBackgroundVisualEffectView:(id)arg1;
 - (void)setBypassActionValidation:(bool)arg1;
 - (void)setCardControllerConstraints:(id)arg1;
 - (void)setCardViewController:(id)arg1;
+- (void)setClickPresentationInteraction:(id)arg1;
 - (void)setContact:(id)arg1;
 - (void)setContacts:(id)arg1;
 - (void)setDelegate:(id)arg1;
@@ -121,7 +132,6 @@
 - (void)setMessage:(id)arg1;
 - (void)setName:(id)arg1;
 - (void)setPresentationResult:(long long)arg1;
-- (void)setPreviewInteraction:(id)arg1;
 - (void)setRolloverGestureRecognizer:(id)arg1;
 - (void)setSourceRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setSourceView:(id)arg1;

@@ -37,6 +37,7 @@
 - (Class)CAMLParser:(id)arg1 didFailToFindClassWithName:(id)arg2;
 - (void)_loadRootLayerIfNeeded;
 - (id)_recursivelyFindSublayerWithName:(id)arg1 rootLayer:(id)arg2;
+- (void)_recursivelyRemoveCompositingFiltersWithName:(id)arg1 rootLayer:(id)arg2;
 - (void)_recursivelySetFillColor:(struct CGColor { }*)arg1 rootLayer:(id)arg2;
 - (void)_setState:(id)arg1;
 - (id)availableStates;
@@ -44,6 +45,7 @@
 - (id)initWithPackageName:(id)arg1 layoutDirection:(long long)arg2;
 - (long long)layoutDirection;
 - (id)packageName;
+- (void)removeCompositingFiltersWithName:(id)arg1;
 - (id)rootLayer;
 - (void)setLayoutDirection:(long long)arg1;
 - (void)setRootLayer:(id)arg1;

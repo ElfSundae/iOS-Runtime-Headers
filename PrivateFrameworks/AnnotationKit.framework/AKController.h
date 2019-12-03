@@ -3,6 +3,7 @@
  */
 
 @interface AKController : NSObject {
+    bool  __isInDFRAction;
     AKActionController * _actionController;
     double  _akModelToCanvasFixedPixelScaleOfFirstEncounteredPage;
     bool  _allEditingDisabled;
@@ -25,15 +26,17 @@
     AKMainEventHandler * _mainEventHandler;
     AKModelController * _modelController;
     AKToolbarView * _modernToolbarView;
-    NSMutableArray * _pageControllers;
+    AKSparseMutableControllerArray * _pageControllers;
     NSMapTable * _pageModelControllersToPageControllers;
     unsigned long long  _pasteCascadingMultiplier;
     bool  _pencilAlwaysDraws;
     AKPeripheralAvailabilityManager_iOS * _peripheralAvailabilityManager;
+    <PKRulerHostingDelegate> * _rulerHostingDelegate;
     double  _screenPixelsToCanvasPixelsDownscale;
     bool  _selectNewlyCreatedAnnotations;
     bool  _shapeDetectionEnabled;
     bool  _showingMenu;
+    AKSidecarController * _sidecarController;
     AKSignatureModelController * _signatureModelController;
     AKStatistics * _statisticsLogger;
     AKTextEditorController * _textEditorController;
@@ -45,6 +48,7 @@
     bool  overlayShouldPixelate;
 }
 
+@property (readonly) bool _isInDFRAction;
 @property (retain) AKActionController *actionController;
 @property double akModelToCanvasFixedPixelScaleOfFirstEncounteredPage;
 @property (nonatomic) bool allEditingDisabled;
@@ -67,16 +71,19 @@
 @property (retain) AKMainEventHandler *mainEventHandler;
 @property (retain) AKModelController *modelController;
 @property (nonatomic) AKToolbarView *modernToolbarView;
+@property (nonatomic, readonly) bool onlyDrawWithApplePencil;
 @property (nonatomic) bool overlayShouldPixelate;
-@property (retain) NSMutableArray *pageControllers;
+@property (retain) AKSparseMutableControllerArray *pageControllers;
 @property (retain) NSMapTable *pageModelControllersToPageControllers;
 @property unsigned long long pasteCascadingMultiplier;
 @property (nonatomic) bool pencilAlwaysDraws;
 @property (retain) AKPeripheralAvailabilityManager_iOS *peripheralAvailabilityManager;
+@property (nonatomic) <PKRulerHostingDelegate> *rulerHostingDelegate;
 @property double screenPixelsToCanvasPixelsDownscale;
 @property (nonatomic) bool selectNewlyCreatedAnnotations;
 @property (nonatomic) bool shapeDetectionEnabled;
 @property (getter=isShowingMenu) bool showingMenu;
+@property (retain) AKSidecarController *sidecarController;
 @property (retain) AKSignatureModelController *signatureModelController;
 @property (retain) AKStatistics *statisticsLogger;
 @property (retain) AKTextEditorController *textEditorController;
@@ -99,8 +106,15 @@
 
 - (void).cxx_destruct;
 - (void)_didReceiveMemoryWarning:(id)arg1;
+- (bool)_isInDFRAction;
 - (void)_pageModelControllerSelectedAnnotationsChangedNotification:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_popoverAnchorFrameInModelForAnnotations:(id)arg1;
+- (void)_setupPageModelController:(id)arg1;
+- (id)_toolpicker_color;
+- (id)_toolpicker_inkIdentifier;
+- (void)_toolpicker_setColor:(id)arg1;
+- (void)_toolpicker_setInkIdentifier:(id)arg1;
+- (void)_updateGestureDependencyPriority;
 - (bool)_validateCutCopyDelete;
 - (id)actionController;
 - (void)addPopupToAnnotation:(id)arg1 openPopup:(bool)arg2;
@@ -123,6 +137,7 @@
 - (unsigned long long)currentPageIndex;
 - (void)cut:(id)arg1;
 - (void)dealloc;
+- (void)delayedUndoControllerSetup;
 - (id)delegate;
 - (void)delete:(id)arg1;
 - (id)doubleTapGestureRecognizer;
@@ -155,6 +170,7 @@
 - (id)modelController;
 - (id)modernToolbarView;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
+- (bool)onlyDrawWithApplePencil;
 - (bool)overlayShouldPixelate;
 - (id)overlayViewAtIndex:(unsigned long long)arg1;
 - (id)pageControllerForAnnotation:(id)arg1;
@@ -176,6 +192,7 @@
 - (void)renderAnnotation:(id)arg1 inContext:(struct CGContext { }*)arg2;
 - (void)resetToDefaultToolMode;
 - (id)rotationGestureRecognizer;
+- (id)rulerHostingDelegate;
 - (double)screenPixelsToCanvasPixelsDownscale;
 - (void)selectAll:(id)arg1;
 - (bool)selectNewlyCreatedAnnotations;
@@ -207,10 +224,12 @@
 - (void)setPasteCascadingMultiplier:(unsigned long long)arg1;
 - (void)setPencilAlwaysDraws:(bool)arg1;
 - (void)setPeripheralAvailabilityManager:(id)arg1;
+- (void)setRulerHostingDelegate:(id)arg1;
 - (void)setScreenPixelsToCanvasPixelsDownscale:(double)arg1;
 - (void)setSelectNewlyCreatedAnnotations:(bool)arg1;
 - (void)setShapeDetectionEnabled:(bool)arg1;
 - (void)setShowingMenu:(bool)arg1;
+- (void)setSidecarController:(id)arg1;
 - (void)setSignatureModelController:(id)arg1;
 - (void)setStatisticsLogger:(id)arg1;
 - (void)setTextEditorController:(id)arg1;
@@ -224,6 +243,7 @@
 - (bool)shouldDrawVariableStrokeDoodles;
 - (void)showAttributeInspector:(id)arg1;
 - (void)showSelectionMenu:(id)arg1;
+- (id)sidecarController;
 - (id)signatureModelController;
 - (id)statisticsLogger;
 - (void)strokeAddedNotification:(id)arg1;

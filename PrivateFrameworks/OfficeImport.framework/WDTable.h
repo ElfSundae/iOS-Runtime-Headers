@@ -7,12 +7,12 @@
     NSMutableArray * mRows;
 }
 
+- (void).cxx_destruct;
 - (id)addRow;
 - (int)blockType;
 - (id)cellIterator;
 - (void)clearProperties;
 - (void)clearRows;
-- (void)dealloc;
 - (id)description;
 - (id)initWithText:(id)arg1;
 - (id)insertRowAtIndex:(unsigned long long)arg1;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/IDSFoundation.framework/IDSFoundation
  */
 
-@interface IDSSocketPairDataMessage : IDSSocketPairMessage {
+@interface IDSSocketPairDataMessage : IDSSocketPairMessage <IDSSocketPairMessage> {
     bool  _compressed;
     NSData * _data;
     bool  _expectsPeerResponse;

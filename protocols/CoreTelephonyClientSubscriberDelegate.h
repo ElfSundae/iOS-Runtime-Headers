@@ -13,5 +13,6 @@
 - (void)simPukEntryErrorDidOccur:(CTXPCServiceSubscriptionContext *)arg1 status:(NSString *)arg2;
 - (void)simStatusDidChange:(CTXPCServiceSubscriptionContext *)arg1 status:(NSString *)arg2;
 - (void)subscriberCountryCodeDidChange:(CTXPCServiceSubscriptionContext *)arg1;
+- (void)userDefaultVoiceSlotDidChange:(CTXPCServiceSubscriptionContext *)arg1;
 
 @end

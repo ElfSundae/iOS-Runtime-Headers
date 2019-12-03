@@ -16,7 +16,7 @@
 - (void)_lsPing:(id)arg1 reply:(id /* block */)arg2;
 - (void)addObserver;
 - (id)connection;
-- (void)createInstallProgressForApplication:(id)arg1 withPhase:(unsigned long long)arg2 andPublishingString:(id)arg3;
+- (void)createInstallProgressForApplication:(id)arg1 withPhase:(unsigned long long)arg2 andPublishingString:(id)arg3 reply:(id /* block */)arg4;
 - (id)description;
 - (unsigned long long)hash;
 - (id)initWithConnection:(id)arg1;

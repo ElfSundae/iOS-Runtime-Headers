@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
  */
 
-@interface CKDPCSData : NSObject <NSSecureCoding, PQLValuable> {
+@interface CKDPCSData : NSObject <NSCopying, NSSecureCoding, PQLValuable> {
     NSString * _etag;
     struct _OpaquePCSShareProtection { } * _pcs;
     NSData * _pcsData;
@@ -20,11 +20,11 @@
 @property (readonly) Class superclass;
 
 + (id)newFromSqliteStatement:(struct sqlite3_stmt { }*)arg1 atIndex:(int)arg2;
-+ (id)newFromSqliteValue:(struct sqlite3_value { }*)arg1;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

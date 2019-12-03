@@ -32,5 +32,6 @@
 - (id)initWithDomain:(unsigned int)arg1 label:(unsigned int)arg2;
 - (id)initWithOriginal:(id)arg1;
 - (id)initWithToken:(unsigned char)arg1;
+- (id)redactedDescription;
 
 @end

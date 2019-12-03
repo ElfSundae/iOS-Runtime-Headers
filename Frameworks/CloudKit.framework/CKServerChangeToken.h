@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
  */
 
-@interface CKServerChangeToken : NSObject <NSCopying, NSSecureCoding, PQLValuable> {
+@interface CKServerChangeToken : NSObject <HMBModelObjectStorage, NSCopying, NSSecureCoding, PQLValuable> {
     NSData * _data;
 }
 
@@ -10,6 +10,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy) NSString *hmbDescription;
 @property (readonly) Class superclass;
 
 // Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
@@ -35,6 +36,13 @@
 
 - (id)descriptionWithContext:(id)arg1;
 - (void)sqliteBind:(struct sqlite3_stmt { }*)arg1 index:(int)arg2;
+
+// Image: /System/Library/PrivateFrameworks/HomeKitBackingStore.framework/HomeKitBackingStore
+
++ (id)hmbDecodeData:(id)arg1 fromStorageLocation:(unsigned long long)arg2 error:(id*)arg3;
+
+- (id)hmbDescription;
+- (id)hmbEncodeForStorageLocation:(unsigned long long)arg1 error:(id*)arg2;
 
 // Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
 

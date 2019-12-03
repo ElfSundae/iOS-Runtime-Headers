@@ -6,12 +6,15 @@
 @required
 
 - (bool)canMakeSpotlightChanges;
+- (bool)canModifyBirthdayCalendar;
 - (bool)canModifyCalendarDatabase;
 - (bool)canModifySuggestedEventCalendar;
 - (bool)hasCalendarToolEntitlement;
 - (bool)hasChangeIdTrackingOverrideEntitlement;
 - (bool)hasContactsUIEntitlement;
+- (bool)hasManagedConfigurationBundleIDOverrideEntitlement;
 - (bool)hasMigrationEntitlement;
+- (bool)hasNotificationCountEntitlement;
 - (bool)hasSyncClientEntitlement;
 - (bool)internalAccessLevelGranted;
 - (bool)shouldTrustClientEnforcedManagedConfigurationAccess;

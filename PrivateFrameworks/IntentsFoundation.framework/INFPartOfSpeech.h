@@ -10,9 +10,9 @@
     NSMutableDictionary * _variants;
 }
 
-@property unsigned long long gender;
+@property (nonatomic) unsigned long long gender;
 @property (nonatomic, copy) NSString *language;
-@property unsigned long long partOfSpeechType;
+@property (nonatomic) unsigned long long partOfSpeechType;
 @property (nonatomic, retain) NSMutableDictionary *variants;
 
 + (id)adjectiveWithIdentifier:(id)arg1 language:(id)arg2;

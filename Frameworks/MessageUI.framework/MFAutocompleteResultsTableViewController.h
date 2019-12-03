@@ -27,9 +27,7 @@
 @property (nonatomic) bool shouldHighlightCompleteMatches;
 @property (nonatomic, readonly) NSArray *suggestedRecipients;
 
-+ (id)cellBackgroundColorForInlineDisplay;
-+ (id)cellBackgroundColorForPopoverDisplay;
-
+- (void).cxx_destruct;
 - (id)_combinedResults;
 - (id)_flattenedIndexPaths;
 - (id)_indexPathForRecipient:(id)arg1;

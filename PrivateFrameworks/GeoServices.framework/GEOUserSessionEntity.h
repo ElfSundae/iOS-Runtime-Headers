@@ -12,16 +12,16 @@
     double  _sessionRelativeTimestamp;
 }
 
-@property (readonly) unsigned int sequenceNumber;
-@property double sessionCreationTime;
+@property (nonatomic, readonly) unsigned int sequenceNumber;
+@property (nonatomic) double sessionCreationTime;
 @property (nonatomic, readonly) NSString *sessionEntityString;
-@property (readonly) struct GEOSessionID { unsigned long long x1; unsigned long long x2; } sessionID;
+@property (nonatomic, readonly) struct GEOSessionID { unsigned long long x1; unsigned long long x2; } sessionID;
 @property (nonatomic, readonly) NSNumber *sessionIDHigh;
 @property (nonatomic, readonly) NSString *sessionIDHighString;
 @property (nonatomic, readonly) NSNumber *sessionIDLow;
 @property (nonatomic, readonly) NSString *sessionIDLowString;
 @property (nonatomic, readonly) NSString *sessionIDString;
-@property (readonly) double sessionRelativeTimestamp;
+@property (nonatomic, readonly) double sessionRelativeTimestamp;
 @property (nonatomic, readonly) NSString *sessionUUIDString;
 
 - (bool)_isValidSessionIDHighOrLowString:(id)arg1;

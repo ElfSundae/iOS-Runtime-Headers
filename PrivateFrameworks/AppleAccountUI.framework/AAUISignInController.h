@@ -2,22 +2,30 @@
    Image: /System/Library/PrivateFrameworks/AppleAccountUI.framework/AppleAccountUI
  */
 
-@interface AAUISignInController : UINavigationController <AAUISignInViewControllerDelegate> {
+@interface AAUISignInController : UINavigationController <AAUISignInViewControllerInternalDelegate, UIAdaptivePresentationControllerDelegate> {
     bool  __shouldForceOperation;
+    long long  _aidaOperationUIPermissions;
     NSDictionary * _authenticationResults;
+    bool  _canEditUsername;
+    long long  _currentStyle;
+    UMUserPersona * _originalPersona;
+    UMUserPersonaContext * _originalPersonaContext;
     <AIDAServiceOwnerProtocol> * _serviceOwnersManager;
     NSString * _serviceType;
+    NSString * _username;
 }
 
 @property (setter=_setAuthenticationResults:, nonatomic, retain) NSDictionary *_authenticationResults;
 @property (setter=_setServiceOwnersManager:, nonatomic, retain) <AIDAServiceOwnerProtocol> *_serviceOwnersManager;
 @property (setter=_setShouldForceOperation:, nonatomic) bool _shouldForceOperation;
+@property (nonatomic) bool canEditUsername;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <AAUISignInControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSString *serviceType;
 @property (readonly) Class superclass;
+@property (nonatomic, copy) NSString *username;
 
 - (void).cxx_destruct;
 - (bool)_allowsAccountCreationForService:(id)arg1;
@@ -45,15 +53,23 @@
 - (id)_signInViewController;
 - (id)_spinnerMessageForService:(id)arg1;
 - (id)_spinnerViewController;
+- (void)_updateStyleIfNeeded;
+- (bool)canEditUsername;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)prepareInViewController:(id)arg1 completion:(id /* block */)arg2;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (id)serviceType;
+- (void)setCanEditUsername:(bool)arg1;
 - (void)setServiceType:(id)arg1;
+- (void)setUsername:(id)arg1;
 - (void)signInViewController:(id)arg1 didCompleteWithAuthenticationResults:(id)arg2;
 - (void)signInViewControllerDidCancel:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
+- (id)username;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidLoad;
+- (void)viewWillLayoutSubviews;
+- (void)willAuthenticateWithContext:(id)arg1;
 
 @end

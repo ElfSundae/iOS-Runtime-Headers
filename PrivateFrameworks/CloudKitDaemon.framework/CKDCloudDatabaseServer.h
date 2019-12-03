@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
  */
 
-@interface CKDCloudDatabaseServer : NSObject {
+@interface CKDCloudDatabaseServer : NSObject <UMUserSyncStakeholder> {
     NSOperationQueue * _clientTeardownQueue;
     NSMutableArray * _connectedClients;
     NSMutableDictionary * _recentClientsByProcessName;
@@ -18,6 +18,10 @@
 
 @property (nonatomic, retain) NSOperationQueue *clientTeardownQueue;
 @property (nonatomic, retain) NSMutableArray *connectedClients;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool isInSyncBubble;
 @property (nonatomic, retain) NSMutableDictionary *recentClientsByProcessName;
 @property (nonatomic, retain) NSObject<OS_dispatch_source> *sighandlerSource;
 @property (nonatomic) unsigned long long stateHandle;
@@ -25,6 +29,7 @@
 @property (nonatomic, retain) NSMutableArray *statusReportCallbacks;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *statusReportQueue;
 @property (nonatomic, retain) NSObject<OS_dispatch_source> *statusReportRequestSource;
+@property (readonly) Class superclass;
 @property (nonatomic) int tccToken;
 @property (nonatomic, retain) NSXPCListener *xpcListener;
 

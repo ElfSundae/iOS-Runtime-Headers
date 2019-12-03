@@ -20,6 +20,7 @@
 - (id)initWithOperation:(id)arg1;
 - (id)initWithSettingsDictionary:(id)arg1;
 - (bool)isEqualToOperation:(id)arg1;
+- (bool)isMigratable;
 - (id)settingsDictionary;
 
 @end

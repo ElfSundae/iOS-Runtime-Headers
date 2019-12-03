@@ -59,6 +59,8 @@
 @property (readonly) Class superclass;
 @property (nonatomic, copy) UIColor *textColor;
 
++ (id)_defaultTextColor;
+
 - (void).cxx_destruct;
 - (void)_addSuperscriptToAttributedString:(id)arg1 formattedCurrencyAmount:(id)arg2 currencyAmountWithoutSymbols:(id)arg3;
 - (void)_addSuperscriptToAttributedString:(id)arg1 inRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;

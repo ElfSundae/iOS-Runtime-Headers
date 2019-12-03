@@ -13,6 +13,7 @@
 - (void).cxx_destruct;
 - (void)applyToStatistic:(id)arg1;
 - (id)candidate;
+- (id)changedText;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)setCandidate:(id)arg1;

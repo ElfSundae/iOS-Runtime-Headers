@@ -11,6 +11,7 @@
 @property (readonly) bool sampleBufferWasDropped;
 
 - (id)_initWithSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 sampleBufferWasDropped:(bool)arg2;
+- (int)constituentDeviceCaptureID;
 - (void)dealloc;
 - (long long)droppedReason;
 - (bool)hasCorrespondingDepthData;

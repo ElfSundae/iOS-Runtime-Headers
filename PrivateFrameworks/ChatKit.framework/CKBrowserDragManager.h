@@ -52,6 +52,7 @@
 - (void)setDragWindow:(id)arg1;
 - (void)setGestureRecognizer:(id)arg1;
 - (void)setLocationInView:(struct CGPoint { double x1; double x2; })arg1;
+- (void)setPlusButtonHidden:(bool)arg1;
 - (void)setPresentingViewController:(id)arg1;
 - (void)setTargetView:(id)arg1;
 - (void)setTranscriptDelegate:(id)arg1;

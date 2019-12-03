@@ -5,6 +5,6 @@
 
 @required
 
-- (void)updateCopy:(id <NSCopying>)arg1 withZone:(struct _NSZone { }*)arg2;
+- (void)updateCopy:(id)arg1 withZone:(struct _NSZone { }*)arg2;
 
 @end

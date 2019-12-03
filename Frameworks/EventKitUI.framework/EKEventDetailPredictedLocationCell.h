@@ -13,7 +13,9 @@
     UIView * _topSeparator;
 }
 
+@property (nonatomic, readonly) UIView *acceptView;
 @property <EKEventDetailPredictedLocationCellDelegate> *delegate;
+@property (nonatomic, readonly) UIView *rejectView;
 @property (nonatomic) bool showsTopSeparator;
 
 + (id)_separatorColor;
@@ -21,11 +23,13 @@
 - (void).cxx_destruct;
 - (void)_disambiguateIfNeeded;
 - (void)_setEventDate:(id)arg1;
+- (id)acceptView;
 - (void)confirmLocationTapped:(id)arg1;
 - (id)delegate;
 - (id)init;
 - (id)initEditable:(bool)arg1;
 - (void)rejectLocationTapped:(id)arg1;
+- (id)rejectView;
 - (void)setDelegate:(id)arg1;
 - (void)setEvent:(id)arg1;
 - (void)setShowsTopSeparator:(bool)arg1;

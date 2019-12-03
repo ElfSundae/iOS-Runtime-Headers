@@ -5,6 +5,7 @@
 @interface HFTemperatureIconDescriptor : NSObject <HFIconDescriptor> {
     NSString * _formattedTemperature;
     long long  _heatingCoolingMode;
+    bool  _shouldForceLTR;
     long long  _targetHeatingCoolingMode;
 }
 
@@ -14,6 +15,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) long long heatingCoolingMode;
 @property (nonatomic, readonly) NSString *identifier;
+@property (nonatomic, readonly) bool shouldForceLTR;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) long long targetHeatingCoolingMode;
 
@@ -24,6 +26,7 @@
 - (id)identifier;
 - (id)initWithFormattedTemperature:(id)arg1 heatingCoolingMode:(long long)arg2 targetHeatingCoolingMode:(long long)arg3;
 - (bool)isEqual:(id)arg1;
+- (bool)shouldForceLTR;
 - (long long)targetHeatingCoolingMode;
 
 @end

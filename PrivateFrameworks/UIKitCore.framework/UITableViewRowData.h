@@ -7,6 +7,7 @@
     double  _defaultSectionHeaderHeight;
     NSIndexPath * _draggedIndexPath;
     double  _draggedRowHeight;
+    bool  _estimatesHeights;
     NSIndexPath * _gapIndexPath;
     double  _gapRowHeight;
     UITableViewHeaderFooterView * _headerFooterViewUsedForMeasurements;
@@ -55,6 +56,7 @@
 - (void)_assertValidIndexPath:(id)arg1 allowEmptySection:(bool)arg2;
 - (double)_dropTargetGapHeightForIndexPath:(id)arg1;
 - (void)_ensureSectionOffsetIsValidForSection:(long long)arg1;
+- (id)_indexPathsBelowIndexPath:(id)arg1;
 - (id)_nextIndexPathOrSectionHeader:(id)arg1;
 - (id)_previousIndexPathOrSectionHeader:(id)arg1;
 - (long long)_sectionForPoint:(struct CGPoint { double x1; double x2; })arg1 beginningWithSection:(long long)arg2 numberOfSections:(long long)arg3;
@@ -136,6 +138,8 @@
 - (void)setDraggedRowHeight:(double)arg1;
 - (void)setGapIndexPath:(id)arg1;
 - (void)setGapRowHeight:(double)arg1;
+- (void)setHeight:(double)arg1 forFooterInSection:(long long)arg2;
+- (void)setHeight:(double)arg1 forHeaderInSection:(long long)arg2;
 - (void)setHeight:(double)arg1 forRowAtIndexPath:(id)arg2;
 - (void)setHeightForTableHeaderViewHiding:(double)arg1;
 - (void)setMinimumRowHeight:(double)arg1;

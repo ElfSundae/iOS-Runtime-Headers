@@ -16,13 +16,13 @@
 @property (nonatomic) bool forceNonBaseFormula;
 @property (nonatomic) int rowBaseOrOffset;
 
+- (void).cxx_destruct;
 - (void)archiveByAppendingToMutableData:(struct __CFData { }*)arg1;
 - (unsigned long long)baseFormulaIndex;
 - (id)baseFormulaRange;
 - (id)baseFormulaWithRowBlocks:(id)arg1;
 - (int)columnBaseOrOffset;
 - (bool)convertTokensToShared;
-- (void)dealloc;
 - (id)description;
 - (bool)forceNonBaseFormula;
 - (id)init;

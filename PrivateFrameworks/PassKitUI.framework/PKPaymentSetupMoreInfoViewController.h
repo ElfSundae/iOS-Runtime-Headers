@@ -8,7 +8,6 @@
     bool  _isFinalViewController;
     NSArray * _moreInfoItems;
     PKPaymentSetupMoreInfoView * _moreInfoView;
-    bool  _navigationBarOpaque;
     PKPaymentPass * _pass;
 }
 
@@ -30,7 +29,6 @@
 - (void)_handlePush;
 - (id)_nextItems;
 - (void)_nextTapped:(id)arg1;
-- (void)_updateNavBarContent;
 - (long long)context;
 - (id /* block */)dismissalHandler;
 - (unsigned long long)edgesForExtendedLayout;
@@ -40,8 +38,6 @@
 - (id)moreInfoItems;
 - (id)moreInfoView;
 - (id)pass;
-- (double)pkui_preferredNavigationBarBackgroundOpacity;
-- (bool)pkui_prefersNavigationBarShadowHidden;
 - (long long)preferredStatusBarStyle;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)setDismissalHandler:(id /* block */)arg1;

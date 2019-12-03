@@ -12,6 +12,7 @@
     unsigned long long  mRowFieldsCount;
 }
 
+- (void).cxx_destruct;
 - (void)addColumnSubheadingLevel:(unsigned int)arg1 to:(id)arg2;
 - (void)addRowSubheadingLevel:(unsigned int)arg1 to:(id)arg2;
 - (void)addSubtotalColumnLevel:(unsigned int)arg1 to:(id)arg2;

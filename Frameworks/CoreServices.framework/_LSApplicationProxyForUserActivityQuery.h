@@ -14,10 +14,10 @@
 + (id)queryWithDomainName:(id)arg1;
 + (bool)supportsSecureCoding;
 
+- (void).cxx_destruct;
 - (void)_enumerateWithXPCConnection:(id)arg1 block:(id /* block */)arg2;
 - (bool)_requiresDatabaseMappingEntitlement;
 - (id)activityType;
-- (void)dealloc;
 - (id)domainName;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

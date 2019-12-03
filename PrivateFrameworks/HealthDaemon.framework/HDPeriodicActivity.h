@@ -3,8 +3,10 @@
  */
 
 @interface HDPeriodicActivity : NSObject <HDDatabaseProtectedDataObserver, HDDiagnosticObject, HDHealthDaemonReadyObserver> {
+    NSObject<OS_xpc_object> * _currentActivity;
     <HDPeriodicActivityDelegate> * _delegate;
     NSString * _errorCountUserDefaultsKey;
+    bool  _hasUpdatedCriteria;
     double  _interval;
     NSString * _lastSuccessfulRunDateUserDefaultsKey;
     NSObject<OS_os_log> * _loggingCategory;
@@ -12,9 +14,11 @@
     NSString * _name;
     HDProfile * _profile;
     NSObject<OS_dispatch_queue> * _queue;
+    bool  _unitTest_shouldDeferOverride;
     id /* block */  _waitingActivityCompletion;
 }
 
+@property (retain) NSObject<OS_xpc_object> *currentActivity;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, readonly) <HDPeriodicActivityDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -23,6 +27,7 @@
 @property (nonatomic, readonly) double interval;
 @property (nonatomic, readonly) NSObject<OS_os_log> *loggingCategory;
 @property (nonatomic, readonly, copy) NSString *name;
+@property (nonatomic, readonly) bool shouldDefer;
 @property (readonly) Class superclass;
 
 + (id)_userDefaultsKeyForName:(id)arg1 key:(id)arg2;
@@ -45,10 +50,12 @@
 - (void)_queue_updateCriteriaForActivity:(id)arg1;
 - (void)_registerActivity;
 - (bool)_requiresProtectedData;
+- (id)currentActivity;
 - (void)daemonReady:(id)arg1;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(bool)arg2;
 - (void)dealloc;
 - (id)delegate;
+- (id)description;
 - (id)diagnosticDescription;
 - (void)didPerformActivityWithResult:(long long)arg1 minimumRetryInterval:(double)arg2 activityStartDate:(id)arg3 error:(id)arg4;
 - (long long)errorCount;
@@ -59,6 +66,9 @@
 - (id)loggingCategory;
 - (id)name;
 - (void)reset;
+- (void)setCurrentActivity:(id)arg1;
+- (bool)shouldDefer;
 - (void)synthesizeActivityFire;
+- (void)unitTest_setShouldDefer:(bool)arg1;
 
 @end

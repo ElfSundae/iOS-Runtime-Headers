@@ -23,6 +23,7 @@
     <UIFocusItem> * _previousFocusedItem;
 }
 
+@property (nonatomic) bool areChildrenFocused;
 @property (getter=_currentFocusAnimationCoordinator, nonatomic, readonly) UIFocusAnimationCoordinator *currentFocusAnimationCoordinator;
 @property (readonly, copy) NSString *debugDescription;
 @property (getter=_delegate, setter=_setDelegate:, nonatomic) <_UIFocusSystemDelegate> *delegate;
@@ -60,6 +61,7 @@
 - (bool)_debug_isEnvironmentEligibleForFocusUpdate:(id)arg1 debugReport:(id)arg2;
 - (id)_delegate;
 - (void)_didFinishUpdatingFocusInContext:(id)arg1;
+- (void)_enableWithoutFocusRestoration;
 - (id)_focusAnimationCoordinatorManager;
 - (void)_focusEnvironmentWillDisappear:(id)arg1;
 - (id)_focusHapticFeedbackGenerator;

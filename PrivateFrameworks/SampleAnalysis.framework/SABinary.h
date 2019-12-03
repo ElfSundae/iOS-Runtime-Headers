@@ -13,6 +13,7 @@
     bool  _hasTextExecSegment;
     NSMutableDictionary * _instructions;
     NSString * _name;
+    unsigned long long  _numInstructionsWhenLastBulkSymbolicated;
     unsigned long long  _numInstructionsWhenLastSymbolicated;
     unsigned long long  _optionsWhenLastSymbolicated;
     NSString * _path;

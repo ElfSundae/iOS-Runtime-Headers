@@ -4,6 +4,7 @@
 
 @interface NTKCGalleryCell : UITableViewCell <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout> {
     _NTKCAddNewFace * _addNewFace;
+    bool  _allSnapshotsLoaded;
     NTKCGalleryCollection * _collection;
     UICollectionView * _collectionView;
     UIStackView * _collectionViewFooterStack;
@@ -26,6 +27,7 @@
 }
 
 @property (nonatomic, retain) _NTKCAddNewFace *addNewFace;
+@property (nonatomic) bool allSnapshotsLoaded;
 @property (nonatomic, retain) NTKCGalleryCollection *collection;
 @property (nonatomic, retain) UICollectionView *collectionView;
 @property (nonatomic, retain) UIStackView *collectionViewFooterStack;
@@ -56,7 +58,9 @@
 - (void)_fontSizeDidChange;
 - (bool)_shouldShowAddNewFace;
 - (id)addNewFace;
+- (bool)allSnapshotsLoaded;
 - (void)calculateHeightForCollection;
+- (void)clearSelectedFaces;
 - (id)collection;
 - (id)collectionView;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
@@ -65,6 +69,7 @@
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (id)collectionViewFooterStack;
+- (id)containerViewForFace:(id)arg1;
 - (struct CGPoint { double x1; double x2; })contentOffset;
 - (id)cvHeightConstraint;
 - (void)dealloc;
@@ -83,9 +88,11 @@
 - (id)layout;
 - (void)layoutSubviews;
 - (id)leadingInsetConstraint;
-- (id)previewViewAndRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg1 forFace:(id)arg2;
+- (void)prepareForReuse;
+- (void)selectFace:(id)arg1;
 - (long long)selectedIndex;
 - (void)setAddNewFace:(id)arg1;
+- (void)setAllSnapshotsLoaded:(bool)arg1;
 - (void)setCollection:(id)arg1;
 - (void)setCollectionView:(id)arg1;
 - (void)setCollectionViewFooterStack:(id)arg1;

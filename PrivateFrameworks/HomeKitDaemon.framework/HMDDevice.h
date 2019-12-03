@@ -33,8 +33,9 @@
 @property (readonly, copy) NSUUID *idsIdentifier;
 @property (setter=setIDSIdentifierHash:, copy) NSUUID *idsIdentifierHash;
 @property (getter=isLocallyTracked) bool locallyTracked;
-@property (nonatomic, readonly) NSUUID *modelIdentifier;
-@property (nonatomic, readonly) NSUUID *modelParentIdentifier;
+@property (readonly) Class modelClass;
+@property (nonatomic, readonly, copy) NSUUID *modelIdentifier;
+@property (nonatomic, readonly, copy) NSUUID *modelParentIdentifier;
 @property (readonly, copy) NSString *name;
 @property (readonly, copy) NSString *privateDescription;
 @property (copy) HMFProductInfo *productInfo;
@@ -83,6 +84,7 @@
 - (id)logIdentifier;
 - (bool)mergeObject:(id)arg1;
 - (id)modelBackedObjects;
+- (Class)modelClass;
 - (id)modelIdentifier;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (id)modelParentIdentifier;

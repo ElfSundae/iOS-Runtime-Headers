@@ -15,11 +15,11 @@
     bool  _hasMediaEntitiesFetchCompleted;
     bool  _hasStartedFetch;
     NSArray * _homeShares;
-    bool  _isUpdatingRentals;
     NSDictionary * _mediaEntitiesByCategoryType;
     NSDictionary * _mediaEntitiesByGenreIdentifier;
     VUIMediaEntitiesFetchController * _mediaEntitiesFetchController;
     VUIMediaLibrary * _mediaLibrary;
+    VUIMediaEntitiesFetchController * _rentalsUpdateFetchController;
     NSSet * _validCategories;
 }
 
@@ -39,11 +39,11 @@
 @property (nonatomic) bool hasStartedFetch;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSArray *homeShares;
-@property (nonatomic) bool isUpdatingRentals;
 @property (nonatomic, retain) NSDictionary *mediaEntitiesByCategoryType;
 @property (nonatomic, retain) NSDictionary *mediaEntitiesByGenreIdentifier;
 @property (nonatomic, retain) VUIMediaEntitiesFetchController *mediaEntitiesFetchController;
 @property (nonatomic, retain) VUIMediaLibrary *mediaLibrary;
+@property (nonatomic, retain) VUIMediaEntitiesFetchController *rentalsUpdateFetchController;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSSet *validCategories;
 
@@ -83,11 +83,11 @@
 - (id)homeShares;
 - (id)init;
 - (id)initWithMediaLibrary:(id)arg1 validCategories:(id)arg2;
-- (bool)isUpdatingRentals;
 - (id)mediaEntitiesByCategoryType;
 - (id)mediaEntitiesByGenreIdentifier;
 - (id)mediaEntitiesFetchController;
 - (id)mediaLibrary;
+- (id)rentalsUpdateFetchController;
 - (void)setArtworkInfoDictionaryByPurchaseID:(id)arg1;
 - (void)setCategories:(id)arg1;
 - (void)setCategoryTypeByFetchRequestIdentifier:(id)arg1;
@@ -100,11 +100,11 @@
 - (void)setHasMediaEntitiesFetchCompleted:(bool)arg1;
 - (void)setHasStartedFetch:(bool)arg1;
 - (void)setHomeShares:(id)arg1;
-- (void)setIsUpdatingRentals:(bool)arg1;
 - (void)setMediaEntitiesByCategoryType:(id)arg1;
 - (void)setMediaEntitiesByGenreIdentifier:(id)arg1;
 - (void)setMediaEntitiesFetchController:(id)arg1;
 - (void)setMediaLibrary:(id)arg1;
+- (void)setRentalsUpdateFetchController:(id)arg1;
 - (void)setValidCategories:(id)arg1;
 - (void)startFetch;
 - (void)updateRentalShelf;

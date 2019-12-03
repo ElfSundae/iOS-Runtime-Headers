@@ -8,11 +8,34 @@
     GEOPDMapsIdentifier * _eventId;
     int  _expectedAttendance;
     struct { 
-        unsigned int expectedAttendance : 1; 
-    }  _has;
+        unsigned int has_expectedAttendance : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_eventCategorys : 1; 
+        unsigned int read_eventDateTimes : 1; 
+        unsigned int read_eventId : 1; 
+        unsigned int read_name : 1; 
+        unsigned int read_performers : 1; 
+        unsigned int read_poiIds : 1; 
+        unsigned int read_timezone : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_eventCategorys : 1; 
+        unsigned int wrote_eventDateTimes : 1; 
+        unsigned int wrote_eventId : 1; 
+        unsigned int wrote_name : 1; 
+        unsigned int wrote_performers : 1; 
+        unsigned int wrote_poiIds : 1; 
+        unsigned int wrote_timezone : 1; 
+        unsigned int wrote_expectedAttendance : 1; 
+    }  _flags;
     GEOLocalizedString * _name;
     NSMutableArray * _performers;
     NSMutableArray * _poiIds;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     GEOTimezone * _timezone;
     PBUnknownFields * _unknownFields;
 }
@@ -33,10 +56,22 @@
 
 + (Class)eventCategoryType;
 + (Class)eventDateTimeType;
++ (bool)isValid:(id)arg1;
 + (Class)performerType;
 + (Class)poiIdType;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsEventCategory:(id)arg1;
+- (void)_addNoFlagsEventDateTime:(id)arg1;
+- (void)_addNoFlagsPerformer:(id)arg1;
+- (void)_addNoFlagsPoiId:(id)arg1;
+- (void)_readEventCategorys;
+- (void)_readEventDateTimes;
+- (void)_readEventId;
+- (void)_readName;
+- (void)_readPerformers;
+- (void)_readPoiIds;
+- (void)_readTimezone;
 - (void)addEventCategory:(id)arg1;
 - (void)addEventDateTime:(id)arg1;
 - (void)addPerformer:(id)arg1;
@@ -45,6 +80,7 @@
 - (void)clearEventDateTimes;
 - (void)clearPerformers;
 - (void)clearPoiIds;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -62,6 +98,8 @@
 - (bool)hasName;
 - (bool)hasTimezone;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)name;
@@ -71,6 +109,7 @@
 - (id)poiIdAtIndex:(unsigned long long)arg1;
 - (id)poiIds;
 - (unsigned long long)poiIdsCount;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setEventCategorys:(id)arg1;
 - (void)setEventDateTimes:(id)arg1;

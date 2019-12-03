@@ -18,9 +18,9 @@
 + (id)contentFormatWithFormatString:(id)arg1 formatId:(unsigned long long)arg2;
 + (id)contentFormatWithNSString:(id)arg1 formatId:(unsigned long long)arg2 builtIn:(bool)arg3;
 
+- (void).cxx_destruct;
 - (bool)builtIn;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)formatId;
 - (id)formatString;

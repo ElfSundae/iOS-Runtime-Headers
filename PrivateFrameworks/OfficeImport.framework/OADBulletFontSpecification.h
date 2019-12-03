@@ -6,7 +6,7 @@
     NSString * mFont;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)font;
 - (unsigned long long)hash;
 - (id)initWithFont:(id)arg1;

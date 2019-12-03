@@ -6,7 +6,7 @@
     NSString * _defaultLeaderboardIdentifier;
     union { 
         struct { 
-            unsigned int _platform : 8; 
+            unsigned int _platform_unused : 8; 
             unsigned int _prerendered : 1; 
             unsigned int _supportsLeaderboards : 1; 
             unsigned int _supportsLeaderboardSets : 1; 
@@ -16,7 +16,7 @@
             unsigned int _valid : 1; 
             unsigned int _unused : 1; 
             unsigned int _supportsTurnBasedMultiplayer : 1; 
-            unsigned int _reserved : 13; 
+            unsigned int _reserved : 15; 
         } ; 
         unsigned int _value; 
     }  _flags;
@@ -29,8 +29,10 @@
     GKStoreItemInternal * _storeItem;
 }
 
+@property (nonatomic, readonly) bool canBeIndexed;
 @property (nonatomic, retain) NSString *defaultLeaderboardIdentifier;
 @property (nonatomic) unsigned int flags;
+@property (nonatomic, readonly) GKGameDescriptor *gameDescriptor;
 @property (nonatomic) bool hasAggregateLeaderboard;
 @property (nonatomic, retain) NSDictionary *icons;
 @property (nonatomic) unsigned short maxAchievementPoints;
@@ -38,7 +40,6 @@
 @property (nonatomic) unsigned short numberOfAchievements;
 @property (nonatomic) unsigned short numberOfLeaderboardSets;
 @property (nonatomic) unsigned short numberOfLeaderboards;
-@property (nonatomic) unsigned char platform;
 @property (getter=isPrerendered, nonatomic) bool prerendered;
 @property (nonatomic, retain) GKStoreItemInternal *storeItem;
 @property (nonatomic) bool supportsAchievements;
@@ -50,11 +51,13 @@
 
 + (id)secureCodedPropertyKeys;
 
+- (bool)canBeIndexed;
 - (void)dealloc;
 - (id)defaultCategory;
 - (id)defaultLeaderboardIdentifier;
 - (id)description;
 - (unsigned int)flags;
+- (id)gameDescriptor;
 - (bool)hasAggregateLeaderboard;
 - (unsigned long long)hash;
 - (id)icons;
@@ -67,7 +70,6 @@
 - (unsigned short)numberOfCategories;
 - (unsigned short)numberOfLeaderboardSets;
 - (unsigned short)numberOfLeaderboards;
-- (unsigned char)platform;
 - (id)serverRepresentation;
 - (void)setDefaultLeaderboardIdentifier:(id)arg1;
 - (void)setFlags:(unsigned int)arg1;
@@ -78,7 +80,6 @@
 - (void)setNumberOfAchievements:(unsigned short)arg1;
 - (void)setNumberOfLeaderboardSets:(unsigned short)arg1;
 - (void)setNumberOfLeaderboards:(unsigned short)arg1;
-- (void)setPlatform:(unsigned char)arg1;
 - (void)setPrerendered:(bool)arg1;
 - (void)setStoreItem:(id)arg1;
 - (void)setSupportsAchievements:(bool)arg1;

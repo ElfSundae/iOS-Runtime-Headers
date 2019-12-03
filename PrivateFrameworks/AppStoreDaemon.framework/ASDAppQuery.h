@@ -3,6 +3,7 @@
  */
 
 @interface ASDAppQuery : NSObject <ASDNotificationCenterNotificationObserver, ASDNotificationCenterProgressObserver> {
+    NRDevice * _device;
     NSObject<OS_dispatch_queue> * _dispatchQueue;
     bool  _hasRunOnce;
     ASDNotificationCenter * _notificationCenter;
@@ -20,13 +21,20 @@
 @property (readonly) NSPredicate *predicate;
 @property (readonly) Class superclass;
 
-+ (void)_executeQueryWithPredicate:(id)arg1 usingServiceBroker:(id)arg2 withResultHandler:(id /* block */)arg3;
++ (void)_executeQueryWithPredicate:(id)arg1 onPairedDevice:(id)arg2 usingServiceBroker:(id)arg3 withResultHandler:(id /* block */)arg4;
 + (id)_newProgressForApp:(id)arg1 fromRemoteProgress:(id)arg2 usingServiceBroker:(id)arg3;
 + (void)anyWithPredicate:(id)arg1 withResultHandler:(id /* block */)arg2;
++ (id)queryDefaultPairedWatchForBetaApps;
++ (id)queryForBeagleApps;
++ (id)queryForBetaApps;
++ (id)queryForBetaAppsOnPairedDevice:(id)arg1;
++ (id)queryForBundleAtPath:(id)arg1;
 + (id)queryForBundleIDs:(id)arg1;
 + (id)queryForStoreApps;
 + (id)queryForStoreItemIDs:(id)arg1;
++ (id)queryForSystemAppsOnPairedDevice:(id)arg1;
 + (id)queryWithPredicate:(id)arg1;
++ (id)queryWithPredicate:(id)arg1 onPairedDevice:(id)arg2;
 
 - (void).cxx_destruct;
 - (void)_handleAppsRemovedWithBundleIDs:(id)arg1;
@@ -45,6 +53,8 @@
 - (void)executeQueryWithResultHandler:(id /* block */)arg1;
 - (id)init;
 - (id)initWithPredicate:(id)arg1;
+- (id)initWithPredicate:(id)arg1 onPairedDevice:(id)arg2;
+- (id)initWithPredicate:(id)arg1 onPairedDevice:(id)arg2 serviceBroker:(id)arg3 notificationCenter:(id)arg4;
 - (id)initWithPredicate:(id)arg1 serviceBroker:(id)arg2 notificationCenter:(id)arg3;
 - (void)notificationCenter:(id)arg1 receivedNotifications:(id)arg2;
 - (void)notificationCenter:(id)arg1 receivedProgress:(id)arg2;

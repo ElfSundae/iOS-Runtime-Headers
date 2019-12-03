@@ -10,6 +10,7 @@
 @property (nonatomic, retain) NSString *emailAddress;
 
 + (id)defaultPropertiesToLoad;
++ (Class)meltedClass;
 + (id)organizerWithName:(id)arg1 emailAddress:(id)arg2 address:(id)arg3 isCurrentUser:(bool)arg4;
 + (id)relations;
 

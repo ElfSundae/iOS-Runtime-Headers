@@ -29,9 +29,9 @@
 + (id)connectToViewServiceWithBundleIdentifier:(id)arg1 deputyInterfaces:(id)arg2 connectionHandler:(id /* block */)arg3;
 
 - (int)__automatic_invalidation_logic;
-- (id)_initWithConnectionInfo:(struct { id x1; })arg1 service:(id)arg2 deputyInterfaces:(id)arg3;
-- (id)_initWithConnectionInfo:(struct { id x1; })arg1 serviceBundleIdentifier:(id)arg2 deputyInterfaces:(id)arg3;
-- (id)_initWithConnectionInfo:(struct { id x1; })arg1 serviceBundleIdentifier:(id)arg2 service:(id)arg3 deputyInterfaces:(id)arg4;
+- (id)_initWithConnectionInfo:(struct { id x1; id x2; })arg1 service:(id)arg2 deputyInterfaces:(id)arg3;
+- (id)_initWithConnectionInfo:(struct { id x1; id x2; })arg1 serviceBundleIdentifier:(id)arg2 deputyInterfaces:(id)arg3;
+- (id)_initWithConnectionInfo:(struct { id x1; id x2; })arg1 serviceBundleIdentifier:(id)arg2 service:(id)arg3 deputyInterfaces:(id)arg4;
 - (bool)_isDeallocating;
 - (void)_terminateUnconditionallyThen:(id /* block */)arg1;
 - (id)_terminateWithError:(id)arg1;

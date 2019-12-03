@@ -4,6 +4,7 @@
 
 @interface _UIPreviewInteractionViewControllerPresentation : NSObject {
     <_UIPreviewInteractionViewControllerTransition> * _appearanceTransition;
+    UIView * _customContainerView;
     UIView * _customViewForTouchContinuation;
     <_UIPreviewInteractionViewControllerTransition> * _disappearanceTransition;
     UIPreviewPresentationController * _presentationController;
@@ -17,6 +18,7 @@
 }
 
 @property (nonatomic, retain) <_UIPreviewInteractionViewControllerTransition> *appearanceTransition;
+@property (nonatomic, retain) UIView *customContainerView;
 @property (nonatomic) UIView *customViewForTouchContinuation;
 @property (nonatomic, retain) <_UIPreviewInteractionViewControllerTransition> *disappearanceTransition;
 @property (nonatomic, retain) UIPreviewPresentationController *presentationController;
@@ -31,6 +33,7 @@
 - (void).cxx_destruct;
 - (void)_completeViewControllerPresentationImmediately;
 - (id)appearanceTransition;
+- (id)customContainerView;
 - (id)customViewForTouchContinuation;
 - (id)disappearanceTransition;
 - (id)initWithViewController:(id)arg1;
@@ -39,6 +42,7 @@
 - (id /* block */)privatePresentationBlock;
 - (id /* block */)privatePresentationCompletionBlock;
 - (void)setAppearanceTransition:(id)arg1;
+- (void)setCustomContainerView:(id)arg1;
 - (void)setCustomViewForTouchContinuation:(id)arg1;
 - (void)setDisappearanceTransition:(id)arg1;
 - (void)setPresentationController:(id)arg1;

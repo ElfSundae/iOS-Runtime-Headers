@@ -41,6 +41,7 @@
 - (id)initWithAnnotation:(id)arg1 reuseIdentifier:(id)arg2;
 - (void)prepareForReuse;
 - (bool)shouldShowCallout;
+- (void)traitCollectionDidChange:(id)arg1;
 - (bool)updateCalloutViewIfNeededAnimated:(bool)arg1;
 
 @end

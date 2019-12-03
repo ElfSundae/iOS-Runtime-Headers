@@ -10,6 +10,7 @@
 - (NSArray *)itemsLastVisitedInSession:(WBSHistorySession *)arg1;
 - (unsigned long long)numberOfItemsVisitedInSession:(WBSHistorySession *)arg1;
 - (unsigned long long)numberOfSessions;
+- (void)orderedItemsNewerThanDate:(void *)arg1 maxCount:(void *)arg2 completionHandler:(void *)arg3; // needs 3 arg types, found 8: NSDate *, unsigned long long, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSArray *, void*
 - (NSArray *)orderedSessions;
 
 @end

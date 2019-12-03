@@ -27,6 +27,7 @@
 + (id)makeFeatureJSObjectForFeature:(id)arg1;
 
 - (void).cxx_destruct;
+- (void)_evaluateDelegateBlockSync:(id /* block */)arg1;
 - (id)_menuItemElementForEntityUniqueIdentifier:(id)arg1;
 - (id)appContext;
 - (id)delegate;

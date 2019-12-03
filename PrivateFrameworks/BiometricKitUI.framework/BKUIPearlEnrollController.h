@@ -2,13 +2,14 @@
    Image: /System/Library/PrivateFrameworks/BiometricKitUI.framework/BiometricKitUI
  */
 
-@interface BKUIPearlEnrollController : PSViewController <BKUIPearlCoachingControllerDelegate, BKUIPearlEnrollViewControllerDelegate> {
+@interface BKUIPearlEnrollController : PSViewController <BKUIPearlCoachingControllerDelegate, BKUIPearlEnrollViewControllerDelegate, BKUIViewControllerAnimatedTransitioning> {
     BKUIPearlCoachingController * _coachingController;
     <BKUIPearlEnrollControllerDelegate> * _delegate;
     BKUIPearlEnrollViewController * _enrollViewController;
     bool  _hasBeenPortrait;
     UINavigationBar * _navbarCopy;
     long long  _orientation;
+    BKUIOrientationStateHandler * _orientationStateHandler;
     <NSObject> * _rotationChangeToken;
     <NSObject> * _rotationLockToken;
     bool  _systemRotationAnimating;
@@ -24,6 +25,7 @@
 @property (nonatomic) bool inBuddy;
 @property (nonatomic) bool inDemo;
 @property (nonatomic, readonly) UINavigationBar *navbarCopy;
+@property (nonatomic, retain) BKUIOrientationStateHandler *orientationStateHandler;
 @property (nonatomic, retain) <NSObject> *rotationChangeToken;
 @property (nonatomic, retain) <NSObject> *rotationLockToken;
 @property (readonly) Class superclass;
@@ -39,6 +41,7 @@
 - (bool)canBeShownFromSuspendedState;
 - (id)coachingController;
 - (void)coachingSkipped;
+- (void)dealloc;
 - (id)delegate;
 - (void)deviceOrientationChanged:(long long)arg1;
 - (void)deviceOrientationChanged:(long long)arg1 duration:(double)arg2;
@@ -53,6 +56,7 @@
 - (bool)isCompact;
 - (id)navbarCopy;
 - (id)navigationItem;
+- (id)orientationStateHandler;
 - (void)pearlEnrollControllerCompleted:(id)arg1;
 - (void)pearlEnrollViewController:(id)arg1 finishedEnrollWithError:(id)arg2;
 - (long long)preferredStatusBarStyle;
@@ -70,9 +74,11 @@
 - (void)setHasBeenPortrait:(bool)arg1;
 - (void)setInBuddy:(bool)arg1;
 - (void)setInDemo:(bool)arg1;
+- (void)setOrientationStateHandler:(id)arg1;
 - (void)setRotationChangeToken:(id)arg1;
 - (void)setRotationLockToken:(id)arg1;
 - (void)setSplashImageView:(id)arg1;
+- (id)transitionAnimator:(long long)arg1;
 - (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(bool)arg1;

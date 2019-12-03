@@ -3,20 +3,14 @@
  */
 
 @interface SBSHardwareButtonService : SBSAbstractSystemService {
-    NSMutableArray * _consumers;
-    struct SBSHardwareButtonServiceButtonConfiguration { 
-        unsigned long long eventMask; 
-        long long maximumPriority; 
-    }  _homeButtonConfiguration;
-    struct SBSHardwareButtonServiceButtonConfiguration { 
-        unsigned long long eventMask; 
-        long long maximumPriority; 
-    }  _lockButtonConfiguration;
+    BSMutableIntegerMap * _buttonConfigurationsPerKind;
+    BSMutableIntegerMap * _consumersPerKind;
+    BSMutableIntegerMap * _requestHIDAssertionsPerKind;
 }
 
-@property (nonatomic, retain) NSMutableArray *consumers;
-@property (nonatomic) struct SBSHardwareButtonServiceButtonConfiguration { unsigned long long x1; long long x2; } homeButtonConfiguration;
-@property (nonatomic) struct SBSHardwareButtonServiceButtonConfiguration { unsigned long long x1; long long x2; } lockButtonConfiguration;
+@property (nonatomic, retain) BSMutableIntegerMap *buttonConfigurationsPerKind;
+@property (nonatomic, retain) BSMutableIntegerMap *consumersPerKind;
+@property (nonatomic, retain) BSMutableIntegerMap *requestHIDAssertionsPerKind;
 
 + (id)sharedInstance;
 
@@ -25,19 +19,21 @@
 - (void)_mainQueue_handleButtonPressMessage:(long long)arg1 forButtonKind:(long long)arg2 priority:(long long)arg3;
 - (void)_resetEventMaskForButtonKind:(long long)arg1;
 - (void)_setApplicationClientEventMask:(unsigned long long)arg1 buttonKind:(long long)arg2 priority:(long long)arg3;
-- (id)_viableConsumerForEvent:(long long)arg1 priority:(long long)arg2;
+- (id)_viableConsumerForButtonKind:(long long)arg1 event:(long long)arg2 priority:(long long)arg3;
 - (void)acquireHomeHardwareButtonHintSuppressionAssertionForReason:(id)arg1 completion:(id /* block */)arg2;
 - (id)beginConsumingPressesForButtonKind:(long long)arg1 eventConsumer:(id)arg2 priority:(long long)arg3;
+- (id)buttonConfigurationsPerKind;
 - (void)consumerInfoWillInvalidate:(id)arg1;
-- (id)consumers;
+- (id)consumersPerKind;
+- (id)deferHIDEventsForButtonKind:(long long)arg1 toToken:(id)arg2;
 - (id)description;
 - (void)fetchHapticTypeForButtonKind:(long long)arg1 completion:(id /* block */)arg2;
 - (void)handleButtonPressMessage:(long long)arg1 forButtonKind:(long long)arg2 priority:(long long)arg3;
-- (struct SBSHardwareButtonServiceButtonConfiguration { unsigned long long x1; long long x2; })homeButtonConfiguration;
-- (struct SBSHardwareButtonServiceButtonConfiguration { unsigned long long x1; long long x2; })lockButtonConfiguration;
-- (void)setConsumers:(id)arg1;
+- (id)requestHIDAssertionsPerKind;
+- (void)setButtonConfigurationsPerKind:(id)arg1;
+- (void)setConsumersPerKind:(id)arg1;
 - (void)setHapticType:(long long)arg1 forButtonKind:(long long)arg2;
-- (void)setHomeButtonConfiguration:(struct SBSHardwareButtonServiceButtonConfiguration { unsigned long long x1; long long x2; })arg1;
-- (void)setLockButtonConfiguration:(struct SBSHardwareButtonServiceButtonConfiguration { unsigned long long x1; long long x2; })arg1;
+- (void)setRequestHIDAssertionsPerKind:(id)arg1;
+- (long long)toggleStateForButtonKind:(long long)arg1;
 
 @end

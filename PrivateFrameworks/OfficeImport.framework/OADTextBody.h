@@ -8,11 +8,11 @@
     OADTextListStyle * mTextListStyle;
 }
 
+- (void).cxx_destruct;
 - (id)addParagraph;
 - (void)addParagraphsFromTextBody:(id)arg1;
 - (void)applyTextListStyle:(id)arg1;
 - (void)changeParentTextListStylePreservingEffectiveValues:(id)arg1 ownTextListStyle:(bool)arg2;
-- (void)dealloc;
 - (id)description;
 - (id)findFirstTextRunOfClass:(Class)arg1;
 - (id)firstParagraphEffects;

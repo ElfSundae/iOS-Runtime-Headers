@@ -3,7 +3,6 @@
  */
 
 @interface HDLiveWorkoutDataSource : HDStandardTaskServer <HDWorkoutDataDestination, HDWorkoutDataSource, HKDataFlowLinkProcessor, HKLiveWorkoutDataSourceServerInterface> {
-    HDClientAuthorizationOracle * _authorizationOracle;
     HDWorkoutBasicDataSource * _basicDataSource;
     HKWorkoutDataSourceConfiguration * _dataSourceConfiguration;
     NSLock * _lock;
@@ -23,7 +22,7 @@
 + (Class)configurationClass;
 + (id)requiredEntitlements;
 + (id)taskIdentifier;
-+ (bool)validateConfiguration:(id)arg1 error:(out id*)arg2;
++ (bool)validateConfiguration:(id)arg1 client:(id)arg2 error:(id*)arg3;
 
 - (void).cxx_destruct;
 - (bool)_lock_shouldAddSample:(id)arg1;
@@ -33,7 +32,7 @@
 - (void)addWorkoutEvents:(id)arg1 dataSource:(id)arg2;
 - (void)connectionInvalidated;
 - (id)exportedInterface;
-- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
 - (id)remoteInterface;
 - (void)remote_setDataSourceConfiguration:(id)arg1;
 - (void)remote_startTaskServerIfNeeded;

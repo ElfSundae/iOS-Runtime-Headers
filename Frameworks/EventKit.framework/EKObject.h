@@ -15,6 +15,7 @@
 @property (nonatomic, retain) NSMutableDictionary *_cachedValues;
 @property (nonatomic, retain) EKObjectValidationContext *_validationContext;
 @property (nonatomic, retain) NSDictionary *additionalFrozenProperties;
+@property (nonatomic, retain) EKPersistentObject *backingObject;
 @property (nonatomic, readonly) bool canBeConvertedToFullObject;
 @property (nonatomic, retain) EKChangeSet *changeSet;
 @property (readonly, copy) NSString *debugDescription;
@@ -51,10 +52,11 @@
 - (void)_applyDefinedAfterFirstSaveFrom:(id)arg1;
 - (void)_applyKnownImmutableValuesFrom:(id)arg1;
 - (bool)_areOnlyChangedKeys:(id)arg1;
+- (void)_cachedMeltedChildIdentifierToParentMap:(id)arg1;
 - (id)_cachedMeltedObjects;
 - (unsigned long long)_cachedMeltedObjectsCount;
 - (id)_cachedValues;
-- (void)_emptyMeltedCacheForKey:(id)arg1;
+- (id)_convertBackingObjectsWithPath:(id)arg1 updateBackingObjects:(bool)arg2 allChangedBackingObjects:(id)arg3 eventStore:(id)arg4 updatedBackingObjectProvider:(id)arg5;
 - (bool)_hasChangeHelperInKeys:(id)arg1 ignoreKeys:(id)arg2 checkUnsaved:(bool)arg3;
 - (bool)_hasChanges;
 - (bool)_hasChangesForKey:(id)arg1;
@@ -82,6 +84,7 @@
 - (void)_removeCachedMeltedObject:(id)arg1 forMultiValueKey:(id)arg2;
 - (bool)_reset;
 - (bool)_resetCommon;
+- (bool)_resetIfBackingObjectIsOfClass:(Class)arg1 fetchResetFrozenObjectBlock:(id /* block */)arg2;
 - (void)_resetMeltedCache;
 - (void)_resetWithFrozenObject:(struct EKPersistentObject { Class x1; }*)arg1;
 - (void)_rollbackCommon;
@@ -100,6 +103,8 @@
 - (id)additionalFrozenProperties;
 - (void)applyChanges:(id)arg1;
 - (id)backingObject;
+- (struct EKPersistentObject { Class x1; }*)backingObjectOfChildObject:(id)arg1 withRelationshipKey:(id)arg2;
+- (id)cachedMeltedChildIdentifierToParentMap;
 - (id)cachedMeltedObjectForSingleValueKey:(id)arg1;
 - (id)cachedMeltedObjectsForMultiValueKey:(id)arg1;
 - (id)cachedValueForKey:(id)arg1;
@@ -115,10 +120,12 @@
 - (void)deletePersistentObject;
 - (void)didCommit;
 - (void)emptyMeltedCache;
+- (void)emptyMeltedCacheForKey:(id)arg1;
 - (void)emptyMeltedCacheForKeys:(id)arg1;
 - (id)eventStore;
 - (id)existingMeltedObject;
 - (bool)existsInStore;
+- (Class)frozenClass;
 - (struct EKPersistentObject { Class x1; }*)frozenObject;
 - (id)frozenOrMeltedCachedSingleRelationObjectForKey:(id)arg1;
 - (bool)hasChanges;
@@ -154,6 +161,7 @@
 - (id)objectID;
 - (id)persistentObject;
 - (id)preFrozenRelationshipObjects;
+- (id)prepareReminderKitObjectForSaveWithUpdatedBackingObjectProvider:(id)arg1;
 - (id)privacyDescription;
 - (void)rebase;
 - (void)rebaseSkippingRelationProperties:(id)arg1;
@@ -184,6 +192,7 @@
 - (id)uniqueIdentifier;
 - (void)updateMeltedAndCachedMultiRelationObjects:(id)arg1 forKey:(id)arg2;
 - (void)updateMeltedAndCachedSingleRelationObject:(id)arg1 forKey:(id)arg2 frozenClass:(Class)arg3;
+- (void)updateMultiValueCacheForChangeSet:(id)arg1 preservingExistingAdds:(bool)arg2;
 - (void)updatePersistentObject;
 - (void)updatePersistentObjectSkippingProperties:(id)arg1;
 - (void)updatePersistentValueForKeyIfNeeded:(id)arg1;

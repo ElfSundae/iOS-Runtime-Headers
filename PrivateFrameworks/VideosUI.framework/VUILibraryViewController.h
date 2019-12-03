@@ -16,7 +16,6 @@
     bool  _hasMenuItemFetchCompleted;
     NSArray * _homeShares;
     bool  _isIpad;
-    bool  _isUpdatingRentals;
     UIBarButtonItem * _libraryBarButton;
     NSArray * _menuCells;
     VUILibraryMenuItemViewCell * _menuItemSizingCell;
@@ -25,6 +24,7 @@
     VUILibraryPopoverViewController * _popoverViewController;
     bool  _ppt_isLoaded;
     VUIDownloadViewController * _presentedDownloadViewController;
+    VUIMediaEntitiesFetchController * _rentalsUpdateFetchController;
     NSDictionary * _shelfTypeByFetchRequestIdentifier;
     VUILibraryMediaEntityShelvesViewModel * _shelvesViewModel;
     VUILibraryListPopoverViewCell * _sizingPopoverCell;
@@ -46,13 +46,13 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSArray *homeShares;
 @property (nonatomic) bool isIpad;
-@property (nonatomic) bool isUpdatingRentals;
 @property (nonatomic, retain) UIBarButtonItem *libraryBarButton;
 @property (nonatomic, retain) NSArray *menuCells;
 @property (nonatomic, retain) VUILibraryMenuItemViewCell *menuItemSizingCell;
 @property (nonatomic, retain) NSArray *menuMediaItemEntityTypes;
 @property (nonatomic, retain) NSArray *popoverDropdownCells;
 @property (nonatomic, retain) VUILibraryPopoverViewController *popoverViewController;
+@property (nonatomic, retain) VUIMediaEntitiesFetchController *rentalsUpdateFetchController;
 @property (nonatomic, retain) NSDictionary *shelfTypeByFetchRequestIdentifier;
 @property (nonatomic, retain) VUILibraryMediaEntityShelvesViewModel *shelvesViewModel;
 @property (nonatomic, retain) VUILibraryListPopoverViewCell *sizingPopoverCell;
@@ -127,7 +127,6 @@
 - (id)homeShares;
 - (id)initWithMediaLibrary:(id)arg1;
 - (bool)isIpad;
-- (bool)isUpdatingRentals;
 - (id)libraryBarButton;
 - (void)loadView;
 - (id)menuCells;
@@ -141,6 +140,7 @@
 - (long long)popoverView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (struct CGSize { double x1; double x2; })popoverView:(id)arg1 sizeForItemAtIndexPath:(id)arg2;
 - (id)popoverViewController;
+- (id)rentalsUpdateFetchController;
 - (void)seeAllButtonPressed:(id)arg1;
 - (void)setAppliedNavigationItem:(bool)arg1;
 - (void)setAreLocalMediaItemsAvailable:(bool)arg1;
@@ -155,13 +155,13 @@
 - (void)setHasMenuItemFetchCompleted:(bool)arg1;
 - (void)setHomeShares:(id)arg1;
 - (void)setIsIpad:(bool)arg1;
-- (void)setIsUpdatingRentals:(bool)arg1;
 - (void)setLibraryBarButton:(id)arg1;
 - (void)setMenuCells:(id)arg1;
 - (void)setMenuItemSizingCell:(id)arg1;
 - (void)setMenuMediaItemEntityTypes:(id)arg1;
 - (void)setPopoverDropdownCells:(id)arg1;
 - (void)setPopoverViewController:(id)arg1;
+- (void)setRentalsUpdateFetchController:(id)arg1;
 - (void)setShelfTypeByFetchRequestIdentifier:(id)arg1;
 - (void)setShelvesViewModel:(id)arg1;
 - (void)setSizingPopoverCell:(id)arg1;

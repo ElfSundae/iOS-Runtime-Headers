@@ -5,7 +5,6 @@
 @interface PXMockDisplaySingleAssetSuggestion : NSObject <PXDisplaySuggestion> {
     NSDictionary * _actionProperties;
     PHAsset * _asset;
-    NSDate * _creationDate;
     unsigned short  _state;
     unsigned short  _subtype;
     NSString * _title;
@@ -14,7 +13,6 @@
 
 @property (nonatomic, readonly) NSDictionary *actionProperties;
 @property (nonatomic, readonly) PHAsset *asset;
-@property (nonatomic, readonly) NSDate *creationDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) NSDate *endDate;
@@ -31,7 +29,6 @@
 - (id)actionProperties;
 - (id)asset;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (id)creationDate;
 - (id)endDate;
 - (id)fetchKeyAssets;
 - (id)initWithAsset:(id)arg1 type:(unsigned short)arg2 subtype:(unsigned short)arg3 title:(id)arg4;

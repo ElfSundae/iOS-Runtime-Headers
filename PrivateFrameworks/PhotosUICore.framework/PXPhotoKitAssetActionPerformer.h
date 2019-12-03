@@ -18,10 +18,11 @@
 @property (nonatomic) bool shouldSkipUserConfirmation;
 
 + (bool)canPerformOnAsset:(id)arg1 inAssetCollection:(id)arg2 person:(id)arg3;
++ (bool)canPerformOnSubsetOfSelection;
 + (bool)canPerformWithActionManager:(id)arg1;
 + (id)createAlertActionWithTitle:(id)arg1 handler:(id /* block */)arg2;
 + (id)createBarButtonItemWithTarget:(id)arg1 action:(SEL)arg2;
-+ (id)createPreviewActionWithTitle:(id)arg1 handler:(id /* block */)arg2;
++ (id)createPreviewActionWithTitle:(id)arg1 image:(id)arg2 handler:(id /* block */)arg3;
 + (id)localizedTitleForUseCase:(unsigned long long)arg1 selectionSnapshot:(id)arg2 person:(id)arg3;
 
 - (void).cxx_destruct;

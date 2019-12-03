@@ -45,10 +45,14 @@
 - (bool)isDeviceRoute;
 - (bool)isDeviceSpeakerRoute;
 - (bool)isHomePodRoute;
+- (bool)isLowLatencyRoute;
 - (bool)isProxyGroupPlayer;
 - (bool)isRoutingToWirelessDevice;
+- (bool)isSplitRoute;
+- (bool)isSplitterCapable;
 - (bool)isStereoPair;
 - (bool)isTVRoute;
+- (long long)numberOfOutputDevices;
 - (bool)presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
 - (id)routeName;
 - (id)routeNames;

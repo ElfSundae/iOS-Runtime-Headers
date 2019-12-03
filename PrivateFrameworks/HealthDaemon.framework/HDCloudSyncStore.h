@@ -11,7 +11,9 @@
     HDSharingPredicate * _sharingPredicate;
     NSUUID * _storeIdentifier;
     long long  _syncEpoch;
+    int  _syncProtocolVersion;
     long long  _syncProvenance;
+    bool  _syncTombstonesOnly;
     CKRecordZoneID * _zoneID;
 }
 
@@ -28,6 +30,7 @@
 @property (nonatomic, readonly, copy) NSUUID *storeIdentifier;
 @property (readonly) Class superclass;
 @property (readonly) long long syncStoreType;
+@property (nonatomic, readonly) bool syncTombstonesOnly;
 @property (nonatomic, retain) CKRecordZoneID *zoneID;
 
 + (void)samplesDeletedInProfile:(id)arg1 byUser:(bool)arg2;
@@ -35,7 +38,6 @@
 + (id)syncStoreForProfile:(id)arg1 storeIdentifier:(id)arg2 syncCircleName:(id)arg3 ownerIdentifier:(id)arg4 containerIdentifier:(id)arg5 sharingIdentifier:(id)arg6 predicate:(id)arg7 error:(id*)arg8;
 
 - (void).cxx_destruct;
-- (id)_excludedSyncEntities;
 - (bool)canPush;
 - (bool)canRecieveSyncObjectsForEntityClass:(Class)arg1;
 - (bool)clearAllSyncAnchorsWithError:(id*)arg1;
@@ -54,6 +56,7 @@
 - (id)profile;
 - (int)protocolVersion;
 - (id)receivedSyncAnchorMapWithError:(id*)arg1;
+- (bool)replaceFrozenAnchorMap:(id)arg1 updateDate:(id)arg2 error:(id*)arg3;
 - (bool)replacePersistedAnchorMap:(id)arg1 error:(id*)arg2;
 - (bool)resetReceivedSyncAnchorMapWithError:(id*)arg1;
 - (void)setExpectedSequenceNumber:(long long)arg1 forSyncEntityClass:(Class)arg2;
@@ -69,8 +72,11 @@
 - (long long)syncProvenance;
 - (id)syncStoreDefaultSourceBundleIdentifier;
 - (id)syncStoreForEpoch:(long long)arg1;
+- (id)syncStoreForProtocolVersion:(int)arg1;
+- (id)syncStoreForTombstoneSyncOnly:(bool)arg1;
 - (id)syncStoreIdentifier;
 - (long long)syncStoreType;
+- (bool)syncTombstonesOnly;
 - (id)zoneID;
 
 @end

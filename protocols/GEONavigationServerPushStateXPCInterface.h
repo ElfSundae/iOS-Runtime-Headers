@@ -6,6 +6,7 @@
 @required
 
 - (void)setCurrentRoadName:(NSString *)arg1;
+- (void)setNavigationSessionState:(unsigned long long)arg1 transportType:(int)arg2;
 - (void)setNavigationVoiceVolumeWithData:(NSData *)arg1;
 - (void)setRouteSummaryWithActiveRouteDetailsData:(NSData *)arg1;
 - (void)setRouteSummaryWithGuidanceStateData:(NSData *)arg1;

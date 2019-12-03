@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
  */
 
-@interface KNTheme : TSATheme <KNSlideCollection, TSKDocumentObject, TSKTransformableObject, TSSPresetSource> {
+@interface KNTheme : TSATheme <KNSlideCollection, TSDModelContainer, TSKDocumentObject, TSKTransformableObject, TSSPresetSource> {
     NSString * _UUID;
     NSMutableArray * _classicThemeRecords;
     NSMutableDictionary * _customEffectTimingCurves;
@@ -16,6 +16,7 @@
 
 @property (nonatomic, retain) NSString *UUID;
 @property (nonatomic, retain) NSArray *classicThemeRecords;
+@property (nonatomic, readonly) NSArray *containedModels;
 @property (nonatomic, readonly) double cornerRadius;
 @property (nonatomic, copy) NSDictionary *customEffectTimingCurves;
 @property (readonly, copy) NSString *debugDescription;
@@ -24,8 +25,10 @@
 @property (nonatomic, readonly) TSWPParagraphStyle *defaultPresenterNotesParagraphStyle;
 @property (nonatomic, readonly) KNSlideNode *defaultSlideNodeForNewSelection;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) NSArray *displayedSlideNodes;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSArray *masters;
+@property (nonatomic, readonly) NSArray *slideNodes;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } thumbnailSize;
 
@@ -34,6 +37,7 @@
 + (id)generateUUID;
 + (void)initialize;
 + (id)nativeThemeNameFromTheme:(id)arg1;
++ (bool)needsObjectUUID;
 + (id)presetKinds;
 + (void)registerPresetSourceClasses;
 + (id)themeNameForCustomOrUnknownTheme;
@@ -50,6 +54,7 @@
 - (void)bootstrapWhiteThemeOfSize:(struct CGSize { double x1; double x2; })arg1;
 - (id)childEnumerator;
 - (id)classicThemeRecords;
+- (id)containedModels;
 - (bool)containsMasterWithName:(id)arg1;
 - (bool)containsSlideNode:(id)arg1;
 - (double)cornerRadius;
@@ -61,13 +66,15 @@
 - (id)defaultPresenterNotesParagraphStyle;
 - (id)defaultSlideNodeForNewSelection;
 - (id)defaultSlideNodeForNewSelectionNearestToIndex:(unsigned long long)arg1;
+- (id)displayedSlideNodes;
 - (id)formulaReferenceNameForSlideNode:(id)arg1;
 - (id)i_findDefaultMasterDuringArchiving;
 - (unsigned long long)indexOfSlideNode:(id)arg1;
 - (id)initWithContext:(id)arg1 documentStylesheet:(id)arg2;
+- (void)insertContainedModel:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)insertMasterSlideNode:(id)arg1 withThumbnails:(id)arg2 atIndex:(unsigned long long)arg3 dolcContext:(id)arg4;
 - (void)invalidateSlideNameCache;
-- (void)loadFromArchive:(const struct ThemeArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; struct RepeatedPtrField<KN::ThemeCustomTimingCurveArchive> { struct Arena {} *x_7_1_1; int x_7_1_2; int x_7_1_3; struct Rep {} *x_7_1_4; } x7; struct ArenaStringPtr { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > {} *x_8_1_1; } x8; struct ThemeArchive {} *x9; struct Reference {} *x10; struct Reference {} *x11; bool x12; }*)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const struct ThemeArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; struct RepeatedPtrField<KN::ThemeCustomTimingCurveArchive> { struct Arena {} *x_7_1_1; int x_7_1_2; int x_7_1_3; struct Rep {} *x_7_1_4; } x7; struct ArenaStringPtr { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > {} *x_8_1_1; } x8; struct ThemeArchive {} *x9; struct Reference {} *x10; struct Reference {} *x11; bool x12; }*)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)mappedMasterForPasteForMaster:(id)arg1;
 - (id)mappedMasterForPasteForSlide:(id)arg1;
@@ -75,24 +82,26 @@
 - (id)masterWithName:(id)arg1;
 - (id)masters;
 - (id)modelPathComponentForChild:(id)arg1;
+- (void)moveModel:(id)arg1 toIndex:(unsigned long long)arg2;
 - (id)nameForMasterCopyWithName:(id)arg1;
 - (id)orderedSlideNodesInSelection:(id)arg1;
 - (void)p_cacheSlideNodes;
 - (id)p_findDefaultMasterWithoutLoadingSlides;
-- (id)p_findSecondMaster;
+- (id)p_findFallbackDefaultMaster;
 - (id)p_mappedMasterForMaster:(id)arg1 scoringHeuristic:(id /* block */)arg2;
 - (int)p_matchScoreForMaster:(id)arg1 toMaster:(id)arg2;
 - (id)p_nameByIncrementingCounterAfterStringToAppend:(id)arg1 forOriginalName:(id)arg2 testForExistingName:(id /* block */)arg3;
-- (void)p_selectSecondMasterAsDefault;
+- (void)p_selectFallbackMasterAsDefault;
 - (void)p_setDefaultMasterSlideNode:(id)arg1;
 - (void)removeAllClassicThemeRecords;
 - (void)removeAllMasters;
+- (void)removeContainedModel:(id)arg1;
 - (void)removeCustomTimingCurveWithName:(id)arg1;
 - (void)removeMasterSlideNode:(id)arg1;
 - (void)resolveDefaultMaster;
-- (void)saveToArchive:(struct ThemeArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; struct RepeatedPtrField<KN::ThemeCustomTimingCurveArchive> { struct Arena {} *x_7_1_1; int x_7_1_2; int x_7_1_3; struct Rep {} *x_7_1_4; } x7; struct ArenaStringPtr { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > {} *x_8_1_1; } x8; struct ThemeArchive {} *x9; struct Reference {} *x10; struct Reference {} *x11; bool x12; }*)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(struct ThemeArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; struct RepeatedPtrField<KN::ThemeCustomTimingCurveArchive> { struct Arena {} *x_7_1_1; int x_7_1_2; int x_7_1_3; struct Rep {} *x_7_1_4; } x7; struct ArenaStringPtr { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > {} *x_8_1_1; } x8; struct ThemeArchive {} *x9; struct Reference {} *x10; struct Reference {} *x11; bool x12; }*)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (void)selectSecondMasterAsDefault;
+- (void)selectFallbackMasterAsDefault;
 - (void)setClassicThemeRecords:(id)arg1;
 - (void)setCustomEffectTimingCurves:(id)arg1;
 - (void)setCustomTimingCurve:(id)arg1 forName:(id)arg2;
@@ -101,6 +110,7 @@
 - (void)setUUID:(id)arg1;
 - (id)slideNamesMatchingPrefix:(id)arg1;
 - (id)slideNodeForFormulaReferenceName:(id)arg1 caseSensitive:(bool)arg2;
+- (id)slideNodes;
 - (id)themeCurvesForBuilds:(id)arg1 slideNodes:(id)arg2;
 - (struct CGSize { double x1; double x2; })thumbnailSize;
 - (id)undeletableStyles;

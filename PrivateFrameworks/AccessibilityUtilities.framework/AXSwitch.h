@@ -5,6 +5,7 @@
 @interface AXSwitch : NSObject <NSSecureCoding> {
     long long  _action;
     long long  _buttonNumber;
+    unsigned long long  _cameraSwitch;
     long long  _headSwitch;
     unsigned short  _keyCode;
     long long  _longPressAction;
@@ -22,6 +23,7 @@
 
 @property (nonatomic) long long action;
 @property (nonatomic) long long buttonNumber;
+@property (nonatomic) unsigned long long cameraSwitch;
 @property (nonatomic, readonly) bool hasLongPressAction;
 @property (nonatomic) long long headSwitch;
 @property (nonatomic) unsigned short keyCode;
@@ -45,6 +47,7 @@
 - (void).cxx_destruct;
 - (long long)action;
 - (long long)buttonNumber;
+- (unsigned long long)cameraSwitch;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (bool)hasLongPressAction;
@@ -65,6 +68,7 @@
 - (id)remoteSwitchIdentifier;
 - (void)setAction:(long long)arg1;
 - (void)setButtonNumber:(long long)arg1;
+- (void)setCameraSwitch:(unsigned long long)arg1;
 - (void)setHeadSwitch:(long long)arg1;
 - (void)setKeyCode:(unsigned short)arg1;
 - (void)setLongPressAction:(long long)arg1;

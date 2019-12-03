@@ -40,6 +40,7 @@
 - (bool)_isModern;
 - (id)ampEnrollmentPinning;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)description;
 - (id)displayName;
 - (id)domain;
 - (void)encodeWithCoder:(id)arg1;

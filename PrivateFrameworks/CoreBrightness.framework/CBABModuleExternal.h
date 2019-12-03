@@ -9,6 +9,7 @@
     CBABCurve * _curve;
     CBDisplayModule * _displayModule;
     bool  _enabled;
+    bool  _fastRamp;
     bool  _presetDisableAB;
     CBABRamp * _ramp;
     bool  _suspendAutoBrightness;
@@ -26,6 +27,7 @@
 - (id)copyPropertyForKey:(id)arg1 withParameter:(id)arg2;
 - (void)dealloc;
 - (id)displayModule;
+- (void)endFastRamp;
 - (bool)getAggregatedLux:(float*)arg1;
 - (bool)handleHIDEvent:(struct __IOHIDEvent { }*)arg1 from:(struct __IOHIDServiceClient { }*)arg2;
 - (void)handleNotificationForKey:(id)arg1 withProperty:(id)arg2;

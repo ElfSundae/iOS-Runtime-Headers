@@ -8,12 +8,12 @@
 }
 
 @property (nonatomic, readonly) bool _inviteDelivered;
-@property (nonatomic, readonly, retain) IMAVChat *avChat;
-@property (nonatomic, readonly, retain) NSString *name;
+@property (nonatomic, readonly) IMAVChat *avChat;
+@property (nonatomic, readonly) NSString *name;
 
+- (void).cxx_destruct;
 - (bool)_inviteDelivered;
 - (id)avChat;
-- (void)dealloc;
 - (void)forwardInvocation:(id)arg1;
 - (id)initWithDictionary:(id)arg1 chat:(id)arg2;
 - (bool)isLocalParticipant;

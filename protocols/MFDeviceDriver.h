@@ -32,6 +32,7 @@
 - (int)ellipse:(MFDeviceContext *)arg1 x1:(int)arg2 y1:(int)arg3 x2:(int)arg4 y2:(int)arg5;
 - (int)excludeClipRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (int)extTextOut:(MFDeviceContext *)arg1 px:(int*)arg2 py:(int*)arg3 in_text:(id)arg4 options:(int)arg5 left:(int)arg6 top:(int)arg7 right:(int)arg8 bottom:(int)arg9 spacingValues:(int*)arg10 numValues:(int)arg11;
+- (int)fillRectangle:(MFDeviceContext *)arg1 x1:(int)arg2 y1:(int)arg3 x2:(int)arg4 y2:(int)arg5;
 - (int)intersectClipRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (int)lineTo:(MFDeviceContext *)arg1 x:(double)arg2 y:(double)arg3;
 - (int)maskBlt:(MFDeviceContext *)arg1 in_xDest:(int)arg2 in_yDest:(int)arg3 in_widthDest:(int)arg4 in_heightDest:(int)arg5 in_sourceImage:(MFBitmap *)arg6 in_xSrc:(int)arg7 in_ySrc:(int)arg8 in_maskImage:(MFBitmap *)arg9 in_xMask:(int)arg10 in_yMask:(int)arg11 in_rop:(unsigned int)arg12 in_xform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; }*)arg13 in_colour:(unsigned int)arg14;

@@ -7,10 +7,10 @@
     NSMutableArray * mFontsInOrderOfInsertion;
 }
 
+- (void).cxx_destruct;
 - (void)clear;
 - (unsigned long long)count;
 - (id)createFontWithName:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)fontAtIndex:(unsigned long long)arg1;
 - (id)fontWithName:(id)arg1;

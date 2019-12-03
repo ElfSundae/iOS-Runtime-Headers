@@ -9,6 +9,7 @@
     AVConferenceXPCClient * _connection;
     id  _delegate;
     VCVideoStream * _opaqueStream;
+    bool  _shouldUseXPC;
     long long  _streamToken;
 }
 
@@ -41,8 +42,10 @@
 - (long long)direction;
 - (id)getStats;
 - (id)initWithIDSDestination:(id)arg1 callID:(id)arg2 error:(id*)arg3;
-- (id)initWithLocalAddress:(id)arg1 networkSockets:(id)arg2 IDSDestination:(id)arg3 callID:(id)arg4 error:(id*)arg5;
+- (id)initWithLocalAddress:(id)arg1 networkSockets:(id)arg2 IDSDestination:(id)arg3 connectionClientID:(id)arg4 callID:(id)arg5 options:(id)arg6 error:(id*)arg7;
+- (id)initWithNWConnectionClientID:(unsigned char)arg1 options:(id)arg2 error:(id*)arg3;
 - (id)initWithNetworkSockets:(id)arg1 callID:(id)arg2 error:(id*)arg3;
+- (id)initWithNetworkSockets:(id)arg1 options:(id)arg2 error:(id*)arg3;
 - (bool)isRTCPEnabled;
 - (bool)isRTCPTimeOutEnabled;
 - (bool)isRTPTimeOutEnabled;

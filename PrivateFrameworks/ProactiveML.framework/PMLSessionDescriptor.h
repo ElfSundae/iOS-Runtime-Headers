@@ -3,6 +3,7 @@
  */
 
 @interface PMLSessionDescriptor : NSObject <NSCopying, PMLPlistAndChunksSerializableProtocol> {
+    float  _featureVersion;
     NSString * _locale;
     NSString * _name;
     NSString * _version;
@@ -10,6 +11,7 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) float featureVersion;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSString *locale;
 @property (nonatomic, readonly) NSString *name;
@@ -19,9 +21,11 @@
 + (id)descriptorForName:(id)arg1 version:(id)arg2 locale:(id)arg3;
 
 - (void).cxx_destruct;
+- (float)_parseFeatureVersion:(id)arg1 descriptor:(id)arg2;
 - (id)baseSessionDescriptor;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
+- (float)featureVersion;
 - (unsigned long long)hash;
 - (id)initWithName:(id)arg1 version:(id)arg2 locale:(id)arg3;
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;

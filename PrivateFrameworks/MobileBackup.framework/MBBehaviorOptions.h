@@ -26,7 +26,7 @@
 @property (nonatomic, copy) NSString *minimumBuildVersionForFullBackup;
 @property (nonatomic) long long recordSaveAttempts;
 @property (nonatomic) bool snapshotAfterForegroundRestore;
-@property (nonatomic) long long sqlBatchCount;
+@property (nonatomic) int sqlBatchCount;
 @property (nonatomic) double sqlBatchTime;
 @property (nonatomic) bool sqlTrace;
 @property (nonatomic) bool useABC;
@@ -84,7 +84,7 @@
 - (void)setRecordSaveAttempts:(long long)arg1;
 - (void)setSQLTrace:(bool)arg1;
 - (void)setSnapshotAfterForegroundRestore:(bool)arg1;
-- (void)setSqlBatchCount:(long long)arg1;
+- (void)setSqlBatchCount:(int)arg1;
 - (void)setSqlBatchTime:(double)arg1;
 - (void)setUseABC:(bool)arg1;
 - (void)setUseBackgroundOperationsForBackup:(bool)arg1;
@@ -93,7 +93,7 @@
 - (void)setmaxBatchFetchAssetSize:(long long)arg1;
 - (void)setmaxBatchSaveAssetSize:(long long)arg1;
 - (bool)snapshotAfterForegroundRestore;
-- (long long)sqlBatchCount;
+- (int)sqlBatchCount;
 - (double)sqlBatchTime;
 - (bool)sqlTrace;
 - (bool)useABC;

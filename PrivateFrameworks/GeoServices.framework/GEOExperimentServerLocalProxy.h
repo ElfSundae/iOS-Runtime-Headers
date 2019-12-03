@@ -2,12 +2,18 @@
    Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
  */
 
-@interface GEOExperimentServerLocalProxy : NSObject <GEOExperimentServerProxy, GEOResourceManifestTileGroupObserver> {
+@interface GEOExperimentServerLocalProxy : NSObject <GEOExperimentServerProxy, GEOPListStateCapturing, GEOResourceManifestTileGroupObserver> {
+    GEOXPCActivity * _activity;
     GEOABAssignmentRequest * _currentRequest;
-    NSLock * _currentRequestLock;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _currentRequestLock;
     <GEOExperimentServerProxyDelegate> * _delegate;
     GEOABAssignmentResponse * _experimentsInfo;
-    NSLock * _experimentsInfoLock;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _experimentsInfoLock;
+    unsigned long long  _stateCaptureHandle;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -26,13 +32,15 @@
 - (void)_debug_setQuerySubstring:(id)arg1 forExperimentType:(long long)arg2 dispatcherRequestType:(int)arg3;
 - (void)_deleteExperimentInfoFromDisk;
 - (void)_executeRefreshWithinTime:(double)arg1;
-- (void)_invalidateTileCache:(bool)arg1 placesCache:(bool)arg2;
 - (void)_loadExperimentsConfiguration:(id /* block */)arg1;
-- (bool)_removeOldExperimentsInfoIfNecessary;
+- (void)_notifyExperimentsInfoChanged:(id)arg1 current:(id)arg2;
+- (bool)_removeOldExperimentsInfoIfNecessary:(bool)arg1;
 - (void)_setupRefreshActivity;
 - (void)_updateIfNecessary;
 - (void)_writeExperimentInfoToDisk:(id)arg1;
 - (void)abAssignUUIDWithCompletionHandler:(id /* block */)arg1;
+- (void)abAssignUUIDWithSyncCompletionHandler:(id /* block */)arg1;
+- (id)captureStatePlistWithHints:(struct os_state_hints_s { unsigned int x1; char *x2; unsigned int x3; unsigned int x4; }*)arg1;
 - (void)dealloc;
 - (id)delegate;
 - (id)experimentsInfo;

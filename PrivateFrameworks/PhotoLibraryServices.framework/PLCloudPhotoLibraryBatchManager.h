@@ -10,6 +10,7 @@
     bool  _wasDrained;
 }
 
+- (void).cxx_destruct;
 - (void)addRecord:(id)arg1;
 - (void)addRecord:(id)arg1 ignoreBatchSize:(bool)arg2;
 - (long long)currentBatchCount;

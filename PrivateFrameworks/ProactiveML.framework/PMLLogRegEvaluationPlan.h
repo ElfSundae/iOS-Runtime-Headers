@@ -7,7 +7,6 @@
     unsigned long long  _evaluationLevel;
     bool  _intercept;
     bool  _isMultiLabel;
-    bool  _isSynchronous;
     unsigned long long  _maxSessionsLimit;
     struct NSString { Class x1; } * _planId;
     unsigned long long  _positiveLabel;
@@ -23,7 +22,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) bool isSynchronous;
 @property (nonatomic, readonly) unsigned long long maxSessionsLimit;
 @property (nonatomic, readonly) NSString *planId;
 @property (nonatomic, readonly) PMLSessionDescriptor *sessionDescriptor;
@@ -36,8 +34,7 @@
 - (id)description;
 - (id)init;
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
-- (id)initWithStore:(id)arg1 tracker:(id)arg2 planId:(struct NSString { Class x1; }*)arg3 isSynchronous:(bool)arg4 sessionDescriptor:(id)arg5 maxSessionsLimit:(unsigned long long)arg6 sessionsInBatch:(unsigned long long)arg7 currentModelWeights:(id)arg8 intercept:(bool)arg9 skew:(double)arg10 threshold:(double)arg11 isMultiLabel:(bool)arg12 positiveLabel:(unsigned long long)arg13 evaluationLevel:(unsigned long long)arg14;
-- (bool)isSynchronous;
+- (id)initWithStore:(id)arg1 tracker:(id)arg2 planId:(struct NSString { Class x1; }*)arg3 sessionDescriptor:(id)arg4 maxSessionsLimit:(unsigned long long)arg5 sessionsInBatch:(unsigned long long)arg6 currentModelWeights:(id)arg7 intercept:(bool)arg8 skew:(double)arg9 threshold:(double)arg10 isMultiLabel:(bool)arg11 positiveLabel:(unsigned long long)arg12 evaluationLevel:(unsigned long long)arg13;
 - (void)loadSessionsWithBlock:(id /* block */)arg1;
 - (unsigned long long)maxSessionsLimit;
 - (id)normalizeRegressor:(id)arg1;

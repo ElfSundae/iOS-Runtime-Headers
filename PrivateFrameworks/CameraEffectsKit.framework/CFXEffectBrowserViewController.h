@@ -30,7 +30,10 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <CFXEffectBrowserViewControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) UIViewController *dockPresentationViewController;
 @property (nonatomic, retain) CFXEffectPickerViewController *effectPickerViewController;
+@property (nonatomic, readonly) bool expandedAppShouldDismissOnDragSuccess;
+@property (nonatomic, readonly) struct CGSize { double x1; double x2; } expandedAppViewControllerSize;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSLayoutConstraint *madBottomConstraint;
 @property (nonatomic, retain) NSLayoutConstraint *madExpandedAppButtonsHeightConstraint;
@@ -42,6 +45,7 @@
 @property (nonatomic, retain) UIView *messagesAppsDockContainerView;
 @property (nonatomic, retain) IMADockViewController *messagesAppsDockViewController;
 @property (nonatomic, retain) NSString *selectedAppIdentifier;
+@property (nonatomic) bool showAppIconBorders;
 @property (readonly) Class superclass;
 
 + (struct CGSize { double x1; double x2; })CFX_droppedSizeForSticker:(id)arg1 dropTarget:(id)arg2;
@@ -111,8 +115,11 @@
 - (void)setMessagesAppsDockContainerView:(id)arg1;
 - (void)setMessagesAppsDockViewController:(id)arg1;
 - (void)setSelectedAppIdentifier:(id)arg1;
+- (void)setShowAppIconBorders:(bool)arg1;
 - (bool)shouldRotateCellsForDeviceOrientation;
+- (bool)showAppIconBorders;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
 
 @end

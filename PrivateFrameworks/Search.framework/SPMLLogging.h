@@ -6,7 +6,6 @@
 
 + (id)candidateLogsURL;
 + (id)dateFormatter;
-+ (id)dateFromFileURL:(id)arg1;
 + (id)logURLForCurrentTime;
 + (id)submittedLogsURL;
 + (id)submitttedSpotlightReportsError:(id*)arg1;

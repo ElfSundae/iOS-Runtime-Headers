@@ -10,7 +10,9 @@
     FCAssetManager * _assetManager;
     long long  _backendArticleVersion;
     NSArray * _blockedStorefrontIDs;
+    long long  _bodyTextLength;
     bool  _boundToContext;
+    bool  _bundlePaid;
     NSString * _changeEtag;
     NSString * _clusterID;
     unsigned long long  _contentType;
@@ -30,6 +32,7 @@
     NSString * _identifier;
     bool  _isDraft;
     bool  _isLocalDraft;
+    bool  _issueOnly;
     NSDate * _lastFetchedDate;
     NSDate * _lastModifiedDate;
     long long  _minimumNewsVersion;
@@ -42,7 +45,9 @@
     long long  _publisherArticleVersion;
     NSString * _referencedArticleID;
     NSArray * _relatedArticleIDs;
+    unsigned long long  _role;
     NSString * _shortExcerpt;
+    bool  _showBundleSoftPaywall;
     bool  _showMinimalChrome;
     <FCChannelProviding> * _sourceChannel;
     NSString * _sourceName;
@@ -67,6 +72,7 @@
     NSString * _title;
     NSArray * _topicIDs;
     NSArray * _topics;
+    bool  _useTransparentNavigationBar;
     NSString * _versionIdentifier;
     double  _videoDuration;
     NSURL * _videoURL;
@@ -88,6 +94,7 @@
 - (id)assetManager;
 - (long long)backendArticleVersion;
 - (id)blockedStorefrontIDs;
+- (long long)bodyTextLength;
 - (id)changeEtag;
 - (id)clusterID;
 - (id)contentManifestWithContext:(id)arg1;
@@ -106,11 +113,13 @@
 - (id)identifier;
 - (id)initWithArticlePayload:(id)arg1 sourceChannel:(id)arg2 assetManager:(id)arg3 rapidUpdatesTimeout:(long long)arg4;
 - (bool)isBoundToContext;
+- (bool)isBundlePaid;
 - (bool)isDeleted;
 - (bool)isDraft;
 - (bool)isFeatureCandidate;
 - (bool)isHiddenFromAutoFavorites;
 - (bool)isHiddenFromFeeds;
+- (bool)isIssueOnly;
 - (bool)isLocalDraft;
 - (bool)isPaid;
 - (bool)isPressRelease;
@@ -126,10 +135,12 @@
 - (long long)publisherArticleVersion;
 - (id)referencedArticleID;
 - (id)relatedArticleIDs;
+- (unsigned long long)role;
 - (void)setAccessoryText:(id)arg1;
 - (void)setArticleID:(id)arg1;
 - (void)setArticlePayload:(id)arg1;
 - (void)setAssetManager:(id)arg1;
+- (void)setBundlePaid:(bool)arg1;
 - (void)setChangeEtag:(id)arg1;
 - (void)setClusterID:(id)arg1;
 - (void)setContentType:(unsigned long long)arg1;
@@ -141,6 +152,7 @@
 - (void)setIdentifier:(id)arg1;
 - (void)setPaid:(bool)arg1;
 - (void)setPublishDate:(id)arg1;
+- (void)setRole:(unsigned long long)arg1;
 - (void)setShortExcerpt:(id)arg1;
 - (void)setSourceChannel:(id)arg1;
 - (void)setSourceName:(id)arg1;
@@ -156,6 +168,7 @@
 - (void)setTitle:(id)arg1;
 - (void)setTopicIDs:(id)arg1;
 - (id)shortExcerpt;
+- (bool)showBundleSoftPaywall;
 - (bool)showMinimalChrome;
 - (id)sourceChannel;
 - (id)sourceName;
@@ -170,6 +183,7 @@
 - (id)title;
 - (id)topicIDs;
 - (id)topics;
+- (bool)useTransparentNavigationBar;
 - (id)versionIdentifier;
 - (double)videoDuration;
 - (id)videoURL;

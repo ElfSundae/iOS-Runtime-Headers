@@ -7,10 +7,11 @@
     ACAccountStore * _accountStore;
     bool  _autoFillAvailable;
     bool  _bookmarksAvailable;
+    NSNumber * _cachedShouldRequestMoreTime;
     bool  _cloudSyncAvailable;
     bool  _inMemoryBookmarkChangeTrackingAvailable;
     NSObject<OS_dispatch_queue> * _internalQueue;
-    RMManagementState * _managementState;
+    STManagementState * _managementState;
     bool  _offlineReadingListAvailable;
     bool  _readingListAvailable;
 }
@@ -41,6 +42,7 @@
 - (void)_updateFeatureAvailabilityByAccessLevel;
 - (void)dealloc;
 - (void)determineIfPrivateBrowsingIsAvailableWithCompletionHandler:(id /* block */)arg1;
+- (void)determineIfUserIsRestrictedByScreenTimeWithCompletionHandler:(id /* block */)arg1;
 - (id)init;
 - (bool)isAirDropPasswordsAvailable;
 - (bool)isAutoFillAvailable;

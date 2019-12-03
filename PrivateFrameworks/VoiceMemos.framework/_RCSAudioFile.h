@@ -12,6 +12,7 @@
 @property (nonatomic, retain) RCSSavedRecordingAccessToken *fileToken;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) AVAudioFormat *processingFormat;
+@property (nonatomic, readonly) NSDictionary *settings;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSURL *url;
 
@@ -20,6 +21,7 @@
 - (id)fileToken;
 - (id)processingFormat;
 - (void)setFileToken:(id)arg1;
+- (id)settings;
 - (id)url;
 
 @end

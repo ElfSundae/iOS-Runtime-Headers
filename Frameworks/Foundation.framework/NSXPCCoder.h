@@ -26,6 +26,10 @@
 - (void)setUserInfo:(id)arg1;
 - (id)userInfo;
 
+// Image: /System/Library/PrivateFrameworks/EmailFoundation.framework/EmailFoundation
+
+- (bool)ef_isNSXPCCoder;
+
 // Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
 
 - (id)geo_decodeXPCDataForKey:(id)arg1;

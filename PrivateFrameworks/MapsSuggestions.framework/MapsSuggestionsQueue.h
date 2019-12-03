@@ -3,19 +3,23 @@
  */
 
 @interface MapsSuggestionsQueue : NSObject <MapsSuggestionsObject> {
-    NSObject<OS_dispatch_queue> * _innerQueue;
-    struct NSString { Class x1; } * _name;
+    struct unique_ptr<MSg::Queue, std::__1::default_delete<MSg::Queue> > { 
+        struct __compressed_pair<MSg::Queue *, std::__1::default_delete<MSg::Queue> > { 
+            struct Queue {} *__value_; 
+        } __ptr_; 
+    }  _cppQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly) NSObject<OS_dispatch_queue> *innerQueue;
+@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *innerQueue;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSString *uniqueName;
 
 + (id)serialQueueWithName:(struct NSString { Class x1; }*)arg1;
 
+- (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)asyncBlock:(id /* block */)arg1;
 - (id)initSerialQueueWithName:(struct NSString { Class x1; }*)arg1;

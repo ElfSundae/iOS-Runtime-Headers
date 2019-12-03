@@ -10,6 +10,7 @@
     NSMutableArray * mTextBodyRects;
 }
 
+- (void).cxx_destruct;
 - (void)addFormula:(id)arg1;
 - (void)addPath:(id)arg1;
 - (void)addTextBodyRect:(id)arg1;

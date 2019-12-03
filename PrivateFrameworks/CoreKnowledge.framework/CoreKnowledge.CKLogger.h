@@ -3,7 +3,7 @@
  */
 
 @interface CoreKnowledge.CKLogger : Swift._SwiftObject {
-    void category;
+    void osLog;
 }
 
 @end

@@ -14,6 +14,7 @@
         } size; 
     }  _caretBeforeTap;
     _UITextServiceSession * _definitionSession;
+    bool  _hadCaretSelectionBeforeTap;
     _UITextServiceSession * _learnSession;
     _UITextServiceSession * _lookupSession;
     unsigned long long  _options;
@@ -28,6 +29,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) UILongPressGestureRecognizer *forcePressGesture;
+@property (nonatomic) bool hadCaretSelectionBeforeTap;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) UILongPressGestureRecognizer *loupeGesture;
 @property (nonatomic) bool shouldDelayActivatingSelectionView;
@@ -44,6 +46,8 @@
 - (bool)containerIsBrowserView;
 - (bool)containerIsPlainStyleAtom;
 - (void)dealloc;
+- (void)didEndScrollingOverflow;
+- (bool)hadCaretSelectionBeforeTap;
 - (void)hideTextStyleOptions;
 - (id)initWithView:(id)arg1;
 - (void)lookup:(id)arg1 fromRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
@@ -69,6 +73,7 @@
 - (void)selectionChangedWithTouchAt:(struct CGPoint { double x1; double x2; })arg1 withSelectionTouch:(long long)arg2 withFlags:(long long)arg3;
 - (Class)selectionInteractionClass;
 - (void)setCaretBeforeTap:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (void)setHadCaretSelectionBeforeTap:(bool)arg1;
 - (void)setShouldDelayActivatingSelectionView:(bool)arg1;
 - (void)setWordBeforeTap:(id)arg1;
 - (bool)shouldDelayActivatingSelectionView;
@@ -83,6 +88,8 @@
 - (void)updateActivatingSelectionView;
 - (void)updateSelectionWithPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)updateWithMagnifierTerminalPoint:(bool)arg1;
+- (bool)wantsLinkInteraction;
+- (void)willStartScrollingOverflow;
 - (id)wordBeforeTap;
 
 @end

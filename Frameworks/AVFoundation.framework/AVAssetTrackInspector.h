@@ -4,7 +4,7 @@
 
 @interface AVAssetTrackInspector : AVFigObjectInspector <AVAsynchronousKeyValueLoading> {
     NSArray * _cachedMediaCharacteristics;
-    long long  _synthesizeMediaCharacteristicsOnce;
+    AVDispatchOnce * _synthesizeMediaCharacteristicsOnce;
     AVWeakReference * _weakReference;
 }
 
@@ -22,8 +22,12 @@
 @property (getter=_figMediaType, nonatomic, readonly) unsigned int figMediaType;
 @property (getter=_figTrackReader, nonatomic, readonly) struct OpaqueFigTrackReader { }*figTrackReader;
 @property (nonatomic, readonly) NSArray *formatDescriptions;
+@property (nonatomic, readonly) bool hasAudibleBooksContent;
+@property (nonatomic, readonly) bool hasAudioSampleDependencies;
 @property (nonatomic, readonly) bool hasProtectedContent;
+@property (nonatomic, readonly) bool isAudibleBooksContentAuthorized;
 @property (nonatomic, readonly) NSString *languageCode;
+@property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } latentBaseDecodeTimeStampOfFirstTrackFragment;
 @property (nonatomic, readonly) long long layer;
 @property (nonatomic, readonly) NSLocale *locale;
 @property (nonatomic, readonly) NSDictionary *loudnessInfo;
@@ -35,6 +39,7 @@
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } naturalSize;
 @property (nonatomic, readonly) int naturalTimeScale;
 @property (nonatomic, readonly) float nominalFrameRate;
+@property (nonatomic, readonly) float peakDataRate;
 @property (nonatomic, readonly) int playabilityValidationResult;
 @property (getter=isPlayable, nonatomic, readonly) bool playable;
 @property (nonatomic, readonly) struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; } preferredTransform;
@@ -68,14 +73,18 @@
 - (float)estimatedDataRate;
 - (id)extendedLanguageTag;
 - (id)formatDescriptions;
+- (bool)hasAudibleBooksContent;
+- (bool)hasAudioSampleDependencies;
 - (bool)hasProtectedContent;
 - (id)init;
+- (bool)isAudibleBooksContentAuthorized;
 - (bool)isDecodable;
 - (bool)isEnabled;
 - (bool)isExcludedFromAutoselectionInTrackGroup;
 - (bool)isPlayable;
 - (bool)isSelfContained;
 - (id)languageCode;
+- (struct { long long x1; int x2; unsigned int x3; long long x4; })latentBaseDecodeTimeStampOfFirstTrackFragment;
 - (long long)layer;
 - (void)loadValuesAsynchronouslyForKeys:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)locale;
@@ -89,6 +98,7 @@
 - (struct CGSize { double x1; double x2; })naturalSize;
 - (int)naturalTimeScale;
 - (float)nominalFrameRate;
+- (float)peakDataRate;
 - (int)playabilityValidationResult;
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })preferredTransform;
 - (float)preferredVolume;

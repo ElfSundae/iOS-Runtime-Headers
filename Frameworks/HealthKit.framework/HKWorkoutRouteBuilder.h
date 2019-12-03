@@ -13,6 +13,7 @@
 + (void)configureClientInterface:(id)arg1;
 + (void)configureServerInterface:(id)arg1;
 + (id)serverInterface;
++ (id)taskServerIdentifier;
 
 - (void)_resourceQueue_finishRouteWithWorkout:(id)arg1 metadata:(id)arg2 completion:(id /* block */)arg3;
 - (void)_resourceQueue_insertRouteData:(id)arg1 completion:(id /* block */)arg2;

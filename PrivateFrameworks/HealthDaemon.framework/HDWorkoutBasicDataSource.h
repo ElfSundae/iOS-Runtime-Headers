@@ -3,7 +3,7 @@
  */
 
 @interface HDWorkoutBasicDataSource : NSObject <HDClientDataCollectionObservationStateMonitorDelegate, HDDataObserver, HDWorkoutDataSource, HKDataFlowLinkProcessor> {
-    HDXPCClient * _client;
+    HDHealthStoreClient * _client;
     HDClientDataCollectionObservationStateMonitor * _clientStateMonitor;
     HDDataCollectionAssertion * _collectionAssertion;
     NSLock * _lock;
@@ -32,7 +32,7 @@
 - (void)_stopObservingSampleTypes:(id)arg1;
 - (void)dataCollectionObservationStateDidChangeForClient:(id)arg1;
 - (void)dealloc;
-- (id)initWithProfile:(id)arg1 workoutConfiguration:(id)arg2 client:(id)arg3;
+- (id)initWithConfiguration:(id)arg1 client:(id)arg2;
 - (id)sampleTypesToCollect;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (void)samplesJournaled:(id)arg1 type:(id)arg2;

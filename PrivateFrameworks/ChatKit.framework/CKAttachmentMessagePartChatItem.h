@@ -5,12 +5,14 @@
 @interface CKAttachmentMessagePartChatItem : CKMessagePartChatItem {
     UIItemProvider * _dragItemProvider;
     CKMediaObject * _mediaObject;
+    UITraitCollection * _transcriptTraitCollection;
 }
 
 @property (nonatomic, retain) CKMediaObject *mediaObject;
 @property (nonatomic, readonly, copy) NSString *transferGUID;
 
 - (void).cxx_destruct;
+- (struct CGSize { double x1; double x2; })_transcoderGeneratedSizeFittingSize:(struct CGSize { double x1; double x2; })arg1 sizeExists:(bool*)arg2;
 - (unsigned long long)balloonCorners;
 - (Class)balloonViewClass;
 - (bool)canCopy;
@@ -24,8 +26,10 @@
 - (id)mediaObject;
 - (id)pasteboardItems;
 - (void)setMediaObject:(id)arg1;
+- (void)setTranscriptTraitCollection:(id)arg1;
 - (bool)shouldCacheSize;
 - (bool)stickersSnapToPoint;
+- (id)transcriptTraitCollection;
 - (id)transferGUID;
 
 @end

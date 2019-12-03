@@ -30,7 +30,7 @@
 - (id)init;
 - (unsigned long long)mappedSheetIndexForSheetIndex:(unsigned long long)arg1;
 - (unsigned long long)mappedSheetIndexForSheetName:(id)arg1;
-- (struct ChVector<OcText> { struct OcText {} *x1; struct OcText {} *x2; unsigned int x3; unsigned int x4; unsigned int x5; }*)mappedSheetNames;
+- (struct ChVector<OcText> { struct OcText {} *x1; struct OcText {} *x2; struct __compressed_pair<OcText *, ChAllocator<OcText> > { struct OcText {} *x_3_1_1; } x3; }*)mappedSheetNames;
 - (id)mappingInfoAtIndex:(unsigned long long)arg1;
 - (unsigned long long)mappingInfoCount;
 - (id)mappingInfoForObject:(id)arg1;

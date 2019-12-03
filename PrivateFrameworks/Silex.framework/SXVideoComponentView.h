@@ -81,6 +81,7 @@
 - (void)setVideoComponentAnalyticsReporter:(id)arg1;
 - (void)setVideoPlayerViewController:(id)arg1;
 - (void)setupVideoPlayerViewController:(id)arg1;
+- (void)showPosterFrame;
 - (id /* block */)thumbnailRequestCancelHandler;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })transitionContentFrame;
 - (id)transitionContentView;

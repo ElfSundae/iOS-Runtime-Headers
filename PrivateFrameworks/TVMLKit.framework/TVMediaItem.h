@@ -23,6 +23,7 @@
     NSString * _type;
     NSURL * _url;
     NSDictionary * _userInfo;
+    _TVSecureKeyLoader * secureKeyLoader;
 }
 
 @property (nonatomic, retain) NSURL *artworkImageURL;
@@ -40,6 +41,7 @@
 @property (nonatomic, retain) NSString *itemDescription;
 @property (nonatomic) double playbackProgress;
 @property (nonatomic) double resumeTime;
+@property (nonatomic, retain) _TVSecureKeyLoader *secureKeyLoader;
 @property (nonatomic, retain) NSString *subtitle;
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSString *type;
@@ -62,6 +64,7 @@
 - (id)itemDescription;
 - (double)playbackProgress;
 - (double)resumeTime;
+- (id)secureKeyLoader;
 - (void)setArtworkImageURL:(id)arg1;
 - (void)setContainsExplicitContent:(bool)arg1;
 - (void)setContentProposalAutomaticAcceptanceInterval:(double)arg1;
@@ -77,6 +80,7 @@
 - (void)setItemDescription:(id)arg1;
 - (void)setPlaybackProgress:(double)arg1;
 - (void)setResumeTime:(double)arg1;
+- (void)setSecureKeyLoader:(id)arg1;
 - (void)setSubtitle:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (void)setType:(id)arg1;

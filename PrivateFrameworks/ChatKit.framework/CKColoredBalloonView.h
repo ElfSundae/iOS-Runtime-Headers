@@ -32,7 +32,7 @@
 - (void).cxx_destruct;
 - (void)addFilter:(id)arg1;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })alignmentRectInsets;
-- (struct CKBalloonDescriptor_t { BOOL x1; BOOL x2; BOOL x3; BOOL x4; unsigned long long x5; BOOL x6; bool x7; bool x8; bool x9; })balloonDescriptor;
+- (struct CKBalloonDescriptor_t { BOOL x1; BOOL x2; BOOL x3; BOOL x4; unsigned long long x5; BOOL x6; long long x7; long long x8; bool x9; bool x10; bool x11; })balloonDescriptor;
 - (void)clearFilters;
 - (BOOL)color;
 - (void)configureForComposition:(id)arg1;
@@ -50,7 +50,7 @@
 - (id)overlayColor;
 - (void)prepareForDisplay;
 - (void)prepareForReuse;
-- (void)setBalloonDescriptor:(struct CKBalloonDescriptor_t { BOOL x1; BOOL x2; BOOL x3; BOOL x4; unsigned long long x5; BOOL x6; bool x7; bool x8; bool x9; })arg1;
+- (void)setBalloonDescriptor:(struct CKBalloonDescriptor_t { BOOL x1; BOOL x2; BOOL x3; BOOL x4; unsigned long long x5; BOOL x6; long long x7; long long x8; bool x9; bool x10; bool x11; })arg1;
 - (void)setBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setCanUseOpaqueMask:(bool)arg1;
 - (void)setColor:(BOOL)arg1;

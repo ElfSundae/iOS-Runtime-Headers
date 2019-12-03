@@ -6,10 +6,12 @@
     _HKDateRangeQuery * _dateRangeQuery;
     struct NSDictionary { Class x1; } * _dateRangesBySampleType;
     HKHealthStore * _healthStore;
+    NSString * _name;
     NSHashTable * _observers;
 }
 
 @property (nonatomic, readonly) NSDictionary *dateRangesBySampleType;
+@property (nonatomic, copy) NSString *name;
 
 - (void).cxx_destruct;
 - (void)_alertObserverDidUpdateDateRanges:(id)arg1;
@@ -22,6 +24,8 @@
 - (struct NSDictionary { Class x1; }*)dateRangesBySampleType;
 - (void)dealloc;
 - (id)initWithHealthStore:(id)arg1;
+- (id)name;
 - (void)removeObserver:(id)arg1;
+- (void)setName:(id)arg1;
 
 @end

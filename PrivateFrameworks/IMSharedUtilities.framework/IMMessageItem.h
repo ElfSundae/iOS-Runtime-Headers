@@ -3,6 +3,7 @@
  */
 
 @interface IMMessageItem : IMItem <IMRemoteObjectCoding, NSCopying, NSSecureCoding> {
+    bool  _NicknameRequested;
     bool  _backwardsCompatibleVersion;
     NSDictionary * _bizIntent;
     bool  _blockingRichLinks;
@@ -14,6 +15,7 @@
     NSString * _expressiveSendStyleID;
     NSArray * _fileTransferGUIDs;
     unsigned long long  _flags;
+    bool  _isBeingRetried;
     bool  _isSOS;
     NSString * _locale;
     NSDictionary * _messageSummaryInfo;
@@ -21,7 +23,11 @@
     NSData * _payloadData;
     NSString * _plainBody;
     long long  _replaceID;
+    NSString * _retryToParticipant;
+    bool  _shouldSendMeCard;
     NSString * _subject;
+    NSString * _suggestedAuthorAvatarPath;
+    NSString * _suggestedAuthorName;
     NSDate * _timeDelivered;
     NSDate * _timeExpressiveSendPlayed;
     NSDate * _timePlayed;
@@ -30,6 +36,7 @@
     bool  _updatingDataSourcePayload;
 }
 
+@property (nonatomic) bool NicknameRequested;
 @property (nonatomic) bool backwardsCompatibleVersion;
 @property (nonatomic, retain) NSDictionary *bizIntent;
 @property (nonatomic) bool blockingRichLinks;
@@ -45,6 +52,7 @@
 @property (nonatomic) bool hasDataDetectorResults;
 @property (nonatomic, readonly) bool isAlert;
 @property (nonatomic, readonly) bool isAudioMessage;
+@property (nonatomic) bool isBeingRetried;
 @property (nonatomic) bool isCorrupt;
 @property (nonatomic, readonly) bool isDelivered;
 @property (nonatomic, readonly) bool isEmote;
@@ -58,6 +66,7 @@
 @property (nonatomic, readonly) bool isRead;
 @property (nonatomic) bool isSOS;
 @property (nonatomic, readonly) bool isSent;
+@property (nonatomic) bool isSpam;
 @property (nonatomic, readonly) bool isTypingMessage;
 @property (nonatomic, retain) NSString *locale;
 @property (nonatomic, retain) NSDictionary *messageSummaryInfo;
@@ -65,7 +74,11 @@
 @property (nonatomic, retain) NSData *payloadData;
 @property (nonatomic, retain) NSString *plainBody;
 @property (nonatomic) long long replaceID;
+@property (nonatomic, retain) NSString *retryToParticipant;
+@property (nonatomic) bool shouldSendMeCard;
 @property (nonatomic, retain) NSString *subject;
+@property (nonatomic, copy) NSString *suggestedAuthorAvatarPath;
+@property (nonatomic, copy) NSString *suggestedAuthorName;
 @property (nonatomic, retain) NSDate *timeDelivered;
 @property (nonatomic, retain) NSDate *timeExpressiveSendPlayed;
 @property (nonatomic, retain) NSDate *timePlayed;
@@ -80,6 +93,7 @@
 + (bool)messageContainsSurfDD:(id)arg1;
 + (bool)supportsSecureCoding;
 
+- (bool)NicknameRequested;
 - (void)_clearBodyData;
 - (void)_generateBodyDataIfNeeded;
 - (void)_generateBodyTextIfNeeded;
@@ -120,6 +134,7 @@
 - (id)initWithSenderInfo:(id)arg1 time:(id)arg2 timeRead:(id)arg3 timeDelivered:(id)arg4 timePlayed:(id)arg5 subject:(id)arg6 body:(id)arg7 bodyData:(id)arg8 attributes:(id)arg9 fileTransferGUIDs:(id)arg10 flags:(unsigned long long)arg11 guid:(id)arg12 messageID:(long long)arg13 account:(id)arg14 accountID:(id)arg15 service:(id)arg16 handle:(id)arg17 roomName:(id)arg18 unformattedID:(id)arg19 countryCode:(id)arg20 expireState:(long long)arg21 balloonBundleID:(id)arg22 payloadData:(id)arg23 expressiveSendStyleID:(id)arg24 timeExpressiveSendPlayed:(id)arg25 bizIntent:(id)arg26 locale:(id)arg27 errorType:(unsigned int)arg28 type:(long long)arg29;
 - (bool)isAlert;
 - (bool)isAudioMessage;
+- (bool)isBeingRetried;
 - (bool)isCorrupt;
 - (bool)isDelivered;
 - (bool)isEmote;
@@ -137,6 +152,7 @@
 - (bool)isRead;
 - (bool)isSOS;
 - (bool)isSent;
+- (bool)isSpam;
 - (bool)isTypingMessage;
 - (bool)isUpdatingDataSourcePayload;
 - (id)locale;
@@ -145,6 +161,7 @@
 - (id)payloadData;
 - (id)plainBody;
 - (long long)replaceID;
+- (id)retryToParticipant;
 - (id)sender;
 - (void)setBackwardsCompatibleVersion:(bool)arg1;
 - (void)setBizIntent:(id)arg1;
@@ -158,15 +175,22 @@
 - (void)setFileTransferGUIDs:(id)arg1;
 - (void)setFlags:(unsigned long long)arg1;
 - (void)setHasDataDetectorResults:(bool)arg1;
+- (void)setIsBeingRetried:(bool)arg1;
 - (void)setIsCorrupt:(bool)arg1;
 - (void)setIsSOS:(bool)arg1;
+- (void)setIsSpam:(bool)arg1;
 - (void)setLocale:(id)arg1;
 - (void)setMessageSummaryInfo:(id)arg1;
+- (void)setNicknameRequested:(bool)arg1;
 - (void)setNotificationIDSTokenURI:(id)arg1;
 - (void)setPayloadData:(id)arg1;
 - (void)setPlainBody:(id)arg1;
 - (void)setReplaceID:(long long)arg1;
+- (void)setRetryToParticipant:(id)arg1;
+- (void)setShouldSendMeCard:(bool)arg1;
 - (void)setSubject:(id)arg1;
+- (void)setSuggestedAuthorAvatarPath:(id)arg1;
+- (void)setSuggestedAuthorName:(id)arg1;
 - (void)setTimeDelivered:(id)arg1;
 - (void)setTimeExpressiveSendPlayed:(id)arg1;
 - (void)setTimePlayed:(id)arg1;
@@ -174,7 +198,10 @@
 - (void)setTypingIndicatorIcon:(id)arg1;
 - (void)setUpdatingDataSourcePayload:(bool)arg1;
 - (void)setWasDataDetected:(bool)arg1;
+- (bool)shouldSendMeCard;
 - (id)subject;
+- (id)suggestedAuthorAvatarPath;
+- (id)suggestedAuthorName;
 - (id)timeDelivered;
 - (id)timeExpressiveSendPlayed;
 - (id)timePlayed;
@@ -185,7 +212,11 @@
 
 // Image: /System/Library/PrivateFrameworks/IMCore.framework/IMCore
 
++ (id)bestAccountForAddress:(id)arg1;
 + (Class)contextClass;
++ (id)displayNameForAddress:(id)arg1;
++ (id)handleForAddress:(id)arg1;
++ (bool)isLoginAddress:(id)arg1;
 
 - (id)_copy;
 - (id)_copyWithFlags:(unsigned long long)arg1;
@@ -196,6 +227,7 @@
 - (id)_service;
 - (void)_setInivtation:(bool)arg1;
 - (id)descriptionForPurpose:(long long)arg1 isGroupMessage:(bool)arg2 messageDataSource:(id /* block */)arg3 attachmentDataSource:(id /* block */)arg4;
+- (id)descriptionForPurpose:(long long)arg1 isGroupMessage:(bool)arg2 senderDisplayName:(id)arg3 messageDataSource:(id /* block */)arg4 attachmentDataSource:(id /* block */)arg5;
 - (bool)isCancelTypingMessage;
 - (bool)isExtensibleMessageWithPluginPayload:(id*)arg1;
 - (bool)isIncomingTypingMessage;

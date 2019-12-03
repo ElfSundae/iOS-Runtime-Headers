@@ -5,7 +5,7 @@
 @interface PVRendererBase : NSObject {
     PVVideoCompositingContext * _compositingContext;
     struct atomic<unsigned int> { 
-        unsigned int __a_; 
+        _Atomic unsigned int __a_; 
     }  _frameCount;
     struct vector<HGRef<PVRenderJob>, std::__1::allocator<HGRef<PVRenderJob> > > { 
         struct HGRef<PVRenderJob> {} *__begin_; 

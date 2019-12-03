@@ -8,9 +8,8 @@
     NSObject<OS_dispatch_queue> * _queue;
 }
 
-+ (bool)_isGeniusEnabled;
 + (id)_localizedCloudGeniusErrorForError:(id)arg1;
-+ (id)_localizedGeniusErrorForError:(id)arg1;
++ (id)_localizedGeniusErrorForError:(id)arg1 geniusEnabled:(bool)arg2;
 
 - (void).cxx_destruct;
 - (long long)_currentRevision;

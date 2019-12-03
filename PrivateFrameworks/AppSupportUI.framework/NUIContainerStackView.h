@@ -3,28 +3,12 @@
  */
 
 @interface NUIContainerStackView : NUIContainerView <_NUIGridArrangementContainer> {
-    long long  _alignment;
-    long long  _axis;
-    long long  _distribution;
-    double  _spacing;
-    struct vector<double, std::__1::allocator<double> > { 
-        double *__begin_; 
-        double *__end_; 
-        struct __compressed_pair<double *, std::__1::allocator<double> > { 
-            double *__value_; 
-        } __end_cap_; 
-    }  _spacingAfter;
-    NSMutableArray * _spacingViews;
-    struct { 
-        unsigned int delegateMinSpacing : 1; 
-        unsigned int delegateMinDirectionalSpacing : 1; 
-        unsigned int delegateAlignment : 1; 
-    }  _stackViewFlags;
     struct _NUIGridArrangement { 
         <_NUIGridArrangementContainer> *container; 
+        unsigned int horzDist : 8; 
+        unsigned int vertDist : 8; 
         bool baselineRelative; 
-        long long horzDist; 
-        long long vertDist; 
+        bool hasValidMeasurement; 
         struct vector<_NUIGridArrangementCell, std::__1::allocator<_NUIGridArrangementCell> > { 
             struct _NUIGridArrangementCell {} *__begin_; 
             struct _NUIGridArrangementCell {} *__end_; 
@@ -53,22 +37,44 @@
                 struct CGRect {} *__value_; 
             } __end_cap_; 
         } viewFrames; 
-    }  _visibleArrangement;
-    struct CGSize { 
-        double width; 
-        double height; 
+    }  _arrangement;
+    struct map<UIView *, double, std::__1::less<UIView *>, std::__1::allocator<std::__1::pair<UIView *const, double> > > { 
+        struct __tree<std::__1::__value_type<UIView *, double>, std::__1::__map_value_compare<UIView *, std::__1::__value_type<UIView *, double>, std::__1::less<UIView *>, true>, std::__1::allocator<std::__1::__value_type<UIView *, double> > > { 
+            struct __tree_end_node<std::__1::__tree_node_base<void *> *> {} *__begin_node_; 
+            struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<UIView *, double>, void *> > > { 
+                struct __tree_end_node<std::__1::__tree_node_base<void *> *> { 
+                    struct __tree_node_base<void *> {} *__left_; 
+                } __value_; 
+            } __pair1_; 
+            struct __compressed_pair<unsigned long, std::__1::__map_value_compare<UIView *, std::__1::__value_type<UIView *, double>, std::__1::less<UIView *>, true> > { 
+                unsigned long long __value_; 
+            } __pair3_; 
+        } __tree_; 
+    }  _customSpacings;
+    double  _spacing;
+    struct { 
+        unsigned int alignment : 8; 
+        unsigned int distribution : 8; 
+        unsigned int axis : 4; 
+    }  _stackViewFlags;
+    struct { 
+        unsigned short width; 
+        unsigned short height; 
     }  _visibleCount;
 }
 
 @property (nonatomic) long long alignment;
 @property (nonatomic) long long axis;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) <NUIContainerStackViewDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long distribution;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double spacing;
 @property (readonly) Class superclass;
+
++ (id)containerStackViewWithAxis:(long long)arg1 arrangedSubviews:(id)arg2;
++ (id)horizontalContainerStackViewWithArrangedSubviews:(id)arg1;
++ (id)verticalContainerStackViewWithArrangedSubviews:(id)arg1;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -79,27 +85,27 @@
 - (id)arrangedDescription;
 - (long long)axis;
 - (struct CGSize { double x1; double x2; })calculateArrangedSizeFittingSize:(struct CGSize { double x1; double x2; })arg1;
+- (id)calculateViewForFirstBaselineLayout;
+- (id)calculateViewForLastBaselineLayout;
 - (double)customSpacingAfterView:(id)arg1;
 - (void)dealloc;
-- (void)didInsertArrangedSubview:(id)arg1 atIndex:(long long)arg2;
+- (id)debugDictionary;
 - (void)didRemoveArrangedSubview:(id)arg1 atIndex:(long long)arg2;
 - (long long)distribution;
 - (id)initWithArrangedSubviews:(id)arg1;
-- (bool)invalidateIntrinsicContentSizeRequiringArrangedSubviewRemeasurement:(bool)arg1;
+- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)layoutArrangedSubviewsInBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (bool)needsBaselineDebugBoundingBoxesForArrangedSubview:(id)arg1;
 - (void)populateGridArrangementCells:(struct vector<_NUIGridArrangementCell, std::__1::allocator<_NUIGridArrangementCell> > { struct _NUIGridArrangementCell {} *x1; struct _NUIGridArrangementCell {} *x2; struct __compressed_pair<_NUIGridArrangementCell *, std::__1::allocator<_NUIGridArrangementCell> > { struct _NUIGridArrangementCell {} *x_3_1_1; } x3; }*)arg1;
 - (void)populateGridArrangementDimension:(struct vector<_NUIGridArrangementDimension, std::__1::allocator<_NUIGridArrangementDimension> > { struct _NUIGridArrangementDimension {} *x1; struct _NUIGridArrangementDimension {} *x2; struct __compressed_pair<_NUIGridArrangementDimension *, std::__1::allocator<_NUIGridArrangementDimension> > { struct _NUIGridArrangementDimension {} *x_3_1_1; } x3; }*)arg1 withCells:(const struct vector<_NUIGridArrangementCell, std::__1::allocator<_NUIGridArrangementCell> > { struct _NUIGridArrangementCell {} *x1; struct _NUIGridArrangementCell {} *x2; struct __compressed_pair<_NUIGridArrangementCell *, std::__1::allocator<_NUIGridArrangementCell> > { struct _NUIGridArrangementCell {} *x_3_1_1; } x3; }*)arg2 axis:(long long)arg3;
 - (void)setAlignment:(long long)arg1;
 - (void)setAxis:(long long)arg1;
 - (void)setBaselineRelativeArrangement:(bool)arg1;
 - (void)setCustomSpacing:(double)arg1 afterView:(id)arg2;
-- (void)setDelegate:(id)arg1;
 - (void)setDistribution:(long long)arg1;
+- (bool)setNeedsInvalidation:(long long)arg1;
 - (void)setSpacing:(double)arg1;
 - (void)setSpacing:(double)arg1 afterArrangedSubviewAtIndex:(long long)arg2;
 - (double)spacing;
-- (double)spacingAfterArrangedSubviewAtIndex:(long long)arg1;
-- (id)viewForFirstBaselineLayout;
-- (id)viewForLastBaselineLayout;
 
 @end

@@ -7,6 +7,9 @@
     AVAudioMix * _audioMix;
     bool  _beganExport;
     NSString * _customAccessibilityLabel;
+    NSDate * _customDate;
+    CLLocation * _customLocation;
+    NSString * _exportFileType;
     NSString * _exportPreset;
     AVAssetExportSession * _exportSession;
     NSObject<OS_dispatch_queue> * _externalIsolation;
@@ -14,6 +17,7 @@
     bool  _operationSuccess;
     NSURL * _outputDirectoryURL;
     NSString * _outputFilename;
+    NSURL * _resultingFileURL;
     bool  _shouldStripLocation;
     bool  _shouldStripMetadata;
     AVAsset * _videoAsset;
@@ -24,15 +28,21 @@
 
 @property (setter=_setAdjustments:, nonatomic, retain) PFAssetAdjustments *_adjustments;
 @property (nonatomic, copy) NSString *customAccessibilityLabel;
+@property (nonatomic, copy) NSDate *customDate;
+@property (nonatomic, copy) CLLocation *customLocation;
+@property (nonatomic, copy) NSString *exportFileType;
 @property (nonatomic, copy) NSString *exportPreset;
 @property (setter=_setOperationError:, nonatomic, retain) NSError *operationError;
 @property (nonatomic, copy) NSURL *outputDirectoryURL;
 @property (nonatomic, copy) NSString *outputFilename;
 @property (nonatomic, readonly) float progress;
+@property (nonatomic, readonly, copy) NSURL *resultingFileURL;
 @property (nonatomic) bool shouldStripLocation;
 @property (nonatomic) bool shouldStripMetadata;
 @property (setter=_setSuccess:, nonatomic) bool success;
 @property (setter=_setVideoURL:, nonatomic, copy) NSURL *videoURL;
+
++ (id)operationErrorWithCode:(long long)arg1 underlyingError:(id)arg2 withDescription:(id)arg3;
 
 - (void).cxx_destruct;
 - (id)_adjustments;
@@ -45,6 +55,9 @@
 - (void)_validateMetadata;
 - (void)cancel;
 - (id)customAccessibilityLabel;
+- (id)customDate;
+- (id)customLocation;
+- (id)exportFileType;
 - (id)exportPreset;
 - (id)initWithVideoURL:(id)arg1 adjustmentData:(id)arg2;
 - (void)main;
@@ -52,7 +65,11 @@
 - (id)outputDirectoryURL;
 - (id)outputFilename;
 - (float)progress;
+- (id)resultingFileURL;
 - (void)setCustomAccessibilityLabel:(id)arg1;
+- (void)setCustomDate:(id)arg1;
+- (void)setCustomLocation:(id)arg1;
+- (void)setExportFileType:(id)arg1;
 - (void)setExportPreset:(id)arg1;
 - (void)setOutputDirectoryURL:(id)arg1;
 - (void)setOutputFilename:(id)arg1;

@@ -17,17 +17,14 @@
     NSMutableDictionary * _webServiceTasks;
 }
 
-@property (readonly) ACAccount *account;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly) ACAccount *primaryAppleAccount;
 @property (readonly) NSURLSessionConfiguration *sessionConfiguration;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSString *webServiceSessionMarker;
 
 + (id)_sharedCookieStorage;
-+ (id)account;
 
 - (void).cxx_destruct;
 - (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;
@@ -42,7 +39,6 @@
 - (bool)_trustPassesExtendedValidation:(struct __SecTrust { }*)arg1;
 - (id)_urlRequestTaggedWithDiagnosticReasonHeader:(id)arg1 forTaskID:(unsigned long long)arg2;
 - (id)_urlRequestTaggedWithWebServiceSessionMarkerHeader:(id)arg1;
-- (id)account;
 - (void)addDiagnosticReason:(id)arg1;
 - (bool)canBypassTrustExtendedValidation;
 - (id)dataTaskWithRequest:(id)arg1 completionHandler:(id /* block */)arg2;
@@ -59,7 +55,6 @@
 - (unsigned long long)nextTaskID;
 - (void)performRequest:(id)arg1 taskIdentifier:(unsigned long long)arg2 completionHandler:(id /* block */)arg3;
 - (void)performRequest:(id)arg1 taskIdentifier:(unsigned long long)arg2 retries:(unsigned long long)arg3 authHandling:(bool)arg4 completionHandler:(id /* block */)arg5;
-- (id)primaryAppleAccount;
 - (void)processRetryRequest:(id)arg1 responseData:(id)arg2 orginalRequest:(id)arg3 completion:(id /* block */)arg4;
 - (void)refreshSessionWithConfiguration:(id)arg1;
 - (void)removeDiagnosticReason:(id)arg1;

@@ -10,7 +10,7 @@
     NSArray * _throttlingDistribution;
 }
 
-@property (nonatomic, retain) <WBSCloudKitThrottlerDataStore> *dataStore;
+@property (nonatomic) <WBSCloudKitThrottlerDataStore> *dataStore;
 
 + (id)_distributionBucketsFromConfiguration:(id)arg1;
 + (bool)policyStringRepresentsValidPolicy:(id)arg1;

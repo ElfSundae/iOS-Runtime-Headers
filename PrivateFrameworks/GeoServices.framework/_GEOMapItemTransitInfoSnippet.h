@@ -8,6 +8,7 @@
     GEOPDTransitInfoSnippet * _transitInfoSnippet;
 }
 
+@property (nonatomic, readonly) GEOComposedRoute *composedRoute;
 @property (nonatomic, readonly) NSArray *connections;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, readonly) NSArray *departureSequences;
@@ -21,12 +22,17 @@
 @property (nonatomic, readonly) NSDate *lastFullScheduleValidDate;
 @property (nonatomic, readonly) NSArray *lines;
 @property (nonatomic, readonly) unsigned long long linesCount;
+@property (nonatomic, readonly) NSString *subtitle;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSArray *systems;
 @property (nonatomic, readonly) unsigned long long systemsCount;
+@property (nonatomic, readonly) double timeToLive;
+@property (nonatomic, readonly) NSString *title;
+@property (nonatomic, readonly) NSArray *transitTripStops;
 
 - (void).cxx_destruct;
 - (id)allSequencesForSystem:(id)arg1 direction:(id)arg2;
+- (id)composedRoute;
 - (id)connections;
 - (id)departureSequences;
 - (id)departureSequencesForSystem:(id)arg1 excludingIncidentEntities:(id)arg2 direction:(id)arg3 validForDateFromBlock:(id /* block */)arg4;
@@ -44,9 +50,12 @@
 - (unsigned long long)linesCount;
 - (id)linesForSystem:(id)arg1;
 - (unsigned long long)numAdditionalDeparturesForSequence:(id)arg1;
-- (id)sequencesForSystem:(id)arg1 excludingIncidentEntities:(id)arg2 direction:(id)arg3 validForDateFromBlock:(id /* block */)arg4;
 - (id)serviceResumesDateForLine:(id)arg1 excludingIncidentEntities:(id)arg2 afterDate:(id)arg3 blocked:(out bool*)arg4;
+- (id)subtitle;
 - (id)systems;
 - (unsigned long long)systemsCount;
+- (double)timeToLive;
+- (id)title;
+- (id)transitTripStops;
 
 @end

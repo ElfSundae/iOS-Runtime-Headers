@@ -4,6 +4,7 @@
 
 @interface MPVolumeControllerSystemDataSource : NSObject <MPVolumeControllerDataSource> {
     float  _EUVolumeLimit;
+    AVSystemController * _avSystemController;
     bool  _debugVolumeWarning;
     <MPVolumeControllerDataSourceDelegate> * _delegate;
     bool  _muted;
@@ -36,8 +37,10 @@
 - (float)EUVolumeLimit;
 - (void)_EUVolumeLimitDidChange:(id)arg1;
 - (void)_EUVolumeLimitEnforcedDidChange:(id)arg1;
+- (id)_mediaPlaybackVolumeAudioCategory;
 - (void)_mediaServerDiedNotification:(id)arg1;
 - (void)_reloadEUVolumeLimits;
+- (id)_reloadQueue;
 - (void)_routeDidChangeNotification:(id)arg1;
 - (void)_setup;
 - (void)_systemMuteDidChange:(id)arg1;

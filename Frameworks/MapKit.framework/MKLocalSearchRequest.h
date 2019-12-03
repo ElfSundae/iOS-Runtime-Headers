@@ -15,6 +15,7 @@
     NSArray * _muids;
     NSString * _naturalLanguageQuery;
     NSArray * _phoneNumbers;
+    MKPointOfInterestFilter * _pointOfInterestFilter;
     struct { 
         struct CLLocationCoordinate2D { 
             double latitude; 
@@ -26,6 +27,7 @@
         } span; 
     }  _region;
     int  _resultProviderID;
+    unsigned long long  _resultTypes;
 }
 
 @property (nonatomic, readonly) bool _hasRegion;
@@ -40,8 +42,10 @@
 @property (getter=_muids, setter=_setMuids:, nonatomic, retain) NSArray *muids;
 @property (nonatomic, copy) NSString *naturalLanguageQuery;
 @property (getter=_phoneNumbers, setter=_setPhoneNumbers:, nonatomic, retain) NSArray *phoneNumbers;
+@property (nonatomic, copy) MKPointOfInterestFilter *pointOfInterestFilter;
 @property (nonatomic) struct { struct CLLocationCoordinate2D { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; } region;
 @property (getter=_resultProviderID, setter=_setResultProviderID:, nonatomic) int resultProviderID;
+@property (nonatomic) unsigned long long resultTypes;
 
 + (id)searchRequestWithCompletion:(id)arg1;
 
@@ -70,12 +74,19 @@
 - (id)description;
 - (id)geoCompletionItem;
 - (bool)hasSentFeedbackForCompletion;
+- (id)init;
 - (id)initWithCompletion:(id)arg1;
 - (id)initWithMapsURL:(id)arg1;
+- (id)initWithNaturalLanguageQuery:(id)arg1;
+- (id)initWithNaturalLanguageQuery:(id)arg1 region:(struct { struct CLLocationCoordinate2D { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (id)naturalLanguageQuery;
+- (id)pointOfInterestFilter;
 - (struct { struct CLLocationCoordinate2D { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })region;
+- (unsigned long long)resultTypes;
 - (void)setHasSentFeedbackForCompletion:(bool)arg1;
 - (void)setNaturalLanguageQuery:(id)arg1;
+- (void)setPointOfInterestFilter:(id)arg1;
 - (void)setRegion:(struct { struct CLLocationCoordinate2D { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (void)setResultTypes:(unsigned long long)arg1;
 
 @end

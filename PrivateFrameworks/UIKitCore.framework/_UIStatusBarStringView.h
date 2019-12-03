@@ -26,6 +26,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSString *originalText;
 @property (nonatomic, readonly) long long overriddenVerticalAlignment;
+@property (nonatomic, readonly) bool prefersBaselineAlignment;
 @property (nonatomic) bool showsAlternateText;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) bool wantsCrossfade;
@@ -41,7 +42,7 @@
 - (long long)fontStyle;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)originalText;
-- (long long)overriddenVerticalAlignment;
+- (bool)prefersBaselineAlignment;
 - (void)setAlignmentRectInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setAlternateText:(id)arg1;
 - (void)setFontStyle:(long long)arg1;

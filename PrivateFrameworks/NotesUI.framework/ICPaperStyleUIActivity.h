@@ -9,8 +9,8 @@
 @property (nonatomic) <ICPaperStyleUIActivityDelegate> *delegate;
 
 - (void).cxx_destruct;
+- (id)_systemImageName;
 - (long long)activityCategory;
-- (id)activityImage;
 - (id)activityTitle;
 - (id)activityType;
 - (bool)canPerformWithActivityItems:(id)arg1;

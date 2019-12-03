@@ -5,7 +5,7 @@
 @interface HMDCameraResidentMessageHandler : HMFObject <HMFLogging> {
     HMDAccessory * _accessory;
     NSString * _logID;
-    HMDCentralMessageDispatcher * _remoteMessageDispatcher;
+    HMDMessageDispatcher * _remoteMessageDispatcher;
 }
 
 @property (nonatomic, readonly) HMDAccessory *accessory;
@@ -14,7 +14,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSString *logID;
-@property (nonatomic, retain) HMDCentralMessageDispatcher *remoteMessageDispatcher;
+@property (nonatomic, retain) HMDMessageDispatcher *remoteMessageDispatcher;
 @property (readonly) Class superclass;
 
 + (id)logCategory;

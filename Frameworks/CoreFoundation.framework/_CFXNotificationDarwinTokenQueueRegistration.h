@@ -8,6 +8,7 @@
 
 @property (retain) id queue;
 
+- (void)dealloc;
 - (id)queue;
 - (void)setQueue:(id)arg1;
 

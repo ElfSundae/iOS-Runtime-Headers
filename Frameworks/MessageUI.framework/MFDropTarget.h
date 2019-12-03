@@ -24,7 +24,7 @@
 @property (nonatomic, retain) UIDropInteraction *dropInteraction;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (nonatomic, retain) UIView *targetView;
+@property (nonatomic) UIView *targetView;
 
 - (void).cxx_destruct;
 - (bool)_delegateCanDropItemsWithDropSession:(id)arg1;

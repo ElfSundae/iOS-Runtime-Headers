@@ -3,30 +3,38 @@
  */
 
 @interface UIAccessibilityCustomAction : NSObject {
+    id /* block */  _actionHandler;
     NSAttributedString * _attributedName;
     SEL  _selector;
     id  _target;
 }
 
+@property (nonatomic, copy) id /* block */ actionHandler;
 @property (nonatomic, copy) NSAttributedString *attributedName;
 @property (nonatomic) bool ignoreWhenVoiceOverTouches;
 @property (getter=_image, setter=_setImage:, nonatomic, retain) UIImage *image;
 @property (getter=_accessibilityInternalCustomActionIdentifier, setter=_accessibilitySetInternalCustomActionIdentifier:, nonatomic, retain) NSString *internalCustomActionIdentifier;
+@property (nonatomic, retain) NSString *localizedActionRotorCategory;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic) SEL selector;
 @property (getter=_shortName, setter=_setShortName:, nonatomic, retain) NSString *shortName;
 @property (nonatomic) bool shouldSuppressActionHint;
+@property (nonatomic) unsigned long long sortPriority;
 @property (nonatomic) id target;
 
 // Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 
 - (void).cxx_destruct;
+- (id /* block */)actionHandler;
 - (id)attributedName;
 - (id)init;
+- (id)initWithAttributedName:(id)arg1 actionHandler:(id /* block */)arg2;
 - (id)initWithAttributedName:(id)arg1 target:(id)arg2 selector:(SEL)arg3;
+- (id)initWithName:(id)arg1 actionHandler:(id /* block */)arg2;
 - (id)initWithName:(id)arg1 target:(id)arg2 selector:(SEL)arg3;
 - (id)name;
 - (SEL)selector;
+- (void)setActionHandler:(id /* block */)arg1;
 - (void)setAttributedName:(id)arg1;
 - (void)setName:(id)arg1;
 - (void)setSelector:(SEL)arg1;
@@ -52,8 +60,12 @@
 - (void)_setShortName:(id)arg1;
 - (id)_shortName;
 - (bool)ignoreWhenVoiceOverTouches;
+- (id)localizedActionRotorCategory;
 - (void)setIgnoreWhenVoiceOverTouches:(bool)arg1;
+- (void)setLocalizedActionRotorCategory:(id)arg1;
 - (void)setShouldSuppressActionHint:(bool)arg1;
+- (void)setSortPriority:(unsigned long long)arg1;
 - (bool)shouldSuppressActionHint;
+- (unsigned long long)sortPriority;
 
 @end

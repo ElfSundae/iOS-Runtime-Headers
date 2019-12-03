@@ -14,10 +14,9 @@
 - (void).cxx_destruct;
 - (bool)_isVendorRelease;
 - (void)addSensitiveUIObserver:(id)arg1;
-- (bool)faceStyleIsSensitive:(long long)arg1;
+- (bool)hideSensitiveUISwitchEnabled;
 - (id)init;
 - (void)removeSensitiveUIObserver:(id)arg1;
-- (bool)shouldHideSensitiveUI;
-- (bool)shouldHideSensitiveUIForFaceStyle:(long long)arg1;
+- (bool)shouldHideForSensitivity:(long long)arg1;
 
 @end

@@ -6,6 +6,7 @@
 @required
 
 - (_SFPBAppIconImage *)appIconImage;
+- (_SFPBCalendarImage *)calendarImage;
 - (_SFPBContactImage *)contactImage;
 - (NSString *)contentType;
 - (_SFPBGraphicalFloat *)cornerRadius;
@@ -21,6 +22,7 @@
 - (_SFPBMonogramImage *)monogramImage;
 - (_SFPBGraphicalFloat *)scale;
 - (void)setAppIconImage:(_SFPBAppIconImage *)arg1;
+- (void)setCalendarImage:(_SFPBCalendarImage *)arg1;
 - (void)setContactImage:(_SFPBContactImage *)arg1;
 - (void)setContentType:(NSString *)arg1;
 - (void)setCornerRadius:(_SFPBGraphicalFloat *)arg1;

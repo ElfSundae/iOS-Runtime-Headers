@@ -6,17 +6,40 @@
     unsigned int  _distance;
     double  _expectedTimeOfDeparture;
     struct { 
-        unsigned int expectedTimeOfDeparture : 1; 
-        unsigned int distance : 1; 
-        unsigned int historicTravelTime : 1; 
-        unsigned int staticTravelTime : 1; 
-        unsigned int status : 1; 
-        unsigned int transportType : 1; 
-        unsigned int travelTimeAggressiveEstimate : 1; 
-        unsigned int travelTimeBestEstimate : 1; 
-        unsigned int travelTimeConservativeEstimate : 1; 
-    }  _has;
+        unsigned int has_expectedTimeOfDeparture : 1; 
+        unsigned int has_distance : 1; 
+        unsigned int has_historicTravelTime : 1; 
+        unsigned int has_staticTravelTime : 1; 
+        unsigned int has_status : 1; 
+        unsigned int has_transportType : 1; 
+        unsigned int has_travelTimeBestEstimate : 1; 
+        unsigned int has_travelTimeAggressiveEstimate : 1; 
+        unsigned int has_travelTimeConservativeEstimate : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_routeTrafficDetail : 1; 
+        unsigned int read_shortTrafficSummary : 1; 
+        unsigned int read_summaryForPredictedDestinations : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_expectedTimeOfDeparture : 1; 
+        unsigned int wrote_routeTrafficDetail : 1; 
+        unsigned int wrote_shortTrafficSummary : 1; 
+        unsigned int wrote_summaryForPredictedDestinations : 1; 
+        unsigned int wrote_distance : 1; 
+        unsigned int wrote_historicTravelTime : 1; 
+        unsigned int wrote_staticTravelTime : 1; 
+        unsigned int wrote_status : 1; 
+        unsigned int wrote_transportType : 1; 
+        unsigned int wrote_travelTimeBestEstimate : 1; 
+        unsigned int wrote_travelTimeAggressiveEstimate : 1; 
+        unsigned int wrote_travelTimeConservativeEstimate : 1; 
+    }  _flags;
     unsigned int  _historicTravelTime;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     GEORouteTrafficDetail * _routeTrafficDetail;
     GEOShortTrafficSummary * _shortTrafficSummary;
     unsigned int  _staticTravelTime;
@@ -26,6 +49,7 @@
     unsigned int  _travelTimeAggressiveEstimate;
     unsigned int  _travelTimeBestEstimate;
     unsigned int  _travelTimeConservativeEstimate;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic) unsigned int distance;
@@ -51,14 +75,21 @@
 @property (nonatomic) unsigned int travelTimeAggressiveEstimate;
 @property (nonatomic) unsigned int travelTimeBestEstimate;
 @property (nonatomic) unsigned int travelTimeConservativeEstimate;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
 + (Class)summaryForPredictedDestinationType;
 
 - (void).cxx_destruct;
 - (int)StringAsStatus:(id)arg1;
 - (int)StringAsTransportType:(id)arg1;
+- (void)_addNoFlagsSummaryForPredictedDestination:(id)arg1;
+- (void)_readRouteTrafficDetail;
+- (void)_readShortTrafficSummary;
+- (void)_readSummaryForPredictedDestinations;
 - (void)addSummaryForPredictedDestination:(id)arg1;
 - (void)clearSummaryForPredictedDestinations;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -78,8 +109,11 @@
 - (bool)hasTravelTimeConservativeEstimate;
 - (unsigned long long)hash;
 - (unsigned int)historicTravelTime;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)routeTrafficDetail;
 - (void)setDistance:(unsigned int)arg1;
@@ -115,6 +149,7 @@
 - (unsigned int)travelTimeAggressiveEstimate;
 - (unsigned int)travelTimeBestEstimate;
 - (unsigned int)travelTimeConservativeEstimate;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 
 @end

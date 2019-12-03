@@ -14,6 +14,7 @@
 - (bool)photosFaceRepresentationIsRightEyeClosed;
 - (NSString *)photosFaceRepresentationLocalIdentifier;
 - (long long)photosFaceRepresentationQualityMeasure;
+- (double)photosFaceRepresentationRoll;
 - (double)photosFaceRepresentationSize;
 - (long long)photosFaceRepresentationSourceHeight;
 - (long long)photosFaceRepresentationSourceWidth;

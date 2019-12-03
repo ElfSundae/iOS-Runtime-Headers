@@ -11,11 +11,12 @@
 + (id)_getConsentedChannels;
 + (id)_getDeniedChannels;
 + (bool)_isReminderDue:(id)arg1 reminderInterval:(double)arg2;
-+ (id)addUniqueVPPAChannels:(id)arg1 channels:(id)arg2;
++ (id)addUniqueChannels:(id)arg1 channels:(id)arg2;
 + (bool)channelAlreadyExists:(id)arg1 channelID:(id)arg2;
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
+- (id)_getEligibleBulkChannels;
 - (id)_getVPPABulkChannels:(long long)arg1;
 - (bool)_isChannelVPPAPromptEligible:(id)arg1;
 - (bool)_isVPPAPromptDueForConfig:(id)arg1;

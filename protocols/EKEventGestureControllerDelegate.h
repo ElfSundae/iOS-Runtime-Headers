@@ -36,6 +36,7 @@
 - (bool)eventEditorPopoverActiveWhileDraggingForEventGestureController:(EKEventGestureController *)arg1;
 - (double)eventGestureController:(EKEventGestureController *)arg1 convertXForMargin:(double)arg2;
 - (void)eventGestureController:(EKEventGestureController *)arg1 requestsShowEvent:(EKEvent *)arg2;
+- (bool)eventGestureController:(EKEventGestureController *)arg1 shouldAllowShortLiftDelay:(EKEvent *)arg2;
 - (bool)eventGestureController:(EKEventGestureController *)arg1 shouldFadeOccurrenceAfterFling:(EKEvent *)arg2;
 - (void)eventGestureControllerDidEndDragSession:(EKEventGestureController *)arg1;
 - (bool)eventGestureControllerShouldAllowLongPress:(EKEventGestureController *)arg1;

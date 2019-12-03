@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
  */
 
-@interface TSCH3DLightShaderEffectState : NSObject {
+@interface TSCH3DLightShaderEffectState : NSObject <NSCopying> {
     NSMutableArray * mLights;
     struct LightingPackageShaderEffectState { 
         struct array<glm::detail::tmat4x4<float>, 2> { 

@@ -6,8 +6,6 @@
 
 @property (nonatomic, readonly) NSURL *URL;
 
-+ (id)typeString;
-
 - (id)URLWithValue:(id)arg1 withType:(int)arg2;
 - (id)action;
 

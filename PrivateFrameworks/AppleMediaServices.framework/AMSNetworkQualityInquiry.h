@@ -18,7 +18,10 @@
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *queue;
 
 + (bool)isEntitled;
++ (id)lastConnectionReport;
++ (id)reportForTask:(id)arg1 fromReports:(id)arg2;
 + (id)sharedInstance;
++ (void)updateLastConnectionReportWithTask:(id)arg1;
 
 - (void).cxx_destruct;
 - (bool)areKnownNetworksReady;

@@ -24,7 +24,7 @@
 - (void).cxx_destruct;
 - (void)_deliveryButtonTapped:(id)arg1;
 - (id)_newManagementView;
-- (void)_offButtonTapped:(id)arg1;
+- (void)_onOffToggleButtonTapped:(id)arg1;
 - (id)_sectionSettingsForSectionIdentifier:(id)arg1;
 - (void)_setAllowsCriticalAlerts:(bool)arg1 forNotificationRequest:(id)arg2 withSectionIdentifier:(id)arg3;
 - (void)_setAllowsNotifications:(bool)arg1 forNotificationRequest:(id)arg2 withSectionIdentifier:(id)arg3;

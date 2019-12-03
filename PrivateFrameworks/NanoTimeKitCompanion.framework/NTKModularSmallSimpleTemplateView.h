@@ -9,7 +9,6 @@
 }
 
 + (bool)handlesComplicationTemplate:(id)arg1;
-+ (void)load;
 + (id)supportedTemplateClasses;
 + (bool)supportsComplicationFamily:(long long)arg1;
 

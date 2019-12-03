@@ -14,12 +14,14 @@
 - (bool)isCancelled;
 - (void)logAggdGeoLookupCounterAndDurationWithLookupDuration:(NSNumber *)arg1;
 - (void)logAggdGeoLookupFailureResult;
+- (NSObject<OS_os_log> *)loggingConnection;
 - (double)precision;
 - (NSArray *)regions;
+- (void)setLoggingConnection:(NSObject<OS_os_log> *)arg1;
 - (void)setPrecision:(double)arg1;
-- (void)setStatistics:(struct { long long x1; long long x2; long long x3; })arg1;
+- (void)setStatistics:(struct { unsigned long long x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; unsigned long long x5; })arg1;
 - (bool)shouldQueryItemsForRegion:(CLCircularRegion *)arg1 selectedRegions:(NSArray *)arg2;
-- (struct { long long x1; long long x2; long long x3; })statistics;
+- (struct { unsigned long long x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; unsigned long long x5; })statistics;
 - (void)submitWithHandler:(void *)arg1; // needs 1 arg types, found 7: id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSArray *, NSError *, void*
 
 @end

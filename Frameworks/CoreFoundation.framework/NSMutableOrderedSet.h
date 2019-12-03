@@ -79,8 +79,16 @@
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
+- (void)applyDifference:(id)arg1;
 - (void)filterUsingPredicate:(id)arg1;
 - (void)sortUsingDescriptors:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/EmailFoundation.framework/EmailFoundation
+
+- (void)ef_insertObjects:(id)arg1 after:(id)arg2;
+- (void)ef_insertObjects:(id)arg1 before:(id)arg2;
+- (void)ef_removeObjectsInArray:(id)arg1;
+- (id)ef_uniquedObject:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
 
@@ -91,7 +99,6 @@
 
 // Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
 
-- (void)ml_insertObjects:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)pl_addObjectsFromArray:(id)arg1;
 - (void)pl_insertObjects:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)pl_removeObjectsInArray:(id)arg1;

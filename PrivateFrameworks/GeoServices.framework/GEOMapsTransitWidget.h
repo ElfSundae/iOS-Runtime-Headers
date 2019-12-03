@@ -5,11 +5,11 @@
 @interface GEOMapsTransitWidget : PBCodable <NSCopying> {
     bool  _everExpanded;
     struct { 
-        unsigned int tappedItemIndex : 1; 
-        unsigned int transitMessageType : 1; 
-        unsigned int everExpanded : 1; 
-        unsigned int initiallyExpanded : 1; 
-    }  _has;
+        unsigned int has_tappedItemIndex : 1; 
+        unsigned int has_transitMessageType : 1; 
+        unsigned int has_everExpanded : 1; 
+        unsigned int has_initiallyExpanded : 1; 
+    }  _flags;
     bool  _initiallyExpanded;
     int  _tappedItemIndex;
     NSMutableArray * _transitIncidentItems;
@@ -26,6 +26,7 @@
 @property (nonatomic, retain) NSMutableArray *transitIncidentItems;
 @property (nonatomic) int transitMessageType;
 
++ (bool)isValid:(id)arg1;
 + (Class)transitIncidentItemType;
 
 - (void).cxx_destruct;
@@ -45,6 +46,7 @@
 - (bool)initiallyExpanded;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setEverExpanded:(bool)arg1;
 - (void)setHasEverExpanded:(bool)arg1;

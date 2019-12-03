@@ -4,9 +4,13 @@
 
 @interface BWMotionDataPreserver : NSObject {
     NSString * _currentISPHallPortType;
+    unsigned long long  _lengthOfInitialISPHallData;
+    unsigned long long  _lengthOfInitialISPMotionData;
     NSString * _name;
     NSMutableData * _preservedISPHallData;
     NSMutableData * _preservedISPMotionData;
+    int  _sampleCountOfInitialISPHallData;
+    int  _sampleCountOfInitialISPMotionData;
 }
 
 + (void)initialize;

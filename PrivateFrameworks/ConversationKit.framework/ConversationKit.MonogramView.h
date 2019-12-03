@@ -3,6 +3,7 @@
  */
 
 @interface ConversationKit.MonogramView : UIView {
+    void colorStyle;
     void font;
     void lastSizeForFont;
     void text;

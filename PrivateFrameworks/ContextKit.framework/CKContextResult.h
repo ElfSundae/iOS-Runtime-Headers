@@ -22,6 +22,7 @@
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSURL *url;
 
++ (id)new;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -31,6 +32,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTitle:(id)arg1 query:(id)arg2 url:(id)arg3 category:(id)arg4;
 - (bool)isEqual:(id)arg1;

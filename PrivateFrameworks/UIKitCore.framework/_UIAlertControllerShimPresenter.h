@@ -21,16 +21,17 @@
 @property (nonatomic, readonly) _UIAlertControllerShimPresenterWindow *window;
 
 + (void)_addPresenter:(id)arg1;
-+ (void)_cancelPendingTouchesIfAppropriate;
++ (void)_cancelPendingTouchesIfAppropriateForWindow:(id)arg1;
 + (id)_currentFullScreenAlertPresenters;
 + (void)_removePresenter:(id)arg1;
 + (bool)_shouldPresentActionSheetsFullscreen;
 
 - (void).cxx_destruct;
-- (void)_createWindowIfNecessary;
+- (void)_createWindowIfNecessaryWithScene:(id)arg1;
 - (void)_dismissAlertControllerAnimated:(bool)arg1 completion:(id /* block */)arg2;
 - (id)_popoverController;
 - (void)_presentAlertControllerAnimated:(bool)arg1 completion:(id /* block */)arg2;
+- (void)_presentAlertControllerAnimated:(bool)arg1 hostingScene:(id)arg2 completion:(id /* block */)arg3;
 - (void)_presentAlertControllerFromBarButtonItem:(id)arg1 animated:(bool)arg2 completion:(id /* block */)arg3;
 - (void)_presentAlertControllerFromRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 inView:(id)arg2 direction:(unsigned long long)arg3 animated:(bool)arg4 completion:(id /* block */)arg5;
 - (void)_tearDownInPopoverViewController;

@@ -16,7 +16,6 @@
 - (long long)numberOfItems;
 - (IKViewElement *)prototypeForItemAtIndex:(long long)arg1;
 - (NSArray *)prototypes;
-- (NSArray *)proxiedItemElements;
 - (void)resetUpdates;
 - (void)teardown;
 - (void)unloadIndex:(long long)arg1;
@@ -25,6 +24,9 @@
 @optional
 
 - (bool)canProxyUnloadedChildElement:(IKViewElement *)arg1;
+- (IKViewElement *)masterPrototypeForItemAtIndex:(unsigned long long)arg1;
+- (NSArray *)masterPrototypes;
+- (NSArray *)proxiedItemElements;
 - (IKViewElement *)proxyElementForLoadedChildElement:(IKViewElement *)arg1;
 - (void)resetImplicitUpdates;
 

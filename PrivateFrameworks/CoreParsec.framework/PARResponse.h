@@ -35,6 +35,7 @@
 - (id)corrections;
 - (id)geoUserSessionEntity;
 - (id)initWithReply:(id)arg1;
+- (id)initWithReply:(id)arg1 factory:(id)arg2 responseV2:(id)arg3;
 - (id)prefix;
 - (id)query;
 - (id)rawResponse;

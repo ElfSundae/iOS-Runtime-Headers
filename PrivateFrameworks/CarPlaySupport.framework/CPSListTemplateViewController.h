@@ -10,6 +10,7 @@
     unsigned long long  _spinnerState;
     NSTimer * _spinnerTimeoutTimer;
     UIActivityIndicatorView * _spinnerView;
+    CPSTableView * _tableView;
 }
 
 @property (nonatomic, copy) NSIndexPath *currentSpinningIndexPath;
@@ -24,6 +25,7 @@
 @property (nonatomic, retain) NSTimer *spinnerTimeoutTimer;
 @property (nonatomic, retain) UIActivityIndicatorView *spinnerView;
 @property (readonly) Class superclass;
+@property (nonatomic, retain) CPSTableView *tableView;
 
 - (void).cxx_destruct;
 - (void)_addSpinnerToIndexPath:(id)arg1;
@@ -32,11 +34,11 @@
 - (void)_scheduleLoadingSpinnerForIndexPath:(id)arg1;
 - (void)_startSpinnerTimerFired:(id)arg1 indexPath:(id)arg2;
 - (void)_timeoutSpinnerFired:(id)arg1 indexPath:(id)arg2;
+- (void)_viewDidLoad;
 - (id)currentSpinningIndexPath;
 - (id)dataSource;
 - (id)initWithListTemplate:(id)arg1 templateDelegate:(id)arg2;
 - (id)listTemplate;
-- (void)loadView;
 - (id)nextSpinningIndexPath;
 - (void)setButton:(id)arg1 enabled:(bool)arg2;
 - (void)setButton:(id)arg1 hidden:(bool)arg2;
@@ -47,15 +49,16 @@
 - (void)setSpinnerState:(unsigned long long)arg1;
 - (void)setSpinnerTimeoutTimer:(id)arg1;
 - (void)setSpinnerView:(id)arg1;
+- (void)setTableView:(id)arg1;
 - (id)spinnerStartTimer;
 - (unsigned long long)spinnerState;
 - (id)spinnerTimeoutTimer;
 - (id)spinnerView;
+- (id)tableView;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayHeaderView:(id)arg2 forSection:(long long)arg3;
 - (void)updateSections:(id)arg1;
-- (void)viewDidLoad;
 - (void)viewWillAppear:(bool)arg1;
 
 @end

@@ -8,9 +8,9 @@
 
 @property (nonatomic) long long flavor;
 
-- (void)calculate:(id /* block */)arg1;
 - (long long)flavor;
 - (id)initWithComposition:(id)arg1;
 - (void)setFlavor:(long long)arg1;
+- (void)submit:(id /* block */)arg1;
 
 @end

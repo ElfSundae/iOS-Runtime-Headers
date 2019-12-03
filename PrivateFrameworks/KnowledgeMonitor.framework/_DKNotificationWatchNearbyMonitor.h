@@ -23,6 +23,8 @@
 + (void)setIsWatchNearby:(bool)arg1;
 + (bool)shouldMergeUnchangedEvents;
 
+- (void)deactivate;
+- (void)dealloc;
 - (void)receiveNotificationEvent:(id)arg1;
 - (void)setWatchIsNearby;
 - (void)start;

@@ -28,7 +28,7 @@
 - (id)delegate;
 - (long long)indexOfPreviewItem:(id)arg1;
 - (id)init;
-- (id)initWithContentsOfURL:(id)arg1;
+- (id)initWithItemsOfDirectoryAtURL:(id)arg1;
 - (id)initWithPreviewItems:(id)arg1;
 - (bool)isArchive;
 - (id)itemProvider;

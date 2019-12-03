@@ -34,7 +34,7 @@
 
 - (id)basebandCongestionDetector;
 - (void)configureForMultiway;
-- (bool)configureWithStreamConfig:(id)arg1 setupInfo:(struct _VCMediaStreamTransportSetupInfo { unsigned char x1; union { struct { int x_1_2_1; int x_1_2_2; } x_2_1_1; struct { struct tagIPPORT { int x_1_3_1; BOOL x_1_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_1_3_3; unsigned short x_1_3_4; } x_2_2_1; struct tagIPPORT { int x_2_3_1; BOOL x_2_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_2_3_3; unsigned short x_2_3_4; } x_2_2_2; } x_2_1_2; } x2; unsigned int x3; unsigned int x4; bool x5; }*)arg2 customRTCPPackets:(bool)arg3 error:(id*)arg4;
+- (bool)configureWithStreamConfig:(id)arg1 setupInfo:(struct _VCMediaStreamTransportSetupInfo { unsigned char x1; union { struct { int x_1_2_1; int x_1_2_2; } x_2_1_1; struct { struct tagIPPORT { int x_1_3_1; BOOL x_1_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_1_3_3; unsigned short x_1_3_4; } x_2_2_1; struct tagIPPORT { int x_2_3_1; BOOL x_2_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_2_3_3; unsigned short x_2_3_4; } x_2_2_2; } x_2_1_2; struct { id x_3_2_1; struct tagVCNWConnectionMonitor {} *x_3_2_2; int x_3_2_3; } x_2_1_3; } x2; unsigned int x3; unsigned int x4; bool x5; }*)arg2 customRTCPPackets:(bool)arg3 error:(id*)arg4;
 - (void)dealloc;
 - (double)decryptionTimeoutInterval;
 - (id)delegate;
@@ -58,7 +58,7 @@
 - (void)onStop;
 - (void)registerRTCPCallback;
 - (void)registerRTPPayloadMappings;
-- (void)reportRTCPPackets:(struct _RTCPPacketList { union tagNTP { unsigned long long x_1_1_1; struct { unsigned int x_2_2_1; unsigned int x_2_2_2; } x_1_1_2; } x1; unsigned char x2; struct tagRTCPPACKET {} *x3[10]; unsigned char x4[1472]; unsigned int x5; unsigned char x6[1472]; }*)arg1;
+- (void)reportRTCPPackets:(struct _RTCPPacketList { union tagNTP { unsigned long long x_1_1_1; struct { unsigned int x_2_2_1; unsigned int x_2_2_2; } x_1_1_2; } x1; unsigned char x2; struct tagRTCPPACKET {} *x3[10]; struct OpaqueCMBlockBuffer {} *x4; char *x5; unsigned long long x6; unsigned int x7; unsigned char x8[1472]; }*)arg1;
 - (void)reset;
 - (void)resetPayloadMapping;
 - (double)rtcpSendInterval;
@@ -66,7 +66,7 @@
 - (struct tagHANDLE { int x1; }*)rtpHandle;
 - (double)rtpTimeoutInterval;
 - (id)rxNetworkPayloads;
-- (void)sendControlPacket:(struct _RTCP_SEND_CONTROL_PARAMETERS { unsigned int x1; int x2; char *x3; unsigned long long x4; unsigned char x5; unsigned short *x6; int x7; unsigned short x8; unsigned short x9; unsigned int x10; struct _RTCP_RECEPTION_REPORT {} *x11; unsigned char x12; }*)arg1;
+- (void)sendControlPacket:(struct _RTCP_SEND_CONTROL_PARAMETERS { unsigned int x1; int x2; char *x3; unsigned long long x4; unsigned char x5; unsigned short *x6; int x7; unsigned short x8; unsigned short x9; unsigned int x10; struct _RTCP_RECEPTION_REPORT {} *x11; unsigned char x12; struct tagRTCP_CUSTOM_RATE_CONTROL_INFO {} *x13; }*)arg1;
 - (bool)sendIntervalDidElapse:(int*)arg1 remainingTime:(double*)arg2;
 - (void)setBasebandCongestionDetector:(id)arg1;
 - (void)setDecryptionTimeoutEnabled:(bool)arg1;
@@ -81,9 +81,10 @@
 - (void)setStreamDirection:(long long)arg1;
 - (bool)setThrottlingInterval:(double)arg1;
 - (bool)setupRTPForIDS:(id*)arg1;
-- (bool)setupRTPWithIPInfo:(struct _VCMediaStreamTransportSetupInfo { unsigned char x1; union { struct { int x_1_2_1; int x_1_2_2; } x_2_1_1; struct { struct tagIPPORT { int x_1_3_1; BOOL x_1_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_1_3_3; unsigned short x_1_3_4; } x_2_2_1; struct tagIPPORT { int x_2_3_1; BOOL x_2_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_2_3_3; unsigned short x_2_3_4; } x_2_2_2; } x_2_1_2; } x2; unsigned int x3; unsigned int x4; bool x5; }*)arg1 error:(id*)arg2;
-- (bool)setupRTPWithSockets:(struct _VCMediaStreamTransportSetupInfo { unsigned char x1; union { struct { int x_1_2_1; int x_1_2_2; } x_2_1_1; struct { struct tagIPPORT { int x_1_3_1; BOOL x_1_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_1_3_3; unsigned short x_1_3_4; } x_2_2_1; struct tagIPPORT { int x_2_3_1; BOOL x_2_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_2_3_3; unsigned short x_2_3_4; } x_2_2_2; } x_2_1_2; } x2; unsigned int x3; unsigned int x4; bool x5; }*)arg1 error:(id*)arg2;
-- (bool)setupRTPWithTransportSetupInfo:(struct _VCMediaStreamTransportSetupInfo { unsigned char x1; union { struct { int x_1_2_1; int x_1_2_2; } x_2_1_1; struct { struct tagIPPORT { int x_1_3_1; BOOL x_1_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_1_3_3; unsigned short x_1_3_4; } x_2_2_1; struct tagIPPORT { int x_2_3_1; BOOL x_2_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_2_3_3; unsigned short x_2_3_4; } x_2_2_2; } x_2_1_2; } x2; unsigned int x3; unsigned int x4; bool x5; }*)arg1 error:(id*)arg2;
+- (bool)setupRTPWithIPInfo:(struct _VCMediaStreamTransportSetupInfo { unsigned char x1; union { struct { int x_1_2_1; int x_1_2_2; } x_2_1_1; struct { struct tagIPPORT { int x_1_3_1; BOOL x_1_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_1_3_3; unsigned short x_1_3_4; } x_2_2_1; struct tagIPPORT { int x_2_3_1; BOOL x_2_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_2_3_3; unsigned short x_2_3_4; } x_2_2_2; } x_2_1_2; struct { id x_3_2_1; struct tagVCNWConnectionMonitor {} *x_3_2_2; int x_3_2_3; } x_2_1_3; } x2; unsigned int x3; unsigned int x4; bool x5; }*)arg1 error:(id*)arg2;
+- (bool)setupRTPWithNWConnection:(struct _VCMediaStreamTransportSetupInfo { unsigned char x1; union { struct { int x_1_2_1; int x_1_2_2; } x_2_1_1; struct { struct tagIPPORT { int x_1_3_1; BOOL x_1_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_1_3_3; unsigned short x_1_3_4; } x_2_2_1; struct tagIPPORT { int x_2_3_1; BOOL x_2_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_2_3_3; unsigned short x_2_3_4; } x_2_2_2; } x_2_1_2; struct { id x_3_2_1; struct tagVCNWConnectionMonitor {} *x_3_2_2; int x_3_2_3; } x_2_1_3; } x2; unsigned int x3; unsigned int x4; bool x5; }*)arg1 error:(id*)arg2;
+- (bool)setupRTPWithSockets:(struct _VCMediaStreamTransportSetupInfo { unsigned char x1; union { struct { int x_1_2_1; int x_1_2_2; } x_2_1_1; struct { struct tagIPPORT { int x_1_3_1; BOOL x_1_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_1_3_3; unsigned short x_1_3_4; } x_2_2_1; struct tagIPPORT { int x_2_3_1; BOOL x_2_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_2_3_3; unsigned short x_2_3_4; } x_2_2_2; } x_2_1_2; struct { id x_3_2_1; struct tagVCNWConnectionMonitor {} *x_3_2_2; int x_3_2_3; } x_2_1_3; } x2; unsigned int x3; unsigned int x4; bool x5; }*)arg1 error:(id*)arg2;
+- (bool)setupRTPWithTransportSetupInfo:(struct _VCMediaStreamTransportSetupInfo { unsigned char x1; union { struct { int x_1_2_1; int x_1_2_2; } x_2_1_1; struct { struct tagIPPORT { int x_1_3_1; BOOL x_1_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_1_3_3; unsigned short x_1_3_4; } x_2_2_1; struct tagIPPORT { int x_2_3_1; BOOL x_2_3_2[16]; union { unsigned int x_3_4_1; unsigned char x_3_4_2[16]; } x_2_3_3; unsigned short x_2_3_4; } x_2_2_2; } x_2_1_2; struct { id x_3_2_1; struct tagVCNWConnectionMonitor {} *x_3_2_2; int x_3_2_3; } x_2_1_3; } x2; unsigned int x3; unsigned int x4; bool x5; }*)arg1 error:(id*)arg2;
 - (int)setupSRTP;
 - (id)streamConfig;
 - (long long)streamDirection;

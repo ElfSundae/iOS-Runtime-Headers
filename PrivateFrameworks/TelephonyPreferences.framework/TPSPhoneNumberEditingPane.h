@@ -12,6 +12,6 @@
 - (id)previousStringSuggestion;
 - (void)setPreferenceSpecifier:(id)arg1;
 - (void)setPreviousStringSuggestion:(id)arg1;
-- (struct { id x1; })suggestionsForString:(id)arg1 inputIndex:(unsigned int)arg2;
+- (struct { id x1; unsigned long long x2; })suggestionsForString:(id)arg1 inputIndex:(unsigned int)arg2;
 
 @end

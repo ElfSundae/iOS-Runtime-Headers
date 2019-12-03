@@ -4,11 +4,14 @@
 
 @interface VSInstrumentMetrics : NSObject <NSSecureCoding> {
     double  _audioDuration;
+    NSString * _audioOutputRoute;
     long long  _audioStartTimestampDiffs;
     bool  _canUseServerTTS;
     long long  _eagerRequestCreatedTimeStampDiffs;
+    long long  _errorCode;
     bool  _isCacheHitFromDisk;
     bool  _isCacheHitFromMemory;
+    bool  _isServerStreamTTS;
     bool  _isServerTTS;
     bool  _isServerTTSRacing;
     bool  _isServerTimeout;
@@ -16,6 +19,7 @@
     bool  _isWarmStart;
     long long  _promptCount;
     long long  _requestCreatedTimestamp;
+    long long  _sourceOfTTS;
     long long  _speechBeginTimestamp;
     long long  _speechEndTimestamp;
     long long  _synthesisBeginTimestamp;
@@ -28,11 +32,14 @@
 }
 
 @property double audioDuration;
+@property (copy) NSString *audioOutputRoute;
 @property long long audioStartTimestampDiffs;
 @property bool canUseServerTTS;
 @property long long eagerRequestCreatedTimeStampDiffs;
+@property long long errorCode;
 @property bool isCacheHitFromDisk;
 @property bool isCacheHitFromMemory;
+@property bool isServerStreamTTS;
 @property bool isServerTTS;
 @property bool isServerTTSRacing;
 @property bool isServerTimeout;
@@ -40,6 +47,7 @@
 @property bool isWarmStart;
 @property long long promptCount;
 @property long long requestCreatedTimestamp;
+@property long long sourceOfTTS;
 @property long long speechBeginTimestamp;
 @property long long speechEndTimestamp;
 @property long long synthesisBeginTimestamp;
@@ -55,6 +63,7 @@
 - (void).cxx_destruct;
 - (double)_clockFactor;
 - (double)audioDuration;
+- (id)audioOutputRoute;
 - (double)audioQueueLatency;
 - (long long)audioStartTimestampDiffs;
 - (bool)canUseServerTTS;
@@ -63,9 +72,11 @@
 - (long long)eagerRequestCreatedTimeStampDiffs;
 - (double)eagerRequestTimeGap;
 - (void)encodeWithCoder:(id)arg1;
+- (long long)errorCode;
 - (id)initWithCoder:(id)arg1;
 - (bool)isCacheHitFromDisk;
 - (bool)isCacheHitFromMemory;
+- (bool)isServerStreamTTS;
 - (bool)isServerTTS;
 - (bool)isServerTTSRacing;
 - (bool)isServerTimeout;
@@ -75,11 +86,14 @@
 - (long long)promptCount;
 - (long long)requestCreatedTimestamp;
 - (void)setAudioDuration:(double)arg1;
+- (void)setAudioOutputRoute:(id)arg1;
 - (void)setAudioStartTimestampDiffs:(long long)arg1;
 - (void)setCanUseServerTTS:(bool)arg1;
 - (void)setEagerRequestCreatedTimeStampDiffs:(long long)arg1;
+- (void)setErrorCode:(long long)arg1;
 - (void)setIsCacheHitFromDisk:(bool)arg1;
 - (void)setIsCacheHitFromMemory:(bool)arg1;
+- (void)setIsServerStreamTTS:(bool)arg1;
 - (void)setIsServerTTS:(bool)arg1;
 - (void)setIsServerTTSRacing:(bool)arg1;
 - (void)setIsServerTimeout:(bool)arg1;
@@ -87,6 +101,7 @@
 - (void)setIsWarmStart:(bool)arg1;
 - (void)setPromptCount:(long long)arg1;
 - (void)setRequestCreatedTimestamp:(long long)arg1;
+- (void)setSourceOfTTS:(long long)arg1;
 - (void)setSpeechBeginTimestamp:(long long)arg1;
 - (void)setSpeechEndTimestamp:(long long)arg1;
 - (void)setSynthesisBeginTimestamp:(long long)arg1;
@@ -96,6 +111,7 @@
 - (void)setVoiceAssetKey:(id)arg1;
 - (void)setVoiceResourceAssetKey:(id)arg1;
 - (void)setWaitForSynthesisToFinishTimeDelay:(long long)arg1;
+- (long long)sourceOfTTS;
 - (long long)speechBeginTimestamp;
 - (long long)speechEndTimestamp;
 - (long long)synthesisBeginTimestamp;

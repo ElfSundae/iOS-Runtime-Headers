@@ -12,6 +12,6 @@
 - (id)_contentViewSubtitleWithAction:(id)arg1;
 - (id)initWithImage:(id)arg1 defaultActions:(id)arg2 elementInfo:(id)arg3;
 - (void)loadView;
-- (id)previewActions;
+- (id)previewActionItems;
 
 @end

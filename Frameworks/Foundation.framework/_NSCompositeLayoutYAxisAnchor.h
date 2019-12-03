@@ -12,7 +12,7 @@
 @property (readonly) NSArray *_childAnchors;
 
 - (id)_childAnchors;
-- (id)_expressionInContext:(struct { long long x1; id x2; })arg1;
+- (id)_expressionInContext:(struct { long long x1; id x2; id x3; })arg1;
 - (double)_valueInEngine:(id)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

@@ -4,6 +4,7 @@
 
 @interface EspressoDataFrameExecutor : NSObject {
     NSArray * _outputMatchingBuffers;
+    int  _use_cvpixelbuffer;
     struct vector<__CVBuffer *, std::__1::allocator<__CVBuffer *> > { 
         struct __CVBuffer {} **__begin_; 
         struct __CVBuffer {} **__end_; 
@@ -21,16 +22,21 @@
 }
 
 @property (retain) NSArray *outputMatchingBuffers;
+@property (nonatomic) int use_cvpixelbuffer;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (int)bindInputsFromFrame:(id)arg1 toNetwork:(struct { void *x1; int x2; })arg2;
 - (int)bindOutputsFromFrame:(id)arg1 toNetwork:(struct { void *x1; int x2; })arg2;
+- (int)bindOutputsFromFrame:(id)arg1 toNetwork:(struct { void *x1; int x2; })arg2 executionStatus:(int)arg3;
 - (int)bindOutputsFromFrame:(id)arg1 toNetwork:(struct { void *x1; int x2; })arg2 referenceNetwork:(struct { void *x1; int x2; })arg3;
 - (void)dealloc;
 - (void)freeTemporaryResources;
 - (id)outputMatchingBuffers;
 - (void)setOutputMatchingBuffers:(id)arg1;
+- (void)setUse_cvpixelbuffer:(int)arg1;
 - (bool)useCVPixelBuffers;
+- (bool)useCVPixelBuffersForOutputs:(bool)arg1;
+- (int)use_cvpixelbuffer;
 
 @end

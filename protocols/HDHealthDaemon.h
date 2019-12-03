@@ -13,6 +13,7 @@
 - (NSArray *)daemonExtensionsConformingToProtocol:(Protocol *)arg1;
 - (HDPluginManager *)pluginManager;
 - (HDPrimaryProfile *)primaryProfile;
+- (void)registerDaemonReadyObserver:(id <HDHealthDaemonReadyObserver>)arg1 queue:(NSObject<OS_dispatch_queue> *)arg2;
 - (void)registerForDaemonReady:(id <HDHealthDaemonReadyObserver>)arg1;
 - (void)registerForLaunchNotification:(const char *)arg1;
 - (void)setAlertSuppressionService:(id <HDNanoAlertSuppressionService>)arg1;

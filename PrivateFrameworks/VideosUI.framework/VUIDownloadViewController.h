@@ -31,6 +31,7 @@
 - (id)_configureAlertControllerForIndexPath:(id)arg1;
 - (void)_editToggled;
 - (void)_exitEditingMode;
+- (void)_updateMediaEntitiesWithNewDownloads:(id)arg1;
 - (id)assetControllersToRemove;
 - (id)backBarButtonItem;
 - (void)downloadCellDidRequestCancelDownload:(id)arg1;

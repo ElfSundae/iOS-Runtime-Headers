@@ -25,11 +25,17 @@
             unsigned int usesAutoDeleteWord : 1; 
             unsigned int usesCandidateSelection : 1; 
             unsigned int commitsAcceptedCandidate : 1; 
+            unsigned int newInputAcceptsUserSelectedCandidate : 1; 
             unsigned int nextInputWouldStartSentence : 1; 
             unsigned int inputStringIsExemptFromChecker : 1; 
             unsigned int suppressPlaceholderCandidate : 1; 
             unsigned int usesAutocorrectionLists : 1; 
             unsigned int autoquoteType : 2; 
+            unsigned int usesContinuousPath : 1; 
+            unsigned int usesContinuousPathProgressiveCandidates : 1; 
+            unsigned int usesPunctuationKeysForRowNavigation : 1; 
+            unsigned int insertsSpaceAfterPredictiveInput : 1; 
+            unsigned int shouldFixupIncompleteRomaji : 1; 
         } fields; 
     }  _mask;
     NSString * _replacementForDoubleSpace;
@@ -55,8 +61,10 @@
 @property (nonatomic) bool inputStringIsExemptFromChecker;
 @property (nonatomic, copy) TICharacterSetDescription *inputsPreventingAcceptSelectedCandidate;
 @property (nonatomic, copy) TICharacterSetDescription *inputsToReject;
+@property (nonatomic) bool insertsSpaceAfterPredictiveInput;
 @property (nonatomic, retain) TIKeyEventMap *keyEventMap;
 @property (nonatomic, retain) TIKeyboardBehaviors *keyboardBehaviors;
+@property (nonatomic) bool newInputAcceptsUserSelectedCandidate;
 @property (nonatomic) bool nextInputWouldStartSentence;
 @property (nonatomic, copy) NSString *replacementForDoubleSpace;
 @property (nonatomic, copy) NSString *searchStringForMarkedText;
@@ -64,6 +72,7 @@
 @property (nonatomic, copy) TICharacterSetDescription *shortcutCompletions;
 @property (nonatomic) bool shouldAddModifierSymbolsToWordCharacters;
 @property (nonatomic) bool shouldExtendPriorWord;
+@property (nonatomic) bool shouldFixupIncompleteRomaji;
 @property (nonatomic) bool suppliesCompletions;
 @property (nonatomic) bool supportsNumberKeySelection;
 @property (nonatomic) bool supportsSetPhraseBoundary;
@@ -74,6 +83,9 @@
 @property (nonatomic) bool usesAutoDeleteWord;
 @property (nonatomic) bool usesAutocorrectionLists;
 @property (nonatomic) bool usesCandidateSelection;
+@property (nonatomic) bool usesContinuousPath;
+@property (nonatomic) bool usesContinuousPathProgressiveCandidates;
+@property (nonatomic) bool usesPunctuationKeysForRowNavigation;
 @property (nonatomic, copy) TICharacterSetDescription *wordCharacters;
 @property (nonatomic, copy) NSString *wordSeparator;
 
@@ -97,8 +109,10 @@
 - (bool)inputStringIsExemptFromChecker;
 - (id)inputsPreventingAcceptSelectedCandidate;
 - (id)inputsToReject;
+- (bool)insertsSpaceAfterPredictiveInput;
 - (id)keyEventMap;
 - (id)keyboardBehaviors;
+- (bool)newInputAcceptsUserSelectedCandidate;
 - (bool)nextInputWouldStartSentence;
 - (id)replacementForDoubleSpace;
 - (id)searchStringForMarkedText;
@@ -114,8 +128,10 @@
 - (void)setInputStringIsExemptFromChecker:(bool)arg1;
 - (void)setInputsPreventingAcceptSelectedCandidate:(id)arg1;
 - (void)setInputsToReject:(id)arg1;
+- (void)setInsertsSpaceAfterPredictiveInput:(bool)arg1;
 - (void)setKeyEventMap:(id)arg1;
 - (void)setKeyboardBehaviors:(id)arg1;
+- (void)setNewInputAcceptsUserSelectedCandidate:(bool)arg1;
 - (void)setNextInputWouldStartSentence:(bool)arg1;
 - (void)setReplacementForDoubleSpace:(id)arg1;
 - (void)setSearchStringForMarkedText:(id)arg1;
@@ -123,6 +139,7 @@
 - (void)setShortcutCompletions:(id)arg1;
 - (void)setShouldAddModifierSymbolsToWordCharacters:(bool)arg1;
 - (void)setShouldExtendPriorWord:(bool)arg1;
+- (void)setShouldFixupIncompleteRomaji:(bool)arg1;
 - (void)setSuppliesCompletions:(bool)arg1;
 - (void)setSupportsNumberKeySelection:(bool)arg1;
 - (void)setSupportsSetPhraseBoundary:(bool)arg1;
@@ -133,6 +150,9 @@
 - (void)setUsesAutoDeleteWord:(bool)arg1;
 - (void)setUsesAutocorrectionLists:(bool)arg1;
 - (void)setUsesCandidateSelection:(bool)arg1;
+- (void)setUsesContinuousPath:(bool)arg1;
+- (void)setUsesContinuousPathProgressiveCandidates:(bool)arg1;
+- (void)setUsesPunctuationKeysForRowNavigation:(bool)arg1;
 - (void)setWordCharacters:(id)arg1;
 - (void)setWordSeparator:(id)arg1;
 - (id)shadowTyping;
@@ -140,6 +160,7 @@
 - (bool)shouldAddModifierSymbolsToWordCharacters;
 - (bool)shouldDeleteAutospaceBeforeTerminator:(id)arg1;
 - (bool)shouldExtendPriorWord;
+- (bool)shouldFixupIncompleteRomaji;
 - (bool)shouldSuppressAutocorrectionWithTerminator:(id)arg1;
 - (bool)stringEndsWord:(id)arg1;
 - (bool)suppliesCompletions;
@@ -152,6 +173,9 @@
 - (bool)usesAutoDeleteWord;
 - (bool)usesAutocorrectionLists;
 - (bool)usesCandidateSelection;
+- (bool)usesContinuousPath;
+- (bool)usesContinuousPathProgressiveCandidates;
+- (bool)usesPunctuationKeysForRowNavigation;
 - (id)wordCharacters;
 - (id)wordSeparator;
 

@@ -26,9 +26,6 @@
 - (void)cameraReaderDidEnd:(id)arg1;
 - (void)cancel;
 - (void)captureController:(id)arg1 didChangeStateTo:(long long)arg2;
-- (void)captureController:(id)arg1 requestsDismissCurrentViewControllerAnimated:(bool)arg2;
-- (void)captureController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(bool)arg3;
-- (void)captureController:(id)arg1 requestsPushViewController:(id)arg2 animated:(bool)arg3;
 - (void)captureController:(id)arg1 showLoading:(bool)arg2;
 - (void)dealloc;
 - (id)initWithController:(id)arg1 context:(long long)arg2 featureIdentifier:(unsigned long long)arg3;

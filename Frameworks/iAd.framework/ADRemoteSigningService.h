@@ -9,11 +9,12 @@
 }
 
 @property (nonatomic) bool didLeaveGroup;
-@property (nonatomic) NSObject<OS_dispatch_group> *signingGroup;
-@property (nonatomic) NSObject<OS_dispatch_queue> *signingQueue;
+@property (nonatomic, retain) NSObject<OS_dispatch_group> *signingGroup;
+@property (nonatomic, retain) NSObject<OS_dispatch_queue> *signingQueue;
 
 + (id)sharedInstance;
 
+- (void).cxx_destruct;
 - (bool)didLeaveGroup;
 - (id)init;
 - (void)setDidLeaveGroup:(bool)arg1;

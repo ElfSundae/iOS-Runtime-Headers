@@ -16,6 +16,7 @@
 - (unsigned long long)numberOfSeriesForCalculatingBarWidth:(id)arg1;
 - (unsigned long long)seriesIndexForDrawing:(id)arg1;
 - (bool)supportsBarGap;
+- (id)userInterfaceName;
 - (id)userInterfaceNameForLabelPosition:(id)arg1;
 
 @end

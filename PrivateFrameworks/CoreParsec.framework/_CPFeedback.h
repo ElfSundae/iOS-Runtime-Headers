@@ -12,7 +12,6 @@
 @property (nonatomic, readonly) id feedbackJSON;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
-@property (nonatomic, readonly) bool requiresQueryId;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long timestamp;
 
@@ -25,7 +24,6 @@
 - (bool)isEqual:(id)arg1;
 - (id)jsonData;
 - (bool)readFrom:(id)arg1;
-- (bool)requiresQueryId;
 - (void)setTimestamp:(unsigned long long)arg1;
 - (unsigned long long)timestamp;
 - (void)writeTo:(id)arg1;

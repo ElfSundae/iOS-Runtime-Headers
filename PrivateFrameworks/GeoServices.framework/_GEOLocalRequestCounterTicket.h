@@ -4,8 +4,10 @@
 
 @interface _GEOLocalRequestCounterTicket : NSObject <GEORequestCounterTicket> {
     NSString * _appId;
+    bool  _complete;
+    NSObject<OS_nw_activity> * _nwActivity;
     GEORequestCounterPersistence * _persistence;
-    long long  _requestId;
+    NSString * _requestId;
     unsigned char  _type;
 }
 
@@ -14,9 +16,12 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)requestCounterTicketForType:(unsigned char)arg1 appId:(id)arg2;
 + (id)requestCounterTicketForType:(unsigned char)arg1 appId:(id)arg2 persistence:(id)arg3;
 
 - (void).cxx_destruct;
-- (void)requestCompletedWithResult:(unsigned char)arg1 mode:(unsigned char)arg2 xmitBytes:(long long)arg3 recvBytes:(long long)arg4;
+- (id)description;
+- (void)requestCompletedWithResult:(unsigned char)arg1 xmitBytes:(long long)arg2 recvBytes:(long long)arg3;
+- (void)startingRequestWithTask:(id)arg1;
 
 @end

@@ -3,12 +3,14 @@
  */
 
 @interface HMDServiceTransaction : HMDBackingStoreModelObject {
+    NSObject<OS_dispatch_group> * _configurationTracker;
     NSString * _lastSeenConfiguredNameLocal;
 }
 
 @property (nonatomic, retain) NSString *associatedServiceType;
 @property (nonatomic, retain) NSArray *characteristics;
 @property (nonatomic, retain) NSNumber *configurationState;
+@property (nonatomic, retain) NSObject<OS_dispatch_group> *configurationTracker;
 @property (nonatomic, retain) NSString *expectedConfiguredName;
 @property (nonatomic, retain) NSNumber *hidden;
 @property (nonatomic, retain) NSNumber *instanceID;
@@ -28,7 +30,9 @@
 + (id)properties;
 
 - (void).cxx_destruct;
+- (id)configurationTracker;
 - (id)lastSeenConfiguredNameLocal;
+- (void)setConfigurationTracker:(id)arg1;
 - (void)setLastSeenConfiguredNameLocal:(id)arg1;
 
 @end

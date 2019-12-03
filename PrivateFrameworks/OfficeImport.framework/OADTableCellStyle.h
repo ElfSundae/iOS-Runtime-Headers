@@ -10,9 +10,9 @@
 + (id)defaultFill;
 + (id)defaultStyle;
 
+- (void).cxx_destruct;
 - (void)applyOverridesFrom:(id)arg1;
 - (id)borderStyle;
-- (void)dealloc;
 - (id)description;
 - (id)fill;
 - (void)setBorderStyle:(id)arg1;

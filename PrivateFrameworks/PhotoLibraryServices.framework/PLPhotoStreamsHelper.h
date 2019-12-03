@@ -6,10 +6,11 @@
     bool  _appHasPolledOnceThisForegroundSession;
 }
 
++ (bool)_photoStreamsEnabled;
 + (bool)canInitiateDistributedPhotoStreamDeletionForAssetUUID:(id)arg1;
++ (void)deletePhotoStreamAssetsWithLibraryServiceManager:(id)arg1 withReason:(id)arg2 jobStreamID:(id)arg3 completion:(id /* block */)arg4;
 + (id)iCloudServiceAccount;
-+ (bool)photoStreamsEnabled;
-+ (id)publishBreadcrumbsPath;
++ (bool)photoStreamsEnabledForPhotoLibraryURL:(id)arg1;
 + (id)sharedPhotoStreamsHelper;
 + (bool)writeBreadcrumbContent:(id)arg1 forHashString:(id)arg2;
 
@@ -45,12 +46,10 @@
 - (id)psHashAsString:(id)arg1;
 - (id)psHashForData:(id)arg1;
 - (bool)removeBreadcrumbsForHashString:(id)arg1;
-- (void)resetMstreamdStateForPersonID:(id)arg1;
 - (void)resetServerState;
 - (void)resume_mstreamd:(id)arg1;
 - (void)savePhotoStreamMetadata:(id)arg1 forAsset:(id)arg2;
 - (bool)shouldPublishScreenShots;
-- (bool)shouldUploadVideos;
 - (id)temporaryPathForConvertedAssetWithUUID:(id)arg1;
 - (id)temporaryPathForRecentlyUploadedAsset:(id)arg1;
 - (void)writeDidEnqueueBreadcrumbForHash:(id)arg1 imagePath:(id)arg2;

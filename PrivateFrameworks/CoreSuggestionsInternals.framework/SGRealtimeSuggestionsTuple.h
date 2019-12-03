@@ -6,11 +6,13 @@
     NSArray * _contacts;
     NSArray * _events;
     NSArray * _invalidatedIdentifiers;
+    NSArray * _reminders;
 }
 
 @property (retain) NSArray *contacts;
 @property (retain) NSArray *events;
 @property (retain) NSArray *invalidatedIdentifiers;
+@property (retain) NSArray *reminders;
 
 - (void).cxx_destruct;
 - (id)combinedSuggestions;
@@ -18,9 +20,11 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)events;
 - (id)invalidatedIdentifiers;
+- (id)reminders;
 - (void)setContacts:(id)arg1;
 - (void)setEvents:(id)arg1;
 - (void)setInvalidatedIdentifiers:(id)arg1;
+- (void)setReminders:(id)arg1;
 - (unsigned long long)suggestionsCount;
 
 @end

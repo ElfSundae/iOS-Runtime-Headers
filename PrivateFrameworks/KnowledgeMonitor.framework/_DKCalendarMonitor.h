@@ -11,6 +11,7 @@
 + (id)eventStream;
 
 - (void)_receiveDatabaseChangeNotification:(id)arg1;
+- (void)deactivate;
 - (void)dealloc;
 - (id)init;
 - (void)start;

@@ -11,8 +11,11 @@
     unsigned int  failed_to_start_next_child;
     int  last_resolver_status;
     unsigned int  next_child_endpoint_index;
+    NSObject<OS_nw_array> * path_resolved_endpoints;
     NSObject<OS_nw_array> * ready_child_endpoint_handlers;
+    NSObject<OS_nw_dictionary> * resolve_flow_registrations;
     NSObject<OS_nw_resolver> * resolver;
+    NSObject<OS_nw_array> * resolver_resolved_endpoints;
     unsigned int  started_desperate_ivan;
     void * trigger_agent_timer;
     unsigned int  waiting_for_desperate_ivan;

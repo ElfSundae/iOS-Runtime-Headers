@@ -44,6 +44,7 @@
     SFImage * _reviewGlyph;
     bool  _reviewNewLine;
     NSString * _reviewText;
+    SFRichText * _richSubtitle;
     int  _separatorStyle;
     NSString * _subtitle;
     bool  _thumbnailCropCircle;
@@ -93,6 +94,7 @@
 @property (nonatomic, retain) SFImage *reviewGlyph;
 @property (nonatomic) bool reviewNewLine;
 @property (nonatomic, copy) NSString *reviewText;
+@property (nonatomic, retain) SFRichText *richSubtitle;
 @property (nonatomic) int separatorStyle;
 @property (nonatomic, copy) NSString *subtitle;
 @property (readonly) Class superclass;
@@ -155,6 +157,7 @@
 - (id)reviewGlyph;
 - (bool)reviewNewLine;
 - (id)reviewText;
+- (id)richSubtitle;
 - (int)separatorStyle;
 - (void)setAuxiliaryAlignment:(id)arg1;
 - (void)setAuxiliaryBottomText:(id)arg1;
@@ -183,6 +186,7 @@
 - (void)setReviewGlyph:(id)arg1;
 - (void)setReviewNewLine:(bool)arg1;
 - (void)setReviewText:(id)arg1;
+- (void)setRichSubtitle:(id)arg1;
 - (void)setSeparatorStyle:(int)arg1;
 - (void)setSubtitle:(id)arg1;
 - (void)setThumbnailCropCircle:(bool)arg1;

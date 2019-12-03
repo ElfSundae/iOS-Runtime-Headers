@@ -3,6 +3,7 @@
  */
 
 @interface _INPBSearchCallHistoryIntent : PBCodable <NSCopying, NSSecureCoding, _INPBSearchCallHistoryIntent> {
+    bool  __encodeLegacyGloryData;
     struct { 
         int *list; 
         unsigned long long count; 
@@ -32,6 +33,7 @@
     bool  _unseen;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic, readonly) int*callCapabilities;
 @property (nonatomic, readonly) unsigned long long callCapabilitiesCount;
 @property (nonatomic) int callType;
@@ -57,12 +59,16 @@
 @property (nonatomic, retain) _INPBContact *targetContact;
 @property (nonatomic) bool unseen;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (int)StringAsCallCapabilities:(id)arg1;
 - (int)StringAsCallType:(id)arg1;
 - (int)StringAsCallTypes:(id)arg1;
 - (int)StringAsCapabilities:(id)arg1;
 - (int)StringAsPreferredCallProvider:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (void)addCallCapabilities:(int)arg1;
 - (void)addCallTypes:(int)arg1;
 - (void)addCapabilities:(int)arg1;
@@ -85,7 +91,9 @@
 - (void)clearCapabilities;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dateCreated;
+- (void)dealloc;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasCallType;
 - (bool)hasDateCreated;
 - (bool)hasIntentMetadata;
@@ -94,6 +102,7 @@
 - (bool)hasTargetContact;
 - (bool)hasUnseen;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)intentMetadata;
 - (bool)isEqual:(id)arg1;
 - (int)preferredCallProvider;

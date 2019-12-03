@@ -10,14 +10,16 @@
 @property (nonatomic, readonly, copy) TSUColor *numbersKeyColor;
 
 - (void).cxx_destruct;
+- (bool)URLIsValidForImportedHyperlink:(id)arg1 targetDocumentRoot:(id)arg2 forCrossDocumentPaste:(bool)arg3;
 - (id)appChartPropertyOverrides;
 - (void)applicationDidFinishLaunching:(id)arg1;
 - (id)applicationDisplayName;
 - (id)applicationName;
-- (id)applicationTemplateVariantsForLocale:(struct __CFLocale { }*)arg1;
+- (id)applicationTemplateVariantsForLocale:(id)arg1;
 - (unsigned long long)applicationType;
 - (id)bladerunnerContainerIdentifier;
 - (id)cloudKitContainerIdentifier;
+- (id)cloudKitSyncContainerIdentifier;
 - (void)configureSharedCode;
 - (id)createCompatibilityDelegate;
 - (Class)documentRootClass;
@@ -38,6 +40,7 @@
 - (void)registerSOSClassTypeMappings;
 - (id)sharedAlertMessageWithUserName:(id)arg1;
 - (id)sharedReadOnlyAlertMessageWithUserName:(id)arg1;
+- (id)stringForApplePencilDoubleTapSettingsDescription;
 - (id)stringForApplicationUpdateError;
 - (id)stringForBoxCollaborationOptInMessage;
 - (id)stringForChangePasswordWhileConnectingAlertMessage;
@@ -67,6 +70,8 @@
 - (id)stringForGenericServerUnreachable;
 - (id)stringForICloudUnreachable;
 - (id)stringForLearnMoreSharingURL;
+- (id)stringForMoveInlineToFloatingButtonTitle;
+- (id)stringForMoveInlineToFloatingButtonToolTip;
 - (id)stringForNoItemsSyncingListItem;
 - (id)stringForOwnerHasCollabEnabledMessage;
 - (id)stringForOwnerHasCollabEnabledTitle;

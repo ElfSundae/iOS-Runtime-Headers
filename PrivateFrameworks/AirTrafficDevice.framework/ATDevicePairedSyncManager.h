@@ -2,9 +2,8 @@
    Image: /System/Library/PrivateFrameworks/AirTrafficDevice.framework/AirTrafficDevice
  */
 
-@interface ATDevicePairedSyncManager : NSObject <ATMessageLinkObserver, ATSessionObserver, PSYInitialSyncStateObserverDelegate> {
+@interface ATDevicePairedSyncManager : NSObject <ATMessageLinkObserver, ATSessionObserver, ICNanoPairedDeviceStatusObserver> {
     ATDeviceService * _deviceService;
-    PSYInitialSyncStateObserver * _initialSyncStateObserver;
     NSObject<OS_dispatch_queue> * _queue;
 }
 
@@ -13,21 +12,18 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)activePairedDevicePairingId;
-+ (id)devicePairingId;
 + (id)sharedPairedSyncManager;
 
 - (void).cxx_destruct;
 - (void)_cleanupSyncState;
+- (void)_setInstallDateIfNeededForBundleID:(id)arg1;
 - (void)_triggerInitialSync;
-- (void)deviceBecameActive:(id)arg1;
-- (void)handleDevicePairedNotification;
-- (void)handleDeviceUnPairedNotification;
 - (bool)hasRestriction;
 - (id)init;
-- (void)initialSyncStateObserver:(id)arg1 initialSyncDidCompleteForPairingIdentifier:(id)arg2;
-- (void)initialSyncStateObserver:(id)arg1 syncDidCompleteForPairingIdentifier:(id)arg2;
-- (void)initialSyncStateObserver:(id)arg1 syncDidResetForPairingIdentifier:(id)arg2;
+- (void)nanoPairedDeviceStatusMonitor:(id)arg1 didChangeClientSyncState:(unsigned long long)arg2;
+- (void)nanoPairedDeviceStatusMonitor:(id)arg1 didFinishInitialSyncForPairingIdentifier:(id)arg2;
+- (void)nanoPairedDeviceStatusMonitorNewActiveDevice:(id)arg1;
+- (void)nanoPairedDeviceStatusMonitorPairedDeviceChanged:(id)arg1;
 - (void)start;
 - (void)stop;
 

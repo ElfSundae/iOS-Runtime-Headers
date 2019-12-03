@@ -2,12 +2,13 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXActionPerformer : NSObject {
+@interface PXActionPerformer : NSObject <PXActivityActionDelegate> {
     NSString * _actionType;
     bool  _cancellable;
     id /* block */  _completionHandler;
     <PXActionPerformerDelegate> * _delegate;
-    UIViewController * _presentedViewController;
+    struct NSObject { Class x1; } * _presentedViewController;
+    id  _sender;
     unsigned long long  _state;
     bool  _success;
     id /* block */  _viewControllerDismisser;
@@ -15,11 +16,18 @@
 }
 
 @property (nonatomic, readonly) NSString *actionType;
+@property (nonatomic, readonly) NSString *activitySystemImageName;
+@property (nonatomic, readonly) NSString *activityType;
 @property (getter=isCancellable, nonatomic, readonly) bool cancellable;
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <PXActionPerformerDelegate> *delegate;
-@property (nonatomic, readonly) UIViewController *presentedViewController;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) NSObject<PXAnonymousViewController> *presentedViewController;
+@property (nonatomic) id sender;
 @property (nonatomic, readonly) unsigned long long state;
 @property (nonatomic, readonly) bool success;
+@property (readonly) Class superclass;
 @property (nonatomic, copy) id /* block */ viewControllerDismisser;
 @property (nonatomic, copy) id /* block */ viewControllerPresenter;
 
@@ -32,21 +40,32 @@
 - (void)_performUnlockIfNeeded;
 - (void)_transitionToState:(unsigned long long)arg1 withSuccess:(bool)arg2 error:(id)arg3;
 - (id)actionType;
+- (id)activity;
+- (id)activitySystemImageName;
+- (id)activityType;
+- (id)alertAction;
+- (bool)canPerformWithActivityItems:(id)arg1 forActivity:(id)arg2;
 - (void)cancelActionWithCompletionHandler:(id /* block */)arg1;
 - (void)completeBackgroundTaskWithSuccess:(bool)arg1 error:(id)arg2;
 - (void)completeUserInteractionTaskWithSuccess:(bool)arg1 error:(id)arg2;
 - (id)delegate;
-- (bool)dismissViewController:(id)arg1 completionHandler:(id /* block */)arg2;
+- (id)description;
+- (bool)dismissViewController:(struct NSObject { Class x1; }*)arg1 completionHandler:(id /* block */)arg2;
 - (id)init;
 - (id)initWithActionType:(id)arg1;
 - (bool)isCancellable;
+- (id)localizedTitleForUseCase:(unsigned long long)arg1;
 - (void)performActionWithCompletionHandler:(id /* block */)arg1;
+- (void)performActivity:(id)arg1;
 - (void)performBackgroundTask;
 - (void)performUserInteractionTask;
-- (bool)presentViewController:(id)arg1;
-- (id)presentedViewController;
+- (bool)performerResetsAfterCompletion;
+- (bool)presentViewController:(struct NSObject { Class x1; }*)arg1;
+- (struct NSObject { Class x1; }*)presentedViewController;
 - (bool)requiresUnlockedDevice;
+- (id)sender;
 - (void)setDelegate:(id)arg1;
+- (void)setSender:(id)arg1;
 - (void)setViewControllerDismisser:(id /* block */)arg1;
 - (void)setViewControllerPresenter:(id /* block */)arg1;
 - (unsigned long long)state;

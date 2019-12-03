@@ -15,9 +15,7 @@
 + (bool)prefersNonBlockingReloads;
 
 - (void).cxx_destruct;
-- (id)_generateItemsFromStoreResult:(id)arg1;
-- (id)_performLibraryLookupForAccessories:(id)arg1;
-- (id)_performStoreLookupWithLibraryResult:(id)arg1;
+- (id)_generateItemsFromSoftwareLookupResult:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id /* block */)filter;
 - (id)home;

@@ -42,6 +42,7 @@
 - (void).cxx_destruct;
 - (void)cancelBeepFromSamples:(id)arg1 timestamp:(unsigned long long)arg2;
 - (id)delegate;
+- (void)flush;
 - (id)init;
 - (id)metrics;
 - (void)reset;

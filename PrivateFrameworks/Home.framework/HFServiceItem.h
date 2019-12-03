@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/Home.framework/Home
  */
 
-@interface HFServiceItem : HFItem <HFCharacteristicWriteActionBuilderFactory, HFServiceLikeBuilderCreating, HFServiceLikeItem> {
+@interface HFServiceItem : HFItem <HFActionBuilderFactory, HFNamingComponentCreating, HFServiceLikeBuilderCreating, HFServiceLikeItem, HUServiceContainerItem> {
     HMService * _service;
     <HFCharacteristicValueSource> * _valueSource;
 }
@@ -10,10 +10,14 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) HMHome *home;
 @property (nonatomic, readonly) <HFHomeKitObject> *homeKitObject;
 @property (nonatomic, readonly) HMService *service;
+@property (nonatomic, readonly) NSSet *services;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) <HFCharacteristicValueSource> *valueSource;
+
+// Image: /System/Library/PrivateFrameworks/Home.framework/Home
 
 + (id)_serviceTypeToServiceItemClassMap;
 + (Class)itemClassForService:(id)arg1;
@@ -25,12 +29,11 @@
 - (id)_allRepresentedServices;
 - (id)_augmentedStandardResultsForUpdateResponse:(id)arg1 controlItems:(id)arg2;
 - (id)_descriptionBuilder;
-- (unsigned long long)_effectiveLoadingStateForSuggestedLoadingState:(unsigned long long)arg1;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)accessories;
 - (bool)actionsMayRequireDeviceUnlock;
 - (id)characteristicsToReadForCharacteristicTypes:(id)arg1 controlItems:(id)arg2;
-- (bool)containsActionableCharacteristics;
+- (bool)containsActions;
 - (id)controlDescriptionForCharacteristic:(id)arg1 withValue:(id)arg2;
 - (id)controlItemValueSourceForPrimaryService;
 - (id)controlItemValueSourceForServices:(id)arg1;
@@ -41,15 +44,22 @@
 - (id)debugDescription;
 - (id)description;
 - (id)descriptionForCharacteristic:(id)arg1 withValue:(id)arg2;
+- (id)home;
 - (id)homeKitObject;
 - (id)incrementalStateIconDescriptorForPrimaryState:(long long)arg1 incrementalValue:(id)arg2;
 - (id)init;
 - (id)initWithValueSource:(id)arg1 service:(id)arg2;
+- (id)namingComponentForHomeKitObject;
 - (id)performStandardUpdateWithCharacteristicTypes:(id)arg1 options:(id)arg2;
 - (id)service;
 - (id)serviceLikeBuilderInHome:(id)arg1;
 - (id)services;
 - (id)servicesToReadForCharacteristicType:(id)arg1;
 - (id)valueSource;
+
+// Image: /System/Library/PrivateFrameworks/HomeUI.framework/HomeUI
+
+- (id)hu_containedAccessories;
+- (id)hu_containedServices;
 
 @end

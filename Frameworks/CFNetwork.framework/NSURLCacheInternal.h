@@ -3,15 +3,11 @@
  */
 
 @interface NSURLCacheInternal : NSObject {
-    struct _CFURLCache { struct __CFRuntimeBase { unsigned long long x_1_1_1; unsigned long long x_1_1_2; } x1; struct shared_ptr<__CFURLCache> { struct __CFURLCache {} *x_2_1_1; struct __shared_weak_count {} *x_2_1_2; } x2; } * _cacheRef;
-    unsigned long long  currentDiskUsage;
-    unsigned long long  currentMemoryUsage;
+    struct _CFURLCache { struct __CFRuntimeBase { unsigned long long x_1_1_1; _Atomic unsigned long long x_1_1_2; } x1; struct shared_ptr<__CFURLCache> { struct __CFURLCache {} *x_2_1_1; struct __shared_weak_count {} *x_2_1_2; } x2; } * _cacheRef;
     unsigned long long  diskCapacity;
-    NSString * diskPath;
     unsigned long long  memoryCapacity;
 }
 
 - (void)dealloc;
-- (void)finalize;
 
 @end

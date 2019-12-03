@@ -7,6 +7,7 @@
     _UIFocusItemInfo * _focusedItemInfo;
     _UIFocusInputDeviceInfo * _inputDeviceInfo;
     _UIFocusMovementInfo * _movementInfo;
+    _UIFocusSearchInfo * _searchInfo;
     bool  _shouldPerformHapticFeedback;
     UIWindow * _window;
 }
@@ -25,6 +26,7 @@
 @property (nonatomic, retain) _UIFocusMovementInfo *movementInfo;
 @property (nonatomic, readonly) bool requiresEnvironmentValidation;
 @property (nonatomic, readonly) bool requiresNextFocusedItem;
+@property (nonatomic, retain) _UIFocusSearchInfo *searchInfo;
 @property (nonatomic) bool shouldPerformHapticFeedback;
 @property (nonatomic, readonly) bool shouldPlayFocusSound;
 @property (readonly) Class superclass;
@@ -45,9 +47,11 @@
 - (id)movementInfo;
 - (bool)requiresEnvironmentValidation;
 - (bool)requiresNextFocusedItem;
+- (id)searchInfo;
 - (void)setFocusedItemInfo:(id)arg1;
 - (void)setInputDeviceInfo:(id)arg1;
 - (void)setMovementInfo:(id)arg1;
+- (void)setSearchInfo:(id)arg1;
 - (void)setShouldPerformHapticFeedback:(bool)arg1;
 - (bool)shouldPerformHapticFeedback;
 - (bool)shouldPlayFocusSound;

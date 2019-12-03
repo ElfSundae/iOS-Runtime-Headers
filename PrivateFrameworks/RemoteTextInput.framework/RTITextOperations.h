@@ -12,6 +12,20 @@
         unsigned long long length; 
     }  _selectionRangeToAssert;
     RTIStyledIntermediateText * _styledIntermediateText;
+    NSAttributedString * _textCheckingAnnotatedString;
+    struct _NSRange { 
+        unsigned long long location; 
+        unsigned long long length; 
+    }  _textCheckingAnnotationRange;
+    struct _NSRange { 
+        unsigned long long location; 
+        unsigned long long length; 
+    }  _textCheckingAnnotationRemovalRange;
+    NSString * _textCheckingAnnotationToRemove;
+    struct _NSRange { 
+        unsigned long long location; 
+        unsigned long long length; 
+    }  _textCheckingReplacementRange;
     NSString * _textToAssert;
 }
 
@@ -23,6 +37,11 @@
 @property (nonatomic, readonly) NSMutableDictionary *mutableAttributedPlaceholders;
 @property (nonatomic) struct _NSRange { unsigned long long x1; unsigned long long x2; } selectionRangeToAssert;
 @property (nonatomic, retain) RTIStyledIntermediateText *styledIntermediateText;
+@property (nonatomic, copy) NSAttributedString *textCheckingAnnotatedString;
+@property (nonatomic) struct _NSRange { unsigned long long x1; unsigned long long x2; } textCheckingAnnotationRange;
+@property (nonatomic) struct _NSRange { unsigned long long x1; unsigned long long x2; } textCheckingAnnotationRemovalRange;
+@property (nonatomic, copy) NSString *textCheckingAnnotationToRemove;
+@property (nonatomic) struct _NSRange { unsigned long long x1; unsigned long long x2; } textCheckingReplacementRange;
 @property (nonatomic, copy) NSString *textToAssert;
 
 + (bool)supportsSecureCoding;
@@ -49,8 +68,18 @@
 - (void)setIntermediateText:(id)arg1;
 - (void)setSelectionRangeToAssert:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (void)setStyledIntermediateText:(id)arg1;
+- (void)setTextCheckingAnnotatedString:(id)arg1;
+- (void)setTextCheckingAnnotationRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
+- (void)setTextCheckingAnnotationRemovalRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
+- (void)setTextCheckingAnnotationToRemove:(id)arg1;
+- (void)setTextCheckingReplacementRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (void)setTextToAssert:(id)arg1;
 - (id)styledIntermediateText;
+- (id)textCheckingAnnotatedString;
+- (struct _NSRange { unsigned long long x1; unsigned long long x2; })textCheckingAnnotationRange;
+- (struct _NSRange { unsigned long long x1; unsigned long long x2; })textCheckingAnnotationRemovalRange;
+- (id)textCheckingAnnotationToRemove;
+- (struct _NSRange { unsigned long long x1; unsigned long long x2; })textCheckingReplacementRange;
 - (id)textToAssert;
 
 @end

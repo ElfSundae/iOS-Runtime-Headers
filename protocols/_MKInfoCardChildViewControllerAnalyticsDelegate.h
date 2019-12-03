@@ -3,7 +3,7 @@
 
 @protocol _MKInfoCardChildViewControllerAnalyticsDelegate <NSObject>
 
-@optional
+@required
 
 - (NSArray *)infoCardChildPossibleActions;
 - (NSArray *)infoCardChildUnactionableUIElements;

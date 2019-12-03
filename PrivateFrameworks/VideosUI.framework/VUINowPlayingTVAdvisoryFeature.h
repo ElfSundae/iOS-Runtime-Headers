@@ -14,7 +14,7 @@
 @property (nonatomic, readonly) double duration;
 @property (readonly) unsigned long long hash;
 @property (getter=isSkippable, nonatomic) bool skippable;
-@property (nonatomic, readonly) double startTime;
+@property (nonatomic) double startTime;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) unsigned long long type;
 @property (nonatomic, retain) id userInfo;

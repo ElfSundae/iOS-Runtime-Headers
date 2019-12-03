@@ -2,14 +2,18 @@
    Image: /System/Library/PrivateFrameworks/SpringBoardServices.framework/SpringBoardServices
  */
 
-@interface SBSAssertion : NSObject {
+@interface SBSAssertion : NSObject <BSInvalidatable> {
     NSString * _assertionName;
     NSString * _reason;
     BSMachPortReceiveRight * _receiveRight;
 }
 
 @property (nonatomic, readonly, copy) NSString *assertionName;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) NSString *reason;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)assertionName;

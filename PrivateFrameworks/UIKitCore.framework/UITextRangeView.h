@@ -28,6 +28,7 @@
         double y; 
     }  m_extentPoint;
     double  m_firstMovedTime;
+    UITextGestureTuning * m_gestureTuning;
     bool  m_inGesture;
     struct CGPoint { 
         double x; 
@@ -38,6 +39,10 @@
         double x; 
         double y; 
     }  m_initialExtentPoint;
+    struct CGPoint { 
+        double x; 
+        double y; 
+    }  m_initialPoint;
     bool  m_inputViewIsChanging;
     bool  m_isClearingRange;
     bool  m_magnifying;
@@ -65,6 +70,7 @@
         double x; 
         double y; 
     }  m_touchOffset;
+    bool  m_willBeginMagnifying;
 }
 
 @property (nonatomic, retain) UITouch *activeTouch;
@@ -83,6 +89,7 @@
 @property (nonatomic) struct CGPoint { double x1; double x2; } initialBasePoint;
 @property (nonatomic) double initialDistance;
 @property (nonatomic) struct CGPoint { double x1; double x2; } initialExtentPoint;
+@property (nonatomic) struct CGPoint { double x1; double x2; } initialPoint;
 @property (nonatomic) bool inputViewIsChanging;
 @property (nonatomic) bool isClearingRange;
 @property (nonatomic) bool isScrolling;
@@ -96,15 +103,22 @@
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } startEdge;
 @property (nonatomic, retain) UISelectionGrabber *startGrabber;
 @property (nonatomic) struct CGPoint { double x1; double x2; } touchOffset;
+@property (nonatomic) bool willBeginMagnifying;
 
 - (void).cxx_destruct;
+- (void)_cancelGrabberTransitionOutAnimations:(id)arg1;
+- (void)_createGestureTuningIfNecessary;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_endEdgeHitRect;
 - (bool)_endIsHorizontal;
+- (bool)_gestureRecognizerShouldReceiveTouch:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_selectionClipRect;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_startEdgeHitRect;
 - (bool)_startIsHorizontal;
 - (id)activeTouch;
 - (struct CGPoint { double x1; double x2; })activeTouchPoint;
+- (void)animateHighlighterDelayedFadeInOnLayer:(id)arg1;
+- (void)animateHighlighterExpanderAnimation;
+- (void)animateHighlighterExpanderOnLayer:(id)arg1 withOffset:(struct CGPoint { double x1; double x2; })arg2;
 - (bool)animateUpdate;
 - (struct CGPoint { double x1; double x2; })applyTouchOffset:(struct CGPoint { double x1; double x2; })arg1;
 - (bool)autoscrolled;
@@ -123,11 +137,13 @@
 - (id)endGrabber;
 - (struct CGPoint { double x1; double x2; })extentPoint;
 - (double)firstMovedTime;
+- (bool)gestureRecognizerShouldBegin:(id)arg1;
 - (bool)inGesture;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 selectionView:(id)arg2;
 - (struct CGPoint { double x1; double x2; })initialBasePoint;
 - (double)initialDistance;
 - (struct CGPoint { double x1; double x2; })initialExtentPoint;
+- (struct CGPoint { double x1; double x2; })initialPoint;
 - (void)inputViewDidChange;
 - (bool)inputViewIsChanging;
 - (void)inputViewWillChange;
@@ -159,6 +175,7 @@
 - (void)setInitialBasePoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setInitialDistance:(double)arg1;
 - (void)setInitialExtentPoint:(struct CGPoint { double x1; double x2; })arg1;
+- (void)setInitialPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setInputViewIsChanging:(bool)arg1;
 - (void)setIsClearingRange:(bool)arg1;
 - (void)setIsScrolling:(bool)arg1;
@@ -173,6 +190,7 @@
 - (void)setStartGrabber:(id)arg1;
 - (void)setTouchOffset:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setTouchOffset:(struct CGPoint { double x1; double x2; })arg1 touchPoint:(struct CGPoint { double x1; double x2; })arg2;
+- (void)setWillBeginMagnifying:(bool)arg1;
 - (bool)shouldStayVisible;
 - (void)startAnimating;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })startEdge;
@@ -183,6 +201,7 @@
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
+- (void)updateAfterEffectiveModeChange;
 - (void)updateBaseAndExtentPointsFromEdges;
 - (void)updateBaseIsStartWithDocumentPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)updateDots;
@@ -190,6 +209,7 @@
 - (void)updateGrabbers;
 - (void)updateRectViews;
 - (void)updateSelectionWithDocumentPoint:(struct CGPoint { double x1; double x2; })arg1;
+- (bool)willBeginMagnifying;
 - (void)willRotate;
 - (void)willScroll;
 

@@ -7,7 +7,7 @@
     AVCRemoteVideoClient * _avcRemoteVideo;
     <HMDStreamingManagerDelegate> * _delegate;
     NSObject<OS_dispatch_queue> * _delegateQueue;
-    HMDCameraSessionID * _sessionID;
+    HMDCameraStreamSessionID * _sessionID;
     NSNumber * _slotIdentifier;
     HMDCameraStreamSnapshotHandler * _streamSnapshotHandler;
     HMDVideoStreamInterface * _videoStreamInterface;
@@ -21,7 +21,7 @@
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *delegateQueue;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) HMDCameraSessionID *sessionID;
+@property (nonatomic, retain) HMDCameraStreamSessionID *sessionID;
 @property (nonatomic, retain) NSNumber *slotIdentifier;
 @property (nonatomic, readonly) HMDCameraStreamSnapshotHandler *streamSnapshotHandler;
 @property (readonly) Class superclass;

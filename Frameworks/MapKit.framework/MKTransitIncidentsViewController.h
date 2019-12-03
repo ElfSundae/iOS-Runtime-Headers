@@ -9,12 +9,13 @@
 @property (nonatomic, copy) NSArray *incidents;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)_cellForRow:(long long)arg1 inSection:(long long)arg2;
 - (void)_localeDidChange;
 - (void)_updateTitle;
 - (void)dealloc;
 - (id)incidents;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (id)initWithIncidents:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)setIncidents:(id)arg1;

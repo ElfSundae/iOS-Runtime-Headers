@@ -6,7 +6,7 @@
     struct RefPtr<WebCore::Geolocation, WTF::DumbPtrTraits<WebCore::Geolocation> > { 
         struct Geolocation {} *m_ptr; 
     }  _geolocation;
-    struct RetainPtr<WebView *> { 
+    struct RetainPtr<WebView> { 
         void *m_ptr; 
     }  _webView;
 }

@@ -48,7 +48,9 @@
 - (void)environmentMonitorDidChangeNetworkReachability:(id)arg1;
 - (void)flushEventsWithCompletion:(id /* block */)arg1;
 - (void)getAllMetadataForBundleIdentifier:(id)arg1 completion:(id /* block */)arg2;
+- (void)getGlobalPropertyForKey:(id)arg1 completion:(id /* block */)arg2;
 - (void)getMetadataForMessageIdentifier:(id)arg1 bundleIdentifier:(id)arg2 completion:(id /* block */)arg3;
+- (void)getPropertyForKey:(id)arg1 bundleIdentifier:(id)arg2 completion:(id /* block */)arg3;
 - (id)initWithMessageStore:(id)arg1;
 - (bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)messageEntriesForBundleIdentifier:(id)arg1 completion:(id /* block */)arg2;
@@ -58,6 +60,8 @@
 - (void)reportEventForMessageIdentifier:(id)arg1 withParams:(id)arg2 completion:(id /* block */)arg3;
 - (void)reportEventForMessageIdentifier:(id)arg1 withParams:(id)arg2 flushImmediately:(bool)arg3 completion:(id /* block */)arg4;
 - (void)resetMessagesWithCompletion:(id /* block */)arg1;
+- (void)setGlobalProperty:(id)arg1 forKey:(id)arg2 completion:(id /* block */)arg3;
+- (void)setProperty:(id)arg1 forKey:(id)arg2 bundleIdentifier:(id)arg3 completion:(id /* block */)arg4;
 - (void)startSystemService;
 - (void)stopSystemService;
 - (void)syncMessagesWithCompletion:(id /* block */)arg1;

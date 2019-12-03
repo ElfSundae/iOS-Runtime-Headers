@@ -36,7 +36,6 @@
 - (bool)_contentHuggingDefault_isUsuallyFixedHeight;
 - (bool)_contentHuggingDefault_isUsuallyFixedWidth;
 - (unsigned long long)_controlEventsForActionTriggered;
-- (void)_encodeFrameWithCoder:(id)arg1;
 - (id)_impactFeedbackGenerator;
 - (struct CGSize { double x1; double x2; })_intrinsicSizeWithinSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)_populateArchivedSubviews:(id)arg1;
@@ -45,7 +44,6 @@
 - (void)_refreshVisualElementForTraitCollection:(id)arg1 populatingAPIProperties:(bool)arg2;
 - (void)_setAlwaysShowsOnOffLabel:(bool)arg1;
 - (void)_setImpactFeedbackGenerator:(id)arg1;
-- (bool)_shouldAlterCodedFrame;
 - (bool)_shouldShowOnOffLabels;
 - (void)_showingOnOffLabelChanged;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })alignmentRectInsets;
@@ -77,6 +75,7 @@
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (id)thumbTintColor;
 - (id)tintColor;
+- (void)tintColorDidChange;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)visualElement;
 - (void)visualElement:(id)arg1 transitionedToOn:(bool)arg2;

@@ -20,6 +20,7 @@
 @property (nonatomic, readonly) id /* block */ gadgetProviderSortComparator;
 @property (nonatomic, readonly) NSArray *gadgetProviders;
 @property (nonatomic, readonly) id /* block */ gadgetSortComparator;
+@property (nonatomic, readonly) <PXGadgetTransition> *gadgetTransition;
 @property (nonatomic) bool hasLoadedPriorities;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool loadingInitialGadgets;
@@ -27,6 +28,7 @@
 @property (nonatomic, retain) NSMutableArray *lookupQueue_loadedProviders;
 @property (nonatomic) bool needsToLoadAllProviders;
 @property (nonatomic) <PXGadgetDelegate> *nextGadgetResponder;
+@property (nonatomic, readonly) PXGadgetNavigationHelper *rootNavigationHelper;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -49,8 +51,8 @@
 - (id /* block */)gadgetProviderSortComparator;
 - (id)gadgetProviders;
 - (id /* block */)gadgetSortComparator;
+- (id)gadgetTransition;
 - (struct NSObject { Class x1; }*)gadgetViewControllerHostingGadget:(id)arg1;
-- (id)gridPresentation;
 - (bool)hasLoadedPriorities;
 - (id)init;
 - (id)initWithQueueName:(id)arg1;
@@ -63,10 +65,9 @@
 - (bool)needsToLoadAllProviders;
 - (id)nextGadgetResponder;
 - (id)noContentGadget;
-- (id)oneUpPresentation;
 - (void)presentGadgetViewController:(struct NSObject { Class x1; }*)arg1 animated:(bool)arg2 completion:(id /* block */)arg3;
 - (void)removeCachedProviders;
-- (bool)scrollGadgetToVisible:(id)arg1 animated:(bool)arg2;
+- (id)rootNavigationHelper;
 - (void)setCachedProviders:(id)arg1;
 - (void)setHasLoadedPriorities:(bool)arg1;
 - (void)setLoadingInitialGadgets:(bool)arg1;

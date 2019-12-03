@@ -2,53 +2,64 @@
    Image: /System/Library/PrivateFrameworks/SIMSetupSupport.framework/SIMSetupSupport
  */
 
-@interface TSCellularPlanUsesViewController : BFFSplashController <TSSetupFlowItem, UITableViewDataSource, UITableViewDelegate> {
-    NSIndexPath * _chosenComboIndexPath;
+@interface TSCellularPlanUsesViewController : OBTableWelcomeController <TSSetupFlowItem, UITableViewDataSource, UITableViewDelegate> {
+    NSIndexPath * _chosenUseIndexPath;
+    NSMutableArray * _chosenUseIndexPaths;
+    bool  _dataSwitchEnabled;
     <TSSIMSetupFlowDelegate> * _delegate;
+    OBBoldTrayButton * _doneButton;
     bool  _hasDoneButton;
+    NSLayoutConstraint * _heightAnchor;
+    NSArray * _planItemBadges;
     UITableViewCell * _sectionFooter;
     NSArray * _selectedPlanItems;
-    UITableView * _tableView;
+    unsigned long long  _usesType;
 }
 
-@property (retain) NSIndexPath *chosenComboIndexPath;
+@property (retain) NSIndexPath *chosenUseIndexPath;
+@property (retain) NSMutableArray *chosenUseIndexPaths;
 @property (readonly, copy) NSString *debugDescription;
 @property <TSSIMSetupFlowDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property bool hasDoneButton;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, retain) NSLayoutConstraint *heightAnchor;
+@property (retain) NSArray *planItemBadges;
 @property (retain) UITableViewCell *sectionFooter;
 @property (retain) NSArray *selectedPlanItems;
 @property (readonly) Class superclass;
-@property (retain) UITableView *tableView;
+@property (nonatomic, readonly) unsigned long long usesType;
 
 - (void).cxx_destruct;
-- (id)chosenComboIndexPath;
-- (void)configureDefaultVoice:(id)arg1 configureUserData:(id)arg2 configureIMessage:(id)arg3;
+- (void)_doneButtonTapped;
+- (id)chosenUseIndexPath;
+- (id)chosenUseIndexPaths;
+- (void)dataSwitchChanged:(id)arg1;
 - (id)delegate;
 - (bool)hasDoneButton;
-- (id)initWithDoneButton:(bool)arg1;
+- (id)heightAnchor;
+- (id)initWithType:(unsigned long long)arg1 withDoneButton:(bool)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (id)planItemBadges;
 - (void)prepare:(id /* block */)arg1;
-- (void)savePlanUses:(id /* block */)arg1;
+- (void)saveDefaultUse:(id /* block */)arg1;
 - (id)sectionFooter;
 - (id)selectedPlanItems;
-- (void)setChosenComboIndexPath:(id)arg1;
+- (void)setChosenUseIndexPath:(id)arg1;
+- (void)setChosenUseIndexPaths:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setHasDoneButton:(bool)arg1;
+- (void)setHeightAnchor:(id)arg1;
+- (void)setPlanItemBadges:(id)arg1;
 - (void)setSectionFooter:(id)arg1;
 - (void)setSelectedPlanItems:(id)arg1;
-- (void)setTableView:(id)arg1;
-- (id)tableView;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (void)tableView:(id)arg1 didDeselectRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (bool)tableView:(id)arg1 shouldIndentWhileEditingRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
-- (id)useToString:(unsigned long long)arg1;
+- (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
+- (unsigned long long)usesType;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 

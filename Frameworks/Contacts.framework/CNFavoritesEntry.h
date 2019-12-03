@@ -85,7 +85,7 @@
 - (int)oldAbUid;
 - (id)originalName;
 - (id)propertyKey;
-- (struct CNPair { Class x1; id x2; }*)rematch;
+- (struct CNPair { Class x1; id x2; id x3; }*)rematch;
 - (bool)rematchWithContacts;
 - (bool)rematchWithGeminiManager:(id)arg1;
 - (void)resetContactMatch;

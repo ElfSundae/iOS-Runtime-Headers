@@ -21,6 +21,7 @@
     NSNumber * _lastKnownDiscoveryMode;
     NSString * _lastSeenConfiguredName;
     NSArray * _linkedServices;
+    <HMFLocking> * _lock;
     NSString * _logID;
     NSArray * _mediaSourceDisplayOrder;
     NSNumber * _mediaSourceIdentifier;
@@ -28,7 +29,6 @@
     NSString * _name;
     <HMDServiceOwner> * _owner;
     bool  _primary;
-    NSObject<OS_dispatch_queue> * _propertyQueue;
     NSString * _providedName;
     NSString * _serviceSubtype;
     NSString * _serviceType;
@@ -69,7 +69,6 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic) <HMDServiceOwner> *owner;
 @property (getter=isPrimary) bool primary;
-@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *propertyQueue;
 @property (nonatomic, retain) NSString *providedName;
 @property (nonatomic, readonly, copy) NSString *serviceIdentifier;
 @property (nonatomic, retain) NSString *serviceSubtype;
@@ -81,6 +80,7 @@
 + (id)generateUUIDWithAccessoryUUID:(id)arg1 serviceID:(id)arg2;
 + (bool)hasMessageReceiverChildren;
 + (id)logCategory;
++ (bool)processUpdateForCharacteristicType:(id)arg1 value:(id)arg2 serviceType:(id)arg3 service:(id)arg4 serviceTransactionGetter:(id /* block */)arg5 accessory:(id)arg6 accessoryTransaction:(id)arg7 accessoryTransactionChanged:(bool*)arg8;
 + (bool)supportsSecureCoding;
 + (bool)validateProvidedName:(id)arg1;
 
@@ -99,6 +99,7 @@
 - (void)_saveForExpectedConfiguredNameUpdate;
 - (void)_saveForLastSeenConfiguredNameUpdate;
 - (void)_saveLastSeenAndExpectedConfiguredName:(id)arg1;
+- (id)_serviceSubtypeFromLinkedServicesForServiceType:(id)arg1 accessoryCategory:(id)arg2;
 - (void)_setServiceProperties:(id)arg1;
 - (void)_shouldServiceBeHidden;
 - (bool)_supportsBulletinNotification;
@@ -121,14 +122,14 @@
 - (id)cachedAccessoryUUID;
 - (id)characteristics;
 - (id)configurationState;
-- (void)configureBulletinNotification:(id /* block */)arg1;
+- (void)configureBulletinNotification;
 - (void)configureMsgDispatcher:(id)arg1;
 - (id)configureWithService:(id)arg1 accessory:(id)arg2;
 - (id)configureWithService:(id)arg1 accessory:(id)arg2 shouldRead:(bool)arg3 added:(bool)arg4;
 - (id)configuredName;
-- (id)configuredNameChangedMessage;
 - (id)contextID;
 - (id)contextSPIUniqueIdentifier;
+- (void)dealloc;
 - (id)defaultName;
 - (id)description;
 - (id)deviceLastRequestPresenceDateMap;
@@ -172,8 +173,6 @@
 - (void)persistLastKnownDiscoveryMode;
 - (void)persistMediaSourceDisplayOrder:(id)arg1 requestMessage:(id)arg2;
 - (void)populateModelObjectWithChangeType:(id)arg1 version:(long long)arg2;
-- (bool)processInitialUpdate:(id)arg1 forCharacteristicType:(id)arg2 serviceTransaction:(id)arg3 changed:(bool*)arg4;
-- (id)propertyQueue;
 - (id)providedName;
 - (id)serviceIdentifier;
 - (id)serviceSubtype;
@@ -204,7 +203,6 @@
 - (void)setServiceType:(id)arg1;
 - (bool)shouldEnableDaemonRelaunch;
 - (bool)shouldIncludePresenceForDeviceWithDestination:(id)arg1;
-- (bool)shouldUpdateLastKnownDiscoveryMode:(id)arg1;
 - (bool)shouldUpdateLastSeenConfiguredName:(id)arg1;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;

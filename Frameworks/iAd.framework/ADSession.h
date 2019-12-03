@@ -14,7 +14,7 @@
     ADDeviceInfo * _deviceInfo;
 }
 
-@property (nonatomic) NSObject<OS_dispatch_queue> *adSpaceQueue;
+@property (nonatomic, retain) NSObject<OS_dispatch_queue> *adSpaceQueue;
 @property (nonatomic, retain) NSMutableArray *adSpaces;
 @property (nonatomic) bool appExtensionCanReceiveAds;
 @property (nonatomic) bool applicationCanReceiveBackgroundAds;
@@ -32,12 +32,14 @@
 + (bool)adShouldCreateADSession;
 + (id)sharedInstance;
 
+- (void).cxx_destruct;
 - (id)_adSpaceForIdentifier:(id)arg1;
 - (void)_appDidBecomeActive;
 - (void)_appDidEnterBackground;
 - (void)_currentClientAdSpaces;
 - (id)_linkedOnVersion;
 - (void)_remote_actionViewControllerReadyForPresentationForAdSpaceWithIdentifier:(id)arg1;
+- (void)_remote_adDataForAdSpace:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)_remote_adImpressionDidLoadWithPublicAttributes:(id)arg1 identifier:(id)arg2;
 - (void)_remote_adImpressionReportedWithIdentifier:(id)arg1;
 - (void)_remote_closeClientAdSpaceWithIdentifier:(id)arg1;
@@ -71,6 +73,7 @@
 - (int)classicUnavailableToken;
 - (void)configureConnection:(id)arg1;
 - (id)connection;
+- (void)createDeviceInfo;
 - (void)dealloc;
 - (id)deviceInfo;
 - (void)establishRPCConnection;

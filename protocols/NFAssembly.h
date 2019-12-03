@@ -6,6 +6,7 @@
 @required
 
 - (void)loadInRegistry:(id <NFContainerRegistry>)arg1;
+- (void)loadInRegistry:(id <NFContainerRegistry>)arg1;
 
 @optional
 

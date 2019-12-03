@@ -19,9 +19,11 @@
 - (PXAssetActionManager *)oneUpPresentationActionManager:(PXOneUpPresentation *)arg1;
 - (PXAssetActionManager *)oneUpPresentationActionManagerForPreviewing:(PXOneUpPresentation *)arg1;
 - (PXGestureProvider *)oneUpPresentationGestureProvider:(PXOneUpPresentation *)arg1;
-- (<PXImportStatusManager> *)oneUpPresentationImportStatusManager:(PXOneUpPresentation *)arg1;
+- (UIScrollView *)oneUpPresentationHelperScrollView:(PXOneUpPresentation *)arg1;
+- (<PXAssetImportStatusManager> *)oneUpPresentationImportStatusManager:(PXOneUpPresentation *)arg1;
 - (PXAssetReference *)oneUpPresentationInitialAssetReference:(PXOneUpPresentation *)arg1;
 - (PXPhotosDetailsContext *)oneUpPresentationPhotosDetailsContext:(PXOneUpPresentation *)arg1;
 - (bool)oneUpPresentationShouldAutoPlay:(PXOneUpPresentation *)arg1;
+- (bool)oneUpPresentationShouldPreventShowInAllPhotosAction:(PXOneUpPresentation *)arg1;
 
 @end

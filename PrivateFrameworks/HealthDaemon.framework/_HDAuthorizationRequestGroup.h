@@ -3,13 +3,13 @@
  */
 
 @interface _HDAuthorizationRequestGroup : NSObject {
-    NSString * _bundleIdentifier;
     NSMutableArray * _completions;
     bool  _inTransaction;
     id /* block */  _promptHandler;
     NSUUID * _promptSessionIdentifier;
     NSMutableArray * _requests;
     NSObject<OS_dispatch_source> * _sessionTimeoutSource;
+    HKSource * _source;
     NSMutableSet * _typesToRead;
     NSMutableSet * _typesToWrite;
 }
@@ -22,6 +22,7 @@
 @property (nonatomic, readonly) unsigned long long requestCount;
 @property (nonatomic, retain) NSMutableArray *requests;
 @property (nonatomic, retain) NSObject<OS_dispatch_source> *sessionTimeoutSource;
+@property (nonatomic, readonly, copy) HKSource *source;
 @property (nonatomic, readonly, copy) NSSet *typesToRead;
 @property (nonatomic, readonly, copy) NSSet *typesToWrite;
 
@@ -35,7 +36,7 @@
 - (id)completions;
 - (id)description;
 - (void)finishRequestsWithError:(id)arg1;
-- (id)initWithBundleIdentifier:(id)arg1;
+- (id)initWithSource:(id)arg1;
 - (bool)isInTransaction;
 - (id /* block */)promptHandler;
 - (bool)promptIfNecessaryWithTimeout:(double)arg1 completion:(id /* block */)arg2;
@@ -48,6 +49,7 @@
 - (void)setPromptHandler:(id /* block */)arg1;
 - (void)setRequests:(id)arg1;
 - (void)setSessionTimeoutSource:(id)arg1;
+- (id)source;
 - (id)typesToRead;
 - (id)typesToWrite;
 

@@ -7,6 +7,7 @@
     UIWindow * _alertWindow;
     id  _btAlert;
     Class  _btAlertClass;
+    UIWindow * _btAlertWindow;
     BluetoothManager * _btManager;
     id  _btSSPAlert;
     Class  _btSSPRequestClass;
@@ -37,6 +38,7 @@
 - (void)checkAttachTimeout;
 - (void)cleanupPairing;
 - (void)createAlertWindow;
+- (void)createBTAlertWindow;
 - (void)dealloc;
 - (id)delegate;
 - (void)deviceConnectionCompleteHandler:(id)arg1;
@@ -46,11 +48,14 @@
 - (void)deviceNameChangedHandler:(id)arg1;
 - (void)devicePairedHandler:(id)arg1;
 - (void)dismissAnimated:(bool)arg1;
+- (void)dismissPairingAlert:(id)arg1;
 - (id)initWithTitle:(id)arg1 service:(unsigned int)arg2 discoveryNameFilter:(id)arg3;
 - (void)powerChanged:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)show;
+- (void)showAlert:(id)arg1;
 - (void)showInternal;
+- (void)showPairingAlert:(id)arg1;
 - (void)startScanning;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

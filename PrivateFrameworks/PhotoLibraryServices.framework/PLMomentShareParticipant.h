@@ -6,6 +6,7 @@
 
 @property (nonatomic, copy) NSString *emailAddress;
 @property (nonatomic, retain) PLMomentShare *momentShare;
+@property (nonatomic, copy) NSPersonNameComponents *nameComponents;
 @property (nonatomic, copy) NSString *phoneNumber;
 @property (nonatomic) short status;
 @property (nonatomic) short type;
@@ -13,7 +14,6 @@
 @property (nonatomic, copy) NSString *uuid;
 
 + (id)_momentShareParticipantsWithPredicate:(id)arg1 fetchLimit:(unsigned long long)arg2 inManagedObjectContext:(id)arg3;
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (id)insertInPhotoLibrary:(id)arg1;
 + (id)participantsWithUUIDs:(id)arg1 inPhotoLibrary:(id)arg2;

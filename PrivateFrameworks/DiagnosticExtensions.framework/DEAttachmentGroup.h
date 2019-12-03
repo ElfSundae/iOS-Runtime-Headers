@@ -18,7 +18,6 @@
 
 - (void).cxx_destruct;
 - (id)attachToDestinationDir:(id)arg1;
-- (id)attachWithDestinationDir:(id)arg1;
 - (id)attachmentItems;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -3,7 +3,6 @@
  */
 
 @interface UNSLocalNotificationClient : NSObject <UNSLocationMonitorObserver> {
-    bool  _allowsUnlimitedLocalNotifications;
     NSString * _bundleIdentifier;
     NSMutableArray * _lazy_pendingNotificationsAwaitingDelivery;
     PCPersistentTimer * _localNotificationTimer;
@@ -13,7 +12,6 @@
     UNSNotificationScheduleRepository * _notificationScheduleRepository;
     UNSPendingNotificationRepository * _pendingNotificationRepository;
     NSObject<OS_dispatch_queue> * _queue;
-    bool  _userNotificationsEnabled;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,7 +20,6 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (bool)_canScheduledLocalNotificationTimers;
 - (id)_dateFormatter;
 - (void)_fireNotification:(id)arg1;
 - (void)_invalidateNotificationRecordTimersAndRegionMonitors;
@@ -46,7 +43,7 @@
 - (void)handleApplicationStateRestore;
 - (void)handleLocaleChange;
 - (void)handleSignificantTimeChange;
-- (id)initWithNotificationRepository:(id)arg1 pendingNotificationRepository:(id)arg2 notificationScheduleRepository:(id)arg3 locationMonitor:(id)arg4 bundleIdentifier:(id)arg5 allowsUnlimitedLocalNotifications:(bool)arg6 userNotificationsEnabled:(bool)arg7 queue:(id)arg8;
+- (id)initWithNotificationRepository:(id)arg1 pendingNotificationRepository:(id)arg2 notificationScheduleRepository:(id)arg3 locationMonitor:(id)arg4 bundleIdentifier:(id)arg5 queue:(id)arg6;
 - (void)invalidate;
 - (void)locationMonitor:(id)arg1 triggerDidFireForRegion:(id)arg2 forBundleIdentifier:(id)arg3;
 - (id)pendingNotificationRecords;
@@ -54,7 +51,6 @@
 - (void)removePendingNotificationRecords:(id)arg1;
 - (void)removePendingNotificationRecordsWithIdentifiers:(id)arg1;
 - (void)setPendingNotificationRecords:(id)arg1;
-- (void)setUserNotificationsEnabled:(bool)arg1;
 - (id)undeliveredNotificationRecords;
 
 @end

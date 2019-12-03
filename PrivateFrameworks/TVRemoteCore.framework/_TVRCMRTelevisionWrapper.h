@@ -6,6 +6,7 @@
     void * _television;
 }
 
+@property (nonatomic, readonly, copy) NSDictionary *alternateIdentifiers;
 @property (nonatomic, readonly, copy) _TVRCMROriginWrapper *customOrigin;
 @property (nonatomic, readonly, copy) NSString *identifier;
 @property (readonly) bool isPairingAllowed;
@@ -16,6 +17,7 @@
 + (void)deletePairedDevice:(id)arg1;
 + (id)wrapperWithTelevision:(void*)arg1;
 
+- (id)alternateIdentifiers;
 - (void)clearText;
 - (void)connect;
 - (id)customOrigin;

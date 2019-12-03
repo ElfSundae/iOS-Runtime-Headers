@@ -10,8 +10,8 @@
 }
 
 @property (nonatomic, readonly) NSString *accessibilityText;
-@property (nonatomic, readonly) long long artworkSourceType;
-@property (nonatomic, readonly) long long artworkUseType;
+@property (nonatomic, readonly) int artworkSourceType;
+@property (nonatomic, readonly) int artworkUseType;
 @property (nonatomic, readonly) NSArray *dataIconImageKeys;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -34,6 +34,7 @@
 @property (nonatomic, copy) NSString *subtitle;
 @property (readonly) Class superclass;
 @property (nonatomic) bool suppressCallout;
+@property (nonatomic, readonly) <GEOTransitTextDataSource> *textDataSource;
 @property (nonatomic, readonly) NSString *title;
 @property (nonatomic, readonly) NSArray *transitSystems;
 
@@ -62,10 +63,10 @@
 - (id)featureTile;
 - (int)featureType;
 - (bool)hasBusinessID;
+- (bool)hasVenueLookInsideFloorOrdinal;
 - (id)iconImageKeys;
 - (id)imageKeys;
 - (id)incident;
-- (id)initWithFeatureMarkerPtr:(const struct shared_ptr<md::FeatureMarker> { struct FeatureMarker {} *x1; struct __shared_weak_count {} *x2; }*)arg1;
 - (id)initWithLabelMarkerPtr:(const struct shared_ptr<md::LabelMarker> { struct LabelMarker {} *x1; struct __shared_weak_count {} *x2; }*)arg1;
 - (bool)isAlongSelectedTransitLine;
 - (bool)isCluster;
@@ -83,10 +84,12 @@
 - (bool)isTrafficCamera;
 - (bool)isTrafficIncident;
 - (bool)isTransit;
+- (bool)isTransitAccessPoint;
 - (bool)isTransitLine;
 - (bool)isVenueButton;
 - (bool)isVisible;
 - (const struct shared_ptr<md::LabelMarker> { struct LabelMarker {} *x1; struct __shared_weak_count {} *x2; }*)labelMarkerImpl;
+- (id)locale;
 - (id)mapRegion;
 - (id)parentClusterLabelMarker;
 - (unsigned char)pickedLabelBalloonBehavior;
@@ -112,13 +115,14 @@
 - (short)venueFloorOrdinal;
 - (unsigned long long)venueID;
 - (unsigned long long)venueLevelID;
+- (short)venueLookInsideFloorOrdinal;
 
 // Image: /System/Library/Frameworks/MapKit.framework/MapKit
 
 - (id)_annotationTitle;
 - (id)accessibilityText;
-- (long long)artworkSourceType;
-- (long long)artworkUseType;
+- (int)artworkSourceType;
+- (int)artworkUseType;
 - (id)detailCalloutAccessoryView;
 - (id)flyoverTourIdentifier;
 - (bool)hasRoutingIncidentBadge;
@@ -135,6 +139,7 @@
 - (id)shieldDataSource;
 - (id)subtitle;
 - (bool)suppressCallout;
+- (id)textDataSource;
 - (id)title;
 
 @end

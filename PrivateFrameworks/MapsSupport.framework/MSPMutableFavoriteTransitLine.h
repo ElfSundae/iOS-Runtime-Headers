@@ -18,6 +18,7 @@
 + (id)mutableObjectProtocol;
 
 - (id)initWithBookmarkStorage:(id)arg1;
+- (bool)isUserVisibleDuplicateOfFavorite:(id)arg1;
 - (void)setTransitLine:(id)arg1;
 - (id)transferToImmutableIfValidWithError:(out id*)arg1;
 - (id)transitLine;

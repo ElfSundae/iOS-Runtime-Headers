@@ -8,6 +8,7 @@
     NSMutableArray * mTextRuns;
 }
 
+- (void).cxx_destruct;
 - (id)addDateTimeFieldWithFormat:(int)arg1;
 - (id)addFooterField;
 - (id)addGenericTextFieldWithGuid:(id)arg1 type:(id)arg2;
@@ -19,7 +20,6 @@
 - (void)changeParentParagraphPropertiesPreservingEffectiveValues:(id)arg1;
 - (void)changeParentTextListStylePreservingEffectiveValues:(id)arg1;
 - (unsigned long long)characterCount;
-- (void)dealloc;
 - (id)description;
 - (id)findFirstTextRunOfClass:(Class)arg1;
 - (bool)hasBulletCharacterProperties;

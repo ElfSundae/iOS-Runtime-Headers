@@ -19,6 +19,7 @@
 
 - (void).cxx_destruct;
 - (void)_presentViewControllerForError:(id)arg1;
+- (void)_resetRemoteConfiguration;
 - (id)accessoryView;
 - (id)accessoryViewController;
 - (bool)allowInteractiveTransitions;
@@ -38,15 +39,16 @@
 - (void)prepareForActionSheetPresentationWithCompletionHandler:(id /* block */)arg1;
 - (void)preparePreviewCollectionForInvalidationWithCompletionHandler:(id /* block */)arg1;
 - (id)request;
+- (void)saveCurrentPreviewEditsSynchronously:(bool)arg1 withCompletionHandler:(id /* block */)arg2;
 - (void)setAccessoryViewController:(id)arg1;
 - (void)setAllowInteractiveTransitions:(bool)arg1;
 - (void)setAppearance:(id)arg1 animated:(bool)arg2;
 - (void)setCurrentPreviewItemIndex:(long long)arg1 animated:(bool)arg2;
 - (void)setHostContext:(id)arg1;
 - (void)setIsAvailable:(bool)arg1;
+- (void)setIsContentManaged:(bool)arg1;
 - (void)setLoadingString:(id)arg1;
 - (void)setRequest:(id)arg1;
-- (void)setSourceIsManaged:(bool)arg1;
 - (void)startTransitionWithSourceViewProvider:(id)arg1 transitionController:(id)arg2 presenting:(bool)arg3 useInteractiveTransition:(bool)arg4 completionHandler:(id /* block */)arg5;
 - (void)tearDownTransition:(bool)arg1;
 - (void)toolbarButtonPressedWithIdentifier:(id)arg1 completionHandler:(id /* block */)arg2;

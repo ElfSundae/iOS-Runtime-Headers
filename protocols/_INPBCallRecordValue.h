@@ -20,8 +20,10 @@
 - (bool)hasCaller;
 - (bool)hasDateCreated;
 - (bool)hasIdentifier;
+- (bool)hasNumberOfCalls;
 - (bool)hasUnseen;
 - (NSString *)identifier;
+- (_INPBInteger *)numberOfCalls;
 - (void)setCallCapability:(int)arg1;
 - (void)setCallMetrics:(_INPBCallMetrics *)arg1;
 - (void)setCallType:(int)arg1;
@@ -31,6 +33,7 @@
 - (void)setHasCallType:(bool)arg1;
 - (void)setHasUnseen:(bool)arg1;
 - (void)setIdentifier:(NSString *)arg1;
+- (void)setNumberOfCalls:(_INPBInteger *)arg1;
 - (void)setUnseen:(bool)arg1;
 - (bool)unseen;
 

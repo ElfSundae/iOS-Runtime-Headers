@@ -15,7 +15,6 @@
     NSMutableDictionary * pageViews;
     PDFView * pdfView;
     PDFRenderingProperties * renderingProperties;
-    bool  showTextSelectionHandles;
 }
 
 - (void).cxx_destruct;

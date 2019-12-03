@@ -14,4 +14,6 @@
     void _seed;
 }
 
+- (id)initWithCoder:(id)arg1;
+
 @end

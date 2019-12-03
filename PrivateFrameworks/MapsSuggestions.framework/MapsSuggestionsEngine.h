@@ -4,9 +4,10 @@
 
 @interface MapsSuggestionsEngine : NSObject <MapsSuggestionsObject> {
     GEOAutomobileOptions * _automobileOptions;
-    MapsSuggestionsManager * _manager;
+    MapsSuggestionsManager * _entryManager;
     int  _mapType;
     NSObject<OS_dispatch_queue> * _optionsSerialQueue;
+    MapsSuggestionsShortcutManager * _shortcutManager;
 }
 
 @property (nonatomic, retain) GEOAutomobileOptions *automobileOptions;
@@ -18,18 +19,18 @@
 @property (nonatomic, readonly) NSString *uniqueName;
 
 + (id)defaultCachePath;
-+ (id)defaultEngine;
-+ (void)load;
 
 - (void).cxx_destruct;
 - (void)addAdditionalFilter:(id)arg1 forSink:(id)arg2;
-- (bool)attachSink:(id)arg1;
+- (void)attachSink:(id)arg1;
 - (id)automobileOptions;
-- (id)currentLocation;
 - (bool)detachSink:(id)arg1;
 - (id)fakeSource;
+- (void)feedbackForContact:(id)arg1 action:(long long)arg2;
+- (void)feedbackForEntry:(id)arg1 action:(long long)arg2;
+- (void)feedbackForMapItem:(id)arg1 action:(long long)arg2;
 - (void)hintRefreshOfType:(long long)arg1;
-- (id)initWithManager:(id)arg1;
+- (id)initWithEntryManager:(id)arg1 shortcutManager:(id)arg2;
 - (bool)loadStorageFromFile:(id)arg1;
 - (bool)loadStorageFromFile:(id)arg1 callback:(id /* block */)arg2 callbackQueue:(id)arg3;
 - (id)manager;
@@ -37,10 +38,12 @@
 - (void)removeAdditionalFilter:(id)arg1 forSink:(id)arg2;
 - (bool)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(id /* block */)arg3;
 - (void)reset;
+- (id)routine;
 - (bool)saveStorageToFile:(id)arg1;
 - (void)setAutomobileOptions:(id)arg1;
 - (void)setFakeSource:(id)arg1;
 - (void)setMapType:(int)arg1;
+- (id)shortcutManager;
 - (void)startDemoMode;
 - (id)strategy;
 - (struct NSArray { Class x1; }*)topSuggestionsForSink:(id)arg1 count:(unsigned long long)arg2 transportType:(int)arg3;

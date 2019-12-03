@@ -4,7 +4,7 @@
 
 @interface HDTTRPromptController : NSObject {
     bool  _canRepromptOnSameBuild;
-    int  _isPresenting;
+    _Atomic bool  _isPresenting;
     NSObject<OS_os_log> * _loggingCategory;
     long long  _maximumErrorCount;
     double  _minimumPromptInterval;

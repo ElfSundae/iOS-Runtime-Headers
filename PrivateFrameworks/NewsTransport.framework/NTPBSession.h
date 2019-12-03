@@ -53,6 +53,7 @@
         unsigned int iosSettingsNotificationsShowInHistoryEnabled : 1; 
         unsigned int iosSettingsNotificationsShowOnLockScreenEnabled : 1; 
         unsigned int iosSettingsNotificationsSoundEnabled : 1; 
+        unsigned int isDiagnosticsUsageEnabled : 1; 
         unsigned int isNewUser : 1; 
         unsigned int isPaidSubscriber : 1; 
         unsigned int isPaidSubscriberFromAppStore : 1; 
@@ -77,6 +78,7 @@
     bool  _iosSettingsNotificationsShowInHistoryEnabled;
     bool  _iosSettingsNotificationsShowOnLockScreenEnabled;
     bool  _iosSettingsNotificationsSoundEnabled;
+    bool  _isDiagnosticsUsageEnabled;
     bool  _isNewUser;
     bool  _isPaidSubscriber;
     bool  _isPaidSubscriberFromAppStore;
@@ -181,6 +183,7 @@
 @property (nonatomic) bool hasIosSettingsNotificationsShowInHistoryEnabled;
 @property (nonatomic) bool hasIosSettingsNotificationsShowOnLockScreenEnabled;
 @property (nonatomic) bool hasIosSettingsNotificationsSoundEnabled;
+@property (nonatomic) bool hasIsDiagnosticsUsageEnabled;
 @property (nonatomic) bool hasIsNewUser;
 @property (nonatomic) bool hasIsPaidSubscriber;
 @property (nonatomic) bool hasIsPaidSubscriberFromAppStore;
@@ -233,6 +236,7 @@
 @property (nonatomic) bool iosSettingsNotificationsShowInHistoryEnabled;
 @property (nonatomic) bool iosSettingsNotificationsShowOnLockScreenEnabled;
 @property (nonatomic) bool iosSettingsNotificationsSoundEnabled;
+@property (nonatomic) bool isDiagnosticsUsageEnabled;
 @property (nonatomic) bool isNewUser;
 @property (nonatomic) bool isPaidSubscriber;
 @property (nonatomic) bool isPaidSubscriberFromAppStore;
@@ -349,6 +353,7 @@
 - (bool)hasIosSettingsNotificationsShowInHistoryEnabled;
 - (bool)hasIosSettingsNotificationsShowOnLockScreenEnabled;
 - (bool)hasIosSettingsNotificationsSoundEnabled;
+- (bool)hasIsDiagnosticsUsageEnabled;
 - (bool)hasIsNewUser;
 - (bool)hasIsPaidSubscriber;
 - (bool)hasIsPaidSubscriberFromAppStore;
@@ -402,6 +407,7 @@
 - (bool)iosSettingsNotificationsShowInHistoryEnabled;
 - (bool)iosSettingsNotificationsShowOnLockScreenEnabled;
 - (bool)iosSettingsNotificationsSoundEnabled;
+- (bool)isDiagnosticsUsageEnabled;
 - (bool)isEqual:(id)arg1;
 - (bool)isNewUser;
 - (bool)isPaidSubscriber;
@@ -475,6 +481,7 @@
 - (void)setHasIosSettingsNotificationsShowInHistoryEnabled:(bool)arg1;
 - (void)setHasIosSettingsNotificationsShowOnLockScreenEnabled:(bool)arg1;
 - (void)setHasIosSettingsNotificationsSoundEnabled:(bool)arg1;
+- (void)setHasIsDiagnosticsUsageEnabled:(bool)arg1;
 - (void)setHasIsNewUser:(bool)arg1;
 - (void)setHasIsPaidSubscriber:(bool)arg1;
 - (void)setHasIsPaidSubscriberFromAppStore:(bool)arg1;
@@ -509,6 +516,7 @@
 - (void)setIosSettingsNotificationsShowInHistoryEnabled:(bool)arg1;
 - (void)setIosSettingsNotificationsShowOnLockScreenEnabled:(bool)arg1;
 - (void)setIosSettingsNotificationsSoundEnabled:(bool)arg1;
+- (void)setIsDiagnosticsUsageEnabled:(bool)arg1;
 - (void)setIsNewUser:(bool)arg1;
 - (void)setIsPaidSubscriber:(bool)arg1;
 - (void)setIsPaidSubscriberFromAppStore:(bool)arg1;

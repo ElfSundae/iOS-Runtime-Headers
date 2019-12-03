@@ -6,7 +6,7 @@
     NSArray * _favoriteLocations;
 }
 
-@property (readonly) NSArray *favoriteLocations;
+@property (nonatomic, readonly) NSArray *favoriteLocations;
 
 + (bool)supportsSecureCoding;
 

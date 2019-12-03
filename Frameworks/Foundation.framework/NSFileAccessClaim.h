@@ -28,18 +28,22 @@
     NSMutableArray * _revocationProcedures;
     NSMutableArray * _sandboxTokens;
     id /* block */  _serverClaimerOrNil;
+    bool  _shouldEnableMaterializationDuringAccessorBlock;
 }
 
 @property (readonly, copy) NSArray *allURLs;
 @property (readonly) NSObject<OS_dispatch_semaphore> *claimerWaiter;
+@property bool shouldEnableMaterializationDuringAccessorBlock;
 
-+ (bool)canReadingItemAtLocation:(id)arg1 options:(unsigned long long)arg2 safelyOverlapWritingItemAtLocation:(id)arg3 options:(unsigned long long)arg4;
-+ (bool)canWritingItemAtLocation:(id)arg1 options:(unsigned long long)arg2 safelyOverlapWritingItemAtLocation:(id)arg3 options:(unsigned long long)arg4;
++ (bool)canNewWriteOfItemAtLocation:(id)arg1 options:(unsigned long long)arg2 safelyOverlapExistingWriteOfItemAtLocation:(id)arg3 options:(unsigned long long)arg4;
++ (bool)canReadingItemAtLocation:(id)arg1 options:(unsigned long long)arg2 safelyOverlapNewWriting:(bool)arg3 ofItemAtLocation:(id)arg4 options:(unsigned long long)arg5;
 + (bool)supportsSecureCoding;
 
+- (void)_checkIfMovingRequiresProvidingAmongWritingLocations:(id)arg1 options:(unsigned long long*)arg2 thenContinue:(id /* block */)arg3;
 - (void)_setupWithClaimID:(id)arg1 purposeID:(id)arg2 originatingReactorQueueID:(id)arg3;
 - (bool)_writeArchiveOfDirectoryAtURL:(id)arg1 toURL:(id)arg2 error:(id*)arg3;
 - (void)acceptClaimFromClient:(id)arg1 arbiterQueue:(id)arg2 grantHandler:(id /* block */)arg3;
+- (void)addBlockingReactorID:(id)arg1;
 - (void)addPendingClaim:(id)arg1;
 - (id)allURLs;
 - (void)block;
@@ -83,20 +87,26 @@
 - (void)makeProviderOfItemAtLocation:(id)arg1 provideOrAttachPhysicalURLIfNecessaryForPurposeID:(id)arg2 readingOptions:(unsigned long long)arg3 thenContinue:(id /* block */)arg4;
 - (void)makeProviderOfItemAtLocation:(id)arg1 provideOrAttachPhysicalURLIfNecessaryForPurposeID:(id)arg2 writingOptions:(unsigned long long)arg3 thenContinue:(id /* block */)arg4;
 - (void)makeProviderOfItemAtLocation:(id)arg1 providePhysicalURLThenContinue:(id /* block */)arg2;
+- (void)makeProvidersProvideItemsForReadingLocations:(id)arg1 options:(unsigned long long*)arg2 andWritingLocationsIfNecessary:(id)arg3 options:(unsigned long long*)arg4 thenContinue:(id /* block */)arg5;
 - (id)pendingClaims;
 - (void)prepareClaimForGrantingWithArbiterQueue:(id)arg1;
 - (void)prepareItemForUploadingFromURL:(id)arg1 thenContinue:(id /* block */)arg2;
 - (id)purposeID;
 - (id)purposeIDOfClaimOnItemAtLocation:(id)arg1 forMessagingPresenter:(id)arg2;
+- (void)removeBlockingReactorID:(id)arg1;
 - (void)removePendingClaims:(id)arg1;
 - (void)revoked;
 - (void)scheduleBlockedClaim:(id)arg1;
 - (void)setCameFromSuperarbiter;
 - (void)setClaimerError:(id)arg1;
+- (void)setShouldEnableMaterializationDuringAccessorBlock:(bool)arg1;
 - (bool)shouldBeRevokedPriorToInvokingAccessor;
 - (bool)shouldCancelInsteadOfWaiting;
+- (bool)shouldEnableMaterializationDuringAccessorBlock;
 - (bool)shouldInformProvidersAboutEndOfWriteWithOptions:(unsigned long long)arg1;
+- (bool)shouldMakeProviderProvideItemAtLocation:(id)arg1 withOptions:(unsigned long long)arg2;
 - (bool)shouldReadingWithOptions:(unsigned long long)arg1 causePresenterToRelinquish:(id)arg2;
+- (bool)shouldWritingWithOptions:(unsigned long long)arg1 causePresenterToRelinquish:(id)arg2;
 - (void)startObservingClientState;
 - (void)unblock;
 - (void)unblockClaimerForReason:(id)arg1;

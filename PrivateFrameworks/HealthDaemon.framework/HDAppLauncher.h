@@ -9,10 +9,10 @@
     NSMutableSet * _launchingProcessBundleIdentifiers;
     long long  _maxLaunchCount;
     NSMutableSet * _monitoredProcessBundleIdentifiers;
+    FBSOpenApplicationService * _openApplicationService;
     HDProcessStateManager * _processStateManager;
     NSObject<OS_dispatch_queue> * _queue;
     NSMutableDictionary * _registeredAssertionsByIdentifier;
-    FBSSystemService * _systemService;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -28,7 +28,7 @@
 - (void)_queue_launchClientIfNeeded:(id)arg1;
 - (void)_queue_scheduleLaunchForClient:(id)arg1;
 - (void)assertionManager:(id)arg1 assertionInvalidated:(id)arg2;
-- (id)initWithProcessStateManager:(id)arg1 systemService:(id)arg2;
+- (id)initWithProcessStateManager:(id)arg1 openApplicationService:(id)arg2;
 - (void)processTerminated:(id)arg1;
 - (id)takeKeepAliveAssertionForApplicationBundleIdentifier:(id)arg1 processBundleIdentifier:(id)arg2 payloadOptions:(id)arg3;
 - (bool)unitTest_hasAssertionForBundleIdentifier:(id)arg1;

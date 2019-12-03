@@ -5,9 +5,9 @@
 @interface NUIBoxArrangement : NSObject <_NUIBoxArrangementContainer> {
     struct _NUIBoxArrangement { 
         <_NUIBoxArrangementContainer> *container; 
-        bool baselineRelative; 
         long long horzDist; 
         long long vertDist; 
+        bool hasValidMeasurement; 
         struct vector<_NUIBoxArrangementCell, std::__1::allocator<_NUIBoxArrangementCell> > { 
             struct _NUIBoxArrangementCell {} *__begin_; 
             struct _NUIBoxArrangementCell {} *__end_; 
@@ -15,6 +15,10 @@
                 struct _NUIBoxArrangementCell {} *__value_; 
             } __end_cap_; 
         } cells; 
+        struct CGSize { 
+            double width; 
+            double height; 
+        } measureSize; 
         struct vector<CGRect, std::__1::allocator<CGRect> > { 
             struct CGRect {} *__begin_; 
             struct CGRect {} *__end_; 
@@ -22,6 +26,10 @@
                 struct CGRect {} *__value_; 
             } __end_cap_; 
         } viewFrames; 
+        struct { 
+            double baseLineFromTop; 
+            double baseLineFromBottom; 
+        } maxBaseLinePair; 
     }  _arrangement;
     struct CGRect { 
         struct CGPoint { 
@@ -41,7 +49,6 @@
     double  _scale;
 }
 
-@property (getter=isBaselineRelativeArrangement, nonatomic) bool baselineRelativeArrangement;
 @property (nonatomic, readonly) <NUIArrangementContainer> *container;
 @property (nonatomic, readonly) <NUIBoxArrangementDataSource> *dataSource;
 @property (readonly, copy) NSString *debugDescription;

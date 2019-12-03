@@ -2,31 +2,29 @@
    Image: /System/Library/PrivateFrameworks/NeutrinoCore.framework/NeutrinoCore
  */
 
-@interface NUImageExportRequest : NUExportRequest {
-    NSDictionary * _auxiliaryDataByType;
+@interface NUImageExportRequest : NUExportRequest <NUTimeBased> {
     NUColorSpace * _colorSpace;
+    NSDictionary * _coreGraphicsInfoDictionariesByAuxiliaryType;
     NUImageExportFormat * _format;
     NSDictionary * _imageProperties;
     bool  _renderToData;
-    struct { 
-        long long value; 
-        int timescale; 
-        unsigned int flags; 
-        long long epoch; 
-    }  _time;
 }
 
-@property (copy) NSDictionary *auxiliaryDataByType;
 @property (nonatomic, retain) NUColorSpace *colorSpace;
+@property (copy) NSDictionary *coreGraphicsInfoDictionariesByAuxiliaryType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, copy) NUImageExportFormat *format;
+@property (readonly) unsigned long long hash;
 @property (copy) NSDictionary *imageProperties;
 @property (nonatomic) bool renderToData;
-@property struct { long long x1; int x2; unsigned int x3; long long x4; } time;
+@property (readonly) Class superclass;
+@property (nonatomic) struct { long long x1; int x2; unsigned int x3; long long x4; } time;
 
 - (void).cxx_destruct;
-- (id)auxiliaryDataByType;
 - (id)colorSpace;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)coreGraphicsInfoDictionariesByAuxiliaryType;
 - (id)format;
 - (id)imageProperties;
 - (id)initWithComposition:(id)arg1;
@@ -35,13 +33,11 @@
 - (long long)mediaComponentType;
 - (id)newRenderJob;
 - (bool)renderToData;
-- (void)setAuxiliaryDataByType:(id)arg1;
 - (void)setColorSpace:(id)arg1;
+- (void)setCoreGraphicsInfoDictionariesByAuxiliaryType:(id)arg1;
 - (void)setFormat:(id)arg1;
 - (void)setImageProperties:(id)arg1;
 - (void)setRenderToData:(bool)arg1;
-- (void)setTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (void)submit:(id /* block */)arg1;
-- (struct { long long x1; int x2; unsigned int x3; long long x4; })time;
 
 @end

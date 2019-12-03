@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
  */
 
-@interface REElement : NSObject <NSCoding, NSCopying, REIndentedDescription> {
+@interface REElement : NSObject <NSCoding, NSCopying, REAutomaticExportedInterface> {
     REElementAction * _action;
     NSString * _bundleIdentifier;
     REContent * _content;
@@ -14,18 +14,15 @@
 
 @property (nonatomic, readonly) REElementAction *action;
 @property (nonatomic, readonly) REContent *content;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) REContent *idealizedContent;
 @property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, readonly) unsigned long long privacyBehavior;
 @property (nonatomic, readonly) NSArray *relevanceProviders;
-@property (readonly) Class superclass;
 
 + (id)_supportedDictionaryEncodingKeys;
 
 - (void).cxx_destruct;
+- (bool)_relevanceProvidersEqualToElement:(id)arg1;
 - (void)_updateIdentifier:(id)arg1;
 - (id)action;
 - (id)bundleIdentifier;
@@ -33,9 +30,9 @@
 - (id)copyElementWithUpdatedRelevanceProviders:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
-- (id)descriptionWithIndent:(unsigned long long)arg1;
 - (id)dictionaryEncodingWithRelevanceProviderGenerator:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (void)finalizeContent;
 - (unsigned long long)hash;
 - (id)idealizedContent;
 - (id)identifier;

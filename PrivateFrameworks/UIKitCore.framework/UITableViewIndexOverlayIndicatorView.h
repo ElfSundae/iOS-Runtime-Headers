@@ -11,7 +11,6 @@
 @property (nonatomic, copy) NSString *currentText;
 
 - (void).cxx_destruct;
-- (void)_invalidateTable;
 - (void)_tapGestureChanged:(id)arg1;
 - (void)_willChangeToIdiom:(long long)arg1 onScreen:(id)arg2;
 - (id)currentText;

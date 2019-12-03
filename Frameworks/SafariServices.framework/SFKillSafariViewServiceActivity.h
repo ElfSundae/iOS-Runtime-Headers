@@ -2,10 +2,9 @@
    Image: /System/Library/Frameworks/SafariServices.framework/SafariServices
  */
 
-@interface SFKillSafariViewServiceActivity : UIActivity
+@interface SFKillSafariViewServiceActivity : _SFActivity
 
-- (id)_beforeActivity;
-- (id)activityImage;
+- (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;
 - (bool)canPerformWithActivityItems:(id)arg1;

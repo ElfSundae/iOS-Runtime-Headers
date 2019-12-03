@@ -5,6 +5,7 @@
 @interface AVPlayerInternal : NSObject {
     void * IAPDCallbackToken;
     bool  IOwnTheFigPlayer;
+    <AVBlockScheduler> * KVOChangeSerializer;
     bool  PIPModePossible;
     long long  actionAtItemEnd;
     bool  airPlayVideoActive;
@@ -29,13 +30,13 @@
     NSObject<OS_dispatch_queue> * configurationQueue;
     AVPlayerItem * currentItem;
     bool  currentItemNonForcedSubtitlesEnabled;
-    <AVCallbackCancellation><AVKVOIntrospection> * currentItemPreferredPixelBufferAttributesCallbackInvoker;
+    id  currentItemPreferredPixelBufferAttributesNotificationToken;
     struct CGSize { 
         double width; 
         double height; 
     }  currentItemPresentationSize;
     NSObject<OS_dispatch_queue> * currentItemPropertyUpdateQueue;
-    <AVCallbackCancellation><AVKVOIntrospection> * currentItemSuppressesVideoLayersCallbackInvoker;
+    id  currentItemSuppressesVideoLayersNotificationToken;
     struct CGSize { 
         double width; 
         double height; 
@@ -50,6 +51,7 @@
     NSArray * expectedAssetTypes;
     bool  externalPlaybackActive;
     NSString * externalPlaybackVideoGravity;
+    long long  externalProtectionStatus;
     NSObject<OS_dispatch_queue> * figConfigurationQueue;
     struct OpaqueCMClock { } * figMasterClock;
     struct OpaqueFigPlaybackItem { } * figPlaybackItemToIdentifyNextCurrentItem;
@@ -65,6 +67,7 @@
     AVPlayerItem * lastItem;
     bool  layerDestinationIsTVOut;
     NSObject<OS_dispatch_queue> * layerInteractionQueue;
+    id  layerVisibilityChangeToken;
     NSObject<OS_dispatch_queue> * layersQ;
     bool  limitsBandwidthForCellularAccess;
     bool  logPerformanceData;
@@ -77,6 +80,7 @@
     int  nextPrerollIDToGenerate;
     AVOutputContext * outputContext;
     bool  outputObscuredDueToInsufficientExternalProtection;
+    bool  pausesAudioVisualPlaybackInBackground;
     NSMutableDictionary * pendingFigPlayerProperties;
     int  pendingPrerollID;
     AVPixelBufferAttributeMediator * pixelBufferAttributeMediator;
@@ -86,12 +90,12 @@
     id /* block */  prerollCompletionHandler;
     struct OpaqueFigSimpleMutex { } * prerollIDMutex;
     bool  preventsDisplaySleepDuringVideoPlayback;
-    AVPropertyStorage * propertyStorage;
     struct OpaqueCMTimebase { } * proxyTimebase;
     NSArray * queueModifications;
     float  rate;
     NSString * reasonForWaitingToPlay;
     bool  reevaluateBackgroundPlayback;
+    long long  resourceConservationLevelWhilePaused;
     bool  shouldReduceResourceUsage;
     NSObject<OS_dispatch_queue> * stateDispatchQueue;
     long long  status;
@@ -104,7 +108,7 @@
     bool  usesExternalPlaybackWhileExternalScreenIsActive;
     bool  usesLegacyAutomaticWaitingBehavior;
     NSDictionary * vibrationPattern;
-    struct __CFDictionary { } * videoLayers;
+    NSMutableArray * videoLayers;
     float  volume;
     AVWeakReference * weakReference;
 }

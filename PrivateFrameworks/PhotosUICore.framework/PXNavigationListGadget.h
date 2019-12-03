@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXNavigationListGadget : PXNavigationListController <PLNavigableCollectionContainer, PXGadget> {
+@interface PXNavigationListGadget : PXNavigationListController <PXGadget, PXNavigableCollectionContainer> {
     <PXGadgetDelegate> * _delegate;
     PXGadgetSpec * _gadgetSpec;
     struct CGRect { 
@@ -18,9 +18,9 @@
     bool  _visibleContentRectIsStale;
 }
 
-@property (nonatomic, readonly) const struct __CFString { }*accessoryButtonEventTrackerKey;
 @property (nonatomic, readonly) NSString *accessoryButtonTitle;
 @property (nonatomic, readonly) unsigned long long accessoryButtonType;
+@property (nonatomic, readonly) Class collectionViewItemClass;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <PXGadgetDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -56,6 +56,7 @@
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (void)tableViewContentSizeDidChange;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(bool)arg1;
 - (void)viewWillLayoutSubviews;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })visibleContentRect;
 

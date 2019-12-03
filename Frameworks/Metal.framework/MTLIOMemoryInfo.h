@@ -17,8 +17,10 @@
 - (struct __CFArray { }*)annotationList;
 - (void)dealloc;
 - (id)init;
+- (void)lock;
 - (void)removeDataSource:(void*)arg1;
 - (void)removeResourceFromList:(id)arg1;
 - (void)shutdown;
+- (void)unlock;
 
 @end

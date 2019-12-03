@@ -3,29 +3,29 @@
  */
 
 @interface AVTCoreModelCategory : NSObject {
-    AVTCoreModelColorPalette * _colorPalette;
+    NSArray * _colorPalettes;
+    AVTCoreModelCategoryPairing * _pairing;
     long long  _presetCategory;
     NSArray * _presets;
     NSArray * _rows;
-    AVTCoreModelColorPalette * _secondaryColorPalette;
     struct NSDictionary { Class x1; } * _tags;
 }
 
-@property (nonatomic, readonly) AVTCoreModelColorPalette *colorPalette;
+@property (nonatomic, readonly) NSArray *colorPalettes;
+@property (nonatomic, readonly, copy) AVTCoreModelCategoryPairing *pairing;
 @property (nonatomic, readonly) long long presetCategory;
 @property (nonatomic, readonly, copy) NSArray *presets;
 @property (nonatomic, readonly, copy) NSArray *rows;
-@property (nonatomic, readonly) AVTCoreModelColorPalette *secondaryColorPalette;
 @property (nonatomic, readonly, copy) NSDictionary *tags;
 
 - (void).cxx_destruct;
-- (id)colorPalette;
+- (id)colorPalettes;
 - (id)description;
-- (id)initWithPresetCategory:(long long)arg1 colorPalette:(id)arg2 secondaryColorPalette:(id)arg3 presets:(id)arg4 tags:(struct NSDictionary { Class x1; }*)arg5 rows:(id)arg6;
+- (id)initWithPresetCategory:(long long)arg1 colorPalettes:(id)arg2 presets:(id)arg3 tags:(struct NSDictionary { Class x1; }*)arg4 rows:(id)arg5 pairing:(id)arg6;
+- (id)pairing;
 - (long long)presetCategory;
 - (id)presets;
 - (id)rows;
-- (id)secondaryColorPalette;
 - (struct NSDictionary { Class x1; }*)tags;
 
 @end

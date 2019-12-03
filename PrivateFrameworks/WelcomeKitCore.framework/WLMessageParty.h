@@ -19,7 +19,7 @@
 + (id)_guessIccForNumber:(id)arg1;
 
 - (void).cxx_destruct;
-- (id)_initWithAddress:(id)arg1 addCountryCode:(bool)arg2;
+- (id)_initWithAddress:(id)arg1 addCountryCode:(bool)arg2 sqlController:(id)arg3;
 - (id)address;
 - (id)ccAcNumber;
 - (id)description;

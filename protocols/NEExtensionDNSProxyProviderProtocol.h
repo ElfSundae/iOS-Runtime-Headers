@@ -5,6 +5,6 @@
 
 @required
 
-- (void)setSystemDNSSettings:(NSData *)arg1;
+- (void)setSystemDNSSettings:(NSArray *)arg1;
 
 @end

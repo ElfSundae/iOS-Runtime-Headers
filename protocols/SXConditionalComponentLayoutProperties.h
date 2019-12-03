@@ -10,6 +10,7 @@
 - (unsigned long long)horizontalContentAlignment;
 - (unsigned long long)ignoreDocumentGutter;
 - (unsigned long long)ignoreDocumentMargin;
+- (unsigned long long)ignoreViewportPadding;
 - (<SXEdgeSpacing> *)margin;
 - (struct _SXConvertibleValue { double x1; unsigned long long x2; })maximumContentWidth;
 - (struct _SXConvertibleValue { double x1; unsigned long long x2; })maximumWidth;

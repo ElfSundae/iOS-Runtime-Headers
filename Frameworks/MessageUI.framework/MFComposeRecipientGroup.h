@@ -6,6 +6,7 @@
     NSArray * _children;
 }
 
+- (void).cxx_destruct;
 - (void)_populateSortedChildren;
 - (id)address;
 - (id)children;
@@ -13,7 +14,6 @@
 - (id)commentedAddress;
 - (id)completelyMatchedAttributedStrings;
 - (id)compositeName;
-- (void)dealloc;
 - (id)displayString;
 - (id)initWithChildren:(id)arg1 displayString:(id)arg2;
 - (bool)isEqual:(id)arg1;

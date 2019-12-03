@@ -4,9 +4,9 @@
 
 @interface GEOPDNearbySearchParameters : PBCodable <NSCopying> {
     struct { 
-        unsigned int maxResults : 1; 
-        unsigned int sortOrder : 1; 
-    }  _has;
+        unsigned int has_maxResults : 1; 
+        unsigned int has_sortOrder : 1; 
+    }  _flags;
     unsigned int  _maxResults;
     int  _sortOrder;
     PBUnknownFields * _unknownFields;
@@ -21,8 +21,11 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic, retain) GEOPDViewportInfo *viewportInfo;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsSortOrder:(id)arg1;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -34,6 +37,7 @@
 - (bool)isEqual:(id)arg1;
 - (unsigned int)maxResults;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasMaxResults:(bool)arg1;
 - (void)setHasSortOrder:(bool)arg1;

@@ -26,6 +26,7 @@
 @property (nonatomic, copy) NSTimeZone *timeZone;
 @property (nonatomic, copy) NSString *title;
 
++ (bool)_shouldDeleteAndAddForMoveFromCalendar:(id)arg1 toCalendar:(id)arg2;
 + (id)knownRelationshipMultiValueKeys;
 + (id)knownRelationshipSingleValueKeys;
 + (id)knownRelationshipWeakKeys;
@@ -35,6 +36,7 @@
 - (id)URL;
 - (id)UUID;
 - (void)_addAttachment:(id)arg1;
+- (void)_addDefaultAlarms;
 - (void)_addDetachedItem:(id)arg1;
 - (void)_addExceptionDate:(id)arg1;
 - (void)_adjustAfterRebaseForMovingFromOldSource:(id)arg1 toNewSource:(id)arg2 committingItem:(id)arg3;
@@ -52,16 +54,19 @@
 - (void)_recursivelyPerformBlockOnSelfAndDetachedItems:(id /* block */)arg1 forCommittingItem:(id)arg2;
 - (void)_removeAttachment:(id)arg1;
 - (void)_removeAttendee:(id)arg1;
+- (void)_removeDefaultAlarms;
 - (void)_removeDetachedItem:(id)arg1;
 - (void)_removeExceptionDate:(id)arg1;
 - (void)_setCalendarRecursively:(id)arg1 forCommittingItem:(id)arg2;
 - (void)_setCustomObject:(id)arg1 forKey:(id)arg2 local:(bool)arg3;
 - (void)_setSelfAttendee:(id)arg1;
 - (id)_structuredDataDictionaryFromData:(id)arg1;
+- (void)_updateDefaultAlarms;
 - (void)_updateHasAttendeesIfNeeded;
 - (void)_updateHasNotesIfNeeded;
 - (void)_updateHasRecurrenceRulesIfNeeded;
 - (void)_updateModifiedAlarmByAcknowledging;
+- (bool)_validateDeletable:(id*)arg1;
 - (void)_willCommit;
 - (id)action;
 - (unsigned long long)actionsState;
@@ -79,7 +84,9 @@
 - (id)appLinkData;
 - (id)attachments;
 - (id)attendeeForMe;
+- (id)attendeeMatchingEmailAddress:(id)arg1;
 - (id)attendees;
+- (id)attendeesRaw;
 - (id)calendar;
 - (id)calendarItemExternalIdentifier;
 - (id)calendarItemIdentifier;
@@ -91,6 +98,7 @@
 - (id)creationDate;
 - (id)customObjectForKey:(id)arg1;
 - (bool)defaultAlarmWasDeleted;
+- (id)defaultAlarms;
 - (id)description;
 - (id)detachedItems;
 - (id)ekExceptionDates;
@@ -101,6 +109,7 @@
 - (id)externalData;
 - (id)externalID;
 - (id)externalModificationTag;
+- (id)externalScheduleID;
 - (id)externalURI;
 - (id)filterAttendeesPendingDeletion:(id)arg1;
 - (id)findOriginalAlarmStartingWith:(id)arg1;
@@ -165,6 +174,7 @@
 - (void)setExternalData:(id)arg1;
 - (void)setExternalID:(id)arg1;
 - (void)setExternalModificationTag:(id)arg1;
+- (void)setExternalScheduleID:(id)arg1;
 - (void)setLastModifiedDate:(id)arg1;
 - (void)setLocalCustomObject:(id)arg1 forKey:(id)arg2;
 - (void)setLocalStructuredData:(id)arg1;

@@ -6,6 +6,7 @@
 @required
 
 - (bool)_allowsItemsToUpdate;
-- (_UIDraggingSession *)_draggingSession;
+- (<_UIDraggingInfo> *)_internalSession;
+- (void)_itemsNeedUpdate:(NSArray *)arg1;
 
 @end

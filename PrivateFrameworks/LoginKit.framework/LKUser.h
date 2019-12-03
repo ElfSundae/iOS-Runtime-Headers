@@ -13,7 +13,7 @@
     NSURL * _localMediumImageURL;
     NSURL * _mediumImageURL;
     NSMutableDictionary * _namingSimilarityInfoByClassID;
-    NSString * _passwordType;
+    unsigned long long  _passwordType;
     NSString * _phoneticFamilyName;
     NSString * _phoneticGivenName;
     long long  _retryCount;
@@ -30,12 +30,16 @@
 @property (nonatomic, retain) NSURL *localMediumImageURL;
 @property (nonatomic, retain) NSURL *mediumImageURL;
 @property (nonatomic, retain) NSMutableDictionary *namingSimilarityInfoByClassID;
-@property (nonatomic, retain) NSString *passwordType;
+@property (nonatomic) unsigned long long passwordType;
 @property (nonatomic, retain) NSString *phoneticFamilyName;
 @property (nonatomic, retain) NSString *phoneticGivenName;
 @property (nonatomic) long long retryCount;
 @property (nonatomic, retain) NSString *tokenizedPhoneticDisplayName;
 
++ (unsigned long long)LKPasswordTypeFromUMUserPasscodeType:(unsigned long long)arg1;
++ (unsigned long long)UMUserPasscodeTypeFromLKPasswordType:(unsigned long long)arg1;
++ (id)fullNameWithFamilyName:(id)arg1 givenName:(id)arg2;
++ (unsigned long long)passwordTypeFromPasswordTypeString:(id)arg1;
 + (void)setAutogeneratesPhoneticNameWithLocale:(id)arg1;
 + (bool)supportsSecureCoding;
 + (id)userFromDictionary:(id)arg1;
@@ -57,8 +61,9 @@
 - (id)localLargeImageURL;
 - (id)localMediumImageURL;
 - (id)mediumImageURL;
+- (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (id)namingSimilarityInfoByClassID;
-- (id)passwordType;
+- (unsigned long long)passwordType;
 - (id)phoneticFamilyName;
 - (id)phoneticGivenName;
 - (long long)retryCount;
@@ -73,7 +78,7 @@
 - (void)setLocalMediumImageURL:(id)arg1;
 - (void)setMediumImageURL:(id)arg1;
 - (void)setNamingSimilarityInfoByClassID:(id)arg1;
-- (void)setPasswordType:(id)arg1;
+- (void)setPasswordType:(unsigned long long)arg1;
 - (void)setPhoneticFamilyName:(id)arg1;
 - (void)setPhoneticGivenName:(id)arg1;
 - (void)setRetryCount:(long long)arg1;

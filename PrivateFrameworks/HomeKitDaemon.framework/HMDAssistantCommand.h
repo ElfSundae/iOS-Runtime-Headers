@@ -40,7 +40,12 @@
 + (id)logCategory;
 
 - (void).cxx_destruct;
+- (void)_handleCommandForHAPAction:(id)arg1 serviceType:(id)arg2 objects:(id)arg3 completionHandler:(id /* block */)arg4;
+- (void)_handleCommandForMediaAccessoryAction:(id)arg1 objects:(id)arg2 serviceType:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)_logEvent:(id)arg1;
+- (id)actionOutcomeFromError:(id)arg1;
+- (id)actionResultForCharacteristic:(id)arg1 actionSet:(id)arg2 action:(id)arg3 objects:(id)arg4 error:(id)arg5;
+- (id)actionResultForMediaProfile:(id)arg1 action:(id)arg2 objects:(id)arg3 error:(id)arg4;
 - (void)addActivationCharacteristicsIfNeeded:(id)arg1 forCharacteristic:(id)arg2;
 - (void)addBridgedAcessoryCharacteristicsFor:(id)arg1 toCollection:(id)arg2 assistantObjects:(id)arg3;
 - (void)addCharacteristicWithType:(id)arg1 fromService:(id)arg2 toCollection:(id)arg3 assistantObjects:(id)arg4;
@@ -54,11 +59,11 @@
 - (id)compareCurrentValue:(id)arg1 newValue:(id)arg2 withMetadata:(id)arg3;
 - (id)compareForBoundary:(id)arg1 withMetadata:(id)arg2;
 - (bool)completionHandlerCalled;
-- (id)convertValue:(id)arg1 fromUnits:(id)arg2 toUnits:(id)arg3;
 - (id)currentHomeName;
 - (id)currentHomeUUID;
 - (id)entityFromActionSet:(id)arg1;
 - (void)executeActionSet:(id)arg1 action:(id)arg2 withCompletionHandler:(id /* block */)arg3;
+- (id)failedActionResultsFromResponse:(id)arg1 inActionSet:(id)arg2 withAction:(id)arg3;
 - (id)filterObjects:(id)arg1 byAttribute:(id)arg2 forActionType:(id)arg3;
 - (id)filterObjects:(id)arg1 byCharacteristicType:(id)arg2;
 - (id)filterObjects:(id)arg1 forCharacteristicTypes:(id)arg2;
@@ -67,13 +72,14 @@
 - (id)filterObjects:(id)arg1 forRoom:(id)arg2 andZone:(id)arg3;
 - (id)gather;
 - (id)getLocaleUnits:(id)arg1;
-- (id)getReportingUnits:(id)arg1 hapCharacteristicType:(id)arg2 attribute:(id)arg3;
 - (id)getValueOfType:(id)arg1 action:(id)arg2;
 - (id)getoverridingHomeUUIDFromName:(id)arg1;
 - (void)handleCommandWithCompletionHandler:(id /* block */)arg1;
 - (void)handleGetActionTypes:(id)arg1 serviceType:(id)arg2 forObjects:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)handleGetColor:(id)arg1 forObjects:(id)arg2 serviceType:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)handleGetMetadataActionTypes:(id)arg1 serviceType:(id)arg2 forObjects:(id)arg3 completionHandler:(id /* block */)arg4;
+- (void)handleMediaAccessorySetActionType:(id)arg1 forObjects:(id)arg2 withServiceType:(id)arg3 completionHandler:(id /* block */)arg4;
+- (void)handleMediaReadWriteResponse:(id)arg1 forAction:(id)arg2 inServiceType:(id)arg3 inHome:(id)arg4 requestProperty:(id)arg5 results:(id)arg6 forObjects:(id)arg7;
 - (id)handleReadWriteResponses:(id)arg1 error:(id)arg2 forAction:(id)arg3 inServiceType:(id)arg4 results:(id)arg5 forObjects:(id)arg6;
 - (void)handleSetActionTypes:(id)arg1 serviceType:(id)arg2 forObjects:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)handleSetColor:(id)arg1 forObjects:(id)arg2 service:(id)arg3 completionHandler:(id /* block */)arg4;
@@ -82,12 +88,14 @@
 - (id)homeKitObjects;
 - (id)homeManager;
 - (bool)isAttributeValue:(id)arg1 equalTo:(id)arg2;
+- (id)mediaProfileFromObject:(id)arg1;
 - (long long)numberOfHomes;
 - (id)objectsWithIdentifierList:(id)arg1;
-- (id)objectsWithSearchFilter:(id)arg1 inHome:(id)arg2 overrideServiceTypeIfNeeded:(id*)arg3;
+- (id)objectsWithSearchFilter:(id)arg1 inHome:(id)arg2 serviceTypeIsATV:(bool)arg3 overrideServiceTypeIfNeeded:(id*)arg4;
 - (id)parseColorEncoding:(id)arg1;
 - (void)performWithGather:(id)arg1 queue:(id)arg2 msgDispatcher:(id)arg3 completion:(id /* block */)arg4;
 - (bool)populateColorResult:(id)arg1 serviceType:(id)arg2 service:(id)arg3 action:(id)arg4 responses:(id)arg5 forObjects:(id)arg6;
+- (bool)populateMediaProfileWriteResult:(id)arg1 withValue:(id)arg2 serviceType:(id)arg3 action:(id)arg4;
 - (bool)populateResult:(id)arg1 fromResponse:(id)arg2 responses:(id)arg3 forAction:(id)arg4 serviceType:(id)arg5 forObjects:(id)arg6;
 - (bool)populateResult:(id)arg1 withObject:(id)arg2 serviceType:(id)arg3 action:(id)arg4;
 - (bool)populateResult:(id)arg1 withService:(id)arg2 serviceType:(id)arg3 characteristic:(id)arg4 resultAttribute:(id)arg5 action:(id)arg6;
@@ -114,8 +122,8 @@
 - (void)setPrimaryHomeUUID:(id)arg1;
 - (void)setQueue:(id)arg1;
 - (void)setStartTime:(unsigned long long)arg1;
-- (id)setValue:(id)arg1 format:(id)arg2 units:(id)arg3;
 - (unsigned long long)startTime;
+- (void)timeoutAndReportResults;
 - (id)updateValue:(id)arg1 forAction:(id)arg2;
 - (id)updateValueToBoundary:(id)arg1 valueType:(id)arg2 fudgeMinimum:(bool)arg3 metadata:(id)arg4;
 

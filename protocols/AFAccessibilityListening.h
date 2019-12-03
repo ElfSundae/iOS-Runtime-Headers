@@ -5,7 +5,6 @@
 
 @required
 
-- (void)accessibilityObserver:(AFAccessibilityObserver *)arg1 didChangeVibrationDisabledPreference:(bool)arg2;
-- (void)accessibilityObserver:(AFAccessibilityObserver *)arg1 didChangeVoiceOverTouchEnabledPreference:(bool)arg2;
+- (void)accessibilityObserver:(AFAccessibilityObserver *)arg1 stateDidChangeFrom:(AFAccessibilityState *)arg2 to:(AFAccessibilityState *)arg3;
 
 @end

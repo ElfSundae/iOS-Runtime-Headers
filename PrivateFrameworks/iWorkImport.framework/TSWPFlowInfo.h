@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
  */
 
-@interface TSWPFlowInfo : TSPObject <TSDContainerInfo, TSDSelectionStatisticsContributor, TSWPFlowInfo, TSWPStorageParent> {
+@interface TSWPFlowInfo : TSPObject <TSDContainerInfo, TSDLockableInfo, TSDSelectionStatisticsContributor, TSWPFlowInfo, TSWPStorageParent> {
     TSWPStorage * _textStorage;
     NSArray * _textboxes;
     unsigned long long  _userInterfaceIdentifier;
@@ -12,7 +12,7 @@
 @property (getter=isAttachedToBodyText, nonatomic, readonly) bool attachedToBodyText;
 @property (nonatomic, readonly) bool autoListRecognition;
 @property (nonatomic, readonly) bool autoListTermination;
-@property (nonatomic, readonly) NSArray *childInfos;
+@property (nonatomic, readonly, copy) NSArray *childInfos;
 @property (nonatomic, readonly) long long contentWritingDirection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -21,6 +21,8 @@
 @property (readonly) unsigned long long hash;
 @property (getter=isInlineWithText, nonatomic, readonly) bool inlineWithText;
 @property (nonatomic, readonly) bool isLocked;
+@property (nonatomic, readonly) bool isMaster;
+@property (getter=isLocked, nonatomic, readonly) bool locked;
 @property (nonatomic) bool matchesObjectPlaceholderGeometry;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
 @property (nonatomic, readonly) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
@@ -31,6 +33,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) bool supportsMultipleColumns;
 @property (nonatomic, readonly) bool textIsLinked;
+@property (nonatomic, readonly) unsigned long long textOrientation;
 @property (nonatomic, retain) TSWPStorage *textStorage;
 @property (nonatomic, retain) NSArray *textboxes;
 @property (nonatomic, readonly) TSUColor *userInterfaceFillColor;
@@ -51,6 +54,7 @@
 - (id)childEnumerator;
 - (id)childInfos;
 - (void)clearBackPointerToParentInfoIfNeeded:(id)arg1;
+- (bool)containsRotatedOrFlippedTextBox;
 - (long long)contentWritingDirection;
 - (id)copyWithContext:(id)arg1;
 - (void)dealloc;
@@ -70,12 +74,13 @@
 - (bool)isSelectable;
 - (bool)isThemeContent;
 - (Class)layoutClass;
-- (void)loadFromFlowInfoArchive:(const struct FlowInfoArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct Reference {} *x6; unsigned int x7; }*)arg1 unarchiver:(id)arg2;
+- (void)loadFromFlowInfoArchive:(const struct FlowInfoArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct Reference {} *x6; unsigned int x7; }*)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
+- (long long)nestedTextboxDepth;
 - (id)objectUUIDPath;
 - (id)owningAttachment;
 - (id)owningAttachmentNoRecurse;
-- (void)pSaveToFlowInfoArchive:(struct FlowInfoArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct Reference {} *x6; unsigned int x7; }*)arg1 archiver:(id)arg2 textBoxes:(id)arg3;
+- (void)pSaveToFlowInfoArchive:(struct FlowInfoArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct Reference {} *x6; unsigned int x7; }*)arg1 archiver:(id)arg2 textBoxes:(id)arg3;
 - (id)parentInfo;
 - (bool)preventsChangeTracking;
 - (bool)preventsComments;
@@ -93,6 +98,7 @@
 - (bool)supportsMultipleColumns;
 - (bool)textIsLinked;
 - (bool)textIsVerticalAtCharIndex:(unsigned long long)arg1;
+- (unsigned long long)textOrientation;
 - (id)textStorage;
 - (id)textboxes;
 - (id)userInterfaceFillColor;

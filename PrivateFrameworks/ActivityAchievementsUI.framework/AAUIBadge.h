@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/ActivityAchievementsUI.framework/ActivityAchievementsUI
  */
 
-@interface AAUIBadge : HKAnimatableObject {
+@interface AAUIBadge : ARUIAnimatableObject {
     bool  _locksRotationY;
     double  _maxRotationY;
     struct CGPoint { 

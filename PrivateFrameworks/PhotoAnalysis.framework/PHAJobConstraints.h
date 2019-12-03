@@ -7,6 +7,7 @@
     bool  _canRunAutomaticForegroundAnalysis;
     bool  _canRunUserInitiatedForegroundAnalysis;
     bool  _canUseNetwork;
+    bool  _cancelsTurboMode;
     bool  _turboMode;
 }
 
@@ -14,6 +15,7 @@
 @property (nonatomic, readonly) bool canRunAutomaticForegroundAnalysis;
 @property (nonatomic, readonly) bool canRunUserInitiatedForegroundAnalysis;
 @property (nonatomic, readonly) bool canUseNetwork;
+@property (nonatomic) bool cancelsTurboMode;
 @property (getter=isTurboMode, nonatomic) bool turboMode;
 
 + (id)constraintsWithAllAllowances;
@@ -25,12 +27,15 @@
 - (bool)canRunAutomaticForegroundAnalysis;
 - (bool)canRunUserInitiatedForegroundAnalysis;
 - (bool)canUseNetwork;
+- (bool)cancelsTurboMode;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)initFromBitString:(id)arg1;
 - (id)initWithCanRunAutomaticBackgroundAnalysis:(bool)arg1 canRunAutomaticForegroundAnalysis:(bool)arg2 canRunUserInitiatedForegroundAnalysis:(bool)arg3 canUseNetwork:(bool)arg4;
 - (bool)isEqualToConstraints:(id)arg1;
 - (bool)isTurboMode;
+- (unsigned int)qosClassForProcessing;
+- (void)setCancelsTurboMode:(bool)arg1;
 - (void)setTurboMode:(bool)arg1;
 - (id)statusAsDictionary;
 

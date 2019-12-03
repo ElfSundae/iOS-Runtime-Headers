@@ -34,7 +34,7 @@
 - (void)close;
 - (id)columnNameAtIndex:(int)arg1;
 - (unsigned long long)columns;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (id)dataAtIndex:(int)arg1;
 - (id)dataAtIndex:(int)arg1 noCopy:(bool)arg2;
 - (id)dateAtIndex:(int)arg1;
@@ -43,9 +43,9 @@
 - (id)defaultUnarchivingAllowedClasses;
 - (id)description;
 - (double)doubleAtIndex:(int)arg1;
-- (/* Warning: unhandled struct encoding: '{PQLResultSet=#@#:B@?@B@@QQ@}' */ struct PQLResultSet { Class x1; id x2; SEL x3; bool x4; id /* block */ x5; id x6; id x7; unsigned long long x8; unsigned long long x9; id x10; }*)enumerateObjects:(id /* block */)arg1;
-- (/* Warning: unhandled struct encoding: '{PQLResultSet=#@#:B@?@B@@QQ@}' */ struct PQLResultSet { Class x1; id x2; SEL x3; bool x4; id /* block */ x5; id x6; id x7; unsigned long long x8; unsigned long long x9; id x10; }*)enumerateObjectsOfClass:(Class)arg1;
-- (/* Warning: unhandled struct encoding: '{PQLResultSet=#@#:B@?@B@@QQ@}' */ struct PQLResultSet { Class x1; id x2; SEL x3; bool x4; id /* block */ x5; id x6; id x7; unsigned long long x8; unsigned long long x9; id x10; }*)enumerateObjectsOfClass:(Class)arg1 initializer:(SEL)arg2;
+- (struct PQLResultSet { Class x1; id x2; Class x3; SEL x4; bool x5; id /* block */ x6; id x7; bool x8; id x9; id x10; unsigned long long x11; unsigned long long x12; id x13; }*)enumerateObjects:(id /* block */)arg1;
+- (struct PQLResultSet { Class x1; id x2; Class x3; SEL x4; bool x5; id /* block */ x6; id x7; bool x8; id x9; id x10; unsigned long long x11; unsigned long long x12; id x13; }*)enumerateObjectsOfClass:(Class)arg1;
+- (struct PQLResultSet { Class x1; id x2; Class x3; SEL x4; bool x5; id /* block */ x6; id x7; bool x8; id x9; id x10; unsigned long long x11; unsigned long long x12; id x13; }*)enumerateObjectsOfClass:(Class)arg1 initializer:(SEL)arg2;
 - (id)error;
 - (float)floatAtIndex:(int)arg1;
 - (id)initWithStatement:(id)arg1 usingDatabase:(id)arg2;
@@ -70,7 +70,6 @@
 - (unsigned long long)rowNumber;
 - (void)setDefaultUnarchivingAllowedClasses:(id)arg1;
 - (short)shortAtIndex:(int)arg1;
-- (struct sqlite3_value { }*)sqliteValueAtIndex:(int)arg1;
 - (struct sqlite3_stmt { }*)stmt;
 - (id)stringAtIndex:(int)arg1;
 - (id)unarchivedObjectOfClass:(Class)arg1 atIndex:(int)arg2;

@@ -2,9 +2,7 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface INAddTasksIntentResponse : INIntentResponse <INAddTasksIntentResponseExport> {
-    _INPBAddTasksIntentResponse * _responseMessagePBRepresentation;
-}
+@interface INAddTasksIntentResponse : INIntentResponse <INAddTasksIntentResponseExport>
 
 @property (nonatomic, copy) NSArray *addedTasks;
 @property (nonatomic, readonly) long long code;
@@ -13,6 +11,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) INTaskList *modifiedTaskList;
 @property (readonly) Class superclass;
+@property (nonatomic) unsigned long long warnings;
 
 + (bool)_appLaunchRequestedFromCode:(long long)arg1;
 + (long long)_codeFromType:(int)arg1 errorCode:(int)arg2 appLaunchRequested:(bool)arg3;
@@ -20,11 +19,10 @@
 + (int)_typeFromCode:(long long)arg1;
 + (bool)supportsSecureCoding;
 
-- (void).cxx_destruct;
+- (long long)_codeWithName:(id)arg1;
 - (id)_dictionaryRepresentation;
 - (id)_initWithCode:(long long)arg1 userActivity:(id)arg2;
 - (long long)_intentResponseCode;
-- (id)_responseMessagePBRepresentation;
 - (id)addedTasks;
 - (long long)code;
 - (void)encodeWithCoder:(id)arg1;
@@ -37,5 +35,7 @@
 - (void)setAddedTasks:(id)arg1;
 - (void)setModifiedTaskList:(id)arg1;
 - (void)setPropertiesByName:(id)arg1;
+- (void)setWarnings:(unsigned long long)arg1;
+- (unsigned long long)warnings;
 
 @end

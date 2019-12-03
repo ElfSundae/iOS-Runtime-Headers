@@ -9,7 +9,6 @@
 - (float)alphaCoeffFilterColorStdFast;
 - (float)alphaContrastExponent;
 - (float)alphaGammaExponent;
-- (float)alphaGuidedFilterEps;
 - (float)alphaMaxLaplacian;
 - (int)backgroundDisparityStatsWindowSize;
 - (float)backgroundDisparityUpdateRate;
@@ -51,11 +50,13 @@
 - (float)guidedFilterMinDistToDeweight;
 - (float)guidedFilterUnconfidentWeight;
 - (int)guidedFilterWidth;
+- (float)infConvolutionDownsampling;
 - (int)invalidDisparityRatioStatsWindowSize;
 - (float)invalidDisparityRatioUpdateRate;
+- (float)laplacianLimitingBlurSize;
+- (float)laplacianLimitingDownsampling;
 - (float)linearDeltaDepthMultiplier;
 - (float)linearDeltaDepthOffset;
-- (float)lowResolutionMatteDownsamplingScale;
 - (float)luxMultiplierNoiseBitCalculation;
 - (float)mattingUpdateRate;
 - (float)mattingUpdateRateFast;
@@ -70,7 +71,9 @@
 - (float)minimumConfidenceToKeepDisparity;
 - (bool)modulateFocalRatio;
 - (float)offsetNoiseBitCalculation;
+- (float)portraitStyleStrengthOverride;
 - (unsigned long long)proxyToFaceEffectLerpNumFrames;
+- (int)rawShiftInvalidThreshold;
 - (float)referenceDisparity;
 - (int)relightDisplayMode;
 - (float)relightEffectStrength;
@@ -83,7 +86,6 @@
 - (void)setAlphaCoeffFilterColorStdFast:(float)arg1;
 - (void)setAlphaContrastExponent:(float)arg1;
 - (void)setAlphaGammaExponent:(float)arg1;
-- (void)setAlphaGuidedFilterEps:(float)arg1;
 - (void)setAlphaMaxLaplacian:(float)arg1;
 - (void)setBackgroundDisparityStatsWindowSize:(int)arg1;
 - (void)setBackgroundDisparityUpdateRate:(float)arg1;
@@ -125,11 +127,13 @@
 - (void)setGuidedFilterMinDistToDeweight:(float)arg1;
 - (void)setGuidedFilterUnconfidentWeight:(float)arg1;
 - (void)setGuidedFilterWidth:(int)arg1;
+- (void)setInfConvolutionDownsampling:(float)arg1;
 - (void)setInvalidDisparityRatioStatsWindowSize:(int)arg1;
 - (void)setInvalidDisparityRatioUpdateRate:(float)arg1;
+- (void)setLaplacianLimitingBlurSize:(float)arg1;
+- (void)setLaplacianLimitingDownsampling:(float)arg1;
 - (void)setLinearDeltaDepthMultiplier:(float)arg1;
 - (void)setLinearDeltaDepthOffset:(float)arg1;
-- (void)setLowResolutionMatteDownsamplingScale:(float)arg1;
 - (void)setLuxMultiplierNoiseBitCalculation:(float)arg1;
 - (void)setMattingUpdateRate:(float)arg1;
 - (void)setMattingUpdateRateFast:(float)arg1;
@@ -144,7 +148,9 @@
 - (void)setMinimumConfidenceToKeepDisparity:(float)arg1;
 - (void)setModulateFocalRatio:(bool)arg1;
 - (void)setOffsetNoiseBitCalculation:(float)arg1;
+- (void)setPortraitStyleStrengthOverride:(float)arg1;
 - (void)setProxyToFaceEffectLerpNumFrames:(unsigned long long)arg1;
+- (void)setRawShiftInvalidThreshold:(int)arg1;
 - (void)setReferenceDisparity:(float)arg1;
 - (void)setRelightDisplayMode:(int)arg1;
 - (void)setRelightEffectStrength:(float)arg1;

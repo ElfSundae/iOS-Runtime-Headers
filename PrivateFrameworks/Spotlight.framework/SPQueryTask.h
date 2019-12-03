@@ -3,7 +3,7 @@
  */
 
 @interface SPQueryTask : NSObject {
-    /* Warning: Unrecognized filer type: '^' using 'void*' */ void* _deferredUpdate;
+    _Atomic struct WaitingResults_s {} * _deferredUpdate;
     SPQueryResponse * _delayedResponse;
     NSObject<SPQueryTaskDelegate> * _delegate;
     NSObject<OS_dispatch_queue> * _dispatchQueue;
@@ -17,8 +17,9 @@
     bool  _sentSuggestions;
     NSString * _sessionEntityString;
     int  _state;
+    NSArray * _supportedAppScopes;
     int  _unsafeState;
-    int  _updatesDisabled;
+    _Atomic int  _updatesDisabled;
     unsigned long long  _whyQuery;
 }
 
@@ -70,11 +71,13 @@
 - (void)setState:(int)arg1;
 - (void)setWhyQuery:(unsigned long long)arg1;
 - (void)start;
+- (void)startAtUIPriority;
 - (int)state;
 - (id)suggestionsDebugLog;
 - (id)unsafeCombinedSuggestions;
 - (int)unsafeState;
 - (void)updateResultsThroughDelegate:(bool)arg1 state:(int)arg2 sections:(id)arg3;
+- (void)updateResultsThroughDelegate:(bool)arg1 state:(int)arg2 unchanged:(bool)arg3 sections:(id)arg4;
 - (unsigned long long)whyQuery;
 
 @end

@@ -15,6 +15,7 @@
 @property (nonatomic) <VCVideoReceiverDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) unsigned int lastDisplayedFrameRTPTimestamp;
 @property (readonly) double lastReceivedVideoRTCPPacketTime;
 @property (readonly) double lastReceivedVideoRTPPacketTime;
 @property int remoteVideoOrientation;
@@ -25,6 +26,7 @@
 - (void)collectChannelMetrics:(struct { unsigned int x1; unsigned int x2; double x3; }*)arg1 interval:(float)arg2;
 - (id)delegate;
 - (void)handleActiveConnectionChange:(id)arg1;
+- (unsigned int)lastDisplayedFrameRTPTimestamp;
 - (double)lastReceivedVideoRTCPPacketTime;
 - (double)lastReceivedVideoRTPPacketTime;
 - (void)pauseVideo;

@@ -7,16 +7,6 @@
         double x; 
         double y; 
     }  bottomRightSelectionPoint;
-    struct CGRect { 
-        struct CGPoint { 
-            double x; 
-            double y; 
-        } origin; 
-        struct CGSize { 
-            double width; 
-            double height; 
-        } size; 
-    }  boundsInDocument;
     struct UIEdgeInsets { 
         double top; 
         double left; 
@@ -40,6 +30,16 @@
     UIScrollView * hostScrollView;
     bool  hostScrollViewObserverIsActive;
     <PDFHostViewControllerDelegate> * hostViewControllerDelegate;
+    struct CGRect { 
+        struct CGPoint { 
+            double x; 
+            double y; 
+        } origin; 
+        struct CGSize { 
+            double width; 
+            double height; 
+        } size; 
+    }  insetBoundsInDocument;
     bool  isUnlocked;
     UILongPressGestureRecognizer * longPressGestureRecognizer;
     double  maxScaleFactor;
@@ -67,9 +67,8 @@
             double height; 
         } size; 
     }  scrollViewFrame;
-    NSMutableArray * selectionRects;
+    id /* block */  snapshotCompletion;
     UITapGestureRecognizer * tapGestureRecognizer;
-    int  textSelectionState;
     struct CGPoint { 
         double x; 
         double y; 

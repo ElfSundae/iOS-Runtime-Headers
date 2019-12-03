@@ -6,6 +6,8 @@
 @required
 
 - (PLPTPConversionResult *)conversionResultForAsset:(PLPTPAsset *)arg1 isVideo:(bool)arg2 isRender:(bool)arg3 forceLegacyConversion:(bool)arg4;
-- (bool)supportsTranscodeChoice;
+- (bool)peerSupportsAdjustmentBaseResources;
+- (bool)peerSupportsTranscodeChoice;
+- (bool)penultimateIsPublic;
 
 @end

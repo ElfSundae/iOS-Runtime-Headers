@@ -6,10 +6,10 @@
     bool  _expanded;
 }
 
-@property (retain) TLKDescriptionView *contentView;
+@property (nonatomic, retain) TLKDescriptionView *contentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property bool expanded;
+@property (nonatomic) bool expanded;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
@@ -17,6 +17,7 @@
 + (id)dragTitleForCardSection:(id)arg1;
 + (bool)supportsRecyclingForCardSection:(id)arg1;
 
+- (void)didPressFootnoteButton;
 - (void)didPressMoreButton;
 - (bool)expanded;
 - (void)setExpanded:(bool)arg1;

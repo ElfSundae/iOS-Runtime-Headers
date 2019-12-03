@@ -12,8 +12,10 @@
     id  _scrollViewDidEndDeceleratingNotificationToken;
     id  _scrollViewDidEndDraggingNotificationToken;
     id  _scrollViewWillBeginDraggingNotificationToken;
+    bool  _scrubbingEnabled;
     bool  _selectByPressGestureEnabled;
     _UIInterfaceActionSelectByPressGestureRecognizer * _selectByPressGestureRecognizer;
+    _UIInterfaceActionSelectionDelayGestureRecognizer * _selectionDelayGestureRecognizer;
     bool  _selectionFeedbackEnabled;
     UILongPressGestureRecognizer * _selectionGestureRecognizer;
     UISelectionFeedbackGenerator * _selectionRetargetFeedbackGenerator;
@@ -32,8 +34,10 @@
 @property (nonatomic, retain) id scrollViewDidEndDeceleratingNotificationToken;
 @property (nonatomic, retain) id scrollViewDidEndDraggingNotificationToken;
 @property (nonatomic, retain) id scrollViewWillBeginDraggingNotificationToken;
+@property (nonatomic) bool scrubbingEnabled;
 @property (nonatomic) bool selectByPressGestureEnabled;
 @property (nonatomic, retain) _UIInterfaceActionSelectByPressGestureRecognizer *selectByPressGestureRecognizer;
+@property (nonatomic, readonly) _UIInterfaceActionSelectionDelayGestureRecognizer *selectionDelayGestureRecognizer;
 @property (nonatomic) bool selectionFeedbackEnabled;
 @property (nonatomic, readonly) UILongPressGestureRecognizer *selectionGestureRecognizer;
 @property (nonatomic, retain) UISelectionFeedbackGenerator *selectionRetargetFeedbackGenerator;
@@ -69,14 +73,17 @@
 - (void)beginTrackingSessionByTakingOverForSystemProvidedGestureRecognizer:(id)arg1;
 - (void)dealloc;
 - (id)focusedInterfaceAction;
+- (bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (void)handlePressedFocusedInterfaceAction:(id)arg1;
 - (id)initWithTrackableContainerView:(id)arg1 actionsScrollView:(id)arg2;
 - (id)representationViews;
 - (id)scrollViewDidEndDeceleratingNotificationToken;
 - (id)scrollViewDidEndDraggingNotificationToken;
 - (id)scrollViewWillBeginDraggingNotificationToken;
+- (bool)scrubbingEnabled;
 - (bool)selectByPressGestureEnabled;
 - (id)selectByPressGestureRecognizer;
+- (id)selectionDelayGestureRecognizer;
 - (bool)selectionFeedbackEnabled;
 - (id)selectionGestureRecognizer;
 - (id)selectionRetargetFeedbackGenerator;
@@ -86,6 +93,7 @@
 - (void)setScrollViewDidEndDeceleratingNotificationToken:(id)arg1;
 - (void)setScrollViewDidEndDraggingNotificationToken:(id)arg1;
 - (void)setScrollViewWillBeginDraggingNotificationToken:(id)arg1;
+- (void)setScrubbingEnabled:(bool)arg1;
 - (void)setSelectByPressGestureEnabled:(bool)arg1;
 - (void)setSelectByPressGestureRecognizer:(id)arg1;
 - (void)setSelectionFeedbackEnabled:(bool)arg1;

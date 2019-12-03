@@ -26,6 +26,7 @@
     }  _contentTranslation;
     UIView * _contentView;
     unsigned long long  _controlState;
+    NSString * _cornerCurve;
     double  _cornerRadius;
     bool  _customScale;
     <_UIFloatingContentViewDelegate> * _floatingContentViewDelegate;
@@ -91,7 +92,9 @@
 @property (nonatomic) bool clipsContentToBounds;
 @property (getter=isContentOpaque, nonatomic) bool contentOpaque;
 @property (nonatomic, readonly) UIView *contentView;
+@property (getter=isContinuousCornerEnabled, nonatomic) bool continuousCornerEnabled;
 @property (nonatomic) unsigned long long controlState;
+@property (nonatomic) NSString *cornerCurve;
 @property (nonatomic) double cornerRadius;
 @property (nonatomic) <_UIFloatingContentViewDelegate> *floatingContentDelegate;
 @property (nonatomic, copy) _UIFocusAnimationConfiguration *focusAnimationConfiguration;
@@ -139,6 +142,7 @@
 - (bool)_shouldApplyCornerRadiusForPrimaryState:(unsigned long long)arg1;
 - (void)_uninstallContentMotionEffects;
 - (void)_updateContainerLayerQualityForPrimaryState:(unsigned long long)arg1;
+- (void)_updateCornerRadiusLayers;
 - (void)_updateHighContrastFocusIndicatorForPrimaryState:(unsigned long long)arg1;
 - (void)_updateHighContrastFocusIndicatorView;
 - (void)_updateHighlightViewForPrimaryState:(unsigned long long)arg1;
@@ -154,6 +158,7 @@
 - (bool)clipsContentToBounds;
 - (id)contentView;
 - (unsigned long long)controlState;
+- (id)cornerCurve;
 - (double)cornerRadius;
 - (void)dealloc;
 - (id)floatingContentDelegate;
@@ -165,6 +170,7 @@
 - (id)highlightView;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (bool)isContentOpaque;
+- (bool)isContinuousCornerEnabled;
 - (bool)isShadowEnabled;
 - (void)layoutSubviews;
 - (void)removeContentMotionEffect:(id)arg1;
@@ -178,9 +184,11 @@
 - (void)setClipsContentToBounds:(bool)arg1;
 - (void)setContentMotionRotation:(struct CGPoint { double x1; double x2; })arg1 translation:(struct CGPoint { double x1; double x2; })arg2;
 - (void)setContentOpaque:(bool)arg1;
+- (void)setContinuousCornerEnabled:(bool)arg1;
 - (void)setControlState:(unsigned long long)arg1;
 - (void)setControlState:(unsigned long long)arg1 animated:(bool)arg2;
 - (void)setControlState:(unsigned long long)arg1 withAnimationCoordinator:(id)arg2;
+- (void)setCornerCurve:(id)arg1;
 - (void)setCornerRadius:(double)arg1;
 - (void)setFloatingContentDelegate:(id)arg1;
 - (void)setFocusAnimationConfiguration:(id)arg1;

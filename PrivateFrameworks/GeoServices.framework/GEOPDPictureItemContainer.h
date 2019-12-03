@@ -5,8 +5,8 @@
 @interface GEOPDPictureItemContainer : PBCodable <NSCopying> {
     bool  _allowFullScreenPhoto;
     struct { 
-        unsigned int allowFullScreenPhoto : 1; 
-    }  _has;
+        unsigned int has_allowFullScreenPhoto : 1; 
+    }  _flags;
     NSMutableArray * _pictureItems;
     PBUnknownFields * _unknownFields;
 }
@@ -16,12 +16,14 @@
 @property (nonatomic, retain) NSMutableArray *pictureItems;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
 + (Class)pictureItemType;
 
 - (void).cxx_destruct;
 - (void)addPictureItem:(id)arg1;
 - (bool)allowFullScreenPhoto;
 - (void)clearPictureItems;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -33,6 +35,7 @@
 - (id)pictureItemAtIndex:(unsigned long long)arg1;
 - (id)pictureItems;
 - (unsigned long long)pictureItemsCount;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAllowFullScreenPhoto:(bool)arg1;
 - (void)setHasAllowFullScreenPhoto:(bool)arg1;

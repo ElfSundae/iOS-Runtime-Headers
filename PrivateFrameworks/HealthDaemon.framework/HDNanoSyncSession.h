@@ -6,6 +6,7 @@
     id /* block */  _completion;
     unsigned long long  _messageCount;
     unsigned long long  _options;
+    HDSyncPredicate * _syncPredicate;
 }
 
 @property (nonatomic, readonly, copy) id /* block */ completion;
@@ -16,6 +17,8 @@
 @property (getter=isRequestedByRemote, nonatomic, readonly) bool requestedByRemote;
 
 - (void).cxx_destruct;
+- (id)_intervalForSecondsSinceDaysAgo:(unsigned long long)arg1;
+- (id)_syncPredicate;
 - (id)changeSetWithChanges:(id)arg1 statusCode:(int)arg2 error:(id)arg3;
 - (id /* block */)completion;
 - (void)incrementMessageCount;
@@ -28,6 +31,6 @@
 - (unsigned long long)messageCount;
 - (id)nanoSyncStore;
 - (id)newChangeWithSyncEntityClass:(Class)arg1;
-- (id)predicateForSyncEntityClass:(Class)arg1;
+- (id)syncPredicate;
 
 @end

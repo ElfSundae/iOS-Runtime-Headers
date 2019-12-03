@@ -17,12 +17,12 @@
 
 @property (nonatomic) bool ignoreFormulas;
 
+- (void).cxx_destruct;
 - (id)autoStyling;
 - (id)chart;
 - (id)chartPart;
 - (id)currentChartType;
 - (id)currentSeries;
-- (void)dealloc;
 - (id)defaultTextProperties;
 - (id)drawingState;
 - (id)exState;

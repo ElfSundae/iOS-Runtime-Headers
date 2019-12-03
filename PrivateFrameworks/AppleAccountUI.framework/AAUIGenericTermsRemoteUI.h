@@ -49,5 +49,6 @@
 - (void)setAccountStore:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientationsForObjectModel:(id)arg1 page:(id)arg2;
+- (id)viewControllerForAlertPresentation;
 
 @end

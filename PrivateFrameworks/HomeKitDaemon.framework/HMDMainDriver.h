@@ -7,14 +7,12 @@
     HMDCloudManager * _cloudDataSyncManager;
     HMDHomeManager * _homeManager;
     NSObject<OS_dispatch_queue> * _workQueue;
-    HMDXpcServer * _xpcServer;
 }
 
 @property (nonatomic, retain) HMDAccessoryBrowser *accessoryBrowser;
 @property (nonatomic, retain) HMDCloudManager *cloudDataSyncManager;
 @property (nonatomic, retain) HMDHomeManager *homeManager;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *workQueue;
-@property (nonatomic, retain) HMDXpcServer *xpcServer;
 
 + (id)driver;
 
@@ -31,9 +29,7 @@
 - (void)setCloudDataSyncManager:(id)arg1;
 - (void)setHomeManager:(id)arg1;
 - (void)setWorkQueue:(id)arg1;
-- (void)setXpcServer:(id)arg1;
 - (void)start;
 - (id)workQueue;
-- (id)xpcServer;
 
 @end

@@ -71,6 +71,7 @@
 - (int)NATType;
 - (bool)allowsRelay;
 - (void)connectionCallback:(id)arg1 isInitialConnection:(bool)arg2;
+- (id)connectionData:(char *)arg1 connectionDataSizeInBytes:(int)arg2 shouldUseRelay:(bool)arg3;
 - (id)connectionDataUsingRelay:(bool)arg1 isInitialRelay:(bool)arg2 nonCellularCandidateTimeout:(double)arg3 error:(id*)arg4;
 - (void)connectionResultCallback:(struct tagCONNRESULT { unsigned int x1; int x2; int x3; unsigned int x4; int x5; int x6; unsigned short x7; unsigned short x8; struct tagIPPORT { int x_9_1_1; BOOL x_9_1_2[16]; union { unsigned int x_3_2_1; unsigned char x_3_2_2[16]; } x_9_1_3; unsigned short x_9_1_4; } x9; struct tagIPPORT { int x_10_1_1; BOOL x_10_1_2[16]; union { unsigned int x_3_2_1; unsigned char x_3_2_2[16]; } x_10_1_3; unsigned short x_10_1_4; } x10; struct tagIPPORT { int x_11_1_1; BOOL x_11_1_2[16]; union { unsigned int x_3_2_1; unsigned char x_3_2_2[16]; } x_11_1_3; unsigned short x_11_1_4; } x11; struct tagIPPORT { int x_12_1_1; BOOL x_12_1_2[16]; union { unsigned int x_3_2_1; unsigned char x_3_2_2[16]; } x_12_1_3; unsigned short x_12_1_4; } x12; struct tagIPPORT { int x_13_1_1; BOOL x_13_1_2[16]; union { unsigned int x_3_2_1; unsigned char x_3_2_2[16]; } x_13_1_3; unsigned short x_13_1_4; } x13; struct tagIPPORT { int x_14_1_1; BOOL x_14_1_2[16]; union { unsigned int x_3_2_1; unsigned char x_3_2_2[16]; } x_14_1_3; unsigned short x_14_1_4; } x14; unsigned int x15; }*)arg1 didReceiveICEPacket:(bool)arg2 didUseRelay:(bool)arg3 secretKey:(id)arg4 skeResult:(int)arg5;
 - (unsigned int)connectionSetupRTTEstimate;
@@ -91,7 +92,7 @@
 - (int)generateConnectionData:(char **)arg1 forCallID:(unsigned int)arg2 connectionDataSize:(int*)arg3 nonCellularCandidateTimeout:(double)arg4;
 - (void)getConnectionDataUsingRelay:(bool)arg1 isInitialRelay:(bool)arg2 nonCellularCandidateTimeout:(double)arg3 queue:(id)arg4 completionHandler:(id /* block */)arg5;
 - (bool)getConnectionSetupData:(id*)arg1 withOptions:(id)arg2 error:(id*)arg3;
-- (int)getSignalStrength:(int*)arg1 signalRaw:(int*)arg2 signalGrade:(int*)arg3;
+- (int)getSignalStrengthBars:(int*)arg1 displayBars:(int*)arg2 maxDisplayBars:(int*)arg3;
 - (void)handleConnectionSetupDataChangeMessageDelivered;
 - (bool)handleExchangedKey:(id)arg1 result:(int)arg2;
 - (void)handleMediaReceivedOverPeerToPeerLinkWithConnectionId:(int)arg1;

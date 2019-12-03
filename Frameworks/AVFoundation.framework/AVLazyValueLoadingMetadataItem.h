@@ -15,7 +15,6 @@
 - (void)_waitForLoadingOfValueDependentKey:(id)arg1;
 - (id)dataType;
 - (void)dealloc;
-- (void)finalize;
 - (void)loadValuesAsynchronouslyForKeys:(id)arg1 completionHandler:(id /* block */)arg2;
 - (long long)statusOfValueForKey:(id)arg1 error:(id*)arg2;
 - (id)value;

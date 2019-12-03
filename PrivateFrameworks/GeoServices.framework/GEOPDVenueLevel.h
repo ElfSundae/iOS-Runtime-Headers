@@ -4,9 +4,9 @@
 
 @interface GEOPDVenueLevel : PBCodable <NSCopying> {
     struct { 
-        unsigned int levelId : 1; 
-        unsigned int ordinal : 1; 
-    }  _has;
+        unsigned int has_levelId : 1; 
+        unsigned int has_ordinal : 1; 
+    }  _flags;
     GEOPDVenueLabel * _label;
     unsigned long long  _levelId;
     int  _ordinal;
@@ -21,7 +21,10 @@
 @property (nonatomic) int ordinal;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -35,6 +38,7 @@
 - (unsigned long long)levelId;
 - (void)mergeFrom:(id)arg1;
 - (int)ordinal;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasLevelId:(bool)arg1;
 - (void)setHasOrdinal:(bool)arg1;

@@ -2,18 +2,20 @@
    Image: /System/Library/PrivateFrameworks/TemplateKit.framework/TemplateKit
  */
 
-@interface TLKRoundedCornerLabel : TLKVibrantLabel {
+@interface TLKRoundedCornerLabel : TLKLabel {
+    UIView * _borderView;
     bool  _large;
 }
 
+@property (nonatomic, retain) UIView *borderView;
 @property (nonatomic) bool large;
 
-- (id)init;
-- (struct CGSize { double x1; double x2; })intrinsicContentSize;
+- (void).cxx_destruct;
+- (id)borderView;
+- (id)initWithProminence:(unsigned long long)arg1;
 - (bool)large;
-- (struct CGSize { double x1; double x2; })makeLabelInsets:(struct CGSize { double x1; double x2; })arg1;
+- (void)setBorderView:(id)arg1;
 - (void)setLarge:(bool)arg1;
-- (void)setStyle:(unsigned long long)arg1;
-- (struct CGSize { double x1; double x2; })systemLayoutSizeFittingSize:(struct CGSize { double x1; double x2; })arg1;
+- (void)tlk_updateForAppearance:(id)arg1;
 
 @end

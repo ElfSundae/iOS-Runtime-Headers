@@ -50,14 +50,15 @@
 @property (getter=isReady, nonatomic, readonly) bool ready;
 @property (readonly) Class superclass;
 
++ (void)initialize;
 + (bool)removeClusteringStateCacheWithContext:(id)arg1 cacheDirectoryUrl:(id)arg2 error:(id*)arg3;
 
 - (void).cxx_destruct;
 - (void)_cancelClusteringAndRestoreClusterCache:(bool)arg1;
 - (id)_faceObservationsFromFaceCSNs:(id)arg1;
-- (id)_faceObservationsFromFaceIdStrs:(id)arg1 assignClusterSeqNumberIfNeeded:(bool)arg2 updatedFaces:(id)arg3 excludeClustered:(bool)arg4;
+- (id)_faceObservationsFromFaceIdStrs:(id)arg1 assignClusterSeqNumberIfNeeded:(bool)arg2 updatedFaces:(id)arg3 excludeClustered:(bool)arg4 groupingIdentifiers:(id)arg5;
 - (id)_faceObservationsFromFaces:(id)arg1 assignClusterSeqNumberIfNeeded:(bool)arg2 updatedFaces:(id)arg3;
-- (bool)_performAndPersistClustersByAddingFaceObs:(id)arg1 removingFaceObs:(id)arg2 updateFaces:(id)arg3 canceler:(id)arg4 error:(id*)arg5;
+- (bool)_performAndPersistClustersByAddingFaceObs:(id)arg1 groupingIdentifiers:(id)arg2 removingFaceObs:(id)arg3 updateFaces:(id)arg4 canceler:(id)arg5 error:(id*)arg6;
 - (id)_persistenceDelegate;
 - (void)_processingQueueDetermineNextClusterTriggeringAccumulatedChangesCountIfNecessary;
 - (bool)_processingQueueGetFaceClusterSequenceNumbersInClusterCache:(id*)arg1 lastClusterSequenceNumber:(unsigned long long*)arg2 error:(id*)arg3;
@@ -104,7 +105,7 @@
 - (unsigned long long)numberOfAccumulatedClusterChanges;
 - (void)performClusteringWithCompletion:(id /* block */)arg1;
 - (id)requestSuggestionsForFaceClusterSequenceNumbers:(id)arg1 withClusteringFlags:(id)arg2 updateHandler:(id /* block */)arg3 error:(id*)arg4;
-- (long long)restoreClusterCacheAndSyncWithLibrary:(bool)arg1;
+- (long long)restoreClusterCacheAndSyncWithLibrary:(bool)arg1 error:(id*)arg2;
 - (void)scheduleClusteringAfterRemovingFaceCSNs:(id)arg1 addingFaceIdStrs:(id)arg2;
 - (void)setClustererBringUpState:(long long)arg1;
 - (void)setEventManager:(id)arg1;

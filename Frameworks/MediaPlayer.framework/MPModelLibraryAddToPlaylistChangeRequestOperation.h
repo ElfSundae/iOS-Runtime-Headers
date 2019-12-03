@@ -12,8 +12,8 @@
 @property (nonatomic, copy) id /* block */ responseHandler;
 
 - (void).cxx_destruct;
-- (void)_finishWithCloudLibraryUpdateForPlaylist:(id)arg1;
 - (bool)_isCloudLibraryEnabled;
+- (void)_updateCloudLibraryForPlaylist:(id)arg1;
 - (void)execute;
 - (id)request;
 - (id /* block */)responseHandler;

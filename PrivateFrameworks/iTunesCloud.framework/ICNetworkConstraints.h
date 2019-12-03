@@ -10,6 +10,7 @@
     bool  _wiFiDataAllowedFallbackValue;
 }
 
++ (id)constraintsForSystemApplicationType:(long long)arg1;
 + (id)mediaTypeNetworkConstraintsFromURLBag:(id)arg1;
 
 - (void).cxx_destruct;

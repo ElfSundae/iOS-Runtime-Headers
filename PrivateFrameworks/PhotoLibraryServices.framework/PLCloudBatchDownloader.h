@@ -3,7 +3,6 @@
  */
 
 @interface PLCloudBatchDownloader : NSObject {
-    PLKeywordManager * _keywordManager;
     PLCloudPhotoLibraryManager * _manager;
     PLPhotoLibrary * _photoLibrary;
 }
@@ -36,6 +35,6 @@
 - (void)_triggerBackgroundDownloadFailureForResources:(id)arg1;
 - (id)deletedRecordsFromBatch:(id)arg1;
 - (id)handleIncomingBatch:(id)arg1;
-- (id)initWithLibrary:(id)arg1 withManager:(id)arg2;
+- (id)initWithLibrary:(id)arg1 manager:(id)arg2;
 
 @end

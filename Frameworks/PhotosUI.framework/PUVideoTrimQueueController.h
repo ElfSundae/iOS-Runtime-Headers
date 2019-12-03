@@ -6,6 +6,7 @@
     PLManagedAlbum * _album;
     NSString * _albumName;
     NSString * _commentText;
+    NSDictionary * _customExportsInfo;
     <PUVideoTrimQueueControllerDelegate> * _delegate;
     struct { 
         unsigned int hasWillTrim : 1; 
@@ -15,6 +16,7 @@
     }  _delegateFlags;
     UIViewController * _displayingViewController;
     double  _endTime;
+    PLPhotoLibrary * _photoLibrary;
     NSArray * _recipients;
     NSMutableArray * _sourcesToTransform;
     double  _startTime;
@@ -27,6 +29,7 @@
 @property (nonatomic, readonly) PLManagedAlbum *album;
 @property (nonatomic, retain) NSString *albumName;
 @property (nonatomic, retain) NSString *commentText;
+@property (nonatomic, readonly) NSDictionary *customExportsInfo;
 @property (nonatomic) <PUVideoTrimQueueControllerDelegate> *delegate;
 @property (nonatomic, retain) NSArray *recipients;
 @property (nonatomic, readonly) NSDictionary *trimmedVideoInfo;
@@ -34,6 +37,9 @@
 @property (nonatomic, readonly) NSDictionary *videosSourcesSharingInfo;
 
 + (bool)areVideoSourcesStreamShareSources:(id)arg1;
++ (double)durationFromVideoAtURL:(id)arg1;
++ (id)photoLibraryFromSources:(id)arg1 album:(id)arg2;
++ (id)videoInfoKeyForSource:(id)arg1;
 
 - (void).cxx_destruct;
 - (void)_dequeueTrimmingControl;
@@ -44,12 +50,14 @@
 - (id)_videoTooLongAlertController;
 - (id)album;
 - (id)albumName;
+- (id)alternateSourceToUseIfNeededFromSource:(id)arg1;
 - (void)cleanupResources;
 - (id)commentText;
+- (id)customExportsInfo;
 - (id)delegate;
 - (void)editVideoViewController:(id)arg1 didTrimVideoWithOptions:(id)arg2;
 - (void)editVideoViewControllerDidCancel:(id)arg1;
-- (id)initWithViewController:(id)arg1 videoSources:(id)arg2 videoSourcesSharingInfo:(id)arg3 album:(id)arg4;
+- (id)initWithViewController:(id)arg1 photoLibrary:(id)arg2 videoSources:(id)arg3 videoSourcesSharingInfo:(id)arg4 customExportsInfo:(id)arg5 album:(id)arg6;
 - (id)recipients;
 - (void)setAlbumName:(id)arg1;
 - (void)setCommentText:(id)arg1;

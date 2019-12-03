@@ -75,6 +75,7 @@
 @property (nonatomic) <SKUITabBarControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) UIViewController *floatingOverlayViewController;
+@property (nonatomic) long long forcedUserInterfaceStyle;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) UINavigationController *moreNavigationController;
 @property (nonatomic) bool scrollEnabled;

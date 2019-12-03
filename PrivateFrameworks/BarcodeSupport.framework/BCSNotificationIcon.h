@@ -6,13 +6,15 @@
     <BCSAction> * _action;
 }
 
-+ (id)NFCCodeSectionIcon;
-+ (id)QRCodeSectionIcon;
+@property (nonatomic, readonly, copy) NSURL *imageURL;
+
++ (id)nfcIcon;
++ (id)qrCodeIcon;
 
 - (void).cxx_destruct;
-- (id)_notificationIconDataForApp:(id)arg1 constraints:(id)arg2;
-- (id)_notificationIconDataForImage:(struct CGImage { }*)arg1 constraints:(id)arg2;
-- (id)imageDataForConstraints:(id)arg1;
+- (id)_notificationIconBaseURL;
+- (id)_notificationIconDataURLForApp:(id)arg1 scale:(float)arg2;
+- (id)imageURL;
 - (id)initWithAction:(id)arg1;
 
 @end

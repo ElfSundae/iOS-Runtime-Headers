@@ -9,16 +9,17 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+// Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
+
 - (id)additionalHTTPHeaders;
 - (id)additionalURLQueryItems;
-- (int)dataRequestKindForRequest:(id)arg1;
-- (id)debugRequestName;
-- (int)experimentDispatcherRequestTypeForRequest:(id)arg1;
-- (long long)experimentType;
+- (struct { int x1; union { int x_2_1_1; int x_2_1_2; int x_2_1_3; } x2; })dataRequestKindForRequest:(id)arg1 traits:(id)arg2;
 - (unsigned char)requestCounterInfoTypeForRequest:(id)arg1;
 - (id)serviceTypeNumber;
-- (bool)shouldThrottleRequests;
-- (id)throttleKey;
 - (unsigned long long)urlType;
+
+// Image: /System/Library/PrivateFrameworks/MediaMiningKit.framework/MediaMiningKit
+
+- (id)debugRequestName;
 
 @end

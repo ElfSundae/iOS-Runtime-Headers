@@ -10,7 +10,7 @@
     long long  _length;
     long long  _numHits;
     long long  _numRuns;
-    struct { id x1; } * _runs;
+    struct { id x1; long long x2; } * _runs;
 }
 
 + (id)allocWithZone:(struct _NSZone { }*)arg1;

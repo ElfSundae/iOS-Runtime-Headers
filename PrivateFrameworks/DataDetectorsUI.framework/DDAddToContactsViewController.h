@@ -4,7 +4,6 @@
 
 @interface DDAddToContactsViewController : UINavigationController <CNContactViewControllerDelegate, DDRemoteActionViewService> {
     DDAction * _action;
-    bool  _cancellable;
     CNContactViewController * _personViewController;
     <DDRemoteActionPresenter> * _proxy;
 }

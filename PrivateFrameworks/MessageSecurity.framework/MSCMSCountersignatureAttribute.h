@@ -6,7 +6,7 @@
     NSArray * _signerInfoSet;
 }
 
-@property (readonly) NSArray *signerInfoSet;
+@property (readonly, retain) NSArray *signerInfoSet;
 
 - (void).cxx_destruct;
 - (void)addSignerInfo:(id)arg1;

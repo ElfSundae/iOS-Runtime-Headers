@@ -10,7 +10,7 @@
     struct SCNMatrix4 { float x1; float x2; float x3; float x4; float x5; float x6; float x7; float x8; float x9; float x10; float x11; float x12; float x13; float x14; float x15; float x16; } * _contentTransform;
     unsigned char  _contentType;
     id  _contents;
-    struct __C3DEffectSlot { struct __CFRuntimeBase { unsigned long long x_1_1_1; unsigned long long x_1_1_2; } x1; struct C3DColor4 { union { float x_1_2_1[4]; struct { float x_2_3_1; float x_2_3_2; float x_2_3_3; float x_2_3_4; } x_1_2_2; } x_2_1_1; } x2; void *x3; union { struct __C3DImage {} *x_4_1_1; void *x_4_1_2; struct __C3DImageProxy {} *x_4_1_3; struct __C3DTexture {} *x_4_1_4; } x4; unsigned int x5 : 8; unsigned int x6 : 1; unsigned int x7 : 1; unsigned int x8 : 1; unsigned int x9 : 4; BOOL x10; struct __C3DTextureSampler {} *x11; union { unsigned char x_12_1_1; /* Warning: Unrecognized filer type: '3' using 'void*' */ void*x_12_1_2; long doublex_12_1_3; void*x_12_1_4; void*x_12_1_5; void*x_12_1_6; const int x_12_1_7; void*x_12_1_8; void*x_12_1_9; void*x_12_1_10; void*x_12_1_11; } *x12; float x13; int x14; void *x15; } * _customSlot;
+    struct __C3DEffectSlot { struct __CFRuntimeBase { unsigned long long x_1_1_1; _Atomic unsigned long long x_1_1_2; } x1; struct C3DColor4 { union { float x_1_2_1[4]; struct { float x_2_3_1; float x_2_3_2; float x_2_3_3; float x_2_3_4; } x_1_2_2; } x_2_1_1; } x2; void *x3; union { struct __C3DImage {} *x_4_1_1; void *x_4_1_2; struct __C3DImageProxy {} *x_4_1_3; struct __C3DTexture {} *x_4_1_4; } x4; unsigned int x5 : 8; unsigned int x6 : 1; unsigned int x7 : 1; unsigned int x8 : 1; unsigned int x9 : 4; BOOL x10; struct __C3DTextureSampler {} *x11; union { unsigned char x_12_1_1; /* Warning: Unrecognized filer type: '3' using 'void*' */ void*x_12_1_2; long doublex_12_1_3; void*x_12_1_4; void*x_12_1_5; void*x_12_1_6; const int x_12_1_7; void*x_12_1_8; void*x_12_1_9; void*x_12_1_10; void*x_12_1_11; } *x12; float x13; int x14; void *x15; } * _customSlot;
     NSString * _customSlotName;
     float  _intensity;
     unsigned int  _isCommonProfileProperty;
@@ -31,7 +31,6 @@
 }
 
 @property (readonly) NSArray *animationKeys;
-@property (nonatomic, retain) id borderColor;
 @property (nonatomic, retain) id contents;
 @property (nonatomic) struct SCNMatrix4 { float x1; float x2; float x3; float x4; float x5; float x6; float x7; float x8; float x9; float x10; float x11; float x12; float x13; float x14; float x15; float x16; } contentsTransform;
 @property (readonly, copy) NSString *debugDescription;
@@ -51,6 +50,7 @@
 + (struct __C3DImage { }*)_copyC3DImageFromImageData:(id)arg1 typeID:(unsigned long long)arg2;
 + (id)_copyImageFromC3DImage:(struct __C3DImage { }*)arg1;
 + (id)captureDeviceOutputConsumer;
++ (id)captureDeviceOutputConsumerWithOptions:(id)arg1;
 + (struct __C3DImage { }*)copyC3DImageFromImage:(id)arg1;
 + (struct __C3DImage { }*)copyC3DImageFromImage:(id)arg1 textureOptions:(int)arg2;
 + (struct __C3DImage { }*)copyC3DImageFromImage:(id)arg1 textureOptions:(int)arg2 wasCached:(bool*)arg3;
@@ -63,6 +63,7 @@
 - (const void*)__CFObject;
 - (void)__allocateContentTransformIfNeeded;
 - (bool)__removeAnimation:(id)arg1 forKey:(id)arg2;
+- (id)__runtimeResolvedPath;
 - (id)_animationPathForKey:(id)arg1;
 - (void)_clearContents;
 - (void)_copyAnimationsFrom:(id)arg1;
@@ -100,6 +101,7 @@
 - (void)_updateMaterialPropertyTransform:(union C3DMatrix4x4 { float x1[16]; /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x2[4]; void*x3; })arg1;
 - (void)_updateMaterialSKScene:(id)arg1;
 - (void)_updateMaterialSKTexture:(id)arg1;
+- (void)_updateMaterialTextureProvider:(id)arg1;
 - (void)_updateMaterialUIComponent:(id)arg1;
 - (void)addAnimation:(id)arg1;
 - (void)addAnimation:(id)arg1 forKey:(id)arg2;
@@ -117,7 +119,7 @@
 - (id)captureDeviceOutputConsumerSource;
 - (id)color;
 - (struct C3DColor4 { union { float x_1_1_1[4]; struct { float x_2_2_1; float x_2_2_2; float x_2_2_3; float x_2_2_4; } x_1_1_2; } x1; })color4;
-- (struct __C3DEffectCommonProfile { struct __CFRuntimeBase { unsigned long long x_1_1_1; unsigned long long x_1_1_2; } x1; struct __C3DMaterial {} *x2; int x3; struct __C3DEffectSlot {} *x4; struct __C3DEffectSlot {} *x5; struct __C3DEffectSlot {} *x6; struct __C3DEffectSlot {} *x7; struct __C3DEffectSlot {} *x8; struct __C3DEffectSlot {} *x9; struct __C3DEffectSlot {} *x10; struct __C3DEffectSlot {} *x11; struct __C3DEffectSlot {} *x12; struct __C3DEffectSlot {} *x13; struct __C3DEffectSlot {} *x14; struct __C3DEffectSlot {} *x15; struct __C3DEffectSlot {} *x16; float x17; float x18; float x19; float x20; float x21; unsigned char x22; long long x23; bool x24; bool x25; unsigned int x26 : 1; unsigned int x27 : 1; unsigned int x28 : 1; unsigned int x29 : 1; unsigned int x30 : 1; unsigned int x31 : 1; unsigned int x32 : 1; unsigned int x33 : 1; unsigned int x34 : 1; unsigned int x35 : 13; }*)commonProfile;
+- (struct __C3DEffectCommonProfile { struct __CFRuntimeBase { unsigned long long x_1_1_1; _Atomic unsigned long long x_1_1_2; } x1; struct __C3DMaterial {} *x2; int x3; struct __C3DEffectSlot {} *x4; struct __C3DEffectSlot {} *x5; struct __C3DEffectSlot {} *x6; struct __C3DEffectSlot {} *x7; struct __C3DEffectSlot {} *x8; struct __C3DEffectSlot {} *x9; struct __C3DEffectSlot {} *x10; struct __C3DEffectSlot {} *x11; struct __C3DEffectSlot {} *x12; struct __C3DEffectSlot {} *x13; struct __C3DEffectSlot {} *x14; struct __C3DEffectSlot {} *x15; struct __C3DEffectSlot {} *x16; struct __C3DEffectSlot {} *x17; struct __C3DEffectSlot {} *x18; struct __C3DEffectSlot {} *x19; float x20; float x21; float x22; float x23; float x24; unsigned char x25; long long x26; bool x27; bool x28; unsigned int x29 : 1; unsigned int x30 : 1; unsigned int x31 : 1; unsigned int x32 : 1; unsigned int x33 : 1; unsigned int x34 : 1; unsigned int x35 : 1; unsigned int x36 : 1; unsigned int x37 : 1; unsigned int x38 : 13; }*)commonProfile;
 - (id)content;
 - (id)contents;
 - (struct SCNMatrix4 { float x1; float x2; float x3; float x4; float x5; float x6; float x7; float x8; float x9; float x10; float x11; float x12; float x13; float x14; float x15; float x16; })contentsTransform;
@@ -127,8 +129,8 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)description;
-- (struct __C3DEffectSlot { struct __CFRuntimeBase { unsigned long long x_1_1_1; unsigned long long x_1_1_2; } x1; struct C3DColor4 { union { float x_1_2_1[4]; struct { float x_2_3_1; float x_2_3_2; float x_2_3_3; float x_2_3_4; } x_1_2_2; } x_2_1_1; } x2; void *x3; union { struct __C3DImage {} *x_4_1_1; void *x_4_1_2; struct __C3DImageProxy {} *x_4_1_3; struct __C3DTexture {} *x_4_1_4; } x4; unsigned int x5 : 8; unsigned int x6 : 1; unsigned int x7 : 1; unsigned int x8 : 1; unsigned int x9 : 4; BOOL x10; struct __C3DTextureSampler {} *x11; union { unsigned char x_12_1_1; /* Warning: Unrecognized filer type: '3' using 'void*' */ void*x_12_1_2; long doublex_12_1_3; void*x_12_1_4; void*x_12_1_5; void*x_12_1_6; const int x_12_1_7; void*x_12_1_8; void*x_12_1_9; void*x_12_1_10; void*x_12_1_11; } *x12; float x13; int x14; void *x15; }*)effectSlot;
-- (struct __C3DEffectSlot { struct __CFRuntimeBase { unsigned long long x_1_1_1; unsigned long long x_1_1_2; } x1; struct C3DColor4 { union { float x_1_2_1[4]; struct { float x_2_3_1; float x_2_3_2; float x_2_3_3; float x_2_3_4; } x_1_2_2; } x_2_1_1; } x2; void *x3; union { struct __C3DImage {} *x_4_1_1; void *x_4_1_2; struct __C3DImageProxy {} *x_4_1_3; struct __C3DTexture {} *x_4_1_4; } x4; unsigned int x5 : 8; unsigned int x6 : 1; unsigned int x7 : 1; unsigned int x8 : 1; unsigned int x9 : 4; BOOL x10; struct __C3DTextureSampler {} *x11; union { unsigned char x_12_1_1; /* Warning: Unrecognized filer type: '3' using 'void*' */ void*x_12_1_2; long doublex_12_1_3; void*x_12_1_4; void*x_12_1_5; void*x_12_1_6; const int x_12_1_7; void*x_12_1_8; void*x_12_1_9; void*x_12_1_10; void*x_12_1_11; } *x12; float x13; int x14; void *x15; }*)effectSlotCreateIfNeeded:(bool)arg1;
+- (struct __C3DEffectSlot { struct __CFRuntimeBase { unsigned long long x_1_1_1; _Atomic unsigned long long x_1_1_2; } x1; struct C3DColor4 { union { float x_1_2_1[4]; struct { float x_2_3_1; float x_2_3_2; float x_2_3_3; float x_2_3_4; } x_1_2_2; } x_2_1_1; } x2; void *x3; union { struct __C3DImage {} *x_4_1_1; void *x_4_1_2; struct __C3DImageProxy {} *x_4_1_3; struct __C3DTexture {} *x_4_1_4; } x4; unsigned int x5 : 8; unsigned int x6 : 1; unsigned int x7 : 1; unsigned int x8 : 1; unsigned int x9 : 4; BOOL x10; struct __C3DTextureSampler {} *x11; union { unsigned char x_12_1_1; /* Warning: Unrecognized filer type: '3' using 'void*' */ void*x_12_1_2; long doublex_12_1_3; void*x_12_1_4; void*x_12_1_5; void*x_12_1_6; const int x_12_1_7; void*x_12_1_8; void*x_12_1_9; void*x_12_1_10; void*x_12_1_11; } *x12; float x13; int x14; void *x15; }*)effectSlot;
+- (struct __C3DEffectSlot { struct __CFRuntimeBase { unsigned long long x_1_1_1; _Atomic unsigned long long x_1_1_2; } x1; struct C3DColor4 { union { float x_1_2_1[4]; struct { float x_2_3_1; float x_2_3_2; float x_2_3_3; float x_2_3_4; } x_1_2_2; } x_2_1_1; } x2; void *x3; union { struct __C3DImage {} *x_4_1_1; void *x_4_1_2; struct __C3DImageProxy {} *x_4_1_3; struct __C3DTexture {} *x_4_1_4; } x4; unsigned int x5 : 8; unsigned int x6 : 1; unsigned int x7 : 1; unsigned int x8 : 1; unsigned int x9 : 4; BOOL x10; struct __C3DTextureSampler {} *x11; union { unsigned char x_12_1_1; /* Warning: Unrecognized filer type: '3' using 'void*' */ void*x_12_1_2; long doublex_12_1_3; void*x_12_1_4; void*x_12_1_5; void*x_12_1_6; const int x_12_1_7; void*x_12_1_8; void*x_12_1_9; void*x_12_1_10; void*x_12_1_11; } *x12; float x13; int x14; void *x15; }*)effectSlotCreateIfNeeded:(bool)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)floatValue;
 - (void*)getC3DImageRef;
@@ -191,6 +193,7 @@
 - (void)setSkTexture:(id)arg1;
 - (void)setSpeed:(double)arg1 forAnimationKey:(id)arg2;
 - (void)setTextureComponents:(long long)arg1;
+- (void)setTextureProvider:(id)arg1;
 - (void)setUIView:(id)arg1;
 - (void)setUIWindow:(id)arg1;
 - (void)setWrapS:(long long)arg1;
@@ -199,7 +202,8 @@
 - (id)skTexture;
 - (id)slotName;
 - (long long)textureComponents;
-- (struct __C3DTextureSampler { struct __CFRuntimeBase { unsigned long long x_1_1_1; unsigned long long x_1_1_2; } x1; int x2; int x3; int x4; int x5; int x6; int x7; struct C3DColor4 { union { float x_1_2_1[4]; struct { float x_2_3_1; float x_2_3_2; float x_2_3_3; float x_2_3_4; } x_1_2_2; } x_8_1_1; } x8; float x9; unsigned char x10; int x11; unsigned long long x12; }*)textureSampler;
+- (id)textureProvider;
+- (struct __C3DTextureSampler { struct __CFRuntimeBase { unsigned long long x_1_1_1; _Atomic unsigned long long x_1_1_2; } x1; int x2; int x3; int x4; int x5; int x6; int x7; struct C3DColor4 { union { float x_1_2_1[4]; struct { float x_2_3_1; float x_2_3_2; float x_2_3_3; float x_2_3_4; } x_1_2_2; } x_8_1_1; } x8; float x9; unsigned char x10; int x11; unsigned long long x12; }*)textureSampler;
 - (void)unbindAnimatablePath:(id)arg1;
 - (void)unlinkCustomPropertyWithParent:(id)arg1;
 - (long long)wrapS;

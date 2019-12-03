@@ -10,7 +10,7 @@
     HMFTimer * _keepAliveByteSendTimer;
     IDSDeviceConnection * _keepAliveConnection;
     unsigned char  _keepAliveCounter;
-    HMDCameraSessionID * _sessionID;
+    HMDCameraStreamSessionID * _sessionID;
     NSObject<OS_dispatch_source> * _socketReceiveSource;
     IDSDeviceConnection * _watchAudioConnection;
     IDSDeviceConnection * _watchVideoConnection;
@@ -27,7 +27,7 @@
 @property (nonatomic, retain) HMFTimer *keepAliveByteSendTimer;
 @property (nonatomic, retain) IDSDeviceConnection *keepAliveConnection;
 @property (nonatomic) unsigned char keepAliveCounter;
-@property (nonatomic, readonly) HMDCameraSessionID *sessionID;
+@property (nonatomic, readonly) HMDCameraStreamSessionID *sessionID;
 @property (nonatomic, retain) NSObject<OS_dispatch_source> *socketReceiveSource;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) IDSDeviceConnection *watchAudioConnection;

@@ -9,11 +9,16 @@
     NSMutableArray * _disabledItemIDs;
     bool  _dismissingDueToInterfaceAction;
     NSMutableArray * _enabledTodayItemIDs;
-    NSMutableArray * _enabledWidgetItemIDs;
+    NSMutableArray * _favoriteItemIDs;
     NSArray * _groupIDs;
     UINavigationController * _navigationController;
+    NSArray * _originalFavoriteItemIDs;
+    bool  _showsFavorites;
+    bool  _showsPinSection;
     id  _statusBarColorAssertion;
     UITableViewController * _tableViewController;
+    bool  _widgetsPinned;
+    bool  _widgetsPinnedOriginally;
 }
 
 @property (nonatomic) <WGWidgetListEditViewControllerDataSource> *dataSource;
@@ -22,8 +27,12 @@
 @property (readonly, copy) NSString *description;
 @property (getter=_isDismissingDueToInterfaceAction, setter=_setDismissingDueToInterfaceAction:, nonatomic) bool dismissingDueToInterfaceAction;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) bool showsFavorites;
+@property (nonatomic) bool showsPinSection;
 @property (getter=_statusBarColorAssertion, setter=_setStatusBarColorAssertion:, nonatomic, retain) id statusBarColorAssertion;
 @property (readonly) Class superclass;
+@property (getter=areWidgetsPinned, nonatomic) bool widgetsPinned;
+@property (getter=wereWidgetsPinnedOriginally, nonatomic) bool widgetsPinnedOriginally;
 
 - (void).cxx_destruct;
 - (void)_acknowledgeItemsAndResetNewWidgetsCount;
@@ -53,14 +62,25 @@
 - (void)_setStatusBarColorAssertion:(id)arg1;
 - (id)_statusBarColorAssertion;
 - (id)_widgetListEditViewTableHeaderView;
+- (bool)areWidgetsPinned;
 - (id)dataSource;
-- (void)dealloc;
 - (id)delegate;
+- (long long)disabledWidgetsSection;
+- (long long)favoritesSection;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (long long)pinSection;
+- (void)pinSwitchChanaged:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)setDataSource:(id)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setShowsFavorites:(bool)arg1;
+- (void)setShowsPinSection:(bool)arg1;
+- (void)setWidgetsPinned:(bool)arg1;
+- (void)setWidgetsPinnedOriginally:(bool)arg1;
+- (bool)showsFavorites;
+- (bool)showsFavoritesSection;
+- (bool)showsPinSection;
 - (bool)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (bool)tableView:(id)arg1 canMoveRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
@@ -71,13 +91,17 @@
 - (bool)tableView:(id)arg1 shouldIndentWhileEditingRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 targetIndexPathForMoveFromRowAtIndexPath:(id)arg2 toProposedIndexPath:(id)arg3;
 - (id)tableView:(id)arg1 titleForDeleteConfirmationButtonForRowAtIndexPath:(id)arg2;
+- (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
+- (long long)todaySection;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;
 - (void)viewWillLayoutSubviews;
+- (bool)wereWidgetsPinnedOriginally;
 
 @end

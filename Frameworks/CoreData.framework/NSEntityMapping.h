@@ -8,7 +8,7 @@
     NSData * _destinationEntityVersionHash;
     struct __entityMappingFlags { 
         unsigned int _isInUse : 1; 
-        unsigned int _changeIsConstraintOnly : 1; 
+        unsigned int _changeIsSchemaCompatible : 1; 
         unsigned int _reservedEntityMapping : 30; 
     }  _entityMappingFlags;
     NSString * _entityMigrationPolicyClassName;
@@ -41,13 +41,13 @@
 
 - (void)_addAttributeMapping:(id)arg1;
 - (void)_addRelationshipMapping:(id)arg1;
-- (bool)_changeIsConstraintOnly;
+- (bool)_changeIsSchemaCompatible;
 - (void)_createCachesAndOptimizeState;
 - (bool)_hasInferredMappingNeedingValidation;
 - (id)_initWithSourceEntityDescription:(id)arg1 destinationEntityDescription:(id)arg2;
 - (id)_mappingsByName;
 - (id)_migrationPolicy;
-- (void)_setChangeIsConstraintOnly:(bool)arg1;
+- (void)_setChangeIsSchemaCompatible:(bool)arg1;
 - (void)_setIsEditable:(bool)arg1;
 - (void)_throwIfNotEditable;
 - (id)attributeMappings;

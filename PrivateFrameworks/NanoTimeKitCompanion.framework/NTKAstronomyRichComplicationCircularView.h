@@ -8,9 +8,14 @@
 
 - (void).cxx_destruct;
 - (void)_applyPausedUpdate;
+- (void)_enumerateQuadViewsWithBlock:(id /* block */)arg1;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
+- (void)_setupContentView;
 - (id)init;
 - (void)layoutSubviews;
-- (void)renderSynchronouslyWithImageQueueDiscard:(bool)arg1;
+- (void)renderSynchronouslyWithImageQueueDiscard:(bool)arg1 inGroup:(id)arg2;
+- (void)setTimeTravelDate:(id)arg1 animated:(bool)arg2;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 
 @end

@@ -6,7 +6,10 @@
 @required
 
 - (double)ascender;
+- (long long)computedNumberOfLines;
 - (double)descender;
 - (double)firstLineLeading;
+- (double)lastLineDescent;
+- (void)setOverrideMaximumNumberOfLines:(long long)arg1;
 
 @end

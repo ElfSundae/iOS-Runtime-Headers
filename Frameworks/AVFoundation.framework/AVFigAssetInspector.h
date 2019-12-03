@@ -3,13 +3,13 @@
  */
 
 @interface AVFigAssetInspector : AVAssetInspector {
-    long long  _checkIsStreamingOnce;
+    AVDispatchOnce * _checkIsStreamingOnce;
     AVDisplayCriteria * _displayCriteria;
     struct OpaqueFigAsset { } * _figAsset;
     struct OpaqueFigFormatReader { } * _formatReader;
-    long long  _formatReaderOnce;
+    AVDispatchOnce * _formatReaderOnce;
     bool  _isStreaming;
-    long long  _makeDisplayCriteriaOnce;
+    AVDispatchOnce * _makeDisplayCriteriaOnce;
     bool  didCheckForSaveRestriction;
     bool  hasSaveRestriction;
 }
@@ -48,13 +48,15 @@
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })duration;
 - (id)figChapterGroupInfo;
 - (id)figChapters;
-- (void)finalize;
+- (long long)firstFragmentSequenceNumber;
+- (long long)fragmentCount;
 - (bool)hasProtectedContent;
 - (unsigned long long)hash;
 - (id)identifyingTag;
 - (id)identifyingTagClass;
 - (id)initWithFigAsset:(struct OpaqueFigAsset { }*)arg1;
 - (bool)isCompatibleWithAirPlayVideo;
+- (bool)isCompatibleWithPhotosTranscodingServiceWithOptions:(id)arg1;
 - (bool)isCompatibleWithSavedPhotosAlbum;
 - (bool)isComposable;
 - (bool)isEqual:(id)arg1;
@@ -62,8 +64,10 @@
 - (bool)isPlayable;
 - (bool)isReadable;
 - (id)lyrics;
+- (id)makePropertyListForProxyWithOptions:(id)arg1;
 - (struct CGSize { double x1; double x2; })maximumVideoResolution;
 - (id)metadataForFormat:(id)arg1;
+- (struct { long long x1; int x2; unsigned int x3; long long x4; })minimumTimeOffsetFromLive;
 - (struct CGSize { double x1; double x2; })naturalSize;
 - (int)naturalTimeScale;
 - (id)originalNetworkContentURL;

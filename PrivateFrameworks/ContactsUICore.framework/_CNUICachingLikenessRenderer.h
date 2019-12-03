@@ -5,10 +5,14 @@
 @interface _CNUICachingLikenessRenderer : NSObject <CNUILikenessRendering> {
     CNQueue * _evictionQueue;
     CNCache * _imageCache;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _lock;
     <CNSchedulerProvider> * _mainThreadSchedulerProvider;
     NSObject<OS_dispatch_source> * _memoryMonitoringSource;
     _CNUILikenessRenderer * _renderer;
     <CNSchedulerProvider> * _schedulerProvider;
+    bool  _shouldRequireMainThread;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -20,6 +24,7 @@
 @property (nonatomic, retain) NSObject<OS_dispatch_source> *memoryMonitoringSource;
 @property (nonatomic, readonly) _CNUILikenessRenderer *renderer;
 @property (nonatomic, readonly) <CNSchedulerProvider> *schedulerProvider;
+@property (nonatomic, readonly) bool shouldRequireMainThread;
 @property (readonly) Class superclass;
 
 + (id)_cacheKeyForContacts:(id)arg1 scope:(id)arg2;
@@ -32,21 +37,22 @@
 - (id)evictionQueue;
 - (id)imageCache;
 - (id)initWithLikenessRenderer:(id)arg1 schedulerProvider:(id)arg2;
-- (id)initWithLikenessRenderer:(id)arg1 schedulerProvider:(id)arg2 capacity:(unsigned long long)arg3;
-- (id)initialRenderedLikenessesForContacts:(id)arg1 scope:(id)arg2;
+- (id)initWithLikenessRenderer:(id)arg1 schedulerProvider:(id)arg2 capacity:(unsigned long long)arg3 shouldRequireMainThread:(bool)arg4;
+- (id)initialRenderedLikenessesForContacts:(id)arg1 scope:(id)arg2 workScheduler:(id)arg3;
 - (id)loadingPlaceholderForContactCount:(unsigned long long)arg1 scope:(id)arg2;
 - (id)mainThreadSchedulerProvider;
 - (id)memoryMonitoringSource;
 - (void)refreshCacheKey:(id)arg1;
 - (id)renderedBasicMonogramFromString:(id)arg1 scope:(id)arg2;
-- (id)renderedLikenessesForContacts:(id)arg1 scope:(id)arg2;
+- (id)renderedLikenessesForContacts:(id)arg1 scope:(id)arg2 workScheduler:(id)arg3;
 - (id)renderer;
-- (id)resizeCacheEntry:(id)arg1 withScope:(id)arg2;
+- (id)resizeCacheEntry:(id)arg1 withScope:(id)arg2 workScheduler:(id)arg3;
 - (id)schedulerProvider;
 - (void)setEvictionQueue:(id)arg1;
 - (void)setImageCache:(id)arg1;
 - (void)setMainThreadSchedulerProvider:(id)arg1;
 - (void)setMemoryMonitoringSource:(id)arg1;
+- (bool)shouldRequireMainThread;
 - (id)startCacheEntryWithObservable:(id)arg1 contacts:(id)arg2 scope:(id)arg3;
 
 @end

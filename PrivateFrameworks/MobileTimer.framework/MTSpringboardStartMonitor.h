@@ -5,7 +5,7 @@
 @interface MTSpringboardStartMonitor : NSObject {
     bool  _isSpringBoardStarted;
     int  _notifyToken;
-    NSHashTable * _observers;
+    MTObserverStore * _observers;
     NSObject<OS_dispatch_queue> * _queue;
 }
 

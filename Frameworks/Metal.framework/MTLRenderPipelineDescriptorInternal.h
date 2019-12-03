@@ -29,7 +29,7 @@
         unsigned long long paddingToRemove; 
         unsigned long long colorSampleCount; 
         union { 
-            unsigned int miscHash; 
+            unsigned int miscHash[2]; 
             struct { 
                 unsigned int alphaToCoverageEnabled : 1; 
                 unsigned int alphaToOneEnabled : 1; 
@@ -40,7 +40,7 @@
                 unsigned int openGLMode : 1; 
                 unsigned int sampleCoverageInvert : 1; 
                 unsigned int private4 : 1; 
-                unsigned int private5 : 1; 
+                unsigned int vertexAmplificationMode : 1; 
                 unsigned int twoSideEnabled : 1; 
                 unsigned int pointSizeOutputVS : 1; 
                 unsigned int pointCoordLowerLeft : 1; 
@@ -51,11 +51,12 @@
                 unsigned int logicOp : 4; 
                 unsigned int logicOpEnabled : 1; 
                 unsigned int forceResourceIndex : 1; 
+                unsigned int forceSoftwareVertexFetch : 1; 
             } ; 
         } ; 
         unsigned int vertexDepthCompareClampMask; 
         unsigned int fragmentDepthCompareClampMask; 
-        unsigned int resourceIndex; 
+        unsigned long long resourceIndex; 
         NSString *label; 
         <MTLFunction> *vertexFunction; 
         <MTLFunction> *fragmentFunction; 
@@ -64,12 +65,16 @@
         MTLPipelineBufferDescriptorArrayInternal *fragmentBuffers; 
         NSDictionary *driverCompilerOptions; 
         <MTLPipelineLibrary> *pipelineLibrary; 
+        void *pad0; 
+        void *pad1; 
+        unsigned int maxVertexAmplificationCount; 
     }  _private;
 }
 
+@property (nonatomic) bool forceSoftwareVertexFetch;
 @property (nonatomic) unsigned long long postVertexDumpBufferIndex;
 
-- (const struct MTLRenderPipelineDescriptorPrivate { id x1; /* Warning: Unrecognized filer type: '8' using 'void*' */ void*x2; unsigned long long x3; void*x4; unsigned long long x5; unsigned long long x6; unsigned long long x7; unsigned long long x8; bool x9; unsigned long long x10; unsigned long long x11; unsigned long long x12; unsigned long long x13; unsigned long long x14; bool x15; union { unsigned long long x_16_1_1; unsigned long long x_16_1_2; } x16; unsigned long long x17; union { unsigned int x_18_1_1; float x_18_1_2; } x18; unsigned long long x19; unsigned long long x20; union { unsigned int x_21_1_1; struct { unsigned int x_2_2_1 : 1; unsigned int x_2_2_2 : 1; unsigned int x_2_2_3 : 1; unsigned int x_2_2_4 : 2; unsigned int x_2_2_5 : 1; unsigned int x_2_2_6 : 1; unsigned int x_2_2_7 : 1; unsigned int x_2_2_8 : 1; unsigned int x_2_2_9 : 1; unsigned int x_2_2_10 : 1; unsigned int x_2_2_11 : 1; unsigned int x_2_2_12 : 1; unsigned int x_2_2_13 : 1; unsigned int x_2_2_14 : 1; unsigned int x_2_2_15 : 8; unsigned int x_2_2_16 : 3; unsigned int x_2_2_17 : 1; unsigned int x_2_2_18 : 4; unsigned int x_2_2_19 : 1; unsigned int x_2_2_20 : 1; } x_21_1_2; } x21; }*)_descriptorPrivate;
+- (const struct MTLRenderPipelineDescriptorPrivate { id x1; unsigned long long x2[8]; unsigned long long x3; unsigned long long x4; unsigned long long x5; unsigned long long x6; bool x7; unsigned long long x8; unsigned long long x9; unsigned long long x10; unsigned long long x11; unsigned long long x12; bool x13; union { unsigned long long x_14_1_1; unsigned long long x_14_1_2; } x14; unsigned long long x15; union { unsigned int x_16_1_1; float x_16_1_2; } x16; unsigned long long x17; unsigned long long x18; union { unsigned int x_19_1_1[2]; struct { unsigned int x_2_2_1 : 1; unsigned int x_2_2_2 : 1; unsigned int x_2_2_3 : 1; unsigned int x_2_2_4 : 2; unsigned int x_2_2_5 : 1; unsigned int x_2_2_6 : 1; unsigned int x_2_2_7 : 1; unsigned int x_2_2_8 : 1; unsigned int x_2_2_9 : 1; unsigned int x_2_2_10 : 1; unsigned int x_2_2_11 : 1; unsigned int x_2_2_12 : 1; unsigned int x_2_2_13 : 1; unsigned int x_2_2_14 : 1; unsigned int x_2_2_15 : 8; unsigned int x_2_2_16 : 3; unsigned int x_2_2_17 : 1; unsigned int x_2_2_18 : 4; unsigned int x_2_2_19 : 1; unsigned int x_2_2_20 : 1; unsigned int x_2_2_21 : 1; } x_19_1_2; } x19; }*)_descriptorPrivate;
 - (unsigned long long)alphaTestFunction;
 - (void)attachVertexDescriptor:(id)arg1;
 - (unsigned char)clipDistanceEnableMask;
@@ -82,6 +87,7 @@
 - (id)driverCompilerOptions;
 - (id)fastBlendDescriptorAtIndex:(unsigned long long)arg1;
 - (bool)forceResourceIndex;
+- (bool)forceSoftwareVertexFetch;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (id)fragmentBuffers;
 - (unsigned int)fragmentDepthCompareClampMask;
@@ -105,6 +111,8 @@
 - (id)label;
 - (unsigned long long)logicOperation;
 - (unsigned long long)maxTessellationFactor;
+- (unsigned long long)maxVertexAmplificationCount;
+- (id)newSerializedFragmentDataWithFlags:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (id)newSerializedVertexDataWithFlags:(unsigned long long)arg1 error:(id*)arg2;
 - (id)newSerializedVertexDataWithFlags:(unsigned long long)arg1 options:(unsigned long long)arg2 error:(id*)arg3;
 - (bool)openGLModeEnabled;
@@ -128,6 +136,7 @@
 - (void)setDepthStencilWriteDisabled:(bool)arg1;
 - (void)setDriverCompilerOptions:(id)arg1;
 - (void)setForceResourceIndex:(bool)arg1;
+- (void)setForceSoftwareVertexFetch:(bool)arg1;
 - (void)setFragmentDepthCompareClampMask:(unsigned int)arg1;
 - (void)setFragmentFunction:(id)arg1;
 - (void)setInputPrimitiveTopology:(unsigned long long)arg1;
@@ -135,6 +144,7 @@
 - (void)setLogicOperation:(unsigned long long)arg1;
 - (void)setLogicOperationEnabled:(bool)arg1;
 - (void)setMaxTessellationFactor:(unsigned long long)arg1;
+- (void)setMaxVertexAmplificationCount:(unsigned long long)arg1;
 - (void)setOpenGLModeEnabled:(bool)arg1;
 - (void)setPipelineLibrary:(id)arg1;
 - (void)setPointCoordLowerLeft:(bool)arg1;
@@ -157,6 +167,7 @@
 - (void)setTessellationOutputWindingOrder:(unsigned long long)arg1;
 - (void)setTessellationPartitionMode:(unsigned long long)arg1;
 - (void)setTwoSideEnabled:(bool)arg1;
+- (void)setVertexAmplificationMode:(unsigned long long)arg1;
 - (void)setVertexDepthCompareClampMask:(unsigned int)arg1;
 - (void)setVertexDescriptor:(id)arg1;
 - (void)setVertexEnabled:(bool)arg1;
@@ -169,6 +180,7 @@
 - (unsigned long long)tessellationOutputWindingOrder;
 - (unsigned long long)tessellationPartitionMode;
 - (void)validateWithDevice:(id)arg1;
+- (unsigned long long)vertexAmplificationMode;
 - (id)vertexBuffers;
 - (unsigned int)vertexDepthCompareClampMask;
 - (id)vertexDescriptor;

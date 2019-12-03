@@ -13,6 +13,7 @@
 
 // Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
 
++ (id)addressMarkerStyleAttributes;
 + (id)airportStyleAttributes;
 + (id)calendarEventStyleAttributes;
 + (id)carRentalStyleAttributes;
@@ -28,6 +29,7 @@
 + (id)styleAttributesForPlace:(id)arg1;
 + (bool)supportsSecureCoding;
 + (id)ticketedEventStyleAttributes;
++ (id)transitStationStyleAttributes;
 + (id)workStyleAttributes;
 
 - (void).cxx_destruct;
@@ -59,6 +61,7 @@
 - (bool)isLandmarkPOI;
 - (bool)isRailway;
 - (bool)isRamp;
+- (bool)isRoadPedestrianNavigable;
 - (bool)isSearchResult;
 - (bool)isSuperset:(id)arg1;
 - (bool)isTransit;
@@ -72,7 +75,9 @@
 - (void)replaceAttributes:(const struct { unsigned int x1; int x2; }*)arg1 count:(unsigned int)arg2;
 - (void)setExtAttributes:(const struct { unsigned int x1; unsigned long long x2; }*)arg1 count:(unsigned int)arg2;
 - (bool)shouldSuppress3DBuildingStrokes;
+- (int)sidewalkSide;
 - (void)sort;
+- (int)walkableSide;
 
 // Image: /System/Library/Frameworks/MapKit.framework/MapKit
 
@@ -82,8 +87,10 @@
 + (id)markerStyleAttributes;
 + (id)styleAttributesForCalloutWithAttributes:(id)arg1;
 + (id)styleAttributesForDraggingWithAttributes:(id)arg1;
++ (id)styleAttributesForSearchResultWithAttributes:(id)arg1;
 + (id)styleAttributesForTrafficCameraType:(long long)arg1 isAboveThreshold:(bool)arg2;
 + (id)styleAttributesForTrafficIncidentType:(long long)arg1;
++ (id)styleAttributesForTransitType:(long long)arg1;
 + (id)trainStationStyleAttributes;
 
 @end

@@ -6,6 +6,7 @@
 @required
 
 - (NSString *)decoderVersion;
+- (NUJSRAWNoiseReductionProperties *)noiseReductionProperties;
 - (double)temperature;
 - (double)tint;
 

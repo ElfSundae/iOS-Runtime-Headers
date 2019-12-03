@@ -2,37 +2,31 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaSpeechTranscription : PBCodable <NSCopying> {
+@interface SISchemaSpeechTranscription : PBCodable <NSSecureCoding, SISchemaSpeechTranscription> {
     NSString * _aceID;
-    struct { 
-        unsigned int speechTranscriptionType : 1; 
-    }  _has;
     int  _speechTranscriptionType;
 }
 
-@property (nonatomic, retain) NSString *aceID;
-@property (nonatomic, readonly) bool hasAceID;
-@property (nonatomic) bool hasSpeechTranscriptionType;
+@property (nonatomic, copy) NSString *aceID;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic) int speechTranscriptionType;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (int)StringAsSpeechTranscriptionType:(id)arg1;
 - (id)aceID;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (bool)hasAceID;
-- (bool)hasSpeechTranscriptionType;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (bool)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
+- (id)jsonData;
 - (bool)readFrom:(id)arg1;
 - (void)setAceID:(id)arg1;
-- (void)setHasSpeechTranscriptionType:(bool)arg1;
 - (void)setSpeechTranscriptionType:(int)arg1;
 - (int)speechTranscriptionType;
-- (id)speechTranscriptionTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

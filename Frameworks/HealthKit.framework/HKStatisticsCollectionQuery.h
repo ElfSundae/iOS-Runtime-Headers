@@ -10,6 +10,7 @@
     NSNumber * _lastAnchor;
     unsigned long long  _mergeStrategy;
     unsigned long long  _options;
+    bool  _requireQuantityType;
     NSMutableArray * _results;
     HKStatisticsCollection * _statisticsCollection;
     id /* block */  _statisticsUpdateHandler;
@@ -40,6 +41,7 @@
 - (void)client_deliverStatisticsBatch:(id)arg1 resetStatistics:(bool)arg2 isFinal:(bool)arg3 anchor:(id)arg4 query:(id)arg5;
 - (void)client_deliverUpdatedStatistics:(id)arg1 anchor:(id)arg2 query:(id)arg3;
 - (id)initWithQuantityType:(id)arg1 quantitySamplePredicate:(id)arg2 options:(unsigned long long)arg3 anchorDate:(id)arg4 intervalComponents:(id)arg5;
+- (id)initWithSampleType:(id)arg1 samplePredicate:(id)arg2 options:(unsigned long long)arg3 anchorDate:(id)arg4 intervalComponents:(id)arg5;
 - (id /* block */)initialResultsHandler;
 - (id)intervalComponents;
 - (id)lastAnchor;

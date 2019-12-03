@@ -81,7 +81,7 @@
 - (id)duplicateFilterSet;
 - (id)duplicateFilterSetInUidFormWithTable:(id)arg1;
 - (void)enableFilterSet:(bool)arg1;
-- (void)encodeToArchive:(struct HiddenStatesArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct UUID {} *x5; struct HiddenStateExtentArchive {} *x6; struct HiddenStateExtentArchive {} *x7; }*)arg1 archiver:(id)arg2;
+- (void)encodeToArchive:(struct HiddenStatesArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct UUID {} *x5; struct HiddenStateExtentArchive {} *x6; struct HiddenStateExtentArchive {} *x7; }*)arg1 archiver:(id)arg2;
 - (id)expandSummaryGroupUIDs:(id)arg1;
 - (id)filterSet;
 - (void)filterSetUpdated;
@@ -131,7 +131,7 @@
 - (id)indexesOfVisibleRowsInCellRange:(struct TSUCellRect { struct TSUCellCoord { unsigned int x_1_1_1; unsigned short x_1_1_2; bool x_1_1_3; bool x_1_1_4; } x1; struct { unsigned int x_2_1_1; unsigned int x_2_1_2; } x2; })arg1;
 - (id)indexesOfVisibleRowsInCellRegion:(id)arg1;
 - (id)indexesOfVisibleRowsInRowRange:(id)arg1;
-- (id)initWithArchive:(const struct HiddenStatesArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct UUID {} *x5; struct HiddenStateExtentArchive {} *x6; struct HiddenStateExtentArchive {} *x7; }*)arg1 unarchiver:(id)arg2 forHiddenStatesOwner:(id)arg3;
+- (id)initWithArchive:(const struct HiddenStatesArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct UUID {} *x5; struct HiddenStateExtentArchive {} *x6; struct HiddenStateExtentArchive {} *x7; }*)arg1 unarchiver:(id)arg2 forHiddenStatesOwner:(id)arg3;
 - (id)initWithHiddenStatesOwner:(id)arg1;
 - (id)initWithHiddenStatesOwner:(id)arg1 hiddenStatesUid:(const struct UUIDData<TSP::UUIDData> { union { unsigned char x_1_1_1[16]; struct { unsigned char x_2_2_1; unsigned char x_2_2_2; unsigned char x_2_2_3; unsigned char x_2_2_4; unsigned char x_2_2_5; unsigned char x_2_2_6; unsigned char x_2_2_7; unsigned char x_2_2_8; unsigned char x_2_2_9; unsigned char x_2_2_10; unsigned char x_2_2_11; unsigned char x_2_2_12; unsigned char x_2_2_13; unsigned char x_2_2_14; unsigned char x_2_2_15; unsigned char x_2_2_16; } x_1_1_2; struct { unsigned long long x_3_2_1; unsigned long long x_3_2_2; } x_1_1_3; } x1; }*)arg2;
 - (void)insertNewColumnsInBaseRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;

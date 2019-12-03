@@ -10,7 +10,7 @@
 
 - (void).cxx_destruct;
 - (void)blacklistBundleId:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (void)enumerateBlacklistRangesForBundleId:(id)arg1 block:(id /* block */)arg2;
 - (id)init;
 - (id)initWithContentsOfFile:(id)arg1;

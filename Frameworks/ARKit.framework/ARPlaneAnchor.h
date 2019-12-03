@@ -6,6 +6,7 @@
     long long  _alignment;
     void _center;
     long long  _classification;
+    NSString * _classificationLabel;
     long long  _classificationStatus;
     void _extent;
     ARPlaneGeometry * _geometry;
@@ -18,6 +19,7 @@
 @property (nonatomic, readonly) long long alignment;
 @property (nonatomic) void center;
 @property (nonatomic) long long classification;
+@property (nonatomic, retain) NSString *classificationLabel;
 @property (nonatomic) long long classificationStatus;
 @property (nonatomic) void extent;
 @property (nonatomic, retain) ARPlaneGeometry *geometry;
@@ -36,6 +38,7 @@
 - (float)area;
 - (void)center;
 - (long long)classification;
+- (id)classificationLabel;
 - (long long)classificationStatus;
 - (id)debugQuickLookObject;
 - (id)description;
@@ -49,6 +52,7 @@
 - (id)possibleClassifications;
 - (void)setCenter;
 - (void)setClassification:(long long)arg1;
+- (void)setClassificationLabel:(id)arg1;
 - (void)setClassificationStatus:(long long)arg1;
 - (void)setExtent;
 - (void)setGeometry:(id)arg1;

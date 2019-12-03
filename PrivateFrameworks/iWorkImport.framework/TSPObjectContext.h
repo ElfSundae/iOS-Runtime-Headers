@@ -19,27 +19,27 @@
     bool  _isSupportModified;
     bool  _isWaitingForEndSave;
     long long  _lastObjectIdentifier;
-    struct hash_map<const long long, NSMutableArray *, TSP::IdentifierHash, std::__1::equal_to<const long long>, std::__1::allocator<std::__1::pair<const long long, NSMutableArray *> > > { 
-        struct __hash_table<std::__1::pair<const long long, NSMutableArray *>, __gnu_cxx::__hash_map_hasher<std::__1::pair<const long long, NSMutableArray *>, TSP::IdentifierHash, true>, __gnu_cxx::__hash_map_equal<std::__1::pair<const long long, NSMutableArray *>, std::__1::equal_to<const long long>, true>, std::__1::allocator<std::__1::pair<const long long, NSMutableArray *> > > { 
-            struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, NSMutableArray *>, void *> *> *[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, NSMutableArray *>, void *> *> *> > > { 
-                struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, NSMutableArray *>, void *> *> **, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, NSMutableArray *>, void *> *> *> > > { 
-                    struct __hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, NSMutableArray *>, void *> *> {} **__value_; 
-                    struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, NSMutableArray *>, void *> *> *> > { 
-                        struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, NSMutableArray *>, void *> *> *> > { 
+    struct unordered_map<const long long, NSMutableArray *, TSP::IdentifierHash, std::__1::equal_to<const long long>, std::__1::allocator<std::__1::pair<const long long, NSMutableArray *> > > { 
+        struct __hash_table<std::__1::__hash_value_type<const long long, NSMutableArray *>, std::__1::__unordered_map_hasher<const long long, std::__1::__hash_value_type<const long long, NSMutableArray *>, TSP::IdentifierHash, true>, std::__1::__unordered_map_equal<const long long, std::__1::__hash_value_type<const long long, NSMutableArray *>, std::__1::equal_to<const long long>, true>, std::__1::allocator<std::__1::__hash_value_type<const long long, NSMutableArray *> > > { 
+            struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, NSMutableArray *>, void *> *> *[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, NSMutableArray *>, void *> *> *> > > { 
+                struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, NSMutableArray *>, void *> *> **, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, NSMutableArray *>, void *> *> *> > > { 
+                    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, NSMutableArray *>, void *> *> {} **__value_; 
+                    struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, NSMutableArray *>, void *> *> *> > { 
+                        struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, NSMutableArray *>, void *> *> *> > { 
                             unsigned long long __value_; 
                         } __data_; 
                     } __value_; 
                 } __ptr_; 
             } __bucket_list_; 
-            struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, NSMutableArray *>, void *> *>, std::__1::allocator<std::__1::__hash_node<std::__1::pair<const long long, NSMutableArray *>, void *> > > { 
-                struct __hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, NSMutableArray *>, void *> *> { 
-                    struct __hash_node_base<std::__1::__hash_node<std::__1::pair<const long long, NSMutableArray *>, void *> *> {} *__next_; 
+            struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, NSMutableArray *>, void *> *>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<const long long, NSMutableArray *>, void *> > > { 
+                struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, NSMutableArray *>, void *> *> { 
+                    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const long long, NSMutableArray *>, void *> *> {} *__next_; 
                 } __value_; 
             } __p1_; 
-            struct __compressed_pair<unsigned long, __gnu_cxx::__hash_map_hasher<std::__1::pair<const long long, NSMutableArray *>, TSP::IdentifierHash, true> > { 
+            struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<const long long, std::__1::__hash_value_type<const long long, NSMutableArray *>, TSP::IdentifierHash, true> > { 
                 unsigned long long __value_; 
             } __p2_; 
-            struct __compressed_pair<float, __gnu_cxx::__hash_map_equal<std::__1::pair<const long long, NSMutableArray *>, std::__1::equal_to<const long long>, true> > { 
+            struct __compressed_pair<float, std::__1::__unordered_map_equal<const long long, std::__1::__hash_value_type<const long long, NSMutableArray *>, std::__1::equal_to<const long long>, true> > { 
                 float __value_; 
             } __p3_; 
         } __table_; 

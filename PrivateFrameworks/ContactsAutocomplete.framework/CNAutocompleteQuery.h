@@ -10,6 +10,7 @@
     CNAutocompleteFetchRequest * _request;
     <CNScheduler> * _scheduler;
     <CNAutocompleteSearchProvider> * _searchProvider;
+    <CNAutocompleteSourceInclusionPolicy> * _sourceInclusionPolicy;
     CNAutocompleteUserSession * _userSession;
 }
 
@@ -23,6 +24,7 @@
 @property (copy) CNAutocompleteFetchRequest *request;
 @property (retain) <CNScheduler> *scheduler;
 @property (retain) <CNAutocompleteSearchProvider> *searchProvider;
+@property (retain) <CNAutocompleteSourceInclusionPolicy> *sourceInclusionPolicy;
 @property (readonly) Class superclass;
 @property (retain) CNAutocompleteUserSession *userSession;
 
@@ -34,6 +36,7 @@
 + (id)queryWithRequest:(id)arg1 searchProvider:(id)arg2 delegate:(id)arg3 probeProvider:(id)arg4 scheduler:(id)arg5 userSession:(id)arg6 delegateToken:(id)arg7;
 + (bool)searchTypeSupportsSuppressionOfAlreadyChosenAddresses:(unsigned long long)arg1;
 + (bool)shouldPerformQueryForRequest:(id)arg1;
++ (bool)shouldSortResultsForPolicy:(id)arg1;
 + (bool)shouldSuppressAddressesAlreadyChosenForRequest:(id)arg1;
 
 - (void).cxx_destruct;
@@ -44,7 +47,7 @@
 - (id)execute;
 - (id)executeWithContext:(id)arg1;
 - (id)initWithRequest:(id)arg1 searchProvider:(id)arg2 delegate:(id)arg3 probeProvider:(id)arg4 scheduler:(id)arg5 userSession:(id)arg6 delegateToken:(id)arg7;
-- (id)makeDelegateWrapperWithDelegate:(id)arg1 forRequest:(id)arg2 userSession:(id)arg3;
+- (id)makeDelegateWrapperWithDelegate:(id)arg1 forRequest:(id)arg2 sourceInclusionPolicy:(id)arg3 userSession:(id)arg4;
 - (id)probeProvider;
 - (id)request;
 - (id)scheduler;
@@ -61,7 +64,9 @@
 - (void)setRequest:(id)arg1;
 - (void)setScheduler:(id)arg1;
 - (void)setSearchProvider:(id)arg1;
+- (void)setSourceInclusionPolicy:(id)arg1;
 - (void)setUserSession:(id)arg1;
+- (id)sourceInclusionPolicy;
 - (id)userSession;
 
 @end

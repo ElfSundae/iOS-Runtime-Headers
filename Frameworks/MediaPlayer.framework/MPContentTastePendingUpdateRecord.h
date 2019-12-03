@@ -19,7 +19,6 @@
 - (void).cxx_destruct;
 - (id)UUID;
 - (void)_initializeWithType:(long long)arg1 tasteType:(long long)arg2;
-- (id)init;
 - (id)initWithPlaylistGlobalID:(id)arg1 tasteType:(long long)arg2;
 - (id)initWithStoreAdamID:(long long)arg1 tasteType:(long long)arg2;
 - (id)playlistGlobalID;

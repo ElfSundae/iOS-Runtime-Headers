@@ -29,13 +29,13 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)debugDescription;
-- (void)forget:(void *)arg1; // needs 1 arg types, found 2: /* Warning: Unrecognized filer type: 'R' using 'void*' */ void*, id
+- (void)forget:(void *)arg1; // needs 1 arg types, found 2: byref /* Warning: Unrecognized filer type: '' using 'void*' */ void*, id
 - (id)init;
 - (void)invalidate;
 - (struct CLNotifierBase { int (**x1)(); }*)notifier;
 - (int)notifierClientNumForCoparty:(id)arg1;
-- (void)register:(void *)arg1 forNotification:(void *)arg2 registrationInfo:(void *)arg3; // needs 3 arg types, found 4: /* Warning: Unrecognized filer type: 'R' using 'void*' */ void*, id, int, id
+- (void)register:(void *)arg1 forNotification:(void *)arg2 registrationInfo:(void *)arg3; // needs 3 arg types, found 4: byref /* Warning: Unrecognized filer type: '' using 'void*' */ void*, id, int, id
 - (void)setAdaptedNotifier:(struct CLNotifierBase { int (**x1)(); }*)arg1;
-- (void)unregister:(void *)arg1 forNotification:(void *)arg2; // needs 2 arg types, found 3: /* Warning: Unrecognized filer type: 'R' using 'void*' */ void*, id, int
+- (void)unregister:(void *)arg1 forNotification:(void *)arg2; // needs 2 arg types, found 3: byref /* Warning: Unrecognized filer type: '' using 'void*' */ void*, id, int
 
 @end

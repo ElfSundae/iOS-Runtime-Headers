@@ -3,6 +3,7 @@
  */
 
 @interface _INPBSetDefrosterSettingsInCarIntent : PBCodable <NSCopying, NSSecureCoding, _INPBSetDefrosterSettingsInCarIntent> {
+    bool  __encodeLegacyGloryData;
     _INPBDataString * _carName;
     int  _defroster;
     bool  _enable;
@@ -13,6 +14,7 @@
     _INPBIntentMetadata * _intentMetadata;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic, retain) _INPBDataString *carName;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) int defroster;
@@ -26,19 +28,25 @@
 @property (nonatomic, retain) _INPBIntentMetadata *intentMetadata;
 @property (readonly) Class superclass;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (int)StringAsDefroster:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)carName;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (int)defroster;
 - (id)defrosterAsString:(int)arg1;
 - (id)dictionaryRepresentation;
 - (bool)enable;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasCarName;
 - (bool)hasDefroster;
 - (bool)hasEnable;
 - (bool)hasIntentMetadata;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)intentMetadata;
 - (bool)isEqual:(id)arg1;
 - (bool)readFrom:(id)arg1;

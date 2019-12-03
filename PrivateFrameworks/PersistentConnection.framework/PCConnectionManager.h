@@ -81,7 +81,11 @@
 @property (nonatomic) double nonCellularEarlyFireConstantInterval;
 @property (nonatomic, readonly) double pollingInterval;
 @property (nonatomic) bool powerOptimizationsForExpensiveNetworkingDisabled;
+@property (nonatomic) double serverStatsExpectedKeepAliveInterval;
+@property (nonatomic) double serverStatsMaxKeepAliveInterval;
+@property (nonatomic) double serverStatsMinKeepAliveInterval;
 @property (readonly) Class superclass;
+@property (nonatomic) bool usingServerStatsAggressively;
 
 + (bool)_isCachedKeepAliveIntervalStillValid:(double)arg1 date:(id)arg2;
 + (id)_keepAliveCachePath;
@@ -115,6 +119,7 @@
 - (void)_resolveStateWithAction:(int)arg1;
 - (void)_saveWWANKeepAliveInterval;
 - (void)_setMaximumKeepAliveInterval:(double)arg1 onInterface:(long long)arg2;
+- (void)_setMinimumKeepAliveInterval:(double)arg1 onInterface:(long long)arg2;
 - (void)_setTimerGuidance:(double)arg1;
 - (void)_setupKeepAliveForReconnect;
 - (void)_setupTimerForPollForAdjustment:(bool)arg1;
@@ -158,6 +163,9 @@
 - (bool)powerOptimizationsForExpensiveNetworkingDisabled;
 - (void)resumeManagerWithAction:(int)arg1;
 - (void)resumeManagerWithAction:(int)arg1 forceGrow:(bool)arg2;
+- (double)serverStatsExpectedKeepAliveInterval;
+- (double)serverStatsMaxKeepAliveInterval;
+- (double)serverStatsMinKeepAliveInterval;
 - (void)setAlwaysWantsInterfaceChangeCallbacks:(bool)arg1;
 - (void)setCurrentAddressFamily:(int)arg1;
 - (void)setDelegate:(id)arg1;
@@ -166,6 +174,7 @@
 - (void)setEnableNonCellularConnections:(bool)arg1;
 - (void)setInterfaceIdentifier:(long long)arg1;
 - (void)setKeepAliveGracePeriod:(double)arg1;
+- (void)setKeepAliveOverrideOnInterface:(long long)arg1 interval:(double)arg2 timeout:(double)arg3;
 - (void)setMaximumKeepAliveInterval:(double)arg1;
 - (void)setMinimumIntervalFallbackEnabled:(bool)arg1;
 - (void)setMinimumKeepAliveInterval:(double)arg1;
@@ -174,9 +183,14 @@
 - (void)setOperatorMinimumIntervalFallbackAllowed:(bool)arg1;
 - (void)setPollingIntervalOverride:(double)arg1;
 - (void)setPowerOptimizationsForExpensiveNetworkingDisabled:(bool)arg1;
+- (void)setServerStatsExpectedKeepAliveInterval:(double)arg1;
+- (void)setServerStatsMaxKeepAliveInterval:(double)arg1;
+- (void)setServerStatsMinKeepAliveInterval:(double)arg1;
+- (void)setUsingServerStatsAggressively:(bool)arg1;
 - (bool)shouldClientScheduleReconnectDueToFailure;
 - (void)startManager;
 - (void)stopAndResetManager;
 - (void)stopManager;
+- (bool)usingServerStatsAggressively;
 
 @end

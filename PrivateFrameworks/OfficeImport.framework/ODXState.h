@@ -9,8 +9,8 @@
 
 @property (nonatomic, retain) CXNamespace *ODXDiagramNamespace;
 
+- (void).cxx_destruct;
 - (id)ODXDiagramNamespace;
-- (void)dealloc;
 - (id)initWithOfficeArtState:(id)arg1;
 - (id)officeArtState;
 - (void)setODXDiagramNamespace:(id)arg1;

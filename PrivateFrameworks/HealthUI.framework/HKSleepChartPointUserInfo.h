@@ -9,7 +9,7 @@
     NSArray * _values;
 }
 
-@property (nonatomic, retain) NSDate *date;
+@property (nonatomic, copy) NSDate *date;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

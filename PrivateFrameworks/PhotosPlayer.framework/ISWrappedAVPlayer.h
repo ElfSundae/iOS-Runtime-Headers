@@ -30,6 +30,20 @@
     bool  _ivarQueue_itemPlaybackBufferFull;
     long long  _ivarQueue_itemStatus;
     AVVideoComposition * _ivarQueue_itemVideoComposition;
+    struct { 
+        struct { 
+            long long value; 
+            int timescale; 
+            unsigned int flags; 
+            long long epoch; 
+        } start; 
+        struct { 
+            long long value; 
+            int timescale; 
+            unsigned int flags; 
+            long long epoch; 
+        } duration; 
+    }  _ivarQueue_loopTimeRange;
     bool  _ivarQueue_loopingEnabled;
     bool  _ivarQueue_preventsSleepDuringVideoPlayback;
     float  _ivarQueue_rate;
@@ -37,13 +51,13 @@
     float  _ivarQueue_volume;
     NSMutableDictionary * _observersByID;
     AVPlayer * _playerQueue_avPlayer;
-    AVQueuePlayer * _playerQueue_avQueuePlayer;
     bool  _playerQueue_didBeginObservingPlayer;
     id  _playerQueue_playerItemDidPlayToEndObserver;
     ISWrappedAVAudioSession * _playerQueue_wrappedAudioSession;
 }
 
 @property <ISWrappedAVPlayerDelegate> *delegate;
+@property (getter=isLoopingEnabled) bool loopingEnabled;
 
 + (id)observedAVPIKeysAndContexts;
 + (id)observedAVPKeys;
@@ -59,7 +73,6 @@
 - (void)_performPlayerTransaction:(id /* block */)arg1;
 - (void)_playerItemDidPlayToEnd:(id)arg1;
 - (id)_playerQueue_avPlayer;
-- (id)_playerQueue_avQueuePlayer;
 - (void)_playerQueue_startObservingPlayerItem:(id)arg1;
 - (void)_playerQueue_stopObservingPlayerItem:(id)arg1;
 - (void)_playerQueue_updatePlayerItemAudioTracksEnabled;
@@ -84,11 +97,11 @@
 - (bool)isAudioEnabled;
 - (bool)isLoopingEnabled;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })itemForwardPlaybackEndTime;
+- (struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; })loopTimeRange;
 - (id)mutableChangeObject;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (void)pause;
 - (void)playToTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 withInitialRate:(float)arg2 overDuration:(double)arg3 progressHandler:(id /* block */)arg4;
-- (void)prepareForReuseWithCompletion:(id /* block */)arg1;
 - (void)prerollAtRate:(float)arg1 completionHandler:(id /* block */)arg2;
 - (bool)preventsSleepDuringVideoPlayback;
 - (float)rate;
@@ -103,6 +116,7 @@
 - (void)setDimensionsOfReservedVideoMemory:(struct CGSize { double x1; double x2; })arg1;
 - (void)setItemBlendsVideoFrames:(bool)arg1;
 - (void)setItemForwardEndPlaybackTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
+- (void)setLoopTimeRange:(struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; })arg1;
 - (void)setLoopingEnabled:(bool)arg1;
 - (void)setLoopingEnabled:(bool)arg1 withTemplateItem:(id)arg2;
 - (void)setPreventsSleepDuringVideoPlayback:(bool)arg1;

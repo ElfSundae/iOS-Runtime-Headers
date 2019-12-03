@@ -9,7 +9,9 @@
 @property (nonatomic, readonly, copy) NSString *sceneID;
 
 - (void).cxx_destruct;
-- (id)_initWithExternalSceneID:(id)arg1 level:(double)arg2 trackingContext:(id)arg3;
+- (id)_initWithCAContext:(id)arg1 fallbackLevel:(double)arg2 sceneID:(id)arg3;
+- (id)_succinctDescription;
+- (long long)alignment;
 - (id)description;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (unsigned long long)hash;
@@ -17,6 +19,7 @@
 - (id)initWithExternalSceneID:(id)arg1 trackingContext:(id)arg2;
 - (id)initWithXPCDictionary:(id)arg1;
 - (bool)isEqual:(id)arg1;
+- (bool)isExternalSceneLayer;
 - (id)sceneID;
 
 @end

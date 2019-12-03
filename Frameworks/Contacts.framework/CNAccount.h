@@ -4,11 +4,13 @@
 
 @interface CNAccount : NSObject <NSCopying, NSSecureCoding> {
     NSString * _externalIdentifierString;
+    int  _iOSLegacyIdentifier;
     NSString * _identifier;
 }
 
 @property (nonatomic, readonly) NSString *_cnui_displayName;
 @property (nonatomic, readonly, copy) NSString *externalIdentifierString;
+@property (nonatomic, readonly) int iOSLegacyIdentifier;
 @property (nonatomic, readonly, copy) NSString *identifier;
 
 // Image: /System/Library/Frameworks/Contacts.framework/Contacts
@@ -28,11 +30,13 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)externalIdentifierString;
 - (unsigned long long)hash;
+- (int)iOSLegacyIdentifier;
 - (id)identifier;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithExternalIdentifier:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 externalIdentifier:(id)arg2;
+- (id)initWithIdentifier:(id)arg1 externalIdentifier:(id)arg2 iOSLegacyIdentifier:(int)arg3;
 - (bool)isEqual:(id)arg1;
 
 // Image: /System/Library/Frameworks/ContactsUI.framework/ContactsUI

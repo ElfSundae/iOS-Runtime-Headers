@@ -2,53 +2,49 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaDeviceFixedContext : PBCodable <NSCopying> {
+@interface SISchemaDeviceFixedContext : PBCodable <NSSecureCoding, SISchemaDeviceFixedContext> {
     NSString * _deviceType;
     NSString * _siriDeviceID;
     NSString * _siriInputLanguage;
     NSString * _siriVoiceLanguage;
+    NSString * _speechID;
     NSString * _systemBuild;
     NSString * _systemLocale;
 }
 
-@property (nonatomic, retain) NSString *deviceType;
-@property (nonatomic, readonly) bool hasDeviceType;
-@property (nonatomic, readonly) bool hasSiriDeviceID;
-@property (nonatomic, readonly) bool hasSiriInputLanguage;
-@property (nonatomic, readonly) bool hasSiriVoiceLanguage;
-@property (nonatomic, readonly) bool hasSystemBuild;
-@property (nonatomic, readonly) bool hasSystemLocale;
-@property (nonatomic, retain) NSString *siriDeviceID;
-@property (nonatomic, retain) NSString *siriInputLanguage;
-@property (nonatomic, retain) NSString *siriVoiceLanguage;
-@property (nonatomic, retain) NSString *systemBuild;
-@property (nonatomic, retain) NSString *systemLocale;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (nonatomic, copy) NSString *deviceType;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) NSData *jsonData;
+@property (nonatomic, copy) NSString *siriDeviceID;
+@property (nonatomic, copy) NSString *siriInputLanguage;
+@property (nonatomic, copy) NSString *siriVoiceLanguage;
+@property (nonatomic, copy) NSString *speechID;
+@property (readonly) Class superclass;
+@property (nonatomic, copy) NSString *systemBuild;
+@property (nonatomic, copy) NSString *systemLocale;
 
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (id)description;
 - (id)deviceType;
 - (id)dictionaryRepresentation;
-- (bool)hasDeviceType;
-- (bool)hasSiriDeviceID;
-- (bool)hasSiriInputLanguage;
-- (bool)hasSiriVoiceLanguage;
-- (bool)hasSystemBuild;
-- (bool)hasSystemLocale;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (bool)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
+- (id)jsonData;
 - (bool)readFrom:(id)arg1;
 - (void)setDeviceType:(id)arg1;
 - (void)setSiriDeviceID:(id)arg1;
 - (void)setSiriInputLanguage:(id)arg1;
 - (void)setSiriVoiceLanguage:(id)arg1;
+- (void)setSpeechID:(id)arg1;
 - (void)setSystemBuild:(id)arg1;
 - (void)setSystemLocale:(id)arg1;
 - (id)siriDeviceID;
 - (id)siriInputLanguage;
 - (id)siriVoiceLanguage;
+- (id)speechID;
 - (id)systemBuild;
 - (id)systemLocale;
 - (void)writeTo:(id)arg1;

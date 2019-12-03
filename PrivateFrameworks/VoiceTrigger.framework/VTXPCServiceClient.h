@@ -23,9 +23,11 @@
 - (void)notifyTriggerEventRequest;
 - (void)notifyVoiceTriggeredSiriSessionCancelled:(id)arg1;
 - (void)requestAudioCapture:(double)arg1;
+- (id)requestCurrentBuiltInRTModelDictionary;
 - (id)requestCurrentVoiceTriggerAssetDictionary;
 - (void)requestCurrentVoiceTriggerAssetDictionaryWithReply:(id /* block */)arg1;
 - (void)resetAssertions;
+- (void)setCurrentBuiltInRTModelDictionary:(id)arg1;
 - (void)setPhraseSpotterBypassing:(bool)arg1 timeout:(double)arg2;
 - (void)setRaiseToSpeakBypassing:(bool)arg1 timeout:(double)arg2;
 

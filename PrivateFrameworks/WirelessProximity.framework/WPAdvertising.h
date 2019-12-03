@@ -15,7 +15,7 @@
 - (void)advertisingFailedToStart:(id)arg1 ofType:(unsigned char)arg2;
 - (void)advertisingPendingOfType:(unsigned char)arg1;
 - (void)advertisingStartedOfType:(unsigned char)arg1;
-- (void)advertisingStoppedOfType:(unsigned char)arg1;
+- (void)advertisingStoppedOfType:(unsigned char)arg1 withError:(id)arg2;
 - (id)clientAsString;
 - (id)delegate;
 - (void)deregisterService:(id)arg1;

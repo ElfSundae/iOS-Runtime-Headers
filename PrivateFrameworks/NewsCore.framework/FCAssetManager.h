@@ -70,6 +70,7 @@
 - (id)networkBehaviorMonitor;
 - (id)operationToFetchDataProviderForAssetHandle:(id)arg1 completion:(id /* block */)arg2;
 - (id)parentDirectory;
+- (void)saveWithCompletionHandler:(id /* block */)arg1;
 - (void)setAssetHandles:(id)arg1;
 - (void)setAssetHandlesLock:(id)arg1;
 - (void)setAssetStore:(id)arg1;

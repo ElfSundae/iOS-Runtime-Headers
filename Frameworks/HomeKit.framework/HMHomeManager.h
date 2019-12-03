@@ -2,9 +2,11 @@
    Image: /System/Library/Frameworks/HomeKit.framework/HomeKit
  */
 
-@interface HMHomeManager : NSObject <HFStateDumpBuildable, HMApplicationData, HMFMessageReceiver, HMMutableApplicationData> {
+@interface HMHomeManager : NSObject <HFStateDumpBuildable, HMApplicationData, HMFLogging, HMFMessageReceiver, HMMutableApplicationData> {
     bool  _accessAllowedWhenLocked;
+    NSSet * _addAccessoryRequests;
     HMApplicationData * _applicationData;
+    unsigned long long  _authorizationStatus;
     HMHomeManagerConfiguration * _configuration;
     _HMContext * _context;
     HMAccessory * _currentAccessory;
@@ -13,15 +15,13 @@
     unsigned long long  _dataSyncState;
     <HMHomeManagerDelegate> * _delegate;
     bool  _didUpdateHomes;
-    bool  _fetchInProgress;
     NSNumber * _fileGenerationCounter;
     NSNumber * _fileMetadataVersion;
+    HMNetworkRouterFirewallRuleManager * _firewallRuleManager;
     bool  _frameworkMergeComplete;
     unsigned long long  _generationCounter;
-    NSString * _homeCacheDir;
     NSString * _homeDataCache;
     HMMutableArray * _homeInvitations;
-    _HMLocationHandler * _locationHandler;
     HMFUnfairLock * _lock;
     bool  _mediaAccessoryControlRequested;
     NSOperationQueue * _mergeOperationQueue;
@@ -33,13 +33,18 @@
     unsigned long long  _residentProvisioningStatus;
     int  _serverGenerationCounterToken;
     unsigned long long  _status;
+    NSOperationQueue * _syncOperationQueue;
     bool  _thisDeviceResidentCapable;
+    HMUserCloudShareManager * _userCloudShareManager;
     NSUUID * _uuid;
     bool  _viewServiceActive;
 }
 
 @property (getter=isAccessAllowedWhenLocked, readonly) bool accessAllowedWhenLocked;
+@property (nonatomic, retain) NSSet *addAccessoryRequests;
 @property (nonatomic, readonly) HMApplicationData *applicationData;
+@property (readonly, copy) NSUUID *applicationDataIdentifier;
+@property (readonly) unsigned long long authorizationStatus;
 @property (readonly) HMHomeManagerConfiguration *configuration;
 @property (nonatomic, readonly) _HMContext *context;
 @property (readonly) HMAccessory *currentAccessory;
@@ -51,19 +56,18 @@
 @property (nonatomic) <HMHomeManagerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) bool didUpdateHomes;
-@property (nonatomic) bool fetchInProgress;
 @property (nonatomic, retain) NSNumber *fileGenerationCounter;
 @property (nonatomic, retain) NSNumber *fileMetadataVersion;
+@property (nonatomic, readonly) HMNetworkRouterFirewallRuleManager *firewallRuleManager;
 @property (nonatomic) bool frameworkMergeComplete;
 @property (nonatomic) unsigned long long generationCounter;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) bool hf_hasDetectediCloudIssue;
-@property (retain) NSString *homeCacheDir;
+@property (readonly) NSString *homeCacheDir;
 @property (retain) NSString *homeDataCache;
 @property (nonatomic, retain) HMMutableArray *homeInvitations;
 @property (nonatomic, readonly, copy) NSArray *homes;
 @property (nonatomic, readonly, copy) NSArray *incomingHomeInvitations;
-@property (nonatomic, readonly) _HMLocationHandler *locationHandler;
 @property (nonatomic) bool mediaAccessoryControlRequested;
 @property (nonatomic, retain) NSOperationQueue *mergeOperationQueue;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *messageReceiveQueue;
@@ -79,35 +83,37 @@
 @property (readonly) unsigned long long status;
 @property (readonly) Class superclass;
 @property (getter=isThisDeviceResidentCapable, readonly) bool thisDeviceResidentCapable;
+@property (readonly) HMUserCloudShareManager *userCloudShareManager;
 @property (nonatomic, readonly) NSUUID *uuid;
 @property (getter=isViewServiceActive, nonatomic) bool viewServiceActive;
 
 // Image: /System/Library/Frameworks/HomeKit.framework/HomeKit
 
 + (bool)dataSyncInProgressFromDataSyncState:(unsigned long long)arg1;
++ (id)logCategory;
 
 - (void).cxx_destruct;
 - (void)__handleHomeManagerState:(id)arg1;
+- (void)__processSyncResponse:(id)arg1 refreshRequested:(bool)arg2 completionHandler:(id /* block */)arg3;
 - (void)__removeAccountWithHandle:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)__removeAccountWithIdentifier:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)__resolveAccountHandle:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)__start;
 - (void)_acceptInvitation:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)_acceptInvitation:(id)arg1 presenceAuthStatus:(unsigned long long)arg2 completionHandler:(id /* block */)arg3;
+- (id)_addAccessoryRequestsFromArray:(id)arg1;
 - (void)_addHomeWithName:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)_checkEventValidity:(id)arg1 completion:(id /* block */)arg2;
 - (void)_checkName:(id)arg1 inHome:(id)arg2 withValidationOptions:(unsigned long long)arg3 completionHandler:(id /* block */)arg4;
-- (void)_connectivityInfoForAccessory:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)_declineInvitation:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)_deleteDuetEvents:(id)arg1 completion:(id /* block */)arg2;
-- (void)_determineCacheDirectory;
 - (void)_determineCacheFiles;
 - (void)_dumpCaches:(id)arg1 metadata:(id)arg2;
 - (void)_dumpState:(id)arg1 payload:(id)arg2 completion:(id /* block */)arg3;
 - (void)_eraseHomeDataAndDeleteMetadata:(bool)arg1 completionHandler:(id /* block */)arg2;
-- (void)_fetchHomeConfigurationWithCache:(bool)arg1 refreshRequested:(bool)arg2;
-- (void)_fetchHomeConfigurationWithPrivacyCheckWithCache:(bool)arg1 refreshRequested:(bool)arg2;
+- (void)_fetchHomeConfigurationWithRefreshRequested:(bool)arg1;
 - (void)_handleAccessAllowedWhenLockedUpdatedNotification:(id)arg1;
-- (void)_handleAppDataUpdatedNotification:(id)arg1;
+- (void)_handleCheckForAddAccessoryRequests;
 - (void)_handleCurrentHomeChangedNotification:(id)arg1;
 - (void)_handleHomeAddedNotification:(id)arg1;
 - (void)_handleHomeRemovedNotification:(id)arg1;
@@ -131,6 +137,7 @@
 - (void)_mergeCurrentHomesWithNewHomes:(id)arg1 newPrimaryHome:(id)arg2 newCurrentHome:(id)arg3 newInvitations:(id)arg4 newAppData:(id)arg5 refreshRequested:(bool)arg6;
 - (void)_notifyAccessAllowedWhenLockedUpdated:(bool)arg1;
 - (void)_notifyDelegateOfAppDataUpdate;
+- (void)_notifyPendingAddRequests:(id)arg1;
 - (void)_notifyResidentProvisioningStatus:(unsigned long long)arg1;
 - (void)_pairingIdentityForAccessoryWithIdentifier:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)_pingDeviceWithDestination:(id)arg1 secure:(bool)arg2 completionHandler:(id /* block */)arg3;
@@ -147,14 +154,13 @@
 - (void)_registerNotificationHandlers;
 - (void)_removeCacheFiles:(bool)arg1;
 - (void)_removeHome:(id)arg1 completionHandler:(id /* block */)arg2;
-- (void)_requestFetchHomeConfigurationWithGenerationCounter:(id)arg1 cachedHomeConfiguration:(id)arg2 metadataVersion:(id)arg3 cachedMetadataConfiguration:(id)arg4 refreshRequested:(bool)arg5;
 - (void)_requestRefresh;
 - (void)_requestRuntimeUpdate:(id)arg1;
 - (void)_setMetadata:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)_setResidentProvisioningStatus:(unsigned long long)arg1;
 - (void)_shouldDisplayiCloudSwitchWithCompletionHandler:(id /* block */)arg1;
-- (void)_start;
 - (void)_updateAccessAllowedWhenLocked:(bool)arg1 completionHandler:(id /* block */)arg2;
+- (void)_updateAddAccessoryRequestsAndNotify:(id)arg1;
 - (void)_updateAppData:(id)arg1;
 - (void)_updateApplicationData:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)_updateCurrentHome:(id)arg1;
@@ -166,12 +172,14 @@
 - (void)_updateStatusWithPayload:(id)arg1;
 - (void)_updateiCloudSwitchState:(bool)arg1 completionHandler:(id /* block */)arg2;
 - (void)_writeCaches:(id)arg1 homeData:(bool)arg2 metadata:(bool)arg3;
+- (id)addAccessoryRequests;
 - (void)addHomeWithName:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)applicationData;
+- (id)applicationDataIdentifier;
+- (unsigned long long)authorizationStatus;
 - (void)checkEventValidity:(id)arg1 completion:(id /* block */)arg2;
 - (void)checkName:(id)arg1 inHome:(id)arg2 withValidationOptions:(unsigned long long)arg3 completionHandler:(id /* block */)arg4;
 - (id)configuration;
-- (void)connectivityInfoForAccessory:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)context;
 - (id)currentAccessory;
 - (id)currentHome;
@@ -184,9 +192,9 @@
 - (void)dumpState:(id)arg1 payload:(id)arg2 completion:(id /* block */)arg3;
 - (void)eraseHomeDataAndDeleteMetadata:(bool)arg1 completionHandler:(id /* block */)arg2;
 - (void)eraseHomeDataWithCompletionHandler:(id /* block */)arg1;
-- (bool)fetchInProgress;
 - (id)fileGenerationCounter;
 - (id)fileMetadataVersion;
+- (id)firewallRuleManager;
 - (bool)frameworkMergeComplete;
 - (unsigned long long)generationCounter;
 - (id)homeCacheDir;
@@ -203,7 +211,6 @@
 - (bool)isResidentEnabledForThisDevice;
 - (bool)isThisDeviceResidentCapable;
 - (bool)isViewServiceActive;
-- (id)locationHandler;
 - (void)logAppViewEvent:(id)arg1 name:(id)arg2 uuid:(id)arg3 information:(id)arg4 completion:(id /* block */)arg5;
 - (void)logControl:(id)arg1 completionHandler:(id /* block */)arg2;
 - (bool)mediaAccessoryControlRequested;
@@ -231,6 +238,7 @@
 - (unsigned long long)serverGenerationCounter;
 - (int)serverGenerationCounterToken;
 - (void)setAccessAllowedWhenLocked:(bool)arg1;
+- (void)setAddAccessoryRequests:(id)arg1;
 - (void)setApplicationData:(id)arg1;
 - (void)setCurrentAccessory:(id)arg1;
 - (void)setCurrentHome:(id)arg1;
@@ -238,12 +246,10 @@
 - (void)setDataSyncState:(unsigned long long)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDidUpdateHomes:(bool)arg1;
-- (void)setFetchInProgress:(bool)arg1;
 - (void)setFileGenerationCounter:(id)arg1;
 - (void)setFileMetadataVersion:(id)arg1;
 - (void)setFrameworkMergeComplete:(bool)arg1;
 - (void)setGenerationCounter:(unsigned long long)arg1;
-- (void)setHomeCacheDir:(id)arg1;
 - (void)setHomeDataCache:(id)arg1;
 - (void)setHomeInvitations:(id)arg1;
 - (void)setMediaAccessoryControlRequested:(bool)arg1;
@@ -265,16 +271,22 @@
 - (void)updatePrimaryHome:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)updateResidentEnabledForThisDevice:(bool)arg1 completionHandler:(id /* block */)arg2;
 - (void)updateiCloudSwitchState:(bool)arg1 completionHandler:(id /* block */)arg2;
+- (id)userCloudShareManager;
 - (id)uuid;
 
 // Image: /System/Library/PrivateFrameworks/Home.framework/Home
 
++ (id)hf_homeFutureForName:(id)arg1;
+
 - (bool)hf_hasDetectediCloudIssue;
+- (bool)hf_hasSeenNewFeaturesView;
 - (bool)hf_hasSeenOnboardingWelcomeView;
+- (id)hf_homeForName:(id)arg1;
 - (id)hf_homeWithIdentifier:(id)arg1;
 - (id)hf_mutableOrderedHomesList;
 - (id)hf_orderedHomes;
 - (id)hf_orderedHomesList;
+- (id)hf_setHasSeenNewFeaturesView:(bool)arg1;
 - (id)hf_setHasSeenOnboardingWelcomeView:(bool)arg1;
 - (id)hf_setOrderedHomes:(id)arg1;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;

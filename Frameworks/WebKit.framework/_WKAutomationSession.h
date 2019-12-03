@@ -6,17 +6,17 @@
     struct RetainPtr<_WKAutomationSessionConfiguration> { 
         void *m_ptr; 
     }  _configuration;
-    /* Warning: unhandled struct encoding: '{WeakObjCPtr<id<_WKAutomationSessionDelegate> >="m_weakReference"@}' */ struct WeakObjCPtr<id<_WKAutomationSessionDelegate> > { 
+    struct WeakObjCPtr<id<_WKAutomationSessionDelegate> > { 
         id m_weakReference; 
     }  _delegate;
     struct ObjectStorage<WebKit::WebAutomationSession> { 
         struct type { 
-            unsigned char __lx[800]; 
+            unsigned char __lx[560]; 
         } data; 
     }  _session;
 }
 
-@property (readonly) /* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*_apiObject;
+@property (readonly) struct Object { int (**x1)(); id x2; }*_apiObject;
 @property (nonatomic, readonly, copy) _WKAutomationSessionConfiguration *configuration;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <_WKAutomationSessionDelegate> *delegate;
@@ -29,7 +29,7 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (/* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*)_apiObject;
+- (struct Object { int (**x1)(); id x2; }*)_apiObject;
 - (id)configuration;
 - (void)dealloc;
 - (id)delegate;

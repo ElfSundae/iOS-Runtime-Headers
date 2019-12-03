@@ -8,6 +8,5 @@
 + (id)productVersion;
 + (id)storageAvailable;
 + (id)storageCapacity;
-+ (id)storageUsedByAppContainers;
 
 @end

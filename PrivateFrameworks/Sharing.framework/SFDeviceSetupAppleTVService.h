@@ -10,10 +10,13 @@
     HMDeviceSetupOperationHandler * _homeKitSetupHandler;
     bool  _invalidateCalled;
     bool  _prefCDPEnabled;
+    bool  _prefTVLatency;
     SFClient * _preventExitForLocaleClient;
     id /* block */  _progressHandler;
     SFService * _sfService;
     SFSession * _sfSession;
+    TVLAudioLatencyEstimator * _tvLatencyEstimator;
+    bool  _tvLatencyFinalReported;
     SFDeviceOperationHandlerWiFiSetup * _wifiSetupHandler;
 }
 
@@ -28,7 +31,10 @@
 - (void)_handlePreAuthRequest:(id)arg1 responseHandler:(id /* block */)arg2;
 - (void)_handleSessionEnded:(id)arg1;
 - (void)_handleSessionStarted:(id)arg1;
+- (void)_handleTVLatencyProgressEvent:(unsigned long long)arg1 info:(id)arg2;
+- (void)_handleTVLatencyRequest:(id)arg1 responseHandler:(id /* block */)arg2;
 - (void)_invalidate;
+- (void)_reportProgress:(unsigned int)arg1 info:(id)arg2;
 - (void)_sfServiceStart;
 - (void)activate;
 - (void)dealloc;

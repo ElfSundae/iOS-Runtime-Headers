@@ -20,11 +20,11 @@
 + (bool)isProgIDChart:(id)arg1;
 + (bool)isProgIDMathType:(id)arg1;
 
+- (void).cxx_destruct;
 - (id)CLSID;
 - (id)ansiClipboardFormatName;
 - (id)ansiProgID;
 - (id)ansiUserType;
-- (void)dealloc;
 - (id)description;
 - (bool)iconic;
 - (id)init;

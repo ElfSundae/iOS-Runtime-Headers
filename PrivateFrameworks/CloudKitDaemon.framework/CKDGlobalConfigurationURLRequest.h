@@ -18,7 +18,6 @@
 - (void)requestDidParsePlistObject:(id)arg1;
 - (bool)requiresConfiguration;
 - (bool)requiresDeviceID;
-- (bool)requiresSignature;
 - (long long)serverType;
 - (void)setConfiguration:(id)arg1;
 - (id)url;

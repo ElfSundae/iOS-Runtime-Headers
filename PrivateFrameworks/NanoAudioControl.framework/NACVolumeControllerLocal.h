@@ -2,13 +2,17 @@
    Image: /System/Library/PrivateFrameworks/NanoAudioControl.framework/NanoAudioControl
  */
 
-@interface NACVolumeControllerLocal : NSObject <MPAVRoutingControllerDelegate, MPVolumeControllerDelegate, NACVolumeController> {
+@interface NACVolumeControllerLocal : NSObject <MPAVRoutingControllerDelegate, MPVolumeControllerDelegate, MediaControlsVolumeControllerObserver, NACVolumeController> {
     NSString * _audioCategory;
     long long  _cachedHapticState;
     <NACVolumeControllerDelegate> * _delegate;
     NACEventThrottler * _hapticThrottler;
+    NSOrderedSet * _lastNotifiedAvailableListeningModes;
+    NSString * _lastNotifiedCurrentListeningMode;
+    MediaControlsVolumeController * _mediaControlsVolumeController;
     bool  _monitoringHaptics;
     bool  _muted;
+    MPAVRoute * _route;
     MPAVRoutingController * _routingController;
     NSObject<OS_dispatch_queue> * _serialQueue;
     bool  _shouldIgnoreHaptics;
@@ -20,6 +24,8 @@
 }
 
 @property (nonatomic, readonly) float EUVolumeLimit;
+@property (nonatomic, readonly) NSOrderedSet *availableListeningModes;
+@property (nonatomic, retain) NSString *currentListeningMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <NACVolumeControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -33,34 +39,46 @@
 @property (getter=isVolumeControlAvailable, nonatomic, readonly) bool volumeControlAvailable;
 @property (nonatomic, readonly) float volumeValue;
 @property (getter=isVolumeWarningEnabled, nonatomic, readonly) bool volumeWarningEnabled;
+@property (nonatomic, readonly) long long volumeWarningState;
 
 - (void).cxx_destruct;
 - (float)EUVolumeLimit;
 - (void)_ignoreHapticObservation;
+- (id)_init;
+- (id)_mediaControlsVolumeController;
 - (void)_setHapticIntensity:(id)arg1;
 - (void)_setVolumeValue:(id)arg1;
 - (void)_updateMutedStateFromVolumeController:(id)arg1;
 - (void)_updateVolumeState;
 - (id)_volumeController;
+- (void)allowUserToExceedEUVolumeLimit;
+- (id)availableListeningModes;
 - (void)beginObservingHapticState;
 - (void)beginObservingHaptics;
+- (void)beginObservingListeningModes;
 - (void)beginObservingVolume;
+- (id)currentListeningMode;
 - (id)delegate;
 - (void)endObservingHapticState;
 - (void)endObservingHaptics;
+- (void)endObservingListeningModes;
 - (void)endObservingVolume;
 - (float)hapticIntensity;
 - (long long)hapticState;
 - (id)init;
 - (id)initWithAudioCategory:(id)arg1;
+- (id)initWithRoute:(id)arg1;
 - (bool)isMuted;
 - (bool)isProminentHapticEnabled;
 - (bool)isSystemMuted;
 - (bool)isVolumeControlAvailable;
 - (bool)isVolumeWarningEnabled;
+- (void)mediaControlsVolumeController:(id)arg1 didUpdateSplitRoute:(bool)arg2;
+- (void)playDefaultHapticPreview;
 - (void)playPreview;
 - (void)playProminentHapticPreview;
 - (void)routingControllerAvailableRoutesDidChange:(id)arg1;
+- (void)setCurrentListeningMode:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setHapticIntensity:(float)arg1;
 - (void)setHapticState:(long long)arg1;
@@ -72,7 +90,10 @@
 - (void)updateCachedHapticState;
 - (void)volumeController:(id)arg1 EUVolumeLimitDidChange:(float)arg2;
 - (void)volumeController:(id)arg1 mutedStateDidChange:(bool)arg2;
+- (void)volumeController:(id)arg1 volumeControlAvailableDidChange:(bool)arg2;
 - (void)volumeController:(id)arg1 volumeValueDidChange:(float)arg2;
+- (void)volumeController:(id)arg1 volumeWarningStateDidChange:(long long)arg2;
 - (float)volumeValue;
+- (long long)volumeWarningState;
 
 @end

@@ -8,6 +8,7 @@
     <PKPaymentWebServiceBackgroundDelegate> * _backgroundDelegate;
     NSObject<OS_dispatch_queue> * _backgroundDownloadQueue;
     NSURLSession * _backgroundSession;
+    NSOperationQueue * _backgroundSessionDelegateQueue;
     PKPaymentWebServiceContext * _context;
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
@@ -79,7 +80,7 @@
 - (bool)_isSandboxAccount;
 - (id)_movePassToDownloadCache:(id)arg1;
 - (bool)_needsRegistrationShouldCheckSecureElementOwnership:(bool)arg1;
-- (unsigned long long)_nonceForPass:(id)arg1 serviceURL:(id)arg2 completion:(id /* block */)arg3;
+- (unsigned long long)_nonceWithRequest:(id)arg1 serviceURL:(id)arg2 completion:(id /* block */)arg3;
 - (void)_passOwnershipTokenForPaymentCredential:(id)arg1 completion:(id /* block */)arg2;
 - (void)_passWithData:(id)arg1 response:(id)arg2 error:(id)arg3 completion:(id /* block */)arg4;
 - (id)_passWithFileURL:(id)arg1;
@@ -164,17 +165,21 @@
 - (unsigned long long)discoveryBundleForURL:(id)arg1 completion:(id /* block */)arg2;
 - (unsigned long long)discoveryManifestWithCompletion:(id /* block */)arg1;
 - (unsigned long long)eligibilityForRequest:(id)arg1 completion:(id /* block */)arg2;
+- (unsigned long long)exportTransactionDataWithRequest:(id)arg1 completion:(id /* block */)arg2;
 - (unsigned long long)featureTermsDataWithRequest:(id)arg1 completion:(id /* block */)arg2;
 - (id)forbiddenErrorWithResponse:(id)arg1;
 - (unsigned long long)fundingSourcesWithRequest:(id)arg1 completion:(id /* block */)arg2;
+- (void)getHasBackgroundDownloadTaskPassesForPushTopic:(id)arg1 completion:(id /* block */)arg2;
 - (void)handleAuthenticationFailureWithCompletionHandler:(id /* block */)arg1;
 - (void)handleResponse:(id)arg1 withError:(id)arg2 data:(id)arg3 task:(id)arg4 completionHandler:(id /* block */)arg5;
 - (void)handleWillPerformHTTPRedirectionWithResponse:(id)arg1 redirectHandler:(id /* block */)arg2;
 - (unsigned long long)inAppPaymentNonceForPass:(id)arg1 completion:(id /* block */)arg2;
+- (unsigned long long)inAppPaymentNonceWithRequest:(id)arg1 completion:(id /* block */)arg2;
 - (id)init;
 - (id)initWithContext:(id)arg1 targetDevice:(id)arg2;
 - (id)initWithContext:(id)arg1 targetDevice:(id)arg2 archiver:(id)arg3;
 - (void)invalidateBackgroundSession;
+- (bool)isChinaRegionIdentifier:(id)arg1;
 - (unsigned long long)issuerProvisioningCertificatesForRequest:(id)arg1 withCompletion:(id /* block */)arg2;
 - (id)logFacility;
 - (unsigned long long)moreInfoItemAtURL:(id)arg1 withMetadata:(id)arg2 completion:(id /* block */)arg3;
@@ -191,6 +196,8 @@
 - (unsigned long long)paymentsWithRequest:(id)arg1 account:(id)arg2 completion:(id /* block */)arg3;
 - (unsigned long long)performAction:(id)arg1 onServiceProviderPurchase:(id)arg2 completion:(id /* block */)arg3;
 - (unsigned long long)performApplePayTrustRegistrationWithCompletion:(id /* block */)arg1;
+- (unsigned long long)performInstallmentAuthorizationWithRequest:(id)arg1 completion:(id /* block */)arg2;
+- (unsigned long long)performInstallmentBindWithRequest:(id)arg1 completion:(id /* block */)arg2;
 - (unsigned long long)performNotificationActionRequest:(id)arg1 completion:(id /* block */)arg2;
 - (unsigned long long)performProductActionRequest:(id)arg1 completion:(id /* block */)arg2;
 - (unsigned long long)performServiceProviderPayment:(id)arg1 completion:(id /* block */)arg2;
@@ -216,7 +223,7 @@
 - (unsigned long long)schedulePaymentWithRequest:(id)arg1 completion:(id /* block */)arg2;
 - (unsigned long long)serviceProviderNonceForPass:(id)arg1 completion:(id /* block */)arg2;
 - (unsigned long long)serviceProviderPurchaseWithIdentifier:(id)arg1 completion:(id /* block */)arg2;
-- (unsigned long long)serviceProviderPurchasesWithRequest:(id)arg1 completion:(id /* block */)arg2;
+- (unsigned long long)serviceProviderPurchasesWithRequest:(id)arg1 inRegion:(id)arg2 completion:(id /* block */)arg3;
 - (void)setArchiver:(id)arg1;
 - (void)setBackgroundContext:(id)arg1;
 - (void)setBackgroundDelegate:(id)arg1;

@@ -17,6 +17,8 @@
 - (VideoAttributes *)localVideoAttributes;
 - (CALayer *)localVideoLayer:(bool)arg1;
 - (void)pausePreview;
+- (void)rampCameraZoomFactor:(double)arg1 withRate:(double)arg2;
+- (void)setCameraZoomFactor:(double)arg1;
 - (void)setDelegate:(id <TUVideoDeviceControllerProviderDelegate>)arg1;
 - (void)setLocalCameraWithUID:(NSString *)arg1;
 - (void)setLocalScreenAttributes:(VideoAttributes *)arg1;

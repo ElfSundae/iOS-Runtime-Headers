@@ -6,9 +6,6 @@
     float  _preferredPlaybackRate;
 }
 
-@property (getter=isAddToLibraryActive, nonatomic, readonly) bool addToLibraryActive;
-@property (getter=isAddToLibraryCommandEnabled, nonatomic, readonly) bool addToLibraryCommandEnabled;
-@property (getter=isAddToLibraryCommandSupported, nonatomic, readonly) bool addToLibraryCommandSupported;
 @property (getter=isAdvertisement, nonatomic, readonly) bool advertisement;
 @property (nonatomic, readonly) NSString *album;
 @property (getter=isAlwaysLive, nonatomic, readonly) bool alwaysLive;
@@ -17,7 +14,6 @@
 @property (nonatomic, readonly) NSData *applicationIconImageData;
 @property (nonatomic, readonly) NSString *artist;
 @property (nonatomic, readonly) MPArtworkCatalog *artworkCatalog;
-@property (nonatomic, readonly) NSData *artworkImageData;
 @property (getter=isBanCommandEnabled, nonatomic, readonly) bool banCommandEnabled;
 @property (nonatomic, readonly) long long banCommandPresentationStyle;
 @property (getter=isBanCommandSupported, nonatomic, readonly) bool banCommandSupported;
@@ -25,7 +21,7 @@
 @property (getter=isBookmarkCommandEnabled, nonatomic, readonly) bool bookmarkCommandEnabled;
 @property (getter=isBookmarkCommandSupported, nonatomic, readonly) bool bookmarkCommandSupported;
 @property (getter=isBookmarkedActive, nonatomic, readonly) bool bookmarkedActive;
-@property (nonatomic, readonly) NSString *displayTitle;
+@property (nonatomic, readonly) NSString *collectionTitle;
 @property (nonatomic, readonly) double duration;
 @property (nonatomic, readonly) double elapsedTime;
 @property (nonatomic, readonly) double elapsedTimeAtLastUpdate;
@@ -33,9 +29,9 @@
 @property (nonatomic, readonly) double fastForwardTimeInterval;
 @property (getter=isFirstPartyApp, nonatomic, readonly) bool firstPartyApp;
 @property (nonatomic, readonly) bool hasNowPlayingInfo;
-@property (nonatomic, readonly) bool hasSupportedFeedbackCommands;
+@property (nonatomic, readonly) bool hasNowPlayingItem;
+@property (nonatomic, readonly) bool hasUpNextQueue;
 @property (nonatomic, readonly) MPIdentifierSet *identifiers;
-@property (nonatomic, readonly) bool isPlayingRadio;
 @property (nonatomic, readonly) NSNumber *itemAlbumPersistentID;
 @property (nonatomic, readonly) NSNumber *itemCompanionPersistentID;
 @property (nonatomic, readonly) NSNumber *itemPersistentID;
@@ -46,13 +42,14 @@
 @property (nonatomic, readonly) NSString *localizedBanTitle;
 @property (nonatomic, readonly) NSString *localizedBookmarkTitle;
 @property (nonatomic, readonly) NSString *localizedLikeTitle;
-@property (nonatomic, readonly) NSNumber *nextTrackCommandEnabled;
+@property (getter=isNextTrackCommandEnabled, nonatomic, readonly) bool nextTrackCommandEnabled;
 @property (nonatomic, readonly) float playbackRate;
 @property (getter=isPlaybackRateCommandSupported, nonatomic, readonly) bool playbackRateCommandSupported;
 @property (nonatomic, readonly) unsigned int playbackState;
 @property (getter=isPlaying, nonatomic, readonly) bool playing;
+@property (getter=isPlayingRadio, nonatomic, readonly) bool playingRadio;
 @property (nonatomic, readonly) float preferredPlaybackRate;
-@property (nonatomic, readonly) NSNumber *previousTrackCommandEnabled;
+@property (getter=isPreviousTrackCommandEnabled, nonatomic, readonly) bool previousTrackCommandEnabled;
 @property (nonatomic, readonly) NSString *radioStationHash;
 @property (nonatomic, readonly) NSNumber *radioStationIdentifier;
 @property (nonatomic, readonly) NSString *radioStationName;
@@ -75,22 +72,19 @@
 - (id)applicationIconImageData;
 - (id)artist;
 - (id)artworkCatalog;
-- (id)artworkImageData;
 - (long long)banCommandPresentationStyle;
+- (id)collectionTitle;
 - (unsigned long long)compareWithNowPlayingState:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
-- (id)displayTitle;
 - (double)duration;
 - (double)elapsedTime;
 - (double)elapsedTimeAtLastUpdate;
 - (double)fastForwardTimeInterval;
 - (bool)hasNowPlayingInfo;
-- (bool)hasSupportedFeedbackCommands;
+- (bool)hasNowPlayingItem;
+- (bool)hasUpNextQueue;
 - (id)identifiers;
-- (bool)isAddToLibraryActive;
-- (bool)isAddToLibraryCommandEnabled;
-- (bool)isAddToLibraryCommandSupported;
 - (bool)isAdvertisement;
 - (bool)isAlwaysLive;
 - (bool)isBanCommandEnabled;
@@ -104,9 +98,11 @@
 - (bool)isLikeCommandEnabled;
 - (bool)isLikeCommandSupported;
 - (bool)isLikedActive;
+- (bool)isNextTrackCommandEnabled;
 - (bool)isPlaybackRateCommandSupported;
 - (bool)isPlaying;
 - (bool)isPlayingRadio;
+- (bool)isPreviousTrackCommandEnabled;
 - (bool)isRepeatModeCommandSupported;
 - (bool)isShuffleModeCommandSupported;
 - (bool)isSkipBackwardCommandEnabled;
@@ -118,11 +114,9 @@
 - (id)localizedBanTitle;
 - (id)localizedBookmarkTitle;
 - (id)localizedLikeTitle;
-- (id)nextTrackCommandEnabled;
 - (float)playbackRate;
 - (unsigned int)playbackState;
 - (float)preferredPlaybackRate;
-- (id)previousTrackCommandEnabled;
 - (id)radioStationHash;
 - (id)radioStationIdentifier;
 - (id)radioStationName;

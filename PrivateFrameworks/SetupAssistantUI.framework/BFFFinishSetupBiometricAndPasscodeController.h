@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SetupAssistantUI.framework/SetupAssistantUI
  */
 
-@interface BFFFinishSetupBiometricAndPasscodeController : NSObject <BFFPasscodeViewControllerDelegate, BYFollowUpFlowControlling, UIPopoverPresentationControllerDelegate> {
+@interface BFFFinishSetupBiometricAndPasscodeController : NSObject <BFFFinishSetupFlowControlling, BFFPasscodeViewControllerDelegate, UIPopoverPresentationControllerDelegate> {
     id /* block */  _completion;
     NSString * _flowSkipIdentifier;
     NSString * _passcode;

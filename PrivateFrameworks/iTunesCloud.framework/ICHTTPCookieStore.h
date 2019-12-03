@@ -4,20 +4,20 @@
 
 @interface ICHTTPCookieStore : NSObject {
     NSObject<OS_dispatch_queue> * _queue;
-    SSVCookieStorage * _ssvCookieStorage;
 }
 
 + (id)sharedCookieStore;
 
 - (void).cxx_destruct;
-- (void)_handleCookiesDidChangeNotification:(id)arg1;
+- (id)_accountForUserIdentifier:(id)arg1;
+- (id)_cookieDictionaryForURL:(id)arg1 userIdentifier:(id)arg2;
+- (void)_saveCookies:(id)arg1 userIdentifier:(id)arg2;
 - (void)dealloc;
 - (id)getCookie:(id)arg1 userIdentifier:(id)arg2;
 - (id)getCookiesForURL:(id)arg1;
 - (id)getCookiesForURL:(id)arg1 userIdentifier:(id)arg2;
 - (id)getCookiesForUserIdentifier:(id)arg1;
 - (id)getCookiesHeadersForURL:(id)arg1 userIdentifier:(id)arg2;
-- (id)getGlobalAccountCookieHeadersForURL:(id)arg1;
 - (id)getGlobalAccountCookiesForURL:(id)arg1;
 - (id)init;
 - (void)removeAllCookies;

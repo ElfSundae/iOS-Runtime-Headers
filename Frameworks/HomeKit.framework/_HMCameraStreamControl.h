@@ -28,7 +28,7 @@
 - (id)cameraStream;
 - (void)dealloc;
 - (id)delegate;
-- (void)homedRestarted;
+- (void)homedRestarted:(id)arg1;
 - (id)initWithCameraProfile:(id)arg1 service:(id)arg2 profileUniqueIdentifier:(id)arg3;
 - (void)setCameraStream:(id)arg1;
 - (void)setDelegate:(id)arg1;

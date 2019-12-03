@@ -3,11 +3,12 @@
  */
 
 @interface CVAFilterGuided : ImageSaverRegistrator {
+    <MTLResourceGroupSPI> * _alphaPostprocessingTemporaryTexturesResourceGroup;
     <MTLTexture> * _alphaTexture;
     CVAFilterBox * _boxFilter;
     <MTLTexture> * _convolutedCoeff;
     <MTLDeviceSPI> * _device;
-    <MTLTexture> * _filteredAlphaTexture;
+    <MTLTexture> * _gammaMatteTexture;
     <MTLTexture> * _gfGGGBBB;
     <MTLTexture> * _gfMeanGGGBBB;
     <MTLTexture> * _gfMeanNormalizationFactor;
@@ -31,12 +32,16 @@
     <MTLTexture> * _hybridUpscalingIntermediateR32Texture;
     <MTLTexture> * _hybridUpscalingIntermediateTexture;
     CVAFilterInfimumConvolution * _infConvolution;
+    <MTLTexture> * _inputAlphaBlurred;
+    <MTLSamplerState> * _inputAlphaBlurredSampler;
+    <MTLTexture> * _inputAlphaDownsampled;
     NSString * _label;
-    <MTLTexture> * _laplacianLimitedAlphaTexture;
     <MTLLibrary> * _library;
-    <MTLTexture> * _lowResLaplacianLimitedMatte;
-    <MTLTexture> * _lowResMatte;
+    <MTLTexture> * _lowResGammaMatte;
+    MPSImageBox * _mpsBox;
     <MTLComputePipelineState> * _postProcessAlphaKernel;
+    <MTLResourceGroupSPI> * _rg_inputAlphaBlurred;
+    <MTLResourceGroupSPI> * _rg_inputAlphaDownsampled;
     int  _smallGuidedFilterKernelSize;
     <MTLTexture> * _srcTexture;
     <MTLTexture> * _upscaledCoeff;
@@ -51,7 +56,7 @@
 - (void)encodeReconstructToCommandBuffer:(id)arg1 inGuidancePixelBuffer:(struct __CVBuffer { }*)arg2 inCoeffTexture:(id)arg3 outFilteredTexture:(id)arg4;
 - (void)encodeRegressionToCommandBuffer:(id)arg1 inSourceTexture:(id)arg2 inGuidanceTexture:(id)arg3 inWeightTexture:(id)arg4 outCoeffTexture:(id)arg5 epsilon:(float)arg6;
 - (void)initSourceTexture:(struct __CVBuffer { }*)arg1;
-- (id)initWithDevice:(id)arg1 library:(id)arg2 commandQueue:(id)arg3 textureSize:(struct { unsigned long long x1; unsigned long long x2; unsigned long long x3; })arg4 alphaSize:(struct { unsigned long long x1; unsigned long long x2; unsigned long long x3; })arg5 kernelSize:(int)arg6 alphaDownsamplingScale:(float)arg7 error:(id*)arg8;
+- (id)initWithDevice:(id)arg1 library:(id)arg2 commandQueue:(id)arg3 textureSize:(struct { unsigned long long x1; unsigned long long x2; unsigned long long x3; })arg4 alphaSize:(struct { unsigned long long x1; unsigned long long x2; unsigned long long x3; })arg5 kernelSize:(int)arg6 infConvolutionDownsampling:(int)arg7 laplacianLimitingDownsampling:(int)arg8 laplacianLimitingBlurSize:(int)arg9 error:(id*)arg10;
 - (id)label;
 
 @end

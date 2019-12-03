@@ -6,9 +6,9 @@
     NSString * _abAssignId;
     unsigned long long  _createdAtTimestamp;
     struct { 
-        unsigned int createdAtTimestamp : 1; 
-        unsigned int relativeTimestamp : 1; 
-    }  _has;
+        unsigned int has_createdAtTimestamp : 1; 
+        unsigned int has_relativeTimestamp : 1; 
+    }  _flags;
     unsigned long long  _relativeTimestamp;
     PBUnknownFields * _unknownFields;
 }
@@ -21,8 +21,11 @@
 @property (nonatomic) unsigned long long relativeTimestamp;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (id)abAssignId;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned long long)createdAtTimestamp;
@@ -35,6 +38,7 @@
 - (id)initWithAbAssignId:(id)arg1 createdAtDate:(id)arg2;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)refreshRelativeTimeStamp;
 - (void)refreshRelativeTimeStampWithEventTime:(double)arg1;

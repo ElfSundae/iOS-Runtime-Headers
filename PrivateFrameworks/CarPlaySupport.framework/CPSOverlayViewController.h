@@ -15,6 +15,7 @@
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)dismissTemplateAnimated:(bool)arg1;
 - (unsigned long long)indexOfTemplate:(id)arg1;
+- (id)initWithNavigationBarClass:(Class)arg1 toolbarClass:(Class)arg2;
 - (void)popToRootTemplateAnimated:(bool)arg1;
 - (id)popToRootViewControllerAnimated:(bool)arg1;
 - (void)popToTemplate:(id)arg1 animated:(bool)arg2;

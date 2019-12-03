@@ -12,6 +12,8 @@
     NSArray * _moodIDs;
     NSString * _projectFilterID;
     unsigned int  _randomizerSeed;
+    NSArray * _requestedKeywords;
+    NSDictionary * _requestedMusicGenreDistribution;
     NSString * _songID;
     bool  _songIsLocked;
     NSString * _titleID;
@@ -60,6 +62,8 @@
 @property (nonatomic, readonly) double photoMinDuration;
 @property (nonatomic, copy) NSString *projectFilterID;
 @property (nonatomic) unsigned int randomizerSeed;
+@property (nonatomic, copy) NSArray *requestedKeywords;
+@property (nonatomic, copy) NSDictionary *requestedMusicGenreDistribution;
 @property (nonatomic, readonly) NSString *sequentialNUpEffect;
 @property (nonatomic, readonly) double sloMoIdealDuration;
 @property (nonatomic, readonly) double sloMoMinDuration;
@@ -85,7 +89,6 @@
 @property (nonatomic, readonly) double videoMinDuration;
 
 + (id)blueprint;
-+ (id)blueprintFromFontName:(id)arg1;
 + (id)blueprintFromSerializedDictionaryRepresentation:(id)arg1;
 + (id)blueprintWithMood:(id)arg1;
 + (id)emptyBlueprint;
@@ -160,6 +163,8 @@
 - (double)photoMinDuration;
 - (id)projectFilterID;
 - (unsigned int)randomizerSeed;
+- (id)requestedKeywords;
+- (id)requestedMusicGenreDistribution;
 - (id)sequentialNUpEffect;
 - (void)setICloudMusicAccountID:(unsigned long long)arg1;
 - (void)setICloudMusicMediaID:(unsigned long long)arg1;
@@ -168,6 +173,8 @@
 - (void)setMoodIDs:(id)arg1;
 - (void)setProjectFilterID:(id)arg1;
 - (void)setRandomizerSeed:(unsigned int)arg1;
+- (void)setRequestedKeywords:(id)arg1;
+- (void)setRequestedMusicGenreDistribution:(id)arg1;
 - (void)setSongID:(id)arg1;
 - (void)setSongIsLocked:(bool)arg1;
 - (void)setTitleIsLocked:(bool)arg1;

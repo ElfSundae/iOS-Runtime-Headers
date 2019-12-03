@@ -29,6 +29,7 @@
     _UIKBRTTouchDrifting * _touchDrifting;
     NSMutableSet * _touchIgnoredUUIDSet;
     _UIKBRTTouchVelocities * _touchVelocities;
+    UIKeyboardTypingStyleEstimator * _typingStyleEstimator;
     NSMutableArray * _uncommittedTouchUUIDs;
     bool  hideKeysUnderIndicator;
     double  lastTouchUpTime;
@@ -66,12 +67,14 @@
 @property (nonatomic, retain) _UIKBRTTouchDrifting *touchDrifting;
 @property (nonatomic, retain) NSMutableSet *touchIgnoredUUIDSet;
 @property (nonatomic, retain) _UIKBRTTouchVelocities *touchVelocities;
+@property (nonatomic, readonly) UIKeyboardTypingStyleEstimator *typingStyleEstimator;
 
 + (bool)_showSmallDisplayKeyplane;
 + (Class)_subclassForScreenTraits:(id)arg1;
 + (struct CGSize { double x1; double x2; })keyboardSizeForInputMode:(id)arg1 screenTraits:(id)arg2 keyboardType:(long long)arg3;
 
 - (void)_addTouchToScreenEdgePanRecognizer:(id)arg1;
+- (bool)_allowContinuousPathUI;
 - (bool)_canAddTouchesToScreenGestureRecognizer:(id)arg1;
 - (void)_clearDeferredTouchTasks;
 - (void)_enumerateDeferredTouchUUIDs:(id)arg1 withBlock:(id /* block */)arg2;
@@ -97,7 +100,6 @@
 - (void)acceptRecentInputIfNecessary;
 - (id)activationIndicatorView;
 - (id)activeTouchUUID;
-- (void)addWipeRecognizer;
 - (void)assertSavedLocation:(struct CGPoint { double x1; double x2; })arg1 onTouch:(id)arg2 inWindow:(id)arg3 resetPrevious:(bool)arg4;
 - (id)baseKeyForString:(id)arg1;
 - (double)biasedKeyboardWidthRatio;
@@ -150,6 +152,7 @@
 - (struct CGSize { double x1; double x2; })handRestRecognizerStandardKeyPixelSize;
 - (SEL)handlerForNotification:(id)arg1;
 - (bool)hasAccentKey;
+- (bool)hasActiveContinuousPathInput;
 - (bool)hasCandidateKeys;
 - (bool)hasPreferredHeight;
 - (bool)hideKeysUnderIndicator;
@@ -161,7 +164,12 @@
 - (bool)isAlphabeticPlane;
 - (bool)isEmojiKeyplane;
 - (bool)isExecutingDeferredTouchTasks;
+- (bool)isGeometricShiftOrMoreKeyForTouch:(id)arg1;
+- (bool)isHandwritingPlane;
+- (bool)isKanaPlane;
 - (bool)isReachableDevice;
+- (bool)isResized;
+- (bool)isResizing;
 - (bool)isShiftKeyBeingHeld;
 - (bool)isShiftKeyPlaneChooser;
 - (bool)keyplaneContainsDismissKey;
@@ -241,6 +249,7 @@
 - (bool)shouldMergeAssistantBarWithKeyboardLayout;
 - (bool)shouldShowIndicator;
 - (void)showKeyboardWithInputTraits:(id)arg1 screenTraits:(id)arg2 splitTraits:(id)arg3;
+- (bool)showsDedicatedEmojiKeyAlongsideGlobeButton;
 - (id)simulateTouch:(struct CGPoint { double x1; double x2; })arg1;
 - (id)simulateTouchForCharacter:(id)arg1 errorVector:(struct CGPoint { double x1; double x2; })arg2 shouldTypeVariants:(bool)arg3 baseKeyForVariants:(bool)arg4;
 - (struct CGSize { double x1; double x2; })stretchFactor;
@@ -275,7 +284,9 @@
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEstimatedPropertiesUpdated:(id)arg1;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
+- (void)traitCollectionDidChange;
 - (void)triggerSpaceKeyplaneSwitchIfNecessary;
+- (id)typingStyleEstimator;
 - (void)updateBackgroundCorners;
 - (void)updateGlobeKeyAndLayoutOriginBeforeSnapshotForInputView:(id)arg1;
 - (void)updateLocalizedKeys:(bool)arg1;
@@ -285,6 +296,5 @@
 - (bool)usesAutoShift;
 - (void)willBeginIndirectSelectionGesture;
 - (void)willMoveToWindow:(id)arg1;
-- (void)wipeGestureRecognized:(id)arg1;
 
 @end

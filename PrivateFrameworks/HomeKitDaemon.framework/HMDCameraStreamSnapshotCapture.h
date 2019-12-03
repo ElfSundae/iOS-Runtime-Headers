@@ -8,7 +8,7 @@
     <HMDCameraStreamSnapshotCaptureDelegate> * _delegate;
     NSObject<OS_dispatch_queue> * _delegateQueue;
     HMFTimer * _lastDecodedFrameTimer;
-    HMDCameraSessionID * _sessionID;
+    HMDCameraStreamSessionID * _streamSessionID;
     HMDVideoStreamInterface * _videoStreamInterface;
     NSObject<OS_dispatch_queue> * _workQueue;
 }
@@ -21,7 +21,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) HMFTimer *lastDecodedFrameTimer;
-@property (nonatomic, readonly) HMDCameraSessionID *sessionID;
+@property (nonatomic, readonly) HMDCameraStreamSessionID *streamSessionID;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) HMDVideoStreamInterface *videoStreamInterface;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *workQueue;
@@ -43,10 +43,10 @@
 - (id)initWithWorkQueue:(id)arg1 videoStreamInterface:(id)arg2 delegate:(id)arg3 delegateQueue:(id)arg4;
 - (id)lastDecodedFrameTimer;
 - (id)logIdentifier;
-- (id)sessionID;
 - (void)setCapturingCurrentFrame:(bool)arg1;
 - (void)setCapturingLastFrame:(bool)arg1;
 - (void)setLastDecodedFrameTimer:(id)arg1;
+- (id)streamSessionID;
 - (void)timerDidFire:(id)arg1;
 - (void)videoStream:(id)arg1 didGetLastDecodedFrame:(id)arg2;
 - (id)videoStreamInterface;

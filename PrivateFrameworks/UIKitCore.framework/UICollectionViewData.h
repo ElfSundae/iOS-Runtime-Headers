@@ -20,16 +20,22 @@
     }  _contentSize;
     NSMutableDictionary * _decorationLayoutAttributes;
     NSMutableIndexSet * _globalIndexesOfItemsAwaitingValidation;
-    id * _globalItems;
+    /* Warning: unhandled struct encoding: '{vector<UICollectionViewLayoutAttributes *, std::__1::allocator<UICollectionViewLayoutAttributes *> >="__begin_"^@"__end_"^@"__end_cap_"{__compressed_pair<UICollectionViewLayoutAttributes *__strong *, std::__1::allocator<UICollectionViewLayoutAttributes *> >="__value_"^@}}' */ struct vector<UICollectionViewLayoutAttributes *, std::__1::allocator<UICollectionViewLayoutAttributes *> > { 
+        __end_ **__begin_; 
+    }  _globalItems;
     NSMutableDictionary * _invalidatedDecorationIndexPaths;
     NSMutableDictionary * _invalidatedSupplementaryIndexPaths;
     long long  _lastResultForNumberOfItemsBeforeSection;
     long long  _lastSectionTestedForNumberOfItemsBeforeSection;
     UICollectionViewLayout * _layout;
-    long long  _numItems;
-    long long  _numSections;
     NSMapTable * _screenPageMap;
-    long long * _sectionItemCounts;
+    struct vector<long, std::__1::allocator<long> > { 
+        long long *__begin_; 
+        long long *__end_; 
+        struct __compressed_pair<long *, std::__1::allocator<long> > { 
+            long long *__value_; 
+        } __end_cap_; 
+    }  _sectionItemCounts;
     NSMutableDictionary * _supplementaryLayoutAttributes;
     struct CGRect { 
         struct CGPoint { 
@@ -52,7 +58,9 @@
 
 + (void)initialize;
 
+- (id).cxx_construct;
 - (void).cxx_destruct;
+- (id)_layoutAttributesForElementsInRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)_loadEverything;
 - (void)_prepareToLoadData;
 - (id)_screenPageForPoint:(struct CGPoint { double x1; double x2; })arg1;
@@ -66,7 +74,6 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })collectionViewContentRect;
 - (struct CGSize { double x1; double x2; })contentSize;
 - (bool)dataSourceMatchesCurrentCounts;
-- (void)dealloc;
 - (id)existingSupplementaryLayoutAttributes;
 - (id)existingSupplementaryLayoutAttributesInSection:(long long)arg1;
 - (long long)globalIndexForItemAtIndexPath:(id)arg1;

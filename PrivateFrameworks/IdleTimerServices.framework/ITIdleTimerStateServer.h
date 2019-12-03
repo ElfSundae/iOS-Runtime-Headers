@@ -2,21 +2,33 @@
    Image: /System/Library/PrivateFrameworks/IdleTimerServices.framework/IdleTimerServices
  */
 
-@interface ITIdleTimerStateServer : FBSServiceFacility {
+@interface ITIdleTimerStateServer : NSObject <BSServiceConnectionListenerDelegate, ITIdleTimerServerInterface> {
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _accessLock;
+    NSObject<OS_dispatch_queue> * _calloutQueue;
+    NSMutableDictionary * _clientTargetsByConfigIdentifier;
+    BSServiceConnectionListener * _connectionListener;
+    NSMutableSet * _connections;
     <ITIdleTimerStateServerDelegate> * _delegate;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <ITIdleTimerStateServerDelegate> *delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_handleMessage_isIdleTimerServiceAvailable:(id)arg1;
-- (void)_handleMessage_setIdleTimerDisabledForClient:(id)arg1 withMessage:(id)arg2;
+- (void)_addConnection:(id)arg1;
+- (void)_removeConnection:(id)arg1;
+- (void)addIdleTimerConfiguration:(id)arg1 forReason:(id)arg2 error:(id*)arg3;
+- (bool)clientConfiguration:(id)arg1 handleIdleEvent:(unsigned long long)arg2;
 - (id)delegate;
-- (id)initWithCalloutQueue:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 queue:(id)arg2;
-- (void)noteClientDidDisconnect:(id)arg1;
-- (void)noteDidReceiveMessage:(id)arg1 withType:(long long)arg2 fromClient:(id)arg3;
+- (id)initWithCalloutQueue:(id)arg1 delegate:(id)arg2;
+- (bool)isIdleTimerServiceAvailableWithError:(id*)arg1;
+- (void)listener:(id)arg1 didReceiveConnection:(id)arg2 withContext:(id)arg3;
+- (void)removeIdleTimerConfiguration:(id)arg1 forReason:(id)arg2 error:(id*)arg3;
 - (void)setDelegate:(id)arg1;
-- (bool)shouldAllowClientConnection:(id)arg1 withMessage:(id)arg2;
 
 @end

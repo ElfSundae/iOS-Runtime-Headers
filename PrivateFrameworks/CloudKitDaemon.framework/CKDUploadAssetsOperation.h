@@ -4,13 +4,16 @@
 
 @interface CKDUploadAssetsOperation : CKDDatabaseOperation {
     CKDAssetRequestPlanner * _assetRequestPlanner;
+    NSDictionary * _assetUUIDToExpectedProperties;
     NSArray * _assetsToUpload;
     bool  _atomic;
     CKDCancelTokenGroup * _cancelTokens;
     unsigned long long  _maxPackageUploadsPerBatch;
     NSMutableArray * _openedPackages;
     NSMutableArray * _packageManifests;
+    NSDictionary * _packageUUIDToExpectedProperties;
     NSObject<OS_dispatch_queue> * _queue;
+    bool  _temporary;
     id /* block */  _uploadCompletionBlock;
     id /* block */  _uploadPreparationBlock;
     id /* block */  _uploadProgressBlock;
@@ -18,13 +21,16 @@
 }
 
 @property (nonatomic, retain) CKDAssetRequestPlanner *assetRequestPlanner;
+@property (nonatomic, retain) NSDictionary *assetUUIDToExpectedProperties;
 @property (nonatomic, retain) NSArray *assetsToUpload;
 @property (nonatomic) bool atomic;
 @property (nonatomic, retain) CKDCancelTokenGroup *cancelTokens;
 @property (nonatomic) unsigned long long maxPackageUploadsPerBatch;
 @property (nonatomic, retain) NSMutableArray *openedPackages;
 @property (nonatomic, retain) NSMutableArray *packageManifests;
+@property (nonatomic, retain) NSDictionary *packageUUIDToExpectedProperties;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *queue;
+@property (nonatomic) bool temporary;
 @property (nonatomic, copy) id /* block */ uploadCompletionBlock;
 @property (nonatomic, copy) id /* block */ uploadPreparationBlock;
 @property (nonatomic, copy) id /* block */ uploadProgressBlock;
@@ -67,6 +73,7 @@
 - (void)_uploadPackageSectionsWithPendingTasks:(id)arg1 uploadingTasks:(id)arg2 completedTasks:(id)arg3;
 - (void)_uploadPackageSectionsWithTask:(id)arg1 completionBlock:(id /* block */)arg2;
 - (id)assetRequestPlanner;
+- (id)assetUUIDToExpectedProperties;
 - (id)assetsToUpload;
 - (bool)atomic;
 - (void)cancel;
@@ -79,19 +86,24 @@
 - (id)nameForState:(unsigned long long)arg1;
 - (id)openedPackages;
 - (id)packageManifests;
+- (id)packageUUIDToExpectedProperties;
 - (id)queue;
 - (void)setAssetRequestPlanner:(id)arg1;
+- (void)setAssetUUIDToExpectedProperties:(id)arg1;
 - (void)setAssetsToUpload:(id)arg1;
 - (void)setAtomic:(bool)arg1;
 - (void)setCancelTokens:(id)arg1;
 - (void)setMaxPackageUploadsPerBatch:(unsigned long long)arg1;
 - (void)setOpenedPackages:(id)arg1;
 - (void)setPackageManifests:(id)arg1;
+- (void)setPackageUUIDToExpectedProperties:(id)arg1;
 - (void)setQueue:(id)arg1;
+- (void)setTemporary:(bool)arg1;
 - (void)setUploadCompletionBlock:(id /* block */)arg1;
 - (void)setUploadPreparationBlock:(id /* block */)arg1;
 - (void)setUploadProgressBlock:(id /* block */)arg1;
 - (void)setUploadTasksByPackages:(id)arg1;
+- (bool)temporary;
 - (id /* block */)uploadCompletionBlock;
 - (id /* block */)uploadPreparationBlock;
 - (id /* block */)uploadProgressBlock;

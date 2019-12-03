@@ -21,8 +21,8 @@
 
 - (void).cxx_destruct;
 - (void)_handleInvalidation;
+- (id)_init;
 - (void)addObserver:(id)arg1;
-- (id)init;
 - (id)location;
 - (void)removeObserver:(id)arg1;
 - (void)setConnection:(id)arg1;

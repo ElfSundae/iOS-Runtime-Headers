@@ -10,11 +10,13 @@
 @property (nonatomic, retain) NSMutableArray *quickLinkItems;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
 + (Class)quickLinkItemType;
 
 - (void).cxx_destruct;
 - (void)addQuickLinkItem:(id)arg1;
 - (void)clearQuickLinkItems;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -25,6 +27,7 @@
 - (id)quickLinkItemAtIndex:(unsigned long long)arg1;
 - (id)quickLinkItems;
 - (unsigned long long)quickLinkItemsCount;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setQuickLinkItems:(id)arg1;
 - (id)unknownFields;

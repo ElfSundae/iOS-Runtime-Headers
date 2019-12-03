@@ -10,7 +10,7 @@
 @property (nonatomic, readonly) NSString *fullName;
 @property (nonatomic, readonly) NSString *styleName;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)equivalentDictionary;
 - (id)fullName;

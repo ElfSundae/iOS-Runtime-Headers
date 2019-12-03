@@ -3,6 +3,7 @@
  */
 
 @interface VUIPlaybackReporterSession : NSObject {
+    NSString * _UUID;
     id  _context;
     NSMutableDictionary * _metadata;
     struct os_unfair_lock_s { 
@@ -12,6 +13,7 @@
     bool  _reportingEnabled;
 }
 
+@property (nonatomic, readonly) NSString *UUID;
 @property (nonatomic, retain) id context;
 @property (nonatomic) NSObject<TVPPlayback> *player;
 @property (nonatomic) bool reportingEnabled;
@@ -21,6 +23,7 @@
 + (id)transitionTypeForMediaControllerAutoStart:(id)arg1;
 
 - (void).cxx_destruct;
+- (id)UUID;
 - (id)consumeMetadataForKey:(id)arg1;
 - (id)consumeStartReason;
 - (id)consumeStartType;

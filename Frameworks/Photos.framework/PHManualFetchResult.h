@@ -6,6 +6,7 @@
     NSString * _identifier;
     NSOrderedSet * _objectIDs;
     NSArray * _objects;
+    PHPhotoLibrary * _photoLibrary;
 }
 
 @property (readonly) NSString *identifier;
@@ -28,10 +29,9 @@
 - (void)getMediaTypeCounts;
 - (unsigned long long)hash;
 - (id)identifier;
-- (id)initWithObjects:(id)arg1 fetchType:(id)arg2 fetchPropertySets:(id)arg3;
-- (id)initWithObjects:(id)arg1 fetchType:(id)arg2 fetchPropertySets:(id)arg3 identifier:(id)arg4 registerIfNeeded:(bool)arg5;
-- (id)initWithOids:(id)arg1 fetchType:(id)arg2 fetchPropertySets:(id)arg3 identifier:(id)arg4 registerIfNeeded:(bool)arg5;
-- (id)initWithOids:(id)arg1 fetchType:(id)arg2 fetchPropertySets:(id)arg3 identifier:(id)arg4 registerIfNeeded:(bool)arg5 photosCount:(unsigned long long)arg6 videosCount:(unsigned long long)arg7 audiosCount:(unsigned long long)arg8;
+- (id)initWithObjects:(id)arg1 photoLibrary:(id)arg2 fetchType:(id)arg3 fetchPropertySets:(id)arg4 identifier:(id)arg5 registerIfNeeded:(bool)arg6;
+- (id)initWithOids:(id)arg1 photoLibrary:(id)arg2 fetchType:(id)arg3 fetchPropertySets:(id)arg4 identifier:(id)arg5 registerIfNeeded:(bool)arg6;
+- (id)initWithOids:(id)arg1 photoLibrary:(id)arg2 fetchType:(id)arg3 fetchPropertySets:(id)arg4 identifier:(id)arg5 registerIfNeeded:(bool)arg6 photosCount:(unsigned long long)arg7 videosCount:(unsigned long long)arg8 audiosCount:(unsigned long long)arg9;
 - (bool)isEqual:(id)arg1;
 - (bool)isFullyBackedByObjectIDs;
 - (id)objectIDAtIndex:(unsigned long long)arg1;

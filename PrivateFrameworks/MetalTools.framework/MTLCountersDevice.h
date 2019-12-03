@@ -28,6 +28,8 @@
 - (id)newDefaultLibraryWithBundle:(id)arg1 error:(id*)arg2;
 - (id)newDepthStencilStateWithDescriptor:(id)arg1;
 - (id)newFence;
+- (id)newFunctionWithGLIR:(void*)arg1 functionType:(unsigned long long)arg2;
+- (id)newFunctionWithGLIR:(void*)arg1 inputsDescription:(id)arg2 functionType:(unsigned long long)arg3;
 - (id)newHeapWithDescriptor:(id)arg1;
 - (id)newLibraryWithData:(id)arg1 error:(id*)arg2;
 - (id)newLibraryWithFile:(id)arg1 error:(id*)arg2;

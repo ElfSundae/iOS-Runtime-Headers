@@ -3,25 +3,25 @@
  */
 
 @interface OITSUCustomFormatData : NSObject <NSCopying, NSMutableCopying> {
-    unsigned short  mCurrencyCodeIndex;
-    unsigned char  mDecimalWidth;
-    bool  mFormatContainsIntegerToken;
-    NSString * mFormatString;
-    int  mFractionAccuracy;
-    unsigned char  mIndexFromRightOfLastDigitPlaceholder;
-    NSIndexSet * mInterstitialStringInsertionIndexes;
-    NSArray * mInterstitialStrings;
-    bool  mIsComplexFormat;
-    bool  mIsConditional;
-    unsigned char  mMinimumIntegerWidth;
-    unsigned char  mNumberOfHashDecimalPlaceholders;
-    unsigned char  mNumberOfNonSpaceDecimalPlaceholderDigits;
-    unsigned char  mNumberOfNonSpaceIntegerPlaceholderDigits;
-    bool  mRequiresFractionReplacement;
-    double  mScaleFactor;
-    bool  mShowThousandsSeparator;
-    unsigned char  mTotalNumberOfDecimalPlaceholdersInFormat;
-    bool  mUseAccountingStyle;
+    unsigned short  _currencyCodeIndex;
+    unsigned char  _decimalWidth;
+    bool  _formatContainsIntegerToken;
+    NSString * _formatString;
+    int  _fractionAccuracy;
+    unsigned char  _indexFromRightOfLastDigitPlaceholder;
+    NSIndexSet * _interstitialStringInsertionIndexes;
+    NSArray * _interstitialStrings;
+    bool  _isComplexFormat;
+    bool  _isConditional;
+    unsigned char  _minimumIntegerWidth;
+    unsigned char  _numberOfHashDecimalPlaceholders;
+    unsigned char  _numberOfNonSpaceDecimalPlaceholderDigits;
+    unsigned char  _numberOfNonSpaceIntegerPlaceholderDigits;
+    bool  _requiresFractionReplacement;
+    double  _scaleFactor;
+    bool  _showThousandsSeparator;
+    unsigned char  _totalNumberOfDecimalPlaceholdersInFormat;
+    bool  _useAccountingStyle;
 }
 
 @property (nonatomic) unsigned short currencyCodeIndex;
@@ -46,9 +46,9 @@
 
 + (id)customFormatData;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned short)currencyCodeIndex;
-- (void)dealloc;
 - (unsigned char)decimalWidth;
 - (bool)formatContainsIntegerToken;
 - (id)formatString;

@@ -11,7 +11,7 @@
 @optional
 
 - (EKEvent *)editItemEventToDetach;
-- (bool)editItemViewControllerSave:(EKEditItemViewController *)arg1;
+- (bool)editItemViewControllerSave:(id <EKEditItemViewControllerProtocol>)arg1;
 - (void)editItemViewControllerWantsKeyboardPinned:(bool)arg1;
 
 @end

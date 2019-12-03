@@ -31,8 +31,8 @@
 + (id)receivingOperationWithInputStream:(id)arg1 outputStream:(id)arg2;
 + (id)sendingOperationWithDraftData:(id)arg1 inputStream:(id)arg2 outputStream:(id)arg3;
 
+- (void).cxx_destruct;
 - (void)_checkInHandoffStream:(id)arg1;
-- (void)_commonContinuationStreamTeardownWithStream:(id*)arg1;
 - (void)_commonHandoffStreamInitializationWithStream:(id)arg1;
 - (void)_complete;
 - (void)_didFinishTransferringHandoffPayload;

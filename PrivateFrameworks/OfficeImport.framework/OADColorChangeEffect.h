@@ -7,8 +7,8 @@
     OADColor * mToColor;
 }
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)fromColor;
 - (unsigned long long)hash;
 - (id)init;

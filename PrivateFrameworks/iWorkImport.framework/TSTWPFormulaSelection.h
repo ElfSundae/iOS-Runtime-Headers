@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
  */
 
-@interface TSTWPFormulaSelection : TSTWPSelection {
+@interface TSTWPFormulaSelection : TSWPSelection {
     unsigned long long  mActiveTokenCharIndex;
 }
 

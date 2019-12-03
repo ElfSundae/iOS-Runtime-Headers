@@ -7,5 +7,7 @@
 + (bool)isAvailable;
 
 - (id)alertActions;
+- (id)callProviderActions;
+- (id)icon;
 
 @end

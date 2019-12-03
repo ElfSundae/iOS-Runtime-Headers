@@ -7,7 +7,7 @@
     NSNumber * _number;
 }
 
-@property unsigned long long gender;
+@property (nonatomic) unsigned long long gender;
 @property (nonatomic, copy) NSNumber *number;
 
 + (id)sentenceContext;

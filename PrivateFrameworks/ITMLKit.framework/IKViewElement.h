@@ -75,8 +75,8 @@
 @property (nonatomic, retain) IKViewElementStyleComposer *styleComposer;
 @property (readonly) Class superclass;
 @property (getter=tv_isParsedOnce, setter=tv_setParsedOnce:, nonatomic) bool tv_parsedOnce;
+@property (setter=tv_setProxyView:, nonatomic) id tv_proxyView;
 @property (nonatomic, readonly) long long tv_scaleMode;
-@property (nonatomic, readonly) NSHashTable *tv_viewProxyMap;
 @property (nonatomic, readonly, retain) NSArray *unfilteredChildren;
 @property (nonatomic, readonly) IKChangeSet *unfilteredChildrenChangeSet;
 @property (nonatomic) unsigned long long updateType;
@@ -85,11 +85,14 @@
 
 // Image: /System/Library/PrivateFrameworks/ITMLKit.framework/ITMLKit
 
++ (id)DOMEventTypeNameMap;
++ (id)_eventXMLNameMap;
 + (id)effectiveChildDOMElementsForDOMElement:(id)arg1;
 + (unsigned long long)evaluateElementUpdateType:(id)arg1;
 + (bool)shouldParseChildDOMElement:(id)arg1;
 + (bool)shouldParseChildDOMElements;
 + (id)supportedFeatures;
++ (id)supportedFeaturesForElementName:(id)arg1;
 + (unsigned long long)updateTypeForChangeInAttribute:(id)arg1 fromValue:(id)arg2 toValue:(id)arg3;
 + (void)willParseDOMElement:(id)arg1;
 
@@ -143,6 +146,7 @@
 - (id)objectForKeyedSubscript:(id)arg1;
 - (id)parent;
 - (id)parentStyleableElement;
+- (void)performImplicitUpdates:(id /* block */)arg1;
 - (bool)prototypesUpdated;
 - (id)proxyElementForLoadedChildElement:(id)arg1;
 - (void)resetImplicitUpdates;
@@ -177,23 +181,24 @@
 
 - (id)itemElementsOfType:(unsigned long long)arg1;
 - (void)retrievePresentationDocumentWithResponder:(id)arg1 completionHandler:(id /* block */)arg2;
-- (void)tv_addViewProxy:(id)arg1;
-- (id)tv_approximateView;
 - (id)tv_associatedViewElement;
 - (id)tv_associatedViewElementWithDefaultClass:(Class)arg1;
 - (void)tv_dispatchEvent:(id)arg1 canBubble:(bool)arg2 isCancelable:(bool)arg3 extraInfo:(id)arg4 targetResponder:(id)arg5 completionBlock:(id /* block */)arg6;
 - (unsigned long long)tv_elementType;
 - (bool)tv_isParsedOnce;
+- (id)tv_proxyView;
 - (long long)tv_scaleMode;
 - (long long)tv_scaleModeWithDefaultMode:(long long)arg1;
 - (long long)tv_semanticContentAttribute;
 - (void)tv_setParsedOnce:(bool)arg1;
-- (id)tv_viewProxyMap;
+- (void)tv_setProxyView:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/VideoSubscriberAccountUI.framework/VideoSubscriberAccountUI
 
+- (bool)vs_boolAttributeValueForKey:(id)arg1;
 - (unsigned long long)vs_elementType;
 - (id)vs_itemElementsOfType:(unsigned long long)arg1;
+- (unsigned long long)vs_selectedChildElementIndex;
 
 // Image: /System/Library/PrivateFrameworks/VideosUI.framework/VideosUI
 
@@ -201,7 +206,7 @@
 
 - (id)_backgroundImageProxyFromImageElement:(id)arg1;
 - (void)_parseElementIfNecessary;
-- (id)mediaInfoForEvent:(id)arg1 includingVideo:(bool)arg2;
+- (id)mediaInfoForEvent:(id)arg1 playbackContext:(unsigned long long)arg2 includingVideo:(bool)arg3;
 - (id)vui_DataSource;
 - (id)vui_description;
 - (id)vui_imageURL;

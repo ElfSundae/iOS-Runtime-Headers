@@ -3,7 +3,7 @@
  */
 
 @interface HKSeriesSample : HKSample {
-    long long  _count;
+    _Atomic unsigned int  _count;
     bool  _frozen;
 }
 
@@ -16,7 +16,7 @@
 - (void)_setCount:(unsigned long long)arg1;
 - (void)_setFrozen:(bool)arg1;
 - (bool)_shouldNotifyOnInsert;
-- (id)_validateConfiguration;
+- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
 - (id)_validateSample;
 - (id)_valueDescription;
 - (unsigned long long)count;

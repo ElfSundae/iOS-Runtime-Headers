@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/LocalAuthenticationPrivateUI.framework/LocalAuthenticationPrivateUI
  */
 
-@interface LAUIPearlGlyphView : UIView <MTKViewDelegate> {
+@interface LAUIPearlGlyphView : UIView <LAUIRenderLoopDelegate> {
     bool  _animating;
     struct global_state { 
         float accumulator_growth; 
@@ -106,10 +106,10 @@
     bool  _hideFace;
     void _idleColor;
     bool  _inWindow;
+    bool  _invalidated;
     double  _lastUpdateTime;
+    CALayer * _layer;
     double  _maximumFramerate;
-    CAMetalLayer * _metalLayer;
-    MTKView * _metalView;
     bool  _modelDirty;
     unsigned long long  _mouthID;
     struct global_state { 
@@ -128,6 +128,7 @@
     long long  _priorState;
     void _processingColor;
     bool  _reduceBlur;
+    LAUIRenderLoop * _renderLoop;
     LAUICubicBSplineRenderer * _renderer;
     struct map<unsigned long, std::__1::set<unsigned long, std::__1::less<unsigned long>, std::__1::allocator<unsigned long> >, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, std::__1::set<unsigned long, std::__1::less<unsigned long>, std::__1::allocator<unsigned long> > > > > { 
         struct __tree<std::__1::__value_type<unsigned long, std::__1::set<unsigned long, std::__1::less<unsigned long>, std::__1::allocator<unsigned long> > >, std::__1::__map_value_compare<unsigned long, std::__1::__value_type<unsigned long, std::__1::set<unsigned long, std::__1::less<unsigned long>, std::__1::allocator<unsigned long> > >, std::__1::less<unsigned long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long, std::__1::set<unsigned long, std::__1::less<unsigned long>, std::__1::allocator<unsigned long> > > > > { 
@@ -161,6 +162,7 @@
 @property (nonatomic, readonly) UIColor *finishedColor;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) bool hideFace;
+@property (nonatomic) bool inApplicationContext;
 @property (nonatomic) struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; } modelTransform;
 @property (getter=isPaused, nonatomic) bool paused;
 @property (nonatomic, readonly) long long state;
@@ -168,6 +170,7 @@
 @property (readonly) Class superclass;
 @property (getter=isWireframeEnabled, nonatomic) bool wireframeEnabled;
 
++ (void)invokeSuccessFeedback;
 + (id)sharedStaticResources;
 
 - (id).cxx_construct;
@@ -187,26 +190,29 @@
 - (void)dealloc;
 - (id)delegate;
 - (void)didMoveToWindow;
-- (void)drawInMTKView:(id)arg1;
 - (void)endExternalAnimation;
 - (bool)feedbackEnabled;
 - (id)finishedColor;
 - (bool)hideFace;
+- (bool)inApplicationContext;
 - (id)init;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)initWithStyle:(long long)arg1;
+- (void)invalidate;
 - (bool)isPaused;
 - (bool)isWireframeEnabled;
 - (void)layoutSubviews;
 - (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })modelTransform;
-- (void)mtkView:(id)arg1 drawableSizeWillChange:(struct CGSize { double x1; double x2; })arg2;
 - (void)purgeBuffers;
 - (void)reduceMotionDidChange:(id)arg1;
 - (void)reduceTransparencyDidChange:(id)arg1;
+- (void)renderLoop:(id)arg1 drawAtTime:(double)arg2;
+- (void)renderLoop:(id)arg1 drawableSizeDidChange:(struct CGSize { double x1; double x2; })arg2;
 - (void)setDelegate:(id)arg1;
 - (void)setFeedbackEnabled:(bool)arg1;
 - (void)setFinishedColor:(id)arg1 animated:(bool)arg2;
 - (void)setHideFace:(bool)arg1 animated:(bool)arg2;
+- (void)setInApplicationContext:(bool)arg1;
 - (void)setModelTransform:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })arg1;
 - (void)setPaused:(bool)arg1;
 - (void)setState:(long long)arg1 animated:(bool)arg2;

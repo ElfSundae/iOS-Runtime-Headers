@@ -7,18 +7,16 @@
     TLKSimpleRowView * _rowView;
 }
 
-@property (retain) SearchUIButton *button;
-@property (retain) NUIContainerStackView *contentView;
-@property (retain) SearchUIWatchListCardRowModel *rowModel;
-@property (retain) TLKSimpleRowView *rowView;
+@property (nonatomic, retain) SearchUIButton *button;
+@property (nonatomic, retain) NUIContainerStackView *contentView;
+@property (nonatomic, retain) SearchUIWatchListCardRowModel *rowModel;
+@property (nonatomic, retain) TLKSimpleRowView *rowView;
 
 + (bool)supportsRecyclingForCardSection:(id)arg1;
 
 - (void).cxx_destruct;
 - (id)button;
-- (void)buttonPressed;
 - (void)didUpdateRowModel:(id)arg1 animate:(bool)arg2;
-- (id)hitTest:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
 - (id)rowView;
 - (void)setButton:(id)arg1;
 - (void)setRowView:(id)arg1;

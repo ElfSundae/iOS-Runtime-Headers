@@ -7,7 +7,7 @@
     bool  _delayRenders;
     PHCachingImageManager * _imageManager;
     NSObject<OS_dispatch_queue> * _ivarQueue;
-    int  _nextRequestID;
+    _Atomic int  _nextRequestID;
     NSObject<OS_dispatch_queue> * _renderQueue;
     NSMutableDictionary * _requestsByIdentifier;
     NSMutableDictionary * _unadjustedRequestIdentifiersByIdentifier;
@@ -21,7 +21,7 @@
 + (void)clearCachedRenders;
 
 - (void).cxx_destruct;
-- (void)_handleRequestCompletedWithID:(long long)arg1;
+- (void)_handleRequestCompletedWithID:(long long)arg1 info:(id)arg2;
 - (long long)_nextRequestID;
 - (void)_removeRequestforID:(long long)arg1;
 - (id)cachedImageForAsset:(id)arg1 targetSize:(struct CGSize { double x1; double x2; })arg2;

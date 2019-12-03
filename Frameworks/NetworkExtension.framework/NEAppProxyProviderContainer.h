@@ -22,7 +22,7 @@
 - (id)delegate;
 - (unsigned int)delegateInterfaceIndex;
 - (struct _NEFlowDirector { }*)director;
-- (void)flowDivertMatchAppRulesWithFlow:(unsigned int)arg1 pid:(int)arg2 uuid:(unsigned char)arg3 signingIdentifier:(struct __CFString { }*)arg4;
+- (void)flowDivertMatchAppRulesWithFlow:(unsigned int)arg1 auditToken:(struct __CFData { }*)arg2 signingIdentifier:(struct __CFString { }*)arg3;
 - (void)flowDivertNewFlow:(struct _NEFlow { }*)arg1 completionHandler:(id /* block */)arg2;
 - (void)flowDivertOpenControlSocket;
 - (id)flowQueue;

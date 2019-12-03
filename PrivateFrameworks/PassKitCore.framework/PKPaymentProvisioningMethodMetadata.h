@@ -5,6 +5,7 @@
 @interface PKPaymentProvisioningMethodMetadata : NSObject {
     NSString * _currency;
     NSDecimalNumber * _depositAmount;
+    unsigned long long  _depositType;
     PKPaymentDigitalIssuanceMetadata * _digitalIssuanceMetadata;
     NSDecimalNumber * _maxLoadedBalance;
     NSDecimalNumber * _minLoadedBalance;
@@ -17,6 +18,7 @@
 
 @property (nonatomic, readonly, copy) NSString *currency;
 @property (nonatomic, readonly, copy) NSDecimalNumber *depositAmount;
+@property (nonatomic, readonly) unsigned long long depositType;
 @property (nonatomic, readonly) PKPaymentDigitalIssuanceMetadata *digitalIssuanceMetadata;
 @property (nonatomic, readonly, copy) NSDecimalNumber *maxLoadedBalance;
 @property (nonatomic, readonly, copy) NSDecimalNumber *minLoadedBalance;
@@ -29,6 +31,7 @@
 - (void).cxx_destruct;
 - (id)currency;
 - (id)depositAmount;
+- (unsigned long long)depositType;
 - (id)digitalIssuanceMetadata;
 - (id)initWithDictionary:(id)arg1;
 - (id)maxLoadedBalance;

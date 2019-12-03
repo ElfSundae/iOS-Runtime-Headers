@@ -24,6 +24,7 @@
 - (void).cxx_destruct;
 - (struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })_boundingMapRect;
 - (bool)_canDrawContent;
+- (void)_forEachMapRectForKey:(const struct { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; }*)arg1 withContext:(struct CGContext { }*)arg2 performBlock:(id /* block */)arg3;
 - (id)_mapView;
 - (bool)_mayExtendOutsideBounds;
 - (id)_mk_overlayLayer;
@@ -31,6 +32,7 @@
 - (struct { double x1; double x2; })_originMapPoint;
 - (id)_renderer;
 - (void)_setMapView:(id)arg1;
+- (void)_updateRenderColors;
 - (bool)canDrawMapRect:(struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })arg1 zoomScale:(double)arg2;
 - (void)dealloc;
 - (void)drawMapRect:(struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })arg1 zoomScale:(double)arg2 inContext:(struct CGContext { }*)arg3;
@@ -42,15 +44,17 @@
 - (struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })mapRectForRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)overlay;
 - (bool)overlay:(id)arg1 canDrawKey:(const struct { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; }*)arg2;
+- (bool)overlay:(id)arg1 canPossiblyDrawKey:(const struct { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; }*)arg2;
 - (void)overlay:(id)arg1 drawKey:(const struct { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; }*)arg2 inContext:(struct CGContext { }*)arg3;
+- (bool)overlayCanProvideVectorData:(id)arg1;
 - (struct CGPoint { double x1; double x2; })pointForMapPoint:(struct { double x1; double x2; })arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })rectForMapRect:(struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })arg1;
-- (void)setContentScaleFactor:(double)arg1;
 - (void)setNeedsDisplay;
 - (void)setNeedsDisplayInMapRect:(struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setNeedsDisplayInMapRect:(struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })arg1 zoomScale:(double)arg2;
 - (void)setNeedsDisplayInRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)set_boundingMapRect:(struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)set_renderer:(id)arg1;
+- (id)vectorDataForOverlay:(id)arg1;
 
 @end

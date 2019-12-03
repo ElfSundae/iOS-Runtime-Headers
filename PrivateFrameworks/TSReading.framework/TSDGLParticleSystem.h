@@ -94,7 +94,7 @@
 - (void)p_logParticleInformation;
 - (struct CGSize { double x1; double x2; })p_particleSystemSizeWithRequestedNumber:(unsigned long long)arg1 objectSize:(struct CGSize { double x1; double x2; })arg2;
 - (void)p_reverseParticleDataDrawOrder;
-- (void)p_setDataBufferAttribute:(id*)arg1 withName:(id)arg2 defaultDataType:(int)arg3 normalized:(bool)arg4 componentCount:(unsigned long long)arg5;
+- (void)p_setDataBufferAttribute:(id*)arg1 withName:(id)arg2 defaultDataType:(long long)arg3 normalized:(bool)arg4 componentCount:(unsigned long long)arg5;
 - (void)p_setupDataBufferWithParticleCount:(unsigned long long)arg1 visibleParticleCount:(unsigned long long)arg2;
 - (void)p_setupParticleDataWithTexture:(id)arg1;
 - (void)p_setupVertexData;

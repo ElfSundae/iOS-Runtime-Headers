@@ -42,7 +42,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithItems:(id)arg1;
 - (id)initWithItemsQuery:(id)arg1;
-- (id)initWithMultiverseIdentifier:(id)arg1;
+- (id)initWithMultiverseIdentifier:(id)arg1 library:(id)arg2;
 - (id)items;
 - (id)itemsQuery;
 - (unsigned long long)mediaTypes;
@@ -50,11 +50,6 @@
 - (id)representativeItem;
 - (bool)setValue:(id)arg1 forProperty:(id)arg2;
 - (void)setValue:(id)arg1 forProperty:(id)arg2 withCompletionBlock:(id /* block */)arg3;
-
-// Image: /System/Library/PrivateFrameworks/FuseUI.framework/FuseUI
-
-+ (id)customPropertyHandlersCollection;
-+ (void)registerSupportedCustomPropertiesWithHandlersCollection:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/MPUFoundation.framework/MPUFoundation
 

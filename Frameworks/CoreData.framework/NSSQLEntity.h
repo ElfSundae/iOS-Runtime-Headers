@@ -5,6 +5,8 @@
 @interface NSSQLEntity : NSStoreMapping {
     NSMutableArray * _attrColumns;
     NSMutableArray * _columnsToFetch;
+    NSSQLEntity_DerivedAttributesExtension * _derivedAttributeExtension;
+    NSMutableArray * _derivedAttributes;
     NSMutableArray * _ekColumns;
     NSEntityDescription * _entityDescription;
     unsigned int  _entityID;
@@ -38,7 +40,7 @@
         unsigned long long location; 
         unsigned long long length; 
     }  _toOneRange;
-    NSMutableArray * _uniqueAttributes;
+    NSMutableArray * _uniqueProperties;
     NSMutableArray * _virtualFKs;
 }
 
@@ -52,18 +54,22 @@
 - (bool)_collectFKSlots:(id)arg1 error:(id*)arg2;
 - (void)_doPostModelGenerationCleanup;
 - (bool)_entityIsBroken:(id*)arg1;
+- (bool)_generateAttributeDerivations:(id*)arg1;
 - (unsigned int)_generateIDWithSuperEntity:(id)arg1 nextID:(unsigned int)arg2;
 - (void)_generateIndexes;
 - (void)_generateInverseRelationshipsAndMore;
 - (void)_generateMulticolumnUniquenessConstraints;
 - (void)_generateProperties;
+- (bool)_isValidFunctionForDerivations:(id)arg1;
 - (void*)_odiousHashHack;
 - (void)_organizeConstraints;
 - (id)_propertySearchMapping;
 - (id)_sqlPropertyWithRenamingIdentifier:(id)arg1;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })_toOneRange;
+- (void)addDerivationKeypath:(id)arg1 forAttribute:(id)arg2;
+- (void)addDerivedAttribute:(id)arg1;
 - (bool)addPropertiesForReadOnlyFetch:(id)arg1 keys:(id)arg2 context:(id)arg3;
-- (void)addUniqueAttribute:(id)arg1;
+- (void)addUniquedProperty:(id)arg1;
 - (id)attributeColumns;
 - (id)attributeNamed:(id)arg1;
 - (id)attributes;
@@ -72,9 +78,15 @@
 - (id)columnsToFetch;
 - (void)copyValuesForReadOnlyFetch:(id)arg1;
 - (void)dealloc;
+- (id)derivedAttributes;
+- (id)derivedAttributesExtension;
 - (id)description;
 - (id)entityDescription;
 - (unsigned int)entityID;
+- (id)entitySpecificAttributes;
+- (id)entitySpecificProperties;
+- (id)entitySpecificPropertiesPassing:(id /* block */)arg1;
+- (id)entitySpecificRelationships;
 - (id)externalName;
 - (unsigned int)fetchIndexForKey:(id)arg1;
 - (void)finalize;
@@ -111,11 +123,12 @@
 - (id)subentities;
 - (id)subentityKey;
 - (unsigned int)subentityMaxID;
+- (id)subhierarchyColumnMatching:(id)arg1;
 - (id)superentity;
 - (id)tableName;
 - (id)tempTableName;
 - (id)toManyRelationships;
-- (id)uniqueAttributes;
+- (id)uniqueProperties;
 - (id)virtualForeignKeyColumns;
 
 @end

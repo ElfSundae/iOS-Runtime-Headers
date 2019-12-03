@@ -4,7 +4,7 @@
 
 @interface _WKElementAction : NSObject {
     id /* block */  _actionHandler;
-    /* Warning: unhandled struct encoding: '{WeakObjCPtr<WKActionSheetAssistant>="m_weakReference"@}' */ struct WeakObjCPtr<WKActionSheetAssistant> { 
+    struct WeakObjCPtr<WKActionSheetAssistant> { 
         id m_weakReference; 
     }  _defaultActionSheetAssistant;
     id /* block */  _dismissalHandler;
@@ -21,9 +21,12 @@
 + (id)_elementActionWithType:(long long)arg1 assistant:(id)arg2;
 + (id)_elementActionWithType:(long long)arg1 customTitle:(id)arg2 assistant:(id)arg3;
 + (id)_elementActionWithType:(long long)arg1 title:(id)arg2 actionHandler:(id /* block */)arg3;
++ (long long)elementActionTypeForUIActionIdentifier:(id)arg1;
 + (id)elementActionWithTitle:(id)arg1 actionHandler:(id /* block */)arg2;
 + (id)elementActionWithType:(long long)arg1;
 + (id)elementActionWithType:(long long)arg1 customTitle:(id)arg2;
++ (id)elementActionWithType:(long long)arg1 title:(id)arg2 actionHandler:(id /* block */)arg3;
++ (id)imageForElementActionType:(long long)arg1;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -35,5 +38,6 @@
 - (void)setDismissalHandler:(id /* block */)arg1;
 - (id)title;
 - (long long)type;
+- (id)uiActionForElementInfo:(id)arg1;
 
 @end

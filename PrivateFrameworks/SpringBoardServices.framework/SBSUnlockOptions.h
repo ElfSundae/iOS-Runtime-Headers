@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SpringBoardServices.framework/SpringBoardServices
  */
 
-@interface SBSUnlockOptions : NSObject <BSXPCCoding> {
+@interface SBSUnlockOptions : NSObject <BSXPCCoding, BSXPCSecureCoding> {
     bool  _aboveOtherContexts;
 }
 
@@ -12,9 +12,13 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (bool)supportsBSXPCSecureCoding;
+
 - (bool)_aboveOtherContexts;
 - (void)_setAboveOtherContexts:(bool)arg1;
+- (void)encodeWithBSXPCCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
+- (id)initWithBSXPCCoder:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 
 @end

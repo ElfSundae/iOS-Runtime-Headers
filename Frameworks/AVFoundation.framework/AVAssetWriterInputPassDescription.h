@@ -10,7 +10,6 @@
 
 - (void)dealloc;
 - (id)description;
-- (void)finalize;
 - (id)init;
 - (id)initWithTimeRanges:(id)arg1;
 - (id)sourceTimeRanges;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PlatterKit.framework/PlatterKit
  */
 
-@interface PLExpandedPlatterTransitioningDelegate : NSObject <PLViewControllerTransitioningDelegate> {
+@interface PLExpandedPlatterTransitioningDelegate : NSObject <UIViewControllerTransitioningDelegate> {
     UIPresentationController * _presentationController;
 }
 
@@ -18,7 +18,6 @@
 - (id)animationControllerForDismissedController:(id)arg1;
 - (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
-- (id)previewPresentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
 - (void)viewControllerAnimator:(id)arg1 willBeginDismissalAnimationWithTransitionContext:(id)arg2;
 - (void)viewControllerAnimator:(id)arg1 willBeginPresentationAnimationWithTransitionContext:(id)arg2;
 

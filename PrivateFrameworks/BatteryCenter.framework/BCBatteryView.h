@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/BatteryCenter.framework/BatteryCenter
  */
 
-@interface BCBatteryView : _UIBatteryView {
+@interface BCBatteryView : _UIStaticBatteryView {
     bool  _lowBattery;
 }
 

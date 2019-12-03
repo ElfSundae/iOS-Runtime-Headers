@@ -3,10 +3,12 @@
  */
 
 @interface _INPBResetTimerIntentResponse : PBCodable <NSCopying, NSSecureCoding, _INPBResetTimerIntentResponse> {
+    bool  __encodeLegacyGloryData;
     struct { }  _has;
     NSArray * _resetTimers;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -15,13 +17,18 @@
 @property (readonly) Class superclass;
 
 + (Class)resetTimersType;
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (void)addResetTimers:(id)arg1;
 - (void)clearResetTimers;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)resetTimers;

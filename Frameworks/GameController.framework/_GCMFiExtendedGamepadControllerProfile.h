@@ -2,9 +2,8 @@
    Image: /System/Library/Frameworks/GameController.framework/GameController
  */
 
-@interface _GCMFiExtendedGamepadControllerProfile : _GCExtendedGamepad <_GCACHomeButtonDelegate> {
+@interface _GCMFiExtendedGamepadControllerProfile : GCExtendedGamepad <_GCACHomeButtonDelegate> {
     _GCACHomeButton * _acHome;
-    GCMotion * _motion;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -13,13 +12,12 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)determineControllerCapabilities:(id)arg1 initInfo:(struct GCExtendedGamepadInitWithControllerInitInfo { bool x1; bool x2; bool x3; struct GCExtendedGamepadElementInitInfo { bool x_4_1_1; bool x_4_1_2; } x4[16]; }*)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithController:(id)arg1;
 - (id)menuButton;
-- (id)motion;
 - (id)name;
 - (void)setPlayerIndex:(long long)arg1;
-- (void)set_motion:(id)arg1;
 - (void)toggleSuspendResume;
 
 @end

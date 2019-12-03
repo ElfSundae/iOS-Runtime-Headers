@@ -47,6 +47,7 @@
 - (void)handleUpdatedPeerPaymentWebServiceContext:(id)arg1 account:(id)arg2;
 - (id)init;
 - (void)loadWebService;
+- (void)noteForegroundVerificationObserverActive:(bool)arg1;
 - (id)peerPaymentAccount;
 - (id)peerPaymentTargetDevice;
 - (id)peerPaymentWebService;
@@ -60,6 +61,7 @@
 - (void)setTargetDevice:(id)arg1;
 - (void)setWebService:(id)arg1;
 - (void)showPaymentSetupForAppDisplayName:(id)arg1;
+- (void)startBackgroundVerificationObserverForPass:(id)arg1 verificationMethod:(id)arg2;
 - (id)targetDevice;
 - (id)webService;
 

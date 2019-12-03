@@ -14,7 +14,6 @@
 @optional
 
 - (void)emptyCaches;
-- (NSOperation *)operationForRequest:(WBSSiteMetadataRequest *)arg1;
 - (bool)providesFavicons;
 - (void)purgeUnneededCacheEntries;
 - (void)savePendingChangesBeforeTermination;

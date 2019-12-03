@@ -11,5 +11,6 @@
 - (id)genericToSpecificPropertyMap;
 - (id)init;
 - (bool)supportsSymbolDrawing;
+- (id)userInterfaceName;
 
 @end

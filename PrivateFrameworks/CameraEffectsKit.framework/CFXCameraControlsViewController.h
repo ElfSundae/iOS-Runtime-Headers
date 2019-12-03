@@ -119,6 +119,7 @@
 - (void)setShutterButton:(id)arg1;
 - (void)setShutterButtonAlpha:(double)arg1;
 - (void)setShutterButtonContainerPad:(id)arg1;
+- (void)setShutterButtonEnabled:(bool)arg1;
 - (id)shutterButton;
 - (id)shutterButtonContainerPad;
 - (void)shutterButtonTapped:(id)arg1;

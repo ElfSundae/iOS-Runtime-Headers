@@ -3,7 +3,7 @@
  */
 
 @interface SCNActionPlaySound : SCNAction {
-    /* Warning: unhandled struct encoding: '{SCNCPlaySound=^^?f@?@BdddddBB@?^{__CFString}qddddBB@}' */ struct SCNCPlaySound { int (**x1)(); float x2; id /* block */ x3; id x4; double x5; double x6; double x7; double x8; double x9; bool x10; bool x11; id /* block */ x12; struct __CFString {} *x13; long long x14; double x15; double x16; double x17; double x18; bool x19; bool x20; id x21; } * _mycaction;
+    struct SCNCPlaySound { int (**x1)(); float x2; id /* block */ x3; id x4; bool x5; double x6; double x7; double x8; double x9; double x10; bool x11; bool x12; id /* block */ x13; struct __CFString {} *x14; long long x15; double x16; double x17; double x18; double x19; bool x20; bool x21; id x22; } * _mycaction;
 }
 
 + (id)playAudioSource:(id)arg1 waitForCompletion:(bool)arg2;

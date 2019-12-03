@@ -5,6 +5,7 @@
 @interface AKAppleIDServerResourceLoadDelegate : NSObject <NSSecureCoding> {
     NSString * _altDSID;
     <AKAnisetteServiceProtocol> * _anisetteDataProvider;
+    NSString * _appProvidedContext;
     NSString * _clientAppName;
     NSString * _continuationToken;
     NSString * _followupItems;
@@ -15,8 +16,12 @@
     NSString * _passwordResetToken;
     NSArray * _phoneInformation;
     NSString * _phoneNumberCertificate;
+    NSString * _proxiedAltDSID;
     AKDevice * _proxiedDevice;
     AKAnisetteData * _proxiedDeviceAnisetteData;
+    AKAttestationData * _proxiedDeviceAttestationData;
+    NSString * _proxiedIdentityToken;
+    AKAnisetteProvisioningController * _proxiedProvisioningController;
     NSString * _proxyAppName;
     NSString * _securityUpgradeContext;
     NSString * _serviceToken;
@@ -30,6 +35,7 @@
 
 @property (nonatomic, copy) NSString *altDSID;
 @property (nonatomic, retain) <AKAnisetteServiceProtocol> *anisetteDataProvider;
+@property (nonatomic, copy) NSString *appProvidedContext;
 @property (nonatomic, copy) NSString *clientAppName;
 @property (nonatomic, copy) NSString *continuationToken;
 @property (nonatomic, copy) NSString *followupItems;
@@ -40,8 +46,11 @@
 @property (nonatomic, copy) NSString *passwordResetToken;
 @property (nonatomic, copy) NSArray *phoneInformation;
 @property (nonatomic, copy) NSString *phoneNumberCertificate;
+@property (nonatomic, retain) NSString *proxiedAltDSID;
 @property (nonatomic, retain) AKDevice *proxiedDevice;
 @property (nonatomic, retain) AKAnisetteData *proxiedDeviceAnisetteData;
+@property (nonatomic, retain) AKAttestationData *proxiedDeviceAttestationData;
+@property (nonatomic, retain) NSString *proxiedIdentityToken;
 @property (nonatomic, copy) NSString *proxyAppName;
 @property (nonatomic, copy) NSString *securityUpgradeContext;
 @property (nonatomic, copy) NSString *serviceToken;
@@ -58,10 +67,13 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)_proxiedProvisioningController;
 - (void)_signRequest:(id)arg1;
 - (void)_signWithFeatureOptInHeaders:(id)arg1;
+- (void)_signWithProxiedDeviceHeaders:(id)arg1;
 - (id)altDSID;
 - (id)anisetteDataProvider;
+- (id)appProvidedContext;
 - (id)clientAppName;
 - (id)continuationToken;
 - (void)encodeWithCoder:(id)arg1;
@@ -79,14 +91,18 @@
 - (id)passwordResetToken;
 - (id)phoneInformation;
 - (id)phoneNumberCertificate;
+- (id)proxiedAltDSID;
 - (id)proxiedDevice;
 - (id)proxiedDeviceAnisetteData;
+- (id)proxiedDeviceAttestationData;
+- (id)proxiedIdentityToken;
 - (id)proxyAppName;
 - (id)securityUpgradeContext;
 - (id)serviceToken;
 - (long long)serviceType;
 - (void)setAltDSID:(id)arg1;
 - (void)setAnisetteDataProvider:(id)arg1;
+- (void)setAppProvidedContext:(id)arg1;
 - (void)setClientAppName:(id)arg1;
 - (void)setContinuationToken:(id)arg1;
 - (void)setFollowupItems:(id)arg1;
@@ -97,8 +113,11 @@
 - (void)setPasswordResetToken:(id)arg1;
 - (void)setPhoneInformation:(id)arg1;
 - (void)setPhoneNumberCertificate:(id)arg1;
+- (void)setProxiedAltDSID:(id)arg1;
 - (void)setProxiedDevice:(id)arg1;
 - (void)setProxiedDeviceAnisetteData:(id)arg1;
+- (void)setProxiedDeviceAttestationData:(id)arg1;
+- (void)setProxiedIdentityToken:(id)arg1;
 - (void)setProxyAppName:(id)arg1;
 - (void)setSecurityUpgradeContext:(id)arg1;
 - (void)setServiceToken:(id)arg1;
@@ -118,5 +137,6 @@
 - (void)signRequest:(id)arg1;
 - (void)signRequest:(id)arg1 withCompletionHandler:(id /* block */)arg2;
 - (void)signRequestWithCommonHeaders:(id)arg1;
+- (id)signingController;
 
 @end

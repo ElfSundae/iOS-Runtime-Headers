@@ -5,7 +5,6 @@
 @interface SBDemoDefaults : SBAbstractSpringBoardDefaultDomain
 
 @property (getter=isStoreDemoApplicationLockEnabled, nonatomic, readonly) bool storeDemoApplicationLockEnabled;
-@property (nonatomic, readonly) bool usesStoreDemoPlugin;
 
 - (void)_bindAndRegisterDefaults;
 

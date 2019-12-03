@@ -21,6 +21,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+// Image: /System/Library/PrivateFrameworks/NetAppsUtilities.framework/NetAppsUtilities
+
 + (id)_chainFuturesWithFutureStack:(id)arg1;
 + (id)_descriptorForChainOperation:(id)arg1 onFuture:(id)arg2 withBlock:(id)arg3;
 + (void)_setShouldEnforceThreadSafety:(bool)arg1;
@@ -63,5 +65,14 @@
 - (id)reschedule:(id)arg1;
 - (void)setDescriptor:(id)arg1;
 - (void)willAddCompletionBlock;
+
+// Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
+
+- (id)blockAndWaitForCompletionWithError:(id*)arg1;
+
+// Image: /System/Library/PrivateFrameworks/MobileTimer.framework/MobileTimer
+
+- (void)mtFinishWithFuture:(id)arg1;
+- (id)mtSynchronousResult:(id*)arg1;
 
 @end

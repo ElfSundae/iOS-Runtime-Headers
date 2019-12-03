@@ -10,7 +10,7 @@
     UIImage * _halfStarHighlightedImage;
     UIImage * _halfStarImage;
     bool  _highlighted;
-    long long  _numLevels;
+    unsigned long long  _numLevels;
     long long  _numReviews;
     double  _padding;
     double  _rating;
@@ -25,12 +25,17 @@
 @property (nonatomic, retain) UIImage *halfStarHighlightedImage;
 @property (nonatomic, retain) UIImage *halfStarImage;
 @property (getter=isHighlighted, nonatomic) bool highlighted;
-@property (nonatomic) long long numberOfRatingLevels;
+@property (nonatomic) unsigned long long numberOfRatingLevels;
 @property (nonatomic) double rating;
 @property (nonatomic) long long starStyle;
 
-+ (id)ratingAsAttributedString:(double)arg1 baseFont:(id)arg2 style:(long long)arg3;
++ (id)colorForRating:(double)arg1;
++ (id)emptyStarTextAttachmentWithFont:(id)arg1;
++ (id)fullStarTextAttachmentWithFont:(id)arg1;
++ (id)halfStarTextAttachmentWithFont:(id)arg1;
 + (id)ratingAsAttributedString:(double)arg1 baseFont:(id)arg2 style:(long long)arg3 theme:(id)arg4;
++ (id)ratingShortAsAttributedString:(double)arg1 baseFont:(id)arg2 theme:(id)arg3;
++ (id)textAttachmentimageNamed:(id)arg1 font:(id)arg2;
 
 - (void).cxx_destruct;
 - (void)_commonInit;
@@ -50,7 +55,7 @@
 - (struct CGSize { double x1; double x2; })intrinsicContentSize;
 - (bool)isHighlighted;
 - (void)layoutSubviews;
-- (long long)numberOfRatingLevels;
+- (unsigned long long)numberOfRatingLevels;
 - (double)rating;
 - (void)setEmptyStarHighlightedImage:(id)arg1;
 - (void)setEmptyStarImage:(id)arg1;
@@ -59,7 +64,7 @@
 - (void)setHalfStarHighlightedImage:(id)arg1;
 - (void)setHalfStarImage:(id)arg1;
 - (void)setHighlighted:(bool)arg1;
-- (void)setNumberOfRatingLevels:(long long)arg1;
+- (void)setNumberOfRatingLevels:(unsigned long long)arg1;
 - (void)setPadding:(double)arg1;
 - (void)setRating:(double)arg1;
 - (void)setStarStyle:(long long)arg1;

@@ -8,9 +8,9 @@
     int  mType;
 }
 
+- (void).cxx_destruct;
 - (void)addAdjustment:(id)arg1;
 - (id)adjustments;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 - (int)presetType;

@@ -9,9 +9,10 @@
 }
 
 @property (nonatomic, readonly) NSDictionary *allEventStreams;
-@property (nonatomic, retain) NSDictionary *allKBEventStreams;
+@property (nonatomic, readonly) NSDictionary *allKBEventStreams;
 @property (nonatomic) bool allStreamsLoaded;
 
++ (id)contentProviderPlistEventStreamsForPath:(id)arg1;
 + (id)ephemeralitySchedule;
 + (id)eventStreamForName:(id)arg1;
 + (id)eventStreamPropertiesForEventStream:(id)arg1;

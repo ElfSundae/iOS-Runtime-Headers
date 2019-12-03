@@ -4,13 +4,8 @@
 
 @interface AVCaptureDepthDataOutputInternal : NSObject {
     bool  alwaysDiscardsLateDepthData;
-    AVWeakReferencingDelegateStorage * delegateOverrideStorage;
-    AVWeakReferencingDelegateStorage * delegateStorage;
-    NSObject<OS_dispatch_queue> * depthDataQueue;
+    AVCaptureDataOutputDelegateCallbackHelper * delegateCallbackHelper;
     bool  filteringEnabled;
-    struct localQueueOpaque { } * localQueue;
-    struct OpaqueFigSimpleMutex { } * queueMutex;
-    struct remoteQueueReceiverOpaque { } * remoteQueueReceiver;
     AVWeakReference * weakReference;
 }
 

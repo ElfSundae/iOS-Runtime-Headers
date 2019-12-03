@@ -58,6 +58,7 @@
 - (void)assetLink:(id)arg1 didUpdateOverallProgress:(double)arg2;
 - (void)cancelSyncOnMessageLink:(id)arg1;
 - (id)currentSyncHostInfo;
+- (id)currentSyncState;
 - (void)environmentMonitorDidChangePower:(id)arg1;
 - (id)init;
 - (void)initiateSyncForLibrary:(id)arg1 onMessageLink:(id)arg2;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SpringBoardUI.framework/SpringBoardUI
  */
 
-@interface _SBOrientationTransformedContentView : UIView {
+@interface _SBOrientationTransformedContentView : _UIDirectionalRotationView {
     long long  _contentOrientation;
 }
 

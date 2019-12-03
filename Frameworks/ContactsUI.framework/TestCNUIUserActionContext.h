@@ -11,6 +11,7 @@
 @property (nonatomic) bool actionExecutionWasAttemted;
 @property (nonatomic, readonly) <CNUIUserActionRecorder> *actionRecorder;
 @property (nonatomic, copy) NSString *channelIdentifier;
+@property (nonatomic, copy) BSServiceConnectionEndpoint *connectionEndpoint;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) <CNUIUserActionDialRequestOpener> *dialRequestOpener;

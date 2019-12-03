@@ -35,6 +35,7 @@
 - (void)setListener:(id)arg1;
 - (void)setListenerEndpoint:(id)arg1;
 - (void)setServiceInfo:(id)arg1;
+- (void)updateBroadcastURL:(id)arg1;
 - (void)updateServiceInfo:(id)arg1;
 
 @end

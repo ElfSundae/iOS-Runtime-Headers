@@ -3,11 +3,13 @@
  */
 
 @interface NEDNSProxyProviderProtocol : NEVPNProtocol {
+    NSString * _designatedRequirement;
     NSString * _pluginType;
     NSString * _providerBundleIdentifier;
     NSDictionary * _providerConfiguration;
 }
 
+@property (copy) NSString *designatedRequirement;
 @property (copy) NSString *pluginType;
 @property (copy) NSString *providerBundleIdentifier;
 @property (copy) NSDictionary *providerConfiguration;
@@ -18,6 +20,7 @@
 - (bool)checkValidityAndCollectErrors:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;
+- (id)designatedRequirement;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
@@ -25,6 +28,7 @@
 - (id)pluginType;
 - (id)providerBundleIdentifier;
 - (id)providerConfiguration;
+- (void)setDesignatedRequirement:(id)arg1;
 - (void)setPluginType:(id)arg1;
 - (void)setProviderBundleIdentifier:(id)arg1;
 - (void)setProviderConfiguration:(id)arg1;

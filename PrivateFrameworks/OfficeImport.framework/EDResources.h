@@ -19,12 +19,12 @@
     EDColorsCollection * mThemes;
 }
 
+- (void).cxx_destruct;
 - (id)alignmentInfos;
 - (id)border;
 - (id)borders;
 - (id)colors;
 - (id)contentFormats;
-- (void)dealloc;
 - (id)description;
 - (id)differentialStyles;
 - (id)fills;

@@ -5,7 +5,7 @@
 @interface ATXNotificationsSuggestion : NSObject {
     _ATXAggregateLogger * _aggdlogger;
     _ATXAppLaunchHistogram * _appHistory;
-    NSMutableDictionary * _cache;
+    NSCache * _cache;
     _ATXDataStore * _db;
     NSMutableSet * _inmemorycache;
     ATXNotificationsLogger * _logger;
@@ -23,7 +23,9 @@
     bool  _uselrmodel;
 }
 
++ (id)createBundleIdentifierForSuggestionWithType:(long long)arg1;
 + (id)createNotificationIdForSuggestion:(id)arg1;
++ (id)extractSuggestionTypeStringFromBundleIdentifier:(id)arg1;
 + (id)generateAppId:(id)arg1 topic:(id)arg2;
 + (id)getSuggestionLRModel;
 + (bool)isSettingSuggestion:(id)arg1;

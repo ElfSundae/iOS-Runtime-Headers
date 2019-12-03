@@ -5,6 +5,7 @@
 @interface PKAccountBillPaymentAmountDescriptionView : UIView <PKEnterCurrencyAmountViewDelegate, PKNumberPadSuggestionsViewDelegate, UITextViewDelegate> {
     PKAccount * _account;
     PKAccountBillPaymentAmountContainerView * _amountContainerView;
+    PKAccountServiceAccountResolutionCofiguration * _configuration;
     <PKAccountBillPaymentAmountDescriptionViewDelegate> * _delegate;
     NSString * _descriptionText;
     NSDecimalNumber * _enteredAmount;
@@ -12,6 +13,7 @@
     NSDecimalNumber * _maximumAmount;
     NSDecimalNumber * _minimumAmount;
     bool  _showDescriptionLabels;
+    bool  _showDescriptionSubtitle;
     UITextView * _suggestedAmountDescriptionView;
     UILabel * _suggestedAmountTitleLabel;
     PKBillPaymentSuggestedAmountList * _suggestionList;
@@ -30,16 +32,17 @@
 @property (nonatomic, copy) NSDecimalNumber *minimumAmount;
 @property (nonatomic) bool showAmount;
 @property (nonatomic) bool showDescriptionLabels;
+@property (nonatomic) bool showDescriptionSubtitle;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *titleText;
 
 - (void).cxx_destruct;
-- (bool)_currentStatementIsLastMonthsStatement;
 - (void)_enteredAmountDidChangeTo:(id)arg1;
 - (bool)_isEnteredAmountValid;
 - (id)_keypadSuggestions;
 - (bool)_shouldShakeWithNewAmount:(id)arg1;
 - (id)_sugestedAmountDescriptionAttributedString;
+- (void)_updateDescriptionAlpha;
 - (void)_updateEnteredAmount:(id)arg1;
 - (id)amount;
 - (id)amountContainerView;
@@ -48,7 +51,7 @@
 - (void)dismissKeyboard;
 - (bool)enterCurrencyAmountView:(id)arg1 shouldChangeAmountFrom:(id)arg2 to:(id)arg3;
 - (void)enterCurrencyAmountViewDidChangeAmount:(id)arg1;
-- (id)initWithSuggestedAmountList:(id)arg1 account:(id)arg2;
+- (id)initWithSuggestedAmountList:(id)arg1 account:(id)arg2 configuration:(id)arg3;
 - (void)layoutSubviews;
 - (id)maximumAmount;
 - (id)minimumAmount;
@@ -60,9 +63,11 @@
 - (void)setMinimumAmount:(id)arg1;
 - (void)setShowAmount:(bool)arg1;
 - (void)setShowDescriptionLabels:(bool)arg1;
+- (void)setShowDescriptionSubtitle:(bool)arg1;
 - (void)setTitleText:(id)arg1;
 - (bool)showAmount;
 - (bool)showDescriptionLabels;
+- (bool)showDescriptionSubtitle;
 - (void)showKeyboard;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3 interaction:(long long)arg4;

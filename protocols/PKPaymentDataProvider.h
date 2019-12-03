@@ -13,6 +13,7 @@
 - (PKOSVersionRequirement *)deviceVersion;
 - (bool)isDeviceInRestrictedMode;
 - (bool)isPaymentHandoffDisabled;
+- (PKPaymentWebService *)paymentWebService;
 - (NSString *)secureElementIdentifier;
 - (bool)secureElementIsProductionSigned;
 - (void)setDefaultPaymentApplication:(void *)arg1 forPassUniqueIdentifier:(void *)arg2 completion:(void *)arg3; // needs 3 arg types, found 8: PKPaymentApplication *, NSString *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, PKPass *, void*
@@ -36,6 +37,8 @@
 - (NSSet *)expressPassesInformation;
 - (NSSet *)expressPassesInformationWithCardType:(long long)arg1;
 - (void)felicaStateWithPassUniqueIdentifier:(void *)arg1 paymentApplication:(void *)arg2 completion:(void *)arg3; // needs 3 arg types, found 8: NSString *, PKPaymentApplication *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, PKFelicaTransitAppletState *, void*
+- (void)installmentPlansWithTransactionReferenceIdentifier:(void *)arg1 completion:(void *)arg2; // needs 2 arg types, found 7: NSString *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSSet *, void*
+- (void)installmentTransactionsForInstallmentPlanIdentifier:(void *)arg1 completion:(void *)arg2; // needs 2 arg types, found 7: NSString *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSSet *, void*
 - (void)mapsMerchantsWithCompletion:(void *)arg1; // needs 1 arg types, found 6: id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSSet *, void*
 - (NSString *)messagesAppLaunchTokenForPassWithUniqueIdentifier:(NSString *)arg1;
 - (void)messagesForPaymentPassWithUniqueIdentifier:(void *)arg1 completion:(void *)arg2; // needs 2 arg types, found 7: NSString *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSSet *, void*
@@ -57,6 +60,7 @@
 - (bool)supportsExpressMode:(NSString *)arg1;
 - (bool)supportsExpressModeForExpressPassType:(long long)arg1;
 - (bool)supportsInAppPaymentsForPass:(PKPass *)arg1;
+- (bool)supportsLowPowerExpressMode;
 - (bool)supportsMessagesForPass:(PKPass *)arg1;
 - (bool)supportsNotificationsForPass:(PKPass *)arg1;
 - (bool)supportsTransactionsForPass:(PKPass *)arg1;
@@ -64,7 +68,7 @@
 - (void)transactionWithReferenceIdentifier:(void *)arg1 completion:(void *)arg2; // needs 2 arg types, found 7: NSString *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, PKPaymentTransaction *, void*
 - (void)transactionWithServiceIdentifier:(void *)arg1 completion:(void *)arg2; // needs 2 arg types, found 7: NSString *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, PKPaymentTransaction *, void*
 - (NSString *)transactionsAppLaunchTokenForPassWithUniqueIdentifier:(NSString *)arg1;
-- (void)transactionsForPaymentPassWithUniqueIdentifier:(void *)arg1 matchingMapsMerchantIdentifier:(void *)arg2 orMapsBrandIdentifier:(void *)arg3 orMerchantCleanName:(void *)arg4 withTransactionSource:(void *)arg5 withBackingData:(void *)arg6 limit:(void *)arg7 completion:(void *)arg8; // needs 8 arg types, found 13: NSString *, unsigned long long, unsigned long long, NSString *, unsigned long long, unsigned long long, long long, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSSet *, void*
+- (void)transactionsForPaymentPassWithUniqueIdentifier:(void *)arg1 matchingMerchant:(void *)arg2 withTransactionSource:(void *)arg3 withBackingData:(void *)arg4 limit:(void *)arg5 completion:(void *)arg6; // needs 6 arg types, found 11: NSString *, PKMerchant *, unsigned long long, unsigned long long, long long, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSSet *, void*
 - (void)transactionsForPaymentPassWithUniqueIdentifier:(void *)arg1 withMapsIdentifier:(void *)arg2 withTransactionSource:(void *)arg3 withBackingData:(void *)arg4 limit:(void *)arg5 completion:(void *)arg6; // needs 6 arg types, found 11: NSString *, unsigned long long, unsigned long long, unsigned long long, long long, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSSet *, void*
 - (void)transactionsForPaymentPassWithUniqueIdentifier:(void *)arg1 withPeerPaymentCounterpartHandle:(void *)arg2 withTransactionSource:(void *)arg3 withBackingData:(void *)arg4 limit:(void *)arg5 completion:(void *)arg6; // needs 6 arg types, found 11: NSString *, NSString *, unsigned long long, unsigned long long, long long, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSSet *, void*
 - (void)transactionsForPaymentPassWithUniqueIdentifier:(void *)arg1 withTransactionSource:(void *)arg2 withBackingData:(void *)arg3 limit:(void *)arg4 completion:(void *)arg5; // needs 5 arg types, found 10: NSString *, unsigned long long, unsigned long long, long long, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSSet *, void*

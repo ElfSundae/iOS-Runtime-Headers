@@ -7,9 +7,9 @@
     unsigned int  mCurrentGroupId;
 }
 
+- (void).cxx_destruct;
 - (void)addBuild:(id)arg1 order:(unsigned int)arg2;
 - (id)buildOrderMap;
-- (void)dealloc;
 - (unsigned int)generateGroupId;
 - (id)init;
 - (void)reset;

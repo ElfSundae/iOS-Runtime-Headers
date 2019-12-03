@@ -24,7 +24,6 @@
         unsigned int localFileAsset : 1; 
         unsigned int libraryAdded : 1; 
         unsigned int libraryAddEligible : 1; 
-        unsigned int shouldExcludeFromShuffle; 
         unsigned int shouldShowComposer : 1; 
         unsigned int volumeNormalization : 1; 
         unsigned int year : 1; 
@@ -61,6 +60,7 @@
             unsigned int identifiers : 1; 
             unsigned int text : 1; 
             unsigned int hasStoreLyrics : 1; 
+            unsigned int hasTimeSyncedLyrics : 1; 
         } lyrics; 
     }  _requestedSongProperties;
     MPStoreModelStoreAssetBuilder * _storeAssetBuilder;
@@ -70,7 +70,7 @@
 @property (nonatomic, readonly, copy) MPPropertySet *requestedProperties;
 
 - (void).cxx_destruct;
-- (id)genericObjectForStorePlatformMetadata:(id)arg1;
+- (id)genericObjectForStorePlatformMetadata:(id)arg1 userIdentity:(id)arg2;
 - (id)initWithRequestedProperties:(id)arg1;
 - (id)requestedProperties;
 

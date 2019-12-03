@@ -53,6 +53,7 @@
 - (struct vector<FaceLandmarkDetectorPoint, std::__1::allocator<FaceLandmarkDetectorPoint> > { struct FaceLandmarkDetectorPoint {} *x1; struct FaceLandmarkDetectorPoint {} *x2; struct __compressed_pair<FaceLandmarkDetectorPoint *, std::__1::allocator<FaceLandmarkDetectorPoint> > { struct FaceLandmarkDetectorPoint {} *x_3_1_1; } x3; })extractSubLandmarksFromCrop192:(struct vImage_Buffer { void *x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; })arg1 centers192:(struct vector<FaceLandmarkDetectorPoint, std::__1::allocator<FaceLandmarkDetectorPoint> > { struct FaceLandmarkDetectorPoint {} *x1; struct FaceLandmarkDetectorPoint {} *x2; struct __compressed_pair<FaceLandmarkDetectorPoint *, std::__1::allocator<FaceLandmarkDetectorPoint> > { struct FaceLandmarkDetectorPoint {} *x_3_1_1; } x3; }*)arg2;
 - (id)init;
 - (id)initWithNetworkAtPath:(id)arg1 context:(struct shared_ptr<Espresso::abstract_context> { struct abstract_context {} *x1; struct __shared_weak_count {} *x2; })arg2 platform:(int)arg3 computePath:(int)arg4;
+- (id)initWithNetworkAtPath:(id)arg1 contextObjC:(id)arg2 platform:(int)arg3 computePath:(int)arg4;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })newface;
 - (void)setNewface:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 

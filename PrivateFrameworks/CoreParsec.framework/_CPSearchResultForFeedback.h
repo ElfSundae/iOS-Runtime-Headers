@@ -9,6 +9,7 @@
     NSString * _completedQuery;
     NSString * _correctedQuery;
     bool  _doNotFold;
+    NSData * _entityData;
     NSString * _fbr;
     unsigned long long  _hashedIdentifier;
     NSString * _identifier;
@@ -44,6 +45,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) bool doNotFold;
+@property (nonatomic, copy) NSData *entityData;
 @property (nonatomic, copy) NSString *fbr;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long hashedIdentifier;
@@ -81,10 +83,14 @@
 - (id)action;
 - (id)applicationBundleIdentifier;
 - (unsigned long long)blockId;
+- (void)clearApplicationbundleid;
+- (void)clearResultbundleidentifier;
+- (void)clearSectionbundleid;
 - (id)completedQuery;
 - (id)correctedQuery;
 - (id)dictionaryRepresentation;
 - (bool)doNotFold;
+- (id)entityData;
 - (id)fbr;
 - (id)feedbackJSON;
 - (unsigned long long)hash;
@@ -121,6 +127,7 @@
 - (void)setCompletedQuery:(id)arg1;
 - (void)setCorrectedQuery:(id)arg1;
 - (void)setDoNotFold:(bool)arg1;
+- (void)setEntityData:(id)arg1;
 - (void)setFbr:(id)arg1;
 - (void)setHashedIdentifier:(unsigned long long)arg1;
 - (void)setIdentifier:(id)arg1;

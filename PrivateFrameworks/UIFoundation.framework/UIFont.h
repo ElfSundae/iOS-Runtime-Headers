@@ -17,7 +17,6 @@
 @property (nonatomic, readonly) double pointSize;
 @property (nonatomic, readonly) double pointSizeForScaling;
 @property (nonatomic, readonly) UIFont *pu_fontWithMonospacedNumbers;
-@property (nonatomic, readonly) UIFont *px_fontWithMonospacedNumbers;
 @property (nonatomic, readonly) NSString *rc_textStyle;
 @property (nonatomic, readonly) NSString *textStyleForScaling;
 @property (nonatomic, readonly) double xHeight;
@@ -25,12 +24,19 @@
 // Image: /System/Library/PrivateFrameworks/UIFoundation.framework/UIFoundation
 
 + (void)_evictAllItemsFromFontAndFontDescriptorCaches;
-+ (id)_fontWithDescriptor:(id)arg1 size:(double)arg2 textStyleForScaling:(id)arg3 pointSizeForScaling:(double)arg4 maximumPointSizeAfterScaling:(double)arg5 forIB:(bool)arg6;
++ (id)_fontWithDescriptor:(id)arg1 size:(double)arg2 textStyleForScaling:(id)arg3 pointSizeForScaling:(double)arg4 maximumPointSizeAfterScaling:(double)arg5 forIB:(bool)arg6 legibilityWeight:(long long)arg7;
++ (id)_fontWithName:(id)arg1 size:(double)arg2;
 + (bool)_isSupportedDynamicFontTextStyle:(id)arg1;
 + (id)_lightSystemFontOfSize:(double)arg1;
 + (id)_opticalBoldSystemFontOfSize:(double)arg1;
 + (id)_opticalSystemFontOfSize:(double)arg1;
 + (double)_pointSize:(double)arg1 scaledLikeTextStyle:(id)arg2 maximumPointSize:(double)arg3 compatibleWithTraitCollection:(id)arg4;
++ (double)_pointSize:(double)arg1 scaledLikeTextStyle:(id)arg2 maximumPointSize:(double)arg3 compatibleWithTraitCollection:(id)arg4 roundSize:(bool)arg5;
++ (id)_preferredFontForTextStyle:(id)arg1 design:(id)arg2 variant:(long long)arg3;
++ (id)_preferredFontForTextStyle:(id)arg1 design:(id)arg2 variant:(long long)arg3 compatibleWithTraitCollection:(id)arg4;
++ (id)_preferredFontForTextStyle:(id)arg1 design:(id)arg2 variant:(long long)arg3 maximumContentSizeCategory:(id)arg4 compatibleWithTraitCollection:(id)arg5;
++ (id)_preferredFontForTextStyle:(id)arg1 design:(id)arg2 variant:(long long)arg3 maximumContentSizeCategory:(id)arg4 compatibleWithTraitCollection:(id)arg5 pointSize:(double)arg6 pointSizeForScaling:(double)arg7;
++ (id)_preferredFontForTextStyle:(id)arg1 design:(id)arg2 weight:(id)arg3 symbolicTraits:(unsigned int)arg4 maximumContentSizeCategory:(id)arg5 compatibleWithTraitCollection:(id)arg6 pointSize:(double)arg7 pointSizeForScaling:(double)arg8;
 + (id)_preferredFontForTextStyle:(id)arg1 maximumContentSizeCategory:(id)arg2;
 + (id)_preferredFontForTextStyle:(id)arg1 maximumContentSizeCategory:(id)arg2 compatibleWithTraitCollection:(id)arg3;
 + (id)_preferredFontForTextStyle:(id)arg1 maximumPointSize:(double)arg2 compatibleWithTraitCollection:(id)arg3;
@@ -59,6 +65,7 @@
 + (id)italicSystemFontOfSize:(double)arg1;
 + (double)labelFontSize;
 + (id)monospacedDigitSystemFontOfSize:(double)arg1 weight:(double)arg2;
++ (id)monospacedSystemFontOfSize:(double)arg1 weight:(double)arg2;
 + (id)preferredFontForTextStyle:(id)arg1;
 + (id)preferredFontForTextStyle:(id)arg1 compatibleWithTraitCollection:(id)arg2;
 + (id)preferredFontForUsage:(id)arg1;
@@ -73,8 +80,8 @@
 + (id)userFontOfSize:(double)arg1;
 
 - (struct __CTFont { }*)CTFont;
+- (bool)__isSystemFont;
 - (id)_alternateSystemFonts;
-- (void)_applyToCGContext:(struct CGContext { }*)arg1 graphicsContext:(id)arg2;
 - (double)_ascenderDeltaForBehavior:(long long)arg1;
 - (struct CGFont { }*)_backingCGSFont;
 - (double)_baseLineHeightForFont:(bool)arg1;
@@ -90,12 +97,14 @@
 - (bool)_hasColorGlyphs;
 - (bool)_isDefaultFace;
 - (bool)_isHiraginoFont;
+- (bool)_isUIFont;
 - (id)_kernOverride;
 - (double)_leading;
 - (double)_scaledValueForValue:(double)arg1;
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })_textMatrixTransformForContext:(id)arg1;
 - (double)_totalAdvancementForNativeGlyphs:(const unsigned short*)arg1 count:(long long)arg2;
 - (struct CGSize { double x1; double x2; })advancementForGlyph:(unsigned short)arg1;
+- (void)applyToGraphicsContext:(id)arg1;
 - (double)ascender;
 - (id)bestMatchingFontForCharacters:(const unsigned short*)arg1 length:(unsigned long long)arg2 attributes:(id)arg3 actualCoveredLength:(unsigned long long*)arg4;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })boundingRectForFont;
@@ -107,7 +116,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)familyName;
-- (id)familyNameForCSSFontFamilyValue;
+- (id)familyNameForCSSFontFamilyValueForWebKit:(bool)arg1;
 - (id)fontDescriptor;
 - (id)fontName;
 - (id)fontWithSize:(double)arg1;
@@ -116,6 +125,7 @@
 - (unsigned long long)getCaretPositions:(double*)arg1 forGlyph:(unsigned int)arg2 maximumLength:(unsigned long long)arg3;
 - (void)getVerticalOriginTranslations:(struct CGSize { double x1; double x2; }*)arg1 forCGGlyphs:(const unsigned short*)arg2 count:(unsigned long long)arg3;
 - (unsigned short)glyphWithName:(id)arg1;
+- (id)htmlMarkupDescription;
 - (unsigned int)hyphenGlyphForLocale:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFamilyName:(id)arg1 traits:(int)arg2 size:(double)arg3;
@@ -130,6 +140,7 @@
 - (double)leading;
 - (double)lineHeight;
 - (id)markupDescription;
+- (id)markupDescriptionForWebKit:(bool)arg1 pointSize:(float)arg2 sizeUnit:(id)arg3;
 - (double)maximumPointSizeAfterScaling;
 - (unsigned long long)mostCompatibleStringEncoding;
 - (unsigned long long)numberOfGlyphs;
@@ -141,6 +152,7 @@
 - (void)setInContext:(struct CGContext { }*)arg1;
 - (id)textStyleForScaling;
 - (int)traits;
+- (double)underlinePosition;
 - (double)underlineThickness;
 - (id)verticalFont;
 - (double)xHeight;
@@ -168,21 +180,44 @@
 - (id)ab_boldFont;
 - (id)ab_italicFont;
 
+// Image: /System/Library/Frameworks/EventKitUI.framework/EventKitUI
+
++ (id)ek_defaultOccurrencePrimaryTextFontForSizeClass:(long long)arg1;
++ (id)ek_defaultOccurrenceSecondaryTextFont;
++ (id)ek_defaultOccurrenceSmallPrimaryTextFontForSizeClass:(long long)arg1;
++ (id)primaryTextFontCache;
+
+// Image: /System/Library/Frameworks/LinkPresentation.framework/LinkPresentation
+
+- (id)_lp_CSSFontWeight;
+
 // Image: /System/Library/Frameworks/MapKit.framework/MapKit
 
++ (id)_contentSizeCategoryInTableViewCellWithContentSizeCategory:(id)arg1;
 + (bool)_mapkit_accessibilityTextEnabled;
 + (bool)_mapkit_ax3TextEnabled;
++ (id)_mapkit_preferredFontForTextStyle:(id)arg1 weight:(double)arg2 contentSizeCategory:(id)arg3 symbolicTraits:(unsigned int)arg4;
++ (id)_mapkit_preferredFontForTextStyleInTableViewCell:(id)arg1;
 + (id)_mapkit_preferredFontForTextStyleInTableViewCell:(id)arg1 addingSymbolicTraits:(unsigned int)arg2;
++ (id)_mapkit_preferredFontForTextStyleInTableViewCell:(id)arg1 weight:(double)arg2;
++ (id)_mapkit_preferredFontForTextStyleInTableViewCell:(id)arg1 weight:(double)arg2 contentSizeCategory:(id)arg3 symbolicTraits:(unsigned int)arg4;
 + (id)_mapkit_preferredFontForTextStyleTimeDisplayInTableViewCell:(id)arg1 addingSymbolicTraits:(unsigned int)arg2;
 + (id)_mapkit_preferredFontForTextStyleTimeDisplayInTableViewCell:(id)arg1 addingSymbolicTraits:(unsigned int)arg2 useMonospace:(bool)arg3;
 
 - (id)_mapkit_fontByAddingFeaturesForTabularFigures;
 - (id)_mapkit_fontByAddingFeaturesForTimeDisplay;
 - (id)_mapkit_fontByAddingFeaturesForTimeDisplayUseMonospace:(bool)arg1;
+- (id)_mapkit_fontWithWeight:(double)arg1;
 - (double)_mapkit_lineHeight;
 - (double)_mapkit_scaledValueForValue:(double)arg1;
 
 // Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
+
++ (id)mf_messageHeaderSenderLabelFont;
++ (id)mf_messageHeaderSenderLabelFontForMailActionHeader;
++ (id)mf_messageHeaderSummaryLabelFont;
++ (id)mf_messageHeaderSummaryLabelFontForMailActionHeader;
++ (id)mf_messageHeaderTimestampLabelFont;
 
 - (struct CGPoint { double x1; double x2; })mf_baselinePointFromCaplinePoint:(struct CGPoint { double x1; double x2; })arg1;
 - (struct CGPoint { double x1; double x2; })mf_baselinePointFromOriginPoint:(struct CGPoint { double x1; double x2; })arg1;
@@ -197,6 +232,11 @@
 + (double)pu_scaledValue:(double)arg1 usingFontOfAttributedString:(id)arg2;
 
 - (id)pu_fontWithMonospacedNumbers;
+
+// Image: /System/Library/Frameworks/VisionKit.framework/VisionKit
+
++ (struct UIFont { Class x1; }*)dc_preferredFontForTextStyle:(id)arg1 adjustedForDefaultSize:(double)arg2;
++ (struct UIFont { Class x1; }*)dc_preferredFontForTextStyle:(id)arg1 adjustedForDefaultSize:(double)arg2 maxSize:(double)arg3;
 
 // Image: /System/Library/PrivateFrameworks/AppSupportUI.framework/AppSupportUI
 
@@ -214,14 +254,23 @@
 + (id)aa_primaryActionFontForTraitCollection:(id)arg1;
 + (id)aa_titleFontForTraitCollection:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/AuthKitUI.framework/AuthKitUI
+
++ (id)ak_dynamicFontWithStyle:(id)arg1 traits:(unsigned int)arg2;
++ (id)ak_preferredFontForStyle:(id)arg1 weight:(double)arg2;
+
 // Image: /System/Library/PrivateFrameworks/AvatarUI.framework/AvatarUI
 
 + (id)avt_appropriateContentSizeCategoryForCategory:(id)arg1 minCategory:(id)arg2 maxCategory:(id)arg3;
++ (id)avt_attributeTitleButtonFont;
 + (id)avt_attributeTitleFont;
 + (id)avt_avatarActionButtonTitleFont;
 + (id)avt_funCamItemTitleFont;
 + (id)avt_groupDialBoldLabelFont;
 + (id)avt_groupDialLabelFont;
++ (id)avt_keyboardRecentsSplashContinueButtonFont;
++ (id)avt_keyboardRecentsSplashSubtitleFont;
++ (id)avt_keyboardRecentsSplashTitleFont;
 + (id)avt_splashContinueButtonFont;
 + (id)avt_splashSubTitleFont;
 + (id)avt_splashTitleFont;
@@ -236,30 +285,22 @@
 + (id)bsui_preferredFontForTextStyle:(id)arg1 hiFontStyle:(long long)arg2;
 + (id)bsui_preferredFontForTextStyle:(id)arg1 hiFontStyle:(long long)arg2 contentSizeCategory:(id)arg3;
 
-// Image: /System/Library/PrivateFrameworks/CameraKit.framework/CameraKit
-
-+ (id)cmk_cameraFontForContentSize:(id)arg1;
-+ (id)cmk_cameraFontOfSize:(double)arg1;
-+ (id)cmk_cameraKerningForFont:(id)arg1;
-+ (id)cmk_cameraModeDialApproximateFontForContentSize:(id)arg1;
-+ (id)cmk_cameraModeDialFontForContentSize:(id)arg1;
-+ (id)cmk_cameraMonospacedFontOfSize:(double)arg1;
-+ (id)cmk_cameraPadModeDialFontForContentSize:(id)arg1;
-+ (id)cmk_cameraTimerFontForContentSize:(id)arg1;
-+ (double)cmk_interpolatedAdditionalFontSizeForMainScreen;
-
 // Image: /System/Library/PrivateFrameworks/CameraUI.framework/CameraUI
 
 + (id)cui_cameraFontForContentSize:(id)arg1;
 + (id)cui_cameraFontOfSize:(double)arg1;
++ (id)cui_cameraFontOfSize:(double)arg1 weight:(double)arg2;
 + (id)cui_cameraKerningForFont:(id)arg1;
 + (id)cui_cameraModeDialApproximateFontForContentSize:(id)arg1;
 + (id)cui_cameraModeDialFontForContentSize:(id)arg1;
++ (id)cui_cameraModeDialFontForContentSize:(id)arg1 weight:(double)arg2;
 + (double)cui_cameraModeDialFontSizeForContentSize:(id)arg1;
 + (id)cui_cameraMonospacedFontOfSize:(double)arg1;
++ (id)cui_cameraMonospacedFontOfSize:(double)arg1 weight:(double)arg2;
 + (id)cui_cameraPadModeDialFontForContentSize:(id)arg1;
 + (id)cui_cameraTimerFontForContentSize:(id)arg1 layoutStyle:(long long)arg2;
 + (double)cui_interpolatedAdditionalFontSizeForMainScreen;
++ (bool)cui_usesSFCamera;
 
 // Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
 
@@ -269,6 +310,7 @@
 + (id)__ck_shortEmphasizedPreferredFontForTextStyle:(id)arg1;
 + (id)__ck_shortMonospacedPreferredFontForTextStyle:(id)arg1;
 + (id)__ck_shortPreferredFontForTextStyle:(id)arg1;
++ (id)__ck_shortPreferredFontForTextStyle:(id)arg1 size:(double)arg2;
 + (double)_interpolatedAdditionalFontSizeForMainScreen;
 + (id)ck_cui_cameraFontForContentSize:(id)arg1;
 + (id)ck_cui_cameraFontOfSize:(double)arg1;
@@ -293,14 +335,20 @@
 
 - (double)_compass_scaledValueForValue:(double)arg1;
 
+// Image: /System/Library/PrivateFrameworks/ContactsAutocompleteUI.framework/ContactsAutocompleteUI
+
+- (struct CGPoint { double x1; double x2; })cn_baselinePointFromCaplinePoint:(struct CGPoint { double x1; double x2; })arg1;
+- (struct CGPoint { double x1; double x2; })cn_baselinePointFromOriginPoint:(struct CGPoint { double x1; double x2; })arg1;
+- (struct CGPoint { double x1; double x2; })cn_caplinePointFromBaselinePoint:(struct CGPoint { double x1; double x2; })arg1;
+- (struct CGPoint { double x1; double x2; })cn_caplinePointFromOriginPoint:(struct CGPoint { double x1; double x2; })arg1;
+- (struct CGPoint { double x1; double x2; })cn_originPointFromBaselinePoint:(struct CGPoint { double x1; double x2; })arg1;
+- (struct CGPoint { double x1; double x2; })cn_originPointFromCaplinePoint:(struct CGPoint { double x1; double x2; })arg1;
+- (struct CGPoint { double x1; double x2; })cn_originPointFromMidlinePoint:(struct CGPoint { double x1; double x2; })arg1;
+
 // Image: /System/Library/PrivateFrameworks/DocumentCamera.framework/DocumentCamera
 
 + (struct UIFont { Class x1; }*)dc_preferredFontForTextStyle:(id)arg1 adjustedForDefaultSize:(double)arg2;
 + (struct UIFont { Class x1; }*)dc_preferredFontForTextStyle:(id)arg1 adjustedForDefaultSize:(double)arg2 maxSize:(double)arg3;
-
-// Image: /System/Library/PrivateFrameworks/FamilyCircleUI.framework/FamilyCircleUI
-
-+ (id)fa_fontWithStyle:(id)arg1 traits:(unsigned int)arg2;
 
 // Image: /System/Library/PrivateFrameworks/FitnessUI.framework/FitnessUI
 
@@ -337,9 +385,17 @@
 
 // Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
 
++ (id)hk_chartActivityValueFont;
 + (id)hk_chartAxisLabelFont;
++ (id)hk_chartCurrentValueDateFont;
++ (id)hk_chartCurrentValueKindFont;
++ (id)hk_chartCurrentValueUnitFont;
++ (id)hk_chartCurrentValueValueFont;
 + (id)hk_chartLollipopKeyFont;
 + (id)hk_chartLollipopValueFont;
++ (id)hk_chartLollipopValueFontSmaller;
++ (id)hk_chartOverlaySectionHeaderFont;
++ (id)hk_chrValueCellPrimaryFont;
 + (id)hk_defaultFontWithUIFontTextStyle:(id)arg1 symbolicTraits:(unsigned int)arg2 attributes:(id)arg3;
 + (double)hk_fittingScaleFactorForUILabels:(id)arg1 constrainingWidth:(double)arg2;
 + (id)hk_preferredFontForTextStyle:(id)arg1;
@@ -347,7 +403,10 @@
 + (id)hk_preferredFontForTextStyle:(id)arg1 symbolicTraits:(unsigned int)arg2 maximumContentSizeCategory:(id)arg3;
 + (id)hk_preferredFontIgnoringAccessibilitySizeForTextStyle:(id)arg1;
 + (id)hk_preferredFontIgnoringAccessibilitySizeForTextStyle:(id)arg1 symbolicTraits:(unsigned int)arg2;
++ (id)hk_preferredRoundedFontForTextStyle:(id)arg1;
++ (id)hk_preferredRoundedFontForTextStyle:(id)arg1 additionalSymbolicTraits:(unsigned int)arg2;
 + (id)hk_roundedSystemFontWithSize:(double)arg1 weight:(double)arg2;
++ (id)hk_roundedSystemFontWithSize:(double)arg1 weight:(double)arg2 textStyle:(id)arg3;
 + (id)hk_scalableFontForTextStyle:(id)arg1 symbolicTraits:(unsigned int)arg2;
 + (id)hk_staticPreferredFontForTextStyle:(id)arg1;
 + (id)hk_staticPreferredFontForTextStyle:(id)arg1 symbolicTraits:(unsigned int)arg2;
@@ -366,13 +425,13 @@
 
 - (id)hr_monospacedFont;
 
-// Image: /System/Library/PrivateFrameworks/LinkPresentation.framework/LinkPresentation
-
-- (id)_lp_CSSFontWeight;
-
 // Image: /System/Library/PrivateFrameworks/MPUFoundation.framework/MPUFoundation
 
 - (double)MPU_scaledValueForValue:(double)arg1;
+
+// Image: /System/Library/PrivateFrameworks/ManagedConfigurationUI.framework/ManagedConfigurationUI
+
++ (id)MCUIBoldTitleFontWithSize:(double)arg1;
 
 // Image: /System/Library/PrivateFrameworks/Memories.framework/Memories
 
@@ -380,8 +439,9 @@
 
 // Image: /System/Library/PrivateFrameworks/MobileTimerUI.framework/MobileTimerUI
 
++ (double)mtui_defaultTimeFontSize;
++ (id)mtui_thinTimeFont;
 + (id)mtui_thinTimeFontOfSize:(double)arg1;
-+ (id)mtui_timeFontOfSize:(double)arg1;
 
 - (id)mtui_fontByAddingAttributes:(unsigned long long)arg1;
 - (id)mtui_fontByAddingTimeFontAttributes;
@@ -391,10 +451,6 @@
 + (id)naui_ultraLightMonospacedFontOfSize:(double)arg1;
 
 - (id)naui_dynamicFontTextStyleDescriptor;
-
-// Image: /System/Library/PrivateFrameworks/News/TeaUI.framework/TeaUI
-
-+ (id)ts_preferredFontForTextStyle:(unsigned long long)arg1;
 
 // Image: /System/Library/PrivateFrameworks/NewsFeedLayout.framework/NewsFeedLayout
 
@@ -408,43 +464,45 @@
 
 // Image: /System/Library/PrivateFrameworks/NotesUI.framework/NotesUI
 
-+ (struct UIFont { Class x1; }*)attachmentBrowserTitleFont;
-+ (id)contentSizeCategories;
-+ (double)fontSizeForHeaderImport;
-+ (double)fontSizeForSubheaderImport;
-+ (double)lineHeightForAttachmentTitleText:(long long)arg1;
-+ (struct UIFont { Class x1; }*)listViewDetailFont;
-+ (struct UIFont { Class x1; }*)listViewTitleFont;
-+ (struct UIFont { Class x1; }*)navBarButtonFontUsingSingleLineA:(bool)arg1;
-+ (double)pointSizeForBodyTextWithContentSizeCategory:(id)arg1;
-+ (double)preferredAttachmentTextScale;
-+ (id)preferredFontForAttachmentBoldText;
-+ (id)preferredFontForAttachmentRegularText;
-+ (id)preferredFontForAttachmentText:(long long)arg1;
-+ (id)preferredFontForBodyText;
-+ (struct UIFont { Class x1; }*)preferredFontForBodyTextWithContentSizeCategory:(id)arg1;
-+ (id)preferredFontForDateText;
-+ (id)preferredFontForDateTextWithZoomFactor:(double)arg1;
-+ (id)preferredFontForFixedWidthText;
-+ (id)preferredFontForFixedWidthTextWithContentSizeCategory:(id)arg1;
-+ (id)preferredFontForHeadingText;
-+ (struct UIFont { Class x1; }*)preferredFontForHeadingTextWithContentSizeCategory:(id)arg1;
-+ (struct UIFont { Class x1; }*)preferredFontForStyle:(unsigned int)arg1 contentSizeCategory:(id)arg2;
-+ (id)preferredFontForSubheadingText;
-+ (struct UIFont { Class x1; }*)preferredFontForSubheadingTextWithContentSizeCategory:(id)arg1;
-+ (struct UIFont { Class x1; }*)preferredFontForTextStyle:(id)arg1 adjustedForDefaultSize:(double)arg2;
-+ (struct UIFont { Class x1; }*)preferredFontForTextStyle:(id)arg1 adjustedForDefaultSize:(double)arg2 maxSize:(double)arg3;
-+ (id)preferredFontForTitleText;
-+ (struct UIFont { Class x1; }*)preferredFontForTitleTextWithContentSizeCategory:(id)arg1;
-+ (double)preferredFontSizeWithBaseSize:(double)arg1 withContentSizeCategory:(id)arg2 minSize:(double)arg3 maxSize:(double)arg4;
-+ (struct UIFont { Class x1; }*)preferredSystemFontWithBaseSize:(double)arg1 withContentSizeCategory:(id)arg2 minSize:(double)arg3;
-+ (double)spacingForAttachmentTitleText:(long long)arg1;
-+ (long long)stepsBetweenContentSizeCategory:(id)arg1 andCategory:(id)arg2;
++ (struct UIFont { Class x1; }*)ic_attachmentBrowserTitleFont;
++ (id)ic_contentSizeCategories;
++ (double)ic_fontSizeForHeaderImport;
++ (double)ic_fontSizeForSubheaderImport;
++ (struct UIFont { Class x1; }*)ic_gridViewNoteSubtitleFont;
++ (struct UIFont { Class x1; }*)ic_gridViewNoteTitleFont;
++ (struct UIFont { Class x1; }*)ic_gridViewSectionTitleFont;
++ (struct UIFont { Class x1; }*)ic_listViewDetailFont;
++ (struct UIFont { Class x1; }*)ic_listViewTitleFont;
++ (struct UIFont { Class x1; }*)ic_navBarButtonFontUsingSingleLineA:(bool)arg1;
++ (double)ic_pointSizeForBodyTextWithContentSizeCategory:(id)arg1;
++ (double)ic_preferredAttachmentTextScale;
++ (id)ic_preferredFontForAttachmentBoldText;
++ (id)ic_preferredFontForAttachmentRegularText;
++ (id)ic_preferredFontForBodyText;
++ (struct UIFont { Class x1; }*)ic_preferredFontForBodyTextWithContentSizeCategory:(id)arg1;
++ (id)ic_preferredFontForDateText;
++ (id)ic_preferredFontForDateTextWithZoomFactor:(double)arg1;
++ (id)ic_preferredFontForFixedWidthText;
++ (id)ic_preferredFontForFixedWidthTextWithContentSizeCategory:(id)arg1;
++ (id)ic_preferredFontForHeadingText;
++ (struct UIFont { Class x1; }*)ic_preferredFontForHeadingTextWithContentSizeCategory:(id)arg1;
++ (struct UIFont { Class x1; }*)ic_preferredFontForStyle:(unsigned int)arg1 contentSizeCategory:(id)arg2;
++ (id)ic_preferredFontForSubheadingText;
++ (struct UIFont { Class x1; }*)ic_preferredFontForSubheadingTextWithContentSizeCategory:(id)arg1;
++ (struct UIFont { Class x1; }*)ic_preferredFontForTextStyle:(id)arg1 adjustedForDefaultSize:(double)arg2;
++ (struct UIFont { Class x1; }*)ic_preferredFontForTextStyle:(id)arg1 adjustedForDefaultSize:(double)arg2 maxSize:(double)arg3;
++ (id)ic_preferredFontForTitleText;
++ (struct UIFont { Class x1; }*)ic_preferredFontForTitleTextWithContentSizeCategory:(id)arg1;
++ (double)ic_preferredFontSizeWithBaseSize:(double)arg1 withContentSizeCategory:(id)arg2 minSize:(double)arg3 maxSize:(double)arg4;
++ (struct UIFont { Class x1; }*)ic_preferredSystemFontWithBaseSize:(double)arg1 withContentSizeCategory:(id)arg2 minSize:(double)arg3;
++ (struct UIFont { Class x1; }*)ic_recentlyDeletedHeaderFont;
++ (long long)ic_stepsBetweenContentSizeCategory:(id)arg1 andCategory:(id)arg2;
 
-- (id)fontConvertedToSize:(double)arg1;
-- (bool)fontHasSingleLineA;
-- (id)fontWithSingleLineA;
-- (id)fontWithTabularNumbers;
+- (id)ic_fontConvertedToSize:(double)arg1;
+- (bool)ic_fontHasSingleLineA;
+- (id)ic_fontWithSingleLineA;
+- (id)ic_fontWithSize:(double)arg1;
+- (id)ic_fontWithTabularNumbers;
 - (id)ic_fontWithoutSingleLineA;
 
 // Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
@@ -459,6 +517,10 @@
 
 - (id)pk_fixedWidthFont;
 
+// Image: /System/Library/PrivateFrameworks/PencilPairingUI.framework/PencilPairingUI
+
++ (id)_pp_fontWithTextStyle:(id)arg1 weight:(double)arg2;
+
 // Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
 
 + (id)px_defaultFontForTextStyle:(id)arg1 withSymbolicTraits:(unsigned int)arg2;
@@ -467,7 +529,13 @@
 + (id)px_preferredFontForTextStyle:(id)arg1 maxContentSizeCategory:(id)arg2 withSymbolicTraits:(unsigned int)arg3 emphasized:(bool)arg4;
 + (id)px_preferredFontForTextStyle:(id)arg1 withSymbolicTraits:(unsigned int)arg2 options:(unsigned long long)arg3;
 
-- (id)px_fontWithMonospacedNumbers;
+// Image: /System/Library/PrivateFrameworks/PodcastsKit.framework/PodcastsKit
+
+- (double)MTMPU_scaledValueForValue:(double)arg1;
+
+// Image: /System/Library/PrivateFrameworks/ScreenTimeUI.framework/ScreenTimeUI
+
++ (id)st_fontWithStyle:(id)arg1 traits:(unsigned int)arg2;
 
 // Image: /System/Library/PrivateFrameworks/SiriUI.framework/SiriUI
 
@@ -506,6 +574,10 @@
 
 + (id)tv_fontFromTextStyle:(id)arg1 fontWeight:(id)arg2 fontSize:(double)arg3 symbolicTraits:(unsigned int)arg4;
 
+// Image: /System/Library/PrivateFrameworks/TeaUI.framework/TeaUI
+
++ (id)ts_preferredFontForTextStyle:(unsigned long long)arg1;
+
 // Image: /System/Library/PrivateFrameworks/TelephonyUI.framework/TelephonyUI
 
 + (id)telephonyUIBodyShortEmphasizedFont;
@@ -516,6 +588,11 @@
 + (id)telephonyUISubheadlineShortFont;
 
 - (id)telephonyUIFontByAddingCaseSensitiveLayoutEnabledAttribute;
+
+// Image: /System/Library/PrivateFrameworks/TestFlightCore.framework/TestFlightCore
+
+- (double)tf_computeFittedLineHeight;
+- (double)tf_estimatedFirstBaseline;
 
 // Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 
@@ -544,15 +621,34 @@
 
 - (id)rc_textStyle;
 
-// Image: /System/Library/PrivateFrameworks/VoiceShortcutsUI.framework/VoiceShortcutsUI
-
-+ (id)vcui_buttonFont;
-+ (id)vcui_preferredContentSize;
-+ (id)vcui_preferredFontForTextStyle:(id)arg1;
-+ (id)vcui_preferredFontForTextStyle:(id)arg1 symbolicTraits:(unsigned int)arg2;
-
 // Image: /System/Library/PrivateFrameworks/WiFiKitUI.framework/WiFiKitUI
 
 + (id)preferredFontForStyle:(id)arg1 weight:(double)arg2;
+
+// Image: /System/Library/PrivateFrameworks/WorkflowUI.framework/WorkflowUI
+
++ (id)chicletDescriptionFont;
++ (id)chicletTitleFont;
++ (id)drawerCategoryTitleFont;
++ (id)drawerSectionHeaderDetailFont;
++ (id)drawerSectionHeaderTitleFont;
++ (id)drawerSiriSuggestionSectionTitleFont;
++ (id)galleryCardDescriptionFont;
++ (id)galleryCollectionSeeAllButtonFont;
++ (id)galleryCollectionSubtitleFont;
++ (id)galleryCollectionTitleFont;
++ (id)gallerySearchCollectionSubtitleFont;
++ (id)gallerySearchCollectionTitleFont;
++ (id)gallerySearchSectionHeaderButtonFont;
++ (id)gallerySearchSectionHeaderFont;
++ (id)gallerySuggestionTextFont;
++ (id)galleryWorkflowDescriptionFont;
++ (id)galleryWorkflowNameFont;
++ (id)setupFlowButtonFont;
++ (id)setupFlowFieldFont;
++ (id)workflowsFooterFont;
+
+- (double)wf_bodyLeading;
+- (double)wf_scaledValueForValue:(double)arg1 baseFont:(id)arg2;
 
 @end

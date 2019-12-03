@@ -24,7 +24,6 @@
         unsigned int libraryAdded : 1; 
         unsigned int libraryAddEligible : 1; 
         unsigned int shouldShowComposer : 1; 
-        unsigned int shouldExcludeFromShuffle : 1; 
         unsigned int volumeNormalization : 1; 
         unsigned int year : 1; 
         unsigned int userRating : 1; 
@@ -61,6 +60,7 @@
             unsigned int identifiers : 1; 
             unsigned int text : 1; 
             unsigned int hasStoreLyrics : 1; 
+            unsigned int hasTimeSyncedLyrics : 1; 
         } lyrics; 
     }  _requestedSongProperties;
     MPStoreModelStoreAssetBuilder * _storeAssetBuilder;
@@ -70,6 +70,6 @@
 + (id)allSupportedProperties;
 
 - (void).cxx_destruct;
-- (id)modelObjectWithStoreItemMetadata:(id)arg1 sourceModelObject:(id)arg2;
+- (id)modelObjectWithStoreItemMetadata:(id)arg1 sourceModelObject:(id)arg2 userIdentity:(id)arg3;
 
 @end

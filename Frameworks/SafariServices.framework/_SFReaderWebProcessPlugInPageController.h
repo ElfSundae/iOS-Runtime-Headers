@@ -29,6 +29,7 @@
 - (void)reloadArticle;
 - (void)setConfiguration:(id)arg1;
 - (void)setOriginalPageController:(id)arg1;
+- (void)setReaderIsActive:(bool)arg1;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 globalObjectIsAvailableForFrame:(id)arg2 inScriptWorld:(id)arg3;
 - (void)willDestroyBrowserContextController:(id)arg1;
 

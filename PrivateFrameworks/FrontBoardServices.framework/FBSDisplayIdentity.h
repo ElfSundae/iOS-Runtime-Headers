@@ -49,6 +49,7 @@
 - (bool)isEqual:(id)arg1;
 - (bool)isExternal;
 - (bool)isMainDisplay;
+- (bool)isMainRootDisplay;
 - (bool)isMusicOnlyDisplay;
 - (bool)isRestrictedAirPlayDisplay;
 - (bool)isRootIdentity;
@@ -59,10 +60,9 @@
 - (long long)type;
 - (id)uniqueIdentifier;
 
-// Image: /System/Library/PrivateFrameworks/FrontBoard.framework/FrontBoard
+// Image: /System/Library/PrivateFrameworks/SpringBoard.framework/SpringBoard
 
 - (id)UIScreen;
 - (id)currentConfiguration;
-- (bool)isMainRootDisplay;
 
 @end

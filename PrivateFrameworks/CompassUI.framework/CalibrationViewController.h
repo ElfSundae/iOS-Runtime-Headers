@@ -3,9 +3,9 @@
  */
 
 @interface CalibrationViewController : UIViewController {
-    double  _angleOfAwesome;
     double  _angleToRim;
     CalibrationBallView * _ballView;
+    double  _calibrationAngle;
     NSMutableArray * _calibrationConstraints;
     UIButton * _cancelButton;
     CompassBackgroundView * _compassBackgroundView;
@@ -18,9 +18,7 @@
     bool  _ignoreMotionUpdates;
     UILabel * _instructionLabel;
     unsigned long long  _numCompleteTics;
-    struct Matrix<double, 3, 1> { 
-        double _e[3]; 
-    }  _previousGravity;
+    void _previousGravity;
     double  _previousHorizontalAngle;
     double  _previousTimestamp;
     int  _quantizationType;
@@ -30,7 +28,6 @@
     UILabel * _titleLabel;
 }
 
-- (id).cxx_construct;
 - (void).cxx_destruct;
 - (double)_correctedAngleForCurrentOrientation:(double)arg1;
 - (void)_updateSizes;

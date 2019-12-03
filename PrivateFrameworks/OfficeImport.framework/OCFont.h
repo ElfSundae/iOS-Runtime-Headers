@@ -14,8 +14,8 @@
 
 + (id)fontWithSubfamily:(id)arg1 bold:(bool)arg2 italic:(bool)arg3;
 
+- (void).cxx_destruct;
 - (bool)bold;
-- (void)dealloc;
 - (id)initWithSubfamily:(id)arg1 bold:(bool)arg2 italic:(bool)arg3;
 - (bool)italic;
 - (void)setBold:(bool)arg1;

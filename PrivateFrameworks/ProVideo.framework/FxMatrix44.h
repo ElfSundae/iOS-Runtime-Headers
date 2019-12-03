@@ -2,13 +2,18 @@
    Image: /System/Library/PrivateFrameworks/ProVideo.framework/ProVideo
  */
 
-@interface FxMatrix44 : NSObject {
+@interface FxMatrix44 : NSObject <NSSecureCoding> {
     double  _mat;
 }
 
++ (bool)supportsSecureCoding;
+
 - (bool)_planarInverseZ;
+- (id)copy;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithColorMatrix44Data:(double)arg1;
 - (id)initWithFxMatrix:(id)arg1;
 - (id)initWithMatrix44Data:(double)arg1;

@@ -8,7 +8,6 @@
 }
 
 @property (nonatomic, readonly) bool allowHotPocketDuringTransition;
-@property (nonatomic, readonly) unsigned long long backgroundMaterialOptions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) unsigned long long dismissalFlickAllowedDirections;
@@ -21,6 +20,7 @@
 @property (getter=isPanDismissalAvailable, nonatomic, readonly) bool panDismissalAvailable;
 @property (readonly) Class superclass;
 @property (nonatomic) <CCUIOverlayViewProvider> *viewProvider;
+@property (getter=isZoomEnabled, nonatomic, readonly) bool zoomEnabled;
 
 + (id)_baseC2AnimationParametersForTransitionState:(id)arg1;
 + (id)_moduleC2AnimationParametersForTransitionState:(id)arg1 layoutRect:(struct CCUILayoutRect { struct CCUILayoutPoint { unsigned long long x_1_1_1; unsigned long long x_1_1_2; } x1; struct CCUILayoutSize { unsigned long long x_2_1_1; unsigned long long x_2_1_2; } x2; })arg2;
@@ -41,7 +41,6 @@
 - (bool)allowHotPocketDuringTransition;
 - (id)animationBatchForTransitionState:(id)arg1 previousTransitionState:(id)arg2;
 - (bool)backdropViewShouldUseAlphaTransformer;
-- (unsigned long long)backgroundMaterialOptions;
 - (unsigned long long)dismissalFlickAllowedDirections;
 - (double)dismissalFlickMaximumTime;
 - (double)dismissalFlickMinimumVelocity;
@@ -49,6 +48,7 @@
 - (id)flickGestureBehavior;
 - (unsigned long long)headerMode;
 - (bool)isPanDismissalAvailable;
+- (bool)isZoomEnabled;
 - (void)layoutViews;
 - (id)metricsProvider;
 - (void)setMetricsProvider:(id)arg1;

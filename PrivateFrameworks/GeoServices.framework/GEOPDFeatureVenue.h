@@ -4,7 +4,23 @@
 
 @interface GEOPDFeatureVenue : PBCodable <NSCopying> {
     NSMutableArray * _buildings;
+    struct { 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_buildings : 1; 
+        unsigned int read_levels : 1; 
+        unsigned int read_venueContainer : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_buildings : 1; 
+        unsigned int wrote_levels : 1; 
+        unsigned int wrote_venueContainer : 1; 
+    }  _flags;
     NSMutableArray * _levels;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     PBUnknownFields * _unknownFields;
     GEOPDVenueContainer * _venueContainer;
 }
@@ -16,9 +32,15 @@
 @property (nonatomic, retain) GEOPDVenueContainer *venueContainer;
 
 + (Class)buildingType;
++ (bool)isValid:(id)arg1;
 + (Class)levelType;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsBuilding:(id)arg1;
+- (void)_addNoFlagsLevel:(id)arg1;
+- (void)_readBuildings;
+- (void)_readLevels;
+- (void)_readVenueContainer;
 - (void)addBuilding:(id)arg1;
 - (void)addLevel:(id)arg1;
 - (id)buildingAtIndex:(unsigned long long)arg1;
@@ -26,17 +48,21 @@
 - (unsigned long long)buildingsCount;
 - (void)clearBuildings;
 - (void)clearLevels;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (bool)hasVenueContainer;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)levelAtIndex:(unsigned long long)arg1;
 - (id)levels;
 - (unsigned long long)levelsCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setBuildings:(id)arg1;
 - (void)setLevels:(id)arg1;

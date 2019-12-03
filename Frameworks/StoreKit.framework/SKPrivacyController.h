@@ -4,6 +4,7 @@
 
 @interface SKPrivacyController : NSObject
 
++ (bool)_hasEntitlementForAuthorizationExemption;
 + (id)sharedInstance;
 + (void)validatePermissionsExpiryWithCompletion:(id /* block */)arg1;
 

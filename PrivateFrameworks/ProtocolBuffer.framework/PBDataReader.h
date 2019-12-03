@@ -10,8 +10,8 @@
     unsigned long long  _pos;
 }
 
-@property unsigned long long length;
-@property unsigned long long position;
+@property (nonatomic) unsigned long long length;
+@property (nonatomic) unsigned long long position;
 
 - (id)data;
 - (void)dealloc;

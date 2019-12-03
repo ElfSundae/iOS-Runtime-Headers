@@ -4,6 +4,4 @@
 
 @interface _LSBundleQuery : _LSQuery
 
-- (bool)_shouldCacheResolvedResults;
-
 @end

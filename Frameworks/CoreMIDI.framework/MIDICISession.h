@@ -48,7 +48,7 @@
 - (void)hasProperty:(id)arg1 onChannel:(unsigned char)arg2 responseHandler:(id /* block */)arg3;
 - (id)init;
 - (id)initWithMIDIEntity:(unsigned int)arg1 dataReadyHandler:(id /* block */)arg2;
-- (bool)isEqualTo:(id)arg1;
+- (bool)isEqual:(id)arg1;
 - (id /* block */)profileChangedCallback;
 - (id)profileStateForChannel:(unsigned char)arg1;
 - (id /* block */)propertyChangedCallback;

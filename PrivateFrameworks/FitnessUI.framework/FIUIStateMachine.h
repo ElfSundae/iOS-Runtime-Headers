@@ -8,6 +8,7 @@
     bool  _handlingEvent;
     FIUIState * _initialState;
     NSString * _label;
+    NSMutableSet * _parentStates;
     long long  _pendingEvent;
     NSMutableArray * _pendingEvents;
     NSObject<OS_dispatch_queue> * _queue;
@@ -28,6 +29,7 @@
 - (void)_queue_handleEvents;
 - (void)_queue_processEvent:(long long)arg1;
 - (void)_queue_setInitialStateIfNeeded:(id)arg1;
+- (void)addChildStates:(id)arg1 toState:(id)arg2 withEntryState:(id)arg3;
 - (void)addState:(id)arg1;
 - (void)addStates:(id)arg1;
 - (void)dealloc;

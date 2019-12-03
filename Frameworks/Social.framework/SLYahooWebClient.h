@@ -34,6 +34,8 @@
 - (id)clientSecret;
 - (id)defaultScope;
 - (void)encodeWithCoder:(id)arg1;
+- (id)fallbackUserInfoURL;
+- (Class)fallbackWebUserInfoResponseClass;
 - (id)initWithCoder:(id)arg1;
 - (id)source;
 - (Class)tokenRequestClass;

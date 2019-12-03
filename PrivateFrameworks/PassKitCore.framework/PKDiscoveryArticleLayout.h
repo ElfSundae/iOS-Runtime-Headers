@@ -7,6 +7,7 @@
     PKDiscoveryCard * _card;
     PKDiscoveryCallToAction * _footerLockup;
     NSString * _itemIdentifier;
+    bool  _requestedBadge;
     NSArray * _shelves;
     long long  _variant;
     long long  _version;
@@ -16,6 +17,7 @@
 @property (nonatomic, readonly) PKDiscoveryCard *card;
 @property (nonatomic, readonly) PKDiscoveryCallToAction *footerLockup;
 @property (nonatomic, retain) NSString *itemIdentifier;
+@property (getter=hasRequestedBadge, nonatomic, readonly) bool requestedBadge;
 @property (nonatomic, readonly) NSArray *shelves;
 @property (nonatomic, readonly) long long variant;
 @property (nonatomic, readonly) long long version;
@@ -28,8 +30,12 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)footerLockup;
+- (bool)hasRequestedBadge;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
+- (bool)isEqual:(id)arg1;
+- (bool)isEqualForUI:(id)arg1;
 - (id)itemIdentifier;
 - (void)localizeWithBundle:(id)arg1;
 - (void)localizeWithBundle:(id)arg1 table:(id)arg2;

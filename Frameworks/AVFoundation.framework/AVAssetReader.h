@@ -34,7 +34,6 @@
 - (void)dealloc;
 - (id)description;
 - (id)error;
-- (void)finalize;
 - (id)init;
 - (id)initWithAsset:(id)arg1 error:(id*)arg2;
 - (id)outputs;

@@ -15,6 +15,7 @@
 - (id)image;
 - (id)init;
 - (id)initWithCIImage:(id)arg1 orientation:(long long)arg2;
+- (long long)mediaType;
 - (long long)orientation;
 
 @end

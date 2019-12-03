@@ -7,16 +7,12 @@
 
 - (long long)behavior;
 - (double)endTimeOffset;
-- (double)maximumDeceleration;
+- (double)maxVitalityDelay;
 - (double)maximumDelayBeforePlayback;
-- (long long)maximumNumberOfFrames;
-- (double)maximumRate;
-- (double)minimumDurationForColorMismatch;
+- (double)minimumPhotoTransitionDuration;
 - (double)minimumVisibilityFactor;
 - (double)playbackRate;
 - (double)postDuration;
 - (double)preDuration;
-- (double)relativeEnd;
-- (double)relativeStart;
 
 @end

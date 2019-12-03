@@ -51,13 +51,17 @@
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *topic;
 
++ (id)_checkmarkImage;
+
 - (void).cxx_destruct;
 - (unsigned long long)_addMediaIdentifierToList:(id)arg1;
+- (bool)_canShowWhileLocked;
 - (void)_configureTextColorOfLabelInCell:(id)arg1 shouldTintText:(bool)arg2 checked:(bool)arg3;
 - (id)_customHeaderViewForHeaderInSection:(long long)arg1;
 - (void)_didSelectMediaItemWithIdentifier:(id)arg1;
 - (void)_didSelectToneWithIdentifier:(id)arg1;
 - (void)_handleMediaLibraryDidChangeNotification;
+- (void)_handlePreferredContentSizeCategoryDidChangeNotification:(id)arg1;
 - (void)_handleSwitchControlValueChanged:(id)arg1;
 - (id)_mediaItemForIdentifier:(id)arg1;
 - (double)_minimumTextIndentationForTableView:(id)arg1 withCheckmarkImage:(id)arg2;
@@ -130,8 +134,10 @@
 - (id)styleProvider;
 - (id)tableView:(id)arg1 cellForPickerRowItem:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2 forPickerRowItem:(id)arg3;
+- (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
@@ -142,17 +148,21 @@
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forPickerRowItem:(id)arg3;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
-- (void)tonePickerController:(id)arg1 didDeletePickerRowItem:(id)arg2 completion:(id /* block */)arg3;
-- (void)tonePickerController:(id)arg1 didInsertPickerRowItems:(id)arg2 andTonePickerSectionItems:(id)arg3;
+- (void)tonePickerController:(id)arg1 didDeletePickerRowItems:(id)arg2;
+- (void)tonePickerController:(id)arg1 didDeleteTonePickerSectionItems:(id)arg2;
+- (void)tonePickerController:(id)arg1 didInsertPickerRowItems:(id)arg2;
+- (void)tonePickerController:(id)arg1 didInsertTonePickerSectionItems:(id)arg2;
 - (void)tonePickerController:(id)arg1 didSelectMediaItemAtIndex:(unsigned long long)arg2 selectionDidChange:(bool)arg3;
 - (void)tonePickerController:(id)arg1 didUpdateCheckedStatus:(bool)arg2 ofTonePickerItem:(id)arg3;
 - (void)tonePickerController:(id)arg1 didUpdateDetailText:(id)arg2 ofTonePickerItem:(id)arg3;
 - (void)tonePickerController:(id)arg1 didUpdateDownloadProgressOfTonePickerItem:(id)arg2;
-- (void)tonePickerController:(id)arg1 didUpdateFooterText:(id)arg2 ofTonePickerSectionItem:(id)arg3;
+- (void)tonePickerController:(id)arg1 didUpdateFooterTextOfTonePickerSectionItems:(id)arg2;
+- (void)tonePickerController:(id)arg1 didUpdateHeaderTextOfTonePickerSectionItems:(id)arg2;
 - (void)tonePickerController:(id)arg1 didUpdateIgnoreMute:(bool)arg2 forTonePickerItem:(id)arg3 atIndexPath:(id)arg4;
 - (void)tonePickerController:(id)arg1 didUpdateTonePickerItem:(id)arg2;
 - (id)tonePickerController:(id)arg1 identifierOfMediaItemAtIndex:(unsigned long long)arg2;
 - (unsigned long long)tonePickerController:(id)arg1 indexOfMediaItemWithIdentifier:(id)arg2;
+- (void)tonePickerController:(id)arg1 requestsPerformingBatchUpdates:(id /* block */)arg2 completion:(id /* block */)arg3;
 - (void)tonePickerController:(id)arg1 requestsPresentingAlertWithTitle:(id)arg2 message:(id)arg3;
 - (void)tonePickerController:(id)arg1 requestsPresentingToneClassicsPickerForItem:(id)arg2;
 - (void)tonePickerController:(id)arg1 selectedMediaItemWithIdentifier:(id)arg2;

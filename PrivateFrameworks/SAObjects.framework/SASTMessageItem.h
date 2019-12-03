@@ -10,6 +10,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) SAUIDecoratedText *recipient;
+@property (nonatomic, copy) NSString *serviceType;
 @property (readonly) Class superclass;
 
 + (id)messageItem;
@@ -20,8 +21,10 @@
 - (id)encodedClassName;
 - (id)groupIdentifier;
 - (id)recipient;
+- (id)serviceType;
 - (void)setBundleId:(id)arg1;
 - (void)setContent:(id)arg1;
 - (void)setRecipient:(id)arg1;
+- (void)setServiceType:(id)arg1;
 
 @end

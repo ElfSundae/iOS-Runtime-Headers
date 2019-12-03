@@ -35,7 +35,9 @@
 - (bool)_presentDialogWithInfo:(id)arg1 options:(unsigned long long)arg2 textField:(id*)arg3 withContext:(id)arg4;
 - (bool)_removeCurrentNotification:(struct __CFUserNotification { }*)arg1 currentSelection:(bool)arg2 selectedByPeerDevice:(bool*)arg3 andContext:(id)arg4;
 - (void)_requestPairingPasswordForAccessory:(id)arg1 home:(id)arg2 withContext:(id)arg3 queue:(id)arg4 completionHandler:(id /* block */)arg5;
+- (void)_requestUserPermissionForDeletionOfHomeWithName:(id)arg1 withContext:(id)arg2 queue:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)_requestUserPermissionForLegacyWACAccessory:(id)arg1 withContext:(id)arg2 queue:(id)arg3 completionHandler:(id /* block */)arg4;
+- (void)_requestUserPermissionForRemovalOfRouter:(id)arg1 accessoriesRequiringManualReconfiguration:(id)arg2 withContext:(id)arg3 queue:(id)arg4 completionHandler:(id /* block */)arg5;
 - (void)_requestUserPermissionForUnauthenticatedAccessory:(id)arg1 withContext:(id)arg2 queue:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)_requestUserPermissionWithAccessoryPPIDInfo:(id)arg1 name:(id)arg2 category:(id)arg3 withContext:(id)arg4 queue:(id)arg5 completionHandler:(id /* block */)arg6;
 - (void)_showUserDialogForIncompatibleAccessory:(id)arg1 name:(id)arg2 category:(id)arg3 withContext:(id)arg4 queue:(id)arg5 completionHandler:(id /* block */)arg6;
@@ -55,7 +57,9 @@
 - (bool)peerDeviceAcceptedSelection;
 - (id)pendingContexts;
 - (void)requestPairingPasswordForAccessory:(id)arg1 home:(id)arg2 withContext:(id)arg3 queue:(id)arg4 completionHandler:(id /* block */)arg5;
+- (void)requestUserPermissionForDeletionOfHomeWithName:(id)arg1 withContext:(id)arg2 queue:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)requestUserPermissionForLegacyWACAccessory:(id)arg1 withContext:(id)arg2 queue:(id)arg3 completionHandler:(id /* block */)arg4;
+- (void)requestUserPermissionForRemovalOfRouter:(id)arg1 accessoriesRequiringManualReconfiguration:(id)arg2 withContext:(id)arg3 queue:(id)arg4 completionHandler:(id /* block */)arg5;
 - (void)requestUserPermissionForUnauthenticatedAccessory:(id)arg1 withContext:(id)arg2 queue:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)requestUserPermissionWithAccessoryPPIDInfo:(id)arg1 name:(id)arg2 category:(id)arg3 withContext:(id)arg4 queue:(id)arg5 completionHandler:(id /* block */)arg6;
 - (bool)selectedByPeerDevice;

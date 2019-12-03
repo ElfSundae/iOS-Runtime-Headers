@@ -3,6 +3,7 @@
  */
 
 @interface STContentPrivacyViewModel : NSObject {
+    STCommunicationLimits * _communicationLimits;
     bool  _isLoaded;
     bool  _isLocalDevice;
     bool  _restrictionsEnabled;
@@ -13,6 +14,7 @@
     NSSet * _visibleRestrictions;
 }
 
+@property (retain) STCommunicationLimits *communicationLimits;
 @property (nonatomic) bool isLoaded;
 @property (nonatomic) bool isLocalDevice;
 @property (nonatomic) bool restrictionsEnabled;
@@ -23,11 +25,13 @@
 @property (nonatomic, copy) NSSet *visibleRestrictions;
 
 - (void).cxx_destruct;
+- (id)communicationLimits;
 - (id)defaultValueForRestriction:(id)arg1;
 - (id)init;
 - (bool)isLoaded;
 - (bool)isLocalDevice;
 - (bool)restrictionsEnabled;
+- (void)setCommunicationLimits:(id)arg1;
 - (void)setIsLoaded:(bool)arg1;
 - (void)setIsLocalDevice:(bool)arg1;
 - (void)setRestrictionsEnabled:(bool)arg1;

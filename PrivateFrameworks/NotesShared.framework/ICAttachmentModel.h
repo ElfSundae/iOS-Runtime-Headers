@@ -16,6 +16,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool generateAsynchronousPreviews;
 @property (nonatomic, readonly) bool generatePreviewsDuringCloudActivity;
+@property (nonatomic, readonly) id /* block */ genericBrickLargeThumbnailCreator;
 @property (nonatomic, readonly) id /* block */ genericBrickThumbnailCreator;
 @property (nonatomic, readonly) id /* block */ genericListThumbnailCreator;
 @property (nonatomic, readonly) NSString *hardLinkVersion;
@@ -25,16 +26,22 @@
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } intrinsicContentSize;
 @property (getter=isMergeableDataDirty, nonatomic) bool mergeableDataDirty;
 @property (nonatomic, readonly) bool needToGeneratePreviews;
+@property (nonatomic, readonly) bool needToPostProcessAttachment;
 @property (nonatomic, readonly) bool needsFullSizePreview;
+@property (nonatomic, readonly) bool preferLocalPreviewImages;
 @property bool previewGenerationOperationCancelled;
 @property (nonatomic, readonly) NSString *previewImageTypeUTI;
 @property (nonatomic, readonly) NSString *previewItemTitle;
 @property (nonatomic, readonly) NSURL *previewItemURL;
+@property (nonatomic, readonly) bool previewsSupportMultipleAppearances;
 @property (nonatomic, readonly) NSArray *quicklookPreviewItems;
 @property (nonatomic, readonly) bool requiresNetworkToGeneratePreview;
+@property (nonatomic, readonly) bool requiresPostProcessing;
 @property (nonatomic, readonly) NSURL *saveURL;
 @property (nonatomic, readonly) bool showThumbnailInNoteList;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) bool supportsImageClassification;
+@property (nonatomic, readonly) bool supportsOCR;
 @property (nonatomic, readonly) bool supportsQuickLook;
 
 // Image: /System/Library/PrivateFrameworks/NotesShared.framework/NotesShared
@@ -66,7 +73,7 @@
 - (id)generateHardLinkURLIfNecessaryForURL:(id)arg1;
 - (id)generateHardLinkURLIfNecessaryForURL:(id)arg1 withFileName:(id)arg2;
 - (id)generateTemporaryURLWithExtension:(id)arg1;
-- (id)hardLinkFolderPath;
+- (id)hardLinkFolderURL;
 - (id)hardLinkVersion;
 - (bool)hasPreviews;
 - (bool)hasThumbnailImage;
@@ -81,17 +88,20 @@
 - (id)mergeableDataForCopying;
 - (bool)needsFullSizePreview;
 - (void)noteWillAddOrRemovePassword;
+- (bool)preferLocalPreviewImages;
 - (bool)previewGenerationOperationCancelled;
 - (long long)previewImageOrientation;
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })previewImageOrientationTransform;
 - (id)previewImageTypeUTI;
 - (id)previewItemTitle;
 - (id)previewItemURL;
+- (bool)previewsSupportMultipleAppearances;
 - (id)providerDataTypes;
 - (id)providerFileTypes;
 - (bool)providesStandaloneTitleForNote;
 - (bool)providesTextContentInNote;
 - (void)regenerateTextContentInNote;
+- (bool)requiresPostProcessing;
 - (id)saveURL;
 - (id)searchableTextContent;
 - (id)searchableTextContentForLocation;
@@ -105,6 +115,8 @@
 - (bool)shouldSyncPreviewImageToCloud:(id)arg1;
 - (bool)showThumbnailInNoteList;
 - (id)standaloneTitleForNote;
+- (bool)supportsImageClassification;
+- (bool)supportsOCR;
 - (bool)supportsQuickLook;
 - (id)textContentInNote;
 - (id)titleForSubAttachment:(id)arg1;
@@ -122,14 +134,19 @@
 + (struct UIImage { Class x1; }*)fileIconForURL:(id)arg1 withPreferredSize:(struct CGSize { double x1; double x2; })arg2 uti:(id)arg3;
 
 - (id)activityItems;
+- (void)classifyImageInOperation:(id)arg1;
 - (void)didCancelPreviewGeneratorOperation;
+- (void)drawPreviewInRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (struct UIImage { Class x1; }*)fileIconWithPreferredSize:(struct CGSize { double x1; double x2; })arg1;
 - (bool)generateAsynchronousPreviews;
+- (void)generateOCRInOperation:(id)arg1;
 - (bool)generatePreviewsDuringCloudActivity;
-- (void)generatePreviewsInOperation:(id)arg1;
+- (bool)generatePreviewsInOperation:(id)arg1;
+- (id /* block */)genericBrickLargeThumbnailCreator;
 - (id /* block */)genericBrickThumbnailCreator;
 - (id /* block */)genericListThumbnailCreator;
 - (bool)needToGeneratePreviews;
+- (bool)needToPostProcessAttachment;
 - (id)quicklookPreviewItems;
 - (bool)requiresNetworkToGeneratePreview;
 

@@ -8,8 +8,10 @@
     struct { 
         unsigned int distanceToPreviousScene : 1; 
         unsigned int flickerScore : 1; 
+        unsigned int sceneprintDistanceToPreviousScene : 1; 
     }  _has;
     float  _qualityScore;
+    float  _sceneprintDistanceToPreviousScene;
     VCPProtoTimeRange * _timeRange;
 }
 
@@ -17,7 +19,9 @@
 @property (nonatomic) float flickerScore;
 @property (nonatomic) bool hasDistanceToPreviousScene;
 @property (nonatomic) bool hasFlickerScore;
+@property (nonatomic) bool hasSceneprintDistanceToPreviousScene;
 @property (nonatomic) float qualityScore;
+@property (nonatomic) float sceneprintDistanceToPreviousScene;
 @property (nonatomic, retain) VCPProtoTimeRange *timeRange;
 
 + (id)resultFromLegacyDictionary:(id)arg1;
@@ -32,16 +36,20 @@
 - (float)flickerScore;
 - (bool)hasDistanceToPreviousScene;
 - (bool)hasFlickerScore;
+- (bool)hasSceneprintDistanceToPreviousScene;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (float)qualityScore;
 - (bool)readFrom:(id)arg1;
+- (float)sceneprintDistanceToPreviousScene;
 - (void)setDistanceToPreviousScene:(float)arg1;
 - (void)setFlickerScore:(float)arg1;
 - (void)setHasDistanceToPreviousScene:(bool)arg1;
 - (void)setHasFlickerScore:(bool)arg1;
+- (void)setHasSceneprintDistanceToPreviousScene:(bool)arg1;
 - (void)setQualityScore:(float)arg1;
+- (void)setSceneprintDistanceToPreviousScene:(float)arg1;
 - (void)setTimeRange:(id)arg1;
 - (id)timeRange;
 - (void)writeTo:(id)arg1;

@@ -15,6 +15,7 @@
 @property (nonatomic, readonly) bool isAnyAssetSelected;
 @property (nonatomic, readonly) long long options;
 @property (nonatomic, readonly) NSOrderedSet *orderedSelectedAssets;
+@property (nonatomic, readonly) NSArray *selectedAssetCollections;
 @property (nonatomic, readonly) NSSet *selectedAssets;
 @property (nonatomic, readonly) NSDictionary *selectedAssetsByAssetCollection;
 @property (nonatomic, readonly) PXSelectionSnapshot *selectionSnapshot;
@@ -45,9 +46,11 @@
 - (long long)options;
 - (id)orderedSelectedAssets;
 - (void)registerChangeObserver:(id)arg1;
+- (struct PXAssetMediaTypeCount { unsigned long long x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; unsigned long long x5; unsigned long long x6; unsigned long long x7; })requestAssetsMediaTypeCount;
 - (void)selectAllAssetsInAssetCollections:(id)arg1;
 - (void)selectAssetAtIndex:(unsigned long long)arg1 inAssetCollection:(id)arg2;
 - (void)selectAssetsAtIndexes:(id)arg1 inAssetCollection:(id)arg2;
+- (id)selectedAssetCollections;
 - (id)selectedAssetIndexesWithAssetCollectionOrdering:(id)arg1;
 - (id)selectedAssets;
 - (id)selectedAssetsByAssetCollection;

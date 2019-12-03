@@ -18,7 +18,6 @@
 - (void)_saveAndDismiss;
 - (bool)_validateRecipientsToAdd:(id)arg1;
 - (id)album;
-- (id)backingNavigationControllerForComposeRecipientViewController:(id)arg1;
 - (id)contentScrollView;
 - (void)dealloc;
 - (id)initWithSharedStream:(id)arg1;

@@ -9,30 +9,29 @@
     NSString * _name;
     int  _pid;
     BKSProcessAssertion * _processAssertion;
-    long long  _type;
     NSString * _uuid;
 }
 
 @property (nonatomic, readonly) NSString *bundleID;
 @property (nonatomic, readonly) NSString *name;
 @property (nonatomic, readonly) int pid;
-@property (nonatomic, readonly) long long type;
 @property (getter=isValid, nonatomic, readonly) bool valid;
 
 - (void).cxx_destruct;
+- (unsigned int)_BSKFlagsForMSVFlags:(unsigned long long)arg1;
+- (unsigned int)_BSKReasonForMSVReason:(unsigned long long)arg1;
 - (void)_cancelInvalidationTimerWithCompletion:(id /* block */)arg1;
-- (id)_initWithType:(long long)arg1 bundleID:(id)arg2 orPID:(int)arg3 name:(id)arg4 subsystem:(id)arg5;
+- (id)_initWithName:(id)arg1 bundleID:(id)arg2 pid:(int)arg3 subsystem:(id)arg4 reason:(unsigned long long)arg5 flags:(unsigned long long)arg6;
 - (id)bundleID;
 - (void)dealloc;
 - (id)description;
 - (id)init;
-- (id)initWithType:(long long)arg1 bundleID:(id)arg2 name:(id)arg3 subsystem:(id)arg4;
-- (id)initWithType:(long long)arg1 pid:(int)arg2 name:(id)arg3 subsystem:(id)arg4;
+- (id)initWithName:(id)arg1 bundleID:(id)arg2 subsystem:(id)arg3 reason:(unsigned long long)arg4 flags:(unsigned long long)arg5;
+- (id)initWithName:(id)arg1 pid:(int)arg2 subsystem:(id)arg3 reason:(unsigned long long)arg4 flags:(unsigned long long)arg5;
 - (void)invalidate;
 - (void)invalidateOnDate:(id)arg1;
 - (bool)isValid;
 - (id)name;
 - (int)pid;
-- (long long)type;
 
 @end

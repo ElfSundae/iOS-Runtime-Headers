@@ -8,9 +8,9 @@
     bool  mShowLegend;
 }
 
+- (void).cxx_destruct;
 - (id)chart;
 - (id)chartData;
-- (void)dealloc;
 - (void)setChart:(id)arg1;
 - (void)setChartData:(id)arg1;
 - (void)setShowLegend:(bool)arg1;

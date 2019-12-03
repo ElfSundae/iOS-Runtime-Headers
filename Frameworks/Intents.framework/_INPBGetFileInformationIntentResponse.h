@@ -3,6 +3,7 @@
  */
 
 @interface _INPBGetFileInformationIntentResponse : PBCodable <NSCopying, NSSecureCoding, _INPBGetFileInformationIntentResponse> {
+    bool  __encodeLegacyGloryData;
     _INPBString * _entityName;
     struct { 
         unsigned int success : 1; 
@@ -11,6 +12,7 @@
     bool  _success;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) _INPBString *entityName;
@@ -22,14 +24,20 @@
 @property (nonatomic) bool success;
 @property (readonly) Class superclass;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (id)entityName;
 - (bool)hasEntityName;
 - (bool)hasProperty;
 - (bool)hasSuccess;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)property;
 - (bool)readFrom:(id)arg1;

@@ -15,7 +15,6 @@
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } size;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) double topThreshold;
-@property (nonatomic, readonly) long long uberLayoutInterfaceStyle;
 @property (nonatomic, retain) IKViewElement *viewElement;
 
 - (void).cxx_destruct;
@@ -29,7 +28,6 @@
 - (void)setWhiteBannerOpacity:(double)arg1;
 - (struct CGSize { double x1; double x2; })size;
 - (double)topThreshold;
-- (long long)uberLayoutInterfaceStyle;
 - (id)viewElement;
 
 @end

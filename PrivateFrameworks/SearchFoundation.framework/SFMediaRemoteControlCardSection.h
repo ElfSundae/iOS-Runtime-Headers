@@ -14,6 +14,7 @@
     }  _has;
     bool  _hasBottomPadding;
     bool  _hasTopPadding;
+    NSString * _playbackBundleIdentifier;
     NSString * _playbackRouteUniqueIdentifier;
     bool  _playbackRouteUniqueIdentifierIsEncrypted;
     NSArray * _punchoutOptions;
@@ -37,6 +38,7 @@
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic, retain) SFCard *nextCard;
 @property (nonatomic, copy) NSArray *parameterKeyPaths;
+@property (nonatomic, copy) NSString *playbackBundleIdentifier;
 @property (nonatomic, copy) NSString *playbackRouteUniqueIdentifier;
 @property (nonatomic) bool playbackRouteUniqueIdentifierIsEncrypted;
 @property (nonatomic, copy) NSArray *punchoutOptions;
@@ -66,6 +68,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProtobuf:(id)arg1;
 - (id)jsonData;
+- (id)playbackBundleIdentifier;
 - (id)playbackRouteUniqueIdentifier;
 - (bool)playbackRouteUniqueIdentifierIsEncrypted;
 - (id)punchoutOptions;
@@ -76,6 +79,7 @@
 - (void)setCanBeHidden:(bool)arg1;
 - (void)setHasBottomPadding:(bool)arg1;
 - (void)setHasTopPadding:(bool)arg1;
+- (void)setPlaybackBundleIdentifier:(id)arg1;
 - (void)setPlaybackRouteUniqueIdentifier:(id)arg1;
 - (void)setPlaybackRouteUniqueIdentifierIsEncrypted:(bool)arg1;
 - (void)setPunchoutOptions:(id)arg1;

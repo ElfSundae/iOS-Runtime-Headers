@@ -18,6 +18,7 @@
     NTPBAppSessionStartWatch * _appSessionStartWatch;
     NTPBAppleIdSignInResult * _appleidSignInResult;
     NTPBArticleEngagement * _articleEngagement;
+    NTPBArticleFeedback * _articleFeedback;
     NTPBArticleHostViewExposure * _articleHostViewExposure;
     NTPBArticleLikeDislike * _articleLikeDislike;
     NTPBArticleScroll * _articleScroll;
@@ -117,6 +118,7 @@
 @property (nonatomic, retain) NTPBAppSessionStartWatch *appSessionStartWatch;
 @property (nonatomic, retain) NTPBAppleIdSignInResult *appleidSignInResult;
 @property (nonatomic, retain) NTPBArticleEngagement *articleEngagement;
+@property (nonatomic, retain) NTPBArticleFeedback *articleFeedback;
 @property (nonatomic, retain) NTPBArticleHostViewExposure *articleHostViewExposure;
 @property (nonatomic, retain) NTPBArticleLikeDislike *articleLikeDislike;
 @property (nonatomic, retain) NTPBArticleScroll *articleScroll;
@@ -157,6 +159,7 @@
 @property (nonatomic, readonly) bool hasAppSessionStartWatch;
 @property (nonatomic, readonly) bool hasAppleidSignInResult;
 @property (nonatomic, readonly) bool hasArticleEngagement;
+@property (nonatomic, readonly) bool hasArticleFeedback;
 @property (nonatomic, readonly) bool hasArticleHostViewExposure;
 @property (nonatomic, readonly) bool hasArticleLikeDislike;
 @property (nonatomic, readonly) bool hasArticleScroll;
@@ -313,6 +316,7 @@
 - (id)appSessionStartWatch;
 - (id)appleidSignInResult;
 - (id)articleEngagement;
+- (id)articleFeedback;
 - (id)articleHostViewExposure;
 - (id)articleLikeDislike;
 - (id)articleScroll;
@@ -356,6 +360,7 @@
 - (bool)hasAppSessionStartWatch;
 - (bool)hasAppleidSignInResult;
 - (bool)hasArticleEngagement;
+- (bool)hasArticleFeedback;
 - (bool)hasArticleHostViewExposure;
 - (bool)hasArticleLikeDislike;
 - (bool)hasArticleScroll;
@@ -489,6 +494,7 @@
 - (void)setAppSessionStartWatch:(id)arg1;
 - (void)setAppleidSignInResult:(id)arg1;
 - (void)setArticleEngagement:(id)arg1;
+- (void)setArticleFeedback:(id)arg1;
 - (void)setArticleHostViewExposure:(id)arg1;
 - (void)setArticleLikeDislike:(id)arg1;
 - (void)setArticleScroll:(id)arg1;

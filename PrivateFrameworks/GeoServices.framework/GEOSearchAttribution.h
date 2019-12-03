@@ -4,6 +4,21 @@
 
 @interface GEOSearchAttribution : PBCodable <NSCopying> {
     NSMutableArray * _attributionURLs;
+    struct { 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_attributionURLs : 1; 
+        unsigned int read_sourceIdentifier : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_attributionURLs : 1; 
+        unsigned int wrote_sourceIdentifier : 1; 
+        unsigned int wrote_sourceVersion : 1; 
+    }  _flags;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     NSString * _sourceIdentifier;
     unsigned int  _sourceVersion;
     PBUnknownFields * _unknownFields;
@@ -15,20 +30,28 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 + (Class)attributionURLsType;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsAttributionURLs:(id)arg1;
+- (void)_readAttributionURLs;
+- (void)_readSourceIdentifier;
 - (void)addAttributionURLs:(id)arg1;
 - (id)attributionURLs;
 - (id)attributionURLsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)attributionURLsCount;
 - (void)clearAttributionURLs;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAttributionURLs:(id)arg1;
 - (void)setSourceIdentifier:(id)arg1;

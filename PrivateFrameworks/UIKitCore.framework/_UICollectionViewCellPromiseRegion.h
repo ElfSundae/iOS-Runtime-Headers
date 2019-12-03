@@ -7,6 +7,7 @@
     UICollectionViewLayoutAttributes * _layoutAttributes;
 }
 
+@property (nonatomic) bool areChildrenFocused;
 @property (nonatomic) UICollectionView *collectionView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

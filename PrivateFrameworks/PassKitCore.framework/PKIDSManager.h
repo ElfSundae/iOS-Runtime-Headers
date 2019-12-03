@@ -36,6 +36,7 @@
 
 - (void).cxx_destruct;
 - (void)_archiveDevicesToDisk;
+- (void)_createThumbnailCacheDirectory;
 - (id)_fetchPaymentInstrumentsForRequestingDevice:(id)arg1;
 - (void)_paymentCancellationReceived:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)_paymentClientUpdateReceived:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
@@ -48,7 +49,8 @@
 - (void)_paymentSetupRequestReceived:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)_populateDevicesIfNeeded;
 - (void)_postCTLMThrottleUncapNotification;
-- (id)_preparePaymentDeviceResponseForRequestingDevice:(id)arg1;
+- (id)_preparePaymentDeviceResponseForRequestingDevice:(id)arg1 userDisabled:(bool)arg2;
+- (void)_promptDetailsForVirtualCardRequestReceived:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)_queue_addThumbnailCompletionHandler:(id /* block */)arg1 forKey:(id)arg2;
 - (id)_queue_cancelRemotePaymentRequest:(id)arg1 completion:(id /* block */)arg2;
 - (bool)_queue_deviceIsRegistered:(id)arg1;
@@ -83,6 +85,7 @@
 - (id)paymentRequests;
 - (id)pendingCancellations;
 - (id)pendingDiscoveries;
+- (void)promptDetailsForVirtualCard:(id)arg1 showNotification:(bool)arg2 completion:(id /* block */)arg3;
 - (id)recentlySeenUUIDs;
 - (id)remoteDevices;
 - (void)removeDelegate:(id)arg1;

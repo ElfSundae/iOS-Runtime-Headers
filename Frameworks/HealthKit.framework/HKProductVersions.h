@@ -9,5 +9,6 @@
 + (id)dateOfManufactureForProductWithName:(id)arg1 error:(out id*)arg2;
 + (struct { long long x1; long long x2; long long x3; })semanticVersionForProductWithName:(id)arg1 error:(out id*)arg2;
 + (id)versionForProductWithName:(id)arg1 error:(out id*)arg2;
++ (id)yearOfReleaseForProductWithName:(id)arg1 error:(out id*)arg2;
 
 @end

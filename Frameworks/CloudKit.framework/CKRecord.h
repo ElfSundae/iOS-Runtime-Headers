@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
  */
 
-@interface CKRecord : NSObject <CKRecordKeyValueSetting, ICHasDatabaseScope, NSCopying, NSSecureCoding, PQLBindable, PQLValuable> {
+@interface CKRecord : NSObject <CKRecordKeyValueSetting, HMBModelObjectStorage, ICHasDatabaseScope, NSCopying, NSSecureCoding, PQLBindable, PQLValuable> {
     NSString * _baseToken;
     NSData * _chainParentPublicKeyID;
     CKEncryptedData * _chainPrivateKey;
@@ -52,6 +52,7 @@
 @property (nonatomic, readonly, copy) NSURL *URL;
 @property (nonatomic, readonly) unsigned long long assetCount;
 @property (nonatomic, readonly) unsigned long long assetDiskSize;
+@property (nonatomic, retain) NSString *basePunctuationGroup;
 @property (nonatomic, retain) NSString *baseToken;
 @property (nonatomic, readonly) NSData *brc_containerMetadataPropertiesData;
 @property (nonatomic, retain) NSData *chainParentPublicKeyID;
@@ -64,7 +65,6 @@
 @property (nonatomic, readonly) bool containsPackageValues;
 @property (nonatomic, copy) NSDate *creationDate;
 @property (nonatomic, copy) CKRecordID *creatorUserRecordID;
-@property (nonatomic, retain) NSData *data;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, copy) NSString *displayedHostname;
@@ -72,6 +72,7 @@
 @property (nonatomic, readonly) NSData *encryptedPublicSharingKey;
 @property (nonatomic, retain) CKEncryptedRecordValueStore *encryptedValueStore;
 @property (nonatomic, readonly) <CKRecordKeyValueSetting> *encryptedValuesByKey;
+@property (nonatomic, retain) NSArray *entries;
 @property (nonatomic, retain) NSString *etag;
 @property (nonatomic, retain) NSData *fc_secureSentinel_encryptionKey;
 @property (nonatomic) unsigned long long fc_secureSentinel_version;
@@ -80,8 +81,9 @@
 @property (nonatomic) bool fc_sentinel_finishedMigration;
 @property (nonatomic) unsigned long long fc_sentinel_version;
 @property (nonatomic, readonly) NSString *fullToken;
+@property (nonatomic, retain) NSUUID *groupUUID;
+@property (nonatomic, readonly) bool hasChainPCS;
 @property (nonatomic, readonly) bool hasEncryptedData;
-@property (nonatomic) bool hasLargeDataAsset;
 @property (nonatomic, readonly) bool hasModifiedEncryptedData;
 @property (nonatomic, readonly) bool hasModifiedPropertiesRequiringEncryption;
 @property (nonatomic, readonly) bool hasPropertiesRequiringDecryption;
@@ -90,7 +92,6 @@
 @property (nonatomic) bool hasUpdatedShare;
 @property (readonly) unsigned long long hash;
 @property (getter=isKnownToServer, nonatomic) bool knownToServer;
-@property (nonatomic, retain) CKAsset *largeDataAsset;
 @property (nonatomic, copy) CKRecordID *lastModifiedUserRecordID;
 @property (nonatomic, copy) NSDate *modificationDate;
 @property (nonatomic, copy) NSString *modifiedByDevice;
@@ -98,6 +99,7 @@
 @property (nonatomic, retain) CKEncryptedData *mutableEncryptedPublicSharingKey;
 @property (nonatomic, retain) NSData *mutableEncryptedPublicSharingKeyData;
 @property (nonatomic, copy) NSURL *mutableURL;
+@property (nonatomic, retain) NSString *name;
 @property (nonatomic, readonly) NSDictionary *originalValues;
 @property (nonatomic, copy) CKReference *parent;
 @property (nonatomic, retain) NSData *pcsKeyID;
@@ -110,11 +112,14 @@
 @property (nonatomic, readonly) NSString *privateToken;
 @property (nonatomic, retain) NSData *protectionData;
 @property (nonatomic, retain) NSString *protectionEtag;
+@property (nonatomic, retain) NSString *punctuation;
 @property (nonatomic, readonly, copy) NSString *recordChangeTag;
 @property (nonatomic, copy) CKRecordID *recordID;
 @property (nonatomic) struct _OpaquePCSShareProtection { }*recordPCS;
 @property (nonatomic, copy) NSString *recordType;
+@property (nonatomic, retain) NSString *replacement;
 @property (nonatomic, retain) NSString *routingKey;
+@property (nonatomic, retain) NSString *rule;
 @property (nonatomic) bool serializeProtectionData;
 @property (nonatomic, copy) CKReference *share;
 @property (nonatomic, retain) NSString *shareEtag;
@@ -127,6 +132,7 @@
 @property (nonatomic) bool trackChanges;
 @property (nonatomic, readonly) NSURL *uncachedURL;
 @property (nonatomic) bool useLightweightPCS;
+@property (nonatomic, retain) NSString *uuid;
 @property (nonatomic, retain) CKRecordValueStore *valueStore;
 @property (nonatomic, readonly) NSDictionary *values;
 @property (nonatomic, readonly) <CKRecordKeyValueSetting> *valuesByKey;
@@ -143,6 +149,10 @@
 + (id)decryptFullToken:(id)arg1 shortSharingTokenData:(id)arg2;
 + (id)encryptFullToken:(id)arg1 shortSharingTokenData:(id)arg2;
 + (id)fullTokenFromBaseToken:(id)arg1 privateToken:(id)arg2;
++ (id)keyForAppendingToListField:(id)arg1;
++ (id)keyForFetchingItems:(unsigned long long)arg1 atEndOfListField:(id)arg2;
++ (id)keyForInsertingIntoListField:(id)arg1 atIndex:(long long)arg2;
++ (id)keyForListField:(id)arg1 withIndexRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 + (id)recordWithDuplicatedPackagesOfRecord:(id)arg1 error:(id*)arg2;
 + (id)shareURLWithShortToken:(id)arg1 shareTitle:(id)arg2 shareType:(id)arg3 containerID:(id)arg4 displayedHostname:(id)arg5;
 + (bool)supportsSecureCoding;
@@ -165,6 +175,7 @@
 - (unsigned long long)assetCount;
 - (unsigned long long)assetDiskSize;
 - (id)baseToken;
+- (bool)canHostServerURLInfo;
 - (id)chainParentPublicKeyID;
 - (id)chainPrivateKey;
 - (id)chainProtectionInfo;
@@ -191,6 +202,7 @@
 - (id)encryptedValuesByKey;
 - (id)etag;
 - (id)fullToken;
+- (bool)hasChainPCS;
 - (bool)hasEncryptedData;
 - (bool)hasModifiedEncryptedData;
 - (bool)hasModifiedPropertiesRequiringEncryption;
@@ -277,6 +289,7 @@
 - (void)setSerializeProtectionData:(bool)arg1;
 - (void)setShare:(id)arg1;
 - (void)setShareEtag:(id)arg1;
+- (void)setStreamingAssetRequestOptions:(id)arg1;
 - (void)setTombstonedPublicKeyIDs:(id)arg1;
 - (void)setTrackChanges:(bool)arg1;
 - (void)setUseLightweightPCS:(bool)arg1;
@@ -308,15 +321,25 @@
 - (id)zoneProtectionEtag;
 - (id)zoneishKeyID;
 
-// Image: /System/Library/PrivateFrameworks/Accessibility.framework/Frameworks/AXHearingSupport.framework/AXHearingSupport
+// Image: /System/Library/PrivateFrameworks/AccessibilitySharedSupport.framework/AccessibilitySharedSupport
 
-- (id)data;
-- (bool)hasLargeDataAsset;
-- (id)largeDataAsset;
-- (void)setData:(id)arg1;
-- (void)setHasLargeDataAsset:(bool)arg1;
-- (void)setLargeDataAsset:(id)arg1;
+- (id)basePunctuationGroup;
+- (id)entries;
+- (id)groupUUID;
+- (id)name;
+- (id)punctuation;
+- (id)replacement;
+- (id)rule;
+- (void)setBasePunctuationGroup:(id)arg1;
+- (void)setEntries:(id)arg1;
+- (void)setGroupUUID:(id)arg1;
+- (void)setName:(id)arg1;
+- (void)setPunctuation:(id)arg1;
+- (void)setReplacement:(id)arg1;
+- (void)setRule:(id)arg1;
+- (void)setUuid:(id)arg1;
 - (void)setVersion:(id)arg1;
+- (id)uuid;
 - (id)version;
 
 // Image: /System/Library/PrivateFrameworks/CloudDocsDaemon.framework/CloudDocsDaemon
@@ -370,6 +393,18 @@
 - (void)fillOutPCSMetadataInfo;
 - (struct _OpaquePCSShareProtection { }*)recordPCS;
 - (void)setRecordPCS:(struct _OpaquePCSShareProtection { }*)arg1;
+
+// Image: /System/Library/PrivateFrameworks/HomeKitBackingStore.framework/HomeKitBackingStore
+
++ (id)hmbDecodeData:(id)arg1 fromStorageLocation:(unsigned long long)arg2 error:(id*)arg3;
++ (id)recordFromExternalData:(id)arg1 error:(id*)arg2;
+
+- (id)externalData:(id*)arg1;
+- (id)externalID:(id*)arg1;
+- (id)hmbDescription;
+- (id)hmbEncodeForStorageLocation:(unsigned long long)arg1 error:(id*)arg2;
+- (id)hmbObjectForKey:(id)arg1 encrypted:(bool)arg2;
+- (void)hmbSetObject:(id)arg1 forKey:(id)arg2 encrypted:(bool)arg3;
 
 // Image: /System/Library/PrivateFrameworks/IMDaemonCore.framework/IMDaemonCore
 
@@ -426,7 +461,7 @@
 - (id)pk_decimalNumberForKey:(id)arg1;
 - (id)pk_description;
 - (id)pk_dictionaryForKey:(id)arg1;
-- (id)pk_encryptedArrayForKey:(id)arg1;
+- (id)pk_encryptedArrayOfClasses:(id)arg1 forKey:(id)arg2;
 - (bool)pk_encryptedBoolForKey:(id)arg1;
 - (id)pk_encryptedDataForKey:(id)arg1;
 - (id)pk_encryptedDateForKey:(id)arg1;
@@ -453,17 +488,6 @@
 - (unsigned long long)pk_unsignedIntegerForKey:(id)arg1;
 - (id)pk_urlForKey:(id)arg1;
 
-// Image: /System/Library/PrivateFrameworks/RTTUtilities.framework/RTTUtilities
-
-- (id)data;
-- (bool)hasLargeDataAsset;
-- (id)largeDataAsset;
-- (void)setData:(id)arg1;
-- (void)setHasLargeDataAsset:(bool)arg1;
-- (void)setLargeDataAsset:(id)arg1;
-- (void)setVersion:(id)arg1;
-- (id)version;
-
 // Image: /System/Library/PrivateFrameworks/SafariCore.framework/SafariCore
 
 - (id)safari_arrayForKey:(id)arg1;
@@ -477,11 +501,6 @@
 
 // Image: /System/Library/PrivateFrameworks/VoiceShortcuts.framework/VoiceShortcuts
 
-- (id)dictionaryRepresentation;
-- (id)initWithDictionary:(id)arg1 zoneID:(id)arg2 systemFieldsData:(id)arg3;
-- (id)initWithVoiceShortcut:(id)arg1 zoneID:(id)arg2 systemFieldsData:(id)arg3;
-- (id)keysOfEncryptedProperties;
-- (id)systemFieldsData;
-- (id)voiceShortcutIdentifier;
+- (id)wf_decryptedStringForKey:(id)arg1;
 
 @end

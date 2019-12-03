@@ -6,11 +6,8 @@
     VNImageSpecifier * _targetedImageSpecifier;
 }
 
-+ (id)optionNameForTargetedImageSpecifyingObject;
-
 - (void).cxx_destruct;
 - (bool)allowsCachingOfResults;
-- (id)initWithName:(id)arg1 options:(id)arg2 completionHandler:(id /* block */)arg3;
 - (id)initWithTargetedCGImage:(struct CGImage { }*)arg1;
 - (id)initWithTargetedCGImage:(struct CGImage { }*)arg1 completionHandler:(id /* block */)arg2;
 - (id)initWithTargetedCGImage:(struct CGImage { }*)arg1 options:(id)arg2;

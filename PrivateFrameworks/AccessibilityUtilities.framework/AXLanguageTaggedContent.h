@@ -3,12 +3,13 @@
  */
 
 @interface AXLanguageTaggedContent : NSObject {
-    NSString * _contentString;
+    NSMutableString * _contentString;
     struct _NSRange { 
         unsigned long long location; 
         unsigned long long length; 
     }  _currentChunk;
     NSArray * _currentDialects;
+    void * _nlTagger;
     bool  _predictedByTagger;
     NSMutableOrderedSet * _predictedSecondaryLangMaps;
     bool  _tagged;
@@ -18,7 +19,7 @@
 }
 
 @property (nonatomic, readonly) NSString *content;
-@property (nonatomic, copy) NSString *contentString;
+@property (nonatomic, retain) NSMutableString *contentString;
 @property (nonatomic, retain) NSArray *currentDialects;
 @property (nonatomic, retain) NSMutableOrderedSet *predictedSecondaryLangMaps;
 @property (getter=isTagged, nonatomic) bool tagged;
@@ -28,15 +29,19 @@
 
 - (void).cxx_destruct;
 - (bool)_addLanguageTagForCurrentChunk;
+- (bool)_addLanguageTagForDateIfNecessary;
 - (void)_addTag;
 - (id)_allLangIDs;
 - (bool)_isStringCombinationOfCommonAndEmoji:(id)arg1;
 - (struct { int x1; float x2; }*)_languageHintsEvenlyDistributedWithProbability:(float)arg1 excludingHints:(id)arg2;
 - (void)_manuallyProcessContentWithRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
+- (id)_overrideLanguageDetection:(id)arg1;
 - (id)ambiguousLangMaps;
+- (void)appendLanguageTaggedContent:(id)arg1;
 - (id)content;
 - (id)contentString;
 - (id)currentDialects;
+- (void)dealloc;
 - (id)description;
 - (void)enumeratePredictedTags:(id /* block */)arg1;
 - (void)enumerateUnpredictedTags:(id /* block */)arg1;

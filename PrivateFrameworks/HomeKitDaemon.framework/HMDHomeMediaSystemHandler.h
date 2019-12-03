@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
  */
 
-@interface HMDHomeMediaSystemHandler : NSObject <HMDHomeMessageReceiver, HMFLogging, NSSecureCoding> {
+@interface HMDHomeMediaSystemHandler : NSObject <HMDDevicePreferenceDataSource, HMDHomeMessageReceiver, HMFLogging, NSSecureCoding> {
     HMDHome * _home;
     NSMutableArray * _mediaSystems;
     HMFMessageDispatcher * _msgDispatcher;
@@ -21,7 +21,6 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *workQueue;
 
-+ (id)checkToHandleMessage:(id)arg1 home:(id)arg2;
 + (bool)hasMessageReceiverChildren;
 + (id)logCategory;
 + (id)preProcessMediaSystemMessage:(id)arg1 home:(id)arg2;
@@ -57,6 +56,7 @@
 - (void)setMediaSystems:(id)arg1;
 - (void)setMsgDispatcher:(id)arg1;
 - (void)setWorkQueue:(id)arg1;
+- (bool)supportsDeviceWithCapabilities:(id)arg1;
 - (id)workQueue;
 
 @end

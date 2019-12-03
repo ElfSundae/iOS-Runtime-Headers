@@ -9,11 +9,11 @@
     PKAccountAutomaticPaymentsController * _controller;
     NSDate * _date;
     unsigned long long  _featureIdentifier;
-    long long  _frequencyDay;
     PKMonthDayCollectionViewController * _monthDayCollectionViewController;
     NSNumberFormatter * _ordinalDayNumberFormatter;
     NSCalendar * _productCalendar;
     NSTimeZone * _productTimeZone;
+    long long  _scheduledDay;
     NSIndexPath * _selectedIndexPath;
     PKTableHeaderView * _tableHeaderView;
     bool  _useOrdinalDay;
@@ -30,6 +30,7 @@
 - (long long)_frequency;
 - (void)_handleNext:(id)arg1;
 - (void)_handlePresentPayment;
+- (void)_performPresentPayment;
 - (bool)_shouldShowCollectionView;
 - (void)_updateNextButtonEnabledIfNecessary;
 - (void)addBankAccountInformationViewController:(id)arg1 didAddFundingSource:(id)arg2;
@@ -47,5 +48,6 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (void)viewDidLoad;
+- (void)viewWillLayoutSubviews;
 
 @end

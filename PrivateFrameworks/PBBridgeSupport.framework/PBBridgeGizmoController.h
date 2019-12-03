@@ -38,7 +38,6 @@
 @property (nonatomic, copy) id /* block */ updateLanguageCompletion;
 @property (nonatomic, copy) id /* block */ updateRegionCompletion;
 
-+ (id)licensePathForAppleLanguages:(id)arg1;
 + (id)prepareOfflineTermsResponse:(id)arg1;
 + (id)warrantyFilePathForLanguageCode:(id)arg1 countryCode:(id)arg2;
 
@@ -56,6 +55,7 @@
 - (void)companionBecameAvailableWantsConfirmation:(id)arg1;
 - (void)companionDidSendLanguageAndLocale:(id)arg1;
 - (void)companionDidSendWirelessCredentials:(id)arg1;
+- (void)companionTermsResponse:(id)arg1;
 - (id)customDescriptionOfMessageType:(unsigned short)arg1;
 - (id)delegate;
 - (void)doInitialSyncPrep:(id)arg1;
@@ -63,13 +63,16 @@
 - (void)enableSiriForGizmoWithCompletion:(id /* block */)arg1;
 - (void)enabledSiri:(id)arg1;
 - (void)endSetupTransaction;
+- (void)fetchTermsAndConditions:(id)arg1;
 - (bool)getActivationDataAndHeadersForRequest:(id)arg1 withCompletion:(id /* block */)arg2;
 - (bool)getActivationDataForRequest:(id)arg1 withCompletion:(id /* block */)arg2;
 - (bool)getSessionDataForRequest:(id)arg1 withCompletion:(id /* block */)arg2;
 - (void)getSiriStateWithCompletion:(id /* block */)arg1;
 - (void)gotSiriState:(id)arg1;
 - (void)handleActivationData:(id)arg1;
+- (void)handleBuysOnWatchIngestion:(id)arg1;
 - (void)handleOfflineTermsRequest:(id)arg1;
+- (void)handleRenameDeviceRequest:(id)arg1;
 - (void)handleWarrantySentinelRequest:(id)arg1;
 - (id)init;
 - (id)internalLastSendMessageID;
@@ -95,12 +98,14 @@
 - (void)setCompanionRegion:(id)arg1;
 - (void)setCrownOrientationRight:(id)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setDeviceName:(id)arg1;
 - (void)setDiagnosticsEnabled:(id)arg1;
 - (void)setEnableSiriCompletion:(id /* block */)arg1;
 - (void)setInternalLastSendMessageID:(id)arg1;
 - (void)setLocationEnabled:(id)arg1;
 - (void)setPasscodeRestrictions:(id)arg1;
 - (void)setSessionCompletion:(id /* block */)arg1;
+- (void)setSiriEnabled:(id)arg1;
 - (void)setSiriStateCompletion:(id /* block */)arg1;
 - (void)setUpdateLanguageCompletion:(id /* block */)arg1;
 - (void)setUpdateRegionCompletion:(id /* block */)arg1;
@@ -112,6 +117,7 @@
 - (bool)tellCompanionGizmoFinishedActivating;
 - (bool)tellCompanionGizmoFinishedActivatingAsDeKOTA;
 - (void)tellCompanionThatGizmoFailedToCreatePasscode:(int)arg1;
+- (void)tellCompanionThatGizmoFinishedChangingPasscode:(bool)arg1 isLong:(bool)arg2;
 - (void)tellCompanionThatGizmoFinishedSettingPasscode:(bool)arg1 isLong:(bool)arg2;
 - (void)tellCompanionThatGizmoFinishedUnlockPairing:(bool)arg1;
 - (void)tellCompanionThatGizmoStartedUnlockPairing;

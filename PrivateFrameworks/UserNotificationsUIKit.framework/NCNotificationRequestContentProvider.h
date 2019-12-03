@@ -22,8 +22,8 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSArray *icons;
 @property (nonatomic, readonly) NSArray *interfaceActions;
-@property (nonatomic, readonly) unsigned long long messageNumberOfLines;
 @property (nonatomic, retain) NCNotificationRequest *notificationRequest;
+@property (getter=isNumberOfLinesInfinite, nonatomic, readonly) bool numberOfLinesInfinite;
 @property (nonatomic, copy) NSArray *overriddenActions;
 @property (nonatomic, readonly, copy) NSString *primarySubtitleText;
 @property (nonatomic, readonly, copy) NSString *primaryText;
@@ -51,7 +51,7 @@
 - (id)initWithNotificationRequest:(id)arg1;
 - (id)interfaceActions;
 - (bool)isDateAllDay;
-- (unsigned long long)messageNumberOfLines;
+- (bool)isNumberOfLinesInfinite;
 - (id)notificationRequest;
 - (id)overriddenActions;
 - (id)primarySubtitleText;

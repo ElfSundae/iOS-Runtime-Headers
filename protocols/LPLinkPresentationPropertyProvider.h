@@ -5,12 +5,15 @@
 
 @optional
 
+- (NSArray *)alternateImages;
+- (LPAudio *)audio;
 - (UIColor *)backgroundColor;
 - (NSString *)bottomCaption;
 - (LPCaptionBarPresentationProperties *)captionBar;
-- (LPiTunesPlaybackInformation *)iTunesPlaybackInformation;
 - (LPImage *)icon;
 - (LPImage *)image;
+- (LPImagePresentationProperties *)imageProperties;
+- (LPInlineMediaPlaybackInformation *)inlinePlaybackInformation;
 - (bool)isPreliminary;
 - (NSString *)mediaBottomCaption;
 - (LPCaptionBarPresentationProperties *)mediaBottomCaptionBar;

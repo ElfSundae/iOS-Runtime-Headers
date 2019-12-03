@@ -16,8 +16,6 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) QLItemURLThumbnailGenerator *urlGenerator;
 
-+ (bool)hasThirdPartyThumbnailGeneratorForItem:(id)arg1;
-
 - (void).cxx_destruct;
 - (id)_fetcherClassesForPreviewItem:(id)arg1;
 - (id)dataGenerator;

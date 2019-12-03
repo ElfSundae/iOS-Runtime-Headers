@@ -3,6 +3,7 @@
  */
 
 @interface UIWebTouchEventsGestureRecognizer : UIGestureRecognizer {
+    NSMapTable * _activeTouchesByIdentifier;
     bool  _defaultPrevented;
     bool  _dispatchingTouchEvents;
     bool  _isPotentialTap;
@@ -29,9 +30,11 @@
     bool  _passedHitTest;
     SEL  _touchAction;
     id  _touchTarget;
+    bool  _wasExplicitlyCancelled;
     <UIWebTouchEventsGestureRecognizerDelegate> * _webTouchDelegate;
 }
 
+@property (nonatomic, readonly) NSMapTable *activeTouchesByIdentifier;
 @property (getter=isDefaultPrevented, nonatomic) bool defaultPrevented;
 @property (getter=isDispatchingTouchEvents, nonatomic, readonly) bool dispatchingTouchEvents;
 @property (nonatomic, readonly) bool inJavaScriptGesture;
@@ -50,9 +53,12 @@
 - (void).cxx_destruct;
 - (void)_processTouches:(id)arg1 withEvent:(id)arg2 type:(int)arg3;
 - (void)_recordTouches:(id)arg1 type:(int)arg2;
+- (void)_resetGestureRecognizer;
 - (void)_updateTapStateWithTouches:(id)arg1;
 - (void)_updateTapStateWithTouches:(id)arg1 type:(int)arg2;
+- (id)activeTouchesByIdentifier;
 - (bool)canBePreventedByGestureRecognizer:(id)arg1;
+- (void)cancel;
 - (void)dealloc;
 - (bool)inJavaScriptGesture;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2 touchDelegate:(id)arg3;
@@ -60,6 +66,7 @@
 - (bool)isDispatchingTouchEvents;
 - (const struct _UIWebTouchEvent { int x1; double x2; struct CGPoint { double x_3_1_1; double x_3_1_2; } x3; struct CGPoint { double x_4_1_1; double x_4_1_2; } x4; double x5; double x6; bool x7; struct _UIWebTouchPoint {} *x8; unsigned int x9; bool x10; }*)lastTouchEvent;
 - (struct CGPoint { double x1; double x2; })locationInWindow;
+- (void)performAction;
 - (void)reset;
 - (double)rotation;
 - (double)scale;

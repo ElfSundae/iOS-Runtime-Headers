@@ -12,10 +12,12 @@
 
 + (id)ActivityEmoji;
 + (id)CelebrationEmoji;
++ (id)CoupleMultiSkinToneEmoji;
 + (id)DingbatsVariantEmoji;
 + (id)FlagsEmoji;
 + (id)FoodAndDrinkEmoji;
 + (id)GenderEmoji;
++ (id)MultiPersonFamilySkinToneEmoji;
 + (id)NatureEmoji;
 + (id)NewlyAddedEmoji;
 + (id)NoneVariantEmoji;
@@ -23,14 +25,18 @@
 + (id)PeopleEmoji;
 + (id)PrepopulatedEmoji;
 + (id)ProfessionEmoji;
++ (id)ProfessionWithoutSkinToneEmoji;
 + (id)SkinToneEmoji;
 + (id)SymbolsEmoji;
 + (id)TravelAndPlacesEmoji;
 + (id)_baseLocalizationKeyForIdentifier:(id)arg1;
 + (id)_emojiSetForIdentifier:(id)arg1;
++ (bool)_isComposedCoupleMultiSkinToneEmoji:(id)arg1;
++ (bool)_isCoupleMultiSkinToneEmoji:(id)arg1;
 + (bool)_isDingbatsVariantEmoji:(id)arg1;
 + (bool)_isFlagEmoji:(id)arg1;
 + (bool)_isGenderEmoji:(id)arg1;
++ (bool)_isMultiPersonFamilySkinToneEmoji:(id)arg1;
 + (bool)_isNewlyAddedEmoji:(id)arg1;
 + (bool)_isNoneVariantEmoji:(id)arg1;
 + (bool)_isProfessionEmoji:(id)arg1;
@@ -43,9 +49,7 @@
 + (void)insertToSortedCountries:(id)arg1 withAdditionalFlags:(id)arg2;
 + (id)insertionFlagsForCountryCodes:(id)arg1 inSortedCountryCodes:(id)arg2;
 + (id)localizedRecentsDescription;
-+ (id)localizedRecentsDescriptionForLocale:(id)arg1;
 + (id)localizedSkinToneEmojiDescription;
-+ (id)localizedSkinToneEmojiDescriptionForLocale:(id)arg1;
 + (id)stringToRegionalIndicatorString:(id)arg1;
 
 - (void).cxx_destruct;
@@ -54,8 +58,6 @@
 - (id)identifier;
 - (id)initWithIdentifier:(id)arg1;
 - (id)localizedName;
-- (id)localizedNameForLocale:(id)arg1;
 - (id)shortLocalizedName;
-- (id)shortLocalizedNameForLocale:(id)arg1;
 
 @end

@@ -24,8 +24,10 @@
     NTKKaleidoscopePathfinder * _userPathfinder;
     NTKPhoto * _userPhoto;
     UIImage * _userSwatch;
-    CLKUITexture * _userTexture;
-    NSString * _userUuid;
+    CLKUITexture * _userTextureChroma;
+    CLKUITexture * _userTextureLuma;
+    NSString * _userUuidChroma;
+    NSString * _userUuidLuma;
 }
 
 @property (nonatomic) unsigned long long currentAsset;
@@ -49,18 +51,18 @@
 - (long long)_complicationPickerStyleForSlot:(id)arg1;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
-- (void)_configureReusableTimeView:(id)arg1;
+- (void)_configureTimeView:(id)arg1;
 - (double)_contentAlphaForEditMode:(long long)arg1;
 - (struct CGPoint { double x1; double x2; })_contentCenterOffset;
 - (double)_contentScaleForEditMode:(long long)arg1;
 - (float)_crownTurnsForStyle:(unsigned long long)arg1;
 - (void)_curvedComplicationCircleRadius:(double*)arg1 centerAngle:(double*)arg2 maxAngularWidth:(double*)arg3 circleCenter:(struct CGPoint { double x1; double x2; }*)arg4 interior:(bool*)arg5 forSlot:(id)arg6;
-- (id)_curvedPickerMaskForSlot:(id)arg1;
 - (void)_disableCrown;
-- (id)_editOptionThatHidesAllComplications;
 - (void)_enableCrown;
+- (void)_enumerateQuadViewsWithBlock:(id /* block */)arg1;
 - (double)_handAlphaForEditMode:(long long)arg1;
 - (id)_imageForAsset:(unsigned long long)arg1;
+- (bool)_isEditOptionFullscreen:(id)arg1;
 - (double)_kaleidoscopeTimeForAsset:(unsigned long long)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
@@ -75,16 +77,18 @@
 - (void)_loadSnapshotContentViews;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
 - (id)_pathfinderForAsset:(unsigned long long)arg1;
+- (id)_pickerMaskForSlot:(id)arg1;
 - (void)_prepareForEditing;
 - (id)_quadWithStyle:(unsigned long long)arg1 asset:(unsigned long long)arg2;
-- (void)_renderSynchronouslyWithImageQueueDiscard:(bool)arg1;
+- (void)_renderSynchronouslyWithImageQueueDiscard:(bool)arg1 inGroup:(id)arg2;
 - (bool)_slotSupportsCurvedText:(id)arg1;
 - (id)_snapshotWithAsset:(unsigned long long)arg1 style:(unsigned long long)arg2 size:(struct CGSize { double x1; double x2; })arg3;
 - (bool)_supportsUnadornedSnapshot;
 - (id)_swatchForAsset:(unsigned long long)arg1;
 - (id)_swatchFromUserImage;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
-- (id)_textureForAsset:(unsigned long long)arg1;
+- (id)_textureChromaForAsset:(unsigned long long)arg1;
+- (id)_textureLumaForAsset:(unsigned long long)arg1;
 - (void)_unloadSnapshotContentViews;
 - (void)_updateComplications;
 - (void)_updateDayDuration;
@@ -95,6 +99,7 @@
 - (void)_updateUserContent;
 - (void)_updateWithAsset:(unsigned long long)arg1;
 - (double)_verticalPaddingForStatusBar;
+- (bool)_wantsConstantSpeedZoom;
 - (unsigned long long)currentAsset;
 - (unsigned long long)currentStyle;
 - (void)dealloc;

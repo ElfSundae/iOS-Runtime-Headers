@@ -10,10 +10,12 @@
 
 + (id)accountChanged;
 + (id)appDidBecomeActive;
++ (id)appRefresh;
 + (id)clearPlayHistory;
 + (id)entitlements;
 + (id)favorites;
 + (id)locationAuthorizationChanged;
++ (id)locationRetrieved;
 + (id)playActivity;
 + (id)playHistoryUpdated;
 + (id)postPlay;

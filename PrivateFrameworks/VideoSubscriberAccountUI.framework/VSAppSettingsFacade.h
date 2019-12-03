@@ -3,9 +3,11 @@
  */
 
 @interface VSAppSettingsFacade : NSObject {
+    NSArray * _availableApps;
     NSOperation * _currentPresentationOperation;
     NSArray * _decidedApps;
     NSArray * _featuredAdamIDs;
+    bool  _hasChannelApps;
     VSIdentityProvider * _identityProvider;
     VSOptional * _identityProviderID;
     NSArray * _knownAppBundles;
@@ -18,12 +20,13 @@
     VSRestrictionsCenter * _restrictionsCenter;
     VSPersistentStorage * _storage;
     NSArray * _unredeemedVouchers;
-    NSArray * _voucherApps;
 }
 
+@property (nonatomic, copy) NSArray *availableApps;
 @property (nonatomic, retain) NSOperation *currentPresentationOperation;
 @property (nonatomic, copy) NSArray *decidedApps;
 @property (nonatomic, copy) NSArray *featuredAdamIDs;
+@property (nonatomic) bool hasChannelApps;
 @property (nonatomic, retain) VSIdentityProvider *identityProvider;
 @property (nonatomic, copy) VSOptional *identityProviderID;
 @property (nonatomic, copy) NSArray *knownAppBundles;
@@ -36,17 +39,18 @@
 @property (nonatomic, retain) VSRestrictionsCenter *restrictionsCenter;
 @property (nonatomic, retain) VSPersistentStorage *storage;
 @property (nonatomic, copy) NSArray *unredeemedVouchers;
-@property (nonatomic, copy) NSArray *voucherApps;
 
 - (void).cxx_destruct;
 - (id)_fetchOperationForAdamIDs:(id)arg1;
 - (void)_setNeedsUpdateApps;
 - (void)_updateApps;
 - (id)autorelease;
+- (id)availableApps;
 - (id)currentPresentationOperation;
 - (void)dealloc;
 - (id)decidedApps;
 - (id)featuredAdamIDs;
+- (bool)hasChannelApps;
 - (id)identityProvider;
 - (id)identityProviderID;
 - (id)init;
@@ -62,9 +66,11 @@
 - (oneway void)release;
 - (id)restrictionsCenter;
 - (id)retain;
+- (void)setAvailableApps:(id)arg1;
 - (void)setCurrentPresentationOperation:(id)arg1;
 - (void)setDecidedApps:(id)arg1;
 - (void)setFeaturedAdamIDs:(id)arg1;
+- (void)setHasChannelApps:(bool)arg1;
 - (void)setIdentityProvider:(id)arg1;
 - (void)setIdentityProviderID:(id)arg1;
 - (void)setKnownAppBundles:(id)arg1;
@@ -77,11 +83,9 @@
 - (void)setRestrictionsCenter:(id)arg1;
 - (void)setStorage:(id)arg1;
 - (void)setUnredeemedVouchers:(id)arg1;
-- (void)setVoucherApps:(id)arg1;
 - (bool)shouldShowMVPDAppInstallPrompt;
 - (bool)shouldShowMVPDAppInstallPromptFromViewController:(id)arg1;
 - (id)storage;
 - (id)unredeemedVouchers;
-- (id)voucherApps;
 
 @end

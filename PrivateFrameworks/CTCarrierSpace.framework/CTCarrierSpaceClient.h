@@ -37,6 +37,7 @@
 - (void)fetchPlansInfo:(bool)arg1 completion:(id /* block */)arg2;
 - (void)fetchUsageInfo:(id /* block */)arg1;
 - (void)fetchUsageInfo:(bool)arg1 completion:(id /* block */)arg2;
+- (void)getAuthenticationContext:(id /* block */)arg1;
 - (void)getCapabilities:(id /* block */)arg1;
 - (void)getUserConsentFlowInfo:(id /* block */)arg1;
 - (id)init;
@@ -44,6 +45,7 @@
 - (id)initWithQueue:(struct dispatch_queue_s { }*)arg1 andListenerEndpoint:(id)arg2;
 - (void)invalidate;
 - (void)ping:(id /* block */)arg1;
+- (void)purchasePlan:(id)arg1 authInfo:(id)arg2 completion:(id /* block */)arg3;
 - (void)purchasePlan:(id)arg1 completion:(id /* block */)arg2;
 - (void)refreshAllInfo:(id /* block */)arg1;
 - (void)refreshAppsInfo:(id /* block */)arg1;

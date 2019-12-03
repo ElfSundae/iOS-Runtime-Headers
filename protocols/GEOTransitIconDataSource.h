@@ -5,7 +5,7 @@
 
 @required
 
-- (long long)iconType;
+- (int)iconType;
 
 @optional
 

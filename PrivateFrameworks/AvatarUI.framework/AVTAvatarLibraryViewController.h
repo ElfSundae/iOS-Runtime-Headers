@@ -47,7 +47,7 @@
 - (id)longPressGesture;
 - (id)model;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
-- (void)presentUIViewController:(id)arg1;
+- (void)presentUIViewController:(id)arg1 forItem:(id)arg2;
 - (void)presetEditorViewController:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)updateVisibleHeaders;

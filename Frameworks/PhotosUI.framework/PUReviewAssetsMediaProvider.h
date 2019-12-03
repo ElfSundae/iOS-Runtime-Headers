@@ -5,7 +5,7 @@
 @interface PUReviewAssetsMediaProvider : PUEditableMediaProvider {
     PHConcurrentMapTable * __mediaRequests;
     double  __screenScale;
-    int  _nextRequestIdentifier;
+    _Atomic int  _nextRequestIdentifier;
 }
 
 @property (nonatomic, readonly) PHConcurrentMapTable *_mediaRequests;

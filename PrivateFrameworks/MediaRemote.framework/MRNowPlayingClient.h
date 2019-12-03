@@ -6,7 +6,6 @@
     _MRNowPlayingPlayerProtobuf * _activePlayer;
     NSMutableArray * _playerClients;
     _MRNowPlayingPlayerPathProtobuf * _playerPath;
-    NSObject<OS_dispatch_queue> * _serialQueue;
 }
 
 @property (nonatomic, readonly) _MRNowPlayingPlayerPathProtobuf *activePlayerPath;

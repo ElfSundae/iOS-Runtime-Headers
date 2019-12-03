@@ -16,7 +16,11 @@
     NSMutableDictionary * _featureSupportedLangaugeCache;
     bool  _ignoreProvisioningEnablementPercentage;
     NSString * _lastUpdatedTag;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _lock_context;
     bool  _messageServiceDisabled;
+    NSString * _nextPushToken;
     NSString * _primaryRegionIdentifier;
     NSString * _pushToken;
     NSObject<OS_dispatch_queue> * _queue;
@@ -36,9 +40,12 @@
 @property long long consistencyCheckBackoffLevel;
 @property bool devSigned;
 @property (copy) NSString *deviceID;
+@property (nonatomic, readonly) bool hasPeerPaymentAccount;
 @property bool ignoreProvisioningEnablementPercentage;
 @property (copy) NSString *lastUpdatedTag;
 @property bool messageServiceDisabled;
+@property (copy) NSString *nextPushToken;
+@property (nonatomic, readonly) NSURL *peerPaymentServiceURL;
 @property (readonly) PKPaymentWebServiceRegion *primaryRegion;
 @property (copy) NSString *primaryRegionIdentifier;
 @property (copy) NSString *pushToken;
@@ -46,8 +53,9 @@
 @property (copy) NSDate *registrationDate;
 @property (copy) NSString *secureElementID;
 @property bool transactionServiceDisabled;
-@property (retain) NSMutableDictionary *verificationRequestsByPassUniqueID;
 @property long long version;
+
+// Image: /System/Library/PrivateFrameworks/PassKitCore.framework/PassKitCore
 
 + (void)_migrateContext:(id)arg1;
 + (void)_migrateFrom0To1:(id)arg1;
@@ -59,10 +67,11 @@
 - (id)TSMURLStringByPushTopic;
 - (double)_contextProvisioningEnablementValue;
 - (void)_localizationUpdated;
+- (id)_regionWithPeerPaymentServiceURL;
 - (void)addVerificationRequestRecord:(id)arg1 forUniqueID:(id)arg2;
 - (id)applyServiceFeaturesForRegionMeetingEnablementThreshold:(id)arg1;
-- (id)applyServiceLocalizationBundleForfeatureIdentifier:(unsigned long long)arg1;
-- (id)applyServicePreferredLangaugeForFeatureIdentifier:(unsigned long long)arg1;
+- (id)applyServiceLocalizationBundleForFeatureIdentifier:(unsigned long long)arg1;
+- (id)applyServicePreferredLanguageForFeatureIdentifier:(unsigned long long)arg1;
 - (id)betaPaymentNetworksForRegion:(id)arg1;
 - (id)certificates;
 - (id)companionSerialNumber;
@@ -76,11 +85,14 @@
 - (bool)devSigned;
 - (id)deviceID;
 - (void)encodeWithCoder:(id)arg1;
+- (bool)hasPeerPaymentAccount;
 - (bool)ignoreProvisioningEnablementPercentage;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)lastUpdatedTag;
 - (bool)messageServiceDisabled;
+- (id)nextPushToken;
+- (id)peerPaymentServiceURL;
 - (id)primaryRegion;
 - (id)primaryRegionIdentifier;
 - (id)pushToken;
@@ -99,17 +111,20 @@
 - (void)setIgnoreProvisioningEnablementPercentage:(bool)arg1;
 - (void)setLastUpdatedTag:(id)arg1;
 - (void)setMessageServiceDisabled:(bool)arg1;
+- (void)setNextPushToken:(id)arg1;
 - (void)setPrimaryRegionIdentifier:(id)arg1;
 - (void)setPushToken:(id)arg1;
 - (void)setRegions:(id)arg1;
 - (void)setRegistrationDate:(id)arg1;
 - (void)setSecureElementID:(id)arg1;
 - (void)setTransactionServiceDisabled:(bool)arg1;
-- (void)setVerificationRequestsByPassUniqueID:(id)arg1;
 - (void)setVersion:(long long)arg1;
 - (bool)transactionServiceDisabled;
 - (id)verificationRequestRecordForUniqueID:(id)arg1;
-- (id)verificationRequestsByPassUniqueID;
 - (long long)version;
+
+// Image: /System/Library/PrivateFrameworks/NanoPassKit.framework/NanoPassKit
+
+- (id)npkPossiblyOverriddenPeerPaymentServiceURL;
 
 @end

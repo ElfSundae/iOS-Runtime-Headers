@@ -7,10 +7,9 @@
 + (Class)configurationClass;
 + (id)requiredEntitlements;
 + (id)taskIdentifier;
-+ (bool)validateConfiguration:(id)arg1 error:(out id*)arg2;
++ (bool)validateConfiguration:(id)arg1 client:(id)arg2 error:(id*)arg3;
 
 - (id)exportedInterface;
-- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
 - (id)remoteInterface;
 - (void)remote_condensableWorkoutsWithCompletion:(id /* block */)arg1;
 - (void)remote_condenseWorkoutWithUUID:(id)arg1 completion:(id /* block */)arg2;

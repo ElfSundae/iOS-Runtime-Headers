@@ -8,7 +8,6 @@
     NSData * _completedCredential;
     NSError * _completedError;
     id /* block */  _completionHandler;
-    LAContext * _inProgressContext;
     NSObject<OS_dispatch_queue> * _localAuthenticationQueue;
 }
 
@@ -17,7 +16,6 @@
 @property (nonatomic, retain) NSData *completedCredential;
 @property (nonatomic, retain) NSError *completedError;
 @property (nonatomic, copy) id /* block */ completionHandler;
-@property (nonatomic, retain) LAContext *inProgressContext;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *localAuthenticationQueue;
 
 - (void).cxx_destruct;
@@ -29,7 +27,6 @@
 - (id)completedCredential;
 - (id)completedError;
 - (id /* block */)completionHandler;
-- (id)inProgressContext;
 - (id)initWithCallbackQueue:(id)arg1;
 - (void)invalidateLocalAuthenticationContexts;
 - (id)localAuthenticationQueue;
@@ -38,7 +35,6 @@
 - (void)setCompletedCredential:(id)arg1;
 - (void)setCompletedError:(id)arg1;
 - (void)setCompletionHandler:(id /* block */)arg1;
-- (void)setInProgressContext:(id)arg1;
 - (void)setLocalAuthenticationQueue:(id)arg1;
 
 @end

@@ -12,12 +12,14 @@
         NSDictionary *driverCompilerOptions; 
         MTLPipelineBufferDescriptorArrayInternal *buffers; 
         <MTLPipelineLibrary> *pipelineLibrary; 
+        bool supportIndirectCommandBuffers; 
         bool forceResourceIndex; 
         unsigned int resourceIndex; 
+        void *pad0; 
     }  _private;
 }
 
-- (const struct MTLComputePipelineDescriptorPrivate { id x1; bool x2; unsigned short x3; id x4; id x5; bool x6; unsigned int x7; }*)_descriptorPrivate;
+- (const struct MTLComputePipelineDescriptorPrivate { id x1; id x2; bool x3; unsigned short x4; id x5; id x6; id x7; id x8; bool x9; bool x10; unsigned int x11; void *x12; }*)_descriptorPrivate;
 - (id)buffers;
 - (id)computeFunction;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -32,6 +34,7 @@
 - (id)label;
 - (unsigned long long)maxTotalThreadsPerThreadgroup;
 - (id)newSerializedComputeData;
+- (id)newSerializedComputeDataWithFlags:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (id)pipelineLibrary;
 - (void)reset;
 - (unsigned long long)resourceIndex;
@@ -43,8 +46,10 @@
 - (void)setPipelineLibrary:(id)arg1;
 - (void)setResourceIndex:(unsigned long long)arg1;
 - (void)setStageInputDescriptor:(id)arg1;
+- (void)setSupportIndirectCommandBuffers:(bool)arg1;
 - (void)setThreadGroupSizeIsMultipleOfThreadExecutionWidth:(bool)arg1;
 - (id)stageInputDescriptor;
+- (bool)supportIndirectCommandBuffers;
 - (bool)threadGroupSizeIsMultipleOfThreadExecutionWidth;
 - (void)validateWithDevice:(id)arg1;
 

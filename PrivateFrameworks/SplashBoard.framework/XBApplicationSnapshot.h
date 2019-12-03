@@ -20,6 +20,7 @@
     }  _contentFrame;
     long long  _contentType;
     NSDate * _creationDate;
+    XBDisplayEdgeInsetsWrapper * _customSafeAreaInsets;
     NSDate * _expirationDate;
     NSDictionary * _extendedData;
     long long  _fileFormat;
@@ -49,6 +50,9 @@
     bool  _keepImageAccessUntilExpiration;
     NSDate * _lastUsedDate;
     NSString * _launchInterfaceIdentifier;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _loadImageLock;
     NSString * _logIdentifier;
     NSString * _name;
     NSString * _path;
@@ -61,6 +65,7 @@
     NSString * _scheme;
     XBStatusBarSettings * _statusBarSettings;
     <XBSnapshotManifestStore> * _store;
+    long long  _userInterfaceStyle;
     NSString * _variantID;
     NSMutableDictionary * _variantsByID;
 }
@@ -79,6 +84,7 @@
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } contentFrame;
 @property (nonatomic) long long contentType;
 @property (nonatomic, readonly) NSDate *creationDate;
+@property (nonatomic, retain) XBDisplayEdgeInsetsWrapper *customSafeAreaInsets;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) NSDate *expirationDate;
@@ -114,10 +120,13 @@
 @property (nonatomic, copy) XBStatusBarSettings *statusBarSettings;
 @property (getter=_store, nonatomic, readonly) <XBSnapshotManifestStore> *store;
 @property (readonly) Class superclass;
+@property (nonatomic) long long userInterfaceStyle;
 @property (nonatomic, copy) NSString *variantID;
 
 + (id)_allSecureCodingClassesIncludingDefaultAndClientSpecified;
++ (struct CGImage { }*)_createCGImageWithPreferredOptions:(id)arg1 fromCGImage:(struct CGImage { }*)arg2;
 + (id)dataForImage:(id)arg1 withFormat:(long long)arg2;
++ (bool)isValidImageFileExtension:(id)arg1;
 + (id)normalizeSnapshotName:(id)arg1;
 + (id)secureCodableCustomExtendedDataClasses;
 + (void)setSecureCodableCustomExtendedDataClasses:(id)arg1;
@@ -171,6 +180,7 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })contentFrame;
 - (long long)contentType;
 - (id)creationDate;
+- (id)customSafeAreaInsets;
 - (void)dealloc;
 - (id)description;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
@@ -222,6 +232,7 @@
 - (void)setContainerIdentity:(id)arg1;
 - (void)setContentFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setContentType:(long long)arg1;
+- (void)setCustomSafeAreaInsets:(id)arg1;
 - (void)setExpirationDate:(id)arg1;
 - (void)setExtendedData:(id)arg1;
 - (void)setFileLocation:(long long)arg1;
@@ -239,10 +250,12 @@
 - (void)setRequiredOSVersion:(id)arg1;
 - (void)setScheme:(id)arg1;
 - (void)setStatusBarSettings:(id)arg1;
+- (void)setUserInterfaceStyle:(long long)arg1;
 - (void)setVariantID:(id)arg1;
 - (id)statusBarSettings;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
+- (long long)userInterfaceStyle;
 - (id)variantID;
 - (id)variantWithIdentifier:(id)arg1;
 - (id)variants;

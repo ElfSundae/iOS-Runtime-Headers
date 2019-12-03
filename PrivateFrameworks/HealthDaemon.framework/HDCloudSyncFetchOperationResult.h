@@ -10,6 +10,7 @@
 }
 
 @property (nonatomic, readonly) HDCloudSyncOperationConfiguration *configuration;
+@property (nonatomic, readonly) long long minimumSupportedProtocolVersion;
 @property (nonatomic, readonly) HDCloudSyncZone *primaryPushZone;
 @property (nonatomic, readonly) NSSet *pullZones;
 @property (nonatomic, readonly) NSSet *seizedZones;
@@ -23,6 +24,7 @@
 - (id)description;
 - (id)initWithStatus:(long long)arg1 configuration:(id)arg2 zonesByIdentifier:(id)arg3;
 - (id)masterZoneForContainerID:(id)arg1;
+- (long long)minimumSupportedProtocolVersion;
 - (id)primaryPushZone;
 - (id)pullZones;
 - (id)seizedZones;

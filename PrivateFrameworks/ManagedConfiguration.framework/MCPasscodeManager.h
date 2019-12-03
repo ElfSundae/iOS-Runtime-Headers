@@ -33,6 +33,7 @@
 - (int)defaultNewPasscodeEntryScreenTypeWithOutSimplePasscodeType:(int*)arg1;
 - (bool)isCurrentPasscodeCompliantOutError:(id*)arg1;
 - (bool)isDeviceLocked;
+- (bool)isPasscodeCompliantWithNamedPolicy:(id)arg1 outError:(id*)arg2;
 - (bool)isPasscodeSet;
 - (id)localizedDescriptionOfDefaultNewPasscodePolicy;
 - (id)localizedDescriptionOfPasscodePolicy;

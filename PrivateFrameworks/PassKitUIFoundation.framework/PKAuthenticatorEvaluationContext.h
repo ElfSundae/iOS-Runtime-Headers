@@ -5,6 +5,7 @@
 @interface PKAuthenticatorEvaluationContext : NSObject <LAUIDelegate> {
     LAContext * _LAContext;
     NSMutableArray * _accessHandlers;
+    bool  _acquireUserIntent;
     unsigned long long  _activeMechanisms;
     PKAuthenticator * _authenticator;
     long long  _coachingState;
@@ -17,6 +18,7 @@
     double  _evaluationMinimumTime;
     unsigned long long  _externalContextInvalidationPolicy;
     unsigned long long  _externalContextOptions;
+    long long  _faceIDState;
     bool  _fingerPresent;
     bool  _fingerPresentTimeoutExpired;
     bool  _fingerPresentTimeoutRequired;
@@ -25,24 +27,24 @@
     bool  _passcodeActive;
     bool  _passphraseActive;
     unsigned long long  _pearlFlags;
-    long long  _pearlState;
     unsigned long long  _presentationFlags;
     PKAuthenticatorEvaluationRequest * _request;
     bool  _shouldLiftFinger;
     double  _touchIDBeginTime;
+    bool  _userIntentAvailable;
     bool  _usingExternalContext;
 }
 
 @property (nonatomic, readonly) bool biometricMatch;
 @property (nonatomic, readonly) long long coachingState;
 @property (nonatomic) <PKAuthenticatorDelegate> *delegate;
+@property (nonatomic, readonly) long long faceIDState;
 @property (nonatomic, readonly) bool fingerPresent;
 @property (nonatomic, readonly) bool fingerPresentTimeoutExpired;
 @property (nonatomic, readonly) bool fingerPresentTimeoutRequired;
 @property (getter=isInvalidated, nonatomic, readonly) bool invalidated;
 @property (nonatomic, readonly) bool passcodeActive;
 @property (nonatomic, readonly) bool passphraseActive;
-@property (nonatomic, readonly) long long pearlState;
 @property (nonatomic, readonly) unsigned long long presentationFlags;
 @property (nonatomic, readonly) PKAuthenticatorEvaluationRequest *request;
 @property (nonatomic, readonly) bool shouldLiftFinger;
@@ -62,10 +64,10 @@
 - (unsigned long long)_presentationFlagForAuthenticatorViewType:(long long)arg1;
 - (void)_requestRemoteAuthenticatorViewControllerOfType:(long long)arg1 withClassName:(id)arg2 bundleIdentifier:(id)arg3 completion:(id /* block */)arg4;
 - (void)_setCoachingState:(long long)arg1;
+- (void)_setFaceIDState:(long long)arg1;
 - (void)_setLiftFingerTimer;
-- (void)_setPearlState:(long long)arg1;
 - (void)_updateCoachingState;
-- (void)_updatePearlState;
+- (void)_updateFaceIDState;
 - (void)accessLAContext:(id /* block */)arg1;
 - (bool)biometricMatch;
 - (long long)coachingState;
@@ -74,6 +76,7 @@
 - (id)delegate;
 - (void)evaluateWithOptions:(id)arg1 completion:(id /* block */)arg2;
 - (void)event:(long long)arg1 params:(id)arg2 reply:(id /* block */)arg3;
+- (long long)faceIDState;
 - (void)fallbackToPasscode;
 - (bool)fingerPresent;
 - (bool)fingerPresentTimeoutExpired;
@@ -91,7 +94,6 @@
 - (bool)isInvalidated;
 - (bool)passcodeActive;
 - (bool)passphraseActive;
-- (long long)pearlState;
 - (unsigned long long)presentationFlags;
 - (id)request;
 - (void)setDelegate:(id)arg1;

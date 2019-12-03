@@ -4,14 +4,15 @@
 
 @interface ARFaceTrackingImageSensor : ARImageSensor <AVCaptureMetadataOutputObjectsDelegate> {
     NSArray * _availableMetadataObjectTypes;
+    AVCaptureConnection * _depthConnection;
     AVCaptureDepthDataOutput * _depthDataOutput;
     unsigned long long  _droppedFramesPerSec;
     NSObject<OS_dispatch_semaphore> * _faceDataSemaphore;
     ARFaceData * _latestFaceData;
     AVCaptureMetadataOutput * _metaDataOutput;
+    AVCaptureConnection * _metadataConnection;
     bool  _previousImageDataValid;
     bool  _recordingMode;
-    NSString * _requiredFaceMetaDataObjectType;
     bool  _signpostFirstFaceDone;
     bool  _signpostFirstFrameDone;
     double  _startTime;
@@ -21,7 +22,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool recordingMode;
-@property (nonatomic, copy) NSString *requiredFaceMetaDataObjectType;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -33,15 +33,12 @@
 - (id)configureCaptureSession;
 - (void)dataOutputSynchronizer:(id)arg1 didOutputSynchronizedDataCollection:(id)arg2;
 - (void)dealloc;
-- (id)init;
-- (id)initWithSettings:(id)arg1;
+- (id)initWithSettings:(id)arg1 captureSession:(id)arg2 captureQueue:(id)arg3;
 - (id)outputsForSynchronizer;
+- (id)prepareToStart;
 - (unsigned long long)providedDataTypes;
 - (bool)recordingMode;
-- (id)requiredFaceMetaDataObjectType;
 - (void)setRecordingMode:(bool)arg1;
-- (void)setRequiredFaceMetaDataObjectType:(id)arg1;
-- (void)start;
 - (void)stop;
 
 @end

@@ -65,9 +65,11 @@
 - (unsigned long long)loopCount;
 - (unsigned long long)numberOfFrames;
 - (long long)preloadType;
+- (void)resumePreloading;
 - (double)scale;
 - (void)setDelegate:(id)arg1;
 - (void)setPreloadType:(long long)arg1 currentFrameIndex:(unsigned long long)arg2;
+- (void)suspendPreloading;
 - (unsigned long long)uncompressedByteSizePerFrame;
 
 @end

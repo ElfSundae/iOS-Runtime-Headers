@@ -17,7 +17,7 @@
         unsigned int startDatetime : 1; 
         unsigned int blockingIncident : 1; 
     }  _has;
-    long long  _iconType;
+    int  _iconType;
     unsigned int  _lastUpdatedDatetime;
     NSString * _messageForNonRoutable;
     NSString * _messageForRoutePlanning;
@@ -55,8 +55,8 @@
 @property (nonatomic, readonly) bool hasSummary;
 @property (nonatomic, readonly) bool hasTitle;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) long long iconType;
-@property (nonatomic) long long iconType;
+@property (nonatomic, readonly) int iconType;
+@property (nonatomic) int iconType;
 @property (nonatomic, readonly) NSDate *lastUpdated;
 @property (nonatomic) unsigned int lastUpdatedDatetime;
 @property (nonatomic, readonly) NSString *messageForNonRoutable;
@@ -79,7 +79,7 @@
 + (Class)affectedEntitiesType;
 
 - (void).cxx_destruct;
-- (long long)StringAsIconType:(id)arg1;
+- (int)StringAsIconType:(id)arg1;
 - (void)addAffectedEntities:(id)arg1;
 - (id)affectedEntities;
 - (id)affectedEntitiesAtIndex:(unsigned long long)arg1;
@@ -109,8 +109,8 @@
 - (bool)hasSummary;
 - (bool)hasTitle;
 - (unsigned long long)hash;
-- (long long)iconType;
-- (id)iconTypeAsString:(long long)arg1;
+- (int)iconType;
+- (id)iconTypeAsString:(int)arg1;
 - (id)initWithIncident:(id)arg1;
 - (bool)isBlockingIncident;
 - (bool)isEqual:(id)arg1;
@@ -134,7 +134,7 @@
 - (void)setHasLastUpdatedDatetime:(bool)arg1;
 - (void)setHasMuid:(bool)arg1;
 - (void)setHasStartDatetime:(bool)arg1;
-- (void)setIconType:(long long)arg1;
+- (void)setIconType:(int)arg1;
 - (void)setLastUpdatedDatetime:(unsigned int)arg1;
 - (void)setMessageForNonRoutable:(id)arg1;
 - (void)setMessageForRoutePlanning:(id)arg1;

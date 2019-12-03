@@ -12,7 +12,7 @@
 }
 
 @property (nonatomic, readonly) unsigned long long backingStore;
-@property (nonatomic, readonly, copy) NSDictionary *configurationOptions;
+@property (readonly, copy) NSDictionary *configurationOptions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -49,9 +49,11 @@
 - (void)setSynchronizationQueue:(id)arg1;
 - (bool)supportsProcessingDevice:(id)arg1;
 - (id)synchronizationQueue;
+- (void)updateConfigurationOptionsWithObject:(id)arg1 forKey:(id)arg2;
 - (bool)useGPU;
 - (bool)validateImageBuffer:(id)arg1 error:(id*)arg2;
 - (id)validatedImageBufferFromOptions:(id)arg1 error:(id*)arg2;
 - (id)validatedProcessingDeviceInOptions:(id)arg1 error:(id*)arg2;
+- (bool)warmUpWithOptions:(id)arg1 error:(id*)arg2;
 
 @end

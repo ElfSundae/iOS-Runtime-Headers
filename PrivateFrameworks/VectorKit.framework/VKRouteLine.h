@@ -69,7 +69,7 @@
 - (void)_updateTilesCovered:(id)arg1;
 - (struct Box<double, 2> { struct Matrix<double, 2, 1> { double x_1_1_1[2]; } x1; struct Matrix<double, 2, 1> { double x_2_1_1[2]; } x2; })bounds;
 - (double)boundsUnitsPerMeter;
-- (bool)buildRouteLine:(id)arg1 tiles:(id)arg2 viewUnitsPerPoint:(double)arg3 force:(bool)arg4 selected:(bool)arg5 isNavMode:(bool)arg6;
+- (bool)buildRouteLine:(id)arg1 matchToRoads:(bool)arg2 viewUnitsPerPoint:(double)arg3 force:(bool)arg4;
 - (void)createMeshIfNecessary:(long long)arg1;
 - (void)dealloc;
 - (void)forEachSection:(id /* block */)arg1;

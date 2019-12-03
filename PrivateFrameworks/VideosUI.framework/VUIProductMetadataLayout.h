@@ -15,6 +15,7 @@
     UIColor * _seeMoreTextColor;
 }
 
+@property (nonatomic, readonly) double bottomPadding;
 @property (nonatomic, readonly) UIColor *darkHighlightedDescriptionText;
 @property (nonatomic, readonly) UIColor *darkSeeMoreTextColor;
 @property (nonatomic, readonly) double descriptionLineSpacing;
@@ -28,11 +29,13 @@
 @property (nonatomic, readonly) bool isHorizontal;
 @property (nonatomic, readonly) bool isTVOS;
 @property (nonatomic, readonly) UIColor *seeMoreTextColor;
+@property (nonatomic, readonly) double verticalSpacing;
 
 + (id)layoutWithLayout:(id)arg1 element:(id)arg2;
 
 - (void).cxx_destruct;
 - (void)_setupLayouts;
+- (double)bottomPadding;
 - (id)darkHighlightedDescriptionText;
 - (id)darkSeeMoreTextColor;
 - (double)descriptionLineSpacing;
@@ -47,5 +50,6 @@
 - (bool)isHorizontal;
 - (bool)isTVOS;
 - (id)seeMoreTextColor;
+- (double)verticalSpacing;
 
 @end

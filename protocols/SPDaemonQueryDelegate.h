@@ -7,7 +7,7 @@
 
 - (void)searchDaemonLocalSuggestionsData:(NSData *)arg1;
 - (void)searchDaemonQuery:(SPDaemonQueryToken *)arg1 encounteredError:(NSError *)arg2;
-- (void)searchDaemonQuery:(SPDaemonQueryToken *)arg1 gotResultSet:(SPResultSet *)arg2 replace:(bool)arg3 complete:(bool)arg4 finished:(bool)arg5 delayed:(bool)arg6 delayedTopHit:(bool)arg7 blendingDuration:(double)arg8 geoEntityString:(NSString *)arg9;
+- (void)searchDaemonQuery:(SPDaemonQueryToken *)arg1 gotResultSet:(SPResultSet *)arg2 replace:(bool)arg3 complete:(bool)arg4 finished:(bool)arg5 delayed:(bool)arg6 delayedTopHit:(bool)arg7 unchanged:(bool)arg8 forceStable:(bool)arg9 blendingDuration:(double)arg10 geoEntityString:(NSString *)arg11 supportedAppScopes:(NSArray *)arg12;
 - (void)searchDaemonRankingLog:(NSString *)arg1;
 - (void)searchDaemonSuggestionsArray:(NSArray *)arg1;
 

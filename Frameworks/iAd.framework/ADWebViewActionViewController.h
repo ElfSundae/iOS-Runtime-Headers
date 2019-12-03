@@ -11,6 +11,7 @@
 @property (nonatomic, retain) ADHomeButtonHandler *homeButtonHandler;
 @property (nonatomic, retain) id notificationObserver;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (void)dismissView;
 - (void)dismissViewForHomeButton;

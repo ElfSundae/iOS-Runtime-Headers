@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/EventKit.framework/EventKit
  */
 
-@interface EKRecurrenceGenerator : CDBRecurrenceGenerator
+@interface EKRecurrenceGenerator : CalRecurrenceGenerator
 
 + (int)_convertEKRecurrenceFrequencyToCalRecurrenceFrequency:(long long)arg1;
 

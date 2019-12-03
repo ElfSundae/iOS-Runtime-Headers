@@ -3,6 +3,12 @@
  */
 
 @interface PXSimpleVideoScrubberControllerTarget : NSObject <PXVideoScrubberControllerTarget> {
+    struct { 
+        long long value; 
+        int timescale; 
+        unsigned int flags; 
+        long long epoch; 
+    }  _currentItemDuration;
     AVPlayer * _videoPlayer;
     id /* block */  durationChangeHandler;
     id /* block */  playerItemChangeHandler;

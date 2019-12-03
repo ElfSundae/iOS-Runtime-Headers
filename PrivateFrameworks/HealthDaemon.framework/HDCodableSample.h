@@ -10,7 +10,7 @@
         unsigned int endDate : 1; 
         unsigned int startDate : 1; 
     }  _has;
-    HDCodableObject * _object;
+    HDCodableHealthObject * _object;
     double  _startDate;
 }
 
@@ -23,7 +23,7 @@
 @property (nonatomic, readonly) bool hasObject;
 @property (nonatomic) bool hasStartDate;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) HDCodableObject *object;
+@property (nonatomic, retain) HDCodableHealthObject *object;
 @property (nonatomic) double startDate;
 @property (readonly) Class superclass;
 

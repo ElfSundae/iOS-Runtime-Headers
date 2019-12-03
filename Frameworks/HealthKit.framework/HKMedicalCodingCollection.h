@@ -14,12 +14,14 @@
 
 // Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
 
++ (id)collectionWithCoding:(id)arg1;
 + (id)collectionWithCodings:(id)arg1;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)codings;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;

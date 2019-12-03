@@ -11,6 +11,7 @@
 - (void).cxx_destruct;
 - (id)_evaluateImage:(out id*)arg1;
 - (id)_evaluateImageGeometry:(out id*)arg1;
+- (id)debugQuickLookObject;
 - (id)descriptionSubClassHook;
 - (id)filterName;
 - (unsigned long long)hash;

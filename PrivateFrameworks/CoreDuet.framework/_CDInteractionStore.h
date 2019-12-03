@@ -5,11 +5,16 @@
 @interface _CDInteractionStore : NSObject <_CDInteractionDeleting, _CDInteractionQuerying, _CDInteractionRecording> {
     <_DKLocationHistorian> * _locationHistorian;
     _CDInteractionStoreNotifier * _notifier;
+    NSObject<OS_dispatch_queue> * _pendingShareInteractionQueue;
+    _CDInteraction * _pendingShareSheetInteraction;
+    bool  _readConcurrently;
     _DKCoreDataStorage * _storage;
     NSObject<OS_dispatch_queue> * _workQueue;
 }
 
 @property (retain) <_DKLocationHistorian> *locationHistorian;
+@property (nonatomic, retain) _CDInteraction *pendingShareSheetInteraction;
+@property (nonatomic) bool readConcurrently;
 @property (nonatomic, readonly) _DKCoreDataStorage *storage;
 
 + (id)defaultDatabaseDirectory;
@@ -66,6 +71,7 @@
 - (unsigned long long)numberOfContactsMatchingPredicate:(id)arg1;
 - (unsigned long long)numberOfInteractionsMatchingPredicate:(id)arg1;
 - (bool)openAndCheckIfReadable;
+- (id)pendingShareSheetInteraction;
 - (id)queryContactInteractionsUsingPredicate:(id)arg1 withLimit:(unsigned long long)arg2;
 - (void)queryContactsUsingPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 completionHandler:(id /* block */)arg4;
 - (id)queryContactsUsingPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 error:(id*)arg4;
@@ -76,6 +82,7 @@
 - (id)queryInteractionsUsingPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 offset:(unsigned long long)arg4 error:(id*)arg5;
 - (id)queryInteractionsUsingPredicate:(id)arg1 withLimit:(unsigned long long)arg2;
 - (long long)queryVersionNumber;
+- (bool)readConcurrently;
 - (bool)recordInteraction:(id)arg1;
 - (bool)recordInteractions:(id)arg1;
 - (void)recordInteractions:(id)arg1 completionHandler:(id /* block */)arg2;
@@ -83,6 +90,8 @@
 - (bool)recordInteractionsBatch:(id)arg1 error:(id*)arg2;
 - (bool)recordVersionNumber:(long long)arg1;
 - (void)setLocationHistorian:(id)arg1;
+- (void)setPendingShareSheetInteraction:(id)arg1;
+- (void)setReadConcurrently:(bool)arg1;
 - (id)storage;
 - (void)updateCachedStatsForContactRecord:(id)arg1 isSender:(bool)arg2 withInteraction:(id)arg3;
 

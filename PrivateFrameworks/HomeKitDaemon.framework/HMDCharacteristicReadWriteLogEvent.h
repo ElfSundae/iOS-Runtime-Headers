@@ -6,6 +6,7 @@
     NSArray * _characteristicsToRead;
     HAPAccessory * _hapAccessory;
     HMDAccessory * _hmdAccessory;
+    bool  _isCached;
     bool  _isLocal;
     bool  _isTimedWrite;
     bool  _isWriteOperation;
@@ -19,14 +20,15 @@
 @property (nonatomic, readonly) HAPAccessory *hapAccessory;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) HMDAccessory *hmdAccessory;
-@property (nonatomic, readonly) bool isLocal;
+@property (nonatomic, readonly) bool isCached;
+@property (nonatomic) bool isLocal;
 @property (nonatomic, readonly) bool isTimedWrite;
 @property (nonatomic, readonly) bool isWriteOperation;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSUUID *transactionId;
 @property (nonatomic, readonly) unsigned long long triggerSource;
 
-+ (id)characteristicReadLogEvent:(id)arg1 hmdAccessory:(id)arg2 hapAccessory:(id)arg3 source:(unsigned long long)arg4 isLocal:(bool)arg5 transactionId:(id)arg6;
++ (id)characteristicReadLogEvent:(id)arg1 hmdAccessory:(id)arg2 hapAccessory:(id)arg3 source:(unsigned long long)arg4 isLocal:(bool)arg5 transactionId:(id)arg6 isCached:(bool)arg7;
 + (id)characteristicWriteLogEvent:(id)arg1 hmdAccessory:(id)arg2 hapAccessory:(id)arg3 source:(unsigned long long)arg4 isTimedWrite:(bool)arg5 isLocal:(bool)arg6 transactionId:(id)arg7;
 + (id)uuid;
 
@@ -35,11 +37,14 @@
 - (id)characteristicsToRead;
 - (id)hapAccessory;
 - (id)hmdAccessory;
-- (id)initReadWriteLogEvent:(id)arg1 hmdAccessory:(id)arg2 hapAccessory:(id)arg3 source:(unsigned long long)arg4 isWriteOperation:(bool)arg5 isTimedWrite:(bool)arg6 isLocal:(bool)arg7 transactionId:(id)arg8;
+- (id)initReadWriteLogEvent:(id)arg1 hmdAccessory:(id)arg2 hapAccessory:(id)arg3 source:(unsigned long long)arg4 isWriteOperation:(bool)arg5 isTimedWrite:(bool)arg6 isLocal:(bool)arg7 transactionId:(id)arg8 isCached:(bool)arg9;
+- (bool)isCached;
 - (bool)isLocal;
 - (bool)isTimedWrite;
 - (bool)isWriteOperation;
 - (id)metricForAWD;
+- (void)setIsLocal:(bool)arg1;
+- (void)setLocal:(bool)arg1;
 - (id)transactionId;
 - (unsigned long long)triggerSource;
 

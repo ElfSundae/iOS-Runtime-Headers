@@ -5,8 +5,8 @@
 
 @required
 
-- (bool)actionMenu:(void *)arg1 dismissViewController:(void *)arg2 completionHandler:(void *)arg3; // needs 3 arg types, found 7: PXActionMenuController *, UIViewController *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, void*
-- (bool)actionMenu:(PXActionMenuController *)arg1 presentViewController:(UIViewController *)arg2;
+- (bool)actionMenu:(void *)arg1 actionPerformer:(void *)arg2 dismissViewController:(void *)arg3 completionHandler:(void *)arg4; // needs 4 arg types, found 8: PXActionMenuController *, PXActionPerformer *, UIViewController *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, void*
+- (bool)actionMenu:(PXActionMenuController *)arg1 actionPerformer:(PXActionPerformer *)arg2 presentViewController:(UIViewController *)arg3;
 
 @optional
 

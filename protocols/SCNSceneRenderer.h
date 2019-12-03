@@ -13,6 +13,7 @@
 - (<MTLCommandQueue> *)commandQueue;
 - (void*)context;
 - (<MTLRenderCommandEncoder> *)currentRenderCommandEncoder;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })currentViewport;
 - (unsigned long long)debugOptions;
 - (<SCNSceneRendererDelegate> *)delegate;
 - (unsigned long long)depthPixelFormat;
@@ -21,6 +22,7 @@
 - (bool)isJitteringEnabled;
 - (bool)isNodeInsideFrustum:(SCNNode *)arg1 withPointOfView:(SCNNode *)arg2;
 - (bool)isPlaying;
+- (bool)isTemporalAntialiasingEnabled;
 - (bool)loops;
 - (NSArray *)nodesInsideFrustumWithPointOfView:(SCNNode *)arg1;
 - (SKScene *)overlaySKScene;
@@ -44,8 +46,11 @@
 - (void)setScene:(SCNScene *)arg1;
 - (void)setSceneTime:(double)arg1;
 - (void)setShowsStatistics:(bool)arg1;
+- (void)setTemporalAntialiasingEnabled:(bool)arg1;
+- (void)setUsesReverseZ:(bool)arg1;
 - (bool)showsStatistics;
 - (unsigned long long)stencilPixelFormat;
 - (struct SCNVector3 { float x1; float x2; float x3; })unprojectPoint:(struct SCNVector3 { float x1; float x2; float x3; })arg1;
+- (bool)usesReverseZ;
 
 @end

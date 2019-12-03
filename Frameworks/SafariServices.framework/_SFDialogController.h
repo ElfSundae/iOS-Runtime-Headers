@@ -22,6 +22,8 @@
 @property (readonly) Class superclass;
 @property (nonatomic) <_SFDialogViewControllerPresenting> *viewControllerPresenter;
 
++ (void)applicationDidEnterBackground;
+
 - (void).cxx_destruct;
 - (struct { int x1; unsigned long long x2; })_currentSlot;
 - (int)_currentWebProcessID;

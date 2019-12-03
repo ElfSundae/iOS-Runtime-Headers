@@ -8,14 +8,14 @@
     unsigned int  _featureTileY;
     unsigned int  _featureTileZ;
     struct { 
-        unsigned int featureIndex : 1; 
-        unsigned int featureTileX : 1; 
-        unsigned int featureTileY : 1; 
-        unsigned int featureTileZ : 1; 
-        unsigned int identifier : 1; 
-        unsigned int style : 1; 
-        unsigned int type : 1; 
-    }  _has;
+        unsigned int has_featureIndex : 1; 
+        unsigned int has_featureTileX : 1; 
+        unsigned int has_featureTileY : 1; 
+        unsigned int has_featureTileZ : 1; 
+        unsigned int has_identifier : 1; 
+        unsigned int has_style : 1; 
+        unsigned int has_type : 1; 
+    }  _flags;
     unsigned int  _identifier;
     int  _style;
     struct GEORPFeatureHandleStyleAttribute { int x1; int x2; } * _styleAttributes;
@@ -41,6 +41,8 @@
 @property (nonatomic, readonly) unsigned long long styleAttributesCount;
 @property (nonatomic) int type;
 
++ (bool)isValid:(id)arg1;
+
 - (int)StringAsStyle:(id)arg1;
 - (int)StringAsType:(id)arg1;
 - (void)addStyleAttribute:(struct GEORPFeatureHandleStyleAttribute { int x1; int x2; })arg1;
@@ -65,6 +67,7 @@
 - (unsigned int)identifier;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setFeatureIndex:(unsigned int)arg1;
 - (void)setFeatureTileX:(unsigned int)arg1;

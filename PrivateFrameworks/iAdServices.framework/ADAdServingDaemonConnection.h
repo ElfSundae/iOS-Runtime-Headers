@@ -10,7 +10,7 @@
 }
 
 @property (nonatomic, retain) NSXPCConnection *adServingDaemonConnection;
-@property (nonatomic) NSObject<OS_dispatch_queue> *connectionQueue;
+@property (nonatomic, retain) NSObject<OS_dispatch_queue> *connectionQueue;
 @property (nonatomic) <ADAdServingDaemonConnectionDelegate> *delegate;
 @property (nonatomic, retain) NSMutableArray *performWhenConnectedBlocks;
 

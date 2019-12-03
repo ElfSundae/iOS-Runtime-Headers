@@ -6,8 +6,8 @@
     OADColor * mColor;
 }
 
+- (void).cxx_destruct;
 - (id)color;
-- (void)dealloc;
 - (unsigned long long)hash;
 - (id)initWithBulletColor:(id)arg1;
 - (bool)isEqual:(id)arg1;

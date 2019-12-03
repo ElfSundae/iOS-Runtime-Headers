@@ -7,17 +7,17 @@
     bool  _avoidTolls;
     bool  _findMyCarEnabled;
     struct { 
-        unsigned int navVoiceVolume : 1; 
-        unsigned int preferredTransportMode : 1; 
-        unsigned int avoidHighways : 1; 
-        unsigned int avoidTolls : 1; 
-        unsigned int findMyCarEnabled : 1; 
-        unsigned int headingEnabled : 1; 
-        unsigned int labelEnabled : 1; 
-        unsigned int pauseSpokenAudioEnabled : 1; 
-        unsigned int speedLimitEnabled : 1; 
-        unsigned int trafficEnabled : 1; 
-    }  _has;
+        unsigned int has_navVoiceVolume : 1; 
+        unsigned int has_preferredTransportMode : 1; 
+        unsigned int has_avoidHighways : 1; 
+        unsigned int has_avoidTolls : 1; 
+        unsigned int has_findMyCarEnabled : 1; 
+        unsigned int has_headingEnabled : 1; 
+        unsigned int has_labelEnabled : 1; 
+        unsigned int has_pauseSpokenAudioEnabled : 1; 
+        unsigned int has_speedLimitEnabled : 1; 
+        unsigned int has_trafficEnabled : 1; 
+    }  _flags;
     bool  _headingEnabled;
     bool  _labelEnabled;
     int  _navVoiceVolume;
@@ -48,6 +48,8 @@
 @property (nonatomic) bool speedLimitEnabled;
 @property (nonatomic) bool trafficEnabled;
 
++ (bool)isValid:(id)arg1;
+
 - (int)StringAsNavVoiceVolume:(id)arg1;
 - (int)StringAsPreferredTransportMode:(id)arg1;
 - (bool)avoidHighways;
@@ -77,6 +79,7 @@
 - (bool)pauseSpokenAudioEnabled;
 - (int)preferredTransportMode;
 - (id)preferredTransportModeAsString:(int)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAvoidHighways:(bool)arg1;
 - (void)setAvoidTolls:(bool)arg1;

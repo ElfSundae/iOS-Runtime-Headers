@@ -12,7 +12,6 @@
     <_UIViewInProcessAnimationManagerDriver> * _animatorAdvancer;
     NSObject<OS_dispatch_queue> * _backlightQueue;
     _UIAppCACommitFuture * _caCommitFuture;
-    bool  _commitsSynchronously;
     NSThread * _currentTickThread;
     double  _deltaTime;
     CADisplayLink * _displayLink;
@@ -22,7 +21,6 @@
     NSObject<OS_dispatch_queue> * _entryLockingQueue;
     unsigned long long  _executionMode;
     NSMutableArray * _newlyAddedEntries;
-    bool  _performScheduledBlocksManually;
     NSMutableArray * _postTickBlocks;
     NSObject<OS_dispatch_semaphore> * _postTicksDelaySemaphore;
     NSMutableArray * _preCommitBlocks;
@@ -48,13 +46,11 @@
 @property NSThread *animationThread;
 @property (retain) NSObject<OS_dispatch_semaphore> *animationThreadKeepAliveSemaphore;
 @property NSRunLoop *animationThreadRunLoop;
-@property (nonatomic) bool commitsSynchronously;
 @property NSThread *currentTickThread;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long executionMode;
 @property (readonly) unsigned long long hash;
-@property (setter=_setPerformScheduledBlocksManually:, nonatomic) bool performScheduledBlocksManually;
 @property (readonly) Class superclass;
 @property (nonatomic) bool usesMainThreadExecution;
 
@@ -87,14 +83,12 @@
 - (unsigned long long)_runPreCommitBlocks;
 - (void)_setAnimationExecutionParameters;
 - (void)_setCurrentMediaTime:(double)arg1;
-- (void)_setPerformScheduledBlocksManually:(bool)arg1;
 - (bool)_shouldKeepAnimationThreadAlive;
 - (void)addEntry:(id /* block */)arg1;
 - (bool)advancingOnCommitDisabled;
 - (id)animationThread;
 - (id)animationThreadKeepAliveSemaphore;
 - (id)animationThreadRunLoop;
-- (bool)commitsSynchronously;
 - (id)currentTickThread;
 - (void)dealloc;
 - (unsigned long long)executionMode;
@@ -102,14 +96,12 @@
 - (id)init;
 - (void)performAfterTick:(id /* block */)arg1;
 - (void)performBeforeExiting:(id /* block */)arg1;
-- (bool)performScheduledBlocksManually;
 - (double)refreshInterval;
 - (void)scheduleAnimatorAdvancerToStart;
 - (void)setAdvancingOnCommitDisabled:(bool)arg1;
 - (void)setAnimationThread:(id)arg1;
 - (void)setAnimationThreadKeepAliveSemaphore:(id)arg1;
 - (void)setAnimationThreadRunLoop:(id)arg1;
-- (void)setCommitsSynchronously:(bool)arg1;
 - (void)setCurrentTickThread:(id)arg1;
 - (void)setExecutionMode:(unsigned long long)arg1;
 - (void)setUsesMainThreadExecution:(bool)arg1;

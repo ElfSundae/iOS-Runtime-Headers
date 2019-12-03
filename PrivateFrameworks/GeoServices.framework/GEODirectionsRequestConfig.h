@@ -14,9 +14,9 @@
 - (void).cxx_destruct;
 - (id)additionalHTTPHeaders;
 - (id)additionalURLQueryItems;
-- (int)dataRequestKindForRequest:(id)arg1;
-- (long long)experimentType;
+- (struct { int x1; union { int x_2_1_1; int x_2_1_2; int x_2_1_3; } x2; })dataRequestKindForRequest:(id)arg1 traits:(id)arg2;
 - (id)initWithRequestPriority:(id)arg1;
+- (unsigned long long)multipathServiceType;
 - (unsigned char)requestCounterInfoTypeForRequest:(id)arg1;
 - (id)serviceTypeNumber;
 - (unsigned long long)urlType;

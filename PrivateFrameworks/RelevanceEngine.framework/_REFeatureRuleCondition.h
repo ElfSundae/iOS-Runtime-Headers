@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
  */
 
-@interface _REFeatureRuleCondition : RECondition {
+@interface _REFeatureRuleCondition : RECondition <REAutomaticExportedInterface> {
     REFeature * _firstFeature;
     long long  _relation;
     REFeature * _secondFeature;
@@ -13,13 +13,12 @@
 @property (nonatomic, readonly) REFeature *secondFeature;
 
 - (void).cxx_destruct;
-- (bool)_acceptsFeatureMap:(id)arg1;
+- (bool)_acceptsFeatureMap:(id)arg1 predictionSet:(id)arg2 explanation:(id*)arg3;
 - (id)_dependentFeatures;
 - (id)_inflectionFeatureValuePairs;
 - (id)_notCondition;
 - (bool)_requiresTwoFeatures;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (id)descriptionWithIndent:(unsigned long long)arg1;
 - (id)firstFeature;
 - (unsigned long long)hash;
 - (id)initWithFeature:(id)arg1 relation:(long long)arg2 feature:(id)arg3;

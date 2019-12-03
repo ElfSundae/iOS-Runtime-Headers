@@ -10,6 +10,7 @@
     NSArray * _leftBarItems;
     UINavigationBar * _navBar;
     bool  _presentedInAlert;
+    UIResponder * _responderToRestore;
     NSArray * _rightBarItems;
     bool  _showAddEditButtonRow;
     bool  _showsNavigationBar;
@@ -28,6 +29,7 @@
 @property (nonatomic, retain) NSArray *leftBarItems;
 @property (nonatomic, retain) UINavigationBar *navBar;
 @property (nonatomic) bool presentedInAlert;
+@property (nonatomic) UIResponder *responderToRestore;
 @property (nonatomic, retain) NSArray *rightBarItems;
 @property (nonatomic) bool showAddEditButtonRow;
 @property (nonatomic) bool showsNavigationBar;
@@ -36,12 +38,15 @@
 @property (nonatomic, retain) UITableView *tableView;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_cancelPicker:(id)arg1;
 - (void)_configureUI;
 - (void)_continueToCreateSignature:(id)arg1;
 - (void)_deleteSignature:(id)arg1;
 - (id)_signatures;
 - (bool)allowsEdits;
+- (bool)becomeFirstResponder;
+- (bool)canBecomeFirstResponder;
 - (id)controller;
 - (id)delegate;
 - (id)editingLeftBarItems;
@@ -52,6 +57,7 @@
 - (long long)positionForBar:(id)arg1;
 - (struct CGSize { double x1; double x2; })preferredContentSize;
 - (bool)presentedInAlert;
+- (id)responderToRestore;
 - (id)rightBarItems;
 - (void)setAllowsEdits:(bool)arg1;
 - (void)setController:(id)arg1;
@@ -60,6 +66,7 @@
 - (void)setLeftBarItems:(id)arg1;
 - (void)setNavBar:(id)arg1;
 - (void)setPresentedInAlert:(bool)arg1;
+- (void)setResponderToRestore:(id)arg1;
 - (void)setRightBarItems:(id)arg1;
 - (void)setShowAddEditButtonRow:(bool)arg1;
 - (void)setShowsNavigationBar:(bool)arg1;
@@ -76,6 +83,9 @@
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)viewDidAppear:(bool)arg1;
+- (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
 

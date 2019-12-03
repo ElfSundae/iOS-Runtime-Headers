@@ -10,11 +10,13 @@
 @property (nonatomic, retain) UIKeyCommandDiscoverabilityHUDView *view;
 
 - (void).cxx_destruct;
+- (void)_updateVisualStyle;
 - (void)animateOutWithCompletion:(id /* block */)arg1;
 - (void)dealloc;
 - (id)initWithKeyCommands:(id)arg1 keyboard:(struct __GSKeyboard { }*)arg2;
 - (void)loadView;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(bool)arg2;
 - (void)viewWillAppear:(bool)arg1;
 
 @end

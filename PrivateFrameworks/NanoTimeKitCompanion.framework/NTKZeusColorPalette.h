@@ -11,6 +11,7 @@
     UIColor * _handInlayColor;
     UIColor * _hourHandColor;
     UIColor * _minuteHandColor;
+    UIColor * _minuteHandDotColor;
     double  _secondHandAlpha;
     UIColor * _secondHandColor;
     UIColor * _splitColor;
@@ -23,6 +24,7 @@
 @property (nonatomic, readonly) UIColor *handInlayColor;
 @property (nonatomic, readonly) UIColor *hourHandColor;
 @property (nonatomic, readonly) UIColor *minuteHandColor;
+@property (nonatomic, readonly) UIColor *minuteHandDotColor;
 @property (nonatomic, readonly) double secondHandAlpha;
 @property (nonatomic, readonly) UIColor *secondHandColor;
 @property (nonatomic, readonly) UIColor *splitColor;
@@ -32,11 +34,17 @@
 + (id)bleuLightColor;
 + (id)bleuMediumColor;
 + (id)bordeauxColor;
++ (id)briqueColor;
 + (id)capucineColor;
 + (id)charcoalColor;
 + (id)craieColor;
++ (id)encreColor;
++ (id)etainColor;
 + (id)feuColor;
 + (id)indigoColor;
++ (id)noirColor;
++ (id)noirHandStrokeColor;
++ (id)noirSecondHandColor;
 + (id)offWhiteColor;
 + (id)paletteForColor:(unsigned long long)arg1;
 + (id)roseAzaleeColor;
@@ -58,6 +66,7 @@
 - (id)hourHandColor;
 - (id)initWithColor:(unsigned long long)arg1;
 - (id)minuteHandColor;
+- (id)minuteHandDotColor;
 - (double)secondHandAlpha;
 - (id)secondHandColor;
 - (id)splitColor;

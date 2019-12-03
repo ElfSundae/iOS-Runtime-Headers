@@ -3,18 +3,29 @@
  */
 
 @interface _UIUpdateVisibleCellsContext : NSObject {
+    NSMutableArray * _attributes;
     NSMutableArray * _indexPaths;
+    NSMutableIndexSet * _sectionIndexes;
     NSMutableArray * _sizes;
+    long long  _visibleCellsRefCount;
 }
 
+@property (nonatomic, readonly) NSArray *attributes;
+@property (nonatomic, readonly) bool hasLeftVisibleCellsPass;
 @property (nonatomic, readonly) NSArray *indexPaths;
+@property (nonatomic, readonly) NSIndexSet *sectionIndexes;
 @property (nonatomic, readonly) NSArray *sizes;
 
 - (void).cxx_destruct;
-- (void)addSize:(struct CGSize { double x1; double x2; })arg1 forIndexPath:(id)arg2;
+- (void)addPreferredAttributes:(id)arg1;
+- (id)attributes;
 - (id)description;
+- (void)didEnterVisibleCellsPass;
+- (void)didLeaveVisibleCellsPass;
+- (bool)hasLeftVisibleCellsPass;
 - (id)indexPaths;
 - (id)init;
+- (id)sectionIndexes;
 - (bool)shouldInvalidate;
 - (id)sizes;
 

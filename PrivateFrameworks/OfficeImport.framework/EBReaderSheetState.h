@@ -23,7 +23,6 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)dealloc;
 - (id)edSheet;
 - (id)initWithReaderState:(id)arg1;
 - (unsigned long long)nextChartIndex;

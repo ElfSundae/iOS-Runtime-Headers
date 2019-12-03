@@ -19,10 +19,13 @@
 - (void).cxx_destruct;
 - (void)applyToStatistic:(id)arg1;
 - (id)autocorrections;
+- (id)currentKeyboardState;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)keyboardState;
 - (bool)listUIDisplayed;
+- (void)removeContextFromKeyboardState;
+- (void)replaceDocumentState:(id)arg1;
 - (id)requestToken;
 - (void)setAutocorrections:(id)arg1;
 - (void)setKeyboardState:(id)arg1;

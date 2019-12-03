@@ -35,7 +35,7 @@
 - (id)intersectionCache;
 - (bool)intersectionPossibleForComponentWithBlueprint:(id)arg1 anchoredToComponentWithBlueprint:(id)arg2 layoutBlueprint:(id)arg3 columnStack:(id)arg4;
 - (int)layoutAttributeForAnchor:(long long)arg1;
-- (void)layoutBlueprint:(id)arg1 columnLayout:(id)arg2 shouldContinue:(bool*)arg3;
+- (void)layoutBlueprint:(id)arg1 columnLayout:(id)arg2 description:(id)arg3 shouldContinue:(bool*)arg4;
 - (id)layoutContextFactory;
 - (id)layouterFactory;
 - (void)setDelegate:(id)arg1;

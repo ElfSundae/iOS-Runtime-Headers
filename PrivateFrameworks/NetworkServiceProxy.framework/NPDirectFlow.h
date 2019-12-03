@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/NetworkServiceProxy.framework/NetworkServiceProxy
  */
 
-@interface NPDirectFlow : NSObject <NSPConnectionInfoSource> {
+@interface NPDirectFlow : NSObject {
     NSPConnectionInfo * _connectionInfo;
     NSDate * _connectionStartDate;
     NSDate * _firstTxByteTimestamp;
@@ -31,7 +31,6 @@
 - (void).cxx_destruct;
 - (id)connectionInfo;
 - (id)connectionStartDate;
-- (void)copyConnectionInfoWithCompletionHandler:(id /* block */)arg1;
 - (void)createConnectionInfo;
 - (id)firstTxByteTimestamp;
 - (void)handleDetachedFromProtocol;

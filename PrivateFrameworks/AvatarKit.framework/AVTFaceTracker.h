@@ -29,6 +29,7 @@
     NSObject<OS_dispatch_semaphore> * _recordingSemaphore;
     ARRecordingTechnique * _recordingTechnique;
     bool  _shouldConstraintHeadPose;
+    bool  _shouldUseAudioData;
     bool  _skipUpdates;
     double  _timeBetweenARFrame;
     struct { 
@@ -54,6 +55,7 @@
 @property (readonly) AVTFaceTrackingInfo *faceTrackingInfo;
 @property (getter=faceTrackingIsPaused, nonatomic) bool faceTrackingPaused;
 @property (copy) NSURL *faceTrackingRecordingURL;
+@property (readonly) float fieldOfView;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long interfaceOrientation;
 @property (readonly) unsigned long long lastTrackingCaptureTimestamp;
@@ -63,8 +65,11 @@
 @property (readonly) struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; } rawTransform;
 @property (getter=isSensorCovered, readonly) bool sensorCovered;
 @property (nonatomic) bool shouldConstraintHeadPose;
+@property (nonatomic) bool shouldUseAudioData;
 @property (nonatomic) bool skipUpdates;
 @property (readonly) Class superclass;
+@property (readonly) float videoAspectRatio;
+@property (readonly) void videoDimensions;
 
 + (void)setUsesInternalTrackingPipeline:(bool)arg1;
 + (bool)usesInternalTrackingPipeline;
@@ -77,7 +82,7 @@
 - (double)arFrameTimestamp;
 - (id)arSession;
 - (void)beginQuery;
-- (void)copyTrackingData:(struct { double x1; bool x2; float x3[64]; float x4[64]; float x5[1]; float x6[1]; }*)arg1;
+- (void)copyTrackingData:(struct { double x1; bool x2; float x3[51]; float x4[51]; float x5[1]; float x6[1]; }*)arg1;
 - (id)currentARFrame;
 - (void)decreaseFrameRate;
 - (bool)directRetargetingMode;
@@ -89,6 +94,7 @@
 - (bool)faceTrackingIsPaused;
 - (bool)faceTrackingPaused;
 - (id)faceTrackingRecordingURL;
+- (float)fieldOfView;
 - (void)increaseFrameRateToMaximum;
 - (id)init;
 - (long long)interfaceOrientation;
@@ -115,14 +121,18 @@
 - (void)setLowLight:(bool)arg1;
 - (void)setSensorCovered:(bool)arg1;
 - (void)setShouldConstraintHeadPose:(bool)arg1;
+- (void)setShouldUseAudioData:(bool)arg1;
 - (void)setSkipUpdates:(bool)arg1;
 - (void)setupARKit;
 - (void)setupARKitWithRecordTechnique;
 - (bool)shouldConstraintHeadPose;
+- (bool)shouldUseAudioData;
 - (bool)skipUpdates;
 - (void)startRecording;
 - (void)stop;
 - (void)stopRecording;
 - (void)technique:(id)arg1 didFinishWithResult:(id)arg2;
+- (float)videoAspectRatio;
+- (void)videoDimensions;
 
 @end

@@ -39,6 +39,9 @@
 @property (nonatomic, copy) UIColor *textColor;
 @property (nonatomic) long long verticalAlignment;
 
++ (id)px_headerSubtitleLabelSpecForZoomLevel:(long long)arg1 featureSpec:(id)arg2;
++ (id)px_headerTitleLabelSpecForZoomLevel:(long long)arg1 featureSpec:(id)arg2;
+
 - (void).cxx_destruct;
 - (bool)adjustsFontSizeToFitWidth;
 - (bool)allowTruncation;

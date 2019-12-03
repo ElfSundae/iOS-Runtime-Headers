@@ -17,11 +17,14 @@
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *queue;
 
 + (id)sharedNotifier;
++ (id)sharedNotifierForCoreSpeechDaemon;
 
 - (void).cxx_destruct;
+- (id)_createXPCClientConnection;
 - (void)_didReceiveAOPFirstPassTrigger:(id)arg1 completion:(id /* block */)arg2;
 - (bool)_hasPendingActivationForType:(unsigned long long)arg1;
 - (bool)_isVoiceTriggerEvent:(id)arg1;
+- (void)_notifyActivationEvent:(id)arg1 completion:(id /* block */)arg2;
 - (void)_setupTestNotification;
 - (void)_startMonitoring;
 - (void)_stopMonitoring;
@@ -30,6 +33,7 @@
 - (id)init;
 - (void)notifyActivationEvent:(id)arg1 completion:(id /* block */)arg2;
 - (void)notifyActivationEvent:(unsigned long long)arg1 deviceId:(id)arg2 activationInfo:(id)arg3 completion:(id /* block */)arg4;
+- (void)notifyActivationEventForCoreSpeechDaemon:(id)arg1 completion:(id /* block */)arg2;
 - (int)notifyToken;
 - (id)pendingActivationEvent;
 - (id /* block */)pendingCompletion;

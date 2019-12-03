@@ -12,11 +12,14 @@
     <IKAppNavigationController> * _navigationControllerDelegate;
 }
 
+@property (readonly) NSString *OPTION_RETAIN_CONTEXT;
 @property (nonatomic, readonly, retain) NSArray *documents;
 @property (nonatomic, readonly) <IKAppNavigationController> *navigationControllerDelegate;
 
 - (void).cxx_destruct;
+- (id)OPTION_RETAIN_CONTEXT;
 - (id)_makeAppDocumentWithDocument:(id)arg1;
+- (void)_migrateMediaControllerFromDocument:(id)arg1 toDocument:(id)arg2;
 - (void)clear;
 - (void)dismissModal;
 - (id)documents;

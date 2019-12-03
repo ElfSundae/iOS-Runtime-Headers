@@ -6,13 +6,28 @@
     double  _eventDate;
     NSString * _eventName;
     struct { 
-        unsigned int eventDate : 1; 
-        unsigned int loiType : 1; 
-        unsigned int isEventAllDay : 1; 
-    }  _has;
+        unsigned int has_eventDate : 1; 
+        unsigned int has_loiType : 1; 
+        unsigned int has_isEventAllDay : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_eventName : 1; 
+        unsigned int read_loiIdentifierString : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_eventDate : 1; 
+        unsigned int wrote_eventName : 1; 
+        unsigned int wrote_loiIdentifierString : 1; 
+        unsigned int wrote_loiType : 1; 
+        unsigned int wrote_isEventAllDay : 1; 
+    }  _flags;
     bool  _isEventAllDay;
     NSString * _loiIdentifierString;
     int  _loiType;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     PBUnknownFields * _unknownFields;
 }
 
@@ -29,8 +44,13 @@
 @property (nonatomic) int loiType;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsLoiType:(id)arg1;
+- (void)_readEventName;
+- (void)_readLoiIdentifierString;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -43,6 +63,8 @@
 - (bool)hasLoiIdentifierString;
 - (bool)hasLoiType;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)isEventAllDay;
 - (id)loiIdentifier;
@@ -50,6 +72,7 @@
 - (int)loiType;
 - (id)loiTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setEventDate:(double)arg1;
 - (void)setEventName:(id)arg1;

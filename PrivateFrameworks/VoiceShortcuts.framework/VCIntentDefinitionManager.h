@@ -2,42 +2,16 @@
    Image: /System/Library/PrivateFrameworks/VoiceShortcuts.framework/VoiceShortcuts
  */
 
-@interface VCIntentDefinitionManager : NSObject <VCSyncDataHandling> {
-    NSObject<OS_dispatch_queue> * _callbackQueue;
-    NSURL * _intentsDirectory;
-    VCIntentDefinitionSyncStateModel * _persistenceStore;
-    NSTimer * _syncHoldoffTimer;
-    <VCVoiceShortcutSyncService> * _syncService;
-}
+@interface VCIntentDefinitionManager : VCIntentDefinitionSyncDataHandler <INVCIntentDefinitionManager>
 
-+ (id)_filesInSyncedIntentsDirectoryForBundleID:(id)arg1 withExtensions:(id)arg2;
-+ (id)_intentsDirectory;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 + (id)appInfoForBundleID:(id)arg1;
 + (id)intentDefinitionLocalizableFileURLsForBundleID:(id)arg1;
 + (id)intentDefinitionURLsForBundleID:(id)arg1;
-+ (id)sharedManager;
-
-- (void).cxx_destruct;
-- (id)_createIntentDefinitionWithProtobuff:(id)arg1;
-- (id)_createIntentDefinitionsDirectory;
-- (id)_deleteIntentDefinitionWithID:(id)arg1;
-- (void)applicationChangedNotification;
-- (void)applyChangeSet:(id)arg1 fromSyncServiceWithIdentifier:(id)arg2 completion:(id /* block */)arg3;
-- (id)createMessageFromData:(id)arg1;
-- (void)dealloc;
-- (bool)deleteSyncedData:(id*)arg1;
-- (void)deregisterSyncServiceWithIdentifier:(id)arg1;
-- (id)getAllChanges;
-- (id)getAllLocalIntentDefinitions;
-- (id)getAllStoredIntentDefinitions;
-- (void)getUnsyncedChangesForSyncServiceWithIdentifier:(id)arg1 completion:(id /* block */)arg2;
-- (int)handledMessageType;
-- (id)initWithError:(id*)arg1;
-- (bool)loadPersistentStoreWithURL:(id)arg1;
-- (void)markChangesAsSynced:(id)arg1 withSyncServiceWithIdentifier:(id)arg2 completion:(id /* block */)arg3;
-- (void)registerSyncService:(id)arg1 asMaster:(bool)arg2;
-- (void)removeSyncStateForChanges:(id)arg1 withSyncServiceWithIdentifier:(id)arg2 completion:(id /* block */)arg3;
-- (void)removeSyncStateForSyncServiceWithIdentifier:(id)arg1 completion:(id /* block */)arg2;
-- (bool)resetPersistentStore;
++ (id)intentDefinitionURLsForBundleID:(id)arg1 withExtensions:(id)arg2;
 
 @end

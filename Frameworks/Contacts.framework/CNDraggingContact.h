@@ -13,6 +13,7 @@
 @property (nonatomic, retain) CNContactStore *contactStore;
 
 + (id)availableDataRepresentationTypes;
++ (id)os_log;
 
 - (void).cxx_destruct;
 - (id)cachedFileURLRepresentation;

@@ -9,6 +9,7 @@
 @property (readonly) HapticServerInstance *serverInstance;
 
 - (void).cxx_destruct;
+- (bool)contains:(id)arg1;
 - (id)initWithServerInstance:(id)arg1;
 - (id)serverInstance;
 

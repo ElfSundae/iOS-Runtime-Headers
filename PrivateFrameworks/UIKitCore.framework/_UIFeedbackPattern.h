@@ -4,7 +4,7 @@
 
 @interface _UIFeedbackPattern : _UIFeedback <_UIFeedbackContinuousPlayable, _UIFeedbackDiscretePlayable> {
     double  _duration;
-    NSArray * _feedbacks;
+    NSMutableArray * _feedbacks;
     bool  _highPriority;
     bool  _isRepeating;
     NSTimer * _repeatTimer;
@@ -13,7 +13,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) double duration;
-@property (nonatomic, retain) NSArray *feedbacks;
+@property (nonatomic, retain) NSMutableArray *feedbacks;
 @property (readonly) unsigned long long hash;
 @property (getter=isHighPriority, nonatomic, readonly) bool highPriority;
 @property (nonatomic, readonly) bool isRepeating;
@@ -28,10 +28,10 @@
 
 - (void).cxx_destruct;
 - (id)_allEventTypes;
-- (id)_allFeedbacks;
 - (id)_allSystemSoundIDs;
 - (id)_debugDictionary;
 - (unsigned long long)_effectivePlayableFeedbackTypes;
+- (id)_individualFeedbacks;
 - (void)_playPattern;
 - (id)_playableProtocol;
 - (void)addFeedback:(id)arg1 atTime:(double)arg2;

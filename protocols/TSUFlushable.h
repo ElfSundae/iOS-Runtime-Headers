@@ -11,6 +11,6 @@
 
 - (int)flushCost;
 - (int)reloadCost;
-- (void)setFlushingManager:(OITSUFlushingManager *)arg1;
+- (void)setFlushingManager:(TSUFlushingManager *)arg1;
 
 @end

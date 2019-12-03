@@ -14,6 +14,8 @@
 - (void)moveItemToHead:(NSString *)arg1;
 - (void)moveItemToTail:(NSString *)arg1;
 - (void)removeItem:(NSString *)arg1;
+- (NSString *)sectionIdentifier;
 - (void)updateItem:(NSString *)arg1;
+- (void)updateSection;
 
 @end

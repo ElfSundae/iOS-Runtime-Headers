@@ -11,6 +11,7 @@
     NSString * _punchoutPickerDismissText;
     NSString * _punchoutPickerTitle;
     int  _separatorStyle;
+    _SFPBImage * _thumbnail;
     _SFPBRichText * _title;
     NSString * _type;
 }
@@ -28,6 +29,7 @@
 @property (nonatomic, copy) NSString *punchoutPickerTitle;
 @property (nonatomic) int separatorStyle;
 @property (readonly) Class superclass;
+@property (nonatomic, retain) _SFPBImage *thumbnail;
 @property (nonatomic, retain) _SFPBRichText *title;
 @property (nonatomic, copy) NSString *type;
 
@@ -60,8 +62,10 @@
 - (void)setPunchoutPickerDismissText:(id)arg1;
 - (void)setPunchoutPickerTitle:(id)arg1;
 - (void)setSeparatorStyle:(int)arg1;
+- (void)setThumbnail:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (void)setType:(id)arg1;
+- (id)thumbnail;
 - (id)title;
 - (id)type;
 - (void)writeTo:(id)arg1;

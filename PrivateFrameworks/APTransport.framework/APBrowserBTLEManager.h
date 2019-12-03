@@ -14,7 +14,7 @@
     bool  _isInvalidated;
     bool  _isScanning;
     bool  _isSoloBeaconDisabled;
-    /* Warning: unhandled struct encoding: '{OpaqueAPBrowserBTLEManager={__CFRuntimeBase=QAQ}@}' */ struct OpaqueAPBrowserBTLEManager { struct __CFRuntimeBase { unsigned long long x_1_1_1; unsigned long long x_1_1_2; } x1; id x2; } * _managerRef;
+    struct OpaqueAPBrowserBTLEManager { struct __CFRuntimeBase { unsigned long long x_1_1_1; _Atomic unsigned long long x_1_1_2; } x1; id x2; } * _managerRef;
     bool  _p2pSoloSupported;
     bool  _p2pSoloSupportedIsSet;
     bool  _preferencesUpdated;
@@ -36,7 +36,7 @@
 @property (nonatomic) bool isInvalidated;
 @property (nonatomic) bool isScanning;
 @property (nonatomic) bool isSoloBeaconDisabled;
-@property (nonatomic) /* Warning: unhandled struct encoding: '{OpaqueAPBrowserBTLEManager={__CFRuntimeBase=QAQ}@}' */ struct OpaqueAPBrowserBTLEManager { struct __CFRuntimeBase { unsigned long long x_1_1_1; unsigned long long x_1_1_2; } x1; id x2; }*managerRef;
+@property (nonatomic) struct OpaqueAPBrowserBTLEManager { struct __CFRuntimeBase { unsigned long long x_1_1_1; _Atomic unsigned long long x_1_1_2; } x1; id x2; }*managerRef;
 @property (nonatomic) bool preferencesUpdated;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *queue;
 @property (nonatomic) NSObject<OS_dispatch_source> *staleDevicesTimer;
@@ -79,14 +79,14 @@
 - (bool)isInvalidated;
 - (bool)isScanning;
 - (bool)isSoloBeaconDisabled;
-- (/* Warning: unhandled struct encoding: '{OpaqueAPBrowserBTLEManager={__CFRuntimeBase=QAQ}@}' */ struct OpaqueAPBrowserBTLEManager { struct __CFRuntimeBase { unsigned long long x_1_1_1; unsigned long long x_1_1_2; } x1; id x2; }*)managerRef;
+- (struct OpaqueAPBrowserBTLEManager { struct __CFRuntimeBase { unsigned long long x_1_1_1; _Atomic unsigned long long x_1_1_2; } x1; id x2; }*)managerRef;
 - (unsigned long long)nearbySoloDevicesCount;
 - (bool)preferencesUpdated;
 - (id)queue;
 - (int)setBTLEMode:(unsigned short)arg1;
 - (void)setBtleClient:(id)arg1;
 - (void)setBtleDevices:(id)arg1;
-- (int)setEventHandler:(int (*)arg1 context:(void*)arg2 managerRef:(/* Warning: unhandled struct encoding: '{OpaqueAPBrowserBTLEManager={__CFRuntimeBase=QAQ}@}' */ struct OpaqueAPBrowserBTLEManager { struct __CFRuntimeBase { unsigned long long x_1_1_1; unsigned long long x_1_1_2; } x1; id x2; }*)arg3;
+- (int)setEventHandler:(int (*)arg1 context:(void*)arg2 managerRef:(struct OpaqueAPBrowserBTLEManager { struct __CFRuntimeBase { unsigned long long x_1_1_1; _Atomic unsigned long long x_1_1_2; } x1; id x2; }*)arg3;
 - (void)setEventHandlerContext:(void*)arg1;
 - (void)setEventHandlerFunc:(int (*)arg1;
 - (void)setIsAdvertising:(bool)arg1;
@@ -94,7 +94,7 @@
 - (void)setIsInvalidated:(bool)arg1;
 - (void)setIsScanning:(bool)arg1;
 - (void)setIsSoloBeaconDisabled:(bool)arg1;
-- (void)setManagerRef:(/* Warning: unhandled struct encoding: '{OpaqueAPBrowserBTLEManager={__CFRuntimeBase=QAQ}@}' */ struct OpaqueAPBrowserBTLEManager { struct __CFRuntimeBase { unsigned long long x_1_1_1; unsigned long long x_1_1_2; } x1; id x2; }*)arg1;
+- (void)setManagerRef:(struct OpaqueAPBrowserBTLEManager { struct __CFRuntimeBase { unsigned long long x_1_1_1; _Atomic unsigned long long x_1_1_2; } x1; id x2; }*)arg1;
 - (void)setPreferencesUpdated:(bool)arg1;
 - (void)setStaleDevicesTimer:(id)arg1;
 - (int)setSupportsSolo:(bool)arg1;

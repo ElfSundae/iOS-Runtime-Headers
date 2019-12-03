@@ -22,7 +22,6 @@
 - (void)dismissControlCenter;
 - (void)dismissModule;
 - (void)enqueueStatusUpdate:(id)arg1;
-- (void)expandedModuleDidUpdatePreferredSize;
 - (id)initWithModuleIdentifier:(id)arg1;
 - (id)moduleIdentifier;
 - (void)openApplication:(id)arg1 completionHandler:(id /* block */)arg2;

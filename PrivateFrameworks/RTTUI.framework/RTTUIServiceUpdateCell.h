@@ -10,7 +10,7 @@
 
 @property (nonatomic) <RTTUIServiceCellDelegate> *delegate;
 
-+ (double)heightForWidth:(double)arg1;
++ (double)heightForWidth:(double)arg1 withDelegate:(id)arg2;
 
 - (void).cxx_destruct;
 - (id)accessibilityLabel;

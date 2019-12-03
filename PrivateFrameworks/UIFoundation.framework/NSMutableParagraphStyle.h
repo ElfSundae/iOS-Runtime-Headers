@@ -32,6 +32,7 @@
 - (void)setAllowsDefaultTighteningForTruncation:(bool)arg1;
 - (void)setAllowsHangingPunctuation:(bool)arg1;
 - (void)setBaseWritingDirection:(long long)arg1;
+- (void)setCompositionLanguage:(long long)arg1;
 - (void)setDefaultTabInterval:(double)arg1;
 - (void)setFirstLineHeadIndent:(double)arg1;
 - (void)setHeadIndent:(double)arg1;
@@ -51,6 +52,7 @@
 - (void)setTextBlocks:(id)arg1;
 - (void)setTextLists:(id)arg1;
 - (void)setTighteningFactorForTruncation:(float)arg1;
+- (void)setUsesDefaultHyphenation:(bool)arg1;
 - (void)setUsesOpticalAlignment:(bool)arg1;
 
 // Image: /System/Library/PrivateFrameworks/ITMLKit.framework/ITMLKit

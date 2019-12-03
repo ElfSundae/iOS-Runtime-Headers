@@ -3,8 +3,8 @@
  */
 
 @interface NUQOSMeter : NSObject {
-    long long  _counts;
-    long long  _total;
+    _Atomic long long  _counts;
+    _Atomic long long  _total;
 }
 
 - (id)description;

@@ -8,7 +8,7 @@
     bool  _requiresCarrierManualVerification;
     bool  _shouldUseAccountLessStreaming;
     bool  _shouldUseLease;
-    id  _subscriptionStatusObject;
+    ICMusicSubscriptionStatus * _subscriptionStatusObject;
 }
 
 @property (getter=isDefinitiveInformation, nonatomic, readonly) bool definitiveInformation;
@@ -21,7 +21,6 @@
 - (id)description;
 - (bool)hasPlaybackCapability;
 - (id)initWithICSubscriptionStatus:(id)arg1;
-- (id)initWithSubscriptionStatus:(id)arg1;
 - (bool)isDefinitiveInformation;
 - (bool)requiresCarrierManualVerification;
 - (bool)shouldUseAccountLessStreaming;

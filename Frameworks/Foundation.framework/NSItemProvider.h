@@ -29,10 +29,14 @@
 @property (nonatomic) long long preferredPresentationStyle;
 @property (copy) id /* block */ previewImageHandler;
 @property (readonly, copy) NSArray *registeredTypeIdentifiers;
+@property (getter=sbui_isIgnored, setter=sbui_setIgnored:, nonatomic) bool sbui_ignored;
+@property (setter=sbui_setPreferredApplicationBundleIdentifier:, nonatomic, copy) NSString *sbui_preferredApplicationBundleIdentifier;
+@property (setter=sbui_setRequiredApplicationBundleIdentifier:, nonatomic, copy) NSString *sbui_requiredApplicationBundleIdentifier;
 @property (copy) NSString *suggestedName;
 @property (nonatomic, copy) NSData *teamData;
 @property (copy) NSDictionary *userInfo;
 @property (nonatomic, readonly) bool web_containsFileURLAndFileUploadContent;
+@property (nonatomic, readonly) NSArray *web_fileUploadContentTypes;
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
@@ -102,6 +106,12 @@
 - (id)suggestedName;
 - (id)userInfo;
 
+// Image: /System/Library/Frameworks/LinkPresentation.framework/LinkPresentation
+
++ (id)_lp_itemProviderWithData:(id)arg1 MIMEType:(id)arg2;
+
+- (void)_lp_loadFirstDataRepresentationMatchingMIMETypePredicate:(id /* block */)arg1 completionHandler:(id /* block */)arg2;
+
 // Image: /System/Library/Frameworks/Photos.framework/Photos
 
 - (id)initWithLivePhoto:(id)arg1;
@@ -116,10 +126,9 @@
 // Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
 
 + (id)_fileProviderItemProviderForAsset:(id)arg1;
-+ (id)_itemProviderForAsset:(id)arg1;
 + (void)_px_recursivelyCollectCollectionsIn:(id)arg1 fetchResult:(id)arg2;
-+ (id)_px_temporaryURLFromURL:(id)arg1;
 + (id)px_itemProviderForAsset:(id)arg1;
++ (id)px_itemProviderForDisplayAsset:(id)arg1;
 + (id)px_itemProvidersForCollection:(id)arg1;
 + (id)px_itemProvidersForFetchResult:(id)arg1;
 
@@ -132,14 +141,30 @@
 - (void)px_createAssetWithCompletionBlock:(id /* block */)arg1;
 - (void)px_createStreamShareSourceWithCompletionBlock:(id /* block */)arg1;
 
+// Image: /System/Library/PrivateFrameworks/SpringBoardUIServices.framework/SpringBoardUIServices
+
+- (bool)sbui_isIgnored;
+- (id)sbui_preferredApplicationBundleIdentifier;
+- (id)sbui_requiredApplicationBundleIdentifier;
+- (void)sbui_setIgnored:(bool)arg1;
+- (void)sbui_setPreferredApplicationBundleIdentifier:(id)arg1;
+- (void)sbui_setRequiredApplicationBundleIdentifier:(id)arg1;
+
 // Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 
 + (id)itemProviderWithURL:(id)arg1 title:(id)arg2;
 
 - (void)_NSItemProviderDidRegisterObject:(id)arg1;
+- (void)_addFileURLRepresentationIfPossible;
 - (Class)_highestFidelityClassForLoading:(id)arg1;
+- (id)_loadObjectOfClass:(Class)arg1 userInfo:(id)arg2 completionHandler:(id /* block */)arg3;
+- (id)dataAvailabilityByTypeIdentifier;
+- (bool)isDataAvailableImmediatelyForTypeIdentifier:(id)arg1;
 - (struct CGSize { double x1; double x2; })preferredPresentationSize;
 - (long long)preferredPresentationStyle;
+- (void)registerFileProviderItemForTypeIdentifier:(id)arg1 visibility:(long long)arg2 loadHandler:(id /* block */)arg3;
+- (void)registerFileRepresentationForTypeIdentifier:(id)arg1 dataAvailableImmediately:(bool)arg2 visibility:(long long)arg3 loadHandler:(id /* block */)arg4;
+- (void)setDataAvailability:(bool)arg1 forTypeIdentifier:(id)arg2;
 - (void)setPreferredPresentationSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setPreferredPresentationStyle:(long long)arg1;
 - (void)setTeamData:(id)arg1;

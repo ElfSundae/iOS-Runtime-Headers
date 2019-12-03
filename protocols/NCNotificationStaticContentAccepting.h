@@ -17,9 +17,15 @@
 @optional
 
 - (UIView *)accessoryView;
-- (unsigned long long)messageNumberOfLines;
+- (unsigned long long)maximumNumberOfPrimaryLargeTextLines;
+- (unsigned long long)maximumNumberOfPrimaryTextLines;
+- (unsigned long long)maximumNumberOfSecondaryLargeTextLines;
+- (unsigned long long)maximumNumberOfSecondaryTextLines;
 - (void)setAccessoryView:(UIView *)arg1;
-- (void)setMessageNumberOfLines:(unsigned long long)arg1;
+- (void)setMaximumNumberOfPrimaryLargeTextLines:(unsigned long long)arg1;
+- (void)setMaximumNumberOfPrimaryTextLines:(unsigned long long)arg1;
+- (void)setMaximumNumberOfSecondaryLargeTextLines:(unsigned long long)arg1;
+- (void)setMaximumNumberOfSecondaryTextLines:(unsigned long long)arg1;
 - (void)setSummaryText:(NSString *)arg1;
 - (void)setThumbnail:(UIImage *)arg1;
 - (NSString *)summaryText;

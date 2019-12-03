@@ -13,6 +13,7 @@
 @property (getter=isCriticalAlert, nonatomic) bool criticalAlert;
 @property (nonatomic, retain) NCNotificationAction *defaultAction;
 @property (nonatomic, copy) NSString *highestPrioritySubSectionIdentifier;
+@property (nonatomic, copy) NSArray *intentIdentifiers;
 @property (nonatomic) bool isCollapsedNotification;
 @property (nonatomic, copy) NSString *notificationIdentifier;
 @property (nonatomic, retain) NCNotificationOptions *options;
@@ -41,6 +42,7 @@
 - (void)setCriticalAlert:(bool)arg1;
 - (void)setDefaultAction:(id)arg1;
 - (void)setHighestPrioritySubSectionIdentifier:(id)arg1;
+- (void)setIntentIdentifiers:(id)arg1;
 - (void)setIsCollapsedNotification:(bool)arg1;
 - (void)setNotificationIdentifier:(id)arg1;
 - (void)setOptions:(id)arg1;

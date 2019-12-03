@@ -4,8 +4,6 @@
 
 @interface SXScaleComponentAnimation : SXComponentAnimation
 
-+ (id)typeString;
-
 - (Class)handlerClass;
 
 @end

@@ -26,6 +26,7 @@
 
 // Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon
 
+- (id)_filterIgnoringActivityCacheIndexFilter;
 - (id)predicateWithProfile:(id)arg1;
 
 @end

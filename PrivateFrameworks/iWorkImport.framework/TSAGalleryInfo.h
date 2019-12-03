@@ -16,7 +16,7 @@
 @property (nonatomic, readonly) bool autoListTermination;
 @property (nonatomic) long long captionMode;
 @property (nonatomic, readonly) TSWPStorage *captionStorage;
-@property (nonatomic, readonly) NSArray *childInfos;
+@property (nonatomic, readonly, copy) NSArray *childInfos;
 @property (nonatomic, readonly) NSArray *containedModels;
 @property (nonatomic, readonly) long long contentWritingDirection;
 @property (readonly, copy) NSString *debugDescription;
@@ -25,6 +25,7 @@
 @property (nonatomic, copy) TSDInfoGeometry *geometry;
 @property (readonly) unsigned long long hash;
 @property (getter=isInlineWithText, nonatomic, readonly) bool inlineWithText;
+@property (nonatomic, readonly) bool isMaster;
 @property (nonatomic, copy) NSArray *items;
 @property (nonatomic) bool matchesObjectPlaceholderGeometry;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
@@ -34,13 +35,13 @@
 @property (nonatomic, readonly) bool preventsComments;
 @property (nonatomic, readonly) bool storageChangesInvalidateWrap;
 @property (readonly) Class superclass;
-@property (nonatomic, readonly) bool supportsCollaborativeEditing;
 @property (nonatomic, readonly) bool supportsMultipleColumns;
 @property (nonatomic, readonly) bool textIsLinked;
 
 + (void)addDefaultGalleryCaptionParagraphStyleIfNeededWithFontSize:(double)arg1 toStylesheet:(id)arg2;
 + (id)defaultGalleryCaptionParagraphStyleInStylesheet:(id)arg1;
 + (Class)drawableInfoSubclassForClass:(Class)arg1 unarchiver:(id)arg2;
++ (void)i_configureCaptionStorage:(id)arg1;
 + (id)i_newCaptionStorageWithContext:(id)arg1;
 + (id)p_defaultCaptionParagraphStylePropertiesWithFontSize:(double)arg1;
 + (id)p_overrideCaptionParagraphStyleIdentifier;
@@ -53,6 +54,7 @@
 - (id)animationFilters;
 - (bool)autoListRecognition;
 - (bool)autoListTermination;
+- (bool)canCopyData;
 - (long long)captionMode;
 - (id)captionStorage;
 - (id)childEnumerator;
@@ -70,7 +72,7 @@
 - (bool)isSelectable;
 - (id)items;
 - (Class)layoutClass;
-- (void)loadFromArchive:(const struct ImageArchive { int (**x1)(); struct ExtensionSet { struct Arena {} *x_2_1_1; unsigned short x_2_1_2; unsigned short x_2_1_3; union AllocatedData { struct KeyValue {} *x_4_2_1; struct map<int, google::protobuf::internal::ExtensionSet::Extension, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, google::protobuf::internal::ExtensionSet::Extension> > > {} *x_4_2_2; } x_2_1_4; } x2; struct InternalMetadataWithArena { void *x_3_1_1; } x3; struct HasBits<1> { unsigned int x_4_1_1[1]; } x4; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_5_1_1; } x5; struct DrawableArchive {} *x6; struct Reference {} *x7; struct Reference {} *x8; struct Size {} *x9; struct Reference {} *x10; struct Reference {} *x11; struct Reference {} *x12; struct Size {} *x13; struct Path {} *x14; struct DataReference {} *x15; struct DataReference {} *x16; struct DataReference {} *x17; struct ImageAdjustmentsArchive {} *x18; struct DataReference {} *x19; struct DataReference {} *x20; struct DataReference {} *x21; struct Path {} *x22; struct Attribution {} *x23; }*)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const struct ImageArchive { int (**x1)(); struct ExtensionSet { struct Arena {} *x_2_1_1; unsigned short x_2_1_2; unsigned short x_2_1_3; union AllocatedData { struct KeyValue {} *x_4_2_1; struct map<int, google::protobuf::internal::ExtensionSet::Extension, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, google::protobuf::internal::ExtensionSet::Extension> > > {} *x_4_2_2; } x_2_1_4; } x2; struct InternalMetadataWithArena { void *x_3_1_1; } x3; struct HasBits<1> { unsigned int x_4_1_1[1]; } x4; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_5_1_1; } x5; struct DrawableArchive {} *x6; struct Reference {} *x7; struct Reference {} *x8; struct Size {} *x9; struct Reference {} *x10; struct Reference {} *x11; struct Reference {} *x12; struct Size {} *x13; struct Path {} *x14; struct DataReference {} *x15; struct DataReference {} *x16; struct DataReference {} *x17; struct ImageAdjustmentsArchive {} *x18; struct DataReference {} *x19; struct DataReference {} *x20; struct DataReference {} *x21; struct Path {} *x22; }*)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
@@ -80,7 +82,7 @@
 - (bool)preventsComments;
 - (void)removeContainedModel:(id)arg1;
 - (Class)repClass;
-- (void)saveToArchive:(struct ImageArchive { int (**x1)(); struct ExtensionSet { struct Arena {} *x_2_1_1; unsigned short x_2_1_2; unsigned short x_2_1_3; union AllocatedData { struct KeyValue {} *x_4_2_1; struct map<int, google::protobuf::internal::ExtensionSet::Extension, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, google::protobuf::internal::ExtensionSet::Extension> > > {} *x_4_2_2; } x_2_1_4; } x2; struct InternalMetadataWithArena { void *x_3_1_1; } x3; struct HasBits<1> { unsigned int x_4_1_1[1]; } x4; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_5_1_1; } x5; struct DrawableArchive {} *x6; struct Reference {} *x7; struct Reference {} *x8; struct Size {} *x9; struct Reference {} *x10; struct Reference {} *x11; struct Reference {} *x12; struct Size {} *x13; struct Path {} *x14; struct DataReference {} *x15; struct DataReference {} *x16; struct DataReference {} *x17; struct ImageAdjustmentsArchive {} *x18; struct DataReference {} *x19; struct DataReference {} *x20; struct DataReference {} *x21; struct Path {} *x22; struct Attribution {} *x23; }*)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(struct ImageArchive { int (**x1)(); struct ExtensionSet { struct Arena {} *x_2_1_1; unsigned short x_2_1_2; unsigned short x_2_1_3; union AllocatedData { struct KeyValue {} *x_4_2_1; struct map<int, google::protobuf::internal::ExtensionSet::Extension, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, google::protobuf::internal::ExtensionSet::Extension> > > {} *x_4_2_2; } x_2_1_4; } x2; struct InternalMetadataWithArena { void *x_3_1_1; } x3; struct HasBits<1> { unsigned int x_4_1_1[1]; } x4; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_5_1_1; } x5; struct DrawableArchive {} *x6; struct Reference {} *x7; struct Reference {} *x8; struct Size {} *x9; struct Reference {} *x10; struct Reference {} *x11; struct Reference {} *x12; struct Size {} *x13; struct Path {} *x14; struct DataReference {} *x15; struct DataReference {} *x16; struct DataReference {} *x17; struct ImageAdjustmentsArchive {} *x18; struct DataReference {} *x19; struct DataReference {} *x20; struct DataReference {} *x21; struct Path {} *x22; }*)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)setCaptionMode:(long long)arg1;
 - (void)setCaptionStorage:(id)arg1;

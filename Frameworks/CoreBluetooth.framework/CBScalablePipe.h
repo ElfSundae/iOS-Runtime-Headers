@@ -6,7 +6,6 @@
     CBCentral * _central;
     void * _channel;
     NSInputStream * _input;
-    long long  _mtu;
     NSString * _name;
     NSOutputStream * _output;
     CBPeer * _peer;
@@ -20,7 +19,6 @@
 @property (nonatomic, readonly) CBCentral *central;
 @property (nonatomic, readonly) void*channel;
 @property (nonatomic, readonly) NSInputStream *input;
-@property (nonatomic, readonly) long long mtu;
 @property (nonatomic, readonly) NSString *name;
 @property (nonatomic, readonly) NSOutputStream *output;
 @property (nonatomic, readonly) CBPeer *peer;
@@ -35,7 +33,6 @@
 - (id)description;
 - (id)initWithPipeManager:(id)arg1 info:(id)arg2;
 - (id)input;
-- (long long)mtu;
 - (id)name;
 - (id)output;
 - (id)peer;

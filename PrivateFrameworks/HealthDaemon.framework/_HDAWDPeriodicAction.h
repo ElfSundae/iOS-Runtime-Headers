@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon
  */
 
-@interface _HDAWDPeriodicAction : NSObject <_HDAWDAction> {
+@interface _HDAWDPeriodicAction : NSObject <HDPeriodicActivityDelegate> {
     id /* block */  _block;
     long long  _graceInterval;
     long long  _intervalCounter;
@@ -14,12 +14,13 @@
     NSString * _lastSubmissionAttemptKey;
     long long  _maximumAttemptCount;
     double  _minimumDelayBetweenAttempts;
+    HDPeriodicActivity * _periodicActivity;
     HDAssertion * _preparedDatabaseAccessibilityAssertion;
     HDProfile * _profile;
     NSObject<OS_dispatch_queue> * _queue;
     long long  _repeatInterval;
     bool  _requiresClassB;
-    const char * _taskName;
+    NSString * _taskName;
     long long  _waitingToRun;
     NSString * _waitingToRunKey;
 }
@@ -31,12 +32,12 @@
 @property (nonatomic, readonly) NSDate *lastProcessedDate;
 @property (nonatomic, readonly) NSDate *lastSubmissionAttemptDate;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly, copy) NSString *taskName;
 @property (nonatomic, readonly) long long waitingToRun;
 
 - (void).cxx_destruct;
 - (void)_beginWaitingToRun;
 - (void)_loadState;
-- (void)_performActivity:(id)arg1;
 - (void)_queue_prepareAccessibilityAssertionIfNeeded;
 - (void)_queue_registerActivity;
 - (void)_queue_setIntervalCounter:(long long)arg1;
@@ -47,12 +48,14 @@
 - (bool)_runBlockWithAccessibilityAssertion:(id)arg1 error:(id*)arg2;
 - (void)dealloc;
 - (bool)doForced;
-- (void)doIfWaiting;
 - (void)doIfWaitingOnMaintenanceQueueWithCompletion:(id /* block */)arg1;
-- (id)initWithTaskName:(char *)arg1 keyPrefix:(id)arg2 xpcInterval:(long long)arg3 xpcGraceInterval:(long long)arg4 requiresClassB:(bool)arg5 intervalMultiple:(long long)arg6 maximumAttemptCount:(long long)arg7 minimumDelayBetweenAttempts:(double)arg8 profile:(id)arg9 block:(id /* block */)arg10;
+- (bool)doIfWaitingWithError:(id*)arg1;
+- (id)initWithTaskName:(id)arg1 keyPrefix:(id)arg2 xpcInterval:(long long)arg3 xpcGraceInterval:(long long)arg4 requiresClassB:(bool)arg5 intervalMultiple:(long long)arg6 maximumAttemptCount:(long long)arg7 minimumDelayBetweenAttempts:(double)arg8 profile:(id)arg9 block:(id /* block */)arg10;
 - (long long)intervalCounter;
 - (id)lastProcessedDate;
 - (id)lastSubmissionAttemptDate;
+- (void)performPeriodicActivity:(id)arg1 completion:(id /* block */)arg2;
+- (void)periodicActivity:(id)arg1 configureXPCActivityCriteria:(id)arg2;
 - (void)reset;
 - (void)setLastProcessedDate:(id)arg1;
 - (void)start;

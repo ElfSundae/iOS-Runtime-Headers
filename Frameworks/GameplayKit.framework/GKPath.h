@@ -4,7 +4,7 @@
 
 @interface GKPath : NSObject {
     struct PolylinePathway { 
-        int (**_vptr$PolylinePathway)(); 
+        int (**_vptr$Pathway)(); 
         int pointCount; 
         struct Vec3 {} *points; 
         float radius; 

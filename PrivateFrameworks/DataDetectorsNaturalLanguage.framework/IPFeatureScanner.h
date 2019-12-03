@@ -11,7 +11,7 @@
     NSMutableArray * _detectedEvents;
     NSMutableSet * _extractedNotesStrings;
     NSArray * _filteredDetectedEvents;
-    unsigned long long  _resultType;
+    long long  _resultType;
     NSArray * _stitchedEvents;
 }
 
@@ -23,13 +23,14 @@
 @property (retain) NSMutableArray *detectedEvents;
 @property (retain) NSMutableSet *extractedNotesStrings;
 @property (retain) NSArray *filteredDetectedEvents;
-@property unsigned long long resultType;
+@property long long resultType;
 @property (retain) NSArray *stitchedEvents;
 
 + (id)dataDetectorsFeatureExtractor;
-+ (id)descriptionForScanResultType:(unsigned long long)arg1;
++ (id)descriptionForScanResultType:(long long)arg1;
 + (bool)isNaturalLanguageEventDetectionEnabled;
 + (id)keywordFeatureExtractor;
++ (void)resetSharedCachesAndModels;
 + (id)sentenceFeatureExtractor;
 + (void)setEventStoreForTesting:(id)arg1;
 
@@ -83,7 +84,7 @@
 - (id)notesStringsFromDataFeatures:(id)arg1;
 - (void)resetScanState;
 - (id)restaurantAndBarPOINamesFromDataFeatures:(id)arg1;
-- (unsigned long long)resultType;
+- (long long)resultType;
 - (void)scanEventsInMessageUnits:(id)arg1 synchronously:(bool)arg2 completionHandler:(id /* block */)arg3;
 - (void)setBodyAllFeatures:(id)arg1;
 - (void)setBodyDataDetectorsFeatures:(id)arg1;
@@ -93,7 +94,7 @@
 - (void)setDetectedEvents:(id)arg1;
 - (void)setExtractedNotesStrings:(id)arg1;
 - (void)setFilteredDetectedEvents:(id)arg1;
-- (void)setResultType:(unsigned long long)arg1;
+- (void)setResultType:(long long)arg1;
 - (void)setStitchedEvents:(id)arg1;
 - (id)shortNameForPerson:(id)arg1;
 - (bool)shouldReplaceSendDateWithCurrentDate;

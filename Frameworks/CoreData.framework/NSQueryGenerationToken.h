@@ -11,6 +11,7 @@
 + (id)unpinnedQueryGenerationToken;
 
 - (id)_generationalComponentForStore:(id)arg1;
+- (bool)_isEnabled;
 - (bool)_isUnmoored;
 - (id)_storeIdentifier;
 - (id)_storesForRequestRoutingFrom:(id)arg1 error:(id*)arg2;

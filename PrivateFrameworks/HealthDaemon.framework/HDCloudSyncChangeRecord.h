@@ -11,10 +11,12 @@
 }
 
 @property (nonatomic, readonly) unsigned long long changeIndex;
-@property (nonatomic, readonly) NSURL *changesetArchiveFileURL;
+@property (nonatomic, readonly, copy) NSNumber *changeSize;
+@property (nonatomic, readonly, copy) NSURL *changesetArchiveFileURL;
 @property (nonatomic, readonly) HDSyncAnchorRangeMap *decodedSyncAnchorRangeMap;
 @property (nonatomic, readonly) bool finalForSequence;
 @property (nonatomic, readonly) int protocolVersion;
+@property (nonatomic, readonly, copy) CKRecordID *sequenceRecordID;
 
 + (id)_assetForCKRecord:(id)arg1 error:(id*)arg2;
 + (id)assetKeys;
@@ -31,14 +33,17 @@
 - (void).cxx_destruct;
 - (id)_decodedSyncAnchorRangeMapForAnchorRangeData:(id)arg1;
 - (unsigned long long)changeIndex;
+- (id)changeSize;
 - (id)changesetArchiveFileURL;
 - (long long)compare:(id)arg1;
 - (id)decodedSyncAnchorRangeMap;
 - (id)description;
 - (bool)finalForSequence;
 - (id)initWithSyncAnchorRangeMap:(id)arg1 finalForSequence:(bool)arg2 changesetArchiveFileHandle:(id)arg3 sequenceRecord:(id)arg4;
-- (id)initWithSyncAnchorRangeMapData:(id)arg1 changeIndex:(unsigned long long)arg2 changesetAsset:(id)arg3 protocolVersion:(int)arg4 options:(id)arg5 sequenceRecordID:(id)arg6 record:(id)arg7 schemaVersion:(long long)arg8;
+- (id)initWithSyncAnchorRangeMap:(id)arg1 finalForSequence:(bool)arg2 changesetArchiveFileHandle:(id)arg3 sequenceRecord:(id)arg4 protocolVersion:(int)arg5;
+- (id)initWithSyncAnchorRangeMapData:(id)arg1 changeIndex:(unsigned long long)arg2 changesetAsset:(id)arg3 changeSize:(id)arg4 protocolVersion:(int)arg5 options:(id)arg6 sequenceRecordID:(id)arg7 record:(id)arg8 schemaVersion:(long long)arg9;
 - (int)protocolVersion;
+- (id)sequenceRecordID;
 - (bool)shouldFetchAssetContentInMemory;
 
 @end

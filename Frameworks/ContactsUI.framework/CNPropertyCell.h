@@ -28,6 +28,7 @@
 @property (nonatomic, readonly) CNPropertyGroupItem *propertyItem;
 @property (getter=isSuggested, nonatomic, readonly) bool suggested;
 @property (nonatomic, readonly) bool supportsTintColorValue;
+@property (nonatomic, readonly) bool supportsValueColorUsesLabelColor;
 
 + (id)labelStringFromAppName:(id)arg1 andPropertyLabel:(id)arg2;
 
@@ -62,6 +63,7 @@
 - (void)setPropertyItem:(id)arg1;
 - (bool)shouldShowSuggestionOrigin;
 - (bool)supportsTintColorValue;
+- (bool)supportsValueColorUsesLabelColor;
 - (void)tintColorDidChange;
 - (void)updateValueWithPropertyItem:(id)arg1;
 - (void)updateWithPropertyItem:(id)arg1;

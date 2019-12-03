@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CloudDocs.framework/CloudDocs
  */
 
-@interface BRQueryItem : NSObject <NSCopying, NSFileProviderItem_Private, NSSecureCoding> {
+@interface BRQueryItem : NSObject <NSCopying, NSFileProviderItemDecorating, NSFileProviderItem_Private, NSSecureCoding> {
     NSString * _appLibraryID;
     NSMutableDictionary * _attrs;
     NSString * _bookmarkData;
@@ -61,6 +61,7 @@
 @property (nonatomic, readonly, copy) NSDate *contentModificationDate;
 @property (nonatomic, readonly, copy) NSDate *creationDate;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic, readonly) NSArray *decorations;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) unsigned short diffs;
 @property (nonatomic, readonly, copy) NSString *displayName;
@@ -69,13 +70,23 @@
 @property (getter=isDownloaded, nonatomic, readonly) bool downloaded;
 @property (getter=isDownloading, nonatomic, readonly) bool downloading;
 @property (nonatomic, readonly, copy) NSError *downloadingError;
+@property (getter=isExcludedFromSync, nonatomic, readonly) bool excludedFromSync;
+@property (nonatomic, readonly) NSDictionary *extendedAttributes;
 @property (nonatomic, readonly) NSNumber *favoriteRank;
 @property (nonatomic, readonly) BRFileObjectID *fileObjectID;
+@property (readonly, copy) NSString *fileSystemFilename;
 @property (readonly, copy) NSURL *fileURL;
 @property (nonatomic, readonly, copy) NSString *filename;
-@property (readonly, copy) NSString *fp_appContainerBundleIdentifier;
+@property (nonatomic, readonly) <NSFileProviderItemFlags> *flags;
+@property (getter=fp_isAddedByCurrentUser, nonatomic, readonly) bool fp_addedByCurrentUser;
+@property (nonatomic, readonly) NSPersonNameComponents *fp_addedByNameComponents;
+@property (readonly, copy) NSSet *fp_cloudContainerClientBundleIdentifiers;
+@property (readonly, copy) NSString *fp_cloudContainerIdentifier;
 @property (readonly, copy) NSString *fp_domainIdentifier;
 @property (readonly) bool fp_isContainer;
+@property (readonly) bool fp_isContainerPristine;
+@property (getter=fp_isLastModifiedByCurrentUser, nonatomic, readonly) bool fp_lastModifiedByCurrentUser;
+@property (readonly, copy) NSString *fp_parentDomainIdentifier;
 @property (readonly, copy) NSString *fp_spotlightDomainIdentifier;
 @property (getter=fp_isUbiquitous, readonly) bool fp_ubiquitous;
 @property (readonly, copy) NSNumber *hasUnresolvedConflicts;
@@ -97,6 +108,7 @@
 @property (nonatomic, readonly) bool isTrashed;
 @property (nonatomic, readonly) bool isUploadActive;
 @property (nonatomic, readonly, copy) NSString *itemIdentifier;
+@property (nonatomic, readonly) NSFileProviderItemVersion *itemVersion;
 @property (nonatomic, readonly, copy) NSDate *lastUsedDate;
 @property (nonatomic, readonly) NSNumber *lastUsedTime;
 @property (nonatomic, readonly) NSURL *localRepresentationURL;
@@ -119,7 +131,7 @@
 @property (nonatomic, readonly) NSNumber *size;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly, copy) NSData *tagData;
-@property (readonly, copy) NSArray *tags;
+@property (getter=isTopLevelSharedItem, nonatomic, readonly) bool topLevelSharedItem;
 @property (getter=isTrashed, nonatomic, readonly) bool trashed;
 @property (nonatomic, readonly, copy) NSString *typeIdentifier;
 @property (getter=isUploaded, nonatomic, readonly) bool uploaded;
@@ -162,6 +174,7 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)creationDate;
 - (void)dealloc;
+- (id)decorations;
 - (id)description;
 - (unsigned short)diffs;
 - (id)displayName;
@@ -175,7 +188,7 @@
 - (id)fileSize;
 - (id)fileURL;
 - (id)filename;
-- (id)fp_appContainerBundleIdentifier;
+- (id)fp_cloudContainerIdentifier;
 - (bool)fp_isContainer;
 - (id)fp_spotlightDomainIdentifier;
 - (id)hasUnresolvedConflicts;

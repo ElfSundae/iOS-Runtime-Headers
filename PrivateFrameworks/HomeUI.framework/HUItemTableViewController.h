@@ -14,6 +14,7 @@
     HFItemManager * _itemManager;
     HUItemTableViewScrollDestination * _pendingScrollDestination;
     NSMutableSet * _registeredCellClasses;
+    bool  _shouldUseAlternateCellColor;
     NSMapTable * _textFieldToCellMap;
     bool  _viewHasAppeared;
     bool  _visibilityUpdatesEnabled;
@@ -35,6 +36,7 @@
 @property (nonatomic, retain) HFItemManager *itemManager;
 @property (nonatomic, retain) HUItemTableViewScrollDestination *pendingScrollDestination;
 @property (nonatomic, readonly) NSMutableSet *registeredCellClasses;
+@property (nonatomic) bool shouldUseAlternateCellColor;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSMapTable *textFieldToCellMap;
 @property (nonatomic) bool viewHasAppeared;
@@ -52,7 +54,9 @@
 - (void)_scrollToDestination:(id)arg1;
 - (bool)_shouldHideFooterForSection:(long long)arg1;
 - (bool)_shouldHideHeaderForSection:(long long)arg1;
+- (void)_transformViewControllerForRequest:(id)arg1;
 - (void)_updateLayoutMarginsForCells:(id)arg1;
+- (void)_updatePreferredContentSizeIfNecessary;
 - (void)_updateTableHeaderAndFooter;
 - (void)_updateTitle;
 - (id)_visibleCellForItem:(id)arg1;
@@ -67,6 +71,7 @@
 - (id)currentTextForTextField:(id)arg1 item:(id)arg2;
 - (id)defaultTextForTextField:(id)arg1 item:(id)arg2;
 - (id)deferredVisibilityUpdate;
+- (id)description;
 - (void)executionEnvironmentRunningStateDidChange:(id)arg1;
 - (id)foregroundUpdateFutures;
 - (id)gridLayoutOptions;
@@ -93,6 +98,7 @@
 - (void)itemManager:(id)arg1 didUpdateResultsForSourceItem:(id)arg2;
 - (id)itemManager:(id)arg1 futureToUpdateItems:(id)arg2 itemUpdateOptions:(id)arg3;
 - (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
+- (void)itemManagerDidFinishUpdate:(id)arg1;
 - (id)itemModuleControllers;
 - (id)itemTableFooterMessage;
 - (id)itemTableFooterView;
@@ -100,12 +106,15 @@
 - (id)itemTableHeaderView;
 - (id)moduleController:(id)arg1 dismissViewControllerForRequest:(id)arg2;
 - (id)moduleController:(id)arg1 presentViewControllerForRequest:(id)arg2;
+- (id)moduleController:(id)arg1 textFieldForVisibleItem:(id)arg2;
 - (id)moduleControllerForItem:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)pendingScrollDestination;
 - (id)placeholderTextForTextField:(id)arg1 item:(id)arg2;
+- (id)presentingViewControllerForModuleController:(id)arg1;
 - (void)recursivelyDisableItemUpdates:(bool)arg1 withReason:(id)arg2;
 - (id)registeredCellClasses;
+- (void)reloadCellForItems:(id)arg1;
 - (void)scrollToItem:(id)arg1 animated:(bool)arg2;
 - (void)setAppearState:(unsigned long long)arg1;
 - (void)setAutomaticallyUpdatesViewControllerTitle:(bool)arg1;
@@ -116,6 +125,7 @@
 - (void)setHasForcedLoadingVisibleCells:(bool)arg1;
 - (void)setItemManager:(id)arg1;
 - (void)setPendingScrollDestination:(id)arg1;
+- (void)setShouldUseAlternateCellColor:(bool)arg1;
 - (void)setViewHasAppeared:(bool)arg1;
 - (void)setVisibilityUpdatesEnabled:(bool)arg1;
 - (void)setWantsPreferredContentSize:(bool)arg1;
@@ -124,6 +134,7 @@
 - (bool)shouldHideHeaderAboveSection:(long long)arg1;
 - (bool)shouldHideSeparatorsForCell:(id)arg1 indexPath:(id)arg2;
 - (bool)shouldManageTextFieldForItem:(id)arg1;
+- (bool)shouldUseAlternateCellColor;
 - (void)tableView:(id)arg1 accessoryButtonTappedForRowWithIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didEndDisplayingCell:(id)arg2 forRowAtIndexPath:(id)arg3;

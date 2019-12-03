@@ -8,7 +8,7 @@
     int  _localRTPSocket;
     NSObject<OS_dispatch_queue> * _propertyQueue;
     <HMDCameraRemoteStreamProtocol> * _sessionHandler;
-    HMDCameraSessionID * _sessionID;
+    HMDCameraStreamSessionID * _sessionID;
     unsigned long long  _streamInterfaceState;
     NSObject<OS_dispatch_queue> * _workQueue;
 }
@@ -21,7 +21,7 @@
 @property (nonatomic) int localRTPSocket;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *propertyQueue;
 @property (nonatomic, readonly) <HMDCameraRemoteStreamProtocol> *sessionHandler;
-@property (nonatomic, readonly) HMDCameraSessionID *sessionID;
+@property (nonatomic, readonly) HMDCameraStreamSessionID *sessionID;
 @property (nonatomic) unsigned long long streamInterfaceState;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *workQueue;

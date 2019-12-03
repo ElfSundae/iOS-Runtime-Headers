@@ -33,9 +33,9 @@
 - (void)setWorldState:(id)arg1;
 - (id)unFilteredActions;
 - (void)updateLockscreenIfNeededOldAction:(id)arg1 newAction:(id)arg2 actionResponse:(id)arg3;
+- (void)updateOnDiskCache;
 - (id)worldState;
 - (void)writeToDisk;
 - (void)writeToDiskActions:(id)arg1;
-- (bool)writeToDiskIfNeeded;
 
 @end

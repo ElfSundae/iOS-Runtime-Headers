@@ -4,28 +4,21 @@
 
 @interface CPLNetworkWatcher : NSObject {
     <CPLNetworkWatcherDelegate> * _delegate;
-    unsigned long long  _networkState;
+    NSString * _endPoint;
+    NSObject<OS_nw_path_monitor> * _monitor;
+    CPLNetworkState * _networkState;
     NSObject<OS_dispatch_queue> * _queue;
-    struct __SCNetworkReachability { } * _reachability;
-    unsigned int  _reachabilityFlags;
 }
 
 @property (nonatomic) <CPLNetworkWatcherDelegate> *delegate;
 @property (nonatomic, readonly) NSString *endPoint;
-@property (nonatomic, readonly) unsigned long long networkState;
-
-+ (id)_descriptionForNetworkState:(unsigned long long)arg1;
+@property (nonatomic, readonly) CPLNetworkState *networkState;
 
 - (void).cxx_destruct;
-- (const char *)_reachabilityEndPoint;
-- (void)_reachabilityFlagsDidChange:(unsigned int)arg1;
-- (void)_setupReachability;
-- (void)_teardownReachability;
-- (void)_updateState:(unsigned long long)arg1;
 - (id)delegate;
 - (id)endPoint;
 - (id)initWithQueue:(id)arg1;
-- (unsigned long long)networkState;
+- (id)networkState;
 - (void)setDelegate:(id)arg1;
 - (void)start;
 - (void)stop;

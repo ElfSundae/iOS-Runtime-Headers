@@ -3,7 +3,7 @@
  */
 
 @interface CIRectangleDetector : CIDetector {
-    struct { int (*x1)(); int (*x2)(); int (*x3)(); int (*x4)(); } * CVMLFuncs;
+    struct { int (*x1)(); int (*x2)(); int (*x3)(); int (*x4)(); int (*x5)(); } * CVMLFuncs;
     double  _height;
     struct vImage_Buffer { void *x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; } * _internalBuffer;
     float * _perMeshPtr;

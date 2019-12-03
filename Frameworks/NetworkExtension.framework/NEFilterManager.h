@@ -11,6 +11,7 @@
 @property (retain) NEConfiguration *configuration;
 @property (readonly) NEConfigurationManager *configurationManager;
 @property (getter=isEnabled) bool enabled;
+@property long long grade;
 @property bool hasLoaded;
 @property (copy) NSString *localizedDescription;
 @property (retain) NEFilterProviderConfiguration *providerConfiguration;
@@ -23,6 +24,7 @@
 - (void)createEmptyConfiguration;
 - (id)description;
 - (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;
+- (long long)grade;
 - (bool)hasLoaded;
 - (id)init;
 - (id)initFilterManagerWithPluginType:(id)arg1;
@@ -34,6 +36,7 @@
 - (void)saveToPreferencesWithCompletionHandler:(id /* block */)arg1;
 - (void)setConfiguration:(id)arg1;
 - (void)setEnabled:(bool)arg1;
+- (void)setGrade:(long long)arg1;
 - (void)setHasLoaded:(bool)arg1;
 - (void)setLocalizedDescription:(id)arg1;
 - (void)setProviderConfiguration:(id)arg1;

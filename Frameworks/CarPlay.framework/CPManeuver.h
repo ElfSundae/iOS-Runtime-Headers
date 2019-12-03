@@ -4,6 +4,7 @@
 
 @interface CPManeuver : NSObject <NSCopying, NSSecureCoding> {
     NSArray * _attributedInstructionVariants;
+    long long  _displayStyle;
     NSUUID * _identifier;
     CPTravelEstimates * _initialTravelEstimates;
     NSArray * _instructionVariants;
@@ -19,6 +20,7 @@
 }
 
 @property (nonatomic, copy) NSArray *attributedInstructionVariants;
+@property (nonatomic) long long displayStyle;
 @property (nonatomic, readonly) NSUUID *identifier;
 @property (nonatomic, retain) CPTravelEstimates *initialTravelEstimates;
 @property (nonatomic, copy) NSArray *instructionVariants;
@@ -29,6 +31,7 @@
 @property (nonatomic) unsigned long long maneuverType;
 @property (nonatomic, copy) NSArray *roadFollowingManeuverVariants;
 @property (readonly) NSArray *stringInstructionVariants;
+@property (nonatomic, retain) UIImage *symbolImage;
 @property (nonatomic, retain) CPImageSet *symbolSet;
 @property (nonatomic) unsigned long long trafficSide;
 @property (nonatomic, retain) id userInfo;
@@ -42,6 +45,7 @@
 - (id)attributedInstructionVariants;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
+- (long long)displayStyle;
 - (void)encodeWithCoder:(id)arg1;
 - (id)identifier;
 - (id)init;
@@ -55,6 +59,7 @@
 - (unsigned long long)maneuverType;
 - (id)roadFollowingManeuverVariants;
 - (void)setAttributedInstructionVariants:(id)arg1;
+- (void)setDisplayStyle:(long long)arg1;
 - (void)setInitialTravelEstimates:(id)arg1;
 - (void)setInstructionVariants:(id)arg1;
 - (void)setJunctionElementAngles:(id)arg1;
@@ -63,10 +68,12 @@
 - (void)setJunctionType:(unsigned long long)arg1;
 - (void)setManeuverType:(unsigned long long)arg1;
 - (void)setRoadFollowingManeuverVariants:(id)arg1;
+- (void)setSymbolImage:(id)arg1;
 - (void)setSymbolSet:(id)arg1;
 - (void)setTrafficSide:(unsigned long long)arg1;
 - (void)setUserInfo:(id)arg1;
 - (id)stringInstructionVariants;
+- (id)symbolImage;
 - (id)symbolSet;
 - (unsigned long long)trafficSide;
 - (id)userInfo;

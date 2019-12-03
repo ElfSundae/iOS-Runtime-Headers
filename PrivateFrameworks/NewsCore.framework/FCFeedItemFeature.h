@@ -14,8 +14,6 @@
 @property (nonatomic, readonly) long long type;
 
 + (id)featureForAllArticles;
-+ (id)featureForCoverArt;
-+ (id)featureForPaidCoverArt;
 + (id)featureForTopicID:(id)arg1;
 
 - (void).cxx_destruct;

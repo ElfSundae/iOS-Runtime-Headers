@@ -10,6 +10,8 @@
 
 @property (nonatomic, copy) NSString *separator;
 
+// Image: /System/Library/PrivateFrameworks/ContactsFoundation.framework/ContactsFoundation
+
 + (id)descriptionBuilderWithObject:(id)arg1;
 + (id)descriptionForObject:(id)arg1 withNamesAndObjects:(id)arg2;
 
@@ -33,5 +35,9 @@
 - (id)separator;
 - (void)setSeparator:(id)arg1;
 - (void)tryAppendKey:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/vCard.framework/vCard
+
+- (id)appendName:(id)arg1 vCardOutputVersionValue:(unsigned long long)arg2;
 
 @end

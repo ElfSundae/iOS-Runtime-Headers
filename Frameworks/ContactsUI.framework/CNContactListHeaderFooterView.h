@@ -6,11 +6,12 @@
     UIVisualEffectView * _visualEffectView;
 }
 
-@property (nonatomic, readonly) UIVisualEffectView *visualEffectView;
+@property (nonatomic, retain) UIVisualEffectView *visualEffectView;
 
 - (void).cxx_destruct;
-- (id)initWithReuseIdentifier:(id)arg1;
 - (void)layoutSubviews;
+- (void)prepareForReuse;
+- (void)setVisualEffectView:(id)arg1;
 - (id)visualEffectView;
 
 @end

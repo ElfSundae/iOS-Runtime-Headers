@@ -12,6 +12,7 @@
 - (void)donationActionStoreDidFinishLoadingData;
 - (void)donationActionStoreRemoveAllDonations;
 - (void)donationActionStoreRemovedDonation:(NSDictionary *)arg1;
+- (void)donationActionStoreRemovedDonationsFor:(NSString *)arg1;
 - (void)donationActionStoreWillBeginLoadingData;
 
 @end

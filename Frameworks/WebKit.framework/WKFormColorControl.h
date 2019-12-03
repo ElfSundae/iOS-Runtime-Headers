@@ -2,17 +2,8 @@
    Image: /System/Library/Frameworks/WebKit.framework/WebKit
  */
 
-@interface WKFormColorControl : NSObject <WKFormPeripheral> {
-    struct RetainPtr<id<WKFormControl> > { 
-        void *m_ptr; 
-    }  _control;
-}
+@interface WKFormColorControl : WKFormPeripheralBase
 
-- (id).cxx_construct;
-- (void).cxx_destruct;
-- (id)assistantView;
-- (void)beginEditing;
-- (void)endEditing;
 - (id)initWithView:(id)arg1;
 
 @end

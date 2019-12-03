@@ -4,7 +4,7 @@
 
 @interface HDCodableVaccinationRecord : PBCodable <HDDecoding, NSCopying> {
     NSData * _administrationDate;
-    HDCodableMedicalCodingList * _bodySiteCoding;
+    HDCodableMedicalCodingList * _bodySiteCodings;
     NSString * _doseNumber;
     NSString * _doseQuantity;
     NSData * _expirationDate;
@@ -25,14 +25,14 @@
 }
 
 @property (nonatomic, retain) NSData *administrationDate;
-@property (nonatomic, retain) HDCodableMedicalCodingList *bodySiteCoding;
+@property (nonatomic, retain) HDCodableMedicalCodingList *bodySiteCodings;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) NSString *doseNumber;
 @property (nonatomic, retain) NSString *doseQuantity;
 @property (nonatomic, retain) NSData *expirationDate;
 @property (nonatomic, readonly) bool hasAdministrationDate;
-@property (nonatomic, readonly) bool hasBodySiteCoding;
+@property (nonatomic, readonly) bool hasBodySiteCodings;
 @property (nonatomic, readonly) bool hasDoseNumber;
 @property (nonatomic, readonly) bool hasDoseQuantity;
 @property (nonatomic, readonly) bool hasExpirationDate;
@@ -63,7 +63,7 @@
 - (id)administrationDate;
 - (bool)applyToObject:(id)arg1;
 - (bool)applyToObject:(id)arg1 error:(out id*)arg2;
-- (id)bodySiteCoding;
+- (id)bodySiteCodings;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -72,7 +72,7 @@
 - (id)doseQuantity;
 - (id)expirationDate;
 - (bool)hasAdministrationDate;
-- (bool)hasBodySiteCoding;
+- (bool)hasBodySiteCodings;
 - (bool)hasDoseNumber;
 - (bool)hasDoseQuantity;
 - (bool)hasExpirationDate;
@@ -99,7 +99,7 @@
 - (id)reasonsNotGivenCodings;
 - (id)routeCodings;
 - (void)setAdministrationDate:(id)arg1;
-- (void)setBodySiteCoding:(id)arg1;
+- (void)setBodySiteCodings:(id)arg1;
 - (void)setDoseNumber:(id)arg1;
 - (void)setDoseQuantity:(id)arg1;
 - (void)setExpirationDate:(id)arg1;

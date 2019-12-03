@@ -11,6 +11,8 @@
 
 @property (nonatomic, readonly) int colorSpaceProperties;
 @property (nonatomic, readonly) bool deviceOriented;
+@property (nonatomic, readonly) unsigned long long extendedHeight;
+@property (nonatomic, readonly) unsigned long long extendedWidth;
 @property (nonatomic, readonly) unsigned long long height;
 @property (nonatomic, readonly) bool includesInvalidContent;
 @property (nonatomic, readonly) NSDictionary *pixelBufferAttributes;
@@ -26,6 +28,8 @@
 - (void)dealloc;
 - (id)description;
 - (bool)deviceOriented;
+- (unsigned long long)extendedHeight;
+- (unsigned long long)extendedWidth;
 - (unsigned long long)hash;
 - (unsigned long long)height;
 - (bool)includesInvalidContent;

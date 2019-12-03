@@ -62,6 +62,7 @@
 @property (nonatomic, readonly) NSDate *updateTime;
 
 + (unsigned char)flagFieldLength;
++ (id)unitTest_fakeTreadmillDataForDistance:(unsigned int)arg1 energy:(unsigned short)arg2 elapsedTime:(unsigned short)arg3;
 + (id)uuid;
 
 - (void).cxx_destruct;

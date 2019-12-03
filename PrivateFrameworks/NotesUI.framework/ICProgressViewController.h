@@ -19,6 +19,7 @@
 @property (nonatomic) bool showsCancel;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)activityIndicator;
 - (id)circularProgressView;
 - (id)initWithDelegate:(id)arg1;

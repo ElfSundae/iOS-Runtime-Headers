@@ -3,9 +3,11 @@
  */
 
 @interface VSApplicationController : NSObject <VSAppDocumentControllerDelegate, VSApplicationDelegate, VSStateMachineDelegate> {
+    NSString * _accountProviderAuthenticationToken;
     bool  _allowUI;
     VSAppDocumentController * _appDocumentController;
     VSApplication * _application;
+    bool  _applicationMustSelfValidate;
     JSValue * _applicationReadyCallback;
     VSAuditToken * _auditToken;
     <VSApplicationControllerDelegate> * _delegate;
@@ -19,9 +21,11 @@
     VSStateMachine * _stateMachine;
 }
 
+@property (nonatomic, retain) NSString *accountProviderAuthenticationToken;
 @property (nonatomic) bool allowUI;
 @property (nonatomic, retain) VSAppDocumentController *appDocumentController;
 @property (retain) VSApplication *application;
+@property (nonatomic) bool applicationMustSelfValidate;
 @property (nonatomic, retain) JSValue *applicationReadyCallback;
 @property (nonatomic, copy) VSAuditToken *auditToken;
 @property (readonly, copy) NSString *debugDescription;
@@ -39,10 +43,12 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_applicationControllerAlertForJavascriptAlert:(id)arg1;
 - (id)_applicationLaunchParams;
 - (void)_applicationReadyWithSuccess:(bool)arg1 javascriptErrorValue:(id)arg2;
 - (void)_beginAuthentication;
 - (id)_bootURL;
+- (void)_cancelValidation;
 - (void)_completeRequest:(id)arg1 withJavascriptResponse:(id)arg2 javascriptErrorValue:(id)arg3;
 - (void)_completeRequest:(id)arg1 withResult:(id)arg2;
 - (id)_errorForJavascriptErrorValueValue:(id)arg1 withRequest:(id)arg2;
@@ -56,8 +62,10 @@
 - (void)_notifyRequest:(id)arg1 didCompleteWithResponse:(id)arg2;
 - (void)_notifyRequest:(id)arg1 didFailWithError:(id)arg2;
 - (void)_notifyStartDidFailWithError:(id)arg1;
+- (void)_presentAlert:(id)arg1;
 - (void)_presentDocument:(id)arg1;
 - (void)_submitJavascriptRequest:(id)arg1 forApplicationControllerRequest:(id)arg2;
+- (id)accountProviderAuthenticationToken;
 - (id)activeAppDocumentForApplication:(id)arg1;
 - (bool)allowUI;
 - (id)appDocumentController;
@@ -67,7 +75,9 @@
 - (void)application:(id)arg1 evaluateAppJavascriptInContext:(id)arg2;
 - (void)application:(id)arg1 startDidFailWithError:(id)arg2;
 - (void)applicationDidStart:(id)arg1;
+- (bool)applicationMustSelfValidate;
 - (id)applicationReadyCallback;
+- (void)applicationStartSelfValidationWithAuthenticationToken:(id)arg1;
 - (id)auditToken;
 - (void)dealloc;
 - (id)delegate;
@@ -82,9 +92,11 @@
 - (id)privateQueue;
 - (oneway void)release;
 - (id)responseHandler;
+- (void)setAccountProviderAuthenticationToken:(id)arg1;
 - (void)setAllowUI:(bool)arg1;
 - (void)setAppDocumentController:(id)arg1;
 - (void)setApplication:(id)arg1;
+- (void)setApplicationMustSelfValidate:(bool)arg1;
 - (void)setApplicationReadyCallback:(id)arg1;
 - (void)setAuditToken:(id)arg1;
 - (void)setDelegate:(id)arg1;

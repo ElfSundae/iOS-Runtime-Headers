@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (id)delegate;
+- (void)dismissViewControllerAnimated:(bool)arg1 completion:(id /* block */)arg2;
 - (void)presentRequestedViewControllerWithIdentifier:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setNeedsTabSelection;

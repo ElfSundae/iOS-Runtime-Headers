@@ -13,13 +13,17 @@
 - (id)attributesForSharingHTMLWithTagName:(id*)arg1 textContent:(id*)arg2;
 - (bool)canConvertToHTMLForSharing;
 - (bool)hasPreviews;
+- (bool)preferLocalPreviewImages;
+- (bool)previewsSupportMultipleAppearances;
+- (bool)shouldSyncPreviewImageToCloud:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/NotesUI.framework/NotesUI
 
 - (bool)generateAsynchronousPreviews;
-- (void)generatePreviewsInOperation:(id)arg1;
+- (bool)generatePreviewsInOperation:(id)arg1;
 - (id /* block */)genericBrickThumbnailCreator;
 - (id /* block */)genericListThumbnailCreator;
+- (id)missingPreviewsForCurrentDevice;
 - (bool)needToGeneratePreviews;
 - (bool)requiresNetworkToGeneratePreview;
 

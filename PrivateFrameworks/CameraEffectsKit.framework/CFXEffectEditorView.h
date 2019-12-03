@@ -2,9 +2,10 @@
    Image: /System/Library/PrivateFrameworks/CameraEffectsKit.framework/CameraEffectsKit
  */
 
-@interface CFXEffectEditorView : UIView <JTTextEffectEditorViewDelegate, UIGestureRecognizerDelegate> {
+@interface CFXEffectEditorView : UIView <JTOverlayDebugViewDelegate, JTTextEffectEditorViewDelegate, UIGestureRecognizerDelegate> {
     unsigned long long  _appliedEditingGestures;
     NSMutableArray * _beginEditingCompletionBlocks;
+    JTOverlayDebugView * _debugOverlayView;
     <CFXEffectEditorViewDelegate> * _delegate;
     bool  _displayLinkBusyOnRenderQueue;
     double  _displayScale;
@@ -53,6 +54,7 @@
 @property (nonatomic) unsigned long long appliedEditingGestures;
 @property (nonatomic, retain) NSMutableArray *beginEditingCompletionBlocks;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic, retain) JTOverlayDebugView *debugOverlayView;
 @property (nonatomic) <CFXEffectEditorViewDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) double displayScale;
@@ -88,11 +90,13 @@
 - (void).cxx_destruct;
 - (void)CFX_addBeginEditingCompletionBlock:(id /* block */)arg1;
 - (void)CFX_addEndEditingCompletionBlock:(id /* block */)arg1;
+- (void)CFX_applyEffectAnimationView;
 - (void)CFX_applyEffectTransformChanges;
 - (void)CFX_beginEditingEffect:(id)arg1 isAnimating:(bool)arg2;
 - (void)CFX_beginPreviewingEditEffect;
 - (void)CFX_beginTextEditing;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })CFX_boundsInPixels;
+- (void)CFX_effectAnimationDisplayLinkFired:(id)arg1;
 - (void)CFX_effectPreviewBoundsDidChange;
 - (void)CFX_endEditingEffect;
 - (void)CFX_endPreviewingEditEffect;
@@ -104,6 +108,8 @@
 - (bool)CFX_isPreviewingEditEffect;
 - (bool)CFX_isRemoveAlwaysAvailableInCurrentMode;
 - (bool)CFX_isRemoveAvailableInCurrentMode;
+- (void)CFX_performTextEditOnlyModeEnterAnimationWithCompletionBlock:(id /* block */)arg1;
+- (void)CFX_performTextEditOnlyModeExitAnimationWithCompletionBlock:(id /* block */)arg1;
 - (void)CFX_previewEditEffectIfNeeded;
 - (void)CFX_removeEffect;
 - (void)CFX_rotateEffect:(double)arg1;
@@ -112,9 +118,13 @@
 - (void)CFX_setupControls;
 - (void)CFX_setupGestures;
 - (void)CFX_showEditControls;
+- (id)CFX_springForTextEditAnimation;
+- (void)CFX_startApplyingEffectAnimationViewDisplayLink;
 - (void)CFX_startTrackingExternalEffectChanges;
+- (void)CFX_stopApplyingEffectAnimationViewDisplayLink;
 - (void)CFX_stopTrackingExternalEffectChanges;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })CFX_textEditingFrame;
+- (void)CFX_updateDebugOverlayViews;
 - (void)CFX_updateEditControlsLayout;
 - (void)CFX_updateEffectText:(id)arg1 updateTextProperties:(bool)arg2;
 - (void)CFX_updateExternalEffectTrackingRunningState;
@@ -128,6 +138,7 @@
 - (void)beginEditingEffect:(id)arg1 animated:(bool)arg2 withCompletionBlock:(id /* block */)arg3;
 - (void)beginTextEditing;
 - (void)dealloc;
+- (id)debugOverlayView;
 - (id)delegate;
 - (void)didPan:(id)arg1;
 - (void)didPinch:(id)arg1;
@@ -153,6 +164,7 @@
 - (void)handleRotateGesture:(id)arg1;
 - (id)initWithMode:(unsigned long long)arg1 delegate:(id)arg2;
 - (bool)isBeginningEditing;
+- (bool)isDrawOverlayBoundsOptionShowAdditionalRectsEnabled;
 - (bool)isEditing;
 - (bool)isEndingEditing;
 - (bool)isTextEditing;
@@ -166,10 +178,18 @@
 - (void)notifyEffectTrackingDidChangeToType:(int)arg1;
 - (void)notifyEffectTransformDidChange;
 - (id)oldEditText;
+- (id)overlayDebugViewAdditionalNonTrackedRectsToDraw;
+- (id)overlayDebugViewAdditionalTrackedRectsToDraw;
+- (id)overlayDebugViewShowCornerPoints;
+- (id)overlayDebugViewShowDocumentBoundingBox;
+- (id)overlayDebugViewShowMidpoint;
+- (id)overlayDebugViewShowNonTrackedWhenTracking;
+- (id)overlayDebugViewShowObjectAlignedBoundingBox;
 - (id)previewGenerator;
 - (id)removeButton;
 - (void)setAppliedEditingGestures:(unsigned long long)arg1;
 - (void)setBeginEditingCompletionBlocks:(id)arg1;
+- (void)setDebugOverlayView:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDisplayScale:(double)arg1;
 - (void)setEditControlsTrackingDisplayLink:(id)arg1;

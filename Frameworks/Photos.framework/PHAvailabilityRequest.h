@@ -5,30 +5,33 @@
 @interface PHAvailabilityRequest : NSObject {
     NSManagedObjectID * _assetObjectID;
     NSXPCConnection * _clientConnection;
-    PLAssetsdClientServiceSender * _clientSender;
-    bool  _isCancelled;
+    _Atomic bool  _isCancelled;
+    PLPhotoLibrary * _photoLibrary;
+    unsigned long long  _signpostID;
     NSString * _taskIdentifier;
 }
 
 @property (nonatomic, readonly) NSManagedObjectID *assetObjectID;
 @property (nonatomic, retain) NSXPCConnection *clientConnection;
-@property (nonatomic, retain) PLAssetsdClientServiceSender *clientSender;
-@property (nonatomic, copy) NSString *taskIdentifier;
+@property (nonatomic, readonly) PLPhotoLibrary *photoLibrary;
+@property (nonatomic) unsigned long long signpostID;
+@property (nonatomic, readonly, copy) NSString *taskIdentifier;
 
 - (void).cxx_destruct;
+- (void)abortClientSide;
 - (id)assetObjectID;
 - (void)cancel;
 - (id)clientConnection;
-- (id)clientSender;
 - (id)description;
-- (id)initWithAssetObjectID:(id)arg1;
-- (id)initWithPlistDictionary:(id)arg1;
+- (id)initWithPlistDictionary:(id)arg1 photoLibrary:(id)arg2;
+- (id)initWithTaskIdentifier:(id)arg1 assetObjectID:(id)arg2;
 - (bool)isCancelled;
+- (id)photoLibrary;
 - (id)plistDictionary;
 - (void)runDaemonSide;
 - (void)setClientConnection:(id)arg1;
-- (void)setClientSender:(id)arg1;
-- (void)setTaskIdentifier:(id)arg1;
+- (void)setSignpostID:(unsigned long long)arg1;
+- (unsigned long long)signpostID;
 - (id)taskIdentifier;
 
 @end

@@ -10,5 +10,7 @@
 - (void)cameraControlsViewControllerSwitchCameraButtonWasTapped:(CFXCameraControlsViewController *)arg1;
 - (PUReviewScreenDoneButton *)doneButtonForCameraControlsViewController:(CFXCameraControlsViewController *)arg1;
 - (CAMFlashButton *)flashButtonForCameraControlsViewController:(CFXCameraControlsViewController *)arg1;
+- (void)insertCamBottomBar:(UIView *)arg1;
+- (bool)needsBlackBackgroundForCTMControls;
 
 @end

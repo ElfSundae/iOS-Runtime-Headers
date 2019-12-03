@@ -36,5 +36,6 @@
 - (void)setDisplayedViewController:(id)arg1;
 - (void)setMoreViewControllers:(id)arg1;
 - (void)setMoreViewControllersChanged:(bool)arg1;
+- (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(bool)arg2;
 
 @end

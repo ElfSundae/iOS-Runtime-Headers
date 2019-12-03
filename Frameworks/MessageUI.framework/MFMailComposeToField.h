@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
  */
 
-@interface MFMailComposeToField : MFComposeRecipientTextView {
+@interface MFMailComposeToField : MFMailComposeRecipientTextView {
     bool  _canEncrypt;
     MFComposeSMIMELockButton * _smimeButton;
     bool  _smimeButtonEnabled;
@@ -16,6 +16,7 @@
 @property (nonatomic) bool smimeButtonVisible;
 @property (nonatomic) <MFMailComposeToFieldDelegate> *toFieldDelegate;
 
+- (void).cxx_destruct;
 - (id)SMIMEButton;
 - (void)_setSMIMEButtonVisible:(bool)arg1 animated:(bool)arg2;
 - (void)_tappedSMIMEButton:(id)arg1;

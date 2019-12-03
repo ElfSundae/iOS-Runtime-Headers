@@ -3,6 +3,9 @@
  */
 
 @interface VCAudioTierPicker : NSObject {
+    bool  _alwaysOnAudioRedundancyEnabled;
+    bool  _cellularAllowRedLowBitratesEnabled;
+    bool  _wifiAllowRedLowBitratesEnabled;
     BitrateLimits * bitrateLimits;
     VCAudioTier * defaultTier;
     VCAudioTier * fallbackTier;
@@ -23,7 +26,7 @@
 - (id)allAudioTiers;
 - (void)dealloc;
 - (id)defaultTier;
-- (id)initWithOperatingMode:(int)arg1 payloadConfigs:(id)arg2 packetsPerBundle:(id)arg3 supportedRedNumPayloads:(id)arg4 headerSize:(unsigned long long)arg5 usingCellular:(bool)arg6 useCaseWatchContinuity:(bool)arg7 defaultMaxCap:(unsigned long long)arg8;
+- (id)initWithOperatingMode:(int)arg1 payloadConfigs:(id)arg2 packetsPerBundle:(id)arg3 supportedRedNumPayloads:(id)arg4 headerSize:(unsigned long long)arg5 usingCellular:(bool)arg6 useCaseWatchContinuity:(bool)arg7 defaultMaxCap:(unsigned long long)arg8 alwaysOnAudioRedundancyEnabled:(bool)arg9 cellularAllowRedLowBitratesEnabled:(bool)arg10 wifiAllowRedLowBitratesEnabled:(bool)arg11;
 - (void)printCreatedAudioTiers:(id)arg1;
 - (id)tierForNetworkBitrate:(unsigned long long)arg1 withLegacyDuplication:(int)arg2;
 - (id)tierForNetworkBitrate:(unsigned long long)arg1 withRedNumPayloads:(unsigned long long)arg2;

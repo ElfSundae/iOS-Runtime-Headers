@@ -54,6 +54,7 @@
 @property (nonatomic, retain) ISPlayerItem *playerItem;
 @property (setter=_setStatus:, nonatomic) long long status;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) bool videoLayersReadyForDisplay;
 @property (nonatomic, readonly) ISWrappedAVPlayer *videoPlayer;
 
 - (void).cxx_destruct;
@@ -68,6 +69,7 @@
 - (void)_invalidateWillPlayToPhotoObserver;
 - (bool)_needsUpdate;
 - (id)_outputContent;
+- (void)_outputVideoReadyForDisplayDidChange:(id)arg1;
 - (void)_setError:(id)arg1;
 - (void)_setForwardPlaybackEndTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (void)_setLastAppliedLayoutInfo:(id)arg1;
@@ -110,6 +112,7 @@
 - (void)behavior:(id)arg1 setVideoForwardPlaybackEndTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2;
 - (void)behavior:(id)arg1 setVideoPlayRate:(float)arg2;
 - (void)behavior:(id)arg1 setVideoVolume:(float)arg2;
+- (bool)behaviorIsVideoReadyForDisplay:(id)arg1;
 - (void)configurePlayerItem;
 - (void)dealloc;
 - (id)delegate;
@@ -136,6 +139,7 @@
 - (void)setVideoVolume:(float)arg1;
 - (long long)status;
 - (void)statusDidChange;
+- (bool)videoLayersReadyForDisplay;
 - (float)videoPlayRate;
 - (id)videoPlayer;
 - (float)videoVolume;

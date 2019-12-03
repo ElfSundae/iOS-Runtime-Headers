@@ -4,7 +4,7 @@
 
 @interface SUBManager : NSObject {
     <SUBManagerDelegate> * _delegate;
-    bool  _hasQueriedStateOnceFlag;
+    _Atomic bool  _hasQueriedStateOnceFlag;
     NSObject<OS_dispatch_queue> * _queue;
     NSObject<OS_xpc_object> * _serverConnection;
 }
@@ -18,6 +18,7 @@
 - (void).cxx_destruct;
 - (void)_forwardDownloadProgress:(id)arg1;
 - (void)_forwardInstallResult:(id)arg1;
+- (void)_forwardInstallationAwaitingUserInteraction:(id)arg1;
 - (void)_forwardInstallationCanProceed:(id)arg1;
 - (void)_forwardInstallationWillProceed:(id)arg1;
 - (void)_forwardScanResult:(id)arg1;
@@ -26,6 +27,7 @@
 - (id)_serverConnection;
 - (void)dealloc;
 - (id)delegate;
+- (void)getCloudDescriptors:(id /* block */)arg1;
 - (id)initWithDelegate:(id)arg1;
 - (void)installUpdate:(id)arg1;
 - (void)installUpdate:(id)arg1 passcode:(id)arg2;
@@ -33,7 +35,9 @@
 - (void)performMigration;
 - (void)purgeUpdate:(id)arg1 completion:(id /* block */)arg2;
 - (id)queue;
+- (void)removeCloudDescriptor:(id)arg1;
 - (void)scanForUpdates;
+- (void)sendTermsRequest:(id /* block */)arg1;
 - (id)serverConnection;
 - (void)setDelegate:(id)arg1;
 - (void)setQueue:(id)arg1;

@@ -4,6 +4,7 @@
 
 @interface UIInterpolatedNormalizedPoint : UIInterpolatedPoint
 
++ (id)epsilon;
 + (id)valueWithCGPoint:(struct CGPoint { double x1; double x2; })arg1;
 
 @end

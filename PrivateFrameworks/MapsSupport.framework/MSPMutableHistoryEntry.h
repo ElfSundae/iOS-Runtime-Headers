@@ -30,6 +30,8 @@
 - (void)_markImmutable;
 - (void)_noteWillMutate;
 - (id)copyIfValidWithError:(out id*)arg1;
+- (id)debugTitle;
+- (id)description;
 - (void)ifMutableSearch:(id /* block */)arg1 ifMutableRoute:(id /* block */)arg2 ifMutablePlaceDisplay:(id /* block */)arg3 ifMutableTransitLineItem:(id /* block */)arg4;
 - (void)ifSearch:(id /* block */)arg1 ifRoute:(id /* block */)arg2 ifPlaceDisplay:(id /* block */)arg3 ifTransitLineItem:(id /* block */)arg4;
 - (id)init;

@@ -36,6 +36,7 @@
 - (id)ingestedConfiguration;
 - (id)initWithName:(id)arg1;
 - (id)initWithNameAndType:(id)arg1 payloadType:(id)arg2;
+- (bool)isAutoCreatedRule:(id)arg1;
 - (bool)isInstalled:(id)arg1;
 - (bool)loadConfigurationsForceReloadFromDisk;
 - (bool)loadConfigurationsWithRefreshOption:(bool)arg1;

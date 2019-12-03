@@ -28,6 +28,7 @@
 
 // Image: /System/Library/PrivateFrameworks/NotesUI.framework/NotesUI
 
+- (id)cidURL;
 - (id)fileURL;
 - (id)identifier;
 - (id)typeUTI;

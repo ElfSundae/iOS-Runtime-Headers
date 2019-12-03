@@ -9,13 +9,13 @@
         double bottom; 
         double right; 
     }  _alignmentInsets;
-    double  _bottomBaseline;
-    double  _customScreenScale;
     struct { 
-        unsigned int neverCache : 1; 
+        double baseLineFromTop; 
+        double baseLineFromBottom; 
+    }  _baselines;
+    struct { 
         unsigned int alsoInvalidateSuperview : 1; 
         unsigned int alignmentInsetsAreCustom : 1; 
-        unsigned int baselineRelativeInsets : 1; 
         unsigned int topBaselineIsCustom : 1; 
         unsigned int bottomBaselineIsCustom : 1; 
     }  _flags;
@@ -34,7 +34,6 @@
             struct pair<CGSize, CGSize> {} *__value_; 
         } __end_cap_; 
     }  _sizeCache;
-    double  _topBaseline;
 }
 
 - (id).cxx_construct;

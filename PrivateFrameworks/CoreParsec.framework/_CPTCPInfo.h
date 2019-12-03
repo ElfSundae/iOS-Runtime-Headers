@@ -66,7 +66,6 @@
 - (id)jsonData;
 - (unsigned int)minRTT;
 - (bool)readFrom:(id)arg1;
-- (bool)requiresQueryId;
 - (unsigned long long)rxBytes;
 - (unsigned long long)rxDuplicateBytes;
 - (unsigned long long)rxOutOfOrderBytes;

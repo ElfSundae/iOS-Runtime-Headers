@@ -8,6 +8,7 @@
 
 @property (nonatomic, retain) NSMutableArray *logMessages;
 
++ (bool)isValid:(id)arg1;
 + (Class)logMessageType;
 
 - (void).cxx_destruct;
@@ -23,6 +24,7 @@
 - (id)logMessages;
 - (unsigned long long)logMessagesCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (unsigned int)requestTypeCode;
 - (Class)responseClass;

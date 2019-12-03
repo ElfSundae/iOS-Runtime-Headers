@@ -11,6 +11,7 @@
 @property (nonatomic, readonly) UIItemProvider *dragItemProvider;
 @property (nonatomic, readonly) bool hasMessageAcknowledgment;
 @property (nonatomic, readonly) bool hasStickers;
+@property (nonatomic, readonly) bool isBlackholed;
 @property (nonatomic, readonly) bool isCorrupt;
 @property (nonatomic, readonly) IMMessage *message;
 @property (nonatomic, readonly, copy) NSArray *messageAcknowledgments;
@@ -35,6 +36,7 @@
 - (bool)hasMessageAcknowledgment;
 - (bool)hasStickers;
 - (id)initWithIMChatItem:(id)arg1 maxWidth:(double)arg2;
+- (bool)isBlackholed;
 - (bool)isCorrupt;
 - (bool)isFromMe;
 - (id)message;

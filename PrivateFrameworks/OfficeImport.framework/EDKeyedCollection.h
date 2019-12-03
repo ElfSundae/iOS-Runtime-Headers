@@ -6,9 +6,9 @@
     OITSUIntegerKeyDictionary * mMap;
 }
 
+- (void).cxx_destruct;
 - (unsigned long long)addObject:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (void)insertIntoMap:(id)arg1;
 - (void)insertObject:(id)arg1 atIndex:(unsigned long long)arg2;
 - (bool)isObjectInMap:(id)arg1;

@@ -4,6 +4,7 @@
 
 @interface SUPreferences : NSObject {
     bool  _allowSameBuildUpdates;
+    bool  _autoDownloadDeletedBuild;
     NSDate * _autoSUEnd;
     NSNumber * _autoSUEndDelta;
     NSDate * _autoSUStart;
@@ -37,6 +38,7 @@
 }
 
 @property (nonatomic, readonly) bool allowSameBuildUpdates;
+@property (nonatomic, readonly) bool autoDownloadDeletedBuild;
 @property (nonatomic, readonly) NSNumber *autoSUEndDelta;
 @property (nonatomic, readonly) NSNumber *autoSUStartDelta;
 @property (nonatomic, readonly) NSNumber *autoSUUnlockEndDelta;
@@ -75,6 +77,7 @@
 - (id)_mandatorySUFlagsForPreferences;
 - (void)_setBooleanPreferenceForKey:(id)arg1 value:(bool)arg2;
 - (bool)allowSameBuildUpdates;
+- (bool)autoDownloadDeletedBuild;
 - (id)autoSUEndDelta;
 - (id)autoSUStartDelta;
 - (id)autoSUUnlockEndDelta;

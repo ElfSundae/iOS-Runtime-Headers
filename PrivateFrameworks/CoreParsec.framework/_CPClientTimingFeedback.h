@@ -20,7 +20,6 @@
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic) unsigned long long nanosecondInterval;
 @property (nonatomic) unsigned long long queryId;
-@property (nonatomic, readonly) bool requiresQueryId;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long timestamp;
 
@@ -38,7 +37,6 @@
 - (unsigned long long)nanosecondInterval;
 - (unsigned long long)queryId;
 - (bool)readFrom:(id)arg1;
-- (bool)requiresQueryId;
 - (void)setEventName:(id)arg1;
 - (void)setInput:(id)arg1;
 - (void)setNanosecondInterval:(unsigned long long)arg1;

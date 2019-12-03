@@ -30,6 +30,7 @@
 - (long long)_tableView:(id)arg1 dataOwnerForDragSession:(id)arg2 atIndexPath:(id)arg3;
 - (long long)_tableView:(id)arg1 dataOwnerForDropSession:(id)arg2 withDestinationIndexPath:(id)arg3;
 - (void)_tableView:(id)arg1 dragSessionDidEnd:(id)arg2;
+- (bool)_tableView:(id)arg1 dragSessionSupportsSystemDrag:(id)arg2;
 - (void)_tableView:(id)arg1 dragSessionWillBegin:(id)arg2;
 - (void)_tableView:(id)arg1 dropSessionDidEnd:(id)arg2;
 - (void)_tableView:(id)arg1 dropSessionDidEnter:(id)arg2;
@@ -95,7 +96,7 @@
 - (void)tableView:(id)arg1 cancelPrefetchingForRowsAtIndexPaths:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
-- (id)tableView:(id)arg1 deleteConfirmationButtonForRowAtIndexPath:(id)arg2;
+- (id)tableView:(id)arg1 contextMenuConfigurationForRowAtIndexPath:(id)arg2 point:(struct CGPoint { double x1; double x2; })arg3;
 - (id)tableView:(id)arg1 detailTextForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 didCancelReorderingRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didDeselectRowAtIndexPath:(id)arg2;
@@ -145,6 +146,8 @@
 - (void)tableView:(id)arg1 performAction:(SEL)arg2 forRowAtIndexPath:(id)arg3 withSender:(id)arg4;
 - (void)tableView:(id)arg1 performDropWithCoordinator:(id)arg2;
 - (void)tableView:(id)arg1 prefetchRowsAtIndexPaths:(id)arg2;
+- (id)tableView:(id)arg1 previewForDismissingContextMenuWithConfiguration:(id)arg2;
+- (id)tableView:(id)arg1 previewForHighlightingContextMenuWithConfiguration:(id)arg2;
 - (long long)tableView:(id)arg1 sectionForSectionIndexTitle:(id)arg2 atIndex:(long long)arg3;
 - (bool)tableView:(id)arg1 shouldDrawBottomSeparatorForSection:(long long)arg2;
 - (bool)tableView:(id)arg1 shouldDrawTopSeparatorForSection:(long long)arg2;
@@ -156,7 +159,6 @@
 - (bool)tableView:(id)arg1 shouldSpringLoadRowAtIndexPath:(id)arg2 withContext:(id)arg3;
 - (bool)tableView:(id)arg1 shouldUpdateFocusFromRowAtIndexPath:(id)arg2 toView:(id)arg3 heading:(unsigned long long)arg4;
 - (bool)tableView:(id)arg1 shouldUpdateFocusInContext:(id)arg2;
-- (id)tableView:(id)arg1 swipeAccessoryButtonForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 swipeAccessoryButtonPushedForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 targetIndexPathForMoveFromRowAtIndexPath:(id)arg2 toProposedIndexPath:(id)arg3;
 - (long long)tableView:(id)arg1 titleAlignmentForFooterInSection:(long long)arg2;
@@ -173,10 +175,12 @@
 - (void)tableView:(id)arg1 willBeginEditingRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 willBeginReorderingRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 willBeginSwipingRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 willCommitMenuWithAnimator:(id)arg2;
 - (id)tableView:(id)arg1 willDeselectRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 willDisplayFooterView:(id)arg2 forSection:(long long)arg3;
 - (void)tableView:(id)arg1 willDisplayHeaderView:(id)arg2 forSection:(long long)arg3;
+- (void)tableView:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
 - (void)tableViewDidFinishReload:(id)arg1;
 - (double)tableViewSpacingForExtraSeparators:(id)arg1;

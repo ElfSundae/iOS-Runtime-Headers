@@ -9,6 +9,8 @@
 + (id)entitlements;
 + (id)eventStream;
 
+- (void)deactivate;
+- (void)dealloc;
 - (void)start;
 - (void)stop;
 

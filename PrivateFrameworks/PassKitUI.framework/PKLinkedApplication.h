@@ -32,7 +32,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) bool useSmallIcon;
 
-+ (void)openApplicationWithBundleID:(id)arg1 launchURL:(id)arg2;
++ (id)_openOptionsWithURL:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)_iconOptionsForItem:(id)arg1;

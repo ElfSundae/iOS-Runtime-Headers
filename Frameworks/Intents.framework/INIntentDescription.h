@@ -3,6 +3,7 @@
  */
 
 @interface INIntentDescription : NSObject <INIntentDescriptionExport, NSCopying> {
+    NSDictionary * _alternativeSlotNames;
     SEL  _confirmSelector;
     Class  _dataClass;
     Class  _facadeClass;
@@ -40,6 +41,8 @@
 - (bool)isPrivate;
 - (id)name;
 - (id)responseName;
+- (id)slotByName:(id)arg1;
+- (id)slotDescriptions;
 - (id)slotsByName;
 - (id)type;
 

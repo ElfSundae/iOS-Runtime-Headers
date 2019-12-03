@@ -8,7 +8,7 @@
     NFMutexLock * _feedDescriptorsLock;
     <FCFeedPersonalizing> * _feedPersonalizer;
     FCAsyncSerialQueue * _feedUpdateQueue;
-    long long  _trendingAndSavedStoriesCount;
+    long long  _savedStoriesCount;
 }
 
 @property (nonatomic, retain) FCCloudContext *context;
@@ -16,7 +16,7 @@
 @property (nonatomic, retain) NFMutexLock *feedDescriptorsLock;
 @property (nonatomic, retain) <FCFeedPersonalizing> *feedPersonalizer;
 @property (nonatomic, retain) FCAsyncSerialQueue *feedUpdateQueue;
-@property (nonatomic) long long trendingAndSavedStoriesCount;
+@property (nonatomic) long long savedStoriesCount;
 
 + (id)_identifierForFeedName:(id)arg1;
 + (id)feedDescriptorNameForForYou;
@@ -39,12 +39,12 @@
 - (id)init;
 - (id)initWithCloudContext:(id)arg1;
 - (void)prefetchForYouWithHighPriority:(bool)arg1 completionHandler:(id /* block */)arg2;
+- (long long)savedStoriesCount;
 - (void)setContext:(id)arg1;
 - (void)setFeedDescriptorsByID:(id)arg1;
 - (void)setFeedDescriptorsLock:(id)arg1;
 - (void)setFeedPersonalizer:(id)arg1;
 - (void)setFeedUpdateQueue:(id)arg1;
-- (void)setTrendingAndSavedStoriesCount:(long long)arg1;
-- (long long)trendingAndSavedStoriesCount;
+- (void)setSavedStoriesCount:(long long)arg1;
 
 @end

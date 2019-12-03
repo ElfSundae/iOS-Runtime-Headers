@@ -13,6 +13,7 @@
 + (id)attachmentSummary:(unsigned long long)arg1;
 + (id)fallbackFilenamePrefix;
 + (id)generateThumbnailForWidth:(double)arg1 color:(id)arg2 powerLevels:(id)arg3 fileURL:(id)arg4;
++ (bool)shouldUseTranscoderGeneratedPreviewSize;
 
 - (bool)canExport;
 - (Class)coloredBalloonViewClass;

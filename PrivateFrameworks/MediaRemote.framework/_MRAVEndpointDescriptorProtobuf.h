@@ -17,6 +17,7 @@
     bool  _isProxyGroupPlayer;
     NSString * _name;
     NSMutableArray * _outputDevices;
+    NSMutableArray * _personalOutputDevices;
     NSString * _uniqueIdentifier;
 }
 
@@ -36,15 +37,19 @@
 @property (nonatomic) bool isProxyGroupPlayer;
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSMutableArray *outputDevices;
+@property (nonatomic, retain) NSMutableArray *personalOutputDevices;
 @property (nonatomic, retain) NSString *uniqueIdentifier;
 
 + (Class)outputDevicesType;
++ (Class)personalOutputDevicesType;
 
 - (void).cxx_destruct;
 - (int)StringAsConnectionType:(id)arg1;
 - (void)addOutputDevices:(id)arg1;
+- (void)addPersonalOutputDevices:(id)arg1;
 - (bool)canModifyGroupMembership;
 - (void)clearOutputDevices;
+- (void)clearPersonalOutputDevices;
 - (int)connectionType;
 - (id)connectionTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
@@ -70,6 +75,9 @@
 - (id)outputDevices;
 - (id)outputDevicesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)outputDevicesCount;
+- (id)personalOutputDevices;
+- (id)personalOutputDevicesAtIndex:(unsigned long long)arg1;
+- (unsigned long long)personalOutputDevicesCount;
 - (bool)readFrom:(id)arg1;
 - (void)setCanModifyGroupMembership:(bool)arg1;
 - (void)setConnectionType:(int)arg1;
@@ -83,6 +91,7 @@
 - (void)setIsProxyGroupPlayer:(bool)arg1;
 - (void)setName:(id)arg1;
 - (void)setOutputDevices:(id)arg1;
+- (void)setPersonalOutputDevices:(id)arg1;
 - (void)setUniqueIdentifier:(id)arg1;
 - (id)uniqueIdentifier;
 - (void)writeTo:(id)arg1;

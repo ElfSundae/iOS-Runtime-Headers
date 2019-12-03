@@ -4,6 +4,7 @@
 
 @interface MTAlarmScheduler : NSObject <MTAgentDiagnosticDelegate, MTAgentNotificationListener, MTAlarmObserver, MTScheduledListDelegate> {
     id /* block */  _currentDateProvider;
+    <MTPersistence> * _defaults;
     <MTAlarmScheduleDelegate> * _delegate;
     <MTNotificationCenter> * _notificationCenter;
     MTScheduledList * _scheduledAlarms;
@@ -15,6 +16,7 @@
 
 @property (nonatomic, readonly, copy) id /* block */ currentDateProvider;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic, retain) <MTPersistence> *defaults;
 @property (nonatomic) <MTAlarmScheduleDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -40,16 +42,18 @@
 - (void)_rescheduleAlarmsWithCompletion:(id /* block */)arg1;
 - (void)_scheduleAlarms:(id)arg1 withCompletion:(id /* block */)arg2;
 - (void)_setLastAlarmTriggerDate:(id)arg1;
+- (bool)_shouldPostNotificationForScheduledAlarm:(id)arg1;
 - (void)_unscheduleAlarms:(id)arg1;
 - (void)cleanDeliveredNotifications;
 - (id /* block */)currentDateProvider;
+- (id)defaults;
 - (id)delegate;
 - (id)gatherDiagnostics;
-- (void)handleNotification:(id)arg1;
-- (bool)handlesNotification:(id)arg1;
+- (void)handleNotification:(id)arg1 ofType:(long long)arg2 completion:(id /* block */)arg3;
+- (bool)handlesNotification:(id)arg1 ofType:(long long)arg2;
 - (id)initWithStorage:(id)arg1 notificationCenter:(id)arg2;
-- (id)initWithStorage:(id)arg1 notificationCenter:(id)arg2 scheduler:(id)arg3;
-- (id)initWithStorage:(id)arg1 notificationCenter:(id)arg2 scheduler:(id)arg3 schedulingDelegate:(id)arg4 taskScheduler:(id)arg5 currentDateProvider:(id /* block */)arg6;
+- (id)initWithStorage:(id)arg1 notificationCenter:(id)arg2 scheduler:(id)arg3 defaults:(id)arg4;
+- (id)initWithStorage:(id)arg1 notificationCenter:(id)arg2 scheduler:(id)arg3 defaults:(id)arg4 schedulingDelegate:(id)arg5 taskScheduler:(id)arg6 currentDateProvider:(id /* block */)arg7;
 - (id)nextAlarm;
 - (id)nextAlarmIncludingBedtimeNotification:(bool)arg1;
 - (id)nextScheduledAlarmIncludingBedtimeNotification:(bool)arg1;
@@ -63,6 +67,7 @@
 - (void)scheduledListDidChange:(id)arg1 withCompletion:(id /* block */)arg2;
 - (id)schedulingDelegate;
 - (id)serializer;
+- (void)setDefaults:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)source:(id)arg1 didAddAlarms:(id)arg2;
 - (void)source:(id)arg1 didChangeNextAlarm:(id)arg2;
@@ -74,7 +79,6 @@
 - (id)sourceIdentifier;
 - (id)storage;
 - (id)taskScheduler;
-- (void)timeListener:(id)arg1 didDetectSignificantTimeChangeWithCompletionBlock:(id /* block */)arg2;
 - (void)unscheduleAlarms:(id)arg1;
 
 @end

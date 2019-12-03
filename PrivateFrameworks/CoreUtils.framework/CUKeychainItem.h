@@ -81,5 +81,6 @@
 // Image: /System/Library/PrivateFrameworks/Rapport.framework/Rapport
 
 - (unsigned int)updateWithRPIdentity:(id)arg1 error:(id*)arg2;
+- (unsigned int)updateWithRPIdentity:(id)arg1 revisionUpdate:(bool)arg2 error:(id*)arg3;
 
 @end

@@ -48,6 +48,7 @@
 - (void)setFriction:(double)arg1;
 - (void)setValue:(double)arg1;
 - (void)setVelocity:(double)arg1;
+- (double)settlingDuration;
 - (double)value;
 - (double)velocity;
 

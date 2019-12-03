@@ -4,28 +4,30 @@
 
 @interface MKTransitItemIncidentsController : NSObject {
     NSSet * _blockedIncidentEntities;
-    NSMutableDictionary * _dominantIncidentForSequence;
-    NSArray * _lineFilteredValidIncidents;
+    NSMutableDictionary * _incidentsForDepartureSequence;
+    NSMutableDictionary * _incidentsForLine;
+    NSMutableDictionary * _incidentsForMapItem;
+    NSMutableDictionary * _incidentsForSystem;
     <GEOTransitLineItem> * _lineItem;
     MKMapItem * _mapItem;
-    NSDate * _nextIncidentChangeDate;
-    NSMutableDictionary * _systemHasIncidents;
+    NSDate * _referenceDate;
     NSArray * _validIncidents;
 }
 
-+ (id)sectionHeaderText;
+@property (nonatomic, retain) NSDate *referenceDate;
 
 - (void).cxx_destruct;
-- (id)_blockedIncidentEntitiesAtDate:(id)arg1;
-- (id)_dominantIncidentForSequence:(id)arg1 atDate:(id)arg2;
-- (id)_validIncidentsAtDate:(id)arg1 filterToOnceIncidentPerLine:(bool)arg2;
-- (void)_validateCacheForDate:(id)arg1;
-- (id)blockedIncidentEntitiesAtDate:(id)arg1;
-- (id)dominantIncidentForSequence:(id)arg1 atDate:(id)arg2;
+- (id)_incidentsAffectingMuid:(unsigned long long)arg1;
+- (id)blockedIncidentEntities;
+- (id)incidentsForDepartureSequence:(id)arg1;
+- (id)incidentsForLine:(id)arg1;
+- (id)incidentsForMapItem:(id)arg1;
+- (id)incidentsForSystem:(id)arg1;
 - (id)initWithLineItem:(id)arg1;
 - (id)initWithMapItem:(id)arg1;
+- (id)referenceDate;
 - (void)resetCache;
-- (bool)systemHasIncidents:(id)arg1 atDate:(id)arg2;
-- (id)validIncidentsAtDate:(id)arg1 filterToOnceIncidentPerLine:(bool)arg2;
+- (void)setReferenceDate:(id)arg1;
+- (id)validIncidents;
 
 @end

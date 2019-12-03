@@ -30,6 +30,7 @@
 - (id)_init;
 - (unsigned long long)buttonType;
 - (id)delegate;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (void)handlePrimaryAction;
 - (id /* block */)handler;

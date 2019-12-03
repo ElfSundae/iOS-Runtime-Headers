@@ -6,14 +6,21 @@
     NSString * _buttonText;
     NSString * _captionText;
     UIView * _containerView;
+    struct CGSize { 
+        double width; 
+        double height; 
+    }  _contentSize;
     OBTintInheritingImageView * _iconView;
+    bool  _largeIcon;
     UITextView * _textView;
 }
 
 @property (readonly) NSString *buttonText;
 @property (readonly) NSString *captionText;
 @property (readonly) UIView *containerView;
+@property struct CGSize { double x1; double x2; } contentSize;
 @property (readonly) OBTintInheritingImageView *iconView;
+@property bool largeIcon;
 @property (readonly) UITextView *textView;
 
 - (void).cxx_destruct;
@@ -23,12 +30,17 @@
 - (id)buttonText;
 - (id)captionText;
 - (id)containerView;
+- (struct CGSize { double x1; double x2; })contentSize;
 - (id)iconView;
 - (id)initWithCaption:(id)arg1 buttonText:(id)arg2 image:(id)arg3 imageSize:(struct CGSize { double x1; double x2; })arg4 useLargeIcon:(bool)arg5;
+- (struct CGSize { double x1; double x2; })intrinsicContentSize;
 - (id)labelText;
+- (bool)largeIcon;
 - (void)layoutSubviews;
+- (void)setContentSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setEnabled:(bool)arg1;
 - (void)setHighlighted:(bool)arg1;
+- (void)setLargeIcon:(bool)arg1;
 - (id)textView;
 - (void)tintColorDidChange;
 - (id)titleForState:(unsigned long long)arg1;

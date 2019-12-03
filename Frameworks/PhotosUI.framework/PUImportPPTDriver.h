@@ -2,21 +2,21 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUImportPPTDriver : NSObject <PUImportActionCoordinatorDelegate, PUImportAssetsDataSourceManagerObserver, PUImportMediaProviderNotificationsReceiver> {
+@interface PUImportPPTDriver : NSObject <PUImportActionCoordinatorDelegate, PXImportAssetsDataSourceManagerObserver, PXImportMediaProviderNotificationsReceiver> {
     PUImportActionCoordinator * _actionCoordinator;
     PUImportPPTImportSource * _currentImportSource;
-    PUImportAssetsDataSourceManager * _dataSourceManager;
+    PXImportAssetsDataSourceManager * _dataSourceManager;
     double  _endTime;
     NSMutableDictionary * _extraResults;
     bool  _hasSeenAbsolulteLastThumbnailMarker;
     bool  _importComplete;
-    PUImportController * _importController;
+    PXImportController * _importController;
     NSObject<OS_dispatch_semaphore> * _importSemaphore;
     id /* block */  _importToLibraryTestReply;
     id /* block */  _insertDatasourceReply;
     long long  _iteration;
     bool  _loadingContentStarted;
-    PUImportMediaProvider * _mediaProvider;
+    PXImportMediaProvider * _mediaProvider;
     NSDictionary * _options;
     double  _startTime;
     PUTabbedLibraryViewController * _tabbedLibraryViewController;

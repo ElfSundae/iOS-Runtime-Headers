@@ -2,19 +2,22 @@
    Image: /System/Library/Frameworks/MapKit.framework/MapKit
  */
 
-@interface MKPlacePhotosViewController : UIViewController <MKModuleViewControllerProtocol, MKPlaceAttributionCellDelegate, MKPlacePhotosViewDelegate, UIScrollViewDelegate, _MKInfoCardChildViewControllerAnalyticsDelegate> {
+@interface MKPlacePhotosViewController : UIViewController <MKModuleViewControllerProtocol, MKMuninContainerViewDelegate, MKMuninViewProvider, MKPlaceAttributionCellDelegate, MKPlacePhotosViewDelegate, UIScrollViewDelegate, _MKInfoCardChildViewControllerAnalyticsDelegate> {
     MKPlaceAttributionCell * _attributionCell;
     NSLayoutConstraint * _bottomConstraint;
     UIView * _bottomHairline;
     bool  _canUseFullscreenViewer;
     bool  _canUseGallery;
     MKPlacePhotosView * _currentPhotoViewer;
+    UIView * _externalView;
     NSLayoutConstraint * _heightConstraint;
     bool  _isRTL;
     double  _lastPhotoScrollOffset;
     bool  _loadAppImageCanceledOrFailed;
     MKMapItem * _mapItem;
     unsigned long long  _mode;
+    MKMuninContainerView * _muninContainerView;
+    unsigned long long  _options;
     unsigned long long  _originalMode;
     _MKPlaceViewController * _owner;
     UIScrollView * _parentScrollView;
@@ -34,13 +37,16 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) MKMuninView *muninView;
 @property (nonatomic) _MKPlaceViewController *owner;
 @property (nonatomic) <MKPlaceCardPhotosControllerDelegate><MKPlaceCardActionControllerDelegate> *photosControllerDelegate;
 @property (nonatomic) bool showsBottomHairline;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_applyCornerRadius;
 - (void)_callPhotoDelegateForPhotoAt:(unsigned long long)arg1;
+- (bool)_canShowWhileLocked;
 - (void)_cancelLoadPhotos;
 - (void)_catchScrollNotification:(id)arg1;
 - (void)_createImageViews;
@@ -56,9 +62,12 @@
 - (void)dealloc;
 - (id)formattedAttributionString;
 - (id)infoCardChildPossibleActions;
-- (void)infoCardThemeChanged:(id)arg1;
-- (id)initWithMapItem:(id)arg1 mode:(unsigned long long)arg2;
+- (id)infoCardChildUnactionableUIElements;
+- (void)infoCardThemeChanged;
+- (id)initWithMapItem:(id)arg1 mode:(unsigned long long)arg2 options:(unsigned long long)arg3;
 - (void)layoutImages;
+- (void)muninContainerView:(id)arg1 didAddMuninView:(id)arg2;
+- (id)muninView;
 - (void)openURL;
 - (id)owner;
 - (id)photosControllerDelegate;
@@ -67,6 +76,7 @@
 - (void)placePhotoViewerWillClose:(id)arg1 photo:(id)arg2 onIndex:(unsigned long long)arg3;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(bool)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)setContentVisibility:(long long)arg1;
 - (void)setOwner:(id)arg1;
 - (void)setPhotosControllerDelegate:(id)arg1;
 - (void)setShowsBottomHairline:(bool)arg1;
@@ -79,6 +89,7 @@
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewLayoutMarginsDidChange;
+- (void)viewWillAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;
 
 @end

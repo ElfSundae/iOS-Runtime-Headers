@@ -3,6 +3,7 @@
  */
 
 @interface _INPBRideCompletionStatus : PBCodable <NSCopying, NSSecureCoding, _INPBRideCompletionStatus> {
+    bool  __encodeLegacyGloryData;
     bool  _canceled;
     bool  _canceledByService;
     bool  _completed;
@@ -25,6 +26,7 @@
     _INPBCurrencyAmountValue * _paymentAmount;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic) bool canceled;
 @property (nonatomic) bool canceledByService;
 @property (nonatomic) bool completed;
@@ -49,9 +51,12 @@
 @property (readonly) Class superclass;
 
 + (Class)defaultTippingOptionsType;
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (int)StringAsFeedbackTypes:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (void)addDefaultTippingOptions:(id)arg1;
 - (void)addFeedbackType:(int)arg1;
 - (bool)canceled;
@@ -61,10 +66,12 @@
 - (bool)completed;
 - (id)completionUserActivity;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (void)dealloc;
 - (id)defaultTippingOptions;
 - (id)defaultTippingOptionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)defaultTippingOptionsCount;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (int)feedbackTypeAtIndex:(unsigned long long)arg1;
 - (int*)feedbackTypes;
 - (id)feedbackTypesAsString:(int)arg1;
@@ -77,6 +84,7 @@
 - (bool)hasOutstanding;
 - (bool)hasPaymentAmount;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)missedPickup;
 - (bool)outstanding;

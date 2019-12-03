@@ -2,9 +2,11 @@
    Image: /System/Library/PrivateFrameworks/SampleAnalysis.framework/SampleAnalysis
  */
 
-@interface SASharedCache : NSObject <SAJSONSerialization, SASerializable> {
+@interface SASharedCache : NSObject <SAJSONSerialization, SALibraryCache, SASerializable> {
     NSArray * _binaryLoadInfos;
     unsigned long long  _slide;
+    unsigned long long  _textSegmentsEndAddress;
+    unsigned long long  _textSegmentsStartAddress;
     NSUUID * _uuid;
 }
 

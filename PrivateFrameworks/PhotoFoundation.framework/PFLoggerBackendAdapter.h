@@ -3,8 +3,9 @@
  */
 
 @interface PFLoggerBackendAdapter : NSObject <PFLoggerBackend> {
-    unsigned long long  _pendingTransactionCount;
+    _Atomic unsigned long long  _pendingTransactionCount;
     bool  _runningUnderDebugger;
+    NSObject<OS_os_transaction> * _transaction;
 }
 
 @property (nonatomic, readonly) bool allowsConcurrentAccess;
@@ -22,6 +23,7 @@
 + (long long)parseByteSizeValueForKey:(id)arg1 inString:(id)arg2;
 + (id)pathWithoutParametersFromString:(id)arg1;
 
+- (void).cxx_destruct;
 - (bool)allowsConcurrentAccess;
 - (void)beginTransaction;
 - (void)endTransaction;

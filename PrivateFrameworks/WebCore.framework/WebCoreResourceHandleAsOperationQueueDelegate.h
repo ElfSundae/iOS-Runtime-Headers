@@ -12,7 +12,7 @@
     struct Lock { 
         struct Atomic<unsigned char> { 
             struct atomic<unsigned char> { 
-                unsigned char __a_; 
+                _Atomic unsigned char __a_; 
             } value; 
         } m_byte; 
     }  m_mutex;
@@ -39,14 +39,14 @@
         struct Lock { 
             struct Atomic<unsigned char> { 
                 struct atomic<unsigned char> { 
-                    unsigned char __a_; 
+                    _Atomic unsigned char __a_; 
                 } value; 
             } m_byte; 
         } m_lock; 
         struct Condition { 
             struct Atomic<bool> { 
                 struct atomic<bool> { 
-                    bool __a_; 
+                    _Atomic bool __a_; 
                 } value; 
             } m_hasWaiters; 
         } m_condition; 
@@ -60,7 +60,7 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)callFunctionOnMainThread:(struct Function<void ()>={unique_ptr<WTF::Function<void ()>::CallableWrapperBase, std::__1::default_delete<WTF::Function<void ()>::CallableWrapperBase> >={__compressed_pair<WTF::Function<void ()>::CallableWrapperBase *, std::__1::default_delete<WTF::Function<void ()>::CallableWrapperBase> >=^{CallableWrapperBase {}*)arg1;
+- (void)callFunctionOnMainThread:(struct Function<void ()>={unique_ptr<WTF::Detail::CallableWrapperBase<void>, std::__1::default_delete<WTF::Detail::CallableWrapperBase<void> > >={__compressed_pair<WTF::Detail::CallableWrapperBase<void> *, std::__1::default_delete<WTF::Detail::CallableWrapperBase<void> > >=^{CallableWrapperBase<void> {}*)arg1;
 - (bool)connection:(id)arg1 canAuthenticateAgainstProtectionSpace:(id)arg2;
 - (void)connection:(id)arg1 didFailWithError:(id)arg2;
 - (void)connection:(id)arg1 didReceiveAuthenticationChallenge:(id)arg2;

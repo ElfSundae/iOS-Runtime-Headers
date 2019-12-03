@@ -19,6 +19,12 @@
 + (id)albumsGridItemWidthInterpolator;
 + (id)allLayoutMetricConfigurationSizes;
 + (struct CGSize { double x1; double x2; })bestItemSizeForAvailableWidth:(double)arg1 screenScale:(double)arg2 columns:(unsigned long long)arg3 bestSpacing:(double*)arg4 bestInset:(double*)arg5;
++ (id)gadgetColumnSpacingSpanDoubleSetAInterpolator;
++ (id)gadgetColumnSpacingSpanDoubleSetBInterpolator;
++ (id)gadgetColumnSpacingSpanSingleSetAInterpolator;
++ (id)gadgetColumnWidthSpanDoubleSetAInterpolator;
++ (id)gadgetColumnWidthSpanDoubleSetBInterpolator;
++ (id)gadgetColumnWidthSpanSingleSetAInterpolator;
 + (id)layoutMarginWidthInterpolator;
 + (id)legacyLayoutMarginWidthInterpolator;
 + (id)memoriesDetailsEdgeInsetsInterpolator;

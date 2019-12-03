@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUOneUpViewController : UIViewController <PHAirPlayControllerContentProvider, PLDismissableViewController, PUAccessoryTileViewControllerDelegate, PUAccessoryVisibilityInteractionControllerDelegate, PUAssetActionPerformerDelegate, PUAssetDisplayDescriptorNavigator, PUBarsControllerDelegate, PUBrowsingViewModelChangeObserver, PUDoubleTapZoomControllerDelegate, PUInteractiveDismissalControllerDelegate, PUIrisImageTileViewControllerDelegate, PUOneUpAccessoryViewControllersManagerDelegate, PUOneUpAssetTransitionViewController, PUOneUpBarsControllerDelegate, PUOneUpGestureRecognizerCoordinatorDelegate, PUOneUpSuggestionsControllerDelegate, PUOneUpTilingLayoutDelegate, PUOverOneUpPresentationSessionDelegate, PUOverOneUpPresentationSessionViewController, PUPlayButtonTileViewControllerDelegate, PUTilingViewControllerTransitionEndPoint, PUTilingViewScrollDelegate, PUTilingViewTileSource, PUTilingViewTileTransitionDelegate, PUTilingViewTileUseDelegate, PUUserTransformTileViewControllerDelegate, PUViewControllerSpecChangeObserver, PXContextualNotificationDelegate, PXDiagnosticsEnvironment, PXGestureProviderDelegate, PXPurgeableController, PXSettingsKeyObserver, UIScrollViewDelegate> {
+@interface PUOneUpViewController : UIViewController <PHAirPlayControllerContentProvider, PUAccessoryTileViewControllerDelegate, PUAccessoryVisibilityInteractionControllerDelegate, PUAssetActionPerformerDelegate, PUAssetDisplayDescriptorNavigator, PUBarsControllerDelegate, PUBrowsingViewModelChangeObserver, PUDoubleTapZoomControllerDelegate, PUInteractiveDismissalControllerDelegate, PUIrisImageTileViewControllerDelegate, PULivePhotoVideoOverlayTileViewControllerDelegate, PUOneUpAccessoryViewControllersManagerDelegate, PUOneUpAssetTransitionViewController, PUOneUpBarsControllerDelegate, PUOneUpGestureRecognizerCoordinatorDelegate, PUOneUpSuggestionsControllerDelegate, PUOneUpTilingLayoutDelegate, PUOverOneUpPresentationSessionDelegate, PUOverOneUpPresentationSessionViewController, PUPlayButtonTileViewControllerDelegate, PUPreviewActionControllerDelegate, PUTilingViewControllerTransitionEndPoint, PUTilingViewScrollDelegate, PUTilingViewTileSource, PUTilingViewTileTransitionDelegate, PUTilingViewTileUseDelegate, PUUserTransformTileViewControllerDelegate, PUViewControllerSpecChangeObserver, PXContextualNotificationDelegate, PXDiagnosticsEnvironment, PXForcedDismissableViewController, PXGestureProviderDelegate, PXPurgeableController, PXSettingsKeyObserver, UIScrollViewDelegate> {
     PUOneUpAccessoryViewControllersManager * __accessoryViewControllersManager;
     PUAccessoryVisibilityInteractionController * __accessoryVisibilityInteractionController;
     PUBrowsingBackgroundTileViewController * __backgroundTileViewController;
@@ -28,6 +28,7 @@
         double bottom; 
         double right; 
     }  __layoutSafeAreaInsets;
+    PUOneUpViewController * __mainOneUpForSecondScreenBrowser;
     bool  __needsUpdateAudioState;
     bool  __needsUpdateBarsController;
     bool  __needsUpdateEditMode;
@@ -62,13 +63,14 @@
     bool  _allowsPreviewActions;
     int  _appearState;
     bool  _appearanceTransitionAnimationsDisabled;
+    PUBrowsingOneUpVisibilityHelper * _browsingOneUpVisibilityHelper;
     PUBrowsingSession * _browsingSession;
     bool  _isPresentedForPreview;
     PULoadingIndicatorController * _loadingIndicatorController;
     struct { 
         bool suggestionController; 
     }  _needsUpdateFlags;
-    CAMBadgeTextView * _originalBadgeView;
+    CEKBadgeTextView * _originalBadgeView;
     PUPreviewActionController * _previewActionController;
     NSString * _scrubbingIdentifier;
     NSUserActivity * _siriActionActivity;
@@ -95,6 +97,7 @@
 @property (nonatomic, readonly) bool _isPresentedForSecondScreen;
 @property (setter=_setLayoutReferenceSize:, nonatomic) struct CGSize { double x1; double x2; } _layoutReferenceSize;
 @property (setter=_setLayoutSafeAreaInsets:, nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } _layoutSafeAreaInsets;
+@property (setter=_setMainOneUpForSecondScreenBrowser:, nonatomic) PUOneUpViewController *_mainOneUpForSecondScreenBrowser;
 @property (setter=_setNeedsUpdateAudioState:, nonatomic) bool _needsUpdateAudioState;
 @property (setter=_setNeedsUpdateBarsController:, nonatomic) bool _needsUpdateBarsController;
 @property (setter=_setNeedsUpdateEditMode:, nonatomic) bool _needsUpdateEditMode;
@@ -126,13 +129,14 @@
 @property (setter=setAllowsPreviewActions:, nonatomic) bool allowsPreviewActions;
 @property (nonatomic) int appearState;
 @property (nonatomic) bool appearanceTransitionAnimationsDisabled;
+@property (nonatomic, retain) PUBrowsingOneUpVisibilityHelper *browsingOneUpVisibilityHelper;
 @property (nonatomic, readonly) PUBrowsingSession *browsingSession;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (setter=setPresentedForPreview:, nonatomic) bool isPresentedForPreview;
 @property (nonatomic, readonly) PULoadingIndicatorController *loadingIndicatorController;
-@property (nonatomic, retain) CAMBadgeTextView *originalBadgeView;
+@property (nonatomic, retain) CEKBadgeTextView *originalBadgeView;
 @property (nonatomic, readonly) PUOneUpBarsController *ppt_barsController;
 @property (nonatomic, readonly) UIViewController *ppt_currentAccessoryViewController;
 @property (nonatomic, readonly) UIScrollView *ppt_mainScrollView;
@@ -150,17 +154,21 @@
 - (long long)_accessoryContentKindForCurrentAsset;
 - (id)_accessoryViewControllersManager;
 - (id)_accessoryVisibilityInteractionController;
+- (void)_arrowKey:(id)arg1;
 - (id)_assetReferenceAtIndexPath:(id)arg1 layout:(id)arg2;
 - (id)_assetViewModelAtIndexPath:(id)arg1 layout:(id)arg2;
 - (id)_backgroundTileViewController;
 - (id)_barsController;
 - (void)_beginShowingOriginal;
 - (void)_browsingVideoPlayerDidPlayToEndTime:(id)arg1;
+- (bool)_canAdvertiseKeyCommands;
 - (bool)_canAttemptNavigationToAssetDisplayDescriptor:(id)arg1;
+- (bool)_canShowWhileLocked;
 - (void)_cancelTimedChromeAutoHide;
 - (id)_chromeAutoHideTimer;
 - (void)_chromeAutoHideTimerFired:(id)arg1;
 - (void)_configureAdoptedTileController:(id)arg1;
+- (id)_contentTileControllerForAssetReference:(id)arg1;
 - (id)_currentAccessoryViewController;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_currentAssetRect;
 - (id)_currentAssetViewModel;
@@ -175,7 +183,7 @@
 - (id)_gestureRecognizerCoordinator;
 - (void)_handleTouchGesture:(id)arg1;
 - (id)_hiddenTilesController;
-- (void)_hideChromeOnPlayButtonTapWithItemIsNowPlaying:(bool)arg1;
+- (void)_hideChromeOnPlayButtonTapWithItemIsNowPlaying:(bool)arg1 buttonIsOverlayed:(bool)arg2;
 - (void)_hideOverlays;
 - (unsigned long long)_initialActivity;
 - (id)_interactivePinchDismissalController;
@@ -199,6 +207,8 @@
 - (bool)_isSecondScreenBrowserVisible;
 - (struct CGSize { double x1; double x2; })_layoutReferenceSize;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_layoutSafeAreaInsets;
+- (id)_leadingContentTileController;
+- (id)_mainOneUpForSecondScreenBrowser;
 - (bool)_needsUpdate;
 - (bool)_needsUpdateAudioState;
 - (bool)_needsUpdateBarsController;
@@ -218,7 +228,6 @@
 - (bool)_prefersCompactLayoutForSplitScreen;
 - (bool)_prefersHomeIndicatorHidden;
 - (double)_preloadInsetsBasedOffViewWidth;
-- (void)_presentAlertForError:(id)arg1;
 - (void)_presentAlertForUnplayableAssetReference:(id)arg1;
 - (void)_presentDetailsIndicator;
 - (bool)_requireUnlockedDeviceForAccessoryView;
@@ -238,6 +247,7 @@
 - (void)_setIrisPlaying:(bool)arg1;
 - (void)_setLayoutReferenceSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)_setLayoutSafeAreaInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
+- (void)_setMainOneUpForSecondScreenBrowser:(id)arg1;
 - (void)_setNeedsUpdate;
 - (void)_setNeedsUpdateAudioState:(bool)arg1;
 - (void)_setNeedsUpdateBarsController:(bool)arg1;
@@ -273,6 +283,7 @@
 - (void)_toggleAccessoryVisibility;
 - (void)_toggleCommentsVisibility;
 - (void)_toggleDetailsVisibility;
+- (id)_trailingContentTileController;
 - (void)_unhideOverlays;
 - (void)_updateAudioStateIfNeeded;
 - (void)_updateBackgroundTileViewController;
@@ -285,7 +296,6 @@
 - (void)_updatePreferredContentSizeIfNeeded;
 - (void)_updatePrefersHomeIndicatorHidden;
 - (void)_updatePreloadInsetsIfNeeded;
-- (void)_updatePreviewActionController;
 - (void)_updateReviewScreenBars;
 - (void)_updateSpecIfNeeded;
 - (void)_updateSuggestionControllerIfNeeded;
@@ -316,13 +326,16 @@
 - (void)barsControllerContentGuideInsetsDidChange:(id)arg1;
 - (id)barsControllerViewController:(id)arg1;
 - (id)barsControllerViewHostingGestureRecognizers:(id)arg1;
+- (id)browsingOneUpVisibilityHelper;
 - (id)browsingSession;
+- (bool)canBecomeFirstResponder;
 - (id)contentScrollView;
 - (id)contentViewControllerForAirPlayController:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })contextualNotification:(id)arg1 containingFrameInCoordinateSpace:(id)arg2;
 - (bool)contextualNotification:(id)arg1 shouldPassthroughPoint:(struct CGPoint { double x1; double x2; })arg2 inCoordinateSpace:(id)arg3;
 - (void)contextualNotificationWasTapped:(id)arg1;
 - (id)createAssetTransitionInfo;
+- (void)createPreviewActionControllerForManagerIfNeeded:(id)arg1 withPresentingViewController:(id)arg2;
 - (void)dealloc;
 - (bool)doubleTapZoomController:(id)arg1 canDoubleTapBeginAtLocationFromProvider:(id)arg2;
 - (id)doubleTapZoomController:(id)arg1 delegateForGestureRecognizer:(id)arg2;
@@ -347,10 +360,11 @@
 - (void)irisImageTileViewControllerDidEndVitality:(id)arg1;
 - (id)irisImageTileViewControllerViewHostingGestureRecognizers:(id)arg1;
 - (bool)isPresentedForPreview;
+- (id)keyCommands;
 - (struct CGPoint { double x1; double x2; })layout:(id)arg1 accessoryOffsetForItemAtIndexPath:(id)arg2;
 - (double)layout:(id)arg1 aspectRatioForItemAtIndexPath:(id)arg2;
 - (struct CGSize { double x1; double x2; })layout:(id)arg1 assetExplorerReviewScreenBadgeSizeForItemAtIndexPath:(id)arg2;
-- (struct CGSize { double x1; double x2; })layout:(id)arg1 badgeSizeForItemAtIndexPath:(id)arg2;
+- (struct CGSize { double x1; double x2; })layout:(id)arg1 badgeSizeForItemAtIndexPath:(id)arg2 contentWidth:(double)arg3;
 - (struct CGPoint { double x1; double x2; })layout:(id)arg1 contentOffsetForItemAtIndexPath:(id)arg2;
 - (bool)layout:(id)arg1 disableInitialZoomToFillForItemAtIndexPath:(id)arg2;
 - (struct CGSize { double x1; double x2; })layout:(id)arg1 loadingIndicatorSizeForItemAtIndexPath:(id)arg2;
@@ -364,6 +378,11 @@
 - (bool)layout:(id)arg1 shouldShowPlayButtonForItemAtIndexPath:(id)arg2;
 - (bool)layout:(id)arg1 shouldShowVideoPlaceholderForItemAtIndexPath:(id)arg2;
 - (bool)layoutShouldShowReviewScreenScrubberBar:(id)arg1;
+- (bool)livePhotoVideoPlaybackTileViewControllerCanBeginPlaying:(id)arg1;
+- (id)livePhotoVideoPlaybackTileViewControllerCurrentImage:(id)arg1;
+- (void)livePhotoVideoPlaybackTileViewControllerDidEndPlaying:(id)arg1;
+- (id)livePhotoVideoPlaybackTileViewControllerDisplayTileTransform:(id)arg1;
+- (void)livePhotoVideoPlaybackTileViewControllerWillBeginPlaying:(id)arg1;
 - (void)loadView;
 - (id)loadingIndicatorController;
 - (void)navigateToAssetDisplayDescriptor:(id)arg1 beforeDate:(id)arg2 completionHandler:(id /* block */)arg3;
@@ -371,6 +390,7 @@
 - (bool)oneUpAccessoryViewControllersManagerRequestAccessoryDismissal:(id)arg1;
 - (void)oneUpAssetTransition:(id)arg1 animateTransitionWithContext:(id)arg2 duration:(double)arg3 completion:(id /* block */)arg4;
 - (void)oneUpAssetTransition:(id)arg1 requestTransitionContextWithCompletion:(id /* block */)arg2;
+- (void)oneUpAssetTransition:(id)arg1 requestTransitionContextWithCompletion:(id /* block */)arg2 options:(unsigned long long)arg3;
 - (void)oneUpAssetTransitionDidEnd:(id)arg1;
 - (void)oneUpAssetTransitionWillBegin:(id)arg1;
 - (bool)oneUpBarsController:(id)arg1 canShowCommentsForAsset:(id)arg2;
@@ -403,7 +423,8 @@
 - (id)overOneUpPresentationSessionTilingView:(id)arg1;
 - (id)overOneUpPresentationSessionViewController:(id)arg1;
 - (double)playButtonTileViewController:(id)arg1 delayForButtonAnimation:(bool)arg2;
-- (void)playButtonTileViewController:(id)arg1 didTapButton:(bool)arg2;
+- (void)playButtonTileViewControllerDidTapButton:(id)arg1;
+- (bool)playButtonTileViewControllerShouldShowPauseButton:(id)arg1;
 - (id)ppt_barsController;
 - (id)ppt_currentAccessoryViewController;
 - (id)ppt_mainScrollView;
@@ -419,7 +440,7 @@
 - (bool)prefersStatusBarHidden;
 - (bool)prepareForDismissingForced:(bool)arg1;
 - (id)previewActionController;
-- (id)previewActionItems;
+- (bool)previewActionControllerPreventRevealInMomentAction:(id)arg1;
 - (id)pu_debugCurrentAsset;
 - (id)pu_debugCurrentViewModel;
 - (long long)pu_preferredBarStyle;
@@ -443,6 +464,7 @@
 - (void)setAllowsPreviewActions:(bool)arg1;
 - (void)setAppearState:(int)arg1;
 - (void)setAppearanceTransitionAnimationsDisabled:(bool)arg1;
+- (void)setBrowsingOneUpVisibilityHelper:(id)arg1;
 - (void)setOriginalBadgeView:(id)arg1;
 - (void)setPresentedForPreview:(bool)arg1;
 - (void)setSiriActionActivity:(id)arg1;

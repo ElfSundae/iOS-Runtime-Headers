@@ -41,6 +41,10 @@
     long long  _direction;
     long long  _layoutStyle;
     bool  _painting;
+    struct CGSize { 
+        double width; 
+        double height; 
+    }  _panoramaCaptureSize;
     CAMPanoramaPreviewView * _previewView;
 }
 
@@ -71,6 +75,7 @@
 @property (nonatomic, readonly) UIView *instructionView;
 @property (nonatomic) long long layoutStyle;
 @property (getter=isPainting, setter=_setPainting:, nonatomic) bool painting;
+@property (nonatomic) struct CGSize { double x1; double x2; } panoramaCaptureSize;
 @property (nonatomic, readonly) CAMPanoramaPreviewView *previewView;
 
 + (Class)layerClass;
@@ -83,6 +88,7 @@
 - (double)_currentAverageSpeed;
 - (double)_currentPaintingAcceleration;
 - (id)_currentPaintingStatus;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_frameForArrowViewWithDirection:(long long)arg1 offset:(double)arg2;
 - (void)_hideArrowInstructionsAfterDelay;
 - (void)_hideInstructionLabel;
 - (void)_hideSpeedInstructionsAfterDelay;
@@ -132,11 +138,13 @@
 - (bool)isPainting;
 - (long long)layoutStyle;
 - (void)layoutSubviews;
+- (struct CGSize { double x1; double x2; })panoramaCaptureSize;
 - (id)previewView;
 - (void)setDelegate:(id)arg1;
 - (void)setDirection:(long long)arg1;
 - (void)setDirection:(long long)arg1 animated:(bool)arg2;
 - (void)setLayoutStyle:(long long)arg1;
+- (void)setPanoramaCaptureSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg1;
 - (void)startPainting;
 - (void)startProcessingPanorama;

@@ -5,6 +5,10 @@
 @interface NWConcrete_nw_unique_connection_request : NSObject <OS_nw_unique_connection_request> {
     NWConcrete_nw_connection * connection;
     NSObject<OS_nw_endpoint> * endpoint;
+    unsigned int  hasBeenProcessed;
+    unsigned int  hasRequestedPubKey;
+    char * incomingReqBytesToVerify;
+    unsigned int  incomingReqBytesToVerifyLen;
     unsigned int  isIncoming;
     unsigned int  isPending;
     unsigned int  isWaitingForActiveConnection;
@@ -14,6 +18,7 @@
     id /* block */  requestCompletionBlock;
     unsigned long long  sequenceNumber;
     BOOL  service;
+    unsigned char  signature;
     unsigned long long  uniqueID;
     NSObject<OS_nw_parameters> * userParameters;
     unsigned char  uuid;

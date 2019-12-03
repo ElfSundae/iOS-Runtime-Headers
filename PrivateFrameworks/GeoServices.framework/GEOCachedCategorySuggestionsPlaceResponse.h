@@ -5,9 +5,26 @@
 @interface GEOCachedCategorySuggestionsPlaceResponse : PBCodable <NSCopying> {
     NSString * _countryCode;
     struct { 
-        unsigned int timestamp : 1; 
-    }  _has;
+        unsigned int has_timestamp : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_countryCode : 1; 
+        unsigned int read_language : 1; 
+        unsigned int read_response : 1; 
+        unsigned int read_sourceURL : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_countryCode : 1; 
+        unsigned int wrote_language : 1; 
+        unsigned int wrote_response : 1; 
+        unsigned int wrote_sourceURL : 1; 
+        unsigned int wrote_timestamp : 1; 
+    }  _flags;
     NSString * _language;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     GEOPDPlaceResponse * _response;
     NSString * _sourceURL;
     double  _timestamp;
@@ -26,7 +43,15 @@
 @property (nonatomic) double timestamp;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_readCountryCode;
+- (void)_readLanguage;
+- (void)_readResponse;
+- (void)_readSourceURL;
+- (void)clearSensitiveFields;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)countryCode;
@@ -38,9 +63,12 @@
 - (bool)hasSourceURL;
 - (bool)hasTimestamp;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)language;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)response;
 - (void)setCountryCode:(id)arg1;

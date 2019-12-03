@@ -14,6 +14,7 @@
     NSString * _scopedSearchSectionBundleIdentifier;
     int  _separatorStyle;
     _SFPBRichText * _suggestionText;
+    int  _suggestionType;
     NSString * _type;
 }
 
@@ -32,6 +33,7 @@
 @property (nonatomic, copy) NSString *scopedSearchSectionBundleIdentifier;
 @property (nonatomic) int separatorStyle;
 @property (nonatomic, retain) _SFPBRichText *suggestionText;
+@property (nonatomic) int suggestionType;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *type;
 
@@ -69,8 +71,10 @@
 - (void)setScopedSearchSectionBundleIdentifier:(id)arg1;
 - (void)setSeparatorStyle:(int)arg1;
 - (void)setSuggestionText:(id)arg1;
+- (void)setSuggestionType:(int)arg1;
 - (void)setType:(id)arg1;
 - (id)suggestionText;
+- (int)suggestionType;
 - (id)type;
 - (void)writeTo:(id)arg1;
 

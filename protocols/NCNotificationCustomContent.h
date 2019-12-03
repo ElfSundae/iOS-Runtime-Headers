@@ -21,11 +21,8 @@
 
 - (id)cancelTouches;
 - (NSString *)contentExtensionIdentifier;
-- (void)loadAudioAccessoryView;
-- (void)playAudioMessage;
-- (NCNotificationAction *)presentationSourceAction;
+- (void)playMedia;
 - (void)preserveInputViews;
 - (bool)restoreInputViews;
-- (void)setPresentationSourceAction:(NCNotificationAction *)arg1;
 
 @end

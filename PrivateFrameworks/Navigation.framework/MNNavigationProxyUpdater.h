@@ -3,6 +3,7 @@
  */
 
 @interface MNNavigationProxyUpdater : NSObject <MNNavigationSessionObserver> {
+    MNCompanionNavigationAdapter * _companionNavigationAdapter;
     GEONavigationProxy * _navigationProxy;
 }
 
@@ -12,6 +13,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)enteredRoutePreviewWithTransportType:(int)arg1;
 - (id)init;
 - (void)navigationSession:(id)arg1 currentStepIndex:(unsigned long long)arg2 didUpdateDistanceUntilManeuver:(double)arg3 timeUntilManeuver:(double)arg4;
 - (void)navigationSession:(id)arg1 currentStepIndex:(unsigned long long)arg2 didUpdateDistanceUntilSign:(double)arg3 timeUntilSign:(double)arg4;

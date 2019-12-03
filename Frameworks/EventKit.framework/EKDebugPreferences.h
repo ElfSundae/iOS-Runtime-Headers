@@ -22,8 +22,7 @@
 @property (nonatomic) bool saveGeocodedLocationsInTravelEngine;
 @property (nonatomic) bool shouldBypassTravelEngineThrottle;
 @property (nonatomic) bool showDepartureDateForTransitTimeToLeave;
-@property (nonatomic) bool showVerboseMessagesForTimeToLeave;
-@property (nonatomic) bool useAverageETAForTimeToLeave;
+@property (nonatomic) bool syntheticTravelAdvisoriesEnabled;
 @property (nonatomic) bool verifyIntegrityOfAvailabilityTimeSearchTimelines;
 
 + (id)shared;
@@ -60,13 +59,11 @@
 - (void)setSaveGeocodedLocationsInTravelEngine:(bool)arg1;
 - (void)setShouldBypassTravelEngineThrottle:(bool)arg1;
 - (void)setShowDepartureDateForTransitTimeToLeave:(bool)arg1;
-- (void)setShowVerboseMessagesForTimeToLeave:(bool)arg1;
-- (void)setUseAverageETAForTimeToLeave:(bool)arg1;
+- (void)setSyntheticTravelAdvisoriesEnabled:(bool)arg1;
 - (void)setVerifyIntegrityOfAvailabilityTimeSearchTimelines:(bool)arg1;
 - (bool)shouldBypassTravelEngineThrottle;
 - (bool)showDepartureDateForTransitTimeToLeave;
-- (bool)showVerboseMessagesForTimeToLeave;
-- (bool)useAverageETAForTimeToLeave;
+- (bool)syntheticTravelAdvisoriesEnabled;
 - (bool)verifyIntegrityOfAvailabilityTimeSearchTimelines;
 
 @end

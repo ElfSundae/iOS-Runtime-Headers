@@ -5,13 +5,16 @@
 @interface VideoMattingMetal : ImageSaverRegistrator {
     <MTLComputePipelineState> * _alphaFillKernel;
     <MTLTexture> * _alphaNoPostprocessing;
+    <MTLResourceGroupSPI> * _alphaNoPostprocessingGroup;
     <MTLTexture> * _bTexture;
+    <MTLResourceGroupSPI> * _backgroundTextureGroup;
     <MTLTexture> * _bg;
     <MTLTexture> * _bgColorLut;
+    <MTLResourceGroupSPI> * _bgFillGroup;
+    <MTLTexture> * _bgFillTempTexture;
     <MTLComputePipelineState> * _bgFillXKernel;
     <MTLComputePipelineState> * _bgFillYKernel;
     <MTLTexture> * _blurredBg;
-    <MTLTexture> * _blurredBgX;
     CVAFilterBox * _boxFilter;
     bool  _bypassShiftCleanup;
     <MTLTexture> * _coc;
@@ -53,6 +56,7 @@
     <MTLTexture> * _edgeAwareFillTempTexture;
     <MTLComputePipelineState> * _edgeAwareFillXKernel;
     <MTLComputePipelineState> * _edgeAwareFillYKernel;
+    <MTLResourceGroupSPI> * _edgeAwareGroup;
     bool  _enableInfConvolution;
     <MTLTexture> * _facemaskDisparity;
     <MTLTexture> * _facemaskRegionTexture;
@@ -65,7 +69,6 @@
     <MTLTexture> * _filledDisparityTexture;
     <MTLTexture> * _filteredBeforeSmoothDisparity;
     unsigned long long  _frameIndex;
-    <MTLTexture> * _fullResCoC;
     <MTLTexture> * _gTexture;
     float  _gammaExponent;
     <MTLTexture> * _gfForegroundMask;
@@ -73,11 +76,9 @@
     MPSImageGuidedFilter * _guidedFilter;
     <MTLComputePipelineState> * _guidedFilterWeightKernel;
     <MTLComputePipelineState> * _halfDownSampler;
-    <MTLTexture> * _halfResCoC;
     int  _height;
     int  _height2;
     struct __IOSurfaceAccelerator { } * _hwScaler;
-    struct __CVBuffer { } * _hybridDownsamplingIntermediateBuffer;
     CVAFilterHybridResampling * _hybridResampler;
     CVAFilterInfimumConvolution * _infConvolution;
     float  _infConvolutionScale;
@@ -95,17 +96,16 @@
     CVAFilterMaskedVariableBlur * _maskedVariableBlur;
     NSObject<OS_dispatch_semaphore> * _mattingCallbackSemaphore;
     bool  _mattingUsesPostprocessing;
-    struct CVAPhotoMetalContext { id x1; id x2; struct unique_ptr<CVAPerfEndTimeProfilerSet, std::__1::default_delete<CVAPerfEndTimeProfilerSet> > { struct __compressed_pair<CVAPerfEndTimeProfilerSet *, std::__1::default_delete<CVAPerfEndTimeProfilerSet> > { struct CVAPerfEndTimeProfilerSet {} *x_1_2_1; } x_3_1_1; } x3; bool x4; } * _metalContext;
-    struct __CVBuffer { } * _msrIntermediateBuffer;
+    struct CVAPhotoMetalContext { id x1; id x2; id x3; id x4; struct unique_ptr<CVAPerfEndTimeProfilerSet, std::__1::default_delete<CVAPerfEndTimeProfilerSet> > { struct __compressed_pair<CVAPerfEndTimeProfilerSet *, std::__1::default_delete<CVAPerfEndTimeProfilerSet> > { struct CVAPerfEndTimeProfilerSet {} *x_1_2_1; } x_5_1_1; } x5; bool x6; } * _metalContext;
     struct CompositeConfig { 
         unsigned int frameNumber; 
         unsigned int seedGeneratorFactor; 
         int noiseBits; 
         float noiseBitsFactor; 
         float cubeIntensity; 
+        float noisePercentToAddAtInfinity; 
     }  _noiseConfig;
     <MTLTexture> * _outputCanonicalDisparity;
-    bool  _printTimings;
     <MTLTexture> * _rTexture;
     CVAFilterRenderComposite * _renderComposite;
     NSObject<OS_dispatch_semaphore> * _renderingCallbackSemaphore;
@@ -141,6 +141,8 @@
     bool  _useTemporalConfidence;
     int  _width;
     int  _width2;
+    struct __CVBuffer { } * _yuvSourceDownsampledBuffer;
+    <MTLTexture> * _yuvSourceDownsampledTexture;
 }
 
 @property bool bypassShiftCleanup;
@@ -150,21 +152,19 @@
 @property float renderingDisparityUpdateRate;
 
 + (void)decomposeYuvPixelBuffer:(struct __CVBuffer { }*)arg1 yTexture:(id*)arg2 uvTexture:(id*)arg3 device:(id)arg4;
-+ (void)prewarmBox:(id)arg1 device:(id)arg2 commandBuffer:(id)arg3;
-+ (void)prewarmGuidedFilter:(id)arg1 device:(id)arg2 commandBuffer:(id)arg3 width:(int)arg4 height:(int)arg5 width2:(int)arg6 height2:(int)arg7;
 + (void)saveTexture:(id)arg1 toFilename:(id)arg2;
 
 - (void).cxx_destruct;
-- (void)alphaMattingWithPostprocessedDisparity:(struct __CVBuffer { }*)arg1 source:(struct __CVBuffer { }*)arg2 inSegmentation:(struct __CVBuffer { }*)arg3 alpha:(struct __CVBuffer { }*)arg4 staticParams:(const struct VideoMattingStaticParams { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; int x7; int x8; unsigned int x9; float x10; float x11; float x12; float x13; float x14; float x15; float x16; float x17; float x18; float x19; float x20; unsigned int x21; unsigned int x22; int x23; float x24; float x25; }*)arg5 dynamicParams:(const struct VideoMattingDynamicParams { float x1; float x2; float x3; float x4; float x5; float x6; float x7; float x8; struct array<float, 3> { float x_9_1_1[3]; } x9; float x10; }*)arg6 usePostprocessedDisparity:(bool)arg7 isFinalStage:(bool)arg8 dilateForegroundMask:(bool)arg9 callbackQueue:(id)arg10 callback:(id /* block */)arg11;
+- (void)alphaMattingWithPostprocessedDisparity:(struct __CVBuffer { }*)arg1 source:(struct __CVBuffer { }*)arg2 inSegmentation:(struct __CVBuffer { }*)arg3 alpha:(struct __CVBuffer { }*)arg4 staticParams:(const struct VideoMattingStaticParams { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; int x7; int x8; unsigned int x9; float x10; float x11; float x12; float x13; float x14; float x15; float x16; float x17; float x18; float x19; float x20; unsigned int x21; unsigned int x22; int x23; float x24; float x25; float x26; float x27; }*)arg5 dynamicParams:(const struct VideoMattingDynamicParams { float x1; float x2; float x3; float x4; float x5; float x6; float x7; struct array<float, 3> { float x_8_1_1[3]; } x8; float x9; }*)arg6 usePostprocessedDisparity:(bool)arg7 isFinalStage:(bool)arg8 dilateForegroundMask:(bool)arg9 callbackQueue:(id)arg10 callback:(id /* block */)arg11;
+- (struct pair<float, float> { float x1; float x2; })blurRadiusAndStdAtInfinityForFocalLength:(float)arg1 focusCanonicalDisparity:(float)arg2 fNumber:(float)arg3 xResolution:(float)arg4 useNewCoCFormula:(bool)arg5;
 - (bool)bypassShiftCleanup;
-- (float)cocAtInfinityForFocalLength:(float)arg1 focusCanonicalDisparity:(float)arg2 focalRatio:(float)arg3 xResolution:(float)arg4;
 - (id)colorSim;
 - (struct __CVBuffer { }*)createCVBufferWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 format:(unsigned int)arg3;
 - (void)cropFrame:(struct __CVBuffer { }*)arg1 destination:(struct __CVBuffer { }*)arg2 rect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3;
 - (void)dealloc;
-- (void)disparityPostprocessingWithCanonicalDisparity:(struct __CVBuffer { }*)arg1 color:(struct __CVBuffer { }*)arg2 postProcessedDisparity:(struct __CVBuffer { }*)arg3 staticParams:(const struct VideoMattingStaticParams { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; int x7; int x8; unsigned int x9; float x10; float x11; float x12; float x13; float x14; float x15; float x16; float x17; float x18; float x19; float x20; unsigned int x21; unsigned int x22; int x23; float x24; float x25; }*)arg4 dynamicParams:(const struct VideoMattingDynamicParams { float x1; float x2; float x3; float x4; float x5; float x6; float x7; float x8; struct array<float, 3> { float x_9_1_1[3]; } x9; float x10; }*)arg5 postProcessingParams:(const struct VideoPostprocessingParams { bool x1; float x2; bool x3; float x4; float x5; bool x6; }*)arg6 facesArray:(id)arg7 faceModel:(id)arg8 isFinalStage:(bool)arg9 callbackQueue:(id)arg10 callback:(id /* block */)arg11;
+- (id)disparityPostprocessingWithCanonicalDisparity:(struct __CVBuffer { }*)arg1 color:(struct __CVBuffer { }*)arg2 postProcessedDisparity:(struct __CVBuffer { }*)arg3 staticParams:(const struct VideoMattingStaticParams { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; int x7; int x8; unsigned int x9; float x10; float x11; float x12; float x13; float x14; float x15; float x16; float x17; float x18; float x19; float x20; unsigned int x21; unsigned int x22; int x23; float x24; float x25; float x26; float x27; }*)arg4 dynamicParams:(const struct VideoMattingDynamicParams { float x1; float x2; float x3; float x4; float x5; float x6; float x7; struct array<float, 3> { float x_8_1_1[3]; } x8; float x9; }*)arg5 postProcessingParams:(const struct VideoPostprocessingParams { bool x1; float x2; bool x3; float x4; float x5; bool x6; }*)arg6 facesArray:(id)arg7 faceModel:(id)arg8 isFinalStage:(bool)arg9 callbackQueue:(id)arg10 callback:(id /* block */)arg11;
 - (void)downsampleWithHWScalerSource:(struct __CVBuffer { }*)arg1 destination:(struct __CVBuffer { }*)arg2;
-- (void)encode420BilinearScalingToCommandBuffer:(id)arg1 source:(struct __CVBuffer { }*)arg2 destination:(struct __CVBuffer { }*)arg3;
+- (void)encode420Bilinear2xDownsamplingToCommandBuffer:(id)arg1 source:(struct __CVBuffer { }*)arg2 destination:(struct __CVBuffer { }*)arg3;
 - (void)encode420HybridDownsamplingToCommandBuffer:(id)arg1 source:(struct __CVBuffer { }*)arg2 destination:(struct __CVBuffer { }*)arg3;
 - (void)encode420ScalingByMPSToCommandBuffer:(id)arg1 source:(struct __CVBuffer { }*)arg2 destination:(struct __CVBuffer { }*)arg3;
 - (void)encodeBackgroundFillToCommandBuffer:(id)arg1 inputDisparity:(id)arg2 inputMask:(id)arg3 outputDisparity:(id)arg4;
@@ -192,9 +192,10 @@
 - (void)encodeUpdateConfidenceAndLastValidDisparityToCommandBuffer:(id)arg1 disparity:(id)arg2 prevSmoothConfidence:(id)arg3 lastValidDisparityIn:(id)arg4 lastValidDisparityOut:(id)arg5 currConfidenceOut:(id)arg6 useTemporalConfidence:(bool)arg7;
 - (id)filteredBeforeSmoothDisparity;
 - (void)initSourceTexture:(struct __CVBuffer { }*)arg1;
-- (id)initWithStaticParams:(const struct VideoMattingStaticParams { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; int x7; int x8; unsigned int x9; float x10; float x11; float x12; float x13; float x14; float x15; float x16; float x17; float x18; float x19; float x20; unsigned int x21; unsigned int x22; int x23; float x24; float x25; }*)arg1 renderingDisparityUpdateRate:(float)arg2 renderingDisparityBlurRadius:(float)arg3 renderingLensFocalLength_mm:(float)arg4 useTemporalConfidence:(bool)arg5 metalContext:(struct CVAPhotoMetalContext { id x1; id x2; struct unique_ptr<CVAPerfEndTimeProfilerSet, std::__1::default_delete<CVAPerfEndTimeProfilerSet> > { struct __compressed_pair<CVAPerfEndTimeProfilerSet *, std::__1::default_delete<CVAPerfEndTimeProfilerSet> > { struct CVAPerfEndTimeProfilerSet {} *x_1_2_1; } x_3_1_1; } x3; bool x4; }*)arg6 error:(id*)arg7;
+- (id)initWithStaticParams:(const struct VideoMattingStaticParams { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; int x7; int x8; unsigned int x9; float x10; float x11; float x12; float x13; float x14; float x15; float x16; float x17; float x18; float x19; float x20; unsigned int x21; unsigned int x22; int x23; float x24; float x25; float x26; float x27; }*)arg1 renderingDisparityUpdateRate:(float)arg2 renderingDisparityBlurRadius:(float)arg3 renderingLensFocalLength_mm:(float)arg4 useTemporalConfidence:(bool)arg5 metalContext:(struct CVAPhotoMetalContext { id x1; id x2; id x3; id x4; struct unique_ptr<CVAPerfEndTimeProfilerSet, std::__1::default_delete<CVAPerfEndTimeProfilerSet> > { struct __compressed_pair<CVAPerfEndTimeProfilerSet *, std::__1::default_delete<CVAPerfEndTimeProfilerSet> > { struct CVAPerfEndTimeProfilerSet {} *x_1_2_1; } x_5_1_1; } x5; bool x6; }*)arg6 error:(id*)arg7;
 - (bool)isBgColorLutBlack;
-- (void)renderContinuousWithSource:(struct __CVBuffer { }*)arg1 alpha:(struct __CVBuffer { }*)arg2 canonicalDisparity:(struct __CVBuffer { }*)arg3 disparityInFocus:(float)arg4 focusCanonicalDisparity:(float)arg5 fNumber:(float)arg6 infConvolutionScale:(float)arg7 noiseBits:(float)arg8 disparityUpdateRate:(float)arg9 focusThresholdHardness:(float)arg10 cubeIntensity:(float)arg11 usePostprocessedDisparity:(bool)arg12 dstColor:(struct __CVBuffer { }*)arg13 isFinalStage:(bool)arg14 callbackQueue:(id)arg15 withCallback:(id /* block */)arg16;
+- (void)prewarmGuidedFilter:(id)arg1 device:(id)arg2 commandBuffer:(id)arg3 width:(int)arg4 height:(int)arg5 width2:(int)arg6 height2:(int)arg7;
+- (void)renderContinuousWithSource:(struct __CVBuffer { }*)arg1 alpha:(struct __CVBuffer { }*)arg2 canonicalDisparity:(struct __CVBuffer { }*)arg3 disparityInFocus:(float)arg4 focusCanonicalDisparity:(float)arg5 fNumber:(float)arg6 infConvolutionScale:(float)arg7 noiseBits:(float)arg8 disparityUpdateRate:(float)arg9 focusThresholdHardness:(float)arg10 cubeIntensity:(float)arg11 usePostprocessedDisparity:(bool)arg12 dstColor:(struct __CVBuffer { }*)arg13 isFinalStage:(bool)arg14 properties:(id)arg15 callbackQueue:(id)arg16 withCallback:(id /* block */)arg17;
 - (void)renderStageLightWithSource:(struct __CVBuffer { }*)arg1 alpha:(struct __CVBuffer { }*)arg2 canonicalDisparity:(struct __CVBuffer { }*)arg3 dstColor:(struct __CVBuffer { }*)arg4 blackBackgroundIntensity:(float)arg5 vignetteIntensity:(float)arg6 isFinalStage:(bool)arg7 callbackQueue:(id)arg8 withCallback:(id /* block */)arg9;
 - (float)renderingDisparityUpdateRate;
 - (void)setAlphaLut:(float)arg1 gammaExponent:(float)arg2;

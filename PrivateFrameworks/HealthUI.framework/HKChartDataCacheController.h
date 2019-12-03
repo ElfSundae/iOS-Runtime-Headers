@@ -5,6 +5,7 @@
 @interface HKChartDataCacheController : NSObject <HKSampleTypeUpdateControllerObserver> {
     HKActivitySummaryDataProvider * _activitySummaryDataProvider;
     NSMutableDictionary * _alternateCurrentValueDataProvidersByDisplayType;
+    NSMutableArray * _chartCachesByCustomDisplayType;
     struct NSMutableDictionary { Class x1; } * _chartCachesByDisplayTypeIdentifier;
     NSArray * _chartCachesByTimeScopeAndDisplayTypeIdentifier;
     NSMutableDictionary * _currentValueDataProvidersByDisplayType;
@@ -32,6 +33,7 @@
 - (void)_subscribeForUpdatesForDisplayType:(id)arg1;
 - (id)_timeScopeBasedChartCacheForDisplayType:(id)arg1 timeScope:(long long)arg2;
 - (id)activitySummaryDataProviderWithHealthStore:(id)arg1 dateCache:(id)arg2 displayTypeController:(id)arg3 unitController:(id)arg4;
+- (void)addCustomChartCache:(id)arg1 forDisplayType:(id)arg2;
 - (id)allInteractiveChartsCaches;
 - (id)alternateCurrentValueDataProviderForDisplayType:(id)arg1 healthStore:(id)arg2 updateController:(id)arg3 dateCache:(id)arg4;
 - (id)currentValueDataProviderForDisplayType:(id)arg1 healthStore:(id)arg2 updateController:(id)arg3 dateCache:(id)arg4;
@@ -43,6 +45,7 @@
 - (void)setUpdateController:(id)arg1;
 - (id)unitController;
 - (id)updateController;
+- (void)updateController:(id)arg1 didReceiveHighFrequencyUpdateForType:(id)arg2;
 - (void)updateController:(id)arg1 didReceiveUpdateForType:(id)arg2 samplesAdded:(id)arg3 objectsRemoved:(id)arg4;
 
 @end

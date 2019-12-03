@@ -4,6 +4,7 @@
 
 @interface AXEventKeyInfoRepresentation : NSObject <AXEventRepresentationDescription, NSCopying, NSSecureCoding> {
     unsigned short  _alternativeKeyCode;
+    unsigned int  _gsModifierState;
     unsigned short  _keyCode;
     bool  _keyDown;
     NSString * _modifiedInput;
@@ -16,6 +17,7 @@
 @property (nonatomic) unsigned short alternativeKeyCode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) unsigned int gsModifierState;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned short keyCode;
 @property (nonatomic) bool keyDown;
@@ -35,12 +37,14 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned int)gsModifierState;
 - (id)initWithCoder:(id)arg1;
 - (unsigned short)keyCode;
 - (bool)keyDown;
 - (id)modifiedInput;
 - (unsigned int)modifierState;
 - (void)setAlternativeKeyCode:(unsigned short)arg1;
+- (void)setGsModifierState:(unsigned int)arg1;
 - (void)setKeyCode:(unsigned short)arg1;
 - (void)setKeyDown:(bool)arg1;
 - (void)setModifiedInput:(id)arg1;

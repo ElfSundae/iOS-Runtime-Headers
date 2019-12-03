@@ -16,7 +16,7 @@
 @property (retain) PDAnimationTarget *target;
 @property (retain) id value;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (double)delay;
 - (double)duration;
 - (int)iterateType;

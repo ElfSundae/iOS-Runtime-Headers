@@ -19,8 +19,6 @@
 + (id)_textForShallowDepthOfFieldStatus:(long long)arg1 numberOfPeopleFound:(unsigned long long)arg2 flashMode:(long long)arg3 devicePosition:(long long)arg4 lightingType:(long long)arg5;
 + (bool)shouldDisplayInstructionForShallowDepthOfFieldStatus:(long long)arg1;
 
-- (double)_backgroundAlpha;
-- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_textInsets;
 - (void)_updateTextWithPriorStatus:(long long)arg1;
 - (long long)devicePosition;
 - (long long)flashMode;

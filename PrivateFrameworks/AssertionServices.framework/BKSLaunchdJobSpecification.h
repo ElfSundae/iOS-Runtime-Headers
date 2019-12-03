@@ -11,6 +11,7 @@
     unsigned long long  _executionOptions;
     NSString * _labelPrefix;
     NSArray * _machServices;
+    NSString * _managedPersona;
     NSString * _standardError;
     NSString * _standardOutput;
 }
@@ -26,6 +27,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSString *labelPrefix;
 @property (nonatomic, copy) NSArray *machServices;
+@property (nonatomic, copy) NSString *managedPersona;
 @property (nonatomic, copy) NSString *standardError;
 @property (nonatomic, copy) NSString *standardOutput;
 @property (readonly) Class superclass;
@@ -33,11 +35,11 @@
 + (id)specification;
 + (bool)supportsSecureCoding;
 
+- (void).cxx_destruct;
 - (id)arguments;
 - (id)bundleIdentifier;
 - (id)bundlePath;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)environment;
@@ -47,6 +49,7 @@
 - (id)initWithXPCDictionary:(id)arg1;
 - (id)labelPrefix;
 - (id)machServices;
+- (id)managedPersona;
 - (void)setArguments:(id)arg1;
 - (void)setBundleIdentifier:(id)arg1;
 - (void)setBundlePath:(id)arg1;
@@ -55,6 +58,7 @@
 - (void)setExecutionOptions:(unsigned long long)arg1;
 - (void)setLabelPrefix:(id)arg1;
 - (void)setMachServices:(id)arg1;
+- (void)setManagedPersona:(id)arg1;
 - (void)setStandardError:(id)arg1;
 - (void)setStandardOutput:(id)arg1;
 - (id)standardError;

@@ -78,5 +78,6 @@
 - (void)terminate;
 - (bool)terminated;
 - (void)updateCellData:(id)arg1;
+- (void)updateFormulaForCellData:(id)arg1;
 
 @end

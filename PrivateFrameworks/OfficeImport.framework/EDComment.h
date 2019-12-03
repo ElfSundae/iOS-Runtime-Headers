@@ -14,9 +14,9 @@
 @property (nonatomic) int rowIndex;
 @property (nonatomic) bool visible;
 
+- (void).cxx_destruct;
 - (id)author;
 - (int)columnIndex;
-- (void)dealloc;
 - (id)description;
 - (int)rowIndex;
 - (void)setAuthor:(id)arg1;

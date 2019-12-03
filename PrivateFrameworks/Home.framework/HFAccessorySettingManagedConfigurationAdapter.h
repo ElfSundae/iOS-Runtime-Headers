@@ -27,12 +27,12 @@
 - (void)_setupDebugHandler;
 - (id)_synchronizeHomeKitToManagedConfiguration;
 - (id)_synchronizeManagedConfigurationToHomeKit;
-- (void)accessorySettingWasUpdated:(id)arg1 value:(id)arg2;
 - (void)addProfileObserver:(id)arg1;
 - (void)dealloc;
-- (id)initWithMediaProfileContainer:(id)arg1 keyPaths:(id)arg2 mode:(unsigned long long)arg3 updateHandler:(id /* block */)arg4;
-- (id)initWithMediaProfileContainer:(id)arg1 keyPaths:(id)arg2 updateHandler:(id /* block */)arg3;
-- (id)initWithMediaProfileContainer:(id)arg1 mode:(unsigned long long)arg2;
+- (void)homeKitSettingWasUpdated:(id)arg1 value:(id)arg2;
+- (id)initWithHomeKitSettingsVendor:(id)arg1 keyPaths:(id)arg2 mode:(unsigned long long)arg3 updateHandler:(id /* block */)arg4;
+- (id)initWithHomeKitSettingsVendor:(id)arg1 keyPaths:(id)arg2 updateHandler:(id /* block */)arg3;
+- (id)initWithHomeKitSettingsVendor:(id)arg1 mode:(unsigned long long)arg2;
 - (bool)isSettingUp;
 - (unsigned long long)numberOfProfiles;
 - (void)profileConnectionDidReceiveProfileListChangedNotification:(id)arg1 userInfo:(id)arg2;

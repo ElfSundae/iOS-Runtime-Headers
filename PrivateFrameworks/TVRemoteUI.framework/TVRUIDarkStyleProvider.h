@@ -5,15 +5,19 @@
 @interface TVRUIDarkStyleProvider : NSObject
 
 - (bool)_deviceHasHomeButton;
+- (id)_symbolImageForButtonPanelNamed:(id)arg1;
+- (id)_symbolImageForMediaControlsNamed:(id)arg1;
 - (id)appleTVIcon;
 - (id)buttonBackgroundColor;
 - (id)buttonBackgroundView;
 - (id)buttonFont;
-- (id)buttonStyling;
 - (id)buttonTextColor;
 - (id)cellBackgroundColor;
 - (id)cellSeparatorBackgroundColor;
 - (id)chevronImage;
+- (id)colorForConnectedDevice;
+- (id)colorForDisconnectedDevice;
+- (id)colorForMessageLabels;
 - (id)colorForSpinner;
 - (id)controlPanelBackgroundColor;
 - (id)controlPanelBackgroundView;
@@ -31,10 +35,12 @@
 - (id)fontForIntroAnimationLabel;
 - (id)fontForMessageViewDescription;
 - (id)fontForMessageViewTitle;
+- (id)fontForNearbyDevicesSectionTitle;
 - (id)fontForSpinnerTitle;
 - (id)fontForWiFiButton;
 - (id)genericTVIcon;
 - (id)iconForButtonType:(long long)arg1;
+- (bool)isSmallDevice;
 - (double)mediaControlsButtonHeight;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })mediaControlsInsets;
 - (double)mediaControlsViewHeight;
@@ -45,17 +51,15 @@
 - (double)secondaryButtonHeight;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })secondaryButtonInsets;
 - (id)separatorView;
-- (id)stylingForConnectedDevice;
-- (id)stylingForDeviceTitle;
-- (id)stylingForDirectionalButtons;
-- (id)stylingForDisconnectedDevice;
-- (id)stylingForMessageLabels;
 - (id)textColorForDeviceTitle;
 - (id)textColorForIntroAnimationLabel;
+- (id)textColorForNearbyDevicesSectionTitle;
 - (id)textColorForSpinnerTitle;
 - (id)textForButtonType:(long long)arg1;
 - (id)textForDeviceLockoutAlert;
+- (id)textForNearbyDevicesSectionTitle;
 - (id)textForPairingAlert;
+- (id)textForPairingPasswordAlert;
 - (double)touchpadAlpha;
 - (id)touchpadBackgroundColor;
 - (id)touchpadBackgroundView;

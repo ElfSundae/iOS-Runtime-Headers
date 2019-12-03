@@ -7,8 +7,10 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 
+- (id)_accessibilityCapturedImages;
 - (bool)accessibilityActivate;
 - (struct CGPoint { double x1; double x2; })accessibilityActivationPoint;
+- (id)accessibilityCustomActions;
 - (id)accessibilityElementAtIndex:(long long)arg1;
 - (long long)accessibilityElementCount;
 - (id)accessibilityElements;
@@ -25,6 +27,8 @@
 - (id)accessibilityLocalizedStringTableName;
 - (long long)accessibilityNavigationStyle;
 - (id)accessibilityPath;
+- (bool)accessibilityPerformEscape;
+- (bool)accessibilityRespondsToUserInteraction;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityUserDefinedActivationPoint;
 - (id)accessibilityUserDefinedContainer;

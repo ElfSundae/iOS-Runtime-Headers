@@ -3,7 +3,8 @@
  */
 
 @interface CKAppGrabberView : UIView {
-    CKAppChevronView * _chevronView;
+    NSString * _appIdentifier;
+    _UIGrabber * _chevronView;
     UIButton * _closeButton;
     <CKAppGrabberViewDelegate> * _delegate;
     UIView * _grayLine;
@@ -21,8 +22,6 @@
 @property (nonatomic) bool roundsTopCorners;
 @property (nonatomic) bool showsAppTitle;
 @property (nonatomic) bool showsGrabberPill;
-@property (nonatomic) bool showsHairlineSeperator;
-@property (nonatomic) long long state;
 @property (nonatomic, readonly) double visualOriginYOffset;
 
 + (double)compactRoundedCornerRadius;
@@ -35,6 +34,7 @@
 - (void)closeButtonTapped:(id)arg1;
 - (id)delegate;
 - (id)headerView;
+- (id)iconImageView;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)layoutSubviews;
 - (bool)roundsTopCorners;
@@ -42,15 +42,11 @@
 - (void)setRoundsTopCorners:(bool)arg1;
 - (void)setShowsAppTitle:(bool)arg1;
 - (void)setShowsGrabberPill:(bool)arg1;
-- (void)setShowsHairlineSeperator:(bool)arg1;
-- (void)setState:(long long)arg1;
-- (void)setState:(long long)arg1 animated:(bool)arg2;
 - (bool)showsAppTitle;
 - (bool)showsGrabberPill;
-- (bool)showsHairlineSeperator;
-- (long long)state;
-- (void)updateAppTitle:(id)arg1 icon:(id)arg2;
+- (void)updateAppTitle:(id)arg1 icon:(id)arg2 appIdentifier:(id)arg3;
 - (void)updateHeaderFrame:(bool)arg1;
+- (void)updateIconImageView:(id)arg1;
 - (double)visualOriginYInView:(id)arg1;
 - (double)visualOriginYOffset;
 

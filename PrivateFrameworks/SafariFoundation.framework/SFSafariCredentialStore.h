@@ -10,6 +10,7 @@
 + (id)_credentialProviderExtensionHelperProxy;
 + (id)_credentialsMatchingSharedWebCredentialsDatabaseEntries:(id)arg1 websiteURL:(id)arg2 savedPasswords:(id)arg3;
 + (void)_getAllowedActionForAppCredentialsWithAppID:(id)arg1 websiteURL:(id)arg2 user:(id)arg3 password:(id)arg4 shouldAnalyzeExistingCredentials:(bool)arg5 completionHandler:(id /* block */)arg6;
++ (void)_getBundleIDForPrimaryCredentialProviderWithCompletionHandler:(id /* block */)arg1;
 + (void)_getCredentialsForAppWithApprovedAndValidSharedWebCredentialsDatabaseEntries:(id)arg1 websiteURL:(id)arg2 completionHandler:(id /* block */)arg3;
 + (void)_getExternalCredentialsMatchingSharedWebCredentialsDatabaseEntries:(id)arg1 websiteURL:(id)arg2 completion:(id /* block */)arg3;
 + (id)_highLevelDomainsFromDatabaseEntries:(id)arg1;
@@ -19,6 +20,7 @@
 + (void)bestDomainForAppID:(id)arg1 completionHandler:(id /* block */)arg2;
 + (id)bestDomainForAutoFillFromDomains:(id)arg1 appID:(id)arg2;
 + (void)getAllApprovedSharedWebCredentialsEntries:(id /* block */)arg1;
++ (void)getAllCredentialsWithCompletionHandler:(id /* block */)arg1;
 + (void)getAllowedActionForAppCredentialsWithAppID:(id)arg1 websiteURL:(id)arg2 user:(id)arg3 password:(id)arg4 completionHandler:(id /* block */)arg5;
 + (void)getApprovedSharedWebCredentialsEntriesForAppWithAppID:(id)arg1 completionHandler:(id /* block */)arg2;
 + (void)getApprovedSharedWebCredentialsEntriesSortedByHighestValueForAppWithAppID:(id)arg1 completionHandler:(id /* block */)arg2;

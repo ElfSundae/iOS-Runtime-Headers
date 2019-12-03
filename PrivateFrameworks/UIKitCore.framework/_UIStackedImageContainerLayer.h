@@ -61,6 +61,7 @@
         double x; 
         double y; 
     }  _translationOffset;
+    CALayer * _unfocusedShadowLayer;
     CALayer * _unmaskedOverlayContainerLayer;
     CALayer * _unmaskedOverlayLayer;
     CATransformLayer * _unmaskedOverlayPerspectiveTransformLayer;
@@ -142,6 +143,7 @@
 - (struct CATransform3D { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; double x10; double x11; double x12; double x13; double x14; double x15; double x16; })_specularTransformForCurrentState;
 - (double)_unfocusedShadowRadius;
 - (id)_unmaskedOverlayLayer;
+- (void)_updateContentProviderLayerFocusDirection;
 - (void)_updateCornerRadiusFromConfig;
 - (void)_updateFocusKeylineStrokeScale;
 - (void)_updateFocusKeylineStrokeTranslation:(struct CGPoint { double x1; double x2; })arg1;

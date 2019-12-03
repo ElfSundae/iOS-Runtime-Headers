@@ -9,6 +9,7 @@
     bool  mExtensionDetected;
     OADGraphicProperties * mGraphicProperties;
     bool  mIsPositionAffineTransform;
+    OADGraphicProperties * mLeaderlineGraphicProperties;
     int  mPosition;
     EDResources * mResources;
     double  mRotation;
@@ -19,21 +20,25 @@
     bool  mShowPercent;
     bool  mShowSeriesName;
     bool  mShowValue;
-    unsigned long long  mStringIndex;
+    EDString * mString;
 }
+
+@property (nonatomic, retain) EDString *string;
 
 + (id)dataLabelWithResources:(id)arg1;
 
+- (void).cxx_destruct;
 - (id)contentFormat;
 - (unsigned long long)contentFormatId;
-- (void)dealloc;
 - (id)description;
 - (id)graphicProperties;
+- (bool)hasLeaderLinesGraphics;
 - (id)initWithResources:(id)arg1;
 - (bool)isContentFormatDerivedFromDataPoints;
 - (bool)isCustomLabelBlockingVisibility;
 - (bool)isDeleted;
 - (bool)isExtensionDetected;
+- (bool)isLabelVisible;
 - (bool)isPositionAffineTransform;
 - (bool)isShowBubbleSize;
 - (bool)isShowCategoryName;
@@ -42,6 +47,7 @@
 - (bool)isShowPercent;
 - (bool)isShowSeriesName;
 - (bool)isShowValue;
+- (id)leaderlineGraphicProperties;
 - (int)position;
 - (double)rotationAngle;
 - (void)setContentFormat:(id)arg1;
@@ -51,6 +57,7 @@
 - (void)setGraphicProperties:(id)arg1;
 - (void)setIsContentFormatDerivedFromDataPoints:(bool)arg1;
 - (void)setIsPositionAffineTransform:(bool)arg1;
+- (void)setLeaderlineGraphicProperties:(id)arg1;
 - (void)setPosition:(int)arg1;
 - (void)setRotationAngle:(double)arg1;
 - (void)setShowBubbleSize:(bool)arg1;
@@ -61,8 +68,6 @@
 - (void)setShowSeriesName:(bool)arg1;
 - (void)setShowValue:(bool)arg1;
 - (void)setString:(id)arg1;
-- (void)setStringIndex:(unsigned long long)arg1;
 - (id)string;
-- (unsigned long long)stringIndex;
 
 @end

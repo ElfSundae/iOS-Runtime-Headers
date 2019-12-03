@@ -10,6 +10,7 @@
     bool  _lowPowerSphereModeEnabled;
     float  _maximumFrameRate;
     bool  _motionDataInvalid;
+    bool  _overCaptureEnabled;
     int  _sphereThermalLevel;
     bool  _sphereVideoEnabled;
     bool  _sphereVideoSupported;
@@ -25,6 +26,7 @@
 @property (nonatomic) bool enablesSphereWhenAvailable;
 @property (nonatomic) bool lowPowerSphereModeEnabled;
 @property (nonatomic) float maximumFrameRate;
+@property (nonatomic) bool overCaptureEnabled;
 @property (nonatomic) bool sphereVideoEnabled;
 @property (nonatomic, readonly) bool sphereVideoSupported;
 @property (nonatomic) int systemThermalLevel;
@@ -41,11 +43,13 @@
 - (id)initWithStillActivePreviewSupported:(bool)arg1 sphereVideoSupported:(bool)arg2;
 - (bool)lowPowerSphereModeEnabled;
 - (float)maximumFrameRate;
+- (bool)overCaptureEnabled;
 - (void)setAvoidsSphereRecentering:(bool)arg1;
 - (void)setDepthDataDeliveryEnabled:(bool)arg1;
 - (void)setEnablesSphereWhenAvailable:(bool)arg1;
 - (void)setLowPowerSphereModeEnabled:(bool)arg1;
 - (void)setMaximumFrameRate:(float)arg1;
+- (void)setOverCaptureEnabled:(bool)arg1;
 - (void)setSphereVideoEnabled:(bool)arg1;
 - (void)setSystemThermalLevel:(int)arg1;
 - (void)setTripodModeEnabled:(bool)arg1;

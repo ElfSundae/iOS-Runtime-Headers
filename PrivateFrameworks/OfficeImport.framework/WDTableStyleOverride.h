@@ -16,9 +16,11 @@
     unsigned int  mTableRowPropertiesOverridden;
 }
 
+@property WDStyle *style;
+
+- (void).cxx_destruct;
 - (id)characterProperties;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)initWithDocument:(id)arg1;
 - (bool)isCharacterPropertiesOverridden;

@@ -54,6 +54,7 @@
 - (void)_prepareForDisplayWithCompletion:(id /* block */)arg1;
 - (void)_presentError:(id)arg1 forThirdPartyPickerWithDescription:(id)arg2;
 - (void)_setAuxiliaryOptions:(id)arg1;
+- (void)_setIsContentManaged:(bool)arg1;
 - (void)_setPickableTypes:(id)arg1;
 - (void)_setPickerMode:(unsigned long long)arg1;
 - (void)_setSourceIsManaged:(bool)arg1;

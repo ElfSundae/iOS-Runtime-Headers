@@ -20,6 +20,8 @@
     bool  _portrait;
     double  _stillTimeInVideo;
     bool  _supportsCropping;
+    long long  _wallpaperMode;
+    long long  _wallpaperStatus;
     double  _zoomScale;
 }
 
@@ -37,10 +39,13 @@
 @property (nonatomic) double stillTimeInVideo;
 @property (readonly) Class superclass;
 @property (nonatomic) bool supportsCropping;
+@property (nonatomic) long long wallpaperMode;
+@property (nonatomic) long long wallpaperStatus;
 @property (nonatomic) double zoomScale;
 
 + (id)optionsWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(bool)arg4 cropRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg5 portrait:(bool)arg6;
 + (id)optionsWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(bool)arg4 cropRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg5 portrait:(bool)arg6 hasVideo:(bool)arg7 stillTimeInVideo:(double)arg8;
++ (id)optionsWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(bool)arg4 cropRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg5 portrait:(bool)arg6 hasVideo:(bool)arg7 stillTimeInVideo:(double)arg8 wallpaperMode:(long long)arg9 wallpaperStatus:(long long)arg10;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -56,7 +61,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContentsOfURL:(id)arg1;
-- (id)initWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(bool)arg4 cropRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg5 portrait:(bool)arg6 hasVideo:(bool)arg7 stillTimeInVideo:(double)arg8;
+- (id)initWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(bool)arg4 cropRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg5 portrait:(bool)arg6 hasVideo:(bool)arg7 stillTimeInVideo:(double)arg8 wallpaperMode:(long long)arg9 wallpaperStatus:(long long)arg10;
 - (id)initWithPersistentDataRepresentation:(id)arg1;
 - (id)initWithStream:(id)arg1;
 - (bool)isEqual:(id)arg1;
@@ -76,11 +81,15 @@
 - (void)setPortrait:(bool)arg1;
 - (void)setStillTimeInVideo:(double)arg1;
 - (void)setSupportsCropping:(bool)arg1;
+- (void)setWallpaperMode:(long long)arg1;
+- (void)setWallpaperStatus:(long long)arg1;
 - (void)setZoomScale:(double)arg1;
 - (double)stillTimeInVideo;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 - (bool)supportsCropping;
+- (long long)wallpaperMode;
+- (long long)wallpaperStatus;
 - (bool)writeToURL:(id)arg1 error:(id*)arg2;
 - (double)zoomScale;
 

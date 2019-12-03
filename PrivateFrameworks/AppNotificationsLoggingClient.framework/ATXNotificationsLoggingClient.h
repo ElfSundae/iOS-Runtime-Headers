@@ -16,9 +16,7 @@
 - (void)logEvent:(long long)arg1 forNotificationId:(id)arg2 timestamp:(id)arg3;
 - (void)logEvent:(long long)arg1 forNotificationId:(id)arg2 timestamp:(id)arg3 withReply:(id /* block */)arg4;
 - (void)logNotification:(id)arg1 withNotificationId:(id)arg2 timestamp:(id)arg3;
-- (void)logNotification:(id)arg1 withNotificationId:(id)arg2 timestamp:(id)arg3 andFeed:(unsigned long long)arg4;
 - (void)logRealTimeTuningCountFrom:(unsigned long long)arg1;
-- (void)logRealTimeTuningOutcome:(unsigned long long)arg1;
 - (void)logRealTimeTuningOutcome:(unsigned long long)arg1 withBundleId:(id)arg2;
 - (void)logSuggestionDeduped:(id)arg1 timestamp:(id)arg2;
 - (void)logSuggestionShown:(id)arg1 forType:(long long)arg2 timestamp:(id)arg3;

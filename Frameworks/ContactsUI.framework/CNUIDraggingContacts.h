@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/ContactsUI.framework/ContactsUI
  */
 
-@interface CNUIDraggingContacts : NSObject <UIItemProviderReading, UIItemProviderWriting> {
+@interface CNUIDraggingContacts : NSObject <NSItemProviderReading, NSItemProviderWriting> {
     CNContactStore * _contactStore;
     NSArray * _draggingContacts;
 }

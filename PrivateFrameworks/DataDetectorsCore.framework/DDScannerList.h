@@ -4,19 +4,23 @@
 
 @interface DDScannerList : NSObject {
     NSMutableArray * _activeScanners;
+    NSString * _hash;
     NSMutableArray * _scannerCache;
+    bool  _spotlightSuggestionsEnabled;
     int  _type;
     NSMutableArray * _waitQueue;
 }
 
+- (void).cxx_destruct;
 - (void)activateScanner:(id)arg1;
-- (void)dealloc;
-- (id /* block */)dequeueJob;
-- (void)enqueueJob:(id /* block */)arg1;
-- (bool)full;
+- (unsigned long long)busyCount;
+- (bool)cancelJob:(long long)arg1;
+- (id)dequeueJob;
+- (void)enqueueJob:(id /* block */)arg1 withIdentifier:(long long)arg2;
 - (id)getCachedScanner;
-- (id)initWithType:(int)arg1;
+- (id)initWithConfiguration:(id)arg1;
 - (void)pushBackScanner:(id)arg1;
-- (id)scanner;
+- (id)scannerCreate;
+- (unsigned long long)totalCount;
 
 @end

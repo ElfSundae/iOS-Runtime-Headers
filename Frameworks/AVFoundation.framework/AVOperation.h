@@ -19,7 +19,6 @@
 - (void)didEnterTerminalState;
 - (id)error;
 - (bool)evaluateDependenciesAndMarkAsExecuting;
-- (void)finalize;
 - (id)init;
 - (bool)isExecuting;
 - (bool)isFinished;

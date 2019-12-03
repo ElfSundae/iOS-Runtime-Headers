@@ -19,6 +19,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (void)_reloadSelectedButton;
 - (void)_textFieldDidBeginEditing:(id)arg1;
 - (void)_textFieldDidChange:(id)arg1;

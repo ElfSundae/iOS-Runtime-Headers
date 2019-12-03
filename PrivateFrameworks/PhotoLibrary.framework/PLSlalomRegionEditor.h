@@ -37,28 +37,29 @@
 }
 
 @property (nonatomic) <PLSlalomRegionEditorDelegate> *delegate;
+@property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } endHandleFrame;
 @property (nonatomic) double endValue;
 @property (nonatomic) double maxValue;
 @property (nonatomic) double minValue;
 @property (nonatomic) unsigned long long regionEditorStyle;
+@property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } startHandleFrame;
 @property (nonatomic) double startValue;
 @property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } trackInsets;
 @property (nonatomic) double trimHandleWidth;
 @property (getter=isZoomAnimating, setter=setZoomAnimating:, nonatomic) bool zoomAnimating;
 @property (nonatomic) double zoomDelay;
 
+- (void).cxx_destruct;
 - (void)_beginTrackingZoomWithTouch:(id)arg1;
 - (void)_cancelTrackingZoom;
 - (void)_cancelZoom;
 - (void)_cancelZoomTrackingIfNeccessaryWithTouch:(id)arg1;
 - (void)_drawCurveWithFlatEndsFromX:(double)arg1 fromY:(double)arg2 toX:(double)arg3 toY:(double)arg4;
-- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_endHandleFrame;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_handleFrameForValue:(double)arg1 isStart:(bool)arg2;
 - (id)_handleImage;
 - (id)_handleTintColor;
 - (bool)_isTouch:(id)arg1 inHandleIsStart:(bool)arg2 outTouchOffset:(double*)arg3;
 - (bool)_isZoomed;
-- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_startHandleFrame;
 - (void)_stopTrackingAndSendControlEvents:(unsigned long long)arg1;
 - (id)_tickColor;
 - (id)_trackColor;
@@ -78,8 +79,8 @@
 - (bool)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)cancelTrackingWithEvent:(id)arg1;
 - (bool)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
-- (void)dealloc;
 - (id)delegate;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })endHandleFrame;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (double)endValue;
 - (bool)gestureRecognizerShouldBegin:(id)arg1;
@@ -105,6 +106,7 @@
 - (void)setZoomDelay:(double)arg1;
 - (void)setZoomMinValue:(double)arg1 maxValue:(double)arg2;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })startHandleFrame;
 - (double)startValue;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })trackInsets;
 - (double)trimHandleWidth;

@@ -3,6 +3,7 @@
  */
 
 @interface PKPaymentSetupBuiltInCardOnFilePrimaryAccountNumberFieldCell : PKPaymentSetupFieldCell {
+    UIImageView * _accessoryImageView;
     bool  _hasDarkAppearance;
     long long  _paymentCredentialType;
 }
@@ -10,7 +11,10 @@
 @property (nonatomic) bool hasDarkAppearance;
 @property (nonatomic) long long paymentCredentialType;
 
-- (id)_imageForPaymentCredentialType:(long long)arg1;
+- (void).cxx_destruct;
+- (void)_dynamicUserInterfaceTraitDidChange;
+- (id)_networkImage;
+- (void)_updateNetworkImage;
 - (void)dealloc;
 - (bool)hasDarkAppearance;
 - (id)init;

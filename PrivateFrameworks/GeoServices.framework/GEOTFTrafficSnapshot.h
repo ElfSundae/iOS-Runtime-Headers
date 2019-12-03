@@ -8,11 +8,32 @@
     unsigned long long  _feedPublishTime;
     long long  _feedUpdateTime;
     struct { 
-        unsigned int feedPublishTime : 1; 
-        unsigned int feedUpdateTime : 1; 
-        unsigned int trafficVersion : 1; 
-    }  _has;
+        unsigned int has_feedPublishTime : 1; 
+        unsigned int has_feedUpdateTime : 1; 
+        unsigned int has_trafficVersion : 1; 
+        unsigned int read_compactSpeeds : 1; 
+        unsigned int read_feedId : 1; 
+        unsigned int read_incidents : 1; 
+        unsigned int read_regions : 1; 
+        unsigned int read_snapshotId : 1; 
+        unsigned int read_speeds : 1; 
+        unsigned int wrote_compactSpeeds : 1; 
+        unsigned int wrote_feedId : 1; 
+        unsigned int wrote_feedPublishTime : 1; 
+        unsigned int wrote_feedUpdateTime : 1; 
+        unsigned int wrote_incidents : 1; 
+        unsigned int wrote_regions : 1; 
+        unsigned int wrote_snapshotId : 1; 
+        unsigned int wrote_speeds : 1; 
+        unsigned int wrote_trafficVersion : 1; 
+    }  _flags;
     NSMutableArray * _incidents;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     NSMutableArray * _regions;
     NSString * _snapshotId;
     NSMutableArray * _speeds;
@@ -36,10 +57,21 @@
 
 + (Class)compactSpeedsType;
 + (Class)incidentsType;
++ (bool)isValid:(id)arg1;
 + (Class)regionType;
 + (Class)speedsType;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsCompactSpeeds:(id)arg1;
+- (void)_addNoFlagsIncidents:(id)arg1;
+- (void)_addNoFlagsRegion:(id)arg1;
+- (void)_addNoFlagsSpeeds:(id)arg1;
+- (void)_readCompactSpeeds;
+- (void)_readFeedId;
+- (void)_readIncidents;
+- (void)_readRegions;
+- (void)_readSnapshotId;
+- (void)_readSpeeds;
 - (void)addCompactSpeeds:(id)arg1;
 - (void)addIncidents:(id)arg1;
 - (void)addRegion:(id)arg1;
@@ -67,8 +99,11 @@
 - (id)incidents;
 - (id)incidentsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)incidentsCount;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)regionAtIndex:(unsigned long long)arg1;
 - (id)regions;

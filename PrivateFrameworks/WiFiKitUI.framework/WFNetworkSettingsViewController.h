@@ -2,26 +2,32 @@
    Image: /System/Library/PrivateFrameworks/WiFiKitUI.framework/WiFiKitUI
  */
 
-@interface WFNetworkSettingsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, WFAccessoryViewController> {
+@interface WFNetworkSettingsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, WFAccessoryViewController, WFNetworkView> {
+    UIAlertController * _alert;
     UISwitch * _autoJoinSwitch;
     UISwitch * _autoLoginSwitch;
     UIColor * _backgroundColor;
     WFNetworkSettingsCellFactory * _cellFactory;
     WFNetworkSettingsConfig * _config;
+    <WFDetailsProviderContext> * _context;
     <WFNetworkSettingsViewControllerDataCoordinator> * _dataCoordinator;
     <WFNetworkSettingsViewControllerDelegate> * _delegate;
     long long  _deviceCapability;
     WFHyperlinkFooterView * _linkFooterView;
+    UITableViewHeaderFooterView * _lowDataModeFooterView;
     NSAttributedString * _recommendationLinkAttributedString;
+    UISwitch * _saveDataModeSwitch;
     NSArray * _sections;
     UITableView * _tableView;
 }
 
+@property (nonatomic, retain) UIAlertController *alert;
 @property (nonatomic, retain) UISwitch *autoJoinSwitch;
 @property (nonatomic, retain) UISwitch *autoLoginSwitch;
 @property (nonatomic, retain) UIColor *backgroundColor;
 @property (nonatomic, retain) WFNetworkSettingsCellFactory *cellFactory;
 @property (nonatomic, copy) WFNetworkSettingsConfig *config;
+@property (nonatomic, retain) <WFDetailsProviderContext> *context;
 @property (nonatomic) <WFNetworkSettingsViewControllerDataCoordinator> *dataCoordinator;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <WFNetworkSettingsViewControllerDelegate> *delegate;
@@ -30,53 +36,68 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) WFHyperlinkFooterView *linkFooterView;
 @property (nonatomic, retain) NSAttributedString *recommendationLinkAttributedString;
+@property (nonatomic, retain) UISwitch *saveDataModeSwitch;
 @property (retain) NSArray *sections;
 @property (readonly) Class superclass;
 @property (nonatomic) UITableView *tableView;
+@property (nonatomic, readonly) bool wantsModalPresentation;
 
 - (void).cxx_destruct;
 - (void)_autoJoinSwitchChanged:(id)arg1;
 - (void)_autoLoginSwitchChanged:(id)arg1;
+- (void)_contentSizeCategoryDidChange:(id)arg1;
 - (void)_httpProxyAuthChanged:(id)arg1;
 - (void)_httpProxyConfigChanged:(long long)arg1;
 - (bool)_isChinaDevice;
 - (bool)_isIPv4ConfigAuto;
 - (void)_logSections:(id)arg1;
+- (id)_lowDataModeFooterView;
 - (void)_openRecommendationsLink:(id)arg1;
 - (void)_presentDetailViewController:(id)arg1;
+- (void)_presentRenewLeaseAlertWithSourceRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)_promptForgetNetwork;
 - (void)_saveAutoJoinEnabledChanged:(bool)arg1;
 - (void)_saveAutoLoginEnabledChanged:(bool)arg1;
 - (void)_saveConfig:(id)arg1;
+- (void)_saveDataModeSwitchChanged:(id)arg1;
+- (void)_saveSaveDataModeChanged:(bool)arg1;
 - (long long)_sectionTypeAtSection:(long long)arg1;
 - (id)_sectionsFromConfig:(id)arg1;
 - (bool)_shouldShowIPv6ForConfig:(id)arg1;
 - (bool)_showRecommendationSupportLink;
 - (id)_stringForSettingsSection:(long long)arg1;
+- (id)alert;
 - (id)autoJoinSwitch;
 - (id)autoLoginSwitch;
 - (id)backgroundColor;
 - (id)cellFactory;
 - (id)config;
+- (id)context;
 - (id)dataCoordinator;
+- (void)dealloc;
 - (id)delegate;
 - (long long)deviceCapability;
 - (id)initWithConfig:(id)arg1;
+- (id)initWithConfig:(id)arg1 detailsContext:(id)arg2;
 - (id)linkFooterView;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)recommendationLinkAttributedString;
 - (void)refreshConfig:(id)arg1;
+- (id)saveDataModeSwitch;
 - (id)sections;
+- (void)setAlert:(id)arg1;
 - (void)setAutoJoinSwitch:(id)arg1;
 - (void)setAutoLoginSwitch:(id)arg1;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setCellFactory:(id)arg1;
 - (void)setConfig:(id)arg1;
+- (void)setContext:(id)arg1;
 - (void)setDataCoordinator:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDeviceCapability:(long long)arg1;
 - (void)setLinkFooterView:(id)arg1;
 - (void)setRecommendationLinkAttributedString:(id)arg1;
+- (void)setSaveDataModeSwitch:(id)arg1;
 - (void)setSections:(id)arg1;
 - (void)setTableView:(id)arg1;
 - (id)tableView;

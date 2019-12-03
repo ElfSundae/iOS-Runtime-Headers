@@ -3,9 +3,9 @@
  */
 
 @interface CKChatItem : NSObject {
-    BBBulletin * _bulletin;
     IMTranscriptChatItem * _imChatItem;
     double  _maxWidth;
+    UNNotification * _notification;
     struct CGSize { 
         double width; 
         double height; 
@@ -19,13 +19,13 @@
     }  _textAlignmentInsets;
     NSAttributedString * _transcriptDrawerText;
     NSAttributedString * _transcriptText;
+    UITraitCollection * _transcriptTraitCollection;
     bool  _zOrder;
 }
 
 @property (nonatomic, retain) IMTranscriptChatItem *IMChatItem;
 @property (nonatomic, readonly) unsigned char attachmentContiguousType;
-@property (nonatomic, readonly) struct CKBalloonDescriptor_t { BOOL x1; BOOL x2; BOOL x3; BOOL x4; unsigned long long x5; BOOL x6; bool x7; bool x8; bool x9; } balloonDescriptor;
-@property (nonatomic, retain) BBBulletin *bulletin;
+@property (nonatomic, readonly) struct CKBalloonDescriptor_t { BOOL x1; BOOL x2; BOOL x3; BOOL x4; unsigned long long x5; BOOL x6; long long x7; long long x8; bool x9; bool x10; bool x11; } balloonDescriptor;
 @property (nonatomic, readonly) bool canAttachStickers;
 @property (nonatomic, readonly) bool canCopy;
 @property (nonatomic, readonly) bool canDelete;
@@ -42,6 +42,7 @@
 @property (nonatomic, readonly) bool isEditable;
 @property (nonatomic) double maxWidth;
 @property (nonatomic, readonly, copy) NSString *menuTitle;
+@property (nonatomic, retain) UNNotification *notification;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } size;
 @property (getter=isSizeLoaded, nonatomic) bool sizeLoaded;
 @property (nonatomic, readonly) bool stickersSnapToPoint;
@@ -50,18 +51,18 @@
 @property (nonatomic, readonly) BOOL transcriptOrientation;
 @property (nonatomic, copy) NSAttributedString *transcriptText;
 @property (nonatomic, readonly) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } transcriptTextAlignmentInsets;
+@property (nonatomic, retain) UITraitCollection *transcriptTraitCollection;
 @property (nonatomic, readonly) bool wantsDrawerLayout;
 @property (nonatomic, readonly) bool zOrder;
 
-+ (id)chatItemWithBulletin:(id)arg1 balloonMaxWidth:(double)arg2 otherMaxWidth:(double)arg3;
-+ (id)chatItemWithIMChatItem:(id)arg1 balloonMaxWidth:(double)arg2 otherMaxWidth:(double)arg3;
++ (id)chatItemWithIMChatItem:(id)arg1 balloonMaxWidth:(double)arg2 otherMaxWidth:(double)arg3 transcriptTraitCollection:(id)arg4;
++ (id)chatItemWithNotification:(id)arg1 balloonMaxWidth:(double)arg2 otherMaxWidth:(double)arg3;
 
 - (void).cxx_destruct;
 - (id)IMChatItem;
 - (void)_setSizeForTesting:(struct CGSize { double x1; double x2; })arg1;
 - (unsigned char)attachmentContiguousType;
-- (struct CKBalloonDescriptor_t { BOOL x1; BOOL x2; BOOL x3; BOOL x4; unsigned long long x5; BOOL x6; bool x7; bool x8; bool x9; })balloonDescriptor;
-- (id)bulletin;
+- (struct CKBalloonDescriptor_t { BOOL x1; BOOL x2; BOOL x3; BOOL x4; unsigned long long x5; BOOL x6; long long x7; long long x8; bool x9; bool x10; bool x11; })balloonDescriptor;
 - (bool)canAttachStickers;
 - (bool)canCopy;
 - (bool)canDelete;
@@ -77,8 +78,8 @@
 - (id)description;
 - (bool)displayDuringSend;
 - (bool)hasTail;
-- (id)initWithBulletin:(id)arg1 maxWidth:(double)arg2;
 - (id)initWithIMChatItem:(id)arg1 maxWidth:(double)arg2;
+- (id)initWithNotification:(id)arg1 maxWidth:(double)arg2;
 - (bool)isEditable;
 - (bool)isEqual:(id)arg1;
 - (bool)isSizeLoaded;
@@ -87,12 +88,14 @@
 - (id)loadTranscriptText;
 - (double)maxWidth;
 - (id)menuTitle;
-- (void)setBulletin:(id)arg1;
+- (id)notification;
 - (void)setIMChatItem:(id)arg1;
 - (void)setMaxWidth:(double)arg1;
+- (void)setNotification:(id)arg1;
 - (void)setSizeLoaded:(bool)arg1;
 - (void)setTranscriptDrawerText:(id)arg1;
 - (void)setTranscriptText:(id)arg1;
+- (void)setTranscriptTraitCollection:(id)arg1;
 - (struct CGSize { double x1; double x2; })size;
 - (bool)stickersSnapToPoint;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })textAlignmentInsets;
@@ -100,6 +103,7 @@
 - (BOOL)transcriptOrientation;
 - (id)transcriptText;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })transcriptTextAlignmentInsets;
+- (id)transcriptTraitCollection;
 - (void)unloadSize;
 - (void)unloadTranscriptText;
 - (id)visibleAssociatedMessageChatItems;

@@ -26,6 +26,7 @@
 @property (nonatomic) bool isDisplayingAd;
 @property (nonatomic) bool isOnScreen;
 @property (nonatomic, readonly) bool pageable;
+@property (getter=isSelectable, nonatomic, readonly) bool selectable;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) unsigned long long tileInfoType;
 @property (nonatomic, readonly) NSArray *underlyingFeedElements;
@@ -53,6 +54,7 @@
 - (bool)isDisplayingAd;
 - (bool)isEqual:(id)arg1;
 - (bool)isOnScreen;
+- (bool)isSelectable;
 - (bool)pageable;
 - (void)setAdType:(long long)arg1;
 - (void)setAdUnitIdentifier:(id)arg1;

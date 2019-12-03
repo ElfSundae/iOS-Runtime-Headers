@@ -100,6 +100,7 @@
 - (unsigned long long)role;
 - (bool)showBundleSoftPaywall;
 - (<FCHeadlineStocksFields> *)stocksFields;
+- (bool)useTransparentNavigationBar;
 - (bool)webEmbedsEnabled;
 
 @end

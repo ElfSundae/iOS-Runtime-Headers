@@ -24,5 +24,6 @@
 - (id)titleLabelColor;
 - (id)titleLabelFont;
 - (double)transitionDurationForPresentation:(bool)arg1 ofAlertController:(id)arg2;
+- (id)vibrancyEffectForTitleAndMessageLabel;
 
 @end

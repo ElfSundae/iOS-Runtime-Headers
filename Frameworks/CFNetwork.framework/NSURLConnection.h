@@ -34,7 +34,6 @@
 - (id)_cfInternal;
 - (id)_dlInternal;
 - (id)_initWithRequest:(id)arg1 delegate:(id)arg2 usesCache:(bool)arg3 maxContentLength:(long long)arg4 startImmediately:(bool)arg5 connectionProperties:(id)arg6;
-- (void)_reportTimingDataToAWD;
 - (void)_resumeLoading;
 - (void)_suspendLoading;
 - (id)_timingData;

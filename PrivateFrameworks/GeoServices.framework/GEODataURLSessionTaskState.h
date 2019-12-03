@@ -10,7 +10,14 @@
     double  _now;
     long long  _rawPointer;
     unsigned int  _receivedDataLength;
-    int  _requestKind;
+    struct { 
+        int type; 
+        union { 
+            int raw; 
+            int tile; 
+            int placeRequest; 
+        } subtype; 
+    }  _requestKind;
     double  _startTime;
     unsigned int  _taskIdentifier;
 }

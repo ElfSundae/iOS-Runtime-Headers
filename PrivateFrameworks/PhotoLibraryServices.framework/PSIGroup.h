@@ -10,27 +10,28 @@
     NSMutableString * _contentString;
     unsigned long long  _groupId;
     NSMutableString * _lookupIdentifier;
+    NSMutableString * _normalizedString;
     unsigned long long  _owningGroupId;
     struct _NSRange { 
         unsigned long long location; 
         unsigned long long length; 
     }  _tokenRanges;
     unsigned long long  _tokenRangesCount;
-    struct __CFArray { } * _tripIds;
 }
 
 @property (nonatomic, retain) struct __CFArray { }*assetIds;
 @property (nonatomic) short category;
 @property (nonatomic, retain) struct __CFArray { }*collectionIds;
-@property (nonatomic, readonly, retain) NSString *contentString;
+@property (nonatomic, readonly) NSString *contentString;
 @property (nonatomic) unsigned long long groupId;
-@property (nonatomic, readonly, retain) NSString *lookupIdentifier;
+@property (nonatomic, readonly) NSString *lookupIdentifier;
+@property (nonatomic, readonly) NSString *normalizedString;
 @property (nonatomic) unsigned long long owningGroupId;
-@property (nonatomic, retain) struct __CFArray { }*tripIds;
 
 + (void)_getTokenRanges:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 fromCompressedRanges:(unsigned long long)arg2;
 + (void)getCompressedRanges:(unsigned long long)arg1 fromTokenRanges:(struct { long long x1; long long x2; }*)arg2 count:(long long)arg3;
 
+- (void).cxx_destruct;
 - (id)_tokenRangesDescription;
 - (struct __CFArray { }*)assetIds;
 - (short)category;
@@ -46,18 +47,19 @@
 - (id)initWithContentString:(id)arg1 lookIdentifier:(id)arg2 category:(short)arg3 owningGroupId:(long long)arg4;
 - (bool)isEqual:(id)arg1;
 - (id)lookupIdentifier;
+- (id)normalizedString;
 - (unsigned long long)owningGroupId;
 - (void)prepareForReuse;
+- (void)prepareFromFilenameStatement:(struct sqlite3_stmt { }*)arg1;
 - (void)prepareFromStatement:(struct sqlite3_stmt { }*)arg1;
 - (void)setAssetIds:(struct __CFArray { }*)arg1;
 - (void)setCategory:(short)arg1;
 - (void)setCollectionIds:(struct __CFArray { }*)arg1;
 - (void)setGroupId:(unsigned long long)arg1;
 - (void)setOwningGroupId:(unsigned long long)arg1;
-- (void)setTripIds:(struct __CFArray { }*)arg1;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })tokenRangeAtIndex:(unsigned long long)arg1;
 - (unsigned long long)tokenRangesCount;
-- (struct __CFArray { }*)tripIds;
+- (void)unionCollectionIdsWithGroup:(id)arg1;
 - (void)unionIdsWithGroup:(id)arg1;
 
 @end

@@ -20,7 +20,7 @@
     int (* _create_value_callbacks_release;
     void * _create_value_context;
     int (* _create_value_fn;
-    int  _disableCount;
+    _Atomic int  _disableCount;
     bool  _needsCrashEvicting;
     bool  _needsCrashMarking;
     NSPredicate * _predicate;

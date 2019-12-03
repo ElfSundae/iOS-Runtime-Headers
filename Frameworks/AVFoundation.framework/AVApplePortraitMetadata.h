@@ -14,6 +14,7 @@
 @property (readonly) float luminanceNoiseAmplitude;
 @property (readonly) float maximumApertureFocalRatio;
 @property (readonly) float minimumApertureFocalRatio;
+@property (readonly) float portraitLightingEffectStrength;
 
 + (bool)supportsSecureCoding;
 
@@ -30,5 +31,6 @@
 - (float)luminanceNoiseAmplitude;
 - (float)maximumApertureFocalRatio;
 - (float)minimumApertureFocalRatio;
+- (float)portraitLightingEffectStrength;
 
 @end

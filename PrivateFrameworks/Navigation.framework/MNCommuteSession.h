@@ -2,12 +2,11 @@
    Image: /System/Library/PrivateFrameworks/Navigation.framework/Navigation
  */
 
-@interface MNCommuteSession : NSObject <MNCommuteDestinationObserver, MNCommuteDestinationUpdaterDelegate> {
+@interface MNCommuteSession : NSObject <MNCommuteDestinationObserver, MNCommuteDestinationUpdaterDelegate, MNLocationManagerObserver, MNSuggestionsManagerObserver> {
     unsigned long long  _commuteSessionState;
     MNCommuteDestinationUpdater * _comparisonDestinationStartTime;
     unsigned long long  _currentSuggestionID;
     NSTimer * _etaUpdateTimer;
-    bool  _isMapsActive;
     MNLocation * _lastLocation;
     MNLocationHistory * _locationHistory;
     MNObserverHashTable<MNCommuteSessionObserver> * _observers;
@@ -24,11 +23,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) bool isMapsActive;
 @property (nonatomic, readonly) NSArray *rankedDestinations;
 @property (nonatomic) unsigned long long requestedCommuteSessionState;
 @property (readonly) NSString *suggestionsDescription;
-@property (nonatomic) MNSuggestionsManager *suggestionsManager;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) MNNavigationTraceManager *traceManager;
 
@@ -46,22 +43,28 @@
 - (void)destinationUpdaterDidArrive:(id)arg1;
 - (id)init;
 - (id)initWithTraceName:(id)arg1 isTraceRecording:(bool)arg2;
-- (bool)isMapsActive;
+- (void)locationManager:(id)arg1 didUpdateVehicleHeading:(double)arg2 timestamp:(id)arg3;
+- (void)locationManager:(id)arg1 didUpdateVehicleSpeed:(double)arg2 timestamp:(id)arg3;
+- (void)locationManagerDidPauseLocationUpdates:(id)arg1;
+- (void)locationManagerDidReset:(id)arg1;
+- (void)locationManagerDidResumeLocationUpdates:(id)arg1;
+- (void)locationManagerFailedToUpdateLocation:(id)arg1 withError:(id)arg2;
+- (bool)locationManagerShouldPauseLocationUpdates:(id)arg1;
+- (void)locationManagerUpdatedLocation:(id)arg1;
 - (id)rankedDestinations;
 - (void)removeObserver:(id)arg1;
 - (unsigned long long)requestedCommuteSessionState;
 - (void)setCommuteSessionState:(unsigned long long)arg1;
 - (void)setComparisonDestinationStartTime:(id)arg1;
 - (void)setRequestedCommuteSessionState:(unsigned long long)arg1;
-- (void)setSuggestionsManager:(id)arg1;
+- (void)start;
 - (void)startETAUpdatesWithInterval:(double)arg1;
 - (void)stop;
 - (void)stopETAUpdates;
 - (id)suggestionsDescription;
-- (id)suggestionsManager;
+- (void)suggestionsManager:(id)arg1 didAddSuggestion:(id)arg2;
 - (id)traceManager;
 - (void)updateComparisonStartDate;
 - (void)updateLocation:(id)arg1;
-- (void)updateMapsActive:(bool)arg1;
 
 @end

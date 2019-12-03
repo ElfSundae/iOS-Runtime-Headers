@@ -28,7 +28,6 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic, copy) NSString *parPunchoutActionTarget;
-@property (nonatomic, readonly) bool requiresQueryId;
 @property (nonatomic, copy) NSString *resultId;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long timestamp;
@@ -52,7 +51,6 @@
 - (id)jsonData;
 - (id)parPunchoutActionTarget;
 - (bool)readFrom:(id)arg1;
-- (bool)requiresQueryId;
 - (id)resultId;
 - (void)setActionCardType:(int)arg1;
 - (void)setActionTarget:(int)arg1;

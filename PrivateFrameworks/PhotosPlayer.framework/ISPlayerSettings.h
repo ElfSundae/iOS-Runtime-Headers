@@ -20,9 +20,6 @@
     double  _forceTouchTimeoutMinimumProgress;
     bool  _longExposureVitality;
     bool  _loopingEnabled;
-    double  _minimumColorAdjustedPhotoTransitionDuration;
-    double  _minimumPhotoTransitionDuration;
-    double  _photoTransitionAdjustment;
     bool  _playDuringHint;
     bool  _playIsSticky;
     bool  _prerollBeforePlaying;
@@ -51,9 +48,6 @@
 @property (nonatomic) double forceTouchTimeoutMinimumProgress;
 @property (nonatomic) bool longExposureVitality;
 @property (nonatomic) bool loopingEnabled;
-@property (nonatomic) double minimumColorAdjustedPhotoTransitionDuration;
-@property (nonatomic) double minimumPhotoTransitionDuration;
-@property (nonatomic) double photoTransitionAdjustment;
 @property (nonatomic) bool playDuringHint;
 @property (nonatomic) bool playIsSticky;
 @property (nonatomic) bool prerollBeforePlaying;
@@ -84,9 +78,6 @@
 - (double)forceTouchTimeoutMinimumProgress;
 - (bool)longExposureVitality;
 - (bool)loopingEnabled;
-- (double)minimumColorAdjustedPhotoTransitionDuration;
-- (double)minimumPhotoTransitionDuration;
-- (double)photoTransitionAdjustment;
 - (bool)playDuringHint;
 - (bool)playIsSticky;
 - (bool)prerollBeforePlaying;
@@ -109,9 +100,6 @@
 - (void)setForceTouchTimeoutMinimumProgress:(double)arg1;
 - (void)setLongExposureVitality:(bool)arg1;
 - (void)setLoopingEnabled:(bool)arg1;
-- (void)setMinimumColorAdjustedPhotoTransitionDuration:(double)arg1;
-- (void)setMinimumPhotoTransitionDuration:(double)arg1;
-- (void)setPhotoTransitionAdjustment:(double)arg1;
 - (void)setPlayDuringHint:(bool)arg1;
 - (void)setPlayIsSticky:(bool)arg1;
 - (void)setPrerollBeforePlaying:(bool)arg1;

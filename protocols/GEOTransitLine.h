@@ -11,6 +11,7 @@
 - (bool)departuresAreVehicleSpecific;
 - (bool)hasLineColorString;
 - (GEOMapItemIdentifier *)identifier;
+- (bool)isBus;
 - (NSString *)lineColorString;
 - (<GEOTransitArtworkDataSource> *)modeArtwork;
 - (unsigned long long)muid;

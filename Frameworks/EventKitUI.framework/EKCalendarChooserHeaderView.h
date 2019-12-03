@@ -3,24 +3,43 @@
  */
 
 @interface EKCalendarChooserHeaderView : UITableViewHeaderFooterView {
+    EKCalendarChooser * _chooser;
+    NSArray * _commonConstraints;
+    NSArray * _commonLargeConstraints;
+    NSArray * _commonNormalConstraints;
+    EKGroupInfo * _group;
     UILabel * _primaryLabel;
+    NSArray * _primaryLabelWithShowAllButtonLargeConstraints;
+    NSArray * _primaryLabelWithShowAllButtonNormalConstraints;
+    NSArray * _primaryLabelWithoutShowAllButtonLargeConstraints;
+    NSArray * _primaryLabelWithoutShowAllButtonNormalConstraints;
     EKGroupInfoButton * _showAllButton;
-    UIStackView * _stackView;
+    UIActivityIndicatorView * _spinner;
 }
 
-@property (retain) UILabel *primaryLabel;
-@property (retain) EKGroupInfoButton *showAllButton;
+@property (nonatomic) EKCalendarChooser *chooser;
+@property (nonatomic, retain) EKGroupInfo *group;
+@property (nonatomic, retain) UILabel *primaryLabel;
+@property (nonatomic, retain) EKGroupInfoButton *showAllButton;
+@property (nonatomic) bool showAllButtonHidden;
 
 - (void).cxx_destruct;
+- (void)_activateConstraints;
 - (void)_contentSizeCategoryChanged:(id)arg1;
-- (void)_updateStackViewAxis;
-- (double)contentHeight;
+- (void)_createConstraints;
+- (void)_eventStoreChanged;
+- (void)_groupShowAllButtonTapped:(id)arg1;
+- (id)chooser;
+- (id)group;
 - (id)initWithReuseIdentifier:(id)arg1;
 - (id)primaryLabel;
 - (void)setChooser:(id)arg1;
 - (void)setGroup:(id)arg1;
 - (void)setPrimaryLabel:(id)arg1;
 - (void)setShowAllButton:(id)arg1;
+- (void)setShowAllButtonHidden:(bool)arg1;
 - (id)showAllButton;
+- (bool)showAllButtonHidden;
+- (void)updateSpinner;
 
 @end

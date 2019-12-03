@@ -17,8 +17,8 @@
 
 @property (nonatomic, retain) NSNumber *duration;
 
+- (void).cxx_destruct;
 - (int)advanceAfterTime;
-- (void)dealloc;
 - (id)description;
 - (id)duration;
 - (bool)hasAdvanceAfterTime;

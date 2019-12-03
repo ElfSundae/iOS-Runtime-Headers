@@ -16,6 +16,8 @@
     NSDecimalNumber * _periodStartingBalance;
     NSArray * _periodTransactions;
     NSTimeZone * _productTimeZone;
+    NSDecimalNumber * _remainingPeriodMinimumPayment;
+    NSDecimalNumber * _remainingPeriodMinimumPaymentExcludedFromInterestCalculation;
     NSDecimalNumber * _remainingPeriodStartingBalance;
     NSDecimalNumber * _unpostedInterest;
     NSDate * _unpostedInterestTimestamp;
@@ -33,6 +35,8 @@
 @property (nonatomic, retain) NSDecimalNumber *periodStartingBalance;
 @property (nonatomic, copy) NSArray *periodTransactions;
 @property (nonatomic, retain) NSTimeZone *productTimeZone;
+@property (nonatomic, retain) NSDecimalNumber *remainingPeriodMinimumPayment;
+@property (nonatomic, retain) NSDecimalNumber *remainingPeriodMinimumPaymentExcludedFromInterestCalculation;
 @property (nonatomic, retain) NSDecimalNumber *remainingPeriodStartingBalance;
 @property (nonatomic, retain) NSDecimalNumber *unpostedInterest;
 @property (nonatomic, retain) NSDate *unpostedInterestTimestamp;
@@ -54,6 +58,8 @@
 - (id)periodStartingBalance;
 - (id)periodTransactions;
 - (id)productTimeZone;
+- (id)remainingPeriodMinimumPayment;
+- (id)remainingPeriodMinimumPaymentExcludedFromInterestCalculation;
 - (id)remainingPeriodStartingBalance;
 - (void)setAPR:(id)arg1;
 - (void)setCalculationMethod:(unsigned long long)arg1;
@@ -67,6 +73,8 @@
 - (void)setPeriodStartingBalance:(id)arg1;
 - (void)setPeriodTransactions:(id)arg1;
 - (void)setProductTimeZone:(id)arg1;
+- (void)setRemainingPeriodMinimumPayment:(id)arg1;
+- (void)setRemainingPeriodMinimumPaymentExcludedFromInterestCalculation:(id)arg1;
 - (void)setRemainingPeriodStartingBalance:(id)arg1;
 - (void)setUnpostedInterest:(id)arg1;
 - (void)setUnpostedInterestTimestamp:(id)arg1;

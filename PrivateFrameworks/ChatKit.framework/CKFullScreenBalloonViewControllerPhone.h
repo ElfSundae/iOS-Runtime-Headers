@@ -2,11 +2,12 @@
    Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
  */
 
-@interface CKFullScreenBalloonViewControllerPhone : CKFullScreenBalloonViewController <CKActionSheetMenuViewDelegate, CKBalloonViewDelegate, CKStickerDetailViewControllerDelegate> {
+@interface CKFullScreenBalloonViewControllerPhone : CKFullScreenBalloonViewController <CKActionSheetMenuViewDelegate, CKBalloonViewDelegate, CKStickerDetailViewControllerDelegate, PHLivePhotoViewDelegate> {
     bool  _animationsDisabledForTesting;
     UIView * _balloonView;
     double  _balloonYOffsetFromTranscript;
     NSArray * _interfaceActions;
+    CKLivePhotoBalloonView * _livePhotoBalloonView;
     CKActionSheetMenuView * _menuView;
     bool  _shouldLayoutViews;
     CKGroupAcknowledgmentVotingViewController * _votingViewController;
@@ -19,6 +20,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSArray *interfaceActions;
+@property (nonatomic, retain) CKLivePhotoBalloonView *livePhotoBalloonView;
 @property (nonatomic, retain) CKActionSheetMenuView *menuView;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) CKGroupAcknowledgmentVotingViewController *votingViewController;
@@ -40,6 +42,10 @@
 - (void)interactionStartedFromPreviewItemControllerInBalloonView:(id)arg1;
 - (void)interactionStoppedFromPreviewItemControllerInBalloonView:(id)arg1;
 - (id)interfaceActions;
+- (void)liveBalloonTouched:(id)arg1;
+- (id)livePhotoBalloonView;
+- (void)livePhotoView:(id)arg1 didEndPlaybackWithStyle:(long long)arg2;
+- (void)loadLivePhotoBalloonViewIfNeeded;
 - (id)menuView;
 - (void)performClosingAnimationsWithSendAnimation:(bool)arg1 withCompletion:(id /* block */)arg2;
 - (void)performInitialAnimations;
@@ -48,6 +54,7 @@
 - (void)setBalloonView:(id)arg1;
 - (void)setBalloonYOffsetFromTranscript:(double)arg1;
 - (void)setInterfaceActions:(id)arg1;
+- (void)setLivePhotoBalloonView:(id)arg1;
 - (void)setMenuView:(id)arg1;
 - (void)setVotingViewController:(id)arg1;
 - (void)stickerDetailViewController:(id)arg1 deletedStickerWithTransferGUID:(id)arg2;

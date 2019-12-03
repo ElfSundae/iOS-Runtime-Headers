@@ -13,5 +13,6 @@
 - (bool)shouldPerformDefaultAction;
 - (bool)shouldShowStar;
 - (void)updateTransportButtons;
+- (void)updateValueWithPropertyItem:(id)arg1;
 
 @end

@@ -7,6 +7,7 @@
     int  _mode;
     NSArray * _sections;
     bool  _showTitleIfOnlyOneSection;
+    double  _tableViewBottomInset;
     bool  _viewControllerCanPop;
 }
 
@@ -18,6 +19,7 @@
 @property (nonatomic, retain) NSArray *sections;
 @property (nonatomic) bool showTitleIfOnlyOneSection;
 @property (readonly) Class superclass;
+@property (nonatomic) double tableViewBottomInset;
 @property (nonatomic) bool viewControllerCanPop;
 
 - (void).cxx_destruct;
@@ -37,6 +39,7 @@
 - (void)setProfileDetailsMode:(int)arg1;
 - (void)setSections:(id)arg1;
 - (void)setShowTitleIfOnlyOneSection:(bool)arg1;
+- (void)setTableViewBottomInset:(double)arg1;
 - (void)setUIProfile:(id)arg1;
 - (void)setUIProfile:(id)arg1 mode:(int)arg2;
 - (void)setViewControllerCanPop:(bool)arg1;
@@ -44,8 +47,10 @@
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
+- (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+- (double)tableViewBottomInset;
 - (bool)viewControllerCanPop;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidLoad;

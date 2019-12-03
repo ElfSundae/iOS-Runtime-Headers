@@ -2,40 +2,32 @@
    Image: /System/Library/Frameworks/EventKitUI.framework/EventKitUI
  */
 
-@interface EKEventMapDetailItem : EKEventDetailItem <MKMapViewDelegate> {
-    UITableViewCell * _cell;
+@interface EKEventMapDetailItem : EKEventDetailItem {
+    bool  _animationHasRan;
+    EKEventMapCell * _cell;
     bool  _hasMapItemLaunchOptionFromTimeToLeaveNotification;
     UIView * _loadingView;
     CLLocation * _location;
-    MKMapView * _mapView;
-    UITableViewCell * _oldCell;
-    UIView * _overlayView;
+    MKMapItemView * _mapView;
+    EKEventMapCell * _oldCell;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic) bool hasMapItemLaunchOptionFromTimeToLeaveNotification;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
-+ (id)_locationStringForStructuredLocation:(id)arg1;
-+ (id)_mapsURLForLocationOnEvent:(id)arg1 hasMapItemLaunchOptionFromTimeToLeaveNotification:(bool)arg2;
 
 - (void).cxx_destruct;
+- (void)_animateMapIfNeededWithPresentingController:(id)arg1 presentingView:(id)arg2;
+- (void)_loadMapItem:(id)arg1 withCoordinateSpan:(struct { double x1; double x2; })arg2;
+- (struct { double x1; double x2; })_makeSpanWithCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg1 radius:(double)arg2 minRadius:(double)arg3;
 - (double)_mapHeight;
 - (id)_mapRelatedViewConstraintsForMapRelatedView:(id)arg1 inCell:(id)arg2;
-- (void)_setupMapView;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (bool)configureWithCalendar:(id)arg1 preview:(bool)arg2;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
-- (void)eventViewController:(id)arg1 didHighlightSubitem:(unsigned long long)arg2;
-- (void)eventViewController:(id)arg1 didSelectReadOnlySubitem:(unsigned long long)arg2;
-- (void)eventViewController:(id)arg1 didUnhighlightSubitem:(unsigned long long)arg2;
+- (void)eventViewController:(id)arg1 tableViewDidScroll:(id)arg2;
 - (bool)hasMapItemLaunchOptionFromTimeToLeaveNotification;
-- (id)mapView:(id)arg1 rendererForOverlay:(id)arg2;
-- (void)mapViewDidFinishRenderingMap:(id)arg1 fullyRendered:(bool)arg2;
-- (void)mapViewWillStartRenderingMap:(id)arg1;
 - (void)reset;
 - (void)setHasMapItemLaunchOptionFromTimeToLeaveNotification:(bool)arg1;
+- (void)setupMapView;
+- (void)updateViewColors;
 
 @end

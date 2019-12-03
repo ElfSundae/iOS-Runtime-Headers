@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CameraUI.framework/CameraUI
  */
 
-@interface CAMLivePhotoBadge : CAMBadgeTextView {
+@interface CAMLivePhotoBadge : CEKBadgeTextView {
     long long  _irisMode;
 }
 

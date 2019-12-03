@@ -8,6 +8,7 @@
     AVPlayer * _audioPlayer;
     AVAssetWriter * _audioWriter;
     AVAssetWriterInput * _audioWriterInput;
+    AVTAvatar * _avatarForMovieExport;
     CALayer * _backingLayer;
     int  _benchFrameCounter;
     bool  _checkDrawableAvailable;
@@ -82,6 +83,7 @@
 - (void)_playLivePreviewAnimation;
 - (void)_processInfoThermalStateDidChange:(id)arg1;
 - (double)_renderer:(id)arg1 inputTimeForCurrentFrameWithTime:(double)arg2;
+- (void)_renderer:(id)arg1 updateAtTime:(double)arg2;
 - (void)_setEffectivePreferredFramesPerSecond;
 - (void)_smoothRecordedData;
 - (id)_tmpAudioURL;
@@ -133,7 +135,7 @@
 - (bool)recording;
 - (double)recordingDuration;
 - (void)removeRecordedAnimationFromAvatar:(id)arg1;
-- (void)renderer:(id)arg1 updateAtTime:(double)arg2;
+- (void)renderer:(id)arg1 didApplyAnimationsAtTime:(double)arg2;
 - (void)setAvatar:(id)arg1;
 - (void)setDisableRendering:(bool)arg1;
 - (void)setFaceTrackingPaused:(bool)arg1;

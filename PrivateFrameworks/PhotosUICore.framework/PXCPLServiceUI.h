@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXCPLServiceUI : NSObject {
+@interface PXCPLServiceUI : PXObservable {
     <PXCPLService> * _cplService;
     <PXCPLServiceUIDelegate> * _delegate;
     struct { 
@@ -20,10 +20,11 @@
 - (void).cxx_destruct;
 - (void)_handleUpdatedServiceStatus:(id)arg1;
 - (void)_performAction:(long long)arg1;
-- (void)_serviceUIStatusDidChange:(id)arg1 onlyProgressDidChange:(bool)arg2;
+- (void)_serviceUIStatusDidChange:(id)arg1 nonProgressPropertiesDidChange:(bool)arg2 progressDidChange:(bool)arg3;
 - (id)delegate;
 - (id)init;
 - (id)initWithCPLService:(id)arg1;
+- (bool)performDefaultHandlerForAction:(long long)arg1;
 - (id)serviceStatus;
 - (id)serviceUIStatus;
 - (void)setDelegate:(id)arg1;

@@ -7,11 +7,11 @@
     int  _detourTime;
     unsigned int  _distanceToPlace;
     struct { 
-        unsigned int detourDistance : 1; 
-        unsigned int detourTime : 1; 
-        unsigned int distanceToPlace : 1; 
-        unsigned int timeToPlace : 1; 
-    }  _has;
+        unsigned int has_detourDistance : 1; 
+        unsigned int has_detourTime : 1; 
+        unsigned int has_distanceToPlace : 1; 
+        unsigned int has_timeToPlace : 1; 
+    }  _flags;
     unsigned int  _timeToPlace;
     PBUnknownFields * _unknownFields;
 }
@@ -26,7 +26,10 @@
 @property (nonatomic) unsigned int timeToPlace;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -41,6 +44,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setDetourDistance:(int)arg1;
 - (void)setDetourTime:(int)arg1;

@@ -3,12 +3,14 @@
  */
 
 @interface _INPBURLValue : PBCodable <NSCopying, NSSecureCoding, _INPBURLValue> {
+    bool  __encodeLegacyGloryData;
     NSString * _absoluteString;
     struct { }  _has;
     NSData * _scope;
     _INPBValueMetadata * _valueMetadata;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic, copy) NSString *absoluteString;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -20,14 +22,20 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) _INPBValueMetadata *valueMetadata;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)absoluteString;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasAbsoluteString;
 - (bool)hasScope;
 - (bool)hasValueMetadata;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)scope;

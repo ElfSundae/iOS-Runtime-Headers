@@ -10,6 +10,7 @@
     long long  _displayOrder;
     NSString * _identifier;
     NSArray * _path;
+    NSString * _stableObjectID;
     NSString * _storeIdentifier;
     NSString * _storeTeamID;
     NSString * _title;
@@ -29,6 +30,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSString *identifier;
 @property (nonatomic, copy) NSArray *path;
+@property (nonatomic, copy) NSString *stableObjectID;
 @property (nonatomic, copy) NSString *storeIdentifier;
 @property (nonatomic, copy) NSString *storeTeamID;
 @property (readonly) Class superclass;
@@ -43,6 +45,7 @@
 + (id)objectIDPathFromIdentifierPath:(id)arg1;
 + (id)relations;
 + (id)reservedContextTypes;
++ (id)stableObjectIDPathFromIdentifierPath:(id)arg1;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -81,12 +84,14 @@
 - (void)setIdentifier:(id)arg1;
 - (void)setPath:(id)arg1;
 - (void)setPathAndGenerateObjectID:(id)arg1;
+- (void)setStableObjectID:(id)arg1;
 - (void)setStoreIdentifier:(id)arg1;
 - (void)setStoreTeamID:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (void)setTopic:(id)arg1;
 - (void)setType:(long long)arg1;
 - (void)setUniversalLinkURL:(id)arg1;
+- (id)stableObjectID;
 - (id)storeIdentifier;
 - (id)storeTeamID;
 - (id)title;

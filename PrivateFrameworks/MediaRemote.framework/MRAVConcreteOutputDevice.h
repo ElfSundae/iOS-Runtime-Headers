@@ -12,6 +12,7 @@
     NSString * _modelID;
     NSDictionary * _modelSpecificInfo;
     bool  _overrideGroupID;
+    bool  _overrideUID;
     NSString * _playingPairedDeviceName;
     MRAVOutputDeviceSourceInfo * _sourceInfo;
     NSString * _uid;
@@ -27,13 +28,16 @@
 - (id)_outputContext;
 - (id)_playingPairedDeviceNameForAVOutputDevice:(id)arg1;
 - (id)avOutputDevice;
+- (id)availableBluetoothListeningModes;
 - (float)batteryLevel;
+- (id)bluetoothID;
 - (bool)canAccessAppleMusic;
 - (bool)canAccessRemoteAssets;
 - (bool)canAccessiCloudMusicLibrary;
 - (bool)canFetchMediaDataFromSender;
 - (bool)canPlayEncryptedProgressiveDownloadAssets;
 - (bool)canRelayCommunicationChannel;
+- (id)currentBluetoothListeningMode;
 - (unsigned int)deviceSubtype;
 - (unsigned int)deviceType;
 - (id)firmwareVersion;
@@ -61,10 +65,12 @@
 - (bool)presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
 - (bool)requiresAuthorization;
 - (void)setAVOutputDevice:(id)arg1;
+- (bool)setCurrentBluetoothListeningMode:(id)arg1 error:(id*)arg2;
 - (void)setGroupID:(id)arg1;
 - (void)setSourceInfo:(id)arg1;
 - (void)setVolume:(float)arg1;
 - (id)sourceInfo;
+- (bool)supportsBluetoothSharing;
 - (bool)supportsBufferedAirPlay;
 - (bool)supportsExternalScreen;
 - (bool)supportsRapport;

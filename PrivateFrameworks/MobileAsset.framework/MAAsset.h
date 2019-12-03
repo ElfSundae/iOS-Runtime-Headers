@@ -9,10 +9,18 @@
     long long  _state;
 }
 
+@property (nonatomic, readonly) NSString *appVectorVersion;
 @property (nonatomic, readonly) NSString *assetId;
 @property (nonatomic, readonly) NSString *assetType;
 @property (nonatomic, readonly) NSDictionary *attributes;
-@property (nonatomic, readonly) long long state;
+@property (nonatomic, readonly) NSURL *fileURL;
+@property (nonatomic, readonly) long long hd_availability;
+@property (nonatomic, readonly) long long hd_compatibilityVersion;
+@property (nonatomic, readonly) long long hd_contentVersion;
+@property (nonatomic, readonly) NSArray *lookbackPeriods;
+@property (nonatomic, readonly) NSNumber *maxQueryElements;
+@property (nonatomic, readonly) NSNumber *refreshInterval;
+@property (readonly) long long state;
 
 // Image: /System/Library/PrivateFrameworks/MobileAsset.framework/MobileAsset
 
@@ -33,12 +41,16 @@
 - (long long)configDownloadSync:(id)arg1;
 - (id)createExtractor;
 - (void)dealloc;
+- (id)description;
 - (id)getLocalFileUrl;
 - (id)getLocalUrl;
+- (unsigned long long)hash;
 - (id)hashToString:(id)arg1;
 - (id)initWithAttributes:(id)arg1;
+- (void)invokeClientCompletion:(long long)arg1 completionBlock:(id /* block */)arg2;
 - (bool)isEqual:(id)arg1;
 - (void)logAsset;
+- (bool)overrideGarbageCollectionThreshold:(unsigned long long)arg1;
 - (void)purge:(id /* block */)arg1;
 - (long long)purgeSync;
 - (bool)refreshState;
@@ -48,6 +60,78 @@
 - (void)startDownloadWithExtractor:(id /* block */)arg1 completion:(id /* block */)arg2;
 - (void)startDownloadWithExtractor:(id /* block */)arg1 options:(id)arg2 completion:(id /* block */)arg3;
 - (long long)state;
+
+// Image: /System/Library/PrivateFrameworks/AdID.framework/AdID
+
+- (id)appVectorVersion;
+- (id)fileURL;
+- (id)filename;
+- (id)lookbackPeriods;
+- (id)maxQueryElements;
+- (id)refreshInterval;
+
+// Image: /System/Library/PrivateFrameworks/CoreSpeech.framework/CoreSpeech
+
+- (id)_compatibilityVersion;
+- (id)_footprint;
+- (id)_version;
+- (bool)canBePurged;
+- (id)getCSAssetOfType:(unsigned long long)arg1;
+- (bool)isCSAssetInstalled;
+- (bool)isDownloading;
+- (bool)isLatestCompareTo:(id)arg1;
+- (bool)isPremium;
+- (id)path;
+
+// Image: /System/Library/PrivateFrameworks/DictionaryUI.framework/DictionaryUI
+
+- (long long)_contentVersion;
+- (long long)_formatVersion;
+
+// Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon
+
+- (long long)hd_availability;
+- (long long)hd_compatibilityVersion;
+- (long long)hd_contentVersion;
+
+// Image: /System/Library/PrivateFrameworks/Memories.framework/Memories
+
+- (bool)isPresent;
+
+// Image: /System/Library/PrivateFrameworks/SetupAssistantUI.framework/SetupAssistantUI
+
+- (bool)bff_isDeletable;
+
+// Image: /System/Library/PrivateFrameworks/SiriClientFlow.framework/SiriClientFlow
+
+- (bool)isMorphunDownloading;
+- (bool)isMorphunInstalled;
+- (bool)isMorphunOnDisk;
+- (long long)morphunCompareByVersion:(id)arg1;
+- (id)morphunContentVersion;
+- (id)morphunDescription;
+- (id)morphunLanguage;
+- (id)morphunMasteredVersion;
+- (id)morphunModelDir;
+- (id)morphunModelPath;
+- (id)morphunPath;
+
+// Image: /System/Library/PrivateFrameworks/SoftwareUpdateCore.framework/SoftwareUpdateCore
+
++ (void)SUCoreBorder_startCatalogDownload:(id)arg1 options:(id)arg2 then:(id /* block */)arg3;
++ (void)_SUCoreBorder_MACancelDownloadResultAtBegin:(id)arg1 withCompletion:(id /* block */)arg2;
++ (void)_SUCoreBorder_MACancelDownloadResultAtEnd:(id)arg1 withResult:(long long)arg2 withCompletion:(id /* block */)arg3;
++ (void)_SUCoreBorder_MADownloadResultAtBegin:(id)arg1 withCompletion:(id /* block */)arg2;
++ (void)_SUCoreBorder_MADownloadResultAtEnd:(id)arg1 withResult:(long long)arg2 withCompletion:(id /* block */)arg3;
++ (void)_SUCoreBorder_MAOperationResultAtBegin:(id)arg1 withCompletion:(id /* block */)arg2;
++ (void)_SUCoreBorder_MAOperationResultAtEnd:(id)arg1 withResult:(long long)arg2 withCompletion:(id /* block */)arg3;
++ (void)_SUCoreBorder_MAPurgeResultAtBegin:(id)arg1 withCompletion:(id /* block */)arg2;
++ (void)_SUCoreBorder_MAPurgeResultAtEnd:(id)arg1 withResult:(long long)arg2 withCompletion:(id /* block */)arg3;
+
+- (void)SUCoreBorder_cancelDownload:(id /* block */)arg1;
+- (void)SUCoreBorder_configDownload:(id)arg1 completion:(id /* block */)arg2;
+- (void)SUCoreBorder_purge:(id /* block */)arg1;
+- (void)SUCoreBorder_startDownload:(id)arg1 then:(id /* block */)arg2;
 
 // Image: /System/Library/PrivateFrameworks/SoftwareUpdateServices.framework/SoftwareUpdateServices
 
@@ -59,5 +143,29 @@
 - (bool)isEmergencyUpdate;
 - (bool)isInstalled;
 - (bool)purge;
+
+// Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
+
+- (long long)_contentVersion;
+- (long long)_formatVersion;
+
+// Image: /System/Library/PrivateFrameworks/VoiceServices.framework/VoiceServices
+
+- (bool)vs_isInstalled;
+
+// Image: /System/Library/PrivateFrameworks/VoiceTrigger.framework/VoiceTrigger
+
+- (bool)canBePurged;
+- (id)compatibilityVersion;
+- (id)description;
+- (id)footprint;
+- (bool)isAvailableLocally;
+- (bool)isDownloading;
+- (bool)isLatestCompareTo:(id)arg1;
+- (bool)isPremium;
+- (bool)isVTAssetInstalled;
+- (id)languages;
+- (id)path;
+- (id)version;
 
 @end

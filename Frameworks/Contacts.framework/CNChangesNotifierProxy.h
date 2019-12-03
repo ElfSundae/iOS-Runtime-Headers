@@ -6,6 +6,7 @@
     NSString * _coalescingNotificationName;
     CNCoalescingTimer * _coalescingTimer;
     double  _externalNotificationCoalescingDelay;
+    <CNContactsLoggerProvider> * _loggerProvider;
     NSMutableDictionary * _notificationForwardingMapping;
     NSMutableDictionary * _notificationsToBeSentOnceAllowed;
     NSObject<OS_dispatch_queue> * _notifierQueue;
@@ -23,6 +24,7 @@
 @property (nonatomic) double externalNotificationCoalescingDelay;
 @property (nonatomic) bool forwardsSelfGeneratedDistributedSaveNotifications;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) <CNContactsLoggerProvider> *loggerProvider;
 @property (nonatomic, readonly) NSMutableDictionary *notificationForwardingMapping;
 @property (nonatomic, retain) NSMutableDictionary *notificationsToBeSentOnceAllowed;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *notifierQueue;
@@ -41,7 +43,8 @@
 - (double)externalNotificationCoalescingDelay;
 - (void)forwardNotificationName:(id)arg1 asNotificationName:(id)arg2;
 - (bool)forwardsSelfGeneratedDistributedSaveNotifications;
-- (id)initWithSchedulerProvider:(id)arg1;
+- (id)initWithSchedulerProvider:(id)arg1 loggerProvider:(id)arg2;
+- (id)loggerProvider;
 - (id)notificationForwardingMapping;
 - (id)notificationsToBeSentOnceAllowed;
 - (id)notifierQueue;

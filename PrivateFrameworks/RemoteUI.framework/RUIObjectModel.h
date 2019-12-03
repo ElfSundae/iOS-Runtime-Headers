@@ -3,6 +3,7 @@
  */
 
 @interface RUIObjectModel : NSObject <RUIAlertViewDelegate, RUIPageDelegate, RUIPasscodeViewDelegate, RUITableViewDelegate, RUIWebViewDelegate, RemoteUIWebViewControllerDelegate> {
+    RUIElement * _activeElement;
     NSDictionary * _alert;
     NSString * _authPasswordEquivalent;
     NSString * _authPasswordFieldID;

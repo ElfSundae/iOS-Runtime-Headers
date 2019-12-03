@@ -3,11 +3,11 @@
  */
 
 @interface NSURLSessionTask : NSObject <FCOperationIdentifying, FCOperationPrioritizing, NSCopying, NSProgressReporting, RCOperationIdentifying, RCOperationPrioritizing> {
-    bool  __extractorFinishedDecoding;
-    bool  __extractorPreparedForExtraction;
-    double  __loadingPriority;
-    double  __timeoutIntervalForResource;
-    float  _priority;
+    <__NSURLSessionTaskGroupForConfiguration> * __taskGroup;
+    __CFN_TaskMetrics * _metrics_ivar;
+    NSObject<OS_nw_activity> * _nw_activity_ivar;
+    NSObject<OS_nw_activity> * _private_nw_activity;
+    NSDate * earliestBeginDate;
 }
 
 @property (nonatomic, copy) NSString *_APSRelayTopic;
@@ -16,50 +16,55 @@
 @property (readonly) unsigned short _TLSNegotiatedCipherSuite;
 @property unsigned long long _allowedProtocolTypes;
 @property bool _allowsCellular;
+@property int _allowsCellularOverride;
+@property int _allowsConstrainedOverride;
+@property int _allowsExpensiveOverride;
 @property (nonatomic) bool _allowsQUIC;
+@property bool _appSSOFallback;
 @property (setter=_setAppleIDContext:, copy) <NSURLSessionAppleIDContext> *_appleIDContext;
 @property bool _authenticatorConfiguredViaTaskProperty;
 @property (nonatomic, retain) NSURL *_backgroundPublishingURL;
-@property (nonatomic, copy) NSDictionary *_backgroundTaskTimingData;
+@property (retain) __CFN_TransactionMetrics *_backgroundTransactionMetrics;
 @property (copy) NSString *_boundInterfaceIdentifier;
 @property long long _bytesPerSecondLimit;
 @property bool _cacheOnly;
-@property int _cachePolicy;
-@property (retain) struct _CFURLCache { }*_cfCache;
+@property unsigned long long _cachePolicy;
+@property (retain) const struct _CFURLCache { }*_cfCache;
 @property (retain) struct OpaqueCFHTTPCookieStorage { }*_cfCookies;
 @property (retain) struct _CFURLCredentialStorage { }*_cfCreds;
 @property (retain) struct _CFHSTSPolicy { }*_cfHSTS;
 @property (setter=_setConnectionIsCellular:) bool _connectionIsCellular;
+@property bool _connectionIsCompanionLink;
 @property (copy) NSArray *_contentDispositionFallbackArray;
 @property int _cookieAcceptPolicy;
 @property long long _countOfBytesReceivedEncoded;
 @property long long _countOfPendingBytesReceivedEncoded;
-@property (retain) struct _CFURLRequest { }*_currentCFURLRequest;
 @property unsigned int _darkWakePowerAssertion;
 @property (nonatomic, retain) NSDictionary *_dependencyInfo;
 @property bool _disallowCellular;
 @property (nonatomic) long long _discretionaryOverride;
 @property (nonatomic) bool _doesSZExtractorConsumeExtractedData;
+@property (readonly, copy) NSURLSessionEffectiveConfiguration *_effectiveConfiguration;
+@property (nonatomic) unsigned long long _expectedProgressTarget;
 @property long long _expectedWorkload;
 @property (setter=set_extractor:, nonatomic, retain) <SZExtractor> *_extractor;
 @property bool _extractorFinishedDecoding;
 @property bool _extractorPreparedForExtraction;
 @property (nonatomic) bool _hasSZExtractor;
-@property (nonatomic, retain) NSURLSessionTaskMetrics *_incompleteTaskMetrics;
+@property (nonatomic, copy) id /* block */ _httpConnectionInfoCompletionBlock;
 @property (nonatomic, readonly) bool _isAVAssetTask;
 @property bool _isTopLevelNavigation;
-@property (copy) NSURL *_ledBellyFallbackURL;
-@property (copy) NSString *_ledBellyServiceIdentifier;
 @property (copy) NSDictionary *_legacySocketStreamProperties;
 @property double _loadingPriority;
 @property double _loadingPriorityValue;
 @property (nonatomic, readonly) NSString *_loggableDescription;
+@property (retain) __CFN_TaskMetrics *_metrics;
 @property int _networkServiceType;
 @property (retain) NSObject<OS_nw_activity> *_nw_activity;
 @property (copy) NSString *_pathToDownloadTaskFile;
-@property (nonatomic, retain) struct __PerformanceTiming { }*_performanceTiming;
 @property unsigned int _powerAssertion;
 @property (nonatomic) bool _preconnect;
+@property bool _preventsAppSSO;
 @property bool _preventsIdleSystemSleep;
 @property bool _preventsSystemHTTPProxyAuthentication;
 @property long long _priority;
@@ -83,13 +88,14 @@
 @property (copy) NSString *_storagePartitionIdentifier;
 @property bool _strictContentLength;
 @property long long _suspensionThreshhold;
-@property (retain) __NSCFTaskPerformanceTiming *_taskPerformanceTiming;
+@property (readonly, retain) <__NSURLSessionTaskGroupForConfiguration> *_taskGroup;
 @property double _timeWindowDelay;
 @property double _timeWindowDuration;
 @property double _timeoutInterval;
 @property double _timeoutIntervalForResource;
 @property (nonatomic, retain) NSDictionary *_trailers;
-@property (copy) NSString *_uniqueIdentifier;
+@property (copy) NSUUID *_uniqueIdentifier;
+@property (retain) NSObject<OS_voucher> *_voucher;
 @property (copy) NSURLSessionTaskHTTPAuthenticator *authenticator;
 @property long long countOfBytesClientExpectsToReceive;
 @property long long countOfBytesClientExpectsToSend;
@@ -111,7 +117,7 @@
 @property (readonly) NSProgress *progress;
 @property (nonatomic) long long relativePriority;
 @property (copy) NSURLResponse *response;
-@property (retain) NSURLSession *session;
+@property (readonly, retain) NSURLSession *session;
 @property double startTime;
 @property long long state;
 @property (readonly) Class superclass;
@@ -123,50 +129,58 @@
 
 // Image: /System/Library/Frameworks/CFNetwork.framework/CFNetwork
 
-+ (id)taskForWrappedRequest:(id)arg1;
++ (id)new;
 
+- (void)_adoptEffectiveConfiguration:(id)arg1;
 - (void)_appendCountOfPendingBytesReceivedEncoded:(long long)arg1;
 - (void)_completeUploadProgress;
 - (void)_consumePendingBytesReceivedEncoded;
-- (struct _CFURLRequest { }*)_copyCurrentCFURLRequest;
+- (const struct __CFDictionary { }*)_copyATSState;
 - (struct _CFHSTSPolicy { }*)_copyHSTSPolicy;
-- (struct _CFURLRequest { }*)_copyOriginalCFURLRequest;
-- (struct __CFDictionary { }*)_copySocketStreamProperties;
+- (const struct __CFDictionary { }*)_copySocketStreamProperties;
 - (const struct XCookieStorage { int (**x1)(); struct __CFAllocator {} *x2; int x3; }*)_createXCookieStorage;
 - (const struct XCredentialStorage { int (**x1)(); struct __CFAllocator {} *x2; int x3; }*)_createXCredentialStorage;
-- (bool)_extractorFinishedDecoding;
-- (bool)_extractorPreparedForExtraction;
+- (void)_didSendMetrics;
 - (void)_finishProgressReporting;
-- (void)_initializeTimingDataWithSessionConfiguration:(id)arg1;
+- (void)_getAuthenticationHeadersForResponse:(id)arg1 completionHandler:(id /* block */)arg2;
+- (const struct __CFSet { }*)_getAuthenticatorStatusCodes;
 - (bool)_isAVAssetTask;
-- (double)_loadingPriority;
+- (void)_logUnimplemented:(SEL)arg1;
 - (id)_loggableDescription;
+- (id)_metrics;
+- (bool)_needSendingMetrics;
+- (id)_nw_activity;
 - (void)_onSessionQueue_cleanupAndBreakCycles;
 - (void)_onqueue_adjustBytesPerSecondLimit:(long long)arg1;
 - (void)_onqueue_adjustPriorityHint:(float)arg1;
+- (void)_onqueue_adoptEffectiveConfiguration:(id)arg1;
+- (void)_onqueue_expectedProgressTargetChanged;
 - (void)_onqueue_releasePowerAsssertion;
-- (void)_prepareNewTimingDataContainer;
+- (id)_private_nw_activity;
+- (void)_releasePreventIdleSleepAssertionIfAppropriate;
 - (void)_setBytesPerSecondLimit:(long long)arg1;
 - (void)_setExplicitCookieStorage:(struct OpaqueCFHTTPCookieStorage { }*)arg1;
 - (void)_setExplicitStorageSession:(struct __CFURLStorageSession { }*)arg1;
 - (void)_setSocketProperties:(struct __CFDictionary { }*)arg1 connectionProperties:(struct __CFDictionary { }*)arg2;
-- (double)_timeoutIntervalForResource;
-- (id)_transactionMetrics;
+- (void)_takePreventIdleSleepAssertionIfAppropriate;
+- (id)_taskGroup;
 - (void)_withXURLCache:(id /* block */)arg1;
 - (void)cancel;
 - (long long)computeAdjustedPoolPriority;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (id)initWithOriginalRequest:(id)arg1 updatedRequest:(id)arg2 ident:(unsigned long long)arg3 session:(id)arg4;
-- (id)initWithTask:(id)arg1;
+- (void)dealloc;
+- (id)earliestBeginDate;
+- (void)getUnderlyingHTTPConnectionInfoWithCompletionHandler:(id /* block */)arg1;
+- (id)init;
+- (id)initWithTaskGroup:(id)arg1;
 - (void)initializeHTTPAuthenticatorWithAppleIDContext:(id)arg1 statusCodes:(id)arg2;
-- (float)priority;
 - (void)resume;
-- (void)setPriority:(float)arg1;
+- (id)session;
+- (void)setEarliestBeginDate:(id)arg1;
 - (void)set_TLSNegotiatedCipherSuite:(unsigned short)arg1;
-- (void)set_extractorFinishedDecoding:(bool)arg1;
-- (void)set_extractorPreparedForExtraction:(bool)arg1;
-- (void)set_loadingPriority:(double)arg1;
-- (void)set_timeoutIntervalForResource:(double)arg1;
+- (void)set_metrics:(id)arg1;
+- (void)set_nw_activity:(id)arg1;
+- (void)set_private_nw_activity:(id)arg1;
 - (bool)shouldHandleCookiesAndSchemeIsAppropriate;
 - (void)suspend;
 - (void)updateCurrentRequest:(id)arg1;
@@ -174,10 +188,6 @@
 // Image: /System/Library/PrivateFrameworks/AssetCacheServices.framework/AssetCacheServices
 
 - (id)descriptionWithAddress;
-
-// Image: /System/Library/PrivateFrameworks/News/TeaFoundation.framework/TeaFoundation
-
-- (id)ts_taskMetrics;
 
 // Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
 
@@ -193,7 +203,7 @@
 - (void)setRelativePriority:(long long)arg1;
 - (id)shortOperationDescription;
 
-// Image: /System/Library/PrivateFrameworks/Stocks/TeaFoundation.framework/TeaFoundation
+// Image: /System/Library/PrivateFrameworks/TeaFoundation.framework/TeaFoundation
 
 - (id)ts_taskMetrics;
 

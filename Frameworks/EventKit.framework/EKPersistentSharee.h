@@ -5,6 +5,7 @@
 @interface EKPersistentSharee : EKPersistentObject
 
 + (id)defaultPropertiesToLoad;
++ (Class)meltedClass;
 + (id)relations;
 
 - (id)UUID;

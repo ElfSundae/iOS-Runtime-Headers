@@ -9,6 +9,8 @@
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
+- (void)_processLinkInAttributedString:(id)arg1;
+- (bool)_scanAttributedStringWithMessage:(id)arg1 attributedString:(id)arg2 plainText:(id)arg3;
 - (bool)_scanMessageUsingScanner:(id)arg1 attributedString:(id)arg2;
 - (id)init;
 - (void)scanMessage:(id)arg1 completionBlock:(id /* block */)arg2;

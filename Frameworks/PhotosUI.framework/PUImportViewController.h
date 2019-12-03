@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUImportViewController : PUPhotosGridViewController <PUImportActionCoordinatorDelegate, PUImportAddToAlbumsToolbarViewDelegate, PUImportAlbumPickerDelegate, PUImportAssetsDataSourceManagerObserver, PUImportControllerImportCompletionDelegate, PUImportControllerNotificationsReceiver, PUImportDisplayDelegate, PUImportHistorySectionHeaderViewDelegate, PUImportOneUpTransitioning, PUImportSectionedGridLayoutDelegate, PUSectionedGridLayoutDelegate, PXChangeObserver, PXSettingsKeyObserver, PXSwipeSelectionManagerDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate> {
+@interface PUImportViewController : PUPhotosGridViewController <PUCameraImportItemCellDelegate, PUImportActionCoordinatorDelegate, PUImportAddToAlbumsToolbarViewDelegate, PUImportHistorySectionHeaderViewDelegate, PUImportOneUpTransitioning, PUImportSectionedGridLayoutDelegate, PUSectionedGridLayoutDelegate, PXChangeObserver, PXImportAlbumPickerDelegate, PXImportAssetsDataSourceManagerObserver, PXImportControllerImportCompletionDelegate, PXImportControllerNotificationsReceiver, PXSettingsKeyObserver, PXSwipeSelectionManagerDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate> {
     id  __cachedViewSizeTransitionContext;
     struct CGSize { 
         double width; 
@@ -29,6 +29,7 @@
         double right; 
     }  _collectionViewSafeAreaInsets;
     UIBarButtonItem * _compactContentInfoButton;
+    UIBarButtonItem * _compactEmptyTrailingButton;
     UIBarButtonItem * _compactImportDestinationButton;
     bool  _compactLayoutMode;
     UIBarButtonItem * _compactSpacer1;
@@ -38,7 +39,7 @@
     PUImportFloatingToolbarView * _compactWidthToolbar;
     NSLayoutConstraint * _compactWidthToolbarTopConstraint;
     bool  _completedAnImport;
-    PUImportSessionInfo * _completedImportSessionInfo;
+    PXImportSessionInfo * _completedImportSessionInfo;
     UIBarButtonItem * _contentInfoBarButton;
     PXNavigationTitleView * _contentInfoBarButtonView;
     PXSelectionSnapshot * _currentSelectionSnapshot;
@@ -48,9 +49,9 @@
     PUImportFakePhotosDataSource * _fakePhotosDataSource;
     UIBarButtonItem * _importButtonItem;
     struct __CFUserNotification { } * _importCompleteNotification;
-    PUImportController * _importController;
-    PUImportAssetsDataSource * _importDataSource;
-    PUImportAssetsDataSourceManager * _importDataSourceManager;
+    PXImportController * _importController;
+    PXImportAssetsDataSource * _importDataSource;
+    PXImportAssetsDataSourceManager * _importDataSourceManager;
     NSProgress * _importProgress;
     bool  _isPeeking;
     NSMutableSet * _itemsBeingTransitioned;
@@ -60,7 +61,7 @@
     bool  _needsDataReloadAfterAnimatingDataSourceChange;
     long long  _numItemsCompleted;
     long long  _numTotalItemsToComplete;
-    PUImportAssetsDataSource * _pendingDataSource;
+    PXImportAssetsDataSource * _pendingDataSource;
     bool  _performingAlbumPickerPresentation;
     bool  _performingDataSourceChange;
     UIBarButtonItem * _progressButtonItem;
@@ -74,7 +75,7 @@
     PXSwipeSelectionManager * _swipeSelectionManager;
     UITapGestureRecognizer * _tapGestureRecognizer;
     bool  _transitioningToNewSize;
-    PUImportAssetsDataSourceManager * _unfilteredImportDataSourceManager;
+    PXImportAssetsDataSourceManager * _unfilteredImportDataSourceManager;
     bool  _userHasScrolled;
     bool  _userWantsAlreadyImportedSectionCollapsedIfPossible;
     bool  _viewAppearing;
@@ -102,9 +103,9 @@
 @property (nonatomic, retain) UITapGestureRecognizer *doubleTapGestureRecognizer;
 @property (nonatomic, retain) PUImportFakePhotosDataSource *fakePhotosDataSource;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) PUImportController *importController;
-@property (nonatomic, retain) PUImportAssetsDataSource *importDataSource;
-@property (nonatomic, retain) PUImportAssetsDataSourceManager *importDataSourceManager;
+@property (nonatomic, retain) PXImportController *importController;
+@property (nonatomic, retain) PXImportAssetsDataSource *importDataSource;
+@property (nonatomic, retain) PXImportAssetsDataSourceManager *importDataSourceManager;
 @property (nonatomic, retain) NSProgress *importProgress;
 @property (nonatomic, retain) PHImportSource *importSource;
 @property (nonatomic) bool isPeeking;
@@ -114,7 +115,7 @@
 @property (nonatomic) bool needsDataReloadAfterAnimatingDataSourceChange;
 @property (nonatomic) long long numItemsCompleted;
 @property (nonatomic) long long numTotalItemsToComplete;
-@property (nonatomic, retain) PUImportAssetsDataSource *pendingDataSource;
+@property (nonatomic, retain) PXImportAssetsDataSource *pendingDataSource;
 @property (nonatomic) bool performingAlbumPickerPresentation;
 @property (nonatomic) bool performingDataSourceChange;
 @property (nonatomic, retain) PUImportHistorySectionHeaderView *referenceHeaderView;
@@ -125,11 +126,12 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) PXSwipeSelectionManager *swipeSelectionManager;
 @property (getter=isTransitioningToNewSize, nonatomic) bool transitioningToNewSize;
-@property (nonatomic, retain) PUImportAssetsDataSourceManager *unfilteredImportDataSourceManager;
+@property (nonatomic, retain) PXImportAssetsDataSourceManager *unfilteredImportDataSourceManager;
 @property (nonatomic) bool userHasScrolled;
 @property (nonatomic) bool userWantsAlreadyImportedSectionCollapsedIfPossible;
 @property (getter=isViewAppearing, nonatomic) bool viewAppearing;
 
++ (unsigned short)defaultThumbnailImageFormat;
 + (id)totalSizeStringForItems:(id)arg1;
 
 - (void).cxx_destruct;
@@ -183,9 +185,7 @@
 - (void)actionCoordinatorDidEndDelete:(id)arg1;
 - (void)actionCoordinatorWillBeginDelete:(id)arg1;
 - (void)actionCoordinatorWillBeginImport:(id)arg1;
-- (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (id)albumsPickerViewController;
-- (bool)allowsPeeking;
 - (bool)animateHeaderActionButtonChanges;
 - (bool)anyAlreadyImportedItemsAreSelected;
 - (bool)areAllItemsSelectedInAssetCollection:(id)arg1;
@@ -213,13 +213,14 @@
 - (id)compactWidthToolbarTopConstraint;
 - (void)configureCollectionViewGridLayout:(id)arg1;
 - (void)configureSupplementaryView:(id)arg1 ofKind:(id)arg2 forIndexPath:(id)arg3;
+- (long long)contentFillModeForImportCell:(id)arg1;
 - (id)contentInfoBarButtonView;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint { double x1; double x2; })arg2;
 - (id)createOneUpTransitionController;
 - (id)currentSelectionSnapshot;
 - (void)dealloc;
 - (void)delete:(id)arg1;
 - (id)deleteButtonItem;
-- (void)didDismissPreviewViewController:(id)arg1 committing:(bool)arg2;
 - (void)didTapAddToAlbumsView:(id)arg1;
 - (void)didTransitionFromViewController:(id)arg1 toViewController:(id)arg2 withTransitionItems:(id)arg3;
 - (void)disableSwipeSelection;
@@ -244,7 +245,7 @@
 - (long long)importCell:(id)arg1 requestImageForImportItem:(id)arg2 ofSize:(unsigned long long)arg3 completion:(id /* block */)arg4;
 - (id)importController;
 - (void)importController:(id)arg1 didCompleteImportWithImportSession:(id)arg2 results:(id)arg3 completion:(id /* block */)arg4;
-- (void)importControllerProgressDidChange:(id)arg1 completedItemCount:(id)arg2 totalItemCount:(id)arg3 context:(id)arg4;
+- (void)importControllerProgressDidChange:(id)arg1 completedItemCount:(id)arg2 totalItemCount:(id)arg3;
 - (id)importDataSource;
 - (id)importDataSourceManager;
 - (id)importDestinationForActionCoordinator:(id)arg1;
@@ -256,9 +257,11 @@
 - (id)initWithSpec:(id)arg1;
 - (void)installGestureRecognizers;
 - (bool)isBusy;
+- (bool)isContentViewInSyncWithModel;
 - (bool)isEmpty;
 - (bool)isImporting;
 - (bool)isPeeking;
+- (bool)isPreheatingEnabled;
 - (bool)isTransitioningToNewSize;
 - (bool)isViewAppearing;
 - (id)itemsBeingTransitioned;
@@ -282,10 +285,6 @@
 - (void)presentAlbumPickerFromView:(id)arg1 orBarItem:(id)arg2;
 - (void)presentOneUpViewController:(id)arg1 animated:(bool)arg2 interactive:(bool)arg3;
 - (id)presentationController:(id)arg1 viewControllerForAdaptivePresentationStyle:(long long)arg2;
-- (id)previewPresentationTransitioningDelegateForPosition:(struct CGPoint { double x1; double x2; })arg1 inSourceView:(id)arg2;
-- (id)previewViewControllerForItemAtIndexPath:(id)arg1;
-- (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
-- (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint { double x1; double x2; })arg2;
 - (id)referenceHeaderView;
 - (double)referenceWidth;
 - (void)reloadData;
@@ -351,9 +350,9 @@
 - (struct PXSimpleIndexPath { unsigned long long x1; long long x2; long long x3; long long x4; })swipeSelectionManager:(id)arg1 itemIndexPathAtLocation:(struct CGPoint { double x1; double x2; })arg2;
 - (struct PXSimpleIndexPath { unsigned long long x1; long long x2; long long x3; long long x4; })swipeSelectionManager:(id)arg1 itemIndexPathClosestAboveLocation:(struct CGPoint { double x1; double x2; })arg2;
 - (struct PXSimpleIndexPath { unsigned long long x1; long long x2; long long x3; long long x4; })swipeSelectionManager:(id)arg1 itemIndexPathClosestLeadingLocation:(struct CGPoint { double x1; double x2; })arg2;
+- (bool)swipeSelectionManager:(id)arg1 shouldBeginSelectionAtLocation:(struct CGPoint { double x1; double x2; })arg2;
+- (bool)swipeSelectionManagerIsInMultiSelectMode:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })targetFrameForTransitionItem:(id)arg1;
-- (long long)thumbnailContentFillMode;
-- (id)thumbnailForModel:(id)arg1;
 - (id)titleForDestinationCollection:(id)arg1;
 - (void)toggleAlreadyImportedExpansion;
 - (void)transitionFromDataSource:(id)arg1 toDataSource:(id)arg2 animated:(bool)arg3 completionHandler:(id /* block */)arg4;
@@ -362,6 +361,7 @@
 - (void)uninstallGestureRecognizers;
 - (void)updateAlreadyImportedCollapseStatus;
 - (void)updateAlreadyImportedHeaderIfVisible;
+- (void)updateCompactWidthToolbarBackgroundGroupName;
 - (void)updateCompactWidthToolbarTopConstraint;
 - (void)updateCompactWidthToolbarVisibility;
 - (void)updateContentInfoBarButtonTitlesWithItems:(id)arg1 sizeString:(id)arg2 itemsAreSelected:(bool)arg3;
@@ -370,6 +370,7 @@
 - (void)updateDataSourceManagerFilters;
 - (void)updateHeaderView:(id)arg1 forAlreadyImportedAssetCollection:(id)arg2;
 - (void)updateHeaderView:(id)arg1 forAssetCollection:(id)arg2;
+- (void)updateInterfaceForModelReloadAnimated:(bool)arg1;
 - (void)updateNavigationBarAnimated:(bool)arg1;
 - (void)updateNavigationTitleViewVisibilityAnimated:(bool)arg1;
 - (void)updateNavigationTitleWithItems:(id)arg1 sizeString:(id)arg2 itemsAreSelected:(bool)arg3;
@@ -385,7 +386,6 @@
 - (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
 - (bool)wantsPlaceholderView;
-- (void)willPresentPreviewViewController:(id)arg1 forLocation:(struct CGPoint { double x1; double x2; })arg2 inSourceView:(id)arg3;
 - (void)willTransitionFromViewController:(id)arg1 toViewController:(id)arg2 withTransitionItems:(id)arg3;
 
 @end

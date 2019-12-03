@@ -19,6 +19,7 @@
 - (void)_waitForWatchKitAppListLoaded;
 - (id)delegate;
 - (id)initWithWatchKitAppList:(id)arg1;
+- (bool)override:(id)arg1 appliesToConfigurationForSectionID:(id)arg2;
 - (void)setDelegate:(id)arg1;
 - (bool)shouldSectionIDSettingsAlwaysSync:(id)arg1;
 - (void)watchKitAppList:(id)arg1 added:(id)arg2 removed:(id)arg3;

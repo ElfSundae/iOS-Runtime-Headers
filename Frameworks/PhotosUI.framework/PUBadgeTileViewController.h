@@ -9,6 +9,7 @@
         long long count; 
     }  __badgeInfo;
     PXUIAssetBadgeView * __badgeView;
+    double  __contentWidth;
     bool  __isOverContent;
     bool  __needsUpdateBadgeInfo;
     bool  __needsUpdateBadgeView;
@@ -18,6 +19,7 @@
 
 @property (setter=_setBadgeInfo:, nonatomic) struct PXAssetBadgeInfo { unsigned long long x1; double x2; long long x3; } _badgeInfo;
 @property (nonatomic, readonly) PXUIAssetBadgeView *_badgeView;
+@property (setter=_setContentWidth:, nonatomic) double _contentWidth;
 @property (setter=_setOverContent:, nonatomic) bool _isOverContent;
 @property (setter=_setNeedsUpdateBadgeInfo:, nonatomic) bool _needsUpdateBadgeInfo;
 @property (setter=_setNeedsUpdateBadgeView:, nonatomic) bool _needsUpdateBadgeView;
@@ -28,13 +30,15 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (struct CGSize { double x1; double x2; })_badgeTileSizeForBadgeInfo:(struct PXAssetBadgeInfo { unsigned long long x1; double x2; long long x3; })arg1;
-+ (void)_configureBadgeView:(id)arg1 withBadgeInfo:(struct PXAssetBadgeInfo { unsigned long long x1; double x2; long long x3; })arg2 isOverContent:(bool)arg3 animated:(bool)arg4;
-+ (struct CGSize { double x1; double x2; })badgeTileSizeForAssetViewModel:(id)arg1;
++ (struct CGSize { double x1; double x2; })_badgeTileSizeForBadgeInfo:(struct PXAssetBadgeInfo { unsigned long long x1; double x2; long long x3; })arg1 contentWidth:(double)arg2;
++ (void)_configureBadgeView:(id)arg1 withBadgeInfo:(struct PXAssetBadgeInfo { unsigned long long x1; double x2; long long x3; })arg2 isOverContent:(bool)arg3 contentWidth:(double)arg4 animated:(bool)arg5;
++ (id)badgeSizeCacheKeyValueFromBadgeInfo:(struct PXAssetBadgeInfo { unsigned long long x1; double x2; long long x3; })arg1 contentWidth:(double)arg2;
++ (struct CGSize { double x1; double x2; })badgeTileSizeForAssetViewModel:(id)arg1 contentWidth:(double)arg2;
 
 - (void).cxx_destruct;
 - (struct PXAssetBadgeInfo { unsigned long long x1; double x2; long long x3; })_badgeInfo;
 - (id)_badgeView;
+- (double)_contentWidth;
 - (void)_invalidateBadgeInfo;
 - (void)_invalidateBadgeView;
 - (bool)_isOverContent;
@@ -42,13 +46,13 @@
 - (bool)_needsUpdateBadgeInfo;
 - (bool)_needsUpdateBadgeView;
 - (void)_setBadgeInfo:(struct PXAssetBadgeInfo { unsigned long long x1; double x2; long long x3; })arg1;
+- (void)_setContentWidth:(double)arg1;
 - (void)_setNeedsUpdate;
 - (void)_setNeedsUpdateBadgeInfo:(bool)arg1;
 - (void)_setNeedsUpdateBadgeView:(bool)arg1;
 - (void)_setOverContent:(bool)arg1;
 - (void)_setShouldAnimateNextBadgeViewUpdate:(bool)arg1;
 - (bool)_shouldAnimateNextBadgeViewUpdate;
-- (void)_updateBadge;
 - (void)_updateBadgeInfoIfNeeded;
 - (void)_updateBadgeViewIfNeeded;
 - (void)_updateIfNeeded;
@@ -59,6 +63,7 @@
 - (id)loadView;
 - (void)prepareForReuse;
 - (void)setAssetViewModel:(id)arg1;
+- (void)toggleOverCaptureBadgeAppearance;
 - (void)viewDidLoad;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 

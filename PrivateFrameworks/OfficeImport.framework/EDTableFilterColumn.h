@@ -8,9 +8,9 @@
     int  mFiltersRelation;
 }
 
+- (void).cxx_destruct;
 - (void)addFilter:(id)arg1;
 - (unsigned long long)columnIndex;
-- (void)dealloc;
 - (id)description;
 - (id)filterAtIndex:(unsigned long long)arg1;
 - (unsigned long long)filterCount;

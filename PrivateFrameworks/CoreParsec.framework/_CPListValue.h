@@ -27,7 +27,6 @@
 - (bool)isEqual:(id)arg1;
 - (id)jsonData;
 - (bool)readFrom:(id)arg1;
-- (bool)requiresQueryId;
 - (void)setValues:(id)arg1;
 - (id)values;
 - (id)valuesAtIndex:(unsigned long long)arg1;

@@ -4,8 +4,19 @@
 
 @interface GEORPTransitLineTileInfo : PBCodable <NSCopying> {
     struct { 
-        unsigned int transitLineMuid : 1; 
-    }  _has;
+        unsigned int has_transitLineMuid : 1; 
+        unsigned int read_transitLineName : 1; 
+        unsigned int read_transitSystemName : 1; 
+        unsigned int wrote_transitLineMuid : 1; 
+        unsigned int wrote_transitLineName : 1; 
+        unsigned int wrote_transitSystemName : 1; 
+    }  _flags;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     unsigned long long  _transitLineMuid;
     NSString * _transitLineName;
     NSString * _transitSystemName;
@@ -18,7 +29,11 @@
 @property (nonatomic, retain) NSString *transitLineName;
 @property (nonatomic, retain) NSString *transitSystemName;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_readTransitLineName;
+- (void)_readTransitSystemName;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -27,8 +42,11 @@
 - (bool)hasTransitLineName;
 - (bool)hasTransitSystemName;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasTransitLineMuid:(bool)arg1;
 - (void)setTransitLineMuid:(unsigned long long)arg1;

@@ -4,11 +4,12 @@
 
 @interface PKApplyOfferViewController : PKApplyExplanationViewController <PKApplyFlowControllerProtocol> {
     PKAccountFlowController * _accountController;
-    UIView * _cardImageShadowView;
-    UIView * _heroView;
+    bool  _hasSufficientOTBForInstallment;
     CLInUseAssertion * _inUseAssertion;
+    PKPaymentInstallmentConfiguration * _installmentConfiguration;
     NSString * _offerTermsIdentifier;
     PKApplyOfferCreditCardView * _offerView;
+    bool  _useCompactLayout;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -20,6 +21,7 @@
 - (void)_openTermsAndConditions;
 - (void)_setupForBroadwayApplication:(id)arg1;
 - (void)_termsAccepted:(bool)arg1;
+- (void)dealloc;
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (void)explanationViewDidSelectSetupLater:(id)arg1;
 - (id)initWithController:(id)arg1 setupDelegate:(id)arg2 context:(long long)arg3 applyPage:(id)arg4;

@@ -3,6 +3,7 @@
  */
 
 @interface NTKTickCollectionNode : NTKCollectionNode {
+    UIColor * _customSmallTickColor;
     unsigned int  _l1mod;
     unsigned int  _l2mod;
     double  _largeColor;
@@ -30,6 +31,7 @@
 @property (nonatomic) struct CGSize { double x1; double x2; } smallSizeInPoints;
 @property (nonatomic) unsigned int ticks;
 
+- (void).cxx_destruct;
 - (void)colorizeBackground:(id)arg1;
 - (void)colorizeWithTickColor:(id)arg1 alternateTickColor:(id)arg2;
 - (void)createSubNodes;
@@ -38,6 +40,7 @@
 - (double)largeColor;
 - (double)largeFilterWidth;
 - (struct CGSize { double x1; double x2; })largeSizeInPoints;
+- (id)largeTickColor;
 - (void)setL1mod:(unsigned int)arg1;
 - (void)setL2mod:(unsigned int)arg1;
 - (void)setLargeColor:(double)arg1;
@@ -50,6 +53,7 @@
 - (double)smallColor;
 - (double)smallFilterWidth;
 - (struct CGSize { double x1; double x2; })smallSizeInPoints;
+- (id)smallTickColor;
 - (unsigned int)ticks;
 
 @end

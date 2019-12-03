@@ -4,8 +4,8 @@
 
 @interface GEOPDIcon : PBCodable <NSCopying> {
     struct { 
-        unsigned int iconType : 1; 
-    }  _has;
+        unsigned int has_iconType : 1; 
+    }  _flags;
     int  _iconType;
     GEOPDPhoto * _image;
     PBUnknownFields * _unknownFields;
@@ -17,8 +17,11 @@
 @property (nonatomic, retain) GEOPDPhoto *image;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsIconType:(id)arg1;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -31,6 +34,7 @@
 - (id)image;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasIconType:(bool)arg1;
 - (void)setIconType:(int)arg1;

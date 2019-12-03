@@ -22,6 +22,6 @@
 - (void)dealloc;
 - (unsigned long long)elementSize;
 - (id)initWithDevice:(id)arg1 fixedSizeElement:(unsigned long long)arg2 buffersize:(unsigned long long)arg3 name:(id)arg4;
-- (id)newSubBufferWithBytes:(const void*)arg1 length:(unsigned long long)arg2 blitEncoder:(id)arg3;
+- (id)newSubBufferWithBytes:(const void*)arg1 length:(unsigned long long)arg2 renderContext:(id)arg3;
 
 @end

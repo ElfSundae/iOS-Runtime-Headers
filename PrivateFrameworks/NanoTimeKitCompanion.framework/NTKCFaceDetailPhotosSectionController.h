@@ -36,6 +36,7 @@
 - (void)_customizeActionRow:(id)arg1 withEditOption:(id)arg2;
 - (bool)_handleDidSelectActionRowForOption:(id)arg1;
 - (bool)_handleDidSelectOption:(id)arg1;
+- (id)_overrideTextForOption:(id)arg1;
 - (void)_setPhotos:(id)arg1;
 - (void)_updatePhotosSection;
 - (bool)canAddFace;
@@ -45,7 +46,7 @@
 - (void)faceDidChange;
 - (void)faceDidChangeResourceDirectory;
 - (bool)hasChanges;
-- (id)initWithTableView:(id)arg1 face:(id)arg2 inGallery:(bool)arg3 editOptionCollection:(id)arg4 faceView:(id)arg5 externalAssets:(id)arg6;
+- (id)initWithTableViewController:(id)arg1 face:(id)arg2 inGallery:(bool)arg3 editOptionCollection:(id)arg4 faceView:(id)arg5 externalAssets:(id)arg6;
 - (id)memoriesEditor;
 - (id)parentViewController;
 - (void)saveChangesWithCompletion:(id /* block */)arg1;

@@ -8,6 +8,7 @@
 - (<CNAutocompleteSearch> *)calendarServerSearch;
 - (<CNAutocompleteSearch> *)directoryServerSearch;
 - (<CNAutocompleteSearch> *)duetSearch;
+- (NSArray *)localExtensionSearches;
 - (<CNAutocompleteSearch> *)localSearch;
 - (<CNAutocompleteSearch> *)recentsSearch;
 - (<CNAutocompleteSearch> *)suggestionsSearch;

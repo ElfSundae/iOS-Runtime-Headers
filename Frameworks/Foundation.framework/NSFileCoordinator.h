@@ -29,18 +29,22 @@
 + (void)_addFileProvider:(id)arg1;
 + (void)_addFileProvider:(id)arg1 completionHandler:(id /* block */)arg2;
 + (void)_addProcessIdentifier:(int)arg1 observedUbiquityAttributes:(id)arg2 forID:(id)arg3;
++ (void)_adoptFCDEndpointForTest:(id)arg1;
 + (id)_canonicalURLForURL:(id)arg1;
 + (id)_createConnectionToFileAccessArbiterForQueue:(id)arg1;
 + (id)_createConnectionToProgressRegistrar;
 + (id)_createIdentifierForNewClaim;
 + (id)_currentClaimPurposeIdentifier;
 + (id)_currentFileCoordinator;
++ (id)_endpointForInProcessFileCoordinationServer;
 + (id)_fileAccessArbiterInterface;
 + (id)_filePresenterInterface;
 + (id)_fileProviderInterface;
 + (id)_fileProviders;
 + (void)_getDebugInfoWithCompletionHandler:(id /* block */)arg1;
++ (id)_inProcessFileAccessArbiter;
 + (bool)_itemHasPresentersAtURL:(id)arg1;
++ (unsigned int)_kernelMaterializationOperation;
 + (id)_nextClaimIdentifier;
 + (id)_observedUbiquityAttributesForPresenterWithID:(id)arg1;
 + (void)_performBarrier;
@@ -52,7 +56,9 @@
 + (void)_removeFileProvider:(id)arg1;
 + (void)_removeInfoForID:(id)arg1;
 + (unsigned long long)_responsesForPresenter:(id)arg1;
++ (void)_setAutomaticFileProviderReregistrationDisabled:(bool)arg1;
 + (void)_setCurrentClaimPurposeIdentifier:(id)arg1;
++ (void)_setKernelMaterializationOperation:(unsigned int)arg1;
 + (void)_setNextClaimIdentifier:(id)arg1;
 + (void)_setReadingOptions:(unsigned long long)arg1;
 + (bool)_skipCoordinationWork;
@@ -134,5 +140,7 @@
 + (bool)tsp_coordinateWritingItemAtURL:(id)arg1 options:(unsigned long long)arg2 filePresenter:(id)arg3 error:(id*)arg4 byAccessor:(id /* block */)arg5;
 + (bool)tsp_coordinateWritingItemAtURL:(id)arg1 options:(unsigned long long)arg2 writingItemAtURL:(id)arg3 options:(unsigned long long)arg4 filePresenter:(id)arg5 error:(id*)arg6 byAccessor:(id /* block */)arg7;
 + (void)tsp_removeFilePresenter:(id)arg1;
+
+- (void)tsp_coordinateAccessWithIntents:(id)arg1 queue:(id)arg2 byAccessor:(id /* block */)arg3;
 
 @end

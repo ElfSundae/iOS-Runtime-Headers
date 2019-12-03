@@ -33,6 +33,7 @@
 @property (nonatomic) long long alignment;
 @property (nonatomic) bool configured;
 @property (nonatomic, readonly) UIControl *control;
+@property (nonatomic, readonly) NSString *copyText;
 @property (nonatomic, retain) NSData *data;
 @property (nonatomic, retain) NSDate *date;
 @property (nonatomic, retain) NSDate *dateMax;
@@ -47,6 +48,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double height;
 @property (nonatomic, readonly) bool indentWhileEditing;
+@property (nonatomic, readonly) bool isCopyable;
 @property (nonatomic) RUIPage *linkedPage;
 @property (nonatomic, retain) UIView *pickerView;
 @property (nonatomic) bool rowInvalid;
@@ -75,6 +77,7 @@
 - (void)clearCachedHeight;
 - (bool)configured;
 - (id)control;
+- (id)copyText;
 - (id)data;
 - (id)date;
 - (id)dateFormatterCalendarIdentifier;
@@ -89,6 +92,7 @@
 - (void)detailLabelActivatedLinkFromCell:(id)arg1 completion:(id /* block */)arg2;
 - (double)height;
 - (bool)indentWhileEditing;
+- (bool)isCopyable;
 - (bool)isFocused;
 - (bool)isSelected;
 - (bool)isShowingProgressIndicator;
@@ -115,6 +119,7 @@
 - (void)setDateMin:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDeleteAction:(id)arg1;
+- (void)setDetailAndPlaceholderText;
 - (void)setDetailButton:(id)arg1;
 - (void)setEditableTextFieldValue:(id)arg1;
 - (void)setEnabled:(bool)arg1;
@@ -128,6 +133,7 @@
 - (bool)setSelectPageRowValue:(id)arg1;
 - (void)setSelectRowValue:(id)arg1;
 - (void)setSelected:(bool)arg1;
+- (void)setSelectedRowTextColor;
 - (void)setShowingProgressIndicator:(bool)arg1;
 - (void)setTextFieldChangeObserver:(id)arg1;
 - (void)setValueFromString:(id)arg1;

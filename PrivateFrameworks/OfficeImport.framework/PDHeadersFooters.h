@@ -15,7 +15,7 @@
     NSString * mUserDateTime;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)footer;
 - (bool)hasDateTime;
 - (bool)hasFooter;

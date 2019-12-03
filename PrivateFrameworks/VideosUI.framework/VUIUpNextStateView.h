@@ -4,11 +4,11 @@
 
 @interface VUIUpNextStateView : UIView {
     _TVImageView * _imageView;
-    UILabel * _label;
+    VUILabel * _label;
 }
 
 @property (nonatomic, retain) _TVImageView *imageView;
-@property (nonatomic, retain) UILabel *label;
+@property (nonatomic, retain) VUILabel *label;
 
 - (void).cxx_destruct;
 - (id)imageView;

@@ -12,6 +12,8 @@
 @property (nonatomic, readonly) unsigned int propertyType;
 @property (nonatomic, readonly) NSMutableArray *values;
 
++ (void)initialize;
+
 - (void).cxx_destruct;
 - (unsigned long long)_cfTypeID;
 - (bool)addValue:(id)arg1 label:(id)arg2 outIdentifier:(int*)arg3;

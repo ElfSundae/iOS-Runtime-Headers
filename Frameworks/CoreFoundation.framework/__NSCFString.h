@@ -21,6 +21,7 @@
 - (const char *)cStringUsingEncoding:(unsigned long long)arg1;
 - (unsigned short)characterAtIndex:(unsigned long long)arg1;
 - (Class)classForCoder;
+- (id)copy;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)deleteCharactersInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (unsigned long long)fastestEncoding;

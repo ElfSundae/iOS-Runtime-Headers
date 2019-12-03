@@ -4,7 +4,9 @@
 
 @interface TSUtilities : NSObject
 
-+ (id)formattedPhoneNumber:(id)arg1;
++ (id)_findPPRItem:(id)arg1;
++ (id)formattedPhoneNumber:(id)arg1 withCountryCode:(id)arg2;
 + (id)getErrorTitleDetail:(id)arg1 forCarrier:(id)arg2;
++ (id)preinstallPPRAlertControllerWithItems:(id)arg1 completion:(id /* block */)arg2;
 
 @end

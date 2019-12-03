@@ -4,12 +4,11 @@
 
 @interface SGDSpotlightReceiver : NSObject <SpotlightReceiver> {
     SGCoalescingDropBox * _deleteDomainIdentifiersDropbox;
-    SGCoalescingDropBox * _deleteIdentifiersDropbox;
     SGCoalescingDropBox * _deleteInteractionBundleIdDropbox;
     SGCoalescingDropBox * _deleteInteractionGroupIdDropbox;
     SGCoalescingDropBox * _deleteInteractionIdDropbox;
     SGDSuggestManager * _manager;
-    SGCoalescingDropBox * _purgeDropbox;
+    SGCoalescingDropBox * _purgeAndDeleteIdentifiersDropbox;
 }
 
 @property (readonly, copy) NSString *debugDescription;

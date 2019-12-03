@@ -16,7 +16,7 @@
         double bottom; 
         double right; 
     }  _contentInsets;
-    PKContinuousButton * _dismissButton;
+    PKDiscoveryDismissButton * _dismissButton;
     UILabel * _downloadingLabel;
     bool  _hasSafeAreaInsetOverride;
     NSMutableDictionary * _imageDownloads;
@@ -54,6 +54,7 @@
 - (void).cxx_destruct;
 - (void)_configureCallToActionShelfView:(id)arg1 forCallToActionShelf:(id)arg2 atIndexPath:(id)arg3;
 - (void)_configureInlineMediaShelfView:(id)arg1 forInlineMediaShelf:(id)arg2 atIndexPath:(id)arg3;
+- (long long)_dismissButtonStyleForCard;
 - (void)_dismissButtonTapped;
 - (void)_handlePanGesture:(id)arg1;
 - (bool)_hasCardInGalleryView;
@@ -62,6 +63,7 @@
 - (id)_paymentSetupNavigationControllerForProvisioningController:(id)arg1;
 - (id)_shelfForIndexPath:(id)arg1;
 - (void)_systemTextSizeChanged;
+- (void)_updateDismissButtonIfNecessary;
 - (id)animationControllerForDismissedController:(id)arg1;
 - (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (id)cardView;

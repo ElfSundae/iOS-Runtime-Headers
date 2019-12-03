@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/Message.framework/Message
  */
 
-@interface DAMailAccount : MailAccount {
+@interface DAMailAccount : MailAccount <ECLocalActionReplayerDelegate> {
     NSObject<ASAccountActorMessages> * _accountConduit;
     NSString * _cachedAccountID;
     NSString * _cachedAccountPersistentUUID;
@@ -36,8 +36,6 @@
     bool  _isNetworkReachable;
     bool  _loadedInitialMailboxList;
     bool  _observingPushedFoldersPrefsChanged;
-    MFDAOfflineCache * _offlineCache;
-    MFRecursiveLock * _offlineCacheLock;
     bool  _receivedInitialMailboxUpdate;
     NSMutableDictionary * _requestQueuesByFolderID;
     int  _supportsConversations;
@@ -52,6 +50,10 @@
     NSLock * _watchedFolderIdsLock;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (nonatomic, retain) MFMailboxUid *virtualAllSearchMailbox;
 
 + (id)_URLScheme;
@@ -61,14 +63,13 @@
 + (id)csAccountTypeString;
 + (id)displayedAccountTypeString;
 + (id)displayedShortAccountTypeString;
-+ (id)folderIDForRelativePath:(id)arg1 accountID:(id*)arg2;
 + (id)legacyPathForAccountIdentifier:(id)arg1 withHostname:(id)arg2 username:(id)arg3;
 
+- (void).cxx_destruct;
 - (id)URLStringFromLegacyURLString:(id)arg1;
 - (id)_URLScheme;
 - (id)_copyMailboxUidWithParent:(id)arg1 name:(id)arg2 attributes:(unsigned int)arg3 existingMailboxUid:(id)arg4 dictionary:(id)arg5;
 - (id)_copyMailboxWithParent:(id)arg1 name:(id)arg2 attributes:(unsigned int)arg3 dictionary:(id)arg4;
-- (void)_deferMailboxRequests:(id)arg1 mailbox:(id)arg2 offlineCache:(id)arg3;
 - (bool)_deleteMailbox:(id)arg1;
 - (void)_ensureWeHaveLoadedInitialMailboxList;
 - (id)_folderIdsForMailboxUids:(id)arg1;
@@ -77,12 +78,11 @@
 - (bool)_isUnitTesting;
 - (void)_loadChildrenForParent:(id)arg1 fromMap:(id)arg2 intoArray:(id)arg3 replacingInbox:(id)arg4 withID:(id)arg5;
 - (id)_newMailboxWithParent:(id)arg1 name:(id)arg2 attributes:(unsigned int)arg3 dictionary:(id)arg4 withCreationOption:(int)arg5;
-- (id)_offlineCache;
 - (void)_performFolderChange:(id)arg1 completion:(id /* block */)arg2;
 - (void)_reachabilityChanged:(id)arg1;
 - (id)_relativePathForType:(int)arg1;
 - (id)_relativePathSpecialMailboxUidWithType:(int)arg1 create:(bool)arg2;
-- (bool)_replayOfflineCache:(id)arg1;
+- (id)_remoteIDsForFlagChangeAction:(id)arg1;
 - (id)_specialMailboxUidWithType:(int)arg1 create:(bool)arg2;
 - (void)_synchronouslyLoadListingForParent:(id)arg1;
 - (id)_updateWatchedFolderIdsAndNotify:(bool)arg1;
@@ -91,8 +91,8 @@
 - (id)accountForRenewingCredentials;
 - (void)accountHierarchyChanged:(id)arg1;
 - (id)accountPropertyForKey:(id)arg1;
-- (void)addRequest:(id)arg1 mailbox:(id)arg2 consumer:(id)arg3;
-- (void)addRequests:(id)arg1 mailbox:(id)arg2 consumers:(id)arg3;
+- (bool)addRequest:(id)arg1 consumer:(id)arg2 mailbox:(id)arg3;
+- (bool)addRequests:(id)arg1 mailbox:(id)arg2;
 - (void)addUserFocusMailbox:(id)arg1;
 - (id)allMailMailboxUid;
 - (id)allMailboxUids;
@@ -129,19 +129,22 @@
 - (id)mailboxPathExtension;
 - (id)mailboxUidForInfo:(id)arg1;
 - (id)meetingStorePersistentID;
-- (id)moveMessages:(id)arg1 fromMailbox:(id)arg2 toMailbox:(id)arg3 markAsRead:(bool)arg4;
+- (id)messageDataForMessage:(id)arg1;
+- (bool)moveSupported;
+- (bool)moveSupportedFromMailboxURL:(id)arg1 toURL:(id)arg2;
 - (bool)needsRemoteSearchResultsVerification;
 - (bool)newMailboxNameIsAcceptable:(id)arg1 reasonForFailure:(id*)arg2;
 - (bool)perMessageEncryptionEnabledForAddress:(id)arg1;
-- (bool)performRequests:(id)arg1 mailbox:(id)arg2 consumers:(id)arg3;
+- (bool)performRequests:(id)arg1 mailbox:(id)arg2;
 - (void)performSearchQuery:(id)arg1;
 - (id)primaryMailboxUid;
-- (void)processRequests:(id)arg1 mailbox:(id)arg2 consumers:(id)arg3;
+- (bool)processRequests:(id)arg1 mailbox:(id)arg2;
 - (void)pushedFoldersPrefsChanged:(id)arg1;
 - (id)pushedMailboxUids;
 - (bool)reconstituteOrphanedMeetingInMessage:(id)arg1;
 - (void)removeUserFocusMailbox:(id)arg1;
 - (bool)renameMailbox:(id)arg1 newName:(id)arg2 parent:(id)arg3;
+- (id)replayAction:(id)arg1;
 - (void)resetSpecialMailboxes;
 - (bool)restrictedFromSendingExternally;
 - (bool)restrictedFromSyncingRecents;
@@ -176,7 +179,7 @@
 - (id)syncAnchorForFolderID:(id)arg1 mailbox:(id*)arg2;
 - (id)syncAnchorForMailbox:(id)arg1;
 - (id)unactionableInvitationICSRepresentationInMessage:(id)arg1 summary:(id*)arg2;
-- (id)uniqueId;
+- (id)uniqueID;
 - (id)uniqueIdForPersistentConnection;
 - (id)uniqueServerIdForMessage:(id)arg1;
 - (id)unsupportedHandoffTypes;

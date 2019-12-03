@@ -5,22 +5,19 @@
 @interface PFCloudKitSerializer : NSObject {
     NSObject<PFCloudKitSerializerDelegate> * _delegate;
     NSMutableDictionary * _manyToManyRecordNameToRecord;
+    PFCloudKitMetadataCache * _metadataCache;
     NSCloudKitMirroringDelegateOptions * _mirroringOptions;
-    NSMutableDictionary * _objectIDToCKRecordName;
     NSString * _recordNamePrefix;
-    PFCloudKitMirroredRelationshipCache * _relCache;
+    CKRecordZone * _recordZone;
     NSMutableArray * _writtenAssetURLs;
-    CKRecordZone * _zone;
 }
 
 @property (nonatomic) NSObject<PFCloudKitSerializerDelegate> *delegate;
 @property (nonatomic, readonly) NSDictionary *manyToManyRecordNameToRecord;
 @property (nonatomic, readonly) NSCloudKitMirroringDelegateOptions *mirroringOptions;
-@property (nonatomic, readonly) NSDictionary *objectIDToCKRecordName;
 @property (nonatomic, readonly) NSString *recordNamePrefix;
-@property (nonatomic, readonly) PFCloudKitMirroredRelationshipCache *relCache;
+@property (nonatomic, readonly) CKRecordZone *recordZone;
 @property (nonatomic, readonly) NSArray *writtenAssetURLs;
-@property (nonatomic, readonly) CKRecordZone *zone;
 
 + (id)applyCDPrefixToName:(id)arg1;
 + (id)assetStorageDirectoryURLForStore:(id)arg1;
@@ -34,8 +31,8 @@
 + (bool)isMirroredRelationshipRecordType:(id)arg1;
 + (bool)isPrivateAttribute:(id)arg1;
 + (bool)isVariableLengthAttributeType:(unsigned long long)arg1;
++ (id)mtmKeyForObjectWithRecordName:(id)arg1 relatedToObjectWithRecordName:(id)arg2 byRelationship:(id)arg3 withInverse:(id)arg4;
 + (id)newArchivedDataForSystemFieldsOfRecord:(id)arg1;
-+ (id)newSerializerForOptions:(id)arg1 withZone:(id)arg2 recordNamePrefix:(id)arg3;
 + (id)newSetOfRecordKeysForAttribute:(id)arg1 includeCKAssetsForFileBackedFutures:(bool)arg2;
 + (id)newSetOfRecordKeysForEntitiesInConfiguration:(id)arg1 inManagedObjectModel:(id)arg2 includeCKAssetsForFileBackedFutures:(bool)arg3;
 + (id)newSetOfRecordKeysForEntity:(id)arg1 includeCKAssetsForFileBackedFutures:(bool)arg2;
@@ -52,23 +49,22 @@
 - (bool)applyUpdatedRecords:(id)arg1 deletedRecordIDs:(id)arg2 toStore:(id)arg3 inManagedObjectContext:(id)arg4 onlyUpdatingAttributes:(id)arg5 andRelationships:(id)arg6 error:(id*)arg7;
 - (void)dealloc;
 - (id)delegate;
-- (id)getRecordNameForObject:(id)arg1;
-- (id)getValueFromRecord:(id)arg1 forKey:(id)arg2;
-- (id)getValuesFromRecord:(id)arg1;
+- (id)getRecordMetadataForObject:(id)arg1 inManagedObjectContext:(id)arg2 error:(id*)arg3;
+- (id)getValueFromRecord:(id)arg1 forKey:(id)arg2 isEncrypted:(bool)arg3;
+- (id)getValueStoreForRecord:(id)arg1;
 - (id)init;
-- (id)initWithZone:(id)arg1 mirroringOptions:(id)arg2 recordNamePrefix:(id)arg3;
+- (id)initWithZone:(id)arg1 mirroringOptions:(id)arg2 metadataCache:(id)arg3 recordNamePrefix:(id)arg4;
 - (id)manyToManyRecordNameToRecord;
 - (id)mirroringOptions;
-- (id)newCKRecordsFromObject:(id)arg1 fullyMaterializeRecords:(bool)arg2;
-- (id)objectIDToCKRecordName;
+- (id)newCKRecordsFromObject:(id)arg1 fullyMaterializeRecords:(bool)arg2 error:(id*)arg3;
+- (id)newCKRecordsFromObject:(id)arg1 fullyMaterializeRecords:(bool)arg2 includeRelationships:(bool)arg3 error:(id*)arg4;
 - (id)recordNamePrefix;
-- (id)relCache;
+- (id)recordZone;
 - (void)setDelegate:(id)arg1;
 - (void)setMtmRecord:(id)arg1 toMtmRecordName:(id)arg2;
-- (void)setObjectID:(id)arg1 toCKRecordName:(id)arg2;
-- (void)setValue:(id)arg1 forKey:(id)arg2 onRecord:(id)arg3;
-- (void)updateAttributes:(id)arg1 andRelationships:(id)arg2 onManagedObject:(id)arg3 fromRecord:(id)arg4 importContext:(id)arg5;
+- (void)setValue:(id)arg1 forKey:(id)arg2 usingEncryption:(bool)arg3 onRecord:(id)arg4;
+- (bool)shouldEncryptValueForAttribute:(id)arg1;
+- (void)updateAttributes:(id)arg1 andRelationships:(id)arg2 onManagedObject:(id)arg3 fromRecord:(id)arg4 withRecordMetadata:(id)arg5 importContext:(id)arg6;
 - (id)writtenAssetURLs;
-- (id)zone;
 
 @end

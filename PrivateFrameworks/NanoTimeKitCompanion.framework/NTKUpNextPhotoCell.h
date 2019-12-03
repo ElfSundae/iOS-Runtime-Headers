@@ -23,6 +23,9 @@
 
 - (void)configureWithContent:(id)arg1;
 - (void)layoutSubviews;
+- (void)prepareForReuse;
 - (id)transitionContextInView:(id)arg1;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 
 @end

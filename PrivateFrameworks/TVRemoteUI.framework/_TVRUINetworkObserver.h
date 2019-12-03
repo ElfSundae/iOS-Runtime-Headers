@@ -3,6 +3,7 @@
  */
 
 @interface _TVRUINetworkObserver : NSObject {
+    BluetoothManager * _bluetoothManager;
     <_TVRUINetworkObserverDelegate> * _delegate;
     bool  _networkReachable;
     WFWiFiStateMonitor * _wifiStateMonitor;
@@ -12,6 +13,11 @@
 @property (getter=isNetworkReachable, nonatomic, readonly) bool networkReachable;
 
 - (void).cxx_destruct;
+- (void)_beginObservingBluetoothStateChanges;
+- (void)_bluetoothConnectionStatusDidChange:(id)arg1;
+- (void)_bluetoothStateDidChange:(id)arg1;
+- (bool)_isBluetoothAvailable;
+- (void)_stopObservingBluetoothStateChanges;
 - (void)_wifiStateUpdatedWithOldState:(long long)arg1 andNewState:(long long)arg2;
 - (void)dealloc;
 - (id)delegate;

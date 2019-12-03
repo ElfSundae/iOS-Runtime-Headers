@@ -11,6 +11,7 @@
     PUBrowsingViewModel * _browsingViewModel;
     <PUPlayButtonTileViewControllerDelegate> * _delegate;
     struct { 
+        bool respondsToShouldShowPauseButton; 
         bool respondsToDidTapButton; 
         bool respondsToDelayForButtonAnimation; 
     }  _delegateFlags;
@@ -22,6 +23,7 @@
 @property (setter=_setShouldSuppressButtonUpdates:, nonatomic) bool _shouldSuppressButtonUpdates;
 @property (nonatomic, retain) PUAssetViewModel *assetViewModel;
 @property (nonatomic, retain) PUBrowsingViewModel *browsingViewModel;
+@property (nonatomic, readonly) bool canShowPauseButton;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <PUPlayButtonTileViewControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -32,7 +34,6 @@
 
 - (void).cxx_destruct;
 - (id)_browsingVideoPlayer;
-- (bool)_canPause;
 - (id)_playButton;
 - (void)_playButtonTapped:(id)arg1;
 - (void)_setBrowsingVideoPlayer:(id)arg1;
@@ -46,6 +47,7 @@
 - (id)assetViewModel;
 - (void)becomeReusable;
 - (id)browsingViewModel;
+- (bool)canShowPauseButton;
 - (void)dealloc;
 - (id)delegate;
 - (id)loadView;

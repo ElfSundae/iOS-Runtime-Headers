@@ -15,6 +15,7 @@
 @property (nonatomic, readonly, copy) NSDictionary *indexTitles;
 @property (nonatomic, copy) NSArray *itemElements;
 @property (nonatomic, retain) IKChangeSet *itemsChangeSet;
+@property (nonatomic, readonly) NSArray *masterPrototypes;
 @property (nonatomic, readonly) NSArray *prototypes;
 @property (nonatomic, readonly, copy) NSArray *proxiedItemElements;
 @property (readonly) Class superclass;
@@ -34,6 +35,7 @@
 - (long long)numberOfItems;
 - (id)prototypeForItemAtIndex:(long long)arg1;
 - (id)prototypes;
+- (id)proxiedItemElements;
 - (void)resetUpdates;
 - (void)setItemElements:(id)arg1;
 - (void)setItemsChangeSet:(id)arg1;

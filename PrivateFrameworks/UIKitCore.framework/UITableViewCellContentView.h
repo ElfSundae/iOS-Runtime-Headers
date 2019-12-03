@@ -3,8 +3,17 @@
  */
 
 @interface UITableViewCellContentView : UIView <_UILayoutEngineSuspending> {
+    struct { 
+        unsigned int edgesForOverridingDefaultLayoutMargins : 4; 
+    }  _contentViewFlags;
     bool  _isLayoutEngineSuspended;
     CALayer * _mask;
+    struct NSDirectionalEdgeInsets { 
+        double top; 
+        double leading; 
+        double bottom; 
+        double trailing; 
+    }  _overriddenDefaultLayoutMargins;
 }
 
 @property (getter=_isLayoutEngineSuspended, setter=_setLayoutEngineSuspended:, nonatomic) bool _layoutEngineSuspended;
@@ -12,14 +21,18 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) CALayer *mask;
+@property (getter=_overriddenDefaultLayoutMargins, setter=_setOverriddenDefaultLayoutMargins:, nonatomic) struct NSDirectionalEdgeInsets { double x1; double x2; double x3; double x4; } overriddenDefaultLayoutMargins;
 @property (readonly) Class superclass;
 
 + (id)classFallbacksForKeyedArchiver;
 
 - (void).cxx_destruct;
 - (id)_cell;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_concreteDefaultLayoutMargins;
 - (bool)_isLayoutEngineSuspended;
+- (struct NSDirectionalEdgeInsets { double x1; double x2; double x3; double x4; })_overriddenDefaultLayoutMargins;
 - (void)_setLayoutEngineSuspended:(bool)arg1;
+- (void)_setOverriddenDefaultLayoutMargins:(struct NSDirectionalEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)_tableViewCellContentViewCommonSetup;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;

@@ -25,7 +25,13 @@
 @property (nonatomic, copy) NSString *specificLanguageID;
 @property (nonatomic, copy) NSString *voiceName;
 
++ (id)_hanjaCharacterSet;
++ (id)_hanjaToHangulMap;
+
 - (void).cxx_destruct;
+- (bool)_languageIsKorean;
+- (id)_stringByTransliterationHanjaToHangul:(id)arg1;
+- (id)_transliteratedSpeechCharacters;
 - (id)basicDescription;
 - (bool)canSpeakCharacter:(unsigned short)arg1;
 - (bool)canSpeakLongCharacter:(unsigned int)arg1;
@@ -51,7 +57,9 @@
 - (void)setSpecificLanguageID:(id)arg1;
 - (void)setVoiceName:(id)arg1;
 - (id)speakableCharacters;
+- (bool)speakingRequiresTransliteration;
 - (id)specificLanguageID;
+- (id)transliteratedStringForString:(id)arg1;
 - (id)voiceName;
 
 @end

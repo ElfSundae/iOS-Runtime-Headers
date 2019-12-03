@@ -13,6 +13,7 @@
 }
 
 @property (retain) NSDictionary *completeDictionary;
+@property (nonatomic, readonly, copy) NSSet *keys;
 
 - (void).cxx_destruct;
 - (id)cachedValueForKey:(id)arg1;
@@ -20,6 +21,7 @@
 - (id)debugDescription;
 - (bool)hasValueForKey:(id)arg1;
 - (id)initWithKeys:(id)arg1 compacted:(bool)arg2;
+- (id)keys;
 - (void)setCachedValue:(id)arg1 forKey:(id)arg2;
 - (void)setCompleteDictionary:(id)arg1;
 

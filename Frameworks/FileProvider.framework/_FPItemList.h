@@ -3,6 +3,7 @@
  */
 
 @interface _FPItemList : NSObject {
+    NSMutableSet * _formerIDs;
     NSMutableDictionary * _itemsByIDs;
     NSMutableOrderedSet * _orderedSet;
 }
@@ -17,6 +18,7 @@
 - (unsigned long long)indexOfObject:(id)arg1 inSortedRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 options:(unsigned long long)arg3 usingComparator:(id /* block */)arg4;
 - (id)init;
 - (void)insertObject:(id)arg1 atIndex:(unsigned long long)arg2;
+- (bool)isObsoleteID:(id)arg1;
 - (id)mutableCopy;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (void)removeLastObject;

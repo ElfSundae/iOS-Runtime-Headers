@@ -11,8 +11,8 @@
     ODDFillColorList * mTextLineColors;
 }
 
+- (void).cxx_destruct;
 - (void)applyToShapeStyle:(id)arg1 index:(unsigned int)arg2 count:(unsigned int)arg3 state:(id)arg4;
-- (void)dealloc;
 - (id)effectColors;
 - (id)fillColors;
 - (id)lineColors;

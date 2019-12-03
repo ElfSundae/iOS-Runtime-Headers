@@ -14,8 +14,8 @@
     bool  _requiresTCC;
 }
 
-@property (nonatomic, retain) NSError *_error;
-@property (nonatomic, retain) NSExtension *_extension;
+@property (setter=_setError:, nonatomic, retain) NSError *_error;
+@property (setter=_setExtension:, nonatomic, retain) NSExtension *_extension;
 @property (nonatomic, retain) NSArray *extensionInputItems;
 @property (nonatomic, retain) NSString *identifier;
 @property (nonatomic) bool requiresTCC;
@@ -30,6 +30,8 @@
 - (void)_resetContextTimer;
 - (void)_resetExtensionContextHostWithCompletion:(id /* block */)arg1;
 - (void)_scheduleContextTimer;
+- (void)_setError:(id)arg1;
+- (void)_setExtension:(id)arg1;
 - (id)extensionInputItems;
 - (id)identifier;
 - (id)initWithIdentifier:(id)arg1;
@@ -38,8 +40,6 @@
 - (void)setExtensionInputItems:(id)arg1;
 - (void)setIdentifier:(id)arg1;
 - (void)setRequiresTCC:(bool)arg1;
-- (void)set_error:(id)arg1;
-- (void)set_extension:(id)arg1;
 - (void)startRequestForIntent:(id)arg1 completion:(id /* block */)arg2;
 
 @end

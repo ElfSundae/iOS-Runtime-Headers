@@ -5,8 +5,23 @@
 @interface GEOPDExternalTransitLookupParameters : PBCodable <NSCopying> {
     NSMutableArray * _externalTransitStationCodes;
     struct { 
-        unsigned int transactionTimestamp : 1; 
-    }  _has;
+        unsigned int has_transactionTimestamp : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_externalTransitStationCodes : 1; 
+        unsigned int read_sourceId : 1; 
+        unsigned int read_transactionLocation : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_externalTransitStationCodes : 1; 
+        unsigned int wrote_sourceId : 1; 
+        unsigned int wrote_transactionLocation : 1; 
+        unsigned int wrote_transactionTimestamp : 1; 
+    }  _flags;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     NSString * _sourceId;
     GEOLocation * _transactionLocation;
     double  _transactionTimestamp;
@@ -23,10 +38,17 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 + (Class)externalTransitStationCodeType;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsExternalTransitStationCode:(id)arg1;
+- (void)_readExternalTransitStationCodes;
+- (void)_readSourceId;
+- (void)_readTransactionLocation;
 - (void)addExternalTransitStationCode:(id)arg1;
 - (void)clearExternalTransitStationCodes;
+- (void)clearSensitiveFields;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -38,8 +60,11 @@
 - (bool)hasTransactionLocation;
 - (bool)hasTransactionTimestamp;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setExternalTransitStationCodes:(id)arg1;
 - (void)setHasTransactionTimestamp:(bool)arg1;

@@ -8,15 +8,15 @@
     double  _earliestArrivalOffset;
     double  _earliestDepartureOffset;
     struct { 
-        unsigned int earliestArrivalOffset : 1; 
-        unsigned int earliestDepartureOffset : 1; 
-        unsigned int latestArrivalOffset : 1; 
-        unsigned int latestDepartureOffset : 1; 
-        unsigned int arrival : 1; 
-        unsigned int departure : 1; 
-        unsigned int numberOfReroutes : 1; 
-        unsigned int uiNotification : 1; 
-    }  _has;
+        unsigned int has_earliestArrivalOffset : 1; 
+        unsigned int has_earliestDepartureOffset : 1; 
+        unsigned int has_latestArrivalOffset : 1; 
+        unsigned int has_latestDepartureOffset : 1; 
+        unsigned int has_arrival : 1; 
+        unsigned int has_departure : 1; 
+        unsigned int has_numberOfReroutes : 1; 
+        unsigned int has_uiNotification : 1; 
+    }  _flags;
     double  _latestArrivalOffset;
     double  _latestDepartureOffset;
     unsigned int  _numberOfReroutes;
@@ -39,6 +39,8 @@
 @property (nonatomic) double latestDepartureOffset;
 @property (nonatomic) unsigned int numberOfReroutes;
 @property (nonatomic) int uiNotification;
+
++ (bool)isValid:(id)arg1;
 
 - (int)StringAsArrival:(id)arg1;
 - (int)StringAsDeparture:(id)arg1;
@@ -67,6 +69,7 @@
 - (double)latestDepartureOffset;
 - (void)mergeFrom:(id)arg1;
 - (unsigned int)numberOfReroutes;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setArrival:(int)arg1;
 - (void)setDeparture:(int)arg1;

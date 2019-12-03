@@ -38,7 +38,7 @@
 - (void)setLoadCompletion:(id /* block */)arg1;
 - (void)unregisterExportedObjectInterface;
 - (void)webProcessJSODidCallClose;
-- (void)webProcessJSODidCallOpen:(id)arg1;
+- (void)webProcessJSODidCallOpen:(id)arg1 options:(id)arg2;
 - (void)webProcessJSODidCallPerformAction:(id)arg1;
 - (void)webProcessJSODidReportEvent:(id)arg1;
 - (void)webProcessPlugInBrowserContextControllerGlobalObjectIsAvailableForFrame;

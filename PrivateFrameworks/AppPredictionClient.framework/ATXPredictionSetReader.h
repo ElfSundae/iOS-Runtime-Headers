@@ -17,6 +17,6 @@
 - (id)init;
 - (id)initWithData:(id)arg1 predictedItemClass:(Class)arg2;
 - (id)readScoredPredictionsWithLimit:(int)arg1;
-- (id)readScoredPredictionsWithLimit:(int)arg1 andFilterRecentEngagements:(bool)arg2;
+- (id)readScoredPredictionsWithLimit:(int)arg1 filterPredicate:(id)arg2;
 
 @end

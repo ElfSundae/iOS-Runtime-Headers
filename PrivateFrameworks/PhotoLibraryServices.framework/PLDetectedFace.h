@@ -54,11 +54,13 @@
 @property (nonatomic, retain) <PLSyncablePerson> *personBeingKeyFace;
 @property (nonatomic, retain) PLPerson *personBeingKeyFace;
 @property (nonatomic) double poseYaw;
+@property (nonatomic) double quality;
 @property (nonatomic) int qualityMeasure;
 @property (nonatomic, retain) NSSet *rejectedPersons;
 @property (nonatomic, retain) NSSet *rejectedPersonsNeedingFaceCrops;
 @property (nonatomic) double rightEyeX;
 @property (nonatomic) double rightEyeY;
+@property (nonatomic) double roll;
 @property (nonatomic) double size;
 @property (nonatomic) unsigned short smileType;
 @property (nonatomic) long long sourceHeight;
@@ -66,19 +68,17 @@
 @property (readonly) Class superclass;
 @property (nonatomic) int trainingType;
 @property (nonatomic, retain) NSString *uuid;
+@property (nonatomic) double yaw;
 
 + (id)_facesMatchingPredicate:(id)arg1 limit:(unsigned long long)arg2 inPhotoLibrary:(id)arg3;
 + (id)_syncableFacesToUploadInitiallyPredicate;
-+ (void)batchFetchDetectedFacesByAssetUUIDWithAssetUUIDs:(id)arg1 predicate:(id)arg2 completion:(id /* block */)arg3;
-+ (void)batchFetchKeyFacesByPersonUUIDWithPersonUUIDs:(id)arg1 completion:(id /* block */)arg2;
++ (void)batchFetchDetectedFacesByAssetUUIDWithAssetUUIDs:(id)arg1 predicate:(id)arg2 library:(id)arg3 completion:(id /* block */)arg4;
++ (void)batchFetchKeyFacesByPersonUUIDWithPersonUUIDs:(id)arg1 library:(id)arg2 completion:(id /* block */)arg3;
 + (unsigned long long)countOfHiddenFacesOnAssetsWithObjectIDs:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)detectedFaceWithUUID:(id)arg1 inManagedObjectContext:(id)arg2;
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (void)enumerateAssetUUIDsForSearchIndexingWithDetctedFaceUUIDs:(id)arg1 managedObjectContext:(id)arg2 assetUUIDHandler:(id /* block */)arg3;
-+ (bool)facesSyncFeatureEnabled;
 + (id)findExistingFaceMatchingDimension:(id)arg1 inFaces:(id)arg2 ignoreSourceAssetDimensions:(bool)arg3;
-+ (id)insertInManagedObjectContext:(id)arg1;
 + (id)predicateForArchival;
 + (id)predicatesForFacesNeedingFaceCropGeneration;
 + (id)predicatesToExcludeNonVisibleFaces;
@@ -100,9 +100,13 @@
 - (int)effectiveNameSource;
 - (bool)isSyncableChange;
 - (bool)isTrainingFace;
+- (bool)isValidForPersistence;
 - (id)localID;
 - (id)momentShare;
 - (id)namingDescription;
+- (id)payloadForChangedKeys:(id)arg1;
+- (id)payloadID;
+- (id)payloadIDForTombstone:(id)arg1;
 - (double)photosFaceRepresentationBlurScore;
 - (double)photosFaceRepresentationCenterX;
 - (double)photosFaceRepresentationCenterY;
@@ -111,7 +115,9 @@
 - (bool)photosFaceRepresentationIsLeftEyeClosed;
 - (bool)photosFaceRepresentationIsRightEyeClosed;
 - (id)photosFaceRepresentationLocalIdentifier;
+- (double)photosFaceRepresentationQuality;
 - (long long)photosFaceRepresentationQualityMeasure;
+- (double)photosFaceRepresentationRoll;
 - (double)photosFaceRepresentationSize;
 - (long long)photosFaceRepresentationSourceHeight;
 - (long long)photosFaceRepresentationSourceWidth;
@@ -119,6 +125,7 @@
 - (void)setEffectiveNameSource:(int)arg1;
 - (bool)supportsCloudUpload;
 - (id)syncDescription;
+- (bool)validForPersistenceChangedForChangedKeys:(id)arg1;
 - (void)willSave;
 
 @end

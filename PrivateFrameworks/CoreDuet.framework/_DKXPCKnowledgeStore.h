@@ -25,6 +25,7 @@
 - (void)deleteObjects:(id)arg1 responseQueue:(id)arg2 withCompletion:(id /* block */)arg3;
 - (id)deleteObjects:(id)arg1 synchronous:(bool)arg2 responseQueue:(id)arg3 withCompletion:(id /* block */)arg4;
 - (bool)deleteRemoteState:(id*)arg1;
+- (id)deviceUUID;
 - (id)executeQuery:(id)arg1 error:(id*)arg2;
 - (void)executeQuery:(id)arg1 responseQueue:(id)arg2;
 - (void)executeQuery:(id)arg1 responseQueue:(id)arg2 withCompletion:(id /* block */)arg3;

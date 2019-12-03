@@ -18,6 +18,7 @@
     double  _bodyTempSampleNoiseStdDev;
     double  _breakfastTime;
     double  _continuousGlucoseMonitoringSampleFrequency;
+    bool  _createHighFidelityData;
     double  _dawnTime;
     double  _dinnerTime;
     double  _exerciseCooldownTime;
@@ -149,6 +150,7 @@
 @property (nonatomic) double bodyTempSampleNoiseStdDev;
 @property (nonatomic) double breakfastTime;
 @property (nonatomic) double continuousGlucoseMonitoringSampleFrequency;
+@property (nonatomic) bool createHighFidelityData;
 @property (nonatomic) double dawnTime;
 @property (nonatomic) double dinnerTime;
 @property (nonatomic) double exerciseCooldownTime;
@@ -283,6 +285,7 @@
 - (double)bodyTempSampleNoiseStdDev;
 - (double)breakfastTime;
 - (double)continuousGlucoseMonitoringSampleFrequency;
+- (bool)createHighFidelityData;
 - (double)dawnTime;
 - (double)dinnerTime;
 - (double)exerciseCooldownTime;
@@ -376,6 +379,7 @@
 - (void)setBodyTempSampleNoiseStdDev:(double)arg1;
 - (void)setBreakfastTime:(double)arg1;
 - (void)setContinuousGlucoseMonitoringSampleFrequency:(double)arg1;
+- (void)setCreateHighFidelityData:(bool)arg1;
 - (void)setDawnTime:(double)arg1;
 - (void)setDinnerTime:(double)arg1;
 - (void)setExerciseCooldownTime:(double)arg1;

@@ -3,6 +3,7 @@
  */
 
 @interface TSgPTPPort : NSObject {
+    unsigned long long  _clockIdentifier;
     unsigned int  _interestNotification;
     NSObject<OS_dispatch_queue> * _internalPropertyUpdateQueue;
     struct IONotificationPort { } * _notificationPort;
@@ -14,6 +15,7 @@
     unsigned int  _service;
 }
 
+@property (nonatomic) unsigned long long clockIdentifier;
 @property (nonatomic) unsigned short portNumber;
 @property (nonatomic) int portRole;
 @property (nonatomic, readonly) int portType;
@@ -24,9 +26,14 @@
 + (id)diagnosticInfoForService:(unsigned int)arg1;
 + (id)gPTPPortWithService:(unsigned int)arg1;
 
+- (unsigned long long)_clockIdentifier;
 - (bool)_commonInitWithService:(unsigned int)arg1;
+- (struct IONotificationPort { }*)_notificationPort;
+- (id)_notificationQueue;
+- (id)_portForNotification;
 - (unsigned short)_portNumber;
 - (int)_portRole;
+- (unsigned long long)clockIdentifier;
 - (void)dealloc;
 - (id)init;
 - (id)initWithMatchingDictionary:(id)arg1;
@@ -37,6 +44,7 @@
 - (id)propertyUpdateQueue;
 - (unsigned int)service;
 - (void)serviceTerminated;
+- (void)setClockIdentifier:(unsigned long long)arg1;
 - (void)setPortNumber:(unsigned short)arg1;
 - (void)setPortRole:(int)arg1;
 - (void)setPropertyUpdateQueue:(id)arg1;

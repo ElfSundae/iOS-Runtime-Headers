@@ -23,6 +23,7 @@
 + (id)contactForAddress:(id)arg1 fullName:(id)arg2 firstName:(id)arg3 lastName:(id)arg4;
 + (id)contactForEmailAddress:(id)arg1 fullName:(id)arg2 firstName:(id)arg3 lastName:(id)arg4;
 + (id)contactForPhoneNumber:(id)arg1 fullName:(id)arg2 firstName:(id)arg3 lastName:(id)arg4;
++ (id)contactKeysToFetch;
 + (id)sortedAvatarListFromParticipants:(id)arg1;
 
 - (void).cxx_destruct;
@@ -51,7 +52,7 @@
 - (void)updateLabel;
 - (void)updateWithAddress:(id)arg1 fullName:(id)arg2 firstName:(id)arg3 lastName:(id)arg4;
 - (void)updateWithContacts:(id)arg1;
-- (void)updateWithParticpant:(id)arg1;
+- (void)updateWithParticipant:(id)arg1;
 - (id)viewController;
 
 @end

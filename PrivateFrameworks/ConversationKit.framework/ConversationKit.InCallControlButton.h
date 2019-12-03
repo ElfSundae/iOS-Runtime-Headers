@@ -4,13 +4,16 @@
 
 @interface ConversationKit.InCallControlButton : UIControl {
     void colorConfiguration;
+    void contentAlpha;
+    void discBackgroundEffectView;
+    void discBackgroundFlatView;
     void discView;
     void image;
     void imageView;
+    void isUsingVisualEffects;
     void label;
     void paragraphStyle;
     void style;
-    void toggledConstraints;
 }
 
 @property (nonatomic) bool highlighted;

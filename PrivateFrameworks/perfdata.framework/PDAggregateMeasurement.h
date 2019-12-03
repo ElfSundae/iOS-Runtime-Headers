@@ -4,6 +4,7 @@
 
 @interface PDAggregateMeasurement : NSObject {
     PDContainer * _container;
+    NSMutableDictionary * _labels;
     double  _max;
     NSString * _metric;
     double  _min;
@@ -17,6 +18,7 @@
 }
 
 @property (nonatomic, retain) PDContainer *container;
+@property (nonatomic, retain) NSMutableDictionary *labels;
 @property (nonatomic) double max;
 @property (nonatomic, readonly) PDMeasurement *measurement;
 @property (nonatomic, retain) NSString *metric;
@@ -33,12 +35,14 @@
 - (id)container;
 - (void)dealloc;
 - (id)initWithContainer:(id)arg1 metric:(id)arg2 unitString:(id)arg3;
+- (id)labels;
 - (double)max;
 - (id)measurement;
 - (id)metric;
 - (double)min;
 - (unsigned long long)samples;
 - (void)setContainer:(id)arg1;
+- (void)setLabels:(id)arg1;
 - (void)setMax:(double)arg1;
 - (void)setMetric:(id)arg1;
 - (void)setMin:(double)arg1;

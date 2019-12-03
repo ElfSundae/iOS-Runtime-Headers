@@ -48,7 +48,7 @@
 - (id)associateFace:(id)arg1 withFaceCrop:(id)arg2 error:(id*)arg3;
 - (id)bestRepresentativeFaceForPerson:(id)arg1 qualityMeasureByFace:(id)arg2 canceler:(id)arg3;
 - (id)bestRepresentativeFaceForPerson:(id)arg1 qualityMeasureByFace:(id)arg2 candidateFaces:(id)arg3 canceler:(id)arg4;
-- (void)buildPersonsWithFaceClusterer:(id)arg1 keyFaceUpdateBlock:(id /* block */)arg2 canceler:(id)arg3 context:(id)arg4;
+- (void)buildPersonsWithFaceClusterer:(id)arg1 keyFaceUpdateBlock:(id /* block */)arg2 canceler:(id)arg3 context:(id)arg4 extendTimeoutBlock:(id /* block */)arg5;
 - (bool)cleanupGroupedFacesWithClusterSequenceNumberSetToZeroWithCanceler:(id)arg1 error:(id*)arg2;
 - (bool)cleanupMergeCandidatesWithMinimumFaceGroupSize:(unsigned long long)arg1 canceler:(id)arg2 error:(id*)arg3;
 - (bool)cleanupUngroupedFacesWithNonZeroClusterSequenceNumbersWithCanceler:(id)arg1 error:(id*)arg2;
@@ -70,7 +70,7 @@
 - (id)faceLocalIdentifiersInFaceGroupWithLocalIdentifier:(id)arg1 error:(id*)arg2;
 - (id)faceprintsByFaceLocalIdentifiers:(id)arg1 version:(unsigned int)arg2 error:(id*)arg3;
 - (id)facesAlgorithmicallyGroupedWithFacesWithClusterSequenceNumbers:(id)arg1 includeSingletons:(bool)arg2 error:(id*)arg3;
-- (id)facesForClusteringWithLocalIdentifiers:(id)arg1 faceprintVersion:(unsigned int)arg2 excludeClustered:(bool)arg3;
+- (id)facesForClusteringWithLocalIdentifiers:(id)arg1 faceprintVersion:(unsigned int)arg2 excludeClustered:(bool)arg3 groupingIdentifiers:(id)arg4;
 - (id)facesForFaceLocalIdentifiers:(id)arg1 error:(id*)arg2;
 - (id)facesForPersonWithLocalIdentifier:(id)arg1 error:(id*)arg2;
 - (id)facesFromAsset:(id)arg1;
@@ -92,6 +92,7 @@
 - (void)logPVErrorMessage:(id)arg1;
 - (void)logPVInfoMessage:(id)arg1;
 - (void)logPVWarningMessage:(id)arg1;
+- (id)momentIdentifierForFace:(id)arg1 withFetchOptions:(id)arg2;
 - (bool)needsPersonBuilding;
 - (id)newClusteringEligibleFacesFetchOptions;
 - (id)newClusteringEligibleFacesFetchPredicate;

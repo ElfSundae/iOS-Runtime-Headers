@@ -6,10 +6,13 @@
 @required
 
 - (bool)hasIntentMetadata;
+- (bool)hasStepIntentResponse;
 - (bool)hasWorkflow;
 - (_INPBIntentMetadata *)intentMetadata;
 - (void)setIntentMetadata:(_INPBIntentMetadata *)arg1;
+- (void)setStepIntentResponse:(_INPBArchivedObject *)arg1;
 - (void)setWorkflow:(_INPBDataString *)arg1;
+- (_INPBArchivedObject *)stepIntentResponse;
 - (_INPBDataString *)workflow;
 
 @end

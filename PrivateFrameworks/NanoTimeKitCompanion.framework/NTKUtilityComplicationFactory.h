@@ -2,8 +2,11 @@
    Image: /System/Library/PrivateFrameworks/NanoTimeKitCompanion.framework/NanoTimeKitCompanion
  */
 
-@interface NTKUtilityComplicationFactory : NSObject {
+@interface NTKUtilityComplicationFactory : NSObject <NTKFaceViewComplicationFactory> {
     bool  _accommodatesTwoTopComplications;
+    double  _bezelKeylineInnerCircleOffset;
+    double  _bezelLabelMaxWidthInDegree;
+    double  _bezelLabelTopPadding;
     long long  _bottomCenterLayout;
     double  _crownIndicatorGap;
     double  _dateHorizontalCenterOffset;
@@ -14,6 +17,8 @@
     double  _deselectedKeylineSideInnerPadding;
     double  _deselectedKeylineVerticalInnerPadding;
     CLKDevice * _device;
+    double  _dialDiameter;
+    NTKFaceView<NTKUtilityFlatComplicationViewDelegate> * _faceView;
     double  _foregroundAlpha;
     double  _foregroundImageAlpha;
     double  _maxNormalLongWidth;
@@ -31,21 +36,31 @@
     }  _screenEdgeInsets;
     double  _selectedKeylineHeight;
     double  _selectedKeylineSideInnerPadding;
+    double  _selectedKeylineVerticalInnerContentSpacer;
+    CLKFont * _topBezelLabelFont;
 }
 
 @property (nonatomic) bool accommodatesTwoTopComplications;
+@property (nonatomic) double bezelKeylineInnerCircleOffset;
+@property (nonatomic) double bezelLabelMaxWidthInDegree;
+@property (nonatomic) double bezelLabelTopPadding;
 @property (nonatomic) long long bottomCenterLayout;
 @property (nonatomic) double crownIndicatorGap;
 @property (nonatomic) double dateHorizontalCenterOffset;
 @property (nonatomic) double dateKeylineMaxWidth;
 @property (nonatomic) double dateVerticalCenterOffset;
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <NTKUtilityComplicationFactoryDelegate> *delegate;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) double deselectedKeylineCircularInnerPadding;
 @property (nonatomic) double deselectedKeylineSideInnerPadding;
 @property (nonatomic) double deselectedKeylineVerticalInnerPadding;
 @property (nonatomic, readonly) CLKDevice *device;
+@property (nonatomic) double dialDiameter;
+@property (nonatomic) NTKFaceView<NTKUtilityFlatComplicationViewDelegate> *faceView;
 @property (nonatomic) double foregroundAlpha;
 @property (nonatomic) double foregroundImageAlpha;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) double maxNormalLongWidth;
 @property (nonatomic) struct CGSize { double x1; double x2; } normalCircularPadding;
 @property (nonatomic) double normalSidePadding;
@@ -53,6 +68,9 @@
 @property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } screenEdgeInsets;
 @property (nonatomic) double selectedKeylineHeight;
 @property (nonatomic) double selectedKeylineSideInnerPadding;
+@property (nonatomic) double selectedKeylineVerticalInnerContentSpacer;
+@property (readonly) Class superclass;
+@property (nonatomic, retain) CLKFont *topBezelLabelFont;
 
 + (void)curvedCircleRadius:(double*)arg1 centerAngle:(double*)arg2 maxAngularWidth:(double*)arg3 circleCenter:(struct CGPoint { double x1; double x2; }*)arg4 interior:(bool*)arg5 forSlot:(long long)arg6 forDevice:(id)arg7;
 + (unsigned long long)placementForSlot:(long long)arg1;
@@ -66,6 +84,7 @@
 - (void)_configureBottomRightLongLayout:(id)arg1 withBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (void)_configureDateLayout:(id)arg1 withBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (void)_configureLayout:(id)arg1 withNormalSize:(struct CGSize { double x1; double x2; })arg2 editingSize:(struct CGSize { double x1; double x2; })arg3 variant:(bool)arg4 addCircleOverrides:(bool)arg5 makeRuleBlock:(id /* block */)arg6;
+- (void)_configureTopBezelLayout:(id)arg1 withBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 dialDiameter:(double)arg3;
 - (void)_configureTopLeftLayout:(id)arg1 withBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 variant:(bool)arg3;
 - (void)_configureTopRightAboveLayout:(id)arg1 withBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (void)_configureTopRightBelowLayout:(id)arg1 withBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
@@ -79,11 +98,22 @@
 - (double)_maxDateWidthLeavingRoomForKeylines;
 - (double)_maxTopCornerWidthLeavingRoomForKeylines:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (double)_maxWidthForKeylineAndPadding;
+- (long long)_utilitySlotForSlot:(id)arg1;
 - (id)_viewForDateComplication:(id)arg1;
 - (bool)accommodatesTwoTopComplications;
+- (double)bezelComplicationMaxAngularWidth;
+- (double)bezelComplicationRadiusWithDialDiameter:(double)arg1;
+- (double)bezelKeylineInnerCircleOffset;
+- (double)bezelLabelMaxWidthInDegree;
+- (double)bezelLabelTopPadding;
 - (long long)bottomCenterLayout;
+- (long long)complicationPickerStyleForSlot:(id)arg1;
+- (void)configureComplicationLayout:(id)arg1 forSlot:(long long)arg2 bounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3 dialDiameter:(double)arg4;
 - (void)configureComplicationLayout:(id)arg1 forSlot:(long long)arg2 withBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3;
+- (void)configureComplicationView:(id)arg1 forSlot:(id)arg2;
+- (void)configureComplicationView:(id)arg1 forSlot:(id)arg2 dialDiameter:(double)arg3;
 - (double)crownIndicatorGap;
+- (void)curvedComplicationCircleRadius:(double*)arg1 centerAngle:(double*)arg2 maxAngularWidth:(double*)arg3 circleCenter:(struct CGPoint { double x1; double x2; }*)arg4 interior:(bool*)arg5 forSlot:(id)arg6;
 - (id)curvedMaskForSlot:(long long)arg1;
 - (double)dateHorizontalCenterOffset;
 - (double)dateKeylineMaxWidth;
@@ -93,6 +123,8 @@
 - (double)deselectedKeylineSideInnerPadding;
 - (double)deselectedKeylineVerticalInnerPadding;
 - (id)device;
+- (double)dialDiameter;
+- (id)faceView;
 - (double)foregroundAlpha;
 - (double)foregroundAlphaForEditing:(bool)arg1;
 - (double)foregroundAlphaForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
@@ -101,18 +133,30 @@
 - (double)foregroundImageAlphaForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (id)initForDevice:(id)arg1;
 - (double)keylineCornerRadiusForSlot:(long long)arg1;
+- (unsigned long long)keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (unsigned long long)keylineLabelAlignmentForSlot:(long long)arg1;
+- (id)keylineViewForComplicationSlot:(id)arg1;
 - (id)keylineViewForSlot:(long long)arg1;
+- (id)keylineViewForSlot:(long long)arg1 dialDiameter:(double)arg2;
 - (long long)layoutOverrideForComplicationType:(unsigned long long)arg1 inSlot:(long long)arg2;
+- (long long)legacyLayoutOverrideforComplicationType:(unsigned long long)arg1 slot:(id)arg2;
+- (void)loadLayoutRules;
+- (double)maxDateWidthLeavingRoomForKeylines;
 - (double)maxNormalLongWidth;
+- (id)newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
 - (id)newViewForComplication:(id)arg1 family:(long long)arg2 forSlot:(long long)arg3;
 - (struct CGSize { double x1; double x2; })normalCircularPadding;
 - (double)normalSidePadding;
 - (double)normalVerticalPadding;
+- (id)pickerMaskForSlot:(id)arg1;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })screenEdgeInsets;
 - (double)selectedKeylineHeight;
 - (double)selectedKeylineSideInnerPadding;
+- (double)selectedKeylineVerticalInnerContentSpacer;
 - (void)setAccommodatesTwoTopComplications:(bool)arg1;
+- (void)setBezelKeylineInnerCircleOffset:(double)arg1;
+- (void)setBezelLabelMaxWidthInDegree:(double)arg1;
+- (void)setBezelLabelTopPadding:(double)arg1;
 - (void)setBottomCenterLayout:(long long)arg1;
 - (void)setCrownIndicatorGap:(double)arg1;
 - (void)setDateHorizontalCenterOffset:(double)arg1;
@@ -122,6 +166,8 @@
 - (void)setDeselectedKeylineCircularInnerPadding:(double)arg1;
 - (void)setDeselectedKeylineSideInnerPadding:(double)arg1;
 - (void)setDeselectedKeylineVerticalInnerPadding:(double)arg1;
+- (void)setDialDiameter:(double)arg1;
+- (void)setFaceView:(id)arg1;
 - (void)setForegroundAlpha:(double)arg1;
 - (void)setForegroundImageAlpha:(double)arg1;
 - (void)setMaxNormalLongWidth:(double)arg1;
@@ -131,5 +177,9 @@
 - (void)setScreenEdgeInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setSelectedKeylineHeight:(double)arg1;
 - (void)setSelectedKeylineSideInnerPadding:(double)arg1;
+- (void)setSelectedKeylineVerticalInnerContentSpacer:(double)arg1;
+- (void)setTopBezelLabelFont:(id)arg1;
+- (bool)slotSupportsCurvedText:(id)arg1;
+- (id)topBezelLabelFont;
 
 @end

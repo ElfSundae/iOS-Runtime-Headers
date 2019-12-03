@@ -25,6 +25,7 @@
 - (id)alternateIdentifiers;
 - (void)connect;
 - (void)connectedToDevice:(id)arg1;
+- (long long)connectionType;
 - (id)device;
 - (void)deviceEncounteredAuthenticationChallenge:(id)arg1;
 - (void)deviceUpdatedSupportedButtons:(id)arg1;
@@ -33,12 +34,14 @@
 - (void)disconnectedFromDevice:(id)arg1 error:(id)arg2;
 - (id)identifier;
 - (id)initWithDevice:(id)arg1;
+- (bool)isPaired;
 - (id)keyboardController;
 - (id)keyboardImpl;
 - (id)model;
 - (id)name;
 - (unsigned long long)pairingCapability;
 - (void)sendButtonEvent:(id)arg1;
+- (void)sendEvent:(id)arg1 options:(id)arg2 response:(id /* block */)arg3;
 - (void)sendGameControllerEvent:(id)arg1;
 - (void)sendTouchEvent:(id)arg1;
 - (void)setAuthenticationSupported:(bool)arg1;

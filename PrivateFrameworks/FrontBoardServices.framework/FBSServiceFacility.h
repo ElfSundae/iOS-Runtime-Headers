@@ -4,6 +4,10 @@
 
 @interface FBSServiceFacility : NSObject <BSDescriptionProviding, BSInvalidatable> {
     NSMutableSet * _clients;
+    NSSet * _clients_immutable;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _clients_immutable_lock;
     NSString * _identifier;
     bool  _invalidated;
     NSSet * _prerequisiteMilestones;
@@ -20,9 +24,6 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_clientDidConnect:(id)arg1 withMessage:(id)arg2 completion:(id /* block */)arg3;
-- (void)_clientDidDisconnect:(id)arg1;
-- (void)_handleMessage:(id)arg1 withType:(long long)arg2 fromClient:(id)arg3;
 - (id)_prerequisiteMilestones;
 - (id)clients;
 - (void)dealloc;
@@ -36,6 +37,9 @@
 - (void)noteClientDidDisconnect:(id)arg1;
 - (void)noteDidReceiveMessage:(id)arg1 withType:(long long)arg2 fromClient:(id)arg3;
 - (id)queue;
+- (bool)queue_clientDidConnect:(id)arg1 withMessage:(id)arg2;
+- (void)queue_clientDidDisconnect:(id)arg1;
+- (void)queue_handleMessage:(id)arg1 withType:(long long)arg2 fromClient:(id)arg3;
 - (void)sendMessage:(id)arg1 withType:(long long)arg2 toClients:(id)arg3;
 - (bool)shouldAllowClientConnection:(id)arg1 withMessage:(id)arg2;
 - (id)succinctDescription;

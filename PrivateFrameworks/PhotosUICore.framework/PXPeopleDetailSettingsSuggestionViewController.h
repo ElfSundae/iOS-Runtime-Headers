@@ -6,8 +6,7 @@
     UICollectionView * _collectionView;
     NSArray * _detailSettingsDataSources;
     UIImage * _image;
-    NSArray * _members;
-    PXPersonItem * _personItem;
+    PHPerson * _person;
 }
 
 @property (nonatomic, retain) UICollectionView *collectionView;
@@ -16,8 +15,7 @@
 @property (retain) NSArray *detailSettingsDataSources;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) UIImage *image;
-@property (nonatomic, readonly) NSArray *members;
-@property (nonatomic, readonly) PXPersonItem *personItem;
+@property (nonatomic, readonly) PHPerson *person;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -31,11 +29,10 @@
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (id)detailSettingsDataSources;
 - (id)image;
-- (id)initWithPersonItem:(id)arg1;
+- (id)initWithPerson:(id)arg1;
 - (void)loadDataSource;
-- (id)members;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
-- (id)personItem;
+- (id)person;
 - (void)setCollectionView:(id)arg1;
 - (void)setDetailSettingsDataSources:(id)arg1;
 - (void)setImage:(id)arg1;

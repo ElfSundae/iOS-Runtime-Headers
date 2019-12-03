@@ -23,6 +23,7 @@
 - (void).cxx_destruct;
 - (bool)_evaluateNewValue:(id)arg1;
 - (void)_handleUpdateRequest:(id)arg1;
+- (bool)_isValueInRange:(id)arg1;
 - (void)_transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)_transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (id)createPayload;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
  */
 
-@interface GEODataURLSession : NSObject <GEODataSession, NSURLSessionDataDelegate> {
+@interface GEODataURLSession : NSObject <GEODataSession, NSURLSessionDataDelegate, NSURLSessionDownloadDelegate> {
     NSObject<OS_dispatch_source> * _memoryNotificationEventSource;
     unsigned int  _nextSessionIdentifier;
     NSObject<OS_dispatch_queue> * _sessionIsolation;
@@ -25,6 +25,7 @@
 - (void).cxx_destruct;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(id /* block */)arg4;
+- (void)URLSession:(id)arg1 downloadTask:(id)arg2 didFinishDownloadingToURL:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 _willSendRequestForEstablishedConnection:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 didFinishCollectingMetrics:(id)arg3;
@@ -39,6 +40,7 @@
 - (void)dealloc;
 - (id)description;
 - (void)didReceiveMemoryPressureWarning;
+- (id)downloadTaskWithRequest:(id)arg1 priority:(float)arg2 delegate:(id)arg3 delegateQueue:(id)arg4;
 - (id)init;
 - (unsigned int)nextSessionIdentifier;
 - (void)pruneInactiveSessions;
@@ -48,8 +50,8 @@
 - (id)sessionTasks;
 - (void)setNextSessionIdentifier:(unsigned int)arg1;
 - (id)taskForURLSession:(id)arg1 task:(id)arg2;
-- (id)taskWithRequest:(id)arg1 rules:(id)arg2 delegate:(id)arg3 delegateQueue:(id)arg4;
-- (id)taskWithRequest:(id)arg1 rules:(id)arg2 priority:(float)arg3 delegate:(id)arg4 delegateQueue:(id)arg5;
+- (id)taskWithRequest:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3;
+- (id)taskWithRequest:(id)arg1 priority:(float)arg2 delegate:(id)arg3 delegateQueue:(id)arg4;
 - (void)tearDown;
 - (id)urlSessionForRequest:(id)arg1;
 - (id)urlSessions;

@@ -14,6 +14,7 @@
 
 @optional
 
+- (NSAttributedString *)_attributedStringForInsertionOfAttributedString:(NSAttributedString *)arg1;
 - (struct CGPoint { double x1; double x2; })contentOffsetForSameViewDrops;
 - (void)sanitizeAttributedText:(NSMutableAttributedString *)arg1;
 - (void)setContentOffsetForSameViewDrops:(struct CGPoint { double x1; double x2; })arg1;

@@ -6,7 +6,7 @@
     NSString * _address;
     NSString * _afhMap;
     long long  _connectionMode;
-    long long  _connectionModeInterval;
+    unsigned long long  _connectionModeInterval;
     bool  _isAppleDevice;
     bool  _isCloudPaired;
     bool  _isConnected;
@@ -25,7 +25,7 @@
 @property (nonatomic, copy) NSString *address;
 @property (nonatomic, copy) NSString *afhMap;
 @property (nonatomic) long long connectionMode;
-@property (nonatomic) long long connectionModeInterval;
+@property (nonatomic) unsigned long long connectionModeInterval;
 @property (nonatomic) bool isAppleDevice;
 @property (nonatomic) bool isCloudPaired;
 @property (nonatomic) bool isConnected;
@@ -46,7 +46,7 @@
 - (id)afhMap;
 - (bool)conformsToProtocol:(id)arg1;
 - (long long)connectionMode;
-- (long long)connectionModeInterval;
+- (unsigned long long)connectionModeInterval;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)description;
@@ -71,7 +71,7 @@
 - (void)setAddress:(id)arg1;
 - (void)setAfhMap:(id)arg1;
 - (void)setConnectionMode:(long long)arg1;
-- (void)setConnectionModeInterval:(long long)arg1;
+- (void)setConnectionModeInterval:(unsigned long long)arg1;
 - (void)setIsAppleDevice:(bool)arg1;
 - (void)setIsCloudPaired:(bool)arg1;
 - (void)setIsConnected:(bool)arg1;

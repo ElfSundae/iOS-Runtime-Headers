@@ -6,19 +6,19 @@
     HMDDevice * _currentDevice;
     bool  _idle;
     NSDate * _lastActivity;
+    <HMFLocking> * _lock;
     NSNumber * _maximumRemoteStreams;
     HMDAWDRemoteSessionMetric * _metric;
     bool  _open;
     HMDUser * _peer;
     HMDDevice * _peerDevice;
     HMFPairingIdentity * _peerIdentity;
-    NSObject<OS_dispatch_queue> * _propertyQueue;
     long long  _qualityOfService;
+    NSObject<OS_dispatch_queue> * _queue;
     HMDSecureRemoteStreamInternal * _remoteSession;
     long long  _role;
     NSUUID * _sessionID;
     bool  _supportsSharedIdentities;
-    NSObject<OS_dispatch_queue> * _workQueue;
 }
 
 @property (nonatomic, readonly, copy) NSArray *attributeDescriptions;
@@ -37,7 +37,6 @@
 @property (nonatomic, retain) HMFPairingIdentity *peerIdentity;
 @property (readonly, copy) NSString *privateDescription;
 @property (readonly, copy) NSString *propertyDescription;
-@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *propertyQueue;
 @property long long qualityOfService;
 @property (nonatomic, retain) HMDSecureRemoteStreamInternal *remoteSession;
 @property (readonly) long long role;
@@ -45,7 +44,6 @@
 @property (readonly, copy) NSString *shortDescription;
 @property (readonly) Class superclass;
 @property (nonatomic) bool supportsSharedIdentities;
-@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *workQueue;
 
 + (id)logCategory;
 
@@ -68,12 +66,10 @@
 - (id)logIdentifier;
 - (id)maximumRemoteStreams;
 - (id)metric;
-- (void)notifyClientsUpdatedIdle:(bool)arg1;
 - (id)peer;
 - (id)peerDevice;
 - (id)peerIdentity;
 - (id)propertyDescription;
-- (id)propertyQueue;
 - (long long)qualityOfService;
 - (id)remoteSession;
 - (long long)role;
@@ -92,6 +88,5 @@
 - (void)startAndInvokeOnQueue:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)stop;
 - (bool)supportsSharedIdentities;
-- (id)workQueue;
 
 @end

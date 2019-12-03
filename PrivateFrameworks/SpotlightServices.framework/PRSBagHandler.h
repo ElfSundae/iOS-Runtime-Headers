@@ -7,13 +7,13 @@
     NSArray * _anonymousMetadataUndesiredBundleIDs;
     NSSet * _appBlacklist;
     PARBag * _bag;
+    bool  _bagEnabled;
     NSObject<OS_dispatch_queue> * _bagQueue;
     SSPlistDataReader * _cep_server_values;
     <PRSSessionController> * _client;
     bool  _collectAnonymousData;
     bool  _collectScores;
     bool  _disableAsTypedSuggestion;
-    bool  _enabled;
     NSArray * _enabledDomains;
     NSString * _fteContinueString;
     NSString * _fteLearnMoreString;
@@ -41,12 +41,12 @@
 @property (nonatomic) bool active;
 @property (nonatomic, retain) NSArray *anonymousMetadataUndesiredBundleIDs;
 @property (nonatomic, retain) NSSet *appBlacklist;
+@property (getter=isBagEnabled, nonatomic, readonly) bool bagEnabled;
 @property (retain) SSPlistDataReader *cep_server_values;
 @property <PRSSessionController> *client;
 @property (nonatomic) bool collectAnonymousData;
 @property (nonatomic) bool collectScores;
 @property (nonatomic) bool disableAsTypedSuggestion;
-@property (nonatomic) bool enabled;
 @property (nonatomic, retain) NSArray *enabledDomains;
 @property (nonatomic, retain) NSString *fteContinueString;
 @property (nonatomic, retain) NSString *fteLearnMoreString;
@@ -60,10 +60,10 @@
 @property (nonatomic, retain) NSMutableDictionary *resourceMetadata;
 @property (nonatomic) bool resourceMetadataNeedsWrite;
 @property (nonatomic, retain) NSString *resourceMetadataPath;
-@property (nonatomic) double searchRenderTimeout;
+@property double searchRenderTimeout;
 @property (nonatomic) long long status;
 @property (nonatomic, retain) NSArray *suggestionRankerModelParams;
-@property (nonatomic) double suggestionsRenderTimeout;
+@property double suggestionsRenderTimeout;
 @property (nonatomic) bool use2LayerRanking;
 
 + (void)initialize;
@@ -83,7 +83,6 @@
 - (bool)collectScores;
 - (void)deactivate;
 - (bool)disableAsTypedSuggestion;
-- (bool)enabled;
 - (id)enabledDomains;
 - (id)excludedDomainIdentifiers;
 - (void)fetchModifiedResourceFromSession:(id)arg1 resource:(id)arg2 completion:(id /* block */)arg3;
@@ -93,6 +92,7 @@
 - (id)geoUserSessionEntity;
 - (void)getFTEStringsWithReply:(id /* block */)arg1;
 - (id)init;
+- (bool)isBagEnabled;
 - (bool)isEnabled;
 - (bool)isLocaleSupported:(id)arg1;
 - (id)lookupFirstUseDescription1;
@@ -117,7 +117,6 @@
 - (void)setCollectAnonymousData:(bool)arg1;
 - (void)setCollectScores:(bool)arg1;
 - (void)setDisableAsTypedSuggestion:(bool)arg1;
-- (void)setEnabled:(bool)arg1;
 - (void)setEnabledDomains:(id)arg1;
 - (void)setFteContinueString:(id)arg1;
 - (void)setFteLearnMoreString:(id)arg1;

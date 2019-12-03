@@ -20,7 +20,8 @@
 + (bool)biometryAvailabilityInfo:(long long*)arg1 fromDeviceInfo:(long long)arg2 error:(id*)arg3;
 + (bool)deviceAvailableWithError:(id*)arg1;
 + (id)deviceWithDescriptor:(id)arg1 error:(id*)arg2;
-+ (bool)lockoutState:(long long*)arg1 fromDeviceLockoutState:(int)arg2 error:(id*)arg3;
++ (bool)extendedLockoutState:(long long*)arg1 fromDeviceLockoutState:(long long)arg2 error:(id*)arg3;
++ (bool)lockoutState:(long long*)arg1 fromDeviceLockoutState:(long long)arg2 error:(id*)arg3;
 
 - (void).cxx_destruct;
 - (bool)bioLockoutState:(long long*)arg1 forUser:(unsigned int)arg2 error:(id*)arg3;
@@ -37,6 +38,7 @@
 - (void)enrollFeedback:(id)arg1 client:(unsigned long long)arg2;
 - (void)enrollResult:(id)arg1 client:(unsigned long long)arg2;
 - (void)enrollUpdate:(id)arg1 client:(unsigned long long)arg2;
+- (bool)extendedBioLockoutState:(long long*)arg1 forUser:(unsigned int)arg2 error:(id*)arg3;
 - (bool)forceBioLockoutForAllUsersWithError:(id*)arg1;
 - (bool)forceBioLockoutForUser:(unsigned int)arg1 error:(id*)arg2;
 - (bool)forceBioLockoutIfLockedForUser:(unsigned int)arg1 error:(id*)arg2;

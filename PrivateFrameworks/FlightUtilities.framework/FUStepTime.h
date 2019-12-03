@@ -8,6 +8,7 @@
 }
 
 @property (retain) NSDate *date;
+@property (readonly) double timeIntervalSinceNow;
 @property unsigned long long type;
 
 + (bool)supportsSecureCoding;
@@ -22,6 +23,7 @@
 - (bool)isEqual:(id)arg1;
 - (void)setDate:(id)arg1;
 - (void)setType:(unsigned long long)arg1;
+- (double)timeIntervalSinceNow;
 - (unsigned long long)type;
 
 @end

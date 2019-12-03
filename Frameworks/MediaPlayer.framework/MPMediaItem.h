@@ -15,6 +15,7 @@
 @property (nonatomic, readonly) MPMediaItemArtwork *artwork;
 @property (nonatomic, readonly) NSURL *assetURL;
 @property (nonatomic, readonly) unsigned long long beatsPerMinute;
+@property (nonatomic) unsigned long long bl_bitrate;
 @property (nonatomic, readonly) double bookmarkTime;
 @property (nonatomic, readonly) NSArray *chapters;
 @property (getter=isCloudItem, nonatomic, readonly) bool cloudItem;
@@ -24,6 +25,7 @@
 @property (nonatomic, readonly) unsigned long long composerPersistentID;
 @property (nonatomic, copy) NSDate *dateAccessed;
 @property (nonatomic, readonly) NSDate *dateAdded;
+@property (nonatomic, readonly) NSDate *dateDownloaded;
 @property (nonatomic, readonly) unsigned long long discCount;
 @property (nonatomic, readonly) unsigned long long discNumber;
 @property (nonatomic, readonly) NSString *effectiveAlbumArtist;
@@ -65,7 +67,7 @@
 @property (nonatomic, readonly) NSNumber *vui_assetType;
 @property (nonatomic, readonly) NSNumber *vui_audioCapability;
 @property (nonatomic, readonly) NSNumber *vui_colorCapability;
-@property (nonatomic, readonly) VUIContentRating *vui_contentRating;
+@property (nonatomic, readonly) _TVContentRating *vui_contentRating;
 @property (nonatomic, readonly) NSString *vui_coverArtImageIdentifier;
 @property (nonatomic, readonly) VUIMediaItemCredits *vui_credits;
 @property (nonatomic, readonly) NSURL *vui_extrasURL;
@@ -88,12 +90,14 @@
 // Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
 
 + (id)MPSD_mediaItemPropertiesForDownloadability;
++ (id)ULIDPropertyForGroupingType:(long long)arg1;
 + (void)_createFilterableDictionary;
 + (bool)_isValidItemProperty:(id)arg1;
 + (id)artworkCatalogCacheProperties;
 + (bool)canFilterByProperty:(id)arg1;
 + (id)dynamicProperties;
 + (id)fallbackTitlePropertyForGroupingType:(long long)arg1;
++ (id)itemFromSong:(id)arg1;
 + (id)persistentIDPropertyForGroupingType:(long long)arg1;
 + (id)screenshotArtworkCatalogCacheProperties;
 + (bool)supportsSecureCoding;
@@ -132,6 +136,7 @@
 - (unsigned long long)countOfChaptersOfType:(long long)arg1;
 - (id)dateAccessed;
 - (id)dateAdded;
+- (id)dateDownloaded;
 - (void)didReceiveMemoryWarning;
 - (bool)didSkipWithPlayedToTime:(double)arg1;
 - (unsigned long long)discCount;
@@ -151,7 +156,7 @@
 - (bool)incrementPlayCountForStopTime:(double)arg1;
 - (void)incrementSkipCount;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithMultiverseIdentifier:(id)arg1;
+- (id)initWithMultiverseIdentifier:(id)arg1 library:(id)arg2;
 - (id)initWithPersistentID:(unsigned long long)arg1;
 - (bool)isCloudItem;
 - (bool)isCompilation;
@@ -160,7 +165,6 @@
 - (bool)isITunesU;
 - (bool)isRental;
 - (bool)isUsableAsRepresentativeItem;
-- (Class)itemArrayCoderPIDDataCodingClass;
 - (id)lastPlayedDate;
 - (id)lastSkippedDate;
 - (id)lyrics;
@@ -209,10 +213,14 @@
 + (id)playingInfoFromAsset:(id)arg1 withDefaultTitle:(id)arg2;
 + (id)playingInfoFromAsset:(id)arg1 withDefaultTitle:(id)arg2 playbackDuration:(double)arg3 elapsedTime:(double)arg4;
 
-// Image: /System/Library/PrivateFrameworks/FuseUI.framework/FuseUI
+// Image: /System/Library/PrivateFrameworks/BookLibrary.framework/BookLibrary
 
-+ (id)customPropertyHandlersCollection;
-+ (void)registerSupportedCustomPropertiesWithHandlersCollection:(id)arg1;
+- (void)bl_addPersistHLSOfflinePlaybackKey:(id)arg1 forUri:(id)arg2;
+- (unsigned long long)bl_bitrate;
+- (void)bl_clearPersistHLSOfflinePlaybackKeys;
+- (id)bl_hlsOfflinePlaybackKeys;
+- (void)bl_removePersistHLSOfflinePlaybackKeyForUri:(id)arg1;
+- (void)setBl_bitrate:(unsigned long long)arg1;
 
 // Image: /System/Library/PrivateFrameworks/MPUFoundation.framework/MPUFoundation
 

@@ -7,6 +7,7 @@
     NSString * _bussinesChatIntentName;
     NSString * _bussinessChatButtonTitle;
     NSString * _buttonTitle;
+    NSURL * _buttonURL;
     NSString * _subtitle;
     NSString * _title;
 }
@@ -15,6 +16,7 @@
 @property (nonatomic, copy) NSString *bussinesChatIntentName;
 @property (nonatomic, copy) NSString *bussinessChatButtonTitle;
 @property (nonatomic, copy) NSString *buttonTitle;
+@property (nonatomic, copy) NSURL *buttonURL;
 @property (nonatomic, copy) NSString *subtitle;
 @property (nonatomic, copy) NSString *title;
 
@@ -23,12 +25,14 @@
 - (id)bussinesChatIntentName;
 - (id)bussinessChatButtonTitle;
 - (id)buttonTitle;
+- (id)buttonURL;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)initWithDictonary:(id)arg1;
 - (void)setBody:(id)arg1;
 - (void)setBussinesChatIntentName:(id)arg1;
 - (void)setBussinessChatButtonTitle:(id)arg1;
 - (void)setButtonTitle:(id)arg1;
+- (void)setButtonURL:(id)arg1;
 - (void)setSubtitle:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (id)subtitle;

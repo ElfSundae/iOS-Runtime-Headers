@@ -8,8 +8,8 @@
     NSDictionary * _context;
     int  _generationNumber;
     bool  _ignoreSignatures;
-    bool  _isCurrentlyUsingTheScanner;
     bool  _isDiscarded;
+    long long  _jobIdentifier;
     bool  _needContinuation;
     struct __DDScanQuery { } * _query;
     NSArray * _results;
@@ -28,7 +28,6 @@
 @property int tryCount;
 
 + (bool)_needsFullScannerForDetectionTypes:(unsigned long long)arg1;
-+ (struct __DDScanner { }*)_sharedScannerForTypes:(unsigned long long)arg1;
 + (id /* block */)shouldUrlifyBlockForTypes:(unsigned long long)arg1;
 + (id /* block */)urlificationBlockForTypes:(unsigned long long)arg1;
 

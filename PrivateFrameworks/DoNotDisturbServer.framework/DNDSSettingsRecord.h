@@ -18,6 +18,7 @@
 
 + (id)backingStoreWithFileURL:(id)arg1;
 + (id)migrateDictionaryRepresentation:(id)arg1 fromVersionNumber:(unsigned long long)arg2 toVersionNumber:(unsigned long long)arg3;
++ (id)newWithDictionaryRepresentation:(id)arg1;
 + (id)recordWithEncodedInfo:(id)arg1 error:(id*)arg2;
 
 - (void).cxx_destruct;
@@ -29,7 +30,6 @@
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (id)init;
-- (id)initWithDictionaryRepresentation:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (id)phoneCallBypassSettings;

@@ -4,7 +4,7 @@
 
 @interface GKGameCenterViewController : UINavigationController <GKExtensionParentViewControllerProtocol> {
     UIAlertController * _alertController;
-    <GKGameCenterControllerDelegate> * _gameCenterDelegateWeak;
+    <GKGameCenterControllerDelegate> * _gameCenterDelegate;
     NSString * _leaderboardIdentifier;
     long long  _leaderboardTimeScope;
     GKDashboardHostViewController * _remoteViewController;
@@ -26,6 +26,7 @@
 + (bool)_preventsAppearanceProxyCustomization;
 + (bool)accessInstanceVariablesDirectly;
 
+- (void).cxx_destruct;
 - (void)_setupChildViewController;
 - (void)_setupRemoteViewController;
 - (id)alertController;

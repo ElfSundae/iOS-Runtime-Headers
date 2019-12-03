@@ -8,6 +8,7 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) NSDictionary *filteredAccountsAndContainers;
 @property (readonly) unsigned long long hash;
 @property unsigned long long nameOrder;
 @property bool preferNickname;
@@ -21,13 +22,15 @@
 + (id)registeredDefaults;
 + (id)sharedDefaults;
 
+- (void).cxx_destruct;
 - (id)countryCode;
-- (void)dealloc;
+- (id)filteredAccountsAndContainers;
 - (id)init;
 - (bool)isShortNameFormatEnabled;
 - (unsigned long long)nameOrder;
 - (unsigned long long)newContactNameOrder;
 - (bool)preferNickname;
+- (void)setFilteredAccountsAndContainers:(id)arg1;
 - (void)setNameOrder:(unsigned long long)arg1;
 - (void)setPreferNickname:(bool)arg1;
 - (void)setShortNameFormat:(unsigned long long)arg1;

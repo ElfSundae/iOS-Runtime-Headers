@@ -10,7 +10,6 @@
     unsigned long long  _courseMascotType;
     NSString * _courseName;
     CRKUser * _courseUser;
-    bool  _expired;
     NSDictionary * _instructorsByIdentifier;
     bool  _mustRequestUnenroll;
     bool  _requestingUnenroll;
@@ -27,7 +26,7 @@
 @property (nonatomic) unsigned long long courseMascotType;
 @property (nonatomic, copy) NSString *courseName;
 @property (nonatomic, retain) CRKUser *courseUser;
-@property (getter=isExpired, nonatomic) bool expired;
+@property (getter=isExpired, nonatomic, readonly) bool expired;
 @property (nonatomic, copy) NSDictionary *instructorsByIdentifier;
 @property (getter=isManaged, nonatomic, readonly) bool managed;
 @property (nonatomic) bool mustRequestUnenroll;
@@ -37,6 +36,7 @@
 @property (nonatomic) unsigned long long type;
 @property (nonatomic, retain) NSSet *validTrustedCertificatePersistentIds;
 
++ (id)keyPathsForValuesAffectingExpired;
 + (id)new;
 + (id)stringForType:(unsigned long long)arg1;
 + (bool)supportsSecureCoding;
@@ -72,7 +72,6 @@
 - (void)setCourseMascotType:(unsigned long long)arg1;
 - (void)setCourseName:(id)arg1;
 - (void)setCourseUser:(id)arg1;
-- (void)setExpired:(bool)arg1;
 - (void)setInstructorsByIdentifier:(id)arg1;
 - (void)setManaged:(bool)arg1;
 - (void)setMustRequestUnenroll:(bool)arg1;

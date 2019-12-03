@@ -11,7 +11,7 @@
 @property unsigned long long sequence;
 
 - (void)_setUserInfoValue:(id)arg1 forKey:(id)arg2 fromChild:(bool)arg3;
-- (void)_updateFractionCompleted:(id)arg1;
+- (void)_updateFractionCompleted:(struct _NSProgressFractionTuple { struct _NSProgressFraction { long long x_1_1_1; long long x_1_1_2; bool x_1_1_3; } x1; struct _NSProgressFraction { long long x_2_1_1; long long x_2_1_2; bool x_2_1_3; } x2; })arg1;
 - (void)dealloc;
 - (id)parentConnection;
 - (unsigned long long)sequence;

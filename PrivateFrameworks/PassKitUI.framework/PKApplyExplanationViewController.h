@@ -38,6 +38,7 @@
 - (void)_learnMore;
 - (void)_performActionForBlock:(id /* block */)arg1;
 - (void)_performDoneAction:(bool)arg1;
+- (void)_performLearnMoreAction;
 - (id /* block */)auxiliaryAction;
 - (id /* block */)continueAction;
 - (id)controller;

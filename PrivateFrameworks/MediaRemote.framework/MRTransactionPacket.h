@@ -5,7 +5,7 @@
 @interface MRTransactionPacket : NSObject <NSCopying> {
     NSMutableData * _data;
     NSString * _identifier;
-    struct _MRTransactionKeyProtobuf { Class x1; id x2; } * _key;
+    struct _MRTransactionKeyProtobuf { Class x1; id x2; id x3; } * _key;
     unsigned long long  _totalLength;
     unsigned long long  _totalWritePosition;
     unsigned long long  _writeLength;
@@ -30,13 +30,13 @@
 - (id)data;
 - (id)description;
 - (id)identifier;
-- (id)initWithData:(id)arg1 forKey:(struct _MRTransactionKeyProtobuf { Class x1; id x2; }*)arg2;
+- (id)initWithData:(id)arg1 forKey:(struct _MRTransactionKeyProtobuf { Class x1; id x2; id x3; }*)arg2;
 - (id)initWithPackets:(id)arg1;
 - (id)initWithProtobuf:(id)arg1;
 - (bool)isComplete;
 - (bool)isReadComplete;
 - (bool)isWriteComplete;
-- (struct _MRTransactionKeyProtobuf { Class x1; id x2; }*)key;
+- (struct _MRTransactionKeyProtobuf { Class x1; id x2; id x3; }*)key;
 - (id)protobuf;
 - (void)setWriteLength:(unsigned long long)arg1;
 - (unsigned long long)totalLength;

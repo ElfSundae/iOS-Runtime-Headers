@@ -7,8 +7,21 @@
     NSMutableArray * _addressResults;
     int  _correctionStatus;
     struct { 
-        unsigned int correctionStatus : 1; 
-    }  _has;
+        unsigned int has_correctionStatus : 1; 
+        unsigned int read_addressID : 1; 
+        unsigned int read_addressResults : 1; 
+        unsigned int read_significantLocations : 1; 
+        unsigned int wrote_addressID : 1; 
+        unsigned int wrote_addressResults : 1; 
+        unsigned int wrote_significantLocations : 1; 
+        unsigned int wrote_correctionStatus : 1; 
+    }  _flags;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     NSMutableArray * _significantLocations;
 }
 
@@ -20,10 +33,16 @@
 @property (nonatomic, retain) NSMutableArray *significantLocations;
 
 + (Class)addressResultType;
++ (bool)isValid:(id)arg1;
 + (Class)significantLocationType;
 
 - (void).cxx_destruct;
 - (int)StringAsCorrectionStatus:(id)arg1;
+- (void)_addNoFlagsAddressResult:(id)arg1;
+- (void)_addNoFlagsSignificantLocation:(id)arg1;
+- (void)_readAddressID;
+- (void)_readAddressResults;
+- (void)_readSignificantLocations;
 - (void)addAddressResult:(id)arg1;
 - (void)addSignificantLocation:(id)arg1;
 - (id)addressID;
@@ -31,6 +50,7 @@
 - (id)addressResults;
 - (unsigned long long)addressResultsCount;
 - (void)clearAddressResults;
+- (void)clearSensitiveFields;
 - (void)clearSignificantLocations;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -41,8 +61,11 @@
 - (bool)hasAddressID;
 - (bool)hasCorrectionStatus;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (unsigned int)requestTypeCode;
 - (Class)responseClass;

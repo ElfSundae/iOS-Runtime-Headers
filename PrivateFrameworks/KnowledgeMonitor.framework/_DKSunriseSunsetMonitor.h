@@ -36,6 +36,7 @@
 - (bool)awaitingLocationAfterDisabledAirplaneMode;
 - (id)contextDictionaryWithGeoAlmanac:(id)arg1 authorizationStatus:(int)arg2;
 - (bool)currentSunriseSunsetTimes:(id)arg1 differsFromPreviousTimes:(id)arg2 byInterval:(double)arg3;
+- (void)deactivate;
 - (void)dealloc;
 - (bool)enabled;
 - (id)init;

@@ -15,7 +15,7 @@
 @property (nonatomic, retain) UIImage *image;
 
 - (void).cxx_destruct;
-- (void)_updateEffectNode:(id)arg1 forTraitCollection:(id)arg2;
+- (void)_updateEffectDescriptor:(id)arg1 forEnvironment:(id)arg2 usage:(long long)arg3;
 - (double)alpha;
 - (id)color;
 - (void)encodeWithCoder:(id)arg1;

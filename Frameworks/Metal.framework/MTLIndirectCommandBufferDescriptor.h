@@ -8,6 +8,7 @@
 @property (nonatomic) bool inheritBuffers;
 @property (nonatomic) bool inheritPipelineState;
 @property (nonatomic) unsigned long long maxFragmentBufferBindCount;
+@property (nonatomic) unsigned long long maxKernelBufferBindCount;
 @property (nonatomic) unsigned long long maxVertexBufferBindCount;
 
 + (id)alloc;

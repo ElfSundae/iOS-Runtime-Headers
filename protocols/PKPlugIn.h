@@ -9,6 +9,8 @@
 - (NSDictionary *)attributes;
 - (void)beginUsing:(void *)arg1; // needs 1 arg types, found 6: id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSError *, void*
 - (bool)beginUsingWithError:(id*)arg1;
+- (void)beginUsingWithSubsystemOptions:(void *)arg1 completion:(void *)arg2; // needs 2 arg types, found 7: struct NSDictionary { Class x1; }*, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSError *, void*
+- (bool)beginUsingWithSubsystemOptions:(struct NSDictionary { Class x1; }*)arg1 error:(id*)arg2;
 - (NSDictionary *)bundleInfoDictionary;
 - (NSURL *)containingUrl;
 - (<PKPlugIn> *)createInstanceWithUUID:(NSUUID *)arg1;
@@ -16,6 +18,7 @@
 - (NSBundle *)embeddedBundle;
 - (id)embeddedPrincipal;
 - (void)endUsing:(void *)arg1; // needs 1 arg types, found 6: id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSError *, void*
+- (bool)endUsingWithError:(id*)arg1;
 - (NSDictionary *)entitlements;
 - (NSString *)identifier;
 - (NSString *)localizedContainingName;

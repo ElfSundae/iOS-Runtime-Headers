@@ -14,7 +14,7 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)data;
-- (id)initWithBookmarkAndHistoryCompletionMatch:(struct Ref<SafariShared::BookmarkAndHistoryCompletionMatch, WTF::DumbPtrTraits<SafariShared::BookmarkAndHistoryCompletionMatch> > { struct BookmarkAndHistoryCompletionMatch {} *x1; }*)arg1 userInput:(id)arg2;
+- (id)initWithBookmarkAndHistoryCompletionMatch:(struct Ref<SafariShared::BookmarkAndHistoryCompletionMatch, WTF::DumbPtrTraits<SafariShared::BookmarkAndHistoryCompletionMatch> > { struct BookmarkAndHistoryCompletionMatch {} *x1; }*)arg1 userInput:(id)arg2 forQueryID:(long long)arg3;
 - (id)originalURLString;
 - (id)parsecDomainIdentifier;
 - (id)title;

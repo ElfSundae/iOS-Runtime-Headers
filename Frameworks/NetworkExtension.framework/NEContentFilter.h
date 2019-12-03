@@ -4,10 +4,12 @@
 
 @interface NEContentFilter : NSObject <NEConfigurationValidating, NEPrettyDescription, NSCopying, NSSecureCoding> {
     bool  _enabled;
+    long long  _grade;
     NEFilterProviderConfiguration * _provider;
 }
 
 @property (getter=isEnabled) bool enabled;
+@property (nonatomic) long long grade;
 @property (copy) NEFilterProviderConfiguration *provider;
 
 + (bool)supportsSecureCoding;
@@ -17,10 +19,13 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;
 - (void)encodeWithCoder:(id)arg1;
+- (long long)grade;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (bool)isEnabled;
 - (id)provider;
 - (void)setEnabled:(bool)arg1;
+- (void)setGrade:(long long)arg1;
 - (void)setProvider:(id)arg1;
 
 @end

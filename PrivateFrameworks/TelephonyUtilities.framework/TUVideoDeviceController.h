@@ -51,10 +51,13 @@
 - (void)pausePreview;
 - (id)provider;
 - (void)provider:(id)arg1 cameraDidBecomeAvailableForUniqueID:(id)arg2;
+- (void)provider:(id)arg1 cameraZoomAvailabilityDidChange:(bool)arg2;
 - (void)provider:(id)arg1 didChangeLocalVideoAttributes:(id)arg2;
 - (void)provider:(id)arg1 didReceiveErrorFromCameraUniqueID:(id)arg2 error:(id)arg3;
 - (void)provider:(id)arg1 didReceiveFirstPreviewFrameFromCameraUniqueID:(id)arg2;
+- (void)rampCameraZoomFactor:(double)arg1 withRate:(double)arg2;
 - (id)serialQueue;
+- (void)setCameraZoomFactor:(double)arg1;
 - (void)setCurrentInputDevice:(id)arg1;
 - (void)setCurrentVideoEffect:(id)arg1;
 - (void)setCurrentVideoOrientation:(int)arg1;

@@ -52,7 +52,6 @@
 - (void)setProvider:(id)arg1;
 - (id)siblingExtensions;
 - (void)startExtensionServiceWithInputItems:(id)arg1 begin:(id /* block */)arg2 completion:(id /* block */)arg3;
-- (void)startRideSharingSearchRequest:(id)arg1 completion:(id /* block */)arg2;
 - (id)startSendingUpdatesForIntent:(id)arg1 toObserver:(id)arg2;
 - (id)startSendingUpdatesForRequest:(id)arg1 requestDispatcher:(id)arg2 toObserver:(id)arg3;
 - (unsigned long long)type;

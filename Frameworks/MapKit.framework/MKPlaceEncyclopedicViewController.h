@@ -18,6 +18,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)_factoids;
 - (id)_textBlockText;
 - (id)_textBlockTitle;
@@ -26,6 +27,7 @@
 - (id)encyclopedicControllerDelegate;
 - (id)encyclopedicInfo;
 - (id)infoCardChildPossibleActions;
+- (id)infoCardChildUnactionableUIElements;
 - (void)setEncyclopedicControllerDelegate:(id)arg1;
 - (void)setEncyclopedicInfo:(id)arg1;
 - (void)viewDidLoad;

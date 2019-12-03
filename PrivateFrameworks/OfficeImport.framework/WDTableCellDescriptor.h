@@ -46,6 +46,7 @@
     unsigned int  mWidthTypeOverridden;
 }
 
+- (void).cxx_destruct;
 - (id)bottomBorder;
 - (short)bottomMargin;
 - (int)bottomMarginType;

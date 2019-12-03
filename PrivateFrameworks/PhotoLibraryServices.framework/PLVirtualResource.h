@@ -2,39 +2,39 @@
    Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
  */
 
-@interface PLVirtualResource : NSObject <PLWriteableResource> {
+@interface PLVirtualResource : NSObject <PLValidatesResourceModel, PLWriteableResource> {
     <PLAssetID> * _assetID;
     <PLCodecIdentity> * _codecID;
-    <PLColorSpaceIdentity> * _colorSpaceID;
-    long long  _dataLength;
     <PLResourceDataStore> * _dataStore;
     <PLResourceDataStoreKey> * _dataStoreKey;
     long long  _dataStoreSubtype;
-    NSString * _fingerprint;
     short  _localAvailabilityTarget;
     unsigned int  _orientation;
     int  _qualitySortValue;
     unsigned int  _recipeID;
     short  _remoteAvailability;
     short  _remoteAvailabilityTarget;
-    short  _resourceType;
+    unsigned int  _resourceType;
+    float  _scale;
+    NSDate * _trashedDate;
+    short  _trashedState;
     <PLUniformTypeIdentifierIdentity> * _uniformTypeIdentifierID;
     long long  _unorientedHeight;
     long long  _unorientedWidth;
-    short  _version;
+    unsigned int  _version;
 }
 
 @property (nonatomic, readonly, copy) <PLAssetID> *assetID;
 @property (nonatomic, readonly) <PLCodecIdentity> *codecID;
-@property (nonatomic, readonly) <PLColorSpaceIdentity> *colorSpaceID;
 @property (nonatomic, readonly) unsigned long long cplType;
-@property (nonatomic) long long dataLength;
+@property (nonatomic, readonly) long long dataLength;
 @property (nonatomic, readonly) <PLResourceDataStore> *dataStore;
 @property (nonatomic, readonly) <PLResourceDataStoreKey> *dataStoreKey;
 @property (nonatomic, readonly) long long dataStoreSubtype;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, retain) NSString *fingerprint;
+@property (nonatomic, readonly) long long estimatedDataLength;
+@property (nonatomic, readonly) NSURL *fileURL;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) short localAvailability;
 @property (nonatomic, readonly) short localAvailabilityTarget;
@@ -45,28 +45,33 @@
 @property (nonatomic, readonly) unsigned int recipeID;
 @property (nonatomic, readonly) short remoteAvailability;
 @property (nonatomic, readonly) short remoteAvailabilityTarget;
-@property (nonatomic, readonly) short resourceType;
+@property (nonatomic, readonly) unsigned int resourceType;
+@property (nonatomic, readonly) float scale;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) NSDate *trashedDate;
+@property (nonatomic, readonly) short trashedState;
+@property (nonatomic, readonly) PLVirtualResourceUniformTypeIdentifierProxy *uniformTypeIdentifier;
 @property (nonatomic, readonly) <PLUniformTypeIdentifierIdentity> *uniformTypeIdentifierID;
 @property (nonatomic, readonly) long long unorientedHeight;
 @property (nonatomic, readonly) long long unorientedWidth;
-@property (nonatomic, readonly) short version;
+@property (nonatomic, readonly) unsigned int version;
 
 - (void).cxx_destruct;
 - (id)assetID;
 - (id)codecID;
-- (id)colorSpaceID;
 - (unsigned long long)cplType;
 - (long long)dataLength;
 - (id)dataStore;
 - (id)dataStoreKey;
 - (long long)dataStoreSubtype;
 - (id)debugDescription;
-- (id)fingerprint;
+- (long long)estimatedDataLength;
+- (id)fileURL;
+- (id)initWithAsset:(id)arg1 resourceType:(unsigned int)arg2 version:(unsigned int)arg3 recipeID:(unsigned int)arg4;
 - (id)initWithRecipe:(id)arg1 forAsset:(id)arg2;
 - (bool)isDefaultOrientation;
 - (bool)isDerivative;
-- (bool)isPrimaryUTI;
+- (bool)isPlayableVideo;
 - (short)localAvailability;
 - (short)localAvailabilityTarget;
 - (unsigned int)orientation;
@@ -77,26 +82,29 @@
 - (unsigned int)recipeID;
 - (short)remoteAvailability;
 - (short)remoteAvailabilityTarget;
-- (short)resourceType;
+- (unsigned int)resourceType;
+- (float)scale;
 - (void)setCodecID:(id)arg1;
-- (void)setColorSpaceID:(id)arg1;
-- (void)setDataLength:(long long)arg1;
 - (void)setDataStore:(id)arg1;
 - (void)setDataStoreKey:(id)arg1;
 - (void)setDataStoreSubtype:(long long)arg1;
-- (void)setFingerprint:(id)arg1;
 - (void)setOrientation:(unsigned int)arg1;
 - (void)setQualitySortValue:(int)arg1;
 - (void)setRecipeID:(unsigned int)arg1;
 - (void)setRemoteAvailability:(short)arg1;
-- (void)setResourceType:(short)arg1;
+- (void)setResourceType:(unsigned int)arg1;
+- (void)setScale:(float)arg1;
 - (void)setUniformTypeIdentifierID:(id)arg1;
 - (void)setUnorientedHeight:(long long)arg1;
 - (void)setUnorientedWidth:(long long)arg1;
-- (void)setVersion:(short)arg1;
+- (void)setVersion:(unsigned int)arg1;
+- (id)trashedDate;
+- (short)trashedState;
+- (id)uniformTypeIdentifier;
 - (id)uniformTypeIdentifierID;
 - (long long)unorientedHeight;
 - (long long)unorientedWidth;
-- (short)version;
+- (id)validateForAssetID:(id)arg1 resourceIdentity:(id)arg2;
+- (unsigned int)version;
 
 @end

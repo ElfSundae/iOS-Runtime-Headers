@@ -2,33 +2,22 @@
    Image: /System/Library/PrivateFrameworks/DataDetectorsUI.framework/DataDetectorsUI
  */
 
-@interface DDPersonAction : DDPreviewAction <CNAvatarCardControllerDelegate> {
-    CNAvatarCardController * _avatar;
-    UIViewController * _presentingViewController;
-    CNContactStore * _store;
+@interface DDPersonAction : DDRemoteAction {
+    CNContact * _contact;
+    bool  _contactExists;
 }
 
-@property (retain) CNAvatarCardController *avatar;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property UIViewController *presentingViewController;
-@property (retain) CNContactStore *store;
-@property (readonly) Class superclass;
-
 + (bool)handlesUrl:(id)arg1 result:(struct __DDResult { }*)arg2;
++ (id)supportedSchemes;
++ (id)viewControllerProviderClass;
 
 - (void).cxx_destruct;
-- (id)avatar;
-- (id)createViewController;
+- (id)_appendActionsForPhoneNumbers:(id)arg1 emailAddresses:(id)arg2 class:(Class)arg3 filter:(id)arg4 scheme:(id)arg5;
+- (id)_menuActionsForBusinessWithNumber:(id)arg1;
+- (id)_menuActionsForPersonWithNumber:(id)arg1 email:(id)arg2;
 - (id)initWithURL:(id)arg1 result:(struct __DDResult { }*)arg2 context:(id)arg3;
-- (id)mainValueFromURLString:(id)arg1 schemes:(id)arg2;
-- (id)presentingViewController;
-- (id)presentingViewControllerForAvatarCardController:(id)arg1;
-- (bool)requiresEmbeddingNavigationController;
-- (void)setAvatar:(id)arg1;
-- (void)setPresentingViewController:(id)arg1;
-- (void)setStore:(id)arg1;
-- (id)store;
+- (id)menuActions;
+- (bool)prefersActionMenuStyle;
+- (struct CGSize { double x1; double x2; })suggestedContentSize;
 
 @end

@@ -4,6 +4,7 @@
 
 @interface _SFPBImage : PBCodable <NSSecureCoding, _SFPBImage> {
     _SFPBAppIconImage * _appIconImage;
+    _SFPBCalendarImage * _calendarImage;
     _SFPBContactImage * _contactImage;
     NSString * _contentType;
     _SFPBGraphicalFloat * _cornerRadius;
@@ -23,6 +24,7 @@
 }
 
 @property (nonatomic, retain) _SFPBAppIconImage *appIconImage;
+@property (nonatomic, retain) _SFPBCalendarImage *calendarImage;
 @property (nonatomic, retain) _SFPBContactImage *contactImage;
 @property (nonatomic, copy) NSString *contentType;
 @property (nonatomic, retain) _SFPBGraphicalFloat *cornerRadius;
@@ -49,6 +51,7 @@
 
 - (void).cxx_destruct;
 - (id)appIconImage;
+- (id)calendarImage;
 - (id)contactImage;
 - (id)contentType;
 - (id)cornerRadius;
@@ -59,7 +62,6 @@
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithFacade:(id)arg1;
 - (id)initWithJSON:(id)arg1;
-- (id)initWithSFImage:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)isTemplate;
 - (id)jsonData;
@@ -70,6 +72,7 @@
 - (bool)readFrom:(id)arg1;
 - (id)scale;
 - (void)setAppIconImage:(id)arg1;
+- (void)setCalendarImage:(id)arg1;
 - (void)setContactImage:(id)arg1;
 - (void)setContentType:(id)arg1;
 - (void)setCornerRadius:(id)arg1;

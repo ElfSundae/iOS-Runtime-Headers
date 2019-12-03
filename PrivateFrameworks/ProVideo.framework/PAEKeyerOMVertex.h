@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/ProVideo.framework/ProVideo
  */
 
-@interface PAEKeyerOMVertex : NSObject <NSCoding> {
+@interface PAEKeyerOMVertex : NSObject <NSSecureCoding> {
     NSNumber * _bx;
     NSNumber * _by;
     NSNumber * _lx;
@@ -12,6 +12,8 @@
     NSNumber * _rx;
     NSNumber * _ry;
 }
+
++ (bool)supportsSecureCoding;
 
 - (float)bx;
 - (float)by;

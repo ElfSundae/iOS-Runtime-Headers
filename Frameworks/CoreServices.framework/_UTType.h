@@ -2,10 +2,15 @@
    Image: /System/Library/Frameworks/CoreServices.framework/CoreServices
  */
 
-@interface _UTType : _LSQueryResult <NSCopying, NSSecureCoding>
+@interface _UTType : _LSQueryResult <NSCopying, NSSecureCoding> {
+    NSString * __glyphName;
+    NSString * __iconName;
+}
 
 @property (getter=_isActive, nonatomic, readonly) bool _active;
 @property (getter=_isAppleInternal, nonatomic, readonly) bool _appleInternal;
+@property (nonatomic, readonly) NSString *_glyphName;
+@property (nonatomic, readonly) NSString *_iconName;
 @property (nonatomic, readonly) NSURL *_iconURL;
 @property (nonatomic, readonly) NSString *_kernelExtensionName;
 @property (nonatomic, readonly) NSDictionary *_localizedDescriptionDictionary;
@@ -26,9 +31,11 @@
 
 + (struct __CFArray { }*)_copyIdentifiersWithQuery:(id)arg1;
 + (bool)_isDeclaration:(id)arg1 equalToDeclaration:(id)arg2;
-+ (id)_localizationDictionaryForTypeWithIdentifier:(id)arg1 unit:(unsigned int)arg2 preferredLocalizations:(id)arg3;
 
-- (void)_enumerateParentTypesWithBlock:(id /* block */)arg1;
+- (void).cxx_destruct;
+- (void)_enumeratePedigreeWithBlock:(id /* block */)arg1;
+- (id)_glyphName;
+- (id)_iconName;
 - (id)_iconURL;
 - (bool)_isActive;
 - (bool)_isAppleInternal;
@@ -36,7 +43,7 @@
 - (bool)_isWildcard;
 - (id)_kernelExtensionName;
 - (id)_localizedDescriptionDictionary;
-- (id)_localizedDescriptionWithPreferredLocalizations:(id)arg1 checkingParents:(bool)arg2;
+- (id)_localizedDescriptionWithPreferredLocalizations:(id)arg1;
 - (id)_pedigree;
 - (id)_unlocalizedDescription;
 - (bool)conformsToType:(id)arg1;

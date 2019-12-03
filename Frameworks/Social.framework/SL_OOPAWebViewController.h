@@ -52,6 +52,7 @@
 - (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(id /* block */)arg3;
 - (void)webView:(id)arg1 didFailLoadWithError:(id)arg2;
 - (void)webView:(id)arg1 didFinishNavigation:(id)arg2;
+- (void)webView:(id)arg1 didReceiveServerRedirectForProvisionalNavigation:(id)arg2;
 - (bool)webView:(id)arg1 shouldStartLoadWithRequest:(id)arg2 navigationType:(long long)arg3;
 - (void)webViewDidFinishLoad:(id)arg1;
 - (void)webViewDidStartLoad:(id)arg1;

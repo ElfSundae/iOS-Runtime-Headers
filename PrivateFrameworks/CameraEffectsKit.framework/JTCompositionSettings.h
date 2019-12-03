@@ -4,6 +4,10 @@
 
 @interface JTCompositionSettings : NSObject {
     int  _frameRate;
+    struct CGSize { 
+        double width; 
+        double height; 
+    }  _frameSize;
     NSObject<OS_dispatch_queue> * _queue;
     struct CGSize { 
         double width; 
@@ -13,6 +17,7 @@
 }
 
 @property (nonatomic) int frameRate;
+@property (nonatomic) struct CGSize { double x1; double x2; } frameSize;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *queue;
 @property (nonatomic) struct CGSize { double x1; double x2; } renderSize;
 @property (nonatomic) int timeScale;
@@ -21,10 +26,12 @@
 
 - (void).cxx_destruct;
 - (int)frameRate;
+- (struct CGSize { double x1; double x2; })frameSize;
 - (id)init;
 - (id)queue;
 - (struct CGSize { double x1; double x2; })renderSize;
 - (void)setFrameRate:(int)arg1;
+- (void)setFrameSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setQueue:(id)arg1;
 - (void)setRenderSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setTimeScale:(int)arg1;

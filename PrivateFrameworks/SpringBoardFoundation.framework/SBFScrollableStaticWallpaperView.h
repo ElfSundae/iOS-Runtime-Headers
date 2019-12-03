@@ -9,7 +9,7 @@
     double  _minimumZoomScale;
     double  _minimumZoomScaleForParallax;
     <SBFCancelable> * _parallaxCancelToken;
-    SBFLockScreenWallpaperParallaxSettings * _parallaxSettings;
+    SBFWallpaperParallaxSettings * _parallaxSettings;
     UIScrollView * _scrollView;
     SBFSubject * _scrollViewObserver;
 }
@@ -32,6 +32,7 @@
 - (struct CGPoint { double x1; double x2; })_minimumContentOffsetForOverhang;
 - (id)_newImageView;
 - (double)_parallaxFactorWithZoomScale:(double)arg1 contentOffset:(struct CGPoint { double x1; double x2; })arg2;
+- (void)_resetColorBoxes;
 - (id)_scrollView;
 - (double)_scrollViewParallaxFactor;
 - (void)_setupColorBoxObserver;
@@ -48,13 +49,15 @@
 - (double)cropZoomScale;
 - (void)dealloc;
 - (void)didMoveToWindow;
-- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 wallpaperImage:(id)arg2 variant:(long long)arg3 wallpaperSettingsProvider:(id)arg4;
+- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 configuration:(id)arg2 variant:(long long)arg3 cacheGroup:(id)arg4 delegate:(id)arg5 options:(unsigned long long)arg6;
 - (void)layoutSubviews;
 - (double)parallaxFactor;
+- (void)scrollViewDidChangeAdjustedContentInset:(id)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(bool)arg2;
 - (void)scrollViewDidEndZooming:(id)arg1 withView:(id)arg2 atScale:(double)arg3;
 - (void)setAutomaticallyEnablesParallax:(bool)arg1;
+- (void)setContentView:(id)arg1;
 - (void)setCropRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 zoomScale:(double)arg2;
 - (void)setParallaxEnabled:(bool)arg1;
 - (bool)supportsCropping;

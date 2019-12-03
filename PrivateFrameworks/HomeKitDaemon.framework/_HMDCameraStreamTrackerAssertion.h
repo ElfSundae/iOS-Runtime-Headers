@@ -3,11 +3,11 @@
  */
 
 @interface _HMDCameraStreamTrackerAssertion : HMFObject {
-    HMDCameraSessionID * _streamSessionID;
+    HMDCameraStreamSessionID * _streamSessionID;
     HMDCameraStreamTracker * _streamTracker;
 }
 
-@property (nonatomic, readonly) HMDCameraSessionID *streamSessionID;
+@property (nonatomic, readonly) HMDCameraStreamSessionID *streamSessionID;
 @property (nonatomic, readonly) HMDCameraStreamTracker *streamTracker;
 
 - (void).cxx_destruct;

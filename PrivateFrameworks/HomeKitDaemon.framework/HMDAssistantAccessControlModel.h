@@ -4,10 +4,10 @@
 
 @interface HMDAssistantAccessControlModel : HMDBackingStoreModelObject
 
-@property (nonatomic, retain) NSArray *accessoryModelIDs;
+@property (nonatomic, copy) NSArray *accessoryModelIDs;
 @property (nonatomic, retain) NSString *changeTag;
-@property (nonatomic, retain) NSNumber *enabled;
-@property (nonatomic, retain) NSNumber *options;
+@property (nonatomic, copy) NSNumber *enabled;
+@property (nonatomic, copy) NSNumber *options;
 
 + (id)properties;
 

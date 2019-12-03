@@ -104,6 +104,7 @@
 - (bool)_nsib_isRedundantInEngine:(id)arg1;
 - (int)_primitiveConstraintType;
 - (id)_priorityDescription;
+- (void)_rebuildExtraVars;
 - (id)_referencedLayoutItems;
 - (bool)_referencesLayoutItem:(id)arg1;
 - (void)_removeFromEngine:(id)arg1;
@@ -120,6 +121,7 @@
 - (void)_setMutablePropertiesFromConstraint:(id)arg1;
 - (void)_setNegativeExtraVar:(id)arg1;
 - (void)_setPrimitiveConstraintType:(int)arg1;
+- (void)_setPriority:(float)arg1 mutuallyExclusiveConstraints:(id*)arg2;
 - (void)_setRelation:(long long)arg1;
 - (void)_setSecondAnchor:(id)arg1;
 - (void)_setSecondItem:(id)arg1 attribute:(long long)arg2;
@@ -128,6 +130,7 @@
 - (id)_symbolicConstant;
 - (void)_tryToActivateMeasuringUnsatisfactionChanges:(id*)arg1 andMutuallyExclusiveConstraints:(id*)arg2;
 - (bool)_tryToChangeContainerGeometryWithUndoHandler:(id /* block */)arg1;
+- (double)_unsatisfaction:(double*)arg1;
 - (id)animations;
 - (id)asciiArtDescription;
 - (double)constant;
@@ -188,19 +191,20 @@
 
 // Image: /System/Library/PrivateFrameworks/Accessibility.framework/Frameworks/AccessibilityUIUtilities.framework/AccessibilityUIUtilities
 
++ (id)ax_constraintsToMakeItem:(id)arg1 sameDimensionsAsItem:(id)arg2;
 + (id)ax_constraintsToMakeView:(id)arg1 sameDimensionsAsView:(id)arg2;
 
 - (id)ax_copyWithPriority:(float)arg1;
 - (void)ax_removeFromContainer;
 
+// Image: /System/Library/PrivateFrameworks/AuthKitUI.framework/AuthKitUI
+
++ (id)ak_constraintsForView:(id)arg1 equalToLayoutGuide:(id)arg2;
++ (id)ak_constraintsForView:(id)arg1 equalToView:(id)arg2;
+
 // Image: /System/Library/PrivateFrameworks/ClassroomKit.framework/ClassroomKit
 
 + (void)crk_setPriority:(float)arg1 onConstraints:(id)arg2;
-
-// Image: /System/Library/PrivateFrameworks/FamilyCircleUI.framework/FamilyCircleUI
-
-+ (id)fa_constraintsForView:(id)arg1 equalToLayoutGuide:(id)arg2;
-+ (id)fa_constraintsForView:(id)arg1 equalToView:(id)arg2;
 
 // Image: /System/Library/PrivateFrameworks/GameCenterUI.framework/GameCenterUI
 
@@ -219,6 +223,8 @@
 + (id)_gkConstraintsForViews:(id)arg1 alignedByAttribute:(long long)arg2;
 + (id)_gkConstraintsForViews:(id)arg1 contiguouslyLaidOutVertically:(bool)arg2 overlap:(double)arg3 withinView:(id)arg4 insets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg5;
 + (id)_gkConstraintsForViews:(id)arg1 contiguouslyLaidOutVertically:(bool)arg2 overlap:(double)arg3 withinView:(id)arg4 insets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg5 applyOrthogonalConstraints:(bool)arg6;
++ (void)_gkInstallEdgeConstraintsForView:(id)arg1 containedWithinParentView:(id)arg2;
++ (void)_gkInstallEdgeConstraintsForView:(id)arg1 containedWithinParentView:(id)arg2 margin:(double)arg3;
 
 // Image: /System/Library/PrivateFrameworks/HomeUI.framework/HomeUI
 
@@ -238,10 +244,6 @@
 
 - (id)updateConstraintForAspectMultiplier:(double)arg1;
 
-// Image: /System/Library/PrivateFrameworks/NanoMediaBridgeUI.framework/NanoMediaBridgeUI
-
-- (id)updateAndActivateWithMultiplier:(double)arg1;
-
 // Image: /System/Library/PrivateFrameworks/NetAppsUtilitiesUI.framework/NetAppsUtilitiesUI
 
 + (bool)naui_areConstraints:(id)arg1 equalToConstraints:(id)arg2;
@@ -258,7 +260,8 @@
 
 // Image: /System/Library/PrivateFrameworks/NotesUI.framework/NotesUI
 
-+ (id)constraintWithItem:(id)arg1 attribute:(long long)arg2 relatedBy:(long long)arg3 toItem:(id)arg4 attribute:(long long)arg5 multiplier:(double)arg6 constant:(double)arg7 priority:(float)arg8;
++ (id)ic_constraintWithItem:(id)arg1 attribute:(long long)arg2 relatedBy:(long long)arg3 toItem:(id)arg4 attribute:(long long)arg5 multiplier:(double)arg6 constant:(double)arg7 priority:(float)arg8;
++ (id)ic_constraints:(id)arg1 affectingViews:(id)arg2;
 + (id)ic_widthLayoutConstraintsForView:(struct UIView { Class x1; }*)arg1 minValue:(double)arg2;
 + (id)ic_widthLayoutConstraintsForView:(struct UIView { Class x1; }*)arg1 minValue:(double)arg2 maxValue:(double)arg3;
 
@@ -268,6 +271,7 @@
 
 // Image: /System/Library/PrivateFrameworks/ScreenTimeUI.framework/ScreenTimeUI
 
++ (id)st_constraintsForView:(id)arg1 equalToLayoutGuide:(id)arg2;
 + (id)st_constraintsForView:(id)arg1 equalToView:(id)arg2;
 
 // Image: /System/Library/PrivateFrameworks/TelephonyUI.framework/TelephonyUI
@@ -296,7 +300,6 @@
 - (id)_uiFirstRefView;
 - (id)_uiSecondRefView;
 - (id)_ui_constraintWithPriority:(float)arg1;
-- (bool)defaultResolvedValue:(double*)arg1 forSymbolicConstant:(id)arg2 error:(id*)arg3;
 - (id)spacingMultiplier;
 
 // Image: /System/Library/PrivateFrameworks/VoiceMemos.framework/VoiceMemos

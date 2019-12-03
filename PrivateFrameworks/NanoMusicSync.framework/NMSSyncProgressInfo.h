@@ -10,6 +10,7 @@
     long long  _numberOfAssetItemsNeedingDownload;
     long long  _numberOfAssetItemsSynced;
     unsigned long long  _syncState;
+    unsigned long long  _syncWaitingSubstate;
 }
 
 @property (nonatomic) unsigned long long aggregateAssetItemBytesAdded;
@@ -19,10 +20,12 @@
 @property (nonatomic) long long numberOfAssetItemsNeedingDownload;
 @property (nonatomic) long long numberOfAssetItemsSynced;
 @property (nonatomic) unsigned long long syncState;
+@property (nonatomic) unsigned long long syncWaitingSubstate;
 
 // Image: /System/Library/PrivateFrameworks/NanoMusicSync.framework/NanoMusicSync
 
 + (id)_stringFromSyncState:(unsigned long long)arg1;
++ (id)_stringFromWaitingSubstate:(unsigned long long)arg1;
 
 - (void).cxx_destruct;
 - (unsigned long long)aggregateAssetItemBytesAdded;
@@ -39,11 +42,15 @@
 - (void)setNumberOfAssetItemsNeedingDownload:(long long)arg1;
 - (void)setNumberOfAssetItemsSynced:(long long)arg1;
 - (void)setSyncState:(unsigned long long)arg1;
+- (void)setSyncWaitingSubstate:(unsigned long long)arg1;
 - (unsigned long long)syncState;
+- (unsigned long long)syncWaitingSubstate;
 
 // Image: /System/Library/PrivateFrameworks/NanoMediaBridgeUI.framework/NanoMediaBridgeUI
 
+- (bool)_isSyncing;
+- (id)_legacyTrackProgressTextWithFormat:(id)arg1;
+- (id)_syncProgressTextForMediaType:(unsigned int)arg1;
 - (id)_trackProgressTextForMediaType:(unsigned int)arg1;
-- (id)_trackProgressTextWithFormat:(id)arg1;
 
 @end

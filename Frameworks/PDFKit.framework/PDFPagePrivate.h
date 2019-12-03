@@ -17,7 +17,7 @@
             double height; 
         } size; 
     }  artBox;
-    NSMutableAttributedString * attributedString;
+    NSAttributedString * attributedString;
     struct CGRect { 
         struct CGPoint { 
             double x; 
@@ -31,6 +31,7 @@
     bool  bookmarked;
     struct CGImage { } * cgImage;
     unsigned int  cgImageOrientation;
+    struct CGImageSource { } * cgImageSource;
     NSMutableSet * changedAnnotations;
     bool  colorWidgetBackgrounds;
     struct CGRect { 
@@ -43,26 +44,22 @@
             double height; 
         } size; 
     }  cropBox;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  dataDetectorsLock;
     bool  didChangeBounds;
     bool  displaysAnnotations;
     bool  displaysMarkups;
     PDFDocument * document;
-    bool  enqueuedForDataDetection;
-    bool  enqueuedForLayout;
     UIImage * image;
     bool  isFullyConstructed;
     NSString * label;
     struct CGPDFLayout { } * layout;
-    NSThread * layoutThread;
-    struct _opaque_pthread_cond_t { 
-        long long __sig; 
-        BOOL __opaque[40]; 
-    }  layoutThreadCondition;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  layoutLock;
     NSLock * lock_accessAnnotations;
-    NSLock * lock_accessLayout;
-    NSLock * lock_dataEnqueuedForDataDetection;
     NSLock * lock_getAnnotations;
-    NSLock * lock_text;
     struct CGRect { 
         struct CGPoint { 
             double x; 
@@ -73,14 +70,13 @@
             double height; 
         } size; 
     }  mediaBox;
-    long long  numChars;
     struct CGPDFPage { } * page;
+    struct CGColor { } * pageBackgroundColorHint;
     bool  ranDataDetectors;
     long long  rotation;
     NSMutableArray * scannedAnnotations;
-    struct __CFString { } * text;
-    bool  textCharsLoaded;
-    struct _opaque_pthread_t { long long x1; struct __darwin_pthread_handler_rec {} *x2; BOOL x3[8176]; } * threadFetchingLayout;
+    NSMutableArray * scannerResults;
+    NSString * text;
     struct CGRect { 
         struct CGPoint { 
             double x; 
@@ -91,7 +87,6 @@
             double height; 
         } size; 
     }  trimBox;
-    NSMutableArray * unsupportedElements;
     PDFView * view;
     NSMutableDictionary * widgetAnnotationLookup;
 }

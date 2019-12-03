@@ -26,6 +26,7 @@
     <FCPrivateDataContext> * _privateDataContext;
     FCPurchaseController * _purchaseController;
     <FCPurchaseManagerType> * _purchaseManager;
+    <FCPurchaseProviderType> * _purchaseProvider;
     FCSubscriptionController * _subscriptionController;
     FCTranslationManager * _translationManager;
 }
@@ -79,6 +80,7 @@
 @property (nonatomic, readonly) <FCPushNotificationHandling> *privatePushNotificationHandler;
 @property (nonatomic, readonly) FCPurchaseController *purchaseController;
 @property (nonatomic, readonly) <FCPurchaseManagerType> *purchaseManager;
+@property (nonatomic, readonly) <FCPurchaseProviderType> *purchaseProvider;
 @property (nonatomic, readonly) FCReadingHistory *readingHistory;
 @property (nonatomic, readonly) FCReadingList *readingList;
 @property (nonatomic, readonly) FCSubscriptionController *subscriptionController;
@@ -162,6 +164,7 @@
 - (id)privateStoreWithName:(id)arg1 version:(unsigned long long)arg2 options:(unsigned long long)arg3;
 - (id)purchaseController;
 - (id)purchaseManager;
+- (id)purchaseProvider;
 - (id)readingHistory;
 - (id)readingList;
 - (id)recordSourceWithSchema:(id)arg1;

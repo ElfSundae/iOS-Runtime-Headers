@@ -17,6 +17,7 @@
     bool  _sessionInProgress;
     long long  _sessionTimePeriod;
     unsigned long long  _sessionVisibleUnits;
+    bool  _showLeadingMinutes;
     bool  _shrinkUnitsInCJK;
     bool  _twoDigitMinuteZeroPadding;
     bool  _wantsSubseconds;
@@ -29,17 +30,18 @@
 @property (nonatomic, retain) NSDate *overrideDate;
 @property (nonatomic) bool pauseTimerAtZero;
 @property (nonatomic) long long relativeDateStyle;
+@property (nonatomic) bool showLeadingMinutes;
 @property (nonatomic) bool shrinkUnitsInCJK;
 @property (nonatomic) bool twoDigitMinuteZeroPadding;
 @property (nonatomic) bool wantsSubseconds;
 
++ (bool)_configureFormatter:(id)arg1 fallbackIndex:(unsigned long long)arg2 style:(long long)arg3;
 + (bool)supportsSecureCoding;
 + (id)textProviderWithDate:(id)arg1 style:(long long)arg2 units:(unsigned long long)arg3;
 
 - (void).cxx_destruct;
 - (id)JSONObjectRepresentation;
 - (id)_componentsForDate:(id)arg1 visibleUnits:(unsigned long long*)arg2;
-- (bool)_configureFormatterForFallbackIndex:(unsigned long long)arg1;
 - (void)_configureFormatterForTimerStyle;
 - (void)_endSession;
 - (id)_initWithJSONObjectRepresentation:(id)arg1;
@@ -58,6 +60,7 @@
 - (bool)disableOffsetPrefix;
 - (bool)disableSmallCapUnits;
 - (void)encodeWithCoder:(id)arg1;
+- (void)finalize;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
@@ -71,9 +74,11 @@
 - (void)setOverrideDate:(id)arg1;
 - (void)setPauseTimerAtZero:(bool)arg1;
 - (void)setRelativeDateStyle:(long long)arg1;
+- (void)setShowLeadingMinutes:(bool)arg1;
 - (void)setShrinkUnitsInCJK:(bool)arg1;
 - (void)setTwoDigitMinuteZeroPadding:(bool)arg1;
 - (void)setWantsSubseconds:(bool)arg1;
+- (bool)showLeadingMinutes;
 - (bool)shrinkUnitsInCJK;
 - (bool)twoDigitMinuteZeroPadding;
 - (bool)wantsSubseconds;

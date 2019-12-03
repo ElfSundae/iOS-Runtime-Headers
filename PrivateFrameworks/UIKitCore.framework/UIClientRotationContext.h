@@ -4,7 +4,6 @@
 
 @interface UIClientRotationContext : NSObject {
     UISnapshotView * _contentSnapshotViewStart;
-    double  _contentTopAdjustmentStart;
     UIView * _contentView;
     bool  _contentWasHidden;
     double  _duration;
@@ -30,8 +29,6 @@
         int edgeClip; 
     }  _rotationSettings;
     bool  _skipClientRotationCallbacks;
-    bool  _skipFooterRotation;
-    bool  _skipHeaderRotation;
     UIView * _snapshotTargetView;
     bool  _snapshotTargetWasHidden;
     long long  _toOrientation;
@@ -49,7 +46,6 @@
 - (bool)_isFooterTranslucent;
 - (bool)_isHeaderTranslucent;
 - (void)_positionHeaderView:(id)arg1 andFooterView:(id)arg2 outsideContentViewForInterfaceOrientation:(long long)arg3;
-- (void)_slideFooterWithStartSnapshot:(id)arg1 endSnapshot:(id)arg2 duration:(double)arg3;
 - (void)_slideHeaderView:(id)arg1 andFooterView:(id)arg2 offScreen:(bool)arg3 forInterfaceOrientation:(long long)arg4;
 - (id)contentView;
 - (void)dealloc;

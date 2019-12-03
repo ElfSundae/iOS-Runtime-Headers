@@ -30,10 +30,12 @@
 - (void)didStartSession:(id)arg1;
 - (void)didStartSessionWithoutQueue:(id)arg1;
 - (void)endSession;
+- (void)endSessionAndStartNextSession:(id)arg1 completion:(id /* block */)arg2;
 - (void)endSessionWithCompletion:(id /* block */)arg1;
 - (id)init;
 - (bool)isActive;
 - (bool)isFirstInQueue;
+- (void)prioritizeSession;
 - (id)proxy;
 - (id)remoteObjectProxyWithErrorHandler:(id /* block */)arg1;
 - (void)resume;

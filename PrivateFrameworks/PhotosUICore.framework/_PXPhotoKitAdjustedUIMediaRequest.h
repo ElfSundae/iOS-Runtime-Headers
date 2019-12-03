@@ -4,7 +4,7 @@
 
 @interface _PXPhotoKitAdjustedUIMediaRequest : NSObject {
     <PXPhotoKitAdjustedDisplayAsset> * _asset;
-    PLPhotoEditModel * _baseEditModel;
+    PICompositionController * _baseCompositionController;
     bool  _delayRenders;
     PLEditSource * _editSource;
     PXPhotoKitEditSourceLoader * _editSourceLoader;
@@ -16,7 +16,7 @@
 }
 
 @property (nonatomic, readonly) <PXPhotoKitAdjustedDisplayAsset> *asset;
-@property (nonatomic, retain) PLPhotoEditModel *baseEditModel;
+@property (nonatomic, retain) PICompositionController *baseCompositionController;
 @property (nonatomic) bool delayRenders;
 @property (nonatomic, retain) PLEditSource *editSource;
 @property (nonatomic, readonly) PHImageManager *imageManager;
@@ -28,7 +28,7 @@
 - (void).cxx_destruct;
 - (void)_handleEditSourceLoadingFinished;
 - (id)asset;
-- (id)baseEditModel;
+- (id)baseCompositionController;
 - (void)beginLoadingEditSource;
 - (void)cancel;
 - (void)dealloc;
@@ -42,7 +42,7 @@
 - (double)progress;
 - (void)progressDidChange;
 - (id)renderQueue;
-- (void)setBaseEditModel:(id)arg1;
+- (void)setBaseCompositionController:(id)arg1;
 - (void)setDelayRenders:(bool)arg1;
 - (void)setEditSource:(id)arg1;
 - (void)setLoadError:(id)arg1;

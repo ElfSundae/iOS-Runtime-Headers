@@ -3,6 +3,7 @@
  */
 
 @interface TLKImageView : TLKView <NUIArrangementContainer, NUIBoxArrangementDataSource> {
+    TLKAppearance * _appearanceOverride;
     NUIBoxArrangement * _boxArrangement;
     long long  _horizontalAlignment;
     UIImageView * _imageView;
@@ -14,6 +15,7 @@
         double width; 
         double height; 
     }  _minimumSize;
+    unsigned long long  _prominence;
     struct CGRect { 
         struct CGPoint { 
             double x; 
@@ -26,21 +28,25 @@
     }  _rectOfShadow;
     TLKArrangementItem * _sizingHelper;
     TLKImage * _tlkImage;
+    bool  _useButtonColoring;
     long long  _verticalAlignment;
 }
 
-@property (retain) NUIBoxArrangement *boxArrangement;
+@property (nonatomic, retain) TLKAppearance *appearanceOverride;
+@property (nonatomic, retain) NUIBoxArrangement *boxArrangement;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long horizontalAlignment;
-@property (retain) UIImageView *imageView;
+@property (nonatomic, retain) UIImageView *imageView;
 @property (nonatomic) struct CGSize { double x1; double x2; } maximumSize;
 @property (nonatomic) struct CGSize { double x1; double x2; } minimumSize;
-@property struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } rectOfShadow;
-@property (retain) TLKArrangementItem *sizingHelper;
+@property (nonatomic) unsigned long long prominence;
+@property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } rectOfShadow;
+@property (nonatomic, retain) TLKArrangementItem *sizingHelper;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) TLKImage *tlkImage;
+@property (nonatomic) bool useButtonColoring;
 @property (nonatomic) long long verticalAlignment;
 
 + (bool)imageIsEligibleForShadow:(id)arg1 isTemplate:(bool)arg2;
@@ -49,11 +55,14 @@
 + (bool)sizeIsShadowWorthy:(struct CGSize { double x1; double x2; })arg1;
 
 - (void).cxx_destruct;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (id)actualImageView;
+- (id)appearanceOverride;
 - (id)boxArrangement;
 - (id)boxArrangement:(id)arg1 itemAtIndex:(long long)arg2 horizontalAlignment:(long long*)arg3 verticalAlignment:(long long*)arg4;
 - (struct CGSize { double x1; double x2; })constrainedSizeForImageSize:(struct CGSize { double x1; double x2; })arg1;
 - (struct CGSize { double x1; double x2; })contentLayoutSizeFittingSize:(struct CGSize { double x1; double x2; })arg1 forArrangedSubview:(id)arg2;
+- (void)didMoveToWindow;
 - (long long)effectiveUserInterfaceLayoutDirection;
 - (long long)horizontalAlignment;
 - (id)imageView;
@@ -64,24 +73,29 @@
 - (void)layoutSubviews;
 - (struct CGSize { double x1; double x2; })maximumSize;
 - (struct CGSize { double x1; double x2; })minimumSize;
-- (struct CGSize { double x1; double x2; })naturalImageSize;
 - (long long)numberOfItemsInBoxArrangement:(id)arg1;
 - (void)observedPropertiesChanged;
+- (unsigned long long)prominence;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })rectOfShadow;
+- (void)setAppearanceOverride:(id)arg1;
 - (void)setBoxArrangement:(id)arg1;
 - (void)setHorizontalAlignment:(long long)arg1;
 - (void)setImageView:(id)arg1;
 - (void)setMaximumSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setMinimumSize:(struct CGSize { double x1; double x2; })arg1;
+- (void)setProminence:(unsigned long long)arg1;
 - (void)setRectOfShadow:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setSizingHelper:(id)arg1;
 - (void)setTlkImage:(id)arg1;
+- (void)setUseButtonColoring:(bool)arg1;
 - (void)setVerticalAlignment:(long long)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (id)sizingHelper;
-- (bool)supportsAsynchronousMeasurement;
 - (struct CGSize { double x1; double x2; })systemLayoutSizeFittingSize:(struct CGSize { double x1; double x2; })arg1;
 - (id)tlkImage;
+- (void)tlk_updateForAppearance:(id)arg1;
+- (void)updateShadow;
+- (bool)useButtonColoring;
 - (long long)verticalAlignment;
 - (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;

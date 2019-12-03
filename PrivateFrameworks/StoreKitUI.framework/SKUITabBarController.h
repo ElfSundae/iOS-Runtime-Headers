@@ -5,8 +5,8 @@
 @interface SKUITabBarController : UITabBarController <SKUIMoreNavigationControllerDelegate> {
     SKUIFloatingOverlayView * _floatingOverlayView;
     UIViewController * _floatingOverlayViewController;
+    long long  _forcedUserInterfaceStyle;
     bool  _sizeTransitionInProgress;
-    SKUITabBarBackgroundView * _tabBarBackgroundView;
 }
 
 @property (nonatomic, readonly) bool containsTransientViewControllerOnly;
@@ -19,18 +19,19 @@
 + (Class)_moreNavigationControllerClass;
 
 - (void).cxx_destruct;
-- (id)_backdropGroupName;
 - (void)_layoutFloatingOverlayView;
 - (void)_setSelectedViewController:(id)arg1;
 - (void)cancelTransientViewController:(id)arg1;
 - (bool)containsTransientViewControllerOnly;
 - (id)floatingOverlayViewController;
+- (long long)forcedUserInterfaceStyle;
 - (id)init;
 - (id)moreNavigationController;
 - (void)moreNavigationController:(id)arg1 didSelectItemAtIndex:(long long)arg2;
+- (long long)preferredUserInterfaceStyle;
 - (void)setFloatingOverlayViewController:(id)arg1 animated:(bool)arg2;
+- (void)setForcedUserInterfaceStyle:(long long)arg1;
 - (void)setSizeTransitionInProgress:(bool)arg1;
-- (void)setTabBarBackdropStyle:(long long)arg1;
 - (void)setTransientViewController:(id)arg1 animated:(bool)arg2;
 - (bool)sizeTransitionInProgress;
 - (id)traitCollection;

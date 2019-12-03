@@ -12,13 +12,13 @@
 + (id)defaultOfficeShapeStyle;
 + (id)defaultShapeStyle;
 
+- (void).cxx_destruct;
 - (void)applyToGraphicProperties:(id)arg1 styleMatrix:(id)arg2;
 - (void)applyToGraphicProperties:(id)arg1 styleMatrix:(id)arg2 useNull:(bool)arg3 strokeWidthMultiplier:(float)arg4;
 - (void)applyToParagraphProperties:(id)arg1;
 - (void)applyToTextBody:(id)arg1;
 - (void)applyToTextListStyle:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)effectReference;
 - (id)fillReference;

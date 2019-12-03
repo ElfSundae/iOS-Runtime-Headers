@@ -6,11 +6,13 @@
     NSAttributedString * _attributedString;
     long long  _dataType;
     long long  _statisticsType;
+    NSNumber * _valueAsNumber;
 }
 
 @property (nonatomic, retain) NSAttributedString *attributedString;
 @property (nonatomic) long long dataType;
 @property (nonatomic) long long statisticsType;
+@property (nonatomic, retain) NSNumber *valueAsNumber;
 
 - (void).cxx_destruct;
 - (id)attributedString;
@@ -19,6 +21,8 @@
 - (void)setAttributedString:(id)arg1;
 - (void)setDataType:(long long)arg1;
 - (void)setStatisticsType:(long long)arg1;
+- (void)setValueAsNumber:(id)arg1;
 - (long long)statisticsType;
+- (id)valueAsNumber;
 
 @end

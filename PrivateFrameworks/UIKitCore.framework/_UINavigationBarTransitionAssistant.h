@@ -12,6 +12,7 @@
     bool  _interactive;
     bool  _interruptable;
     UINavigationBar * _navigationBar;
+    bool  _needsLifetimeExtended;
     bool  _shouldHideBackButtonDuringTransition;
     bool  _shouldUpdatePromptAfterTransition;
     int  _transition;
@@ -26,6 +27,7 @@
 @property (nonatomic, readonly) bool interactive;
 @property (nonatomic, readonly) bool interruptable;
 @property (nonatomic, readonly) UINavigationBar *navigationBar;
+@property (nonatomic) bool needsLifetimeExtended;
 @property (nonatomic, readonly) bool shouldAnimateAlongside;
 @property (nonatomic, readonly) bool shouldCrossfade;
 @property (nonatomic) bool shouldHideBackButtonDuringTransition;
@@ -59,6 +61,8 @@
 - (bool)interactive;
 - (bool)interruptable;
 - (id)navigationBar;
+- (bool)needsLifetimeExtended;
+- (void)setNeedsLifetimeExtended:(bool)arg1;
 - (void)setShouldHideBackButtonDuringTransition:(bool)arg1;
 - (void)setShouldUpdatePromptAfterTransition:(bool)arg1;
 - (bool)shouldAnimateAlongside;

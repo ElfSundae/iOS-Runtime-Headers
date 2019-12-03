@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/AVConference.framework/AVConference
  */
 
-@interface VCAudioRelay : NSObject {
+@interface VCAudioRelay : NSObject <VCBasebandCodecNotifications> {
     double  _IOBufferDuration;
     unsigned int  _blocksRelayedCount;
     float  _clientDownlinkPowerMovingAverage;
@@ -20,6 +20,10 @@
         BOOL __opaque[56]; 
     }  _relayLock;
     struct _opaque_pthread_t { long long x1; struct __darwin_pthread_handler_rec {} *x2; BOOL x3[8176]; } * _relayThread;
+    struct _VCRemoteCodecInfo { 
+        unsigned int codecType; 
+        double sampleRate; 
+    }  _remoteCodecInfo;
     VCAudioRelayIO * _remoteIO;
     struct _opaque_pthread_mutex_t { 
         long long __sig; 
@@ -42,10 +46,14 @@
 @property (nonatomic, copy) VCAudioRelayIO *clientIO;
 @property (readonly) struct OpaqueAudioConverter { }*clientToRemoteConverter;
 @property (readonly) float clientUplinkPowerMovingAverage;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly) bool isRelayRunning;
 @property (readonly) NSObject<OS_dispatch_source> *periodicHealthPrintDispatchSource;
 @property (nonatomic, copy) VCAudioRelayIO *remoteIO;
 @property (readonly) struct OpaqueAudioConverter { }*remoteToClientConverter;
+@property (readonly) Class superclass;
 
 - (double)IOBufferDuration;
 - (unsigned int)blocksRelayedCount;
@@ -57,6 +65,7 @@
 - (bool)createAudioConvertersWithError:(id*)arg1;
 - (void)dealloc;
 - (void)destroyAudioConverters;
+- (void)didUpdateBasebandCodec:(const struct _VCRemoteCodecInfo { unsigned int x1; double x2; }*)arg1;
 - (void)forwardSamplesFromIO:(id)arg1 toIO:(id)arg2 withConverter:(struct OpaqueAudioConverter { }*)arg3;
 - (id)init;
 - (bool)isRelayRunning;
@@ -65,6 +74,7 @@
 - (id)periodicHealthPrintDispatchSource;
 - (void)printStreamFormats;
 - (void)relayCallback;
+- (void)relayProcessSamples;
 - (id)remoteIO;
 - (struct OpaqueAudioConverter { }*)remoteToClientConverter;
 - (float)rmsPowerOfBuffer:(float*)arg1 numSamples:(unsigned int)arg2;
@@ -85,5 +95,6 @@
 - (void)stopRemoteIO;
 - (void)unlock;
 - (void)updateRealTimeStats;
+- (void)updateRemoteCodecInfo:(const struct _VCRemoteCodecInfo { unsigned int x1; double x2; }*)arg1;
 
 @end

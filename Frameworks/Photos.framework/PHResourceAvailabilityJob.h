@@ -4,7 +4,11 @@
 
 @interface PHResourceAvailabilityJob : PLDaemonJob {
     NSArray * _cancelledRequestIdentifiers;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _lock;
     NSMutableArray * _requests;
+    NSMutableSet * _unsentRequestIdentifiers;
 }
 
 - (void).cxx_destruct;
@@ -13,9 +17,11 @@
 - (long long)daemonOperation;
 - (id)description;
 - (void)encodeToXPCObject:(id)arg1;
-- (id)initFromXPCObject:(id)arg1 connection:(id)arg2;
+- (id)initFromXPCObject:(id)arg1 libraryServicesManager:(id)arg2;
+- (id)initWithPhotoLibrary:(id)arg1;
 - (void)run;
 - (void)runDaemonSide;
+- (void)setClientConnection:(id)arg1;
 - (bool)shouldRunOnDaemonSerialQueue;
 
 @end

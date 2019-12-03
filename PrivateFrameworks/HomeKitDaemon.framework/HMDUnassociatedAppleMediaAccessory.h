@@ -15,9 +15,9 @@
 @property (readonly, copy) NSString *description;
 @property (retain) HMDDevice *device;
 @property (readonly) unsigned long long hash;
-@property (retain) NSString *model;
-@property (retain) NSString *serialNumber;
-@property (retain) HMFSoftwareVersion *softwareVersion;
+@property (copy) NSString *model;
+@property (copy) NSString *serialNumber;
+@property (copy) HMFSoftwareVersion *softwareVersion;
 @property (readonly) Class superclass;
 
 + (id)logCategory;

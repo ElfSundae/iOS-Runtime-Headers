@@ -2,12 +2,16 @@
    Image: /System/Library/Frameworks/Foundation.framework/Foundation
  */
 
-@interface NSMutableString : NSString
+@interface NSMutableString : NSString <KSWriter>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
 + (id)allocWithZone:(struct _NSZone { }*)arg1;
-+ (void)initialize;
 + (id)stringWithCapacity:(unsigned long long)arg1;
 
 - (void)_cfAppendCString:(const char *)arg1 length:(long long)arg2;
@@ -34,6 +38,10 @@
 - (unsigned long long)replaceOccurrencesOfString:(id)arg1 withString:(id)arg2 options:(unsigned long long)arg3 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg4;
 - (void)setString:(id)arg1;
 
+// Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
+
+- (void)hk_appendComponentsJoinedByString:(id)arg1 container:(id)arg2 componentGenerator:(id /* block */)arg3;
+
 // Image: /System/Library/Frameworks/Network.framework/Network
 
 - (void)appendPrettyBOOL:(bool)arg1 withName:(id)arg2 indent:(int)arg3;
@@ -43,7 +51,7 @@
 // Image: /System/Library/Frameworks/NetworkExtension.framework/NetworkExtension
 
 - (void)appendPrettyBOOL:(bool)arg1 withName:(id)arg2 andIndent:(int)arg3 options:(unsigned long long)arg4;
-- (void)appendPrettyInt:(int)arg1 withName:(id)arg2 andIndent:(int)arg3 options:(unsigned long long)arg4;
+- (void)appendPrettyInt:(long long)arg1 withName:(id)arg2 andIndent:(int)arg3 options:(unsigned long long)arg4;
 - (void)appendPrettyObject:(id)arg1 withName:(id)arg2 andIndent:(int)arg3 options:(unsigned long long)arg4;
 - (void)appendToStringAtColumnWithContent:(int*)arg1 column:(unsigned char)arg2 content:(const char *)arg3 appendAsNewLine:(bool)arg4 addNewLine:(bool)arg5;
 
@@ -52,6 +60,19 @@
 + (id)axmIndentationString:(long long)arg1;
 
 - (void)axmAppendIndentation:(long long)arg1;
+
+// Image: /System/Library/PrivateFrameworks/ActionKit.framework/ActionKit
+
+- (void)close;
+- (void)writeString:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/AppleMediaServices.framework/AppleMediaServices
+
+- (void)ams_appendNullableString:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/BookUtility.framework/BookUtility
+
+- (void)bu_indentBy:(unsigned long long)arg1;
 
 // Image: /System/Library/PrivateFrameworks/CalDAV.framework/CalDAV
 
@@ -73,14 +94,19 @@
 - (void)_cn_trimLeadingWhitespace;
 - (void)_cn_trimTrailingWhitespace;
 
-// Image: /System/Library/PrivateFrameworks/DataAccess.framework/Frameworks/DAEAS.framework/DAEAS
+// Image: /System/Library/PrivateFrameworks/DataDetectorsCore.framework/DataDetectorsCore
+
+- (void)dd_appendSpaces:(unsigned int)arg1;
+
+// Image: /System/Library/PrivateFrameworks/ExchangeSync.framework/Frameworks/DAEAS.framework/DAEAS
 
 - (void)appendString:(id)arg1 withSeparator:(id)arg2;
 - (void)convertLineEndingsTo:(id)arg1;
 
-// Image: /System/Library/PrivateFrameworks/DataDetectorsCore.framework/DataDetectorsCore
+// Image: /System/Library/PrivateFrameworks/Home.framework/Home
 
-- (void)dd_appendSpaces:(unsigned int)arg1;
+- (void)hf_appendLine:(id)arg1;
+- (void)hf_appendLineWithFormat:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/IMFoundation.framework/IMFoundation
 
@@ -127,10 +153,6 @@
 - (void)_removeCharactersFromSet:(struct __CFCharacterSet { }*)arg1;
 - (void)_removeOccurrencesOfCharacter:(unsigned int)arg1;
 - (void)_replaceOccurrencesOfCharacter:(unsigned int)arg1 withCharacter:(unsigned int)arg2;
-
-// Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
-
-- (void)standardizeWhitespace;
 
 // Image: /System/Library/PrivateFrameworks/iCalendar.framework/iCalendar
 

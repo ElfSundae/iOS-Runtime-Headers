@@ -7,11 +7,11 @@
 }
 
 @property (readonly) NSUUID *QRSessionID;
-@property (readonly) unsigned long long RATType;
+@property (readonly) unsigned int RATType;
 @property (readonly) long long connectionType;
-@property (readonly) unsigned char flags;
 @property (readonly) BOOL linkID;
 @property (readonly) NSUUID *linkUUID;
+@property (readonly) unsigned short localLinkFlags;
 @property (readonly) unsigned int maxBitrate;
 @property (readonly) unsigned short maxMTU;
 @property (readonly) unsigned char networkType;
@@ -19,20 +19,22 @@
 @property (readonly) NSData *relaySessionKey;
 @property (readonly) NSData *relaySessionToken;
 @property (readonly) long long remoteConnectionType;
+@property (readonly) unsigned short remoteLinkFlags;
 @property (readonly) unsigned char remoteNetworkType;
-@property (readonly) unsigned long long remoteRATType;
+@property (readonly) unsigned int remoteRATType;
 @property (readonly) bool serverIsDegraded;
 
 - (void).cxx_destruct;
 - (id)QRSessionID;
-- (unsigned long long)RATType;
+- (unsigned int)RATType;
 - (long long)connectionType;
 - (id)description;
-- (unsigned char)flags;
+- (id)initWithAttributes:(struct { unsigned char x1; unsigned char x2; unsigned char x3; unsigned char x4; unsigned short x5; unsigned char x6; unsigned char x7; unsigned char x8; unsigned char x9[16]; unsigned char x10[16]; unsigned char x11; unsigned short x12; unsigned short x13; unsigned char x14[3]; }*)arg1 maxBitrate:(unsigned int)arg2 relayServerProvider:(long long)arg3 relaySessionToken:(id)arg4 relaySessionKey:(id)arg5;
 - (id)initWithDummyInformation;
-- (id)initWithLinkID:(BOOL)arg1 linkUUID:(id)arg2 QRSessionID:(id)arg3 flags:(unsigned char)arg4 networkType:(unsigned char)arg5 connectionType:(long long)arg6 RATType:(unsigned long long)arg7 MTU:(unsigned short)arg8 remoteNetworkType:(unsigned char)arg9 remoteConnectionType:(long long)arg10 remoteRATType:(unsigned long long)arg11 maxBitrate:(unsigned int)arg12 relayServerProvider:(long long)arg13 relaySessionToken:(id)arg14 relaySessionKey:(id)arg15 serverIsDegraded:(bool)arg16;
+- (id)initWithLinkID:(BOOL)arg1 linkUUID:(id)arg2 QRSessionID:(id)arg3 networkType:(unsigned char)arg4 connectionType:(long long)arg5 RATType:(unsigned int)arg6 MTU:(unsigned short)arg7 remoteNetworkType:(unsigned char)arg8 remoteConnectionType:(long long)arg9 remoteRATType:(unsigned int)arg10 maxBitrate:(unsigned int)arg11 relayServerProvider:(long long)arg12 relaySessionToken:(id)arg13 relaySessionKey:(id)arg14 serverIsDegraded:(bool)arg15;
 - (BOOL)linkID;
 - (id)linkUUID;
+- (unsigned short)localLinkFlags;
 - (unsigned int)maxBitrate;
 - (unsigned short)maxMTU;
 - (unsigned char)networkType;
@@ -40,11 +42,12 @@
 - (id)relaySessionKey;
 - (id)relaySessionToken;
 - (long long)remoteConnectionType;
+- (unsigned short)remoteLinkFlags;
 - (unsigned char)remoteNetworkType;
-- (unsigned long long)remoteRATType;
+- (unsigned int)remoteRATType;
 - (bool)serverIsDegraded;
 - (void)setMTU:(unsigned short)arg1;
 - (void)setMaxBitrate:(unsigned int)arg1;
-- (void)setRATType:(unsigned long long)arg1;
+- (void)setRATType:(unsigned int)arg1;
 
 @end

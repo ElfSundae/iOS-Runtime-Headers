@@ -2,12 +2,14 @@
    Image: /System/Library/PrivateFrameworks/AppleMediaServices.framework/AppleMediaServices
  */
 
-@interface AMSBagValue : NSObject {
+@interface AMSBagValue : NSObject <JetEngine.AnyAMSBagValue> {
+    ACAccount * _account;
     <AMSBagDataSourceProtocol> * _dataSource;
     NSString * _key;
     unsigned long long  _valueType;
 }
 
+@property (nonatomic, copy) ACAccount *account;
 @property (nonatomic) <AMSBagDataSourceProtocol> *dataSource;
 @property (nonatomic, retain) NSString *key;
 @property (getter=isLoaded, nonatomic, readonly) bool loaded;
@@ -22,10 +24,13 @@
 + (id)globalBagValueStorage;
 
 - (void).cxx_destruct;
+- (id)account;
 - (id)dataSource;
 - (id)initWithDataSource:(id)arg1 key:(id)arg2 valueType:(unsigned long long)arg3;
+- (id)initWithDataSource:(id)arg1 key:(id)arg2 valueType:(unsigned long long)arg3 account:(id)arg4;
 - (bool)isLoaded;
 - (id)key;
+- (void)setAccount:(id)arg1;
 - (void)setDataSource:(id)arg1;
 - (void)setKey:(id)arg1;
 - (void)setValueType:(unsigned long long)arg1;

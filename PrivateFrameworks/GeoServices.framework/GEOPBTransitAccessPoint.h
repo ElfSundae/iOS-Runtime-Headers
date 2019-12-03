@@ -9,12 +9,33 @@
     NSString * _exitNameDisplayString;
     NSMutableArray * _exitZoomNames;
     struct { 
-        unsigned int muid : 1; 
-        unsigned int accessPointIndex : 1; 
-        unsigned int stationIndex : 1; 
-    }  _has;
+        unsigned int has_muid : 1; 
+        unsigned int has_accessPointIndex : 1; 
+        unsigned int has_stationIndex : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_entranceNameDisplayString : 1; 
+        unsigned int read_entranceZoomNames : 1; 
+        unsigned int read_exitNameDisplayString : 1; 
+        unsigned int read_exitZoomNames : 1; 
+        unsigned int read_location : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_entranceNameDisplayString : 1; 
+        unsigned int wrote_entranceZoomNames : 1; 
+        unsigned int wrote_exitNameDisplayString : 1; 
+        unsigned int wrote_exitZoomNames : 1; 
+        unsigned int wrote_location : 1; 
+        unsigned int wrote_muid : 1; 
+        unsigned int wrote_accessPointIndex : 1; 
+        unsigned int wrote_stationIndex : 1; 
+    }  _flags;
     GEOLatLng * _location;
     unsigned long long  _muid;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     unsigned int  _stationIndex;
     PBUnknownFields * _unknownFields;
 }
@@ -37,8 +58,16 @@
 
 + (Class)entranceZoomNameType;
 + (Class)exitZoomNameType;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsEntranceZoomName:(id)arg1;
+- (void)_addNoFlagsExitZoomName:(id)arg1;
+- (void)_readEntranceNameDisplayString;
+- (void)_readEntranceZoomNames;
+- (void)_readExitNameDisplayString;
+- (void)_readExitZoomNames;
+- (void)_readLocation;
 - (unsigned int)accessPointIndex;
 - (void)addEntranceZoomName:(id)arg1;
 - (void)addExitZoomName:(id)arg1;
@@ -48,6 +77,7 @@
 - (id)bestExitNameWithLocale:(out id*)arg1;
 - (void)clearEntranceZoomNames;
 - (void)clearExitZoomNames;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -68,10 +98,13 @@
 - (bool)hasStationIndex;
 - (unsigned long long)hash;
 - (id)identifier;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)location;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)muid;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAccessPointIndex:(unsigned int)arg1;
 - (void)setEntranceNameDisplayString:(id)arg1;

@@ -4,6 +4,7 @@
 
 @interface SATask : NSObject <SASerializable> {
     bool  _allowsIdleExit;
+    bool  _alreadyAttemptedToGetLoadInfoFromLiveProcess;
     bool  _alreadyGatheredDataFromLiveProcess;
     struct _CSArchitecture { 
         int cpu_type; 
@@ -22,7 +23,7 @@
     NSString * _name;
     int  _pid;
     int  _ppid;
-    NSMutableSet * _rootUserFrames;
+    NSMutableSet * _rootFrames;
     int  _rpid;
     SASharedCache * _sharedCache;
     NSMutableArray * _taskStates;
@@ -49,11 +50,11 @@
 @property (readonly) bool isUnresponsive;
 @property (readonly) SABinaryLoadInfo *mainBinaryLoadInfo;
 @property (retain) SAThread *mainThread;
-@property (readonly, copy) NSString *name;
+@property (copy) NSString *name;
 @property (readonly) int pid;
 @property int ppid;
-@property (retain) NSMutableSet *rootUserFrames;
-@property (readonly) int rpid;
+@property (retain) NSMutableSet *rootFrames;
+@property int rpid;
 @property (retain) SASharedCache *sharedCache;
 @property (readonly) Class superclass;
 @property (readonly) NSArray *taskStates;
@@ -75,12 +76,12 @@
 - (void)_gatherDataFromLiveProcessIsLate:(bool)arg1;
 - (bool)_matchesName:(const char *)arg1;
 - (void)addDispatchQueue:(id)arg1;
-- (void)addImageInfos:(id)arg1;
+- (bool)addImageInfos:(id)arg1;
 - (bool)addSelfToBuffer:(struct { unsigned char x1; unsigned char x2; int x3; int x4; int x5; unsigned int x6; unsigned long long x7; unsigned long long x8; unsigned long long x9; unsigned long long x10; unsigned long long x11; double x12; unsigned int x13; unsigned int x14; unsigned int x15; unsigned int x16; unsigned int x17; unsigned long long x18; unsigned long long x19; unsigned long long x20; struct _CSArchitecture { int x_21_1_1; int x_21_1_2; } x21; union { unsigned short x_22_1_1; struct { unsigned int x_2_2_1 : 1; unsigned int x_2_2_2 : 1; unsigned int x_2_2_3 : 1; unsigned int x_2_2_4 : 1; unsigned int x_2_2_5 : 1; } x_22_1_2; } x22; }*)arg1 bufferLength:(unsigned long long)arg2 withCompletedSerializationDictionary:(struct NSMutableDictionary { Class x1; }*)arg3;
 - (void)addSelfToSerializationDictionary:(struct NSMutableDictionary { Class x1; }*)arg1;
+- (id)addStack:(id)arg1;
 - (void)addTaskState:(id)arg1;
 - (void)addThread:(id)arg1;
-- (id)addUserStack:(id)arg1;
 - (bool)allowsIdleExit;
 - (bool)alreadyGatheredDataFromLiveProcess;
 - (struct _CSArchitecture { int x1; int x2; })architecture;
@@ -88,22 +89,25 @@
 - (id)binaryLoadInfos;
 - (id)bundleName;
 - (void)checkForBetterName;
-- (bool)correspondsToName:(const char *)arg1 loadInfos:(const struct dyld_uuid_info_64 { unsigned long long x1; unsigned char x2[16]; }*)arg2 numLoadInfos:(unsigned int)arg3 sharedCache:(id)arg4;
-- (bool)correspondsToPid:(int)arg1 name:(const char *)arg2 loadInfos:(const struct dyld_uuid_info_64 { unsigned long long x1; unsigned char x2[16]; }*)arg3 numLoadInfos:(unsigned int)arg4 sharedCache:(id)arg5;
-- (bool)correspondsToUniquePid:(unsigned long long)arg1 name:(const char *)arg2 loadInfos:(const struct dyld_uuid_info_64 { unsigned long long x1; unsigned char x2[16]; }*)arg3 numLoadInfos:(unsigned int)arg4 sharedCache:(id)arg5;
+- (bool)correspondsToName:(const char *)arg1 loadInfos:(const struct dyld_uuid_info_64 { unsigned long long x1; unsigned char x2[16]; }*)arg2 numLoadInfos:(unsigned int)arg3 machineArchitecture:(struct _CSArchitecture { int x1; int x2; })arg4 sharedCache:(id)arg5;
+- (bool)correspondsToPid:(int)arg1 name:(const char *)arg2 loadInfos:(const struct dyld_uuid_info_64 { unsigned long long x1; unsigned char x2[16]; }*)arg3 numLoadInfos:(unsigned int)arg4 machineArchitecture:(struct _CSArchitecture { int x1; int x2; })arg5 sharedCache:(id)arg6;
+- (bool)correspondsToUniquePid:(unsigned long long)arg1 name:(const char *)arg2 loadInfos:(const struct dyld_uuid_info_64 { unsigned long long x1; unsigned char x2[16]; }*)arg3 numLoadInfos:(unsigned int)arg4 machineArchitecture:(struct _CSArchitecture { int x1; int x2; })arg5 sharedCache:(id)arg6;
 - (void)cpuTimeNs:(unsigned long long*)arg1 cpuInstructions:(unsigned long long*)arg2 cpuCycles:(unsigned long long*)arg3 betweenStartTime:(id)arg4 endTime:(id)arg5;
+- (void)dealloc;
 - (id)debugDescription;
 - (id)dispatchQueues;
 - (id)endTimestamp;
-- (void)enumerateFrameTree:(id)arg1 block:(id /* block */)arg2;
+- (void)enumerateFrames:(id /* block */)arg1;
 - (void)enumerateTaskStatesBetweenStartTime:(id)arg1 endTime:(id)arg2 reverseOrder:(bool)arg3 withSampleIndex:(bool)arg4 block:(id /* block */)arg5;
 - (id)execTimestamp;
 - (id)exitTimestamp;
 - (id)firstTaskStateOnOrAfterTime:(id)arg1 withSampleIndex:(bool)arg2;
-- (void)fixupFrameInstructionsInFrameTree:(id)arg1;
+- (void)fixupFrameInstructions;
+- (void)fixupThreadSuspension;
 - (void)forwardFillMonotonicallyIncreasingData;
 - (bool)gatherLoadInfoFromLiveProcessWithDataGatheringOptions:(unsigned long long)arg1;
 - (void)guessArchitectureGivenMachineArchitecture:(struct _CSArchitecture { int x1; int x2; })arg1;
+- (bool)hasExplicitName;
 - (unsigned long long)hash;
 - (unsigned long long)indexOfFirstTaskStateOnOrAfterTime:(id)arg1 withSampleIndex:(bool)arg2;
 - (unsigned long long)indexOfLastTaskStateOnOrBeforeTime:(id)arg1 withSampleIndex:(bool)arg2;
@@ -126,8 +130,8 @@
 - (void)populateReferencesUsingPAStyleSerializedTask:(const struct { unsigned long long x1; int x2; int x3; int x4; unsigned int x5; unsigned long long x6; unsigned long long x7; unsigned long long x8; unsigned long long x9; bool x10; bool x11; bool x12; bool x13; double x14; unsigned long long x15; unsigned long long x16; struct _CSArchitecture { int x_17_1_1; int x_17_1_2; } x17; double x18; bool x19; }*)arg1 andDeserializationDictionary:(id)arg2 andDataBufferDictionary:(id)arg3;
 - (void)postprocessWithDataGatheringOptions:(unsigned long long)arg1 mightBeAlive:(bool)arg2;
 - (int)ppid;
-- (void)removeStacksOutsideThisProcess;
-- (id)rootUserFrames;
+- (id)removeStacksOutsideThisProcess;
+- (id)rootFrames;
 - (int)rpid;
 - (unsigned long long)sampleCountInTimestampRangeStart:(id)arg1 end:(id)arg2;
 - (void)setAlreadyGatheredDataFromLiveProcess:(bool)arg1;
@@ -136,8 +140,10 @@
 - (void)setExitTimestamp:(id)arg1;
 - (void)setMainBinaryPath:(id)arg1;
 - (void)setMainThread:(id)arg1;
+- (void)setName:(id)arg1;
 - (void)setPpid:(int)arg1;
-- (void)setRootUserFrames:(id)arg1;
+- (void)setRootFrames:(id)arg1;
+- (void)setRpid:(int)arg1;
 - (void)setSharedCache:(id)arg1;
 - (id)sharedCache;
 - (unsigned long long)sizeInBytesForSerializedVersion;

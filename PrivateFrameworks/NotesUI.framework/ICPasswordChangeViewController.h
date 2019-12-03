@@ -3,6 +3,7 @@
  */
 
 @interface ICPasswordChangeViewController : UIViewController <ICScrollViewKeyboardResizerDelegate, UITextFieldDelegate> {
+    ICAccount * _account;
     NSArray * _alternateConstraintsForAXLargerTextSizes;
     UIView * _biometricIDContainer;
     NSLayoutConstraint * _biometricIDTopConstraint;
@@ -10,16 +11,18 @@
     UIBarButtonItem * _cancelButton;
     id /* block */  _completionHandler;
     NSArray * _defaultConstraints;
+    bool  _didAttemptToSubmitWithoutHint;
     NSLayoutConstraint * _disclaimerHeightConstraint;
     ICLearnMoreTextView * _disclaimerLabel;
     UIBarButtonItem * _doneButton;
+    UIView * _headerBackground;
     UILabel * _headerLabel;
     UILabel * _hintLabel;
     UITextField * _hintTextField;
     long long  _incorrectPasswordAttempts;
     bool  _isInSettings;
+    bool  _isSettingInitialPassword;
     bool  _isSetupForChangePassword;
-    bool  _isSetupForInitialPassword;
     NSLayoutConstraint * _oldPasswordHeightConstraint;
     UILabel * _oldPasswordLabel;
     UITextField * _oldPasswordTextField;
@@ -29,13 +32,16 @@
     ICPasswordUtilities * _passwordUtilities;
     UIScrollView * _scrollView;
     ICScrollViewKeyboardResizer * _scrollViewResizer;
+    NSArray * _textBackgroundViews;
     UILabel * _useBiometricIDLabel;
     UISwitch * _useBiometricIDSwitch;
     bool  _usingLargerAXSizes;
     UILabel * _verifyLabel;
     UITextField * _verifyTextField;
+    UILabel * _warningLabel;
 }
 
+@property (nonatomic, retain) ICAccount *account;
 @property (nonatomic, retain) NSArray *alternateConstraintsForAXLargerTextSizes;
 @property (nonatomic) UIView *biometricIDContainer;
 @property (nonatomic) NSLayoutConstraint *biometricIDTopConstraint;
@@ -45,17 +51,19 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, retain) NSArray *defaultConstraints;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) bool didAttemptToSubmitWithoutHint;
 @property (nonatomic) NSLayoutConstraint *disclaimerHeightConstraint;
 @property (nonatomic) ICLearnMoreTextView *disclaimerLabel;
 @property (nonatomic) UIBarButtonItem *doneButton;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) UIView *headerBackground;
 @property (nonatomic) UILabel *headerLabel;
 @property (nonatomic) UILabel *hintLabel;
 @property (nonatomic) UITextField *hintTextField;
 @property (nonatomic) long long incorrectPasswordAttempts;
 @property (nonatomic) bool isInSettings;
+@property (nonatomic) bool isSettingInitialPassword;
 @property (nonatomic) bool isSetupForChangePassword;
-@property (nonatomic, readonly) bool isSetupForInitialPassword;
 @property (nonatomic) NSLayoutConstraint *oldPasswordHeightConstraint;
 @property (nonatomic) UILabel *oldPasswordLabel;
 @property (nonatomic) UITextField *oldPasswordTextField;
@@ -67,13 +75,16 @@
 @property (nonatomic) UIScrollView *scrollView;
 @property (nonatomic, retain) ICScrollViewKeyboardResizer *scrollViewResizer;
 @property (readonly) Class superclass;
+@property (nonatomic, retain) NSArray *textBackgroundViews;
 @property (nonatomic) UILabel *useBiometricIDLabel;
 @property (nonatomic) UISwitch *useBiometricIDSwitch;
 @property (nonatomic) bool usingLargerAXSizes;
 @property (nonatomic) UILabel *verifyLabel;
 @property (nonatomic) UITextField *verifyTextField;
+@property (nonatomic) UILabel *warningLabel;
 
 - (void).cxx_destruct;
+- (id)account;
 - (id)alternateConstraintsForAXLargerTextSizes;
 - (id)biometricIDContainer;
 - (id)biometricIDTopConstraint;
@@ -85,19 +96,22 @@
 - (void)contentSizeCategoryDidChange;
 - (void)dealloc;
 - (id)defaultConstraints;
+- (bool)didAttemptToSubmitWithoutHint;
 - (id)disclaimerAttributedString;
 - (id)disclaimerHeightConstraint;
 - (id)disclaimerLabel;
+- (void)dismissKeyboardIfNeeded;
 - (id)doneButton;
 - (void)doneButtonPressed:(id)arg1;
+- (id)headerBackground;
 - (id)headerLabel;
 - (id)hintLabel;
 - (id)hintTextField;
 - (long long)incorrectPasswordAttempts;
 - (id)initWithCompletionHandler:(id /* block */)arg1;
 - (bool)isInSettings;
+- (bool)isSettingInitialPassword;
 - (bool)isSetupForChangePassword;
-- (bool)isSetupForInitialPassword;
 - (id)keyboardResizerScrollView;
 - (id)oldPasswordHeightConstraint;
 - (id)oldPasswordLabel;
@@ -110,6 +124,7 @@
 - (void)resetTextFields;
 - (id)scrollView;
 - (id)scrollViewResizer;
+- (void)setAccount:(id)arg1;
 - (void)setAlternateConstraintsForAXLargerTextSizes:(id)arg1;
 - (void)setBiometricIDContainer:(id)arg1;
 - (void)setBiometricIDTopConstraint:(id)arg1;
@@ -117,14 +132,17 @@
 - (void)setCancelButton:(id)arg1;
 - (void)setCompletionHandler:(id /* block */)arg1;
 - (void)setDefaultConstraints:(id)arg1;
+- (void)setDidAttemptToSubmitWithoutHint:(bool)arg1;
 - (void)setDisclaimerHeightConstraint:(id)arg1;
 - (void)setDisclaimerLabel:(id)arg1;
 - (void)setDoneButton:(id)arg1;
+- (void)setHeaderBackground:(id)arg1;
 - (void)setHeaderLabel:(id)arg1;
 - (void)setHintLabel:(id)arg1;
 - (void)setHintTextField:(id)arg1;
 - (void)setIncorrectPasswordAttempts:(long long)arg1;
 - (void)setIsInSettings:(bool)arg1;
+- (void)setIsSettingInitialPassword:(bool)arg1;
 - (void)setIsSetupForChangePassword:(bool)arg1;
 - (void)setOldPasswordHeightConstraint:(id)arg1;
 - (void)setOldPasswordLabel:(id)arg1;
@@ -135,20 +153,23 @@
 - (void)setPasswordUtilities:(id)arg1;
 - (void)setScrollView:(id)arg1;
 - (void)setScrollViewResizer:(id)arg1;
-- (void)setUpForChangePassword;
-- (void)setUpForInitialPassword;
+- (void)setTextBackgroundViews:(id)arg1;
+- (void)setUpForChangePasswordWithAccount:(id)arg1;
+- (void)setUpForInitialPasswordWithAccount:(id)arg1;
 - (void)setUpNavigationBar;
 - (void)setUseBiometricIDLabel:(id)arg1;
 - (void)setUseBiometricIDSwitch:(id)arg1;
 - (void)setUsingLargerAXSizes:(bool)arg1;
 - (void)setVerifyLabel:(id)arg1;
 - (void)setVerifyTextField:(id)arg1;
+- (void)setWarningLabel:(id)arg1;
 - (void)setupAccessibility;
 - (void)showEnterAPasswordAlert;
 - (void)showOldPasswordIsNotCorrectAlert;
 - (void)showPasswordsDoNotMatchAlert;
 - (void)showSimpleAlertWithTitle:(id)arg1 message:(id)arg2;
 - (void)showUnableToSetPasswordAlert;
+- (id)textBackgroundViews;
 - (bool)textFieldShouldReturn:(id)arg1;
 - (double)topInsetForResizer:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
@@ -163,5 +184,6 @@
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
+- (id)warningLabel;
 
 @end

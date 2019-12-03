@@ -11,8 +11,10 @@
     NSMutableDictionary * _endpointControllersMap;
     MediaControlsHomeObserver * _homeObserver;
     bool  _isRequestingActiveRoute;
-    NSArray * _lastDiffedRoutes;
+    bool  _isUpdatingRoutes;
     NSString * _pendingActiveSystemRouteUID;
+    NSArray * _pendingRoutesToUpdate;
+    MPAVEndpointRoute * _resolvedActiveSystemRoute;
     NSArray * _routes;
     MPAVRoutingController * _routingController;
     NSObject<OS_dispatch_queue> * _serialQueue;
@@ -29,12 +31,14 @@
 @property (nonatomic, readonly) MediaControlsHomeObserver *homeObserver;
 @property (nonatomic, readonly) bool isActiveSystemEndpointEqualToLocalEndpoint;
 @property (nonatomic, readonly, copy) NSString *pendingActiveSystemRouteUID;
+@property (nonatomic, retain) MPAVEndpointRoute *resolvedActiveSystemRoute;
 @property (nonatomic, readonly, copy) NSArray *routes;
 @property (nonatomic, readonly) MPAVRoutingController *routingController;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_activeSystemRouteDidChange:(id)arg1;
+- (id)_createSectionedCollectionFromRoutes:(id)arg1;
 - (id)_endpointControllerContainingOutputDevice:(id)arg1 endpointWrapper:(id*)arg2;
 - (bool)_homeHasRoute:(id)arg1;
 - (long long)_indexOfRouteWithUID:(id)arg1;
@@ -54,11 +58,13 @@
 - (id)initWithConfiguration:(id)arg1;
 - (bool)isActiveSystemEndpointEqualToLocalEndpoint;
 - (id)pendingActiveSystemRouteUID;
+- (id)resolvedActiveSystemRoute;
 - (id)routes;
 - (id)routingController;
 - (void)routingControllerAvailableRoutesDidChange:(id)arg1;
 - (void)setActiveSystemRoute:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDiscoveryMode:(long long)arg1;
+- (void)setResolvedActiveSystemRoute:(id)arg1;
 
 @end

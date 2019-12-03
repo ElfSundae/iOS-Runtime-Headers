@@ -5,6 +5,7 @@
 @interface PLPersistedPersonMetadata : NSObject {
     int  _cloudVerifiedType;
     NSDictionary * _contactMatchingDictionary;
+    bool  _cplEnabled;
     NSArray * _detectedFaces;
     NSString * _displayName;
     long long  _fromVersion;
@@ -39,19 +40,19 @@
 @property (nonatomic) int verifiedType;
 
 + (id)_clusterRejectedFaceIDsWithPerson:(id)arg1;
++ (bool)_deleteMetadataFileForPersonUUID:(id)arg1 metadataURL:(id)arg2;
 + (id)_detectedFacesToArchiveWithPerson:(id)arg1;
 + (id)_fetchFacesWithPredicate:(id)arg1 resultType:(unsigned long long)arg2 managedObjectContext:(id)arg3 error:(id*)arg4;
++ (id)_metadataFileURLForPersonUUID:(id)arg1 pathManager:(id)arg2;
 + (id)_persistedFaceMetadataWithFaces:(id)arg1 keyFace:(id)arg2 clusterRejectedFaceIDs:(id)arg3;
 + (id)_rejectedFacesToArchiveWithPerson:(id)arg1;
-+ (bool)deleteMetadataFileForPersonUUID:(id)arg1;
++ (bool)deleteMetadataFileForPersonUUID:(id)arg1 pathManager:(id)arg2;
 + (bool)isValidPath:(id)arg1;
 + (bool)isValidPath:(id)arg1 outPersonUUID:(id*)arg2;
-+ (id)metadataFileURLForPersonUUID:(id)arg1;
 + (void)performPostImportMigrationFromVersion:(unsigned long long)arg1 fromDataInManagedObjectContext:(id)arg2;
-+ (id)personUUIDsToDedupeWithMetadataURLs:(id)arg1;
++ (id)personUUIDsToDedupeWithMetadataURLs:(id)arg1 cplEnabled:(bool)arg2;
 + (void)updateMergeTargetPersonWithPersonUUIDMapping:(id)arg1 fromDataInManagedObjectContext:(id)arg2;
-+ (id)urlForLegacyHiddenFacesFile;
-+ (id)urlsForPersistedPersonsInLibraryMetadataDirectory;
++ (id)urlsForPersistedPersonsInMetadataDirectoryOfLibrary:(id)arg1;
 
 - (void).cxx_destruct;
 - (void)_addAssetUUIDsFromFaces:(id)arg1 toMutableSet:(id)arg2;
@@ -70,10 +71,10 @@
 - (id)fullName;
 - (bool)hasAllAssetsAvailableInManagedObjectContext:(id)arg1 includePendingAssetChanges:(bool)arg2;
 - (id)init;
-- (id)initWithPLPerson:(id)arg1;
 - (id)initWithPLPerson:(id)arg1 metadataURL:(id)arg2;
-- (id)initWithPersistedDataAtURL:(id)arg1;
-- (id)initWithPersistedDataAtURL:(id)arg1 deferUnarchiving:(bool)arg2;
+- (id)initWithPLPerson:(id)arg1 pathManager:(id)arg2;
+- (id)initWithPersistedDataAtURL:(id)arg1 cplEnabled:(bool)arg2;
+- (id)initWithPersistedDataAtURL:(id)arg1 deferUnarchiving:(bool)arg2 cplEnabled:(bool)arg3;
 - (id)insertPersonFromDataInManagedObjectContext:(id)arg1;
 - (id)jsonDictionary;
 - (short)keyFacePickSource;
@@ -87,6 +88,7 @@
 - (bool)readDetectedFaces;
 - (bool)readMetadata;
 - (id)rejectedFaces;
+- (void)removePersistedData;
 - (void)setCloudVerifiedType:(int)arg1;
 - (void)setContactMatchingDictionary:(id)arg1;
 - (void)setDetectedFaces:(id)arg1;

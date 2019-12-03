@@ -27,6 +27,7 @@
 @property (nonatomic) bool useWallTime;
 
 - (void).cxx_destruct;
+- (void)_afterDelay:(double)arg1 processBlock:(id /* block */)arg2 cancelBlock:(id /* block */)arg3;
 - (void)_reallyCancel;
 - (void)afterDelay:(double)arg1 processBlock:(id /* block */)arg2;
 - (void)afterDelay:(double)arg1 processBlock:(id /* block */)arg2 cancelBlock:(id /* block */)arg3;

@@ -24,7 +24,6 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLookupDictionary:(id)arg1;
-- (id)initWithLookupItemOffer:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)lookupDictionary;
 - (id)offerType;

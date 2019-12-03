@@ -5,9 +5,9 @@
 @interface LOGMSGEVENTRideBookingIntentResponseFailure : PBCodable <NSCopying> {
     int  _failure;
     struct { 
-        unsigned int failure : 1; 
-        unsigned int intent : 1; 
-    }  _has;
+        unsigned int has_failure : 1; 
+        unsigned int has_intent : 1; 
+    }  _flags;
     int  _intent;
 }
 
@@ -15,6 +15,8 @@
 @property (nonatomic) bool hasFailure;
 @property (nonatomic) bool hasIntent;
 @property (nonatomic) int intent;
+
++ (bool)isValid:(id)arg1;
 
 - (int)StringAsFailure:(id)arg1;
 - (int)StringAsIntent:(id)arg1;
@@ -31,6 +33,7 @@
 - (id)intentAsString:(int)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setFailure:(int)arg1;
 - (void)setHasFailure:(bool)arg1;

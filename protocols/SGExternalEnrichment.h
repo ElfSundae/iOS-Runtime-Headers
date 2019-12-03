@@ -6,6 +6,6 @@
 @required
 
 - (void)flushWrites;
-- (void)write;
+- (void)writeWithEntityStore:(SGSqlEntityStore *)arg1;
 
 @end

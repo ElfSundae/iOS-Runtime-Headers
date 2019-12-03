@@ -36,7 +36,7 @@
 - (long long)_persistenceProtectionTypeForRequest:(id)arg1;
 - (id)_protectionQueue;
 - (void)_protectionQueueAbortProtectionForBurstProcessing;
-- (void)_protectionQueueAbortProtectionForNebulaDaemonWrites;
+- (void)_protectionQueueAbortProtectionForNebulaDaemonWritesForReason:(id)arg1;
 - (void)_protectionQueueAbortProtectionForProtectionTypes;
 - (void)_protectionQueueRemoveBurstProcessingProtectionIndicatorForIdentifier:(id)arg1;
 - (void)_protectionQueueRemovePersistenceProtectionIndicatorForType:(long long)arg1 unlinkFile:(bool)arg2 logIdentifier:(id)arg3;
@@ -44,6 +44,7 @@
 - (void)_protectionQueueStartProtectingPersistenceForType:(long long)arg1 logIdentifier:(id)arg2;
 - (void)_protectionQueueStopProtectingNebulaDaemonWritesForIdentifier:(id)arg1 closeFile:(bool)arg2;
 - (void)_protectionQueueStopProtectingPersistenceForType:(long long)arg1 logIdentifier:(id)arg2;
+- (void)abortOutstandingNebulaDaemonWriteProtectionsForReason:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)startProtectingBurstProcessingForIdentifier:(id)arg1;

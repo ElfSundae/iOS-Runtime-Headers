@@ -20,7 +20,6 @@
 
 - (id)audioSettings;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)initWithPreset:(id)arg1;
 - (id)outputFileType;

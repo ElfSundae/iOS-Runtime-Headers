@@ -14,15 +14,18 @@
     bool  _allowsJavaScriptMarkup;
     bool  _allowsMetaRefresh;
     bool  _allowsPictureInPictureMediaPlayback;
-    /* Warning: unhandled struct encoding: '{WeakObjCPtr<WKWebView>="m_weakReference"@}' */ struct WeakObjCPtr<WKWebView> { 
+    struct WeakObjCPtr<WKWebView> { 
         id m_weakReference; 
     }  _alternateWebViewForNavigationGestures;
     bool  _applePayEnabled;
-    struct LazyInitialized<WTF::RetainPtr<NSString> > { 
-        bool m_isInitialized; 
-        struct RetainPtr<NSString> { 
-            void *m_ptr; 
-        } m_value; 
+    struct Optional<WTF::RetainPtr<NSString> > { 
+        bool init_; 
+        union storage_t<WTF::RetainPtr<NSString> > { 
+            unsigned char dummy_; 
+            struct RetainPtr<NSString> { 
+                void *m_ptr; 
+            } value_; 
+        } storage_; 
     }  _applicationNameForUserAgent;
     bool  _attachmentElementEnabled;
     Class  _attachmentFileWrapperClass;
@@ -36,6 +39,12 @@
     bool  _controlledByAutomation;
     bool  _convertsPositionStyleOnCopy;
     unsigned long long  _dataDetectorTypes;
+    struct LazyInitialized<WTF::RetainPtr<WKWebpagePreferences> > { 
+        bool m_isInitialized; 
+        struct RetainPtr<WKWebpagePreferences> { 
+            void *m_ptr; 
+        } m_value; 
+    }  _defaultWebpagePreferences;
     unsigned long long  _dragLiftDelay;
     bool  _drawsBackground;
     bool  _editableImagesEnabled;
@@ -72,15 +81,17 @@
             void *m_ptr; 
         } m_value; 
     }  _processPool;
-    /* Warning: unhandled struct encoding: '{WeakObjCPtr<WKWebView>="m_weakReference"@}' */ struct WeakObjCPtr<WKWebView> { 
+    struct WeakObjCPtr<WKWebView> { 
         id m_weakReference; 
     }  _relatedWebView;
     bool  _respectsImageOrientation;
     long long  _selectionGranularity;
+    bool  _shouldDecidePolicyBeforeLoadingQuickLookPreview;
     bool  _shouldDeferAsynchronousScriptsUntilAfterDocumentLoad;
     bool  _suppressesIncrementalRendering;
     bool  _systemPreviewEnabled;
     bool  _textInteractionGesturesEnabled;
+    bool  _undoManagerAPIEnabled;
     struct LazyInitialized<WTF::RetainPtr<WKUserContentController> > { 
         bool m_isInitialized; 
         struct RetainPtr<WKUserContentController> { 
@@ -112,8 +123,11 @@
 @property (setter=_setAlwaysRunsAtForegroundPriority:, nonatomic) bool _alwaysRunsAtForegroundPriority;
 @property (setter=_setApplePayEnabled:, nonatomic) bool _applePayEnabled;
 @property (setter=_setApplicationManifest:, nonatomic) _WKApplicationManifest *_applicationManifest;
+@property (nonatomic, readonly) NSString *_applicationNameForDesktopUserAgent;
 @property (setter=_setAttachmentElementEnabled:, nonatomic) bool _attachmentElementEnabled;
 @property (setter=_setAttachmentFileWrapperClass:, nonatomic) Class _attachmentFileWrapperClass;
+@property (setter=_setCanShowWhileLocked:, nonatomic) bool _canShowWhileLocked;
+@property (setter=_setClickInteractionDriverForTesting:, nonatomic) <_UIClickInteractionDriving> *_clickInteractionDriverForTesting;
 @property (setter=_setColorFilterEnabled:, nonatomic) bool _colorFilterEnabled;
 @property (setter=_setContentProviderRegistry:, nonatomic) WKWebViewContentProviderRegistry *_contentProviderRegistry;
 @property (getter=_isControlledByAutomation, setter=_setControlledByAutomation:, nonatomic) bool _controlledByAutomation;
@@ -139,10 +153,12 @@
 @property (setter=_setRequiresUserActionForAudioPlayback:, nonatomic) bool _requiresUserActionForAudioPlayback;
 @property (setter=_setRequiresUserActionForVideoPlayback:, nonatomic) bool _requiresUserActionForVideoPlayback;
 @property (setter=_setRespectsImageOrientation:, nonatomic) bool _respectsImageOrientation;
+@property (setter=_setShouldDecidePolicyBeforeLoadingQuickLookPreview:, nonatomic) bool _shouldDecidePolicyBeforeLoadingQuickLookPreview;
 @property (setter=_setShouldDeferAsynchronousScriptsUntilAfterDocumentLoad:, nonatomic) bool _shouldDeferAsynchronousScriptsUntilAfterDocumentLoad;
 @property (setter=_setSystemPreviewEnabled:, nonatomic) bool _systemPreviewEnabled;
 @property (setter=_setTextInteractionGesturesEnabled:, nonatomic) bool _textInteractionGesturesEnabled;
 @property (setter=_setTreatsSHA1SignedCertificatesAsInsecure:, nonatomic) bool _treatsSHA1SignedCertificatesAsInsecure;
+@property (setter=_setUndoManagerAPIEnabled:, nonatomic) bool _undoManagerAPIEnabled;
 @property (setter=_setVisitedLinkStore:, nonatomic, retain) _WKVisitedLinkStore *_visitedLinkStore;
 @property (setter=_setWaitsForPaintAfterViewDidMoveToWindow:, nonatomic) bool _waitsForPaintAfterViewDidMoveToWindow;
 @property (setter=_setWebsiteDataStore:, nonatomic, retain) _WKWebsiteDataStore *_websiteDataStore;
@@ -151,6 +167,7 @@
 @property (nonatomic) bool allowsPictureInPictureMediaPlayback;
 @property (nonatomic, copy) NSString *applicationNameForUserAgent;
 @property (nonatomic) unsigned long long dataDetectorTypes;
+@property (nonatomic, copy) WKWebpagePreferences *defaultWebpagePreferences;
 @property (nonatomic) bool ignoresViewportScaleLimits;
 @property (nonatomic) bool mediaPlaybackAllowsAirPlay;
 @property (nonatomic) bool mediaPlaybackRequiresUserAction;
@@ -179,8 +196,11 @@
 - (bool)_alwaysRunsAtForegroundPriority;
 - (bool)_applePayEnabled;
 - (id)_applicationManifest;
+- (id)_applicationNameForDesktopUserAgent;
 - (bool)_attachmentElementEnabled;
 - (Class)_attachmentFileWrapperClass;
+- (bool)_canShowWhileLocked;
+- (id)_clickInteractionDriverForTesting;
 - (bool)_colorFilterEnabled;
 - (id)_contentProviderRegistry;
 - (bool)_convertsPositionStyleOnCopy;
@@ -218,6 +238,8 @@
 - (void)_setApplicationManifest:(id)arg1;
 - (void)_setAttachmentElementEnabled:(bool)arg1;
 - (void)_setAttachmentFileWrapperClass:(Class)arg1;
+- (void)_setCanShowWhileLocked:(bool)arg1;
+- (void)_setClickInteractionDriverForTesting:(id)arg1;
 - (void)_setColorFilterEnabled:(bool)arg1;
 - (void)_setContentProviderRegistry:(id)arg1;
 - (void)_setControlledByAutomation:(bool)arg1;
@@ -243,18 +265,22 @@
 - (void)_setRequiresUserActionForAudioPlayback:(bool)arg1;
 - (void)_setRequiresUserActionForVideoPlayback:(bool)arg1;
 - (void)_setRespectsImageOrientation:(bool)arg1;
+- (void)_setShouldDecidePolicyBeforeLoadingQuickLookPreview:(bool)arg1;
 - (void)_setShouldDeferAsynchronousScriptsUntilAfterDocumentLoad:(bool)arg1;
 - (void)_setSystemPreviewEnabled:(bool)arg1;
 - (void)_setTextInteractionGesturesEnabled:(bool)arg1;
 - (void)_setTreatsSHA1SignedCertificatesAsInsecure:(bool)arg1;
+- (void)_setUndoManagerAPIEnabled:(bool)arg1;
 - (void)_setVisitedLinkProvider:(id)arg1;
 - (void)_setVisitedLinkStore:(id)arg1;
 - (void)_setWaitsForPaintAfterViewDidMoveToWindow:(bool)arg1;
 - (void)_setWebsiteDataStore:(id)arg1;
+- (bool)_shouldDecidePolicyBeforeLoadingQuickLookPreview;
 - (bool)_shouldDeferAsynchronousScriptsUntilAfterDocumentLoad;
 - (bool)_systemPreviewEnabled;
 - (bool)_textInteractionGesturesEnabled;
 - (bool)_treatsSHA1SignedCertificatesAsInsecure;
+- (bool)_undoManagerAPIEnabled;
 - (id)_visitedLinkProvider;
 - (id)_visitedLinkStore;
 - (bool)_waitsForPaintAfterViewDidMoveToWindow;
@@ -266,6 +292,7 @@
 - (struct Ref<API::PageConfiguration, WTF::DumbPtrTraits<API::PageConfiguration> > { struct PageConfiguration {} *x1; })copyPageConfiguration;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned long long)dataDetectorTypes;
+- (id)defaultWebpagePreferences;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (bool)ignoresViewportScaleLimits;
@@ -283,6 +310,7 @@
 - (void)setAllowsPictureInPictureMediaPlayback:(bool)arg1;
 - (void)setApplicationNameForUserAgent:(id)arg1;
 - (void)setDataDetectorTypes:(unsigned long long)arg1;
+- (void)setDefaultWebpagePreferences:(id)arg1;
 - (void)setIgnoresViewportScaleLimits:(bool)arg1;
 - (void)setMediaPlaybackAllowsAirPlay:(bool)arg1;
 - (void)setMediaPlaybackRequiresUserAction:(bool)arg1;

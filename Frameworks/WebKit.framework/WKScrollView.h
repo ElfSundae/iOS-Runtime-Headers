@@ -5,11 +5,15 @@
 @interface WKScrollView : UIScrollView {
     bool  _contentInsetAdjustmentBehaviorWasExternallyOverridden;
     WKScrollViewDelegateForwarder * _delegateForwarder;
-    /* Warning: unhandled struct encoding: '{WeakObjCPtr<id<UIScrollViewDelegate> >="m_weakReference"@}' */ struct WeakObjCPtr<id<UIScrollViewDelegate> > { 
+    struct WeakObjCPtr<id<UIScrollViewDelegate> > { 
         id m_weakReference; 
     }  _externalDelegate;
     WKWebView<UIScrollViewDelegate> * _internalDelegate;
     double  _keyboardBottomInsetAdjustment;
+    bool  _scrollEnabledByClient;
+    bool  _scrollEnabledInternal;
+    bool  _zoomEnabledByClient;
+    bool  _zoomEnabledInternal;
 }
 
 @property (nonatomic, readonly) bool _contentInsetAdjustmentBehaviorWasExternallyOverridden;
@@ -24,8 +28,12 @@
 - (double)_rubberBandOffsetForOffset:(double)arg1 maxOffset:(double)arg2 minOffset:(double)arg3 range:(double)arg4 outside:(bool*)arg5;
 - (void)_setContentInsetAdjustmentBehaviorInternal:(long long)arg1;
 - (void)_setContentSizePreservingContentOffsetDuringRubberband:(struct CGSize { double x1; double x2; })arg1;
+- (void)_setScrollEnabledInternal:(bool)arg1;
+- (void)_setZoomEnabledInternal:(bool)arg1;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_systemContentInset;
 - (void)_updateDelegate;
+- (void)_updateScrollability;
+- (void)_updateZoomability;
 - (void)dealloc;
 - (id)delegate;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
@@ -34,5 +42,7 @@
 - (void)setContentInsetAdjustmentBehavior:(long long)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setInternalDelegate:(id)arg1;
+- (void)setScrollEnabled:(bool)arg1;
+- (void)setZoomEnabled:(bool)arg1;
 
 @end

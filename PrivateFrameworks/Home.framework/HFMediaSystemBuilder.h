@@ -10,6 +10,7 @@
     <HFIconDescriptor> * _iconDescriptor;
     bool  _isCreatingMediaSystem;
     bool  _isFavorite;
+    HFNamingComponents * _namingComponent;
     HFRoomBuilder * _roomBuilder;
 }
 
@@ -26,6 +27,7 @@
 @property (nonatomic) bool isFavorite;
 @property (nonatomic, readonly) HMMediaSystem *mediaSystem;
 @property (nonatomic, copy) NSString *name;
+@property (nonatomic, retain) HFNamingComponents *namingComponent;
 @property (nonatomic, readonly) NSString *originalName;
 @property (nonatomic, retain) HFRoomBuilder *room;
 @property (nonatomic, retain) HFRoomBuilder *roomBuilder;
@@ -58,6 +60,7 @@
 - (bool)isFavorite;
 - (id)mediaSystem;
 - (id)name;
+- (id)namingComponent;
 - (id)originalName;
 - (void)removeAccessory:(id)arg1;
 - (id)removeItemFromHome;
@@ -72,6 +75,7 @@
 - (void)setIsFavorite:(bool)arg1;
 - (void)setMediaSystem:(id)arg1;
 - (void)setName:(id)arg1;
+- (void)setNamingComponent:(id)arg1;
 - (void)setRoom:(id)arg1;
 - (void)setRoomBuilder:(id)arg1;
 - (bool)shouldAllowAddingAccessory:(id)arg1;

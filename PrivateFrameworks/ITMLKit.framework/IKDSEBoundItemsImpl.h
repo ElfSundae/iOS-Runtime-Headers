@@ -7,9 +7,9 @@
     IKAppDataSet * _dataSet;
     IKDataSourceElement * _dataSourceElement;
     IKChangeSet * _itemsChangeSet;
-    NSArray * _prototypes;
+    _IKDSEPrototypeBundle * _prototypeBundle;
     NSMutableDictionary * _proxiedItemElementsByItemID;
-    NSDictionary * _usedPrototypesByType;
+    NSDictionary * _usedPrototypeMappingsByIdentifier;
     bool  _visibleIndexRangeIsDirty;
     NSMutableIndexSet * _visibleIndexSet;
 }
@@ -22,17 +22,21 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) NSDictionary *indexTitles;
 @property (nonatomic, retain) IKChangeSet *itemsChangeSet;
-@property (nonatomic, retain) NSArray *prototypes;
+@property (nonatomic, readonly) NSArray *masterPrototypes;
+@property (nonatomic, retain) _IKDSEPrototypeBundle *prototypeBundle;
+@property (nonatomic, readonly) NSArray *prototypes;
 @property (nonatomic, readonly, copy) NSArray *proxiedItemElements;
 @property (nonatomic, retain) NSMutableDictionary *proxiedItemElementsByItemID;
 @property (readonly) Class superclass;
-@property (nonatomic, copy) NSDictionary *usedPrototypesByType;
+@property (nonatomic, copy) NSDictionary *usedPrototypeMappingsByIdentifier;
 @property (nonatomic, retain) NSMutableIndexSet *visibleIndexSet;
 
 + (bool)_canProxiedItemElementsBeUpdatedWithLoadedElements;
 
 - (void).cxx_destruct;
 - (void)_appendVisibleIndexSetWithIndex:(long long)arg1;
+- (id)_elementForItemAtIndex:(long long)arg1;
+- (id)_prototypeMappingForItemAtIndex:(long long)arg1;
 - (void)applyUpdatesWithImplementation:(id)arg1 usingUpdater:(id /* block */)arg2;
 - (bool)canProxyUnloadedChildElement:(id)arg1;
 - (id)childrenByItemID;
@@ -47,7 +51,10 @@
 - (void)initializeWithElementFactory:(id)arg1;
 - (id)itemsChangeSet;
 - (void)loadIndex:(long long)arg1;
+- (id)masterPrototypeForItemAtIndex:(unsigned long long)arg1;
+- (id)masterPrototypes;
 - (long long)numberOfItems;
+- (id)prototypeBundle;
 - (id)prototypeForItemAtIndex:(long long)arg1;
 - (id)prototypes;
 - (id)proxiedItemElements;
@@ -58,14 +65,14 @@
 - (void)setChildrenByItemID:(id)arg1;
 - (void)setDataSet:(id)arg1;
 - (void)setItemsChangeSet:(id)arg1;
-- (void)setPrototypes:(id)arg1;
+- (void)setPrototypeBundle:(id)arg1;
 - (void)setProxiedItemElementsByItemID:(id)arg1;
-- (void)setUsedPrototypesByType:(id)arg1;
+- (void)setUsedPrototypeMappingsByIdentifier:(id)arg1;
 - (void)setVisibleIndexSet:(id)arg1;
 - (void)teardown;
 - (void)unloadIndex:(long long)arg1;
 - (void)updateStylesUsingUpdater:(id /* block */)arg1;
-- (id)usedPrototypesByType;
+- (id)usedPrototypeMappingsByIdentifier;
 - (id)visibleIndexSet;
 
 @end

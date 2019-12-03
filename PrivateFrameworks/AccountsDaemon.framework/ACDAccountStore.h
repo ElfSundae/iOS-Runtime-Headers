@@ -2,35 +2,36 @@
    Image: /System/Library/PrivateFrameworks/AccountsDaemon.framework/AccountsDaemon
  */
 
-@interface ACDAccountStore : ACAccountStore <ACDAccountStoreProtocol> {
+@interface ACDAccountStore : ACAccountStore <ACRemoteAccountStoreProtocol> {
     ACDAccessPluginManager * _accessPluginManager;
     NSMutableArray * _accountChanges;
+    ACDAccountNotifier * _accountNotifier;
     ACDAuthenticationDialogManager * _authenticationDialogManager;
     ACDAuthenticationPluginManager * _authenticationPluginManager;
     ACDClientAuthorizationManager * _authorizationManager;
     ACDClient * _client;
-    ACDDatabase * _database;
     ACDDatabaseBackupActivity * _databaseBackupActivity;
+    ACDDatabaseConnection * _databaseConnection;
     ACDDataclassOwnersManager * _dataclassOwnersManager;
     <ACDAccountStoreDelegate> * _delegate;
     ACDFakeRemoteAccountStoreSession * _fakeRemoteAccountStoreSession;
-    ACDAccountStoreFilter * _filter;
     bool  _migrationInProgress;
     bool  _notificationsEnabled;
     ACRemoteDeviceProxy * _remoteDeviceProxy;
 }
 
 @property (nonatomic, retain) ACDAccessPluginManager *accessPluginManager;
+@property (nonatomic, retain) ACDAccountNotifier *accountNotifier;
 @property (nonatomic, retain) ACDAuthenticationDialogManager *authenticationDialogManager;
 @property (nonatomic, retain) ACDAuthenticationPluginManager *authenticationPluginManager;
 @property (nonatomic, readonly) ACDClientAuthorizationManager *authorizationManager;
 @property (nonatomic) ACDClient *client;
 @property (nonatomic, retain) ACDDatabaseBackupActivity *databaseBackupActivity;
+@property (nonatomic, readonly) ACDDatabaseConnection *databaseConnection;
 @property (nonatomic, retain) ACDDataclassOwnersManager *dataclassOwnersManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <ACDAccountStoreDelegate> *delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) ACDAccountStoreFilter *filter;
 @property (readonly) unsigned long long hash;
 @property (getter=isMigrationInProgress, nonatomic) bool migrationInProgress;
 @property (nonatomic) bool notificationsEnabled;
@@ -45,7 +46,7 @@
 - (id)_addAccountNoSave:(id)arg1 withDataclassActions:(id)arg2 error:(id*)arg3;
 - (id)_allAccounts_sync;
 - (bool)_canManagedAccountType:(id)arg1 syncManagedDataclass:(id)arg2;
-- (bool)_canSaveAccount:(id)arg1;
+- (bool)_canSaveAccount:(id)arg1 error:(id*)arg2;
 - (id)_childAccountsForAccountWithID:(id)arg1;
 - (id)_clientTokenForAccountIdentifier:(id)arg1 error:(id)arg2;
 - (id)_clientTokenQueue;
@@ -76,6 +77,7 @@
 - (void)accountIdentifiersEnabledForDataclass:(id)arg1 handler:(id /* block */)arg2;
 - (void)accountIdentifiersEnabledForDataclasses:(id)arg1 withAccountTypeIdentifiers:(id)arg2 completion:(id /* block */)arg3;
 - (void)accountIdentifiersEnabledToSyncDataclass:(id)arg1 handler:(id /* block */)arg2;
+- (id)accountNotifier;
 - (id)accountTypeWithIdentifier:(id)arg1;
 - (void)accountTypeWithIdentifier:(id)arg1 handler:(id /* block */)arg2;
 - (void)accountTypesWithHandler:(id /* block */)arg1;
@@ -106,20 +108,20 @@
 - (void)credentialItemForAccount:(id)arg1 serviceName:(id)arg2 completion:(id /* block */)arg3;
 - (void)credentialItemsWithCompletion:(id /* block */)arg1;
 - (id)databaseBackupActivity;
+- (id)databaseConnection;
 - (void)dataclassActionsForAccountDeletion:(id)arg1 completion:(id /* block */)arg2;
 - (void)dataclassActionsForAccountSave:(id)arg1 completion:(id /* block */)arg2;
 - (id)dataclassOwnersManager;
 - (void)dataclassesWithHandler:(id /* block */)arg1;
 - (id)delegate;
 - (void)deleteAccountNoSave:(id)arg1 error:(id*)arg2;
-- (void)disconnectFromRemoteAccountStore;
 - (void)discoverPropertiesForAccount:(id)arg1 options:(id)arg2 completion:(id /* block */)arg3;
 - (void)displayAccountTypeForAccountWithIdentifier:(id)arg1 handler:(id /* block */)arg2;
 - (void)enabledDataclassesForAccountWithIdentifier:(id)arg1 handler:(id /* block */)arg2;
-- (id)filter;
 - (void)grantedPermissionsForAccountType:(id)arg1 withHandler:(id /* block */)arg2;
 - (void)handleURL:(id)arg1;
-- (id)initWithClient:(id)arg1;
+- (id)init;
+- (id)initWithClient:(id)arg1 databaseConnection:(id)arg2;
 - (void)insertAccountType:(id)arg1 withHandler:(id /* block */)arg2;
 - (void)insertCredentialItem:(id)arg1 completion:(id /* block */)arg2;
 - (bool)isMigrationInProgress;
@@ -127,6 +129,7 @@
 - (void)isPushSupportedForAccount:(id)arg1 completion:(id /* block */)arg2;
 - (void)isTetheredSyncingEnabledForDataclass:(id)arg1 completion:(id /* block */)arg2;
 - (void)kerberosAccountsForDomainFromURL:(id)arg1 completion:(id /* block */)arg2;
+- (id)longLivedRemoteAccountStoreSession;
 - (id)masterCredentialForAccountIdentifier:(id)arg1;
 - (bool)notificationsEnabled;
 - (void)notifyRemoteDevicesOfModifiedAccount:(id)arg1 withChangeType:(id)arg2;
@@ -151,7 +154,9 @@
 - (void)saveAccount:(id)arg1 verify:(bool)arg2 dataclassActions:(id)arg3 completion:(id /* block */)arg4;
 - (void)saveAccount:(id)arg1 withHandler:(id /* block */)arg2;
 - (void)saveCredentialItem:(id)arg1 completion:(id /* block */)arg2;
+- (void)scheduleBackupIfNonexistent:(id /* block */)arg1;
 - (void)setAccessPluginManager:(id)arg1;
+- (void)setAccountNotifier:(id)arg1;
 - (void)setAuthenticationDialogManager:(id)arg1;
 - (void)setAuthenticationPluginManager:(id)arg1;
 - (void)setClient:(id)arg1;
@@ -160,7 +165,6 @@
 - (void)setDatabaseBackupActivity:(id)arg1;
 - (void)setDataclassOwnersManager:(id)arg1;
 - (void)setDelegate:(id)arg1;
-- (void)setFilter:(id)arg1;
 - (void)setMigrationInProgress:(bool)arg1;
 - (void)setNotificationsEnabled:(bool)arg1;
 - (void)setPermissionGranted:(id)arg1 forBundleID:(id)arg2 onAccountType:(id)arg3 withHandler:(id /* block */)arg4;

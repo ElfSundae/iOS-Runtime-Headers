@@ -16,10 +16,10 @@
 + (int)blipTypeForImageData:(id)arg1;
 + (id)inflatedExtensionForGzippedExtension:(id)arg1;
 
+- (void).cxx_destruct;
 - (void)addEffect:(id)arg1;
 - (id)blip;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)effectAtIndex:(unsigned long long)arg1;
 - (unsigned long long)effectCount;

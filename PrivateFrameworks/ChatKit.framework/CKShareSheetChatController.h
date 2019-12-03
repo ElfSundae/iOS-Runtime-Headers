@@ -12,6 +12,7 @@
 - (void)_beginInteractionSignPost;
 - (void)_endInteractionSignPost;
 - (bool)alreadySetUp;
+- (void)insertInitialCompositionIfNeeded;
 - (void)keyboardDidChangeFrame:(id)arg1;
 - (void)sendComposition:(id)arg1;
 - (void)setAlreadySetUp:(bool)arg1;

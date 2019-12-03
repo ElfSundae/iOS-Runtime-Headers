@@ -6,14 +6,14 @@
     UIView * _browserSnapshotView;
     UIView * _extensionInterruptedView;
     IMBalloonPlugin * _plugin;
-    NSString * _snapshotCacheKey;
+    CKSnapshotCacheKey * _snapshotCacheKey;
     bool  _usingFallbackSnapshot;
 }
 
 @property (nonatomic, retain) UIView *browserSnapshotView;
 @property (nonatomic, retain) UIView *extensionInterruptedView;
 @property (nonatomic, retain) IMBalloonPlugin *plugin;
-@property (nonatomic, retain) NSString *snapshotCacheKey;
+@property (nonatomic, retain) CKSnapshotCacheKey *snapshotCacheKey;
 @property (getter=isUsingFallbackSnapshot, nonatomic) bool usingFallbackSnapshot;
 
 + (id)identifier;

@@ -3,7 +3,7 @@
  */
 
 @interface WKProcessPool : NSObject <NSSecureCoding, WKObject> {
-    /* Warning: unhandled struct encoding: '{WeakObjCPtr<id<_WKAutomationDelegate> >="m_weakReference"@}' */ struct WeakObjCPtr<id<_WKAutomationDelegate> > { 
+    struct WeakObjCPtr<id<_WKAutomationDelegate> > { 
         id m_weakReference; 
     }  _automationDelegate;
     struct RetainPtr<_WKAutomationSession> { 
@@ -12,7 +12,7 @@
     struct RetainPtr<id<_WKGeolocationCoreLocationProvider> > { 
         void *m_ptr; 
     }  _coreLocationProvider;
-    /* Warning: unhandled struct encoding: '{WeakObjCPtr<id<_WKDownloadDelegate> >="m_weakReference"@}' */ struct WeakObjCPtr<id<_WKDownloadDelegate> > { 
+    struct WeakObjCPtr<id<_WKDownloadDelegate> > { 
         id m_weakReference; 
     }  _downloadDelegate;
     struct RetainPtr<WKGeolocationProviderIOS> { 
@@ -20,12 +20,12 @@
     }  _geolocationProvider;
     struct ObjectStorage<WebKit::WebProcessPool> { 
         struct type { 
-            unsigned char __lx[1464]; 
+            unsigned char __lx[1560]; 
         } data; 
     }  _processPool;
 }
 
-@property (readonly) /* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*_apiObject;
+@property (readonly) struct Object { int (**x1)(); id x2; }*_apiObject;
 @property (setter=_setAutomationDelegate:, nonatomic) <_WKAutomationDelegate> *_automationDelegate;
 @property (nonatomic, readonly) _WKProcessPoolConfiguration *_configuration;
 @property (getter=_isCookieStoragePartitioningEnabled, setter=_setCookieStoragePartitioningEnabled:, nonatomic) bool _cookieStoragePartitioningEnabled;
@@ -50,9 +50,10 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_addSupportedPlugin:(id)arg1 named:(id)arg2 withMimeTypes:(id)arg3 withExtensions:(id)arg4;
-- (/* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*)_apiObject;
+- (struct Object { int (**x1)(); id x2; }*)_apiObject;
 - (void)_automationCapabilitiesDidChange;
 - (id)_automationDelegate;
+- (void)_clearPermanentCredentialsForProtectionSpace:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)_clearSupportedPlugins;
 - (id)_configuration;
 - (id)_coreLocationProvider;
@@ -73,10 +74,14 @@
 - (id)_objectForBundleParameter:(id)arg1;
 - (unsigned long long)_pluginProcessCount;
 - (void)_preconnectToServer:(id)arg1;
+- (int)_prewarmedProcessIdentifier;
 - (unsigned long long)_processCacheCapacity;
+- (unsigned long long)_processCacheSize;
 - (void)_registerURLSchemeAsCanDisplayOnlyIfCanRequest:(id)arg1;
 - (void)_registerURLSchemeServiceWorkersCanHandle:(id)arg1;
 - (id)_resumeDownloadFromData:(id)arg1 path:(id)arg2 originatingWebView:(id)arg3;
+- (void)_sendNetworkProcessDidResume;
+- (void)_sendNetworkProcessWillSuspendImminently;
 - (unsigned long long)_serviceWorkerProcessCount;
 - (void)_setAllowsAnySSLCertificateForServiceWorker:(bool)arg1;
 - (void)_setAllowsSpecificHTTPSCertificate:(id)arg1 forHost:(id)arg2;
@@ -87,11 +92,11 @@
 - (void)_setCookieStoragePartitioningEnabled:(bool)arg1;
 - (void)_setCoreLocationProvider:(id)arg1;
 - (void)_setDownloadDelegate:(id)arg1;
-- (void)_setMaximumNumberOfProcesses:(unsigned long long)arg1;
 - (void)_setObject:(id)arg1 forBundleParameter:(id)arg2;
 - (void)_setObjectsForBundleParametersWithDictionary:(id)arg1;
 - (void)_setStorageAccessAPIEnabled:(bool)arg1;
 - (void)_syncNetworkProcessCookies;
+- (void)_synthesizeAppIsBackground:(bool)arg1;
 - (void)_terminateNetworkProcess;
 - (void)_terminateServiceWorkerProcesses;
 - (void)_warmInitialProcess;

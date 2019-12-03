@@ -2,31 +2,16 @@
    Image: /System/Library/Frameworks/CoreData.framework/CoreData
  */
 
-@interface NSCKImportOperation : NSObject {
-    NSData * _changeTokenBytes;
-    NSDate * _importDate;
-    NSSet * _mirroredRelationships;
-    NSUUID * _operationUUID;
-    NSSet * _pendingRelationships;
-}
+@interface NSCKImportOperation : NSManagedObject
 
-@property (nonatomic, readonly) NSData *changeTokenBytes;
-@property (nonatomic, readonly) NSDate *importDate;
-@property (nonatomic, readonly) NSSet *mirroredRelationships;
-@property (nonatomic, readonly) NSUUID *operationUUID;
-@property (nonatomic, readonly) NSSet *pendingRelationships;
+@property (nonatomic, retain) NSData *changeTokenBytes;
+@property (nonatomic, retain) NSDate *importDate;
+@property (nonatomic, retain) NSUUID *operationUUID;
+@property (nonatomic, retain) NSSet *pendingRelationships;
 
-- (void)_addPendingRelationship:(id)arg1;
-- (id)changeTokenBytes;
-- (void)dealloc;
-- (id)description;
-- (id)importDate;
-- (id)init;
-- (id)initWithFetchResult:(id)arg1 andSQLEntity:(id)arg2;
-- (id)mirroredRelationships;
-- (id)operationUUID;
-- (id)pendingRelationships;
-- (void)setBindValue:(id)arg1;
-- (void)setChangeToken:(id)arg1;
++ (id)entityPath;
++ (id)fetchOperationWithIdentifier:(id)arg1 fromStore:(id)arg2 inManagedObjectContext:(id)arg3 error:(id*)arg4;
++ (id)fetchUnfinishedImportOperationsInStore:(id)arg1 withManagedObjectContext:(id)arg2 error:(id*)arg3;
++ (bool)purgeFinishedImportOperationsInStore:(id)arg1 withManagedObjectContext:(id)arg2 error:(id*)arg3;
 
 @end

@@ -15,7 +15,6 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSString *input;
 @property (nonatomic, readonly) NSData *jsonData;
-@property (nonatomic, readonly) bool requiresQueryId;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long timestamp;
 @property (nonatomic) int triggerEvent;
@@ -31,7 +30,6 @@
 - (bool)isEqual:(id)arg1;
 - (id)jsonData;
 - (bool)readFrom:(id)arg1;
-- (bool)requiresQueryId;
 - (void)setInput:(id)arg1;
 - (void)setTimestamp:(unsigned long long)arg1;
 - (void)setTriggerEvent:(int)arg1;

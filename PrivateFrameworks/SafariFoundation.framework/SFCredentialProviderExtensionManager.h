@@ -6,11 +6,13 @@
     bool  _errorEncounteredDuringLastExtensionDiscovery;
     id  _extensionMatchingToken;
     NSSet * _extensions;
+    NSSet * _extensionsSync;
     NSMutableOrderedSet * _observers;
     NSObject<OS_dispatch_queue> * _queue;
 }
 
 @property (nonatomic, readonly) NSSet *extensions;
+@property (nonatomic, readonly) NSSet *extensionsSync;
 @property (nonatomic, readonly) NSExtension *primaryExtension;
 @property (nonatomic, readonly) NSExtension *primaryExtensionSync;
 
@@ -29,6 +31,7 @@
 - (id)displayNameForExtension:(id)arg1;
 - (bool)extensionIsEnabled:(id)arg1;
 - (id)extensions;
+- (id)extensionsSync;
 - (void)getPrimaryExtensionWithCompletion:(id /* block */)arg1;
 - (id)init;
 - (id)primaryExtension;

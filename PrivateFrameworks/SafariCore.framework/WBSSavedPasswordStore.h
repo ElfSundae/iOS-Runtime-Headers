@@ -35,6 +35,7 @@
 - (bool)hasPasswordsEligibleForAutoFill;
 - (id)highLevelDomainsOfAllSavedPasswordsExcludingNeverSaveMarkerPasswords;
 - (id)init;
+- (id)persistentIdentifierForCredential:(id)arg1 protectionSpace:(id)arg2;
 - (void)removePassword:(id)arg1;
 - (void)removeSite:(id)arg1 fromPassword:(id)arg2 withCompletion:(id /* block */)arg3;
 - (void)reset;

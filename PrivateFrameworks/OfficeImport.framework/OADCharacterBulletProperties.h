@@ -6,8 +6,8 @@
     NSString * mBullet;
 }
 
+- (void).cxx_destruct;
 - (id)bullet;
-- (void)dealloc;
 - (unsigned long long)hash;
 - (id)initWithBullet:(id)arg1;
 - (bool)isEqual:(id)arg1;

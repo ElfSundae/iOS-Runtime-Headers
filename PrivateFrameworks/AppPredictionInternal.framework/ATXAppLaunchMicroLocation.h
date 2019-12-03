@@ -6,7 +6,6 @@
     _ATXDuetHelper * _duetHelper;
     _PASLock * _lock;
     NSString * _path;
-    NSObject<OS_dispatch_queue> * _queue;
 }
 
 - (void).cxx_destruct;
@@ -14,11 +13,10 @@
 - (id)_getAppLaunchCorrelationMatrix;
 - (id)_getHistoricalData;
 - (void)_receivedNotificationOfNewMicroLocation;
-- (void)_runOnQueue:(id /* block */)arg1;
 - (void)_subscribeToDKInsertionEvents;
 - (void)_writeAppLaunchCorrelationMatrix:(id)arg1 actionKeyCorrelationMatrix:(id)arg2;
 - (id)init;
-- (id)initWithDuetHelper:(id)arg1 directory:(id)arg2;
+- (id)initWithDuetHelper:(id)arg1 directory:(id)arg2 forTesting:(bool)arg3;
 - (bool)loadCorrelationMatrices;
 - (double)popularityAtCurrentMicroLocationForActionKey:(id)arg1;
 - (double)popularityAtCurrentMicroLocationForApp:(id)arg1;

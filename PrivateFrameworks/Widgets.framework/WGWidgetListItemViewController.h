@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/Widgets.framework/Widgets
  */
 
-@interface WGWidgetListItemViewController : UIViewController {
+@interface WGWidgetListItemViewController : UIViewController <PLContentSizeCategoryAdjusting> {
     <WGWidgetHostingViewControllerDelegate><WGWidgetListItemViewControllerDelegate> * _delegate;
     struct CGSize { 
         double width; 
@@ -12,18 +12,27 @@
     NSString * _widgetIdentifier;
 }
 
+@property (nonatomic) bool adjustsFontForContentSizeCategory;
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <WGWidgetHostingViewControllerDelegate><WGWidgetListItemViewControllerDelegate> *delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (getter=_pendingSize, setter=_setPendingSize:, nonatomic) struct CGSize { double x1; double x2; } pendingSize;
 @property (nonatomic, readonly) WGWidgetPlatterView *platterView;
+@property (nonatomic, copy) NSString *preferredContentSizeCategory;
+@property (readonly) Class superclass;
 @property (nonatomic, readonly) WGWidgetHostingViewController *widgetHost;
 @property (nonatomic, readonly, copy) NSString *widgetIdentifier;
 
 - (void).cxx_destruct;
 - (void)_addWidgetHostIfNecessary;
+- (bool)_canShowWhileLocked;
 - (struct CGSize { double x1; double x2; })_pendingSize;
 - (id)_platterViewIfLoaded;
 - (id)_platterViewLoadingIfNecessary:(bool)arg1;
 - (void)_setPendingSize:(struct CGSize { double x1; double x2; })arg1;
+- (bool)adjustForContentSizeCategoryChange;
+- (bool)adjustsFontForContentSizeCategory;
 - (struct CGSize { double x1; double x2; })contentSizeForPreferredContentSize:(struct CGSize { double x1; double x2; })arg1;
 - (id)delegate;
 - (id)description;
@@ -35,6 +44,7 @@
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (struct CGSize { double x1; double x2; })preferredContentSizeForContentOfSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)removeChildViewController:(id)arg1;
+- (void)setAdjustsFontForContentSizeCategory:(bool)arg1;
 - (void)setDelegate:(id)arg1;
 - (bool)shouldAutomaticallyForwardAppearanceMethods;
 - (struct CGSize { double x1; double x2; })sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize { double x1; double x2; })arg2;

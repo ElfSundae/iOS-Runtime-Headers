@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/ARKit.framework/ARKit
  */
 
-@interface ARAccelerometerData : NSObject <ARDictionaryCoding, ARMutableSensorData, NSSecureCoding> {
+@interface ARAccelerometerData : NSObject <ARDictionaryCoding, ARMetadataWrapperCoding, ARMutableSensorData, NSSecureCoding> {
     struct { 
         double x; 
         double y; 
@@ -25,9 +25,12 @@
 - (struct { double x1; double x2; double x3; })acceleration;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)encodeToDictionary;
+- (id)encodeToMetadataWrapper;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
+- (id)initWithMetadataWrapper:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)setAcceleration:(struct { double x1; double x2; double x3; })arg1;
 - (void)setTemperature:(double)arg1;

@@ -3,16 +3,27 @@
  */
 
 @interface AVTPhysicsController : NSObject {
+    <AVTPhysicsControllerDelegate> * _delegate;
     bool  _firstFrameRendered;
     NSMutableArray * _physicsRigs;
     bool  _setupDone;
 }
 
+@property (nonatomic) <AVTPhysicsControllerDelegate> *delegate;
+
 - (void).cxx_destruct;
-- (void)_setupPhysicsChain:(id)arg1 scene:(id)arg2;
-- (void)applyForces:(double)arg1;
-- (void)getPhysicsOffsetOfNode:(id)arg1 relativeToNode:(id)arg2;
-- (void)setupWithAvatarNode:(id)arg1 scene:(id)arg2 downforceNodeCheck:(id /* block */)arg3;
-- (void)updateAtTime:(double)arg1 avatarNode:(id)arg2 scene:(id)arg3 forceMultiplier:(double)arg4 downforceNodeCheck:(id /* block */)arg5;
+- (void)_setupCollisionNode:(id)arg1;
+- (void)_setupPhysicsChain:(id)arg1;
+- (void)applyForcesWithMultiplier:(double)arg1;
+- (id)delegate;
+- (void)downforcesDidChange;
+- (void)offsetFromRestingPositionForNode:(id)arg1 inCoordinateSpaceOfNode:(id)arg2;
+- (id)physicsState;
+- (void)resetToPhysicsState:(id)arg1;
+- (void)setDelegate:(id)arg1;
+- (void)setupPhysics;
+- (void)setupPhysicsDebugNodes;
+- (void)setupPhysicsIfNeeded;
+- (void)updateAtTime:(double)arg1 forceMultiplier:(double)arg2;
 
 @end

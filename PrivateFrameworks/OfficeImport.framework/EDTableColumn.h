@@ -14,9 +14,9 @@
 
 + (id)tableColumnWithResources:(id)arg1;
 
+- (void).cxx_destruct;
 - (id)dataAreaDxf;
 - (unsigned long long)dataAreaDxfIndex;
-- (void)dealloc;
 - (id)description;
 - (id)headerRowDxf;
 - (unsigned long long)headerRowDxfIndex;

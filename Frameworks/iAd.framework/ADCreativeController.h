@@ -39,6 +39,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) bool tapWasRecognized;
 
+- (void).cxx_destruct;
 - (void)_callLoadCompletionWithError:(id)arg1;
 - (id)_customUserAgentString;
 - (id)_incrementCreativeIdentifier;
@@ -85,6 +86,7 @@
 - (void)setTapWasRecognized:(bool)arg1;
 - (bool)shouldBlockNavigation;
 - (bool)tapWasRecognized;
+- (void)tearDown;
 - (void)unregisterExportedObjectInterface;
 - (void)webProcessMRAIDJSODidCallClose;
 - (void)webProcessMRAIDJSODidCallCreateCalendarEvent:(id)arg1;

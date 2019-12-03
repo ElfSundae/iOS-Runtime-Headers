@@ -5,7 +5,6 @@
 
 @required
 
-- (void)heySiri:(WPHeySiri *)arg1 foundDevice:(NSUUID *)arg2 withData:(NSData *)arg3;
 - (void)heySiriDidUpdateState:(WPHeySiri *)arg1;
 
 @optional

@@ -8,6 +8,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, copy) NSString *jsonEncodedIntent;
 @property (nonatomic, copy) NSDictionary *slotResolutionMap;
 @property (nonatomic, copy) NSArray *stepResults;
 @property (readonly) Class superclass;
@@ -19,7 +20,9 @@
 - (id)base64EncodedIntent;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+- (id)jsonEncodedIntent;
 - (void)setBase64EncodedIntent:(id)arg1;
+- (void)setJsonEncodedIntent:(id)arg1;
 - (void)setSlotResolutionMap:(id)arg1;
 - (void)setStepResults:(id)arg1;
 - (void)setTypeName:(id)arg1;

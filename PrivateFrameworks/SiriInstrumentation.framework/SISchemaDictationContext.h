@@ -2,23 +2,25 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaDictationContext : PBCodable <NSCopying> {
+@interface SISchemaDictationContext : PBCodable <NSSecureCoding, SISchemaDictationContext> {
     NSString * _keyboardLanguage;
 }
 
-@property (nonatomic, readonly) bool hasKeyboardLanguage;
-@property (nonatomic, retain) NSString *keyboardLanguage;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) NSData *jsonData;
+@property (nonatomic, copy) NSString *keyboardLanguage;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (bool)hasKeyboardLanguage;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (bool)isEqual:(id)arg1;
+- (id)jsonData;
 - (id)keyboardLanguage;
-- (void)mergeFrom:(id)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setKeyboardLanguage:(id)arg1;
 - (void)writeTo:(id)arg1;

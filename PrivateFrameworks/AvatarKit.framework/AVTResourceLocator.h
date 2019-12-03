@@ -4,6 +4,7 @@
 
 @interface AVTResourceLocator : NSObject {
     NSURL * _componentsURL;
+    NSMutableDictionary * _imageCache;
     NSURL * _resourcesURL;
 }
 
@@ -15,12 +16,15 @@
 @property (readonly) NSURL *presetThumbnailsURL;
 @property (readonly) NSURL *propsURL;
 @property (readonly) NSURL *resourcesURL;
+@property (readonly) NSURL *stickerResourcesURL;
 
 + (id)sharedResourceLocator;
 
 - (void).cxx_destruct;
 - (id)animojiResourcesURL;
 - (id)componentsURL;
+- (struct CGImage { }*)imageWithPath:(id)arg1;
+- (id)init;
 - (id)maskImagesURL;
 - (id)materialsURL;
 - (id)memojiResourcesURL;
@@ -28,8 +32,11 @@
 - (id)pathForAnimojiResource:(id)arg1 ofType:(id)arg2 inDirectory:(id)arg3;
 - (id)pathForMemojiResource:(id)arg1 ofType:(id)arg2;
 - (id)pathForMemojiResource:(id)arg1 ofType:(id)arg2 inDirectory:(id)arg3;
+- (id)pathForStickerResource:(id)arg1 ofType:(id)arg2;
+- (id)pathForStickerResource:(id)arg1 ofType:(id)arg2 inDirectory:(id)arg3;
 - (id)presetThumbnailsURL;
 - (id)propsURL;
 - (id)resourcesURL;
+- (id)stickerResourcesURL;
 
 @end

@@ -9,7 +9,7 @@
 + (Class)layerClass;
 
 - (void).cxx_destruct;
-- (id)_debug;
+- (id)description;
 - (id)init;
 - (id)initWithButtonBar:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -38,6 +38,7 @@
 - (id)clientIdentifier;
 - (id)delegate;
 - (void)extendTimelineForComplication:(id)arg1;
+- (void)getAlwaysOnTemplateForComplication:(id)arg1 withHandler:(id /* block */)arg2;
 - (void)getCurrentTimelineEntryForComplication:(id)arg1 withHandler:(id /* block */)arg2;
 - (void)getLocalizableSampleTemplateForComplication:(id)arg1 withHandler:(id /* block */)arg2;
 - (void)getNextRequestedUpdateDateWithHandler:(id /* block */)arg1;

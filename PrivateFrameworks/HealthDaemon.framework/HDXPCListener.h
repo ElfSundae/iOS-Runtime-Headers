@@ -3,6 +3,7 @@
  */
 
 @interface HDXPCListener : NSObject <NSXPCListenerDelegate> {
+    NSObject<OS_dispatch_queue> * _connectionQueue;
     <HDXPCListenerDelegate> * _delegate;
     NSMutableDictionary * _exportedObjectsByClient;
     struct os_unfair_lock_s { 
@@ -12,6 +13,7 @@
 }
 
 @property (readonly, copy) NSArray *allClients;
+@property (nonatomic, retain) NSObject<OS_dispatch_queue> *connectionQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <HDXPCListenerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -23,6 +25,7 @@
 
 - (void).cxx_destruct;
 - (id)allClients;
+- (id)connectionQueue;
 - (void)dealloc;
 - (id)delegate;
 - (id)endpoint;
@@ -33,6 +36,7 @@
 - (bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (id)newClientWithConnection:(id)arg1 error:(id*)arg2;
 - (void)resume;
+- (void)setConnectionQueue:(id)arg1;
 - (void)setDelegate:(id)arg1;
 
 @end

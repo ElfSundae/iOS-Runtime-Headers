@@ -40,6 +40,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithCodingSystem:(id)arg1 codingVersion:(id)arg2 code:(id)arg3 displayString:(id)arg4;
 - (bool)isEqual:(id)arg1;
+- (id)synthesizedIdentifier;
 
 // Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon
 

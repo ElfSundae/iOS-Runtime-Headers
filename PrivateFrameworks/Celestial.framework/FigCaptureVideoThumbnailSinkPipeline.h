@@ -2,33 +2,35 @@
    Image: /System/Library/PrivateFrameworks/Celestial.framework/Celestial
  */
 
-@interface FigCaptureVideoThumbnailSinkPipeline : FigCapturePipeline <BWImageQueueSinkNodePreviewTapDelegate> {
+@interface FigCaptureVideoThumbnailSinkPipeline : FigCaptureSinkPipeline <BWImageQueueSinkNodePreviewTapDelegate> {
     bool  _didPropagateCurrentImageQueue;
-    BWImageQueueSinkNode * _imageQueueNode;
     BWImageQueueSinkNode * _imageQueueSinkNode;
     <BWPipelineNotificationDelegate> * _notificationDelegate;
     NSObject<OS_dispatch_queue> * _notificationQueue;
     BWPixelTransferNode * _scalerNode;
-    NSString * _sinkID;
+    int  _sourceDeviceType;
+    NSString * _sourceID;
 }
 
-@property (getter=isConnectionDisabled, nonatomic) bool connectionDisabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) BWImageQueueSinkNode *imageQueueNode;
+@property (nonatomic, readonly) BWImageQueueSinkNode *imageQueueSinkNode;
+@property (nonatomic, readonly) int sourceDeviceType;
+@property (nonatomic, readonly) NSString *sourceID;
 @property (readonly) Class superclass;
 
 + (void)initialize;
 
-- (int)_buildVideoFilterThumbnailPipeline:(id)arg1 videoSourceOutput:(id)arg2 sourceVideoTransform:(struct FigCaptureVideoTransform { bool x1; int x2; struct { int x_3_1_1; int x_3_1_2; } x3; })arg3 videoThumbnailConnectionConfiguration:(id)arg4 scalerConnectionConfiguration:(id)arg5;
+- (int)_buildVideoFilterThumbnailPipeline:(id)arg1 videoSourceOutput:(id)arg2 videoSourceTransform:(struct FigCaptureVideoTransform { bool x1; int x2; struct { int x_3_1_1; int x_3_1_2; } x3; })arg3 outputTransform:(struct FigCaptureVideoTransform { bool x1; int x2; struct { int x_3_1_1; int x_3_1_2; } x3; })arg4 videoThumbnailConnectionConfiguration:(id)arg5;
 - (void)dealloc;
-- (id)imageQueueNode;
+- (id)imageQueueSinkNode;
 - (void)imageQueueSinkNode:(id)arg1 didAttemptToEnqueuePreviewSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg2 withSuccess:(bool)arg3;
 - (void)imageQueueSinkNodeDidDisplayFirstFrame:(id)arg1;
 - (void)imageQueueSinkNodeDidDisplayFirstFrame:(id)arg1 atHostTime:(long long)arg2;
-- (id)initWithConfiguration:(id)arg1 videoSourceOutput:(id)arg2 sourceVideoTransform:(struct FigCaptureVideoTransform { bool x1; int x2; struct { int x_3_1_1; int x_3_1_2; } x3; })arg3 videoThumbnailConnectionConfiguration:(id)arg4 scalerConnectionConfiguration:(id)arg5 notificationDelegate:(id)arg6;
-- (bool)isConnectionDisabled;
-- (void)setConnectionDisabled:(bool)arg1;
+- (id)initWithGraph:(id)arg1 name:(id)arg2 videoSourceOutput:(id)arg3 videoSourceTransform:(struct FigCaptureVideoTransform { bool x1; int x2; struct { int x_3_1_1; int x_3_1_2; } x3; })arg4 outputTransform:(struct FigCaptureVideoTransform { bool x1; int x2; struct { int x_3_1_1; int x_3_1_2; } x3; })arg5 videoThumbnailConnectionConfiguration:(id)arg6 notificationDelegate:(id)arg7;
+- (void)setDiscardsSampleData:(bool)arg1;
+- (int)sourceDeviceType;
+- (id)sourceID;
 
 @end

@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/FileProviderUI.framework/FileProviderUI
  */
 
-@interface FPUIActionViewController : UIViewController <DOCAppearanceProtocol, FPUIActionRemoteContextDelegate, FPUIActionRemoteViewControllerDelegate> {
+@interface FPUIActionViewController : UIViewController <FPUIActionControllerProtocol, FPUIActionRemoteContextDelegate, FPUIActionRemoteViewControllerDelegate> {
     NSString * _actionIdentifier;
     NSString * _actionTitle;
     NSURL * _authenticationURL;
@@ -15,6 +15,7 @@
     NSArray * _items;
     _UIResilientRemoteViewContainerViewController * _placeholderVC;
     NSString * _providerIdentifier;
+    NSURL * _serverConnectionURL;
 }
 
 @property (nonatomic, retain) NSString *actionIdentifier;
@@ -30,18 +31,20 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSArray *items;
 @property (nonatomic, retain) NSString *providerIdentifier;
+@property (nonatomic, copy) NSURL *serverConnectionURL;
 @property (readonly) Class superclass;
 
 + (id)actionControllerForActionIdentifier:(id)arg1 actionTitle:(id)arg2 items:(id)arg3 providerIdentifier:(id)arg4 domainIdentifier:(id)arg5;
 + (id)actionControllerForAuthenticationUsingURL:(id)arg1 providerIdentifier:(id)arg2;
++ (id)actionControllerForConnectingToServerURL:(id)arg1 actionTitle:(id)arg2 providerIdentifier:(id)arg3;
 + (id)actionControllerForError:(id)arg1 providerIdentifier:(id)arg2;
 + (id)actionControllerForInlineError:(id)arg1 providerIdentifier:(id)arg2;
 
 - (void).cxx_destruct;
-- (void)_delegateActionSucceed;
+- (void)_delegateDidFinishWithUserInfo:(id)arg1 error:(id)arg2;
 - (void)_delegateError:(id)arg1;
 - (void)_dismissViewController;
-- (id)_getExtension;
+- (id)_getExtensionWithError:(id*)arg1;
 - (id)actionIdentifier;
 - (id)actionTitle;
 - (id)authenticationURL;
@@ -49,13 +52,16 @@
 - (id)delegate;
 - (bool)displayInline;
 - (id)domainIdentifier;
+- (void)effectiveAppearanceDidChange:(id)arg1;
 - (void)embedViewController:(id)arg1;
 - (id)error;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)items;
 - (id)providerIdentifier;
-- (void)remoteActionContextDidFinishAction:(id)arg1 error:(id)arg2;
+- (void)remoteActionContext:(id)arg1 didEncounterError:(id)arg2 completionHandler:(id /* block */)arg3;
+- (void)remoteActionContextDidFinishAction:(id)arg1 userInfo:(id)arg2 error:(id)arg3;
 - (void)remoteActionControllerDidFinishAction:(id)arg1 error:(id)arg2;
+- (id)serverConnectionURL;
 - (void)setActionIdentifier:(id)arg1;
 - (void)setActionTitle:(id)arg1;
 - (void)setAuthenticationURL:(id)arg1;
@@ -65,7 +71,7 @@
 - (void)setError:(id)arg1;
 - (void)setItems:(id)arg1;
 - (void)setProviderIdentifier:(id)arg1;
-- (void)updateAppearance:(id)arg1;
+- (void)setServerConnectionURL:(id)arg1;
 - (void)viewDidLoad;
 
 @end

@@ -38,6 +38,8 @@
 + (id)requiredStoreLibraryPersonalizationProperties;
 
 - (id)anyObject;
+- (id)artworkCatalog;
+- (id)copyWithIdentifiers:(id)arg1 block:(id /* block */)arg2;
 - (id)flattenedGenericObject;
 - (id)humanDescription;
 - (id)identifiers;
@@ -45,18 +47,18 @@
 - (id)objectWithStoreLibraryPersonalizationRelativeModelObject:(id)arg1;
 - (id)personalizationScopedPropertiesForProperties:(id)arg1;
 - (id)relativeModelObjectForStoreLibraryPersonalization;
-- (id)storeItemMetadataRequestItemIdentifier;
-- (bool)storeItemMetadataRequestNeedsPersonalization;
 - (long long)type;
 
 // Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
 
 + (id)mpc_remotePlaybackQueueRequiredProperties;
-+ (id)mqf_requiredPlaybackProperties;
++ (id)mqf_requiredItemPlaybackProperties;
++ (id)mqf_requiredSectionPlaybackProperties;
 
 - (id)MPC_modelObjectWithStoreFrontLocalEquivalentModelObject:(id)arg1;
 - (id)mpc_protoContainerRepresentation;
 - (id)mpc_protoItemRepresentation;
+- (id)mpc_radioContentReference;
 - (id)mqf_playbackItemMetadataModelObject;
 
 @end

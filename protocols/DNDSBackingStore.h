@@ -5,7 +5,9 @@
 
 @required
 
-- (NSArray *)readAllRecordsWithError:(id*)arg1 lastUpdateDate:(out id*)arg2;
-- (bool)writeAllRecords:(NSArray *)arg1 withError:(id*)arg2;
+- (<DNDSBackingStoreDelegate> *)delegate;
+- (id)readRecordWithError:(id*)arg1;
+- (void)setDelegate:(id <DNDSBackingStoreDelegate>)arg1;
+- (unsigned long long)writeRecord:(id <DNDSBackingStoreRecord>)arg1 error:(id*)arg2;
 
 @end

@@ -7,7 +7,6 @@
 @property (nonatomic, readonly) bool isUserRequested;
 @property (nonatomic, readonly) bool shouldSend;
 
-- (id)deferredOperation;
 - (unsigned long long)generationNumber;
 - (bool)isUserRequested;
 - (bool)shouldSend;

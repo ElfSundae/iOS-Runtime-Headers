@@ -29,6 +29,7 @@
 - (id)credentialForPlayer:(id)arg1 environment:(long long)arg2;
 - (id)credentialForUsername:(id)arg1 environment:(long long)arg2;
 - (void)dealloc;
+- (void)getAltDSIDFromIDMSForCredential:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)init;
 - (void)invalidateCredentialCaches;
 - (long long)loginCancelledCount;

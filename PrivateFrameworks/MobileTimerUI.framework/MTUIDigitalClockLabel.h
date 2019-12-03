@@ -15,6 +15,7 @@
 - (void)refreshUI;
 - (void)resetFontSizes;
 - (bool)setHour:(long long)arg1 minute:(long long)arg2;
+- (void)setTimeLabelText:(id)arg1;
 - (void)significantTimeChange:(id)arg1;
 
 @end

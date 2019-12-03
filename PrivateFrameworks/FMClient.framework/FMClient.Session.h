@@ -3,11 +3,11 @@
  */
 
 @interface FMClient.Session : NSObject <FMClient.ClientSessionProtocol, FMClient.ServerSessionProtocol> {
+    void $__lazy_storage_$_serverProxy;
     void _activeConnection;
     void authenticationProvider;
     void clientBundleId;
     void clientProcessName;
-    void serverProxy.storage;
 }
 
 - (void).cxx_destruct;

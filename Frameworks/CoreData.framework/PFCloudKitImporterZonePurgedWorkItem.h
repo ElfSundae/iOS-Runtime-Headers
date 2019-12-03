@@ -11,7 +11,7 @@
 - (void)dealloc;
 - (id)description;
 - (void)doWorkWithCompletion:(id /* block */)arg1;
-- (id)initWithPurgedRecordZoneID:(id)arg1 options:(id)arg2 metadata:(id)arg3 request:(id)arg4;
+- (id)initWithPurgedRecordZoneID:(id)arg1 options:(id)arg2 request:(id)arg3;
 - (id)purgedRecordZoneID;
 - (bool)wipeAllCloudDataAndPurgeHistoryToken:(bool)arg1 error:(id*)arg2;
 

@@ -7,7 +7,7 @@
     PXPhotoKitCollectionsDataSource * _dataSource;
     PXPhotoKitCollectionsDataSourceManager * _dataSourceManager;
     PXPhotoKitCollectionsDataSourceManagerConfiguration * _dataSourceManagerConfiguration;
-    <PUImportAlbumPickerDelegate> * _delegate;
+    <PXImportAlbumPickerDelegate> * _delegate;
     bool  _needsDatasourceUpdate;
     PUImportAddToAlbumsPickerCell * _selectedCell;
     PHCollection * _selectedCollection;
@@ -18,7 +18,7 @@
 @property (nonatomic, retain) PXPhotoKitCollectionsDataSourceManager *dataSourceManager;
 @property (nonatomic, retain) PXPhotoKitCollectionsDataSourceManagerConfiguration *dataSourceManagerConfiguration;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) <PUImportAlbumPickerDelegate> *delegate;
+@property (nonatomic) <PXImportAlbumPickerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;

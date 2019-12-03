@@ -13,12 +13,10 @@
     NSLayoutConstraint * _iconWidth;
     NSLayoutConstraint * _leadingHorizontalPad;
     UIColor * _lineColor;
-    NSString * _location;
-    int  _occurrenceBackgroundStyle;
+    long long  _occurrenceBackgroundStyle;
     long long  _routingMode;
     bool  _selected;
     NSLayoutConstraint * _trailingHorizontalPad;
-    double  _travelTime;
     UIImageView * _travelTimeIcon;
     UILabel * _travelTimeLabel;
 }
@@ -33,22 +31,20 @@
 @property (retain) NSLayoutConstraint *iconWidth;
 @property (retain) NSLayoutConstraint *leadingHorizontalPad;
 @property (nonatomic, retain) UIColor *lineColor;
-@property (nonatomic, copy) NSString *location;
-@property (nonatomic) int occurrenceBackgroundStyle;
+@property (nonatomic) long long occurrenceBackgroundStyle;
 @property (nonatomic) long long routingMode;
 @property (nonatomic) bool selected;
 @property (retain) NSLayoutConstraint *trailingHorizontalPad;
-@property (nonatomic) double travelTime;
 @property (retain) UIImageView *travelTimeIcon;
 @property (retain) UILabel *travelTimeLabel;
+@property (nonatomic, copy) NSAttributedString *travelTimeString;
 
 + (void)initialize;
-+ (double)minimumNaturalHeightForPrimaryTextUsingSmallText:(bool)arg1;
++ (double)minimumNaturalHeightForPrimaryTextUsingSmallText:(bool)arg1 sizeClass:(long long)arg2;
 
 - (void).cxx_destruct;
 - (double)_iconScale;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_parentPadding;
-- (void)_setupStringContent;
 - (id)_textFont;
 - (id)_travelTimeIconForTravelModeWithColor:(id)arg1;
 - (void)_updateStringsColorsAndConstraintConstants;
@@ -66,8 +62,7 @@
 - (void)layoutSubviews;
 - (id)leadingHorizontalPad;
 - (id)lineColor;
-- (id)location;
-- (int)occurrenceBackgroundStyle;
+- (long long)occurrenceBackgroundStyle;
 - (long long)routingMode;
 - (bool)selected;
 - (void)setAnimatingAlpha:(bool)arg1;
@@ -80,17 +75,16 @@
 - (void)setIconWidth:(id)arg1;
 - (void)setLeadingHorizontalPad:(id)arg1;
 - (void)setLineColor:(id)arg1;
-- (void)setLocation:(id)arg1;
-- (void)setOccurrenceBackgroundStyle:(int)arg1;
+- (void)setOccurrenceBackgroundStyle:(long long)arg1;
 - (void)setRoutingMode:(long long)arg1;
 - (void)setSelected:(bool)arg1;
 - (void)setTrailingHorizontalPad:(id)arg1;
-- (void)setTravelTime:(double)arg1;
 - (void)setTravelTimeIcon:(id)arg1;
 - (void)setTravelTimeLabel:(id)arg1;
+- (void)setTravelTimeString:(id)arg1;
 - (id)trailingHorizontalPad;
-- (double)travelTime;
 - (id)travelTimeIcon;
 - (id)travelTimeLabel;
+- (id)travelTimeString;
 
 @end

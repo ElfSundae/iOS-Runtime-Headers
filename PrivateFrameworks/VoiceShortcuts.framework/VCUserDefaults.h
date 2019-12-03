@@ -4,7 +4,6 @@
 
 @interface VCUserDefaults : NSUserDefaults
 
-+ (void)initialize;
 + (id)sharedUserDefaults;
 
 - (id)codableObjectOfClass:(Class)arg1 forKey:(id)arg2;

@@ -16,6 +16,6 @@
 - (void)autocompleteFetchDidBeginNetworkActivity:(id <CNCancelable>)arg1;
 - (void)autocompleteFetchDidEndNetworkActivity:(id <CNCancelable>)arg1;
 - (void)autocompleteFetchDidFinish:(id <CNCancelable>)arg1;
-- (id /* block */)resultComparatorForAutocompleteFetch:(void *)arg1; // needs 1 arg types, found 6: id /* block */, id, void*, id, SEL, <CNCancelable> *
+- (id /* block */)resultComparatorForAutocompleteFetch:(void *)arg1; // needs 1 arg types, found 7: id /* block */, id, id, void*, id, SEL, <CNCancelable> *
 
 @end

@@ -2,11 +2,24 @@
    Image: /System/Library/PrivateFrameworks/UIKitServices.framework/UIKitServices
  */
 
-@interface UISApplicationSupportClient : FBSServiceFacilityClient
+@interface UISApplicationSupportClient : NSObject <BSInvalidatable> {
+    NSObject<OS_dispatch_queue> * _queue;
+    BSServiceConnection * _queue_connection;
+    bool  _queue_invalidated;
+}
 
-- (id)edgeInfoForDisplayConfiguration:(id)arg1;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
+- (void).cxx_destruct;
+- (id)_remoteTarget;
+- (id)applicationInitializationContext;
+- (void)dealloc;
+- (void)destroyScenesWithPersistentIdentifiers:(id)arg1 animationType:(unsigned long long)arg2 destroySessions:(bool)arg3 completion:(id /* block */)arg4;
 - (id)init;
-- (id)initialDisplayContext;
+- (void)invalidate;
 - (void)requestPasscodeUnlockUIWithCompletion:(id /* block */)arg1;
 
 @end

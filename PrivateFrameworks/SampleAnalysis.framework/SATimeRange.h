@@ -28,6 +28,7 @@
 - (void)addSelfToSerializationDictionary:(struct NSMutableDictionary { Class x1; }*)arg1;
 - (void)applyMachTimebase:(struct mach_timebase_info { unsigned int x1; unsigned int x2; })arg1;
 - (long long)compare:(id)arg1;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned long long)deltaMachAbsTime;
 - (double)deltaMachAbsTimeSeconds;
 - (unsigned long long)deltaMachContTime;

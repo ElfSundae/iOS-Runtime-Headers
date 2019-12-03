@@ -78,6 +78,7 @@
 - (void).cxx_destruct;
 - (id)_HDRUUIDToIgnoredEV0UUIDs;
 - (bool)_allowUpdating;
+- (id)_cameraRollCollectionListFetchResult;
 - (void)_cancelDelayedStopCaptureSession;
 - (bool)_didSetupMechanismsForStoppingCaptureSession;
 - (bool)_didStopCaptureSession;

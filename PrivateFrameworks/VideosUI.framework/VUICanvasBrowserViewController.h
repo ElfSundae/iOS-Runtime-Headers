@@ -3,14 +3,14 @@
  */
 
 @interface VUICanvasBrowserViewController : VUIProductShowcaseViewController {
-    bool  _hasBanner;
+    bool  _shouldNeverShowLargeTitle;
 }
 
-@property (nonatomic) bool hasBanner;
+@property (nonatomic) bool shouldNeverShowLargeTitle;
 
 - (long long)_overrideLargeTitleDisplayMode;
-- (bool)hasBanner;
-- (void)setHasBanner:(bool)arg1;
+- (void)setShouldNeverShowLargeTitle:(bool)arg1;
+- (bool)shouldNeverShowLargeTitle;
 - (void)updateWithViewElement:(id)arg1;
 
 @end

@@ -20,6 +20,7 @@
     NSDictionary * _docAttrs;
     NSFileWrapper * _document;
     NSMutableDictionary * _fontNames;
+    NSMutableDictionary * _fontObjects;
     void * _layoutSections;
     NSMutableArray * _listRanges;
     NSMutableData * _output;
@@ -28,8 +29,12 @@
         unsigned int _forceColorWrite : 1; 
         unsigned int _activeFontFeatures : 1; 
         unsigned int _preserveNaturalAlignment : 1; 
-        unsigned int _reserved : 29; 
+        unsigned int _textScalingNeedsConvert : 1; 
+        unsigned int _wroteCocoaVersion : 1; 
+        unsigned int _reserved : 27; 
     }  _rwFlags;
+    long long  _textScalingConversionSource;
+    long long  _textScalingConversionTarget;
 }
 
 + (id)RTFDataForDate:(id)arg1;
@@ -45,7 +50,10 @@
 - (id)_plainFontNameForFont:(id)arg1;
 - (void)_setPreserveNaturalAlignment:(bool)arg1;
 - (void)_setRTFDFileWrapper:(id)arg1;
+- (void)_setTextScalingConversionSource:(long long)arg1;
+- (void)_setTextScalingConversionTarget:(long long)arg1;
 - (void)_writeCharacters:(id)arg1 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
+- (void)_writeTextScalingAndRenderingHint;
 - (void)_writeVersionsAndEncodings;
 - (void)collectResources;
 - (void)dealloc;

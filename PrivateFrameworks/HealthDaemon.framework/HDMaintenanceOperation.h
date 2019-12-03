@@ -2,7 +2,9 @@
    Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon
  */
 
-@interface HDMaintenanceOperation : NSOperation
+@interface HDMaintenanceOperation : NSOperation {
+    double  _startedTime;
+}
 
 + (id)maintenanceOperationWithName:(id)arg1 asynchronousBlock:(id /* block */)arg2;
 

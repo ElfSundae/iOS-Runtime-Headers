@@ -13,5 +13,6 @@
 - (bool)supportsLineConnectionStyle;
 - (bool)supportsLineTypeNone;
 - (bool)supportsSymbolDrawing;
+- (id)userInterfaceName;
 
 @end

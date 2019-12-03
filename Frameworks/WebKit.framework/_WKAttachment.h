@@ -10,7 +10,7 @@
     }  _attachment;
 }
 
-@property (readonly) /* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*_apiObject;
+@property (readonly) struct Object { int (**x1)(); id x2; }*_apiObject;
 @property (getter=isConnected, nonatomic, readonly) bool connected;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -19,7 +19,8 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSString *uniqueIdentifier;
 
-- (/* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*)_apiObject;
+- (struct Object { int (**x1)(); id x2; }*)_apiObject;
+- (void)dealloc;
 - (id)description;
 - (id)info;
 - (bool)isConnected;

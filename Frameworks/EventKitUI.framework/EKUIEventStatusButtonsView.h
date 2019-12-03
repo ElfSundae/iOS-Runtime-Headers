@@ -6,7 +6,12 @@
     NSArray * _actions;
     double  _baselineFromBoundsTop;
     NSArray * _buttons;
-    double  _buttonsCharge;
+    struct UIEdgeInsets { 
+        double top; 
+        double left; 
+        double bottom; 
+        double right; 
+    }  _buttonsTouchInsets;
     NSArray * _currentConstraints;
     <EKUIEventStatusButtonsViewDelegate> * _delegate;
     bool  _disableButtonHighlights;
@@ -21,7 +26,7 @@
 }
 
 @property (nonatomic, retain) NSArray *actions;
-@property (nonatomic) double buttonsCharge;
+@property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } buttonsTouchInsets;
 @property (nonatomic, readonly) UIButton *centerButton;
 @property (nonatomic) <EKUIEventStatusButtonsViewDelegate> *delegate;
 @property (nonatomic) bool disableButtonHighlights;
@@ -30,13 +35,13 @@
 @property (nonatomic) bool shouldUseVerticalLayout;
 @property (nonatomic) long long textSizeMode;
 
-+ (id)logHandle;
++ (id)buttonTitleForAction:(long long)arg1 orb:(bool)arg2;
++ (id)imageForAction:(long long)arg1 selected:(bool)arg2;
++ (bool)isActionDestructive:(long long)arg1;
 
 - (void).cxx_destruct;
 - (long long)_actionForButton:(id)arg1;
-- (id)_buttonForAction:(long long)arg1;
 - (long long)_buttonIndexForAction:(long long)arg1;
-- (id)_buttonTitleForAction:(long long)arg1;
 - (double)_defaultFontSizeForButtons;
 - (id)_fontWithSize:(double)arg1 selected:(bool)arg2;
 - (id)_horizontalConstraintStringForMiddleButtonsStartingAt:(unsigned long long)arg1 endingAt:(unsigned long long)arg2 resultingViews:(id)arg3;
@@ -50,8 +55,9 @@
 - (void)_updateSelectionToButton:(id)arg1;
 - (id)actions;
 - (double)baselineFromBoundsTop;
+- (id)buttonForAction:(long long)arg1;
 - (void)buttonTapped:(id)arg1;
-- (double)buttonsCharge;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })buttonsTouchInsets;
 - (id)centerButton;
 - (id)delegate;
 - (bool)disableButtonHighlights;
@@ -61,7 +67,7 @@
 - (void)layoutSubviews;
 - (long long)selectedAction;
 - (void)setActions:(id)arg1;
-- (void)setButtonsCharge:(double)arg1;
+- (void)setButtonsTouchInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDisableButtonHighlights:(bool)arg1;
 - (void)setSelectedAction:(long long)arg1;

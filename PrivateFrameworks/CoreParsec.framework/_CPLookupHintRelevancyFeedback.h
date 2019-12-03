@@ -22,7 +22,6 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) _CPRange *hintRange;
 @property (nonatomic, readonly) NSData *jsonData;
-@property (nonatomic, readonly) bool requiresQueryId;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long timestamp;
 
@@ -42,7 +41,6 @@
 - (bool)isEqual:(id)arg1;
 - (id)jsonData;
 - (bool)readFrom:(id)arg1;
-- (bool)requiresQueryId;
 - (void)setContext:(id)arg1;
 - (void)setDiscarded:(bool)arg1;
 - (void)setDomain:(id)arg1;

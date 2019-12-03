@@ -4,7 +4,7 @@
 
 @interface SGDPowerBudget : NSObject {
     <NSObject> * _batteryObserver;
-    bool  _discretionaryWorkInProgress;
+    _Atomic bool  _discretionaryWorkInProgress;
     NSDate * _lastPlugInTime;
     NSObject<OS_os_log> * _log;
     _DASScheduler * _scheduler;
@@ -26,5 +26,6 @@
 - (void)dealloc;
 - (void)doDiscretionaryWork:(id /* block */)arg1 orElse:(id /* block */)arg2;
 - (id)init;
+- (id)throttlingState;
 
 @end

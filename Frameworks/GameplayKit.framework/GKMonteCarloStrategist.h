@@ -3,7 +3,7 @@
  */
 
 @interface GKMonteCarloStrategist : NSObject <GKStrategist> {
-    struct GKCMonteCarloStrategist { id x1; unsigned long long x2; unsigned long long x3; bool x4; bool x5; } * _monteCarloStrategist;
+    struct GKCMonteCarloStrategist { id x1; id x2; unsigned long long x3; unsigned long long x4; bool x5; bool x6; } * _monteCarloStrategist;
 }
 
 @property (nonatomic) unsigned long long budget;

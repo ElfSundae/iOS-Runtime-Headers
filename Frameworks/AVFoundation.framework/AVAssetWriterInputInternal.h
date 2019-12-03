@@ -7,6 +7,7 @@
     AVAssetWriterInputHelper * helper;
     NSObject<OS_dispatch_queue> * helperQueue;
     AVKeyPathDependencyManager * keyPathDependencyManager;
+    bool  markAsFinishedCalled;
     long long  numberOfAppendFailures;
     AVAssetWriterInputPassDescriptionResponder * passDescriptionResponder;
     AVWeakReference * weakReference;

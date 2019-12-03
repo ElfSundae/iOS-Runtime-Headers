@@ -49,6 +49,7 @@
 @property (nonatomic, readonly) NSArray *updatedRecords;
 
 - (void).cxx_destruct;
+- (id)_realChangeFromChange:(id)arg1 comparedToStoredRecord:(id)arg2 changeType:(unsigned long long)arg3;
 - (id)_resourceIdentitiesFromChange:(id)arg1;
 - (id)addedRecords;
 - (bool)applyChangesToClientCacheWithError:(id*)arg1;
@@ -61,6 +62,7 @@
 - (bool)diffHasBeenSuccessful;
 - (id)diffedBatch;
 - (bool)diffedBatchCanLowerQuota;
+- (id)enqueuedOrStoredRecordWithLocalScopedIdentifier:(id)arg1;
 - (void)enumerateDiffWithBlock:(id /* block */)arg1;
 - (bool)expandHasBeenSuccessful;
 - (id)expandedBatch;

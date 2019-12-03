@@ -2,10 +2,18 @@
    Image: /System/Library/PrivateFrameworks/VoiceServices.framework/VoiceServices
  */
 
-@interface VSSpeechCharacterSet : NSObject
+@interface VSSpeechCharacterSet : NSObject {
+    NSCharacterSet * _characterSet;
+}
 
-+ (id)characterSetForLanguage:(id)arg1;
+@property (nonatomic, retain) NSCharacterSet *characterSet;
+
 + (id)languageMapping;
-+ (id)unspeakableRangeOfText:(id)arg1 forLanguage:(id)arg2;
+
+- (void).cxx_destruct;
+- (id)characterSet;
+- (id)initWithLanguage:(id)arg1;
+- (void)setCharacterSet:(id)arg1;
+- (id)unspeakableRangeOfText:(id)arg1;
 
 @end

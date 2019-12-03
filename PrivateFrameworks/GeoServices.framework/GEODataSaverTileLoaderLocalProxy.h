@@ -2,9 +2,7 @@
    Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
  */
 
-@interface GEODataSaverTileLoaderLocalProxy : NSObject <GEODataSaverTileLoaderProxy> {
-    NSObject<OS_dispatch_queue> * _isolationQueue;
-}
+@interface GEODataSaverTileLoaderLocalProxy : NSObject <GEODataSaverTileLoaderProxy>
 
 @property (getter=isDataSaverEnabled, nonatomic, readonly) bool dataSaverEnabled;
 @property (readonly, copy) NSString *debugDescription;
@@ -12,7 +10,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void).cxx_destruct;
 - (void)_debug_initiateDataSaverPreload;
 - (void)_removeOldRegionStateFromDisk;
 - (id)init;

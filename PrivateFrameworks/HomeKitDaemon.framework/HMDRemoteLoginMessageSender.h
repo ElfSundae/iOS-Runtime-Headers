@@ -5,7 +5,7 @@
 @interface HMDRemoteLoginMessageSender : HMFObject <HMFLogging> {
     HMDAppleMediaAccessory * _accessory;
     HMDDevice * _device;
-    HMDCentralMessageDispatcher * _remoteMessageDispatcher;
+    HMDMessageDispatcher * _remoteMessageDispatcher;
     NSUUID * _target;
     NSObject<OS_dispatch_queue> * _workQueue;
 }
@@ -15,7 +15,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) HMDDevice *device;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) HMDCentralMessageDispatcher *remoteMessageDispatcher;
+@property (nonatomic, readonly) HMDMessageDispatcher *remoteMessageDispatcher;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSUUID *target;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *workQueue;

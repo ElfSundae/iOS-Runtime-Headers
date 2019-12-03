@@ -4,9 +4,9 @@
 
 @interface GEOCompanionRouteContext : PBCodable <NSCopying> {
     struct { 
-        unsigned int origin : 1; 
-        unsigned int timestamp : 1; 
-    }  _has;
+        unsigned int has_origin : 1; 
+        unsigned int has_timestamp : 1; 
+    }  _flags;
     int  _origin;
     unsigned int  _timestamp;
 }
@@ -18,6 +18,7 @@
 
 + (id)context;
 + (int)defaultOrigin;
++ (bool)isValid:(id)arg1;
 
 - (int)StringAsOrigin:(id)arg1;
 - (long long)compare:(id)arg1;
@@ -34,6 +35,7 @@
 - (void)mergeFrom:(id)arg1;
 - (int)origin;
 - (id)originAsString:(int)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasOrigin:(bool)arg1;
 - (void)setHasTimestamp:(bool)arg1;

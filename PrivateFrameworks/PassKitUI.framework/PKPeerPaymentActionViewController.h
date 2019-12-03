@@ -15,9 +15,7 @@
     NSDecimalNumber * _minBalance;
     NSDecimalNumber * _minLoadAmount;
     PKPaymentPass * _pass;
-    UIImageView * _passView;
     bool  _showCancelButton;
-    PKPassSnapshotter * _snapshotter;
     bool  _viewHasAppeared;
     PKPeerPaymentWebService * _webService;
 }
@@ -38,7 +36,6 @@
 @property (nonatomic, copy) NSDecimalNumber *minBalance;
 @property (nonatomic, copy) NSDecimalNumber *minLoadAmount;
 @property (nonatomic, readonly) PKPaymentPass *pass;
-@property (nonatomic, retain) UIImageView *passView;
 @property (nonatomic) bool showCancelButton;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) PKPeerPaymentWebService *webService;
@@ -69,7 +66,6 @@
 - (id)minBalance;
 - (id)minLoadAmount;
 - (id)pass;
-- (id)passView;
 - (void)peerPaymentActionController:(id)arg1 hasChangedState:(unsigned long long)arg2;
 - (void)peerPaymentActionController:(id)arg1 requestPresentViewController:(id)arg2;
 - (void)peerPaymentActionController:(id)arg1 requestPresentViewController:(id)arg2 withTransition:(int)arg3;
@@ -83,15 +79,12 @@
 - (void)setMaxLoadAmount:(id)arg1;
 - (void)setMinBalance:(id)arg1;
 - (void)setMinLoadAmount:(id)arg1;
-- (void)setPassView:(id)arg1;
 - (void)setShowCancelButton:(bool)arg1;
-- (void)shakePassView;
 - (bool)showCancelButton;
 - (void)updateAccountValues;
 - (void)updateFirstResponder;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;
-- (void)viewWillLayoutSubviews;
 - (id)webService;
 - (void)willDismissViewController;
 

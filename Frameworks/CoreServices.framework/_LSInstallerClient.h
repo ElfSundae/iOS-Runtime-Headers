@@ -36,6 +36,7 @@
 + (id)installerWithBundleID:(id)arg1 options:(id)arg2 callbackBlock:(id /* block */)arg3;
 + (id)unInstallerWithBundleID:(id)arg1 options:(id)arg2 callbackBlock:(id /* block */)arg3;
 
+- (void).cxx_destruct;
 - (void)_beginOperation;
 - (void)_invalidate;
 - (void)_waitForAllCallbackMessagesToExecute;
@@ -44,7 +45,6 @@
 - (id)bundleURL;
 - (void)callbackDeliveryComplete;
 - (id)connection;
-- (void)dealloc;
 - (id)init;
 - (bool)isUninstaller;
 - (unsigned long long)operationType;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SetupAssistantUI.framework/SetupAssistantUI
  */
 
-@interface BFFFinishSetupAssistantOptInController : NSObject <BYFollowUpFlowControlling, VTUIEnrollTrainingViewControllerDelegate> {
+@interface BFFFinishSetupAssistantOptInController : NSObject <BFFFinishSetupFlowControlling, VTUIEnrollTrainingViewControllerDelegate> {
     id /* block */  _completion;
     VTUIEnrollTrainingViewController * _enrollmentController;
     BFFFinishSetupAssistantOptInController * _selfReference;

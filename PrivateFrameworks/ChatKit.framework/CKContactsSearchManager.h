@@ -2,13 +2,13 @@
    Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
  */
 
-@interface CKContactsSearchManager : NSObject <MFContactsSearchConsumer> {
+@interface CKContactsSearchManager : NSObject <CNAutocompleteSearchConsumer, CNAutocompleteUIFetchDelegate> {
     bool  _biasForOutgoingInteraction;
     NSNumber * _currentSearchTaskID;
     <CKContactsSearchManagerDelegate> * _delegate;
     NSCharacterSet * _emojiCharacterSet;
     NSArray * _enteredRecipients;
-    MFContactsSearchManager * _searchManager;
+    CNAutocompleteSearchManager * _searchManager;
     NSMutableArray * _searchResults;
     NSString * _searchText;
     bool  _suppressGroupSuggestions;
@@ -22,7 +22,7 @@
 @property (nonatomic, retain) NSCharacterSet *emojiCharacterSet;
 @property (nonatomic, retain) NSArray *enteredRecipients;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) MFContactsSearchManager *searchManager;
+@property (nonatomic, retain) CNAutocompleteSearchManager *searchManager;
 @property (nonatomic, retain) NSMutableArray *searchResults;
 @property (nonatomic, retain) NSString *searchText;
 @property (readonly) Class superclass;
@@ -38,6 +38,7 @@
 - (bool)biasForOutgoingInteraction;
 - (void)cancelSearch;
 - (void)consumeAutocompleteSearchResults:(id)arg1 taskID:(id)arg2;
+- (id)createAutocompelteGroupMembersFromParticipants:(id)arg1;
 - (id)currentSearchTaskID;
 - (void)dealloc;
 - (id)delegate;
@@ -47,7 +48,12 @@
 - (id)enteredRecipients;
 - (void)finishedSearchingForAutocompleteResults;
 - (void)finishedTaskWithID:(id)arg1;
+- (bool)getSupplementalGroupsForSearchQuery:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)init;
+- (id)matchingConversationWithGuid:(id)arg1;
+- (id)nameGroupSearchResults;
+- (id)participantMatchGroupResults;
+- (id)participantMatchResultsForSearchTerm:(id)arg1;
 - (void)removeRecipient:(id)arg1;
 - (id)searchManager;
 - (id)searchResults;
@@ -62,6 +68,7 @@
 - (void)setSearchResults:(id)arg1;
 - (void)setSearchText:(id)arg1;
 - (void)setSuppressGroupSuggestions:(bool)arg1;
+- (bool)shouldIncludeGroupInResults:(id)arg1;
 - (bool)suppressGroupSuggestions;
 
 @end

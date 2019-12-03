@@ -3,7 +3,7 @@
  */
 
 @interface TSDImageCompatibilityChecker : NSObject <TSDMediaCompatibilityChecker> {
-    bool  mCancelled;
+    _Atomic bool  mCancelled;
     long long  mCompatibilityLevel;
     NSError * mError;
     TSPData * mImageData;

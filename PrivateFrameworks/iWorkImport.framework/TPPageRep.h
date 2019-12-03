@@ -32,6 +32,7 @@
 - (id)marginAdjustRep;
 - (bool)masksToBounds;
 - (bool)p_pageRequiresHorizontalSeparator;
+- (id)parentRepForMagnification;
 - (void)setCachedBackgroundFill:(id)arg1;
 - (void)willBeRemoved;
 

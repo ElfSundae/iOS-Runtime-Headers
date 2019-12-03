@@ -14,7 +14,7 @@
 @property (nonatomic, readonly) NSDate *endDate;
 @property (nonatomic, readonly) NSString *fullDescription;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) long long iconType;
+@property (nonatomic, readonly) int iconType;
 @property (nonatomic, readonly) NSDate *lastUpdated;
 @property (nonatomic, readonly) NSString *messageForNonRoutable;
 @property (nonatomic, readonly) NSString *messageForRoutePlanning;
@@ -30,11 +30,12 @@
 - (void).cxx_destruct;
 - (id)affectedEntities;
 - (id)creationDate;
+- (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (id)endDate;
 - (id)fullDescription;
 - (unsigned long long)hash;
-- (long long)iconType;
+- (int)iconType;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIncident:(id)arg1;
 - (bool)isBlockingIncident;

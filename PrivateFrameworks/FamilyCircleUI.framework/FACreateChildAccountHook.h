@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/FamilyCircleUI.framework/FamilyCircleUI
  */
 
-@interface FACreateChildAccountHook : NSObject <AAUIAccountManagerDelegate, AAUIServerHook, FAChildAccountCreationDelegate> {
+@interface FACreateChildAccountHook : NSObject <AAUIServerHook, AIDAAccountManagerDelegate, FAChildAccountCreationDelegate> {
     FAChildAccountCreationController * _childCreateController;
     id /* block */  _completion;
     <AAUIServerHookDelegate> * _delegate;

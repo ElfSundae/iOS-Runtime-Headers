@@ -3,7 +3,7 @@
  */
 
 @interface FASettingsSpecifierProvider : NSObject <AAUISpecifierProvider, FAFamilySettingsViewControllerDelegate, FASetupDelegate, RemoteUIControllerDelegate> {
-    AAUIAccountManager * _accountManager;
+    AIDAAccountManager * _accountManager;
     FACircleContext * _context;
     bool  _delayedEnterInitiateFlow;
     <AAUISpecifierProviderDelegate> * _delegate;

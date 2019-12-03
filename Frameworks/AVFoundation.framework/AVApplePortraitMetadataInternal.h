@@ -20,6 +20,7 @@
     float  luminanceNoiseAmplitude;
     float  maximumApertureFocalRatio;
     float  minimumApertureFocalRatio;
+    float  portraitLightingEffectStrength;
     int  version;
 }
 
@@ -31,6 +32,7 @@
 @property (nonatomic) float luminanceNoiseAmplitude;
 @property (nonatomic) float maximumApertureFocalRatio;
 @property (nonatomic) float minimumApertureFocalRatio;
+@property (nonatomic) float portraitLightingEffectStrength;
 @property (nonatomic) int version;
 
 - (float)apertureFocalRatio;
@@ -43,6 +45,7 @@
 - (float)luminanceNoiseAmplitude;
 - (float)maximumApertureFocalRatio;
 - (float)minimumApertureFocalRatio;
+- (float)portraitLightingEffectStrength;
 - (void)setApertureFocalRatio:(float)arg1;
 - (void)setFaceObservationsData:(id)arg1;
 - (void)setFaceOrientation:(int)arg1;
@@ -51,6 +54,7 @@
 - (void)setLuminanceNoiseAmplitude:(float)arg1;
 - (void)setMaximumApertureFocalRatio:(float)arg1;
 - (void)setMinimumApertureFocalRatio:(float)arg1;
+- (void)setPortraitLightingEffectStrength:(float)arg1;
 - (void)setVersion:(int)arg1;
 - (int)version;
 

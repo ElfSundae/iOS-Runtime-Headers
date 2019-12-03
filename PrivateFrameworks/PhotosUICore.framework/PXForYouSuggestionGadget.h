@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXForYouSuggestionGadget : NSObject <PXGadget> {
+@interface PXForYouSuggestionGadget : NSObject <PXDiagnosticsEnvironment, PXGadget> {
     bool  _blursDegradedContent;
     struct CGSize { 
         double width; 
@@ -32,11 +32,11 @@
     }  _visibleContentRect;
 }
 
-@property (nonatomic, readonly) const struct __CFString { }*accessoryButtonEventTrackerKey;
 @property (nonatomic, readonly) NSString *accessoryButtonTitle;
 @property (nonatomic, readonly) unsigned long long accessoryButtonType;
 @property (nonatomic) bool blursDegradedContent;
 @property (nonatomic) struct CGSize { double x1; double x2; } cachedHeightForWidth;
+@property (nonatomic, readonly) Class collectionViewItemClass;
 @property (getter=isContentHidden, nonatomic) bool contentHidden;
 @property (nonatomic, retain) PXForYouSuggestionGadgetContentView *contentView;
 @property (nonatomic) bool contentViewVisible;
@@ -65,7 +65,6 @@
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } visibleContentRect;
 
 + (id)fetchQueue;
-+ (id)placeholderFilters;
 + (void)preloadResources;
 
 - (void).cxx_destruct;
@@ -101,8 +100,9 @@
 - (bool)isContentHidden;
 - (id)keyAsset;
 - (id)mediaProvider;
-- (struct NSObject { Class x1; }*)previewViewControllerAtLocation:(struct CGPoint { double x1; double x2; })arg1 fromSourceView:(struct NSObject { Class x1; }*)arg2 outSourceRect:(out struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg3;
+- (struct NSObject { Class x1; }*)previewViewControllerAtLocation:(struct CGPoint { double x1; double x2; })arg1 fromSourceView:(struct NSObject { Class x1; }*)arg2;
 - (long long)priority;
+- (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint { double x1; double x2; })arg1 inCoordinateSpace:(id)arg2;
 - (id)regionOfInterestForOneUpTransition;
 - (void)setBlursDegradedContent:(bool)arg1;
 - (void)setCachedHeightForWidth:(struct CGSize { double x1; double x2; })arg1;
@@ -123,6 +123,7 @@
 - (id)subtitle;
 - (id)suggestion;
 - (unsigned short)suggestionType;
+- (struct NSObject { Class x1; }*)targetPreviewViewForLocation:(struct CGPoint { double x1; double x2; })arg1 inCoordinateSpace:(id)arg2;
 - (id)title;
 - (id)uniqueGadgetIdentifier;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })visibleContentRect;

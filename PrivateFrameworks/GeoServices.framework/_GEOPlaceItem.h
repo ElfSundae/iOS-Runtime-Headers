@@ -4,14 +4,15 @@
 
 @interface _GEOPlaceItem : GEOBaseMapItem <GEOMapItem> {
     GEOAddressObject * _addressObject;
+    geo_isolater * _lazyIvarIsolater;
     GEOPlace * _place;
     GEOPlaceResult * _placeResult;
 }
 
-@property (getter=_acceptsApplePay, nonatomic, readonly) bool acceptsApplePay;
 @property (getter=_additionalPlaceInfos, nonatomic, readonly) NSArray *additionalPlaceInfos;
 @property (nonatomic, readonly) NSDictionary *addressDictionary;
 @property (getter=_addressGeocodeAccuracy, nonatomic, readonly) int addressGeocodeAccuracy;
+@property (getter=_amenities, nonatomic, readonly) NSArray *amenities;
 @property (getter=_annotatedItemList, nonatomic, readonly) <GEOAnnotatedItemList> *annotatedItemList;
 @property (getter=_areaInMeters, nonatomic, readonly) double areaInMeters;
 @property (nonatomic, readonly) NSArray *areasOfInterest;
@@ -23,7 +24,7 @@
 @property (getter=_businessHours, nonatomic, readonly) NSArray *businessHours;
 @property (getter=_businessURL, nonatomic, readonly) NSString *businessURL;
 @property (nonatomic, readonly) struct { double x1; double x2; } centerCoordinate;
-@property (getter=_childPlaces, nonatomic, readonly) NSArray *childPlaces;
+@property (getter=_childItems, nonatomic, readonly) NSArray *childItems;
 @property (getter=_clientAttributes, nonatomic, readonly) GEOMapItemClientAttributes *clientAttributes;
 @property (nonatomic, readonly) int contactAddressType;
 @property (nonatomic, readonly) bool contactIsMe;
@@ -41,6 +42,7 @@
 @property (nonatomic, readonly) float displayMaxZoom;
 @property (nonatomic, readonly) float displayMinZoom;
 @property (getter=isDisputed, nonatomic, readonly) bool disputed;
+@property (getter=_enableRAPLightweightFeedback, nonatomic, readonly) bool enableRAPLightweightFeedback;
 @property (nonatomic, readonly) NSData *encodedData;
 @property (getter=_encyclopedicInfo, nonatomic, readonly) <GEOEncyclopedicInfo> *encyclopedicInfo;
 @property (nonatomic, readonly) NSDate *eventDate;
@@ -51,32 +53,27 @@
 @property (getter=_flyoverAnnouncementMessage, nonatomic, readonly) NSString *flyoverAnnouncementMessage;
 @property (nonatomic, readonly) GEOAddress *geoAddress;
 @property (nonatomic, readonly) GEOMapRegion *geoFenceMapRegion;
-@property (getter=_goodForKids, nonatomic, readonly) bool goodForKids;
-@property (getter=_hasAcceptsApplePayAmenity, nonatomic, readonly) bool hasAcceptsApplePayAmenity;
+@property (nonatomic, readonly) GEOMapRegion *geoFenceMapRegionOrNil;
+@property (getter=_groundViewLocationId, nonatomic, readonly) unsigned long long groundViewLocationId;
 @property (getter=_hasAnyAmenities, nonatomic, readonly) bool hasAnyAmenities;
 @property (getter=_hasAreaInMeters, nonatomic, readonly) bool hasAreaInMeters;
 @property (getter=_hasBrandMUID, nonatomic, readonly) bool hasBrandMUID;
 @property (getter=_hasBusinessClaim, nonatomic, readonly) bool hasBusinessClaim;
 @property (getter=_hasBusinessHours, nonatomic, readonly) bool hasBusinessHours;
 @property (getter=_hasCurrentOperatingHours, nonatomic, readonly) bool hasCurrentOperatingHours;
-@property (getter=_hasDelivery, nonatomic, readonly) bool hasDelivery;
-@property (getter=_hasDeliveryAmenity, nonatomic, readonly) bool hasDeliveryAmenity;
 @property (nonatomic, readonly) bool hasDisplayMaxZoom;
 @property (nonatomic, readonly) bool hasDisplayMinZoom;
 @property (getter=_hasEncyclopedicInfo, nonatomic, readonly) bool hasEncyclopedicInfo;
 @property (nonatomic, readonly) bool hasExpiredComponents;
 @property (getter=_hasFeatureLink, nonatomic, readonly) bool hasFeatureLink;
 @property (getter=_hasFlyover, nonatomic, readonly) bool hasFlyover;
-@property (getter=_hasGenderNeutralRestroom, nonatomic, readonly) bool hasGenderNeutralRestroom;
-@property (getter=_hasGenderNeutralRestroomAmenity, nonatomic, readonly) bool hasGenderNeutralRestroomAmenity;
-@property (getter=_hasGoodForKidsAmenity, nonatomic, readonly) bool hasGoodForKidsAmenity;
+@property (getter=_hasGroundViewLocationId, nonatomic, readonly) bool hasGroundViewLocationId;
 @property (getter=_hasLinkedServices, nonatomic, readonly) bool hasLinkedServices;
 @property (getter=_hasMUID, nonatomic, readonly) bool hasMUID;
 @property (getter=_hasOperatingHours, nonatomic, readonly) bool hasOperatingHours;
 @property (getter=_hasPriceRange, nonatomic, readonly) bool hasPriceRange;
 @property (getter=_hasResolvablePartialInformation, nonatomic, readonly) bool hasResolvablePartialInformation;
 @property (getter=_hasResultProviderID, nonatomic, readonly) bool hasResultProviderID;
-@property (getter=_hasTakesReservationsAmenity, nonatomic, readonly) bool hasTakesReservationsAmenity;
 @property (getter=_hasTelephone, nonatomic, readonly) bool hasTelephone;
 @property (getter=_hasTransit, nonatomic, readonly) bool hasTransit;
 @property (getter=_hasUserRatingScore, nonatomic, readonly) bool hasUserRatingScore;
@@ -92,8 +89,10 @@
 @property (getter=_isStandaloneBrand, nonatomic, readonly) bool isStandAloneBrand;
 @property (getter=_isTransitDisplayFeature, nonatomic, readonly) bool isTransitDisplayFeature;
 @property (getter=_linkedServices, nonatomic, readonly) NSArray *linkedServices;
+@property (getter=_mapsCategoryId, nonatomic, readonly) NSString *mapsCategoryId;
 @property (getter=_messageLink, nonatomic, readonly) GEOMessageLink *messageLink;
 @property (getter=_muid, nonatomic, readonly) unsigned long long muid;
+@property (getter=_muninViewState, nonatomic, readonly) GEOMuninViewState *muninViewState;
 @property (nonatomic, readonly) NSString *name;
 @property (getter=_needsAttribution, nonatomic, readonly) bool needsAttribution;
 @property (getter=_normalizedUserRatingScore, nonatomic, readonly) float normalizedUserRatingScore;
@@ -103,12 +102,15 @@
 @property (getter=_photos, nonatomic, readonly) NSArray *photos;
 @property (getter=_photosAttribution, nonatomic, readonly) GEOMapItemPhotosAttribution *photosAttribution;
 @property (getter=_place, nonatomic, readonly) GEOPlace *place;
+@property (getter=_placeCollections, nonatomic, readonly) NSArray *placeCollections;
 @property (getter=_placeData, nonatomic, readonly) GEOPDPlace *placeData;
 @property (getter=_placeDataAsData, nonatomic, readonly) NSData *placeDataAsData;
 @property (getter=_placeDisplayStyle, nonatomic, readonly) int placeDisplayStyle;
 @property (getter=_placeDisplayType, nonatomic, readonly) int placeDisplayType;
+@property (getter=_placeResult, nonatomic, readonly) GEOPlaceResult *placeResult;
 @property (getter=_placeType, nonatomic, readonly) int placeType;
 @property (getter=_placecardLayoutConfiguration, nonatomic, readonly) GEOPlacecardLayoutConfiguration *placecardLayoutConfiguration;
+@property (getter=_poiCategory, nonatomic, readonly) NSString *poiCategory;
 @property (getter=_poiPinpointURLString, nonatomic, readonly) NSString *poiPinpointURLString;
 @property (getter=_poiSurveyURLString, nonatomic, readonly) NSString *poiSurveyURLString;
 @property (getter=_priceDescription, nonatomic, readonly) GEOPriceDescription *priceDescription;
@@ -116,6 +118,7 @@
 @property (getter=_providerURL, nonatomic, readonly, copy) NSURL *providerURL;
 @property (getter=_quickLinks, nonatomic, readonly) NSArray *quickLinks;
 @property (nonatomic, readonly) int referenceFrame;
+@property (getter=_relatedPlaceList, nonatomic, readonly) GEORelatedPlaceList *relatedPlaceList;
 @property (getter=_responseStatusIsIncomplete, nonatomic, readonly) bool responseStatusIncomplete;
 @property (getter=_resultProviderID, nonatomic, readonly) int resultProviderID;
 @property (getter=_resultSnippetDistanceDisplayThreshold, nonatomic, readonly) unsigned int resultSnippetDistanceDisplayThreshold;
@@ -126,16 +129,19 @@
 @property (getter=_sampleSizeForUserRatingScore, nonatomic, readonly) unsigned int sampleSizeForUserRatingScore;
 @property (nonatomic, readonly) NSString *secondaryName;
 @property (nonatomic, readonly) NSString *secondarySpokenName;
+@property (getter=_showSuggestAnEditButton, nonatomic, readonly) bool showSuggestAnEditButton;
 @property (nonatomic, readonly) NSArray *spatialMappedCategories;
 @property (nonatomic, readonly) NSArray *spatialMappedPlaceCategories;
+@property (getter=_storefrontInfo, nonatomic, readonly) GEOStorefrontInfo *storefrontInfo;
+@property (getter=_storefrontPresentationInfo, nonatomic, readonly) GEOStorefrontPresentationInfo *storefrontPresentationInfo;
 @property (getter=_styleAttributes, nonatomic, readonly) GEOFeatureStyleAttributes *styleAttributes;
 @property (readonly) Class superclass;
-@property (getter=_takesReservations, nonatomic, readonly) bool takesReservations;
 @property (getter=_telephone, nonatomic, readonly) NSString *telephone;
 @property (nonatomic, readonly) NSTimeZone *timezone;
 @property (getter=_tips, nonatomic, readonly) NSArray *tips;
 @property (getter=_transitAttribution, nonatomic, readonly) <GEOTransitAttribution> *transitAttribution;
 @property (getter=_transitInfo, nonatomic, readonly) <GEOMapItemTransitInfo> *transitInfo;
+@property (getter=_transitVehiclePosition, nonatomic, readonly) <GEOTransitVehiclePosition> *transitVehiclePosition;
 @property (getter=isValid, nonatomic, readonly) bool valid;
 @property (getter=_vendorID, nonatomic, readonly, copy) NSString *vendorID;
 @property (nonatomic, readonly) long long venueCapacity;
@@ -155,9 +161,9 @@
 @property (getter=_wifiFingerprintLabelType, nonatomic, readonly) int wifiFingerprintLabelType;
 
 - (void).cxx_destruct;
-- (bool)_acceptsApplePay;
 - (id)_additionalPlaceInfos;
 - (int)_addressGeocodeAccuracy;
+- (id)_amenities;
 - (double)_areaInMeters;
 - (id)_arrivalMapRegionForTransportType:(int)arg1;
 - (id)_asPlaceInfo;
@@ -165,7 +171,6 @@
 - (id)_attribution;
 - (id)_businessClaim;
 - (id)_businessURL;
-- (id)_childPlaces;
 - (id)_clientAttributes;
 - (unsigned long long)_customIconID;
 - (id)_disambiguationName;
@@ -173,25 +178,19 @@
 - (id)_featureLink;
 - (id)_flyover;
 - (id)_flyoverAnnouncementMessage;
-- (bool)_goodForKids;
-- (bool)_hasAcceptsApplePayAmenity;
 - (bool)_hasAnyAmenities;
 - (bool)_hasAreaInMeters;
 - (bool)_hasBusinessClaim;
 - (bool)_hasCurrentOperatingHours;
-- (bool)_hasDelivery;
-- (bool)_hasDeliveryAmenity;
 - (bool)_hasEncyclopedicInfo;
 - (bool)_hasFeatureLink;
 - (bool)_hasFlyover;
-- (bool)_hasGoodForKidsAmenity;
 - (bool)_hasLocalizedCategoryNamesForType:(unsigned int)arg1;
 - (bool)_hasMUID;
 - (bool)_hasOperatingHours;
 - (bool)_hasPriceRange;
 - (bool)_hasResolvablePartialInformation;
 - (bool)_hasResultProviderID;
-- (bool)_hasTakesReservationsAmenity;
 - (bool)_hasTelephone;
 - (bool)_hasTransit;
 - (bool)_hasTravelTimeForTransportType:(int)arg1;
@@ -209,8 +208,10 @@
 - (id)_photos;
 - (id)_photosAttribution;
 - (id)_place;
+- (id)_placeCollections;
 - (id)_placeData;
 - (id)_placeDataAsData;
+- (id)_placeResult;
 - (int)_placeType;
 - (id)_placecardLayoutConfiguration;
 - (id)_poiPinpointURLString;
@@ -220,6 +221,7 @@
 - (id)_providerURL;
 - (id)_quickLinks;
 - (int)_recommendedTransportType;
+- (id)_relatedPlaceList;
 - (bool)_responseStatusIsIncomplete;
 - (int)_resultProviderID;
 - (unsigned int)_resultSnippetDistanceDisplayThreshold;
@@ -230,11 +232,11 @@
 - (unsigned int)_sampleSizeForUserRatingScore;
 - (id)_spokenAddressForLocale:(id)arg1;
 - (id)_styleAttributes;
-- (bool)_takesReservations;
 - (id)_telephone;
 - (id)_tips;
 - (id)_transitAttribution;
 - (id)_transitInfo;
+- (id)_transitVehiclePosition;
 - (unsigned int)_travelDistanceForTransportType:(int)arg1;
 - (unsigned int)_travelTimeForTransportType:(int)arg1;
 - (id)_urlForPhotoWithUID:(id)arg1;
@@ -262,6 +264,8 @@
 - (id)externalTransitStationCode;
 - (id)geoAddress;
 - (id)geoFenceMapRegion;
+- (id)geoFenceMapRegionOrNil;
+- (bool)hasAmenityType:(int)arg1;
 - (bool)hasExpiredComponents;
 - (id)initWithPlace:(id)arg1;
 - (id)initWithPlaceResult:(id)arg1;
@@ -274,6 +278,7 @@
 - (id)spatialMappedCategories;
 - (id)spokenNameForLocale:(id)arg1;
 - (id)timezone;
+- (bool)valueForAmenityType:(int)arg1;
 - (id)weatherDisplayName;
 
 @end

@@ -2,19 +2,19 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXPhotosDetailsUIViewController : UIViewController <PLDismissableViewController, PXActionPerformerDelegate, PXChangeObserver, PXPurgeableController, PXScrollViewControllerObserver, PXUIViewControllerZoomTransitionEndPoint, PXWidgetCompositionDelegate, PXWidgetUnlockDelegate, UIViewControllerPreviewingDelegate, UIViewControllerPreviewingDelegate_Private> {
+@interface PXPhotosDetailsUIViewController : UIViewController <PXActionPerformerDelegate, PXChangeObserver, PXForcedDismissableViewController, PXPurgeableController, PXScrollViewControllerObserver, PXUIViewControllerZoomTransitionEndPoint, PXWidgetCompositionDelegate, PXWidgetUnlockDelegate, UIContextMenuInteractionDelegate> {
     Class  __barsControllerClass;
     PXWidgetComposition * __composition;
+    UIContextMenuInteraction * __contextMenuInteraction;
     bool  __hasAppeared;
     PXTilingController * __headerAssetWidgetTilingController;
     UIView * __headerTileView;
     PXPhotosDetailsHeaderTileWidget * __headerWidget;
     id /* block */  __ppt_allWidgetLoadingCompleteHandler;
     id /* block */  __ppt_variationsWidgetLoadingCompleteHandler;
-    PXAssetCollectionActionController * __previewActionController;
-    _PXPhotosDetailsPreviewOrbContext * __previewOrbContext;
+    bool  __previewCommitting;
+    UIViewController * __previewViewController;
     <PXUIWidget> * __previewWidget;
-    <UIViewControllerPreviewing> * __previewingContext;
     PXUIScrollViewController * __scrollViewController;
     bool  __shouldFocusHeader;
     PXPhotosDetailsSpecManager * __specManager;
@@ -27,7 +27,7 @@
     NSMapTable * __widgetOptions;
     PXWidgetSpec * __widgetSpec;
     NSArray * __widgets;
-    <PXActionPerformerDelegate> * _actionPerformerDelegate;
+    <PXAssetCollectionActionPerformerDelegate> * _actionPerformerDelegate;
     PXBarsController * _barsController;
     struct UIEdgeInsets { 
         double top; 
@@ -48,16 +48,16 @@
 
 @property (nonatomic, readonly) Class _barsControllerClass;
 @property (nonatomic, readonly) PXWidgetComposition *_composition;
+@property (setter=_setContextMenuInteraction:, nonatomic, retain) UIContextMenuInteraction *_contextMenuInteraction;
 @property (setter=_setHasAppeared:, nonatomic) bool _hasAppeared;
 @property (nonatomic, readonly) PXTilingController *_headerAssetWidgetTilingController;
 @property (setter=_setHeaderTileView:, nonatomic, retain) UIView *_headerTileView;
 @property (nonatomic, readonly) PXPhotosDetailsHeaderTileWidget *_headerWidget;
 @property (setter=_ppt_setAllWidgetLoadingCompleteHandler:, nonatomic, copy) id /* block */ _ppt_allWidgetLoadingCompleteHandler;
 @property (setter=_ppt_setVariationsWidgetLoadingCompleteHandler:, nonatomic, copy) id /* block */ _ppt_variationsWidgetLoadingCompleteHandler;
-@property (setter=_setPreviewActionController:, nonatomic, retain) PXAssetCollectionActionController *_previewActionController;
-@property (setter=_setPreviewOrbContext:, nonatomic, retain) _PXPhotosDetailsPreviewOrbContext *_previewOrbContext;
+@property (setter=_setPreviewCommitting:, nonatomic) bool _previewCommitting;
+@property (setter=_setPreviewViewController:, nonatomic, retain) UIViewController *_previewViewController;
 @property (nonatomic, readonly) <PXUIWidget> *_previewWidget;
-@property (setter=_setPreviewingContext:, nonatomic, retain) <UIViewControllerPreviewing> *_previewingContext;
 @property (nonatomic, readonly) PXUIScrollViewController *_scrollViewController;
 @property (setter=_setShouldFocusHeader:, nonatomic) bool _shouldFocusHeader;
 @property (nonatomic, readonly) PXPhotosDetailsSpecManager *_specManager;
@@ -70,7 +70,7 @@
 @property (nonatomic, readonly) NSMapTable *_widgetOptions;
 @property (setter=_setWidgetSpec:, nonatomic, retain) PXWidgetSpec *_widgetSpec;
 @property (nonatomic, readonly) NSArray *_widgets;
-@property (nonatomic) <PXActionPerformerDelegate> *actionPerformerDelegate;
+@property (nonatomic) <PXAssetCollectionActionPerformerDelegate> *actionPerformerDelegate;
 @property (nonatomic, readonly) PXBarsController *barsController;
 @property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } contentEdgeInsets;
 @property (nonatomic, readonly) PXPhotosDetailsContext *context;
@@ -83,6 +83,7 @@
 @property (nonatomic) unsigned long long occludedContentEdges;
 @property (nonatomic, readonly) unsigned long long options;
 @property (nonatomic, readonly) UIScrollView *ppt_scrollView;
+@property (nonatomic, readonly) <PXDisplayAsset> *presentedKeyAsset;
 @property (nonatomic, readonly) PXScrollViewController *scrollViewController;
 @property (nonatomic, readonly) bool shouldUpdateStatusBarTitle;
 @property (nonatomic, retain) NSUserActivity *siriActionActivity;
@@ -93,6 +94,7 @@
 - (void).cxx_destruct;
 - (Class)_barsControllerClass;
 - (id)_composition;
+- (id)_contextMenuInteraction;
 - (bool)_dismissSelfIfSafeAnimated:(bool)arg1;
 - (void)_ensureComposition;
 - (void)_ensureScrollViewController;
@@ -116,17 +118,17 @@
 - (void)_ppt_setAllWidgetLoadingCompleteHandler:(id /* block */)arg1;
 - (void)_ppt_setVariationsWidgetLoadingCompleteHandler:(id /* block */)arg1;
 - (id /* block */)_ppt_variationsWidgetLoadingCompleteHandler;
-- (id)_previewActionController;
-- (id)_previewOrbContext;
+- (bool)_previewCommitting;
+- (id)_previewViewController;
+- (id)_previewViewControllerForLocation:(struct CGPoint { double x1; double x2; })arg1;
 - (id)_previewWidget;
-- (id)_previewingContext;
 - (id)_regionOfInterestForContext:(id)arg1;
 - (id)_scrollViewController;
+- (void)_setContextMenuInteraction:(id)arg1;
 - (void)_setHasAppeared:(bool)arg1;
 - (void)_setHeaderTileView:(id)arg1;
-- (void)_setPreviewActionController:(id)arg1;
-- (void)_setPreviewOrbContext:(id)arg1;
-- (void)_setPreviewingContext:(id)arg1;
+- (void)_setPreviewCommitting:(bool)arg1;
+- (void)_setPreviewViewController:(id)arg1;
 - (void)_setShouldFocusHeader:(bool)arg1;
 - (void)_setSwipeSelectionManager:(id)arg1;
 - (void)_setWidgetSpec:(id)arg1;
@@ -141,7 +143,6 @@
 - (void)_updateAllWidgetsSpec;
 - (void)_updateBarSpec;
 - (void)_updateCompositionSpec;
-- (void)_updatePreviewActionController;
 - (void)_updateScrollViewControllerContentInset;
 - (void)_updateStatusBarTitle;
 - (void)_updateTitleAndSubtitle;
@@ -162,9 +163,12 @@
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })contentEdgeInsets;
 - (id)contentScrollView;
 - (id)context;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint { double x1; double x2; })arg2;
+- (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
+- (void)contextMenuInteraction:(id)arg1 willCommitWithAnimator:(id)arg2;
+- (void)contextMenuInteractionDidEnd:(id)arg1;
 - (void)dealloc;
 - (id)delegate;
-- (void)didDismissPreviewViewController:(id)arg1 committing:(bool)arg2;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContext:(id)arg1 configuration:(id)arg2;
@@ -185,9 +189,7 @@
 - (void)preloadWithSourceRegionOfInterest:(id)arg1 forTransition:(id)arg2;
 - (bool)prepareForDismissingForced:(bool)arg1;
 - (void)prepareForInteractiveTransition:(id)arg1;
-- (id)previewActionItems;
-- (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
-- (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint { double x1; double x2; })arg2;
+- (id)presentedKeyAsset;
 - (void)purgeIfPossible;
 - (bool)px_canPerformPinchTransitionWithMasterViewController:(id)arg1;
 - (bool)px_canPerformSwipeDownTransitionWithMasterViewController:(id)arg1;

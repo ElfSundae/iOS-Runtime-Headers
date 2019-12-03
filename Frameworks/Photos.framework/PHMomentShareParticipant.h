@@ -4,16 +4,15 @@
 
 @interface PHMomentShareParticipant : PHObject {
     NSString * _emailAddress;
+    NSPersonNameComponents * _nameComponents;
     NSString * _phoneNumber;
     unsigned short  _type;
 }
 
-@property (readonly) NSString *displayName;
 @property (nonatomic, readonly, copy) NSString *emailAddress;
+@property (nonatomic, readonly, copy) NSPersonNameComponents *nameComponents;
 @property (nonatomic, readonly, copy) NSString *phoneNumber;
 @property (nonatomic, readonly) unsigned short type;
-
-// Image: /System/Library/Frameworks/Photos.framework/Photos
 
 + (id)entityKeyMap;
 + (id)fetchParticipantsInMomentShare:(id)arg1 options:(id)arg2;
@@ -32,11 +31,8 @@
 - (unsigned long long)hash;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
 - (bool)isEqual:(id)arg1;
+- (id)nameComponents;
 - (id)phoneNumber;
 - (unsigned short)type;
-
-// Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
-
-- (id)displayName;
 
 @end

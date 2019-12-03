@@ -7,6 +7,7 @@
     NSString * _agentDomain;
     NSString * _agentType;
     NSUUID * _applicationUUID;
+    unsigned int  _clientFlags;
     long long  _conditionType;
     NSString * _customEntitlement;
     NSString * _domain;
@@ -26,6 +27,7 @@
 @property (copy) NSString *agentDomain;
 @property (copy) NSString *agentType;
 @property (copy) NSUUID *applicationUUID;
+@property unsigned int clientFlags;
 @property long long conditionType;
 @property (copy) NSString *customEntitlement;
 @property (copy) NSString *domain;
@@ -42,14 +44,29 @@
 
 + (id)accountIdentifier:(id)arg1;
 + (id)allInterfaces;
++ (id)clientFlags:(unsigned int)arg1;
++ (id)clientProhibitsContrained;
++ (id)clientProhibitsExpensive;
 + (id)customEntitlement:(id)arg1;
 + (id)domain:(id)arg1;
 + (id)effectiveApplication:(id)arg1;
 + (id)effectivePID:(int)arg1;
 + (id)entitlement;
++ (id)fallbackTraffic;
++ (id)flowIPProtocol:(unsigned short)arg1;
++ (id)flowLocalAddress:(id)arg1 prefix:(unsigned char)arg2;
++ (id)flowLocalAddressEmpty;
++ (id)flowLocalAddressStart:(id)arg1 end:(id)arg2;
++ (id)flowRemoteAddress:(id)arg1 prefix:(unsigned char)arg2;
++ (id)flowRemoteAddressEmpty;
++ (id)flowRemoteAddressStart:(id)arg1 end:(id)arg2;
 + (id)ipProtocol:(unsigned short)arg1;
++ (id)isInbound;
++ (id)isListener;
 + (id)localAddress:(id)arg1 prefix:(unsigned char)arg2;
 + (id)localAddressStart:(id)arg1 end:(id)arg2;
++ (id)localNetworks;
++ (id)platformBinary;
 + (id)realApplication:(id)arg1;
 + (id)remoteAddress:(id)arg1 prefix:(unsigned char)arg2;
 + (id)remoteAddressStart:(id)arg1 end:(id)arg2;
@@ -57,6 +74,7 @@
 + (id)scopedInterface:(id)arg1;
 + (id)trafficClassStart:(unsigned int)arg1 end:(unsigned int)arg2;
 + (id)uid:(unsigned int)arg1;
++ (id)usesModernNetworkAPI;
 
 - (void).cxx_destruct;
 - (id)accountIdentifier;
@@ -64,6 +82,7 @@
 - (id)agentDomain;
 - (id)agentType;
 - (id)applicationUUID;
+- (unsigned int)clientFlags;
 - (long long)conditionType;
 - (id)conditionTypeString;
 - (unsigned char)conditionTypeValue;
@@ -83,6 +102,7 @@
 - (void)setAgentDomain:(id)arg1;
 - (void)setAgentType:(id)arg1;
 - (void)setApplicationUUID:(id)arg1;
+- (void)setClientFlags:(unsigned int)arg1;
 - (void)setConditionType:(long long)arg1;
 - (void)setCustomEntitlement:(id)arg1;
 - (void)setDomain:(id)arg1;

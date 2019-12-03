@@ -52,7 +52,6 @@
 - (id)dragManager;
 - (id)dragManager:(id)arg1 dragableAtLocation:(struct CGPoint { double x1; double x2; })arg2;
 - (void)finishMediaViewEvent;
-- (void)forceFullScreen;
 - (id)fullScreenCanvasController;
 - (id)fullScreenCanvasController:(id)arg1 canvasViewControllerForShowable:(id)arg2 completionBlock:(id /* block */)arg3;
 - (id)fullScreenCanvasController:(id)arg1 captionForShowable:(id)arg2 viewIndex:(unsigned long long)arg3;
@@ -79,8 +78,6 @@
 - (void)loadComponent:(id)arg1;
 - (id)mediaSharingPolicyProvider;
 - (void)presentComponentWithChanges:(struct { bool x1; bool x2; })arg1;
-- (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
-- (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint { double x1; double x2; })arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })previousContentFrame;
 - (void)renderContents;
 - (bool)requestInteractivityFocusForFullScreenCanvasController:(id)arg1;

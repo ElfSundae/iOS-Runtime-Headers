@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/TextInputCore.framework/TextInputCore
  */
 
-@interface TIMobileAssetMediator : NSObject {
+@interface TIMobileAssetMediator : NSObject <TIMobileAssetMediator> {
     NSObject<OS_dispatch_queue> * _dispatchQueue;
     bool  _isWaitingForReachability;
     NSMutableSet * _queuedAssetMatchSet;
@@ -10,10 +10,14 @@
     TIMobileAssetSyncState * _syncState;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *dispatchQueue;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) bool isWaitingForReachability;
 @property (nonatomic, readonly) NSMutableSet *queuedAssetMatchSet;
 @property (nonatomic, readonly) struct __SCNetworkReachability { }*reachabilityRef;
+@property (readonly) Class superclass;
 @property (nonatomic, readonly) TIMobileAssetSyncState *syncState;
 
 + (id)assetDownloadsInProgress;
@@ -45,8 +49,10 @@
 - (void)downloadUninstalledAssetsMatching:(id)arg1 continuation:(id /* block */)arg2;
 - (void)downloadUninstalledAssetsMatchingQueuedAssetMatchSet;
 - (id)fetchInstalledAssetInformation;
+- (id)fetchLatestAssetsMatchingAny:(id)arg1;
+- (id)fetchLatestInstalledAssetsMatchingAny:(id)arg1;
 - (oneway void)fetchUninstalledAssetInformationMatchingAny:(id)arg1 continuation:(id /* block */)arg2;
-- (id)initWithDispatchQueue:(id)arg1;
+- (id)init;
 - (bool)isWaitingForReachability;
 - (id)queuedAssetMatchSet;
 - (void)reachabilityChanged;

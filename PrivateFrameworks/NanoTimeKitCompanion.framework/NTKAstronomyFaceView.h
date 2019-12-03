@@ -5,9 +5,10 @@
 @interface NTKAstronomyFaceView : NTKDigitalFaceView <NTKAstronomyRotationModelObserver, NTKAstronomyVistaViewObserver, NTKTimeView, UIGestureRecognizerDelegate> {
     long long  _animatingToViewMode;
     NTKAstronomyVistaView * _astronomyVistaView;
+    UIView * _borrowedCircleView;
+    UIView * _borrowedHandsView;
     struct NSNumber { Class x1; } * _clockTimerToken;
     NSDate * _crownDate;
-    NTKDigitalTimeLabel * _digitalTimeLabel;
     NTKDigitalTimeLabelStyle * _digitalTimeLabelDefaultStyle;
     NTKDigitalTimeLabelStyle * _digitalTimeLabelSmallInUpperRightCornerStyle;
     struct CGPoint { 
@@ -66,6 +67,7 @@
 
 - (void).cxx_destruct;
 - (void)_animateTransitionToViewMode:(long long)arg1;
+- (void)_animateTransitionToViewMode:(long long)arg1 completion:(id /* block */)arg2;
 - (void)_applyDataMode;
 - (void)_applyDataModeAnimated:(bool)arg1;
 - (void)_applyFromVista:(unsigned long long)arg1 toVista:(unsigned long long)arg2 fraction:(double)arg3;
@@ -78,7 +80,6 @@
 - (void)_asyncUpdateTime;
 - (void)_becameActiveFace;
 - (void)_becameInactiveFace;
-- (void)_bringForegroundViewsToFront;
 - (bool)_canEnterInteractiveMode;
 - (void)_cleanupAfterEditing;
 - (void)_cleanupAfterZoom;
@@ -89,9 +90,10 @@
 - (id)_date;
 - (id)_detachedComplicationDisplays;
 - (unsigned long long)_detentTypeForCustomEditMode:(long long)arg1 slot:(id)arg2;
-- (id)_digitalTimeLabelStyle:(long long)arg1;
+- (id)_digitalTimeLabelStyleFromViewMode:(long long)arg1 faceBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (void)_disableCrown;
 - (void)_enableCrownForAstronomyVista:(unsigned long long)arg1;
+- (void)_enumerateQuadViewsWithBlock:(id /* block */)arg1;
 - (bool)_fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2;
 - (void)_handleInteractiveModeGesture:(id)arg1;
 - (void)_handleSpheroidPanGesture:(id)arg1;
@@ -117,20 +119,23 @@
 - (void)_prepareForEditing;
 - (void)_prepareToZoomWithIconView:(id)arg1 minDiameter:(double)arg2 maxDiameter:(double)arg3;
 - (void)_prepareWristRaiseAnimation;
-- (void)_renderSynchronouslyWithImageQueueDiscard:(bool)arg1;
+- (void)_renderSynchronouslyWithImageQueueDiscard:(bool)arg1 inGroup:(id)arg2;
 - (void)_setAstronomyFaceViewModeDefault;
 - (void)_setAstronomyFaceViewModeInteractive;
 - (void)_setAstronomyFaceViewModeNonInteractive;
 - (void)_setAstronomyFaceViewModeSupplemental;
 - (void)_setIsAnimatingViewMode:(bool)arg1;
 - (void)_setZoomFraction:(double)arg1 iconDiameter:(double)arg2;
+- (void)_setupAstronomyVistaView;
+- (bool)_shouldHandleHardwareEvents;
 - (bool)_shouldHideStatusBarForViewMode:(long long)arg1;
 - (void)_showLocationDotIfNeeded;
 - (void)_startClockUpdates;
 - (void)_stopClockUpdates;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
+- (unsigned long long)_timeLabelOptions;
+- (bool)_timeLabelUsesLegibility;
 - (void)_unloadSnapshotContentViews;
-- (void)_updateDigitalTimeLabelStylesForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)_updateLocaleAnimated:(bool)arg1;
 - (void)_updateLocation:(id)arg1 lastLocation:(id)arg2;
 - (void)_updateTimeAnimated:(bool)arg1;

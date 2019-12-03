@@ -4,6 +4,8 @@
 
 @interface CDPStateController : CDPController
 
+- (void)attemptToEscrowPreRecord:(id)arg1 completion:(id /* block */)arg2;
+- (void)attemptToEscrowPreRecord:(id)arg1 preRecordUUID:(id)arg2 secretType:(unsigned long long)arg3 completion:(id /* block */)arg4;
 - (void)deleteRecoveryKey:(id /* block */)arg1;
 - (bool)deleteRecoveryKeyWithError:(id*)arg1;
 - (void)finishOfflineLocalSecretChangeWithCompletion:(id /* block */)arg1;

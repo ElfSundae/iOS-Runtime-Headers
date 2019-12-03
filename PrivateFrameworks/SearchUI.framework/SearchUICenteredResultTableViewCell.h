@@ -4,9 +4,9 @@
 
 @interface SearchUICenteredResultTableViewCell : SearchUITableViewCell
 
-@property (retain) TLKNumericalResultView *sizingContainer;
+@property (nonatomic, retain) TLKNumericalResultView *sizingContainer;
 
-- (id)initWithRowModel:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
+- (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
 - (void)updateWithRowModel:(id)arg1;
 
 @end

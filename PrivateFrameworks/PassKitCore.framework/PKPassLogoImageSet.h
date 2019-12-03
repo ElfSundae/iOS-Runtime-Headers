@@ -66,6 +66,8 @@
 
 - (void)loadPDFArtFromBundle:(id)arg1;
 - (void)loadPDFArtFromBundle:(id)arg1 targetSize:(struct CGSize { double x1; double x2; })arg2 scale:(double)arg3;
+- (void)memoryMapImageData;
+- (bool)npkHasValidPaymentCardAssets;
 - (void)resizeWithScreenSize:(struct CGSize { double x1; double x2; })arg1;
 
 @end

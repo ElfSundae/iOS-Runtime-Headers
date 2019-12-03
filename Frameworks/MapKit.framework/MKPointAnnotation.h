@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MapKit.framework/MapKit
  */
 
-@interface MKPointAnnotation : MKShape <MKAnnotationPrivate, MKAnnotationRepresentation, MKCustomFeatureAnnotation> {
+@interface MKPointAnnotation : MKShape <MKAnnotationPrivate, MKAnnotationRepresentation, MKCustomFeatureAnnotation, MKGeoJSONObject> {
     struct CLLocationCoordinate2D { 
         double latitude; 
         double longitude; 
@@ -25,6 +25,7 @@
 @property (nonatomic, readonly, copy) NSString *title;
 
 - (void).cxx_destruct;
+- (id)_initWithGeoJSONObject:(id)arg1 error:(id*)arg2;
 - (void)_invalidateCachedCoordinate;
 - (bool)_isPendingSelectionAnimated;
 - (void)_setHiddenForOffscreen:(bool)arg1;
@@ -32,6 +33,9 @@
 - (id)annotation;
 - (struct CLLocationCoordinate2D { double x1; double x2; })coordinate;
 - (id)feature;
+- (id)init;
+- (id)initWithCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg1;
+- (id)initWithCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg1 title:(id)arg2 subtitle:(id)arg3;
 - (bool)isPersistent;
 - (id)location;
 - (void)prepareForReuse;

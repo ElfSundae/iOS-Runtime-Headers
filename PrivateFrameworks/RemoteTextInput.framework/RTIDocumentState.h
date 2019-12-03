@@ -25,6 +25,7 @@
             double height; 
         } size; 
     }  _firstSelectionRectInWindow;
+    NSAttributedString * _textCheckingAnnotatedString;
 }
 
 @property (nonatomic, retain) NSMutableDictionary *_selectionRects;
@@ -33,6 +34,7 @@
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } firstSelectionRectInWindow;
 @property (nonatomic, readonly) struct _NSRange { unsigned long long x1; unsigned long long x2; } markedTextRange;
 @property (nonatomic) struct _NSRange { unsigned long long x1; unsigned long long x2; } selectedTextRange;
+@property (nonatomic, copy) NSAttributedString *textCheckingAnnotatedString;
 
 + (bool)supportsSecureCoding;
 
@@ -57,6 +59,8 @@
 - (void)setDocumentState:(id)arg1;
 - (void)setFirstSelectionRectInWindow:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setSelectedTextRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
+- (void)setTextCheckingAnnotatedString:(id)arg1;
 - (void)set_selectionRects:(id)arg1;
+- (id)textCheckingAnnotatedString;
 
 @end

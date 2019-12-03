@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CameraUI.framework/CameraUI
  */
 
-@interface CAMApplicationDelegate : UIResponder <UIApplicationDelegate> {
+@interface CAMApplicationDelegate : UIResponder <UIApplicationDelegate, UNUserNotificationCenterDelegate> {
     CAMBurstController * _burstController;
     CAMCameraRollController * _cameraRollController;
     CUCaptureController * _captureController;
@@ -66,6 +66,8 @@
 - (void)setWindow:(id)arg1;
 - (id)timelapseController;
 - (void)updateShortcutItemsForApplication:(id)arg1;
+- (void)userNotificationCenter:(id)arg1 didReceiveNotificationResponse:(id)arg2 withCompletionHandler:(id /* block */)arg3;
+- (void)userNotificationCenter:(id)arg1 willPresentNotification:(id)arg2 withCompletionHandler:(id /* block */)arg3;
 - (id)viewfinderViewController;
 - (id)window;
 

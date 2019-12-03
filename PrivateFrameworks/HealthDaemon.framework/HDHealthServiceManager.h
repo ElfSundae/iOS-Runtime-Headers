@@ -81,6 +81,7 @@
 - (id)connectionLock;
 - (id)dataCollectionManager;
 - (void)dataReceived:(id)arg1 deviceEntity:(id)arg2;
+- (void)dealloc;
 - (void)disconnectHealthService:(unsigned long long)arg1;
 - (unsigned long long)discoverHealthServicesWithType:(long long)arg1 timeout:(unsigned long long)arg2 alwaysNotify:(bool)arg3 handler:(id /* block */)arg4 error:(id*)arg5;
 - (void)discoveredCharacteristics:(id)arg1 forDevice:(id)arg2 service:(id)arg3;
@@ -101,9 +102,9 @@
 - (void)performOperation:(id)arg1 onSession:(unsigned long long)arg2 withParameters:(id)arg3 completion:(id /* block */)arg4;
 - (id)profile;
 - (id)queue;
-- (void)removeAllDisconnectedPeripherals;
 - (void)removeConnectingPeripheralsWithError:(id)arg1;
 - (void)resetOOBState;
+- (void)retrieveAndRemoveDisconnectedPeripherals;
 - (id)retrieveOOBData:(id*)arg1;
 - (id)reviewSavedHealthServiceSessionsWithError:(id*)arg1;
 - (id)scanServiceUUIDs;

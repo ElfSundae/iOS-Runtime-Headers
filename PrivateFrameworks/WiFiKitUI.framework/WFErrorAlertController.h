@@ -2,23 +2,17 @@
    Image: /System/Library/PrivateFrameworks/WiFiKitUI.framework/WiFiKitUI
  */
 
-@interface WFErrorAlertController : UIAlertController {
-    id /* block */  _completionHandler;
-    long long  _type;
+@interface WFErrorAlertController : UIAlertController <WFNetworkView> {
+    <WFErrorProviderContext> * _context;
 }
 
-@property (nonatomic, copy) id /* block */ completionHandler;
-@property (nonatomic) long long type;
+@property (nonatomic, retain) <WFErrorProviderContext> *context;
+@property (nonatomic, readonly) bool wantsModalPresentation;
 
-+ (id)_defaultButtonTitleForType:(long long)arg1;
-+ (id)_messageForType:(long long)arg1 networkName:(id)arg2;
-+ (id)_titleForType:(long long)arg1 networkName:(id)arg2;
-+ (id)errorAlertControllerWithType:(long long)arg1 networkName:(id)arg2 completionHandler:(id /* block */)arg3;
++ (id)errorAlertControllerWithContext:(id)arg1;
 
 - (void).cxx_destruct;
-- (id /* block */)completionHandler;
-- (void)setCompletionHandler:(id /* block */)arg1;
-- (void)setType:(long long)arg1;
-- (long long)type;
+- (id)context;
+- (void)setContext:(id)arg1;
 
 @end

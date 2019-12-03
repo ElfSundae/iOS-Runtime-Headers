@@ -16,7 +16,13 @@
     }  _bounds;
     long long  _classification;
     <CHStrokeIdentifier> * _firstStrokeIdentifier;
+    struct CGPoint { 
+        double x; 
+        double y; 
+    }  _firstStrokeOrigin;
+    double  _groupingConfidence;
     <CHStrokeIdentifier> * _lastStrokeIdentifier;
+    NSString * _strategyIdentifier;
     NSSet * _strokeIdentifiers;
     long long  _uniqueIdentifier;
 }
@@ -26,7 +32,10 @@
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } bounds;
 @property (nonatomic, readonly) long long classification;
 @property (nonatomic, readonly) <CHStrokeIdentifier> *firstStrokeIdentifier;
+@property (nonatomic, readonly) struct CGPoint { double x1; double x2; } firstStrokeOrigin;
+@property (nonatomic, readonly) double groupingConfidence;
 @property (nonatomic, readonly) <CHStrokeIdentifier> *lastStrokeIdentifier;
+@property (nonatomic, readonly) NSString *strategyIdentifier;
 @property (nonatomic, readonly) NSSet *strokeIdentifiers;
 @property (nonatomic, readonly) long long uniqueIdentifier;
 
@@ -40,12 +49,15 @@
 - (void)dealloc;
 - (id)description;
 - (id)firstStrokeIdentifier;
-- (id)groupByAddingStrokeIdentifiers:(id)arg1 removingStrokeIdentifiers:(id)arg2 firstStrokeIdentifier:(id)arg3 lastStrokeIdentifier:(id)arg4 bounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg5 classification:(long long)arg6;
+- (struct CGPoint { double x1; double x2; })firstStrokeOrigin;
+- (id)groupByAddingStrokeIdentifiers:(id)arg1 removingStrokeIdentifiers:(id)arg2 firstStrokeIdentifier:(id)arg3 lastStrokeIdentifier:(id)arg4 bounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg5 classification:(long long)arg6 groupingConfidence:(double)arg7 firstStrokeOrigin:(struct CGPoint { double x1; double x2; })arg8;
+- (double)groupingConfidence;
 - (id)init;
-- (id)initWithAncestorIdentifier:(long long)arg1 strokeIdentifiers:(id)arg2 firstStrokeIdentifier:(id)arg3 lastStrokeIdentifier:(id)arg4 bounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg5 classification:(long long)arg6;
-- (id)initWithStrokeIdentifiers:(id)arg1 firstStrokeIdentifier:(id)arg2 lastStrokeIdentifier:(id)arg3 bounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg4 classification:(long long)arg5;
+- (id)initWithAncestorIdentifier:(long long)arg1 strokeIdentifiers:(id)arg2 firstStrokeIdentifier:(id)arg3 lastStrokeIdentifier:(id)arg4 bounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg5 classification:(long long)arg6 groupingConfidence:(double)arg7 strategyIdentifier:(id)arg8 firstStrokeOrigin:(struct CGPoint { double x1; double x2; })arg9;
+- (id)initWithStrokeIdentifiers:(id)arg1 firstStrokeIdentifier:(id)arg2 lastStrokeIdentifier:(id)arg3 bounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg4 classification:(long long)arg5 groupingConfidence:(double)arg6 strategyIdentifier:(id)arg7 firstStrokeOrigin:(struct CGPoint { double x1; double x2; })arg8;
 - (bool)isEquivalentToStrokeGroup:(id)arg1;
 - (id)lastStrokeIdentifier;
+- (id)strategyIdentifier;
 - (id)strokeIdentifiers;
 - (long long)uniqueIdentifier;
 

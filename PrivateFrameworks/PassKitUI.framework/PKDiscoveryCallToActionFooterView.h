@@ -9,12 +9,15 @@
     <PKDiscoveryCardViewDelegate> * _delegate;
     long long  _displayType;
     UILabel * _editorialDescriptionLabel;
+    UILabel * _expandedEditorialDescriptionLabel;
+    UILabel * _expandedTitleLabel;
     bool  _hasButton;
     bool  _hasIcon;
     UIImageView * _iconImageView;
     PKDiscoveryMedia * _media;
     bool  _showActivityIndicator;
     UILabel * _titleLabel;
+    bool  _useAccessibilityLayout;
 }
 
 @property (nonatomic) <PKDiscoveryCardViewDelegate> *delegate;
@@ -23,13 +26,16 @@
 
 - (void).cxx_destruct;
 - (void)_buttonPressed:(id)arg1;
+- (struct CGSize { double x1; double x2; })_buttonSizeForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (double)_buttonWidthForLabelWidth:(double)arg1;
 - (id)_descriptionLabelColor;
+- (id)_descriptionLabelWithLocalizedDescription:(id)arg1;
 - (id)_editorialDescriptionLabelFont;
 - (struct CGSize { double x1; double x2; })_iconSize;
 - (void)_loadImageData;
-- (double)_maxButtonWidth;
 - (id)_titleLabelColor;
 - (id)_titleLabelFont;
+- (id)_titleLabelWithLocalizedTitle:(id)arg1;
 - (id)delegate;
 - (long long)displayType;
 - (id)initWithCallToAction:(id)arg1 displayType:(long long)arg2;

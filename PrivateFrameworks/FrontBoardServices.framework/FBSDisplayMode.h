@@ -22,9 +22,12 @@
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } nativePixelSize;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } pixelSize;
 @property (nonatomic, readonly) double refreshRate;
+@property (nonatomic, readonly) bool sb_isLPMDisplayMode;
 @property (nonatomic, readonly) double scale;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } size;
 @property (readonly) Class superclass;
+
+// Image: /System/Library/PrivateFrameworks/FrontBoardServices.framework/FrontBoardServices
 
 + (id)_emptyMode;
 + (bool)supportsSecureCoding;
@@ -60,5 +63,9 @@
 - (double)refreshRate;
 - (double)scale;
 - (struct CGSize { double x1; double x2; })size;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoard.framework/SpringBoard
+
+- (bool)sb_isLPMDisplayMode;
 
 @end

@@ -5,15 +5,18 @@
 @interface PKAuthenticator : NSObject {
     unsigned long long  _authenticationIdentifier;
     PKAuthenticatorEvaluationContext * _context;
-    NSObject<OS_dispatch_queue> * _contextMutationQueue;
     <PKAuthenticatorDelegate> * _delegate;
     double  _fingerPresentTimeout;
     bool  _invalidated;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _lock;
 }
 
 @property (nonatomic, readonly) unsigned long long authenticationIdentifier;
 @property (nonatomic, readonly) long long coachingState;
 @property (nonatomic) <PKAuthenticatorDelegate> *delegate;
+@property (nonatomic, readonly) long long faceIDState;
 @property (nonatomic, readonly) bool fingerPresent;
 @property (nonatomic) double fingerPresentTimeout;
 @property (nonatomic, readonly) bool fingerPresentTimeoutExpired;
@@ -21,10 +24,10 @@
 @property (nonatomic, readonly) bool passcodeActive;
 @property (nonatomic, readonly) bool passcodeWasPresented;
 @property (nonatomic, readonly) bool passphraseActive;
-@property (nonatomic, readonly) bool userIntentAvailable;
 
 + (unsigned long long)_currentStateForMechanisms:(id)arg1;
 + (unsigned long long)cachedStateForPolicy:(long long)arg1;
++ (bool)canPerformPSD2StyleBuyForAccessControlRef:(struct __SecAccessControl { }*)arg1;
 + (unsigned long long)currentStateForAccessControl:(struct __SecAccessControl { }*)arg1;
 + (unsigned long long)currentStateForPolicy:(long long)arg1;
 + (void)delayCoachingStateTransition;
@@ -36,7 +39,6 @@
 
 - (void).cxx_destruct;
 - (id)_context;
-- (void)_contextChanged;
 - (bool)_delegateSupportsPasscodePresentation;
 - (bool)_delegateSupportsPassphrasePresentation;
 - (void)_evaluateEvaluationContext:(id)arg1;
@@ -52,6 +54,7 @@
 - (void)dealloc;
 - (id)delegate;
 - (void)evaluateRequest:(id)arg1 withCompletion:(id /* block */)arg2;
+- (long long)faceIDState;
 - (void)fallbackToSystemPasscodeUI;
 - (bool)fingerPresent;
 - (double)fingerPresentTimeout;
@@ -67,6 +70,5 @@
 - (void)setDelegate:(id)arg1;
 - (void)setFingerPresentTimeout:(double)arg1;
 - (void)setFingerPresentTimeout:(double)arg1 preventRestart:(bool)arg2;
-- (bool)userIntentAvailable;
 
 @end

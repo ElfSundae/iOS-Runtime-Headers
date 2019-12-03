@@ -11,6 +11,7 @@
 @property (getter=isSDH, readonly) bool SDH;
 @property (getter=isAuxiliary, readonly) bool auxiliary;
 @property (nonatomic, readonly) NSArray *availableMetadataFormats;
+@property (readonly) NSNumber *avkit_persistentIdentifier;
 @property (nonatomic, readonly) NSArray *commonMetadata;
 @property (nonatomic, readonly) NSString *displayName;
 @property (getter=isEasyReader, readonly) bool easyReader;
@@ -25,7 +26,6 @@
 @property (nonatomic, readonly) bool mpIsSDH;
 @property (getter=isPlayable, nonatomic, readonly) bool playable;
 @property (nonatomic, readonly) NSString *shortLocalizedDisplayName;
-@property (nonatomic, readonly) AVAssetTrack *track;
 @property (nonatomic, readonly) int trackID;
 @property (nonatomic, readonly) NSString *unicodeLanguageCode;
 @property (nonatomic, readonly) NSString *unicodeLanguageIdentifier;
@@ -33,6 +33,7 @@
 // Image: /System/Library/Frameworks/AVFoundation.framework/AVFoundation
 
 + (bool)_plistHasOptionIdentifier:(id)arg1;
++ (id)mediaSelectionNilOptionForGroup:(id)arg1;
 + (id)mediaSelectionOptionForAsset:(id)arg1 group:(id)arg2 dictionary:(id)arg3 hasUnderlyingTrack:(bool)arg4;
 
 - (id)_ancillaryDescription;
@@ -44,6 +45,7 @@
 - (bool)_isDesignatedDefault;
 - (bool)_isMainProgramContent;
 - (id)_preferredMetadataTitleAccordingToPreferredLanguages:(id)arg1 fallingBackToMatchingEmptyLocale:(bool)arg2;
+- (bool)_representsNilSelection;
 - (id)_taggedMediaCharacteristics;
 - (id)_title;
 - (id)_track;
@@ -84,6 +86,10 @@
 
 // Image: /System/Library/Frameworks/AVKit.framework/AVKit
 
++ (id)avkit_autoOption;
++ (id)avkit_offOption;
+
+- (id)avkit_persistentIdentifier;
 - (id)avkit_title;
 - (bool)isAC3Only;
 - (bool)isAuxiliary;
@@ -91,7 +97,7 @@
 - (bool)isEasyReader;
 - (bool)isMain;
 - (bool)isSDH;
-- (long long)languageCompare:(id)arg1;
+- (long long)languageCompare:(id)arg1 currentLanguageCode:(id)arg2 currentLanguageIdentifier:(id)arg3;
 - (id)localizedDisplayName;
 - (id)mediaRemoteIdentifier;
 - (id)shortLocalizedDisplayName;

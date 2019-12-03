@@ -2,51 +2,51 @@
    Image: /System/Library/PrivateFrameworks/Email.framework/Email
  */
 
-@interface EMVIPManager : NSObject {
+@interface EMVIPManager : NSObject <EFFutureDelegate, EFLoggable, EMVIPManager, EMVIPManagerObserver> {
     EAEmailAddressSet * _cachedEmailAddresses;
-    CNContactStore * _contactStore;
-    NSUbiquitousKeyValueStore * _keyValueStore;
-    NSObject<OS_dispatch_queue> * _operationQueue;
-    NSMutableDictionary * _vipsByIdentifier;
+    EMRemoteConnection * _connection;
+    EFCancelationToken * _observerCancelationToken;
+    EFPromise * _vipsByIdentifierPromise;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _vipsLock;
 }
 
-@property (nonatomic, readonly) CNContactStore *contactStore;
-@property (nonatomic, readonly) NSUbiquitousKeyValueStore *keyValueStore;
-@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *operationQueue;
+@property (nonatomic, readonly, copy) EAEmailAddressSet *allVIPEmailAddresses;
+@property (nonatomic, readonly, copy) NSSet *allVIPs;
+@property (nonatomic, retain) EMRemoteConnection *connection;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) bool hasVIPs;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (retain) EFPromise *vipsByIdentifierPromise;
 
-+ (id)_contactDescriptors;
-+ (id)_log;
-+ (void)initialize;
-+ (id)plistURL;
++ (id)log;
++ (id)remoteInterface;
 
 - (void).cxx_destruct;
-- (id)_allVIPEmailAddresses;
-- (id)_cloudKeyForIdentifier:(id)arg1;
-- (id)_contactForName:(id)arg1 emailAddresses:(id)arg2;
-- (id)_contactFromContacts:(id)arg1 matchingMostAddresses:(id)arg2;
-- (bool)_isVIPForContact:(id)arg1 orAddresses:(id)arg2;
-- (void)_keyValueStoreChanged:(id)arg1;
-- (void)_loadVIPs;
-- (void)_mergeVIPs;
-- (void)_removeVIPsWithIdentifiers:(id)arg1;
-- (void)_saveVIPs;
-- (void)_saveVIPsLocally;
-- (void)_updateCloudWithLocal;
-- (void)_updateLocalWithCloud:(id)arg1 refresh:(bool)arg2;
-- (id)_validatedCloudVIPFromStore:(id)arg1 withCloudKey:(id)arg2;
-- (void)_vipManagerCommonInitWithKeyValueStore:(id)arg1 contactStore:(id)arg2;
-- (id)_vipsDictionary;
+- (void)_reset;
+- (void)_startObservingVIPChangesIfNecessary;
+- (id)_vipsByIdentifier;
 - (id)allVIPEmailAddresses;
 - (id)allVIPs;
-- (id)contactStore;
+- (id)connection;
 - (void)dealloc;
+- (void)didFinishBlockingMainThreadForFuture:(id)arg1;
+- (void)didStartBlockingMainThreadForFuture:(id)arg1;
+- (bool)hasVIPs;
 - (id)init;
-- (id)initWithSyncEnabled:(bool)arg1;
-- (id)keyValueStore;
-- (id)operationQueue;
+- (id)initWithRemoteConnection:(id)arg1;
+- (bool)isVIPAddress:(id)arg1;
+- (void)observer:(id)arg1 gotVIPs:(id)arg2;
+- (void)observer:(id)arg1 updatedVIPs:(id)arg2 removedVIPs:(id)arg3;
 - (void)removeVIPsWithEmailAddresses:(id)arg1;
 - (void)removeVIPsWithIdentifiers:(id)arg1;
 - (void)saveVIPs:(id)arg1;
+- (void)setConnection:(id)arg1;
+- (void)setVipsByIdentifierPromise:(id)arg1;
 - (id)vipWithIdentifier:(id)arg1;
+- (id)vipsByIdentifierPromise;
 
 @end

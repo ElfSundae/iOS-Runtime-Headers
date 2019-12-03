@@ -19,6 +19,7 @@
     CKDPPackage * _packageValue;
     CKDPRecordReference * _referenceValue;
     long long  _signedValue;
+    CKDPStreamingAsset * _streamingAssetValue;
     NSString * _stringValue;
     int  _type;
 }
@@ -36,6 +37,7 @@
 @property (nonatomic, readonly) bool hasPackageValue;
 @property (nonatomic, readonly) bool hasReferenceValue;
 @property (nonatomic) bool hasSignedValue;
+@property (nonatomic, readonly) bool hasStreamingAssetValue;
 @property (nonatomic, readonly) bool hasStringValue;
 @property (nonatomic) bool hasType;
 @property (nonatomic) bool isEncrypted;
@@ -44,6 +46,7 @@
 @property (nonatomic, retain) CKDPPackage *packageValue;
 @property (nonatomic, retain) CKDPRecordReference *referenceValue;
 @property (nonatomic) long long signedValue;
+@property (nonatomic, retain) CKDPStreamingAsset *streamingAssetValue;
 @property (nonatomic, retain) NSString *stringValue;
 @property (nonatomic) int type;
 
@@ -71,6 +74,7 @@
 - (bool)hasPackageValue;
 - (bool)hasReferenceValue;
 - (bool)hasSignedValue;
+- (bool)hasStreamingAssetValue;
 - (bool)hasStringValue;
 - (bool)hasType;
 - (unsigned long long)hash;
@@ -98,9 +102,11 @@
 - (void)setPackageValue:(id)arg1;
 - (void)setReferenceValue:(id)arg1;
 - (void)setSignedValue:(long long)arg1;
+- (void)setStreamingAssetValue:(id)arg1;
 - (void)setStringValue:(id)arg1;
 - (void)setType:(int)arg1;
 - (long long)signedValue;
+- (id)streamingAssetValue;
 - (id)stringValue;
 - (int)type;
 - (id)typeAsString:(int)arg1;

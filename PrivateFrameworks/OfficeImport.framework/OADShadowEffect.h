@@ -9,10 +9,10 @@
     float  mDistance;
 }
 
+- (void).cxx_destruct;
 - (float)angle;
 - (float)blurRadius;
 - (id)color;
-- (void)dealloc;
 - (id)description;
 - (float)distance;
 - (unsigned long long)hash;

@@ -46,7 +46,6 @@
 - (id)debugQuickLookObject;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (void)finalize;
 - (double)green;
 - (unsigned long long)hash;
 - (id)init;

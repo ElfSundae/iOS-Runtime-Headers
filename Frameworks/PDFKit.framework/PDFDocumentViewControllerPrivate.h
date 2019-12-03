@@ -5,14 +5,12 @@
 @interface PDFDocumentViewControllerPrivate : NSObject {
     PDFPageViewController * activePageView;
     bool  displaysRTL;
-    PDFDocument * document;
     double  maxScale;
     double  minScale;
     PDFPageBackgroundManager * pageBackgroundManager;
     PDFView * pdfView;
     PDFRenderingProperties * renderingProperties;
     UIScrollView * scrollView;
-    bool  showTextSelectionHandles;
     NSHashTable * weakPageViewControllers;
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 

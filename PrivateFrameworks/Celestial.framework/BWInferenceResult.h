@@ -23,7 +23,6 @@
 - (void)dealloc;
 - (int)inferenceType;
 - (id)inferences;
-- (id)init;
 - (id)initWithInferenceType:(int)arg1 inferences:(id)arg2 atTimestamp:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg3;
 - (id)initWithInferenceType:(int)arg1 inferences:(id)arg2 preventionReason:(id)arg3 atTimestamp:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg4;
 - (id)initWithInferenceType:(int)arg1 preventionReason:(id)arg2 atTimestamp:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg3;

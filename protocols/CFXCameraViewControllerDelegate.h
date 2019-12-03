@@ -10,6 +10,8 @@
 - (void)cameraViewController:(CFXCameraViewController *)arg1 didChangeEffectsState:(long long)arg2;
 - (void)cameraViewController:(CFXCameraViewController *)arg1 didChangeEffectsState:(long long)arg2;
 - (void)cameraViewController:(CFXCameraViewController *)arg1 didRenderFrame:(CFXFrame *)arg2;
+- (void)cameraViewController:(CFXCameraViewController *)arg1 presentationRectWasPinchedWithState:(long long)arg2 scale:(double)arg3 velocity:(double)arg4;
+- (void)cameraViewController:(CFXCameraViewController *)arg1 presentationRectWasPinchedWithState:(long long)arg2 scale:(double)arg3 velocity:(double)arg4;
 - (void)cameraViewControllerDidStartCaptureSession:(CFXCameraViewController *)arg1;
 - (void)cameraViewControllerDidStopCaptureSession:(CFXCameraViewController *)arg1;
 - (void)cameraViewControllerDoneButtonWasTapped:(CFXCameraViewController *)arg1;

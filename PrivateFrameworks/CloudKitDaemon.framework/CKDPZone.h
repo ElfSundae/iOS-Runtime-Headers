@@ -3,41 +3,63 @@
  */
 
 @interface CKDPZone : PBCodable <NSCopying> {
-    NSData * _encryptedLastZoneishPCSRollDate;
+    NSData * _encryptedZoneishLastRollDate;
     CKDPProtectionInfo * _protectionInfo;
+    NSMutableArray * _protectionInfoKeysToRemoves;
     CKDPProtectionInfo * _recordProtectionInfo;
+    CKDPShareIdentifier * _shareId;
+    CKDPRecordStableUrl * _stableUrl;
     CKDPRecordZoneIdentifier * _zoneIdentifier;
 }
 
-@property (nonatomic, retain) NSData *encryptedLastZoneishPCSRollDate;
-@property (nonatomic, readonly) bool hasEncryptedLastZoneishPCSRollDate;
+@property (nonatomic, retain) NSData *encryptedZoneishLastRollDate;
+@property (nonatomic, readonly) bool hasEncryptedZoneishLastRollDate;
 @property (nonatomic, readonly) bool hasProtectionInfo;
 @property (nonatomic, readonly) bool hasRecordProtectionInfo;
+@property (nonatomic, readonly) bool hasShareId;
+@property (nonatomic, readonly) bool hasStableUrl;
 @property (nonatomic, readonly) bool hasZoneIdentifier;
 @property (nonatomic, retain) CKDPProtectionInfo *protectionInfo;
+@property (nonatomic, retain) NSMutableArray *protectionInfoKeysToRemoves;
 @property (nonatomic, retain) CKDPProtectionInfo *recordProtectionInfo;
+@property (nonatomic, retain) CKDPShareIdentifier *shareId;
+@property (nonatomic, retain) CKDPRecordStableUrl *stableUrl;
 @property (nonatomic, retain) CKDPRecordZoneIdentifier *zoneIdentifier;
 
++ (Class)protectionInfoKeysToRemoveType;
+
 - (void).cxx_destruct;
+- (void)addProtectionInfoKeysToRemove:(id)arg1;
+- (void)clearProtectionInfoKeysToRemoves;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
-- (id)encryptedLastZoneishPCSRollDate;
-- (bool)hasEncryptedLastZoneishPCSRollDate;
+- (id)encryptedZoneishLastRollDate;
+- (bool)hasEncryptedZoneishLastRollDate;
 - (bool)hasProtectionInfo;
 - (bool)hasRecordProtectionInfo;
+- (bool)hasShareId;
+- (bool)hasStableUrl;
 - (bool)hasZoneIdentifier;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)protectionInfo;
+- (id)protectionInfoKeysToRemoveAtIndex:(unsigned long long)arg1;
+- (id)protectionInfoKeysToRemoves;
+- (unsigned long long)protectionInfoKeysToRemovesCount;
 - (bool)readFrom:(id)arg1;
 - (id)recordProtectionInfo;
-- (void)setEncryptedLastZoneishPCSRollDate:(id)arg1;
+- (void)setEncryptedZoneishLastRollDate:(id)arg1;
 - (void)setProtectionInfo:(id)arg1;
+- (void)setProtectionInfoKeysToRemoves:(id)arg1;
 - (void)setRecordProtectionInfo:(id)arg1;
+- (void)setShareId:(id)arg1;
+- (void)setStableUrl:(id)arg1;
 - (void)setZoneIdentifier:(id)arg1;
+- (id)shareId;
+- (id)stableUrl;
 - (void)writeTo:(id)arg1;
 - (id)zoneIdentifier;
 

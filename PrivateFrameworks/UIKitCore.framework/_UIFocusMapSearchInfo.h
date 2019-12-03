@@ -6,12 +6,14 @@
     bool  _didFindFocusBlockingBoundary;
     NSMutableArray * _mutableDestinationRegions;
     NSMutableArray * _mutableSnapshots;
+    _UIFocusSearchInfo * _searchInfo;
 }
 
 @property (nonatomic, readonly, copy) NSArray *destinationRegions;
 @property (nonatomic) bool didFindFocusBlockingBoundary;
 @property (nonatomic, retain) NSMutableArray *mutableDestinationRegions;
 @property (nonatomic, retain) NSMutableArray *mutableSnapshots;
+@property (nonatomic, retain) _UIFocusSearchInfo *searchInfo;
 @property (nonatomic, readonly, copy) NSArray *snapshots;
 
 - (void).cxx_destruct;
@@ -22,9 +24,11 @@
 - (id)init;
 - (id)mutableDestinationRegions;
 - (id)mutableSnapshots;
+- (id)searchInfo;
 - (void)setDidFindFocusBlockingBoundary:(bool)arg1;
 - (void)setMutableDestinationRegions:(id)arg1;
 - (void)setMutableSnapshots:(id)arg1;
+- (void)setSearchInfo:(id)arg1;
 - (id)snapshots;
 
 @end

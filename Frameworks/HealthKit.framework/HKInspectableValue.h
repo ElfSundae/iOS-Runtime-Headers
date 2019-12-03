@@ -44,6 +44,7 @@
 - (void)_assertValueClass:(Class)arg1;
 - (void)_assertValueType;
 - (id)_initWithValueType:(long long)arg1 value:(id)arg2;
+- (id)_unitStringForCodedValueCollection:(id)arg1;
 - (id)codedQuantityValue;
 - (id)codedValueCollection;
 - (id)converter;
@@ -73,7 +74,9 @@
 
 // Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
 
+- (id)_displayStringForCodedValueCollection:(id)arg1;
 - (id)_joinValueStrings:(id)arg1;
+- (id)_stringForMedicalCodings:(id)arg1;
 - (id)_stringForMedicalDateInterval;
 - (id)_stringForQuantity:(id)arg1;
 - (id)_stringForTimeSinceMidnight;

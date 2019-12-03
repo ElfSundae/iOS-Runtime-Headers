@@ -34,8 +34,12 @@
 @property (nonatomic, readonly) NSArray *allSystemwideCommits;
 @property (nonatomic, readonly) NSArray *allTransactionLifetimes;
 @property (nonatomic, retain) NSArray *compositeIntervals;
+@property (nonatomic, readonly) NSArray *contributedFirstFrameGlitches;
 @property (nonatomic, readonly) NSArray *contributedGlitches;
 @property (nonatomic, readonly) NSArray *contributedLongFrameLatencies;
+@property (nonatomic, readonly) NSArray *contributedNonFirstFrameGlitches;
+@property (nonatomic, readonly) double firstFrameGlitchTimeRatio;
+@property (nonatomic, readonly) NSArray *firstFrameGlitches;
 @property (nonatomic, readonly) unsigned long long frameCount;
 @property (nonatomic, readonly) float frameRate;
 @property (nonatomic, readonly) double glitchTimeRatio;
@@ -48,6 +52,8 @@
 @property (nonatomic, readonly) NSArray *longRenderServerRenders;
 @property (nonatomic, readonly) NSArray *longSystemwideCommits;
 @property (nonatomic, readonly) NSArray *longTransactionLifetimes;
+@property (nonatomic, readonly) double nonFirstFrameGlitchTimeRatio;
+@property (nonatomic, readonly) NSArray *nonFirstFrameGlitches;
 
 + (id)serializationTypeNumber;
 
@@ -60,6 +66,7 @@
 - (id)_intervalTypeString;
 - (id)_poorPerfFrameDescription;
 - (id)_statsStringForTimeIntervals:(id)arg1 label:(id)arg2;
+- (double)_timeRatioForTimeIntervalArray:(id)arg1;
 - (id)allCommits;
 - (id)allContributedFrameLatencies;
 - (id)allContributedFrameLifetimes;
@@ -70,13 +77,17 @@
 - (id)allSystemwideCommits;
 - (id)allTransactionLifetimes;
 - (id)compositeIntervals;
+- (id)contributedFirstFrameGlitches;
 - (id)contributedGlitches;
 - (id)contributedLongFrameLatencies;
+- (id)contributedNonFirstFrameGlitches;
 - (id)debugDescription;
 - (unsigned long long)durationToFirstBeginMachContinuousTime:(id)arg1;
 - (double)durationToFirstBeginSeconds:(id)arg1;
 - (unsigned long long)durationToFirstEndMachContinuousTime:(id)arg1;
 - (double)durationToFirstEndSeconds:(id)arg1;
+- (double)firstFrameGlitchTimeRatio;
+- (id)firstFrameGlitches;
 - (unsigned long long)frameCount;
 - (float)frameRate;
 - (double)glitchTimeRatio;
@@ -93,6 +104,8 @@
 - (id)longRenderServerRenders;
 - (id)longSystemwideCommits;
 - (id)longTransactionLifetimes;
+- (double)nonFirstFrameGlitchTimeRatio;
+- (id)nonFirstFrameGlitches;
 - (void)setCompositeIntervals:(id)arg1;
 
 @end

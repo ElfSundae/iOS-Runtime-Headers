@@ -18,11 +18,12 @@
 - (bool)_loadETAUpdatesTable;
 - (bool)_loadInfoTable;
 - (bool)_loadLocationsTable;
+- (bool)_loadMiscInfo;
 - (bool)_loadMotionDataTable;
 - (bool)_loadRouteSelectionsTable;
-- (bool)_loadSignificantEventsTable;
 - (bool)_loadTraceVersion;
 - (bool)_loadVehicleDataTable;
+- (bool)_tableExists:(id)arg1;
 - (bool)_updateTraceFromVersion:(unsigned long long)arg1 outError:(id*)arg2;
 - (id)loadTraceWithPath:(id)arg1 outError:(id*)arg2;
 

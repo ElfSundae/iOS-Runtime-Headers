@@ -10,6 +10,7 @@
     NSString * _clientSuppliedDeviceIdentifier;
     CKDOperationMetrics * _cloudKitMetrics;
     CKDClientContext * _context;
+    bool  _didAttemptDugongKeyRoll;
     NSError * _error;
     NSMutableArray * _finishedChildOperationIDs;
     bool  _isExecuting;
@@ -19,7 +20,7 @@
     CKOperationInfo * _operationInfo;
     NSObject<OS_os_activity> * _osActivity;
     CKDOperation * _parentOperation;
-    int  _pcsWaitCount;
+    _Atomic int  _pcsWaitCount;
     <NSObject> * _powerAssertion;
     CKDClientProxy * _proxy;
     CKDURLRequest * _request;
@@ -29,7 +30,6 @@
     NSDate * _startDate;
     unsigned long long  _state;
     NSObject<OS_dispatch_group> * _stateTransitionGroup;
-    CKTimeLogger * _timeLogger;
     bool  _useClearAssetEncryption;
     bool  _useEncryption;
     UMUserSyncTask * _userSyncTask;
@@ -52,11 +52,14 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) NSString *deviceIdentifier;
-@property (nonatomic, readonly) unsigned long long discretionaryNetworkBehavior;
+@property (nonatomic) bool didAttemptDugongKeyRoll;
+@property (nonatomic, readonly) unsigned long long discretionaryWhenBackgroundedState;
+@property (nonatomic, readonly) unsigned long long duetPreClearedMode;
 @property (retain) NSError *error;
 @property (nonatomic, retain) NSMutableArray *finishedChildOperationIDs;
 @property (nonatomic, readonly) NSString *flowControlKey;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool isCloudKitSupportOperation;
 @property (nonatomic) bool isExecuting;
 @property (nonatomic) bool isFinished;
 @property (nonatomic, readonly) bool isLongLived;
@@ -71,13 +74,15 @@
 @property (nonatomic, readonly) CKOperationResult *operationResult;
 @property (nonatomic, readonly) NSObject<OS_os_activity> *osActivity;
 @property (nonatomic) CKDOperation *parentOperation;
-@property (nonatomic) int pcsWaitCount;
+@property (nonatomic) _Atomic int pcsWaitCount;
 @property (nonatomic, retain) <NSObject> *powerAssertion;
 @property (nonatomic, readonly) bool preferAnonymousRequests;
 @property (nonatomic) CKDClientProxy *proxy;
 @property (nonatomic, retain) CKDURLRequest *request;
 @property (nonatomic, copy) id /* block */ requestCompletedBlock;
 @property (nonatomic, retain) NSMutableArray *requestUUIDs;
+@property (nonatomic, readonly) bool resolvedAutomaticallyRetryNetworkFailures;
+@property (nonatomic, readonly) unsigned long long resolvedDiscretionaryNetworkBehavior;
 @property (nonatomic, readonly) bool shouldCheckAppVersion;
 @property (nonatomic) bool shouldPipelineFetchAllChangesRequests;
 @property (nonatomic, readonly) bool shouldSkipZonePCSUpdate;
@@ -87,7 +92,7 @@
 @property (nonatomic) unsigned long long state;
 @property (nonatomic, retain) NSObject<OS_dispatch_group> *stateTransitionGroup;
 @property (readonly) Class superclass;
-@property (nonatomic, retain) CKTimeLogger *timeLogger;
+@property (nonatomic, readonly) unsigned long long systemScheduler;
 @property (nonatomic, readonly) double timeoutIntervalForRequest;
 @property (nonatomic, readonly) double timeoutIntervalForResource;
 @property (nonatomic, readonly) CKDOperation *topmostParentOperation;
@@ -129,8 +134,10 @@
 - (bool)allowsBackgroundNetworking;
 - (bool)allowsCellularAccess;
 - (bool)allowsPowerNapScheduling;
+- (id)analyticsPayload;
 - (id)authPromptReason;
 - (bool)automaticallyRetryNetworkFailures;
+- (id)baseOperationAndErrorInfoCoreAnalyticsPayloadWithError:(id)arg1;
 - (void)beginUserSyncTask;
 - (id)callbackQueue;
 - (void)cancel;
@@ -140,6 +147,7 @@
 - (id)clientSuppliedDeviceIdentifier;
 - (id)cloudKitMetrics;
 - (void)combineMetricsWithOperation:(id)arg1;
+- (void)configureQualityOfServiceFromOperationInfo:(id)arg1;
 - (void)configureRequest:(id)arg1;
 - (id)context;
 - (id)createConcurrentQueue;
@@ -149,7 +157,11 @@
 - (void)dealloc;
 - (id)description;
 - (id)deviceIdentifier;
+- (bool)didAttemptDugongKeyRoll;
 - (unsigned long long)discretionaryNetworkBehavior;
+- (unsigned long long)discretionaryWhenBackgroundedState;
+- (unsigned long long)duetPreClearedMode;
+- (id)dugongKeyRollAnalyticsPayloadWithError:(id)arg1;
 - (id)error;
 - (void)fillOutOperationResult:(id)arg1;
 - (void)finishWithError:(id)arg1;
@@ -157,12 +169,15 @@
 - (id)flowControlKey;
 - (unsigned long long)hash;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
+- (bool)isCloudKitSupportOperation;
 - (bool)isConcurrent;
 - (bool)isEqual:(id)arg1;
 - (bool)isExecuting;
 - (bool)isFinished;
 - (bool)isLongLived;
+- (bool)isNetworkingBehaviorEquivalentForOperation:(id)arg1;
 - (bool)isProxyOperation;
+- (bool)isTopLevelDaemonOperationForMetrics;
 - (bool)isWaitingOnPCS;
 - (void)main;
 - (bool)makeStateTransition;
@@ -192,6 +207,9 @@
 - (void)requestDidBeginWaitingForUserAuth:(id)arg1;
 - (void)requestDidEndWaitingForUserAuth:(id)arg1;
 - (id)requestUUIDs;
+- (bool)resolvedAutomaticallyRetryNetworkFailures;
+- (unsigned long long)resolvedDiscretionaryNetworkBehavior;
+- (void)sendCoreAnalyticsEventOperationFinished;
 - (void)setCallbackQueue:(id)arg1;
 - (void)setChildOperations:(id)arg1;
 - (void)setChildOperationsGroup:(id)arg1;
@@ -199,6 +217,7 @@
 - (void)setCloudKitMetrics:(id)arg1;
 - (void)setCompletionBlock:(id /* block */)arg1;
 - (void)setContext:(id)arg1;
+- (void)setDidAttemptDugongKeyRoll:(bool)arg1;
 - (void)setError:(id)arg1;
 - (void)setFinishedChildOperationIDs:(id)arg1;
 - (void)setIsExecuting:(bool)arg1;
@@ -210,6 +229,7 @@
 - (void)setPcsWaitCount:(int)arg1;
 - (void)setPowerAssertion:(id)arg1;
 - (void)setProxy:(id)arg1;
+- (void)setQualityOfService:(long long)arg1;
 - (void)setRequest:(id)arg1;
 - (void)setRequestCompletedBlock:(id /* block */)arg1;
 - (void)setRequestUUIDs:(id)arg1;
@@ -217,7 +237,6 @@
 - (void)setStartDate:(id)arg1;
 - (void)setState:(unsigned long long)arg1;
 - (void)setStateTransitionGroup:(id)arg1;
-- (void)setTimeLogger:(id)arg1;
 - (void)setUseClearAssetEncryption:(bool)arg1;
 - (void)setUseEncryption:(bool)arg1;
 - (void)setUserSyncTask:(id)arg1;
@@ -234,7 +253,7 @@
 - (unsigned long long)state;
 - (id)stateTransitionGroup;
 - (id)statusReportWithIndent:(unsigned long long)arg1;
-- (id)timeLogger;
+- (unsigned long long)systemScheduler;
 - (double)timeoutIntervalForRequest;
 - (double)timeoutIntervalForResource;
 - (id)topmostParentOperation;

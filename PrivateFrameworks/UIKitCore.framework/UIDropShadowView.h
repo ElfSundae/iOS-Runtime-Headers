@@ -3,29 +3,56 @@
  */
 
 @interface UIDropShadowView : UIView {
-    UIView * _backgroundImage;
     UIView * _contentView;
-    double  _cornerRadius;
+    NSArray * _cornerClippingDescendants;
+    struct UIRectCornerRadii { 
+        double topLeft; 
+        double bottomLeft; 
+        double bottomRight; 
+        double topRight; 
+    }  _environmentMatchingCornerRadii;
+    UIView * _firstCornerClippingDescendant;
+    _UIGrabber * _grabber;
+    long long  _independentCorners;
+    _UICutoutShadowView * _magicShadowView;
     bool  _masksTopCornersOnly;
-    NSDictionary * _preservedLayerValues;
+    UIView * _overlayView;
+    bool  _supportsShadowAndGrabber;
 }
 
-@property (nonatomic) UIView *contentView;
-@property (nonatomic) double cornerRadius;
+@property (nonatomic, retain) UIView *contentView;
+@property (nonatomic, readonly) NSArray *cornerClippingDescendants;
+@property (nonatomic, readonly) UIView *deepestClippingView;
+@property (nonatomic) struct UIRectCornerRadii { double x1; double x2; double x3; double x4; } environmentMatchingCornerRadii;
+@property (nonatomic, readonly) UIView *firstCornerClippingDescendant;
+@property (nonatomic, readonly) _UIGrabber *grabber;
+@property (nonatomic, readonly) long long independentCorners;
+@property (nonatomic, readonly) _UICutoutShadowView *magicShadowView;
 @property (nonatomic) bool masksTopCornersOnly;
+@property (nonatomic, retain) UIView *overlayView;
+@property (nonatomic, readonly) bool supportsShadowAndGrabber;
 
 - (void).cxx_destruct;
 - (id)contentView;
-- (double)cornerRadius;
+- (id)cornerClippingDescendants;
+- (id)deepestClippingView;
 - (void)didFinishRotation;
-- (id)init;
+- (struct UIRectCornerRadii { double x1; double x2; double x3; double x4; })environmentMatchingCornerRadii;
+- (id)firstCornerClippingDescendant;
+- (id)grabber;
+- (id)hitTest:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
+- (long long)independentCorners;
+- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 independentCorners:(long long)arg2 supportsShadowAndGrabber:(bool)arg3 stylesSheetsAsCards:(bool)arg4;
+- (id)magicShadowView;
 - (bool)masksTopCornersOnly;
-- (void)setBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (id)overlayView;
 - (void)setContentView:(id)arg1;
-- (void)setCornerRadius:(double)arg1;
-- (void)setFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (void)setEnvironmentMatchingCornerRadii:(struct UIRectCornerRadii { double x1; double x2; double x3; double x4; })arg1;
+- (void)setGrabberAlpha:(double)arg1;
+- (void)setMagicShadowAlpha:(double)arg1;
 - (void)setMasksTopCornersOnly:(bool)arg1;
-- (void)updateShadowPath;
+- (void)setOverlayView:(id)arg1;
+- (bool)supportsShadowAndGrabber;
 - (void)willBeginRotationWithOriginalBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 newBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 
 @end

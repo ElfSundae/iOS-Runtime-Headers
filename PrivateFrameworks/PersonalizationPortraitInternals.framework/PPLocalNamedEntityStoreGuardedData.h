@@ -3,10 +3,7 @@
  */
 
 @interface PPLocalNamedEntityStoreGuardedData : NSObject {
-    NSMutableArray * _namedEntitiesForOverride;
     bool  _pendingNamedEntityChangeNotification;
 }
-
-- (void).cxx_destruct;
 
 @end

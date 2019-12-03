@@ -15,11 +15,13 @@
     NSLayoutConstraint * _popoverGuideTrailing;
     UILayoutGuide * _popoverLayoutGuide;
     NSLayoutConstraint * _requestedSize;
+    bool  _suppressSpacing;
     bool  _useGroupSizing;
 }
 
 @property (nonatomic, copy) id /* block */ itemViewGenerator;
 @property (nonatomic, readonly) UILayoutGuide *popoverLayoutGuide;
+@property (nonatomic) bool suppressSpacing;
 @property (nonatomic) bool useGroupSizing;
 
 - (void).cxx_destruct;
@@ -33,14 +35,17 @@
 - (void)_updateItemView;
 - (void)_updateItemViewSizing;
 - (id)description;
+- (void)dirtyLayoutForPlainAppearanceChange:(bool)arg1 doneAppearanceChanged:(bool)arg2;
 - (id)initWithLayoutMetrics:(id)arg1;
 - (id)initWithLayoutMetrics:(id)arg1 barButtonItem:(id)arg2;
 - (id /* block */)itemViewGenerator;
 - (double)minimumLayoutWidthGivenMinimumSpaceWidth:(double)arg1;
 - (id)popoverLayoutGuide;
 - (void)setItemViewGenerator:(id /* block */)arg1;
+- (void)setSuppressSpacing:(bool)arg1;
 - (void)setUseGroupSizing:(bool)arg1;
 - (bool)shouldHoriziontallyCenterView:(id)arg1;
+- (bool)suppressSpacing;
 - (bool)useGroupSizing;
 
 @end

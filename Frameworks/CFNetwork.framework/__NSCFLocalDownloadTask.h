@@ -36,7 +36,7 @@
 + (id)_requestFromResumeDataDictionary:(id)arg1 key:(id)arg2;
 
 - (id /* block */)_afterDidReportProgressOnQueue;
-- (struct __CFDictionary { }*)_copySocketStreamProperties;
+- (const struct __CFDictionary { }*)_copySocketStreamProperties;
 - (void)_onqueue_cancelByProducingResumeData:(id /* block */)arg1;
 - (void)_onqueue_completeInitialization;
 - (void)_onqueue_didReceiveResponse:(id)arg1 completion:(id /* block */)arg2;
@@ -55,10 +55,10 @@
 - (id)downloadFile;
 - (id)explicitDownloadDirectory;
 - (id /* block */)fileCompletion;
-- (id)initWithSession:(id)arg1 request:(id)arg2 filePath:(id)arg3 ident:(unsigned long long)arg4;
-- (id)initWithSession:(id)arg1 request:(id)arg2 ident:(unsigned long long)arg3;
-- (id)initWithSession:(id)arg1 resumeData:(id)arg2 ident:(unsigned long long)arg3;
-- (id)initWithTask:(id)arg1;
+- (id)initWithLocalSessionTask:(id)arg1 connection:(id)arg2;
+- (id)initWithTaskGroup:(id)arg1 request:(id)arg2 filePath:(id)arg3 ident:(unsigned long long)arg4;
+- (id)initWithTaskGroup:(id)arg1 request:(id)arg2 ident:(unsigned long long)arg3;
+- (id)initWithTaskGroup:(id)arg1 resumeData:(id)arg2 ident:(unsigned long long)arg3;
 - (bool)isKindOfClass:(Class)arg1;
 - (int)openItemForPath:(id)arg1 mode:(int)arg2;
 - (void)reportProgress:(unsigned long long)arg1;

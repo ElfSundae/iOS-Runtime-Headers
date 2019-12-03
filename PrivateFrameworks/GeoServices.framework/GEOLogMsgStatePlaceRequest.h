@@ -2,10 +2,10 @@
    Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
  */
 
-@interface GEOLogMsgStatePlaceRequest : PBRequest <NSCopying> {
+@interface GEOLogMsgStatePlaceRequest : PBCodable <NSCopying> {
     struct { 
-        unsigned int placeRequestType : 1; 
-    }  _has;
+        unsigned int has_placeRequestType : 1; 
+    }  _flags;
     GEOPDPlaceRequest * _placeDataRequest;
     int  _placeRequestType;
 }
@@ -14,6 +14,8 @@
 @property (nonatomic) bool hasPlaceRequestType;
 @property (nonatomic, retain) GEOPDPlaceRequest *placeDataRequest;
 @property (nonatomic) int placeRequestType;
+
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsPlaceRequestType:(id)arg1;
@@ -29,6 +31,7 @@
 - (id)placeDataRequest;
 - (int)placeRequestType;
 - (id)placeRequestTypeAsString:(int)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasPlaceRequestType:(bool)arg1;
 - (void)setPlaceDataRequest:(id)arg1;

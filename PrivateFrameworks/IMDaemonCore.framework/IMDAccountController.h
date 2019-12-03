@@ -2,11 +2,13 @@
    Image: /System/Library/PrivateFrameworks/IMDaemonCore.framework/IMDaemonCore
  */
 
-@interface IMDAccountController : NSObject {
+@interface IMDAccountController : NSObject <IDSAccountDelegate> {
     NSMutableDictionary * _accounts;
     NSMutableDictionary * _activeAccounts;
     bool  _isFirstLoad;
     bool  _isLoading;
+    bool  _networkDataAvailable;
+    NSSet * _operationalAccountsCache;
 }
 
 @property (nonatomic, readonly) NSArray *accounts;
@@ -14,8 +16,13 @@
 @property (nonatomic, readonly) NSArray *activeSessions;
 @property (nonatomic, readonly) NSArray *connectedAccounts;
 @property (nonatomic, readonly) NSArray *connectingAccounts;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) bool isLoading;
 @property (nonatomic, readonly) NSDictionary *loadOldStatusStore;
+@property (nonatomic) bool networkDataAvailable;
+@property (readonly) Class superclass;
 
 + (id)sharedAccountController;
 + (id)sharedInstance;
@@ -23,7 +30,12 @@
 - (void)_checkPowerAssertion;
 - (void)_daemonWillShutdown:(id)arg1;
 - (bool)_isAccountActive:(id)arg1 forService:(id)arg2;
+- (bool)_isOperationalForAccount:(id)arg1;
+- (id)_nicknameController;
+- (id)_operationalAccounts;
+- (void)_rebuildOperationalAccountsCache;
 - (id)_superFormatFromAIML:(id)arg1;
+- (void)account:(id)arg1 isActiveChanged:(bool)arg2;
 - (id)accountForAccountID:(id)arg1;
 - (id)accountForIDSAccountUniqueID:(id)arg1;
 - (id)accounts;
@@ -51,9 +63,11 @@
 - (bool)isLoading;
 - (void)load;
 - (id)loadOldStatusStore;
+- (bool)networkDataAvailable;
 - (void)removeAccount:(id)arg1;
 - (void)save;
 - (id)sessionForAccount:(id)arg1;
+- (void)setNetworkDataAvailable:(bool)arg1;
 - (void)setupAccount:(id)arg1;
 
 @end

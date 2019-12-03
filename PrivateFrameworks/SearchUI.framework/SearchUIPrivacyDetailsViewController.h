@@ -4,6 +4,7 @@
 
 @interface SearchUIPrivacyDetailsViewController : UINavigationController
 
+- (bool)_canShowWhileLocked;
 - (void)dismiss;
 - (id)init;
 

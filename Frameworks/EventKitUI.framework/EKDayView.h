@@ -31,6 +31,7 @@
         double x; 
         double y; 
     }  _lastPinchPoint1;
+    bool  _layoutWhenJoiningViewHierarchy;
     double  _nextDSTTransition;
     long long  _orientation;
     int  _outlineStyle;
@@ -51,6 +52,7 @@
     bool  _shouldEverShowTimeIndicators;
     bool  _showOnlyAllDayArea;
     bool  _sizeTimeViewUsingOnlyHourText;
+    long long  _targetSizeClass;
     NSTimer * _timeMarkerTimer;
     EKDayTimeView * _timeView;
     double  _todayScrollSecondBuffer;
@@ -90,7 +92,7 @@
 @property (nonatomic) bool isNowVisible;
 @property (nonatomic, readonly) double leftContentInset;
 @property (nonatomic) struct CGPoint { double x1; double x2; } normalizedContentOffset;
-@property (nonatomic) int occurrenceBackgroundStyle;
+@property (nonatomic) long long occurrenceBackgroundStyle;
 @property (nonatomic, retain) UIColor *occurrenceLocationColor;
 @property (nonatomic, retain) UIColor *occurrenceTextBackgroundColor;
 @property (nonatomic, retain) UIColor *occurrenceTimeColor;
@@ -123,7 +125,7 @@
 - (double)_adjustSecondBackwardForDSTHole:(double)arg1;
 - (double)_adjustSecondForwardForDSTHole:(double)arg1;
 - (void)_clearVerticalGridExtensionImageCache;
-- (void)_createAllDayView;
+- (void)_createAllDayViewWithSizeClass:(long long)arg1;
 - (void)_dayViewPinched:(id)arg1;
 - (void)_disposeAllDayView;
 - (void)_doubleTap:(id)arg1;
@@ -134,12 +136,15 @@
 - (void)_notifyDelegateOfFinishedScrollingToOccurrence;
 - (struct CGPoint { double x1; double x2; })_pinchDistanceForGestureRecognizer:(id)arg1;
 - (double)_positionOfSecond:(int)arg1;
+- (double)_scrollRate;
 - (void)_scrollToSecond:(int)arg1 animated:(bool)arg2 whenFinished:(id /* block */)arg3;
 - (void)_scrollToSecond:(int)arg1 offset:(double)arg2 animated:(bool)arg3 whenFinished:(id /* block */)arg4;
 - (void)_scrollViewWillBeginDragging:(id)arg1;
+- (double)_scrollZoneTop;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_scrollerRect;
 - (int)_secondAtPosition:(double)arg1;
 - (bool)_showingAllDaySection;
+- (long long)_sizeClass;
 - (void)_startMarkerTimer;
 - (void)_timeViewTapped:(id)arg1;
 - (void)_updateContentForSizeCategoryChange:(id)arg1;
@@ -164,6 +169,7 @@
 - (void)configureOccurrenceViewForGestureController:(id)arg1;
 - (bool)containsOccurrences;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })currentTimeRectInView:(id)arg1;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })currentTimeRectInView:(id)arg1 requireThumb:(bool)arg2;
 - (id)dataSource;
 - (double)dateAtPoint:(struct CGPoint { double x1; double x2; })arg1 isAllDay:(bool*)arg2;
 - (double)dateAtPoint:(struct CGPoint { double x1; double x2; })arg1 isAllDay:(bool*)arg2 requireAllDayRegionInsistence:(bool)arg3;
@@ -176,6 +182,7 @@
 - (void)dayViewContent:(id)arg1 didSelectEvent:(id)arg2;
 - (void)dayViewContent:(id)arg1 didTapInEmptySpaceOnDay:(double)arg2;
 - (void)dayViewContent:(id)arg1 didTapPinnedOccurrence:(id)arg2;
+- (void)dayViewContentDidCompleteAsyncLoadAndLayout:(id)arg1;
 - (void)dealloc;
 - (id)delegate;
 - (id)description;
@@ -191,16 +198,17 @@
 - (double)highlightedHour;
 - (double)hourScale;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })hoursToRender;
-- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 orientation:(long long)arg2 displayDate:(id)arg3 backgroundColor:(id)arg4 opaque:(bool)arg5 scrollbarShowsInside:(bool)arg6;
+- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 sizeClass:(long long)arg2 orientation:(long long)arg3 displayDate:(id)arg4 backgroundColor:(id)arg5 opaque:(bool)arg6 scrollbarShowsInside:(bool)arg7;
 - (void)insertViewForEvent:(id)arg1 belowViewForOtherEvent:(id)arg2;
 - (bool)isAllDayLabelHighlighted;
 - (bool)isNowVisible;
 - (void)layoutSubviews;
 - (double)leftContentInset;
+- (void)loadData:(bool)arg1 withCompletion:(id /* block */)arg2;
 - (double)maximumHourScale;
 - (double)minimumHourScale;
 - (struct CGPoint { double x1; double x2; })normalizedContentOffset;
-- (int)occurrenceBackgroundStyle;
+- (long long)occurrenceBackgroundStyle;
 - (id)occurrenceLocationColor;
 - (void)occurrencePressed:(id)arg1 onDay:(double)arg2;
 - (id)occurrenceTextBackgroundColor;
@@ -216,9 +224,9 @@
 - (void)relayoutExistingTimedOccurrences;
 - (void)reloadData;
 - (void)reloadDataSynchronously;
-- (void)reloadDataWithCompletion:(id /* block */)arg1;
 - (void)removeFromSuperview;
 - (void)resetLastSelectedOccurrencePoint;
+- (void)resetOccurrenceViewColors;
 - (double)scaledHourHeight;
 - (double)scrollAnimationDurationOverride;
 - (double)scrollBarOffset;
@@ -259,7 +267,7 @@
 - (void)setHoursToRender:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (void)setIsNowVisible:(bool)arg1;
 - (void)setNormalizedContentOffset:(struct CGPoint { double x1; double x2; })arg1;
-- (void)setOccurrenceBackgroundStyle:(int)arg1;
+- (void)setOccurrenceBackgroundStyle:(long long)arg1;
 - (void)setOccurrenceLocationColor:(id)arg1;
 - (void)setOccurrenceTextBackgroundColor:(id)arg1;
 - (void)setOccurrenceTimeColor:(id)arg1;
@@ -302,6 +310,7 @@
 - (bool)usesVibrantGridDrawing;
 - (id)verticalScrollView;
 - (void)willMoveToSuperview:(id)arg1;
+- (void)willMoveToWindow:(id)arg1;
 - (double)yPositionPerhapsMatchingAllDayOccurrence:(id)arg1;
 
 @end

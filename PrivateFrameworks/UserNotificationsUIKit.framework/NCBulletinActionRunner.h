@@ -23,7 +23,7 @@
 - (void).cxx_destruct;
 - (id)action;
 - (id)bulletin;
-- (void)executeAction:(id)arg1 fromOrigin:(id)arg2 withParameters:(id)arg3 completion:(id /* block */)arg4;
+- (void)executeAction:(id)arg1 fromOrigin:(id)arg2 endpoint:(id)arg3 withParameters:(id)arg4 completion:(id /* block */)arg5;
 - (id)initWithAction:(id)arg1 bulletin:(id)arg2 observer:(id)arg3;
 - (id)observer;
 - (bool)responseWasSent;

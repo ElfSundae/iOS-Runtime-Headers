@@ -7,6 +7,8 @@
     NSMutableSet * _downloadedDeleteRecords;
     bool  _initialUpload;
     PLPhotoLibrary * _photoLibrary;
+    NSMutableDictionary * _recordsToDelete;
+    NSString * _recordsToDeletePlistPath;
     bool  _shouldGenerateDerivatives;
     NSMutableArray * _uploadBatchArray;
 }
@@ -18,6 +20,7 @@
 - (void)_addAsset:(id)arg1 toAssetChanges:(id)arg2 isInsert:(bool)arg3 seenAssetUuid:(id)arg4;
 - (void)_addLocalResourcesToRecord:(id)arg1;
 - (void)_cleanUploadedResources:(id)arg1;
+- (void)_clearSuccessfullyPushedDeletedRecords:(id)arg1;
 - (id)_fetchChangesFromLocalEvent:(id)arg1 shouldTriggerPrefetch:(bool*)arg2;
 - (id)_getLocalRecordFromCPLRecord:(id)arg1;
 - (void)_handleInvalidAsset:(id)arg1;
@@ -27,11 +30,13 @@
 - (void)_processChangeToFullRecordCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
 - (void)_processGenerateDerivativesCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
 - (void)_processIncludeMasterCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
+- (void)_processInvalidExpungeableResourceTypesCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
 - (void)_processInvalidResourceCopySourceCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
 - (void)_processInvalidScopeCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
 - (void)_processPendingObjects:(id)arg1 withBatchManager:(id)arg2;
 - (void)_processQuarantineRecordsCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
 - (bool)_processRepushAlbumError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
+- (void)_promptForNilAssetUUID:(id)arg1 isInsert:(bool)arg2;
 - (void)_promptToFileRadarWithTitle:(id)arg1 description:(id)arg2;
 - (void)_push:(id)arg1;
 - (void)_pushBatches:(id)arg1;
@@ -42,7 +47,9 @@
 - (void)_sortData:(id)arg1 isInsert:(bool)arg2 forUploadChanges:(id)arg3 shouldTriggerPrefetch:(bool*)arg4 inManagedObjectContext:(id)arg5;
 - (void)_sortRelationshipData:(id)arg1 forRelationshipUpdate:(id)arg2 inManagedObjectContext:(id)arg3;
 - (id)_syncDescriptionForObject:(id)arg1;
-- (bool)_validate:(id)arg1 onRelatedObject:(id)arg2;
+- (bool)_updateDeletionRecordListForKey:(id)arg1 removingRecordID:(id)arg2;
+- (bool)_validateAdditionalAssetAttributes:(id)arg1 onRelatedObject:(id)arg2;
+- (bool)_validateAsset:(id)arg1 onRelatedObject:(id)arg2;
 - (id)_validateAssets:(id)arg1 fromCloudUuidDeleteList:(id)arg2;
 - (void)addBatches:(id)arg1;
 - (void)clearUploadArray;
@@ -60,6 +67,7 @@
 - (void)setShouldGenerateDerivatives:(bool)arg1;
 - (bool)shouldGenerateDerivatives;
 - (void)tryToFixCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
+- (void)uploadDeletedRecordsFromPlist:(id)arg1;
 - (void)uploadFullPhotoLibraryToCloud;
 
 @end

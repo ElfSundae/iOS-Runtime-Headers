@@ -67,7 +67,9 @@
 - (id)inputImage;
 - (id)inputMaxBlur;
 - (id)inputTuningParameters;
+- (id)metalKernel;
 - (id)outputImage;
+- (id)outputImage_V4;
 - (void)setInputApertureScaling:(id)arg1;
 - (void)setInputFacesCapMultip:(id)arg1;
 - (void)setInputFacesCenterX:(id)arg1;

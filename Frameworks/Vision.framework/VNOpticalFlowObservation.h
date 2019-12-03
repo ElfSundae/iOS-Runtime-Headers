@@ -4,4 +4,6 @@
 
 @interface VNOpticalFlowObservation : VNPixelBufferObservation
 
+- (struct __CVBuffer { }*)getPixelBufferFP32FormattedAndReturnError:(id*)arg1;
+
 @end

@@ -13,6 +13,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long numberOfLines;
 @property (nonatomic, readonly) long long overriddenVerticalAlignment;
+@property (nonatomic, readonly) bool prefersBaselineAlignment;
 @property (nonatomic, retain) UIStackView *stackView;
 @property (nonatomic, readonly) NSArray *stringViews;
 @property (readonly) Class superclass;

@@ -9,6 +9,7 @@
     MKMapItem * _mapItem;
     _MKPlaceViewController * _owner;
     MKMapItem * _updatingInlineMapItem;
+    bool  _useWindowTrait;
 }
 
 @property (getter=isBottomHairlineHidden, nonatomic) bool bottomHairlineHidden;
@@ -19,11 +20,13 @@
 @property (nonatomic, retain) MKMapItem *mapItem;
 @property (nonatomic) _MKPlaceViewController *owner;
 @property (readonly) Class superclass;
+@property (nonatomic) bool useWindowTrait;
 @property (nonatomic, readonly) NSArray *visibleMapItems;
 
-+ (id)inlineMapWithMapItem:(id)arg1;
++ (id)inlineMapWithMapItem:(id)arg1 options:(unsigned long long)arg2;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_handleTapOnMap;
 - (void)_launchMaps;
 - (struct CGSize { double x1; double x2; })_mapSize;
@@ -35,14 +38,17 @@
 - (void)loadView;
 - (id)mapCamera;
 - (id)mapItem;
-- (struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })mapRectContainingMapItems;
 - (id)owner;
+- (long long)preferredUserInterfaceStyle;
 - (void)setBottomHairlineHidden:(bool)arg1;
 - (void)setMapCamera:(id)arg1;
 - (void)setMapItem:(id)arg1;
 - (void)setOwner:(id)arg1;
+- (void)setUseWindowTrait:(bool)arg1;
 - (id)snapshot;
+- (id)traitCollectionForSnapshot;
 - (void)updateInlineMapWithRefinedMapItems;
+- (bool)useWindowTrait;
 - (void)viewDidLoad;
 - (id)visibleMapItems;
 

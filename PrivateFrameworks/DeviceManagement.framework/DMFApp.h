@@ -4,6 +4,7 @@
 
 @interface DMFApp : NSObject <NSCopying, NSSecureCoding> {
     NSString * _VPNUUIDString;
+    NSArray * _associatedDomains;
     NSString * _bundleIdentifier;
     NSDictionary * _configuration;
     NSString * _displayName;
@@ -35,6 +36,7 @@
 }
 
 @property (nonatomic, copy) NSString *VPNUUIDString;
+@property (nonatomic, copy) NSArray *associatedDomains;
 @property (nonatomic, copy) NSString *bundleIdentifier;
 @property (nonatomic, copy) NSDictionary *configuration;
 @property (nonatomic, copy) NSString *displayName;
@@ -70,6 +72,7 @@
 - (void).cxx_destruct;
 - (id)VPNUUIDString;
 - (id)_stringForType:(unsigned long long)arg1;
+- (id)associatedDomains;
 - (id)bundleIdentifier;
 - (id)configuration;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -97,6 +100,7 @@
 - (bool)isValidated;
 - (id)managementInformation;
 - (id)onDemandResourcesUsage;
+- (void)setAssociatedDomains:(id)arg1;
 - (void)setBundleIdentifier:(id)arg1;
 - (void)setConfiguration:(id)arg1;
 - (void)setDisplayName:(id)arg1;

@@ -4,13 +4,13 @@
 
 @interface SearchUIAppStoreButtonViewController : SearchUIAccessoryViewController {
     bool  _appIsInstalled;
-    SKUIItemOfferButton * _appStoreButton;
+    TLKStoreButton * _appStoreButton;
 }
 
-@property bool appIsInstalled;
-@property (retain) SKUIItemOfferButton *appStoreButton;
+@property (nonatomic) bool appIsInstalled;
+@property (nonatomic, retain) TLKStoreButton *appStoreButton;
 
-+ (bool)supportsResult:(id)arg1;
++ (bool)supportsRowModel:(id)arg1;
 
 - (void).cxx_destruct;
 - (bool)appIsInstalled;
@@ -18,8 +18,9 @@
 - (void)buttonPressed;
 - (void)setAppIsInstalled:(bool)arg1;
 - (void)setAppStoreButton:(id)arg1;
-- (id)setupViewWithStyle:(unsigned long long)arg1;
+- (id)setupView;
 - (bool)shouldTopAlignForAccessibilityContentSizes;
-- (void)updateWithResult:(id)arg1;
+- (unsigned long long)type;
+- (void)updateWithRowModel:(id)arg1;
 
 @end

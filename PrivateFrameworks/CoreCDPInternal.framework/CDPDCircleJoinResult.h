@@ -3,7 +3,7 @@
  */
 
 @interface CDPDCircleJoinResult : NSObject {
-    int  _circleStatus;
+    unsigned long long  _circleStatus;
     bool  _didJoin;
     bool  _hasPeersForRemoteApproval;
     bool  _hasPeersWithCDPBackupRecords;
@@ -13,7 +13,7 @@
     bool  _requiresInitialSync;
 }
 
-@property int circleStatus;
+@property unsigned long long circleStatus;
 @property bool didJoin;
 @property bool hasPeersForRemoteApproval;
 @property bool hasPeersWithCDPBackupRecords;
@@ -22,7 +22,7 @@
 @property bool requiresEscrowRecordsFetch;
 @property bool requiresInitialSync;
 
-- (int)circleStatus;
+- (unsigned long long)circleStatus;
 - (bool)didJoin;
 - (bool)hasPeersForRemoteApproval;
 - (bool)hasPeersWithCDPBackupRecords;
@@ -30,7 +30,7 @@
 - (unsigned long long)remotePeeriCKState;
 - (bool)requiresEscrowRecordsFetch;
 - (bool)requiresInitialSync;
-- (void)setCircleStatus:(int)arg1;
+- (void)setCircleStatus:(unsigned long long)arg1;
 - (void)setDidJoin:(bool)arg1;
 - (void)setHasPeersForRemoteApproval:(bool)arg1;
 - (void)setHasPeersWithCDPBackupRecords:(bool)arg1;

@@ -28,6 +28,7 @@
 + (void)setMigrationDebugLevel:(int)arg1;
 
 - (id)_gatherDataAndPerformMigration:(id*)arg1;
+- (id)_sourceModelForVersionHashes:(id)arg1 withMetadata:(id)arg2 inBundles:(id)arg3 outPaths:(id)arg4;
 - (id)addMigratedStoreToCoordinator:(id)arg1 withType:(id)arg2 configuration:(id)arg3 URL:(id)arg4 options:(id)arg5 error:(id*)arg6;
 - (id)createMigrationManagerForSourceModel:(id)arg1 destinationModel:(id)arg2 error:(id*)arg3;
 - (void)dealloc;

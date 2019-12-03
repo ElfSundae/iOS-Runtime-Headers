@@ -4,10 +4,9 @@
 
 @interface NTKCharacterTimeView : UIView <NTKTimeView> {
     unsigned long long  _character;
-    EAGLContext * _context;
+    NTKCharacterQuad * _characterQuad;
+    CLKUIQuadView * _characterQuadView;
     CLKDevice * _device;
-    NTKCharacterDisplayLink * _displayLink;
-    NTKCharacterFrameBuffer * _framebuffer;
     bool  _frozen;
     unsigned int  _isAnimating;
     unsigned int  _isBackgrounded;
@@ -23,9 +22,8 @@
 @property (readonly, copy) NSString *description;
 @property (getter=isFrozen, nonatomic) bool frozen;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) CLKUIQuadView *quadView;
 @property (readonly) Class superclass;
-
-+ (Class)layerClass;
 
 - (void).cxx_destruct;
 - (void)_configureForEditMode:(long long)arg1;
@@ -33,7 +31,6 @@
 - (void)_didEnterBackground;
 - (void)_endScrubbing;
 - (void)_layoutRenderer;
-- (void)_render;
 - (void)_renderOneFrame;
 - (void)_startAnimation;
 - (void)_stopAnimation;
@@ -47,8 +44,9 @@
 - (bool)isFrozen;
 - (void)layoutSubviews;
 - (void)prepareToZoom;
+- (id)quadView;
 - (void)renderOneFrame;
-- (void)renderSynchronouslyWithImageQueueDiscard:(bool)arg1;
+- (void)renderSynchronouslyWithImageQueueDiscard:(bool)arg1 inGroup:(id)arg2;
 - (void)scrubToDate:(id)arg1;
 - (void)setAnimationFrameInterval:(long long)arg1;
 - (void)setCharacter:(unsigned long long)arg1;
@@ -61,7 +59,6 @@
 - (void)setOverrideDate:(id)arg1 duration:(double)arg2;
 - (void)setTimeOffset:(double)arg1;
 - (void)setZoomFraction:(double)arg1 diameter:(double)arg2;
-- (void)speakTime;
 - (void)startScrubbingAnimated:(bool)arg1 withCompletion:(id /* block */)arg2;
 
 @end

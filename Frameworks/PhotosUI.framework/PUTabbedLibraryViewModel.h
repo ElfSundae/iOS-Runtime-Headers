@@ -15,8 +15,13 @@
 + (id)viewModelWithDefaultParameters;
 
 - (void).cxx_destruct;
+- (bool)_ppt_shouldShowBlankTab;
+- (bool)_ppt_shouldShowNilTab;
+- (bool)_shouldShowAllPhotosTabForTabbedLibraryViewController:(id)arg1;
+- (bool)_shouldShowCuratedLibraryTabForTabbedLibraryViewController:(id)arg1;
 - (bool)_shouldShowForYouTabForTabbedLibraryViewController:(id)arg1;
 - (bool)_shouldShowMemoriesTabForTabbedLibraryViewController:(id)arg1;
+- (bool)_shouldShowPhotosTabForTabbedLibraryViewController:(id)arg1;
 - (bool)_shouldShowSearchTabForTabbedLibraryViewController:(id)arg1;
 - (bool)_shouldShowSharedTabForTabbedLibraryViewController:(id)arg1;
 - (id)initWithSettings:(id)arg1 preloadScheduler:(id)arg2;

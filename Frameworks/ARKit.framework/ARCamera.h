@@ -4,6 +4,8 @@
 
 @interface ARCamera : NSObject <NSCopying, NSSecureCoding> {
     long long  _devicePosition;
+    double  _exposureDuration;
+    float  _exposureOffset;
     struct CGSize { 
         double width; 
         double height; 
@@ -23,6 +25,8 @@
 
 @property (nonatomic) long long devicePosition;
 @property (nonatomic, readonly) void eulerAngles;
+@property (nonatomic) double exposureDuration;
+@property (nonatomic) float exposureOffset;
 @property (nonatomic) struct CGSize { double x1; double x2; } imageResolution;
 @property (nonatomic) struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[3]; } intrinsics;
 @property (nonatomic) unsigned long long lensType;
@@ -43,6 +47,8 @@
 - (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })displayCenterTransform;
 - (void)encodeWithCoder:(id)arg1;
 - (void)eulerAngles;
+- (double)exposureDuration;
+- (float)exposureOffset;
 - (struct CGPoint { double x1; double x2; })focalLength;
 - (struct CGSize { double x1; double x2; })imageResolution;
 - (id)initWithCoder:(id)arg1;
@@ -56,6 +62,8 @@
 - (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })projectionMatrixForOrientation:(long long)arg1 viewportSize:(struct CGSize { double x1; double x2; })arg2 zNear:(double)arg3 zFar:(double)arg4;
 - (void)radialDistortion;
 - (void)setDevicePosition:(long long)arg1;
+- (void)setExposureDuration:(double)arg1;
+- (void)setExposureOffset:(float)arg1;
 - (void)setImageResolution:(struct CGSize { double x1; double x2; })arg1;
 - (void)setIntrinsics:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[3]; })arg1;
 - (void)setLensType:(unsigned long long)arg1;

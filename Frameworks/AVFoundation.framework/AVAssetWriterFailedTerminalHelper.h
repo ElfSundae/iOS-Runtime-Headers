@@ -11,6 +11,7 @@
 - (id)error;
 - (void)finishWriting;
 - (void)finishWritingWithCompletionHandler:(id /* block */)arg1;
+- (void)flush;
 - (id)initWithConfigurationState:(id)arg1;
 - (id)initWithConfigurationState:(id)arg1 terminalError:(id)arg2;
 - (void)setFinishWritingDelegate:(id)arg1;

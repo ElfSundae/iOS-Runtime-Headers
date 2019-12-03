@@ -18,8 +18,8 @@
 @property (nonatomic) bool doEndSound;
 @property (nonatomic) bool isVisited;
 
+- (void).cxx_destruct;
 - (id)action;
-- (void)dealloc;
 - (id)description;
 - (bool)doAddToHistory;
 - (bool)doEndSound;

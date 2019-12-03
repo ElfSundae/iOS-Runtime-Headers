@@ -12,6 +12,7 @@
 + (id)depthEffectSchema;
 + (id)effect3DSchema;
 + (id)effectSchema;
++ (id)grainSchema;
 + (id)highResFusionSchema;
 + (id)identifier;
 + (id)levelsSchema;
@@ -26,13 +27,18 @@
 + (id)rawSchema;
 + (id)redEyeSchema;
 + (id)registerPhotosSchema;
++ (id)registeredPhotosSchemaIdentifier;
 + (id)retouchSchema;
 + (id)selectiveColorSchema;
 + (id)sharpenSchema;
++ (id)slomoSchema;
 + (id)smartBlackAndWhiteSchema;
 + (id)smartColorSchema;
 + (id)smartToneSchema;
++ (id)sourceSelectSchema;
 + (id)trimSchema;
++ (id)videoPosterFrameSchema;
++ (id)videoReframeSchema;
 + (id)vignetteSchema;
 + (id)whiteBalanceSchema;
 

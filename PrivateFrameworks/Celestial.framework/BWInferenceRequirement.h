@@ -12,7 +12,6 @@
 
 - (id)configuration;
 - (void)dealloc;
-- (id)init;
 - (id)initWithProvider:(id)arg1 configuration:(id)arg2;
 - (id)provider;
 

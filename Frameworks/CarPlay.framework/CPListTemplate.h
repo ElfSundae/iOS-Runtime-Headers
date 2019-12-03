@@ -16,7 +16,7 @@
 @property (nonatomic, retain) NSArray *leadingNavigationBarButtons;
 @property (nonatomic, readonly, copy) NSArray *sections;
 @property (readonly) Class superclass;
-@property (nonatomic, retain) <CPListTemplateProviding> *templateProvider;
+@property (nonatomic, retain) NAFuture *templateProviderFuture;
 @property (nonatomic, readonly, copy) NSString *title;
 @property (nonatomic, retain) NSArray *trailingNavigationBarButtons;
 

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXPhotosDetailsAssetsWidget : NSObject <PXActionPerformerDelegate, PXAssetsSceneDelegate, PXChangeObserver, PXEngineDrivenAssetsTilingLayoutDelegate, PXOneUpPresentationDelegate, PXScrollViewControllerObserver, PXSwipeSelectionManagerDelegate, PXTileSource, PXTilingControllerScrollDelegate, PXTilingControllerTransitionDelegate, PXUIPlayButtonTileDelegate, PXUIWidget, UIDragInteractionDelegate, UIGestureRecognizerDelegate> {
+@interface PXPhotosDetailsAssetsWidget : NSObject <PXActionPerformerDelegate, PXAssetsSceneDelegate, PXChangeObserver, PXEngineDrivenAssetsTilingLayoutDelegate, PXOneUpPresentationDelegate, PXPhotosDetailsInlinePlaybackControllerDelegate, PXScrollViewControllerObserver, PXSwipeSelectionManagerDelegate, PXTileSource, PXTilingControllerScrollDelegate, PXTilingControllerTransitionDelegate, PXUIPlayButtonTileDelegate, PXUIWidget, UIDragInteractionDelegate, UIGestureRecognizerDelegate> {
     PXUIAssetsScene * __assetsScene;
     bool  __autoPlayVideoInOneUp;
     bool  __curate;
@@ -11,6 +11,7 @@
     PXAssetReference * __focusedAssetReference;
     NSSet * __hiddenAssetReferences;
     PXAssetReference * __highlightedAssetReference;
+    PXPhotosDetailsInlinePlaybackController * __inlinePlaybackController;
     PXSectionedLayoutEngine * __layoutEngine;
     PXLayoutGenerator * __layoutGenerator;
     PXPhotosDetailsLoadCoordinationToken * __loadCoordinationToken;
@@ -57,6 +58,7 @@
 @property (setter=_setFocusedAssetReference:, nonatomic, retain) PXAssetReference *_focusedAssetReference;
 @property (setter=_setHiddenAssetReferences:, nonatomic, retain) NSSet *_hiddenAssetReferences;
 @property (setter=_setHighlightedAssetReference:, nonatomic, retain) PXAssetReference *_highlightedAssetReference;
+@property (nonatomic, readonly) PXPhotosDetailsInlinePlaybackController *_inlinePlaybackController;
 @property (setter=_setLayoutEngine:, nonatomic, retain) PXSectionedLayoutEngine *_layoutEngine;
 @property (setter=_setLayoutGenerator:, nonatomic, retain) PXLayoutGenerator *_layoutGenerator;
 @property (setter=_setLoadCoordinationToken:, nonatomic, retain) PXPhotosDetailsLoadCoordinationToken *_loadCoordinationToken;
@@ -119,7 +121,7 @@
 - (id)_curationButtonTitle;
 - (id)_currentDataSourceStressTest;
 - (id)_dataSourceManager;
-- (id)_dragItemForSimpleIndexPath:(struct PXSimpleIndexPath { unsigned long long x1; long long x2; long long x3; long long x4; })arg1;
+- (id)_dragItemForAssetReference:(id)arg1;
 - (id)_draggingAssetReferences;
 - (id)_extendedTraitCollection;
 - (void)_fallBackByTogglingCurationIfNeeded;
@@ -128,6 +130,7 @@
 - (id)_hiddenAssetReferences;
 - (id)_highlightedAssetReference;
 - (id)_imageTileForDragItem:(id)arg1;
+- (id)_inlinePlaybackController;
 - (void)_invalidateLayoutGenerator;
 - (bool)_isLocationWithinCurrentLayoutBounds:(struct CGPoint { double x1; double x2; })arg1;
 - (id)_layoutEngine;
@@ -196,6 +199,8 @@
 - (bool)containsPoint:(struct CGPoint { double x1; double x2; })arg1 forCoordinateSpace:(id)arg2;
 - (long long)contentLayoutStyle;
 - (id)contentTilingController;
+- (void)contentViewDidDisappear;
+- (void)contentViewWillAppear;
 - (id)context;
 - (id)dataSourceManager;
 - (void)dealloc;
@@ -214,12 +219,14 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })engineDrivenLayout:(id)arg1 contentsRectForItemAtIndexPath:(struct PXSimpleIndexPath { unsigned long long x1; long long x2; long long x3; long long x4; })arg2 forAspectRatio:(double)arg3;
 - (double)engineDrivenLayout:(id)arg1 zPositionForItemAtIndexPath:(struct PXSimpleIndexPath { unsigned long long x1; long long x2; long long x3; long long x4; })arg2;
 - (void)environmentDidUpdateFocusInContext:(id)arg1;
+- (bool)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)handlePinch:(id)arg1;
 - (void)handleTap:(id)arg1;
 - (void)handleTouch:(id)arg1;
 - (bool)hasLoadedContentData;
+- (id)imageViewBasicTileForPreviewingAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (id)init;
 - (bool)isFaceModeEnabled;
 - (bool)isSelecting;
@@ -228,6 +235,7 @@
 - (id)localizedDisclosureTitle;
 - (id)localizedSubtitle;
 - (id)localizedTitle;
+- (struct CGSize { double x1; double x2; })minimumItemSizeForPlaybackInController:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void*)arg3;
 - (id)oneUpPresentation;
 - (id)oneUpPresentation:(id)arg1 currentImageForAssetReference:(id)arg2;
@@ -242,7 +250,8 @@
 - (id)oneUpPresentationPhotosDetailsContext:(id)arg1;
 - (bool)oneUpPresentationShouldAutoPlay:(id)arg1;
 - (void)playButtonTileWasTapped:(id)arg1;
-- (struct NSObject { Class x1; }*)previewViewControllerAtLocation:(struct CGPoint { double x1; double x2; })arg1 fromSourceView:(struct NSObject { Class x1; }*)arg2 outSourceRect:(out struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg3;
+- (struct NSObject { Class x1; }*)previewViewControllerAtLocation:(struct CGPoint { double x1; double x2; })arg1 fromSourceView:(struct NSObject { Class x1; }*)arg2;
+- (void)scrollViewControllerContentBoundsDidChange:(id)arg1;
 - (void)scrollViewControllerDidScroll:(id)arg1;
 - (void)scrollViewControllerWillBeginScrolling:(id)arg1;
 - (id)selectionManager;
@@ -254,12 +263,16 @@
 - (void)setSpec:(id)arg1;
 - (void)setUserInteractionEnabled:(bool)arg1;
 - (void)setWidgetDelegate:(id)arg1;
+- (bool)shouldEnablePlaybackForController:(id)arg1;
 - (id)spec;
 - (bool)supportsFaceMode;
 - (bool)supportsSelection;
 - (struct PXSimpleIndexPath { unsigned long long x1; long long x2; long long x3; long long x4; })swipeSelectionManager:(id)arg1 itemIndexPathAtLocation:(struct CGPoint { double x1; double x2; })arg2;
 - (struct PXSimpleIndexPath { unsigned long long x1; long long x2; long long x3; long long x4; })swipeSelectionManager:(id)arg1 itemIndexPathClosestAboveLocation:(struct CGPoint { double x1; double x2; })arg2;
 - (struct PXSimpleIndexPath { unsigned long long x1; long long x2; long long x3; long long x4; })swipeSelectionManager:(id)arg1 itemIndexPathClosestLeadingLocation:(struct CGPoint { double x1; double x2; })arg2;
+- (bool)swipeSelectionManager:(id)arg1 shouldBeginSelectionAtLocation:(struct CGPoint { double x1; double x2; })arg2;
+- (void)swipeSelectionManagerAutomaticallyTransitionToMultiSelectMode:(id)arg1;
+- (bool)swipeSelectionManagerIsInMultiSelectMode:(id)arg1;
 - (struct CGPoint { double x1; double x2; })tilingController:(id)arg1 initialVisibleOriginForLayout:(id)arg2;
 - (struct CGPoint { double x1; double x2; })tilingController:(id)arg1 targetVisibleOriginForLayout:(id)arg2 proposedVisibleOrigin:(struct CGPoint { double x1; double x2; })arg3;
 - (id)tilingController:(id)arg1 tileIdentifierConverterForChange:(id)arg2;

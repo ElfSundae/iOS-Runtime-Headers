@@ -11,7 +11,7 @@
 }
 
 @property unsigned char dataStoreType;
-@property (retain) DBManager *dbManager;
+@property (nonatomic, retain) DBManager *dbManager;
 @property (retain) id deviceUnlockNotificationRef;
 @property bool deviceUnlocked;
 @property unsigned char notifyDataStoreChangeReason;

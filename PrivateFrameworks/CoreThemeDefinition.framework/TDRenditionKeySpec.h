@@ -20,9 +20,12 @@
 @property (nonatomic, retain) TDThemeDirection *direction;
 @property (nonatomic, retain) TDThemeElement *element;
 @property (nonatomic, retain) TDThemeDisplayGamut *gamut;
+@property (nonatomic, retain) TDThemeGlyphSize *glyphSize;
+@property (nonatomic, retain) TDThemeGlyphWeight *glyphWeight;
 @property (nonatomic, retain) TDThemeGraphicsFeatureSetClass *graphicsFeatureSetClass;
 @property (nonatomic, retain) TDThemeIdiom *idiom;
 @property (nonatomic, retain) TDThemeDrawingLayer *layer;
+@property (nonatomic, retain) TDLocalization *localization;
 @property (nonatomic, retain) TDThemePart *part;
 @property (nonatomic, retain) TDThemePresentationState *presentationState;
 @property (nonatomic, retain) TDThemeState *previousState;

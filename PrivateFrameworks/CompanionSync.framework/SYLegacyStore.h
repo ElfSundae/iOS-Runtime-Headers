@@ -24,6 +24,7 @@
     NSString * _service;
     SYRetryTimer * _syncRetryTimer;
     bool  _tracksChanges;
+    NSObject<OS_os_transaction> * _transaction;
     SYVectorClock * _vectorClock;
 }
 

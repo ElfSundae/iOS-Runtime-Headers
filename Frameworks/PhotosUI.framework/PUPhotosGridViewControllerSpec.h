@@ -49,7 +49,7 @@
 @property (nonatomic, readonly) bool shouldPlaceDeleteInCenterToolbarPosition;
 @property (nonatomic, readonly) bool shouldPlaceSelectAllButtonInRightNavigationBar;
 @property (nonatomic, readonly) long long sizeSubclass;
-@property (nonatomic, readonly) int thumbnailImageFormat;
+@property (nonatomic, readonly) unsigned short thumbnailImageFormat;
 @property (nonatomic, readonly) bool usesStackPopTransition;
 @property (nonatomic, readonly) bool wantsBackButtonTitleForPhotoBrowser;
 @property (nonatomic, readonly) bool wantsCustomNavigationTransition;
@@ -80,7 +80,7 @@
 - (bool)shouldPlaceSelectAllButtonInRightNavigationBar;
 - (long long)sizeSubclass;
 - (unsigned long long)supportedInterfaceOrientations;
-- (int)thumbnailImageFormat;
+- (unsigned short)thumbnailImageFormat;
 - (bool)usesStackPopTransition;
 - (bool)wantsBackButtonTitleForPhotoBrowser;
 - (bool)wantsCustomNavigationTransition;

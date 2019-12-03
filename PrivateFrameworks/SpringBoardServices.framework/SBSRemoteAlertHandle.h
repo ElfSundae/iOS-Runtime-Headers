@@ -2,41 +2,42 @@
    Image: /System/Library/PrivateFrameworks/SpringBoardServices.framework/SpringBoardServices
  */
 
-@interface SBSRemoteAlertHandle : NSObject <SBSRemoteAlertClientHandle> {
+@interface SBSRemoteAlertHandle : NSObject {
+    NSObject<OS_dispatch_queue> * _accessSerialQueue;
     bool  _active;
-    SBSRemoteAlertClient * _client;
+    NSObject<OS_dispatch_queue> * _calloutSerialQueue;
+    <SBSRemoteAlertHandleClient> * _handleClient;
+    NSString * _handleID;
     NSHashTable * _observers;
-    NSObject<OS_dispatch_queue> * _queue;
-    BSMachPortSendRight * _token;
+    bool  _valid;
 }
 
 @property (getter=isActive, nonatomic, readonly) bool active;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
+@property (nonatomic, readonly, copy) NSString *handleID;
 @property (getter=isValid, nonatomic, readonly) bool valid;
 
-+ (id)_lookupHandlesForDefinition:(id)arg1 creatingIfNone:(bool)arg2;
++ (id)defaultHandleClient;
 + (id)handleWithConfiguration:(id)arg1;
 + (id)lookupHandlesForConfiguration:(id)arg1 creatingIfNone:(bool)arg2;
 + (id)lookupHandlesForDefinition:(id)arg1;
 + (id)lookupHandlesForDefinition:(id)arg1 creatingIfNone:(bool)arg2;
++ (id)lookupHandlesForDefinition:(id)arg1 creatingIfNone:(bool)arg2 configurationContext:(id)arg3;
 + (id)newHandleWithDefinition:(id)arg1 configurationContext:(id)arg2;
++ (void)setDefaultHandleClient:(id)arg1;
 
 - (void).cxx_destruct;
-- (id)_initWithHandleToken:(id)arg1;
-- (void)_queue_callObserversWithBlock:(id /* block */)arg1;
+- (void)_didActivate;
+- (void)_didDeactivate;
+- (id)_initWithHandleID:(id)arg1 handleClient:(id)arg2;
+- (void)_invalidateWithError:(id)arg1 shouldInvalidateHandleClient:(bool)arg2;
+- (void)_receivedInvalidationWithError:(id)arg1;
 - (void)activateWithContext:(id)arg1;
 - (void)activateWithOptions:(id)arg1;
 - (void)addObserver:(id)arg1;
-- (id)init;
+- (id)handleID;
 - (void)invalidate;
 - (bool)isActive;
 - (bool)isValid;
-- (void)queue_noteInvalidWithError:(id)arg1;
-- (void)queue_setActive:(bool)arg1;
-- (id)queue_token;
 - (void)removeObserver:(id)arg1;
 
 @end

@@ -40,6 +40,7 @@
 
 - (void).cxx_destruct;
 - (bool)_isValidRow:(long long)arg1;
+- (id)actionsForRow:(id)arg1;
 - (id)availabilitySearcher;
 - (void)availabilitySearcherChangedState:(long long)arg1;
 - (id)busyParticipants;

@@ -7,12 +7,25 @@
     NSString * _deviceHwIdentifier;
     NSString * _deviceOsVersion;
     struct { 
-        unsigned int deviceDarkMode : 1; 
-        unsigned int isInternalInstall : 1; 
-        unsigned int isInternalTool : 1; 
-    }  _has;
+        unsigned int has_deviceDarkMode : 1; 
+        unsigned int has_isInternalInstall : 1; 
+        unsigned int has_isInternalTool : 1; 
+        unsigned int read_deviceHwIdentifier : 1; 
+        unsigned int read_deviceOsVersion : 1; 
+        unsigned int wrote_deviceHwIdentifier : 1; 
+        unsigned int wrote_deviceOsVersion : 1; 
+        unsigned int wrote_deviceDarkMode : 1; 
+        unsigned int wrote_isInternalInstall : 1; 
+        unsigned int wrote_isInternalTool : 1; 
+    }  _flags;
     bool  _isInternalInstall;
     bool  _isInternalTool;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
 }
 
 @property (nonatomic) bool deviceDarkMode;
@@ -26,7 +39,11 @@
 @property (nonatomic) bool isInternalInstall;
 @property (nonatomic) bool isInternalTool;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_readDeviceHwIdentifier;
+- (void)_readDeviceOsVersion;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -40,10 +57,13 @@
 - (bool)hasIsInternalInstall;
 - (bool)hasIsInternalTool;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)isInternalInstall;
 - (bool)isInternalTool;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setDeviceDarkMode:(bool)arg1;
 - (void)setDeviceHwIdentifier:(id)arg1;

@@ -14,6 +14,7 @@
 @property (nonatomic, readonly) SXJSONDictionary *componentTextStyles;
 @property (nonatomic, readonly) SXJSONArray *components;
 @property (nonatomic, readonly) SXDocumentStyle *documentStyle;
+@property (nonatomic, readonly) <SXHints> *hints;
 @property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, readonly) NSString *language;
 @property (nonatomic, readonly) <SXDocumentLayout> *layout;

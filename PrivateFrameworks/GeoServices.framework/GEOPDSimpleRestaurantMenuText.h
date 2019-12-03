@@ -10,11 +10,13 @@
 @property (nonatomic, retain) NSMutableArray *menuGroups;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
 + (Class)menuGroupType;
 
 - (void).cxx_destruct;
 - (void)addMenuGroup:(id)arg1;
 - (void)clearMenuGroups;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -25,6 +27,7 @@
 - (id)menuGroups;
 - (unsigned long long)menuGroupsCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setMenuGroups:(id)arg1;
 - (id)unknownFields;

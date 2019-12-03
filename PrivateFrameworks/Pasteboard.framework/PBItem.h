@@ -4,6 +4,7 @@
 
 @interface PBItem : NSObject <NSSecureCoding, PBItemRepresentationDataTransferDelegate> {
     NSUUID * _UUID;
+    NSMutableDictionary * _itemQueue_dataAvailabilityByType;
     <PBItemDataTransferDelegate> * _itemQueue_dataTransferDelegate;
     bool  _itemQueue_isStoredOnServer;
     <NSObject> * _itemQueue_localObject;
@@ -24,6 +25,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, retain) NSMutableDictionary *itemQueue_dataAvailabilityByType;
 @property (nonatomic) <PBItemDataTransferDelegate> *itemQueue_dataTransferDelegate;
 @property (nonatomic) bool itemQueue_isStoredOnServer;
 @property (nonatomic, retain) <NSObject> *itemQueue_localObject;
@@ -83,8 +85,10 @@
 - (id)initWithData:(id)arg1 type:(id)arg2;
 - (id)initWithNSItemProvider:(id)arg1;
 - (id)initWithObject:(id)arg1;
+- (bool)isDataAvailableImmediatelyForType:(id)arg1;
 - (id)itemQueue_availableTypes;
 - (bool)itemQueue_canInstantiateObjectOfClass:(Class)arg1;
+- (id)itemQueue_dataAvailabilityByType;
 - (id)itemQueue_dataTransferDelegate;
 - (bool)itemQueue_hasRepresentationConformingToType:(id)arg1;
 - (bool)itemQueue_hasRepresentationOfType:(id)arg1;
@@ -116,6 +120,7 @@
 - (id)representationConformingToType:(id)arg1;
 - (id)representations;
 - (void)setDataTransferDelegate:(id)arg1;
+- (void)setItemQueue_dataAvailabilityByType:(id)arg1;
 - (void)setItemQueue_dataTransferDelegate:(id)arg1;
 - (void)setItemQueue_isStoredOnServer:(bool)arg1;
 - (void)setItemQueue_localObject:(id)arg1;

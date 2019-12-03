@@ -69,7 +69,7 @@
 @property (readonly) bool spent;
 @property unsigned long long state;
 @property (readonly) Class superclass;
-@property (retain) <PKPlugIn> *supersededBy;
+@property <PKPlugIn> *supersededBy;
 @property (retain) NSUUID *supersedingUUID;
 @property (retain) <PKCorePlugInProtocol> *syncService;
 @property bool terminating;
@@ -88,6 +88,8 @@
 - (id)beganUsingAt;
 - (void)beginUsing:(id /* block */)arg1;
 - (bool)beginUsingWithError:(id*)arg1;
+- (void)beginUsingWithSubsystemOptions:(id)arg1 completion:(id /* block */)arg2;
+- (bool)beginUsingWithSubsystemOptions:(id)arg1 error:(id*)arg2;
 - (void)changeState:(unsigned long long)arg1;
 - (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(bool)arg3;
 - (id)createInstanceWithUUID:(id)arg1;
@@ -98,9 +100,11 @@
 - (id)embeddedBundle;
 - (id)embeddedPrincipal;
 - (void)endUsing:(id /* block */)arg1;
+- (bool)endUsingWithError:(id*)arg1;
 - (id)environment;
 - (id)extensionState;
 - (id)initWithForm:(id)arg1;
+- (bool)isSandboxed;
 - (bool)loadExtensions:(id)arg1 error:(id*)arg2;
 - (void)messageTraceUsage;
 - (id)multipleInstanceUUID;
@@ -115,7 +119,7 @@
 - (id)service;
 - (id)serviceExtension;
 - (void)setBeganUsingAt:(id)arg1;
-- (void)setBootstrap;
+- (void)setBootstrapWithSubsystemOptions:(id)arg1;
 - (void)setDiscoveryExtensions:(id)arg1;
 - (void)setEmbeddedBundle:(id)arg1;
 - (void)setEmbeddedPrincipal:(id)arg1;
@@ -145,7 +149,7 @@
 - (void)set_syncQueue:(id)arg1;
 - (id)sourceForm;
 - (bool)spent;
-- (void)startPlugInSynchronously:(bool)arg1 completion:(id /* block */)arg2;
+- (void)startPlugInSynchronously:(bool)arg1 subsystemOptions:(id)arg2 completion:(id /* block */)arg3;
 - (unsigned long long)state;
 - (id)supersededBy;
 - (id)supersedingUUID;

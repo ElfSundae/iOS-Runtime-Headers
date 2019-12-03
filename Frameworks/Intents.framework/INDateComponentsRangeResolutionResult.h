@@ -14,4 +14,7 @@
 + (id)successWithResolvedDateComponentsRange:(id)arg1;
 + (id)unsupportedWithReason:(unsigned long long)arg1 alternativeDateComponentsRanges:(id)arg2;
 
+- (id)_intentSlotValueForObject:(id)arg1 slotDescription:(id)arg2;
+- (id)_vocabularyValueForObject:(id)arg1 slotDescription:(id)arg2;
+
 @end

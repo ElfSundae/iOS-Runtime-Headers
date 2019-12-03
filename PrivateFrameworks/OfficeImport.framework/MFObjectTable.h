@@ -9,8 +9,8 @@
 
 @property unsigned int maximumSize;
 
+- (void).cxx_destruct;
 - (void)clear;
-- (void)dealloc;
 - (int)deleteObject:(unsigned int)arg1;
 - (id)getObject:(unsigned int)arg1;
 - (id)init;

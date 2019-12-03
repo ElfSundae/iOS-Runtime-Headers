@@ -3,7 +3,7 @@
  */
 
 @interface NMSMutableMediaSyncInfo : NMSMediaSyncInfo {
-    bool  _needsUpdateAggregateContainerInfo;
+    bool  _needsUpdateAggregateInfo;
 }
 
 @property (nonatomic, retain) NSMutableDictionary *info;
@@ -13,16 +13,21 @@
 - (id)_infoForItem:(id)arg1;
 - (void)_notifyInfoChanged;
 - (unsigned long long)_persistingOptions;
-- (void)_updateAggregateContainerInfoIfNeeded;
+- (void)_updateAggregateInfoIfNeeded;
 - (void)_writeInfo;
 - (id)initWithTarget:(unsigned long long)arg1;
+- (unsigned long long)numberOfItemsOverStorageLimit;
+- (unsigned long long)numberOfItemsOverStorageLimitForContainer:(id)arg1;
 - (unsigned long long)playabilityForContainer:(id)arg1;
+- (float)progress;
 - (float)progressForContainer:(id)arg1;
 - (void)setItems:(id)arg1 forContainer:(id)arg2;
+- (void)setOverStorageLimit:(bool)arg1 forItem:(id)arg2;
 - (void)setProgressBytes:(unsigned long long)arg1 totalBytes:(unsigned long long)arg2 forItem:(id)arg3;
 - (void)setStatus:(unsigned long long)arg1 forItem:(id)arg2;
 - (void)setUserInfo:(id)arg1 forContainer:(id)arg2;
 - (void)setUserInfo:(id)arg1 forItem:(id)arg2;
+- (unsigned long long)status;
 - (unsigned long long)statusForContainer:(id)arg1;
 - (void)synchronize;
 

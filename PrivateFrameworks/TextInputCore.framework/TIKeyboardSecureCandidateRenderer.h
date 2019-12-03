@@ -10,7 +10,7 @@
 }
 
 @property (nonatomic, readonly) CAContext *context;
-@property (nonatomic, readonly) NSString *localeIdentifier;
+@property (nonatomic, retain) NSString *localeIdentifier;
 @property (nonatomic, retain) NSMutableDictionary *secureCandidateCache;
 
 + (id)allRenderers;
@@ -36,8 +36,10 @@
 - (id)localizedApplicationNameWithBundleIdentifier:(id)arg1;
 - (id)localizedStringForKey:(id)arg1;
 - (id)secureCandidateCache;
+- (void)setLocaleIdentifier:(id)arg1;
 - (void)setSecureCandidateCache:(id)arg1;
 - (unsigned int)slotIDForSendCurrentLocationWithRenderTraits:(id)arg1;
 - (id)slotIDsFromSecureCandidates:(id)arg1 withRenderTraits:(id)arg2;
+- (id)updateCachedCandidate:(id)arg1 withCandidateString:(id)arg2;
 
 @end

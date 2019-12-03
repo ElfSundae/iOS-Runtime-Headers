@@ -4,6 +4,8 @@
 
 @interface SBUIBannerItem : NSObject
 
+// Image: /System/Library/PrivateFrameworks/SpringBoardUI.framework/SpringBoardUI
+
 - (id /* block */)action;
 - (id)actionWithIdentifier:(id)arg1;
 - (bool)canShowInAssistant;
@@ -21,5 +23,9 @@
 - (id)subActionLabels;
 - (id)subActions;
 - (id)title;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoard.framework/SpringBoard
+
+- (bool)isStarkBannerItem;
 
 @end

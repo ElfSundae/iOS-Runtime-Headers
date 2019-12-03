@@ -13,6 +13,7 @@
 - (void)paymentQueue:(SKPaymentQueue *)arg1 restoreCompletedTransactionsFailedWithError:(NSError *)arg2;
 - (bool)paymentQueue:(SKPaymentQueue *)arg1 shouldAddStorePayment:(SKPayment *)arg2 forProduct:(SKProduct *)arg3;
 - (void)paymentQueue:(SKPaymentQueue *)arg1 updatedDownloads:(NSArray *)arg2;
+- (void)paymentQueueDidChangeStorefront:(SKPaymentQueue *)arg1;
 - (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)arg1;
 
 @end

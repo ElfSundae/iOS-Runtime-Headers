@@ -10,8 +10,8 @@
 @property (nonatomic, retain) NSMutableDictionary *indexConnections;
 @property (nonatomic, retain) <MDIndexer> *indexer;
 
-+ (id)indexAgent;
-+ (void)initialize;
++ (id)indexAgent:(bool)arg1;
++ (id)indexDelegateAgent;
 
 - (void).cxx_destruct;
 - (bool)addClientConnectionIfAllowedForConfiguration:(id)arg1;

@@ -20,12 +20,12 @@
             double height; 
         } size; 
     }  _rect;
-    struct _PXQuadTreeStoreNode { struct _PXQuadTreeStoreNode {} *x1; struct _PXQuadTreeStoreNode {} *x2; struct _PXQuadTreeStoreNode {} *x3; struct _PXQuadTreeStoreNode {} *x4; unsigned long long x5; unsigned long long x6; struct { struct { double x_1_2_1; double x_1_2_2; } x_7_1_1; struct { double x_2_2_1; double x_2_2_2; } x_7_1_2; } x7; id x8; struct { /* ? */ } x9; } * _rootNode;
+    struct _PXQuadTreeStoreNode { struct _PXQuadTreeStoreNode {} *x1; struct _PXQuadTreeStoreNode {} *x2; struct _PXQuadTreeStoreNode {} *x3; struct _PXQuadTreeStoreNode {} *x4; unsigned long long x5; unsigned long long x6; struct { struct { double x_1_2_1; double x_1_2_2; } x_7_1_1; struct { double x_2_2_1; double x_2_2_2; } x_7_1_2; } x7; id x8; struct { /* ? */ } *x9; } * _rootNode;
     struct _opaque_pthread_rwlock_t { 
         long long __sig; 
         BOOL __opaque[192]; 
     }  _rwlock;
-    int  _updateCount;
+    _Atomic int  _updateCount;
 }
 
 @property (readonly) NSSet *allItems;
@@ -40,6 +40,9 @@
 @property (nonatomic, readonly) long long numberOfItems;
 @property struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; } rect;
 @property (readonly) Class superclass;
+
++ (id)traceStoreLog;
++ (id)traceStoreQueryLog;
 
 - (void)_commitChanges;
 - (id)_findItemsInMapRect:(struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })arg1;

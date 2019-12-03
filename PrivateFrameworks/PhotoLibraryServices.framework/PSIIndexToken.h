@@ -14,8 +14,8 @@
 @property (nonatomic, readonly) short owningCategory;
 @property (nonatomic, readonly, copy) NSString *text;
 
+- (void).cxx_destruct;
 - (short)category;
-- (void)dealloc;
 - (id)description;
 - (id)identifier;
 - (id)initWithText:(id)arg1 identifier:(id)arg2 category:(short)arg3 owningCategory:(short)arg4;

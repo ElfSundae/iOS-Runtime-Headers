@@ -11,6 +11,7 @@
     bool  _pageMasterFirstPageHidesHeaderFooter;
     TPPageMaster * _pageMasters;
     TSWPStorage * _parentStorage;
+    NSUUID * _sectionHyperlinkUUID;
     unsigned int  _sectionPageNumberKind;
     unsigned int  _sectionPageNumberStart;
     unsigned int  _sectionStartKind;
@@ -21,6 +22,8 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool inheritPreviousHeaderFooter;
+@property (nonatomic, readonly) NSString *localizedPrettyDisplayStringLong;
+@property (nonatomic, readonly) NSString *localizedPrettyDisplayStringShort;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, readonly) NSArray *pageInfosForPropagation;
 @property (nonatomic) bool pageMasterEvenOddPagesDifferent;
@@ -29,10 +32,12 @@
 @property (nonatomic, readonly) NSArray *pageMasters;
 @property (nonatomic, readonly) TPPageTemplate *pageTemplate;
 @property (nonatomic) TSWPStorage *parentStorage;
+@property (nonatomic, copy) NSUUID *sectionHyperlinkUUID;
 @property (nonatomic) unsigned int sectionPageNumberKind;
 @property (nonatomic) unsigned int sectionPageNumberStart;
 @property (nonatomic) unsigned int sectionStartKind;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) NSURL *url;
 
 + (bool)needsObjectUUID;
 
@@ -43,7 +48,6 @@
 - (id)backgroundFill;
 - (id)childEnumerator;
 - (id)copyWithContext:(id)arg1;
-- (id)description;
 - (void)i_clearPropertiesToDefaults;
 - (void)i_copyHeadersAndFootersFrom:(id)arg1 dolcContext:(id)arg2 withBlock:(id /* block */)arg3;
 - (void)i_ensureHeaderFooterStoragesExistWithStylesheet:(id)arg1;
@@ -53,12 +57,14 @@
 - (bool)isHeaderFooterEmpty:(long long)arg1;
 - (bool)isHeaderFooterVisible:(long long)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
+- (id)localizedPrettyDisplayStringLong;
+- (id)localizedPrettyDisplayStringShort;
 - (id)name;
 - (id)objectUUIDPath;
 - (void)p_addAllDrawablesFromInfo:(id)arg1 toMutableArray:(id)arg2;
 - (void)p_makeUserGuideStorage;
-- (void)p_unarchiveAndUpgrade:(id)arg1 archive:(const struct SectionArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_7_1_1; int x_7_1_2; int x_7_1_3; struct Rep {} *x_7_1_4; } x7; struct ArenaStringPtr { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > {} *x_8_1_1; } x8; struct Reference {} *x9; struct Reference {} *x10; struct Reference {} *x11; struct Reference {} *x12; struct FillArchive {} *x13; float x14; float x15; float x16; float x17; bool x18; bool x19; bool x20; bool x21; float x22; float x23; float x24; float x25; float x26; float x27; unsigned int x28; unsigned int x29; bool x30; bool x31; }*)arg2;
-- (void)p_upgradePageSizeAndMarginsFromParsedArchive:(const struct SectionArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_7_1_1; int x_7_1_2; int x_7_1_3; struct Rep {} *x_7_1_4; } x7; struct ArenaStringPtr { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > {} *x_8_1_1; } x8; struct Reference {} *x9; struct Reference {} *x10; struct Reference {} *x11; struct Reference {} *x12; struct FillArchive {} *x13; float x14; float x15; float x16; float x17; bool x18; bool x19; bool x20; bool x21; float x22; float x23; float x24; float x25; float x26; float x27; unsigned int x28; unsigned int x29; bool x30; bool x31; }*)arg1;
+- (void)p_unarchiveAndUpgrade:(id)arg1 archive:(const struct SectionArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_7_1_1; int x_7_1_2; int x_7_1_3; struct Rep {} *x_7_1_4; } x7; struct ArenaStringPtr { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > {} *x_8_1_1; } x8; struct Reference {} *x9; struct Reference {} *x10; struct Reference {} *x11; struct Reference {} *x12; struct FillArchive {} *x13; struct UUID {} *x14; float x15; float x16; float x17; float x18; bool x19; bool x20; bool x21; bool x22; float x23; float x24; float x25; float x26; float x27; float x28; unsigned int x29; unsigned int x30; }*)arg2;
+- (void)p_upgradePageSizeAndMarginsFromParsedArchive:(const struct SectionArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_7_1_1; int x_7_1_2; int x_7_1_3; struct Rep {} *x_7_1_4; } x7; struct ArenaStringPtr { struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > {} *x_8_1_1; } x8; struct Reference {} *x9; struct Reference {} *x10; struct Reference {} *x11; struct Reference {} *x12; struct FillArchive {} *x13; struct UUID {} *x14; float x15; float x16; float x17; float x18; bool x19; bool x20; bool x21; bool x22; float x23; float x24; float x25; float x26; float x27; float x28; unsigned int x29; unsigned int x30; }*)arg1;
 - (id)pageInfosForPropagation;
 - (bool)pageMasterEvenOddPagesDifferent;
 - (bool)pageMasterFirstPageDifferent;
@@ -69,6 +75,7 @@
 - (id)pageTemplate;
 - (id)parentStorage;
 - (void)saveToArchiver:(id)arg1;
+- (id)sectionHyperlinkUUID;
 - (unsigned int)sectionPageNumberKind;
 - (unsigned int)sectionPageNumberStart;
 - (unsigned int)sectionStartKind;
@@ -80,9 +87,11 @@
 - (void)setPageMasterFirstPageHidesHeaderFooter:(bool)arg1;
 - (void)setPageMasterForFirstPage:(id)arg1;
 - (void)setParentStorage:(id)arg1;
+- (void)setSectionHyperlinkUUID:(id)arg1;
 - (void)setSectionPageNumberKind:(unsigned int)arg1;
 - (void)setSectionPageNumberStart:(unsigned int)arg1;
 - (void)setSectionStartKind:(unsigned int)arg1;
+- (id)url;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;
 - (void)willBeAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;

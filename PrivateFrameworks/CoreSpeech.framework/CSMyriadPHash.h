@@ -2,8 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CoreSpeech.framework/CoreSpeech
  */
 
-@interface CSMyriadPHash : NSObject <CSSelfTriggerDetectorDelegate, CSVoiceTriggerDelegate> {
-    <CSMyriadPHashDelegate> * _delegate;
+@interface CSMyriadPHash : NSObject {
     float * _hammingWindow;
     struct OpaqueFFTSetup { } * _setup;
     short  _signalEstimate;
@@ -12,37 +11,31 @@
     float * _snrWindow;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) <CSMyriadPHashDelegate> *delegate;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic) short signalEstimate;
 @property (nonatomic) unsigned char signalFractional;
-@property (readonly) Class superclass;
 
 + (id)createHashResult:(unsigned short)arg1 goodness:(unsigned char)arg2 confidence:(unsigned char)arg3 absTime:(unsigned long long)arg4 frac:(unsigned char)arg5;
 + (id)currentMyriadPHash;
++ (id)generateEmptyPHash:(unsigned long long)arg1;
 + (id)lastHash;
 + (void)notifyAudioHashNotification;
++ (void)notifyAudioHashlessNotification;
 + (void)notifyHashlessTrigger:(unsigned long long)arg1;
++ (void)setLastHash:(id)arg1;
 + (bool)writeHashResultIntoFile:(id)arg1;
 + (bool)writeHashlessResult:(unsigned long long)arg1;
 
-- (void).cxx_destruct;
 - (id)_audioLogDirectory;
-- (id)_generateMyriadInfo:(unsigned long long)arg1 score:(float)arg2 triggerSource:(id)arg3 channel:(unsigned long long)arg4 absoluteTime:(unsigned long long)arg5;
+- (id)_generateMyriadInfo:(unsigned long long)arg1 score:(float)arg2 triggerSource:(id)arg3 channel:(unsigned long long)arg4 audioProviderUUID:(id)arg5 absoluteTime:(unsigned long long)arg6;
 - (id)cachedHash;
 - (void)dealloc;
-- (id)delegate;
-- (id)initWithAudioBuffer:(id)arg1;
+- (id)generatePHashFromVoiceTriggerInfo:(id)arg1;
+- (id)init;
 - (unsigned short)pHash:(float*)arg1 length:(int)arg2;
-- (void)selfTriggerDetector:(id)arg1 didDetectSelfTrigger:(id)arg2;
-- (void)setDelegate:(id)arg1;
 - (void)setSignalEstimate:(short)arg1;
 - (void)setSignalFractional:(unsigned char)arg1;
 - (short)signalEstimate;
 - (unsigned char)signalFractional;
-- (void)voiceTriggerDidDetectKeyword:(id)arg1 deviceId:(id)arg2;
 - (void)voiceTriggerDidDetectNearMiss:(id)arg1;
 - (void)voiceTriggerDidDetectSpeakerReject:(id)arg1;
 

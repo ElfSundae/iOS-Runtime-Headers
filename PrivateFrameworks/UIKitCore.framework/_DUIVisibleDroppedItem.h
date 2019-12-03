@@ -9,7 +9,7 @@
     }  _center;
     bool  _constrainSize;
     bool  _flipped;
-    NSArray * _imageComponents;
+    _DUIImageComponent * _imageComponent;
     unsigned long long  _itemIndex;
     bool  _precisionMode;
     _DUIPreview * _preview;
@@ -27,8 +27,7 @@
 @property (nonatomic) struct CGPoint { double x1; double x2; } center;
 @property (nonatomic) bool constrainSize;
 @property (nonatomic) bool flipped;
-@property (nonatomic, retain) NSArray *imageComponents;
-@property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } imageFrame;
+@property (nonatomic, retain) _DUIImageComponent *imageComponent;
 @property (nonatomic) unsigned long long itemIndex;
 @property (nonatomic) bool precisionMode;
 @property (nonatomic, copy) _DUIPreview *preview;
@@ -41,11 +40,11 @@
 - (void).cxx_destruct;
 - (struct CGPoint { double x1; double x2; })center;
 - (bool)constrainSize;
+- (id)createSnapshotView;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (bool)flipped;
-- (id)imageComponents;
-- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })imageFrame;
+- (id)imageComponent;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (unsigned long long)itemIndex;
@@ -55,7 +54,7 @@
 - (void)setCenter:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setConstrainSize:(bool)arg1;
 - (void)setFlipped:(bool)arg1;
-- (void)setImageComponents:(id)arg1;
+- (void)setImageComponent:(id)arg1;
 - (void)setItemIndex:(unsigned long long)arg1;
 - (void)setPrecisionMode:(bool)arg1;
 - (void)setPreview:(id)arg1;

@@ -9,6 +9,7 @@
 - (SFAppLinkCardSection *)appLinkCardSection;
 - (SFAudioPlaybackCardSection *)audioPlaybackCardSection;
 - (SFButtonCardSection *)buttonCardSection;
+- (SFCompactRowCardSection *)compactRowCardSection;
 - (SFDescriptionCardSection *)descriptionCardSection;
 - (SFDetailedRowCardSection *)detailedRowCardSection;
 - (NSDictionary *)dictionaryRepresentation;
@@ -19,6 +20,7 @@
 - (NSData *)jsonData;
 - (SFKeyValueDataCardSection *)keyValueDataCardSection;
 - (SFMapCardSection *)mapCardSection;
+- (SFMapPlaceCardSection *)mapPlaceCardSection;
 - (SFMapsDetailedRowCardSection *)mapsDetailedRowCardSection;
 - (SFMediaInfoCardSection *)mediaInfoCardSection;
 - (SFMediaPlayerCardSection *)mediaPlayerCardSection;
@@ -36,6 +38,7 @@
 - (void)setAppLinkCardSection:(SFAppLinkCardSection *)arg1;
 - (void)setAudioPlaybackCardSection:(SFAudioPlaybackCardSection *)arg1;
 - (void)setButtonCardSection:(SFButtonCardSection *)arg1;
+- (void)setCompactRowCardSection:(SFCompactRowCardSection *)arg1;
 - (void)setDescriptionCardSection:(SFDescriptionCardSection *)arg1;
 - (void)setDetailedRowCardSection:(SFDetailedRowCardSection *)arg1;
 - (void)setFlightCardSection:(SFFlightCardSection *)arg1;
@@ -44,6 +47,7 @@
 - (void)setImagesCardSection:(SFImagesCardSection *)arg1;
 - (void)setKeyValueDataCardSection:(SFKeyValueDataCardSection *)arg1;
 - (void)setMapCardSection:(SFMapCardSection *)arg1;
+- (void)setMapPlaceCardSection:(SFMapPlaceCardSection *)arg1;
 - (void)setMapsDetailedRowCardSection:(SFMapsDetailedRowCardSection *)arg1;
 - (void)setMediaInfoCardSection:(SFMediaInfoCardSection *)arg1;
 - (void)setMediaPlayerCardSection:(SFMediaPlayerCardSection *)arg1;

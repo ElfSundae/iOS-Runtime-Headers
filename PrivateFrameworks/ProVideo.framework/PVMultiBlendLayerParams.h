@@ -14,6 +14,7 @@
 + (bool)supportsSecureCoding;
 
 - (void)_sharedInitWithOpacity:(float)arg1 mode:(int)arg2;
+- (id)blendModeName;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (int)hgBlendMode;

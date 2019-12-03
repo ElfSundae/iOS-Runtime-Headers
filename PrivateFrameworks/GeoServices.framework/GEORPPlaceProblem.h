@@ -6,10 +6,10 @@
     unsigned int  _componentIndex;
     unsigned int  _componentValueIndex;
     struct { 
-        unsigned int componentIndex : 1; 
-        unsigned int componentValueIndex : 1; 
-        unsigned int problematicDepartureSequenceIndex : 1; 
-    }  _has;
+        unsigned int has_componentIndex : 1; 
+        unsigned int has_componentValueIndex : 1; 
+        unsigned int has_problematicDepartureSequenceIndex : 1; 
+    }  _flags;
     unsigned int  _problematicDepartureSequenceIndex;
 }
 
@@ -19,6 +19,8 @@
 @property (nonatomic) bool hasComponentValueIndex;
 @property (nonatomic) bool hasProblematicDepartureSequenceIndex;
 @property (nonatomic) unsigned int problematicDepartureSequenceIndex;
+
++ (bool)isValid:(id)arg1;
 
 - (unsigned int)componentIndex;
 - (unsigned int)componentValueIndex;
@@ -33,6 +35,7 @@
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (unsigned int)problematicDepartureSequenceIndex;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setComponentIndex:(unsigned int)arg1;
 - (void)setComponentValueIndex:(unsigned int)arg1;

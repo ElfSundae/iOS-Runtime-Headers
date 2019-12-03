@@ -43,7 +43,9 @@
 - (void)performStateWork:(id /* block */)arg1;
 - (id)resourceForItem:(id)arg1 scope:(id)arg2;
 - (id)resourceForItem:(id)arg1 scope:(id)arg2 cacheMissHandler:(id /* block */)arg3;
+- (id)resourceURLForItem:(id)arg1 scope:(id)arg2;
 - (bool)saveImage:(id)arg1 forItem:(id)arg2 scope:(id)arg3 error:(id*)arg4;
+- (bool)saveImage:(id)arg1 withImageData:(id)arg2 forItem:(id)arg3 scope:(id)arg4 error:(id*)arg5;
 - (id)stateLock;
 - (bool)validateImages;
 

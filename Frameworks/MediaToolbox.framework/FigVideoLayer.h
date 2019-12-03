@@ -11,7 +11,6 @@
 - (void)_sendVideoLayerIsBeingServicedNotification;
 - (id)actionForKey:(id)arg1;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)initWithLayer:(id)arg1;
 - (bool)isVideoLayerBeingServiced;

@@ -4,6 +4,7 @@
 
 @interface VNCoreMLModel : NSObject <VNSequencedRequestSupporting> {
     MLObjectBoundingBoxOutputDescription * _boundingBoxOutputDescription;
+    <MLFeatureProvider> * _featureProvider;
     unsigned int  _inputImageFormat;
     unsigned long long  _inputImageHeight;
     NSString * _inputImageKey;
@@ -20,6 +21,8 @@
 
 @property (readonly) MLObjectBoundingBoxOutputDescription *boundingBoxOutputDescription;
 @property (nonatomic, readonly, copy) <NSObject><NSCopying> *cachingIdentifier;
+@property (nonatomic, retain) <MLFeatureProvider> *featureProvider;
+@property (nonatomic, copy) NSString *inputImageFeatureName;
 @property (readonly) unsigned int inputImageFormat;
 @property (readonly) unsigned long long inputImageHeight;
 @property (retain) NSString *inputImageKey;
@@ -38,8 +41,9 @@
 - (void)_updateModelWithFlexibleImageConstraintUsingWidth:(long long)arg1 height:(long long)arg2;
 - (id)boundingBoxOutputDescription;
 - (id)cachingIdentifier;
-- (id)featureValueFromScenePrint:(id)arg1 dataType:(long long)arg2;
+- (id)featureProvider;
 - (id)initWithMLModel:(id)arg1 error:(id*)arg2;
+- (id)inputImageFeatureName;
 - (unsigned int)inputImageFormat;
 - (unsigned long long)inputImageHeight;
 - (id)inputImageKey;
@@ -54,6 +58,8 @@
 - (id)predictedProbabilitiesKey;
 - (unsigned long long)scenePrintRevision;
 - (id)sequencedRequestPreviousObservationsKey;
+- (void)setFeatureProvider:(id)arg1;
+- (void)setInputImageFeatureName:(id)arg1;
 - (void)setInputImageKey:(id)arg1;
 - (void)setInputScenePrintKey:(id)arg1;
 - (void)setModel:(id)arg1;

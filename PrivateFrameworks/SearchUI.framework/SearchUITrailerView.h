@@ -5,16 +5,16 @@
 @interface SearchUITrailerView : TLKStackView {
     SearchUITrailersCardSectionView * _cardSectionView;
     UIView * _centeredBoxView;
-    SKUIPlayButton * _playButton;
+    SearchUIButton * _playButton;
     SFPunchout * _punchout;
-    UILabel * _titleLabel;
+    TLKLabel * _titleLabel;
 }
 
-@property SearchUITrailersCardSectionView *cardSectionView;
-@property (retain) UIView *centeredBoxView;
-@property (retain) SKUIPlayButton *playButton;
-@property (retain) SFPunchout *punchout;
-@property (retain) UILabel *titleLabel;
+@property (nonatomic) SearchUITrailersCardSectionView *cardSectionView;
+@property (nonatomic, retain) UIView *centeredBoxView;
+@property (nonatomic, retain) SearchUIButton *playButton;
+@property (nonatomic, retain) SFPunchout *punchout;
+@property (nonatomic, retain) TLKLabel *titleLabel;
 
 - (void).cxx_destruct;
 - (id)cardSectionView;

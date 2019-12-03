@@ -39,7 +39,6 @@
 - (id)name;
 - (void)registerDataRepresentationForTypeIdentifier:(id)arg1 loadHandler:(id /* block */)arg2;
 - (void)registerDataRepresentationForTypeIdentifier:(id)arg1 options:(id)arg2 loadHandler:(id /* block */)arg3;
-- (void)registerFileProviderItemForTypeIdentifier:(id)arg1 visibility:(long long)arg2 loadHandler:(id /* block */)arg3;
 - (void)registerFileRepresentationForTypeIdentifier:(id)arg1 fileOptions:(long long)arg2 loadHandler:(id /* block */)arg3;
 - (void)registerFileRepresentationForTypeIdentifier:(id)arg1 fileOptions:(long long)arg2 options:(id)arg3 loadHandler:(id /* block */)arg4;
 - (void)registerObject:(id)arg1 options:(id)arg2;

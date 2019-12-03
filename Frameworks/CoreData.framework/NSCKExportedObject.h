@@ -12,6 +12,8 @@
 @property (nonatomic, retain) NSNumber *typeNum;
 @property (nonatomic, retain) NSString *zoneName;
 
++ (id)entityPath;
+
 - (long long)changeType;
 - (void)setChangeType:(long long)arg1;
 - (void)setType:(unsigned long long)arg1;

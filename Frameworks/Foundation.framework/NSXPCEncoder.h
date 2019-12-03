@@ -25,6 +25,7 @@
 @property NSXPCConnection *_connection;
 @property <NSXPCEncoderDelegate> *delegate;
 
+- (unsigned long long)_addOOLXPCObject:(id)arg1;
 - (void)_checkObject:(id)arg1;
 - (id)_connection;
 - (void)_encodeArrayOfObjects:(id)arg1 forKey:(id)arg2;

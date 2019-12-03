@@ -8,11 +8,30 @@
     NSString * _filename;
     NSMutableArray * _filters;
     struct { 
-        unsigned int connectionType : 1; 
-        unsigned int preferWiFiAllowedStaleThreshold : 1; 
-        unsigned int resourceType : 1; 
-    }  _has;
+        unsigned int has_connectionType : 1; 
+        unsigned int has_preferWiFiAllowedStaleThreshold : 1; 
+        unsigned int has_resourceType : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_regions : 1; 
+        unsigned int read_checksum : 1; 
+        unsigned int read_filename : 1; 
+        unsigned int read_filters : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_regions : 1; 
+        unsigned int wrote_checksum : 1; 
+        unsigned int wrote_filename : 1; 
+        unsigned int wrote_filters : 1; 
+        unsigned int wrote_connectionType : 1; 
+        unsigned int wrote_preferWiFiAllowedStaleThreshold : 1; 
+        unsigned int wrote_resourceType : 1; 
+    }  _flags;
     unsigned int  _preferWiFiAllowedStaleThreshold;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     struct GEOTileSetRegion { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; } * _regions;
     unsigned long long  _regionsCount;
     unsigned long long  _regionsSpace;
@@ -36,16 +55,24 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 + (Class)filterType;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsConnectionType:(id)arg1;
 - (int)StringAsResourceType:(id)arg1;
+- (void)_addNoFlagsFilter:(id)arg1;
+- (void)_addNoFlagsRegion:(struct GEOTileSetRegion { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; })arg1;
 - (bool)_geo_isRelevantForScales:(id)arg1 scenarios:(id)arg2;
+- (void)_readChecksum;
+- (void)_readFilename;
+- (void)_readFilters;
+- (void)_readRegions;
 - (void)addFilter:(id)arg1;
 - (void)addRegion:(struct GEOTileSetRegion { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; })arg1;
 - (id)checksum;
 - (void)clearFilters;
 - (void)clearRegions;
+- (void)clearUnknownFields:(bool)arg1;
 - (int)connectionType;
 - (id)connectionTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
@@ -63,9 +90,12 @@
 - (bool)hasPreferWiFiAllowedStaleThreshold;
 - (bool)hasResourceType;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (unsigned int)preferWiFiAllowedStaleThreshold;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (struct GEOTileSetRegion { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; })regionAtIndex:(unsigned long long)arg1;
 - (struct GEOTileSetRegion { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; }*)regions;

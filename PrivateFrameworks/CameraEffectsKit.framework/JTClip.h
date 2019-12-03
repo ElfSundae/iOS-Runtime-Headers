@@ -72,8 +72,7 @@
 @property (nonatomic, retain) NSString *uuid;
 
 + (id)createCaptureClip;
-+ (void)createClipWithLocalURL:(id)arg1 effectStack:(id)arg2 isVideo:(bool)arg3 completionHandler:(id /* block */)arg4;
-+ (void)createStillClipPreviewWithLocalURL:(id)arg1 effectStack:(id)arg2 completionHandler:(id /* block */)arg3;
++ (void)createStillClipPreviewWithLocalURL:(id)arg1 effectStack:(id)arg2 maximumPreviewDimension:(unsigned long long)arg3 completionHandler:(id /* block */)arg4;
 + (void)createStillClipWithAssetIdentifier:(id)arg1 progressHandlerBlock:(id /* block */)arg2 completionHandler:(id /* block */)arg3;
 + (void)createStillClipWithImage:(id)arg1 completionHandler:(id /* block */)arg2;
 + (void)createStillClipWithLocalURL:(id)arg1 completionHandler:(id /* block */)arg2;

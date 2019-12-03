@@ -6,6 +6,7 @@
     double  _lastMajorRelocalizationTimestamp;
     bool  _majorRelocalization;
     bool  _minorRelocalization;
+    double  _originTimestamp;
     bool  _poseGraphUpdated;
     long long  _reason;
     long long  _state;
@@ -15,6 +16,7 @@
 @property (nonatomic) double lastMajorRelocalizationTimestamp;
 @property (nonatomic) bool majorRelocalization;
 @property (nonatomic) bool minorRelocalization;
+@property (nonatomic) double originTimestamp;
 @property (nonatomic) bool poseGraphUpdated;
 @property (nonatomic) long long reason;
 @property (nonatomic) long long state;
@@ -29,11 +31,13 @@
 - (double)lastMajorRelocalizationTimestamp;
 - (bool)majorRelocalization;
 - (bool)minorRelocalization;
+- (double)originTimestamp;
 - (bool)poseGraphUpdated;
 - (long long)reason;
 - (void)setLastMajorRelocalizationTimestamp:(double)arg1;
 - (void)setMajorRelocalization:(bool)arg1;
 - (void)setMinorRelocalization:(bool)arg1;
+- (void)setOriginTimestamp:(double)arg1;
 - (void)setPoseGraphUpdated:(bool)arg1;
 - (void)setReason:(long long)arg1;
 - (void)setState:(long long)arg1;

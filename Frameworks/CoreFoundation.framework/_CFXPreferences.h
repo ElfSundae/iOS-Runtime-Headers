@@ -5,20 +5,28 @@
 @interface _CFXPreferences : NSObject {
     NSObject<OS_xpc_object> * _agentConnection;
     NSObject<OS_xpc_object> * _daemonConnection;
+    NSObject<OS_xpc_object> * _directConnection;
     unsigned int  _euid;
     unsigned int  _launchdUID;
     struct __CFDictionary { } * _namedVolatileSources;
-    struct _opaque_pthread_mutex_t { long long x1; BOOL x2[56]; } * _namedVolatileSourcesLock;
-    NSObject<OS_xpc_object> * _observationConnection;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _namedVolatileSourcesLock;
     struct __CFDictionary { } * _searchLists;
-    struct _opaque_pthread_mutex_t { long long x1; BOOL x2[56]; } * _searchListsLock;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _searchListsLock;
     struct __CFDictionary { } * _sources;
-    struct _opaque_pthread_mutex_t { long long x1; BOOL x2[56]; } * _sourcesLock;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _sourcesLock;
+    _Atomic BOOL  _userHomeDirectoryState;
 }
 
 + (id)copyDefaultPreferences;
 
 - (id)_copyDaemonConnectionSettingUpIfNecessaryForRole:(int)arg1;
+- (void)_deliverPendingKVONotifications;
 - (void)addSuitePreferences:(struct __CFString { }*)arg1 toAppIdentifier:(struct __CFString { }*)arg2 container:(struct __CFString { }*)arg3;
 - (void)alreadylocked_withNamedVolatileSources:(id /* block */)arg1;
 - (void)alreadylocked_withSearchLists:(id /* block */)arg1;
@@ -37,6 +45,7 @@
 - (struct __CFDictionary { }*)copyManagedValuesForKeys:(struct __CFArray { }*)arg1 identifier:(struct __CFString { }*)arg2 useSystemContainer:(bool)arg3;
 - (void*)copyValueForKey:(struct __CFString { }*)arg1 identifier:(struct __CFString { }*)arg2 user:(struct __CFString { }*)arg3 host:(struct __CFString { }*)arg4 container:(struct __CFString { }*)arg5;
 - (struct __CFDictionary { }*)copyValuesForKeys:(struct __CFArray { }*)arg1 identifier:(struct __CFString { }*)arg2 user:(struct __CFString { }*)arg3 host:(struct __CFString { }*)arg4 container:(struct __CFString { }*)arg5;
+- (bool)currentUserHasInvalidHomeDirectory;
 - (void)dealloc;
 - (void)destroyConnections;
 - (unsigned int)euid;
@@ -65,7 +74,8 @@
 - (void)setValue:(void*)arg1 forKey:(struct __CFString { }*)arg2 appIdentifier:(struct __CFString { }*)arg3 container:(struct __CFString { }*)arg4 configurationURL:(struct __CFURL { }*)arg5;
 - (void)setValue:(void*)arg1 forKey:(struct __CFString { }*)arg2 identifier:(struct __CFString { }*)arg3 user:(struct __CFString { }*)arg4 host:(struct __CFString { }*)arg5 container:(struct __CFString { }*)arg6;
 - (void)setValuesForKeys:(struct __CFDictionary { }*)arg1 removingValuesForKeys:(struct __CFArray { }*)arg2 identifier:(struct __CFString { }*)arg3 user:(struct __CFString { }*)arg4 host:(struct __CFString { }*)arg5 container:(struct __CFString { }*)arg6;
-- (/* Warning: Unrecognized filer type: '' using 'void*' */ void**)shmemForRole:(void *)arg1 name:(void *)arg2; // needs 2 arg types, found 3: SEL, int, const char *
+- (_Atomic /* Warning: Unrecognized filer type: '' using 'void*' */ void**)shmemForRole:(void *)arg1 name:(void *)arg2; // needs 2 arg types, found 3: SEL, int, const char *
+- (void)simulateTimerSynchronizeForTestingForUser:(struct __CFString { }*)arg1;
 - (void)synchronizeEverything;
 - (unsigned char)synchronizeIdentifier:(struct __CFString { }*)arg1 user:(struct __CFString { }*)arg2 host:(struct __CFString { }*)arg3 container:(struct __CFString { }*)arg4;
 - (void)unregisterUserDefaultsInstance:(id)arg1;
@@ -78,7 +88,6 @@
 - (void)withNamedVolatileSources:(id /* block */)arg1;
 - (void)withSearchListForIdentifier:(struct __CFString { }*)arg1 container:(struct __CFString { }*)arg2 cloudConfigurationURL:(struct __CFURL { }*)arg3 perform:(id /* block */)arg4;
 - (void)withSearchLists:(id /* block */)arg1;
-- (void)withSnapshotSearchList:(id /* block */)arg1;
 - (void)withSourceForIdentifier:(struct __CFString { }*)arg1 user:(struct __CFString { }*)arg2 byHost:(bool)arg3 container:(struct __CFString { }*)arg4 cloud:(bool)arg5 perform:(id /* block */)arg6;
 - (void)withSources:(id /* block */)arg1;
 - (void)withSuiteSearchListForIdentifier:(struct __CFString { }*)arg1 user:(struct __CFString { }*)arg2 locked:(bool)arg3 perform:(id /* block */)arg4;

@@ -8,10 +8,11 @@
 
 @property (nonatomic, readonly, copy) NSArray *attributeDescriptions;
 @property (nonatomic, readonly) struct CLLocationCoordinate2D { double x1; double x2; } center;
-@property (nonatomic, readonly) struct { BOOL x1[512]; BOOL x2[512]; int x3; bool x4; bool x5; bool x6; union { struct { BOOL x_1_2_1[512]; unsigned short x_1_2_2; unsigned short x_1_2_3; int x_1_2_4; bool x_1_2_5; } x_7_1_1; struct { struct { double x_1_3_1; double x_1_3_2; } x_2_2_1; double x_2_2_2; double x_2_2_3; int x_2_2_4; bool x_2_2_5; } x_7_1_2; } x7; } clientRegion;
+@property (nonatomic, readonly) struct { BOOL x1[512]; BOOL x2[512]; int x3; bool x4; bool x5; bool x6; bool x7; union { struct { BOOL x_1_2_1[512]; unsigned short x_1_2_2; unsigned short x_1_2_3; int x_1_2_4; bool x_1_2_5; } x_8_1_1; struct { struct { double x_1_3_1; double x_1_3_2; } x_2_2_1; double x_2_2_2; double x_2_2_3; int x_2_2_4; bool x_2_2_5; } x_8_1_2; struct { struct { double x_1_3_1; double x_1_3_2; } x_3_2_1[101]; int x_3_2_2; int x_3_2_3; bool x_3_2_4; } x_8_1_3; } x8; } clientRegion;
 @property (nonatomic) bool conservativeEntry;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) bool emergency;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) NSString *identifier;
 @property (nonatomic) bool notifyOnEntry;
@@ -31,17 +32,18 @@
 - (void)_encodeWithCoder:(id)arg1;
 - (id)_initWithCoder:(id)arg1;
 - (struct CLLocationCoordinate2D { double x1; double x2; })center;
-- (struct { BOOL x1[512]; BOOL x2[512]; int x3; bool x4; bool x5; bool x6; union { struct { BOOL x_1_2_1[512]; unsigned short x_1_2_2; unsigned short x_1_2_3; int x_1_2_4; bool x_1_2_5; } x_7_1_1; struct { struct { double x_1_3_1; double x_1_3_2; } x_2_2_1; double x_2_2_2; double x_2_2_3; int x_2_2_4; bool x_2_2_5; } x_7_1_2; } x7; })clientRegion;
+- (struct { BOOL x1[512]; BOOL x2[512]; int x3; bool x4; bool x5; bool x6; bool x7; union { struct { BOOL x_1_2_1[512]; unsigned short x_1_2_2; unsigned short x_1_2_3; int x_1_2_4; bool x_1_2_5; } x_8_1_1; struct { struct { double x_1_3_1; double x_1_3_2; } x_2_2_1; double x_2_2_2; double x_2_2_3; int x_2_2_4; bool x_2_2_5; } x_8_1_2; struct { struct { double x_1_3_1; double x_1_3_2; } x_3_2_1[101]; int x_3_2_2; int x_3_2_3; bool x_3_2_4; } x_8_1_3; } x8; })clientRegion;
 - (bool)conservativeEntry;
 - (bool)containsCoordinate:(struct CLLocationCoordinate2D { double x1; double x2; })arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)description;
+- (bool)emergency;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)identifier;
 - (id)initCircularRegionWithCenter:(struct CLLocationCoordinate2D { double x1; double x2; })arg1 radius:(double)arg2 identifier:(id)arg3;
-- (id)initWithClientRegion:(struct { BOOL x1[512]; BOOL x2[512]; int x3; bool x4; bool x5; bool x6; union { struct { BOOL x_1_2_1[512]; unsigned short x_1_2_2; unsigned short x_1_2_3; int x_1_2_4; bool x_1_2_5; } x_7_1_1; struct { struct { double x_1_3_1; double x_1_3_2; } x_2_2_1; double x_2_2_2; double x_2_2_3; int x_2_2_4; bool x_2_2_5; } x_7_1_2; } x7; })arg1;
+- (id)initWithClientRegion:(struct { BOOL x1[512]; BOOL x2[512]; int x3; bool x4; bool x5; bool x6; bool x7; union { struct { BOOL x_1_2_1[512]; unsigned short x_1_2_2; unsigned short x_1_2_3; int x_1_2_4; bool x_1_2_5; } x_8_1_1; struct { struct { double x_1_3_1; double x_1_3_2; } x_2_2_1; double x_2_2_2; double x_2_2_3; int x_2_2_4; bool x_2_2_5; } x_8_1_2; struct { struct { double x_1_3_1; double x_1_3_2; } x_3_2_1[101]; int x_3_2_2; int x_3_2_3; bool x_3_2_4; } x_8_1_3; } x8; })arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
 - (bool)isEqual:(id)arg1;
@@ -51,6 +53,7 @@
 - (double)radius;
 - (int)referenceFrame;
 - (void)setConservativeEntry:(bool)arg1;
+- (void)setEmergency:(bool)arg1;
 - (void)setNotifyOnEntry:(bool)arg1;
 - (void)setNotifyOnExit:(bool)arg1;
 - (void)setOnBehalfOfBundleId:(id)arg1;

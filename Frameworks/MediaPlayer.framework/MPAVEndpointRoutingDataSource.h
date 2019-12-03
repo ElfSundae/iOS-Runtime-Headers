@@ -22,6 +22,7 @@
 - (id)endpoints;
 - (void)getRoutesForCategory:(id)arg1 withCompletion:(id /* block */)arg2;
 - (id)init;
+- (id)initWithThrottlingEnabled:(bool)arg1;
 - (id)routingContextUID;
 - (id)serialQueue;
 - (void)setDiscoveryMode:(long long)arg1;

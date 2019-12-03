@@ -3,20 +3,20 @@
  */
 
 @interface SCRCMathIdentifierExpression : SCRCMathSimpleExpression {
-    int  _fontStyle;
+    long long  _fontStyle;
 }
 
-@property (nonatomic, readonly) int fontStyle;
+@property (nonatomic, readonly) long long fontStyle;
 
 - (bool)_isPrime;
 - (bool)canFormWordStartingWithExpression:(id)arg1;
 - (id)description;
-- (int)fontStyle;
+- (long long)fontStyle;
 - (id)initWithDictionary:(id)arg1;
 - (bool)isNaturalSuperscript;
 - (bool)isNumber;
 - (id)mathMLString;
-- (id)speakableDescriptionWithSpeakingStyle:(int)arg1 arePausesAllowed:(bool)arg2;
-- (id)speakableDescriptionWithSpeakingStyle:(int)arg1 arePausesAllowed:(bool)arg2 isPartOfWord:(bool)arg3;
+- (id)speakableDescriptionWithSpeakingStyle:(long long)arg1 arePausesAllowed:(bool)arg2;
+- (id)speakableDescriptionWithSpeakingStyle:(long long)arg1 arePausesAllowed:(bool)arg2 isPartOfWord:(bool)arg3;
 
 @end

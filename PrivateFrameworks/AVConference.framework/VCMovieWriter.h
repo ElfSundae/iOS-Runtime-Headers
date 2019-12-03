@@ -6,6 +6,7 @@
     AVAssetWriterInputMetadataAdaptor * _adapter;
     AVAssetWriter * _assetWriter;
     struct __CVPixelBufferPool { } * _bufferPool;
+    unsigned int  _codec;
     id /* block */  _completionHandler;
     struct CGRect { 
         struct CGPoint { 
@@ -79,7 +80,7 @@
 - (void)dealloc;
 - (unsigned int)endRTPTimeStamp;
 - (void)finishWritingWithHandler:(id /* block */)arg1;
-- (id)initWithOutputURL:(id)arg1 transactionID:(id)arg2;
+- (id)initWithOutputURL:(id)arg1 transactionID:(id)arg2 videoCodec:(unsigned int)arg3;
 - (id)outputURL;
 - (void)processSampleQueue:(struct opaqueCMBufferQueue { }*)arg1 input:(id)arg2 lastPresentationTime:(struct { long long x1; int x2; unsigned int x3; long long x4; }*)arg3;
 - (void)setEndRTPTimeStamp:(unsigned int)arg1;
@@ -92,8 +93,8 @@
 - (void)setupInput:(id)arg1 queue:(struct opaqueCMBufferQueue { }*)arg2 dispatchGroup:(id)arg3 lastPresentationTime:(struct { long long x1; int x2; unsigned int x3; long long x4; }*)arg4;
 - (void)setupInputs;
 - (void)setupWriterWithMode:(unsigned char)arg1;
-- (bool)shouldAppendSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 RTPtimeStamp:(unsigned int)arg2;
-- (bool)shouldFinishWritingSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 RTPtimeStamp:(unsigned int)arg2;
+- (bool)shouldAppendSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 RTPtimeStamp:(unsigned int)arg2 mediaType:(unsigned char)arg3;
+- (bool)shouldFinishWritingSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 RTPtimeStamp:(unsigned int)arg2 mediaType:(unsigned char)arg3;
 - (unsigned int)startRTPTimeStamp;
 - (void)startWritingAtTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (unsigned char)writerMode;

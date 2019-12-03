@@ -12,8 +12,10 @@
 @property (nonatomic, readonly) id object;
 
 - (void).cxx_destruct;
+- (id)_propertyDescriptionString;
 - (void)addRecord:(id)arg1;
 - (void)applyRecordsMatchingTraitCollection:(id)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithObject:(id)arg1 keyPath:(id)arg2;

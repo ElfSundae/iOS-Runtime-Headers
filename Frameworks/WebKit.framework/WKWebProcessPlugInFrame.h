@@ -11,7 +11,7 @@
 }
 
 @property (nonatomic, readonly) NSURL *URL;
-@property (readonly) /* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*_apiObject;
+@property (readonly) struct Object { int (**x1)(); id x2; }*_apiObject;
 @property (nonatomic, readonly) NSArray *appleTouchIconURLs;
 @property (nonatomic, readonly) NSArray *childFrames;
 @property (nonatomic, readonly) bool containsAnyFormElements;
@@ -25,7 +25,7 @@
 + (id)lookUpFrameFromHandle:(id)arg1;
 
 - (id)URL;
-- (/* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*)_apiObject;
+- (struct Object { int (**x1)(); id x2; }*)_apiObject;
 - (id)_browserContextController;
 - (id)_certificateChain;
 - (bool)_hasCustomContentProvider;

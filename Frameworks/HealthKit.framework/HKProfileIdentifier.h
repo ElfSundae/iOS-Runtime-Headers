@@ -11,6 +11,7 @@
 @property (readonly) long long type;
 
 + (id)_profileWithUUID:(id)arg1 type:(long long)arg2;
++ (bool)isValidSecondaryProfileType:(long long)arg1;
 + (id)primaryProfile;
 + (bool)supportsSecureCoding;
 

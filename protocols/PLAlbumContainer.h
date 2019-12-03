@@ -11,7 +11,7 @@
 - (short)albumListType;
 - (NSMutableOrderedSet *)albums;
 - (unsigned long long)albumsCount;
-- (id /* block */)albumsSortingComparator:(void *)arg1; // needs 1 arg types, found 5: id /* block */, id, void*, id, SEL
+- (id /* block */)albumsSortingComparator:(void *)arg1; // needs 1 arg types, found 6: id /* block */, id, id, void*, id, SEL
 - (bool)canEditAlbums;
 - (int)filter;
 - (bool)hasAtLeastOneAlbum;

@@ -2,11 +2,14 @@
    Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
  */
 
-@interface HKStatistics : NSObject <NSCopying, NSSecureCoding> {
+@interface HKStatistics : NSObject <NSCopying, NSSecureCoding, WDDataListDataObjectSource> {
     HKQuantity * _averageQuantity;
     NSDictionary * _averageQuantityBySource;
     unsigned long long  _dataCount;
     NSDictionary * _dataCountBySource;
+    HKObjectType * _dataType;
+    HKQuantity * _duration;
+    NSDictionary * _durationBySource;
     NSDate * _endDate;
     HKQuantity * _maximumQuantity;
     NSDictionary * _maximumQuantityBySource;
@@ -16,7 +19,6 @@
     NSDictionary * _mostRecentQuantityBySource;
     NSDateInterval * _mostRecentQuantityDateInterval;
     NSDictionary * _mostRecentQuantityDateIntervalBySource;
-    HKQuantityType * _quantityType;
     NSArray * _sources;
     NSDate * _startDate;
     HKQuantity * _sumQuantity;
@@ -28,7 +30,12 @@
 @property (nonatomic, copy) NSDictionary *averageQuantityBySource;
 @property (nonatomic) unsigned long long dataCount;
 @property (nonatomic, copy) NSDictionary *dataCountBySource;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (nonatomic, copy) HKQuantity *duration;
+@property (nonatomic, copy) NSDictionary *durationBySource;
 @property (readonly) NSDate *endDate;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, copy) HKQuantity *maximumQuantity;
 @property (nonatomic, copy) NSDictionary *maximumQuantityBySource;
 @property (nonatomic, copy) HKQuantity *minimumQuantity;
@@ -43,11 +50,15 @@
 @property (nonatomic, copy) HKQuantity *sumQuantity;
 @property (nonatomic, copy) NSDictionary *sumQuantityBySource;
 @property (nonatomic, copy) NSDictionary *sumQuantityBySourceID;
+@property (readonly) Class superclass;
+
+// Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
 
 + (void)_validateOptions:(unsigned long long)arg1 forDataType:(id)arg2;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)_copyOverwritingObjectType:(id)arg1;
 - (id)_initAsCopyOf:(id)arg1;
 - (id)_initWithDataType:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
 - (void)_setEndDate:(id)arg1;
@@ -60,6 +71,9 @@
 - (unsigned long long)dataCount;
 - (id)dataCountBySource;
 - (id)description;
+- (id)duration;
+- (id)durationBySource;
+- (id)durationForSource:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)endDate;
 - (id)init;
@@ -82,6 +96,8 @@
 - (void)setAverageQuantityBySource:(id)arg1;
 - (void)setDataCount:(unsigned long long)arg1;
 - (void)setDataCountBySource:(id)arg1;
+- (void)setDuration:(id)arg1;
+- (void)setDurationBySource:(id)arg1;
 - (void)setMaximumQuantity:(id)arg1;
 - (void)setMaximumQuantityBySource:(id)arg1;
 - (void)setMinimumQuantity:(id)arg1;
@@ -99,5 +115,15 @@
 - (id)sumQuantityBySource;
 - (id)sumQuantityBySourceID;
 - (id)sumQuantityForSource:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/HealthRecordsUI.framework/HealthRecordsUI
+
+- (id)initWithDataType:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
+- (void)updateMinMaxWithChartableCodedQuantity:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/HealthToolbox.framework/HealthToolbox
+
+- (id)device;
+- (id)source;
 
 @end

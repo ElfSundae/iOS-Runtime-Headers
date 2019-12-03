@@ -19,13 +19,6 @@
     NSLayoutConstraint * _leftViewMinCalloutWidthConstraint;
     UILayoutGuide * _leftViewTopSpacer;
     NSLayoutConstraint * _leftViewTopSpacerBottomConstraint;
-    struct { 
-        unsigned char timePeriod; 
-        unsigned char overlayType; 
-        unsigned char applicationState; 
-        unsigned char searchResultsType; 
-        bool mapHasLabels; 
-    }  _mapDisplayStyle;
     _MKSmallCalloutPassthroughButton * _maskedContainerView;
     NSLayoutConstraint * _maxWidthConstraint;
     NSLayoutConstraint * _minWidthConstraint;
@@ -38,7 +31,6 @@
     UIView<_MKCalloutAccessoryView> * _rightView;
     NSLayoutConstraint * _rightViewCenterContentMarginConstraint;
     NSLayoutConstraint * _rightViewHorizontalPositionConstraint;
-    NSLayoutConstraint * _rightViewMinCalloutWidthConstraint;
     UILayoutGuide * _rightViewRightSpacer;
     UILayoutGuide * _rightViewTopSpacer;
     NSLayoutConstraint * _rightViewTopSpacerBottomConstraint;
@@ -59,7 +51,6 @@
 @property (nonatomic, copy) NSString *calloutTitle;
 @property (nonatomic, retain) UIView *detailView;
 @property (nonatomic, retain) UIView *leftView;
-@property (nonatomic) struct { unsigned char x1; unsigned char x2; unsigned char x3; unsigned char x4; bool x5; } mapDisplayStyle;
 @property (nonatomic) double maximumWidth;
 @property (nonatomic) double minimumWidth;
 @property (nonatomic) bool parallaxEnabled;
@@ -71,7 +62,6 @@
 - (void)_contentSizeCategoryDidChange:(id)arg1;
 - (id)_maskedContainerView;
 - (void)_setNeedsUpdatePreferredContentSize;
-- (void)_updateAccessoryViewStyles;
 - (void)_updatePreferredContentSize;
 - (void)_updatePreferredContentSizeIfNeeded;
 - (void)beginMapsTransitionMovingSideways;
@@ -82,7 +72,6 @@
 - (id)detailView;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)leftView;
-- (struct { unsigned char x1; unsigned char x2; unsigned char x3; unsigned char x4; bool x5; })mapDisplayStyle;
 - (double)maximumWidth;
 - (double)minimumWidth;
 - (bool)parallaxEnabled;
@@ -96,7 +85,6 @@
 - (void)setDetailView:(id)arg1 animated:(bool)arg2;
 - (void)setLeftView:(id)arg1;
 - (void)setLeftView:(id)arg1 animated:(bool)arg2;
-- (void)setMapDisplayStyle:(struct { unsigned char x1; unsigned char x2; unsigned char x3; unsigned char x4; bool x5; })arg1;
 - (void)setMaximumWidth:(double)arg1;
 - (void)setMinimumWidth:(double)arg1;
 - (void)setParallaxEnabled:(bool)arg1;

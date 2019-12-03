@@ -6,4 +6,8 @@
 
 @property (nonatomic, readonly) PXCMMInvitationsDataSource *dataSource;
 
++ (id)currentDataSourceManager;
++ (id)emptyDataSourceManager;
++ (id)keyPathsAffectingCurrentDataSourceManager;
+
 @end

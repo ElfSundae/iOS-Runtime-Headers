@@ -17,7 +17,7 @@
 - (void).cxx_destruct;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (void)getTotalForce:(double)arg1 agent:(id)arg2;
 - (long long)goalCount;
 - (id)goals;

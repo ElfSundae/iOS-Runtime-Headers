@@ -2,15 +2,17 @@
    Image: /System/Library/Frameworks/EventKitUI.framework/EventKitUI
  */
 
-@interface EKEventAttendeePicker : UIViewController <CNContactPickerDelegate, MFAutocompleteResultsTableViewControllerDelegate, MFComposeRecipientTextViewDelegate, MFContactsSearchConsumer> {
+@interface EKEventAttendeePicker : UIViewController <CNAutocompleteResultsTableViewControllerDelegate, CNComposeRecipientTextViewDelegate, CNContactPickerDelegate, CNContactViewControllerPrivateDelegate> {
     bool  _ABAccessDenied;
     <EKEventAttendeePickerDelegate> * _addressValidationDelegate;
     NSMutableDictionary * _atomPresentationOptionsByRecipient;
-    MFAutocompleteResultsTableViewController * _autocompleteTableViewController;
+    CNAutocompleteResultsTableViewController * _autocompleteTableViewController;
     NSOperationQueue * _availabilityQueue;
-    MFComposeRecipientTextView * _composeRecipientView;
+    CNComposeRecipientTextView * _composeRecipientView;
+    CNComposeRecipient * _displayedRecipient;
     EKEvent * _event;
     CNAutocompleteFetchContext * _fetchContext;
+    bool  _hasChanges;
     struct CGRect { 
         struct CGPoint { 
             double x; 
@@ -29,10 +31,9 @@
     UIScrollView * _recipientScrollView;
     NSArray * _recipients;
     NSString * _searchAccountID;
-    MFContactsSearchManager * _searchManager;
+    CNAutocompleteSearchManager * _searchManager;
     NSMutableArray * _searchResults;
     UITableView * _searchResultsView;
-    MFSearchShadowView * _shadowView;
     bool  _shouldReenableAutomaticKeyboard;
     bool  _showingSearchField;
     bool  _suppressAvailabilityRequests;
@@ -42,6 +43,7 @@
 @property (nonatomic, readonly) NSArray *addresses;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) bool hasChanges;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSArray *recipients;
 @property (nonatomic, readonly) NSString *remainingText;
@@ -66,7 +68,6 @@
 - (id)_searchResultsView;
 - (void)_setAtomPresentationOption:(unsigned long long)arg1 forRecipient:(id)arg2;
 - (void)_setRecipientsOnComposeView;
-- (id)_shadowView;
 - (void)_showSearchResultsView;
 - (void)_updateFetchContextChosenAddresses;
 - (bool)_zeroKeyworkSearchEnabled;
@@ -89,25 +90,30 @@
 - (void)contactPicker:(id)arg1 didSelectContact:(id)arg2;
 - (void)contactPicker:(id)arg1 didSelectContactProperty:(id)arg2;
 - (void)contactPickerDidCancel:(id)arg1;
+- (void)contactViewControllerDidExecuteClearRecentsDataAction:(id)arg1;
 - (void)dealloc;
 - (void)endedNetworkActivity;
 - (void)finishedSearchingForAutocompleteResults;
 - (void)finishedSearchingForCorecipients;
 - (void)finishedTaskWithID:(id)arg1;
-- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 event:(id)arg2 overriddenEventStartDate:(id)arg3 overriddenEventEndDate:(id)arg4;
+- (bool)hasChanges;
+- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 event:(id)arg2 calendar:(id)arg3 overriddenEventStartDate:(id)arg4 overriddenEventEndDate:(id)arg5;
 - (void)loadView;
 - (id)peoplePickerPrompt;
 - (unsigned long long)presentationOptionsForRecipient:(id)arg1;
 - (bool)recipientViewShouldIgnoreFirstResponderChanges:(id)arg1;
 - (id)recipients;
 - (id)remainingText;
+- (void)scrollComposeViewToEnd;
 - (id)searchAccountID;
 - (void)searchForCorecipients;
 - (void)searchWithText:(id)arg1;
 - (void)setAddressValidationDelegate:(id)arg1;
+- (void)setHasChanges:(bool)arg1;
 - (void)setRecipients:(id)arg1;
 - (void)setSearchAccountID:(id)arg1;
 - (bool)showAvailability;
+- (void)viewDidAppear:(bool)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(bool)arg1;
 

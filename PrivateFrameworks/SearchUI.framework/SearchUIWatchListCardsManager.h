@@ -10,11 +10,11 @@
     SearchUIWatchListUtilities * _watchListUtility;
 }
 
-@property bool isInUpNext;
-@property (retain) WLKCanonicalPlayablesResponse *response;
-@property (retain) NSHashTable *rowModels;
-@property (retain) NSString *watchListIdentifier;
-@property (retain) SearchUIWatchListUtilities *watchListUtility;
+@property (nonatomic) bool isInUpNext;
+@property (nonatomic, retain) WLKCanonicalPlayablesResponse *response;
+@property (nonatomic, retain) NSHashTable *rowModels;
+@property (nonatomic, retain) NSString *watchListIdentifier;
+@property (nonatomic, retain) SearchUIWatchListUtilities *watchListUtility;
 
 + (bool)isUpNextCardSection:(id)arg1;
 

@@ -9,7 +9,7 @@
 - (UIViewController *)presentingViewControllerForWebViewController:(SFWebViewController *)arg1;
 - (void)webViewController:(SFWebViewController *)arg1 commitPreviewedViewController:(UIViewController *)arg2;
 - (void)webViewController:(void *)arg1 createWebViewWithConfiguration:(void *)arg2 forNavigationAction:(void *)arg3 completionHandler:(void *)arg4; // needs 4 arg types, found 9: SFWebViewController *, WKWebViewConfiguration *, WKNavigationAction *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, WKWebView *, void*
-- (void)webViewController:(void *)arg1 decidePolicyForNavigationAction:(void *)arg2 decisionHandler:(void *)arg3; // needs 3 arg types, found 9: SFWebViewController *, WKNavigationAction *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, long long, _WKWebsitePolicies *, void*
+- (void)webViewController:(void *)arg1 decidePolicyForNavigationAction:(void *)arg2 decisionHandler:(void *)arg3; // needs 3 arg types, found 9: SFWebViewController *, WKNavigationAction *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, long long, WKWebpagePreferences *, void*
 - (void)webViewController:(void *)arg1 decidePolicyForNavigationResponse:(void *)arg2 decisionHandler:(void *)arg3; // needs 3 arg types, found 8: SFWebViewController *, WKNavigationResponse *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, long long, void*
 - (void)webViewController:(SFWebViewController *)arg1 didChangeFullScreen:(bool)arg2;
 - (void)webViewController:(SFWebViewController *)arg1 didCommitNavigation:(WKNavigation *)arg2;
@@ -17,11 +17,15 @@
 - (void)webViewController:(SFWebViewController *)arg1 didFailNavigation:(WKNavigation *)arg2 withError:(NSError *)arg3;
 - (void)webViewController:(SFWebViewController *)arg1 didFailProvisionalNavigation:(WKNavigation *)arg2 withError:(NSError *)arg3;
 - (void)webViewController:(SFWebViewController *)arg1 didFinishDocumentLoadForNavigation:(WKNavigation *)arg2;
+- (void)webViewController:(SFWebViewController *)arg1 didFinishLoadForQuickLookDocumentInMainFrame:(NSData *)arg2;
 - (void)webViewController:(SFWebViewController *)arg1 didFinishNavigation:(WKNavigation *)arg2;
 - (void)webViewController:(void *)arg1 didReceiveAuthenticationChallenge:(void *)arg2 completionHandler:(void *)arg3; // needs 3 arg types, found 9: SFWebViewController *, NSURLAuthenticationChallenge *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, long long, NSURLCredential *, void*
 - (void)webViewController:(SFWebViewController *)arg1 didReceiveServerRedirectForProvisionalNavigation:(WKNavigation *)arg2;
 - (void)webViewController:(SFWebViewController *)arg1 didSameDocumentNavigation:(WKNavigation *)arg2 ofType:(long long)arg3;
+- (_SFDownload *)webViewController:(SFWebViewController *)arg1 didStartDownload:(_WKDownload *)arg2;
+- (void)webViewController:(SFWebViewController *)arg1 didStartLoadForQuickLookDocumentInMainFrameWithFileName:(NSString *)arg2 uti:(NSString *)arg3;
 - (void)webViewController:(SFWebViewController *)arg1 didStartProvisionalNavigation:(WKNavigation *)arg2;
+- (void)webViewController:(SFWebViewController *)arg1 mediaCaptureStateDidChange:(unsigned long long)arg2;
 - (long long)webViewController:(SFWebViewController *)arg1 presentationPolicyForDialog:(_SFDialog *)arg2;
 - (UIViewController *)webViewController:(SFWebViewController *)arg1 previewViewControllerForURL:(NSURL *)arg2 defaultActions:(NSArray *)arg3 elementInfo:(_WKActivatedElementInfo *)arg4;
 - (void)webViewController:(SFWebViewController *)arg1 printFrame:(_WKFrameHandle *)arg2;
@@ -43,6 +47,7 @@
 
 @optional
 
+- (void)webViewController:(void *)arg1 decidePolicyForSOAuthorizationLoadWithCurrentPolicy:(void *)arg2 forExtension:(void *)arg3 completionHandler:(void *)arg4; // needs 4 arg types, found 9: SFWebViewController *, long long, NSString *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, long long, void*
 - (void)webViewControllerDidShowSafeBrowsingWarning:(SFWebViewController *)arg1;
 
 @end

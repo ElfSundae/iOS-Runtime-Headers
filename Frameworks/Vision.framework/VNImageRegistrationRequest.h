@@ -7,7 +7,6 @@
     VNImageRegistrationSignature * _cachedFloatingImageSignature;
 }
 
-+ (id)optionNameForTargetedImageSpecifyingObject;
 + (bool)warmUpRequestPerformer:(id)arg1 error:(id*)arg2;
 
 - (void).cxx_destruct;

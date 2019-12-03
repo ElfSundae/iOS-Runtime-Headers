@@ -4,7 +4,10 @@
 
 @interface MapsSuggestionsCompositeSource : MapsSuggestionsBaseSource <MapsSuggestionsSource, MapsSuggestionsSourceDelegate> {
     NSMutableDictionary * _nextUpdateTimes;
-    NSObject<OS_dispatch_queue> * _queue;
+    struct Queue { 
+        NSObject<OS_dispatch_queue> *_innerQueue; 
+        NSString *_name; 
+    }  _queue;
     bool  _running;
     struct NSMutableSet { Class x1; } * _sources;
     MapsSuggestionsSuppressor * _suppressor;
@@ -22,27 +25,27 @@
 + (unsigned long long)disposition;
 + (bool)isEnabled;
 
+- (id).cxx_construct;
 - (void).cxx_destruct;
-- (double)_hideTimeForEntry:(id)arg1;
 - (void)_initUpdateTimerIfNecessary;
 - (void)_scheduleNextUpdateChildSourcesWithin:(double)arg1;
 - (bool)_shouldUpdateSource:(id)arg1;
-- (double)_snoozeTimeForEntry:(id)arg1;
 - (void)_startUpdateChildSources;
 - (void)_stopUpdateChildSources;
-- (bool)_suppressEntry:(id)arg1 withTime:(double)arg2;
-- (double)_suppressionTimeForEntry:(id)arg1 behavior:(long long)arg2;
+- (double)_suppressionTimeForEntry:(id)arg1 snoozeOnly:(bool)arg2;
 - (double)_updateChildSource:(id)arg1;
 - (void)_updateChildSourcesForType:(long long)arg1;
 - (void)_updateChildSourcesForceAll:(bool)arg1;
 - (bool)addChildSource:(id)arg1;
-- (unsigned long long)addOrUpdateSuggestionEntries:(struct NSArray { Class x1; }*)arg1 source:(struct NSString { Class x1; }*)arg2 deleteMissing:(bool)arg3;
+- (unsigned long long)addOrUpdateSuggestionEntries:(struct NSArray { Class x1; }*)arg1 source:(struct NSString { Class x1; }*)arg2;
 - (bool)attachSource:(id)arg1;
 - (bool)canProduceEntriesOfType:(long long)arg1;
-- (id)currentBestLocation;
+- (struct NSSet { Class x1; }*)children;
 - (void)dealloc;
-- (unsigned long long)deleteEntries:(struct NSArray { Class x1; }*)arg1 source:(struct NSString { Class x1; }*)arg2;
 - (bool)detachSource:(id)arg1;
+- (void)feedbackForContact:(id)arg1 action:(long long)arg2;
+- (void)feedbackForEntry:(id)arg1 action:(long long)arg2;
+- (void)feedbackForMapItem:(id)arg1 action:(long long)arg2;
 - (id)initWithDelegate:(id)arg1;
 - (bool)removeChildSource:(id)arg1;
 - (bool)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(id /* block */)arg3;
@@ -50,6 +53,10 @@
 - (void)setRunning:(bool)arg1;
 - (void)start;
 - (void)stop;
+- (id)test_dateUntilSuppressedEntry:(id)arg1;
+- (void)test_resetSuppressions;
+- (double)test_suppressionDurationForBehavior:(long long)arg1 type:(long long)arg2;
+- (void)test_sync;
 - (double)updateSuggestionEntries;
 - (double)updateSuggestionEntriesOfType:(long long)arg1;
 

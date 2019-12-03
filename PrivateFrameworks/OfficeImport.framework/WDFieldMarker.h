@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
  */
 
-@interface WDFieldMarker : WDRun {
+@interface WDFieldMarker : WDRunWithCharacterProperties {
     NSData * mData;
     int  mFieldPosition;
     unsigned char  mFieldType;
@@ -11,15 +11,13 @@
     int  mMarkerType;
     unsigned int  mNested;
     unsigned int  mPrivateResult;
-    WDCharacterProperties * mProperties;
     unsigned int  mResultDirty;
     unsigned int  mResultEdited;
     unsigned int  mZombieEmbed;
 }
 
-- (void)clearProperties;
+- (void).cxx_destruct;
 - (id)data;
-- (void)dealloc;
 - (id)description;
 - (int)fieldMarkerType;
 - (int)fieldPosition;
@@ -29,7 +27,6 @@
 - (bool)locked;
 - (bool)nested;
 - (bool)privateResult;
-- (id)properties;
 - (bool)resultDirty;
 - (bool)resultEdited;
 - (int)runType;

@@ -32,11 +32,12 @@
 
 @property (nonatomic) HMAccessory *accessory;
 @property (nonatomic, readonly) HMApplicationData *applicationData;
+@property (readonly, copy) NSUUID *applicationDataIdentifier;
 @property (nonatomic, copy) NSString *associatedServiceType;
 @property (nonatomic, readonly) HMBulletinBoardNotification *bulletinBoardNotificationInternal;
 @property (nonatomic, readonly, copy) NSArray *characteristics;
 @property (nonatomic) long long configurationState;
-@property (nonatomic, retain) NSString *configuredName;
+@property (nonatomic, copy) NSString *configuredName;
 @property (nonatomic, retain) _HMContext *context;
 @property (nonatomic, copy) HMMutableArray *currentCharacteristics;
 @property (readonly, copy) NSString *debugDescription;
@@ -71,6 +72,7 @@
 @property (nonatomic, copy) NSString *name;
 @property bool nameModifiable;
 @property (getter=isPrimaryService, nonatomic, readonly) bool primaryService;
+@property (readonly, copy) NSDictionary *serializedDictionaryRepresentation;
 @property (nonatomic, copy) NSString *serviceSubtype;
 @property (nonatomic, copy) NSString *serviceType;
 @property (readonly) Class superclass;
@@ -84,8 +86,13 @@
 + (id)_mapToIsConfiguredValueFromServiceConfigurationState:(long long)arg1;
 + (long long)_mapToServiceConfigurationStateFromIsConfiguredValue:(id)arg1;
 + (id)_serviceTypeAsString:(id)arg1;
++ (id)characteristicBlacklistForShortcutConditions;
++ (id)defaultCharacteristicByServiceDictionary;
++ (void)initializeCharacteristicDictionaries;
 + (id)localizedDescriptionForServiceType:(id)arg1;
 + (id)logCategory;
++ (id)serviceWithSerializedDictionaryRepresentation:(id)arg1 home:(id)arg2;
++ (id)serviceWithServiceReference:(id)arg1 home:(id)arg2;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -93,13 +100,14 @@
 - (void)_addCharacteristic:(id)arg1;
 - (void)_addLastKnownSleepDiscoveryModeDidUpdateDelegateCallbackToOperations:(id)arg1;
 - (id)_findCharacteristic:(id)arg1;
+- (id)_findCharacteristicWithUniqueIdentifier:(id)arg1;
 - (void)_handleMarkServiceInteractive:(id)arg1;
 - (void)_handleMediaSourceIdentifierUpdated:(id)arg1;
 - (void)_handleUpdateAssociatedServiceType:(id)arg1;
 - (void)_handleUpdateConfigurationState:(long long)arg1;
-- (void)_handleUpdateConfiguredName:(id)arg1;
 - (void)_handleUpdateDefaultName:(id)arg1;
 - (void)_handleUpdateName:(id)arg1;
+- (void)_handleUpdateServicePrimary:(id)arg1;
 - (void)_handleUpdateServiceSubtype:(id)arg1;
 - (bool)_hasCharacteristic:(id)arg1;
 - (bool)_hasCharacteristicOfType:(id)arg1;
@@ -111,14 +119,17 @@
 - (void)_updateName:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)accessory;
 - (id)applicationData;
+- (id)applicationDataIdentifier;
 - (id)associatedServiceType;
 - (id)bulletinBoardNotification;
 - (id)bulletinBoardNotificationInternal;
 - (id)characteristics;
+- (id)characteristicsSupportedForShortcutConditions;
 - (long long)configurationState;
 - (id)configuredName;
 - (id)context;
 - (id)currentCharacteristics;
+- (id)defaultCharacteristic;
 - (id)defaultName;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
@@ -144,6 +155,7 @@
 - (id)mediaSourceIdentifier;
 - (id)name;
 - (bool)nameModifiable;
+- (id)serializedDictionaryRepresentation;
 - (id)serviceSubtype;
 - (id)serviceType;
 - (void)setAccessory:(id)arg1;
@@ -180,6 +192,7 @@
 + (id)hf_requiredCharacteristicTypesForDisplayMetadataWithServiceType:(id)arg1;
 + (id)hf_roomsForServices:(id)arg1;
 + (id)hf_sensorCharacteristicTypeForServiceType:(id)arg1;
++ (id /* block */)hf_serviceComparator;
 + (id)hf_standardServiceTypes;
 + (id)hf_standardServices;
 
@@ -190,18 +203,19 @@
 - (id)hf_childServices;
 - (id)hf_childServicesOfType:(id)arg1;
 - (id)hf_dateAdded;
-- (id)hf_defaultName;
 - (id)hf_displayName;
-- (id)hf_editingName;
 - (id)hf_effectiveServiceSubtype;
 - (id)hf_effectiveServiceType;
 - (unsigned long long)hf_fallbackProgrammableSwitchIndex;
 - (bool)hf_hasSetFavorite;
 - (bool)hf_hasSetVisibleInHomeStatus;
 - (id)hf_iconDescriptor;
+- (bool)hf_isChildService;
 - (bool)hf_isFavorite;
+- (bool)hf_isInGroup;
 - (bool)hf_isLegacyService;
 - (bool)hf_isProgrammableSwitch;
+- (bool)hf_isTelevision;
 - (bool)hf_isValidObject;
 - (bool)hf_isVisible;
 - (bool)hf_isVisibleInHomeStatus;

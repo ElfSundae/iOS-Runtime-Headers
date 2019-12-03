@@ -10,9 +10,9 @@
 + (id)formulaWithReference:(id)arg1;
 + (id)formulaWithReferences:(id)arg1;
 
+- (void).cxx_destruct;
 - (id)constantValuesFromConstantStringFormula;
 - (unsigned long long)countOfCellsBeingReferenced;
-- (void)dealloc;
 - (id)initWithReference:(id)arg1;
 - (id)initWithReferences:(id)arg1;
 - (id)initWithWorkbook:(id)arg1;

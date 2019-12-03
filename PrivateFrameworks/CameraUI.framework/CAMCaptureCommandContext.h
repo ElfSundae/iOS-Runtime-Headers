@@ -28,6 +28,7 @@
 @property (nonatomic, retain) AVCaptureDeviceFormat *currentDepthDataFormat;
 @property (nonatomic, retain) AVCaptureVideoDataOutput *currentEffectsPreviewOutput;
 @property (nonatomic, retain) AVCaptureMetadataOutput *currentMetadataOutput;
+@property (nonatomic, readonly) <AVMomentCaptureMovieRecordingDelegate> *currentMomentCaptureMovieRecordingDelegate;
 @property (nonatomic, retain) AVCaptureMovieFileOutput *currentMovieFileOutput;
 @property (nonatomic, readonly) CAMPanoramaConfiguration *currentPanoramaConfiguration;
 @property (nonatomic, retain) CAMPanoramaOutput *currentPanoramaOutput;
@@ -45,13 +46,17 @@
 - (id)_captureEngine;
 - (id)_captureEngineDeviceForMode:(long long)arg1 desiredDevice:(long long)arg2 videoConfiguration:(long long)arg3 resolvedDevice:(long long*)arg4;
 - (id)audioDeviceInput;
+- (void)cacheMomentCaptureSettings:(id)arg1 forIdentifier:(id)arg2;
+- (id)cachedMomentCaptureSettingsForIdentifier:(id)arg1;
 - (void)clear;
+- (void)clearCachedMomentCaptureSettingsForIdentifier:(id)arg1;
 - (id)currentAudioDevice;
 - (id)currentAudioDeviceInput;
 - (id)currentCaptureSession;
 - (id)currentDepthDataFormat;
 - (id)currentEffectsPreviewOutput;
 - (id)currentMetadataOutput;
+- (id)currentMomentCaptureMovieRecordingDelegate;
 - (id)currentMovieFileOutput;
 - (id)currentPanoramaConfiguration;
 - (id)currentPanoramaOutput;
@@ -86,7 +91,7 @@
 - (void)setCurrentVideoPreviewLayer:(id)arg1;
 - (void)setCurrentVideoThumbnailOutput:(id)arg1;
 - (void)startPanoramaCaptureWithRequest:(id)arg1;
-- (void)stopPanoramaCapture;
+- (void)stopPanoramaCaptureInterrupted:(bool)arg1;
 - (id)videoDeviceForMode:(long long)arg1 desiredDevice:(long long)arg2 videoConfiguration:(long long)arg3 resolvedDevice:(long long*)arg4;
 
 @end

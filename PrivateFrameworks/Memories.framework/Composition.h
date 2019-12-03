@@ -3,6 +3,7 @@
  */
 
 @interface Composition : NSObject {
+    double  _aspect;
     id /* block */  _compositionDuckingTimesCreationBlock;
     float  _dynamicScale;
     bool  _fullScreen;
@@ -10,7 +11,6 @@
     bool  _hasMemoryConstraints;
     bool  _isDynamicPlayBack;
     bool  _isExporting;
-    bool  _playAltClips;
     NSMutableArray * _switchEffects;
     NSMutableArray * _titleEffectCopies;
     struct CGSize { 
@@ -51,6 +51,7 @@
 }
 
 @property (nonatomic, readonly) AVMutableComposition *AVComposition;
+@property (nonatomic) double aspect;
 @property (nonatomic, readonly) AVMutableAudioMix *audioMix;
 @property (nonatomic, retain) CompositionDuckingTimes *compositionDuckingTimes;
 @property (nonatomic, copy) id /* block */ compositionDuckingTimesCreationBlock;
@@ -63,7 +64,6 @@
 @property (nonatomic) bool hasMemoryConstraints;
 @property (nonatomic) bool isDynamicPlayBack;
 @property (nonatomic) bool isExporting;
-@property (nonatomic) bool playAltClips;
 @property (nonatomic, readonly) AVPlayerItem *playerItem;
 @property (nonatomic, readonly) Project *project;
 @property (retain) NSMutableArray *switchEffects;
@@ -77,7 +77,7 @@
 
 - (id)AVComposition;
 - (bool)CARenderingRequiredForClip:(id)arg1;
-- (void)addAlternateForClip:(id)arg1 toInstruction:(id)arg2 trackID:(int)arg3;
+- (void)addAlternatesForClip:(id)arg1 toInstruction:(id)arg2 trackID:(int)arg3;
 - (void)addAudioPointsToArray:(id)arg1 atFrameTime:(int)arg2 volume:(double)arg3;
 - (void)addBackTracksIfRemoved;
 - (void)addCutaway:(id)arg1 toInstruction:(id)arg2 transform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg3 underlayTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg4;
@@ -87,13 +87,14 @@
 - (void)addVideoInstructionsForTransition:(id)arg1 forRange:(struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; })arg2 toInstructions:(id)arg3 previousTrackID:(int)arg4 previousClip:(id)arg5 previousClipRequiresCA:(bool)arg6 nextTrackID:(int)arg7 nextClip:(id)arg8 nextClipRequiresCA:(bool)arg9 cutawaysIntersection:(id)arg10;
 - (bool)addVolumeRampToTrackGroup:(id)arg1 forClip:(id)arg2 shouldUseDucking:(bool)arg3;
 - (void)applyPlayerItemProperties;
+- (double)aspect;
 - (bool)assembleAudioCompositionTrackGroups:(id*)arg1 destinationTrackGroupCount:(long long)arg2 audioItem:(id)arg3 clip:(id)arg4 shouldUseDucking:(bool)arg5 shouldLoopClipContents:(bool)arg6;
 - (void)assetUsed:(id)arg1;
 - (id)audioMix;
 - (void)burnInPlaybackSettings:(id)arg1;
 - (void)checkIt:(id)arg1 timeRange:(struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; })arg2;
 - (void)clearPlayerItemProperties;
-- (void)compositeAlternateNode:(id)arg1 intoOriginalInstruction:(id)arg2;
+- (void)compositeAlternateNodes:(id)arg1 intoOriginalInstruction:(id)arg2;
 - (id)compositionDuckingTimes;
 - (id /* block */)compositionDuckingTimesCreationBlock;
 - (struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; })compositionItemsForState:(id)arg1 compositionItem:(id*)arg2 backfillCompositionItem:(id*)arg3;
@@ -139,7 +140,6 @@
 - (void)noteTitleScaleChanged:(id)arg1;
 - (int)outputFrameRate;
 - (float)percentBetweenRange:(struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; })arg1 forTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2 firstRange:(struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; }*)arg3 secondRange:(struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; }*)arg4;
-- (bool)playAltClips;
 - (id)playerItem;
 - (void)playerItemDidReachEnd:(id)arg1;
 - (id)project;
@@ -151,6 +151,7 @@
 - (void)removeEmptyTracks;
 - (void)removeTrackFromAudioMix:(int)arg1;
 - (bool)removeTrackIfEmpty:(id)arg1;
+- (void)setAspect:(double)arg1;
 - (void)setCompositionDuckingTimes:(id)arg1;
 - (void)setCompositionDuckingTimesCreationBlock:(id /* block */)arg1;
 - (void)setDynamicPlayBack:(bool)arg1;
@@ -162,7 +163,6 @@
 - (void)setHasMemoryConstraints:(bool)arg1;
 - (void)setIsDynamicPlayBack:(bool)arg1;
 - (void)setIsExporting:(bool)arg1;
-- (void)setPlayAltClips:(bool)arg1;
 - (void)setProject:(id)arg1 frameDuration:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2 viewSize:(struct CGSize { double x1; double x2; })arg3 forFullScreen:(bool)arg4;
 - (void)setRenderScale;
 - (void)setSwitchEffects:(id)arg1;

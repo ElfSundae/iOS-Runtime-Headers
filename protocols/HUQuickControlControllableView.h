@@ -14,7 +14,9 @@
 
 @optional
 
+- (unsigned long long)reachabilityState;
 - (id)secondaryValue;
+- (void)setReachabilityState:(unsigned long long)arg1;
 - (void)setSecondaryValue:(id)arg1;
 
 @end

@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Foundation.framework/Foundation
  */
 
-@interface NSMapTable : NSObject <MPCSupportedCommands, NSCopying, NSFastEnumeration, NSSecureCoding, SGHeaderCollection>
+@interface NSMapTable : NSObject <NSCopying, NSFastEnumeration, NSSecureCoding, SGHeaderCollection, _MPCSupportedCommands>
 
 @property (readonly) unsigned long long count;
 @property (readonly, copy) NSString *debugDescription;
@@ -31,10 +31,11 @@
 - (unsigned long long)__capacity;
 - (id)allKeys;
 - (id)allValues;
+- (Class)classForCoder;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned long long)count;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
@@ -83,6 +84,12 @@
 
 + (id)bw_strongVideoRequirementToStrongObjectsMapTable;
 
+// Image: /System/Library/PrivateFrameworks/CoreSpeech.framework/CoreSpeech
+
+- (void)enumerateObjects:(id /* block */)arg1;
+- (id)objectForKeyedSubscript:(id)arg1;
+- (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
+
 // Image: /System/Library/PrivateFrameworks/CoreSuggestionsInternals.framework/CoreSuggestionsInternals
 
 + (id)sg_headerKeyFunctions;
@@ -103,7 +110,12 @@
 
 // Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
 
+- (id)_allCommandInfos;
 - (struct _MRMediaRemoteCommandInfo { }*)commandInfoForCommand:(unsigned int)arg1;
+
+// Image: /System/Library/PrivateFrameworks/MediaServices.framework/MediaServices
+
++ (id)msvIndexMapTableWithCapacity:(long long)arg1;
 
 // Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
 
@@ -111,6 +123,8 @@
 
 // Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
 
+- (id)objectAtIndexedSubscript:(unsigned long long)arg1;
+- (void)setObject:(id)arg1 atIndexedSubscript:(unsigned long long)arg2;
 - (id)tsu_allKeys;
 - (id)tsu_noCopyDictionaryRepresentation;
 

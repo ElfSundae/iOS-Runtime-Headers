@@ -9,6 +9,7 @@
     TitleDefinition * _defaultTitle;
     <ProjectDelegate> * _delegate;
     NSMutableArray * _deletedMediaFiles;
+    bool  _fadeSongForce;
     double  _fadeToBlackDuration;
     double  _fadeToBlackStartTime;
     bool  _isExportingPlist;
@@ -76,6 +77,7 @@
 @property (nonatomic, readonly) NSString *exportDirectory;
 @property (nonatomic) bool fadeInFromBlack;
 @property (nonatomic) bool fadeOutToBlack;
+@property (nonatomic) bool fadeSongForce;
 @property (nonatomic) double fadeToBlackDuration;
 @property (nonatomic) double fadeToBlackStartTime;
 @property (nonatomic, retain) PVEffect *filterEffect;
@@ -183,6 +185,7 @@
 - (id)clipBeforeTransitionClip:(id)arg1;
 - (int)clipDurationGoodFor60fps:(id)arg1;
 - (unsigned long long)clipIndexInArray:(id)arg1 atTime:(int)arg2;
+- (id)clips;
 - (id)clipsAnchoredToClip:(id)arg1;
 - (id)clipsForClipType:(int)arg1;
 - (id)clipsInUseAtTime:(int)arg1;
@@ -207,7 +210,6 @@
 - (id)delegate;
 - (void)deleteAllExportedFiles;
 - (void)deleteExportedFile:(id)arg1;
-- (void)deleteExportedFile:(id)arg1 forVerticalMovie:(bool)arg2;
 - (void)deleteMediaFileAtURL:(id)arg1;
 - (id)deletedMediaFiles;
 - (id)description;
@@ -244,13 +246,12 @@
 - (id)exportPresetForATV;
 - (id)exportPresetForPlugin;
 - (id)exportedFilePath:(id)arg1;
-- (id)exportedFilePath:(id)arg1 forVerticalMovie:(bool)arg2;
 - (bool)fadeInFromBlack;
 - (bool)fadeOutToBlack;
+- (bool)fadeSongForce;
 - (double)fadeToBlackDuration;
 - (double)fadeToBlackStartTime;
 - (id)fileNameFromPreset:(id)arg1;
-- (id)fileNameFromPreset:(id)arg1 forVerticalMovie:(bool)arg2;
 - (id)filePathForCacheKey:(id)arg1;
 - (id)filePathForIdentifierURL:(id)arg1 renderingIntent:(int)arg2;
 - (id)filterEffect;
@@ -269,8 +270,8 @@
 - (bool)hasAnyExportedFile;
 - (bool)hasBeenModified;
 - (id)hasExportedFile:(id)arg1;
-- (id)hasExportedFile:(id)arg1 forVerticalMovie:(bool)arg2;
 - (id)hasExportedFileForFullScreen:(bool)arg1;
+- (bool)hasHEVCContent:(id)arg1 clipType:(int)arg2 onlyMovies:(bool)arg3;
 - (bool)hasKBOnly;
 - (bool)hasMissingAssets;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })horizontallyClampedKenBurnsRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 imageSize:(struct CGSize { double x1; double x2; })arg2;
@@ -404,6 +405,7 @@
 - (void)setEditList:(id)arg1;
 - (void)setFadeInFromBlack:(bool)arg1;
 - (void)setFadeOutToBlack:(bool)arg1;
+- (void)setFadeSongForce:(bool)arg1;
 - (void)setFadeToBlackDuration:(double)arg1;
 - (void)setFadeToBlackStartTime:(double)arg1;
 - (void)setFilterEffect:(id)arg1;
@@ -461,6 +463,7 @@
 - (bool)use1080Pcontent:(bool)arg1;
 - (bool)use2160Pcontent:(bool)arg1;
 - (bool)useClipWithRotation;
+- (bool)useHEVCcontent:(bool)arg1;
 - (bool)useThemeAudio;
 - (id)usedTrackNames;
 - (bool)usesOriginalNoneThemeMusic;

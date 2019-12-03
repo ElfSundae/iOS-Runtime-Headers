@@ -23,6 +23,7 @@
 @property (nonatomic, readonly, copy) NSString *format;
 @property (nonatomic) bool supportsLayeredImage;
 
++ (id)artworkURLFromTemplate:(id)arg1 forSize:(struct CGSize { double x1; double x2; })arg2 cropCode:(id)arg3 format:(id)arg4;
 + (id)artworkURLFromTemplate:(id)arg1 forSize:(struct CGSize { double x1; double x2; })arg2 format:(id)arg3;
 
 - (void).cxx_destruct;
@@ -32,6 +33,7 @@
 - (long long)artworkType;
 - (id)artworkURL;
 - (id)artworkURLForSize:(struct CGSize { double x1; double x2; })arg1;
+- (id)artworkURLForSize:(struct CGSize { double x1; double x2; })arg1 cropCode:(id)arg2 format:(id)arg3;
 - (id)artworkURLForSize:(struct CGSize { double x1; double x2; })arg1 format:(id)arg2;
 - (id)artworkURLString;
 - (id)description;

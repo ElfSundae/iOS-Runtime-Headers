@@ -23,5 +23,7 @@
 - (void)_updateRingWithTemplate:(id)arg1;
 - (id)init;
 - (void)layoutSubviews;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 
 @end

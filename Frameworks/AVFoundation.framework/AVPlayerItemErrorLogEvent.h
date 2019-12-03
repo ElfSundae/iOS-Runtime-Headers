@@ -11,8 +11,11 @@
 @property (nonatomic, readonly) NSString *errorComment;
 @property (nonatomic, readonly) NSString *errorDomain;
 @property (nonatomic, readonly) long long errorStatusCode;
+@property (nonatomic, readonly, copy) NSString *hf_prettyDescription;
 @property (nonatomic, readonly) NSString *playbackSessionID;
 @property (nonatomic, readonly) NSString *serverAddress;
+
+// Image: /System/Library/Frameworks/AVFoundation.framework/AVFoundation
 
 - (id)URI;
 - (id)_common_init;
@@ -22,10 +25,13 @@
 - (id)errorComment;
 - (id)errorDomain;
 - (long long)errorStatusCode;
-- (void)finalize;
 - (id)init;
 - (id)initWithDictionary:(id)arg1;
 - (id)playbackSessionID;
 - (id)serverAddress;
+
+// Image: /System/Library/PrivateFrameworks/Home.framework/Home
+
+- (id)hf_prettyDescription;
 
 @end

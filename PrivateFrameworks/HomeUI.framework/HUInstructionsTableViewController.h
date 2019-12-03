@@ -15,6 +15,7 @@
 - (id)childViewControllersToPreload;
 - (id)contentViewController;
 - (id)initWithInstructionsItem:(id)arg1 contentViewController:(id)arg2;
+- (id)initWithItemManager:(id)arg1 instructionsItem:(id)arg2 contentViewController:(id)arg3;
 - (id)initWithItemManager:(id)arg1 tableViewStyle:(long long)arg2;
 - (id)instructionsItem;
 - (bool)shouldHideFooterBelowSection:(long long)arg1;

@@ -25,17 +25,14 @@
 @property (readonly) long long role;
 @property (readonly) Class superclass;
 
-+ (id)followUpController;
 + (bool)isRoleSupported:(long long)arg1;
 + (id)logCategory;
-+ (void)startAdvertising;
-+ (void)stopAdvertising;
 
 - (void).cxx_destruct;
 - (void)__registerForMessages;
 - (void)_closeWithError:(id)arg1;
 - (void)_handleClose:(id)arg1;
-- (void)_handleRecieveData:(id)arg1;
+- (void)_handleReceiveData:(id)arg1;
 - (void)_sendRequestData:(id)arg1;
 - (id)clientQueue;
 - (id)delegate;

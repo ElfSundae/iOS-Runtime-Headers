@@ -5,10 +5,12 @@
 @interface HMDAppleAccountSettings : HMFObject <HMFLogging> {
     int  _circleChangedNotificationToken;
     NSObject<OS_dispatch_queue> * _clientQueue;
+    bool  _ephemeral;
     bool  _homeEnabled;
     bool  _keychainSyncEnabled;
+    <HMFLocking> * _lock;
+    bool  _managed;
     bool  _migrated;
-    NSObject<OS_dispatch_queue> * _propertyQueue;
     int  _viewMembershipChangedNotificationToken;
 }
 
@@ -16,11 +18,13 @@
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *clientQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (getter=isEducationMode, readonly) bool educationMode;
+@property (getter=isEphemeral, readonly) bool ephemeral;
 @property (readonly) unsigned long long hash;
 @property (getter=isHomeEnabled, readonly) bool homeEnabled;
-@property (getter=isKeychainSyncEnabled) bool keychainSyncEnabled;
+@property (getter=isKeychainSyncEnabled, readonly) bool keychainSyncEnabled;
+@property (getter=isManaged, readonly) bool managed;
 @property (nonatomic) bool migrated;
-@property (readonly) NSObject<OS_dispatch_queue> *propertyQueue;
 @property (readonly) Class superclass;
 @property (nonatomic) int viewMembershipChangedNotificationToken;
 
@@ -41,16 +45,17 @@
 - (void)dealloc;
 - (void)enableHome:(bool)arg1 userInitiated:(bool)arg2;
 - (id)init;
+- (bool)isEducationMode;
+- (bool)isEphemeral;
 - (bool)isHomeEnabled;
 - (bool)isKeychainSyncEnabled;
+- (bool)isManaged;
 - (bool)migrated;
-- (id)propertyQueue;
 - (void)setCircleChangedNotificationToken:(int)arg1;
-- (void)setKeychainSyncEnabled:(bool)arg1;
 - (void)setMigrated:(bool)arg1;
 - (void)setViewMembershipChangedNotificationToken:(int)arg1;
 - (void)synchronize;
-- (void)updateHomeEnabled:(bool)arg1 userInitiated:(bool)arg2 completionHandler:(id /* block */)arg3;
+- (void)updateHomeEnabled:(bool)arg1 completionHandler:(id /* block */)arg2;
 - (int)viewMembershipChangedNotificationToken;
 
 @end

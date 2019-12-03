@@ -5,10 +5,12 @@
 @interface TIKeyboardCandidate : NSObject <NSCopying, NSSecureCoding, TIKeyboardCandidateCoding> {
     NSString * _alternativeText;
     NSString * _annotationText;
+    int  _confidence;
     unsigned long long  _customInfoType;
     unsigned long long  _indexForMetrics;
     bool  _isSendCurrentLocation;
-    bool  _responseCandidate;
+    bool  _responseKitCandidate;
+    NSString * _responseKitCategory;
     unsigned int  _slotID;
 }
 
@@ -17,6 +19,8 @@
 @property (nonatomic, copy) NSString *annotationText;
 @property (nonatomic, readonly) NSString *candidate;
 @property (getter=isCompletionCandidate, nonatomic, readonly) bool completionCandidate;
+@property (getter=confidence, nonatomic, readonly) int confidence;
+@property (getter=isContinuousPathConversion, nonatomic, readonly) bool continuousPathConversion;
 @property (nonatomic, readonly) long long cursorMovement;
 @property (nonatomic) unsigned long long customInfoType;
 @property (readonly, copy) NSString *debugDescription;
@@ -33,6 +37,7 @@
 @property (nonatomic, readonly) bool isAddress;
 @property (nonatomic, readonly) bool isAutocorrection;
 @property (nonatomic, readonly) bool isAutofillCandidate;
+@property (nonatomic, readonly) bool isAutofillExtraCandidate;
 @property (nonatomic, readonly) bool isForShortcutConversion;
 @property (nonatomic) bool isSendCurrentLocation;
 @property (nonatomic, readonly) bool isSlottedCandidate;
@@ -41,9 +46,11 @@
 @property (getter=isPunctuationCompletionCandidate, nonatomic, readonly) bool punctuationCompletionCandidate;
 @property (getter=isPunctuationKeyCandidate, nonatomic, readonly) bool punctuationKeyCandidate;
 @property (getter=isRegionalCandidate, nonatomic, readonly) bool regionalCandidate;
-@property (getter=isResponseCandidate, nonatomic, readonly) bool responseCandidate;
-@property (nonatomic, readonly) NSString *responseKitCategory;
+@property (getter=isResponseKitCandidate, nonatomic, readonly) bool responseKitCandidate;
+@property (nonatomic, readonly, copy) NSString *responseKitCategory;
 @property (getter=isSecureContentCandidate, nonatomic, readonly) bool secureContentCandidate;
+@property (nonatomic, readonly) bool shouldAccept;
+@property (nonatomic, readonly) bool shouldInsertSpaceAfterSelection;
 @property (nonatomic) unsigned int slotID;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) unsigned int usageTrackingMask;
@@ -58,6 +65,9 @@
 - (id)alternativeText;
 - (id)annotationText;
 - (id)candidate;
+- (id)candidateByReplacingWithCandidate:(id)arg1;
+- (id)candidateByReplacingWithCandidate:(id)arg1 input:(id)arg2;
+- (int)confidence;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (long long)cursorMovement;
 - (unsigned long long)customInfoType;
@@ -73,6 +83,7 @@
 - (bool)isAddress;
 - (bool)isAutocorrection;
 - (bool)isCompletionCandidate;
+- (bool)isContinuousPathConversion;
 - (bool)isEmojiCandidate;
 - (bool)isEqual:(id)arg1;
 - (bool)isExtensionCandidate;
@@ -85,7 +96,7 @@
 - (bool)isPunctuationCompletionCandidate;
 - (bool)isPunctuationKeyCandidate;
 - (bool)isRegionalCandidate;
-- (bool)isResponseCandidate;
+- (bool)isResponseKitCandidate;
 - (bool)isSecureContentCandidate;
 - (bool)isSendCurrentLocation;
 - (id)label;
@@ -98,9 +109,21 @@
 - (void)setIsSendCurrentLocation:(bool)arg1;
 - (void)setLabel:(id)arg1;
 - (void)setSlotID:(unsigned int)arg1;
+- (bool)shouldAccept;
+- (bool)shouldInsertSpaceAfterSelection;
 - (unsigned int)slotID;
 - (unsigned int)usageTrackingMask;
 - (unsigned long long)wordOriginFeedbackID;
+
+// Image: /System/Library/PrivateFrameworks/SpeechRecognitionCommandAndControl.framework/SpeechRecognitionCommandAndControl
+
+- (bool)isAutofillExtraCandidate;
+- (bool)isSlottedCandidate;
+
+// Image: /System/Library/PrivateFrameworks/TextInputUI.framework/TextInputUI
+
+- (bool)isAutofillExtraCandidate;
+- (bool)isSlottedCandidate;
 
 // Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 

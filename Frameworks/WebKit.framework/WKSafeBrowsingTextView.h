@@ -3,7 +3,7 @@
  */
 
 @interface WKSafeBrowsingTextView : UITextView {
-    /* Warning: unhandled struct encoding: '{WeakObjCPtr<WKSafeBrowsingWarning>="m_weakReference"@}' */ struct WeakObjCPtr<WKSafeBrowsingWarning> { 
+    struct WeakObjCPtr<WKSafeBrowsingWarning> { 
         id m_weakReference; 
     }  _warning;
 }

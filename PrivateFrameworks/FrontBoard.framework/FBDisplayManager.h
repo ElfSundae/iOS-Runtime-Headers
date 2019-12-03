@@ -2,11 +2,11 @@
    Image: /System/Library/PrivateFrameworks/FrontBoard.framework/FrontBoard
  */
 
-@interface FBDisplayManager : FBSDisplayMonitor {
-    bool  _mainConnected;
-}
+@interface FBDisplayManager : FBSDisplayMonitor
 
 @property (nonatomic, readonly, copy) FBSDisplayConfiguration *mainDisplay;
+
+// Image: /System/Library/PrivateFrameworks/FrontBoard.framework/FrontBoard
 
 + (id)mainConfiguration;
 + (id)mainDisplay;
@@ -17,6 +17,11 @@
 - (id)init;
 - (void)invalidate;
 - (id)mainDisplay;
-- (void)postMainDisplayConnection;
+- (void)postBookendConnections;
+
+// Image: /System/Library/PrivateFrameworks/SpringBoard.framework/SpringBoard
+
++ (id)sb_secureMainConfiguration;
++ (id)sb_secureMainIdentity;
 
 @end

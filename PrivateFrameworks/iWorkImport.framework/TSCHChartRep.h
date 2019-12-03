@@ -60,6 +60,9 @@
 @property (nonatomic, readonly) bool is2DRepFor3DChartRep;
 @property (nonatomic, readonly) bool isCorrectRepClassForInfo;
 @property (nonatomic, readonly) TSCHSearchSelection *selection;
+@property (nonatomic, readonly) struct CGColor { }*subSelectionKnobFillColor;
+@property (nonatomic, readonly) double subSelectionKnobRadius;
+@property (nonatomic, readonly) struct CGColor { }*subSelectionKnobStrokeColor;
 @property (readonly) Class superclass;
 @property (nonatomic) int textureByGlyphStyle;
 @property (nonatomic) unsigned long long textureDeliveryStyle;
@@ -155,6 +158,9 @@
 - (bool)shadowsEnabled;
 - (bool)shouldUseChartAreaRectForEditMenuTargetRectMinY;
 - (bool)shouldUseRenderer:(id)arg1;
+- (struct CGColor { }*)subSelectionKnobFillColor;
+- (double)subSelectionKnobRadius;
+- (struct CGColor { }*)subSelectionKnobStrokeColor;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })targetRectForEditMenu;
 - (int)textureByGlyphStyle;
 - (unsigned long long)textureDeliveryStyle;

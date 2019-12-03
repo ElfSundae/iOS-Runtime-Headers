@@ -2,11 +2,10 @@
    Image: /System/Library/Frameworks/ContactsUI.framework/ContactsUI
  */
 
-@interface CNContactViewController : UIViewController <CNContactViewHostProtocol> {
+@interface CNContactViewController : UIViewController <CNContactViewHostProtocol, UIAdaptivePresentationControllerDelegate, _UIRemoteViewControllerContaining> {
     _UIAccessDeniedView * _accessDeniedView;
     long long  _actions;
     CNContact * _additionalContact;
-    void * _addressBook;
     bool  _allowsDisplayModePickerActions;
     bool  _allowsEditPhoto;
     NSString * _alternateName;
@@ -26,6 +25,8 @@
     bool  _highlightedPropertyImportant;
     NSString * _highlightedPropertyKey;
     bool  _ignoreViewWillBePresented;
+    bool  _ignoresParentalRestrictions;
+    NSString * _importantMessage;
     NSString * _message;
     long long  _mode;
     CNContainer * _parentContainer;
@@ -34,12 +35,17 @@
     <CNContactViewControllerPPTDelegate> * _pptDelegate;
     NSArray * _preEditLeftBarButtonItems;
     NSString * _primaryPropertyKey;
+    NSArray * _prohibitedPropertyKeys;
+    CNContactRecentsReference * _recentsData;
     bool  _requiresSetup;
     bool  _shouldShowLinkedContacts;
     bool  _showingMeContact;
+    NSAttributedString * _verifiedInfoMessage;
     UIViewController<CNContactContentViewController> * _viewController;
+    NSString * _warningMessage;
 }
 
+@property (nonatomic, readonly) _UIRemoteViewController *_containedRemoteViewController;
 @property (nonatomic, readonly) _UIAccessDeniedView *accessDeniedView;
 @property (nonatomic) long long actions;
 @property (nonatomic, retain) CNContact *additionalContact;
@@ -66,6 +72,8 @@
 @property (nonatomic, retain) NSString *highlightedPropertyIdentifier;
 @property (nonatomic) bool highlightedPropertyImportant;
 @property (nonatomic, retain) NSString *highlightedPropertyKey;
+@property (nonatomic) bool ignoresParentalRestrictions;
+@property (nonatomic, copy) NSString *importantMessage;
 @property (nonatomic, copy) NSString *message;
 @property (nonatomic, readonly) long long mode;
 @property (nonatomic, retain) CNContainer *parentContainer;
@@ -75,11 +83,15 @@
 @property (nonatomic, retain) NSArray *preEditLeftBarButtonItems;
 @property (nonatomic, retain) NSString *primaryPropertyKey;
 @property (nonatomic, readonly) <CNContactViewControllerPrivateDelegate> *privateDelegate;
+@property (nonatomic, retain) NSArray *prohibitedPropertyKeys;
+@property (nonatomic, retain) CNContactRecentsReference *recentsData;
 @property (nonatomic) bool requiresSetup;
 @property (nonatomic) bool shouldShowLinkedContacts;
 @property (nonatomic) bool showingMeContact;
 @property (readonly) Class superclass;
+@property (nonatomic, copy) NSAttributedString *verifiedInfoMessage;
 @property (nonatomic, retain) UIViewController<CNContactContentViewController> *viewController;
+@property (nonatomic, copy) NSString *warningMessage;
 
 // Image: /System/Library/Frameworks/ContactsUI.framework/ContactsUI
 
@@ -91,6 +103,7 @@
 
 - (void).cxx_destruct;
 - (id)_contactPresentedViewController;
+- (id)_containedRemoteViewController;
 - (void)_endDelayingPresentation;
 - (bool)_isDelayingPresentation;
 - (void)_prepareViewController;
@@ -108,6 +121,7 @@
 - (bool)allowsEditing;
 - (id)alternateName;
 - (void)configureNavigationItem:(id)arg1;
+- (id)confirmCancelAlertControllerAnchoredAtButtonItem:(id)arg1;
 - (id)contact;
 - (id)contactFormatter;
 - (id)contactHeaderView;
@@ -120,6 +134,8 @@
 - (void)didChangePreferredContentSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)didCompleteWithContact:(id)arg1;
 - (void)didDeleteContact:(id)arg1;
+- (void)didExecuteClearRecentsDataAction;
+- (void)didExecuteDeleteFromDowntimeWhitelistAction;
 - (void)didMoveToParentViewController:(id)arg1;
 - (long long)displayMode;
 - (id)displayedPropertyKeys;
@@ -133,8 +149,11 @@
 - (id)highlightedPropertyIdentifier;
 - (bool)highlightedPropertyImportant;
 - (id)highlightedPropertyKey;
+- (bool)ignoresParentalRestrictions;
+- (id)importantMessage;
 - (id)initWithMode:(long long)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (bool)isModalInPresentation;
 - (void)isPresentingEditingController:(bool)arg1;
 - (void)isPresentingFullscreen:(bool)arg1;
 - (void)loadView;
@@ -146,8 +165,14 @@
 - (id)policy;
 - (id)pptDelegate;
 - (id)preEditLeftBarButtonItems;
+- (void)presentCancelConfirmationAlert;
+- (void)presentConfirmCancelAlertControllerAnchoredAtButtonItem:(id)arg1;
+- (void)presentationControllerDidAttemptToDismiss:(id)arg1;
+- (bool)presentationControllerShouldDismiss:(id)arg1;
 - (id)primaryPropertyKey;
 - (id)privateDelegate;
+- (id)prohibitedPropertyKeys;
+- (id)recentsData;
 - (bool)requiresSetup;
 - (void)setActions:(long long)arg1;
 - (void)setAdditionalContact:(id)arg1;
@@ -174,16 +199,22 @@
 - (void)setHighlightedPropertyIdentifier:(id)arg1;
 - (void)setHighlightedPropertyImportant:(bool)arg1;
 - (void)setHighlightedPropertyKey:(id)arg1;
+- (void)setIgnoresParentalRestrictions:(bool)arg1;
+- (void)setImportantMessage:(id)arg1;
 - (void)setMessage:(id)arg1;
 - (void)setParentContainer:(id)arg1;
 - (void)setParentGroup:(id)arg1;
 - (void)setPptDelegate:(id)arg1;
 - (void)setPreEditLeftBarButtonItems:(id)arg1;
 - (void)setPrimaryPropertyKey:(id)arg1;
+- (void)setProhibitedPropertyKeys:(id)arg1;
+- (void)setRecentsData:(id)arg1;
 - (void)setRequiresSetup:(bool)arg1;
 - (void)setShouldShowLinkedContacts:(bool)arg1;
 - (void)setShowingMeContact:(bool)arg1;
+- (void)setVerifiedInfoMessage:(id)arg1;
 - (void)setViewController:(id)arg1;
+- (void)setWarningMessage:(id)arg1;
 - (bool)shouldAutomaticallyForwardAppearanceMethods;
 - (bool)shouldPerformDefaultActionForContact:(id)arg1 propertyKey:(id)arg2 propertyIdentifier:(id)arg3;
 - (bool)shouldShowLinkedContacts;
@@ -191,11 +222,13 @@
 - (void)toggleEditing:(id)arg1;
 - (void)updateEditNavigationItemsAnimated:(bool)arg1 doneButtonEnabled:(bool)arg2 doneButtonText:(id)arg3;
 - (void)updateEditing:(bool)arg1 doneButtonEnabled:(bool)arg2 doneButtonText:(id)arg3;
+- (id)verifiedInfoMessage;
 - (id)viewController;
 - (void)viewDidAppear;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillLayoutSubviews;
+- (id)warningMessage;
 
 // Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
 

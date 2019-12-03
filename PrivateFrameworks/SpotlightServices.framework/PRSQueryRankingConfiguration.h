@@ -10,7 +10,7 @@
     /* Warning: Unrecognized filer type: 'T' using 'void*' */ void* _fuzzyMatchMask;
     unsigned long long  _rankingBitCount;
     NSArray * _rankingQueries;
-    NSSet * _requiredAttributes;
+    NSOrderedSet * _requiredAttributes;
     unsigned long long  _strongRankingQueryCount;
 }
 
@@ -21,7 +21,7 @@
 @property /* Warning: Unrecognized filer type: 'T' using 'void*' */ void*fuzzyMatchMask;
 @property unsigned long long rankingBitCount;
 @property (retain) NSArray *rankingQueries;
-@property (retain) NSSet *requiredAttributes;
+@property (retain) NSOrderedSet *requiredAttributes;
 @property unsigned long long strongRankingQueryCount;
 
 + (void)updateMailVIP:(id)arg1 phoneFavorites:(id)arg2 meEmailAddresses:(id)arg3;

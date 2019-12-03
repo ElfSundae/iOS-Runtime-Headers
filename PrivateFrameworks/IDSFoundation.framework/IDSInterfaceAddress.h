@@ -7,9 +7,12 @@
     bool  _Cellular;
     IDSSockAddrWrapper * _address;
     NSData * _bssid;
+    bool  _companionLink;
+    bool  _constrained;
     unsigned int  _delegatedIndex;
     NSString * _delegatedName;
     IDSSockAddrWrapper * _destination;
+    bool  _expensive;
     IDSSockAddrWrapper * _external;
     unsigned int  _index;
     NSString * _name;
@@ -22,9 +25,12 @@
 @property (readonly) unsigned long long IPVersion;
 @property (readonly) IDSSockAddrWrapper *address;
 @property (readonly) NSData *bssid;
+@property (getter=isCompanionLink, readonly) bool companionLink;
+@property (nonatomic) bool constrained;
 @property (readonly) unsigned int delegatedIndex;
 @property (readonly) NSString *delegatedName;
 @property (readonly) IDSSockAddrWrapper *destination;
+@property (nonatomic, readonly) bool expensive;
 @property (copy) IDSSockAddrWrapper *external;
 @property (readonly) unsigned int index;
 @property (readonly) NSString *name;
@@ -39,19 +45,23 @@
 - (unsigned long long)IPVersion;
 - (id)address;
 - (id)bssid;
+- (bool)constrained;
 - (unsigned int)delegatedIndex;
 - (id)delegatedName;
 - (id)description;
 - (id)destination;
+- (bool)expensive;
 - (id)external;
 - (long long)getTransmittableBytes:(char *)arg1 withPrefixByte:(unsigned char)arg2;
 - (unsigned int)index;
 - (id)initWithInterfaceAddress:(struct ifaddrs { struct ifaddrs {} *x1; char *x2; unsigned int x3; struct sockaddr {} *x4; struct sockaddr {} *x5; struct sockaddr {} *x6; void *x7; }*)arg1 bflags:(unsigned char)arg2 bssid:(char *)arg3 bssidLength:(unsigned char)arg4;
 - (bool)isAWDL;
 - (bool)isCellular;
+- (bool)isCompanionLink;
 - (bool)isTemporaryIPv6;
 - (id)name;
 - (id)netmask;
+- (void)setConstrained:(bool)arg1;
 - (void)setExternal:(id)arg1;
 
 @end

@@ -6,6 +6,22 @@
     NSString * _assignedAbBranchId;
     NSMutableArray * _configKeyValues;
     NSMutableArray * _debugExperimentBranchs;
+    struct { 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_assignedAbBranchId : 1; 
+        unsigned int read_configKeyValues : 1; 
+        unsigned int read_debugExperimentBranchs : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_assignedAbBranchId : 1; 
+        unsigned int wrote_configKeyValues : 1; 
+        unsigned int wrote_debugExperimentBranchs : 1; 
+    }  _flags;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     PBUnknownFields * _unknownFields;
 }
 
@@ -17,13 +33,20 @@
 
 + (Class)configKeyValueType;
 + (Class)debugExperimentBranchType;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsConfigKeyValue:(id)arg1;
+- (void)_addNoFlagsDebugExperimentBranch:(id)arg1;
+- (void)_readAssignedAbBranchId;
+- (void)_readConfigKeyValues;
+- (void)_readDebugExperimentBranchs;
 - (void)addConfigKeyValue:(id)arg1;
 - (void)addDebugExperimentBranch:(id)arg1;
 - (id)assignedAbBranchId;
 - (void)clearConfigKeyValues;
 - (void)clearDebugExperimentBranchs;
+- (void)clearUnknownFields:(bool)arg1;
 - (id)configKeyValueAtIndex:(unsigned long long)arg1;
 - (id)configKeyValues;
 - (unsigned long long)configKeyValuesCount;
@@ -36,8 +59,11 @@
 - (id)dictionaryRepresentation;
 - (bool)hasAssignedAbBranchId;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAssignedAbBranchId:(id)arg1;
 - (void)setConfigKeyValues:(id)arg1;

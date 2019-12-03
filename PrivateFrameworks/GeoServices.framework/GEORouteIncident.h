@@ -7,24 +7,51 @@
     long long  _endTime;
     bool  _endTimeReliable;
     struct { 
-        unsigned int endTime : 1; 
-        unsigned int startTime : 1; 
-        unsigned int updateTime : 1; 
-        unsigned int laneClosureCount : 1; 
-        unsigned int laneClosureType : 1; 
-        unsigned int significance : 1; 
-        unsigned int type : 1; 
-        unsigned int endTimeReliable : 1; 
-    }  _has;
+        unsigned int has_endTime : 1; 
+        unsigned int has_startTime : 1; 
+        unsigned int has_updateTime : 1; 
+        unsigned int has_laneClosureCount : 1; 
+        unsigned int has_laneClosureType : 1; 
+        unsigned int has_significance : 1; 
+        unsigned int has_type : 1; 
+        unsigned int has_endTimeReliable : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_crossStreet : 1; 
+        unsigned int read_incidentId : 1; 
+        unsigned int read_info : 1; 
+        unsigned int read_position : 1; 
+        unsigned int read_street : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_crossStreet : 1; 
+        unsigned int wrote_endTime : 1; 
+        unsigned int wrote_incidentId : 1; 
+        unsigned int wrote_info : 1; 
+        unsigned int wrote_position : 1; 
+        unsigned int wrote_startTime : 1; 
+        unsigned int wrote_street : 1; 
+        unsigned int wrote_updateTime : 1; 
+        unsigned int wrote_laneClosureCount : 1; 
+        unsigned int wrote_laneClosureType : 1; 
+        unsigned int wrote_significance : 1; 
+        unsigned int wrote_type : 1; 
+        unsigned int wrote_endTimeReliable : 1; 
+    }  _flags;
     NSString * _incidentId;
     NSString * _info;
     unsigned int  _laneClosureCount;
     int  _laneClosureType;
     GEOLatLng * _position;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     int  _significance;
     long long  _startTime;
     NSString * _street;
     int  _type;
+    PBUnknownFields * _unknownFields;
     long long  _updateTime;
 }
 
@@ -53,12 +80,21 @@
 @property (nonatomic) long long startTime;
 @property (nonatomic, retain) NSString *street;
 @property (nonatomic) int type;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic) long long updateTime;
+
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsLaneClosureType:(id)arg1;
 - (int)StringAsSignificance:(id)arg1;
 - (int)StringAsType:(id)arg1;
+- (void)_readCrossStreet;
+- (void)_readIncidentId;
+- (void)_readInfo;
+- (void)_readPosition;
+- (void)_readStreet;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)crossStreet;
@@ -82,12 +118,15 @@
 - (unsigned long long)hash;
 - (id)incidentId;
 - (id)info;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (unsigned int)laneClosureCount;
 - (int)laneClosureType;
 - (id)laneClosureTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)position;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setCrossStreet:(id)arg1;
 - (void)setEndTime:(long long)arg1;
@@ -116,6 +155,7 @@
 - (id)street;
 - (int)type;
 - (id)typeAsString:(int)arg1;
+- (id)unknownFields;
 - (long long)updateTime;
 - (void)writeTo:(id)arg1;
 

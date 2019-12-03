@@ -9,12 +9,13 @@
     }  _connectionsLock;
     NSObject<OS_dispatch_workloop> * _inferenceWorkloop;
     NSObject<OS_dispatch_workloop> * _scalingWorkloop;
+    NSObject<OS_dispatch_workloop> * _submissionWorkloop;
 }
 
 + (void)initialize;
 
 - (void)_processJobsFromFramebuffer:(id)arg1 usingInputSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg2 inferencePropagationHandler:(id /* block */)arg3 atExecutionTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg4 forConnection:(id)arg5;
-- (id)_queueForJob:(struct { id x1; unsigned int x2; unsigned char x3; unsigned char x4; unsigned char x5; unsigned char x6; }*)arg1 fromConnection:(id)arg2;
+- (id)_queueForJob:(struct { id x1; id x2; unsigned int x3; unsigned char x4; unsigned char x5; _Atomic unsigned char x6; _Atomic unsigned char x7; }*)arg1 fromConnection:(id)arg2;
 - (void)dealloc;
 - (id)init;
 - (int)performInferencesForConnection:(unsigned long long)arg1 usingInputSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg2 attachingResultsToSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg3;

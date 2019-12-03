@@ -25,7 +25,6 @@
 - (id)delegate;
 - (void)finishBooting;
 - (id)initWithQueue:(id)arg1;
-- (void)restart;
 - (void)sendActions:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setSystemIdleSleepInterval:(double)arg1;

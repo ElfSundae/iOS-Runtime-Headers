@@ -11,6 +11,7 @@
     NSData * _onsetDate;
     HDCodableAllergyReactionList * _reactions;
     NSData * _recordedDate;
+    HDCodableMedicalCoding * _statusCoding;
 }
 
 @property (nonatomic, retain) HDCodableMedicalCodingList *allergyCodings;
@@ -26,12 +27,14 @@
 @property (nonatomic, readonly) bool hasOnsetDate;
 @property (nonatomic, readonly) bool hasReactions;
 @property (nonatomic, readonly) bool hasRecordedDate;
+@property (nonatomic, readonly) bool hasStatusCoding;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSData *lastOccurenceDate;
 @property (nonatomic, retain) HDCodableMedicalRecord *medicalRecord;
 @property (nonatomic, retain) NSData *onsetDate;
 @property (nonatomic, retain) HDCodableAllergyReactionList *reactions;
 @property (nonatomic, retain) NSData *recordedDate;
+@property (nonatomic, retain) HDCodableMedicalCoding *statusCoding;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -52,6 +55,7 @@
 - (bool)hasOnsetDate;
 - (bool)hasReactions;
 - (bool)hasRecordedDate;
+- (bool)hasStatusCoding;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (id)lastOccurenceDate;
@@ -69,6 +73,8 @@
 - (void)setOnsetDate:(id)arg1;
 - (void)setReactions:(id)arg1;
 - (void)setRecordedDate:(id)arg1;
+- (void)setStatusCoding:(id)arg1;
+- (id)statusCoding;
 - (void)writeTo:(id)arg1;
 
 @end

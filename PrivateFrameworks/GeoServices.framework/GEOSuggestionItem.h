@@ -5,10 +5,10 @@
 @interface GEOSuggestionItem : PBCodable <NSCopying> {
     bool  _eventuallyVisible;
     struct { 
-        unsigned int tappingCount : 1; 
-        unsigned int eventuallyVisible : 1; 
-        unsigned int initiallyVisible : 1; 
-    }  _has;
+        unsigned int has_tappingCount : 1; 
+        unsigned int has_eventuallyVisible : 1; 
+        unsigned int has_initiallyVisible : 1; 
+    }  _flags;
     bool  _initiallyVisible;
     NSString * _suggestionString;
     int  _tappingCount;
@@ -22,6 +22,8 @@
 @property (nonatomic) bool initiallyVisible;
 @property (nonatomic, retain) NSString *suggestionString;
 @property (nonatomic) int tappingCount;
+
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
@@ -37,6 +39,7 @@
 - (bool)initiallyVisible;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setEventuallyVisible:(bool)arg1;
 - (void)setHasEventuallyVisible:(bool)arg1;

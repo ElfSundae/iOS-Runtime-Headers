@@ -8,11 +8,14 @@
 
 - (bool)_checkACTokenResponseData:(id)arg1 response:(id)arg2 error:(id)arg3 suppressNotification:(bool)arg4;
 - (bool)_checkMRTResponseData:(id)arg1 response:(id)arg2 error:(id)arg3 suppressNotification:(bool)arg4;
+- (bool)_hasMAT;
+- (bool)_hasMRT;
 - (long long)_statusCodeFromResponse:(id)arg1;
 - (bool)_successReplacingTokensFromData:(id)arg1;
 - (id)_tokenTypeString:(unsigned long long)arg1;
 - (void)addMapsAuthDidFinishObserver:(id)arg1;
 - (void)addProxyAuthHeaderOrReAuth:(id)arg1 authProxyURL:(id)arg2;
+- (id)dictionaryForAuthTokenState;
 - (void)doEnvironmentSwitchCheck:(id)arg1 authProxyURL:(id)arg2 suppressNotification:(bool)arg3;
 - (void)handleSecureProxyChallenge:(id)arg1;
 - (void)removeMapsAuthDidFinishObserver:(id)arg1;

@@ -5,14 +5,27 @@
 @interface GEOSignificantLocation : PBCodable <NSCopying> {
     double  _confidence;
     struct { 
-        unsigned int confidence : 1; 
-        unsigned int locationIndex : 1; 
-        unsigned int numberOfVisitsBucket : 1; 
-    }  _has;
+        unsigned int has_confidence : 1; 
+        unsigned int has_locationIndex : 1; 
+        unsigned int has_numberOfVisitsBucket : 1; 
+        unsigned int read_identifier : 1; 
+        unsigned int read_location : 1; 
+        unsigned int wrote_confidence : 1; 
+        unsigned int wrote_identifier : 1; 
+        unsigned int wrote_location : 1; 
+        unsigned int wrote_locationIndex : 1; 
+        unsigned int wrote_numberOfVisitsBucket : 1; 
+    }  _flags;
     NSString * _identifier;
     GEOLocation * _location;
     unsigned int  _locationIndex;
     unsigned int  _numberOfVisitsBucket;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
 }
 
 @property (nonatomic) double confidence;
@@ -26,7 +39,12 @@
 @property (nonatomic) unsigned int locationIndex;
 @property (nonatomic) unsigned int numberOfVisitsBucket;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_readIdentifier;
+- (void)_readLocation;
+- (void)clearSensitiveFields;
 - (double)confidence;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -39,11 +57,14 @@
 - (bool)hasNumberOfVisitsBucket;
 - (unsigned long long)hash;
 - (id)identifier;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)location;
 - (unsigned int)locationIndex;
 - (void)mergeFrom:(id)arg1;
 - (unsigned int)numberOfVisitsBucket;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setConfidence:(double)arg1;
 - (void)setHasConfidence:(bool)arg1;

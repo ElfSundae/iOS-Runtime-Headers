@@ -3,7 +3,7 @@
 
 @protocol AVPictureInPictureViewControllerDelegate <NSObject>
 
-@optional
+@required
 
 - (void)pictureInPictureViewControllerViewDidAppear:(AVPictureInPictureViewController *)arg1;
 - (void)pictureInPictureViewControllerViewWillDisappear:(AVPictureInPictureViewController *)arg1;

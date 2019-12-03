@@ -19,9 +19,11 @@
 - (void)handleRemoveTransactionsWithIdentifiers:(NSArray *)arg1;
 - (void)handleUpdatePaymentPassWithTypeIdentifier:(NSString *)arg1;
 - (void)handleUpdatedPeerPaymentWebServiceContext:(PKPeerPaymentWebServiceContext *)arg1 account:(PKPeerPaymentAccount *)arg2;
+- (void)noteForegroundVerificationObserverActive:(bool)arg1;
 - (void)sendPaymentOptionsDefaultsToWatch;
 - (void)sendWebServiceContextToWatch;
 - (void)setNewAuthRandom:(void *)arg1; // needs 1 arg types, found 6: id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, void*
 - (void)showPaymentSetupForAppDisplayName:(NSString *)arg1;
+- (void)startBackgroundVerificationObserverForPass:(PKPaymentPass *)arg1 verificationMethod:(PKVerificationChannel *)arg2;
 
 @end

@@ -13,6 +13,10 @@
         unsigned int explicit; 
         unsigned int artwork : 1; 
         unsigned int allowsItemLiking : 1; 
+        unsigned int attributionLabel : 1; 
+        unsigned int type : 1; 
+        unsigned int subtype : 1; 
+        unsigned int subscriptionRequired : 1; 
     }  _requestedRadioStationProperties;
 }
 

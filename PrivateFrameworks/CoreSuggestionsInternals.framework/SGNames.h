@@ -25,7 +25,7 @@
 + (bool)namesApproximatelyMatch:(id)arg1 and:(id)arg2;
 + (bool)namesApproximatelyMatch:(id)arg1 and:(id)arg2 threshold:(double)arg3;
 + (id)possibleNameStringFromEmailAddress:(id)arg1 inContext:(id)arg2;
-+ (id)sgNameFromString:(id)arg1 origin:(id)arg2 recordId:(id)arg3 extractionType:(unsigned long long)arg4;
++ (id)sgNameFromString:(id)arg1 origin:(id)arg2 recordId:(id)arg3 extractionInfo:(id)arg4;
 + (bool)shouldInvertOrderOfFirst:(id)arg1 last:(id)arg2;
 + (id)sketchesForName:(id)arg1;
 + (id)stripAndReturnHonorifics:(id)arg1;

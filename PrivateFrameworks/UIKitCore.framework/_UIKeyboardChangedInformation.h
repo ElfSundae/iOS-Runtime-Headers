@@ -4,6 +4,7 @@
 
 @interface _UIKeyboardChangedInformation : NSObject <NSCopying, NSSecureCoding> {
     BKSAnimationFenceHandle * _animationFence;
+    bool  _avoidIntersectability;
     bool  _keyboardOnScreen;
     struct CGRect { 
         struct CGPoint { 
@@ -25,12 +26,19 @@
             double height; 
         } size; 
     }  _keyboardPositionWithIAV;
+    bool  _shouldTakeSnapshot;
+    NSString * _sourceCanvasIdentifier;
+    NSString * _sourceDisplayIdentifier;
 }
 
 @property (readonly, copy) BKSAnimationFenceHandle *animationFence;
+@property (readonly) bool avoidIntersectability;
 @property (readonly) bool keyboardOnScreen;
 @property (readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } keyboardPosition;
 @property (readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } keyboardPositionWithIAV;
+@property (nonatomic) bool shouldTakeSnapshot;
+@property (nonatomic, copy) NSString *sourceCanvasIdentifier;
+@property (nonatomic, copy) NSString *sourceDisplayIdentifier;
 
 + (id)animationFence;
 + (id)informationForKeyboardDown;
@@ -39,6 +47,8 @@
 
 - (void).cxx_destruct;
 - (id)animationFence;
+- (bool)avoidIntersectability;
+- (id)copyWithIntersectability:(bool)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)copyWithoutFence;
 - (id)copyWithoutIAV;
@@ -46,10 +56,16 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithKeyboardRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 iavPosition:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 onScreen:(bool)arg3 fence:(id)arg4;
+- (id)initWithKeyboardRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 iavPosition:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 onScreen:(bool)arg3 takeSnapshot:(bool)arg4 fence:(id)arg5;
 - (bool)keyboardOnScreen;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })keyboardPosition;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })keyboardPositionWithIAV;
 - (void)resetAnimationFencing;
+- (void)setShouldTakeSnapshot:(bool)arg1;
+- (void)setSourceCanvasIdentifier:(id)arg1;
+- (void)setSourceDisplayIdentifier:(id)arg1;
+- (bool)shouldTakeSnapshot;
+- (id)sourceCanvasIdentifier;
+- (id)sourceDisplayIdentifier;
 
 @end

@@ -13,6 +13,7 @@
     }  _centerCoordinate;
     NSString * _cnAddressIdentifier;
     NSString * _cnContactIdentifier;
+    GEOURLCollectionStorage * _collectionStorage;
     NSString * _contentProvider;
     NSString * _contentProviderID;
     NSString * _directionsDestinationAddressString;
@@ -24,6 +25,7 @@
     unsigned long long  _lineMUID;
     NSString * _lineName;
     int  _mapType;
+    GEOMuninViewState * _muninViewState;
     double  _roll;
     double  _rotation;
     struct { 
@@ -43,6 +45,7 @@
         } span; 
     }  _searchRegion;
     unsigned long long  _searchUID;
+    bool  _showCarDestinations;
     struct { 
         double latitudeDelta; 
         double longitudeDelta; 
@@ -57,39 +60,42 @@
     float  _zoomLevel;
 }
 
-@property (readonly) NSString *abAddressID;
-@property (readonly) NSString *abRecordID;
-@property (readonly) NSString *addressString;
-@property (readonly) double altitude;
-@property (readonly) struct { double x1; double x2; } centerCoordinate;
-@property (readonly) NSString *cnAddressIdentifier;
-@property (readonly) NSString *cnContactIdentifier;
-@property (readonly) NSString *contentProvider;
-@property (readonly) NSString *contentProviderID;
-@property (readonly) NSString *directionsDestinationAddressString;
-@property (readonly) NSString *directionsSourceAddressString;
-@property (readonly) bool exactPositionSpecified;
-@property (readonly) GEOURLExtraStorage *extraStorage;
-@property (readonly) long long favoritesType;
-@property (readonly) NSString *label;
-@property (readonly) unsigned long long lineMUID;
-@property (readonly, copy) NSString *lineName;
-@property (readonly) int mapType;
-@property (readonly) double roll;
-@property (readonly) double rotation;
-@property (readonly) struct { double x1; double x2; } searchCoordinate;
-@property (readonly) int searchProviderID;
-@property (readonly) NSString *searchQuery;
-@property (readonly) struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; } searchRegion;
-@property (readonly) unsigned long long searchUID;
-@property (readonly) struct { double x1; double x2; } span;
-@property (readonly) bool tester;
-@property (readonly) double tilt;
-@property (readonly) int trackingMode;
-@property (readonly) bool trackingModeSpecified;
-@property (readonly) int transportType;
-@property (readonly) GEOUserSessionEntity *userSessionEntity;
-@property (readonly) float zoomLevel;
+@property (nonatomic, readonly) NSString *abAddressID;
+@property (nonatomic, readonly) NSString *abRecordID;
+@property (nonatomic, readonly) NSString *addressString;
+@property (nonatomic, readonly) double altitude;
+@property (nonatomic, readonly) struct { double x1; double x2; } centerCoordinate;
+@property (nonatomic, readonly) NSString *cnAddressIdentifier;
+@property (nonatomic, readonly) NSString *cnContactIdentifier;
+@property (nonatomic, readonly) GEOURLCollectionStorage *collectionStorage;
+@property (nonatomic, readonly) NSString *contentProvider;
+@property (nonatomic, readonly) NSString *contentProviderID;
+@property (nonatomic, readonly) NSString *directionsDestinationAddressString;
+@property (nonatomic, readonly) NSString *directionsSourceAddressString;
+@property (nonatomic, readonly) bool exactPositionSpecified;
+@property (nonatomic, readonly) GEOURLExtraStorage *extraStorage;
+@property (nonatomic, readonly) long long favoritesType;
+@property (nonatomic, readonly) NSString *label;
+@property (nonatomic, readonly) unsigned long long lineMUID;
+@property (nonatomic, readonly, copy) NSString *lineName;
+@property (nonatomic, readonly) int mapType;
+@property (nonatomic, readonly) GEOMuninViewState *muninViewState;
+@property (nonatomic, readonly) double roll;
+@property (nonatomic, readonly) double rotation;
+@property (nonatomic, readonly) struct { double x1; double x2; } searchCoordinate;
+@property (nonatomic, readonly) int searchProviderID;
+@property (nonatomic, readonly) NSString *searchQuery;
+@property (nonatomic, readonly) struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; } searchRegion;
+@property (nonatomic, readonly) unsigned long long searchUID;
+@property (nonatomic, readonly) bool showCarDestinations;
+@property (nonatomic, readonly) struct { double x1; double x2; } span;
+@property (nonatomic, readonly) bool tester;
+@property (nonatomic, readonly) double tilt;
+@property (nonatomic, readonly) int trackingMode;
+@property (nonatomic, readonly) bool trackingModeSpecified;
+@property (nonatomic, readonly) int transportType;
+@property (nonatomic, readonly) GEOUserSessionEntity *userSessionEntity;
+@property (nonatomic, readonly) float zoomLevel;
 
 + (bool)isValidMapURL:(id)arg1;
 + (bool)isValidMapsCategoryURL:(id)arg1;
@@ -103,6 +109,7 @@
 - (struct { double x1; double x2; })centerCoordinate;
 - (id)cnAddressIdentifier;
 - (id)cnContactIdentifier;
+- (id)collectionStorage;
 - (id)contentProvider;
 - (id)contentProviderID;
 - (id)directionsDestinationAddressString;
@@ -115,7 +122,9 @@
 - (unsigned long long)lineMUID;
 - (id)lineName;
 - (int)mapType;
+- (id)muninViewState;
 - (bool)parseIncludingCustomParameters:(bool)arg1;
+- (id)restoreCodableOfClass:(Class)arg1 queryItem:(id)arg2 key:(id)arg3 compressedKey:(id)arg4;
 - (double)roll;
 - (double)rotation;
 - (struct { double x1; double x2; })searchCoordinate;
@@ -123,6 +132,7 @@
 - (id)searchQuery;
 - (struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })searchRegion;
 - (unsigned long long)searchUID;
+- (bool)showCarDestinations;
 - (struct { double x1; double x2; })span;
 - (bool)tester;
 - (double)tilt;

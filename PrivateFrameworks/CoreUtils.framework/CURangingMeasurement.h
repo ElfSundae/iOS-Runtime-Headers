@@ -9,6 +9,7 @@
     unsigned int  _flags;
     double  _horizontalAngle;
     double  _horizontalError;
+    NSString * _identifier;
     double  _ptsScore;
     unsigned long long  _timestampTicks;
     double  _verticalAngle;
@@ -21,6 +22,7 @@
 @property (nonatomic) unsigned int flags;
 @property (nonatomic) double horizontalAngle;
 @property (nonatomic) double horizontalError;
+@property (nonatomic, copy) NSString *identifier;
 @property (nonatomic) double ptsScore;
 @property (nonatomic) unsigned long long timestampTicks;
 @property (nonatomic) double verticalAngle;
@@ -37,6 +39,7 @@
 - (unsigned int)flags;
 - (double)horizontalAngle;
 - (double)horizontalError;
+- (id)identifier;
 - (id)initWithCoder:(id)arg1;
 - (double)ptsScore;
 - (void)setDistanceError:(double)arg1;
@@ -45,6 +48,7 @@
 - (void)setFlags:(unsigned int)arg1;
 - (void)setHorizontalAngle:(double)arg1;
 - (void)setHorizontalError:(double)arg1;
+- (void)setIdentifier:(id)arg1;
 - (void)setPtsScore:(double)arg1;
 - (void)setTimestampTicks:(unsigned long long)arg1;
 - (void)setVerticalAngle:(double)arg1;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CoreRecognition.framework/CoreRecognition
  */
 
-@interface CRMLFlatModel : CRMLModel
+@interface CRMLFlatModel : CRMLCCModel
 
 - (int)classCount;
 - (const int*)codeMap;

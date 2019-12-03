@@ -35,12 +35,14 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (long long)foregroundContentMode;
+- (unsigned long long)hash;
 - (id)heading;
 - (id)headingKey;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (id)inlineDescription;
 - (id)inlineDescriptionKey;
+- (bool)isEqual:(id)arg1;
 - (void)localizeWithBundle:(id)arg1;
 - (void)localizeWithBundle:(id)arg1 table:(id)arg2;
 - (void)setHeading:(id)arg1;

@@ -6,8 +6,10 @@
     WDParagraph * mParagraph;
 }
 
+@property (readonly) WDParagraph *paragraph;
+
+- (void).cxx_destruct;
 - (void)clearProperties;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 - (id)initWithParagraph:(id)arg1;

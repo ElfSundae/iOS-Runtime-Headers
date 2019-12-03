@@ -50,9 +50,11 @@
 - (unsigned long long)daysInMonth;
 - (unsigned long long)daysInYear;
 - (id)description;
+- (struct { int x1; int x2; int x3; int x4; int x5; double x6; })differenceAsCalGregorianUnits:(id)arg1 flags:(unsigned long long)arg2;
 - (struct { int x1; int x2; int x3; int x4; int x5; double x6; })differenceAsGregorianUnits:(id)arg1 flags:(unsigned long long)arg2;
 - (long long)differenceInDays:(id)arg1;
 - (long long)differenceInMonths:(id)arg1;
+- (double)differenceInSeconds:(id)arg1;
 - (long long)differenceInYears:(id)arg1;
 - (id)earlierDate:(id)arg1;
 - (struct { int x1; BOOL x2; BOOL x3; BOOL x4; BOOL x5; double x6; })gregorianDate;

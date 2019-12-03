@@ -15,5 +15,7 @@
 @optional
 
 - (NSPredicate *)contactPredicate;
+- (CNContact *)existingContact;
+- (CNContact *)newContact;
 
 @end

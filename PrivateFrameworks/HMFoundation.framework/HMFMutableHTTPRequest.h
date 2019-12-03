@@ -5,7 +5,7 @@
 @interface HMFMutableHTTPRequest : HMFHTTPRequest
 
 @property (nonatomic, copy) NSData *body;
-@property (nonatomic, retain) NSDictionary *headerFields;
+@property (nonatomic, copy) NSDictionary *headerFields;
 @property (nonatomic) double timeoutInterval;
 
 - (id)initWithInternalRequest:(id)arg1;

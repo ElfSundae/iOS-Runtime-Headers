@@ -6,10 +6,27 @@
     GEOPDAutocompleteEntry * _autocompleteEntry;
     GEOLatLng * _coordinate;
     struct { 
-        unsigned int origin : 1; 
-    }  _has;
+        unsigned int has_origin : 1; 
+        unsigned int read_autocompleteEntry : 1; 
+        unsigned int read_coordinate : 1; 
+        unsigned int read_place : 1; 
+        unsigned int read_searchString : 1; 
+        unsigned int read_singleLineAddressString : 1; 
+        unsigned int wrote_autocompleteEntry : 1; 
+        unsigned int wrote_coordinate : 1; 
+        unsigned int wrote_place : 1; 
+        unsigned int wrote_searchString : 1; 
+        unsigned int wrote_singleLineAddressString : 1; 
+        unsigned int wrote_origin : 1; 
+    }  _flags;
     int  _origin;
     GEOPDPlace * _place;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     NSString * _searchString;
     NSString * _singleLineAddressString;
 }
@@ -27,8 +44,15 @@
 @property (nonatomic, retain) NSString *searchString;
 @property (nonatomic, retain) NSString *singleLineAddressString;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsOrigin:(id)arg1;
+- (void)_readAutocompleteEntry;
+- (void)_readCoordinate;
+- (void)_readPlace;
+- (void)_readSearchString;
+- (void)_readSingleLineAddressString;
 - (id)autocompleteEntry;
 - (id)coordinate;
 - (void)copyTo:(id)arg1;
@@ -42,11 +66,14 @@
 - (bool)hasSearchString;
 - (bool)hasSingleLineAddressString;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (int)origin;
 - (id)originAsString:(int)arg1;
 - (id)place;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)searchString;
 - (void)setAutocompleteEntry:(id)arg1;

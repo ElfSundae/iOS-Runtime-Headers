@@ -3,6 +3,7 @@
  */
 
 @interface _INPBShareFileIntent : PBCodable <NSCopying, NSSecureCoding, _INPBShareFileIntent> {
+    bool  __encodeLegacyGloryData;
     NSArray * _entityNames;
     struct { 
         unsigned int shareMode : 1; 
@@ -12,6 +13,7 @@
     int  _shareMode;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, copy) NSArray *entityNames;
@@ -27,21 +29,26 @@
 
 + (Class)entityNameType;
 + (Class)recipientsType;
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (int)StringAsShareMode:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (void)addEntityName:(id)arg1;
 - (void)addRecipients:(id)arg1;
 - (void)clearEntityNames;
 - (void)clearRecipients;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (id)entityNameAtIndex:(unsigned long long)arg1;
 - (id)entityNames;
 - (unsigned long long)entityNamesCount;
 - (bool)hasIntentMetadata;
 - (bool)hasShareMode;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)intentMetadata;
 - (bool)isEqual:(id)arg1;
 - (bool)readFrom:(id)arg1;

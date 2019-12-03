@@ -21,6 +21,7 @@
     bool  _shouldEnableAccountSummaryCell;
     bool  _shouldEnableDeleteAccountButton;
     bool  _shouldShowDeleteAccountButton;
+    MCUIUserEnrollmentAccountSpecifierProvider * _userEnrollmentAccountSpecifierProvider;
 }
 
 @property (nonatomic, retain) ACAccount *account;
@@ -43,6 +44,7 @@
 - (bool)_confirmSyncDelete;
 - (void)_enableAllProvisionedDataclassesWithoutRequringUserInteraction;
 - (bool)_isShowingDeleteAccountButton;
+- (bool)_isUserOverridableForDataclass:(id)arg1;
 - (id)_navigationTitle;
 - (void)_notifyOfAccountSetupCompletion;
 - (id)_orderDataclassList:(id)arg1;
@@ -71,6 +73,7 @@
 - (bool)isAppleMailAccount:(id)arg1;
 - (bool)isFirstTimeSetup;
 - (bool)isMailSetupForced;
+- (bool)isUserEnrollment;
 - (id)messageForAccountDeletionProgressUI;
 - (id)operationsHelper:(id)arg1 desiredDataclassActionFromPicker:(id)arg2;
 - (void)operationsHelper:(id)arg1 didRemoveAccount:(id)arg2 withSuccess:(bool)arg3 error:(id)arg4;
@@ -103,6 +106,7 @@
 - (id)specifierForDataclass:(id)arg1;
 - (id)specifiers;
 - (id)titleForDeleteButton;
+- (id)userEnrollmentAccountSpecifierProvider;
 - (id)valueForAccountSummaryCell;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidLoad;

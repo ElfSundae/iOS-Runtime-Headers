@@ -4,9 +4,9 @@
 
 @interface GEOSignGuidanceFeedback : PBCodable <NSCopying> {
     struct { 
-        unsigned int signDetailIndex : 1; 
-        unsigned int signTitleIndex : 1; 
-    }  _has;
+        unsigned int has_signDetailIndex : 1; 
+        unsigned int has_signTitleIndex : 1; 
+    }  _flags;
     int  _signDetailIndex;
     int  _signTitleIndex;
 }
@@ -15,6 +15,8 @@
 @property (nonatomic) bool hasSignTitleIndex;
 @property (nonatomic) int signDetailIndex;
 @property (nonatomic) int signTitleIndex;
+
++ (bool)isValid:(id)arg1;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -25,6 +27,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasSignDetailIndex:(bool)arg1;
 - (void)setHasSignTitleIndex:(bool)arg1;

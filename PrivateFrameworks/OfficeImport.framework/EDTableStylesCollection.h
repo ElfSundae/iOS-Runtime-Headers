@@ -7,7 +7,7 @@
     NSString * mDefaultTableStyleName;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)defaultPivotStyle;
 - (id)defaultPivotStyleName;
 - (id)defaultTableStyle;

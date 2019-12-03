@@ -7,7 +7,7 @@
     ESDObject * mLegacyTextGlobals;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)legacyPresentationState;
 - (id)legacyTextGlobals;
 - (void)setLegacyPresentationState:(id)arg1;

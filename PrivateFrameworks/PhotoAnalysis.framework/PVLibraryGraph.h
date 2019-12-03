@@ -15,11 +15,11 @@
 @property (readonly) Class superclass;
 
 + (id)defaultFacesDataSnapshotPath;
-+ (Class)edgeClass;
++ (Class)edgeClassForLabel:(id)arg1 domain:(unsigned short)arg2;
 + (id)graphForFacesDataSnapshotAtPath:(id)arg1;
 + (id)graphForLibrary:(id)arg1 ingestPeople:(bool)arg2;
 + (id)graphWithName:(id)arg1 forFacesDataSnapshotAtPath:(id)arg2;
-+ (Class)nodeClass;
++ (Class)nodeClassForLabel:(id)arg1 domain:(unsigned short)arg2;
 + (id)originGraphForFacesDataSnapshotAtPath:(id)arg1;
 
 - (void).cxx_destruct;
@@ -58,7 +58,6 @@
 - (id)pv_fetchPersonsInMoment:(id)arg1;
 - (id)pv_fetchPersonsWithLocalIdentifiers:(id)arg1;
 - (id)pv_fetchPersonsWithType:(unsigned long long)arg1;
-- (bool)pv_isLibraryBeingSynchronized;
 - (id)pv_lastAssetDate;
 - (unsigned long long)pv_numberOfFacesWithFaceprints;
 - (bool)pv_performChangesAndWait:(id /* block */)arg1 error:(id*)arg2;

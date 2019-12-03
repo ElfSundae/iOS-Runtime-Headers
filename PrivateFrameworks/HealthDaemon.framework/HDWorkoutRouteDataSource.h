@@ -5,6 +5,7 @@
 @interface HDWorkoutRouteDataSource : HDStandardTaskServer <HDLocationEventDelegate, HDWorkoutDataSource, HDWorkoutSessionObserver, HKDataFlowLinkProcessor, HKWorkoutRouteDataSourceServerInterface> {
     HKQuantity * _currentElevation;
     HKUnit * _elevationUnit;
+    HKQuantity * _latestAltitude;
     HDLocationDataCollector * _locationDataCollector;
     NSObject<OS_dispatch_queue> * _queue;
     HDWorkoutSessionServer * _sessionServer;
@@ -29,11 +30,12 @@
 - (void)_queue_setupLocationDataCollector;
 - (id)_unitTest_locationDataCollector;
 - (id)_workoutBuilderServer;
+- (void)altitudeUpdated:(double)arg1;
 - (void)connectionInvalidated;
 - (id)description;
 - (void)elevationUpdated:(unsigned long long)arg1;
 - (id)exportedInterface;
-- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
 - (id)queue;
 - (id)remoteInterface;
 - (void)remote_setupWithSessionIdentifier:(id)arg1;

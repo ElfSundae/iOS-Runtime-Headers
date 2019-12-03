@@ -10,12 +10,16 @@
     unsigned int  _maxAllowedBitrate;
     unsigned int  _maxAllowedBitrate2G;
     unsigned int  _maxAllowedBitrate3G;
+    unsigned int  _maxAllowedBitrateIPadCompanionUSB;
     unsigned int  _maxAllowedBitrateLTE;
+    unsigned int  _maxAllowedBitrateP2P;
+    unsigned int  _maxAllowedBitrateUSB;
     unsigned int  _maxAllowedBitrateWifi;
     unsigned int  _maxAllowedScreenShareBitrate2G;
     unsigned int  _maxAllowedScreenShareBitrate3G;
     unsigned int  _maxAllowedScreenShareBitrateLTE;
     unsigned int  _maxAllowedScreenShareBitrateWifi;
+    unsigned int  _maxiBitrateIPadCompanionP2P;
     NSMutableArray * supportedBitrateRules;
 }
 
@@ -23,6 +27,8 @@
 @property (readonly) unsigned int maxAllowedBitrate2G;
 @property (readonly) unsigned int maxAllowedBitrate3G;
 @property (readonly) unsigned int maxAllowedBitrateLTE;
+@property (readonly) unsigned int maxAllowedBitrateP2P;
+@property (readonly) unsigned int maxAllowedBitrateUSB;
 @property (readonly) unsigned int maxAllowedBitrateWifi;
 
 - (void)createSupportedBitrateRuleSets;
@@ -35,7 +41,9 @@
 - (unsigned int)maxAllowedBitrateForConnection:(int)arg1;
 - (unsigned int)maxAllowedBitrateForConnection:(int)arg1 operatingMode:(int)arg2;
 - (unsigned int)maxAllowedBitrateLTE;
+- (unsigned int)maxAllowedBitrateP2P;
 - (id)maxAllowedBitrateRuleForConnection:(int)arg1;
+- (unsigned int)maxAllowedBitrateUSB;
 - (unsigned int)maxAllowedBitrateWifi;
 - (unsigned int)maxAllowedCellularBitrate;
 - (unsigned int)maxAllowedScreenShareBitrateForConnection:(int)arg1;

@@ -6,11 +6,13 @@
     NSNumber * _shouldFetchAssetContent;
     NSNumber * _shouldFetchAssetContentInMemory;
     NSNumber * _sparseAware;
+    NSNumber * _useMMCSEncryptionV2;
 }
 
 @property (nonatomic, copy) NSNumber *shouldFetchAssetContent;
 @property (nonatomic, copy) NSNumber *shouldFetchAssetContentInMemory;
 @property (nonatomic, copy) NSNumber *sparseAware;
+@property (nonatomic, copy) NSNumber *useMMCSEncryptionV2;
 
 + (bool)supportsSecureCoding;
 
@@ -23,8 +25,10 @@
 - (void)setShouldFetchAssetContent:(id)arg1;
 - (void)setShouldFetchAssetContentInMemory:(id)arg1;
 - (void)setSparseAware:(id)arg1;
+- (void)setUseMMCSEncryptionV2:(id)arg1;
 - (id)shouldFetchAssetContent;
 - (id)shouldFetchAssetContentInMemory;
 - (id)sparseAware;
+- (id)useMMCSEncryptionV2;
 
 @end

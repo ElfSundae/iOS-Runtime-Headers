@@ -13,13 +13,13 @@
 + (id)applyOrientation:(long long)arg1 to:(id)arg2;
 
 - (void).cxx_destruct;
-- (id)_evaluateDepthData:(out id*)arg1;
+- (id)_evaluateAuxiliaryImageForType:(long long)arg1 error:(out id*)arg2;
 - (id)_evaluateImage:(out id*)arg1;
 - (id)_evaluateImageGeometry:(out id*)arg1;
-- (id)_evaluatePortraitEffectsMatte:(out id*)arg1;
 - (id)_evaluateVideo:(out id*)arg1;
+- (id)_evaluateVideoProperties:(out id*)arg1;
 - (id)_transformWithError:(out id*)arg1;
-- (bool)canPropagateOriginalDepthData;
+- (bool)canPropagateOriginalAuxiliaryData;
 - (id)initWithOrientation:(long long)arg1 input:(id)arg2;
 - (id)initWithSettings:(id)arg1 inputs:(struct NSDictionary { Class x1; }*)arg2;
 - (bool)isGeometryNode;

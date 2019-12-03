@@ -4,7 +4,9 @@
 
 @interface CSAssetManager : NSObject <CSAssetControllerDelegate, CSLanguageCodeUpdateMonitorDelegate, CSSpeechEndpointAssetMetaUpdateMonitorDelegate, CSVoiceTriggerAssetMetaUpdateMonitorDelegate> {
     NSString * _currentLanguageCode;
-    bool  _daemonRunningMode;
+    NSObject<OS_dispatch_source> * _downloadTimer;
+    long long  _downloadTimerCount;
+    CSAssetDownloadingOption * _downloadingOption;
     CSPolicy * _enablePolicy;
     NSMutableDictionary * _observers;
     NSObject<OS_dispatch_queue> * _queue;
@@ -14,6 +16,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, retain) NSObject<OS_dispatch_queue> *queue;
 @property (readonly) Class superclass;
 
 + (id)sharedManager;
@@ -24,19 +27,25 @@
 - (void)CSSpeechEndpointAssetMetaUpdateMonitor:(id)arg1 didReceiveNewSpeechEndpointAssetMetaData:(bool)arg2;
 - (void)CSVoiceTriggerAssetMetaUpdateMonitor:(id)arg1 didReceiveNewVoiceTriggerAssetMetaData:(bool)arg2;
 - (bool)_canFetchRemoteAsset:(unsigned long long)arg1;
+- (void)_createPeriodicalDownloadTimer;
 - (void)_fetchRemoteMetaData;
+- (void)_startPeriodicalDownload;
+- (void)_stopPeriodicalDownload;
 - (void)addObserver:(id)arg1 forAssetType:(unsigned long long)arg2;
+- (id)allInstalledAssetsOfType:(unsigned long long)arg1 language:(id)arg2;
 - (id)assetForCurrentLanguageOfType:(unsigned long long)arg1;
 - (void)assetForCurrentLanguageOfType:(unsigned long long)arg1 completion:(id /* block */)arg2;
 - (id)assetOfType:(unsigned long long)arg1 language:(id)arg2;
 - (void)assetOfType:(unsigned long long)arg1 language:(id)arg2 completion:(id /* block */)arg3;
 - (id)currentLanguageCode;
-- (id)initWithDaemonMode:(bool)arg1;
+- (id)initWithDownloadOption:(id)arg1;
 - (id)installedAssetForCurrentLanguageOfType:(unsigned long long)arg1;
 - (void)installedAssetForCurrentLanguageOfType:(unsigned long long)arg1 completion:(id /* block */)arg2;
 - (id)installedAssetOfType:(unsigned long long)arg1 language:(id)arg2;
 - (void)installedAssetOfType:(unsigned long long)arg1 language:(id)arg2 completion:(id /* block */)arg3;
+- (id)queue;
 - (void)removeObserver:(id)arg1 forAssetType:(unsigned long long)arg2;
-- (void)setDaemonRunningMode:(bool)arg1;
+- (void)setAssetDownloadingOption:(id)arg1;
+- (void)setQueue:(id)arg1;
 
 @end

@@ -7,6 +7,7 @@
     bool  _didDisappear;
     bool  _didPop;
     <CPTemplateDelegate> * _templateDelegate;
+    NAFuture * _templateProviderFuture;
     <CPSTemplateViewControllerDelegate> * _viewControllerDelegate;
 }
 
@@ -20,6 +21,7 @@
 @property (nonatomic, readonly) <CPSearchClientTemplateDelegate> *searchTemplateDelegate;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) <CPTemplateDelegate> *templateDelegate;
+@property (nonatomic, readonly) NAFuture *templateProviderFuture;
 @property (nonatomic) <CPSTemplateViewControllerDelegate> *viewControllerDelegate;
 
 - (void).cxx_destruct;
@@ -40,6 +42,7 @@
 - (void)setTemplateDelegate:(id)arg1;
 - (void)setViewControllerDelegate:(id)arg1;
 - (id)templateDelegate;
+- (id)templateProviderFuture;
 - (void)updateSearchResultsForSearchController:(id)arg1;
 - (id)viewControllerDelegate;
 - (void)viewDidAppear:(bool)arg1;

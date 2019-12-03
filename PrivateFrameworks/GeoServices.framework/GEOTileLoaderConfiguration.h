@@ -9,7 +9,6 @@
     unsigned long long  _memoryCacheCostLimit;
     unsigned long long  _memoryCacheCountLimit;
     Class  _serverProxyClass;
-    bool  _trackUsage;
 }
 
 @property (nonatomic, copy) NSString *diskCacheLocation;
@@ -18,7 +17,6 @@
 @property (nonatomic) unsigned long long memoryCacheCostLimit;
 @property (nonatomic) unsigned long long memoryCacheCountLimit;
 @property (nonatomic) Class serverProxyClass;
-@property (nonatomic) bool trackUsage;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -35,7 +33,5 @@
 - (void)setMemoryCacheCostLimit:(unsigned long long)arg1;
 - (void)setMemoryCacheCountLimit:(unsigned long long)arg1;
 - (void)setServerProxyClass:(Class)arg1;
-- (void)setTrackUsage:(bool)arg1;
-- (bool)trackUsage;
 
 @end

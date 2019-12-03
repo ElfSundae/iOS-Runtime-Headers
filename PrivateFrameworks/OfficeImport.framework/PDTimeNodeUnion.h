@@ -17,12 +17,12 @@
     PDVideoNode * mVideo;
 }
 
+- (void).cxx_destruct;
 - (id)audio;
 - (id)behavior;
 - (id)cmdBehavior;
 - (id)colorBehavior;
 - (id)commonBehavior;
-- (void)dealloc;
 - (id)description;
 - (id)effectBehavior;
 - (id)init;

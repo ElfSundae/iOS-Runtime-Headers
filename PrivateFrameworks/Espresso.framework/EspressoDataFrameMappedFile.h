@@ -10,8 +10,9 @@
 }
 
 @property char *basePtr;
-@property NSString *path;
+@property (retain) NSString *path;
 
+- (void).cxx_destruct;
 - (char *)basePtr;
 - (void)dealloc;
 - (id)initWithPath:(id)arg1;

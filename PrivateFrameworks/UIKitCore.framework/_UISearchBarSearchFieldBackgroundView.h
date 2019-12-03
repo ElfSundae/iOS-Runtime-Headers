@@ -14,6 +14,7 @@
 @property (nonatomic) unsigned long long searchBarStyle;
 @property (nonatomic) bool showingTouch;
 
+- (id)_automaticFillColorForActive:(bool)arg1;
 - (id)_fillColor:(bool)arg1;
 - (id)_strokeColor:(bool)arg1;
 - (id)_ultralightFillColorForOverlayFilter:(bool)arg1 active:(bool)arg2;
@@ -28,6 +29,5 @@
 - (void)setSearchBarStyle:(unsigned long long)arg1;
 - (void)setShowingTouch:(bool)arg1;
 - (bool)showingTouch;
-- (void)updateView;
 
 @end

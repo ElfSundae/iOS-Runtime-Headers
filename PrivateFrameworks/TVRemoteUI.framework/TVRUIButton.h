@@ -5,6 +5,7 @@
 @interface TVRUIButton : UIControl {
     long long  _buttonType;
     UIColor * _defaultBackgroundColor;
+    bool  _disableHighlightEffect;
     _TVRButtonHaptic * _haptic;
     UIViewPropertyAnimator * _highlightAnimator;
     UIImageView * _imageView;
@@ -15,6 +16,7 @@
 
 @property (nonatomic, readonly) long long buttonType;
 @property (nonatomic, retain) UIColor *defaultBackgroundColor;
+@property (getter=isHighlightEffectDisabled, nonatomic) bool disableHighlightEffect;
 @property (nonatomic, retain) _TVRButtonHaptic *haptic;
 @property (nonatomic, retain) UIViewPropertyAnimator *highlightAnimator;
 @property (nonatomic, retain) UIImageView *imageView;
@@ -36,8 +38,10 @@
 - (id)highlightAnimator;
 - (id)imageView;
 - (id)initWithType:(long long)arg1 hasTapAction:(bool)arg2;
+- (bool)isHighlightEffectDisabled;
 - (void)layoutSubviews;
 - (void)setDefaultBackgroundColor:(id)arg1;
+- (void)setDisableHighlightEffect:(bool)arg1;
 - (void)setHaptic:(id)arg1;
 - (void)setHighlightAnimator:(id)arg1;
 - (void)setImageView:(id)arg1;

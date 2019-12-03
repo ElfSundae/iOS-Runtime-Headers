@@ -3,22 +3,24 @@
  */
 
 @interface BWBravoStreamSelector : NSObject {
+    bool  _allowSwitchesWithFineMovement;
     BWFigVideoCaptureStream * _currentMasterStream;
     bool  _ignoreFocusAndExposureStability;
     float  _initialFocusDistance;
     int  _initialLuxLevel;
     bool  _lockWhenExposureAndFocusAreStable;
-    bool  _locked;
-    bool  _lockedOnTele;
+    BWFigVideoCaptureStream * _lockedStream;
     float  _minFocusDistanceChangeForSceneChange;
     float  _minLuxLevelChangeForSceneChange;
+    int  _numberOfFramesSinceLastZoomFactorChange;
     float  _previousZoomFactor;
     BWFigVideoCaptureStream * _recommendedMasterStream;
     bool  _resetSceneChangeMonitoring;
     bool  _sceneChangeDetected;
     int  _selectionBehavior;
+    BWFigVideoCaptureStream * _slaveStreamBlockingFocusAndExposureStability;
+    BWFigVideoCaptureStream * _superWideStream;
     float  _teleAEGainHysteresisLag;
-    float  _teleBaseZoomFactor;
     float  _teleMaxAEGain;
     int  _teleMaxGainReachedCounter;
     int  _teleMaxSubsequentFramesAtMaxGain;
@@ -33,24 +35,31 @@
 @property (nonatomic) bool ignoreFocusAndExposureStability;
 @property (getter=isLensMakersFocusDistanceRequired, nonatomic, readonly) bool lensMakersFocusDistanceRequired;
 @property (nonatomic) int selectionBehavior;
+@property (nonatomic, readonly) BWFigVideoCaptureStream *slaveStreamBlockingFocusAndExposureStability;
+@property (nonatomic) float teleMaxAEGain;
 
 + (void)initialize;
 
-- (void)_attemptLockWithFrameStatistics:(struct { double x1; float x2; float x3; double x4; float x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; unsigned char x10; unsigned char x11; unsigned int x12; int x13; int x14; int x15; unsigned int x16; unsigned char x17; unsigned char x18; float x19; float x20; float x21; unsigned char x22; double x23; double x24; int x25; int x26; int x27; float x28; float x29; float x30; unsigned int x31; unsigned int x32; unsigned int x33; unsigned int x34; unsigned char x35; int x36; int x37; float x38; float x39; int x40; int x41; long long x42; }*)arg1;
-- (bool)_exposureAndFocusStableForSwitchOverForFrameStatistics:(struct { double x1; float x2; float x3; double x4; float x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; unsigned char x10; unsigned char x11; unsigned int x12; int x13; int x14; int x15; unsigned int x16; unsigned char x17; unsigned char x18; float x19; float x20; float x21; unsigned char x22; double x23; double x24; int x25; int x26; int x27; float x28; float x29; float x30; unsigned int x31; unsigned int x32; unsigned int x33; unsigned int x34; unsigned char x35; int x36; int x37; float x38; float x39; int x40; int x41; long long x42; }*)arg1;
-- (id)_preferredMasterStreamForZoomFactor:(float)arg1 frameStatistics:(struct { double x1; float x2; float x3; double x4; float x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; unsigned char x10; unsigned char x11; unsigned int x12; int x13; int x14; int x15; unsigned int x16; unsigned char x17; unsigned char x18; float x19; float x20; float x21; unsigned char x22; double x23; double x24; int x25; int x26; int x27; float x28; float x29; float x30; unsigned int x31; unsigned int x32; unsigned int x33; unsigned int x34; unsigned char x35; int x36; int x37; float x38; float x39; int x40; int x41; long long x42; }*)arg2;
-- (bool)_selectionBehaviorAllowsSwitchOverForFrameStatistics:(struct { double x1; float x2; float x3; double x4; float x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; unsigned char x10; unsigned char x11; unsigned int x12; int x13; int x14; int x15; unsigned int x16; unsigned char x17; unsigned char x18; float x19; float x20; float x21; unsigned char x22; double x23; double x24; int x25; int x26; int x27; float x28; float x29; float x30; unsigned int x31; unsigned int x32; unsigned int x33; unsigned int x34; unsigned char x35; int x36; int x37; float x38; float x39; int x40; int x41; long long x42; }*)arg1 zoomFactor:(float)arg2;
-- (void)_updateSceneChangeMonitorWithFrameStatistics:(struct { double x1; float x2; float x3; double x4; float x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; unsigned char x10; unsigned char x11; unsigned int x12; int x13; int x14; int x15; unsigned int x16; unsigned char x17; unsigned char x18; float x19; float x20; float x21; unsigned char x22; double x23; double x24; int x25; int x26; int x27; float x28; float x29; float x30; unsigned int x31; unsigned int x32; unsigned int x33; unsigned int x34; unsigned char x35; int x36; int x37; float x38; float x39; int x40; int x41; long long x42; }*)arg1 fromMasterStream:(id)arg2 zoomFactor:(float)arg3;
+- (void)_attemptLockWithFrameStatistics:(id)arg1;
+- (bool)_exposureAndFocusStableForSwitchOverTo:(id)arg1 forFrameStatisticsByPortType:(id)arg2;
+- (bool)_focusIsStable:(id)arg1;
+- (id)_preferredMasterStreamForFrameStatisticsByPortType:(id)arg1;
+- (bool)_selectionBehaviorAllowsSwitchOverTo:(id)arg1 forFrameStatisticsByPortType:(id)arg2 zoomFactor:(float)arg3 blockedByExposureFocusStability:(bool*)arg4;
+- (void)_updateSceneChangeMonitorWithFrameStatisticsByPortType:(id)arg1 fromMasterStream:(id)arg2 zoomFactor:(float)arg3;
+- (void)dealloc;
 - (bool)ignoreFocusAndExposureStability;
-- (id)initWithStreamSelectionAttributes:(id)arg1 wideStream:(id)arg2 teleStream:(id)arg3;
+- (id)initWithStreamSelectionAttributes:(id)arg1 wideStream:(id)arg2 teleStream:(id)arg3 superWideStream:(id)arg4;
 - (bool)isLensMakersFocusDistanceRequired;
 - (void)lockWhenExposureAndFocusAreStable;
-- (id)recommendMasterStreamUsingCurrentMasterStream:(id)arg1 frameStatistics:(struct { double x1; float x2; float x3; double x4; float x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; unsigned char x10; unsigned char x11; unsigned int x12; int x13; int x14; int x15; unsigned int x16; unsigned char x17; unsigned char x18; float x19; float x20; float x21; unsigned char x22; double x23; double x24; int x25; int x26; int x27; float x28; float x29; float x30; unsigned int x31; unsigned int x32; unsigned int x33; unsigned int x34; unsigned char x35; int x36; int x37; float x38; float x39; int x40; int x41; long long x42; }*)arg2 zoomFactor:(float)arg3;
-- (void)resetWithZoomFactor:(float)arg1 currentMasterStream:(id)arg2 teleMaxAEGain:(float)arg3;
+- (id)recommendMasterStreamUsingCurrentMasterStream:(id)arg1 frameStatisticsByPortType:(id)arg2 zoomFactor:(float)arg3;
+- (void)resetWithZoomFactor:(float)arg1 currentMasterStream:(id)arg2;
 - (int)selectionBehavior;
 - (void)setIgnoreFocusAndExposureStability:(bool)arg1;
 - (void)setSelectionBehavior:(int)arg1;
-- (bool)telephotoLimitsReached:(struct { double x1; float x2; float x3; double x4; float x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; unsigned char x10; unsigned char x11; unsigned int x12; int x13; int x14; int x15; unsigned int x16; unsigned char x17; unsigned char x18; float x19; float x20; float x21; unsigned char x22; double x23; double x24; int x25; int x26; int x27; float x28; float x29; float x30; unsigned int x31; unsigned int x32; unsigned int x33; unsigned int x34; unsigned char x35; int x36; int x37; float x38; float x39; int x40; int x41; long long x42; }*)arg1;
+- (void)setTeleMaxAEGain:(float)arg1;
+- (id)slaveStreamBlockingFocusAndExposureStability;
+- (float)teleMaxAEGain;
+- (bool)telephotoLimitsReachedForFrameStatistiscsByPortType:(id)arg1;
 - (void)unlock;
 
 @end

@@ -16,7 +16,7 @@
 
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
-- (id)_intents_readableDescriptionForLanguage:(id)arg1;
+- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
 - (id)amount;
 - (long long)balanceType;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

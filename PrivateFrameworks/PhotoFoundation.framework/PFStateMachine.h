@@ -17,8 +17,6 @@
 @property (readonly) NSString *name;
 @property (readonly) id uuid;
 
-+ (void)initialize;
-
 - (void).cxx_destruct;
 - (void)_cancelLastDelayedEvent;
 - (void)_handleEvent:(id)arg1;

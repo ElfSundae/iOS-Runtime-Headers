@@ -19,7 +19,6 @@
 @property (nonatomic) bool isOverApp;
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic) bool readerTextAvailable;
-@property (nonatomic, readonly) bool requiresQueryId;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long timestamp;
 @property (nonatomic) int viewAppearEvent;
@@ -36,7 +35,6 @@
 - (id)jsonData;
 - (bool)readFrom:(id)arg1;
 - (bool)readerTextAvailable;
-- (bool)requiresQueryId;
 - (void)setIsOnLockScreen:(bool)arg1;
 - (void)setIsOverApp:(bool)arg1;
 - (void)setReaderTextAvailable:(bool)arg1;

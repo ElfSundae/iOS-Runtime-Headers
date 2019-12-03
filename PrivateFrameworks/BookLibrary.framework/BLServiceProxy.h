@@ -4,13 +4,12 @@
 
 @interface BLServiceProxy : NSObject <BLServiceProtocol> {
     NSXPCConnection * _connection;
-    <BLServiceProtocol> * _remoteObject;
 }
 
 @property (nonatomic, retain) NSXPCConnection *connection;
-@property (nonatomic, retain) <BLServiceProtocol> *remoteObject;
 
 - (void).cxx_destruct;
+- (id)_remoteObjectWithErrorHandler:(id /* block */)arg1;
 - (void)cancelAllActiveDownloadsWithReply:(id /* block */)arg1;
 - (void)cancelDownloadWithID:(id)arg1 withReply:(id /* block */)arg2;
 - (id)connection;
@@ -21,15 +20,13 @@
 - (void)getValueSimulateDeviceOutOfSpaceWithReply:(id /* block */)arg1;
 - (id)initWithError:(out id*)arg1;
 - (void)pauseDownloadWithID:(id)arg1 withReply:(id /* block */)arg2;
-- (void)purchaseWithBuyParameters:(id)arg1 storeID:(id)arg2 reply:(id /* block */)arg3;
-- (id)remoteObject;
+- (void)purchaseWithRequest:(id)arg1 reply:(id /* block */)arg2;
 - (void)requestDownloadWithMetadata:(id)arg1 isRestore:(bool)arg2 reply:(id /* block */)arg3;
 - (void)requestDownloadWithParameters:(id)arg1 reply:(id /* block */)arg2;
 - (void)requestDownloadsWithMetadata:(id)arg1 areRestore:(bool)arg2 reply:(id /* block */)arg3;
 - (void)resetAllCrashSimulationOverridesWithReply:(id /* block */)arg1;
 - (void)resumeDownloadWithID:(id)arg1 withReply:(id /* block */)arg2;
 - (void)setConnection:(id)arg1;
-- (void)setRemoteObject:(id)arg1;
 - (void)setValueSimulateCrashAtInstallDuringDecrypt:(bool)arg1 withReply:(id /* block */)arg2;
 - (void)setValueSimulateCrashAtInstallDuringFinish:(bool)arg1 withReply:(id /* block */)arg2;
 - (void)setValueSimulateCrashAtInstallDuringUnzip:(bool)arg1 withReply:(id /* block */)arg2;

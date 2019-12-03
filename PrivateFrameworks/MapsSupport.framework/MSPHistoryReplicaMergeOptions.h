@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/MapsSupport.framework/MapsSupport
  */
 
-@interface MSPHistoryReplicaMergeOptions : NSObject <MSPReplicaMergeOptions> {
+@interface MSPHistoryReplicaMergeOptions : NSObject <MSPHistoryReplicaMergeOptions> {
     NSDate * _earliestKnownSyncDate;
     long long  _modificationDatePolicy;
 }

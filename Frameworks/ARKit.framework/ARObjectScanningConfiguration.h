@@ -16,6 +16,7 @@
 + (bool)isSupported;
 + (id)new;
 + (id)supportedVideoFormats;
++ (bool)supportsFrameSemantics:(unsigned long long)arg1;
 
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)createTechniquesWithParallelTechniques:(id)arg1 serialTechniques:(id)arg2;

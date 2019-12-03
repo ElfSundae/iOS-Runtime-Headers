@@ -4,13 +4,13 @@
 
 @interface USWebpageUsage : NSObject {
     NSURL * _URL;
-    <_CDUserContext> * _context;
+    <_CDAsyncLocalContext> * _context;
     NSMutableDictionary * _contextUsageRecord;
     <_DKKnowledgeSaving> * _eventStorage;
 }
 
-@property (readonly) NSURL *URL;
-@property (readonly) <_CDUserContext> *context;
+@property (readonly, copy) NSURL *URL;
+@property (readonly) <_CDAsyncLocalContext> *context;
 @property (readonly) <_DKKnowledgeSaving> *eventStorage;
 
 - (void).cxx_destruct;

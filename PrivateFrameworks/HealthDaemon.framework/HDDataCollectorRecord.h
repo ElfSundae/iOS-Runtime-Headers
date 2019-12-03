@@ -7,7 +7,7 @@
     HDDataCollectorState * _state;
 }
 
-@property (nonatomic, retain) <HDDataCollector> *collector;
+@property (nonatomic) <HDDataCollector> *collector;
 @property (nonatomic, retain) HDDataCollectorState *state;
 
 - (void).cxx_destruct;

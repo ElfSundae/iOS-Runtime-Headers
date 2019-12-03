@@ -27,6 +27,7 @@
 @property (nonatomic) bool hasEstablishedOrderingValues;
 @property (readonly) unsigned long long hash;
 @property (getter=isInOrderedArrangementUpdateSection, nonatomic) bool inOrderedArrangementUpdateSection;
+@property (nonatomic, readonly) NSSet *invalidBaselineConstraints;
 @property (nonatomic) bool layoutFillsCanvas;
 @property (nonatomic) bool layoutUsesCanvasMarginsWhenFilling;
 @property (nonatomic) double proportionalFillDenominator;

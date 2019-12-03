@@ -6,6 +6,7 @@
     bool  _displayAsConflicting;
     bool  _displayAsFirstInDay;
     bool  _displayAsTomorrow;
+    bool  _displayEntryDateInGraphicCircularView;
     NSArray * _eventColors;
     NSDate * _eventEndDate;
     NSDate * _eventStartDate;
@@ -23,6 +24,7 @@
 @property (nonatomic) bool displayAsConflicting;
 @property (nonatomic) bool displayAsFirstInDay;
 @property (nonatomic) bool displayAsTomorrow;
+@property (nonatomic) bool displayEntryDateInGraphicCircularView;
 @property (nonatomic, retain) NSArray *eventColors;
 @property (nonatomic, retain) NSDate *eventEndDate;
 @property (nonatomic, retain) NSDate *eventStartDate;
@@ -65,6 +67,7 @@
 - (bool)displayAsConflicting;
 - (bool)displayAsFirstInDay;
 - (bool)displayAsTomorrow;
+- (bool)displayEntryDateInGraphicCircularView;
 - (id)eventColors;
 - (id)eventEndDate;
 - (id)eventStartDate;
@@ -80,6 +83,7 @@
 - (void)setDisplayAsConflicting:(bool)arg1;
 - (void)setDisplayAsFirstInDay:(bool)arg1;
 - (void)setDisplayAsTomorrow:(bool)arg1;
+- (void)setDisplayEntryDateInGraphicCircularView:(bool)arg1;
 - (void)setEventColors:(id)arg1;
 - (void)setEventEndDate:(id)arg1;
 - (void)setEventStartDate:(id)arg1;

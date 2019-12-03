@@ -5,9 +5,11 @@
 
 @required
 
+- (NSData *)activationConditionsData;
 - (NSArray *)audioCategoriesDisablingVolumeHUD;
 - (long long)backgroundStyle;
 - (double)brightnessLevel;
+- (NSString *)canvasTitle;
 - (long long)compatibilityMode;
 - (double)controlCenterAmbiguousActivationMargin;
 - (long long)controlCenterRevealMode;
@@ -29,9 +31,13 @@
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })primaryWindowOverlayInsets;
 - (unsigned long long)proximityDetectionModes;
 - (FBSDisplayMode *)requestedDisplayMode;
+- (long long)sceneActivationBias;
 - (unsigned long long)screenEdgesDeferringSystemGestures;
+- (double)statusBarAlpha;
 - (unsigned int)statusBarContextID;
 - (bool)statusBarHidden;
+- (long long)statusBarModernStyle;
+- (NSDictionary *)statusBarPartStyles;
 - (long long)statusBarStyle;
 - (unsigned long long)supportedInterfaceOrientations;
 - (long long)userInterfaceStyle;

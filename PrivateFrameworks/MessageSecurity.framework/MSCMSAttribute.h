@@ -10,8 +10,8 @@
 }
 
 @property (retain) NSData *attributeDERData;
-@property (readonly) MSOID *attributeType;
-@property (readonly) NSArray *attributeValues;
+@property (readonly, retain) MSOID *attributeType;
+@property (readonly, retain) NSArray *attributeValues;
 @property struct Attribute { struct heim_oid { unsigned long long x_1_1_1; unsigned int *x_1_1_2; } x1; struct Attribute_value { unsigned int x_2_1_1; struct heim_base_data {} *x_2_1_2; } x2; }*encodedAttribute;
 
 + (id)decodeAttribute:(struct Attribute { struct heim_oid { unsigned long long x_1_1_1; unsigned int *x_1_1_2; } x1; struct Attribute_value { unsigned int x_2_1_1; struct heim_base_data {} *x_2_1_2; } x2; }*)arg1 error:(id*)arg2;

@@ -32,6 +32,8 @@
 - (void)invalidate;
 - (bool)isValidInRect:(struct { struct { long long x_1_1_1; long long x_1_1_2; } x1; struct { long long x_2_1_1; long long x_2_1_2; } x2; })arg1;
 - (bool)isValidInRegion:(id)arg1;
+- (void)provideBuffer:(id /* block */)arg1;
+- (void)provideMutableBuffer:(id /* block */)arg1;
 - (long long)readBufferInRegion:(id)arg1 block:(id /* block */)arg2;
 - (void)setFormat:(id)arg1;
 - (void)setSize:(struct { long long x1; long long x2; })arg1;

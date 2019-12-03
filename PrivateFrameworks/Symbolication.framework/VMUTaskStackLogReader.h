@@ -3,6 +3,7 @@
  */
 
 @interface VMUTaskStackLogReader : VMUStackLogReaderBase <VMUStackLogReader> {
+    unsigned long long  _msl_payload_version;
     VMUTaskMemoryScanner * _scanner;
     struct _CSTypeRef { 
         unsigned long long _opaque_1; 
@@ -10,12 +11,14 @@
     }  _symbolicator;
 }
 
+@property (readonly) bool coldestFrameIsNotThreadId;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) NSSet *excludedFrames;
 @property (readonly) unsigned long long hash;
 @property (readonly) bool inspectingLiveProcess;
 @property (readonly) bool is64bit;
+@property (readonly) unsigned long long nodesInUniquingTable;
 @property (readonly) VMUVMRegionTracker *regionTracker;
 @property (nonatomic) VMUTaskMemoryScanner *scanner;
 @property (readonly) Class superclass;
@@ -26,6 +29,7 @@
 - (id)binaryImagePathForPCaddress:(unsigned long long)arg1;
 - (struct _VMURange { unsigned long long x1; unsigned long long x2; })binaryImageRangeForPCaddress:(unsigned long long)arg1;
 - (void)dealloc;
+- (int)enumerateMSLRecordsAndPayloads:(id /* block */)arg1;
 - (int)enumerateRecords:(id /* block */)arg1;
 - (id)functionNameForPCaddress:(unsigned long long)arg1;
 - (struct _VMURange { unsigned long long x1; unsigned long long x2; })functionRangeContainingPCaddress:(unsigned long long)arg1;
@@ -36,8 +40,11 @@
 - (id)initWithTask:(unsigned int)arg1 symbolicator:(struct _CSTypeRef { unsigned long long x1; unsigned long long x2; })arg2;
 - (bool)inspectingLiveProcess;
 - (bool)is64bit;
+- (struct { unsigned long long x1; })liteMSLPayloadforMallocAddress:(unsigned long long)arg1 size:(unsigned long long)arg2;
+- (struct { unsigned long long x1; })liteMSLPayloadforVMregionAddress:(unsigned long long)arg1;
 - (unsigned long long)liteModeStackIDforAddress:(unsigned long long)arg1 size:(unsigned long long)arg2;
 - (unsigned long long)liteModeStackIDforVMregionAddress:(unsigned long long)arg1;
+- (unsigned long long)nodesInUniquingTable;
 - (id)regionTracker;
 - (id)scanner;
 - (void)setScanner:(id)arg1;

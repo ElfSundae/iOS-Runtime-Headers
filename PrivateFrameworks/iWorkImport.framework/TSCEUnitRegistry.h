@@ -6,7 +6,7 @@
 
 + (int)binaryUnitPrefixForChars:(unsigned short)arg1 :(unsigned short)arg2;
 + (int)canonicalUnitForDimension:(int)arg1;
-+ (double)convert:(double)arg1 fromUnit:(struct { int x1; int x2; })arg2 toUnit:(struct { int x1; int x2; })arg3;
++ (struct TSUDecimal { struct { unsigned long long x_1_1_1[2]; } x1; })convert:(const struct TSUDecimal { struct { unsigned long long x_1_1_1[2]; } x1; }*)arg1 fromUnit:(struct { int x1; int x2; })arg2 toUnit:(struct { int x1; int x2; })arg3;
 + (id)currencyCodeForUnit:(int)arg1;
 + (int)dimensionForUnit:(int)arg1;
 + (void)initialize;

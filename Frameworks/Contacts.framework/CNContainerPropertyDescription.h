@@ -15,8 +15,10 @@
 - (int)abPropertyID;
 - (bool)isConvertibleABValue:(void*)arg1;
 - (bool)isValidValue:(id)arg1 error:(id*)arg2;
+- (bool)isValue:(id)arg1 equalToEmptyEquivalentOrValue:(id)arg2;
 - (bool)isWritable;
 - (id)key;
+- (id)nilValue;
 - (bool)setABValue:(void*)arg1 onABSource:(void*)arg2 error:(struct __CFError {}**)arg3;
 - (void)setCNValue:(id)arg1 onContainer:(id)arg2;
 - (Class)valueClass;

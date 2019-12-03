@@ -2,10 +2,12 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PULivePhotoVariationEditOperationPerformer : PXAssetEditOperationPerformer <PXChangeObserver> {
+@interface PULivePhotoVariationEditOperationPerformer : PXAssetEditOperationPerformer <PUPhotoEditResourceLoaderDelegate> {
     id /* block */  _completionHandler;
     bool  _didSave;
-    PXAssetVariationRenderProvider * _renderProvider;
+    PUPhotoEditResourceLoadResult * _loadResult;
+    PUPhotoKitPhotoEditMediaDestination * _mediaDestination;
+    PUPhotoEditResourceLoader * _resourceLoader;
 }
 
 @property (nonatomic, readonly) PHAsset *asset;
@@ -15,10 +17,14 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_calculateAnalysisResult;
 - (void)_completeWithSuccess:(bool)arg1 error:(id)arg2;
-- (void)_performSaveIfReady;
+- (void)_handleAnalysisCalculatorResponse:(id)arg1;
+- (void)_handleAnalysisResult:(id)arg1;
+- (void)_handleDidFinishSavingEditsForAsset:(id)arg1 error:(id)arg2;
 - (id)asset;
-- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void*)arg3;
 - (void)performEditOperationWithCompletionHandler:(id /* block */)arg1;
+- (void)photoEditResourceLoadRequest:(id)arg1 didCompleteWithResult:(id)arg2;
+- (void)photoEditResourceLoadRequest:(id)arg1 mediaLoadDidFailWithError:(id)arg2;
 
 @end

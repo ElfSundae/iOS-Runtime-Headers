@@ -2,23 +2,23 @@
    Image: /System/Library/PrivateFrameworks/VideosUI.framework/VideosUI
  */
 
-@interface VUILibraryIpadMainViewController : VUILibraryFetchControllerViewController <UIGestureRecognizerDelegate, VUILibrarySplitViewControllerDelegate, VUIMediaEntitiesFetchControllerDelegate> {
+@interface VUILibraryIpadMainViewController : VUILibraryFetchControllerViewController <UIGestureRecognizerDelegate, VUILibraryCategoryMenuViewModelDelegate, VUILibrarySplitViewControllerDelegate> {
     bool  _areLocalMediaItemsAvailable;
-    VUIMediaEntitiesFetchController * _downloadFetchController;
+    VUILibraryCategoryMenuViewModel * _categoryViewModel;
     VUIDownloadViewController * _downloadViewController;
-    bool  _hasFetchCompleted;
     VUILibrarySplitViewController * _librarySplitViewController;
+    NSSet * _validCategories;
 }
 
 @property (nonatomic) bool areLocalMediaItemsAvailable;
+@property (nonatomic, retain) VUILibraryCategoryMenuViewModel *categoryViewModel;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, retain) VUIMediaEntitiesFetchController *downloadFetchController;
 @property (nonatomic, retain) VUIDownloadViewController *downloadViewController;
-@property (nonatomic) bool hasFetchCompleted;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) VUILibrarySplitViewController *librarySplitViewController;
 @property (readonly) Class superclass;
+@property (nonatomic, retain) NSSet *validCategories;
 
 - (void).cxx_destruct;
 - (void)_accountsChanged:(id)arg1;
@@ -30,31 +30,29 @@
 - (void)_networkReachabilityDidChange:(id)arg1;
 - (void)_removeMediaLibraryNotificationObservers;
 - (void)_removeNotificationObserversWithDeviceLibrary:(id)arg1;
-- (void)_startDownloadFetchController;
+- (void)_setupDownloadViewController;
 - (void)_startMonitoringDeviceMediaLibraryInitialUpdate;
 - (void)_stopMonitoringDeviceMediaLibraryInitialUpdate;
-- (void)_updateViewIfFetchHasCompleted;
+- (void)_updateVisibleViewControllerForCategories:(id)arg1 error:(id)arg2;
 - (bool)areLocalMediaItemsAvailable;
-- (void)controller:(id)arg1 fetchRequests:(id)arg2 didCompleteWithResult:(id)arg3;
-- (void)controller:(id)arg1 fetchRequests:(id)arg2 didFailWithError:(id)arg3;
+- (id)categoryViewModel;
+- (void)categoryViewModel:(id)arg1 categoriesDidChange:(id)arg2;
+- (void)categoryViewModel:(id)arg1 fetchDidCompleteWithCategories:(id)arg2 error:(id)arg3;
 - (void)dealloc;
-- (id)downloadFetchController;
 - (id)downloadViewController;
 - (bool)gestureRecognizerShouldBegin:(id)arg1;
-- (bool)hasFetchCompleted;
 - (id)initWithMediaLibrary:(id)arg1;
 - (id)librarySplitViewController;
-- (void)librarySplitViewControllerDidFinishLoading:(id)arg1 withCategories:(id)arg2 error:(id)arg3;
 - (void)librarySplitViewControllerShouldDismiss:(id)arg1;
 - (void)loadView;
 - (void)setAreLocalMediaItemsAvailable:(bool)arg1;
-- (void)setDownloadFetchController:(id)arg1;
+- (void)setCategoryViewModel:(id)arg1;
 - (void)setDownloadViewController:(id)arg1;
-- (void)setHasFetchCompleted:(bool)arg1;
 - (void)setLibrarySplitViewController:(id)arg1;
+- (void)setValidCategories:(id)arg1;
+- (id)validCategories;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidLoad;
-- (void)viewWillAppear:(bool)arg1;
 - (bool)vui_ppt_isLoading;
 
 @end

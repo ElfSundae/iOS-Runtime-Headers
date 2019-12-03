@@ -21,6 +21,7 @@
 - (id)_invalidFieldErrorWithFieldName:(id)arg1;
 - (id)_restrictedFeatureStrings;
 - (id)_unionStrings;
+- (id)filterForUserEnrollmentOutError:(id*)arg1;
 - (id)iCloudPassword;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id*)arg3;
 - (id)installationWarnings;

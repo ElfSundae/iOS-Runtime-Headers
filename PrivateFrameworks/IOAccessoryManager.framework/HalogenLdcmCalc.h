@@ -24,7 +24,6 @@
     double  _hydraImpedance;
     double  _hydraR;
     bool  _isDigitalFilterTrigger;
-    double  _isWetCapacitiveThreshNf;
     double  _ldcmAcCap;
     double  _measurementCondetSNR;
     double  _measurementCurrentNoiseLevel;
@@ -86,7 +85,6 @@
 @property double hydraImpedance;
 @property double hydraR;
 @property bool isDigitalFilterTrigger;
-@property double isWetCapacitiveThreshNf;
 @property double ldcmAcCap;
 @property (readonly) double measurementCondetSNR;
 @property (readonly) double measurementCurrentNoiseLevel;
@@ -132,6 +130,7 @@
 - (void)_applyGain:(double)arg1 toData:(id)arg2;
 - (void)_applyHanningWindow:(id)arg1 withSize:(int)arg2;
 - (void)_applyTiaGain:(id)arg1 toCurrentData:(id)arg2;
+- (double)_condetSnr:(double*)arg1;
 - (void)_doHydraComp:(double)arg1 withPhase:(double)arg2;
 - (void)_freeBuffers;
 - (void)_goertzelSecondOrder:(id)arg1 hasFftValue:(double*)arg2 hasPhase:(double*)arg3 withHanning:(bool)arg4;
@@ -161,7 +160,7 @@
 - (void)dealloc;
 - (int)diffWindowSize;
 - (int)doCalibration:(id)arg1 withCurrentData:(id)arg2;
-- (int)doLiquidDetection:(id)arg1 withCurrentData:(id)arg2 isReceptacleEmpty:(bool)arg3 isReceptacleWet:(bool)arg4;
+- (int)doLiquidDetection:(id)arg1 withCurrentData:(id)arg2 isReceptacleEmpty:(bool)arg3 isReceptacleWet:(bool)arg4 withWetTransitionThreshold:(double)arg5 withDryTransitionThreshold:(double)arg6;
 - (int)doPreCalibration:(id)arg1 withCurrentData:(id)arg2;
 - (struct OpaqueFFTSetupD { }*)fftContext;
 - (double)goertzelImpedance;
@@ -178,7 +177,6 @@
 - (bool)isLowerBoundViolation_goertzelPhase;
 - (bool)isUpperBoundViolation_goertzelImpedance;
 - (bool)isUpperBoundViolation_goertzelPhase;
-- (double)isWetCapacitiveThreshNf;
 - (double)ldcmAcCap;
 - (double)measurementCondetSNR;
 - (double)measurementCurrentNoiseLevel;
@@ -214,7 +212,6 @@
 - (void)setHydraImpedance:(double)arg1;
 - (void)setHydraR:(double)arg1;
 - (void)setIsDigitalFilterTrigger:(bool)arg1;
-- (void)setIsWetCapacitiveThreshNf:(double)arg1;
 - (void)setLdcmAcCap:(double)arg1;
 - (void)setMovesumClipThreshold:(double)arg1;
 - (void)setNSamples:(int)arg1;

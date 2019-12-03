@@ -2,14 +2,6 @@
    Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
  */
 
-@interface SXComponentMask : SXJSONObject <SXClassFactoryProtocol>
-
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
-+ (void)initializeObject;
-+ (id)typeString;
+@interface SXComponentMask : SXJSONObject
 
 @end

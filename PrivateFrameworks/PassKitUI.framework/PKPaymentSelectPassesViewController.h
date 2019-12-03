@@ -32,8 +32,6 @@
 - (id)initWithPaymentPasses:(id)arg1 context:(long long)arg2 delegate:(id)arg3 peerPaymentAccount:(id)arg4;
 - (id)initWithStyle:(long long)arg1 context:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
-- (id)pkui_navigationBarTintColor;
-- (bool)pkui_prefersNavigationBarShadowHidden;
 - (void)setButtonText:(id)arg1;
 - (void)setCanSelectMultiplePasses:(bool)arg1;
 - (void)setHeaderSubtitle:(id)arg1;

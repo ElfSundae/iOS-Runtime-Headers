@@ -10,20 +10,18 @@
     unsigned int  _powerNotification;
     NSObject<OS_dispatch_queue> * _queue;
     struct __SCNetworkReachability { } * _reachability;
-    int  _thermalNotificationToken;
     unsigned long long  _thermalPressureLevel;
 }
 
 @property (getter=isInternetReachable, nonatomic, readonly) bool internetReachable;
 @property (getter=isInternetReachableViaOnlyWWAN, nonatomic, readonly) bool internetReachableViaOnlyWWAN;
 @property (getter=hasPower, nonatomic, readonly) bool power;
-@property (getter=getThermalPressureLevel, nonatomic) unsigned long long thermalPressureLevel;
+@property (nonatomic) unsigned long long thermalPressureLevel;
 
 + (id)sharedMonitor;
 
 - (void).cxx_destruct;
 - (void)addObserver:(id)arg1;
-- (unsigned long long)getThermalPressureLevel;
 - (bool)hasPower;
 - (id)init;
 - (bool)isInternetReachable;
@@ -32,5 +30,6 @@
 - (void)setThermalPressureLevel:(unsigned long long)arg1;
 - (void)start;
 - (void)stop;
+- (unsigned long long)thermalPressureLevel;
 
 @end

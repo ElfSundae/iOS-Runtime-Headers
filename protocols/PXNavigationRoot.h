@@ -13,8 +13,7 @@
 
 @optional
 
-- (bool)canProcessNavigationListItem:(id <PXNavigationListItem>)arg1;
-- (PXNavigationListDataSourceManager *)navigationListDataSourceManager;
-- (void)processNavigationListItem:(void *)arg1 animated:(void *)arg2 completion:(void *)arg3; // needs 3 arg types, found 8: <PXNavigationListItem> *, bool, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, void*
+- (PXNavigationListDataSectionManager *)navigationListDataSourceManager;
+- (void)selectNavigationListItem:(void *)arg1 hintIndex:(void *)arg2 animated:(void *)arg3 completion:(void *)arg4; // needs 4 arg types, found 9: <PXNavigationListItem> *, long long, bool, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, void*
 
 @end

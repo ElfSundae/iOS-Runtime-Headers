@@ -16,10 +16,11 @@
 @property (nonatomic, readonly) bool supportsLocalSnapshots;
 @property (nonatomic, readonly) bool supportsSparseFiles;
 
-+ (unsigned long long)availableCacheSize;
 + (unsigned long long)fileSystemCapacity;
 + (void)removeDeviceTransferDirectoryWithEarliestCreationDate:(id)arg1;
 + (id)sharedManager;
++ (bool)startFilesystemKeyRollingWithError:(id*)arg1;
++ (bool)stopFilesystemKeyRollingWithError:(id*)arg1;
 
 - (void).cxx_destruct;
 - (bool)_fileSystemSupportsSnapshots;

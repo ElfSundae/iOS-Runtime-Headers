@@ -19,6 +19,7 @@
 - (id)getHIDElementForUsage:(long long)arg1;
 - (id)initWithContainerID:(id)arg1;
 - (id)initWithMatching:(id)arg1;
+- (id)initWithService:(unsigned int)arg1;
 - (id)presets;
 - (bool)setActivePresetIndex:(long long)arg1 error:(id*)arg2;
 - (bool)setCurrentPresetIndex:(long long)arg1 error:(id*)arg2;

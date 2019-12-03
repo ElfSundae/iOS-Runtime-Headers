@@ -13,11 +13,13 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly, copy) NSString *messageName;
 @property (nonatomic, readonly) NSDictionary *messagePayload;
 @property (nonatomic, retain) NSString *passwordToken;
 @property (nonatomic, retain) NSString *rawPassword;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSString *username;
+@property (nonatomic, readonly, copy) NSString *xpcMessageName;
 
 + (id)messageName;
 + (id)objWithDict:(id)arg1;

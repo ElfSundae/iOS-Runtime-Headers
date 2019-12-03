@@ -197,6 +197,7 @@
 + (unsigned long long)_sf_operationForDropSession:(id)arg1;
 + (void)_sf_webBookmarksFromDropSession:(id)arg1 completionHandler:(id /* block */)arg2;
 
+- (id)_sf_contextMenuUsingCollection:(id)arg1 withUserInfo:(id)arg2 handler:(id)arg3;
 - (id)_sf_icon;
 - (id)_sf_iconKeyColor;
 - (void)_sf_setIconKeyColor:(id)arg1;

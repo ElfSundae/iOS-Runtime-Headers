@@ -2,10 +2,13 @@
    Image: /System/Library/Frameworks/AVFoundation.framework/AVFoundation
  */
 
-@interface AVPlayerLayer : CALayer <AVKeyPathDependencyHost, AVWeakObservable> {
+@interface AVPlayerLayer : CALayer <AVKeyPathDependencyHost, AVPictureInPictureContentSource, AVWeakObservable> {
     AVPlayerLayerInternal * _playerLayer;
 }
 
+@property (nonatomic, readonly) bool avkit_isVisible;
+@property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } avkit_videoRectInWindow;
+@property (nonatomic, readonly) UIWindow *avkit_window;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -15,6 +18,8 @@
 @property (readonly) Class superclass;
 @property (copy) NSString *videoGravity;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } videoRect;
+
+// Image: /System/Library/Frameworks/AVFoundation.framework/AVFoundation
 
 + (void)_swapSublayersBetweenPlayerLayer:(id)arg1 andPlayerLayer:(id)arg2;
 + (id)keyPathsForValuesAffectingVideoRect;
@@ -35,6 +40,7 @@
 - (id)_closedCaptionLayer;
 - (void)_configurePlayerWhenEnteringPIP;
 - (void)_configurePlayerWhenLeavingPIP;
+- (bool)_currentWindowSceneIsForeground;
 - (void)_disassociateWithLayerForMode:(long long)arg1;
 - (struct CGSize { double x1; double x2; })_displaySize;
 - (void)_enterPIPModeRedirectingVideoToLayer:(id)arg1;
@@ -43,6 +49,7 @@
 - (void)_forceLayout;
 - (void)_getMaskLayer:(id*)arg1 videoLayer:(id*)arg2 subtitleLayer:(id*)arg3 closedCaptionLayer:(id*)arg4;
 - (bool)_isConnectedToSecondScreen;
+- (bool)_isPartOfForegroundScene;
 - (void)_leavePIPModeForLayer:(id)arg1;
 - (void)_leaveSecondScreenModeForLayer:(id)arg1;
 - (id)_maskLayer;
@@ -55,30 +62,32 @@
 - (void)_setPreventsChangesToSublayerHierarchy:(bool)arg1;
 - (void)_setSublayersForPIP:(id)arg1;
 - (void)_setSublayersPreventChangesToSublayerHierarchy:(bool)arg1;
-- (void)_setSubtitleGravity:(id)arg1;
 - (void)_setWillManageSublayersAsSwappedLayers:(bool)arg1;
 - (void)_startObservingPlayer:(id)arg1;
 - (void)_stopObservingPlayer:(id)arg1;
 - (id)_sublayersForPIP;
-- (id)_subtitleGravity;
 - (id)_subtitleLayer;
-- (void)_syncToPlayer:(id)arg1;
+- (void)_updateIsPartOfForegroundScene;
+- (void)_updateReadyForDisplayForPlayerCurrentItem;
 - (id)_videoLayer;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_videoRectForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (bool)_willManageSublayersAsSwappedLayers;
+- (void)_windowSceneDidEnterBackground:(id)arg1;
 - (void)addAnimation:(id)arg1 forKey:(id)arg2;
 - (void)addCallbackToCancelDuringDeallocation:(id)arg1;
 - (void)addSublayer:(id)arg1;
 - (void)dealloc;
 - (void)declareKeyPathDependenciesWithRegistry:(id)arg1;
 - (void)enterPIPModeRedirectingVideoToLayer:(id)arg1;
-- (void)finalize;
+- (void)hasEnqueuedVideoFrameChanged:(id)arg1;
 - (id)init;
 - (id)initWithLayer:(id)arg1;
 - (void)insertSublayer:(id)arg1 above:(id)arg2;
 - (void)insertSublayer:(id)arg1 atIndex:(unsigned int)arg2;
 - (void)insertSublayer:(id)arg1 below:(id)arg2;
+- (bool)isForScrubbingOnly;
 - (bool)isLanczosFilterDownscalingEnabled;
+- (bool)isLegibleDisplayEnabled;
 - (bool)isOverscanSubtitleSupportEnabled;
 - (bool)isPIPModeEnabled;
 - (bool)isReadyForDisplay;
@@ -96,8 +105,10 @@
 - (void)replaceSublayer:(id)arg1 with:(id)arg2;
 - (void)setBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setContentsScale:(double)arg1;
+- (void)setForScrubbingOnly:(bool)arg1;
 - (void)setLanczosFilterDownscaleFactor:(long long)arg1;
 - (void)setLanczosFilterDownscalingEnabled:(bool)arg1;
+- (void)setLegibleDisplayEnabled:(bool)arg1;
 - (void)setOverscanSubtitleSupportEnabled:(bool)arg1;
 - (void)setPIPModeEnabled:(bool)arg1;
 - (void)setPixelBufferAttributes:(id)arg1;
@@ -110,5 +121,16 @@
 - (id)videoGravity;
 - (id)videoPerformanceMetrics;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })videoRect;
+
+// Image: /System/Library/Frameworks/AVKit.framework/AVKit
+
+- (bool)avkit_isVisible;
+- (id)avkit_makePictureInPicturePlatformAdapterContentPlaceholderLayer;
+- (id)avkit_makePlayerControllerIfNeeded:(id)arg1;
+- (id)avkit_pictureInPictureViewController;
+- (void)avkit_startRoutingVideoToPictureInPictureViewController:(id)arg1;
+- (void)avkit_stopRoutingVideoToPictureInPictureViewController:(id)arg1;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })avkit_videoRectInWindow;
+- (id)avkit_window;
 
 @end

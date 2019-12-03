@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
  */
 
-@interface REContentRanker : NSObject <RELoggable> {
+@interface REContentRanker : NSObject <REContentRankerProperties> {
     struct REContentFeatureExtractor { 
         struct _opaque_pthread_rwlock_t { 
             long long __sig; 
@@ -37,6 +37,8 @@
             unsigned long long m_maxSize; 
             unsigned long long m_shrinkSize; 
             int m_nVersion; 
+            bool m_trimTop; 
+            bool m_shinksOnTotalCount; 
         } m_trueTopTokens; 
         struct REFancyShrinkingDictionary { 
             struct unordered_map<std::__1::basic_string<char>, unsigned short, std::__1::hash<std::__1::basic_string<char> >, std::__1::equal_to<std::__1::basic_string<char> >, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, unsigned short> > > { 
@@ -67,21 +69,22 @@
             unsigned long long m_maxSize; 
             unsigned long long m_shrinkSize; 
             int m_nVersion; 
+            bool m_trimTop; 
+            bool m_shinksOnTotalCount; 
         } m_falseTopTokens; 
     }  _extractor;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
+@property (nonatomic, readonly) NSString *negativeContent;
+@property (nonatomic, readonly) NSString *positiveContent;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)collectLoggableState:(id /* block */)arg1;
 - (id)init;
 - (bool)load:(id)arg1 error:(id*)arg2;
+- (id)negativeContent;
 - (long long)negativeMapSize;
+- (id)positiveContent;
 - (long long)positiveMapSize;
 - (id)predict:(id)arg1;
 - (bool)save:(id)arg1 error:(id*)arg2;

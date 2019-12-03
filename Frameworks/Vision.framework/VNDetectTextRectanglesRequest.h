@@ -20,7 +20,6 @@
 - (unsigned long long)algorithm;
 - (void)applyConfigurationOfRequest:(id)arg1;
 - (bool)detectDiacritics;
-- (id)initWithName:(id)arg1 options:(id)arg2 completionHandler:(id /* block */)arg3;
 - (bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id*)arg3;
 - (bool)minimizeFalseDetections;
 - (unsigned long long)minimumCharacterPixelHeight;

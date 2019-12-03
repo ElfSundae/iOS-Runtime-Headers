@@ -16,7 +16,7 @@
     bool  mCachedChartVertical;
     TSUBezierPath * mCachedTrendLinePath;
     int  mInputAxisType;
-    int  mLineType;
+    long long  mLineType;
     double  mMaxXValue;
     double  mMaxYValue;
     double  mMinXValue;
@@ -38,6 +38,8 @@
 @property (nonatomic, readonly) bool showTrendLineLegendText;
 @property (nonatomic, readonly) NSString *trendLineLegendText;
 
++ (long long)getTrendLineTypeForSeries:(id)arg1;
+
 - (void).cxx_destruct;
 - (void)clearParent;
 - (void)dealloc;
@@ -56,7 +58,7 @@
 - (unsigned long long)p_fillArrayX:(id)arg1 andY:(id)arg2 fromPoints:(id)arg3;
 - (unsigned long long)p_fillArrayX:(double*)arg1 andY:(double*)arg2 fromPoints:(id)arg3 hasNegativeX:(bool*)arg4;
 - (void)p_generateRegression;
-- (int)p_getTrendLineType;
+- (long long)p_getTrendLineType;
 - (id)p_linePathFromPoints:(struct { double x1; double x2; }*)arg1 count:(unsigned long long)arg2;
 - (void)p_releaseCache;
 - (struct { double x1; double x2; })p_unitPoint:(struct { double x1; double x2; })arg1 toScreenFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 offset:(double)arg3 vertical:(bool)arg4;

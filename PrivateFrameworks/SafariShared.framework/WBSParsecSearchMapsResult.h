@@ -14,6 +14,7 @@
 @property (nonatomic, readonly) NSString *lastSearchQuery;
 @property (nonatomic, retain) WBSParsecSearchMapsResultFeedbackSender *mapsFeedbackSender;
 @property (nonatomic, readonly) NSString *parsecDomainIdentifier;
+@property (nonatomic, readonly) long long parsecQueryID;
 @property (nonatomic, retain) <WBSParsecSearchSession> *parsecSearchSession;
 @property (nonatomic, readonly) SFSearchResult *sfSearchResultValue;
 @property (nonatomic, retain) WBSQuerySuggestion *siriSuggestion;

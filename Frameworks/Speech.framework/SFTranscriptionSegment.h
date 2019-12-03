@@ -15,6 +15,7 @@
         unsigned long long length; 
     }  _substringRange;
     double  _timestamp;
+    SFVoiceAnalytics * _voiceAnalytics;
 }
 
 @property (nonatomic, readonly) NSArray *alternativeConfidences;
@@ -26,11 +27,12 @@
 @property (nonatomic, readonly, copy) NSString *substring;
 @property (nonatomic, readonly) struct _NSRange { unsigned long long x1; unsigned long long x2; } substringRange;
 @property (nonatomic, readonly) double timestamp;
+@property (nonatomic, readonly) SFVoiceAnalytics *voiceAnalytics;
 
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
-- (id)_initWithSubstring:(id)arg1 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 timestamp:(double)arg3 duration:(double)arg4 confidence:(float)arg5 alternativeSubstrings:(id)arg6 alternativeConfidences:(id)arg7 phoneSequence:(id)arg8 ipaPhoneSequence:(id)arg9;
+- (id)_initWithSubstring:(id)arg1 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 timestamp:(double)arg3 duration:(double)arg4 confidence:(float)arg5 alternativeSubstrings:(id)arg6 alternativeConfidences:(id)arg7 phoneSequence:(id)arg8 ipaPhoneSequence:(id)arg9 voiceAnalytics:(id)arg10;
 - (id)alternativeConfidences;
 - (id)alternativeSubstrings;
 - (float)confidence;
@@ -46,5 +48,6 @@
 - (id)substring;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })substringRange;
 - (double)timestamp;
+- (id)voiceAnalytics;
 
 @end

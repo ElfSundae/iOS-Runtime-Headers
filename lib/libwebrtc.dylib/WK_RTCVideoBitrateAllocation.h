@@ -6,19 +6,17 @@
     struct VideoBitrateAllocation { 
         unsigned int sum_; 
         struct optional<unsigned int> { 
-            bool engaged_; 
             union { 
-                struct dummy_type { 
-                    struct empty_struct { } data[4]; 
-                } dummy_; 
-                unsigned int data_; 
+                BOOL __null_state_; 
+                unsigned int __val_; 
             } ; 
+            bool __engaged_; 
         } bitrates_[5][4]; 
     }  _nativeVideoBitrateAllocation;
 }
 
 - (id).cxx_construct;
-- (id)initWithNativeVideoBitrateAllocation:(const struct VideoBitrateAllocation { unsigned int x1; struct optional<unsigned int> { bool x_2_1_1; union { struct dummy_type { struct empty_struct { } x_1_3_1[4]; } x_2_2_1; unsigned int x_2_2_2; } x_2_1_2; } x2[5][4]; }*)arg1;
-- (struct VideoBitrateAllocation { unsigned int x1; struct optional<unsigned int> { bool x_2_1_1; union { struct dummy_type { struct empty_struct { } x_1_3_1[4]; } x_2_2_1; unsigned int x_2_2_2; } x_2_1_2; } x2[5][4]; })nativeVideoBitrateAllocation;
+- (id)initWithNativeVideoBitrateAllocation:(const struct VideoBitrateAllocation { unsigned int x1; struct optional<unsigned int> { union { BOOL x_1_2_1; unsigned int x_1_2_2; } x_2_1_1; bool x_2_1_2; } x2[5][4]; }*)arg1;
+- (struct VideoBitrateAllocation { unsigned int x1; struct optional<unsigned int> { union { BOOL x_1_2_1; unsigned int x_1_2_2; } x_2_1_1; bool x_2_1_2; } x2[5][4]; })nativeVideoBitrateAllocation;
 
 @end

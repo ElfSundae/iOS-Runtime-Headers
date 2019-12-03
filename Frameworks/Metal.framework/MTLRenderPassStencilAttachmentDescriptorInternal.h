@@ -33,7 +33,7 @@
 
 + (id)attachmentDescriptor;
 
-- (const struct MTLRenderPassAttachmentDescriptorPrivate { id x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; unsigned long long x5; unsigned long long x6; struct { double x_7_1_1; double x_7_1_2; double x_7_1_3; double x_7_1_4; } x7; double x8; unsigned int x9; unsigned long long x10; id x11; unsigned long long x12; unsigned long long x13; unsigned long long x14; unsigned long long x15; unsigned long long x16; bool x17; }*)_descriptorPrivate;
+- (const struct MTLRenderPassAttachmentDescriptorPrivate { id x1; unsigned long long x2; unsigned long long x3; unsigned long long x4; unsigned long long x5; unsigned long long x6; unsigned long long x7; struct { double x_8_1_1; double x_8_1_2; double x_8_1_3; double x_8_1_4; } x8; double x9; unsigned int x10; unsigned long long x11; id x12; unsigned long long x13; unsigned long long x14; unsigned long long x15; unsigned long long x16; unsigned long long x17; unsigned long long x18; bool x19; }*)_descriptorPrivate;
 - (unsigned int)clearStencil;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;

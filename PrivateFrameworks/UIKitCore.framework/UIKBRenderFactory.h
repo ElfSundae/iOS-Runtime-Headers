@@ -57,6 +57,7 @@
 - (id)biuKeyImageName;
 - (id)boldKeyImageName;
 - (bool)boldTextEnabled;
+- (Class)contentViewClassForPopupKey:(id)arg1;
 - (id)controlKeyBackgroundColorName;
 - (id)controlKeyForegroundColorName;
 - (id)controlKeyShadowColorName;
@@ -107,6 +108,7 @@
 - (id)passcodeKeyEdgeColorName;
 - (id)passcodeShiftedControlKeyTraits;
 - (id)pasteKeyImageName;
+- (bool)popupKeyUsesCustomKeyContentView:(id)arg1;
 - (bool)preferStringKeycapOverImage;
 - (id)renderConfig;
 - (id)renderingContext;

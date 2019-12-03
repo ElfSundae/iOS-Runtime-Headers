@@ -13,7 +13,7 @@
     bool  mVertMerge;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (int)gridSpan;
 - (bool)horzMerge;

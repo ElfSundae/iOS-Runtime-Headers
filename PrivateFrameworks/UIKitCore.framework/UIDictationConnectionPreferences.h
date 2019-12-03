@@ -13,12 +13,15 @@
 - (void).cxx_destruct;
 - (id)afPreferences;
 - (void)afPreferencesChanged:(id)arg1;
+- (long long)dataSharingOptInStatus;
 - (bool)dictationIsEnabled;
+- (id)dictationSLSEnabledLanguages;
 - (bool)ignoreServerManualEndpointingThreshold;
 - (id)initSingleton;
 - (id)languageCode;
 - (id)manualEndpointingThreshold;
 - (void)setAfPreferences:(id)arg1;
+- (bool)suppressDataSharingOptIn;
 - (bool)suppressDictationOptIn;
 
 @end

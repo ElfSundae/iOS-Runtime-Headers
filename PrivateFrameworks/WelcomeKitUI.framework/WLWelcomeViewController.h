@@ -6,11 +6,15 @@
     WLMigrationCompletedViewController * _completedViewController;
     id /* block */  _completionHandler;
     bool  _dismissAfterTimeout;
+    bool  _forceUITestMode;
+    bool  _forceUITestModeDownloadError;
     WLIntroViewController * _introViewController;
     WLWelcomeViewControllerMetrics * _metrics;
     WLPairingViewController * _pairingViewController;
     WLMigrationProgressViewController * _progressViewController;
+    WLRetryViewController * _retryViewController;
     WLSourceDevicesController * _sourceDevicesController;
+    bool  _userDidChooseRetry;
 }
 
 @property (nonatomic, copy) id /* block */ completionHandler;
@@ -27,15 +31,18 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_frameForOutgoingGroupViewAfterAnimation;
 - (void)_loadIntroGroupView;
 - (void)_migrationDidBegin;
-- (void)_progressViewControllerDidFinishWithSuccess:(bool)arg1;
+- (void)_progressViewControllerDidFinishWithSuccess:(bool)arg1 retry:(bool)arg2;
 - (void)_removeGroupViewController:(id)arg1;
 - (void)_startConnectivity;
+- (void)_swapFromGroupViewController:(id)arg1 toGroupViewController:(id)arg2 completion:(id /* block */)arg3;
 - (void)_transitionToCompletedViewController;
 - (void)_transitionToPairingCodeViewControllerWithPairingCode:(id)arg1 wifiPSK:(id)arg2 ssid:(id)arg3;
 - (void)_transitionToProgressViewControllerWithSourceDevice:(id)arg1;
+- (void)_transitionToRetryViewController;
 - (void)_uiTestModeStartFakePairing;
 - (id /* block */)completionHandler;
 - (id)init;
+- (id)initForUITestWithForceDownloadError:(bool)arg1;
 - (void)loadView;
 - (void)setCompletionHandler:(id /* block */)arg1;
 - (void)sourceDeviceController:(id)arg1 didDiscoverDevice:(id)arg2;

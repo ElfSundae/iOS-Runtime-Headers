@@ -5,7 +5,7 @@
 @interface PUImportOneUpScrubberCell : PUReviewScrubberCell <PXChangeObserver> {
     long long  _badgeType;
     <PUImportOneUpScrubberCellDisplayDelegate> * _displayDelegate;
-    PUImportItemViewModel * _importItem;
+    PXImportItemViewModel * _importItem;
     bool  _needsBadgeUpdate;
     bool  _selectable;
     UIActivityIndicatorView * _spinner;
@@ -17,7 +17,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) <PUImportOneUpScrubberCellDisplayDelegate> *displayDelegate;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) PUImportItemViewModel *importItem;
+@property (nonatomic, retain) PXImportItemViewModel *importItem;
 @property (nonatomic) bool needsBadgeUpdate;
 @property (nonatomic) bool selectable;
 @property (nonatomic, readonly) UIActivityIndicatorView *spinner;

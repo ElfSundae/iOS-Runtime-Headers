@@ -9,8 +9,8 @@
     int  _droppedFrameCount;
     NSMutableArray * _effectsArray;
     bool  _effectsRegistered;
-    double  _effectsTimeoutThreshold;
     int  _failedFrameCount;
+    bool  _forceDisableEffectsHealthCheck;
     struct { 
         long long value; 
         int timescale; 

@@ -5,7 +5,7 @@
 @interface MDARController : NSObject <ARSessionDelegate> {
     <MDARControllerDelegate> * _delegate;
     ARSession * _session;
-    ARWorldTrackingConfiguration * _sessionConfiguration;
+    ARPositionalTrackingConfiguration * _sessionConfiguration;
     unsigned long long  _sessionInterruptedReason;
     unsigned long long  _trackingState;
     unsigned long long  _trackingStateReason;

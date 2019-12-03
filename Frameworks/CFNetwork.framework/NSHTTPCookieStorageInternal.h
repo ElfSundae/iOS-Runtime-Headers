@@ -3,8 +3,6 @@
  */
 
 @interface NSHTTPCookieStorageInternal : NSObject {
-    bool  _privateStorage_didRegister;
-    bool  _storage_didRegister;
     NSRecursiveLock * dataLock;
     bool  privateBrowsing;
     struct OpaqueCFHTTPCookieStorage { } * privateStorage;

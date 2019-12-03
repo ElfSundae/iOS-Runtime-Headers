@@ -19,6 +19,7 @@
 - (void)_notifyDelegateOfUpdatedMediaSession:(id)arg1;
 - (id)delegate;
 - (void)encodeWithCoder:(id)arg1;
+- (void)handleRuntimeStateUpdate:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)mediaSession;
 - (id)routeUID;

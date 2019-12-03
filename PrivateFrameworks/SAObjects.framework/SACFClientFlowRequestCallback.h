@@ -19,6 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSString *nlInput;
 @property (readonly) Class superclass;
+@property (nonatomic, retain) SASVSystemDialogActOutput *systemDialogActOutput;
 @property (nonatomic, copy) NSArray *weightedPromptAbortValues;
 @property (nonatomic, copy) NSArray *weightedPromptResponseTargets;
 @property (nonatomic, copy) NSNumber *weightedPromptStrict;
@@ -51,10 +52,12 @@
 - (void)setDisambiguationPromptTargetDomain:(id)arg1;
 - (void)setDisplayHintsAsJson:(id)arg1;
 - (void)setNlInput:(id)arg1;
+- (void)setSystemDialogActOutput:(id)arg1;
 - (void)setWeightedPromptAbortValues:(id)arg1;
 - (void)setWeightedPromptResponseTargets:(id)arg1;
 - (void)setWeightedPromptStrict:(id)arg1;
 - (void)setWeightedPromptTargetDomain:(id)arg1;
+- (id)systemDialogActOutput;
 - (id)weightedPromptAbortValues;
 - (id)weightedPromptResponseTargets;
 - (id)weightedPromptStrict;

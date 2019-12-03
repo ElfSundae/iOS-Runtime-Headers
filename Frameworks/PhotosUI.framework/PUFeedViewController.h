@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUFeedViewController : UIViewController <PUAlbumStreamActivityDelegate, PUFeedCaptionCellDelegate, PUFeedCollectionViewLayoutDelegate, PUFeedImageCellDelegate, PUFeedInvitationCellDelegate, PUFeedPlayerCellDelegate, PUFeedTextCellDelegate, PUOneUpPresentationHelperDelegate, PUPhotoBrowserZoomTransitionDelegate, PUScrollViewSpeedometerDelegate, PXCloudFeedNavigating, PXFeedSectionInfosManagerDelegate, PXNavigableCloudFeedViewController, PXSettingsKeyObserver, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDragSource, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, UIViewControllerPreviewingDelegate, UIViewControllerPreviewingDelegate_Private, _UISettingsKeyObserver> {
+@interface PUFeedViewController : UIViewController <PLCloudFeedNavigating, PUAlbumStreamActivityDelegate, PUFeedCaptionCellDelegate, PUFeedCollectionViewLayoutDelegate, PUFeedImageCellDelegate, PUFeedInvitationCellDelegate, PUFeedPlayerCellDelegate, PUFeedTextCellDelegate, PUOneUpPresentationHelperDelegate, PUPhotoBrowserZoomTransitionDelegate, PUScrollViewSpeedometerDelegate, PXFeedSectionInfosManagerDelegate, PXNavigableCloudFeedViewController, PXSettingsKeyObserver, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDragSource, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, _UISettingsKeyObserver> {
     PUAlbumStreamActivity * __albumStreamActivity;
     bool  __appJustEnteredForeground;
     struct CGSize { 
@@ -10,7 +10,7 @@
         double height; 
     }  __assetsAddedCachedSectionHeaderSize;
     long long  __barsState;
-    PUFeedAssetContainerList * __browsingAssetContainerList;
+    PXFeedAssetContainerList * __browsingAssetContainerList;
     PLManagedAsset * __browsingSelectedAsset;
     PLCloudSharedComment * __browsingSelectedComment;
     PHCachingImageManager * __cachingImageManager;
@@ -40,14 +40,13 @@
     long long  __loadedSectionInfosWindowSize;
     bool  __needsUpdateLayout;
     bool  __oneUpDataSourceUpdateScheduled;
-    PUFeedAssetContainerList * __oneUpPresentationAssetContainerList;
+    PXFeedAssetContainerList * __oneUpPresentationAssetContainerList;
     PUOneUpPresentationHelper * __oneUpPresentationHelper;
     PUPhotoBrowserOneUpPresentationAdaptor * __photoBrowserOneUpPresentationAdaptor;
     PUPhotoPinchGestureRecognizer * __pinchGestureRecognizer;
     UICollectionView * __pinchedCollectionView;
     double  __preheatingWindowSize;
     PUPhotosPickerViewController * __presentedPhotosPickerViewController;
-    <UIViewControllerPreviewing> * __previewingItem;
     struct UIEdgeInsets { 
         double top; 
         double left; 
@@ -83,7 +82,7 @@
 @property (setter=_setAppJustEnteredForeground:, nonatomic) bool _appJustEnteredForeground;
 @property (setter=_setAssetsAddedCachedSectionHeaderSize:, nonatomic) struct CGSize { double x1; double x2; } _assetsAddedCachedSectionHeaderSize;
 @property (setter=_setBarsState:, nonatomic) long long _barsState;
-@property (setter=_setBrowsingAssetContainerList:, nonatomic, retain) PUFeedAssetContainerList *_browsingAssetContainerList;
+@property (setter=_setBrowsingAssetContainerList:, nonatomic, retain) PXFeedAssetContainerList *_browsingAssetContainerList;
 @property (setter=_setBrowsingSelectedAsset:, nonatomic, retain) PLManagedAsset *_browsingSelectedAsset;
 @property (setter=_setBrowsingSelectedComment:, nonatomic, retain) PLCloudSharedComment *_browsingSelectedComment;
 @property (nonatomic, readonly) PHCachingImageManager *_cachingImageManager;
@@ -110,14 +109,13 @@
 @property (setter=_setLoadedSectionInfosWindowSize:, nonatomic) long long _loadedSectionInfosWindowSize;
 @property (setter=_setNeedsUpdateLayout:, nonatomic) bool _needsUpdateLayout;
 @property (getter=_isOneUpDataSourceUpdateScheduled, setter=_setOneUpDataSourceUpdateScheduled:, nonatomic) bool _oneUpDataSourceUpdateScheduled;
-@property (setter=_setOneUpPresentationAssetContainerList:, nonatomic, retain) PUFeedAssetContainerList *_oneUpPresentationAssetContainerList;
+@property (setter=_setOneUpPresentationAssetContainerList:, nonatomic, retain) PXFeedAssetContainerList *_oneUpPresentationAssetContainerList;
 @property (setter=_setOneUpPresentationHelper:, nonatomic, retain) PUOneUpPresentationHelper *_oneUpPresentationHelper;
 @property (setter=_setPhotoBrowserOneUpPresentationAdaptor:, nonatomic, retain) PUPhotoBrowserOneUpPresentationAdaptor *_photoBrowserOneUpPresentationAdaptor;
 @property (setter=_setPinchGestureRecognizer:, nonatomic, retain) PUPhotoPinchGestureRecognizer *_pinchGestureRecognizer;
 @property (setter=_setPinchedCollectionView:, nonatomic, retain) UICollectionView *_pinchedCollectionView;
 @property (setter=_setPreheatingWindowSize:, nonatomic) double _preheatingWindowSize;
 @property (setter=_setPresentedPhotosPickerViewController:, nonatomic, retain) PUPhotosPickerViewController *_presentedPhotosPickerViewController;
-@property (setter=_setPreviewingItem:, nonatomic, retain) <UIViewControllerPreviewing> *_previewingItem;
 @property (setter=_setPreviousSafeAreaInsets:, nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } _previousSafeAreaInsets;
 @property (setter=_setPushedAlbum:, nonatomic, retain) PLCloudSharedAlbum *_pushedAlbum;
 @property (setter=_setPushedViewController:, nonatomic, retain) UIViewController *_pushedViewController;
@@ -148,7 +146,6 @@
 
 - (void).cxx_destruct;
 - (id)_albumStreamActivity;
-- (bool)_appAllowsSupressionOfAlerts;
 - (void)_appDidEnterBackground:(id)arg1;
 - (void)_appDidFinishEnteringForeground;
 - (bool)_appJustEnteredForeground;
@@ -228,7 +225,6 @@
 - (bool)_hasCheckedLibraryUpdatingExpiration;
 - (id)_indexPathForImageHiddenDuringZoomTransition;
 - (id)_indexPathForItemWithAsset:(id)arg1 inCollectionView:(id)arg2;
-- (id)_indexPathForPosition:(struct CGPoint { double x1; double x2; })arg1 inCollectionView:(id)arg2 outHitCell:(id*)arg3;
 - (void)_invalidateCachedMetrics;
 - (void)_invalidateLastPreheatedContentOffset;
 - (void)_invalidatePreheatedAssets;
@@ -275,7 +271,6 @@
 - (double)_preheatingWindowSize;
 - (void)_presentConfidentialityWarning;
 - (id)_presentedPhotosPickerViewController;
-- (id)_previewingItem;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_previousSafeAreaInsets;
 - (id)_pushedAlbum;
 - (id)_pushedViewController;
@@ -324,7 +319,6 @@
 - (void)_setPinchedCollectionView:(id)arg1;
 - (void)_setPreheatingWindowSize:(double)arg1;
 - (void)_setPresentedPhotosPickerViewController:(id)arg1;
-- (void)_setPreviewingItem:(id)arg1;
 - (void)_setPreviousSafeAreaInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)_setPushedAlbum:(id)arg1;
 - (void)_setPushedViewController:(id)arg1;
@@ -427,7 +421,6 @@
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (long long)contentType;
 - (void)dealloc;
-- (void)didDismissPreviewViewController:(id)arg1 committing:(bool)arg2;
 - (void)didTapButtonInFeedTextCell:(id)arg1;
 - (void)didTapCommentButtonInFeedImageCell:(id)arg1;
 - (void)didTapCommentButtonInFeedPlayerCell:(id)arg1;
@@ -466,9 +459,7 @@
 - (bool)prefersStatusBarHidden;
 - (bool)prepareForDismissingForced:(bool)arg1;
 - (void)prepareForPopoverPresentation:(id)arg1;
-- (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
-- (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint { double x1; double x2; })arg2;
-- (bool)pu_handleSecondTabTap;
+- (bool)pu_scrollToInitialPositionAnimated:(bool)arg1;
 - (bool)pu_wantsNavigationBarVisible;
 - (bool)pu_wantsTabBarVisible;
 - (bool)pu_wantsToolbarVisible;
@@ -495,7 +486,6 @@
 - (void)viewWillDisappear:(bool)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
-- (void)willPresentPreviewViewController:(id)arg1 forLocation:(struct CGPoint { double x1; double x2; })arg2 inSourceView:(id)arg3;
 - (void)zoomTransition:(id)arg1 didFinishForOperation:(long long)arg2 animated:(bool)arg3 interactive:(bool)arg4;
 - (bool)zoomTransition:(id)arg1 getFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg2 contentMode:(long long*)arg3 cropInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; }*)arg4 forPhotoToken:(id)arg5 operation:(long long)arg6;
 - (id)zoomTransition:(id)arg1 photoTokenForPhoto:(id)arg2 inCollection:(id)arg3;

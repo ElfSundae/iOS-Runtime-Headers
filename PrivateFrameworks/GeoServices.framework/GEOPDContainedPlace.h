@@ -6,9 +6,24 @@
     NSMutableArray * _childPlaces;
     unsigned long long  _featureId;
     struct { 
-        unsigned int featureId : 1; 
-    }  _has;
+        unsigned int has_featureId : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_childPlaces : 1; 
+        unsigned int read_parentPlace : 1; 
+        unsigned int read_siblingPlaces : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_childPlaces : 1; 
+        unsigned int wrote_featureId : 1; 
+        unsigned int wrote_parentPlace : 1; 
+        unsigned int wrote_siblingPlaces : 1; 
+    }  _flags;
     GEOPDLinkedPlace * _parentPlace;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     NSMutableArray * _siblingPlaces;
     PBUnknownFields * _unknownFields;
 }
@@ -22,9 +37,15 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 + (Class)childPlaceType;
++ (bool)isValid:(id)arg1;
 + (Class)siblingPlaceType;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsChildPlace:(id)arg1;
+- (void)_addNoFlagsSiblingPlace:(id)arg1;
+- (void)_readChildPlaces;
+- (void)_readParentPlace;
+- (void)_readSiblingPlaces;
 - (void)addChildPlace:(id)arg1;
 - (void)addSiblingPlace:(id)arg1;
 - (id)childPlaceAtIndex:(unsigned long long)arg1;
@@ -32,6 +53,7 @@
 - (unsigned long long)childPlacesCount;
 - (void)clearChildPlaces;
 - (void)clearSiblingPlaces;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -40,9 +62,12 @@
 - (bool)hasFeatureId;
 - (bool)hasParentPlace;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)parentPlace;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setChildPlaces:(id)arg1;
 - (void)setFeatureId:(unsigned long long)arg1;

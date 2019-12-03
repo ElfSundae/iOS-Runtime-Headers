@@ -9,5 +9,6 @@
 - (void)readerSession:(NFReaderSession *)arg1 externalReaderFieldEvent:(NFTechnologyEvent *)arg2;
 - (void)readerSession:(NFReaderSession *)arg1 externalReaderFieldNotification:(NFFieldNotification *)arg2;
 - (void)readerSessionDidEndUnexpectedly:(NFReaderSession *)arg1;
+- (void)readerSessionDidEndUnexpectedly:(NFReaderSession *)arg1 reason:(NSError *)arg2;
 
 @end

@@ -31,6 +31,7 @@
 - (id)init;
 - (id)initPrimaryPayload:(int)arg1 dtxPayload:(int)arg2 redPayload:(int)arg3 secondaryPayloads:(id)arg4 allowAudioSwitching:(bool)arg5 sbr:(bool)arg6 aacBlockSize:(int)arg7;
 - (id)initWithPhoneContinuity:(bool)arg1 allowAudioSwitching:(bool)arg2 sbr:(bool)arg3 aacBlockSize:(int)arg4;
+- (bool)isEqual:(id)arg1;
 - (bool)isPayloadSupported:(int)arg1;
 - (id)rules;
 - (id)secondaryPayloads;

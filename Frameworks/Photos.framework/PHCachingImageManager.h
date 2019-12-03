@@ -2,28 +2,48 @@
    Image: /System/Library/Frameworks/Photos.framework/Photos
  */
 
-@interface PHCachingImageManager : PHImageManager {
+@interface PHCachingImageManager : PHImageManager <PHImageCacheDelegate> {
     bool  _allowsCachingHighQualityImages;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _cachingLock;
+    NSMutableSet * _cachingRequestIDs;
+    PHImageCache * _imageCache;
+    bool  _imageCacheCommitScheduled;
+    NSObject<OS_dispatch_source> * _memoryEventSource;
+    PHPhotoLibrary * _photoLibrary;
+    NSObject<OS_dispatch_queue> * _serialQueue;
 }
 
 @property (nonatomic) bool allowsCachingHighQualityImages;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 // Image: /System/Library/Frameworks/Photos.framework/Photos
 
-- (id)_fireCloudDownloadOfImageForAsset:(id)arg1 format:(int)arg2 optimalSourcePixelSize:(struct CGSize { double x1; double x2; })arg3 completionHandler:(id /* block */)arg4;
-- (id)_highPriorityRequestWaitGroup;
-- (id)_modernCachingImageManager;
++ (id)_chooseImageTableFormatForPreheatingFromFormats:(id)arg1 targetSize:(struct CGSize { double x1; double x2; })arg2 contentMode:(long long)arg3 returnBestTableRegardlessOfFit:(bool)arg4;
+
+- (void).cxx_destruct;
+- (id)_cacheFailReasonFromInfo:(id)arg1;
+- (bool)_cacheImageResult:(id)arg1 forRequest:(id)arg2;
+- (bool)_canPopulateCacheForResult:(id)arg1;
+- (void)_commitCacheChanges;
+- (void)_handleCachingImageRequestResult:(id)arg1 request:(id)arg2 context:(id)arg3;
+- (id)_imageTableForPreheatingDegradedOpportunisticRequestsWithPhotoLibrary:(id)arg1;
+- (void)_preheatImageTable:(id)arg1 forAssets:(id)arg2;
+- (void)_scheduleOrCommitCacheChangesIfNeeded;
+- (id)_tableFormats;
+- (void)additionalWorkForImageRequestCompletedWithResult:(id)arg1 request:(id)arg2 context:(id)arg3;
 - (bool)allowsCachingHighQualityImages;
-- (bool)canAvoidTouchingAssetsWithTargetSize:(struct CGSize { double x1; double x2; })arg1 contentMode:(long long)arg2 options:(id)arg3 outBestFormat:(int*)arg4 outBestFormatIsTable:(bool*)arg5 outDegradedFormat:(int*)arg6 outDegradedFormatIsTable:(bool*)arg7;
-- (id)description;
+- (void)imageCache:(id)arg1 didEvictCacheEntry:(id)arg2;
 - (id)init;
-- (int)requestImageForAsset:(id)arg1 targetSize:(struct CGSize { double x1; double x2; })arg2 contentMode:(long long)arg3 options:(id)arg4 resultHandler:(id /* block */)arg5;
+- (void)mediaRequestContext:(id)arg1 isQueryingCacheForRequest:(id)arg2 didWait:(bool*)arg3 didFindImage:(bool*)arg4 resultHandler:(id /* block */)arg5;
 - (void)setAllowsCachingHighQualityImages:(bool)arg1;
 - (void)startCachingImagesForAssets:(id)arg1 targetSize:(struct CGSize { double x1; double x2; })arg2 contentMode:(long long)arg3 options:(id)arg4;
-- (void)startCachingImagesForImageLoadingAssets:(id)arg1 targetSize:(struct CGSize { double x1; double x2; })arg2 contentMode:(long long)arg3 options:(id)arg4;
 - (void)stopCachingImagesForAllAssets;
 - (void)stopCachingImagesForAssets:(id)arg1 targetSize:(struct CGSize { double x1; double x2; })arg2 contentMode:(long long)arg3 options:(id)arg4;
-- (void)stopCachingImagesForImageLoadingAssets:(id)arg1 targetSize:(struct CGSize { double x1; double x2; })arg2 contentMode:(long long)arg3 options:(id)arg4;
 
 // Image: /System/Library/PrivateFrameworks/Memories.framework/Memories
 

@@ -2,22 +2,25 @@
    Image: /System/Library/PrivateFrameworks/AXMediaUtilities.framework/AXMediaUtilities
  */
 
-@interface AXMVisionEngine : NSObject <AXMDescribing, AXMFeatureTrackingManagerDelegate, AXMTaskDispatcherDelegate, AXMVisionEngineNodeConnectionDelegate, NSCopying, NSSecureCoding> {
+@interface AXMVisionEngine : NSObject <AXMDescribing, AXMTaskDispatcherDelegate, AXMVisionEngineNodeConnectionDelegate, NSCopying, NSSecureCoding> {
     AXMService * _axMediaUtilsService;
     AXMVisionEngineCache * _cache;
     bool  _diagnosticsEnabled;
-    bool  _featureTrackingEnabled;
+    bool  _disableResultLogging;
     NSString * _identifier;
+    bool  _imageRegistrationFilteringEnabled;
     long long  _maximumQueueSize;
+    long long  _minimumImageRegistrationSignalLevel;
+    bool  _prioritySchedulingAllowMultipleNodeExecution;
     bool  _prioritySchedulingEnabled;
     NSObject<OS_dispatch_queue> * _queue;
     _AXMVisionEngineAnalysisTask * _queue_currentTask;
     NSMutableArray * _queue_evaluationNodes;
-    AXMFeatureTrackingManager * _queue_featureTrackingManager;
-    NSMapTable * _queue_featureTrackingObservers;
+    AXMImageRegistrationNode * _queue_imageRegistrationNode;
     NSMutableArray * _queue_resultHandlers;
     bool  _queue_shouldNotifyServiceOfEngineConfigChange;
     NSMutableArray * _queue_sourceNodes;
+    AXMSequenceRequestManager * _sequenceRequestManager;
     AXMTaskDispatcher * _taskDispatcher;
     unsigned long long  _thresholdPriority;
 }
@@ -28,31 +31,31 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (getter=areDiagnosticsEnabled, nonatomic) bool diagnosticsEnabled;
+@property (nonatomic) bool disableResultLogging;
 @property (nonatomic, readonly) NSArray *evaluationNodes;
-@property (getter=isFeatureTrackingEnabled, nonatomic) bool featureTrackingEnabled;
 @property (readonly) unsigned long long hash;
 @property (copy) NSString *identifier;
+@property (nonatomic) bool imageRegistrationFilteringEnabled;
 @property (nonatomic, readonly) bool isCachingEnabled;
 @property long long maximumQueueSize;
+@property (nonatomic) long long minimumImageRegistrationSignalLevel;
+@property bool prioritySchedulingAllowMultipleNodeExecution;
 @property bool prioritySchedulingEnabled;
+@property (nonatomic, retain) AXMSequenceRequestManager *sequenceRequestManager;
 @property (nonatomic, readonly) NSArray *sourceNodes;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) AXMTaskDispatcher *taskDispatcher;
 @property unsigned long long thresholdPriority;
-@property (nonatomic, readonly) NSArray *trackedFaces;
-@property (nonatomic, readonly) NSArray *trackedModelClassifiers;
-@property (nonatomic, readonly) NSArray *trackedRectangles;
-@property (nonatomic, readonly) NSArray *trackedText;
 
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (void)_commonInit;
+- (void)_invokeFullQueueResultHandlersForContext:(id)arg1;
 - (void)_invokeResultHandlers:(id)arg1 withError:(id)arg2;
 - (void)_invokeResultHandlers:(id)arg1 withResult:(id)arg2;
 - (bool)_queue_activeEvaluationNodesExclusivelyUseVisionFramework:(id)arg1;
-- (id)_queue_activeEvaluationNodesForOptions:(id)arg1 applyPriorityScheduling:(bool)arg2;
-- (void)_queue_addFeatureTrackingObbserver:(id)arg1 targetQueue:(id)arg2;
+- (id)_queue_activeEvaluationNodesForOptions:(id)arg1 applyPriorityScheduling:(bool)arg2 prioritySchedulingAllowMultipleNodeExecution:(bool)arg3;
 - (void)_queue_addResultHandler:(id /* block */)arg1;
 - (void)_queue_evaluateWithSource:(id)arg1 context:(id)arg2;
 - (id)_queue_evaluationNodeWithIdentifier:(id)arg1;
@@ -61,15 +64,12 @@
 - (id)_queue_makeUniqueIdentifierForNode:(Class)arg1;
 - (bool)_queue_nodeIdentifierExists:(id)arg1;
 - (void)_queue_remotelyEvaluateWithSource:(id)arg1 context:(id)arg2;
-- (void)_queue_removeAllFeatureTrackingObservers;
 - (void)_queue_removeAllResultHandlers;
-- (void)_queue_removeFeatureTrackingObbserver:(id)arg1;
 - (void)_queue_removeResultHandler:(id /* block */)arg1;
 - (bool)_queue_shouldContinueWithoutResultHandlers:(id)arg1;
 - (bool)_queue_shouldEvaluateNode:(id)arg1 withOptions:(id)arg2;
 - (id)_queue_sourceNodeWithIdentifier:(id)arg1;
 - (void)addEvaluationNode:(id)arg1;
-- (void)addFeatureTrackingObbserver:(id)arg1 targetQueue:(id)arg2;
 - (void)addResultHandler:(id /* block */)arg1;
 - (void)addSourceNode:(id)arg1;
 - (void)addSourceNodes:(id)arg1 evaluationNodes:(id)arg2;
@@ -89,6 +89,7 @@
 - (void)captureSessionNodeWillProcessFrame:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)disableResultCaching;
+- (bool)disableResultLogging;
 - (void)dispatcher:(id)arg1 handleTask:(id)arg2;
 - (void)enableResultCachingWithCacheSize:(long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -97,6 +98,7 @@
 - (id)evaluationNodes;
 - (unsigned long long)hash;
 - (id)identifier;
+- (bool)imageRegistrationFilteringEnabled;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
 - (void)insertEvaluationNode:(id)arg1 atIndex:(long long)arg2;
@@ -104,42 +106,39 @@
 - (bool)isCachingEnabled;
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToEngine:(id)arg1;
-- (bool)isFeatureTrackingEnabled;
 - (id)makeUniqueIdentifierForNode:(Class)arg1;
 - (long long)maximumQueueSize;
+- (long long)minimumImageRegistrationSignalLevel;
 - (bool)nodeIdentifierExists:(id)arg1;
 - (void)prewarmEngine;
+- (bool)prioritySchedulingAllowMultipleNodeExecution;
 - (bool)prioritySchedulingEnabled;
 - (void)purgeResources:(id /* block */)arg1;
 - (void)removeAllEvaluationNodes;
-- (void)removeAllFeatureTrackingObservers;
 - (void)removeAllResultHandlers;
 - (void)removeAllSourceNodes;
 - (void)removeEvaluationNode:(id)arg1;
-- (void)removeFeatureTrackingObbserver:(id)arg1;
 - (void)removeResultHandler:(id /* block */)arg1;
 - (void)removeSourceNode:(id)arg1;
 - (id)resultHandlers;
+- (id)sequenceRequestManager;
 - (void)setAxMediaUtilsService:(id)arg1;
 - (void)setCache:(id)arg1;
 - (void)setDiagnosticsEnabled:(bool)arg1;
-- (void)setFeatureTrackingEnabled:(bool)arg1;
+- (void)setDisableResultLogging:(bool)arg1;
 - (void)setIdentifier:(id)arg1;
+- (void)setImageRegistrationFilteringEnabled:(bool)arg1;
 - (void)setMaximumQueueSize:(long long)arg1;
+- (void)setMinimumImageRegistrationSignalLevel:(long long)arg1;
+- (void)setPrioritySchedulingAllowMultipleNodeExecution:(bool)arg1;
 - (void)setPrioritySchedulingEnabled:(bool)arg1;
+- (void)setSequenceRequestManager:(id)arg1;
 - (void)setTaskDispatcher:(id)arg1;
 - (void)setThresholdPriority:(unsigned long long)arg1;
 - (id)sourceNodeWithIdentifier:(id)arg1;
 - (id)sourceNodes;
 - (id)taskDispatcher;
 - (unsigned long long)thresholdPriority;
-- (id)trackedFaces;
-- (id)trackedModelClassifiers;
-- (id)trackedRectangles;
-- (id)trackedText;
-- (void)trackingManager:(id)arg1 didBeginTrackingFeature:(id)arg2 appliedOrientation:(id)arg3;
-- (void)trackingManager:(id)arg1 didFinishTrackingFeature:(id)arg2 appliedOrientation:(id)arg3;
-- (void)trackingManager:(id)arg1 trackingFeatureLocationDidChange:(id)arg2 appliedOrientation:(id)arg3;
 - (void)triggerWithSource:(id)arg1 context:(id)arg2;
 - (void)updateEngineConfiguration:(id /* block */)arg1;
 

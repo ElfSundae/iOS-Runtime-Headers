@@ -12,7 +12,6 @@
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (id)description;
 - (unsigned long long)imageCropAndScaleOption;
 - (id)initWithRequestClass:(Class)arg1;
 - (id)modelCachingIdentifier;

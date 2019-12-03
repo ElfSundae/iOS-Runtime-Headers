@@ -19,7 +19,7 @@
 
 + (id)name;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)formula;
 - (id)formulaString;

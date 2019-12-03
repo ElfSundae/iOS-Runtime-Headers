@@ -8,9 +8,9 @@
 }
 
 - (void).cxx_destruct;
-- (void)_applicationDidEnterBackground:(id)arg1;
 - (id)_connectToServiceWithCompletion:(id /* block */)arg1;
 - (id)_remoteViewController;
+- (void)_sceneDidEnterBackground:(id)arg1;
 - (void)_setUpServiceProxyIfNeeded;
 - (void)authenticateToPresentInPopover:(bool)arg1 completion:(id /* block */)arg2;
 - (id)init;

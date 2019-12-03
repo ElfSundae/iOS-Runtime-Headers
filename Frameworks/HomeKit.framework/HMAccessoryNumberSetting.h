@@ -2,11 +2,15 @@
    Image: /System/Library/Frameworks/HomeKit.framework/HomeKit
  */
 
-@interface HMAccessoryNumberSetting : HMAccessorySetting
+@interface HMAccessoryNumberSetting : HMAccessorySetting <HFStateDumpBuildable>
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly) NSNumber *maximumValue;
 @property (readonly) NSNumber *minimumValue;
 @property (readonly) NSNumber *stepValue;
+@property (readonly) Class superclass;
 
 // Image: /System/Library/Frameworks/HomeKit.framework/HomeKit
 

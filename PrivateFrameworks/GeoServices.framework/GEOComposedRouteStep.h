@@ -2,7 +2,8 @@
    Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
  */
 
-@interface GEOComposedRouteStep : NSObject {
+@interface GEOComposedRouteStep : NSObject <NSSecureCoding> {
+    unsigned int  _actualDistance;
     GEOComposedRoute * _composedRoute;
     int  _drivingSide;
     GEOStep * _geoStep;
@@ -20,12 +21,13 @@
     unsigned long long  _stepIndex;
 }
 
+@property (nonatomic) unsigned int actualDistance;
 @property (nonatomic, readonly) GEOComposedTransitTripRouteStep *closestLogicalBoardOrAlightStep;
 @property (nonatomic) GEOComposedRoute *composedRoute;
 @property (nonatomic, readonly) unsigned int distance;
 @property (nonatomic, readonly) int drivingSide;
 @property (nonatomic, readonly) unsigned int duration;
-@property (nonatomic, readonly) struct { double x1; double x2; } endGeoCoordinate;
+@property (nonatomic, readonly) struct { double x1; double x2; double x3; } endGeoCoordinate;
 @property (nonatomic, readonly) unsigned int endPointIndex;
 @property (nonatomic, readonly) GEOPBTransitStop *endingStop;
 @property (nonatomic, readonly) GEOStep *geoStep;
@@ -58,7 +60,7 @@
 @property (nonatomic, readonly) bool shouldCreateFerryProgressionGroup;
 @property (nonatomic, readonly) bool shouldCreateTransferGroup;
 @property (nonatomic, readonly) bool shouldCreateTripProgressionGroup;
-@property (nonatomic, readonly) struct { double x1; double x2; } startGeoCoordinate;
+@property (nonatomic, readonly) struct { double x1; double x2; double x3; } startGeoCoordinate;
 @property (nonatomic, readonly) unsigned int startPointIndex;
 @property (nonatomic, readonly) unsigned int startTime;
 @property (nonatomic, readonly) GEOPBTransitStop *startingStop;
@@ -70,16 +72,20 @@
 
 // Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (bool)_MapsCarPlay_isEqual:(id)arg1;
 - (bool)_belongsToTransferGroup;
+- (unsigned int)actualDistance;
 - (id)closestLogicalBoardOrAlightStep;
 - (id)composedRoute;
 - (id)description;
 - (unsigned int)distance;
 - (int)drivingSide;
 - (unsigned int)duration;
-- (struct { double x1; double x2; })endGeoCoordinate;
+- (void)encodeWithCoder:(id)arg1;
+- (struct { double x1; double x2; double x3; })endGeoCoordinate;
 - (unsigned int)endPointIndex;
 - (id)endingStop;
 - (id)firstNameOrBranch;
@@ -87,6 +93,7 @@
 - (id)getNextStep;
 - (id)getPreviousStep;
 - (bool)hasDuration;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithComposedRoute:(id)arg1 GEOStep:(id)arg2 routeLegType:(long long)arg3 stepIndex:(unsigned long long)arg4 pointRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg5 maneuverPointRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg6;
 - (id)initWithComposedRoute:(id)arg1 routeLegType:(long long)arg2 stepIndex:(unsigned long long)arg3 pointRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg4;
 - (id)instructions;
@@ -110,6 +117,7 @@
 - (id)routeDetailsPrimaryArtwork;
 - (id)routeDetailsSecondaryArtwork;
 - (long long)routeLegType;
+- (void)setActualDistance:(unsigned int)arg1;
 - (void)setComposedRoute:(id)arg1;
 - (bool)shouldCreateAlightExitGroup;
 - (bool)shouldCreateArrivalGroup;
@@ -118,7 +126,7 @@
 - (bool)shouldCreateTransferGroup;
 - (bool)shouldCreateTripProgressionGroup;
 - (bool)shouldPreloadWithHighPriority;
-- (struct { double x1; double x2; })startGeoCoordinate;
+- (struct { double x1; double x2; double x3; })startGeoCoordinate;
 - (unsigned int)startPointIndex;
 - (unsigned int)startTime;
 - (id)startingStop;

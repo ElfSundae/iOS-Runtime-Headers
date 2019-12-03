@@ -46,7 +46,7 @@
 - (id)plistRepresentationFromProject:(id)arg1;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })preferredInTransitionDurationRange;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })preferredOutTransitionDurationRange;
-- (void)setAltClip:(id)arg1;
+- (void)setAltAspect:(double)arg1;
 - (void)setAudioVolume:(float)arg1;
 - (void)setContainedClips:(id)arg1;
 - (void)setContentsFromPlist:(id)arg1 inProject:(id)arg2;

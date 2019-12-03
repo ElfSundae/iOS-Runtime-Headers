@@ -5,14 +5,14 @@
 @interface FontAssetDownloadManager : NSObject {
     NSMutableDictionary * fAssetToDescriptors;
     struct TCFRef<const __CFArray *> { 
-        struct TAtomicPtr<const __CFArray *> { 
-            /* Warning: Unrecognized filer type: '^' using 'void*' */ void*__a_; 
+        struct atomic<const __CFArray *> { 
+            _Atomic struct __CFArray {} *__a_; 
         } fRef; 
     }  fDescriptors;
     NSMutableDictionary * fDownloadOptions;
     struct TCFRef<const __CFSet *> { 
-        struct TAtomicPtr<const __CFSet *> { 
-            /* Warning: Unrecognized filer type: '^' using 'void*' */ void*__a_; 
+        struct atomic<const __CFSet *> { 
+            _Atomic struct __CFSet {} *__a_; 
         } fRef; 
     }  fMandatoryAttributes;
     id /* block */  fProgressCallbackBlock;
@@ -25,13 +25,12 @@
 + (id)availableMobileAssetsWithOptions:(unsigned int)arg1 error:(id*)arg2;
 + (id)availableMobileAssetsWithOptions:(unsigned int)arg1 manager:(id)arg2 error:(id*)arg3;
 + (unsigned long long)calculateDownloadSize:(id)arg1;
-+ (unsigned int)defaultQueryOptions;
-+ (id)enabledKeyboardLanguages;
++ (id)errorWithCode:(long long)arg1 description:(id)arg2;
++ (bool)fontAssetIsAvailableForUse:(id)arg1;
 + (bool)fontInfo:(id)arg1 andAssetDesignLanguages:(id)arg2 matchesRequest:(id)arg3;
-+ (Class)getASAssetQueryClass;
++ (Class)getMAAssetClass;
 + (bool)shouldIgnoreFontAssetWithAttributes:(id)arg1;
 + (bool)shouldRetryWithServer;
-+ (bool)shouldTryServer;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -44,9 +43,7 @@
 - (bool)executeDownloadingFontAssets:(id)arg1;
 - (id)initWithDescriptors:(struct __CFArray { }*)arg1 andMandatoryAttributes:(struct __CFSet { }*)arg2 withBlock:(id /* block */)arg3;
 - (id)mobileAssetsForUnmatched:(id)arg1;
-- (id)preciousFontLanguages;
 - (void)setDownloadOptionsForMobileAsset;
-- (void)setGarbageCollectionBehaviorForAsset:(id)arg1;
 - (void)setProgressParam:(id)arg1 forKey:(id)arg2;
 - (id)unmatchedDescriptors;
 

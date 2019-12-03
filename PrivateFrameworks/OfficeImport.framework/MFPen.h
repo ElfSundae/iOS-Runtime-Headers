@@ -12,7 +12,7 @@
 + (id)pen;
 + (id)penWithStyle:(int)arg1 width:(int)arg2 colour:(id)arg3 styleArray:(double*)arg4;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)getColor;
 - (int)getStyle;
 - (int)getWidth;

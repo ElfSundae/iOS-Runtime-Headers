@@ -18,6 +18,7 @@
     CALayer * _thinkingDotContainer;
     double  _thinkingDotOpacity;
     CAReplicatorLayer * _thinkingDots;
+    UITraitCollection * _traitCollection;
 }
 
 @property (nonatomic, copy) UIColor *bubbleColor;
@@ -39,6 +40,7 @@
 @property (nonatomic, retain) CALayer *thinkingDotContainer;
 @property (nonatomic) double thinkingDotOpacity;
 @property (nonatomic, retain) CAReplicatorLayer *thinkingDots;
+@property (nonatomic, retain) UITraitCollection *traitCollection;
 
 + (struct UIColor { Class x1; }*)defaultBubbleColor;
 + (double)defaultBubbleOpacity;
@@ -82,6 +84,7 @@
 - (id)init;
 - (id)largeBubble;
 - (id)mediumBubble;
+- (id)resolvedColor:(id)arg1 forTraitCollection:(id)arg2;
 - (void)setBubbleColor:(struct UIColor { Class x1; }*)arg1;
 - (void)setBubbleContainer:(id)arg1;
 - (void)setBubbleOpacity:(double)arg1;
@@ -97,6 +100,7 @@
 - (void)setThinkingDotContainer:(id)arg1;
 - (void)setThinkingDotOpacity:(double)arg1;
 - (void)setThinkingDots:(id)arg1;
+- (void)setTraitCollection:(id)arg1;
 - (id)smallBubble;
 - (void)startGrowAnimation;
 - (void)startGrowAnimationWithCompletionBlock:(id /* block */)arg1;
@@ -109,5 +113,6 @@
 - (id)thinkingDotContainer;
 - (double)thinkingDotOpacity;
 - (id)thinkingDots;
+- (id)traitCollection;
 
 @end

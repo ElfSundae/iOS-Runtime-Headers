@@ -8,6 +8,7 @@
     bool  _isObservingAnnotation;
     bool  _lastRedrawWasForDrawingBounds;
     AKPageController * _pageController;
+    bool  _shouldRecalculateLoupeImage;
     bool  _wasLastDrawingClipped;
 }
 
@@ -16,6 +17,7 @@
 @property bool isObservingAnnotation;
 @property bool lastRedrawWasForDrawingBounds;
 @property AKPageController *pageController;
+@property bool shouldRecalculateLoupeImage;
 @property bool wasLastDrawingClipped;
 
 + (id)newAnnotationLayerForAnnotation:(id)arg1 withPageController:(id)arg2;
@@ -41,7 +43,9 @@
 - (void)setIsObservingAnnotation:(bool)arg1;
 - (void)setLastRedrawWasForDrawingBounds:(bool)arg1;
 - (void)setPageController:(id)arg1;
+- (void)setShouldRecalculateLoupeImage:(bool)arg1;
 - (void)setWasLastDrawingClipped:(bool)arg1;
+- (bool)shouldRecalculateLoupeImage;
 - (void)updateContents;
 - (void)updatePixelAlignment;
 - (bool)wasLastDrawingClipped;

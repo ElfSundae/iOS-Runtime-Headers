@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/GameCenterUI.framework/GameCenterUI
  */
 
-@interface GKAuthenticateHostViewController : GKUIRemoteViewController <GKAuthenticateHostProtocol> {
+@interface GKAuthenticateHostViewController : GKExtensionRemoteViewController <GKAuthenticateHostProtocol> {
     GKHostedAuthenticateViewController * _delegateWeak;
 }
 
@@ -16,11 +16,13 @@
 + (id)authenticateExtension;
 + (bool)dismissAutomaticallyAfterExtensionCompletion;
 
+- (void)applicationWillTerminate:(id)arg1;
 - (void)dealloc;
 - (id)delegate;
 - (void)extensionIsCanceling;
 - (void)extensionIsFinishing;
 - (void)messageFromExtension:(id)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)viewDidLoad;
 
 @end

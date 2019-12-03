@@ -3,6 +3,7 @@
  */
 
 @interface CFXPreviewViewController : UIViewController <CFXEffectEditorViewDelegate, CFXFullScreenTextEditViewControllerDelegate, CFXPlayButtonViewDelegate, ExportDelegate, JTClipSequenceDisplayViewControllerDelegate, UIViewWindowListener> {
+    UIView * _appStripAndPreviewControlsContainer;
     unsigned long long  _appliedDirectOverlayEditingGestures;
     UIView * _bottomControlsDrawer;
     bool  _capturedWithBackCamera;
@@ -30,6 +31,7 @@
     bool  _userInterfaceHidden;
 }
 
+@property (nonatomic) UIView *appStripAndPreviewControlsContainer;
 @property (nonatomic) unsigned long long appliedDirectOverlayEditingGestures;
 @property (nonatomic, retain) UIView *bottomControlsDrawer;
 @property (nonatomic) bool capturedWithBackCamera;
@@ -80,19 +82,25 @@
 - (bool)CFX_saveImageToURL:(id)arg1 image:(id)arg2 compressionQuality:(double)arg3 asHEIF:(bool)arg4 metadata:(struct CGImageMetadata { }*)arg5;
 - (void)CFX_setEffectAnimationsEnabledIfPossible:(bool)arg1;
 - (void)CFX_setEffectAnimationsEnabledIfPossible:(bool)arg1 updatePlayer:(bool)arg2;
+- (void)CFX_setFrameAndRenderSizes;
 - (void)CFX_setIsExporting:(bool)arg1;
 - (void)CFX_showPreviewUI;
 - (void)CFX_togglePreviewUI;
 - (void)addEffect:(id)arg1;
 - (void)addOverlayEffect:(id)arg1 atScreenLocation:(struct CGPoint { double x1; double x2; })arg2 atScreenSize:(struct CGSize { double x1; double x2; })arg3 rotationAngle:(double)arg4;
 - (double)animationDurationForCompositionTransition:(id)arg1 shouldScale:(bool*)arg2;
+- (id)appStripAndPreviewControlsContainer;
 - (unsigned long long)appliedDirectOverlayEditingGestures;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })bottomControlsBounds;
+- (struct CGPoint { double x1; double x2; })bottomControlsCenter;
 - (id)bottomControlsDrawer;
+- (id)bottomControlsSnapshot;
 - (bool)capturedWithBackCamera;
 - (void)configureBottomControlsForOrientation;
 - (void)configureUIForOrientation;
 - (id)delegate;
 - (void)didFinishExport:(long long)arg1;
+- (void)dispatchWhenPlayerReadyForDisplayEffectUpdate:(id /* block */)arg1;
 - (void)displayEffectEditorForEffect:(id)arg1 forMode:(unsigned long long)arg2;
 - (bool)dockIsMagnified;
 - (double)dockMagnifiedHeightDelta;
@@ -127,9 +135,14 @@
 - (void)exportStillImageWithEffects;
 - (id)exporter;
 - (void)filterPickerPreviewBackgroundImageAtSizeInPixels:(struct CGSize { double x1; double x2; })arg1 completion:(id /* block */)arg2;
+- (void)fullScreenTextEditViewController:(id)arg1 didBeginAnimationBeforeEditingEffect:(id)arg2 completion:(id /* block */)arg3;
 - (void)fullScreenTextEditViewController:(id)arg1 didBeginEditingEffect:(id)arg2;
+- (void)fullScreenTextEditViewController:(id)arg1 didFinishAnimationAfterEditingEffect:(id)arg2 completion:(id /* block */)arg3;
 - (void)fullScreenTextEditViewController:(id)arg1 didFinishEditingByRemovingEffect:(id)arg2;
 - (void)fullScreenTextEditViewController:(id)arg1 didFinishEditingEffect:(id)arg2 withUpdatedText:(id)arg3;
+- (void)fullScreenTextEditViewController:(id)arg1 willBeginAnimationAfterEditingEffect:(id)arg2 updatedText:(id)arg3;
+- (void)fullScreenTextEditViewController:(id)arg1 willBeginAnimationBeforeEditingEffect:(id)arg2;
+- (void)hideBottomControls;
 - (bool)isEditingEffect;
 - (bool)isPresentingFilterPicker;
 - (id)mediaItem;
@@ -146,6 +159,7 @@
 - (void)playbackDidStart:(id)arg1;
 - (void)playbackDidStop:(id)arg1 currentTime:(int)arg2;
 - (id)playerContainerView;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })playerContentFrame;
 - (void)prepareForSegue:(id)arg1 sender:(id)arg2;
 - (bool)presentFullScreenTextEditorForEffect:(id)arg1 insertingEffect:(bool)arg2;
 - (id)previewClip;
@@ -159,6 +173,7 @@
 - (id)previewPlayer;
 - (void)removeEffectEditor;
 - (bool)saveMediaItemToFunCamPhotosAlbumUponExport;
+- (void)setAppStripAndPreviewControlsContainer:(id)arg1;
 - (void)setAppliedDirectOverlayEditingGestures:(unsigned long long)arg1;
 - (void)setBottomControlsDrawer:(id)arg1;
 - (void)setCapturedWithBackCamera:(bool)arg1;
@@ -189,12 +204,14 @@
 - (bool)shouldExportOnly;
 - (bool)shouldKeepPlayButtonHidden;
 - (bool)shouldUseFaceTracking;
+- (void)showBottomControls;
 - (id)stillImagePreviewGenerator;
 - (void)updateEffectEditorLayout;
 - (void)updateFullScreenTextEditorLayout;
 - (void)updateUIForDockMagnify:(bool)arg1 dockHeightDelta:(double)arg2;
 - (bool)userInterfaceIsHidden;
 - (void)view:(id)arg1 willMoveToWindow:(id)arg2;
+- (void)viewDidAppear:(bool)arg1;
 - (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

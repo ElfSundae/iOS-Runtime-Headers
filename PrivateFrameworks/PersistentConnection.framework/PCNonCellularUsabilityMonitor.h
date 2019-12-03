@@ -6,8 +6,8 @@
     NSObject<OS_dispatch_queue> * _delegateQueue;
     CUTWeakReference * _delegateReference;
     NSString * _demoOverrideInterface;
-    NSMutableArray * _interfaceMonitors;
     NSObject<OS_dispatch_queue> * _ivarQueue;
+    PCInterfaceUsabilityMonitor * _monitor;
     NSObject<OS_dispatch_queue> * _monitorDelegateQueue;
     int  _previousLinkQuality;
     unsigned long long  _thresholdOffTransitionCount;
@@ -36,7 +36,7 @@
 @property (nonatomic, readonly) struct __CFString { }*wwanInterfaceName;
 
 - (void).cxx_destruct;
-- (void)_addMonitorWithInterfaceName:(id)arg1;
+- (void)_addMonitor;
 - (void)_callDelegateOnIvarQueueWithBlock:(id /* block */)arg1;
 - (void)_forwardConfigurationOnIvarQueue;
 - (int)_linkQualityOnIvarQueue;

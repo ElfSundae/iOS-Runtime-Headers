@@ -5,7 +5,6 @@
 @interface MFComposeBodyField : UIWebDocumentView <MFComposeBodyField, MFComposeBodyFieldInternal, UIWebDraggingDelegate, WebResourceLoadDelegate> {
     NSDictionary * _attachmentDragPreviews;
     unsigned long long  _attachmentSequenceNumber;
-    NSArray * _attachmentURLsToReplaceWithFilenames;
     DOMHTMLElement * _blockquote;
     DOMHTMLElement * _body;
     NSString * _compositionContextID;
@@ -17,13 +16,13 @@
     unsigned int  _forwardingNotification;
     unsigned long long  _imageCount;
     UIView * _imageDropSnapshot;
-    UIBarButtonItemGroup * _inputAssistantItemGroup;
     unsigned int  _isDirty;
     unsigned int  _isLoading;
     struct CGSize { 
         double width; 
         double height; 
     }  _layoutSize;
+    UIBarButtonItemGroup * _leadingInputAssistantItemGroup;
     NSString * _localDragSessionID;
     <MFMailComposeViewDelegate> * _mailComposeViewDelegate;
     unsigned int  _needsReplaceImages;
@@ -43,13 +42,19 @@
         unsigned long long location; 
         unsigned long long length; 
     }  _rangeToSelect;
+    NSDictionary * _replacementFilenamesByContentID;
     bool  _shouldShowStandardButtons;
+    NSArray * _trailingInputAssistantItemGroups;
 }
 
-@property (setter=_setInputAssistantItemGroup:, nonatomic, retain) UIBarButtonItemGroup *_inputAssistantItemGroup;
-@property (nonatomic, readonly, retain) UIBarButtonItemGroup *_mailComposeEditingInputAssistantGroup;
+@property (setter=_setLeadingInputAssistantItemGroup:, nonatomic, retain) UIBarButtonItemGroup *_leadingInputAssistantItemGroup;
+@property (nonatomic, readonly) UIBarButtonItemGroup *_mailComposeEditingLeadingInputAssistantGroup;
+@property (nonatomic, readonly) NSArray *_mailComposeEditingTrailingInputAssistantGroups;
+@property (setter=_setTrailingInputAssistantItemGroups:, nonatomic, retain) NSArray *_trailingInputAssistantItemGroups;
+@property (nonatomic, readonly) bool allowsAttachmentElements;
 @property (nonatomic, retain) NSDictionary *attachmentDragPreviews;
 @property (nonatomic, readonly) bool canPaste;
+@property (nonatomic) NSString *compositionContextID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (getter=isDirty, nonatomic) bool dirty;
@@ -64,6 +69,7 @@
 @property bool shouldShowStandardButtons;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_addInlineAttachmentWithData:(id)arg1 fileName:(id)arg2 type:(id)arg3;
 - (id)_addInlineAttachmentWithData:(id)arg1 fileName:(id)arg2 type:(id)arg3 contentID:(id)arg4;
 - (void)_applyLayoutMarginsToBodyStyle;
@@ -72,19 +78,24 @@
 - (void)_completeDropForAttachmentData:(id)arg1 dragItem:(id)arg2 dataType:(id)arg3 fileName:(id)arg4;
 - (void)_decreaseQuoteLevelKeyCommandInvoked:(id)arg1;
 - (void)_deleteContentInContainer:(id)arg1 startParent:(id)arg2 startNextSibling:(id)arg3 endParent:(id)arg4 endNextSibling:(id)arg5;
-- (void)_didTapInsertPhotoInputAssistantButton:(id)arg1;
+- (void)_didTapCameraButton:(id)arg1;
+- (void)_didTapImportDocumentButton:(id)arg1;
+- (void)_didTapInsertDrawingOrMarkupButton:(id)arg1;
+- (void)_didTapInsertPhotoButton:(id)arg1;
+- (void)_didTapScanDocumentButton:(id)arg1;
 - (id)_dragPreviewInfoForAttachment:(id)arg1;
 - (void)_ensureQuotedImagesHaveAttachmentStyleForElement:(id)arg1;
 - (void)_finishedLoadingDroppedAttachments:(id)arg1;
 - (void)_finishedLoadingURLRequest:(id)arg1 name:(id)arg2;
 - (id)_imageDropPlaceholderNodeWithId:(id)arg1 size:(struct CGSize { double x1; double x2; })arg2 hasFinalSize:(bool)arg3;
 - (void)_increaseQuoteLevelKeyCommandInvoked:(id)arg1;
-- (id)_inputAssistantItemGroup;
 - (void)_insertMapItem:(id)arg1 atPoint:(struct CGPoint { double x1; double x2; })arg2;
 - (void)_insertNodeIntoCurrentSelection:(id)arg1;
 - (bool)_isLocalItemProvider:(id)arg1;
 - (bool)_isPreviewableImageType:(id)arg1;
-- (id)_mailComposeEditingInputAssistantGroup;
+- (id)_leadingInputAssistantItemGroup;
+- (id)_mailComposeEditingLeadingInputAssistantGroup;
+- (id)_mailComposeEditingTrailingInputAssistantGroups;
 - (id)_nodeForAttachmentData:(id)arg1 text:(id)arg2 type:(id)arg3;
 - (id)_nodeForAttachmentData:(id)arg1 text:(id)arg2 type:(id)arg3 contentID:(id)arg4;
 - (id)_nodeForAttachmentFileURL:(id)arg1 text:(id)arg2 type:(id)arg3 contentID:(id)arg4;
@@ -97,12 +108,14 @@
 - (void)_replaceImages;
 - (id)_selectedAttachmentURLForMarkup;
 - (id)_selectedAttachmentsByURL;
-- (void)_setInputAssistantItemGroup:(id)arg1;
+- (void)_setLeadingInputAssistantItemGroup:(id)arg1;
+- (void)_setTrailingInputAssistantItemGroups:(id)arg1;
 - (void)_showQuoteLevelOptionsPopover:(id)arg1;
 - (struct CGSize { double x1; double x2; })_sizeScaledToFitContentArea:(struct CGSize { double x1; double x2; })arg1;
 - (bool)_sourceIsManaged;
 - (void)_swapPlaceholder:(id)arg1 withImageNode:(id)arg2 forceResize:(bool)arg3;
 - (id)_teamDataDictionaryForItemProvider:(id)arg1;
+- (id)_trailingInputAssistantItemGroups;
 - (void)_unhideDOMElementsForDragItems:(id)arg1;
 - (id)_webView:(id)arg1 adjustedItemProviders:(id)arg2;
 - (bool)_webView:(id)arg1 allowsSelectingContentAfterDropForSession:(id)arg2;
@@ -121,6 +134,7 @@
 - (void)addDOMNode:(id)arg1 quote:(bool)arg2 emptyFirst:(bool)arg3 prepended:(bool)arg4;
 - (void)addMailAttributesBeforeDisplayHidingTrailingEmptyQuotes:(bool)arg1;
 - (void)addMarkupString:(id)arg1 quote:(bool)arg2 emptyFirst:(bool)arg3 prepended:(bool)arg4;
+- (bool)allowsAttachmentElements;
 - (void)appendMarkupString:(id)arg1 quote:(bool)arg2;
 - (void)appendOrReplace:(id)arg1 withMarkupString:(id)arg2 quote:(bool)arg3;
 - (id)attachmentDragPreviews;
@@ -130,6 +144,7 @@
 - (void)changeQuoteLevel:(long long)arg1 forDOMRange:(id)arg2;
 - (id)compositionContextID;
 - (id)containsRichText;
+- (id)contentIDsForMediaAttachments;
 - (double)contentWidth;
 - (void)copy:(id)arg1;
 - (void)cut:(id)arg1;
@@ -145,7 +160,7 @@
 - (id)droppedAttachments;
 - (void)endPreventingLayout;
 - (void)ensureSelection;
-- (void)getHTMLStringsAttachmentsCharsetsAndPlainTextAlternative:(id /* block */)arg1;
+- (void)getHTMLStringsAttachmentsAndPlainTextAlternative:(id /* block */)arg1;
 - (id)htmlString;
 - (id)imageDropSnapshot;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
@@ -153,7 +168,8 @@
 - (void)insertDocumentWithURL:(id)arg1 isDrawingFile:(bool)arg2;
 - (void)insertNode:(id)arg1 parent:(id)arg2 nextSibling:(id)arg3;
 - (void)insertNode:(id)arg1 parent:(id)arg2 offset:(int)arg3;
-- (void)insertPhotoOrVideoWithInfoDictionary:(id)arg1;
+- (void)insertPhotoOrVideoWithAssetIdentifier:(id)arg1 infoDictionary:(id)arg2;
+- (void)insertScannedDocumentWithData:(id)arg1;
 - (id)insertTemporarySelectionMarkersForRange:(id)arg1;
 - (void)invalidate;
 - (bool)isDirty;
@@ -168,25 +184,26 @@
 - (void)paste:(id)arg1;
 - (id)plainTextAlternative;
 - (id)plainTextContent;
-- (id)plainTextContentFromDOMDocument:(id)arg1;
 - (void)prependMarkupString:(id)arg1 quote:(bool)arg2;
 - (void)prependMarkupString:(id)arg1 quote:(bool)arg2 emptyFirst:(bool)arg3;
-- (void)prependPreamble:(id)arg1;
+- (void)prependPreamble:(id)arg1 quote:(bool)arg2;
 - (void)prependString:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })rectOfElementWithID:(id)arg1;
+- (void)releaseFocusAfterDismissing;
 - (void)removeBlockQuoteFromTree:(id)arg1;
 - (void)removeDropPlaceholders;
+- (void)removeMediaWithAssetIdentifier:(id)arg1;
 - (void)replaceAttachment:(id)arg1 withDocumentAtURL:(id)arg2 completion:(id /* block */)arg3;
 - (void)replaceAttachment:(id)arg1 withDocumentData:(id)arg2 fileName:(id)arg3 mimeType:(id)arg4;
 - (void)replaceImagesIfNecessary;
 - (void)replaceNode:(id)arg1 oldNode:(id)arg2;
 - (void)restoreSelectionFromTemporaryMarkers;
 - (void)restoreSelectionFromTemporaryMarkers:(bool)arg1;
+- (void)retainFocusAfterPresenting;
 - (void)saveSelectionForUndo;
 - (void)scaleImagesToScale:(unsigned long long)arg1;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })selectedRange;
 - (void)setAttachmentDragPreviews:(id)arg1;
-- (void)setAttachmentURLsToBeReplacedWithFilename:(id)arg1;
 - (void)setCaretPosition:(unsigned long long)arg1;
 - (void)setCompositionContextID:(id)arg1;
 - (void)setDirty:(bool)arg1;
@@ -200,8 +217,10 @@
 - (void)setMailComposeViewDelegate:(id)arg1;
 - (void)setMarkupString:(id)arg1;
 - (void)setMarkupString:(id)arg1 quote:(bool)arg2;
+- (void)setOriginalAttachmentInfo:(id)arg1;
 - (void)setPinHeight:(double)arg1;
 - (void)setPrefersFirstLineSelection;
+- (void)setReplacementFilenamesByContentID:(id)arg1;
 - (void)setSelectedDOMRange:(id)arg1 affinityDownstream:(bool)arg2;
 - (void)setSelectedRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (void)setSelectionStart:(id)arg1 offset:(int)arg2 end:(id)arg3 offset:(int)arg4 affinity:(int)arg5;
@@ -209,6 +228,7 @@
 - (bool)shouldShowInsertPhotosButton;
 - (bool)shouldShowMarkupButton;
 - (bool)shouldShowStandardButtons;
+- (void)showOriginalAttachments;
 - (void)splitUpBlockQuotesOverlappingEndOfRange:(id)arg1;
 - (void)splitUpBlockQuotesOverlappingStartOfRange:(id)arg1;
 - (id)temporaryEndingSelectionMarker;

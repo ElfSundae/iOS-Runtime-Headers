@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
  */
 
-@interface MPAVRoutingController : NSObject {
+@interface MPAVRoutingController : NSObject <_MPStateDumpPropertyListTransformable> {
     NSMutableArray * _asyncFetchingCompletionHandlers;
     bool  _asyncFetchingRoutes;
     NSArray * _cachedPickedRoutes;
@@ -31,11 +31,14 @@
 @property (nonatomic, readonly, copy) NSArray *availableRoutes;
 @property (nonatomic, copy) NSString *category;
 @property (nonatomic, readonly) MPAVRoutingDataSource *dataSource;
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <MPAVRoutingControllerDelegate> *delegate;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) long long discoveryMode;
 @property (nonatomic, readonly) long long externalScreenType;
 @property (nonatomic) bool fetchAvailableRoutesSynchronously;
 @property (nonatomic, readonly) bool hasPendingPickedRoutes;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, retain) MPAVRoute *legacyCachedRoute;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, readonly) MPAVRoute *pendingPickedRoute;
@@ -47,12 +50,14 @@
 @property (nonatomic, copy) NSString *representedBundleID;
 @property (nonatomic, readonly) bool representsLongFormVideoContent;
 @property (nonatomic) long long routeTypes;
+@property (readonly) Class superclass;
 @property (nonatomic, readonly) bool supportsMultipleSelection;
 @property (nonatomic, readonly) bool volumeControlIsAvailable;
 
 + (id)_currentDeviceRoutingIconImage;
 + (id)_currentDeviceRoutingIconImageName;
 + (void)_getActiveRouteWithTimeout:(double)arg1 discoveredRoutes:(id)arg2 completion:(id /* block */)arg3;
++ (id)_iconImageForIdentifier:(id)arg1;
 + (id)_iconImageForRoute:(id)arg1;
 + (id)_sharedSerialQueue;
 + (bool)bundleIdRepresentsLongFormVideoContent:(id)arg1;
@@ -84,6 +89,7 @@
 - (void)_sendDelegatePickedRoutesChanged;
 - (void)_setExternalScreenType:(long long)arg1;
 - (void)_setVolumeControlStateForPickedRoute:(long long)arg1;
+- (id)_stateDumpObject;
 - (void)_unregisterNotifications;
 - (void)_updateCachedRoutes;
 - (void)_volumeControlAvailabilityDidChangeNotification:(id)arg1;

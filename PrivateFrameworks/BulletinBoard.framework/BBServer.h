@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/BulletinBoard.framework/BulletinBoard
  */
 
-@interface BBServer : NSObject <BBDataProviderManagerDelegate, BBServerConduitServerInterface, BBSettingsGatewayServerInterface, BBSyncServiceDelegate, NSXPCListenerDelegate> {
+@interface BBServer : NSObject <AFSiriUserNotificationRequestCapabilityObserving, BBDataProviderManagerDelegate, BBServerConduitServerInterface, BBSettingsGatewayServerInterface, BBSyncServiceDelegate, NSXPCListenerDelegate> {
     NSMutableDictionary * _activeSectionIDsByCategory;
     BBBiometricResource * _biometricResource;
     NSMutableDictionary * _bulletinIDsBySectionID;
@@ -34,11 +34,11 @@
     int  _serverIsRunningToken;
     NSMutableSet * _settingsGatewayConnections;
     NSXPCListener * _settingsListener;
+    bool  _siriAllowedWhenLocked;
+    bool  _siriEnabled;
     NSMutableDictionary * _sortedSectionIDsByCategory;
     NSMutableSet * _suspendedConnections;
     BBSyncService * _syncService;
-    NSMutableSet * _systemStateConnections;
-    NSXPCListener * _systemStateListener;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -74,8 +74,8 @@
 - (void)_addBulletin:(id)arg1;
 - (void)_addObserver:(id)arg1;
 - (void)_addSettingsGatewayConnection:(id)arg1;
+- (void)_addStateCaptureHandlers;
 - (void)_addSuspendedConnection:(id)arg1;
-- (void)_addSystemStateConnection:(id)arg1;
 - (id)_allBulletinsForSectionID:(id)arg1;
 - (id)_applicableSectionInfosForBulletin:(id)arg1 inSection:(id)arg2;
 - (void)_assignIDToBulletinRequest:(id)arg1;
@@ -98,7 +98,7 @@
 - (bool)_didNotificationCenterSettingsChangeWithSectionInfo:(id)arg1 replacingSectionInfo:(id)arg2;
 - (void)_didReceiveResponseForBulletin:(id)arg1;
 - (long long)_effectiveGlobalContentPreviewsSetting;
-- (id)_effectiveSectionFiltersForBulletin:(id)arg1;
+- (long long)_effectiveGlobalSpokenNotificationSetting;
 - (id)_effectiveSectionInfoForSectionInfo:(id)arg1;
 - (id)_enabledSectionIDsForDataProvider:(id)arg1;
 - (void)_enqueueBulletinUpdate:(id)arg1;
@@ -109,13 +109,16 @@
 - (unsigned long long)_feedsForBulletin:(id)arg1 destinations:(unsigned long long)arg2;
 - (unsigned long long)_filtersForSectionID:(id)arg1;
 - (long long)_globalContentPreviewsSetting;
+- (long long)_globalSpokenNotificationSetting;
 - (void)_handleSignificantTimeChange;
 - (void)_handleSystemSleep;
 - (void)_handleSystemWake;
 - (unsigned long long)_indexForNewDate:(id)arg1 inBulletinIDArray:(id)arg2 sortedAscendingByDateForKey:(id)arg3;
+- (bool)_isSpokenNotificationsSupported;
 - (void)_loadClearedSections;
 - (void)_loadDataProvidersAndSettings;
 - (void)_loadSavedSectionInfo;
+- (void)_loadSystemCapabilities;
 - (id)_mapForFeed:(unsigned long long)arg1;
 - (void)_migrateContentPreviewSettings:(id)arg1;
 - (void)_migrateLoadedData;
@@ -144,14 +147,13 @@
 - (void)_removeSection:(id)arg1;
 - (void)_removeSettingsGatewayConnection:(id)arg1;
 - (void)_removeSuspendedConnection:(id)arg1;
-- (void)_removeSystemStateConnection:(id)arg1;
 - (void)_removeVestigialSections:(id)arg1;
 - (void)_resumeAllSuspendedConnectionsWithCompletionHandler:(id /* block */)arg1;
+- (void)_saveGlobalSpokenNotificationSettingEnabledEvent;
 - (void)_saveUpdatedClearedInfo:(id)arg1 forSectionID:(id)arg2;
 - (void)_saveUpdatedSectionInfo:(id)arg1 forSectionID:(id)arg2;
 - (void)_scheduleExpirationForBulletin:(id)arg1;
 - (void)_scheduleTimerForDate:(id)arg1;
-- (bool)_sectionFiltersAllowBulletin:(id)arg1;
 - (id)_sectionIDsToMigrate;
 - (id)_sectionInfoArray:(bool)arg1;
 - (id)_sectionInfoArrayForActiveSections:(bool)arg1;
@@ -168,9 +170,12 @@
 - (void)_setClearedInfo:(id)arg1 forSectionID:(id)arg2;
 - (void)_setDefaultExpirationComponents:(id)arg1;
 - (void)_setGlobalContentPreviewsSetting:(long long)arg1;
+- (void)_setGlobalSpokenNotificationSetting:(long long)arg1;
 - (void)_setSectionInfo:(id)arg1 forSectionID:(id)arg2;
 - (void)_setSectionInfoNoteSettingsChanged:(id)arg1 forSectionID:(id)arg2;
+- (void)_setSpokenNotificationsSupported:(bool)arg1;
 - (id)_sinceDate;
+- (void)_siriPreferencesDidChange:(id)arg1;
 - (void)_sortSectionIDs:(id)arg1 usingGuideArray:(id)arg2;
 - (void)_sortSectionIDs:(id)arg1 usingOrder:(id)arg2;
 - (id)_sortedSectionIDs;
@@ -184,9 +189,13 @@
 - (void)_updateBulletinsInFeed:(unsigned long long)arg1 ifSectionIsEnabled:(id)arg2;
 - (void)_updateClearedInfoForSectionID:(id)arg1 handler:(id /* block */)arg2;
 - (void)_updateDataProviderForSectionInfo:(id)arg1 sectionID:(id)arg2;
+- (void)_updateGlobalSettings;
 - (void)_updateSectionInfoForSectionID:(id)arg1 handler:(id /* block */)arg2;
 - (void)_updateSectionParametersForDataProvider:(id)arg1;
 - (void)_updateShowsMessagePreviewForBulletin:(id)arg1;
+- (void)_updateSiriPreferences;
+- (void)_updateSpokenNotificationControlCenterModuleAvailability;
+- (void)_updateSpokenNotificationSettings;
 - (void)_validateExpirationDateForBulletinRequest:(id)arg1;
 - (bool)_verifyBulletinRequest:(id)arg1 forDataProvider:(id)arg2;
 - (void)_writeClearedSections;
@@ -210,18 +219,22 @@
 - (void)getBulletinsWithHandler:(id /* block */)arg1;
 - (void)getDataForAttachmentUUID:(id)arg1 bulletinID:(id)arg2 isPrimary:(bool)arg3 withHandler:(id /* block */)arg4;
 - (void)getEffectiveGlobalContentPreviewsSettingWithHandler:(id /* block */)arg1;
+- (void)getEffectiveGlobalSpokenNotificationSettingWithHandler:(id /* block */)arg1;
 - (void)getEffectiveSectionInfoForSectionID:(id)arg1 withHandler:(id /* block */)arg2;
 - (void)getEffectiveSectionInfoForSectionIDs:(id)arg1 withHandler:(id /* block */)arg2;
+- (void)getEffectiveSectionInfoWithHandler:(id /* block */)arg1;
 - (void)getPNGDataForAttachmentUUID:(id)arg1 bulletinID:(id)arg2 isPrimary:(bool)arg3 sizeConstraints:(id)arg4 withHandler:(id /* block */)arg5;
 - (void)getPublisherMatchIDsOfBulletinsPublishedAfterDate:(id)arg1 withHandler:(id /* block */)arg2;
+- (void)getSectionIDsWithHandler:(id /* block */)arg1;
 - (void)getSectionInfoForActiveSectionsWithHandler:(id /* block */)arg1;
 - (void)getSectionInfoForSectionID:(id)arg1 withHandler:(id /* block */)arg2;
 - (void)getSectionInfoForSectionIDs:(id)arg1 withHandler:(id /* block */)arg2;
 - (void)getSectionInfoWithHandler:(id /* block */)arg1;
 - (void)getSectionParametersForSectionID:(id)arg1 withHandler:(id /* block */)arg2;
 - (void)getUniversalSectionIDForSectionID:(id)arg1 withHandler:(id /* block */)arg2;
+- (void)hasEligibleSetupChanged:(bool)arg1;
 - (id)initWithQueue:(id)arg1;
-- (id)initWithQueue:(id)arg1 dataProviderManager:(id)arg2 syncService:(id)arg3 dismissalSyncCache:(id)arg4 observerListener:(id)arg5 conduitListener:(id)arg6 systemStateListener:(id)arg7 settingsListener:(id)arg8;
+- (id)initWithQueue:(id)arg1 dataProviderManager:(id)arg2 syncService:(id)arg3 dismissalSyncCache:(id)arg4 observerListener:(id)arg5 conduitListener:(id)arg6 settingsListener:(id)arg7;
 - (bool)isRunning;
 - (bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)loadDataProvidersAndSettings;
@@ -246,10 +259,12 @@
 - (void)publishBulletinRequest:(id)arg1 destinations:(unsigned long long)arg2;
 - (void)removeBulletinID:(id)arg1 fromNoticesSection:(id)arg2;
 - (void)removeBulletinID:(id)arg1 fromSection:(id)arg2 inFeed:(unsigned long long)arg3;
+- (void)requestCanBeHandledChanged:(bool)arg1;
 - (void)requestNoticesBulletinsForAllSections:(id)arg1;
 - (id)sectionIDForUniversalSectionID:(id)arg1;
 - (void)sendMessageToDataProviderSectionID:(id)arg1 name:(id)arg2 userInfo:(id)arg3;
-- (void)setEffectiveGlobalContentPreviewsSetting:(long long)arg1;
+- (void)setEffectiveGlobalContentPreviewsSetting:(long long)arg1 withHandler:(id /* block */)arg2;
+- (void)setEffectiveGlobalSpokenNotificationSetting:(long long)arg1 withHandler:(id /* block */)arg2;
 - (void)setSectionInfo:(id)arg1 forSectionID:(id)arg2;
 - (void)setSectionInfo:(id)arg1 forSectionID:(id)arg2 withHandler:(id /* block */)arg3;
 - (void)syncService:(id)arg1 receivedDismissalDictionaries:(id)arg2 dismissalIDs:(id)arg3 inSection:(id)arg4 forFeeds:(unsigned long long)arg5;

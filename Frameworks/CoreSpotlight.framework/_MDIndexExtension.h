@@ -19,6 +19,7 @@
 @property (nonatomic, retain) NSExtension *extension;
 @property (nonatomic, retain) NSString *extensionID;
 @property (copy) NSSet *identifiers;
+@property (readonly) NSDictionary *infoDictionary;
 @property (readonly) bool isEnabled;
 @property (readonly) bool isInternal;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *queue;
@@ -34,6 +35,7 @@
 - (id)extension;
 - (id)extensionID;
 - (id)identifiers;
+- (id)infoDictionary;
 - (id)initWithExtension:(id)arg1 queue:(id)arg2 containerPath:(id)arg3 containerID:(id)arg4;
 - (bool)isEnabled;
 - (bool)isInternal;

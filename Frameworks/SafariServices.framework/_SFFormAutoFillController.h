@@ -11,6 +11,7 @@
     SFFormAutoFillFrameHandle * _frameHandleForAutomaticPasswords;
     _SFFormAutoFillInputSession * _inputSessionForAutomaticPasswords;
     bool  _isCurrentlyAuthenticating;
+    CNContact * _lastFilledContact;
     WBSCreditCardData * _lastFilledCreditCardData;
     NSSet * _lastFilledCreditCardDataTypes;
     bool  _metadataCorrectionsEnabled;
@@ -32,6 +33,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, retain) CNContact *lastFilledContact;
 @property (nonatomic, retain) WBSCreditCardData *lastFilledCreditCardData;
 @property (nonatomic, retain) NSSet *lastFilledCreditCardDataTypes;
 @property (nonatomic) bool metadataCorrectionsEnabled;
@@ -93,6 +95,7 @@
 - (id)initWithWebView:(id)arg1 delegate:(id)arg2;
 - (void)insertTextSuggestion:(id)arg1;
 - (void)invalidate;
+- (id)lastFilledContact;
 - (id)lastFilledCreditCardData;
 - (id)lastFilledCreditCardDataTypes;
 - (bool)metadataCorrectionsEnabled;
@@ -105,6 +108,7 @@
 - (void)removeAutomaticPasswordButtonInitiatedByUser:(bool)arg1;
 - (void)removeAutomaticPasswordVisualTreatment;
 - (void)setFormControls:(id)arg1 areAutoFilled:(bool)arg2 andClearField:(id)arg3 inFrame:(id)arg4;
+- (void)setLastFilledContact:(id)arg1;
 - (void)setLastFilledCreditCardData:(id)arg1;
 - (void)setLastFilledCreditCardDataTypes:(id)arg1;
 - (void)setMetadataCorrectionsEnabled:(bool)arg1;
@@ -114,7 +118,7 @@
 - (void)updateSuggestions;
 - (void)usernameFieldFocused:(id)arg1 inForm:(id)arg2 inFrame:(id)arg3 inputSession:(id)arg4;
 - (id)webView;
-- (void)willNavigateFrame:(id)arg1 withUnsubmittedForm:(id)arg2 loadingIsDeferred:(bool)arg3;
+- (void)willNavigateFrame:(id)arg1 withUnsubmittedForm:(id)arg2;
 - (void)willSubmitForm:(id)arg1 inFrame:(id)arg2 submissionHandler:(id /* block */)arg3;
 - (void)willSubmitFormValues:(id)arg1 userObject:(id)arg2 submissionHandler:(id /* block */)arg3;
 

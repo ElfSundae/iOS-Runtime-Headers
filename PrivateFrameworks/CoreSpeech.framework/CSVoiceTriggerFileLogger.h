@@ -3,11 +3,9 @@
  */
 
 @interface CSVoiceTriggerFileLogger : NSObject <CSVoiceTriggerDelegate> {
-    CSAudioCircularBuffer * _audioBuffer;
     NSObject<OS_dispatch_queue> * _queue;
 }
 
-@property (nonatomic) CSAudioCircularBuffer *audioBuffer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -20,10 +18,8 @@
 - (id)_metaFilenameWithPrefix:(id)arg1;
 - (id)_timeStampString;
 - (void)_writeDictionary:(id)arg1 toPath:(id)arg2;
-- (id)audioBuffer;
-- (id)initWithAudioBuffer:(id)arg1;
+- (id)init;
 - (id)queue;
-- (void)setAudioBuffer:(id)arg1;
 - (void)setQueue:(id)arg1;
 - (void)voiceTriggerDidDetectKeyword:(id)arg1 deviceId:(id)arg2;
 - (void)voiceTriggerDidDetectNearMiss:(id)arg1;

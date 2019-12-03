@@ -35,11 +35,11 @@
 
 + (id)_dateFormatterForMimeDateStrings;
 + (id)_fileNameForPart:(id)arg1 smilContext:(id)arg2;
-+ (struct _NSRange { unsigned long long x1; unsigned long long x2; })_populateMimeHeaders:(id)arg1 recipients:(id)arg2 fromRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3 ofString:(id)arg4 addCountryCodeToParties:(bool)arg5;
++ (struct _NSRange { unsigned long long x1; unsigned long long x2; })_populateMimeHeaders:(id)arg1 recipients:(id)arg2 fromRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3 ofString:(id)arg4 addCountryCodeToParties:(bool)arg5 sqlController:(id)arg6;
 + (bool)_shouldIgnoreMessageThreadID;
 + (void)addRecipients:(id)arg1 toMimeHeaders:(id)arg2;
 + (id)dateFromMimeHeaders:(id)arg1;
-+ (id)mimeHeadersFromMimeData:(id)arg1;
++ (id)mimeHeadersFromMimeData:(id)arg1 sqlController:(id)arg2;
 + (id)recipientsFromMimeHeaders:(id)arg1;
 + (id)senderFromMimeHeaders:(id)arg1;
 
@@ -52,7 +52,7 @@
 - (id)messageText;
 - (unsigned long long)messageType;
 - (id)mimeData;
-- (void)parseMIMEData:(id)arg1;
+- (void)parseMIMEData:(id)arg1 sqlController:(id)arg2;
 - (void)progressiveMimeParser:(id)arg1 beganDataForMimePart:(id)arg2;
 - (void)progressiveMimeParser:(id)arg1 beganMimePart:(id)arg2;
 - (void)progressiveMimeParser:(id)arg1 failedWithError:(id)arg2;

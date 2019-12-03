@@ -17,6 +17,5 @@
 - (void)setBroadcastPickerViewController:(id)arg1;
 - (void)setHostContext:(id)arg1;
 - (oneway void)viewControllerDidFinish;
-- (void)viewServiceDidTerminateWithError:(id)arg1;
 
 @end

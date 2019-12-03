@@ -12,11 +12,17 @@
     CNAutocompleteUserSession * _userSession;
 }
 
+@property (nonatomic, readonly) CNCancelationToken *cancelationToken;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic, readonly) <CNAutocompleteFetchDelegate> *delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) CNAutocompleteFetchRequest *fetchRequest;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long openNetworkActivityCalls;
+@property (nonatomic, readonly) CNAutocompleteQueryResponsePreparer *responsePreparer;
+@property (nonatomic, readonly) <CNScheduler> *scheduler;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) CNAutocompleteUserSession *userSession;
 
 + (id)responseScheduler;
 
@@ -30,15 +36,21 @@
 - (void)autocompleteFetchDidEndNetworkActivity:(id)arg1;
 - (void)autocompleteFetchDidFinish:(id)arg1;
 - (void)cancel;
+- (id)cancelationToken;
+- (id)delegate;
+- (id)fetchRequest;
 - (id)initWithDelegate:(id)arg1 userSession:(id)arg2 fetchRequest:(id)arg3;
 - (id)initWithDelegate:(id)arg1 userSession:(id)arg2 fetchRequest:(id)arg3 scheduler:(id)arg4;
 - (unsigned long long)openNetworkActivityCalls;
 - (void)queueDidEndNetworkActivityMessageForFetch:(id)arg1;
 - (void)queueMessageToDelegate:(id /* block */)arg1;
 - (void)queueUncancelableMessageToDelegate:(id /* block */)arg1;
+- (id)responsePreparer;
+- (id)scheduler;
 - (void)setDuetResultsFuture:(id)arg1;
 - (void)setOpenNetworkActivityCalls:(unsigned long long)arg1;
 - (id)sortResults;
 - (id)suppressResultsWithAddresses:(id)arg1;
+- (id)userSession;
 
 @end

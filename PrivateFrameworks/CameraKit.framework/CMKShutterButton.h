@@ -7,7 +7,6 @@
     UIImageView * __outerImageView;
     UIView * __outerView;
     UIActivityIndicatorView * __progressActivityIndicatorView;
-    CMKTimelapseShutterRingView * __timelapseOuterView;
     long long  _buttonMode;
     bool  _pulsing;
     bool  _showDisabled;
@@ -24,7 +23,6 @@
 @property (nonatomic, readonly) UIImageView *_outerImageView;
 @property (nonatomic, readonly) UIView *_outerView;
 @property (nonatomic, readonly) UIActivityIndicatorView *_progressActivityIndicatorView;
-@property (nonatomic, readonly) CMKTimelapseShutterRingView *_timelapseOuterView;
 @property (nonatomic) long long buttonMode;
 @property (getter=isPulsing, nonatomic) bool pulsing;
 @property (nonatomic) bool showDisabled;
@@ -54,7 +52,6 @@
 - (bool)_shouldUseImageViewForMode:(long long)arg1;
 - (bool)_shouldUseTimelapseOuterViewForMode:(long long)arg1;
 - (struct CGSize { double x1; double x2; })_sizeForMode:(long long)arg1;
-- (id)_timelapseOuterView;
 - (void)_updateOuterAndInnerLayers;
 - (void)_updateSpinningAnimations;
 - (long long)buttonMode;

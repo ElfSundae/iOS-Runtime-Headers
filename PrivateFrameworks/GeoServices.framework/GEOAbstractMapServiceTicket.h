@@ -4,6 +4,7 @@
 
 @interface GEOAbstractMapServiceTicket : GEOAbstractTicket <GEOMapServiceTicket> {
     NSArray * _browseCategories;
+    GEOCategorySearchResultSection * _categorySearchResultSection;
     bool  _chainResultSet;
     GEOResolvedItem * _clientResolvedResult;
     GEORelatedSearchSuggestion * _defaultRelatedSuggestion;
@@ -16,6 +17,7 @@
     NSString * _resultDisplayHeader;
     NSString * _resultSectionHeader;
     NSArray * _retainedSearchMetadata;
+    NSArray * _searchResultSections;
     int  _searchResultType;
     bool  _shouldEnableRedoSearch;
     bool  _showDymSuggestionCloseButton;
@@ -24,8 +26,10 @@
 @property (nonatomic, readonly) NSArray *browseCategories;
 @property (nonatomic) unsigned long long cachePolicy;
 @property (getter=isCancelled, nonatomic, readonly) bool cancelled;
+@property (nonatomic, readonly) GEOCategorySearchResultSection *categorySearchResultSection;
 @property (getter=isChainResultSet, nonatomic, readonly) bool chainResultSet;
 @property (nonatomic, readonly) GEOResolvedItem *clientResolvedResult;
+@property (nonatomic, readonly) struct { int x1; union { int x_2_1_1; int x_2_1_2; int x_2_1_3; } x2; } dataRequestKind;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, readonly) GEORelatedSearchSuggestion *defaultRelatedSuggestion;
 @property (readonly, copy) NSString *description;
@@ -40,6 +44,7 @@
 @property (nonatomic, readonly) NSString *resultDisplayHeader;
 @property (nonatomic, readonly) NSString *resultSectionHeader;
 @property (nonatomic, readonly) NSArray *retainedSearchMetadata;
+@property (nonatomic, readonly) NSArray *searchResultSections;
 @property (nonatomic, readonly) int searchResultType;
 @property (nonatomic, readonly) bool shouldEnableRedoSearch;
 @property (nonatomic, readonly) bool showDymSuggestionCloseButton;
@@ -50,7 +55,9 @@
 - (void)applyToCorrectedSearch:(id)arg1;
 - (void)applyToPlaceInfo:(id)arg1;
 - (id)browseCategories;
+- (id)categorySearchResultSection;
 - (id)clientResolvedResult;
+- (struct { int x1; union { int x_2_1_1; int x_2_1_2; int x_2_1_3; } x2; })dataRequestKind;
 - (id)defaultRelatedSuggestion;
 - (id)directionIntent;
 - (id)displayHeaderSubstitutes;
@@ -62,6 +69,7 @@
 - (id)resultDisplayHeader;
 - (id)resultSectionHeader;
 - (id)retainedSearchMetadata;
+- (id)searchResultSections;
 - (int)searchResultType;
 - (bool)shouldEnableRedoSearch;
 - (bool)showDymSuggestionCloseButton;

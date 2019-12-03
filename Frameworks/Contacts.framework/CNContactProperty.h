@@ -46,6 +46,9 @@
 
 // Image: /System/Library/Frameworks/ContactsUI.framework/ContactsUI
 
++ (id)phoneticPropertiesMap;
+
+- (id)phoneticProperty;
 - (id)property;
 
 @end

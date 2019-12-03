@@ -2,14 +2,10 @@
    Image: /System/Library/Frameworks/Photos.framework/Photos
  */
 
-@interface PHMemoryChangeRequest : NSObject <PHInsertChangeRequest, PHUpdateChangeRequest> {
-    bool  _clientEntitled;
+@interface PHMemoryChangeRequest : PHChangeRequest <PHInsertChangeRequest, PHUpdateChangeRequest> {
     bool  _clientEntitledToMemoryMutation;
-    NSString * _clientName;
-    int  _clientProcessID;
     PHRelationshipChangeRequestHelper * _curatedAssetsHelper;
     PHRelationshipChangeRequestHelper * _extendedCuratedAssetsHelper;
-    PHChangeRequestHelper * _helper;
     bool  _incrementPlayCount;
     bool  _incrementShareCount;
     bool  _incrementViewCount;
@@ -24,7 +20,7 @@
 @property (getter=isClientEntitled, nonatomic, readonly) bool clientEntitled;
 @property (nonatomic, readonly) bool clientEntitledToMemoryMutation;
 @property (nonatomic, readonly) NSString *clientName;
-@property (nonatomic, readonly) int clientProcessID;
+@property (nonatomic, readonly) id /* block */ concurrentWorkBlock;
 @property (nonatomic, retain) NSDate *creationDate;
 @property (nonatomic, readonly) PHRelationshipChangeRequestHelper *curatedAssetsHelper;
 @property (readonly, copy) NSString *debugDescription;
@@ -32,7 +28,7 @@
 @property (nonatomic, readonly) PHRelationshipChangeRequestHelper *extendedCuratedAssetsHelper;
 @property (getter=isFavorite, nonatomic) bool favorite;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) PHChangeRequestHelper *helper;
+@property (readonly) bool isNewRequest;
 @property (nonatomic, readonly) PHRelationshipChangeRequestHelper *keyAssetHelper;
 @property (nonatomic, retain) NSDate *lastMoviePlayedDate;
 @property (nonatomic, retain) NSDate *lastViewedDate;
@@ -41,7 +37,6 @@
 @property (nonatomic, readonly) PHRelationshipChangeRequestHelper *movieCuratedAssetsHelper;
 @property (nonatomic, retain) NSData *movieData;
 @property (getter=isMutated, readonly) bool mutated;
-@property (getter=isNew, readonly) bool new;
 @property (nonatomic) unsigned long long notificationState;
 @property (nonatomic, readonly) NSManagedObjectID *objectID;
 @property (getter=isPending, nonatomic) bool pending;
@@ -55,7 +50,6 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSString *title;
 @property (getter=isUserCreated, nonatomic) bool userCreated;
-@property (nonatomic, readonly) NSString *uuid;
 
 // Image: /System/Library/Frameworks/Photos.framework/Photos
 
@@ -82,30 +76,23 @@
 - (id)_mutableRepresentativeAssetObjectIDsAndUUIDs;
 - (void)_prepareAssetIDsIfNeeded;
 - (bool)allowMutationToManagedObject:(id)arg1 propertyKey:(id)arg2 error:(id*)arg3;
-- (bool)applyMutationsToManagedObject:(id)arg1 error:(id*)arg2;
+- (bool)applyMutationsToManagedObject:(id)arg1 photoLibrary:(id)arg2 error:(id*)arg3;
 - (id)blacklistedFeature;
 - (unsigned long long)category;
 - (bool)clientEntitledToMemoryMutation;
-- (id)clientName;
-- (int)clientProcessID;
 - (id)createManagedObjectForInsertIntoPhotoLibrary:(id)arg1 error:(id*)arg2;
 - (id)creationDate;
 - (id)curatedAssetsHelper;
 - (id)description;
-- (void)didMutate;
 - (void)encodeToXPCDict:(id)arg1;
 - (id)extendedCuratedAssetsHelper;
-- (id)helper;
 - (void)incrementPlayCount;
 - (void)incrementShareCount;
 - (void)incrementViewCount;
 - (id)initForNewObject;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
-- (id)initWithXPCDict:(id)arg1 clientEntitlements:(id)arg2 clientName:(id)arg3 clientBundleID:(id)arg4 clientProcessID:(int)arg5;
-- (bool)isClientEntitled;
+- (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
 - (bool)isFavorite;
-- (bool)isMutated;
-- (bool)isNew;
 - (bool)isPending;
 - (bool)isRejected;
 - (bool)isUserCreated;
@@ -117,8 +104,6 @@
 - (id)movieCuratedAssetsHelper;
 - (id)movieData;
 - (unsigned long long)notificationState;
-- (id)objectID;
-- (void)performTransactionCompletionHandlingInPhotoLibrary:(id)arg1;
 - (id)photosGraphData;
 - (long long)photosGraphVersion;
 - (id)placeholderForCreatedMemory;
@@ -152,7 +137,6 @@
 - (unsigned long long)subcategory;
 - (id)subtitle;
 - (id)title;
-- (id)uuid;
 - (bool)validateForDeleteManagedObject:(id)arg1 error:(id*)arg2;
 - (bool)validateInsertIntoPhotoLibrary:(id)arg1 error:(id*)arg2;
 - (bool)validateMutationsToManagedObject:(id)arg1 error:(id*)arg2;

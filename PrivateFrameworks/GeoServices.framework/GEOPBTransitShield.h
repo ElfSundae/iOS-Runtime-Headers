@@ -4,8 +4,21 @@
 
 @interface GEOPBTransitShield : PBCodable <GEOTransitShieldDataSource, NSCopying> {
     struct { 
-        unsigned int shieldEnumValue : 1; 
-    }  _has;
+        unsigned int has_shieldEnumValue : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_shieldColor : 1; 
+        unsigned int read_shieldText : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_shieldColor : 1; 
+        unsigned int wrote_shieldText : 1; 
+        unsigned int wrote_shieldEnumValue : 1; 
+    }  _flags;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     NSString * _shieldColor;
     unsigned int  _shieldEnumValue;
     NSString * _shieldText;
@@ -27,7 +40,12 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_readShieldColor;
+- (void)_readShieldText;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -36,8 +54,11 @@
 - (bool)hasShieldEnumValue;
 - (bool)hasShieldText;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasShieldEnumValue:(bool)arg1;
 - (void)setShieldColor:(id)arg1;

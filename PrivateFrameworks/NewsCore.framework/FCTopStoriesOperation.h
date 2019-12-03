@@ -7,6 +7,7 @@
     <FCCoreConfiguration> * _configuration;
     FCCloudContext * _context;
     NSError * _error;
+    FCForYouConfig * _forYouConfig;
     <FCChannelProviding> * _topStoriesChannel;
     FCTopStoriesOperationResult * _topStoriesResult;
 }
@@ -15,6 +16,7 @@
 @property (nonatomic, copy) <FCCoreConfiguration> *configuration;
 @property (nonatomic, retain) FCCloudContext *context;
 @property (retain) NSError *error;
+@property (retain) FCForYouConfig *forYouConfig;
 @property (copy) <FCChannelProviding> *topStoriesChannel;
 @property (retain) FCTopStoriesOperationResult *topStoriesResult;
 
@@ -24,12 +26,14 @@
 - (id)configuration;
 - (id)context;
 - (id)error;
+- (id)forYouConfig;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
 - (void)setCatchUpCompletionHandler:(id /* block */)arg1;
 - (void)setConfiguration:(id)arg1;
 - (void)setContext:(id)arg1;
 - (void)setError:(id)arg1;
+- (void)setForYouConfig:(id)arg1;
 - (void)setTopStoriesChannel:(id)arg1;
 - (void)setTopStoriesResult:(id)arg1;
 - (id)topStoriesChannel;

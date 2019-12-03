@@ -6,4 +6,6 @@
 
 + (bool)isAvailable;
 
+- (id)icon;
+
 @end

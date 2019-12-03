@@ -7,7 +7,6 @@
     UIImage * _firstAvatar;
     UIGraphicsImageRenderer * _imageRenderer;
     bool  _isRTL;
-    PXViewLayoutHelper * _layoutHelper;
     CNMonogrammer * _monogrammer;
     CAShapeLayer * _overlayLayer;
     UIImage * _secondAvatar;
@@ -18,7 +17,6 @@
 @property (getter=isEnabled, nonatomic) bool enabled;
 @property (nonatomic, retain) UIImage *firstAvatar;
 @property (nonatomic, retain) UIGraphicsImageRenderer *imageRenderer;
-@property (nonatomic, retain) PXViewLayoutHelper *layoutHelper;
 @property (readonly) NSObject<OS_os_log> *log;
 @property (nonatomic, retain) CNMonogrammer *monogrammer;
 @property (nonatomic, retain) CAShapeLayer *overlayLayer;
@@ -45,7 +43,6 @@
 - (id)imageRenderer;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (bool)isEnabled;
-- (id)layoutHelper;
 - (id)log;
 - (id)monogrammer;
 - (id)overlayLayer;
@@ -54,12 +51,12 @@
 - (void)setEnabled:(bool)arg1;
 - (void)setFirstAvatar:(id)arg1;
 - (void)setImageRenderer:(id)arg1;
-- (void)setLayoutHelper:(id)arg1;
 - (void)setMonogrammer:(id)arg1;
 - (void)setOverlayLayer:(id)arg1;
 - (void)setPersonPhoto:(id)arg1 atIndex:(long long)arg2 albumCollection:(id)arg3;
 - (void)setSecondAvatar:(id)arg1;
 - (void)setSharedAlbumCollection:(id)arg1;
+- (void)setSharedAlbumCollection:(id)arg1 forceLayoutSubscriberAvatars:(bool)arg2;
 - (void)setThirdAvatar:(id)arg1;
 - (id)sharedAlbumCollection;
 - (id)thirdAvatar;

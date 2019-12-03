@@ -6,6 +6,7 @@
 @required
 
 - (void)animateWithContext:(id <SVVideoAccessoryItemTransitionContext>)arg1;
+- (bool)animated;
 - (void)cancelTransition;
 
 @end

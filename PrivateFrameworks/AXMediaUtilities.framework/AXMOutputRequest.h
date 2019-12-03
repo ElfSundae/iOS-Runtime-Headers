@@ -3,40 +3,43 @@
  */
 
 @interface AXMOutputRequest : NSObject {
-    float  _hapticDuration;
-    long long  _hapticID;
-    float  _hapticPitch;
-    float  _hapticVolume;
+    id /* block */  _completionBlock;
+    AXMOutputRequestHandle * _handle;
     bool  _interruptsAndClearsQueue;
-    NSMutableArray * _soundFileURLs;
-    NSMutableAttributedString * _speechSequence;
+    NSObject<OS_dispatch_queue> * _queue;
+    NSMutableArray * _queue_actions;
 }
 
-@property (nonatomic) float hapticDuration;
-@property (nonatomic, readonly) long long hapticID;
-@property (nonatomic) float hapticPitch;
-@property (nonatomic) float hapticVolume;
+@property (nonatomic, readonly) NSArray *actions;
+@property (nonatomic, readonly) NSArray *activeSoundActions;
+@property (nonatomic, copy) id /* block */ completionBlock;
+@property (nonatomic, readonly) AXMOutputRequestHandle *handle;
+@property (nonatomic, readonly) NSArray *hapticActions;
 @property (nonatomic) bool interruptsAndClearsQueue;
-@property (nonatomic, readonly) NSArray *soundFileURLs;
-@property (nonatomic, readonly) NSAttributedString *speechSequence;
+@property (nonatomic, readonly) NSArray *oneShotSoundActions;
+@property (nonatomic, readonly) NSArray *speechActions;
 
 + (id)speechItemSeparator;
 
 - (void).cxx_destruct;
-- (void)addHapticItemWithID:(long long)arg1;
-- (void)addSoundItemWithID:(long long)arg1;
+- (void)_addAction:(id)arg1;
+- (id)actions;
+- (id)activeSoundActions;
+- (void)addActiveSoundItemWithID:(id)arg1;
+- (void)addActiveSoundItemWithURL:(id)arg1;
+- (void)addHapticItemWithURL:(id)arg1;
+- (void)addHapticItemWithURL:(id)arg1 intensity:(double)arg2;
+- (void)addSoundItemWithID:(id)arg1;
 - (void)addSoundItemWithURL:(id)arg1;
 - (void)addSpeechItem:(id)arg1;
-- (float)hapticDuration;
-- (long long)hapticID;
-- (float)hapticPitch;
-- (float)hapticVolume;
+- (id /* block */)completionBlock;
+- (id)handle;
+- (id)hapticActions;
+- (id)init;
 - (bool)interruptsAndClearsQueue;
-- (void)setHapticDuration:(float)arg1;
-- (void)setHapticPitch:(float)arg1;
-- (void)setHapticVolume:(float)arg1;
+- (id)oneShotSoundActions;
+- (void)setCompletionBlock:(id /* block */)arg1;
 - (void)setInterruptsAndClearsQueue:(bool)arg1;
-- (id)soundFileURLs;
-- (id)speechSequence;
+- (id)speechActions;
 
 @end

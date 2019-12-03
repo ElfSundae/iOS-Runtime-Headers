@@ -7,6 +7,7 @@
     GEOApplicationAuditToken * _auditToken;
     GEOCommonOptions * _commonOptions;
     GEOETATrafficUpdateRequest * _currentETARequest;
+    GEOComposedRouteStep * _currentStepAtRequestStart;
     double  _debugTimeWindowDuration;
     <GEOETAUpdaterDelegate> * _delegate;
     GEOComposedWaypoint * _destination;
@@ -15,6 +16,7 @@
     long long  _etaState;
     double  _lastETARequestTime;
     unsigned long long  _maxAlternateRoutesCount;
+    double  _percentageOfCurrentStepRemainingAtRequestStart;
     double  _requestInterval;
     NSString * _requestingAppIdentifier;
     GEOComposedRoute * _route;
@@ -32,7 +34,7 @@
 @property (nonatomic, retain) GEOComposedWaypoint *destination;
 @property (nonatomic, retain) NSData *directionsResponseID;
 @property (nonatomic) unsigned long long maxAlternateRoutesCount;
-@property (readonly) bool requestInProgress;
+@property (nonatomic, readonly) bool requestInProgress;
 @property (nonatomic) double requestInterval;
 @property (nonatomic, retain) NSString *requestingAppIdentifier;
 @property (nonatomic, retain) GEOComposedRoute *route;
@@ -47,14 +49,14 @@
 - (void)_clearTimer;
 - (void)_continueUpdateRequests;
 - (double)_currentTime;
-- (int)_requestModeForRequest:(id)arg1;
-- (void)_sendRequest:(id)arg1 shouldCallWillSendCallback:(bool)arg2;
+- (void)_sendRequest:(id)arg1;
 - (bool)_shouldStartConditionalETARequest;
 - (void)_startConditionalConnectionETARequest;
 - (void)_startStateWaitingForBestTimeStart:(id)arg1;
+- (void)_trafficRequest:(id)arg1 finished:(id)arg2;
 - (bool)_updateETAResponse:(id)arg1 withRemainingDistanceFromRequest:(id)arg2;
+- (id)_updateOrCreateRequest:(id)arg1;
 - (void)_updateRequest:(id)arg1;
-- (void)_updateRequestModeForRequest:(id)arg1 withResponse:(id)arg2;
 - (bool)_updateRouteWithETATrafficUpdateResponse:(id)arg1;
 - (bool)allowRequests;
 - (id)auditToken;

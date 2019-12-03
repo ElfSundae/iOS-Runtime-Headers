@@ -9,9 +9,9 @@
 
 + (id)dataWithContentsOfFile:(id)arg1;
 
+- (void).cxx_destruct;
 - (void)_loadData;
 - (const void*)bytes;
-- (void)dealloc;
 - (id)initWithContentsOfFile:(id)arg1;
 - (unsigned long long)length;
 

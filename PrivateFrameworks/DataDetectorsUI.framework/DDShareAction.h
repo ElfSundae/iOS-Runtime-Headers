@@ -4,6 +4,7 @@
 
 @interface DDShareAction : DDAction
 
+- (id)icon;
 - (id)localizedName;
 - (void)performFromView:(id)arg1;
 

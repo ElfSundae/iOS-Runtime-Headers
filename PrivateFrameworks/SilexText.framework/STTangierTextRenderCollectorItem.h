@@ -18,7 +18,7 @@
 }
 
 @property (nonatomic, readonly) NSString *componentIdentifier;
-@property (nonatomic, retain) UIView<TSDRepDirectLayerHosting> *directLayerHost;
+@property (nonatomic, readonly) UIView<TSDRepDirectLayerHosting> *directLayerHost;
 @property (nonatomic, readonly) STTextTangierFlowInfo *flowInfo;
 @property (nonatomic, retain) STTextTangierFlowLayout *flowLayout;
 @property (nonatomic, readonly) struct _NSRange { unsigned long long x1; unsigned long long x2; } flowRange;
@@ -41,7 +41,6 @@
 - (id)initWithStorage:(id)arg1 layout:(id)arg2 directLayerHost:(id)arg3 selectable:(bool)arg4 componentIdentifier:(id)arg5;
 - (id)layout;
 - (bool)selectable;
-- (void)setDirectLayerHost:(id)arg1;
 - (void)setFlowLayout:(id)arg1;
 - (void)setLayout:(id)arg1;
 - (void)setStorage:(id)arg1;

@@ -13,8 +13,8 @@
 @property (nonatomic, readonly, copy) NSString *name;
 
 + (id)lifetimeDetailsForEvent:(id)arg1 relativeToDate:(id)arg2;
-+ (id)lifetimeDetailsForLocationOfInterest:(id)arg1 placemark:(id)arg2;
 + (id)lifetimeDetailsForOneHour;
++ (id)lifetimeDetailsForPlaceInference:(id)arg1;
 + (id)lifetimeDetailsUntilEvening;
 + (id)lifetimeDetailsUntilMorning;
 

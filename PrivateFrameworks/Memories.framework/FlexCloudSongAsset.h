@@ -19,5 +19,6 @@
 - (bool)isCloudBacked;
 - (void)purgeLocalCache;
 - (void)requestDownload;
+- (void)requestDownloadWithOptions:(id)arg1;
 
 @end

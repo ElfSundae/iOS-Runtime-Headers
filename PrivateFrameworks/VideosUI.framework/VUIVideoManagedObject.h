@@ -11,10 +11,12 @@
 @property (nonatomic, copy) NSString *brandID;
 @property (nonatomic, copy) NSString *brandName;
 @property (nonatomic, copy) NSString *canonicalID;
+@property (nonatomic, copy) NSString *contentRatingDomain;
 @property (nonatomic, copy) NSNumber *contentRatingRank;
 @property (nonatomic, copy) NSDate *dateAdded;
 @property (nonatomic) long long downloadState;
 @property (nonatomic, copy) NSNumber *downloadTaskIdentifier;
+@property (nonatomic, copy) NSURL *downloadURL;
 @property (nonatomic, copy) NSNumber *dsid;
 @property (nonatomic, copy) NSNumber *duration;
 @property (nonatomic, copy) NSString *externalID;

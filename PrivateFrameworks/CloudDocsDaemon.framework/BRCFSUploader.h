@@ -64,6 +64,7 @@
 - (id)descriptionForItem:(id)arg1 context:(id)arg2;
 - (id)descriptionForJobID:(id)arg1 context:(id)arg2;
 - (void)finishedSyncingUpItem:(id)arg1 withOutOfQuotaError:(id)arg2;
+- (void)forceScheduleQuotaFetchForOwner:(id)arg1;
 - (bool)hasItemsOverQuotaForOwner:(id)arg1;
 - (bool)hasItemsOverQuotaInZone:(id)arg1;
 - (id)initWithAccountSession:(id)arg1;

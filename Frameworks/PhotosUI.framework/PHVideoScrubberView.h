@@ -3,34 +3,47 @@
  */
 
 @interface PHVideoScrubberView : UIView <PXVideoScrubberControllerDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate> {
-    PUFilmstripView * __filmStripView;
+    UIView<PHVideoScrubberFilmstripView> * __filmStripView;
     bool  __needsUpdateFilmStripView;
     bool  __needsUpdateVideoScrubberController;
     PUPlayheadView * __playheadView;
-    UIScrollView * __scrollView;
     PXVideoScrubberController * __videoScrubberController;
     double  _estimatedDuration;
+    <PHVideoScrubberFilmstripViewProvider> * _filmstripViewProvider;
+    <PHVideoScrubberViewInteractionDelegate> * _interactionDelegate;
+    struct { 
+        bool didBeginTouching; 
+        bool didEndTouching; 
+        bool willBeginDragging; 
+        bool didEndDragging; 
+        bool willBeginDecelerating; 
+        bool didEndDecelerating; 
+    }  _interactionDelegateRespondsTo;
     UIImage * _placeholderThumbnail;
     AVPlayer * _player;
     unsigned long long  _previousPlayState;
+    UIScrollView * _scrollView;
 }
 
-@property (setter=_setFilmStripView:, nonatomic, retain) PUFilmstripView *_filmStripView;
+@property (setter=_setFilmStripView:, nonatomic, retain) UIView<PHVideoScrubberFilmstripView> *_filmStripView;
 @property (setter=_setNeedsUpdateFilmStripView:, nonatomic) bool _needsUpdateFilmStripView;
 @property (setter=_setNeedsUpdateVideoScrubberController:, nonatomic) bool _needsUpdateVideoScrubberController;
 @property (setter=_setPlayheadView:, nonatomic, retain) PUPlayheadView *_playheadView;
-@property (setter=_setScrollView:, nonatomic, retain) UIScrollView *_scrollView;
 @property (setter=_setVideoScrubberController:, nonatomic, retain) PXVideoScrubberController *_videoScrubberController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) double estimatedDuration;
+@property (nonatomic) <PHVideoScrubberFilmstripViewProvider> *filmstripViewProvider;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) <PHVideoScrubberViewInteractionDelegate> *interactionDelegate;
 @property (nonatomic, retain) UIImage *placeholderThumbnail;
 @property (nonatomic, retain) AVPlayer *player;
+@property (setter=_setScrollView:, nonatomic, retain) UIScrollView *scrollView;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)_currentAVAsset;
+- (id)_currentVideoComposition;
 - (id)_filmStripView;
 - (void)_handleInteractionBegan;
 - (void)_handleInteractionEndedAndTogglePlayState:(bool)arg1;
@@ -62,16 +75,23 @@
 - (id)_videoScrubberController;
 - (void)dealloc;
 - (double)estimatedDuration;
+- (id)filmstripViewProvider;
 - (bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (id)interactionDelegate;
 - (void)layoutSubviews;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (id)placeholderThumbnail;
 - (id)player;
+- (id)scrollView;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(bool)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)scrollViewWillBeginDecelerating:(id)arg1;
+- (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)setEstimatedDuration:(double)arg1;
+- (void)setFilmstripViewProvider:(id)arg1;
+- (void)setInteractionDelegate:(id)arg1;
 - (void)setPlaceholderThumbnail:(id)arg1;
 - (void)setPlayer:(id)arg1;
 - (double)videoScrubberController:(id)arg1 lengthForDuration:(double)arg2;

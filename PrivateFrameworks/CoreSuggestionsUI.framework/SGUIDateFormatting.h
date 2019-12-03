@@ -8,6 +8,8 @@
 + (id)fullDayFormatter;
 + (id)mediumDateFormatter;
 + (id)multiDayDateFormatter;
++ (id)reminderAllDayDateFormatter;
++ (id)reminderDateFormatter;
 + (id)singleDayDateFormatter;
 + (id)singleDayTimeFormatter;
 

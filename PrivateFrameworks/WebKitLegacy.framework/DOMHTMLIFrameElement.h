@@ -18,6 +18,8 @@
 @property (copy) NSString *src;
 @property (copy) NSString *width;
 
+// Image: /System/Library/PrivateFrameworks/WebKitLegacy.framework/WebKitLegacy
+
 - (id)align;
 - (id)contentDocument;
 - (id)contentFrame;
@@ -46,5 +48,9 @@
 - (id)srcdoc;
 - (int)structuralComplexityContribution;
 - (id)width;
+
+// Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
+
+- (bool)nodeCanBecomeFirstResponder;
 
 @end

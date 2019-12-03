@@ -3,7 +3,6 @@
  */
 
 @interface SPClientSession : NSObject {
-    SPAppService * _appService;
     long long  _contentFilter;
     bool  _infinitePatience;
     bool  _observersAdded;

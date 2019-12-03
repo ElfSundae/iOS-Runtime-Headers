@@ -8,7 +8,7 @@
     EDResources * mResources;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (unsigned int)entryIndex;
 - (id)font;

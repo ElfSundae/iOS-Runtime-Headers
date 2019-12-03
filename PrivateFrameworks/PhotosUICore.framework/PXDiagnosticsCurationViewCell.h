@@ -5,11 +5,15 @@
 @interface PXDiagnosticsCurationViewCell : UICollectionViewCell {
     double  _aestheticScore;
     PXScoreView * _aestheticScoreView;
+    NSString * _alternateState;
+    PXStateBadgeView * _alternateStateBadgeView;
     PXTextSymbolView * _blurryBadgeView;
     NSString * _clusterState;
     PXStateBadgeView * _clusterStateBadgeView;
     double  _contentScore;
     PXScoreView * _contentScoreView;
+    double  _criteriaScore;
+    PXScoreView * _criteriaScoreView;
     NSDictionary * _debugInfo;
     PXSymbolBadgeView * _dedupedSymbolBadgeView;
     NSNumber * _dedupedSymbolIndex;
@@ -34,9 +38,11 @@
 }
 
 @property (nonatomic) double aestheticScore;
+@property (nonatomic, retain) NSString *alternateState;
 @property (getter=isBlurry, nonatomic) bool blurry;
 @property (nonatomic, retain) NSString *clusterState;
 @property (nonatomic) double contentScore;
+@property (nonatomic) double criteriaScore;
 @property (nonatomic, retain) NSDictionary *debugInfo;
 @property (nonatomic, retain) NSNumber *dedupedSymbolIndex;
 @property (nonatomic, retain) NSString *dedupingType;
@@ -53,8 +59,10 @@
 
 - (void).cxx_destruct;
 - (double)aestheticScore;
+- (id)alternateState;
 - (id)clusterState;
 - (double)contentScore;
+- (double)criteriaScore;
 - (id)debugInfo;
 - (id)dedupedSymbolIndex;
 - (id)dedupingType;
@@ -68,10 +76,13 @@
 - (void)prepareForReuse;
 - (id)representedAssetIdentifier;
 - (void)setAestheticScore:(double)arg1;
+- (void)setAlternateState:(id)arg1;
 - (void)setBlurry:(bool)arg1;
 - (void)setClusterParity:(unsigned long long)arg1;
 - (void)setClusterState:(id)arg1;
+- (void)setComparisonMatch:(bool)arg1;
 - (void)setContentScore:(double)arg1;
+- (void)setCriteriaScore:(double)arg1;
 - (void)setDebugInfo:(id)arg1;
 - (void)setDedupedSymbolIndex:(id)arg1;
 - (void)setDedupingType:(id)arg1;

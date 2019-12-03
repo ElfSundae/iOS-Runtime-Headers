@@ -22,7 +22,6 @@
 + (id)keylineWithDefaultInsets;
 + (id)keylineWithKeylineType:(long long)arg1;
 + (id)keylineWithKeylineType:(long long)arg1 platterStyling:(bool)arg2;
-+ (id)starkKeyline;
 + (id)verticalKeyline;
 
 - (void).cxx_destruct;

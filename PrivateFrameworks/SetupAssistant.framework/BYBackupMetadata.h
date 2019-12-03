@@ -9,6 +9,7 @@
     bool  _didSeeTrueTonePane;
     bool  _findMyiPhoneOptIn;
     struct { 
+        unsigned int userInterfaceStyleMode : 1; 
         unsigned int appAnalyticsOptIn : 1; 
         unsigned int deviceAnalyticsOptIn : 1; 
         unsigned int homeButtonHapticKind : 1; 
@@ -24,7 +25,9 @@
     NSData * _nanoRegistryData;
     bool  _screenTimeEnabled;
     bool  _siriOptIn;
+    long long  _userInterfaceStyleMode;
     unsigned int  _version;
+    NSData * _walletData;
 }
 
 @property (nonatomic) unsigned int appAnalyticsOptIn;
@@ -42,12 +45,16 @@
 @property (nonatomic, readonly) bool hasNanoRegistryData;
 @property (nonatomic) bool hasScreenTimeEnabled;
 @property (nonatomic) bool hasSiriOptIn;
+@property (nonatomic) bool hasUserInterfaceStyleMode;
+@property (nonatomic, readonly) bool hasWalletData;
 @property (nonatomic) unsigned int homeButtonHapticKind;
 @property (nonatomic) bool locationServicesOptIn;
 @property (nonatomic, retain) NSData *nanoRegistryData;
 @property (nonatomic) bool screenTimeEnabled;
 @property (nonatomic) bool siriOptIn;
+@property (nonatomic) long long userInterfaceStyleMode;
 @property (nonatomic) unsigned int version;
+@property (nonatomic, retain) NSData *walletData;
 
 - (void).cxx_destruct;
 - (unsigned int)appAnalyticsOptIn;
@@ -69,6 +76,8 @@
 - (bool)hasNanoRegistryData;
 - (bool)hasScreenTimeEnabled;
 - (bool)hasSiriOptIn;
+- (bool)hasUserInterfaceStyleMode;
+- (bool)hasWalletData;
 - (unsigned long long)hash;
 - (unsigned int)homeButtonHapticKind;
 - (bool)isEqual:(id)arg1;
@@ -91,14 +100,19 @@
 - (void)setHasLocationServicesOptIn:(bool)arg1;
 - (void)setHasScreenTimeEnabled:(bool)arg1;
 - (void)setHasSiriOptIn:(bool)arg1;
+- (void)setHasUserInterfaceStyleMode:(bool)arg1;
 - (void)setHomeButtonHapticKind:(unsigned int)arg1;
 - (void)setLocationServicesOptIn:(bool)arg1;
 - (void)setNanoRegistryData:(id)arg1;
 - (void)setScreenTimeEnabled:(bool)arg1;
 - (void)setSiriOptIn:(bool)arg1;
+- (void)setUserInterfaceStyleMode:(long long)arg1;
 - (void)setVersion:(unsigned int)arg1;
+- (void)setWalletData:(id)arg1;
 - (bool)siriOptIn;
+- (long long)userInterfaceStyleMode;
 - (unsigned int)version;
+- (id)walletData;
 - (void)writeTo:(id)arg1;
 
 @end

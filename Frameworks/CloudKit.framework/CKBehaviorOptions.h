@@ -25,8 +25,6 @@
 - (void).cxx_destruct;
 - (bool)CFNetworkLogging;
 - (const char *)CKCtlPrompt;
-- (bool)CKTimeLogging;
-- (bool)CKTimeLoggingDetailed;
 - (double)PCSCacheMinTime;
 - (unsigned long long)PCSCacheSize;
 - (int)PCSRetryCount;
@@ -65,16 +63,18 @@
 - (id)customShareServiceBaseURL;
 - (void)dealloc;
 - (int)defaultRetryAfter;
+- (id)deviceCountOverride;
 - (bool)didReadAutomatedDeviceGroup;
 - (bool)disableCaching;
 - (bool)enableMMCSMetricsWithDefaultValue:(bool)arg1;
-- (bool)enableMescal;
 - (bool)evictRecentAssets;
 - (long long)flowControlBudget;
 - (long long)flowControlBudgetOverride;
 - (double)flowControlRegeneration;
 - (double)flowControlRegenerationOverride;
+- (bool)forceUploadRequestActivitiesToRunImmediately;
 - (bool)highPriorityURLDelegates;
+- (bool)ignoreUploadRequestPushNotifications;
 - (bool)isAppleInternalInstall;
 - (bool)logTraffic;
 - (bool)logTrafficToTextFile;
@@ -84,7 +84,7 @@
 - (unsigned long long)maxPackageDownloadsPerBatchWithDefaultValue:(unsigned long long)arg1;
 - (unsigned long long)maxPackageUploadsPerBatchWithDefaultValue:(unsigned long long)arg1;
 - (double)maxRecentProxyAge;
-- (double)maxTimeIntervalSinceLastZoneishPCSKeyRoll;
+- (long long)maxRecordPCSMasterKeyRolls;
 - (double)maximumQueuedFetchWaitTime;
 - (double)maximumThrottleSeconds;
 - (double)maximumWaitAfterFetchRequest;
@@ -108,6 +108,7 @@
 - (bool)rollRecordMasterKeysOnUnshare;
 - (bool)rollRecordPCSMasterKeys;
 - (bool)rollZonePCSIdentities;
+- (bool)rollZoneSharingKeys;
 - (bool)sandboxCloudD;
 - (unsigned long long)savedErrorCount;
 - (bool)sendDebugHeader;
@@ -116,8 +117,6 @@
 - (void)setBuildVersion:(id)arg1;
 - (void)setCFNetworkLogging:(bool)arg1;
 - (void)setCKCtlPrompt:(char *)arg1;
-- (void)setCKTimeLogging:(bool)arg1;
-- (void)setCKTimeLoggingDetailed:(bool)arg1;
 - (void)setCachedPrefs:(id)arg1;
 - (void)setCachedPrefsQueue:(id)arg1;
 - (void)setCachedRecordExpiryTime:(int)arg1;
@@ -130,9 +129,11 @@
 - (void)setCustomDeviceServiceBaseURL:(id)arg1;
 - (void)setCustomMetricsServiceBaseURL:(id)arg1;
 - (void)setCustomShareServiceBaseURL:(id)arg1;
+- (void)setDeviceCountOverride:(id)arg1;
 - (void)setDidReadAutomatedDeviceGroup:(bool)arg1;
 - (void)setDisableCaching:(bool)arg1;
-- (void)setEnableMescal:(bool)arg1;
+- (void)setForceUploadRequestActivitiesToRunImmediately:(bool)arg1;
+- (void)setIgnoreUploadRequestPushNotifications:(bool)arg1;
 - (void)setLogTraffic:(bool)arg1;
 - (void)setLogTrafficToTextFile:(bool)arg1;
 - (void)setMcToken:(int)arg1;
@@ -146,6 +147,7 @@
 - (void)setRollRecordMasterKeysOnUnshare:(bool)arg1;
 - (void)setRollRecordPCSMasterKeys:(bool)arg1;
 - (void)setRollZonePCSIdentities:(bool)arg1;
+- (void)setRollZoneSharingKeys:(bool)arg1;
 - (void)setSendDebugHeader:(bool)arg1;
 - (void)setSetupBaseURL:(id)arg1;
 - (void)setShouldProfileSQL:(bool)arg1;

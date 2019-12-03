@@ -12,7 +12,7 @@
     id * _objects;
     NSPointerArray * _payload;
     unsigned long long  _payloadPurgeCounter;
-    /* Warning: Unrecognized filer type: '^' using 'void*' */ void* _serializedThread;
+    _Atomic struct _opaque_pthread_t {} * _serializedThread;
     struct _opaque_pthread_mutex_t { 
         long long __sig; 
         BOOL __opaque[56]; 

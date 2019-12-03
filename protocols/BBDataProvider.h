@@ -20,7 +20,6 @@
 - (id)clearedInfoForClearingBulletinsFromDate:(NSDate *)arg1 toDate:(NSDate *)arg2 lastClearedInfo:(id)arg3;
 - (void)dataProviderDidLoad;
 - (NSArray *)defaultSubsectionInfos;
-- (NSString *)displayNameForFilterID:(NSString *)arg1;
 - (NSString *)displayNameForSubsectionID:(NSString *)arg1;
 - (void)getAspectRatioForAttachmentUUID:(void *)arg1 recordID:(void *)arg2 withCompletionHandler:(void *)arg3; // needs 3 arg types, found 8: NSUUID *, NSString *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, float, void*
 - (void)getDataForAttachmentUUID:(void *)arg1 recordID:(void *)arg2 withCompletionHandler:(void *)arg3; // needs 3 arg types, found 8: NSUUID *, NSString *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSData *, void*

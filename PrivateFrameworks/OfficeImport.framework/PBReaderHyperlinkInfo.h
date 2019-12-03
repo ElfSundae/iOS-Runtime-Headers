@@ -12,7 +12,7 @@
 @property (nonatomic, retain) NSString *hyperlink2;
 @property (nonatomic, retain) NSString *screenTip;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)hyperlink1;
 - (id)hyperlink2;
 - (id)screenTip;

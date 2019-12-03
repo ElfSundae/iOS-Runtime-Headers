@@ -12,7 +12,10 @@
 
 @optional
 
+- (NSArray *)_customDraggableObjectsForRange:(UITextRange *)arg1;
+- (UITextRange *)_rangeOfCustomDraggableObjectsInRange:(UITextRange *)arg1;
 - (bool)_shouldObscureInput;
+- (<UITextDraggableGeometry> *)_textGeometry;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })_visibleRangeWithLayout:(bool)arg1;
 - (void)didGenerateCancelPreview:(id)arg1;
 - (void)performCancelAnimations;

@@ -6,14 +6,16 @@
     double  _contentHeightAdjustment;
     <PXGadgetDelegate> * _delegate;
     PXGadgetSpec * _gadgetSpec;
+    NSString * _message;
     double  _minimumContentHeight;
-    PXContentUnavailableView * _noContentView;
+    PXNoContentGadgetView * _noContentView;
     long long  _priority;
+    NSString * _title;
 }
 
-@property (nonatomic, readonly) const struct __CFString { }*accessoryButtonEventTrackerKey;
 @property (nonatomic, readonly) NSString *accessoryButtonTitle;
 @property (nonatomic, readonly) unsigned long long accessoryButtonType;
+@property (nonatomic, readonly) Class collectionViewItemClass;
 @property (nonatomic) double contentHeightAdjustment;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <PXGadgetDelegate> *delegate;
@@ -26,7 +28,7 @@
 @property (nonatomic, readonly) NSString *localizedTitle;
 @property (nonatomic, copy) NSString *message;
 @property (nonatomic, readonly) double minimumContentHeight;
-@property (nonatomic, retain) PXContentUnavailableView *noContentView;
+@property (nonatomic, retain) PXNoContentGadgetView *noContentView;
 @property (nonatomic) long long priority;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) bool supportsAssetsDrop;
@@ -37,9 +39,9 @@
 
 - (void).cxx_destruct;
 - (unsigned long long)accessoryButtonType;
+- (Class)collectionViewItemClass;
 - (void)configureWithButtonTitle:(id)arg1 buttonAction:(id /* block */)arg2;
 - (double)contentHeightAdjustment;
-- (struct NSObject { Class x1; }*)contentView;
 - (id)delegate;
 - (id)gadgetSpec;
 - (unsigned long long)gadgetType;
@@ -51,6 +53,8 @@
 - (id)message;
 - (double)minimumContentHeight;
 - (id)noContentView;
+- (double)preferredHeightForViewController:(struct NSObject { Class x1; }*)arg1;
+- (void)prepareCollectionViewItem:(struct UICollectionViewCell { Class x1; }*)arg1;
 - (long long)priority;
 - (void)setContentHeightAdjustment:(double)arg1;
 - (void)setDelegate:(id)arg1;

@@ -11,14 +11,16 @@
     OADDrawable<OADDrawableContainer> * mParent;
 }
 
+@property OADDrawable<OADDrawableContainer> *parent;
+
 + (unsigned int)generateOADDrawableId:(id)arg1;
 
+- (void).cxx_destruct;
 - (unsigned int)altId;
 - (void)changeParentTextListStylePreservingEffectiveValues:(id)arg1;
 - (id)clientData;
 - (id)createOrientedBoundsWithBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)createWordClientDataWithTextType:(int)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)drawableProperties;
 - (id)ensureClientDataOfClass:(Class)arg1;

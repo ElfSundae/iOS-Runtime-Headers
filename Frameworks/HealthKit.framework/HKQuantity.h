@@ -12,6 +12,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (getter=_unit, nonatomic, readonly) HKUnit *unit;
+@property (getter=_value, nonatomic, readonly) double value;
 
 // Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
 
@@ -26,6 +27,7 @@
 - (bool)_isZero;
 - (id)_quantityByAddingQuantity:(id)arg1;
 - (id)_unit;
+- (double)_value;
 - (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -39,6 +41,10 @@
 - (bool)isCompatibleWithUnit:(id)arg1;
 - (bool)isEqual:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/ActionKit.framework/ActionKit
+
+- (double)wf_normalizedDoubleValueForUnit:(id)arg1;
+
 // Image: /System/Library/PrivateFrameworks/FitnessUI.framework/FitnessUI
 
 - (double)fiui_doubleValueByDividingByQuantity:(id)arg1;
@@ -49,5 +55,13 @@
 + (id)createWithCodable:(id)arg1;
 
 - (id)codableRepresentationForSync;
+
+// Image: /System/Library/PrivateFrameworks/HealthMenstrualCycles.framework/HealthMenstrualCycles
+
++ (id)hkmc_quantityWithDegreesCelsius:(double)arg1;
++ (id)hkmc_quantityWithDegreesFahrenheit:(double)arg1;
+
+- (double)hkmc_degreesCelsius;
+- (double)hkmc_degreesFahrenheit;
 
 @end

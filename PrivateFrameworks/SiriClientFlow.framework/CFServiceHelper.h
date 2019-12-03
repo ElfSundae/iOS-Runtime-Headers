@@ -27,6 +27,8 @@
 - (bool)isTimeoutSuspended;
 - (bool)openSensitiveURL:(id)arg1;
 - (id)peerInfoForCurrentCommand;
+- (void)prepareForAudioHandoffFailedWithCompletion:(id /* block */)arg1;
+- (void)prepareForAudioHandoffWithCompletion:(id /* block */)arg1;
 - (id)serviceHelper;
 - (void)setIsClientLiteHelper:(bool)arg1;
 - (void)setServiceHelper:(id)arg1;

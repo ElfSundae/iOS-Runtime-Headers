@@ -3,6 +3,7 @@
  */
 
 @interface PKCreditAccountSummary : NSObject <NSCopying, NSSecureCoding> {
+    NSDecimalNumber * _adjustedBalance;
     bool  _autoPayEnabled;
     NSDecimalNumber * _availableCredit;
     unsigned long long  _balanceStatus;
@@ -13,10 +14,12 @@
     PKCreditAccountStatement * _currentStatement;
     long long  _cyclesPastDue;
     bool  _inGrace;
+    NSDecimalNumber * _installmentBalance;
     NSDate * _lastPaymentDate;
     NSDecimalNumber * _pastDueAmount;
     NSDate * _paymentDueDate;
     NSDecimalNumber * _remainingMinimumPayment;
+    NSDecimalNumber * _remainingMinimumPaymentExcludedFromInterestCalculation;
     NSDecimalNumber * _remainingStatementBalance;
     bool  _requiresDebtCollectionNotices;
     NSDecimalNumber * _rewardsBalance;
@@ -24,6 +27,7 @@
     NSDate * _unpostedInterestTimestamp;
 }
 
+@property (nonatomic, copy) NSDecimalNumber *adjustedBalance;
 @property (nonatomic) bool autoPayEnabled;
 @property (nonatomic, copy) NSDecimalNumber *availableCredit;
 @property (nonatomic) unsigned long long balanceStatus;
@@ -34,10 +38,12 @@
 @property (nonatomic, retain) PKCreditAccountStatement *currentStatement;
 @property (nonatomic) long long cyclesPastDue;
 @property (nonatomic) bool inGrace;
+@property (nonatomic, copy) NSDecimalNumber *installmentBalance;
 @property (nonatomic, copy) NSDate *lastPaymentDate;
 @property (nonatomic, copy) NSDecimalNumber *pastDueAmount;
 @property (nonatomic, copy) NSDate *paymentDueDate;
 @property (nonatomic, copy) NSDecimalNumber *remainingMinimumPayment;
+@property (nonatomic, copy) NSDecimalNumber *remainingMinimumPaymentExcludedFromInterestCalculation;
 @property (nonatomic, copy) NSDecimalNumber *remainingStatementBalance;
 @property (nonatomic) bool requiresDebtCollectionNotices;
 @property (nonatomic, copy) NSDecimalNumber *rewardsBalance;
@@ -47,6 +53,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)adjustedBalance;
 - (bool)autoPayEnabled;
 - (id)availableCredit;
 - (unsigned long long)balanceStatus;
@@ -64,14 +71,17 @@
 - (void)ingestExtendedAccountDetails:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
+- (id)installmentBalance;
 - (bool)isEqual:(id)arg1;
 - (id)lastPaymentDate;
 - (id)pastDueAmount;
 - (id)paymentDueDate;
 - (id)remainingMinimumPayment;
+- (id)remainingMinimumPaymentExcludedFromInterestCalculation;
 - (id)remainingStatementBalance;
 - (bool)requiresDebtCollectionNotices;
 - (id)rewardsBalance;
+- (void)setAdjustedBalance:(id)arg1;
 - (void)setAutoPayEnabled:(bool)arg1;
 - (void)setAvailableCredit:(id)arg1;
 - (void)setBalanceStatus:(unsigned long long)arg1;
@@ -82,10 +92,12 @@
 - (void)setCurrentStatement:(id)arg1;
 - (void)setCyclesPastDue:(long long)arg1;
 - (void)setInGrace:(bool)arg1;
+- (void)setInstallmentBalance:(id)arg1;
 - (void)setLastPaymentDate:(id)arg1;
 - (void)setPastDueAmount:(id)arg1;
 - (void)setPaymentDueDate:(id)arg1;
 - (void)setRemainingMinimumPayment:(id)arg1;
+- (void)setRemainingMinimumPaymentExcludedFromInterestCalculation:(id)arg1;
 - (void)setRemainingStatementBalance:(id)arg1;
 - (void)setRequiresDebtCollectionNotices:(bool)arg1;
 - (void)setRewardsBalance:(id)arg1;

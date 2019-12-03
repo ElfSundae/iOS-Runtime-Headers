@@ -10,5 +10,8 @@
 + (void)withEnvironment:(id)arg1 execute:(id /* block */)arg2;
 
 - (id)date;
+- (bool)isInternalBuild;
+- (bool)isStandardEnvironment;
+- (id)valueForEntitlement:(id)arg1;
 
 @end

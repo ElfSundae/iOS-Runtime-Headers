@@ -36,6 +36,7 @@
 - (void)noteShared;
 - (id)remoteAssetManager;
 - (bool)remoteAssetsDownloaded;
+- (bool)remoteAssetsDownloadedForScreenScale:(double)arg1 suffix:(id)arg2;
 - (void)requestUpdateWithCompletion:(id /* block */)arg1;
 - (id)resourceValueForKey:(id)arg1;
 - (void)revocationStatusWithCompletion:(id /* block */)arg1;

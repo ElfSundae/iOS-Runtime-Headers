@@ -18,8 +18,6 @@
 @property (nonatomic) long long keepAliveCount;
 @property (readonly) Class superclass;
 
-+ (id)_keepAliveForContainer:(id)arg1;
-
 - (void).cxx_destruct;
 - (id)_lockedById;
 - (void)_performTransaction:(id /* block */)arg1;
@@ -30,7 +28,7 @@
 - (long long)countAllEventsWithLockKey:(id)arg1 error:(id*)arg2;
 - (void)dropAllEventsWithLockKey:(id)arg1 error:(id*)arg2;
 - (void)dropEvents:(id)arg1 error:(id*)arg2;
-- (void)enumerateEventsForTopic:(id)arg1 lockKey:(id)arg2 objectBlock:(id /* block */)arg3;
+- (void)enumerateEventsWithTopic:(id)arg1 lockKey:(id)arg2 objectBlock:(id /* block */)arg3;
 - (void)enumerateTopicsWithLockKey:(id)arg1 block:(id /* block */)arg2;
 - (id)initWithContainerId:(id)arg1;
 - (void)insertEvents:(id)arg1 error:(id*)arg2;
@@ -42,5 +40,6 @@
 - (void)setInternalQueue:(id)arg1;
 - (void)setKeepAliveCount:(long long)arg1;
 - (void)unlockAllEventsWithKey:(id)arg1 error:(id*)arg2;
+- (void)unlockEvents:(id)arg1 error:(id*)arg2;
 
 @end

@@ -2,26 +2,13 @@
    Image: /System/Library/Frameworks/FileProviderUI.framework/FileProviderUI
  */
 
-@interface FPUIAction : NSObject {
-    bool  _displayInline;
-    NSString * _displayName;
-    NSString * _identifier;
-    NSPredicate * _predicate;
-    NSString * _uiActionProviderIdentifier;
+@interface FPUIAction : UIDocumentBrowserActionDescriptor {
+    bool  _isNonUIAction;
 }
 
-@property (nonatomic, readonly) bool displayInline;
-@property (nonatomic, readonly) NSString *displayName;
-@property (nonatomic, readonly) NSString *identifier;
-@property (nonatomic, readonly) NSPredicate *predicate;
-@property (nonatomic, readonly) NSString *uiActionProviderIdentifier;
+@property (nonatomic, readonly) bool isNonUIAction;
 
-- (void).cxx_destruct;
-- (bool)displayInline;
-- (id)displayName;
-- (id)identifier;
-- (id)initWithIdentifier:(id)arg1 uiActionProviderIdentifier:(id)arg2 displayName:(id)arg3 predicate:(id)arg4 displayInline:(bool)arg5;
-- (id)predicate;
-- (id)uiActionProviderIdentifier;
+- (id)initWithIdentifier:(id)arg1 uiActionProviderIdentifier:(id)arg2 fileProviderIdentifier:(id)arg3 displayName:(id)arg4 predicate:(id)arg5 displayInline:(bool)arg6 isNonUIAction:(bool)arg7;
+- (bool)isNonUIAction;
 
 @end

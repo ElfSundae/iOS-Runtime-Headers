@@ -2,18 +2,14 @@
    Image: /System/Library/PrivateFrameworks/SearchUI.framework/SearchUI
  */
 
-@interface SearchUIActionDomainIndicatorViewController : SearchUIAccessoryViewController {
-    unsigned long long  _style;
-}
+@interface SearchUIActionDomainIndicatorViewController : SearchUIAccessoryViewController
 
-@property unsigned long long style;
-@property (retain) SearchUIImageView *view;
+@property (nonatomic, retain) SearchUIImageView *view;
 
-+ (bool)supportsResult:(id)arg1;
++ (bool)supportsRowModel:(id)arg1;
 
-- (void)setStyle:(unsigned long long)arg1;
-- (id)setupViewWithStyle:(unsigned long long)arg1;
-- (unsigned long long)style;
-- (void)updateWithResult:(id)arg1;
+- (id)setupView;
+- (unsigned long long)type;
+- (void)updateWithRowModel:(id)arg1;
 
 @end

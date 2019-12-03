@@ -36,7 +36,6 @@
 - (void)_emailTermsAndConditions:(id)arg1;
 - (id)_evaluateHeight:(id)arg1;
 - (id)_initWithWebViewController:(id)arg1;
-- (void)_saveToDesktop:(id)arg1;
 - (id /* block */)agreeHandler;
 - (id /* block */)disagreeHandler;
 - (id)document;

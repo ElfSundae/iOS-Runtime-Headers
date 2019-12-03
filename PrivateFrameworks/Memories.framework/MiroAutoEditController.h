@@ -69,13 +69,11 @@
 - (void)setShouldBuildMovieController:(bool)arg1;
 - (void)setShouldSkipPolish:(bool)arg1;
 - (void)setTrimController:(id)arg1;
-- (void)setTrimRange:(id)arg1 forClip:(id)arg2;
 - (void)setTrimRangeForClipMap:(id)arg1;
 - (bool)shouldBuildMovieController;
 - (bool)shouldSkipPolish;
 - (bool)titleIsSupported;
 - (id)trimController;
-- (id)trimRangeForClip:(id)arg1;
 - (id)trimRangeForClipMap;
 
 @end

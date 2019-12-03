@@ -3,21 +3,19 @@
  */
 
 @interface _AFClientConfigurationMutation : NSObject <AFClientConfigurationMutating> {
+    AFAccessibilityState * _accessibilityState;
     AFClientConfiguration * _baseModel;
     long long  _deviceRingerSwitchState;
-    bool  _isAccessibilityVibrationDisabled;
-    bool  _isAccessibilityVoiceOverTouchEnabled;
     bool  _isDeviceInCarDNDMode;
     bool  _isDeviceInSetupFlow;
     bool  _isDeviceInStarkMode;
     struct _mutationFlags { 
         unsigned int isDirty : 1; 
+        unsigned int hasAccessibilityState : 1; 
         unsigned int hasDeviceRingerSwitchState : 1; 
         unsigned int hasIsDeviceInSetupFlow : 1; 
         unsigned int hasIsDeviceInCarDNDMode : 1; 
         unsigned int hasIsDeviceInStarkMode : 1; 
-        unsigned int hasIsAccessibilityVoiceOverTouchEnabled : 1; 
-        unsigned int hasIsAccessibilityVibrationDisabled : 1; 
         unsigned int hasOutputVolume : 1; 
         unsigned int hasTapToSiriAudioPlaybackRequest : 1; 
         unsigned int hasTwoShotAudioPlaybackRequest : 1; 
@@ -36,9 +34,8 @@
 - (id)generate;
 - (id)init;
 - (id)initWithBaseModel:(id)arg1;
+- (void)setAccessibilityState:(id)arg1;
 - (void)setDeviceRingerSwitchState:(long long)arg1;
-- (void)setIsAccessibilityVibrationDisabled:(bool)arg1;
-- (void)setIsAccessibilityVoiceOverTouchEnabled:(bool)arg1;
 - (void)setIsDeviceInCarDNDMode:(bool)arg1;
 - (void)setIsDeviceInSetupFlow:(bool)arg1;
 - (void)setIsDeviceInStarkMode:(bool)arg1;

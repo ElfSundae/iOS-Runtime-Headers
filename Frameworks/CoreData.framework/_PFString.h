@@ -15,10 +15,13 @@
 
 - (const char *)UTF8String;
 - (const char *)_fastCStringContents:(bool)arg1;
+- (const unsigned short*)_fastCharacterContents;
+- (bool)_isCString;
 - (bool)_isDeallocating;
 - (bool)_tryRetain;
 - (const char *)cString;
 - (unsigned long long)cStringLength;
+- (const char *)cStringUsingEncoding:(unsigned long long)arg1;
 - (unsigned short)characterAtIndex:(unsigned long long)arg1;
 - (Class)classForArchiver;
 - (Class)classForCoder;
@@ -26,6 +29,7 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)description;
+- (unsigned long long)fastestEncoding;
 - (void)getCString:(char *)arg1;
 - (void)getCharacters:(unsigned short*)arg1;
 - (void)getCharacters:(unsigned short*)arg1 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
@@ -37,5 +41,6 @@
 - (oneway void)release;
 - (id)retain;
 - (unsigned long long)retainCount;
+- (unsigned long long)smallestEncoding;
 
 @end

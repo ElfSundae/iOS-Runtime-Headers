@@ -20,8 +20,8 @@
         struct HTTPProtocol {} *__ptr_; 
         struct __shared_weak_count {} *__cntrl_; 
     }  _httpProtocol;
-    struct shared_ptr<TCPIOConnectionObjCPP> { 
-        struct TCPIOConnectionObjCPP {} *__ptr_; 
+    struct shared_ptr<TransportConnectionObjCPP> { 
+        struct TransportConnectionObjCPP {} *__ptr_; 
         struct __shared_weak_count {} *__cntrl_; 
     }  _ios;
     NSMutableArray * _pendingWork;
@@ -32,9 +32,11 @@
     }  _readError;
     bool  _readInProgress;
     CFNetworkTimer * _readTimer;
+    bool  _receivedEof;
     bool  _receivedServerTrustChallenge;
     unsigned char  _secure;
     bool  _streamsCaptured;
+    NSObject<OS_dispatch_queue> * _workQueueForStreamTask;
     bool  _writeClosed;
     bool  _writeEOF;
     struct { 
@@ -70,25 +72,22 @@
 - (void)_onqueue_dealWithSessionTrustAuth:(long long)arg1 credential:(id)arg2 completionHandler:(id /* block */)arg3;
 - (id)_onqueue_errorOrCancelError;
 - (void)_onqueue_ioTick;
-- (bool)_onqueue_isSecure;
 - (void)_onqueue_needClientCert:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)_onqueue_needServerTrust:(id)arg1 completionHandler:(id /* block */)arg2;
-- (void)_onqueue_postConnectConfiguration:(id)arg1 completionHandler:(id /* block */)arg2;
-- (void)_onqueue_preConnectionConfiguration:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)_onqueue_postConnectConfiguration:(id)arg1 parameters:(id)arg2 completionHandler:(id /* block */)arg3;
+- (void)_onqueue_preConnectionConfiguration:(id)arg1 parameters:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)_onqueue_processReadWork:(id)arg1;
 - (void)_onqueue_processWriteWork:(id)arg1;
 - (void)_onqueue_resume;
 - (bool)_onqueue_sendSessionChallenge:(id)arg1 completionHandler:(id /* block */)arg2;
-- (void)_onqueue_setTCPIOConnection:(struct shared_ptr<TCPIOConnection> { struct TCPIOConnection {} *x1; struct __shared_weak_count {} *x2; })arg1;
+- (void)_onqueue_setTransportConnection:(struct shared_ptr<TransportConnection> { struct TransportConnection {} *x1; struct __shared_weak_count {} *x2; })arg1;
 - (void)_onqueue_startSecureConnection;
 - (void)_onqueue_stopSecureConnection;
 - (void)_onqueue_suspend;
 - (void)_onqueue_timeoutOccured;
 - (void)_onqueue_tlsCompletion;
 - (void)_onqueue_tlsDisabled;
-- (bool)_onqueue_usingCONNECTProxy;
-- (struct __PerformanceTiming { }*)_performanceTimingRef;
-- (void)_reportTimingDataToAWD:(id)arg1;
+- (bool)_onqueue_usingProxy;
 - (void)_task_onqueue_didFinish;
 - (void)cancel;
 - (void)captureStreams;
@@ -99,9 +98,9 @@
 - (id)currentReadTask;
 - (id)currentWriteTask;
 - (void)dealloc;
-- (id)initWithHost:(id)arg1 port:(long long)arg2 session:(id)arg3 disavow:(id /* block */)arg4;
-- (id)initWithTask:(id)arg1 Connection:(struct shared_ptr<TCPIOConnection> { struct TCPIOConnection {} *x1; struct __shared_weak_count {} *x2; })arg2 disavow:(id /* block */)arg3;
-- (struct shared_ptr<TCPIOConnectionObjCPP> { struct TCPIOConnectionObjCPP {} *x1; struct __shared_weak_count {} *x2; })ios;
+- (id)initWithHost:(id)arg1 port:(long long)arg2 taskGroup:(id)arg3 disavow:(id /* block */)arg4;
+- (id)initWithTask:(id)arg1 connection:(struct shared_ptr<TransportConnection> { struct TransportConnection {} *x1; struct __shared_weak_count {} *x2; })arg2 extraBytes:(id)arg3 disavow:(id /* block */)arg4;
+- (struct shared_ptr<TransportConnectionObjCPP> { struct TransportConnectionObjCPP {} *x1; struct __shared_weak_count {} *x2; })ios;
 - (bool)isKindOfClass:(Class)arg1;
 - (void)readDataOfMinLength:(unsigned long long)arg1 maxLength:(unsigned long long)arg2 timeout:(double)arg3 completionHandler:(id /* block */)arg4;
 - (void)setCurrentReadTask:(id)arg1;
@@ -110,6 +109,7 @@
 - (bool)shouldDoWorkConsideringTlsState;
 - (void)startSecureConnection;
 - (void)stopSecureConnection;
+- (id)workQueue;
 - (void)writeData:(id)arg1 timeout:(double)arg2 completionHandler:(id /* block */)arg3;
 
 @end

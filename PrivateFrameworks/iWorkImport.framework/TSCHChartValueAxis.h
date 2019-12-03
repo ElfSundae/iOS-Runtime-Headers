@@ -15,7 +15,7 @@
 - (id)defaultProperties;
 - (bool)editableFormatForValueStrings;
 - (id)g_genericToSpecificPropertyMap;
-- (struct pair<TSCH3DAxisLabelEnumerator *, TSCH3DAxisLabelEnumerator *> { id x1; })labelEnumeratorPair;
+- (struct pair<TSCH3DAxisLabelEnumerator *, TSCH3DAxisLabelEnumerator *> { id x1; id x2; })labelEnumeratorPair;
 - (id)p_GetGenericToValuePropertyMap;
 - (struct { double x1; double x2; double x3; unsigned long long x4; })p_axisDescFromFixedMinValue:(double)arg1 fixedMaxValue:(double)arg2 spreadRanges:(const struct { double x1; double x2; }*)arg3;
 - (struct { double x1; double x2; double x3; unsigned long long x4; })p_axisDescFromFixedNegativeMinValue:(double)arg1 positiveMaxValue:(double)arg2 spreadRanges:(const struct { double x1; double x2; }*)arg3;

@@ -15,8 +15,13 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)anisetteFreeURLSessionWithCacheProvider:(id)arg1;
++ (id)_createURLSessionUsesAppleIDContext:(bool)arg1;
++ (id)_urlBagCache;
++ (void)removeAllCachedResponses;
 + (id)sharedAnisetteFreeURLSession;
++ (id)sharedCacheEnabledAnisetteFreeSession;
++ (id)sharedCacheEnabledURLSession;
++ (id)sharedCacheReliantAnisetteFreeSession;
 + (id)sharedURLSession;
 
 - (void).cxx_destruct;

@@ -12,9 +12,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_optionsStrings;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
-- (void)dealloc;
 - (id /* block */)decisionBlock;
 - (id)initWithStyle:(long long)arg1;
 - (struct CGSize { double x1; double x2; })preferredContentSize;

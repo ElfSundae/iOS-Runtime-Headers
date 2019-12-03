@@ -3,26 +3,24 @@
  */
 
 @interface PUFilmstripMediaProvider : PUMediaProvider {
-    NSMutableDictionary * __completionHandlersByRequestNumber;
     NSCache * __imageCache;
     AVAssetImageGenerator * __imageGenerator;
-    NSMutableArray * __pendingResults;
     long long  __requestNumber;
-    NSMutableDictionary * __resultsByRequestNumber;
     AVAsset * _asset;
     bool  _deliversImagesInOrder;
-    NSObject<OS_dispatch_queue> * _generationQueue;
+    NSObject<OS_dispatch_queue> * _imageGenerationQueue;
+    NSObject<OS_dispatch_queue> * _ivarQueue;
+    NSMutableDictionary * _ivarQueue_completionHandlersByRequestNumber;
+    NSMutableArray * _ivarQueue_pendingResults;
+    NSMutableDictionary * _ivarQueue_resultsByRequestNumber;
     UIImage * _placeholderImage;
     double  _timeTolerance;
     AVVideoComposition * _videoComposition;
 }
 
-@property (setter=_setCompletionHandlersByRequestNumber:, nonatomic, retain) NSMutableDictionary *_completionHandlersByRequestNumber;
 @property (setter=_setImageCache:, nonatomic, retain) NSCache *_imageCache;
 @property (setter=_setImageGenerator:, nonatomic, retain) AVAssetImageGenerator *_imageGenerator;
-@property (setter=_setPendingResults:, nonatomic, retain) NSMutableArray *_pendingResults;
 @property (setter=_setRequestNumber:, nonatomic) long long _requestNumber;
-@property (setter=_setResultsByRequestNumber:, nonatomic, retain) NSMutableDictionary *_resultsByRequestNumber;
 @property (nonatomic, readonly) AVAsset *asset;
 @property (nonatomic) bool deliversImagesInOrder;
 @property (nonatomic, retain) UIImage *placeholderImage;
@@ -30,23 +28,20 @@
 @property (nonatomic, readonly) AVVideoComposition *videoComposition;
 
 - (void).cxx_destruct;
-- (id)_completionHandlersByRequestNumber;
 - (void)_deliverPendingResults;
 - (void)_deliverPlaceholderImage;
 - (void)_deliverResult:(id)arg1;
-- (void)_didGenerateImage:(struct CGImage { }*)arg1 error:(id)arg2 requestedTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg3 actualTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg4 forResult:(id)arg5;
+- (void)_didGenerateImage:(id)arg1 error:(id)arg2 requestedTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg3 actualTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg4 generatorResult:(long long)arg5 forResult:(id)arg6;
 - (void)_generateImageForResult:(id)arg1;
+- (void)_handleSourceTimeLoadedForAsset:(id)arg1 time:(double)arg2 targetSize:(struct CGSize { double x1; double x2; })arg3 contentMode:(long long)arg4 requestNumber:(long long)arg5;
 - (id)_imageCache;
 - (id)_imageGenerator;
-- (id)_pendingResults;
+- (void)_performIvarRead:(id /* block */)arg1;
+- (void)_performIvarWrite:(id /* block */)arg1;
 - (long long)_requestNumber;
-- (id)_resultsByRequestNumber;
-- (void)_setCompletionHandlersByRequestNumber:(id)arg1;
 - (void)_setImageCache:(id)arg1;
 - (void)_setImageGenerator:(id)arg1;
-- (void)_setPendingResults:(id)arg1;
 - (void)_setRequestNumber:(long long)arg1;
-- (void)_setResultsByRequestNumber:(id)arg1;
 - (id)asset;
 - (void)cancelAllRequests;
 - (void)cancelImageRequest:(int)arg1;

@@ -9,9 +9,9 @@
 
 @property (nonatomic, retain) WDIterator *childIterator;
 
+- (void).cxx_destruct;
 - (id)childIterator;
 - (id)childIteratorFrom:(id)arg1;
-- (void)dealloc;
 - (bool)hasNext;
 - (void)incrementChildIterator;
 - (id)initWithParentIterator:(id)arg1;

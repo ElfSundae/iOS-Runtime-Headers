@@ -10,7 +10,7 @@
     PHFetchOptions * _options;
 }
 
-@property (readonly) id /* block */ fetchBlock;
+@property (readonly, copy) id /* block */ fetchBlock;
 @property (readonly) NSString *identifier;
 @property (readonly) NSOrderedSet *objectIDs;
 @property (readonly) NSArray *objects;

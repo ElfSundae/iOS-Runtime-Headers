@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CoreSpeech.framework/CoreSpeech
  */
 
-@interface CSHybridEndpointAnalyzer : NSObject <CSAssetManagerDelegate, CSEndpointAnalyzerImpl, EARCaesuraSilencePosteriorGeneratorDelegate> {
+@interface CSHybridEndpointAnalyzer : NSObject <CSAssetManagerDelegate, CSEndpointAnalyzerImpl, CSFirstUnlockMonitorDelegate, EARCaesuraSilencePosteriorGeneratorDelegate> {
     unsigned long long  _activeChannel;
     NSObject<OS_dispatch_queue> * _apQueue;
     double  _automaticEndpointingSuspensionEndTime;
@@ -29,6 +29,7 @@
     double  _hepAudioOriginInMs;
     _EAREndpointer * _hybridClassifier;
     NSObject<OS_dispatch_queue> * _hybridClassifierQueue;
+    <CSEndpointAnalyzerImplDelegate> * _implDelegate;
     double  _interspeechWaitTime;
     CSServerEndpointFeatures * _lastKnownServerEPFeatures;
     double  _lastReportedEndpointTimeMs;
@@ -80,6 +81,7 @@
 @property (nonatomic) double hepAudioOriginInMs;
 @property (nonatomic, retain) _EAREndpointer *hybridClassifier;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *hybridClassifierQueue;
+@property (nonatomic) <CSEndpointAnalyzerImplDelegate> *implDelegate;
 @property (nonatomic) double interspeechWaitTime;
 @property (nonatomic, readonly) double lastEndOfVoiceActivityTime;
 @property (nonatomic, retain) CSServerEndpointFeatures *lastKnownServerEPFeatures;
@@ -105,9 +107,11 @@
 
 - (void).cxx_destruct;
 - (void)CSAssetManagerDidDownloadNewAsset:(id)arg1;
+- (void)CSFirstUnlockMonitor:(id)arg1 didReceiveFirstUnlock:(bool)arg2;
 - (void)CSLanguageCodeUpdateMonitor:(id)arg1 didReceiveLanguageCodeChanged:(id)arg2;
 - (id)_getCSHybridEndpointerConfigForAsset:(id)arg1;
 - (void)_readClientLagParametersFromHEPAsset:(id)arg1;
+- (bool)_shouldUsePhaticWithRecordContext;
 - (void)_updateAssetWithCurrentLanguage;
 - (void)_updateAssetWithLanguage:(id)arg1;
 - (unsigned long long)activeChannel;
@@ -138,6 +142,7 @@
 - (double)hepAudioOriginInMs;
 - (id)hybridClassifier;
 - (id)hybridClassifierQueue;
+- (id)implDelegate;
 - (id)init;
 - (double)interspeechWaitTime;
 - (double)lastEndOfVoiceActivityTime;
@@ -152,9 +157,9 @@
 - (void)processServerEndpointFeatures:(id)arg1;
 - (id)recordContext;
 - (bool)recordingDidStop;
-- (void)recordingStoppedForReason:(unsigned long long)arg1;
+- (void)recordingStoppedForReason:(long long)arg1;
 - (void)reset;
-- (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1 recordContext:(id)arg2;
+- (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1 recordContext:(id)arg2 recordSettings:(id)arg3;
 - (bool)saveSamplesSeenInReset;
 - (id)serverFeatureLatencies;
 - (id)serverFeaturesLatencyDistributionDictionary;
@@ -186,6 +191,7 @@
 - (void)setHepAudioOriginInMs:(double)arg1;
 - (void)setHybridClassifier:(id)arg1;
 - (void)setHybridClassifierQueue:(id)arg1;
+- (void)setImplDelegate:(id)arg1;
 - (void)setInterspeechWaitTime:(double)arg1;
 - (void)setLastKnownServerEPFeatures:(id)arg1;
 - (void)setLastReportedEndpointTimeMs:(double)arg1;
@@ -209,6 +215,8 @@
 - (id)silencePosteriorGeneratorQueue;
 - (double)startWaitTime;
 - (id)stateSerialQueue;
+- (void)stopEndpointer;
+- (void)terminateProcessing;
 - (double)trailingSilenceDurationAtEndpoint;
 - (void)updateEndpointerDelayedTrigger:(bool)arg1;
 - (void)updateEndpointerThreshold:(float)arg1;

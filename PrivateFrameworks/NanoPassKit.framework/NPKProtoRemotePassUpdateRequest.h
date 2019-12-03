@@ -6,12 +6,12 @@
     bool  _cancelUpdate;
     struct { 
         unsigned int cancelUpdate : 1; 
-        unsigned int requestAuthoriztion : 1; 
+        unsigned int requestAuthorization : 1; 
         unsigned int shouldNotifyUser : 1; 
     }  _has;
     NPKProtoPass * _pass;
     NSString * _passID;
-    bool  _requestAuthoriztion;
+    bool  _requestAuthorization;
     bool  _shouldNotifyUser;
     NSData * _updateRequestData;
 }
@@ -19,12 +19,12 @@
 @property (nonatomic) bool cancelUpdate;
 @property (nonatomic) bool hasCancelUpdate;
 @property (nonatomic, readonly) bool hasPass;
-@property (nonatomic) bool hasRequestAuthoriztion;
+@property (nonatomic) bool hasRequestAuthorization;
 @property (nonatomic) bool hasShouldNotifyUser;
 @property (nonatomic, readonly) bool hasUpdateRequestData;
 @property (nonatomic, retain) NPKProtoPass *pass;
 @property (nonatomic, retain) NSString *passID;
-@property (nonatomic) bool requestAuthoriztion;
+@property (nonatomic) bool requestAuthorization;
 @property (nonatomic) bool shouldNotifyUser;
 @property (nonatomic, retain) NSData *updateRequestData;
 
@@ -36,7 +36,7 @@
 - (id)dictionaryRepresentation;
 - (bool)hasCancelUpdate;
 - (bool)hasPass;
-- (bool)hasRequestAuthoriztion;
+- (bool)hasRequestAuthorization;
 - (bool)hasShouldNotifyUser;
 - (bool)hasUpdateRequestData;
 - (unsigned long long)hash;
@@ -45,14 +45,14 @@
 - (id)pass;
 - (id)passID;
 - (bool)readFrom:(id)arg1;
-- (bool)requestAuthoriztion;
+- (bool)requestAuthorization;
 - (void)setCancelUpdate:(bool)arg1;
 - (void)setHasCancelUpdate:(bool)arg1;
-- (void)setHasRequestAuthoriztion:(bool)arg1;
+- (void)setHasRequestAuthorization:(bool)arg1;
 - (void)setHasShouldNotifyUser:(bool)arg1;
 - (void)setPass:(id)arg1;
 - (void)setPassID:(id)arg1;
-- (void)setRequestAuthoriztion:(bool)arg1;
+- (void)setRequestAuthorization:(bool)arg1;
 - (void)setShouldNotifyUser:(bool)arg1;
 - (void)setUpdateRequestData:(id)arg1;
 - (bool)shouldNotifyUser;

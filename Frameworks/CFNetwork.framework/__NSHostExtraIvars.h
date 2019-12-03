@@ -22,7 +22,6 @@
 - (id)callbackQueue;
 - (void)cleanup;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)resolveQueue;
 - (int)resolveType;

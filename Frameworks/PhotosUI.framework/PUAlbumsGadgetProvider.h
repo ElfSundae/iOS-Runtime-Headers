@@ -20,14 +20,12 @@
 @property (nonatomic, readonly) PXExtendedTraitCollection *extendedTraitCollection;
 @property (nonatomic) bool hasGeneratedGadgets;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) const struct __CFString { }*seeAllAccessoryButtonEventTrackerKey;
 @property (nonatomic, readonly) NSString *seeAllAccessoryButtonTitle;
 @property (nonatomic, readonly) bool shouldShowSeeAllAccessoryButton;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (Class)_albumGadgetClassForCollection:(id)arg1;
-- (void)_contentSizeCategoryDidChangeNotification:(id)arg1;
 - (id)_newGadgetForCollection:(id)arg1;
 - (void)_reconfigureGadgets;
 - (void)_updateDataSourceWithChangeDetails:(id)arg1;
@@ -47,7 +45,6 @@
 - (id)initWithAlbumListType:(unsigned long long)arg1 dataSourceManager:(id)arg2 extendedTraitCollection:(id)arg3;
 - (void)loadDataForGadgets;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void*)arg3;
-- (const struct __CFString { }*)seeAllAccessoryButtonEventTrackerKey;
 - (id)seeAllAccessoryButtonTitle;
 - (void)setContentViewHelper:(id)arg1;
 - (void)setCurrentDataSourceIdentifier:(unsigned long long)arg1;

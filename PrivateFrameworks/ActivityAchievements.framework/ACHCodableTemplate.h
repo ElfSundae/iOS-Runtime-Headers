@@ -9,6 +9,7 @@
     NSString * _availabilityPredicate;
     NSString * _availabilityStartDate;
     NSString * _availableCountryCodes;
+    NSString * _availableSuffixes;
     NSString * _canonicalUnit;
     double  _createdDate;
     long long  _creatorDevice;
@@ -19,6 +20,11 @@
     long long  _earnDateStrategy;
     long long  _earnLimit;
     NSString * _goalExpression;
+    NSString * _graceGoalExpression;
+    NSString * _gracePredicate;
+    NSString * _graceProgressExpression;
+    NSString * _graceValueExpression;
+    NSString * _graceVisibilityPredicate;
     struct { 
         unsigned int createdDate : 1; 
         unsigned int creatorDevice : 1; 
@@ -51,6 +57,7 @@
 @property (nonatomic, retain) NSString *availabilityPredicate;
 @property (nonatomic, retain) NSString *availabilityStartDate;
 @property (nonatomic, retain) NSString *availableCountryCodes;
+@property (nonatomic, retain) NSString *availableSuffixes;
 @property (nonatomic, retain) NSString *canonicalUnit;
 @property (nonatomic) double createdDate;
 @property (nonatomic) long long creatorDevice;
@@ -61,12 +68,18 @@
 @property (nonatomic) long long earnDateStrategy;
 @property (nonatomic) long long earnLimit;
 @property (nonatomic, retain) NSString *goalExpression;
+@property (nonatomic, retain) NSString *graceGoalExpression;
+@property (nonatomic, retain) NSString *gracePredicate;
+@property (nonatomic, retain) NSString *graceProgressExpression;
+@property (nonatomic, retain) NSString *graceValueExpression;
+@property (nonatomic, retain) NSString *graceVisibilityPredicate;
 @property (nonatomic, readonly) bool hasAlertDates;
 @property (nonatomic, readonly) bool hasAlertabilityPredicate;
 @property (nonatomic, readonly) bool hasAvailabilityEndDate;
 @property (nonatomic, readonly) bool hasAvailabilityPredicate;
 @property (nonatomic, readonly) bool hasAvailabilityStartDate;
 @property (nonatomic, readonly) bool hasAvailableCountryCodes;
+@property (nonatomic, readonly) bool hasAvailableSuffixes;
 @property (nonatomic, readonly) bool hasCanonicalUnit;
 @property (nonatomic) bool hasCreatedDate;
 @property (nonatomic) bool hasCreatorDevice;
@@ -77,6 +90,11 @@
 @property (nonatomic) bool hasEarnDateStrategy;
 @property (nonatomic) bool hasEarnLimit;
 @property (nonatomic, readonly) bool hasGoalExpression;
+@property (nonatomic, readonly) bool hasGraceGoalExpression;
+@property (nonatomic, readonly) bool hasGracePredicate;
+@property (nonatomic, readonly) bool hasGraceProgressExpression;
+@property (nonatomic, readonly) bool hasGraceValueExpression;
+@property (nonatomic, readonly) bool hasGraceVisibilityPredicate;
 @property (nonatomic) bool hasMinimumEngineVersion;
 @property (nonatomic, readonly) bool hasPredicate;
 @property (nonatomic, readonly) bool hasProgressExpression;
@@ -107,6 +125,7 @@
 - (id)availabilityPredicate;
 - (id)availabilityStartDate;
 - (id)availableCountryCodes;
+- (id)availableSuffixes;
 - (id)canonicalUnit;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -121,12 +140,18 @@
 - (long long)earnDateStrategy;
 - (long long)earnLimit;
 - (id)goalExpression;
+- (id)graceGoalExpression;
+- (id)gracePredicate;
+- (id)graceProgressExpression;
+- (id)graceValueExpression;
+- (id)graceVisibilityPredicate;
 - (bool)hasAlertDates;
 - (bool)hasAlertabilityPredicate;
 - (bool)hasAvailabilityEndDate;
 - (bool)hasAvailabilityPredicate;
 - (bool)hasAvailabilityStartDate;
 - (bool)hasAvailableCountryCodes;
+- (bool)hasAvailableSuffixes;
 - (bool)hasCanonicalUnit;
 - (bool)hasCreatedDate;
 - (bool)hasCreatorDevice;
@@ -137,6 +162,11 @@
 - (bool)hasEarnDateStrategy;
 - (bool)hasEarnLimit;
 - (bool)hasGoalExpression;
+- (bool)hasGraceGoalExpression;
+- (bool)hasGracePredicate;
+- (bool)hasGraceProgressExpression;
+- (bool)hasGraceValueExpression;
+- (bool)hasGraceVisibilityPredicate;
 - (bool)hasMinimumEngineVersion;
 - (bool)hasPredicate;
 - (bool)hasProgressExpression;
@@ -161,6 +191,7 @@
 - (void)setAvailabilityPredicate:(id)arg1;
 - (void)setAvailabilityStartDate:(id)arg1;
 - (void)setAvailableCountryCodes:(id)arg1;
+- (void)setAvailableSuffixes:(id)arg1;
 - (void)setCanonicalUnit:(id)arg1;
 - (void)setCreatedDate:(double)arg1;
 - (void)setCreatorDevice:(long long)arg1;
@@ -171,6 +202,11 @@
 - (void)setEarnDateStrategy:(long long)arg1;
 - (void)setEarnLimit:(long long)arg1;
 - (void)setGoalExpression:(id)arg1;
+- (void)setGraceGoalExpression:(id)arg1;
+- (void)setGracePredicate:(id)arg1;
+- (void)setGraceProgressExpression:(id)arg1;
+- (void)setGraceValueExpression:(id)arg1;
+- (void)setGraceVisibilityPredicate:(id)arg1;
 - (void)setHasCreatedDate:(bool)arg1;
 - (void)setHasCreatorDevice:(bool)arg1;
 - (void)setHasDisplayOrder:(bool)arg1;

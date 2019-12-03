@@ -5,6 +5,6 @@
 
 @required
 
-- (void)onNotification:(int)arg1 withData:(CLNotifierData *)arg2;
+- (void)onNotification:(int)arg1 withData:(CLCppContainer *)arg2;
 
 @end

@@ -9,8 +9,6 @@
 + (id)sharedManager;
 
 - (void).cxx_destruct;
-- (struct CGImage { }*)_newMasterPlaceholderImageRef;
-- (id)_placeholderImageFilePath;
 - (id)init;
 - (struct CGImage { }*)newPlaceholderImageWithSize:(struct CGSize { double x1; double x2; })arg1;
 

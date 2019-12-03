@@ -37,10 +37,12 @@
 @property (nonatomic, readonly) SignpostRenderServerRenderInterval *renderInterval;
 @property (nonatomic, readonly) bool renderIntervalIsLong;
 @property (nonatomic, readonly) unsigned int swapID;
+@property (nonatomic, readonly) <SignpostSupportTimeInterval> *userVisibleGlitchInterval;
 
 + (id)_frameSeedForLifetimeIntervalBegin:(id)arg1;
 
 - (void).cxx_destruct;
+- (id)_glitchIntervalWithRoundingUp:(bool)arg1;
 - (bool)_isLongMCT:(unsigned long long)arg1 expectedFrameLatency:(unsigned char)arg2;
 - (unsigned long long)_overrunBeginMCT;
 - (unsigned char)bufferCount;
@@ -66,5 +68,6 @@
 - (id)renderInterval;
 - (bool)renderIntervalIsLong;
 - (unsigned int)swapID;
+- (id)userVisibleGlitchInterval;
 
 @end

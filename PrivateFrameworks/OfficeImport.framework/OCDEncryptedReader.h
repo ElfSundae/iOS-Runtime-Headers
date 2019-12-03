@@ -8,7 +8,7 @@
 
 @property (nonatomic, readonly) OCCDecryptor *decryptor;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)decryptor;
 - (id)defaultPassphrase;
 - (void)restartReaderToUseDecryptedDocument;

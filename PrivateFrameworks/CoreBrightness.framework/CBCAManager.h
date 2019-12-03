@@ -3,6 +3,9 @@
  */
 
 @interface CBCAManager : NSObject {
+    float  _currentlySetMatrix;
+    float  _currentlySetScaler;
+    float  _digitalDimmingBrightnessScaler;
     NSMutableArray * _displays;
     NSObject<OS_os_log> * _logHandle;
 }
@@ -14,5 +17,6 @@
 - (id)initWithCADisplay:(id)arg1;
 - (id)initWithCADisplays:(id)arg1;
 - (void)nitsThresholdPLCPropertyHandler:(id)arg1;
+- (void)updateDigitalDimmingBrightnessScaler:(id)arg1;
 
 @end

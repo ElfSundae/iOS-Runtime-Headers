@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PairingProximity.framework/PairingProximity
  */
 
-@interface PPNearbyWatchNotifier : NSObject <PPDiscoveryManagerDelegate, PPNearbyWatchBulletinProviderDelegate> {
+@interface PPNearbyWatchNotifier : NSObject <PPDiscoveryManagerDelegate> {
     id /* block */  _discoveryCompletion;
     PPDiscoveryManager * _discoveryManager;
     NSXPCConnection * _notificationService;
@@ -24,7 +24,6 @@
 
 - (void).cxx_destruct;
 - (void)_cleanupDiscoveryDidFindDevice:(bool)arg1 error:(id)arg2;
-- (void)bulletinProviderDidClearBulletins:(id)arg1;
 - (void)cancelDiscovery;
 - (void)didDiscoverDeviceWithAdvertisingID:(id)arg1 signalStrength:(long long)arg2;
 - (void)didStopDiscovering;

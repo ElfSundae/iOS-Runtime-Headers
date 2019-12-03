@@ -55,7 +55,9 @@
 - (id)description;
 - (void)endParticipantConfiguration;
 - (id)frequencyLevels;
+- (id)initPrivateWithTransportToken:(id)arg1 configuration:(id)arg2 negotiationData:(id)arg3 delegate:(id)arg4 queue:(id)arg5;
 - (id)initWithTransportToken:(id)arg1 configuration:(id)arg2 delegate:(id)arg3 queue:(id)arg4;
+- (id)initWithTransportToken:(id)arg1 configuration:(id)arg2 negotiationData:(id)arg3 delegate:(id)arg4 queue:(id)arg5;
 - (bool)isAudioEnabled;
 - (bool)isAudioMuted;
 - (bool)isAudioPaused;
@@ -88,6 +90,7 @@
 - (void)setupNotificationQueue:(id)arg1;
 - (void)start;
 - (void)stop;
+- (void)stopWithError:(id)arg1;
 - (void)updateConfiguration:(id)arg1;
 - (id)uuid;
 - (bool)validateParticipantToAdd:(id)arg1;

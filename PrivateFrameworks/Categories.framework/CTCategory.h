@@ -4,6 +4,8 @@
 
 @interface CTCategory : NSObject <NSSecureCoding> {
     NSString * _bundleIdentifier;
+    NSString * _canonicalBundleIdentifier;
+    NSArray * _equivalentBundleIdentifiers;
     NSString * _identifier;
     NSString * _primaryWebDomain;
     NSString * _resourceString;
@@ -12,6 +14,9 @@
 }
 
 @property (nonatomic, copy) NSString *bundleIdentifier;
+@property (nonatomic, copy) NSString *canonicalBundleIdentifier;
+@property (nonatomic, readonly, copy) NSArray *equivalentBundleIdentifers;
+@property (nonatomic, readonly, copy) NSArray *equivalentBundleIdentifiers;
 @property (nonatomic, copy) NSString *identifier;
 @property (nonatomic, readonly, copy) NSString *localizedName;
 @property (nonatomic, readonly, copy) NSString *primaryIdentifier;
@@ -22,33 +27,47 @@
 @property (nonatomic, readonly, copy) NSString *secondaryLocalizedName;
 @property (nonatomic, copy) NSArray *webDomains;
 
-+ (id)_AppStoreIDToDHIDCategoriesMap;
-+ (id)_AppStoreToDHIDCategoriesMap;
 + (id)_DHIDtoPrimaryCategoriesMap;
 + (id)_DHToAppStoreCategoriesMap;
-+ (id)_getAssociatedDomainsForHostName:(id)arg1;
++ (id)_equivalentBundleIDsMapping;
++ (id)_equivalentBundleIDsMappingForWatchOSBundleID:(id)arg1;
++ (id)_getAssociatedDomainsForHostNames:(id)arg1;
 + (void)_getCategoryTypeForDomainName:(id)arg1 withCompletionHandler:(id /* block */)arg2;
-+ (void)_identifierUsingContextKit:(id)arg1 response:(id /* block */)arg2;
-+ (void)_lookupAppStoreUsing:(id)arg1 withCompletionHandler:(id /* block */)arg2;
-+ (id)_lookupDHIDInInfoPlist:(id)arg1 key:(unsigned long long)arg2;
++ (id)_getequivalentBundleIdentifiers:(id)arg1;
++ (id)_identifierUsingContextKit:(id)arg1 error:(id*)arg2 relatedItems:(id*)arg3;
++ (void)_lookupAppStoreUsing:(id)arg1 platform:(id)arg2 withCompletionHandler:(id /* block */)arg3;
 + (id)_newXpcConnection;
++ (id)_overrideEquivalentIdentifiers:(id)arg1 forBundleID:(id)arg2;
++ (id)_schemeRemovedEquivalentBundleIDsMapping:(id)arg1;
 + (id)_xpcConnection;
++ (void)categoryForBundleID:(id)arg1 platform:(id)arg2 withCompletionHandler:(id /* block */)arg3;
 + (void)categoryForBundleID:(id)arg1 withCompletionHandler:(id /* block */)arg2;
++ (void)categoryForBundleIdentifiers:(id)arg1 platform:(id)arg2 withCompletionHandler:(id /* block */)arg3;
 + (void)categoryForDomainName:(id)arg1 withCompletionHandler:(id /* block */)arg2;
 + (void)categoryForDomainURL:(id)arg1 withCompletionHandler:(id /* block */)arg2;
++ (id)equivalentIdentifiersForBundleID:(id)arg1;
 + (void)initialize;
++ (id)itemWith:(id)arg1 platform:(id)arg2 array:(id)arg3;
 + (id)localizedNameForIdentifier:(id)arg1;
 + (id)primaryLocalizedNameForIdentifier:(id)arg1;
++ (id)shortLocalizedNameForIdentifier:(id)arg1;
 + (bool)supportsSecureCoding;
++ (id)systemAppCategoryIdentifierForBundleIdentifier:(id)arg1;
 
 - (void).cxx_destruct;
-- (void)_ctCategoryCommonInitWithIdentifier:(id)arg1 webDomains:(id)arg2 bundleIdentifier:(id)arg3 primaryWebDomain:(id)arg4;
+- (void)_ctCategoryCommonInitWithIdentifier:(id)arg1 equivalentBundleIdentifiers:(id)arg2 webDomains:(id)arg3 bundleIdentifier:(id)arg4 primaryWebDomain:(id)arg5 canonicalBundleIdentifier:(id)arg6;
 - (id)bundleIdentifier;
+- (id)canonicalBundleIdentifier;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)equivalentBundleIdentifers;
+- (id)equivalentBundleIdentifiers;
 - (unsigned long long)hash;
 - (id)identifier;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 equivalentBundleIdentifiers:(id)arg2 webDomains:(id)arg3 bundleIdentifier:(id)arg4;
+- (id)initWithIdentifier:(id)arg1 equivalentBundleIdentifiers:(id)arg2 webDomains:(id)arg3 bundleIdentifier:(id)arg4 primaryWebDomain:(id)arg5;
+- (id)initWithIdentifier:(id)arg1 equivalentBundleIdentifiers:(id)arg2 webDomains:(id)arg3 bundleIdentifier:(id)arg4 primaryWebDomain:(id)arg5 canonicalBundleIdentifier:(id)arg6;
 - (id)initWithIdentifier:(id)arg1 webDomains:(id)arg2 bundleIdentifier:(id)arg3;
 - (id)initWithIdentifier:(id)arg1 webDomains:(id)arg2 bundleIdentifier:(id)arg3 primaryWebDomain:(id)arg4;
 - (bool)isEqual:(id)arg1;
@@ -61,6 +80,7 @@
 - (id)secondaryIdentifier;
 - (id)secondaryLocalizedName;
 - (void)setBundleIdentifier:(id)arg1;
+- (void)setCanonicalBundleIdentifier:(id)arg1;
 - (void)setIdentifier:(id)arg1;
 - (void)setPrimaryWebDomain:(id)arg1;
 - (void)setResourceString:(id)arg1;

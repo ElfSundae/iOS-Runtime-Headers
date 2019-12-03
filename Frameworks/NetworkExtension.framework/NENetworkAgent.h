@@ -8,6 +8,7 @@
     id /* block */  _internalStartHandler;
     NSUUID * _internalUUID;
     int  _lastStatus;
+    NSString * _name;
     bool  active;
     NSString * agentDescription;
     NSUUID * agentUUID;
@@ -26,12 +27,15 @@
 @property (copy) NSUUID *internalUUID;
 @property (getter=isKernelActivated, nonatomic) bool kernelActivated;
 @property int lastStatus;
+@property (retain) NSString *name;
 @property (getter=isNetworkProvider, nonatomic) bool networkProvider;
 @property (getter=isNexusProvider, nonatomic) bool nexusProvider;
 @property (nonatomic) bool requiresAssert;
 @property (readonly) int sessionType;
 @property (getter=isSpecificUseOnly, nonatomic) bool specificUseOnly;
 @property (nonatomic) bool supportsBrowseRequests;
+@property (nonatomic) bool supportsResolveRequests;
+@property (nonatomic) bool updateClientsImmediately;
 @property (getter=isUserActivated, nonatomic) bool userActivated;
 @property (getter=isVoluntary, nonatomic) bool voluntary;
 
@@ -45,7 +49,7 @@
 - (id)configurationName;
 - (id)configurationUUID;
 - (id)copyAgentData;
-- (id)initWithConfigUUID:(id)arg1 sessionType:(int)arg2;
+- (id)initWithConfigUUID:(id)arg1 sessionType:(int)arg2 name:(id)arg3;
 - (int)internalSessionType;
 - (id /* block */)internalStartHandler;
 - (id)internalUUID;
@@ -54,6 +58,8 @@
 - (bool)isUserActivated;
 - (bool)isVoluntary;
 - (int)lastStatus;
+- (bool)matchesFileHandle:(id)arg1;
+- (id)name;
 - (int)sessionType;
 - (void)setActive:(bool)arg1;
 - (void)setAgentDescription:(id)arg1;
@@ -64,6 +70,7 @@
 - (void)setInternalUUID:(id)arg1;
 - (void)setKernelActivated:(bool)arg1;
 - (void)setLastStatus:(int)arg1;
+- (void)setName:(id)arg1;
 - (void)setStartHandler:(id /* block */)arg1;
 - (void)setUserActivated:(bool)arg1;
 - (void)setVoluntary:(bool)arg1;

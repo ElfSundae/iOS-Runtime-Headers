@@ -22,6 +22,7 @@
 @property (nonatomic, readonly, copy) NSArray *formerStoreAdamIDs;
 @property (nonatomic, readonly, copy) NSArray *genreNames;
 @property (nonatomic, readonly) bool hasLyrics;
+@property (nonatomic, readonly) bool hasTimeSyncedLyrics;
 @property (nonatomic, readonly, copy) NSString *kind;
 @property (nonatomic, readonly, copy) NSDictionary *metadataDictionary;
 @property (nonatomic, readonly) long long movementCount;
@@ -58,6 +59,7 @@
 - (id)formerStoreAdamIDs;
 - (id)genreNames;
 - (bool)hasLyrics;
+- (bool)hasTimeSyncedLyrics;
 - (id)initWithMetadataDictionary:(id)arg1;
 - (id)initWithMetadataDictionary:(id)arg1 expirationDate:(id)arg2;
 - (id)kind;

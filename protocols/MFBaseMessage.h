@@ -13,8 +13,8 @@
 - (bool)flagged;
 - (bool)isKnownToHaveAttachments;
 - (bool)isLibraryMessage;
-- (unsigned int)libraryID;
-- (unsigned int)mailboxID;
+- (long long)libraryID;
+- (long long)mailboxID;
 - (long long)messageIDHash;
 - (bool)read;
 - (bool)senderVIP;

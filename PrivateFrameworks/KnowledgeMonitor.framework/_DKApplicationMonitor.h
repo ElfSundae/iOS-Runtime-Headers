@@ -34,6 +34,8 @@
 - (id)activeExtensions;
 - (id)bksMonitor;
 - (id)currentActiveComplications;
+- (void)deactivate;
+- (void)dealloc;
 - (bool)ignoreAppExtension:(id)arg1;
 - (id)lastIdentifierSet;
 - (void)layoutMonitor:(id)arg1 didUpdateDisplayLayout:(id)arg2 withContext:(id)arg3;

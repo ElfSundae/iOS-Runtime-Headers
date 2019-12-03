@@ -21,6 +21,7 @@
 - (void)dealloc;
 - (id)init;
 - (bool)isEnabled;
+- (void)notifyCallback;
 - (void)notifyCallback:(bool)arg1;
 - (void)setCallback:(id /* block */)arg1;
 - (void)subscribeEventMonitor:(id)arg1;

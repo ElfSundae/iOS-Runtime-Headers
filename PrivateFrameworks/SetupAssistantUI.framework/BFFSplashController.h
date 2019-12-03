@@ -17,13 +17,12 @@
     long long  _contentViewPosition;
     NSString * _detailText;
     bool  _disableIconTint;
+    UIVisualEffectView * _effectView;
     bool  _fullWidthContent;
     BFFPaneHeaderView * _headerView;
-    _UIBackdropView * _lightTrayBackdrop;
     UIScrollView * _scrollView;
     bool  _scrollingDisabled;
     UIColor * _tint;
-    _UIBackdropView * _ultraLightTrayBackdrop;
     bool  _usesTwoButtonLayout;
 }
 
@@ -36,6 +35,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, copy) NSString *detailText;
 @property (nonatomic) bool disableIconTint;
+@property (nonatomic, retain) UIVisualEffectView *effectView;
 @property (nonatomic) bool fullWidthContent;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) BFFPaneHeaderView *headerView;
@@ -60,6 +60,7 @@
 - (long long)contentViewPosition;
 - (id)detailText;
 - (bool)disableIconTint;
+- (id)effectView;
 - (bool)fullWidthContent;
 - (id)headerView;
 - (id)icon;
@@ -75,6 +76,7 @@
 - (void)setContentViewPosition:(long long)arg1;
 - (void)setDetailText:(id)arg1;
 - (void)setDisableIconTint:(bool)arg1;
+- (void)setEffectView:(id)arg1;
 - (void)setFullWidthContent:(bool)arg1;
 - (void)setIcon:(id)arg1;
 - (void)setLinkText:(id)arg1 action:(id /* block */)arg2;

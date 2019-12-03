@@ -5,12 +5,14 @@
 @interface SXDOMModifierManager : NSObject <SXDOMModifierManager, SXLayoutProcessor> {
     <SXDOMFactory> * _DOMFactory;
     NSCache * _cache;
+    <SXDOMCacheKeyFactory> * _cacheKeyFactory;
     <SXDOMModificationContextFactory> * _contextFactory;
     NSMutableArray * _modifiers;
 }
 
 @property (nonatomic, readonly) <SXDOMFactory> *DOMFactory;
 @property (nonatomic, readonly) NSCache *cache;
+@property (nonatomic, readonly) <SXDOMCacheKeyFactory> *cacheKeyFactory;
 @property (nonatomic, readonly) <SXDOMModificationContextFactory> *contextFactory;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -22,8 +24,9 @@
 - (id)DOMFactory;
 - (void)addModifier:(id)arg1;
 - (id)cache;
+- (id)cacheKeyFactory;
 - (id)contextFactory;
-- (id)initWithDOMFactory:(id)arg1 contextFactory:(id)arg2;
+- (id)initWithDOMFactory:(id)arg1 contextFactory:(id)arg2 cacheKeyFactory:(id)arg3;
 - (id)modifiers;
 - (void)processLayoutTask:(id)arg1 layoutBlueprint:(id)arg2 DOMObjectProvider:(id)arg3;
 

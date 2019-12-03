@@ -7,31 +7,32 @@
     _UIVisualEffectBackdropView * _captureView;
     _UIVisualEffectSubview * _contentView;
     bool  _contentViewRequired;
-    _UIVisualEffectNode * _currentEffectNode;
+    _UIVisualEffectDescriptor * _currentEffectDescriptor;
     _UIVisualEffectViewBackdropCaptureGroup * _primaryCaptureGroup;
-    _UIVisualEffectNode * _transitionEffectNode;
+    _UIVisualEffectDescriptor * _transitionEffectDescriptor;
     NSMutableArray * _views;
 }
 
 @property (nonatomic) _UIVisualEffectBackdropView *captureView;
 @property (nonatomic, readonly) _UIVisualEffectSubview *contentView;
 @property (nonatomic) bool contentViewRequired;
-@property (nonatomic, retain) _UIVisualEffectNode *currentEffectNode;
+@property (nonatomic, retain) _UIVisualEffectDescriptor *currentEffectDescriptor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) _UIVisualEffectViewBackdropCaptureGroup *primaryCaptureGroup;
 @property (readonly) Class superclass;
-@property (nonatomic, readonly) _UIVisualEffectNode *transitionEffectNode;
+@property (nonatomic, readonly) _UIVisualEffectDescriptor *transitionEffectDescriptor;
 @property (nonatomic, readonly) NSArray *views;
 
 - (void).cxx_destruct;
-- (void)_applyEffectNode:(id)arg1;
-- (void)_applyIdentityNodeEffect;
-- (void)_applyRequestedNodeEffect;
+- (void)_applyEffectDescriptor:(id)arg1;
+- (void)_applyIdentityDescriptorEffectInvertingView:(id)arg1;
+- (void)_applyRequestedDescriptorEffectInvertingView:(id)arg1;
 - (id)_cloneFilters:(id)arg1;
-- (void)_configureEffectNode:(id)arg1;
+- (void)_configureEffectDescriptor:(id)arg1;
 - (void)_evaluateInPlaceFiltering;
+- (void)_iterateViews:(id /* block */)arg1;
 - (void)_updateAdjustTintColors;
 - (void)_updateView:(id)arg1 shouldDrawWithTintColor:(bool)arg2;
 - (void)_view:(id)arg1 willGainDescendent:(id)arg2;
@@ -42,17 +43,17 @@
 - (id)captureView;
 - (id)contentView;
 - (bool)contentViewRequired;
-- (id)currentEffectNode;
+- (id)currentEffectDescriptor;
 - (id)description;
 - (void)endTransition;
 - (id)initWithContentView:(id)arg1;
-- (void)prepareToTransitionToEffectNode:(id)arg1;
+- (void)prepareToTransitionToEffectDescriptor:(id)arg1;
 - (id)primaryCaptureGroup;
 - (void)setCaptureView:(id)arg1;
 - (void)setContentViewRequired:(bool)arg1;
-- (void)setCurrentEffectNode:(id)arg1;
+- (void)setCurrentEffectDescriptor:(id)arg1;
 - (void)setPrimaryCaptureGroup:(id)arg1;
-- (id)transitionEffectNode;
+- (id)transitionEffectDescriptor;
 - (id)views;
 
 @end

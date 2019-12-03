@@ -38,7 +38,11 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_applyColor:(struct UIColor { Class x1; }*)arg1 toShapeLayers:(id)arg2 animated:(bool)arg3;
+- (void)_applyPrimaryColorAnimated:(bool)arg1;
+- (void)_applySecondaryColorAnimated:(bool)arg1;
 - (void)_continueHoldingStateForPathAtIndex:(unsigned long long)arg1 withTransitionIndex:(unsigned long long)arg2;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (void)_endRotationAnimation;
 - (void)_executeAfterMinimumAnimationDurationForStateTransition:(id /* block */)arg1;
 - (void)_executeTransitionCompletionHandlers:(bool)arg1;

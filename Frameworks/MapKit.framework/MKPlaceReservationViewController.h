@@ -14,6 +14,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_updateReservationInfoAnimated:(bool)arg1;
 - (id)reservationInfo;
 - (void)setReservationInfo:(id)arg1;

@@ -7,19 +7,19 @@
     bool  _shouldCenter;
 }
 
-@property (retain) TLKAuxilliaryTextView *auxilliaryTextView;
-@property bool shouldCenter;
+@property (nonatomic, retain) TLKAuxilliaryTextView *auxilliaryTextView;
+@property (nonatomic) bool shouldCenter;
 
-+ (bool)supportsResult:(id)arg1;
++ (bool)supportsRowModel:(id)arg1;
 
 - (void).cxx_destruct;
 - (id)auxilliaryTextView;
-- (bool)isPrimarilyTextView;
 - (void)setAuxilliaryTextView:(id)arg1;
 - (void)setShouldCenter:(bool)arg1;
-- (id)setupViewWithStyle:(unsigned long long)arg1;
+- (id)setupView;
 - (bool)shouldCenter;
 - (bool)shouldVerticallyCenter;
-- (void)updateWithResult:(id)arg1;
+- (unsigned long long)type;
+- (void)updateWithRowModel:(id)arg1;
 
 @end

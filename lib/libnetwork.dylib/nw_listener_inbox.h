@@ -7,6 +7,7 @@
     NSObject<OS_nw_interface> * _interface;
     NSObject<OS_nw_endpoint> * _local_endpoint;
     NSObject<OS_nw_parameters> * _parameters;
+    unsigned int  _suspended;
 }
 
 @property (nonatomic, readonly) NSObject<OS_nw_interface> *interface;
@@ -16,6 +17,10 @@
 - (bool)cancel;
 - (id)initWithDelegate:(id)arg1;
 - (id)interface;
+- (bool)isSuspended;
 - (id)local_endpoint;
+- (bool)resume;
+- (id)start;
+- (bool)suspend;
 
 @end

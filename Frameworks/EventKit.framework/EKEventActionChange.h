@@ -2,6 +2,19 @@
    Image: /System/Library/Frameworks/EventKit.framework/EventKit
  */
 
-@interface EKEventActionChange : EKObjectChange
+@interface EKEventActionChange : EKObjectChange <EKOwnerIDProviding> {
+    EKObjectID * _ownerID;
+}
+
+@property (nonatomic, readonly) EKObjectID *ownerID;
+
++ (int)entityType;
++ (void)fetchEventActionChangesInCalendar:(id)arg1 resultHandler:(id /* block */)arg2;
++ (void)fetchEventActionChangesInSource:(id)arg1 resultHandler:(id /* block */)arg2;
++ (void)fetchEventActionChangesInStore:(id)arg1 resultHandler:(id /* block */)arg2;
+
+- (void).cxx_destruct;
+- (id)initWithChangeProperties:(id)arg1;
+- (id)ownerID;
 
 @end

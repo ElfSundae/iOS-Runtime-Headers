@@ -8,6 +8,7 @@
     double  _totalConfirms;
     double  _totalConfirmsInLockscreen;
     double  _totalConfirmsInSpotlight;
+    double  _totalConfirmsInSpotlightWithinMeanWindow;
     double  _totalConfirmsTodayInLockscreen;
     double  _totalDayAndLocationCount;
     double  _totalDayAndLocationOccurrences;
@@ -15,6 +16,8 @@
     double  _totalDayAndPrevLocationOccurrences;
     double  _totalDayOfWeekCount;
     double  _totalDayOfWeekOccurrences;
+    double  _totalEightHourWindowCount;
+    double  _totalHourWindowCount;
     double  _totalLaunches;
     double  _totalLocationCount;
     double  _totalLocationOccurrences;
@@ -35,7 +38,9 @@
     double  _totalRejects;
     double  _totalRejectsInLockscreen;
     double  _totalRejectsInSpotlight;
+    double  _totalRejectsInSpotlightWithinMeanWindow;
     double  _totalRejectsTodayInLockscreen;
+    double  _totalThirtyMinuteWindowCount;
     double  _totalTimeAndDayAndLocationCount;
     double  _totalTimeAndDayAndLocationOccurrences;
     double  _totalTimeAndDayCount;
@@ -46,6 +51,7 @@
     double  _totalTimeAndPrevLocationOccurrences;
     double  _totalTimeOfDayCount;
     double  _totalTimeOfDayOccurrences;
+    NSMutableSet * _totalUniqueDaysConfirmedOrRejectedInSpotlightWithinMeanWindow;
 }
 
 - (void).cxx_destruct;

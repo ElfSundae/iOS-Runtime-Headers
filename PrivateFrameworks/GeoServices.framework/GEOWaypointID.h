@@ -5,17 +5,37 @@
 @interface GEOWaypointID : PBCodable <NSCopying> {
     int  _addressGeocodeAccuracyHint;
     GEOStructuredAddress * _addressHint;
-    NSMutableArray * _formattedAddressLineHints;
     struct { 
-        unsigned int muid : 1; 
-        unsigned int resultProviderId : 1; 
-        unsigned int addressGeocodeAccuracyHint : 1; 
-        unsigned int placeTypeHint : 1; 
-    }  _has;
+        unsigned int has_muid : 1; 
+        unsigned int has_resultProviderId : 1; 
+        unsigned int has_addressGeocodeAccuracyHint : 1; 
+        unsigned int has_placeTypeHint : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_addressHint : 1; 
+        unsigned int read_formattedAddressLineHints : 1; 
+        unsigned int read_locationHint : 1; 
+        unsigned int read_placeNameHint : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_addressHint : 1; 
+        unsigned int wrote_formattedAddressLineHints : 1; 
+        unsigned int wrote_locationHint : 1; 
+        unsigned int wrote_muid : 1; 
+        unsigned int wrote_placeNameHint : 1; 
+        unsigned int wrote_resultProviderId : 1; 
+        unsigned int wrote_addressGeocodeAccuracyHint : 1; 
+        unsigned int wrote_placeTypeHint : 1; 
+    }  _flags;
+    NSMutableArray * _formattedAddressLineHints;
     GEOLatLng * _locationHint;
     unsigned long long  _muid;
     NSString * _placeNameHint;
     int  _placeTypeHint;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     unsigned long long  _resultProviderId;
     PBUnknownFields * _unknownFields;
 }
@@ -38,15 +58,22 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 + (Class)formattedAddressLineHintType;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsAddressGeocodeAccuracyHint:(id)arg1;
 - (int)StringAsPlaceTypeHint:(id)arg1;
+- (void)_addNoFlagsFormattedAddressLineHint:(id)arg1;
+- (void)_readAddressHint;
+- (void)_readFormattedAddressLineHints;
+- (void)_readLocationHint;
+- (void)_readPlaceNameHint;
 - (void)addFormattedAddressLineHint:(id)arg1;
 - (int)addressGeocodeAccuracyHint;
 - (id)addressGeocodeAccuracyHintAsString:(int)arg1;
 - (id)addressHint;
 - (void)clearFormattedAddressLineHints;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -62,6 +89,8 @@
 - (bool)hasPlaceTypeHint;
 - (bool)hasResultProviderId;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)locationHint;
 - (void)mergeFrom:(id)arg1;
@@ -69,6 +98,7 @@
 - (id)placeNameHint;
 - (int)placeTypeHint;
 - (id)placeTypeHintAsString:(int)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (unsigned long long)resultProviderId;
 - (void)setAddressGeocodeAccuracyHint:(int)arg1;

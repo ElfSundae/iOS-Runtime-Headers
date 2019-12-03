@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface UICoverSheetButton : UIControl <_UIClickInteractionDelegate> {
+@interface UICoverSheetButton : UIControl <_UIClickInteractionDelegateInternal> {
     UIVisualEffectView * _backgroundEffectView;
     NSString * _backgroundEffectViewGroupName;
     NSArray * _backgroundEffects;
@@ -20,6 +20,7 @@
     double  _highlightProgress;
     UIImage * _image;
     bool  _interactive;
+    bool  _latching;
     NSString * _localizedAccessoryTitle;
     double  _maxForceDuringInteraction;
     bool  _pronounced;
@@ -46,6 +47,7 @@
 - (void).cxx_destruct;
 - (void)_animateEffectUpdateWithProgress:(double)arg1 ended:(bool)arg2;
 - (id)_backgroundEffectsWithBrightness:(double)arg1;
+- (unsigned long long)_clickInteractionDefaultDriverType:(id)arg1;
 - (id)_firstActivationDurationStat;
 - (id)_interactionCountStatWithActivation:(bool)arg1;
 - (id)_interactionDurationStat;

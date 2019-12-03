@@ -53,8 +53,6 @@
 - (bool)startCardEmulationWithAuthorization:(id)arg1 error:(id*)arg2;
 - (bool)startDeferredCardEmulationWithAuthorization:(id)arg1;
 - (bool)startDeferredCardEmulationWithAuthorization:(id)arg1 error:(id*)arg2;
-- (bool)startHostCardEmulation;
-- (bool)startHostCardEmulation:(id*)arg1;
 - (bool)stopCardEmulation;
 - (bool)stopCardEmulation:(id*)arg1;
 - (id)transitAppletState:(id)arg1 error:(id*)arg2;

@@ -3,6 +3,7 @@
  */
 
 @interface AVCaptureSynchronizedSampleBufferDataInternal : NSObject {
+    int  constituentDeviceCaptureID;
     long long  droppedReason;
     bool  hasCorrespondingDepthData;
     bool  hasCorrespondingVisionData;

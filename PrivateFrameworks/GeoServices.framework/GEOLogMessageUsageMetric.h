@@ -4,13 +4,13 @@
 
 @interface GEOLogMessageUsageMetric : PBCodable <NSCopying> {
     struct { 
-        unsigned int sessionId : 1; 
-        unsigned int messageSize : 1; 
-        unsigned int messageCount : 1; 
-        unsigned int metricState : 1; 
-        unsigned int metricType : 1; 
-        unsigned int retryCount : 1; 
-    }  _has;
+        unsigned int has_sessionId : 1; 
+        unsigned int has_messageSize : 1; 
+        unsigned int has_messageCount : 1; 
+        unsigned int has_metricState : 1; 
+        unsigned int has_metricType : 1; 
+        unsigned int has_retryCount : 1; 
+    }  _flags;
     unsigned int  _messageCount;
     unsigned long long  _messageSize;
     int  _metricState;
@@ -35,6 +35,8 @@
 @property (nonatomic) unsigned int retryCount;
 @property (nonatomic) struct GEOSessionID { unsigned long long x1; unsigned long long x2; } sessionId;
 
++ (bool)isValid:(id)arg1;
+
 - (int)StringAsMetricState:(id)arg1;
 - (int)StringAsMetricType:(id)arg1;
 - (void)copyTo:(id)arg1;
@@ -56,6 +58,7 @@
 - (id)metricStateAsString:(int)arg1;
 - (int)metricType;
 - (id)metricTypeAsString:(int)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (unsigned int)retryCount;
 - (struct GEOSessionID { unsigned long long x1; unsigned long long x2; })sessionId;

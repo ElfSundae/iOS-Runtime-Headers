@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
  */
 
-@interface TQQuicklook : NSObject <TSPDocumentResourceFileURLProvider> {
+@interface TQQuicklook : NSObject <TSUResourceFileURLProvider> {
     TSABaseApplicationDelegate * mBaseAppDelegate;
     TSACirrusDocument * mDocument;
     <TSKRenderingExporter> * mExporter;
@@ -25,7 +25,7 @@
 - (Class)appDelegateClass;
 - (void)close;
 - (void)dealloc;
-- (id)fileURLForDocumentResourceInfo:(id)arg1;
+- (id)fileURLForResourceInfo:(id)arg1;
 - (struct __CFString { }*)getIdentifierForApp:(id)arg1;
 - (id)initWithPath:(id)arg1 passphrase:(id)arg2;
 - (bool)load;

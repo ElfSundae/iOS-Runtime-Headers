@@ -4,8 +4,6 @@
 
 @interface Protocol : NSObject
 
-+ (void)load;
-
 - (bool)conformsTo:(id)arg1;
 - (struct objc_method_description { SEL x1; char *x2; }*)descriptionForClassMethod:(SEL)arg1;
 - (struct objc_method_description { SEL x1; char *x2; }*)descriptionForInstanceMethod:(SEL)arg1;

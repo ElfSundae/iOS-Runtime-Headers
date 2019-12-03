@@ -29,6 +29,6 @@
 - (void)setDataSource:(id)arg1;
 - (void)setItemSourceController:(id)arg1;
 - (void)tearDownForCompletion;
-- (void)updateActivityViewControllerVisibileShareActions;
+- (void)updateActivityViewControllerVisibleShareActions;
 
 @end

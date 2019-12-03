@@ -3,7 +3,7 @@
  */
 
 @interface PXCMMComposeRecipientTableViewCell : UITableViewCell {
-    UIButton * _accessoryButtonView;
+    UIImageView * _accessoryImageView;
     UIView * _avatarView;
     bool  _checked;
     CNContact * _contact;
@@ -11,15 +11,15 @@
     CNAvatarViewController * _contactAvatarViewController;
     int  _currentRequestID;
     PXRoundImageView * _customAvatarImageView;
-    NSString * _displayName;
-    UILabel * _displayNameLabel;
-    bool  _emphasizeDisplayName;
+    bool  _emphasizeLocalizedName;
     UIImage * _faceImage;
     struct CGSize { 
         double width; 
         double height; 
     }  _faceImageViewSize;
     double  _inset;
+    NSString * _localizedName;
+    UILabel * _localizedNameLabel;
     UIView * _popoverSourceView;
     UIColor * _textColor;
     NSString * _transport;
@@ -29,11 +29,11 @@
 @property (getter=isChecked, nonatomic) bool checked;
 @property (nonatomic, retain) CNContact *contact;
 @property (nonatomic) int currentRequestID;
-@property (nonatomic, copy) NSString *displayName;
-@property (nonatomic) bool emphasizeDisplayName;
+@property (nonatomic) bool emphasizeLocalizedName;
 @property (nonatomic, retain) UIImage *faceImage;
 @property (nonatomic) struct CGSize { double x1; double x2; } faceImageViewSize;
 @property (nonatomic) double inset;
+@property (nonatomic, copy) NSString *localizedName;
 @property (nonatomic, retain) UIView *popoverSourceView;
 @property (nonatomic, retain) UIColor *textColor;
 @property (nonatomic, copy) NSString *transport;
@@ -41,29 +41,29 @@
 - (void).cxx_destruct;
 - (void)_updateAccessoryImageView;
 - (void)_updateAvatarView;
-- (void)_updateDisplayNameLabel;
 - (void)_updateLayout;
+- (void)_updateLocalizedNameLabel;
 - (void)_updateTransportLabel;
 - (id)contact;
 - (int)currentRequestID;
-- (id)displayName;
-- (bool)emphasizeDisplayName;
+- (bool)emphasizeLocalizedName;
 - (id)faceImage;
 - (struct CGSize { double x1; double x2; })faceImageViewSize;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (double)inset;
 - (bool)isChecked;
 - (void)layoutSubviews;
+- (id)localizedName;
 - (id)popoverSourceView;
 - (void)prepareForReuse;
 - (void)setChecked:(bool)arg1;
 - (void)setContact:(id)arg1;
 - (void)setCurrentRequestID:(int)arg1;
-- (void)setDisplayName:(id)arg1;
-- (void)setEmphasizeDisplayName:(bool)arg1;
+- (void)setEmphasizeLocalizedName:(bool)arg1;
 - (void)setFaceImage:(id)arg1;
 - (void)setFaceImageViewSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setInset:(double)arg1;
+- (void)setLocalizedName:(id)arg1;
 - (void)setPopoverSourceView:(id)arg1;
 - (void)setTextColor:(id)arg1;
 - (void)setTransport:(id)arg1;

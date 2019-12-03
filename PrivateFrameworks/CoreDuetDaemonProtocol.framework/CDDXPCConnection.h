@@ -8,7 +8,7 @@
     CDDebug * _debug;
     bool  _hasValidConnection;
     NSObject<OS_dispatch_queue> * _replyQueue;
-    long long  _sequenceNumber;
+    _Atomic long long  _sequenceNumber;
     NSString * _serviceName;
 }
 

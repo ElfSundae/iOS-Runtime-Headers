@@ -10,7 +10,6 @@
 @property (getter=isAvailable) bool available;
 @property (retain) _DKSyncCloudKitKnowledgeStorage *common;
 @property (retain) <_DKSyncRemoteKnowledgeStorageFetchDelegate> *delegate;
-@property (readonly) bool isAvailable;
 
 + (id)sharedInstance;
 
@@ -22,7 +21,7 @@
 - (void)fetchAdditionsHighWaterMarkWithPeer:(id)arg1 highPriority:(bool)arg2 completion:(id /* block */)arg3;
 - (void)fetchDeletedEventIDsFromPeer:(id)arg1 sinceDate:(id)arg2 streamNames:(id)arg3 limit:(unsigned long long)arg4 highPriority:(bool)arg5 completion:(id /* block */)arg6;
 - (void)fetchDeletionsHighWaterMarkWithPeer:(id)arg1 highPriority:(bool)arg2 completion:(id /* block */)arg3;
-- (void)fetchEventsFromPeer:(id)arg1 creationDateBetweenDate:(id)arg2 andDate:(id)arg3 streamNames:(id)arg4 limit:(unsigned long long)arg5 fetchOrder:(long long)arg6 highPriority:(bool)arg7 completion:(id /* block */)arg8;
+- (void)fetchEventsFromPeer:(id)arg1 windows:(id)arg2 streamNames:(id)arg3 limit:(unsigned long long)arg4 fetchOrder:(long long)arg5 highPriority:(bool)arg6 completion:(id /* block */)arg7;
 - (void)fetchSourceDeviceIDFromPeer:(id)arg1 highPriority:(bool)arg2 completion:(id /* block */)arg3;
 - (bool)hasAdditionsFlagForPeer:(id)arg1;
 - (bool)hasDeletionsFlagForPeer:(id)arg1;

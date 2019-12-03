@@ -11,6 +11,7 @@
     double  m_totalSteps;
 }
 
+- (void).cxx_destruct;
 - (void)advanceProgress:(double)arg1;
 - (double)currentPosition;
 - (void)dealloc;

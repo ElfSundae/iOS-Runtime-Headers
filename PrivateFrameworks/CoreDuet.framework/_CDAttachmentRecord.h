@@ -10,6 +10,7 @@
 @property (nonatomic, retain) NSDate *creationDate;
 @property (nonatomic, retain) NSUUID *identifier;
 @property (nonatomic, retain) NSSet *interactions;
+@property (nonatomic, retain) NSString *photoLocalIdentifier;
 @property (nonatomic) long long sizeInBytes;
 @property (nonatomic, retain) NSString *uti;
 

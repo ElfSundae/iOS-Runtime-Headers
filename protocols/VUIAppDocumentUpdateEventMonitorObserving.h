@@ -5,6 +5,6 @@
 
 @required
 
-- (void)appDocumentUpdateEventMonitor:(VUIAppDocumentUpdateEventMonitor *)arg1 didReceiveEvent:(VUIAppDocumentUpdateEvent *)arg2;
+- (void)appDocumentDidReceiveEvent:(VUIAppDocumentUpdateEvent *)arg1;
 
 @end

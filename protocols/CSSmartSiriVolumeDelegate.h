@@ -3,7 +3,7 @@
 
 @protocol CSSmartSiriVolumeDelegate <NSObject>
 
-@required
+@optional
 
 - (void)CSSmartSiriVolumeDidReceiveAlarmChanged:(long long)arg1;
 - (void)CSSmartSiriVolumeDidReceiveMusicVolumeChanged:(float)arg1;

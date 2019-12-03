@@ -8,16 +8,18 @@
     unsigned long long  mContentFormatId;
     bool  mGeneratedText;
     OADGraphicProperties * mGraphicProperties;
-    unsigned long long  mLastCachedNameStringIndex;
+    EDString * mLastCachedName;
     CHDFormula * mName;
     EDResources * mResources;
 }
 
+@property (nonatomic, retain) EDString *lastCachedName;
+
 + (id)trendlineLabelWithResources:(id)arg1;
 
+- (void).cxx_destruct;
 - (id)contentFormat;
 - (unsigned long long)contentFormatId;
-- (void)dealloc;
 - (id)description;
 - (id)graphicProperties;
 - (id)initWithResources:(id)arg1;
@@ -34,7 +36,5 @@
 - (void)setIsContentFormatDerivedFromDataPoints:(bool)arg1;
 - (void)setLastCachedName:(id)arg1;
 - (void)setName:(id)arg1 chart:(id)arg2;
-- (void)setStringIndex:(unsigned long long)arg1;
-- (unsigned long long)stringIndex;
 
 @end

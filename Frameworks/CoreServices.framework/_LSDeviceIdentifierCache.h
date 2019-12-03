@@ -12,11 +12,11 @@
 
 + (id)sharedCache;
 
+- (void).cxx_destruct;
 - (struct NSDictionary { Class x1; }*)allIdentifiersNotDispatched;
 - (id)applyPerUserEntropyNotDispatched:(id)arg1 type:(long long)arg2;
 - (void)clearAllIdentifiersOfType:(long long)arg1;
 - (void)clearIdentifiersForUninstallationWithVendorName:(id)arg1 bundleIdentifier:(id)arg2;
-- (void)dealloc;
 - (bool)deviceUnlockedSinceBoot;
 - (void)generatePerUserEntropyIfNeededNotDispatched;
 - (id)generateSomePerUserEntropyNotDispatched;

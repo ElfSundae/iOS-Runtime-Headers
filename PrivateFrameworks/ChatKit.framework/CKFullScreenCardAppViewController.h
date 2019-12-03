@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
  */
 
-@interface CKFullScreenCardAppViewController : UIViewController <CKBrowserViewControllerProtocol, CKFullScreenAppViewControllerProtocol, UIGestureRecognizerDelegate> {
+@interface CKFullScreenCardAppViewController : UIViewController <CKBrowserViewControllerProtocol, CKFullScreenAppViewControllerProtocol, UIAdaptivePresentationControllerDelegate, UIGestureRecognizerDelegate> {
     UIView * _contentView;
     UIViewController<CKBrowserViewControllerProtocol> * _contentViewController;
     CKConversation * _conversation;
@@ -10,7 +10,6 @@
     CKDismissView * _dismissView;
     bool  _inTransition;
     long long  _lastKnownDeviceOrientation;
-    long long  _parentModalPresentationStyle;
     <UIViewControllerTransitioningDelegate> * _parentTransitioningDelegate;
 }
 
@@ -31,6 +30,7 @@
 @property (nonatomic) <CKFullScreenAppViewControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) CKDismissView *dismissView;
+@property (getter=isDismissing, nonatomic, readonly) bool dismissing;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } horizontalSwipeExclusionRect;
 @property (nonatomic, readonly) bool inExpandedPresentation;
@@ -60,6 +60,7 @@
 - (void)_handleRemoteConnectionInterrupted:(id)arg1;
 - (bool)_shouldShowDimmingView;
 - (void)_updateDimmingViewAlpha;
+- (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (void)animateBrowserViewFromSourceRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 interactive:(bool)arg2 grabberView:(id)arg3 completion:(id /* block */)arg4;
 - (void)animateBrowserViewToTargetRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 grabberView:(id)arg2 completion:(id /* block */)arg3;
 - (id)balloonPlugin;
@@ -83,13 +84,13 @@
 - (id)initWithBalloonPlugin:(id)arg1 dataSource:(id)arg2;
 - (id)initWithConversation:(id)arg1 plugin:(id)arg2;
 - (id)inputAccessoryView;
+- (bool)isDismissing;
 - (bool)isLoaded;
+- (bool)isPrimaryViewController;
 - (bool)isiMessage;
 - (long long)lastKnownDeviceOrientation;
 - (void)loadView;
 - (bool)mayBeKeptInViewHierarchy;
-- (long long)parentModalPresentationStyle;
-- (long long)parentModalPresentationStyle;
 - (id)parentTransitioningDelegate;
 - (long long)preferredStatusBarStyle;
 - (id)presentationViewController;
@@ -102,6 +103,7 @@
 - (void)setDelegate:(id)arg1;
 - (void)setDismissView:(id)arg1;
 - (void)setInTransition:(bool)arg1;
+- (void)setIsPrimaryViewController:(bool)arg1;
 - (void)setIsiMessage:(bool)arg1;
 - (void)setLastKnownDeviceOrientation:(long long)arg1;
 - (void)setPresentationViewController:(id)arg1;

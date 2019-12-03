@@ -11,6 +11,7 @@
         unsigned int hasBottomPadding : 1; 
         unsigned int separatorStyle : 1; 
         unsigned int isContact : 1; 
+        unsigned int suggestionType : 1; 
     }  _has;
     bool  _hasBottomPadding;
     bool  _hasTopPadding;
@@ -21,6 +22,7 @@
     NSString * _scopedSearchSectionBundleIdentifier;
     int  _separatorStyle;
     SFRichText * _suggestionText;
+    int  _suggestionType;
     NSString * _type;
 }
 
@@ -46,6 +48,7 @@
 @property (nonatomic, copy) NSString *scopedSearchSectionBundleIdentifier;
 @property (nonatomic) int separatorStyle;
 @property (nonatomic, retain) SFRichText *suggestionText;
+@property (nonatomic) int suggestionType;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, retain) SFUserReportRequest *userReportRequest;
@@ -66,6 +69,7 @@
 - (bool)hasHasTopPadding;
 - (bool)hasIsContact;
 - (bool)hasSeparatorStyle;
+- (bool)hasSuggestionType;
 - (bool)hasTopPadding;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProtobuf:(id)arg1;
@@ -87,8 +91,10 @@
 - (void)setScopedSearchSectionBundleIdentifier:(id)arg1;
 - (void)setSeparatorStyle:(int)arg1;
 - (void)setSuggestionText:(id)arg1;
+- (void)setSuggestionType:(int)arg1;
 - (void)setType:(id)arg1;
 - (id)suggestionText;
+- (int)suggestionType;
 - (id)type;
 
 // Image: /System/Library/PrivateFrameworks/SearchUI.framework/SearchUI

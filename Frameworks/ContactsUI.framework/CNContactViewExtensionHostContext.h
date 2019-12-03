@@ -21,9 +21,13 @@
 - (void)didChangeToEditMode:(bool)arg1;
 - (void)didCompleteWithContact:(id)arg1;
 - (void)didDeleteContact:(id)arg1;
+- (void)didExecuteClearRecentsDataAction;
+- (void)didExecuteDeleteFromDowntimeWhitelistAction;
 - (void)editCancel;
 - (void)isPresentingEditingController:(bool)arg1;
 - (void)isPresentingFullscreen:(bool)arg1;
+- (void)performConfirmedCancel;
+- (void)presentCancelConfirmationAlert;
 - (id)protocolService;
 - (void)setViewController:(id)arg1;
 - (void)setupWithOptions:(id)arg1 readyBlock:(id /* block */)arg2;

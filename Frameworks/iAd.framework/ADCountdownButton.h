@@ -23,10 +23,10 @@
 + (id)_closeBoxImage;
 + (id)_inactiveCloseBoxImage;
 
+- (void).cxx_destruct;
 - (unsigned long long)accessibilityTraits;
 - (id)backgroundView;
 - (double)countdownProgress;
-- (void)dealloc;
 - (bool)dimmed;
 - (id)dimmedIconImage;
 - (bool)gestureRecognizerShouldBegin:(id)arg1;

@@ -12,26 +12,32 @@
     NSString * _mediaUTI;
     NSDictionary * _metadata;
     NSString * _title;
-    NSDictionary * _webScrapeResults;
+    bool  _usesTemporaryFile;
 }
 
 @property (nonatomic, retain) ICAttachment *attachment;
 @property (nonatomic, retain) NSAttributedString *attributedContentText;
 @property (nonatomic, retain) UIImage *image;
+@property (nonatomic, readonly) bool isPhoto;
+@property (nonatomic, readonly) bool isVideo;
 @property (nonatomic, retain) NSData *mediaData;
 @property (nonatomic, retain) NSString *mediaFilenameExtension;
 @property (nonatomic, retain) NSURL *mediaURL;
 @property (nonatomic, retain) NSString *mediaUTI;
 @property (nonatomic, retain) NSDictionary *metadata;
 @property (nonatomic, retain) NSString *title;
-@property (nonatomic, retain) NSDictionary *webScrapeResults;
+@property (nonatomic) bool usesTemporaryFile;
 
 - (void).cxx_destruct;
 - (id)attachment;
+- (id)attachmentIfExistsForAccount:(id)arg1;
 - (id)attributedContentText;
+- (void)deleteTemporaryImageFileIfNecessary;
 - (id)description;
 - (struct UIImage { Class x1; }*)image;
 - (id)initWithFileURL:(id)arg1;
+- (bool)isPhoto;
+- (bool)isVideo;
 - (id)mediaData;
 - (id)mediaFilenameExtension;
 - (unsigned long long)mediaSize;
@@ -47,8 +53,8 @@
 - (void)setMediaUTI:(id)arg1;
 - (void)setMetadata:(id)arg1;
 - (void)setTitle:(id)arg1;
-- (void)setWebScrapeResults:(id)arg1;
+- (void)setUsesTemporaryFile:(bool)arg1;
 - (id)title;
-- (id)webScrapeResults;
+- (bool)usesTemporaryFile;
 
 @end

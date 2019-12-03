@@ -2,9 +2,7 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface INResumeWorkoutIntentResponse : INIntentResponse <INResumeWorkoutIntentResponseExport> {
-    _INPBResumeWorkoutIntentResponse * _responseMessagePBRepresentation;
-}
+@interface INResumeWorkoutIntentResponse : INIntentResponse <INResumeWorkoutIntentResponseExport>
 
 @property (nonatomic, readonly) long long code;
 @property (readonly, copy) NSString *debugDescription;
@@ -18,11 +16,10 @@
 + (int)_typeFromCode:(long long)arg1;
 + (bool)supportsSecureCoding;
 
-- (void).cxx_destruct;
+- (long long)_codeWithName:(id)arg1;
 - (id)_dictionaryRepresentation;
 - (id)_initWithCode:(long long)arg1 userActivity:(id)arg2;
 - (long long)_intentResponseCode;
-- (id)_responseMessagePBRepresentation;
 - (bool)_shouldForwardIntentToApp;
 - (long long)code;
 - (void)encodeWithCoder:(id)arg1;

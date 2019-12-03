@@ -5,8 +5,8 @@
 @interface GEOPDEventCategory : PBCodable <NSCopying> {
     int  _eventLookupCategory;
     struct { 
-        unsigned int eventLookupCategory : 1; 
-    }  _has;
+        unsigned int has_eventLookupCategory : 1; 
+    }  _flags;
     NSMutableArray * _localizedCategorys;
     PBUnknownFields * _unknownFields;
 }
@@ -16,12 +16,14 @@
 @property (nonatomic, retain) NSMutableArray *localizedCategorys;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
 + (Class)localizedCategoryType;
 
 - (void).cxx_destruct;
 - (int)StringAsEventLookupCategory:(id)arg1;
 - (void)addLocalizedCategory:(id)arg1;
 - (void)clearLocalizedCategorys;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -35,6 +37,7 @@
 - (id)localizedCategorys;
 - (unsigned long long)localizedCategorysCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setEventLookupCategory:(int)arg1;
 - (void)setHasEventLookupCategory:(bool)arg1;

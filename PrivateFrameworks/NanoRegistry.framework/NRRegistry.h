@@ -24,6 +24,7 @@
 
 + (id)_nextToken;
 + (bool)_supportsWatch;
++ (void)fixSecurePropertiesWithCollection:(id)arg1 secureProperties:(id)arg2 insecurePropertyNames:(id)arg3;
 + (id)getReferencedSecureProperties:(id)arg1 fromDiff:(id)arg2;
 + (id)getReferencedSecurePropertyIDsFromDiff:(id)arg1;
 + (unsigned long long)readNotifyToken:(int)arg1;
@@ -41,6 +42,7 @@
 - (void)enqueueForRead:(id /* block */)arg1 bypassSuspend:(bool)arg2;
 - (void)enqueueForReadAsync:(id /* block */)arg1;
 - (void)enqueueForReadAsync:(id /* block */)arg1 bypassSuspend:(bool)arg2;
+- (bool)enqueueForReadUnlessSuspended:(id /* block */)arg1;
 - (void)enqueueForWriteAsync:(id /* block */)arg1;
 - (void)enqueueForWriteAsync:(id /* block */)arg1 bypassSuspend:(bool)arg2;
 - (void)grabRegistryWithReadBlock:(id /* block */)arg1;

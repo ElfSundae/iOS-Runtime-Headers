@@ -14,6 +14,7 @@
     bool  _idleTimerDisabled;
     bool  _isGoodState;
     NSString * _lastProvisioningStateName;
+    PKPasscodeUpgradeFlowController * _passcodeUpgradeFlowController;
     PKPaymentContactlessProductCredential * _paymentCredential;
     PKPaymentPass * _paymentPass;
     PKPaymentSetupProduct * _product;
@@ -22,6 +23,7 @@
     UIScrollView * _scrollView;
     <PKPaymentSetupViewControllerDelegate> * _setupDelegate;
     unsigned long long  _startTime;
+    bool  _startedInitialIngestion;
     unsigned long long  _state;
     unsigned long long  _stateOnRetry;
     PKPaymentWebService * _webService;
@@ -45,6 +47,7 @@
 - (void)_logAndAggDDurations;
 - (void)_performEligibilityWithCompletion:(id /* block */)arg1;
 - (void)_performFinishWithCompletion:(id /* block */)arg1;
+- (void)_performPasscodeUpgradeIfNeededWithCompletion:(id /* block */)arg1;
 - (void)_performProvisionWithCompletion:(id /* block */)arg1;
 - (void)_removePassIfNecessary;
 - (void)_resetProvisioningState;
@@ -83,8 +86,8 @@
 - (void)showProvisioningError:(id)arg1 completion:(id /* block */)arg2;
 - (void)showReaderModeError:(id)arg1 isRecoverable:(bool)arg2;
 - (void)viewDidAppear:(bool)arg1;
+- (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLoad;
-- (void)viewWillDisappear:(bool)arg1;
 - (void)viewWillLayoutSubviews;
 - (id)webService;
 

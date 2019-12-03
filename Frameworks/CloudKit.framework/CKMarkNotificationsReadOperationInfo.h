@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
  */
 
-@interface CKMarkNotificationsReadOperationInfo : CKOperationInfo {
+@interface CKMarkNotificationsReadOperationInfo : CKOperationInfo <NSSecureCoding> {
     NSArray * _notificationIDs;
 }
 

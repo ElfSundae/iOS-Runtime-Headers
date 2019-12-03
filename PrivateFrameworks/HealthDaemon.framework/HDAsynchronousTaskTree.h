@@ -3,7 +3,7 @@
  */
 
 @interface HDAsynchronousTaskTree : NSObject {
-    int  _canceled;
+    _Atomic bool  _canceled;
     NSObject<OS_dispatch_queue> * _default_task_queue;
     NSString * _groupDescription;
     NSObject<OS_dispatch_queue> * _queue;
@@ -13,7 +13,7 @@
     NSMutableArray * _queue_pendingTasks;
     bool  _queue_started;
     NSMutableArray * _queue_taskErrors;
-    bool  _rejectAddTask;
+    _Atomic bool  _rejectAddTask;
 }
 
 @property (nonatomic, readonly) NSArray *allErrors;

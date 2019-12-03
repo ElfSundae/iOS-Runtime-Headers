@@ -4,6 +4,7 @@
 
 @interface _UIKeyboardBasedNonEditableTextSelectionGestureController : _UIKeyboardBasedTextSelectionGestureController
 
+- (bool)shouldAddForceGesture;
 - (Class)textInteractionClass;
 
 @end

@@ -4,11 +4,14 @@
 
 @interface EKDayViewContentItem : NSObject <CUIKSingleDayTimelineViewItem> {
     double  _bottomPinningProximity;
+    long long  _currentRequestId;
+    EKDayOccurrenceState * _currentState;
     EKCalendarDate * _endDate;
     EKEvent * _event;
     unsigned long long  _eventIndex;
     bool  _isLoadingAsync;
     bool  _isProposedTime;
+    long long  _sizeClass;
     struct CGRect { 
         struct CGPoint { 
             double x; 
@@ -19,6 +22,7 @@
             double height; 
         } size; 
     }  _stagedFrame;
+    EKDayOccurrenceContentPayload * _stagedPayload;
     EKCalendarDate * _startDate;
     double  _topPinningProximity;
     double  _travelTime;
@@ -40,6 +44,7 @@
 }
 
 @property (nonatomic) double bottomPinningProximity;
+@property (nonatomic, readonly) EKDayOccurrenceState *currentState;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) NSDate *end;
@@ -58,16 +63,21 @@
 @property (readonly) Class superclass;
 @property (nonatomic) double topPinningProximity;
 @property (nonatomic) double travelTime;
+@property (nonatomic) double travelTimeHeight;
 @property struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } unPinnedViewFrame;
 @property (nonatomic) bool usesSmallText;
 @property (nonatomic, retain) EKDayOccurrenceView *view;
 @property (nonatomic, readonly) double viewMaxNaturalTextHeight;
+@property (nonatomic) double visibleHeight;
 @property (readonly) bool visibleHeightLocked;
 
 + (double)barToBarHorizontalDistanceIncludingBarWidth;
 
 - (void).cxx_destruct;
+- (void)_requestPayload:(bool)arg1;
+- (void)_updateWithPayload:(id)arg1;
 - (double)bottomPinningProximity;
+- (id)currentState;
 - (id)description;
 - (id)end;
 - (id)endDate;
@@ -75,7 +85,7 @@
 - (id)event;
 - (unsigned long long)eventIndex;
 - (bool)hideTravelTime;
-- (id)initWithEventIndex:(unsigned long long)arg1;
+- (id)initWithEventIndex:(unsigned long long)arg1 sizeClass:(long long)arg2;
 - (bool)isEqual:(id)arg1;
 - (bool)isLoadingAsync;
 - (bool)isPinned;
@@ -102,10 +112,12 @@
 - (id)startWithTravelTime;
 - (double)topPinningProximity;
 - (double)travelTime;
+- (double)travelTimeHeight;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })unPinnedViewFrame;
 - (bool)usesSmallText;
 - (id)view;
 - (double)viewMaxNaturalTextHeight;
+- (double)visibleHeight;
 - (bool)visibleHeightLocked;
 
 @end

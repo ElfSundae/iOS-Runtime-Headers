@@ -13,7 +13,6 @@
     UITableView * __mainTableView;
     PUOneUpPresentationHelper * __oneUpPresentationHelper;
     PXPhotoKitAssetsDataSourceManager * __photoKitDataSourceManager;
-    PUOneUpViewController * __pushedOneUpViewController;
     bool  __viewInSyncWithModel;
     UIBarButtonItem * _cancelBarButtonItem;
     UIBarButtonItem * _deleteBarButtonItem;
@@ -33,7 +32,6 @@
 @property (setter=_setMainTableView:, nonatomic, retain) UITableView *_mainTableView;
 @property (setter=_setOneUpPresentationHelper:, nonatomic, retain) PUOneUpPresentationHelper *_oneUpPresentationHelper;
 @property (nonatomic, retain) PXPhotoKitAssetsDataSourceManager *_photoKitDataSourceManager;
-@property (setter=_setPushedOneUpViewController:, nonatomic, retain) PUOneUpViewController *_pushedOneUpViewController;
 @property (getter=_isViewInSyncWithModel, setter=_setViewInSyncWithModel:, nonatomic) bool _viewInSyncWithModel;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -49,7 +47,6 @@
 - (id)_contentUnavailableView;
 - (id)_dataSource;
 - (id)_dataSourceManagerConfiguration;
-- (id)_defaultBackgroundColor;
 - (id)_deleteBarButtonItem;
 - (void)_deleteItemsAtSelectedIndexes:(id)arg1;
 - (id)_editBarButtonItem;
@@ -68,7 +65,6 @@
 - (id)_oneUpPresentationHelper;
 - (id)_photoKitDataSourceManager;
 - (void)_presentOneUpViewControllerForAssetAtInderxPath:(id)arg1;
-- (id)_pushedOneUpViewController;
 - (void)_reloadContentView;
 - (void)_removeIndexPathFromDeleteSelection:(id)arg1;
 - (void)_setAssetsFetchResultIsValid:(bool)arg1;
@@ -80,7 +76,6 @@
 - (void)_setLeftBarButtonItem:(id)arg1 animated:(bool)arg2;
 - (void)_setMainTableView:(id)arg1;
 - (void)_setOneUpPresentationHelper:(id)arg1;
-- (void)_setPushedOneUpViewController:(id)arg1;
 - (void)_setRightBarButtonItem:(id)arg1 animated:(bool)arg2;
 - (void)_setViewInSyncWithModel:(bool)arg1;
 - (bool)_shouldUpdateTableViewForDataSource:(id)arg1;
@@ -105,7 +100,6 @@
 - (void)oneUpPresentationHelper:(id)arg1 didDismissOneUpViewController:(id)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })oneUpPresentationHelper:(id)arg1 rectForAssetReference:(id)arg2 cropInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; }*)arg3 contentsRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg4;
 - (long long)oneUpPresentationHelper:(id)arg1 transitionTypeWithProposedTransitionType:(long long)arg2;
-- (void)oneUpPresentationHelper:(id)arg1 willPresentOneUpViewController:(id)arg2;
 - (long long)oneUpPresentationHelperPreferredBarStyle:(id)arg1;
 - (bool)oneUpPresentationHelperShouldLeaveContentOnSecondScreen:(id)arg1;
 - (id)oneUpPresentationHelperViewController:(id)arg1;
@@ -113,7 +107,6 @@
 - (id)photoCollectionAtIndex:(unsigned long long)arg1;
 - (void)photosDataSource:(id)arg1 didChange:(id)arg2;
 - (long long)preferredAlertControllerStyleForDeletePhotosActionController:(id)arg1;
-- (id)presentingViewControllerForActionPerformer:(id)arg1;
 - (void)processDataSourceChange:(id)arg1;
 - (void)selectVideoItems:(id)arg1;
 - (void)set_photoKitDataSourceManager:(id)arg1;

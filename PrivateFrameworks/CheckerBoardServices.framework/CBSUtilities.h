@@ -4,7 +4,13 @@
 
 @interface CBSUtilities : NSObject
 
++ (void)dimDisplay;
 + (void)exitCheckerBoard;
++ (void)hideSceneStatusBar;
 + (bool)isCheckerBoardActive;
++ (id)proxyServer;
++ (void)sceneStatusBarStyle:(long long)arg1;
++ (void)showSceneStatusBar;
++ (void)undimDisplay;
 
 @end

@@ -12,9 +12,11 @@
 + (bool)_start:(bool)arg1 syncBubbleForUser:(id)arg2 outError:(id*)arg3;
 + (id)_uidDictForUser:(id)arg1;
 + (id)_userAttributesForUID:(unsigned int)arg1 outError:(id*)arg2;
++ (bool)adoptPersonaVoucherForAccoutID:(id)arg1 outError:(id*)arg2;
 + (id)allSyncBubbleUsers;
 + (id)allUsers;
 + (bool)clearSyncBubblesWithOutError:(id*)arg1;
++ (id)currentPersona;
 + (id)currentSyncBubbleUser;
 + (id)currentUser;
 + (id)currentUserSwitchContext;

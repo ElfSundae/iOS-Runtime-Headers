@@ -2,30 +2,25 @@
    Image: /System/Library/PrivateFrameworks/SearchUI.framework/SearchUI
  */
 
-@interface SearchUIPeekDelegate : NSObject <UIViewControllerPreviewingDelegate> {
-    NSIndexPath * _peekedIndexPath;
+@interface SearchUIPeekDelegate : NSObject <UIContextMenuInteractionDelegate> {
     SearchUITableViewController * _viewController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (retain) NSIndexPath *peekedIndexPath;
 @property (readonly) Class superclass;
-@property SearchUITableViewController *viewController;
+@property (nonatomic) SearchUITableViewController *viewController;
 
 - (void).cxx_destruct;
-- (void)_previewingContext:(id)arg1 willDismissViewController:(id)arg2;
-- (void)_previewingContext:(id)arg1 willPresentViewController:(id)arg2;
-- (id)customViewForInteractiveHighlightForIndexPath:(id)arg1;
+- (id)_contextMenuInteraction:(id)arg1 styleForMenuWithConfiguration:(id)arg2;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint { double x1; double x2; })arg2;
+- (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
+- (void)contextMenuInteraction:(id)arg1 willCommitWithAnimator:(id)arg2;
+- (void)contextMenuInteractionDidEnd:(id)arg1;
+- (void)contextMenuInteractionWillPresent:(id)arg1;
 - (id)initWithViewController:(id)arg1;
-- (bool)needToHandleTransparencyForViewController:(id)arg1;
-- (id)peekedIndexPath;
-- (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
-- (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint { double x1; double x2; })arg2;
-- (void)setPeekedIndexPath:(id)arg1;
 - (void)setViewController:(id)arg1;
-- (void)unhidePeekedCell;
 - (id)viewController;
 
 @end

@@ -5,7 +5,6 @@
 @interface UIStatusBarStyleRequest : NSObject <NSCopying, NSMutableCopying> {
     double  _foregroundAlpha;
     UIColor * _foregroundColor;
-    bool  _legacy;
     long long  _legibilityStyle;
     NSNumber * _overrideHeight;
     long long  _style;
@@ -13,7 +12,6 @@
 
 @property (nonatomic, readonly) double foregroundAlpha;
 @property (nonatomic, readonly, retain) UIColor *foregroundColor;
-@property (getter=isLegacy, nonatomic, readonly) bool legacy;
 @property (nonatomic, readonly) long long legibilityStyle;
 @property (nonatomic, readonly, retain) NSNumber *overrideHeight;
 @property (nonatomic, readonly) long long style;
@@ -27,8 +25,10 @@
 - (id)init;
 - (id)initWithStyle:(long long)arg1 legacy:(bool)arg2 legibilityStyle:(long long)arg3 foregroundColor:(id)arg4;
 - (id)initWithStyle:(long long)arg1 legacy:(bool)arg2 legibilityStyle:(long long)arg3 foregroundColor:(id)arg4 foregroundAlpha:(double)arg5;
-- (id)initWithStyle:(long long)arg1 legacy:(bool)arg2 legibilityStyle:(long long)arg3 foregroundColor:(id)arg4 foregroundAlpha:(double)arg5 overrideHeight:(id)arg6;
-- (id)initWithStyle:(long long)arg1 legacy:(bool)arg2 legibilityStyle:(long long)arg3 foregroundColor:(id)arg4 overrideHeight:(id)arg5;
+- (id)initWithStyle:(long long)arg1 legibilityStyle:(long long)arg2 foregroundColor:(id)arg3;
+- (id)initWithStyle:(long long)arg1 legibilityStyle:(long long)arg2 foregroundColor:(id)arg3 foregroundAlpha:(double)arg4;
+- (id)initWithStyle:(long long)arg1 legibilityStyle:(long long)arg2 foregroundColor:(id)arg3 foregroundAlpha:(double)arg4 overrideHeight:(id)arg5;
+- (id)initWithStyle:(long long)arg1 legibilityStyle:(long long)arg2 foregroundColor:(id)arg3 overrideHeight:(id)arg4;
 - (bool)isDoubleHeight;
 - (bool)isEqual:(id)arg1;
 - (bool)isLegacy;

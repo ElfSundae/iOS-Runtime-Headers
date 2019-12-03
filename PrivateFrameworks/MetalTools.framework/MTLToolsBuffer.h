@@ -12,9 +12,12 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) <MTLDevice> *device;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hazardTrackingMode;
 @property (readonly) <MTLHeap> *heap;
+@property (readonly) unsigned long long heapOffset;
 @property (copy) NSString *label;
 @property (readonly) unsigned long long length;
+@property (readonly) unsigned long long resourceOptions;
 @property (readonly) unsigned long long storageMode;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) MTLToolsPointerArray *textures;

@@ -15,9 +15,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (int)columnNumber;
 - (unsigned long long)createIndexWithType:(int)arg1 firstSheetIndex:(unsigned long long)arg2 lastSheetIndex:(unsigned long long)arg3;
-- (void)dealloc;
 - (id)initWithWorkbook:(id)arg1 worksheet:(id)arg2 rowNumber:(int)arg3 columnNumber:(int)arg4;
 - (bool)isCurrentSheet:(id)arg1;
 - (unsigned long long)resolveFile:(id)arg1;

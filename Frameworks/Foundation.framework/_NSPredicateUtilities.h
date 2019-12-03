@@ -26,6 +26,7 @@
 + (id)bitwiseAnd:(id)arg1 with:(id)arg2;
 + (id)bitwiseOr:(id)arg1 with:(id)arg2;
 + (id)bitwiseXor:(id)arg1 with:(id)arg2;
++ (id)canonical:(id)arg1;
 + (id)castObject:(id)arg1 toType:(id)arg2;
 + (id)ceiling:(id)arg1;
 + (id)count:(id)arg1;

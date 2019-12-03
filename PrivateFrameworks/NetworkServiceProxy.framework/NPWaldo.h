@@ -36,6 +36,7 @@
     unsigned int  _generation;
     NSString * _hostname;
     NSString * _identifier;
+    NPKeyBag * _keybag;
     NSNumber * _latencyFactorA;
     NSNumber * _latencyFactorB;
     NSNumber * _latencyFactorX;
@@ -115,6 +116,7 @@
 @property (retain) NSString *hostname;
 @property (readonly) NSString *identifier;
 @property (readonly) bool isIPv6Enabled;
+@property (retain) NPKeyBag *keybag;
 @property (readonly) id /* block */ latencyComparator;
 @property (copy) NSNumber *latencyFactorA;
 @property (copy) NSNumber *latencyFactorB;
@@ -214,11 +216,12 @@
 - (unsigned int)generation;
 - (long long)getCurrentNetworkInterfaceType;
 - (void)getDayPassRTT;
-- (unsigned int)getFailureReasonForLatencies:(id)arg1;
-- (void)handleKeyUsageUpdate:(id)arg1 appData:(id)arg2;
+- (long long)getFallbackReasonForLatencies:(id)arg1;
+- (void)handleUsageReport:(id)arg1;
 - (bool)hasEdges;
 - (id)hostname;
 - (id)identifier;
+- (void)incrementSessionCounters;
 - (long long)indexOfBestEdge;
 - (id)init;
 - (id)initFromKeychainWithIdentifier:(id)arg1;
@@ -228,6 +231,7 @@
 - (bool)isEndpointProbed:(id)arg1 parameters:(struct networkParameters { bool x1; bool x2; bool x3; }*)arg2 latencies:(id)arg3 checkSampleSize:(bool)arg4 incompleteLatency:(id*)arg5;
 - (bool)isIPv6Enabled;
 - (bool)isLatenciesCompleteForNetwork:(id)arg1;
+- (id)keybag;
 - (id /* block */)latencyComparator;
 - (id)latencyFactorA;
 - (id)latencyFactorB;
@@ -256,7 +260,9 @@
 - (id)probeTFO;
 - (id)probeTimeout;
 - (id)probeUseTFOHeuristics;
-- (bool)pushCurrentDayPassesToKernelUpdateGeneration:(bool)arg1;
+- (void)pushKeybagToKernel;
+- (void)pushKeybagToKernelCanReuse:(bool)arg1;
+- (void)pushKeybagToKernelUpdateGeneration:(bool)arg1;
 - (bool)reResolve;
 - (void)rebuildLatencyMapAllSignatures:(bool)arg1;
 - (void)refreshDayPassesWithCompletionHandler:(id /* block */)arg1;
@@ -308,6 +314,7 @@
 - (void)setEnableLatencyDerivation:(id)arg1;
 - (void)setGeneration:(unsigned int)arg1;
 - (void)setHostname:(id)arg1;
+- (void)setKeybag:(id)arg1;
 - (void)setLatencyFactorA:(id)arg1;
 - (void)setLatencyFactorB:(id)arg1;
 - (void)setLatencyFactorX:(id)arg1;
@@ -359,8 +366,7 @@
 - (void)updateEdgeSelection:(unsigned long long)arg1;
 - (id)updateHash;
 - (void)updateMetaDataNeedProbe:(bool)arg1 refresh:(bool)arg2 push:(bool)arg3 minRTT:(unsigned long long)arg4;
-- (bool)updateNetworkAgentWithKeybagData:(id)arg1;
-- (void)updateWithAppData:(id)arg1;
+- (void)updateNetworkAgentWithKeybag:(id)arg1 networkInfo:(id)arg2;
 - (id)useGeohashFromServer;
 - (id)usedEdgesGeneration;
 - (bool)validateEdgeList:(id)arg1;

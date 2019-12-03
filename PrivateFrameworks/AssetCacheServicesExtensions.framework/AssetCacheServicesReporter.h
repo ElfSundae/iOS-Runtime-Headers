@@ -30,7 +30,7 @@
 - (void)reportFreshServersWithKeyPath:(id)arg1;
 - (void)reportMightHaveWithKeyPath:(id)arg1;
 - (void)reportPublicIPAddress;
-- (void)reportPublicIPAddressRangesWithKeyPath:(id)arg1;
+- (void)reportPublicIPAddressRangesAndFavoredServerRangesWithKeyPath:(id)arg1;
 - (void)reportReachability;
 - (void)reportServersWithKeyPath:(id)arg1 generateOptions:(id /* block */)arg2;
 - (id)results;

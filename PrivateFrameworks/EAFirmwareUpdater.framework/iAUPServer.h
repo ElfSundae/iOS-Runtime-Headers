@@ -4,6 +4,7 @@
 
 @interface iAUPServer : NSObject <HSModelDelegate> {
     unsigned short  _accessoryCapabilities;
+    bool  _ackAppReentry;
     bool  _byteEscape;
     unsigned char  _currentAsset;
     <iAUPServerDelegate> * _delegate;
@@ -16,14 +17,17 @@
     int  _parserState;
     bool  _restartRequired;
     int  _serverState;
+    bool  _sleepWakeRequired;
     bool  _startEventSent;
     unsigned char  _telegramChecksum;
     NSMutableData * _telegramDataIn;
     unsigned int  _telegramLength;
     unsigned int  _totalBytesDownloadedInCurrentSession;
+    bool  _urgentUpdate;
     unsigned short  objectBlockTransferSizes;
 }
 
+@property (nonatomic) bool ackAppReentry;
 @property (nonatomic) bool byteEscape;
 @property (nonatomic) unsigned char currentAsset;
 @property <iAUPServerDelegate> *delegate;
@@ -33,7 +37,10 @@
 @property (nonatomic) int parserState;
 @property (nonatomic, readonly) bool restartRequired;
 @property (nonatomic) int serverState;
+@property (nonatomic, readonly) bool sleepWakeRequired;
+@property (nonatomic, readonly) bool urgentUpdate;
 
+- (bool)ackAppReentry;
 - (unsigned char)appendByteWithEscaping:(unsigned char)arg1 toObject:(id*)arg2;
 - (void)appendToLog:(id)arg1;
 - (char *)assetTypeString:(int)arg1;
@@ -65,6 +72,7 @@
 - (id)sendCommand:(unsigned char)arg1 payload:(char *)arg2 payload_length:(unsigned short)arg3;
 - (int)serverState;
 - (char *)serverStateString:(int)arg1;
+- (void)setAckAppReentry:(bool)arg1;
 - (void)setBootloaderEntry;
 - (void)setByteEscape:(bool)arg1;
 - (void)setCurrentAsset:(unsigned char)arg1;
@@ -76,6 +84,8 @@
 - (void)setParserState:(int)arg1;
 - (void)setResumeInfo:(char *)arg1 length:(unsigned int)arg2;
 - (void)setServerState:(int)arg1;
+- (bool)sleepWakeRequired;
 - (unsigned int)supportedTargetProductIDCode;
+- (bool)urgentUpdate;
 
 @end

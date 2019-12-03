@@ -35,7 +35,7 @@
 - (id)createGroupForInitialDownload;
 - (id)createGroupForInitialUpload;
 - (id)createGroupForLibraryStateCheck;
-- (id)createGroupForMovieStreaming;
+- (id)createGroupForMovieStreamingWithIntent:(unsigned long long)arg1;
 - (id)createGroupForPrefetch;
 - (id)createGroupForPruningCheck;
 - (id)createGroupForPublishingMomentShare;
@@ -54,11 +54,13 @@
 - (id)fetchScopeListChangesForScopeListSyncAnchor:(struct NSData { Class x1; }*)arg1 progressHandler:(id /* block */)arg2 completionHandler:(id /* block */)arg3;
 - (id)fetchTaskForMomentShareURL:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)fetchTransportScopeForScope:(id)arg1 transportScope:(id)arg2 completionHandler:(id /* block */)arg3;
+- (void)findPersistedInitialSyncSession:(id /* block */)arg1 completionHandler:(id /* block */)arg2;
 - (id)getCurrentSyncAnchorWithTransportScope:(id)arg1 scope:(id)arg2 completionHandler:(id /* block */)arg3;
 - (id)getLibraryInfoAndStateWithTransportScope:(id)arg1 scope:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)getPushEnvironmentWithCompletionHandler:(id /* block */)arg1;
 - (void)getStatusDictionaryWithCompletionHandler:(id /* block */)arg1;
 - (void)getStatusWithCompletionHandler:(id /* block */)arg1;
+- (id)getStreamingURLTaskForResource:(id)arg1 intent:(unsigned long long)arg2 hints:(id)arg3 transportScope:(id)arg4 completionHandler:(id /* block */)arg5;
 - (void)getSystemBudgetsWithCompletionHandler:(id /* block */)arg1;
 - (id)inMemoryDownloadTaskForResource:(id)arg1 transportScope:(id)arg2 completionHandler:(id /* block */)arg3;
 - (id)initWithEngineLibrary:(id)arg1;
@@ -72,7 +74,6 @@
 - (id)queryUserIdentitiesTaskForParticipants:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)rampingRequestTaskForResourceType:(unsigned long long)arg1 numRequested:(unsigned long long)arg2 completionHandler:(id /* block */)arg3;
 - (id)resourceCheckTaskForResources:(id)arg1 transportScopes:(id)arg2 completionHandler:(id /* block */)arg3;
-- (id)resourcePublishTaskForResource:(id)arg1 transportScope:(id)arg2 completionHandler:(id /* block */)arg3;
 - (id)resourcesDownloadTaskWithCompletionHandler:(id /* block */)arg1;
 - (id)scopeNameForTransportScope:(id)arg1;
 - (id)sendFeedbackTaskForMessages:(id)arg1 completionHandler:(id /* block */)arg2;

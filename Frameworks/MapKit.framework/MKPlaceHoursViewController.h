@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MapKit.framework/MapKit
  */
 
-@interface MKPlaceHoursViewController : MKPlaceSectionViewController <MKModuleViewControllerProtocol, MKStackingViewControllerFixedHeightAware, _MKInfoCardChildViewControllerAnalyticsDelegate> {
+@interface MKPlaceHoursViewController : MKPlaceSectionViewController <MKInfoCardThemeListener, MKModuleViewControllerProtocol, MKStackingViewControllerFixedHeightAware, _MKInfoCardChildViewControllerAnalyticsDelegate> {
     <_MKInfoCardAnalyticsDelegate> * _analyticsDelegate;
     NSArray * _businessHours;
     MKPlaceSectionHeaderView * _headerView;
@@ -24,6 +24,7 @@
 + (id)placeHoursWithMapItem:(id)arg1;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_contentSizeDidChange;
 - (void)_setExpanded:(bool)arg1;
 - (bool)_shouldOnlyShowExpanded;
@@ -33,7 +34,8 @@
 - (id)businessHours;
 - (id)hoursBuilderWithHours:(id)arg1;
 - (id)infoCardChildPossibleActions;
-- (void)infoCardThemeChanged:(id)arg1;
+- (id)infoCardChildUnactionableUIElements;
+- (void)infoCardThemeChanged;
 - (id)initWithMapItem:(id)arg1;
 - (id)mapItem;
 - (bool)resizableViewsDisabled;

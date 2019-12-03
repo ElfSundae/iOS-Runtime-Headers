@@ -10,12 +10,11 @@
     struct MFPColorMatrix { float x1[5][5]; } * mGrayMatrix;
     NSDictionary * mRecolorMap;
     float  mThreshold;
-    struct { 
-        OITSUColor *mLow; 
-        OITSUColor *mHigh; 
-    }  mTransparentRange;
+    OITSUColor * mTransparentRangeHigh;
+    OITSUColor * mTransparentRangeLow;
 }
 
+- (void).cxx_destruct;
 - (struct MFPColorMatrix { float x1[5][5]; }*)colorMatrix;
 - (int)colorMatrixFlags;
 - (void)dealloc;

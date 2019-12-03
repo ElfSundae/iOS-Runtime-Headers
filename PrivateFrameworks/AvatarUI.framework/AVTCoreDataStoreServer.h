@@ -20,7 +20,9 @@
     <AVTSyncSchedulingAuthority> * _schedulingAuthority;
     NSXPCStoreServer * _server;
     bool  _setupCompleted;
+    AVTStickerChangeObserver * _stickerChangeObserver;
     <AVTCoreDataStoreMaintenance> * _storeMaintenance;
+    id /* block */  _userRequestedBackupActivityCompletion;
 }
 
 @property (nonatomic, readonly) <AVTStoreBackend> *backend;
@@ -40,7 +42,9 @@
 @property (nonatomic, readonly) <AVTSyncSchedulingAuthority> *schedulingAuthority;
 @property (nonatomic, retain) NSXPCStoreServer *server;
 @property (nonatomic) bool setupCompleted;
+@property (nonatomic, readonly) AVTStickerChangeObserver *stickerChangeObserver;
 @property (nonatomic, readonly) <AVTCoreDataStoreMaintenance> *storeMaintenance;
+@property (nonatomic, copy) id /* block */ userRequestedBackupActivityCompletion;
 
 + (id)imageGeneratorForEnvironment:(id)arg1;
 + (bool)resetSyncShouldPreserveContentForReason:(unsigned long long)arg1;
@@ -52,13 +56,15 @@
 - (id)changeTracker;
 - (void)clientDidCheckInForServer:(id)arg1;
 - (void)completeMigrationActivityIfNeeded;
+- (void)completeUserRequestedBackupActivityIfNeeded;
 - (id)configuration;
 - (id)daemonServer;
+- (void)deleteStickerRecents;
 - (void)didReceivePushNotification:(id)arg1;
 - (id)environment;
 - (id)imageGenerator;
 - (id)initWithEnvironment:(id)arg1;
-- (id)initWithLocalBackend:(id)arg1 configuration:(id)arg2 migratorProvider:(id /* block */)arg3 pushSupport:(id)arg4 mirroringHandler:(id)arg5 schedulingAuthority:(id)arg6 remoteChangesObserver:(id)arg7 imageGenerator:(id)arg8 changeTracker:(id)arg9 daemonServer:(id)arg10 storeMaintenance:(id)arg11 backgroundQueue:(id)arg12 environment:(id)arg13;
+- (id)initWithLocalBackend:(id)arg1 configuration:(id)arg2 migratorProvider:(id /* block */)arg3 pushSupport:(id)arg4 mirroringHandler:(id)arg5 schedulingAuthority:(id)arg6 remoteChangesObserver:(id)arg7 imageGenerator:(id)arg8 stickerChangeObserver:(id)arg9 changeTracker:(id)arg10 daemonServer:(id)arg11 storeMaintenance:(id)arg12 backgroundQueue:(id)arg13 environment:(id)arg14;
 - (id)logger;
 - (void)migrate;
 - (id /* block */)migrationActivityCompletion;
@@ -80,10 +86,13 @@
 - (void)setMigrationActivityCompletion:(id /* block */)arg1;
 - (void)setServer:(id)arg1;
 - (void)setSetupCompleted:(bool)arg1;
+- (void)setUserRequestedBackupActivityCompletion:(id /* block */)arg1;
 - (bool)setupCompleted;
 - (void)setupThen:(id /* block */)arg1;
 - (void)startListening;
+- (id)stickerChangeObserver;
 - (id)storeMaintenance;
 - (void)updateThumbnails;
+- (id /* block */)userRequestedBackupActivityCompletion;
 
 @end

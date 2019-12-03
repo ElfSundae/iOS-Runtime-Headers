@@ -40,7 +40,7 @@
         } pthread; 
     }  _mutex;
     unsigned int  _nlink;
-    int  _openRefCount;
+    _Atomic int  _openRefCount;
     unsigned long long  _parentFileID;
     unsigned int  _qtnResolved;
     NSData * _quarantineInfo;

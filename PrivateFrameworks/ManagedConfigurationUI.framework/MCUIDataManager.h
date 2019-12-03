@@ -11,6 +11,7 @@
     NSArray * _freeDeveloperAppSigners;
     MCProfileInfo * _mdmProfileInfo;
     NSObject<OS_dispatch_queue> * _memberQueue;
+    bool  _observing;
     int  _provisioningProfileInstalledToken;
     int  _provisioningProfileRemovedToken;
     NSObject<OS_dispatch_queue> * _reloadQueue;
@@ -28,6 +29,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) MCProfileInfo *mdmProfileInfo;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *memberQueue;
+@property (nonatomic) bool observing;
 @property (nonatomic) int provisioningProfileInstalledToken;
 @property (nonatomic) int provisioningProfileRemovedToken;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *reloadQueue;
@@ -40,6 +42,8 @@
 - (void).cxx_destruct;
 - (void)_reloadQueueReloadDataInBackgroundIncludingProfiles:(bool)arg1 appSigners:(bool)arg2 blockedApplications:(bool)arg3 completion:(id /* block */)arg4;
 - (void)allDeviceManagementOutMDMProfileInfo:(id*)arg1 outConfigurationProfilesInfo:(id*)arg2 outUninstalledProfilesInfo:(id*)arg3 outEnterpriseAppSigners:(id*)arg4 outFreeDevAppSigners:(id*)arg5 outBlockedApplications:(id*)arg6;
+- (void)appMovedToBackground:(id)arg1;
+- (void)appMovedToForeground:(id)arg1;
 - (unsigned long long)appSignerCount;
 - (id)appWorkspace;
 - (void)applicationsDidInstall:(id)arg1;
@@ -58,6 +62,7 @@
 - (id)mdmProfile;
 - (id)mdmProfileInfo;
 - (id)memberQueue;
+- (bool)observing;
 - (void)profilesChanged:(id)arg1;
 - (int)provisioningProfileInstalledToken;
 - (int)provisioningProfileRemovedToken;
@@ -74,6 +79,7 @@
 - (void)setFreeDeveloperAppSigners:(id)arg1;
 - (void)setMdmProfileInfo:(id)arg1;
 - (void)setMemberQueue:(id)arg1;
+- (void)setObserving:(bool)arg1;
 - (void)setProvisioningProfileInstalledToken:(int)arg1;
 - (void)setProvisioningProfileRemovedToken:(int)arg1;
 - (void)setReloadQueue:(id)arg1;

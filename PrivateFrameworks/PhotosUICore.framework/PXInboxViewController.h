@@ -34,10 +34,10 @@
     }  _visibleContentRect;
 }
 
-@property (nonatomic, readonly) const struct __CFString { }*accessoryButtonEventTrackerKey;
 @property (nonatomic, readonly) NSString *accessoryButtonTitle;
 @property (nonatomic, readonly) unsigned long long accessoryButtonType;
 @property (nonatomic, retain) PXInboxTableViewCellLayoutCoordinator *cellLayoutCoordinator;
+@property (nonatomic, readonly) Class collectionViewItemClass;
 @property (nonatomic) double currentRowHeight;
 @property (nonatomic, retain) PXInboxAggregateDataSource *dataSource;
 @property (nonatomic) struct _NSRange { unsigned long long x1; unsigned long long x2; } dataSourceIndexRange;

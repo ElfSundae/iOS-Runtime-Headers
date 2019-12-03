@@ -10,7 +10,6 @@
 - (void)assistantConnection:(AFConnection *)arg1 didChangeAudioSessionID:(unsigned int)arg2;
 - (void)assistantConnection:(AFConnection *)arg1 didFinishAcousticIDRequestWithSuccess:(bool)arg2;
 - (void)assistantConnection:(AFConnection *)arg1 didHandleQuickStopWithAction:(unsigned long long)arg2;
-- (void)assistantConnection:(AFConnection *)arg1 didNotStartAudioPlaybackRequest:(AFAudioPlaybackRequest *)arg2 error:(NSError *)arg3;
 - (void)assistantConnection:(AFConnection *)arg1 didStartAudioPlaybackRequest:(AFAudioPlaybackRequest *)arg2;
 - (void)assistantConnection:(AFConnection *)arg1 didStopAudioPlaybackRequest:(AFAudioPlaybackRequest *)arg2 error:(NSError *)arg3;
 - (void)assistantConnection:(AFConnection *)arg1 extensionRequestFinishedForApplication:(NSString *)arg2 error:(NSError *)arg3;
@@ -25,6 +24,7 @@
 - (void)assistantConnection:(void *)arg1 startUIRequestWithText:(void *)arg2 completion:(void *)arg3; // needs 3 arg types, found 8: AFConnection *, NSString *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, void*
 - (void)assistantConnection:(AFConnection *)arg1 wantsToCacheImage:(INImage *)arg2;
 - (void)assistantConnection:(AFConnection *)arg1 willProcessStartPlayback:(long long)arg2;
+- (void)assistantConnection:(void *)arg1 willProcessStartPlayback:(void *)arg2 intent:(void *)arg3 completion:(void *)arg4; // needs 4 arg types, found 10: AFConnection *, long long, INIntent *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, bool, void*
 - (void)assistantConnection:(AFConnection *)arg1 willStartAudioPlaybackRequest:(AFAudioPlaybackRequest *)arg2;
 - (void)assistantConnectionAudioSessionDidBeginInterruption:(AFConnection *)arg1;
 - (void)assistantConnectionAudioSessionDidEndInterruption:(AFConnection *)arg1 shouldResume:(bool)arg2;

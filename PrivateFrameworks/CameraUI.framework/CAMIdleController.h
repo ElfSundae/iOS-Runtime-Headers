@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CameraUI.framework/CameraUI
  */
 
-@interface CAMIdleController : NSObject <CAMPanoramaCaptureRequestDelegate, CAMStillImageCaptureRequestDelegate, CAMVideoCaptureRequestDelegate> {
+@interface CAMIdleController : NSObject <CAMPanoramaCaptureRequestDelegate, CAMStillImageCaptureRequestDelegate, CAMStillImageCapturingVideoDelegate, CAMVideoCaptureRequestDelegate> {
     NSTimer * _enableIdleTimer;
     bool  _updatingIdleTimer;
 }
@@ -29,9 +29,11 @@
 - (id)init;
 - (bool)isUpdatingIdleTimer;
 - (void)panoramaRequestDidStartCapturing:(id)arg1;
-- (void)panoramaRequestDidStopCapturing:(id)arg1;
+- (void)panoramaRequestDidStopCapturing:(id)arg1 interrupted:(bool)arg2;
 - (void)startUpdatingIdleTimer;
-- (void)stillImageRequestDidStopCapturing:(id)arg1;
+- (void)stillImageRequestDidStopCapturingStillImage:(id)arg1;
+- (void)stillImageRequestWillStartCapturingCTMVideoWithCaptureInFlight:(bool)arg1;
+- (void)stillImageRequestsDidStopCapturingCTMVideo;
 - (void)stopUpdatingIdleTimer;
 - (void)timelapseRequestDidResumeCapturing;
 - (void)timelapseRequestDidStartCapturing;

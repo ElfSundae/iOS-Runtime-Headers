@@ -9,10 +9,10 @@
     OADThemeOverrides * mThemeOverrides;
 }
 
+- (void).cxx_destruct;
 - (id)colorMap;
 - (id)colorMapOverride;
 - (id)colorScheme;
-- (void)dealloc;
 - (id)defaultTextListStyle;
 - (id)description;
 - (void)doneWithContent;

@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface INPaymentAccount : NSObject <NSCopying, NSSecureCoding> {
+@interface INPaymentAccount : NSObject <INJSONSerializable, NSCopying, NSSecureCoding> {
     NSString * _accountNumber;
     long long  _accountType;
     INBalanceAmount * _balance;
@@ -14,17 +14,23 @@
 @property (nonatomic, readonly, copy) NSString *accountNumber;
 @property (nonatomic, readonly) long long accountType;
 @property (nonatomic, readonly, copy) INBalanceAmount *balance;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) INSpeakableString *nickname;
 @property (nonatomic, readonly, copy) INSpeakableString *organizationName;
 @property (nonatomic, readonly, copy) INBalanceAmount *secondaryBalance;
+@property (readonly) Class superclass;
 
 // Image: /System/Library/Frameworks/Intents.framework/Intents
 
++ (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
-- (id)_intents_readableDescriptionForLanguage:(id)arg1;
+- (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
+- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
 - (id)accountNumber;
 - (long long)accountType;
 - (id)balance;

@@ -52,8 +52,6 @@
 @property (nonatomic) bool wantsWhiteBackgroundBeyondLeftEdgeWhenBouncing;
 @property (nonatomic) bool wantsWhiteBackgroundBeyondRightEdgeWhenBouncing;
 
-// Image: /System/Library/PrivateFrameworks/StoreKitUI.framework/StoreKitUI
-
 - (void).cxx_destruct;
 - (bool)_configureSegment:(id)arg1 forViewController:(id)arg2;
 - (id)_indexPathOfFocusedItemAllowingLayoutIfNeeded:(bool)arg1;
@@ -117,10 +115,5 @@
 - (void)viewDidLoad;
 - (bool)wantsWhiteBackgroundBeyondLeftEdgeWhenBouncing;
 - (bool)wantsWhiteBackgroundBeyondRightEdgeWhenBouncing;
-
-// Image: /System/Library/PrivateFrameworks/FuseUI.framework/FuseUI
-
-- (id)music_reportingFeatureName;
-- (id)music_reportingRecommendationData;
 
 @end

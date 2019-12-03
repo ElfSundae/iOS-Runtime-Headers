@@ -2,60 +2,54 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXActionMenuController : NSObject <PXActionPerformerDelegate, PXChangeObserver> {
-    NSArray * _actionTypes;
-    NSArray * _actions;
-    PXPhotoKitAssetActionManager * _assetActionManager;
-    PXPhotoKitAssetCollectionActionManager * _assetCollectionActionManager;
+@interface PXActionMenuController : NSObject <PXActionPerformerDelegate> {
+    NSArray * _actionManagers;
+    bool  _actionsNeedsUpdate;
+    NSArray * _activityActions;
+    NSArray * _alertActionTypes;
+    NSArray * _alertActionViewControllers;
+    NSArray * _alertActions;
     <PXActionMenuDelegate> * _delegate;
     NSSet * _disabledActionTypes;
     NSSet * _excludedActionTypes;
-    struct { 
-        bool action; 
-    }  _needsUpdateFlags;
-    PHFetchResult * _people;
-    PXCMMSendBackSuggestionSource * _sendBackSuggestionSource;
 }
 
-@property (nonatomic, retain) NSArray *actionTypes;
-@property (nonatomic, retain) NSArray *actions;
-@property (nonatomic, readonly) PXPhotoKitAssetActionManager *assetActionManager;
-@property (nonatomic, readonly) PXPhotoKitAssetCollectionActionManager *assetCollectionActionManager;
+@property (nonatomic, readonly) NSArray *actionManagers;
+@property (nonatomic, readonly) NSArray *activityActions;
+@property (nonatomic, readonly) NSArray *alertActionTypes;
+@property (nonatomic, readonly) NSArray *alertActionViewControllers;
+@property (nonatomic, readonly) NSArray *alertActions;
+@property (nonatomic, readonly) UIAlertController *alertController;
+@property (nonatomic, readonly) NSArray *availableActionTypes;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <PXActionMenuDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, copy) NSSet *disabledActionTypes;
 @property (nonatomic, copy) NSSet *excludedActionTypes;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) PHFetchResult *people;
-@property (nonatomic, retain) PXCMMSendBackSuggestionSource *sendBackSuggestionSource;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_availableActionTypes;
-- (void)_invalidateActions;
 - (void)_updateActionsIfNeeded;
+- (id)actionManagers;
 - (void)actionPerformer:(id)arg1 didChangeState:(unsigned long long)arg2;
 - (bool)actionPerformer:(id)arg1 dismissViewController:(struct NSObject { Class x1; }*)arg2 completionHandler:(id /* block */)arg3;
 - (bool)actionPerformer:(id)arg1 presentViewController:(struct NSObject { Class x1; }*)arg2;
-- (id)actionTypes;
-- (id)actions;
-- (id)assetActionManager;
-- (id)assetCollectionActionManager;
+- (id)activityActions;
+- (id)alertActionTypes;
+- (id)alertActionViewControllers;
+- (id)alertActions;
+- (id)alertController;
+- (id)availableActionTypes;
 - (id)delegate;
 - (id)disabledActionTypes;
 - (id)excludedActionTypes;
 - (id)init;
-- (id)initWithSelectionManager:(id)arg1 displayTitleInfo:(id)arg2;
-- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void*)arg3;
-- (id)people;
-- (id)sendBackSuggestionSource;
-- (void)setActionTypes:(id)arg1;
-- (void)setActions:(id)arg1;
+- (id)initWithActionManagers:(id)arg1;
+- (void)invalidateActions;
 - (void)setDelegate:(id)arg1;
 - (void)setDisabledActionTypes:(id)arg1;
 - (void)setExcludedActionTypes:(id)arg1;
-- (void)setPeople:(id)arg1;
-- (void)setSendBackSuggestionSource:(id)arg1;
+- (bool)shouldAllowPerformanceOfActionType:(id)arg1;
 
 @end

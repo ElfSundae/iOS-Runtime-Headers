@@ -59,7 +59,7 @@
 - (id)keyEnumerator;
 - (void)largeDictionarySegmentDidBisectAtHash:(unsigned long long)arg1 segments:(id)arg2;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })lastRange;
-- (void)loadFromLargeDictionaryMessage:(const struct LargeDictionary { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Range> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; unsigned long long x7; unsigned long long x8; unsigned long long x9; unsigned int x10; bool x11; bool x12; }*)arg1 unarchiver:(id)arg2;
+- (void)loadFromLargeDictionaryMessage:(const struct LargeDictionary { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Range> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; unsigned long long x7; unsigned long long x8; unsigned long long x9; unsigned int x10; bool x11; bool x12; }*)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (unsigned long long)maxSegmentObjectCount;
 - (unsigned long long)maxSegmentSize;
@@ -72,7 +72,7 @@
 - (void)removeObjectForKey:(id)arg1;
 - (void)removeRangeAtSegmentIndex:(unsigned long long)arg1;
 - (void)saveToArchiver:(id)arg1;
-- (void)saveToLargeDictionaryMessage:(struct LargeDictionary { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Range> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; unsigned long long x7; unsigned long long x8; unsigned long long x9; unsigned int x10; bool x11; bool x12; }*)arg1 archiver:(id)arg2;
+- (void)saveToLargeDictionaryMessage:(struct LargeDictionary { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Range> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; unsigned long long x7; unsigned long long x8; unsigned long long x9; unsigned int x10; bool x11; bool x12; }*)arg1 archiver:(id)arg2;
 - (id)segmentAtIndex:(unsigned long long)arg1;
 - (unsigned long long)segmentCount;
 - (unsigned long long)segmentIndexForKeyHash:(unsigned long long)arg1;

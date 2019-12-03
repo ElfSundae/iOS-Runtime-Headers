@@ -52,6 +52,7 @@
     bool  _currentPlayerItemContainsRealDates;
     NSDate * _dateBeingSeekedTo;
     <TVPPlaybackDelegate> * _delegate;
+    AVQueuePlayer * _earlyAVQueuePlayer;
     NSMutableDictionary * _elapsedTimeObserverBlocks;
     long long  _errorBehavior;
     TVPExternalImagePlayer * _externalImagePlayer;
@@ -192,6 +193,7 @@
 @property (nonatomic) <TVPPlaybackDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) double duration;
+@property (nonatomic, retain) AVQueuePlayer *earlyAVQueuePlayer;
 @property (nonatomic, readonly) double elapsedTime;
 @property (nonatomic, retain) NSMutableDictionary *elapsedTimeObserverBlocks;
 @property (nonatomic) long long errorBehavior;
@@ -279,10 +281,13 @@
 + (void)removeTemporaryDownloadDirectory;
 + (id)savedPreferredAudioLanguageCode;
 + (void)setSavedPreferredAudioLanguageCode:(id)arg1;
++ (void)setShouldDeactivateAVAudioSession:(bool)arg1;
++ (bool)shouldDeactivateAVAudioSession;
 
 - (void).cxx_destruct;
 - (id /* block */)AVKitExternalImageScanningUpdateBlock;
 - (id)AVQueuePlayer;
+- (id)AVQueuePlayerCreateIfNecessary:(bool)arg1;
 - (id)HDCPStatusPollTimer;
 - (id)HDCPUnprotectedTooLongTimer;
 - (void)_HDCPStatusPollTimerFired:(id)arg1;
@@ -443,6 +448,7 @@
 - (id)delegate;
 - (double)duration;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })durationCMTime;
+- (id)earlyAVQueuePlayer;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })elapsedCMTime;
 - (double)elapsedTime;
 - (id)elapsedTimeObserverBlocks;
@@ -558,6 +564,7 @@
 - (void)setCurrentPlayerItemContainsRealDates:(bool)arg1;
 - (void)setDateBeingSeekedTo:(id)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setEarlyAVQueuePlayer:(id)arg1;
 - (void)setElapsedTime:(double)arg1;
 - (void)setElapsedTime:(double)arg1 orPlaybackDate:(id)arg2 withAVKitCompletion:(id /* block */)arg3;
 - (void)setElapsedTime:(double)arg1 precise:(bool)arg2;

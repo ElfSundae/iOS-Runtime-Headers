@@ -6,8 +6,8 @@
     OADCharacterProperties * mProperties;
 }
 
+- (void).cxx_destruct;
 - (unsigned long long)characterCount;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 - (bool)isEmpty;

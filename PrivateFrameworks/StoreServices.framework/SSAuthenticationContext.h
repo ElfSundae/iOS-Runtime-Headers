@@ -63,7 +63,7 @@
 @property (nonatomic, readonly) bool forceDaemonAuthentication;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) NSString *initialPassword;
-@property (readonly) NSString *logUUID;
+@property (nonatomic, readonly, copy) NSString *logUUID;
 @property (nonatomic, readonly, copy) NSString *okButtonLabel;
 @property (nonatomic, readonly, copy) NSString *password;
 @property (nonatomic, readonly, copy) NSString *passwordEquivalentToken;

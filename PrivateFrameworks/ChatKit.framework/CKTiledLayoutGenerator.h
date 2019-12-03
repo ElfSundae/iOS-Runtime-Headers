@@ -5,7 +5,7 @@
 @interface CKTiledLayoutGenerator : NSObject {
     long long  _cacheHeadLocation;
     long long  _cacheTailLocation;
-    /* Warning: unhandled array encoding: '[20@]' */ id  _cachedBatchID;
+    id  _cachedBatchID;
     struct { 
         long long index; 
         struct CGSize { 

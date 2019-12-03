@@ -30,6 +30,7 @@
 @property (nonatomic) bool shouldExcludeFromNavigationHistory;
 @property (nonatomic) bool shouldReplaceRootViewController;
 
+- (void).cxx_destruct;
 - (id)_initCommon;
 - (id)_newNavigationButtonsFromArray:(id)arg1;
 - (id)_newNavigationHistoryItemsFromArray:(id)arg1;
@@ -37,7 +38,6 @@
 - (id)allowedOrientations;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)copyright;
-- (void)dealloc;
 - (id)expectedClientIdentifiers;
 - (id)focusedItemIdentifier;
 - (id)init;

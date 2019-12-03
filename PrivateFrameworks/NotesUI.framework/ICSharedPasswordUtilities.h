@@ -8,10 +8,17 @@
 
 @property (nonatomic, retain) id displayedSheet;
 
++ (bool)accountPasswordExists;
++ (id)accountWithPassword:(id)arg1;
 + (bool)authenticateWithPassword:(id)arg1 forAccount:(id)arg2;
 + (bool)authenticateWithPassword:(id)arg1 forNote:(id)arg2;
++ (void)clearRecentPasswordChangeCountAsReset:(bool)arg1;
 + (id)createNoteFromNote:(id)arg1 isPasswordProtected:(bool)arg2 removingOriginalNote:(bool)arg3;
 + (id)defaultAccountForPasswordProtectedNotes;
++ (bool)hasAnyAccountWithPassword;
++ (bool)hasMultiplePasswordCapableAccounts;
++ (bool)hasSameCryptoKeyForNote:(id)arg1 andAccount:(id)arg2;
++ (void)incrementRecentPasswordChangeCountAsReset:(bool)arg1;
 + (bool)isAuthenticatedForAccount:(id)arg1;
 + (bool)isAuthenticatedForDefaultAccount;
 + (bool)isAuthenticatedForNote:(id)arg1;
@@ -19,26 +26,29 @@
 + (bool)isDefaultAccountForPasswordNotesiCloudAccount;
 + (bool)isPassword:(id)arg1 correctForAccount:(id)arg2;
 + (bool)isPassword:(id)arg1 correctForNote:(id)arg2;
-+ (bool)isSharedPasswordCorrect:(id)arg1;
++ (bool)isPasswordSetForAccount:(id)arg1;
 + (void)lockAllNotes;
 + (id)nonDeletedLockedNotesFromNotes:(id)arg1;
-+ (bool)passwordCapabableAccountExists;
++ (bool)passwordCapableAccountExists;
++ (id)passwordCapableAccounts;
++ (id)passwordChangeCountUserDefaultsKeyAsReset:(bool)arg1;
++ (id)preferredHintAccount;
++ (long long)recentPasswordChangeCountAsReset:(bool)arg1;
 + (void)resetAllSharedPasswords;
++ (void)resetPasswordForAccount:(id)arg1;
 + (void)resetTimeoutTimer;
-+ (bool)setSharedPassword:(id)arg1 hint:(id)arg2;
-+ (bool)setSharedPassword:(id)arg1 hint:(id)arg2 oldPassword:(id)arg3;
-+ (bool)sharedPasswordExists;
++ (bool)setPassword:(id)arg1 hint:(id)arg2 forAccount:(id)arg3;
++ (bool)setPassword:(id)arg1 hint:(id)arg2 oldPassword:(id)arg3 forAccount:(id)arg4;
 + (void)showFirstTimePasswordProtectNoteAlertForDisplayWindow:(struct UIWindow { Class x1; }*)arg1;
 + (void)showFirstTimePasswordProtectNoteAlertIfNecessaryForDisplayWindow:(struct UIWindow { Class x1; }*)arg1;
-+ (void)transferSharedPasswordIfNecessary;
 + (bool)unlockedNotesOrKeysExist;
-+ (void)updateAllNotesWithOldPassword:(id)arg1 toSharedPassword:(id)arg2 fromAccount:(id)arg3;
++ (void)updateAllNotesWithOldPassword:(id)arg1 toAccountPassword:(id)arg2 fromAccount:(id)arg3;
 
 - (void).cxx_destruct;
-- (void)_authenticateForNote:(id)arg1 intent:(unsigned long long)arg2 displayWindow:(struct UIWindow { Class x1; }*)arg3 completionHandler:(id /* block */)arg4;
+- (void)_authenticateForNote:(id)arg1 intent:(unsigned long long)arg2 displayWindow:(struct UIWindow { Class x1; }*)arg3 failedAttemptHandler:(id /* block */)arg4 completionHandler:(id /* block */)arg5;
 - (void)_recursivelyAuthenticateForNotes:(id)arg1 intent:(unsigned long long)arg2 displayWindow:(struct UIWindow { Class x1; }*)arg3 completionHandler:(id /* block */)arg4;
 - (void)authenticateForDeletingNotes:(id)arg1 displayWindow:(struct UIWindow { Class x1; }*)arg2 completionHandler:(id /* block */)arg3;
-- (void)authenticateForNote:(id)arg1 intent:(unsigned long long)arg2 displayWindow:(struct UIWindow { Class x1; }*)arg3 completionHandler:(id /* block */)arg4;
+- (void)authenticateForNote:(id)arg1 intent:(unsigned long long)arg2 displayWindow:(struct UIWindow { Class x1; }*)arg3 failedAttemptHandler:(id /* block */)arg4 completionHandler:(id /* block */)arg5;
 - (void)authenticateForNotes:(id)arg1 intent:(unsigned long long)arg2 displayWindow:(struct UIWindow { Class x1; }*)arg3 completionHandler:(id /* block */)arg4;
 - (void)authenticateIfNecessaryForDeletingNotes:(id)arg1 displayWindow:(struct UIWindow { Class x1; }*)arg2 completionHandler:(id /* block */)arg3;
 - (void)authenticatePasswordForDeletingNotes:(id)arg1 displayWindow:(struct UIWindow { Class x1; }*)arg2 completionHandler:(id /* block */)arg3;
@@ -48,7 +58,7 @@
 - (id)displayedSheet;
 - (id)init;
 - (void)setDisplayedSheet:(id)arg1;
-- (void)showPasswordEntrySheetWithIntent:(unsigned long long)arg1 note:(id)arg2 displayWindow:(struct UIWindow { Class x1; }*)arg3 completionHandler:(id /* block */)arg4;
+- (void)showPasswordEntrySheetWithIntent:(unsigned long long)arg1 note:(id)arg2 displayWindow:(struct UIWindow { Class x1; }*)arg3 failedAttemptHandler:(id /* block */)arg4 completionHandler:(id /* block */)arg5;
 - (void)showPasswordSetUpSheetForAccount:(id)arg1 displayWindow:(struct UIWindow { Class x1; }*)arg2 completionHandler:(id /* block */)arg3;
 
 @end

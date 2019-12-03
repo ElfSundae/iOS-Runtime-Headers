@@ -28,7 +28,6 @@
 
 - (void).cxx_destruct;
 - (id)_legibilitySettings;
-- (void)_updateAppearance;
 - (void)_updateAppearanceAndNotify:(bool)arg1;
 - (bool)allowsControlCenter;
 - (bool)allowsLockScreenCamera;

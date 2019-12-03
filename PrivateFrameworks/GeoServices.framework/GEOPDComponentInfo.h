@@ -6,12 +6,12 @@
     unsigned int  _count;
     GEOPDComponentFilter * _filter;
     struct { 
-        unsigned int count : 1; 
-        unsigned int startIndex : 1; 
-        unsigned int type : 1; 
-        unsigned int urgency : 1; 
-        unsigned int includeSource : 1; 
-    }  _has;
+        unsigned int has_count : 1; 
+        unsigned int has_startIndex : 1; 
+        unsigned int has_type : 1; 
+        unsigned int has_urgency : 1; 
+        unsigned int has_includeSource : 1; 
+    }  _flags;
     bool  _includeSource;
     unsigned int  _startIndex;
     int  _type;
@@ -33,9 +33,12 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic) int urgency;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
 - (int)StringAsUrgency:(id)arg1;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned int)count;
@@ -53,6 +56,7 @@
 - (id)initWithType:(int)arg1 count:(unsigned int)arg2;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setCount:(unsigned int)arg1;
 - (void)setFilter:(id)arg1;

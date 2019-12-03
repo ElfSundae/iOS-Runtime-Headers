@@ -10,9 +10,11 @@
     NSMutableDictionary * _inFlightCalendarAvailabilityRequests;
     NSMutableDictionary * _inFlightCalendarDirectorySearches;
     NSMutableDictionary * _inFlightFolderChanges;
+    NSMutableDictionary * _inFlightGrantedDelegatesListRequests;
     NSMutableDictionary * _inFlightOofSettingsRequests;
     NSMutableDictionary * _inFlightSearchQueries;
     NSMutableDictionary * _inFlightShareRequests;
+    NSMutableDictionary * _inFlightUpdateGrantedDelegatePermissionRequests;
     NSObject<OS_dispatch_queue> * _muckingWithConn;
     NSObject<OS_dispatch_queue> * _muckingWithInFlightCollections;
     bool  _registered;
@@ -31,6 +33,7 @@
 - (void)_calendarDirectorySearchFinished:(id)arg1;
 - (void)_calendarDirectorySearchReturnedResults:(id)arg1;
 - (void)_cancelDownloadsWithIDs:(id)arg1 error:(id)arg2;
+- (bool)_checkInvalidIdExistsInXPCRely:(id)arg1;
 - (id)_connection;
 - (id)_createReplyToRequest:(id)arg1 withProperties:(id)arg2;
 - (void)_dispatchMessage:(id)arg1;
@@ -39,7 +42,11 @@
 - (void)_folderChangeFinished:(id)arg1;
 - (void)_foldersUpdated:(id)arg1;
 - (void)_getStatusReportsFromClient:(id)arg1;
+- (void)_grantedDelegatesListRequestFinished:(id)arg1;
 - (id)_init;
+- (void)_initializeConnection;
+- (void)_initializeConnectionWithXPCEndpoint:(id)arg1;
+- (void)_initializeXPCConnection:(id)arg1;
 - (void)_logDataAccessStatus:(id)arg1;
 - (void)_oofSettingsRequestsFinished:(id)arg1;
 - (bool)_performOofSettingsRequest:(id)arg1 forAccountWithID:(id)arg2 forUpdate:(bool)arg3;
@@ -53,6 +60,7 @@
 - (void)_serverDiedWithReason:(id)arg1;
 - (void)_shareResponseFinished:(id)arg1;
 - (void)_tearDownInFlightObjects;
+- (void)_updateGrantedDelegatePermissionRequestFinished:(id)arg1;
 - (bool)_validateXPCReply:(id)arg1;
 - (id)activeSyncDeviceIdentifier;
 - (void)asyncProcessMeetingRequests:(id)arg1 deliveryIdsToClear:(id)arg2 deliveryIdsToSoftClear:(id)arg3 inFolderWithId:(id)arg4 forAccountWithId:(id)arg5;
@@ -60,6 +68,7 @@
 - (void)cancelCalendarAvailabilityRequestWithID:(id)arg1;
 - (void)cancelCalendarDirectorySearchWithID:(id)arg1;
 - (void)cancelDownloadingAttachmentWithDownloadID:(id)arg1 error:(id)arg2;
+- (void)cancelGrantedDelegatesListRequestWithID:(id)arg1;
 - (void)cancelServerContactsSearch:(id)arg1;
 - (id)currentPolicyKeyForAccountID:(id)arg1;
 - (void)dealloc;
@@ -85,6 +94,7 @@
 - (void)requestDaemonStartMonitoringAgentsWithToken:(unsigned long long)arg1;
 - (unsigned long long)requestDaemonStopMonitoringAgents;
 - (unsigned long long)requestDaemonStopMonitoringAgentsSync;
+- (id)requestGrantedDelegatesListForAccountID:(id)arg1 resultsBlock:(id /* block */)arg2;
 - (bool)requestPolicyUpdateForAccountID:(id)arg1;
 - (void)resetTimersAndWarnings;
 - (void)respondToSharedCalendarInvite:(long long)arg1 forCalendarWithID:(id)arg2 accountID:(id)arg3 queue:(id)arg4 completionBlock:(id /* block */)arg5;
@@ -104,6 +114,7 @@
 - (bool)updateFolderListForAccountID:(id)arg1 andDataclasses:(long long)arg2;
 - (bool)updateFolderListForAccountID:(id)arg1 andDataclasses:(long long)arg2 isUserRequested:(bool)arg3;
 - (bool)updateFolderListForAccountID:(id)arg1 andDataclasses:(long long)arg2 requireChangedFolders:(bool)arg3 isUserRequested:(bool)arg4;
+- (id)updateGrantedDelegatePermissionForAccountID:(id)arg1 grantedDelegate:(id)arg2 resultsBlock:(id /* block */)arg3;
 - (bool)updateOofSettingsRequest:(id)arg1 forAccountWithID:(id)arg2;
 - (bool)watchFoldersWithKeys:(id)arg1 forAccountID:(id)arg2;
 - (bool)watchFoldersWithKeys:(id)arg1 forAccountID:(id)arg2 persistent:(bool)arg3;

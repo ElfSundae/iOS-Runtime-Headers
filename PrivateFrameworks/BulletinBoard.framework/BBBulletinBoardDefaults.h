@@ -5,6 +5,8 @@
 @interface BBBulletinBoardDefaults : BSAbstractDefaultDomain
 
 @property (nonatomic) long long globalContentPreviewSetting;
+@property (nonatomic) long long globalSpokenNotificationSetting;
+@property (getter=isSpokenNotificationsSupported, nonatomic) bool spokenNotificationsSupported;
 
 + (id)standardDefaults;
 

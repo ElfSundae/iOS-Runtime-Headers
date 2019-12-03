@@ -2,13 +2,15 @@
    Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
  */
 
-@interface GEONavigationListener : NSObject <GEONavigationServerObserverXPCInterface> {
+@interface GEONavigationListener : NSObject <GEONavigationServerListenerXPCInterface> {
     id /* block */  _activeRouteDetailsDataUpdatedHandler;
     NSXPCConnection * _connection;
     NSString * _currentRoadName;
     <GEONavigationListenerDelegate> * _delegate;
     id /* block */  _guidanceStateUpdatedHandler;
+    int  _navigationRoutePreviewToken;
     int  _navigationStartedToken;
+    unsigned long long  _navigationState;
     int  _navigationStoppedToken;
     id /* block */  _navigationVoiceVolumeUpdatedHandler;
     id /* block */  _positionFromDestinationUpdatedHandler;
@@ -20,6 +22,7 @@
     id /* block */  _stepIndexUpdatedHandler;
     id /* block */  _trafficIncidentAlertDetailsDataUpdatedHandler;
     id /* block */  _transitSummaryUpdatedHandler;
+    int  _transportType;
 }
 
 @property (nonatomic, copy) id /* block */ activeRouteDetailsDataUpdatedHandler;
@@ -29,6 +32,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, copy) id /* block */ guidanceStateUpdatedHandler;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) unsigned long long navigationState;
 @property (nonatomic, copy) id /* block */ navigationVoiceVolumeUpdatedHandler;
 @property (nonatomic, copy) id /* block */ positionFromDestinationUpdatedHandler;
 @property (nonatomic, copy) id /* block */ positionFromManeuverUpdatedHandler;
@@ -43,6 +47,7 @@
 - (void).cxx_destruct;
 - (void)_close;
 - (void)_connectToDaemonIfNeeded;
+- (unsigned long long)_listenerStateForSessionState:(unsigned long long)arg1;
 - (void)_notifyWithActiveRouteDetailsData:(id)arg1;
 - (void)_notifyWithGuidanceState:(id)arg1;
 - (void)_notifyWithNavigationVoiceVolume:(int)arg1;
@@ -62,7 +67,10 @@
 - (void)dealloc;
 - (id)delegate;
 - (id /* block */)guidanceStateUpdatedHandler;
+- (id)init;
 - (id)initWithQueue:(id)arg1;
+- (unsigned long long)navigationState;
+- (void)navigationStateChanged:(unsigned long long)arg1 transportType:(int)arg2;
 - (void)navigationUpdatedWithVoiceVolumeData:(id)arg1;
 - (id /* block */)navigationVoiceVolumeUpdatedHandler;
 - (id /* block */)positionFromDestinationUpdatedHandler;

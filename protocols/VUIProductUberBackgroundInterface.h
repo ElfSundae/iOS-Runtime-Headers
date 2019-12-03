@@ -8,9 +8,7 @@
 - (bool)isUberLayoutActive;
 - (void)setBannerOpacity:(double)arg1;
 - (void)setUberImageOffset:(double)arg1;
-- (void)setWhiteBannerOpacity:(double)arg1;
 - (struct CGSize { double x1; double x2; })size;
 - (double)topThreshold;
-- (long long)uberLayoutInterfaceStyle;
 
 @end

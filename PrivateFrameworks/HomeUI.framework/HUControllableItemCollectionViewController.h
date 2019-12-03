@@ -32,10 +32,12 @@
 
 - (void).cxx_destruct;
 - (id)_ancestorQuickControlPresentationHost;
+- (id)_childItemsForItem:(id)arg1;
 - (void)_handleApplicationWillResignActiveNotification:(id)arg1;
 - (void)_handleContextualGesture:(id)arg1;
 - (void)_handleReorderGesture:(id)arg1;
 - (bool)_hasTapActionForItem:(id)arg1;
+- (bool)_isMultiServiceAccessory:(id)arg1;
 - (id)_itemForServiceControlPresentationAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)_itemSetDidChange;
 - (void)_logUserMetricsAfterTapOfItem:(id)arg1;
@@ -49,6 +51,7 @@
 - (void)_updateReorderingGestureRecognizer;
 - (id)_visibleCellForItem:(id)arg1;
 - (id)actionSetExecutionFuturesKeyedByIdentifier;
+- (bool)allowsPresentationWithOnlySettings;
 - (bool)alwaysAllowReordering;
 - (id)ancestorQuickControlHostAtPresentationTime;
 - (bool)canBecomeFirstResponder;
@@ -76,7 +79,10 @@
 - (void)presentationCoordinator:(id)arg1 didEndPresentationWithContext:(id)arg2;
 - (void)presentationCoordinator:(id)arg1 didRecognizeTapForItem:(id)arg2;
 - (bool)presentationCoordinator:(id)arg1 shouldBeginInteractivePresentationWithTouchLocation:(struct CGPoint { double x1; double x2; })arg2;
+- (bool)presentationCoordinator:(id)arg1 shouldBeginPresentationWithContext:(id)arg2;
 - (void)presentationCoordinator:(id)arg1 willBeginPresentationWithContext:(id)arg2;
+- (void)presentationCoordinatorDidCancelDismissalTransition:(id)arg1;
+- (void)presentationCoordinatorWillBeginDismissalTransition:(id)arg1;
 - (id)quickControlPresentationContextForItem:(id)arg1 atIndexPath:(id)arg2;
 - (id)quickControlPresentationCoordinator;
 - (id)reorderGestureRecognizer;

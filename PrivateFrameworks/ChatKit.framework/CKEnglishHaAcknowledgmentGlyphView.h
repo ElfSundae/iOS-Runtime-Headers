@@ -3,16 +3,16 @@
  */
 
 @interface CKEnglishHaAcknowledgmentGlyphView : CKAcknowledgmentGlyphView {
-    UIImageView * _a1;
-    UIImageView * _a2;
-    UIImageView * _h1;
-    UIImageView * _h2;
+    CKAcknowledgmentGlyphImageView * _a1;
+    CKAcknowledgmentGlyphImageView * _a2;
+    CKAcknowledgmentGlyphImageView * _h1;
+    CKAcknowledgmentGlyphImageView * _h2;
 }
 
-@property (nonatomic, retain) UIImageView *a1;
-@property (nonatomic, retain) UIImageView *a2;
-@property (nonatomic, retain) UIImageView *h1;
-@property (nonatomic, retain) UIImageView *h2;
+@property (nonatomic, retain) CKAcknowledgmentGlyphImageView *a1;
+@property (nonatomic, retain) CKAcknowledgmentGlyphImageView *a2;
+@property (nonatomic, retain) CKAcknowledgmentGlyphImageView *h1;
+@property (nonatomic, retain) CKAcknowledgmentGlyphImageView *h2;
 
 - (void).cxx_destruct;
 - (id)a1;

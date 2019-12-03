@@ -24,7 +24,7 @@
 - (void).cxx_destruct;
 - (id)URL;
 - (bool)checkPassword:(id)arg1;
-- (bool)enumeratePackageEntriesWithZipArchive:(id)arg1 accessor:(id /* block */)arg2;
+- (bool)enumeratePackageEntriesWithZipArchive:(id)arg1 needsReadChannel:(bool)arg2 accessor:(id /* block */)arg3;
 - (bool)hasEntriesMatchingFilter:(id)arg1;
 - (id)init;
 - (id)initWithURL:(id)arg1 package:(id)arg2 fileCoordinatorDelegate:(id)arg3 preserveExtendedAttributes:(bool)arg4 error:(id*)arg5;

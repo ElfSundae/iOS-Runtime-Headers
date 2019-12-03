@@ -26,6 +26,7 @@
 - (void)beginPIPToPreviewAnimation;
 - (void)beginPreviewToPIPAnimation;
 - (void)cameraDidBecomeAvailableForUniqueID:(id)arg1;
+- (void)cameraZoomAvailabilityDidChange:(bool)arg1;
 - (void)captureDevicesChanged:(id)arg1;
 - (id)currentVideoEffect;
 - (id)delegate;
@@ -45,6 +46,8 @@
 - (id)localVideoLayer:(bool)arg1;
 - (void)pausePreview;
 - (id)preview;
+- (void)rampCameraZoomFactor:(double)arg1 withRate:(double)arg2;
+- (void)setCameraZoomFactor:(double)arg1;
 - (void)setCurrentVideoEffect:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setLocalCameraWithUID:(id)arg1;

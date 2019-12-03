@@ -22,6 +22,8 @@
     unsigned long long  _mdmDelayInterval;
     unsigned long long  _minimumSystemPartitionSize;
     unsigned long long  _msuPrepareSize;
+    NSString * _prerequisiteBuild;
+    NSString * _prerequisiteOS;
     NSString * _productBuildVersion;
     NSString * _productSystemName;
     NSString * _productVersion;
@@ -30,7 +32,9 @@
     NSDate * _releaseDate;
     NSString * _releaseType;
     NSData * _rsepDigest;
+    NSData * _rsepTBMDigest;
     NSData * _sepDigest;
+    NSData * _sepTBMDigest;
     NSString * _setupCritical;
     bool  _streamingZipCapable;
     NSDictionary * _systemPartitionPadding;
@@ -55,6 +59,8 @@
 @property (nonatomic) unsigned long long mdmDelayInterval;
 @property (nonatomic) unsigned long long minimumSystemPartitionSize;
 @property (getter=_msuPrepareSize, setter=_setMsuPrepareSize:, nonatomic) unsigned long long msuPrepareSize;
+@property (nonatomic, retain) NSString *prerequisiteBuild;
+@property (nonatomic, retain) NSString *prerequisiteOS;
 @property (nonatomic, retain) NSString *productBuildVersion;
 @property (nonatomic, retain) NSString *productSystemName;
 @property (nonatomic, retain) NSString *productVersion;
@@ -63,7 +69,9 @@
 @property (nonatomic, retain) NSDate *releaseDate;
 @property (nonatomic, retain) NSString *releaseType;
 @property (setter=setRSEPDigest:, nonatomic, retain) NSData *rsepDigest;
+@property (setter=setRSEPTBMDigest:, nonatomic, retain) NSData *rsepTBMDigest;
 @property (setter=setSEPDigest:, nonatomic, retain) NSData *sepDigest;
+@property (setter=setSEPTBMDigest:, nonatomic, retain) NSData *sepTBMDigest;
 @property (nonatomic, retain) NSString *setupCritical;
 @property (getter=_isStreamingZipCapable, setter=_setStreamingZipCapable:, nonatomic) bool streamingZipCapable;
 @property (nonatomic, retain) NSDictionary *systemPartitionPadding;
@@ -111,6 +119,8 @@
 - (unsigned long long)mdmDelayInterval;
 - (unsigned long long)minimumSystemPartitionSize;
 - (unsigned long long)preparationSize;
+- (id)prerequisiteBuild;
+- (id)prerequisiteOS;
 - (id)productBuildVersion;
 - (id)productSystemName;
 - (id)productVersion;
@@ -119,7 +129,9 @@
 - (id)releaseDate;
 - (id)releaseType;
 - (id)rsepDigest;
+- (id)rsepTBMDigest;
 - (id)sepDigest;
+- (id)sepTBMDigest;
 - (void)setAssetID:(id)arg1;
 - (void)setAutoDownloadAllowableForCellular:(bool)arg1;
 - (void)setAutoUpdateEnabled:(bool)arg1;
@@ -132,15 +144,19 @@
 - (void)setInstallationSize:(unsigned long long)arg1;
 - (void)setMdmDelayInterval:(unsigned long long)arg1;
 - (void)setMinimumSystemPartitionSize:(unsigned long long)arg1;
+- (void)setPrerequisiteBuild:(id)arg1;
+- (void)setPrerequisiteOS:(id)arg1;
 - (void)setProductBuildVersion:(id)arg1;
 - (void)setProductSystemName:(id)arg1;
 - (void)setProductVersion:(id)arg1;
 - (void)setPublisher:(id)arg1;
 - (void)setRSEPDigest:(id)arg1;
+- (void)setRSEPTBMDigest:(id)arg1;
 - (void)setRampEnabled:(bool)arg1;
 - (void)setReleaseDate:(id)arg1;
 - (void)setReleaseType:(id)arg1;
 - (void)setSEPDigest:(id)arg1;
+- (void)setSEPTBMDigest:(id)arg1;
 - (void)setSetupCritical:(id)arg1;
 - (void)setSystemPartitionPadding:(id)arg1;
 - (void)setUpdateType:(int)arg1;

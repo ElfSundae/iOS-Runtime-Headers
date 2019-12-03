@@ -3,12 +3,10 @@
  */
 
 @interface HKQuantityType : HKSampleType {
-    long long  _aggregationStyle;
     HKUnit * _canonicalUnit;
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
     }  _canonicalUnitLock;
-    NSString * _unitString;
 }
 
 @property (readonly) long long aggregationStyle;
@@ -20,8 +18,8 @@
 + (id)_quantityTypeWithCode:(long long)arg1;
 
 - (void).cxx_destruct;
-- (id)_initWithDefinition:(struct { long long x1; char *x2; char *x3; long long x4; char *x5; char *x6; }*)arg1;
-- (bool)_validateMetadata:(id)arg1 error:(id*)arg2;
+- (id)_initWithCode:(long long)arg1;
+- (bool)_validateMetadata:(id)arg1 sample:(id)arg2 error:(id*)arg3;
 - (long long)aggregationStyle;
 - (id)canonicalUnit;
 - (id)dimension;

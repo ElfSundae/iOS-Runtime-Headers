@@ -4,7 +4,6 @@
 
 @interface BWDepthConverterNode : BWNode {
     int  _baseRotationDegrees;
-    float  _baseline;
     NSDictionary * _cameraInfoByPortType;
     bool  _conversionAfterFilteringRequired;
     int  _depthAccuracy;
@@ -20,9 +19,9 @@
         float forwardOrders[8]; 
         float inverseOrders[8]; 
     }  _depthLensDistortionCorrectionDynamicPolynomial;
-    float  _depthPixelSizeInMicrons;
     <DepthProcessor> * _depthProcessor;
     NSString * _depthProcessorClassName;
+    float  _depthRelativePixelSizeInMicrons;
     struct __CVBuffer { } * _filteringInputBuffer;
     struct __CVBuffer { } * _filteringOutputBuffer;
     struct __CVBuffer { } * _filteringScaledYUVBuffer;
@@ -35,12 +34,14 @@
     }  _identityExtrinsicMatrix;
     struct { 
         /* Warning: Unrecognized filer type: ']' using 'void*' */ void*columns[4]; 
-    }  _infraredProjectorExtrinsicMatrix;
+    }  _infraredCameraExtrinsicMatrix;
+    float  _infraredCameraPixelSizeInMicrons;
     struct { 
         int width; 
         int height; 
     }  _inputDepthDimensions;
     bool  _mirroringEnabled;
+    BWStillImageNodeConfiguration * _nodeConfiguration;
     struct { 
         int width; 
         int height; 
@@ -64,8 +65,7 @@
 - (int)_computeConversionParametersFromSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 convertOptionsOut:(struct { unsigned int x1; float x2; float x3; unsigned int x4; bool x5; }*)arg2;
 - (int)_convertDepthDisparityToFloat_C:(struct __CVBuffer { }*)arg1 dst:(struct __CVBuffer { }*)arg2 options:(struct { unsigned int x1; float x2; float x3; unsigned int x4; bool x5; }*)arg3;
 - (int)_convertDepthDisparityToFloat_NEON:(struct __CVBuffer { }*)arg1 dst:(struct __CVBuffer { }*)arg2 options:(struct { unsigned int x1; float x2; float x3; unsigned int x4; bool x5; }*)arg3;
-- (int)_convertU16toFloatForImage_NEON:(struct __CVBuffer { }*)arg1 dst:(struct __CVBuffer { }*)arg2 options:(struct { unsigned int x1; float x2; float x3; unsigned int x4; bool x5; }*)arg3;
-- (id)_depthMetadataDictionaryFromDepthSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 orientation:(unsigned int)arg2 stillFilteringRequested:(bool)arg3;
+- (id)_depthMetadataDictionaryFromSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 orientation:(unsigned int)arg2 stillFilteringRequested:(bool)arg3;
 - (int)_loadAndConfigureDepthProcessorClass:(id)arg1;
 - (int)_parseCameraInfo;
 - (void)_updateOutputRequirements;
@@ -73,10 +73,9 @@
 - (int)convertToFloatAndRotate:(struct opaqueCMSampleBuffer { }*)arg1 inputSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg2 outputPixelBuffer:(struct __CVBuffer { }*)arg3;
 - (void)dealloc;
 - (void)didSelectFormat:(id)arg1 forInput:(id)arg2 forAttachedMediaKey:(id)arg3;
-- (int)filterBuffer:(struct __CVBuffer { }*)arg1 outputPixelBuffer:(struct __CVBuffer { }*)arg2 imageSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg3;
+- (int)filterBuffer:(struct __CVBuffer { }*)arg1 outputPixelBuffer:(struct __CVBuffer { }*)arg2 imageSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg3 depthSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg4;
 - (int)horizontalSensorBinningFactor;
-- (id)init;
-- (id)initWithCameraInfoByPortType:(id)arg1 sensorIDDictionary:(id)arg2 rgbPersonSegmentationEnabled:(bool)arg3 depthIsAlwaysHighQuality:(bool)arg4;
+- (id)initWithNodeConfiguration:(id)arg1 cameraInfoByPortType:(id)arg2 sensorIDDictionary:(id)arg3 rgbPersonSegmentationEnabled:(bool)arg4 depthIsAlwaysHighQuality:(bool)arg5;
 - (bool)mirroringEnabled;
 - (id)nodeSubType;
 - (id)nodeType;

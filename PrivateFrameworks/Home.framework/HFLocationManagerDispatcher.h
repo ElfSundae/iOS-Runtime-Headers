@@ -8,6 +8,7 @@
     CLLocationManager * _locationManager;
     NSHashTable * _locationObservers;
     NSMutableArray * _pendingAuthorizationStatusFutures;
+    NSObject<OS_dispatch_queue> * _queue;
 }
 
 @property (nonatomic, readonly) int authorizationStatus;
@@ -32,6 +33,7 @@
 - (int)authorizationStatus;
 - (id)authorizationStatusFuture;
 - (int)cachedAuthorizationStatus;
+- (void)dealloc;
 - (void)dispatchLocationManagerObserverMessage:(SEL)arg1 withBlock:(id /* block */)arg2 sender:(id)arg3;
 - (bool)hasInitializedAuthorizationStatus;
 - (id)init;

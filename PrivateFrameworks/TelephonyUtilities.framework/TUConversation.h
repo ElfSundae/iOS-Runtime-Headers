@@ -6,10 +6,13 @@
     NSUUID * _UUID;
     NSSet * _activeRemoteParticipants;
     bool  _audioEnabled;
+    NSString * _avcSessionIdentifier;
     long long  _avcSessionToken;
     TUContactsDataProvider * _contactsDataProvider;
     NSUUID * _groupUUID;
+    bool  _hasJoined;
     TUHandle * _initiator;
+    TUConversationMember * _localMember;
     bool  _locallyCreated;
     long long  _maxVideoDecodesAllowed;
     NSString * _messagesGroupName;
@@ -25,10 +28,13 @@
 @property (nonatomic, readonly) NSUUID *UUID;
 @property (nonatomic, copy) NSSet *activeRemoteParticipants;
 @property (getter=isAudioEnabled, nonatomic) bool audioEnabled;
+@property (nonatomic, copy) NSString *avcSessionIdentifier;
 @property (nonatomic) long long avcSessionToken;
 @property (nonatomic, readonly) TUContactsDataProvider *contactsDataProvider;
 @property (nonatomic, readonly) NSUUID *groupUUID;
+@property (getter=hasJoined, nonatomic) bool hasJoined;
 @property (nonatomic, retain) TUHandle *initiator;
+@property (nonatomic, retain) TUConversationMember *localMember;
 @property (getter=isLocallyCreated, nonatomic) bool locallyCreated;
 @property (nonatomic) long long maxVideoDecodesAllowed;
 @property (nonatomic, copy) NSString *messagesGroupName;
@@ -47,6 +53,7 @@
 - (void).cxx_destruct;
 - (id)UUID;
 - (id)activeRemoteParticipants;
+- (id)avcSessionIdentifier;
 - (long long)avcSessionToken;
 - (id)contactsDataProvider;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -54,6 +61,7 @@
 - (id)displayName;
 - (void)encodeWithCoder:(id)arg1;
 - (id)groupUUID;
+- (bool)hasJoined;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUUID:(id)arg1 groupUUID:(id)arg2;
@@ -65,6 +73,7 @@
 - (bool)isLocallyCreated;
 - (bool)isRepresentedByRemoteMembers:(id)arg1;
 - (bool)isVideoEnabled;
+- (id)localMember;
 - (long long)maxVideoDecodesAllowed;
 - (id)messagesGroupName;
 - (id)messagesGroupUUID;
@@ -74,8 +83,11 @@
 - (id)reportingHierarchyToken;
 - (void)setActiveRemoteParticipants:(id)arg1;
 - (void)setAudioEnabled:(bool)arg1;
+- (void)setAvcSessionIdentifier:(id)arg1;
 - (void)setAvcSessionToken:(long long)arg1;
+- (void)setHasJoined:(bool)arg1;
 - (void)setInitiator:(id)arg1;
+- (void)setLocalMember:(id)arg1;
 - (void)setLocallyCreated:(bool)arg1;
 - (void)setMaxVideoDecodesAllowed:(long long)arg1;
 - (void)setMessagesGroupName:(id)arg1;

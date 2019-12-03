@@ -30,10 +30,12 @@
 - (void)dealloc;
 - (void)declareStoreDead;
 - (bool)declaredDead;
-- (id)initForStore:(id)arg1 inCoordinator:(id)arg2;
+- (id)initForStore:(id)arg1;
+- (id)instantiateNewBackgroundContext;
 - (id)monitorGroup;
 - (id)monitoredCoordinator;
 - (id)monitoredStore;
+- (id)newBackgroundContextForMonitoredCoordinator;
 - (void)performBlock:(id /* block */)arg1;
 - (void)pfcloudstoremonitor_is_holding_your_store_open_waiting_for_cloudkit_activity_to_finish;
 - (id)retainedMonitoredCoordinator;

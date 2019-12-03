@@ -125,7 +125,6 @@
 - (id)reviewScreenBarsModelForAssetExplorerReviewScreenActionManager:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (unsigned long long)sourceType;
-- (void)videoEditViewController:(id)arg1 didFinishEditingSessionForAsset:(id)arg2 completed:(bool)arg3;
 - (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
 
 @end

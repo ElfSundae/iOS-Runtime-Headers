@@ -32,6 +32,11 @@
 
 + (id)sigmoidFunction;
 
+// Image: /System/Library/PrivateFrameworks/ActivityRingsUI.framework/ActivityRingsUI
+
+- (float)_reverseSolveForInput:(float)arg1;
+- (float)_slopeAt:(float)arg1;
+
 // Image: /System/Library/PrivateFrameworks/HomeUI.framework/HomeUI
 
 + (id)hu_functionWithAnimationCurve:(long long)arg1;

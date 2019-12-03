@@ -11,5 +11,7 @@
 - (void)keepDirty:(bool)arg1;
 - (bool)queuesRequestsIfBusy;
 - (void)setQueuesRequestsIfBusy:(bool)arg1;
+- (void)setSyncTimeout:(double)arg1;
+- (double)syncTimeout;
 
 @end

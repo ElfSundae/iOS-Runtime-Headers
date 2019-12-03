@@ -77,7 +77,7 @@
     double  _depthNear;
     double  _desiredZoomScale;
     VKDetachedNavGestureCameraBehavior * _detachedGestureBehavior;
-    struct Spring<double, 1, md::SpringType::Linear> { 
+    struct Spring<double, 1, mdc::SpringType::Linear> { 
         double _position; 
         double _velocity; 
         double _restingPosition; 
@@ -118,7 +118,7 @@
     struct Unit<RadianUnitDescription, double> { 
         double _value; 
     }  _headingMinDelta;
-    struct Spring<double, 1, md::SpringType::Angular> { 
+    struct Spring<double, 1, mdc::SpringType::Angular> { 
         double _position; 
         double _velocity; 
         double _restingPosition; 
@@ -156,6 +156,7 @@
         } _roll; 
     }  _lastCalculatedCameraFrame;
     unsigned long long  _lastTargetStyleIdentifier;
+    bool  _leftHanded;
     struct { 
         double latitude; 
         double longitude; 
@@ -181,7 +182,7 @@
     bool  _needsUpdate;
     float  _panReturnDelayTime;
     bool  _panning;
-    struct Spring<double, 1, md::SpringType::Linear> { 
+    struct Spring<double, 1, mdc::SpringType::Linear> { 
         double _position; 
         double _velocity; 
         double _restingPosition; 
@@ -189,6 +190,12 @@
         double _kDamper; 
     }  _pitchSpring;
     bool  _pitching;
+    struct VKEdgeInsets { 
+        float top; 
+        float left; 
+        float bottom; 
+        float right; 
+    }  _previousMapEdgeInsets;
     double  _previousUpdateTime;
     struct Coordinate3D<Radians, double> { 
         struct Unit<RadianUnitDescription, double> { 
@@ -230,8 +237,8 @@
         } altitude; 
     }  _routeFocusCoordinate;
     VKSceneConfiguration * _sceneConfiguration;
-    VKScreenCanvas<VKInteractiveMap><VKMapDataAccess> * _screenCanvas;
-    struct Spring<double, 2, md::SpringType::Linear> { 
+    VKScreenCanvas<VKInteractiveMap> * _screenCanvas;
+    struct Spring<double, 2, mdc::SpringType::Linear> { 
         struct Matrix<double, 2, 1> { 
             double _e[2]; 
         } _position; 
@@ -290,6 +297,7 @@
 }
 
 @property (nonatomic, readonly) double altitude;
+@property (nonatomic, readonly) struct AnimationRunner { struct MapEngine {} *x1; }*animationRunner;
 @property (nonatomic) long long baseDisplayRate;
 @property (nonatomic) struct { double x1; double x2; } centerCoordinate;
 @property (nonatomic) struct VKEdgeInsets { float x1; float x2; float x3; float x4; } clientFramingInsets;
@@ -301,11 +309,13 @@
 @property (nonatomic, readonly) bool isFullyPitched;
 @property (nonatomic, readonly) bool isPitched;
 @property (nonatomic, readonly) bool isRotated;
+@property (nonatomic, readonly) struct MapDataAccess { struct World {} *x1; unsigned char x2; id x3; struct CameraAccessInternal {} *x4; /* Warning: unhandled struct encoding: '{unique_ptr<md::CameraAccessCartographic' */ struct x5; }*mapDataAccess; /* unknown property attribute:  std::__1::default_delete<md::CameraAccessMunin> >=^{CameraAccessMunin}}}} */
 @property (nonatomic, readonly) GEOMapRegion *mapRegion;
 @property (nonatomic, readonly) double maxPitch;
 @property (nonatomic) double pitch;
+@property (nonatomic, readonly) struct RunLoopController { struct MapEngine {} *x1; long long x2; long long x3; }*runLoopController;
 @property (nonatomic) VKSceneConfiguration *sceneConfiguration;
-@property (nonatomic) VKScreenCanvas<VKInteractiveMap><VKMapDataAccess> *screenCanvas;
+@property (nonatomic) VKScreenCanvas<VKInteractiveMap> *screenCanvas;
 @property (readonly) Class superclass;
 @property (nonatomic) double zoomScale;
 
@@ -323,6 +333,7 @@
 - (void)_snapPitch;
 - (void)_updateDebugOverlay;
 - (void)_updateDebugText;
+- (void)_updateForAnimatedEdgeInsets;
 - (void)_updateObserverCouldZoomIn:(bool)arg1 couldZoomOut:(bool)arg2;
 - (void)_updateSceneStyles:(bool)arg1;
 - (bool)_updateSprings:(double)arg1;
@@ -333,6 +344,7 @@
 - (long long)baseDisplayRate;
 - (struct Unit<RadianUnitDescription, double> { double x1; })calculateHeading;
 - (struct Box<double, 2> { struct Matrix<double, 2, 1> { double x_1_1_1[2]; } x1; struct Matrix<double, 2, 1> { double x_2_1_1[2]; } x2; })calculateViewableScreenRect;
+- (struct Box<double, 2> { struct Matrix<double, 2, 1> { double x_1_1_1[2]; } x1; struct Matrix<double, 2, 1> { double x_2_1_1[2]; } x2; })calculateViewableScreenRectForEdgeInsets:(struct VKEdgeInsets { float x1; float x2; float x3; float x4; })arg1;
 - (struct CameraFrame<geo::Radians, double> { struct Coordinate3D<Radians, double> { struct Unit<RadianUnitDescription, double> { double x_1_2_1; } x_1_1_1; struct Unit<RadianUnitDescription, double> { double x_2_2_1; } x_1_1_2; struct Unit<MeterUnitDescription, double> { double x_3_2_1; } x_1_1_3; } x1; struct Unit<MeterUnitDescription, double> { double x_2_1_1; } x2; struct Unit<RadianUnitDescription, double> { double x_3_1_1; } x3; struct Unit<RadianUnitDescription, double> { double x_4_1_1; } x4; struct Unit<RadianUnitDescription, double> { double x_5_1_1; } x5; })cameraFrame;
 - (unsigned char)cameraHeadingType;
 - (bool)canEnter3DMode;
@@ -351,7 +363,7 @@
 - (void)edgeInsetsWillBeginAnimating;
 - (double)heading;
 - (id)init;
-- (id)initWithTaskContext:(struct shared_ptr<md::TaskContext> { struct TaskContext {} *x1; struct __shared_weak_count {} *x2; })arg1 device:(struct Device { int x1; struct shared_ptr<ggl::Device> { struct Device {} *x_2_1_1; struct __shared_weak_count {} *x_2_1_2; } x2; struct unique_ptr<md::SharedDeviceResources, std::__1::default_delete<md::SharedDeviceResources> > { struct __compressed_pair<md::SharedDeviceResources *, std::__1::default_delete<md::SharedDeviceResources> > { struct SharedDeviceResources {} *x_1_2_1; } x_3_1_1; } x3; }*)arg2;
+- (id)initWithTaskContext:(struct shared_ptr<md::TaskContext> { struct TaskContext {} *x1; struct __shared_weak_count {} *x2; })arg1 device:(struct Device { int x1; struct shared_ptr<ggl::Device> { struct Device {} *x_2_1_1; struct __shared_weak_count {} *x_2_1_2; } x2; struct unique_ptr<md::SharedDeviceResources, std::__1::default_delete<md::SharedDeviceResources> > { struct __compressed_pair<md::SharedDeviceResources *, std::__1::default_delete<md::SharedDeviceResources> > { struct SharedDeviceResources {} *x_1_2_1; } x_3_1_1; } x3; }*)arg2 mapDataAccess:(struct MapDataAccess { struct World {} *x1; unsigned char x2; id x3; struct CameraAccessInternal {} *x4; struct unique_ptr<md::CameraAccessCartographic, std::__1::default_delete<md::CameraAccessCartographic> > { struct __compressed_pair<md::CameraAccessCartographic *, std::__1::default_delete<md::CameraAccessCartographic> > { struct CameraAccessCartographic {} *x_1_2_1; } x_5_1_1; } x5; struct unique_ptr<md::CameraAccessGlobe, std::__1::default_delete<md::CameraAccessGlobe> > { struct __compressed_pair<md::CameraAccessGlobe *, std::__1::default_delete<md::CameraAccessGlobe> > { struct CameraAccessGlobe {} *x_1_2_1; } x_6_1_1; } x6; struct unique_ptr<md::CameraAccessMunin, std::__1::default_delete<md::CameraAccessMunin> > { struct __compressed_pair<md::CameraAccessMunin *, std::__1::default_delete<md::CameraAccessMunin> > { struct CameraAccessMunin {} *x_1_2_1; } x_7_1_1; } x7; }*)arg3 animationRunner:(struct AnimationRunner { struct MapEngine {} *x1; }*)arg4 runLoopController:(struct RunLoopController { struct MapEngine {} *x1; long long x2; long long x3; }*)arg5 cameraDelegate:(id)arg6;
 - (bool)isGesturing;
 - (bool)isPitchEnabled;
 - (bool)isRotateEnabled;
@@ -370,7 +382,7 @@
 - (void)puckAnimator:(id)arg1 updatedPosition:(const struct Coordinate3D<Radians, double> { struct Unit<RadianUnitDescription, double> { double x_1_1_1; } x1; struct Unit<RadianUnitDescription, double> { double x_2_1_1; } x2; struct Unit<MeterUnitDescription, double> { double x_3_1_1; } x3; }*)arg2 course:(const struct Unit<RadianUnitDescription, double> { double x1; }*)arg3;
 - (void)puckAnimator:(id)arg1 updatedTargetPosition:(const struct Coordinate3D<Radians, double> { struct Unit<RadianUnitDescription, double> { double x_1_1_1; } x1; struct Unit<RadianUnitDescription, double> { double x_2_1_1; } x2; struct Unit<MeterUnitDescription, double> { double x_3_1_1; } x3; }*)arg2;
 - (void)puckAnimatorDidStop:(id)arg1;
-- (struct Matrix<double, 2, 1> { double x1[2]; })puckScreenPixel;
+- (struct Matrix<double, 2, 1> { double x1[2]; })puckScreenPoint;
 - (void)resetSpringsToResting;
 - (struct CameraFrame<geo::Radians, double> { struct Coordinate3D<Radians, double> { struct Unit<RadianUnitDescription, double> { double x_1_2_1; } x_1_1_1; struct Unit<RadianUnitDescription, double> { double x_2_2_1; } x_1_1_2; struct Unit<MeterUnitDescription, double> { double x_3_2_1; } x_1_1_3; } x1; struct Unit<MeterUnitDescription, double> { double x_2_1_1; } x2; struct Unit<RadianUnitDescription, double> { double x_3_1_1; } x3; struct Unit<RadianUnitDescription, double> { double x_4_1_1; } x4; struct Unit<RadianUnitDescription, double> { double x_5_1_1; } x5; })restingCameraFrame;
 - (void)returnToPuck;
@@ -383,6 +395,7 @@
 - (void)setCamera:(id)arg1;
 - (void)setCameraFrame:(struct CameraFrame<geo::Radians, double> { struct Coordinate3D<Radians, double> { struct Unit<RadianUnitDescription, double> { double x_1_2_1; } x_1_1_1; struct Unit<RadianUnitDescription, double> { double x_2_2_1; } x_1_1_2; struct Unit<MeterUnitDescription, double> { double x_3_2_1; } x_1_1_3; } x1; struct Unit<MeterUnitDescription, double> { double x_2_1_1; } x2; struct Unit<RadianUnitDescription, double> { double x_3_1_1; } x3; struct Unit<RadianUnitDescription, double> { double x_4_1_1; } x4; struct Unit<RadianUnitDescription, double> { double x_5_1_1; } x5; })arg1;
 - (void)setClientFramingInsets:(struct VKEdgeInsets { float x1; float x2; float x3; float x4; })arg1;
+- (void)setEdgeInsets:(struct VKEdgeInsets { float x1; float x2; float x3; float x4; })arg1;
 - (void)setNavContext:(id)arg1;
 - (void)setSceneConfiguration:(id)arg1;
 - (void)setScreenCanvas:(id)arg1;
@@ -401,6 +414,7 @@
 - (void)stopSnappingAnimations;
 - (void)stylesheetDidChange;
 - (void)stylesheetDidReload;
+- (bool)tapAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (double)topDownMinimumZoomLevel;
 - (void)transferGestureState:(id)arg1;
 - (void)updateCameraState;

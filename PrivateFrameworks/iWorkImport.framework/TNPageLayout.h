@@ -52,6 +52,7 @@
 - (void)dealloc;
 - (id)dependentLayouts;
 - (id)dependentsOfTextLayout:(id)arg1;
+- (bool)descendersCannotClip;
 - (id)description;
 - (double)gapForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;
 - (id)headerFooterProvider;
@@ -81,7 +82,7 @@
 - (void)setSheet:(id)arg1;
 - (id)sheet;
 - (bool)shrinkTextToFit;
-- (void)storage:(id)arg1 didChangeRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 delta:(long long)arg3 broadcastKind:(int)arg4;
+- (void)storage:(id)arg1 didChangeRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 delta:(long long)arg3 broadcastKind:(unsigned long long)arg4;
 - (bool)textIsVertical;
 - (double)textScaleFactor;
 - (void)updateChildrenFromInfo;

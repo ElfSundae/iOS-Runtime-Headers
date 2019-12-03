@@ -6,12 +6,19 @@
 @required
 
 - (void)_decreaseQuoteLevelKeyCommandInvoked:(id)arg1;
-- (void)_didTapInsertPhotoInputAssistantButton:(id)arg1;
+- (void)_didTapCameraButton:(id)arg1;
+- (void)_didTapImportDocumentButton:(id)arg1;
+- (void)_didTapInsertDrawingOrMarkupButton:(id)arg1;
+- (void)_didTapInsertPhotoButton:(id)arg1;
+- (void)_didTapScanDocumentButton:(id)arg1;
 - (void)_increaseQuoteLevelKeyCommandInvoked:(id)arg1;
-- (UIBarButtonItemGroup *)_inputAssistantItemGroup;
-- (UIBarButtonItemGroup *)_mailComposeEditingInputAssistantGroup;
+- (UIBarButtonItemGroup *)_leadingInputAssistantItemGroup;
+- (UIBarButtonItemGroup *)_mailComposeEditingLeadingInputAssistantGroup;
+- (NSArray *)_mailComposeEditingTrailingInputAssistantGroups;
 - (void)_pasteAsQuotationKeyCommandInvoked:(id)arg1;
 - (void)_removeInlineAttachment:(MFAttachment *)arg1;
-- (void)_setInputAssistantItemGroup:(UIBarButtonItemGroup *)arg1;
+- (void)_setLeadingInputAssistantItemGroup:(UIBarButtonItemGroup *)arg1;
+- (void)_setTrailingInputAssistantItemGroups:(NSArray *)arg1;
+- (NSArray *)_trailingInputAssistantItemGroups;
 
 @end

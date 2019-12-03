@@ -9,7 +9,7 @@
     id  mVariant;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)formula;
 - (bool)hasPercentTime;
 - (id)init;

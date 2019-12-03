@@ -7,7 +7,7 @@
     unsigned long long  _index;
     unsigned long long  _mut;
     <NSFastEnumeration> * _obj;
-    /* Warning: unhandled array encoding: '[16@]' */ id  _objects;
+    id  _objects;
     id  _origObj;
     /* Warning: unhandled struct encoding: '{?="state"Q"itemsPtr"^@"mutationsPtr"^Q"extra"[5Q]}' */ struct { 
         unsigned long long state; 

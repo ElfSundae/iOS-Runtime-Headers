@@ -13,7 +13,6 @@
 @property (nonatomic, readonly) id feedbackJSON;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
-@property (nonatomic, readonly) bool requiresQueryId;
 @property (nonatomic, copy) NSArray *suggestions;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long timestamp;
@@ -29,7 +28,6 @@
 - (bool)isEqual:(id)arg1;
 - (id)jsonData;
 - (bool)readFrom:(id)arg1;
-- (bool)requiresQueryId;
 - (void)setSuggestions:(id)arg1;
 - (void)setTimestamp:(unsigned long long)arg1;
 - (id)suggestions;

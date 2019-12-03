@@ -35,6 +35,7 @@
 
 // Image: /System/Library/Frameworks/CoreData.framework/CoreData
 
+- (id)_keypathsForDerivedPropertyValidation:(id*)arg1;
 - (id)_mapKVCOperatorsToFunctionsInContext:(id)arg1;
 - (id)minimalFormInContext:(id)arg1;
 

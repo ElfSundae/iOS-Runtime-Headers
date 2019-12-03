@@ -36,6 +36,8 @@
 @property (getter=isAppleTVRoute, nonatomic, readonly) bool appleTVRoute;
 @property (nonatomic, readonly) NSArray *auxiliaryDevices;
 @property (nonatomic, readonly) NSDictionary *avRouteDescription;
+@property (getter=isB298Route, nonatomic, readonly) bool b298Route;
+@property (getter=isB419Route, nonatomic, readonly) bool b419Route;
 @property (getter=isB444Route, nonatomic, readonly) bool b444Route;
 @property (nonatomic, readonly) MPAVBatteryLevel *batteryLevel;
 @property (getter=isBeatsSoloRoute, nonatomic, readonly) bool beatsSoloRoute;
@@ -54,9 +56,13 @@
 @property (nonatomic, readonly) NSString *groupLeaderAirplayIdentifier;
 @property (nonatomic, readonly) NSString *groupUID;
 @property (getter=isH1Route, nonatomic, readonly) bool h1Route;
+@property (getter=isHeadphonesRoute, nonatomic, readonly) bool headphonesRoute;
 @property (getter=isHearingDeviceRoute, nonatomic, readonly) bool hearingDeviceRoute;
 @property (getter=isHomePodRoute, nonatomic, readonly) bool homePodRoute;
 @property (nonatomic, readonly) bool isDeviceRoute;
+@property (nonatomic, readonly) bool isSplitRoute;
+@property (getter=isLowLatencyRoute, nonatomic, readonly) bool lowLatencyRoute;
+@property (nonatomic, readonly) long long numberOfOutputDevices;
 @property (nonatomic, readonly) long long passwordType;
 @property (nonatomic, readonly) long long pickableRouteType;
 @property (getter=isPicked, nonatomic) bool picked;
@@ -74,7 +80,10 @@
 @property (nonatomic, readonly) long long routeType;
 @property (nonatomic, readonly) NSString *routeUID;
 @property (getter=isRoutingToWirelessDevice, nonatomic, readonly) bool routingToWirelessDevice;
+@property (getter=isShareableRoute, nonatomic, readonly) bool shareableRoute;
 @property (getter=isSmartAudio, nonatomic, readonly) bool smartAudio;
+@property (getter=isSplitRoute, nonatomic, readonly) bool splitRoute;
+@property (getter=isSplitterCapable, nonatomic, readonly) bool splitterCapable;
 @property (getter=isStereoPair, nonatomic, readonly) bool stereoPair;
 @property (nonatomic, readonly) bool supportsGrouping;
 @property (nonatomic, readonly) bool supportsRemoteControl;
@@ -84,8 +93,6 @@
 @property (getter=isW1Route, nonatomic, readonly) bool w1Route;
 @property (getter=isW2Route, nonatomic, readonly) bool w2Route;
 @property (nonatomic, retain) MPAVRoute *wirelessDisplayRoute;
-
-// Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
 
 + (bool)supportsSecureCoding;
 
@@ -111,6 +118,8 @@
 - (bool)isAirPlayingToDevice;
 - (bool)isAirpodsRoute;
 - (bool)isAppleTVRoute;
+- (bool)isB298Route;
+- (bool)isB419Route;
 - (bool)isB444Route;
 - (bool)isBeatsSoloRoute;
 - (bool)isBeatsStudioRoute;
@@ -121,20 +130,26 @@
 - (bool)isDisplayedAsPicked;
 - (bool)isEqual:(id)arg1;
 - (bool)isH1Route;
+- (bool)isHeadphonesRoute;
 - (bool)isHearingDeviceRoute;
 - (bool)isHomePodRoute;
+- (bool)isLowLatencyRoute;
 - (bool)isPicked;
 - (bool)isPickedOnPairedDevice;
 - (bool)isPlayingOnPairedDevice;
 - (bool)isPowerbeatsRoute;
 - (bool)isProxyGroupPlayer;
 - (bool)isRoutingToWirelessDevice;
+- (bool)isShareableRoute;
 - (bool)isSmartAudio;
+- (bool)isSplitRoute;
+- (bool)isSplitterCapable;
 - (bool)isStereoPair;
 - (bool)isTVRoute;
 - (bool)isVolumeControlAvailable;
 - (bool)isW1Route;
 - (bool)isW2Route;
+- (long long)numberOfOutputDevices;
 - (long long)passwordType;
 - (long long)pickableRouteType;
 - (id)playingPairedDeviceName;
@@ -155,10 +170,5 @@
 - (bool)supportsRemoteControl;
 - (bool)supportsWirelessDisplay;
 - (id)wirelessDisplayRoute;
-
-// Image: /System/Library/PrivateFrameworks/VoiceMemos.framework/VoiceMemos
-
-- (long long)rc_audioRouteType;
-- (bool)rc_shouldExpectFaceContact;
 
 @end

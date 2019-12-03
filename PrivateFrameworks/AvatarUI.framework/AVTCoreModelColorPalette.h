@@ -7,8 +7,8 @@
     long long  _colorCategory;
     NSArray * _extendedColors;
     NSString * _identifier;
+    AVTCoreModelRowOptions * _options;
     NSArray * _primaryColors;
-    AVTCoreModelColorPalette * _subPalette;
     NSString * _title;
 }
 
@@ -16,8 +16,8 @@
 @property (nonatomic, readonly) long long colorCategory;
 @property (nonatomic, readonly) NSArray *extendedColors;
 @property (nonatomic, readonly, copy) NSString *identifier;
+@property (nonatomic, readonly) AVTCoreModelRowOptions *options;
 @property (nonatomic, readonly) NSArray *primaryColors;
-@property (nonatomic, readonly) AVTCoreModelColorPalette *subPalette;
 @property (nonatomic, readonly, copy) NSString *title;
 
 - (void).cxx_destruct;
@@ -26,11 +26,11 @@
 - (id)description;
 - (id)extendedColors;
 - (id)identifier;
-- (id)initWithTitle:(id)arg1 primaryColors:(id)arg2 extendedColors:(id)arg3 alwaysShowExtended:(bool)arg4 colorCategory:(long long)arg5 subPalette:(id)arg6;
-- (id)initWithTitle:(id)arg1 primaryColors:(id)arg2 extendedColors:(id)arg3 identifier:(id)arg4 alwaysShowExtended:(bool)arg5 colorCategory:(long long)arg6 subPalette:(id)arg7;
+- (id)initWithTitle:(id)arg1 primaryColors:(id)arg2 extendedColors:(id)arg3 alwaysShowExtended:(bool)arg4 colorCategory:(long long)arg5 options:(id)arg6;
+- (id)initWithTitle:(id)arg1 primaryColors:(id)arg2 extendedColors:(id)arg3 identifier:(id)arg4 alwaysShowExtended:(bool)arg5 colorCategory:(long long)arg6 options:(id)arg7;
 - (bool)isEmpty;
+- (id)options;
 - (id)primaryColors;
-- (id)subPalette;
 - (id)title;
 
 @end

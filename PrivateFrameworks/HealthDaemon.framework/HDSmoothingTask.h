@@ -6,12 +6,14 @@
     id /* block */  _completionHandler;
     HKWorkoutRoute * _sample;
     unsigned long long  _smoothingAttempts;
+    HDDaemonTransaction * _transaction;
     NSArray * _unsmoothedLocations;
 }
 
 @property (nonatomic, copy) id /* block */ completionHandler;
 @property (nonatomic, retain) HKWorkoutRoute *sample;
 @property unsigned long long smoothingAttempts;
+@property (nonatomic, retain) HDDaemonTransaction *transaction;
 @property (nonatomic, retain) NSArray *unsmoothedLocations;
 
 - (void).cxx_destruct;
@@ -23,8 +25,10 @@
 - (void)setCompletionHandler:(id /* block */)arg1;
 - (void)setSample:(id)arg1;
 - (void)setSmoothingAttempts:(unsigned long long)arg1;
+- (void)setTransaction:(id)arg1;
 - (void)setUnsmoothedLocations:(id)arg1;
 - (unsigned long long)smoothingAttempts;
+- (id)transaction;
 - (id)unsmoothedLocations;
 
 @end

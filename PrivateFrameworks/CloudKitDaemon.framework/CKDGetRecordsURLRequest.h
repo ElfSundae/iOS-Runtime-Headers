@@ -6,6 +6,7 @@
     unsigned long long  _URLOptions;
     NSSet * _assetFieldNamesToPublishURLs;
     NSSet * _desiredAssetKeys;
+    NSArray * _desiredIndexedListKeys;
     NSSet * _desiredKeys;
     unsigned long long  _recordCount;
     id /* block */  _recordFetchedBlock;
@@ -20,6 +21,7 @@
 @property (nonatomic) unsigned long long URLOptions;
 @property (nonatomic, retain) NSSet *assetFieldNamesToPublishURLs;
 @property (nonatomic, retain) NSSet *desiredAssetKeys;
+@property (nonatomic, retain) NSArray *desiredIndexedListKeys;
 @property (nonatomic, retain) NSSet *desiredKeys;
 @property (nonatomic) unsigned long long recordCount;
 @property (nonatomic, copy) id /* block */ recordFetchedBlock;
@@ -35,6 +37,7 @@
 - (bool)allowsAnonymousAccount;
 - (id)assetFieldNamesToPublishURLs;
 - (id)desiredAssetKeys;
+- (id)desiredIndexedListKeys;
 - (id)desiredKeys;
 - (id)generateRequestOperations;
 - (id)initWithRecordIDs:(id)arg1 recordIDsToEtags:(id)arg2 recordIDsToVersionETags:(id)arg3 desiredKeys:(id)arg4;
@@ -49,9 +52,11 @@
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (bool)requestGETPreAuth;
 - (id)requestOperationClasses;
+- (id)requestedListFieldsForDesiredIndexedListKeys;
 - (unsigned long long)requestedTTL;
 - (void)setAssetFieldNamesToPublishURLs:(id)arg1;
 - (void)setDesiredAssetKeys:(id)arg1;
+- (void)setDesiredIndexedListKeys:(id)arg1;
 - (void)setDesiredKeys:(id)arg1;
 - (void)setRecordCount:(unsigned long long)arg1;
 - (void)setRecordFetchedBlock:(id /* block */)arg1;

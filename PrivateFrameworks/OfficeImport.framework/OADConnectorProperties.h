@@ -9,7 +9,7 @@
 
 + (id)defaultProperties;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)from;
 - (id)init;

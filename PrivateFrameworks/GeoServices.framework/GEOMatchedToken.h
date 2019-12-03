@@ -4,15 +4,28 @@
 
 @interface GEOMatchedToken : PBCodable <NSCopying> {
     struct { 
+        unsigned int has_geoType : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_geoIds : 1; 
+        unsigned int read_matchedToken : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_geoIds : 1; 
+        unsigned int wrote_matchedToken : 1; 
+        unsigned int wrote_geoType : 1; 
+    }  _flags;
+    struct { 
         unsigned long long *list; 
         unsigned long long count; 
         unsigned long long size; 
     }  _geoIds;
     int  _geoType;
-    struct { 
-        unsigned int geoType : 1; 
-    }  _has;
     NSString * _matchedToken;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     PBUnknownFields * _unknownFields;
 }
 
@@ -23,9 +36,15 @@
 @property (nonatomic, retain) NSString *matchedToken;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_addNoFlagsGeoId:(unsigned long long)arg1;
+- (void)_readGeoIds;
+- (void)_readMatchedToken;
 - (void)addGeoId:(unsigned long long)arg1;
 - (void)clearGeoIds;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -37,9 +56,12 @@
 - (int)geoType;
 - (bool)hasGeoType;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)matchedToken;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setGeoIds:(unsigned long long*)arg1 count:(unsigned long long)arg2;
 - (void)setGeoType:(int)arg1;

@@ -4,6 +4,7 @@
 
 @interface PHImportOptions : NSObject {
     PHAssetCollection * _destinationAlbum;
+    PHCollectionList * _destinationFolder;
     PHImportSource * _importSource;
     PHPhotoLibrary * _library;
     struct options_bits { 
@@ -21,47 +22,48 @@
         unsigned int importedBy : 8; 
     }  _options_bits;
     NSString * _personId;
-    NSString * _rootSourcePath;
     NSSortDescriptor * _sortDescriptor;
+    NSMutableDictionary * _userIptcMetadata;
 }
 
 @property (nonatomic) bool allowDuplicates;
 @property (nonatomic) bool deleteAfterImport;
 @property (nonatomic, retain) PHAssetCollection *destinationAlbum;
+@property (nonatomic, retain) PHCollectionList *destinationFolder;
 @property (nonatomic) unsigned char fileOperation;
 @property (nonatomic) bool hideProgress;
 @property (nonatomic, retain) PHImportSource *importSource;
 @property (nonatomic, retain) PHPhotoLibrary *library;
+@property (nonatomic) unsigned char metadataAddMode;
 @property (nonatomic, retain) NSString *personId;
 @property (nonatomic) bool preserveFolderStructure;
-@property (nonatomic) bool referencedImport;
-@property (nonatomic, retain) NSString *rootSourcePath;
+@property (nonatomic) bool shouldImportAsReferenced;
 @property (nonatomic) bool skipAlertWhenFinished;
 @property (nonatomic) bool skipDiskSpaceCheck;
 @property (nonatomic, retain) NSSortDescriptor *sortDescriptor;
+@property (nonatomic, retain) NSMutableDictionary *userIptcMetadata;
 
 - (void).cxx_destruct;
 - (bool)allowDuplicates;
 - (bool)allowUnsupported;
 - (bool)deleteAfterImport;
 - (id)destinationAlbum;
+- (id)destinationFolder;
 - (unsigned char)fileOperation;
 - (bool)hideProgress;
 - (id)importSource;
 - (short)importedBy;
 - (id)init;
-- (id)initWithLibrary:(id)arg1 importSource:(id)arg2;
 - (id)library;
 - (unsigned char)metadataAddMode;
 - (bool)omitImportComplete;
 - (id)personId;
 - (bool)preserveFolderStructure;
-- (bool)referencedImport;
-- (id)rootSourcePath;
 - (void)setAllowDuplicates:(bool)arg1;
 - (void)setAllowUnsupported:(bool)arg1;
 - (void)setDeleteAfterImport:(bool)arg1;
 - (void)setDestinationAlbum:(id)arg1;
+- (void)setDestinationFolder:(id)arg1;
 - (void)setFileOperation:(unsigned char)arg1;
 - (void)setHideProgress:(bool)arg1;
 - (void)setImportSource:(id)arg1;
@@ -71,13 +73,15 @@
 - (void)setOmitImportComplete:(bool)arg1;
 - (void)setPersonId:(id)arg1;
 - (void)setPreserveFolderStructure:(bool)arg1;
-- (void)setReferencedImport:(bool)arg1;
-- (void)setRootSourcePath:(id)arg1;
+- (void)setShouldImportAsReferenced:(bool)arg1;
 - (void)setSkipAlertWhenFinished:(bool)arg1;
 - (void)setSkipDiskSpaceCheck:(bool)arg1;
 - (void)setSortDescriptor:(id)arg1;
+- (void)setUserIptcMetadata:(id)arg1;
+- (bool)shouldImportAsReferenced;
 - (bool)skipAlertWhenFinished;
 - (bool)skipDiskSpaceCheck;
 - (id)sortDescriptor;
+- (id)userIptcMetadata;
 
 @end

@@ -22,6 +22,7 @@
 - (id)formattedDescription:(unsigned long long)arg1;
 - (unsigned long long)hash;
 - (id)init;
+- (bool)isDefault;
 - (bool)isEqual:(id)arg1;
 - (unsigned long long)mutability;
 - (void)setMutability:(unsigned long long)arg1;

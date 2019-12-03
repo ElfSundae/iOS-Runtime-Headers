@@ -2,15 +2,16 @@
    Image: /System/Library/PrivateFrameworks/SIMSetupSupport.framework/SIMSetupSupport
  */
 
-@interface TSCellularPlanLabelsViewController : BFFSplashController <TSSetupFlowItem, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate> {
+@interface TSCellularPlanLabelsViewController : OBTableWelcomeController <TSSetupFlowItem, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate> {
     bool  _allowDismiss;
     <TSSIMSetupFlowDelegate> * _delegate;
+    OBBoldTrayButton * _doneButton;
+    NSLayoutConstraint * _heightAnchor;
     NSString * _iccid;
     TSCellularPlanLabelPickerViewController * _labelPickerViewController;
     NSArray * _planItemBadges;
     UITableViewCell * _sectionFooter;
     NSMutableArray * _sortedPlanItemsWithPendingLabels;
-    UITableView * _tableView;
 }
 
 @property bool allowDismiss;
@@ -18,21 +19,24 @@
 @property <TSSIMSetupFlowDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, retain) NSLayoutConstraint *heightAnchor;
 @property (readonly) NSString *iccid;
 @property (retain) TSCellularPlanLabelPickerViewController *labelPickerViewController;
 @property (retain) NSArray *planItemBadges;
 @property (retain) UITableViewCell *sectionFooter;
 @property (retain) NSMutableArray *sortedPlanItemsWithPendingLabels;
 @property (readonly) Class superclass;
-@property (retain) UITableView *tableView;
 
 - (void).cxx_destruct;
 - (void)_cancelButtonTapped;
+- (void)_doneButtonTapped;
 - (bool)allowDismiss;
+- (bool)canBeShownFromSuspendedState;
 - (id)delegate;
 - (id)getPendingLabelAtIndex:(long long)arg1;
 - (id)getPlanItemByIndex:(long long)arg1;
 - (id)getPredefinedUserLabels;
+- (id)heightAnchor;
 - (id)iccid;
 - (id)initWithAllowDismiss:(bool)arg1;
 - (id)initWithIccid:(id)arg1 allowDismiss:(bool)arg2;
@@ -44,14 +48,13 @@
 - (id)sectionFooter;
 - (void)setAllowDismiss:(bool)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setHeightAnchor:(id)arg1;
 - (void)setLabelPickerViewController:(id)arg1;
 - (void)setPendingLabel:(id)arg1 forPlanItem:(id)arg2;
 - (void)setPlanItemBadges:(id)arg1;
 - (void)setSectionFooter:(id)arg1;
 - (void)setSortedPlanItemsWithPendingLabels:(id)arg1;
-- (void)setTableView:(id)arg1;
 - (id)sortedPlanItemsWithPendingLabels;
-- (id)tableView;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;

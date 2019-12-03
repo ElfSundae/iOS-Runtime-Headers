@@ -27,11 +27,9 @@
 + (id)_diddlyDoViewLineColor;
 + (id)_foregroundColor;
 + (id)_localizedDictionaryTitleAttributes;
-+ (id)_popoverControllerForReferenceLibraryWithString:(id)arg1;
 + (id)_pressedButtonImage;
 + (bool)_shouldShowDefineForTerm:(id)arg1;
 + (bool)_shouldShowDefineForTermOfLength:(long long)arg1;
-+ (id)_viewControllerForReferenceWithString:(id)arg1 options:(unsigned long long)arg2;
 + (bool)dictionaryHasDefinitionForTerm:(id)arg1;
 
 - (void).cxx_destruct;

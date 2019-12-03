@@ -11,6 +11,7 @@
     long long  _backendArticleVersion;
     long long  _behaviorFlags;
     NSArray * _blockedStorefrontIDs;
+    long long  _bodyTextLength;
     bool  _boundToContext;
     bool  _bundlePaid;
     bool  _canBePurchased;
@@ -81,6 +82,7 @@
     NSString * _titleCompact;
     NSArray * _topicIDs;
     NSArray * _topics;
+    bool  _useTransparentNavigationBar;
     NSString * _versionIdentifier;
     NSString * _videoCallToActionTitle;
     NSURL * _videoCallToActionURL;
@@ -107,6 +109,7 @@
 @property (nonatomic, readonly, copy) NSString *stocksScoresJSON;
 @property (nonatomic, copy) NSString *title;
 
++ (bool)_fakeArticlesTimestamp;
 + (bool)_forceArticlesToBeShownAsSponsored;
 + (bool)_simulateTopStoriesBadges;
 
@@ -121,6 +124,7 @@
 - (id)backingArticleRecordData;
 - (long long)behaviorFlags;
 - (id)blockedStorefrontIDs;
+- (long long)bodyTextLength;
 - (bool)canBePurchased;
 - (id)clusterID;
 - (id)contentManifestWithContext:(id)arg1;
@@ -218,6 +222,7 @@
 - (id)titleCompact;
 - (id)topicIDs;
 - (id)topics;
+- (bool)useTransparentNavigationBar;
 - (id)versionIdentifier;
 - (id)videoCallToActionTitle;
 - (id)videoCallToActionURL;

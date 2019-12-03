@@ -32,10 +32,13 @@
 - (void)_sanitizeDeviceUsingContext:(id)arg1;
 - (void)_setConfigurationError:(id)arg1;
 - (void)_setResolvedGraphConfiguration:(id)arg1;
+- (bool)_shouldEnableCTMVideoCaptureForMode:(long long)arg1 device:(long long)arg2;
+- (bool)_shouldEnableDeferredProcessingForMode:(long long)arg1;
 - (bool)_shouldEnableLivePhotoCaptureForMode:(long long)arg1 device:(long long)arg2;
 - (id)_specificEncodingBehaviorCommandForGraphConfiguration:(id)arg1;
 - (id)_specificFramerateCommandForGraphConfiguration:(id)arg1 withContext:(id)arg2;
 - (id)_specificPreparePhotoSettingsCommandForGraphConfiguration:(id)arg1;
+- (bool)_wantsLivePhotoMetadataInVideosForMode:(long long)arg1 device:(long long)arg2;
 - (bool)_wantsLowLightBoostForMode:(long long)arg1 device:(long long)arg2;
 - (bool)_wantsQuadraHighResolutionForMode:(long long)arg1 device:(long long)arg2;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

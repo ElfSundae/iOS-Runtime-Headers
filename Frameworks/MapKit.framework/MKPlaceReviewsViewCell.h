@@ -8,6 +8,7 @@
     MKPlaceReviewAvatarGenerator * _avatarGenerator;
     NSDate * _date;
     _MKUILabel * _detailLabel;
+    bool  _isLastReview;
     UIImageView * _pictureView;
     unsigned long long  _rating;
     _MKUILabel * _reviewLabel;
@@ -18,6 +19,7 @@
 @property (nonatomic, copy) NSString *author;
 @property (nonatomic, retain) MKPlaceReviewAvatarGenerator *avatarGenerator;
 @property (nonatomic, retain) NSDate *date;
+@property (nonatomic) bool isLastReview;
 @property (nonatomic) unsigned long long rating;
 
 - (void).cxx_destruct;
@@ -28,13 +30,15 @@
 - (id)avatarGenerator;
 - (id)date;
 - (id)detailLabelText;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (bool)isLastReview;
 - (unsigned long long)maxCharacters;
 - (unsigned long long)rating;
 - (void)setAuthor:(id)arg1;
 - (void)setAvatarGenerator:(id)arg1;
 - (void)setDate:(id)arg1;
+- (void)setIsLastReview:(bool)arg1;
 - (void)setPicture:(id)arg1;
 - (void)setRating:(unsigned long long)arg1;
 - (void)setReview:(id)arg1;

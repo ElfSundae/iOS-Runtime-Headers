@@ -5,6 +5,7 @@
 @interface ConversationKit.SmallMultiwayControllerLayout : Swift._SwiftObject {
     void currentConstraints;
     void effectsConstraintManagers;
+    void localParticipantViewHeightConstraint;
     void participantListHeightConstraint;
     void stateConstraints;
 }

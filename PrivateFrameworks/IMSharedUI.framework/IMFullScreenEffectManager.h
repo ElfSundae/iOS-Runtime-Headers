@@ -2,42 +2,47 @@
    Image: /System/Library/PrivateFrameworks/IMSharedUI.framework/IMSharedUI
  */
 
-@interface IMFullScreenEffectManager : NSObject <IMFullScreenEffectDelegate> {
-    IMFullScreenEffect * _currentEffect;
-    NSObject<IMFullScreenEffectManagerDelegate> * _delegate;
-    NSTimer * _effectDurationTimer;
+@interface IMFullScreenEffectManager : NSObject <IMFullScreenEffectPlayerDelegate> {
+    IMFullScreenEffectPlayer * _currentEffectPlayer;
+    <IMFullScreenEffectManagerDelegate> * _delegate;
     NSMutableArray * _effectQueue;
     IMScheduledUpdater * _triggerUpdater;
 }
 
-@property (nonatomic, retain) IMFullScreenEffect *currentEffect;
+@property (nonatomic, readonly) IMFullScreenEffect *currentEffect;
+@property (nonatomic, retain) IMFullScreenEffectPlayer *currentEffectPlayer;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) NSObject<IMFullScreenEffectManagerDelegate> *delegate;
+@property (nonatomic) <IMFullScreenEffectManagerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, retain) NSTimer *effectDurationTimer;
 @property (nonatomic, retain) NSMutableArray *effectQueue;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) IMScheduledUpdater *triggerUpdater;
 
 - (void).cxx_destruct;
+- (void)_stopCurrentFullscreenEffect:(bool)arg1;
+- (double)adjustedEffectDurationForTesting:(id)arg1;
 - (void)beginHoldingUpdatesForKey:(id)arg1;
 - (id)currentEffect;
+- (id)currentEffectPlayer;
 - (void)dealloc;
 - (id)delegate;
-- (id)effectDurationTimer;
 - (id)effectQueue;
 - (void)endHoldingUpdatesForKey:(id)arg1;
-- (void)fullScreenEffectDidPrepareSoundEffect:(id)arg1;
+- (void)fullScreenEffectPlayerDidFinish:(id)arg1;
+- (void)fullScreenEffectPlayerDidPrepare:(id)arg1;
+- (void)fullScreenEffectPlayerDidStart:(id)arg1;
 - (id)init;
-- (void)setCurrentEffect:(id)arg1;
+- (bool)isFullScreenEffectQueued:(id)arg1;
+- (void)queueFullScreenEffectPlayer:(id)arg1 withRepeating:(bool)arg2;
+- (void)setCurrentEffectPlayer:(id)arg1;
 - (void)setDelegate:(id)arg1;
-- (void)setEffectDurationTimer:(id)arg1;
 - (void)setEffectQueue:(id)arg1;
 - (void)setTriggerUpdater:(id)arg1;
-- (void)startFullscreenEffectForChatItem:(id)arg1 language:(id)arg2;
-- (void)stopFullscreenEffect;
+- (void)stopAllFullscreenEffectPlayers;
+- (void)stopCurrentFullscreenEffectPlayer;
 - (void)triggerNextEffect;
 - (id)triggerUpdater;
+- (void)willStartFullScreenEffect:(id)arg1;
 
 @end

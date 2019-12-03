@@ -2,17 +2,15 @@
    Image: /System/Library/PrivateFrameworks/ScreenTimeUI.framework/ScreenTimeUI
  */
 
-@interface STContentPrivacyStoreDetailController : PSListController {
+@interface STContentPrivacyStoreDetailController : STPINListViewController {
     STContentPrivacyListController * _contentPrivacyController;
-    NSObject<STContentPrivacyViewModelCoordinator> * _coordinator;
 }
 
 @property STContentPrivacyListController *contentPrivacyController;
-@property (nonatomic, retain) NSObject<STContentPrivacyViewModelCoordinator> *coordinator;
 
 - (void).cxx_destruct;
+- (void)_isLoadedDidChange:(bool)arg1;
 - (id)contentPrivacyController;
-- (id)coordinator;
 - (void)dealloc;
 - (id)init;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;

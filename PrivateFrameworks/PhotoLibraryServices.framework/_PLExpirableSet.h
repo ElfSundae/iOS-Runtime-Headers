@@ -8,6 +8,7 @@
     NSMutableSet * _set;
 }
 
+- (void).cxx_destruct;
 - (bool)_didExpireObject:(id)arg1;
 - (void)_touch:(id)arg1;
 - (void)addObject:(id)arg1;

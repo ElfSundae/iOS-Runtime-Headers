@@ -3,7 +3,6 @@
  */
 
 @interface MTLRenderPassDescriptor : NSObject <NSCopying> {
-    unsigned long long  _defaultRasterSampleCount;
     unsigned long long  _imageblockSampleLength;
     unsigned long long  _threadgroupMemoryLength;
     unsigned long long  _tileHeight;
@@ -14,6 +13,7 @@
 @property (nonatomic) unsigned long long defaultRasterSampleCount;
 @property (nonatomic, copy) MTLRenderPassDepthAttachmentDescriptor *depthAttachment;
 @property (nonatomic) unsigned long long imageblockSampleLength;
+@property (nonatomic, retain) <MTLRasterizationRateMap> *rasterizationRateMap;
 @property (nonatomic) unsigned long long renderTargetArrayLength;
 @property (nonatomic) unsigned long long renderTargetHeight;
 @property (nonatomic) unsigned long long renderTargetWidth;
@@ -28,10 +28,8 @@
 + (id)renderPassDescriptor;
 
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (unsigned long long)defaultRasterSampleCount;
 - (unsigned long long)getSamplePositions:(struct { float x1; float x2; }*)arg1 count:(unsigned long long)arg2;
 - (unsigned long long)imageblockSampleLength;
-- (void)setDefaultRasterSampleCount:(unsigned long long)arg1;
 - (void)setImageblockSampleLength:(unsigned long long)arg1;
 - (void)setSamplePositions:(const struct { float x1; float x2; }*)arg1 count:(unsigned long long)arg2;
 - (void)setThreadgroupMemoryLength:(unsigned long long)arg1;

@@ -43,7 +43,6 @@
 - (id)fetchSongsWithOptions:(id)arg1;
 - (id)flexReachability;
 - (id)initWithOptions:(id)arg1;
-- (void)loadAssetWithID:(id)arg1 forSongID:(id)arg2;
 - (long long)networkStatus;
 - (void)networkStatusChanged:(id)arg1;
 - (bool)networkingIsDisabled;
@@ -51,6 +50,7 @@
 - (void)purgeAllLocalCachedAssetsWithIDs:(id)arg1;
 - (id)registerSongBundleAtPath:(id)arg1;
 - (void)requestDownloadOfAllAssetsWithIDs:(id)arg1;
+- (void)requestDownloadOfAllAssetsWithIDs:(id)arg1 withOptions:(id)arg2;
 - (void)setAssetsInFlight:(id)arg1;
 - (void)setCloudManager:(id)arg1;
 - (void)setContactedCloud:(bool)arg1;

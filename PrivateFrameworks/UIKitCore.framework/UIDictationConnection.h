@@ -4,19 +4,35 @@
 
 @interface UIDictationConnection : NSObject <AFDictationDelegate> {
     NSObject<OS_dispatch_queue> * _analyticsQueue;
+    unsigned int  _charAfterInsertionPointOnDictationStart;
+    unsigned int  _charBeforeInsertionPointOnDictationStart;
     AFDictationConnection * _connection;
     <UIDictationConnectionDelegate> * _delegate;
+    AFDictationOptions * _dictationOptions;
+    NSString * _lastUsedDetectedLanguage;
+    NSString * _lastUsedPrimaryLanguage;
+    NSMutableArray * _lastUsedTopLanguages;
+    bool  _lowConfidenceAboutLanguageDetection;
     bool  _offlineOnly;
+    bool  _receivedMultilingualResultsCommand;
     <UIDictationConnectionTokenFilterProtocol> * _tokenFilter;
 }
 
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *analyticsQueue;
+@property (nonatomic) unsigned int charAfterInsertionPointOnDictationStart;
+@property (nonatomic) unsigned int charBeforeInsertionPointOnDictationStart;
 @property (nonatomic, retain) AFDictationConnection *connection;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <UIDictationConnectionDelegate> *delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, retain) AFDictationOptions *dictationOptions;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, copy) NSString *lastUsedDetectedLanguage;
+@property (nonatomic, copy) NSString *lastUsedPrimaryLanguage;
+@property (nonatomic, retain) NSMutableArray *lastUsedTopLanguages;
+@property (nonatomic) bool lowConfidenceAboutLanguageDetection;
 @property (nonatomic) bool offlineOnly;
+@property (nonatomic) bool receivedMultilingualResultsCommand;
 @property (readonly) Class superclass;
 @property (nonatomic) <UIDictationConnectionTokenFilterProtocol> *tokenFilter;
 
@@ -40,11 +56,17 @@
 - (void)beginAvailabilityMonitoring;
 - (void)cancelAvailabilityMonitoring;
 - (void)cancelSpeech;
+- (unsigned int)charAfterInsertionPointOnDictationStart;
+- (unsigned int)charBeforeInsertionPointOnDictationStart;
 - (id)connection;
 - (id)delegate;
+- (void)dictationConnection:(id)arg1 didDetectLanguage:(id)arg2 confidenceScores:(id)arg3 isConfident:(bool)arg4;
 - (void)dictationConnection:(id)arg1 didReceiveSearchResults:(id)arg2 recognizedText:(id)arg3 stable:(bool)arg4 final:(bool)arg5;
+- (void)dictationConnection:(id)arg1 didRecognizeMultilingualSpeech:(id)arg2;
+- (void)dictationConnection:(id)arg1 didRecognizePartialResult:(id)arg2;
 - (void)dictationConnection:(id)arg1 didRecognizePhrases:(id)arg2 languageModel:(id)arg3 correctionIdentifier:(id)arg4;
 - (void)dictationConnection:(id)arg1 didRecognizeTokens:(id)arg2 languageModel:(id)arg3;
+- (void)dictationConnection:(id)arg1 languageDetectorFailedWithError:(id)arg2;
 - (void)dictationConnection:(id)arg1 speechRecognitionDidFail:(id)arg2;
 - (void)dictationConnection:(id)arg1 speechRecordingDidFail:(id)arg2;
 - (void)dictationConnectionSpeechRecognitionDidSucceed:(id)arg1;
@@ -54,19 +76,34 @@
 - (void)dictationConnectionSpeechRecordingWillBegin:(id)arg1;
 - (void)dictationConnnectionDidChangeAvailability:(id)arg1;
 - (bool)dictationIsAvailableForLanguage:(id)arg1;
+- (id)dictationOptions;
 - (void)endSession;
 - (id)languageDetectionUserContext;
+- (id)lastUsedDetectedLanguage;
+- (id)lastUsedPrimaryLanguage;
+- (id)lastUsedTopLanguages;
 - (void)logDidAcceptDictationResult:(id)arg1 reason:(id)arg2 result:(id)arg3 correctionIdentifier:(id)arg4;
+- (void)logDidAcceptReplacement:(id)arg1 replacementLanguageCode:(id)arg2 originalText:(id)arg3 correctionIdentifier:(id)arg4;
 - (void)logDidSelectAlternative:(id)arg1 correctionIdentifier:(id)arg2;
 - (void)logDidShowAlternatives:(id)arg1 correctionIdentifier:(id)arg2;
+- (bool)lowConfidenceAboutLanguageDetection;
 - (bool)offlineOnly;
 - (void)preheat;
+- (bool)receivedMultilingualResultsCommand;
 - (void)restartDictation;
 - (void)sendSpeechCorrection:(id)arg1 forIdentifier:(id)arg2;
 - (void)setAnalyticsQueue:(id)arg1;
+- (void)setCharAfterInsertionPointOnDictationStart:(unsigned int)arg1;
+- (void)setCharBeforeInsertionPointOnDictationStart:(unsigned int)arg1;
 - (void)setConnection:(id)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setDictationOptions:(id)arg1;
+- (void)setLastUsedDetectedLanguage:(id)arg1;
+- (void)setLastUsedPrimaryLanguage:(id)arg1;
+- (void)setLastUsedTopLanguages:(id)arg1;
+- (void)setLowConfidenceAboutLanguageDetection:(bool)arg1;
 - (void)setOfflineOnly:(bool)arg1;
+- (void)setReceivedMultilingualResultsCommand:(bool)arg1;
 - (void)setTokenFilter:(id)arg1;
 - (long long)speechEventTypeForDictationActivationType:(unsigned long long)arg1;
 - (void)start;

@@ -6,9 +6,9 @@
     NSMutableDictionary * _clientConnections;
     NSObject<OS_dispatch_queue> * _clientQueue;
     NSMutableArray * _connectedSockets;
+    <STAceObjectHandler> * _handler;
     GCDAsyncSocket * _listenSocket;
     unsigned long long  _port;
-    bool  _recording;
     NSURL * _replayURL;
     STServerConnection * _serverConnection;
     NSObject<OS_dispatch_queue> * _serverQueue;
@@ -18,7 +18,7 @@
 }
 
 - (void).cxx_destruct;
-- (id)initWithActiveServerURL:(id)arg1 isRecording:(bool)arg2 replayFileURL:(id)arg3;
+- (id)initWithActiveServerURL:(id)arg1 handler:(id)arg2 replayFileURL:(id)arg3;
 - (void)socket:(id)arg1 didAcceptNewSocket:(id)arg2;
 - (void)socket:(id)arg1 didConnectToHost:(id)arg2 port:(unsigned short)arg3;
 - (void)socket:(id)arg1 didReadData:(id)arg2 withTag:(long long)arg3;

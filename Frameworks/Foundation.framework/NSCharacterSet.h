@@ -69,6 +69,20 @@
 
 + (id)textAttachmentCharacterSet;
 
+// Image: /System/Library/PrivateFrameworks/ContactsAutocompleteUI.framework/ContactsAutocompleteUI
+
++ (id)textAttachmentCharacterSet;
+
+// Image: /System/Library/PrivateFrameworks/EmailCore.framework/EmailCore
+
++ (id)ec_prefixDelimiterCharacterSet;
+
+// Image: /System/Library/PrivateFrameworks/EmailFoundation.framework/EmailFoundation
+
++ (id)ef_asciiAlphaNumericCharacterSet;
++ (id)ef_unsafeAddressLocalPartCharacterSet;
++ (id)ef_unsafeDomainNameCharacterSet;
+
 // Image: /System/Library/PrivateFrameworks/EmojiFoundation.framework/EmojiFoundation
 
 + (id)_emojiCharacterSet;
@@ -77,8 +91,17 @@
 
 + (id)invalidCharactersForFileTransferName;
 
+// Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
+
++ (id)px_breakableWhitespaceCharacterSet;
+
+// Image: /System/Library/PrivateFrameworks/PodcastsKit.framework/PodcastsKit
+
++ (id)URLAllowedCharacterSet;
+
 // Image: /System/Library/PrivateFrameworks/SafariShared.framework/SafariShared
 
++ (id)safari_asciiDigitCharacterSet;
 + (id)safari_lockRelatedEmojiCharacterSet;
 + (id)safari_obscuredPasswordCharacterSets;
 
@@ -113,7 +136,6 @@
 
 + (id)pinyinInputCharacterSet;
 + (id)punctuationAndWhitespaceCharacterSet;
-+ (id)sentenceDelimiterCharacterSet;
 
 // Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
 

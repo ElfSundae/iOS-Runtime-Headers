@@ -3,11 +3,13 @@
  */
 
 @interface _INPBPlayAudioMessageIntent : PBCodable <NSCopying, NSSecureCoding, _INPBPlayAudioMessageIntent> {
+    bool  __encodeLegacyGloryData;
     struct { }  _has;
     _INPBIntentMetadata * _intentMetadata;
     NSString * _messageIdentifier;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool hasIntentMetadata;
@@ -17,12 +19,18 @@
 @property (nonatomic, copy) NSString *messageIdentifier;
 @property (readonly) Class superclass;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasIntentMetadata;
 - (bool)hasMessageIdentifier;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)intentMetadata;
 - (bool)isEqual:(id)arg1;
 - (id)messageIdentifier;

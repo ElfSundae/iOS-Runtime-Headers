@@ -16,18 +16,26 @@
 @property (nonatomic, readonly) PDFOutline *parent;
 
 - (void).cxx_destruct;
+- (void)_addActionToDictionaryRef:(struct __CFDictionary { }*)arg1;
+- (bool)_addDestinationToDictionaryRef:(struct __CFDictionary { }*)arg1;
+- (id)_childArray;
+- (bool)_childDictionaryReferencesParent:(struct CGPDFDictionary { }*)arg1;
+- (id)_firstChild;
+- (id)_lastChild;
+- (void)_lazilyLoadChildren;
+- (id)_next;
+- (int)_openDescendantCount;
+- (id)_previous;
+- (void)_removeChildAtIndex:(unsigned long long)arg1;
+- (void)_setParent:(id)arg1;
+- (struct CGPDFDictionary { }*)_srcDictionaryRef;
 - (id)action;
-- (void)addActionToDictionaryRef:(struct __CFDictionary { }*)arg1;
-- (bool)addDestinationToDictionaryRef:(struct __CFDictionary { }*)arg1;
-- (id)childArray;
 - (id)childAtIndex:(unsigned long long)arg1;
-- (bool)childDictionaryReferencesParent:(struct CGPDFDictionary { }*)arg1;
 - (void)commonInit;
 - (struct __CFDictionary { }*)createDictionaryRef;
 - (void)dealloc;
 - (id)destination;
 - (id)document;
-- (id)firstChild;
 - (unsigned long long)index;
 - (id)init;
 - (id)initWithDictionary:(struct CGPDFDictionary { }*)arg1 forDocument:(id)arg2 parent:(id)arg3;
@@ -35,21 +43,13 @@
 - (void)invalidateDictionaryRef;
 - (bool)isOpen;
 - (id)label;
-- (id)lastChild;
-- (void)lazilyLoadChildren;
-- (id)next;
 - (unsigned long long)numberOfChildren;
-- (int)openDescendantCount;
 - (id)parent;
-- (id)previous;
-- (void)removeChildAtIndex:(unsigned long long)arg1;
 - (void)removeFromParent;
 - (void)setAction:(id)arg1;
 - (void)setDestination:(id)arg1;
 - (void)setDocument:(id)arg1;
 - (void)setIsOpen:(bool)arg1;
 - (void)setLabel:(id)arg1;
-- (void)setParent:(id)arg1;
-- (struct CGPDFDictionary { }*)srcDictionaryRef;
 
 @end

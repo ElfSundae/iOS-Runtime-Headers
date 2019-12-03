@@ -15,6 +15,7 @@
 - (void)_commit;
 - (id)_defaultStoreFilePath;
 - (void)_load;
+- (id)_onQueueBannersForBundleIdentifier:(id)arg1 target:(id)arg2 error:(id*)arg3;
 - (bool)addBanner:(id)arg1 error:(id*)arg2;
 - (id)allBannersWithResult:(id*)arg1;
 - (id)allProperties;
@@ -24,6 +25,7 @@
 - (id)initWithFilePath:(id)arg1;
 - (bool)removeAllBannersWithResult:(id*)arg1;
 - (bool)removeBannerWithGUID:(id)arg1 error:(id*)arg2;
+- (bool)removeBannersForBundleIdentifier:(id)arg1 error:(id*)arg2;
 - (bool)setBannerStoreProperty:(id)arg1 forKey:(id)arg2;
 
 @end

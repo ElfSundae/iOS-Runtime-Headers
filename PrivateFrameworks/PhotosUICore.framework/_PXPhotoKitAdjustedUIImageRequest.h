@@ -19,6 +19,7 @@
 @property (nonatomic, readonly) long long contentMode;
 @property (nonatomic, readonly) PHImageRequestOptions *options;
 @property (nonatomic, readonly, copy) id /* block */ resultHandler;
+@property (nonatomic, readonly) struct CGSize { double x1; double x2; } targetSize;
 
 + (id)memoryCache;
 
@@ -30,6 +31,7 @@
 - (void)_handleCurrentVersionImageResult:(id)arg1 info:(id)arg2;
 - (void)_handleImageWasCached;
 - (void)_handleRenderedImage:(id)arg1 error:(id)arg2;
+- (void)_handleRenderingFinishedWithData:(id)arg1 destinationURL:(id)arg2 targetSize:(struct CGSize { double x1; double x2; })arg3;
 - (void)_renderIfNeeded;
 - (id)_unscaledCachedImageURL;
 - (void)cacheImageInMemory:(id)arg1;
@@ -43,5 +45,6 @@
 - (void)progressDidChange;
 - (id /* block */)resultHandler;
 - (void)start;
+- (struct CGSize { double x1; double x2; })targetSize;
 
 @end

@@ -2,58 +2,54 @@
    Image: /System/Library/PrivateFrameworks/NanoTimeKitCompanion.framework/NanoTimeKitCompanion
  */
 
-@interface NTKRingsAndDotsView : UIView {
+@interface NTKRingsAndDotsView : UIView <NTKColoringView> {
     double  _appearanceAnimationProgress;
     double  _diameter;
-    double  _dotDiameter;
-    double  _dotPositionFraction;
-    NTKDotView * _dotView;
     UIColor * _foregroundColor;
-    double  _radiusForDotViewRing;
+    bool  _hidesOverlapShadow;
+    NSArray * _overlapArcArray;
+    UIColor * _overrideColor;
     NSArray * _ringColors;
     double  _ringGapWidth;
     NSArray * _ringViews;
     double  _ringWidth;
     NSMutableArray * _ringsFillFractions;
     UIColor * _secondaryForegroundColor;
-    bool  _showsDotOnRing;
-    bool  _showsRingsBackground;
 }
 
 @property (nonatomic) double appearanceAnimationProgress;
+@property (nonatomic, retain) UIColor *color;
+@property (nonatomic, readonly) UIColor *contentColor;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) double diameter;
-@property (nonatomic) double dotDiameter;
-@property (nonatomic) double dotPositionFraction;
-@property (nonatomic, retain) NTKDotView *dotView;
 @property (nonatomic, retain) UIColor *foregroundColor;
-@property (nonatomic) double radiusForDotViewRing;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) bool hidesOverlapShadow;
+@property (nonatomic, retain) NSArray *overlapArcArray;
+@property (nonatomic, retain) UIColor *overrideColor;
 @property (nonatomic, retain) NSArray *ringColors;
 @property (nonatomic) double ringGapWidth;
 @property (nonatomic, retain) NSArray *ringViews;
 @property (nonatomic) double ringWidth;
 @property (nonatomic, retain) NSMutableArray *ringsFillFractions;
 @property (nonatomic, retain) UIColor *secondaryForegroundColor;
-@property (nonatomic) bool showsDotOnRing;
-@property (nonatomic) bool showsRingsBackground;
+@property (readonly) Class superclass;
+@property (nonatomic) bool usesLegibility;
+
++ (id)emptyFillFractions;
 
 - (void).cxx_destruct;
-- (double)_dotPositionFractionWithAnimationProgress:(double)arg1;
-- (void)_positionDotViewWithPositionFraction:(double)arg1;
 - (void)_setDiameter:(double)arg1;
-- (void)_update;
 - (double)appearanceAnimationProgress;
-- (void)cancelAppearanceAnimation;
 - (double)diameter;
-- (double)dotDiameter;
-- (double)dotPositionFraction;
-- (id)dotView;
 - (id)foregroundColor;
+- (bool)hidesOverlapShadow;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
-- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 diameter:(double)arg2 ringWidth:(double)arg3 ringGapWidth:(double)arg4 showsRingsBackground:(bool)arg5;
+- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 diameter:(double)arg2 ringWidth:(double)arg3 ringGapWidth:(double)arg4 overlapStrokeWidth:(double)arg5;
 - (void)layoutSubviews;
-- (void)performAppearanceAnimation;
-- (void)prepareAppearanceAnimation;
-- (double)radiusForDotViewRing;
+- (id)overlapArcArray;
+- (id)overrideColor;
 - (double)radiusForRingAtIndex:(long long)arg1;
 - (id)ringColors;
 - (double)ringGapWidth;
@@ -62,22 +58,23 @@
 - (id)ringsFillFractions;
 - (id)secondaryForegroundColor;
 - (void)setAppearanceAnimationProgress:(double)arg1;
+- (void)setColor:(id)arg1;
 - (void)setDiameter:(double)arg1;
-- (void)setDotDiameter:(double)arg1;
-- (void)setDotPositionFraction:(double)arg1;
-- (void)setDotView:(id)arg1;
+- (void)setFilterProvider:(id)arg1;
 - (void)setForegroundColor:(id)arg1;
-- (void)setRadiusForDotViewRing:(double)arg1;
+- (void)setHidesOverlapShadow:(bool)arg1;
+- (void)setOverlapArcArray:(id)arg1;
+- (void)setOverrideColor:(id)arg1;
 - (void)setRingColors:(id)arg1;
 - (void)setRingGapWidth:(double)arg1;
 - (void)setRingViews:(id)arg1;
 - (void)setRingWidth:(double)arg1;
 - (void)setRingsFillFractions:(id)arg1;
 - (void)setSecondaryForegroundColor:(id)arg1;
-- (void)setShowsDotOnRing:(bool)arg1;
-- (void)setShowsRingsBackground:(bool)arg1;
-- (bool)showsDotOnRing;
-- (bool)showsRingsBackground;
+- (void)setUsesLegibility:(bool)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
+- (bool)usesLegibility;
 
 @end

@@ -2,9 +2,9 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXCMMFooterViewModel : PXPhotosGlobalFooterViewModel <PXChangeObserver> {
+@interface PXCMMFooterViewModel : PXFooterViewModel <PXChangeObserver> {
     <PXCMMFooterViewModelActionDelegate> * _actionDelegate;
-    PXCMMAssetsProgressListener * _assetsProgressListener;
+    PXMomentShareStatusPresentation * _momentShareStatusPresentation;
 }
 
 @property (nonatomic) <PXCMMFooterViewModelActionDelegate> *actionDelegate;
@@ -17,7 +17,7 @@
 - (void)_updateAllProperties;
 - (id)actionDelegate;
 - (id)init;
-- (id)initWithProgressListener:(id)arg1;
+- (id)initWithMomentShareStatusPresentation:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void*)arg3;
 - (void)setActionDelegate:(id)arg1;
 

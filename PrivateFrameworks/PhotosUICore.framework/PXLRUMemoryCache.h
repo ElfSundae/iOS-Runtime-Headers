@@ -13,8 +13,8 @@
 @property (nonatomic, readonly) unsigned long long currentUsedSlots;
 @property (nonatomic) unsigned long long numberOfSlots;
 
-- (void)_promoteListElement:(struct _PXLRUMemoryCacheListElement { id x1; struct _PXLRUMemoryCacheListElement {} x2; struct _PXLRUMemoryCacheListElement {} *x3; }*)arg1;
-- (void)_removeListElement:(struct _PXLRUMemoryCacheListElement { id x1; struct _PXLRUMemoryCacheListElement {} x2; struct _PXLRUMemoryCacheListElement {} *x3; }*)arg1;
+- (void)_promoteListElement:(struct _PXLRUMemoryCacheListElement { id x1; struct _PXLRUMemoryCacheListElement {} *x2; struct _PXLRUMemoryCacheListElement {} *x3; }*)arg1;
+- (void)_removeListElement:(struct _PXLRUMemoryCacheListElement { id x1; struct _PXLRUMemoryCacheListElement {} *x2; struct _PXLRUMemoryCacheListElement {} *x3; }*)arg1;
 - (id)allKeys;
 - (unsigned long long)currentUsedSlots;
 - (void)dealloc;

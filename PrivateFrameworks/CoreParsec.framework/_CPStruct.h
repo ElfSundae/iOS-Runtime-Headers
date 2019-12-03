@@ -30,7 +30,6 @@
 - (bool)isEqual:(id)arg1;
 - (id)jsonData;
 - (bool)readFrom:(id)arg1;
-- (bool)requiresQueryId;
 - (void)setIntKeyFields:(id)arg1;
 - (void)setIntKeyFields:(id)arg1 forKey:(int)arg2;
 - (void)setStringKeyFields:(id)arg1;

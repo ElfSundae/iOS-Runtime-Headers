@@ -4,7 +4,7 @@
 
 @interface CMShapeBuilder : NSObject {
     NSDictionary * _adjustValues;
-    int  _format;
+    unsigned long long  _format;
     OADOrientedBounds * _orientedBounds;
     int  _type;
 }
@@ -17,7 +17,7 @@
 - (bool)isOffice12;
 - (float)maxAdjustedValue;
 - (void)setAdjustValues:(id)arg1;
-- (void)setFileFormat:(int)arg1;
+- (void)setFileFormat:(unsigned long long)arg1;
 - (void)setOrientedBounds:(id)arg1;
 - (void)setShapeType:(int)arg1;
 

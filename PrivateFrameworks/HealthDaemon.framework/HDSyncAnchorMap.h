@@ -12,7 +12,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)anchorMapWithAnchorMap:(id)arg1;
 + (bool)supportsSecureCoding;
 + (id)syncAnchorMapWithSyncAnchorRangeMap:(id)arg1;
 
@@ -20,6 +19,7 @@
 - (unsigned long long)anchorCount;
 - (long long)anchorForSyncEntityClass:(Class)arg1;
 - (long long)anchorForSyncEntityIdentifier:(id)arg1;
+- (id)anchorIfPresentForSyncEntityIdentifier:(id)arg1;
 - (id)anchorsByEntityIdentifier;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;

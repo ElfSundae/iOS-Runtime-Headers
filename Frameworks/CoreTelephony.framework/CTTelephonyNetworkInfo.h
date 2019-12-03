@@ -7,15 +7,11 @@
     NSMutableDictionary * _cachedCurrentRadioAccessTechnology;
     NSMutableDictionary * _cachedSignalStrength;
     CoreTelephonyClient * _client;
+    <CTTelephonyNetworkInfoDelegate> * _delegate;
     CTServiceDescriptorContainer * _descriptors;
-    struct queue { 
-        struct object { 
-            struct dispatch_object_s {} *fObj; 
-        } fObj; 
-    }  _queue;
+    bool  _initialized;
     NSMutableDictionary * _serviceSubscriberCellularProviders;
     id /* block */  _serviceSubscriberCellularProvidersDidUpdateNotifier;
-    CTCarrier * _subscriberCellularProvider;
     id /* block */  _subscriberCellularProviderDidUpdateNotifier;
 }
 
@@ -23,18 +19,19 @@
 @property (retain) NSMutableDictionary *cachedCurrentRadioAccessTechnology;
 @property (retain) NSMutableDictionary *cachedSignalStrength;
 @property (nonatomic, readonly, retain) NSString *currentRadioAccessTechnology;
+@property (readonly, copy) NSString *dataServiceIdentifier;
 @property (readonly, copy) NSString *debugDescription;
+@property <CTTelephonyNetworkInfoDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) CTServiceDescriptorContainer *descriptors;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, retain) NSDictionary *serviceCurrentRadioAccessTechnology;
 @property (retain) NSMutableDictionary *serviceSubscriberCellularProviders;
 @property (nonatomic, copy) id /* block */ serviceSubscriberCellularProvidersDidUpdateNotifier;
-@property (retain) CTCarrier *subscriberCellularProvider;
+@property (readonly, retain) CTCarrier *subscriberCellularProvider;
 @property (nonatomic, copy) id /* block */ subscriberCellularProviderDidUpdateNotifier;
 @property (readonly) Class superclass;
 
-- (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)cachedCellIds;
 - (id)cachedCurrentRadioAccessTechnology;
@@ -43,8 +40,11 @@
 - (void)cellChanged:(id)arg1 cell:(id)arg2;
 - (id)cellId;
 - (void)connectionStateChanged:(id)arg1 connection:(int)arg2 dataConnectionStatusInfo:(id)arg3;
+- (void)currentDataServiceDescriptorChanged:(id)arg1;
 - (id)currentRadioAccessTechnology;
+- (id)dataServiceIdentifier;
 - (void)dealloc;
+- (id)delegate;
 - (id)descriptors;
 - (bool)getAllowsVOIP:(bool*)arg1 forContext:(id)arg2 withError:(id*)arg3;
 - (bool)getCarrierName:(id)arg1 forContext:(id)arg2 withError:(id*)arg3;
@@ -52,7 +52,8 @@
 - (bool)getMobileCountryCode:(id)arg1 andIsoCountryCode:(id)arg2 forContext:(id)arg3 withError:(id*)arg4;
 - (bool)getMobileNetworkCode:(id)arg1 forContext:(id)arg2 withError:(id*)arg3;
 - (id)init;
-- (void)postCellularProviderUpdatesIfNecessary;
+- (id)initWithClient:(id)arg1;
+- (void)postNotificationIfReady:(id)arg1 object:(id)arg2;
 - (void)queryCTSignalStrength;
 - (void)queryCellIds;
 - (void)queryRat;
@@ -68,10 +69,10 @@
 - (void)setCachedCellIds:(id)arg1;
 - (void)setCachedCurrentRadioAccessTechnology:(id)arg1;
 - (void)setCachedSignalStrength:(id)arg1;
+- (void)setDelegate:(id)arg1;
 - (void)setServiceSubscriberCellularProviderDidUpdateNotifier:(id /* block */)arg1;
 - (void)setServiceSubscriberCellularProviders:(id)arg1;
 - (void)setServiceSubscriberCellularProvidersDidUpdateNotifier:(id /* block */)arg1;
-- (void)setSubscriberCellularProvider:(id)arg1;
 - (void)setSubscriberCellularProviderDidUpdateNotifier:(id /* block */)arg1;
 - (id)signalStrength;
 - (void)signalStrengthChanged:(id)arg1 info:(id)arg2;

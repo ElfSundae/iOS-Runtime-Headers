@@ -12,7 +12,7 @@
         float mMid; 
         float mLength; 
     }  mXRange;
-    struct ODIHRangeVector { struct ODIHRange {} *x1; struct ODIHRange {} *x2; unsigned int x3; unsigned int x4; unsigned int x5; } * mXRanges;
+    struct ODIHRangeVector { struct ODIHRange {} *x1; struct ODIHRange {} *x2; struct __compressed_pair<ODIHRange *, ChAllocator<ODIHRange> > { struct ODIHRange {} *x_3_1_1; } x3; } * mXRanges;
 }
 
 - (void)addToXOffsetRelativeToParent:(float)arg1;
@@ -30,6 +30,6 @@
 - (int)treeDepth;
 - (float)xOffsetRelativeToParent;
 - (struct ODIHRange { float x1; float x2; })xRange;
-- (struct ODIHRangeVector { struct ODIHRange {} *x1; struct ODIHRange {} *x2; unsigned int x3; unsigned int x4; unsigned int x5; }*)xRanges;
+- (struct ODIHRangeVector { struct ODIHRange {} *x1; struct ODIHRange {} *x2; struct __compressed_pair<ODIHRange *, ChAllocator<ODIHRange> > { struct ODIHRange {} *x_3_1_1; } x3; }*)xRanges;
 
 @end

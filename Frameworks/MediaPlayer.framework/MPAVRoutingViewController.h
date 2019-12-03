@@ -2,16 +2,17 @@
    Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
  */
 
-@interface MPAVRoutingViewController : UIViewController <MPAVRoutingControllerDelegate, MPAVRoutingTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate> {
+@interface MPAVRoutingViewController : UIViewController <CARSessionObserving, MPAVRoutingControllerDelegate, MPAVRoutingTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate, _MPStateDumpPropertyListTransformable> {
     int  _airPlayPasswordAlertDidAppearToken;
     bool  _airPlayPasswordAlertDidAppearTokenIsValid;
     int  _airPlayPasswordAlertDidCancelToken;
     long long  _avItemType;
     NSArray * _cachedDisplayAsPickedRoutes;
+    NSArray * _cachedDisplayableAvailableRoutes;
     NSArray * _cachedPendingPickedRoutes;
     NSArray * _cachedPickedRoutes;
-    NSArray * _cachedRoutes;
     NSArray * _cachedVolumeCapableRoutes;
+    CARSessionStatus * _carPlayStatus;
     <MPAVRoutingViewControllerDelegate> * _delegate;
     long long  _discoveryModeBeforeEnteringBackground;
     NSNumber * _discoveryModeOverride;
@@ -28,16 +29,15 @@
     MPAVRoutingViewControllerUpdate * _pendingUpdate;
     long long  _routeDiscoveryMode;
     MPAVRoutingController * _routingController;
+    MPSectionedCollection * _routingViewItems;
     bool  _shouldAutomaticallyUpdateRoutesList;
     bool  _shouldPickRouteOnSelection;
     bool  _sortByIsVideoRoute;
     unsigned long long  _style;
     bool  _suspendedDiscoveryModeDueToApplicationState;
-    UIView * _tableBackgroundView;
     UIColor * _tableCellsBackgroundColor;
     UIColor * _tableCellsContentColor;
-    MPAVRoutingTableHeaderView * _tableHeaderView;
-    UITableView * _tableView;
+    MPAVClippingTableView * _tableView;
     <MPAVRoutingViewControllerThemeDelegate> * _themeDelegate;
     MPWeakTimer * _updateTimer;
     unsigned long long  _updatesSincePresentation;
@@ -61,6 +61,7 @@
 @property (nonatomic, retain) MPVolumeGroupSliderCoordinator *groupSliderCoordinator;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long iconStyle;
+@property (getter=isInCarPlay, nonatomic, readonly) bool inCarPlay;
 @property (nonatomic) unsigned long long mirroringStyle;
 @property (nonatomic, retain) NSMapTable *outputDeviceVolumeSliders;
 @property (nonatomic) bool sortByIsVideoRoute;
@@ -74,19 +75,22 @@
 - (void)_applicationWillEnterForegroundNotification:(id)arg1;
 - (void)_applyUpdate:(id)arg1;
 - (void)_beginRouteDiscovery;
-- (void)_configureCell:(id)arg1 forIndexPath:(id)arg2 withDisplayedRoutes:(id)arg3;
+- (void)_configureCell:(id)arg1 forIndexPath:(id)arg2;
 - (id)_crashLogDateFormatter;
 - (id)_createReloadUpdate;
+- (id)_createSectionedCollection:(id)arg1 withPickedRoutes:(id)arg2;
 - (id)_createVolumeSlider;
+- (void)_diplayShareAudioDisabledAlertForReason:(id)arg1;
 - (id)_displayAsPickedRoutesInRoutes:(id)arg1;
 - (id)_displayableRoutesInRoutes:(id)arg1;
-- (id)_displayedRoutes;
 - (void)_endRouteDiscovery;
+- (void)_endUpdates;
 - (void)_enqueueUpdate:(id)arg1;
 - (double)_expandedCellHeight;
 - (id)_generatePropertyListFromUpdateDisplayedRoutesState:(id)arg1 exception:(id)arg2;
 - (void)_initWithStyle:(unsigned long long)arg1 routingController:(id)arg2;
 - (double)_normalCellHeight;
+- (void)_registerCarPlayObserver;
 - (void)_registerNotifications;
 - (id)_routingController;
 - (void)_setNeedsDisplayedRoutesUpdate;
@@ -100,18 +104,18 @@
 - (bool)_shouldAutomaticallyUpdateRoutesList;
 - (bool)_shouldDisplayRouteAsPicked:(id)arg1;
 - (bool)_shouldPickRouteOnSelection;
+- (id)_stateDumpObject;
 - (id)_tableCellsBackgroundColor;
 - (id)_tableCellsContentColor;
-- (id)_tableHeaderView;
 - (id)_tableView;
 - (double)_tableViewFooterViewHeight;
 - (double)_tableViewHeaderViewHeight;
 - (double)_tableViewHeightAccordingToDataSource;
-- (unsigned long long)_tableViewNumberOfRows;
 - (void)_unregisterNotifications;
 - (void)_updateDisplayedRoutes;
 - (id)_volumeCapableRoutesInRoutes:(id)arg1;
 - (void)_volumeSliderVolumeControlAvailabilityDidChangeNotification:(id)arg1;
+- (bool)_wouldShareAudioForPickedRoute:(id)arg1 operation:(long long)arg2 pickedRoutes:(id)arg3;
 - (id)_writeToDiskWithUpdateDisplayedRoutesStatePropertyList:(id)arg1 error:(id*)arg2;
 - (bool)allowMirroring;
 - (long long)avItemType;
@@ -119,11 +123,15 @@
 - (id)delegate;
 - (id)discoveryModeOverride;
 - (id)endpointRoute;
+- (void)enqueueRefreshUpdate;
 - (id)groupSliderCoordinator;
+- (bool)hasCarKitRoute;
 - (unsigned long long)iconStyle;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithStyle:(unsigned long long)arg1;
 - (id)initWithStyle:(unsigned long long)arg1 routingController:(id)arg2;
+- (bool)isInCarPlay;
+- (bool)isInVehicle;
 - (unsigned long long)mirroringStyle;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)outputDeviceVolumeSliders;
@@ -135,6 +143,8 @@
 - (void)routingController:(id)arg1 pickedRoutesDidChange:(id)arg2;
 - (void)routingController:(id)arg1 shouldHijackRoute:(id)arg2 alertStyle:(long long)arg3 busyRouteName:(id)arg4 presentingAppName:(id)arg5 completion:(id /* block */)arg6;
 - (void)routingControllerAvailableRoutesDidChange:(id)arg1;
+- (void)sessionDidConnect:(id)arg1;
+- (void)sessionDidDisconnect:(id)arg1;
 - (void)setAVItemType:(long long)arg1;
 - (void)setAllowMirroring:(bool)arg1;
 - (void)setDelegate:(id)arg1;
@@ -146,13 +156,17 @@
 - (void)setOutputDeviceVolumeSliders:(id)arg1;
 - (void)setSortByIsVideoRoute:(bool)arg1;
 - (void)setThemeDelegate:(id)arg1;
+- (bool)shouldOverrideContentSizeCategory:(id)arg1;
 - (bool)sortByIsVideoRoute;
 - (unsigned long long)style;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
+- (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (id)themeDelegate;
 - (void)viewDidAppear:(bool)arg1;

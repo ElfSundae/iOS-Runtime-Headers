@@ -6,7 +6,7 @@
     NSCache * _imageCache;
 }
 
-@property (retain) NSCache *imageCache;
+@property (nonatomic, retain) NSCache *imageCache;
 
 + (id)sharedCache;
 

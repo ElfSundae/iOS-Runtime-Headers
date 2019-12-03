@@ -8,6 +8,7 @@
     long long  _articleOpenedAtTimestamp;
     NSString * _channelId;
     NSString * _countryCode;
+    NSString * _deviceModel;
     long long  _eventTimestamp;
     struct { 
         unsigned int articleOpenedAtTimestamp : 1; 
@@ -29,12 +30,14 @@
 @property (nonatomic) long long articleOpenedAtTimestamp;
 @property (nonatomic, retain) NSString *channelId;
 @property (nonatomic, retain) NSString *countryCode;
+@property (nonatomic, retain) NSString *deviceModel;
 @property (nonatomic) long long eventTimestamp;
 @property (nonatomic) bool hasArticleEngagementType;
 @property (nonatomic, readonly) bool hasArticleId;
 @property (nonatomic) bool hasArticleOpenedAtTimestamp;
 @property (nonatomic, readonly) bool hasChannelId;
 @property (nonatomic, readonly) bool hasCountryCode;
+@property (nonatomic, readonly) bool hasDeviceModel;
 @property (nonatomic) bool hasEventTimestamp;
 @property (nonatomic) bool hasIsPaidSubscriber;
 @property (nonatomic, readonly) bool hasIssueData;
@@ -57,6 +60,7 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)countryCode;
 - (id)description;
+- (id)deviceModel;
 - (id)dictionaryRepresentation;
 - (long long)eventTimestamp;
 - (bool)hasArticleEngagementType;
@@ -64,6 +68,7 @@
 - (bool)hasArticleOpenedAtTimestamp;
 - (bool)hasChannelId;
 - (bool)hasCountryCode;
+- (bool)hasDeviceModel;
 - (bool)hasEventTimestamp;
 - (bool)hasIsPaidSubscriber;
 - (bool)hasIssueData;
@@ -84,6 +89,7 @@
 - (void)setArticleOpenedAtTimestamp:(long long)arg1;
 - (void)setChannelId:(id)arg1;
 - (void)setCountryCode:(id)arg1;
+- (void)setDeviceModel:(id)arg1;
 - (void)setEventTimestamp:(long long)arg1;
 - (void)setHasArticleEngagementType:(bool)arg1;
 - (void)setHasArticleOpenedAtTimestamp:(bool)arg1;

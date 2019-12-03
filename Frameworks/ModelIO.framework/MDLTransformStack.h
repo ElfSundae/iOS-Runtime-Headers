@@ -26,6 +26,7 @@
 
 - (void).cxx_destruct;
 - (id)addMatrixOp:(id)arg1 inverse:(bool)arg2;
+- (id)addOrientOp:(id)arg1 inverse:(bool)arg2;
 - (id)addRotateOp:(id)arg1 order:(unsigned long long)arg2 inverse:(bool)arg3;
 - (id)addRotateXOp:(id)arg1 inverse:(bool)arg2;
 - (id)addRotateYOp:(id)arg1 inverse:(bool)arg2;
@@ -33,6 +34,7 @@
 - (id)addScaleOp:(id)arg1 inverse:(bool)arg2;
 - (id)addTranslateOp:(id)arg1 inverse:(bool)arg2;
 - (id)animatedMatrix4x4WithName:(id)arg1 shouldCreateIfMissing:(bool)arg2;
+- (id)animatedQuaternionWithName:(id)arg1 shouldCreateIfMissing:(bool)arg2;
 - (id)animatedScalarWithName:(id)arg1 shouldCreateIfMissing:(bool)arg2;
 - (id)animatedValueWithName:(id)arg1;
 - (id)animatedValues;
@@ -41,9 +43,11 @@
 - (void)clearTransformStack;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned long long)count;
+- (id)decomposedTransformAnimation;
 - (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })double4x4AtTime:(double)arg1;
 - (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })float4x4AtTime:(double)arg1;
 - (id)init;
+- (bool)isScaleRotateTransformOrder;
 - (id)keyTimes;
 - (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })localTransformAtTime:(double)arg1;
 - (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })matrix;

@@ -5,6 +5,7 @@
 @interface CRKStudentDaemonProxy : NSObject <CATTaskClientDelegate, CRKRequestPerformingProtocol> {
     bool  _connected;
     long long  _maxConnectionAttempts;
+    bool  _userExpectsReconnect;
     bool  mConnecting;
     long long  mConnectionAttempt;
     NSHashTable * mObservers;
@@ -18,6 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long maxConnectionAttempts;
 @property (readonly) Class superclass;
+@property (nonatomic) bool userExpectsReconnect;
 
 + (void)fetchResourceFromURL:(id)arg1 completion:(id /* block */)arg2;
 + (void)setActiveStudentIdentifier:(id)arg1 completion:(id /* block */)arg2;
@@ -42,5 +44,7 @@
 - (void)removeObserver:(id)arg1;
 - (void)setConnected:(bool)arg1;
 - (void)setMaxConnectionAttempts:(long long)arg1;
+- (void)setUserExpectsReconnect:(bool)arg1;
+- (bool)userExpectsReconnect;
 
 @end

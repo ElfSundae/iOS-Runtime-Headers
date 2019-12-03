@@ -14,6 +14,7 @@
 + (id)tokenizeNameString:(id)arg1;
 + (id)tokenizeNameString:(id)arg1 usingLocale:(id)arg2 inferredNameOrder:(long long*)arg3;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
 - (id)initWithLocale:(id)arg1;

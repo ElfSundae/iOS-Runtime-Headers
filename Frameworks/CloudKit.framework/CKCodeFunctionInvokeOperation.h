@@ -3,6 +3,7 @@
  */
 
 @interface CKCodeFunctionInvokeOperation : CKDatabaseOperation {
+    NSURL * _explicitBaseURL;
     id /* block */  _functionInvokeCompletionBlock;
     NSString * _functionName;
     bool  _local;
@@ -14,6 +15,7 @@
     bool  _shouldFetchAssetContentInMemory;
 }
 
+@property (nonatomic, copy) NSURL *explicitBaseURL;
 @property (nonatomic, copy) id /* block */ functionInvokeCompletionBlock;
 @property (nonatomic, copy) NSString *functionName;
 @property (nonatomic) bool local;
@@ -29,6 +31,7 @@
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_handleProgressCallback:(id)arg1 completion:(id /* block */)arg2;
 - (id)activityCreate;
+- (id)explicitBaseURL;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
 - (id /* block */)functionInvokeCompletionBlock;
@@ -36,6 +39,8 @@
 - (bool)hasCKOperationCallbacksSet;
 - (id)initWithServiceName:(id)arg1 functionName:(id)arg2 serializedParameters:(id)arg3;
 - (id)initWithServiceName:(id)arg1 functionName:(id)arg2 serializedParameters:(id)arg3 local:(bool)arg4;
+- (id)initWithServiceName:(id)arg1 functionName:(id)arg2 serializedRequest:(id)arg3;
+- (id)initWithServiceName:(id)arg1 functionName:(id)arg2 serializedRequest:(id)arg3 local:(bool)arg4;
 - (bool)local;
 - (id /* block */)perRecordProgressBlock;
 - (void)performCKOperation;
@@ -43,6 +48,7 @@
 - (id)serializedRequest;
 - (id)serializedResponse;
 - (id)serviceName;
+- (void)setExplicitBaseURL:(id)arg1;
 - (void)setFunctionInvokeCompletionBlock:(id /* block */)arg1;
 - (void)setFunctionName:(id)arg1;
 - (void)setLocal:(bool)arg1;

@@ -3,16 +3,16 @@
  */
 
 @interface PKMicaLayer : CALayer <PKMicaResizableView> {
-    NSArray * _publishedColorLayers;
-    NSArray * _publishedColorShapeLayers;
+    NSDictionary * _publishedColorLayers;
+    NSDictionary * _publishedColorShapeLayers;
     CALayer * _rootLayer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) NSArray *publishedColorLayers;
-@property (nonatomic, readonly) NSArray *publishedColorShapeLayers;
+@property (nonatomic, readonly) NSDictionary *publishedColorLayers;
+@property (nonatomic, readonly) NSDictionary *publishedColorShapeLayers;
 @property (nonatomic, readonly) CALayer *rootLayer;
 @property (readonly) Class superclass;
 

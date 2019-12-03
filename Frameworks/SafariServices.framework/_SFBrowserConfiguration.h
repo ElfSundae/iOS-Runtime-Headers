@@ -19,6 +19,7 @@
 @property (nonatomic, readonly) bool allowsStreamlinedLogin;
 @property (nonatomic, readonly) bool allowsUserActivityFeedback;
 @property (nonatomic, readonly) unsigned long long barTintStyle;
+@property (getter=isControlledByAutomation, nonatomic, readonly) bool controlledByAutomation;
 @property (getter=isPrivateBrowsingEnabled, nonatomic, readonly) bool privateBrowsingEnabled;
 @property (nonatomic, readonly) <UITraitEnvironment> *traitEnvironment;
 @property (nonatomic, readonly) bool usesDarkTheme;
@@ -39,7 +40,8 @@
 - (unsigned long long)barTintStyle;
 - (id)description;
 - (unsigned long long)hash;
-- (id)initWithPrivateBrowsingEnabled:(bool)arg1 traitEnvironment:(id)arg2;
+- (id)initWithPrivateBrowsingEnabled:(bool)arg1 traitEnvironment:(id)arg2 controlledByAutomation:(bool)arg3;
+- (bool)isControlledByAutomation;
 - (bool)isEqual:(id)arg1;
 - (bool)isPrivateBrowsingEnabled;
 - (id)traitEnvironment;

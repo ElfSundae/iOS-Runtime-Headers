@@ -3,41 +3,7 @@
  */
 
 @interface NTKCurvedColoringLabel : NTKColoringLabel {
-    NSAttributedString * _attributedStringWithoutColorModification;
-    struct CGRect { 
-        struct CGPoint { 
-            double x; 
-            double y; 
-        } origin; 
-        struct CGSize { 
-            double width; 
-            double height; 
-        } size; 
-    }  _cachedBounds;
-    struct CGRect { 
-        struct CGPoint { 
-            double x; 
-            double y; 
-        } origin; 
-        struct CGSize { 
-            double width; 
-            double height; 
-        } size; 
-    }  _cachedGlyphsBoundingRect;
-    double  _centerAngle;
-    double  _circleRadius;
-    CLKFont * _font;
-    bool  _hasMonospacedNumbers;
-    double  _imagePadding;
-    unsigned long long  _imagePlacement;
-    UIView * _imageView;
-    bool  _interior;
-    NSLayoutManager * _layoutManager;
-    double  _maxAngularWidth;
-    UIColor * _textColor;
-    NSTextContainer * _textContainer;
-    NSTextStorage * _textStorage;
-    double  _viewAlpha;
+    CLKUICurvedLabel * _curvedLabel;
 }
 
 @property (nonatomic) double centerAngle;
@@ -50,25 +16,15 @@
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } textBoundingRect;
 
 - (void).cxx_destruct;
-- (double)_distance;
-- (struct _NSRange { unsigned long long x1; unsigned long long x2; })_drawableCharacterRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; }*)arg1;
-- (void)_enumerateTransforms:(bool)arg1 callback:(id /* block */)arg2;
-- (void)_enumerateTransformsForDrawableCharacters:(id /* block */)arg1;
-- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_glyphsBoundingRect;
-- (bool)_hasImage;
-- (struct __CTLine { }*)_newLineFromDrawableTextStorage;
-- (struct CGPoint { double x1; double x2; })_offsetOfBoundingRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 inRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
-- (void)_transformForImage:(id /* block */)arg1;
-- (void)_updateColor;
-- (void)_updateMaxSize;
-- (void)_updateTracking;
+- (double)_firstLineBaseline;
+- (double)_lastLineBaseline;
+- (void)_setAnimationAlpha:(double)arg1;
+- (void)_setUpSnapshot;
 - (double)alpha;
 - (id)attributedText;
 - (double)centerAngle;
 - (double)circleRadius;
 - (id)color;
-- (void)dealloc;
-- (void)drawTextInRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)font;
 - (void)getTextCenter:(struct CGPoint { double x1; double x2; }*)arg1 startAngle:(double*)arg2 endAngle:(double*)arg3;
 - (double)imagePadding;
@@ -77,15 +33,19 @@
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (bool)interior;
 - (void)invalidateCachedSize;
+- (bool)isTextTruncated;
 - (void)layoutSubviews;
 - (double)maxAngularWidth;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
+- (double)maxWidth;
+- (long long)numberOfLines;
 - (void)setAlpha:(double)arg1;
 - (void)setAttributedText:(id)arg1;
+- (void)setBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setCenterAngle:(double)arg1;
 - (void)setCircleRadius:(double)arg1;
 - (void)setColor:(id)arg1;
 - (void)setFont:(id)arg1;
+- (void)setFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setImagePadding:(double)arg1;
 - (void)setImagePlacement:(unsigned long long)arg1;
 - (void)setImageView:(id)arg1;
@@ -95,11 +55,15 @@
 - (void)setMaxWidth:(double)arg1;
 - (void)setNumberOfLines:(long long)arg1;
 - (void)setText:(id)arg1;
+- (void)setTextColor:(id)arg1;
 - (void)setTextProviderFont:(id)arg1;
 - (void)setTracking:(double)arg1;
+- (void)setUsesTextProviderTintColoring:(bool)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
+- (void)sizeToFit;
 - (id)text;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })textBoundingRect;
+- (id)textColor;
 - (id)textProviderFont;
 
 @end

@@ -10,6 +10,7 @@
 
 - (void)CADDatabaseGetDeletableCalendars:(id /* block */)arg1;
 - (void)CADDatabaseGetDeletableSources:(id /* block */)arg1;
+- (void)CADDatabaseGetOrCreateSubscribedCalendarsSource:(id /* block */)arg1;
 - (bool)accessGrantedToPerformSelector:(SEL)arg1;
 
 @end

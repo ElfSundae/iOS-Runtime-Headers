@@ -9,6 +9,7 @@
 @property (nonatomic, retain) NSMutableArray *cacheFeedbacks;
 
 + (Class)cacheFeedbackType;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (void)addCacheFeedback:(id)arg1;
@@ -23,6 +24,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setCacheFeedbacks:(id)arg1;
 - (void)writeTo:(id)arg1;

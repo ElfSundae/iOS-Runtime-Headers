@@ -44,6 +44,7 @@
 
 + (id)binaryEffects:(bool)arg1;
 
+- (void).cxx_destruct;
 - (void)addChild:(id)arg1;
 - (void)addChildren:(id)arg1;
 - (id)backWallGraphicProperties;
@@ -53,7 +54,6 @@
 - (id)childAtIndex:(unsigned long long)arg1;
 - (unsigned long long)childCount;
 - (id)children;
-- (void)dealloc;
 - (id)defaultContentFormat;
 - (id)defaultDataLabelFont;
 - (unsigned long long)defaultFontIndex;
@@ -72,6 +72,7 @@
 - (bool)hasVisibleSeriesNames;
 - (id)init;
 - (bool)is3D;
+- (bool)isArea;
 - (bool)isAutoTitleDeleted;
 - (bool)isBinary;
 - (bool)isDirectionChanged;
@@ -114,6 +115,7 @@
 - (id)sideWallGraphicProperties;
 - (int)styleId;
 - (id)styleMatrix;
+- (bool)supportsMarkers;
 - (id)themeOverrides;
 - (id)title;
 - (id)view3D;

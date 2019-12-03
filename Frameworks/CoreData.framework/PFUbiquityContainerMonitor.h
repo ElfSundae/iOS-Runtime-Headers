@@ -7,7 +7,6 @@
     int  _containerState;
     <NSObject><NSCopying><NSCoding> * _currentIdentityToken;
     bool  _hasScheduledCheckBlock;
-    NSString * _identityTokenOverride;
     NSString * _localPeerID;
     int  _monitorState;
     NSObject<OS_dispatch_queue> * _processingQueue;

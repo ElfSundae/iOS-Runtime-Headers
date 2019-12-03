@@ -9,9 +9,10 @@
 @property (nonatomic, retain) _UIStatusBarBadgeView *badgeView;
 
 + (id)badgeDisplayIdentifier;
-+ (id)groupWithHighPriority:(long long)arg1 lowPriority:(long long)arg2;
++ (id)groupWithHighPriority:(long long)arg1 lowPriority:(long long)arg2 typeClass:(Class)arg3;
 
 - (void).cxx_destruct;
+- (void)_create_badgeView;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
 - (id)badgeView;
 - (void)setBadgeView:(id)arg1;

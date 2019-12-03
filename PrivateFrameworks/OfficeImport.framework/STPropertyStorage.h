@@ -7,7 +7,6 @@
 }
 
 - (void)close;
-- (void)dealloc;
 - (id)getDocumentPropertyWithId:(int)arg1 propType:(int*)arg2;
 - (id)getDocumentPropertyWithName:(id)arg1 propType:(int*)arg2;
 - (int)getLongDocumentPropertyWithId:(int)arg1;

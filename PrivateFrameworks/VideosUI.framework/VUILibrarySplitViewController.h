@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/VideosUI.framework/VideosUI
  */
 
-@interface VUILibrarySplitViewController : UISplitViewController <VUICategoryMenuViewControllerDelegate, VUIHomeShareViewControllerDelegate, VUILibraryCategoryMenuViewModelDelegate, VUILibraryGridCollectionViewControllerDelegate> {
+@interface VUILibrarySplitViewController : UISplitViewController <UISplitViewControllerDelegate, VUICategoryMenuViewControllerDelegate, VUIHomeShareViewControllerDelegate, VUILibraryCategoryMenuViewModelDelegate, VUILibraryGridCollectionViewControllerDelegate> {
     VUILibraryAlertView * _alertView;
     VUILibraryCategoryMenuViewModel * _categoryViewModel;
     VUILibraryGridCollectionViewController * _currentGridCollectionViewController;
@@ -15,7 +15,6 @@
     VUIMediaLibrary * _mediaLibrary;
     VUICategoryMenuViewController * _menuViewController;
     bool  _shouldShowBackButton;
-    NSSet * _validCategories;
 }
 
 @property (nonatomic, retain) VUILibraryAlertView *alertView;
@@ -34,7 +33,6 @@
 @property (nonatomic, retain) VUICategoryMenuViewController *menuViewController;
 @property (nonatomic) bool shouldShowBackButton;
 @property (readonly) Class superclass;
-@property (nonatomic, retain) NSSet *validCategories;
 
 - (void).cxx_destruct;
 - (void)_addMediaLibraryNotificationObservers;
@@ -50,17 +48,17 @@
 - (void)_setDisplayModeForLayoutType:(long long)arg1;
 - (void)_showOrHideNoContentView;
 - (void)_updateRentals;
+- (id)_viewControllerForIndexPath:(id)arg1;
 - (id)alertView;
 - (void)categoryMenuViewController:(id)arg1 didSelectMenuItemAtIndexPath:(id)arg2;
 - (void)categoryMenuViewControllerShouldDismiss:(id)arg1;
 - (id)categoryViewModel;
-- (void)categoryViewModel:(id)arg1 categoriesDidChange:(id)arg2;
-- (void)categoryViewModel:(id)arg1 fetchDidCompleteWithCategories:(id)arg2 error:(id)arg3;
 - (id)currentGridCollectionViewController;
 - (id)currentHomeShareMediaLibrary;
 - (id)currentlySelectedIndexPath;
 - (void)dealloc;
 - (id)detailNavigationController;
+- (void)fetchDidCompleteForViewModel:(id)arg1;
 - (void)gridCollectionViewController:(id)arg1 didSelectMediaEntity:(id)arg2;
 - (bool)hasLoaded;
 - (void)homeShareViewController:(id)arg1 didSelectHomeShare:(id)arg2;
@@ -83,9 +81,11 @@
 - (void)setMenuViewController:(id)arg1;
 - (void)setPageMetricsForCategory:(id)arg1 onLibraryGridCollectionViewController:(id)arg2;
 - (void)setShouldShowBackButton:(bool)arg1;
-- (void)setValidCategories:(id)arg1;
 - (bool)shouldShowBackButton;
-- (id)validCategories;
+- (void)showDetailViewController:(id)arg1 sender:(id)arg2;
+- (bool)splitViewController:(id)arg1 collapseSecondaryViewController:(id)arg2 ontoPrimaryViewController:(id)arg3;
+- (id)splitViewController:(id)arg1 separateSecondaryViewControllerFromPrimaryViewController:(id)arg2;
+- (void)updateForViewModel:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;

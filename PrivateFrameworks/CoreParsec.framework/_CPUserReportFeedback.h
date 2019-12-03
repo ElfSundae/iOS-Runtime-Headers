@@ -17,7 +17,6 @@
 @property (nonatomic, readonly) id feedbackJSON;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
-@property (nonatomic, readonly) bool requiresQueryId;
 @property (nonatomic, retain) _CPSearchResultForFeedback *result;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long timestamp;
@@ -35,7 +34,6 @@
 - (bool)isEqual:(id)arg1;
 - (id)jsonData;
 - (bool)readFrom:(id)arg1;
-- (bool)requiresQueryId;
 - (id)result;
 - (void)setCardSection:(id)arg1;
 - (void)setResult:(id)arg1;

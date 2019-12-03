@@ -8,18 +8,16 @@
         double latitude; 
         double longitude; 
     }  _coordinate;
-    NSDate * _date;
     GEOSolarEclipticCelestialBodyData * _eclipticCoord;
     double  _elongation;
     GEOEquatorialCelestialBodyData * _equatorialCoord;
     bool  _highPrecision;
     GEOHorizontalCelestialBodyData * _horizontalCoord;
     double  _illuminatedFraction;
+    double  _julianDay;
     double  _parallacticAngle;
     double  _phaseAngle;
-    NSDate * _rise;
-    NSDate * _set;
-    NSDate * _transit;
+    GEOCelestialRiseTransitSet * _riseTransitSet;
 }
 
 @property (nonatomic, readonly) GEOSolarEclipticCelestialBodyData *eclipticCoord;
@@ -27,6 +25,7 @@
 @property (nonatomic, readonly) GEOEquatorialCelestialBodyData *equatorialCoord;
 @property (nonatomic, readonly) GEOHorizontalCelestialBodyData *horizontalCoord;
 @property (nonatomic, readonly) double illuminatedFraction;
+@property (nonatomic, readonly) bool isTransitAboveHorizon;
 @property (nonatomic, readonly) double parallacticAngle;
 @property (nonatomic, readonly) double phaseAngle;
 @property (nonatomic, readonly) NSDate *rise;
@@ -34,8 +33,7 @@
 @property (nonatomic, readonly) NSDate *transit;
 
 - (void).cxx_destruct;
-- (void)_getRightAscension:(double*)arg1 declination:(double*)arg2 forJulianDay:(double)arg3 forBody:(long long)arg4;
-- (struct CAARiseTransitSetDetails { bool x1; double x2; bool x3; bool x4; double x5; bool x6; double x7; })_riseTransitSetForBody:(long long)arg1;
+- (id)description;
 - (id)eclipticCoord;
 - (double)elongation;
 - (id)equatorialCoord;
@@ -43,6 +41,8 @@
 - (double)illuminatedFraction;
 - (id)initWithLocation:(struct { double x1; double x2; })arg1 date:(id)arg2 body:(long long)arg3;
 - (id)initWithLocation:(struct { double x1; double x2; })arg1 date:(id)arg2 body:(long long)arg3 useHighPrecision:(bool)arg4;
+- (id)initWithLocation:(struct { double x1; double x2; })arg1 julianDay:(double)arg2 body:(long long)arg3 altitude:(double)arg4 useHighPrecision:(bool)arg5;
+- (bool)isTransitAboveHorizon;
 - (double)parallacticAngle;
 - (double)phaseAngle;
 - (id)rise;

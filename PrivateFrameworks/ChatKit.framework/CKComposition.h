@@ -27,8 +27,10 @@
 @property (getter=isTextOnly, nonatomic, readonly) bool textOnly;
 
 + (id)__ck_valueForItemClass:(Class)arg1 forItemProvider:(id)arg2;
++ (id)_savedCompositionForGUID:(id)arg1 readUsingBlock:(id /* block */)arg2;
 + (bool)_shouldCreateMediaObjectForUTIType:(id)arg1;
 + (id)_temporaryURLFromURL:(id)arg1;
++ (id)_transcoderUserInfoFor:(id)arg1 filename:(id)arg2 type:(id)arg3;
 + (id)audioCompositionWithMediaObject:(id)arg1;
 + (id)composition;
 + (id)compositionForMessageParts:(id)arg1 preserveSubject:(bool)arg2;
@@ -63,6 +65,7 @@
 - (id)_compositionByAppendingText:(id)arg1 isExpirable:(bool)arg2 shelfPluginPayload:(id)arg3;
 - (id)_compositionParts;
 - (id)_messageFromPayload:(id)arg1 firstGUID:(id)arg2;
+- (bool)_saveCompositionData:(id)arg1 atURL:(id)arg2 forGUID:(id)arg3;
 - (Class)balloonViewClass;
 - (id)compositionByAppendingComposition:(id)arg1;
 - (id)compositionByAppendingMediaObject:(id)arg1;

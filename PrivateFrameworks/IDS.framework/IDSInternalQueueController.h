@@ -14,6 +14,7 @@
 - (void)assertQueueIsNotCurrent;
 - (id)init;
 - (id)initWithName:(char *)arg1 contextKey:(void*)arg2;
+- (id)initWithQueue:(id)arg1;
 - (bool)isQueueCurrent;
 - (void)performBlock:(id /* block */)arg1;
 - (void)performBlock:(id /* block */)arg1 waitUntilDone:(bool)arg2;

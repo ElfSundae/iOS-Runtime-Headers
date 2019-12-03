@@ -58,6 +58,7 @@
     NSMutableDictionary * _peelMaskImageCache;
     CALayer * _peelMaskLayer;
     CALayer * _perspectiveLayer;
+    UIView * _plusImageView;
     bool  _pressed;
     struct CGPoint { 
         double x; 
@@ -89,6 +90,7 @@
             double height; 
         } size; 
     }  _sourceRect;
+    UIView * _whiteBackground;
 }
 
 @property (nonatomic, readonly) double absoluteScale;
@@ -134,6 +136,7 @@
 @property (nonatomic, retain) NSMutableDictionary *peelMaskImageCache;
 @property (nonatomic, retain) CALayer *peelMaskLayer;
 @property (nonatomic) CALayer *perspectiveLayer;
+@property (nonatomic, retain) UIView *plusImageView;
 @property (getter=isPressed, nonatomic) bool pressed;
 @property (nonatomic) struct CGPoint { double x1; double x2; } previousPanLocationInView;
 @property (nonatomic) struct CGSize { double x1; double x2; } rasterizedImageSize;
@@ -145,6 +148,7 @@
 @property (nonatomic) struct CGPoint { double x1; double x2; } shineLayerStartPosition;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } sourceRect;
 @property (readonly) Class superclass;
+@property (nonatomic, retain) UIView *whiteBackground;
 
 + (id)meshTransform;
 + (id)springAnimationWithKeyPath:(id)arg1 speed:(float)arg2;
@@ -160,7 +164,7 @@
 - (struct CGPoint { double x1; double x2; })anchorOffset;
 - (void)animateBackToSourceCompletionBlock:(id /* block */)arg1;
 - (void)animatePeelWithCompletion:(id /* block */)arg1;
-- (void)animatePlacementAtPoint:(struct CGPoint { double x1; double x2; })arg1 completionBlock:(id /* block */)arg2;
+- (void)animatePlacementAtPoint:(struct CGPoint { double x1; double x2; })arg1 shouldShrink:(bool)arg2 completionBlock:(id /* block */)arg3;
 - (void)animateScaleDown;
 - (void)animationTimerFired:(unsigned long long)arg1;
 - (void)applicationDidEnterBackground:(id)arg1;
@@ -214,9 +218,10 @@
 - (id)peelMaskImageFromImage:(id)arg1;
 - (id)peelMaskLayer;
 - (id)perspectiveLayer;
+- (id)plusImageView;
 - (struct CGPoint { double x1; double x2; })previousPanLocationInView;
 - (struct CGSize { double x1; double x2; })rasterizedImageSize;
-- (void)reversePeelAnimationToPoint:(struct CGPoint { double x1; double x2; })arg1 forPlacement:(bool)arg2 completionBlock:(id /* block */)arg3;
+- (void)reversePeelAnimationToPoint:(struct CGPoint { double x1; double x2; })arg1 forPlacement:(bool)arg2 shouldShrink:(bool)arg3 completionBlock:(id /* block */)arg4;
 - (double)rotationAngle;
 - (id)scaleImage:(id)arg1 toSize:(struct CGSize { double x1; double x2; })arg2;
 - (void)setAnchorOffset:(struct CGPoint { double x1; double x2; })arg1;
@@ -256,6 +261,8 @@
 - (void)setPeelMaskImageCache:(id)arg1;
 - (void)setPeelMaskLayer:(id)arg1;
 - (void)setPerspectiveLayer:(id)arg1;
+- (void)setPlusImageView:(id)arg1;
+- (void)setPlusImageViewHidden:(bool)arg1;
 - (void)setPressed:(bool)arg1;
 - (void)setPreviousPanLocationInView:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setRasterizedImageSize:(struct CGSize { double x1; double x2; })arg1;
@@ -267,6 +274,7 @@
 - (void)setShineLayerStartPosition:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setSourceRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setUpPeelLayers;
+- (void)setWhiteBackground:(id)arg1;
 - (id)shadowLayer;
 - (struct CGPoint { double x1; double x2; })shadowLayerStartPosition;
 - (id)shineLayer;
@@ -278,5 +286,6 @@
 - (void)viewDidLoad;
 - (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(bool)arg2;
 - (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
+- (id)whiteBackground;
 
 @end

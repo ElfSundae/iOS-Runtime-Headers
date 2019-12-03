@@ -12,6 +12,7 @@
 @property (nonatomic, copy) NSData *rawHistoryToken;
 @property (nonatomic) long long syncVersion;
 
+- (void)configureFromSyncVersions:(id)arg1;
 - (id)historyToken;
 - (id)mutableCopy;
 - (void)setHistoryToken:(id)arg1;

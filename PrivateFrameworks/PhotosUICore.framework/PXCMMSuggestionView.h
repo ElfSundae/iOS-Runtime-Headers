@@ -2,52 +2,53 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXCMMSuggestionView : UIView {
+@interface PXCMMSuggestionView : UICollectionViewCell <PXChangeObserver> {
     UIImageView * _combinedFaceTileImageView;
-    bool  _containsUnverifiedPersons;
+    <PXCMMSuggestionViewDelegate> * _delegate;
     PXCMMPosterHeaderView * _headerView;
-    NSArray * _names;
-    UIColor * _opaqueAncestorBackgroundColor;
     PXRoundedCornerOverlayView * _roundedCornerOverlayView;
-    NSString * _subtitle;
     UILabel * _subtitleLabel;
     UIFont * _titleBoldFont;
     UIFont * _titleFont;
     UILabel * _titleLabel;
+    PXCMMSuggestionViewModel * _viewModel;
 }
 
-@property (nonatomic, retain) UIImage *combinedFaceTileImage;
-@property (nonatomic) bool containsUnverifiedPersons;
-@property (nonatomic, readonly) PXCMMPosterHeaderView *headerView;
-@property (getter=isHighlighted, nonatomic) bool highlighted;
-@property (nonatomic, copy) NSArray *names;
-@property (nonatomic, copy) UIColor *opaqueAncestorBackgroundColor;
-@property (nonatomic, copy) NSString *subtitle;
+@property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) <PXCMMSuggestionViewDelegate> *delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } headerViewBounds;
+@property (nonatomic, readonly) UIView *previewView;
+@property (readonly) Class superclass;
+@property (nonatomic, retain) PXCMMSuggestionViewModel *viewModel;
 
-+ (double)faceTileImageDiameter;
++ (struct CGSize { double x1; double x2; })posterHeaderViewSizeForSize:(struct CGSize { double x1; double x2; })arg1 scale:(double)arg2;
++ (struct CGSize { double x1; double x2; })posterImageSizeThatFits:(struct CGSize { double x1; double x2; })arg1 scale:(double)arg2;
++ (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1 viewModel:(id)arg2;
 
 - (void).cxx_destruct;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (struct CGSize { double x1; double x2; })_performLayoutInWidth:(double)arg1 updateSubviewFrames:(bool)arg2;
+- (void)_tapGesture:(id)arg1;
+- (bool)_updateCombinedFaceTileImage;
 - (void)_updateFonts;
-- (id)asset;
-- (id)combinedFaceTileImage;
-- (bool)containsUnverifiedPersons;
-- (id)headerView;
+- (void)_updateHeaderView;
+- (void)_updateOpaqueAncestorBackgroundColor;
+- (bool)_updateSubtitle;
+- (id)delegate;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })headerViewBounds;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
-- (bool)isHighlighted;
 - (void)layoutSubviews;
-- (id)mediaProvider;
-- (id)names;
-- (id)opaqueAncestorBackgroundColor;
-- (void)setAsset:(id)arg1 mediaProvider:(id)arg2;
-- (void)setCombinedFaceTileImage:(id)arg1;
-- (void)setContainsUnverifiedPersons:(bool)arg1;
-- (void)setHighlighted:(bool)arg1;
-- (void)setNames:(id)arg1;
-- (void)setOpaqueAncestorBackgroundColor:(id)arg1;
-- (void)setSubtitle:(id)arg1;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void*)arg3;
+- (id)previewView;
+- (void)setDelegate:(id)arg1;
+- (void)setViewModel:(id)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
-- (id)subtitle;
+- (bool)test_selected;
+- (id)test_subtitle;
+- (id)test_title;
+- (id)viewModel;
 
 @end

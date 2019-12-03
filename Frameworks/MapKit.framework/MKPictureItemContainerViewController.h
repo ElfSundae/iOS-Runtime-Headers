@@ -31,7 +31,7 @@
 - (struct CGPoint { double x1; double x2; })beginAnalyticsScrollingPoint;
 - (void)didTapOnPictureItemView:(id)arg1;
 - (void)downloadImageForVisiblePictureItemViews;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (id)initWithPictureItemContainer:(id)arg1 attribution:(id)arg2;
 - (id)pictureItemContainer;
 - (void)placePhotoViewerAttributionTappedForPhotoAtIndex:(unsigned long long)arg1 photo:(id)arg2;

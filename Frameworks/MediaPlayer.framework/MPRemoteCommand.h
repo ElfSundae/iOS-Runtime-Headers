@@ -4,13 +4,12 @@
 
 @interface MPRemoteCommand : NSObject {
     <MPRemoteCommandDelegate_Internal> * _commandCenterDelegate;
-    NSString * _contextID;
     <MPRemoteCommandDelegate_Private> * _delegate;
     bool  _enabled;
+    NSMutableDictionary * _handlers;
     unsigned int  _mediaRemoteCommandType;
     bool  _observing;
     NSObject<OS_dispatch_queue> * _serialQueue;
-    NSMutableArray * _targetInvocations;
 }
 
 @property (nonatomic) <MPRemoteCommandDelegate_Internal> *commandCenterDelegate;
@@ -23,13 +22,13 @@
 @property (getter=isSupportedAndEnabled, nonatomic, readonly) bool supportedAndEnabled;
 
 - (void).cxx_destruct;
-- (void)_addTarget:(id)arg1 action:(SEL)arg2 retainTarget:(bool)arg3;
 - (id)_mediaRemoteCommandInfoOptions;
 - (void)addTarget:(id)arg1 action:(SEL)arg2;
 - (id)addTargetWithHandler:(id /* block */)arg1;
 - (id)commandCenterDelegate;
 - (struct _MRMediaRemoteCommandInfo { }*)createCommandInfoRepresentation;
 - (id)delegate;
+- (id)description;
 - (bool)hasTargets;
 - (id)initWithMediaRemoteCommandType:(unsigned int)arg1;
 - (void)invokeCommandWithEvent:(id)arg1 completion:(id /* block */)arg2;

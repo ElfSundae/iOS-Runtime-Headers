@@ -3,15 +3,18 @@
  */
 
 @interface NFReaderSession : NFSession <NFReaderSessionCallbacks> {
+    long long  _actionSheetUI;
     NFWeakReference * _delegate;
 }
 
+@property (readonly) long long actionSheetUI;
 @property (readonly, copy) NSString *debugDescription;
 @property <NFReaderSessionDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (long long)actionSheetUI;
 - (bool)checkNdefSupportsRead:(bool*)arg1 andWrite:(bool*)arg2;
 - (bool)checkNdefSupportsRead:(bool*)arg1 andWrite:(bool*)arg2 error:(id*)arg3;
 - (bool)checkPresence;
@@ -34,12 +37,14 @@
 - (id)felicaStateWithError:(id*)arg1;
 - (bool)formatNdefWithKey:(id)arg1;
 - (bool)formatNdefWithKey:(id)arg1 error:(id*)arg2;
+- (id)initWithUIType:(long long)arg1;
 - (id)ndefRead;
 - (id)ndefReadWithError:(id*)arg1;
 - (bool)ndefWrite:(id)arg1;
 - (bool)ndefWrite:(id)arg1 error:(id*)arg2;
 - (unsigned int)runScript:(id)arg1 parameters:(id)arg2 results:(id*)arg3;
 - (void)setDelegate:(id)arg1;
+- (id)skipMifareClassification;
 - (bool)startPolling;
 - (bool)startPollingForTechnology:(unsigned int)arg1;
 - (bool)startPollingForTechnology:(unsigned int)arg1 error:(id*)arg2;
@@ -48,5 +53,6 @@
 - (bool)stopPollingWithError:(id*)arg1;
 - (id)transceive:(id)arg1;
 - (id)transceive:(id)arg1 error:(id*)arg2;
+- (id)updateUIAlertMessage:(id)arg1;
 
 @end

@@ -19,9 +19,9 @@
 
 - (void).cxx_destruct;
 - (void)_updateImageWithType:(long long)arg1;
+- (void)_updateTouchInsetsToFillContainerWithSize:(struct CGSize { double x1; double x2; })arg1;
 - (id)glyphColor;
 - (id)image;
-- (id)imageNameForType:(long long)arg1;
 - (struct CGSize { double x1; double x2; })intrinsicContentSize;
 - (void)setGlyphColor:(id)arg1;
 - (void)setImage:(id)arg1;

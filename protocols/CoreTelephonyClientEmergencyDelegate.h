@@ -6,5 +6,6 @@
 @optional
 
 - (void)emergencyModeChanged:(CTXPCServiceSubscriptionContext *)arg1 mode:(CTEmergencyMode *)arg2;
+- (void)normalEmergencyModeChanged:(CTXPCServiceSubscriptionContext *)arg1 mode:(CTEmergencyMode *)arg2;
 
 @end

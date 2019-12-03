@@ -6,9 +6,11 @@
     struct { 
         unsigned int startTimestamp : 1; 
         unsigned int timestamp : 1; 
+        unsigned int seCounterMeasureLevel : 1; 
         unsigned int totalAPNReceived : 1; 
         unsigned int totalAccessTransaction : 1; 
         unsigned int totalAuthECommerce : 1; 
+        unsigned int totalBurnoutTimerCounter : 1; 
         unsigned int totalCEEnable : 1; 
         unsigned int totalCEEnabledWithMissingTransactionEndEvent : 1; 
         unsigned int totalCEEnabledWithNoFieldDetected : 1; 
@@ -21,6 +23,7 @@
         unsigned int totalFelicaEMoneyTransaction : 1; 
         unsigned int totalFelicaTransitTransaction : 1; 
         unsigned int totalGenericAExpressTransaction : 1; 
+        unsigned int totalLPEMCounter : 1; 
         unsigned int totalPTDatabaseCorruption : 1; 
         unsigned int totalPTKeyDeletionFailed : 1; 
         unsigned int totalPTKeys : 1; 
@@ -45,11 +48,13 @@
     bool  _hasAttackLogs;
     bool  _hasFelicaExpressTransactionEnable;
     bool  _hasGenericAExpressEnable;
+    unsigned int  _seCounterMeasureLevel;
     unsigned long long  _startTimestamp;
     unsigned long long  _timestamp;
     unsigned int  _totalAPNReceived;
     unsigned int  _totalAccessTransaction;
     unsigned int  _totalAuthECommerce;
+    unsigned int  _totalBurnoutTimerCounter;
     unsigned int  _totalCEEnable;
     unsigned int  _totalCEEnabledWithMissingTransactionEndEvent;
     unsigned int  _totalCEEnabledWithNoFieldDetected;
@@ -62,6 +67,7 @@
     unsigned int  _totalFelicaEMoneyTransaction;
     unsigned int  _totalFelicaTransitTransaction;
     unsigned int  _totalGenericAExpressTransaction;
+    unsigned int  _totalLPEMCounter;
     unsigned int  _totalPTDatabaseCorruption;
     unsigned int  _totalPTKeyDeletionFailed;
     unsigned int  _totalPTKeys;
@@ -87,11 +93,13 @@
 @property (nonatomic) bool hasHasAttackLogs;
 @property (nonatomic) bool hasHasFelicaExpressTransactionEnable;
 @property (nonatomic) bool hasHasGenericAExpressEnable;
+@property (nonatomic) bool hasSeCounterMeasureLevel;
 @property (nonatomic) bool hasStartTimestamp;
 @property (nonatomic) bool hasTimestamp;
 @property (nonatomic) bool hasTotalAPNReceived;
 @property (nonatomic) bool hasTotalAccessTransaction;
 @property (nonatomic) bool hasTotalAuthECommerce;
+@property (nonatomic) bool hasTotalBurnoutTimerCounter;
 @property (nonatomic) bool hasTotalCEEnable;
 @property (nonatomic) bool hasTotalCEEnabledWithMissingTransactionEndEvent;
 @property (nonatomic) bool hasTotalCEEnabledWithNoFieldDetected;
@@ -104,6 +112,7 @@
 @property (nonatomic) bool hasTotalFelicaEMoneyTransaction;
 @property (nonatomic) bool hasTotalFelicaTransitTransaction;
 @property (nonatomic) bool hasTotalGenericAExpressTransaction;
+@property (nonatomic) bool hasTotalLPEMCounter;
 @property (nonatomic) bool hasTotalPTDatabaseCorruption;
 @property (nonatomic) bool hasTotalPTKeyDeletionFailed;
 @property (nonatomic) bool hasTotalPTKeys;
@@ -119,11 +128,13 @@
 @property (nonatomic) bool hasTotalVASActivation;
 @property (nonatomic) bool hasTotalVASSignup;
 @property (nonatomic) bool hasTotalVASTransactionException;
+@property (nonatomic) unsigned int seCounterMeasureLevel;
 @property (nonatomic) unsigned long long startTimestamp;
 @property (nonatomic) unsigned long long timestamp;
 @property (nonatomic) unsigned int totalAPNReceived;
 @property (nonatomic) unsigned int totalAccessTransaction;
 @property (nonatomic) unsigned int totalAuthECommerce;
+@property (nonatomic) unsigned int totalBurnoutTimerCounter;
 @property (nonatomic) unsigned int totalCEEnable;
 @property (nonatomic) unsigned int totalCEEnabledWithMissingTransactionEndEvent;
 @property (nonatomic) unsigned int totalCEEnabledWithNoFieldDetected;
@@ -136,6 +147,7 @@
 @property (nonatomic) unsigned int totalFelicaEMoneyTransaction;
 @property (nonatomic) unsigned int totalFelicaTransitTransaction;
 @property (nonatomic) unsigned int totalGenericAExpressTransaction;
+@property (nonatomic) unsigned int totalLPEMCounter;
 @property (nonatomic) unsigned int totalPTDatabaseCorruption;
 @property (nonatomic) unsigned int totalPTKeyDeletionFailed;
 @property (nonatomic) unsigned int totalPTKeys;
@@ -164,11 +176,13 @@
 - (bool)hasHasAttackLogs;
 - (bool)hasHasFelicaExpressTransactionEnable;
 - (bool)hasHasGenericAExpressEnable;
+- (bool)hasSeCounterMeasureLevel;
 - (bool)hasStartTimestamp;
 - (bool)hasTimestamp;
 - (bool)hasTotalAPNReceived;
 - (bool)hasTotalAccessTransaction;
 - (bool)hasTotalAuthECommerce;
+- (bool)hasTotalBurnoutTimerCounter;
 - (bool)hasTotalCEEnable;
 - (bool)hasTotalCEEnabledWithMissingTransactionEndEvent;
 - (bool)hasTotalCEEnabledWithNoFieldDetected;
@@ -181,6 +195,7 @@
 - (bool)hasTotalFelicaEMoneyTransaction;
 - (bool)hasTotalFelicaTransitTransaction;
 - (bool)hasTotalGenericAExpressTransaction;
+- (bool)hasTotalLPEMCounter;
 - (bool)hasTotalPTDatabaseCorruption;
 - (bool)hasTotalPTKeyDeletionFailed;
 - (bool)hasTotalPTKeys;
@@ -200,6 +215,7 @@
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (bool)readFrom:(id)arg1;
+- (unsigned int)seCounterMeasureLevel;
 - (void)setHasAccessExpressTransactionEnable:(bool)arg1;
 - (void)setHasAttackLogs:(bool)arg1;
 - (void)setHasFelicaExpressTransactionEnable:(bool)arg1;
@@ -208,11 +224,13 @@
 - (void)setHasHasAttackLogs:(bool)arg1;
 - (void)setHasHasFelicaExpressTransactionEnable:(bool)arg1;
 - (void)setHasHasGenericAExpressEnable:(bool)arg1;
+- (void)setHasSeCounterMeasureLevel:(bool)arg1;
 - (void)setHasStartTimestamp:(bool)arg1;
 - (void)setHasTimestamp:(bool)arg1;
 - (void)setHasTotalAPNReceived:(bool)arg1;
 - (void)setHasTotalAccessTransaction:(bool)arg1;
 - (void)setHasTotalAuthECommerce:(bool)arg1;
+- (void)setHasTotalBurnoutTimerCounter:(bool)arg1;
 - (void)setHasTotalCEEnable:(bool)arg1;
 - (void)setHasTotalCEEnabledWithMissingTransactionEndEvent:(bool)arg1;
 - (void)setHasTotalCEEnabledWithNoFieldDetected:(bool)arg1;
@@ -225,6 +243,7 @@
 - (void)setHasTotalFelicaEMoneyTransaction:(bool)arg1;
 - (void)setHasTotalFelicaTransitTransaction:(bool)arg1;
 - (void)setHasTotalGenericAExpressTransaction:(bool)arg1;
+- (void)setHasTotalLPEMCounter:(bool)arg1;
 - (void)setHasTotalPTDatabaseCorruption:(bool)arg1;
 - (void)setHasTotalPTKeyDeletionFailed:(bool)arg1;
 - (void)setHasTotalPTKeys:(bool)arg1;
@@ -240,11 +259,13 @@
 - (void)setHasTotalVASActivation:(bool)arg1;
 - (void)setHasTotalVASSignup:(bool)arg1;
 - (void)setHasTotalVASTransactionException:(bool)arg1;
+- (void)setSeCounterMeasureLevel:(unsigned int)arg1;
 - (void)setStartTimestamp:(unsigned long long)arg1;
 - (void)setTimestamp:(unsigned long long)arg1;
 - (void)setTotalAPNReceived:(unsigned int)arg1;
 - (void)setTotalAccessTransaction:(unsigned int)arg1;
 - (void)setTotalAuthECommerce:(unsigned int)arg1;
+- (void)setTotalBurnoutTimerCounter:(unsigned int)arg1;
 - (void)setTotalCEEnable:(unsigned int)arg1;
 - (void)setTotalCEEnabledWithMissingTransactionEndEvent:(unsigned int)arg1;
 - (void)setTotalCEEnabledWithNoFieldDetected:(unsigned int)arg1;
@@ -257,6 +278,7 @@
 - (void)setTotalFelicaEMoneyTransaction:(unsigned int)arg1;
 - (void)setTotalFelicaTransitTransaction:(unsigned int)arg1;
 - (void)setTotalGenericAExpressTransaction:(unsigned int)arg1;
+- (void)setTotalLPEMCounter:(unsigned int)arg1;
 - (void)setTotalPTDatabaseCorruption:(unsigned int)arg1;
 - (void)setTotalPTKeyDeletionFailed:(unsigned int)arg1;
 - (void)setTotalPTKeys:(unsigned int)arg1;
@@ -277,6 +299,7 @@
 - (unsigned int)totalAPNReceived;
 - (unsigned int)totalAccessTransaction;
 - (unsigned int)totalAuthECommerce;
+- (unsigned int)totalBurnoutTimerCounter;
 - (unsigned int)totalCEEnable;
 - (unsigned int)totalCEEnabledWithMissingTransactionEndEvent;
 - (unsigned int)totalCEEnabledWithNoFieldDetected;
@@ -289,6 +312,7 @@
 - (unsigned int)totalFelicaEMoneyTransaction;
 - (unsigned int)totalFelicaTransitTransaction;
 - (unsigned int)totalGenericAExpressTransaction;
+- (unsigned int)totalLPEMCounter;
 - (unsigned int)totalPTDatabaseCorruption;
 - (unsigned int)totalPTKeyDeletionFailed;
 - (unsigned int)totalPTKeys;

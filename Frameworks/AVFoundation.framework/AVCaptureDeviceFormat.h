@@ -7,8 +7,11 @@
 }
 
 @property (nonatomic, readonly) long long autoFocusSystem;
+@property (nonatomic, readonly) bool cam_supportsPortraitFrontFacingZoomed;
 @property (nonatomic, readonly) const struct opaqueCMFormatDescription { }*formatDescription;
+@property (getter=isGlobalToneMappingSupported, nonatomic, readonly) bool globalToneMappingSupported;
 @property (nonatomic, readonly) struct { int x1; int x2; } highResolutionStillImageDimensions;
+@property (getter=isHighestPhotoQualitySupported, nonatomic, readonly) bool highestPhotoQualitySupported;
 @property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } maxExposureDuration;
 @property (nonatomic, readonly) float maxISO;
 @property (nonatomic, readonly) NSString *mediaType;
@@ -34,28 +37,43 @@
 - (id)AVCaptureSessionPresets;
 - (id)_stringForMediaType:(unsigned int)arg1 formatDescription:(struct opaqueCMFormatDescription { }*)arg2 frameRateRanges:(id)arg3;
 - (long long)autoFocusSystem;
+- (int)baseSensorPowerConsumption;
 - (void)dealloc;
 - (id)debugDescription;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })defaultActiveMaxFrameDuration;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })defaultActiveMinFrameDuration;
+- (float)defaultPortraitLightingEffectStrength;
 - (float)defaultSimulatedAperture;
 - (id)description;
 - (id)figCaptureSourceDepthDataFormat;
 - (id)figCaptureSourceVideoFormat;
 - (const struct opaqueCMFormatDescription { }*)formatDescription;
+- (float)geometricDistortionCorrectedVideoFieldOfView;
+- (float)hardwareCost;
 - (struct { int x1; int x2; })highResolutionStillImageDimensions;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })highestSupportedVideoFrameDuration;
 - (id)initWithFigCaptureSourceFormat:(id)arg1;
+- (bool)isDeepFusionSupported;
 - (bool)isDefaultActiveFormat;
+- (bool)isDeferredPhotoProcessingSupported;
+- (bool)isDigitalFlashSupported;
 - (bool)isEqual:(id)arg1;
+- (bool)isEquivalentToVirtualDeviceFormat:(id)arg1;
 - (bool)isExperimental;
+- (bool)isGlobalToneMappingSupported;
+- (bool)isHDRSupported;
 - (bool)isHighResPhotoFormat;
+- (bool)isHighestPhotoQualitySupported;
 - (bool)isIrisSupported;
 - (bool)isIrisVideoStabilizationSupported;
 - (bool)isLowLightVideoCaptureSupported;
+- (bool)isMomentCaptureMovieRecordingSupported;
+- (bool)isMultiCamSupported;
+- (bool)isNonDestructiveCropSupported;
 - (bool)isPhotoFormat;
 - (bool)isPortraitEffectsMatteStillImageDeliverySupported;
 - (bool)isSISSupported;
+- (bool)isSpatialOverCaptureSupported;
 - (bool)isStereoFusionSupported;
 - (bool)isStillImageDepthSupported;
 - (bool)isStillImageDisparitySupported;
@@ -68,13 +86,16 @@
 - (bool)isVideoStabilizationSupported;
 - (bool)isVisionDataDeliverySupported;
 - (bool)isWideColorSupported;
+- (int)ispPowerConsumption;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })lowestSupportedVideoFrameDuration;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })maxExposureDuration;
 - (float)maxISO;
+- (float)maxPortraitLightingEffectStrength;
 - (float)maxSimulatedAperture;
 - (id)mediaType;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })minExposureDuration;
 - (float)minISO;
+- (float)minPortraitLightingEffectStrength;
 - (float)minSimulatedAperture;
 - (bool)needsPhotoPreviewDPCC;
 - (id)optimizedPhotoFilterNames;
@@ -83,10 +104,12 @@
 - (struct { int x1; int x2; })previewDimensions;
 - (int)rawBitDepth;
 - (struct { int x1; int x2; })sensorDimensions;
+- (float)spatialOverCapturePercentage;
 - (id)supportedColorSpaces;
 - (id)supportedDepthDataFormats;
 - (int)supportedFormatsArrayIndex;
 - (unsigned int)supportedRawPixelFormat;
+- (id)supportedSemanticSegmentationMatteTypes;
 - (int)supportedStabilizationMethod;
 - (bool)supportsDynamicCrop;
 - (bool)supportsHighProfileH264;
@@ -94,6 +117,7 @@
 - (bool)supportsQuadraHighResolutionStillImageOutput;
 - (bool)supportsRedEyeReduction;
 - (id)unsupportedCaptureOutputClasses;
+- (int)variableSensorPowerConsumption;
 - (float)videoFieldOfView;
 - (long long)videoHDRFlavor;
 - (double)videoMaxZoomFactor;
@@ -104,6 +128,10 @@
 - (id)videoZoomSupportedDownscaleStages;
 - (id)videoZoomSupportedUpscaleStages;
 - (id)vtScalingMode;
+
+// Image: /System/Library/PrivateFrameworks/AXMediaUtilities.framework/AXMediaUtilities
+
+- (int)axm_totalResolutionPixels;
 
 // Image: /System/Library/PrivateFrameworks/CameraUI.framework/CameraUI
 
@@ -119,6 +147,7 @@
 - (bool)cam_supportsFrameRate:(double)arg1;
 - (bool)cam_supportsFrameRate:(double)arg1 width:(long long)arg2 height:(long long)arg3 colorSpace:(long long)arg4;
 - (bool)cam_supportsPanoramaConfiguration:(id)arg1;
+- (bool)cam_supportsPortraitFrontFacingZoomed;
 - (bool)cam_supportsVideoConfiguration:(long long)arg1 colorSpace:(long long)arg2;
 
 @end

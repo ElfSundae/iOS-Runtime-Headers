@@ -2,13 +2,16 @@
    Image: /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
  */
 
-@interface NSCalendar : NSObject <NSCopying, NSSecureCoding>
+@interface NSCalendar : NSObject <INJSONSerializable, NSCopying, NSSecureCoding>
 
 @property (readonly, copy) NSString *AMSymbol;
 @property (readonly, copy) NSString *PMSymbol;
 @property (readonly, copy) NSString *calendarIdentifier;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSArray *eraSymbols;
 @property unsigned long long firstWeekday;
+@property (readonly) unsigned long long hash;
 @property (copy) NSLocale *locale;
 @property (readonly, copy) NSArray *longEraSymbols;
 @property unsigned long long minimumDaysInFirstWeek;
@@ -23,6 +26,7 @@
 @property (readonly, copy) NSArray *standaloneMonthSymbols;
 @property (readonly, copy) NSArray *standaloneQuarterSymbols;
 @property (readonly, copy) NSArray *standaloneWeekdaySymbols;
+@property (readonly) Class superclass;
 @property (copy) NSTimeZone *timeZone;
 @property (readonly, copy) NSArray *veryShortMonthSymbols;
 @property (readonly, copy) NSArray *veryShortStandaloneMonthSymbols;
@@ -44,11 +48,11 @@
 - (unsigned char)_addComponents:(double*)arg1 :(unsigned long long)arg2 :(const char *)arg3 :(char *)arg4;
 - (unsigned long long)_cfTypeID;
 - (unsigned char)_composeAbsoluteTime:(double*)arg1 :(const char *)arg2 :(char *)arg3;
+- (id)_copyGregorianStartDate;
 - (id)_copyLocale;
 - (id)_copyTimeZone;
 - (unsigned char)_decomposeAbsoluteTime:(double)arg1 :(const char *)arg2 :(char *)arg3;
 - (unsigned char)_diffComponents:(double)arg1 :(double)arg2 :(unsigned long long)arg3 :(const char *)arg4 :(char *)arg5;
-- (id)_gregorianStartDate;
 - (struct { long long x1; long long x2; })_maximumRangeOfUnit:(unsigned long long)arg1;
 - (struct { long long x1; long long x2; })_minimumRangeOfUnit:(unsigned long long)arg1;
 - (long long)_ordinalityOfUnit:(unsigned long long)arg1 inUnit:(unsigned long long)arg2 forAT:(double)arg3;
@@ -162,7 +166,6 @@
 - (id)hk_nearestStartOfDayForDate:(id)arg1;
 - (id)hk_nearestStartOfMonthForDate:(id)arg1;
 - (id)hk_nearestStartOfWeekWithFirstWeekDay:(long long)arg1 date:(id)arg2;
-- (id)hk_startOfBedditSleepDayForDate:(id)arg1;
 - (id)hk_startOfDateByAddingDays:(long long)arg1 toDate:(id)arg2;
 - (id)hk_startOfDateBySubtractingDays:(long long)arg1 fromDate:(id)arg2;
 - (id)hk_startOfFitnessWeekBeforeDate:(id)arg1;
@@ -170,13 +173,27 @@
 - (id)hk_startOfMinuteForDate:(id)arg1 moduloMinutes:(long long)arg2 addingModuloCount:(long long)arg3;
 - (id)hk_startOfMonthForDate:(id)arg1;
 - (id)hk_startOfMonthForDate:(id)arg1 addingMonths:(long long)arg2;
-- (id)hk_startOfSleepDayForDate:(id)arg1;
 - (id)hk_startOfUnitForDate:(id)arg1 calendarUnit:(unsigned long long)arg2;
 - (id)hk_startOfWeekWithFirstWeekday:(long long)arg1 beforeDate:(id)arg2 addingWeeks:(long long)arg3;
 - (id)hk_startOfYearForDate:(id)arg1 addingYears:(long long)arg2;
 - (double)hk_timeIntervalSinceStartOfDayForDate:(id)arg1;
 - (id)hk_timeZoneDependentReferenceDate;
 - (id)hk_weekendDays;
+
+// Image: /System/Library/Frameworks/Intents.framework/Intents
+
++ (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
+
+- (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/ActionKit.framework/ActionKit
+
+- (id)transformDate:(id)arg1 unitFlags:(unsigned long long)arg2;
+- (id)wf_startOfHourForDate:(id)arg1;
+- (id)wf_startOfMinuteForDate:(id)arg1;
+- (id)wf_startOfMonthForDate:(id)arg1;
+- (id)wf_startOfWeekForDate:(id)arg1;
+- (id)wf_startOfYearForDate:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/BaseBoard.framework/BaseBoard
 
@@ -192,7 +209,7 @@
 + (id)CalDateFromBirthdayComponents:(id)arg1;
 + (id)CalGregorianCalendarForTimeZone:(id)arg1;
 + (id)CalGregorianGMTCalendar;
-+ (id)overlayCalendarForCalendarIdentifier:(id)arg1 timezone:(id)arg2;
++ (id)CalYearlessDateThreshold;
 + (id)sharedAutoupdatingCurrentCalendar;
 
 - (id)CalDateBySubtractingComponents:(id)arg1 fromDate:(id)arg2;
@@ -205,6 +222,7 @@
 - (long long)daysInMonthContainingDate:(id)arg1;
 - (long long)daysInWeek;
 - (long long)hoursInDay;
+- (id)mapDatesFromDate:(id)arg1 stepSize:(unsigned long long)arg2 range:(unsigned long long)arg3 mapBlock:(id /* block */)arg4;
 - (long long)minutesInHour;
 - (long long)monthsInYearForDate:(id)arg1;
 - (long long)secondsInDay;
@@ -216,6 +234,10 @@
 + (void)__ck_setTestCalendar:(id)arg1;
 
 - (unsigned long long)__ck_unitOfDisambiguityFromDate:(id)arg1 toDate:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/HMFoundation.framework/HMFoundation
+
++ (id)hmf_unarchiveFromData:(id)arg1 error:(id*)arg2;
 
 // Image: /System/Library/PrivateFrameworks/HealthDaemon.framework/HealthDaemon
 
@@ -230,14 +252,18 @@
 - (id)hk_startOfTomorrowForDate:(id)arg1;
 - (id)hk_yesterdayAtNoonForDate:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/IntentsFoundation.framework/IntentsFoundation
+
++ (id)if_currentCalendarWithLanguageCode:(id)arg1;
+
 // Image: /System/Library/PrivateFrameworks/MobileTimer.framework/MobileTimer
 
-+ (id)_dateForInitial:(id)arg1 repeated:(id)arg2 backwards:(bool)arg3;
 + (unsigned long long)_optionsForBackwards:(bool)arg1;
 + (id)mtGregorianCalendar;
 
 - (id)_mtNextDateAfterDate:(id)arg1 matchingComponents:(id)arg2 backwards:(bool)arg3;
 - (id)_mtNextDateAfterDate:(id)arg1 matchingUnit:(unsigned long long)arg2 value:(long long)arg3 backwards:(bool)arg4;
+- (id)_nextDateHelperAfterDate:(id)arg1 nextDateBlock:(id /* block */)arg2;
 - (bool)mtDateRequiresSingularTimeString:(id)arg1;
 - (id)mtNextDateAfterDate:(id)arg1 matchingComponents:(id)arg2;
 - (id)mtNextDateAfterDate:(id)arg1 matchingUnit:(unsigned long long)arg2 value:(long long)arg3;
@@ -252,5 +278,19 @@
 - (id)_navigation_offsetDate:(id)arg1 toTimeZone:(id)arg2;
 - (id)_navigation_relativeDateStringForDate:(id)arg1 context:(long long)arg2 inTimeZone:(id)arg3;
 - (id)_navigation_transitRelativeDateStringForDate:(id)arg1 context:(long long)arg2 inTimeZone:(id)arg3 outUsedFormat:(out unsigned long long*)arg4;
+
+// Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
+
+- (id)pl_dateByAddingDays:(long long)arg1 toDate:(id)arg2;
+- (id)pl_endOfDayForDate:(id)arg1;
+- (id)pl_endOfPreviousDayForDate:(id)arg1;
+- (id)pl_endOfWeekForDate:(id)arg1;
+- (id)pl_startOfMonthForDate:(id)arg1;
+- (id)pl_startOfNextDayForDate:(id)arg1;
+- (id)pl_startOfWeekForDate:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/WeatherFoundation.framework/WeatherFoundation
+
+- (id)wf_dateComponentsForEpochDateNumber:(id)arg1 toUnitGranularity:(unsigned long long)arg2;
 
 @end

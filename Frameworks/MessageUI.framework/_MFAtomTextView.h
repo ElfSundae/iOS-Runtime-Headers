@@ -10,6 +10,7 @@
 @property (readonly) NSArray *atoms;
 @property MFComposeRecipientTextView *hostRecipientView;
 
+- (void).cxx_destruct;
 - (bool)_delegateSupportsKeyboardEvents;
 - (void)_handleKeyUIEvent:(id)arg1;
 - (id)atoms;

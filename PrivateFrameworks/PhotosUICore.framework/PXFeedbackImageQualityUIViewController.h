@@ -4,6 +4,7 @@
 
 @interface PXFeedbackImageQualityUIViewController : UIViewController <PXFeedbackFormDelegate> {
     NSArray * _assets;
+    <PXFeedbackImageQualityUIViewControllerDelegate> * _delegate;
     PXFeedbackLikeItOrNotComboUIViewController * _feedbackController;
     NSArray * _imageQualityDiagnosticFileURLs;
     UINavigationController * _navigationController;
@@ -12,6 +13,7 @@
 
 @property (nonatomic, retain) NSArray *assets;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic, readonly) <PXFeedbackImageQualityUIViewControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) PXFeedbackLikeItOrNotComboUIViewController *feedbackController;
 @property (readonly) unsigned long long hash;
@@ -26,13 +28,14 @@
 - (void)_fileRadarWithAssets:(id)arg1 positiveFeedback:(id)arg2 negativeFeedback:(id)arg3 customFeedback:(id)arg4;
 - (void)_generateResourceFilesForAssets:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)_generateTitleForFeedback:(id)arg1;
-- (id)_generateURLForAssetDBGFiles:(id)arg1;
 - (id)_generateURLsForAssetsDBGFiles:(id)arg1;
+- (id)_keywordIDForComponent:(long long)arg1;
 - (long long)_radarComponentForFeedback:(id)arg1;
 - (id)assets;
+- (id)delegate;
 - (id)feedbackController;
 - (id)imageQualityDiagnosticFileURLs;
-- (id)initWithAssets:(id)arg1;
+- (id)initWithAssets:(id)arg1 delegate:(id)arg2;
 - (id)longTitleText;
 - (id)navigationController;
 - (id)negativeFeedback;
@@ -45,6 +48,7 @@
 - (void)setNegativeFeedback:(id)arg1;
 - (bool)shouldContinuePresentingFormAfterFeedback;
 - (bool)shouldDisplaySecondaryFeedbackButtons;
+- (void)userDidFinish:(bool)arg1;
 - (void)userIndicatedDislike;
 - (void)userIndicatedLike;
 - (void)userSentPositiveFeedback:(id)arg1 negativeFeedback:(id)arg2 customFeedback:(id)arg3;

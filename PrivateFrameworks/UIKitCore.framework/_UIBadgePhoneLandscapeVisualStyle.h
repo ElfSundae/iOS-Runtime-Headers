@@ -2,13 +2,12 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface _UIBadgePhoneLandscapeVisualStyle : _UIBadgePhonePadHorizontalVisualStyle
+@interface _UIBadgePhoneLandscapeVisualStyle : _UIBadgePadHorizontalVisualStyle
 
+- (double)cornerRadius;
 - (double)edgePadding;
 - (id)font;
 - (double)fontSize;
 - (double)minWidth;
-- (double)singleBadgeWidth;
-- (double)verticalInset;
 
 @end

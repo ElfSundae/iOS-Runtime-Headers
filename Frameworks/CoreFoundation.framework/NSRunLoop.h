@@ -69,4 +69,8 @@
 
 - (bool)rc_runUntilNextDisplayLinkEventWithTimeout:(double)arg1;
 
+// Image: /usr/lib/swift/libswiftFoundation.dylib
+
+- (void)runLoopScheduledWithAction:(id)arg1;
+
 @end

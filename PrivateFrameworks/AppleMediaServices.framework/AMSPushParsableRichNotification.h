@@ -9,10 +9,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)_cachedImagePathForIdentifier:(id)arg1 assetURL:(id)arg2;
-+ (id)_downloadAssetAtUrl:(id)arg1 notification:(id)arg2 bagContract:(id)arg3;
-+ (id)_generateNotificationFromPayload:(id)arg1 config:(id)arg2 bagContract:(id)arg3;
-+ (void)handleNotificationPayload:(id)arg1 config:(id)arg2 bagContract:(id)arg3;
++ (void)handleNotificationPayload:(id)arg1 config:(id)arg2 bag:(id)arg3;
++ (bool)shouldSkipAccountCheck;
 + (void)userNotification:(id)arg1 selectedButtonAction:(id)arg2;
 
 @end

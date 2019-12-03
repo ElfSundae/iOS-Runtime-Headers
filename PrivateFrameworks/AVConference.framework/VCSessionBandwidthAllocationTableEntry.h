@@ -8,6 +8,7 @@
     bool  _enabled;
     bool  _hasRepairStreamID;
     bool  _isLowestQualityAudio;
+    unsigned int  _maxMediaBitrate;
     unsigned int  _maxNetworkBitrate;
     unsigned int  _qualityIndex;
     unsigned int  _repairMaxNetworkBitrate;
@@ -21,6 +22,7 @@
 @property (getter=isEnabled) bool enabled;
 @property (readonly) bool hasRepairStreamID;
 @property bool isLowestQualityAudio;
+@property (readonly) unsigned int maxMediaBitrate;
 @property (readonly) unsigned int maxNetworkBitrate;
 @property (readonly) unsigned int qualityIndex;
 @property (readonly) unsigned int repairMaxNetworkBitrate;
@@ -38,10 +40,11 @@
 - (void)dealloc;
 - (id)description;
 - (bool)hasRepairStreamID;
-- (id)initWithClient:(id)arg1 type:(unsigned char)arg2 networkBitrate:(unsigned int)arg3 qualityIndex:(unsigned int)arg4 streamID:(unsigned int)arg5;
-- (id)initWithClient:(id)arg1 type:(unsigned char)arg2 networkBitrate:(unsigned int)arg3 qualityIndex:(unsigned int)arg4 streamID:(unsigned int)arg5 hasRepairStreamID:(bool)arg6 repairStreamID:(unsigned int)arg7 repairMaxNetworkBitrate:(unsigned int)arg8 enabled:(bool)arg9;
+- (id)initWithClient:(id)arg1 type:(unsigned char)arg2 networkBitrate:(unsigned int)arg3 mediaBitrate:(unsigned int)arg4 qualityIndex:(unsigned int)arg5 streamID:(unsigned int)arg6;
+- (id)initWithClient:(id)arg1 type:(unsigned char)arg2 networkBitrate:(unsigned int)arg3 mediaBitrate:(unsigned int)arg4 qualityIndex:(unsigned int)arg5 streamID:(unsigned int)arg6 hasRepairStreamID:(bool)arg7 repairStreamID:(unsigned int)arg8 repairMaxNetworkBitrate:(unsigned int)arg9 enabled:(bool)arg10;
 - (bool)isEnabled;
 - (bool)isLowestQualityAudio;
+- (unsigned int)maxMediaBitrate;
 - (unsigned int)maxNetworkBitrate;
 - (unsigned int)qualityIndex;
 - (unsigned int)repairMaxNetworkBitrate;

@@ -20,6 +20,7 @@
 + (bool)canMakePayments;
 + (bool)canMakePaymentsUsingNetworks:(id)arg1;
 + (bool)canMakePaymentsUsingNetworks:(id)arg1 capabilities:(unsigned long long)arg2;
++ (void)paymentServicesMerchantURLForAPIType:(unsigned long long)arg1 completion:(id /* block */)arg2;
 
 - (void).cxx_destruct;
 - (void)dealloc;

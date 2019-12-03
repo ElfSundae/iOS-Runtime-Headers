@@ -2,9 +2,10 @@
    Image: /System/Library/PrivateFrameworks/ControlCenterUI.framework/ControlCenterUI
  */
 
-@interface CCUIContentModuleContainerViewController : UIViewController <CCUISafeAppearancePropagationProvider, UIGestureRecognizerDelegate, UIPreviewInteractionDelegatePrivate> {
+@interface CCUIContentModuleContainerViewController : UIViewController <CCUIContentModuleContainer, CCUISafeAppearancePropagationProvider, UIGestureRecognizerDelegate, _UIClickPresentationInteractionDelegate> {
     CCUIContentModuleBackgroundView * _backgroundView;
     UIViewController<CCUIContentModuleBackgroundViewController> * _backgroundViewController;
+    _UIClickPresentationInteraction * _clickPresentationInteraction;
     CCUIContentModuleContentContainerView * _contentContainerView;
     <CCUIContentModule> * _contentModule;
     bool  _contentModuleProvidesOwnPlatter;
@@ -22,14 +23,16 @@
     UIView * _maskView;
     NSString * _materialGroupName;
     NSString * _moduleIdentifier;
-    UIPreviewInteraction * _previewInteraction;
+    CCUIContentModuleContainerPresentationController * _presentationController;
     UITapGestureRecognizer * _tapRecognizer;
     NSArray * _topLevelBlockingGestureRecognizers;
+    bool  _transitioning;
 }
 
 @property (nonatomic, retain) CCUIContentModuleBackgroundView *backgroundView;
 @property (nonatomic, retain) UIViewController<CCUIContentModuleBackgroundViewController> *backgroundViewController;
 @property (nonatomic, readonly) NSArray *childViewControllersForAppearancePropagation;
+@property (nonatomic, retain) _UIClickPresentationInteraction *clickPresentationInteraction;
 @property (nonatomic, retain) CCUIContentModuleContentContainerView *contentContainerView;
 @property (nonatomic, retain) <CCUIContentModule> *contentModule;
 @property (nonatomic) bool contentModuleProvidesOwnPlatter;
@@ -46,16 +49,18 @@
 @property (nonatomic, copy) NSString *materialGroupName;
 @property (nonatomic, readonly) CCUIContentModuleContentContainerView *moduleContentView;
 @property (nonatomic, copy) NSString *moduleIdentifier;
-@property (nonatomic, retain) UIPreviewInteraction *previewInteraction;
+@property (nonatomic, retain) CCUIContentModuleContainerPresentationController *presentationController;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) UITapGestureRecognizer *tapRecognizer;
 @property (nonatomic, readonly) NSArray *topLevelBlockingGestureRecognizers;
+@property (getter=isTransitioning, nonatomic) bool transitioning;
 
 - (void).cxx_destruct;
-- (void)_addTopLevelGestureRecognizersFromViewAndSubviews:(id)arg1 toGestureRecognizers:(id)arg2 blockingGestureRecognizers:(id)arg3;
+- (void)_addTopLevelGestureRecognizersFromViewAndSubviews:(id)arg1 toBlockingGestureRecognizers:(id)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_backgroundFrameForExpandedState;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_backgroundFrameForRestState;
-- (void)_closeExpandedModule;
+- (bool)_canShowWhileLocked;
+- (void)_closeExpandedModule:(bool)arg1;
 - (void)_configureForContentModuleGroupRenderingIfNecessary;
 - (void)_configureMaskViewIfNecessary;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_containerFrameForExpandedState;
@@ -63,47 +68,56 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_contentBoundsForTransitionProgress:(double)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_contentFrameForExpandedState;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_contentFrameForRestState;
-- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_contentFrameInPresentationFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
-- (void)_dismissModulePresentedContentAnimated:(bool)arg1 completion:(id /* block */)arg2;
+- (double)_continuousCornerRadiusForCompactState;
+- (double)_continuousCornerRadiusForExpandedState;
+- (void)_didEndTransitionWithContentModuleContainerTransition:(id)arg1 completed:(bool)arg2;
 - (void)_findTopLevelGestureRecognizersForView:(id)arg1 installOnView:(id)arg2;
 - (void)_handleTapGestureRecognizer:(id)arg1;
 - (bool)_isForceTouchAvailable;
+- (void)_loadBackgroundViewController:(id)arg1;
+- (void)_loadContentViewController:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_presentationFrameForExpandedState;
-- (id)_previewInteraction:(id)arg1 viewControllerPresentationForPresentingViewController:(id)arg2;
-- (id)_previewInteractionHighlighterForPreviewTransition:(id)arg1;
-- (bool)_previewInteractionShouldAutomaticallyTransitionToPreviewAfterDelay:(id)arg1;
-- (bool)_previewInteractionShouldFinishTransitionToPreview:(id)arg1;
 - (void)_setDidExpandModulePreference;
-- (bool)_shouldApplyBackgroundEffects;
+- (unsigned long long)activationStyleForClickPresentationInteraction:(id)arg1;
 - (id)backgroundView;
 - (id)backgroundViewController;
+- (id)clickPresentationInteraction;
+- (id)clickPresentationInteraction:(id)arg1 presentationForPresentingViewController:(id)arg2;
+- (id)clickPresentationInteraction:(id)arg1 previewForHighlightingAtLocation:(struct CGPoint { double x1; double x2; })arg2;
+- (void)clickPresentationInteractionEnded:(id)arg1 wasCancelled:(bool)arg2;
+- (bool)clickPresentationInteractionShouldBegin:(id)arg1;
+- (bool)clickPresentationInteractionShouldPresent:(id)arg1;
 - (id)contentContainerView;
 - (id)contentModule;
 - (bool)contentModuleProvidesOwnPlatter;
 - (id)contentView;
 - (id)contentViewController;
+- (bool)definesContentModuleContainer;
 - (id)delegate;
 - (void)dismissExpandedModuleAnimated:(bool)arg1;
+- (void)dismissModulePresentedContentAnimated:(bool)arg1 completion:(id /* block */)arg2;
 - (void)dismissPresentedContentAnimated:(bool)arg1;
+- (void)dismissViewControllerWithTransition:(int)arg1 completion:(id /* block */)arg2;
+- (void)displayWillTurnOff;
 - (void)expandModule;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })expandedContentEdgeInsets;
 - (id)highlightWrapperView;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithModuleIdentifier:(id)arg1 contentModule:(id)arg2;
+- (id)initWithModuleIdentifier:(id)arg1 contentModule:(id)arg2 presentationContext:(id)arg3;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (bool)isExpanded;
+- (bool)isTransitioning;
 - (void)loadView;
 - (id)maskView;
 - (id)materialGroupName;
 - (id)moduleContentView;
 - (id)moduleIdentifier;
-- (id)previewInteraction;
-- (void)previewInteraction:(id)arg1 didUpdatePreviewTransition:(double)arg2 ended:(bool)arg3;
-- (void)previewInteractionDidCancel:(id)arg1;
-- (bool)previewInteractionShouldBegin:(id)arg1;
+- (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
+- (id)presentationController;
 - (void)setBackgroundView:(id)arg1;
 - (void)setBackgroundViewController:(id)arg1;
+- (void)setClickPresentationInteraction:(id)arg1;
 - (void)setContentContainerView:(id)arg1;
 - (void)setContentModule:(id)arg1;
 - (void)setContentModuleProvidesOwnPlatter:(bool)arg1;
@@ -116,14 +130,18 @@
 - (void)setMaskView:(id)arg1;
 - (void)setMaterialGroupName:(id)arg1;
 - (void)setModuleIdentifier:(id)arg1;
-- (void)setPreviewInteraction:(id)arg1;
+- (void)setPresentationController:(id)arg1;
 - (void)setTapRecognizer:(id)arg1;
+- (void)setTransitioning:(bool)arg1;
 - (bool)shouldAutomaticallyForwardAppearanceMethods;
 - (id)tapRecognizer;
 - (id)topLevelBlockingGestureRecognizers;
-- (void)updateFrameForExpandedModule;
+- (void)transitionToExpandedMode:(bool)arg1;
+- (void)viewWillDisappear:(bool)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)willBecomeActive;
+- (void)willDismissViewController:(id)arg1;
+- (void)willPresentViewController:(id)arg1;
 - (void)willResignActive;
 
 @end

@@ -19,6 +19,7 @@
 - (id)init;
 - (id)initWithObserver:(id)arg1 key:(long long)arg2 queue:(id)arg3 block:(id /* block */)arg4;
 - (long long)key;
+- (void)notifyWithBlock:(id /* block */)arg1;
 - (id)observer;
 - (id)queue;
 

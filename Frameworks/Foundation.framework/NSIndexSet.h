@@ -25,6 +25,7 @@
 
 @property (readonly) unsigned long long count;
 @property (readonly) unsigned long long firstIndex;
+@property (nonatomic, readonly) NSArray *ic_rangeArray;
 @property (readonly) unsigned long long lastIndex;
 @property (nonatomic, readonly) struct _NSRange { unsigned long long x1; unsigned long long x2; } px_coveringRange;
 @property (nonatomic, readonly) NSString *px_shortDescription;
@@ -32,6 +33,7 @@
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
++ (id)_alloc;
 + (id)allocWithZone:(struct _NSZone { }*)arg1;
 + (id)indexSet;
 + (id)indexSetWithIndex:(unsigned long long)arg1;
@@ -99,7 +101,15 @@
 
 // Image: /System/Library/PrivateFrameworks/AppPredictionClient.framework/AppPredictionClient
 
-- (id)asArray;
+- (id)atx_asArray;
+
+// Image: /System/Library/PrivateFrameworks/AvatarUI.framework/AvatarUI
+
+- (long long)closestIndexToIndex:(unsigned long long)arg1 greaterIndexesFirst:(bool)arg2;
+
+// Image: /System/Library/PrivateFrameworks/CameraEditKit.framework/CameraEditKit
+
+- (unsigned long long)cek_indexNearestToIndex:(unsigned long long)arg1;
 
 // Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
 
@@ -115,16 +125,20 @@
 - (void)_cn_each:(id /* block */)arg1;
 - (id)_cn_map:(id /* block */)arg1;
 
-// Image: /System/Library/PrivateFrameworks/DCIMServices.framework/DCIMServices
-
-- (unsigned long long)cam_indexNearestToIndex:(unsigned long long)arg1;
-
 // Image: /System/Library/PrivateFrameworks/GameCenterFoundation.framework/GameCenterFoundation
 
 + (id)_gkIndexSetWithArray:(id)arg1;
 
 - (id)_gkIndexSetByAddingIndex:(long long)arg1;
 - (id)_gkIndexSetByRemovingIndex:(long long)arg1;
+
+// Image: /System/Library/PrivateFrameworks/HealthMenstrualCycles.framework/HealthMenstrualCycles
+
++ (id)hkmc_indexSetWithArray:(id)arg1;
++ (id)hkmc_indexSetWithDayIndexRange:(struct { long long x1; long long x2; })arg1;
+
+- (void)hkmc_enumerateDayIndexRangesUsingBlock:(id /* block */)arg1;
+- (id)hkmc_indexSetSubtractingIndexes:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/ITMLKit.framework/ITMLKit
 
@@ -150,7 +164,7 @@
 - (unsigned long long)nearestIndex:(unsigned long long)arg1;
 - (unsigned long long)nextToLastIndex;
 
-// Image: /System/Library/PrivateFrameworks/Message.framework/Message
+// Image: /System/Library/PrivateFrameworks/MessageLegacy.framework/MessageLegacy
 
 - (id)mf_commaSeparatedString;
 
@@ -163,6 +177,10 @@
 - (id)fc_indexSetWithGapsInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (bool)fc_isContiguous;
 
+// Image: /System/Library/PrivateFrameworks/Notes.framework/Notes
+
+- (id)ic_rangeArray;
+
 // Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
 
 + (id)tsu_indexSetWithIndices:(unsigned long long*)arg1 count:(unsigned long long)arg2;
@@ -170,6 +188,7 @@
 - (unsigned long long)tsu_indexAtPosition:(unsigned long long)arg1;
 - (id)tsu_indexSetByAddingIndex:(unsigned long long)arg1;
 - (id)tsu_indexSetByAddingIndexes:(id)arg1;
+- (id)tsu_indexSetByExcludingIndexes:(id)arg1;
 - (id)tsu_indexSetByInsertingIndexes:(id)arg1 inRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (id)tsu_indexSetByIntersectingWithIndexes:(id)arg1;
 - (id)tsu_indexSetByIntersectingWithRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
@@ -177,12 +196,9 @@
 - (bool)tsu_intersectsIndexesInIndexSet:(id)arg1;
 - (bool)tsu_isSingleContiguousRange;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })tsu_leadingRangeInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
+- (id)tsu_localizedDescription;
 - (unsigned long long)tsu_positionOfIndex:(unsigned long long)arg1;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })tsu_trailingRangeInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
-
-// Image: /System/Library/PrivateFrameworks/PhotoAnalysis.framework/Frameworks/PhotosGraph.framework/PhotosGraph
-
-- (bool)pg_intersectsIndexSet:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
 
@@ -191,6 +207,10 @@
 - (id)pl_indexSetAdjustedForInsertions:(id)arg1;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })pl_rangeCoveringIndexSet;
 - (id)pl_shortDescription;
+
+// Image: /System/Library/PrivateFrameworks/PhotosGraph.framework/PhotosGraph
+
+- (bool)pg_intersectsIndexSet:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
 
@@ -228,9 +248,11 @@
 
 + (id)tsu_indexSetWithIndices:(unsigned long long*)arg1 count:(unsigned long long)arg2;
 
-- (id)tsp_initWithMessage:(const struct IndexSet { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Range> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; }*)arg1;
-- (void)tsp_saveToMessage:(struct IndexSet { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Range> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; }*)arg1;
+- (id)tsp_initWithMessage:(const struct IndexSet { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Range> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; }*)arg1;
+- (void)tsp_saveToMessage:(struct IndexSet { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Range> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; }*)arg1;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })tsu_boundingRange;
+- (void)tsu_enumerateRangesConcurrentlyUsingBeginBlock:(id /* block */)arg1 concurrentBlock:(id /* block */)arg2 finalBlock:(id /* block */)arg3;
+- (void)tsu_enumerateUniquePermutationsUsingBlock:(id /* block */)arg1;
 - (unsigned long long)tsu_firstCommonIndexWithIndexes:(id)arg1;
 - (unsigned long long)tsu_indexAtPosition:(unsigned long long)arg1;
 - (id)tsu_indexSetByAddingIndex:(unsigned long long)arg1;
@@ -240,6 +262,7 @@
 - (id)tsu_indexSetByInsertingIndexes:(id)arg1 inRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (id)tsu_indexSetByIntersectingWithIndexes:(id)arg1;
 - (id)tsu_indexSetByIntersectingWithRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
+- (id)tsu_indexSetChunkIndex:(unsigned long long)arg1 ofChunkCount:(unsigned long long)arg2;
 - (id)tsu_initWithIndices:(unsigned long long*)arg1 count:(unsigned long long)arg2;
 - (bool)tsu_intersectsIndexesInIndexSet:(id)arg1;
 - (bool)tsu_isSingleContiguousRange;

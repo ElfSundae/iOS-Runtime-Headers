@@ -16,7 +16,6 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic, copy) NSData *jsonFeedback;
-@property (nonatomic, readonly) bool requiresQueryId;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long timestamp;
 
@@ -32,7 +31,6 @@
 - (id)jsonData;
 - (id)jsonFeedback;
 - (bool)readFrom:(id)arg1;
-- (bool)requiresQueryId;
 - (void)setFeedbackType:(int)arg1;
 - (void)setJsonFeedback:(id)arg1;
 - (void)setTimestamp:(unsigned long long)arg1;

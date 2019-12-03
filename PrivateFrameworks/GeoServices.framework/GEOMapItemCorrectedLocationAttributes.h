@@ -8,11 +8,29 @@
     GEOLatLng * _correctedCoordinate;
     NSString * _customLabel;
     struct { 
-        unsigned int lastUpdateDate : 1; 
-        unsigned int hasSubmittedRAP : 1; 
-    }  _has;
+        unsigned int has_lastUpdateDate : 1; 
+        unsigned int has_hasSubmittedRAP : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_correctedAddressSecondaryStreetLine : 1; 
+        unsigned int read_correctedAddress : 1; 
+        unsigned int read_correctedCoordinate : 1; 
+        unsigned int read_customLabel : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_correctedAddressSecondaryStreetLine : 1; 
+        unsigned int wrote_correctedAddress : 1; 
+        unsigned int wrote_correctedCoordinate : 1; 
+        unsigned int wrote_customLabel : 1; 
+        unsigned int wrote_lastUpdateDate : 1; 
+        unsigned int wrote_hasSubmittedRAP : 1; 
+    }  _flags;
     bool  _hasSubmittedRAP;
     double  _lastUpdateDate;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     PBUnknownFields * _unknownFields;
 }
 
@@ -32,7 +50,14 @@
 
 // Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_readCorrectedAddress;
+- (void)_readCorrectedAddressSecondaryStreetLine;
+- (void)_readCorrectedCoordinate;
+- (void)_readCustomLabel;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)correctedAddress;
@@ -49,9 +74,12 @@
 - (bool)hasLastUpdateDate;
 - (bool)hasSubmittedRAP;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (double)lastUpdateDate;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setCorrectedAddress:(id)arg1;
 - (void)setCorrectedAddressSecondaryStreetLine:(id)arg1;

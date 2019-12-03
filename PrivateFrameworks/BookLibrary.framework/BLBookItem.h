@@ -58,6 +58,7 @@
 - (id)_cloudCoverImageData;
 - (id)_cloudDictionaryRepresentation;
 - (void)_setCloudCoverImageData:(id)arg1;
+- (void)_setFileURL:(id)arg1;
 - (id)album;
 - (id)author;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

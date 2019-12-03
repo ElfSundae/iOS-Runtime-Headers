@@ -5,13 +5,17 @@
 @interface NFContactlessPaymentStartEvent : NSObject <NSSecureCoding> {
     NFApplet * _applet;
     NSString * _appletIdentifier;
+    NSString * _keyIdentifier;
     unsigned short  _paymentMode;
     unsigned short  _selectStatus;
+    NSString * _spIdentifier;
 }
 
 @property (nonatomic, readonly) NFApplet *applet;
+@property (nonatomic, readonly) NSString *keyIdentifier;
 @property (nonatomic, readonly) unsigned short paymentMode;
 @property (nonatomic, readonly) unsigned short selectStatus;
+@property (nonatomic, readonly) NSString *spIdentifier;
 
 + (bool)supportsSecureCoding;
 
@@ -24,7 +28,10 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
+- (id)keyIdentifier;
 - (unsigned short)paymentMode;
 - (unsigned short)selectStatus;
+- (void)setKeyIdentifier:(id)arg1;
+- (id)spIdentifier;
 
 @end

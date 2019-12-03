@@ -11,10 +11,12 @@
 
 - (void).cxx_destruct;
 - (id)_displayableItemsForContactSupport;
+- (id)_displayableItemsForFeatureName;
 - (id)_displayableItemsForInstructionManual;
 - (id)_displayableItemsForPhone;
 - (id)_displayableItemsForReenableFeature;
 - (id)_displayableItemsForWatch;
+- (bool)_shouldDisplayItemsForWatch;
 - (id)displayableItems;
 - (void)receivedHeartRhythmAvailabilityNotification;
 - (long long)reenableFeatureSection;

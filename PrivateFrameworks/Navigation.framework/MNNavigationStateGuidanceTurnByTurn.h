@@ -4,9 +4,8 @@
 
 @interface MNNavigationStateGuidanceTurnByTurn : MNNavigationStateGuidance
 
-- (unsigned long long)desiredResourcePolicy;
 - (void)enterState;
 - (void)setFullGuidanceMode:(bool)arg1;
-- (long long)type;
+- (unsigned long long)type;
 
 @end

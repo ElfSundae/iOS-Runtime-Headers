@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
  */
 
-@interface PKExplanationViewController : PKViewController <PKExplanationViewDelegate> {
+@interface PKExplanationViewController : UIViewController <PKExplanationViewDelegate> {
     UIActivityIndicatorView * _activityIndicatorView;
     long long  _context;
     PKExplanationView * _explanationView;
@@ -32,14 +32,13 @@
 - (void)_dismissViewController;
 - (void)_donePressed;
 - (void)_setNavigationBarEnabled:(bool)arg1;
+- (id)contentScrollView;
 - (long long)context;
 - (id)explanationView;
 - (id)explanationViewControllerDelegate;
 - (id)init;
 - (id)initWithContext:(long long)arg1;
 - (void)loadView;
-- (id)pkui_navigationBarTintColor;
-- (bool)pkui_prefersNavigationBarShadowHidden;
 - (id)privacyLinkController;
 - (void)setExplanationViewControllerDelegate:(id)arg1;
 - (void)setPrivacyLinkController:(id)arg1;

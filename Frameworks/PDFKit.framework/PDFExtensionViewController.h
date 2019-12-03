@@ -17,15 +17,13 @@
 - (void)_pageChangedNotification:(id)arg1;
 - (void)_pdfViewZoomToRect:(id)arg1;
 - (void)_selectionChangedNotification:(id)arg1;
+- (void)_selectionPointsChangedNotification:(id)arg1;
 - (void)_setupDocumentViewSize;
 - (void)_textSelectionDidCopyDataNotification:(id)arg1;
 - (void)_textSelectionDidCopyStringNotification:(id)arg1;
-- (void)_textSelectionPointChangedNotification:(id)arg1;
 - (void)_textSelectionShowTextSelectionMenu:(id)arg1;
-- (void)_textSelectionStateChangedNotification:(id)arg1;
 - (void)_updateDocumentIsLocked;
 - (void)_updatePageCount;
-- (void)_updateSelectionRects;
 - (void)_updateTextSelectionPoints;
 - (void)_zoomToRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)cancelFindString;
@@ -44,6 +42,7 @@
 - (void)setMaximumZoomScale:(double)arg1;
 - (void)setMinimumZoomScale:(double)arg1;
 - (void)setupPDFView;
+- (void)snapshotViewRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 forWidth:(double)arg2 afterScreenUpdates:(bool)arg3;
 - (void)unlockWithPassword:(id)arg1;
 - (void)updatePDFViewLayout:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 scrollViewFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 safeAreaInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg3 zoomScale:(double)arg4;
 - (void)viewDidLoad;

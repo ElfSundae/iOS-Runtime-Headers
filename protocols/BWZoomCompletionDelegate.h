@@ -5,6 +5,6 @@
 
 @required
 
-- (void)zoomCommandHandler:(BWZoomCommandHandler *)arg1 didApplyZoomFactor:(float)arg2 rampComplete:(bool)arg3 rampCommandID:(int)arg4;
+- (void)zoomCommandHandler:(BWZoomCommandHandler *)arg1 didApplyZoomFactor:(float)arg2 zoomFactorWithoutFudge:(float)arg3 rampComplete:(bool)arg4 rampCommandID:(int)arg5;
 
 @end

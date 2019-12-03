@@ -2,14 +2,13 @@
    Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
  */
 
-@interface CKTranscriptCollectionViewController : CKViewController <CKAssociatedMessageTranscriptCellDelegate, CKAudioControllerDelegate, CKFullScreenEffectManagerDelegate, CKLocationShareBalloonViewDelegate, CKLocationSharingDelegate, CKMovieBalloonViewDelegate, CKPluginPlaybackManagerDelegate, CKSendAnimationManagerDelegate, CKTitledImageBalloonViewDelegate, CKTranscriptCollectionViewDelegate, CNAvatarViewDelegate, UIAlertViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout> {
+@interface CKTranscriptCollectionViewController : CKViewController <CKAssociatedMessageTranscriptCellDelegate, CKAudioControllerDelegate, CKBalloonViewDelegate, CKFullScreenEffectManagerDelegate, CKLocationShareBalloonViewDelegate, CKLocationSharingDelegate, CKMovieBalloonViewDelegate, CKPluginPlaybackManagerDelegate, CKSendAnimationManagerDelegate, CKTitledImageBalloonViewDelegate, CKTranscriptCollectionViewDelegate, CNAvatarViewDelegate, UIAlertViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate_Private> {
     NSString * ___CurrentTestName;
     id /* block */  _alertHandler;
     bool  _allowsPluginPlayback;
     NSArray * _associatedChatItems;
     CKAudioController * _audioController;
     double  _balloonMaxWidth;
-    NSArray * _bulletins;
     NSArray * _chatItems;
     CKTranscriptCollectionView * _collectionView;
     long long  _contentAnimationPauseReasons;
@@ -26,7 +25,7 @@
     CKImpactEffectManager * _impactEffectManager;
     bool  _initialLoad;
     bool  _isLoadingMoreMessages;
-    bool  _isPerformingRegenerateOnlyUpdate;
+    bool  _isPerformingRegenerateOrReloadOnlyUpdate;
     NSIndexPath * _itemIndexPathToHighlight;
     UITapGestureRecognizer * _loggingTapGestureRecognizer;
     struct UIEdgeInsets { 
@@ -36,6 +35,7 @@
         double right; 
     }  _marginInsets;
     NSString * _mostRecentlyTouchedPlugin;
+    NSArray * _notifications;
     struct CGPoint { 
         double x; 
         double y; 
@@ -62,7 +62,6 @@
 @property (nonatomic, copy) NSArray *associatedChatItems;
 @property (nonatomic, retain) CKAudioController *audioController;
 @property (nonatomic) double balloonMaxWidth;
-@property (nonatomic, copy) NSArray *bulletins;
 @property (nonatomic, readonly) IMChat *chat;
 @property (nonatomic, copy) NSArray *chatItems;
 @property (nonatomic, retain) CKTranscriptCollectionView *collectionView;
@@ -83,10 +82,11 @@
 @property (nonatomic, retain) CKImpactEffectManager *impactEffectManager;
 @property (getter=isInitialLoad, nonatomic) bool initialLoad;
 @property (nonatomic) bool isLoadingMoreMessages;
-@property (nonatomic) bool isPerformingRegenerateOnlyUpdate;
+@property (nonatomic) bool isPerformingRegenerateOrReloadOnlyUpdate;
 @property (nonatomic, retain) UITapGestureRecognizer *loggingTapGestureRecognizer;
 @property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } marginInsets;
 @property (nonatomic) NSString *mostRecentlyTouchedPlugin;
+@property (nonatomic, copy) NSArray *notifications;
 @property (nonatomic) struct CGPoint { double x1; double x2; } peekSampleTranslation;
 @property (getter=isPeeking, nonatomic) bool peeking;
 @property (nonatomic) bool playedLastImpactEffectForTransitionFromComposing;
@@ -110,9 +110,12 @@
 - (void)__setCurrentTestName:(id)arg1;
 - (bool)_allowsEffectAutoPlayback;
 - (double)_balloonHorizontalOffsetForParentChatItem:(id)arg1 contentAlignmentRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 responsibleChatItems:(id*)arg3 individualOffsets:(id*)arg4;
+- (bool)_canShowWhileLocked;
+- (bool)_canUseOpaqueMask;
 - (void)_collectionViewDidRestAsync:(bool)arg1;
 - (void)_deferredStartPlayback;
 - (void)_diffAssociatedItemsWithOldAssociatedItems:(id)arg1 removedAssociatedIndexes:(id*)arg2 insertedAssociatedIndexes:(id*)arg3;
+- (void)_downgradeMessage:(id)arg1;
 - (void)_downgradeMessageAtIndexPath:(id)arg1;
 - (void)_handleAssociatedMessageCellTapEvent:(id)arg1 isDoubleTap:(bool)arg2;
 - (void)_hideBalloonViewIfNecessaryForCell:(id)arg1 indexPath:(id)arg2;
@@ -125,6 +128,7 @@
 - (void)_performRemoteLogDump;
 - (bool)_pluginChatItem:(id)arg1 hasControllerConformingToProtocol:(id)arg2;
 - (void)_prewarmBalloonControllers;
+- (void)_prewarmMediaPreviews;
 - (void)_prewarmTranscriptAssetsIfNecessary;
 - (void)_refreshLocationsForRecipientsIfNecessary;
 - (void)_releaseActiveBalloonControllers;
@@ -158,13 +162,13 @@
 - (double)balloonMaxWidth;
 - (id)balloonPluginForViewController:(id)arg1;
 - (void)balloonView:(id)arg1 mediaObjectDidFinishPlaying:(id)arg2;
+- (void)balloonView:(id)arg1 willInsertPluginViewAsSubview:(id)arg2;
 - (void)balloonViewDoubleTapped:(id)arg1;
 - (id)balloonViewForChatItem:(id)arg1;
 - (id)balloonViewForIndexPath:(id)arg1;
 - (void)balloonViewLongTouched:(id)arg1;
 - (void)balloonViewTapped:(id)arg1;
 - (void)balloonViewTitleTapped:(id)arg1;
-- (id)bulletins;
 - (bool)canRaiseToListen;
 - (bool)canRaiseToTalk;
 - (id)cellForAssociatedChatItem:(id)arg1;
@@ -173,16 +177,16 @@
 - (id)chatForSendAnimationManager:(id)arg1;
 - (id)chatItemForCell:(id)arg1;
 - (void)chatItemIsFilteredChanged:(id)arg1;
-- (id)chatItemWithBulletin:(id)arg1;
-- (id)chatItemWithIMChatItem:(id)arg1;
+- (id)chatItemWithIMChatItem:(id)arg1 traitCollection:(id)arg2;
+- (id)chatItemWithNotification:(id)arg1;
 - (id)chatItems;
 - (void)chatItemsDidChange:(id)arg1;
-- (id)chatItemsWithBulletins:(id)arg1;
 - (id)chatItemsWithIMChatItems:(id)arg1;
-- (void)chatRegistryDidLoad:(id)arg1;
+- (id)chatItemsWithNotifications:(id)arg1;
 - (void)clearRecentPluginTouch;
 - (id)collectionView;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
+- (void)collectionView:(id)arg1 didBeginMultipleSelectionInteractionAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didDeselectItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 didEndDisplayingSupplementaryView:(id)arg2 forElementOfKind:(id)arg3 atIndexPath:(id)arg4;
@@ -191,6 +195,7 @@
 - (id)collectionView:(id)arg1 layout:(id)arg2 chatItemForItemAtIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 layout:(id)arg2 chatItemForSupplementaryViewAtIndexPath:(id)arg3;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
+- (bool)collectionView:(id)arg1 shouldBeginMultipleSelectionInteractionAtIndexPath:(id)arg2;
 - (bool)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 willDisplaySupplementaryView:(id)arg2 forElementKind:(id)arg3 atIndexPath:(id)arg4;
@@ -205,6 +210,7 @@
 - (void)configureAssociatedCell:(id)arg1 forItemAtIndexPath:(id)arg2;
 - (void)configureCell:(id)arg1 forItemAtIndexPath:(id)arg2;
 - (void)configureSpeakerButtonCell:(id)arg1 forItemAtIndexPath:(id)arg2;
+- (void)connectivityChanged:(id)arg1;
 - (long long)contentAnimationPauseReasons;
 - (id)conversation;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })convertedBoundsToCullFromView:(id)arg1;
@@ -224,21 +230,22 @@
 - (id)gradientReferenceView;
 - (bool)hasHiddenItems;
 - (bool)hasRecentTouchForSendingPlugin:(id)arg1;
+- (id)hawkingFailurePromptMessageForHandle:(id)arg1;
 - (id)hiddenBalloonViews;
 - (id)hiddenItems;
 - (void)highlightItemAtIndexPathWhenDisplayed:(id)arg1;
 - (id)impactEffectManager;
 - (id)indexPathForBalloonView:(id)arg1;
-- (id)initWithConversation:(id)arg1 balloonMaxWidth:(double)arg2 marginInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg3;
-- (id)initWithConversation:(id)arg1 bulletins:(id)arg2 balloonMaxWidth:(double)arg3 marginInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg4;
+- (id)initWithConversation:(id)arg1 delegate:(id)arg2 balloonMaxWidth:(double)arg3 marginInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg4;
+- (id)initWithConversation:(id)arg1 delegate:(id)arg2 notifications:(id)arg3 balloonMaxWidth:(double)arg4 marginInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg5;
 - (void)installedAppsChanged:(id)arg1;
 - (void)interactionStartedFromPreviewItemControllerInBalloonView:(id)arg1;
 - (void)interactionStoppedFromPreviewItemControllerInBalloonView:(id)arg1;
-- (void)invalidateChatItemLayoutWithBalloonMaxWidth:(double)arg1 marginInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg2;
+- (void)invalidateChatItemLayoutWithBalloonMaxWidth:(double)arg1 marginInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg2 traitCollection:(id)arg3;
 - (bool)isInitialLoad;
 - (bool)isLoadingMoreMessages;
 - (bool)isPeeking;
-- (bool)isPerformingRegenerateOnlyUpdate;
+- (bool)isPerformingRegenerateOrReloadOnlyUpdate;
 - (bool)isTranscriptUpdateAnimated;
 - (bool)isVisiblePlugin:(id)arg1;
 - (id)lastMessagePartChatItem;
@@ -255,10 +262,12 @@
 - (void)locationSharingClient:(id)arg1 showShareLocationMenuWithBalloonPluginView:(id)arg2;
 - (void)locationStringDidChange:(id)arg1;
 - (id)loggingTapGestureRecognizer;
+- (id)makeHawkingPromptForMessage:(id)arg1 toRecipient:(id)arg2 fromSender:(id)arg3 withSMSOption:(bool)arg4;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })marginInsets;
 - (id)messagePartForBalloonView:(id)arg1;
 - (id)mostRecentlyTouchedPlugin;
 - (void)multiwayCallStateChanged:(id)arg1;
+- (id)notifications;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)parentControllerDidBecomeActive;
 - (struct CGPoint { double x1; double x2; })peekSampleTranslation;
@@ -268,12 +277,14 @@
 - (id)pluginPlaybackManager;
 - (void)pluginPlaybackManagerDidStopPlayback:(id)arg1;
 - (void)prepareForSuspend;
+- (void)presentHawkingPromptForMessage:(id)arg1;
 - (id)presentingViewControllerForAvatarView:(id)arg1;
 - (void)previewDidChange:(id)arg1;
 - (void)raiseGestureRecognized:(id)arg1;
 - (void)reconfigureVisibleSpeakerButtonCells;
 - (void)reloadData;
 - (void)removeContentAnimationPauseReasons:(long long)arg1;
+- (void)repromptLastBlackholeFailureIfNotPrompted;
 - (void)scrollToTopOfLastBubbleCellAnimated:(bool)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(bool)arg2;
@@ -292,7 +303,6 @@
 - (void)setAssociatedChatItems:(id)arg1;
 - (void)setAudioController:(id)arg1;
 - (void)setBalloonMaxWidth:(double)arg1;
-- (void)setBulletins:(id)arg1;
 - (void)setChatItems:(id)arg1;
 - (void)setChatItems:(id)arg1 removedAssociatedIndexes:(id*)arg2 insertedAssociatedIndexes:(id*)arg3;
 - (void)setCollectionView:(id)arg1;
@@ -311,10 +321,11 @@
 - (void)setImpactEffectManager:(id)arg1;
 - (void)setInitialLoad:(bool)arg1;
 - (void)setIsLoadingMoreMessages:(bool)arg1;
-- (void)setIsPerformingRegenerateOnlyUpdate:(bool)arg1;
+- (void)setIsPerformingRegenerateOrReloadOnlyUpdate:(bool)arg1;
 - (void)setLoggingTapGestureRecognizer:(id)arg1;
 - (void)setMarginInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setMostRecentlyTouchedPlugin:(id)arg1;
+- (void)setNotifications:(id)arg1;
 - (void)setPeekSampleTranslation:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setPeeking:(bool)arg1;
 - (void)setPlayedLastImpactEffectForTransitionFromComposing:(bool)arg1;
@@ -333,6 +344,7 @@
 - (void)setTransitionedFromComposing:(bool)arg1;
 - (void)setUpdateAnimationGroup:(id)arg1;
 - (bool)shouldLoadDefaultConversationViewingMessageCountOnAppear;
+- (bool)shouldPresentHawkingPromptForMessage:(id)arg1;
 - (bool)shouldUseOpaqueMask;
 - (void)sizeFullTranscriptIfNecessary;
 - (bool)sizedFullTranscript;

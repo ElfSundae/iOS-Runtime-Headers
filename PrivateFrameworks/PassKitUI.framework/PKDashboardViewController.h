@@ -14,18 +14,14 @@
     bool  _isHidingContent;
     bool  _isPresentingContent;
     double  _lastScrollOffset;
-    bool  _navigationBarVisible;
-    double  _navigationBarVisiblityTopInset;
     bool  _presentationAnimated;
     NSArray * _presenters;
     NSMutableDictionary * _presentersPerItemClassName;
     PKDashboardFooterTextView * _sampleFooterView;
     PKDashboardTitleHeaderView * _sampleHeaderView;
-    bool  _shouldAnimateNavigationBarAppearance;
     bool  _shouldPresentAllContent;
     bool  _shouldUseClearNavigationBar;
     NSMutableDictionary * _titlesForSection;
-    unsigned char  _visibilityState;
     NSSet * _visibleCellsExcludingSafeArea;
 }
 
@@ -35,9 +31,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) bool isPresentingContent;
-@property (nonatomic, readonly) bool navigationBarVisible;
-@property (nonatomic) double navigationBarVisiblityTopInset;
-@property (nonatomic) bool shouldAnimateNavigationBarAppearance;
 @property (nonatomic) bool shouldUseClearNavigationBar;
 @property (readonly) Class superclass;
 
@@ -51,7 +44,8 @@
 - (bool)_isIndexPathAFooter:(id)arg1;
 - (bool)_isIndexPathAHeader:(id)arg1;
 - (void)_presentAllContent;
-- (void)_updateNavigationBarForVisible;
+- (void)_updateNavigationBarAppearance;
+- (void)_updateNavigationBarVisibility;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 didHighlightItemAtIndexPath:(id)arg2;
@@ -74,28 +68,17 @@
 - (void)itemChanged:(id)arg1 atIndexPath:(id)arg2;
 - (bool)itemIsIndependentInCollectionView:(id)arg1 atIndexPath:(id)arg2;
 - (bool)itemIsStackableInCollectionView:(id)arg1 atIndexPath:(id)arg2;
-- (bool)navigationBarVisible;
-- (double)navigationBarVisiblityTopInset;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)performBatchUpdates:(id /* block */)arg1 completion:(id /* block */)arg2;
-- (double)pkui_preferredNavigationBarBackgroundOpacity;
-- (bool)pkui_prefersNavigationBarShadowHidden;
 - (long long)preferredStatusBarStyle;
 - (void)reloadSections:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)setActionForVisibilityChange:(id /* block */)arg1 indexPath:(id)arg2;
 - (void)setDelegate:(id)arg1;
-- (void)setNavigationBarVisiblityTopInset:(double)arg1;
-- (void)setShouldAnimateNavigationBarAppearance:(bool)arg1;
 - (void)setShouldUseClearNavigationBar:(bool)arg1;
-- (bool)shouldAnimateNavigationBarAppearance;
 - (void)shouldPresentAllContent:(bool)arg1 animated:(bool)arg2;
 - (bool)shouldUseClearNavigationBar;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)viewDidAppear:(bool)arg1;
-- (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLoad;
-- (void)viewWillAppear:(bool)arg1;
-- (void)viewWillDisappear:(bool)arg1;
 
 @end

@@ -3,8 +3,8 @@
  */
 
 @interface DNDSRemoteServiceProvider : NSObject <DNDRemoteServiceServerProtocol, NSXPCListenerDelegate> {
-    NSMutableDictionary * _clientConnectionDetailsByIdentifier;
-    NSObject<OS_dispatch_queue> * _clientConnectionQueue;
+    NSMapTable * _clientConnectionDetailsByConnection;
+    DNDSClientDetailsProvider * _clientDetailsProvider;
     <DNDSRemoteServiceProviderDelegate> * _delegate;
     NSXPCListener * _listener;
 }
@@ -16,42 +16,27 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_activeModeAssertionForClientConnection:(id)arg1 clientIdentifier:(id)arg2 error:(id*)arg3;
+- (id)_clientDetailsForClientIdentifier:(id)arg1 clientConnection:(id)arg2;
 - (void)_handleClientConnectionInterrupted:(id)arg1;
 - (void)_handleClientConnectionInvalidated:(id)arg1;
-- (id)_invalidateActiveModeAssertionForClientConnection:(id)arg1 clientIdentifier:(id)arg2 error:(id*)arg3;
-- (id)_invalidateAllActiveModeAssertionsWithReason:(unsigned long long)arg1 error:(id*)arg2;
-- (id)_queue_activeModeAssertionWithClientConnection:(id)arg1 clientIdentifier:(id)arg2 error:(id*)arg3;
-- (id)_queue_getConnectionDetailsForClientConnection:(id)arg1 clientIdentifier:(id)arg2 error:(id*)arg3;
-- (void)_queue_handleModeAssertionInvalidations:(id)arg1;
-- (id)_queue_invalidateActiveModeAssertionForClientConnection:(id)arg1 clientIdentifier:(id)arg2 reason:(unsigned long long)arg3 error:(id*)arg4;
-- (id)_queue_invalidateAllActiveModeAssertionsWithReason:(unsigned long long)arg1 error:(id*)arg2;
-- (id)_queue_registerConnectionDetailsForClientConnection:(id)arg1 clientIdentifier:(id)arg2 error:(id*)arg3;
-- (bool)_queue_registerWantsAssertionUpdatesForClientConnection:(id)arg1 clientIdentifier:(id)arg2 error:(id*)arg3;
-- (bool)_queue_registerWantsSettingsUpdatesForClientConnection:(id)arg1 clientIdentifier:(id)arg2 error:(id*)arg3;
-- (bool)_queue_registerWantsStateUpdatesForClientConnection:(id)arg1 clientIdentifier:(id)arg2 error:(id*)arg3;
-- (id)_queue_takeModeAssertionWithDetails:(id)arg1 clientConnection:(id)arg2 clientIdentifier:(id)arg3 error:(id*)arg4 invalidation:(id*)arg5;
-- (void)_queue_unregisterConnectionDetailsForClientConnection:(id)arg1;
-- (id)_registerConnectionDetailsForClientConnection:(id)arg1 clientIdentifier:(id)arg2 error:(id*)arg3;
-- (bool)_registerWantsAssertionUpdatesForClientConnection:(id)arg1 clientIdentifier:(id)arg2 error:(id*)arg3;
-- (bool)_registerWantsSettingsUpdatesForClientConnection:(id)arg1 clientIdentifier:(id)arg2 error:(id*)arg3;
-- (bool)_registerWantsStateUpdatesForClientConnection:(id)arg1 clientIdentifier:(id)arg2 error:(id*)arg3;
-- (id)_takeModeAssertionWithDetails:(id)arg1 clientConnection:(id)arg2 clientIdentifier:(id)arg3 error:(id*)arg4 invalidation:(id*)arg5;
+- (void)_iterateClientConnectionsToSendWithHandler:(id /* block */)arg1;
+- (void)_registerOrMutateConnectionDetailsForClientConnection:(id)arg1 handler:(id /* block */)arg2;
 - (void)_unregisterConnectionDetailsForClientConnection:(id)arg1;
 - (void)dealloc;
 - (id)delegate;
 - (void)getActiveModeAssertionWithRequestDetails:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)getBehaviorSettingsWithRequestDetails:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)getLatestModeAssertionInvalidationWithRequestDetails:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)getPhoneCallBypassSettingsWithRequestDetails:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)getScheduleSettingsWithRequestDetails:(id)arg1 completionHandler:(id /* block */)arg2;
-- (void)handleModeAssertionInvalidations:(id)arg1;
+- (void)handleModeAssertionUpdateResult:(id)arg1;
 - (void)handleStateUpdate:(id)arg1;
 - (void)handleUpdatedBehaviorSettings:(id)arg1;
 - (void)handleUpdatedPhoneCallBypassSettings:(id)arg1;
 - (void)handleUpdatedScheduleSettings:(id)arg1;
-- (id)init;
+- (id)initWithClientDetailsProvider:(id)arg1;
 - (void)invalidate;
-- (void)invalidateActiveModeAssertionWithRequestDetails:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)invalidateActiveModeAssertionWithDetails:(id)arg1 reasonOverride:(unsigned long long)arg2 requestDetails:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)invalidateAllActiveModeAssertionsWithRequestDetails:(id)arg1 completionHandler:(id /* block */)arg2;
 - (bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)queryStateWithRequestDetails:(id)arg1 completionHandler:(id /* block */)arg2;

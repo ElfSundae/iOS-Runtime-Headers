@@ -5,10 +5,12 @@
 @interface PKPassPreviewImageSet : PKPassImageSet {
     PKImage * _iconImage;
     PKImage * _notificationIconImage;
+    PKImage * _rawIcon;
 }
 
 @property (nonatomic, retain) PKImage *iconImage;
 @property (nonatomic, retain) PKImage *notificationIconImage;
+@property (nonatomic, retain) PKImage *rawIcon;
 
 + (id)archiveName;
 + (unsigned int)currentVersion;
@@ -24,7 +26,9 @@
 - (bool)isEqual:(id)arg1;
 - (id)notificationIconImage;
 - (void)preheatImages;
+- (id)rawIcon;
 - (void)setIconImage:(id)arg1;
 - (void)setNotificationIconImage:(id)arg1;
+- (void)setRawIcon:(id)arg1;
 
 @end

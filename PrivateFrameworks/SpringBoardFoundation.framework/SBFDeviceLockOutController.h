@@ -4,6 +4,7 @@
 
 @interface SBFDeviceLockOutController : NSObject <BSDescriptionProviding, SBFLockOutStatusProvider, SBFPrivateAuthenticationObserver, SBFThermalConditionObserver> {
     SBFUserAuthenticationController * _authenticationController;
+    unsigned long long  _lastBlockedStatus;
     bool  _lockedOutCached;
     <SBFThermalBlockProvider> * _thermalProvider;
 }

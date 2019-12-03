@@ -20,6 +20,7 @@
 }
 
 @property (nonatomic) int blendMode;
+@property (nonatomic, readonly) <UINamedLayerContentProvider> *contentProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) bool fixedFrame;

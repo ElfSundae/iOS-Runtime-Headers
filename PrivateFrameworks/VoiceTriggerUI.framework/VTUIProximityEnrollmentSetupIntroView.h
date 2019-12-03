@@ -15,7 +15,7 @@
     UITextView * _termsAndConds;
     UILabel * _titleLabel;
     NSArray * _viewConstraints;
-    VTPreferences * _vtPrefs;
+    CSVoiceProfileManager * _voiceProfileMgr;
     VTUIStyle * _vtStyle;
 }
 
@@ -45,7 +45,7 @@
 - (void)setViewConstraints:(id)arg1;
 - (id)setupButton;
 - (id)stateViewDelegate;
-- (bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3;
+- (bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3 interaction:(long long)arg4;
 - (id)viewConstraints;
 
 @end

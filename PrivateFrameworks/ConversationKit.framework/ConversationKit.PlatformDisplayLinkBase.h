@@ -3,8 +3,8 @@
  */
 
 @interface ConversationKit.PlatformDisplayLinkBase : Swift._SwiftObject {
+    void $__lazy_storage_$_displayLink;
     void callbackWrapper;
-    void displayLink.storage;
 }
 
 @end

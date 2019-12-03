@@ -6,10 +6,24 @@
     GEOComposedWaypoint * _destination;
     NSString * _destinationName;
     struct { 
-        unsigned int travelTime : 1; 
-        unsigned int transportType : 1; 
-    }  _has;
+        unsigned int has_travelTime : 1; 
+        unsigned int has_transportType : 1; 
+        unsigned int read_destinationName : 1; 
+        unsigned int read_destination : 1; 
+        unsigned int read_origin : 1; 
+        unsigned int wrote_destinationName : 1; 
+        unsigned int wrote_destination : 1; 
+        unsigned int wrote_origin : 1; 
+        unsigned int wrote_travelTime : 1; 
+        unsigned int wrote_transportType : 1; 
+    }  _flags;
     GEOComposedWaypoint * _origin;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     int  _transportType;
     double  _travelTime;
 }
@@ -25,8 +39,13 @@
 @property (nonatomic) int transportType;
 @property (nonatomic) double travelTime;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsTransportType:(id)arg1;
+- (void)_readDestination;
+- (void)_readDestinationName;
+- (void)_readOrigin;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -39,10 +58,13 @@
 - (bool)hasTransportType;
 - (bool)hasTravelTime;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (id)initWithRoute:(id)arg1 destinationName:(id)arg2;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)origin;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setDestination:(id)arg1;
 - (void)setDestinationName:(id)arg1;

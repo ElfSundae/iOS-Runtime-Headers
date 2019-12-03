@@ -13,6 +13,7 @@
 @property (getter=isForceEmptyEnabled, nonatomic) bool forceEmptyEnabled;
 @property (nonatomic, readonly) NSUserDefaults *internalSettings;
 @property (nonatomic, copy) NSDate *lastViewDidDisappearDate;
+@property (nonatomic, copy) NSString *savedContentSizeCategory;
 @property (getter=isSnapshotLabelEnabled, nonatomic) bool snapshotLabelEnabled;
 @property (getter=isWidgetFeedbackEnabled, nonatomic) bool widgetFeedbackEnabled;
 
@@ -29,12 +30,14 @@
 - (bool)isWidgetFeedbackEnabled;
 - (id)lastViewDidDisappearDate;
 - (long long)numberOfActionPredictions;
+- (id)savedContentSizeCategory;
 - (void)setActionsEnabled:(bool)arg1;
 - (void)setDebugUIEnabled:(bool)arg1;
 - (void)setDemoModeEnabled:(bool)arg1;
 - (void)setForceEmptyEnabled:(bool)arg1;
 - (void)setLastViewDidDisappearDate:(id)arg1;
 - (void)setNumberOfActionPredictions:(long long)arg1;
+- (void)setSavedContentSizeCategory:(id)arg1;
 - (void)setSnapshotLabelEnabled:(bool)arg1;
 - (void)setWidgetFeedbackEnabled:(bool)arg1;
 

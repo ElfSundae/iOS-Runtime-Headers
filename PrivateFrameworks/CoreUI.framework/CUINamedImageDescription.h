@@ -9,6 +9,7 @@
         double bottom; 
         double right; 
     }  _alignmentEdgeInsets;
+    NSString * _appearanceName;
     int  _blendMode;
     long long  _displayGamut;
     struct { 
@@ -30,6 +31,7 @@
 }
 
 @property (nonatomic) struct { double x1; double x2; double x3; double x4; } alignmentEdgeInsets;
+@property (nonatomic, copy) NSString *appearanceName;
 @property (nonatomic) int blendMode;
 @property (nonatomic) long long displayGamut;
 @property (nonatomic) struct { double x1; double x2; double x3; double x4; } edgeInsets;
@@ -46,7 +48,9 @@
 @property (nonatomic) long long templateRenderingMode;
 
 - (struct { double x1; double x2; double x3; double x4; })alignmentEdgeInsets;
+- (id)appearanceName;
 - (int)blendMode;
+- (void)dealloc;
 - (id)description;
 - (long long)displayGamut;
 - (struct { double x1; double x2; double x3; double x4; })edgeInsets;
@@ -58,6 +62,7 @@
 - (long long)resizingMode;
 - (double)scale;
 - (void)setAlignmentEdgeInsets:(struct { double x1; double x2; double x3; double x4; })arg1;
+- (void)setAppearanceName:(id)arg1;
 - (void)setBlendMode:(int)arg1;
 - (void)setDisplayGamut:(long long)arg1;
 - (void)setEdgeInsets:(struct { double x1; double x2; double x3; double x4; })arg1;

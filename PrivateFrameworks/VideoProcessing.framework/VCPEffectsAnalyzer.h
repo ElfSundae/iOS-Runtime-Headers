@@ -6,6 +6,9 @@
     bool  _hasFace;
 }
 
++ (id)gatingResultKeyToIndex;
++ (id)gatingTypeKeys;
++ (id)getResultIndex:(id)arg1;
 + (bool)isAutoLoopFramworkAvailable;
 + (bool)usePHAssetScene;
 
@@ -16,5 +19,6 @@
 - (id)initWithFlagHasFace:(bool)arg1;
 - (id)matchingNodeForSceneClassification:(id)arg1 inSceneNames:(id)arg2;
 - (id)performanSceneClassificationOfImageFileAtURL:(id)arg1;
+- (bool)reportLivePhotoEffectAnalysisResults:(id)arg1;
 
 @end

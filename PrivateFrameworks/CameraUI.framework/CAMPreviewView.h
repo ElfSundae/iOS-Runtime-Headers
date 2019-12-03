@@ -4,95 +4,89 @@
 
 @interface CAMPreviewView : UIView {
     int  __exposureBiasSide;
-    NSMutableDictionary * __faceIndicators;
-    NSMutableDictionary * __internalMRCIndicatorViews;
-    NSMutableDictionary * __internalTrackedSubjectIndicatorsByIdentifier;
     UILabel * __simulatorLabel;
     double  _bottomContentInset;
     CAMSubjectIndicatorView * _centeredSubjectIndicatorView;
     CAMFocusIndicatorView * _continuousIndicator;
     CAMGridView * _gridView;
+    long long  _indicatorClippingStyle;
     UIView * _indicatorContainerView;
     CAMLevelIndicatorView * _levelView;
     long long  _orientation;
     CAMFocusIndicatorView * _pointIndicator;
     CAMStageLightOverlayView * _stageLightOverlayView;
-    <CAMPreviewViewSubjectIndicatorDelegate> * _subjectIndicatorDelegate;
     CAMVideoPreviewView * _videoPreviewView;
+    struct CGRect { 
+        struct CGPoint { 
+            double x; 
+            double y; 
+        } origin; 
+        struct CGSize { 
+            double width; 
+            double height; 
+        } size; 
+    }  _viewportFrame;
 }
 
 @property (nonatomic) int _exposureBiasSide;
-@property (nonatomic, readonly) NSMutableDictionary *_faceIndicators;
-@property (nonatomic, readonly) NSMutableDictionary *_internalMRCIndicatorViews;
-@property (nonatomic, readonly) NSMutableDictionary *_internalTrackedSubjectIndicatorsByIdentifier;
 @property (nonatomic, readonly) UILabel *_simulatorLabel;
 @property (nonatomic) double bottomContentInset;
 @property (nonatomic, retain) CAMSubjectIndicatorView *centeredSubjectIndicatorView;
 @property (nonatomic, retain) CAMFocusIndicatorView *continuousIndicator;
-@property (nonatomic, readonly) NSDictionary *faceIndicatorsByIdentifier;
 @property (nonatomic) CAMGridView *gridView;
+@property (nonatomic) long long indicatorClippingStyle;
 @property (nonatomic, readonly) UIView *indicatorContainerView;
 @property (nonatomic) CAMLevelIndicatorView *levelView;
-@property (nonatomic, readonly) NSDictionary *mrcIndicatorViews;
 @property (nonatomic) long long orientation;
 @property (nonatomic, retain) CAMFocusIndicatorView *pointIndicator;
 @property (nonatomic, retain) CAMStageLightOverlayView *stageLightOverlayView;
-@property (nonatomic) <CAMPreviewViewSubjectIndicatorDelegate> *subjectIndicatorDelegate;
-@property (nonatomic, readonly) NSDictionary *trackedSubjectIndicatorsByIdentifier;
 @property (nonatomic, retain) AVCaptureVideoPreviewLayer *videoPreviewLayer;
 @property (nonatomic, readonly) CAMVideoPreviewView *videoPreviewView;
+@property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } viewportFrame;
 
 + (Class)layerClass;
 
 - (void).cxx_destruct;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_aspectFaceRectFromSquareFaceRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 angle:(double)arg2;
 - (int)_exposureBiasSide;
-- (id)_faceIndicators;
 - (int)_faceOrientationForRollAngle:(double)arg1;
-- (id)_internalMRCIndicatorViews;
-- (id)_internalTrackedSubjectIndicatorsByIdentifier;
 - (id)_simulatorLabel;
-- (void)addFaceIndicator:(id)arg1 forIdentifier:(long long)arg2;
-- (void)addMRCIndicator:(id)arg1 forIdentifier:(id)arg2;
-- (void)addTrackedSubjectIndicator:(id)arg1 forIdentifier:(long long)arg2;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })bodyIndicatorFrameForResult:(id)arg1;
 - (double)bottomContentInset;
 - (struct CGPoint { double x1; double x2; })captureDevicePointOfInterestForPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (id)centeredSubjectIndicatorView;
 - (id)continuousIndicator;
 - (void)dealloc;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })faceIndicatorFrameForFaceResult:(id)arg1;
-- (id)faceIndicatorsByIdentifier;
-- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })frameForSubjectIndicator:(id)arg1 andFaceResult:(id)arg2 useFixedSize:(bool)arg3;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })fixedSizeSubjectIndicatorFrameForBodyResult:(id)arg1;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })fixedSizeSubjectIndicatorFrameForFaceResult:(id)arg1;
 - (id)gridView;
 - (void)indicatePointOfInterest:(struct CGPoint { double x1; double x2; })arg1;
+- (long long)indicatorClippingStyle;
 - (id)indicatorContainerView;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)layoutSubviews;
 - (id)levelView;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })mrcIndicatorFrameForMRCResult:(id)arg1;
-- (id)mrcIndicatorViews;
 - (long long)orientation;
 - (struct CGPoint { double x1; double x2; })pointForCaptureDevicePointOfInterest:(struct CGPoint { double x1; double x2; })arg1;
 - (id)pointIndicator;
-- (void)removeFaceIndicatorForIdentifier:(long long)arg1;
-- (void)removeMRCIndicatorForIdentifier:(id)arg1;
-- (void)removeTrackedSubjectIndicatorForIdentifier:(long long)arg1;
 - (void)setBottomContentInset:(double)arg1;
 - (void)setCenteredSubjectIndicatorView:(id)arg1;
 - (void)setContinuousIndicator:(id)arg1;
 - (void)setGridView:(id)arg1;
+- (void)setIndicatorClippingStyle:(long long)arg1;
 - (void)setLevelView:(id)arg1;
 - (void)setOrientation:(long long)arg1;
 - (void)setOrientation:(long long)arg1 animated:(bool)arg2;
 - (void)setPointIndicator:(id)arg1;
 - (void)setStageLightOverlayView:(id)arg1;
-- (void)setSubjectIndicatorDelegate:(id)arg1;
 - (void)setVideoPreviewLayer:(id)arg1;
+- (void)setViewportFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)set_exposureBiasSide:(int)arg1;
 - (id)stageLightOverlayView;
-- (id)subjectIndicatorDelegate;
-- (id)trackedSubjectIndicatorsByIdentifier;
 - (id)videoPreviewLayer;
 - (id)videoPreviewView;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })viewportFrame;
 
 @end

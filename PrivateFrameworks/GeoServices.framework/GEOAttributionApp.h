@@ -4,12 +4,25 @@
 
 @interface GEOAttributionApp : PBCodable <NSCopying> {
     NSString * _appBundleIdentifier;
-    NSMutableArray * _handledSchemes;
     struct { 
-        unsigned int restaurantReservationExtensionSupport : 1; 
-        unsigned int supportsRestaurantQueueing : 1; 
-        unsigned int supportsRestaurantReservations : 1; 
-    }  _has;
+        unsigned int has_restaurantReservationExtensionSupport : 1; 
+        unsigned int has_supportsRestaurantQueueing : 1; 
+        unsigned int has_supportsRestaurantReservations : 1; 
+        unsigned int read_appBundleIdentifier : 1; 
+        unsigned int read_handledSchemes : 1; 
+        unsigned int wrote_appBundleIdentifier : 1; 
+        unsigned int wrote_handledSchemes : 1; 
+        unsigned int wrote_restaurantReservationExtensionSupport : 1; 
+        unsigned int wrote_supportsRestaurantQueueing : 1; 
+        unsigned int wrote_supportsRestaurantReservations : 1; 
+    }  _flags;
+    NSMutableArray * _handledSchemes;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     int  _restaurantReservationExtensionSupport;
     bool  _supportsRestaurantQueueing;
     bool  _supportsRestaurantReservations;
@@ -25,9 +38,13 @@
 @property (nonatomic) bool supportsRestaurantReservations;
 
 + (Class)handledSchemesType;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsRestaurantReservationExtensionSupport:(id)arg1;
+- (void)_addNoFlagsHandledSchemes:(id)arg1;
+- (void)_readAppBundleIdentifier;
+- (void)_readHandledSchemes;
 - (void)addHandledSchemes:(id)arg1;
 - (id)appBundleIdentifier;
 - (void)clearHandledSchemes;
@@ -42,8 +59,11 @@
 - (bool)hasSupportsRestaurantQueueing;
 - (bool)hasSupportsRestaurantReservations;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (int)restaurantReservationExtensionSupport;
 - (id)restaurantReservationExtensionSupportAsString:(int)arg1;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/TVMLKit.framework/TVMLKit
  */
 
-@interface _TVMLCollectionViewController : UIViewController <TVAppTemplateImpressionable, UICollectionViewDataSource, _TVCollectionViewDelegate, _TVConfirmationPreviewInteractionControllerDelegate, _TVSubviewPreloading> {
+@interface _TVMLCollectionViewController : UIViewController <TVAppTemplateImpressionable, UICollectionViewDataSource, _TVCollectionViewDelegate, _TVSubviewPreloading> {
     struct TVCellMetrics { 
         struct CGSize { 
             double width; 
@@ -41,15 +41,16 @@
     UIViewController * _footerViewController;
     IKViewElement * _headerElement;
     UIViewController * _headerViewController;
-    bool  _ignoreNextSelect;
     double  _impressionThreshold;
     bool  _indexDisplayEnabled;
     NSDictionary * _indexPathsByIndexTitle;
     NSIndexPath * _lastFocusedIndexPath;
     _TVNeedsMoreContentEvaluator * _needsMoreContentEvaluator;
-    id  _previewInteractionController;
+    <TVPreviewInteractionController> * _previewInteractionController;
     _TVShadowViewElement * _shadowViewElement;
     struct TVShowcaseConfig { 
+        long long flavor; 
+        long long transition; 
         double inset; 
     }  _showcaseConfig;
     NSArray * _sortedIndexTitles;
@@ -70,7 +71,7 @@
 @property (nonatomic, copy) NSDictionary *indexPathsByIndexTitle;
 @property (nonatomic, copy) NSIndexPath *lastFocusedIndexPath;
 @property (nonatomic, retain) _TVShadowViewElement *shadowViewElement;
-@property (nonatomic) struct TVShowcaseConfig { double x1; } showcaseConfig;
+@property (nonatomic) struct TVShowcaseConfig { long long x1; long long x2; double x3; } showcaseConfig;
 @property (nonatomic, copy) NSArray *sortedIndexTitles;
 @property (readonly) Class superclass;
 
@@ -83,10 +84,10 @@
 - (void)_applicationWillResignActive:(id)arg1;
 - (void)_cancelImpressionsUpdate;
 - (id)_closestIndexPathToIndexPath:(id)arg1;
-- (void)_confirmationPreviewInteractionControllerShouldBegin;
 - (void)_doUpdateViewLayoutAnimated:(bool)arg1 relayout:(bool)arg2;
 - (void)_recordImpressionsForVisibleView;
 - (void)_registerCellClassesInCollectionView:(id)arg1;
+- (void)_registerPreviewInteractionController;
 - (void)_updateFooterView;
 - (void)_updateHeaderView;
 - (void)_updateImpressions;
@@ -104,7 +105,6 @@
 - (id)collectionView:(id)arg1 indexPathForIndexTitle:(id)arg2 atIndex:(long long)arg3;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (bool)collectionView:(id)arg1 shouldHandleLongPressForItemAtIndexPath:(id)arg2;
-- (bool)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (id)collectionWrappingView;
 - (void)dealloc;
@@ -136,14 +136,13 @@
 - (void)setIndexPathsByIndexTitle:(id)arg1;
 - (void)setLastFocusedIndexPath:(id)arg1;
 - (void)setShadowViewElement:(id)arg1;
-- (void)setShowcaseConfig:(struct TVShowcaseConfig { double x1; })arg1;
+- (void)setShowcaseConfig:(struct TVShowcaseConfig { long long x1; long long x2; double x3; })arg1;
 - (void)setSortedIndexTitles:(id)arg1;
 - (id)shadowViewElement;
 - (bool)shouldHeaderFloatByDefault;
-- (struct TVShowcaseConfig { double x1; })showcaseConfig;
+- (struct TVShowcaseConfig { long long x1; long long x2; double x3; })showcaseConfig;
 - (id)sortedIndexTitles;
-- (void)traitCollectionDidChange:(id)arg1;
-- (void)tv_setShowcaseConfig:(struct TVShowcaseConfig { double x1; })arg1;
+- (void)tv_setShowcaseConfig:(struct TVShowcaseConfig { long long x1; long long x2; double x3; })arg1;
 - (void)tv_updateViewLayout;
 - (void)updateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)updateSupplementaryViewsForSectionAtOldIndex:(long long)arg1 oldElement:(id)arg2 withNewIndex:(long long)arg3 newElement:(id)arg4 requiresReload:(bool*)arg5 requiresRelayout:(bool*)arg6;

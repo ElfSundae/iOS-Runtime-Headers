@@ -8,6 +8,7 @@
 - (void)firmwareUpdateComplete:(NSDictionary *)arg1 error:(NSError *)arg2;
 - (NSString *)getDeviceClassName;
 - (unsigned char)getPersonalizationID;
+- (unsigned int)getWhitelistedPersonalizationFields;
 - (void)handleFirmwareUpdateStatus:(NSDictionary *)arg1;
 - (void)handleSessionError:(unsigned int)arg1 message:(NSString *)arg2;
 - (void)logStatusString:(NSString *)arg1;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CrashReporterSupport.framework/CrashReporterSupport
  */
 
-@interface StructuredDataReport : AppleErrorReport {
+@interface StructuredDataReport : OSAReport {
     int  _log_type;
     NSString * _raw_logfile;
 }
@@ -13,7 +13,6 @@
 - (void)generateLogAtLevel:(bool)arg1 withBlock:(id /* block */)arg2;
 - (id)initWithType:(int)arg1 withFile:(id)arg2;
 - (bool)isActionable;
-- (id)overrideFileExtension;
 - (id)problemType;
 - (id)reportNamePrefix;
 - (int)streamContentAtLevel:(bool)arg1 withBlock:(id /* block */)arg2;

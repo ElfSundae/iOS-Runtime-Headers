@@ -12,6 +12,7 @@
     NSDictionary * _allHeaders;
     bool  _allowAnyHTTPSCertificate;
     bool  _awaitingCustomResponse;
+    id /* block */  _buysOnWatchCredentialsIngestedCompletion;
     bool  _connectionFailed;
     NSString * _contentType;
     <PBBridgeConnectionDelegate> * _delegate;
@@ -44,6 +45,7 @@
 @property (nonatomic, retain) NSDictionary *allHeaders;
 @property (nonatomic) bool allowAnyHTTPSCertificate;
 @property (nonatomic) bool awaitingCustomResponse;
+@property (nonatomic, copy) id /* block */ buysOnWatchCredentialsIngestedCompletion;
 @property (nonatomic) bool connectionFailed;
 @property (nonatomic, copy) NSString *contentType;
 @property (readonly, copy) NSString *debugDescription;
@@ -93,6 +95,7 @@
 - (void)beganWaitingForPresentationOfActivationEvent;
 - (void)beganWaitingForUserResponseToActivationEvent;
 - (void)beginSetupTransaction;
+- (id /* block */)buysOnWatchCredentialsIngestedCompletion;
 - (void)connection:(id)arg1 didFailWithError:(id)arg2;
 - (void)connection:(id)arg1 didReceiveData:(id)arg2;
 - (void)connection:(id)arg1 didReceiveResponse:(id)arg2;
@@ -100,6 +103,8 @@
 - (void)connectionDidFinishLoading:(id)arg1;
 - (bool)connectionFailed;
 - (id)contentType;
+- (id)currentNetworks:(bool)arg1;
+- (id)currentWiFiNetworkName;
 - (id)customDescriptionOfMessageType:(unsigned short)arg1;
 - (id)delegate;
 - (void)enableSiriForGizmo:(id)arg1;
@@ -111,6 +116,7 @@
 - (void)gizmoBecameAvailableWantsConfirmation:(id)arg1;
 - (void)gizmoDidBeginActivating:(id)arg1;
 - (void)gizmoDidBeginUnlockPairing:(id)arg1;
+- (void)gizmoDidEndPasscodeChange:(id)arg1;
 - (void)gizmoDidEndPasscodeCreation:(id)arg1;
 - (void)gizmoDidEndUnlockPairing:(id)arg1;
 - (void)gizmoDidFinishActivating:(id)arg1;
@@ -145,6 +151,7 @@
 - (id)ruiDelegate;
 - (id)ruiLoader;
 - (bool)selectedPairedUnlock;
+- (void)sendBuysOnWatchUsername:(id)arg1 andPassword:(id)arg2 withCompletion:(id /* block */)arg3;
 - (void)sendDemoWatchWirelessCredentials;
 - (void)sendGizmoPasscodeRestrictions;
 - (void)sendProxyActivationRequest:(id)arg1;
@@ -161,6 +168,7 @@
 - (void)setAllHeaders:(id)arg1;
 - (void)setAllowAnyHTTPSCertificate:(bool)arg1;
 - (void)setAwaitingCustomResponse:(bool)arg1;
+- (void)setBuysOnWatchCredentialsIngestedCompletion:(id /* block */)arg1;
 - (void)setConnectionFailed:(bool)arg1;
 - (void)setContentType:(id)arg1;
 - (void)setDelegate:(id)arg1;
@@ -197,7 +205,9 @@
 - (void)tellGizmoToShowLockedOnAnimationTimeToFlash:(double)arg1 animationCompletion:(id /* block */)arg2;
 - (void)tellGizmoToUpdateSyncProgressTo:(double)arg1 withState:(long long)arg2;
 - (void)tellWatchLanguagesAndLocaleWithCompletion:(id /* block */)arg1;
+- (void)tellWatchToChangeDeviceNameFor:(id)arg1;
 - (void)tellWatchToPrepareForForcedSUWithCompletion:(id /* block */)arg1;
+- (void)tellWatchToSetSiriEnabled:(bool)arg1;
 - (void)transportBecameReachable;
 - (void)transportBecameUnreachable;
 - (id)viewControllerForAlertPresentation;

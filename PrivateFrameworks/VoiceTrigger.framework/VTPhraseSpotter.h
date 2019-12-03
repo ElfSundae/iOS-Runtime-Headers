@@ -185,8 +185,6 @@
 - (void)_logMetaData:(id)arg1;
 - (void)_logPHSDESRecord:(const struct _ndsupervec { float *x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; }*)arg1;
 - (void)_logPrepareProperty:(id)arg1;
-- (id)_medicalIDAge;
-- (id)_medicalIDName;
 - (void)_notifyAssetChangedCallback;
 - (void)_performReadyCompletion;
 - (void)_phraseSpotterEnabledDidChange;

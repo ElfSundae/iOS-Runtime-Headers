@@ -20,7 +20,9 @@
 - (void)setCollectionStartTimestamp:(long long)arg1;
 - (void)setConfiguredLookbackTimeInDays:(int)arg1;
 - (void)setContext:(_CPDeviceContext *)arg1;
+- (void)setTotalEngagements:(int)arg1;
 - (void)setTotalUsagesInCollectionPeriod:(int)arg1;
+- (int)totalEngagements;
 - (int)totalUsagesInCollectionPeriod;
 
 @end

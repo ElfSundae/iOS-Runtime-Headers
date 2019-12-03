@@ -7,7 +7,7 @@
     <TCCancelDelegate> * mCancel;
     ESDObject * mCurrentBulletStyle;
     ESDObject * mCurrentMacCharStyle;
-    struct ChVector<int> { int *x1; int *x2; unsigned int x3; unsigned int x4; unsigned int x5; } * mCurrentSlideTextBlockStartIndexVector;
+    struct ChVector<_NSRange> { struct _NSRange {} *x1; struct _NSRange {} *x2; struct __compressed_pair<_NSRange *, ChAllocator<_NSRange> > { struct _NSRange {} *x_3_1_1; } x3; } * mCurrentSlideTextBlockRecordIndexRangeVector;
     ESDRoot * mDocumentRoot;
     NSMutableArray * mFontEntities;
     bool  mHasCharacterPropertyBulletIndex;
@@ -20,8 +20,8 @@
     NSMutableArray * mSlideIndexes;
     OITSUNoCopyDictionary * mSlideMasterToMasterStyles;
     PBSlideState * mSlideState;
-    struct ChVector<PBReaderMasterStyleInfo> { struct PBReaderMasterStyleInfo {} *x1; struct PBReaderMasterStyleInfo {} *x2; unsigned int x3; unsigned int x4; unsigned int x5; } * mSrcCurrentMasterStyleInfoVector;
-    struct ChVector<PBReaderMasterStyleInfo> { struct PBReaderMasterStyleInfo {} *x1; struct PBReaderMasterStyleInfo {} *x2; unsigned int x3; unsigned int x4; unsigned int x5; } * mSrcDocMasterStyleInfoVector;
+    struct ChVector<PBReaderMasterStyleInfo> { struct PBReaderMasterStyleInfo {} *x1; struct PBReaderMasterStyleInfo {} *x2; struct __compressed_pair<PBReaderMasterStyleInfo *, ChAllocator<PBReaderMasterStyleInfo> > { struct PBReaderMasterStyleInfo {} *x_3_1_1; } x3; } * mSrcCurrentMasterStyleInfoVector;
+    struct ChVector<PBReaderMasterStyleInfo> { struct PBReaderMasterStyleInfo {} *x1; struct PBReaderMasterStyleInfo {} *x2; struct __compressed_pair<PBReaderMasterStyleInfo *, ChAllocator<PBReaderMasterStyleInfo> > { struct PBReaderMasterStyleInfo {} *x_3_1_1; } x3; } * mSrcDocMasterStyleInfoVector;
     unsigned int  mSrcSlideId;
     ESDContainer * mSrcSlideListHolder;
     NSMutableDictionary * mTargetShapeToSourceTextBoxContainerHolderMap;
@@ -31,15 +31,16 @@
 
 @property (nonatomic, retain) <TCCancelDelegate> *cancelDelegate;
 @property bool hasSlideNumberPlaceholder;
-@property ESDContainer *sourceSlideListHolder;
+@property (retain) ESDContainer *sourceSlideListHolder;
 
+- (void).cxx_destruct;
 - (void)addFontEntity:(id)arg1 charSet:(int)arg2 type:(int)arg3 family:(int)arg4;
 - (void)addSlideIndex:(unsigned long long)arg1;
 - (unsigned int)bulletIndex;
 - (id)cancelDelegate;
 - (id)currentBulletStyle;
 - (id)currentMacCharStyle;
-- (struct ChVector<int> { int *x1; int *x2; unsigned int x3; unsigned int x4; unsigned int x5; }*)currentSlideTextBlockStartIndexVector;
+- (struct ChVector<_NSRange> { struct _NSRange {} *x1; struct _NSRange {} *x2; struct __compressed_pair<_NSRange *, ChAllocator<_NSRange> > { struct _NSRange {} *x_3_1_1; } x3; }*)currentSlideTextBlockRecordIndexRangeVector;
 - (struct PBReaderMasterStyleInfo { struct PptTextMasterStyleAtom {} *x1; struct PptTextMasterStyle9Atom {} *x2; }*)currentSourceMasterStyleInfoOfType:(int)arg1;
 - (void)dealloc;
 - (struct PBReaderMasterStyleInfo { struct PptTextMasterStyleAtom {} *x1; struct PptTextMasterStyle9Atom {} *x2; }*)docSourceMasterStyleInfoOfType:(int)arg1;
@@ -61,7 +62,7 @@
 - (void)setBulletIndex:(unsigned int)arg1;
 - (void)setCancelDelegate:(id)arg1;
 - (void)setCurrentBulletStyle:(id)arg1 macCharStyle:(id)arg2;
-- (void)setCurrentSourceMasterStyleInfoVector:(struct ChVector<PBReaderMasterStyleInfo> { struct PBReaderMasterStyleInfo {} *x1; struct PBReaderMasterStyleInfo {} *x2; unsigned int x3; unsigned int x4; unsigned int x5; }*)arg1;
+- (void)setCurrentSourceMasterStyleInfoVector:(struct ChVector<PBReaderMasterStyleInfo> { struct PBReaderMasterStyleInfo {} *x1; struct PBReaderMasterStyleInfo {} *x2; struct __compressed_pair<PBReaderMasterStyleInfo *, ChAllocator<PBReaderMasterStyleInfo> > { struct PBReaderMasterStyleInfo {} *x_3_1_1; } x3; }*)arg1;
 - (void)setCurrentTextType:(int)arg1 placeholderIndex:(unsigned int)arg2;
 - (void)setDocumentRoot:(id)arg1;
 - (void)setHasCharacterPropertyBulletIndex:(bool)arg1;

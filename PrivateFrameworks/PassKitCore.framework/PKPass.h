@@ -67,6 +67,7 @@
 @property (nonatomic, retain) NSDate *ingestedDate;
 @property (nonatomic) bool isCloudKitArchived;
 @property (nonatomic, readonly) bool isPersonalizable;
+@property (nonatomic, readonly) bool isValid;
 @property (nonatomic) bool liveRenderedBackground;
 @property (nonatomic, readonly) PKPassLiveRenderedImageSet *liveRenderedImageSet;
 @property (nonatomic, readonly) PKLiveRenderedShaderSet *liveRenderedShaderSet;
@@ -96,6 +97,7 @@
 @property (nonatomic, readonly) PKPassPersonalization *personalization;
 @property (nonatomic, readonly) PKImage *personalizationLogoImage;
 @property (nonatomic, readonly) NSString *pluralLocalizedName;
+@property (nonatomic, readonly) PKImage *rawIcon;
 @property (nonatomic, copy) NSDate *relevantDate;
 @property (getter=isRemotePass, nonatomic) bool remotePass;
 @property (getter=isRevoked, nonatomic) bool revoked;
@@ -181,6 +183,7 @@
 - (bool)isRemotePass;
 - (bool)isRevoked;
 - (bool)isUpdatable;
+- (bool)isValid;
 - (bool)isVoided;
 - (unsigned long long)itemType;
 - (bool)liveRenderedBackground;
@@ -215,6 +218,7 @@
 - (id)personalizationLogoImage;
 - (id)pluralLocalizedName;
 - (id)primaryFields;
+- (id)rawIcon;
 - (id)recordTypesAndNames;
 - (id)relevantDate;
 - (id)semantics;

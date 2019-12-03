@@ -4,12 +4,13 @@
 
 @interface BCCloudKitDatabaseController : NSObject <BCCloudDataPrivacyDelegate> {
     NSObject<OS_dispatch_queue> * _accessQueue;
+    NSString * _appBundleIdentifier;
     NSURL * _archiveURL;
     bool  _attachedToContainer;
     double  _backOffInterval;
     NSMutableSet * _changedRecordZoneIDs;
-    BDSCoalescingCallBlock * _coalescedArchive;
-    BDSCoalescingCallBlock * _coalescedZoneFetch;
+    BUCoalescingCallBlock * _coalescedArchive;
+    BUCoalescingCallBlock * _coalescedZoneFetch;
     CKContainer * _container;
     NSString * _containerIdentifier;
     CKDatabase * _database;
@@ -27,12 +28,13 @@
 }
 
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *accessQueue;
+@property (nonatomic, retain) NSString *appBundleIdentifier;
 @property (nonatomic, copy) NSURL *archiveURL;
 @property (nonatomic) bool attachedToContainer;
 @property (nonatomic) double backOffInterval;
 @property (nonatomic, retain) NSMutableSet *changedRecordZoneIDs;
-@property (nonatomic, retain) BDSCoalescingCallBlock *coalescedArchive;
-@property (nonatomic, retain) BDSCoalescingCallBlock *coalescedZoneFetch;
+@property (nonatomic, retain) BUCoalescingCallBlock *coalescedArchive;
+@property (nonatomic, retain) BUCoalescingCallBlock *coalescedZoneFetch;
 @property (nonatomic, retain) CKContainer *container;
 @property (nonatomic, copy) NSString *containerIdentifier;
 @property (nonatomic, retain) CKDatabase *database;
@@ -55,6 +57,7 @@
 - (void)_deleteRecordZonesWithIDs:(id)arg1 qualityOfService:(long long)arg2 completion:(id /* block */)arg3;
 - (id)accessQueue;
 - (void)addObserver:(id)arg1 recordType:(id)arg2;
+- (id)appBundleIdentifier;
 - (id)archiveURL;
 - (void)attachToZones:(id)arg1 completion:(id /* block */)arg2;
 - (bool)attachedToContainer;
@@ -75,7 +78,7 @@
 - (bool)fetchRecordZoneChangesSuccess;
 - (void)getAttached:(id /* block */)arg1;
 - (bool)hasSubscription;
-- (id)initWithSubscriptionID:(id)arg1 archiveURL:(id)arg2;
+- (id)initWithSubscriptionID:(id)arg1 appBundleIdentifier:(id)arg2 archiveURL:(id)arg3;
 - (id)observers;
 - (id)p_archiveToData;
 - (void)p_createRecordIDSaltWithCompletion:(id /* block */)arg1;
@@ -88,6 +91,7 @@
 - (void)p_informObserversOfCompletedFetchOfZone:(id)arg1;
 - (void)p_informObserversOfRecordsChanged:(id)arg1;
 - (void)p_informObserversOfRecordsChanged:(id)arg1 forRecordType:(id)arg2;
+- (void)p_internetReachabilityChanged:(id)arg1;
 - (void)p_scheduleArchiveWithCompletion:(id /* block */)arg1;
 - (void)p_subscribeWithCompletion:(id /* block */)arg1;
 - (void)p_unarchive;
@@ -105,6 +109,7 @@
 - (id)serverChangeToken;
 - (bool)serverFetchPostponed;
 - (void)setAccessQueue:(id)arg1;
+- (void)setAppBundleIdentifier:(id)arg1;
 - (void)setArchiveURL:(id)arg1;
 - (void)setAttachedToContainer:(bool)arg1;
 - (void)setBackOffInterval:(double)arg1;

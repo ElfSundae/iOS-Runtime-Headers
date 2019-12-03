@@ -34,6 +34,7 @@
 @property (getter=isFocusBlurMapDeliveryEnabled, nonatomic) bool focusBlurMapDeliveryEnabled;
 @property (readonly) unsigned long long hash;
 @property (getter=isMetadataProcessingEnabled, nonatomic) bool metadataProcessingEnabled;
+@property float portraitLightingEffectStrength;
 @property float simulatedAperture;
 @property (nonatomic) bool stageRenderingEnabled;
 @property (nonatomic) bool studioAndContourRenderingEnabled;
@@ -54,6 +55,7 @@
 - (bool)isMetadataProcessingEnabled;
 - (id)nodeSubType;
 - (id)nodeType;
+- (float)portraitLightingEffectStrength;
 - (void)prepareForCurrentConfigurationToBecomeLive;
 - (void)prepareForRenderingWithPreparedPixelBufferPool;
 - (id)provideColorLookupCache;
@@ -67,6 +69,7 @@
 - (void)setDepthDataDeliveryEnabled:(bool)arg1;
 - (void)setFocusBlurMapDeliveryEnabled:(bool)arg1;
 - (void)setMetadataProcessingEnabled:(bool)arg1;
+- (void)setPortraitLightingEffectStrength:(float)arg1;
 - (void)setSimulatedAperture:(float)arg1;
 - (void)setStageRenderingEnabled:(bool)arg1;
 - (void)setStudioAndContourRenderingEnabled:(bool)arg1;

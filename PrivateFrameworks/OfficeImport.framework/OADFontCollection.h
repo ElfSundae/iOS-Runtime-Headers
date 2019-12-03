@@ -6,7 +6,7 @@
     NSMutableDictionary * _scriptToFontMap;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)fontForScript:(id)arg1;
 - (id)init;

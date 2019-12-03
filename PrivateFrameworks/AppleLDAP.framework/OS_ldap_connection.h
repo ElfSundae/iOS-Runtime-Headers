@@ -2,9 +2,13 @@
    Image: /System/Library/PrivateFrameworks/AppleLDAP.framework/AppleLDAP
  */
 
-@interface OS_ldap_connection : OS_object
+@interface OS_ldap_connection : NSObject <OS_ldap_connection>
 
-- (void)_dispose;
-- (void)_xref_dispose;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
+- (void)dealloc;
 
 @end

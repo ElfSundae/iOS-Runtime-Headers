@@ -35,11 +35,11 @@
 - (id)delegate;
 - (id)description;
 - (id)domain;
-- (void)finalize;
 - (bool)getInputStream:(out id*)arg1 outputStream:(out id*)arg2;
 - (unsigned long long)hash;
 - (id)hostName;
 - (bool)includesPeerToPeer;
+- (id)init;
 - (id)initWithCFNetService:(struct __CFNetService { }*)arg1;
 - (id)initWithDomain:(id)arg1 type:(id)arg2 name:(id)arg3;
 - (id)initWithDomain:(id)arg1 type:(id)arg2 name:(id)arg3 port:(int)arg4;

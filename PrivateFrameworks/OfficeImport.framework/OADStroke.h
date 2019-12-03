@@ -27,12 +27,12 @@
 + (id)defaultProperties;
 + (id)nullStroke;
 
+- (void).cxx_destruct;
 - (unsigned char)cap;
 - (id)color;
 - (unsigned char)compoundType;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dash;
-- (void)dealloc;
 - (id)fill;
 - (void)fixPropertiesForChangingParentPreservingEffectiveValues:(id)arg1;
 - (unsigned long long)hash;

@@ -5,6 +5,7 @@
 @interface VCFigAssetWriter : NSObject <VCMovieWriterProtocol> {
     struct OpaqueFigAssetWriter { } * _assetWriter;
     struct __CVPixelBufferPool { } * _bufferPool;
+    unsigned int  _codec;
     struct OpaqueVTCompressionSession { } * _compressionSession;
     unsigned int  _endRTPTimeStamp;
     bool  _isEndRTPTimestampSet;
@@ -47,7 +48,7 @@
 - (int)encodeAndAppendSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1;
 - (unsigned int)endRTPTimeStamp;
 - (void)finishWritingWithHandler:(id /* block */)arg1;
-- (id)initWithOutputURL:(id)arg1 transactionID:(id)arg2;
+- (id)initWithOutputURL:(id)arg1 transactionID:(id)arg2 videoCodec:(unsigned int)arg3;
 - (id)outputURL;
 - (void)setEndRTPTimeStamp:(unsigned int)arg1;
 - (void)setEndRTPTimestampWithTimestamp:(unsigned int)arg1;
@@ -57,10 +58,11 @@
 - (void)setStillImageTimeInternal;
 - (void)setupLivePhotoStillImageCameraStatusBit:(unsigned char)arg1 resize:(bool)arg2 videoVisibleWidth:(int)arg3 height:(int)arg4;
 - (void)setupWriterWithMode:(unsigned char)arg1;
-- (bool)shouldAppendSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 RTPtimeStamp:(unsigned int)arg2;
-- (bool)shouldFinishWritingSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 RTPtimeStamp:(unsigned int)arg2;
+- (bool)shouldAppendSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 RTPtimeStamp:(unsigned int)arg2 mediaType:(unsigned char)arg3;
+- (bool)shouldFinishWritingSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 RTPtimeStamp:(unsigned int)arg2 mediaType:(unsigned char)arg3;
 - (unsigned int)startRTPTimeStamp;
 - (int)trackIDForMediaType:(unsigned char)arg1;
+- (int)trackIDForWriterMode:(unsigned char)arg1;
 - (void)writeIdentifierMetadata:(id)arg1;
 - (unsigned char)writerMode;
 

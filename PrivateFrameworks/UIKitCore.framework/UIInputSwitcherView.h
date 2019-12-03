@@ -2,10 +2,11 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface UIInputSwitcherView : UIKeyboardMenuView {
+@interface UIInputSwitcherView : UIKeyboardMenuView <_UIInputSwitcherSplitMenu> {
     bool  _fileReportFromSwitcher;
     bool  _messagesWriteboardFromSwitcher;
     bool  _showsSwitches;
+    id /* block */  m_finishSplitTransitionBlock;
     UIInputSwitcherGestureState * m_gestureState;
     NSMutableArray * m_inputModes;
     NSArray * m_inputSwitcherItems;
@@ -13,6 +14,7 @@
 }
 
 @property (nonatomic) bool fileReportFromSwitcher;
+@property (nonatomic, copy) id /* block */ finishSplitTransitionBlock;
 @property (nonatomic, readonly) NSArray *inputModes;
 @property (nonatomic) bool messagesWriteboardFromSwitcher;
 @property (nonatomic) bool showsSwitches;
@@ -30,9 +32,13 @@
 - (void)dealloc;
 - (id)defaultInputMode;
 - (unsigned long long)defaultSelectedIndex;
+- (void)didFinishSplitTransition;
+- (bool)didHitDockItemWithinTypingWindow;
 - (void)didSelectItemAtIndex:(unsigned long long)arg1;
+- (void)didShow;
 - (void)fadeWithDelay:(double)arg1;
 - (bool)fileReportFromSwitcher;
+- (id /* block */)finishSplitTransitionBlock;
 - (id)fontForItemAtIndex:(unsigned long long)arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)inputModes;
@@ -43,12 +49,14 @@
 - (struct CGSize { double x1; double x2; })preferredSize;
 - (id)previousInputMode;
 - (void)reloadInputModes;
+- (void)returnToKeyboardIfNeeded;
 - (void)selectInputMode:(id)arg1;
 - (void)selectNextInputMode;
 - (void)selectPreviousInputMode;
 - (void)selectRowForInputMode:(id)arg1;
 - (id)selectedInputMode;
 - (void)setFileReportFromSwitcher:(bool)arg1;
+- (void)setFinishSplitTransitionBlock:(id /* block */)arg1;
 - (void)setInputMode:(id)arg1;
 - (void)setMessagesWriteboardFromSwitcher:(bool)arg1;
 - (void)setShowsSwitches:(bool)arg1;
@@ -62,9 +70,10 @@
 - (void)switchAction;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (id)titleForItemAtIndex:(unsigned long long)arg1;
+- (void)toggleKeyboardFloatingPreference;
 - (void)updateSelectionWithPoint:(struct CGPoint { double x1; double x2; })arg1;
+- (bool)usesDeviceLanguageForItemAtIndex:(unsigned long long)arg1;
 - (void)willFade;
 - (void)willFadeForSelectionAtIndex:(unsigned long long)arg1;
-- (void)willShow;
 
 @end

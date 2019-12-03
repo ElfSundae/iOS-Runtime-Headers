@@ -5,7 +5,7 @@
 @interface PVLivePlayer : NSObject {
     unsigned int  _activeRenderLinkJobCount;
     bool  _bypassRenderLink;
-    unsigned int  _frameCount;
+    _Atomic unsigned int  _frameCount;
     double  _lastCompletedHostTime;
     struct unique_ptr<PVGCDLock, std::__1::default_delete<PVGCDLock> > { 
         struct __compressed_pair<PVGCDLock *, std::__1::default_delete<PVGCDLock> > { 
@@ -15,7 +15,7 @@
     bool  _lowerGCDPriority;
     bool  _lowerGPUPriority;
     NSString * _name;
-    unsigned int  _parentCode;
+    _Atomic unsigned int  _parentCode;
     struct unique_ptr<PVPerfStats, std::__1::default_delete<PVPerfStats> > { 
         struct __compressed_pair<PVPerfStats *, std::__1::default_delete<PVPerfStats> > { 
             struct PVPerfStats {} *__value_; 
@@ -30,7 +30,7 @@
         struct HGRenderQueue {} *m_Obj; 
     }  _playerQueue;
     unsigned int  _playerQueueUnitCount;
-    int  _playerStatus;
+    _Atomic int  _playerStatus;
     struct { 
         long long value; 
         int timescale; 
@@ -39,7 +39,7 @@
     }  _previousSignalTime;
     bool  _previousSignalTimeValid;
     PVLivePlayer * _primaryPlayer;
-    unsigned int  _queueSize;
+    _Atomic unsigned int  _queueSize;
     PVLivePlayerRenderLink * _renderLink;
     struct { 
         long long value; 
@@ -93,6 +93,7 @@
 - (bool)bypassRenderLink;
 - (void)bypassRenderLink:(struct HGRef<PVRenderLinkJob> { struct PVRenderLinkJob {} *x1; })arg1;
 - (void)dealloc;
+- (void)flush;
 - (unsigned long long)getPackedFamilyCode:(unsigned int)arg1;
 - (id)getTaskToken;
 - (void)handleRenderLinkJob:(struct HGRef<PVRenderLinkJob> { struct PVRenderLinkJob {} *x1; })arg1;

@@ -8,7 +8,6 @@
 }
 
 @property (nonatomic, readonly) bool allowHotPocketDuringTransition;
-@property (nonatomic, readonly) unsigned long long backgroundMaterialOptions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly, copy) <CCUIOverlayFlickGestureBehavior> *flickGestureBehavior;
@@ -18,6 +17,7 @@
 @property (getter=isPanDismissalAvailable, nonatomic, readonly) bool panDismissalAvailable;
 @property (readonly) Class superclass;
 @property (nonatomic) <CCUIOverlayViewProvider> *viewProvider;
+@property (getter=isZoomEnabled, nonatomic, readonly) bool zoomEnabled;
 
 + (id)_baseC2AnimationParametersForTransitionState:(id)arg1;
 
@@ -30,10 +30,10 @@
 - (bool)allowHotPocketDuringTransition;
 - (id)animationBatchForTransitionState:(id)arg1 previousTransitionState:(id)arg2;
 - (bool)backdropViewShouldUseAlphaTransformer;
-- (unsigned long long)backgroundMaterialOptions;
 - (id /* block */)customBackdropScaleAdjustment;
 - (unsigned long long)finalTransitionTypeForState:(id)arg1 gestureTranslation:(struct CGPoint { double x1; double x2; })arg2 gestureVelocity:(struct CGPoint { double x1; double x2; })arg3;
 - (bool)isPanDismissalAvailable;
+- (bool)isZoomEnabled;
 - (void)layoutViews;
 - (id)metricsProvider;
 - (void)setMetricsProvider:(id)arg1;

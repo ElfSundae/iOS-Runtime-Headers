@@ -29,8 +29,10 @@
 - (void)_goToNextMode:(id)arg1;
 - (id)_imageForState:(long long)arg1 controlState:(unsigned long long)arg2;
 - (void)_reloadState;
+- (void)_setupPreferredSymbolConfiguration;
 - (bool)_shouldAnimateFromState:(long long)arg1 toState:(long long)arg2;
 - (id)_shrinkAnimation;
+- (id)_symbolConfiguration;
 - (void)_updateLoading;
 - (void)_updateState;
 - (void)animationDidStop:(id)arg1 finished:(bool)arg2;

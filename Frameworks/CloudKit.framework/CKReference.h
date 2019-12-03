@@ -2,15 +2,15 @@
    Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
  */
 
-@interface CKReference : NSObject <CKRecordValue, MSPCloudReference, NSCopying, NSSecureCoding> {
+@interface CKReference : NSObject <CKRecordValue, HMBModelObjectStorage, NSCopying, NSSecureCoding> {
     CKRecordID * _recordID;
     unsigned long long  _referenceAction;
 }
 
-@property (nonatomic, readonly) NSString *cloudRecordName;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy) NSString *hmbDescription;
 @property (nonatomic, copy) CKRecordID *recordID;
 @property (nonatomic, readonly) unsigned long long referenceAction;
 @property (readonly) Class superclass;
@@ -40,8 +40,11 @@
 - (unsigned long long)referenceAction;
 - (void)setRecordID:(id)arg1;
 
-// Image: /System/Library/PrivateFrameworks/MapsSupport.framework/MapsSupport
+// Image: /System/Library/PrivateFrameworks/HomeKitBackingStore.framework/HomeKitBackingStore
 
-- (id)cloudRecordName;
++ (id)hmbDecodeData:(id)arg1 fromStorageLocation:(unsigned long long)arg2 error:(id*)arg3;
+
+- (id)hmbDescription;
+- (id)hmbEncodeForStorageLocation:(unsigned long long)arg1 error:(id*)arg2;
 
 @end

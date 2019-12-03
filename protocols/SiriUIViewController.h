@@ -29,5 +29,6 @@
 - (void)siriDidScrollVisible:(bool)arg1;
 - (void)siriDidStartSpeakingWithIdentifier:(NSString *)arg1;
 - (void)siriDidStopSpeakingWithIdentifier:(NSString *)arg1 speechQueueIsEmpty:(bool)arg2;
+- (void)siriWillBeginScrolling;
 
 @end

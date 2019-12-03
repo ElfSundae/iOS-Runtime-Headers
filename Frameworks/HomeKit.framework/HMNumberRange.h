@@ -25,6 +25,7 @@
 
 // Image: /System/Library/PrivateFrameworks/Home.framework/Home
 
+- (bool)hf_isEqual:(id)arg1;
 - (id)hf_representativeValue;
 
 @end

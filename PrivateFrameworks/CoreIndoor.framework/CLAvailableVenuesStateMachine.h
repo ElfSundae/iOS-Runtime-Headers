@@ -23,6 +23,7 @@
 - (id)availabilityTileParams;
 - (void)clearLastFix;
 - (id)computeAvailableVenues:(id)arg1 nearCoordinates:(id)arg2;
+- (id)computeAvailableVenues:(id)arg1 nearCoordinates:(id)arg2 withError:(bool*)arg3;
 - (id)disabledVenues;
 - (id)getNearbyLocationGroups:(id)arg1 withUpdatedPos:(id)arg2;
 - (id)getNearbyLocationGroups:(id)arg1 withUpdatedPos:(id)arg2 nearLocationsOfInterest:(id)arg3;

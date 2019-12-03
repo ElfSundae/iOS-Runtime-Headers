@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface _UIInternalDraggingSessionDestination : _UIDraggingImageSlotOwner <NSProgressReporting, _UIDataTransferMonitorDelegate> {
+@interface _UIInternalDraggingSessionDestination : _UIDraggingImageSlotOwner <NSProgressReporting, _UIDataTransferMonitorDelegate, _UIDraggingInfo> {
     struct CGPoint { 
         double x; 
         double y; 
@@ -10,10 +10,11 @@
     UIWindow * _centroidWindow;
     bool  _connectedToDruid;
     _UIDataTransferMonitor * _dataTransferMonitor;
-    UIDragEvent * _dragEvent;
+    NSPointerArray * _dragEvents;
     bool  _dragInteractionDidEnd;
     id /* block */  _dropCompletionBlock;
     UIView * _dropDestinationView;
+    UIWindowScene * _dropDestinationWindowScene;
     NSArray * _dropItemProviders;
     id /* block */  _dropPerformBlock;
     _UIDropSessionImpl * _dropSession;
@@ -23,13 +24,13 @@
     NSMutableSet * _enteredDestinations;
     NSArray * _internalItems;
     bool  _isAccessibilitySession;
+    bool  _isPolicyDriven;
     _DUIPotentialDrop * _lastPotentialDrop;
     _UIApplicationModalProgressController * _modalProgressAlertController;
     unsigned long long  _outsideAppSourceOperationMask;
     id /* block */  _postDropAnimationCompletionBlock;
     NSProgress * _progress;
     unsigned long long  _progressIndicatorStyle;
-    <_UIDraggingInfo> * _publicSession;
     unsigned int  _sessionIdentifier;
     _UIInternalDraggingSessionSource * _sessionSource;
     _UIDragSetDownAnimation * _setDownAnimation;
@@ -37,12 +38,14 @@
     unsigned int  _touchRoutingPolicyContextID;
 }
 
+@property (nonatomic, readonly) UIDragEvent *activeDragEvent;
 @property (nonatomic, readonly) struct CGPoint { double x1; double x2; } centroid;
 @property (nonatomic, readonly) UIWindow *centroidWindow;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool didRequestDropToBePerformed;
-@property (nonatomic) UIDragEvent *dragEvent;
+@property (nonatomic, readonly) NSArray *dragEvents;
+@property (nonatomic, readonly) unsigned long long draggingSourceOperationMask;
 @property (nonatomic, readonly) NSArray *dropItemProviders;
 @property (nonatomic, readonly) _UIDropSessionImpl *dropSession;
 @property (nonatomic, retain) <_UIDruidDestinationConnection> *druidConnection;
@@ -54,7 +57,6 @@
 @property (nonatomic, readonly) NSArray *preDropItemProviders;
 @property (nonatomic, retain) NSProgress *progress;
 @property (nonatomic) unsigned long long progressIndicatorStyle;
-@property (nonatomic, readonly) <_UIDraggingInfo> *publicSession;
 @property (nonatomic, readonly) unsigned int sessionIdentifier;
 @property (nonatomic, readonly) bool shouldDragEventBeSentToGestureRecognizers;
 @property (nonatomic, readonly) long long sourceDataOwner;
@@ -64,7 +66,9 @@
 - (void).cxx_destruct;
 - (void)_removeFromDragManager;
 - (void)_sessionDidEndNormally:(bool)arg1;
+- (id)activeDragEvent;
 - (unsigned long long)actualDragOperationForProposedDragOperation:(unsigned long long)arg1 destinationDataOwner:(long long)arg2 forbidden:(bool*)arg3;
+- (void)addDragEvent:(id)arg1;
 - (bool)canBeDrivenByDragEvent:(id)arg1;
 - (struct CGPoint { double x1; double x2; })centroid;
 - (id)centroidWindow;
@@ -73,12 +77,15 @@
 - (void)dataTransferMonitorFinishedTransfers:(id)arg1;
 - (bool)didRequestDropToBePerformed;
 - (void)dragDidExitApp;
-- (id)dragEvent;
+- (id)dragEvents;
 - (void)dragInteractionEnding;
+- (struct CGPoint { double x1; double x2; })draggingLocationInCoordinateSpace:(id)arg1;
+- (unsigned long long)draggingSourceOperationMask;
 - (id)dropItemProviders;
 - (id)dropSession;
 - (id)druidConnection;
 - (void)enteredDestination:(id)arg1;
+- (void)enumerateItemsUsingBlock:(id /* block */)arg1;
 - (void)handOffDroppedItems:(id)arg1;
 - (id)inAppSessionSource;
 - (id)initWithDragManager:(id)arg1 dragEvent:(id)arg2;
@@ -90,11 +97,10 @@
 - (id)preDropItemProviders;
 - (id)progress;
 - (unsigned long long)progressIndicatorStyle;
-- (id)publicSession;
 - (void)requestDropOnView:(id)arg1 withOperation:(unsigned long long)arg2 perform:(id /* block */)arg3 completion:(id /* block */)arg4;
+- (void)requestVisibleItems:(id /* block */)arg1;
 - (void)sawDragEndEvent;
 - (unsigned int)sessionIdentifier;
-- (void)setDragEvent:(id)arg1;
 - (void)setDruidConnection:(id)arg1;
 - (void)setInternalItems:(id)arg1;
 - (void)setProgress:(id)arg1;

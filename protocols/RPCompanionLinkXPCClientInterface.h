@@ -17,5 +17,7 @@
 - (void)xpcDiscoveryFoundEndpoint:(RPEndpoint *)arg1;
 - (void)xpcDiscoveryLostEndpoint:(RPEndpoint *)arg1;
 - (void)xpcServerAcceptSession:(void *)arg1 completion:(void *)arg2; // needs 2 arg types, found 7: RPSession *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSError *, void*
+- (void)xpcServerHidePassword:(unsigned int)arg1;
+- (void)xpcServerShowPassword:(NSString *)arg1 flags:(unsigned int)arg2;
 
 @end

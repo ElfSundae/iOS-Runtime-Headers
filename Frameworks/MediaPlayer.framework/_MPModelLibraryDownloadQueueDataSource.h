@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
  */
 
-@interface _MPModelLibraryDownloadQueueDataSource : NSObject <MPModelLazySectionedCollectionDataSource> {
+@interface _MPModelLibraryDownloadQueueDataSource : NSObject <MPLazySectionedCollectionDataSource> {
     struct shared_ptr<mlcore::EntityQueryResult> { 
         struct EntityQueryResult {} *__ptr_; 
         struct __shared_weak_count {} *__cntrl_; 

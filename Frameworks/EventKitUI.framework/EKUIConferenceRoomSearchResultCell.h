@@ -12,5 +12,7 @@
 - (id)description;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)reloadWithConferenceRoom:(id)arg1;
+- (void)safeAreaInsetsDidChange;
+- (void)updateSeparatorInset;
 
 @end

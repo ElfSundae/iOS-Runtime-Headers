@@ -4,7 +4,7 @@
 
 @interface NTKTimelineDataOperation : NSObject {
     bool  _canceled;
-    NTKComplicationDataSource * _localDataSource;
+    CLKCComplicationDataSource * _localDataSource;
     CLKComplication * _remoteComplication;
     <CLKComplicationDataSource> * _remoteDataSource;
     bool  _started;
@@ -21,6 +21,7 @@
 - (id)_finalizedValidEntries:(id)arg1;
 - (void)_start;
 - (bool)_validateEntry:(id)arg1;
+- (bool)_validateTemplate:(id)arg1;
 - (void)cancel;
 - (bool)canceled;
 - (void)start;

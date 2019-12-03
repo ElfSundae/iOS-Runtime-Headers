@@ -2,16 +2,16 @@
    Image: /System/Library/PrivateFrameworks/BackBoardServices.framework/BackBoardServices
  */
 
-@interface BKSTouchDeliveryObservationService : NSObject <BKSEventFocusManagerClientInterface> {
+@interface BKSTouchDeliveryObservationService : NSObject <BKSTouchDeliveryObserving_IPC> {
     NSObject<OS_dispatch_queue> * _calloutQueue;
-    NSXPCConnection * _connection;
+    BSServiceConnection * _connection;
     NSHashTable * _generalObservers;
     NSMapTable * _observersToTouchIdentifiers;
     NSObject<OS_dispatch_queue> * _touchClientQueue;
     BSMutableIntegerMap * _touchIdentifierToObserverLists;
 }
 
-@property (nonatomic, retain) NSXPCConnection *connection;
+@property (nonatomic, retain) BSServiceConnection *connection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) NSHashTable *generalObservers;
@@ -23,26 +23,24 @@
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
-- (bool)_addObserver:(id)arg1 forTouchIdentifier:(unsigned int)arg2;
 - (void)_connectToTouchDeliveryService;
-- (id)_observersForTouchIdentifier:(unsigned int)arg1;
-- (bool)_removeObserver:(id)arg1 forTouchIdentifier:(unsigned int)arg2;
-- (void)_removeObserversForTouchIdentifier:(unsigned int)arg1;
-- (void)addObserver:(id)arg1;
-- (void)addObserver:(id)arg1 forTouchIdentifier:(unsigned int)arg2;
+- (bool)_queue_addObserver:(id)arg1 forTouchIdentifier:(unsigned int)arg2;
+- (id)_queue_observersForTouchIdentifier:(unsigned int)arg1;
+- (bool)_queue_removeObserver:(id)arg1 forTouchIdentifier:(unsigned int)arg2;
+- (void)_queue_removeObserversForTouchIdentifier:(unsigned int)arg1;
+- (oneway void)addObserver:(id)arg1;
+- (oneway void)addObserver:(id)arg1 forTouchIdentifier:(unsigned int)arg2;
 - (id)connection;
 - (void)dealloc;
-- (void)focusedDeferralPropertiesUpdatedWithProperties:(id)arg1;
 - (id)generalObservers;
 - (id)init;
+- (void)observeTouchEventDeliveryDidOccur:(id)arg1;
 - (id)observersToTouchIdentifiers;
-- (void)removeObserver:(id)arg1;
+- (oneway void)removeObserver:(id)arg1;
 - (void)setConnection:(id)arg1;
 - (void)setGeneralObservers:(id)arg1;
 - (void)setObserversToTouchIdentifiers:(id)arg1;
 - (void)setTouchIdentifierToObserverLists:(id)arg1;
-- (void)touchDetachedForIdentifier:(unsigned int)arg1 context:(unsigned int)arg2 pid:(int)arg3;
 - (id)touchIdentifierToObserverLists;
-- (void)touchUpOccuredForIdentifier:(unsigned int)arg1 detached:(bool)arg2 context:(unsigned int)arg3 pid:(int)arg4;
 
 @end

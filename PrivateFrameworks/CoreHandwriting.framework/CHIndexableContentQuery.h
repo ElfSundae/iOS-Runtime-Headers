@@ -12,7 +12,7 @@
 - (void)dealloc;
 - (id)debugName;
 - (id)indexableContent;
+- (id)initWithRecognitionSession:(id)arg1;
 - (void)q_updateQueryResult;
-- (bool)wantsHighFrequencyNotifications;
 
 @end

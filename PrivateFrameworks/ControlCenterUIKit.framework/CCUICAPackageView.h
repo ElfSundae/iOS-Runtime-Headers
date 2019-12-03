@@ -4,13 +4,16 @@
 
 @interface CCUICAPackageView : UIView {
     CAPackage * _package;
+    UIView * _packageContentView;
     CCUICAPackageDescription * _packageDescription;
     CALayer * _packageLayer;
+    double  _scale;
     CAStateController * _stateController;
 }
 
 @property (nonatomic, retain) CAPackage *package;
 @property (nonatomic, retain) CCUICAPackageDescription *packageDescription;
+@property (nonatomic) double scale;
 
 - (void).cxx_destruct;
 - (void)_setPackage:(id)arg1;
@@ -18,8 +21,10 @@
 - (void)layoutSubviews;
 - (id)package;
 - (id)packageDescription;
+- (double)scale;
 - (void)setPackage:(id)arg1;
 - (void)setPackageDescription:(id)arg1;
+- (void)setScale:(double)arg1;
 - (void)setStateName:(id)arg1;
 
 @end

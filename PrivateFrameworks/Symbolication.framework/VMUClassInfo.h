@@ -43,6 +43,7 @@
 @property (readonly) bool isMetaClass;
 @property (readonly) bool isRealized;
 @property (readonly) bool isRootClass;
+@property (nonatomic, readonly) unsigned int ivarCount;
 @property (nonatomic, readonly) unsigned int pointerSize;
 @property (readonly) unsigned long long remoteIsa;
 @property (nonatomic, readonly) NSString *shortIvarDescription;
@@ -54,7 +55,7 @@
 + (id)classInfoWithClassName:(id)arg1 binaryPath:(id)arg2 type:(unsigned int)arg3;
 + (id)descriptionForTypeEncoding:(const char *)arg1 ivarName:(const char *)arg2;
 + (void)initialize;
-+ (unsigned long long)sizeofClassStructure:(bool)arg1;
++ (unsigned long long)sizeofClassStructure;
 
 - (void).cxx_destruct;
 - (void)_addFields:(id)arg1;
@@ -63,7 +64,8 @@
 - (id)_copyWithInstanceSize:(unsigned int)arg1 superclassOffset:(unsigned int)arg2 asVariant:(bool)arg3 mutable:(bool)arg4;
 - (void)_demangleClassName;
 - (void)_freeLocalIvarList;
-- (id)_initWithClass:(unsigned long long)arg1 realizedOnly:(bool)arg2 infoMap:(id)arg3 symbolicator:(struct _CSTypeRef { unsigned long long x1; unsigned long long x2; })arg4 type:(unsigned int)arg5 swiftFieldMetadataContext:(struct libSwiftRemoteMirrorWrapper { struct SwiftReflectionInteropContext {} *x1; unsigned long long x2; }*)arg6 memoryReader:(id /* block */)arg7;
+- (void)_identifyObjCClassStructureBlocksForIsa:(unsigned long long)arg1 isMetaclass:(bool)arg2 withScanner:(id)arg3 addressIdentifierBlock:(id /* block */)arg4;
+- (id)_initWithClass:(unsigned long long)arg1 type:(unsigned int)arg2 realizedOnly:(bool)arg3 infoMap:(id)arg4 objectIdentifier:(id)arg5 reader:(id /* block */)arg6;
 - (void)_logDescriptionWithSuperclasses:(bool)arg1 indentation:(int)arg2 toLogger:(id /* block */)arg3;
 - (void)_parseIvarsAndLayouts;
 - (void)_processARRLayout:(const char *)arg1 scanType:(unsigned int)arg2;
@@ -103,13 +105,14 @@
 - (bool)hasSpecificLayout;
 - (bool)hasVariantLayout;
 - (unsigned long long)hash;
+- (void)identifyObjCClassStructureBlocksWithScanner:(id)arg1 addressIdentifierBlock:(id /* block */)arg2;
 - (unsigned int)infoType;
 - (id)initSwiftClassWithName:(id)arg1 classInfoType:(unsigned int)arg2 size:(unsigned long long)arg3;
-- (id)initWithClass:(unsigned long long)arg1 infoMap:(id)arg2 symbolicator:(struct _CSTypeRef { unsigned long long x1; unsigned long long x2; })arg3 type:(unsigned int)arg4 swiftFieldMetadataContext:(struct libSwiftRemoteMirrorWrapper { struct SwiftReflectionInteropContext {} *x1; unsigned long long x2; }*)arg5 memoryReader:(id /* block */)arg6;
+- (id)initWithClass:(unsigned long long)arg1 type:(unsigned int)arg2 infoMap:(id)arg3 objectIdentifier:(id)arg4 reader:(id /* block */)arg5;
 - (id)initWithClassName:(id)arg1 binaryPath:(id)arg2 type:(unsigned int)arg3;
 - (id)initWithClosureContext:(unsigned long long)arg1 typeInfo:(struct swift_typeinfo { int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; })arg2 infoMap:(id)arg3 swiftFieldMetadataContext:(struct libSwiftRemoteMirrorWrapper { struct SwiftReflectionInteropContext {} *x1; unsigned long long x2; }*)arg4;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithRealizedClass:(unsigned long long)arg1 infoMap:(id)arg2 symbolicator:(struct _CSTypeRef { unsigned long long x1; unsigned long long x2; })arg3 type:(unsigned int)arg4 swiftFieldMetadataContext:(struct libSwiftRemoteMirrorWrapper { struct SwiftReflectionInteropContext {} *x1; unsigned long long x2; }*)arg5 memoryReader:(id /* block */)arg6;
+- (id)initWithRealizedClass:(unsigned long long)arg1 type:(unsigned int)arg2 infoMap:(id)arg3 objectIdentifier:(id)arg4 reader:(id /* block */)arg5;
 - (id)initWithSerializer:(id)arg1 classMap:(id)arg2 version:(unsigned int)arg3;
 - (unsigned int)instanceSize;
 - (id)instanceSpecificInfoForObject:(unsigned long long)arg1 ofSize:(unsigned int)arg2 memoryReader:(id /* block */)arg3;
@@ -119,6 +122,7 @@
 - (bool)isMetaClass;
 - (bool)isRealized;
 - (bool)isRootClass;
+- (unsigned int)ivarCount;
 - (id)mutableCopy;
 - (unsigned int)pointerSize;
 - (unsigned long long)remoteIsa;

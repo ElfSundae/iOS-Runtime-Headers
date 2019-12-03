@@ -14,13 +14,13 @@
 @property (nonatomic) double asleepValue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, retain) NSNumber *goalValue;
+@property (nonatomic, copy) NSNumber *goalValue;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool highlighted;
 @property (nonatomic) double inBedValue;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) HKSleepChartPointUserInfo *userInfo;
-@property (nonatomic, retain) NSDate *xValue;
+@property (nonatomic, copy) NSDate *xValue;
 
 - (void).cxx_destruct;
 - (id)allYValues;

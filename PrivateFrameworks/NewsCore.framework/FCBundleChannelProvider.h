@@ -24,7 +24,7 @@
 
 - (void).cxx_destruct;
 - (id)accessLock;
-- (void)activityObservingApplicationWillEnterForeground;
+- (void)activityObservingApplicationWindowWillBecomeForeground;
 - (id)bundleChannelIDs;
 - (id)configurationManager;
 - (id)delegate;

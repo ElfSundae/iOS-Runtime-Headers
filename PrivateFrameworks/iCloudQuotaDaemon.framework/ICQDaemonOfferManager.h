@@ -3,12 +3,15 @@
  */
 
 @interface ICQDaemonOfferManager : NSObject {
+    _ICQAccountManager * _accountManager;
     FLFollowUpController * _followUpController;
     NSURLSession * _sharedURLSession;
 }
 
+@property (readonly) _ICQAccountManager *accountManager;
 @property (getter=isBuddyOfferEnabled, nonatomic) bool buddyOfferEnabled;
 @property (getter=isLegacyDeviceStorageLevelNotificationEnabled, nonatomic) bool legacyDeviceStorageLevelNotificationEnabled;
+@property (readonly) NSURLSession *sharedURLSession;
 @property (nonatomic) bool shouldDirectToStorageManagement;
 @property (getter=isSimulatedDeviceStorageAlmostFull, nonatomic) bool simulatedDeviceStorageAlmostFull;
 @property (nonatomic, retain) NSNumber *simulatedPhotosLibrarySize;
@@ -25,7 +28,7 @@
 - (void)_daemonOfferStubsDictionaryForAccount:(id)arg1 isForBuddy:(bool)arg2 completion:(id /* block */)arg3;
 - (void)_fetchDaemonOfferForAccount:(id)arg1 stub:(id)arg2 notificationID:(id)arg3 completion:(id /* block */)arg4;
 - (void)_fetchDaemonOfferStubsForAccount:(id)arg1 isForBuddy:(bool)arg2 completion:(id /* block */)arg3;
-- (void)_fetchDictionaryForAccount:(id)arg1 quotaKey:(id)arg2 stub:(id)arg3 notificationID:(id)arg4 completion:(id /* block */)arg5;
+- (void)_fetchDictionaryForAccount:(id)arg1 quotaKey:(id)arg2 stub:(id)arg3 notificationID:(id)arg4 contextDictionary:(id)arg5 completion:(id /* block */)arg6;
 - (bool)_isBackupEnabledForAccount:(id)arg1;
 - (id)_placeholderOfferForAccount:(id)arg1 isForBuddy:(bool)arg2 error:(id)arg3;
 - (void)_postDaemonOfferChangedDueToPushDarwinNotification;
@@ -46,12 +49,14 @@
 - (void)_updateOffer:(id)arg1 buttonId:(id)arg2 info:(id)arg3 account:(id)arg4 accountStore:(id)arg5 completion:(id /* block */)arg6;
 - (void)_updateQuotaForAccount:(id)arg1 withServerDictionary:(id)arg2;
 - (bool)_useFetchOffersDataDirectly;
+- (id)accountManager;
 - (void)clearFollowupsWithCompletion:(id /* block */)arg1;
 - (void)daemonBuddyOfferDictionaryForAccount:(id)arg1 completion:(id /* block */)arg2;
 - (void)daemonOfferDictionaryForAccount:(id)arg1 options:(id)arg2 completion:(id /* block */)arg3;
 - (unsigned long long)daemonOfferSource;
 - (void)forcePostFollowup;
 - (id)init;
+- (id)initWithAccountManager:(id)arg1;
 - (bool)isBuddyOfferEnabled;
 - (bool)isLegacyDeviceStorageLevelNotificationEnabled;
 - (bool)isSimulatedDeviceStorageAlmostFull;
@@ -64,6 +69,7 @@
 - (void)setShouldDirectToStorageManagement:(bool)arg1;
 - (void)setSimulatedDeviceStorageAlmostFull:(bool)arg1;
 - (void)setSimulatedPhotosLibrarySize:(id)arg1;
+- (id)sharedURLSession;
 - (bool)shouldDirectToStorageManagement;
 - (id)simulatedPhotosLibrarySize;
 - (id)soonestOfferOrStubExpirationDate;

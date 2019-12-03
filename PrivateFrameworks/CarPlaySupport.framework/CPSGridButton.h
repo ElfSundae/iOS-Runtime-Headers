@@ -17,6 +17,7 @@
 + (id)buttonWithGridButton:(id)arg1 templateDelegate:(id)arg2;
 
 - (void).cxx_destruct;
+- (void)_updateLabelColor;
 - (id)customTitleLabel;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)focusView;
@@ -32,5 +33,6 @@
 - (void)setGridButton:(id)arg1;
 - (void)setTemplateDelegate:(id)arg1;
 - (id)templateDelegate;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end

@@ -9,6 +9,8 @@
 @property (nonatomic, readonly) bool hasIndex;
 @property (nonatomic, retain) NSData *index;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -19,6 +21,7 @@
 - (id)index;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setIndex:(id)arg1;
 - (void)writeTo:(id)arg1;

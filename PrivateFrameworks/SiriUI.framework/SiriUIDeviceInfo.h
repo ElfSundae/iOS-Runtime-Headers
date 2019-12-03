@@ -22,15 +22,13 @@
 
 + (id)sharedInstance;
 
-- (void)_updateDeviceZoomed;
-- (void)_updateLargeFormatPhone;
 - (void)_updateProductTypeDerivedProperties;
 - (bool)deviceShouldDeferFlamesView;
 - (bool)deviceShouldFreezeAura;
 - (bool)deviceShouldSkipGuidePreloading;
 - (bool)deviceShouldUseFrozenBackdropSnapshot;
 - (bool)deviceSupportsProximitySensor;
-- (id)init;
+- (id)initWithLargeFormatPhone:(bool)arg1 gestaltModes:(id)arg2 screenSize:(struct CGSize { double x1; double x2; })arg3;
 - (bool)isDeviceZoomed;
 - (bool)isLargeFormatPhone;
 

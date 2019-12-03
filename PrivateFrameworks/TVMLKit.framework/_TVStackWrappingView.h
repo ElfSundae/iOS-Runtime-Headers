@@ -17,6 +17,7 @@
     UICollectionView * _stackView;
     NSArray * _supplementaryCellLayoutAttributes;
     bool  _usesBackdropImage;
+    bool  _usesBackgroundImage;
 }
 
 @property (nonatomic) long long backdropBlurEffectStyle;
@@ -30,6 +31,7 @@
 @property (nonatomic, retain) UICollectionView *stackView;
 @property (nonatomic, readonly, copy) NSArray *supplementaryCellLayoutAttributes;
 @property (nonatomic) bool usesBackdropImage;
+@property (nonatomic) bool usesBackgroundImage;
 
 - (void).cxx_destruct;
 - (long long)backdropBlurEffectStyle;
@@ -53,9 +55,11 @@
 - (void)setShouldAdjustForTabBarSafeAreaInsets:(bool)arg1;
 - (void)setStackView:(id)arg1;
 - (void)setUsesBackdropImage:(bool)arg1;
+- (void)setUsesBackgroundImage:(bool)arg1;
 - (bool)shouldAdjustForTabBarSafeAreaInsets;
 - (id)stackView;
 - (id)supplementaryCellLayoutAttributes;
 - (bool)usesBackdropImage;
+- (bool)usesBackgroundImage;
 
 @end

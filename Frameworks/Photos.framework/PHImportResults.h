@@ -22,6 +22,7 @@
 @property (nonatomic, retain) NSDate *startTime;
 
 + (id)resultsWithException:(id)arg1;
++ (id)resultsWithExceptions:(id)arg1;
 
 - (void).cxx_destruct;
 - (void)addImportRecord:(id)arg1;

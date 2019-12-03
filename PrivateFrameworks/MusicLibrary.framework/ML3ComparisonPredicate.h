@@ -10,12 +10,11 @@
     id  _value;
 }
 
-@property (nonatomic) bool caseInsensitive;
-@property (nonatomic) int comparison;
-@property (nonatomic, readonly, copy) NSString *operator;
-@property (nonatomic, copy) NSString *transformFunction;
-@property (nonatomic, copy) NSString *treatNullAsString;
-@property (nonatomic, retain) id value;
+@property (nonatomic, readonly) bool caseInsensitive;
+@property (nonatomic, readonly) int comparison;
+@property (nonatomic, readonly, copy) NSString *transformFunction;
+@property (nonatomic, readonly, copy) NSString *treatNullAsString;
+@property (nonatomic, readonly) id value;
 
 + (id)predicateWithProperty:(id)arg1 equalToInt64:(long long)arg2;
 + (id)predicateWithProperty:(id)arg1 equalToInteger:(long long)arg2;
@@ -39,11 +38,6 @@
 - (id)initWithProperty:(id)arg1 value:(id)arg2 comparison:(int)arg3 caseInsensitive:(bool)arg4 transformFunction:(id)arg5 treatNullAsString:(id)arg6;
 - (bool)isEqual:(id)arg1;
 - (id)operator;
-- (void)setCaseInsensitive:(bool)arg1;
-- (void)setComparison:(int)arg1;
-- (void)setTransformFunction:(id)arg1;
-- (void)setTreatNullAsString:(id)arg1;
-- (void)setValue:(id)arg1;
 - (id)transformFunction;
 - (id)treatNullAsString;
 - (id)value;

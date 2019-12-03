@@ -5,16 +5,24 @@
 
 @required
 
+- (double)behavioralScore;
+- (bool)containsBetterScoringAsset;
+- (bool)containsNonJunkAssets;
 - (double)contentScore;
+- (bool)hasAssetsWithInterestingScenes;
+- (bool)hasHigherThanImprovedAssets;
+- (double)inhabitationScore;
 - (bool)isInteresting;
 - (bool)isSmartInteresting;
 - (NSDate *)localEndDate;
-- (NSString *)localIdentifier;
 - (NSDate *)localStartDate;
 - (unsigned long long)numberOfItems;
-- (unsigned long long)numberOfItemsWithPeople;
+- (unsigned long long)numberOfItemsWithPersons;
+- (unsigned long long)numberOfRegularGemItems;
+- (unsigned long long)numberOfShinyGemItems;
 - (unsigned long long)totalNumberOfPersons;
 - (NSDate *)universalEndDate;
 - (NSDate *)universalStartDate;
+- (NSString *)uuid;
 
 @end

@@ -89,12 +89,15 @@
 - (id)_cardIndexPath;
 - (void)_dismissIfPossible;
 - (id)_dynamicAnimationForUpperBoundaryWithStart:(double)arg1 upperBoundary:(double)arg2 lowerBoundary:(double)arg3 initialVelocity:(double)arg4;
+- (void)_endReportingSessionForPassIfNecessary;
 - (void)_ensureCardPresence;
 - (long long)_footerStateForPassView:(id)arg1;
 - (void)_handlePanGroupGesture:(id)arg1;
 - (void)_handleScrollViewPanGroupGesture:(id)arg1;
 - (id)_paymentPassDetailsViewControllerForPaymentPass:(id)arg1;
+- (void)_reportEventForPassIfNecessary:(id)arg1;
 - (void)_showPassFooterView:(bool)arg1 forPassView:(id)arg2 animated:(bool)arg3 completion:(id /* block */)arg4;
+- (void)_startReportingSessionForPassIfNecessary;
 - (void)_updateNavigationBarWithPassAppeared:(bool)arg1;
 - (void)_updatePassFooterViewAnimated:(bool)arg1;
 - (void)_updatePassFooterViewIfNecessaryAnimated:(bool)arg1;
@@ -117,6 +120,7 @@
 - (void)foregroundActiveArbiter:(id)arg1 didUpdateForegroundActiveState:(struct { bool x1; bool x2; })arg2;
 - (void)groupView:(id)arg1 deleteButtonPressedForPass:(id)arg2;
 - (void)groupView:(id)arg1 didUpdatePassView:(id)arg2;
+- (void)groupView:(id)arg1 faceViewFrameDidChangeForFrontmostPassView:(id)arg2;
 - (void)groupView:(id)arg1 frontmostPassViewDidChange:(id)arg2 withContext:(id)arg3;
 - (long long)groupViewContentModeForFrontmostPassWhenPiled:(id)arg1 withDefaultContentMode:(long long)arg2;
 - (long long)groupViewContentModeForFrontmostPassWhenStacked:(id)arg1;
@@ -127,6 +131,7 @@
 - (bool)handleDeletePassRequestWithPass:(id)arg1 forViewController:(id)arg2;
 - (void)hideTitleView;
 - (void)infoTapped:(id)arg1;
+- (id)init;
 - (id)initWithPassGroupView:(id)arg1 groupViewReceiver:(id)arg2 context:(id)arg3;
 - (void)insertGroupView;
 - (id)interactionControllerForPresentation:(id)arg1;
@@ -151,6 +156,7 @@
 - (struct CGPoint { double x1; double x2; })preferredContentOffset;
 - (void)presentBalanceDetailsWithCompletion:(id /* block */)arg1;
 - (void)presentDailyCashForComponents:(id)arg1 completion:(id /* block */)arg2;
+- (void)presentInstallmentPlan:(id)arg1;
 - (void)presentPassDetailsAnimated:(bool)arg1 action:(unsigned long long)arg2;
 - (void)presentSpendingSummaryWithType:(unsigned long long)arg1 unit:(unsigned long long)arg2 completion:(id /* block */)arg3;
 - (void)presentTransaction:(id)arg1 forPaymentPass:(id)arg2;
@@ -172,6 +178,7 @@
 - (void)setTopMargin:(double)arg1;
 - (void)setTransitionDuration:(double)arg1;
 - (bool)shouldOverrideContentOffset;
+- (void)showStatement:(id)arg1 completion:(id /* block */)arg2;
 - (void)summaryTypeDidChange;
 - (unsigned long long)suppressedContentForPassFooter:(id)arg1;
 - (double)topMargin;

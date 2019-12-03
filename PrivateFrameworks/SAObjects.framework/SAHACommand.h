@@ -5,6 +5,7 @@
 @interface SAHACommand : SADomainCommand <SAConditionallyMutatingClientBoundCommand>
 
 @property (nonatomic, copy) NSString *aceId;
+@property (nonatomic, copy) NSArray *actionRequests;
 @property (nonatomic, copy) NSArray *actions;
 @property (nonatomic, copy) NSString *appId;
 @property (nonatomic, copy) NSArray *callbacks;
@@ -23,6 +24,7 @@
 + (id)command;
 + (id)commandWithDictionary:(id)arg1 context:(id)arg2;
 
+- (id)actionRequests;
 - (id)actions;
 - (id)commandTimeout;
 - (id)encodedClassName;
@@ -31,6 +33,7 @@
 - (bool)mutatingCommand;
 - (bool)requiresResponse;
 - (id)serverValidity;
+- (void)setActionRequests:(id)arg1;
 - (void)setActions:(id)arg1;
 - (void)setCommandTimeout:(id)arg1;
 - (void)setFilter:(id)arg1;

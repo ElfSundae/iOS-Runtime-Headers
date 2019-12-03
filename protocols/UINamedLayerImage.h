@@ -12,6 +12,7 @@
 
 @optional
 
+- (<UINamedLayerContentProvider> *)contentProvider;
 - (bool)fixedFrame;
 - (UIImage *)imageObj;
 - (void)setFixedFrame:(bool)arg1;

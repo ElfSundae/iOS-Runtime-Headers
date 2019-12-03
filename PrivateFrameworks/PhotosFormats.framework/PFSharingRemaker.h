@@ -8,6 +8,7 @@
     PFSharingRemakerOptions * __options;
     id /* block */  __progressHandler;
     bool  _abortedRemaker;
+    bool  _cancelledRemaker;
     NSMutableDictionary * _inProgressOperationByUUID;
     float  _progress;
     NSObject<OS_dispatch_source> * _progressTimer;
@@ -25,7 +26,7 @@
 + (id)remakerWithOperations:(id)arg1 options:(id)arg2;
 
 - (void).cxx_destruct;
-- (void)_abortWithError:(id)arg1;
+- (void)_abortWithUnderlyingOperationError:(id)arg1;
 - (void)_callProgressBlockWithProgress:(double)arg1;
 - (void)_completeOperationWithUUID:(id)arg1;
 - (id /* block */)_completionHandler;
@@ -41,6 +42,7 @@
 - (void)_setOptions:(id)arg1;
 - (void)_setProgressHandler:(id /* block */)arg1;
 - (void)_updateProgress;
+- (void)cancelRemaking;
 - (id)init;
 - (void)remakeWithProgressHandler:(id /* block */)arg1 completionHandler:(id /* block */)arg2;
 

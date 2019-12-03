@@ -27,7 +27,7 @@
 + (id)calendarIdentifiersToScanForConflictsForEvent:(id)arg1;
 + (id)dateRangeToScanForConflictsForEvent:(id)arg1;
 + (id)infoWithConflicts:(long long)arg1 needsAction:(long long)arg2 event:(id)arg3;
-+ (id)infoWithConflictsInSeries:(long long)arg1 outOf:(long long)arg2 withPeriod:(id)arg3;
++ (id)infoWithConflictsInSeries:(long long)arg1 outOf:(long long)arg2 withPeriod:(id)arg3 conflictingDates:(id)arg4;
 
 - (void).cxx_destruct;
 - (id)conflictPeriodForSeries;

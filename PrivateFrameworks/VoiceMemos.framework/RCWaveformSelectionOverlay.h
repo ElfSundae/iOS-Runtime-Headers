@@ -76,6 +76,7 @@
 @property (nonatomic) bool enableTimeTrackingInView;
 @property (nonatomic, readonly) long long endTimeIndicatorSelectionAffinity;
 @property (nonatomic) bool insertMode;
+@property (nonatomic, readonly) bool isCurrentlyTracking;
 @property (nonatomic) bool isOverView;
 @property (nonatomic) bool isRecording;
 @property (nonatomic) double knobWidthMultiplier;
@@ -134,6 +135,7 @@
 - (double)axSegment;
 - (bool)barMatchesKnobRadius;
 - (long long)beginTimeIndicatorSelectionAffinity;
+- (bool)changeAXValue;
 - (double)currentTimeIndicatorCoordinate;
 - (id)delegate;
 - (bool)enablePlayBarTracking;
@@ -144,6 +146,7 @@
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (bool)insertMode;
 - (bool)isAccessibilityElement;
+- (bool)isCurrentlyTracking;
 - (bool)isEditingEnabled;
 - (bool)isOverView;
 - (bool)isRecording;

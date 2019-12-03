@@ -14,7 +14,11 @@
 - (id)action;
 - (id)copyForCreatingNewAction;
 - (id)createNewAction;
+- (id)getOrCreateAction;
+- (bool)hasSameTargetAsAction:(id)arg1;
 - (bool)isAffectedByEndEvents;
+- (bool)isEquivalentToAction:(id)arg1;
+- (id)performValidation;
 - (bool)requiresDeviceUnlock;
 - (void)setAction:(id)arg1;
 - (bool)updateWithActionBuilder:(id)arg1;

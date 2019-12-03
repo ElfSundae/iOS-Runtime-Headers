@@ -11,6 +11,7 @@
 
 + (id)pl_sharedAccountStore;
 
+- (void).cxx_destruct;
 - (void)accountDidChange:(id)arg1;
 - (id)cachedPrimaryAppleAccount;
 - (void)clearCachedProperties;

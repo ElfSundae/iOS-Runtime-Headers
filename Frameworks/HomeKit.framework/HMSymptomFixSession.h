@@ -12,6 +12,7 @@
     NSError * _error;
     bool  _hasSymptomDisappeared;
     HMFUnfairLock * _lock;
+    NSString * _logIdentifier;
     UIViewController * _presentingViewController;
     long long  _state;
     HMSymptom * _symptom;
@@ -29,6 +30,7 @@
 @property (nonatomic, retain) NSError *error;
 @property (nonatomic) bool hasSymptomDisappeared;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly, copy) NSString *logIdentifier;
 @property (nonatomic, retain) UIViewController *presentingViewController;
 @property (nonatomic) long long state;
 @property (readonly) Class superclass;
@@ -54,6 +56,7 @@
 - (id)init;
 - (id)initWithSymptom:(id)arg1 deviceIdentifier:(id)arg2 context:(id)arg3;
 - (bool)isDeviceRepairSessionFinished;
+- (id)logIdentifier;
 - (void)noteSymptomDisappeared;
 - (id)presentingViewController;
 - (void)setDelegate:(id)arg1;

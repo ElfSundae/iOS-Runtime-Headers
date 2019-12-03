@@ -3,11 +3,13 @@
  */
 
 @interface _TVRXDeviceAuthenticationChallenge : NSObject {
+    long long  _challengeAttributes;
     long long  _challengeType;
     NSString * _codeToEnterOnDevice;
     id /* block */  _continuation;
 }
 
+@property (nonatomic) long long challengeAttributes;
 @property (nonatomic, readonly) long long challengeType;
 @property (nonatomic, readonly, copy) NSString *codeToEnterOnDevice;
 
@@ -17,8 +19,10 @@
 - (void).cxx_destruct;
 - (id)_init;
 - (void)cancel;
+- (long long)challengeAttributes;
 - (long long)challengeType;
 - (id)codeToEnterOnDevice;
+- (void)setChallengeAttributes:(long long)arg1;
 - (void)userEnteredCodeLocally:(id)arg1;
 
 @end

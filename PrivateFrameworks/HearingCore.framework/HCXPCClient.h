@@ -19,7 +19,7 @@
 - (id)description;
 - (id)initWithConnection:(id)arg1;
 - (unsigned long long)requestedUpdates;
-- (bool)sendMessage:(id)arg1 withError:(id*)arg2;
+- (bool)sendMessage:(id)arg1 errorBlock:(id /* block */)arg2;
 - (void)setRequestedUpdates:(unsigned long long)arg1;
 - (void)setWantsUpdates:(bool)arg1 forIdentifier:(unsigned long long)arg2;
 - (void)setXpcConnection:(id)arg1;

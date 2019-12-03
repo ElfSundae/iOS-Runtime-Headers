@@ -3,18 +3,18 @@
  */
 
 @interface MBDeviceTransferTask : NSObject <MBManagerDelegate> {
-    bool  _canceled;
+    _Atomic bool  _canceled;
     NSError * _completionError;
     id /* block */  _completionHandler;
     id /* block */  _connectionInfoHandler;
     id /* block */  _connectionStateHandler;
     RPFileTransferSession * _fileTransferSession;
-    bool  _finished;
+    _Atomic bool  _finished;
     MBManager * _manager;
     id /* block */  _progressHandler;
     NSObject<OS_dispatch_queue> * _queue;
-    bool  _started;
-    bool  _suspended;
+    _Atomic bool  _started;
+    _Atomic bool  _suspended;
 }
 
 @property (nonatomic, retain) NSError *completionError;

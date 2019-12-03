@@ -9,7 +9,6 @@
 @property (nonatomic, readonly) double accessoryLineHeight;
 
 - (double)_titleTopOffsetWithTemplate:(id)arg1;
-- (id)accessoryIconColor;
 - (double)accessoryLineHeight;
 - (double)accessoryViewToBottom;
 - (double)horizontalTextSpacing;

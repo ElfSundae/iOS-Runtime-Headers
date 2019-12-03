@@ -4,12 +4,16 @@
 
 @interface FCPaywallVisualSpecConfiguration : NSObject <NSCopying> {
     FCColor * _backgroundColor;
+    FCColor * _darkStyleBackgroundColor;
+    FCMultiResolutionImage * _darkStyleMultiResolutionImage;
     double  _gradientPercentHeight;
     FCMultiResolutionImage * _multiResolutionImage;
     long long  _textTopPadding;
 }
 
 @property (nonatomic, retain) FCColor *backgroundColor;
+@property (nonatomic, retain) FCColor *darkStyleBackgroundColor;
+@property (nonatomic, retain) FCMultiResolutionImage *darkStyleMultiResolutionImage;
 @property (nonatomic) double gradientPercentHeight;
 @property (nonatomic, retain) FCMultiResolutionImage *multiResolutionImage;
 @property (nonatomic) long long textTopPadding;
@@ -22,14 +26,18 @@
 - (void).cxx_destruct;
 - (id)backgroundColor;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)darkStyleBackgroundColor;
+- (id)darkStyleMultiResolutionImage;
 - (double)gradientPercentHeight;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithConfigDictionary:(id)arg1;
-- (id)initWithMultiResolutionImage:(id)arg1 gradientPercentHeight:(double)arg2 textTopPadding:(long long)arg3 backgroundColor:(id)arg4;
+- (id)initWithMultiResolutionImage:(id)arg1 darkStyleMultiResolutionImage:(id)arg2 gradientPercentHeight:(double)arg3 textTopPadding:(long long)arg4 backgroundColor:(id)arg5 darkStyleBackgroundColor:(id)arg6;
 - (bool)isEqual:(id)arg1;
 - (id)multiResolutionImage;
 - (void)setBackgroundColor:(id)arg1;
+- (void)setDarkStyleBackgroundColor:(id)arg1;
+- (void)setDarkStyleMultiResolutionImage:(id)arg1;
 - (void)setGradientPercentHeight:(double)arg1;
 - (void)setMultiResolutionImage:(id)arg1;
 - (void)setTextTopPadding:(long long)arg1;

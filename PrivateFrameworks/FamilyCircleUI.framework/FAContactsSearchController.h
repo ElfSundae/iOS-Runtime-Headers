@@ -6,8 +6,8 @@
     long long  _countOfPendingResultBatches;
     <AAUIContactsSearchDelegate> * _delegate;
     bool  _didFindResults;
+    NSMutableArray * _resultsArray;
     MFContactsSearchManager * _searchManager;
-    MFContactsSearchResultsModel * _searchResultsModel;
     NSNumber * _searchTaskID;
 }
 
@@ -22,9 +22,9 @@
 - (void)beganNetworkActivity;
 - (void)beginSearchWithString:(id)arg1;
 - (void)cancelSearch;
-- (void)consumeSearchResults:(id)arg1 type:(unsigned long long)arg2 taskID:(id)arg3;
+- (void)consumeAutocompleteSearchResults:(id)arg1 taskID:(id)arg2;
 - (void)endedNetworkActivity;
-- (void)finishedSearchingForType:(unsigned long long)arg1;
+- (void)finishedSearchingForAutocompleteResults;
 - (void)finishedTaskWithID:(id)arg1;
 - (id)initWithDelegate:(id)arg1;
 

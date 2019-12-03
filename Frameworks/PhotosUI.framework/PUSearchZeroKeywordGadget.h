@@ -2,11 +2,12 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUSearchZeroKeywordGadget : UICollectionViewController <PXGadget, UICollectionViewDataSourcePrefetching> {
+@interface PUSearchZeroKeywordGadget : UICollectionViewController <PXDiagnosticsEnvironment, PXGadget, UICollectionViewDataSourcePrefetching> {
     unsigned long long  _cellLabelNumberOfLinesPermitted;
     unsigned long long  _dataSourceSection;
     <PXGadgetDelegate> * _delegate;
     PXGadgetSpec * _gadgetSpec;
+    PHCachingImageManager * _imageManager;
     unsigned long long  _placeTileFetchCounter;
     NSObject<OS_dispatch_queue> * _placeTileFetchCounterQueue;
     long long  _priority;
@@ -15,10 +16,10 @@
     PUSearchZeroKeywordDataSource * _zeroKeywordDataSource;
 }
 
-@property (nonatomic, readonly) const struct __CFString { }*accessoryButtonEventTrackerKey;
 @property (nonatomic, readonly) NSString *accessoryButtonTitle;
 @property (nonatomic, readonly) unsigned long long accessoryButtonType;
 @property (nonatomic) unsigned long long cellLabelNumberOfLinesPermitted;
+@property (nonatomic, readonly) Class collectionViewItemClass;
 @property (nonatomic, readonly) unsigned long long dataSourceSection;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <PXGadgetDelegate> *delegate;
@@ -28,6 +29,7 @@
 @property (nonatomic, readonly) bool hasContentToDisplay;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) unsigned long long headerStyle;
+@property (nonatomic, retain) PHCachingImageManager *imageManager;
 @property (nonatomic, readonly) NSString *localizedTitle;
 @property (nonatomic) unsigned long long placeTileFetchCounter;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *placeTileFetchCounterQueue;
@@ -65,6 +67,7 @@
 - (struct CGSize { double x1; double x2; })getCellThumbnailSize;
 - (bool)hasContentToDisplay;
 - (bool)hasLoadedContentData;
+- (id)imageManager;
 - (id)initWithDataSource:(id)arg1 dataSourceSection:(unsigned long long)arg2 sectionType:(long long)arg3;
 - (void)layoutPeopleViews;
 - (id)localizedTitle;
@@ -72,17 +75,21 @@
 - (unsigned long long)placeTileFetchCounter;
 - (id)placeTileFetchCounterQueue;
 - (long long)priority;
+- (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint { double x1; double x2; })arg1 inCoordinateSpace:(id)arg2;
+- (void)reloadData;
 - (void)scrollViewDidScroll:(id)arg1;
 - (long long)sectionType;
 - (void)setCellLabelNumberOfLinesPermitted:(unsigned long long)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setGadgetSpec:(id)arg1;
+- (void)setImageManager:(id)arg1;
 - (void)setPlaceTileFetchCounter:(unsigned long long)arg1;
 - (void)setPlaceTileFetchCounterQueue:(id)arg1;
 - (void)setPriority:(long long)arg1;
 - (void)setThumbnailManager:(id)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (id)thumbnailManager;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateCellLabelNumberOfLinesWithScreenSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(bool)arg1;

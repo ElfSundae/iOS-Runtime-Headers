@@ -7,9 +7,9 @@
     OADFill * mFill;
 }
 
+- (void).cxx_destruct;
 - (int)blendMode;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)fill;
 - (unsigned long long)hash;

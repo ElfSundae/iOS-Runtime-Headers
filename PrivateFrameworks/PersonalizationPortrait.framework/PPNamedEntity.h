@@ -12,6 +12,7 @@
 @property (nonatomic, readonly) unsigned long long category;
 @property (nonatomic, readonly) PPNamedEntityRecord *mostRelevantRecord;
 @property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly) double sentimentScore;
 
 + (id)describeCategory:(unsigned long long)arg1;
 + (bool)supportsSecureCoding;
@@ -30,5 +31,6 @@
 - (bool)isEqualToNamedEntity:(id)arg1;
 - (id)mostRelevantRecord;
 - (id)name;
+- (double)sentimentScore;
 
 @end

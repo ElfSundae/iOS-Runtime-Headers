@@ -4,7 +4,7 @@
 
 @interface NUGLContext : NSObject {
     NSMapTable * _bindings;
-    struct Context { int (**x1)(); int x2; int x3; id x4; } * _gl;
+    struct Context { int (**x1)(); int x2; int x3; id x4; id x5; } * _gl;
     NUGLObjectPool * _privateObjectPool;
     NUGLObjectPool * _sharedObjectPool;
     NSMutableDictionary * _state;
@@ -102,6 +102,7 @@
 - (void)enableVertexArrayAtIndex:(unsigned long long)arg1;
 - (void)execute:(id /* block */)arg1;
 - (id)extensions;
+- (void)finish;
 - (void)generateBuffer:(id)arg1;
 - (void)generateFramebuffer:(id)arg1;
 - (void)generatePipeline:(id)arg1;

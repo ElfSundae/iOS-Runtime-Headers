@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SetupAssistantUI.framework/SetupAssistantUI
  */
 
-@interface BFFFinishSetupPaymentController : NSObject <BYFollowUpFlowControlling, PKPaymentSetupViewControllerDelegate> {
+@interface BFFFinishSetupPaymentController : NSObject <BFFFinishSetupFlowControlling, PKPaymentSetupViewControllerDelegate> {
     id /* block */  _completion;
     NSObject<BFFFinishSetupFlowHosting> * _host;
     PKPaymentSetupAssistantRegistrationViewController * _registrationController;
@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 - (void)_completeWithResult:(unsigned long long)arg1;
 - (void)_userDidTapCancelButton:(id)arg1;
+- (bool)canCompleteExtendedInitializationQuickly;
 - (id /* block */)completion;
 - (bool)controllerNeedsToRun;
 - (id)initWithHost:(id)arg1;

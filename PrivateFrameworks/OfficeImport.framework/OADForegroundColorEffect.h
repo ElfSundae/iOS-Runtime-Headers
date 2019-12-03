@@ -6,8 +6,8 @@
     OADColor * mForegroundColor;
 }
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)foregroundColor;
 - (unsigned long long)hash;
 - (id)init;

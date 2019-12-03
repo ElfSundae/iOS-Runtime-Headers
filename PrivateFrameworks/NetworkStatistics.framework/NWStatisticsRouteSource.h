@@ -110,7 +110,7 @@
 - (id)_currentSnapshot;
 - (id)description;
 - (id)destination;
-- (int)handleDescriptor:(void*)arg1 length:(unsigned long long)arg2;
+- (int)handleDescriptor:(void*)arg1 length:(unsigned long long)arg2 events:(unsigned long long)arg3;
 - (id)initWithManager:(id)arg1 destination:(const struct sockaddr { unsigned char x1; unsigned char x2; BOOL x3[14]; }*)arg2 mask:(const struct sockaddr { unsigned char x1; unsigned char x2; BOOL x3[14]; }*)arg3 interface:(unsigned int)arg4;
 - (void)setDestination:(id)arg1;
 

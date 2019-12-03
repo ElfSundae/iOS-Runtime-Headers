@@ -11,6 +11,7 @@
     bool  _batchedTimerInFlight;
     NSSet * _batchingClientWhitelist;
     bool  _clientDebug;
+    NSMutableDictionary * _eventFilterSaved;
     bool  _forceBatching;
     NSMutableDictionary * _pendingTaskCache;
     NSMutableDictionary * _permissionCache;
@@ -31,6 +32,7 @@
 @property bool batchedTimerInFlight;
 @property (readonly) NSSet *batchingClientWhitelist;
 @property bool clientDebug;
+@property (retain) NSMutableDictionary *eventFilterSaved;
 @property bool forceBatching;
 @property (retain) NSMutableDictionary *pendingTaskCache;
 @property (retain) NSMutableDictionary *permissionCache;
@@ -61,11 +63,14 @@
 - (id)buildMessageForClientID:(short)arg1 withKey:(id)arg2 withPayload:(id)arg3;
 - (short)cachedPermissionForClientID:(short)arg1 withKey:(id)arg2 withType:(id)arg3;
 - (bool)clientDebug;
+- (id)eventFilterSaved;
 - (bool)forceBatching;
 - (id)getWorkQueueForClientID:(short)arg1;
 - (id)init;
 - (void)logForClientID:(short)arg1 withKey:(id)arg2 withPayload:(id)arg3;
+- (void)logLaterForClientID:(short)arg1 withKey:(id)arg2 withFilterInterval:(double)arg3;
 - (void)logStateCaches;
+- (void)logWithCurrentDateForClientID:(short)arg1 withKey:(id)arg2 withPayload:(id)arg3;
 - (id)pendingTaskCache;
 - (id)pendingTasksForType:(id)arg1 forClientID:(short)arg2 forKey:(id)arg3;
 - (id)permissionCache;
@@ -81,6 +86,7 @@
 - (void)setBatchedTimerInFlight:(bool)arg1;
 - (void)setCachePermission:(short)arg1 ForClientID:(short)arg2 withKey:(id)arg3 withType:(id)arg4;
 - (void)setClientDebug:(bool)arg1;
+- (void)setEventFilterSaved:(id)arg1;
 - (void)setForceBatching:(bool)arg1;
 - (void)setPendingTaskCache:(id)arg1;
 - (void)setPermissionCache:(id)arg1;
@@ -91,6 +97,7 @@
 - (void)setXpcConnectionHelper:(id)arg1;
 - (void)setXpcConnectionHelperQueue:(id)arg1;
 - (void)setXpcConnectionQueue:(id)arg1;
+- (int)shouldLogNowForClientID:(short)arg1 withKey:(id)arg2 withPayload:(id)arg3 withFilterInterval:(double)arg4;
 - (bool)talkToPowerlogHelper;
 - (id)workQueue;
 - (id)xpcConnection;

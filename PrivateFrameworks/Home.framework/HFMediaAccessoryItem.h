@@ -2,23 +2,34 @@
    Image: /System/Library/PrivateFrameworks/Home.framework/Home
  */
 
-@interface HFMediaAccessoryItem : HFItem <HFMediaAccessoryLikeItem> {
+@interface HFMediaAccessoryItem : HFItem <HFActionBuilderFactory, HFMediaAccessoryLikeItem> {
     <HFHomeKitObject> * _homeKitObject;
+    <HFHomeKitSettingsVendor> * _homeKitSettingsVendor;
+    bool  _isItemInActionBuilder;
+    long long  _mediaAccessoryItemType;
     <HFMediaProfileContainer> * _mediaProfileContainer;
     <HFCharacteristicValueSource> * _valueSource;
 }
 
 @property (nonatomic, readonly) NSSet *accessoriesSupportingSoftwareUpdate;
+@property (nonatomic, readonly) bool allowsAppleMusicAccount;
 @property (nonatomic, readonly) NSSet *availableSoftwareUpdates;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) HMHome *home;
 @property (nonatomic, readonly) <HFHomeKitObject> *homeKitObject;
+@property (nonatomic, readonly) <HFHomeKitSettingsVendor> *homeKitSettingsVendor;
 @property (nonatomic, readonly) bool isContainedWithinItemGroup;
 @property (nonatomic, readonly) bool isItemGroup;
+@property (nonatomic) bool isItemInActionBuilder;
+@property (nonatomic, readonly) long long mediaAccessoryItemType;
 @property (nonatomic, readonly) <HFMediaProfileContainer> *mediaProfileContainer;
+@property (nonatomic, readonly) <HFMediaValueSource> *mediaValueSource;
 @property (nonatomic, readonly) unsigned long long numberOfItemsContainedWithinGroup;
+@property (nonatomic, readonly) NSSet *services;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) bool supportsMediaAction;
 @property (nonatomic, readonly) <HFCharacteristicValueSource> *valueSource;
 
 - (void).cxx_destruct;
@@ -32,13 +43,19 @@
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)accessories;
 - (id)accessoriesSupportingSoftwareUpdate;
+- (bool)actionsMayRequireDeviceUnlock;
+- (bool)allowsAppleMusicAccount;
 - (id)availableSoftwareUpdates;
+- (bool)containsActions;
 - (id)copyWithValueSource:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)createControlItems;
+- (id)currentStateActionBuildersForHome:(id)arg1;
 - (id)description;
+- (id)home;
 - (id)homeKitObject;
-- (id)iconDescriptor;
+- (id)homeKitSettingsVendor;
+- (id)iconDescriptor:(id)arg1;
 - (id)init;
 - (id)initWithValueSource:(id)arg1 homeKitObject:(id)arg2;
 - (id)initWithValueSource:(id)arg1 mediaProfileContainer:(id)arg2;
@@ -50,18 +67,27 @@
 - (bool)isHomePodAndIsInMediaSystem;
 - (bool)isHomePodMediaSystem;
 - (bool)isItemGroup;
+- (bool)isItemInActionBuilder;
 - (bool)isSiriDisabled;
 - (bool)isSpeaker;
+- (bool)isStandaloneHomePod;
+- (long long)mediaAccessoryItemType;
 - (id)mediaProfileContainer;
+- (id)mediaValueSource;
+- (id)namingComponentForHomeKitObject;
 - (unsigned long long)numberOfItemsContainedWithinGroup;
 - (id)performStandardUpdateWithOptions:(id)arg1;
+- (unsigned long long)preferredActionOnTap:(id)arg1;
 - (id)room;
 - (id)serviceLikeBuilderInHome:(id)arg1;
 - (id)serviceNameComponents;
 - (id)services;
+- (void)setIsItemInActionBuilder:(bool)arg1;
 - (id)settings;
 - (bool)supportsAlarmQuickControls;
+- (bool)supportsMediaAction;
 - (bool)supportsMediaQuickControls;
+- (bool)supportsMultiUser;
 - (id)valueSource;
 
 @end

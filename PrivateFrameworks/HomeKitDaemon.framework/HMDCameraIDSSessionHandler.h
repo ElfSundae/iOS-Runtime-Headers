@@ -5,7 +5,7 @@
 @interface HMDCameraIDSSessionHandler : HMFObject <HMDCameraRemoteStreamProtocol, HMFLogging, IDSServiceDelegate> {
     IDSSession * _idsSession;
     IDSService * _idsStreamService;
-    HMDCameraSessionID * _sessionID;
+    HMDCameraStreamSessionID * _sessionID;
     NSObject<OS_dispatch_queue> * _workQueue;
 }
 
@@ -14,7 +14,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) IDSSession *idsSession;
 @property (nonatomic, readonly) IDSService *idsStreamService;
-@property (nonatomic, readonly) HMDCameraSessionID *sessionID;
+@property (nonatomic, readonly) HMDCameraStreamSessionID *sessionID;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *workQueue;
 

@@ -20,10 +20,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (bool)shouldBeRemoteForContentType:(id)arg1;
-+ (id)supportedContentTypes;
-+ (Class)transformerClass;
-
 - (void).cxx_destruct;
 - (bool)canEnterFullScreen;
 - (bool)canPerformFirstTimeAppearanceActions:(unsigned long long)arg1;

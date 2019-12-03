@@ -44,7 +44,6 @@
 - (void)handleNotificationForKey:(id)arg1 withProperty:(id)arg2;
 - (id)initWithDevice:(unsigned int)arg1 andQueue:(id)arg2;
 - (id)newDisplayBrightnessData;
-- (double)scaleForExponent:(unsigned int)arg1;
 - (void)sendNotificationForKey:(id)arg1 withValue:(id)arg2;
 - (bool)setLinearBrightness:(float)arg1;
 - (bool)setNits:(float)arg1;

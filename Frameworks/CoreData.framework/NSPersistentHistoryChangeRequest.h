@@ -16,6 +16,7 @@
     NSNumber * _transactionNumber;
 }
 
+@property (nonatomic, retain) NSFetchRequest *fetchRequest;
 @property long long resultType;
 @property (readonly) NSPersistentHistoryToken *token;
 
@@ -27,6 +28,7 @@
 + (id)fetchHistoryAfterToken:(id)arg1;
 + (id)fetchHistoryAfterTransaction:(id)arg1;
 + (id)fetchHistoryTransactionForToken:(id)arg1;
++ (id)fetchHistoryWithFetchRequest:(id)arg1;
 
 - (id)date;
 - (void)dealloc;
@@ -37,11 +39,13 @@
 - (unsigned long long)fetchBatchSize;
 - (unsigned long long)fetchLimit;
 - (unsigned long long)fetchOffset;
+- (id)fetchRequest;
 - (bool)includesPropertyValues;
 - (bool)includesSubentities;
 - (id)init;
 - (id)initWithDate:(id)arg1;
 - (id)initWithDate:(id)arg1 delete:(bool)arg2;
+- (id)initWithFetchRequest:(id)arg1;
 - (id)initWithToken:(id)arg1;
 - (id)initWithToken:(id)arg1 delete:(bool)arg2;
 - (id)initWithTransactionID:(id)arg1 delete:(bool)arg2 transactionOnly:(bool)arg3;
@@ -50,6 +54,7 @@
 - (bool)isDelete;
 - (bool)isFetchTransactionForToken;
 - (id)predicate;
+- (id)predicateForStoreIdentifier:(id)arg1;
 - (id)propertiesToFetch;
 - (id)propertiesToFetchForEntity:(id)arg1;
 - (id)propertiesToFetchForEntity:(id)arg1 includeTransactionStrings:(bool)arg2;
@@ -59,6 +64,7 @@
 - (bool)returnsDistinctResults;
 - (void)setFetchBatchSize:(unsigned long long)arg1;
 - (void)setFetchLimit:(unsigned long long)arg1;
+- (void)setFetchRequest:(id)arg1;
 - (void)setResultType:(long long)arg1;
 - (void)setUseQueryGenerationToken:(bool)arg1;
 - (id)sortDescriptors;

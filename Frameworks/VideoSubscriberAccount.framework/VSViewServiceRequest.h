@@ -13,11 +13,13 @@
 }
 
 @property (nonatomic, copy) VSAccountMetadataRequest *accountMetadataRequest;
+@property (nonatomic, readonly, copy) NSString *accountProviderAuthenticationToken;
 @property (nonatomic, readonly) bool allowsAuthenticationUI;
 @property (nonatomic) bool allowsPrivacyUI;
 @property (nonatomic) bool canVetoAuthentication;
 @property (nonatomic, readonly, copy) NSArray *featuredIdentityProviderIdentifiers;
 @property (nonatomic, readonly, copy) NSString *localizedVideoTitle;
+@property (getter=isPreAuthRequest, nonatomic, readonly) bool preAuthRequest;
 @property (nonatomic, retain) NSString *requestingAppAdamID;
 @property (nonatomic, retain) VSOptional *requestingAppDisplayName;
 @property (nonatomic) bool requiresPrivacyUI;
@@ -29,6 +31,7 @@
 
 - (void).cxx_destruct;
 - (id)accountMetadataRequest;
+- (id)accountProviderAuthenticationToken;
 - (bool)allowsAuthenticationUI;
 - (bool)allowsPrivacyUI;
 - (bool)canVetoAuthentication;
@@ -40,6 +43,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
+- (bool)isPreAuthRequest;
 - (id)localizedVideoTitle;
 - (id)requestingAppAdamID;
 - (id)requestingAppDisplayName;

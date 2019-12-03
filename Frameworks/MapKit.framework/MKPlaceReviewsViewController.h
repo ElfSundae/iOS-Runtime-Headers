@@ -21,12 +21,14 @@
 @property (nonatomic, retain) NSArray *userSnippets;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_showReview:(id)arg1 index:(unsigned long long)arg2;
 - (void)_updateAttribution;
 - (void)_viewAllReviews;
 - (id)avatarGenerator;
 - (id)cells;
 - (id)infoCardChildPossibleActions;
+- (id)infoCardChildUnactionableUIElements;
 - (void)loadCells;
 - (id)mapItem;
 - (id)reviewAtIndex:(unsigned long long)arg1;

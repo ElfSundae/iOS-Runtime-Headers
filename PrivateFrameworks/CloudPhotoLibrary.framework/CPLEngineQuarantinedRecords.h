@@ -22,6 +22,7 @@
 - (bool)addQuarantinedRecordsWithScopedIdentifier:(id)arg1 reason:(id)arg2 error:(id*)arg3;
 - (bool)bumpRejectedRecords:(id)arg1 error:(id*)arg2;
 - (unsigned long long)countOfQuarantinedRecords;
+- (unsigned long long)countOfQuarantinedRecordsInScopeWithIdentifier:(id)arg1;
 - (bool)deleteRecordsForScopeIndex:(long long)arg1 maxCount:(long long)arg2 deletedCount:(long long*)arg3 error:(id*)arg4;
 - (bool)isRecordWithScopedIdentifierQuarantined:(id)arg1;
 - (bool)removeQuarantinedRecordsWithScopedIdentifier:(id)arg1 notify:(bool)arg2 error:(id*)arg3;

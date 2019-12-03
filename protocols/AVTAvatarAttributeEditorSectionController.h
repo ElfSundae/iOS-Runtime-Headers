@@ -13,6 +13,7 @@
 - (void)didSelectItemAtIndex:(long long)arg1 cell:(AVTAttributeCollectionViewCell *)arg2;
 - (void)didUnhighlightItemAtIndex:(void *)arg1 cell:(void *)arg2 completionBlock:(void *)arg3; // needs 3 arg types, found 8: long long, AVTAttributeCollectionViewCell *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, void*
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })edgeInsetsFittingSize:(struct CGSize { double x1; double x2; })arg1;
+- (bool)evaluateDisplayCondition:(AVTCoreModelRowDisplayCondition *)arg1;
 - (unsigned long long)indexForItem:(id <AVTAvatarAttributeEditorSectionItem>)arg1;
 - (void)invalidateLayoutForNewContainerSize:(struct CGSize { double x1; double x2; })arg1;
 - (long long)numberOfItems;

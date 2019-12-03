@@ -4,7 +4,11 @@
 
 @interface CAMVideoCaptureResult : NSObject {
     NSDate * _captureDate;
-    CAMStillImageCaptureCoordinationInfo * _coordinationInfo;
+    CAMCaptureCoordinationInfo * _coordinationInfo;
+    struct { 
+        int width; 
+        int height; 
+    }  _dimensions;
     struct { 
         long long value; 
         int timescale; 
@@ -22,12 +26,13 @@
         unsigned int flags; 
         long long epoch; 
     }  _stillDisplayTime;
-    struct __IOSurface { } * _videoPreviewSurface;
+    struct __CVBuffer { } * _videoPreviewPixelBuffer;
     double  _videoZoomFactor;
 }
 
 @property (nonatomic, readonly) NSDate *captureDate;
-@property (nonatomic, readonly) CAMStillImageCaptureCoordinationInfo *coordinationInfo;
+@property (nonatomic, readonly) CAMCaptureCoordinationInfo *coordinationInfo;
+@property (nonatomic, readonly) struct { int x1; int x2; } dimensions;
 @property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } duration;
 @property (nonatomic, readonly) NSError *error;
 @property (nonatomic, readonly) NSURL *filteredLocalDestinationURL;
@@ -35,22 +40,25 @@
 @property (nonatomic, readonly, copy) NSArray *metadata;
 @property (nonatomic, readonly) long long reason;
 @property (nonatomic, readonly) struct { long long x1; int x2; unsigned int x3; long long x4; } stillDisplayTime;
-@property (nonatomic, readonly) struct __IOSurface { }*videoPreviewSurface;
+@property (nonatomic, readonly) bool stoppedUnexpectedly;
+@property (nonatomic, readonly) struct __CVBuffer { }*videoPreviewPixelBuffer;
 @property (nonatomic, readonly) double videoZoomFactor;
 
 - (void).cxx_destruct;
 - (id)captureDate;
 - (id)coordinationInfo;
 - (void)dealloc;
+- (struct { int x1; int x2; })dimensions;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })duration;
 - (id)error;
 - (id)filteredLocalDestinationURL;
-- (id)initWithURL:(id)arg1 filteredLocalDestinationURL:(id)arg2 duration:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg3 stillDisplayTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg4 metadata:(id)arg5 videoZoomFactor:(double)arg6 reason:(long long)arg7 videoPreviewSurface:(void*)arg8 coordinationInfo:(id)arg9 error:(id)arg10;
+- (id)initWithURL:(id)arg1 filteredLocalDestinationURL:(id)arg2 duration:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg3 stillDisplayTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg4 dimensions:(struct { int x1; int x2; })arg5 metadata:(id)arg6 videoZoomFactor:(double)arg7 reason:(long long)arg8 videoPreviewPixelBuffer:(struct __CVBuffer { }*)arg9 coordinationInfo:(id)arg10 error:(id)arg11;
 - (id)localDestinationURL;
 - (id)metadata;
 - (long long)reason;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })stillDisplayTime;
-- (struct __IOSurface { }*)videoPreviewSurface;
+- (bool)stoppedUnexpectedly;
+- (struct __CVBuffer { }*)videoPreviewPixelBuffer;
 - (double)videoZoomFactor;
 
 @end

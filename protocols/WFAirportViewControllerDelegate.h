@@ -5,14 +5,16 @@
 
 @required
 
-- (void)airportSettingsViewController:(WFAirportViewController *)arg1 setAskToJoinEnabled:(bool)arg2;
+- (void)airportSettingsViewController:(WFAirportViewController *)arg1 setAskToJoinMode:(long long)arg2;
 - (NSString *)airportSettingsViewController:(WFAirportViewController *)arg1 unconfiguredAccessoriesGroupHeaderTitle:(NSArray *)arg2;
-- (long long)airportSettingsViewControllerAskToJoinStatus:(WFAirportViewController *)arg1;
+- (long long)airportSettingsViewControllerAskToJoinMode:(WFAirportViewController *)arg1;
 - (bool)airportSettingsViewControllerCurrentNetworkConnectionIsProblematic:(WFAirportViewController *)arg1;
 - (void)airportSettingsViewControllerDidTapDataUsage:(WFAirportViewController *)arg1;
 - (void)airportSettingsViewControllerDidTapDiagnosticsMode:(WFAirportViewController *)arg1;
 - (void)airportSettingsViewControllerDidTapKnownNetworks:(WFAirportViewController *)arg1;
 - (bool)airportSettingsViewControllerShouldShowDiagnosticsMode:(WFAirportViewController *)arg1;
 - (bool)airportSettingsViewControllerShouldShowKnownNetworks:(WFAirportViewController *)arg1;
+- (bool)networkListViewControllerNetworkRestrictionActive:(UIViewController<WFNetworkListing> *)arg1;
+- (bool)networkListViewControllerPowerModificationDisabled:(UIViewController<WFNetworkListing> *)arg1;
 
 @end

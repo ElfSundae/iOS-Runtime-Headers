@@ -3,18 +3,15 @@
  */
 
 @interface NPKPaymentProvisioningFlowControllerWelcomeStepContext : NPKPaymentProvisioningFlowStepContext {
-    NSArray * _featuredNetworks;
-    PKPaymentHeroImageManifest * _heroImageManifest;
+    NSArray * _heroImages;
 }
 
-@property (nonatomic, retain) NSArray *featuredNetworks;
-@property (nonatomic, retain) PKPaymentHeroImageManifest *heroImageManifest;
+@property (nonatomic, retain) NSArray *heroImages;
 
 - (void).cxx_destruct;
 - (id)description;
-- (id)featuredNetworks;
-- (id)heroImageManifest;
-- (void)setFeaturedNetworks:(id)arg1;
-- (void)setHeroImageManifest:(id)arg1;
+- (id)heroImages;
+- (id)initWithRequestContext:(id)arg1;
+- (void)setHeroImages:(id)arg1;
 
 @end

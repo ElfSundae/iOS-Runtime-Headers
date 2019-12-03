@@ -9,21 +9,24 @@
         struct __compressed_pair<std::__1::pair<TSUCellCoord, double> *, std::__1::allocator<std::__1::pair<TSUCellCoord, double> > > { 
             struct pair<TSUCellCoord, double> {} *__value_; 
         } __end_cap_; 
-    }  mFittingHeights;
+    }  _fittingValues;
     struct vector<TSUCellCoord, std::__1::allocator<TSUCellCoord> > { 
         struct TSUCellCoord {} *__begin_; 
         struct TSUCellCoord {} *__end_; 
         struct __compressed_pair<TSUCellCoord *, std::__1::allocator<TSUCellCoord> > { 
             struct TSUCellCoord {} *__value_; 
         } __end_cap_; 
-    }  mResetHeights;
+    }  _resetValues;
 }
+
+@property (nonatomic, readonly) bool hasWorkItems;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)addFittingHeight:(double)arg1 forCellID:(struct TSUCellCoord { unsigned int x1; unsigned short x2; bool x3; bool x4; })arg2;
-- (void)addResetHeightForCellID:(struct TSUCellCoord { unsigned int x1; unsigned short x2; bool x3; bool x4; })arg1;
-- (void)enumerateFittingHeightsUsingBlock:(id /* block */)arg1;
-- (void)enumerateResetHeightsUsingBlock:(id /* block */)arg1;
+- (void)addFittingValue:(double)arg1 forCellID:(struct TSUCellCoord { unsigned int x1; unsigned short x2; bool x3; bool x4; })arg2;
+- (void)addResetValueForCellID:(struct TSUCellCoord { unsigned int x1; unsigned short x2; bool x3; bool x4; })arg1;
+- (void)enumerateFittingValuesUsingBlock:(id /* block */)arg1;
+- (void)enumerateResetValuesUsingBlock:(id /* block */)arg1;
+- (bool)hasWorkItems;
 
 @end

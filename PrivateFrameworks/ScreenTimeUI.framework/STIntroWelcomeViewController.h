@@ -2,16 +2,19 @@
    Image: /System/Library/PrivateFrameworks/ScreenTimeUI.framework/ScreenTimeUI
  */
 
-@interface STIntroWelcomeViewController : STIntroSplashViewController {
+@interface STIntroWelcomeViewController : OBWelcomeController {
     NSString * _childName;
+    id /* block */  _continueHandler;
 }
 
-@property (copy) NSString *childName;
+@property (readonly, copy) NSString *childName;
+@property (readonly, copy) id /* block */ continueHandler;
 
 - (void).cxx_destruct;
+- (void)_continue:(id)arg1;
 - (id)childName;
-- (id)initWithIntroductionModel:(id)arg1 childName:(id)arg2;
-- (void)setChildName:(id)arg1;
-- (void)viewDidLoad;
+- (id /* block */)continueHandler;
+- (id)initWithChildName:(id)arg1 continueHandler:(id /* block */)arg2;
+- (void)loadView;
 
 @end

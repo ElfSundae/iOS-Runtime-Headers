@@ -21,8 +21,8 @@
 @property (nonatomic, retain) GEORouteHypothesis *currentHypothesis;
 @property (nonatomic, readonly) GEOComposedWaypoint *destination;
 @property (nonatomic, readonly) NSDate *expirationDate;
-@property (readonly) bool isStaleToPurgeFromDisk;
-@property (readonly) bool isStaleToRefresh;
+@property (nonatomic, readonly) bool isStaleToPurgeFromDisk;
+@property (nonatomic, readonly) bool isStaleToRefresh;
 @property (nonatomic, readonly) GEORouteHypothesisMonitor *monitor;
 @property (nonatomic, readonly) GEOComposedWaypoint *origin;
 @property (nonatomic) bool prediction;

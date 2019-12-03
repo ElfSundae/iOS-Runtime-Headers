@@ -2,53 +2,52 @@
    Image: /System/Library/PrivateFrameworks/TemplateKit.framework/TemplateKit
  */
 
-@interface TLKSplitHeaderView : TLKView <NUIContainerGridViewDelegate> {
-    NUIContainerGridView * _gridView;
+@interface TLKSplitHeaderView : TLKView <NUIContainerViewDelegate> {
     TLKImage * _leadingImage;
     TLKImageView * _leadingImageView;
     TLKMultilineText * _leadingSubtitle;
-    TLKVibrantLabel * _leadingSubtitleLabel;
+    TLKLabel * _leadingSubtitleLabel;
     TLKMultilineText * _leadingTitle;
-    TLKVibrantLabel * _leadingTitleLabel;
+    TLKLabel * _leadingTitleLabel;
     bool  _shouldBadgeSubtitle;
     TLKMultilineText * _subtitle1;
-    TLKVibrantLabel * _subtitle1Label;
+    TLKLabel * _subtitle1Label;
     TLKMultilineText * _subtitle2;
-    TLKBadgedLabel * _subtitle2Label;
+    TLKEmbossedLabel * _subtitle2Label;
     TLKMultilineText * _title;
-    TLKVibrantLabel * _titleLabel;
+    TLKLabel * _titleLabel;
     TLKImage * _trailingImage;
     TLKImageView * _trailingImageView;
     TLKMultilineText * _trailingSubtitle;
-    TLKVibrantLabel * _trailingSubtitleLabel;
+    TLKLabel * _trailingSubtitleLabel;
     TLKMultilineText * _trailingTitle;
-    TLKVibrantLabel * _trailingTitleLabel;
+    TLKLabel * _trailingTitleLabel;
 }
 
+@property (nonatomic, retain) NUIContainerGridView *contentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (retain) NUIContainerGridView *gridView;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) TLKImage *leadingImage;
-@property (retain) TLKImageView *leadingImageView;
+@property (nonatomic, retain) TLKImageView *leadingImageView;
 @property (nonatomic, retain) TLKMultilineText *leadingSubtitle;
-@property (retain) TLKVibrantLabel *leadingSubtitleLabel;
+@property (nonatomic, retain) TLKLabel *leadingSubtitleLabel;
 @property (nonatomic, retain) TLKMultilineText *leadingTitle;
-@property (retain) TLKVibrantLabel *leadingTitleLabel;
+@property (nonatomic, retain) TLKLabel *leadingTitleLabel;
 @property (nonatomic) bool shouldBadgeSubtitle;
 @property (nonatomic, retain) TLKMultilineText *subtitle1;
-@property (retain) TLKVibrantLabel *subtitle1Label;
+@property (nonatomic, retain) TLKLabel *subtitle1Label;
 @property (nonatomic, retain) TLKMultilineText *subtitle2;
-@property (retain) TLKBadgedLabel *subtitle2Label;
+@property (nonatomic, retain) TLKEmbossedLabel *subtitle2Label;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) TLKMultilineText *title;
-@property (retain) TLKVibrantLabel *titleLabel;
+@property (nonatomic, retain) TLKLabel *titleLabel;
 @property (nonatomic, retain) TLKImage *trailingImage;
-@property (retain) TLKImageView *trailingImageView;
+@property (nonatomic, retain) TLKImageView *trailingImageView;
 @property (nonatomic, retain) TLKMultilineText *trailingSubtitle;
-@property (retain) TLKVibrantLabel *trailingSubtitleLabel;
+@property (nonatomic, retain) TLKLabel *trailingSubtitleLabel;
 @property (nonatomic, retain) TLKMultilineText *trailingTitle;
-@property (retain) TLKVibrantLabel *trailingTitleLabel;
+@property (nonatomic, retain) TLKLabel *trailingTitleLabel;
 
 + (id)footnoteFont;
 
@@ -56,9 +55,8 @@
 - (struct CGSize { double x1; double x2; })containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize { double x1; double x2; })arg2 forArrangedSubview:(id)arg3;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })effectiveAlignmentRectInsets;
 - (id)firstRowOfViews;
+- (id)footnoteLabel;
 - (id)grid;
-- (id)gridView;
-- (id)init;
 - (id)leadingImage;
 - (id)leadingImageInView;
 - (id)leadingImageView;
@@ -70,7 +68,6 @@
 - (void)observedPropertiesChanged;
 - (bool)secondRowIsHidden;
 - (id)secondRowOfViews;
-- (void)setGridView:(id)arg1;
 - (void)setLeadingImage:(id)arg1;
 - (void)setLeadingImageView:(id)arg1;
 - (void)setLeadingSubtitle:(id)arg1;
@@ -90,8 +87,8 @@
 - (void)setTrailingSubtitleLabel:(id)arg1;
 - (void)setTrailingTitle:(id)arg1;
 - (void)setTrailingTitleLabel:(id)arg1;
+- (id)setupContentView;
 - (bool)shouldBadgeSubtitle;
-- (void)styleDidChange:(unsigned long long)arg1;
 - (id)subtitle1;
 - (id)subtitle1Label;
 - (id)subtitle2;
@@ -110,6 +107,5 @@
 - (id)trailingSubtitleText;
 - (id)trailingTitle;
 - (id)trailingTitleLabel;
-- (id)vibrantFootnoteLabel:(bool)arg1;
 
 @end

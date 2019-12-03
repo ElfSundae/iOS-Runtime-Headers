@@ -9,8 +9,6 @@
     UITableViewUpdateGap * _gap;
     bool  _headerFooterOnly;
     NSIndexPath * _indexPath;
-    double  _offset;
-    bool  _skipAnimation;
 }
 
 @property (nonatomic, readonly) int action;
@@ -19,8 +17,7 @@
 @property (nonatomic) UITableViewUpdateGap *gap;
 @property (nonatomic) bool headerFooterOnly;
 @property (nonatomic, readonly) NSIndexPath *indexPath;
-@property (nonatomic) double offset;
-@property (nonatomic) bool skipAnimation;
+@property (nonatomic, readonly) bool isDecomposedFromReload;
 
 - (void).cxx_destruct;
 - (id)_actionDescription;
@@ -33,13 +30,10 @@
 - (id)indexPath;
 - (id)initWithAction:(int)arg1 forIndexPath:(id)arg2 animation:(long long)arg3;
 - (long long)inverseCompareIndexPaths:(id)arg1;
+- (bool)isDecomposedFromReload;
 - (bool)isSectionOperation;
-- (double)offset;
 - (void)setAnimation:(long long)arg1;
 - (void)setGap:(id)arg1;
 - (void)setHeaderFooterOnly:(bool)arg1;
-- (void)setOffset:(double)arg1;
-- (void)setSkipAnimation:(bool)arg1;
-- (bool)skipAnimation;
 
 @end

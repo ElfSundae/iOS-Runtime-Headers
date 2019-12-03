@@ -24,7 +24,7 @@
 - (void)_queue_start;
 - (void)authorizeSamples:(id)arg1 completion:(id /* block */)arg2;
 - (bool)includeDocumentData;
-- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
 - (unsigned long long)maxResults;
 - (id)samplesBeforeAuthorizationWithSortDescriptors:(id)arg1 errorOut:(id*)arg2;
 - (id)sortDescriptors;

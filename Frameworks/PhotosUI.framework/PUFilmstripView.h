@@ -2,17 +2,21 @@
    Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
  */
 
-@interface PUFilmstripView : UIView <PUTilingViewTileSource, PUTilingViewTileTransitionDelegate, UIScrollViewDelegate> {
+@interface PUFilmstripView : UIView <PUTilingViewTileSource, PUTilingViewTileTransitionDelegate, PXLivePhotoTrimScrubberFilmStripView, UIScrollViewDelegate> {
     PUFilmstripDataSource * __dataSource;
     PUFilmstripMediaProvider * __mediaProvider;
     double  __thumbnailAspectRatio;
     PUTilingView * __tilingView;
     PUTileViewAnimator * _animator;
     AVAsset * _asset;
+    UIImage * _generatedPlaceholderImage;
+    bool  _generatesPlaceholderImage;
     NSArray * _indicatorInfos;
     bool  _needsUpdateDataSource;
+    bool  _needsUpdateGeneratedPlaceholder;
     bool  _needsUpdateLayout;
     bool  _needsUpdateThumbnailAspectRatio;
+    NSObject<OS_dispatch_queue> * _placeholderGenerationQueue;
     UIImage * _placeholderImage;
     bool  _useContentAspectRatio;
     AVVideoComposition * _videoComposition;
@@ -35,6 +39,8 @@
 @property (nonatomic, copy) AVAsset *asset;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, retain) UIImage *generatedPlaceholderImage;
+@property (nonatomic) bool generatesPlaceholderImage;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSArray *indicatorInfos;
 @property (nonatomic, retain) UIImage *placeholderImage;
@@ -47,11 +53,13 @@
 - (id)_dataSource;
 - (id)_filmstripLayout;
 - (void)_invalidateDataSource;
+- (void)_invalidateGeneratedPlaceholderImage;
 - (void)_invalidateLayout;
 - (void)_invalidateMediaProvider;
 - (void)_invalidateThumbnailAspectRatio;
 - (bool)_isMediaProviderValid;
 - (id)_mediaProvider;
+- (void)_releaseAVObjects;
 - (void)_setDataSource:(id)arg1;
 - (void)_setMediaProvider:(id)arg1;
 - (void)_setNeedsUpdate;
@@ -59,17 +67,24 @@
 - (double)_thumbnailAspectRatio;
 - (id)_tilingView;
 - (void)_updateDataSourceIfNeeded;
+- (void)_updateGeneratedPlaceholderImageIfNeeded;
 - (void)_updateIfNeeded;
 - (void)_updateLayoutIfNeeded;
+- (void)_updateMediaProviderPlaceholderImage;
 - (void)_updateThumbnailAspectRatioIfNeeded;
 - (id)asset;
+- (id)generatedPlaceholderImage;
+- (bool)generatesPlaceholderImage;
 - (id)indicatorInfos;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)layoutSubviews;
 - (id)placeholderImage;
 - (void)reloadThumbnails;
 - (void)setAsset:(id)arg1;
+- (void)setGeneratedPlaceholderImage:(id)arg1;
+- (void)setGeneratesPlaceholderImage:(bool)arg1;
 - (void)setIndicatorInfos:(id)arg1;
+- (void)setLivePhotoTrimScrubberThumbnail:(id)arg1;
 - (void)setPlaceholderImage:(id)arg1;
 - (void)setUseContentAspectRatio:(bool)arg1;
 - (void)setVideoComposition:(id)arg1;

@@ -9,11 +9,12 @@
     SBApplicationDefaults * _lazy_applicationDefaults;
     SBBiometricAuthenticationDefaults * _lazy_biometricAuthenticationDefaults;
     SBBootDefaults * _lazy_bootDefaults;
-    SBCarPlayDefaults * _lazy_carPlayDefaults;
+    SBCameraHardwareButtonDefaults * _lazy_cameraHardwareButtonDefaults;
     SBDemoDefaults * _lazy_demoDefaults;
     SBFloatingDockDefaults * _lazy_floatingDockDefaults;
     SBGestureDefaults * _lazy_gestureDefaults;
     SBHardwareDefaults * _lazy_hardwareDefaults;
+    SBHomeScreenDefaults * _lazy_homeScreenDefaults;
     SBIconDefaults * _lazy_iconDefaults;
     SBIdleTimerDefaults * _lazy_idleTimerDefaults;
     SBLockScreenDefaults * _lazy_lockScreenDefaults;
@@ -23,7 +24,6 @@
     SBNotificationDefaults * _lazy_notificationDefaults;
     SBPIPDefaults * _lazy_pipDefaults;
     SBPowerDefaults * _lazy_powerDefaults;
-    SBPrototypingDefaults * _lazy_prototypingDefaults;
     SBRecentDisplayItemsDefaults * _lazy_recentDisplayItemsDefaults;
     SBRotationDefaults * _lazy_rotationDefaults;
     SBSecurityDefaults * _lazy_securityDefaults;
@@ -32,6 +32,7 @@
     SBSOSDefaults * _lazy_sosDefaults;
     SBSoundDefaults * _lazy_soundDefaults;
     SBStatusBarDefaults * _lazy_statusBarDefaults;
+    SBTestingDefaults * _lazy_testingDefaults;
     SBThermalDefaults * _lazy_thermalDefaults;
     SBUsageDefaults * _lazy_usageDefaults;
     SBVoiceControlDefaults * _lazy_voiceControlDefaults;
@@ -45,11 +46,12 @@
 @property (nonatomic, readonly, retain) SBApplicationDefaults *applicationDefaults;
 @property (nonatomic, readonly, retain) SBBiometricAuthenticationDefaults *biometricAuthenticationDefaults;
 @property (nonatomic, readonly, retain) SBBootDefaults *bootDefaults;
-@property (nonatomic, readonly, retain) SBCarPlayDefaults *carPlayDefaults;
+@property (nonatomic, readonly, retain) SBCameraHardwareButtonDefaults *cameraHardwareButtonDefaults;
 @property (nonatomic, readonly, retain) SBDemoDefaults *demoDefaults;
 @property (nonatomic, readonly, retain) SBFloatingDockDefaults *floatingDockDefaults;
 @property (nonatomic, readonly, retain) SBGestureDefaults *gestureDefaults;
 @property (nonatomic, readonly, retain) SBHardwareDefaults *hardwareDefaults;
+@property (nonatomic, readonly, retain) SBHomeScreenDefaults *homeScreenDefaults;
 @property (nonatomic, readonly, retain) SBIconDefaults *iconDefaults;
 @property (nonatomic, readonly, retain) SBIdleTimerDefaults *idleTimerDefaults;
 @property (nonatomic, readonly, retain) SBLockScreenDefaults *lockScreenDefaults;
@@ -59,7 +61,6 @@
 @property (nonatomic, readonly, retain) SBNotificationDefaults *notificationDefaults;
 @property (nonatomic, readonly, retain) SBPIPDefaults *pipDefaults;
 @property (nonatomic, readonly, retain) SBPowerDefaults *powerDefaults;
-@property (nonatomic, readonly, retain) SBPrototypingDefaults *prototypingDefaults;
 @property (nonatomic, readonly, retain) SBRecentDisplayItemsDefaults *recentDisplayItemsDefaults;
 @property (nonatomic, readonly, retain) SBRotationDefaults *rotationDefaults;
 @property (nonatomic, readonly, retain) SBSecurityDefaults *securityDefaults;
@@ -68,6 +69,7 @@
 @property (nonatomic, readonly, retain) SBSOSDefaults *sosDefaults;
 @property (nonatomic, readonly, retain) SBSoundDefaults *soundDefaults;
 @property (nonatomic, readonly, retain) SBStatusBarDefaults *statusBarDefaults;
+@property (nonatomic, readonly, retain) SBTestingDefaults *testingDefaults;
 @property (nonatomic, readonly, retain) SBThermalDefaults *thermalDefaults;
 @property (nonatomic, readonly, retain) SBUsageDefaults *usageDefaults;
 @property (nonatomic, readonly, retain) SBVoiceControlDefaults *voiceControlDefaults;
@@ -81,11 +83,12 @@
 - (id)applicationDefaults;
 - (id)biometricAuthenticationDefaults;
 - (id)bootDefaults;
-- (id)carPlayDefaults;
+- (id)cameraHardwareButtonDefaults;
 - (id)demoDefaults;
 - (id)floatingDockDefaults;
 - (id)gestureDefaults;
 - (id)hardwareDefaults;
+- (id)homeScreenDefaults;
 - (id)iconDefaults;
 - (id)idleTimerDefaults;
 - (id)lockScreenDefaults;
@@ -96,7 +99,6 @@
 - (id)notificationDefaults;
 - (id)pipDefaults;
 - (id)powerDefaults;
-- (id)prototypingDefaults;
 - (id)recentDisplayItemsDefaults;
 - (id)rotationDefaults;
 - (id)securityDefaults;
@@ -105,6 +107,7 @@
 - (id)sosDefaults;
 - (id)soundDefaults;
 - (id)statusBarDefaults;
+- (id)testingDefaults;
 - (id)thermalDefaults;
 - (id)usageDefaults;
 - (id)voiceControlDefaults;

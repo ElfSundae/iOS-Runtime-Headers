@@ -2,11 +2,9 @@
    Image: /System/Library/PrivateFrameworks/VoiceMemos.framework/VoiceMemos
  */
 
-@interface RCWaveformRenderer : UIViewController <CAAnimationDelegate, RCWaveformDataSourceObserver> {
+@interface RCWaveformRenderer : UIViewController <CAAnimationDelegate, RCDisplayLinkObserver, RCWaveformDataSourceObserver> {
     bool  _activeDisplayLinkRequired;
     double  _cachedContentWidth;
-    NSMutableArray * _cachedSegmentArray;
-    bool  _contentWidthDirty;
     double  _dataPointWidth;
     RCWaveformDataSource * _dataSource;
     bool  _frequentUpdatesSegmentUpdatesExpectedHint;
@@ -20,24 +18,44 @@
     bool  _isPlayBarOnlyMode;
     bool  _isPlayback;
     bool  _isRecordWaveform;
+    struct { 
+        double beginTime; 
+        double endTime; 
+    }  _lastVisibleTimeRange;
     bool  _needsVisibleRangeRendering;
+    id /* block */  _nextRenderBlock;
+    bool  _overviewRecordingWaveformRefresh;
     bool  _paused;
+    bool  _renderReadyForDraw;
     struct { 
         double beginTime; 
         double endTime; 
     }  _renderedTimeRange;
-    bool  _renderedTimeRangeIsApproximatedWaveform;
     <RCWaveformRendererDelegate> * _rendererDelegate;
     struct _RCWaveformRendererState { 
         bool recordDidSwitch; 
         double lastRenderTime; 
     }  _rendererState;
+    NSObject<OS_dispatch_queue> * _renderingQueue;
+    bool  _renderingQueueIsBusy;
     bool  _requiresFullRefresh;
     double  _spacingWidth;
+    bool  _syncRenderOnMainThread;
     struct { 
         double beginTime; 
         double endTime; 
     }  _visibleTimeRange;
+    double  _visibleTimeRangeVelocity;
+    NSArray * _waveformAmpSlicesForRendering;
+    struct _NSRange { 
+        unsigned long long location; 
+        unsigned long long length; 
+    }  _waveformAmpSlicesForRenderingIndexRange;
+    bool  _waveformAmpSlicesForRenderingRecordStateChanged;
+    struct { 
+        double beginTime; 
+        double endTime; 
+    }  _waveformAmpSlicesForRenderingTimeRange;
     NSMutableIndexSet * _waveformSliceIndexes;
     NSMutableDictionary * _waveformSlices;
     bool  displayLinkConnected;
@@ -58,24 +76,34 @@
 @property (nonatomic) bool isPlayBarOnlyMode;
 @property (nonatomic) bool isPlayback;
 @property (nonatomic) bool isRecordWaveform;
+@property (copy) id /* block */ nextRenderBlock;
+@property bool overviewRecordingWaveformRefresh;
 @property (getter=isPaused, nonatomic) bool paused;
+@property bool renderReadyForDraw;
 @property (nonatomic) <RCWaveformRendererDelegate> *rendererDelegate;
+@property bool renderingQueueIsBusy;
+@property (nonatomic) bool requiresFullRefresh;
 @property (nonatomic) double spacingWidth;
 @property (readonly) Class superclass;
+@property (nonatomic) bool syncRenderOnMainThread;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } visibleRect;
 @property (nonatomic) struct { double x1; double x2; } visibleTimeRange;
+@property (retain) NSArray *waveformAmpSlicesForRendering;
+@property (retain) NSMutableIndexSet *waveformSliceIndexes;
+@property (retain) NSMutableDictionary *waveformSlices;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_clearRenderingState;
-- (bool)_currentViewportRequiresRenderingNewSegments;
 - (void)_draw:(double)arg1;
+- (double)_duration;
+- (bool)_needsWaveformRendering;
 - (double)_nonCachedContentWidthWithDuration:(double)arg1;
 - (void)_performOrDispatchToMainThread:(id /* block */)arg1;
 - (double)_pixelOffsetForTime:(double)arg1;
 - (double)_pixelsPerSecond;
 - (double)_pixelsPerSecondWithVisibleTimeRange:(struct { double x1; double x2; })arg1;
-- (void)_renderSegments:(id)arg1 timeRangeOfSegments:(struct { double x1; double x2; })arg2 isApproximatedWaveform:(bool)arg3 withDuration:(double)arg4;
+- (void)_renderTimeRangeOfSegments:(struct { double x1; double x2; })arg1 withDuration:(double)arg2 needsWaveformCalculation:(bool)arg3;
 - (void)_renderVisibleTimeRangeWithDuration:(double)arg1;
 - (void)_setNeedsRendering;
 - (void)_setNeedsVisibleTimeRangeRendering;
@@ -85,15 +113,13 @@
 - (void)_stopUpdating;
 - (double)_timeForPixelOffset:(double)arg1;
 - (double)_timeForPixelOffset:(double)arg1 withVisibleTimeRange:(struct { double x1; double x2; })arg2;
-- (struct { double x1; double x2; })_timeRangeToRenderForVisibleTimeRange:(struct { double x1; double x2; })arg1;
-- (id)_updateCachedSegmentArray:(id)arg1 withTimeRange:(struct { double x1; double x2; })arg2;
-- (struct { double x1; double x2; })_updateRenderTimeRange:(struct { double x1; double x2; })arg1;
+- (void)_updateOverviewUnitsPerSecond;
 - (void)animationDidStop:(id)arg1 finished:(bool)arg2;
 - (double)contentWidth;
 - (double)dataPointWidth;
 - (id)dataSource;
 - (void)dealloc;
-- (void)displayLinkDidUpdate:(id)arg1 withCurrentCaptureSession:(id)arg2;
+- (void)displayLinkDidUpdate:(id)arg1 withTimeController:(id)arg2;
 - (bool)frequentUpdatesSegmentUpdatesExpectedHint;
 - (struct { double x1; double x2; })highlightTimeRange;
 - (double)horizontalOffsetAtTime:(double)arg1;
@@ -108,9 +134,14 @@
 - (bool)isPlayback;
 - (bool)isRecordWaveform;
 - (void)loadView;
+- (id /* block */)nextRenderBlock;
+- (bool)overviewRecordingWaveformRefresh;
 - (double)pointsPerSecondWithVisibleTimeRange:(struct { double x1; double x2; })arg1;
 - (id)rasterizeTimeRange:(struct { double x1; double x2; })arg1 imageSize:(struct CGSize { double x1; double x2; })arg2;
+- (bool)renderReadyForDraw;
 - (id)rendererDelegate;
+- (bool)renderingQueueIsBusy;
+- (bool)requiresFullRefresh;
 - (void)setActiveDisplayLinkRequired:(bool)arg1;
 - (void)setDataPointWidth:(double)arg1;
 - (void)setDataSource:(id)arg1;
@@ -122,11 +153,21 @@
 - (void)setIsPlayBarOnlyMode:(bool)arg1;
 - (void)setIsPlayback:(bool)arg1;
 - (void)setIsRecordWaveform:(bool)arg1;
+- (void)setNextRenderBlock:(id /* block */)arg1;
+- (void)setOverviewRecordingWaveformRefresh:(bool)arg1;
 - (void)setPaused:(bool)arg1;
+- (void)setRenderReadyForDraw:(bool)arg1;
 - (void)setRendererDelegate:(id)arg1;
+- (void)setRenderingQueueIsBusy:(bool)arg1;
+- (void)setRequiresFullRefresh:(bool)arg1;
 - (void)setSpacingWidth:(double)arg1;
+- (void)setSyncRenderOnMainThread:(bool)arg1;
 - (void)setVisibleTimeRange:(struct { double x1; double x2; })arg1;
+- (void)setWaveformAmpSlicesForRendering:(id)arg1;
+- (void)setWaveformSliceIndexes:(id)arg1;
+- (void)setWaveformSlices:(id)arg1;
 - (double)spacingWidth;
+- (bool)syncRenderOnMainThread;
 - (double)timeAtHorizontalOffset:(double)arg1;
 - (double)timeAtHorizontalOffset:(double)arg1 withVisibleTimeRange:(struct { double x1; double x2; })arg2;
 - (void)viewDidAppear:(bool)arg1;
@@ -135,9 +176,12 @@
 - (void)viewWillDisappear:(bool)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })visibleRect;
 - (struct { double x1; double x2; })visibleTimeRange;
+- (id)waveformAmpSlicesForRendering;
 - (void)waveformDataSource:(id)arg1 didLoadWaveformSegment:(id)arg2;
 - (void)waveformDataSourceDidFinishLoading:(id)arg1;
 - (void)waveformDataSourceRequiresUpdate:(id)arg1;
+- (id)waveformSliceIndexes;
+- (id)waveformSlices;
 - (void)willMoveToParentViewController:(id)arg1;
 
 @end

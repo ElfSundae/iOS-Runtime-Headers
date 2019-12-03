@@ -16,7 +16,7 @@
 @property (getter=isAccessiblityConstraintsEnabled, nonatomic) bool accessiblityConstraintsEnabled;
 @property (getter=isConstraintsLoaded, nonatomic) bool constraintsLoaded;
 @property (nonatomic, retain) UIColor *foregroundColor;
-@property (nonatomic, readonly) UIView *foregroundView;
+@property (nonatomic, retain) UIView *foregroundView;
 @property (nonatomic, readonly) NSLayoutConstraint *foregroundViewBottomAnchorLayoutConstraint;
 @property (nonatomic, readonly) NSLayoutConstraint *foregroundViewLeadingAnchorLayoutConstraint;
 @property (getter=isForegroundViewLoaded, nonatomic) bool foregroundViewLoaded;

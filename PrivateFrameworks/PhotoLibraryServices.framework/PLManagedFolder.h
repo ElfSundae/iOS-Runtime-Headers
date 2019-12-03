@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
  */
 
-@interface PLManagedFolder : PLGenericAlbum <PLAlbumContainer, PLCloudDeletable> {
+@interface PLManagedFolder : PLGenericAlbum <PLAlbumContainer, PLCloudDeletable, PLDeletableManagedObject, PLFileSystemAlbumMetadataPersistence> {
     bool  _needsFixedOrderKeysComplianceUpdate;
     bool  _needsPersistenceUpdate;
 }
@@ -29,9 +29,7 @@
 + (id)childKeyForOrdering;
 + (long long)cloudDeletionTypeForTombstone:(id)arg1;
 + (id)cloudUUIDKeyForDeletion;
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
-+ (id)insertInManagedObjectContext:(id)arg1;
 + (id)localizedRecoveredTitle;
 + (id)validKindsForPersistence;
 
@@ -49,6 +47,7 @@
 - (unsigned long long)assetsCount;
 - (bool)canEditAlbums;
 - (bool)canEditContainers;
+- (bool)canPerformDeleteOperation;
 - (bool)canPerformEditOperation:(unsigned long long)arg1;
 - (id)childKeyForOrdering;
 - (long long)cloudDeletionType;
@@ -66,13 +65,14 @@
 - (void)insertChildCollections:(id)arg1 atIndexes:(id)arg2;
 - (void)insertObject:(id)arg1 inChildCollectionsAtIndex:(unsigned long long)arg2;
 - (bool)isEmpty;
-- (bool)isValidKindForPersistence;
+- (bool)isValidForPersistence;
 - (void)moveChildCollectionsAtIndexes:(id)arg1 toIndex:(unsigned long long)arg2;
 - (id)mutableAssets;
 - (bool)needsFixedOrderKeysComplianceUpdate;
 - (bool)needsPersistenceUpdate;
 - (bool)needsReordering;
-- (void)persistMetadataToFileSystem;
+- (id)payloadForChangedKeys:(id)arg1;
+- (void)persistMetadataToFileSystemWithPathManager:(id)arg1;
 - (unsigned long long)photosCount;
 - (void)preheatAlbumsAtIndexes:(id)arg1 forProperties:(id)arg2 relationships:(id)arg3;
 - (void)preheatAlbumsForProperties:(id)arg1 relationships:(id)arg2;
@@ -82,7 +82,7 @@
 - (void)removeChildCollectionsAtIndexes:(id)arg1;
 - (void)removeChildCollectionsObject:(id)arg1;
 - (void)removeObjectFromChildCollectionsAtIndex:(unsigned long long)arg1;
-- (void)removePersistedFileSystemData;
+- (void)removePersistedFileSystemDataWithPathManager:(id)arg1;
 - (void)replaceChildCollectionsAtIndexes:(id)arg1 withChildCollections:(id)arg2;
 - (void)replaceObjectInChildCollectionsAtIndex:(unsigned long long)arg1 withObject:(id)arg2;
 - (void)setNeedsFixedOrderKeysComplianceUpdate:(bool)arg1;

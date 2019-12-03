@@ -40,7 +40,7 @@
 - (void)_internalReleaseImageForKeyString:(id)arg1;
 - (void)_internalRemoveAllImages;
 - (void)_internalRemoveImagesFromCacheForKeyStrings:(id)arg1;
-- (void)_internalSaveImageToDisk:(id)arg1 forKeyString:(id)arg2;
+- (void)_internalSaveImageToDisk:(id)arg1 forKeyString:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)_internalSetImageState:(long long)arg1 forKeyString:(id)arg2;
 - (void)_internalSetSetting:(id)arg1 forKey:(id)arg2;
 - (void)_internalSetUpImageCache;
@@ -53,7 +53,8 @@
 - (id)delegate;
 - (void)emptyCache;
 - (id)imageDirectoryURL;
-- (id)imageForKeyString:(id)arg1;
+- (void)imageForKeyString:(id)arg1 completionHandler:(id /* block */)arg2;
+- (id)imageForKeyString:(id)arg1 getImageState:(long long*)arg2;
 - (long long)imageStateForKeyString:(id)arg1;
 - (long long)imageType;
 - (id)init;
@@ -70,7 +71,7 @@
 - (void)retainImageForKeyString:(id)arg1;
 - (void)retainImageWithKeyStringProvider:(id /* block */)arg1;
 - (void)retainImagesForKeyStrings:(id)arg1;
-- (void)saveImageToDisk:(id)arg1 forKeyString:(id)arg2;
+- (void)saveImageToDisk:(id)arg1 forKeyString:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)savePendingChangesBeforeTermination;
 - (void)setDelegate:(id)arg1;
 - (void)setImage:(id)arg1 forKeyString:(id)arg2;

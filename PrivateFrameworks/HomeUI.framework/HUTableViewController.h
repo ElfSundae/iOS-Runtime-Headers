@@ -6,6 +6,7 @@
     NSHashTable * _childViewControllersAtViewWillAppearTime;
     NSHashTable * _childViewControllersAtViewWillDisappearTime;
     NSMapTable * _installedChildViewControllersKeyedByCell;
+    bool  _sectionContentInsetFollowsLayoutMargins;
     bool  _viewLayingOut;
 }
 
@@ -15,6 +16,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSMapTable *installedChildViewControllersKeyedByCell;
+@property (nonatomic) bool sectionContentInsetFollowsLayoutMargins;
 @property (readonly) Class superclass;
 @property (getter=isViewLayingOut, nonatomic) bool viewLayingOut;
 
@@ -29,9 +31,11 @@
 - (id)installedChildViewControllersKeyedByCell;
 - (bool)isViewLayingOut;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
+- (bool)sectionContentInsetFollowsLayoutMargins;
 - (void)setChildViewControllersAtViewWillAppearTime:(id)arg1;
 - (void)setChildViewControllersAtViewWillDisappearTime:(id)arg1;
 - (void)setInstalledChildViewControllersKeyedByCell:(id)arg1;
+- (void)setSectionContentInsetFollowsLayoutMargins:(bool)arg1;
 - (void)setViewLayingOut:(bool)arg1;
 - (bool)shouldAutomaticallyForwardAppearanceMethods;
 - (void)tableView:(id)arg1 didEndDisplayingCell:(id)arg2 forRowAtIndexPath:(id)arg3;

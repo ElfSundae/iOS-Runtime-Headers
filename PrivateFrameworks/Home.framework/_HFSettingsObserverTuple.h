@@ -2,22 +2,22 @@
    Image: /System/Library/PrivateFrameworks/Home.framework/Home
  */
 
-@interface _HFSettingsObserverTuple : NSObject <HMAccessorySettingsDelegate, NAIdentifiable> {
-    <HFAccessorySettingsObserver> * _observer;
+@interface _HFSettingsObserverTuple : NSObject <HFHomeKitSettingsObserver, NAIdentifiable> {
+    <HFHomeKitSettingsObserver> * _observer;
     NADeallocationSentinel * _observerDeallocationSentinel;
     <_HFSettingsObserverTupleOwning> * _owner;
-    HMAccessorySetting * _setting;
-    HMAccessorySettings * _settings;
+    HMSetting * _setting;
+    HMSettings * _settings;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) <HFAccessorySettingsObserver> *observer;
+@property (nonatomic) <HFHomeKitSettingsObserver> *observer;
 @property (nonatomic, retain) NADeallocationSentinel *observerDeallocationSentinel;
 @property (nonatomic) <_HFSettingsObserverTupleOwning> *owner;
-@property (nonatomic, retain) HMAccessorySetting *setting;
-@property (nonatomic, retain) HMAccessorySettings *settings;
+@property (nonatomic, retain) HMSetting *setting;
+@property (nonatomic, retain) HMSettings *settings;
 @property (readonly) Class superclass;
 
 + (id)na_identity;

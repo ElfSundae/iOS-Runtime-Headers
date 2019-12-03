@@ -10,9 +10,9 @@
 }
 
 @property (nonatomic, retain) NSArray *contents;
-@property (retain) TLKContentsContainerView *contentsContainer;
+@property (nonatomic, retain) TLKContentsContainerView *contentsContainer;
 @property (nonatomic, retain) TLKImage *image;
-@property (retain) TLKImageView *imageView;
+@property (nonatomic, retain) TLKImageView *imageView;
 
 - (void).cxx_destruct;
 - (id)contents;
@@ -21,13 +21,12 @@
 - (id)image;
 - (id)imageView;
 - (bool)imageViewIsHidden;
-- (id)init;
 - (void)observedPropertiesChanged;
 - (void)setContents:(id)arg1;
 - (void)setContentsContainer:(id)arg1;
 - (void)setImage:(id)arg1;
 - (void)setImageView:(id)arg1;
-- (void)styleDidChange:(unsigned long long)arg1;
+- (id)setupContentView;
 - (id)titleLabelStrings;
 
 @end

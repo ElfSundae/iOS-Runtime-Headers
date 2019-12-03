@@ -37,7 +37,7 @@
 @property double oldestCacheEntry;
 
 + (id)globalEvictQueue;
-+ (void)registerEvictionActivity;
++ (void)registerEvictionTimer;
 
 - (void).cxx_destruct;
 - (id)CKStatusReportArray;

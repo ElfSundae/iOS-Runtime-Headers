@@ -7,10 +7,12 @@
     NSXPCConnection * _connection;
     <CPInterfaceControllerDelegate> * _delegate;
     CPTemplate * _lastPresentedTemplate;
+    bool  _prefersDarkUserInterfaceStyle;
     CPTemplate * _presentedTemplate;
     CPTemplate * _rootTemplate;
     <CPTemplateProviding> * _templateProvider;
     NSMutableArray * _templateStack;
+    <CPWindowProviding> * _windowProvider;
 }
 
 @property (nonatomic, retain) CPWindow *carWindow;
@@ -20,6 +22,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) CPTemplate *lastPresentedTemplate;
+@property (nonatomic) bool prefersDarkUserInterfaceStyle;
 @property (nonatomic, retain) CPTemplate *presentedTemplate;
 @property (nonatomic, retain) CPTemplate *rootTemplate;
 @property (readonly) Class superclass;
@@ -27,23 +30,20 @@
 @property (nonatomic, retain) NSMutableArray *templateStack;
 @property (nonatomic, readonly) NSArray *templates;
 @property (nonatomic, readonly) CPTemplate *topTemplate;
+@property (nonatomic) <CPWindowProviding> *windowProvider;
 
 + (id)_templateClientInterface;
 + (id)_templateProvidingInterface;
 + (void)_whitelistClassesForBaseTemplateProvider:(id)arg1;
-+ (void)load;
 
 - (void).cxx_destruct;
 - (id)_activeMapTemplate;
 - (bool)_applicationHasMapsEntitlement;
-- (void)_canvasDidConnect:(id)arg1;
-- (void)_canvasWillDisconnect:(id)arg1;
 - (void)_connectToListenerEndpoint:(id)arg1;
 - (void)_connectionInterrupted;
 - (void)_connectionInvalidated;
-- (void)_handleConnectedCanvas:(id)arg1;
-- (void)_handleDisconnectedCanvas:(id)arg1;
 - (id)_init;
+- (void)_invalidate;
 - (id)_listenerEndpointForSettings:(id)arg1;
 - (void)_presentActionSheetTemplate:(id)arg1 animated:(bool)arg2;
 - (void)_presentAlertTemplate:(id)arg1 animated:(bool)arg2;
@@ -53,7 +53,8 @@
 - (void)_pushSearchTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(bool)arg3;
 - (void)_pushTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(bool)arg3;
 - (void)_pushVoiceControlTemplate:(id)arg1 animated:(bool)arg2;
-- (id)_windowForCarScreen:(id)arg1;
+- (void)_sceneConnect:(id)arg1;
+- (id)_synchronousTemplateProvider;
 - (void)bannerDidAppearWithIdentifier:(id)arg1;
 - (void)bannerDidDisappearWithIdentifier:(id)arg1;
 - (void)bannerTappedWithIdentifier:(id)arg1;
@@ -63,10 +64,12 @@
 - (id)delegate;
 - (void)dismissTemplateAnimated:(bool)arg1;
 - (void)handleActionForControlIdentifier:(id)arg1;
+- (bool)isCarPlayCanvasActive;
 - (id)lastPresentedTemplate;
 - (void)popTemplateAnimated:(bool)arg1;
 - (void)popToRootTemplateAnimated:(bool)arg1;
 - (void)popToTemplate:(id)arg1 animated:(bool)arg2;
+- (bool)prefersDarkUserInterfaceStyle;
 - (void)presentTemplate:(id)arg1 animated:(bool)arg2;
 - (id)presentedTemplate;
 - (void)pushTemplate:(id)arg1 animated:(bool)arg2;
@@ -75,11 +78,13 @@
 - (void)setConnection:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setLastPresentedTemplate:(id)arg1;
+- (void)setPrefersDarkUserInterfaceStyle:(bool)arg1;
 - (void)setPresentedTemplate:(id)arg1;
 - (void)setRootTemplate:(id)arg1;
 - (void)setRootTemplate:(id)arg1 animated:(bool)arg2;
 - (void)setTemplateProvider:(id)arg1;
 - (void)setTemplateStack:(id)arg1;
+- (void)setWindowProvider:(id)arg1;
 - (void)templateDidAppear:(id)arg1 animated:(bool)arg2;
 - (void)templateDidDisappear:(id)arg1 animated:(bool)arg2;
 - (void)templateDidDismiss:(id)arg1;
@@ -92,5 +97,6 @@
 - (id)templates;
 - (id)topTemplate;
 - (void)updateInterestingLayoutGuideWithInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
+- (id)windowProvider;
 
 @end

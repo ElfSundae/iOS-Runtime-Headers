@@ -11,8 +11,8 @@
     unsigned short  mType;
 }
 
+- (void).cxx_destruct;
 - (bool)autoInsets;
-- (void)dealloc;
 - (float)fillAngle;
 - (float)fillBgAlpha;
 - (id)fillBgColor;

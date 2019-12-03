@@ -3,22 +3,21 @@
  */
 
 @interface _SFCrashBanner : UIView {
-    _UIBackdropView * _backdrop;
+    UIVisualEffectView * _backdrop;
     struct CGSize { 
         double width; 
         double height; 
     }  _cachedLabelLayoutSize;
     UIButton * _closeButton;
-    UIImageView * _closeButtonOverlayImageView;
+    UIVisualEffectView * _contentEffectView;
     UILabel * _label;
     UIView * _separator;
-    UIView * _separatorOverlay;
-    bool  _usesLightControls;
+    _SFBarTheme * _theme;
 }
 
 @property (nonatomic, copy) NSString *backdropGroupName;
 @property (nonatomic, retain) UIButton *closeButton;
-@property (nonatomic, readonly) bool usesLightControls;
+@property (nonatomic, retain) _SFBarTheme *theme;
 
 - (void).cxx_destruct;
 - (struct CGSize { double x1; double x2; })_labelLayoutSizeForWidth:(double)arg1;
@@ -26,11 +25,12 @@
 - (bool)_shouldUseManuallyWrappedCrashMessageForWidth:(double)arg1;
 - (id)backdropGroupName;
 - (id)closeButton;
-- (id)initUsingLightControls:(bool)arg1;
+- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)layoutSubviews;
 - (void)setBackdropGroupName:(id)arg1;
 - (void)setCloseButton:(id)arg1;
+- (void)setTheme:(id)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
-- (bool)usesLightControls;
+- (id)theme;
 
 @end

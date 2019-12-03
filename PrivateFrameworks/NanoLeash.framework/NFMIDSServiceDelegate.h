@@ -17,7 +17,6 @@
 - (void).cxx_destruct;
 - (void)_enqueueMessage:(id)arg1 service:(id)arg2 priority:(long long)arg3 responseIdentifier:(id)arg4 expectsResponse:(bool)arg5 retryCount:(long long)arg6 retryInterval:(double)arg7 idsIdentifier:(id)arg8;
 - (id)_sendProtoBuf:(id)arg1 service:(id)arg2 priority:(long long)arg3 responseIdentifier:(id)arg4 expectsResponse:(bool)arg5;
-- (bool)connectionStateWithDevices:(id)arg1 accounts:(id)arg2;
 - (id)inflightMessages;
 - (id)init;
 - (id)pendingMessages;

@@ -5,23 +5,24 @@
 @interface CKContextResponse : NSObject <NSSecureCoding> {
     NSString * _debug;
     bool  _discarded;
-    bool  _engaged;
+    _Atomic bool  _engaged;
     NSError * _error;
     NSDate * _hideCompletionsAfterDate;
     double  _hideCompletionsTimeLimit;
     NSArray * _level1Topics;
     NSArray * _level2Topics;
-    bool  _logged;
-    unsigned int  _loggingCouldHaveShownMax;
-    unsigned int  _loggingInputLengthMax;
-    bool  _loggingServerOverride;
-    unsigned int  _loggingShownMax;
+    _Atomic bool  _logged;
+    _Atomic unsigned int  _loggingCouldHaveShownMax;
+    _Atomic unsigned int  _loggingInputLengthMax;
+    _Atomic bool  _loggingServerOverride;
+    _Atomic unsigned int  _loggingShownMax;
     unsigned long long  _mustPrefixMatchLength;
     unsigned long long  _requestType;
+    NSDate * _responseDate;
     NSArray * _results;
     bool  _resultsNeedFiltering;
-    bool  _shown;
-    bool  _transactionSuccessful;
+    _Atomic bool  _shown;
+    _Atomic bool  _transactionSuccessful;
     NSString * _uuid;
 }
 
@@ -32,9 +33,12 @@
 @property (nonatomic, retain) NSArray *level2Topics;
 @property (nonatomic) unsigned long long mustPrefixMatchLength;
 @property (nonatomic) unsigned long long requestType;
+@property (nonatomic, retain) NSDate *responseDate;
 @property (nonatomic, retain) NSArray *results;
 @property (nonatomic) bool resultsNeedFiltering;
-@property (nonatomic, retain) NSString *uuid;
+@property (nonatomic, copy) NSString *uuid;
+
+// Image: /System/Library/PrivateFrameworks/ContextKit.framework/ContextKit
 
 + (bool)supportsSecureCoding;
 
@@ -63,6 +67,7 @@
 - (void)logTransactionSuccessfulForInput:(id)arg1 completion:(id)arg2;
 - (unsigned long long)mustPrefixMatchLength;
 - (unsigned long long)requestType;
+- (id)responseDate;
 - (id)resultByQuery:(id)arg1;
 - (id)results;
 - (bool)resultsNeedFiltering;
@@ -74,9 +79,14 @@
 - (void)setLevel2Topics:(id)arg1;
 - (void)setMustPrefixMatchLength:(unsigned long long)arg1;
 - (void)setRequestType:(unsigned long long)arg1;
+- (void)setResponseDate:(id)arg1;
 - (void)setResults:(id)arg1;
 - (void)setResultsNeedFiltering:(bool)arg1;
 - (void)setUuid:(id)arg1;
 - (id)uuid;
+
+// Image: /System/Library/PrivateFrameworks/SafariShared.framework/SafariShared
+
+- (id)safari_topQIDsWithMaximumCount:(unsigned long long)arg1;
 
 @end

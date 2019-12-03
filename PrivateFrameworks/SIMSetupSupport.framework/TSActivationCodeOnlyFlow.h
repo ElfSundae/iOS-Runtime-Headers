@@ -15,6 +15,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property bool isPreinstallingViewControllerActive;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -22,11 +23,12 @@
 - (id)firstViewController;
 - (void)firstViewController:(id /* block */)arg1;
 - (id)init;
-- (bool)isPhoneFlow;
+- (bool)isPreinstallingViewControllerActive;
 - (id)nextViewControllerFrom:(id)arg1;
 - (void)planItemsUpdated:(id)arg1 planListError:(id)arg2;
 - (void)popViewController:(id)arg1;
 - (void)setDefaultNavigationItems:(id)arg1;
+- (void)setIsPreinstallingViewControllerActive:(bool)arg1;
 - (long long)signupUserConsentResponse;
 - (void)viewControllerDidComplete:(id)arg1;
 

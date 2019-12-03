@@ -13,16 +13,13 @@
 
 + (bool)acceptsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
 + (bool)acceptsComplicationType:(unsigned long long)arg1 forDevice:(id)arg2;
-+ (Class)richComplicationDisplayViewClassForType:(unsigned long long)arg1 family:(long long)arg2 forDevice:(id)arg3;
 
 - (void).cxx_destruct;
 - (void)_didReceiveContactsCachceChangedNotification;
 - (void)_invalidateIfNeeded;
 - (id)_loadTimelineEntry;
 - (void)_queue_reloadTimelineEntry;
-- (id)_roundedProfileImageFromImage:(id)arg1;
 - (void)_setupNotifications;
-- (bool)_supportsProfileImage;
 - (void)_tearDownNotifications;
 - (id)complicationApplicationIdentifier;
 - (id)currentSwitcherTemplate;

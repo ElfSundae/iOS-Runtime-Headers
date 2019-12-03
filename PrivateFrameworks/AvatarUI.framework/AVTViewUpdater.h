@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/AvatarUI.framework/AvatarUI
  */
 
-@interface AVTViewUpdater : NSObject <SCNSceneRendererDelegate> {
+@interface AVTViewUpdater : NSObject <AVTViewDelegate, SCNSceneRendererDelegate> {
     <AVTAvatarRecord> * _avatarRecord;
     id /* block */  _avatarUpdatedHandler;
     AVTView * _avtView;

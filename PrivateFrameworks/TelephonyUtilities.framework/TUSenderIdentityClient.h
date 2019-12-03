@@ -12,6 +12,7 @@
 
 - (void).cxx_destruct;
 - (id)client;
+- (bool)inEmergencyMode;
 - (id)init;
 - (bool)isEmergencyNumberForDigits:(id)arg1 senderIdentityUUID:(id)arg2;
 - (bool)isEmergencyNumberForDigits:(id)arg1 senderIdentityUUID:(id)arg2 error:(id*)arg3;

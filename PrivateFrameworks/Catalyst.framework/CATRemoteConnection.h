@@ -5,6 +5,7 @@
 @interface CATRemoteConnection : NSObject <CATHTTPMessageParserDelegate, NSStreamDelegate> {
     unsigned long long  _bufferSize;
     double  _connectionTimeoutInterval;
+    NSArray * _customTrustEvaluationPolicies;
     <CATRemoteConnectionDelegate> * _delegate;
     NSInputStream * _inputStream;
     NSString * _name;
@@ -24,6 +25,7 @@
 
 @property (nonatomic) unsigned long long bufferSize;
 @property (nonatomic) double connectionTimeoutInterval;
+@property (nonatomic, copy) NSArray *customTrustEvaluationPolicies;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <CATRemoteConnectionDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -41,6 +43,7 @@
 
 - (void).cxx_destruct;
 - (void)_stream:(id)arg1 handleEvent:(unsigned long long)arg2;
+- (int)applyCustomEvaluationPoliciesToTrust:(struct __SecTrust { }*)arg1;
 - (unsigned long long)bufferSize;
 - (void)close;
 - (void)configureStreamSocketOptions;
@@ -49,6 +52,7 @@
 - (void)connectionShouldSendData;
 - (void)connectionTimedOut;
 - (double)connectionTimeoutInterval;
+- (id)customTrustEvaluationPolicies;
 - (void)dealloc;
 - (id)delegate;
 - (void)delegateDidClose;
@@ -88,6 +92,7 @@
 - (void)sendDidSucceed:(id)arg1;
 - (void)setBufferSize:(unsigned long long)arg1;
 - (void)setConnectionTimeoutInterval:(double)arg1;
+- (void)setCustomTrustEvaluationPolicies:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setInputStream:(id)arg1;
 - (void)setName:(id)arg1;

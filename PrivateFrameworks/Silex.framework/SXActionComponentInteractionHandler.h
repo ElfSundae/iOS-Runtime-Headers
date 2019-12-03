@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
  */
 
-@interface SXActionComponentInteractionHandler : NSObject <SXComponentInteractionHandler, SXForceTouchComponentInteractionHandler, SXPostActionHandler> {
+@interface SXActionComponentInteractionHandler : NSObject <SXComponentInteractionHandler, SXPostActionHandler, SXPreviewComponentInteractionHandler> {
     SXAction * _action;
     <SXActionManager> * _actionManager;
     <SXActionSerializer> * _actionSerializer;

@@ -8,6 +8,7 @@
     AVTAvatarStore * _avatarStore;
     NSString * _currentAvatarIdentifier;
     struct __CVPixelBufferPool { } * _inputBufferPool;
+    bool  _logged_render_failed;
     struct __CVMetalTextureCache { } * _metalDepthTextureCache;
     struct __CVMetalTextureCache { } * _metalTextureCache;
     NSObject<OS_dispatch_queue> * _puppetLoadingQ;
@@ -15,6 +16,7 @@
     AVTRenderer * _renderer;
     NSLock * _rendererLock;
     double  _systemTimeForAVTRenderer;
+    <CFXAnimojiTrackingLossDelegate> * _trackingLossDelegate;
     struct CGSize { 
         double width; 
         double height; 
@@ -35,6 +37,7 @@
 @property (nonatomic, retain) NSLock *rendererLock;
 @property (readonly) Class superclass;
 @property (nonatomic) double systemTimeForAVTRenderer;
+@property (nonatomic) <CFXAnimojiTrackingLossDelegate> *trackingLossDelegate;
 @property (nonatomic) struct CGSize { double x1; double x2; } workingSize;
 
 + (void)setupAVTMetalShaderCache;
@@ -42,8 +45,9 @@
 
 - (void).cxx_destruct;
 - (id)CFX_depthDataToTexture:(id)arg1;
-- (double)CFX_focalLengthForFrame:(id)arg1 workingSize:(struct CGSize { double x1; double x2; })arg2;
+- (double)CFX_focalLengthForFrame:(id)arg1 workingSize:(struct CGSize { double x1; double x2; })arg2 interfaceOrientation:(long long)arg3;
 - (bool)CFX_getRenderer:(id*)arg1 forAnimojiEffect:(id)arg2 primeFrame:(id)arg3 captureOrientation:(long long)arg4 interfaceOrientation:(long long)arg5;
+- (bool)CFX_setupPuppetRender:(id)arg1 forFrame:(id)arg2 captureOrientation:(long long)arg3 interfaceOrientation:(long long)arg4 isInitialSetup:(bool)arg5;
 - (id)_createNewRendererForPuppet:(id)arg1;
 - (bool)allowAntialiasing;
 - (void)asyncLoadNewPuppet:(id)arg1 currentPuppet:(id)arg2 captureOrientation:(long long)arg3 interfaceOrientation:(long long)arg4 primeFrame:(id)arg5;
@@ -54,6 +58,7 @@
 - (id)currentAvatarIdentifier;
 - (void)dealloc;
 - (id)description;
+- (void)flush;
 - (id)init;
 - (bool)inputBufferIsPortraitAspect:(struct CGSize { double x1; double x2; })arg1;
 - (struct __CVPixelBufferPool { }*)inputBufferPool;
@@ -76,11 +81,12 @@
 - (void)setRenderer:(id)arg1;
 - (void)setRendererLock:(id)arg1;
 - (void)setSystemTimeForAVTRenderer:(double)arg1;
+- (void)setTrackingLossDelegate:(id)arg1;
 - (void)setWorkingSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setupInputBufferPoolForSize:(struct CGSize { double x1; double x2; })arg1;
-- (bool)setupPuppetRender:(id)arg1 forFrame:(id)arg2 captureOrientation:(long long)arg3 interfaceOrientation:(long long)arg4 isInitialSetup:(bool)arg5;
 - (double)systemTimeForAVTRenderer;
 - (bool)testCurrentPuppetisEqualToPuppet:(id)arg1;
+- (id)trackingLossDelegate;
 - (void)updateCurrentRenderer:(id)arg1 puppetName:(id)arg2;
 - (struct CGSize { double x1; double x2; })workingSize;
 

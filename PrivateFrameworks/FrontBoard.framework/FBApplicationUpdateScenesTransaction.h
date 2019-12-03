@@ -3,7 +3,7 @@
  */
 
 @interface FBApplicationUpdateScenesTransaction : FBSynchronizedTransactionGroup <FBApplicationProcessLaunchTransactionObserver, FBUpdateSceneTransactionObserver> {
-    NSString * _bundleID;
+    RBSProcessIdentity * _identity;
     NSMutableArray * _pendingUpdateSceneBlocks;
     FBApplicationProcessLaunchTransaction * _processLaunchTransaction;
     bool  _processLaunched;
@@ -29,13 +29,15 @@
 - (void)_noteWillCommitUpdateForScene:(id)arg1;
 - (void)_performSynchronizedCommit:(id)arg1;
 - (bool)_shouldFailForChildTransaction:(id)arg1;
-- (void)_updateSceneWithIdentifier:(id)arg1 parameters:(id)arg2 transitionContext:(id)arg3;
+- (void)_updateSceneWithIdentity:(id)arg1 parameters:(id)arg2 transitionContext:(id)arg3;
 - (void)_willAddChildTransaction:(id)arg1;
 - (void)_willFailWithReason:(id)arg1;
 - (void)_willInterruptWithReason:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (id)bundleID;
+- (id)init;
 - (id)initWithApplicationBundleID:(id)arg1 executionContextProvider:(id /* block */)arg2;
+- (id)initWithProcessIdentity:(id)arg1 executionContextProvider:(id /* block */)arg2;
 - (id)process;
 - (void)removeObserver:(id)arg1;
 - (void)setWaitsForSceneCommits:(bool)arg1;
@@ -45,8 +47,8 @@
 - (void)updateSceneTransactionDidCreateScene:(id)arg1;
 - (void)updateSceneTransactionWillCommitUpdate:(id)arg1;
 - (void)updateSceneTransactionWillUpdateScene:(id)arg1;
-- (void)updateSceneWithIdentifier:(id)arg1 display:(id)arg2 newSettings:(id)arg3 transitionContext:(id)arg4 initialClientSettingsProvider:(id /* block */)arg5;
 - (void)updateSceneWithIdentifier:(id)arg1 parameters:(id)arg2 transitionContext:(id)arg3;
+- (void)updateSceneWithIdentity:(id)arg1 parameters:(id)arg2 transitionContext:(id)arg3;
 - (bool)waitsForSceneCommits;
 
 @end

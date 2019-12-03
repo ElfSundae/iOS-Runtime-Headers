@@ -14,6 +14,7 @@
 }
 
 - (void)addTimestamps:(struct { unsigned long long x1; unsigned long long x2; })arg1;
+- (bool)canConvertTime;
 - (void)changeToNewFilterSize:(unsigned char)arg1;
 - (void)dealloc;
 - (unsigned long long)domainAIntervalFromDomainBInterval:(unsigned long long)arg1;

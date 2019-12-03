@@ -18,6 +18,8 @@
 - (long long)_fetchManateeAvailability:(id*)arg1;
 - (void)_lockedFetchAndUpdateManateeAvailability;
 - (void)_lockedSetManateeAvailableForLoggedInAccount:(long long)arg1;
+- (bool)accountSupportsManatee:(id)arg1;
+- (void)dealloc;
 - (void)handleUpdateNotificationWithAvailability:(id)arg1;
 - (id)init;
 - (bool)isManateeAvailable:(id*)arg1;

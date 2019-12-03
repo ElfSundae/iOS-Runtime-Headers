@@ -10,6 +10,7 @@
 
 - (id)_initWithItem:(id)arg1;
 - (id)date;
+- (id)transcriptDate;
 
 // Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
 

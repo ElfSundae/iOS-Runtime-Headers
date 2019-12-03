@@ -15,6 +15,7 @@
 }
 
 @property (nonatomic, readonly) bool allowAudioRecording;
+@property (nonatomic, readonly) bool allowAudioSwitching;
 @property (nonatomic) unsigned int audioUnitModel;
 @property (nonatomic) bool hasAudioUnitModel;
 @property (nonatomic) unsigned int payloadFlags;
@@ -23,10 +24,12 @@
 @property (nonatomic) unsigned int supportFlags;
 @property (nonatomic) bool useSBR;
 
++ (bool)isAudioPayloadSupported:(int)arg1;
 + (int)negotiationPayloadFromPayload:(int)arg1;
 + (int)payloadFromNegotiationPayload:(int)arg1;
 
 - (bool)allowAudioRecording;
+- (bool)allowAudioSwitching;
 - (unsigned int)audioUnitModel;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -34,16 +37,15 @@
 - (id)dictionaryRepresentation;
 - (bool)hasAudioUnitModel;
 - (unsigned long long)hash;
-- (id)initWithSSRC:(unsigned int)arg1 audioRuleCollection:(id)arg2 allowAudioRecording:(bool)arg3 audioUnitNumber:(unsigned int)arg4;
+- (id)initWithAudioConfiguration:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
-- (id)newAudioRuleCollection;
+- (id)newMediaNegotiatorAudioConfiguration;
 - (unsigned int)payloadFlags;
 - (void)printWithLogFile:(void*)arg1;
 - (bool)readFrom:(id)arg1;
 - (unsigned int)rtpSSRC;
 - (unsigned int)secondaryFlags;
-- (void)setAudioRuleCollection:(id)arg1;
 - (void)setAudioUnitModel:(unsigned int)arg1;
 - (void)setHasAudioUnitModel:(bool)arg1;
 - (void)setPayloadFlags:(unsigned int)arg1;

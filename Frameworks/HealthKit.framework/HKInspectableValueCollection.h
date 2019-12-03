@@ -62,7 +62,6 @@
 // Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
 
 + (id)_medicalCodingValuePreferredSystems;
-+ (id)_unitStringForQuantity:(id)arg1;
 + (id)_unitStringForValue:(id)arg1;
 + (id)_unitStringForValueCollection:(id)arg1;
 + (void)parseUncodedValueCollection:(id)arg1 referenceRanges:(id)arg2 withCompletion:(id /* block */)arg3;

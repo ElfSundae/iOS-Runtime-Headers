@@ -4,8 +4,8 @@
 
 @interface HMDMediaSystemModel : HMDBackingStoreModelObject
 
-@property (nonatomic, retain) NSString *configuredName;
-@property (nonatomic, retain) NSArray *mediaSystemComponents;
+@property (nonatomic, copy) NSString *configuredName;
+@property (nonatomic, copy) NSArray *mediaSystemComponents;
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSData *symptoms;
 

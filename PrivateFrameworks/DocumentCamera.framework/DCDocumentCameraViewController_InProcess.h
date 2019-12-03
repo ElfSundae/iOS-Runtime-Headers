@@ -14,6 +14,7 @@
 
 - (void).cxx_destruct;
 - (void)_autoDismiss;
+- (long long)_preferredModalPresentationStyle;
 - (void)didReceiveMemoryWarning;
 - (bool)documentCameraController:(id)arg1 canAddImages:(unsigned long long)arg2;
 - (void)documentCameraController:(id)arg1 didFinishWithDocInfoCollection:(id)arg2 imageCache:(id)arg3 warnUser:(bool)arg4;

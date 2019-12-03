@@ -14,6 +14,7 @@
 @property (nonatomic) <TKTonePickerTableViewControllerHelper> *tonePickerTableViewControllerHelper;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (bool)canBeShownFromSuspendedState;
 - (void)dealloc;
 - (void)didReloadTones;

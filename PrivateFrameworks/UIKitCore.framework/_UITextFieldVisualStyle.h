@@ -14,10 +14,10 @@
 - (id)defaultFocusedTextColor;
 - (id)defaultTextColor;
 - (id)defaultTextColorForKeyboardAppearance;
-- (id)fieldEditorTextAttributes:(id)arg1 storingOriginalAttributes:(id)arg2;
 - (void)handleTextVibrancy;
 - (id)initWithStyleSubject:(id)arg1;
-- (id)overrideAttributesForEditing;
+- (id)namesOfAttributesToOverrideForEditing;
+- (id)overridingEditingAttributes:(id)arg1 forOriginalAttributes:(id)arg2;
 - (id)parentViewForTextContentView;
 - (id)placeholderColor;
 - (void)setStyleSubject:(id)arg1;

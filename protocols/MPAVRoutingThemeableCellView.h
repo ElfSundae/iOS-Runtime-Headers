@@ -10,5 +10,6 @@
 - (void)setSubtitleViewAlpha:(double)arg1;
 - (UILabel *)subtitleView;
 - (UILabel *)titleView;
+- (MPVolumeSlider *)volumeSlider;
 
 @end

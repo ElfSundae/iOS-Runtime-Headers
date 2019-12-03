@@ -3,17 +3,18 @@
  */
 
 @interface NTKRichComplicationCircularImageView : NTKRichComplicationCircularBaseView {
-    UIImageView * _imageView;
+    NTKRichComplicationImageView * _imageView;
 }
 
 + (bool)handlesComplicationTemplate:(id)arg1;
-+ (void)load;
 + (bool)supportsComplicationFamily:(long long)arg1;
 
 - (void).cxx_destruct;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
-- (void)_updateBackgroundColor:(id)arg1;
 - (id)init;
 - (void)layoutSubviews;
+- (void)setPaused:(bool)arg1;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 
 @end

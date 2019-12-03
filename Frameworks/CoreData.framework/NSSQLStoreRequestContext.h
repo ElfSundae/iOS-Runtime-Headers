@@ -9,6 +9,7 @@
     NSException * _exception;
     bool  _hasHistoryTracking;
     NSPersistentStoreRequest * _persistentStoreRequest;
+    NSQueryGenerationToken * _queryGeneration;
     id  _result;
     NSSQLCore * _sqlCore;
     bool  _storeIsInMemory;
@@ -24,7 +25,7 @@
 @property (nonatomic, readonly) bool isWritingRequest;
 @property (nonatomic, retain) NSError *localError;
 @property (nonatomic, readonly) NSPersistentStoreRequest *persistentStoreRequest;
-@property (nonatomic, readonly) NSQueryGenerationToken *queryGenerationToken;
+@property (nonatomic, retain) NSQueryGenerationToken *queryGenerationToken;
 @property (nonatomic, readonly) unsigned long long requestType;
 @property (nonatomic, retain) id result;
 @property (nonatomic, readonly) NSSQLRowCache *rowCache;
@@ -43,7 +44,7 @@
 - (id)exception;
 - (void)executeEpilogue;
 - (void)executePrologue;
-- (void)executeRequestCore:(id*)arg1;
+- (bool)executeRequestCore:(id*)arg1;
 - (bool)executeRequestUsingConnection:(id)arg1;
 - (bool)forConflictAnalysis;
 - (bool)hasHistoryTracking;
@@ -61,6 +62,7 @@
 - (void)setConnection:(id)arg1;
 - (void)setException:(id)arg1;
 - (void)setLocalError:(id)arg1;
+- (void)setQueryGenerationToken:(id)arg1;
 - (void)setResult:(id)arg1;
 - (void)setTransactionID:(id)arg1;
 - (bool)shouldRegisterQueryGeneration;

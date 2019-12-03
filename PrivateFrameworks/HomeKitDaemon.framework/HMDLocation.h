@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
  */
 
-@interface HMDLocation : HMFObject <CLLocationManagerDelegate, HMFTimerDelegate> {
+@interface HMDLocation : HMFObject <HMDCLLocationManagerDelegate, HMFTimerDelegate> {
     int  _authStatus;
     NSHashTable * _batchLocationDelegates;
     NSMutableArray * _batchLocationTuples;
@@ -12,11 +12,12 @@
     NSObject<OS_dispatch_queue> * _handlerQueue;
     NSDate * _lastFetchBatchLocationsTime;
     int  _locationAuthorized;
-    CLLocationManager * _locationManager;
+    <HMDCLLocationManager> * _locationManager;
     HMFMessageDispatcher * _msgDispatcher;
     NSMapTable * _pendingRegionCallbacks;
     NSMapTable * _pendingRegionMonitoringRequests;
     NSMapTable * _regionStateDelegatesByRegionIdentifier;
+    NSMapTable * _regionStates;
     NSHashTable * _singleLocationDelegates;
 }
 
@@ -32,11 +33,12 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSDate *lastFetchBatchLocationsTime;
 @property (nonatomic) int locationAuthorized;
-@property (nonatomic, readonly) CLLocationManager *locationManager;
+@property (nonatomic, readonly) <HMDCLLocationManager> *locationManager;
 @property (nonatomic, retain) HMFMessageDispatcher *msgDispatcher;
 @property (nonatomic, readonly) NSMapTable *pendingRegionCallbacks;
 @property (nonatomic, readonly) NSMapTable *pendingRegionMonitoringRequests;
 @property (nonatomic, readonly) NSMapTable *regionStateDelegatesByRegionIdentifier;
+@property (nonatomic, readonly) NSMapTable *regionStates;
 @property (nonatomic, readonly) NSHashTable *singleLocationDelegates;
 @property (readonly) Class superclass;
 
@@ -50,7 +52,7 @@
 + (id)sharedManager;
 + (id)sunriseTimeForLocation:(id)arg1;
 + (id)sunsetTimeForLocation:(id)arg1;
-+ (void)timeZoneForCLLocationAsync:(id)arg1 withCompletion:(id /* block */)arg2;
++ (void)timeZoneISOCountryCodeForCLLocationAsync:(id)arg1 withCompletion:(id /* block */)arg2;
 
 - (void).cxx_destruct;
 - (bool)_canLocationBeExtracted;
@@ -82,14 +84,14 @@
 - (int)locationAuthorized;
 - (id)locationManager;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
-- (void)locationManager:(id)arg1 didEnterRegion:(id)arg2;
-- (void)locationManager:(id)arg1 didExitRegion:(id)arg2;
+- (void)locationManager:(id)arg1 didDetermineState:(long long)arg2 forRegion:(id)arg3;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
 - (id)msgDispatcher;
 - (id)pendingRegionCallbacks;
 - (id)pendingRegionMonitoringRequests;
 - (id)regionStateDelegatesByRegionIdentifier;
+- (id)regionStates;
 - (void)registerForRegionUpdate:(id)arg1 withDelegate:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)setAuthStatus:(int)arg1;
 - (void)setBatchLocationsFetchInterval:(double)arg1;

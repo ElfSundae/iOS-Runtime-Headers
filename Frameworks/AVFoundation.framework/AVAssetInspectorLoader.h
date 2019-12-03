@@ -17,7 +17,9 @@
 @property (getter=_figAsset, nonatomic, readonly) struct OpaqueFigAsset { }*figAsset;
 @property (nonatomic, readonly) NSArray *figChapterGroupInfo;
 @property (nonatomic, readonly) NSArray *figChapters;
+@property (nonatomic, readonly) long long firstFragmentSequenceNumber;
 @property (getter=_formatReader, nonatomic, readonly) struct OpaqueFigFormatReader { }*formatReader;
+@property (nonatomic, readonly) long long fragmentCount;
 @property (getter=_fragmentMindingInterval, setter=_setFragmentMindingInterval:, nonatomic) double fragmentMindingInterval;
 @property (nonatomic, readonly) bool hasProtectedContent;
 @property (nonatomic, readonly) NSString *lyrics;
@@ -52,6 +54,8 @@
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })duration;
 - (id)figChapterGroupInfo;
 - (id)figChapters;
+- (long long)firstFragmentSequenceNumber;
+- (long long)fragmentCount;
 - (bool)hasProtectedContent;
 - (id)init;
 - (bool)isAssociatedWithFragmentMinder;

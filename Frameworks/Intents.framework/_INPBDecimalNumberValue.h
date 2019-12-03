@@ -3,6 +3,7 @@
  */
 
 @interface _INPBDecimalNumberValue : PBCodable <NSCopying, NSSecureCoding, _INPBDecimalNumberValue> {
+    bool  __encodeLegacyGloryData;
     int  _exponent;
     struct { 
         unsigned int exponent : 1; 
@@ -14,6 +15,7 @@
     _INPBValueMetadata * _valueMetadata;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) int exponent;
@@ -27,15 +29,21 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) _INPBValueMetadata *valueMetadata;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (int)exponent;
 - (bool)hasExponent;
 - (bool)hasIsNegative;
 - (bool)hasMantissa;
 - (bool)hasValueMetadata;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)isNegative;
 - (unsigned long long)mantissa;

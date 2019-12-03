@@ -2,50 +2,34 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaUIStateTransition : PBCodable <NSCopying> {
+@interface SISchemaUIStateTransition : PBCodable <NSSecureCoding, SISchemaUIStateTransition> {
     int  _currentState;
-    struct { 
-        unsigned int currentState : 1; 
-        unsigned int previousState : 1; 
-        unsigned int siriPresentationType : 1; 
-    }  _has;
     int  _previousState;
     int  _siriPresentationType;
 }
 
 @property (nonatomic) int currentState;
-@property (nonatomic) bool hasCurrentState;
-@property (nonatomic) bool hasPreviousState;
-@property (nonatomic) bool hasSiriPresentationType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic) int previousState;
 @property (nonatomic) int siriPresentationType;
+@property (readonly) Class superclass;
 
-- (int)StringAsCurrentState:(id)arg1;
-- (int)StringAsPreviousState:(id)arg1;
-- (int)StringAsSiriPresentationType:(id)arg1;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (int)currentState;
-- (id)currentStateAsString:(int)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (bool)hasCurrentState;
-- (bool)hasPreviousState;
-- (bool)hasSiriPresentationType;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (bool)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
+- (id)jsonData;
 - (int)previousState;
-- (id)previousStateAsString:(int)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setCurrentState:(int)arg1;
-- (void)setHasCurrentState:(bool)arg1;
-- (void)setHasPreviousState:(bool)arg1;
-- (void)setHasSiriPresentationType:(bool)arg1;
 - (void)setPreviousState:(int)arg1;
 - (void)setSiriPresentationType:(int)arg1;
 - (int)siriPresentationType;
-- (id)siriPresentationTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -23,14 +23,14 @@
 @property (retain) NUCGImageSourceNode *sourceNode;
 
 - (void).cxx_destruct;
-- (id)_evaluateDepthData:(out id*)arg1;
+- (id)_evaluateAuxiliaryImageForType:(long long)arg1 error:(out id*)arg2;
 - (id)_evaluateImagePropertiesWithSourceOptions:(id)arg1 error:(out id*)arg2;
 - (id)_evaluateImageWithSourceOptions:(id)arg1 subsampleFactor:(long long*)arg2 error:(out id*)arg3;
-- (bool)canPropagateOriginalDepthData;
+- (bool)canPropagateOriginalAuxiliaryData;
 - (id)initWithSettings:(id)arg1;
 - (id)initWithSourceNode:(id)arg1 auxiliaryImageProperties:(id)arg2;
 - (id)pipelineOptionsForPipelineState:(id)arg1 error:(out id*)arg2;
-- (struct { long long x1; long long x2; })pixelSize;
+- (struct { long long x1; long long x2; })pixelSizeWithSourceOptions:(id)arg1;
 - (void)setSourceNode:(id)arg1;
 - (id)sourceNode;
 - (long long)sourceOrientation;

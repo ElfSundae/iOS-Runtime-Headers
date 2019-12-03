@@ -9,6 +9,7 @@
     struct { 
         unsigned int pictureInPictureProxyInterfaceOrientationForTransitionAnimation : 1; 
         unsigned int pictureInPictureProxyViewFrameForTransitionAnimation : 1; 
+        unsigned int pictureInPictureProxyViewControllerWindowForTransitionAnimation : 1; 
         unsigned int pictureInPictureProxy_willStartPictureInPictureWithAnimationType : 1; 
         unsigned int pictureInPictureProxy_didStartPictureInPictureWithAnimationType : 1; 
         unsigned int pictureInPictureProxy_failedToStartPictureInPictureWithAnimationType_error : 1; 
@@ -47,10 +48,14 @@
     }  _preferredContentSize;
     NSObject<OS_dispatch_queue> * _queue;
     UIViewController * _rootViewController;
+    NSString * _sceneSessionPersistentIdentifier;
+    bool  _shouldCancelActivePictureInPictureOnStart;
+    bool  _shouldPullCancellationPolicyOnStart;
     UIViewController<PGPictureInPictureViewController> * _viewController;
+    id  _windowSceneActivationStateObserver;
 }
 
-@property (nonatomic, readonly) long long controlsStyle;
+@property (nonatomic) long long controlsStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <PGPictureInPictureProxyDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -69,9 +74,22 @@
 + (id)pictureInPictureProxyWithControlsStyle:(long long)arg1 viewController:(id)arg2;
 
 - (void).cxx_destruct;
+- (void)_actuallyStartAnimated:(bool)arg1 animationType:(long long)arg2 completionHandler:(id /* block */)arg3;
+- (void)_didStartWithSuccess:(bool)arg1 animationType:(long long)arg2 completionHandler:(id /* block */)arg3;
+- (void)_executeDelegateCallbackBlock:(id /* block */)arg1 assumeApplicationActive:(bool)arg2;
+- (id)_expectedScene;
 - (long long)_interfaceOrientationForTransitionAnimationAssumeApplicationActive:(bool)arg1;
+- (bool)_isViewControllerWindowSceneActive;
+- (void)_manageStartAnimated:(bool)arg1 cancelActiveOnStart:(bool)arg2 competionHandler:(id /* block */)arg3;
+- (id)_sceneSessionPersistentIdentifierForTransitionAnimationAssumeApplicationActive:(bool)arg1;
+- (void)_setupStart:(bool)arg1 animationType:(long long)arg2 initialLayerFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3 completionHandler:(id /* block */)arg4;
+- (id)_sourceScene;
 - (void)_startPictureInPictureAnimated:(bool)arg1 enteringBackground:(bool)arg2 withCompletionHandler:(id /* block */)arg3;
-- (void)_stopPictureInPictureAnimated:(bool)arg1 activateApplicationIfNeededAndRestoreUserInterface:(bool)arg2 withCompletionHandler:(id /* block */)arg3;
+- (void)_stopObservingWindowSceneActivationState;
+- (void)_stopPictureInPictureAnimated:(bool)arg1 restoreUserInterface:(bool)arg2 withCompletionHandler:(id /* block */)arg3;
+- (void)_updateAutoPIPSettingsAndNotifyRemoteObject;
+- (void)_updateAutoPIPSettingsAndNotifyRemoteObjectIfNeeded;
+- (void)_updateCancellationPolicyWithCompletionHandler:(id /* block */)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_viewFrameForTransitionAnimationAssumeApplicationActive:(bool)arg1;
 - (oneway void)actionButtonTapped;
 - (long long)controlsStyle;
@@ -100,6 +118,8 @@
 - (double)playbackRate;
 - (void)preferredContentSizeDidChangeForViewController;
 - (void)rotateContentContainer:(long long)arg1 withCompletionHandler:(id /* block */)arg2;
+- (void)setControlsStyle:(long long)arg1;
+- (void)setControlsStyle:(long long)arg1 animated:(bool)arg2 withCompletionHandler:(id /* block */)arg3;
 - (void)setDelegate:(id)arg1;
 - (void)setLoadedTimeRanges:(id)arg1;
 - (void)setPictureInPictureShouldStartWhenEnteringBackground:(bool)arg1;
@@ -110,5 +130,6 @@
 - (oneway void)updatePictureInPicturePossible:(bool)arg1;
 - (id)viewController;
 - (void)viewFrameForInteractiveTransitionAnimationWhenEnteringBackgroundDidChangeForViewController;
+- (void)windowSceneForInteractiveTransitionAnimationWhenEnteringBackgroundDidChangeForViewController;
 
 @end

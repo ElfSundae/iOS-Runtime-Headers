@@ -8,6 +8,7 @@
 }
 
 - (void).cxx_destruct;
+- (void)dealloc;
 - (id)initForDevice:(id)arg1;
 - (id)newFace;
 - (void)photoAlbumChanged:(id)arg1;

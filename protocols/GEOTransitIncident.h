@@ -9,7 +9,7 @@
 - (NSDate *)creationDate;
 - (NSDate *)endDate;
 - (NSString *)fullDescription;
-- (long long)iconType;
+- (int)iconType;
 - (bool)isBlockingIncident;
 - (NSDate *)lastUpdated;
 - (NSString *)messageForNonRoutable;

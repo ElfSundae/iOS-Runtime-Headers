@@ -8,7 +8,7 @@
 - (id)assetId;
 - (id)avchdAssetId;
 - (NSDate *)dateKey;
-- (NSSet *)duplicateAssetsForLibrary:(NSString *)arg1;
+- (NSArray *)duplicateAssetsForLibrary:(PHPhotoLibrary *)arg1;
 - (unsigned char)duplicateStateConfidence;
 - (NSMutableDictionary *)duplicates;
 - (NSDate *)exifImageDate;

@@ -3,7 +3,7 @@
  */
 
 @interface FigSubtitleWebVTTCueCALayer : FigSubtitleBackdropCALayer <CALayerDelegate> {
-    struct OpaqueFigSubtitleWebVTTCueCALayerInternal { id x1; struct OpaqueFigSubtitleRenderer {} *x2; struct CGRect { struct CGPoint { double x_1_2_1; double x_1_2_2; } x_3_1_1; struct CGSize { double x_2_2_1; double x_2_2_2; } x_3_1_2; } x3; struct __CFAttributedString {} *x4; unsigned char x5; } * layerInternal;
+    struct OpaqueFigSubtitleWebVTTCueCALayerInternal { id x1; id x2; struct OpaqueFigSubtitleRenderer {} *x3; struct CGRect { struct CGPoint { double x_1_2_1; double x_1_2_2; } x_4_1_1; struct CGSize { double x_2_2_1; double x_2_2_2; } x_4_1_2; } x4; struct __CFAttributedString {} *x5; unsigned char x6; } * layerInternal;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -13,7 +13,6 @@
 
 - (void)dealloc;
 - (void)drawLayer:(id)arg1 inContext:(struct CGContext { }*)arg2;
-- (void)finalize;
 - (struct __CFString { }*)getContentID;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })getSuggestedBounds:(unsigned char)arg1;
 - (id)init;

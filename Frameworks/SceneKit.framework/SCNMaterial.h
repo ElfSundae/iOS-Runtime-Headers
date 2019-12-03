@@ -9,6 +9,9 @@
     bool  _avoidsOverLighting;
     NSMutableDictionary * _bindings;
     long long  _blendMode;
+    SCNMaterialProperty * _clearCoat;
+    SCNMaterialProperty * _clearCoatNormal;
+    SCNMaterialProperty * _clearCoatRoughness;
     long long  _colorBufferWriteMask;
     long long  _cullMode;
     SCNMaterialProperty * _diffuse;
@@ -46,6 +49,9 @@
 @property (nonatomic, readonly) SCNMaterialProperty *ambientOcclusion;
 @property (readonly) NSArray *animationKeys;
 @property (nonatomic) long long blendMode;
+@property (nonatomic, readonly) SCNMaterialProperty *clearCoat;
+@property (nonatomic, readonly) SCNMaterialProperty *clearCoatNormal;
+@property (nonatomic, readonly) SCNMaterialProperty *clearCoatRoughness;
 @property (nonatomic) long long colorBufferWriteMask;
 @property (nonatomic) long long cullMode;
 @property (readonly, copy) NSString *debugDescription;
@@ -121,9 +127,12 @@
 - (void)bindAnimatablePath:(id)arg1 toObject:(id)arg2 withKeyPath:(id)arg3 options:(id)arg4;
 - (long long)blendMode;
 - (id)builtinProperties;
+- (id)clearCoat;
+- (id)clearCoatNormal;
+- (id)clearCoatRoughness;
 - (id)color;
 - (long long)colorBufferWriteMask;
-- (struct __C3DEffectCommonProfile { struct __CFRuntimeBase { unsigned long long x_1_1_1; unsigned long long x_1_1_2; } x1; struct __C3DMaterial {} *x2; int x3; struct __C3DEffectSlot {} *x4; struct __C3DEffectSlot {} *x5; struct __C3DEffectSlot {} *x6; struct __C3DEffectSlot {} *x7; struct __C3DEffectSlot {} *x8; struct __C3DEffectSlot {} *x9; struct __C3DEffectSlot {} *x10; struct __C3DEffectSlot {} *x11; struct __C3DEffectSlot {} *x12; struct __C3DEffectSlot {} *x13; struct __C3DEffectSlot {} *x14; struct __C3DEffectSlot {} *x15; struct __C3DEffectSlot {} *x16; float x17; float x18; float x19; float x20; float x21; unsigned char x22; long long x23; bool x24; bool x25; unsigned int x26 : 1; unsigned int x27 : 1; unsigned int x28 : 1; unsigned int x29 : 1; unsigned int x30 : 1; unsigned int x31 : 1; unsigned int x32 : 1; unsigned int x33 : 1; unsigned int x34 : 1; unsigned int x35 : 13; }*)commonProfile;
+- (struct __C3DEffectCommonProfile { struct __CFRuntimeBase { unsigned long long x_1_1_1; _Atomic unsigned long long x_1_1_2; } x1; struct __C3DMaterial {} *x2; int x3; struct __C3DEffectSlot {} *x4; struct __C3DEffectSlot {} *x5; struct __C3DEffectSlot {} *x6; struct __C3DEffectSlot {} *x7; struct __C3DEffectSlot {} *x8; struct __C3DEffectSlot {} *x9; struct __C3DEffectSlot {} *x10; struct __C3DEffectSlot {} *x11; struct __C3DEffectSlot {} *x12; struct __C3DEffectSlot {} *x13; struct __C3DEffectSlot {} *x14; struct __C3DEffectSlot {} *x15; struct __C3DEffectSlot {} *x16; struct __C3DEffectSlot {} *x17; struct __C3DEffectSlot {} *x18; struct __C3DEffectSlot {} *x19; float x20; float x21; float x22; float x23; float x24; unsigned char x25; long long x26; bool x27; bool x28; unsigned int x29 : 1; unsigned int x30 : 1; unsigned int x31 : 1; unsigned int x32 : 1; unsigned int x33 : 1; unsigned int x34 : 1; unsigned int x35 : 1; unsigned int x36 : 1; unsigned int x37 : 1; unsigned int x38 : 13; }*)commonProfile;
 - (id)content;
 - (id)contents;
 - (id)copy;

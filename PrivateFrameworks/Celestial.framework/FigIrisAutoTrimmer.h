@@ -13,6 +13,7 @@
     double  _captureMotionDeltaPeriod;
     unsigned long long  _estimatedIntermediatesCount;
     bool  _haveCaptureMotionDelta;
+    bool  _intermediateLoggingEnabled;
     struct { 
         double w; 
         double x; 
@@ -46,13 +47,21 @@
     float  _svmRBFRho;
     int  _svmVectorCount;
     NSData * _svmVectors;
+    bool  _vitalityScoringEnabled;
+    struct { 
+        unsigned short major; 
+        unsigned short minor; 
+        unsigned short patch; 
+    }  _vitalityScoringSmartCameraPipelineVersion;
 }
 
 @property (nonatomic, readonly) bool trimmingActive;
+@property (nonatomic, readonly) unsigned int vitalityScoringVersion;
 
 + (void)initialize;
 
 - (bool)_checkSamplesContainHostTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
+- (float)_computeVitalityFrom:(long long)arg1 to:(long long)arg2;
 - (double)_directionalWeightForSample:(id)arg1;
 - (long long)_findClosestIndexToHostTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 fromIndex:(long long)arg2 limitIndex:(long long)arg3;
 - (long long)_findClosestIndexToOffset:(double)arg1 atLeastOneFromIndex:(long long)arg2 limitIndex:(long long)arg3;
@@ -68,19 +77,28 @@
 - (void)_updateStorageStats;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })beginTrimmingForStillImageHostPTS:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 minimumPTS:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2;
 - (double)bufferHistorySeconds;
+- (float)computeVitalityScoreForStillImageHostPTS:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 movieRange:(struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; })arg2;
 - (void)dealloc;
 - (int)emissionStatusForHostPTS:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
+- (id)exportMotionSamples;
 - (id)init;
+- (bool)intermediateLoggingEnabled;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })maxHoldDuration;
-- (void)processDetectedFaces:(id)arg1 forHostTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2;
+- (void)processCountOfVisibleVitalityObjects:(int)arg1 forHostTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2;
 - (void)processISPMotionData:(id)arg1 forHostTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2;
 - (void)processInferences:(id)arg1 forHostTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2;
 - (void)setBufferHistorySeconds:(double)arg1;
+- (void)setIntermediateLoggingEnabled:(bool)arg1;
 - (void)setMaxHoldDuration:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (void)setVideoFrameRate:(double)arg1;
+- (void)setVitalityScoringEnabled:(bool)arg1;
+- (void)setVitalityScoringSmartCameraPipelineVersion:(struct { unsigned short x1; unsigned short x2; unsigned short x3; })arg1;
 - (void)startMotionProcessing;
 - (void)stopMotionProcessing;
 - (bool)trimmingActive;
 - (double)videoFrameRate;
+- (bool)vitalityScoringEnabled;
+- (struct { unsigned short x1; unsigned short x2; unsigned short x3; })vitalityScoringSmartCameraPipelineVersion;
+- (unsigned int)vitalityScoringVersion;
 
 @end

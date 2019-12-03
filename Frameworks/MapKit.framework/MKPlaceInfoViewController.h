@@ -27,12 +27,14 @@
 - (void).cxx_destruct;
 - (void)_addContactRow:(id)arg1 ofType:(unsigned long long)arg2 toViews:(id)arg3 defaultTitle:(id)arg4;
 - (id)_addRowForType:(unsigned long long)arg1 withValue:(id)arg2 toViews:(id)arg3;
+- (bool)_canShowWhileLocked;
 - (void)_configureRow:(id)arg1 ofType:(unsigned long long)arg2 withValue:(id)arg3;
 - (id)_createViewForInfoRow:(unsigned long long)arg1;
 - (void)_launchMapsDirectionsWithSource:(id)arg1 destination:(id)arg2 directionsMode:(id)arg3;
 - (void)_menuDismissed:(id)arg1;
 - (void)_rowLongPressed:(id)arg1;
 - (void)_shareAddress:(id)arg1 fromView:(id)arg2;
+- (bool)_shouldShowSuggestAnEdit;
 - (void)_updateViewsAnimated:(bool)arg1;
 - (id)actionDelegate;
 - (unsigned long long)actionTypeFromRowType:(unsigned long long)arg1;
@@ -42,6 +44,7 @@
 - (bool)gestureRecognizerShouldBegin:(id)arg1;
 - (bool)hasContent;
 - (id)infoCardChildPossibleActions;
+- (id)infoCardChildUnactionableUIElements;
 - (id)initWithPlaceItem:(id)arg1;
 - (id)mapItem;
 - (bool)offlineMode;

@@ -25,8 +25,8 @@
 - (struct CGSize { double x1; double x2; })dimensions;
 - (float)estimatedDataRate;
 - (id)extendedLanguageTag;
-- (void)finalize;
 - (id)formatDescriptions;
+- (bool)hasAudioSampleDependencies;
 - (unsigned long long)hash;
 - (bool)isDecodable;
 - (bool)isEnabled;
@@ -35,6 +35,7 @@
 - (bool)isPlayable;
 - (bool)isSelfContained;
 - (id)languageCode;
+- (struct { long long x1; int x2; unsigned int x3; long long x4; })latentBaseDecodeTimeStampOfFirstTrackFragment;
 - (long long)layer;
 - (id)loudnessInfo;
 - (id)mediaCharacteristics;
@@ -44,6 +45,7 @@
 - (struct CGSize { double x1; double x2; })naturalSize;
 - (int)naturalTimeScale;
 - (float)nominalFrameRate;
+- (float)peakDataRate;
 - (int)playabilityValidationResult;
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })preferredTransform;
 - (float)preferredVolume;

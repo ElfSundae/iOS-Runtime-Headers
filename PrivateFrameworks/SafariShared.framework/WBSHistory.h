@@ -8,6 +8,9 @@
     bool  _hasStartedLoadingHistory;
     double  _historyAgeLimit;
     <WBSHistoryStore> * _historyStore;
+    WBSHistoryTagMap * _historyTagMap;
+    NSCountedSet * _hostnameToHistoryItemCount;
+    NSObject<OS_dispatch_queue> * _hostnameToHistoryItemCountAccessQueue;
     NSCountedSet * _stringsForUserTypedDomainExpansion;
     NSObject<OS_dispatch_queue> * _waitUntilHistoryHasLoadedQueue;
 }
@@ -20,6 +23,7 @@
 @property (nonatomic, readonly) bool hasAnyHistoryItems;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double historyAgeLimit;
+@property (nonatomic, readonly) WBSHistoryTagMap *historyTagMap;
 @property (nonatomic, copy) NSData *longLivedSaveOperationData;
 @property (nonatomic, readonly) unsigned long long numberOfHistoryItems;
 @property (nonatomic, readonly) unsigned long long numberOfHistoryItemsOnHistoryQueue;
@@ -27,6 +31,7 @@
 @property (nonatomic, copy) NSData *pushThrottlerData;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSData *syncCircleSizeRetrievalThrottlerData;
+@property (nonatomic) bool syncsWithManateeContainer;
 
 + (void)clearExistingSharedHistory;
 + (id)existingSharedHistory;
@@ -38,7 +43,9 @@
 - (void)_addItem:(id)arg1 addToStringsForUserTypedDomainExpansions:(bool)arg2;
 - (void)_addItemToStringsForUserTypedDomainExpansion:(id)arg1;
 - (void)_addVisitedLinksForItemsIfNeeded:(id)arg1;
+- (void)_clearHostnameCount;
 - (id)_createHistoryStore;
+- (void)_dispatchDidRemoveHostnames:(id)arg1;
 - (void)_dispatchHistoryCleared:(id)arg1;
 - (void)_dispatchHistoryItemDidChange:(id)arg1 byUserInitiatedAction:(bool)arg2;
 - (void)_dispatchHistoryItemWillChange:(id)arg1;
@@ -61,9 +68,12 @@
 - (void)_setAttributes:(unsigned long long)arg1 forVisit:(id)arg2;
 - (void)_startLoading;
 - (void)_unload;
+- (void)_updateHostnameCountWithAddedHistoryItems:(id)arg1;
+- (id)_updateHostnameCountWithDeletedHistoryItems:(id)arg1;
 - (void)_waitUntilHistoryHasLoadedMainThread;
 - (void)addAttributes:(unsigned long long)arg1 toVisit:(id)arg2;
 - (void)addAutocompleteTrigger:(id)arg1 forURLString:(id)arg2;
+- (void)addTagWithIdentifier:(id)arg1 title:(id)arg2 toItemAtURL:(id)arg3 level:(long long)arg4 completionHandler:(id /* block */)arg5;
 - (id)allItems;
 - (unsigned long long)cachedNumberOfDevicesInSyncCircle;
 - (bool)canRecordRedirectFromVisit:(id)arg1 to:(id)arg2;
@@ -77,6 +87,8 @@
 - (void)enumerateItemsAsynchronouslyUsingBlock:(id /* block */)arg1 completionHandler:(id /* block */)arg2;
 - (void)enumerateItemsUsingBlock:(id /* block */)arg1;
 - (id)fetchThrottlerData;
+- (void)fetchTopicsFromStartDate:(id)arg1 toEndDate:(id)arg2 completionHandler:(id /* block */)arg3;
+- (void)fetchTopicsFromStartDate:(id)arg1 toEndDate:(id)arg2 limit:(unsigned long long)arg3 minimumItemCount:(unsigned long long)arg4 sortOrder:(long long)arg5 completionHandler:(id /* block */)arg6;
 - (void)getAllTombstonesWithCompletion:(id /* block */)arg1;
 - (void)getServerChangeTokenDataWithCompletion:(id /* block */)arg1;
 - (void)getVisitsAndTombstonesNeedingSyncWithVisitSyncWindow:(double)arg1 completion:(id /* block */)arg2;
@@ -85,14 +97,17 @@
 - (double)historyAgeLimit;
 - (void)historyLoader:(id)arg1 didLoadItems:(id)arg2 discardedItems:(id)arg3 stringsForUserTypeDomainExpansion:(id)arg4;
 - (void)historyLoaderDidFinishLoading:(id)arg1;
+- (void)historyStore:(id)arg1 didAddVisits:(id)arg2;
 - (void)historyStore:(id)arg1 didPrepareToDeleteWithDeletionPlan:(id)arg2;
 - (void)historyStore:(id)arg1 didRemoveItems:(id)arg2;
 - (void)historyStore:(id)arg1 didRemoveVisits:(id)arg2;
 - (void)historyStoreDidFailDatabaseIntegrityCheck:(id)arg1;
 - (bool)historyStoreShouldCheckDatabaseIntegrity:(id)arg1;
+- (id)historyTagMap;
 - (id)init;
 - (id)itemForURL:(id)arg1;
 - (id)itemForURLString:(id)arg1;
+- (id)itemForURLString:(id)arg1 createIfNeeded:(bool)arg2;
 - (id)itemRedirectedFrom:(id)arg1 to:(id)arg2 origin:(long long)arg3 date:(id)arg4;
 - (id)itemVisitedAtURLString:(id)arg1 title:(id)arg2 timeOfVisit:(double)arg3 wasHTTPNonGet:(bool)arg4 wasFailure:(bool)arg5 increaseVisitCount:(bool)arg6 origin:(long long)arg7;
 - (id)itemVisitedAtURLString:(id)arg1 title:(id)arg2 timeOfVisit:(double)arg3 wasHTTPNonGet:(bool)arg4 wasFailure:(bool)arg5 increaseVisitCount:(bool)arg6 origin:(long long)arg7 attributes:(unsigned long long)arg8;
@@ -121,9 +136,13 @@
 - (void)setPushThrottlerData:(id)arg1;
 - (void)setServerChangeTokenData:(id)arg1;
 - (void)setSyncCircleSizeRetrievalThrottlerData:(id)arg1;
+- (void)setSyncsWithManateeContainer:(bool)arg1;
+- (void)setTitle:(id)arg1 ofTag:(id)arg2 completionHandler:(id /* block */)arg3;
 - (id)syncCircleSizeRetrievalThrottlerData;
+- (bool)syncsWithManateeContainer;
 - (void)updateHistoryAfterSuccessfulPersistedLongLivedSaveOperationWithGeneration:(long long)arg1 completion:(id /* block */)arg2;
 - (void)updateTitle:(id)arg1 forVisit:(id)arg2;
+- (void)vacuumHistoryWithCompletionHandler:(id /* block */)arg1;
 - (void)visitIdentifiersMatchingExistingVisits:(id)arg1 populateAssociatedVisits:(bool)arg2 completion:(id /* block */)arg3;
 - (void)waitUntilHistoryHasLoaded;
 

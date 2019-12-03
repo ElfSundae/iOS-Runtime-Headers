@@ -3,7 +3,7 @@
  */
 
 @interface NUBufferImageAdapter : NSObject <NUBufferImage> {
-    <NUBuffer> * _buffer;
+    <NUBufferProvider> * _bufferProvider;
     NUColorSpace * _colorSpace;
     NUImageLayout * _layout;
     NURegion * _validRegion;
@@ -21,10 +21,12 @@
 
 - (void).cxx_destruct;
 - (id)colorSpace;
+- (id)debugQuickLookObject;
 - (id)format;
 - (id)immutableImageCopy;
 - (id)init;
 - (id)initWithBuffer:(id)arg1 colorSpace:(id)arg2 validRegion:(id)arg3;
+- (id)initWithBufferProvider:(id)arg1 colorSpace:(id)arg2 validRegion:(id)arg3;
 - (id)layout;
 - (id)mutableImageCopy;
 - (id)mutablePurgeableImageCopy;

@@ -14,8 +14,8 @@
 @property (nonatomic, readonly) NSString *localPart;
 @property (nonatomic) struct _NSRange { unsigned long long x1; unsigned long long x2; } middleTruncationRange;
 
+- (void).cxx_destruct;
 - (id)attributedStringWithFontSize:(double)arg1 maximumWidth:(double)arg2 options:(unsigned long long)arg3;
-- (void)dealloc;
 - (id)description;
 - (id)domainPart;
 - (id)initWithAddress:(id)arg1;

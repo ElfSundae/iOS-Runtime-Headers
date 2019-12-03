@@ -10,6 +10,7 @@
     bool  _onlyShowsFavorites;
     <HFCharacteristicValueSource> * _overrideValueSource;
     HMRoom * _room;
+    HFItem<HFServiceLikeItem> * _serviceLikeItem;
 }
 
 @property (nonatomic, readonly) unsigned long long actionSetItemStyle;
@@ -19,6 +20,7 @@
 @property (nonatomic) bool onlyShowsFavorites;
 @property (nonatomic, retain) <HFCharacteristicValueSource> *overrideValueSource;
 @property (nonatomic, retain) HMRoom *room;
+@property (nonatomic, copy) HFItem<HFServiceLikeItem> *serviceLikeItem;
 @property (nonatomic, retain) <HFCharacteristicValueSource> *valueSource;
 
 - (void).cxx_destruct;
@@ -37,11 +39,13 @@
 - (id)overrideValueSource;
 - (id)reloadItems;
 - (id)room;
+- (id)serviceLikeItem;
 - (void)setActionSetItems:(id)arg1;
 - (void)setFilter:(id /* block */)arg1;
 - (void)setOnlyShowsFavorites:(bool)arg1;
 - (void)setOverrideValueSource:(id)arg1;
 - (void)setRoom:(id)arg1;
+- (void)setServiceLikeItem:(id)arg1;
 - (void)setValueSource:(id)arg1;
 - (id)valueSource;
 

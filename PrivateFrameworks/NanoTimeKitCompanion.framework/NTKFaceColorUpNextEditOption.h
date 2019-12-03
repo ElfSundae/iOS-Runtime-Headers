@@ -8,6 +8,6 @@
 + (id)_orderedValuesForDevice:(id)arg1;
 + (id)_snapshotKeyForValue:(unsigned long long)arg1 forDevice:(id)arg2;
 
-- (bool)optionExistsInOSVersion:(unsigned int)arg1;
+- (bool)optionExistsInDevice:(id)arg1;
 
 @end

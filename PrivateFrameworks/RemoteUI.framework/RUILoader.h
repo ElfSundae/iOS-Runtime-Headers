@@ -9,6 +9,7 @@
     _RUILoaderSessionDelegateAdapter * _sessionDelegateAdapter;
     RUIStyle * _style;
     NSURL * _url;
+    long long  _userInterfaceStyle;
 }
 
 @property (nonatomic) bool allowNonSecureHTTP;
@@ -18,6 +19,7 @@
 @property (nonatomic) <RUIParserDelegate> *parserDelegate;
 @property (nonatomic, retain) RUIStyle *style;
 @property (readonly) Class superclass;
+@property (nonatomic) long long userInterfaceStyle;
 
 - (void).cxx_destruct;
 - (id)URL;
@@ -43,9 +45,11 @@
 - (void)setAllowNonSecureHTTP:(bool)arg1;
 - (void)setParserDelegate:(id)arg1;
 - (void)setStyle:(id)arg1;
+- (void)setUserInterfaceStyle:(long long)arg1;
 - (void)shouldLoadRequest:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)style;
 - (id)urlSessionDelegate;
+- (long long)userInterfaceStyle;
 - (void)webViewFinishedLoading;
 
 @end

@@ -16,10 +16,12 @@
 - (bool)disableXHeightMatching;
 - (double)fontSizeAdjustedForXHeight;
 - (double)inlineCenteredAlignmentHorizontalOffset;
+- (void)invalidateTextScalePercent;
 - (id)layoutGeometryFromInfo;
 - (double)p_fontSizeThatMatchesXHeightForFontName:(id)arg1 fontSize:(double)arg2;
+- (id)p_layoutTarget;
 - (void)setDisableXHeightMatching:(bool)arg1;
 - (bool)wantsRoundedInlinePosition;
-- (void)willLayoutInlineWithMaximumSize:(struct CGSize { double x1; double x2; })arg1;
+- (void)willLayoutInlineWithMaximumSize:(struct CGSize { double x1; double x2; })arg1 textScale:(double)arg2;
 
 @end

@@ -11,7 +11,7 @@
 
 + (id)tokenTreeNodeWithIndexAndType:(unsigned int)arg1 type:(int)arg2;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)firstChild;
 - (id)init;

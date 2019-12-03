@@ -5,6 +5,6 @@
 
 @optional
 
-- (void)metadataWasRecognized:(NSArray *)arg1;
+- (void)metadataWasRecognized:(NSArray *)arg1 forMetadataObjectTypes:(NSSet *)arg2;
 
 @end

@@ -19,6 +19,7 @@
 @property (nonatomic, copy) NSString *title;
 
 + (bool)isSuppressingChangeNotifications;
++ (void)performChangeImmediately:(id /* block */)arg1;
 + (void)performSuppressingChangeNotifications:(id /* block */)arg1;
 + (bool)shouldPushArtworkData;
 

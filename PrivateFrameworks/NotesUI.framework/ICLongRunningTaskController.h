@@ -3,7 +3,9 @@
  */
 
 @interface ICLongRunningTaskController : NSObject <ICProgressViewControllerDelegate> {
+    bool  _allowSingleUnitProgress;
     id /* block */  _completionBlock;
+    NSString * _customCancelButtonTitle;
     double  _intervalBeforeOpeningProgressDialog;
     bool  _isCancelled;
     id  _keepAlive;
@@ -21,7 +23,9 @@
     struct UIWindow { Class x1; } * _window;
 }
 
+@property (nonatomic) bool allowSingleUnitProgress;
 @property (nonatomic, copy) id /* block */ completionBlock;
+@property (nonatomic, retain) NSString *customCancelButtonTitle;
 @property (nonatomic) double intervalBeforeOpeningProgressDialog;
 @property (nonatomic) bool isCancelled;
 @property (nonatomic, retain) id keepAlive;
@@ -41,9 +45,11 @@
 + (void)setMainWindow:(struct UIWindow { Class x1; }*)arg1;
 
 - (void).cxx_destruct;
+- (bool)allowSingleUnitProgress;
 - (void)closeProgressDialog;
 - (void)completeTaskIfNecessary;
 - (id /* block */)completionBlock;
+- (id)customCancelButtonTitle;
 - (id)init;
 - (id)initWithWindow:(struct UIWindow { Class x1; }*)arg1 intervalBeforeOpeningProgressDialog:(double)arg2;
 - (double)intervalBeforeOpeningProgressDialog;
@@ -57,7 +63,9 @@
 - (id)progressFormatString;
 - (id)progressViewController;
 - (bool)progressViewControllerDidFinishPresenting;
+- (void)setAllowSingleUnitProgress:(bool)arg1;
 - (void)setCompletionBlock:(id /* block */)arg1;
+- (void)setCustomCancelButtonTitle:(id)arg1;
 - (void)setIntervalBeforeOpeningProgressDialog:(double)arg1;
 - (void)setIsCancelled:(bool)arg1;
 - (void)setKeepAlive:(id)arg1;

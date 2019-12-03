@@ -8,10 +8,10 @@
 
 @property (copy) NSString *folderID;
 
-- (id)URLStringWithAccount:(id)arg1;
+- (void).cxx_destruct;
+- (id)URLWithAccount:(id)arg1;
 - (id)_folderID;
 - (id)_privacySafeDescription;
-- (void)dealloc;
 - (id)dictionaryRepresentation;
 - (id)displayName;
 - (id)folderID;

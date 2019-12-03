@@ -11,7 +11,9 @@
     bool  _didError;
     NSDictionary * _felicaInfo;
     unsigned short  _informative;
+    NSString * _keyIdentifier;
     NSDictionary * _parsedInfo;
+    NSString * _readerIdentifier;
     unsigned short  _result;
     unsigned short  _status;
     NSData * _tlv;
@@ -26,7 +28,9 @@
 @property (nonatomic, readonly) bool didError;
 @property (nonatomic, readonly) NSDictionary *felicaInfo;
 @property (nonatomic, readonly) unsigned short informative;
+@property (nonatomic, readonly) NSString *keyIdentifier;
 @property (nonatomic, readonly) NSDictionary *parsedInfo;
+@property (nonatomic, readonly) NSString *readerIdentifier;
 @property (nonatomic, readonly) unsigned short result;
 @property (nonatomic, readonly) unsigned short status;
 @property (nonatomic, readonly) NSData *tlv;
@@ -51,7 +55,9 @@
 - (unsigned short)informative;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
+- (id)keyIdentifier;
 - (id)parsedInfo;
+- (id)readerIdentifier;
 - (unsigned short)result;
 - (unsigned short)status;
 - (id)tlv;

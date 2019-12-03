@@ -50,7 +50,7 @@
 
 - (id)apui_keyPeople;
 
-// Image: /System/Library/PrivateFrameworks/VoiceShortcutsUI.framework/VoiceShortcutsUI
+// Image: /System/Library/PrivateFrameworks/WorkflowUI.framework/WorkflowUI
 
 - (id)vcui_keyPeople;
 

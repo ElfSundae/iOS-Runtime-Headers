@@ -10,9 +10,19 @@
         unsigned long long size; 
     }  _directoryGroupingIds;
     struct { 
-        unsigned int buildingId : 1; 
-        unsigned int muid : 1; 
-    }  _has;
+        unsigned int has_buildingId : 1; 
+        unsigned int has_muid : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_directoryGroupingIds : 1; 
+        unsigned int read_levelIds : 1; 
+        unsigned int read_label : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_directoryGroupingIds : 1; 
+        unsigned int wrote_levelIds : 1; 
+        unsigned int wrote_buildingId : 1; 
+        unsigned int wrote_label : 1; 
+        unsigned int wrote_muid : 1; 
+    }  _flags;
     GEOPDVenueLabel * _label;
     struct { 
         unsigned long long *list; 
@@ -20,6 +30,12 @@
         unsigned long long size; 
     }  _levelIds;
     unsigned long long  _muid;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     PBUnknownFields * _unknownFields;
 }
 
@@ -35,12 +51,20 @@
 @property (nonatomic) unsigned long long muid;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_addNoFlagsDirectoryGroupingId:(unsigned long long)arg1;
+- (void)_addNoFlagsLevelId:(unsigned long long)arg1;
+- (void)_readDirectoryGroupingIds;
+- (void)_readLabel;
+- (void)_readLevelIds;
 - (void)addDirectoryGroupingId:(unsigned long long)arg1;
 - (void)addLevelId:(unsigned long long)arg1;
 - (unsigned long long)buildingId;
 - (void)clearDirectoryGroupingIds;
 - (void)clearLevelIds;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -53,6 +77,8 @@
 - (bool)hasLabel;
 - (bool)hasMuid;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)label;
 - (unsigned long long)levelIdAtIndex:(unsigned long long)arg1;
@@ -60,6 +86,7 @@
 - (unsigned long long)levelIdsCount;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)muid;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setBuildingId:(unsigned long long)arg1;
 - (void)setDirectoryGroupingIds:(unsigned long long*)arg1 count:(unsigned long long)arg2;

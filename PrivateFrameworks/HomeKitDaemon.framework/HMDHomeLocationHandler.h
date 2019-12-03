@@ -4,6 +4,7 @@
 
 @interface HMDHomeLocationHandler : HMFObject <HMDBatchLocationDelegate, HMDHomeMessageReceiver, NSSecureCoding> {
     HMDHome * _home;
+    NSString * _isoCountryCode;
     CLLocation * _location;
     int  _locationAuthorization;
     NSDate * _locationUpdateTimestamp;
@@ -17,6 +18,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) HMDHome *home;
+@property (nonatomic, retain) NSString *isoCountryCode;
 @property (nonatomic, retain) CLLocation *location;
 @property (nonatomic) int locationAuthorization;
 @property (nonatomic, readonly) HMDHomeLocationData *locationData;
@@ -48,7 +50,6 @@
 - (void)_updateTimeZone:(id)arg1;
 - (void)accessoriesBecomeReachable;
 - (void)accessoriesBecomeUnreachable;
-- (void)accessoryAdded;
 - (void)configure:(id)arg1 queue:(id)arg2 messageDispatcher:(id)arg3;
 - (void)dealloc;
 - (id)description;
@@ -62,6 +63,7 @@
 - (id)initWithCoder:(id)arg1;
 - (bool)isDate:(id)arg1 laterThanDate:(id)arg2;
 - (bool)isLocation:(id)arg1 closeToLocation:(id)arg2;
+- (id)isoCountryCode;
 - (id)location;
 - (int)locationAuthorization;
 - (id)locationData;
@@ -73,6 +75,7 @@
 - (id)region;
 - (void)runTransactionWithLocation:(id)arg1 updateTime:(id)arg2;
 - (void)setHome:(id)arg1;
+- (void)setIsoCountryCode:(id)arg1;
 - (void)setLocation:(id)arg1;
 - (void)setLocationAuthorization:(int)arg1;
 - (void)setLocationUpdateTimestamp:(id)arg1;
@@ -81,6 +84,7 @@
 - (void)setTimeZone:(id)arg1;
 - (void)setWorkQueue:(id)arg1;
 - (id)timeZone;
+- (void)updateHomeLocation;
 - (id)workQueue;
 
 @end

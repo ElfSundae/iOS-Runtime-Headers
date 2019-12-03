@@ -5,5 +5,7 @@
 @interface FUUtils : NSObject
 
 + (void)enumerateFlightCodesInString:(id)arg1 usingBlock:(id /* block */)arg2;
++ (void)setTestDate:(id)arg1;
++ (id)testDate;
 
 @end

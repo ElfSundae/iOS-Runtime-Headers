@@ -16,7 +16,7 @@
 @property (nonatomic) unsigned long long numOfIterations;
 @property (nonatomic, retain) CLLocation *selectedHomeLocation;
 @property (readonly) Class superclass;
-@property (nonatomic, retain) NSArray *tuples;
+@property (nonatomic, copy) NSArray *tuples;
 
 + (id)eventWithLocationTuples:(id)arg1 selectedHomeLocation:(id)arg2 numberOfIterations:(unsigned long long)arg3 nearestLOI:(id)arg4;
 + (void)initialize;

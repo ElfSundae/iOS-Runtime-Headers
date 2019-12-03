@@ -7,6 +7,7 @@
     WFGeocodeRequest * _activeGeocodeRequest;
     NSNumber * _airQualityCategory;
     NSNumber * _airQualityIdx;
+    WFAQIScaleCategory * _airQualityScaleCategory;
     bool  _autoUpdate;
     NSTimer * _autoUpdateTimer;
     NSHashTable * _cityUpdateObservers;
@@ -57,6 +58,7 @@
 @property (nonatomic, retain) WFGeocodeRequest *activeGeocodeRequest;
 @property (nonatomic, retain) NSNumber *airQualityCategory;
 @property (nonatomic, retain) NSNumber *airQualityIdx;
+@property (nonatomic, retain) WFAQIScaleCategory *airQualityScaleCategory;
 @property (nonatomic) bool autoUpdate;
 @property (nonatomic, retain) NSTimer *autoUpdateTimer;
 @property (nonatomic, retain) NSHashTable *cityUpdateObservers;
@@ -122,6 +124,7 @@
 - (void)addUpdateObserver:(id)arg1;
 - (id)airQualityCategory;
 - (id)airQualityIdx;
+- (id)airQualityScaleCategory;
 - (bool)autoUpdate;
 - (id)autoUpdateTimer;
 - (id)cityAndState;
@@ -184,6 +187,7 @@
 - (void)setActiveGeocodeRequest:(id)arg1;
 - (void)setAirQualityCategory:(id)arg1;
 - (void)setAirQualityIdx:(id)arg1;
+- (void)setAirQualityScaleCategory:(id)arg1;
 - (void)setAutoUpdate:(bool)arg1;
 - (void)setAutoUpdateTimer:(id)arg1;
 - (void)setCityUpdateObservers:(id)arg1;

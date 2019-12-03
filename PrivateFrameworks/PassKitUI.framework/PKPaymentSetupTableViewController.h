@@ -2,9 +2,8 @@
    Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
  */
 
-@interface PKPaymentSetupTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
-    long long  _backdropStyle;
-    _UIBackdropView * _backdropView;
+@interface PKPaymentSetupTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, _PKUIKVisibilityBackdropViewDelegate> {
+    _PKUIKVisibilityBackdropView * _backdropView;
     double  _backdropWeight;
     bool  _clearsSelectionOnViewWillAppear;
     UIView * _containerView;
@@ -15,7 +14,6 @@
     long long  _style;
     UITableView * _tableView;
     UITableViewController * _tableViewController;
-    bool  _updatingBackdropSettings;
 }
 
 @property (nonatomic) bool clearsSelectionOnViewWillAppear;
@@ -30,7 +28,6 @@
 @property (nonatomic, readonly) UITableView *tableView;
 
 - (void).cxx_destruct;
-- (void)_accessibilitySettingsDidChange:(id)arg1;
 - (bool)clearsSelectionOnViewWillAppear;
 - (long long)context;
 - (void)dealloc;
@@ -54,5 +51,6 @@
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;
 - (void)viewWillLayoutSubviews;
+- (long long)visibilityBackdropView:(id)arg1 preferredStyleForTraitCollection:(id)arg2;
 
 @end

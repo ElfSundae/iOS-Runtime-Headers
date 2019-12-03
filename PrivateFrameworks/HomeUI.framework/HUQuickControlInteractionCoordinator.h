@@ -23,6 +23,7 @@
 - (id)initWithControlView:(id)arg1 delegate:(id)arg2;
 - (bool)isUserInteractionActive;
 - (bool)isUserInteractionEnabled;
+- (void)recordInteractionStart;
 - (void)setDelegate:(id)arg1;
 - (void)setUserInteractionEnabled:(bool)arg1;
 - (void)setViewVisible:(bool)arg1;

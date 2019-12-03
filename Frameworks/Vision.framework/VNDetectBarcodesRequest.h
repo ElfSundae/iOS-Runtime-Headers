@@ -26,7 +26,7 @@
 - (void)applyConfigurationOfRequest:(id)arg1;
 - (bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id*)arg3;
 - (id)locateMode;
-- (id)newBarcodeObservationForACBSBarcodeInfo:(id)arg1 imageWidth:(unsigned long long)arg2 imageHeight:(unsigned long long)arg3 roiCroppingPixelRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg4 scanConfidence:(float)arg5 requestRevision:(unsigned long long)arg6 error:(id*)arg7;
+- (id)newBarcodeObservationForACBSBarcodeInfo:(id)arg1 imageWidth:(unsigned long long)arg2 imageHeight:(unsigned long long)arg3 roiCroppingPixelRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg4 requestRevision:(unsigned long long)arg5 error:(id*)arg6;
 - (void)setLocateMode:(id)arg1;
 - (void)setSymbologies:(id)arg1;
 - (id)symbologies;

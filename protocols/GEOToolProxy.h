@@ -10,6 +10,8 @@
 - (id)getDefault:(NSString *)arg1 source:(long long*)arg2;
 - (void)invalidateTileCache;
 - (void)lockDBs;
+- (bool)notifyNetworkDefaultsChanged;
+- (NSString *)ping;
 - (void)unlockDBs;
 
 @end

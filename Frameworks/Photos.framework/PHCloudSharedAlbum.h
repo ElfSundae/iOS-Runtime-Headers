@@ -20,6 +20,8 @@
 @property (nonatomic, readonly, retain) NSString *cloudOwnerLastName;
 @property (getter=isOwned, nonatomic, readonly) bool owned;
 
+// Image: /System/Library/Frameworks/Photos.framework/Photos
+
 + (id)fetchType;
 + (id)identifierCode;
 + (id)managedEntityName;
@@ -37,8 +39,13 @@
 - (id)description;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
 - (bool)isCloudMultipleContributorsEnabled;
+- (bool)isMultipleContributorCloudSharedAlbum;
 - (bool)isOwned;
 - (bool)isOwnedCloudSharedAlbum;
 - (id)localizedSharedByLabelAllowsEmail:(bool)arg1;
+
+// Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
+
+- (id)px_debugDictionary;
 
 @end

@@ -49,6 +49,7 @@
 - (unsigned long long)defaultConversationLoadMoreCount;
 - (unsigned long long)defaultConversationViewingMessageCount;
 - (id)defaultWaveformImage;
+- (bool)disableTranscriptOrb;
 - (struct CGSize { double x1; double x2; })documentIconSize;
 - (double)emojiPreviewMaxWidth;
 - (double)extensionBalloonMaximumHeight;

@@ -10,7 +10,6 @@
     struct CGGradient { } * _exerciseBarGradient;
     double  _exerciseChartBottomLineY;
     NSDictionary * _exerciseChartPoints;
-    NSArray * _exerciseGraphData;
     NSDateFormatter * _hourFormatter;
     NSNumber * _maxExerciseValue;
     NSNumber * _maxMoveValue;
@@ -19,43 +18,32 @@
     struct CGGradient { } * _moveBarGradient;
     double  _moveChartBottomLineY;
     NSDictionary * _moveChartPoints;
-    NSArray * _moveGraphData;
     UILabel * _noonHourLabel;
     UILabel * _sixAMHourLabel;
     UILabel * _sixPMHourLabel;
     struct CGGradient { } * _standBarGradient;
     double  _standChartBottomLineY;
     NSDictionary * _standChartPoints;
-    NSArray * _standGraphData;
 }
-
-@property (nonatomic, retain) NSArray *exerciseGraphData;
-@property (nonatomic, retain) NSArray *moveGraphData;
-@property (nonatomic, retain) NSArray *standGraphData;
 
 - (void).cxx_destruct;
 - (void)_createHourFormatter;
 - (void)_currentLocaleChangeOccurred;
 - (void)_drawChartsBarsInContext:(struct CGContext { }*)arg1 lineNumber:(unsigned long long)arg2 xPosition:(double)arg3;
 - (double)_exercisePointRelativeHeightForValue:(double)arg1;
-- (void)_generateChartPoints;
 - (id)_generateChartPointsForQuantityStatisticsInfo:(id)arg1 withUnit:(id)arg2 accumulateFractionalValues:(bool)arg3;
-- (void)_generateExerciseChartPoints;
-- (void)_generateMoveChartPoints;
-- (void)_generateStandChartPointsForStandHourInfo:(id)arg1;
+- (id)_generateStandChartPointsForStandHourInfo:(id)arg1;
 - (id)_keyForDate:(id)arg1;
 - (double)_movePointRelativeHeightForValue:(double)arg1;
 - (void)_registerForNotifications;
+- (id)_timeStringByRemovingSpacesFromTimeString:(id)arg1;
 - (void)_updateHourLabelsText;
 - (void)dealloc;
 - (void)drawRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
-- (id)exerciseGraphData;
 - (id)initForDevice:(id)arg1;
 - (void)layoutSubviews;
-- (id)moveGraphData;
 - (void)setExerciseGraphData:(id)arg1;
 - (void)setMoveGraphData:(id)arg1;
 - (void)setStandGraphData:(id)arg1;
-- (id)standGraphData;
 
 @end

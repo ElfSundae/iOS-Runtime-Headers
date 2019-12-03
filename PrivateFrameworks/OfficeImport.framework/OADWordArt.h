@@ -4,7 +4,6 @@
 
 @interface OADWordArt : OADShape
 
-- (void)dealloc;
 - (id)description;
 - (id)init;
 

@@ -37,6 +37,8 @@
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToDestination:(id)arg1;
 - (bool)isGuest;
+- (id)normalizedURIStrings;
+- (id)normalizedURIs;
 
 // Image: /System/Library/PrivateFrameworks/IDS.framework/IDS
 

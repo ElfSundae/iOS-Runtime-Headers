@@ -4,10 +4,10 @@
 
 @interface GEOPDAutocompleteResultSortPriorityMapping : PBCodable <NSCopying> {
     struct { 
-        unsigned int resultSubtype : 1; 
-        unsigned int resultType : 1; 
-        unsigned int sortPriority : 1; 
-    }  _has;
+        unsigned int has_resultSubtype : 1; 
+        unsigned int has_resultType : 1; 
+        unsigned int has_sortPriority : 1; 
+    }  _flags;
     int  _resultSubtype;
     int  _resultType;
     int  _sortPriority;
@@ -22,9 +22,12 @@
 @property (nonatomic) int sortPriority;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsResultSubtype:(id)arg1;
 - (int)StringAsResultType:(id)arg1;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -35,6 +38,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (int)resultSubtype;
 - (id)resultSubtypeAsString:(int)arg1;

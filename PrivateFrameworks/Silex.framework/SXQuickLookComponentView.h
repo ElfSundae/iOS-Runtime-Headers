@@ -34,6 +34,7 @@
 - (id)createIdleState;
 - (id)createLoadingState;
 - (id)createPresentingState;
+- (void)discardContents;
 - (id)errorLabel;
 - (id)errorState;
 - (id)fileProvider;
@@ -50,6 +51,7 @@
 - (id)presentingState;
 - (id)quickLookModule;
 - (id)quickLookViewController;
+- (void)renderContents;
 - (void)setErrorLabel:(id)arg1;
 - (void)setQuickLookViewController:(id)arg1;
 - (id)stateMachine;

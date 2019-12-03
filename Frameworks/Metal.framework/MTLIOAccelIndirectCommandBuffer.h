@@ -17,6 +17,7 @@
     }  _internalHeader;
     unsigned long long  _maxCommandCount;
     MTLIOAccelBuffer * _privateICBuffer;
+    <MTLIndirectComputeCommandEncoder> * _privateIndirectComputeEncoder;
     <MTLIndirectRenderCommandEncoder> * _privateIndirectRenderEncoder;
 }
 
@@ -33,6 +34,7 @@
 - (bool)doesAliasAnyResources:(const id*)arg1 count:(unsigned long long)arg2;
 - (bool)doesAliasResource:(id)arg1;
 - (void)getHeader:(void**)arg1 headerSize:(unsigned long long*)arg2;
+- (id)indirectComputeCommandAtIndex:(unsigned long long)arg1;
 - (id)indirectRenderCommandAtIndex:(unsigned long long)arg1;
 - (id)initWithBuffer:(id)arg1 descriptor:(id)arg2 maxCommandCount:(unsigned long long)arg3;
 - (bool)isAliasable;

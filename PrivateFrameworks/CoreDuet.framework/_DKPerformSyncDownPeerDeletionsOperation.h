@@ -5,17 +5,14 @@
 @interface _DKPerformSyncDownPeerDeletionsOperation : _DKSyncCompositeOperation {
     unsigned long long  _batchNumber;
     bool  _foundDeletions;
-    bool  _hadDeletions;
-    NSString * _hadDeletionsKey;
     bool  _highPriority;
     NSDate * _highWaterMark;
     _DKSyncHistory * _history;
-    <_DKKeyValueStore> * _keyValueStore;
     <_DKSyncLocalKnowledgeStorage> * _localStorage;
     _DKSyncPeer * _peer;
     struct _CDPerfEvent { 
-        unsigned long long CDPM_startTime; 
-        unsigned long long CDPM_endTime; 
+        double startTime; 
+        double endTime; 
     }  _perfEvent;
     _CDMutablePerfMetric * _perfMetric;
     _DKSync2Policy * _policy;

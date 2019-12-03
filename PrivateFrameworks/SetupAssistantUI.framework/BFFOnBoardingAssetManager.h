@@ -13,6 +13,7 @@
 + (bool)shouldUseWorldwideAssetForPreferredLanguages:(id)arg1 language:(id)arg2 feature:(long long)arg3;
 
 - (id)assetFeatureValueForFeature:(long long)arg1;
+- (id)assetQueryForFeature:(long long)arg1 language:(id)arg2 useWorldwide:(bool)arg3 useCatalog:(bool)arg4;
 - (id)assetTypeForCurrentDevice;
 - (void)downloadAsset:(id)arg1 completion:(id /* block */)arg2;
 - (id)featureKey;
@@ -27,6 +28,6 @@
 - (void)retrieveMovieForFeature:(long long)arg1 completion:(id /* block */)arg2;
 - (void)retrieveMovieForFeature:(long long)arg1 language:(id)arg2 completion:(id /* block */)arg3;
 - (void)retrieveMovieForFeature:(long long)arg1 language:(id)arg2 useWorldwide:(bool)arg3 completion:(id /* block */)arg4;
-- (void)retrieveMovieForFeature:(long long)arg1 language:(id)arg2 useWorldwide:(bool)arg3 useLocalAssets:(bool)arg4 completion:(id /* block */)arg5;
+- (void)retriveAssetForFeature:(long long)arg1 language:(id)arg2 useWorldwide:(bool)arg3 completion:(id /* block */)arg4;
 
 @end

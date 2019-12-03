@@ -15,6 +15,7 @@
     IDSDaemonListener * _daemonListener;
     id  _delegate;
     bool  _fatalErrorOccured;
+    IDSDaemonControllerForwarder * _forwarder;
     bool  _hasBeenSuspended;
     bool  _hasCheckedForDaemon;
     NSObject<OS_dispatch_queue> * _ivarQueue;
@@ -42,6 +43,7 @@
 @property (nonatomic, readonly) bool isConnecting;
 @property (nonatomic, readonly) IDSDaemonListener *listener;
 @property (nonatomic, readonly) NSString *listenerID;
+@property (nonatomic, retain) IMRemoteObject<IDSDaemonProtocol> *remoteObject;
 @property (readonly) Class superclass;
 
 + (bool)_applicationWillTerminate;
@@ -72,7 +74,7 @@
 - (void)_setServices:(id)arg1 commands:(id)arg2 capabilities:(unsigned int)arg3;
 - (bool)addListenerID:(id)arg1 services:(id)arg2;
 - (bool)addListenerID:(id)arg1 services:(id)arg2 commands:(id)arg3;
-- (void)addedDelegateForService:(id)arg1;
+- (void)addedDelegateForService:(id)arg1 withCompletion:(id /* block */)arg2;
 - (void)blockUntilConnected;
 - (unsigned int)capabilities;
 - (unsigned int)capabilitiesForListenerID:(id)arg1;
@@ -85,7 +87,8 @@
 - (void)dealloc;
 - (id)delegate;
 - (void)disconnectFromDaemon;
-- (void)forwardInvocation:(id)arg1;
+- (id)forwarderWithCompletion:(id /* block */)arg1;
+- (id)forwardingTargetForSelector:(SEL)arg1;
 - (bool)hasListenerForID:(id)arg1;
 - (id)init;
 - (bool)isConnected;
@@ -95,7 +98,7 @@
 - (id)localObject;
 - (void)localObjectDiedNotification:(id)arg1;
 - (bool)localObjectExists;
-- (id)methodSignatureForSelector:(SEL)arg1;
+- (id)remoteObject;
 - (void)remoteObjectDiedNotification:(id)arg1;
 - (bool)remoteObjectExists;
 - (void)removeListenerID:(id)arg1;
@@ -106,6 +109,7 @@
 - (bool)setCommands:(id)arg1 forListenerID:(id)arg2;
 - (void)setCurXPCMessagePriority:(int)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setRemoteObject:(id)arg1;
 - (bool)setServices:(id)arg1 forListenerID:(id)arg2;
 - (void)systemApplicationDidEnterBackground;
 - (void)systemApplicationDidResume;

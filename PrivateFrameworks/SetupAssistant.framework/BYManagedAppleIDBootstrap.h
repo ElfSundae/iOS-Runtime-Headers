@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SetupAssistant.framework/SetupAssistant
  */
 
-@interface BYManagedAppleIDBootstrap : NSObject <AKAppleIDAuthenticationDelegate, SUNetworkObserver> {
+@interface BYManagedAppleIDBootstrap : NSObject <AKAppleIDAuthenticationDelegate, BYNetworkObserver> {
     AKAppleIDAuthenticationContext * _authContext;
     bool  _shouldRetrySilentLoginUpgrade;
     long long  _silentLoginUpgradeRetryCount;
@@ -20,14 +20,16 @@
 @property (nonatomic, readonly) UMUserSwitchContext *userSwitchContext;
 
 + (id)delegateBundleIDsForManagedAccount;
++ (bool)isFirstTimeLogin;
 + (bool)isMultiUser;
 + (bool)isSettingUpMultiUser;
 + (id)sharedManager;
 
 - (void).cxx_destruct;
 - (void)_createAppleAccountWithUsername:(id)arg1 password:(id)arg2 rawPassword:(id)arg3 completion:(id /* block */)arg4;
+- (id)_fetchAKURLBagSynchronously;
 - (id)_languageConfigurationDictionary;
-- (void)_runSilentLoginUpgradeWithCompletion:(id /* block */)arg1;
+- (void)_runSilentLoginUpgradeWithCompletion:(id /* block */)arg1 shortLivedTokenUpgradeCompletion:(id /* block */)arg2;
 - (void)_upgradeShortLivedTokenCompletion:(id /* block */)arg1;
 - (void)dealloc;
 - (void)ingestManagedBuddyData;
@@ -38,7 +40,8 @@
 - (bool)passwordChangeFlowNeedsToRun;
 - (void)postUserSwitchContextHasBeenUsed;
 - (void)recoverEMCSWithCompletion:(id /* block */)arg1;
-- (void)runSilentLoginUpgradeIfNeededWithCompletion:(id /* block */)arg1;
+- (void)runSilentLoginUpgradeIfNeededWithCompletion:(id /* block */)arg1 shortLivedTokenUpgradeCompletion:(id /* block */)arg2;
+- (void)runSilentLoginUpgradeIfNeededWithCompletion:(id /* block */)arg1 shortLivedTokenUpgradeCompletion:(id /* block */)arg2 willNotCompleteBlock:(id /* block */)arg3;
 - (void)setShouldRetrySilentLoginUpgrade:(bool)arg1;
 - (void)setSilentLoginUpgradeRetryCount:(long long)arg1;
 - (id)shortLivedToken;

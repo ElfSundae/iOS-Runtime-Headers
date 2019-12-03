@@ -4,20 +4,28 @@
 
 @interface _UIImageViewExtendedStorage : NSObject <CAAnimationDelegate> {
     CIContext * _CIContext;
-    bool  _adjustsImageSizeForAccessibilityContentSizeCategory;
     double  _animationDuration;
     NSArray * _animationImages;
     long long  _animationRepeatCount;
+    UIImage * _configuredHighlightedImage;
+    UIImage * _configuredImage;
     long long  _defaultRenderingMode;
     UIImage * _displayedHighlightedImage;
     UIImage * _displayedImage;
-    int  _drawMode;
-    bool  _highlighted;
+    unsigned int  _drawMode;
+    struct { 
+        unsigned int highlighted : 1; 
+        unsigned int masksTemplateImages : 1; 
+        unsigned int adjustsImageSizeForAccessibilityContentSizeCategory : 1; 
+    }  _flags;
     NSArray * _highlightedAnimationImages;
     UIImage * _highlightedImage;
     UIImage * _image;
+    UILayoutGuide * _imageContentGuide;
     UIImageView * _imageView;
-    bool  _masksTemplateImages;
+    NSMapTable * _layouts;
+    UIImageSymbolConfiguration * _overridingSymbolConfiguration;
+    UIImageSymbolConfiguration * _preferredSymbolConfiguration;
     unsigned long long  _templateImageRenderingEffects;
 }
 

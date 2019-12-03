@@ -6,6 +6,7 @@
     NSDate * _cachedPriorityDate;
     PXCMMInvitationsDataSourceManager * _dataSourceManager;
     bool  _didGenerateGadgets;
+    <PXCMMWorkflowPresenting> * _workflowPresenter;
 }
 
 @property (nonatomic, retain) NSDate *cachedPriorityDate;
@@ -17,6 +18,7 @@
 @property (nonatomic, readonly) NSDate *priorityDate;
 @property (nonatomic, readonly) long long priorityType;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) <PXCMMWorkflowPresenting> *workflowPresenter;
 
 - (void).cxx_destruct;
 - (void)_configureDataSourceManager;
@@ -27,6 +29,7 @@
 - (unsigned long long)gadgetType;
 - (void)generateGadgets;
 - (id)init;
+- (id)initWithWorkflowPresenter:(id)arg1;
 - (void)loadDataForGadgets;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void*)arg3;
 - (id)priorityDate;
@@ -35,5 +38,6 @@
 - (void)setCachedPriorityDate:(id)arg1;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (bool)supportsDynamicRanking;
+- (id)workflowPresenter;
 
 @end

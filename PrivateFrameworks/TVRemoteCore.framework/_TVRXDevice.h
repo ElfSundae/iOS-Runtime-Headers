@@ -15,12 +15,14 @@
 
 @property (nonatomic, copy) NSDictionary *alternateIdentifiers;
 @property (nonatomic, readonly) long long connectionState;
+@property (nonatomic, readonly) long long connectionType;
 @property (nonatomic) <_TVRXDeviceDelegate> *delegate;
 @property (nonatomic, copy) NSString *identifier;
 @property (getter=_impl, setter=_setImpl:, nonatomic, retain) <_TVRCDeviceImpl> *impl;
 @property (nonatomic, readonly) _TVRXKeyboardController *keyboardController;
 @property (nonatomic, copy) NSString *model;
 @property (nonatomic, copy) NSString *name;
+@property (nonatomic, readonly) bool paired;
 @property (nonatomic, readonly) unsigned long long pairingCapability;
 @property (nonatomic, copy) NSSet *supportedButtons;
 @property (nonatomic, readonly) bool supportsTouchEvents;
@@ -43,6 +45,7 @@
 - (id)alternateIdentifiers;
 - (void)connect;
 - (long long)connectionState;
+- (long long)connectionType;
 - (bool)containsIdentifier:(id)arg1;
 - (id)delegate;
 - (id)description;
@@ -51,8 +54,10 @@
 - (id)keyboardController;
 - (id)model;
 - (id)name;
+- (bool)paired;
 - (unsigned long long)pairingCapability;
 - (void)sendButtonEvent:(id)arg1;
+- (void)sendEvent:(id)arg1 options:(id)arg2 response:(id /* block */)arg3;
 - (void)sendGameControllerEvent:(id)arg1;
 - (void)sendTouchEvent:(id)arg1;
 - (void)setAlternateIdentifiers:(id)arg1;

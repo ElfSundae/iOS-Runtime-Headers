@@ -14,8 +14,10 @@
 - (long long)getSimulatorDevice;
 - (bool)isDeviceIPad;
 - (bool)isHeySiriAlwaysOn;
+- (bool)isPlusIPhone;
 - (bool)isRunningOnSimulator;
-- (bool)supportsEducationalVideos;
+- (bool)isSmallIPhone;
+- (bool)isSmallestIPhone;
 - (bool)supportsSideButtonActivation;
 
 @end

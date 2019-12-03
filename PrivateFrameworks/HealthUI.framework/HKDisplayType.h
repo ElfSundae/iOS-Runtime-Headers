@@ -12,6 +12,7 @@
     HKValueRange * _defaultAxisRangeOverride;
     NSPredicate * _defaultChartingPredicate;
     UIImage * _detailImage;
+    NSString * _detailImageName;
     bool  _disallowsSourceReordering;
     NSString * _displayNameKey;
     long long  _displayTypeIdentifier;
@@ -26,6 +27,7 @@
     NSDictionary * _portraitPresentationOptionOverrides;
     unsigned long long  _portraitPresentationOptions;
     double  _scalarValue;
+    NSArray * _secondaryCategoryIdentifiers;
     NSString * _shortenedDisplayNameKey;
     bool  _shouldDisplayUnitStringOnYAxis;
     bool  _shouldUseSingleSecondaryValue;
@@ -37,6 +39,7 @@
     NSString * _titleEmbeddedDisplayNameKey;
     NSString * _unitChangeCautionaryTextKey;
     NSDictionary * _unitNameKeyOverrides;
+    bool  _useSecondsWhenDisplayingDuration;
 }
 
 @property (getter=_isWheelchairUser, setter=_setWheelchairUser:) bool _wheelchairUser;
@@ -52,6 +55,7 @@
 @property (nonatomic, readonly) bool disallowsSourceReordering;
 @property (nonatomic, readonly) HKDisplayCategory *displayCategory;
 @property (nonatomic, readonly) NSString *displayName;
+@property (nonatomic, readonly, copy) NSString *displayNameKey;
 @property (nonatomic, readonly) UIImage *displayTypeIcon;
 @property (nonatomic, readonly) long long displayTypeIdentifier;
 @property (nonatomic, readonly) NSString *embeddedDisplayName;
@@ -71,6 +75,8 @@
 @property (nonatomic, readonly) unsigned long long roundingMode;
 @property (nonatomic, readonly) HKSampleType *sampleType;
 @property (nonatomic, readonly) double scalarValue;
+@property (nonatomic, readonly) NSArray *secondaryCategoryIdentifiers;
+@property (nonatomic, readonly) NSArray *secondaryDisplayCategories;
 @property (nonatomic, readonly) UIImage *shareIcon;
 @property (nonatomic, readonly) NSString *shortenedDisplayName;
 @property (nonatomic) bool shouldDisplayUnitStringOnYAxis;
@@ -86,12 +92,17 @@
 @property (nonatomic, readonly) UIImage *unitIcon;
 @property (nonatomic, readonly) NSDictionary *unitNameKeyOverrides;
 @property (nonatomic, readonly) bool unitPreferencesRequireChangeConfirmation;
+@property (nonatomic, readonly) bool useSecondsWhenDisplayingDuration;
+@property (readonly) long long wd_heartRateDisplayTypeContext;
+
+// Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
 
 - (void).cxx_destruct;
 - (void)_applyChartingProperties:(id)arg1;
 - (void)_applyScalarValue:(id)arg1;
 - (void)_applySummaryAndAttributionPropertiesWithDictionary:(id)arg1;
 - (void)_applyTextualPropertiesWithDictionary:(id)arg1 displayNameKey:(id)arg2;
+- (id)_audioExposureHistogramDataSourceForAudioExposureTypeIdentifier:(id)arg1 withHealthStore:(id)arg2;
 - (id)_bloodPressureDataSourceWithHealthStore:(id)arg1;
 - (id /* block */)_bloodPressureUserInfoBlock;
 - (id)_countDataSourceWithHealthStore:(id)arg1;
@@ -99,7 +110,6 @@
 - (id)_dataSourceForQuantityType:(id)arg1 timeScope:(long long)arg2 unitController:(id)arg3 healthStore:(id)arg4;
 - (id)_dataSourceForTimeScope:(long long)arg1 dataCacheController:(id)arg2;
 - (id)_dataSourceForWorkoutsWithTimeScope:(long long)arg1 healthStore:(id)arg2;
-- (id)_dimensionForChartAxisWithUnitController:(id)arg1;
 - (id)_generateBarSeriesWithFillStyle:(id)arg1;
 - (id)_generateBloodPressureSeriesWithColor:(id)arg1;
 - (id)_generateDailySleepSeriesWithColor:(id)arg1;
@@ -128,6 +138,12 @@
 - (id /* block */)_singleValueUserInfoBlockWithUnitController:(id)arg1 displayType:(id)arg2 statisticsOption:(unsigned long long)arg3;
 - (id)_stackedDataSourceForCategoryType:(id)arg1 timeScope:(long long)arg2 healthStore:(id)arg3;
 - (id)_statFormatterItemOptionsForQuantityType:(id)arg1 timeScope:(long long)arg2;
+- (bool)_supportsDayTimeScope;
+- (bool)_supportsFiveYearTimeScope;
+- (bool)_supportsHourTimeScope;
+- (bool)_supportsMonthTimeScope;
+- (bool)_supportsWeekTimeScope;
+- (bool)_supportsYearTimeScope;
 - (id)_timePeriodDataSourceForSampleType:(id)arg1 timeScope:(long long)arg2 healthStore:(id)arg3;
 - (id)_timePeriodDisplayPrefix;
 - (id)adjustedValueForClientValue:(id)arg1;
@@ -150,6 +166,7 @@
 - (bool)disallowsSourceReordering;
 - (id)displayCategory;
 - (id)displayName;
+- (id)displayNameKey;
 - (id)displayTypeIcon;
 - (long long)displayTypeIdentifier;
 - (id)embeddedDisplayName;
@@ -159,13 +176,17 @@
 - (unsigned long long)hk_chartCalendarUnitForTimeScope:(long long)arg1;
 - (id)hk_customSeriesPointIntervalComponentsForTimeScope:(long long)arg1;
 - (id)hk_dashboardChartBoundStringFromValue:(id)arg1 defaultNumberFormatter:(id)arg2 unitController:(id)arg3;
+- (id)hk_dimensionForChartAxisWithUnitController:(id)arg1;
 - (id)hk_enumeratedValueLabels;
 - (id)hk_interactiveChartAxisStringFromValue:(id)arg1 defaultNumberFormatter:(id)arg2 unitController:(id)arg3;
+- (unsigned long long)hk_interactiveChartOptions;
 - (bool)hk_interactiveChartsDataSourceDependsOnTimeScope;
 - (id)hk_interactiveChartsDataSourceForTimeScope:(long long)arg1 healthStore:(id)arg2 unitController:(id)arg3;
 - (id)hk_interactiveChartsFormatterForTimeScope:(long long)arg1;
+- (bool)hk_isSupportedTimeScope:(long long)arg1;
 - (id)hk_numberFormatterForUnit:(id)arg1;
 - (id)hk_numberFormatterForUnit:(id)arg1 formattingContext:(long long)arg2;
+- (long long)hk_stackedChartSectionsCountForTimeScope:(long long)arg1;
 - (id)hk_standardSeriesForTimeScope:(long long)arg1 displayCategory:(id)arg2 unitController:(id)arg3 dataCacheController:(id)arg4 displayCategoryController:(id)arg5;
 - (id /* block */)hk_startOfDayTransform;
 - (id)hk_valueFormatterForUnit:(id)arg1;
@@ -182,6 +203,7 @@
 - (id)labelDisplayName;
 - (id)listIcon;
 - (id)listIconImageName;
+- (id)listIconOverride;
 - (id)localizationTableNameOverride;
 - (id)objectType;
 - (unsigned long long)presentationOptionsForTimeScope:(long long)arg1;
@@ -189,6 +211,8 @@
 - (unsigned long long)roundingMode;
 - (id)sampleType;
 - (double)scalarValue;
+- (id)secondaryCategoryIdentifiers;
+- (id)secondaryDisplayCategories;
 - (void)setDefaultAxisRangeOverride:(id)arg1;
 - (void)setShouldDisplayUnitStringOnYAxis:(bool)arg1;
 - (id)shareIcon;
@@ -208,5 +232,23 @@
 - (id)unitNameForValue:(id)arg1 unitPreferenceController:(id)arg2;
 - (id)unitNameKeyOverrides;
 - (bool)unitPreferencesRequireChangeConfirmation;
+- (bool)useSecondsWhenDisplayingDuration;
+
+// Image: /System/Library/PrivateFrameworks/HealthToolbox.framework/HealthToolbox
+
+- (long long)_heartRoomDisplayTypeContext:(long long)arg1;
+- (Class)_wd_addDataViewControllerClass;
+- (Class)_wd_listViewControllerDataProviderClass:(bool)arg1;
+- (id)wd_addDataViewControllerWithProfile:(id)arg1 unitController:(id)arg2 initialStartDate:(id)arg3;
+- (id)wd_contextDetailViewControllerWithProfile:(id)arg1 displayDate:(id)arg2;
+- (id)wd_dataListViewControllerWithProfile:(id)arg1;
+- (id)wd_dataListViewControllerWithProfile:(id)arg1 unitController:(id)arg2;
+- (id)wd_defaultValueForAddDataViewController;
+- (id)wd_detailViewControllerWithProfile:(id)arg1 displayDate:(id)arg2;
+- (long long)wd_heartRateDisplayTypeContext;
+- (id)wd_listViewControllerDataProviderWithProfile:(id)arg1 unitController:(id)arg2;
+- (id)wd_listViewControllerDataProviderWithProfile:(id)arg1 unitController:(id)arg2 isHierarchical:(bool)arg3;
+- (id)wd_outOfRangeAlertDisplayName;
+- (id)wd_valueOrderForAddDataViewController;
 
 @end

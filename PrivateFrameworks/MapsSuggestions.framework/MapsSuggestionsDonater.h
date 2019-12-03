@@ -22,6 +22,7 @@
 - (void)_unscheduleCloseConnection;
 - (void)dealloc;
 - (bool)donateETA:(id)arg1 entry:(id)arg2;
+- (bool)donateSignalPack:(id)arg1;
 - (id)init;
 - (struct NSString { Class x1; }*)uniqueName;
 

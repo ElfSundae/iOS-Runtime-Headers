@@ -6,11 +6,11 @@
     MFMessage * _message;
 }
 
+- (void).cxx_destruct;
 - (id)attachmentURLs;
 - (id)attachments;
 - (id)contentToOffset:(unsigned long long)arg1 resultOffset:(unsigned long long*)arg2 asHTML:(bool)arg3;
 - (id)contentToOffset:(unsigned long long)arg1 resultOffset:(unsigned long long*)arg2 asHTML:(bool)arg3 isComplete:(bool*)arg4;
-- (void)dealloc;
 - (id)htmlContent;
 - (id)htmlContentToOffset:(unsigned long long)arg1 resultOffset:(unsigned long long*)arg2;
 - (bool)isHTML;

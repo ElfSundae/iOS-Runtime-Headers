@@ -4,6 +4,6 @@
 
 @interface CCUIContentModuleContainerClientDrivenTransition : CCUIContentModuleContainerTransition
 
-- (void)performWithCustomAnimator:(id /* block */)arg1 completion:(id /* block */)arg2;
+- (id)customAnimator;
 
 @end

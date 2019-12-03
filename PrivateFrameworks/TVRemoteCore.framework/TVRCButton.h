@@ -14,6 +14,7 @@
 @property (nonatomic, readonly) bool hasTapAction;
 @property (nonatomic, readonly, copy) NSDictionary *properties;
 
++ (bool)_isMediaButtonEvent:(id)arg1;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;

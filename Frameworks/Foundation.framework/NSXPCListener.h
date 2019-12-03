@@ -3,7 +3,7 @@
  */
 
 @interface NSXPCListener : NSObject {
-    <NSXPCListenerDelegate> * _delegate;
+    id  _delegate;
     id  _reserved1;
     id  _reserved2;
     NSString * _serviceName;
@@ -15,8 +15,6 @@
 
 @property <NSXPCListenerDelegate> *delegate;
 @property (readonly, retain) NSXPCListenerEndpoint *endpoint;
-
-// Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
 + (id)_UUID;
 + (id)anonymousListener;
@@ -40,10 +38,5 @@
 - (void)setOptions:(unsigned long long)arg1;
 - (void)stop;
 - (void)suspend;
-
-// Image: /System/Library/PrivateFrameworks/CellularPlanManager.framework/CellularPlanManager
-
-- (id)initCellularPlanDatabaseServer;
-- (id)initVinylTestServer;
 
 @end

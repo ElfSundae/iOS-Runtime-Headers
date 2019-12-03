@@ -34,13 +34,16 @@
 - (void).cxx_destruct;
 - (void)_encodeWithCoder:(id)arg1;
 - (id)accessory;
-- (void)configureWithMessageDispatcher:(id)arg1;
+- (void)configureWithMessageDispatcher:(id)arg1 configurationTracker:(id)arg2;
 - (id)contextID;
 - (id)contextSPIUniqueIdentifier;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
+- (id)findServiceWithType:(id)arg1;
+- (void)handleInitialState;
 - (unsigned long long)hash;
 - (id)initWithAccessory:(id)arg1 uniqueIdentifier:(id)arg2 services:(id)arg3;
+- (id)initWithAccessory:(id)arg1 uniqueIdentifier:(id)arg2 services:(id)arg3 workQueue:(id)arg4;
 - (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)logID;
@@ -49,7 +52,10 @@
 - (id)messageTargetUUID;
 - (id)msgDispatcher;
 - (void)registerForMessages;
+- (void)removeCloudData;
+- (id)runtimeState;
 - (id)services;
+- (void)unconfigure;
 - (id)uniqueIdentifier;
 - (id)workQueue;
 

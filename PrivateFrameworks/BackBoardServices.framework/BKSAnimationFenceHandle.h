@@ -12,6 +12,7 @@
     int  _valid;
 }
 
+@property (nonatomic, readonly, copy) NSString *_trace;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) unsigned long long fenceName;
@@ -26,8 +27,8 @@
 
 - (void).cxx_destruct;
 - (unsigned int)CAPort;
-- (id)_initWithFence:(id)arg1;
 - (id)_initWithFenceName:(unsigned long long)arg1 fence:(id)arg2 preFence:(id)arg3 preFenceTrigger:(id)arg4 shouldTrace:(bool)arg5;
+- (id)_trace;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)description;

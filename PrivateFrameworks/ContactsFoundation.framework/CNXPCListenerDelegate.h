@@ -12,7 +12,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithWithExportedObject:(id)arg1 exportedInterfaceProtocol:(id)arg2;
 - (bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 

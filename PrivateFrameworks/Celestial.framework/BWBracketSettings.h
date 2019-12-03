@@ -28,8 +28,10 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)exposureValues;
+- (unsigned long long)hash;
 - (id)initWithBracketingMode:(int)arg1;
 - (id)initWithCoder:(id)arg1;
+- (bool)isEqual:(id)arg1;
 - (bool)lensStabilizationEnabledForClientBracket;
 - (id)manualExposureBracketedCaptureParams;
 - (id)oisBracketedCaptureParams;

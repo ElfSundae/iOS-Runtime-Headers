@@ -2,17 +2,18 @@
    Image: /System/Library/PrivateFrameworks/AccountsDaemon.framework/AccountsDaemon
  */
 
-@interface ACDAccountStoreFilter : NSObject <ACDAccountStoreProtocol> {
+@interface ACDAccountStoreFilter : NSObject <ACRemoteAccountStoreProtocol> {
     ACDAccountStore * _backingAccountStore;
 }
 
-@property (nonatomic, retain) ACDAccountStore *backingAccountStore;
+@property (nonatomic, readonly) ACDAccountStore *backingAccountStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 + (id)_whiteList;
++ (id)new;
 
 - (void).cxx_destruct;
 - (bool)_accessGrantedForBundleID:(id)arg1 onAccountTypeID:(id)arg2;
@@ -57,6 +58,8 @@
 - (void)enabledDataclassesForAccountWithIdentifier:(id)arg1 handler:(id /* block */)arg2;
 - (void)grantedPermissionsForAccountType:(id)arg1 withHandler:(id /* block */)arg2;
 - (void)handleURL:(id)arg1;
+- (id)init;
+- (id)initWithBackingAccountStore:(id)arg1;
 - (void)insertAccountType:(id)arg1 withHandler:(id /* block */)arg2;
 - (void)insertCredentialItem:(id)arg1 completion:(id /* block */)arg2;
 - (void)isPerformingDataclassActionsForAccount:(id)arg1 completion:(id /* block */)arg2;
@@ -82,7 +85,7 @@
 - (void)saveAccount:(id)arg1 verify:(bool)arg2 dataclassActions:(id)arg3 completion:(id /* block */)arg4;
 - (void)saveAccount:(id)arg1 withHandler:(id /* block */)arg2;
 - (void)saveCredentialItem:(id)arg1 completion:(id /* block */)arg2;
-- (void)setBackingAccountStore:(id)arg1;
+- (void)scheduleBackupIfNonexistent:(id /* block */)arg1;
 - (void)setClientBundleID:(id)arg1 withHandler:(id /* block */)arg2;
 - (void)setCredential:(id)arg1 forAccount:(id)arg2 serviceID:(id)arg3 completion:(id /* block */)arg4;
 - (void)setNotificationsEnabled:(bool)arg1;

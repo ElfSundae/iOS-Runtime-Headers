@@ -24,6 +24,7 @@
     struct sqlite3_stmt { } * insertZone;
     struct sqlite3_stmt { } * rollback;
     struct sqlite3_stmt { } * selectAllLog;
+    struct sqlite3_stmt { } * selectChangeExistsLog;
     struct sqlite3_stmt { } * selectGroups;
     struct sqlite3_stmt { } * selectLog;
     struct sqlite3_stmt { } * selectLogOptions;
@@ -94,6 +95,7 @@
 - (void)_selectAllLog:(id /* block */)arg1;
 - (void)_selectAllRecords:(id /* block */)arg1;
 - (id)_selectLogOptionsWithID:(long long)arg1;
+- (void)_selectLogWithMask:(long long)arg1 compare:(long long)arg2 callback:(id /* block */)arg3;
 - (void)_selectLogWithRoot:(id)arg1 after:(long long)arg2 mask:(long long)arg3 compare:(long long)arg4 callback:(id /* block */)arg5;
 - (id)_updateGroupWithID:(long long)arg1 serverChangeToken:(id)arg2;
 - (id)_updateGroupWithID:(long long)arg1 subscription:(id)arg2;

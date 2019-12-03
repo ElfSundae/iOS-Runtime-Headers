@@ -10,16 +10,23 @@
         unsigned int wasDequeued : 1; 
         unsigned int preferredAttributesValid : 1; 
         unsigned int generatingPreferredAttributes : 1; 
+        unsigned int didSetMaskedCorners : 1; 
+        unsigned int isBeingReused : 1; 
     }  _reusableViewFlags;
     NSString * _reuseIdentifier;
+    bool  _shouldConstrainHeight;
+    bool  _shouldConstrainWidth;
     long long  _updateAnimationCount;
 }
 
 @property (getter=_collectionView, setter=_setCollectionView:, nonatomic) UICollectionView *collectionView;
 @property (getter=_isInUpdateAnimation, nonatomic, readonly) bool inUpdateAnimation;
+@property (getter=_isBeingReused, setter=_setIsBeingReused:, nonatomic) bool isBeingReused;
 @property (getter=_layoutAttributes, setter=_setLayoutAttributes:, nonatomic, copy) UICollectionViewLayoutAttributes *layoutAttributes;
 @property (getter=_arePreferredAttributesValid, nonatomic) bool preferredAttributesValid;
 @property (setter=_setReuseIdentifier:, nonatomic, copy) NSString *reuseIdentifier;
+@property (getter=_shouldConstrainHeight, setter=_setShouldConstrainHeight:, nonatomic) bool shouldConstrainHeight;
+@property (getter=_shouldConstrainWidth, setter=_setShouldConstrainWidth:, nonatomic) bool shouldConstrainWidth;
 @property (setter=tv_setBelongsToOldIndexPath:, nonatomic) bool tv_belongsToOldIndexPath;
 @property (getter=tv_isDisplayed, setter=tv_setDisplayed:, nonatomic) bool tv_displayed;
 @property (getter=tv_isFocused, setter=tv_setFocused:, nonatomic) bool tv_focused;
@@ -31,16 +38,23 @@
 - (bool)_arePreferredAttributesValid;
 - (void)_clearUpdateAnimation;
 - (id)_collectionView;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_concreteDefaultLayoutMargins;
 - (bool)_disableRasterizeInAnimations;
 - (void)_invalidatePreferredAttributes;
+- (bool)_isBeingReused;
 - (bool)_isInUpdateAnimation;
 - (id)_layoutAttributes;
 - (void)_markAsDequeued;
 - (id)_preferredLayoutAttributesFittingAttributes:(id)arg1;
 - (void)_setBaseLayoutAttributes:(id)arg1;
 - (void)_setCollectionView:(id)arg1;
+- (void)_setIsBeingReused:(bool)arg1;
 - (void)_setLayoutAttributes:(id)arg1;
 - (void)_setReuseIdentifier:(id)arg1;
+- (void)_setShouldConstrainHeight:(bool)arg1;
+- (void)_setShouldConstrainWidth:(bool)arg1;
+- (bool)_shouldConstrainHeight;
+- (bool)_shouldConstrainWidth;
 - (bool)_wasDequeued;
 - (void)applyLayoutAttributes:(id)arg1;
 - (bool)canBeEdited;
@@ -56,7 +70,7 @@
 - (void)setPreferredAttributesValid:(bool)arg1;
 - (void)willTransitionFromLayout:(id)arg1 toLayout:(id)arg2;
 
-// Image: /System/Library/PrivateFrameworks/GameCenterPrivateUI.framework/GameCenterPrivateUI
+// Image: /System/Library/PrivateFrameworks/GameCenterUI.framework/GameCenterUI
 
 + (void)_gkAdjustConstraintMargins:(id)arg1 leading:(double)arg2 trailing:(double)arg3;
 + (void)_gkSetupSelectableThreeLineLayoutWithCell:(id)arg1 icon:(id)arg2 selectionView:(id)arg3 upperLine:(id)arg4 middleLine:(id)arg5 lowerLine:(id)arg6 metricOverrides:(id)arg7;

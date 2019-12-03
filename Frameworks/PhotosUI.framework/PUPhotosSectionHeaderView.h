@@ -17,7 +17,6 @@
     double  _actionButtonLabelInitialMaxY;
     NSString * _actionButtonTitle;
     bool  _allowsPhotosDetailsInteraction;
-    _UIBackdropView * _backdropView;
     NSString * _backdropViewGroupName;
     unsigned long long  _backgroundStyle;
     struct UIEdgeInsets { 
@@ -51,6 +50,7 @@
     UILabel * _titleLabel;
     bool  _useYearOnlyForDefaultTitle;
     bool  _usingBackgroundBlur;
+    UIVisualEffectView * _visualEffectView;
 }
 
 @property (nonatomic, copy) NSString *actionButtonTitle;
@@ -105,7 +105,6 @@
 - (id)backdropViewGroupName;
 - (unsigned long long)backgroundStyle;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })contentInsets;
-- (void)dealloc;
 - (id)delegate;
 - (void)didEndDisplaying;
 - (void)didTransitionFromLayout:(id)arg1 toLayout:(id)arg2;

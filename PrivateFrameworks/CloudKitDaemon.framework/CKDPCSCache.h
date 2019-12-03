@@ -5,7 +5,6 @@
 @interface CKDPCSCache : NSObject {
     NSObject<OS_dispatch_queue> * _callbackQueue;
     CKDClientContext * _context;
-    CKDPCSFetchAggregator * _fetchAggregator;
     NSObject<OS_dispatch_queue> * _fetchQueue;
     NSMutableDictionary * _outstandingFetches;
     CKDPCSMemoryCache * _recordMemoryCache;
@@ -16,7 +15,6 @@
 
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *callbackQueue;
 @property (nonatomic) CKDClientContext *context;
-@property (nonatomic, retain) CKDPCSFetchAggregator *fetchAggregator;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *fetchQueue;
 @property (nonatomic, retain) NSMutableDictionary *outstandingFetches;
 @property (nonatomic, readonly) CKDPCSMemoryCache *recordMemoryCache;
@@ -44,7 +42,6 @@
 - (void)clearPCSMemoryCaches;
 - (id)context;
 - (void)dealloc;
-- (id)fetchAggregator;
 - (void)fetchPCSForRecordWithID:(id)arg1 forOperation:(id)arg2 options:(unsigned long long)arg3 withCompletionHandler:(id /* block */)arg4;
 - (void)fetchPCSForShareWithID:(id)arg1 forOperation:(id)arg2 options:(unsigned long long)arg3 withCompletionHandler:(id /* block */)arg4;
 - (void)fetchPCSForZoneWithID:(id)arg1 forOperation:(id)arg2 options:(unsigned long long)arg3 withCompletionHandler:(id /* block */)arg4;
@@ -58,7 +55,6 @@
 - (void)removePCSDataForItemsInZoneWithID:(id)arg1;
 - (void)setCallbackQueue:(id)arg1;
 - (void)setContext:(id)arg1;
-- (void)setFetchAggregator:(id)arg1;
 - (void)setFetchQueue:(id)arg1;
 - (void)setOutstandingFetches:(id)arg1;
 - (id)shareMemoryCache;

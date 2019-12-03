@@ -4,17 +4,43 @@
 
 @interface GEOPDPlace : PBCodable <NSCopying> {
     NSMutableArray * _components;
+    unsigned long long  _createdTime;
     struct { 
-        unsigned int muid : 1; 
-        unsigned int preferredMuid : 1; 
-        unsigned int updateVersion : 1; 
-        unsigned int referenceFrame : 1; 
-        unsigned int resultProviderId : 1; 
-        unsigned int status : 1; 
-    }  _has;
+        unsigned int has_createdTime : 1; 
+        unsigned int has_muid : 1; 
+        unsigned int has_preferredMuid : 1; 
+        unsigned int has_updateVersion : 1; 
+        unsigned int has_referenceFrame : 1; 
+        unsigned int has_resultProviderId : 1; 
+        unsigned int has_status : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_components : 1; 
+        unsigned int read_mapsId : 1; 
+        unsigned int read_placeCacheKey : 1; 
+        unsigned int read_requestData : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_components : 1; 
+        unsigned int wrote_createdTime : 1; 
+        unsigned int wrote_mapsId : 1; 
+        unsigned int wrote_muid : 1; 
+        unsigned int wrote_placeCacheKey : 1; 
+        unsigned int wrote_preferredMuid : 1; 
+        unsigned int wrote_requestData : 1; 
+        unsigned int wrote_updateVersion : 1; 
+        unsigned int wrote_referenceFrame : 1; 
+        unsigned int wrote_resultProviderId : 1; 
+        unsigned int wrote_status : 1; 
+    }  _flags;
     GEOPDMapsIdentifier * _mapsId;
     unsigned long long  _muid;
+    NSString * _placeCacheKey;
     unsigned long long  _preferredMuid;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     int  _referenceFrame;
     GEOMapItemInitialRequestData * _requestData;
     int  _resultProviderId;
@@ -24,8 +50,11 @@
 }
 
 @property (nonatomic, retain) NSMutableArray *components;
+@property (nonatomic) unsigned long long createdTime;
+@property (nonatomic) bool hasCreatedTime;
 @property (nonatomic, readonly) bool hasMapsId;
 @property (nonatomic) bool hasMuid;
+@property (nonatomic, readonly) bool hasPlaceCacheKey;
 @property (nonatomic) bool hasPreferredMuid;
 @property (nonatomic) bool hasReferenceFrame;
 @property (nonatomic, readonly) bool hasRequestData;
@@ -34,26 +63,33 @@
 @property (nonatomic) bool hasUpdateVersion;
 @property (nonatomic, retain) GEOPDMapsIdentifier *mapsId;
 @property (nonatomic) unsigned long long muid;
+@property (nonatomic, retain) NSString *placeCacheKey;
 @property (nonatomic) unsigned long long preferredMuid;
 @property (nonatomic) int referenceFrame;
 @property (nonatomic, retain) GEOMapItemInitialRequestData *requestData;
 @property (nonatomic) int resultProviderId;
 @property (nonatomic) int status;
-@property (getter=isSupportedVenue, nonatomic, readonly) bool supportedVenue;
-@property (getter=isSupportedVenuePOI, nonatomic, readonly) bool supportedVenuePOI;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic) unsigned long long updateVersion;
 
 + (id)attributionForPlaceData:(id)arg1 type:(int)arg2;
 + (Class)componentType;
++ (id)componentTypesFromComponentInfos:(id)arg1;
 + (id)failedPlaceData;
 + (id)failedPlaceDataForMuid:(unsigned long long)arg1;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsReferenceFrame:(id)arg1;
 - (int)StringAsStatus:(id)arg1;
+- (void)_addNoFlagsComponent:(id)arg1;
 - (id)_cleanedPhoneNumberForPhoneNumberRepresentation:(id)arg1;
 - (id)_entityName;
+- (bool)_isKey:(id)arg1 subsetOf:(id)arg2;
+- (void)_readComponents;
+- (void)_readMapsId;
+- (void)_readPlaceCacheKey;
+- (void)_readRequestData;
 - (void)_removeETAComponents;
 - (void)addComponent:(id)arg1;
 - (id)bestName;
@@ -61,6 +97,8 @@
 - (id)businessURL;
 - (id)cacheKey;
 - (void)clearComponents;
+- (void)clearSensitiveFields;
+- (void)clearUnknownFields:(bool)arg1;
 - (id)compactDebugDescription;
 - (id)componentAtIndex:(unsigned long long)arg1;
 - (id)componentOfType:(int)arg1 options:(unsigned long long)arg2;
@@ -70,8 +108,10 @@
 - (id)copyWithStrippedOptionalData;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)copyWithoutETAComponents;
+- (unsigned long long)createdTime;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)entityComponent;
 - (void)enumerateComponentOfType:(int)arg1 enumerationOptions:(unsigned long long)arg2 usingBlock:(id /* block */)arg3;
 - (void)enumerateComponentValuesOfType:(int)arg1 enumerationOptions:(unsigned long long)arg2 usingBlock:(id /* block */)arg3;
 - (void)enumerateComponentsWithOptions:(unsigned long long)arg1 usingBlock:(id /* block */)arg2;
@@ -81,9 +121,12 @@
 - (id)geoMapItem;
 - (id)geoMapItemWithDetourInfo:(id)arg1;
 - (bool)hasBrandMUID;
+- (bool)hasCreatedTime;
+- (bool)hasExpectedComponentTypes:(id)arg1;
 - (bool)hasExpiredComponentsAsOf:(double)arg1;
 - (bool)hasMapsId;
 - (bool)hasMuid;
+- (bool)hasPlaceCacheKey;
 - (bool)hasPreferredMuid;
 - (bool)hasReferenceFrame;
 - (bool)hasRequestData;
@@ -91,19 +134,24 @@
 - (bool)hasStatus;
 - (bool)hasUpdateVersion;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
+- (bool)isCacheable;
 - (bool)isDisputed;
 - (bool)isEqual:(id)arg1;
 - (bool)isStandAloneBrand;
-- (bool)isStringIndicatingPoiInsideWestfield:(id)arg1;
-- (bool)isSupportedVenue;
-- (bool)isSupportedVenuePOI;
 - (id)mapsId;
+- (bool)meetsManifestVersioningForServiceVersion:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (unsigned int)minTTL;
 - (unsigned long long)muid;
+- (id)pdPlaceCacheKey;
 - (bool)phoneNumberOptsOutOfAds:(id)arg1;
 - (id)phoneNumbers;
+- (id)placeCacheKey;
 - (int)placeDisplayType;
 - (unsigned long long)preferredMuid;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (int)referenceFrame;
 - (id)referenceFrameAsString:(int)arg1;
@@ -112,7 +160,9 @@
 - (id)secondaryName;
 - (id)secondarySpokenName;
 - (void)setComponents:(id)arg1;
+- (void)setCreatedTime:(unsigned long long)arg1;
 - (void)setFirstSeenTimestamp:(double)arg1;
+- (void)setHasCreatedTime:(bool)arg1;
 - (void)setHasMuid:(bool)arg1;
 - (void)setHasPreferredMuid:(bool)arg1;
 - (void)setHasReferenceFrame:(bool)arg1;
@@ -121,6 +171,7 @@
 - (void)setHasUpdateVersion:(bool)arg1;
 - (void)setMapsId:(id)arg1;
 - (void)setMuid:(unsigned long long)arg1;
+- (void)setPlaceCacheKey:(id)arg1;
 - (void)setPreferredMuid:(unsigned long long)arg1;
 - (void)setReferenceFrame:(int)arg1;
 - (void)setRequestData:(id)arg1;

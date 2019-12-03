@@ -11,6 +11,7 @@
     float  _batteryLevel;
     NSString * _buildVersion;
     unsigned long long  _chargingState;
+    NSString * _currentLocaleIdentifier;
     unsigned long long  _deviceOrientation;
     float  _displayBackingScaleFactor;
     float  _displayHeight;
@@ -18,7 +19,7 @@
     NSArray * _displays;
     bool  _ephemeralMultiUser;
     NSString * _identifier;
-    NSArray * _installedApplications;
+    NSArray * _installedApplicationInfo;
     NSString * _instructorImageIdentifier;
     unsigned long long  _interfaceOrientation;
     unsigned long long  _lockState;
@@ -61,6 +62,7 @@
 @property (nonatomic) float batteryLevel;
 @property (nonatomic, copy) NSString *buildVersion;
 @property (nonatomic) unsigned long long chargingState;
+@property (nonatomic, copy) NSString *currentLocaleIdentifier;
 @property (nonatomic) unsigned long long deviceOrientation;
 @property (nonatomic) float displayBackingScaleFactor;
 @property (nonatomic) float displayHeight;
@@ -68,6 +70,7 @@
 @property (nonatomic, copy) NSArray *displays;
 @property (getter=isEphemeralMultiUser, nonatomic) bool ephemeralMultiUser;
 @property (nonatomic, readonly, copy) NSString *identifier;
+@property (nonatomic, copy) NSArray *installedApplicationInfo;
 @property (nonatomic, copy) NSArray *installedApplications;
 @property (nonatomic, copy) NSString *instructorImageIdentifier;
 @property (nonatomic) unsigned long long interfaceOrientation;
@@ -104,6 +107,7 @@
 
 + (id)CRKKeyForDMFKey:(id)arg1;
 + (id)allPropertyKeys;
++ (id)applicationInfoFromBundleIdentifiers:(id)arg1;
 + (id)keyTranslations;
 + (bool)supportsSecureCoding;
 
@@ -116,6 +120,7 @@
 - (id)buildVersion;
 - (unsigned long long)chargingState;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)currentLocaleIdentifier;
 - (id)description;
 - (unsigned long long)deviceOrientation;
 - (float)displayBackingScaleFactor;
@@ -127,6 +132,7 @@
 - (id)identifier;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
+- (id)installedApplicationInfo;
 - (id)installedApplications;
 - (id)instructorImageIdentifier;
 - (unsigned long long)interfaceOrientation;
@@ -161,12 +167,14 @@
 - (void)setBatteryLevel:(float)arg1;
 - (void)setBuildVersion:(id)arg1;
 - (void)setChargingState:(unsigned long long)arg1;
+- (void)setCurrentLocaleIdentifier:(id)arg1;
 - (void)setDeviceOrientation:(unsigned long long)arg1;
 - (void)setDisplayBackingScaleFactor:(float)arg1;
 - (void)setDisplayHeight:(float)arg1;
 - (void)setDisplayWidth:(float)arg1;
 - (void)setDisplays:(id)arg1;
 - (void)setEphemeralMultiUser:(bool)arg1;
+- (void)setInstalledApplicationInfo:(id)arg1;
 - (void)setInstalledApplications:(id)arg1;
 - (void)setInstructorImageIdentifier:(id)arg1;
 - (void)setInterfaceOrientation:(unsigned long long)arg1;

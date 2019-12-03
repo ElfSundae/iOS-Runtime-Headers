@@ -2,50 +2,49 @@
    Image: /System/Library/Frameworks/WebKit.framework/WebKit
  */
 
-@interface _WKWebsitePolicies : NSObject <WKObject> {
-    struct ObjectStorage<API::WebsitePolicies> { 
-        struct type { 
-            unsigned char __lx[80]; 
-        } data; 
-    }  _websitePolicies;
+@interface _WKWebsitePolicies : NSObject {
+    struct RetainPtr<WKWebpagePreferences> { 
+        void *m_ptr; 
+    }  _webpagePreferences;
 }
 
-@property (readonly) /* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*_apiObject;
 @property (nonatomic) unsigned long long allowedAutoplayQuirks;
 @property (nonatomic) long long autoplayPolicy;
 @property (nonatomic) bool contentBlockersEnabled;
 @property (nonatomic, copy) NSDictionary *customHeaderFields;
+@property (nonatomic, copy) NSString *customJavaScriptUserAgentAsSiteSpecificQuirks;
 @property (nonatomic, copy) NSString *customNavigatorPlatform;
 @property (nonatomic, copy) NSString *customUserAgent;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (nonatomic) bool deviceOrientationEventEnabled;
-@property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned long long deviceOrientationAndMotionAccessPolicy;
 @property (nonatomic) unsigned long long popUpPolicy;
-@property (readonly) Class superclass;
+@property (nonatomic, readonly) WKWebpagePreferences *webpagePreferences;
 @property (nonatomic, retain) WKWebsiteDataStore *websiteDataStore;
 
-- (/* Warning: unhandled struct encoding: '{Object=^^?@}' */ struct Object { int (**x1)(); id x2; }*)_apiObject;
+- (id).cxx_construct;
+- (void).cxx_destruct;
+- (struct Object { int (**x1)(); id x2; }*)_apiObject;
 - (unsigned long long)allowedAutoplayQuirks;
 - (long long)autoplayPolicy;
 - (bool)contentBlockersEnabled;
 - (id)customHeaderFields;
+- (id)customJavaScriptUserAgentAsSiteSpecificQuirks;
 - (id)customNavigatorPlatform;
 - (id)customUserAgent;
-- (void)dealloc;
 - (id)description;
-- (bool)deviceOrientationEventEnabled;
+- (unsigned long long)deviceOrientationAndMotionAccessPolicy;
 - (id)init;
 - (unsigned long long)popUpPolicy;
 - (void)setAllowedAutoplayQuirks:(unsigned long long)arg1;
 - (void)setAutoplayPolicy:(long long)arg1;
 - (void)setContentBlockersEnabled:(bool)arg1;
 - (void)setCustomHeaderFields:(id)arg1;
+- (void)setCustomJavaScriptUserAgentAsSiteSpecificQuirks:(id)arg1;
 - (void)setCustomNavigatorPlatform:(id)arg1;
 - (void)setCustomUserAgent:(id)arg1;
-- (void)setDeviceOrientationEventEnabled:(bool)arg1;
+- (void)setDeviceOrientationAndMotionAccessPolicy:(unsigned long long)arg1;
 - (void)setPopUpPolicy:(unsigned long long)arg1;
 - (void)setWebsiteDataStore:(id)arg1;
+- (id)webpagePreferences;
 - (id)websiteDataStore;
 
 @end

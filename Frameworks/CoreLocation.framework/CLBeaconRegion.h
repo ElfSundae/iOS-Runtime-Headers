@@ -4,7 +4,9 @@
 
 @interface CLBeaconRegion : CLRegion <HMFObject>
 
+@property (nonatomic, readonly, copy) NSUUID *UUID;
 @property (nonatomic, readonly, copy) NSArray *attributeDescriptions;
+@property (nonatomic, readonly, copy) CLBeaconIdentityConstraint *beaconIdentityConstraint;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -22,15 +24,21 @@
 + (id)any;
 + (bool)supportsSecureCoding;
 
+- (id)UUID;
 - (BOOL)_measuredPowerForDevice;
+- (id)beaconIdentityConstraint;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithBeaconIdentityConstraint:(id)arg1 identifier:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
 - (id)initWithProximityUUID:(id)arg1 identifier:(id)arg2;
 - (id)initWithProximityUUID:(id)arg1 major:(unsigned short)arg2 identifier:(id)arg3;
 - (id)initWithProximityUUID:(id)arg1 major:(unsigned short)arg2 minor:(unsigned short)arg3 identifier:(id)arg4;
+- (id)initWithUUID:(id)arg1 identifier:(id)arg2;
+- (id)initWithUUID:(id)arg1 major:(unsigned short)arg2 identifier:(id)arg3;
+- (id)initWithUUID:(id)arg1 major:(unsigned short)arg2 minor:(unsigned short)arg3 identifier:(id)arg4;
 - (id)major;
 - (id)minor;
 - (bool)notifyEntryStateOnDisplay;

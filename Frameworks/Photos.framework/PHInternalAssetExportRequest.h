@@ -4,6 +4,7 @@
 
 @interface PHInternalAssetExportRequest : PHAssetExportRequest {
     PHResourceDownloadRequest * _downloadRequest;
+    NSProgress * _downloadRequestProgressParent;
     NSObject<OS_dispatch_queue> * _serialQueue;
 }
 
@@ -12,8 +13,8 @@
 + (id)exportRequestForAsset:(id)arg1 variants:(id)arg2 error:(id*)arg3;
 
 - (void).cxx_destruct;
-- (id)_initWithAsset:(id)arg1 variants:(id)arg2 downloadRequest:(id)arg3;
+- (id)_initWithAsset:(id)arg1 variants:(id)arg2 downloadRequest:(id)arg3 downloadRequestProgressParent:(id)arg4;
 - (void)exportWithOptions:(id)arg1 completionHandler:(id /* block */)arg2;
-- (void)preflightExportWithOptions:(id)arg1 isDownloadingRequired:(bool*)arg2 isProcessingRequired:(bool*)arg3 fileURLs:(id*)arg4;
+- (void)preflightExportWithOptions:(id)arg1 isDownloadingRequired:(bool*)arg2 isProcessingRequired:(bool*)arg3 fileURLs:(id*)arg4 info:(id*)arg5;
 
 @end

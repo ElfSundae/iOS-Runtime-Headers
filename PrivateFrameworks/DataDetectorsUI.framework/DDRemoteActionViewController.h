@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/DataDetectorsUI.framework/DataDetectorsUI
  */
 
-@interface DDRemoteActionViewController : _UIRemoteViewController <DDRemoteActionPresenter> {
+@interface DDRemoteActionViewController : _UIRemoteViewController <DDRemoteActionPresenter, _UIRemoteViewControllerContaining> {
     DDAction * _action;
     DDActionController * _actionController;
     bool  _proxyConfigured;
@@ -10,17 +10,23 @@
     bool  _waitingForRemoteConfiguration;
 }
 
+@property (nonatomic, readonly) _UIRemoteViewController *_containedRemoteViewController;
 @property (nonatomic) DDAction *action;
 @property (nonatomic) DDActionController *actionController;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)exportedInterface;
 + (id)prepareViewController:(id)arg1 forAction:(id)arg2 actionController:(id)arg3;
 + (id)serviceViewControllerInterface;
 
 - (void).cxx_destruct;
+- (id)_containedRemoteViewController;
 - (void)_prepareForAction:(id)arg1 inActionController:(id)arg2;
 - (id)action;
-- (void)actionBecameCancellable:(bool)arg1;
+- (void)actionCanBeCancelledExternally:(bool)arg1;
 - (id)actionController;
 - (void)actionDidFinish;
 - (void)adaptForPresentationInPopover:(bool)arg1;

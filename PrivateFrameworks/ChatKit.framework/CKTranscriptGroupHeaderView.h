@@ -7,14 +7,14 @@
     _UIBackdropView * _backdropView;
     CKConversation * _conversation;
     UIView * _separator;
-    MFComposeRecipientTextView * _textView;
+    CNComposeRecipientTextView * _textView;
 }
 
 @property (nonatomic, retain) UIButton *actionButton;
 @property (nonatomic, retain) _UIBackdropView *backdropView;
 @property (nonatomic, retain) CKConversation *conversation;
 @property (nonatomic, retain) UIView *separator;
-@property (nonatomic, retain) MFComposeRecipientTextView *textView;
+@property (nonatomic, retain) CNComposeRecipientTextView *textView;
 
 - (void).cxx_destruct;
 - (id)actionButton;

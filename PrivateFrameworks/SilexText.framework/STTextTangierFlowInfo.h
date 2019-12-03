@@ -25,6 +25,7 @@
 @property (nonatomic) <TSDRepDirectLayerHosting> *directLayerHost;
 @property (getter=isFloatingAboveText, nonatomic, readonly) bool floatingAboveText;
 @property (nonatomic, copy) TSDInfoGeometry *geometry;
+@property (nonatomic, readonly) bool hasSpeakableContent;
 @property (readonly) unsigned long long hash;
 @property (getter=isInlineWithText, nonatomic, readonly) bool inlineWithText;
 @property (nonatomic) bool matchesObjectPlaceholderGeometry;
@@ -44,6 +45,7 @@
 - (id)directLayerHost;
 - (bool)floatingAboveText;
 - (id)geometry;
+- (bool)hasSpeakableContent;
 - (id)initWithStorage:(id)arg1 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (bool)inlineWithText;
 - (bool)isAnchoredToText;

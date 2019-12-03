@@ -5,9 +5,7 @@
 
 @required
 
-- (void)beginTransaction;
-- (void)endTransaction;
-- (<FBSceneClient> *)registerHost:(id <FBSceneHost>)arg1;
+- (<FBSceneClient> *)registerHost:(id <FBSceneHost>)arg1 withInitialParameters:(FBSSceneParameters *)arg2;
 - (void)registerInvalidationAction:(FBSceneClientProviderInvalidationAction *)arg1;
 - (void)unregisterHost:(id <FBSceneHost>)arg1;
 

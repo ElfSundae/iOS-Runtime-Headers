@@ -2,40 +2,45 @@
    Image: /System/Library/PrivateFrameworks/SearchUI.framework/SearchUI
  */
 
-@interface SearchUIAccessoryViewController : NSObject {
-    SearchUITableViewCell * _cell;
-    <SearchUIFeedbackDelegate> * _feedbackDelegate;
-    SFSearchResult * _resultForFeedback;
-    UIView * _view;
+@interface SearchUIAccessoryViewController : NSObject <SearchUIDetailedRowComponent> {
+    <SearchUIAccessoryViewDelegate> * _delegate;
+    <SearchUIFeedbackDelegate> * feedbackDelegate;
+    SearchUIDetailedRowModel * rowModel;
+    UIView * view;
 }
 
-@property SearchUITableViewCell *cell;
-@property <SearchUIFeedbackDelegate> *feedbackDelegate;
-@property (retain) SFSearchResult *resultForFeedback;
-@property (retain) UIView *view;
+@property (readonly, copy) NSString *debugDescription;
+@property <SearchUIAccessoryViewDelegate> *delegate;
+@property (readonly, copy) NSString *description;
+@property (nonatomic) <SearchUIFeedbackDelegate> *feedbackDelegate;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, retain) SearchUIDetailedRowModel *rowModel;
+@property (readonly) Class superclass;
+@property (readonly) unsigned long long type;
+@property (nonatomic, retain) UIView *view;
 
-+ (Class)accessoryViewClassForResult:(id)arg1;
-+ (bool)supportsResult:(id)arg1;
++ (Class)accessoryViewClassForRowModel:(id)arg1;
++ (bool)supportsRowModel:(id)arg1;
 
 - (void).cxx_destruct;
 - (void)buttonPressed;
-- (id)cell;
 - (id)controlInView:(id)arg1;
-- (void)didEngageAction:(unsigned long long)arg1 destination:(unsigned long long)arg2 actionPerformed:(bool)arg3;
+- (id)delegate;
+- (void)didEngageAction:(unsigned long long)arg1 destination:(unsigned long long)arg2;
 - (id)feedbackDelegate;
-- (id)initWithUIStyle:(unsigned long long)arg1 cell:(id)arg2;
-- (bool)isPrimarilyTextView;
-- (id)resultForFeedback;
-- (void)setCell:(id)arg1;
+- (void)hide;
+- (id)init;
+- (id)rowModel;
+- (void)setDelegate:(id)arg1;
 - (void)setFeedbackDelegate:(id)arg1;
-- (void)setResultForFeedback:(id)arg1;
+- (void)setRowModel:(id)arg1;
 - (void)setView:(id)arg1;
-- (id)setupViewWithStyle:(unsigned long long)arg1;
+- (id)setupView;
 - (bool)shouldTopAlignForAccessibilityContentSizes;
 - (bool)shouldVerticallyCenter;
-- (void)updateWithResult:(id)arg1;
-- (void)updateWithResult:(id)arg1 resultForFeedback:(id)arg2;
+- (unsigned long long)type;
+- (void)updateWithContacts:(id)arg1;
+- (void)updateWithRowModel:(id)arg1;
 - (id)view;
-- (id)viewControllerForPresenting;
 
 @end

@@ -18,11 +18,14 @@
 
 - (void).cxx_destruct;
 - (void)applyToStatistic:(id)arg1;
+- (id)currentKeyboardState;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (long long)keyCode;
 - (id)keyLayout;
 - (id)keyboardState;
+- (void)removeContextFromKeyboardState;
+- (void)replaceDocumentState:(id)arg1;
 - (void)setKeyCode:(long long)arg1;
 - (void)setKeyLayout:(id)arg1;
 - (void)setKeyboardState:(id)arg1;

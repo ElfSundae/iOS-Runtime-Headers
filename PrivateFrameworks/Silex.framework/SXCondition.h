@@ -19,6 +19,7 @@
 @property (nonatomic, readonly) double minViewportAspectRatio;
 @property (nonatomic, readonly) double minViewportWidth;
 @property (nonatomic, readonly) NSString *platform;
+@property (nonatomic, readonly) unsigned long long preferredColorScheme;
 @property (nonatomic, readonly) NSString *subscriptionStatus;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) unsigned long long testing;
@@ -36,6 +37,7 @@
 - (id)minContentSizeCategoryWithValue:(id)arg1 withType:(int)arg2;
 - (double)minViewportAspectRatioWithValue:(id)arg1 withType:(int)arg2;
 - (double)minViewportWidthWithValue:(id)arg1 withType:(int)arg2;
+- (unsigned long long)preferredColorSchemeWithValue:(id)arg1 withType:(int)arg2;
 - (unsigned long long)testingWithValue:(id)arg1 withType:(int)arg2;
 - (long long)verticalSizeClassWithValue:(id)arg1 withType:(int)arg2;
 

@@ -4,7 +4,21 @@
 
 @interface GEOPDLocalizedAddress : PBCodable <NSCopying> {
     GEOAddress * _address;
+    struct { 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_address : 1; 
+        unsigned int read_language : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_address : 1; 
+        unsigned int wrote_language : 1; 
+    }  _flags;
     NSString * _language;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     PBUnknownFields * _unknownFields;
 }
 
@@ -14,8 +28,13 @@
 @property (nonatomic, retain) NSString *language;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_readAddress;
+- (void)_readLanguage;
 - (id)address;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -23,9 +42,12 @@
 - (bool)hasAddress;
 - (bool)hasLanguage;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)language;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setAddress:(id)arg1;
 - (void)setLanguage:(id)arg1;

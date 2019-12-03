@@ -3,6 +3,7 @@
  */
 
 @interface _INPBCopyFileIntent : PBCodable <NSCopying, NSSecureCoding, _INPBCopyFileIntent> {
+    bool  __encodeLegacyGloryData;
     _INPBString * _destinationName;
     int  _destinationType;
     _INPBString * _entityName;
@@ -18,6 +19,7 @@
     int  _sourceType;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) _INPBString *destinationName;
@@ -40,11 +42,14 @@
 @property (readonly) Class superclass;
 
 + (Class)propertiesType;
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (int)StringAsDestinationType:(id)arg1;
 - (int)StringAsEntityType:(id)arg1;
 - (int)StringAsSourceType:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (void)addProperties:(id)arg1;
 - (void)clearProperties;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -52,6 +57,7 @@
 - (int)destinationType;
 - (id)destinationTypeAsString:(int)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (id)entityName;
 - (int)entityType;
 - (id)entityTypeAsString:(int)arg1;
@@ -63,6 +69,7 @@
 - (bool)hasSourceName;
 - (bool)hasSourceType;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)intentMetadata;
 - (bool)isEqual:(id)arg1;
 - (id)properties;

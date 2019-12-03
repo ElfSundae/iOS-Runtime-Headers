@@ -40,6 +40,7 @@
 - (id)initWithContact:(id)arg1;
 - (void)removeActionWithTarget:(id)arg1 selector:(SEL)arg2;
 - (void)removeActionWithTitle:(id)arg1;
+- (void)removeAllActions;
 - (void)setAddSpacerFromPreviousGroup:(bool)arg1;
 - (void)setContact:(id)arg1;
 - (void)setUseSplitActions:(bool)arg1;

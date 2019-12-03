@@ -16,6 +16,7 @@
 
 @property (nonatomic, retain) NSString *inviteMessage;
 @property (nonatomic, retain) GKPlayerInternal *invitedBy;
+@property (nonatomic, readonly) bool isAutomatchParticipant;
 @property (nonatomic, retain) NSDate *lastTurnDate;
 @property (nonatomic) unsigned int matchOutcome;
 @property (nonatomic, retain) GKPlayerInternal *player;
@@ -32,6 +33,7 @@
 - (unsigned long long)hash;
 - (id)inviteMessage;
 - (id)invitedBy;
+- (bool)isAutomatchParticipant;
 - (bool)isEqual:(id)arg1;
 - (id)lastTurnDate;
 - (unsigned int)matchOutcome;

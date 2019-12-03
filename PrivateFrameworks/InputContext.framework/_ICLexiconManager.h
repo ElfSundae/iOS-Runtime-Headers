@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/InputContext.framework/InputContext
  */
 
-@interface _ICLexiconManager : NSObject <_ICLexiconManaging> {
+@interface _ICLexiconManager : NSObject <_ICFeedbackAccepting, _ICLexiconManaging> {
     int  _contactChangeCount;
     int  _contactLoadState;
     NSMutableArray * _contactObservers;
@@ -51,6 +51,7 @@
 - (id)loadLexiconsUsingFilter:(id /* block */)arg1;
 - (int)namedEntityLoadState;
 - (void)printLexiconToNSLog:(struct _LXLexicon { }*)arg1;
+- (void)provideFeedbackForString:(id)arg1 type:(unsigned char)arg2 style:(unsigned char)arg3;
 - (void)removeContact:(id)arg1;
 - (void)removeContactObserver:(id /* block */)arg1;
 - (void)resetNamedEntities;

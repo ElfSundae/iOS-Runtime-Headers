@@ -62,7 +62,7 @@
 - (void)setDelegate:(id)arg1;
 - (void)setPadding:(unsigned int)arg1;
 - (void)setPreferredReloadStartDate:(id)arg1 endDate:(id)arg2;
-- (void)setSelectedCalendars:(id)arg1;
+- (bool)setSelectedCalendars:(id)arg1;
 - (void)timeZoneChanged;
 - (void)waitForBackgroundLoad;
 

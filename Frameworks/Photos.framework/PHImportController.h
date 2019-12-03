@@ -3,55 +3,56 @@
  */
 
 @interface PHImportController : NSObject <ICDeviceBrowserDelegate> {
-    NSXPCConnection * _connection;
-    <PHImportDelegate> * _delegate;
     ICDeviceBrowser * _deviceBrowser;
-    NSMutableDictionary * _importSourcesByDevice;
-    NSObject<OS_os_log> * _log;
-    PFDispatchQueue * _queue;
+    NSMutableDictionary * _importDeviceSources;
+    bool  _importInProgress;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _importInProgressLock;
+    NSHashTable * _observers;
+    id  _processInfoActivityToken;
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
     }  _sourceListLock;
 }
 
-@property (retain) NSXPCConnection *connection;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) <PHImportDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) ICDeviceBrowser *deviceBrowser;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) NSMutableDictionary *importSourcesByDevice;
-@property (nonatomic, retain) NSObject<OS_os_log> *log;
-@property (readonly) PFDispatchQueue *queue;
-@property (nonatomic) struct os_unfair_lock_s { unsigned int x1; } sourceListLock;
+@property (nonatomic, retain) NSMutableDictionary *importDeviceSources;
+@property (nonatomic) bool importInProgress;
+@property (nonatomic, retain) NSHashTable *observers;
+@property (nonatomic, retain) id processInfoActivityToken;
 @property (readonly) Class superclass;
 
++ (id)importSourceForUrls:(id)arg1;
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
 - (void)accessSourceList:(id /* block */)arg1;
-- (id)connection;
-- (id)delegate;
+- (void)addImportControllerObserver:(id)arg1;
 - (id)deviceBrowser;
 - (void)deviceBrowser:(id)arg1 didAddDevice:(id)arg2 moreComing:(bool)arg3;
 - (void)deviceBrowser:(id)arg1 didRemoveDevice:(id)arg2 moreGoing:(bool)arg3;
-- (id)filterDuplicates:(id)arg1 onSource:(id)arg2 options:(id)arg3 library:(id)arg4;
-- (id)importAssets:(id)arg1 fromImportSource:(id)arg2 intoLibrary:(id)arg3 withOptions:(id)arg4 delegate:(id)arg5 atEnd:(id /* block */)arg6;
-- (id)importAssets:(id)arg1 fromImportSource:(id)arg2 intoLibrary:(id)arg3 withOptions:(id)arg4 delegate:(id)arg5 performanceDelegate:(id)arg6 atEnd:(id /* block */)arg7;
-- (id)importSourceForUrls:(id)arg1;
-- (id)importSourcesByDevice;
-- (id)importUrls:(id)arg1 intoLibrary:(id)arg2 withOptions:(id)arg3 delegate:(id)arg4 atEnd:(id /* block */)arg5;
+- (id)filterDuplicates:(id)arg1 onSource:(id)arg2 library:(id)arg3 options:(id)arg4 delegate:(id)arg5;
+- (void)importAssets:(id)arg1 fromImportSource:(id)arg2 intoLibrary:(id)arg3 withOptions:(id)arg4 progress:(id*)arg5 delegate:(id)arg6 performanceDelegate:(id)arg7 atEnd:(id /* block */)arg8;
+- (void)importAssets:(id)arg1 fromImportSource:(id)arg2 intoLibraryAtURL:(id)arg3 withOptions:(id)arg4 progress:(id*)arg5 delegate:(id)arg6 performanceDelegate:(id)arg7 atEnd:(id /* block */)arg8;
+- (void)importAssets:(id)arg1 fromImportSource:(id)arg2 withOptions:(id)arg3 progress:(id*)arg4 delegate:(id)arg5 atEnd:(id /* block */)arg6;
+- (id)importDeviceSources;
+- (void)importEnding;
+- (bool)importInProgress;
+- (void)importStarting;
 - (id)importUrls:(id)arg1 intoLibrary:(id)arg2 withOptions:(id)arg3 delegate:(id)arg4 performanceDelegate:(id)arg5 atEnd:(id /* block */)arg6;
+- (id)importUrls:(id)arg1 withOptions:(id)arg2 delegate:(id)arg3 atEnd:(id /* block */)arg4;
 - (id)init;
-- (id)log;
-- (id)queue;
-- (void)setConnection:(id)arg1;
-- (void)setDelegate:(id)arg1;
+- (id)observers;
+- (id)processInfoActivityToken;
 - (void)setDeviceBrowser:(id)arg1;
-- (void)setImportSourcesByDevice:(id)arg1;
-- (void)setLog:(id)arg1;
-- (void)setSourceListLock:(struct os_unfair_lock_s { unsigned int x1; })arg1;
+- (void)setImportDeviceSources:(id)arg1;
+- (void)setImportInProgress:(bool)arg1;
+- (void)setObservers:(id)arg1;
+- (void)setProcessInfoActivityToken:(id)arg1;
 - (bool)sourceIsConnected:(id)arg1;
-- (struct os_unfair_lock_s { unsigned int x1; })sourceListLock;
 
 @end

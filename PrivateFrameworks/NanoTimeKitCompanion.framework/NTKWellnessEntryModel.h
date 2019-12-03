@@ -3,33 +3,33 @@
  */
 
 @interface NTKWellnessEntryModel : NTKTimelineEntryModel <CLKTimelineEntry, NSCopying> {
+    NSArray * _activeEnergyChartData;
     HKQuantity * _activeEnergyGoal;
     HKQuantity * _activeEnergyTotal;
-    double  _briskMinutesGoal;
-    double  _briskMinutesTotal;
+    NSArray * _appleExerciseTimeChartData;
+    double  _appleExerciseTimeGoal;
+    double  _appleExerciseTimeTotal;
+    NSArray * _appleStandHourChartData;
+    long long  _appleStandHoursGoal;
+    long long  _appleStandHoursTotal;
     bool  _databaseLoading;
     bool  _deviceLocked;
-    NSArray * _exerciseChartData;
-    NSArray * _moveChartData;
-    NSArray * _standChartData;
-    long long  _standHoursGoal;
-    long long  _standHoursTotal;
 }
 
+@property (nonatomic, retain) NSArray *activeEnergyChartData;
 @property (nonatomic, retain) HKQuantity *activeEnergyGoal;
 @property (nonatomic, retain) HKQuantity *activeEnergyTotal;
-@property (nonatomic) double briskMinutesGoal;
-@property (nonatomic) double briskMinutesTotal;
+@property (nonatomic, retain) NSArray *appleExerciseTimeChartData;
+@property (nonatomic) double appleExerciseTimeGoal;
+@property (nonatomic) double appleExerciseTimeTotal;
+@property (nonatomic, retain) NSArray *appleStandHourChartData;
+@property (nonatomic) long long appleStandHoursGoal;
+@property (nonatomic) long long appleStandHoursTotal;
 @property (nonatomic) bool databaseLoading;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool deviceLocked;
-@property (nonatomic, retain) NSArray *exerciseChartData;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) NSArray *moveChartData;
-@property (nonatomic, retain) NSArray *standChartData;
-@property (nonatomic) long long standHoursGoal;
-@property (nonatomic) long long standHoursTotal;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) bool userHasDoneActivitySetup;
 
@@ -45,36 +45,37 @@
 + (id)lockedEntryModel;
 
 - (void).cxx_destruct;
+- (id)activeEnergyChartData;
+- (double)activeEnergyCompletionPercentage;
 - (id)activeEnergyGoal;
-- (double)activeEnergyGoalCompletionPercentage;
 - (id)activeEnergyTotal;
+- (id)appleExerciseTimeChartData;
+- (double)appleExerciseTimeCompletionPercentage;
+- (double)appleExerciseTimeGoal;
+- (double)appleExerciseTimeTotal;
+- (id)appleStandHourChartData;
+- (double)appleStandHourCompletionPercentage;
+- (long long)appleStandHoursGoal;
+- (long long)appleStandHoursTotal;
 - (long long)availabilityState;
-- (double)briskMinuteGoalCompletionPercentage;
-- (double)briskMinutesGoal;
-- (double)briskMinutesTotal;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (bool)databaseLoading;
 - (id)date;
 - (id)debugDescription;
 - (id)description;
 - (bool)deviceLocked;
-- (id)exerciseChartData;
-- (id)moveChartData;
+- (id)loggingString;
+- (void)setActiveEnergyChartData:(id)arg1;
 - (void)setActiveEnergyGoal:(id)arg1;
 - (void)setActiveEnergyTotal:(id)arg1;
-- (void)setBriskMinutesGoal:(double)arg1;
-- (void)setBriskMinutesTotal:(double)arg1;
+- (void)setAppleExerciseTimeChartData:(id)arg1;
+- (void)setAppleExerciseTimeGoal:(double)arg1;
+- (void)setAppleExerciseTimeTotal:(double)arg1;
+- (void)setAppleStandHourChartData:(id)arg1;
+- (void)setAppleStandHoursGoal:(long long)arg1;
+- (void)setAppleStandHoursTotal:(long long)arg1;
 - (void)setDatabaseLoading:(bool)arg1;
 - (void)setDate:(id)arg1;
-- (void)setExerciseChartData:(id)arg1;
-- (void)setMoveChartData:(id)arg1;
-- (void)setStandChartData:(id)arg1;
-- (void)setStandHoursGoal:(long long)arg1;
-- (void)setStandHoursTotal:(long long)arg1;
-- (id)standChartData;
-- (double)standHourGoalCompletionPercentage;
-- (long long)standHoursGoal;
-- (long long)standHoursTotal;
 - (id)templateForComplicationFamily:(long long)arg1;
 - (bool)userHasDoneActivitySetup;
 

@@ -20,12 +20,11 @@
 @property (nonatomic, readonly) int venueFeatureType;
 @property (nonatomic, readonly) <GEOVenueIdentifier> *venueIdentifier;
 
-+ (id)fakeVenueInfoForPlace:(id)arg1;
-
 - (void).cxx_destruct;
 - (id)_filtersFromVenueInfo:(id)arg1;
 - (id)contents;
 - (id)filters;
+- (id)init;
 - (id)initWithIdentifier:(id)arg1 featureType:(int)arg2 filters:(id)arg3 parent:(id)arg4 contents:(id)arg5;
 - (id)initWithVenueInfo:(id)arg1;
 - (id)parent;

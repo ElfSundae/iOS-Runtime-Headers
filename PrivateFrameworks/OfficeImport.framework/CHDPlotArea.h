@@ -11,10 +11,10 @@
     OADGraphicProperties * mGraphicProperties;
 }
 
+- (void).cxx_destruct;
 - (id)axes;
 - (id)chartTypes;
 - (bool)containsVolumeStockType;
-- (void)dealloc;
 - (id)description;
 - (id)graphicProperties;
 - (bool)hasSecondaryAxis;

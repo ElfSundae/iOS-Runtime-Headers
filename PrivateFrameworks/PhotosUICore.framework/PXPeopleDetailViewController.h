@@ -22,8 +22,8 @@
 
 - (void).cxx_destruct;
 - (void)_applicationBecameActive:(id)arg1;
-- (id)_assetCollectionListFetchResultForPeople:(id)arg1 assetCount:(unsigned long long*)arg2;
 - (void)_createNewDetailView:(id)arg1;
+- (id)_fetchRefreshedPeople:(id)arg1;
 - (void)_launchNaming:(id)arg1;
 - (void)_loadComposition;
 - (void)_setupHeader;
@@ -42,7 +42,6 @@
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1 withPreparedInfo:(id)arg2;
 - (void)presentBootstrapViewControllerWithType:(unsigned long long)arg1;
 - (void)refreshName;
-- (void)refreshPeople;
 - (void)setOverlayConstraints:(id)arg1;
 - (void)setOverlayScrollView:(id)arg1;
 - (void)setOverlayView:(id)arg1;
@@ -50,8 +49,6 @@
 - (void)setProcessingFaces:(bool)arg1;
 - (bool)shouldUpdateStatusBarTitle;
 - (void)viewDidLoad;
-- (void)viewWillAppear:(bool)arg1;
-- (void)viewWillDisappear:(bool)arg1;
 - (void)viewWillLayoutSubviews;
 
 @end

@@ -8,7 +8,6 @@
     unsigned short  _currentBufferIndex;
     float  _fadeMultiplier;
     bool  _forceRenderOnce;
-    NSObject<OS_dispatch_semaphore> * _forceRenderSemaphore;
     bool  _forceRenderSticky;
     struct CGSize { 
         double width; 
@@ -45,7 +44,7 @@
 - (void)clearWaves;
 - (float)combinedAmplitudeForControlPointAtPosition:(void *)arg1 currentTime:(void *)arg2 waveSpeed:(void *)arg3; // needs 3 arg types, found 2: float, float
 - (float)computeAmplitudeForControlPoint:(int)arg1 inSpline:(int)arg2 atTime:(double)arg3;
-- (id)computeShaderFromLibrary:(id)arg1;
+- (id)computeShaderName;
 - (void)computeWithEncoder:(id)arg1 pipelineState:(id)arg2;
 - (id)currentComputeBuffer;
 - (int)currentComputeBufferWidth;
@@ -54,8 +53,7 @@
 - (float)fadeMultiplier;
 - (bool)forceRender;
 - (void)forceRenderOnce;
-- (bool)forceRenderWithCompletion:(id /* block */)arg1;
-- (id)fragmentShaderFromLibrary:(id)arg1;
+- (id)fragmentShaderName;
 - (void)generateControlPointsForSpline:(int)arg1;
 - (id)generateVignetteTextureData;
 - (id /* block */)getNTKPrideSplineDefinitionFiller;

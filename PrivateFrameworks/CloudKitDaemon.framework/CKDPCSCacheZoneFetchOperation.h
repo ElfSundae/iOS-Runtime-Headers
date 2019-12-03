@@ -13,6 +13,10 @@
 
 - (bool)_createAdditionalPCS;
 - (bool)_decryptPCS;
+- (void)_decryptZonePCSInSharedDatabase;
+- (void)_decryptZonePCSUsingServiceIdentities;
+- (void)_fetchDepedentPCSInSharedDatabase;
+- (bool)_fetchDependentPCS;
 - (bool)_fetchPCSDataFromDatabase;
 - (bool)_fetchPCSDataFromServer;
 - (void)_handleDecryptedZonePCSData:(id)arg1 withError:(id)arg2;

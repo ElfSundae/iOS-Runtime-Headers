@@ -2,8 +2,9 @@
    Image: /System/Library/PrivateFrameworks/PhotoAnalysis.framework/PhotoAnalysis
  */
 
-@interface PHAJobCoordinator : NSObject <PHAActivityGovernorDelegate, PHADirtyChangeCoalescerDelegate, PHAGraphManagerClientMessagesReceiver, PHAJobCoalescerDelegate, PHAJobConstraintsObserverDelegate, PHAWorkerJobDelegate, PLPhotoAnalysisJobServiceProtocol> {
+@interface PHAJobCoordinator : NSObject <PHAActivityGovernorDelegate, PHADirtyChangeCoalescerDelegate, PHAGraphManagerClientMessagesReceiver, PHAJobCoalescerDelegate, PHAJobConstraintsObserverDelegate, PHAWorkerJobDelegate> {
     PHAActivityGovernor * _activityGovernor;
+    NSDictionary * _cachedWorkersByType;
     PHAJobConstraintsObserver * _constraintsObserver;
     PHAWorkerJob * _currentBackgroundJob;
     PHAJobConstraints * _currentConstraints;
@@ -19,14 +20,17 @@
     PHAManager * _manager;
     double  _maxIntervalSinceLastJobReport;
     bool  _newConstraintsPending;
-    int  _pendingAsyncTasksCount;
+    _Atomic int  _pendingAsyncTasksCount;
+    _Atomic unsigned long long  _processingQOS;
     NSObject<OS_dispatch_queue> * _queue;
     NSObject<OS_os_transaction> * _runningJobTransaction;
     bool  _shouldIgnoreConstraintChanges;
     NSMutableArray * _waitingForegroundJobs;
     PHAWorkerWarmer * _warmer;
     NSMutableSet * _workerTypesServicedForUserFG;
-    NSDictionary * _workersByType;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _workersByTypeLock;
 }
 
 @property (nonatomic, readonly) PHAActivityGovernor *activityGovernor;
@@ -57,7 +61,6 @@
 @property (nonatomic, readonly) NSMutableArray *waitingForegroundJobs;
 @property (nonatomic, readonly) PHAWorkerWarmer *warmer;
 @property (nonatomic, retain) NSMutableSet *workerTypesServicedForUserFG;
-@property (nonatomic, readonly) NSDictionary *workersByType;
 
 - (void).cxx_destruct;
 - (void)_cleanupStuckAnalysisState;
@@ -81,6 +84,7 @@
 - (id)_workerForJob:(id)arg1;
 - (id)activityGovernor;
 - (bool)activityGovernorOverride;
+- (void)addWorker:(id)arg1;
 - (void)coalescer:(id)arg1 didCoalesce:(id)arg2;
 - (id)constraintsObserver;
 - (id)currentBackgroundJob;
@@ -126,7 +130,7 @@
 - (void)setCurrentForegroundJob:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setForegroundTransaction:(id)arg1;
-- (void)setJobProcessingConstraintsWithValues:(id)arg1 mask:(id)arg2 context:(id)arg3 reply:(id /* block */)arg4;
+- (id)setJobProcessingConstraintsWithValues:(id)arg1 mask:(id)arg2;
 - (void)setManager:(id)arg1;
 - (void)setMaxIntervalSinceLastJobReport:(double)arg1;
 - (void)setNewConstraintsPending:(bool)arg1;

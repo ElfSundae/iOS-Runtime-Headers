@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CallHistory.framework/CallHistory
  */
 
-@interface CHLogger : NSObject <CHLoggerProtocol> {
+@interface CHLogger : NSObject {
     struct os_log_s { } * _logHandle;
 }
 

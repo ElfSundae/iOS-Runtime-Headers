@@ -29,7 +29,7 @@
 - (void).cxx_destruct;
 - (id)_alongsideAnimations:(bool)arg1;
 - (id)_alongsideCompletions:(bool)arg1;
-- (bool)_animateAlongsideTransitionInView:(id)arg1 systemCompletion:(bool)arg2 animation:(id /* block */)arg3 completion:(id /* block */)arg4;
+- (bool)_animateAlongsideTransitionInView:(id)arg1 systemAnimation:(bool)arg2 systemCompletion:(bool)arg3 animation:(id /* block */)arg4 completion:(id /* block */)arg5;
 - (void)_applyBlocks:(id)arg1 releaseBlocks:(id /* block */)arg2;
 - (id)_mainContext;
 - (void)_runAlongsideAnimations;

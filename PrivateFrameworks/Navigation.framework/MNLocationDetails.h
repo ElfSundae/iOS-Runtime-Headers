@@ -3,14 +3,14 @@
  */
 
 @interface MNLocationDetails : PBCodable <NSCopying> {
-    double  _course;
     double  _courseAccuracy;
     double  _distanceFromRoute;
     struct { 
-        unsigned int course : 1; 
         unsigned int courseAccuracy : 1; 
         unsigned int distanceFromRoute : 1; 
         unsigned int horizontalAccuracy : 1; 
+        unsigned int roadMatchCourse : 1; 
+        unsigned int routeMatchCourse : 1; 
         unsigned int shieldType : 1; 
         unsigned int speedLimitShieldType : 1; 
         unsigned int timestamp : 1; 
@@ -34,9 +34,11 @@
     int  _rawReferenceFrame;
     GEOLatLng * _roadCoordinate;
     unsigned int  _roadLineType;
+    double  _roadMatchCourse;
     NSString * _roadName;
     MNRouteCoordinate * _routeCoordinate;
-    NSData * _routeDetailsID;
+    NSData * _routeIDData;
+    double  _routeMatchCourse;
     NSString * _shieldText;
     long long  _shieldType;
     unsigned int  _speedLimit;
@@ -47,10 +49,8 @@
     unsigned long long  _transitID;
 }
 
-@property (nonatomic) double course;
 @property (nonatomic) double courseAccuracy;
 @property (nonatomic) double distanceFromRoute;
-@property (nonatomic) bool hasCourse;
 @property (nonatomic) bool hasCourseAccuracy;
 @property (nonatomic) bool hasDistanceFromRoute;
 @property (nonatomic) bool hasHorizontalAccuracy;
@@ -62,9 +62,11 @@
 @property (nonatomic) bool hasRawReferenceFrame;
 @property (nonatomic, readonly) bool hasRoadCoordinate;
 @property (nonatomic) bool hasRoadLineType;
+@property (nonatomic) bool hasRoadMatchCourse;
 @property (nonatomic, readonly) bool hasRoadName;
 @property (nonatomic, readonly) bool hasRouteCoordinate;
-@property (nonatomic, readonly) bool hasRouteDetailsID;
+@property (nonatomic, readonly) bool hasRouteIDData;
+@property (nonatomic) bool hasRouteMatchCourse;
 @property (nonatomic, readonly) bool hasShieldText;
 @property (nonatomic) bool hasShieldType;
 @property (nonatomic) bool hasSpeedLimit;
@@ -82,9 +84,11 @@
 @property (nonatomic) int rawReferenceFrame;
 @property (nonatomic, retain) GEOLatLng *roadCoordinate;
 @property (nonatomic) unsigned int roadLineType;
+@property (nonatomic) double roadMatchCourse;
 @property (nonatomic, retain) NSString *roadName;
 @property (nonatomic, retain) MNRouteCoordinate *routeCoordinate;
-@property (nonatomic, retain) NSData *routeDetailsID;
+@property (nonatomic, retain) NSData *routeIDData;
+@property (nonatomic) double routeMatchCourse;
 @property (nonatomic, retain) NSString *shieldText;
 @property (nonatomic) long long shieldType;
 @property (nonatomic) unsigned int speedLimit;
@@ -103,12 +107,10 @@
 - (int)StringAsRawReferenceFrame:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (double)course;
 - (double)courseAccuracy;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (double)distanceFromRoute;
-- (bool)hasCourse;
 - (bool)hasCourseAccuracy;
 - (bool)hasDistanceFromRoute;
 - (bool)hasHorizontalAccuracy;
@@ -120,9 +122,11 @@
 - (bool)hasRawReferenceFrame;
 - (bool)hasRoadCoordinate;
 - (bool)hasRoadLineType;
+- (bool)hasRoadMatchCourse;
 - (bool)hasRoadName;
 - (bool)hasRouteCoordinate;
-- (bool)hasRouteDetailsID;
+- (bool)hasRouteIDData;
+- (bool)hasRouteMatchCourse;
 - (bool)hasShieldText;
 - (bool)hasShieldType;
 - (bool)hasSpeedLimit;
@@ -146,13 +150,13 @@
 - (bool)readFrom:(id)arg1;
 - (id)roadCoordinate;
 - (unsigned int)roadLineType;
+- (double)roadMatchCourse;
 - (id)roadName;
 - (id)routeCoordinate;
-- (id)routeDetailsID;
-- (void)setCourse:(double)arg1;
+- (id)routeIDData;
+- (double)routeMatchCourse;
 - (void)setCourseAccuracy:(double)arg1;
 - (void)setDistanceFromRoute:(double)arg1;
-- (void)setHasCourse:(bool)arg1;
 - (void)setHasCourseAccuracy:(bool)arg1;
 - (void)setHasDistanceFromRoute:(bool)arg1;
 - (void)setHasHorizontalAccuracy:(bool)arg1;
@@ -162,6 +166,8 @@
 - (void)setHasRampType:(bool)arg1;
 - (void)setHasRawReferenceFrame:(bool)arg1;
 - (void)setHasRoadLineType:(bool)arg1;
+- (void)setHasRoadMatchCourse:(bool)arg1;
+- (void)setHasRouteMatchCourse:(bool)arg1;
 - (void)setHasShieldType:(bool)arg1;
 - (void)setHasSpeedLimit:(bool)arg1;
 - (void)setHasSpeedLimitIsMPH:(bool)arg1;
@@ -178,9 +184,11 @@
 - (void)setRawReferenceFrame:(int)arg1;
 - (void)setRoadCoordinate:(id)arg1;
 - (void)setRoadLineType:(unsigned int)arg1;
+- (void)setRoadMatchCourse:(double)arg1;
 - (void)setRoadName:(id)arg1;
 - (void)setRouteCoordinate:(id)arg1;
-- (void)setRouteDetailsID:(id)arg1;
+- (void)setRouteIDData:(id)arg1;
+- (void)setRouteMatchCourse:(double)arg1;
 - (void)setShieldText:(id)arg1;
 - (void)setShieldType:(long long)arg1;
 - (void)setSpeedLimit:(unsigned int)arg1;

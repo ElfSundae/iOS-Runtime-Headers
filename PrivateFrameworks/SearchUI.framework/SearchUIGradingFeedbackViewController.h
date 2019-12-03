@@ -10,11 +10,11 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property <SFFeedbackListener> *feedbackDelegate;
+@property (nonatomic) <SFFeedbackListener> *feedbackDelegate;
 @property (readonly) unsigned long long hash;
-@property (retain) SFSearchResult *result;
+@property (nonatomic, retain) SFSearchResult *result;
 @property (readonly) Class superclass;
-@property (retain) UIViewController *viewControllerForPresenting;
+@property (nonatomic, retain) UIViewController *viewControllerForPresenting;
 
 - (void).cxx_destruct;
 - (void)addActionForGrade:(unsigned long long)arg1 title:(id)arg2;

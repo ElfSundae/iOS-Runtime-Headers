@@ -7,6 +7,7 @@
     bool  _canBeHidden;
     bool  _hasBottomPadding;
     bool  _hasTopPadding;
+    NSString * _playbackBundleIdentifier;
     NSString * _playbackRouteUniqueIdentifier;
     bool  _playbackRouteUniqueIdentifierIsEncrypted;
     NSArray * _punchoutOptions;
@@ -24,6 +25,7 @@
 @property (nonatomic) bool hasTopPadding;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
+@property (nonatomic, copy) NSString *playbackBundleIdentifier;
 @property (nonatomic, copy) NSString *playbackRouteUniqueIdentifier;
 @property (nonatomic) bool playbackRouteUniqueIdentifierIsEncrypted;
 @property (nonatomic, copy) NSArray *punchoutOptions;
@@ -47,6 +49,7 @@
 - (id)initWithJSON:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)jsonData;
+- (id)playbackBundleIdentifier;
 - (id)playbackRouteUniqueIdentifier;
 - (bool)playbackRouteUniqueIdentifierIsEncrypted;
 - (id)punchoutOptions;
@@ -60,6 +63,7 @@
 - (void)setCanBeHidden:(bool)arg1;
 - (void)setHasBottomPadding:(bool)arg1;
 - (void)setHasTopPadding:(bool)arg1;
+- (void)setPlaybackBundleIdentifier:(id)arg1;
 - (void)setPlaybackRouteUniqueIdentifier:(id)arg1;
 - (void)setPlaybackRouteUniqueIdentifierIsEncrypted:(bool)arg1;
 - (void)setPunchoutOptions:(id)arg1;

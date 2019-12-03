@@ -15,11 +15,13 @@
             unsigned int uploading : 1; 
             unsigned int waitingForUpdate : 1; 
             unsigned int updating : 1; 
+            unsigned int confirmed : 1; 
         } status; 
         unsigned int packedStatus; 
     }  _status;
 }
 
+@property (getter=isConfirmed, nonatomic) bool confirmed;
 @property (nonatomic, readonly) unsigned long long generation;
 @property (getter=isQuarantined, nonatomic) bool quarantined;
 @property (nonatomic, readonly) CPLRecordChange *record;
@@ -40,6 +42,7 @@
 - (unsigned long long)generation;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRecord:(id)arg1 generation:(unsigned long long)arg2;
+- (bool)isConfirmed;
 - (bool)isQuarantined;
 - (bool)isResetting;
 - (bool)isUnknown;
@@ -49,6 +52,7 @@
 - (bool)isWaitingForUpdate;
 - (bool)isWaitingForUpload;
 - (id)record;
+- (void)setConfirmed:(bool)arg1;
 - (void)setQuarantined:(bool)arg1;
 - (void)setResetting:(bool)arg1;
 - (void)setUnknown:(bool)arg1;

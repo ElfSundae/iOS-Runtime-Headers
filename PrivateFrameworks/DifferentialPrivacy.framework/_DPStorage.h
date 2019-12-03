@@ -29,6 +29,7 @@
 - (void)deleteRecords:(id)arg1 withCompletion:(id /* block */)arg2;
 - (bool)deleteStorageWithObliterationOption:(bool)arg1;
 - (void)fetchKeynamesFor:(id)arg1 predicate:(id)arg2 fetchLimit:(unsigned long long)arg3 fetchOffset:(unsigned long long)arg4 withCompletion:(id /* block */)arg5;
+- (void)fetchRecordCountForEntity:(id)arg1 predicate:(id)arg2 completion:(id /* block */)arg3;
 - (void)fetchRecordsFor:(id)arg1 predicate:(id)arg2 fetchLimit:(unsigned long long)arg3 fetchOffset:(unsigned long long)arg4 withCompletion:(id /* block */)arg5;
 - (void)flush;
 - (void)handleEmptyArrayError:(long long)arg1 completion:(id /* block */)arg2;

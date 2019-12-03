@@ -33,6 +33,7 @@
     bool  _supportsPeerPayment;
     bool  _supportsSerialNumberBasedProvisioning;
     NSString * _transactionPushTopic;
+    NSURL * _transactionServiceRegistrationURL;
     NSURL * _transactionServiceURL;
 }
 
@@ -72,6 +73,7 @@
 @property (nonatomic) bool supportsPeerPayment;
 @property (nonatomic) bool supportsSerialNumberBasedProvisioning;
 @property (nonatomic, copy) NSString *transactionPushTopic;
+@property (nonatomic, copy) NSURL *transactionServiceRegistrationURL;
 @property (nonatomic, copy) NSURL *transactionServiceURL;
 @property (nonatomic, readonly, copy) PKTransitPassProperties *transitProperties;
 @property (nonatomic, readonly) NSArray *upgradeRequests;
@@ -121,6 +123,7 @@
 - (bool)isCobranded;
 - (bool)isContactlessPaymentSupportedForTransitNetworks:(id)arg1;
 - (bool)isDevicePrimaryPaymentApplicationPersonalized;
+- (bool)isOctopusPass;
 - (bool)isPaymentOptionSelectable;
 - (bool)isPrivateLabel;
 - (bool)isSuicaPass;
@@ -137,6 +140,7 @@
 - (id)primaryAccountIdentifier;
 - (id)primaryAccountNumberSuffix;
 - (id)primaryPaymentApplicationForSecureElementIdentifiers:(id)arg1;
+- (bool)requiresFelicaSecureElement;
 - (bool)requiresTransferSerialNumberBasedProvisioning;
 - (void)sanitizePaymentApplications;
 - (id)sanitizedDeviceAccountNumber;
@@ -172,6 +176,7 @@
 - (void)setSupportsPeerPayment:(bool)arg1;
 - (void)setSupportsSerialNumberBasedProvisioning:(bool)arg1;
 - (void)setTransactionPushTopic:(id)arg1;
+- (void)setTransactionServiceRegistrationURL:(id)arg1;
 - (void)setTransactionServiceURL:(id)arg1;
 - (bool)shouldIgnoreTransactionUpdatesSwitch;
 - (bool)shouldSuppressNoChargeAmount;
@@ -185,6 +190,7 @@
 - (bool)supportsWebPaymentMode:(long long)arg1 withExclusionList:(id)arg2;
 - (bool)supportsWebPaymentMode:(long long)arg1 withExclusionList:(id)arg2 clientOSVersion:(id)arg3;
 - (id)transactionPushTopic;
+- (id)transactionServiceRegistrationURL;
 - (id)transactionServiceURL;
 - (id)transitProperties;
 - (void)updateDevicePaymentApplicationsWithSecureElementIdentifiers:(id)arg1;
@@ -192,15 +198,10 @@
 
 // Image: /System/Library/PrivateFrameworks/NanoPassKit.framework/NanoPassKit
 
-- (id)npkDeviceContactlessPaymentApplications;
-- (id)npkDeviceInAppPaymentApplications;
 - (id)npkDevicePaymentApplicationForAID:(id)arg1;
 - (bool)npkHasUserSelectableContactlessPaymentApplications;
-- (bool)npkHasUserSelectableInAppPaymentApplications;
 - (id)npkPreferredContactlessPaymentApplication;
-- (id)npkPreferredInAppPaymentApplication;
 - (void)npkSetPreferredPaymentApplication:(id)arg1;
 - (id)npkSortedDeviceContactlessPaymentApplications;
-- (id)npkSortedDeviceInAppPaymentApplications;
 
 @end

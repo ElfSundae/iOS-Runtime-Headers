@@ -15,6 +15,7 @@
     }  _margins;
     unsigned long long  _passType;
     bool  _showActivityIndicator;
+    bool  _sizesDirty;
     UILabel * _titleView;
 }
 
@@ -38,5 +39,6 @@
 - (void)setShowActivityIndicator:(bool)arg1;
 - (bool)showActivityIndicator;
 - (id)trailingView;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end

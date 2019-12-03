@@ -13,6 +13,7 @@
 - (void).cxx_destruct;
 - (bool)allowsCellSelection;
 - (void)dealloc;
+- (bool)displaysCellSelectionState;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (id)labelLabel;
 - (id)labelView;
@@ -28,5 +29,6 @@
 - (void)textViewChanged:(id)arg1;
 - (void)textViewEditingDidEnd:(id)arg1;
 - (id)valueView;
+- (double)valueViewBottomMargin;
 
 @end

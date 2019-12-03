@@ -3,7 +3,7 @@
  */
 
 @interface AssistantCallbackController : NSObject <AssistantCallbackUIDelegateResult> {
-    struct AssistantCallbackContext { unsigned int x1; struct AssistantContext {} *x2; int x3; struct __CFDictionary {} *x4; int x5; id x6; struct _opaque_pthread_mutex_t { long long x_7_1_1; BOOL x_7_1_2[56]; } x7; void *x8; long long x9; } * _callbackContext;
+    struct AssistantCallbackContext { unsigned int x1; struct AssistantContext {} *x2; int x3; struct __CFDictionary {} *x4; int x5; id x6; id x7; struct _opaque_pthread_mutex_t { long long x_8_1_1; BOOL x_8_1_2[56]; } x8; void *x9; long long x10; } * _callbackContext;
     bool  _saveScanState;
     id  _uiDelegate;
 }
@@ -17,7 +17,7 @@
 + (int)updateKeychainNetworkPassword:(id)arg1 forNetworkNamed:(id)arg2;
 
 - (int (*)assistantCallback;
-- (int)assistantCallback:(struct AssistantCallbackContext { unsigned int x1; struct AssistantContext {} *x2; int x3; struct __CFDictionary {} *x4; int x5; id x6; struct _opaque_pthread_mutex_t { long long x_7_1_1; BOOL x_7_1_2[56]; } x7; void *x8; long long x9; }*)arg1 withSelector:(int)arg2;
+- (int)assistantCallback:(struct AssistantCallbackContext { unsigned int x1; struct AssistantContext {} *x2; int x3; struct __CFDictionary {} *x4; int x5; id x6; id x7; struct _opaque_pthread_mutex_t { long long x_8_1_1; BOOL x_8_1_2[56]; } x8; void *x9; long long x10; }*)arg1 withSelector:(int)arg2;
 - (void)callbackAskUserAQuestionResult:(int)arg1 result:(int)arg2;
 - (void)callbackAskUserForPasswordResult:(int)arg1 password:(id)arg2 remember:(int)arg3;
 - (void)callbackAskUserToChooseFromStringListResult:(int)arg1 selectedString:(id)arg2;
@@ -28,7 +28,7 @@
 - (void)setUiDelegate:(id)arg1;
 - (int)startJoinNetwork:(id)arg1 password:(id)arg2 rememberChoice:(int)arg3;
 - (int)startScanForNetworks:(id)arg1 wifiType:(int)arg2 mergeResults:(bool)arg3 maxAge:(unsigned long long)arg4;
-- (int)subclassAssistantCallback:(struct AssistantCallbackContext { unsigned int x1; struct AssistantContext {} *x2; int x3; struct __CFDictionary {} *x4; int x5; id x6; struct _opaque_pthread_mutex_t { long long x_7_1_1; BOOL x_7_1_2[56]; } x7; void *x8; long long x9; }*)arg1;
+- (int)subclassAssistantCallback:(struct AssistantCallbackContext { unsigned int x1; struct AssistantContext {} *x2; int x3; struct __CFDictionary {} *x4; int x5; id x6; id x7; struct _opaque_pthread_mutex_t { long long x_8_1_1; BOOL x_8_1_2[56]; } x8; void *x9; long long x10; }*)arg1;
 - (id)uiDelegate;
 - (void)userResponseToJoinNetwork:(int)arg1;
 - (void)userResponseToPPPoECredsFailed:(int)arg1;

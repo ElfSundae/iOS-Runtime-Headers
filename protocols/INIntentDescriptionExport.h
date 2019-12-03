@@ -13,7 +13,6 @@
 - (bool)isPrivate;
 - (NSString *)name;
 - (NSString *)responseName;
-- (NSDictionary *)slotsByName;
 - (NSString *)type;
 
 @end

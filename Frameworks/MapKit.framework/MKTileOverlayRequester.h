@@ -7,6 +7,7 @@
     NSMutableArray * _errors;
     NSMutableSet * _running;
     NSMutableArray * _waiting;
+    NSObject<OS_dispatch_queue> * _workQueue;
 }
 
 + (unsigned int)registerOverlay:(id)arg1;
@@ -18,8 +19,10 @@
 - (void)_doWorkOrFinish;
 - (void)_operationFailed:(id)arg1 error:(id)arg2;
 - (void)_operationFinished:(id)arg1;
+- (void)_startOnWorkQueue;
 - (void)cancel;
 - (void)dealloc;
+- (id)initWithTileRequest:(id)arg1 delegateQueue:(id)arg2 delegate:(id)arg3;
 - (bool)isRunning;
 - (void)start;
 

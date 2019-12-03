@@ -2,7 +2,8 @@
    Image: /System/Library/PrivateFrameworks/MapsSuggestions.framework/MapsSuggestions
  */
 
-@interface MapsSuggestionsCalendarSource : MapsSuggestionsBaseSource <MapsSuggestionsSource> {
+@interface MapsSuggestionsCalendarSource : MapsSuggestionsBaseSource <MapsSuggestionsPreloadableSource> {
+    EKCalendarVisibilityManager * _calVisibilityManager;
     MapsSuggestionsCanKicker * _changedNotificationCanKicker;
     EKEventStore * _eventStore;
     NSObject<OS_dispatch_queue> * _fimQueue;
@@ -13,6 +14,7 @@
     bool  _suspended;
 }
 
+@property (nonatomic, retain) EKCalendarVisibilityManager *calVisibilityManager;
 @property (nonatomic, retain) MapsSuggestionsCanKicker *changedNotificationCanKicker;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <MapsSuggestionsSourceDelegate> *delegate;
@@ -39,9 +41,10 @@
 - (bool)_addTicketedEventFieldsToEntry:(id)arg1 fromSchemaOrgDictionary:(id)arg2 event:(id)arg3;
 - (bool)_addTravelFlightFieldsToEntry:(id)arg1 fromSchemaOrgDictionary:(id)arg2 event:(id)arg3;
 - (void)_callUpdateSuggestionEntries;
-- (void)_createEntriesFromEventsAndUpdateSuggestions:(id)arg1 currentLocation:(id)arg2;
+- (bool)_createEntriesWithinPeriod:(struct NSDateInterval { Class x1; }*)arg1 location:(id)arg2 handler:(id /* block */)arg3;
 - (long long)_entryTypeFromSchema:(id)arg1;
-- (id)_predicate;
+- (id)_predicateForPeriod:(struct NSDateInterval { Class x1; }*)arg1;
+- (id)calVisibilityManager;
 - (bool)canProduceEntriesOfType:(long long)arg1;
 - (id)changedNotificationCanKicker;
 - (void)dealloc;
@@ -52,6 +55,7 @@
 - (id)initWithDelegate:(id)arg1;
 - (bool)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(id /* block */)arg3;
 - (id)requester;
+- (void)setCalVisibilityManager:(id)arg1;
 - (void)setChangedNotificationCanKicker:(id)arg1;
 - (void)setEventStore:(id)arg1;
 - (void)setFimQueue:(id)arg1;
@@ -64,8 +68,7 @@
 - (id)siriFoundThisString;
 - (void)start;
 - (void)stop;
-- (id)suggestionSubtitleForReservationStatus:(id)arg1 name:(id)arg2 event:(id)arg3;
-- (id)suggestionTitleForReservationStatus:(id)arg1 name:(id)arg2;
+- (bool)suggestionsEntriesAtLocation:(id)arg1 period:(struct NSDateInterval { Class x1; }*)arg2 handler:(id /* block */)arg3;
 - (bool)suspended;
 - (double)updateSuggestionEntries;
 

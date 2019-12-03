@@ -10,6 +10,7 @@
     AVPlayerLooper * _playerLooper;
     AVPlayerViewController * _playerViewController;
     AVQueuePlayer * _queuePlayer;
+    UIScrollView * _scrollView;
     AVPlayerLooper * _secondaryPlayerLooper;
     AVPlayerViewController * _secondaryPlayerViewController;
     AVQueuePlayer * _secondaryQueuePlayer;
@@ -25,6 +26,7 @@
 @property (nonatomic, retain) AVPlayerLooper *playerLooper;
 @property (nonatomic, retain) AVPlayerViewController *playerViewController;
 @property (nonatomic, retain) AVQueuePlayer *queuePlayer;
+@property (nonatomic, retain) UIScrollView *scrollView;
 @property (nonatomic, retain) AVPlayerLooper *secondaryPlayerLooper;
 @property (nonatomic, retain) AVPlayerViewController *secondaryPlayerViewController;
 @property (nonatomic, retain) AVQueuePlayer *secondaryQueuePlayer;
@@ -44,6 +46,7 @@
 - (id)playerLooper;
 - (id)playerViewController;
 - (id)queuePlayer;
+- (id)scrollView;
 - (id)secondaryPlayerLooper;
 - (id)secondaryPlayerViewController;
 - (id)secondaryQueuePlayer;
@@ -54,6 +57,7 @@
 - (void)setPlayerLooper:(id)arg1;
 - (void)setPlayerViewController:(id)arg1;
 - (void)setQueuePlayer:(id)arg1;
+- (void)setScrollView:(id)arg1;
 - (void)setSecondaryPlayerLooper:(id)arg1;
 - (void)setSecondaryPlayerViewController:(id)arg1;
 - (void)setSecondaryQueuePlayer:(id)arg1;

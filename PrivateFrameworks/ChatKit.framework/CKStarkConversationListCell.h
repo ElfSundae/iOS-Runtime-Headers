@@ -3,12 +3,14 @@
  */
 
 @interface CKStarkConversationListCell : UITableViewCell {
+    UIImageView * _chevronImageView;
     UIDateLabel * _dateLabel;
     UIImage * _monogramImage;
     UILabel * _recipientsLabel;
     UIImageView * _unreadImageView;
 }
 
+@property (nonatomic, retain) UIImageView *chevronImageView;
 @property (nonatomic, retain) NSDate *date;
 @property (nonatomic, retain) UIDateLabel *dateLabel;
 @property (nonatomic) bool hasUnreadMessages;
@@ -20,11 +22,13 @@
 + (double)starkCellMarginWidth;
 
 - (void).cxx_destruct;
+- (id)chevronImageView;
 - (id)dateLabel;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
 - (id)monogramImage;
 - (id)recipientsLabel;
+- (void)setChevronImageView:(id)arg1;
 - (void)setDate:(id)arg1;
 - (void)setDateLabel:(id)arg1;
 - (void)setHasUnreadMessages:(bool)arg1;
@@ -32,6 +36,8 @@
 - (void)setRecipientNames:(id)arg1;
 - (void)setRecipientsLabel:(id)arg1;
 - (void)setUnreadImageView:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)unreadImageView;
+- (void)updateUserInterfaceStyle;
 
 @end

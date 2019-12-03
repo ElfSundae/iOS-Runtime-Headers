@@ -19,6 +19,8 @@
 + (id)entitlements;
 + (id)eventStream;
 
+- (void)deactivate;
+- (void)dealloc;
 - (void)getPeakPowerPressureLevelWithToken:(int)arg1;
 - (void)getThermalPressureLevelWithToken:(int)arg1;
 - (bool)initialized;

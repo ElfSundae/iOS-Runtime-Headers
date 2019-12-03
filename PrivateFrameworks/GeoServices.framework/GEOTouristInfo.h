@@ -5,9 +5,9 @@
 @interface GEOTouristInfo : PBCodable <NSCopying> {
     double  _fetchTimestamp;
     struct { 
-        unsigned int fetchTimestamp : 1; 
-        unsigned int isTourist : 1; 
-    }  _has;
+        unsigned int has_fetchTimestamp : 1; 
+        unsigned int has_isTourist : 1; 
+    }  _flags;
     bool  _isTourist;
 }
 
@@ -15,6 +15,8 @@
 @property (nonatomic) bool hasFetchTimestamp;
 @property (nonatomic) bool hasIsTourist;
 @property (nonatomic) bool isTourist;
+
++ (bool)isValid:(id)arg1;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -27,6 +29,7 @@
 - (bool)isEqual:(id)arg1;
 - (bool)isTourist;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setFetchTimestamp:(double)arg1;
 - (void)setHasFetchTimestamp:(bool)arg1;

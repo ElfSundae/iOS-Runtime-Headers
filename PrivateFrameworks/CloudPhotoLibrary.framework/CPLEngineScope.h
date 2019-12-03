@@ -30,6 +30,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithScopeIdentifier:(id)arg1 scopeType:(long long)arg2;
 - (long long)localIndex;
+- (id)redactedDescription;
 - (id)scopeIdentifier;
 - (long long)scopeType;
 - (void)setCloudIndex:(long long)arg1;

@@ -16,6 +16,8 @@
 - (unsigned long long)queryID;
 - (void)setQueryID:(unsigned long long)arg1;
 - (void)start;
+- (void)startAtUIPriority;
+- (void)startAtUIPriority:(bool)arg1;
 - (id)unsafeSections;
 - (id)unsafeSessionEntityString;
 

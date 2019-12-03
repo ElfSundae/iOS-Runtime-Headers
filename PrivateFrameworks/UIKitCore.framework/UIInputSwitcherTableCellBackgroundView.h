@@ -5,14 +5,14 @@
 @interface UIInputSwitcherTableCellBackgroundView : UIView {
     bool  _drawsBorder;
     bool  _drawsOpaque;
-    int  _roundedCorners;
+    unsigned long long  _roundedCorners;
     bool  _selected;
     bool  _usesDarkTheme;
 }
 
 @property (nonatomic) bool drawsBorder;
 @property (nonatomic) bool drawsOpaque;
-@property (nonatomic) int roundedCorners;
+@property (nonatomic) unsigned long long roundedCorners;
 @property (getter=isSelected, nonatomic) bool selected;
 @property (nonatomic) bool usesDarkTheme;
 
@@ -20,10 +20,10 @@
 - (bool)drawsBorder;
 - (bool)drawsOpaque;
 - (bool)isSelected;
-- (int)roundedCorners;
+- (unsigned long long)roundedCorners;
 - (void)setDrawsBorder:(bool)arg1;
 - (void)setDrawsOpaque:(bool)arg1;
-- (void)setRoundedCorners:(int)arg1;
+- (void)setRoundedCorners:(unsigned long long)arg1;
 - (void)setSelected:(bool)arg1;
 - (void)setUsesDarkTheme:(bool)arg1;
 - (bool)usesDarkTheme;

@@ -9,10 +9,10 @@
 
 + (void)applyTextStyle:(id)arg1 toParagraphProperties:(id)arg2;
 
+- (void).cxx_destruct;
 - (id)addRow;
 - (id)cellAtPos:(struct OADTMatrixPos { int x1; int x2; })arg1;
 - (void)changeParentTextListStylePreservingEffectiveValues:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)flattenStyle;
 - (void)flipTableRTL;

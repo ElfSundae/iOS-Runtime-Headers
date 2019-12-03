@@ -9,8 +9,8 @@
     NSMutableArray * _hostedPlayers;
     GKMatch * _match;
     GKMatchRequest * _matchRequest;
-    <GKMatchmakerViewControllerDelegate> * _matchmakerDelegateWeak;
     GKMatchmakerHostViewController * _remoteViewController;
+    <GKMatchmakerViewControllerDelegate> * matchmakerDelegate;
 }
 
 @property (nonatomic, retain) GKInvite *acceptedInvite;
@@ -22,13 +22,14 @@
 @property (getter=isHosted, nonatomic) bool hosted;
 @property (nonatomic, retain) NSMutableArray *hostedPlayers;
 @property (nonatomic, retain) GKMatch *match;
-@property (nonatomic, readonly, retain) GKMatchRequest *matchRequest;
+@property (nonatomic, retain) GKMatchRequest *matchRequest;
 @property (nonatomic) <GKMatchmakerViewControllerDelegate> *matchmakerDelegate;
 @property (nonatomic, retain) GKMatchmakerHostViewController *remoteViewController;
 @property (readonly) Class superclass;
 
 + (bool)_preventsAppearanceProxyCustomization;
 
+- (void).cxx_destruct;
 - (void)_setupChildViewController;
 - (void)_setupRemoteViewController;
 - (id)acceptedInvite;
@@ -73,6 +74,7 @@
 - (void)setHostedPlayerReady:(id)arg1;
 - (void)setHostedPlayers:(id)arg1;
 - (void)setMatch:(id)arg1;
+- (void)setMatchRequest:(id)arg1;
 - (void)setMatchmakerDelegate:(id)arg1;
 - (void)setRemoteViewController:(id)arg1;
 - (void)setShareInvitees:(id)arg1;

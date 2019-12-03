@@ -29,7 +29,7 @@
 - (struct CGPoint { double x1; double x2; })numberPadKeyPrimaryTextOffset;
 - (struct CGPoint { double x1; double x2; })numberPadKeySecondaryTextOffset;
 - (struct CGPoint { double x1; double x2; })numberPadVBarSecondaryTextOffset;
-- (int)roundCornersForKey:(id)arg1 onKeyplane:(id)arg2;
+- (unsigned long long)roundCornersForKey:(id)arg1 onKeyplane:(id)arg2;
 - (void)setupColumnLayoutSegmentsWithControlWidth:(double)arg1;
 - (id)shiftedControlKeyTraits;
 - (id)shiftedWhiteControlKeyTraits;

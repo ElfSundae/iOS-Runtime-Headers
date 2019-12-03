@@ -25,6 +25,7 @@
 @property (nonatomic, retain) NSString *valueText;
 
 - (void).cxx_destruct;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_effectiveLayoutMargins;
 - (bool)hasTrailingLineSeperator;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;

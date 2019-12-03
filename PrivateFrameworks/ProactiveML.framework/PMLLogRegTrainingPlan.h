@@ -8,7 +8,6 @@
     unsigned long long  _evaluationLevel;
     bool  _intercept;
     bool  _isMultiLabel;
-    bool  _isSynchronous;
     unsigned long long  _localGradientIterations;
     float  _localLearningRate;
     unsigned long long  _localMinimumIterations;
@@ -16,6 +15,7 @@
     <PMLNoiseStrategy> * _noiseStrategy;
     struct NSString { Class x1; } * _planId;
     unsigned long long  _positiveLabel;
+    NSArray * _refeaturizationDescriptors;
     bool  _reportScale;
     PMLSessionDescriptor * _sessionDescriptor;
     unsigned long long  _sessionsInBatch;
@@ -24,6 +24,7 @@
     PMLTrainingStore * _store;
     double  _threshold;
     <PMLLogRegTrackerProtocol> * _tracker;
+    <PMLTransformerProtocol> * _transformer;
     bool  _useOnlyAppleInternalSessions;
 }
 
@@ -35,19 +36,20 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) bool intercept;
 @property (nonatomic, readonly) bool isMultiLabel;
-@property (nonatomic, readonly) bool isSynchronous;
 @property (nonatomic, readonly) unsigned long long localGradientIterations;
 @property (nonatomic, readonly) float localLearningRate;
 @property (nonatomic, readonly) unsigned long long localMinimumIterations;
 @property (nonatomic, readonly) unsigned long long maxSessionsLimit;
 @property (nonatomic, readonly) NSString *planId;
 @property (nonatomic, readonly) unsigned long long positiveLabel;
+@property (nonatomic, readonly) NSArray *refeaturizationDescriptors;
 @property (nonatomic, readonly) bool reportScale;
 @property (nonatomic, readonly) PMLSessionDescriptor *sessionDescriptor;
 @property (nonatomic, readonly) float stoppingThreshold;
 @property (nonatomic, readonly) PMLTrainingStore *store;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) <PMLLogRegTrackerProtocol> *tracker;
+@property (nonatomic, readonly) <PMLTransformerProtocol> *transformer;
 @property (nonatomic, readonly) bool useOnlyAppleInternalSessions;
 
 + (id)planWithStore:(id)arg1 tracker:(id)arg2 sessionDescriptor:(id)arg3 arguments:(id)arg4;
@@ -60,10 +62,9 @@
 - (id)evaluationMetricsForPredictions:(id)arg1 objectives:(id)arg2 predicate:(id /* block */)arg3 start:(id)arg4;
 - (id)init;
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
-- (id)initWithStore:(id)arg1 tracker:(id)arg2 noiseStrategy:(id)arg3 planId:(struct NSString { Class x1; }*)arg4 isSynchronous:(bool)arg5 sessionDescriptor:(id)arg6 maxSessionsLimit:(unsigned long long)arg7 sessionsInBatch:(unsigned long long)arg8 currentServerIteration:(unsigned long long)arg9 currentModelWeights:(id)arg10 localLearningRate:(float)arg11 stoppingThreshold:(float)arg12 localMinimumIterations:(unsigned long long)arg13 localGradientIterations:(unsigned long long)arg14 useOnlyAppleInternalSessions:(bool)arg15 skew:(double)arg16 threshold:(double)arg17 isMultiLabel:(bool)arg18 intercept:(bool)arg19 positiveLabel:(unsigned long long)arg20 evaluationLevel:(unsigned long long)arg21 reportScale:(bool)arg22;
+- (id)initWithStore:(id)arg1 tracker:(id)arg2 noiseStrategy:(id)arg3 planId:(struct NSString { Class x1; }*)arg4 sessionDescriptor:(id)arg5 maxSessionsLimit:(unsigned long long)arg6 sessionsInBatch:(unsigned long long)arg7 currentServerIteration:(unsigned long long)arg8 currentModelWeights:(id)arg9 localLearningRate:(float)arg10 stoppingThreshold:(float)arg11 localMinimumIterations:(unsigned long long)arg12 localGradientIterations:(unsigned long long)arg13 useOnlyAppleInternalSessions:(bool)arg14 skew:(double)arg15 threshold:(double)arg16 isMultiLabel:(bool)arg17 intercept:(bool)arg18 positiveLabel:(unsigned long long)arg19 evaluationLevel:(unsigned long long)arg20 reportScale:(bool)arg21 transformer:(id)arg22 refeaturizationDescriptors:(id)arg23;
 - (bool)intercept;
 - (bool)isMultiLabel;
-- (bool)isSynchronous;
 - (void)loadSessionsWithBlock:(id /* block */)arg1;
 - (unsigned long long)localGradientIterations;
 - (float)localLearningRate;
@@ -72,6 +73,7 @@
 - (id)normalizeRegressor:(id)arg1;
 - (struct NSString { Class x1; }*)planId;
 - (unsigned long long)positiveLabel;
+- (id)refeaturizationDescriptors;
 - (bool)reportScale;
 - (void)runUntilDoneForTesting;
 - (id)runWhile:(id /* block */)arg1 didFinish:(bool*)arg2;
@@ -81,6 +83,7 @@
 - (id)toPlistWithChunks:(id)arg1;
 - (id)tracker;
 - (id)train;
+- (id)transformer;
 - (bool)useOnlyAppleInternalSessions;
 
 @end

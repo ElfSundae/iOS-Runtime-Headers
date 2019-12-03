@@ -17,8 +17,8 @@
     NSString * _machServiceName;
     unsigned long long  _options;
     NSXPCInterface * _remoteObjectInterface;
+    <PKInvalidatable> * _serviceResumedListenerInvalidater;
     NSString * _serviceResumedNotificationName;
-    int  _serviceResumedToken;
     bool  _suspendCallbacks;
 }
 

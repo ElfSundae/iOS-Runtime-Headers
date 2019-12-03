@@ -4,6 +4,7 @@
 
 @interface PKFieldProperties : NSObject <NSSecureCoding> {
     NSArray * _TCIs;
+    bool  _authenticationRequired;
     NSError * _error;
     NSArray * _merchantIdentifiers;
     bool  _shouldIgnore;
@@ -13,6 +14,7 @@
 }
 
 @property (nonatomic, copy) NSArray *TCIs;
+@property (nonatomic) bool authenticationRequired;
 @property (nonatomic, copy) NSError *error;
 @property (nonatomic, copy) NSArray *merchantIdentifiers;
 @property (nonatomic) bool shouldIgnore;
@@ -25,12 +27,14 @@
 
 - (void).cxx_destruct;
 - (id)TCIs;
+- (bool)authenticationRequired;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)error;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTechnology:(unsigned long long)arg1 terminalType:(long long)arg2 valueAddedServiceMode:(long long)arg3;
 - (id)merchantIdentifiers;
+- (void)setAuthenticationRequired:(bool)arg1;
 - (void)setError:(id)arg1;
 - (void)setMerchantIdentifiers:(id)arg1;
 - (void)setShouldIgnore:(bool)arg1;

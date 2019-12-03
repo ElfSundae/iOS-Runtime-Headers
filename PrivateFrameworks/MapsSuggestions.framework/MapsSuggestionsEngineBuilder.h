@@ -3,6 +3,7 @@
  */
 
 @interface MapsSuggestionsEngineBuilder : NSObject <MapsSuggestionsObject> {
+    MapsSuggestionsContacts * _contacts;
     struct NSMutableArray { Class x1; } * _excludeDedupers;
     struct NSMutableArray { Class x1; } * _excludeImprovers;
     struct NSMutableSet { Class x1; } * _excludePostFilters;
@@ -14,11 +15,17 @@
     struct NSMutableSet { Class x1; } * _includePreFilters;
     <MapsSuggestionsLocationUpdater> * _locationUpdater;
     long long  _managerStyle;
+    <MapsSuggestionsNetworkRequester> * _networkRequester;
+    MapsSuggestionsRoutine * _routine;
+    <MapsSuggestionsRoutineRequester> * _routineRequester;
+    <MapsSuggestionsShortcutStorage> * _shortcutStorage;
+    <MapsSuggestionsShortcutSuggestor> * _shortcutSuggestor;
     NSMutableArray * _sourceClasses;
     <MapsSuggestionsStrategy> * _strategy;
     struct NSMutableDictionary { Class x1; } * _titleFormatters;
 }
 
+@property (nonatomic, retain) MapsSuggestionsContacts *contacts;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) NSMutableArray *excludeDedupers;
@@ -33,6 +40,11 @@
 @property (nonatomic, retain) NSMutableSet *includePreFilters;
 @property (nonatomic, retain) <MapsSuggestionsLocationUpdater> *locationUpdater;
 @property (nonatomic) long long managerStyle;
+@property (nonatomic, retain) <MapsSuggestionsNetworkRequester> *networkRequester;
+@property (nonatomic, retain) MapsSuggestionsRoutine *routine;
+@property (nonatomic, retain) <MapsSuggestionsRoutineRequester> *routineRequester;
+@property (nonatomic, retain) <MapsSuggestionsShortcutStorage> *shortcutStorage;
+@property (nonatomic, retain) <MapsSuggestionsShortcutSuggestor> *shortcutSuggestor;
 @property (nonatomic, retain) NSMutableArray *sourceClasses;
 @property (nonatomic, retain) <MapsSuggestionsStrategy> *strategy;
 @property (readonly) Class superclass;
@@ -49,6 +61,8 @@
 
 - (void).cxx_destruct;
 - (id)build;
+- (id)buildWithoutStoring;
+- (id)contacts;
 - (struct NSMutableArray { Class x1; }*)excludeDedupers;
 - (struct NSMutableArray { Class x1; }*)excludeImprovers;
 - (struct NSMutableSet { Class x1; }*)excludePostFilters;
@@ -58,8 +72,13 @@
 - (struct NSMutableArray { Class x1; }*)includeImprovers;
 - (struct NSMutableSet { Class x1; }*)includePostFilters;
 - (struct NSMutableSet { Class x1; }*)includePreFilters;
+- (id)init;
 - (id)locationUpdater;
 - (long long)managerStyle;
+- (id)networkRequester;
+- (id)routine;
+- (id)routineRequester;
+- (void)setContacts:(id)arg1;
 - (void)setExcludeDedupers:(struct NSMutableArray { Class x1; }*)arg1;
 - (void)setExcludeImprovers:(struct NSMutableArray { Class x1; }*)arg1;
 - (void)setExcludePostFilters:(struct NSMutableSet { Class x1; }*)arg1;
@@ -71,14 +90,22 @@
 - (void)setIncludePreFilters:(struct NSMutableSet { Class x1; }*)arg1;
 - (void)setLocationUpdater:(id)arg1;
 - (void)setManagerStyle:(long long)arg1;
+- (void)setNetworkRequester:(id)arg1;
+- (void)setRoutine:(id)arg1;
+- (void)setRoutineRequester:(id)arg1;
+- (void)setShortcutStorage:(id)arg1;
+- (void)setShortcutSuggestor:(id)arg1;
 - (void)setSourceClasses:(id)arg1;
 - (void)setStrategy:(id)arg1;
 - (void)setTitleFormatters:(struct NSMutableDictionary { Class x1; }*)arg1;
+- (id)shortcutStorage;
+- (id)shortcutSuggestor;
 - (id)sourceClasses;
 - (id)strategy;
 - (struct NSMutableDictionary { Class x1; }*)titleFormatters;
 - (struct NSString { Class x1; }*)uniqueName;
 - (id)withDedupers:(id)arg1;
+- (id)withFavorites;
 - (id)withImprovers:(id)arg1;
 - (id)withLocationUpdater:(id)arg1;
 - (id)withManagerStyle:(long long)arg1;

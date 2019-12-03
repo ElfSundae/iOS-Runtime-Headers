@@ -15,8 +15,9 @@
         int type; 
         struct tagHANDLE {} *encoderHandle; 
     }  _encoder;
-    struct tagVCRealTimeThread { unsigned int x1; unsigned int x2; struct _opaque_pthread_mutex_t { long long x_3_1_1; BOOL x_3_1_2[56]; } x3; struct _opaque_pthread_mutex_t { long long x_4_1_1; BOOL x_4_1_2[56]; } x4; struct _opaque_pthread_cond_t { long long x_5_1_1; BOOL x_5_1_2[40]; } x5; int (*x6)(); void *x7; struct OpaqueFigThread {} *x8; int x9; BOOL x10[60]; unsigned int x11; unsigned int x12; } * _encoderThread;
+    struct tagVCRealTimeThread { unsigned int x1; unsigned int x2; struct _opaque_pthread_mutex_t { long long x_3_1_1; BOOL x_3_1_2[56]; } x3; id x4; int (*x5)(); void *x6; struct OpaqueFigThread {} *x7; int x8; BOOL x9[60]; unsigned int x10; unsigned int x11; } * _encoderThread;
     struct tagVCMemoryPool { struct { void *x_1_1_1; long long x_1_1_2; } x1; unsigned long long x2; } * _encodingArgPool;
+    bool  _forceDisableBitrateCap;
     int  _iSMBCount;
     unsigned int  _keyFrameIntervalDuration;
     unsigned char  _lastCameraStatusBits;
@@ -33,10 +34,16 @@
     int  _reportingModuleID;
     struct opaqueCMSampleBuffer { } * _savedSampleBuffer;
     int  _shouldGenerateKeyFrame;
+    AVCStatisticsCollector * _statisticsCollector;
     VCMediaStreamStats * _stats;
     bool  _terminateEncoderThread;
+    unsigned int  _tilesPerFrame;
+    unsigned long long  _totalBytesSent;
+    unsigned int  _totalKeyFramesSent;
+    unsigned int  _totalPacketsSent;
     NSObject<OS_dispatch_queue> * _transmitterQueue;
     long long  _videoCodecType;
+    struct __CFAllocator { } * _videoPacketAllocator;
     struct tagHANDLE { int x1; } * _videoRTP;
     int  _videoSource;
     struct _opaque_pthread_mutex_t { 
@@ -60,6 +67,7 @@
 - (void)setFECRatio:(double)arg1;
 - (void)setKeyFrameOnlyStreamID:(unsigned short)arg1;
 - (void)setStreamIDs:(unsigned short*)arg1 numOfStreamIDs:(unsigned char)arg2 repairedStreamIDs:(unsigned short*)arg3 numOfRepairedStreamIDs:(unsigned char)arg4;
+- (void)setTargetBitrate:(unsigned int)arg1;
 - (unsigned int)setTemporaryMaximumBitrate:(unsigned int)arg1;
 - (void)startVideo;
 - (void)stopVideo;
@@ -67,5 +75,6 @@
 - (int)transmitEncodedVideoFrame:(char *)arg1 size:(unsigned long long)arg2 timestamp:(unsigned int)arg3 hostTime:(double)arg4 cameraStatusBits:(unsigned char)arg5;
 - (int)transmitFrameInGroups:(char *)arg1 numOfPackets:(int)arg2 timestamp:(unsigned int)arg3 hostTime:(double)arg4 cameraStatusBits:(unsigned char)arg5;
 - (int)transmitVideoPackets:(const char *)arg1 packetSizes:(int*)arg2 startPacket:(int)arg3 packetCount:(int)arg4 lastGroup:(int)arg5 timestamp:(unsigned int)arg6 hostTime:(double)arg7 cameraStatusBits:(unsigned char)arg8 bytesSent:(int*)arg9;
+- (void)updateSendStatisticsWithTimestamp:(unsigned int)arg1 frameSize:(unsigned int)arg2 packetsInFrame:(unsigned int)arg3;
 
 @end

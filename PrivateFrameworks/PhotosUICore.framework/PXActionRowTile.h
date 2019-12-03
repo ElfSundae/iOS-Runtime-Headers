@@ -5,8 +5,6 @@
 @interface PXActionRowTile : UIView <PXReusableObject, PXUIViewBasicTile, PXUIWidgetFooterViewDelegate> {
     UIButton * __button;
     PXUIWidgetFooterView * __footer;
-    UIColor * __highlightedBackgroundColor;
-    UIColor * __normalBackgroundColor;
     <PXActionRowTileDelegate> * _delegate;
     long long  _idiom;
     NSString * _title;
@@ -14,8 +12,6 @@
 
 @property (nonatomic, readonly) UIButton *_button;
 @property (nonatomic, readonly) PXUIWidgetFooterView *_footer;
-@property (nonatomic, readonly) UIColor *_highlightedBackgroundColor;
-@property (nonatomic, readonly) UIColor *_normalBackgroundColor;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <PXActionRowTileDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -29,8 +25,6 @@
 - (void).cxx_destruct;
 - (id)_button;
 - (id)_footer;
-- (id)_highlightedBackgroundColor;
-- (id)_normalBackgroundColor;
 - (void)_setupButton;
 - (void)_setupDecoratedButton;
 - (void)_updateButtonTitle;

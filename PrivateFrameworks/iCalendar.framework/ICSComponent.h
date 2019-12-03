@@ -11,7 +11,7 @@
 @property (retain) NSArray *attach;
 @property (retain) NSArray *attendee;
 @property int classification;
-@property (retain) NSMutableArray *components;
+@property (nonatomic, retain) NSMutableArray *components;
 @property (retain) NSArray *conferences;
 @property (retain) ICSDate *created;
 @property (retain) NSString *description;

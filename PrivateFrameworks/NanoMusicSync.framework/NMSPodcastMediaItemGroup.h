@@ -6,7 +6,7 @@
 
 + (id)_sharedPodcastSizeCache;
 
+- (id)identifiersForContainerType:(unsigned long long)arg1;
 - (id)itemList;
-- (id)libraryIdentifiersForContainerType:(unsigned long long)arg1;
 
 @end

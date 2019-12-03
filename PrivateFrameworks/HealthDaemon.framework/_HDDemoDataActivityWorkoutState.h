@@ -35,7 +35,7 @@
 - (void).cxx_destruct;
 - (void)addAssociatedObjectUUID:(id)arg1;
 - (void)addWorkoutEvent:(id)arg1;
-- (void)addWorkoutRouteFromFilePath:(id)arg1 profile:(id)arg2 provenance:(id)arg3;
+- (void)addWorkoutRouteFromFilePath:(id)arg1 profile:(id)arg2 provenance:(id)arg3 workout:(id)arg4;
 - (id)associatedObjectUUIDs;
 - (void)encodeWithCoder:(id)arg1;
 - (id)generateWorkoutWithEndDate:(id)arg1 profile:(id)arg2 provenance:(id)arg3;

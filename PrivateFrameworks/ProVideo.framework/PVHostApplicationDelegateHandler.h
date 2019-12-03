@@ -3,9 +3,11 @@
  */
 
 @interface PVHostApplicationDelegateHandler : NSObject <PVHostApplicationDelegate> {
+    bool  _cacheDelegateResponses;
     <PVHostApplicationDelegate> * _hostApplicationDelegate;
 }
 
+@property (nonatomic) bool cacheDelegateResponses;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -15,11 +17,14 @@
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
+- (bool)cacheDelegateResponses;
 - (id)effectTemplatesBundle;
 - (id)effectTemplatesDirectoryName;
 - (unsigned int)getMaxGlyphResolution;
 - (unsigned int)getNumberOfLinesToLimitTextTo;
 - (id)hostApplicationDelegate;
+- (id)init;
+- (void)setCacheDelegateResponses:(bool)arg1;
 - (void)setHostApplicationDelegate:(id)arg1;
 - (bool)wantsDynamicLineSpacingForDiacritics;
 - (bool)wantsExtraLineSpacingForDiacritics;

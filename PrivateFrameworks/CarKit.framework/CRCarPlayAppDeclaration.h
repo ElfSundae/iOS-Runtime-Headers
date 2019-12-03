@@ -3,8 +3,10 @@
  */
 
 @interface CRCarPlayAppDeclaration : NSObject {
+    unsigned long long  __applicationCategory;
     NSSet * _autoMakerProtocols;
     NSString * _bundleIdentifier;
+    bool  _launchNotificationsUsingSiri;
     bool  _launchUsingSiri;
     bool  _requiresGeoSupport;
     bool  _supportsCalling;
@@ -14,8 +16,10 @@
     bool  _systemApp;
 }
 
+@property (nonatomic) unsigned long long _applicationCategory;
 @property (nonatomic, retain) NSSet *autoMakerProtocols;
 @property (nonatomic, copy) NSString *bundleIdentifier;
+@property (nonatomic) bool launchNotificationsUsingSiri;
 @property (nonatomic) bool launchUsingSiri;
 @property (nonatomic) bool requiresGeoSupport;
 @property (nonatomic) bool supportsCalling;
@@ -31,13 +35,16 @@
 + (id)requiredInfoKeys;
 
 - (void).cxx_destruct;
+- (unsigned long long)_applicationCategory;
 - (id)autoMakerProtocols;
 - (id)bundleIdentifier;
 - (bool)isSystemApp;
+- (bool)launchNotificationsUsingSiri;
 - (bool)launchUsingSiri;
 - (bool)requiresGeoSupport;
 - (void)setAutoMakerProtocols:(id)arg1;
 - (void)setBundleIdentifier:(id)arg1;
+- (void)setLaunchNotificationsUsingSiri:(bool)arg1;
 - (void)setLaunchUsingSiri:(bool)arg1;
 - (void)setRequiresGeoSupport:(bool)arg1;
 - (void)setSupportsCalling:(bool)arg1;
@@ -45,6 +52,7 @@
 - (void)setSupportsMessaging:(bool)arg1;
 - (void)setSupportsPlayableContent:(bool)arg1;
 - (void)setSystemApp:(bool)arg1;
+- (void)set_applicationCategory:(unsigned long long)arg1;
 - (bool)supportsCalling;
 - (bool)supportsMaps;
 - (bool)supportsMessaging;

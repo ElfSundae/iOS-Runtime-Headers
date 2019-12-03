@@ -35,12 +35,13 @@
 @property (nonatomic, retain) VUISeparatorView *topSeparatorView;
 
 + (id)_entityPlaceholderImageForDownloadEntity:(id)arg1;
-+ (id)_episodePlaceholderImage;
++ (id)_generateMetaDataHeaderFirstLabelForDownloadEntity:(id)arg1;
 + (void)configureVUIDownloadEntityTableViewCell:(id)arg1 withDownloadEntity:(id)arg2;
 
 - (void).cxx_destruct;
 - (void)_addDownloadButtonIfRequired:(id)arg1;
 - (void)_configureViewElementsForAX;
+- (id)_episodePlaceholderImage;
 - (id)_expirationLabelWithMediaEntity:(id)arg1;
 - (double)_imageHeightForCurrentSizeClass;
 - (struct CGSize { double x1; double x2; })_layoutForCategoryAccessibility:(struct CGSize { double x1; double x2; })arg1 metricsOnly:(bool)arg2;
@@ -80,6 +81,7 @@
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (id)titleLabel;
 - (id)topSeparatorView;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)willTransitionToState:(unsigned long long)arg1;
 
 @end

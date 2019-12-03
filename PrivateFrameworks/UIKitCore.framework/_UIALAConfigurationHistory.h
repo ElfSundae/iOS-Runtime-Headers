@@ -17,6 +17,7 @@
 @property (nonatomic) bool hasEstablishedAlignmentValues;
 @property (readonly) unsigned long long hash;
 @property (getter=isInAlignmentLayoutUpdateSection, nonatomic) bool inAlignmentLayoutUpdateSection;
+@property (nonatomic, readonly) NSSet *invalidBaselineConstraints;
 @property (nonatomic) bool layoutFillsCanvas;
 @property (nonatomic) bool layoutUsesCanvasMarginsWhenFilling;
 @property (readonly) Class superclass;

@@ -34,6 +34,8 @@
 - (void)oneUpPresentationHelper:(id)arg1 scrollAssetReferenceToVisible:(id)arg2;
 - (void)oneUpPresentationHelper:(id)arg1 shouldHideAssetReferences:(id)arg2;
 - (unsigned long long)oneUpPresentationHelperAdditionalOptions:(id)arg1;
+- (bool)oneUpPresentationHelperPreventRevealInMomentAction:(id)arg1;
+- (id)oneUpPresentationHelperScrollView:(id)arg1;
 - (bool)oneUpPresentationHelperShouldAutoPlay:(id)arg1;
 - (id)oneUpPresentationHelperViewController:(id)arg1;
 - (id)oneUpPresentationHelperViewHostingTilingView:(id)arg1;

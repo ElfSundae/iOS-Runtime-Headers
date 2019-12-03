@@ -18,8 +18,12 @@
     SCNNode * _rootNode;
     struct __C3DScene { } * _scene;
     SCNSceneSource * _sceneSource;
+    double  _screenSpaceReflectionMaxRayDistance;
+    long long  _screenSpaceReflectionSampleCount;
+    double  _screenSpaceReflectionStride;
     NSURL * _sourceURL;
     NSMutableDictionary * _userAttributes;
+    bool  _wantsScreenSpaceReflection;
 }
 
 @property (nonatomic, readonly) SCNMaterialProperty *background;
@@ -31,6 +35,10 @@
 @property (getter=isPaused, nonatomic) bool paused;
 @property (nonatomic, readonly) SCNPhysicsWorld *physicsWorld;
 @property (nonatomic, readonly) SCNNode *rootNode;
+@property (nonatomic) double screenSpaceReflectionMaximumDistance;
+@property (nonatomic) long long screenSpaceReflectionSampleCount;
+@property (nonatomic) double screenSpaceReflectionStride;
+@property (nonatomic) bool wantsScreenSpaceReflection;
 
 + (id)_indexPathForNode:(id)arg1;
 + (bool)canImportFileExtension:(id)arg1;
@@ -108,6 +116,10 @@
 - (id)scene;
 - (struct __C3DScene { }*)sceneRef;
 - (id)sceneSource;
+- (double)screenSpaceReflectionDepthThreshold;
+- (double)screenSpaceReflectionMaximumDistance;
+- (long long)screenSpaceReflectionSampleCount;
+- (double)screenSpaceReflectionStride;
 - (void)setAttribute:(id)arg1 forKey:(id)arg2;
 - (void)setEndTime:(double)arg1;
 - (void)setFogColor:(id)arg1;
@@ -121,15 +133,22 @@
 - (void)setRootNode:(id)arg1;
 - (void)setRootNode:(id)arg1 forLayer:(int)arg2;
 - (void)setSceneSource:(id)arg1;
+- (void)setScreenSpaceReflectionDepthThreshold:(double)arg1;
+- (void)setScreenSpaceReflectionMaximumDistance:(double)arg1;
+- (void)setScreenSpaceReflectionSampleCount:(long long)arg1;
+- (void)setScreenSpaceReflectionStride:(double)arg1;
 - (void)setStartTime:(double)arg1;
 - (void)setUpAxis:(struct SCNVector3 { float x1; float x2; float x3; })arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
+- (void)setWantsScreenSpaceReflection:(bool)arg1;
 - (void)set_allowsDefaultLightingEnvironmentFallback:(bool)arg1;
 - (double)startTime;
 - (void)unlock;
 - (struct SCNVector3 { float x1; float x2; float x3; })upAxis;
 - (id)valueForUndefinedKey:(id)arg1;
+- (bool)wantsScreenSpaceReflection;
 - (bool)writeToURL:(id)arg1 options:(id)arg2;
 - (bool)writeToURL:(id)arg1 options:(id)arg2 delegate:(id)arg3 progressHandler:(id /* block */)arg4;
+- (bool)writeToURLWithUSDKit:(id)arg1;
 
 @end

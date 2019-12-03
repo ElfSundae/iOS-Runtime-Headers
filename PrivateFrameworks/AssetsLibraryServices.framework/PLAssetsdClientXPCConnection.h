@@ -3,9 +3,12 @@
  */
 
 @interface PLAssetsdClientXPCConnection : NSObject <PLXPCProxyCreating> {
+    PLAssetsdClientService * _assetsdClientService;
     NSXPCConnection * _connection;
-    PLConnectionDebugger * _connectionDebugger;
-    NSObject<OS_dispatch_queue> * _queue;
+    PLXPCMessageLogger * _connectionLogger;
+    NSObject<OS_dispatch_queue> * _externalNotificationQueue;
+    bool  _isShuttingDown;
+    NSObject<OS_dispatch_queue> * _isolationQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -14,10 +17,16 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_postInterruptedNotification;
+- (id)_primitiveSynchronousRemoteObjectProxyWithErrorHandler:(id /* block */)arg1;
+- (id)_unboostingRemoteObjectProxy;
+- (void)addBarrierBlock:(id /* block */)arg1;
+- (void)addPhotoLibraryUnavailabilityHandler:(id /* block */)arg1;
 - (id)connectionWithErrorHandler:(id /* block */)arg1;
 - (void)handleInterruption;
 - (void)handleInvalidation;
 - (id)init;
+- (void)prepareToShutdown;
 - (id)remoteObjectProxyWithErrorHandler:(id /* block */)arg1;
 - (id)synchronousRemoteObjectProxyWithErrorHandler:(id /* block */)arg1;
 

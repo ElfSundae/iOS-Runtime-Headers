@@ -36,8 +36,10 @@
 - (id)metadata;
 - (id)modelDescription;
 - (id)objectBoundingBoxOutputDescription;
+- (id)parameterValueForKey:(id)arg1 error:(id*)arg2;
 - (id)predictionFromFeatures:(id)arg1 error:(id*)arg2;
 - (id)predictionFromFeatures:(id)arg1 options:(id)arg2 error:(id*)arg3;
+- (id)predictionsFromBatch:(id)arg1 error:(id*)arg2;
 - (id)predictionsFromBatch:(id)arg1 options:(id)arg2 error:(id*)arg3;
 - (void)setConfiguration:(id)arg1;
 - (void)setModelDescription:(id)arg1;

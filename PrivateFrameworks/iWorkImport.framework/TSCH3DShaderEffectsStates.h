@@ -2,11 +2,12 @@
    Image: /System/Library/PrivateFrameworks/iWorkImport.framework/iWorkImport
  */
 
-@interface TSCH3DShaderEffectsStates : NSObject {
+@interface TSCH3DShaderEffectsStates : NSObject <NSCopying> {
     NSMutableDictionary * mObjects;
 }
 
 - (void)clear;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)init;

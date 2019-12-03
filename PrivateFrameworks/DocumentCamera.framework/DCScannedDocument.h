@@ -9,8 +9,7 @@
 }
 
 @property (nonatomic, retain) NSMutableArray *docInfos;
-@property (readonly) unsigned long long numberOfScans;
-@property (readonly) unsigned long long pageCount;
+@property (nonatomic, readonly) unsigned long long pageCount;
 @property (nonatomic, readonly) NSURL *scannedDocumentImageDirectoryURL;
 @property (nonatomic, retain) NSString *title;
 

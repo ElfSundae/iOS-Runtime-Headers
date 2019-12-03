@@ -2,28 +2,19 @@
    Image: /System/Library/PrivateFrameworks/DoNotDisturbServer.framework/DoNotDisturbServer
  */
 
-@interface DNDSScheduleManager : NSObject <DNDSModeAssertionProviderObserver, DNDSModeAssertionTransformer> {
-    NSUUID * _currentAssertionUUID;
+@interface DNDSScheduleManager : NSObject {
     DNDSScheduleSettings * _currentScheduleSettings;
     <DNDSScheduleManagerDataSource> * _dataSource;
-    DNDSLocalAssertionManager * _localAssertionManager;
-    NSObject<OS_dispatch_queue> * _queue;
+    DNDSModeAssertionManager * _modeAssertionManager;
 }
 
 @property (nonatomic) <DNDSScheduleManagerDataSource> *dataSource;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_queue_refreshWithDate:(id)arg1;
+- (void)_refreshWithScheduleSettings:(id)arg1 context:(id)arg2;
 - (id)dataSource;
-- (id)initWithLocalAssertionManager:(id)arg1;
-- (void)modeAssertionProvider:(id)arg1 didPerformInvalidations:(id)arg2;
+- (id)initWithModeAssertionManager:(id)arg1;
 - (void)refresh;
 - (void)setDataSource:(id)arg1;
-- (id)transformedLifetimeForModeAssertion:(id)arg1;
-- (id)transformedModeIdentifierForModeAssertion:(id)arg1;
 
 @end

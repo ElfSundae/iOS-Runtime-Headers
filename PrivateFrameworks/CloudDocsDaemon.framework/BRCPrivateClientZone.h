@@ -32,7 +32,7 @@
 - (id)defaultAppLibrary;
 - (bool)dumpActivityToContext:(id)arg1 includeExpensiveActivity:(bool)arg2 error:(id*)arg3;
 - (bool)dumpTablesToContext:(id)arg1 includeAllItems:(bool)arg2 error:(id*)arg3;
-- (struct BRCDirectoryItem { Class x1; id x2; id x3; id x4; id x5; id x6; id x7; id x8; unsigned long long x9; unsigned long long x10; unsigned long long x11; }*)fetchZoneRootItemInDB:(id)arg1;
+- (struct BRCDirectoryItem { Class x1; id x2; id x3; id x4; id x5; id x6; id x7; id x8; id x9; id x10; unsigned int x11; id x12; unsigned long long x13; id x14; bool x15; unsigned long long x16; unsigned long long x17; unsigned long long x18; }*)fetchZoneRootItemInDB:(id)arg1;
 - (bool)hasDefaultAppLibrary;
 - (id)initWithMangledID:(id)arg1 dbRowID:(id)arg2 db:(id)arg3 plist:(id)arg4 session:(id)arg5 initialCreation:(bool)arg6;
 - (bool)isDocumentScopePublic;

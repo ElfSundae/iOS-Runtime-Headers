@@ -51,6 +51,6 @@
 - (void)setRequestor:(id)arg1;
 - (void)setSourceZoneID:(id)arg1;
 - (id)sourceZoneID;
-- (bool)validateAndSetRecordFetchPropertiesWithAsset:(id)arg1 assetReference:(id)arg2;
+- (bool)validateAndSetRecordFetchPropertiesWithAsset:(id)arg1 assetReference:(id)arg2 useEncryption:(bool)arg3 useClearAssetEncryption:(bool)arg4;
 
 @end

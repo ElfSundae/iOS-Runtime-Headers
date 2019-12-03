@@ -14,13 +14,16 @@
 @property (nonatomic, readonly) unsigned long long secondaryDestination;
 
 + (id)_URLComponentsForDestination:(unsigned long long)arg1;
++ (id)aboutImproveSiriAndDictationURL;
 + (id)aboutResidentDeviceURL;
 + (id)fixSymptomURLForAccessory:(id)arg1 symptom:(id)arg2;
++ (id)fixSymptomURLForAccessoryWithUUID:(id)arg1 symptom:(id)arg2;
 + (id)homeKitObjectURLForDestination:(unsigned long long)arg1 secondaryDestination:(unsigned long long)arg2 UUID:(id)arg3;
 + (bool)isHomeAppURL:(id)arg1;
 + (id)locationPrivacyURL;
 + (id)musicLoginURL;
 + (id)musicPrivacyURL;
++ (id)networkRoutersSettingsURL;
 + (id)siriPrivacyURL;
 + (id)symptomFromURL:(id)arg1 accessory:(id)arg2;
 

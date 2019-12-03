@@ -28,6 +28,7 @@
 - (void).cxx_destruct;
 - (void)addResults:(id)arg1;
 - (id)bundleIdentifier;
+- (void)clearBundleid;
 - (void)clearResults;
 - (id)dictionaryRepresentation;
 - (id)fallbackResultSection;

@@ -70,17 +70,6 @@
 
 // Image: /System/Library/PrivateFrameworks/AssistantUI.framework/AssistantUI
 
-+ (id)afui_mapsURLForLocalSearchBusiness2s:(id)arg1;
-
-- (id)afui_mapItemRepresentation;
-- (id)afui_mapsURL;
 - (id)donateActivityCommand;
-
-// Image: /System/Library/PrivateFrameworks/SiriUI.framework/SiriUI
-
-+ (id)siriui_mapsURLForLocalSearchBusiness2s:(id)arg1;
-
-- (id)siriui_mapItemRepresentation;
-- (id)siriui_mapsURL;
 
 @end

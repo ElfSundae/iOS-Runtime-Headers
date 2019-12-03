@@ -4,6 +4,7 @@
 
 @interface SGMessage : NSObject <NSCopying, NSSecureCoding, SGSpotlightIdentifiers> {
     NSArray * _accountHandles;
+    NSString * _accountType;
     NSArray * _attachments;
     NSString * _bundleIdentifier;
     NSDate * _date;
@@ -15,6 +16,7 @@
 }
 
 @property (nonatomic, copy) NSArray *accountHandles;
+@property (nonatomic, copy) NSString *accountType;
 @property (nonatomic, readonly) NSArray *attachments;
 @property (nonatomic, copy) NSString *bundleIdentifier;
 @property (nonatomic, copy) NSDate *date;
@@ -34,6 +36,7 @@
 
 - (void).cxx_destruct;
 - (id)accountHandles;
+- (id)accountType;
 - (id)asDictionary;
 - (id)attachments;
 - (id)bundleIdentifier;
@@ -49,6 +52,7 @@
 - (bool)isEqualToMessage:(id)arg1;
 - (bool)isSent;
 - (void)setAccountHandles:(id)arg1;
+- (void)setAccountType:(id)arg1;
 - (void)setBundleIdentifier:(id)arg1;
 - (void)setDate:(id)arg1;
 - (void)setDomainIdentifier:(id)arg1;

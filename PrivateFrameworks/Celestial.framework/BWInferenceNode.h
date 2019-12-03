@@ -23,7 +23,9 @@
 - (id)inferenceEngine;
 - (id)initWithCaptureDevice:(id)arg1 scheduler:(id)arg2 priority:(unsigned int)arg3;
 - (id)inputFormatForAttachedMediaKey:(id)arg1;
+- (id)inputInferenceVideoFormatForAttachedMediaKey:(id)arg1;
 - (id)inputVideoFormatForAttachedMediaKey:(id)arg1;
+- (bool)intermediateResourceTrackingAllowedForAttachedMediaKey:(id)arg1;
 - (id)liveOutputPixelBufferPoolForAttachedMediaKey:(id)arg1 format:(id)arg2;
 - (id)nodeSubType;
 - (id)nodeType;
@@ -32,5 +34,6 @@
 - (void)prepareForCurrentConfigurationToBecomeLive;
 - (id)preparedOutputPixelBufferPoolForAttachedMediaKey:(id)arg1 format:(id)arg2;
 - (void)renderSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 forInput:(id)arg2;
+- (void)willEmitSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1;
 
 @end

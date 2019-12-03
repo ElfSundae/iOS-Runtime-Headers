@@ -4,7 +4,6 @@
 
 @interface PXCMMTranscriptBubbleFooterView : UIView {
     UIImageView * _chevronImageView;
-    PXViewLayoutHelper * _layoutHelper;
     UILabel * _primaryLabel;
     UILabel * _secondaryLabel;
 }

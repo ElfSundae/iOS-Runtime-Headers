@@ -22,6 +22,7 @@
 - (void)applyChange:(id)arg1 previous:(id)arg2 onObject:(id)arg3 result:(id)arg4 completionHandler:(id /* block */)arg5;
 - (id)initWithWorkQueue:(id)arg1;
 - (void)lookupAndApplyObjectChange:(id)arg1 previous:(id)arg2 result:(id)arg3 completionHandler:(id /* block */)arg4;
+- (void)resetObjects;
 - (id)uuidToObjectMapping;
 - (id)workQueue;
 

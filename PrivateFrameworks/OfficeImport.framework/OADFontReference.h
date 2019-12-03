@@ -7,10 +7,10 @@
     int  mIndex;
 }
 
+- (void).cxx_destruct;
 - (void)applyToParagraphProperties:(id)arg1;
 - (id)color;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (int)index;

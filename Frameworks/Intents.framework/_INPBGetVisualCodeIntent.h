@@ -3,6 +3,7 @@
  */
 
 @interface _INPBGetVisualCodeIntent : PBCodable <NSCopying, NSSecureCoding, _INPBGetVisualCodeIntent> {
+    bool  __encodeLegacyGloryData;
     struct { 
         unsigned int visualCodeType : 1; 
     }  _has;
@@ -10,6 +11,7 @@
     int  _visualCodeType;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool hasIntentMetadata;
@@ -19,13 +21,19 @@
 @property (readonly) Class superclass;
 @property (nonatomic) int visualCodeType;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (int)StringAsVisualCodeType:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasIntentMetadata;
 - (bool)hasVisualCodeType;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)intentMetadata;
 - (bool)isEqual:(id)arg1;
 - (bool)readFrom:(id)arg1;

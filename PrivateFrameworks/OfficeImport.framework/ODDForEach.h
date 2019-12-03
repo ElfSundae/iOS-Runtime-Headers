@@ -6,7 +6,7 @@
     ODDIteratorSpecification * mIteratorSpecification;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)init;
 - (id)iteratorSpecification;

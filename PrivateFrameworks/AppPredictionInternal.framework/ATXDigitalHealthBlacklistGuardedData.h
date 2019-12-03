@@ -3,7 +3,7 @@
  */
 
 @interface ATXDigitalHealthBlacklistGuardedData : NSObject {
-    NSSet * _blacklistedBundles;
+    NSSet * _blacklistedBundleIds;
 }
 
 - (void).cxx_destruct;

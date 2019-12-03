@@ -2,9 +2,7 @@
    Image: /System/Library/Frameworks/CloudKit.framework/CloudKit
  */
 
-@interface CKContainer : NSObject <CKXPCClient, SCKContainerProxying> {
-    int  _accountChangeToken;
-    ACAccountStore * _accountStore;
+@interface CKContainer : NSObject <CKXPCClient, CKXPCDiscretionaryClient, SCKContainerProxying> {
     NSMapTable * _assetsByUUID;
     NSOperationQueue * _backgroundThrottlingOperationQueue;
     CKContainerSetupInfo * _cachedSetupInfo;
@@ -12,10 +10,14 @@
     CKContainerID * _containerID;
     CKRecordID * _containerScopedUserID;
     NSOperationQueue * _convenienceOperationQueue;
-    NSMutableDictionary * _fakeEntitlements;
+    NSOperationQueue * _discretionaryThrottlingOperationQueue;
+    NSXPCConnection * _discretionaryXPCConnection;
+    NSNumber * _fakeDeviceToDeviceEncryptionAvailability;
+    NSMutableDictionary * _fakeInstanceEntitlements;
     CKOperationFlowControlManager * _flowControlManager;
     bool  _hasCachedSetupInfo;
     bool  _hasValidConnection;
+    bool  _hasValidDiscretionaryXPCConnection;
     bool  _holdAllOperations;
     int  _identityUpdateToken;
     int  _killSwitchToken;
@@ -23,6 +25,7 @@
     CKContainerOptions * _options;
     CKRecordID * _orgAdminUserID;
     CKDatabase * _organizationCloudDatabase;
+    NSString * _personaIdentifier;
     CKDatabase * _privateCloudDatabase;
     CKDatabase * _publicCloudDatabase;
     NSMutableArray * _sandboxExtensionHandles;
@@ -33,12 +36,11 @@
     int  _statusReportToken;
     NSOperationQueue * _throttlingOperationQueue;
     NSObject<OS_dispatch_queue> * _underlyingDispatchQueue;
+    CKUploadRequestManager * _uploadRequestManager;
     NSXPCConnection * _xpcConnection;
 }
 
-@property (nonatomic) int accountChangeToken;
 @property (nonatomic, copy) CKAccountOverrideInfo *accountInfoOverride;
-@property (nonatomic, retain) ACAccountStore *accountStore;
 @property (nonatomic, retain) NSMapTable *assetsByUUID;
 @property (nonatomic, retain) NSOperationQueue *backgroundThrottlingOperationQueue;
 @property (nonatomic, retain) CKContainerSetupInfo *cachedSetupInfo;
@@ -50,16 +52,22 @@
 @property (nonatomic, retain) NSOperationQueue *convenienceOperationQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, retain) NSMutableDictionary *fakeEntitlements;
+@property (nonatomic, retain) NSOperationQueue *discretionaryThrottlingOperationQueue;
+@property (nonatomic, retain) NSXPCConnection *discretionaryXPCConnection;
+@property (nonatomic, retain) NSNumber *fakeDeviceToDeviceEncryptionAvailability;
+@property (nonatomic, retain) NSMutableDictionary *fakeInstanceEntitlements;
 @property (nonatomic, retain) CKOperationFlowControlManager *flowControlManager;
 @property (nonatomic) bool hasCachedSetupInfo;
 @property (nonatomic) bool hasValidConnection;
+@property (nonatomic) bool hasValidDiscretionaryXPCConnection;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) int identityUpdateToken;
 @property (nonatomic) int killSwitchToken;
 @property (nonatomic, retain) CKContainerOptions *options;
 @property (nonatomic, retain) CKRecordID *orgAdminUserID;
 @property (nonatomic, retain) CKDatabase *organizationCloudDatabase;
+@property (nonatomic, copy) NSString *personaIdentifier;
+@property (nonatomic, readonly) NSString *primaryIdentifier;
 @property (nonatomic, retain) CKDatabase *privateCloudDatabase;
 @property (nonatomic, retain) CKDatabase *publicCloudDatabase;
 @property (nonatomic, retain) NSMutableArray *sandboxExtensionHandles;
@@ -69,6 +77,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSOperationQueue *throttlingOperationQueue;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *underlyingDispatchQueue;
+@property (nonatomic, readonly) CKUploadRequestManager *uploadRequestManager;
 @property (nonatomic) bool wantsSiloedContext;
 @property (nonatomic, retain) NSXPCConnection *xpcConnection;
 
@@ -76,18 +85,25 @@
 
 + (void)_checkSelfCloudServicesEntitlement;
 + (id)_checkSelfContainerIdentifier;
++ (id)_untrustedApplicationBundleID;
 + (long long)_untrustedDatabaseEnvironment;
 + (id)_untrustedEntitlementForKey:(id)arg1;
++ (id)accountChangeNotificationRegistrationQueue;
++ (void)clearFakeClassEntitlementForKey:(id)arg1;
 + (id)containerIDForContainerIdentifier:(id)arg1;
 + (id)containerIDForContainerIdentifier:(id)arg1 environment:(long long)arg2;
 + (id)containerWithIdentifier:(id)arg1;
 + (id)defaultContainer;
++ (id)fakeClassEntitlements;
 + (void)getBehaviorOptionForKey:(id)arg1 isContainerOption:(bool)arg2 completionHandler:(id /* block */)arg3;
 + (void)registerCompletedLongLivedOperationWithID:(id)arg1;
 + (void)registerOutstandingOperationWithID:(id)arg1;
++ (void)setFakeClassEntitlement:(id)arg1 forKey:(id)arg2;
++ (id)sharedAccountStore;
 + (id)sharedCompletedLongLivedOperationIDs;
 + (id)sharedOutstandingOperations;
 + (void)unregisterOutstandingOperationWithID:(id)arg1;
++ (id)uploadRequestFetchAllNotificationName;
 
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
@@ -96,24 +112,26 @@
 - (id)_CKXPCInterface;
 - (id)_allStatusReports;
 - (void)_cleanupSandboxExtensionHandles:(id)arg1;
+- (id)_containerSetupInfoFromOptions:(id)arg1;
 - (void)_discoverUserIdentityWithLookupInfo:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)_fetchImportantUserRecordIDOfType:(long long)arg1 completionHandler:(id /* block */)arg2;
 - (void)_fetchLongLivedOperationsWithIDs:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)_importantUserRecordIDOfType:(long long)arg1;
 - (id)_initWithContainerIdentifier:(id)arg1;
 - (id)_initWithContainerIdentifier:(id)arg1 environment:(long long)arg2;
+- (id)_optionsFromContainerSetupInfo:(id)arg1;
 - (void)_prepareForDaemonLaunch;
+- (id)_resolvedFakeEntitlements;
 - (void)_scheduleConvenienceOperation:(id)arg1;
 - (void)_setImportantUserRecordID:(id)arg1 ofType:(long long)arg2;
 - (void)_setupWithContainerID:(id)arg1 options:(id)arg2;
-- (id)_untrustedContainerEntitlementsForKey:(id)arg1;
+- (void)_submitEventMetric:(id)arg1 completionHandler:(id /* block */)arg2;
+- (id)_untrustedEntitlementForKey:(id)arg1;
 - (void)acceptShareMetadata:(id)arg1 completionHandler:(id /* block */)arg2;
-- (int)accountChangeToken;
-- (void)accountChangedWithID:(id)arg1;
 - (id)accountInfoOverride;
 - (void)accountInfoWithCompletionHandler:(id /* block */)arg1;
 - (void)accountStatusWithCompletionHandler:(id /* block */)arg1;
-- (id)accountStore;
+- (void)accountWithID:(id)arg1 changedWithChangeType:(long long)arg2;
 - (void)accountsDidGrantAccessToBundleID:(id)arg1 containerIdentifiers:(id)arg2;
 - (void)accountsDidRevokeAccessToBundleID:(id)arg1 containerIdentifiers:(id)arg2;
 - (void)accountsWillDeleteAccount:(id)arg1 completionHandler:(id /* block */)arg2;
@@ -122,6 +140,7 @@
 - (id)backgroundThrottlingOperationQueue;
 - (id)cachedSetupInfo;
 - (id)callbackManager;
+- (void)cancelUploadRequests;
 - (bool)captureResponseHTTPHeaders;
 - (void)clearContextFromMetadataCache;
 - (void)clearPCSCachesForKnownContextsWithCompletionHandler:(id /* block */)arg1;
@@ -132,12 +151,14 @@
 - (id)containerIdentifier;
 - (id)containerScopedUserID;
 - (id)convenienceOperationQueue;
+- (id)daemonSynchronous:(bool)arg1 withErrorHandler:(id /* block */)arg2;
 - (id)daemonWithErrorHandler:(id /* block */)arg1;
 - (id)databaseWithDatabaseScope:(long long)arg1;
 - (void)dataclassEnabled:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)dealloc;
 - (void)decryptPersonalInfoOnShare:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)description;
+- (void)deviceCountWithCompletionHandler:(id /* block */)arg1;
 - (void)discoverAllContactUserInfosWithCompletionHandler:(id /* block */)arg1;
 - (void)discoverAllIdentitiesWithCompletionHandler:(id /* block */)arg1;
 - (void)discoverUserIdentityWithEmailAddress:(id)arg1 completionHandler:(id /* block */)arg2;
@@ -145,17 +166,23 @@
 - (void)discoverUserIdentityWithUserRecordID:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)discoverUserInfoWithEmailAddress:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)discoverUserInfoWithUserRecordID:(id)arg1 completionHandler:(id /* block */)arg2;
+- (id)discretionaryDaemonWithErrorHandler:(id /* block */)arg1;
+- (void)discretionarySuspensionForOperationID:(id)arg1;
+- (id)discretionaryThrottlingOperationQueue;
+- (id)discretionaryXPCConnection;
+- (id)discretionaryXPCConnectionWithError:(id*)arg1;
 - (void)dumpAllClientsStatusReportToFileHandle:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)dumpDaemonStatusReport;
 - (void)dumpDaemonStatusReportToFileHandle:(id)arg1 completionHandler:(id /* block */)arg2;
-- (id)fakeEntitlements;
+- (id)fakeDeviceToDeviceEncryptionAvailability;
+- (id)fakeInstanceEntitlements;
 - (void)fetchAllLongLivedOperationIDsWithCompletionHandler:(id /* block */)arg1;
 - (void)fetchCurrentDeviceIDWithCompletionHandler:(id /* block */)arg1;
 - (void)fetchCurrentUserBoundaryKeyWithCompletionHandler:(id /* block */)arg1;
+- (void)fetchFrameworkCachesDirectoryWithCompletionHandler:(id /* block */)arg1;
 - (void)fetchFullNameAndFormattedUsernameOfAccountWithCompletionHandler:(id /* block */)arg1;
 - (void)fetchFullNameAndPrimaryEmailOnAccountWithCompletionHandler:(id /* block */)arg1;
 - (void)fetchLongLivedOperationWithID:(id)arg1 completionHandler:(id /* block */)arg2;
-- (void)fetchLongLivedOperationsWithIDs:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)fetchOrgAdminUserRecordIDWithCompletionHandler:(id /* block */)arg1;
 - (void)fetchServerEnvironment:(id /* block */)arg1;
 - (void)fetchShareMetadataWithURL:(id)arg1 completionHandler:(id /* block */)arg2;
@@ -164,7 +191,9 @@
 - (void)fetchShareParticipantWithPhoneNumber:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)fetchShareParticipantWithUserRecordID:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)fetchUserRecordIDWithCompletionHandler:(id /* block */)arg1;
+- (void)fetchXPCCriteriaWithCompletionHandler:(id /* block */)arg1;
 - (id)findTrackedAssetByUUID:(id)arg1;
+- (void)finishDiscretionaryOperation:(id)arg1;
 - (id)flowControlManager;
 - (void)flushOperationMetricsToPowerLog;
 - (void)getFileMetadataWithFileHandle:(id)arg1 openInfo:(id)arg2 reply:(id /* block */)arg3;
@@ -178,26 +207,39 @@
 - (void)handleOperationStatistics:(id)arg1 forOperationWithID:(id)arg2;
 - (bool)hasCachedSetupInfo;
 - (bool)hasValidConnection;
+- (bool)hasValidDiscretionaryXPCConnection;
 - (bool)holdAllOperations;
 - (int)identityUpdateToken;
 - (id)initWithContainerID:(id)arg1;
 - (id)initWithContainerID:(id)arg1 accountInfoOverride:(id)arg2;
 - (id)initWithContainerID:(id)arg1 options:(id)arg2;
+- (id)initWithContainerSetupInfo:(id)arg1;
 - (int)killSwitchToken;
+- (void)manuallyTriggerUploadRequests;
 - (bool)masqueradeAsThirdPartyApp;
 - (void)openFileWithOpenInfo:(id)arg1 reply:(id /* block */)arg2;
 - (id)options;
 - (id)orgAdminUserID;
 - (id)organizationCloudDatabase;
+- (id)personaIdentifier;
+- (id)primaryIdentifier;
 - (id)privateCloudDatabase;
 - (id)publicCloudDatabase;
+- (void)queueDiscretionaryOperation:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)readBytesOfInMemoryAssetContentWithUUID:(id)arg1 offset:(unsigned long long)arg2 length:(unsigned long long)arg3 reply:(id /* block */)arg4;
+- (void)registerForAccountChangeNotifications;
+- (void)registerForAssetRequests:(id /* block */)arg1 packageRequests:(id /* block */)arg2 machServiceName:(id)arg3;
+- (void)registerForAssetUploadRequests:(id /* block */)arg1;
+- (void)registerForAssetUploadRequests:(id /* block */)arg1 machServiceName:(id)arg2;
+- (void)registerForPackageUploadRequests:(id /* block */)arg1;
+- (void)registerForPackageUploadRequests:(id /* block */)arg1 machServiceName:(id)arg2;
 - (void)requestApplicationPermission:(unsigned long long)arg1 completionHandler:(id /* block */)arg2;
 - (void)resetAllApplicationPermissionsWithCompletionHandler:(id /* block */)arg1;
 - (id)sandboxExtensionHandles;
+- (void)serverPreferredPushEnvironmentSynchronous:(bool)arg1 withCompletionHandler:(id /* block */)arg2;
 - (void)serverPreferredPushEnvironmentWithCompletionHandler:(id /* block */)arg1;
-- (void)setAccountChangeToken:(int)arg1;
+- (id)serverPreferredPushEnvironmentWithError:(id*)arg1;
 - (void)setAccountInfoOverride:(id)arg1;
-- (void)setAccountStore:(id)arg1;
 - (void)setApplicationPermission:(unsigned long long)arg1 enabled:(bool)arg2 completionHandler:(id /* block */)arg3;
 - (void)setAssetsByUUID:(id)arg1;
 - (void)setBackgroundThrottlingOperationQueue:(id)arg1;
@@ -207,13 +249,17 @@
 - (void)setContainerID:(id)arg1;
 - (void)setContainerScopedUserID:(id)arg1;
 - (void)setConvenienceOperationQueue:(id)arg1;
+- (void)setDiscretionaryThrottlingOperationQueue:(id)arg1;
+- (void)setDiscretionaryXPCConnection:(id)arg1;
+- (void)setFakeDeviceToDeviceEncryptionAvailability:(id)arg1;
 - (void)setFakeEntitlement:(id)arg1 forKey:(id)arg2;
-- (void)setFakeEntitlements:(id)arg1;
 - (void)setFakeError:(id)arg1 forNextRequestOfClassName:(id)arg2;
+- (void)setFakeInstanceEntitlements:(id)arg1;
 - (void)setFakeResponseOperationResult:(id)arg1 forNextRequestOfClassName:(id)arg2 forItemID:(id)arg3 withLifetime:(int)arg4;
 - (void)setFlowControlManager:(id)arg1;
 - (void)setHasCachedSetupInfo:(bool)arg1;
 - (void)setHasValidConnection:(bool)arg1;
+- (void)setHasValidDiscretionaryXPCConnection:(bool)arg1;
 - (void)setHoldAllOperations:(bool)arg1;
 - (void)setIdentityUpdateToken:(int)arg1;
 - (void)setKillSwitchToken:(int)arg1;
@@ -221,6 +267,7 @@
 - (void)setOptions:(id)arg1;
 - (void)setOrgAdminUserID:(id)arg1;
 - (void)setOrganizationCloudDatabase:(id)arg1;
+- (void)setPersonaIdentifier:(id)arg1;
 - (void)setPrivateCloudDatabase:(id)arg1;
 - (void)setPublicCloudDatabase:(id)arg1;
 - (void)setSandboxExtensionHandles:(id)arg1;
@@ -242,18 +289,24 @@
 - (void)statusGroupsForApplicationPermission:(unsigned long long)arg1 completionHandler:(id /* block */)arg2;
 - (int)statusReportToken;
 - (void)submitEventMetric:(id)arg1;
+- (void)submitEventMetric:(id)arg1 completionHandler:(id /* block */)arg2;
+- (id)synchronousDaemonWithErrorHandler:(id /* block */)arg1;
 - (id)throttlingOperationQueue;
 - (void)tossConfigWithCompletionHandler:(id /* block */)arg1;
 - (void)trackAssets:(id)arg1;
 - (void)triggerAutoBugCaptureSnapshot;
 - (id)underlyingDispatchQueue;
+- (void)unregisterForAccountChangeNotifications;
+- (void)unregisterFromUploadRequests;
+- (void)unregisterFromUploadRequestsWithMachServiceName:(id)arg1;
 - (void)updatePushTokens;
+- (id)uploadRequestManager;
 - (bool)wantsSiloedContext;
 - (void)wipeAllCachedLongLivedProxiesWithCompletionHandler:(id /* block */)arg1;
 - (void)wipeAllCachesAndDie;
 - (id)xpcConnection;
 
-// Image: /System/Library/PrivateFrameworks/RemoteManagement.framework/RemoteManagement
+// Image: /System/Library/PrivateFrameworks/ScreenTimeCore.framework/ScreenTimeCore
 
 + (id)remotemanagement_mirroringContainer;
 + (id)remotemanagement_mirroringContainerIdentifier;
@@ -261,5 +314,9 @@
 // Image: /System/Library/PrivateFrameworks/Stocks.framework/Stocks
 
 - (void)addDatabaseOperation:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/WorkflowKit.framework/WorkflowKit
+
++ (id)wf_shortcutsContainer;
 
 @end

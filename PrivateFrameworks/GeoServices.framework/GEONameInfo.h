@@ -4,14 +4,33 @@
 
 @interface GEONameInfo : PBCodable <NSCopying> {
     struct { 
-        unsigned int phoneticType : 1; 
-        unsigned int shieldType : 1; 
-        unsigned int signType : 1; 
-    }  _has;
+        unsigned int has_phoneticType : 1; 
+        unsigned int has_shieldType : 1; 
+        unsigned int has_signType : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_locale : 1; 
+        unsigned int read_name : 1; 
+        unsigned int read_phoneticName : 1; 
+        unsigned int read_shield : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_locale : 1; 
+        unsigned int wrote_name : 1; 
+        unsigned int wrote_phoneticName : 1; 
+        unsigned int wrote_shield : 1; 
+        unsigned int wrote_phoneticType : 1; 
+        unsigned int wrote_shieldType : 1; 
+        unsigned int wrote_signType : 1; 
+    }  _flags;
     NSString * _locale;
     NSString * _name;
     NSString * _phoneticName;
     int  _phoneticType;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     NSString * _shield;
     int  _shieldType;
     int  _signType;
@@ -34,9 +53,16 @@
 @property (nonatomic) int signType;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsPhoneticType:(id)arg1;
 - (int)StringAsSignType:(id)arg1;
+- (void)_readLocale;
+- (void)_readName;
+- (void)_readPhoneticName;
+- (void)_readShield;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -49,6 +75,8 @@
 - (bool)hasShieldType;
 - (bool)hasSignType;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)locale;
 - (void)mergeFrom:(id)arg1;
@@ -56,6 +84,7 @@
 - (id)phoneticName;
 - (int)phoneticType;
 - (id)phoneticTypeAsString:(int)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasPhoneticType:(bool)arg1;
 - (void)setHasShieldType:(bool)arg1;

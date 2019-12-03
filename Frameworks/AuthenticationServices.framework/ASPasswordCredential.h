@@ -2,12 +2,16 @@
    Image: /System/Library/Frameworks/AuthenticationServices.framework/AuthenticationServices
  */
 
-@interface ASPasswordCredential : NSObject <NSCopying, NSSecureCoding> {
+@interface ASPasswordCredential : NSObject <ASAuthorizationCredential> {
     NSString * _password;
     NSString * _user;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) NSString *password;
+@property (readonly) Class superclass;
 @property (nonatomic, readonly, copy) NSString *user;
 
 + (id)credentialWithUser:(id)arg1 password:(id)arg2;

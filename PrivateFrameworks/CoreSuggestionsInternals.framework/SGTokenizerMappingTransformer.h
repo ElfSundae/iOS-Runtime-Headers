@@ -12,6 +12,11 @@
     NSLinguisticTagger * _tagger;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 + (id)forLocale:(id)arg1;
 + (id)forLocale:(id)arg1 withNameTagging:(bool)arg2 personalNameMapping:(id)arg3 punctuationMapping:(id)arg4;
 + (id)forLocale:(id)arg1 withPersonalNameMapping:(id)arg2;
@@ -19,7 +24,12 @@
 - (void).cxx_destruct;
 - (void)_registerForNotifications;
 - (void)dealloc;
+- (unsigned long long)hash;
 - (id)initForLocale:(id)arg1 withNameTagging:(bool)arg2 personalNameMapping:(id)arg3 punctuationMapping:(id)arg4;
+- (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
+- (bool)isEqual:(id)arg1;
+- (bool)isEqualToTokenizerMappingTransformer:(id)arg1;
+- (id)toPlistWithChunks:(id)arg1;
 - (id)transform:(id)arg1;
 - (void)transformWithCoreNLP:(id)arg1 block:(id /* block */)arg2;
 - (void)transformWithNLLinguisticTagger:(id)arg1 block:(id /* block */)arg2;

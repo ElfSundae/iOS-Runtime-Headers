@@ -2,10 +2,19 @@
    Image: /System/Library/PrivateFrameworks/FindMyDevice.framework/FindMyDevice
  */
 
-@interface FMDFMIPManager : NSObject
+@interface FMDFMIPManager : NSObject {
+    NSURL * _managedLostModeFileURL;
+    NSURL * _needsLocateAckLostModeFileURL;
+    NSObject<OS_dispatch_queue> * _serialQueue;
+}
+
+@property (nonatomic, retain) NSURL *managedLostModeFileURL;
+@property (nonatomic, retain) NSURL *needsLocateAckLostModeFileURL;
+@property (nonatomic, retain) NSObject<OS_dispatch_queue> *serialQueue;
 
 + (id)sharedInstance;
 
+- (void).cxx_destruct;
 - (bool)_checkLostModeInSharedContainer;
 - (void)_disableFMIPUsingToken:(id)arg1 inContext:(unsigned long long)arg2 completion:(id /* block */)arg3;
 - (void)_forceFMWUpgradeAlertWithCompletion:(id /* block */)arg1;
@@ -40,6 +49,7 @@
 - (void)getAccessoriesWithCompletion:(id /* block */)arg1;
 - (id)getManagedLostModeFileURL;
 - (id)getNeedsLocateAckLostModeFileURL;
+- (id)init;
 - (void)initiateLostModeExitAuthForIDSDeviceID:(id)arg1 withCompletion:(id /* block */)arg2;
 - (void)initiateLostModeExitAuthWithCompletion:(id /* block */)arg1;
 - (void)isActivationLockAllowedWithCompletion:(id /* block */)arg1;
@@ -52,15 +62,21 @@
 - (id)lostModeInfo;
 - (bool)lostModeIsActive;
 - (void)lowBatteryLocateEnabledWithCompletion:(id /* block */)arg1;
+- (id)managedLostModeFileURL;
 - (void)markAsMissingSupportedForPairedDeviceWithUDID:(id)arg1 withCompletion:(id /* block */)arg2;
 - (void)markPairedDeviceWithUDID:(id)arg1 asMissingUsingToken:(id)arg2 withCompletion:(id /* block */)arg3;
+- (id)needsLocateAckLostModeFileURL;
 - (bool)needsLostModeExitAuth;
 - (id)newErrorForCode:(int)arg1 message:(id)arg2;
 - (id)pathsToPreserveAcrossWipe;
 - (void)playSoundWithMessage:(id)arg1 completion:(id /* block */)arg2;
 - (void)playSoundWithOptions:(id)arg1 completion:(id /* block */)arg2;
+- (id)serialQueue;
 - (void)setDailyLocateReportEnabled:(bool)arg1;
 - (void)setLowBatteryLocateEnabled:(bool)arg1 withCompletion:(id /* block */)arg2;
+- (void)setManagedLostModeFileURL:(id)arg1;
+- (void)setNeedsLocateAckLostModeFileURL:(id)arg1;
+- (void)setSerialQueue:(id)arg1;
 - (void)showDailyLocateReport;
 - (void)signatureHeadersWithData:(id)arg1 completion:(id /* block */)arg2;
 - (void)soundStoppedForAccessoryIdentifier:(id)arg1;

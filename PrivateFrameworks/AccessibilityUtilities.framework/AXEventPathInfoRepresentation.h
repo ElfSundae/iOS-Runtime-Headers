@@ -25,6 +25,7 @@
     float  _pathTwist;
     void * _pathWindow;
     unsigned int  _pathWindowContextID;
+    bool  _shouldSetTouchFlag;
     unsigned int  _transducerType;
     unsigned int  _willUpdateMask;
 }
@@ -51,6 +52,7 @@
 @property (nonatomic) float pathTwist;
 @property (nonatomic) void*pathWindow;
 @property (nonatomic) unsigned int pathWindowContextID;
+@property (nonatomic) bool shouldSetTouchFlag;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned int transducerType;
 @property (nonatomic) unsigned int willUpdateMask;
@@ -101,8 +103,10 @@
 - (void)setPathTwist:(float)arg1;
 - (void)setPathWindow:(void*)arg1;
 - (void)setPathWindowContextID:(unsigned int)arg1;
+- (void)setShouldSetTouchFlag:(bool)arg1;
 - (void)setTransducerType:(unsigned int)arg1;
 - (void)setWillUpdateMask:(unsigned int)arg1;
+- (bool)shouldSetTouchFlag;
 - (unsigned int)transducerType;
 - (unsigned int)willUpdateMask;
 - (void)writeToPathInfo:(struct { unsigned char x1; unsigned char x2; unsigned char x3; float x4; float x5; struct CGPoint { double x_6_1_1; double x_6_1_2; } x6; unsigned int x7; void *x8; }*)arg1;

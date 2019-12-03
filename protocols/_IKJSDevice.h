@@ -8,6 +8,7 @@
 - (NSNumber *)capacity:(NSString *)arg1;
 - (bool)isInAirplaneMode;
 - (bool)isInRetailDemoMode;
+- (bool)isSeedBuild;
 - (double)lastNetworkChangedTime;
 - (NSString *)networkType;
 - (NSString *)osBuildNumber;

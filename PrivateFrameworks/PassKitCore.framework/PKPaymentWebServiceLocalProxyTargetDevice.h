@@ -38,8 +38,12 @@
 - (id)deviceRegion;
 - (id)deviceVersion;
 - (void)downloadAllPaymentPassesForPaymentWebService:(id)arg1;
+- (void)endRequiringUpgradedPasscodeIfNecessary;
+- (void)enforceUpgradedPasscodePolicyWithCompletion:(id /* block */)arg1;
 - (void)featureApplicationsForProvisioningWithCompletion:(id /* block */)arg1;
 - (id)initWithConnection:(id)arg1;
+- (void)notePasscodeUpgradeFlowDidEnd;
+- (void)notePasscodeUpgradeFlowWillBeginWithCompletion:(id /* block */)arg1;
 - (void)noteProvisioningDidBegin;
 - (void)noteProvisioningDidEnd;
 - (void)noteProvisioningUserInterfaceDidAppear;
@@ -59,7 +63,6 @@
 - (id)paymentWebService:(id)arg1 passesOfType:(unsigned long long)arg2;
 - (void)paymentWebService:(id)arg1 provisioningDataWithCompletionHandler:(id /* block */)arg2;
 - (void)paymentWebService:(id)arg1 queueConnectionToTrustedServiceManagerForPushTopic:(id)arg2 withCompletion:(id /* block */)arg3;
-- (void)paymentWebService:(id)arg1 registrationDataWithAuthToken:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)paymentWebService:(id)arg1 registrationDataWithCompletionHandler:(id /* block */)arg2;
 - (void)paymentWebService:(id)arg1 removePass:(id)arg2 withCompletionHandler:(id /* block */)arg3;
 - (void)paymentWebService:(id)arg1 requestPassUpgrade:(id)arg2 pass:(id)arg3 completion:(id /* block */)arg4;
@@ -75,11 +78,14 @@
 - (bool)paymentWebServiceSupportsAccounts:(id)arg1;
 - (bool)paymentWebServiceSupportsPeerPaymentRegistration:(id)arg1;
 - (void)performDeviceCheckInWithCompletion:(id /* block */)arg1;
-- (void)renewAccountWithCompletionHandler:(id /* block */)arg1;
+- (void)renewAppleAccountWithCompletionHandler:(id /* block */)arg1;
 - (id)secureElementIdentifiers;
 - (unsigned long long)secureElementOwnershipStateForCurrentUser;
+- (void)startRequiringUpgradedPasscodeWithPasscodeMeetsPolicy:(bool)arg1;
+- (id)supportedFeatureIdentifiersForAccountProvisioningWithPaymentWebService:(id)arg1;
 - (id)supportedFeatureIdentifiersWithPaymentWebService:(id)arg1;
 - (bool)supportsAutomaticPassPresentation;
 - (void)updatedAccountsForProvisioningWithCompletion:(id /* block */)arg1;
+- (bool)willPassWithUniqueIdentifierAutomaticallyBecomeDefault:(id)arg1;
 
 @end

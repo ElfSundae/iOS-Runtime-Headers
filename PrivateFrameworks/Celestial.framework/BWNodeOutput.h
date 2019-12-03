@@ -34,7 +34,6 @@
     NSMutableArray * _poolPreallocationCompletionHandlers;
     bool  _poolPreallocationDone;
     struct OpaqueFigSimpleMutex { } * _poolPreallocationMutex;
-    bool  _prefetchesPixelBufferPool;
     BWNodeOutputMediaConfiguration * _primaryMediaConfiguration;
     BWNodeOutputMediaProperties * _primaryMediaProperties;
     bool  _receivedEOD;
@@ -63,7 +62,6 @@
 @property (nonatomic, readonly) unsigned int numberOfBuffersEmitted;
 @property (nonatomic) int owningNodeRetainedBufferCount;
 @property (nonatomic) int passthroughMode;
-@property (nonatomic) bool prefetchesPixelBufferPool;
 @property (nonatomic, readonly) BWPixelBufferPool *preparedPixelBufferPool;
 @property (nonatomic, readonly) BWNodeOutputMediaConfiguration *primaryMediaConfiguration;
 @property (nonatomic, readonly) BWNodeOutputMediaProperties *primaryMediaProperties;
@@ -102,7 +100,7 @@
 - (void)emitIrisReferenceMovieRequestWithInfo:(id)arg1;
 - (void)emitNodeError:(id)arg1;
 - (void)emitSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1;
-- (void)emitStillImagePrewarmMessageWithRequestedStillImageCaptureSettings:(id)arg1 resolvedStillImageCaptureSettings:(id)arg2 resolvedPhotoManifest:(id)arg3;
+- (void)emitStillImagePrewarmMessageWithRequestedStillImageCaptureSettings:(id)arg1 resolvedStillImageCaptureSettings:(id)arg2 photoManifest:(id)arg3;
 - (void)emitStillImageReferenceFrameBracketedCaptureSequenceNumberMessageWithSequenceNumber:(int)arg1;
 - (id)format;
 - (id)formatRequirements;
@@ -126,7 +124,6 @@
 - (unsigned int)numberOfBuffersEmitted;
 - (int)owningNodeRetainedBufferCount;
 - (int)passthroughMode;
-- (bool)prefetchesPixelBufferPool;
 - (void)prepareForConfiguredFormatToBecomeLive;
 - (id)preparedPixelBufferPool;
 - (id)primaryMediaConfiguration;
@@ -150,7 +147,6 @@
 - (void)setNodePreparedPixelBufferPool:(id)arg1;
 - (void)setOwningNodeRetainedBufferCount:(int)arg1;
 - (void)setPassthroughMode:(int)arg1;
-- (void)setPrefetchesPixelBufferPool:(bool)arg1;
 - (void)setPreparedSharedPixelBufferPool:(id)arg1;
 - (void)setProvidesPixelBufferPool:(bool)arg1;
 - (void)setRetainedBufferCount:(int)arg1;

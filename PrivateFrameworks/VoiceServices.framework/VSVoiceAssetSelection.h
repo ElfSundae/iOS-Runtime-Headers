@@ -3,13 +3,13 @@
  */
 
 @interface VSVoiceAssetSelection : NSObject {
-    ASAsset * _asset;
+    MAAsset * _asset;
     NSString * _builtInVoicePath;
     VSVoiceAsset * _voiceData;
     NSString * _voicePath;
 }
 
-@property (retain) ASAsset *asset;
+@property (retain) MAAsset *asset;
 @property (retain) NSString *builtInVoicePath;
 @property (retain) VSVoiceAsset *voiceData;
 @property (nonatomic, retain) NSString *voicePath;

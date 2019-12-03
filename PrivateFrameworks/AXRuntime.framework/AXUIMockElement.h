@@ -5,6 +5,7 @@
 @interface AXUIMockElement : AXUIElement <NSCopying> {
     NSMutableDictionary * _attributes;
     id /* block */  _cacheUpdatedCallback;
+    id /* block */  _handleActionBlock;
     NSMutableDictionary * _performActionLog;
     bool  _usesCarriageReturnAsLinesSeparator;
     NSMutableDictionary * _writableAttributes;
@@ -12,6 +13,7 @@
 
 @property (nonatomic, retain) NSMutableDictionary *attributes;
 @property (nonatomic, copy) id /* block */ cacheUpdatedCallback;
+@property (nonatomic, copy) id /* block */ handleActionBlock;
 @property (nonatomic) bool usesCarriageReturnAsLinesSeparator;
 
 + (void)applyElementAttributeCacheScheme:(unsigned long long)arg1;
@@ -36,6 +38,7 @@
 - (id)endLoggingActions;
 - (void)fillStaticCache;
 - (float)floatWithAXAttribute:(long long)arg1;
+- (id /* block */)handleActionBlock;
 - (unsigned long long)hash;
 - (id)init;
 - (bool)isEqual:(id)arg1;
@@ -50,6 +53,7 @@
 - (struct CGPath { }*)pathWithAXAttribute:(long long)arg1;
 - (bool)performAXAction:(int)arg1;
 - (bool)performAXAction:(int)arg1 withValue:(id)arg2;
+- (bool)performAXAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
 - (id)performBlockWhileLoggingPerformedActions:(id /* block */)arg1;
 - (int)pid;
 - (struct CGPoint { double x1; double x2; })pointForLineNumber:(unsigned long long)arg1;
@@ -72,6 +76,7 @@
 - (void)setAXAttribute:(long long)arg1 withUIElementArray:(id)arg2;
 - (void)setAttributes:(id)arg1;
 - (void)setCacheUpdatedCallback:(id /* block */)arg1;
+- (void)setHandleActionBlock:(id /* block */)arg1;
 - (void)setUsesCarriageReturnAsLinesSeparator:(bool)arg1;
 - (void)setValue:(id)arg1 forAXAttribute:(long long)arg2;
 - (void)setValue:(id)arg1 forAXParameterizedAttribute:(long long)arg2;

@@ -4,9 +4,22 @@
 
 @interface GEOPDDisplayHeaderSubstitute : PBCodable <NSCopying> {
     struct { 
-        unsigned int substituteType : 1; 
-    }  _has;
+        unsigned int has_substituteType : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_interpretedQuery : 1; 
+        unsigned int read_relatedSearchSuggestion : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_interpretedQuery : 1; 
+        unsigned int wrote_relatedSearchSuggestion : 1; 
+        unsigned int wrote_substituteType : 1; 
+    }  _flags;
     NSString * _interpretedQuery;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     GEOPDRelatedSearchSuggestion * _relatedSearchSuggestion;
     int  _substituteType;
     PBUnknownFields * _unknownFields;
@@ -20,8 +33,13 @@
 @property (nonatomic) int substituteType;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsSubstituteType:(id)arg1;
+- (void)_readInterpretedQuery;
+- (void)_readRelatedSearchSuggestion;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -30,9 +48,12 @@
 - (bool)hasRelatedSearchSuggestion;
 - (bool)hasSubstituteType;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (id)interpretedQuery;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)relatedSearchSuggestion;
 - (void)setHasSubstituteType:(bool)arg1;

@@ -17,7 +17,7 @@
 - (bool)shouldPlaceDeleteInCenterToolbarPosition;
 - (bool)shouldPlaceSelectAllButtonInRightNavigationBar;
 - (unsigned long long)supportedInterfaceOrientations;
-- (int)thumbnailImageFormat;
+- (unsigned short)thumbnailImageFormat;
 - (bool)usesStackPopTransition;
 - (bool)wantsBackButtonTitleForPhotoBrowser;
 - (bool)wantsCustomNavigationTransition;

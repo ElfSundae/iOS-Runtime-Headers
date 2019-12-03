@@ -21,8 +21,8 @@
 - (void).cxx_destruct;
 - (bool)_hasBeenUnlockedSinceBoot;
 - (id)gatherDiagnostics;
-- (void)handleNotification:(id)arg1;
-- (bool)handlesNotification:(id)arg1;
+- (void)handleNotification:(id)arg1 ofType:(long long)arg2 completion:(id /* block */)arg3;
+- (bool)handlesNotification:(id)arg1 ofType:(long long)arg2;
 - (id)init;
 - (bool)internalHasBeenUnlockedSinceBoot;
 - (void)printDiagnostics;

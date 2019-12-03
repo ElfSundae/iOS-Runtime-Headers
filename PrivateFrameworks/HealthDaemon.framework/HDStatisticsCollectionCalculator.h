@@ -14,6 +14,7 @@
     id /* block */  _statisticsHandler;
 }
 
+@property (nonatomic, readonly) long long computationMethod;
 @property (nonatomic) <HDStatisticsCollectionCalculatorDataSource> *dataSource;
 @property (nonatomic, copy) NSDateInterval *dateInterval;
 @property (readonly, copy) NSString *debugDescription;
@@ -39,6 +40,7 @@
 - (bool)addSampleValue:(double)arg1 startTime:(double)arg2 endTime:(double)arg3 sourceID:(long long)arg4 error:(id*)arg5;
 - (id)archivedRepresentationWithError:(id*)arg1;
 - (id)bundleIdentifierForSourceID:(long long)arg1;
+- (long long)computationMethod;
 - (void)configureMergeAnchor:(id)arg1;
 - (id)currentStatistics;
 - (id)dataSource;

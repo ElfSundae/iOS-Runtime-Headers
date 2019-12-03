@@ -53,15 +53,12 @@
 - (id)_initWithDictionary:(id)arg1;
 - (id)_internal;
 - (void)_setAccount:(id)arg1;
-- (void)cleanupStreamPairWithInputStream:(id)arg1 outputStream:(id)arg2;
-- (void)closeSocket:(int)arg1;
-- (void)closeSocketForDomain:(id)arg1;
+- (void)_setService:(id)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)destination;
 - (id)deviceColor;
 - (id)enclosureColor;
-- (void)establishStreamPairWithOptions:(id)arg1 completionHandler:(id /* block */)arg2 onQueue:(id)arg3;
 - (id)fullDescription;
 - (id)identities;
 - (id)initWithDictionary:(id)arg1;
@@ -80,9 +77,6 @@
 - (id)modelIdentifier;
 - (id)name;
 - (id)nsuuid;
-- (int)openSocketForDomain:(id)arg1;
-- (int)openSocketForDomain:(id)arg1 transportType:(long long)arg2;
-- (void)openSocketWithOptions:(id)arg1 completionHandler:(id /* block */)arg2 onQueue:(id)arg3;
 - (struct { long long x1; long long x2; long long x3; })operatingSystemVersion;
 - (unsigned long long)pairingProtocolVersion;
 - (id)productBuildVersion;
@@ -92,7 +86,6 @@
 - (id)service;
 - (unsigned long long)serviceMinCompatibilityVersion;
 - (void)setNSUUID:(id)arg1;
-- (int)socketForDomain:(id)arg1;
 - (bool)supportsApplePay;
 - (bool)supportsHandoff;
 - (bool)supportsMMSRelay;
@@ -126,5 +119,6 @@
 
 - (id)pk_idsDestination;
 - (bool)pk_isApplePayCapable;
+- (bool)pk_isValidHandoffDevice;
 
 @end

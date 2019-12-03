@@ -2,20 +2,26 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXCMMSuggestionGadget : NSObject <PXDiagnosticsEnvironment, PXGadget> {
-    UIColor * _backgroundColor;
+@interface PXCMMSuggestionGadget : NSObject <PXCMMSuggestionViewDelegate, PXDiagnosticsEnvironment, PXGadget> {
     <PXGadgetDelegate> * _delegate;
+    bool  _didLoadSuggestion;
+    bool  _didRequestCachingOfPosterImage;
     PXPersonFaceTileImageCombiner * _faceTileImageCombiner;
     PXGadgetSpec * _gadgetSpec;
-    UILongPressGestureRecognizer * _longPressGestureRecognizer;
+    struct CGSize { 
+        double width; 
+        double height; 
+    }  _requestedPosterImageSize;
+    double  _requestedWidth;
     <PXCMMSuggestion> * _suggestion;
     PXCMMSuggestionView * _suggestionView;
+    PXCMMSuggestionViewModel * _suggestionViewModel;
+    <PXCMMWorkflowPresenting> * _workflowPresenter;
 }
 
-@property (nonatomic, readonly) const struct __CFString { }*accessoryButtonEventTrackerKey;
 @property (nonatomic, readonly) NSString *accessoryButtonTitle;
 @property (nonatomic, readonly) unsigned long long accessoryButtonType;
-@property (nonatomic, retain) UIColor *backgroundColor;
+@property (nonatomic, readonly) Class collectionViewItemClass;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <PXGadgetDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -32,39 +38,44 @@
 @property (nonatomic, readonly) bool supportsHighlighting;
 @property (nonatomic, readonly) bool supportsSelection;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } visibleContentRect;
+@property (nonatomic, readonly) <PXCMMWorkflowPresenting> *workflowPresenter;
+
++ (id)_imageRequestOptions;
 
 - (void).cxx_destruct;
-- (void)_changeViewConfiguration:(id /* block */)arg1;
-- (void)_contentSizeCategoryDidChange:(id)arg1;
-- (void)_loadSuggestion:(id)arg1;
-- (void)_longPressGesture:(id)arg1;
-- (void)_presentSuggestion:(id)arg1 animated:(bool)arg2 pptConfigurationBlock:(id /* block */)arg3;
+- (void)_cachePosterImageWithWidth:(double)arg1;
+- (void)_clearPosterImageCache;
+- (void)_loadSuggestionIfNecessary;
+- (void)_presentDetailViewAnimated:(bool)arg1 pptConfigurationBlock:(id /* block */)arg2;
 - (void)_setCombinedFaceTileImage:(id)arg1;
-- (void)_tapGesture:(id)arg1;
-- (void)_updateLongPressGestureRecognizer;
-- (void)_updatePeopleSuggestionFaceTileImagesForPersons:(id)arg1;
-- (id)backgroundColor;
+- (void)_updatePeopleSuggestionFaceTileImagesForPersons:(id)arg1 mutableViewModel:(id)arg2;
+- (Class)collectionViewItemClass;
 - (void)commitPreviewViewController:(id)arg1;
 - (void)contentHasBeenSeen;
-- (struct NSObject { Class x1; }*)contentView;
 - (id)delegate;
+- (void)dynamicUserInterfaceTraitDidChange;
 - (void)gadgetControllerHasAppeared;
 - (id)gadgetSpec;
 - (unsigned long long)gadgetType;
 - (bool)hasContentToDisplay;
+- (id)init;
+- (id)initWithWorkflowPresenter:(id)arg1;
 - (void)ppt_presentComposeRecipientViewAfterDelay:(double)arg1;
-- (void)ppt_presentDetailView;
+- (void)prefetchDuringScrollingForWidth:(double)arg1;
+- (void)prepareCollectionViewItem:(struct UICollectionViewCell { Class x1; }*)arg1;
 - (void)presentDetailViewAnimated:(bool)arg1;
-- (struct NSObject { Class x1; }*)previewViewControllerAtLocation:(struct CGPoint { double x1; double x2; })arg1 fromSourceView:(struct NSObject { Class x1; }*)arg2 outSourceRect:(out struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg3;
+- (void)presentDetailViewForSuggestionView:(id)arg1 animated:(bool)arg2;
+- (struct NSObject { Class x1; }*)previewViewControllerAtLocation:(struct CGPoint { double x1; double x2; })arg1 fromSourceView:(struct NSObject { Class x1; }*)arg2;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint { double x1; double x2; })arg1 inCoordinateSpace:(id)arg2;
-- (void)setBackgroundColor:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setGadgetSpec:(id)arg1;
 - (void)setSuggestion:(id)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (id)suggestion;
+- (void)suggestionViewSizeThatFitsDidChange:(id)arg1;
 - (bool)supportsHighlighting;
-- (bool)supportsSelection;
+- (struct NSObject { Class x1; }*)targetPreviewViewForLocation:(struct CGPoint { double x1; double x2; })arg1 inCoordinateSpace:(id)arg2;
 - (id)uniqueGadgetIdentifier;
+- (id)workflowPresenter;
 
 @end

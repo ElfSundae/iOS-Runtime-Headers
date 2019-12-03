@@ -15,7 +15,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) MLModelInterface *interface;
 @property (readonly) MLModelMetadata *metadata;
-@property (nonatomic, readonly) MLModelDescription *modelDescription;
+@property (nonatomic, retain) MLModelDescription *modelDescription;
 @property (nonatomic, readonly) bool ouputSparse;
 @property (readonly) Class superclass;
 

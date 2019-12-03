@@ -5,10 +5,27 @@
 @interface GEOPDIpGeoLookupResult : PBCodable <NSCopying> {
     NSString * _countryCode;
     struct { 
-        unsigned int status : 1; 
-    }  _has;
+        unsigned int has_status : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_countryCode : 1; 
+        unsigned int read_ipAddress : 1; 
+        unsigned int read_location : 1; 
+        unsigned int read_timeZome : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_countryCode : 1; 
+        unsigned int wrote_ipAddress : 1; 
+        unsigned int wrote_location : 1; 
+        unsigned int wrote_timeZome : 1; 
+        unsigned int wrote_status : 1; 
+    }  _flags;
     NSString * _ipAddress;
     GEOLatLng * _location;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     int  _status;
     NSString * _timeZome;
     PBUnknownFields * _unknownFields;
@@ -26,8 +43,15 @@
 @property (nonatomic, retain) NSString *timeZome;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsStatus:(id)arg1;
+- (void)_readCountryCode;
+- (void)_readIpAddress;
+- (void)_readLocation;
+- (void)_readTimeZome;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)countryCode;
@@ -39,10 +63,13 @@
 - (bool)hasStatus;
 - (bool)hasTimeZome;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (id)ipAddress;
 - (bool)isEqual:(id)arg1;
 - (id)location;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setCountryCode:(id)arg1;
 - (void)setHasStatus:(bool)arg1;

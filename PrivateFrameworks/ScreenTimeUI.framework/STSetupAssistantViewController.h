@@ -2,25 +2,26 @@
    Image: /System/Library/PrivateFrameworks/ScreenTimeUI.framework/ScreenTimeUI
  */
 
-@interface STSetupAssistantViewController : BFFSplashController {
+@interface STSetupAssistantViewController : OBWelcomeController {
     <STSetupAssistantViewControllerDelegate> * _delegate;
     bool  _hasRestrictionsPasscode;
     long long  _state;
 }
 
 @property <STSetupAssistantViewControllerDelegate> *delegate;
-@property bool hasRestrictionsPasscode;
-@property long long state;
+@property (readonly) bool hasRestrictionsPasscode;
+@property (readonly) long long state;
+
++ (id)new;
 
 - (void).cxx_destruct;
+- (void)_continue:(id)arg1;
+- (void)_setUpLater:(id)arg1;
 - (id)delegate;
-- (bool)hasRestrictions;
 - (bool)hasRestrictionsPasscode;
 - (id)init;
 - (id)initWithScreenTimeState:(long long)arg1 passcode:(bool)arg2;
 - (void)setDelegate:(id)arg1;
-- (void)setHasRestrictionsPasscode:(bool)arg1;
-- (void)setState:(long long)arg1;
 - (long long)state;
 - (void)viewDidLoad;
 

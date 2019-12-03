@@ -30,10 +30,10 @@
 - (id)_mostRecentSampleOfType:(id)arg1 error:(id*)arg2;
 - (void)_queue_alertObserversDidUpdateUserProfile;
 - (void)_queue_updateQuantityCharacteristics;
+- (void)_queue_updateQuantityCharacteristicsAndUserProfile;
 - (void)_queue_updateQuantityCharacteristicsAndUserProfileIfNeeded;
 - (void)_queue_updateUserProfile;
 - (bool)_setUserCharacteristic:(id)arg1 forType:(id)arg2 shouldInsertSample:(bool)arg3 updateProfileAndSync:(bool)arg4 error:(id*)arg5;
-- (void)_updateQuantityCharacteristicsAndUserProfile;
 - (id)_userCharacteristicForType:(id)arg1 entity:(id*)arg2 error:(id*)arg3;
 - (void)_userCharacteristicsDidChangeShouldUpdateUserProfile:(bool)arg1 shouldSync:(bool)arg2;
 - (void)addProfileObserver:(id)arg1;
@@ -43,6 +43,7 @@
 - (id)diagnosticDescription;
 - (id)initWithProfile:(id)arg1;
 - (id)lastUserProfile;
+- (id)modificationDateForCharacteristicWithType:(id)arg1 error:(id*)arg2;
 - (bool)needsUpdateAfterUnlock;
 - (id)observerQueue;
 - (id)observers;

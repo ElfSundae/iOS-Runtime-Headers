@@ -46,6 +46,7 @@
 @property (nonatomic) <PXWidgetUnlockDelegate> *widgetUnlockDelegate;
 
 - (void).cxx_destruct;
+- (struct PXSimpleIndexPath { unsigned long long x1; long long x2; long long x3; long long x4; })_assetIndexPathAtLocation:(struct CGPoint { double x1; double x2; })arg1 padding:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg2;
 - (id)_assetsBySizeWithTileIdentifiers:(const struct PXTileIdentifier { unsigned long long x1; unsigned long long x2[10]; }*)arg1 withGeometries:(const struct PXTileGeometry { struct CGRect { struct CGPoint { double x_1_2_1; double x_1_2_2; } x_1_1_1; struct CGSize { double x_2_2_1; double x_2_2_2; } x_1_1_2; } x1; struct CGPoint { double x_2_1_1; double x_2_1_2; } x2; struct CGSize { double x_3_1_1; double x_3_1_2; } x3; struct CGAffineTransform { double x_4_1_1; double x_4_1_2; double x_4_1_3; double x_4_1_4; double x_4_1_5; double x_4_1_6; } x4; double x5; double x6; bool x7; struct CGSize { double x_8_1_1; double x_8_1_2; } x8; struct CGRect { struct CGPoint { double x_1_2_1; double x_1_2_2; } x_9_1_1; struct CGSize { double x_2_2_1; double x_2_2_2; } x_9_1_2; } x9; void *x10; }*)arg2 count:(unsigned long long)arg3;
 - (void)_getImageRequester:(id*)arg1 title:(id*)arg2 subtitle:(id*)arg3 forRelatedEntry:(id)arg4 mediaProvider:(id)arg5;
 - (void)_handleTapGestureRecognizer:(id)arg1;
@@ -71,12 +72,13 @@
 - (id)extendedTraitCollection;
 - (bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (bool)gestureRecognizerShouldBegin:(id)arg1;
+- (id)imageViewBasicTileForPreviewingAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (id)init;
 - (void)installGestureRecognizers;
 - (bool)isUserInteractionEnabled;
 - (void)loadContentData;
 - (void)prepareForInteractiveTransition:(id)arg1;
-- (struct NSObject { Class x1; }*)previewViewControllerAtLocation:(struct CGPoint { double x1; double x2; })arg1 fromSourceView:(struct NSObject { Class x1; }*)arg2 outSourceRect:(out struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg3;
+- (struct NSObject { Class x1; }*)previewViewControllerAtLocation:(struct CGPoint { double x1; double x2; })arg1 fromSourceView:(struct NSObject { Class x1; }*)arg2;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint { double x1; double x2; })arg1 inCoordinateSpace:(id)arg2;
 - (id)regionOfInterestForContext:(id)arg1;
 - (void)reusableObjectPool:(id)arg1 didCreateReusableObject:(id)arg2;

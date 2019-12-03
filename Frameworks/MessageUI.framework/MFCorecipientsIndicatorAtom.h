@@ -11,7 +11,7 @@
 @property (nonatomic) <MFCorecipientsIndicatorAtomDelegate> *delegate;
 @property (nonatomic, retain) NSArray *recipients;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)delegate;
 - (id)init;
 - (id)initWithRecipients:(id)arg1;

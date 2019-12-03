@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PhotoImaging.framework/PhotoImaging
  */
 
-@interface PILevelsLuminanceAutoCalculator : PILevelsAutoAbstractCalculator
+@interface PILevelsLuminanceAutoCalculator : PILevelsAutoCalculator
 
 - (id)calculateSettingsForImageHistogram:(id)arg1;
 

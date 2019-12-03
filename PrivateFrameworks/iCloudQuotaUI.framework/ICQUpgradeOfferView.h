@@ -6,6 +6,7 @@
     UILayoutGuide * _aboveSpinnerLayoutGuide;
     NSArray * _activeConstraints;
     UILayoutGuide * _belowSpinnerLayoutGuide;
+    UIVisualEffectView * _blurBackdrop;
     UIButton * _bottomButton;
     ICQLink * _bottomLink;
     UIColor * _buttonTintColor;
@@ -15,7 +16,6 @@
     UIView * _footerView;
     UIView * _headerView;
     UIImageView * _iconView;
-    _UIBackdropView * _lightTrayBackdrop;
     _ICQTextView * _messageView;
     UIButton * _purchase2Button;
     ICQLink * _purchase2Link;
@@ -26,7 +26,6 @@
     UIActivityIndicatorView * _spinner;
     UILabel * _titleLabel;
     UIView * _trayView;
-    _UIBackdropView * _ultraLightTrayBackdrop;
     long long  _upgradeMode;
     _ICQUpgradeOfferPageSpecification * _upgradeOfferPageSpecification;
 }
@@ -34,6 +33,7 @@
 @property (nonatomic, readonly) UILayoutGuide *aboveSpinnerLayoutGuide;
 @property (nonatomic, retain) NSArray *activeConstraints;
 @property (nonatomic, readonly) UILayoutGuide *belowSpinnerLayoutGuide;
+@property (nonatomic, readonly) UIVisualEffectView *blurBackdrop;
 @property (nonatomic, retain) UIButton *bottomButton;
 @property (nonatomic, readonly) ICQLink *bottomLink;
 @property (nonatomic, copy) UIColor *buttonTintColor;
@@ -48,7 +48,6 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) UIView *headerView;
 @property (nonatomic, retain) UIImageView *iconView;
-@property (nonatomic, readonly) _UIBackdropView *lightTrayBackdrop;
 @property (nonatomic, readonly) UIFont *linkButtonFont;
 @property (nonatomic, readonly) UIFont *messageFont;
 @property (nonatomic, retain) _ICQTextView *messageView;
@@ -64,7 +63,6 @@
 @property (nonatomic, readonly) UIFont *titleFont;
 @property (nonatomic, retain) UILabel *titleLabel;
 @property (nonatomic, readonly) UIView *trayView;
-@property (nonatomic, readonly) _UIBackdropView *ultraLightTrayBackdrop;
 @property (nonatomic) long long upgradeMode;
 @property (nonatomic, retain) _ICQUpgradeOfferPageSpecification *upgradeOfferPageSpecification;
 
@@ -87,6 +85,7 @@
 - (id)aboveSpinnerLayoutGuide;
 - (id)activeConstraints;
 - (id)belowSpinnerLayoutGuide;
+- (id)blurBackdrop;
 - (id)bottomButton;
 - (void)bottomButtonTapped:(id)arg1;
 - (id)bottomLink;
@@ -106,11 +105,11 @@
 - (id)iconView;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)layoutSubviews;
-- (id)lightTrayBackdrop;
 - (id)linkButtonFont;
 - (id)messageAttributes;
 - (id)messageFont;
 - (id)messageParagraphStyle;
+- (id)messageTextColor;
 - (id)messageView;
 - (id)purchase2Button;
 - (void)purchase2ButtonTapped:(id)arg1;
@@ -140,7 +139,6 @@
 - (id)titleFont;
 - (id)titleLabel;
 - (id)trayView;
-- (id)ultraLightTrayBackdrop;
 - (void)updateConstraints;
 - (long long)upgradeMode;
 - (id)upgradeOfferPageSpecification;

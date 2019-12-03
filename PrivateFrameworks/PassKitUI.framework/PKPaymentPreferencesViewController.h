@@ -7,13 +7,16 @@
     NSIndexPath * _currentEditingIndexPath;
     PKPaymentPass * _currentlySelectedPaymentPass;
     id /* block */  _handler;
+    bool  _keyboardVisible;
     NSArray * _latestPreferences;
+    unsigned short  _layoutRecursionCounter;
     PKPassSnapshotter * _passSnapshotter;
     PKPaymentPass * _paymentPassForBillingErrors;
     UISwitch * _peerPaymentAccountPaymentSwitch;
     id /* block */  _pickedContactHandler;
     id /* block */  _pickedContactPropertyHandler;
     NSArray * _preferences;
+    bool  _preferredContentSizeUpdateDeferred;
     PKPaymentPreferenceButtonCell * _sizingButtonCell;
     long long  _style;
     UITableView * _tableView;
@@ -47,6 +50,7 @@
 - (void)_savePickedContact:(id)arg1 inPreference:(id)arg2;
 - (bool)_saveUpdatedContact:(id)arg1 contactKey:(id)arg2 preference:(id)arg3 atIndex:(long long)arg4;
 - (void)_setContactHandlersForPreference:(id)arg1;
+- (bool)_shouldUpdatePreferredContentSize;
 - (void)_showAddressEditorForContact:(id)arg1 title:(id)arg2 requiredKeys:(id)arg3 highlightedKeys:(id)arg4 errors:(id)arg5;
 - (void)_showAddressPickerForPreference:(id)arg1;
 - (void)_showContactsPickerForPreference:(id)arg1;
@@ -105,10 +109,10 @@
 - (bool)textFieldShouldReturn:(id)arg1;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidDisappear:(bool)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;
 - (void)viewWillLayoutSubviews;
-- (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

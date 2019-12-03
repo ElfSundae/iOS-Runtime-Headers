@@ -7,19 +7,26 @@
 
 - (NSString *)containerDisplayName;
 - (NSString *)displayName;
+- (NSString *)fileSystemFilename;
 - (NSURL *)fileURL;
-- (NSString *)fp_appContainerBundleIdentifier;
+- (NSPersonNameComponents *)fp_addedByNameComponents;
+- (NSSet *)fp_cloudContainerClientBundleIdentifiers;
+- (NSString *)fp_cloudContainerIdentifier;
 - (NSString *)fp_domainIdentifier;
+- (bool)fp_isAddedByCurrentUser;
 - (bool)fp_isContainer;
+- (bool)fp_isContainerPristine;
+- (bool)fp_isLastModifiedByCurrentUser;
 - (bool)fp_isUbiquitous;
+- (NSString *)fp_parentDomainIdentifier;
 - (NSString *)fp_spotlightDomainIdentifier;
 - (NSNumber *)hasUnresolvedConflicts;
 - (NSNumber *)isDownloadRequested;
 - (bool)isHidden;
+- (bool)isTopLevelSharedItem;
 - (NSString *)preformattedMostRecentEditorName;
 - (NSString *)preformattedOwnerName;
 - (NSString *)providerIdentifier;
 - (NSString *)sharingPermissions;
-- (NSArray *)tags;
 
 @end

@@ -9,6 +9,7 @@
 @property (nonatomic, copy) NSDictionary *audioSettings;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, readonly) id delegateOverride;
+@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *delegateOverrideCallbackQueue;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *sampleBufferCallbackQueue;
@@ -23,10 +24,11 @@
 - (void)_updateRemoteQueue:(struct remoteQueueReceiverOpaque { }*)arg1;
 - (void)attachSafelyToFigCaptureSession:(struct OpaqueFigCaptureSession { }*)arg1;
 - (id)audioSettings;
-- (bool)canAddConnectionForMediaType:(id)arg1;
+- (bool)canAddConnection:(id)arg1 failureReason:(id*)arg2;
 - (id)connectionMediaTypes;
 - (void)dealloc;
 - (id)delegateOverride;
+- (id)delegateOverrideCallbackQueue;
 - (void)detachSafelyFromFigCaptureSession:(struct OpaqueFigCaptureSession { }*)arg1;
 - (id)init;
 - (id)recommendedAudioSettingsForAssetWriterWithOutputFileType:(id)arg1;

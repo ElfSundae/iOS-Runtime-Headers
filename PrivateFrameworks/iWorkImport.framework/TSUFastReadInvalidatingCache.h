@@ -6,10 +6,10 @@
     NSCondition * mCondition;
     id /* block */  mGenerator;
     bool  mIsGenerating;
-    long long  mReaderCount;
+    _Atomic long long  mReaderCount;
     bool  mReentrant;
-    id  mToDispose;
-    id  mValue;
+    _Atomic id  mToDispose;
+    _Atomic id  mValue;
 }
 
 - (void)dealloc;

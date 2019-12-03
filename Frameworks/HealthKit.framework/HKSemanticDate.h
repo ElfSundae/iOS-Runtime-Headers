@@ -20,6 +20,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)date;
 - (void)encodeWithCoder:(id)arg1;

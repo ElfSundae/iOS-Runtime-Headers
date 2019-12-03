@@ -13,8 +13,12 @@
     bool  _unicode;
 }
 
++ (id)returnDelimiterData;
++ (id)singleByteTokens;
++ (id)utf16Tokens;
+
 - (void).cxx_destruct;
-- (void)_applyNextStringInEncoding:(unsigned long long)arg1 quotedPrintable:(bool)arg2 stopTokens:(int)arg3 trim:(bool)arg4 maximumValueLength:(unsigned long long)arg5 intoString:(id)arg6;
+- (bool)_applyNextStringInEncoding:(unsigned long long)arg1 quotedPrintable:(bool)arg2 stopTokens:(int)arg3 trim:(bool)arg4 maximumValueLength:(unsigned long long)arg5 intoString:(id)arg6;
 - (bool)advancePastEOL;
 - (bool)advancePastEOLSingle;
 - (bool)advancePastEOLUnicode;
@@ -54,6 +58,7 @@
 - (int)nextTokenPeekUnicode:(bool)arg1 length:(long long)arg2;
 - (id)nextUnicodeBase64Line:(bool*)arg1;
 - (id)nextUnicodeStringStopTokens:(int)arg1 quotedPrintable:(bool)arg2 trim:(bool)arg3 maximumValueLength:(unsigned long long)arg4;
+- (id)os_log;
 - (int)peekAtNextToken;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })rangeWithLength:(unsigned long long)arg1 lTrim:(unsigned long long)arg2 rTrim:(unsigned long long)arg3;
 - (int)readNextToken;

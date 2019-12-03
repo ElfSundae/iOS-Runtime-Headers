@@ -5,19 +5,19 @@
 @interface PHAWorkerWarmer : NSObject {
     PHAWorker * _lastActiveWorker;
     PHAJobConstraints * _lastConstraints;
-    NSArray * _workers;
+    NSMutableSet * _workers;
 }
 
 @property (nonatomic, retain) PHAWorker *lastActiveWorker;
 @property (nonatomic, retain) PHAJobConstraints *lastConstraints;
-@property (nonatomic, readonly) NSArray *workers;
+@property (nonatomic, readonly) NSMutableSet *workers;
 
 + (unsigned long long)stateCode;
 
 - (void).cxx_destruct;
 - (bool)_cooldownWorkerIfWarmed:(id)arg1;
-- (void)_warmupWorkerIfCooled:(id)arg1;
-- (id)initWithWorkers:(id)arg1;
+- (void)_warmupWorkerIfCooled:(id)arg1 withProgressBlock:(id /* block */)arg2;
+- (id)init;
 - (id)lastActiveWorker;
 - (id)lastConstraints;
 - (void)recordConstraintChange:(id)arg1;

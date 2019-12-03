@@ -4,6 +4,7 @@
 
 @interface GEORouteMatcher : NSObject {
     GEOComposedRoute * _route;
+    GEORouteRoadMatcher * _routeRoadMatcher;
     bool  _shouldSnapRouteMatchToRoute;
     bool  _useStrictInitialOnRouteCriteria;
 }
@@ -18,9 +19,12 @@
 - (void)_forEachSegmentNearLocation:(id)arg1 previousRouteMatch:(id)arg2 handler:(id /* block */)arg3;
 - (double)_scoreModifierForStep:(id)arg1 previousStep:(id)arg2;
 - (bool)_shouldConsiderCourseForLocation:(id)arg1;
+- (void)_snapRouteMatchToRoad:(id)arg1;
 - (void)_startRouteMatch;
 - (id)_startStepForPreviousRouteMatch:(id)arg1;
 - (id)_stepForPointIndex:(unsigned int)arg1 previousStep:(id)arg2;
+- (bool)_supportsSnapping;
+- (void)dealloc;
 - (double)distanceToRouteFrom:(struct { double x1; double x2; })arg1;
 - (double)distanceToRouteFrom:(struct { double x1; double x2; })arg1 startDistance:(double)arg2 endDistance:(double)arg3;
 - (id)initWithRoute:(id)arg1;

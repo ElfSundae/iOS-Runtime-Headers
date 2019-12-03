@@ -3,40 +3,45 @@
  */
 
 @interface ARImageSensorSettings : NSObject <NSCopying> {
-    bool  _allowCameraInMultipleForegroundAppLayout;
-    bool  _audioCaptureEnabled;
     bool  _autoFocusEnabled;
-    AVCaptureSession * _captureSession;
+    bool  _enabled;
+    bool  _geometricDistortionCorrectionEnabled;
+    float  _maxGainOverride;
+    NSString * _metaData;
     bool  _mirrorVideoOutput;
     ARVideoFormat * _videoFormat;
     bool  _visionDataOutputEnabled;
     NSDictionary * _visionDataOutputParameters;
 }
 
-@property (nonatomic) bool allowCameraInMultipleForegroundAppLayout;
-@property (nonatomic) bool audioCaptureEnabled;
 @property (nonatomic) bool autoFocusEnabled;
-@property (nonatomic, retain) AVCaptureSession *captureSession;
+@property (getter=isEnabled, nonatomic) bool enabled;
+@property (nonatomic) bool geometricDistortionCorrectionEnabled;
+@property (nonatomic) float maxGainOverride;
+@property (nonatomic, copy) NSString *metaData;
 @property (nonatomic) bool mirrorVideoOutput;
-@property (nonatomic, readonly) ARVideoFormat *videoFormat;
+@property (nonatomic, retain) ARVideoFormat *videoFormat;
 @property (nonatomic) bool visionDataOutputEnabled;
 @property (nonatomic, retain) NSDictionary *visionDataOutputParameters;
 
 - (void).cxx_destruct;
-- (bool)allowCameraInMultipleForegroundAppLayout;
-- (bool)audioCaptureEnabled;
 - (bool)autoFocusEnabled;
-- (id)captureSession;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (bool)geometricDistortionCorrectionEnabled;
 - (unsigned long long)hash;
 - (id)initWithVideoFormat:(id)arg1;
+- (bool)isEnabled;
 - (bool)isEqual:(id)arg1;
+- (float)maxGainOverride;
+- (id)metaData;
 - (bool)mirrorVideoOutput;
-- (void)setAllowCameraInMultipleForegroundAppLayout:(bool)arg1;
-- (void)setAudioCaptureEnabled:(bool)arg1;
 - (void)setAutoFocusEnabled:(bool)arg1;
-- (void)setCaptureSession:(id)arg1;
+- (void)setEnabled:(bool)arg1;
+- (void)setGeometricDistortionCorrectionEnabled:(bool)arg1;
+- (void)setMaxGainOverride:(float)arg1;
+- (void)setMetaData:(id)arg1;
 - (void)setMirrorVideoOutput:(bool)arg1;
+- (void)setVideoFormat:(id)arg1;
 - (void)setVisionDataOutputEnabled:(bool)arg1;
 - (void)setVisionDataOutputParameters:(id)arg1;
 - (id)videoFormat;

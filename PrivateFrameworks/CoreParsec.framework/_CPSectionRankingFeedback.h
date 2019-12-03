@@ -18,7 +18,6 @@
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic) unsigned int localSectionPosition;
 @property (nonatomic) double personalizationScore;
-@property (nonatomic, readonly) bool requiresQueryId;
 @property (nonatomic, copy) NSArray *results;
 @property (nonatomic, retain) _CPResultSectionForFeedback *section;
 @property (readonly) Class superclass;
@@ -39,7 +38,6 @@
 - (unsigned int)localSectionPosition;
 - (double)personalizationScore;
 - (bool)readFrom:(id)arg1;
-- (bool)requiresQueryId;
 - (id)results;
 - (id)resultsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)resultsCount;

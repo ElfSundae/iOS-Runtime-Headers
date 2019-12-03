@@ -27,7 +27,6 @@
 - (id)originalAsset;
 - (id)representationForUTI:(id)arg1;
 - (void)requestDefaultRepresentation;
-- (void)setExternalUsageIntent:(unsigned long long)arg1;
 - (void)setImageData:(id)arg1 metadata:(id)arg2 completionBlock:(id /* block */)arg3;
 - (void)setInternal:(id)arg1;
 - (void)setVideoAtPath:(id)arg1 completionBlock:(id /* block */)arg2;

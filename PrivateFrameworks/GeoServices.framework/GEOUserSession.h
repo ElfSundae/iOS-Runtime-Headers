@@ -8,7 +8,14 @@
         unsigned long long _low; 
     }  _cohortSessionID;
     double  _cohortSessionStartTime;
-    NSLock * _lock;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _lock;
+    struct GEOSessionID { 
+        unsigned long long _high; 
+        unsigned long long _low; 
+    }  _longSessionID;
+    double  _longSessionIDGenerationTime;
     GEOUserSessionEntity * _mapsUserSessionEntity;
     NSData * _navigationDirectionsID;
     struct GEOSessionID { 
@@ -42,8 +49,8 @@
     struct GEOSessionID { 
         unsigned long long _high; 
         unsigned long long _low; 
-    }  _usageCollectionSessionID;
-    double  _usageSessionIDGenerationTime;
+    }  _thirtyDayCountsSessionID;
+    double  _thirtyDayCountsSessionIDGenerationTime;
     struct GEOSessionID { 
         unsigned long long _high; 
         unsigned long long _low; 
@@ -51,30 +58,32 @@
     bool  _zeroSessionIDMode;
 }
 
-@property (readonly) GEOUserSessionEntity *cohortSessionEntity;
-@property (readonly) GEOUserSessionEntity *longSessionEntity;
+@property (nonatomic, readonly) GEOUserSessionEntity *cohortSessionEntity;
+@property (nonatomic, readonly) GEOUserSessionEntity *longSessionEntity;
+@property (nonatomic, readonly) struct GEOSessionID { unsigned long long x1; unsigned long long x2; } longSessionID;
 @property (nonatomic, retain) GEOUserSessionEntity *mapsUserSessionEntity;
-@property (readonly) GEOUserSessionEntity *navSessionEntity;
+@property (nonatomic, readonly) GEOUserSessionEntity *navSessionEntity;
 @property (nonatomic) bool shareSessionWithMaps;
-@property (readonly) struct GEOSessionID { unsigned long long x1; unsigned long long x2; } usageCollectionSessionID;
-@property (readonly) GEOUserSessionSnapshot *userSessionSnapshot;
-@property bool zeroSessionIDMode;
+@property (nonatomic, readonly) GEOUserSessionSnapshot *userSessionSnapshot;
+@property (nonatomic) bool zeroSessionIDMode;
 
 + (bool)isGeod;
 + (void)setIsGeod;
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
-- (id)_defaultForKey:(id)arg1;
+- (void)_createLongSessionWithOffset:(bool)arg1;
 - (void)_generateNewNavSessionID;
-- (double)_getCFAbsoluteCurrentTime;
+- (double)_getCurrentTime;
 - (void)_overrideShortSessionId:(struct GEOSessionID { unsigned long long x1; unsigned long long x2; })arg1 sessionMachBasisTime:(unsigned long long)arg2 sessionStartTime:(double)arg3;
 - (void)_renewCohortSessionID;
-- (void)_renewUsageCollectionSessionID;
+- (void)_renewLongSessionID;
+- (void)_renewThirtyDayCountsSessionID;
 - (void)_resetSessionID;
+- (void)_rollInitialLongSessionId;
 - (void)_safe_renewCohortSessionID;
-- (void)_safe_renewUsageCollectionSessionID;
-- (void)_setDefault:(id)arg1 forKey:(id)arg2;
+- (void)_safe_renewLongSessionID;
+- (void)_safe_renewThirtyDayCountsSessionID;
 - (void)_shortSessionWithBasisComponentsCompletion:(id /* block */)arg1;
 - (void)_updateNavSessionID;
 - (void)_updateWithNewUUIDForSessionID:(struct GEOSessionID { unsigned long long x1; unsigned long long x2; }*)arg1;
@@ -83,6 +92,7 @@
 - (void)endNavigationSession;
 - (id)init;
 - (id)longSessionEntity;
+- (struct GEOSessionID { unsigned long long x1; unsigned long long x2; })longSessionID;
 - (void)mapsSessionEntityWithCallback:(id /* block */)arg1 shareSessionIDWithMaps:(bool)arg2 resetSession:(bool)arg3;
 - (id)mapsUserSessionEntity;
 - (id)navSessionEntity;
@@ -94,7 +104,8 @@
 - (bool)shareSessionWithMaps;
 - (id)shortSessionEntity;
 - (void)startNavigationSessionWithDirectionsID:(id)arg1 originalDirectionsID:(id)arg2;
-- (struct GEOSessionID { unsigned long long x1; unsigned long long x2; })usageCollectionSessionID;
+- (id)thirtyDayCountsEntity;
+- (struct GEOSessionID { unsigned long long x1; unsigned long long x2; })thirtyDayCountsSessionID;
 - (id)userSessionSnapshot;
 - (bool)zeroSessionIDMode;
 

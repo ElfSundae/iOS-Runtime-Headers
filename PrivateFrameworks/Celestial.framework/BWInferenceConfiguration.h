@@ -16,7 +16,6 @@
 
 - (void)dealloc;
 - (int)inferenceType;
-- (id)init;
 - (id)initWithInferenceType:(int)arg1;
 - (float)maximumFramesPerSecond;
 - (unsigned int)priority;

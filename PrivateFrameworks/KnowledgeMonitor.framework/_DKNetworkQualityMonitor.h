@@ -35,6 +35,8 @@
 + (id)entitlements;
 
 - (void).cxx_destruct;
+- (void)deactivate;
+- (void)dealloc;
 - (void)didStartTrackingNOI:(id)arg1;
 - (void)didStopTrackingAllNOIs:(id)arg1;
 - (void)didStopTrackingNOI:(id)arg1;

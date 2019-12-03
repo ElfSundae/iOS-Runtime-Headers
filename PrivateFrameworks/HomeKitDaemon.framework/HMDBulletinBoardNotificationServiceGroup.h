@@ -38,18 +38,20 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)_accessoriesInRoom:(id)arg1 ofHome:(id)arg2;
+- (id)_cameraNotificationGeneratingServicesForAccessory:(id)arg1;
 - (id)_cameraProfileWithID:(id)arg1;
-- (id)_gatherServices;
+- (void)_configureServices;
 - (void)_handleBulletinBoardNotificationServiceGroupRequest:(id)arg1;
 - (bool)_isAlarmService:(id)arg1;
+- (bool)_isDefaultRoom:(id)arg1 ofHome:(id)arg2;
 - (bool)_isNotificationGeneratingService:(id)arg1;
 - (bool)_isSupportedAssociationService:(id)arg1;
 - (id)_prepareServiceGroupPayload;
 - (void)_registerNotificationHandlers;
 - (void)_sendNotification:(id)arg1;
-- (id)_updateAssociatedService:(id)arg1 associatedCameras:(id)arg2;
+- (void)_updateAssociatedServices:(id)arg1 associatedCameras:(id)arg2;
 - (void)_updateAssociatedServicesTable:(id)arg1;
-- (void)_updateCameraProfilesTable:(id)arg1;
 - (id)actionContextForCameraProfileID:(id)arg1;
 - (id)associatedServiceUUIDs;
 - (id)associatedServices;
@@ -58,7 +60,7 @@
 - (id)cameraProfileUUIDs;
 - (id)cameraProfiles;
 - (id)cameraProfilesTable;
-- (void)configureBulletinNotification:(id /* block */)arg1;
+- (void)configureBulletinNotification;
 - (void)configureMsgDispatcher:(id)arg1;
 - (void)dealloc;
 - (id)dumpState;

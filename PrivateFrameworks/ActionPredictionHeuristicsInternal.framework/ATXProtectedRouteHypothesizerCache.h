@@ -3,7 +3,7 @@
  */
 
 @interface ATXProtectedRouteHypothesizerCache : NSObject {
-    _PASLRUCache * _cachedGeoRouteHypothesizers;
+    _PASLRUCache * cachedGeoRouteHypothesizers;
 }
 
 - (void).cxx_destruct;

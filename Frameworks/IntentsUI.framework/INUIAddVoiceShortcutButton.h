@@ -2,11 +2,9 @@
    Image: /System/Library/Frameworks/IntentsUI.framework/IntentsUI
  */
 
-@interface INUIAddVoiceShortcutButton : UIButton {
-    NSLayoutConstraint * _addToSiriBottomConstraint;
+@interface INUIAddVoiceShortcutButton : UIButton <UIDragInteractionDelegate> {
     UILabel * _addToSiriLabel;
     NSLayoutConstraint * _addToSiriLeadingConstraint;
-    NSLayoutConstraint * _addedToSiriBottomConstraint;
     NSLayoutConstraint * _addedToSiriLeadingConstraint;
     NSLayoutConstraint * _checkmarkHeightConstraint;
     UIImageView * _checkmarkImageView;
@@ -20,20 +18,22 @@
     INVoiceShortcut * _voiceShortcut;
 }
 
-@property (nonatomic, retain) NSLayoutConstraint *addToSiriBottomConstraint;
 @property (nonatomic) UILabel *addToSiriLabel;
 @property (nonatomic, retain) NSLayoutConstraint *addToSiriLeadingConstraint;
-@property (nonatomic, retain) NSLayoutConstraint *addedToSiriBottomConstraint;
 @property (nonatomic, retain) NSLayoutConstraint *addedToSiriLeadingConstraint;
 @property (nonatomic, retain) NSLayoutConstraint *checkmarkHeightConstraint;
 @property (nonatomic) UIImageView *checkmarkImageView;
 @property (nonatomic) double cornerRadius;
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <INUIAddVoiceShortcutButtonDelegate> *delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, retain) CAFilter *highlightFilter;
 @property (nonatomic) UILabel *phraseLabel;
 @property (nonatomic, retain) INShortcut *shortcut;
 @property (nonatomic) UIImageView *sphiriImageView;
 @property (nonatomic, readonly) unsigned long long style;
+@property (readonly) Class superclass;
 @property (nonatomic, retain) INVoiceShortcut *voiceShortcut;
 
 - (void).cxx_destruct;
@@ -42,37 +42,42 @@
 - (id)_addedToSiriText;
 - (id)_backgroundColorForStyle:(unsigned long long)arg1;
 - (void)_checkAndUpdateForShortcut;
+- (void)_configureWithStyle:(unsigned long long)arg1;
 - (void)_createHighlightFilterIfNecessary;
 - (void)_didTapButton;
+- (id)_dynamicBlackColor;
+- (id)_dynamicColorWithLightColor:(id)arg1 darkColor:(id)arg2;
+- (id)_dynamicWhiteColor;
 - (void)_handleVoiceShortcutUpdateNotification:(id)arg1;
 - (id)_phraseFont;
 - (id)_phraseText;
-- (id)_sphiriImageForHeight:(double)arg1;
-- (id)_sphiriImageNameForHeight:(double)arg1;
+- (bool)_shouldUseLargerFont;
+- (id)_sphiriImage;
 - (id)_strokeColorForStyle:(unsigned long long)arg1;
 - (double)_strokeWidthForStyle:(unsigned long long)arg1;
 - (id)_textColorForStyle:(unsigned long long)arg1;
+- (void)_updateColors;
 - (void)_updateContent;
 - (void)_updatePhraseVisibility;
-- (id)addToSiriBottomConstraint;
+- (id)accessibilityLabel;
 - (id)addToSiriLabel;
 - (id)addToSiriLeadingConstraint;
-- (id)addedToSiriBottomConstraint;
 - (id)addedToSiriLeadingConstraint;
 - (id)checkmarkHeightConstraint;
 - (id)checkmarkImageView;
 - (double)cornerRadius;
 - (void)dealloc;
 - (id)delegate;
+- (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
 - (id)highlightFilter;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithStyle:(unsigned long long)arg1;
 - (struct CGSize { double x1; double x2; })intrinsicContentSize;
 - (void)layoutSubviews;
 - (id)phraseLabel;
-- (void)setAddToSiriBottomConstraint:(id)arg1;
+- (void)prepareForInterfaceBuilder;
 - (void)setAddToSiriLabel:(id)arg1;
 - (void)setAddToSiriLeadingConstraint:(id)arg1;
-- (void)setAddedToSiriBottomConstraint:(id)arg1;
 - (void)setAddedToSiriLeadingConstraint:(id)arg1;
 - (void)setCheckmarkHeightConstraint:(id)arg1;
 - (void)setCheckmarkImageView:(id)arg1;
@@ -83,10 +88,12 @@
 - (void)setPhraseLabel:(id)arg1;
 - (void)setShortcut:(id)arg1;
 - (void)setSphiriImageView:(id)arg1;
+- (void)setStyle:(unsigned long long)arg1;
 - (void)setVoiceShortcut:(id)arg1;
 - (id)shortcut;
 - (id)sphiriImageView;
 - (unsigned long long)style;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)voiceShortcut;
 
 @end

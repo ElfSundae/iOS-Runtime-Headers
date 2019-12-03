@@ -28,14 +28,14 @@
 - (id)_prepareForPlayingAlert:(id)arg1;
 - (id)_queuePlayerController;
 - (bool)_stopAllAlertsInCurrentProcess;
-- (void)_stopPlayingAlerts:(id)arg1 withOptions:(id)arg2 playbackCompletionType:(long long)arg3 completionHandler:(id /* block */)arg4;
+- (void)_stopPlayingAlerts:(id)arg1 withOptions:(id)arg2 playbackCompletionType:(long long)arg3 willStopAlertsHandler:(id /* block */)arg4 completionHandler:(id /* block */)arg5;
 - (id)_systemSoundController;
 - (void)dealloc;
 - (void)handleActivationAssertionStatusChangeForAlert:(id)arg1 updatedStatus:(bool)arg2;
 - (id)init;
 - (void)playAlert:(id)arg1 withCompletionHandler:(id /* block */)arg2;
 - (bool)stopAllAlerts;
-- (void)stopPlayingAlerts:(id)arg1 withOptions:(id)arg2 playbackCompletionType:(long long)arg3 completionHandler:(id /* block */)arg4;
+- (void)stopPlayingAlerts:(id)arg1 withOptions:(id)arg2 playbackCompletionType:(long long)arg3 willStopAlertsHandler:(id /* block */)arg4 completionHandler:(id /* block */)arg5;
 - (void)updateAudioVolumeDynamicallyForAlert:(id)arg1 toValue:(float)arg2;
 
 @end

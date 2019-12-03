@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
  */
 
-@interface RETextContentProvider : NSObject <NSCoding, NSCopying, REContentEncodable>
+@interface RETextContentProvider : NSObject <NSCopying, NSSecureCoding, REContentEncodable>
 
 @property (nonatomic, readonly) NSString *contentEncodedString;
 @property (readonly, copy) NSString *debugDescription;
@@ -12,6 +12,7 @@
 
 + (id)contentProviderFromAttributedString:(id)arg1;
 + (id)contentProviderFromClockKitTextProvider:(id)arg1;
++ (bool)supportsSecureCoding;
 
 - (id)attributedStringRepresentation;
 - (id)clockKitTextProviderRepresentation;

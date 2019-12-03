@@ -4,8 +4,7 @@
 
 @interface _GEONetworkDefaultsLocalProxy : NSObject <GEOPListStateCapturing, _GEONetworkDefaultsServerProxy> {
     <_GEONetworkDefaultsServerProxyDelegate> * _delegate;
-    NSObject<OS_dispatch_queue> * _isolation;
-    NSURLSession * _session;
+    geo_isolater * _isolation;
     unsigned long long  _stateCaptureHandle;
     NSMutableArray * _updateCompletionHandlers;
 }
@@ -18,10 +17,10 @@
 
 - (void).cxx_destruct;
 - (void)_processNetworkDefaultsResponse:(id)arg1 data:(id)arg2 error:(id)arg3 request:(id)arg4;
+- (void)_updateNetworkDefaults;
 - (void)_updateWithNewConfig:(id)arg1 error:(id)arg2 request:(id)arg3 response:(id)arg4;
 - (id)_urlRequestForNetworkDefaults;
 - (id)captureStatePlistWithHints:(struct os_state_hints_s { unsigned int x1; char *x2; unsigned int x3; unsigned int x4; }*)arg1;
-- (void)dealloc;
 - (id)delegate;
 - (id)init;
 - (void)setDelegate:(id)arg1;

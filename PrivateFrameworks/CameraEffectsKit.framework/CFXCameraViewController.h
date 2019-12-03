@@ -3,6 +3,8 @@
  */
 
 @interface CFXCameraViewController : UIViewController <CFXCaptureViewControllerDelegate, CFXEffectBrowserContentPresenterViewControllerDelegate, CFXEffectBrowserViewControllerDelegate, CFXRemoteCommandServerDelegate> {
+    long long  _aspectRatioCrop;
+    CFXCounterRotationView * _bottomControlsSnapshotContainer;
     bool  _cameraControlsShown;
     CFXCameraControlsViewController * _cameraControlsViewController;
     long long  _captureMode;
@@ -10,6 +12,7 @@
     <CFXCameraViewControllerDelegate> * _delegate;
     NSString * _effectBrowserPresentedAppIdentifier;
     CFXEffectBrowserViewController * _effectBrowserViewController;
+    UIView * _effectsPickerSnapshotContainerView;
     long long  _externalCaptureSessionCameraPosition;
     NSObject<OS_dispatch_queue> * _externalCaptureSessionInputDeserializationQueue;
     JTThreadSafeDictionary * _externalCaptureSessionInputFrameTimestamps;
@@ -37,12 +40,14 @@
         } size; 
     }  _externalPresentationRect;
     long long  _initialFlashMode;
-    long long  _logDebug_faceDataDetectedFacesCount;
+    long long  _logDebug_cameraPosition;
     CFXRemoteCommandServer * _remoteCommandServer;
     bool  _showsViewfinder;
     bool  _usesInternalCaptureSession;
 }
 
+@property (nonatomic, readonly) long long aspectRatioCrop;
+@property (nonatomic, retain) CFXCounterRotationView *bottomControlsSnapshotContainer;
 @property (nonatomic) bool cameraControlsShown;
 @property (nonatomic, retain) CFXCameraControlsViewController *cameraControlsViewController;
 @property (nonatomic, readonly) long long captureMode;
@@ -55,6 +60,7 @@
 @property (nonatomic, retain) CFXEffectBrowserViewController *effectBrowserViewController;
 @property (nonatomic, retain) UIView *effectsPickerDrawer;
 @property (getter=isEffectsPickerHidden, nonatomic, readonly) bool effectsPickerHidden;
+@property (nonatomic, retain) UIView *effectsPickerSnapshotContainerView;
 @property (nonatomic, readonly) long long effectsState;
 @property (nonatomic) long long externalCaptureSessionCameraPosition;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *externalCaptureSessionInputDeserializationQueue;
@@ -76,9 +82,12 @@
 
 + (void)initialize;
 + (void)preheatWithWindow:(id)arg1 captureMode:(long long)arg2 devicePosition:(long long)arg3;
++ (void)preheatWithWindow:(id)arg1 captureMode:(long long)arg2 devicePosition:(long long)arg3 aspectRatioCrop:(long long)arg4;
 
 - (void).cxx_destruct;
 - (bool)allowLandscapeForEffectBrowserViewController:(id)arg1;
+- (long long)aspectRatioCrop;
+- (id)bottomControlsSnapshotContainer;
 - (bool)cameraControlsShown;
 - (id)cameraControlsViewController;
 - (id)cameraControlsViewControllerForCaptureViewController:(id)arg1;
@@ -87,6 +96,7 @@
 - (void)captureViewController:(id)arg1 didCaptureMediaItem:(id)arg2;
 - (void)captureViewController:(id)arg1 didChangeEffectComposition:(id)arg2;
 - (void)captureViewController:(id)arg1 didRenderFrame:(id)arg2;
+- (void)captureViewController:(id)arg1 presentationRectWasPinchedWithState:(long long)arg2 scale:(double)arg3 velocity:(double)arg4;
 - (void)captureViewControllerCameraFlipButtonWasTapped:(id)arg1;
 - (void)captureViewControllerDidStartVideoRecording:(id)arg1;
 - (void)captureViewControllerDidStopVideoRecording:(id)arg1;
@@ -111,6 +121,7 @@
 - (void)effectBrowserViewControllerDidStartCaptureSession:(id)arg1;
 - (void)effectBrowserViewControllerDidStopCaptureSession:(id)arg1;
 - (id)effectsPickerDrawer;
+- (id)effectsPickerSnapshotContainerView;
 - (long long)effectsState;
 - (long long)externalCaptureSessionCameraPosition;
 - (id)externalCaptureSessionInputDeserializationQueue;
@@ -123,6 +134,7 @@
 - (long long)flashMode;
 - (id)initWithCaptureMode:(long long)arg1 devicePosition:(long long)arg2;
 - (id)initWithCaptureMode:(long long)arg1 devicePosition:(long long)arg2 flashMode:(long long)arg3;
+- (id)initWithCaptureMode:(long long)arg1 devicePosition:(long long)arg2 flashMode:(long long)arg3 aspectRatioCrop:(long long)arg4;
 - (id)initWithMode:(long long)arg1;
 - (long long)initialFlashMode;
 - (bool)isEffectsPickerHidden;
@@ -145,6 +157,7 @@
 - (id)renderFrameWithImageDataArchive:(id)arg1 pixelBuffer:(struct __CVBuffer { }*)arg2 orientation:(long long)arg3 presentationRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg4 contentsRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg5;
 - (id)selectedAnimojiIdentifierForEffectBrowserViewController:(id)arg1;
 - (id)selectedFilterIdentifierForEffectBrowserViewController:(id)arg1;
+- (void)setBottomControlsSnapshotContainer:(id)arg1;
 - (void)setCameraControlsShown:(bool)arg1;
 - (void)setCameraControlsViewController:(id)arg1;
 - (void)setCaptureViewController:(id)arg1;
@@ -153,6 +166,7 @@
 - (void)setEffectBrowserViewController:(id)arg1;
 - (void)setEffectsPickerDrawer:(id)arg1;
 - (void)setEffectsPickerHidden:(bool)arg1 animated:(bool)arg2;
+- (void)setEffectsPickerSnapshotContainerView:(id)arg1;
 - (void)setExternalCaptureSessionCameraPosition:(long long)arg1;
 - (void)setExternalCaptureSessionInputFrameTimestamps:(id)arg1;
 - (void)setExternalCaptureSessionRotationSession:(id)arg1;
@@ -173,6 +187,8 @@
 - (double)userInterfaceAlpha;
 - (bool)usesInternalCaptureSession;
 - (void)viewDidAppear:(bool)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
 
 @end

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/VoiceServices.framework/VoiceServices
  */
 
-@interface VSSpeechRequest : NSObject <NSSecureCoding> {
+@interface VSSpeechRequest : NSObject <NSCopying, NSSecureCoding> {
     NSAttributedString * _attributedText;
     unsigned int  _audioQueueFlags;
     unsigned int  _audioSessionID;
@@ -24,10 +24,12 @@
     unsigned long long  _requestCreatedTimestamp;
     NSURL * _resourceListURL;
     NSURL * _resourceSearchPathURL;
+    bool  _retryDeviceOnNetworkStall;
     bool  _shouldCache;
     id /* block */  _stopHandler;
     NSString * _text;
     bool  _useCustomVoice;
+    NSString * _utterance;
     NSString * _voiceName;
     long long  _voiceType;
     double  _volume;
@@ -54,10 +56,12 @@
 @property (nonatomic) unsigned long long requestCreatedTimestamp;
 @property (nonatomic, copy) NSURL *resourceListURL;
 @property (nonatomic, copy) NSURL *resourceSearchPathURL;
+@property (nonatomic) bool retryDeviceOnNetworkStall;
 @property (nonatomic) bool shouldCache;
 @property (nonatomic, copy) id /* block */ stopHandler;
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic) bool useCustomVoice;
+@property (nonatomic, copy) NSString *utterance;
 @property (nonatomic, copy) NSString *voiceName;
 @property (nonatomic) long long voiceType;
 @property (nonatomic) double volume;
@@ -73,6 +77,7 @@
 - (id)clientBundleIdentifier;
 - (id)contextInfo;
 - (id)contextInfoString;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (bool)disableCompactVoiceFallback;
 - (void)encodeWithCoder:(id)arg1;
@@ -92,6 +97,7 @@
 - (unsigned long long)requestCreatedTimestamp;
 - (id)resourceListURL;
 - (id)resourceSearchPathURL;
+- (bool)retryDeviceOnNetworkStall;
 - (void)setAttributedText:(id)arg1;
 - (void)setAudioQueueFlags:(unsigned int)arg1;
 - (void)setAudioSessionID:(unsigned int)arg1;
@@ -113,10 +119,12 @@
 - (void)setRequestCreatedTimestamp:(unsigned long long)arg1;
 - (void)setResourceListURL:(id)arg1;
 - (void)setResourceSearchPathURL:(id)arg1;
+- (void)setRetryDeviceOnNetworkStall:(bool)arg1;
 - (void)setShouldCache:(bool)arg1;
 - (void)setStopHandler:(id /* block */)arg1;
 - (void)setText:(id)arg1;
 - (void)setUseCustomVoice:(bool)arg1;
+- (void)setUtterance:(id)arg1;
 - (void)setVoiceName:(id)arg1;
 - (void)setVoiceType:(long long)arg1;
 - (void)setVolume:(double)arg1;
@@ -124,6 +132,7 @@
 - (id /* block */)stopHandler;
 - (id)text;
 - (bool)useCustomVoice;
+- (id)utterance;
 - (id)voiceName;
 - (long long)voiceType;
 - (double)volume;

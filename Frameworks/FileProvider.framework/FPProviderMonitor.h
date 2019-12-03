@@ -16,5 +16,7 @@
 - (void)dealloc;
 - (id)init;
 - (void)removeObserver:(id)arg1 forProviderID:(id)arg2;
+- (bool)supportsWakesForProviderID:(id)arg1;
+- (bool)wakeProviderID:(id)arg1 forSessionIdentifier:(id)arg2;
 
 @end

@@ -71,6 +71,7 @@
 - (double)scrollWheelLabelPageSize;
 - (void)setActiveScrollWheel;
 - (void)setCurrentIndex:(unsigned long long)arg1;
+- (void)setCurrentIndex:(unsigned long long)arg1 animated:(bool)arg2;
 - (void)setDataSource:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setFont:(id)arg1;

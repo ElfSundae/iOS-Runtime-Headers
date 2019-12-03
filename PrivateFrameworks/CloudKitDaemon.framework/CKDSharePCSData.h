@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon
  */
 
-@interface CKDSharePCSData : CKDPCSData {
+@interface CKDSharePCSData : CKDPCSData <NSCopying, NSSecureCoding> {
     struct _OpaquePCSShareProtection { } * _myParticipantPCS;
     NSData * _myParticipantPCSData;
     long long  _myParticipantPermission;
@@ -29,11 +29,13 @@
 @property (nonatomic, retain) NSString *shareEtag;
 @property (nonatomic, retain) CKRecordID *shareID;
 
++ (id)dataWithShare:(id)arg1 serviceType:(unsigned long long)arg2;
 + (id)dataWithShareID:(id)arg1 pcsData:(id)arg2;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

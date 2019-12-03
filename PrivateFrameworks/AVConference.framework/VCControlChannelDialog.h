@@ -21,6 +21,6 @@
 - (id)initWithSessionID:(unsigned int)arg1 participantID:(id)arg2 transactionDelegate:(id)arg3;
 - (bool)processMessageFromParticipant:(id)arg1 transactionID:(id)arg2 status:(unsigned int)arg3;
 - (void)removeTransactionForTransactionID:(int)arg1;
-- (bool)sendReliableMessage:(id)arg1 transactionDelegate:(id)arg2;
+- (bool)sendReliableMessage:(id)arg1 transactionDelegate:(id)arg2 timeout:(id)arg3;
 
 @end

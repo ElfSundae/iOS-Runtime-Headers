@@ -81,6 +81,7 @@
 - (id)jsonData;
 - (unsigned long long)queryId;
 - (bool)readFrom:(id)arg1;
+- (void)recursiveSetQueryId:(unsigned long long)arg1;
 - (id)resultIdentifier;
 - (void)setCardId:(id)arg1;
 - (void)setCardSections:(id)arg1;

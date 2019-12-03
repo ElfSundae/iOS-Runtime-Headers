@@ -5,7 +5,7 @@
 @interface ICDispatchOnce : NSObject {
     id /* block */  _booleanHandler;
     struct atomic_flag { 
-        bool _Value; 
+        _Atomic bool _Value; 
     }  _didFire;
     id /* block */  _objectHandler;
     NSObject<OS_dispatch_queue> * _queue;

@@ -4,12 +4,29 @@
 
 @interface GEOWaypointTyped : PBCodable <NSCopying> {
     struct { 
-        unsigned int waypointType : 1; 
-        unsigned int isCurrentLocation : 1; 
-        unsigned int isLocationOfInterest : 1; 
-    }  _has;
+        unsigned int has_waypointType : 1; 
+        unsigned int has_isCurrentLocation : 1; 
+        unsigned int has_isLocationOfInterest : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_waypointId : 1; 
+        unsigned int read_waypointLocation : 1; 
+        unsigned int read_waypointPlace : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_waypointId : 1; 
+        unsigned int wrote_waypointLocation : 1; 
+        unsigned int wrote_waypointPlace : 1; 
+        unsigned int wrote_waypointType : 1; 
+        unsigned int wrote_isCurrentLocation : 1; 
+        unsigned int wrote_isLocationOfInterest : 1; 
+    }  _flags;
     bool  _isCurrentLocation;
     bool  _isLocationOfInterest;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     PBUnknownFields * _unknownFields;
     GEOWaypointID * _waypointId;
     GEOWaypointLocation * _waypointLocation;
@@ -31,9 +48,16 @@
 @property (nonatomic, retain) GEOWaypointPlace *waypointPlace;
 @property (nonatomic) int waypointType;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsWaypointType:(id)arg1;
+- (void)_readWaypointId;
+- (void)_readWaypointLocation;
+- (void)_readWaypointPlace;
 - (void)clearLocations;
+- (void)clearSensitiveFields;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -45,11 +69,14 @@
 - (bool)hasWaypointPlace;
 - (bool)hasWaypointType;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isCurrentLocation;
 - (bool)isEqual:(id)arg1;
 - (bool)isLocationOfInterest;
 - (id)locationForWaypoint;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasIsCurrentLocation:(bool)arg1;
 - (void)setHasIsLocationOfInterest:(bool)arg1;

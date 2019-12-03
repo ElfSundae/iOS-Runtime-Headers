@@ -3,6 +3,7 @@
  */
 
 @interface _INPBRecurrenceValue : PBCodable <NSCopying, NSSecureCoding, _INPBRecurrenceValue> {
+    bool  __encodeLegacyGloryData;
     int  _frequency;
     struct { 
         unsigned int frequency : 1; 
@@ -13,6 +14,7 @@
     long long  _ordinal;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) int frequency;
@@ -24,15 +26,21 @@
 @property (nonatomic) long long ordinal;
 @property (readonly) Class superclass;
 
++ (bool)supportsSecureCoding;
+
 - (int)StringAsFrequency:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (int)frequency;
 - (id)frequencyAsString:(int)arg1;
 - (bool)hasFrequency;
 - (bool)hasInterval;
 - (bool)hasOrdinal;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (unsigned long long)interval;
 - (bool)isEqual:(id)arg1;
 - (long long)ordinal;

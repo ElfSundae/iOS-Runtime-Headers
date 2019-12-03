@@ -20,6 +20,7 @@
 - (void)_beginExecutingBlockWithPromise:(id)arg1;
 - (id)_createExecutionPromise;
 - (void)addCompletionBlock:(id /* block */)arg1;
+- (void)addCompletionBlockForSubsequentExecution:(id /* block */)arg1;
 - (id /* block */)block;
 - (id)completionCallbacksQueue;
 - (id)executeBlockQueue;

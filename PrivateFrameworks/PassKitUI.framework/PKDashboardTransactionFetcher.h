@@ -10,6 +10,7 @@
     <PKDashboardTransactionFetcherDelegate> * _delegate;
     NSDate * _endDate;
     bool  _hasMoreUpdates;
+    NSArray * _instantWithdrawalFeeGroups;
     unsigned long long  _limit;
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
@@ -17,6 +18,7 @@
     PKMerchant * _merchant;
     long long  _merchantCategory;
     bool  _needsCashbackUniqueID;
+    bool  _needsInstantWithdrawalFees;
     PKPaymentPass * _pass;
     NSString * _passUniqueID;
     <PKPaymentDataProvider> * _paymentDataProvider;
@@ -38,7 +40,11 @@
 @property (nonatomic, readonly) unsigned long long type;
 
 - (void).cxx_destruct;
+- (void)_addCashbackTransactions:(id)arg1 completion:(id /* block */)arg2;
+- (void)_addInstantWidthdrawalTransactionsWithCompletion:(id /* block */)arg1;
 - (void)_commonSetup;
+- (id)_feeTotalForTransaction:(id)arg1;
+- (void)_processPaymentPassTransactionsWithTransactions:(id)arg1 sendTransactionsBlock:(id /* block */)arg2;
 - (void)_sendUpdatedTransactions;
 - (id)_sortedTransactions:(id)arg1 ascending:(bool)arg2;
 - (id)cashbackGroupForDateComponents:(id)arg1;
@@ -51,6 +57,7 @@
 - (id)initWithMerchantCategory:(long long)arg1 paymentPass:(id)arg2 paymentDataProvider:(id)arg3;
 - (id)initWithPaymentPass:(id)arg1 paymentDataProvider:(id)arg2;
 - (id)initWithTransactionType:(long long)arg1 paymentPass:(id)arg2 paymentDataProvider:(id)arg3;
+- (id)instantWithdrawalFeesTransactionGroups;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didEnableTransactionService:(bool)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didRemoveTransactionWithIdentifier:(id)arg2;

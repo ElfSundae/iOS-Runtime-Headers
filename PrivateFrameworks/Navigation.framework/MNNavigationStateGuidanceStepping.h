@@ -4,7 +4,6 @@
 
 @interface MNNavigationStateGuidanceStepping : MNNavigationStateGuidance
 
-- (unsigned long long)desiredResourcePolicy;
-- (long long)type;
+- (unsigned long long)type;
 
 @end

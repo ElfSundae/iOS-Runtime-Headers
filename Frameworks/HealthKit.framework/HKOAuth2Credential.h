@@ -3,20 +3,16 @@
  */
 
 @interface HKOAuth2Credential : NSObject <NSCopying, NSSecureCoding> {
-    NSData * _accessToken;
     NSDate * _expiration;
-    NSData * _refreshToken;
+    NSUUID * _identifier;
     NSArray * _scope;
-    NSString * _tokenType;
 }
 
-@property (nonatomic, readonly, copy) NSData *accessToken;
 @property (nonatomic, readonly, copy) NSDate *expiration;
 @property (getter=isExpired, nonatomic, readonly) bool expired;
-@property (nonatomic, readonly, copy) NSData *refreshToken;
+@property (nonatomic, readonly, copy) NSUUID *identifier;
 @property (nonatomic, readonly, copy) NSArray *scope;
 @property (nonatomic, readonly, copy) NSString *scopeString;
-@property (nonatomic, readonly, copy) NSString *tokenType;
 
 + (id)_scopeStringFromScope:(id)arg1;
 + (id)expirationFromTimeInterval:(double)arg1;
@@ -24,22 +20,28 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
-- (id)_commonInitWithAccessToken:(id)arg1 tokenType:(id)arg2 refreshToken:(id)arg3 expiration:(id)arg4 scope:(id)arg5;
-- (id)accessToken;
+- (id)_accessTokenIdentifier;
+- (id)_commonInitWithIdentifier:(id)arg1 expiration:(id)arg2 scope:(id)arg3;
+- (id)_refreshTokenIdentifier;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (bool)deleteTokensWithError:(id*)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)expiration;
+- (id)fetchAccessTokenWithError:(id*)arg1;
+- (id)fetchRefreshTokenWithError:(id*)arg1;
 - (unsigned long long)hash;
+- (id)identifier;
 - (id)init;
-- (id)initWithAccessToken:(id)arg1 tokenType:(id)arg2 refreshToken:(id)arg3 expiration:(id)arg4 scope:(id)arg5;
-- (id)initWithAccessToken:(id)arg1 tokenType:(id)arg2 refreshToken:(id)arg3 expiration:(id)arg4 scopeString:(id)arg5;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 expiration:(id)arg2 scope:(id)arg3;
+- (id)initWithIdentifier:(id)arg1 expiration:(id)arg2 scopeString:(id)arg3;
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToCredential:(id)arg1 epsilonExpiration:(double)arg2;
 - (bool)isExpired;
-- (id)refreshToken;
 - (id)scope;
 - (id)scopeString;
-- (id)tokenType;
+- (bool)storeAccessToken:(id)arg1 error:(id*)arg2;
+- (bool)storeRefreshToken:(id)arg1 error:(id*)arg2;
 
 @end

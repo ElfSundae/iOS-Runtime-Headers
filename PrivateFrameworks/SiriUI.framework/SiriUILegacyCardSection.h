@@ -8,7 +8,7 @@
 
 @property (nonatomic, readonly) NSArray *actionCommands;
 @property (nonatomic, readonly) <SFCardSection> *backingCardSection;
-@property (nonatomic, copy) NSString *cardSectionIdentifier;
+@property (nonatomic, retain) NSString *cardSectionIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool hasNextCard;

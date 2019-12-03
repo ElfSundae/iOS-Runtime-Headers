@@ -4,14 +4,9 @@
 
 @interface HUQuickControlContainerView : UIView {
     UIView * _activeControlView;
-    HUPillButton * _alternateControlButton;
-    NSString * _alternateControlButtonTitle;
     HUQuickControlAuxiliaryHostView * _auxiliaryHostView;
-    _UIBackdropViewSettings * _blurSettings;
-    UIView * _blurTintView;
-    double  _blurTransitionProgress;
-    _UIBackdropView * _blurView;
     HUQuickControlButtonRowView * _buttonRowView;
+    UILayoutGuide * _cardViewLayoutGuide;
     double  _chromeTransitionProgress;
     NSLayoutConstraint * _compactControlBottomConstraint;
     NSArray * _contentConstraints;
@@ -22,13 +17,12 @@
     UILayoutGuide * _controlViewPreferredFrameLayoutGuide;
     bool  _controlViewSupportsTransformTransition;
     <HUQuickControlContainerViewDelegate> * _delegate;
-    HUPillButton * _detailsButton;
+    UIButton * _detailsButton;
     unsigned long long  _edgesForExtendedLayout;
     double  _initialSourceViewScale;
+    NSArray * _maxHeightConstraints;
     bool  _shouldShowActiveControl;
-    bool  _shouldShowAlternateControlButton;
     bool  _shouldShowDetailsButton;
-    bool  _showAlternateControlButton;
     struct CGRect { 
         struct CGPoint { 
             double x; 
@@ -39,19 +33,15 @@
             double height; 
         } size; 
     }  _sourceRect;
+    UILayoutGuide * _standardViewportFromParentGuide;
     HUQuickControlSummaryView * _summaryView;
     UILayoutGuide * _topToSummarySpacingLayoutGuide;
 }
 
 @property (nonatomic, retain) UIView *activeControlView;
-@property (nonatomic, retain) HUPillButton *alternateControlButton;
-@property (nonatomic, copy) NSString *alternateControlButtonTitle;
 @property (nonatomic, retain) HUQuickControlAuxiliaryHostView *auxiliaryHostView;
-@property (nonatomic, retain) _UIBackdropViewSettings *blurSettings;
-@property (nonatomic, retain) UIView *blurTintView;
-@property (nonatomic) double blurTransitionProgress;
-@property (nonatomic, retain) _UIBackdropView *blurView;
 @property (nonatomic, retain) HUQuickControlButtonRowView *buttonRowView;
+@property (nonatomic, retain) UILayoutGuide *cardViewLayoutGuide;
 @property (nonatomic) double chromeTransitionProgress;
 @property (nonatomic, retain) NSLayoutConstraint *compactControlBottomConstraint;
 @property (nonatomic, retain) NSArray *contentConstraints;
@@ -62,23 +52,22 @@
 @property (nonatomic, retain) UILayoutGuide *controlViewPreferredFrameLayoutGuide;
 @property (nonatomic) bool controlViewSupportsTransformTransition;
 @property (nonatomic, readonly) <HUQuickControlContainerViewDelegate> *delegate;
-@property (nonatomic, retain) HUPillButton *detailsButton;
+@property (nonatomic, retain) UIButton *detailsButton;
 @property (nonatomic) unsigned long long edgesForExtendedLayout;
 @property (nonatomic) double initialSourceViewScale;
+@property (nonatomic, retain) NSArray *maxHeightConstraints;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } presentedControlFrame;
 @property (nonatomic) bool shouldShowActiveControl;
-@property (nonatomic) bool shouldShowAlternateControlButton;
 @property (nonatomic) bool shouldShowDetailsButton;
-@property (nonatomic) bool showAlternateControlButton;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } sourceRect;
+@property (nonatomic, retain) UILayoutGuide *standardViewportFromParentGuide;
 @property (nonatomic, retain) HUQuickControlSummaryView *summaryView;
 @property (nonatomic, retain) UILayoutGuide *topToSummarySpacingLayoutGuide;
 
 + (bool)requiresConstraintBasedLayout;
 
 - (void).cxx_destruct;
-- (void)_alternateControlButtonTapped:(id)arg1;
-- (void)_configureCompactHeightConstraints:(id)arg1;
+- (void)_configureCardViewLayoutGuideConstraints:(id)arg1;
 - (void)_configureControlViewLayoutGuideConstraints:(id)arg1;
 - (void)_configureRegularHeightConstraints:(id)arg1;
 - (struct CGPoint { double x1; double x2; })_controlHostCenter;
@@ -87,27 +76,19 @@
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })_controlHostTransformForPresentationProgress:(double)arg1;
 - (void)_detailsButtonTapped:(id)arg1;
 - (struct CGSize { double x1; double x2; })_presentedControlHostSize;
-- (void)_setupAlternateControlButtonIfNecessary;
-- (void)_setupBlurView;
+- (bool)_shouldAnimatePropertyWithKey:(id)arg1;
 - (bool)_shouldShowControlView;
 - (long long)_sizeSubclass;
 - (double)_summaryFirstBaselineToControlTopSpacing;
-- (void)_updateAlternateControlButtonTitle;
-- (void)_updateAlternateControlButtonVisibility;
 - (void)_updateCompactControlBottomConstraint;
 - (void)_updateContentAlignment;
-- (void)_updateControlHostLayout;
+- (void)_updateDetailsButtonVisibility;
 - (void)_updateLayoutMargins;
 - (bool)_useCompactHeightLayout;
 - (id)activeControlView;
-- (id)alternateControlButton;
-- (id)alternateControlButtonTitle;
 - (id)auxiliaryHostView;
-- (id)blurSettings;
-- (id)blurTintView;
-- (double)blurTransitionProgress;
-- (id)blurView;
 - (id)buttonRowView;
+- (id)cardViewLayoutGuide;
 - (double)chromeTransitionProgress;
 - (id)compactControlBottomConstraint;
 - (id)contentConstraints;
@@ -125,16 +106,12 @@
 - (double)initialSourceViewScale;
 - (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
+- (id)maxHeightConstraints;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })presentedControlFrame;
 - (void)setActiveControlView:(id)arg1;
-- (void)setAlternateControlButton:(id)arg1;
-- (void)setAlternateControlButtonTitle:(id)arg1;
 - (void)setAuxiliaryHostView:(id)arg1;
-- (void)setBlurSettings:(id)arg1;
-- (void)setBlurTintView:(id)arg1;
-- (void)setBlurTransitionProgress:(double)arg1;
-- (void)setBlurView:(id)arg1;
 - (void)setButtonRowView:(id)arg1;
+- (void)setCardViewLayoutGuide:(id)arg1;
 - (void)setChromeTransitionProgress:(double)arg1;
 - (void)setCompactControlBottomConstraint:(id)arg1;
 - (void)setContentConstraints:(id)arg1;
@@ -147,22 +124,22 @@
 - (void)setDetailsButton:(id)arg1;
 - (void)setEdgesForExtendedLayout:(unsigned long long)arg1;
 - (void)setInitialSourceViewScale:(double)arg1;
+- (void)setMaxHeightConstraints:(id)arg1;
 - (void)setShouldShowActiveControl:(bool)arg1;
-- (void)setShouldShowAlternateControlButton:(bool)arg1;
 - (void)setShouldShowDetailsButton:(bool)arg1;
-- (void)setShowAlternateControlButton:(bool)arg1;
+- (void)setStandardViewportFromParentGuide:(id)arg1;
 - (void)setSummaryView:(id)arg1;
 - (void)setTopToSummarySpacingLayoutGuide:(id)arg1;
 - (bool)shouldShowActiveControl;
-- (bool)shouldShowAlternateControlButton;
 - (bool)shouldShowDetailsButton;
-- (bool)showAlternateControlButton;
 - (void)showAuxiliaryView:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })sourceRect;
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })sourceViewTransformForPresentationProgress:(double)arg1;
+- (id)standardViewportFromParentGuide;
 - (id)summaryView;
 - (id)topToSummarySpacingLayoutGuide;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateConstraints;
+- (void)willMoveToWindow:(id)arg1;
 
 @end

@@ -7,12 +7,14 @@
     bool  _shouldExcludePurchaseHistoryContent;
 }
 
-+ (id)sharedSystemFilters;
++ (id)filtersForLibrary:(id)arg1;
++ (id)globalSerialQueue;
++ (id)systemFiltersPerLibrary;
 
 - (void).cxx_destruct;
 - (void)_cloudLibraryAvailabilityDidChange:(id)arg1;
-- (id)_init;
+- (id)_initWithLibrary:(id)arg1;
 - (void)_updateFilters;
-- (bool)shouldExcludePurchaseHistoryContentForLibrary:(id)arg1;
+- (bool)shouldExcludePurchaseHistoryContent;
 
 @end

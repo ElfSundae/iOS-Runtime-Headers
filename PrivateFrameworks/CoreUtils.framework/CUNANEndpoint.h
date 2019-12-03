@@ -3,6 +3,7 @@
  */
 
 @interface CUNANEndpoint : NSObject {
+    WiFiAwareDiscoveryResult * _discoveryResult;
     NSString * _identifier;
     NSString * _name;
     int  _port;
@@ -10,6 +11,7 @@
     NSDictionary * _textInfo;
 }
 
+@property (nonatomic, retain) WiFiAwareDiscoveryResult *discoveryResult;
 @property (nonatomic, copy) NSString *identifier;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic) int port;
@@ -19,14 +21,17 @@
 - (void).cxx_destruct;
 - (id)description;
 - (id)descriptionWithLevel:(int)arg1;
+- (id)discoveryResult;
 - (id)identifier;
 - (id)name;
 - (int)port;
 - (id)serviceType;
+- (void)setDiscoveryResult:(id)arg1;
 - (void)setIdentifier:(id)arg1;
 - (void)setName:(id)arg1;
 - (void)setPort:(int)arg1;
 - (void)setServiceType:(id)arg1;
 - (id)textInfo;
+- (unsigned int)updateWithDiscoveryResult:(id)arg1;
 
 @end

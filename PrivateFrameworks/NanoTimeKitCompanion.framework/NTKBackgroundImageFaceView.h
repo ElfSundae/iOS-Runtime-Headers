@@ -22,7 +22,6 @@
     double  _rubberBandScaleModifier;
     UIView * _selectedContentView;
     bool  _shouldAdjustLayoutForTimeTravel;
-    NTKDigitalTimeLabel * _timeLabel;
     UIView * _timeTravelDimmingOverlayView;
     struct CGPoint { 
         double x; 
@@ -43,6 +42,7 @@
     }  _vignetteZoomStartingBounds;
     UIView * _zoomMaskView;
     UIImageView * _zoomVignette;
+    UIView * _zoomingContainerView;
 }
 
 @property (nonatomic, readonly) UIView *backgroundContainerView;
@@ -53,7 +53,6 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } maskZoomStartingBounds;
 @property (readonly) Class superclass;
-@property (nonatomic, retain) NTKDigitalTimeLabel *timeLabel;
 @property (nonatomic) struct CGPoint { double x1; double x2; } timeViewZoomEndingCenter;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } vignetteZoomStartingBounds;
 @property (nonatomic, retain) UIView *zoomMaskView;
@@ -69,13 +68,12 @@
 - (void)_applyTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 forCustomEditMode:(long long)arg4 slot:(id)arg5;
 - (double)_backgroundImageAlphaForEditMode:(long long)arg1;
 - (void)_beginTransitionToOption;
-- (void)_bringForegroundViewsToFront;
 - (void)_cleanupAfterTransitionToOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_cleanupAfterZoom;
 - (void)_configureForEditMode:(long long)arg1;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (void)_didTransitionToOptionView:(id)arg1;
-- (id)_digitalTimeLabelStyle;
+- (id)_digitalTimeLabelStyleFromViewMode:(long long)arg1 faceBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (void)_endScrubbingAnimated:(bool)arg1 withCompletion:(id /* block */)arg2;
 - (void)_endScrubbingAnimationFromUIViewAnimateWithDuration;
 - (bool)_fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2;
@@ -83,7 +81,6 @@
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
-- (void)_layoutForegroundContainerView;
 - (void)_layoutTimeTravelCaptionView:(id)arg1;
 - (void)_layoutTimeTravelStatusModule:(id)arg1;
 - (void)_loadSnapshotContentViews;
@@ -119,13 +116,11 @@
 - (void)setBorrowedCircleView:(id)arg1;
 - (void)setBorrowedTimeView:(id)arg1;
 - (void)setMaskZoomStartingBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
-- (void)setTimeLabel:(id)arg1;
 - (void)setTimeViewZoomEndingCenter:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setViewMode:(long long)arg1;
 - (void)setVignetteZoomStartingBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setZoomMaskView:(id)arg1;
 - (void)setZoomVignette:(id)arg1;
-- (id)timeLabel;
 - (struct CGPoint { double x1; double x2; })timeViewZoomEndingCenter;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })vignetteZoomStartingBounds;
 - (id)zoomMaskView;

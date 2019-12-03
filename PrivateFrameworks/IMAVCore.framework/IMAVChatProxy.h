@@ -6,17 +6,17 @@
     NSDictionary * _info;
 }
 
-@property (nonatomic, readonly, retain) NSString *GUID;
-@property (nonatomic, readonly, retain) NSString *conferenceID;
+@property (nonatomic, readonly) NSString *GUID;
+@property (nonatomic, readonly) NSString *conferenceID;
 @property (nonatomic) double connectionTimeoutTime;
-@property (nonatomic, readonly, retain) NSNumber *dataDownloaded;
-@property (nonatomic, readonly, retain) NSNumber *dataUploaded;
-@property (nonatomic, readonly, retain) NSDate *dateConnected;
-@property (nonatomic, readonly, retain) NSDate *dateEnded;
+@property (nonatomic, readonly) NSNumber *dataDownloaded;
+@property (nonatomic, readonly) NSNumber *dataUploaded;
+@property (nonatomic, readonly) NSDate *dateConnected;
+@property (nonatomic, readonly) NSDate *dateEnded;
 @property (nonatomic, readonly) int endedError;
 @property (nonatomic, readonly) unsigned int endedReason;
 @property (nonatomic, readonly) bool hasReceivedFirstFrame;
-@property (nonatomic, readonly, retain) IMHandle *initiatorIMHandle;
+@property (nonatomic, readonly) IMHandle *initiatorIMHandle;
 @property (nonatomic) double invitationTimeoutTime;
 @property (nonatomic, readonly) bool isActive;
 @property (nonatomic, readonly) bool isCaller;
@@ -25,12 +25,13 @@
 @property (nonatomic) bool isSendingVideo;
 @property (nonatomic, readonly) bool isStateFinal;
 @property (nonatomic, readonly) bool isVideo;
-@property (nonatomic, readonly, retain) IMHandle *otherIMHandle;
+@property (nonatomic, readonly) IMHandle *otherIMHandle;
 @property (getter=isRelayed, nonatomic) bool relayed;
-@property (nonatomic, readonly, retain) NSArray *remoteParticipants;
+@property (nonatomic, readonly) NSArray *remoteParticipants;
 @property (nonatomic, readonly) unsigned int sessionID;
 @property (nonatomic, readonly) unsigned int state;
 
+- (void).cxx_destruct;
 - (id)GUID;
 - (bool)_isCallUpgradeTo:(id)arg1;
 - (bool)_isProxy;
@@ -43,7 +44,6 @@
 - (id)dataUploaded;
 - (id)dateConnected;
 - (id)dateEnded;
-- (void)dealloc;
 - (void)declineInvitation;
 - (id)description;
 - (void)endChat;

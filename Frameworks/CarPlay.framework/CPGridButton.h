@@ -7,7 +7,7 @@
     bool  _enabled;
     id /* block */  _handler;
     NSUUID * _identifier;
-    UIImage * _image;
+    CPImageSet * _imageSet;
     NSArray * _titleVariants;
 }
 
@@ -19,6 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSUUID *identifier;
 @property (nonatomic, readonly) UIImage *image;
+@property (nonatomic, retain) CPImageSet *imageSet;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSArray *titleVariants;
 
@@ -27,11 +28,13 @@
 - (void).cxx_destruct;
 - (id)_init;
 - (id)delegate;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (void)handlePrimaryAction;
 - (id /* block */)handler;
 - (id)identifier;
 - (id)image;
+- (id)imageSet;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTitleVariants:(id)arg1 image:(id)arg2 handler:(id /* block */)arg3;
 - (bool)isEnabled;
@@ -39,6 +42,7 @@
 - (void)setEnabled:(bool)arg1;
 - (void)setHandler:(id /* block */)arg1;
 - (void)setIdentifier:(id)arg1;
+- (void)setImageSet:(id)arg1;
 - (id)titleVariants;
 
 @end

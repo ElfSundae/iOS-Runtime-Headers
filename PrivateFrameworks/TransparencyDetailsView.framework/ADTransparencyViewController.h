@@ -7,7 +7,6 @@
     UILabel * _errorLabel;
     bool  _isiPad;
     WKWebView * _myWebView;
-    double  _statusBarOffset;
     NSString * _transparencyDetails;
     NSDictionary * _transparencyDetailsData;
     NSString * _transparencyDetailsUnavailableMessage;
@@ -24,7 +23,6 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool isiPad;
 @property (nonatomic, retain) WKWebView *myWebView;
-@property (nonatomic) double statusBarOffset;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *transparencyDetails;
 @property (nonatomic, retain) NSDictionary *transparencyDetailsData;
@@ -55,11 +53,9 @@
 - (void)setErrorLabel:(id)arg1;
 - (void)setIsiPad:(bool)arg1;
 - (void)setMyWebView:(id)arg1;
-- (void)setStatusBarOffset:(double)arg1;
 - (void)setTransparencyDetails:(id)arg1;
 - (void)setTransparencyDetailsData:(id)arg1;
 - (void)setTransparencyNavBar:(id)arg1;
-- (double)statusBarOffset;
 - (id)transparencyDetails;
 - (id)transparencyDetailsData;
 - (id)transparencyDetailsUnavailableMessage;

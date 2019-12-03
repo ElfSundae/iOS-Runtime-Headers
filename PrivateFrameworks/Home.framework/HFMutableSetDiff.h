@@ -15,6 +15,7 @@
 - (void)deleteObject:(id)arg1;
 - (bool)hasChanges;
 - (id)initWithFromSet:(id)arg1;
+- (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (void)updateObject:(id)arg1;
 
 @end

@@ -14,7 +14,7 @@
 @property (nonatomic, copy) id /* block */ touchMovedHandler;
 @property (nonatomic, copy) id /* block */ touchUpHandler;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (long long)finalTrackingID;
 - (void)reset;
 - (void)setFinalTrackingID:(long long)arg1;

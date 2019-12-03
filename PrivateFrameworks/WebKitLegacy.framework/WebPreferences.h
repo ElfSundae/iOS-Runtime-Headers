@@ -3,11 +3,12 @@
  */
 
 @interface WebPreferences : NSObject <NSCoding> {
-    /* Warning: unhandled struct encoding: '{WebPreferencesPrivate={RetainPtr<NSMutableDictionary>=^v}B{RetainPtr<NSString>=^v}BBI@}' */ struct WebPreferencesPrivate { struct RetainPtr<NSMutableDictionary> { void *x_1_1_1; } x1; bool x2; struct RetainPtr<NSString> { void *x_3_1_1; } x3; bool x4; bool x5; unsigned int x6; id x7; } * _private;
+    struct WebPreferencesPrivate { struct RetainPtr<NSMutableDictionary> { void *x_1_1_1; } x1; bool x2; struct RetainPtr<NSString> { void *x_3_1_1; } x3; bool x4; bool x5; unsigned int x6; id x7; } * _private;
 }
 
 @property (nonatomic) bool CSSOMViewScrollingAPIEnabled;
 @property (nonatomic) bool accessibilityObjectModelEnabled;
+@property (nonatomic, retain) NSArray *additionalSupportedImageTypes;
 @property (nonatomic) bool allowCrossOriginSubresourcesToAskForCredentials;
 @property (nonatomic) bool allowMediaContentTypesRequiringHardwareSupportAsFallback;
 @property (nonatomic) bool allowsAirPlayForMediaPlayback;
@@ -21,6 +22,7 @@
 @property (nonatomic) unsigned long long cacheModel;
 @property (nonatomic) bool colorFilterEnabled;
 @property (nonatomic) bool constantPropertiesEnabled;
+@property (nonatomic) bool coreMathMLEnabled;
 @property (nonatomic, copy) NSString *cursiveFontFamily;
 @property (nonatomic) int defaultFixedFontSize;
 @property (nonatomic) int defaultFontSize;
@@ -40,6 +42,7 @@
 @property (nonatomic) bool largeImageAsyncDecodingEnabled;
 @property (nonatomic) bool legacyEncryptedMediaAPIEnabled;
 @property (nonatomic) bool linkPreloadEnabled;
+@property (nonatomic) bool linkPreloadResponsiveImagesEnabled;
 @property (nonatomic) bool loadsImagesAutomatically;
 @property (nonatomic) bool mediaCapabilitiesEnabled;
 @property (nonatomic) NSString *mediaContentTypesRequiringHardwareSupport;
@@ -53,6 +56,8 @@
 @property (nonatomic) bool privateBrowsingEnabled;
 @property (nonatomic) bool punchOutWhiteBackgroundsInDarkMode;
 @property (nonatomic) bool quickLookDocumentSavingEnabled;
+@property (nonatomic) bool referrerPolicyAttributeEnabled;
+@property (nonatomic) bool resizeObserverEnabled;
 @property (nonatomic) bool resourceTimingEnabled;
 @property (nonatomic, copy) NSString *sansSerifFontFamily;
 @property (nonatomic, copy) NSString *serifFontFamily;
@@ -65,7 +70,6 @@
 @property (nonatomic) bool usesPageCache;
 @property (nonatomic) bool viewportFitEnabled;
 @property (nonatomic) bool visualViewportAPIEnabled;
-@property (nonatomic) bool visualViewportEnabled;
 
 // Image: /System/Library/PrivateFrameworks/WebKitLegacy.framework/WebKitLegacy
 
@@ -102,6 +106,7 @@
 - (id)_localStorageDatabasePath;
 - (long long)_longLongValueForKey:(id)arg1;
 - (float)_maxParseDuration;
+- (bool)_mediaRecorderEnabled;
 - (float)_minimumZoomFontSize;
 - (float)_passwordEchoDuration;
 - (void)_postCacheModelChangedNotification;
@@ -120,9 +125,11 @@
 - (void)_setLocalStorageDatabasePath:(id)arg1;
 - (void)_setLongLongValue:(long long)arg1 forKey:(id)arg2;
 - (void)_setMaxParseDuration:(float)arg1;
+- (void)_setMediaRecorderEnabled:(bool)arg1;
 - (void)_setMinimumZoomFontSize:(float)arg1;
 - (void)_setPreferenceForTestWithValue:(id)arg1 forKey:(id)arg2;
 - (void)_setStandalone:(bool)arg1;
+- (void)_setStringArrayValueForKey:(id)arg1 forKey:(id)arg2;
 - (void)_setStringValue:(id)arg1 forKey:(id)arg2;
 - (void)_setTelephoneNumberParsingEnabled:(bool)arg1;
 - (void)_setTextAutosizingEnabled:(bool)arg1;
@@ -130,6 +137,7 @@
 - (void)_setUnsignedLongLongValue:(unsigned long long)arg1 forKey:(id)arg2;
 - (void)_setUseSiteSpecificSpoofing:(bool)arg1;
 - (bool)_standalone;
+- (id)_stringArrayValueForKey:(id)arg1;
 - (id)_stringValueForKey:(id)arg1;
 - (void)_synchronizeWebStoragePolicyWithCookiePolicy;
 - (bool)_telephoneNumberParsingEnabled;
@@ -143,6 +151,8 @@
 - (bool)acceleratedCompositingEnabled;
 - (bool)acceleratedDrawingEnabled;
 - (bool)accessibilityObjectModelEnabled;
+- (bool)adClickAttributionEnabled;
+- (id)additionalSupportedImageTypes;
 - (bool)allowCrossOriginSubresourcesToAskForCredentials;
 - (bool)allowFileAccessFromFileURLs;
 - (bool)allowMediaContentTypesRequiringHardwareSupportAsFallback;
@@ -174,6 +184,9 @@
 - (bool)canvasUsesAcceleratedDrawing;
 - (bool)colorFilterEnabled;
 - (bool)constantPropertiesEnabled;
+- (bool)contentChangeObserverEnabled;
+- (bool)coreMathMLEnabled;
+- (bool)cssLogicalEnabled;
 - (id)cursiveFontFamily;
 - (bool)customElementsEnabled;
 - (bool)customPasteboardDataEnabled;
@@ -242,6 +255,7 @@
 - (bool)largeImageAsyncDecodingEnabled;
 - (bool)legacyEncryptedMediaAPIEnabled;
 - (bool)linkPreloadEnabled;
+- (bool)linkPreloadResponsiveImagesEnabled;
 - (bool)loadsImagesAutomatically;
 - (bool)loadsSiteIconsIgnoringImageLoadingPreference;
 - (bool)localFileContentSniffingEnabled;
@@ -281,11 +295,14 @@
 - (bool)peerConnectionEnabled;
 - (id)pictographFontFamily;
 - (bool)plugInSnapshottingEnabled;
+- (bool)pointerEventsEnabled;
 - (bool)privateBrowsingEnabled;
 - (bool)punchOutWhiteBackgroundsInDarkMode;
 - (bool)quickLookDocumentSavingEnabled;
 - (bool)readableByteStreamAPIEnabled;
+- (bool)referrerPolicyAttributeEnabled;
 - (bool)requestAnimationFrameEnabled;
+- (bool)resizeObserverEnabled;
 - (bool)resourceLoadStatisticsEnabled;
 - (bool)resourceTimingEnabled;
 - (id)sansSerifFontFamily;
@@ -300,6 +317,8 @@
 - (void)setAcceleratedCompositingEnabled:(bool)arg1;
 - (void)setAcceleratedDrawingEnabled:(bool)arg1;
 - (void)setAccessibilityObjectModelEnabled:(bool)arg1;
+- (void)setAdClickAttributionEnabled:(bool)arg1;
+- (void)setAdditionalSupportedImageTypes:(id)arg1;
 - (void)setAllowCrossOriginSubresourcesToAskForCredentials:(bool)arg1;
 - (void)setAllowFileAccessFromFileURLs:(bool)arg1;
 - (void)setAllowMediaContentTypesRequiringHardwareSupportAsFallback:(bool)arg1;
@@ -324,12 +343,15 @@
 - (void)setAutomaticallyDetectsCacheModel:(bool)arg1;
 - (void)setAutosaves:(bool)arg1;
 - (void)setBackspaceKeyNavigationEnabled:(bool)arg1;
+- (void)setCSSLogicalEnabled:(bool)arg1;
 - (void)setCSSOMViewScrollingAPIEnabled:(bool)arg1;
 - (void)setCacheAPIEnabled:(bool)arg1;
 - (void)setCacheModel:(unsigned long long)arg1;
 - (void)setCanvasUsesAcceleratedDrawing:(bool)arg1;
 - (void)setColorFilterEnabled:(bool)arg1;
 - (void)setConstantPropertiesEnabled:(bool)arg1;
+- (void)setContentChangeObserverEnabled:(bool)arg1;
+- (void)setCoreMathMLEnabled:(bool)arg1;
 - (void)setCursiveFontFamily:(id)arg1;
 - (void)setCustomElementsEnabled:(bool)arg1;
 - (void)setCustomPasteboardDataEnabled:(bool)arg1;
@@ -385,6 +407,7 @@
 - (void)setLargeImageAsyncDecodingEnabled:(bool)arg1;
 - (void)setLegacyEncryptedMediaAPIEnabled:(bool)arg1;
 - (void)setLinkPreloadEnabled:(bool)arg1;
+- (void)setLinkPreloadResponsiveImagesEnabled:(bool)arg1;
 - (void)setLoadsImagesAutomatically:(bool)arg1;
 - (void)setLoadsSiteIconsIgnoringImageLoadingPreference:(bool)arg1;
 - (void)setLocalFileContentSniffingEnabled:(bool)arg1;
@@ -425,11 +448,14 @@
 - (void)setPictographFontFamily:(id)arg1;
 - (void)setPlugInSnapshottingEnabled:(bool)arg1;
 - (void)setPlugInsEnabled:(bool)arg1;
+- (void)setPointerEventsEnabled:(bool)arg1;
 - (void)setPrivateBrowsingEnabled:(bool)arg1;
 - (void)setPunchOutWhiteBackgroundsInDarkMode:(bool)arg1;
 - (void)setQuickLookDocumentSavingEnabled:(bool)arg1;
 - (void)setReadableByteStreamAPIEnabled:(bool)arg1;
+- (void)setReferrerPolicyAttributeEnabled:(bool)arg1;
 - (void)setRequestAnimationFrameEnabled:(bool)arg1;
+- (void)setResizeObserverEnabled:(bool)arg1;
 - (void)setResourceLoadStatisticsEnabled:(bool)arg1;
 - (void)setResourceTimingEnabled:(bool)arg1;
 - (void)setSansSerifFontFamily:(id)arg1;
@@ -456,6 +482,7 @@
 - (void)setSubpixelAntialiasedLayerTextEnabled:(bool)arg1;
 - (void)setSubpixelCSSOMElementMetricsEnabled:(bool)arg1;
 - (void)setSuppressesIncrementalRendering:(bool)arg1;
+- (void)setSyntheticEditingCommandsEnabled:(bool)arg1;
 - (void)setTextDirectionSubmenuInclusionBehavior:(int)arg1;
 - (void)setUseLegacyTextAlignPositionedElementBehavior:(bool)arg1;
 - (void)setUsePreHTML5ParserQuirks:(bool)arg1;
@@ -468,7 +495,6 @@
 - (void)setVideoPluginProxyEnabled:(bool)arg1;
 - (void)setViewportFitEnabled:(bool)arg1;
 - (void)setVisualViewportAPIEnabled:(bool)arg1;
-- (void)setVisualViewportEnabled:(bool)arg1;
 - (void)setWantsBalancedSetDefersLoadingBehavior:(bool)arg1;
 - (void)setWebAnimationsCSSIntegrationEnabled:(bool)arg1;
 - (void)setWebAnimationsEnabled:(bool)arg1;
@@ -477,7 +503,6 @@
 - (void)setWebGL2Enabled:(bool)arg1;
 - (void)setWebGLEnabled:(bool)arg1;
 - (void)setWebGPUEnabled:(bool)arg1;
-- (void)setWebMetalEnabled:(bool)arg1;
 - (void)setWebSecurityEnabled:(bool)arg1;
 - (void)setWritableStreamAPIEnabled:(bool)arg1;
 - (void)setXSSAuditorEnabled:(bool)arg1;
@@ -500,6 +525,7 @@
 - (bool)subpixelAntialiasedLayerTextEnabled;
 - (bool)subpixelCSSOMElementMetricsEnabled;
 - (bool)suppressesIncrementalRendering;
+- (bool)syntheticEditingCommandsEnabled;
 - (int)textDirectionSubmenuInclusionBehavior;
 - (bool)useLegacyTextAlignPositionedElementBehavior;
 - (bool)usePreHTML5ParserQuirks;
@@ -511,7 +537,6 @@
 - (bool)videoPlaybackRequiresUserGesture;
 - (bool)viewportFitEnabled;
 - (bool)visualViewportAPIEnabled;
-- (bool)visualViewportEnabled;
 - (bool)wantsBalancedSetDefersLoadingBehavior;
 - (bool)webAnimationsCSSIntegrationEnabled;
 - (bool)webAnimationsEnabled;
@@ -520,13 +545,12 @@
 - (bool)webGL2Enabled;
 - (bool)webGLEnabled;
 - (bool)webGPUEnabled;
-- (bool)webMetalEnabled;
 - (void)willAddToWebView;
 - (bool)writableStreamAPIEnabled;
 - (bool)zoomsTextOnly;
 
 // Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
 
-+ (id)standardMailWebPreferencesForDisplayStyle:(int)arg1 regenerate:(bool)arg2;
++ (id)standardMailWebPreferences;
 
 @end

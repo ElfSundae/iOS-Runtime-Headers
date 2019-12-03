@@ -8,6 +8,7 @@
     SBSApplicationShortcutIcon * _icon;
     NSString * _localizedSubtitle;
     NSString * _localizedTitle;
+    NSString * _targetContentIdentifier;
     NSString * _type;
     NSData * _userInfoData;
 }
@@ -21,7 +22,11 @@
 @property (nonatomic, copy) SBSApplicationShortcutIcon *icon;
 @property (nonatomic, copy) NSString *localizedSubtitle;
 @property (nonatomic, copy) NSString *localizedTitle;
+@property (nonatomic, readonly) bool sbh_isDestructive;
+@property (nonatomic, readonly) bool sbh_isShortcutSpringBoardOnly;
+@property (nonatomic, readonly) bool sbh_isSystemShortcut;
 @property (readonly) Class superclass;
+@property (nonatomic, copy) NSString *targetContentIdentifier;
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, copy) NSDictionary *userInfo;
 @property (nonatomic, retain) NSData *userInfoData;
@@ -48,22 +53,30 @@
 - (void)setIcon:(id)arg1;
 - (void)setLocalizedSubtitle:(id)arg1;
 - (void)setLocalizedTitle:(id)arg1;
+- (void)setTargetContentIdentifier:(id)arg1;
 - (void)setType:(id)arg1;
 - (void)setUserInfo:(id)arg1;
 - (void)setUserInfoData:(id)arg1;
+- (id)targetContentIdentifier;
 - (id)type;
 - (id)userInfo;
 - (id)userInfoData;
 
-// Image: /System/Library/PrivateFrameworks/GameCenterFoundation.framework/GameCenterFoundation
+// Image: /System/Library/PrivateFrameworks/SpringBoardHome.framework/SpringBoardHome
 
-+ (id)shortcutItemWithGKQuickAction:(id)arg1;
-
-- (bool)_gkIsGameCenterQuickAction;
+- (bool)sbh_isDestructive;
+- (bool)sbh_isShortcutSpringBoardOnly;
+- (bool)sbh_isSystemShortcut;
 
 // Image: /System/Library/PrivateFrameworks/SpringBoardUI.framework/SpringBoardUI
 
+- (id)_assetManager;
+- (id)_darkMonogrammer;
+- (id)_lightMonogrammer;
+- (id)_monogrammerForKey:(char *)arg1 style:(long long)arg2;
+- (void)_setupAssetManagerWithApplicationBundleURL:(id)arg1;
 - (id)badgeView;
+- (void)sb_buildIconImageWithApplicationBundleURL:(id)arg1 image:(id*)arg2 systemImageName:(id*)arg3;
 - (void)setBadgeView:(id)arg1;
 
 @end

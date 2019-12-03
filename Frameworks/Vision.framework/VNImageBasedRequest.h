@@ -16,8 +16,8 @@
 
 - (id)_faceObservationsForRegionOfInterestContainingFaceObservations:(id)arg1;
 - (void)applyConfigurationOfRequest:(id)arg1;
+- (id)description;
 - (bool)getOptionalValidatedInputFaceObservations:(id*)arg1 clippedToRegionOfInterest:(bool)arg2 error:(id*)arg3;
-- (id)initWithName:(id)arg1 options:(id)arg2 completionHandler:(id /* block */)arg3;
 - (id)inputFaceObservations;
 - (bool)isFullCoverageRegionOfInterest;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })regionOfInterest;

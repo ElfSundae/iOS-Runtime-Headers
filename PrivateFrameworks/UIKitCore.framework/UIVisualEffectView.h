@@ -4,9 +4,10 @@
 
 @interface UIVisualEffectView : UIView <NSSecureCoding> {
     NSArray * __captureDependents;
-    _UIVisualEffectViewCapturedState * __capturedStateDuringAnimation;
     _UIVisualEffectViewCornerMask * __cornerMask;
     bool  __useKeyframeWorkaround;
+    bool  _allowsBlurring;
+    bool  _allowsDithering;
     double  _backdropViewBackgroundColorAlpha;
     NSArray * _backgroundEffects;
     _UIVisualEffectHost * _backgroundHost;
@@ -16,26 +17,29 @@
     _UIVisualEffectHost * _contentHost;
     bool  _contentHostNeedsUpdate;
     UIVisualEffect * _effect;
+    _UIVisualEffectEnvironment * _environment;
     bool  _isDependent;
+    bool  _isUpdatingSubviews;
     UIImage * _maskImage;
     UIView * _maskView;
-    bool  _noiseEnabled;
     bool  _useLiveMasking;
     bool  _useReducedTransparencyForContentHost;
 }
 
+@property (setter=_setAllowsGroupFiltering:, nonatomic) bool _allowsGroupFiltering;
 @property (nonatomic, readonly) bool _applyCornerMaskToSelf;
 @property (getter=_backdropViewBackgroundColorAlpha, setter=_setBackdropViewBackgroundColorAlpha:, nonatomic) double _backdropViewBackgroundColorAlpha;
 @property (setter=_setCaptureDependents:, nonatomic, copy) NSArray *_captureDependents;
 @property (nonatomic, readonly) _UIVisualEffectViewBackdropCaptureGroup *_captureGroup;
 @property (setter=_setCaptureView:, nonatomic) _UIVisualEffectBackdropView *_captureView;
-@property (getter=_capturedStateDuringAnimation, setter=_setCapturedStateDuringAnimation:, nonatomic, retain) _UIVisualEffectViewCapturedState *_capturedStateDuringAnimation;
 @property (setter=_setCornerMask:, nonatomic, retain) _UIVisualEffectViewCornerMask *_cornerMask;
 @property (setter=_setCornerRadius:, nonatomic) double _cornerRadius;
 @property (setter=_setGroupName:, nonatomic, copy) NSString *_groupName;
 @property (setter=_setMaskImage:, nonatomic, retain) UIImage *_maskImage;
 @property (getter=_isNoiseEnabled, setter=_setNoiseEnabled:, nonatomic) bool _noiseEnabled;
 @property (setter=_setUseKeyframeWorkaround:, nonatomic) bool _useKeyframeWorkaround;
+@property (nonatomic) bool allowsBlurring;
+@property (nonatomic) bool allowsDithering;
 @property (nonatomic, copy) NSArray *backgroundEffects;
 @property (nonatomic, copy) NSArray *contentEffects;
 @property (nonatomic, readonly) UIView *contentView;
@@ -45,35 +49,35 @@
 
 // Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 
++ (Class)_contentViewClass;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (void)_addSubview:(id)arg1 positioned:(long long)arg2 relativeTo:(id)arg3;
+- (bool)_allowsGroupFiltering;
 - (bool)_applyCornerMaskToSelf;
 - (void)_applyCornerRadiusToSubviews;
-- (id)_backdropSubview;
 - (double)_backdropViewBackgroundColorAlpha;
 - (id)_backgroundHost;
 - (id)_captureDependents;
 - (id)_captureGroup;
-- (id)_captureStateForCurrentAnimationBlockCreatingIfNecessary:(bool)arg1 clearingCache:(bool)arg2;
 - (id)_captureView;
-- (id)_capturedStateDuringAnimation;
+- (id)_colorViewBoundsOverlayCreateIfNecessary:(bool)arg1;
 - (void)_commonInit;
-- (void)_configureAllEffects;
 - (void)_configureEffects;
 - (id)_contentHost;
 - (double)_continuousCornerRadius;
 - (id)_cornerMask;
 - (double)_cornerRadius;
 - (id)_debug;
-- (id)_effectNodeForEffects:(id)arg1 traits:(id)arg2 options:(id)arg3;
+- (id)_effectDescriptorForEffects:(id)arg1 usage:(long long)arg2;
 - (void)_ensureBackgroundHost;
 - (void)_ensureContentHostWithView:(id)arg1;
-- (void)_generateAnimationsForPendingKeyframes:(id)arg1 duration:(double)arg2;
+- (void)_generateBackgroundEffects:(id)arg1 contentEffects:(id)arg2;
+- (void)_generateDeferredAnimations:(id)arg1;
+- (void)_generateEffectAnimations:(id)arg1;
 - (void)_generateWorkaroundKeyframeAnimationsForEffects:(id)arg1;
 - (id)_groupName;
-- (bool)_hasTransformForEffectSubview:(id)arg1;
 - (id)_initialValueForKey:(id)arg1;
 - (bool)_isNoiseEnabled;
 - (id)_maskImage;
@@ -82,10 +86,10 @@
 - (void)_populateArchivedSubviews:(id)arg1;
 - (void)_registerNotifications;
 - (void)_resetEffect;
+- (void)_setAllowsGroupFiltering:(bool)arg1;
 - (void)_setBackdropViewBackgroundColorAlpha:(double)arg1;
 - (void)_setCaptureDependents:(id)arg1;
 - (void)_setCaptureView:(id)arg1;
-- (void)_setCapturedStateDuringAnimation:(id)arg1;
 - (void)_setContinuousCornerRadius:(double)arg1;
 - (void)_setCornerMask:(id)arg1;
 - (void)_setCornerRadius:(double)arg1;
@@ -99,7 +103,7 @@
 - (void)_setUseKeyframeWorkaround:(bool)arg1;
 - (void)_setUseLiveMasking:(bool)arg1;
 - (void)_setUseReducedTransparencyForContentEffects:(bool)arg1;
-- (bool)_shouldManageCornerRadiusForEffectSubview:(id)arg1;
+- (id)_traitCollectionForChildEnvironment:(id)arg1;
 - (void)_unregisterNotifications;
 - (void)_updateEffectBackgroundColor;
 - (void)_updateEffectForAccessibilityChanges:(id)arg1;
@@ -109,15 +113,20 @@
 - (void)_updateEffectForSnapshotDidEnd:(id)arg1;
 - (void)_updateEffectForSnapshotWillBegin:(id)arg1;
 - (void)_updateEffectsFromLegacyEffect;
+- (void)_updateEnvironmentAndFlagUpdatesIfNecessary:(id /* block */)arg1;
+- (void)_updateSubView:(id)arg1 frame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (void)_updateSubviews;
 - (bool)_useKeyframeWorkaround;
 - (bool)_useLiveMasking;
 - (bool)_useReducedTransparencyForContentEffects;
 - (id)_whatsWrongWithThisEffect;
+- (bool)allowsBlurring;
+- (bool)allowsDithering;
 - (id)backgroundEffects;
 - (id)contentEffects;
 - (id)contentView;
 - (void)dealloc;
+- (id)description;
 - (void)didMoveToSuperview;
 - (void)didMoveToWindow;
 - (id)effect;
@@ -126,6 +135,8 @@
 - (id)initWithEffect:(id)arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)layoutSubviews;
+- (void)setAllowsBlurring:(bool)arg1;
+- (void)setAllowsDithering:(bool)arg1;
 - (void)setBackgroundEffects:(id)arg1;
 - (void)setContentEffects:(id)arg1;
 - (void)setContentView:(id)arg1;
@@ -134,7 +145,7 @@
 - (void)willMoveToSuperview:(id)arg1;
 - (void)willMoveToWindow:(id)arg1;
 
-// Image: /System/Library/PrivateFrameworks/News/TeaUI.framework/TeaUI
+// Image: /System/Library/PrivateFrameworks/TeaUI.framework/TeaUI
 
 - (void)ts_setGroupName:(id)arg1;
 

@@ -2,7 +2,12 @@
    Image: /System/Library/PrivateFrameworks/Email.framework/Email
  */
 
-@interface EMPersistenceLayoutManager : NSObject
+@interface EMPersistenceLayoutManager : NSObject <EFLoggable>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)_nonContainerizedBaseMailDirectoryPathCreated:(bool*)arg1;
 + (id)baseMailDirectory;

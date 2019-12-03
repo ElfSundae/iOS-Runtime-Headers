@@ -9,6 +9,7 @@
 @property (nonatomic, retain) NTKUpNextElementDataSource *newsDataSourceProxy;
 
 + (id)bundleIdentifier;
++ (unsigned long long)elementContentMode;
 + (Class)nanoNewsDataSourceClass;
 + (bool)wantsReloadForSignificantTimeChange;
 

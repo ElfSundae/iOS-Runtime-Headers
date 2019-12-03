@@ -2,36 +2,32 @@
    Image: /System/Library/PrivateFrameworks/AttentionAwareness.framework/AttentionAwareness
  */
 
-@interface AWScheduler : NSObject <AWScheduler, NSXPCListenerDelegate> {
+@interface AWScheduler : NSObject {
     AWAttentionSampler * _attentionSampler;
     NSMutableArray * _clients;
+    <AWSchedulerObserver> * _observer;
     NSObject<OS_dispatch_queue> * _queue;
     NSObject<OS_dispatch_source> * _timer;
-    AWAttentionSampler * _unitTestSampler;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
+@property (nonatomic, readonly) AWAttentionSampler *attentionSampler;
+@property (nonatomic) <AWSchedulerObserver> *observer;
 
 + (id)sharedScheduler;
++ (id)sharedUnitTestScheduler;
 
 - (void).cxx_destruct;
-- (void)addClient:(id)arg1 clientConfig:(id)arg2 reply:(id /* block */)arg3;
+- (void)addClient:(id)arg1;
 - (void)armEvents;
-- (void)createUnitTestSampler;
-- (void)getDebugPreferences:(id /* block */)arg1;
-- (void)getSupportedEventsWithReply:(id /* block */)arg1;
-- (void)getUnitTestSamplerWithReply:(id /* block */)arg1;
-- (id)init;
-- (bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
-- (void)outputPowerLogWithReply:(id /* block */)arg1;
-- (void)processHIDEvent:(unsigned long long)arg1 timestamp:(unsigned long long)arg2;
-- (void)removeClientsForConnection:(id)arg1;
+- (id)attentionSampler;
+- (id)description;
+- (id)initForUnitTest:(bool)arg1;
+- (id)observer;
+- (void)processHIDEvent:(struct __IOHIDEvent { }*)arg1 mask:(unsigned long long)arg2 timestamp:(unsigned long long)arg3;
+- (void)reevaluate;
 - (void)removeInvalidClients;
 - (void)removeInvalidClientsWithConnection:(id)arg1;
-- (void)setDebugPreference:(id)arg1 reply:(id /* block */)arg2;
+- (void)setObserver:(id)arg1;
 - (void)setSmartCoverClosed:(bool)arg1;
 
 @end

@@ -3,12 +3,10 @@
  */
 
 @interface PDFSelectionPrivate : NSObject {
-    UIColor * activeColor;
     struct __CFArray { } * cgSelections;
-    double  cornerRadius;
+    UIColor * color;
     PDFDocument * document;
     bool  forceBreaks;
-    UIColor * inactiveColor;
     NSMutableArray * pageRanges;
     NSMutableArray * pages;
     NSUUID * pdfSelectionUUID;

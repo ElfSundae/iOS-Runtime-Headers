@@ -25,10 +25,10 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithProtobufferDecodableObject:(id)arg1;
+- (id)initWithProtobufferDecodableObject:(id)arg1 library:(id)arg2;
 - (bool)isEqual:(id)arg1;
 - (id)properties;
-- (id)protobufferEncodableObject;
+- (id)protobufferEncodableObjectFromLibrary:(id)arg1;
 - (id)searchString;
 - (void)setProperties:(id)arg1;
 - (void)setSearchString:(id)arg1;

@@ -24,6 +24,7 @@
     bool  _isNullInputView;
     bool  _isRemoteKeyboard;
     bool  _isSplit;
+    UIKBRenderConfig * _restorableRenderConfig;
     UIResponder * _restorableResponder;
     bool  _restoreUsingBecomeFirstResponder;
     double  _splitHeightDelta;
@@ -51,16 +52,21 @@
 @property (nonatomic, readonly) bool isSplit;
 @property (nonatomic, readonly) UIKeyboard *keyboard;
 @property (nonatomic, readonly) UIView *layeringView;
+@property (nonatomic, retain) UIKBRenderConfig *restorableRenderConfig;
 @property (nonatomic) UIResponder *restorableResponder;
 @property (nonatomic) bool restoreUsingBecomeFirstResponder;
 @property (nonatomic, readonly) UIView *splitExemptSubview;
 @property (nonatomic) double splitHeightDelta;
 @property (nonatomic, readonly) bool supportsSplit;
+@property (nonatomic, readonly) bool usesKeyClicks;
+@property (nonatomic, readonly) bool visible;
 
 + (id)emptyInputSet;
 + (id)inputSetWithInputView:(id)arg1 accessoryView:(id)arg2;
 + (id)inputSetWithInputView:(id)arg1 accessoryView:(id)arg2 assistantView:(id)arg3;
 + (id)inputSetWithKeyboardAndAccessoryView:(id)arg1;
++ (id)inputSetWithKeyboardAndAccessoryView:(id)arg1 assistantView:(id)arg2;
++ (id)inputSetWithOriginalInputSet:(id)arg1 duplicateInputView:(bool)arg2 duplicateInputAccessoryView:(bool)arg3 duplicateInputAssistantView:(bool)arg4;
 + (id)inputSetWithPlaceholderAndAccessoryView:(id)arg1;
 
 - (bool)__isCKAccessoryView;
@@ -90,6 +96,7 @@
 - (bool)containsView:(id)arg1;
 - (void)dealloc;
 - (id)description;
+- (bool)hierarchyContainsView:(id)arg1;
 - (bool)inSyncWithOrientation:(long long)arg1 forKeyboard:(id)arg2;
 - (void)inheritNullState:(id)arg1;
 - (id)initWithInputView:(id)arg1 accessoryView:(id)arg2 assistantView:(id)arg3 isKeyboard:(bool)arg4;
@@ -116,14 +123,14 @@
 - (id)keyboard;
 - (long long)keyboardOrientation:(id)arg1;
 - (id)layeringView;
-- (id)normalisePlaceholders;
+- (id)normalizePlaceholders;
 - (void)refreshPresentation;
+- (id)restorableRenderConfig;
 - (id)restorableResponder;
 - (bool)restoreUsingBecomeFirstResponder;
 - (void)setAccessoryViewController:(id)arg1;
 - (void)setAccessoryViewNextResponder:(id)arg1;
 - (bool)setAccessoryViewVisible:(bool)arg1 delay:(double)arg2;
-- (void)setAssistantBarVisible:(bool)arg1 delay:(double)arg2 animated:(bool)arg3;
 - (void)setAssistantViewController:(id)arg1;
 - (void)setInputAccessoryView:(id)arg1;
 - (void)setInputAssistantView:(id)arg1;
@@ -132,6 +139,7 @@
 - (void)setIsCustomInputView:(bool)arg1;
 - (void)setIsRemoteKeyboard:(bool)arg1;
 - (void)setKeyboardAssistantBar:(id)arg1;
+- (void)setRestorableRenderConfig:(id)arg1;
 - (void)setRestorableResponder:(id)arg1;
 - (void)setRestoreUsingBecomeFirstResponder:(bool)arg1;
 - (void)setSplitHeightDelta:(double)arg1;

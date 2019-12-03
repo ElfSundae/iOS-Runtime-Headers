@@ -3,6 +3,7 @@
  */
 
 @interface UNNotificationContent : NSObject <NSCopying, NSMutableCopying, NSSecureCoding> {
+    NSString * _accessoryImageName;
     NSArray * _attachments;
     NSNumber * _badge;
     NSString * _body;
@@ -15,12 +16,15 @@
     UNNotificationIcon * _icon;
     NSString * _launchImageName;
     NSArray * _peopleIdentifiers;
+    unsigned long long  _realertCount;
     bool  _shouldAuthenticateDefaultAction;
     bool  _shouldBackgroundDefaultAction;
     bool  _shouldHideDate;
     bool  _shouldHideTime;
     bool  _shouldIgnoreDoNotDisturb;
     bool  _shouldIgnoreDowntime;
+    bool  _shouldPreemptPresentedNotification;
+    bool  _shouldPreemptSTAR;
     bool  _shouldPreventNotificationDismissalAfterDefaultAction;
     bool  _shouldSuppressDefaultAction;
     bool  _shouldSuppressScreenLightUp;
@@ -30,12 +34,14 @@
     NSString * _subtitle;
     NSString * _summaryArgument;
     unsigned long long  _summaryArgumentCount;
+    NSString * _targetContentIdentifier;
     NSString * _threadIdentifier;
     NSString * _title;
     NSSet * _topicIdentifiers;
     NSDictionary * _userInfo;
 }
 
+@property (nonatomic, readonly) NSString *accessoryImageName;
 @property (nonatomic, readonly, copy) NSArray *attachments;
 @property (nonatomic, readonly, copy) NSNumber *badge;
 @property (nonatomic, readonly, copy) NSString *body;
@@ -49,12 +55,15 @@
 @property (nonatomic, readonly, copy) UNNotificationIcon *icon;
 @property (nonatomic, readonly, copy) NSString *launchImageName;
 @property (nonatomic, readonly, copy) NSArray *peopleIdentifiers;
+@property (nonatomic, readonly) unsigned long long realertCount;
 @property (nonatomic, readonly) bool shouldAuthenticateDefaultAction;
 @property (nonatomic, readonly) bool shouldBackgroundDefaultAction;
 @property (nonatomic, readonly) bool shouldHideDate;
 @property (nonatomic, readonly) bool shouldHideTime;
 @property (nonatomic, readonly) bool shouldIgnoreDoNotDisturb;
 @property (nonatomic, readonly) bool shouldIgnoreDowntime;
+@property (nonatomic, readonly) bool shouldPreemptPresentedNotification;
+@property (nonatomic, readonly) bool shouldPreemptSTAR;
 @property (nonatomic, readonly) bool shouldPreventNotificationDismissalAfterDefaultAction;
 @property (nonatomic, readonly) bool shouldSuppressDefaultAction;
 @property (nonatomic, readonly) bool shouldSuppressScreenLightUp;
@@ -64,6 +73,7 @@
 @property (nonatomic, readonly, copy) NSString *subtitle;
 @property (nonatomic, readonly, copy) NSString *summaryArgument;
 @property (nonatomic, readonly) unsigned long long summaryArgumentCount;
+@property (nonatomic, readonly, copy) NSString *targetContentIdentifier;
 @property (nonatomic, readonly, copy) NSString *threadIdentifier;
 @property (nonatomic, readonly, copy) NSString *title;
 @property (nonatomic, readonly, copy) NSSet *topicIdentifiers;
@@ -74,13 +84,17 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
-- (id)_initWithAttachments:(id)arg1 badge:(id)arg2 body:(id)arg3 categoryIdentifier:(id)arg4 date:(id)arg5 icon:(id)arg6 defaultActionTitle:(id)arg7 defaultActionURL:(id)arg8 expirationDate:(id)arg9 header:(id)arg10 launchImageName:(id)arg11 peopleIdentifiers:(id)arg12 shouldHideDate:(bool)arg13 shouldHideTime:(bool)arg14 shouldIgnoreDoNotDisturb:(bool)arg15 shouldIgnoreDowntime:(bool)arg16 shouldSuppressScreenLightUp:(bool)arg17 shouldAuthenticateDefaultAction:(bool)arg18 shouldBackgroundDefaultAction:(bool)arg19 shouldPreventNotificationDismissalAfterDefaultAction:(bool)arg20 shouldSuppressDefaultAction:(bool)arg21 shouldSuppressSyncDismissalWhenRemoved:(bool)arg22 shouldUseRequestIdentifierForDismissalSync:(bool)arg23 sound:(id)arg24 subtitle:(id)arg25 threadIdentifier:(id)arg26 title:(id)arg27 topicIdentifiers:(id)arg28 summaryArgument:(id)arg29 summaryArgumentCount:(unsigned long long)arg30 userInfo:(id)arg31;
+- (id)_descriptionForDebug:(bool)arg1;
+- (id)_initWithAccessoryImageName:(id)arg1 attachments:(id)arg2 badge:(id)arg3 body:(id)arg4 categoryIdentifier:(id)arg5 date:(id)arg6 icon:(id)arg7 defaultActionTitle:(id)arg8 defaultActionURL:(id)arg9 expirationDate:(id)arg10 header:(id)arg11 launchImageName:(id)arg12 peopleIdentifiers:(id)arg13 shouldHideDate:(bool)arg14 shouldHideTime:(bool)arg15 shouldIgnoreDoNotDisturb:(bool)arg16 shouldIgnoreDowntime:(bool)arg17 shouldSuppressScreenLightUp:(bool)arg18 shouldAuthenticateDefaultAction:(bool)arg19 shouldBackgroundDefaultAction:(bool)arg20 shouldPreventNotificationDismissalAfterDefaultAction:(bool)arg21 shouldSuppressDefaultAction:(bool)arg22 shouldSuppressSyncDismissalWhenRemoved:(bool)arg23 shouldUseRequestIdentifierForDismissalSync:(bool)arg24 shouldPreemptPresentedNotification:(bool)arg25 shouldPreemptSTAR:(bool)arg26 sound:(id)arg27 subtitle:(id)arg28 threadIdentifier:(id)arg29 title:(id)arg30 topicIdentifiers:(id)arg31 realertCount:(unsigned long long)arg32 summaryArgument:(id)arg33 summaryArgumentCount:(unsigned long long)arg34 targetContentIdentifier:(id)arg35 userInfo:(id)arg36;
+- (id)_safeStringForString:(id)arg1 debug:(bool)arg2;
+- (id)accessoryImageName;
 - (id)attachments;
 - (id)badge;
 - (id)body;
 - (id)categoryIdentifier;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)date;
+- (id)debugDescription;
 - (id)defaultActionTitle;
 - (id)defaultActionURL;
 - (id)description;
@@ -96,12 +110,15 @@
 - (id)launchImageName;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (id)peopleIdentifiers;
+- (unsigned long long)realertCount;
 - (bool)shouldAuthenticateDefaultAction;
 - (bool)shouldBackgroundDefaultAction;
 - (bool)shouldHideDate;
 - (bool)shouldHideTime;
 - (bool)shouldIgnoreDoNotDisturb;
 - (bool)shouldIgnoreDowntime;
+- (bool)shouldPreemptPresentedNotification;
+- (bool)shouldPreemptSTAR;
 - (bool)shouldPreventNotificationDismissalAfterDefaultAction;
 - (bool)shouldSuppressDefaultAction;
 - (bool)shouldSuppressScreenLightUp;
@@ -111,6 +128,7 @@
 - (id)subtitle;
 - (id)summaryArgument;
 - (unsigned long long)summaryArgumentCount;
+- (id)targetContentIdentifier;
 - (id)threadIdentifier;
 - (id)title;
 - (id)topicIdentifiers;

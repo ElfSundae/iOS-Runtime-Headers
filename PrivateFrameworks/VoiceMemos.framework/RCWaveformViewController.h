@@ -14,7 +14,6 @@
     unsigned long long  _currentTimeDisplayOptions;
     <RCWaveformViewDelegate> * _delegate;
     double  _desiredTimeDeltaForVisibleTimeRange;
-    bool  _dragEnding;
     double  _duration;
     bool  _editing;
     struct { 
@@ -24,9 +23,6 @@
     bool  _isCompactView;
     bool  _isOverview;
     bool  _isPlayback;
-    bool  _isScrollViewAutoScrolling;
-    bool  _isScrollViewAutoScrollingBeginning;
-    bool  _isScrollViewAutoScrollingPaused;
     double  _layoutHeight;
     RCLayoutMetrics * _layoutMetrics;
     double  _layoutWidth;
@@ -34,7 +30,10 @@
     double  _overlayAutoscrollBaseDuration;
     double  _overlayAutoscrollRateForSelectionTracking;
     NSTimer * _overlayAutoscrollTimer;
+    UIPinchGestureRecognizer * _pinchGesture;
     bool  _playing;
+    double  _pointsPerSecond;
+    double  _pointsPerSecondScale;
     NSLayoutConstraint * _renderViewBottomInsetConstraint;
     RCWaveformRenderer * _rendererController;
     float  _resumingToForegroundAutoscrollRate;
@@ -50,9 +49,7 @@
     UIView * _selectionBackgroundView;
     RCWaveformSelectionOverlay * _selectionOverlay;
     bool  _selectionOverlayShouldUseInsertMode;
-    bool  _shouldUpdateInDisplayLink;
     bool  _showPlayBarOnly;
-    double  _timeBeganAutoscrolling;
     UIView * _timeMarkerView;
     NSMutableArray * _timeMarkerViews;
     bool  _timeMarkerViewsNeedInitialLayout;
@@ -64,7 +61,7 @@
 }
 
 @property (nonatomic, copy) RCUIConfiguration *UIConfiguration;
-@property (getter=isAutoscrolling, nonatomic, readonly) bool autoscrolling;
+@property (nonatomic, readonly) <RCTimeController> *activeTimeController;
 @property (nonatomic) bool capturing;
 @property (nonatomic) bool clipTimeMarkersToDuration;
 @property (nonatomic) double currentTime;
@@ -73,6 +70,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <RCWaveformViewDelegate> *delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) double desiredTimeDeltaForVisibleTimeRange;
 @property (nonatomic) double duration;
 @property (nonatomic) bool editing;
 @property (readonly) unsigned long long hash;
@@ -95,7 +93,6 @@
 - (void).cxx_destruct;
 - (id)UIConfiguration;
 - (void)_autoscrollOverlayIfNecessary;
-- (void)_displayLinkDidUpdate:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_frameForTimeMarkerView:(id)arg1;
 - (bool)_isScrubbing;
 - (bool)_isScrubbingSelectionTimeRange;
@@ -106,9 +103,6 @@
 - (void)_setTimeMarkerViewUpdatesDisabled:(bool)arg1;
 - (void)_setTimeMarkerViewsNeedInitialLayout:(bool)arg1;
 - (void)_setVisibleTimeRange:(struct { double x1; double x2; })arg1 animationDuration:(double)arg2 completionBlock:(id /* block */)arg3;
-- (bool)_shouldAutoAnimateScrollChanges;
-- (void)_startDisplayLink;
-- (void)_stopDisplayLink;
 - (void)_updateAnnotationViews;
 - (void)_updateBackgroundWaveformHighlight;
 - (void)_updateCurrentTimeDisplay;
@@ -117,7 +111,7 @@
 - (void)_updateWaveformViewContentSizeAndOffset;
 - (void)_updateWaveformViewContentSizeAndOffsetToSize:(double)arg1;
 - (struct { double x1; double x2; })_visibleTimeRangeForCurrentSelectionTimeRange;
-- (void)beginAutoscrollingAtTime:(double)arg1 atRate:(float)arg2;
+- (id)activeTimeController;
 - (bool)capturing;
 - (bool)clipTimeMarkersToDuration;
 - (double)currentTime;
@@ -126,27 +120,27 @@
 - (id)dataSource;
 - (void)dealloc;
 - (id)delegate;
+- (double)desiredTimeDeltaForVisibleTimeRange;
 - (double)duration;
 - (bool)editing;
-- (void)endAutoscrolling;
+- (void)enableZooming:(bool)arg1;
 - (void)fixupScrollPositionToMatchIndicatorPositionTime;
 - (struct { double x1; double x2; })highlightTimeRange;
 - (id)initWithOverviewWaveform:(bool)arg1 duration:(double)arg2;
-- (bool)isAutoscrolling;
 - (bool)isCompactView;
 - (bool)isOverview;
 - (bool)isPlayback;
-- (bool)isScrollViewAutoScrolling;
 - (bool)isSelectedTimeRangeEditingEnabled;
 - (bool)isSelectedTimeRangeEditingEnabled;
+- (bool)isSelectionOverlayCurrentlyTracking;
+- (bool)isZooming;
 - (id)layoutMetrics;
 - (double)maximumSelectionDuration;
-- (void)pauseAutoscrolling;
 - (bool)playing;
+- (double)pointsPerSecond;
 - (void)reloadOverlayOffsets;
-- (void)resumeAutoscrollingIfPaused;
-- (void)scrollView:(id)arg1 didChangeContentOffsetToOffset:(struct CGPoint { double x1; double x2; })arg2;
-- (void)scrollView:(id)arg1 willChangeContentOffsetToOffset:(struct CGPoint { double x1; double x2; })arg2;
+- (void)resetZoomScale;
+- (void)scaleWaveform:(id)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(bool)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
@@ -154,13 +148,13 @@
 - (bool)scrubbingEnabled;
 - (struct { double x1; double x2; })selectedTimeRange;
 - (bool)selectionOverlayShouldUseInsertMode;
-- (void)setAutoscrolling:(bool)arg1;
 - (void)setCapturing:(bool)arg1;
 - (void)setClipTimeMarkersToDuration:(bool)arg1;
 - (void)setCurrentTime:(double)arg1;
 - (void)setCurrentTimeDisplayOptions:(unsigned long long)arg1;
 - (void)setDataSource:(id)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setDesiredTimeDeltaForVisibleTimeRange:(double)arg1;
 - (void)setDuration:(double)arg1;
 - (void)setEditing:(bool)arg1;
 - (struct { double x1; double x2; })setHighlightTimeRange;
@@ -182,25 +176,24 @@
 - (void)setVisibleTimeRange:(struct { double x1; double x2; })arg1;
 - (void)setVisibleTimeRange:(struct { double x1; double x2; })arg1 animationDuration:(double)arg2;
 - (bool)showPlayBarOnly;
+- (void)stopScrolling;
 - (struct { double x1; double x2; })timeRangeByInsettingVisibleTimeRange:(struct { double x1; double x2; })arg1 inset:(double)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateBackgroundColor;
 - (void)updateColors;
 - (void)updateVisibleTimeRangeToFullDuration;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
-- (void)viewWillAppear:(bool)arg1;
 - (void)viewWillLayoutSubviews;
 - (struct { double x1; double x2; })visibleTimeRange;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })waveformRectForLayoutBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)waveformRenderer:(id)arg1 contentWidthDidChange:(double)arg2;
-- (void)waveformRendererContentDidFinishLoading:(id)arg1;
-- (void)waveformRendererDidSynchronizeToDisplayLink:(id)arg1;
 - (void)waveformSelectionOverlay:(id)arg1 didFinishTrackingSelectionBeginTime:(bool)arg2 endTime:(bool)arg3 assetCurrentTime:(bool)arg4;
 - (double)waveformSelectionOverlay:(id)arg1 offsetForTime:(double)arg2;
 - (double)waveformSelectionOverlay:(id)arg1 timeForOffset:(double)arg2;
 - (void)waveformSelectionOverlay:(id)arg1 willBeginTrackingSelectionBeginTime:(bool)arg2 endTime:(bool)arg3 assetCurrentTime:(bool)arg4;
 - (double)waveformSelectionOverlay:(id)arg1 willChangeAssetCurrentTime:(double)arg2 isTracking:(bool)arg3;
-- (struct { double x1; double x2; })waveformSelectionOverlay:(id)arg1 willChangeSelectedTimeRange:(struct { double x1; double x2; })arg2 isTracking:(bool)arg3;
+- (struct { double x1; double x2; })waveformSelectionOverlay:(id)arg1 willChangeSelectedTimeRange:(struct { double x1; double x2; })arg2 isTrackingMin:(bool)arg3 isTrackingMax:(bool)arg4;
 - (double)waveformSelectionOverlayGetCurrentTime:(id)arg1;
 
 @end

@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/ContactsUI.framework/ContactsUI
  */
 
-@interface CNUINavigationListItem : NSObject {
+@interface CNUINavigationListItem : NSObject <CNUINavigationListItemContent> {
     <CNUINavigationListItemContent> * _content;
     CNUINavigationListItem * _defaultItem;
     NSString * _identifier;
@@ -14,16 +14,21 @@
 }
 
 @property (nonatomic, retain) <CNUINavigationListItemContent> *content;
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) CNUINavigationListItem *defaultItem;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSString *identifier;
 @property (nonatomic, retain) UIImage *image;
 @property (nonatomic, retain) NSArray *items;
 @property (nonatomic) CNUINavigationListItem *parent;
 @property (nonatomic, copy) NSString *subtitle;
+@property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *title;
 
 + (id)itemForActionItem:(id)arg1 isGrouped:(bool)arg2;
 + (id)localizedLabelForActionItem:(id)arg1 usingPropertyLabel:(bool)arg2;
++ (id)navigationListItemForContactProperty:(id)arg1;
 + (id)navigationListItemsForUserActionListModel:(id)arg1;
 
 - (void).cxx_destruct;

@@ -13,6 +13,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_prepareLayer:(id)arg1 forView:(id)arg2;
 - (id)blinkAnimation;
 - (id)blinkLayer;
 - (void)interaction:(id)arg1 didChangeWithContext:(id)arg2;

@@ -11,11 +11,11 @@
     HKHealthStore * _healthStore;
 }
 
-@property (nonatomic, retain) NSUUID *deviceIdentifier;
+@property (nonatomic, copy) NSUUID *deviceIdentifier;
 @property (nonatomic, retain) HKHealthStore *healthStore;
 
 - (void).cxx_destruct;
-- (id)_initWithHealthStore:(id)arg1 displayTypeController:(id)arg2;
+- (id)_initWithHealthStore:(id)arg1 displayTypeController:(id)arg2 useInsetStyling:(bool)arg3;
 - (id)deviceIdentifier;
 - (void)fetchEnabledStatusForPeripheral;
 - (id)healthStore;

@@ -3,24 +3,21 @@
  */
 
 @interface CSGestureMonitor : CSEventMonitor {
-    <CSGestureMonitorDelegate> * _delegate;
     unsigned long long  _dismissalTimestamp;
     unsigned long long  _wakeGestureTimestamp;
 }
 
-@property (nonatomic) <CSGestureMonitorDelegate> *delegate;
 @property (nonatomic) unsigned long long dismissalTimestamp;
 @property (nonatomic) unsigned long long wakeGestureTimestamp;
 
 + (id)sharedInstance;
 
-- (void).cxx_destruct;
-- (id)delegate;
+- (void)_startMonitoringWithQueue:(id)arg1;
+- (void)_stopMonitoring;
 - (unsigned long long)dismissalTimestamp;
-- (void)setDelegate:(id)arg1;
+- (bool)isTriggerHandheld;
 - (void)setDismissalTimestamp:(unsigned long long)arg1;
 - (void)setWakeGestureTimestamp:(unsigned long long)arg1;
-- (void)startObserving;
 - (unsigned long long)wakeGestureTimestamp;
 
 @end

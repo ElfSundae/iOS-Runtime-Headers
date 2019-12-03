@@ -3,7 +3,6 @@
  */
 
 @interface DDMapAction : DDRemoteAction {
-    NSString * _addressString;
     NSURL * _commitURL;
 }
 
@@ -14,7 +13,7 @@
 - (void).cxx_destruct;
 - (id)commitURL;
 - (id)initWithURL:(id)arg1 result:(struct __DDResult { }*)arg2 context:(id)arg3;
-- (id)platterTitle;
+- (id)menuActionClasses;
 - (id)previewActions;
 
 @end

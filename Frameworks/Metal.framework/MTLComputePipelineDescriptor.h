@@ -11,6 +11,7 @@
 @property (nonatomic) unsigned long long maxTotalThreadsPerThreadgroup;
 @property (nonatomic) unsigned long long resourceIndex;
 @property (nonatomic, copy) MTLStageInputOutputDescriptor *stageInputDescriptor;
+@property (nonatomic) bool supportIndirectCommandBuffers;
 @property (nonatomic) bool threadGroupSizeIsMultipleOfThreadExecutionWidth;
 
 + (id)alloc;

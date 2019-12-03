@@ -5,6 +5,7 @@
 @interface CCUISliderModuleBackgroundViewController : UIViewController <CCUIContentModuleBackgroundViewController> {
     UIImageView * _headerImageView;
     CCUICAPackageView * _packageView;
+    MTVisualStylingProvider * _visualStylingProvider;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -14,11 +15,13 @@
 
 - (void).cxx_destruct;
 - (struct CGPoint { double x1; double x2; })_headerCenterForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (void)_updateHeaderGlyphVisualStyling;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })effectiveContentFrameForContainerFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setGlyphImage:(id)arg1;
 - (void)setGlyphPackageDescription:(id)arg1;
 - (void)setGlyphState:(id)arg1;
 - (void)viewDidLoad;
+- (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(bool)arg2;
 - (void)viewWillLayoutSubviews;
 
 @end

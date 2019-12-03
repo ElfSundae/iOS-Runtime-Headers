@@ -10,6 +10,8 @@
 @property (nonatomic) double textLabelLeftInset;
 @property (nonatomic) double topInset;
 
++ (bool)requiresLegacyLayout;
+
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })accessoryEndingRectForCell:(id)arg1 forNewEditingState:(bool)arg2 showingDeleteConfirmation:(bool)arg3;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })accessoryStartingRectForCell:(id)arg1 forNewEditingState:(bool)arg2 showingDeleteConfirmation:(bool)arg3;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })contentEndingRectForCell:(id)arg1 forDisplayOfDeleteConfirmation:(bool)arg2;

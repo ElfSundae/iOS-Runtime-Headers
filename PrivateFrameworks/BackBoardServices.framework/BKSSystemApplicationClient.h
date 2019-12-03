@@ -32,7 +32,6 @@
 - (void)queue_connectionWasInvalidated;
 - (void)queue_connectionWasResumed;
 - (void)queue_handleMessage:(id)arg1;
-- (void)restart;
 - (void)sendActions:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setSystemIdleSleepInterval:(double)arg1;

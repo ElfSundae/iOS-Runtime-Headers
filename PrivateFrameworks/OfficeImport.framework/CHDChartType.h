@@ -13,13 +13,13 @@
 + (id)chartTypeWithChart:(id)arg1;
 + (bool)is3DType;
 
+- (void).cxx_destruct;
 - (id)axes;
 - (id)axisForClass:(Class)arg1;
 - (id)axisIds;
 - (unsigned long long)categoryCount;
 - (id)chart;
 - (id)contentFormat;
-- (void)dealloc;
 - (id)defaultDataLabel;
 - (int)defaultLabelPosition;
 - (id)defaultTitleWithResources:(id)arg1;

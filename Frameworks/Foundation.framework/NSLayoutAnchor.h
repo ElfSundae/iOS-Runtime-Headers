@@ -35,7 +35,7 @@
 - (id)_equationDescriptionInParent;
 - (id)_equationDescriptionLegendEntries;
 - (id)_expressionForValueInItem:(id)arg1;
-- (id)_expressionInContext:(struct { long long x1; id x2; })arg1;
+- (id)_expressionInContext:(struct { long long x1; id x2; id x3; })arg1;
 - (id)_expressionInDefaultContextWithEngine:(id)arg1;
 - (bool)_isReferencedByConstraint:(id)arg1;
 - (id)_nearestAncestorLayoutItem;
@@ -99,6 +99,12 @@
 - (id)avkit_constraintGreaterThanOrEqualToAnchor:(id)arg1 priority:(float)arg2;
 - (id)avkit_constraintLessThanOrEqualToAnchor:(id)arg1 constant:(double)arg2 priority:(float)arg3;
 - (id)avkit_constraintLessThanOrEqualToAnchor:(id)arg1 priority:(float)arg2;
+
+// Image: /System/Library/PrivateFrameworks/DocumentManagerExecutables.framework/DocumentManagerExecutables
+
+- (id)doc_constraintWithEqualTo:(id)arg1 constant:(double)arg2 priority:(float)arg3;
+- (id)doc_constraintWithGreaterThanOrEqualTo:(id)arg1 constant:(double)arg2 priority:(float)arg3;
+- (id)doc_constraintWithLessThanOrEqualTo:(id)arg1 constant:(double)arg2 priority:(float)arg3;
 
 // Image: /System/Library/PrivateFrameworks/HomeUI.framework/HomeUI
 

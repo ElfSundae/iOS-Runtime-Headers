@@ -3,10 +3,12 @@
  */
 
 @interface EKUIProposedTimeEventViewController : EKEventViewController <EKEditItemViewControllerProtocol> {
+    id /* block */  _completionBlock;
     EKCalendarEventInvitationNotificationAttendee * _proposedTimeAttendee;
     EKUIRecurrenceAlertController * _recurrenceAlertController;
 }
 
+@property (nonatomic, copy) id /* block */ completionBlock;
 @property (nonatomic) <EKEditItemViewControllerDelegate> *editDelegate;
 @property (nonatomic) bool editItemShouldBeAskedForInjectableViewController;
 @property (nonatomic) bool presentModally;
@@ -16,12 +18,14 @@
 
 - (void).cxx_destruct;
 - (id)_statusButtons;
+- (id /* block */)completionBlock;
 - (id)initWithProposedTimeAttendee:(id)arg1;
-- (void)invokeAction:(long long)arg1;
+- (void)invokeAction:(long long)arg1 eventStatusButtonsView:(id)arg2;
 - (id)items;
 - (id)proposedTime;
 - (id)proposedTimeAttendee;
 - (id)recurrenceAlertController;
+- (void)setCompletionBlock:(id /* block */)arg1;
 - (void)setProposedTimeAttendee:(id)arg1;
 - (void)setRecurrenceAlertController:(id)arg1;
 - (id)viewTitle;

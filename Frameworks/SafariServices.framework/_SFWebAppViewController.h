@@ -21,8 +21,10 @@
 - (void)didChangeFullScreen:(bool)arg1;
 - (void)didChangeLoadingState:(bool)arg1;
 - (void)didDecideCookieSharingForURL:(id)arg1 shouldCancel:(bool)arg2;
+- (void)didDecideShouldShowLinkPreviews:(bool)arg1;
 - (void)didFinishInitialLoad:(bool)arg1;
 - (void)didLoadWebView;
+- (void)didResolveRedirectionWithURL:(id)arg1 appLink:(id)arg2;
 - (void)executeCustomActivityProxyID:(id)arg1;
 - (void)fetchActivityViewControllerInfoForURL:(id)arg1 title:(id)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

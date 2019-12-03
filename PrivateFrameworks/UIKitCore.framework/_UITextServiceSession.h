@@ -2,12 +2,12 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface _UITextServiceSession : NSObject <UIPopoverControllerDelegate> {
+@interface _UITextServiceSession : NSObject <UIPopoverPresentationControllerDelegate> {
+    UIView * _contextView;
     bool  _dismissed;
     id /* block */  _dismissedHandler;
-    bool  _isTextEffectsWindow;
     UIViewController * _modalViewController;
-    UIPopoverController * _popoverController;
+    UIResponder * _pinnedResponder;
     long long  _type;
 }
 
@@ -18,7 +18,7 @@
 @property (readonly) Class superclass;
 
 + (bool)canShowTextServices;
-+ (bool)shouldPresentAsPopoverForServiceOfType:(long long)arg1 inView:(id)arg2;
++ (bool)shouldPresentServiceInSameWindowAsView:(id)arg1;
 + (id)showServiceForText:(id)arg1 selectedTextRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 type:(long long)arg3 fromRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg4 inView:(id)arg5;
 + (id)showServiceForText:(id)arg1 type:(long long)arg2 fromRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3 inView:(id)arg4;
 + (id)showServiceForType:(long long)arg1 withContext:(id)arg2;
@@ -31,7 +31,7 @@
 - (id)init;
 - (id)initWithType:(long long)arg1;
 - (bool)isDisplaying;
-- (void)popoverControllerDidDismissPopover:(id)arg1;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (void)sessionDidDismiss;
 - (void)setDismissedHandler:(id /* block */)arg1;
 - (long long)type;

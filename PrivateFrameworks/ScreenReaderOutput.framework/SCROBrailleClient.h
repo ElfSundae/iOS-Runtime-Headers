@@ -40,6 +40,7 @@
 - (id)aggregatedStatus;
 - (bool)alwaysUsesNemethCodeForTechnicalText;
 - (bool)automaticBrailleTranslationEnabled;
+- (Class)connectionClass;
 - (int)contractionMode;
 - (void)dealloc;
 - (id)delegate;
@@ -75,6 +76,7 @@
 - (void)setAnnouncementString:(id)arg1;
 - (void)setAnnouncementsDisplayMode;
 - (void)setAutomaticBrailleTranslationEnabled:(bool)arg1;
+- (void)setBrailleChordDebounceTimeout:(double)arg1;
 - (void)setContractionMode:(int)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDisplayDescriptorCallbackEnabled:(bool)arg1;
@@ -83,7 +85,6 @@
 - (void)setInputContractionMode:(int)arg1;
 - (void)setInputEightDotBraille:(bool)arg1;
 - (void)setKeepConnectionAlive:(bool)arg1;
-- (void)setKeyboardHelpIsOn:(bool)arg1;
 - (void)setMainAttributedString:(id)arg1;
 - (void)setMasterStatusCellIndex:(long long)arg1;
 - (void)setPersistentKeyModifiers:(unsigned int)arg1;
@@ -92,7 +93,9 @@
 - (void)setSelection:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 forToken:(long long)arg2;
 - (void)setShowDotsSevenAndEight:(bool)arg1;
 - (void)setShowEightDotBraille:(bool)arg1;
+- (void)setSingleLetterInputIsOn:(bool)arg1;
 - (void)setTableIdentifier:(id)arg1;
+- (void)setTextSearchModeIsOn:(bool)arg1;
 - (void)setVirtualStatusAlignment:(int)arg1;
 - (void)setWordWrapEnabled:(bool)arg1;
 - (bool)showDotsSevenAndEight;
@@ -100,9 +103,9 @@
 - (void)showNextAnnouncement;
 - (void)showPreviousAnnouncement;
 - (void)simulateKeypress:(id)arg1;
-- (id)tableIdentifier;
 - (id)tokenArray;
 - (long long)tokenForRouterIndex:(long long)arg1 location:(long long*)arg2 appToken:(id*)arg3 forDisplayWithToken:(int)arg4;
+- (void)translateBrailleToClipboard;
 - (void)unselectAllForToken:(long long)arg1;
 - (int)virtualStatusAlignment;
 - (bool)wordWrapEnabled;

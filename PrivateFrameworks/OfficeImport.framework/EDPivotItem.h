@@ -10,7 +10,7 @@
 
 + (id)pivotItem;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)init;
 - (id)itemIndexes;

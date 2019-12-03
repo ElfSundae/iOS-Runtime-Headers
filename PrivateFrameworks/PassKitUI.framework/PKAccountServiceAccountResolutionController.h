@@ -2,39 +2,35 @@
    Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
  */
 
-@interface PKAccountServiceAccountResolutionController : NSObject <PKAccountServicePerformActionViewControllerDelegate> {
+@interface PKAccountServiceAccountResolutionController : NSObject {
     PKAccount * _account;
-    PKAccountServicePerformActionViewController * _actionViewController;
+    <PKAccountBillPaymentObserver> * _billPaymentObserver;
+    PKBusinessChatController * _businessChatController;
     <PKAccountServiceAccountResolutionControllerDelegate> * _delegate;
     PKPaymentPass * _pass;
-    <PKAccountServicePerformActionViewControllerDelegate> * _performActionDelegate;
 }
 
 @property (nonatomic, retain) PKAccount *account;
-@property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) <PKAccountBillPaymentObserver> *billPaymentObserver;
 @property (nonatomic) <PKAccountServiceAccountResolutionControllerDelegate> *delegate;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, retain) PKPaymentPass *pass;
-@property (nonatomic) <PKAccountServicePerformActionViewControllerDelegate> *performActionDelegate;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_dismissViewController;
+- (id)_alertControllerForBusinessChatContext:(id)arg1;
+- (void)_callIssuer;
 - (void)_handleAccountServiceAccountDidChangeNotification:(id)arg1;
-- (void)_presentAccountServiceAction:(unsigned long long)arg1 completion:(id /* block */)arg2;
+- (void)_openBusinessChatWithContext:(id)arg1;
+- (void)_presentAccountServiceAction:(unsigned long long)arg1 configuration:(id)arg2 completion:(id /* block */)arg3;
 - (void)_presentViewController:(id)arg1;
 - (id)account;
-- (void)accountServicePerformActionViewControllerDidCancel:(id)arg1;
-- (void)accountServicePerformActionViewControllerDidPerformAction:(id)arg1;
+- (id)billPaymentObserver;
 - (id)delegate;
-- (id)initWithAccount:(id)arg1 pass:(id)arg2 delegate:(id)arg3 performActionDelegate:(id)arg4;
+- (id)initWithAccount:(id)arg1 pass:(id)arg2;
 - (id)pass;
-- (id)performActionDelegate;
-- (void)presentFlowForAccountResolution:(unsigned long long)arg1 completion:(id /* block */)arg2;
+- (void)presentFlowForAccountResolution:(unsigned long long)arg1 configuration:(id)arg2 completion:(id /* block */)arg3;
 - (void)setAccount:(id)arg1;
+- (void)setBillPaymentObserver:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setPass:(id)arg1;
-- (void)setPerformActionDelegate:(id)arg1;
 
 @end

@@ -31,8 +31,10 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProtobuf:(id)arg1;
+- (bool)isEqual:(id)arg1;
 - (id)jsonData;
 - (void)setBundleIdentifier:(id)arg1;
 

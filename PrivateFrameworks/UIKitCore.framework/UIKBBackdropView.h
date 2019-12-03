@@ -9,7 +9,7 @@
 @property (nonatomic, retain) UIImage *imageForCorners;
 
 - (bool)_applyCornerMaskToSelf;
-- (id)_generateCornerContentsImage:(int)arg1;
+- (id)_generateCornerContentsImage:(unsigned long long)arg1;
 - (void)_setRenderConfig:(id)arg1;
 - (void)dealloc;
 - (id)imageForCorners;
@@ -18,6 +18,6 @@
 - (void)setImageForCorners:(id)arg1;
 - (int)textEffectsVisibilityLevel;
 - (void)transitionToStyle:(long long)arg1;
-- (void)updateFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 withCorners:(int)arg2;
+- (void)updateFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 withCorners:(unsigned long long)arg2;
 
 @end

@@ -10,6 +10,7 @@
     bool  _original;
     NSString * _ownerPersonID;
     NSString * _relativePathWithinContainer;
+    NSObject<OS_dispatch_queue> * _shareQueue;
     NSString * _ubiquitousContainerName;
     bool  _uploaded;
     NSURL * _url;
@@ -35,6 +36,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (void)_createShareIfNeeded:(id /* block */)arg1;
 - (bool)_deleteFileAtURL:(id)arg1 error:(id*)arg2;
 - (id)_init;
 - (id)_initWithFileURL:(id)arg1;

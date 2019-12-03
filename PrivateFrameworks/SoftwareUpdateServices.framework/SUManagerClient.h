@@ -10,6 +10,7 @@
     NSMutableDictionary * _installOperationIDsToOperationHandler;
     NSMutableSet * _installationConstraintObservers;
     bool  _installing;
+    NSObject<OS_dispatch_queue> * _queue;
     SUDescriptor * _scanDescriptor;
     NSXPCConnection * _serverConnection;
     bool  _serverIsExiting;
@@ -21,6 +22,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) SUDescriptor *installDescriptor;
+@property (nonatomic, retain) NSObject<OS_dispatch_queue> *queue;
 @property (nonatomic, retain) SUDescriptor *scanDescriptor;
 @property (readonly) Class superclass;
 
@@ -28,6 +30,7 @@
 + (bool)_shouldDisallowAvailabilityNotifications;
 
 - (void).cxx_destruct;
+- (id)_bundleIdentifier;
 - (void)_cancelAutoInstallOperation:(id)arg1 withResult:(id /* block */)arg2;
 - (void)_consentAutoInstallOperation:(id)arg1 withResult:(id /* block */)arg2;
 - (id)_getExistingAutoInstallOperationFromModel:(id)arg1;
@@ -58,6 +61,7 @@
 - (void)dealloc;
 - (void)delayEndDate:(id /* block */)arg1;
 - (id)delegate;
+- (void)demoteApps:(unsigned long long)arg1;
 - (void)deviceHasSufficientSpaceForDownload:(id /* block */)arg1;
 - (void)download:(id /* block */)arg1;
 - (void)downloadAndInstallState:(id /* block */)arg1;
@@ -72,7 +76,9 @@
 - (void)getMandatorySoftwareUpdateDictionary:(id /* block */)arg1;
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
+- (id)initWithDelegate:(id)arg1 andQueue:(id)arg2;
 - (id)initWithDelegate:(id)arg1 clientType:(int)arg2;
+- (id)initWithDelegate:(id)arg1 queue:(id)arg2 clientType:(int)arg3;
 - (id)installDescriptor;
 - (void)installDidFail:(id)arg1 withError:(id)arg2;
 - (void)installDidFinish:(id)arg1;
@@ -84,6 +90,7 @@
 - (void)installationConstraintObserverDidRemoveAllObserverBlocks:(id)arg1;
 - (void)invalidate;
 - (void)isAutoUpdateEnabled:(id /* block */)arg1;
+- (void)isAutoUpdateScheduled:(id /* block */)arg1;
 - (bool)isAutomaticUpdateV2Enabled;
 - (void)isDelayingUpdates:(id /* block */)arg1;
 - (void)isDownloading:(id /* block */)arg1;
@@ -98,6 +105,8 @@
 - (void)preference:(id)arg1 didChange:(id)arg2;
 - (void)presentAutoUpdateBanner:(id /* block */)arg1;
 - (void)purgeDownload:(id /* block */)arg1;
+- (id)queue;
+- (void)registerCSInstallPredicatesOnDate:(id)arg1;
 - (void)resumeDownload:(id /* block */)arg1;
 - (id)scanDescriptor;
 - (void)scanDidCompleteWithNewUpdateAvailable:(id)arg1 error:(id)arg2;
@@ -108,6 +117,7 @@
 - (void)setDelegate:(id)arg1;
 - (void)setInstallDescriptor:(id)arg1;
 - (void)setMandatorySoftwareUpdateDictionary:(id)arg1;
+- (void)setQueue:(id)arg1;
 - (void)setScanDescriptor:(id)arg1;
 - (void)slaVersion:(id /* block */)arg1;
 - (void)startDownload:(id /* block */)arg1;

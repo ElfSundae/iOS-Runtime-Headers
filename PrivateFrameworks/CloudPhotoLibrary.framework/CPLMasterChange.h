@@ -5,6 +5,7 @@
 @interface CPLMasterChange : CPLItemChange {
     NSString * _codec;
     NSDate * _creationDate;
+    NSArray * _expungeableResourceStates;
     NSString * _filename;
     unsigned long long  _fullSizeJPEGSource;
     NSDate * _importDate;
@@ -22,6 +23,7 @@
 
 @property (nonatomic, copy) NSString *codec;
 @property (nonatomic, copy) NSDate *creationDate;
+@property (nonatomic, copy) NSArray *expungeableResourceStates;
 @property (nonatomic, copy) NSString *filename;
 @property (nonatomic) unsigned long long fullSizeJPEGSource;
 @property (nonatomic, copy) NSDate *importDate;
@@ -39,12 +41,14 @@
 
 - (void).cxx_destruct;
 - (void)_copyDerivatives:(unsigned long long*)arg1 count:(int)arg2 ifMatchingResourceType:(unsigned long long)arg3 fromRecord:(id)arg4 inResourcePerType:(id)arg5;
+- (bool)allowsToOnlyUploadNewResources;
 - (id /* block */)checkDefaultValueBlockForPropertyWithSelector:(SEL)arg1;
 - (id)codec;
 - (void)copyDerivativesFromRecordIfPossible:(id)arg1;
 - (id)creationDate;
 - (unsigned long long)dataClassType;
 - (long long)dequeueOrder;
+- (id)expungeableResourceStates;
 - (id)filename;
 - (unsigned long long)fullSizeJPEGSource;
 - (id)importDate;
@@ -52,6 +56,7 @@
 - (short)importedBy;
 - (id)init;
 - (bool)isImage;
+- (bool)isMasterChange;
 - (bool)isResourceTypeAGeneratedDerivative:(unsigned long long)arg1;
 - (bool)isVideo;
 - (id)itemType;
@@ -66,6 +71,7 @@
 - (id)resources;
 - (void)setCodec:(id)arg1;
 - (void)setCreationDate:(id)arg1;
+- (void)setExpungeableResourceStates:(id)arg1;
 - (void)setFilename:(id)arg1;
 - (void)setFullSizeJPEGSource:(unsigned long long)arg1;
 - (void)setImportDate:(id)arg1;
@@ -80,6 +86,7 @@
 - (void)setResources:(id)arg1;
 - (void)setVideoFrameRate:(short)arg1;
 - (bool)supportsDeletion;
+- (bool)supportsResourceType:(unsigned long long)arg1;
 - (bool)supportsResources;
 - (bool)validateRecordForTracker:(id)arg1;
 - (short)videoFrameRate;

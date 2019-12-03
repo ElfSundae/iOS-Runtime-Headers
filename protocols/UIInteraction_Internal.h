@@ -3,8 +3,9 @@
 
 @protocol UIInteraction_Internal <UIInteraction>
 
-@required
+@optional
 
+- (void)_didMoveFromWindow:(UIWindow *)arg1 toWindow:(UIWindow *)arg2;
 - (NSArray *)_dynamicGestureRecognizersForEvent:(UIDragEvent *)arg1;
 
 @end

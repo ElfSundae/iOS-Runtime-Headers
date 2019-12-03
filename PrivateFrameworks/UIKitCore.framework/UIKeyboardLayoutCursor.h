@@ -8,6 +8,7 @@
     UILabel * _dictationHelpLabel;
     bool  _didVariantDelete;
     bool  _disableTouchInput;
+    UIWindow * _focusWindow;
     bool  _ignoreEventsUntilPressEnds;
     UIKBTree * _indirectKeyboard;
     bool  _isForwardingEvent;
@@ -24,6 +25,7 @@
 @property (nonatomic, readonly) UIKBTree *currentKey;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, retain) UIWindow *focusWindow;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSString *keyplaneBeforeDictation;
 @property (nonatomic, retain) UIAlertController *recentInputsAlert;
@@ -63,6 +65,7 @@
 - (int)enabledStateForKey:(id)arg1;
 - (void)endMultitapForKey:(id)arg1;
 - (void)flushKeyCache:(id)arg1;
+- (id)focusWindow;
 - (unsigned char)getHandRestRecognizerState;
 - (bool)handleLinearDirectionalInput:(int)arg1;
 - (void)handleVariantDeleteIfNecessaryForKey:(id)arg1;
@@ -70,6 +73,7 @@
 - (bool)ignoresShiftState;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (bool)isAlphabeticPlane;
+- (bool)isKanaPlane;
 - (bool)isKeyplaneDisabledWithName:(id)arg1;
 - (id)keyHitTestInSameRowAsCenter:(struct CGPoint { double x1; double x2; })arg1 size:(struct CGSize { double x1; double x2; })arg2;
 - (id)keyViewAnimator;
@@ -89,6 +93,7 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })selectionFrameForKeyIndex:(long long)arg1;
 - (void)setCursorLocation:(unsigned long long)arg1;
 - (void)setDisableTouchInput:(bool)arg1;
+- (void)setFocusWindow:(id)arg1;
 - (void)setHighlightedVariantIndex:(long long)arg1 key:(id)arg2;
 - (void)setKeyboardAppearance:(long long)arg1;
 - (void)setKeyboardName:(id)arg1 appearance:(long long)arg2;
@@ -111,6 +116,7 @@
 - (void)showRecentInputsAlert;
 - (int)stateForCandidateListKey:(id)arg1;
 - (int)stateForKeyplaneSwitchKey:(id)arg1;
+- (bool)supportsContinuousPath;
 - (bool)supportsEmoji;
 - (void)switchToDictationKeyplaneWithActivationIdentifier:(id)arg1;
 - (void)takeKeyAction:(id)arg1;

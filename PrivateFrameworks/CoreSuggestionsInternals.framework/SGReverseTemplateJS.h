@@ -5,6 +5,7 @@
 @interface SGReverseTemplateJS : NSObject <SGReverseTemplateJS> {
     NSURL * _assetPath;
     _PASNotificationToken * _assetUpdateToken;
+    NSISO8601DateFormatter * _dateFormatter;
     SGReverseTemplatesJSDataDetectors * _dd;
     JSContext * _jsContext;
     JSVirtualMachine * _jsVM;

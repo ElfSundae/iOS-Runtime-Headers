@@ -6,11 +6,13 @@
     struct __SecTask { } * _currentTask;
     bool  _hasPrivateEntitlement;
     bool  _hasiTunesAPIEntitlement;
+    bool  _hasiTunesStoreEntitlement;
 }
 
 @property (nonatomic) struct __SecTask { }*currentTask;
 @property (nonatomic, readonly) bool hasPrivateEntitlement;
 @property (nonatomic, readonly) bool hasiTunesAPIEntitlement;
+@property (nonatomic, readonly) bool hasiTunesStoreEntitlement;
 
 + (id)currentProcessInfo;
 
@@ -19,6 +21,7 @@
 - (void)dealloc;
 - (bool)hasPrivateEntitlement;
 - (bool)hasiTunesAPIEntitlement;
+- (bool)hasiTunesStoreEntitlement;
 - (id)init;
 - (void)setCurrentTask:(struct __SecTask { }*)arg1;
 - (id)valueForEntitlement:(id)arg1;

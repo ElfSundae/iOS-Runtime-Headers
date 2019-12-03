@@ -31,8 +31,10 @@
 - (bool)isDeviceSpeakerRoute;
 - (bool)isGroupLeader;
 - (bool)isHomePodRoute;
+- (bool)isLowLatencyRoute;
 - (bool)isPickedOnPairedDevice;
 - (bool)isProxyGroupPlayer;
+- (bool)isSplitterCapable;
 - (bool)isStereoPair;
 - (bool)isVolumeControlAvailable;
 - (void*)logicalLeaderOutputDevice;

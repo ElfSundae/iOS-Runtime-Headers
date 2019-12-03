@@ -32,10 +32,10 @@
 @property (nonatomic, readonly) double asleepDurationGoal;
 @property (nonatomic, readonly) long long asleepDurationGoalSource;
 @property (getter=isConsistent, nonatomic, readonly) bool consistent;
-@property (nonatomic, readonly) NSDateInterval *dateInterval;
+@property (nonatomic, readonly, copy) NSDateInterval *dateInterval;
 @property (nonatomic, readonly) double duration;
 @property (nonatomic, readonly) double efficiency;
-@property (nonatomic, readonly) NSDate *endDate;
+@property (nonatomic, readonly, copy) NSDate *endDate;
 @property (nonatomic, readonly) bool endDateConformsToIntendedBedtime;
 @property (nonatomic, readonly) double endDateOffsetFromIntendedBedtime;
 @property (nonatomic, readonly) double inBedDuration;
@@ -43,7 +43,7 @@
 @property (nonatomic, readonly) long long intendedBedtimeType;
 @property (nonatomic, readonly) long long numberOfInterruptions;
 @property (nonatomic, readonly, copy) NSArray *segments;
-@property (nonatomic, readonly) NSDate *startDate;
+@property (nonatomic, readonly, copy) NSDate *startDate;
 @property (nonatomic, readonly) bool startDateConformsToIntendedBedtime;
 @property (nonatomic, readonly) double startDateOffsetFromIntendedBedtime;
 @property (nonatomic, readonly) double timeAwakeDuringIntendedSleepPeriod;

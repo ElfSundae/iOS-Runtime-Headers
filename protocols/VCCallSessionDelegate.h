@@ -36,7 +36,7 @@
 - (void)session:(VCCallSession *)arg1 remoteCallingModeChanged:(unsigned int)arg2 withCallID:(unsigned int)arg3;
 - (void)session:(VCCallSession *)arg1 remoteMediaStalled:(bool)arg2;
 - (void)session:(VCCallSession *)arg1 sendRelayResponse:(NSDictionary *)arg2;
-- (void)session:(VCCallSession *)arg1 setMomentsCapabilities:(int)arg2;
+- (void)session:(VCCallSession *)arg1 setMomentsCapabilities:(int)arg2 imageType:(int)arg3 videoCodec:(int)arg4;
 - (void)session:(VCCallSession *)arg1 setRemoteBasebandCodecType:(unsigned int)arg2 sampleRate:(double)arg3;
 - (void)session:(void *)arg1 startAudioWithFarEndVersionInfo:(void *)arg2 internalFormat:(void *)arg3 internalSamplesPerFrame:(void *)arg4 completionHandler:(void *)arg5; // needs 5 arg types, found 11: VCCallSession *, struct VoiceIOFarEndVersionInfo { unsigned char x1[64]; unsigned char x2[64]; unsigned int x3; }*, struct AudioStreamBasicDescription { double x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; }, unsigned int, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, bool, NSError *, void*
 - (bool)session:(VCCallSession *)arg1 startVideoReceive:(id*)arg2;

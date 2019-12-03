@@ -104,8 +104,15 @@
 - (Class)appSpecificCalendarItemClass;
 - (void)clearShareeActions;
 - (void)deleteAction:(CoreDAVAction *)arg1 completedWithError:(NSError *)arg2;
+- (long long)maxAttendees;
+- (bool)needsIsAffectingAvailabilityUpdate;
 - (void)prepareMergeSyncActionsWithCompletionBlock:(void *)arg1; // needs 1 arg types, found 6: id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, <CalDAVCalendar> *, void*
 - (void)putAction:(CoreDAVAction *)arg1 completedWithError:(NSError *)arg2;
+- (void)recurrenceSplitAction:(CalDAVRecurrenceSplitAction *)arg1 completedWithUpdatedETag:(NSString *)arg2 updatedScheduleTag:(NSString *)arg3 createdURL:(NSURL *)arg4 createdETag:(NSString *)arg5 createdScheduleTag:(NSString *)arg6;
+- (void)recurrenceSplitAction:(CalDAVRecurrenceSplitAction *)arg1 failedWithError:(NSError *)arg2;
+- (NSArray *)recurrenceSplitActions;
+- (void)recurrenceSplitActionsCompletedWithError:(NSError *)arg1;
+- (void)setMaxAttendees:(long long)arg1;
 - (void)syncDidFinishWithError:(NSError *)arg1;
 
 @end

@@ -22,6 +22,7 @@
 - (id)_switch;
 - (void)_toggleOn:(id)arg1;
 - (id)delegate;
+- (id)description;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (bool)isDisabled;
 - (bool)isOn;

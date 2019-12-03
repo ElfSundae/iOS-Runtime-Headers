@@ -18,9 +18,9 @@
 @property (readonly) Class superclass;
 
 + (double)magicMoveAttributeMatchPercentBetweenOutgoingObject:(id)arg1 incomingObject:(id)arg2 mixingTypeContext:(id)arg3;
-+ (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })p_textureLayoutTransformInRootForRep:(id)arg1 isMagicMove:(bool)arg2;
-+ (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })p_textureRectForRep:(id)arg1 isMagicMove:(bool)arg2;
-+ (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })p_textureRenderTransformRelativeToTextureRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 forRep:(id)arg2 isMagicMove:(bool)arg3;
++ (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })p_textureLayoutTransformInRootForLayout:(id)arg1 isMagicMove:(bool)arg2;
++ (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })p_textureRectForLayout:(id)arg1 viewScale:(double)arg2 isMagicMove:(bool)arg3;
++ (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })p_textureRenderTransformRelativeToTextureRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 forLayout:(id)arg2 viewScale:(double)arg3 isMagicMove:(bool)arg4;
 
 - (void).cxx_destruct;
 - (id)captionRep;

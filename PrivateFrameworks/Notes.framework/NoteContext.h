@@ -12,6 +12,7 @@
     NoteStoreObject * _localStore;
     bool  _logChanges;
     NSManagedObjectContext * _managedObjectContext;
+    ICManagedObjectContextUpdater * _mocUpdater;
     NSNumber * _nextId;
     NSManagedObjectContext * _nextIdContext;
     CPExclusiveLock * _nextIdLock;
@@ -24,6 +25,7 @@
 @property (nonatomic, retain) AccountUtilities *accountUtilities;
 @property (nonatomic) bool isMainContext;
 @property (nonatomic, readonly, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, retain) ICManagedObjectContextUpdater *mocUpdater;
 @property (nonatomic) bool usePrivateQueue;
 
 // Image: /System/Library/PrivateFrameworks/Notes.framework/Notes
@@ -35,6 +37,7 @@
 + (bool)databaseIsCorrupt:(id)arg1;
 + (id)defaultNotesSortDescriptors;
 + (id)fileProtectionOption;
++ (id)fileURLProtectionOption;
 + (id)generateGUID;
 + (id)managedObjectModel;
 + (id)newFetchRequestForNotes;
@@ -115,6 +118,7 @@
 - (id)localStore;
 - (id)managedObjectContext;
 - (void)managedObjectContextWillSaveNotification:(id)arg1;
+- (id)mocUpdater;
 - (id)mostRecentlyModifiedNoteInCollection:(id)arg1;
 - (id)newFRCForCollection:(id)arg1 delegate:(id)arg2;
 - (id)newFRCForCollection:(id)arg1 delegate:(id)arg2 performFetch:(bool)arg3;
@@ -141,6 +145,7 @@
 - (void)setAccountUtilities:(id)arg1;
 - (void)setHasPriorityInSaveConflicts:(bool)arg1;
 - (void)setIsMainContext:(bool)arg1;
+- (void)setMocUpdater:(id)arg1;
 - (void)setPropertyValue:(id)arg1 forKey:(id)arg2;
 - (bool)setUpCoreDataStack;
 - (bool)setUpLastIndexTid;
@@ -153,6 +158,7 @@
 - (id)storeForObjectID:(id)arg1;
 - (void)tearDownCoreDataStack;
 - (void)trackChanges:(id)arg1;
+- (void)updateForRecentChanges;
 - (bool)usePrivateQueue;
 - (id)visibleNoteForObjectID:(id)arg1;
 - (id)visibleNotesForIntegerIds:(id)arg1;
@@ -162,9 +168,5 @@
 
 + (id)mainContextObjectFromObject:(id)arg1;
 + (id)sharedContext;
-
-// Image: /System/Library/PrivateFrameworks/NotesUI.framework/NotesUI
-
-- (bool)sourceIsManagedForAccountWithIdentifier:(id)arg1;
 
 @end

@@ -5,7 +5,7 @@
 @interface _NSConcreteObservation : NSObservation {
     NSObject<NSObservable> * _LHSobservable;
     NSObject<NSObserver> * _RHSobserver;
-    /* Warning: unhandled array encoding: '[4@]' */ id  _observers;
+    id  _observers;
 }
 
 - (void*)_observerStorageOfSize:(unsigned long long)arg1;

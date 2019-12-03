@@ -5,13 +5,13 @@
 @interface NTKAstronomyComplicationDataSource : NTKComplicationDataSource {
     CLLocation * _anyLocation;
     CLLocation * _currentLocation;
+    bool  _listeningForNotifications;
     struct NSString { Class x1; } * _token;
     unsigned long long  _vista;
 }
 
 + (bool)acceptsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
 + (bool)acceptsComplicationType:(unsigned long long)arg1 forDevice:(id)arg2;
-+ (Class)richComplicationDisplayViewClassForType:(unsigned long long)arg1 family:(long long)arg2 forDevice:(id)arg3;
 
 - (void).cxx_destruct;
 - (id)_currentTimelineEntryWithIdealizedDate:(bool)arg1;
@@ -30,6 +30,7 @@
 - (id)initWithComplication:(id)arg1 family:(long long)arg2 forDevice:(id)arg3;
 - (void)pause;
 - (void)resume;
+- (Class)richComplicationDisplayViewClassForDevice:(id)arg1;
 - (bool)supportsTapAction;
 - (unsigned long long)timelineAnimationBehavior;
 

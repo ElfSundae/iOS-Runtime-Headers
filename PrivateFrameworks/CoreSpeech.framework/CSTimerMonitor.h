@@ -11,6 +11,7 @@
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
+- (bool)_isSleepTimer:(id)arg1;
 - (void)_notifyObserver:(id)arg1 timerIsFiringState:(long long)arg2;
 - (void)_startMonitoringWithQueue:(id)arg1;
 - (void)_stopMonitoring;

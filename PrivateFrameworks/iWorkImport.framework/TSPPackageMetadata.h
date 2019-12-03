@@ -14,7 +14,7 @@
         } _has_bits_; 
         struct CachedSize { 
             struct atomic<int> { 
-                int __a_; 
+                _Atomic int __a_; 
             } size_; 
         } _cached_size_; 
         struct RepeatedPtrField<TSP::ComponentInfo> { 
@@ -75,7 +75,7 @@
 - (id)dataMetadataForDataIdentifier:(long long)arg1;
 - (id)initWithContext:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
-- (struct PackageMetadata { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::ComponentInfo> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TSP::DataInfo> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; struct RepeatedField<unsigned int> { int x_7_1_1; int x_7_1_2; union Pointer { struct Arena {} *x_3_2_1; struct Rep {} *x_3_2_2; } x_7_1_3; } x7; int x8; struct RepeatedField<unsigned int> { int x_9_1_1; int x_9_1_2; union Pointer { struct Arena {} *x_3_2_1; struct Rep {} *x_3_2_2; } x_9_1_3; } x9; int x10; struct RepeatedField<unsigned int> { int x_11_1_1; int x_11_1_2; union Pointer { struct Arena {} *x_3_2_1; struct Rep {} *x_3_2_2; } x_11_1_3; } x11; int x12; struct RepeatedPtrField<TSP::ComponentInfo> { struct Arena {} *x_13_1_1; int x_13_1_2; int x_13_1_3; struct Rep {} *x_13_1_4; } x13; }*)message;
+- (struct PackageMetadata { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::ComponentInfo> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TSP::DataInfo> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; struct RepeatedField<unsigned int> { int x_7_1_1; int x_7_1_2; union Pointer { struct Arena {} *x_3_2_1; struct Rep {} *x_3_2_2; } x_7_1_3; } x7; int x8; struct RepeatedField<unsigned int> { int x_9_1_1; int x_9_1_2; union Pointer { struct Arena {} *x_3_2_1; struct Rep {} *x_3_2_2; } x_9_1_3; } x9; int x10; struct RepeatedField<unsigned int> { int x_11_1_1; int x_11_1_2; union Pointer { struct Arena {} *x_3_2_1; struct Rep {} *x_3_2_2; } x_11_1_3; } x11; int x12; struct RepeatedPtrField<TSP::ComponentInfo> { struct Arena {} *x_13_1_1; int x_13_1_2; int x_13_1_3; struct Rep {} *x_13_1_4; } x13; }*)message;
 - (id)packageLocator;
 - (void)saveToArchiver:(id)arg1;
 - (void)setDataMetadata:(id)arg1 forDataIdentifier:(long long)arg2;

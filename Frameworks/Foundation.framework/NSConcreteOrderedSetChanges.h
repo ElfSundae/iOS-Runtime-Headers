@@ -3,8 +3,17 @@
  */
 
 @interface NSConcreteOrderedSetChanges : NSOrderedSetChanges {
-    /* Warning: unhandled struct encoding: '{?="objects"@"isMutable"B"list"{?="buffer"^{_NSOrderedChange}"availableIndex"Q"capacity"Q"changesIndex"Q"lastIndex"Q"count"Q}}' */ struct { 
+    struct { 
         id objects; 
+        bool isMutable; 
+        struct { 
+            struct _NSOrderedChange {} *buffer; 
+            unsigned long long availableIndex; 
+            unsigned long long capacity; 
+            unsigned long long changesIndex; 
+            unsigned long long lastIndex; 
+            unsigned long long count; 
+        } list; 
     }  _changes;
 }
 
@@ -13,7 +22,7 @@
 - (unsigned long long)changeCount;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned long long)count;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
 - (void)enumerateChanges:(unsigned long long)arg1 usingBlock:(id /* block */)arg2;
 - (void)enumerateChangesUsingBlock:(id /* block */)arg1;

@@ -14,7 +14,6 @@
 + (void)initialize;
 
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (void)lock;
 - (bool)tryLock;

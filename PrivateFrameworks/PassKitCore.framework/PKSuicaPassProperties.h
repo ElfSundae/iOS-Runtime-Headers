@@ -17,10 +17,13 @@
 @property (nonatomic, readonly, copy) NSDecimalNumber *transitBalance;
 @property (nonatomic, readonly, copy) NSString *transitBalanceCurrencyCode;
 
++ (Class)equalityClass;
 + (id)passPropertiesForPass:(id)arg1;
 
 - (id)_initWithProperties:(id)arg1;
+- (unsigned long long)hash;
 - (bool)isBalanceAllowedForCommute;
+- (bool)isEqual:(id)arg1;
 - (bool)isGreenCarTicketUsed;
 - (bool)isInShinkansenStation;
 - (bool)isInStation;

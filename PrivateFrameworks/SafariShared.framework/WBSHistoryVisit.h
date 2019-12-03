@@ -35,7 +35,7 @@
 @property (nonatomic) long long redirectSourceDatabaseID;
 @property (nonatomic) unsigned long long score;
 @property (getter=isSynthesized, nonatomic, readonly) bool synthesized;
-@property (nonatomic, copy) NSString *title;
+@property (copy) NSString *title;
 @property (nonatomic, readonly) double visitTime;
 
 + (unsigned long long)scoreForWeightedVisitCount:(float)arg1;

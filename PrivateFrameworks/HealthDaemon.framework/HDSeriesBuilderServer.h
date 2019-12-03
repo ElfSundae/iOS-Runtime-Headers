@@ -22,7 +22,7 @@
 
 + (Class)configurationClass;
 + (id)requiredEntitlements;
-+ (bool)validateConfiguration:(id)arg1 error:(out id*)arg2;
++ (bool)validateConfiguration:(id)arg1 client:(id)arg2 error:(id*)arg3;
 
 - (void).cxx_destruct;
 - (void)_queue_addMetadata:(id)arg1 completion:(id /* block */)arg2;
@@ -37,7 +37,7 @@
 - (id)description;
 - (void)discardSeriesWithCompletion:(id /* block */)arg1;
 - (id)exportedInterface;
-- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
 - (id)persistentEntity;
 - (id)queue;
 - (bool)queue_canInsertDataWithErrorHandler:(id /* block */)arg1;

@@ -4,13 +4,14 @@
 
 @interface AVTUIEnvironment : NSObject {
     double  _actionAnimationsMultiplier;
+    NSObject<OS_dispatch_queue> * _backgroundEncodingQueue;
     NSObject<OS_dispatch_queue> * _backgroundQueue;
     NSObject<OS_dispatch_queue> * _backgroundRenderingQueue;
     AVTCoreEnvironment * _coreEnvironment;
     bool  _deviceIsSunflower;
     AVTDeviceResourceManager * _deviceResourceManager;
     AVTCoreModel * _editorCoreModel;
-    AVTInMemoryImageCache * _inMemoryImageCache;
+    <AVTImageCache> * _inMemoryImageCache;
     double  _mainScreenScale;
     struct CGSize { 
         double width; 
@@ -22,6 +23,7 @@
 }
 
 @property (nonatomic) double actionAnimationsMultiplier;
+@property (nonatomic, readonly, copy) NSObject<OS_dispatch_queue> *backgroundEncodingQueue;
 @property (nonatomic, readonly, copy) NSObject<OS_dispatch_queue> *backgroundQueue;
 @property (nonatomic, readonly, copy) NSObject<OS_dispatch_queue> *backgroundRenderingQueue;
 @property (nonatomic, readonly) AVTCoreEnvironment *coreEnvironment;
@@ -30,7 +32,7 @@
 @property (nonatomic, readonly) AVTCoreModel *editorCoreModel;
 @property (nonatomic, readonly, copy) NSURL *imageCacheStoreLocation;
 @property (nonatomic, readonly, copy) NSURL *imageStoreLocation;
-@property (nonatomic, readonly) AVTInMemoryImageCache *inMemoryImageCache;
+@property (nonatomic, readonly) <AVTImageCache> *inMemoryImageCache;
 @property (nonatomic, readonly, copy) id /* block */ lockProvider;
 @property (nonatomic, readonly) <AVTUILogger> *logger;
 @property (nonatomic, readonly) double mainScreenScale;
@@ -38,8 +40,10 @@
 @property (nonatomic, readonly) NSNotificationCenter *notificationCenter;
 @property (nonatomic, readonly) AVTAvatarConfigurationImageRenderer *renderer;
 @property (nonatomic, readonly, copy) id /* block */ serialQueueProvider;
+@property (nonatomic, readonly, copy) NSURL *stickerImageStoreLocation;
 @property (nonatomic, readonly, copy) NSURL *storeLocation;
 @property (nonatomic, readonly) <AVTUsageTrackingSession> *usageTrackingSession;
+@property (nonatomic, readonly) NSUserDefaults *userDefaults;
 @property (nonatomic, readonly) long long userInterfaceLayoutDirection;
 
 + (id)createEditorCoreModelWithLogger:(id)arg1;
@@ -50,6 +54,7 @@
 
 - (void).cxx_destruct;
 - (double)actionAnimationsMultiplier;
+- (id)backgroundEncodingQueue;
 - (id)backgroundQueue;
 - (id)backgroundRenderingQueue;
 - (id)coreEnvironment;
@@ -68,8 +73,10 @@
 - (id)renderer;
 - (id /* block */)serialQueueProvider;
 - (void)setActionAnimationsMultiplier:(double)arg1;
+- (id)stickerImageStoreLocation;
 - (id)storeLocation;
 - (id)usageTrackingSession;
+- (id)userDefaults;
 - (long long)userInterfaceLayoutDirection;
 
 @end

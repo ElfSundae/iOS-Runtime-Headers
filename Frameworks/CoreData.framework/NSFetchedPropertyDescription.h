@@ -26,5 +26,7 @@
 - (bool)isReadOnly;
 - (bool)isTransient;
 - (void)setFetchRequest:(id)arg1;
+- (void)setReadOnly:(bool)arg1;
+- (void)setTransient:(bool)arg1;
 
 @end

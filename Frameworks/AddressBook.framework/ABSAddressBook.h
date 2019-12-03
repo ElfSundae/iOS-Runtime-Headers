@@ -20,9 +20,11 @@
 @property (nonatomic, readonly) CNContactStore *store;
 @property (nonatomic, readonly) CNFuture *storeFuture;
 
++ (void)ABInitialize;
 + (long long)authorizationStatus;
 + (void)callLocalChangeCallbacks:(bool)arg1;
 + (bool)eraseAllDataAtLocationName:(id)arg1 error:(id*)arg2;
++ (void)initialize;
 + (id)localizedLabelForLabel:(id)arg1;
 + (void)requestAccessWithCompletion:(id /* block */)arg1;
 
@@ -43,6 +45,9 @@
 - (id)contactsWithIdentifiers:(id)arg1 keysToFetch:(id)arg2;
 - (id)defaultSource;
 - (id)faultHandler;
+- (id)findPersonMatchingEmailAddress:(id)arg1;
+- (id)findPersonMatchingPhoneNumber:(id)arg1 country:(id)arg2;
+- (id)findPersonMatchingURL:(id)arg1;
 - (long long)groupCount;
 - (id)groupWithRecordID:(int)arg1;
 - (id)groups;
@@ -68,6 +73,7 @@
 - (bool)removeRecord:(id)arg1 error:(id*)arg2;
 - (void)revert;
 - (bool)save:(id*)arg1;
+- (int)saveSequenceCount;
 - (void)setContacts:(id)arg1;
 - (void)setGroups:(id)arg1;
 - (void)setSources:(id)arg1;
@@ -76,6 +82,7 @@
 - (id)sources;
 - (id)store;
 - (id)storeFuture;
+- (id)uniqueDatabaseVersionIdentifier;
 - (bool)unlinkPerson:(id)arg1;
 - (void)unregisterExternalChangeCallback:(int (*)arg1 context:(void*)arg2;
 - (void)updateFetchingAllPropertiesForGroups:(id)arg1;

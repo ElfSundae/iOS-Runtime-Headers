@@ -7,7 +7,9 @@
     EXReadState * mXmlDocumentState;
 }
 
-- (void)dealloc;
+@property (readonly) EBReaderState *readerState;
+
+- (void).cxx_destruct;
 - (id)initWithReaderState:(id)arg1;
 - (id)readerState;
 - (id)xmlDrawingState;

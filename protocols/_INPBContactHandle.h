@@ -5,11 +5,17 @@
 
 @required
 
+- (int)StringAsEmergencyType:(NSString *)arg1;
 - (int)StringAsType:(NSString *)arg1;
+- (int)emergencyType;
+- (NSString *)emergencyTypeAsString:(int)arg1;
+- (bool)hasEmergencyType;
 - (bool)hasLabel;
 - (bool)hasType;
 - (bool)hasValue;
 - (NSString *)label;
+- (void)setEmergencyType:(int)arg1;
+- (void)setHasEmergencyType:(bool)arg1;
 - (void)setHasType:(bool)arg1;
 - (void)setLabel:(NSString *)arg1;
 - (void)setType:(int)arg1;

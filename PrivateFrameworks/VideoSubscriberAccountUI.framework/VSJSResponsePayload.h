@@ -3,6 +3,7 @@
  */
 
 @interface VSJSResponsePayload : IKJSObject <NSCopying, VSJSResponsePayload> {
+    NSString * _appBundleIdentifier;
     NSString * _authN;
     NSString * _authenticationScheme;
     NSArray * _clearSubscriptions;
@@ -16,6 +17,7 @@
     NSString * _username;
 }
 
+@property (nonatomic, copy) NSString *appBundleIdentifier;
 @property (nonatomic, copy) NSString *authN;
 @property (nonatomic, copy) NSString *authenticationScheme;
 @property (nonatomic, copy) NSArray *clearSubscriptions;
@@ -29,6 +31,7 @@
 @property (nonatomic, copy) NSString *username;
 
 - (void).cxx_destruct;
+- (id)appBundleIdentifier;
 - (id)authN;
 - (id)authenticationScheme;
 - (id)clearSubscriptions;
@@ -37,6 +40,7 @@
 - (id)expirationDate;
 - (id)init;
 - (id)logout;
+- (void)setAppBundleIdentifier:(id)arg1;
 - (void)setAuthN:(id)arg1;
 - (void)setAuthenticationScheme:(id)arg1;
 - (void)setClearSubscriptions:(id)arg1;

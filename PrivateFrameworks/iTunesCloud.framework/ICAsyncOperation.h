@@ -12,6 +12,7 @@
 @property (nonatomic, readonly, copy) NSError *error;
 
 - (void).cxx_destruct;
+- (void)_execute;
 - (id)error;
 - (void)execute;
 - (void)finish;

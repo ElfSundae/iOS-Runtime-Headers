@@ -6,6 +6,6 @@
 
 + (id)_rightDescription;
 
-- (bool)_shouldInvalidateOnEncode;
+- (id)_lock_encodePort:(unsigned int)arg1;
 
 @end

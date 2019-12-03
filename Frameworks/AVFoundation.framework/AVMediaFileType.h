@@ -4,7 +4,7 @@
 
 @interface AVMediaFileType : NSObject <NSCopying> {
     bool  _supportsSampleReferences;
-    long long  _supportsSampleReferencesOnce;
+    AVDispatchOnce * _supportsSampleReferencesOnce;
     NSString * _uti;
 }
 

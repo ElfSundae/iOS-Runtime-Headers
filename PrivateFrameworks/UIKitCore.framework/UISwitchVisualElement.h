@@ -34,5 +34,6 @@
 - (void)setThumbTintColor:(id)arg1;
 - (void)setTintColor:(id)arg1;
 - (id)switchControl;
+- (void)tintColorDidChange;
 
 @end

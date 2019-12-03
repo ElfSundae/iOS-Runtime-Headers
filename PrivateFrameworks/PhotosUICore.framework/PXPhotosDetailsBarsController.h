@@ -2,8 +2,8 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXPhotosDetailsBarsController : PXBarsController <PXActionMenuDelegate, PXActionPerformerDelegate, PXChangeObserver, PXPhotosDataSourceChangeObserver, UIPopoverPresentationControllerDelegate> {
-    PXActionMenuController * __activeMenuController;
+@interface PXPhotosDetailsBarsController : PXBarsController <PXAssetCollectionActionPerformerDelegate, PXChangeObserver, PXPhotosDataSourceChangeObserver, PXPhotosDetailsActionMenuDelegate, UIPopoverPresentationControllerDelegate> {
+    PXPhotoDetailsActionMenuController * __activeMenuController;
     PXActionPerformer * __activePerformer;
     PXAssetActionManager * __assetActionManager;
     PXAssetCollectionActionManager * __assetCollectionActionManager;
@@ -25,7 +25,7 @@
     bool  _shouldAddActionButton;
 }
 
-@property (nonatomic, retain) PXActionMenuController *_activeMenuController;
+@property (nonatomic, retain) PXPhotoDetailsActionMenuController *_activeMenuController;
 @property (setter=_setActivePerformer:, nonatomic, retain) PXActionPerformer *_activePerformer;
 @property (nonatomic, readonly) PXAssetActionManager *_assetActionManager;
 @property (nonatomic, readonly) PXAssetCollectionActionManager *_assetCollectionActionManager;
@@ -83,8 +83,9 @@
 - (void)_updateTitleViewAlpha;
 - (id)_viewModel;
 - (void)actionMenu:(id)arg1 actionPerformer:(id)arg2 didChangeState:(unsigned long long)arg3;
-- (bool)actionMenu:(id)arg1 dismissViewController:(struct NSObject { Class x1; }*)arg2 completionHandler:(id /* block */)arg3;
-- (bool)actionMenu:(id)arg1 presentViewController:(id)arg2;
+- (bool)actionMenu:(id)arg1 actionPerformer:(id)arg2 dismissViewController:(id)arg3 completionHandler:(id /* block */)arg4;
+- (bool)actionMenu:(id)arg1 actionPerformer:(id)arg2 presentViewController:(id)arg3;
+- (void)actionMenu:(id)arg1 assetCollectionActionPerformer:(id)arg2 playMovieForAssetCollection:(id)arg3;
 - (void)actionMenuButtonItemTapped:(id)arg1;
 - (void)actionPerformer:(id)arg1 didChangeState:(unsigned long long)arg2;
 - (bool)actionPerformer:(id)arg1 dismissViewController:(struct NSObject { Class x1; }*)arg2 completionHandler:(id /* block */)arg3;

@@ -6,6 +6,7 @@
     NSMutableDictionary * _checkpointCallbacks;
     NSMutableDictionary * _commandCallbacks;
     NSMutableDictionary * _completionCallbacks;
+    NSMutableDictionary * _discretionarySuspensionCallbacks;
     NSMapTable * _operationsByID;
     NSMutableDictionary * _progressCallbacks;
     NSMutableDictionary * _statisticsCallbacks;
@@ -14,6 +15,7 @@
 @property (retain) NSMutableDictionary *checkpointCallbacks;
 @property (retain) NSMutableDictionary *commandCallbacks;
 @property (retain) NSMutableDictionary *completionCallbacks;
+@property (retain) NSMutableDictionary *discretionarySuspensionCallbacks;
 @property (retain) NSMapTable *operationsByID;
 @property (retain) NSMutableDictionary *progressCallbacks;
 @property (retain) NSMutableDictionary *statisticsCallbacks;
@@ -23,6 +25,8 @@
 - (id)checkpointCallbacks;
 - (id)commandCallbacks;
 - (id)completionCallbacks;
+- (id)discretionarySuspensionCallbacks;
+- (void)handleDiscretionarySuspensionForOperationWithID:(id)arg1;
 - (void)handleOperationCheckpoint:(id)arg1 forOperationWithID:(id)arg2;
 - (void)handleOperationCompletion:(id)arg1 forOperationWithID:(id)arg2;
 - (void)handleOperationProgress:(id)arg1 forOperationWithID:(id)arg2 reply:(id /* block */)arg3;
@@ -35,10 +39,12 @@
 - (void)registerCompletionCallback:(id /* block */)arg1 forOperation:(id)arg2;
 - (void)registerProgressCallback:(id /* block */)arg1 forOperation:(id)arg2;
 - (void)registerStatisticsCallback:(id /* block */)arg1 forOperation:(id)arg2;
+- (void)registerSuspensionCallback:(id /* block */)arg1 forDiscretionaryOperation:(id)arg2;
 - (void)removeAllCallbacks;
 - (void)setCheckpointCallbacks:(id)arg1;
 - (void)setCommandCallbacks:(id)arg1;
 - (void)setCompletionCallbacks:(id)arg1;
+- (void)setDiscretionarySuspensionCallbacks:(id)arg1;
 - (void)setOperationsByID:(id)arg1;
 - (void)setProgressCallbacks:(id)arg1;
 - (void)setStatisticsCallbacks:(id)arg1;

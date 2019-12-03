@@ -16,7 +16,7 @@
 - (int)appRunState;
 - (void)attachDownloadDataTo:(id)arg1 forAdamID:(id)arg2;
 - (void)attachSearchMetadataTo:(id)arg1 forAdamID:(id)arg2;
-- (void)beginAttributionRequest:(id)arg1 xpcToken:(unsigned int)arg2 reason:(id)arg3 completionHandler:(id /* block */)arg4;
+- (void)beginAttributionRequest:(id)arg1 reason:(id)arg2 completionHandler:(id /* block */)arg3;
 - (id)bundleID;
 - (id)connection;
 - (id)initWithConnection:(id)arg1 bundleID:(id)arg2 transactionID:(id)arg3;

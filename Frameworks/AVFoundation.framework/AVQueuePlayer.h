@@ -16,6 +16,7 @@
 - (long long)_defaultActionAtItemEnd;
 - (void)advanceToNextItem;
 - (bool)canInsertItem:(id)arg1 afterItem:(id)arg2;
+- (bool)canOverlapPlaybackFromPlayerItem:(id)arg1 toPlayerItem:(id)arg2;
 - (void)dealloc;
 - (id)init;
 - (id)initWithItems:(id)arg1;

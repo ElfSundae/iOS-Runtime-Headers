@@ -4,6 +4,7 @@
 
 @interface SFSymmetricKeyAttributes : NSObject <SFKeychainItemAttributes, _SFKeyAttributes> {
     id  _symmetricKeyAttributesInternal;
+    NSString * persistentIdentifier;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,6 +25,7 @@
 - (id)keySpecifier;
 - (id)localizedDescription;
 - (id)localizedLabel;
+- (id)persistentIdentifier;
 - (void)setKeySpecifier:(id)arg1;
 - (void)setLocalizedDescription:(id)arg1;
 - (void)setLocalizedLabel:(id)arg1;

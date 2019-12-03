@@ -12,12 +12,10 @@
 + (id)sharedHelpers;
 
 - (void).cxx_destruct;
-- (void)cancelFetchAnalysisInfoWithRequestID:(int)arg1;
-- (void)cancelSortByAnalysisInfoScoreWithRequestID:(int)arg1;
 - (void)clearCaches;
 - (int)fetchAnalysisInfoWithAsset:(id)arg1 completionHandler:(id /* block */)arg2;
 - (int)fetchAnalysisInfoWithAssets:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)init;
-- (int)sortByAnalysisInfoScoreWithAssets:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)processResults:(id)arg1 forAssets:(id)arg2 intoInfos:(id)arg3;
 
 @end

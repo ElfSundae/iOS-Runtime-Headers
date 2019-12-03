@@ -57,7 +57,7 @@
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })earliestAllowedPTS;
 - (struct { int x1; int x2; })frameDimensions;
 - (void)handleDroppedSample:(id)arg1 forInput:(id)arg2;
-- (id)initWithCaptureDevice:(id)arg1 processingQueuePriority:(unsigned int)arg2 timeMachineCapacity:(int)arg3;
+- (id)initWithCaptureDevice:(id)arg1 processingQueuePriority:(unsigned int)arg2 timeMachineCapacity:(int)arg3 sinkID:(id)arg4;
 - (id)nodeSubType;
 - (void)prepareForCurrentConfigurationToBecomeLive;
 - (void)renderSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 forInput:(id)arg2;

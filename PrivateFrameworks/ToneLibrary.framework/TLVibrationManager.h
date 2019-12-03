@@ -105,7 +105,7 @@
 
 // Image: /System/Library/PrivateFrameworks/BulletinBoard.framework/BulletinBoard
 
-- (bool)_bb_isVibrationEnabledForAlertType:(long long)arg1 topic:(id)arg2;
+- (bool)bb_isVibrationEnabledForAlertType:(long long)arg1 topic:(id)arg2;
 - (bool)bb_isVibrationEnabledForSectionInfo:(id)arg1;
 
 @end

@@ -15,6 +15,7 @@
     unsigned short  _minTierIndex;
     double  _owrd;
     double  _packetLossRate;
+    double  _packetLossRateVideo;
     unsigned int  _previousSendTimestamp;
     unsigned int  _previousTimestampDiff;
     double  _rampDownLossEventBitrateThreshold;

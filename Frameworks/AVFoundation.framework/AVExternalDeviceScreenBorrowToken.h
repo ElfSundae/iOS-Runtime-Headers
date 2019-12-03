@@ -13,7 +13,6 @@
 
 - (id)client;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)initWithExternalDevice:(id)arg1 client:(id)arg2 reason:(id)arg3;
 - (id)reason;

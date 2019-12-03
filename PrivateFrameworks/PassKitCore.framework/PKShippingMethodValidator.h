@@ -13,6 +13,7 @@
 + (id)validatorWithObject:(id)arg1;
 
 - (id)initWithShippingMethod:(id)arg1;
+- (bool)isValidWithAPIType:(unsigned long long)arg1 withError:(id*)arg2;
 - (bool)isValidWithError:(id*)arg1;
 
 @end

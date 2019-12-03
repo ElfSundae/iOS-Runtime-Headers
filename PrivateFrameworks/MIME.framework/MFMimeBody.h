@@ -24,10 +24,10 @@
 + (id)copyNewMimeBoundary;
 + (id)versionString;
 
+- (void).cxx_destruct;
 - (id)attachmentURLs;
 - (id)attachments;
 - (id)contentToOffset:(unsigned long long)arg1 resultOffset:(unsigned long long*)arg2 asHTML:(bool)arg3 isComplete:(bool*)arg4;
-- (void)dealloc;
 - (bool)hasEncryptedDescendantPart;
 - (id)init;
 - (bool)isHTML;

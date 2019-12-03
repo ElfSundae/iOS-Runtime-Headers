@@ -19,6 +19,7 @@
     NSDate * _loadStartDate;
     PXRelatedSettings * _settings;
     bool  _shouldCancelLoading;
+    bool  _useItemIndexPaths;
 }
 
 @property (getter=_isCanceled, setter=_setCanceled:, nonatomic) bool _canceled;
@@ -29,6 +30,7 @@
 @property (nonatomic, readonly) PXRelatedDataSource *dataSource;
 @property (nonatomic) unsigned long long initialBatchSize;
 @property (nonatomic) unsigned long long loadBatchSize;
+@property (nonatomic, readonly) bool useItemIndexPaths;
 
 - (void).cxx_destruct;
 - (id)_collectionListFetchResult;
@@ -53,6 +55,7 @@
 - (id)createPhotosDataSourceForRelatedEntry:(id)arg1;
 - (id)init;
 - (id)initWithPhotosDetailsContext:(id)arg1;
+- (id)initWithPhotosDetailsContext:(id)arg1 useItemIndexPaths:(bool)arg2;
 - (unsigned long long)initialBatchSize;
 - (unsigned long long)loadBatchSize;
 - (void)registerChangeObserver:(id)arg1 context:(void*)arg2;
@@ -60,5 +63,6 @@
 - (void)setLoadBatchSize:(unsigned long long)arg1;
 - (void)startLoading;
 - (void)unregisterChangeObserver:(id)arg1 context:(void*)arg2;
+- (bool)useItemIndexPaths;
 
 @end

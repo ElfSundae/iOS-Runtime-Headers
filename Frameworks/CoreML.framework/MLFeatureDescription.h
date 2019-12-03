@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CoreML.framework/CoreML
  */
 
-@interface MLFeatureDescription : NSObject <NSCopying> {
+@interface MLFeatureDescription : NSObject <NSCopying, NSSecureCoding> {
     MLDictionaryConstraint * _dictionaryConstraintCached;
     MLImageConstraint * _imageConstraintCached;
     MLMultiArrayConstraint * _multiArrayConstraintCached;
@@ -23,6 +23,7 @@
 @property (retain) NSDictionary *valueConstraints;
 
 + (id)featureDescriptionWithName:(id)arg1 type:(long long)arg2 optional:(bool)arg3 constraints:(id)arg4;
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (bool)allowsValuesWithDescription:(id)arg1;
@@ -31,8 +32,10 @@
 - (id)description;
 - (id)dictionaryConstraint;
 - (id)dictionaryConstraintCached;
+- (void)encodeWithCoder:(id)arg1;
 - (id)imageConstraint;
 - (id)imageConstraintCached;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 type:(long long)arg2 optional:(bool)arg3 contraints:(id)arg4;
 - (bool)isAllowedValue:(id)arg1;
 - (bool)isAllowedValue:(id)arg1 error:(id*)arg2;

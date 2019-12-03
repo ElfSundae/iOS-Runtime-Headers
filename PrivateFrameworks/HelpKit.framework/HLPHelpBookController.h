@@ -15,6 +15,7 @@
     NSString * _iconBasePath;
     HLPURLImageCacheController * _imageCacheController;
     HLPHelpLocale * _locale;
+    NSString * _remoteCSSearchIndex;
     NSString * _remoteSearchPath;
     HLPHelpSectionItem * _rootSectionItem;
     long long  _serverType;
@@ -34,6 +35,7 @@
 @property (nonatomic, retain) NSString *iconBasePath;
 @property (nonatomic, retain) HLPURLImageCacheController *imageCacheController;
 @property (nonatomic, retain) HLPHelpLocale *locale;
+@property (nonatomic, retain) NSString *remoteCSSearchIndex;
 @property (nonatomic, retain) NSString *remoteSearchPath;
 @property (nonatomic, retain) HLPHelpSectionItem *rootSectionItem;
 @property (getter=isSemanticHTML, nonatomic, readonly) bool semanticHTML;
@@ -65,6 +67,7 @@
 - (id)locale;
 - (void)processData:(id)arg1 formattedData:(id)arg2;
 - (void)processFileURLWithCompletionHandler:(id /* block */)arg1;
+- (id)remoteCSSearchIndex;
 - (id)remoteSearchPath;
 - (id)rootSectionItem;
 - (id)sectionsForChildrenIdentifiers:(id)arg1 level:(long long)arg2 parent:(id)arg3 sectionsMap:(id)arg4 topicsMap:(id)arg5;
@@ -81,6 +84,7 @@
 - (void)setIconBasePath:(id)arg1;
 - (void)setImageCacheController:(id)arg1;
 - (void)setLocale:(id)arg1;
+- (void)setRemoteCSSearchIndex:(id)arg1;
 - (void)setRemoteSearchPath:(id)arg1;
 - (void)setRootSectionItem:(id)arg1;
 - (void)setServerType:(long long)arg1;

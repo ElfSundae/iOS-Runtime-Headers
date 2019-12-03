@@ -5,6 +5,6 @@
 
 @required
 
-- (void)dataCollectionObservationStateDidChangeForClient:(HDXPCClient *)arg1;
+- (void)dataCollectionObservationStateDidChangeForClient:(HDHealthStoreClient *)arg1;
 
 @end

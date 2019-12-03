@@ -18,6 +18,7 @@
 - (void)_addAdditionalRecord:(id)arg1;
 - (void)_addChange:(id)arg1 resultBatch:(id)arg2 changesPerScopedIdentifier:(id)arg3 changesPerClass:(id)arg4;
 - (id)_additionalRecords;
+- (id)_descriptionRedacted:(bool)arg1;
 - (id)_initWithRecords:(id)arg1;
 - (void)_setAdditionalRecords:(id)arg1;
 - (void)_setRecords:(id)arg1;
@@ -28,7 +29,7 @@
 - (void)appendLocalResources:(id)arg1 forItemWithCloudScopedIdentifier:(id)arg2;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned long long)count;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (id)cplFullDescription;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
@@ -44,6 +45,7 @@
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;
 - (id)recordWithScopedIdentifier:(id)arg1;
 - (id)records;
+- (id)redactedDescription;
 - (void)removeRecordWithIdentifier:(id)arg1;
 - (void)removeRecordWithScopedIdentifier:(id)arg1;
 - (bool)sortBatchWithError:(id*)arg1;

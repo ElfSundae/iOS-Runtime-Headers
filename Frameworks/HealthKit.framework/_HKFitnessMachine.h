@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
  */
 
-@interface _HKFitnessMachine : NSObject <NSSecureCoding> {
+@interface _HKFitnessMachine : NSObject <NSCopying, NSSecureCoding> {
     unsigned long long  _activityType;
     NSString * _brand;
     HKDevice * _device;
@@ -27,6 +27,7 @@
 - (void)_setRequestedTypes:(id)arg1;
 - (unsigned long long)activityType;
 - (id)brand;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)device;
 - (void)encodeWithCoder:(id)arg1;

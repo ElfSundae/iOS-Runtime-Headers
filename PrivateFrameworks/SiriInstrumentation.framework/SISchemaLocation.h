@@ -2,41 +2,31 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaLocation : PBCodable <NSCopying> {
-    struct { 
-        unsigned int horizontalAccuracyInMeters : 1; 
-        unsigned int latitude : 1; 
-        unsigned int longitude : 1; 
-    }  _has;
+@interface SISchemaLocation : PBCodable <NSSecureCoding, SISchemaLocation> {
     float  _horizontalAccuracyInMeters;
     float  _latitude;
     float  _longitude;
 }
 
-@property (nonatomic) bool hasHorizontalAccuracyInMeters;
-@property (nonatomic) bool hasLatitude;
-@property (nonatomic) bool hasLongitude;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) float horizontalAccuracyInMeters;
+@property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic) float latitude;
 @property (nonatomic) float longitude;
+@property (readonly) Class superclass;
 
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (bool)hasHorizontalAccuracyInMeters;
-- (bool)hasLatitude;
-- (bool)hasLongitude;
 - (unsigned long long)hash;
 - (float)horizontalAccuracyInMeters;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (bool)isEqual:(id)arg1;
+- (id)jsonData;
 - (float)latitude;
 - (float)longitude;
-- (void)mergeFrom:(id)arg1;
 - (bool)readFrom:(id)arg1;
-- (void)setHasHorizontalAccuracyInMeters:(bool)arg1;
-- (void)setHasLatitude:(bool)arg1;
-- (void)setHasLongitude:(bool)arg1;
 - (void)setHorizontalAccuracyInMeters:(float)arg1;
 - (void)setLatitude:(float)arg1;
 - (void)setLongitude:(float)arg1;

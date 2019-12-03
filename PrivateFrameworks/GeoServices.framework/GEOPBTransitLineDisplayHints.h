@@ -4,8 +4,8 @@
 
 @interface GEOPBTransitLineDisplayHints : PBCodable <NSCopying> {
     struct { 
-        unsigned int showVehicleNumber : 1; 
-    }  _has;
+        unsigned int has_showVehicleNumber : 1; 
+    }  _flags;
     bool  _showVehicleNumber;
     PBUnknownFields * _unknownFields;
 }
@@ -14,7 +14,10 @@
 @property (nonatomic) bool showVehicleNumber;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -23,6 +26,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasShowVehicleNumber:(bool)arg1;
 - (void)setShowVehicleNumber:(bool)arg1;

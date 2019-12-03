@@ -2,21 +2,16 @@
    Image: /System/Library/PrivateFrameworks/AuthKit.framework/AuthKit
  */
 
-@interface AKAnisetteData : NSObject <NSCopying, NSObjectROCKDeserializable, NSObjectROCKSerializable, NSSecureCoding> {
+@interface AKAnisetteData : NSObject <NSCopying, NSSecureCoding> {
     NSString * _machineID;
     NSString * _oneTimePassword;
     unsigned long long  _routingInfo;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSString *machineID;
 @property (nonatomic, copy) NSString *oneTimePassword;
 @property (nonatomic) unsigned long long routingInfo;
-@property (readonly) Class superclass;
 
-+ (id)rockDecodeWithXPCObject:(id)arg1 sessionManager:(id)arg2 error:(id*)arg3;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -26,7 +21,6 @@
 - (id)initWithCoder:(id)arg1;
 - (id)machineID;
 - (id)oneTimePassword;
-- (id)rockEncodeWithSessionManager:(id)arg1 error:(id*)arg2;
 - (unsigned long long)routingInfo;
 - (void)setMachineID:(id)arg1;
 - (void)setOneTimePassword:(id)arg1;

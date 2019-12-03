@@ -4,7 +4,19 @@
 
 @interface GEOTFInfo : PBCodable <NSCopying> {
     NSString * _comment;
+    struct { 
+        unsigned int read_comment : 1; 
+        unsigned int read_language : 1; 
+        unsigned int wrote_comment : 1; 
+        unsigned int wrote_language : 1; 
+    }  _flags;
     NSString * _language;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
 }
 
 @property (nonatomic, retain) NSString *comment;
@@ -12,7 +24,11 @@
 @property (nonatomic, readonly) bool hasLanguage;
 @property (nonatomic, retain) NSString *language;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_readComment;
+- (void)_readLanguage;
 - (id)comment;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -21,9 +37,12 @@
 - (bool)hasComment;
 - (bool)hasLanguage;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)language;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setComment:(id)arg1;
 - (void)setLanguage:(id)arg1;

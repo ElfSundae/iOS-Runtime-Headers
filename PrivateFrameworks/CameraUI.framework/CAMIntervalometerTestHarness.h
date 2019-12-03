@@ -8,6 +8,7 @@
     bool  _hasOutstandingCapture;
     bool  _nextCaptureIsMyLast;
     NSMutableDictionary * _numberOfResponsesForRequest;
+    bool  _performWarmupCapture;
     CAMCaptureRequestIntervalometer * _testIntervalometer;
 }
 
@@ -17,12 +18,12 @@
 @property (readonly) Class superclass;
 @property (nonatomic, retain) CAMCaptureRequestIntervalometer *testIntervalometer;
 
-+ (id)harnessWithTestName:(id)arg1 expectedNumberOfCapturesPerRequest:(id)arg2 captureController:(id)arg3;
++ (id)harnessWithTestName:(id)arg1 expectedNumberOfCapturesPerRequest:(id)arg2 captureController:(id)arg3 performingWarmupCapture:(bool)arg4;
 
 - (void).cxx_destruct;
 - (bool)_hasReceivedExpectedNumberOfResponsesForRequests;
 - (void)failedTestwithReason:(id)arg1;
-- (id)initWithTestName:(id)arg1 expectedNumberOfCapturesPerRequest:(id)arg2 captureController:(id)arg3;
+- (id)initWithTestName:(id)arg1 expectedNumberOfCapturesPerRequest:(id)arg2 captureController:(id)arg3 performingWarmupCapture:(bool)arg4;
 - (bool)intervalometer:(id)arg1 didGenerateCaptureRequest:(id)arg2;
 - (void)intervalometerDidReachMaximumCount:(id)arg1;
 - (void)setTestIntervalometer:(id)arg1;

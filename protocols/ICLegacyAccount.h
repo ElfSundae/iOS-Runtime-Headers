@@ -9,10 +9,13 @@
 - (<ICLegacyFolder> *)defaultFolder;
 - (NSString *)emailAddress;
 - (NSSet *)folders;
+- (bool)isManaged;
+- (NSString *)localizedAttachmentsNotSupportedReason;
 - (NSManagedObjectContext *)managedObjectContext;
 - (NSString *)name;
 - (NSManagedObjectID *)objectID;
 - (NSString *)objectIdentifier;
+- (bool)preventMovingNotesToOtherAccounts;
 - (bool)supportsAttachments;
 
 @end

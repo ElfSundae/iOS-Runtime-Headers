@@ -27,8 +27,10 @@
 @property (nonatomic, readonly) bool titleChanged;
 @property (nonatomic, readonly) NSNumber *updateCount;
 
++ (id)calendarItemPropertyName;
 + (Class)frozenClass;
 + (id)knownRelationshipSingleValueKeys;
++ (id)knownRelationshipWeakKeys;
 
 - (id)URL;
 - (bool)_propertyWithFlagDidChange:(unsigned int)arg1;
@@ -51,6 +53,7 @@
 - (id)lastName;
 - (bool)locationChanged;
 - (id)name;
+- (id)notification;
 - (id)phoneNumber;
 - (unsigned int)publicStatus;
 - (bool)timeChanged;

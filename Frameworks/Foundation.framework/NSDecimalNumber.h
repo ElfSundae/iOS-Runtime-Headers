@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Foundation.framework/Foundation
  */
 
-@interface NSDecimalNumber : NSNumber {
+@interface NSDecimalNumber : NSNumber <INJSONSerializable> {
     unsigned int  _exponent;
     unsigned int  _hasExternalRefCount;
     unsigned int  _isCompact;
@@ -13,9 +13,13 @@
     unsigned int  _reserved;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly) struct { unsigned int x1 : 8; unsigned int x2 : 4; unsigned int x3 : 1; unsigned int x4 : 1; unsigned int x5 : 18; unsigned short x6[8]; } decimalValue;
+@property (readonly, copy) NSString *description;
 @property (readonly) double doubleValue;
+@property (readonly) unsigned long long hash;
 @property (readonly) const char *objCType;
+@property (readonly) Class superclass;
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
 
@@ -25,6 +29,7 @@
 + (id)decimalNumberWithString:(id)arg1;
 + (id)decimalNumberWithString:(id)arg1 locale:(id)arg2;
 + (id)defaultBehavior;
++ (void)initialize;
 + (id)maximumDecimalNumber;
 + (id)minimumDecimalNumber;
 + (id)notANumber;
@@ -95,6 +100,12 @@
 - (unsigned long long)unsignedLongValue;
 - (unsigned short)unsignedShortValue;
 
+// Image: /System/Library/Frameworks/Intents.framework/Intents
+
++ (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
+
+- (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
+
 // Image: /System/Library/PrivateFrameworks/AssistantServices.framework/AssistantServices
 
 - (void)af_enumerateDigestibleChunksWithOptions:(unsigned long long)arg1 usingBlock:(id /* block */)arg2;
@@ -104,6 +115,11 @@
 + (id)pk_negativeOne;
 
 - (id)pk_absoluteValue;
+- (bool)pk_isEqualToDecimalNumber:(id)arg1;
+- (bool)pk_isGreaterThan:(id)arg1;
+- (bool)pk_isGreaterThanOrEqualTo:(id)arg1;
+- (bool)pk_isLessThan:(id)arg1;
+- (bool)pk_isLessThanOrEqualTo:(id)arg1;
 - (id)pk_negativeValue;
 
 // Image: /System/Library/PrivateFrameworks/SiriCore.framework/SiriCore

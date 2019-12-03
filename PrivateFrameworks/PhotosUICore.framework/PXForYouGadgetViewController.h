@@ -2,15 +2,13 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXForYouGadgetViewController : PXGadgetViewController <PXGadgetNavigating, PXNavigableForYouViewController, PXNavigableSharedAlbumActivityFeedHostViewController, PXNavigationRoot, PXSettingsKeyObserver> {
-    long long  _anchorPosition;
+@interface PXForYouGadgetViewController : PXGadgetUIViewController <PXNavigableForYouViewController, PXNavigableSharedAlbumActivityFeedHostViewController, PXNavigationRoot, PXSettingsKeyObserver> {
     PXForYouBadgeManager * _badgeManager;
     UIBarButtonItem * _navigationDisplayModeButtonItem;
     bool  _needsRefresh;
     PXForYouGadgetPriorityManager * _priorityManager;
 }
 
-@property (nonatomic) long long anchorPosition;
 @property (nonatomic, retain) PXForYouBadgeManager *badgeManager;
 @property (nonatomic, readonly) NSString *currentDateText;
 @property (readonly, copy) NSString *debugDescription;
@@ -19,7 +17,7 @@
 @property (nonatomic, readonly) UINavigationController *navigationController;
 @property (nonatomic, retain) UIBarButtonItem *navigationDisplayModeButtonItem;
 @property (nonatomic, readonly) NSString *navigationIdentifier;
-@property (nonatomic, readonly) PXNavigationListDataSourceManager *navigationListDataSourceManager;
+@property (nonatomic, readonly) PXNavigationListDataSectionManager *navigationListDataSourceManager;
 @property (nonatomic, readonly) NSString *navigationTitle;
 @property (nonatomic) bool needsRefresh;
 @property (nonatomic, retain) PXForYouGadgetPriorityManager *priorityManager;
@@ -34,39 +32,33 @@
 - (void)_calendarDayChanged;
 - (void)_lastSeenBadgeDateChanged;
 - (id)_suggestionDumpURL;
-- (long long)anchorPosition;
+- (void)_userDidViewCloudFeedContent;
 - (id)badgeManager;
+- (void)configureSectionHeader:(id)arg1;
 - (id)currentDateText;
 - (void)gadget:(id)arg1 didChange:(unsigned long long)arg2;
 - (id)initWithBadgeManager:(id)arg1;
 - (id)navigateToDetailsForMemoryWithLocalIdentifier:(id)arg1;
-- (void)navigateToGadgetForCMMInvitationWithIdentifier:(id)arg1;
-- (void)navigateToGadgetForCMMSuggestions;
-- (void)navigateToInvitationCMMWithUUID:(id)arg1 animated:(bool)arg2;
-- (void)navigateToRevealTheMostRecentMemoryAnimated:(bool)arg1;
 - (void)navigateToSharedAlbumActivityFeedAnimated:(bool)arg1 configuration:(id /* block */)arg2 completion:(id /* block */)arg3;
-- (void)navigateToSharedAlbumInviteWithUUID:(id)arg1 animated:(bool)arg2;
-- (void)navigateToSharedAlbumInvitesAnimated:(bool)arg1;
 - (id)navigateToShowAllMemoriesFeedAnimated:(bool)arg1;
-- (void)navigateToSuggestedCMMWithUUID:(id)arg1 animated:(bool)arg2;
 - (id)navigationDisplayModeButtonItem;
 - (id)navigationIdentifier;
 - (id)navigationTitle;
 - (bool)needsRefresh;
 - (void)ppt_navigateToFirstInvitationCMM:(bool)arg1 withCompleteHandler:(id /* block */)arg2;
+- (void)ppt_navigateToFirstSuggestedCMMAnimated:(bool)arg1 completionHandler:(id /* block */)arg2;
 - (void)ppt_navigateToFirstSuggestedCMMComposeRecipientViewAfterOneSecondWithCompleteHandler:(id /* block */)arg1;
-- (void)ppt_navigateToFirstSuggestedCMMWithCompleteHandler:(id /* block */)arg1;
-- (void)presentWelcomeCloudPhotosViewController;
 - (id)priorityManager;
 - (void)reloadContent;
 - (void)rootGadgetControllerDidDisappear;
 - (void)rootGadgetControllerWillAppear;
-- (void)setAnchorPosition:(long long)arg1;
+- (long long)scrollAnimationIdentifier;
 - (void)setBadgeManager:(id)arg1;
 - (void)setNavigationDisplayModeButtonItem:(id)arg1;
 - (void)setNeedsRefresh:(bool)arg1;
 - (void)setPriorityManager:(id)arg1;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
+- (void)viewDidAppear:(bool)arg1;
 - (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(bool)arg1;

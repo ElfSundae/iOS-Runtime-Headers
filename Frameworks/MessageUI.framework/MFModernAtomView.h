@@ -65,6 +65,7 @@
 + (bool)presentationOptions:(unsigned long long*)arg1 encodedIntoAddress:(id)arg2;
 + (id)primaryAtomFont;
 
+- (void).cxx_destruct;
 - (id)_centeredTextAttachmentWithImage:(id)arg1;
 - (id)_chevronTextAttachment;
 - (void)_invalidatePresentationOptions;
@@ -78,6 +79,7 @@
 - (void)_updateActivityIndicator;
 - (void)_updateCompositingFilters;
 - (void)_updateFontIfNecessary;
+- (void)_updateIconViewsSemanticContentAttribute;
 - (void)_updateLabelAttributes;
 - (void)_updateSubviewsForWrapping;
 - (id)accessoryIconView;
@@ -87,7 +89,6 @@
 - (id)badgeIconView;
 - (struct CGPoint { double x1; double x2; })baselinePoint;
 - (void)clearPresentationOption:(unsigned long long)arg1;
-- (void)dealloc;
 - (id)description;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })edgeInsets;
 - (unsigned long long)effectivePresentationOptions;

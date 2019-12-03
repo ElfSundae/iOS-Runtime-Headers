@@ -12,8 +12,8 @@
 @property (nonatomic, readonly) OADDrawableDefaults *drawableDefaults;
 @property (nonatomic, copy) NSString *name;
 
+- (void).cxx_destruct;
 - (id)baseStyles;
-- (void)dealloc;
 - (id)description;
 - (id)drawableDefaults;
 - (id)init;

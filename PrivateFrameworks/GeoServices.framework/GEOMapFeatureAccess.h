@@ -23,6 +23,8 @@
 - (id /* block */)_openTileLoaderWithCompletionHandler:(id /* block */)arg1;
 - (void)_preloadTilesNear:(struct { double x1; double x2; })arg1 radius:(double)arg2 tileSetStyle:(int)arg3 tileSize:(int)arg4 tileScale:(int)arg5 completionHandler:(id /* block */)arg6;
 - (bool)allowNetworkTileLoad;
+- (id)findAllRoadsAtNextIntersectionOf:(id)arg1 handler:(id /* block */)arg2 completionHandler:(id /* block */)arg3;
+- (id)findAllRoadsAtPreviousIntersectionOf:(id)arg1 handler:(id /* block */)arg2 completionHandler:(id /* block */)arg3;
 - (id)findBuildingsNear:(struct { double x1; double x2; })arg1 radius:(double)arg2 handler:(id /* block */)arg3 completionHandler:(id /* block */)arg4;
 - (id)findRoadsFromJunction:(id)arg1 handler:(id /* block */)arg2 completionHandler:(id /* block */)arg3;
 - (id)findRoadsFromNextIntersectionOf:(id)arg1 handler:(id /* block */)arg2 completionHandler:(id /* block */)arg3;

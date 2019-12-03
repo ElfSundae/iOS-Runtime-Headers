@@ -57,6 +57,7 @@
 - (id)additionalAutoCompleteResults;
 - (bool)addressBookAccessDenied;
 - (id)autoCompleteResults;
+- (void)batchQueryController:(id)arg1 updatedDestinationsStatus:(id)arg2 onService:(id)arg3 error:(id)arg4;
 - (void)cancelButtonPressed:(id)arg1;
 - (id)composeRecipientForAddress:(id)arg1;
 - (void)composeRecipientView:(id)arg1 didAddRecipient:(id)arg2;
@@ -81,7 +82,6 @@
 - (id)familyMembers;
 - (void)finishedSearchingForAutocompleteResults;
 - (id)home;
-- (void)idStatusUpdatedForDestinations:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithHome:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

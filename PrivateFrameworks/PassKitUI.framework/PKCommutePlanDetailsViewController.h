@@ -10,6 +10,7 @@
     <PKPaymentDataProvider> * _paymentDataProvider;
     NSArray * _reminderIntervals;
     unsigned long long  _selectedReminderIntervalsIndex;
+    bool  _shouldLoadReminderInterval;
     long long  _style;
     NSDateComponentsFormatter * _timeIntervalFormatter;
     PKPaymentWebService * _webService;
@@ -23,11 +24,11 @@
 - (void).cxx_destruct;
 - (void)_handleActionSelected;
 - (void)_handleReminderIntervalChanged:(long long)arg1;
+- (void)_updateSelectedReminderIntervalsIndexWithInterval:(double)arg1;
 - (id)initWithSuicaFields:(id)arg1 forPass:(id)arg2 associatedAction:(id)arg3 paymentDataProvider:(id)arg4 webService:(id)arg5 style:(long long)arg6;
 - (void)performActionViewControllerDidCancel:(id)arg1;
 - (void)performActionViewControllerDidPerformAction:(id)arg1;
-- (id)pkui_navigationBarTintColor;
-- (bool)pkui_prefersNavigationBarShadowHidden;
+- (void)scrollViewDidScroll:(id)arg1;
 - (bool)shouldMapSection:(unsigned long long)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
@@ -36,5 +37,6 @@
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (void)viewWillAppear:(bool)arg1;
+- (void)viewWillLayoutSubviews;
 
 @end

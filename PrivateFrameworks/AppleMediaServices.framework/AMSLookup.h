@@ -2,10 +2,10 @@
    Image: /System/Library/PrivateFrameworks/AppleMediaServices.framework/AppleMediaServices
  */
 
-@interface AMSLookup : AMSTask {
+@interface AMSLookup : AMSTask <AMSBagConsumer> {
+    <AMSBagProtocol> * _bag;
     NSString * _caller;
     AMSProcessInfo * _clientInfo;
-    <AMSLookupBagContract> * _contract;
     NSString * _imageProfile;
     NSString * _keyProfile;
     NSString * _language;
@@ -14,29 +14,41 @@
     long long  _version;
 }
 
+@property (nonatomic, retain) <AMSBagProtocol> *bag;
 @property (nonatomic, retain) NSString *caller;
 @property (nonatomic, retain) AMSProcessInfo *clientInfo;
-@property (nonatomic, retain) <AMSLookupBagContract> *contract;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSString *imageProfile;
 @property (nonatomic, retain) NSString *keyProfile;
 @property (nonatomic, retain) NSString *language;
 @property (nonatomic, retain) NSString *platform;
 @property (nonatomic) long long signatureType;
+@property (readonly) Class superclass;
 @property (nonatomic) long long version;
+
++ (void)addRequiredBagKeysToAggregator:(id)arg1;
++ (id)bagKeySet;
++ (id)bagSubProfile;
++ (id)bagSubProfileVersion;
 
 - (void).cxx_destruct;
 - (void)_addJSSignatureToRequest:(id)arg1;
 - (id)_compileQueryParametersWithBundleIds:(id)arg1 itemIds:(id)arg2;
+- (id)bag;
 - (id)caller;
 - (id)clientInfo;
 - (id)contract;
 - (id)imageProfile;
+- (id)initWithBag:(id)arg1 caller:(id)arg2 keyProfile:(id)arg3;
 - (id)initWithBagContract:(id)arg1;
 - (id)initWithBagContract:(id)arg1 caller:(id)arg2 keyProfile:(id)arg3;
 - (id)keyProfile;
 - (id)language;
 - (id)performLookupWithBundleIdentifiers:(id)arg1 itemIdentifiers:(id)arg2;
 - (id)platform;
+- (void)setBag:(id)arg1;
 - (void)setCaller:(id)arg1;
 - (void)setClientInfo:(id)arg1;
 - (void)setContract:(id)arg1;

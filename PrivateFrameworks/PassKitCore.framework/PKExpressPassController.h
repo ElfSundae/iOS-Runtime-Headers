@@ -28,6 +28,7 @@
 - (id)presentingViewController;
 - (void)setApiVersion:(long long)arg1;
 - (void)setPresentingViewController:(id)arg1;
+- (bool)supportsLowPowerExpressMode;
 - (void)upgradeExpressModeForPass:(id)arg1 withCredential:(id)arg2 completion:(id /* block */)arg3;
 - (id)validExpressModeUpgradeRequestForPass:(id)arg1;
 

@@ -26,7 +26,7 @@
 - (id)combineEventData:(id)arg1 withPlaylistDataForItem:(id)arg2;
 - (id)eventData;
 - (void)generatePlaylistTransitionsIfNecessary:(unsigned long long)arg1;
-- (id)initWithVPAFKit:(id)arg1 playlist:(id)arg2;
+- (id)initWithVPAFKit:(id)arg1 playlist:(id)arg2 eventData:(id)arg3;
 - (id)playActivity;
 - (void)playStartedAtOverallPosition:(unsigned long long)arg1 type:(id)arg2 reason:(id)arg3 eventData:(id)arg4;
 - (void)playStartedWithPlaybackRate:(float)arg1 overallPosition:(unsigned long long)arg2 type:(id)arg3 reason:(id)arg4 eventData:(id)arg5;

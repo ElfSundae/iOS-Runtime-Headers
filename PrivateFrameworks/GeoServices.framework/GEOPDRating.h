@@ -4,11 +4,11 @@
 
 @interface GEOPDRating : PBCodable <NSCopying> {
     struct { 
-        unsigned int maxScore : 1; 
-        unsigned int score : 1; 
-        unsigned int numRatingsUsedForScore : 1; 
-        unsigned int ratingType : 1; 
-    }  _has;
+        unsigned int has_maxScore : 1; 
+        unsigned int has_score : 1; 
+        unsigned int has_numRatingsUsedForScore : 1; 
+        unsigned int has_ratingType : 1; 
+    }  _flags;
     double  _maxScore;
     int  _numRatingsUsedForScore;
     int  _ratingType;
@@ -26,10 +26,12 @@
 @property (nonatomic) double score;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
 + (id)ratingForPlaceData:(id)arg1 type:(int)arg2;
 
 - (void).cxx_destruct;
 - (int)StringAsRatingType:(id)arg1;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -45,6 +47,7 @@
 - (int)numRatingsUsedForScore;
 - (int)ratingType;
 - (id)ratingTypeAsString:(int)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (double)score;
 - (void)setHasMaxScore:(bool)arg1;

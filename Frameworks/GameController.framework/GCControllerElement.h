@@ -2,18 +2,24 @@
    Image: /System/Library/Frameworks/GameController.framework/GameController
  */
 
-@interface GCControllerElement : NSObject
+@interface GCControllerElement : NSObject {
+    GCControllerElement * _collection;
+    GCController * _controller;
+}
 
 @property (getter=isAnalog, nonatomic, readonly) bool analog;
-@property (nonatomic, readonly) GCControllerElement *collection;
+@property (nonatomic) GCControllerElement *collection;
+@property (nonatomic) GCController *controller;
 
+- (void).cxx_destruct;
 - (bool)_setValue:(float)arg1;
 - (bool)_setValue:(float)arg1 queue:(id)arg2;
 - (id)collection;
 - (id)controller;
+- (int)getAndResetTimesPressed;
 - (bool)isAnalog;
-- (bool)setHIDValue:(struct __IOHIDValue { }*)arg1;
-- (bool)setHIDValue:(struct __IOHIDValue { }*)arg1 queue:(id)arg2;
+- (void)setCollection:(id)arg1;
+- (void)setController:(id)arg1;
 - (float)value;
 
 @end

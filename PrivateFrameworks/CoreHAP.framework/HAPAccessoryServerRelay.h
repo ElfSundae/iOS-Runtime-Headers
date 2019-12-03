@@ -115,7 +115,7 @@
 - (void)setSecuritySessionOpening:(bool)arg1;
 - (void)setShouldDiscover:(bool)arg1;
 - (bool)shouldDiscover;
-- (void)startPairingWithConsentRequired:(bool)arg1;
+- (void)startPairingWithConsentRequired:(bool)arg1 config:(id)arg2 ownershipToken:(id)arg3;
 - (bool)stopPairingWithError:(id*)arg1;
 - (id)stream;
 - (void)stream:(id)arg1 didCloseWithError:(id)arg2;

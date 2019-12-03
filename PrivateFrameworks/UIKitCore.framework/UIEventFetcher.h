@@ -18,17 +18,20 @@
     NSMutableArray * _incomingHIDEvents;
     NSMutableArray * _incomingHIDEventsFiltered;
     double  _lastImportantEventTimestamp;
+    unsigned long long  _lastSignalReason;
     double  _lastSignalTimestamp;
     long long  _lastSignalType;
     double  _latestMoveDragEventResendTimestamp;
     double  _latestMoveDragEventTimestamp;
     NSMutableDictionary * _latestMoveDragEventsBySessionID;
     bool  _needsSignalOnDisplayLink;
+    id /* block */  _passiveObservationFilterGenerator;
     id /* block */  _receiveBlock;
     struct __CFRunLoopSource { } * _triggerHandOffEventsRunLoopSource;
     id /* block */  _watchSystemAppFilter;
 }
 
+@property (nonatomic, readonly) struct __CFRunLoop { }*_eventFetchRunLoop;
 @property (nonatomic) double commitTimeForTouchEvents;
 @property (nonatomic, retain) <UIEventFetcherSink> *eventFetcherSink;
 @property (nonatomic) double latestMoveDragEventResendTimestamp;
@@ -38,10 +41,13 @@
 
 - (void).cxx_destruct;
 - (void)_addHIDEventFilter:(id /* block */)arg1;
+- (struct __CFRunLoop { }*)_eventFetchRunLoop;
 - (void)_receiveHIDEvent:(struct __IOHIDEvent { }*)arg1;
 - (void)_receiveHIDEventInternal:(struct __IOHIDEvent { }*)arg1;
 - (void)_removeHIDEventFilter:(id /* block */)arg1;
+- (void)_removeHIDEventObserver;
 - (void)_removeHIDGameControllerEventObserver;
+- (void)_setHIDEventObserver:(id /* block */)arg1 onQueue:(id)arg2;
 - (void)_setHIDGameControllerEventObserver:(id /* block */)arg1 onQueue:(id)arg2;
 - (void)_setupFilterChain;
 - (double)commitTimeForTouchEvents;

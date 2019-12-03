@@ -6,18 +6,18 @@
     NSMutableDictionary * _notificationSections;
 }
 
+@property (nonatomic, readonly) unsigned long long notificationRequestsCount;
 @property (nonatomic, retain) NSMutableDictionary *notificationSections;
-@property (nonatomic, readonly) unsigned long long notificationsCount;
 @property (nonatomic, readonly) unsigned long long sectionsCount;
 
 - (void).cxx_destruct;
-- (id)addNotificationRequest:(id)arg1;
-- (id)coalescedNotificationForRequest:(id)arg1;
+- (bool)addNotificationRequest:(id)arg1;
 - (id)init;
+- (id)notificationRequestMatchingNotificationIdentifier:(id)arg1 sectionIdentifier:(id)arg2;
+- (unsigned long long)notificationRequestsCount;
 - (id)notificationSections;
-- (unsigned long long)notificationsCount;
-- (id)removeNotificationRequest:(id)arg1;
-- (id)replaceNotificationRequest:(id)arg1;
+- (bool)removeNotificationRequest:(id)arg1;
+- (bool)replaceNotificationRequest:(id)arg1;
 - (unsigned long long)sectionsCount;
 - (void)setNotificationSections:(id)arg1;
 

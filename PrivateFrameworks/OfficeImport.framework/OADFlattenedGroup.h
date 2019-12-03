@@ -6,8 +6,8 @@
     NSMutableArray * mDrawables;
 }
 
+- (void).cxx_destruct;
 - (void)addDrawable:(id)arg1;
-- (void)dealloc;
 - (id)drawables;
 - (id)init;
 

@@ -26,6 +26,8 @@
 @property (nonatomic) bool showsPhoneButton;
 @property (nonatomic) bool verified;
 
++ (id)descriptorForContactRequiredKeys;
+
 - (void).cxx_destruct;
 - (id)contact;
 - (id)entityName;

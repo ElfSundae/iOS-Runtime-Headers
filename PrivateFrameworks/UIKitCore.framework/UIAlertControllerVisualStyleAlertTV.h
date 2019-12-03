@@ -29,7 +29,7 @@
 - (long long)permittedActionLayoutDirection;
 - (bool)placementAvoidsKeyboard;
 - (id)preferredActionForActions:(id)arg1 suggestedPreferredAction:(id)arg2;
-- (id)textFieldContainingViewWithTextField:(id)arg1;
+- (id)textFieldContainingViewWithTextField:(id)arg1 position:(long long)arg2;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })textFieldContentInset;
 - (double)textFieldHorizontalMargin;
 - (id)titleLabelColor;

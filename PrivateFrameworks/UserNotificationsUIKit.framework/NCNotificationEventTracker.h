@@ -16,6 +16,7 @@
     PETScalarEventTracker * _shortLookDismissTracker;
 }
 
++ (unsigned long long)convertBBObserverFeedToATXNotificationsFeed:(unsigned long long)arg1;
 + (id)createATXNotificationInterfaceFromRequest:(id)arg1;
 + (id)sharedInstance;
 

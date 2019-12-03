@@ -6,6 +6,7 @@
     NSDate * _nextUserVisibleWakeRequestDate;
     NSString * _nextUserVisibleWakeRequestor;
     NSObject<OS_dispatch_source> * _updateTimer;
+    bool  _updateTimerResumed;
     int  _wakeRequestToken;
 }
 
@@ -18,6 +19,8 @@
 + (id)eventStream;
 
 - (void).cxx_destruct;
+- (void)deactivate;
+- (void)dealloc;
 - (id)loadState;
 - (id)nextUserVisibleWakeRequestDate;
 - (id)nextUserVisibleWakeRequestor;

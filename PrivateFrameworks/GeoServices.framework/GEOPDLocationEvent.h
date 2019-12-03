@@ -5,9 +5,23 @@
 @interface GEOPDLocationEvent : PBCodable <NSCopying> {
     double  _endTime;
     struct { 
-        unsigned int endTime : 1; 
-        unsigned int startTime : 1; 
-    }  _has;
+        unsigned int has_endTime : 1; 
+        unsigned int has_startTime : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_subTitle : 1; 
+        unsigned int read_title : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_endTime : 1; 
+        unsigned int wrote_startTime : 1; 
+        unsigned int wrote_subTitle : 1; 
+        unsigned int wrote_title : 1; 
+    }  _flags;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     double  _startTime;
     NSString * _subTitle;
     NSString * _title;
@@ -24,7 +38,12 @@
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_readSubTitle;
+- (void)_readTitle;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -35,8 +54,11 @@
 - (bool)hasSubTitle;
 - (bool)hasTitle;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setEndTime:(double)arg1;
 - (void)setHasEndTime:(bool)arg1;

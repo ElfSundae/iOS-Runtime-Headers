@@ -12,9 +12,10 @@
     bool  _current;
     NSString * _dhcpClientID;
     NSDate * _dhcpLeaseExpirationDate;
+    bool  _diagnosable;
     long long  _dnsConfig;
     NSArray * _dnsSearchDomains;
-    NSArray * _dnsSeverAddresses;
+    NSArray * _dnsServerAddresses;
     bool  _forgetable;
     NSArray * _healthRecommendations;
     bool  _httpProxyAuthenticationRequired;
@@ -39,8 +40,10 @@
     NSArray * _ipv6PrefixLengths;
     NSString * _ipv6RouterAddress;
     NSString * _ipv6RouterAddressManual;
+    bool  _isInSaveDataMode;
     bool  _joinable;
     bool  _manageable;
+    bool  _saveDataModeConfigurable;
     NSString * _ssid;
 }
 
@@ -53,8 +56,10 @@
 @property bool current;
 @property (copy) NSString *dhcpClientID;
 @property (copy) NSDate *dhcpLeaseExpirationDate;
+@property bool diagnosable;
 @property long long dnsConfig;
 @property (copy) NSArray *dnsSearchDomains;
+@property (retain) NSArray *dnsServerAddresses;
 @property (retain) NSArray *dnsSeverAddresses;
 @property bool forgetable;
 @property (retain) NSArray *healthRecommendations;
@@ -80,8 +85,10 @@
 @property (retain) NSArray *ipv6PrefixLengths;
 @property (copy) NSString *ipv6RouterAddress;
 @property (copy) NSString *ipv6RouterAddressManual;
+@property bool isInSaveDataMode;
 @property bool joinable;
 @property bool manageable;
+@property bool saveDataModeConfigurable;
 @property (nonatomic, copy) NSString *ssid;
 
 // Image: /System/Library/PrivateFrameworks/WiFiKitUI.framework/WiFiKitUI
@@ -98,8 +105,10 @@
 - (bool)current;
 - (id)dhcpClientID;
 - (id)dhcpLeaseExpirationDate;
+- (bool)diagnosable;
 - (long long)dnsConfig;
 - (id)dnsSearchDomains;
+- (id)dnsServerAddresses;
 - (id)dnsSeverAddresses;
 - (bool)forgetable;
 - (id)healthRecommendations;
@@ -128,8 +137,10 @@
 - (id)ipv6RouterAddressManual;
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToNetworkSettingsConfig:(id)arg1;
+- (bool)isInSaveDataMode;
 - (bool)joinable;
 - (bool)manageable;
+- (bool)saveDataModeConfigurable;
 - (void)setAutoJoinConfigurable:(bool)arg1;
 - (void)setAutoJoinEnabled:(bool)arg1;
 - (void)setAutoLoginConfigurable:(bool)arg1;
@@ -139,8 +150,10 @@
 - (void)setCurrent:(bool)arg1;
 - (void)setDhcpClientID:(id)arg1;
 - (void)setDhcpLeaseExpirationDate:(id)arg1;
+- (void)setDiagnosable:(bool)arg1;
 - (void)setDnsConfig:(long long)arg1;
 - (void)setDnsSearchDomains:(id)arg1;
+- (void)setDnsServerAddresses:(id)arg1;
 - (void)setDnsSeverAddresses:(id)arg1;
 - (void)setForgetable:(bool)arg1;
 - (void)setHealthRecommendations:(id)arg1;
@@ -166,8 +179,10 @@
 - (void)setIpv6PrefixLengths:(id)arg1;
 - (void)setIpv6RouterAddress:(id)arg1;
 - (void)setIpv6RouterAddressManual:(id)arg1;
+- (void)setIsInSaveDataMode:(bool)arg1;
 - (void)setJoinable:(bool)arg1;
 - (void)setManageable:(bool)arg1;
+- (void)setSaveDataModeConfigurable:(bool)arg1;
 - (void)setSsid:(id)arg1;
 - (id)ssid;
 - (bool)validIPv4Configuration;

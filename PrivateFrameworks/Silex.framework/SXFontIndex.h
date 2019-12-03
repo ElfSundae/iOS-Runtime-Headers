@@ -23,7 +23,7 @@
 - (id)attributeToFontIndex;
 - (id)fontAttributesForFontName:(id)arg1;
 - (id)fontFamilyProviders;
-- (id)fontNameForFontAttributes:(id)arg1;
+- (id)fontNameForFontAttributes:(id)arg1 size:(long long)arg2;
 - (id)fontToAttributeIndex;
 - (id)fonts;
 - (id)fontsForFamilyProviders:(id)arg1;

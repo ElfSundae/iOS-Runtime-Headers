@@ -3,7 +3,6 @@
  */
 
 @interface CNContactPickerHostViewController : _UIRemoteViewController <CNContactPickerContentViewController, CNContactPickerHostProtocol> {
-    void * _addressBook;
     <NSCopying> * _currentRequestIdentifier;
     <CNContactPickerContentDelegate> * _delegate;
     NSExtension * _extension;
@@ -23,18 +22,16 @@
 + (bool)getViewController:(id /* block */)arg1;
 
 - (void).cxx_destruct;
-- (void*)addressBook;
 - (id)currentRequestIdentifier;
-- (void)dealloc;
 - (id)delegate;
 - (id)extension;
 - (void)invalidate;
 - (void)invalidateSelectionAnimated:(bool)arg1;
 - (id)navigationController;
 - (void)pickerDidCancel;
+- (void)pickerDidSelectAddNewContact;
 - (void)pickerDidSelectContact:(id)arg1 property:(id)arg2;
 - (void)pickerDidSelectContacts:(id)arg1 properties:(id)arg2;
-- (void)setAddressBook:(void*)arg1;
 - (void)setCurrentRequestIdentifier:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setExtension:(id)arg1;

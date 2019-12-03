@@ -44,6 +44,7 @@
 - (void)setRotationState:(unsigned long long)arg1;
 - (void)setSpeedRampApplier:(id)arg1;
 - (void)setVibrancyEffect:(id)arg1;
+- (bool)shouldFlipForRTL;
 - (id)speedRampApplier;
 - (void)updateWithIconDescriptor:(id)arg1 displayStyle:(unsigned long long)arg2 animated:(bool)arg3;
 - (bool)wantsManagedVibrancyEffect;

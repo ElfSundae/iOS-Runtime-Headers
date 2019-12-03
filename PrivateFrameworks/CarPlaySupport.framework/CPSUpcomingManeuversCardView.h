@@ -8,6 +8,7 @@
     NSArray * _maneuverStyles;
     NSMutableArray * _maneuverViewStack;
     NSArray * _maneuvers;
+    bool  _saveManeuversToDisk;
     NSMutableArray * _verticalConstraints;
 }
 
@@ -19,6 +20,7 @@
 @property (nonatomic, readonly) NSArray *maneuverStyles;
 @property (nonatomic, readonly) NSMutableArray *maneuverViewStack;
 @property (nonatomic, readonly) NSArray *maneuvers;
+@property (nonatomic) bool saveManeuversToDisk;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSMutableArray *verticalConstraints;
 
@@ -36,7 +38,9 @@
 - (id)maneuverStyles;
 - (id)maneuverViewStack;
 - (id)maneuvers;
+- (bool)saveManeuversToDisk;
 - (void)setCurrentTravelEstimatesForManeuverIdentifiers:(id)arg1;
+- (void)setSaveManeuversToDisk:(bool)arg1;
 - (void)showManeuvers:(id)arg1 usingDisplayStyles:(id)arg2;
 - (void)updateEstimates:(id)arg1 forManeuver:(id)arg2;
 - (id)verticalConstraints;

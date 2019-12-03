@@ -58,6 +58,7 @@
 - (id)identifier;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithModel:(id)arg1;
+- (void)invalidate;
 - (bool)isEqual:(id)arg1;
 - (id)logIdentifier;
 - (id)messageDestination;

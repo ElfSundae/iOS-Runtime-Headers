@@ -31,6 +31,7 @@
 + (id)nonConvertibleMole;
 + (id)nullDimension;
 + (id)pressure;
++ (id)soundPressureLevel;
 + (id)temperature;
 + (id)time;
 + (id)titer;

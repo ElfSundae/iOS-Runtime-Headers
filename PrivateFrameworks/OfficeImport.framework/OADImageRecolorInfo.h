@@ -7,8 +7,8 @@
     NSDictionary * mFills;
 }
 
+- (void).cxx_destruct;
 - (id)colors;
-- (void)dealloc;
 - (id)description;
 - (id)fills;
 - (unsigned long long)hash;

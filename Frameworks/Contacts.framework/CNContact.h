@@ -2,7 +2,8 @@
    Image: /System/Library/Frameworks/Contacts.framework/Contacts
  */
 
-@interface CNContact : NSObject <ABSCNLegacyIdentifiable, CNContactAugmentation, CNObjectValidation, CNSuggested, NSCopying, NSItemProviderReading, NSItemProviderWriting, NSMutableCopying, NSSecureCoding, TUSearchResult> {
+@interface CNContact : NSObject <ABSCNLegacyIdentifiable, CNContactAugmentation, CNSuggested, NSCopying, NSItemProviderReading, NSItemProviderWriting, NSMutableCopying, NSSecureCoding, TUSearchResult> {
+    NSString * _ISOCountryCode;
     NSString * _accountIdentifier;
     CNContactKeyVector * _availableKeyDescriptor;
     NSDateComponents * _birthday;
@@ -22,16 +23,26 @@
             double height; 
         } size; 
     }  _cropRect;
+    NSData * _cropRectHash;
+    NSString * _cropRectID;
     NSArray * _dates;
     NSString * _departmentName;
     long long  _displayNameOrder;
+    NSString * _downtimeWhitelist;
     NSArray * _emailAddresses;
+    NSString * _externalIdentifier;
+    NSString * _externalImageURI;
+    NSString * _externalModificationTag;
+    NSData * _externalRepresentation;
+    NSString * _externalUUID;
     NSString * _familyName;
     NSData * _fullscreenImageData;
     NSString * _givenName;
     int  _iOSLegacyIdentifier;
     NSData * _imageData;
     bool  _imageDataAvailable;
+    NSData * _imageHash;
+    NSString * _imageType;
     NSArray * _instantMessageAddresses;
     NSString * _internalIdentifier;
     NSString * _jobTitle;
@@ -70,6 +81,7 @@
     NSString * _sortingGivenName;
     NSString * _storeIdentifier;
     NSDictionary * _storeInfo;
+    NSData * _syncImageData;
     CNActivityAlert * _textAlert;
     NSData * _thumbnailImageData;
     NSArray * _urlAddresses;
@@ -78,6 +90,7 @@
 @property (nonatomic, readonly, copy) NSString *accountIdentifier;
 @property (nonatomic, readonly, copy) NSDictionary *activityAlerts;
 @property (nonatomic, readonly) NSArray *allIDSDestinations;
+@property (nonatomic, readonly) NSArray *allLinkedIdentifiers;
 @property (nonatomic, readonly) NSString *anyDestinationID;
 @property (nonatomic, readonly) <CNKeyDescriptor> *availableKeyDescriptor;
 @property (nonatomic, readonly) NSSet *availableKeys;
@@ -96,6 +109,8 @@
 @property (nonatomic, readonly) long long contactType;
 @property (nonatomic, readonly, copy) NSDate *creationDate;
 @property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } cropRect;
+@property (nonatomic, readonly, copy) NSData *cropRectHash;
+@property (nonatomic, readonly, copy) NSString *cropRectID;
 @property (nonatomic, readonly, copy) NSArray *dates;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, readonly, copy) NSString *departmentName;
@@ -103,8 +118,14 @@
 @property (readonly) NSString *destinationId;
 @property (readonly) NSString *displayName;
 @property (nonatomic, readonly) long long displayNameOrder;
+@property (nonatomic, readonly, copy) NSString *downtimeWhitelist;
 @property (nonatomic, readonly) NSArray *emailAddressStrings;
 @property (nonatomic, readonly, copy) NSArray *emailAddresses;
+@property (nonatomic, readonly, copy) NSString *externalIdentifier;
+@property (nonatomic, readonly, copy) NSString *externalImageURI;
+@property (nonatomic, readonly, copy) NSString *externalModificationTag;
+@property (nonatomic, readonly, copy) NSData *externalRepresentation;
+@property (nonatomic, readonly, copy) NSString *externalUUID;
 @property (nonatomic, readonly) NSURL *faceTimeQuicklookURL;
 @property (nonatomic, readonly, copy) NSString *familyName;
 @property (readonly, copy) NSString *firstName;
@@ -119,10 +140,11 @@
 @property (nonatomic, readonly) int iOSLegacyIdentifier;
 @property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, readonly, copy) NSString *identifier;
-@property (readonly) NSString *idsCanonicalDestination;
 @property (readonly) NSArray *idsCanonicalDestinations;
 @property (nonatomic, readonly, copy) NSData *imageData;
 @property (nonatomic, readonly) bool imageDataAvailable;
+@property (nonatomic, readonly, copy) NSData *imageHash;
+@property (nonatomic, readonly, copy) NSString *imageType;
 @property (nonatomic, readonly, copy) NSArray *instantMessageAddresses;
 @property (nonatomic, readonly, copy) NSString *internalIdentifier;
 @property (readonly) NSString *isoCountryCode;
@@ -184,6 +206,7 @@
 @property (nonatomic, readonly) SGRecordId *suggestionRecordId;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) bool supportsInstantMessageService;
+@property (nonatomic, readonly, copy) NSData *syncImageData;
 @property (nonatomic, readonly, copy) CNActivityAlert *textAlert;
 @property (nonatomic, readonly, copy) NSData *thumbnailImageData;
 @property (getter=isUnified, nonatomic, readonly) bool unified;
@@ -210,12 +233,14 @@
 + (id)contactWithArchivedData:(id)arg1 error:(id*)arg2;
 + (id)contactWithContact:(id)arg1;
 + (id)contactWithDisplayName:(id)arg1 emailOrPhoneNumber:(id)arg2;
++ (id)contactWithDisplayName:(id)arg1 handleStrings:(id)arg2;
 + (id)contactWithIdentifier:(id)arg1;
 + (id)contactWithVCardData:(id)arg1 error:(id*)arg2;
 + (id)descriptorForAllComparatorKeys;
 + (id)descriptorForKeyDescriptors:(id)arg1 description:(id)arg2;
 + (id)descriptorForRequiredKeysForSearchableItem;
 + (id)descriptorWithKeyDescriptors:(id)arg1 description:(id)arg2;
++ (void)freezeIfInstancetypeIsImmutable:(id)arg1;
 + (id)identifierProvider;
 + (id)localizedStringForKey:(id)arg1;
 + (id)makeContactAndMergeValuesFromAvailableKeysInContact:(id)arg1;
@@ -223,9 +248,11 @@
 + (id)makeIdentifierString;
 + (id)newContactWithPropertyKeys:(id)arg1 withValuesFromContact:(id)arg2;
 + (id)objectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id*)arg3;
++ (id)os_log;
 + (id)predicateForAllContacts;
 + (id)predicateForContactMatchingEKParticipantWithName:(id)arg1 emailAddress:(id)arg2 URL:(id)arg3 predicateDescription:(id)arg4;
 + (id)predicateForContactMatchingEmailAddress:(id)arg1;
++ (id)predicateForContactMatchingLabeledValueIdentifier:(id)arg1;
 + (id)predicateForContactMatchingMapString:(id)arg1;
 + (id)predicateForContactMatchingPhoneNumber:(id)arg1;
 + (id)predicateForContactMatchingPhoneNumberWithDigits:(id)arg1 countryCode:(id)arg2;
@@ -235,12 +262,16 @@
 + (id)predicateForContactsLinkedToContact:(id)arg1;
 + (id)predicateForContactsLinkedToContactWithIdentifier:(id)arg1;
 + (id)predicateForContactsMatchingEmailAddress:(id)arg1;
++ (id)predicateForContactsMatchingEmailAddress:(id)arg1 groupIdentifiers:(id)arg2 limitToOneResult:(bool)arg3;
 + (id)predicateForContactsMatchingFullTextSearch:(id)arg1 containerIdentifiers:(id)arg2 groupIdentifiers:(id)arg3;
++ (id)predicateForContactsMatchingHandleStrings:(id)arg1;
++ (id)predicateForContactsMatchingHandleStrings:(id)arg1 inContainersWithIdentifiers:(id)arg2;
 + (id)predicateForContactsMatchingInstantMessageAddress:(id)arg1;
 + (id)predicateForContactsMatchingName:(id)arg1;
 + (id)predicateForContactsMatchingName:(id)arg1 options:(unsigned long long)arg2;
 + (id)predicateForContactsMatchingPhoneNumber:(id)arg1;
 + (id)predicateForContactsMatchingPhoneNumber:(id)arg1 prefixHint:(id)arg2;
++ (id)predicateForContactsMatchingPhoneNumber:(id)arg1 prefixHint:(id)arg2 groupIdentifiers:(id)arg3 limitToOneResult:(bool)arg4;
 + (id)predicateForContactsMatchingPostalAddress:(id)arg1;
 + (id)predicateForContactsMatchingPreferredChannel:(id)arg1 limitOne:(bool)arg2;
 + (id)predicateForContactsMatchingSocialProfile:(id)arg1;
@@ -255,6 +286,7 @@
 + (id)predicateForPreferredNameInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 + (id)predicateForSuggestionIdentifier:(unsigned long long)arg1;
 + (id /* block */)preferredImageComparator;
++ (id)previewURLForContact:(id)arg1;
 + (int)publicABPropertyIDFromContactPropertyKey:(id)arg1;
 + (id)readableTypeIdentifiersForItemProvider;
 + (id)storeInfoFromCoder:(id)arg1 storeIdentifier:(id)arg2 key:(id)arg3;
@@ -272,6 +304,7 @@
 - (bool)areAllPropertiesButContactIdentifierEqualToContact:(id)arg1;
 - (bool)areAllPropertiesEqualToContactIgnoringIdentifiers:(id)arg1;
 - (bool)areKeysAvailable:(id)arg1;
+- (id)areKeysAvailable:(id)arg1 useIgnorableKeys:(bool)arg2 findMissingKeys:(bool)arg3;
 - (void)assertKeyIsAvailable:(id)arg1;
 - (void)assertKeysAreAvailable:(id)arg1;
 - (id)availableKeyDescriptor;
@@ -283,12 +316,15 @@
 - (id)companyName;
 - (id)contactRelations;
 - (long long)contactType;
+- (id)copyWithDistinctIdentifier;
 - (id)copyWithNoSuggestion;
 - (id)copyWithPropertyKeys:(id)arg1;
 - (id)copyWithSelfAsSnapshot;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)creationDate;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })cropRect;
+- (id)cropRectHash;
+- (id)cropRectID;
 - (id)dates;
 - (id)departmentName;
 - (id)description;
@@ -296,8 +332,14 @@
 - (void*)detachedPersonWithError:(id*)arg1;
 - (id)diffToSnapshotAndReturnError:(id*)arg1;
 - (long long)displayNameOrder;
+- (id)downtimeWhitelist;
 - (id)emailAddresses;
 - (void)encodeWithCoder:(id)arg1;
+- (id)externalIdentifier;
+- (id)externalImageURI;
+- (id)externalModificationTag;
+- (id)externalRepresentation;
+- (id)externalUUID;
 - (id)familyName;
 - (id)firstName;
 - (id)fullName;
@@ -311,6 +353,8 @@
 - (id)identifier;
 - (id)imageData;
 - (bool)imageDataAvailable;
+- (id)imageHash;
+- (id)imageType;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
@@ -327,7 +371,6 @@
 - (bool)isSuggestedMe;
 - (bool)isUnified;
 - (bool)isUnifiedWithContactWithIdentifier:(id)arg1;
-- (bool)isValid:(id*)arg1;
 - (id)jobTitle;
 - (id)keyVector;
 - (id)lastName;
@@ -388,6 +431,7 @@
 - (id)stringForIndexing;
 - (id)suggestionFoundInBundleId;
 - (id)suggestionRecordId;
+- (id)syncImageData;
 - (id)textAlert;
 - (id)thumbnailImageData;
 - (bool)updateNewPublicABPerson:(void*)arg1 inAddressBook:(void*)arg2;
@@ -399,17 +443,24 @@
 + (bool)contactRemindersEnabled;
 + (id)contactWithStateRestorationCoder:(id)arg1 store:(id)arg2 keys:(id)arg3;
 + (id)descriptorForAllUIKeys;
++ (bool)downtimeWhitelistUIEnabled;
 + (bool)geminiEnabled;
 + (id)multiValuePropertiesSupportingPredicateValidation;
++ (bool)nameAndPhotoSharingDebugUIEnabled;
 + (bool)quickActionsEnabled;
++ (unsigned long long)rawImageTypeForIdentifier:(id)arg1;
 + (bool)settableMeCardEnabled;
++ (id)stringIdentifierForImageType:(unsigned long long)arg1;
 + (bool)suggestionsEnabled;
 + (bool)suggestionsShownInEditMode;
 
+- (id)allLinkedIdentifiers;
 - (id)birthdays;
+- (bool)hasImageOfType:(unsigned long long)arg1;
 - (bool)hasNonPersistedData;
 - (bool)isUnknown;
 - (id)personName;
+- (unsigned long long)rawImageType;
 - (bool)supportsInstantMessageService;
 - (id)vCardRepresentation;
 - (id)validPropertiesByEvaluatingPredicate:(id)arg1 onMultiValueProperties:(id)arg2;
@@ -420,21 +471,19 @@
 
 - (bool)_maps_isEqualToContact:(id)arg1;
 
-// Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
+// Image: /System/Library/PrivateFrameworks/CalendarFoundation.framework/CalendarFoundation
 
-+ (id)mf_contactFromEmailAddress:(id)arg1;
-+ (id)mf_contactWithPersonNameComponents:(id)arg1 emailAddress:(id)arg2;
-+ (id)mf_contactWithPersonNameComponents:(id)arg1 emailAddress:(id)arg2 allowInvalidEmailAddress:(bool)arg3;
++ (id)CalDefaultBirthdayString;
++ (id)CalKeys;
 
-// Image: /System/Library/PrivateFrameworks/Accessibility.framework/Frameworks/AXHearingSupport.framework/AXHearingSupport
-
-+ (id)contactForPhoneNumber:(id)arg1;
-
-- (bool)ttyIsMe;
+- (id)CalBirthdayStringForDate:(id)arg1;
+- (id)CalDisplayName;
+- (id)CalEmailAddresses;
+- (id)CalFirstValueForKey:(id)arg1;
+- (id)CalValueForKey:(id)arg1 withLabel:(id)arg2;
 
 // Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
 
-- (id)identifierForKey:(id)arg1 withDestination:(id)arg2;
 - (id)identifierForKey:(id)arg1 withDestination:(id)arg2;
 
 // Image: /System/Library/PrivateFrameworks/CoreSuggestionsInternals.framework/CoreSuggestionsInternals
@@ -447,17 +496,29 @@
 
 + (id)dnds_predicateForContactsMatchingEventSource:(id)arg1;
 
-// Image: /System/Library/PrivateFrameworks/GameCenterPrivateUI.framework/GameCenterPrivateUI
+// Image: /System/Library/PrivateFrameworks/Email.framework/Email
+
++ (id)em_contactFromEmailAddress:(id)arg1;
++ (id)em_contactWithPersonNameComponents:(id)arg1 emailAddress:(id)arg2;
++ (id)em_contactWithPersonNameComponents:(id)arg1 emailAddress:(id)arg2 allowInvalidEmailAddress:(bool)arg3;
+
+// Image: /System/Library/PrivateFrameworks/GameCenterUI.framework/GameCenterUI
 
 - (id)collationString;
 
 // Image: /System/Library/PrivateFrameworks/IMAssistantCore.framework/IMAssistantCore
 
 - (id)__im_assistant_allIMHandles;
-- (id)__im_assistant_allValidPersonOptionsWithAccount:(id)arg1;
-- (bool)__im_assistant_labeledContactValue:(id)arg1 matchesPersonHandleLabel:(id)arg2;
+- (id)__im_assistant_allValidPersonOptionsWithAccountDataSource:(id)arg1;
+- (id)__im_assistant_emailAddressesMatchingLabel:(id)arg1;
+- (id)__im_assistant_handlesMatchingHandleID:(id)arg1;
+- (id)__im_assistant_handlesMatchingRequestedHandleType:(long long)arg1 requestedHandleLabel:(id)arg2;
 - (id)__im_assistant_matchingNormalizedHandlesForType:(long long)arg1 andLabel:(id)arg2 forCountryCode:(id)arg3;
-- (id)__im_assistant_normalizedHandleForAnonymousContactUsingCountryCode:(id)arg1;
+- (id)__im_assistant_phoneNumbersMatchingLabel:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/IMSharedUtilities.framework/IMSharedUtilities
+
+- (bool)_im_isEqualToContact:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/PassKitCore.framework/PassKitCore
 
@@ -515,6 +576,11 @@
 - (id)safari_fullName;
 - (id)safari_valueForWBSABProperty:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/SpeechRecognitionCommandAndControl.framework/SpeechRecognitionCommandAndControl
+
+- (void)callNumberWithLabeledValue:(id)arg1;
+- (void)faceTimeEmailWithLabeledValue:(id)arg1;
+
 // Image: /System/Library/PrivateFrameworks/TelephonyUtilities.framework/TelephonyUtilities
 
 + (id)keysToFetchForFaceTime;
@@ -530,7 +596,6 @@
 - (id)emailAddressStrings;
 - (id)faceTimeQuicklookURL;
 - (id)handles;
-- (id)idsCanonicalDestination;
 - (id)idsCanonicalDestinations;
 - (id)isoCountryCode;
 - (long long)mostRecentCallType;

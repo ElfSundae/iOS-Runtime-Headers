@@ -11,8 +11,6 @@
 @property (nonatomic, retain) NSProgress *progress;
 @property (nonatomic, readonly) PXCMMSession *session;
 
-+ (id)actionPerformerLog;
-
 - (void).cxx_destruct;
 - (bool)canPerformActionWithSession:(id)arg1;
 - (id)createActionProgress;

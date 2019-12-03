@@ -28,7 +28,6 @@
 - (void)dealloc;
 - (int)depthTypeForFilter:(id)arg1;
 - (id)filters;
-- (id)init;
 - (id)initWithFilters:(id)arg1 originalOutputFilter:(id)arg2;
 - (float)interpolationFractionComplete;
 - (id)originalOutputFilter;

@@ -12,7 +12,6 @@
 - (struct OpaqueFigMutableComposition { }*)_mutableComposition;
 - (void)dealloc;
 - (int)decodabilityValidationResult;
-- (void)finalize;
 - (bool)isDecodable;
 - (bool)isPlayable;
 - (int)playabilityValidationResult;

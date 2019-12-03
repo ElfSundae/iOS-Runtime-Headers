@@ -4,6 +4,7 @@
 
 @interface _TempToken : NSObject <GEOServerFormatToken> {
     <GEOTransitArtworkDataSource> * _artworkValue;
+    <GEOServerFormatTokenCountdownValue> * _countdownValue;
     <GEOServerFormatTokenPriceValue> * _priceValue;
     NSString * _stringValue;
     NSArray * _timeStampValues;
@@ -15,6 +16,7 @@
 }
 
 @property (nonatomic, retain) <GEOTransitArtworkDataSource> *artworkValue;
+@property (nonatomic, retain) <GEOServerFormatTokenCountdownValue> *countdownValue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -30,10 +32,13 @@
 
 - (void).cxx_destruct;
 - (id)artworkValue;
+- (id)countdownValue;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithToken:(id)arg1;
 - (id)priceValue;
 - (void)setArtworkValue:(id)arg1;
+- (void)setCountdownValue:(id)arg1;
 - (void)setPriceValue:(id)arg1;
 - (void)setStringValue:(id)arg1;
 - (void)setTimeStampValues:(id)arg1;

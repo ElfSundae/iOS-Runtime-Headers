@@ -18,8 +18,10 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)first;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFirst:(id)arg1 second:(id)arg2;
+- (bool)isEqual:(id)arg1;
 - (id)second;
 
 @end

@@ -17,13 +17,13 @@
 @property (retain) TCMessageContext *messageContext;
 @property (retain) TCProgressContext *progressContext;
 
+- (void).cxx_destruct;
 - (void)addASyncBlock:(id /* block */)arg1;
 - (void)dealloc;
 - (id)initWithCancelDelegate:(id)arg1;
 - (bool)isCancelled;
 - (id)messageContext;
 - (id)progressContext;
-- (void)reportWarning:(id)arg1;
 - (void)setMessageContext:(id)arg1;
 - (void)setProgressContext:(id)arg1;
 - (void)waitUntilComplete;

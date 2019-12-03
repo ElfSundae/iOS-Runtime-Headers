@@ -30,7 +30,6 @@
 - (void)dealloc;
 - (id)finalParameters;
 - (id)finalRenderList;
-- (id)init;
 - (id)initWithInitialParameters:(id)arg1 initialRenderList:(id)arg2 finalParameters:(id)arg3 finalRenderList:(id)arg4;
 - (id)initialParameters;
 - (id)initialRenderList;

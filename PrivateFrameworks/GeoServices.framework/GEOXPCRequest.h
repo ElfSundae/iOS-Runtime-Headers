@@ -11,6 +11,7 @@
     GEOPeer * _peer;
     NSProgress * _progressToMirrorOverXPC;
     NSString * _service;
+    GEODataRequestThrottlerToken * _throttleToken;
     GEOMapServiceTraits * _traits;
 }
 
@@ -22,6 +23,7 @@
 @property (nonatomic, retain) NSProgress *progress;
 @property (nonatomic, readonly) NSObject<OS_xpc_object> *replyDictionary;
 @property (nonatomic, retain) NSString *service;
+@property (nonatomic, readonly) GEODataRequestThrottlerToken *throttleToken;
 @property (nonatomic, readonly) GEOMapServiceTraits *traits;
 
 + (bool)reportsProgress;
@@ -35,7 +37,7 @@
 - (unsigned char)flags;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithMessage:(id)arg1 traits:(id)arg2 auditToken:(id)arg3;
+- (id)initWithMessage:(id)arg1 traits:(id)arg2 auditToken:(id)arg3 throttleToken:(id)arg4;
 - (id)method;
 - (id)object;
 - (id)peer;
@@ -44,6 +46,7 @@
 - (id)replyDictionary;
 - (void)send:(id)arg1;
 - (void)send:(id)arg1 withReply:(id)arg2 handler:(id /* block */)arg3;
+- (id)sendSync:(id)arg1 error:(id*)arg2;
 - (id)service;
 - (void)setMethod:(id)arg1;
 - (void)setObject:(id)arg1;
@@ -51,6 +54,7 @@
 - (void)setPreferredAuditToken:(id)arg1;
 - (void)setProgress:(id)arg1;
 - (void)setService:(id)arg1;
+- (id)throttleToken;
 - (id)traits;
 
 @end

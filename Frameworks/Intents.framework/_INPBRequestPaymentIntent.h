@@ -3,6 +3,7 @@
  */
 
 @interface _INPBRequestPaymentIntent : PBCodable <NSCopying, NSSecureCoding, _INPBRequestPaymentIntent> {
+    bool  __encodeLegacyGloryData;
     _INPBCurrencyAmount * _currencyAmount;
     struct { }  _has;
     _INPBIntentMetadata * _intentMetadata;
@@ -10,6 +11,7 @@
     _INPBContact * _payer;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (nonatomic, retain) _INPBCurrencyAmount *currencyAmount;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -23,15 +25,21 @@
 @property (nonatomic, retain) _INPBContact *payer;
 @property (readonly) Class superclass;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)currencyAmount;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasCurrencyAmount;
 - (bool)hasIntentMetadata;
 - (bool)hasNote;
 - (bool)hasPayer;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)intentMetadata;
 - (bool)isEqual:(id)arg1;
 - (id)note;

@@ -17,6 +17,7 @@
 @property (nonatomic, readonly) UILabel *titleLabel;
 @property (nonatomic) bool useCompactTopInset;
 
++ (id)defaultBackgroundColor;
 + (double)defaultHorizontalInset;
 
 - (void).cxx_destruct;

@@ -4,6 +4,7 @@
 
 @interface PLXPCTransaction : NSObject {
     const char * _identifier;
+    NSObject<OS_os_transaction> * _transaction;
 }
 
 + (void)_startTrackingTransaction:(id)arg1;
@@ -14,6 +15,7 @@
 + (id)openXPCTransactionStatus;
 + (id)transaction:(const char *)arg1;
 
+- (void).cxx_destruct;
 - (id)_statusDescription;
 - (void)dealloc;
 - (id)description;

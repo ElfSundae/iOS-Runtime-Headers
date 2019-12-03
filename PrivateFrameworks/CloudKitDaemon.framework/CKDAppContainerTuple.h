@@ -9,20 +9,22 @@
     NSString * _containerEncryptionServiceName;
     CKContainerID * _containerID;
     bool  _forceEnableReadOnlyManatee;
+    unsigned long long  _mmcsEncryptionSupport;
+    NSString * _personaID;
     NSString * _sourceApplicationBundleID;
-    bool  _useMMCSEncryptionV2;
     bool  _useZoneWidePCS;
     bool  _wantsSiloedContext;
 }
 
-@property (nonatomic, retain) NSString *applicationBundleID;
-@property (nonatomic, retain) NSString *applicationContainerPath;
+@property (nonatomic, readonly) NSString *applicationBundleID;
+@property (nonatomic, readonly) NSString *applicationContainerPath;
 @property (nonatomic) bool bypassPCSEncryption;
 @property (nonatomic, retain) NSString *containerEncryptionServiceName;
-@property (nonatomic, retain) CKContainerID *containerID;
+@property (nonatomic, readonly) CKContainerID *containerID;
 @property (nonatomic) bool forceEnableReadOnlyManatee;
-@property (nonatomic, retain) NSString *sourceApplicationBundleID;
-@property (nonatomic) bool useMMCSEncryptionV2;
+@property (nonatomic) unsigned long long mmcsEncryptionSupport;
+@property (nonatomic, readonly) NSString *personaID;
+@property (nonatomic, readonly) NSString *sourceApplicationBundleID;
 @property (nonatomic) bool useZoneWidePCS;
 @property (nonatomic) bool wantsSiloedContext;
 
@@ -37,23 +39,19 @@
 - (id)description;
 - (bool)forceEnableReadOnlyManatee;
 - (unsigned long long)hash;
-- (id)initWithApplicationBundleID:(id)arg1 containerID:(id)arg2;
-- (id)initWithApplicationBundleID:(id)arg1 sourceApplicationBundleID:(id)arg2 applicationContainerPath:(id)arg3 containerID:(id)arg4;
-- (id)initWithApplicationBundleID:(id)arg1 sourceApplicationBundleID:(id)arg2 containerID:(id)arg3;
+- (id)initWithApplicationBundleID:(id)arg1 containerID:(id)arg2 personaID:(id)arg3;
+- (id)initWithApplicationBundleID:(id)arg1 sourceApplicationBundleID:(id)arg2 applicationContainerPath:(id)arg3 containerID:(id)arg4 personaID:(id)arg5;
+- (id)initWithApplicationBundleID:(id)arg1 sourceApplicationBundleID:(id)arg2 containerID:(id)arg3 personaID:(id)arg4;
 - (bool)isEqual:(id)arg1;
-- (id)pushTokenBundleID;
-- (void)setApplicationBundleID:(id)arg1;
-- (void)setApplicationContainerPath:(id)arg1;
+- (unsigned long long)mmcsEncryptionSupport;
+- (id)personaID;
 - (void)setBypassPCSEncryption:(bool)arg1;
 - (void)setContainerEncryptionServiceName:(id)arg1;
-- (void)setContainerID:(id)arg1;
 - (void)setForceEnableReadOnlyManatee:(bool)arg1;
-- (void)setSourceApplicationBundleID:(id)arg1;
-- (void)setUseMMCSEncryptionV2:(bool)arg1;
+- (void)setMmcsEncryptionSupport:(unsigned long long)arg1;
 - (void)setUseZoneWidePCS:(bool)arg1;
 - (void)setWantsSiloedContext:(bool)arg1;
 - (id)sourceApplicationBundleID;
-- (bool)useMMCSEncryptionV2;
 - (bool)useZoneWidePCS;
 - (bool)wantsSiloedContext;
 

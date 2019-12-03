@@ -12,6 +12,7 @@
     NSString * _cardIdentifier;
     NSString * _cardNumberSuffix;
     unsigned long long  _cardType;
+    NSNumber * _cityCode;
     NSString * _clearingNetworkData;
     NSString * _currencyCode;
     bool  _deviceScoreIdentifiersRequired;
@@ -24,9 +25,12 @@
     NSDate * _expirationDate;
     PKPaymentTransactionFees * _fees;
     PKPaymentTransactionForeignExchangeInformation * _foreignExchangeInformation;
+    bool  _fuzzyMatched;
     bool  _hasAssociatedPaymentApplication;
     bool  _hasNotificationServiceData;
     NSString * _identifier;
+    PKInstallmentPlanPayment * _installmentPayment;
+    PKInstallmentPlan * _installmentPlan;
     bool  _isCloudKitArchived;
     NSString * _issueReportIdentifier;
     NSDate * _lastMerchantReprocessingDate;
@@ -105,6 +109,7 @@
 @property (nonatomic, retain) NSString *cardIdentifier;
 @property (nonatomic, retain) NSString *cardNumberSuffix;
 @property (nonatomic) unsigned long long cardType;
+@property (nonatomic, copy) NSNumber *cityCode;
 @property (nonatomic, copy) NSString *clearingNetworkData;
 @property (nonatomic, readonly) PKCurrencyAmount *currencyAmount;
 @property (nonatomic, copy) NSString *currencyCode;
@@ -126,12 +131,16 @@
 @property (nonatomic, readonly) NSString *formattedBalanceAdjustmentAbsoluteAmount;
 @property (nonatomic, readonly) NSString *formattedBalanceAdjustmentAmount;
 @property (nonatomic, readonly) NSString *formattedBalanceAdjustmentSubtotalAmount;
+@property (nonatomic, readonly) bool fullyProcessed;
+@property (getter=isFuzzyMatched, nonatomic) bool fuzzyMatched;
 @property (nonatomic) bool hasAssociatedPaymentApplication;
 @property (nonatomic, readonly) bool hasBackingData;
 @property (nonatomic, readonly) bool hasEffectiveTransactionSource;
 @property (nonatomic) bool hasNotificationServiceData;
 @property (nonatomic, readonly) bool hasTransactionSource;
 @property (nonatomic, copy) NSString *identifier;
+@property (nonatomic, retain) PKInstallmentPlanPayment *installmentPayment;
+@property (nonatomic, retain) PKInstallmentPlan *installmentPlan;
 @property (nonatomic) bool isCloudKitArchived;
 @property (nonatomic, copy) NSString *issueReportIdentifier;
 @property (nonatomic, retain) NSDate *lastMerchantReprocessingDate;
@@ -234,6 +243,7 @@
 - (id)cardIdentifier;
 - (id)cardNumberSuffix;
 - (unsigned long long)cardType;
+- (id)cityCode;
 - (id)clearingNetworkData;
 - (id)currencyAmount;
 - (id)currencyCode;
@@ -261,6 +271,7 @@
 - (id)formattedBalanceAdjustmentAmount;
 - (id)formattedBalanceAdjustmentSubtotalAmount;
 - (id)formattedTransitTransactionMessage:(bool)arg1;
+- (bool)fullyProcessed;
 - (bool)hasAssociatedPaymentApplication;
 - (bool)hasBackingData;
 - (bool)hasCloudArchivableDeviceData;
@@ -272,10 +283,13 @@
 - (id)init;
 - (id)initWithCloudStoreCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)installmentPayment;
+- (id)installmentPlan;
 - (bool)isCloudArchivableDeviceDataEqual:(id)arg1;
 - (bool)isCloudKitArchived;
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToPaymentTransaction:(id)arg1;
+- (bool)isFuzzyMatched;
 - (id)issueReportIdentifier;
 - (unsigned long long)itemType;
 - (id)lastMerchantReprocessingDate;
@@ -338,6 +352,7 @@
 - (void)setCardIdentifier:(id)arg1;
 - (void)setCardNumberSuffix:(id)arg1;
 - (void)setCardType:(unsigned long long)arg1;
+- (void)setCityCode:(id)arg1;
 - (void)setClearingNetworkData:(id)arg1;
 - (void)setCurrencyCode:(id)arg1;
 - (void)setDeviceScoreIdentifiersRequired:(bool)arg1;
@@ -351,9 +366,12 @@
 - (void)setExpirationDate:(id)arg1;
 - (void)setFees:(id)arg1;
 - (void)setForeignExchangeInformation:(id)arg1;
+- (void)setFuzzyMatched:(bool)arg1;
 - (void)setHasAssociatedPaymentApplication:(bool)arg1;
 - (void)setHasNotificationServiceData:(bool)arg1;
 - (void)setIdentifier:(id)arg1;
+- (void)setInstallmentPayment:(id)arg1;
+- (void)setInstallmentPlan:(id)arg1;
 - (void)setIsCloudKitArchived:(bool)arg1;
 - (void)setIssueReportIdentifier:(id)arg1;
 - (void)setLastMerchantReprocessingDate:(id)arg1;

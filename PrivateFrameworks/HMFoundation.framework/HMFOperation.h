@@ -11,6 +11,7 @@
     HMFUnfairLock * _lock;
     NSObject<OS_dispatch_queue> * _queue;
     HMFTimer * _timer;
+    NSObject<OS_voucher> * _voucher;
 }
 
 @property (retain) HMFActivity *activity;
@@ -42,6 +43,7 @@
 - (bool)isExecuting;
 - (bool)isFinished;
 - (id)logIdentifier;
+- (void)main;
 - (void)setActivity:(id)arg1;
 - (void)setQualityOfService:(long long)arg1;
 - (void)setTimer:(id)arg1;

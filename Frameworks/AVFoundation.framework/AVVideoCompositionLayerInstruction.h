@@ -8,6 +8,8 @@
 
 @property (nonatomic, readonly) int trackID;
 
+// Image: /System/Library/Frameworks/AVFoundation.framework/AVFoundation
+
 + (void)initialize;
 + (bool)supportsSecureCoding;
 
@@ -22,7 +24,6 @@
 - (void)dealloc;
 - (id)dictionaryRepresentationWithTimeRange:(struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; })arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (void)finalize;
 - (bool)getCropRectangleRampForTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 startCropRectangle:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg2 endCropRectangle:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg3 timeRange:(struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; }*)arg4;
 - (bool)getOpacityRampForTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 startOpacity:(float*)arg2 endOpacity:(float*)arg3 timeRange:(struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; }*)arg4;
 - (bool)getTransformRampForTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 startTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; }*)arg2 endTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; }*)arg3 timeRange:(struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; }*)arg4;
@@ -38,5 +39,9 @@
 - (void)setTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg1 atTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2;
 - (void)setTransformRampFromStartTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg1 toEndTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg2 timeRange:(struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; })arg3;
 - (int)trackID;
+
+// Image: /System/Library/PrivateFrameworks/Memories.framework/Memories
+
+- (id)konaSerializeVideoLayerInstruction;
 
 @end

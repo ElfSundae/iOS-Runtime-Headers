@@ -6,7 +6,7 @@
     NSObject<OS_dispatch_mach> * _channel;
     NSMutableArray * _clientPorts;
     struct { 
-        bool itemIsEnabled[41]; 
+        bool itemIsEnabled[42]; 
         BOOL timeString[64]; 
         BOOL shortTimeString[64]; 
         BOOL dateString[256]; 
@@ -22,8 +22,11 @@
         BOOL operatorDirectory[1024]; 
         unsigned int serviceContentType; 
         unsigned int secondaryServiceContentType; 
+        unsigned int cellLowDataModeActive : 1; 
+        unsigned int secondaryCellLowDataModeActive : 1; 
         int wifiSignalStrengthRaw; 
         int wifiSignalStrengthBars; 
+        unsigned int wifiLowDataModeActive : 1; 
         unsigned int dataNetworkType; 
         unsigned int secondaryDataNetworkType; 
         int batteryCapacity; 
@@ -39,6 +42,7 @@
         unsigned int displayRawGSMSignal : 1; 
         unsigned int displayRawWifiSignal : 1; 
         unsigned int locationIconType : 1; 
+        unsigned int voiceControlIconType : 2; 
         unsigned int quietModeInactive : 1; 
         unsigned int tetheringConnectionCount; 
         unsigned int batterySaverModeActive : 1; 
@@ -48,6 +52,7 @@
         BOOL breadcrumbSecondaryTitle[256]; 
         BOOL personName[100]; 
         unsigned int electronicTollCollectionAvailable : 1; 
+        unsigned int radarAvailable : 1; 
         unsigned int wifiLinkWarning : 1; 
         unsigned int wifiSearching : 1; 
         double backgroundActivityDisplayStartDate; 
@@ -60,9 +65,8 @@
     struct __CFDictionary { } * _doubleHeightStatusStrings;
     NSMutableDictionary * _glowAnimationEndTimes;
     struct __CFDictionary { } * _glowAnimationStates;
-    _UIStatusBarTimeStringServerCache * _ioSurfaceCache;
     struct { 
-        bool overrideItemIsEnabled[41]; 
+        bool overrideItemIsEnabled[42]; 
         unsigned int overrideTimeString : 1; 
         unsigned int overrideDateString : 1; 
         unsigned int overrideGsmSignalStrengthRaw : 1; 
@@ -98,7 +102,7 @@
         unsigned int overridePrimaryServiceBadgeString : 1; 
         unsigned int overrideSecondaryServiceBadgeString : 1; 
         struct { 
-            bool itemIsEnabled[41]; 
+            bool itemIsEnabled[42]; 
             BOOL timeString[64]; 
             BOOL shortTimeString[64]; 
             BOOL dateString[256]; 
@@ -114,8 +118,11 @@
             BOOL operatorDirectory[1024]; 
             unsigned int serviceContentType; 
             unsigned int secondaryServiceContentType; 
+            unsigned int cellLowDataModeActive : 1; 
+            unsigned int secondaryCellLowDataModeActive : 1; 
             int wifiSignalStrengthRaw; 
             int wifiSignalStrengthBars; 
+            unsigned int wifiLowDataModeActive : 1; 
             unsigned int dataNetworkType; 
             unsigned int secondaryDataNetworkType; 
             int batteryCapacity; 
@@ -131,6 +138,7 @@
             unsigned int displayRawGSMSignal : 1; 
             unsigned int displayRawWifiSignal : 1; 
             unsigned int locationIconType : 1; 
+            unsigned int voiceControlIconType : 2; 
             unsigned int quietModeInactive : 1; 
             unsigned int tetheringConnectionCount; 
             unsigned int batterySaverModeActive : 1; 
@@ -140,6 +148,7 @@
             BOOL breadcrumbSecondaryTitle[256]; 
             BOOL personName[100]; 
             unsigned int electronicTollCollectionAvailable : 1; 
+            unsigned int radarAvailable : 1; 
             unsigned int wifiLinkWarning : 1; 
             unsigned int wifiSearching : 1; 
             double backgroundActivityDisplayStartDate; 
@@ -151,7 +160,7 @@
     }  _overrides;
     NSMutableArray * _publishers;
     struct { 
-        bool itemIsEnabled[41]; 
+        bool itemIsEnabled[42]; 
         BOOL timeString[64]; 
         BOOL shortTimeString[64]; 
         BOOL dateString[256]; 
@@ -167,8 +176,11 @@
         BOOL operatorDirectory[1024]; 
         unsigned int serviceContentType; 
         unsigned int secondaryServiceContentType; 
+        unsigned int cellLowDataModeActive : 1; 
+        unsigned int secondaryCellLowDataModeActive : 1; 
         int wifiSignalStrengthRaw; 
         int wifiSignalStrengthBars; 
+        unsigned int wifiLowDataModeActive : 1; 
         unsigned int dataNetworkType; 
         unsigned int secondaryDataNetworkType; 
         int batteryCapacity; 
@@ -184,6 +196,7 @@
         unsigned int displayRawGSMSignal : 1; 
         unsigned int displayRawWifiSignal : 1; 
         unsigned int locationIconType : 1; 
+        unsigned int voiceControlIconType : 2; 
         unsigned int quietModeInactive : 1; 
         unsigned int tetheringConnectionCount; 
         unsigned int batterySaverModeActive : 1; 
@@ -193,6 +206,7 @@
         BOOL breadcrumbSecondaryTitle[256]; 
         BOOL personName[100]; 
         unsigned int electronicTollCollectionAvailable : 1; 
+        unsigned int radarAvailable : 1; 
         unsigned int wifiLinkWarning : 1; 
         unsigned int wifiSearching : 1; 
         double backgroundActivityDisplayStartDate; 
@@ -203,8 +217,6 @@
     }  _statusBarData;
     NSObject<OS_dispatch_workloop> * _workloop;
 }
-
-@property (nonatomic, readonly) _UIStatusBarTimeStringServerCache *ioSurfaceCache;
 
 + (id)sharedInstance;
 
@@ -220,8 +232,8 @@
 - (bool)_permanentizeStatusBarOverrideData;
 - (void)_postDoubleHeightStatus:(char *)arg1 forStyle:(long long)arg2;
 - (void)_postGlowAnimationState:(bool)arg1 forStyle:(long long)arg2;
-- (void)_postStatusBarData:(struct { bool x1[41]; BOOL x2[64]; BOOL x3[64]; BOOL x4[256]; int x5; int x6; int x7; int x8; BOOL x9[100]; BOOL x10[100]; BOOL x11[100]; BOOL x12[100]; BOOL x13[2][100]; BOOL x14[1024]; unsigned int x15; unsigned int x16; int x17; int x18; unsigned int x19; unsigned int x20; int x21; unsigned int x22; BOOL x23[150]; int x24; int x25; unsigned int x26 : 1; unsigned int x27 : 1; unsigned int x28 : 1; BOOL x29[256]; unsigned int x30 : 1; unsigned int x31 : 1; unsigned int x32 : 1; unsigned int x33 : 1; unsigned int x34 : 1; unsigned int x35; unsigned int x36 : 1; unsigned int x37 : 1; unsigned int x38 : 1; BOOL x39[256]; BOOL x40[256]; BOOL x41[100]; unsigned int x42 : 1; unsigned int x43 : 1; unsigned int x44 : 1; double x45; unsigned int x46 : 1; unsigned int x47 : 1; BOOL x48[100]; BOOL x49[100]; }*)arg1 actions:(int)arg2 animated:(bool)arg3;
-- (void)_postStatusBarOverrideData:(struct { bool x1[41]; unsigned int x2 : 1; unsigned int x3 : 1; unsigned int x4 : 1; unsigned int x5 : 1; unsigned int x6 : 1; unsigned int x7 : 1; unsigned int x8 : 1; unsigned int x9 : 1; unsigned int x10 : 2; unsigned int x11 : 1; unsigned int x12 : 1; unsigned int x13 : 1; unsigned int x14 : 1; unsigned int x15 : 1; unsigned int x16 : 1; unsigned int x17 : 1; unsigned int x18 : 1; unsigned int x19 : 1; unsigned int x20 : 1; unsigned int x21 : 1; unsigned int x22 : 1; unsigned int x23 : 1; unsigned int x24 : 1; unsigned int x25 : 1; unsigned int x26 : 1; unsigned int x27 : 1; unsigned int x28; unsigned int x29 : 1; unsigned int x30 : 1; unsigned int x31 : 1; unsigned int x32 : 1; unsigned int x33 : 1; unsigned int x34 : 1; unsigned int x35 : 1; struct { bool x_36_1_1[41]; BOOL x_36_1_2[64]; BOOL x_36_1_3[64]; BOOL x_36_1_4[256]; int x_36_1_5; int x_36_1_6; int x_36_1_7; int x_36_1_8; BOOL x_36_1_9[100]; BOOL x_36_1_10[100]; BOOL x_36_1_11[100]; BOOL x_36_1_12[100]; BOOL x_36_1_13[2][100]; BOOL x_36_1_14[1024]; unsigned int x_36_1_15; unsigned int x_36_1_16; int x_36_1_17; int x_36_1_18; unsigned int x_36_1_19; unsigned int x_36_1_20; int x_36_1_21; unsigned int x_36_1_22; BOOL x_36_1_23[150]; int x_36_1_24; int x_36_1_25; unsigned int x_36_1_26 : 1; unsigned int x_36_1_27 : 1; unsigned int x_36_1_28 : 1; BOOL x_36_1_29[256]; unsigned int x_36_1_30 : 1; unsigned int x_36_1_31 : 1; unsigned int x_36_1_32 : 1; unsigned int x_36_1_33 : 1; unsigned int x_36_1_34 : 1; unsigned int x_36_1_35; unsigned int x_36_1_36 : 1; unsigned int x_36_1_37 : 1; unsigned int x_36_1_38 : 1; BOOL x_36_1_39[256]; BOOL x_36_1_40[256]; BOOL x_36_1_41[100]; unsigned int x_36_1_42 : 1; unsigned int x_36_1_43 : 1; unsigned int x_36_1_44 : 1; double x_36_1_45; unsigned int x_36_1_46 : 1; unsigned int x_36_1_47 : 1; } x36; }*)arg1;
+- (void)_postStatusBarData:(struct { bool x1[42]; BOOL x2[64]; BOOL x3[64]; BOOL x4[256]; int x5; int x6; int x7; int x8; BOOL x9[100]; BOOL x10[100]; BOOL x11[100]; BOOL x12[100]; BOOL x13[2][100]; BOOL x14[1024]; unsigned int x15; unsigned int x16; unsigned int x17 : 1; unsigned int x18 : 1; int x19; int x20; unsigned int x21 : 1; unsigned int x22; unsigned int x23; int x24; unsigned int x25; BOOL x26[150]; int x27; int x28; unsigned int x29 : 1; unsigned int x30 : 1; unsigned int x31 : 1; BOOL x32[256]; unsigned int x33 : 1; unsigned int x34 : 1; unsigned int x35 : 1; unsigned int x36 : 1; unsigned int x37 : 2; unsigned int x38 : 1; unsigned int x39; unsigned int x40 : 1; unsigned int x41 : 1; unsigned int x42 : 1; BOOL x43[256]; BOOL x44[256]; BOOL x45[100]; unsigned int x46 : 1; unsigned int x47 : 1; unsigned int x48 : 1; unsigned int x49 : 1; double x50; unsigned int x51 : 1; unsigned int x52 : 1; BOOL x53[100]; BOOL x54[100]; }*)arg1 actions:(int)arg2 animated:(bool)arg3;
+- (void)_postStatusBarOverrideData:(struct { bool x1[42]; unsigned int x2 : 1; unsigned int x3 : 1; unsigned int x4 : 1; unsigned int x5 : 1; unsigned int x6 : 1; unsigned int x7 : 1; unsigned int x8 : 1; unsigned int x9 : 1; unsigned int x10 : 2; unsigned int x11 : 1; unsigned int x12 : 1; unsigned int x13 : 1; unsigned int x14 : 1; unsigned int x15 : 1; unsigned int x16 : 1; unsigned int x17 : 1; unsigned int x18 : 1; unsigned int x19 : 1; unsigned int x20 : 1; unsigned int x21 : 1; unsigned int x22 : 1; unsigned int x23 : 1; unsigned int x24 : 1; unsigned int x25 : 1; unsigned int x26 : 1; unsigned int x27 : 1; unsigned int x28; unsigned int x29 : 1; unsigned int x30 : 1; unsigned int x31 : 1; unsigned int x32 : 1; unsigned int x33 : 1; unsigned int x34 : 1; unsigned int x35 : 1; struct { bool x_36_1_1[42]; BOOL x_36_1_2[64]; BOOL x_36_1_3[64]; BOOL x_36_1_4[256]; int x_36_1_5; int x_36_1_6; int x_36_1_7; int x_36_1_8; BOOL x_36_1_9[100]; BOOL x_36_1_10[100]; BOOL x_36_1_11[100]; BOOL x_36_1_12[100]; BOOL x_36_1_13[2][100]; BOOL x_36_1_14[1024]; unsigned int x_36_1_15; unsigned int x_36_1_16; unsigned int x_36_1_17 : 1; unsigned int x_36_1_18 : 1; int x_36_1_19; int x_36_1_20; unsigned int x_36_1_21 : 1; unsigned int x_36_1_22; unsigned int x_36_1_23; int x_36_1_24; unsigned int x_36_1_25; BOOL x_36_1_26[150]; int x_36_1_27; int x_36_1_28; unsigned int x_36_1_29 : 1; unsigned int x_36_1_30 : 1; unsigned int x_36_1_31 : 1; BOOL x_36_1_32[256]; unsigned int x_36_1_33 : 1; unsigned int x_36_1_34 : 1; unsigned int x_36_1_35 : 1; unsigned int x_36_1_36 : 1; unsigned int x_36_1_37 : 2; unsigned int x_36_1_38 : 1; unsigned int x_36_1_39; unsigned int x_36_1_40 : 1; unsigned int x_36_1_41 : 1; unsigned int x_36_1_42 : 1; BOOL x_36_1_43[256]; BOOL x_36_1_44[256]; BOOL x_36_1_45[100]; unsigned int x_36_1_46 : 1; } x36; }*)arg1;
 - (id)_publisherForPort:(unsigned int)arg1;
 - (void)_removeAnimationEndTimesForOverrides:(int)arg1;
 - (void)_removeClient:(struct __CFMachPort { }*)arg1;
@@ -229,11 +241,10 @@
 - (void)_removeStatusBarItem:(int)arg1 forPublisher:(id)arg2;
 - (void)_removeStyleOverrides:(int)arg1 forPublisher:(id)arg2;
 - (void)_setAnimationEndTimesForOverrides:(int)arg1;
-- (struct { bool x1[41]; BOOL x2[64]; BOOL x3[64]; BOOL x4[256]; int x5; int x6; int x7; int x8; BOOL x9[100]; BOOL x10[100]; BOOL x11[100]; BOOL x12[100]; BOOL x13[2][100]; BOOL x14[1024]; unsigned int x15; unsigned int x16; int x17; int x18; unsigned int x19; unsigned int x20; int x21; unsigned int x22; BOOL x23[150]; int x24; int x25; unsigned int x26 : 1; unsigned int x27 : 1; unsigned int x28 : 1; BOOL x29[256]; unsigned int x30 : 1; unsigned int x31 : 1; unsigned int x32 : 1; unsigned int x33 : 1; unsigned int x34 : 1; unsigned int x35; unsigned int x36 : 1; unsigned int x37 : 1; unsigned int x38 : 1; BOOL x39[256]; BOOL x40[256]; BOOL x41[100]; unsigned int x42 : 1; unsigned int x43 : 1; unsigned int x44 : 1; double x45; unsigned int x46 : 1; unsigned int x47 : 1; BOOL x48[100]; BOOL x49[100]; }*)_statusBarData;
-- (struct { bool x1[41]; unsigned int x2 : 1; unsigned int x3 : 1; unsigned int x4 : 1; unsigned int x5 : 1; unsigned int x6 : 1; unsigned int x7 : 1; unsigned int x8 : 1; unsigned int x9 : 1; unsigned int x10 : 2; unsigned int x11 : 1; unsigned int x12 : 1; unsigned int x13 : 1; unsigned int x14 : 1; unsigned int x15 : 1; unsigned int x16 : 1; unsigned int x17 : 1; unsigned int x18 : 1; unsigned int x19 : 1; unsigned int x20 : 1; unsigned int x21 : 1; unsigned int x22 : 1; unsigned int x23 : 1; unsigned int x24 : 1; unsigned int x25 : 1; unsigned int x26 : 1; unsigned int x27 : 1; unsigned int x28; unsigned int x29 : 1; unsigned int x30 : 1; unsigned int x31 : 1; unsigned int x32 : 1; unsigned int x33 : 1; unsigned int x34 : 1; unsigned int x35 : 1; struct { bool x_36_1_1[41]; BOOL x_36_1_2[64]; BOOL x_36_1_3[64]; BOOL x_36_1_4[256]; int x_36_1_5; int x_36_1_6; int x_36_1_7; int x_36_1_8; BOOL x_36_1_9[100]; BOOL x_36_1_10[100]; BOOL x_36_1_11[100]; BOOL x_36_1_12[100]; BOOL x_36_1_13[2][100]; BOOL x_36_1_14[1024]; unsigned int x_36_1_15; unsigned int x_36_1_16; int x_36_1_17; int x_36_1_18; unsigned int x_36_1_19; unsigned int x_36_1_20; int x_36_1_21; unsigned int x_36_1_22; BOOL x_36_1_23[150]; int x_36_1_24; int x_36_1_25; unsigned int x_36_1_26 : 1; unsigned int x_36_1_27 : 1; unsigned int x_36_1_28 : 1; BOOL x_36_1_29[256]; unsigned int x_36_1_30 : 1; unsigned int x_36_1_31 : 1; unsigned int x_36_1_32 : 1; unsigned int x_36_1_33 : 1; unsigned int x_36_1_34 : 1; unsigned int x_36_1_35; unsigned int x_36_1_36 : 1; unsigned int x_36_1_37 : 1; unsigned int x_36_1_38 : 1; BOOL x_36_1_39[256]; BOOL x_36_1_40[256]; BOOL x_36_1_41[100]; unsigned int x_36_1_42 : 1; unsigned int x_36_1_43 : 1; unsigned int x_36_1_44 : 1; double x_36_1_45; unsigned int x_36_1_46 : 1; unsigned int x_36_1_47 : 1; } x36; }*)_statusBarOverrideData;
+- (struct { bool x1[42]; BOOL x2[64]; BOOL x3[64]; BOOL x4[256]; int x5; int x6; int x7; int x8; BOOL x9[100]; BOOL x10[100]; BOOL x11[100]; BOOL x12[100]; BOOL x13[2][100]; BOOL x14[1024]; unsigned int x15; unsigned int x16; unsigned int x17 : 1; unsigned int x18 : 1; int x19; int x20; unsigned int x21 : 1; unsigned int x22; unsigned int x23; int x24; unsigned int x25; BOOL x26[150]; int x27; int x28; unsigned int x29 : 1; unsigned int x30 : 1; unsigned int x31 : 1; BOOL x32[256]; unsigned int x33 : 1; unsigned int x34 : 1; unsigned int x35 : 1; unsigned int x36 : 1; unsigned int x37 : 2; unsigned int x38 : 1; unsigned int x39; unsigned int x40 : 1; unsigned int x41 : 1; unsigned int x42 : 1; BOOL x43[256]; BOOL x44[256]; BOOL x45[100]; unsigned int x46 : 1; unsigned int x47 : 1; unsigned int x48 : 1; unsigned int x49 : 1; double x50; unsigned int x51 : 1; unsigned int x52 : 1; BOOL x53[100]; BOOL x54[100]; }*)_statusBarData;
+- (struct { bool x1[42]; unsigned int x2 : 1; unsigned int x3 : 1; unsigned int x4 : 1; unsigned int x5 : 1; unsigned int x6 : 1; unsigned int x7 : 1; unsigned int x8 : 1; unsigned int x9 : 1; unsigned int x10 : 2; unsigned int x11 : 1; unsigned int x12 : 1; unsigned int x13 : 1; unsigned int x14 : 1; unsigned int x15 : 1; unsigned int x16 : 1; unsigned int x17 : 1; unsigned int x18 : 1; unsigned int x19 : 1; unsigned int x20 : 1; unsigned int x21 : 1; unsigned int x22 : 1; unsigned int x23 : 1; unsigned int x24 : 1; unsigned int x25 : 1; unsigned int x26 : 1; unsigned int x27 : 1; unsigned int x28; unsigned int x29 : 1; unsigned int x30 : 1; unsigned int x31 : 1; unsigned int x32 : 1; unsigned int x33 : 1; unsigned int x34 : 1; unsigned int x35 : 1; struct { bool x_36_1_1[42]; BOOL x_36_1_2[64]; BOOL x_36_1_3[64]; BOOL x_36_1_4[256]; int x_36_1_5; int x_36_1_6; int x_36_1_7; int x_36_1_8; BOOL x_36_1_9[100]; BOOL x_36_1_10[100]; BOOL x_36_1_11[100]; BOOL x_36_1_12[100]; BOOL x_36_1_13[2][100]; BOOL x_36_1_14[1024]; unsigned int x_36_1_15; unsigned int x_36_1_16; unsigned int x_36_1_17 : 1; unsigned int x_36_1_18 : 1; int x_36_1_19; int x_36_1_20; unsigned int x_36_1_21 : 1; unsigned int x_36_1_22; unsigned int x_36_1_23; int x_36_1_24; unsigned int x_36_1_25; BOOL x_36_1_26[150]; int x_36_1_27; int x_36_1_28; unsigned int x_36_1_29 : 1; unsigned int x_36_1_30 : 1; unsigned int x_36_1_31 : 1; BOOL x_36_1_32[256]; unsigned int x_36_1_33 : 1; unsigned int x_36_1_34 : 1; unsigned int x_36_1_35 : 1; unsigned int x_36_1_36 : 1; unsigned int x_36_1_37 : 2; unsigned int x_36_1_38 : 1; unsigned int x_36_1_39; unsigned int x_36_1_40 : 1; unsigned int x_36_1_41 : 1; unsigned int x_36_1_42 : 1; BOOL x_36_1_43[256]; BOOL x_36_1_44[256]; BOOL x_36_1_45[100]; unsigned int x_36_1_46 : 1; } x36; }*)_statusBarOverrideData;
 - (int)_styleOverrides;
 - (void)async:(id /* block */)arg1;
 - (id)init;
-- (id)ioSurfaceCache;
 
 @end

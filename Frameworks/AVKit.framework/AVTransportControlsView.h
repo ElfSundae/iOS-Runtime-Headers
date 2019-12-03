@@ -5,10 +5,9 @@
 @interface AVTransportControlsView : AVView <AVScrubberDelegate> {
     AVBackdropView * _backdropView;
     bool  _backdropViewNeedsLayout;
-    _UIVisualEffectBackdropView * _captureView;
     bool  _collapsed;
-    NSArray * _customButtons;
     UIView * _customContentTransitioningInfoPanel;
+    NSArray * _customItems;
     <AVTransportControlsViewDelegate> * _delegate;
     AVBackdropView * _detachedExtraContentBackdropView;
     NSArray * _doubleRowLayoutConstraints;
@@ -27,6 +26,7 @@
     bool  _liveStreamingControlsIncludeScrubber;
     AVButton * _mediaSelectionButton;
     double  _minimumRequiredWidth;
+    bool  _removed;
     AVPlaybackControlsRoutePickerView * _routePickerView;
     UILabel * _scrubInstructionsBackdropLabel;
     UILabel * _scrubInstructionsLabel;
@@ -47,11 +47,11 @@
 
 @property (nonatomic, readonly) AVBackdropView *backdropView;
 @property (nonatomic) bool backdropViewNeedsLayout;
-@property (nonatomic, readonly) _UIVisualEffectBackdropView *captureView;
+@property (nonatomic, readonly) bool canShowScrubInstructions;
 @property (getter=isCollapsed, nonatomic) bool collapsed;
 @property (getter=isCollapsedOrExcluded, nonatomic, readonly) bool collapsedOrExcluded;
-@property (nonatomic, copy) NSArray *customButtons;
 @property (nonatomic, retain) UIView *customContentTransitioningInfoPanel;
+@property (nonatomic, copy) NSArray *customItems;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <AVTransportControlsViewDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -70,6 +70,7 @@
 @property (nonatomic) bool liveStreamingControlsIncludeScrubber;
 @property (nonatomic, readonly) AVButton *mediaSelectionButton;
 @property (nonatomic, readonly) double minimumRequiredWidth;
+@property (getter=isRemoved, nonatomic) bool removed;
 @property (nonatomic, readonly) AVPlaybackControlsRoutePickerView *routePickerView;
 @property (nonatomic, readonly) UILabel *scrubInstructionsBackdropLabel;
 @property (nonatomic, readonly) UILabel *scrubInstructionsLabel;
@@ -101,9 +102,9 @@
 - (id)backdropView;
 - (bool)backdropViewNeedsLayout;
 - (void)beginScrubbing:(id)arg1;
-- (id)captureView;
-- (id)customButtons;
+- (bool)canShowScrubInstructions;
 - (id)customContentTransitioningInfoPanel;
+- (id)customItems;
 - (id)delegate;
 - (id)detachedExtraContentBackdropView;
 - (id)doubleRowLayoutConstraints;
@@ -113,12 +114,13 @@
 - (struct CGSize { double x1; double x2; })extrinsicContentSize;
 - (bool)hasAlternateAppearance;
 - (bool)hasFullScreenAppearance;
-- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 styleSheet:(id)arg2 captureView:(id)arg3;
+- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 styleSheet:(id)arg2;
 - (struct CGSize { double x1; double x2; })intrinsicContentSize;
 - (bool)isCollapsed;
 - (bool)isCollapsedOrExcluded;
 - (bool)isDoubleRowLayoutEnabled;
 - (bool)isIncluded;
+- (bool)isRemoved;
 - (void)layoutSubviews;
 - (id)liveBroadcastLabel;
 - (id)liveBroadcastScrubberLabel;
@@ -136,8 +138,8 @@
 - (float)scrubberValueWhenScrubInstructionsTimerBegan;
 - (void)setBackdropViewNeedsLayout:(bool)arg1;
 - (void)setCollapsed:(bool)arg1;
-- (void)setCustomButtons:(id)arg1;
 - (void)setCustomContentTransitioningInfoPanel:(id)arg1;
+- (void)setCustomItems:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDetachedExtraContentBackdropView:(id)arg1;
 - (void)setDoubleRowLayoutEnabled:(bool)arg1;
@@ -146,6 +148,7 @@
 - (void)setHasFullScreenAppearance:(bool)arg1;
 - (void)setIncluded:(bool)arg1;
 - (void)setLiveStreamingControlsIncludeScrubber:(bool)arg1;
+- (void)setRemoved:(bool)arg1;
 - (void)setScrubInstructionsTimer:(id)arg1;
 - (void)setScrubberValueWhenScrubInstructionsTimerBegan:(float)arg1;
 - (void)setShowsLiveStreamingControls:(bool)arg1;

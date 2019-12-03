@@ -20,6 +20,7 @@
 + (id)groupsFromABGroups:(struct __CFArray { }*)arg1;
 + (void)initialize;
 + (id)numberFromIntegerABBytes:(char *)arg1 length:(unsigned long long)arg2;
++ (id)os_log;
 + (id /* block */)personToContactTransformWithKeysToFetch:(id)arg1 mutable:(bool)arg2;
 + (const struct __CFSet { }*)requiredABPropertyIDSetForKeysToFetch:(id)arg1;
 + (id)stringFromABBytes:(char *)arg1 length:(unsigned long long)arg2;

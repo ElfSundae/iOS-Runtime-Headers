@@ -20,6 +20,7 @@
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } alignmentRect;
 @property (nonatomic, retain) NSString *alignmentRectString;
 @property (nonatomic) bool allowsCompactCompression;
+@property (nonatomic) bool allowsDeepmap2Compression;
 @property (nonatomic) bool allowsDeepmapCompression;
 @property (nonatomic) bool allowsHevcCompression;
 @property (nonatomic) bool allowsMultiPassEncoding;

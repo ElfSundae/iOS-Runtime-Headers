@@ -19,15 +19,22 @@
     bool  _fenceTrackingEnabled;
     bool  _hangtracerEnabled;
     bool  _hasInternalSettings;
-    int  _htseEnablementPeriodDays;
-    bool  _htseKillSwitch;
-    double  _htseTimeoutTimestampSec;
+    bool  _htTailspinEnabled;
     bool  _hudEnabled;
     unsigned int  _hudThresholdMSec;
     bool  _isInternal;
     bool  _keepTailspinsLegacy;
     bool  _memoryLoggingEnabled;
     unsigned int  _memoryLoggingIntervalSec;
+    bool  _pdseAllowEnableTailspin;
+    bool  _pdseCATailspinKillSwitch;
+    int  _pdseCATailspinPeriodDays;
+    int  _pdseHTPeriodDays;
+    bool  _pdseHTRateOnlyKillSwitch;
+    int  _pdseHTRateOnlyPeriodDays;
+    bool  _pdseHangTracerKillSwitch;
+    bool  _pdseSentryKillSwitch;
+    int  _pdseSentryPeriodDays;
     struct HTPrefInit { struct __CFString {} *x1; void *x2; union HTPrefDefaultVal { bool x_3_1_1; int x_3_1_2; unsigned int x_3_1_3; unsigned long long x_3_1_4; double x_3_1_5; struct __CFString {} *x_3_1_6; } x3; union HTPrefDefaultVal { bool x_4_1_1; int x_4_1_2; unsigned int x_4_1_3; unsigned long long x_4_1_4; double x_4_1_5; struct __CFString {} *x_4_1_6; } x4; unsigned long long x5; SEL x6; } * _prefInitList;
     unsigned long long  _reportPeriodMATU;
     int  _runLoopHangDailyLogLimit;
@@ -40,6 +47,7 @@
     unsigned long long  _runloopHangTimeoutDurationMSec;
     unsigned long long  _runloopLongHangDurationThresholdMSec;
     unsigned long long  _savedTailspinMaxMB;
+    bool  _shouldAllowSentryEnablement;
     bool  _shouldCollectOSSignposts;
     bool  _shouldCollectOSSignpostsDeferred;
     bool  _shouldCompressSavedTailspins;
@@ -55,7 +63,6 @@
     int  _slowAppActivationPerAppMaxLogLimit;
     bool  _slowAppActivationTailspinEnabled;
     unsigned long long  _slowAppActivationThresholdMSec;
-    bool  _tailspinEnabled;
     NSString * _tailspinSaveFormat;
     bool  _thirdPartyRunLoopHangLogsEnabled;
 }
@@ -76,15 +83,22 @@
 @property (readonly) bool fenceTrackingEnabled;
 @property (readonly) bool hangtracerEnabled;
 @property (readonly) bool hasInternalSettings;
-@property (readonly) int htseEnablementPeriodDays;
-@property (readonly) bool htseKillSwitch;
-@property (readonly) double htseTimeoutTimestampSec;
+@property (readonly) bool htTailspinEnabled;
 @property (readonly) bool hudEnabled;
 @property (readonly) unsigned int hudThresholdMSec;
 @property (readonly) bool isInternal;
 @property bool keepTailspinsLegacy;
 @property (readonly) bool memoryLoggingEnabled;
 @property unsigned int memoryLoggingIntervalSec;
+@property (readonly) bool pdseAllowEnableTailspin;
+@property (readonly) bool pdseCATailspinKillSwitch;
+@property (readonly) int pdseCATailspinPeriodDays;
+@property (readonly) int pdseHTPeriodDays;
+@property (readonly) bool pdseHTRateOnlyKillSwitch;
+@property (readonly) int pdseHTRateOnlyPeriodDays;
+@property (readonly) bool pdseHangTracerKillSwitch;
+@property (readonly) bool pdseSentryKillSwitch;
+@property (readonly) int pdseSentryPeriodDays;
 @property (readonly) struct HTPrefInit { struct __CFString {} *x1; void *x2; union HTPrefDefaultVal { bool x_3_1_1; int x_3_1_2; unsigned int x_3_1_3; unsigned long long x_3_1_4; double x_3_1_5; struct __CFString {} *x_3_1_6; } x3; union HTPrefDefaultVal { bool x_4_1_1; int x_4_1_2; unsigned int x_4_1_3; unsigned long long x_4_1_4; double x_4_1_5; struct __CFString {} *x_4_1_6; } x4; unsigned long long x5; SEL x6; }*prefInitList;
 @property (readonly) unsigned long long reportPeriodMATU;
 @property (readonly) int runLoopHangDailyLogLimit;
@@ -97,6 +111,7 @@
 @property (readonly) unsigned long long runloopHangTimeoutDurationMSec;
 @property (readonly) unsigned long long runloopLongHangDurationThresholdMSec;
 @property (readonly) unsigned long long savedTailspinMaxMB;
+@property bool shouldAllowSentryEnablement;
 @property (readonly) bool shouldCollectOSSignposts;
 @property (readonly) bool shouldCollectOSSignpostsDeferred;
 @property (readonly) bool shouldCompressSavedTailspins;
@@ -112,7 +127,6 @@
 @property (readonly) int slowAppActivationPerAppMaxLogLimit;
 @property (readonly) bool slowAppActivationTailspinEnabled;
 @property (readonly) unsigned long long slowAppActivationThresholdMSec;
-@property (readonly) bool tailspinEnabled;
 @property (retain) NSString *tailspinSaveFormat;
 @property (readonly) bool thirdPartyRunLoopHangLogsEnabled;
 
@@ -141,9 +155,7 @@
 - (bool)fenceTrackingEnabled;
 - (bool)hangtracerEnabled;
 - (bool)hasInternalSettings;
-- (int)htseEnablementPeriodDays;
-- (bool)htseKillSwitch;
-- (double)htseTimeoutTimestampSec;
+- (bool)htTailspinEnabled;
 - (bool)hudEnabled;
 - (unsigned int)hudThresholdMSec;
 - (void)initBoolProperty:(struct HTPrefInit { struct __CFString {} *x1; void *x2; union HTPrefDefaultVal { bool x_3_1_1; int x_3_1_2; unsigned int x_3_1_3; unsigned long long x_3_1_4; double x_3_1_5; struct __CFString {} *x_3_1_6; } x3; union HTPrefDefaultVal { bool x_4_1_1; int x_4_1_2; unsigned int x_4_1_3; unsigned long long x_4_1_4; double x_4_1_5; struct __CFString {} *x_4_1_6; } x4; unsigned long long x5; SEL x6; }*)arg1;
@@ -163,6 +175,15 @@
 - (bool)keepTailspinsLegacy;
 - (bool)memoryLoggingEnabled;
 - (unsigned int)memoryLoggingIntervalSec;
+- (bool)pdseAllowEnableTailspin;
+- (bool)pdseCATailspinKillSwitch;
+- (int)pdseCATailspinPeriodDays;
+- (int)pdseHTPeriodDays;
+- (bool)pdseHTRateOnlyKillSwitch;
+- (int)pdseHTRateOnlyPeriodDays;
+- (bool)pdseHangTracerKillSwitch;
+- (bool)pdseSentryKillSwitch;
+- (int)pdseSentryPeriodDays;
 - (struct HTPrefInit { struct __CFString {} *x1; void *x2; union HTPrefDefaultVal { bool x_3_1_1; int x_3_1_2; unsigned int x_3_1_3; unsigned long long x_3_1_4; double x_3_1_5; struct __CFString {} *x_3_1_6; } x3; union HTPrefDefaultVal { bool x_4_1_1; int x_4_1_2; unsigned int x_4_1_3; unsigned long long x_4_1_4; double x_4_1_5; struct __CFString {} *x_4_1_6; } x4; unsigned long long x5; SEL x6; }*)prefInitList;
 - (id)prefNamed:(const struct __CFString { }*)arg1 domain:(const struct __CFString { }*)arg2 profile:(id)arg3 matchingSelector:(SEL)arg4;
 - (void)refreshHTPrefs;
@@ -179,6 +200,7 @@
 - (unsigned long long)savedTailspinMaxMB;
 - (void)setKeepTailspinsLegacy:(bool)arg1;
 - (void)setMemoryLoggingIntervalSec:(unsigned int)arg1;
+- (void)setShouldAllowSentryEnablement:(bool)arg1;
 - (void)setShouldPostHTPrefsChangedNotification:(bool)arg1;
 - (void)setTailspinSaveFormat:(id)arg1;
 - (void)set_htDomain:(struct __CFString { }*)arg1;
@@ -189,6 +211,7 @@
 - (void)set_profilePath:(id)arg1;
 - (void)setupPrefsWithQueue:(id)arg1;
 - (void)setupPrefsWithQueue:(id)arg1 profilePath:(id)arg2 taskingDomainName:(struct __CFString { }*)arg3 hangtracerDomain:(struct __CFString { }*)arg4 setupInternalPrefs:(bool)arg5;
+- (bool)shouldAllowSentryEnablement;
 - (bool)shouldCollectOSSignposts;
 - (bool)shouldCollectOSSignpostsDeferred;
 - (bool)shouldCompressSavedTailspins;
@@ -205,7 +228,6 @@
 - (bool)slowAppActivationTailspinEnabled;
 - (unsigned long long)slowAppActivationThresholdMSec;
 - (id)stringProperty:(struct HTPrefInit { struct __CFString {} *x1; void *x2; union HTPrefDefaultVal { bool x_3_1_1; int x_3_1_2; unsigned int x_3_1_3; unsigned long long x_3_1_4; double x_3_1_5; struct __CFString {} *x_3_1_6; } x3; union HTPrefDefaultVal { bool x_4_1_1; int x_4_1_2; unsigned int x_4_1_3; unsigned long long x_4_1_4; double x_4_1_5; struct __CFString {} *x_4_1_6; } x4; unsigned long long x5; SEL x6; }*)arg1;
-- (bool)tailspinEnabled;
 - (id)tailspinSaveFormat;
 - (bool)thirdPartyRunLoopHangLogsEnabled;
 - (unsigned int)unsignedIntProperty:(struct HTPrefInit { struct __CFString {} *x1; void *x2; union HTPrefDefaultVal { bool x_3_1_1; int x_3_1_2; unsigned int x_3_1_3; unsigned long long x_3_1_4; double x_3_1_5; struct __CFString {} *x_3_1_6; } x3; union HTPrefDefaultVal { bool x_4_1_1; int x_4_1_2; unsigned int x_4_1_3; unsigned long long x_4_1_4; double x_4_1_5; struct __CFString {} *x_4_1_6; } x4; unsigned long long x5; SEL x6; }*)arg1;

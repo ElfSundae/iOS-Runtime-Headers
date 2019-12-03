@@ -20,6 +20,7 @@
 
 - (void).cxx_destruct;
 - (void)_aceObjectViewControllerWillBeRemoved;
+- (bool)_canShowWhileLocked;
 - (double)_insertionAnimatedZPosition;
 - (long long)_insertionAnimation;
 - (long long)_pinAnimationType;

@@ -6,6 +6,5 @@
 @optional
 
 - (UIControl *)_mapkit_accessoryControlToExtendWithCallout;
-- (void)_mapkit_setCalloutTextColor:(UIColor *)arg1;
 
 @end

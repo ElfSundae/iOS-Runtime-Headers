@@ -9,7 +9,7 @@
     id /* block */  _handler;
     bool  _hidden;
     NSUUID * _identifier;
-    UIImage * _image;
+    CPImageSet * _imageSet;
 }
 
 @property (nonatomic) <CPMapButtonDelegate> *controlDelegate;
@@ -22,18 +22,21 @@
 @property (getter=isHidden, nonatomic) bool hidden;
 @property (nonatomic, retain) NSUUID *identifier;
 @property (nonatomic, retain) UIImage *image;
+@property (nonatomic, retain) CPImageSet *imageSet;
 @property (readonly) Class superclass;
 
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (id)controlDelegate;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)focusedImage;
 - (void)handlePrimaryAction;
 - (id /* block */)handler;
 - (id)identifier;
 - (id)image;
+- (id)imageSet;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithHandler:(id /* block */)arg1;
@@ -46,5 +49,6 @@
 - (void)setHidden:(bool)arg1;
 - (void)setIdentifier:(id)arg1;
 - (void)setImage:(id)arg1;
+- (void)setImageSet:(id)arg1;
 
 @end

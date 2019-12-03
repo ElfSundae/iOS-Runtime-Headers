@@ -3,48 +3,52 @@
  */
 
 @interface HKDisplayCategory : NSObject {
-    UIColor * _bottomColor;
     long long  _categoryID;
     NSString * _categoryName;
     NSString * _displayName;
-    HKGradient * _gradient;
-    UIImage * _healthDataIcon;
-    UIColor * _keyColor;
-    UIImage * _listIcon;
+    NSString * _healthDataIconName;
+    id /* block */  _keyColor;
+    NSString * _largeListIconName;
     NSString * _listIconName;
-    UIImage * _shareIcon;
-    UIColor * _topColor;
+    NSString * _shareIconName;
 }
 
 @property (nonatomic, readonly) long long categoryID;
 @property (nonatomic, readonly) NSString *categoryName;
+@property (nonatomic, readonly) UIColor *color;
 @property (nonatomic, readonly) NSString *displayName;
 @property (nonatomic, readonly) HKFillStyle *fillStyle;
-@property (nonatomic, readonly) HKGradient *gradient;
 @property (nonatomic, readonly) UIImage *healthDataIcon;
+@property (nonatomic, readonly) NSString *healthDataIconName;
 @property (nonatomic, readonly) bool isMeCategory;
 @property (nonatomic, readonly) bool isTopLevelCategory;
+@property (nonatomic, readonly) UIImage *largeListIcon;
+@property (nonatomic, readonly) NSString *largeListIconName;
 @property (nonatomic, readonly) UIImage *listIcon;
 @property (nonatomic, readonly) NSString *listIconName;
-@property (nonatomic, readonly) UIColor *seriesColor;
 @property (nonatomic, readonly) UIImage *shareIcon;
+@property (nonatomic, readonly) NSString *shareIconName;
 
 + (id)topLevelCategoryIdentifiers;
 
 - (void).cxx_destruct;
 - (long long)categoryID;
 - (id)categoryName;
+- (id)color;
 - (id)displayName;
 - (id)fillStyle;
-- (id)gradient;
 - (id)healthDataIcon;
+- (id)healthDataIconName;
 - (id)init;
 - (id)initWithDictionary:(id)arg1;
+- (bool)isEqual:(id)arg1;
 - (bool)isMeCategory;
 - (bool)isTopLevelCategory;
+- (id)largeListIcon;
+- (id)largeListIconName;
 - (id)listIcon;
 - (id)listIconName;
-- (id)seriesColor;
 - (id)shareIcon;
+- (id)shareIconName;
 
 @end

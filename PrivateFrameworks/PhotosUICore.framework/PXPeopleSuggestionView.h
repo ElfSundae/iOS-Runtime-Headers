@@ -54,7 +54,6 @@
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)layoutSubviews;
 - (bool)needsSpotlightUpdate;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (void)setDateFormatter:(id)arg1;
 - (void)setDateLabel:(id)arg1;
 - (void)setDimView:(id)arg1;

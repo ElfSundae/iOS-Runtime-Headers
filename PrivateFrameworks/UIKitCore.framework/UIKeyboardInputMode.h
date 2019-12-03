@@ -30,6 +30,7 @@
 @property (nonatomic, readonly) bool isDefaultRightToLeft;
 @property (nonatomic) bool isDisplayed;
 @property (nonatomic, readonly) bool isExtensionInputMode;
+@property (nonatomic, readonly) bool isSpecializedInputMode;
 @property (nonatomic, readonly) bool isStalledExtensionInputMode;
 @property (nonatomic, retain) NSString *languageWithRegion;
 @property (nonatomic, retain) NSArray *multilingualLanguages;
@@ -38,7 +39,8 @@
 @property (nonatomic, retain) NSString *primaryLanguage;
 @property (nonatomic, retain) NSString *softwareLayout;
 
-+ (id)autofillFallbackInputMode;
+// Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
+
 + (id)autofillSignupInputMode;
 + (id)canonicalLanguageIdentifierFromIdentifier:(id)arg1;
 + (id)dictationInputMode;
@@ -73,6 +75,7 @@
 - (bool)isDisplayed;
 - (bool)isEqual:(id)arg1;
 - (bool)isExtensionInputMode;
+- (bool)isSpecializedInputMode;
 - (bool)isStalledExtensionInputMode;
 - (id)languageWithRegion;
 - (id)multilingualLanguages;
@@ -91,5 +94,9 @@
 - (void)setPrimaryLanguage:(id)arg1;
 - (void)setSoftwareLayout:(id)arg1;
 - (id)softwareLayout;
+
+// Image: /System/Library/PrivateFrameworks/TextInputUI.framework/TextInputUI
+
+- (id)safe__extendedDisplayName;
 
 @end

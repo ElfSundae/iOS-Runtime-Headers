@@ -13,7 +13,6 @@
 - (id)_locationDeviceTextForDeviceNameString:(id)arg1;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)init;
-- (id)initWithLocationDeviceManager:(id)arg1;
 - (id)locationDeviceManager;
 
 @end

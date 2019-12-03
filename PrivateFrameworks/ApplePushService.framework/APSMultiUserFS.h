@@ -11,6 +11,7 @@
 
 + (id)sharedInstance;
 
+- (void).cxx_destruct;
 - (id)initWithIsMultiUserMode:(bool)arg1;
 - (bool)isMultiUser;
 - (id)systemPath;

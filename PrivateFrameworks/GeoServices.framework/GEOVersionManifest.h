@@ -10,11 +10,13 @@
 @property (nonatomic, retain) NSMutableArray *serviceVersions;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
 + (Class)serviceVersionType;
 
 - (void).cxx_destruct;
 - (void)addServiceVersion:(id)arg1;
 - (void)clearServiceVersions;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -22,6 +24,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)serviceVersionAtIndex:(unsigned long long)arg1;
 - (id)serviceVersions;

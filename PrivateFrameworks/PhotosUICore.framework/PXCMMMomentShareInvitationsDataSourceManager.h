@@ -20,8 +20,6 @@
 + (id)_dataSourceManagerWithPredicate:(id)arg1;
 + (id)dataSourceManager;
 + (id)emptyDataSourceManager;
-+ (id)mockIncomingDataSourceManager;
-+ (id)mockOutgoingDataSourceManager;
 + (id)mostRecentCreationDate;
 
 - (void).cxx_destruct;

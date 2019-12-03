@@ -9,10 +9,12 @@
     unsigned int  direct_prohibited;
     NSObject<OS_nw_array> * failed_child_endpoint_handlers;
     unsigned int  next_child_endpoint_index;
+    unsigned int  overrode_to_https;
     NSObject<OS_nw_array> * pac_resolvers;
     NSObject<OS_xpc_object> * parsed_proxy_settings;
     NSObject<OS_xpc_object> * proxy_settings;
     unsigned int  synthesized_url;
+    unsigned int  transport_finished;
     struct __CFURL { } * url;
 }
 

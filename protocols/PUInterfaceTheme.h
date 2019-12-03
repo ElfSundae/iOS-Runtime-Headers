@@ -39,7 +39,6 @@
 - (double)cloudFeedSeparatorHeight;
 - (NSDictionary *)cloudFeedWhiteDefaultTextAttributes;
 - (NSDictionary *)cloudFeedWhiteEmphasizedTextAttributes;
-- (UIFont *)cloudWelcomeViewTitleLabelFontForSize:(double)arg1;
 - (NSString *)commentsButtonStringForCount:(long long)arg1;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })commentsButtonTextInset;
 - (UIImage *)compactLoadErrorIcon;
@@ -76,16 +75,12 @@
 - (void)configureSearchResultCountLabel:(UILabel *)arg1;
 - (void)configureSearchSubtitleLabel:(UILabel *)arg1;
 - (void)configureSearchTitleLabel:(UILabel *)arg1;
-- (void)configureSlideshowMusicHeaderTitleLabel:(UILabel *)arg1;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })contentCommentsButtonImageInset;
 - (UIColor *)contentCommentsHiddenButtonImageColor;
 - (NSDictionary *)contentCommentsHiddenButtonTextAttributes;
 - (UIColor *)contentCommentsShownButtonImageColor;
 - (NSDictionary *)contentCommentsShownButtonTextAttributes;
 - (UIButton *)createCloudFeedCommentButton;
-- (long long)defaultKeyboardAppearance;
-- (unsigned long long)emptyPlaceholderStyle;
-- (UIColor *)emptyPlaceholderViewBackgroundColor;
 - (UIColor *)folderCellBackgroundColor;
 - (UIColor *)gridViewCellBannerBackgroundColor;
 - (UIImage *)gridViewCellBannerBackgroundImage;
@@ -131,6 +126,7 @@
 - (UIColor *)photoEditingAdjustmentsBarMainColor;
 - (UIColor *)photoEditingAdjustmentsBarOriginalPositionMarkerColor;
 - (UIColor *)photoEditingAdjustmentsBarPlayheadColor;
+- (UIColor *)photoEditingAdjustmentsBarSuggestedMarkerColor;
 - (UIColor *)photoEditingAdjustmentsModeLabelColor;
 - (UIFont *)photoEditingAdjustmentsModeLabelFont;
 - (UIFont *)photoEditingAdjustmentsModePickerFont;
@@ -163,9 +159,16 @@
 - (UIColor *)photoEditingPopoverBackgroundColor;
 - (UIFont *)photoEditingToolbarButtonCompactFont;
 - (UIFont *)photoEditingToolbarButtonNormalFont;
+- (UIColor *)photoEditingToolbarDarkGradientEndColor;
+- (UIColor *)photoEditingToolbarDarkGradientStartColor;
 - (UIColor *)photoEditingToolbarDestructiveButtonColor;
+- (UIColor *)photoEditingToolbarLightGradientEndColor;
+- (UIColor *)photoEditingToolbarLightGradientStartColor;
 - (UIColor *)photoEditingToolbarMainButtonColor;
 - (UIColor *)photoEditingToolbarSecondaryButtonColor;
+- (UIColor *)photoEditingToolbarUltralightGradientEndColor;
+- (UIColor *)photoEditingToolbarUltralightGradientStartColor;
+- (UIColor *)photoEditingToolbarUnderlineColor;
 - (UIColor *)photoEditingTooltipColor;
 - (UIFont *)photoEditingTooltipFont;
 - (UIColor *)placeholderCellBackgroundColor;
@@ -173,6 +176,7 @@
 - (UIFont *)playbackTimeLabelFont;
 - (UIColor *)playheadBackgroundColor;
 - (UIColor *)playheadColor;
+- (UIColor *)playheadOutlineColor;
 - (UIImage *)regularLoadErrorIcon;
 - (UIColor *)scrubberPlaceholderColor;
 - (NSDictionary *)searchDefaultAttributes;
@@ -188,7 +192,6 @@
 - (double)searchSubtitleBottomBaselineDistance;
 - (UIFont *)searchSubtitleLabelFont;
 - (UIColor *)searchSubtitleTextColor;
-- (UIColor *)searchTableViewBackgroundColor;
 - (UIFont *)searchTitleLabelFont;
 - (double)searchTitleSubtitleBaselineDistance;
 - (double)searchTitleTopBaselineDistance;
@@ -197,11 +200,6 @@
 - (UIFont *)sharedAlbumCommentCardButtonFont;
 - (UIFont *)sharedAlbumCommentCardTextFont;
 - (UIFont *)sharedAlbumCommentCardTitleFont;
-- (UIColor *)slideshowChromeBarTintColor;
-- (UIColor *)slideshowMusicHeaderBackgroundColor;
-- (UIColor *)slideshowMusicHeaderTextColor;
-- (UIColor *)slideshowSeparatorColor;
-- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })slideshowSeparatorInset;
 - (NSDictionary *)textBlockBelowArtSubTitleTextAttributes;
 - (NSDictionary *)textBlockBelowArtTitleEmphasizedTextAttributes;
 - (NSDictionary *)textBlockBelowArtTitleTextAttributes;
@@ -219,6 +217,8 @@
 - (UIImage *)topLevelNavigationBarDoneButtonBackgroundImageForState:(unsigned long long)arg1 barMetrics:(long long)arg2;
 - (NSDictionary *)topLevelNavigationBarDoneButtonTitleTextAttributesForState:(unsigned long long)arg1;
 - (long long)topLevelStatusBarStyle;
+- (UIColor *)topToolbarToolLabelButtonColor;
+- (UIFont *)topToolbarToolLabelFont;
 - (UIColor *)videoEditingBackgroundColor;
 - (UIFont *)videoEditingToolbarButtonNormalFont;
 - (UIColor *)videoEditingToolbarDestructiveButtonColor;

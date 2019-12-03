@@ -4,6 +4,6 @@
 
 @interface PHLibraryChangeRequest : NSObject
 
-+ (id)changeRequestForResettingPersons;
++ (id)resetPersonsInLibrary:(id)arg1;
 
 @end

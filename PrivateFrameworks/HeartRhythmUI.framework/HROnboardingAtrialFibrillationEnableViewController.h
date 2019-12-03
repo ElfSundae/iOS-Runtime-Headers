@@ -19,7 +19,6 @@
 @property (nonatomic, retain) UILabel *titleLabel;
 
 - (void).cxx_destruct;
-- (double)_assetImageBottomToTitleFirstBaseline;
 - (id)_bodyFont;
 - (id)_bodyFontTextStyle;
 - (id)_footnoteFont;
@@ -33,6 +32,7 @@
 - (id)createHeroView;
 - (id)footnoteLabel;
 - (id)heroView;
+- (id)initForOnboarding:(bool)arg1;
 - (void)setBodyLabel:(id)arg1;
 - (void)setContentViewBottomConstraint:(id)arg1;
 - (void)setFootnoteLabel:(id)arg1;

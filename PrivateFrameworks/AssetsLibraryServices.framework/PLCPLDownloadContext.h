@@ -18,8 +18,8 @@
 @property (retain) NSString *taskIdentifier;
 @property double updateLastQueuedTime;
 
+- (void).cxx_destruct;
 - (bool)completed;
-- (void)dealloc;
 - (id)description;
 - (id)error;
 - (double)progress;

@@ -11,13 +11,16 @@
 
 + (id)sharedConstants;
 
+- (id)_defaultCheckmarkImageForCell:(id)arg1 tableView:(id)arg2 forUserInterfaceStyle:(long long)arg3;
+- (id)_defaultDisclosureImageForCell:(id)arg1 tableView:(id)arg2 forUserInterfaceStyle:(long long)arg3;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_defaultLayoutMargins;
 - (id)_kitImageNamed:(id)arg1 withTint:(id)arg2 flippedForRightToLeftLayoutDirection:(bool)arg3;
+- (id)_symbolImageNamed:(id)arg1 font:(id)arg2 cell:(id)arg3 tableView:(id)arg4;
 - (double)defaultAlphaForDraggingCell:(id)arg1 inTableView:(id)arg2;
 - (double)defaultAlphaForReorderingCell:(id)arg1 inTableView:(id)arg2;
 - (id)defaultBackgroundColorForCell:(id)arg1 inTableView:(id)arg2;
 - (id)defaultBackgroundColorForTableViewStyle:(long long)arg1;
 - (id)defaultBackgroundEffectsForTableViewStyle:(long long)arg1;
-- (id)defaultCheckmarkImageForCell:(id)arg1 forUserInterfaceStyle:(long long)arg2;
 - (id)defaultCheckmarkImageForCell:(id)arg1 inTableView:(id)arg2;
 - (double)defaultContentAccessoryPaddingForCell:(id)arg1 inTableView:(id)arg2;
 - (double)defaultContentEditPaddingForCell:(id)arg1 inTableView:(id)arg2;
@@ -29,9 +32,7 @@
 - (id)defaultDetailTextColorForCell:(id)arg1 inTableView:(id)arg2 forUserInterfaceStyle:(long long)arg3;
 - (id)defaultDetailTextFontForCell:(id)arg1 inTableView:(id)arg2;
 - (double)defaultDetailTextLabelFontSizeForCell:(id)arg1 inTableView:(id)arg2;
-- (id)defaultDisclosureImageForCell:(id)arg1 forUserInterfaceStyle:(long long)arg2;
 - (id)defaultDisclosureImageForCell:(id)arg1 inTableView:(id)arg2;
-- (id)defaultDisclosurePressedImageForCell:(id)arg1 inTableView:(id)arg2;
 - (double)defaultEditControlPaddingForCell:(id)arg1 inTableView:(id)arg2;
 - (struct CGSize { double x1; double x2; })defaultEditControlSizeForCell:(id)arg1 inTableView:(id)arg2;
 - (id)defaultFocusedCheckmarkImageForCell:(id)arg1 inTableView:(id)arg2;
@@ -45,25 +46,27 @@
 - (id)defaultFocusedReorderControlImageForCell:(id)arg1 inTableView:(id)arg2;
 - (double)defaultFocusedShadowRadiusForTableView:(id)arg1;
 - (id)defaultFocusedTextColorForCell:(id)arg1 inTableView:(id)arg2;
-- (id)defaultFooterBackgroundColorForView:(id)arg1 inTableView:(id)arg2;
 - (id)defaultFooterFontForTableViewStyle:(long long)arg1;
 - (id)defaultFooterFontForView:(id)arg1 inTableView:(id)arg2;
 - (id)defaultFooterTextColorForTableViewStyle:(long long)arg1;
 - (id)defaultFooterTextColorForView:(id)arg1 inTableView:(id)arg2;
-- (id)defaultHeaderBackgroundColorForView:(id)arg1 inTableView:(id)arg2;
 - (id)defaultHeaderFontForTableViewStyle:(long long)arg1;
 - (id)defaultHeaderFontForView:(id)arg1 inTableView:(id)arg2;
+- (id)defaultHeaderFooterBackgroundColorForView:(id)arg1 inTableView:(id)arg2;
 - (id)defaultHeaderTextColorForTableViewStyle:(long long)arg1;
 - (id)defaultHeaderTextColorForTableViewStyle:(long long)arg1 userInterfaceStyle:(long long)arg2;
 - (id)defaultHeaderTextColorForView:(id)arg1 inTableView:(id)arg2;
+- (id)defaultImageSymbolConfigurationForTraitCollection:(id)arg1;
 - (id)defaultInsertImageForCell:(id)arg1 forUserInterfaceStyle:(long long)arg2;
 - (id)defaultInsertImageForCell:(id)arg1 inTableView:(id)arg2;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })defaultLayoutMarginsForCell:(id)arg1 inTableView:(id)arg2;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })defaultLayoutMarginsForScreen:(id)arg1 size:(struct CGSize { double x1; double x2; })arg2;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })defaultLayoutMarginsForTableView:(id)arg1;
 - (double)defaultLeadingCellMarginWidthForTableView:(id)arg1;
+- (double)defaultLeadingContentAccessoryPaddingForCell:(id)arg1 inTableView:(id)arg2;
 - (double)defaultMarginWidthForTableView:(id)arg1;
 - (double)defaultMaskGradientHeightForTableView:(id)arg1;
-- (id)defaultMultiSelectHighlightedImageForCell:(id)arg1 inTableView:(id)arg2;
+- (id)defaultMultiSelectBackgroundColorForCell:(id)arg1 inTableView:(id)arg2;
 - (id)defaultMultiSelectNotSelectedImageForCell:(id)arg1 forUserInterfaceStyle:(long long)arg2;
 - (id)defaultMultiSelectNotSelectedImageForCell:(id)arg1 inTableView:(id)arg2;
 - (id)defaultMultiSelectSelectedImageForCell:(id)arg1 forUserInterfaceStyle:(long long)arg2;
@@ -79,7 +82,9 @@
 - (double)defaultRowHeightForTableView:(id)arg1;
 - (double)defaultRowHeightForTableView:(id)arg1 cellStyle:(long long)arg2;
 - (double)defaultSectionFooterHeightForTableView:(id)arg1;
+- (double)defaultSectionFooterHeightForTableViewStyle:(long long)arg1 screen:(id)arg2;
 - (double)defaultSectionHeaderHeightForTableView:(id)arg1;
+- (double)defaultSectionHeaderHeightForTableViewStyle:(long long)arg1 screen:(id)arg2;
 - (id)defaultSelectionEffectsForCell:(id)arg1 inTableView:(id)arg2;
 - (id)defaultSelectionTintColorForCell:(id)arg1 inTableView:(id)arg2;
 - (id)defaultSeparatorColorForTableViewStyle:(long long)arg1;
@@ -90,10 +95,13 @@
 - (id)defaultTextLabelFontForCell:(id)arg1 inTableView:(id)arg2;
 - (double)defaultTextLabelFontSizeForCell:(id)arg1 inTableView:(id)arg2;
 - (double)defaultTrailingCellMarginWidthForTableView:(id)arg1;
+- (double)defaultTrailingContentAccessoryPaddingForCell:(id)arg1 inTableView:(id)arg2;
 - (bool)imageViewOffsetByLayoutMarginsForCell:(id)arg1 inTableView:(id)arg2;
+- (double)interspaceBetweenInnerAccessoryIdentifier:(id)arg1 outerAccessoryIdentifier:(id)arg2 forCell:(id)arg3 inTableView:(id)arg4 trailingAccessoryGroup:(bool)arg5;
+- (double)minimumImageViewAndAccessoryLayoutWidthForTraitCollection:(id)arg1;
 - (bool)reorderingCellWantsShadows:(id)arg1 inTableView:(id)arg2;
 - (id)sidebarVariant;
 - (bool)supportsUserInterfaceStyles;
-- (id)variantForActive:(bool)arg1 dark:(bool)arg2;
+- (id)variantForActive:(bool)arg1 dark:(bool)arg2 focused:(bool)arg3;
 
 @end

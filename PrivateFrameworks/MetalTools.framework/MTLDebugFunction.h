@@ -14,8 +14,6 @@
 - (id)formattedDescription:(unsigned long long)arg1;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id*)arg2;
-- (id)newIndirectArgumentEncoderWithBufferIndex:(unsigned long long)arg1;
-- (id)newIndirectArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id*)arg2;
 - (void)setConstantValues:(id)arg1;
 
 @end

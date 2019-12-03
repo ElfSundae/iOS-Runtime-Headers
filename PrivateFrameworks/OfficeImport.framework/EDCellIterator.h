@@ -13,6 +13,7 @@
     EDRowBlocks * mRowBlocks;
 }
 
+- (void).cxx_destruct;
 - (struct EDCellHeader { unsigned int x1; unsigned int x2; }*)adjacentCell:(int)arg1;
 - (struct EDCellHeader { unsigned int x1; unsigned int x2; }*)adjacentCellLeft;
 - (struct EDCellHeader { unsigned int x1; unsigned int x2; }*)adjacentCellRight;

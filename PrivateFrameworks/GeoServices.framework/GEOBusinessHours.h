@@ -14,7 +14,6 @@
 @property (nonatomic, readonly) unsigned long long hoursType;
 @property (nonatomic, readonly) bool isBrandTypeHours;
 @property (nonatomic, readonly) NSString *localizedMessage;
-@property (nonatomic, readonly) NSString *localizedShortMessage;
 @property (nonatomic, readonly) unsigned int openingSoonThresholdInSeconds;
 @property (nonatomic, readonly) NSArray *pdHours;
 @property (nonatomic, readonly) NSArray *placeDailyHours;
@@ -32,9 +31,9 @@
 - (id)initWithGEOPDHours:(id)arg1 timeZone:(id)arg2;
 - (bool)isBrandTypeHours;
 - (id)localizedMessage;
-- (id)localizedShortMessage;
 - (unsigned int)openingSoonThresholdInSeconds;
 - (id)pdHours;
+- (bool)pdHoursAreValid;
 - (id)placeDailyHours;
 - (id)placeDailyNormalizedHours;
 - (id)startDate;

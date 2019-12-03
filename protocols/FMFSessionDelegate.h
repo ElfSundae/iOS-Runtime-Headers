@@ -21,7 +21,9 @@
 - (void)didUpdateFences:(NSSet *)arg1;
 - (void)didUpdateHidingStatus:(bool)arg1;
 - (void)didUpdatePendingOffersForHandles:(NSSet *)arg1;
+- (void)didUpdatePreferences:(NSDictionary *)arg1;
 - (void)mappingPacketProcessingCompleted:(NSString *)arg1;
+- (void)networkReachabilityUpdated:(bool)arg1;
 - (void)sendMappingPacket:(NSString *)arg1 toHandle:(FMFHandle *)arg2;
 
 @end

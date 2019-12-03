@@ -2,18 +2,17 @@
    Image: /System/Library/Frameworks/FileProvider.framework/FileProvider
  */
 
-@interface FPModifyFavoritesOperation : FPActionOperation {
+@interface FPModifyFavoritesOperation : FPTransformOperation {
     bool  _isUnfavorite;
-    NSArray * _items;
     NSArray * _ranks;
 }
 
 - (void).cxx_destruct;
+- (id)fp_prettyDescription;
 - (id)initWithItems:(id)arg1 favoriteRanks:(id)arg2 isUnfavorite:(bool)arg3;
 - (id)initWithItemsToFavorite:(id)arg1 favoriteRanks:(id)arg2;
 - (id)initWithItemsToUnfavorite:(id)arg1;
-- (void)mainWithExtensionProxy:(id)arg1;
-- (void)presendNotifications;
 - (id)replicateForItems:(id)arg1;
+- (unsigned long long)transformItem:(id)arg1 atIndex:(unsigned long long)arg2;
 
 @end

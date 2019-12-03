@@ -14,6 +14,7 @@
 }
 
 @property (nonatomic, readonly) HMApplicationData *applicationData;
+@property (readonly, copy) NSUUID *applicationDataIdentifier;
 @property (nonatomic, retain) _HMContext *context;
 @property (nonatomic, retain) HMMutableArray *currentServices;
 @property (readonly, copy) NSString *debugDescription;
@@ -61,6 +62,7 @@
 - (void)_updateName:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)addService:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)applicationData;
+- (id)applicationDataIdentifier;
 - (id)context;
 - (id)currentServices;
 - (void)dealloc;

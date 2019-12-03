@@ -7,7 +7,9 @@
 @property (nonatomic, readonly) NSString *contentEncodedString;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) struct _NSRange { unsigned long long x1; unsigned long long x2; } fullRange;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) struct _NSRange { unsigned long long x1; unsigned long long x2; } ic_range;
 @property (readonly, copy) NSString *string;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSParagraphStyle *tv_currentParagraphStyle;
@@ -51,6 +53,7 @@
 + (id)_mapkit_attributedStringWithBindingFormat:(id)arg1 replacements:(id)arg2 attributes:(id)arg3 error:(id*)arg4;
 + (id)_mapkit_attributedStringWithBindingFormat:(id)arg1 replacements:(id)arg2 defaultReplacementAttributes:(id)arg3 startTokenDelimiter:(id)arg4 endTokenDelimiter:(id)arg5 error:(id*)arg6;
 + (id)_mapkit_attributedTransitStringForServerFormattedString:(id)arg1 defaultAttributes:(id)arg2;
++ (id)_mapkit_attributedTransitStringForServerFormattedString:(id)arg1 defaultAttributes:(id)arg2 options:(struct { bool x1; long long x2; bool x3; bool x4; bool x5; double x6; })arg3;
 
 - (id)_mapkit_attributedStringByApplyingBindingFormatReplacements:(id)arg1;
 - (id)_mapkit_attributedStringByApplyingBindingFormatReplacements:(id)arg1 defaultReplacementAttributes:(id)arg2;
@@ -58,10 +61,26 @@
 - (id)_mapkit_attributedStringByApplyingBindingFormatReplacements:(id)arg1 defaultReplacementAttributes:(id)arg2 startTokenDelimiter:(id)arg3 endTokenDelimiter:(id)arg4 error:(id*)arg5;
 - (id)_mapkit_attributedStringByApplyingBindingFormatReplacements:(id)arg1 error:(id*)arg2;
 
+// Image: /System/Library/Frameworks/WebKit.framework/WebKit
+
++ (void)_loadFromHTMLWithOptions:(id)arg1 contentLoader:(id /* block */)arg2 completionHandler:(id /* block */)arg3;
++ (void)loadFromHTMLWithData:(id)arg1 options:(id)arg2 completionHandler:(id /* block */)arg3;
++ (void)loadFromHTMLWithFileURL:(id)arg1 options:(id)arg2 completionHandler:(id /* block */)arg3;
++ (void)loadFromHTMLWithRequest:(id)arg1 options:(id)arg2 completionHandler:(id /* block */)arg3;
++ (void)loadFromHTMLWithString:(id)arg1 options:(id)arg2 completionHandler:(id /* block */)arg3;
+
 // Image: /System/Library/PrivateFrameworks/AXRuntime.framework/AXRuntime
 
 - (id)_axRecursivelyPropertyListCoercedRepresentationWithError:(id*)arg1;
 - (id)_axRecursivelyReconstitutedRepresentationFromPropertyListWithError:(id*)arg1;
+
+// Image: /System/Library/PrivateFrameworks/AppStoreKit.framework/AppStoreKit
+
++ (id)empty;
+
+- (long long)baseWritingDirectionForCharacterAtIndex:(long long)arg1 unknownStyle:(bool*)arg2;
+- (struct _NSRange { unsigned long long x1; unsigned long long x2; })fullRange;
+- (long long)strongBaseWritingDirectionOfParagraphAtOrBeforeIndex:(long long)arg1;
 
 // Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
 
@@ -71,6 +90,17 @@
 
 - (id)_attributedStringWithForegroundColor:(id)arg1;
 - (id)_attributedStringWithOtherAttributesFromStyle:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/Coherence.framework/Coherence
+
+- (void)enumerateClampedAttribute:(id)arg1 inRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 options:(unsigned long long)arg3 usingBlock:(id /* block */)arg4;
+- (void)enumerateUnclampedAttribute:(id)arg1 inRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 options:(unsigned long long)arg3 usingBlock:(id /* block */)arg4;
+- (id)ic_attributedSubstringFromRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
+
+// Image: /System/Library/PrivateFrameworks/CoreServicesStore.framework/CoreServicesStore
+
+- (id)cs_rangesMatchingPredicate:(id)arg1;
+- (void)cs_writeToFileHandle:(struct __sFILE { char *x1; int x2; int x3; short x4; short x5; struct __sbuf { char *x_6_1_1; int x_6_1_2; } x6; int x7; void *x8; int (*x9)(); int (*x10)(); int (*x11)(); int (*x12)(); struct __sbuf { char *x_13_1_1; int x_13_1_2; } x13; struct __sFILEX {} *x14; int x15; unsigned char x16[3]; unsigned char x17[1]; struct __sbuf { char *x_18_1_1; int x_18_1_2; } x18; int x19; long long x20; }*)arg1;
 
 // Image: /System/Library/PrivateFrameworks/DataDetectorsCore.framework/DataDetectorsCore
 
@@ -82,7 +112,7 @@
 + (bool)dd_isTransientAttribute:(id)arg1;
 
 - (id)dd_contextAtLocation:(long long)arg1;
-- (struct __DDResult { struct __CFRuntimeBase { unsigned long long x_1_1_1; unsigned long long x_1_1_2; } x1; struct __DDQueryRange { struct __DDQueryOffset { unsigned int x_1_2_1 : 32; unsigned int x_1_2_2 : 32; } x_2_1_1; struct __DDQueryOffset { unsigned int x_2_2_1 : 32; unsigned int x_2_2_2 : 32; } x_2_1_2; } x2; struct { long long x_3_1_1; long long x_3_1_2; } x3; long long x4; struct __CFArray {} *x5; struct __CFString {} *x6; struct __CFString {} *x7; void *x8; struct __CFDictionary {} *x9; long long x10; unsigned char x11; float x12; }*)dd_resultAtLocation:(long long)arg1;
+- (struct __DDResult { struct __CFRuntimeBase { unsigned long long x_1_1_1; _Atomic unsigned long long x_1_1_2; } x1; struct __DDQueryRange { struct __DDQueryOffset { unsigned int x_1_2_1 : 32; unsigned int x_1_2_2 : 32; } x_2_1_1; struct __DDQueryOffset { unsigned int x_2_2_1 : 32; unsigned int x_2_2_2 : 32; } x_2_1_2; } x2; struct { long long x_3_1_1; long long x_3_1_2; } x3; long long x4; struct __CFArray {} *x5; struct __CFString {} *x6; struct __CFString {} *x7; void *x8; struct __CFDictionary {} *x9; long long x10; unsigned char x11; float x12; }*)dd_resultAtLocation:(long long)arg1;
 
 // Image: /System/Library/PrivateFrameworks/FlightUtilities.framework/FlightUtilities
 
@@ -101,8 +131,9 @@
 
 // Image: /System/Library/PrivateFrameworks/HomeUI.framework/HomeUI
 
++ (id)hu_attributedLinkStringForAttributedString:(id)arg1 linkString:(id)arg2 linkURL:(id)arg3;
 + (id)hu_attributedLinkStringForString:(id)arg1 linkString:(id)arg2 linkURL:(id)arg3;
-+ (id)hu_attributedLinkStringForString:(id)arg1 linkString:(id)arg2 linkURL:(id)arg3 attributes:(id)arg4;
++ (id)hu_attributedLinkStringForString:(id)arg1 linkString:(id)arg2 linkURL:(id)arg3 attributes:(id)arg4 additionalLinkAttributes:(id)arg5;
 + (id)hu_attributedString:(id)arg1 withAppendedLinkString:(id)arg2 linkURL:(id)arg3;
 + (id)hu_attributedStringForString:(id)arg1 withAppendedString:(id)arg2 asURL:(id)arg3 withAttributes:(id)arg4;
 
@@ -159,9 +190,12 @@
 - (id)ic_attributedStringByReplacingCharactersInSet:(id)arg1 withString:(id)arg2;
 - (id)ic_attributedStringByReplacingNewlineCharactersWithWhiteSpace;
 - (id)ic_attributedSubstringFromRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
+- (struct _NSRange { unsigned long long x1; unsigned long long x2; })ic_range;
 
 // Image: /System/Library/PrivateFrameworks/NotesUI.framework/NotesUI
 
+- (id)ic_attributedStringByHighlightingRegex:(id)arg1 withHighlightColor:(struct UIColor { Class x1; }*)arg2;
+- (id)ic_attributesByHighlightingAttributes:(id)arg1 withHighlightColor:(struct UIColor { Class x1; }*)arg2;
 - (id)ic_itemProviderDataForUTI:(id)arg1;
 - (id)ic_nextTableStringFromIndex:(unsigned long long)arg1 tableRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; }*)arg2;
 - (unsigned long long)ic_numRowsForTextTable:(id)arg1 outNumColumns:(out unsigned long long*)arg2;
@@ -174,23 +208,11 @@
 - (id)ic_textTablesInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (long long)ic_writingDirectionAtIndex:(unsigned long long)arg1;
 
-// Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
-
-+ (id)tsu_attributedStringWithString:(id)arg1 baseAttributes:(id)arg2 secondaryAttributes:(id)arg3 delimiter:(id)arg4;
-
-- (id)tsu_stringByFixingBrokenSurrogatePairs;
-- (id)tsu_stringByTrimmingLeadingTrailingWhitespace;
-- (id)tsu_stringWithoutAttachments;
-
 // Image: /System/Library/PrivateFrameworks/PassKitUI.framework/PassKitUI
 
 - (struct CGSize { double x1; double x2; })pkui_sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (struct CGSize { double x1; double x2; })pkui_sizeThatFits:(struct CGSize { double x1; double x2; })arg1 withNumberOfLines:(unsigned long long)arg2;
 - (struct CGSize { double x1; double x2; })pkui_sizeThatFits:(struct CGSize { double x1; double x2; })arg1 withNumberOfLines:(unsigned long long)arg2 forceWordWrap:(bool)arg3;
-
-// Image: /System/Library/PrivateFrameworks/PhotoLibrary.framework/PhotoLibrary
-
-+ (id)pl_stringWithFormat:(id)arg1 defaultAttributes:(id)arg2 arguments:(id)arg3;
 
 // Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
 
@@ -224,6 +246,19 @@
 - (id)px_attributedStringByDeletingCharactersInSet:(id)arg1;
 - (id)px_attributedStringWithParagraphLineBreakMode:(long long)arg1;
 - (id)px_bulletPrefixAttributedStringWithBulletAttributes:(id)arg1 isLeftToRight:(bool)arg2;
+- (bool)px_rangeExists:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
+- (id)px_stringByReplacingOccurrencesOfString:(id)arg1 withString:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/PodcastsKit.framework/PodcastsKit
+
++ (id)attributedStringWithTemplateString:(id)arg1 baseAttributes:(id)arg2 snippetAttributes:(id)arg3 snippets:(id)arg4;
++ (id)safeAttributedStringWithHTML:(id)arg1 attributes:(id)arg2;
+
+- (id)MTMPU_attributedStringByUpdatingTextStyleFontsToPreferredTextStyleFonts;
+- (bool)MTMPU_hasUniformFont;
+- (id)MTMPU_tallestFontFromAttributes;
+- (id)attributedStringByTrimmingCharactersInCharacterSet:(id)arg1;
+- (id)attributedStringByTrimmingWhitespaceNewlinesAndObjectReplacementCharacters;
 
 // Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
 
@@ -262,6 +297,10 @@
 
 + (id)sxaxAttributedStringForSpeakingStringInLowerPitch:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/SpeechRecognitionCommandAndControl.framework/SpeechRecognitionCommandAndControl
+
+- (id)stringByReplacingNewLinesWithSymbols;
+
 // Image: /System/Library/PrivateFrameworks/TSUtility.framework/TSUtility
 
 + (id)tsu_carriageReturnAttributedString;
@@ -293,6 +332,8 @@
 // Image: /System/Library/PrivateFrameworks/UIFoundation.framework/UIFoundation
 
 + (id)_documentTypeForFileType:(id)arg1;
++ (bool)_isAttributedStringAgent;
++ (id)allowedSecureCodingClasses;
 + (id)attributedStringWithAttachment:(id)arg1;
 
 - (id)RTFDFileWrapperFromRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 documentAttributes:(id)arg2;
@@ -353,11 +394,11 @@
 
 // Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 
++ (id)_objectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 userInfo:(id)arg3 error:(id*)arg4;
 + (id)_objectWithItemProviderFileURL:(id)arg1 typeIdentifier:(id)arg2 isInPlace:(bool)arg3 error:(id*)arg4;
-+ (id)_objectWithRTFDAtURL:(id)arg1 error:(id*)arg2;
++ (id)_objectWithRTFDAtURL:(id)arg1 userInfo:(id)arg2 error:(id*)arg3;
 + (long long)_preferredRepresentationForItemProviderReadableTypeIdentifier:(id)arg1;
 + (long long)_preferredRepresentationForItemProviderWritableTypeIdentifier:(id)arg1;
-+ (id)newObjectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 options:(id)arg3 error:(id*)arg4;
 + (id)objectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id*)arg3;
 + (id)readableTypeIdentifiersForItemProvider;
 + (id)writableTypeIdentifiersForItemProvider;
@@ -371,10 +412,11 @@
 - (long long)_ui_resolvedTextAlignmentForUserInterfaceLayoutDirection:(long long)arg1;
 - (long long)_ui_resolvedWritingDirection;
 - (long long)_ui_resolvedWritingDirectionForUserInterfaceLayoutDirection:(long long)arg1;
+- (id)_ui_rtfDataError:(id*)arg1;
+- (id)_ui_rtfdFileWrapperError:(id*)arg1;
 - (id)_ui_synthesizeAttributedSubstringFromRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 usingDefaultAttributes:(id)arg2;
 - (id)initWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id*)arg3;
 - (id)loadDataWithTypeIdentifier:(id)arg1 forItemProviderCompletionHandler:(id /* block */)arg2;
-- (void)registerLoadHandlersToItemProvider:(id)arg1;
 - (id)writableTypeIdentifiersForItemProvider;
 
 // Image: /System/Library/PrivateFrameworks/VideosUI.framework/VideosUI

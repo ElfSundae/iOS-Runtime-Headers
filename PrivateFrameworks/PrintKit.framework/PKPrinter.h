@@ -15,7 +15,7 @@
     long long  identifyActionsSupported;
     bool  isFromMCProfile;
     bool  isLocal;
-    struct _http_s { int x1; int x2; int x3; long long x4; int x5; int x6; int x7; int x8; struct sockaddr_in { unsigned char x_9_1_1; unsigned char x_9_1_2; unsigned short x_9_1_3; struct in_addr { unsigned int x_4_2_1; } x_9_1_4; BOOL x_9_1_5[8]; } x9; BOOL x10[256]; BOOL x11[27][256]; char *x12; int x13; int x14; int x15; BOOL x16[2048]; int x17; unsigned char x18[88]; BOOL x19[256]; unsigned int x20; struct SSLContext {} *x21; int x22; struct fd_set {} *x23; int x24; char *x25; BOOL x26[256]; BOOL x27[256]; int x28; long long x29; union { /* Warning: Unrecognized filer type: '_' using 'void*' */ void*x_30_1_1; void*x_30_1_2; void*x_30_1_3; void*x_30_1_4; void*x_30_1_5; void*x_30_1_6; void*x_30_1_7; double x_30_1_8; double x_30_1_9; const void*x_30_1_10; void*x_30_1_11; } *x30; struct http_addrlist_s {} *x31; BOOL x32[2048]; int x33; char *x34; char *x35; struct __CFArray {} *x36; int (*x37)(); void *x38; double x39; int x40; int x41; int x42; char *x43; char *x44; char *x45; char *x46; char *x47; char *x48; int x49; struct z_stream_s { char *x_50_1_1; unsigned int x_50_1_2; unsigned long long x_50_1_3; char *x_50_1_4; unsigned int x_50_1_5; unsigned long long x_50_1_6; char *x_50_1_7; struct internal_state {} *x_50_1_8; int (*x_50_1_9)(); int (*x_50_1_10)(); void *x_50_1_11; int x_50_1_12; unsigned long long x_50_1_13; unsigned long long x_50_1_14; } x50; } * job_http;
+    struct _http_s { } * job_http;
     long long  kind;
     NSArray * mandatoryJobAttributes;
     int  maxCopies;
@@ -68,7 +68,8 @@
 @property (readonly) long long type;
 @property (readonly) NSString *uuid;
 
-+ (struct _ipp_s { int x1; union _ipp_request_u { struct { unsigned char x_1_2_1[2]; int x_1_2_2; int x_1_2_3; } x_2_1_1; struct { unsigned char x_2_2_1[2]; int x_2_2_2; int x_2_2_3; } x_2_1_2; struct { unsigned char x_3_2_1[2]; int x_3_2_2; int x_3_2_3; } x_2_1_3; struct { unsigned char x_4_2_1[2]; int x_4_2_2; int x_4_2_3; } x_2_1_4; } x2; struct _ipp_attribute_s {} *x3; struct _ipp_attribute_s {} *x4; struct _ipp_attribute_s {} *x5; int x6; struct _ipp_attribute_s {} *x7; int x8; int x9; int x10; }*)getAttributes:(const char **)arg1 count:(int)arg2 fromURI:(id)arg3;
++ (id)defaultPrinter;
++ (struct _ipp_s { }*)getAttributes:(const char **)arg1 count:(int)arg2 fromURI:(id)arg3;
 + (id)hardcodedURIs;
 + (bool)ippsIsRequired;
 + (void)listenForPrinterNotifications;
@@ -92,21 +93,21 @@
 - (long long)btleMeasuredPower;
 - (id)btleUUID;
 - (void)cancelUnlock;
-- (void)checkOperations:(struct _ipp_s { int x1; union _ipp_request_u { struct { unsigned char x_1_2_1[2]; int x_1_2_2; int x_1_2_3; } x_2_1_1; struct { unsigned char x_2_2_1[2]; int x_2_2_2; int x_2_2_3; } x_2_1_2; struct { unsigned char x_3_2_1[2]; int x_3_2_2; int x_3_2_3; } x_2_1_3; struct { unsigned char x_4_2_1[2]; int x_4_2_2; int x_4_2_3; } x_2_1_4; } x2; struct _ipp_attribute_s {} *x3; struct _ipp_attribute_s {} *x4; struct _ipp_attribute_s {} *x5; int x6; struct _ipp_attribute_s {} *x7; int x8; int x9; int x10; }*)arg1;
-- (struct _ipp_s { int x1; union _ipp_request_u { struct { unsigned char x_1_2_1[2]; int x_1_2_2; int x_1_2_3; } x_2_1_1; struct { unsigned char x_2_2_1[2]; int x_2_2_2; int x_2_2_3; } x_2_1_2; struct { unsigned char x_3_2_1[2]; int x_3_2_2; int x_3_2_3; } x_2_1_3; struct { unsigned char x_4_2_1[2]; int x_4_2_2; int x_4_2_3; } x_2_1_4; } x2; struct _ipp_attribute_s {} *x3; struct _ipp_attribute_s {} *x4; struct _ipp_attribute_s {} *x5; int x6; struct _ipp_attribute_s {} *x7; int x8; int x9; int x10; }*)createRequest:(id)arg1 ofType:(id)arg2 url:(id)arg3;
+- (void)checkOperations:(struct _ipp_s { }*)arg1;
+- (struct _ipp_s { }*)createRequest:(id)arg1 ofType:(id)arg2 url:(id)arg3;
 - (void)dealloc;
 - (id)description;
 - (id)displayName;
-- (void)doMedia2:(struct _ipp_s { int x1; union _ipp_request_u { struct { unsigned char x_1_2_1[2]; int x_1_2_2; int x_1_2_3; } x_2_1_1; struct { unsigned char x_2_2_1[2]; int x_2_2_2; int x_2_2_3; } x_2_1_2; struct { unsigned char x_3_2_1[2]; int x_3_2_2; int x_3_2_3; } x_2_1_3; struct { unsigned char x_4_2_1[2]; int x_4_2_2; int x_4_2_3; } x_2_1_4; } x2; struct _ipp_attribute_s {} *x3; struct _ipp_attribute_s {} *x4; struct _ipp_attribute_s {} *x5; int x6; struct _ipp_attribute_s {} *x7; int x8; int x9; int x10; }*)arg1;
+- (void)doMedia2:(struct _ipp_s { }*)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (long long)feedOrientation:(id)arg1;
 - (long long)finalizeJob:(int)arg1;
 - (long long)finishJob;
-- (struct _ipp_s { int x1; union _ipp_request_u { struct { unsigned char x_1_2_1[2]; int x_1_2_2; int x_1_2_3; } x_2_1_1; struct { unsigned char x_2_2_1[2]; int x_2_2_2; int x_2_2_3; } x_2_1_2; struct { unsigned char x_3_2_1[2]; int x_3_2_2; int x_3_2_3; } x_2_1_3; struct { unsigned char x_4_2_1[2]; int x_4_2_2; int x_4_2_3; } x_2_1_4; } x2; struct _ipp_attribute_s {} *x3; struct _ipp_attribute_s {} *x4; struct _ipp_attribute_s {} *x5; int x6; struct _ipp_attribute_s {} *x7; int x8; int x9; int x10; }*)getAttributes:(const char **)arg1 count:(int)arg2;
-- (struct _ipp_s { int x1; union _ipp_request_u { struct { unsigned char x_1_2_1[2]; int x_1_2_2; int x_1_2_3; } x_2_1_1; struct { unsigned char x_2_2_1[2]; int x_2_2_2; int x_2_2_3; } x_2_1_2; struct { unsigned char x_3_2_1[2]; int x_3_2_2; int x_3_2_3; } x_2_1_3; struct { unsigned char x_4_2_1[2]; int x_4_2_2; int x_4_2_3; } x_2_1_4; } x2; struct _ipp_attribute_s {} *x3; struct _ipp_attribute_s {} *x4; struct _ipp_attribute_s {} *x5; int x6; struct _ipp_attribute_s {} *x7; int x8; int x9; int x10; }*)getPrinterAttributes;
-- (struct _ipp_s { int x1; union _ipp_request_u { struct { unsigned char x_1_2_1[2]; int x_1_2_2; int x_1_2_3; } x_2_1_1; struct { unsigned char x_2_2_1[2]; int x_2_2_2; int x_2_2_3; } x_2_1_2; struct { unsigned char x_3_2_1[2]; int x_3_2_2; int x_3_2_3; } x_2_1_3; struct { unsigned char x_4_2_1[2]; int x_4_2_2; int x_4_2_3; } x_2_1_4; } x2; struct _ipp_attribute_s {} *x3; struct _ipp_attribute_s {} *x4; struct _ipp_attribute_s {} *x5; int x6; struct _ipp_attribute_s {} *x7; int x8; int x9; int x10; }*)getSupplyLevelAttributes;
+- (struct _ipp_s { }*)getAttributes:(const char **)arg1 count:(int)arg2;
+- (struct _ipp_s { }*)getPrinterAttributes;
+- (struct _ipp_s { }*)getSupplyLevelAttributes;
 - (void)getSupplyLevels:(id /* block */)arg1;
-- (void)handlePrinterStateReasonsFromResponse:(struct _ipp_s { int x1; union _ipp_request_u { struct { unsigned char x_1_2_1[2]; int x_1_2_2; int x_1_2_3; } x_2_1_1; struct { unsigned char x_2_2_1[2]; int x_2_2_2; int x_2_2_3; } x_2_1_2; struct { unsigned char x_3_2_1[2]; int x_3_2_2; int x_3_2_3; } x_2_1_3; struct { unsigned char x_4_2_1[2]; int x_4_2_2; int x_4_2_3; } x_2_1_4; } x2; struct _ipp_attribute_s {} *x3; struct _ipp_attribute_s {} *x4; struct _ipp_attribute_s {} *x5; int x6; struct _ipp_attribute_s {} *x7; int x8; int x9; int x10; }*)arg1;
+- (void)handlePrinterStateReasonsFromResponse:(struct _ipp_s { }*)arg1;
 - (bool)hasIdentifyPrinterOp;
 - (bool)hasPrintInfoSupported;
 - (id)hostname;

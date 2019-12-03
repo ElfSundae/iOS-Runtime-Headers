@@ -9,9 +9,9 @@
     UIButton * _tapToRadarButton;
 }
 
-@property (nonatomic, readonly) const struct __CFString { }*accessoryButtonEventTrackerKey;
 @property (nonatomic, readonly) NSString *accessoryButtonTitle;
 @property (nonatomic, readonly) unsigned long long accessoryButtonType;
+@property (nonatomic, readonly) Class collectionViewItemClass;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <PXGadgetDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -36,9 +36,7 @@
 - (id)gadgetSpec;
 - (unsigned long long)gadgetType;
 - (bool)hasContentToDisplay;
-- (bool)hasLoadedContentData;
 - (void)layoutSubviews;
-- (void)loadContentData;
 - (long long)priority;
 - (void)setDelegate:(id)arg1;
 - (void)setGadgetSpec:(id)arg1;

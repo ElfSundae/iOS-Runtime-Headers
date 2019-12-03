@@ -5,7 +5,7 @@
 @interface PUImportOneUpCell : PUPhotosSharingGridCell <PXChangeObserver> {
     UITextField * _debugTextField;
     <PUImportOneUpCellDisplayDelegate> * _displayDelegate;
-    PUImportItemViewModel * _importItem;
+    PXImportItemViewModel * _importItem;
     long long  _thumbnailRequestID;
 }
 
@@ -14,7 +14,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) <PUImportOneUpCellDisplayDelegate> *displayDelegate;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) PUImportItemViewModel *importItem;
+@property (nonatomic, retain) PXImportItemViewModel *importItem;
 @property (readonly) Class superclass;
 @property (nonatomic) long long thumbnailRequestID;
 

@@ -7,6 +7,7 @@
 
 - (NSDictionary *)alternateIdentifiers;
 - (void)connect;
+- (long long)connectionType;
 - (void)disconnect;
 - (NSString *)identifier;
 - (_TVRXKeyboardController *)keyboardController;
@@ -21,5 +22,10 @@
 - (NSSet *)supportedButtons;
 - (bool)supportsTouchEvents;
 - (_TVRXVoiceRecorder *)voiceRecorder;
+
+@optional
+
+- (bool)isPaired;
+- (void)sendEvent:(void *)arg1 options:(void *)arg2 response:(void *)arg3; // needs 3 arg types, found 10: NSString *, NSDictionary *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSDictionary *, NSDictionary *, NSError *, void*
 
 @end

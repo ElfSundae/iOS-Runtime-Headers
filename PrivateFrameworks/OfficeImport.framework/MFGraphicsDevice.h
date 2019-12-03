@@ -14,6 +14,7 @@
     MFObjectTable * m_stockObjects;
 }
 
+- (void).cxx_destruct;
 - (int)abortPath;
 - (void)addClippingPathToCurrentContext:(id)arg1 dc:(id)arg2;
 - (void)addClippingPathToCurrentDCAndCurrentContext:(id)arg1;
@@ -59,6 +60,7 @@
 - (int)excludeClipRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (int)extTextOut:(int)arg1 y:(int)arg2 in_text:(id)arg3 options:(int)arg4 left:(int)arg5 top:(int)arg6 right:(int)arg7 bottom:(int)arg8 spacingValues:(int*)arg9 numValues:(int)arg10;
 - (int)extTextOutEncoded:(int)arg1 y:(int)arg2 in_data:(id)arg3 options:(int)arg4 left:(int)arg5 top:(int)arg6 right:(int)arg7 bottom:(int)arg8 spacingValues:(int*)arg9 numValues:(int)arg10;
+- (int)fillRectangle:(int)arg1 y1:(int)arg2 x2:(int)arg3 y2:(int)arg4;
 - (int)fillRgn:(unsigned int)arg1 in_brushID:(unsigned int)arg2;
 - (int)fillRgnWithRects:(id)arg1 in_brushID:(unsigned int)arg2;
 - (unsigned long long)firstClipDCIndex;

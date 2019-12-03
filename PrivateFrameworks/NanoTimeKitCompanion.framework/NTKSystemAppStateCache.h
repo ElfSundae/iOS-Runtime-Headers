@@ -2,7 +2,8 @@
    Image: /System/Library/PrivateFrameworks/NanoTimeKitCompanion.framework/NanoTimeKitCompanion
  */
 
-@interface NTKSystemAppStateCache : NSObject <LSApplicationWorkspaceObserverProtocol> {
+@interface NTKSystemAppStateCache : NSObject <LSApplicationWorkspaceObserverProtocol, NTKSystemAppStateCache> {
+    NSMutableSet * _cachedAppStateBundleId;
     NSObject<OS_dispatch_queue> * _internalQueue;
     NSMutableSet * _removedSystemApps;
     NSMutableSet * _restrictedSystemApps;
@@ -19,12 +20,14 @@
 - (void).cxx_destruct;
 - (void)_deviceDidPair;
 - (void)_queue_applicationsDidChange:(id)arg1 state:(unsigned long long)arg2;
+- (id)_queue_cachedAppStateBundleId;
 - (void)_queue_deviceDidPair;
 - (void)_queue_initializeRemovedSystemApps;
 - (void)_queue_initializeRestrictedSystemApps;
 - (id)_queue_removedSystemApps;
 - (id)_queue_restrictedSystemApps;
 - (void)_queue_tinCanSettingsChanged;
+- (void)_queue_verifyStateForAppBundleId:(id)arg1;
 - (void)_tinCanSettingsChanged;
 - (void)applicationStateDidChange:(id)arg1;
 - (void)applicationsDidInstall:(id)arg1;

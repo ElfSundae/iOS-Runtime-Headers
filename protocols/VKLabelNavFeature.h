@@ -15,7 +15,7 @@
 - (bool)isRamp;
 - (bool)isStartOfRoadName;
 - (bool)isTrafficCameraFeature;
-- (void)layoutWithNavContext:(struct NavContext { int (**x1)(); struct LabelManager {} *x2; struct LabelLayoutContext {} *x3; struct LabelNavLayoutContext {} *x4; }*)arg1;
+- (void)layoutWithNavContext:(struct NavContext { int (**x1)(); struct LabelManager {} *x2; struct MapNavLabeler {} *x3; struct LabelLayoutContext {} *x4; struct LabelNavLayoutContext {} *x5; }*)arg1;
 - (NSString *)name;
 - (struct PolylineCoordinate { unsigned int x1; float x2; })routeOffset;
 - (void)setIsPicked:(bool)arg1;

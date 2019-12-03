@@ -29,10 +29,9 @@
 @property (nonatomic, retain) UILabel *wristSettingsLabel;
 
 - (void).cxx_destruct;
-- (double)_assetBottomToTitleFirstBaseline;
 - (id)_bodyFont;
 - (id)_bodyFontTextStyle;
-- (double)_bodyTextLastBaselineToRecordingStepFirstBaseline;
+- (id)_recordingStepFont;
 - (void)_setUpElectrocardiogramQuery;
 - (void)_stepForwardWithElectrocardiogramRecorded:(bool)arg1;
 - (void)_stopElectrocardiogramQuery;
@@ -40,7 +39,6 @@
 - (id)_titleFont;
 - (id)_titleFontTextStyle;
 - (id)_titleForOnboarding:(bool)arg1;
-- (double)_titleLastBaselineToBodyFirstBaseline;
 - (id)assetView;
 - (id)availability;
 - (id)bodyLabel;

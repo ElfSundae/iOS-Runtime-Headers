@@ -42,6 +42,7 @@
 - (void).cxx_destruct;
 - (long long)_dragInteraction:(id)arg1 dataOwnerForAddingToSession:(id)arg2 withTouchAtPoint:(struct CGPoint { double x1; double x2; })arg3;
 - (long long)_dragInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
+- (bool)_dragInteraction:(id)arg1 sessionSupportsSystemDrag:(id)arg2;
 - (bool)_dragInteractionDynamicallyUpdatesPrefersFullSizePreviews:(id)arg1;
 - (void)addTentativeRowAtIndexPath:(id)arg1;
 - (void)beginDragForTentativeRows;

@@ -18,6 +18,7 @@
 - (bool)_storeModeEnabled;
 - (bool)_voiceTriggerEnabled;
 - (id)audioInjectionFilePath;
+- (bool)corespeechDaemonEnabled;
 - (id)devicesWithVoiceProfileIniCloudForLanguage:(id)arg1;
 - (void)discardAllSATEnrollment;
 - (void)discardSATEnrollmentForLanguageCode:(id)arg1;
@@ -25,12 +26,10 @@
 - (bool)fileLoggingIsEnabled;
 - (id)fileLoggingLevel;
 - (bool)gestureSubscriptionEnabled;
-- (id)getCachedVoiceProfileAvailabilityMetaBlob;
 - (id)getMD5HashForSATEnrollmentAudioForLanguageCode:(id)arg1;
 - (id)getSATEnrollmentPath;
 - (bool)hasExplicitlySetVoiceTriggerEnabled;
 - (bool)hasVoiceProfileIniCloudForLanguageCode:(id)arg1;
-- (bool)hasVoiceProfileIniCloudForLanguageCode:(id)arg1 withBackupMetaBlob:(id)arg2;
 - (id)init;
 - (bool)isRemoteVoiceTriggerAvailable;
 - (bool)isSATAvailable;

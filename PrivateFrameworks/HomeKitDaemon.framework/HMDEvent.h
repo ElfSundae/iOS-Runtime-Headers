@@ -23,7 +23,7 @@
 @property (getter=isEndEvent, nonatomic, readonly) bool endEvent;
 @property (nonatomic) HMDEventTrigger *eventTrigger;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) HMDHome *home;
+@property (nonatomic) HMDHome *home;
 @property (nonatomic, retain) NSString *logString;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, copy) NSSet *messageReceiverChildren;
@@ -73,6 +73,7 @@
 - (void)setActivationType:(unsigned long long)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setEventTrigger:(id)arg1;
+- (void)setHome:(id)arg1;
 - (void)setLogString:(id)arg1;
 - (void)setMsgDispatcher:(id)arg1;
 - (void)setWorkQueue:(id)arg1;

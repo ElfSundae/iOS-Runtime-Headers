@@ -12,7 +12,6 @@
 
 - (void).cxx_destruct;
 - (id)activityCreate;
-- (bool)canBeUsedForOperation:(id)arg1;
 - (id)configuration;
 - (id)configurationFetchedGroup;
 - (void)main;

@@ -12,11 +12,11 @@
 @property (nonatomic, retain) OADDrawableCategoryDefaults *shapeDefaults;
 @property (nonatomic, retain) OADDrawableCategoryDefaults *textDefaults;
 
+- (void).cxx_destruct;
 - (void)addDefaults;
 - (id)addLineDefaults;
 - (id)addShapeDefaults;
 - (id)addTextDefaults;
-- (void)dealloc;
 - (id)description;
 - (bool)isEmpty;
 - (id)lineDefaults;

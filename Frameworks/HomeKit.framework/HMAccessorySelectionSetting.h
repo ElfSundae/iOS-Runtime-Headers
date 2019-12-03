@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/HomeKit.framework/HomeKit
  */
 
-@interface HMAccessorySelectionSetting : HMAccessorySetting <_HMAccesorySettingDelegate>
+@interface HMAccessorySelectionSetting : HMAccessorySetting <HFStateDumpBuildable, _HMAccesorySettingDelegate>
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

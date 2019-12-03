@@ -19,7 +19,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initFromPath:(id)arg1 name:(id)arg2 options:(int)arg3 error:(id*)arg4;
-- (id)initFromPathFileSystemRepresentation:(const char *)arg1 name:(id)arg2 options:(int)arg3 error:(id*)arg4;
+- (id)initFromPathFileSystemRepresentation:(const char *)arg1 name:(id)arg2 forRemoval:(bool)arg3 options:(int)arg4 error:(id*)arg5;
 - (id)initWithName:(id)arg1 value:(id)arg2;
 - (bool)isEqual:(id)arg1;
 - (id)name;

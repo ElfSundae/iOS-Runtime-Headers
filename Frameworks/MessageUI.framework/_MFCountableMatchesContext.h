@@ -10,6 +10,7 @@
 
 @property (nonatomic) long long maxCount;
 
+- (void).cxx_destruct;
 - (void)countInstances:(id)arg1 usingPredicate:(id /* block */)arg2;
 - (void)dealloc;
 - (id)highestMatches;

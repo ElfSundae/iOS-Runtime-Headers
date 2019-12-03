@@ -8,7 +8,10 @@
 
 + (id)confidentialFeatureWarningMessage;
 + (bool)confidentialWarningRequiredForAsset:(id)arg1;
++ (bool)confidentialWarningRequiredForAssetReferences:(id)arg1;
 + (bool)confidentialWarningRequiredForAssets:(id)arg1;
++ (bool)confidentialWarningRequiredForShareableSelection:(id)arg1;
++ (id)confidentialityAlertWithActions:(id)arg1;
 + (bool)confidentialityCheckRequired;
 + (id)confidentialityWarningMessage;
 + (id)confidentialityWarningTitle;

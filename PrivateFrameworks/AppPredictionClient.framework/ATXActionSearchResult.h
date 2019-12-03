@@ -13,12 +13,15 @@
 + (id)_demoModeActionResponse;
 + (bool)_demoModeEnabled;
 + (id)actionResponseForDeveloperMode;
++ (id)actionResponseForDeveloperModeWithShouldShowRecentDonations:(bool)arg1 shouldShowParameterCombinations:(bool)arg2 shouldShowUpcomingMedia:(bool)arg3;
++ (id)mostRecentDonationParameterCombinations;
 + (id)predictedActionSearchResultsWithLimit:(long long)arg1 forBundleIdentifiers:(id)arg2;
 + (id)recentDonationsStarting:(id)arg1 end:(id)arg2 number:(unsigned long long)arg3;
 + (id)recentUpcomingMedia;
 + (id)searchResultForAction:(id)arg1 actionResponse:(id)arg2;
 + (bool)shouldDisplayRecentDonationsForTesting;
 + (bool)shouldDisplayUpcomingMediaForTesting;
++ (bool)shouldDisplayValidParameterCombinations;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -26,6 +29,7 @@
 - (id)actionResponse;
 - (id)atxAction;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;

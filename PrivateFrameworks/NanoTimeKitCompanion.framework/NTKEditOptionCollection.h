@@ -20,7 +20,7 @@
 
 - (void).cxx_destruct;
 - (unsigned long long)collectionType;
-- (id)filteredCollectionForOSVersion:(unsigned int)arg1;
+- (id)filteredCollectionForDevice:(id)arg1;
 - (id)filteredCollectionWithObjectsPassingTest:(id /* block */)arg1;
 - (id)initWithEditMode:(long long)arg1 localizedName:(id)arg2 options:(id)arg3 collectionType:(unsigned long long)arg4;
 - (bool)isEqual:(id)arg1;

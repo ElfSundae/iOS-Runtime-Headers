@@ -17,7 +17,6 @@
     PKAccountAutomaticPaymentsDateFooterView * _footerView;
     NSArray * _frequencies;
     NSDictionary * _frequenciesMap;
-    long long  _frequencyDay;
     UIPickerView * _frequencyPicker;
     NSDateFormatter * _modelDateFormatter;
     PKMonthDayCollectionViewController * _monthDayCollectionViewController;
@@ -25,6 +24,7 @@
     NSDateFormatter * _pickerDateFormatter;
     NSCalendar * _productCalendar;
     NSTimeZone * _productTimeZone;
+    long long  _scheduledDay;
     NSNumber * _selectedAmount;
     NSDate * _selectedDate;
     NSNumber * _selectedFrequency;
@@ -54,6 +54,7 @@
 - (long long)_frequency;
 - (id)_frequencyTitleForFrequency:(long long)arg1;
 - (long long)_paymentRowTypeForIndexPath:(id)arg1;
+- (void)_performNextButtonTapped;
 - (long long)_preset;
 - (id)_textForAmount:(id)arg1;
 - (id)_textForPaymentRowType:(long long)arg1;
@@ -78,11 +79,12 @@
 - (id)tableHeaderView;
 - (id)tableView;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (void)viewDidLoad;
+- (void)viewWillLayoutSubviews;
 
 @end

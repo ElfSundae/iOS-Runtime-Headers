@@ -17,6 +17,6 @@
 - (id)handle;
 - (id)initWithHandle:(id)arg1 contactIdentifiers:(id)arg2 isMe:(bool)arg3;
 - (bool)isMe;
-- (bool)matchesPerson:(id)arg1;
+- (bool)matchesPerson:(id)arg1 withUnifiedContactIdentifiers:(id)arg2;
 
 @end

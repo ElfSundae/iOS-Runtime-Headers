@@ -21,7 +21,7 @@
 - (void)fetchAndStoreRecordsForPaymentPassWithUniqueIdentifier:(id)arg1 completion:(id /* block */)arg2;
 - (void)generateRandomTransactionForPassWithUniqueIdentifier:(id)arg1 completion:(id /* block */)arg2;
 - (id)initWithConnection:(id)arg1;
-- (void)itemOfItemType:(unsigned long long)arg1 recordName:(id)arg2 completion:(id /* block */)arg3;
+- (void)itemOfItemType:(unsigned long long)arg1 recordName:(id)arg2 qualityOfService:(long long)arg3 completion:(id /* block */)arg4;
 - (void)noteAccountDeletedWithHandler:(id /* block */)arg1;
 - (void)noteCloudSyncPassesSwitchChangedWithHandler:(id /* block */)arg1;
 - (void)populateEvents:(id)arg1 forAccountIdentifier:(id)arg2 completion:(id /* block */)arg3;

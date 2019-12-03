@@ -8,6 +8,7 @@
 
 @property (nonatomic, readonly) NSArray *availableMediaTypes;
 @property (readonly, copy) NSString *debugDescription;
+@property <AVAssetWriterDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, copy) NSURL *directoryForTemporaryFiles;
 @property (readonly) NSError *error;
@@ -27,6 +28,7 @@
 + (void)initialize;
 
 - (id)_helper;
+- (bool)_initInternalObject;
 - (bool)_setHelper:(id)arg1 ifCurrentHelper:(id)arg2;
 - (bool)_setHelper:(id)arg1 ifCurrentHelper:(id)arg2 withBlock:(id /* block */)arg3;
 - (bool)_supportsSampleReferencesReturningError:(id*)arg1;
@@ -41,15 +43,17 @@
 - (void)cancelWriting;
 - (void)dealloc;
 - (void)declareKeyPathDependenciesWithRegistry:(id)arg1;
+- (id)delegate;
 - (id)description;
 - (id)directoryForTemporaryFiles;
 - (void)endSessionAtSourceTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (id)error;
-- (void)finalize;
 - (bool)finishWriting;
 - (id)finishWritingDelegate;
 - (void)finishWritingWithCompletionHandler:(id /* block */)arg1;
+- (void)flush;
 - (id)init;
+- (id)initWithFileType:(id)arg1 error:(id*)arg2;
 - (id)initWithURL:(id)arg1 fileType:(id)arg2 error:(id*)arg3;
 - (id)inputGroups;
 - (id)inputs;
@@ -62,6 +66,7 @@
 - (float)preferredRate;
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })preferredTransform;
 - (float)preferredVolume;
+- (void)setDelegate:(id)arg1;
 - (void)setDirectoryForTemporaryFiles:(id)arg1;
 - (void)setFinishWritingDelegate:(id)arg1;
 - (void)setMetadata:(id)arg1;

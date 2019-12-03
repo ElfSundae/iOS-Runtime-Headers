@@ -7,11 +7,12 @@
     PDRootTimeNode * mRootTimeNode;
 }
 
-+ (void)initialize;
++ (id)entranceSubTypeMap;
++ (id)exitSubTypeMap;
 
+- (void).cxx_destruct;
 - (id)addRootTimeNode;
 - (id)buildMap;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 - (id)rootTimeNode;

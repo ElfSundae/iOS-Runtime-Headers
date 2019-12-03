@@ -7,7 +7,7 @@
     struct Lock { 
         struct Atomic<unsigned char> { 
             struct atomic<unsigned char> { 
-                unsigned char __a_; 
+                _Atomic unsigned char __a_; 
             } value; 
         } m_byte; 
     }  m_externalDataMutex;
@@ -16,6 +16,7 @@
     struct OpaqueJSContextGroup { } * m_group;
 }
 
++ (void)setCrashOnVMCreation:(bool)arg1;
 + (unsigned long long)setNumberOfDFGCompilerThreads:(unsigned long long)arg1;
 + (unsigned long long)setNumberOfFTLCompilerThreads:(unsigned long long)arg1;
 + (id)virtualMachineWithContextGroupRef:(struct OpaqueJSContextGroup { }*)arg1;
@@ -26,13 +27,15 @@
 - (void)addManagedReference:(id)arg1 withOwner:(id)arg2;
 - (id)contextForGlobalContextRef:(struct OpaqueJSContext { }*)arg1;
 - (void)dealloc;
-- (struct Lock { struct Atomic<unsigned char> { struct atomic<unsigned char> { unsigned char x_1_2_1; } x_1_1_1; } x1; }*)externalDataMutex;
+- (struct Lock { struct Atomic<unsigned char> { struct atomic<unsigned char> { _Atomic unsigned char x_1_2_1; } x_1_1_1; } x1; }*)externalDataMutex;
 - (id)externalObjectGraph;
 - (id)externalRememberedSet;
 - (id)init;
 - (id)initWithContextGroupRef:(struct OpaqueJSContextGroup { }*)arg1;
 - (bool)isOldExternalObject:(id)arg1;
+- (bool)isWebThreadAware;
 - (void)removeManagedReference:(id)arg1 withOwner:(id)arg2;
 - (void)shrinkFootprintWhenIdle;
+- (struct VM { struct atomic<unsigned int> { _Atomic unsigned int x_1_1_1; } x1; unsigned int x2; struct RefPtr<JSC::JSLock, WTF::DumbPtrTraits<JSC::JSLock> > { struct JSLock {} *x_3_1_1; } x3; struct RetainPtr<__CFRunLoop *> { void *x_4_1_1; } x4; struct Heap { struct HashMap<JSC::JSImmutableButterfly *, JSC::JSString *, WTF::PtrHash<JSC::JSImmutableButterfly *>, WTF::HashTraits<JSC::JSImmutableButterfly *>, WTF::HashTraits<JSC::JSString *> > { struct HashTable<JSC::JSImmutableButterfly *, WTF::KeyValuePair<JSC::JSImmutableButterfly *, JSC::JSString *>, WTF::KeyValuePairKeyExtractor<WTF::KeyValuePair<JSC::JSImmutableButterfly *, JSC::JSString *> >, WTF::PtrHash<JSC::JSImmutableButterfly *>, WTF::HashMap<JSC::JSImmutableButterfly *, JSC::JSString *, WTF::PtrHash<JSC::JSImmutableButterfly *>, WTF::HashTraits<JSC::JSImmutableButterfly *>, WTF::HashTraits<JSC::JSString *> >::KeyValuePairTraits, WTF::HashTraits<JSC::JSImmutableButterfly *> > { struct KeyValuePair<JSC::JSImmutableButterfly *, JSC::JSString *> {} *x_1_3_1; unsigned int x_1_3_2; unsigned int x_1_3_3; unsigned int x_1_3_4; unsigned int x_1_3_5; } x_1_2_1; } x_5_1_1; int x_5_1_2; int x_5_1_3; unsigned long long x_5_1_4; unsigned long long x_5_1_5; unsigned long long x_5_1_6; unsigned long long x_5_1_7; unsigned long long x_5_1_8; } x5; }*)vm;
 
 @end

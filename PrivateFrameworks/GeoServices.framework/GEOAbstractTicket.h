@@ -6,6 +6,7 @@
     unsigned long long  _cachePolicy;
     bool  _cancelled;
     NSDictionary * _responseUserInfo;
+    GEODataRequestThrottlerToken * _throttlerToken;
     GEOMapServiceTraits * _traits;
 }
 
@@ -23,6 +24,7 @@
 - (bool)isCancelled;
 - (id)responseUserInfo;
 - (void)setCachePolicy:(unsigned long long)arg1;
+- (void)setThrottlerToken:(id)arg1;
 - (id)traits;
 
 @end

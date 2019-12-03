@@ -10,7 +10,7 @@
     WBSPerSitePreferencesSQLiteStore * _perSitePreferencesStore;
     WBSCoalescedAsynchronousWriter * _saveUserMediaPermissionsWriter;
     struct atomic<LoadingStatus> { 
-        int __a_; 
+        _Atomic int __a_; 
     }  _savedStateLoadStatus;
     NSURL * _userMediaPermissionsFileURL;
 }
@@ -38,7 +38,9 @@
 - (void)_loadSavedPermissions;
 - (void)_loadSavedPermissionsIfNecessary;
 - (long long)_mediaCaptureSettingForMediaCaptureType:(long long)arg1 userMediaPermission:(unsigned long long)arg2;
+- (long long)_mediaCaptureTypeForPreference:(id)arg1;
 - (unsigned long long)_permissionForOrigin:(id)arg1 topLevelOrigin:(id)arg2;
+- (unsigned long long)_permissionMaskForMediaCaptureType:(long long)arg1;
 - (id)_policyForOrigin:(id)arg1 topLevelOrigin:(id)arg2;
 - (id)_standardizedURLForDomain:(id)arg1;
 - (unsigned long long)_userMediaPermissionForMediaCaptureType:(long long)arg1 mediaCaptureSetting:(long long)arg2;

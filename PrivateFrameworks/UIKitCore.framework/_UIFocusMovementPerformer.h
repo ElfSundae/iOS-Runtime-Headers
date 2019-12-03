@@ -10,13 +10,18 @@
 
 - (void).cxx_destruct;
 - (id)_bestCandidateForFocusMovement:(id)arg1;
+- (id)_bestCandidateForHierarchicalFocusMovement:(id)arg1;
 - (id)_bestCandidateForLinearFocusMovement:(id)arg1;
 - (id)_bestCandidateForNonLinearFocusMovement:(id)arg1;
+- (id)_fakeFocusedViewForFocusMovement:(id)arg1 searchArea:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (id)_findFocusCandidateByExhaustivelySearchingScrollableContainer:(id)arg1 forRequest:(id)arg2;
 - (id)_findFocusCandidateBySearchingLinearFocusMovementSequencesForRequest:(id)arg1;
 - (id)_findFocusCandidateWithoutLoadingScrollableContent:(id)arg1 forRequest:(id)arg2 minimumSearchArea:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3;
-- (void)_loadScrollableContentForFocusMovement:(id)arg1;
+- (bool)_isMovementValidForFocusSequences:(id)arg1;
+- (id)_itemContainersToCheckForRequest:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_minimumSearchAreaForContainer:(id)arg1 inWindow:(id)arg2;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_minimumSearchAreaForContainer:(id)arg1 inWindow:(id)arg2 shouldLoadScrollableContainer:(bool)arg3;
+- (id)_nextLinearCandidateLoadingScrollableContentForRequest:(id)arg1;
 - (bool)_shouldRecordDestinationItemDistanceOffscreenInWindow:(id)arg1;
 - (id)delegate;
 - (bool)performFocusMovement:(id)arg1;

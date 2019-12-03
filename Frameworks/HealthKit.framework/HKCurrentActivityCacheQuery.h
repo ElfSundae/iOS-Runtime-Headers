@@ -14,8 +14,8 @@
 + (void)configureClientInterface:(id)arg1;
 
 - (void).cxx_destruct;
-- (void)client_deliverCurrentActivityCache:(id)arg1 moveStatistics:(id)arg2 exerciseStatistics:(id)arg3 standHoursInfo:(id)arg4 queryUUID:(id)arg5;
-- (id)initWithUpdateHandler:(id /* block */)arg1 statisticsIntervalComponents:(id)arg2;
+- (void)client_deliverQueryResult:(id)arg1 queryUUID:(id)arg2;
+- (id)initWithStatisticsIntervalComponents:(id)arg1 updateHandler:(id /* block */)arg2;
 - (void)queue_deliverError:(id)arg1;
 - (void)queue_populateConfiguration:(id)arg1;
 - (void)queue_queryDidDeactivate:(id)arg1;

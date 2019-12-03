@@ -3,6 +3,7 @@
  */
 
 @interface UICompatibilityInputViewController : UIInputViewController <_UIKBDelegateAwareInputController> {
+    double  _currentResumeTime;
     UIKeyboard * _deferredSystemView;
     UIKeyboardInputMode * _incomingExtensionInputMode;
     double  _incomingExtensionInputModeTime;
@@ -10,6 +11,7 @@
     UIKeyboardInputMode * _inputMode;
     NSArray * _internalEdgeMatchConstraints;
     double  _lastSuspendedTime;
+    unsigned long long  _latestDelayTime;
     double  _resetInputModeTime;
     bool  _shouldRegenerateSizingConstraints;
     bool  _shouldSuppressRemoteInputController;
@@ -29,6 +31,7 @@
 + (id)inputSnapshotViewForInputMode:(id)arg1 orientation:(long long)arg2;
 + (id)inputViewControllerWithView:(id)arg1;
 
+- (bool)_canShowWhileLocked;
 - (id)_compatView;
 - (id)_compatibilityController;
 - (id)_initAsDeferredController;
@@ -68,6 +71,7 @@
 - (void)tearDownInputController;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(bool)arg1;
+- (void)viewWillDisappear:(bool)arg1;
 - (void)willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)willBeginTranslation;
 - (void)willResume:(id)arg1;

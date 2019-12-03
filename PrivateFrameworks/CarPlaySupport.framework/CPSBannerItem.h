@@ -5,7 +5,7 @@
 @interface CPSBannerItem : SBUIBannerItem {
     NSArray * _attributedDetailTextVariants;
     NSString * _bundleIdentifier;
-    <CPBannerDelegate> * _delegate;
+    <CPSBannerItemDelegate> * _delegate;
     NSArray * _detailTextVariants;
     NSUUID * _identifier;
     CPImageSet * _imageSet;
@@ -14,7 +14,7 @@
 
 @property (nonatomic, readonly) NSArray *attributedDetailTextVariants;
 @property (nonatomic, copy) NSString *bundleIdentifier;
-@property (nonatomic) <CPBannerDelegate> *delegate;
+@property (nonatomic) <CPSBannerItemDelegate> *delegate;
 @property (nonatomic, readonly) NSArray *detailTextVariants;
 @property (nonatomic, retain) NSUUID *identifier;
 @property (nonatomic, readonly) CPImageSet *imageSet;

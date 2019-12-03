@@ -10,6 +10,7 @@
 - (void)cancelSpeechRequest;
 - (void)clearContext;
 - (void)end;
+- (void)endForReason:(long long)arg1;
 - (void)forceAudioSessionActive;
 - (void)forceAudioSessionActiveForReason:(long long)arg1;
 - (void)forceAudioSessionInactive;
@@ -32,12 +33,13 @@
 - (void)setCarDNDActive:(bool)arg1;
 - (void)setDeviceInStarkMode:(bool)arg1;
 - (void)setLockState:(unsigned long long)arg1;
+- (void)siriUIDidPresentDynamicSnippetWithInfo:(NSDictionary *)arg1;
 - (void)startCorrectedRequestWithText:(NSString *)arg1 correctionIdentifier:(id)arg2 userSelectionResults:(AFUserUtteranceSelectionResults *)arg3;
-- (void)startRequestWithOptions:(AFUIRequestOptions *)arg1;
-- (void)startRequestWithOptions:(void *)arg1 completion:(void *)arg2; // needs 2 arg types, found 7: AFUIRequestOptions *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSError *, void*
+- (void)startRequestWithOptions:(SASRequestOptions *)arg1;
+- (void)startRequestWithOptions:(void *)arg1 completion:(void *)arg2; // needs 2 arg types, found 7: SASRequestOptions *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSError *, void*
 - (void)stopRecordingSpeech;
-- (void)stopRequestWithOptions:(AFUIRequestOptions *)arg1;
+- (void)stopRequestWithOptions:(SASRequestOptions *)arg1;
 - (void)telephonyRequestCompleted;
-- (void)updateRequestOptions:(AFUIRequestOptions *)arg1;
+- (void)updateRequestOptions:(SASRequestOptions *)arg1;
 
 @end

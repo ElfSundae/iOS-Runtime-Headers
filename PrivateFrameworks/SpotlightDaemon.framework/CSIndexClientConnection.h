@@ -3,12 +3,12 @@
  */
 
 @interface CSIndexClientConnection : NSObject {
-    CSClientConnectionConfiguration * _configuration;
+    SDConnectionConfiguration * _configuration;
     bool  _quotaDisabled;
     MDSearchableIndexService * _service;
 }
 
-@property (nonatomic, readonly) CSClientConnectionConfiguration *configuration;
+@property (nonatomic, readonly) SDConnectionConfiguration *configuration;
 @property (nonatomic, readonly) bool quotaDisabled;
 @property (nonatomic, readonly) MDSearchableIndexService *service;
 

@@ -26,9 +26,10 @@
 @property (nonatomic, readonly) OADTableStyleCollection *tableStyles;
 @property (nonatomic, retain) OCDWriter *writer;
 
+- (void).cxx_destruct;
 - (id)blips;
+- (id)bulletBlips;
 - (id)charts;
-- (void)dealloc;
 - (id)defaultTextStyle;
 - (id)dualDrawableMap;
 - (id)encryptionInfo;

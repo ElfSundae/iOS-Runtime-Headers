@@ -17,12 +17,14 @@
 @property (readonly) id identifier;
 @property (nonatomic, readonly, copy) NSString *localIdentifier;
 @property (readonly) NSManagedObjectID *objectID;
+@property (nonatomic, readonly) PHObjectReference *objectReference;
 @property (readonly) PHPhotoLibrary *photoLibrary;
 @property unsigned long long propertyHint;
 @property (readonly) Class superclass;
 @property (getter=isTransient, readonly) bool transient;
 @property (readonly) NSString *uuid;
 
++ (void)assertAllObjects:(id)arg1 forSelector:(SEL)arg2 areOfType:(Class)arg3;
 + (id)authorizationAwareFetchResultWithOptions:(id)arg1 fetchBlock:(id /* block */)arg2;
 + (id)entityKeyForPropertyKey:(id)arg1;
 + (id)entityKeyMap;
@@ -72,6 +74,7 @@
 - (bool)isTransient;
 - (id)localIdentifier;
 - (id)objectID;
+- (id)objectReference;
 - (id)photoLibrary;
 - (unsigned long long)propertyHint;
 - (void)setPropertyHint:(unsigned long long)arg1;

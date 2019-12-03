@@ -12,5 +12,7 @@
 + (id)quickTimeMetadataItemsWithKey:(id)arg1 value:(id)arg2;
 + (bool)readMetadataType:(unsigned char)arg1 fromAVAsset:(id)arg2 value:(id*)arg3 error:(id*)arg4;
 + (bool)readMetadataType:(unsigned char)arg1 fromFileURL:(id)arg2 value:(id*)arg3 error:(id*)arg4;
++ (bool)videoAssetIsDecodable:(id)arg1;
++ (bool)videoAssetIsPlayable:(id)arg1;
 
 @end

@@ -14,13 +14,13 @@
 @property (nonatomic, readonly, copy) NSDictionary *callUUIDToCallMap;
 @property (nonatomic) bool clientsShouldConnect;
 @property (nonatomic) int clientsShouldConnectToken;
-@property (nonatomic, retain) NSObject<OS_dispatch_queue> *concurrentQueue;
+@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *concurrentQueue;
 @property (nonatomic, retain) NSXPCConnection *connection;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic, retain) NSHashTable *delegates;
+@property (nonatomic, readonly) NSHashTable *delegates;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) NSMutableDictionary *mutableCallUUIDToCallMap;
+@property (nonatomic, readonly) NSMutableDictionary *mutableCallUUIDToCallMap;
 @property (readonly) Class superclass;
 
 + (void)releaseSharedXPCClient;
@@ -52,9 +52,6 @@
 - (void)requestTransaction:(id)arg1 completion:(id /* block */)arg2;
 - (void)setClientsShouldConnect:(bool)arg1;
 - (void)setClientsShouldConnectToken:(int)arg1;
-- (void)setConcurrentQueue:(id)arg1;
 - (void)setConnection:(id)arg1;
-- (void)setDelegates:(id)arg1;
-- (void)setMutableCallUUIDToCallMap:(id)arg1;
 
 @end

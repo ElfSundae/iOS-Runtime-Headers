@@ -3,36 +3,36 @@
  */
 
 @interface BWPhotoDecompressorNode : BWNode {
-    struct __CFDictionary { } * _containerOptions;
-    struct __CFDictionary { } * _decompressionOptions;
-    struct FigPhotoDecompressionSession { } * _decompressionSession;
-    bool  _decompressionSetupIsComplete;
-    struct FigPhotoSurfacePool { } * _decompressionSurfacePool;
+    NSMutableSet * _disabledSynchronizedSlaveSemaphores;
     bool  _downstreamIsSharingOutputPool;
-    int  _downstreamRetainedBufferCount;
-    struct opaqueCMFormatDescription { } * _uncompressedFormatDescription;
+    NSMutableArray * _emitSampleBufferSemaphores;
+    NSMutableArray * _emitSynchronizedSlaveSampleBufferSemaphores;
+    int  _numberOfBuffersEmitted;
+    int  _numberOfSynchronizedSlaveBuffersEmitted;
+    int  _numberOfTimesSynchronizedSlaveWaited;
+    int  _numberOfTimesWaited;
+    BWPhotoDecompressor * _photoDecompressor;
+    bool  _synchronizedSlaveAttachedMediaDecompressionEnabled;
+    BWPhotoDecompressor * _synchronizedSlavePhotoDecompressor;
 }
 
 + (void)initialize;
 
-- (struct opaqueCMSampleBuffer { }*)_createUncompressedSampleBufferFromSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1;
-- (void)_releaseDecodeResources;
-- (void)_setCVColorProperties:(struct __CVBuffer { }*)arg1 fromSourceBuffer:(struct opaqueCMSampleBuffer { }*)arg2;
-- (int)_setupContainerOptions;
-- (int)_setupDecodeResources;
-- (int)_setupDecompressionOptions;
-- (int)_setupDecompressionSession;
-- (int)_setupDecompressionSurfacePool;
+- (void)_ensureSemaphoresAreBalanced;
+- (void)_releaseResources;
+- (void)addEmitSampleBufferSemaphore:(id)arg1;
+- (unsigned long long)addEmitSynchronizedSlaveSampleBufferSemaphore:(id)arg1;
 - (void)dealloc;
 - (void)didReachEndOfDataForInput:(id)arg1;
-- (void)didSelectFormat:(id)arg1 forInput:(id)arg2;
+- (void)didSelectFormat:(id)arg1 forInput:(id)arg2 forAttachedMediaKey:(id)arg3;
 - (bool)downstreamIsSharingOutputPool;
-- (int)downstreamRetainedBufferCount;
-- (id)init;
+- (void)handleDroppedSample:(id)arg1 forInput:(id)arg2;
+- (id)initWithSynchronizedSlaveAttachedMediaDecompressionEnabled:(bool)arg1;
 - (id)nodeSubType;
 - (id)nodeType;
+- (void)prepareForCurrentConfigurationToBecomeLive;
 - (void)renderSampleBuffer:(struct opaqueCMSampleBuffer { }*)arg1 forInput:(id)arg2;
 - (void)setDownstreamIsSharingOutputPool:(bool)arg1;
-- (void)setDownstreamRetainedBufferCount:(int)arg1;
+- (void)setSynchronizedSlaveSemaphoreEnabled:(bool)arg1 atIndex:(unsigned long long)arg2;
 
 @end

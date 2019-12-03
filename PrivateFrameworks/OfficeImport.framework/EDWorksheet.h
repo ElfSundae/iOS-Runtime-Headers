@@ -14,8 +14,8 @@
     unsigned long long  mMaxColumnOutlineLevel;
     unsigned long long  mMaxRowOutlineLevel;
     EDMergedCellCollection * mMergedCells;
-    OITSUPointerKeyDictionary * mMergedCols;
-    OITSUPointerKeyDictionary * mMergedRows;
+    NSMutableDictionary * mMergedCols;
+    NSMutableDictionary * mMergedRows;
     EDPane * mPane;
     EDCollection * mPivotTables;
     EDRowBlocks * mRowBlocks;
@@ -23,6 +23,7 @@
     EDWarnings * mWorksheetWarnings;
 }
 
+- (void).cxx_destruct;
 - (id)columnInfos;
 - (id)conditionalFormattings;
 - (double)defaultColumnWidth;

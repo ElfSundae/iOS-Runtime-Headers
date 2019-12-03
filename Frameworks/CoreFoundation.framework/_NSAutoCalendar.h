@@ -3,9 +3,8 @@
  */
 
 @interface _NSAutoCalendar : NSCalendar {
-    struct _opaque_pthread_mutex_t { 
-        long long __sig; 
-        BOOL __opaque[56]; 
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
     }  _lock;
     NSCalendar * cal;
     unsigned long long  changedFirstWeekday;
@@ -13,6 +12,7 @@
     NSLocale * changedLocale;
     unsigned long long  changedMinimumDaysinFirstWeek;
     NSTimeZone * changedTimeZone;
+    unsigned long long  combinedNoteCount;
 }
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
@@ -20,7 +20,7 @@
 + (bool)supportsSecureCoding;
 
 - (id)_init;
-- (void)_update:(id)arg1;
+- (void)_update;
 - (id)calendarIdentifier;
 - (Class)classForCoder;
 - (id)components:(unsigned long long)arg1 fromDate:(id)arg2;

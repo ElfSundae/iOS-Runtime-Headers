@@ -20,6 +20,7 @@
 @property (getter=isUtteranceUserInteractionEnabled, nonatomic) bool utteranceUserInteractionEnabled;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)aceObject;
 - (id)delegate;
 - (double)desiredHeight;

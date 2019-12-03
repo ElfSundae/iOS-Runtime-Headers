@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
  */
 
-@interface MPCMediaRemoteController : NSObject <MSVLRUDictionaryDelegate> {
+@interface MPCMediaRemoteController : NSObject <MPMediaRemoteEntityArtworkGenerator, MSVLRUDictionaryDelegate> {
     NSObject<OS_dispatch_queue> * _accessQueue;
     NSObject<OS_dispatch_queue> * _calloutQueue;
     MSVLRUDictionary * _contentItemArtwork;
@@ -33,7 +33,7 @@
         long long length; 
     }  _requestedContentItemsRange;
     MPCPlayerPath * _resolvedPlayerPath;
-    <MPCSupportedCommands> * _supportedCommands;
+    unsigned long long  _stateHandle;
     long long  _supportedCommandsCacheState;
     MPCFuture * _supportedCommandsFuture;
 }
@@ -62,10 +62,12 @@
 + (void)_sendRemoteCommand:(unsigned int)arg1 playbackIntent:(id)arg2 options:(id)arg3 toPlayerPath:(id)arg4 completion:(id /* block */)arg5;
 + (bool)_shouldRegisterForNotifications;
 + (id)controllerForPlayerPath:(id)arg1;
++ (id)mediaRemoteReplyQueue;
 + (void)sendCommand:(unsigned int)arg1 options:(id)arg2 toPlayerPath:(id)arg3 completion:(id /* block */)arg4;
 
 - (void).cxx_destruct;
 - (void)_contentItemArtworkChangedNotification:(id)arg1;
+- (id)_createExportableArtworkPropertiesForContentItem:(id)arg1;
 - (id)_init;
 - (id)_legacyCommands;
 - (id)_onQueue_identifiersForRange:(struct _MSVSignedRange { long long x1; long long x2; })arg1;
@@ -83,6 +85,7 @@
 - (void)_playbackStateDidChangeNotification:(id)arg1;
 - (void)_supportedCommandsDidChangedNotification:(id)arg1;
 - (id)accessQueue;
+- (id /* block */)artworkCatalogBlockForContentItem:(id)arg1;
 - (id)calloutQueue;
 - (long long)contentItemArtworkCacheStateForArtworkIdentifier:(id)arg1 size:(struct CGSize { double x1; double x2; })arg2;
 - (id)contentItemArtworkForContentItemIdentifier:(id)arg1 artworkIdentifier:(id)arg2 size:(struct CGSize { double x1; double x2; })arg3;

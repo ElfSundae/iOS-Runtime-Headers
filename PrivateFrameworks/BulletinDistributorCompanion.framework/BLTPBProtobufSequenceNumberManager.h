@@ -12,6 +12,7 @@
     NSURL * _sequenceNumbersURL;
     NSString * _serviceName;
     unsigned long long  _sessionState;
+    bool  _updateSequenceNumbersOnOutOfOrder;
 }
 
 @property (nonatomic, readonly) NSUUID *currentSessionIdentifier;
@@ -23,11 +24,11 @@
 - (bool)_isSequenceNumberInOrder:(unsigned long long)arg1;
 - (void)_readSequenceNumbersFromStoreWithInitialDuplicateCapacity:(unsigned long long)arg1;
 - (id)_sequenceNumbersURL;
-- (void)_writeSequenceNumbersToStore;
+- (bool)_writeSequenceNumbersToStore;
 - (id)currentSessionIdentifier;
-- (id)initWithServiceName:(id)arg1;
-- (id)initWithServiceName:(id)arg1 duplicateCapacity:(unsigned long long)arg2;
-- (unsigned long long)nextSendSequenceNumber;
+- (id)initWithServiceName:(id)arg1 updateSequenceNumbersOnOutOfOrder:(bool)arg2;
+- (id)initWithServiceName:(id)arg1 updateSequenceNumbersOnOutOfOrder:(bool)arg2 duplicateCapacity:(unsigned long long)arg3;
+- (id)nextSendSequenceNumber;
 - (id)recvSessionIdentifier;
 - (id)serviceName;
 - (unsigned long long)sessionState;

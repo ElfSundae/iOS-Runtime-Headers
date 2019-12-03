@@ -5,10 +5,10 @@
 @interface ICLegacyContentUtilities : NSObject
 
 + (id)contentStringFromWebArchive:(id)arg1;
-+ (id)createAttachmentFromWebResource:(id)arg1 inContext:(/* Warning: unhandled struct encoding: '{NoteContext=#@@@@@@@@QBBBB@}' */ struct NoteContext { Class x1; id x2; id x3; id x4; id x5; unsigned long long x6; bool x7; bool x8; bool x9; bool x10; id x11; }*)arg2;
-+ (id)createAttachmentWithContentID:(id)arg1 mimeType:(id)arg2 data:(id)arg3 filename:(id)arg4 inContext:(/* Warning: unhandled struct encoding: '{NoteContext=#@@@@@@@@QBBBB@}' */ struct NoteContext { Class x1; id x2; id x3; id x4; id x5; unsigned long long x6; bool x7; bool x8; bool x9; bool x10; id x11; }*)arg5;
++ (id)createAttachmentFromWebResource:(id)arg1 inContext:(struct NoteContext { Class x1; id x2; id x3; id x4; id x5; id x6; id x7; id x8; id x9; unsigned long long x10; bool x11; bool x12; bool x13; bool x14; id x15; }*)arg2;
++ (id)createAttachmentWithContentID:(id)arg1 mimeType:(id)arg2 data:(id)arg3 filename:(id)arg4 inContext:(struct NoteContext { Class x1; id x2; id x3; id x4; id x5; id x6; id x7; id x8; id x9; unsigned long long x10; bool x11; bool x12; bool x13; bool x14; id x15; }*)arg5;
 + (id)generateContentID;
-+ (id)newNoteBasedOnModernNote:(id)arg1 inFolder:(id)arg2 context:(/* Warning: unhandled struct encoding: '{NoteContext=#@@@@@@@@QBBBB@}' */ struct NoteContext { Class x1; id x2; id x3; id x4; id x5; unsigned long long x6; bool x7; bool x8; bool x9; bool x10; id x11; }*)arg3;
++ (id)newNoteBasedOnModernNote:(id)arg1 inFolder:(id)arg2 context:(struct NoteContext { Class x1; id x2; id x3; id x4; id x5; id x6; id x7; id x8; id x9; unsigned long long x10; bool x11; bool x12; bool x13; bool x14; id x15; }*)arg3;
 + (id)suggestedFilenameForURL:(id)arg1 mimeType:(id)arg2;
 
 @end

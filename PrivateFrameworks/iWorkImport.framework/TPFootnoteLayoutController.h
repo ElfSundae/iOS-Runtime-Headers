@@ -15,7 +15,7 @@
 - (id)footnoteMarkProvider;
 - (void)inflateFootnotesInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 intoFootnoteContainer:(id)arg2;
 - (id)initWithDocumentRoot:(id)arg1;
-- (struct _NSRange { unsigned long long x1; unsigned long long x2; })layoutFootnotesFromIndex:(unsigned long long)arg1 intoFootnoteContainer:(id)arg2 maxBlockHeight:(double)arg3 pageCharRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg4 sectionCharRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg5 isLastSection:(bool)arg6 sectionHint:(id)arg7 pageHintIndex:(unsigned long long)arg8;
+- (struct _NSRange { unsigned long long x1; unsigned long long x2; })layOutFootnotesFromIndex:(unsigned long long)arg1 intoFootnoteContainer:(id)arg2 maxBlockHeight:(double)arg3 pageCharRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg4 sectionCharRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg5 isLastSection:(bool)arg6 sectionHint:(id)arg7 pageHintIndex:(unsigned long long)arg8;
 - (id)p_footnoteReferenceStoragesInFootnoteIndexRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (unsigned long long)p_layoutFootnotesInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 intoFootnoteContainer:(id)arg2 maxBlockHeight:(double)arg3 measure:(bool)arg4 inflating:(bool)arg5;
 - (id)p_layoutForFootnoteReferenceStorage:(id)arg1;

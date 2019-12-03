@@ -20,8 +20,8 @@
 
 - (void).cxx_destruct;
 - (id)_fillColor:(bool)arg1;
-- (id)_layer;
 - (double)_pathInset;
+- (id)_shapeLayer;
 - (bool)_shouldAnimatePropertyWithKey:(id)arg1;
 - (id)_strokeColor:(bool)arg1;
 - (void)_updateLightingOutlinePath;

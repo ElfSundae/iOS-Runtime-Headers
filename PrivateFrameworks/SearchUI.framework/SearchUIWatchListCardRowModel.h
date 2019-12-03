@@ -13,15 +13,15 @@
     NSString * _text;
 }
 
-@property long long buttonState;
-@property (retain) SFWatchListCardSection *cardSection;
+@property (nonatomic) long long buttonState;
+@property (nonatomic, retain) SFWatchListCardSection *cardSection;
 @property <SearchUIWatchListCardRowModelDelegate> *delegate;
 @property (nonatomic) bool hasError;
-@property bool hasLoaded;
-@property (retain) SFImage *image;
-@property (retain) SearchUIWatchListCardsManager *manager;
-@property (retain) SFPunchout *punchout;
-@property (retain) NSString *text;
+@property (nonatomic) bool hasLoaded;
+@property (nonatomic, retain) SFImage *image;
+@property (nonatomic, retain) SearchUIWatchListCardsManager *manager;
+@property (nonatomic, retain) SFPunchout *punchout;
+@property (nonatomic, retain) NSString *text;
 
 - (void).cxx_destruct;
 - (long long)buttonState;
@@ -29,9 +29,12 @@
 - (bool)hasError;
 - (bool)hasLoaded;
 - (id)image;
-- (id)initWithResult:(id)arg1 cardSection:(id)arg2 asyncRowManager:(id)arg3;
+- (id)initWithResult:(id)arg1 cardSection:(id)arg2 asyncRowManager:(id)arg3 queryId:(unsigned long long)arg4;
+- (bool)isDraggable;
+- (bool)isTappable;
 - (id)manager;
 - (id)punchout;
+- (id)punchouts;
 - (int)separatorStyle;
 - (void)setButtonState:(long long)arg1;
 - (void)setDelegate:(id)arg1;

@@ -4,9 +4,11 @@
 
 @interface VCWeakObjectHolder : NSObject {
     id  _weakObject;
+    struct OpaqueFigCFWeakReference { } * _weakObjectWithoutAutoRelease;
 }
 
 @property (nonatomic, readonly) id strong;
+@property (nonatomic, readonly) struct OpaqueFigCFWeakReference {}**weak;
 
 + (id)weakObjectHolderWithObject:(id)arg1;
 
@@ -14,5 +16,6 @@
 - (id)init;
 - (id)initWithObject:(id)arg1;
 - (id)strong;
+- (struct OpaqueFigCFWeakReference {}**)weak;
 
 @end

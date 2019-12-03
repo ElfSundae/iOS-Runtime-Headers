@@ -73,6 +73,7 @@
 - (void).cxx_destruct;
 - (bool)PDFView:(id)arg1 shouldHandleLink:(id)arg2;
 - (void)_boundingPathMayHaveChangedForView:(id)arg1 relativeToBoundsOriginOnly:(bool)arg2;
+- (bool)_canShowWhileLocked;
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })_compensatingAffineTransformForPage:(id)arg1;
 - (void)_createPDFView;
 - (struct CGSize { double x1; double x2; })_medianSizeForCurrentDocumentInPDFViewWithGetter:(id /* block */)arg1;
@@ -86,6 +87,7 @@
 - (void)_updateThumbnailViewAppearance;
 - (void)_updateThumbnailViewHolderConstraints;
 - (void)_userChangedScrollViewMagnificationNotification:(id)arg1;
+- (void)annotationController:(id)arg1 detectedEditOfType:(unsigned long long)arg2;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })cachedThumnailViewInsets;
 - (bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (bool)constraintsAreHorizontal;
@@ -103,14 +105,12 @@
 - (id)documentUnlockedWithPassword;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })edgeInsets;
 - (void)editCheckpointReachedForAnnotationController:(id)arg1;
-- (void)editDetectedForAnnotationController:(id)arg1;
 - (bool)forcesPDFViewTopAlignment;
 - (void)highlight:(id)arg1;
 - (struct CGSize { double x1; double x2; })idealContentSizeForScreenSize:(struct CGSize { double x1; double x2; })arg1 windowDecorationSize:(struct CGSize { double x1; double x2; })arg2;
 - (id)initWithPDFDocument:(id)arg1 delegate:(id)arg2;
 - (unsigned long long)inkStyle;
 - (void)loadContentWithCompletionBlock:(id /* block */)arg1;
-- (id)menuItems:(id)arg1 forPage:(id)arg2;
 - (bool)navigationModeHorizontal;
 - (unsigned long long)pageCount;
 - (id)pageLabelView;

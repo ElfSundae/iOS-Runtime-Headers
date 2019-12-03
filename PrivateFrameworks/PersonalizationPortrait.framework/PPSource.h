@@ -7,12 +7,14 @@
     NSDate * _date;
     NSString * _documentId;
     NSString * _groupId;
+    PPSourceMetadata * _metadata;
 }
 
 @property (nonatomic, readonly) NSString *bundleId;
 @property (nonatomic, readonly) NSDate *date;
 @property (nonatomic, readonly) NSString *documentId;
 @property (nonatomic, readonly) NSString *groupId;
+@property (nonatomic, readonly) PPSourceMetadata *metadata;
 
 + (bool)supportsSecureCoding;
 
@@ -25,8 +27,10 @@
 - (id)groupId;
 - (unsigned long long)hash;
 - (id)initWithBundleId:(id)arg1 groupId:(id)arg2 documentId:(id)arg3 date:(id)arg4;
+- (id)initWithBundleId:(id)arg1 groupId:(id)arg2 documentId:(id)arg3 date:(id)arg4 metadata:(id)arg5;
 - (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToSource:(id)arg1;
+- (id)metadata;
 
 @end

@@ -7,13 +7,11 @@
     NSObject<OS_dispatch_semaphore> * _resultSemaphore;
     struct ExponentialSmoother<float> { 
         struct optional<float> { 
-            bool m_initialized; 
-            struct aligned_storage<float> { 
-                union dummy_u { 
-                    BOOL data[4]; 
-                    struct a4 { } aligner_; 
-                } dummy_; 
-            } m_storage; 
+            union { 
+                BOOL __null_state_; 
+                float __val_; 
+            } ; 
+            bool __engaged_; 
         } state; 
     }  _smoother;
     float  _temperature;

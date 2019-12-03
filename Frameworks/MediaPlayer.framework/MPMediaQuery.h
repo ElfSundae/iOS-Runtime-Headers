@@ -146,7 +146,9 @@
 - (id)initWithCriteria:(id)arg1 library:(id)arg2;
 - (id)initWithEntities:(id)arg1 entityType:(long long)arg2;
 - (id)initWithFilterPredicates:(id)arg1;
+- (id)initWithFilterPredicates:(id)arg1 library:(id)arg2;
 - (id)initWithProtobufferDecodableObject:(id)arg1;
+- (id)initWithProtobufferDecodableObject:(id)arg1 library:(id)arg2;
 - (bool)isEqual:(id)arg1;
 - (bool)isPlaylistItemsQuery;
 - (id)itemPersistentIdentifiers;
@@ -157,6 +159,7 @@
 - (id)mediaLibrary;
 - (id)predicateForProperty:(id)arg1;
 - (id)protobufferEncodableObject;
+- (id)protobufferEncodableObjectFromLibrary:(id)arg1;
 - (void)removeFilterPredicate:(id)arg1;
 - (void)removePredicatesForProperty:(id)arg1;
 - (void)setCollectionPropertiesToFetch:(id)arg1;
@@ -186,6 +189,13 @@
 // Image: /System/Library/PrivateFrameworks/MPUFoundation.framework/MPUFoundation
 
 - (id)_MPUSDS_searchPredicate;
+
+// Image: /System/Library/PrivateFrameworks/SpeechRecognitionCommandAndControl.framework/SpeechRecognitionCommandAndControl
+
++ (id)_songQueryWithValue:(id)arg1 forProperty:(id)arg2 songsOnly:(bool)arg3;
++ (id)queryForAlbum:(id)arg1;
++ (id)queryForArtist:(id)arg1;
++ (id)queryForPlaylist:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/VideosUI.framework/VideosUI
 

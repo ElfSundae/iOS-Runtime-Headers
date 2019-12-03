@@ -11,9 +11,11 @@
 - (void)setStatusBar:(_UIStatusBar *)arg1;
 - (NSArray *)setupInContainerView:(UIView *)arg1;
 - (_UIStatusBar *)statusBar;
-- (_UIStatusBarStyleAttributes *)styleAttributes;
+- (_UIStatusBarStyleAttributes *)styleAttributesForStyle:(long long)arg1;
 
 @optional
+
++ (struct CGSize { double x1; double x2; })intrinsicLockScreenContentSizeForOrientation:(long long)arg1;
 
 - (void)actionable:(id <_UIStatusBarActionable>)arg1 highlighted:(bool)arg2 initialPress:(bool)arg3;
 - (_UIStatusBarAnimation *)additionAnimationForDisplayItemWithIdentifier:(_UIStatusBarIdentifier *)arg1 itemAnimation:(_UIStatusBarAnimation *)arg2;

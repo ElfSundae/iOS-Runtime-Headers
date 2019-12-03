@@ -6,6 +6,7 @@
     unsigned long long  _clientID;
     long long  _clientType;
     BiometricKitXPCClientConnection * _connection;
+    unsigned long long  _connectionID;
     bool  _connectionInitialized;
     bool  _connectionInvalidated;
     <BiometricKitDelegateXpcProtocol> * _delegate;

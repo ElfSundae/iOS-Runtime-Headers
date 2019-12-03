@@ -8,6 +8,7 @@
     NSMutableArray * _larvalSAs;
     NSString * _name;
     NSMutableArray * _securityAssociations;
+    unsigned long long  _uniqueIndex;
 }
 
 @property NSObject<NEIPSecSASessionDelegate> *delegate;
@@ -16,13 +17,16 @@
 @property (retain) NSMutableArray *larvalSAs;
 @property (retain) NSString *name;
 @property (retain) NSMutableArray *securityAssociations;
+@property (nonatomic) unsigned long long uniqueIndex;
 
 - (void).cxx_destruct;
 - (bool)addLarvalSA:(id)arg1;
 - (bool)addSA:(id)arg1;
+- (id)copyEmptySASession;
 - (void)dealloc;
 - (id)delegate;
 - (id)delegateQueue;
+- (id)description;
 - (id)initWithName:(id)arg1 delegate:(id)arg2;
 - (id)internalDelegateQueue;
 - (void)invalidate;
@@ -38,8 +42,10 @@
 - (void)setLarvalSAs:(id)arg1;
 - (void)setName:(id)arg1;
 - (void)setSecurityAssociations:(id)arg1;
+- (void)setUniqueIndex:(unsigned long long)arg1;
 - (void)startBlackholeDetection:(unsigned int)arg1 incomingSA:(id)arg2 outgoingSA:(id)arg3;
 - (void)startIdleTimeout:(unsigned int)arg1 incomingSA:(id)arg2 outgoingSA:(id)arg3;
+- (unsigned long long)uniqueIndex;
 - (bool)updateSA:(id)arg1;
 
 @end

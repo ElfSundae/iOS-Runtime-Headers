@@ -5,11 +5,14 @@
 @interface NWConcrete_nw_write_request : NSObject <OS_nw_write_request> {
     unsigned int  complete;
     id /* block */  completion;
+    NWConcrete_nw_connection * connection;
     unsigned long long  consumed_bytes;
     NSObject<OS_nw_content_context> * context;
     NSObject<OS_dispatch_data> * data;
     unsigned int  idempotent;
     NWConcrete_nw_write_request * next;
+    NSObject<OS_nw_content_context> * original_message;
+    unsigned int  qos_class;
     double  relative_priority;
     unsigned int  reported;
     unsigned int  write_close;

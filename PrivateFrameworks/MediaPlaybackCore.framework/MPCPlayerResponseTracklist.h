@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
  */
 
-@interface MPCPlayerResponseTracklist : NSObject {
+@interface MPCPlayerResponseTracklist : NSObject <_MPCStateDumpPropertyListTransformable> {
     unsigned long long  _changeItemSupport;
     long long  _globalItemCount;
     MPSectionedCollection * _items;
@@ -16,7 +16,10 @@
     long long  _upNextItemCount;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) long long globalItemCount;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) MPSectionedCollection *items;
 @property (nonatomic, readonly) long long lastChangeDirection;
 @property (nonatomic, readonly) MPCPlayerResponseItem *playingItem;
@@ -25,6 +28,7 @@
 @property (nonatomic, readonly) long long repeatType;
 @property (nonatomic, readonly) MPCPlayerResponse *response;
 @property (nonatomic, readonly) long long shuffleType;
+@property (readonly) Class superclass;
 @property (nonatomic, readonly) NSString *uniqueIdentifier;
 @property (nonatomic, readonly) long long upNextItemCount;
 
@@ -33,6 +37,7 @@
 
 - (void).cxx_destruct;
 - (unsigned long long)_determineChangeItemSupport;
+- (id)_stateDumpObject;
 - (id)changeItemCommand;
 - (id)disableModificationsCommand;
 - (long long)globalItemCount;

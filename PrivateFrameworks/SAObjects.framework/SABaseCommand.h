@@ -19,9 +19,27 @@
 - (id)encodedClassName;
 - (id)groupIdentifier;
 
+// Image: /System/Library/PrivateFrameworks/IntentsServices.framework/IntentsServices
+
+- (id)ins_aceIntent;
+- (id)ins_aceIntentResponse;
+- (id)ins_afAnalyticsContext;
+- (long long)ins_analyticsBeginEventType;
+- (long long)ins_analyticsEndEventType;
+- (void)ins_invokeErrorCompletionHandler:(id /* block */)arg1 forUnderlyingError:(id)arg2;
+- (void)ins_invokeErrorCompletionHandler:(id /* block */)arg1 withErrorCode:(long long)arg2 underlyingError:(id)arg3;
+- (bool)ins_isJSONPayload;
+- (id)ins_jsonEncodedIntent;
+- (id)ins_jsonEncodedIntentResponse;
+- (id)ins_protobufEncodedIntent;
+- (id)ins_protobufEncodedIntentResponse;
+- (void)ins_sendIntent:(id)arg1 toExtensionProxy:(id)arg2 onQueue:(id)arg3 completionHandler:(id /* block */)arg4;
+
 // Image: /System/Library/PrivateFrameworks/SiriClientFlow.framework/SiriClientFlow
 
 + (id)aceObjectWithDictionaryWithCustomHandling:(id)arg1 context:(id)arg2;
+
+- (void)setAceAndRefIdsUsing:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/SiriCore.framework/SiriCore
 

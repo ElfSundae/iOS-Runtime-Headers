@@ -18,8 +18,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <_HKFitnessMachineConnectionDelegate> *delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, readonly) HKDevice *deviceForFinalWorkout;
-@property (nonatomic, readonly) _HKFitnessMachine *fitnessMachine;
+@property (readonly, copy) HKDevice *deviceForFinalWorkout;
+@property (readonly, copy) _HKFitnessMachine *fitnessMachine;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) unsigned long long machineState;
 @property (readonly) Class superclass;

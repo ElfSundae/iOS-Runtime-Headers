@@ -13,6 +13,8 @@
 - (FCTagBanner *)bannerImageForWhiteBackground;
 - (double)bannerImageScale;
 - (FCTagBanner *)compactBannerImage;
+- (FCColor *)darkStyleBackgroundColor;
+- (FCColor *)darkStyleForegroundColor;
 - (FCTagBanner *)defaultBannerImage;
 - (FCHeadlineTemplate *)defaultHeadlineTemplate;
 - (long long)feedType;

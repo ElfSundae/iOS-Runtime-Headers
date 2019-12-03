@@ -3,7 +3,7 @@
  */
 
 @interface SKAnimateWarp : SKAction {
-    struct SKCAnimateMesh { int (**x1)(); unsigned int x2; float x3; id /* block */ x4; id x5; double x6; double x7; float x8; float x9; double x10; bool x11; bool x12; id /* block */ x13; long long x14; float x15; float x16; float x17; float x18; id x19; id x20; } * _mycaction;
+    struct SKCAnimateMesh { int (**x1)(); unsigned int x2; float x3; id /* block */ x4; id x5; bool x6; double x7; double x8; float x9; float x10; double x11; bool x12; bool x13; id /* block */ x14; long long x15; float x16; float x17; float x18; float x19; id x20; id x21; id x22; bool x23; } * _mycaction;
 }
 
 + (id)animateWithWarps:(id)arg1 times:(id)arg2;

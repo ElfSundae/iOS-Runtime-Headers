@@ -10,6 +10,7 @@
 @property bool hasLabel;
 @property (retain) NSURL *url;
 
+- (void)dealloc;
 - (bool)hasLabel;
 - (id)init;
 - (void)layoutSubviews;

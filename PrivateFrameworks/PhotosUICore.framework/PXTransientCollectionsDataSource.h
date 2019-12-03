@@ -17,7 +17,7 @@
 - (id)indexPathForCollection:(id)arg1;
 - (id)init;
 - (id)initWithFetchResult:(id)arg1;
-- (id)initWithNavigationRootTitle:(id)arg1 identifier:(id)arg2;
+- (id)initWithNavigationRootTitle:(id)arg1 identifier:(id)arg2 photoLibrary:(id)arg3;
 - (id)navigationRootIdentifier;
 - (long long)numberOfItemsInSection:(long long)arg1;
 - (long long)numberOfSections;

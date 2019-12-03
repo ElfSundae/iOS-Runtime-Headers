@@ -6,12 +6,14 @@
     _HKClinicalBulletedListLayoutManager * _bulletLayoutManager;
     UITextView * _contentsTextView;
     NSLayoutConstraint * _contentsTextViewLastBaselineToSuperviewBottomConstraint;
+    HKSource * _source;
     NSLayoutConstraint * _superviewTopToContentsTextViewFirstBaselineConstraint;
 }
 
 @property (nonatomic, readonly) _HKClinicalBulletedListLayoutManager *bulletLayoutManager;
 @property (nonatomic, readonly) UITextView *contentsTextView;
 @property (nonatomic, readonly) NSLayoutConstraint *contentsTextViewLastBaselineToSuperviewBottomConstraint;
+@property (nonatomic) HKSource *source;
 @property (nonatomic, readonly) NSLayoutConstraint *superviewTopToContentsTextViewFirstBaselineConstraint;
 
 - (void).cxx_destruct;
@@ -34,6 +36,8 @@
 - (id)contentsTextView;
 - (id)contentsTextViewLastBaselineToSuperviewBottomConstraint;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (void)setSource:(id)arg1;
+- (id)source;
 - (id)superviewTopToContentsTextViewFirstBaselineConstraint;
 - (void)traitCollectionDidChange:(id)arg1;
 

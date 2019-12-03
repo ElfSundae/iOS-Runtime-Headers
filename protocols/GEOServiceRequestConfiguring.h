@@ -7,18 +7,15 @@
 
 - (NSDictionary *)additionalHTTPHeaders;
 - (NSArray *)additionalURLQueryItems;
-- (int)dataRequestKindForRequest:(PBRequest *)arg1;
+- (struct { int x1; union { int x_2_1_1; int x_2_1_2; int x_2_1_3; } x2; })dataRequestKindForRequest:(PBRequest *)arg1 traits:(GEOMapServiceTraits *)arg2;
 - (NSString *)debugRequestName;
-- (int)experimentDispatcherRequestTypeForRequest:(PBRequest *)arg1;
-- (long long)experimentType;
 - (unsigned char)requestCounterInfoTypeForRequest:(PBRequest *)arg1;
 - (NSNumber *)serviceTypeNumber;
-- (bool)shouldThrottleRequests;
-- (NSString *)throttleKey;
 - (unsigned long long)urlType;
 
 @optional
 
+- (unsigned long long)multipathServiceType;
 - (double)timeout;
 
 @end

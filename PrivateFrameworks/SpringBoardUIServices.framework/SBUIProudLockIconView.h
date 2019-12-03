@@ -11,7 +11,7 @@
     SBUIFaceIDCoachingView * _lazy_faceIDCoachingView;
     LAUIPearlGlyphView * _lazy_pearlGlyphView;
     _UILegibilitySettings * _legibilitySettings;
-    SBUICAPackageView * _lockView;
+    BSUICAPackageView * _lockView;
     id  _pearlGlyphViewSharedResources;
     bool  _performingIncomingLayout;
     NSSet * _shadowFilterLayers;

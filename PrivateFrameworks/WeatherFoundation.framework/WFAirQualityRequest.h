@@ -11,8 +11,8 @@
 
 @property (nonatomic) bool attachRawAPIData;
 @property (nonatomic, copy) id /* block */ completionHandler;
-@property (nonatomic, copy) NSLocale *locale;
-@property (nonatomic, copy) WFLocation *location;
+@property (nonatomic, retain) NSLocale *locale;
+@property (nonatomic, retain) WFLocation *location;
 
 + (id)airQualityRequestForLocation:(id)arg1 locale:(id)arg2 completionHandler:(id /* block */)arg3;
 

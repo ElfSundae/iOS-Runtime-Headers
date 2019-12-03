@@ -2,13 +2,12 @@
    Image: /System/Library/PrivateFrameworks/AvatarUI.framework/AvatarUI
  */
 
-@interface AVTCarouselController : NSObject <AVTAvatarActionsViewControllerDelegate, AVTAvatarDisplayingControllerDelegate, AVTAvatarEditorViewControllerDelegate, AVTAvatarRecordDataSourceObserver, AVTDisplayingCarouselController, AVTRecordingCarouselController> {
+@interface AVTCarouselController : UIViewController <AVTAvatarActionsViewControllerDelegate, AVTAvatarDisplayingControllerDelegate, AVTAvatarEditorViewControllerDelegate, AVTAvatarRecordDataSourceObserver, AVTDisplayingCarouselController, AVTRecordingCarouselController> {
     <AVTAvatarDisplayingController> * _avatarDisplayingController;
     UIView * _avtViewContainer;
     AVTViewCarouselLayout * _avtViewLayout;
     AVTViewSession * _avtViewSession;
     AVTViewSessionProvider * _avtViewSessionProvider;
-    AVTAvatarContainerViewController * _containerViewController;
     <AVTAvatarRecord> * _currentAvatarRecord;
     AVTAvatarRecordDataSource * _dataSource;
     double  _decelerationRate;
@@ -18,7 +17,6 @@
     AVTMultiAvatarController * _multiAvatarController;
     AVTSingleAvatarController * _singleAvatarController;
     bool  _singleAvatarMode;
-    UIView * _view;
     <AVTDisplayingCarouselControllerDelegate> * displayingDelegate;
     <AVTPresenterDelegate> * presenterDelegate;
     <AVTRecordingCarouselControllerDelegate> * recordingDelegate;
@@ -30,7 +28,6 @@
 @property (nonatomic, retain) AVTViewCarouselLayout *avtViewLayout;
 @property (nonatomic, retain) AVTViewSession *avtViewSession;
 @property (nonatomic, readonly) AVTViewSessionProvider *avtViewSessionProvider;
-@property (nonatomic, retain) AVTAvatarContainerViewController *containerViewController;
 @property (nonatomic, retain) <AVTAvatarRecord> *currentAvatarRecord;
 @property (nonatomic, readonly) AVTAvatarRecordDataSource *dataSource;
 @property (readonly, copy) NSString *debugDescription;
@@ -50,13 +47,11 @@
 @property (nonatomic, retain) AVTSingleAvatarController *singleAvatarController;
 @property (nonatomic) bool singleAvatarMode;
 @property (readonly) Class superclass;
-@property (nonatomic, retain) UIView *view;
+@property (nonatomic, readonly) UIView *view;
 
 + (id)displayingCarouselForRecordDataSource:(id)arg1;
-+ (long long)indexClosestToIndex:(unsigned long long)arg1 withinSet:(id)arg2;
 + (id)recordingCarouselForRecordDataSource:(id)arg1;
 + (id)sessionProviderForMode:(long long)arg1 environment:(id)arg2;
-+ (void)setupAVTView:(id)arg1;
 
 - (void).cxx_destruct;
 - (bool)allowsCreate;
@@ -70,7 +65,6 @@
 - (id)avtViewSession;
 - (id)avtViewSessionProvider;
 - (void)beginAVTViewSession;
-- (id)containerViewController;
 - (id)currentAvatarRecord;
 - (id)dataSource;
 - (void)dataSource:(id)arg1 didAddRecord:(id)arg2 atIndex:(unsigned long long)arg3;
@@ -89,11 +83,9 @@
 - (id)focusedDisplayView;
 - (id)focusedRecord;
 - (id)focusedRecordingView;
-- (id)indexSetForEditableRecords;
 - (id)initWithMode:(long long)arg1 dataSource:(id)arg2;
 - (id)initWithMode:(long long)arg1 sessionProvider:(id)arg2 dataSource:(id)arg3 environment:(id)arg4;
 - (void)loadView;
-- (void)lockOnFocusedViewAnimated:(bool)arg1;
 - (id)logger;
 - (long long)mode;
 - (id)multiAvatarController;
@@ -107,14 +99,12 @@
 - (id)recordingDelegate;
 - (void)reloadData;
 - (void)reloadDataCenteringToAvatarRecord:(id)arg1;
-- (void)renderForARFrame:(id)arg1 completionBlock:(id /* block */)arg2;
 - (void)setAllowsCreate:(bool)arg1;
 - (void)setAllowsCreate:(bool)arg1 animated:(bool)arg2;
 - (void)setAvatarDisplayingController:(id)arg1;
 - (void)setAvtViewContainer:(id)arg1;
 - (void)setAvtViewLayout:(id)arg1;
 - (void)setAvtViewSession:(id)arg1;
-- (void)setContainerViewController:(id)arg1;
 - (void)setCurrentAvatarRecord:(id)arg1;
 - (void)setDecelerationRate:(double)arg1;
 - (void)setDisplayingDelegate:(id)arg1;
@@ -123,16 +113,15 @@
 - (void)setRecordingDelegate:(id)arg1;
 - (void)setSingleAvatarController:(id)arg1;
 - (void)setSingleAvatarMode:(bool)arg1;
-- (void)setSingleAvatarMode:(bool)arg1 animated:(bool)arg2;
-- (void)setView:(id)arg1;
+- (void)setSingleAvatarMode:(bool)arg1 fillContainer:(bool)arg2 animated:(bool)arg3;
+- (void)setupAVTView:(id)arg1;
 - (void)showMultiAvatarControllerAnimated:(bool)arg1;
 - (void)showSingleAvatarControllerAnimated:(bool)arg1;
 - (void)significantRecordChangeInDataSource:(id)arg1;
 - (id)singleAvatarController;
 - (bool)singleAvatarMode;
 - (id)snapshotProviderFocusedOnRecordWithIdentifier:(id)arg1 size:(struct CGSize { double x1; double x2; })arg2;
-- (void)unlockFromFocusedViewAnimated:(bool)arg1;
-- (id)view;
+- (void)viewWillAppear:(bool)arg1;
 - (void)willBeginFocus:(id)arg1;
 - (void)willEndFocus:(id)arg1;
 - (void)wrapAndPresentViewController:(id)arg1 animated:(bool)arg2;

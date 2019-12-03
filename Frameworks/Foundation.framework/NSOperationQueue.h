@@ -2,16 +2,44 @@
    Image: /System/Library/Frameworks/Foundation.framework/Foundation
  */
 
-@interface NSOperationQueue : NSObject {
-    id  _private;
-    void * _reserved;
+@interface NSOperationQueue : NSObject <NSProgressReporting> {
+    struct { 
+        struct os_unfair_lock_s { 
+            unsigned int _os_unfair_lock_opaque; 
+        } __queueLock; 
+        NSOperation *__firstOperation; 
+        NSOperation *__lastOperation; 
+        NSOperation *__firstPriOperation[6]; 
+        NSOperation *__lastPriOperation[6]; 
+        NSMutableArray *_barriers; 
+        _NSOperationQueueProgress *_progress; 
+        _Atomic unsigned long long __operationCount; 
+        NSPointerArray *__activeThreads; 
+        long long __maxNumOps; 
+        int __actualMaxNumOps; 
+        int __numExecOps; 
+        NSObject<OS_dispatch_queue> *__dispatch_queue; 
+        NSObject<OS_dispatch_queue> *__backingQueue; 
+        NSString *__name; 
+        BOOL __nameBuffer[300]; 
+        _Atomic bool __suspended; 
+        _Atomic bool __overcommit; 
+        _Atomic unsigned char __propertyQoS; 
+        _Atomic unsigned char __operationsObserverCount; 
+        _Atomic unsigned char __operationCountObserverCount; 
+        _Atomic unsigned char __progressReporting; 
+        unsigned char __mainQ; 
+    }  _iqp;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property long long maxConcurrentOperationCount;
 @property (copy) NSString *name;
-@property (readonly) unsigned long long operationCount;
-@property (readonly, copy) NSArray *operations;
+@property (readonly) NSProgress *progress;
 @property long long qualityOfService;
+@property (readonly) Class superclass;
 @property (getter=isSuspended) bool suspended;
 @property (nonatomic, readonly) bool tsu_isCurrentQueue;
 @property NSObject<OS_dispatch_queue> *underlyingQueue;
@@ -25,6 +53,7 @@
 - (id)__graphDescription;
 - (void)_fc_addUncancellableOperationForReactorID:(id)arg1 block:(id /* block */)arg2;
 - (void)_fc_addUncancellableOperationWithBlock:(id /* block */)arg1;
+- (void)addBarrierBlock:(id /* block */)arg1;
 - (void)addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void*)arg4;
 - (void)addOperation:(id)arg1;
 - (void)addOperationWithBlock:(id /* block */)arg1;
@@ -39,6 +68,7 @@
 - (unsigned long long)operationCount;
 - (id)operations;
 - (bool)overcommitsOperations;
+- (id)progress;
 - (long long)qualityOfService;
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
 - (void)setMaxConcurrentOperationCount:(long long)arg1;
@@ -61,6 +91,11 @@
 // Image: /System/Library/PrivateFrameworks/HMFoundation.framework/HMFoundation
 
 - (void)cancelAllOperationsWithError:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/MediaServices.framework/MediaServices
+
+- (void)decreaseQualityOfService;
+- (void)increaseQualityOfService;
 
 // Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
 
@@ -94,7 +129,7 @@
 
 - (void)rc_addAsyncOperationWithBlock:(id /* block */)arg1;
 
-// Image: /System/Library/PrivateFrameworks/SpotlightUI.framework/SpotlightUI
+// Image: /System/Library/PrivateFrameworks/SpotlightUIInternal.framework/SpotlightUIInternal
 
 - (void)logStateOperationCountGreaterThan:(long long)arg1;
 

@@ -57,7 +57,7 @@
 
 + (id)_observableDisplayProperties;
 + (void)_setInterfaceActionCanInvokeActionsWithoutPresentingController:(bool)arg1;
-+ (id)actionWithCustomContentView:(id)arg1;
++ (id)actionWithCustomContentView:(id)arg1 handler:(id /* block */)arg2;
 + (id)actionWithCustomContentViewController:(id)arg1;
 + (id)actionWithTitle:(id)arg1 type:(long long)arg2 handler:(id /* block */)arg3;
 + (bool)changedProperties:(id)arg1 containsAny:(id)arg2;

@@ -3,7 +3,9 @@
  */
 
 @interface CKDModifyRecordHandler : NSObject {
+    NSDictionary * _assetUUIDToExpectedProperties;
     long long  _batchRank;
+    bool  _didAttemptDugongKeyRoll;
     bool  _didRollRecordPCSMasterKey;
     NSError * _error;
     NSString * _etag;
@@ -20,10 +22,13 @@
     bool  _saveCompletionBlockCalled;
     CKRecord * _serverRecord;
     CKDSharePCSData * _sharePCSData;
+    CKDZonePCSData * _sharedZonePCSData;
     unsigned long long  _state;
 }
 
+@property (nonatomic, copy) NSDictionary *assetUUIDToExpectedProperties;
 @property (nonatomic) long long batchRank;
+@property (nonatomic) bool didAttemptDugongKeyRoll;
 @property (nonatomic) bool didRollRecordPCSMasterKey;
 @property (nonatomic, retain) NSError *error;
 @property (nonatomic, retain) NSString *etag;
@@ -43,6 +48,7 @@
 @property (nonatomic) bool saveCompletionBlockCalled;
 @property (nonatomic, retain) CKRecord *serverRecord;
 @property (nonatomic, retain) CKDSharePCSData *sharePCSData;
+@property (nonatomic, retain) CKDZonePCSData *sharedZonePCSData;
 @property (nonatomic) unsigned long long state;
 
 + (id)_stringForState:(unsigned long long)arg1;
@@ -73,13 +79,16 @@
 - (void)_unwrapRecordPCSForParent;
 - (void)_unwrapRecordPCSForZone;
 - (void)_unwrapRecordPCSWithShareID:(id)arg1;
+- (bool)_useZoneishPCS;
 - (bool)_wrapEncryptedData:(id)arg1 withPCS:(struct _OpaquePCSShareProtection { }*)arg2 forField:(id)arg3 recordID:(id)arg4;
 - (bool)_wrapEncryptedDataForRecordValueStore:(id)arg1 withPCS:(struct _OpaquePCSShareProtection { }*)arg2;
 - (bool)_wrapEncryptedDataOnRecord:(id)arg1;
+- (id)assetUUIDToExpectedProperties;
 - (id)assetsWhichNeedRecordFetch;
 - (long long)batchRank;
 - (void)clearProtectionDataForRecord;
 - (id)description;
+- (bool)didAttemptDugongKeyRoll;
 - (bool)didRollRecordPCSMasterKey;
 - (id)error;
 - (id)etag;
@@ -97,6 +106,7 @@
 - (id)pcsManager;
 - (id)prepareAssetsForUploadWithError:(id*)arg1;
 - (void)prepareForSave;
+- (void)prepareStreamingAsset:(id)arg1 forUploadWithRecord:(id)arg2;
 - (id)progressTracker;
 - (id)record;
 - (id)recordID;
@@ -106,7 +116,9 @@
 - (bool)saveCompletionBlockCalled;
 - (void)savePCSDataToCache;
 - (id)serverRecord;
+- (void)setAssetUUIDToExpectedProperties:(id)arg1;
 - (void)setBatchRank:(long long)arg1;
+- (void)setDidAttemptDugongKeyRoll:(bool)arg1;
 - (void)setDidRollRecordPCSMasterKey:(bool)arg1;
 - (void)setError:(id)arg1;
 - (void)setEtag:(id)arg1;
@@ -123,8 +135,10 @@
 - (void)setSaveCompletionBlockCalled:(bool)arg1;
 - (void)setServerRecord:(id)arg1;
 - (void)setSharePCSData:(id)arg1;
+- (void)setSharedZonePCSData:(id)arg1;
 - (void)setState:(unsigned long long)arg1;
 - (id)sharePCSData;
+- (id)sharedZonePCSData;
 - (id)sideEffectRecordIDs;
 - (unsigned long long)state;
 

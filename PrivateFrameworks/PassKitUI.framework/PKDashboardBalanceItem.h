@@ -6,7 +6,6 @@
     NSString * _availableCredit;
     NSString * _balance;
     NSString * _title;
-    UIColor * _titleColor;
     id /* block */  _topUpAction;
     bool  _topUpEnabled;
     NSString * _topUpTitle;
@@ -19,7 +18,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSString *title;
-@property (nonatomic, retain) UIColor *titleColor;
 @property (nonatomic, copy) id /* block */ topUpAction;
 @property (nonatomic) bool topUpEnabled;
 @property (nonatomic, retain) NSString *topUpTitle;
@@ -30,12 +28,10 @@
 - (void)setAvailableCredit:(id)arg1;
 - (void)setBalance:(id)arg1;
 - (void)setTitle:(id)arg1;
-- (void)setTitleColor:(id)arg1;
 - (void)setTopUpAction:(id /* block */)arg1;
 - (void)setTopUpEnabled:(bool)arg1;
 - (void)setTopUpTitle:(id)arg1;
 - (id)title;
-- (id)titleColor;
 - (id /* block */)topUpAction;
 - (bool)topUpEnabled;
 - (id)topUpTitle;

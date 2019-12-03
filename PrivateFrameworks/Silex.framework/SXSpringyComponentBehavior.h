@@ -8,8 +8,6 @@
 @property (nonatomic, readonly) double delta;
 @property (nonatomic, readonly) double frequency;
 
-+ (id)typeString;
-
 - (Class)handlerClassForComponent:(id)arg1;
 
 @end

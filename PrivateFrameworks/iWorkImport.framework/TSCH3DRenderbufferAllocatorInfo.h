@@ -30,7 +30,7 @@
 
 @property (nonatomic, readonly) struct FramebufferAttributes { int x1; long long x2; int x3; int x4; int x5; bool x6; bool x7; bool x8; } framebufferAttributes;
 @property (nonatomic, readonly, retain) TSCH3DSession *session;
-@property (nonatomic, readonly) struct tvec2<int> { union { int x_1_1_1; int x_1_1_2; int x_1_1_3; } x1; union { int x_2_1_1; int x_2_1_2; int x_2_1_3; } x2; } size;
+@property (nonatomic) struct tvec2<int> { union { int x_1_1_1; int x_1_1_2; int x_1_1_3; } x1; union { int x_2_1_1; int x_2_1_2; int x_2_1_3; } x2; } size;
 
 + (id)infoWithFramebufferAttributes:(struct FramebufferAttributes { int x1; long long x2; int x3; int x4; int x5; bool x6; bool x7; bool x8; })arg1 size:(struct tvec2<int> { union { int x_1_1_1; int x_1_1_2; int x_1_1_3; } x1; union { int x_2_1_1; int x_2_1_2; int x_2_1_3; } x2; })arg2 session:(id)arg3;
 
@@ -39,6 +39,7 @@
 - (struct FramebufferAttributes { int x1; long long x2; int x3; int x4; int x5; bool x6; bool x7; bool x8; })framebufferAttributes;
 - (id)initWithFramebufferAttributes:(struct FramebufferAttributes { int x1; long long x2; int x3; int x4; int x5; bool x6; bool x7; bool x8; })arg1 size:(struct tvec2<int> { union { int x_1_1_1; int x_1_1_2; int x_1_1_3; } x1; union { int x_2_1_1; int x_2_1_2; int x_2_1_3; } x2; })arg2 session:(id)arg3;
 - (id)session;
+- (void)setSize:(struct tvec2<int> { union { int x_1_1_1; int x_1_1_2; int x_1_1_3; } x1; union { int x_2_1_1; int x_2_1_2; int x_2_1_3; } x2; })arg1;
 - (struct tvec2<int> { union { int x_1_1_1; int x_1_1_2; int x_1_1_3; } x1; union { int x_2_1_1; int x_2_1_2; int x_2_1_3; } x2; })size;
 
 @end

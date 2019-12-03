@@ -2,25 +2,11 @@
    Image: /System/Library/PrivateFrameworks/OfficeImport.framework/OfficeImport
  */
 
-@interface OITSUCache : OITSUFlushableObject {
-    NSMutableDictionary * mCache;
-    NSString * mCacheName;
-}
+@interface OITSUCache : NSCache
 
-- (unsigned long long)count;
-- (void)dealloc;
-- (id)description;
-- (bool)hasFlushableContent;
 - (id)init;
 - (id)initWithName:(id)arg1;
-- (id)objectForKey:(id)arg1;
-- (void)p_addEntriesFromDictionary:(id)arg1;
-- (id)p_createContentsDictionary;
-- (id)p_objectForKey:(id)arg1;
-- (id)p_objectsForKeys:(id)arg1 notFoundMarker:(id)arg2;
-- (void)removeAllObjects;
-- (void)removeObjectForKey:(id)arg1;
-- (void)setObject:(id)arg1 forKey:(id)arg2;
-- (void)unload;
+- (void)p_didEnterBackground:(id)arg1;
+- (void)p_didReceiveMemoryWarning:(id)arg1;
 
 @end

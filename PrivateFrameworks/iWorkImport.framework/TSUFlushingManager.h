@@ -44,10 +44,10 @@
 - (void)didEnterBackground;
 - (void)didReceiveMemoryWarning;
 - (void)doneWithObject:(id)arg1;
-- (struct TSUFlushableObjectInfo { id x1; int x2; int x3; unsigned int x4[2]; }*)eraseInfoForObject:(id)arg1;
+- (struct TSUFlushableObjectInfo { id x1; int x2; int x3; int x4; unsigned int x5[2]; }*)eraseInfoForObject:(id)arg1;
 - (id)init;
-- (void)insertObjectInfo:(struct TSUFlushableObjectInfo { id x1; int x2; int x3; unsigned int x4[2]; }*)arg1;
-- (bool)isNewObject:(struct TSUFlushableObjectInfo { id x1; int x2; int x3; unsigned int x4[2]; }*)arg1;
+- (void)insertObjectInfo:(struct TSUFlushableObjectInfo { id x1; int x2; int x3; int x4; unsigned int x5[2]; }*)arg1;
+- (bool)isNewObject:(struct TSUFlushableObjectInfo { id x1; int x2; int x3; int x4; unsigned int x5[2]; }*)arg1;
 - (void)memoryLevelDecreased:(int)arg1 was:(int)arg2;
 - (void)memoryLevelIncreased:(int)arg1 was:(int)arg2;
 - (void)protectObject:(id)arg1;

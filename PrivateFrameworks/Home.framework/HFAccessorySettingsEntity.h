@@ -8,6 +8,7 @@
     NSArray * _booleanKeyPathDependencies;
     NSFormatter * _footerTitleFormatter;
     long long  _interfaceModality;
+    bool  _isSoftwareVersionNeeded;
     NSString * _keyPath;
     NSString * _localizedFooter;
     NSString * _localizedHeader;
@@ -16,6 +17,7 @@
     NSFormatter * _previewValueFormatter;
     NSString * _previewValueKeyPath;
     bool  _requiresDependenciesToShowSetting;
+    bool  _showInSeperateSection;
     NSString * _sortKey;
     NSDictionary * _userInfo;
     bool  _wantsSeparateSectionPerGroup;
@@ -26,6 +28,7 @@
 @property (nonatomic, readonly, copy) NSArray *booleanKeyPathDependencies;
 @property (nonatomic, readonly, copy) NSFormatter *footerTitleFormatter;
 @property (nonatomic, readonly) long long interfaceModality;
+@property (nonatomic, readonly) bool isSoftwareVersionNeeded;
 @property (nonatomic, readonly, copy) NSString *keyPath;
 @property (nonatomic, readonly, copy) NSString *localizedFooter;
 @property (nonatomic, readonly, copy) NSString *localizedHeader;
@@ -34,6 +37,7 @@
 @property (nonatomic, readonly, copy) NSFormatter *previewValueFormatter;
 @property (nonatomic, readonly, copy) NSString *previewValueKeyPath;
 @property (nonatomic, readonly) bool requiresDependenciesToShowSetting;
+@property (nonatomic, readonly) bool showInSeperateSection;
 @property (nonatomic, readonly, copy) NSString *sortKey;
 @property (nonatomic, readonly, copy) NSDictionary *userInfo;
 @property (nonatomic, readonly) bool wantsSeparateSectionPerGroup;
@@ -48,6 +52,7 @@
 - (id)footerTitleFormatter;
 - (id)initWithDictionary:(id)arg1;
 - (long long)interfaceModality;
+- (bool)isSoftwareVersionNeeded;
 - (id)keyPath;
 - (id)localizedFooter;
 - (id)localizedHeader;
@@ -56,6 +61,7 @@
 - (id)previewValueFormatter;
 - (id)previewValueKeyPath;
 - (bool)requiresDependenciesToShowSetting;
+- (bool)showInSeperateSection;
 - (id)sortKey;
 - (id)userInfo;
 - (bool)wantsSeparateSectionPerGroup;

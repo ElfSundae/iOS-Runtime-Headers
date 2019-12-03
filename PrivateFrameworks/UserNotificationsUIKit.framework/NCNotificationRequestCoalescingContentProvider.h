@@ -6,11 +6,13 @@
     NSMutableArray * _coalescedNotificationRequests;
     NSNumberFormatter * _decimalFormatter;
     bool  _deviceAuthenticated;
+    NCNotificationSummaryBuilder * _overridenSummaryBuilder;
     NCNotificationSummaryBuilder * _summaryBuilder;
 }
 
 @property (nonatomic, retain) NSMutableArray *coalescedNotificationRequests;
 @property (getter=isDeviceAuthenticated, nonatomic) bool deviceAuthenticated;
+@property (nonatomic, retain) NCNotificationSummaryBuilder *overridenSummaryBuilder;
 
 - (void).cxx_destruct;
 - (unsigned long long)_indexOfMatchingNotificationRequest:(id)arg1;
@@ -27,12 +29,14 @@
 - (id)initWithNotificationRequest:(id)arg1;
 - (bool)isDeviceAuthenticated;
 - (id)notificationRequest;
+- (id)overridenSummaryBuilder;
 - (id)primarySubtitleText;
 - (id)primaryText;
 - (void)removeCoalescedNotificationRequest:(id)arg1;
 - (id)secondaryText;
 - (void)setCoalescedNotificationRequests:(id)arg1;
 - (void)setDeviceAuthenticated:(bool)arg1;
+- (void)setOverridenSummaryBuilder:(id)arg1;
 - (id)summaryText;
 - (id)thumbnail;
 - (void)updateCoalescedNotificationRequest:(id)arg1;

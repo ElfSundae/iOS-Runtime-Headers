@@ -6,8 +6,10 @@
 @required
 
 - (bool)canSetupKeyboardHandler;
+- (bool)navigateKeyboardDown;
 - (bool)navigateKeyboardLeft;
 - (bool)navigateKeyboardRight;
+- (bool)navigateKeyboardUp;
 - (void)removeKeyboardHandler;
 - (void)returnKeyPressed;
 - (void)setupKeyboardHandler;

@@ -4,8 +4,14 @@
 
 @interface PPPaths : NSObject
 
++ (id)filename:(id)arg1 logSubdirectory:(id)arg2;
++ (id)filename:(id)arg1 logSubdirectory:(id)arg2 createIfNeeded:(bool)arg3;
 + (id)filename:(id)arg1 subdirectory:(id)arg2;
 + (id)filename:(id)arg1 subdirectory:(id)arg2 createIfNeeded:(bool)arg3;
++ (id)logDirectory;
++ (id)logDirectoryCreateIfNeeded:(bool)arg1;
++ (id)logSubdirectory:(id)arg1;
++ (id)logSubdirectory:(id)arg1 createIfNeeded:(bool)arg2;
 + (id)subdirectory:(id)arg1;
 + (id)subdirectory:(id)arg1 createIfNeeded:(bool)arg2;
 + (id)topDirectory;

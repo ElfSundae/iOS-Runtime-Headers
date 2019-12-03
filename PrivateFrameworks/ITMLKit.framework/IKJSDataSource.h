@@ -19,11 +19,14 @@
 @property (nonatomic, readonly) long long segmentSize;
 
 + (id)_titlesByIndexFromValue:(id)arg1;
++ (id)jsExportedProperties;
 
 - (void).cxx_destruct;
 - (id)_dataSourceViews;
 - (void)_didAdjustSegmentIndexesFromIndex:(long long)arg1;
 - (void)_loadUsedIndexes;
+- (void)_resetLoadedSegments;
+- (void)_resetUsedIndexesAndMigrateItems:(id)arg1;
 - (long long)_segmentIndexForItemIndex:(long long)arg1;
 - (id)_spliceAtIndex:(long long)arg1 deleteCount:(long long)arg2 insertions:(id)arg3;
 - (void)_updateTitlesFromIndex:(long long)arg1 deleteCount:(long long)arg2 insertionCount:(long long)arg3 title:(id)arg4;
@@ -48,6 +51,7 @@
 - (void)removeDataSourceView:(id)arg1;
 - (id)replace:(long long)arg1 :(id)arg2;
 - (long long)segmentSize;
+- (void)update:(id)arg1 :(id)arg2 :(long long)arg3;
 - (id)valuesForSubscripts:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 boxed:(bool)arg2;
 
 @end

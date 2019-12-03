@@ -17,5 +17,6 @@
 - (void)switcherViewControllerDidSelectAppManager:(CKBrowserSwitcherViewController *)arg1 shouldRestoreAppSwitcher:(bool)arg2;
 - (void)switcherViewControllerDidSelectAppStore:(CKBrowserSwitcherViewController *)arg1 shouldRestoreAppSwitcher:(bool)arg2;
 - (void)switcherViewControllerDidStartSwitching:(CKBrowserSwitcherViewController *)arg1;
+- (bool)switcherViewControllerShouldShowIconAndTitleWhenCompact:(CKBrowserSwitcherViewController *)arg1;
 
 @end

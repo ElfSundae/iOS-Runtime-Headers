@@ -2,12 +2,13 @@
    Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
  */
 
-@interface HKSample : HKObject <HDCoding, HKDataMetadataObject, NSCopying> {
+@interface HKSample : HKObject <HDCoding, HDDistinctableObject, HKDataMetadataObject, NSCopying> {
     double  _endTimestamp;
     HKSampleType * _sampleType;
     double  _startTimestamp;
 }
 
+@property (nonatomic, readonly) NSDateComponentsFormatter *_timeFormatter;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) NSDate *endDate;
@@ -21,6 +22,7 @@
 
 // Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
 
++ (id)_enumerateValidIntervalsWithStartDate:(id)arg1 endDate:(id)arg2 sampleType:(id)arg3 block:(id /* block */)arg4;
 + (id)_newSampleFromDatesWithType:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 device:(id)arg4 metadata:(id)arg5 config:(id /* block */)arg6;
 + (id)_newSampleWithType:(id)arg1 startDate:(double)arg2 endDate:(double)arg3 device:(id)arg4 metadata:(id)arg5 config:(id /* block */)arg6;
 + (id)_sampleWithUUID:(id)arg1 metadata:(id)arg2 sourceBundleIdentifier:(id)arg3 creationDate:(double)arg4 sampleType:(id)arg5 startDate:(double)arg6 endDate:(double)arg7;
@@ -40,7 +42,7 @@
 - (void)_setStartTimestamp:(double)arg1;
 - (void)_setType:(id)arg1;
 - (double)_startTimestamp;
-- (id)_validateConfiguration;
+- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)endDate;
@@ -64,12 +66,29 @@
 
 + (id)createWithCodable:(id)arg1;
 + (id)hd_sampleTypesForObjects:(id)arg1;
++ (bool)supportsDistinctByKeyPath:(id)arg1;
 
 - (bool)addCodableRepresentationToCollection:(id)arg1;
 - (id)codableRepresentationForSync;
 - (long long)entityType;
 - (id)hd_associatedSampleTypes;
 - (id)hd_sampleType;
+- (id)uniqueIdentifierForDistinctByKeyPath:(id)arg1 error:(id*)arg2;
+
+// Image: /System/Library/PrivateFrameworks/HealthMenstrualCycles.framework/HealthMenstrualCycles
+
++ (id)hkmc_defaultMetadata;
+
+- (struct { long long x1; long long x2; })hkmc_dayIndexRangeWithCalendar:(id)arg1;
+- (id)hkmc_timeZone;
+- (bool)hkmc_wasEnteredFromCycleTracking;
+
+// Image: /System/Library/PrivateFrameworks/HealthToolbox.framework/HealthToolbox
+
+- (id)_timeFormatter;
+- (id)displayString;
+- (id)quantitySampleForType:(id)arg1;
+- (id)sleep_displayString;
 
 // Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
 

@@ -7,7 +7,7 @@
     <HMDCameraSnapshotLocalDelegate> * _delegate;
     NSObject<OS_dispatch_queue> * _delegateQueue;
     NSDictionary * _options;
-    HMDCameraSessionID * _sessionID;
+    HMDCameraSnapshotSessionID * _sessionID;
     HMDSnapshotFile * _snapshotFile;
     <HMDSnapshotRequestHandlerProtocol> * _snapshotRequestHandler;
     NSObject<OS_dispatch_queue> * _workQueue;
@@ -20,7 +20,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSDictionary *options;
-@property (nonatomic, readonly) HMDCameraSessionID *sessionID;
+@property (nonatomic, readonly) HMDCameraSnapshotSessionID *sessionID;
 @property (nonatomic, retain) HMDSnapshotFile *snapshotFile;
 @property (nonatomic, readonly) <HMDSnapshotRequestHandlerProtocol> *snapshotRequestHandler;
 @property (readonly) Class superclass;

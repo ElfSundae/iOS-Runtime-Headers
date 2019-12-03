@@ -8,11 +8,14 @@
 - (unsigned long long)activeChannel;
 - (bool)canProcessCurrentRequest;
 - (<CSEndpointAnalyzerDelegate> *)delegate;
+- (<CSEndpointAnalyzerImplDelegate> *)implDelegate;
 - (void)processAudioSamplesAsynchronously:(CSAudioChunk *)arg1;
-- (void)recordingStoppedForReason:(unsigned long long)arg1;
-- (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1 recordContext:(NSDictionary *)arg2;
+- (void)recordingStoppedForReason:(long long)arg1;
+- (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1 recordContext:(NSDictionary *)arg2 recordSettings:(NSDictionary *)arg3;
 - (void)setActiveChannel:(unsigned long long)arg1;
 - (void)setDelegate:(id <CSEndpointAnalyzerDelegate>)arg1;
+- (void)setImplDelegate:(id <CSEndpointAnalyzerImplDelegate>)arg1;
+- (void)stopEndpointer;
 - (double)trailingSilenceDurationAtEndpoint;
 
 @optional

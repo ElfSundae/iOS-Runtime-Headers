@@ -9,6 +9,7 @@
 }
 
 + (id)sharedEffectsWindowAboveStatusBar;
++ (id)sharedEffectsWindowAboveStatusBarForView:(id)arg1;
 
 - (bool)_canAffectStatusBarAppearance;
 - (void)dealloc;

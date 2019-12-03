@@ -5,6 +5,9 @@
 @interface _MTLIOAccelMTLEvent : IOAccelMTLEvent <MTLEvent> {
     MTLIOAccelDevice<MTLDevice> * _device;
     NSString * _label;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _labelLock;
     unsigned long long  _labelTraceID;
 }
 
@@ -19,6 +22,7 @@
 - (id)device;
 - (id)initWithDevice:(id)arg1;
 - (id)label;
+- (id)retainedLabel;
 - (void)setLabel:(id)arg1;
 
 @end

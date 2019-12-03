@@ -12,8 +12,8 @@
 
 + (id)namedDataWithData:(id)arg1 named:(id)arg2;
 
+- (void).cxx_destruct;
 - (id)data;
-- (void)dealloc;
 - (id)initWithData:(id)arg1 named:(id)arg2;
 - (id)name;
 

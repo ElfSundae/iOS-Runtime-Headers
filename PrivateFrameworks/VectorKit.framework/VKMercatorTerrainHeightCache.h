@@ -23,10 +23,10 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (double)heightForAnchor:(/* Warning: unhandled struct encoding: '{Anchor=^^?{Mercator3<double>=[3d]}{Coordinate2D<Degrees, double>={Unit<DegreeUnitDescription, double>=d}{Unit<DegreeUnitDescription, double>=d}}@}' */ struct Anchor { int (**x1)(); struct Mercator3<double> { double x_2_1_1[3]; } x2; struct Coordinate2D<Degrees, double> { struct Unit<DegreeUnitDescription, double> { double x_1_2_1; } x_3_1_1; struct Unit<DegreeUnitDescription, double> { double x_2_2_1; } x_3_1_2; } x3; id x4; }*)arg1;
+- (double)heightForAnchor:(struct Anchor { int (**x1)(); struct AnchorManager {} *x2; struct Mercator3<double> { double x_3_1_1[3]; } x3; struct Coordinate2D<Degrees, double> { struct Unit<DegreeUnitDescription, double> { double x_1_2_1; } x_4_1_1; struct Unit<DegreeUnitDescription, double> { double x_2_2_1; } x_4_1_2; } x4; id x5; }*)arg1;
 - (id)heightProvider;
 - (void)invalidateRect:(const struct Box<double, 2> { struct Matrix<double, 2, 1> { double x_1_1_1[2]; } x1; struct Matrix<double, 2, 1> { double x_2_1_1[2]; } x2; }*)arg1;
-- (void)removeCachedValueForAnchor:(/* Warning: unhandled struct encoding: '{Anchor=^^?{Mercator3<double>=[3d]}{Coordinate2D<Degrees, double>={Unit<DegreeUnitDescription, double>=d}{Unit<DegreeUnitDescription, double>=d}}@}' */ struct Anchor { int (**x1)(); struct Mercator3<double> { double x_2_1_1[3]; } x2; struct Coordinate2D<Degrees, double> { struct Unit<DegreeUnitDescription, double> { double x_1_2_1; } x_3_1_1; struct Unit<DegreeUnitDescription, double> { double x_2_2_1; } x_3_1_2; } x3; id x4; }*)arg1;
+- (void)removeCachedValueForAnchor:(struct Anchor { int (**x1)(); struct AnchorManager {} *x2; struct Mercator3<double> { double x_3_1_1[3]; } x3; struct Coordinate2D<Degrees, double> { struct Unit<DegreeUnitDescription, double> { double x_1_2_1; } x_4_1_1; struct Unit<DegreeUnitDescription, double> { double x_2_2_1; } x_4_1_2; } x4; id x5; }*)arg1;
 - (void)setHeightProvider:(id)arg1;
 
 @end

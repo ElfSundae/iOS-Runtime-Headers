@@ -4,13 +4,13 @@
 
 @interface TTSVoiceResourceAsset : TTSAssetBase <NSSecureCoding> {
     NSArray * _languages;
-    NSDictionary * _resourceList;
+    NSArray * _resourceList;
     NSURL * _searchPathURL;
     NSDictionary * _voiceConfig;
 }
 
 @property (nonatomic, copy) NSArray *languages;
-@property (nonatomic, copy) NSDictionary *resourceList;
+@property (nonatomic, copy) NSArray *resourceList;
 @property (nonatomic, copy) NSURL *searchPathURL;
 @property (nonatomic, copy) NSDictionary *voiceConfig;
 

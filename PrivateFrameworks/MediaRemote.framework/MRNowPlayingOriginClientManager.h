@@ -5,7 +5,6 @@
 @interface MRNowPlayingOriginClientManager : NSObject <MRNowPlayingClientState> {
     NSMutableDictionary * _originClientRequests;
     NSMutableDictionary * _originClients;
-    NSObject<OS_dispatch_queue> * _serialQueue;
 }
 
 + (id)sharedManager;

@@ -9,6 +9,7 @@
     NSUserDefaults * _userDefaults;
 }
 
+@property (nonatomic, readonly) long long abTest2WeekZoneSize;
 @property (nonatomic, readonly) NSArray *anonymousMetadataPreference;
 @property (nonatomic, readonly, copy) NSString *clientName;
 @property (nonatomic, readonly) NSNumber *cohortsLookbackInDays;
@@ -30,10 +31,10 @@
 @property (nonatomic, readonly, copy) NSString *firstUseLearnMoreText;
 @property (nonatomic, readonly, copy) NSString *firstUseLearnMoreURL;
 @property (nonatomic, readonly) NSURL *flightURL;
+@property (nonatomic, readonly) bool imageTimingFeedbackEnabled;
 @property (nonatomic, readonly) unsigned long long maximumCachedQueriesToSend;
 @property (nonatomic, readonly) unsigned long long maximumCachedResultsToSend;
 @property (nonatomic, readonly) NSDictionary *maximumCustomFeedbackSizes;
-@property (nonatomic, readonly) long long maximumNumberOfFeedbackFiles;
 @property (nonatomic, readonly) NSNumber *minSearchRenderTimeout;
 @property (nonatomic, readonly) NSNumber *minSuggestionRenderTimeout;
 @property (nonatomic, readonly) double minThresholdToSend;
@@ -41,8 +42,10 @@
 @property (nonatomic, readonly) unsigned long long minimumQueryLength;
 @property (nonatomic, readonly) NSNumber *otherRenderTimeout;
 @property (nonatomic, readonly, copy) NSString *parsecFeedbackFormat;
+@property (nonatomic, readonly) long long protocolVersion;
 @property (nonatomic, readonly, copy) NSDictionary *rawBag;
 @property (nonatomic, readonly, copy) NSArray *recentlyUsedAppIdentifierWhitelist;
+@property (nonatomic, readonly, copy) NSString *releaseTag;
 @property (nonatomic, readonly, copy) NSDictionary *resources;
 @property (nonatomic, readonly) double safariAll;
 @property (nonatomic, readonly) double safariDecay;
@@ -81,6 +84,7 @@
 - (void).cxx_destruct;
 - (id)_bag_objectOfClass:(Class)arg1 forKey:(id)arg2;
 - (id)_bag_objectOfClass:(Class)arg1 forKey:(id)arg2 override:(bool)arg3;
+- (long long)abTest2WeekZoneSize;
 - (id)anonymousMetadataPreference;
 - (id)bagURL;
 - (id)bag_URLForKey:(id)arg1;
@@ -111,18 +115,20 @@
 - (id)firstUseLearnMoreText;
 - (id)firstUseLearnMoreURL;
 - (id)flightURL;
+- (bool)imageTimingFeedbackEnabled;
 - (id)initWithBag:(id)arg1 userAgent:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithData:(id)arg1;
 - (id)initWithData:(id)arg1 userAgent:(id)arg2;
+- (id)initWithData:(id)arg1 userAgent:(id)arg2 userDefaults:(id)arg3;
 - (id)initWithURL:(id)arg1 userAgent:(id)arg2;
+- (id)initWithURL:(id)arg1 userAgent:(id)arg2 userDefaults:(id)arg3;
 - (id)initWithURL:(id)arg1 userDefaults:(id)arg2;
 - (bool)isEnabled;
 - (bool)isRefreshDisabled;
 - (unsigned long long)maximumCachedQueriesToSend;
 - (unsigned long long)maximumCachedResultsToSend;
 - (id)maximumCustomFeedbackSizes;
-- (long long)maximumNumberOfFeedbackFiles;
 - (unsigned long long)maximumSizeForFeedbackType:(id)arg1;
 - (id)minSearchRenderTimeout;
 - (id)minSuggestionRenderTimeout;
@@ -132,8 +138,10 @@
 - (id)otherRenderTimeout;
 - (id)parsecFeedbackFormat;
 - (id)personalizationParameters;
+- (long long)protocolVersion;
 - (id)rawBag;
 - (id)recentlyUsedAppIdentifierWhitelist;
+- (id)releaseTag;
 - (id)resources;
 - (double)safariAll;
 - (double)safariDecay;

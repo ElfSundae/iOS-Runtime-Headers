@@ -5,12 +5,14 @@
 @interface _HKAnchoredObjectQueryServerConfiguration : HKQueryServerConfiguration {
     HKQueryAnchor * _anchor;
     double  _collectionInterval;
+    bool  _includeAutomaticTimeZones;
     bool  _includeDeletedObjects;
     unsigned long long  _limit;
 }
 
-@property (nonatomic, retain) HKQueryAnchor *anchor;
+@property (nonatomic, copy) HKQueryAnchor *anchor;
 @property (nonatomic) double collectionInterval;
+@property (nonatomic) bool includeAutomaticTimeZones;
 @property (nonatomic) bool includeDeletedObjects;
 @property (nonatomic) unsigned long long limit;
 
@@ -21,11 +23,13 @@
 - (double)collectionInterval;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (bool)includeAutomaticTimeZones;
 - (bool)includeDeletedObjects;
 - (id)initWithCoder:(id)arg1;
 - (unsigned long long)limit;
 - (void)setAnchor:(id)arg1;
 - (void)setCollectionInterval:(double)arg1;
+- (void)setIncludeAutomaticTimeZones:(bool)arg1;
 - (void)setIncludeDeletedObjects:(bool)arg1;
 - (void)setLimit:(unsigned long long)arg1;
 

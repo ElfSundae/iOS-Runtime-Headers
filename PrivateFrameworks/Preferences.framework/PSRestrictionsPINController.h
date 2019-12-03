@@ -12,13 +12,14 @@
 - (struct __CFString { }*)failedAttemptsKey;
 - (id)init;
 - (bool)isNumericPIN;
+- (id)pinInstructionsPrompt;
 - (id)pinInstructionsPromptFont;
 - (bool)pinIsAcceptable:(id)arg1 outError:(id*)arg2;
 - (int)pinLength;
 - (void)setPIN:(id)arg1;
 - (bool)simplePIN;
 - (id)stringsBundle;
-- (id)stringsTable;
+- (id)title;
 - (bool)validatePIN:(id)arg1;
 
 @end

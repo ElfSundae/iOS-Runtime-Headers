@@ -14,10 +14,10 @@
     unsigned int  mWrdInline;
 }
 
+- (void).cxx_destruct;
 - (id)altDescription;
 - (id)altTitle;
 - (id)clickHyperlink;
-- (void)dealloc;
 - (id)description;
 - (void)fixPropertiesForChangingParentPreservingEffectiveValues:(id)arg1;
 - (bool)hasAltDescription;
@@ -34,6 +34,7 @@
 - (bool)isEqual:(id)arg1;
 - (bool)isWrdInline;
 - (id)orientedBounds;
+- (id)orientedBoundsForCharts;
 - (void)removeUnnecessaryOverrides;
 - (void)setAltDescription:(id)arg1;
 - (void)setAltTitle:(id)arg1;

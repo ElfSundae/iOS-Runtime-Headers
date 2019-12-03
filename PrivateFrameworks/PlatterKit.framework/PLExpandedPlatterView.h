@@ -8,7 +8,6 @@
     PLInterfaceActionGroupView * _actionsView;
     bool  _clipsVisibleContentToBounds;
     double  _contentBottomInset;
-    UIView * _contentView;
     struct CGSize { 
         double width; 
         double height; 
@@ -17,10 +16,13 @@
     <PLExpandedPlatterViewDelegate> * _delegate;
     UIControl * _dismissControl;
     long long  _dismissControlPosition;
+    UIView * _headerBackgroundView;
     PLPlatterHeaderContentView * _headerContentView;
-    UIView * _headerDivider;
+    UIView * _headerKeyLineView;
+    UIView * _headerTintView;
     UIView * _mainContentView;
     UIScrollView * _scrollView;
+    UIView * _scrollViewContentView;
     UIView * _topRubberbandingView;
 }
 
@@ -58,33 +60,40 @@
 - (void).cxx_destruct;
 - (struct CGSize { double x1; double x2; })_actionsSizeThatFits:(struct CGSize { double x1; double x2; })arg1 includingPadding:(bool)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_actionsViewFrame;
-- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_boundsInsetFromDismissControlIfNecessary;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_boundsInsetHorizontallyFromDismissControlIfNecessary;
 - (void)_configureActionViewIfNecessaryWithActions:(id)arg1;
 - (void)_configureActionsBackgroundViewIfNecessaryWithActions:(id)arg1;
-- (void)_configureContentViewIfNecessary;
 - (void)_configureCustomContentView;
 - (void)_configureCustomContentViewIfNecessary;
 - (void)_configureDismissControlIfNecessary;
-- (void)_configureHeaderContentViewIfNecessary;
+- (void)_configureHeaderBackgroundDefaultIfNecessary;
+- (void)_configureHeaderBackgroundForReduceTransparencyIfNecessary;
+- (void)_configureHeaderViewsIfNecessary;
 - (void)_configureMainContentViewIfNecessary;
+- (void)_configureScrollViewContentViewIfNecessary;
 - (void)_configureScrollViewIfNecessary;
 - (struct CGSize { double x1; double x2; })_contentSizeThatFitsContentWithSizeExcludingActions:(struct CGSize { double x1; double x2; })arg1;
-- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_contentViewFrame;
 - (struct CGSize { double x1; double x2; })_contentViewSize;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_dismissControlTotalOutset;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_effectiveMainContentViewFrame;
 - (struct CGSize { double x1; double x2; })_flexibleAreaSizeForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)_headerContentView;
+- (double)_headerKeyLineAlphaForContentOffset;
 - (void)_layoutActionsView;
-- (void)_layoutContentView;
 - (void)_layoutCustomContentView;
 - (void)_layoutDismissControl;
 - (void)_layoutHeader;
 - (void)_layoutMainContentView;
 - (void)_layoutMainContentViewIfNecessary;
 - (void)_layoutScrollView;
+- (void)_layoutScrollViewContentView;
 - (void)_layoutTopRubberbandingView;
 - (id)_mainContentView;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_mainContentViewFrame;
+- (void)_reduceTransparencyDidChange:(id)arg1;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_scrollViewContentViewFrame;
 - (struct CGSize { double x1; double x2; })_sizeThatFitsContentExcludingActionsWithSize:(struct CGSize { double x1; double x2; })arg1;
+- (void)_updateHeaderKeyLineAlphaIfNecessary;
 - (struct CGSize { double x1; double x2; })actionsSizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (bool)adjustForContentSizeCategoryChange;
 - (bool)adjustsFontForContentSizeCategory;
@@ -96,6 +105,7 @@
 - (id)customContentView;
 - (id)date;
 - (long long)dateFormatStyle;
+- (void)dealloc;
 - (id)delegate;
 - (id)dismissControl;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })dismissControlInsets;
@@ -105,11 +115,13 @@
 - (bool)hasShadow;
 - (id)iconButtons;
 - (id)icons;
+- (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)interfaceActions;
 - (bool)isActionsHidden;
 - (bool)isBackgroundBlurred;
 - (bool)isDateAllDay;
 - (void)layoutSubviews;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })minimumScrollViewContentInsets;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })platterFrameForFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (bool)pointInside:(struct CGPoint { double x1; double x2; })arg1 withEvent:(id)arg2;
 - (bool)respondsToSelector:(SEL)arg1;
@@ -139,7 +151,6 @@
 - (struct CGSize { double x1; double x2; })sizeThatFitsContentWithSize:(struct CGSize { double x1; double x2; })arg1;
 - (id)timeZone;
 - (id)title;
-- (void)traitCollectionDidChange:(id)arg1;
 - (id)utilityButton;
 
 @end

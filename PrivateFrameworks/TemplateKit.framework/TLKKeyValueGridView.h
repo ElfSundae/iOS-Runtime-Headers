@@ -4,23 +4,17 @@
 
 @interface TLKKeyValueGridView : NUIContainerGridView {
     NSMutableArray * _keyLabels;
-    unsigned long long  _style;
     NSMutableArray * _valueLabels;
 }
 
-@property (retain) NSMutableArray *keyLabels;
-@property (nonatomic) unsigned long long style;
-@property (retain) NSMutableArray *valueLabels;
-
-+ (void)setStylesOnLabels:(id)arg1 withStyle:(unsigned long long)arg2;
+@property (nonatomic, retain) NSMutableArray *keyLabels;
+@property (nonatomic, retain) NSMutableArray *valueLabels;
 
 - (void).cxx_destruct;
 - (id)init;
 - (id)keyLabels;
 - (void)setKeyLabels:(id)arg1;
-- (void)setStyle:(unsigned long long)arg1;
 - (void)setValueLabels:(id)arg1;
-- (unsigned long long)style;
 - (void)updateWithTuples:(id)arg1 valueColumnIsTrailing:(bool)arg2 truncateKey:(bool)arg3;
 - (id)valueLabels;
 

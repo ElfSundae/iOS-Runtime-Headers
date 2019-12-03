@@ -5,21 +5,22 @@
 @interface NTKActivityAnalogFaceView : NTKAnalogFaceView <NTKActivityFaceViewFactoryDelegate> {
     UIView * _activityContainerView;
     double  _activityViewsAlpha;
-    UILabel * _briskMinutesLabel;
     double  _contentScale;
     NTKDateComplicationController * _dateComplicationController;
     NTKActivityDateComplicationLabel * _dateComplicationLabel;
     NTKActivityDialView * _dialView;
-    UILabel * _energyLabel;
+    UILabel * _exerciseLabel;
     NSMutableDictionary * _faceColorsToSchemes;
     NTKActivityFaceViewFactory * _faceViewFactory;
+    double  _innerDialViewScale;
     bool  _isDetailedDensity;
-    double  _lastBriskPercentage;
-    double  _lastEnergyPercentage;
-    double  _lastSedentaryPercentage;
-    HKRingsView * _ringsView;
+    double  _lastExercisePercentage;
+    double  _lastMovePercentage;
+    double  _lastStandPercentage;
+    UILabel * _moveLabel;
+    ARUIRingsView * _ringsView;
     bool  _snapshotContentViewsLoaded;
-    UILabel * _standHoursLabel;
+    UILabel * _standLabel;
     NTKFaceViewTapControl * _tapToLaunchButton;
     bool  _wristRaiseAnimationPending;
 }
@@ -39,7 +40,7 @@
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyCurrentEntryModelAnimated:(bool)arg1;
 - (void)_applyCurrentEntryModelByFraction:(double)arg1 updateLabels:(bool)arg2 animated:(bool)arg3;
-- (void)_applyEntryModel:(id)arg1 byFraction:(double)arg2 updateLabels:(bool)arg3 animated:(bool)arg4;
+- (void)_applyEntryModel:(id)arg1 byFraction:(double)arg2 updateLabels:(bool)arg3 ignoreScreenBlanked:(bool)arg4 animated:(bool)arg5;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyRubberBandingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyShowsCanonicalContent;
@@ -49,17 +50,17 @@
 - (void)_cleanupAfterEditing;
 - (void)_cleanupAfterZoom;
 - (long long)_complicationPickerStyleForSlot:(id)arg1;
+- (void)_configureAppropriateChronoDetail;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (struct CGPoint { double x1; double x2; })_contentCenterOffset;
 - (void)_curvedComplicationCircleRadius:(double*)arg1 centerAngle:(double*)arg2 maxAngularWidth:(double*)arg3 circleCenter:(struct CGPoint { double x1; double x2; }*)arg4 interior:(bool*)arg5 forSlot:(id)arg6;
-- (id)_curvedPickerMaskForSlot:(id)arg1;
 - (void)_dateComplicationPressed:(id)arg1;
 - (double)_dialAlphaForEditMode:(long long)arg1;
 - (double)_dialScaleForEditMode:(long long)arg1;
 - (void)_enumerateActivityLabels:(id /* block */)arg1;
 - (void)_enumerateChronoViews:(id /* block */)arg1;
-- (void)_enumerateRingGroups:(id /* block */)arg1;
+- (void)_enumerateRingGroupControllers:(id /* block */)arg1;
 - (bool)_fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2;
 - (double)_handAlphaForEditMode:(long long)arg1;
 - (id)_highlightImage;
@@ -74,13 +75,17 @@
 - (void)_launchButtonPressed:(id)arg1;
 - (long long)_legacyLayoutOverrideforComplicationType:(unsigned long long)arg1 slot:(id)arg2;
 - (void)_loadChronoViewsIfNecessary;
+- (void)_loadDialIfNecessary;
 - (void)_loadLayoutRules;
+- (void)_loadRingsViewIfNecessary;
 - (void)_loadSnapshotContentViews;
+- (id)_newActivitySubviewWithTextColor:(id)arg1;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
 - (void)_performWristRaiseAnimation;
+- (id)_pickerMaskForSlot:(id)arg1;
 - (void)_prepareForEditing;
 - (void)_prepareWristRaiseAnimation;
-- (void)_renderSynchronouslyWithImageQueueDiscard:(bool)arg1;
+- (void)_renderSynchronouslyWithImageQueueDiscard:(bool)arg1 inGroup:(id)arg2;
 - (double)_ringAlphaForEditMode:(long long)arg1;
 - (void)_setActivityViewsAlpha:(double)arg1 includeDateComplication:(bool)arg2 animated:(bool)arg3;
 - (void)_setZoomFraction:(double)arg1 iconDiameter:(double)arg2;
@@ -95,6 +100,8 @@
 - (void)dealloc;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 - (void)layoutSubviews;
+- (void)screenDidTurnOff;
+- (void)screenWillTurnOn;
 - (void)setDataMode:(long long)arg1;
 - (bool)slotUsesCurvedText:(id)arg1;
 

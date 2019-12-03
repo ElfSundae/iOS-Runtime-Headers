@@ -3,48 +3,39 @@
  */
 
 @interface CAMCaptureEngineDevice : NSObject {
+    AVCaptureDeviceFormat * __cachedPanoramaDeviceFormat;
+    AVCaptureDeviceFormat * __cachedPortraitDeviceFormat;
     CAMCaptureEngine * __captureEngine;
-    AVCaptureDeviceFormat * __panoramaDeviceFormat;
     CAMMemoizationCache * __videoDeviceFormatForVideoConfiguration;
     CAMMemoizationCache * __videoSessionPresetForVideoConfiguration;
     AVCaptureDevice * _captureDevice;
     AVCaptureDeviceInput * _captureDeviceInput;
-    AVCaptureDeviceFormat * _stillImageDeviceFormat;
 }
 
+@property (nonatomic, readonly) AVCaptureDeviceFormat *_cachedPanoramaDeviceFormat;
+@property (nonatomic, readonly) AVCaptureDeviceFormat *_cachedPortraitDeviceFormat;
 @property (nonatomic, readonly) CAMCaptureEngine *_captureEngine;
-@property (nonatomic, readonly) AVCaptureDeviceFormat *_panoramaDeviceFormat;
 @property (nonatomic, readonly) CAMMemoizationCache *_videoDeviceFormatForVideoConfiguration;
 @property (nonatomic, readonly) CAMMemoizationCache *_videoSessionPresetForVideoConfiguration;
 @property (nonatomic, readonly) AVCaptureDevice *captureDevice;
 @property (nonatomic, readonly) AVCaptureDeviceInput *captureDeviceInput;
-@property (nonatomic, readonly) AVCaptureDeviceFormat *portraitModeDeviceFormat;
-@property (nonatomic, readonly) NSString *portraitModeSessionPreset;
-@property (nonatomic, readonly) AVCaptureDeviceFormat *stillImageDeviceFormat;
-@property (nonatomic, readonly) NSString *stillImageSessionPreset;
-@property (nonatomic, readonly) AVCaptureDeviceFormat *timelapseDeviceFormat;
-@property (nonatomic, readonly) NSString *timelapseSessionPreset;
 
 - (void).cxx_destruct;
+- (id)_cachedPanoramaDeviceFormat;
+- (id)_cachedPortraitDeviceFormat;
 - (id)_captureEngine;
+- (id)_highestQualityDeviceFormatForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2;
+- (id)_highestQualitySessionPresetForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2;
 - (id)_keyForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2;
-- (id)_panoramaDeviceFormat;
+- (id)_panoramaDeviceFormatForConfiguration:(id)arg1;
+- (id)_portraitModeDeviceFormat;
+- (id)_portraitModeSessionPreset;
+- (id)_timelapseSessionPreset;
 - (id)_videoDeviceFormatForVideoConfiguration;
 - (id)_videoSessionPresetForVideoConfiguration;
 - (id)captureDevice;
 - (id)captureDeviceInput;
-- (id)highestQualityDeviceFormatForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2;
-- (id)highestQualitySessionPresetForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2;
-- (id)init;
 - (id)initWithEngine:(id)arg1 captureDevice:(id)arg2;
-- (id)panoramaDeviceFormatForConfiguration:(id)arg1;
-- (id)panoramaSessionPresetForConfiguration:(id)arg1;
-- (id)portraitModeDeviceFormat;
-- (id)portraitModeSessionPreset;
-- (id)stillImageDeviceFormat;
-- (id)stillImageSessionPreset;
-- (id)timelapseDeviceFormat;
-- (id)timelapseSessionPreset;
 - (id)videoDeviceFormatForGraphConfiguration:(id)arg1 videoEncodingBehavior:(long long)arg2;
 - (id)videoDevicePresetForGraphConfiguration:(id)arg1 videoEncodingBehavior:(long long)arg2;
 

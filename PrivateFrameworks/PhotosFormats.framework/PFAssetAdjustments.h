@@ -18,8 +18,11 @@
 
 // Image: /System/Library/PrivateFrameworks/PhotosFormats.framework/PhotosFormats
 
++ (bool)adjustmentsPropertyListFileRequiresOverflowDataReassemblyAtURL:(id)arg1 predictedSize:(long long*)arg2;
++ (id)dataForOverflowDataReassembledAdjustmentsPropertyListAtURL:(id)arg1 error:(id*)arg2;
 + (id)fingerPrintForData:(id)arg1 error:(id*)arg2;
 + (id)fingerprintWithAssetAdjustmentFingerprintData:(id)arg1;
++ (bool)writeReassembleAdjustmentsPropertyListAtURL:(id)arg1 toURL:(id)arg2 error:(id*)arg3;
 
 - (void).cxx_destruct;
 - (long long)adjustmentBaseVersion;

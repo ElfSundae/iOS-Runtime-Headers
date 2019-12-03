@@ -8,7 +8,7 @@
 }
 
 @property (nonatomic, retain) NSString *address;
-@property (nonatomic, copy) NSString *addressBookEntityID;
+@property (nonatomic, copy) NSString *contactLabel;
 @property (nonatomic, copy) NSString *derivedFrom;
 @property (nonatomic, retain) CLLocation *geoLocation;
 @property (nonatomic, readonly) bool hasKnownSpatialData;
@@ -24,16 +24,18 @@
 // Image: /System/Library/Frameworks/EventKit.framework/EventKit
 
 + (id)_stringByStrippingControlCharactersFromString:(id)arg1;
++ (id)displayLabelForContact:(id)arg1 unlocalizedLabel:(id)arg2;
 + (Class)frozenClass;
 + (id)locationWithMapItem:(id)arg1;
 + (id)locationWithTitle:(id)arg1;
 
 - (void).cxx_destruct;
 - (void)_clearGeoLocationCache;
+- (bool)_reset;
 - (id)address;
-- (id)addressBookEntityID;
 - (id)cacheKey;
 - (id)calLocation;
+- (id)contactLabel;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)derivedFrom;
 - (id)description;
@@ -54,7 +56,7 @@
 - (id)routing;
 - (id)semanticIdentifier;
 - (void)setAddress:(id)arg1;
-- (void)setAddressBookEntityID:(id)arg1;
+- (void)setContactLabel:(id)arg1;
 - (void)setDerivedFrom:(id)arg1;
 - (void)setGeoLocation:(id)arg1;
 - (void)setImprecise:(bool)arg1;

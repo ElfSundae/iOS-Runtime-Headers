@@ -36,6 +36,7 @@
 @property (nonatomic) unsigned long long type;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_cancel;
 - (id)_contentViewBasedOnType;
 - (void)_keyboardChanged:(id)arg1;
@@ -48,6 +49,7 @@
 - (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (id)delegate;
 - (id)dimmingView;
+- (id)initForTextPasswordType:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithKeyboardAttributes:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

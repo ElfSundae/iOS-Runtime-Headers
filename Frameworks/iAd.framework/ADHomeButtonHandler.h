@@ -16,8 +16,8 @@
 
 + (id)handlerWithCompletion:(id /* block */)arg1;
 
+- (void).cxx_destruct;
 - (void)consumeSinglePressUpForButtonKind:(long long)arg1;
-- (void)dealloc;
 - (id)homeButtonAssertion;
 - (id /* block */)homeButtonHandlerCallback;
 - (id)initWithCompletion:(id /* block */)arg1;

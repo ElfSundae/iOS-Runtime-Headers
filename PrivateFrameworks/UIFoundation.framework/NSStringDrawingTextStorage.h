@@ -7,7 +7,6 @@
     CUICatalog * _catalog;
     NSConcreteNotifyingMutableAttributedString * _contents;
     double  _defaultTighteningFactor;
-    NSGraphicsContext * _graphicsContext;
     NSLayoutManager * _layoutManager;
     struct { 
         unsigned int _typesetterBehavior : 4; 
@@ -27,7 +26,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property double defaultTighteningFactor;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, retain) NSGraphicsContext *graphicsContext;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (getter=_usesSimpleTextEffects, setter=_setUsesSimpleTextEffects:, nonatomic) bool usesSimpleTextEffects;
@@ -64,7 +62,6 @@
 - (void)drawTextContainer:(id)arg1 range:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2 withRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3 graphicsContext:(struct CGContext { }*)arg4 baselineMode:(bool)arg5 scrollable:(bool)arg6 padding:(double)arg7;
 - (void)drawTextContainer:(id)arg1 withRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 graphicsContext:(struct CGContext { }*)arg3 baselineMode:(bool)arg4 scrollable:(bool)arg5 padding:(double)arg6;
 - (void)fontSetChanged;
-- (id)graphicsContext;
 - (id)init;
 - (id)layoutManager;
 - (unsigned long long)length;

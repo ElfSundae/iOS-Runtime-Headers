@@ -8,6 +8,7 @@
     UIView * _backgroundView3;
     UIView * _backgroundView4;
     NSLayoutConstraint * _contentViewBottomConstraint;
+    double  _initialContentOffset;
     HRListItemLabel * _listItemLabel4;
     HRStackedButtonView * _stackedButtonView;
     long long  _state;
@@ -23,6 +24,7 @@
 @property (nonatomic, retain) UIView *backgroundView3;
 @property (nonatomic, retain) UIView *backgroundView4;
 @property (nonatomic, retain) NSLayoutConstraint *contentViewBottomConstraint;
+@property (nonatomic) double initialContentOffset;
 @property (nonatomic, retain) HRListItemLabel *listItemLabel4;
 @property (nonatomic, retain) HRStackedButtonView *stackedButtonView;
 @property (nonatomic) long long state;
@@ -38,6 +40,7 @@
 - (void).cxx_destruct;
 - (id)_bottomViewForState:(long long)arg1;
 - (struct CGSize { double x1; double x2; })_listItemSize;
+- (void)_scrollBackgroundViewToVisible:(id)arg1;
 - (void)_setStackedButtonViewAsFooterView;
 - (void)_setUpInfoLabelConstraints;
 - (void)_setUpInfoLabels;
@@ -52,12 +55,14 @@
 - (id)backgroundView4;
 - (id)contentViewBottomConstraint;
 - (id)initForOnboarding:(bool)arg1;
+- (double)initialContentOffset;
 - (id)listItemLabel4;
 - (void)setBackgroundView1:(id)arg1;
 - (void)setBackgroundView2:(id)arg1;
 - (void)setBackgroundView3:(id)arg1;
 - (void)setBackgroundView4:(id)arg1;
 - (void)setContentViewBottomConstraint:(id)arg1;
+- (void)setInitialContentOffset:(double)arg1;
 - (void)setListItemLabel4:(id)arg1;
 - (void)setStackedButtonView:(id)arg1;
 - (void)setState:(long long)arg1;

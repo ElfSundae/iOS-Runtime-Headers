@@ -5,10 +5,7 @@
 
 @optional
 
-- (void)autoExportAlertCompleted;
-- (void)didFinishExport;
-- (bool)didFinishTestModeExport;
-- (void)exportController:(ExportController *)arg1 progressedTo:(float)arg2 preventBackslide:(bool)arg3;
-- (void)exportControllerWillStartCopyToCameraRoll:(ExportController *)arg1;
+- (void)didFinishExport:(long long)arg1;
+- (void)exportProgressedTo:(float)arg1;
 
 @end

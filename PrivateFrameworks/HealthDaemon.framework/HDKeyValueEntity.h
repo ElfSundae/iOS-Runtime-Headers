@@ -13,6 +13,7 @@
 + (bool)_insertCodableTimestampedKeyValuePairs:(id)arg1 domain:(id)arg2 category:(long long)arg3 provenance:(long long)arg4 updatePolicy:(long long)arg5 profile:(id)arg6 error:(id*)arg7;
 + (bool)_insertKeysAndValues:(id)arg1 modificationDate:(id)arg2 domain:(id)arg3 category:(long long)arg4 provenance:(long long)arg5 updatePolicy:(long long)arg6 database:(id)arg7 error:(id*)arg8;
 + (bool)_insertKeysAndValues:(id)arg1 modificationDate:(id)arg2 domain:(id)arg3 category:(long long)arg4 provenance:(long long)arg5 updatePolicy:(long long)arg6 profile:(id)arg7 error:(id*)arg8;
++ (id)_insertOrReplaceSQL;
 + (bool)_insertValues:(id)arg1 forKeys:(id)arg2 modificationDates:(id)arg3 domain:(id)arg4 category:(long long)arg5 provenance:(long long)arg6 updatePolicy:(long long)arg7 profile:(id)arg8 error:(id*)arg9;
 + (id)_modDateForKey:(id)arg1 domain:(id)arg2 category:(long long)arg3 profile:(id)arg4 entity:(id*)arg5 error:(id*)arg6;
 + (id)_predicateForCategory:(long long)arg1;
@@ -24,7 +25,6 @@
 + (id)_rawValuesForKeys:(id)arg1 domain:(id)arg2 category:(long long)arg3 database:(id)arg4 error:(id*)arg5;
 + (id)_rawValuesForKeys:(id)arg1 domain:(id)arg2 category:(long long)arg3 profile:(id)arg4 error:(id*)arg5;
 + (bool)_readRawValuesInCategory:(long long)arg1 predicate:(id)arg2 database:(id)arg3 error:(id*)arg4 usingBlock:(id /* block */)arg5;
-+ (id)_safeDomainWithDomain:(id)arg1;
 + (bool)_setRawKeysAndValues:(id)arg1 domain:(id)arg2 category:(long long)arg3 database:(id)arg4 error:(id*)arg5;
 + (bool)_setRawKeysAndValues:(id)arg1 domain:(id)arg2 category:(long long)arg3 profile:(id)arg4 error:(id*)arg5;
 + (long long)_shouldUpdateWithPolicy:(long long)arg1 key:(id)arg2 domain:(id)arg3 category:(long long)arg4 modificationDate:(double)arg5 database:(id)arg6 error:(id*)arg7;
@@ -32,7 +32,7 @@
 + (long long)_validateModificationDatePolicyWithKey:(id)arg1 domain:(id)arg2 category:(long long)arg3 modificationDate:(double)arg4 database:(id)arg5 error:(id*)arg6;
 + (id)_valuesForKeys:(id)arg1 domain:(id)arg2 category:(long long)arg3 profile:(id)arg4 error:(id*)arg5 handler:(id /* block */)arg6;
 + (id)allValuesForDomain:(id)arg1 category:(long long)arg2 profile:(id)arg3 error:(id*)arg4;
-+ (const struct { id x1; unsigned char x2; }*)columnDefinitionsWithCount:(unsigned long long*)arg1;
++ (const struct { id x1; id x2; unsigned char x3; }*)columnDefinitionsWithCount:(unsigned long long*)arg1;
 + (id)dataForKey:(id)arg1 domain:(id)arg2 category:(long long)arg3 profile:(id)arg4 entity:(id*)arg5 error:(id*)arg6;
 + (id)databaseTable;
 + (id)dateComponentsForKey:(id)arg1 domain:(id)arg2 category:(long long)arg3 profile:(id)arg4 entity:(id*)arg5 error:(id*)arg6;

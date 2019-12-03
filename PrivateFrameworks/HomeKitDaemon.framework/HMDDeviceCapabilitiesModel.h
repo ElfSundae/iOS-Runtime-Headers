@@ -4,19 +4,26 @@
 
 @interface HMDDeviceCapabilitiesModel : HMDBackingStoreModelObject
 
-@property (nonatomic, retain) NSNumber *remoteGatewayCapable;
-@property (nonatomic, retain) NSNumber *residentCapable;
-@property (nonatomic, retain) NSNumber *supportsAssistantAccessControl;
-@property (nonatomic, retain) NSNumber *supportsCloudDataSync;
-@property (nonatomic, retain) NSNumber *supportsDeviceSetup;
-@property (nonatomic, retain) NSNumber *supportsHomeInvitation;
-@property (nonatomic, retain) NSNumber *supportsKeyTransferClient;
-@property (nonatomic, retain) NSNumber *supportsKeyTransferServer;
-@property (nonatomic, retain) NSNumber *supportsKeychainSync;
-@property (nonatomic, retain) NSNumber *supportsStandaloneMode;
-@property (nonatomic, retain) NSNumber *supportsTargetControl;
-@property (nonatomic, retain) NSNumber *supportsWholeHouseAudio;
+@property (nonatomic, copy) NSNumber *remoteGatewayCapable;
+@property (nonatomic, copy) NSNumber *residentCapable;
+@property (nonatomic, copy) NSNumber *supportsAssistantAccessControl;
+@property (nonatomic, copy) NSNumber *supportsCameraRecording;
+@property (nonatomic, copy) NSNumber *supportsCloudDataSync;
+@property (nonatomic, copy) NSNumber *supportsCompanionInitiatedRestart;
+@property (nonatomic, copy) NSNumber *supportsDeviceSetup;
+@property (nonatomic, copy) NSNumber *supportsHomeInvitation;
+@property (nonatomic, copy) NSNumber *supportsKeyTransferClient;
+@property (nonatomic, copy) NSNumber *supportsKeyTransferServer;
+@property (nonatomic, copy) NSNumber *supportsKeychainSync;
+@property (nonatomic, copy) NSNumber *supportsMediaActions;
+@property (nonatomic, copy) NSNumber *supportsMultiUser;
+@property (nonatomic, copy) NSNumber *supportsRouterManagement;
+@property (nonatomic, copy) NSNumber *supportsShortcutActions;
+@property (nonatomic, copy) NSNumber *supportsStandaloneMode;
+@property (nonatomic, copy) NSNumber *supportsTargetControl;
+@property (nonatomic, copy) NSNumber *supportsWholeHouseAudio;
 
 + (id)properties;
++ (id)schemaHashRoot;
 
 @end

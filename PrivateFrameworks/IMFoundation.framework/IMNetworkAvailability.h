@@ -17,6 +17,7 @@
 @property (nonatomic) void*context;
 
 - (void)_cancel;
+- (bool)_isNetworkAvailablibityCheckingDone:(bool)arg1 wantsWiFi:(bool)arg2 wantsCellular:(bool)arg3 cellular:(bool)arg4 hasCellularDataConnection:(bool)arg5 done:(bool)arg6 withinTimeWindow:(bool)arg7;
 - (void)_setTimer;
 - (void)_timerHit:(id)arg1;
 - (void)cancel;

@@ -7,6 +7,26 @@
     NSMutableArray * _attributionUrls;
     NSString * _externalComponentId;
     NSString * _externalItemId;
+    struct { 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_actionUrlComponent : 1; 
+        unsigned int read_attributionUrls : 1; 
+        unsigned int read_externalComponentId : 1; 
+        unsigned int read_externalItemId : 1; 
+        unsigned int read_vendorId : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_actionUrlComponent : 1; 
+        unsigned int wrote_attributionUrls : 1; 
+        unsigned int wrote_externalComponentId : 1; 
+        unsigned int wrote_externalItemId : 1; 
+        unsigned int wrote_vendorId : 1; 
+    }  _flags;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     PBUnknownFields * _unknownFields;
     NSString * _vendorId;
 }
@@ -29,15 +49,23 @@
 + (id)attributionForPlaceDataRestaurantReservationLink:(id)arg1;
 + (id)attributionForPlaceDataReview:(id)arg1;
 + (Class)attributionUrlType;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsAttributionUrl:(id)arg1;
 - (bool)_isYelp;
+- (void)_readActionUrlComponent;
+- (void)_readAttributionUrls;
+- (void)_readExternalComponentId;
+- (void)_readExternalItemId;
+- (void)_readVendorId;
 - (id)actionUrlComponent;
 - (void)addAttributionUrl:(id)arg1;
 - (id)attributionUrlAtIndex:(unsigned long long)arg1;
 - (id)attributionUrls;
 - (unsigned long long)attributionUrlsCount;
 - (void)clearAttributionUrls;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -49,8 +77,11 @@
 - (bool)hasExternalItemId;
 - (bool)hasVendorId;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setActionUrlComponent:(id)arg1;
 - (void)setAttributionUrls:(id)arg1;

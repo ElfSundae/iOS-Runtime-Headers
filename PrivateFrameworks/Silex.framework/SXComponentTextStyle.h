@@ -12,6 +12,7 @@
 @property (nonatomic, readonly) long long firstLineIndent;
 @property (nonatomic, readonly) <SXTextStyleFontAttributes> *fontAttributes;
 @property (nonatomic, readonly) NSString *fontName;
+@property (nonatomic, readonly) bool fontScaling;
 @property (nonatomic, readonly) long long fontSize;
 @property (nonatomic, readonly) bool hangingPunctuation;
 @property (readonly) unsigned long long hash;
@@ -28,7 +29,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) long long textAlignment;
 @property (nonatomic, readonly) UIColor *textColor;
-@property (nonatomic, readonly) SXShadow *textShadow;
+@property (nonatomic, readonly) SXTextShadow *textShadow;
 @property (nonatomic, readonly) long long textTransform;
 @property (nonatomic, readonly) double tracking;
 @property (nonatomic, readonly) SXTextDecoration *underline;
@@ -37,6 +38,7 @@
 + (id /* block */)valueClassBlockForPropertyWithName:(id)arg1;
 
 - (long long)exactLineHeightWithValue:(id)arg1 withType:(int)arg2;
+- (bool)fontScalingWithValue:(id)arg1 withType:(int)arg2;
 - (long long)hyphenationWithValue:(id)arg1 withType:(int)arg2;
 - (long long)lineHeightWithValue:(id)arg1 withType:(int)arg2;
 - (double)relativeLineHeightWithValue:(id)arg1 withType:(int)arg2;

@@ -14,6 +14,7 @@
     UIView * _keylinesContainerView;
     bool  _reversesActions;
     UIStackView * _stackView;
+    unsigned long long  _systemInteractionStartIndex;
 }
 
 @property (nonatomic, readonly, copy) NSArray *actions;
@@ -25,6 +26,7 @@
 @property (nonatomic) long long imagePosition;
 @property (nonatomic) bool reversesActions;
 @property (readonly) Class superclass;
+@property (nonatomic) unsigned long long systemInteractionStartIndex;
 
 - (void).cxx_destruct;
 - (void)_handleLongPressGestureRecognizer:(id)arg1;
@@ -42,6 +44,8 @@
 - (void)setDelegate:(id)arg1;
 - (void)setImagePosition:(long long)arg1;
 - (void)setReversesActions:(bool)arg1;
+- (void)setSystemInteractionStartIndex:(unsigned long long)arg1;
+- (unsigned long long)systemInteractionStartIndex;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewWillDisappear:(bool)arg1;
 

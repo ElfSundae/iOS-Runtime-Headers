@@ -22,7 +22,11 @@
 @property (nonatomic, copy) NSNumber *payloadAllowVideoConferencing;
 @property (nonatomic, copy) NSNumber *payloadAllowiTunes;
 @property (nonatomic, copy) NSArray *payloadBlacklistedAppBundleIDs;
+@property (nonatomic) bool st_payloadAllowMail;
+@property (nonatomic) bool st_payloadAllowWallet;
 @property (readonly) Class superclass;
+
+// Image: /System/Library/PrivateFrameworks/ConfigurationEngineModel.framework/ConfigurationEngineModel
 
 + (id)allowedPayloadKeys;
 + (id)buildRequiredOnlyWithIdentifier:(id)arg1;
@@ -54,5 +58,12 @@
 - (void)setPayloadAllowVideoConferencing:(id)arg1;
 - (void)setPayloadAllowiTunes:(id)arg1;
 - (void)setPayloadBlacklistedAppBundleIDs:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/ScreenTimeUI.framework/ScreenTimeUI
+
+- (void)setSt_payloadAllowMail:(bool)arg1;
+- (void)setSt_payloadAllowWallet:(bool)arg1;
+- (bool)st_payloadAllowMail;
+- (bool)st_payloadAllowWallet;
 
 @end

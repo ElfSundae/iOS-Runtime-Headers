@@ -3,6 +3,7 @@
  */
 
 @interface MKOverlayPathRenderer : MKOverlayRenderer {
+    bool  _externalSubclassOverridesDrawingMethods;
     UIColor * _fillColor;
     int  _lineCap;
     NSArray * _lineDashPattern;
@@ -11,9 +12,15 @@
     double  _lineWidth;
     double  _miterLimit;
     struct CGPath { } * _path;
+    NSMutableDictionary * _runningVectorGeometryAnimations;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _runningVectorGeometryAnimationsLock;
+    bool  _shouldRasterize;
     UIColor * _strokeColor;
 }
 
+@property (getter=_externalSubclassOverridesDrawingMethods, nonatomic, readonly) bool externalSubclassOverridesDrawingMethods;
 @property (retain) UIColor *fillColor;
 @property int lineCap;
 @property (copy) NSArray *lineDashPattern;
@@ -22,9 +29,17 @@
 @property double lineWidth;
 @property double miterLimit;
 @property const struct CGPath { }*path;
+@property (nonatomic) bool shouldRasterize;
 @property (retain) UIColor *strokeColor;
 
++ (bool)_externalSubclassOverridesDrawingMethods;
++ (Class)_mapkitLeafClass;
+
 - (void).cxx_destruct;
+- (void)_animateVectorGeometryIfNecessaryForKey:(id)arg1 withStepHandler:(id /* block */)arg2;
+- (bool)_canProvideVectorGeometry;
+- (bool)_externalSubclassOverridesDrawingMethods;
+- (void)_performInitialConfiguration;
 - (void)applyFillPropertiesToContext:(struct CGContext { }*)arg1 atZoomScale:(double)arg2;
 - (void)applyStrokePropertiesToContext:(struct CGContext { }*)arg1 atZoomScale:(double)arg2;
 - (bool)canDrawMapRect:(struct { struct { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })arg1 zoomScale:(double)arg2;
@@ -50,7 +65,9 @@
 - (void)setLineWidth:(double)arg1;
 - (void)setMiterLimit:(double)arg1;
 - (void)setPath:(struct CGPath { }*)arg1;
+- (void)setShouldRasterize:(bool)arg1;
 - (void)setStrokeColor:(id)arg1;
+- (bool)shouldRasterize;
 - (id)strokeColor;
 - (void)strokePath:(struct CGPath { }*)arg1 inContext:(struct CGContext { }*)arg2;
 

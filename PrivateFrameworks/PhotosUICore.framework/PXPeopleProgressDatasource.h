@@ -2,11 +2,12 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXPeopleProgressDatasource : NSObject <PXPeopleProgressDataSource, PXPhotoLibraryUIChangeObserver> {
+@interface PXPeopleProgressDataSource : NSObject <PXPhotoLibraryUIChangeObserver> {
     unsigned long long  _cachedUnlockValue;
     bool  _countCacheValid;
     bool  _faceProcessingComplete;
     PHFetchResult * _homeResult;
+    bool  _isFaceProcessingComplete;
     unsigned long long  _pendingCount;
     unsigned long long  _processedCount;
     NSObject<OS_dispatch_queue> * _scanningProgressQueue;
@@ -15,17 +16,23 @@
     PHFetchResult * _verifyResult;
 }
 
-@property unsigned long long cachedUnlockValue;
+@property (nonatomic) unsigned long long cachedUnlockValue;
 @property (getter=isCountCacheValid) bool countCacheValid;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (getter=isFaceProcessingComplete, nonatomic) bool faceProcessingComplete;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) unsigned long long homeMembersCount;
 @property (nonatomic, retain) PHFetchResult *homeResult;
+@property (nonatomic, readonly) bool isFaceProcessingComplete;
+@property (nonatomic, readonly) bool isPersonPromoterDone;
+@property (nonatomic, readonly) unsigned long long pendingAssetCount;
 @property (nonatomic) unsigned long long pendingCount;
+@property (nonatomic, readonly) unsigned long long processedAssetCount;
 @property (nonatomic) unsigned long long processedCount;
 @property (readonly) NSObject<OS_dispatch_queue> *scanningProgressQueue;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) unsigned long long totalAssetCount;
 @property (nonatomic) unsigned long long totalCount;
 @property (readonly) NSObject<OS_dispatch_queue> *userInteractiveQueue;
 @property (nonatomic, retain) PHFetchResult *verifyResult;
@@ -40,6 +47,7 @@
 - (id)homeResult;
 - (id)init;
 - (bool)isCountCacheValid;
+- (bool)isFaceProcessingComplete;
 - (bool)isFaceProcessingComplete;
 - (bool)isPersonPromoterDone;
 - (void)loadQueryData;

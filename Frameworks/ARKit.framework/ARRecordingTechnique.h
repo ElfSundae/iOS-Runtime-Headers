@@ -2,10 +2,8 @@
    Image: /System/Library/Frameworks/ARKit.framework/ARKit
  */
 
-@interface ARRecordingTechnique : ARTechnique {
+@interface ARRecordingTechnique : ARTechnique <ARRecordingTechniqueProtocol> {
     NSMutableArray * _accelDataQueue;
-    AVAssetWriterInput * _accelInput;
-    AVAssetWriterInputMetadataAdaptor * _accelInputAdaptor;
     AVAssetWriterInputMetadataAdaptor * _accelInputAdaptor_CV3D;
     AVAssetWriterInput * _accelInput_CV3D;
     AVAssetWriter * _assetWriter;
@@ -14,20 +12,22 @@
     AVAssetWriterInputMetadataAdaptor * _customDataInputAdaptor;
     AVAssetWriterInput * _depthInput;
     AVAssetWriterInputPixelBufferAdaptor * _depthInputAdaptor;
-    AVAssetWriterInput * _deviceOrientationInput;
-    AVAssetWriterInputMetadataAdaptor * _deviceOrientationInputAdaptor;
+    AVAssetWriterInputMetadataAdaptor * _deviceOrientationInputAdaptor_CV3D;
+    AVAssetWriterInput * _deviceOrientationInput_CV3D;
     bool  _expectAudioData;
     bool  _expectCustomData;
     bool  _expectDepthData;
     NSMutableArray * _gyroDataQueue;
-    AVAssetWriterInput * _gyroInput;
-    AVAssetWriterInputMetadataAdaptor * _gyroInputAdaptor;
     AVAssetWriterInputMetadataAdaptor * _gyroInputAdaptor_CV3D;
     AVAssetWriterInput * _gyroInput_CV3D;
     double  _imuTemperature;
     NSObject<OS_dispatch_semaphore> * _inputIsReadySemaphore;
     bool  _isWaitingUntilInputIsReady;
     NSMutableDictionary * _lastRecordedTimestamps;
+    NSMutableArray * _locationDataQueue;
+    AVAssetWriterInputMetadataAdaptor * _locationInputAdaptor_CV3D;
+    AVAssetWriterInput * _locationInput_CV3D;
+    NSMutableArray * _orientationDataQueue;
     NSURL * _outputFileURL;
     NSObject<OS_dispatch_queue> * _processingQueue;
     NSSet * _recordableResultClasses;
@@ -37,9 +37,8 @@
     NSMutableArray * _sensorDataCache;
     unsigned long long  _sensorDataTypes;
     double  _sessionSourceTime;
-    bool  _sessionStarted;
     bool  _shouldSaveVideoInPhotosLibrary;
-    bool  _stopRecordingRequested;
+    unsigned long long  _state;
     AVAssetWriterInput * _videoInput;
     AVAssetWriterInputPixelBufferAdaptor * _videoInputAdaptor;
     AVAssetWriterInput * _videoMetadataInput;
@@ -48,14 +47,18 @@
     AVAssetWriterInput * _videoMetadataInput_CV3D;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) bool expectAudioData;
 @property (nonatomic) bool expectCustomData;
 @property (nonatomic) bool expectDepthData;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSURL *outputFileURL;
 @property (nonatomic, readonly) NSSet *recordingResultDataClasses;
 @property (nonatomic, readonly) unsigned long long recordingSensorDataTypes;
-@property (nonatomic) <ARRecordingTechniqueDelegate> *recordingTechniqueDelegate;
+@property <ARRecordingTechniqueDelegate> *recordingTechniqueDelegate;
 @property (nonatomic) bool shouldSaveVideoInPhotosLibrary;
+@property (readonly) Class superclass;
 
 + (id)metadataIdentifierForARRecordableResultsClass:(Class)arg1;
 
@@ -74,6 +77,7 @@
 - (id)init;
 - (void)initAssetWriterIfRequiredWithImageData:(id)arg1;
 - (id)initWithFileURL:(id)arg1 recordingSensorDataTypes:(unsigned long long)arg2 recordingResultDataClasses:(id)arg3;
+- (id)initWithFileURL:(id)arg1 recordingSensorDataTypes:(unsigned long long)arg2 recordingResultDataClasses:(id)arg3 startImmediately:(bool)arg4;
 - (id)initWithFileURL:(id)arg1 sensorDataTypes:(unsigned long long)arg2;
 - (bool)isEqual:(id)arg1;
 - (bool)isValidJSONObject:(id)arg1 path:(id)arg2;
@@ -87,6 +91,7 @@
 - (id)recordingTechniqueDelegate;
 - (void)removeTemporaryVideoFile;
 - (void)requestResultDataAtTimestamp:(double)arg1 context:(id)arg2;
+- (unsigned long long)requiredSensorDataTypes;
 - (void)setExpectAudioData:(bool)arg1;
 - (void)setExpectCustomData:(bool)arg1;
 - (void)setExpectDepthData:(bool)arg1;
@@ -97,6 +102,7 @@
 - (void)setupSensorTracksWithImageData:(id)arg1;
 - (bool)shouldSaveVideoInPhotosLibrary;
 - (void)startAssetWriterAtTimestamp:(double)arg1;
+- (void)startRecording;
 - (void)writeAccelerometerMetadata:(id)arg1;
 - (void)writeAudioData:(id)arg1;
 - (void)writeDepthMap:(id)arg1 withTimestamp:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2;
@@ -104,8 +110,9 @@
 - (void)writeGyroscopeMetadata:(id)arg1;
 - (void)writeImageData:(id)arg1;
 - (void)writeImageMetadata:(id)arg1;
-- (void)writeMetadata2:(id)arg1 withTimestamp:(double)arg2 toInputAdaptor:(id)arg3 withIdentifier:(id)arg4 withMetaItems:(id)arg5;
+- (void)writeLocationMetadata:(id)arg1;
 - (void)writeMetadata:(id)arg1 withTimestamp:(double)arg2 toInputAdaptor:(id)arg3 withIdentifier:(id)arg4;
+- (void)writeMetadata:(id)arg1 withTimestamp:(double)arg2 toInputAdaptor:(id)arg3 withIdentifier:(id)arg4 withMetaItems:(id)arg5;
 - (void)writeOutCachedSensorDataIfPresent;
 - (void)writePixelBuffer:(struct __CVBuffer { }*)arg1 withTimestamp:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2;
 

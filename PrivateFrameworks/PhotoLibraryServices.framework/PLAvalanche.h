@@ -39,25 +39,27 @@
 @property (nonatomic, retain) PLManagedAsset *keyAsset;
 @property (nonatomic, readonly, copy) NSArray *localizedLocationNames;
 @property (nonatomic, readonly, copy) NSString *localizedTitle;
-@property (nonatomic, retain) PLPhotoLibrary *photoLibrary;
+@property (nonatomic, readonly) PLPhotoLibrary *photoLibrary;
 @property (nonatomic, readonly) unsigned long long photosCount;
 @property (nonatomic, retain) PLManagedAsset *secondaryKeyAsset;
 @property (nonatomic, readonly, retain) NSDate *startDate;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) PLManagedAsset *tertiaryKeyAsset;
 @property (nonatomic, readonly, retain) NSString *title;
-@property (nonatomic, retain) NSString *uuid;
+@property (nonatomic, readonly) NSString *uuid;
 @property (nonatomic, readonly) unsigned long long videosCount;
 
++ (bool)_allowMPSmodificationForBurstChangesOnLibrary:(id)arg1;
 + (id)_assetAmongAssets:(id)arg1 fromIndexes:(id)arg2 excludingIndexes:(id)arg3;
 + (unsigned long long)_calculateStackAssetForAssetCount:(unsigned long long)arg1 autoPicks:(id)arg2 userFavorites:(id)arg3;
 + (void)_handleUpdatesForContextWillSave:(id)arg1;
++ (id)_savedAssetTypesUnsupportedForAvalanche;
 + (void)_updateMembershipForAssets:(id)arg1 autoPicks:(id)arg2 stackAsset:(id)arg3 userFavorites:(id)arg4 deleteNonPicks:(bool)arg5 allowDissolve:(bool)arg6 inLibrary:(id)arg7;
 + (id)_updatePropertiesForAssets:(id)arg1 autoPicks:(id)arg2 stackAsset:(id)arg3 userFavorites:(id)arg4 deleteNonPicks:(bool)arg5 setFirstPick:(bool)arg6 allowDissolve:(bool)arg7;
 + (id)_visibleIndexesAmongAssets:(id)arg1 fromUserFavoriteIndexes:(id)arg2 stackIndex:(unsigned long long)arg3;
 + (id)assetsWithAvalancheUUID:(id)arg1 inManagedObjectContext:(id)arg2;
-+ (unsigned long long)countForAvalancheUUID:(id)arg1 inLibrary:(id)arg2;
-+ (void)disolveBurstForAssets:(id)arg1;
++ (unsigned long long)countForAssetsWithAvalancheUUID:(id)arg1 inLibrary:(id)arg2;
++ (void)disolveBurstForAssets:(id)arg1 permanently:(bool)arg2;
 + (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })frameOfTopImageInStackForStackFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 + (bool)isValidBurstWithAssets:(id)arg1;
 + (void)removeFavoriteStatus:(id)arg1;
@@ -65,6 +67,7 @@
 + (bool)shouldHideAvalanchesFromPhotoStream;
 + (bool)shouldOnlyShowAvalanchePicks;
 
+- (void).cxx_destruct;
 - (id)_aNewPick;
 - (id)_anOldPick;
 - (id)_autoPickIndexes;
@@ -105,10 +108,8 @@
 - (id)secondaryKeyAsset;
 - (void)setAssets:(id)arg1;
 - (void)setKeyAsset:(id)arg1;
-- (void)setPhotoLibrary:(id)arg1;
 - (void)setSecondaryKeyAsset:(id)arg1;
 - (void)setTertiaryKeyAsset:(id)arg1;
-- (void)setUuid:(id)arg1;
 - (void)set_autoPickIndexes:(id)arg1;
 - (void)set_originalAutoPickIndexes:(id)arg1;
 - (void)set_originalStackIndex:(unsigned long long)arg1;

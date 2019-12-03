@@ -9,7 +9,7 @@
     bool  _isPageFullColumnnWidth;
     long long  _pageSizeClass;
     bool  _pagingEnabled;
-    PXGadgetLayoutSpec * _spec;
+    PXGadgetSpec * _spec;
 }
 
 @property (nonatomic) double columnWidth;
@@ -21,7 +21,7 @@
 @property (nonatomic) bool isPageFullColumnnWidth;
 @property (nonatomic) long long pageSizeClass;
 @property (nonatomic) bool pagingEnabled;
-@property (nonatomic, retain) PXGadgetLayoutSpec *spec;
+@property (nonatomic, retain) PXGadgetSpec *spec;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

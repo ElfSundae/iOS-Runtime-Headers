@@ -15,7 +15,6 @@
 @property (nonatomic) double maximumMax;
 @property (nonatomic) double minimumMin;
 @property (nonatomic) long long numChartPoints;
-@property (nonatomic, readonly) HKValueRange *suggestedValueRange;
 @property (nonatomic) double uMax;
 @property (nonatomic) double uMin;
 @property (nonatomic) double vMax;
@@ -32,7 +31,7 @@
 - (void)setUMin:(double)arg1;
 - (void)setVMax:(double)arg1;
 - (void)setVMin:(double)arg1;
-- (id)suggestedValueRange;
+- (id)suggestedValueRangeWithRounding:(bool)arg1;
 - (double)uMax;
 - (double)uMin;
 - (double)vMax;

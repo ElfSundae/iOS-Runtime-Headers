@@ -17,7 +17,6 @@
 @property (nonatomic) bool shouldResizeCurrentProgress;
 
 - (void).cxx_destruct;
-- (void)_setProgressViewColor:(bool)arg1;
 - (id)currentProgressView;
 - (bool)highlighted;
 - (id)init;
@@ -28,6 +27,7 @@
 - (void)setHighlighted:(bool)arg1;
 - (void)setOverallProgressView:(id)arg1;
 - (void)setPlaybackProgress:(double)arg1;
+- (void)setProgressViewHighlighted:(bool)arg1;
 - (void)setShouldResizeCurrentProgress:(bool)arg1;
 - (bool)shouldResizeCurrentProgress;
 

@@ -15,10 +15,13 @@
 @property (nonatomic, readonly) unsigned long long componentTypesCount;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsComponentTypes:(id)arg1;
 - (void)addComponentType:(int)arg1;
 - (void)clearComponentTypes;
+- (void)clearUnknownFields:(bool)arg1;
 - (int)componentTypeAtIndex:(unsigned long long)arg1;
 - (int*)componentTypes;
 - (id)componentTypesAsString:(int)arg1;
@@ -31,6 +34,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setComponentTypes:(int*)arg1 count:(unsigned long long)arg2;
 - (id)unknownFields;

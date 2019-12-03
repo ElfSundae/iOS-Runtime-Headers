@@ -4,9 +4,9 @@
 
 @interface OITSUDateFormatter_NSFormatter : NSFormatter {
     OITSULocale * _locale;
+    NSString * _preferredFormat;
     bool  isDateOnly;
     bool  isTimeOnly;
-    NSString * mPreferredFormat;
 }
 
 @property (nonatomic) bool isDateOnly;
@@ -14,7 +14,7 @@
 @property (nonatomic, retain) OITSULocale *locale;
 @property (nonatomic, retain) NSString *preferredFormat;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (bool)getObjectValue:(out id*)arg1 forString:(id)arg2 errorDescription:(out id*)arg3;
 - (id)init;
 - (bool)isDateOnly;

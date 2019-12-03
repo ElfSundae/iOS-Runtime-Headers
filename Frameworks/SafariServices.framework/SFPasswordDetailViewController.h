@@ -5,6 +5,7 @@
 @interface SFPasswordDetailViewController : UITableViewController {
     UIBarButtonItem * _backBarButtonItem;
     UIBarButtonItem * _cancelBarButtonItem;
+    SFSafariViewController * _changePasswordSafariViewController;
     <SFPasswordDetailViewControllerDelegate> * _delegate;
     UIBarButtonItem * _doneBarButtonItem;
     UIBarButtonItem * _editBarButtonItem;
@@ -28,7 +29,9 @@
 - (void)_doneBarButtonItemTapped:(id)arg1;
 - (void)_editBarButtonItemTapped:(id)arg1;
 - (id)_editableCellWithCell:(id)arg1;
+- (void)_passwordStoreDidUpdate;
 - (void)_setHighLyLegibleFontForDetailTextInCell:(id)arg1;
+- (void)_showChangePasswordSafariViewController;
 - (void)_textFieldChanged:(id)arg1;
 - (void)_willHideUIMenuController:(id)arg1;
 - (bool)canBecomeFirstResponder;
@@ -51,6 +54,7 @@
 - (void)tableView:(id)arg1 performAction:(SEL)arg2 forRowAtIndexPath:(id)arg3 withSender:(id)arg4;
 - (bool)tableView:(id)arg1 shouldIndentWhileEditingRowAtIndexPath:(id)arg2;
 - (bool)tableView:(id)arg1 shouldShowMenuForRowAtIndexPath:(id)arg2;
+- (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 
 @end

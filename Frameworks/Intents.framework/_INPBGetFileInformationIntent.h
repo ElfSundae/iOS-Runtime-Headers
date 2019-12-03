@@ -3,6 +3,7 @@
  */
 
 @interface _INPBGetFileInformationIntent : PBCodable <NSCopying, NSSecureCoding, _INPBGetFileInformationIntent> {
+    bool  __encodeLegacyGloryData;
     _INPBString * _entityName;
     int  _entityType;
     struct { 
@@ -15,6 +16,7 @@
     int  _qualifier;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) _INPBString *entityName;
@@ -30,12 +32,17 @@
 @property (nonatomic) int qualifier;
 @property (readonly) Class superclass;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
 - (int)StringAsEntityType:(id)arg1;
 - (int)StringAsPropertyName:(id)arg1;
 - (int)StringAsQualifier:(id)arg1;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (id)entityName;
 - (int)entityType;
 - (id)entityTypeAsString:(int)arg1;
@@ -45,6 +52,7 @@
 - (bool)hasPropertyName;
 - (bool)hasQualifier;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)intentMetadata;
 - (bool)isEqual:(id)arg1;
 - (int)propertyName;

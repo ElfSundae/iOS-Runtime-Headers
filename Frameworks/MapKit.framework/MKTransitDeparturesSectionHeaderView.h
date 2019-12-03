@@ -9,6 +9,11 @@
     _MKUILabel * _label;
     NSLayoutConstraint * _topConstraint;
     unsigned long long  _type;
+    _MKUILabel * _updatingLabel;
+    NSTimer * _updatingLabelTimestampRefreshTimer;
+    UIActivityIndicatorView * _updatingSpinner;
+    UIStackView * _updatingView;
+    NSTimer * _updatingViewRefreshTimer;
 }
 
 @property (nonatomic, readonly) MKButtonWithTargetArgument *button;
@@ -16,7 +21,6 @@
 
 + (id)_buttonFont:(unsigned long long)arg1;
 + (id)_font:(unsigned long long)arg1;
-+ (double)defaultHeight;
 
 - (void).cxx_destruct;
 - (void)_contentSizeCategoryDidChange;

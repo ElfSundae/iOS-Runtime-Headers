@@ -12,8 +12,8 @@
     bool  mStroked;
 }
 
+- (void).cxx_destruct;
 - (void)addElement:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)elementAtIndex:(unsigned long long)arg1;
 - (unsigned long long)elementCount;

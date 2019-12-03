@@ -12,7 +12,6 @@
     NSHashTable * _knowledgeStorageEventNotificationDelegates;
     bool  _localOnly;
     NSURL * _modelURL;
-    NSObject<OS_dispatch_queue> * _readQueue;
     _DKCoreDataStorage * _storage;
     _DKCoreDataStorage * _syncStorage;
     _DKTombstonePolicy * _tombstonePolicy;
@@ -44,7 +43,7 @@
 - (void)_sendTombstoneNotificationsForRequirementIdentifiers:(id)arg1;
 - (void)_sendTombstoneNotificationsWithStreamNameCounts:(id)arg1;
 - (void)_tombstoneObjects:(id)arg1 error:(id*)arg2;
-- (void)_tombstoneObjectsMatchingPredicate:(id)arg1 batchSize:(unsigned long long)arg2 error:(id*)arg3;
+- (id)_tombstoneObjectsMatchingPredicate:(id)arg1 batchSize:(unsigned long long)arg2 error:(id*)arg3;
 - (void)addKnowledgeStorageEventNotificationDelegate:(id)arg1;
 - (void)closeStorage;
 - (void)closeSyncStorage;

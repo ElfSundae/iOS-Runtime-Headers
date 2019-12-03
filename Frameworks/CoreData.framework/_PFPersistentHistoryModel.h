@@ -9,8 +9,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)_entitiesWithTooManyTombstonesInModel:(id)arg1;
 + (bool)_hasTombstonesInUserInfo:(id)arg1;
-+ (int)_maxCountOfTombstonesInModel:(id)arg1;
++ (unsigned long long)_maxCountOfTombstonesInModel:(id)arg1;
 + (id)_tombstonesColumnsForEntity:(id)arg1;
 + (id)_tombstonesForEntity:(id)arg1;
 + (unsigned long long)ancillaryEntityCount;

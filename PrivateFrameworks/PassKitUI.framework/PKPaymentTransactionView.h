@@ -18,6 +18,7 @@
     NSString * _secondaryString;
     bool  _showsAvatarView;
     bool  _showsDisclosureView;
+    bool  _strokeImage;
     UILabel * _tertiaryLabel;
     NSString * _tertiaryString;
     UILabel * _transactionValueLabel;
@@ -33,6 +34,7 @@
 @property (nonatomic, retain) NSString *secondaryString;
 @property (nonatomic) bool showsAvatarView;
 @property (nonatomic) bool showsDisclosureView;
+@property (nonatomic) bool strokeImage;
 @property (nonatomic, retain) NSString *tertiaryString;
 @property (nonatomic, retain) NSAttributedString *transactionValueAttributedText;
 
@@ -41,9 +43,11 @@
 - (void).cxx_destruct;
 - (double)_defaultLayoutHeight;
 - (id)_disclosureView;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (struct CGSize { double x1; double x2; })_layoutWithBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (bool)_shouldUseStackedLayout;
 - (void)_updateAvatarView;
+- (void)_updateImageViewDynamicColors;
 - (id)avatarView;
 - (void)createSubviews;
 - (id)defaultPrimaryColor;
@@ -61,19 +65,21 @@
 - (void)setHideRewardsBackground:(bool)arg1;
 - (void)setPrimaryColor:(id)arg1;
 - (void)setPrimaryImage:(id)arg1;
-- (void)setPrimaryImage:(id)arg1 strokeImage:(bool)arg2 animated:(bool)arg3;
+- (void)setPrimaryImage:(id)arg1 animated:(bool)arg2;
 - (void)setPrimaryString:(id)arg1;
 - (void)setRewardsValueString:(id)arg1;
 - (void)setSecondaryColor:(id)arg1;
 - (void)setSecondaryString:(id)arg1;
 - (void)setShowsAvatarView:(bool)arg1;
 - (void)setShowsDisclosureView:(bool)arg1;
+- (void)setStrokeImage:(bool)arg1;
 - (void)setTertiaryString:(id)arg1;
 - (void)setTransactionValueAttributedText:(id)arg1;
 - (bool)shouldShowTransactionPreviewForTouchAtPoint:(struct CGPoint { double x1; double x2; })arg1 inView:(id)arg2;
 - (bool)showsAvatarView;
 - (bool)showsDisclosureView;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
+- (bool)strokeImage;
 - (id)tertiaryString;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)transactionValueAttributedText;

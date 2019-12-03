@@ -15,6 +15,7 @@
 @property (nonatomic) int renderingIntent;
 @property (nonatomic) int timeScale;
 
+- (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })JT_calculateCompositeNodeTransformForCrop;
 - (id)_buildTestXFormAnimation:(struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; })arg1 baseTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg2 clipNaturalSize:(struct CGSize { double x1; double x2; })arg3;
 - (id)_sourceNodeForStillMediaItem:(id)arg1 sourceTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg2 transformAnimation:(id)arg3 presentationRange:(struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; })arg4;
 - (id)_sourceNodeForVideoMediaItem:(id)arg1 sourceTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg2 compositionTrackID:(int)arg3 transformAnimation:(id)arg4;

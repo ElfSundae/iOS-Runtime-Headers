@@ -16,6 +16,7 @@
 @property (nonatomic, readonly) GEOMapServiceTraits *traits;
 
 - (void).cxx_destruct;
+- (struct { int x1; union { int x_2_1_1; int x_2_1_2; int x_2_1_3; } x2; })dataRequestKind;
 - (id)initWithRequest:(id)arg1 forParameters:(id)arg2 traits:(id)arg3;
 - (id)mapItemsForParameters:(id)arg1;
 - (void)submitWithHandler:(id /* block */)arg1 auditToken:(id)arg2 networkActivity:(id /* block */)arg3;

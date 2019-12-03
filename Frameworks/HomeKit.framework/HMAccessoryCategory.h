@@ -12,6 +12,8 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) bool hf_isMediaAccessory;
+@property (readonly) bool isTelevisionAccessoryCategory;
+@property (readonly) bool isWiFiRouterAccessoryCategory;
 @property (nonatomic, readonly, copy) NSString *localizedDescription;
 @property (nonatomic, copy) NSString *name;
 @property (readonly) Class superclass;
@@ -32,6 +34,8 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithType:(id)arg1 name:(id)arg2;
 - (bool)isEqual:(id)arg1;
+- (bool)isTelevisionAccessoryCategory;
+- (bool)isWiFiRouterAccessoryCategory;
 - (id)localizedDescription;
 - (id)name;
 - (void)setCategoryType:(id)arg1;
@@ -40,6 +44,7 @@
 
 // Image: /System/Library/PrivateFrameworks/Home.framework/Home
 
+- (id)hf_compatibleServiceTypes;
 - (bool)hf_isMediaAccessory;
 
 // Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
@@ -48,6 +53,6 @@
 + (id)categoryForProductInfo:(id)arg1;
 + (id)categoryIdentifierForCategory:(id)arg1;
 + (id)categoryWithCategoryIdentifier:(id)arg1;
-+ (id)categoryWithCategoryType:(id)arg1;
++ (id)categoryWithIdentifier:(id)arg1;
 
 @end

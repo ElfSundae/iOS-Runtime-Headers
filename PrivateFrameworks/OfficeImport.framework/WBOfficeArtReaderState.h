@@ -11,8 +11,8 @@
 @property (nonatomic) int currentTextType;
 @property (nonatomic) WBReader *reader;
 
+- (void).cxx_destruct;
 - (int)currentTextType;
-- (void)dealloc;
 - (id)initWithClient:(Class)arg1;
 - (id)reader;
 - (void)setCurrentTextType:(int)arg1;

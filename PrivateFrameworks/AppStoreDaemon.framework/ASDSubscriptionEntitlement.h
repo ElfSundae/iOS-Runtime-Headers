@@ -4,10 +4,12 @@
 
 @interface ASDSubscriptionEntitlement : NSObject <NSSecureCoding> {
     NSDictionary * _dictionary;
+    unsigned long long  _segment;
 }
 
 @property (readonly, copy) NSNumber *appAdamID;
 @property (readonly, copy) NSNumber *appVersion;
+@property (readonly) bool autoRenewEnabled;
 @property (readonly, copy) NSString *chargeCountryCode;
 @property (readonly, copy) NSString *chargeCurrencyCode;
 @property (readonly, copy) NSNumber *chargeStoreFrontID;
@@ -15,6 +17,7 @@
 @property (readonly, copy) NSNumber *familyID;
 @property (readonly, copy) NSNumber *inAppAdamID;
 @property (readonly, copy) NSString *inAppVersion;
+@property (readonly) bool isOfferPeriod;
 @property (readonly) bool isPurchaser;
 @property (readonly) bool isTrialPeriod;
 @property (getter=isNewsAppPurchase, readonly) bool newsAppPurchase;
@@ -23,6 +26,7 @@
 @property (readonly, copy) NSNumber *purchasabilityType;
 @property (readonly, copy) NSNumber *purchaseDownloadID;
 @property (readonly, copy) NSNumber *quantity;
+@property (readonly) unsigned long long segment;
 @property (readonly, copy) NSString *vendorID;
 
 // Image: /System/Library/PrivateFrameworks/AppStoreDaemon.framework/AppStoreDaemon
@@ -33,6 +37,7 @@
 - (id)_valueForKey:(id)arg1 ofType:(Class)arg2;
 - (id)appAdamID;
 - (id)appVersion;
+- (bool)autoRenewEnabled;
 - (id)chargeCountryCode;
 - (id)chargeCurrencyCode;
 - (id)chargeStoreFrontID;
@@ -42,8 +47,9 @@
 - (id)inAppAdamID;
 - (id)inAppVersion;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDictionary:(id)arg1 forAppAdamID:(id)arg2;
+- (id)initWithDictionary:(id)arg1 forAppAdamID:(id)arg2 segment:(unsigned long long)arg3;
 - (bool)isNewsAppPurchase;
+- (bool)isOfferPeriod;
 - (bool)isPurchaser;
 - (bool)isTrialPeriod;
 - (id)offerID;
@@ -51,6 +57,7 @@
 - (id)purchasabilityType;
 - (id)purchaseDownloadID;
 - (id)quantity;
+- (unsigned long long)segment;
 - (id)vendorID;
 
 // Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore

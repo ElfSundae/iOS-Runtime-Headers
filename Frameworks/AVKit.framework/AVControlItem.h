@@ -7,6 +7,7 @@
     AVButton * _button;
     bool  _enabled;
     UIImage * _image;
+    UIColor * _tintColor;
     NSString * _title;
     long long  _type;
 }
@@ -14,6 +15,7 @@
 @property (nonatomic, copy) id /* block */ action;
 @property (getter=isEnabled, nonatomic) bool enabled;
 @property (nonatomic, retain) UIImage *image;
+@property (nonatomic, retain) UIColor *tintColor;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, readonly) long long type;
 @property (nonatomic, readonly) UIView *view;
@@ -21,6 +23,7 @@
 - (void).cxx_destruct;
 - (void)_buttonTouchUpInside:(id)arg1;
 - (void)_updateButton;
+- (void)_updateTintColor;
 - (id /* block */)action;
 - (id)image;
 - (id)initWithTitle:(id)arg1 type:(long long)arg2;
@@ -32,7 +35,9 @@
 - (void)setAction:(id /* block */)arg1;
 - (void)setEnabled:(bool)arg1;
 - (void)setImage:(id)arg1;
+- (void)setTintColor:(id)arg1;
 - (void)setTitle:(id)arg1;
+- (id)tintColor;
 - (id)title;
 - (long long)type;
 - (id)view;

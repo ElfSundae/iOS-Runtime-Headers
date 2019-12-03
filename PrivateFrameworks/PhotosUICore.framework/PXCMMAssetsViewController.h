@@ -2,12 +2,10 @@
    Image: /System/Library/PrivateFrameworks/PhotosUICore.framework/PhotosUICore
  */
 
-@interface PXCMMAssetsViewController : PXCMMComponentViewController <PXActionPerformerDelegate, PXAssetsSceneDelegate, PXCMMBannerTileControllerDelegate, PXCMMEngineDrivenLayoutDelegate, PXCMMFooterViewModelActionDelegate, PXCMMProgressBannerViewLayoutDelegate, PXChangeObserver, PXContextualNotificationDelegate, PXOneUpPresentationDelegate, PXPhotosGlobalFooterViewDelegate, PXScrollViewControllerObserver, PXSwipeSelectionManagerDelegate, PXTileSource, UIViewControllerPreviewingDelegate> {
+@interface PXCMMAssetsViewController : PXCMMComponentViewController <PXActionPerformerDelegate, PXAssetsSceneDelegate, PXCMMBannerTileControllerDelegate, PXCMMEngineDrivenLayoutDelegate, PXCMMFooterViewModelActionDelegate, PXCMMProgressBannerViewLayoutDelegate, PXChangeObserver, PXContextualNotificationDelegate, PXOneUpPresentationDelegate, PXPhotosGlobalFooterViewDelegate, PXScrollViewControllerObserver, PXSwipeSelectionManagerDelegate, PXTileSource> {
     NSSet * __hiddenAssetReferences;
     long long  __layoutType;
     bool  _actionInProgress;
-    PXCMMAssetsProgressListener * _assetsProgressListenerForFooter;
-    PXCMMAssetsProgressListener * _assetsProgressListenerForPoster;
     struct UIEdgeInsets { 
         double top; 
         double left; 
@@ -36,9 +34,10 @@
     PXCMMBannerTileController * _measuringBannerTile;
     PXCMMSendBackBannerView * _measuringSendBackBannerView;
     PXPhotosGlobalFooterView * _measuringStatusFooterView;
+    PXMomentShareStatusPresentation * _momentShareStatusPresentationForFooter;
+    PXMomentShareStatusPresentation * _momentShareStatusPresentationForPoster;
     PXAssetReference * _navigatedAssetReference;
     bool  _needsToPerformInitialSelection;
-    <UIViewControllerPreviewing> * _previewingContext;
     PXCMMProgressBannerView * _progressBannerView;
     NSArray * _progressBannerViewConstraints;
     bool  _receivingActionButtonWasTapped;
@@ -109,16 +108,15 @@
 - (void)_invokeSendBackAction;
 - (bool)_isAssetAlreadyImportedAtIndexPath:(struct PXSimpleIndexPath { unsigned long long x1; long long x2; long long x3; long long x4; })arg1;
 - (bool)_isAssetAlreadyImportedAtIndexPath:(struct PXSimpleIndexPath { unsigned long long x1; long long x2; long long x3; long long x4; })arg1 withEngineDrivenLayout:(id)arg2;
-- (bool)_isLocationWithinCurrentLayoutBounds:(struct CGPoint { double x1; double x2; })arg1;
 - (bool)_isSendBackBannerViewContentsAtAllVisible;
 - (bool)_isSendBackBannerViewContentsFullyVisible;
 - (long long)_layoutType;
+- (struct CGSize { double x1; double x2; })_maximumThumbnailSize;
 - (id)_oneUpPresentation;
 - (void)_performInitialSelectionIfNeeded;
 - (void)_performTilingChangeWithoutAnimationTransition:(id /* block */)arg1;
 - (void)_preferredContentSizeChanged:(id)arg1;
 - (double)_progressBannerViewLayoutHeight;
-- (id)_regionOfInterestForAssetReference:(id)arg1;
 - (void)_scheduleLayout;
 - (void)_selectAllAssets;
 - (void)_selectCuratedAssets;
@@ -156,7 +154,6 @@
 - (void)contextualNotificationWasDiscarded:(id)arg1;
 - (void)contextualNotificationWasTapped:(id)arg1;
 - (id)delegate;
-- (void)didDismissPreviewViewController:(id)arg1 committing:(bool)arg2;
 - (void)didPerformDeletionActionForFooterViewModel:(id)arg1;
 - (void)didTapActionButtonInBannerTileController:(id)arg1;
 - (double)engineDrivenLayout:(id)arg1 aspectRatioForItemAtIndexPath:(struct PXSimpleIndexPath { unsigned long long x1; long long x2; long long x3; long long x4; })arg2;
@@ -182,9 +179,6 @@
 - (void)photosGlobalFooterView:(id)arg1 presentViewController:(id)arg2;
 - (id)preferredContainerViewForContextualNotification:(id)arg1;
 - (void)presentSendBackNotification;
-- (struct NSObject { Class x1; }*)previewViewControllerAtLocation:(struct CGPoint { double x1; double x2; })arg1 fromSourceView:(struct NSObject { Class x1; }*)arg2 outSourceRect:(out struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg3;
-- (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
-- (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint { double x1; double x2; })arg2;
 - (void)progressBannerViewLayoutHeightDidChange:(id)arg1;
 - (void)scrollViewControllerDidScroll:(id)arg1;
 - (void)setActionInProgress:(bool)arg1;
@@ -197,6 +191,8 @@
 - (struct PXSimpleIndexPath { unsigned long long x1; long long x2; long long x3; long long x4; })swipeSelectionManager:(id)arg1 itemIndexPathClosestAboveLocation:(struct CGPoint { double x1; double x2; })arg2;
 - (struct PXSimpleIndexPath { unsigned long long x1; long long x2; long long x3; long long x4; })swipeSelectionManager:(id)arg1 itemIndexPathClosestLeadingLocation:(struct CGPoint { double x1; double x2; })arg2;
 - (bool)swipeSelectionManager:(id)arg1 shouldSelectItemAtIndexPath:(struct PXSimpleIndexPath { unsigned long long x1; long long x2; long long x3; long long x4; })arg2;
+- (void)swipeSelectionManagerAutomaticallyTransitionToMultiSelectMode:(id)arg1;
+- (bool)swipeSelectionManagerIsInMultiSelectMode:(id)arg1;
 - (bool)userSelectionEnabled;
 - (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLoad;

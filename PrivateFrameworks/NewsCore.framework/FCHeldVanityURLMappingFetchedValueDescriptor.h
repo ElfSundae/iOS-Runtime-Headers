@@ -19,7 +19,7 @@
 - (id)init;
 - (id)initWithContentContext:(id)arg1 resourceConfigurationManager:(id)arg2;
 - (id)inputManagers;
-- (bool)isValue:(struct FCShallowCopyPair { Class x1; id x2; }*)arg1 equalToValue:(struct FCShallowCopyPair { Class x1; id x2; }*)arg2;
+- (bool)isValue:(struct FCShallowCopyPair { Class x1; id x2; id x3; }*)arg1 equalToValue:(struct FCShallowCopyPair { Class x1; id x2; id x3; }*)arg2;
 - (id)resourceConfigurationManager;
 
 @end

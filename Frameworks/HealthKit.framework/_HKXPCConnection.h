@@ -16,6 +16,7 @@
 @property (nonatomic, copy) id /* block */ invalidationHandler;
 
 - (void).cxx_destruct;
+- (id)_loggingPrefix;
 - (void)dealloc;
 - (id)debugIdentifier;
 - (id)exportedObject;
@@ -32,6 +33,7 @@
 - (void)setExportedObject:(id)arg1;
 - (void)setInterruptionHandler:(id /* block */)arg1;
 - (void)setInvalidationHandler:(id /* block */)arg1;
+- (id)synchronousRemoteObjectProxyWithErrorHandler:(id /* block */)arg1;
 - (void)unitTest_interrupt;
 
 @end

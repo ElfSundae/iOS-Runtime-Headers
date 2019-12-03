@@ -12,7 +12,7 @@
 @property (nonatomic, readonly) NSSQLModel *sqlModel;
 
 - (void)dealloc;
-- (void)executeRequestCore:(id*)arg1;
+- (bool)executeRequestCore:(id*)arg1;
 - (id)initWithObjectID:(id)arg1 relationship:(id)arg2 context:(id)arg3 sqlCore:(id)arg4;
 - (id)objectID;
 - (id)relationship;

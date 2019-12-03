@@ -23,7 +23,6 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic) bool matchesUnengagedSuggestion;
-@property (nonatomic, readonly) bool requiresQueryId;
 @property (nonatomic, retain) _CPSearchResultForFeedback *result;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long timestamp;
@@ -46,7 +45,6 @@
 - (id)jsonData;
 - (bool)matchesUnengagedSuggestion;
 - (bool)readFrom:(id)arg1;
-- (bool)requiresQueryId;
 - (id)result;
 - (void)setActionEngaged:(bool)arg1;
 - (void)setActionTarget:(int)arg1;

@@ -2,12 +2,11 @@
    Image: /System/Library/PrivateFrameworks/NanoTimeKitCompanion.framework/NanoTimeKitCompanion
  */
 
-@interface NTKPrideDigitalFaceView : NTKFaceView {
+@interface NTKPrideDigitalFaceView : NTKDigitalFaceView {
     NTKPrideLinearQuad * _bandsQuad;
     CLKUIQuadView * _bandsView;
     NTKRoundedCornerOverlayView * _cornerOverlay;
     NTKFaceViewComplicationFactory * _layoutContentProvider;
-    BSUIMappedImageCache * _swatchCache;
     NTKDigitalTimeLabel * _timeLabel;
     NTKDigitalTimeLabelStyle * _timeLabelDefaultStyle;
     NTKComplicationDisplayWrapperView * _touchWrapper;
@@ -29,6 +28,7 @@
 - (void)_configureForEditMode:(long long)arg1;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (double)_contentAlphaForEditMode:(long long)arg1;
+- (void)_enumerateQuadViewsWithBlock:(id /* block */)arg1;
 - (bool)_fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2;
 - (void)_finalizeForSnapshotting:(id /* block */)arg1;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
@@ -42,15 +42,18 @@
 - (void)_loadSnapshotContentViews;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
 - (void)_prepareForEditing;
-- (void)_renderSynchronouslyWithImageQueueDiscard:(bool)arg1;
+- (void)_renderSynchronouslyWithImageQueueDiscard:(bool)arg1 inGroup:(id)arg2;
 - (bool)_supportsUnadornedSnapshot;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (double)_timeAlphaForEditMode:(long long)arg1;
+- (void)_unloadBackgroundViews;
 - (void)_unloadSnapshotContentViews;
 - (void)_updatePausedState;
 - (void)dealloc;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 - (void)layoutSubviews;
+- (void)screenDidTurnOff;
+- (void)screenWillTurnOn;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;

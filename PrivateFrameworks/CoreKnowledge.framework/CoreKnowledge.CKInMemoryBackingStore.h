@@ -2,11 +2,8 @@
    Image: /System/Library/PrivateFrameworks/CoreKnowledge.framework/CoreKnowledge
  */
 
-@interface CoreKnowledge.CKInMemoryBackingStore : CKAbstractBackingStore {
+@interface CoreKnowledge.CKInMemoryBackingStore : Swift._SwiftObject {
     void inMemoryStoreHandler;
 }
-
-- (void).cxx_destruct;
-- (id)init;
 
 @end

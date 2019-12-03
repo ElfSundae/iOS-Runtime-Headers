@@ -9,6 +9,7 @@
 @property (retain) NSMutableDictionary *capabilitiesInformation;
 
 - (void).cxx_destruct;
+- (void)addAssetBundleInformationToDictionary:(id)arg1;
 - (void)addCodecInformation;
 - (void)addHEIFContainerInformationToDictionary:(id)arg1;
 - (void)addHEVCCodecInformationToDictionary:(id)arg1;

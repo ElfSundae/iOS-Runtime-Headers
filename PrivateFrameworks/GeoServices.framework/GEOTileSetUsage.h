@@ -5,9 +5,9 @@
 @interface GEOTileSetUsage : PBCodable <NSCopying> {
     unsigned int  _count;
     struct { 
-        unsigned int count : 1; 
-        unsigned int style : 1; 
-    }  _has;
+        unsigned int has_count : 1; 
+        unsigned int has_style : 1; 
+    }  _flags;
     int  _style;
 }
 
@@ -15,6 +15,8 @@
 @property (nonatomic) bool hasCount;
 @property (nonatomic) bool hasStyle;
 @property (nonatomic) int style;
+
++ (bool)isValid:(id)arg1;
 
 - (int)StringAsStyle:(id)arg1;
 - (void)copyTo:(id)arg1;
@@ -27,6 +29,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setCount:(unsigned int)arg1;
 - (void)setHasCount:(bool)arg1;

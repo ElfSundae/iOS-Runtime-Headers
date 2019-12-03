@@ -5,6 +5,7 @@
 @interface CNLabeledValue : NSObject <CNSuggested, NSCopying, NSSecureCoding> {
     int  _iOSLegacyIdentifier;
     NSString * _identifier;
+    bool  _isValueMutable;
     CNLabelValuePair * _labelValuePair;
     NSSet * _linkedIdentifiers;
     NSString * _storeIdentifier;
@@ -43,6 +44,7 @@
 + (id)labeledValueWithLabel:(id)arg1 value:(id)arg2;
 + (id)localizedStringForLabel:(id)arg1;
 + (id)makeIdentifier;
++ (id)propertyDescriptionOwnersByLabel;
 + (bool)supportsSecureCoding;
 + (id /* block */)testMatchingIdentifier:(id)arg1;
 + (id)valueForIdentifier:(id)arg1 inArray:(id)arg2;
@@ -55,6 +57,7 @@
 - (unsigned long long)hash;
 - (int)iOSLegacyIdentifier;
 - (id)identifier;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 label:(id)arg2 value:(id)arg3;
 - (id)initWithLabel:(id)arg1 value:(id)arg2;
@@ -69,6 +72,7 @@
 - (id)labeledValueBySettingLabel:(id)arg1 value:(id)arg2;
 - (id)labeledValueBySettingValue:(id)arg1;
 - (id)linkedIdentifiers;
+- (id)primitiveInitWithIdentifier:(id)arg1 label:(id)arg2 value:(id)arg3;
 - (void)setIOSLegacyIdentifier:(int)arg1;
 - (void)setLinkedIdentifiers:(id)arg1;
 - (void)setStoreIdentifier:(id)arg1;
@@ -83,14 +87,22 @@
 // Image: /System/Library/Frameworks/ContactsUI.framework/ContactsUI
 
 + (void*)addressBook;
++ (void*)addressBook;
++ (id)allCustomLabels;
 + (id)allCustomLabels;
 + (id)allLabels;
++ (id)allLabels;
++ (id)builtinLabelsForProperty:(id)arg1;
 + (id)builtinLabelsForProperty:(id)arg1;
 + (id)defaultLabels;
++ (id)defaultLabels;
 + (void)deleteCustomLabel:(id)arg1;
++ (void)deleteCustomLabel:(id)arg1;
++ (id)localizedDisplayStringForLabel:(id)arg1 propertyName:(id)arg2;
 + (id)localizedDisplayStringForLabel:(id)arg1 propertyName:(id)arg2;
 
 - (Class)contactViewControllerCellClassForPropertyType:(id)arg1;
+- (id)localizedLabel;
 - (id)localizedLabel;
 
 @end

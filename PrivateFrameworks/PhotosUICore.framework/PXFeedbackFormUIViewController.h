@@ -31,6 +31,7 @@
 - (void)_setSelectionStateForKey:(id)arg1 inSection:(long long)arg2 to:(bool)arg3;
 - (void)cancelFeedback:(id)arg1;
 - (id)delegate;
+- (void)finishWithSuccess:(bool)arg1;
 - (id)initWithDelegate:(id)arg1 positiveKeys:(id)arg2 negativeKeys:(id)arg3 wantsCustomFeedbackSection:(bool)arg4;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)sendFeedback:(id)arg1;

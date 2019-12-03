@@ -12,6 +12,7 @@
     bool  _didAuthenticate;
     bool  _didBuyParamsChange;
     bool  _didFallbackToPassword;
+    NSString * _fpanID;
     bool  _isExtendedAction;
     bool  _isIdentityMapInvalid;
     bool  _isPayment;
@@ -40,6 +41,7 @@
 @property bool didAuthenticate;
 @property bool didBuyParamsChange;
 @property bool didFallbackToPassword;
+@property (copy) NSString *fpanID;
 @property (readonly) unsigned long long hash;
 @property bool isExtendedAction;
 @property bool isIdentityMapInvalid;
@@ -69,6 +71,7 @@
 - (bool)didAuthenticate;
 - (bool)didBuyParamsChange;
 - (bool)didFallbackToPassword;
+- (id)fpanID;
 - (id)init;
 - (id)initWithXPCEncoding:(id)arg1;
 - (bool)isExtendedAction;
@@ -87,6 +90,7 @@
 - (void)setDidAuthenticate:(bool)arg1;
 - (void)setDidBuyParamsChange:(bool)arg1;
 - (void)setDidFallbackToPassword:(bool)arg1;
+- (void)setFpanID:(id)arg1;
 - (void)setIsExtendedAction:(bool)arg1;
 - (void)setIsIdentityMapInvalid:(bool)arg1;
 - (void)setIsPayment:(bool)arg1;

@@ -45,6 +45,7 @@
 @property (nonatomic, readonly) bool isFirstInDeliveryGroup;
 @property (nonatomic, readonly) bool isFirstOnSlide;
 @property (nonatomic, readonly) KNBuildChunk *nextChunkOnSlide;
+@property (nonatomic, readonly) KNBuildChunk *previousActiveChunkWithReferentRelativeToEnd;
 @property (nonatomic, readonly) KNBuildChunk *previousChunkOnSlide;
 @property (nonatomic) unsigned long long referent;
 @property (nonatomic, readonly) KNSlide *slide;
@@ -92,16 +93,18 @@
 - (bool)isFirstInBuild;
 - (bool)isFirstInDeliveryGroup;
 - (bool)isFirstOnSlide;
-- (void)loadFromArchive:(const struct BuildChunkArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct Reference {} *x5; struct BuildChunkIdentifierArchive {} *x6; struct UUID {} *x7; double x8; double x9; unsigned int x10; bool x11; bool x12; }*)arg1 unarchiver:(id)arg2;
+- (void)loadFromArchive:(const struct BuildChunkArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct Reference {} *x5; struct BuildChunkIdentifierArchive {} *x6; struct UUID {} *x7; double x8; double x9; unsigned int x10; bool x11; bool x12; }*)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
+- (id)localizedNameForEventTrigger:(unsigned long long)arg1 includeLineBreaks:(bool)arg2;
 - (id)nextChunkOnSlide;
 - (void)p_setDelayFromBuildAttributes:(id)arg1 withReferent:(unsigned long long)arg2 automatic:(bool)arg3;
 - (void)p_setDurationFromBuildAttributes:(id)arg1;
 - (id)p_stringForReferent:(unsigned long long)arg1;
 - (id)p_stringRepresentationWithNotAvailableForIndex:(unsigned long long)arg1;
+- (id)previousActiveChunkWithReferentRelativeToEnd;
 - (id)previousChunkOnSlide;
 - (unsigned long long)referent;
-- (void)saveToArchive:(struct BuildChunkArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct Reference {} *x5; struct BuildChunkIdentifierArchive {} *x6; struct UUID {} *x7; double x8; double x9; unsigned int x10; bool x11; bool x12; }*)arg1 archiver:(id)arg2;
+- (void)saveToArchive:(struct BuildChunkArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct Reference {} *x5; struct BuildChunkIdentifierArchive {} *x6; struct UUID {} *x7; double x8; double x9; unsigned int x10; bool x11; bool x12; }*)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)setAutomatic:(bool)arg1;
 - (void)setDelay:(double)arg1;

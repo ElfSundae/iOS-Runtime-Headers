@@ -17,6 +17,7 @@
     id /* block */  _manateeChangedHandler;
     id /* block */  _meDeviceChangedHandler;
     id /* block */  _netFlagsChangedHandler;
+    id /* block */  _netInterfacesChangedHandler;
     id /* block */  _powerUnlimitedChangedHandler;
     id /* block */  _primaryAppleIDChangedHandler;
     id /* block */  _primaryIPChangedHandler;
@@ -26,6 +27,7 @@
     id /* block */  _screenOnChangedHandler;
     id /* block */  _screenSaverChangedHandler;
     id /* block */  _systemLockStateChangedHandler;
+    id /* block */  _systemNameChangedHandler;
     id /* block */  _wifiStateChangedHandler;
 }
 
@@ -54,8 +56,10 @@
 @property (readonly) bool meDeviceValid;
 @property (readonly) unsigned int netFlags;
 @property (copy) id /* block */ netFlagsChangedHandler;
+@property (copy) id /* block */ netInterfacesChangedHandler;
 @property (readonly) bool powerUnlimited;
 @property (copy) id /* block */ powerUnlimitedChangedHandler;
+@property (readonly, copy) NSString *primaryAppleID;
 @property (copy) id /* block */ primaryAppleIDChangedHandler;
 @property (readonly) bool primaryAppleIDIsHSA2;
 @property (copy) id /* block */ primaryIPChangedHandler;
@@ -74,6 +78,8 @@
 @property (copy) id /* block */ screenSaverChangedHandler;
 @property (nonatomic, readonly) int systemLockState;
 @property (nonatomic, copy) id /* block */ systemLockStateChangedHandler;
+@property (readonly, copy) NSString *systemName;
+@property (copy) id /* block */ systemNameChangedHandler;
 @property (nonatomic, readonly) unsigned int wifiFlags;
 @property (nonatomic, readonly) int wifiState;
 @property (nonatomic, copy) id /* block */ wifiStateChangedHandler;
@@ -107,8 +113,10 @@
 - (bool)meDeviceValid;
 - (unsigned int)netFlags;
 - (id /* block */)netFlagsChangedHandler;
+- (id /* block */)netInterfacesChangedHandler;
 - (bool)powerUnlimited;
 - (id /* block */)powerUnlimitedChangedHandler;
+- (id)primaryAppleID;
 - (id /* block */)primaryAppleIDChangedHandler;
 - (bool)primaryAppleIDIsHSA2;
 - (id /* block */)primaryIPChangedHandler;
@@ -135,6 +143,7 @@
 - (void)setManateeChangedHandler:(id /* block */)arg1;
 - (void)setMeDeviceChangedHandler:(id /* block */)arg1;
 - (void)setNetFlagsChangedHandler:(id /* block */)arg1;
+- (void)setNetInterfacesChangedHandler:(id /* block */)arg1;
 - (void)setPowerUnlimitedChangedHandler:(id /* block */)arg1;
 - (void)setPrimaryAppleIDChangedHandler:(id /* block */)arg1;
 - (void)setPrimaryIPChangedHandler:(id /* block */)arg1;
@@ -144,9 +153,12 @@
 - (void)setScreenOnChangedHandler:(id /* block */)arg1;
 - (void)setScreenSaverChangedHandler:(id /* block */)arg1;
 - (void)setSystemLockStateChangedHandler:(id /* block */)arg1;
+- (void)setSystemNameChangedHandler:(id /* block */)arg1;
 - (void)setWifiStateChangedHandler:(id /* block */)arg1;
 - (int)systemLockState;
 - (id /* block */)systemLockStateChangedHandler;
+- (id)systemName;
+- (id /* block */)systemNameChangedHandler;
 - (unsigned int)wifiFlags;
 - (int)wifiState;
 - (id /* block */)wifiStateChangedHandler;

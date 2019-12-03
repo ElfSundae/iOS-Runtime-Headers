@@ -6,14 +6,13 @@
     NSSet * _allTouchesImmutableCached;
     NSMutableSet * _allTouchesMutable;
     struct __CFDictionary { } * _coalescedTouches;
+    NSMutableSet * _exclusiveTouchWindows;
     struct __CFDictionary { } * _finalTouches;
     struct __CFDictionary { } * _gestureRecognizersByWindow;
+    bool  _isCallingEventObservers;
     struct __CFDictionary { } * _keyedTouches;
     struct __CFDictionary { } * _keyedTouchesByWindow;
     NSMapTable * _latentSystemGestureWindows;
-    struct __CFDictionary { } * _observedTouches;
-    struct __CFDictionary { } * _predictedTouches;
-    _UITouchPredictionManager * _predictionManager;
     long long  _singleAllowableExternalTouchPathIndex;
 }
 
@@ -27,13 +26,15 @@
 - (void)_addWindowAwaitingLatentSystemGestureNotification:(id)arg1 deliveredToEventWindow:(id)arg2;
 - (id)_allTouches;
 - (bool)_anyInterestedGestureRecognizersForTouchInView:(id)arg1;
-- (void)_clearObservedTouchesForTouch:(id)arg1;
 - (void)_clearTouches;
 - (void)_clearViewForTouch:(id)arg1;
 - (id)_cloneEvent;
 - (struct __CFDictionary { }*)_coalescedTouchesForHidEvent:(struct __IOHIDEvent { }*)arg1;
+- (void)_collectGestureRecognizersForView:(id)arg1 withBlock:(id /* block */)arg2;
 - (struct CGPoint { double x1; double x2; })_digitizerLocation;
+- (id)_exclusiveTouchWindows;
 - (id)_firstTouchForView:(id)arg1;
+- (void)_gestureRecognizerNoLongerNeedsSendEvent:(id)arg1;
 - (id)_gestureRecognizersForWindow:(id)arg1;
 - (id)_init;
 - (id)_initWithEvent:(struct __GSEvent { }*)arg1 touches:(id)arg2;
@@ -41,9 +42,9 @@
 - (double)_initialTouchTimestampForWindow:(id)arg1;
 - (void)_invalidateGestureRecognizerForWindowCache;
 - (id)_lastPendingCoalescedTouchForIndex:(long long)arg1 hidEvent:(struct __IOHIDEvent { }*)arg2;
+- (long long)_modifierFlags;
 - (void)_moveCoalescedTouchesFromHidEvent:(struct __IOHIDEvent { }*)arg1 toHidEvent:(struct __IOHIDEvent { }*)arg2;
 - (void)_moveTouchesFromView:(id)arg1 toView:(id)arg2;
-- (void)_observeTouch:(id)arg1;
 - (id)_rawCoalescedTouchesForTouch:(id)arg1;
 - (void)_removeTouch:(id)arg1;
 - (void)_removeTouch:(id)arg1 fromGestureRecognizer:(id)arg2;

@@ -7,6 +7,7 @@
     NSMutableArray * _columns;
     TPFootnoteHeightMeasurer * _footnoteHeightMeasurer;
     NSMutableSet * _inlineDrawableLayouts;
+    NSMutableSet * _markedHiddenInlineDrawableLayouts;
 }
 
 @property (nonatomic, readonly) struct CGPoint { double x1; double x2; } anchorPoint;
@@ -59,22 +60,28 @@
 - (id)anchoredDrawablesForRelayout;
 - (unsigned long long)autosizeFlags;
 - (struct CGPoint { double x1; double x2; })calculatePointFromSearchReference:(id)arg1;
+- (bool)canHaveFootnotesFromPreviousTarget:(id)arg1;
 - (id)canvas;
 - (struct CGPoint { double x1; double x2; })capturedInfoPositionForAttachment;
+- (bool)childLayoutIsCurrentlyHiddenWhileManipulating:(id)arg1;
+- (void)clearHiddenInlineDrawableLayoutMarks;
 - (id)columnMetricsForCharIndex:(unsigned long long)arg1 outRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; }*)arg2;
 - (id)columns;
 - (id)computeLayoutGeometry;
 - (id)containedPencilAnnotations;
 - (bool)containsStartOfPencilAnnotation:(id)arg1;
+- (bool)containsStartOfRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (double)contentBlockHeight;
 - (id)currentAnchoredDrawableLayouts;
 - (id)currentInlineDrawableLayouts;
 - (struct CGSize { double x1; double x2; })currentSize;
+- (bool)descendersCannotClip;
 - (bool)excludeFromNearestVisibleRectSearchForSelectionPath:(id)arg1;
 - (id)existingAttachmentLayoutForInfo:(id)arg1;
 - (id)footnoteHeightMeasurer;
 - (id)footnoteMarkProvider;
 - (void)insertChild:(id)arg1 atIndex:(unsigned long long)arg2;
+- (id)interiorClippingPath;
 - (bool)invalidateForPageCountChange;
 - (void)invalidateSize;
 - (bool)isFootnoteContainerOnSamePageAsTarget:(id)arg1;
@@ -84,6 +91,7 @@
 - (bool)layoutIsValid;
 - (struct CGPoint { double x1; double x2; })layoutPositionFromAnchoredAttachmentPosition:(struct CGPoint { double x1; double x2; })arg1;
 - (bool)marginsAreMirrored;
+- (void)markHiddenInlineDrawableLayout:(id)arg1;
 - (double)maxAnchorInBlockDirection;
 - (struct CGSize { double x1; double x2; })maxSize;
 - (struct CGSize { double x1; double x2; })maximumFrameSizeForChild:(id)arg1;
@@ -98,6 +106,7 @@
 - (void)p_killDrawableLayouts:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })p_rectForSelection:(id)arg1 useParagraphModeRects:(bool)arg2;
 - (id)p_validatedLayoutForDrawable:(id)arg1 inContainingLayout:(id)arg2;
+- (id)pageAnchorDetailsForPencilAnnotationAtSelectionPath:(id)arg1 attachedType:(long long)arg2;
 - (unsigned long long)pageCount;
 - (unsigned long long)pageNumber;
 - (id)parentLayoutForInlineAttachments;
@@ -123,7 +132,9 @@
 - (id)storage;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })targetRectForCanvasRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (bool)textIsVertical;
-- (id)unscaledAnchorRectsForPencilAnnotationSelectionPath:(id)arg1 attachedType:(long long)arg2;
+- (double)textScaleForChild:(id)arg1;
+- (void)unregisterFromLayoutController;
+- (id)unscaledContentRectsToAvoidPencilAnnotationOverlap;
 - (void)updateStartCharIndexWithDirtyRanges:(id)arg1;
 - (void)validate;
 - (id)validatedLayoutForAnchoredDrawable:(id)arg1;

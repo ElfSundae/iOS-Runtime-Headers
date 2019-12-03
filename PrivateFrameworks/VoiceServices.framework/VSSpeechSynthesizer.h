@@ -8,11 +8,10 @@
     NSObject<OS_dispatch_queue> * _callbackQueue;
     NSString * _clientBundleIdentifier;
     <VSSpeechSynthesizerDelegate> * _delegate;
+    NSMutableDictionary * _durationRequests;
     long long  _footprint;
     long long  _gender;
     NSString * _identifier;
-    VSKeepAlive * _inactiveKeepAlive;
-    VSKeepAlive * _keepAlive;
     NSString * _language;
     float  _pitch;
     NSObject<OS_dispatch_queue> * _queue;
@@ -41,6 +40,7 @@
 }
 
 @property (nonatomic) <VSSpeechSynthesizerDelegate> *delegate;
+@property (nonatomic, retain) NSMutableDictionary *durationRequests;
 @property (nonatomic) long long footprint;
 @property (nonatomic) long long gender;
 @property (nonatomic, copy) NSString *language;
@@ -55,6 +55,7 @@
 + (id)availableLanguageCodes;
 + (id)availableVoices;
 + (id)availableVoicesForLanguageCode:(id)arg1;
++ (id)characterClassCountForUtterance:(id)arg1 language:(id)arg2;
 + (id)errorWithReason:(id)arg1;
 + (void)getAllVoiceAssets:(id /* block */)arg1;
 + (void)getAutoDownloadedVoiceAssets:(id /* block */)arg1;
@@ -98,10 +99,13 @@
 - (void)connection:(id)arg1 synthesisRequest:(id)arg2 didFinishWithInstrumentMetrics:(id)arg3 error:(id)arg4;
 - (bool)continueSpeakingRequest:(id)arg1 withError:(id*)arg2;
 - (bool)continueSpeakingWithError:(id*)arg1;
-- (void)dealloc;
 - (id)delegate;
+- (id)durationRequests;
 - (void)endAudioPowerUpdate;
+- (double)estimateDurationOfRequest:(id)arg1;
+- (void)estimateDurationOfRequest:(id)arg1 completion:(id /* block */)arg2;
 - (long long)footprint;
+- (void)forwardStreamObject:(id)arg1;
 - (long long)gender;
 - (void)getAutoDownloadedVoiceAssets:(id /* block */)arg1;
 - (void)getLocalVoiceAssets:(id /* block */)arg1;
@@ -114,6 +118,7 @@
 - (id)initForInputFeedback;
 - (bool)isSpeaking;
 - (bool)isSystemSpeaking;
+- (void)killDaemon;
 - (id)language;
 - (float)maximumRate;
 - (float)minimumRate;
@@ -128,6 +133,7 @@
 - (float)rate;
 - (void)setAutoDownloadedVoiceAssets:(id)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setDurationRequests:(id)arg1;
 - (void)setFootprint:(long long)arg1;
 - (void)setGender:(long long)arg1;
 - (void)setLanguage:(id)arg1;

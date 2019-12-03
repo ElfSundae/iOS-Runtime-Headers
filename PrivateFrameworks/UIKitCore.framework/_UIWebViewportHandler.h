@@ -45,6 +45,7 @@
     }  _documentBounds;
     bool  _heightIsDeviceHeight;
     bool  _initialConfigurationHasBeenSentToDelegate;
+    bool  _isInUpdateBlock;
     struct CGSize { 
         double width; 
         double height; 

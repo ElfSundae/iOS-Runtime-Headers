@@ -12,8 +12,9 @@
 @property (nonatomic, readonly) NSArray *discounts;
 @property (nonatomic, readonly) NSArray *downloadContentLengths;
 @property (nonatomic, readonly) NSString *downloadContentVersion;
-@property (getter=isDownloadable, nonatomic, readonly) bool downloadable;
+@property (nonatomic, readonly) bool downloadable;
 @property (nonatomic, readonly) SKProductDiscount *introductoryPrice;
+@property (nonatomic, readonly) bool isDownloadable;
 @property (nonatomic, readonly) NSString *localizedDescription;
 @property (nonatomic, readonly) NSString *localizedTitle;
 @property (nonatomic, readonly) NSDecimalNumber *price;

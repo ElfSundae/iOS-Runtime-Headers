@@ -16,6 +16,7 @@
     NSURL * _packageURL;
 }
 
+@property (nonatomic, readonly) long long archiveValidationMode;
 @property (nonatomic, readonly) NSUUID *baseObjectUUID;
 @property (nonatomic, readonly) bool canRetainObjectReferencedByWeakLazyReference;
 @property (readonly, copy) NSString *debugDescription;

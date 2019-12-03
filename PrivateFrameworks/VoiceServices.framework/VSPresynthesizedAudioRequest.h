@@ -18,6 +18,7 @@
         unsigned int mReserved; 
     }  _decoderStreamDescription;
     bool  _enqueue;
+    NSString * _identifier;
     unsigned long long  _pcmDataSize;
     struct AudioStreamBasicDescription { 
         double mSampleRate; 
@@ -40,6 +41,7 @@
 @property (nonatomic, copy) NSString *clientBundleIdentifier;
 @property (nonatomic, readonly) struct AudioStreamBasicDescription { double x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; } decoderStreamDescription;
 @property (nonatomic) bool enqueue;
+@property (nonatomic, retain) NSString *identifier;
 @property (nonatomic) unsigned long long pcmDataSize;
 @property (nonatomic, readonly) struct AudioStreamBasicDescription { double x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; } playerStreamDescription;
 @property (nonatomic) unsigned long long requestCreatedTimestamp;
@@ -57,10 +59,12 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (bool)enqueue;
+- (id)identifier;
 - (id)init;
 - (id)initWithAudioData:(id)arg1 decoderStreamDescription:(struct AudioStreamBasicDescription { double x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; })arg2 playerStreamDescription:(struct AudioStreamBasicDescription { double x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; })arg3;
 - (id)initWithAudioData:(id)arg1 playerStreamDescription:(struct AudioStreamBasicDescription { double x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; })arg2;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithIdentifier:(id)arg1;
 - (bool)isValid;
 - (unsigned long long)pcmDataSize;
 - (struct AudioStreamBasicDescription { double x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; })playerStreamDescription;
@@ -68,6 +72,7 @@
 - (void)setAudioSessionID:(unsigned int)arg1;
 - (void)setClientBundleIdentifier:(id)arg1;
 - (void)setEnqueue:(bool)arg1;
+- (void)setIdentifier:(id)arg1;
 - (void)setPcmDataSize:(unsigned long long)arg1;
 - (void)setRequestCreatedTimestamp:(unsigned long long)arg1;
 - (void)setStopHandler:(id /* block */)arg1;

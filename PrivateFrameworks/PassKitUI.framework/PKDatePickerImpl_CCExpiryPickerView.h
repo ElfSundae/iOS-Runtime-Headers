@@ -9,6 +9,7 @@
     id  _changeTarget;
     NSDateFormatter * _dateFormatter;
     UIFont * _font;
+    NSLocale * _locale;
     struct _NSRange { 
         unsigned long long location; 
         unsigned long long length; 
@@ -34,7 +35,7 @@
 - (bool)_useDoubleMonthStyle;
 - (double)_widthForComponent:(long long)arg1;
 - (id)date;
-- (id)initShowingDay:(bool)arg1 month:(bool)arg2 year:(bool)arg3 useDarkAppearance:(bool)arg4;
+- (id)initShowingDay:(bool)arg1 month:(bool)arg2 year:(bool)arg3 useDarkAppearance:(bool)arg4 locale:(id)arg5 calendar:(id)arg6;
 - (long long)numberOfComponentsInPickerView:(id)arg1;
 - (void)pickerView:(id)arg1 didSelectRow:(long long)arg2 inComponent:(long long)arg3;
 - (long long)pickerView:(id)arg1 numberOfRowsInComponent:(long long)arg2;

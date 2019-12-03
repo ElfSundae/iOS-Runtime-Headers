@@ -34,6 +34,7 @@
 @property (nonatomic, readonly) double owrd;
 @property (nonatomic, readonly) double packetLossPercentage;
 @property (nonatomic, readonly) double roundTripTime;
+@property (nonatomic, readonly) struct tagHANDLE { int x1; }*rtpHandle;
 @property (nonatomic, readonly) unsigned int sendTmmbrBitrate;
 
 - (unsigned int)averageReceivedBitrate;
@@ -52,13 +53,14 @@
 - (void)receivedTMMBN:(unsigned int)arg1;
 - (void)reportingVideoStreamEvent:(unsigned short)arg1;
 - (double)roundTripTime;
+- (struct tagHANDLE { int x1; }*)rtpHandle;
 - (bool)runVideoStreamRateAdaptation;
 - (void)scheduleTMMBR:(unsigned int)arg1;
 - (unsigned int)sendTmmbrBitrate;
 - (void)setEnableRateAdaptation:(bool)arg1 maxBitrate:(unsigned int)arg2 minBitrate:(unsigned int)arg3 adaptationInterval:(double)arg4;
 - (void)setMaxOWRD:(double)arg1;
 - (void)setOperatingBitrate:(unsigned int)arg1;
-- (void)updateRTPReceiveWithTimestamp:(unsigned int)arg1 sampleRate:(unsigned int)arg2 time:(double)arg3;
+- (void)updateRTPReceiveWithTimestamp:(unsigned int)arg1 sampleRate:(unsigned int)arg2 time:(double)arg3 size:(unsigned int)arg4 endOfFrame:(bool)arg5;
 - (void)updateVideoStall:(bool)arg1 withStallDuration:(unsigned int)arg2;
 
 @end

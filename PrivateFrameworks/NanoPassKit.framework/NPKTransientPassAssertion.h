@@ -3,11 +3,13 @@
  */
 
 @interface NPKTransientPassAssertion : NSObject {
+    bool  _disableCardSelection;
     bool  _requestServiceMode;
     NSString * _uniqueID;
     NSXPCConnection * _xpcConnection;
 }
 
+@property (nonatomic) bool disableCardSelection;
 @property (nonatomic) bool requestServiceMode;
 @property (nonatomic, retain) NSString *uniqueID;
 @property (nonatomic, retain) NSXPCConnection *xpcConnection;
@@ -15,9 +17,11 @@
 - (void).cxx_destruct;
 - (id)_remoteObjectProxy;
 - (void)_resyncState;
+- (bool)disableCardSelection;
 - (id)initWithPassWithUniqueID:(id)arg1;
 - (void)invalidate;
 - (bool)requestServiceMode;
+- (void)setDisableCardSelection:(bool)arg1;
 - (void)setRequestServiceMode:(bool)arg1;
 - (void)setUniqueID:(id)arg1;
 - (void)setXpcConnection:(id)arg1;

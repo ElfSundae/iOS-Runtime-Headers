@@ -12,6 +12,8 @@
 
 @property (nonatomic, readonly) TIKeyboardCandidate *autocorrection;
 @property (nonatomic, readonly) NSArray *candidates;
+@property (nonatomic, readonly) bool containsAutofillCandidates;
+@property (nonatomic, readonly) bool containsContinuousPathConversions;
 @property (nonatomic) bool containsProactiveTriggers;
 @property (nonatomic, readonly) NSArray *emojiList;
 @property (nonatomic, readonly) NSArray *predictions;
@@ -48,6 +50,8 @@
 
 // Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 
+- (bool)containsAutofillCandidates;
+- (bool)containsContinuousPathConversions;
 - (void)updateLabelsWithSmartPunctuation:(id)arg1;
 
 @end

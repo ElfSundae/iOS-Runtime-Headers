@@ -9,6 +9,7 @@
 + (id)colorCubeRequest:(id)arg1 isMono:(bool)arg2 error:(id*)arg3;
 + (id)colorCubeRequestWithBackgroundCube:(id)arg1 foregroundCube:(id)arg2 error:(id*)arg3;
 + (id)contourLightRequestWithFace:(id)arg1 error:(id*)arg2;
++ (id)contourLightRequestWithFace:(id)arg1 relightStyleStrength:(float)arg2 error:(id*)arg3;
 + (id)disparityPostprocessingVideoPipelineWithProperties:(id)arg1;
 + (id)disparityPostprocessingVideoPipelineWithProperties:(id)arg1 error:(id*)arg2;
 + (id)mattingVideoPipelineWithProperties:(id)arg1;
@@ -22,6 +23,7 @@
 + (id)stageLightPortraitRequestWithMattingRequest:(id)arg1 destinationColorPixelBuffer:(struct __CVBuffer { }*)arg2 proxyCubeData:(id)arg3 cubeData:(id)arg4;
 + (id)stageLightPortraitRequestWithMattingRequest:(id)arg1 destinationColorPixelBuffer:(struct __CVBuffer { }*)arg2 proxyCubeData:(id)arg3 cubeData:(id)arg4 vignetteIntensity:(float)arg5 stageLightIntensity:(float)arg6;
 + (id)studioLightRequestWithFace:(id)arg1 error:(id*)arg2;
++ (id)studioLightRequestWithFace:(id)arg1 relightStyleStrength:(float)arg2 error:(id*)arg3;
 + (id)syntheticDepthOfFieldBackgroundRequestWithMattingRequest:(id)arg1 simulatedFocalRatio:(float)arg2 sourceColorGain:(float)arg3 sourceColorLux:(float)arg4 error:(id*)arg5;
 + (id)syntheticDepthOfFieldPortraitRequestWithMattingRequest:(id)arg1 destinationColorPixelBuffer:(struct __CVBuffer { }*)arg2 backgroundColorCube:(id)arg3 foregroundColorCube:(id)arg4 colorCubeIntensity:(float)arg5 simulatedFocalRatio:(float)arg6 sourceColorGain:(float)arg7 sourceColorLux:(float)arg8;
 + (id)videoPipelinePropertiesForDevice:(unsigned long long)arg1;

@@ -4,6 +4,7 @@
 
 @interface CDPDRemoteSecretValidationResult : NSObject {
     CDPDevice * _device;
+    OTClique * _recoveredClique;
     NSDictionary * _recoveredInfo;
     unsigned long long  _secretType;
     bool  _userDidCancel;
@@ -12,6 +13,7 @@
 }
 
 @property (nonatomic, copy) CDPDevice *device;
+@property (nonatomic, retain) OTClique *recoveredClique;
 @property (nonatomic, copy) NSDictionary *recoveredInfo;
 @property (nonatomic) unsigned long long secretType;
 @property (nonatomic) bool userDidCancel;
@@ -20,9 +22,11 @@
 
 - (void).cxx_destruct;
 - (id)device;
+- (id)recoveredClique;
 - (id)recoveredInfo;
 - (unsigned long long)secretType;
 - (void)setDevice:(id)arg1;
+- (void)setRecoveredClique:(id)arg1;
 - (void)setRecoveredInfo:(id)arg1;
 - (void)setSecretType:(unsigned long long)arg1;
 - (void)setUserDidCancel:(bool)arg1;

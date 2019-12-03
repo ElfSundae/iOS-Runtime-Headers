@@ -11,7 +11,7 @@
     <ASDManagedRingBuffer> * _ringBuffer;
 }
 
-@property (nonatomic, retain) <ASDManagedRingBuffer> *ringBuffer;
+@property (nonatomic, readonly) <ASDManagedRingBuffer> *ringBuffer;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -19,7 +19,6 @@
 - (id)initWithRingBuffer:(id)arg1 withPlugin:(id)arg2;
 - (id)ringBuffer;
 - (void)setPhysicalFormat:(id)arg1;
-- (void)setRingBuffer:(id)arg1;
 - (void)startStream;
 - (void)stopStream;
 - (id /* block */)writeMixBlock;

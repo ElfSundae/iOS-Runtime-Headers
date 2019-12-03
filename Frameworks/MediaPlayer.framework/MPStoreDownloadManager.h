@@ -7,7 +7,6 @@
     NSArray * _activeDownloads;
     NSMutableArray * _blockObservers;
     NSObject<OS_dispatch_queue> * _calloutSerialQueue;
-    NSMutableDictionary * _downloadHandlers;
     NSMapTable * _downloadIdentifiersToDownloads;
     NSDictionary * _downloadKindToRequiredClientBundleIdentifiers;
     SSDownloadManager * _downloadManager;
@@ -70,7 +69,6 @@
 - (id)downloadForMediaItemPersistentID:(unsigned long long)arg1;
 - (id)downloadForMediaPlaybackItemMetadata:(id)arg1;
 - (id)downloadForStoreID:(long long)arg1;
-- (void)downloadHandler:(id)arg1 handleSession:(id)arg2;
 - (void)downloadManager:(id)arg1 downloadStatesDidChange:(id)arg2;
 - (void)downloadManagerNetworkUsageDidChange:(id)arg1;
 - (id)downloads;

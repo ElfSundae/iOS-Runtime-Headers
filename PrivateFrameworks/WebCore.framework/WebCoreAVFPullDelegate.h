@@ -4,9 +4,9 @@
 
 @interface WebCoreAVFPullDelegate : NSObject <AVPlayerItemOutputPullDelegate> {
     struct WeakPtr<WebCore::MediaPlayerPrivateAVFoundationObjC> { 
-        struct RefPtr<WTF::WeakReference<WebCore::MediaPlayerPrivateAVFoundationObjC>, WTF::DumbPtrTraits<WTF::WeakReference<WebCore::MediaPlayerPrivateAVFoundationObjC> > > { 
-            struct WeakReference<WebCore::MediaPlayerPrivateAVFoundationObjC> {} *m_ptr; 
-        } m_ref; 
+        struct RefPtr<WTF::WeakPtrImpl, WTF::DumbPtrTraits<WTF::WeakPtrImpl> > { 
+            struct WeakPtrImpl {} *m_ptr; 
+        } m_impl; 
     }  m_player;
 }
 
@@ -17,8 +17,8 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)initWithPlayer:(struct WeakPtr<WebCore::MediaPlayerPrivateAVFoundationObjC> { struct RefPtr<WTF::WeakReference<WebCore::MediaPlayerPrivateAVFoundationObjC>, WTF::DumbPtrTraits<WTF::WeakReference<WebCore::MediaPlayerPrivateAVFoundationObjC> > > { struct WeakReference<WebCore::MediaPlayerPrivateAVFoundationObjC> {} *x_1_1_1; } x1; }*)arg1;
-- (void)outputMediaDataWillChange:(struct AVPlayerItemVideoOutput { Class x1; id x2; }*)arg1;
-- (void)outputSequenceWasFlushed:(struct AVPlayerItemVideoOutput { Class x1; id x2; }*)arg1;
+- (id)initWithPlayer:(struct WeakPtr<WebCore::MediaPlayerPrivateAVFoundationObjC> { struct RefPtr<WTF::WeakPtrImpl, WTF::DumbPtrTraits<WTF::WeakPtrImpl> > { struct WeakPtrImpl {} *x_1_1_1; } x1; }*)arg1;
+- (void)outputMediaDataWillChange:(id)arg1;
+- (void)outputSequenceWasFlushed:(id)arg1;
 
 @end

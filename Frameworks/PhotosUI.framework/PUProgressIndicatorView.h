@@ -5,7 +5,6 @@
 @interface PUProgressIndicatorView : UIView {
     long long  __currentState;
     double  __timestampBeganShowing;
-    _UIBackdropView * _backgroundView;
     NSArray * _backgroundViewConstraints;
     id /* block */  _completionHandler;
     double  _currentProgress;
@@ -21,6 +20,7 @@
     UIActivityIndicatorView * _spinnerView;
     NSArray * _spinnerViewConstraints;
     long long  _style;
+    UIVisualEffectView * _visualEffectView;
     bool  _wantsAnimatedHide;
     bool  _wantsImmediateHide;
 }
@@ -38,7 +38,7 @@
 - (long long)_currentState;
 - (void)_endShowingProgressIfReady;
 - (void)_handleBeginShowingAnimated:(bool)arg1 wasImmediate:(bool)arg2;
-- (id)_newBackdropBackgroundView;
+- (id)_newVisualEffectBackgroundView;
 - (void)_setCurrentState:(long long)arg1;
 - (void)_setTimestampBeganShowing:(double)arg1;
 - (double)_timestampBeganShowing;

@@ -3,11 +3,13 @@
  */
 
 @interface NWConcrete_nw_path : NSObject <OS_nw_path> {
-    NSObject<OS_xpc_object> * asserted_browse_agents;
+    NSObject<OS_nw_advertise_descriptor> * advertise_descriptor;
     NSObject<OS_nw_browse_descriptor> * browse_descriptor;
     unsigned int  changed_from_previous;
     unsigned int  checked_dns;
     unsigned char  client_id;
+    unsigned short  custom_ethertype;
+    unsigned char  custom_ip_protocol;
     NSObject<OS_nw_interface> * delegate;
     NSObject<OS_nw_interface> * direct;
     NSObject<OS_nw_array> * discovered_endpoints;
@@ -19,21 +21,32 @@
     unsigned char  fallback_agent;
     NSObject<OS_xpc_object> * fallback_agent_domains;
     NSObject<OS_xpc_object> * fallback_agent_types;
+    unsigned int  fallback_generation;
     NSObject<OS_nw_interface> * fallback_interface;
+    unsigned int  fallback_is_forced;
     unsigned char  flow_registration_id;
     NSObject<OS_nw_array> * flows;
+    NSObject<OS_nw_array> * gateways;
     unsigned int  has_ipv4;
     unsigned int  has_ipv6;
     unsigned int  interface_time_delta;
     unsigned int  is_direct;
+    unsigned int  is_interpose;
     unsigned int  is_listener;
     unsigned int  is_local;
     unsigned int  link_quality_abort;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  lock;
     unsigned int  necp_satisfied;
     NSObject<OS_xpc_object> * network_agent_dictionary;
     unsigned int  no_fallback_timer;
     NSObject<OS_nw_interface> * override_interface;
+    unsigned int  override_is_constrained;
+    unsigned int  override_is_expensive;
     NSObject<OS_nw_endpoint> * override_local_endpoint;
+    unsigned int  override_uses_cellular;
+    unsigned int  override_uses_wifi;
     unsigned int  override_viable;
     NSObject<OS_nw_parameters> * parameters;
     struct nw_path_necp_result { 
@@ -65,6 +78,8 @@
     int  reason;
     char * reason_description;
     unsigned char  recommended_mss;
+    NSObject<OS_nw_array> * resolved_endpoints;
+    unsigned int  specific_listener;
     int  status;
     unsigned int  traffic_mgmt_background;
     unsigned int  weak_fallback;
@@ -79,5 +94,6 @@
 - (void)dealloc;
 - (id)description;
 - (id)init;
+- (id)redactedDescription;
 
 @end

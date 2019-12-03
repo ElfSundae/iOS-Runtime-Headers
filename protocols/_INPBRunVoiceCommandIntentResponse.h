@@ -21,6 +21,7 @@
 - (bool)hasInterstitialDisabled;
 - (bool)hasLocalizedAppName;
 - (bool)hasParameters;
+- (bool)hasPrefersExecutionOnCompanion;
 - (bool)hasResponseTemplate;
 - (bool)hasToggleState;
 - (bool)hasUnderlyingIntent;
@@ -32,6 +33,7 @@
 - (bool)interstitialDisabled;
 - (NSString *)localizedAppName;
 - (_INPBDictionary *)parameters;
+- (bool)prefersExecutionOnCompanion;
 - (NSString *)responseTemplate;
 - (void)setAppBundleId:(NSString *)arg1;
 - (void)setContinueRunning:(bool)arg1;
@@ -40,11 +42,13 @@
 - (void)setHasCustomResponsesDisabled:(bool)arg1;
 - (void)setHasIntentCategory:(bool)arg1;
 - (void)setHasInterstitialDisabled:(bool)arg1;
+- (void)setHasPrefersExecutionOnCompanion:(bool)arg1;
 - (void)setHasToggleState:(bool)arg1;
 - (void)setIntentCategory:(int)arg1;
 - (void)setInterstitialDisabled:(bool)arg1;
 - (void)setLocalizedAppName:(NSString *)arg1;
 - (void)setParameters:(_INPBDictionary *)arg1;
+- (void)setPrefersExecutionOnCompanion:(bool)arg1;
 - (void)setResponseTemplate:(NSString *)arg1;
 - (void)setSteps:(NSArray *)arg1;
 - (void)setToggleState:(int)arg1;

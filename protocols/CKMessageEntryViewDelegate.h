@@ -6,8 +6,6 @@
 @required
 
 - (void)messageEntryView:(CKMessageEntryView *)arg1 didTapMediaObject:(CKMediaObject *)arg2;
-- (void)messageEntryView:(CKMessageEntryView *)arg1 sendButtonLongPressEnded:(struct CGPoint { double x1; double x2; })arg2;
-- (void)messageEntryView:(CKMessageEntryView *)arg1 sendButtonLongPressMoved:(struct CGPoint { double x1; double x2; })arg2;
 - (bool)messageEntryView:(CKMessageEntryView *)arg1 shouldInsertMediaObjects:(NSArray *)arg2;
 - (void)messageEntryViewDidBeginEditing:(CKMessageEntryView *)arg1;
 - (void)messageEntryViewDidChange:(CKMessageEntryView *)arg1;
@@ -18,7 +16,6 @@
 - (void)messageEntryViewRecordingDidChange:(CKMessageEntryView *)arg1;
 - (void)messageEntryViewSendButtonHit:(CKMessageEntryView *)arg1;
 - (void)messageEntryViewSendButtonHitWhileDisabled:(CKMessageEntryView *)arg1;
-- (void)messageEntryViewSendButtonLongPressBegan:(CKMessageEntryView *)arg1;
 - (bool)messageEntryViewShouldBeginEditing:(CKMessageEntryView *)arg1;
 
 @optional

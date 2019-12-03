@@ -3,9 +3,11 @@
  */
 
 @interface PSCapabilityManager : NSObject {
+    NSNumber * _overrideForAllBoolValues;
     NSMutableDictionary * _overrides;
 }
 
+@property (nonatomic, retain) NSNumber *overrideForAllBoolValues;
 @property (nonatomic, retain) NSMutableDictionary *overrides;
 
 + (id)sharedManager;
@@ -16,9 +18,11 @@
 - (bool)capabilityBoolAnswer:(id)arg1;
 - (bool)hasCapabilities:(id)arg1;
 - (id)init;
+- (id)overrideForAllBoolValues;
 - (id)overrides;
 - (id)preferencesCapabilityAnswer:(id)arg1;
 - (void)resetOverrides;
+- (void)setOverrideForAllBoolValues:(id)arg1;
 - (void)setOverrideValue:(id)arg1 forKey:(id)arg2;
 - (void)setOverrides:(id)arg1;
 - (id)supportsAutoWhiteBalanceCapability;
@@ -26,7 +30,7 @@
 - (id)supportsInEDUModeCapability;
 - (id)supportsInStoreDemoModeCapability;
 - (id)supportsNightShiftCapability;
-- (id)supportsPSShowStorageCapability;
+- (id)supportsPSDeveloperSettingsCapability;
 - (id)supportsPSTTYCapability;
 - (id)supportsRaiseToWakeCapability;
 

@@ -5,7 +5,7 @@
 
 @required
 
-- (id)clientIdentityForSession:(CRKSession *)arg1;
+- (<CRKIdentity> *)clientIdentityForSession:(CRKSession *)arg1;
 - (void)session:(CRKSession *)arg1 didConnectWithTransport:(CATTransport *)arg2;
 - (void)session:(CRKSession *)arg1 willLoseBeaconAfterTimeInterval:(double)arg2;
 - (void)sessionDidBecomeConnectable:(CRKSession *)arg1;

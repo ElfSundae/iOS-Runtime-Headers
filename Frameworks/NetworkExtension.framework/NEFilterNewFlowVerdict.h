@@ -19,6 +19,7 @@
 + (id)dropVerdict;
 + (id)filterDataVerdictWithFilterInbound:(bool)arg1 peekInboundBytes:(unsigned long long)arg2 filterOutbound:(bool)arg3 peekOutboundBytes:(unsigned long long)arg4;
 + (id)needRulesVerdict;
++ (id)pauseVerdict;
 + (id)remediateVerdictWithRemediationURLMapKey:(id)arg1 remediationButtonTextMapKey:(id)arg2;
 + (bool)supportsSecureCoding;
 

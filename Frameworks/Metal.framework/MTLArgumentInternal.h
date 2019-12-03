@@ -14,6 +14,7 @@
 
 @property (readonly) unsigned long long bufferALUType;
 @property (readonly) unsigned long long bufferPixelFormat;
+@property (readonly) MTLStructType *structType;
 
 - (unsigned long long)access;
 - (unsigned long long)arrayLength;
@@ -35,6 +36,7 @@
 - (id)initWithName:(id)arg1 type:(unsigned long long)arg2 access:(unsigned long long)arg3 index:(unsigned long long)arg4 active:(bool)arg5 arrayLength:(unsigned long long)arg6 typeDescription:(id)arg7;
 - (bool)isActive;
 - (id)name;
+- (id)structType;
 - (unsigned long long)textureDataType;
 - (unsigned long long)textureType;
 - (unsigned long long)threadgroupMemoryAlignment;

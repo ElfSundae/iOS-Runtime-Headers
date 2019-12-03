@@ -11,6 +11,7 @@
         double right; 
     }  _actionInsets;
     double  _alpha;
+    bool  _background;
     double  _baselineOffset;
     UIView * _containerView;
     bool  _enabled;
@@ -20,6 +21,7 @@
     _UIStatusBarItem * _item;
     <UILayoutItem> * _layoutItem;
     bool  _needsAddingToLayout;
+    _UIStatusBarStyleAttributes * _overriddenStyleAttributes;
     long long  _overriddenVerticalAlignment;
     _UIStatusBarDisplayItemPlacement * _placement;
     _UIStatusBarRegion * _region;
@@ -47,6 +49,7 @@
 @property (nonatomic, retain) _UIStatusBarAction *action;
 @property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } actionInsets;
 @property (nonatomic) double alpha;
+@property (getter=isBackground, nonatomic) bool background;
 @property (nonatomic) double baselineOffset;
 @property (nonatomic) UIView *containerView;
 @property (readonly, copy) NSString *debugDescription;
@@ -60,6 +63,7 @@
 @property (nonatomic, readonly) _UIStatusBarItem *item;
 @property (nonatomic, retain) <UILayoutItem> *layoutItem;
 @property (nonatomic) bool needsAddingToLayout;
+@property (nonatomic, retain) _UIStatusBarStyleAttributes *overriddenStyleAttributes;
 @property (nonatomic) long long overriddenVerticalAlignment;
 @property (nonatomic, retain) _UIStatusBarDisplayItemPlacement *placement;
 @property (nonatomic, readonly) long long priority;
@@ -87,10 +91,12 @@
 - (id)highlightView;
 - (id)identifier;
 - (id)initWithIdentifier:(id)arg1 item:(id)arg2;
+- (bool)isBackground;
 - (bool)isEnabled;
 - (id)item;
 - (id)layoutItem;
 - (bool)needsAddingToLayout;
+- (id)overriddenStyleAttributes;
 - (long long)overriddenVerticalAlignment;
 - (id)placement;
 - (long long)priority;
@@ -99,6 +105,7 @@
 - (void)setAction:(id)arg1;
 - (void)setActionInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setAlpha:(double)arg1;
+- (void)setBackground:(bool)arg1;
 - (void)setBaselineOffset:(double)arg1;
 - (void)setContainerView:(id)arg1;
 - (void)setEnabled:(bool)arg1;
@@ -106,6 +113,7 @@
 - (void)setHighlightView:(id)arg1;
 - (void)setLayoutItem:(id)arg1;
 - (void)setNeedsAddingToLayout:(bool)arg1;
+- (void)setOverriddenStyleAttributes:(id)arg1;
 - (void)setOverriddenVerticalAlignment:(long long)arg1;
 - (void)setPlacement:(id)arg1;
 - (void)setRegion:(id)arg1;

@@ -6,10 +6,14 @@
     int (* _attributePresent;
     NSString * _bundleID;
     NSMutableDictionary * _cache;
-    NSLock * _cacheLock;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _cacheLock;
     NSCache * _namedRenditionKeyCache;
     CUICommonAssetStorage * _store;
-    NSLock * _storeLock;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _storeLock;
     unsigned long long  _themeIndex;
 }
 
@@ -43,6 +47,7 @@
 - (void)dealloc;
 - (id)debugDescription;
 - (id)debugDescriptionForKeyList:(const struct _renditionkeytoken { unsigned short x1; unsigned short x2; }*)arg1;
+- (id)defaultAppearanceName;
 - (unsigned int)distilledInCoreUIVersion;
 - (unsigned int)documentFormatVersion;
 - (double)fontSizeForFontSizeType:(id)arg1;
@@ -55,10 +60,12 @@
 - (id)initWithURL:(id)arg1;
 - (const struct _renditionkeyfmt { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4[0]; }*)keyFormat;
 - (id)keySignatureForKey:(const struct _renditionkeytoken { unsigned short x1; unsigned short x2; }*)arg1;
+- (unsigned short)localizationIdentifierForName:(id)arg1;
+- (id)localizations;
 - (id)lookupAssetForKey:(struct _renditionkeytoken { unsigned short x1; unsigned short x2; }*)arg1;
 - (long long)maximumRenditionKeyTokenCount;
 - (id)nameForAppearanceIdentifier:(unsigned short)arg1;
-- (id)prefilteredAssetDataForKey:(struct _renditionkeytoken { unsigned short x1; unsigned short x2; }*)arg1;
+- (id)renditionInfoForIdentifier:(unsigned short)arg1;
 - (const struct _renditionkeytoken { unsigned short x1; unsigned short x2; }*)renditionKeyForName:(id)arg1;
 - (const struct _renditionkeytoken { unsigned short x1; unsigned short x2; }*)renditionKeyForName:(id)arg1 cursorHotSpot:(struct CGPoint { double x1; double x2; }*)arg2;
 - (const struct _renditionkeyfmt { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4[0]; }*)renditionKeyFormat;
@@ -70,6 +77,5 @@
 - (unsigned long long)themeIndex;
 - (id)themeStore;
 - (bool)usesCUISystemThemeRenditionKey;
-- (id)zeroCodeGlyphList;
 
 @end

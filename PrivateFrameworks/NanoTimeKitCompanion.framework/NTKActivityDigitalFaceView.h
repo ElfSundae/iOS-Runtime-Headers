@@ -2,10 +2,8 @@
    Image: /System/Library/PrivateFrameworks/NanoTimeKitCompanion.framework/NanoTimeKitCompanion
  */
 
-@interface NTKActivityDigitalFaceView : NTKFaceView <NTKActivityFaceViewFactoryDelegate> {
+@interface NTKActivityDigitalFaceView : NTKDigitalFaceView <NTKActivityFaceViewFactoryDelegate> {
     double  _blinkerAndSecondsWidth;
-    UILabel * _briskMinutesLabel;
-    long long  _briskStringMetricWidth;
     struct RingLayout { 
         double bottomEdgeInset; 
         double leftEdgeInset; 
@@ -14,16 +12,18 @@
         double interspacing; 
     }  _currentRingLayout;
     NTKPolygonCylinderView * _densityEditingPolygonView;
-    UILabel * _energyLabel;
-    long long  _energyStringMetricWidth;
+    UILabel * _exerciseLabel;
+    long long  _exerciseStringMetricWidth;
     NTKActivityFaceViewFactory * _faceViewFactory;
-    double  _lastBriskPercentage;
-    double  _lastEnergyPercentage;
-    double  _lastSedentaryPercentage;
+    double  _lastExercisePercentage;
+    double  _lastMovePercentage;
+    double  _lastStandPercentage;
+    UILabel * _moveLabel;
+    long long  _moveStringMetricWidth;
     double  _rightTimeViewInset;
-    HKRingsView * _ringsView;
+    ARUIRingsView * _ringsView;
     bool  _showSeconds;
-    UILabel * _standHoursLabel;
+    UILabel * _standLabel;
     long long  _standStringMetricWidth;
     NTKFaceViewTapControl * _tapToLaunchButton;
     NSDate * _timeDensityEditingOverrideDate;
@@ -36,7 +36,6 @@
 @property (nonatomic) double rightTimeViewInset;
 @property (nonatomic) bool showSeconds;
 @property (readonly) Class superclass;
-@property (nonatomic, retain) NTKDigitalTimeLabel *timeView;
 
 + (id)_newRingsView;
 + (void)_prewarmForDevice:(id)arg1;
@@ -48,6 +47,7 @@
 - (void)_applyCurrentEntryModelByFraction:(double)arg1 updateLabels:(bool)arg2 animated:(bool)arg3;
 - (void)_applyCurrentRingLayout;
 - (void)_applyEntryModel:(id)arg1 byFraction:(double)arg2 updateLabels:(bool)arg3 animated:(bool)arg4;
+- (void)_applyFrozen;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyRubberBandingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyShowsCanonicalContent;
@@ -62,6 +62,8 @@
 - (void)_configureForDetailEditing;
 - (void)_configureForEditMode:(long long)arg1;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
+- (void)_createActivityRelatedUIs;
+- (id)_digitalTimeLabelStyleFromViewMode:(long long)arg1 faceBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (void)_enumerateActivityLabels:(id /* block */)arg1;
 - (bool)_fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
@@ -77,20 +79,21 @@
 - (void)_loadLayoutRules;
 - (void)_loadSnapshotContentViews;
 - (bool)_needsForegroundContainerView;
+- (id)_newActivitySubviewWithTextColor:(id)arg1;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
 - (void)_performWristRaiseAnimation;
 - (long long)_polygonIndexForAccuracy:(unsigned long long)arg1;
 - (void)_prepareForEditing;
 - (void)_prepareWristRaiseAnimation;
-- (void)_recenterTimeView;
-- (void)_renderSynchronouslyWithImageQueueDiscard:(bool)arg1;
+- (void)_removeActivityRelatedUIs;
+- (void)_renderSynchronouslyWithImageQueueDiscard:(bool)arg1 inGroup:(id)arg2;
 - (double)_rightTimeViewInsetForEditMode:(long long)arg1;
 - (double)_ringAlphaForEditMode:(long long)arg1;
 - (struct CGPoint { double x1; double x2; })_ringCenterForLayout:(struct RingLayout { double x1; double x2; double x3; double x4; double x5; })arg1;
-- (id)_ringGroupController;
 - (void)_setActivityViewsAlpha:(double)arg1 animated:(bool)arg2;
 - (void)_setZoomFraction:(double)arg1 iconDiameter:(double)arg2;
 - (double)_timeAlphaForEditMode:(long long)arg1;
+- (unsigned long long)_timeLabelOptions;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_timeViewBackgroundRect;
 - (void)_unloadSnapshotContentViews;
 - (void)_updateCurrentRingLayoutIfNecessary;
@@ -99,7 +102,10 @@
 - (void)applyEntryModelWithUnfilledRings:(id)arg1;
 - (void)dealloc;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
+- (void)layoutSubviews;
 - (double)rightTimeViewInset;
+- (void)screenDidTurnOff;
+- (void)screenWillTurnOn;
 - (void)setDataMode:(long long)arg1;
 - (void)setOverrideDate:(id)arg1 duration:(double)arg2;
 - (void)setRightTimeViewInset:(double)arg1;

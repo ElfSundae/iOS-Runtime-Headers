@@ -4,15 +4,37 @@
 
 @interface GEOPDMessageLink : PBCodable <NSCopying> {
     struct { 
-        unsigned int responseTime : 1; 
-        unsigned int isVerified : 1; 
-    }  _has;
+        unsigned int has_responseTime : 1; 
+        unsigned int has_isVerified : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_hoursOfOperations : 1; 
+        unsigned int read_messageId : 1; 
+        unsigned int read_messageUrl : 1; 
+        unsigned int read_navBackgroundColor : 1; 
+        unsigned int read_navTintColor : 1; 
+        unsigned int read_timezone : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_hoursOfOperations : 1; 
+        unsigned int wrote_messageId : 1; 
+        unsigned int wrote_messageUrl : 1; 
+        unsigned int wrote_navBackgroundColor : 1; 
+        unsigned int wrote_navTintColor : 1; 
+        unsigned int wrote_timezone : 1; 
+        unsigned int wrote_responseTime : 1; 
+        unsigned int wrote_isVerified : 1; 
+    }  _flags;
     NSMutableArray * _hoursOfOperations;
     bool  _isVerified;
     NSString * _messageId;
     NSString * _messageUrl;
     NSString * _navBackgroundColor;
     NSString * _navTintColor;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     int  _responseTime;
     GEOTimezone * _timezone;
     PBUnknownFields * _unknownFields;
@@ -36,12 +58,21 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 + (Class)hoursOfOperationType;
++ (bool)isValid:(id)arg1;
 + (id)messageLinkForPlaceData:(id)arg1;
 
 - (void).cxx_destruct;
 - (int)StringAsResponseTime:(id)arg1;
+- (void)_addNoFlagsHoursOfOperation:(id)arg1;
+- (void)_readHoursOfOperations;
+- (void)_readMessageId;
+- (void)_readMessageUrl;
+- (void)_readNavBackgroundColor;
+- (void)_readNavTintColor;
+- (void)_readTimezone;
 - (void)addHoursOfOperation:(id)arg1;
 - (void)clearHoursOfOperations;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -57,6 +88,8 @@
 - (id)hoursOfOperationAtIndex:(unsigned long long)arg1;
 - (id)hoursOfOperations;
 - (unsigned long long)hoursOfOperationsCount;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)isVerified;
 - (void)mergeFrom:(id)arg1;
@@ -64,6 +97,7 @@
 - (id)messageUrl;
 - (id)navBackgroundColor;
 - (id)navTintColor;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (int)responseTime;
 - (id)responseTimeAsString:(int)arg1;

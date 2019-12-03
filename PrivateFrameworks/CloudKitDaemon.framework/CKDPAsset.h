@@ -4,13 +4,11 @@
 
 @interface CKDPAsset : PBCodable <NSCopying> {
     NSString * _assetAuthorizationResponseUUID;
-    NSData * _assetCopyMetadata;
     NSData * _clearAssetKey;
     long long  _constructedAssetDownloadEstimatedSize;
     NSString * _constructedAssetDownloadURL;
     long long  _constructedAssetDownloadURLExpiration;
     NSString * _contentBaseURL;
-    NSString * _derivedContentType;
     NSString * _downloadBaseURL;
     NSData * _downloadRequest;
     NSString * _downloadToken;
@@ -23,7 +21,6 @@
         unsigned int downloadURLExpiration : 1; 
         unsigned int size : 1; 
     }  _has;
-    NSData * _header;
     NSString * _owner;
     CKDPProtectionInfo * _protectionInfo;
     CKDPRecordIdentifier * _recordId;
@@ -35,32 +32,27 @@
 }
 
 @property (nonatomic, retain) NSString *assetAuthorizationResponseUUID;
-@property (nonatomic, retain) NSData *assetCopyMetadata;
 @property (nonatomic, retain) NSData *clearAssetKey;
 @property (nonatomic) long long constructedAssetDownloadEstimatedSize;
 @property (nonatomic, retain) NSString *constructedAssetDownloadURL;
 @property (nonatomic) long long constructedAssetDownloadURLExpiration;
 @property (nonatomic, retain) NSString *contentBaseURL;
-@property (nonatomic, retain) NSString *derivedContentType;
 @property (nonatomic, retain) NSString *downloadBaseURL;
 @property (nonatomic, retain) NSData *downloadRequest;
 @property (nonatomic, retain) NSString *downloadToken;
 @property (nonatomic) long long downloadTokenExpiration;
 @property (nonatomic) long long downloadURLExpiration;
 @property (nonatomic, readonly) bool hasAssetAuthorizationResponseUUID;
-@property (nonatomic, readonly) bool hasAssetCopyMetadata;
 @property (nonatomic, readonly) bool hasClearAssetKey;
 @property (nonatomic) bool hasConstructedAssetDownloadEstimatedSize;
 @property (nonatomic, readonly) bool hasConstructedAssetDownloadURL;
 @property (nonatomic) bool hasConstructedAssetDownloadURLExpiration;
 @property (nonatomic, readonly) bool hasContentBaseURL;
-@property (nonatomic, readonly) bool hasDerivedContentType;
 @property (nonatomic, readonly) bool hasDownloadBaseURL;
 @property (nonatomic, readonly) bool hasDownloadRequest;
 @property (nonatomic, readonly) bool hasDownloadToken;
 @property (nonatomic) bool hasDownloadTokenExpiration;
 @property (nonatomic) bool hasDownloadURLExpiration;
-@property (nonatomic, readonly) bool hasHeader;
 @property (nonatomic, readonly) bool hasOwner;
 @property (nonatomic, readonly) bool hasProtectionInfo;
 @property (nonatomic, readonly) bool hasRecordId;
@@ -69,7 +61,6 @@
 @property (nonatomic, readonly) bool hasSignature;
 @property (nonatomic) bool hasSize;
 @property (nonatomic, readonly) bool hasUploadReceipt;
-@property (nonatomic, retain) NSData *header;
 @property (nonatomic, retain) NSString *owner;
 @property (nonatomic, retain) CKDPProtectionInfo *protectionInfo;
 @property (nonatomic, retain) CKDPRecordIdentifier *recordId;
@@ -81,7 +72,6 @@
 
 - (void).cxx_destruct;
 - (id)assetAuthorizationResponseUUID;
-- (id)assetCopyMetadata;
 - (id)clearAssetKey;
 - (long long)constructedAssetDownloadEstimatedSize;
 - (id)constructedAssetDownloadURL;
@@ -89,7 +79,6 @@
 - (id)contentBaseURL;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (id)derivedContentType;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)downloadBaseURL;
@@ -98,19 +87,16 @@
 - (long long)downloadTokenExpiration;
 - (long long)downloadURLExpiration;
 - (bool)hasAssetAuthorizationResponseUUID;
-- (bool)hasAssetCopyMetadata;
 - (bool)hasClearAssetKey;
 - (bool)hasConstructedAssetDownloadEstimatedSize;
 - (bool)hasConstructedAssetDownloadURL;
 - (bool)hasConstructedAssetDownloadURLExpiration;
 - (bool)hasContentBaseURL;
-- (bool)hasDerivedContentType;
 - (bool)hasDownloadBaseURL;
 - (bool)hasDownloadRequest;
 - (bool)hasDownloadToken;
 - (bool)hasDownloadTokenExpiration;
 - (bool)hasDownloadURLExpiration;
-- (bool)hasHeader;
 - (bool)hasOwner;
 - (bool)hasProtectionInfo;
 - (bool)hasRecordId;
@@ -120,7 +106,6 @@
 - (bool)hasSize;
 - (bool)hasUploadReceipt;
 - (unsigned long long)hash;
-- (id)header;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)owner;
@@ -130,13 +115,11 @@
 - (id)referenceSignature;
 - (id)requestor;
 - (void)setAssetAuthorizationResponseUUID:(id)arg1;
-- (void)setAssetCopyMetadata:(id)arg1;
 - (void)setClearAssetKey:(id)arg1;
 - (void)setConstructedAssetDownloadEstimatedSize:(long long)arg1;
 - (void)setConstructedAssetDownloadURL:(id)arg1;
 - (void)setConstructedAssetDownloadURLExpiration:(long long)arg1;
 - (void)setContentBaseURL:(id)arg1;
-- (void)setDerivedContentType:(id)arg1;
 - (void)setDownloadBaseURL:(id)arg1;
 - (void)setDownloadRequest:(id)arg1;
 - (void)setDownloadToken:(id)arg1;
@@ -147,7 +130,6 @@
 - (void)setHasDownloadTokenExpiration:(bool)arg1;
 - (void)setHasDownloadURLExpiration:(bool)arg1;
 - (void)setHasSize:(bool)arg1;
-- (void)setHeader:(id)arg1;
 - (void)setOwner:(id)arg1;
 - (void)setProtectionInfo:(id)arg1;
 - (void)setRecordId:(id)arg1;

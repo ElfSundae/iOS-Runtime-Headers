@@ -7,7 +7,7 @@
     NSMapTable * _queue_portToContextMap;
 }
 
-- (void)_queue_cleanupContext:(struct { unsigned int x1; id x2; id /* block */ x3; }*)arg1 withResponse:(id)arg2;
+- (void)_queue_cleanupContext:(struct { unsigned int x1; id x2; id x3; id /* block */ x4; }*)arg1 withResponse:(id)arg2;
 - (void)clearListenerForToken:(id)arg1;
 - (void)dealloc;
 - (id)init;

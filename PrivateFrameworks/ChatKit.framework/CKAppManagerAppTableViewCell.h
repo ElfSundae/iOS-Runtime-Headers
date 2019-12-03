@@ -16,6 +16,7 @@
 - (id)appToggle;
 - (void)appToggleTapped:(id)arg1;
 - (id)delegate;
+- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutMarginsDidChange;
 - (void)prepareForReuse;
 - (void)setAppToggle:(id)arg1;

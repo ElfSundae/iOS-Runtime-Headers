@@ -3,8 +3,10 @@
  */
 
 @interface PKTransactionGroupItemPresenter : NSObject <PKDashboardItemPresenter> {
+    UIImage * _adjustmentsImage;
     UIImage * _appleCardImage;
     UIImage * _cashbackImage;
+    PKPaymentTransactionCellController * _cellController;
     UIImage * _emptyImage;
     NSDateFormatter * _formatterMonth;
     NSDateFormatter * _formatterYear;
@@ -12,7 +14,6 @@
         double width; 
         double height; 
     }  _groupSize;
-    NSCache * _iconsPerMerchant;
     NSCache * _iconsPerMerchantCategory;
     UIImage * _interestImage;
     bool  _needsSizing;
@@ -35,6 +36,7 @@
 - (id)_contactKeysToFetch;
 - (struct CGSize { double x1; double x2; })_imageSize;
 - (id)_viewControllerForItem:(id)arg1;
+- (id)adjustmentsImage;
 - (id)appleCardImage;
 - (bool)canSelectItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (id)cashbackImage;

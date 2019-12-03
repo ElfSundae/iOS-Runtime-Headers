@@ -2,29 +2,31 @@
    Image: /System/Library/Frameworks/HomeKit.framework/HomeKit
  */
 
-@interface HMAction : NSObject <HFStateDumpBuildable, HMObjectMerge> {
+@interface HMAction : NSObject <HFStateDumpBuildable, HMObjectMerge, NSCopying, NSSecureCoding> {
     HMActionSet * _actionSet;
-    unsigned long long  _actionType;
     _HMContext * _context;
     HMFUnfairLock * _lock;
+    unsigned long long  _type;
     NSUUID * _uniqueIdentifier;
     NSUUID * _uuid;
 }
 
 @property HMActionSet *actionSet;
-@property (nonatomic) unsigned long long actionType;
 @property (nonatomic, retain) _HMContext *context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) bool requiresDeviceUnlock;
 @property (readonly) Class superclass;
+@property (readonly) unsigned long long type;
 @property (nonatomic, readonly, copy) NSUUID *uniqueIdentifier;
 @property (copy) NSUUID *uuid;
+@property (getter=isValid, readonly) bool valid;
 
 // Image: /System/Library/Frameworks/HomeKit.framework/HomeKit
 
 + (id)_actionWithInfo:(id)arg1 home:(id)arg2;
-+ (id)_lookupActionWithInfo:(id)arg1 inArray:(id)arg2;
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (void)__configureWithContext:(id)arg1 actionSet:(id)arg2;
@@ -35,11 +37,18 @@
 - (id)actionSet;
 - (unsigned long long)actionType;
 - (id)context;
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)encodeAsProtoBuf;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithUUID:(id)arg1;
+- (bool)isValid;
+- (bool)requiresDeviceUnlock;
 - (void)setActionSet:(id)arg1;
-- (void)setActionType:(unsigned long long)arg1;
 - (void)setContext:(id)arg1;
 - (void)setUuid:(id)arg1;
+- (unsigned long long)type;
 - (id)uniqueIdentifier;
 - (id)uuid;
 

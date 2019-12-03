@@ -20,6 +20,7 @@
 - (id)description;
 - (void)enumerateThumbnailsInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 handler:(id /* block */)arg2;
 - (unsigned long long)indexOfPhotoWithIdentifier:(id)arg1;
+- (id)init;
 - (void)loadPhotoAtIndex:(unsigned long long)arg1 handler:(id /* block */)arg2;
 - (void)loadPhotosAtIndices:(id)arg1 handler:(id /* block */)arg2;
 - (unsigned long long)numberOfLoadedPhotos;

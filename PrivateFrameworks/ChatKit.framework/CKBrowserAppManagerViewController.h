@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
  */
 
-@interface CKBrowserAppManagerViewController : CKBrowserViewController <CKAppManagerViewControllerDelegate, UIViewControllerTransitioningDelegate> {
+@interface CKBrowserAppManagerViewController : CKBrowserViewController <CKAppManagerViewControllerDelegate, UIPresentationControllerDelegatePrivate, UIViewControllerTransitioningDelegate> {
     CKAppManagerViewController * _appViewController;
     <CKBrowserAppManagerViewControllerDelegate> * _delegate;
     UINavigationController * _navController;
@@ -22,11 +22,13 @@
 - (long long)browserPresentationStyle;
 - (id)delegate;
 - (void)dismiss;
+- (bool)isDismissing;
 - (bool)isLoaded;
 - (bool)mayBeKeptInViewHierarchy;
 - (long long)parentModalPresentationStyle;
 - (id)parentTransitioningDelegate;
 - (long long)preferredStatusBarStyle;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
 - (void)setDelegate:(id)arg1;
 - (bool)shouldShowChatChrome;

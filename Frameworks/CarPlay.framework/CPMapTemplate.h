@@ -8,7 +8,7 @@
     CPNavigationAlert * _currentNavigationAlert;
     UIColor * _guidanceBackgroundColor;
     bool  _hidesButtonsWithNavigationBar;
-    NSMutableArray * _internalMapButtons;
+    NSArray * _mapButtons;
     <CPMapTemplateDelegate> * _mapDelegate;
     NSMutableDictionary * _postedBannerObjects;
     unsigned long long  _tripEstimateStyle;
@@ -24,14 +24,13 @@
 @property (nonatomic, retain) UIColor *guidanceBackgroundColor;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool hidesButtonsWithNavigationBar;
-@property (nonatomic, retain) NSMutableArray *internalMapButtons;
 @property (nonatomic, retain) NSArray *leadingNavigationBarButtons;
 @property (nonatomic, retain) NSArray *mapButtons;
 @property (nonatomic) <CPMapTemplateDelegate> *mapDelegate;
 @property (getter=isPanningInterfaceVisible, nonatomic, readonly) bool panningInterfaceVisible;
 @property (nonatomic, retain) NSMutableDictionary *postedBannerObjects;
 @property (readonly) Class superclass;
-@property (nonatomic, retain) <CPMapTemplateProviding> *templateProvider;
+@property (nonatomic, retain) NAFuture *templateProviderFuture;
 @property (nonatomic, retain) NSArray *trailingNavigationBarButtons;
 @property (nonatomic) unsigned long long tripEstimateStyle;
 @property (nonatomic, readonly, copy) NSArray *tripPreviews;
@@ -75,11 +74,10 @@
 - (bool)hidesButtonsWithNavigationBar;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)internalMapButtons;
 - (bool)isPanningInterfaceVisible;
 - (bool)mapButton:(id)arg1 setFocusedImage:(id)arg2;
 - (bool)mapButton:(id)arg1 setHidden:(bool)arg2;
-- (bool)mapButton:(id)arg1 setImage:(id)arg2;
+- (bool)mapButton:(id)arg1 setImageSet:(id)arg2;
 - (id)mapButtons;
 - (id)mapDelegate;
 - (id)postedBannerObjects;
@@ -89,7 +87,6 @@
 - (void)setBannerProvider:(id)arg1;
 - (void)setGuidanceBackgroundColor:(id)arg1;
 - (void)setHidesButtonsWithNavigationBar:(bool)arg1;
-- (void)setInternalMapButtons:(id)arg1;
 - (void)setMapButtons:(id)arg1;
 - (void)setMapDelegate:(id)arg1;
 - (void)setPostedBannerObjects:(id)arg1;

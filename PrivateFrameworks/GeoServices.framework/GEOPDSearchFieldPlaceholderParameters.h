@@ -4,8 +4,8 @@
 
 @interface GEOPDSearchFieldPlaceholderParameters : PBCodable <NSCopying> {
     struct { 
-        unsigned int version : 1; 
-    }  _has;
+        unsigned int has_version : 1; 
+    }  _flags;
     PBUnknownFields * _unknownFields;
     int  _version;
 }
@@ -14,8 +14,11 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic) int version;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
 - (int)StringAsVersion:(id)arg1;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -24,6 +27,7 @@
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasVersion:(bool)arg1;
 - (void)setVersion:(int)arg1;

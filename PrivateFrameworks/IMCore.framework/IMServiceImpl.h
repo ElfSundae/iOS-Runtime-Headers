@@ -80,6 +80,12 @@
 @property (nonatomic, readonly) bool supportsPresence;
 @property (nonatomic, readonly) bool supportsRegistration;
 
++ (bool)_iMessageEnabledForMultipleSubscriptionsForSenderLastAddressedHandle:(id)arg1 simID:(id)arg2 previousService:(id)arg3;
++ (bool)_isSIMIdIDSRegisteredSIM:(id)arg1;
++ (bool)_isiMessageEnabledIfLastAddressedHandleIsNotActiveAnymore:(id)arg1;
++ (id)_phoneNumberOnSubscriptionWithSIMID:(id)arg1;
++ (bool)_readMMSUserOverride;
++ (bool)_shouldCheckIfLastAddressedHandleIsInSubscriptionsAnymoreButiMessageIsEnabledForAlias:(id)arg1 previousService:(id)arg2;
 + (id)activeServices;
 + (id)allServices;
 + (id)allServicesNonBlocking;

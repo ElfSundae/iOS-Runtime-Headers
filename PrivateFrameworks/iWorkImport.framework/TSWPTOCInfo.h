@@ -21,18 +21,19 @@
 @property (setter=setTOCSettings:, nonatomic, retain) TSWPTOCSettings *tocSettings;
 @property (nonatomic, readonly) NSArray *visibleTOCEntries;
 
-+ (bool)canPartition;
++ (bool)canPartitionInline;
 
 - (void).cxx_destruct;
 - (void)acceptVisitor:(id)arg1;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (id)containedStorageFormattedUsingParagraphStyle:(id)arg1;
+- (id)containedStorageFormattedUsingParagraphStyles;
 - (id)copyWithContext:(id)arg1;
 - (Class)editorClass;
 - (int)elementKind;
 - (bool)isSelectable;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)loadTOCInfoMessage:(const struct TOCInfoArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TSP::Range> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; struct ShapeInfoArchive {} *x7; struct Reference {} *x8; bool x9; }*)arg1 unarchiver:(id)arg2;
+- (void)loadTOCInfoMessage:(const struct TOCInfoArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TSP::Range> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; struct ShapeInfoArchive {} *x7; struct Reference {} *x8; bool x9; }*)arg1 unarchiver:(id)arg2;
 - (bool)p_startingTOCIsRTLForEntries:(id)arg1;
 - (id)pageNumberRanges;
 - (id)paragraphStylesShownInTOC;
@@ -40,7 +41,7 @@
 - (id)referencedStyles;
 - (void)regenerateStorageContent;
 - (Class)repClass;
-- (void)saveTOCInfoMessage:(struct TOCInfoArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TSP::Range> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; struct ShapeInfoArchive {} *x7; struct Reference {} *x8; bool x9; }*)arg1 archiver:(id)arg2;
+- (void)saveTOCInfoMessage:(struct TOCInfoArchive { int (**x1)(); struct InternalMetadataWithArena { void *x_2_1_1; } x2; struct HasBits<1> { unsigned int x_3_1_1[1]; } x3; struct CachedSize { struct atomic<int> { _Atomic int x_1_2_1; } x_4_1_1; } x4; struct RepeatedPtrField<TSP::Reference> { struct Arena {} *x_5_1_1; int x_5_1_2; int x_5_1_3; struct Rep {} *x_5_1_4; } x5; struct RepeatedPtrField<TSP::Range> { struct Arena {} *x_6_1_1; int x_6_1_2; int x_6_1_3; struct Rep {} *x_6_1_4; } x6; struct ShapeInfoArchive {} *x7; struct Reference {} *x8; bool x9; }*)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)setPageNumberRanges:(id)arg1;
 - (void)setShouldSyncTOCSettingsWithTOCNavigator:(bool)arg1;
@@ -48,6 +49,7 @@
 - (void)setTOCSettings:(id)arg1;
 - (bool)shouldSyncTOCSettingsWithTOCNavigator;
 - (bool)supportsAttachedComments;
+- (bool)textIsVertical;
 - (id)textualEquivalent;
 - (id)tocEntries;
 - (id)tocSettings;

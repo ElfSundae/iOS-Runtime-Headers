@@ -10,10 +10,11 @@
     NSObject<OS_dispatch_queue> * _workQueue;
 }
 
+- (void).cxx_destruct;
 - (void)_runOnWorkQueueWithTransaction:(id)arg1 block:(id /* block */)arg2;
-- (void)dealloc;
+- (void)handleOptimizeModeChange;
 - (id)init;
-- (id)initWithCPLManager:(id)arg1;
+- (id)initWithCPLManager:(id)arg1 library:(id)arg2;
 - (void)startAutomaticPrefetchAndPruneWithTimeout:(bool)arg1;
 - (id)statusForDebug:(bool)arg1;
 - (void)stop;

@@ -7,7 +7,6 @@
     NEExtensionProviderContext * _context;
     NWPath * _defaultPath;
     NWPathEvaluator * _defaultPathEvaluator;
-    NSString * _deviceIdentifier;
 }
 
 @property (retain) NSString *appName;
@@ -16,12 +15,12 @@
 @property (retain) NWPath *defaultPath;
 @property (retain) NWPathEvaluator *defaultPathEvaluator;
 @property (readonly, copy) NSString *description;
-@property (retain) NSString *deviceIdentifier;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 + (bool)isNEProviderBundle:(id)arg1 forExtensionPoint:(id)arg2;
 + (bool)isRunningInProvider;
++ (void)startSystemExtensionMode;
 
 - (void).cxx_destruct;
 - (id)appName;
@@ -34,15 +33,14 @@
 - (void)dealloc;
 - (id)defaultPath;
 - (id)defaultPathEvaluator;
-- (id)deviceIdentifier;
 - (void)displayMessage:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)init;
+- (id)initAllowUnentitled:(bool)arg1;
 - (void)observerHelperHandler:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (void)setAppName:(id)arg1;
 - (void)setContext:(id)arg1;
 - (void)setDefaultPath:(id)arg1;
 - (void)setDefaultPathEvaluator:(id)arg1;
-- (void)setDeviceIdentifier:(id)arg1;
 - (void)setdefaultPathObserver:(id)arg1;
 - (void)sleepWithCompletionHandler:(id /* block */)arg1;
 - (void)wake;

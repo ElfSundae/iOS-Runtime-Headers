@@ -8,6 +8,5 @@
 
 - (void).cxx_destruct;
 - (int)forward;
-- (int)initializeRest;
 
 @end

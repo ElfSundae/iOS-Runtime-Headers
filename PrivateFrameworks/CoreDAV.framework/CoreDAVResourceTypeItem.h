@@ -12,17 +12,12 @@
 }
 
 @property (nonatomic, retain) CoreDAVItemWithNoChildren *addressBook;
-@property (nonatomic, retain) CoreDAVItemWithNoChildren *bookmarkBarFolder;
-@property (nonatomic, retain) CoreDAVItemWithNoChildren *bookmarkFolder;
-@property (nonatomic, retain) CoreDAVItemWithNoChildren *bookmarkMenuFolder;
 @property (nonatomic, retain) CoreDAVItemWithNoChildren *collection;
 @property (nonatomic, retain) CoreDAVItemWithNoChildren *principal;
 @property (nonatomic, retain) CoreDAVItemWithNoChildren *searchAddressBook;
 @property (nonatomic, retain) CoreDAVItemWithNoChildren *shared;
 @property (nonatomic, readonly) NSSet *stringSet;
 @property (nonatomic, retain) CoreDAVItemWithNoChildren *unauthenticated;
-
-// Image: /System/Library/PrivateFrameworks/CoreDAV.framework/CoreDAV
 
 + (id)copyParseRules;
 
@@ -44,16 +39,5 @@
 - (id)stringSet;
 - (id)unauthenticated;
 - (void)write:(id)arg1;
-
-// Image: /System/Library/PrivateFrameworks/BookmarkDAV.framework/BookmarkDAV
-
-- (id)bookmarkBarFolder;
-- (id)bookmarkFolder;
-- (id)bookmarkMenuFolder;
-- (id)extraChildWithNameSpace:(id)arg1 name:(id)arg2;
-- (void)setBookmarkBarFolder:(id)arg1;
-- (void)setBookmarkFolder:(id)arg1;
-- (void)setBookmarkMenuFolder:(id)arg1;
-- (void)setExtraChild:(id)arg1 forNameSpace:(id)arg2 name:(id)arg3;
 
 @end

@@ -5,9 +5,11 @@
 
 @required
 
+- (void)activateFont:(NSString *)arg1;
 - (void)activateReader;
 - (bool)canDecreaseReaderTextSize;
 - (bool)canIncreaseReaderTextSize;
+- (void)checkReaderAvailability;
 - (void)clearAvailability;
 - (void)clearReaderWebView;
 - (void)clearUnusedReaderResourcesSoon;

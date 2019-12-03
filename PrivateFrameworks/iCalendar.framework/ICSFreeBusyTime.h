@@ -4,10 +4,10 @@
 
 @interface ICSFreeBusyTime : ICSProperty
 
-@property (nonatomic) int fbtype;
+@property (nonatomic) unsigned long long fbtype;
 
-- (int)fbtype;
+- (unsigned long long)fbtype;
 - (id)initWithPeriod:(id)arg1;
-- (void)setFbtype:(int)arg1;
+- (void)setFbtype:(unsigned long long)arg1;
 
 @end

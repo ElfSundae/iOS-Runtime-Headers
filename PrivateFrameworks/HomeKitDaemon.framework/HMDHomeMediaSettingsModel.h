@@ -4,9 +4,9 @@
 
 @interface HMDHomeMediaSettingsModel : HMDBackingStoreModelObject
 
-@property (nonatomic, retain) NSString *mediaPassword;
-@property (nonatomic, retain) NSNumber *mediaPeerToPeerEnabled;
-@property (nonatomic, retain) NSNumber *minimumMediaUserPrivilege;
+@property (nonatomic, copy) NSString *mediaPassword;
+@property (nonatomic, copy) NSNumber *mediaPeerToPeerEnabled;
+@property (nonatomic, copy) NSNumber *minimumMediaUserPrivilege;
 
 + (id)defaultModelForHome:(id)arg1;
 + (id)modelIDForHome:(id)arg1;

@@ -5,6 +5,7 @@
 @interface HDWorkoutSessionTaskServer : HDStandardTaskServer <HDWorkoutDataDestination, HDWorkoutDataSource, HDWorkoutSessionObserver, HKDataFlowLinkProcessor, HKWorkoutSessionServerInterface> {
     <HDWorkoutDataAccumulator> * _accumulator;
     HDWorkoutBuilderEntity * _builderEntity;
+    HKSource * _clientSource;
     NSObject<OS_dispatch_queue> * _queue;
     HDWorkoutSessionServer * _sessionServer;
     HKWorkoutSessionTaskConfiguration * _taskConfiguration;
@@ -12,6 +13,7 @@
 }
 
 @property <HDWorkoutDataAccumulator> *accumulator;
+@property (nonatomic, readonly, copy) HKSource *clientSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -24,10 +26,10 @@
 @property (readonly, copy) NSUUID *workoutDataProcessorUUID;
 
 + (Class)configurationClass;
-+ (id)createTaskServerWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5 error:(id*)arg6;
++ (id)createTaskServerWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4 error:(id*)arg5;
 + (id)requiredEntitlements;
 + (id)taskIdentifier;
-+ (bool)validateConfiguration:(id)arg1 error:(out id*)arg2;
++ (bool)validateConfiguration:(id)arg1 client:(id)arg2 error:(id*)arg3;
 
 - (void).cxx_destruct;
 - (void)_queue_setupSessionServer;
@@ -35,10 +37,11 @@
 - (void)addMetadata:(id)arg1 dataSource:(id)arg2;
 - (void)addSamples:(id)arg1 dataSource:(id)arg2;
 - (void)addWorkoutEvents:(id)arg1 dataSource:(id)arg2;
+- (id)clientSource;
+- (void)connectionConfigured;
 - (void)connectionInvalidated;
 - (id)exportedInterface;
-- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
-- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5 sessionServer:(id)arg6;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 clientSource:(id)arg4 delegate:(id)arg5 sessionServer:(id)arg6;
 - (void)observeWorkoutSessionServer:(id)arg1;
 - (id)remoteInterface;
 - (void)remote_recoverWithCompletion:(id /* block */)arg1;

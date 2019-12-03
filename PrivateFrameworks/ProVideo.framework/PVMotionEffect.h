@@ -17,7 +17,7 @@
     double  _docFrameRate;
     unsigned int  _docFrames;
     struct atomic<DocLoadStatus> { 
-        int __a_; 
+        _Atomic int __a_; 
     }  _docLoadStatus;
     double  _docPixelAspectRatio;
     void * _document;
@@ -104,24 +104,26 @@
 + (id)_bundleLibPaths;
 + (id)_effectPathFromID:(id)arg1;
 + (id)_userLibPaths;
-+ (void)cleanupEffectsCache;
 + (void)clearPreviewStats;
 + (id)effectMap;
 + (void)extractMetadataFromContentsOfFile:(id)arg1 toCacheEntry:(id)arg2;
++ (void)handleApplicationDidReceiveMemoryWarning;
++ (void)handleApplicationWillTerminate;
++ (void)handleCleanupEffectsCache;
 + (void)initializeMotion;
 + (void)initializeMotionInternal;
-+ (struct FigTime { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; })liveTitlePickerLoopTime;
++ (struct { long long x1; int x2; unsigned int x3; long long x4; })liveTitlePickerLoopTime;
 + (void)mapTemplatesInDirectory:(id)arg1 doingRescan:(bool)arg2 origCache:(id)arg3 newCache:(id)arg4;
 + (id)newEffectWithData:(id)arg1;
 + (id)newEffectWithURL:(id)arg1;
-+ (void)noteApplicationDidReceiveMemoryWarning;
-+ (void)noteApplicationWillTerminate;
++ (id)parameterKeyToPublishedParameterNameMap;
++ (id)publishedParameterNameToParameterKeyMap;
 + (void)registerEffects;
 + (void)registerNoneEffectForType:(id)arg1 effectID:(id)arg2 origCache:(id)arg3 newCache:(id)arg4;
 + (void)registerTemplateInDirectory:(id)arg1 relPath:(id)arg2 effectID:(id)arg3 doingRescan:(bool)arg4 origCache:(id)arg5 newCache:(id)arg6;
 + (bool)replacedMappedEffectWithNewPath:(id)arg1;
 + (void)scanTemplatesInDirectory:(id)arg1 doingRescan:(bool)arg2 replaceMappedEffectPath:(bool)arg3 origCache:(id)arg4 newCache:(id)arg5;
-+ (void)setLiveTitlePickerLoopTime:(struct FigTime { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; })arg1;
++ (void)setLiveTitlePickerLoopTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -137,7 +139,6 @@
 - (void)adjustCutawayInputs:(struct map<unsigned int, HGRef<HGNode>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, HGRef<HGNode> > > > { struct __tree<std::__1::__value_type<unsigned int, HGRef<HGNode> >, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, HGRef<HGNode> >, std::__1::less<unsigned int>, true>, std::__1::allocator<std::__1::__value_type<unsigned int, HGRef<HGNode> > > > { struct __tree_end_node<std::__1::__tree_node_base<void *> *> {} *x_1_1_1; struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned int, HGRef<HGNode> >, void *> > > { struct __tree_end_node<std::__1::__tree_node_base<void *> *> { struct __tree_node_base<void *> {} *x_1_3_1; } x_2_2_1; } x_1_1_2; struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, HGRef<HGNode> >, std::__1::less<unsigned int>, true> > { unsigned long long x_3_2_1; } x_1_1_3; } x1; }*)arg1 splitCropRectA:(id)arg2 splitCropRectB:(id)arg3 pipRect:(id)arg4 pipScaleFactor:(id)arg5 renderScale:(float)arg6 pipNeedsCrop:(bool)arg7;
 - (void)adjustKenBurnsAnimation:(id)arg1;
 - (void)adjustPosition:(id)arg1;
-- (void)adjustShapeVertices:(id)arg1;
 - (void)adjustTransitionInputs:(struct map<unsigned int, HGRef<HGNode>, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, HGRef<HGNode> > > > { struct __tree<std::__1::__value_type<unsigned int, HGRef<HGNode> >, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, HGRef<HGNode> >, std::__1::less<unsigned int>, true>, std::__1::allocator<std::__1::__value_type<unsigned int, HGRef<HGNode> > > > { struct __tree_end_node<std::__1::__tree_node_base<void *> *> {} *x_1_1_1; struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *> *>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned int, HGRef<HGNode> >, void *> > > { struct __tree_end_node<std::__1::__tree_node_base<void *> *> { struct __tree_node_base<void *> {} *x_1_3_1; } x_2_2_1; } x_1_1_2; struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned int, std::__1::__value_type<unsigned int, HGRef<HGNode> >, std::__1::less<unsigned int>, true> > { unsigned long long x_3_2_1; } x_1_1_3; } x1; }*)arg1 renderScale:(float)arg2 renderer:(const struct HGRef<HGRenderer> { struct HGRenderer {} *x1; }*)arg3 inputANeedsBackground:(bool)arg4 inputBNeedsBackground:(bool)arg5 slideCropRectA:(id)arg6 slideCropRectB:(id)arg7;
 - (void)applyConcatenatedTLGroupAndClipTransforms:(id)arg1 time:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg2;
 - (void)applyInspectableProperties;
@@ -153,6 +154,7 @@
 - (void)disableBackgroundMovie:(bool)arg1;
 - (void)disableElementWithPublishedParam:(struct PCString { struct __CFString {} *x1; }*)arg1 disable:(bool)arg2;
 - (void)disableRenderingTextObjectAtIndex:(unsigned int)arg1;
+- (void)disableWordFadeOutIfNecessary;
 - (struct CGSize { double x1; double x2; })documentSize;
 - (id)effectParameters;
 - (void)enableRenderingTextObjectAtIndex:(unsigned int)arg1;
@@ -180,13 +182,12 @@
 - (bool)parameterInvalidatesCache:(id)arg1;
 - (id)parametersThatInvalidateCache;
 - (int)posterFrameTime:(struct FigTime { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; }*)arg1;
-- (struct HGRef<HGNode> { struct HGNode {} *x1; })previewHGNodeForTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 inputHGNode:(struct HGRef<HGNode> { struct HGNode {} *x1; })arg2 outputSize:(struct CGSize { double x1; double x2; })arg3 renderer:(struct HGRenderer { int (**x1)(); unsigned int x2; struct HGNode {} *x3; struct HGBitmap {} *x4; struct HGRendererTextureUnit { struct HGBitmap {} *x_5_1_1; struct HGTransform {} *x_5_1_2; int x_5_1_3; } x5[8]; struct vector<DepthBufferManager *, std::__1::allocator<DepthBufferManager *> > { struct DepthBufferManager {} **x_6_1_1; struct DepthBufferManager {} **x_6_1_2; struct __compressed_pair<DepthBufferManager **, std::__1::allocator<DepthBufferManager *> > { struct DepthBufferManager {} **x_3_2_1; } x_6_1_3; } x6; struct vector<HGExecutionUnit *, std::__1::allocator<HGExecutionUnit *> > { struct HGExecutionUnit {} **x_7_1_1; struct HGExecutionUnit {} **x_7_1_2; struct __compressed_pair<HGExecutionUnit **, std::__1::allocator<HGExecutionUnit *> > { struct HGExecutionUnit {} **x_3_2_1; } x_7_1_3; } x7; struct HGExecutionData {} *x8; struct HGSyncData {} *x9; struct _opaque_pthread_rwlock_t { long long x_10_1_1; BOOL x_10_1_2[192]; } x10; struct _opaque_pthread_mutex_t { long long x_11_1_1; BOOL x_11_1_2[56]; } x11; struct HGLUTCacheManager {} *x12; }*)arg4;
+- (struct HGRef<HGNode> { struct HGNode {} *x1; })previewHGNodeForTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1 inputHGNode:(struct HGRef<HGNode> { struct HGNode {} *x1; })arg2 outputSize:(struct CGSize { double x1; double x2; })arg3 renderer:(struct HGRenderer { int (**x1)(); struct atomic<unsigned int> { _Atomic unsigned int x_2_1_1; } x2; struct HGNode {} *x3; struct HGBitmap {} *x4; struct HGRendererTextureUnit { struct HGBitmap {} *x_5_1_1; struct HGTransform {} *x_5_1_2; int x_5_1_3; } x5[8]; struct vector<DepthBufferManager *, std::__1::allocator<DepthBufferManager *> > { struct DepthBufferManager {} **x_6_1_1; struct DepthBufferManager {} **x_6_1_2; struct __compressed_pair<DepthBufferManager **, std::__1::allocator<DepthBufferManager *> > { struct DepthBufferManager {} **x_3_2_1; } x_6_1_3; } x6; struct vector<HGExecutionUnit *, std::__1::allocator<HGExecutionUnit *> > { struct HGExecutionUnit {} **x_7_1_1; struct HGExecutionUnit {} **x_7_1_2; struct __compressed_pair<HGExecutionUnit **, std::__1::allocator<HGExecutionUnit *> > { struct HGExecutionUnit {} **x_3_2_1; } x_7_1_3; } x7; struct HGExecutionData {} *x8; struct HGSyncData {} *x9; struct _opaque_pthread_rwlock_t { long long x_10_1_1; BOOL x_10_1_2[192]; } x10; struct _opaque_pthread_mutex_t { long long x_11_1_1; BOOL x_11_1_2[56]; } x11; }*)arg4;
 - (id)projectPath;
 - (id)projectURL;
 - (id)publishedParams;
 - (void)releaseResources;
 - (bool)renderCachingCannotNotBeEnabled:(bool)arg1 isTextRenderingDisabled:(bool)arg2 isAtPosterFrame:(bool)arg3 hasAdditionalScale:(bool)arg4 hasTransformAnimation:(bool)arg5;
-- (void)resetToDefaultTranscription;
 - (void)resetToDefaultTranscriptionForLocaleID:(id)arg1;
 - (bool)resourcesAreReady;
 - (void)setBuildInEnabled:(bool)arg1;
@@ -198,9 +199,11 @@
 - (void)setForceDisableLoop:(bool)arg1;
 - (void)setIsFrontFacingCamera:(bool)arg1;
 - (void)setLoopTime:(struct FigTime { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; })arg1;
+- (void)setMaskPoints:(id)arg1;
 - (void)setParametersThatInvalidateCache:(id)arg1;
 - (void)setQuaternion:(double)arg1 :(double)arg2 :(double)arg3 :(double)arg4;
 - (void)setRollRadians:(double)arg1;
+- (void)setSketchStrokes:(id)arg1;
 - (void)setTopLevelGroupTransform:(id)arg1;
 - (void)setTopLevelGroupTransform_NoLock:(id)arg1;
 - (void)setTopLevelOpacity:(double)arg1;
@@ -209,6 +212,7 @@
 - (void)setupTitleParameters:(id)arg1;
 - (void)setupTranscriptionParameters:(id)arg1;
 - (void)setupTransitionParameters:(id)arg1;
+- (bool)shouldDisableWordFadeOut;
 - (bool)shouldRenderPreviewAtPosterTime;
 - (void)storeDefaultStrings;
 - (bool)supportsExtendedRangeInputs;

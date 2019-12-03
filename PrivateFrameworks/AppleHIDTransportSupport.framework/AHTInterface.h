@@ -26,6 +26,7 @@
 - (unsigned char)interfaceID;
 - (id)name;
 - (bool)open;
+- (unsigned long long)registryID;
 - (bool)reset;
 - (unsigned int)service;
 - (void)setConnect:(unsigned int)arg1;

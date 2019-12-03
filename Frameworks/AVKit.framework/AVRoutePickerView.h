@@ -25,12 +25,14 @@
 @property (nonatomic, retain) UIColor *activeTintColor;
 @property (nonatomic) <AVRoutePickerViewDelegate> *delegate;
 @property (nonatomic, copy) NSString *overrideRoutingContextUID;
+@property (nonatomic) bool prioritizesVideoDevices;
 @property (nonatomic) long long routePickerButtonStyle;
 
 - (void).cxx_destruct;
 - (void)_createOrUpdateRoutePickerButton;
 - (id)_defaultActiveTintColor;
 - (bool)_isAirPlayActive;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_normalizedRectInWindow;
 - (void)_registerNotifications;
 - (void)_routePickerButtonTapped:(id)arg1;
 - (void)_routePickerButtonTouchDown:(id)arg1;

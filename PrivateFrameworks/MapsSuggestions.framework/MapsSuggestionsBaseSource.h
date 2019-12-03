@@ -18,11 +18,12 @@
 + (bool)isEnabled;
 
 - (void).cxx_destruct;
-- (unsigned long long)addOrUpdateMySuggestionEntries:(struct NSArray { Class x1; }*)arg1 deleteMissing:(bool)arg2;
+- (unsigned long long)addOrUpdateMySuggestionEntries:(struct NSArray { Class x1; }*)arg1;
 - (bool)canProduceEntriesOfType:(long long)arg1;
-- (id)currentBestLocation;
 - (id)delegate;
-- (unsigned long long)deleteMyEntries:(struct NSArray { Class x1; }*)arg1;
+- (void)feedbackForContact:(id)arg1 action:(long long)arg2;
+- (void)feedbackForEntry:(id)arg1 action:(long long)arg2;
+- (void)feedbackForMapItem:(id)arg1 action:(long long)arg2;
 - (id)initWithDelegate:(id)arg1;
 - (id)initWithDelegate:(id)arg1 name:(struct NSString { Class x1; }*)arg2;
 - (bool)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(id /* block */)arg3;

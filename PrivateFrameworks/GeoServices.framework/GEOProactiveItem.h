@@ -6,14 +6,14 @@
     bool  _deleted;
     bool  _edited;
     struct { 
-        unsigned int proactiveItemType : 1; 
-        unsigned int timeSinceStart : 1; 
-        unsigned int deleted : 1; 
-        unsigned int edited : 1; 
-        unsigned int shared : 1; 
-        unsigned int tapped : 1; 
-        unsigned int visible : 1; 
-    }  _has;
+        unsigned int has_proactiveItemType : 1; 
+        unsigned int has_timeSinceStart : 1; 
+        unsigned int has_deleted : 1; 
+        unsigned int has_edited : 1; 
+        unsigned int has_shared : 1; 
+        unsigned int has_tapped : 1; 
+        unsigned int has_visible : 1; 
+    }  _flags;
     int  _proactiveItemType;
     bool  _shared;
     bool  _tapped;
@@ -36,6 +36,8 @@
 @property (nonatomic) int timeSinceStart;
 @property (nonatomic) bool visible;
 
++ (bool)isValid:(id)arg1;
+
 - (int)StringAsProactiveItemType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -55,6 +57,7 @@
 - (void)mergeFrom:(id)arg1;
 - (int)proactiveItemType;
 - (id)proactiveItemTypeAsString:(int)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setDeleted:(bool)arg1;
 - (void)setEdited:(bool)arg1;

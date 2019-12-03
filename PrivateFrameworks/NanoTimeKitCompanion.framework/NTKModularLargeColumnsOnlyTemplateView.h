@@ -14,10 +14,7 @@
     UIView<NTKComplicationImageView> * _row3ImageView;
 }
 
-@property (nonatomic, retain) CLKComplicationTemplateModularLargeColumns *complicationTemplate;
-
 + (bool)handlesComplicationTemplate:(id)arg1;
-+ (void)load;
 
 - (void).cxx_destruct;
 - (void)_enumerateColumnRowsWithBlock:(id /* block */)arg1;

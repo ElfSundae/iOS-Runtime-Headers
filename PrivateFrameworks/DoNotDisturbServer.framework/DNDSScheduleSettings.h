@@ -8,6 +8,7 @@
 
 @property (nonatomic, readonly, copy) NSDate *creationDate;
 
++ (id)defaultScheduleSettings;
 + (id)settingsForRecord:(id)arg1;
 + (id)settingsWithClientSettings:(id)arg1 creationDate:(id)arg2;
 + (bool)supportsSecureCoding;

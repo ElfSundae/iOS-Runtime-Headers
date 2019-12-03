@@ -2,72 +2,85 @@
    Image: /System/Library/Frameworks/Photos.framework/Photos
  */
 
-@interface PHAssetResource : NSObject {
+@interface PHAssetResource : NSObject <PHCPLAssetResource> {
     NSString * _assetLocalIdentifier;
-    bool  _derivative;
+    NSManagedObjectID * _assetObjectID;
+    <PLResourceIdentity> * _backingResourceIdentity;
+    unsigned long long  _cplResourceType;
+    bool  _current;
     unsigned long long  _fileSize;
-    NSURL * _fileURL;
     bool  _locallyAvailable;
+    unsigned int  _orientation;
     NSString * _originalFilename;
     PHPhotoLibrary * _photoLibrary;
     long long  _pixelHeight;
     long long  _pixelWidth;
     id /* block */  _privateFileLoader;
     NSURL * _privateFileURL;
-    long long  _resourceType;
+    bool  _trashed;
+    NSDate * _trashedDate;
+    long long  _type;
     NSString * _uniformTypeIdentifier;
 }
 
-@property (setter=_setAssetLocalIdentifier:, nonatomic, copy) NSString *assetLocalIdentifier;
-@property (getter=isDerivative, nonatomic, readonly) bool derivative;
-@property (setter=_setFileSize:, nonatomic) unsigned long long fileSize;
-@property (setter=_setFileURL:, nonatomic, retain) NSURL *fileURL;
-@property (getter=isLibraryAssetResource, nonatomic, readonly) bool libraryAssetResource;
-@property (getter=isLocallyAvailable, setter=_setIsLocallyAvailable:, nonatomic) bool locallyAvailable;
+@property (nonatomic, readonly) long long analysisType;
+@property (nonatomic, readonly, copy) NSString *assetLocalIdentifier;
+@property (nonatomic, readonly) NSManagedObjectID *assetObjectID;
+@property (nonatomic, readonly) <PLResourceIdentity> *backingResourceIdentity;
+@property (nonatomic) unsigned long long cplResourceType;
+@property (getter=isCurrent, nonatomic, readonly) bool current;
+@property (nonatomic, readonly) unsigned long long fileSize;
+@property (getter=isLocallyAvailable, nonatomic, readonly) bool locallyAvailable;
+@property (getter=isLocallyAvailable, nonatomic) bool locallyAvailable;
 @property (nonatomic, readonly) bool miro_isReallyLocallyAvailable;
-@property (setter=_setOriginalFilename:, nonatomic, copy) NSString *originalFilename;
-@property (setter=_setPhotoLibrary:, nonatomic, retain) PHPhotoLibrary *photoLibrary;
-@property (setter=_setPixelHeight:, nonatomic) long long pixelHeight;
-@property (setter=_setPixelWidth:, nonatomic) long long pixelWidth;
-@property (setter=_setPrivateFileLoader:, nonatomic, copy) id /* block */ privateFileLoader;
-@property (setter=_setPrivateFileURL:, nonatomic, retain) NSURL *privateFileURL;
+@property (nonatomic) unsigned int orientation;
+@property (nonatomic, readonly, copy) NSString *originalFilename;
+@property (nonatomic, readonly) PHPhotoLibrary *photoLibrary;
+@property (nonatomic, readonly) long long pixelHeight;
+@property (nonatomic, readonly) long long pixelWidth;
+@property (nonatomic, readonly, copy) id /* block */ privateFileLoader;
+@property (nonatomic, readonly) NSURL *privateFileURL;
+@property (nonatomic, retain) NSURL *privateFileURL;
+@property (getter=isTrashed, nonatomic, readonly) bool trashed;
+@property (nonatomic, readonly) NSDate *trashedDate;
 @property (nonatomic, readonly) long long type;
-@property (setter=_setUniformTypeIdentifier:, nonatomic, copy) NSString *uniformTypeIdentifier;
+@property (nonatomic, readonly, copy) NSString *uniformTypeIdentifier;
 
 // Image: /System/Library/Frameworks/Photos.framework/Photos
 
-+ (id)_managedAssetWithRelationshipsPrefetchedForAsset:(id)arg1 inLibrary:(id)arg2 error:(id*)arg3;
++ (id)assetResourceForAsset:(id)arg1 qualityClass:(id)arg2;
 + (id)assetResourcesForAsset:(id)arg1;
 + (id)assetResourcesForAsset:(id)arg1 includeDerivatives:(bool)arg2;
++ (id)assetResourcesForAsset:(id)arg1 includeDerivatives:(bool)arg2 includeMetadata:(bool)arg3;
++ (id)assetResourcesForAsset:(id)arg1 includeDerivatives:(bool)arg2 includeMetadata:(bool)arg3 includeAdjustmentOverflowDataBlob:(bool)arg4;
 + (id)assetResourcesForLivePhoto:(id)arg1;
 
 - (void).cxx_destruct;
-- (void)_setAssetLocalIdentifier:(id)arg1;
-- (void)_setFileSize:(unsigned long long)arg1;
-- (void)_setFileURL:(id)arg1;
-- (void)_setIsLocallyAvailable:(bool)arg1;
-- (void)_setOriginalFilename:(id)arg1;
-- (void)_setPhotoLibrary:(id)arg1;
-- (void)_setPixelHeight:(long long)arg1;
-- (void)_setPixelWidth:(long long)arg1;
-- (void)_setPrivateFileLoader:(id /* block */)arg1;
-- (void)_setPrivateFileURL:(id)arg1;
-- (void)_setUniformTypeIdentifier:(id)arg1;
 - (long long)analysisType;
 - (id)assetLocalIdentifier;
+- (id)assetObjectID;
+- (id)backingResourceIdentity;
+- (unsigned long long)cplResourceType;
+- (id)debugDescription;
 - (id)description;
 - (unsigned long long)fileSize;
-- (id)fileURL;
-- (id)initWithResourceType:(long long)arg1;
-- (bool)isDerivative;
-- (bool)isLibraryAssetResource;
+- (id)initWithResource:(id)arg1 asset:(id)arg2;
+- (id)initWithType:(long long)arg1 livePhoto:(id)arg2;
+- (bool)isCurrent;
 - (bool)isLocallyAvailable;
+- (bool)isTrashed;
+- (unsigned int)orientation;
 - (id)originalFilename;
 - (id)photoLibrary;
 - (long long)pixelHeight;
 - (long long)pixelWidth;
 - (id /* block */)privateFileLoader;
 - (id)privateFileURL;
+- (void)setCplResourceType:(unsigned long long)arg1;
+- (void)setLocallyAvailable:(bool)arg1;
+- (void)setOrientation:(unsigned int)arg1;
+- (void)setPrivateFileURL:(id)arg1;
+- (id)trashedDate;
 - (long long)type;
 - (id)uniformTypeIdentifier;
 
@@ -85,7 +98,8 @@
 - (bool)vcp_isLocallyAvailable;
 - (bool)vcp_isMovie;
 - (bool)vcp_isPhoto;
+- (bool)vcp_isPhotoResourceUsable:(bool)arg1;
+- (bool)vcp_isVideoResourceUsable:(bool)arg1;
 - (struct CGSize { double x1; double x2; })vcp_size;
-- (id)vcp_url;
 
 @end

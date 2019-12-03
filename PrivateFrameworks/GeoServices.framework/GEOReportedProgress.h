@@ -5,7 +5,7 @@
 @interface GEOReportedProgress : NSObject {
     id /* block */  _cancellationHandler;
     NSProgress * _internalProgress;
-    NSObject<OS_dispatch_queue> * _isolationQueue;
+    geo_isolater * _isolater;
     NSProgress * _progress;
 }
 
@@ -13,7 +13,7 @@
 @property (getter=isCancelled, readonly) bool cancelled;
 @property long long completedUnitCount;
 @property (copy) NSString *kind;
-@property (readonly) NSProgress *progress;
+@property (nonatomic, readonly) NSProgress *progress;
 @property long long totalUnitCount;
 
 + (id)progressWithTotalUnitCount:(long long)arg1;

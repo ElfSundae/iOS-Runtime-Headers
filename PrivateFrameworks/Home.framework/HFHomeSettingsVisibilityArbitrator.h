@@ -20,6 +20,8 @@
 @property (nonatomic) unsigned long long visibilityState;
 @property (nonatomic, copy) id /* block */ visibilityStateChangeHandler;
 
++ (void)initialize;
+
 - (void).cxx_destruct;
 - (void)_queryHomeAppInstallStateWithCompletion:(id /* block */)arg1;
 - (void)_reloadVisibilityStateIncludingInstallState:(bool)arg1;

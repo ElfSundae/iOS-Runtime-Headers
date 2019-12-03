@@ -13,6 +13,7 @@
 @property (nonatomic) bool expectsMediaDataInRealTime;
 @property (readonly) unsigned long long hash;
 @property (getter=_helper, setter=_setHelper:, nonatomic, retain) AVAssetWriterInputHelper *helper;
+@property (getter=_markAsFinishedCalled, readonly) bool markAsFinishedCalled;
 @property (nonatomic, readonly) NSString *mediaType;
 @property (nonatomic, copy) NSArray *metadata;
 @property (readonly) long long numberOfAppendFailures;
@@ -39,6 +40,7 @@
 - (void)_didStartInitialSession;
 - (id)_helper;
 - (bool)_isAttachedToAdaptor;
+- (bool)_markAsFinishedCalled;
 - (id)_outputSettingsObject;
 - (struct __CVPixelBufferPool { }*)_pixelBufferPool;
 - (bool)_prepareForWritingWithFigAssetWriter:(struct OpaqueFigAssetWriter { }*)arg1 mediaFileType:(id)arg2 error:(id*)arg3;
@@ -70,7 +72,6 @@
 - (id)description;
 - (bool)expectsMediaDataInRealTime;
 - (id)extendedLanguageTag;
-- (void)finalize;
 - (id)init;
 - (id)initWithMediaType:(id)arg1 outputSettings:(id)arg2;
 - (id)initWithMediaType:(id)arg1 outputSettings:(id)arg2 sourceFormatHint:(struct opaqueCMFormatDescription { }*)arg3;
@@ -117,6 +118,7 @@
 - (void)setTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg1;
 - (void)setWritesMediaDataToBeginningOfFile:(bool)arg1;
 - (const struct opaqueCMFormatDescription { }*)sourceFormatHint;
+- (void)stopRequestingMediaData;
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })transform;
 - (bool)writesMediaDataToBeginningOfFile;
 

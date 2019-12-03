@@ -5,7 +5,7 @@
 @interface PLVideoRemaker : NSObject {
     PFVideoAVObjectBuilder * __videoAVObjectBuilder;
     NSString * _customAccessibilityLabel;
-    id  _delegate;
+    NSObject<PLVideoRemakerDelegate> * _delegate;
     double  _duration;
     NSString * _exportPresetOverride;
     AVAssetExportSession * _exportSession;
@@ -22,6 +22,7 @@
 
 @property (nonatomic, readonly, retain) PFVideoAVObjectBuilder *_videoAVObjectBuilder;
 @property (nonatomic, copy) NSString *customAccessibilityLabel;
+@property (nonatomic) NSObject<PLVideoRemakerDelegate> *delegate;
 @property (nonatomic, readonly) NSString *exportPreset;
 @property (nonatomic, copy) NSString *exportPresetOverride;
 @property (nonatomic, copy) id /* block */ progressHandler;
@@ -33,6 +34,7 @@
 + (int)getSDRemakerModeForMode:(int)arg1;
 + (double)maximumDurationForTrimMode:(int)arg1;
 
+- (void).cxx_destruct;
 - (void)_didEndRemakingWithTemporaryPath:(id)arg1;
 - (void)_exportCompletedWithSuccess:(bool)arg1;
 - (id)_fileFormatForURL:(id)arg1;

@@ -9,8 +9,4 @@
 - (NSString *)subtitle;
 - (NSString *)title;
 
-@optional
-
-- (bool)hasMultipleLocations;
-
 @end

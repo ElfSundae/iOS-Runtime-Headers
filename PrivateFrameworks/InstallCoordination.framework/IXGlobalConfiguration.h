@@ -22,7 +22,7 @@
 
 - (void).cxx_destruct;
 - (id)_systemContainerURLWithError:(id*)arg1;
-- (bool)createDirectories;
+- (void)createDirectories;
 - (id)dataDirectoryAbortingOnError;
 - (id)dataDirectoryWithError:(id*)arg1;
 - (id)frameworkURL;

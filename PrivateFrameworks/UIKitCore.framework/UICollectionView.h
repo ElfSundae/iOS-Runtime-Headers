@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
  */
 
-@interface UICollectionView : UIScrollView <UIDataSourceTranslating, _UIDataSourceBackedView, _UIHorizontalIndexTitleBarDelegate, _UIKeyboardAutoRespondingScrollView> {
+@interface UICollectionView : UIScrollView <UIContextMenuInteractionDelegate, UIDataSourceTranslating, _UIDataSourceBackedView, _UIHorizontalIndexTitleBarDelegate, _UIKeyboardAutoRespondingScrollView> {
     NSTimer * _autoscrollTimer;
     UIView * _backgroundView;
     NSIndexPath * _cancellingToIndexPath;
@@ -47,6 +47,15 @@
         unsigned int delegateWillLayoutCellUsingTemplateLayoutCell : 1; 
         unsigned int delegateHorizontalIndexTitleBarSelectedEntry : 1; 
         unsigned int delegateWasNonNil : 1; 
+        unsigned int delegateContextMenuConfigurationForItemAtIndexPath : 1; 
+        unsigned int delegateContextMenuPreviewForHighlighting : 1; 
+        unsigned int delegateContextMenuPreviewForDismissing : 1; 
+        unsigned int delegateContextMenuwillPerformPreviewAction : 1; 
+        unsigned int delegateContextMenuWillCommitMenuWithAnimator : 1; 
+        unsigned int delegateWillDisplayContextMenu : 1; 
+        unsigned int delegateWillEndContextMenuInteraction : 1; 
+        unsigned int delegateStyleForContextMenu : 1; 
+        unsigned int delegateAccessoriesForContextMenu : 1; 
         unsigned int dataSourceNumberOfSections : 1; 
         unsigned int dataSourceViewForSupplementaryElement : 1; 
         unsigned int dataSourceCanMoveItemAtIndexPathSPI : 1; 
@@ -59,15 +68,18 @@
         unsigned int dataSourceIndexTitles : 1; 
         unsigned int dataSourceIndexPathForIndex : 1; 
         unsigned int dataSourceWasNonNil : 1; 
+        unsigned int dataSourceIsDiffableDataSource : 1; 
         unsigned int prefetchDataSourcePrefetchItemsAtIndexPaths : 1; 
         unsigned int prefetchDataSourceCancelPrefetchingForItemsAtIndexPaths : 1; 
         unsigned int prefetchDataSourceWasNonNil : 1; 
         unsigned int reloadSkippedDuringSuspension : 1; 
         unsigned int scheduledUpdateVisibleCells : 1; 
+        unsigned int allowDisablingContentOffsetAdjustmentForContentSizeChange : 1; 
         unsigned int scheduledUpdateVisibleCellLayoutAttributes : 1; 
         unsigned int allowsSelection : 1; 
         unsigned int allowsMultipleSelection : 1; 
         unsigned int allowsSelectionDuringEditing : 1; 
+        unsigned int allowsUserInitiatedMultipleSelection : 1; 
         unsigned int allowsMultipleSelectionDuringEditing : 1; 
         unsigned int displaysHorizontalIndexTitleBar : 1; 
         unsigned int fadeCellsForBoundsChange : 1; 
@@ -100,9 +112,15 @@
         unsigned int allowsVisibleCellUpdatesDuringUpdateAnimations : 1; 
         unsigned int isCompletingInteractiveMovement : 1; 
         unsigned int isRegisteredForGeometryChanges : 1; 
+        unsigned int generatingDescriptionWithDataSource : 1; 
+        unsigned int skipAttributesApplication : 1; 
+        unsigned int isApplyingDiffableUpdate : 1; 
+        unsigned int isAnimatingInteractiveMovementCompletion : 1; 
+        unsigned int shouldResetInitialLayoutOnDataSourceChange : 1; 
     }  _collectionViewFlags;
     long long  _containerScrollViewVisitationCount;
     UIFocusContainerGuide * _contentFocusContainerGuide;
+    UIContextMenuInteraction * _contextMenuInteraction;
     struct CGPoint { 
         double x; 
         double y; 
@@ -113,6 +131,7 @@
     UICollectionViewCell * _currentPromiseFulfillmentCell;
     UITouch * _currentTouch;
     UICollectionViewUpdate * _currentUpdate;
+    NSSet * _currentlyAnimatingReorderedIndexPaths;
     <UICollectionViewDataSource_Private> * _dataSource;
     struct UIEdgeInsets { 
         double top; 
@@ -147,6 +166,7 @@
         double x; 
         double y; 
     }  _horizontalIndexTitleBarOffset;
+    _UIIndexPathIdentityTracker * _identityTracker;
     NSIndexPath * _indexPathOfFocusedCellBeforeFocusingOnHorizontalIndexTitleBar;
     NSMutableSet * _indexPathsForHighlightedItems;
     NSMutableSet * _indexPathsForSelectedItems;
@@ -166,12 +186,15 @@
     }  _lastLayoutOffset;
     UICollectionViewLayout * _layout;
     NSMutableArray * _moveItems;
+    _UICollectionViewMultiSelectController * _multiSelectController;
     id /* block */  _navigationCompletion;
     UIView * _newContentView;
     UICollectionViewLayout * _nextLayoutForInteractiveTranstion;
     NSHashTable * _notifiedDisplayedCells;
     NSArray * _originalDeleteItems;
     NSArray * _originalInsertItems;
+    _UICollectionViewOrthogonalScrollerSectionController * _orthogonalScrollerController;
+    NSMutableDictionary * _orthogonalSectionPrefetchingContexts;
     NSMutableSet * _pendingDeselectionIndexPaths;
     NSIndexPath * _pendingSelectionIndexPath;
     long long  _performUsingPresentationValuesRefCount;
@@ -210,6 +233,7 @@
         double x; 
         double y; 
     }  _rotationBoundsOffset;
+    bool  _searchFullPageOnFocusUpdate;
     _UIFocusFastScrollingIndexBarEntry * _selectedIndexTitleEntry;
     bool  _shouldAccumulateTrackedLayoutValues;
     double  _startTimeStamp;
@@ -254,6 +278,7 @@
 @property (nonatomic) bool cellRegistered;
 @property (getter=_collectionViewData, nonatomic, readonly) UICollectionViewData *collectionViewData;
 @property (nonatomic, retain) UICollectionViewLayout *collectionViewLayout;
+@property (nonatomic, readonly) UIContextMenuInteraction *contextMenuInteraction;
 @property (getter=_currentPromiseFulfillmentCell, setter=_setCurrentPromiseFulfillmentCell:, nonatomic, retain) UICollectionViewCell *currentPromiseFulfillmentCell;
 @property (getter=_currentTouch, setter=_setCurrentTouch:, nonatomic, retain) UITouch *currentTouch;
 @property (getter=_currentUpdate, nonatomic, readonly) UICollectionViewUpdate *currentUpdate;
@@ -276,6 +301,8 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool headersRegistered;
 @property (getter=_horizontalIndexTitleBar, setter=_setHorizontalIndexTitleBar:, nonatomic, retain) _UIHorizontalIndexTitleBar *horizontalIndexTitleBar;
+@property (nonatomic, readonly) NSIndexPath *ic_firstItemIndexPath;
+@property (nonatomic, readonly) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } ic_firstSelectedItemFrame;
 @property (nonatomic, retain) NSIndexPath *indexPathOfFocusedCellBeforeFocusingOnHorizontalIndexTitleBar;
 @property (nonatomic, readonly) NSArray *indexPathsForSelectedItems;
 @property (nonatomic, readonly) NSArray *indexPathsForVisibleItems;
@@ -290,6 +317,7 @@
 @property (getter=_reorderedItems, nonatomic, readonly) NSArray *reorderedItems;
 @property (nonatomic) long long reorderingCadence;
 @property (getter=_reorderingTargetPosition, nonatomic, readonly) struct CGPoint { double x1; double x2; } reorderingTargetPosition;
+@property (getter=_searchFullPageOnFocusUpdate, setter=_setSearchFullPageOnFocusUpdate:, nonatomic) bool searchFullPageOnFocusUpdate;
 @property (nonatomic, retain) _UIFocusFastScrollingIndexBarEntry *selectedIndexTitleEntry;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSArray *visibleCells;
@@ -302,7 +330,9 @@
 - (void).cxx_destruct;
 - (void)_accessibilitySetInterfaceStyleIntent:(unsigned long long)arg1;
 - (void)_addContainerScrollViewForNotifications:(id)arg1;
+- (void)_addControlledSubview:(id)arg1;
 - (void)_addControlledSubview:(id)arg1 atZIndex:(long long)arg2 forced:(bool)arg3;
+- (void)_addControlledSubview:(id)arg1 atZIndex:(long long)arg2 forced:(bool)arg3 initialAttributes:(id)arg4;
 - (void)_addEntriesFromDictionary:(id)arg1 inDictionary:(id)arg2;
 - (void)_addEntriesFromDictionary:(id)arg1 inDictionary:(id)arg2 andSet:(id)arg3;
 - (void)_addItemAtIndexPathToActiveDragSession:(id)arg1;
@@ -345,10 +375,14 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_computeFutureVisibleBoundsForPrefetchVelocity:(struct CGVector { double x1; double x2; })arg1 visibleBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_computePrefetchCacheValidationBoundsForPrefetchVelocity:(struct CGVector { double x1; double x2; })arg1 visibleBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (void)_computePrefetchCandidatesForVelocity:(struct CGVector { double x1; double x2; })arg1 notifyDelegateIfNeeded:(bool)arg2;
-- (void)_computePrefetchCandidatesForVisibleBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 futureVisibleBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 prefetchVector:(struct CGVector { double x1; double x2; })arg3 notifyDelegateIfNeeded:(bool)arg4;
+- (id)_computePrefetchCandidatesForVisibleBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 futureVisibleBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 prefetchVector:(struct CGVector { double x1; double x2; })arg3 notifyDelegateIfNeeded:(bool)arg4;
+- (void)_configureContextMenuInteractionIfNeeded;
 - (id)_contentFocusContainerGuide;
 - (struct CGPoint { double x1; double x2; })_contentOffsetForNewFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 oldFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 newContentSize:(struct CGSize { double x1; double x2; })arg3 andOldContentSize:(struct CGSize { double x1; double x2; })arg4;
 - (struct CGPoint { double x1; double x2; })_contentOffsetForScrollingToItemAtIndexPath:(id)arg1 atScrollPosition:(unsigned long long)arg2;
+- (struct CGPoint { double x1; double x2; })_contentOffsetForScrollingToItemAtIndexPath:(id)arg1 atScrollPosition:(unsigned long long)arg2 itemFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3 containingScrollView:(id)arg4;
+- (id)_contextMenuInteraction:(id)arg1 accessoriesForMenuWithConfiguration:(id)arg2 layoutAnchor:(struct { unsigned long long x1; unsigned long long x2; })arg3;
+- (id)_contextMenuInteraction:(id)arg1 styleForMenuWithConfiguration:(id)arg2;
 - (id)_createPreparedCellForItemAtIndexPath:(id)arg1 withLayoutAttributes:(id)arg2 applyAttributes:(bool)arg3;
 - (id)_createPreparedCellForItemAtIndexPath:(id)arg1 withLayoutAttributes:(id)arg2 applyAttributes:(bool)arg3 isFocused:(bool)arg4 notify:(bool)arg5;
 - (id)_createPreparedSupplementaryViewForElementOfKind:(id)arg1 atIndexPath:(id)arg2 withLayoutAttributes:(id)arg3 applyAttributes:(bool)arg4;
@@ -356,6 +390,7 @@
 - (id)_currentPromiseFulfillmentCell;
 - (id)_currentTouch;
 - (id)_currentUpdate;
+- (id)_customScrollAnimation;
 - (id)_dataSourceActual;
 - (bool)_dataSourceImplementsNumberOfSections;
 - (id)_dataSourceIndexPathForPresentationIndexPath:(id)arg1;
@@ -368,7 +403,9 @@
 - (bool)_dataSourceSupportsReordering;
 - (void)_decrementSuspendLayoutCount;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_defaultLayoutMargins;
+- (id)_defaultTargetedPreviewForIdentifier:(id)arg1;
 - (id)_delegateActual;
+- (bool)_delegateAllowsSelectingItemAtIndexPath:(id)arg1;
 - (id)_delegatePreferredIndexPath;
 - (id)_delegateProxy;
 - (struct CGPoint { double x1; double x2; })_delegateTargetOffsetForProposedContentOffset:(struct CGPoint { double x1; double x2; })arg1;
@@ -394,6 +431,8 @@
 - (id)_dropDelegateActual;
 - (id)_dropDelegateProxy;
 - (id)_dynamicAnimationsForTrackValues;
+- (unsigned long long)_edgesPropagatingSafeAreaInsetsToDescendants;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_effectiveVisibleBoundsForBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)_endInteractiveMovementWithCompletion:(id /* block */)arg1;
 - (void)_endItemAnimationsWithInvalidationContext:(id)arg1;
 - (void)_endItemAnimationsWithInvalidationContext:(id)arg1 tentativelyForReordering:(bool)arg2;
@@ -410,6 +449,7 @@
 - (id)_focusFastScrollingDestinationItemForIndexEntry:(id)arg1;
 - (id)_focusFastScrollingIndexBarEntries;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_focusFastScrollingIndexBarInsets;
+- (void)_focusMovementDidFailNotification:(id)arg1;
 - (id)_focusedCell;
 - (id)_focusedCellElementKind;
 - (id)_focusedCellIndexPath;
@@ -430,6 +470,7 @@
 - (void)_highlightSpringLoadedItemAtIndexPath:(id)arg1;
 - (id)_horizontalIndexTitleBar;
 - (struct CGPoint { double x1; double x2; })_horizontalIndexTitleBarOffset;
+- (id)_identityTracker:(bool)arg1;
 - (void)_incrementSuspendLayoutCount;
 - (id)_indexBarEntries;
 - (id)_indexPathAfterShadowUpdatesForIndexPath:(id)arg1;
@@ -463,6 +504,7 @@
 - (bool)_itemIndexPathIsReordered:(id)arg1;
 - (bool)_keepsFirstResponderVisibleOnBoundsChange;
 - (id)_keysForObject:(id)arg1 inDictionary:(id)arg2;
+- (id)_layoutAttributesForFailedMovementWithHeading:(unsigned long long)arg1;
 - (void)_managedSubviewAdded:(id)arg1;
 - (id)_managedSubviewForView:(id)arg1;
 - (id)_managedViews;
@@ -475,10 +517,13 @@
 - (long long)_numberOfSections;
 - (id)_objectInDictionary:(id)arg1 forKind:(id)arg2 indexPath:(id)arg3;
 - (void)_offsetPinnedReorderedItemsWithCurrentContentOffset:(struct CGPoint { double x1; double x2; })arg1;
+- (id)_orthogonalScrollerController;
+- (void)_orthogonalScrollingSection:(long long)arg1 didScrollToOffset:(struct CGPoint { double x1; double x2; })arg2;
 - (void)_performAction:(SEL)arg1 forCell:(id)arg2 sender:(id)arg3;
 - (void)_performBatchUpdates:(id /* block */)arg1 completion:(id /* block */)arg2 invalidationContext:(id)arg3;
 - (void)_performBatchUpdates:(id /* block */)arg1 completion:(id /* block */)arg2 invalidationContext:(id)arg3 tentativelyForReordering:(bool)arg4;
 - (void)_performBatchUpdates:(id /* block */)arg1 completion:(id /* block */)arg2 invalidationContext:(id)arg3 tentativelyForReordering:(bool)arg4 animator:(id)arg5;
+- (void)_performDiffableUpdate:(id /* block */)arg1;
 - (void)_performReloadPrefetchIfNeeded;
 - (id)_performShadowUpdates:(id /* block */)arg1;
 - (void)_performUpdate:(id)arg1;
@@ -488,8 +533,9 @@
 - (id)_pivotForTransitionFromLayout:(id)arg1 toLayout:(id)arg2;
 - (id)_prefetchDataSourceActual;
 - (id)_prefetchDataSourceProxy;
-- (unsigned long long)_prefetchItemsForVelocity:(struct CGVector { double x1; double x2; })arg1 maxItemsToPrefetch:(unsigned long long)arg2;
-- (unsigned long long)_prefetchItemsForVelocity:(struct CGVector { double x1; double x2; })arg1 maxItemsToPrefetch:(unsigned long long)arg2 invalidateCandidatesOnDirectionChanges:(bool)arg3;
+- (unsigned long long)_prefetchItemsForPrefetchingContext:(id)arg1 maxItemsToPrefetch:(unsigned long long)arg2;
+- (id)_prefetchingContextForOrthogonalScrollingSection:(long long)arg1;
+- (id)_prefetchingContextForVisibleBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 attributes:(id)arg2 notify:(bool)arg3;
 - (bool)_prefetchingEnabledDefault;
 - (void)_prepareLayoutForUpdates;
 - (void)_prepareViewForUse:(id)arg1 withElementCategory:(unsigned long long)arg2 elementKind:(id)arg3 reuseIdentifier:(id)arg4 indexPath:(id)arg5;
@@ -499,6 +545,7 @@
 - (void)_pruneCachedPrefetchViewsForCacheValidationBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)_pruneCachedPrefetchViewsForVelocity:(struct CGVector { double x1; double x2; })arg1;
 - (void)_purgeReuseQueues;
+- (void)_recomputePreferredAttributesForVisibleItemsIfNeeded;
 - (void)_registerForGeometryChangesIfInSupeview;
 - (void)_registeredSupplementaryViewKind:(id)arg1;
 - (void)_reloadDataIfNeeded;
@@ -507,32 +554,39 @@
 - (void)_removeAnyAncestorScrollViewNotifications;
 - (bool)_removeCellFromVisibleCells:(id)arg1;
 - (void)_removeContainerScrollViewForNotifications:(id)arg1;
+- (void)_removeUntrackedAuxillaryViewsForBeforeVisibleViewsDict:(id)arg1 afterVisibleViewsDict:(id)arg2 withTrackingViewAnimations:(id)arg3;
 - (id)_reorderFeedbackGenerator;
 - (id)_reorderPrefetchCandidates:(id)arg1 forPrefetchVelocity:(struct CGVector { double x1; double x2; })arg2 visibleBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg3;
 - (id)_reorderedItemForView:(id)arg1;
 - (id)_reorderedItems;
 - (long long)_reorderingCadence;
 - (id)_reorderingDestinationIndexPath;
+- (id)_reorderingDestinationIndexPaths;
 - (struct CGPoint { double x1; double x2; })_reorderingTargetPosition;
 - (void)_resetContainerScrollViewVisitationCount;
 - (void)_resetCurrentPrefetchContext;
 - (void)_resetPrefetchState;
 - (void)_resetPrefetchedCachedCells;
+- (void)_resetPrefetchingContext:(id)arg1;
 - (void)_resumeReloads;
+- (id)_reusableViewWithoutAttributesForElementCategory:(unsigned long long)arg1 kind:(id)arg2 indexPath:(id)arg3;
 - (bool)_reuseCell:(id)arg1;
 - (bool)_reuseCell:(id)arg1 notifyDidEndDisplaying:(bool)arg2;
 - (id)_reuseDictionaryForCell:(bool)arg1;
 - (void)_reusePreviouslyFocusedManagedSubviewIfNeeded:(id)arg1;
 - (id)_reuseQueueForViewWithElementCategory:(unsigned long long)arg1 elementKind:(id)arg2 reuseIdentifier:(id)arg3;
+- (void)_reuseReusableViewIfNeeded:(id)arg1;
 - (void)_reuseSupplementaryView:(id)arg1;
 - (void)_scrollFirstResponderCellToVisible:(bool)arg1;
 - (void)_scrollToItemAtIndexPath:(id)arg1 atScrollPosition:(unsigned long long)arg2 animated:(bool)arg3;
 - (void)_scrollViewDidEndDraggingWithDeceleration:(bool)arg1;
 - (void)_scrollViewWillEndDraggingWithVelocity:(struct CGPoint { double x1; double x2; })arg1 targetContentOffset:(inout struct CGPoint { double x1; double x2; }*)arg2;
+- (bool)_searchFullPageOnFocusUpdate;
 - (id)_sectionIndexesAfterShadowUpdatesForSectionIndexes:(id)arg1;
 - (id)_sectionIndexesAfterShadowUpdatesForSectionIndexes:(id)arg1 allowingAppendingInserts:(bool)arg2;
 - (void)_selectAllSelectedItems;
 - (void)_selectItemAtIndexPath:(id)arg1 animated:(bool)arg2 scrollPosition:(unsigned long long)arg3 notifyDelegate:(bool)arg4;
+- (void)_selectItemAtIndexPath:(id)arg1 animated:(bool)arg2 scrollPosition:(unsigned long long)arg3 notifyDelegate:(bool)arg4 deselectPrevious:(bool)arg5;
 - (id)_selectableIndexPathForItemContainingHitView:(id)arg1;
 - (void)_setAllowsMultipleSelectionDuringEditing:(bool)arg1;
 - (void)_setAllowsSelectionDuringEditing:(bool)arg1;
@@ -560,11 +614,14 @@
 - (void)_setNavigationCompletion:(id /* block */)arg1;
 - (void)_setNeedsVisibleCellsUpdate:(bool)arg1 withLayoutAttributes:(bool)arg2;
 - (void)_setObject:(id)arg1 inDictionary:(id)arg2 forKind:(id)arg3 indexPath:(id)arg4;
+- (void)_setPrefetchingContext:(id)arg1 forOrthogonalScrollingSection:(long long)arg2;
 - (void)_setRemembersPreviouslyFocusedItem:(bool)arg1;
 - (void)_setReorderFeedbackGenerator:(id)arg1;
 - (void)_setReorderingCadence:(long long)arg1;
+- (void)_setSearchFullPageOnFocusUpdate:(bool)arg1;
 - (void)_setShouldDeriveVisibleBoundsFromContainingScrollView:(bool)arg1;
 - (void)_setShouldPrefetchCellsWhenPerformingReloadData:(bool)arg1;
+- (void)_setShouldResetInitialLayoutOnDataSourceChange:(bool)arg1;
 - (void)_setVisibleRectEdgeInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)_setVisibleView:(id)arg1 forLayoutAttributes:(id)arg2;
 - (void)_setupCellAnimations;
@@ -575,6 +632,7 @@
 - (bool)_shouldFadeCellsForBoundChangeWhileRotating;
 - (bool)_shouldPrefetchCells;
 - (bool)_shouldPrefetchCellsWhenPerformingReloadData;
+- (bool)_shouldResetInitialLayoutOnDataSourceChange;
 - (bool)_shouldScrollToContentBeginningInRightToLeft;
 - (bool)_shouldShowMenuForCell:(id)arg1;
 - (bool)_shouldSpringLoadItemAtIndexPath:(id)arg1 withContext:(id)arg2;
@@ -616,6 +674,7 @@
 - (void)_updateSections:(id)arg1 updateAction:(int)arg2;
 - (void)_updateTrackedLayoutValuesWith:(id)arg1;
 - (void)_updateTransitionWithProgress:(double)arg1;
+- (id)_updateTranslator;
 - (unsigned long long)_updateVisibleCellsNow:(bool)arg1;
 - (void)_updateWithItems:(id)arg1 tentativelyForReordering:(bool)arg2 animator:(id)arg3;
 - (void)_updateWithUpdates:(id)arg1 updateAction:(long long)arg2;
@@ -623,11 +682,11 @@
 - (id)_viewAnimationsForCurrentUpdate;
 - (id)_viewControllerToNotifyOnLayoutSubviews;
 - (bool)_viewIsReorderedCell:(id)arg1;
-- (bool)_visible;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_visibleBounds;
 - (id)_visibleCellForIndexPath:(id)arg1;
 - (id)_visibleDecorationViewOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (id)_visibleDecorationViewsOfKind:(id)arg1;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_visibleRectEdgeInsets;
 - (id)_visibleSupplementaryViewOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (id)_visibleSupplementaryViewOfKind:(id)arg1 atIndexPath:(id)arg2 isDecorationView:(bool)arg3;
 - (id)_visibleSupplementaryViewsOfKind:(id)arg1;
@@ -637,6 +696,7 @@
 - (id)_visibleViews;
 - (bool)allowsMultipleSelection;
 - (bool)allowsSelection;
+- (bool)allowsUserInitiatedMultipleSelection;
 - (id)backgroundView;
 - (bool)beginInteractiveMovementForItemAtIndexPath:(id)arg1;
 - (bool)canBeEdited;
@@ -646,6 +706,13 @@
 - (void)cancelInteractiveTransition;
 - (id)cellForItemAtIndexPath:(id)arg1;
 - (id)collectionViewLayout;
+- (id)contextMenuInteraction;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint { double x1; double x2; })arg2;
+- (id)contextMenuInteraction:(id)arg1 previewForDismissingMenuWithConfiguration:(id)arg2;
+- (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
+- (void)contextMenuInteraction:(id)arg1 willDisplayMenuForConfiguration:(id)arg2 animator:(id)arg3;
+- (void)contextMenuInteraction:(id)arg1 willEndForConfiguration:(id)arg2 animator:(id)arg3;
+- (void)contextMenuInteraction:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;
 - (id)dataSource;
 - (id)dataSourceIndexPathForPresentationIndexPath:(id)arg1;
 - (long long)dataSourceSectionIndexForPresentationSectionIndex:(long long)arg1;
@@ -729,6 +796,7 @@
 - (id)selectedIndexTitleEntry;
 - (void)setAllowsMultipleSelection:(bool)arg1;
 - (void)setAllowsSelection:(bool)arg1;
+- (void)setAllowsUserInitiatedMultipleSelection:(bool)arg1;
 - (void)setBackgroundView:(id)arg1;
 - (void)setBounds:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setCollectionViewLayout:(id)arg1;
@@ -791,13 +859,8 @@
 - (void)__ck_reloadDataKeepingSelection;
 - (struct CGPoint { double x1; double x2; })__ck_scrollToBottomContentOffsetHidingIndexPath:(id)arg1;
 - (void)__ck_scrollToTopOfCellAtIndexPath:(id)arg1 hidingCellAtIndexPath:(id)arg2 animated:(bool)arg3;
-- (id)ckIndexPathsForElementsInRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 
-// Image: /System/Library/PrivateFrameworks/FuseUI.framework/FuseUI
-
-- (void)music_inheritedLayoutInsetsDidChange;
-
-// Image: /System/Library/PrivateFrameworks/GameCenterPrivateUI.framework/GameCenterPrivateUI
+// Image: /System/Library/PrivateFrameworks/GameCenterUI.framework/GameCenterUI
 
 - (id)_gkDequeueCellForClass:(Class)arg1 forIndexPath:(id)arg2;
 - (id)_gkDequeueSupplementaryViewForClass:(Class)arg1 ofKind:(id)arg2 forIndexPath:(id)arg3;
@@ -813,6 +876,16 @@
 // Image: /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI
 
 - (void)hk_scrollToItemRespectingFlowLayoutSectionInsetAtIndexPath:(id)arg1 animated:(bool)arg2 scrollPosition:(unsigned long long)arg3;
+
+// Image: /System/Library/PrivateFrameworks/NotesUI.framework/NotesUI
+
+- (id)ic_cellAtLocation:(struct CGPoint { double x1; double x2; })arg1;
+- (void)ic_deselectAllItems;
+- (id)ic_firstItemIndexPath;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })ic_firstSelectedItemFrame;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })ic_frameForItemAtIndexPath:(id)arg1;
+- (bool)ic_selectFirstItemIfNoneSelected;
+- (void)ic_selectFirstUnselectedCellWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 
 // Image: /System/Library/PrivateFrameworks/RelevanceEngineUI.framework/RelevanceEngineUI
 
@@ -841,6 +914,10 @@
 - (void)vui_applyChangeSet:(id)arg1 inSection:(unsigned long long)arg2 completionHandler:(id /* block */)arg3;
 - (void)vui_applyChangeSet:(id)arg1 inSection:(unsigned long long)arg2 updateDataSourceBlock:(id /* block */)arg3 applyChangeBlock:(id /* block */)arg4 completionHandler:(id /* block */)arg5;
 - (void)vui_applyChangeSet:(id)arg1 inSection:(unsigned long long)arg2 updateDataSourceBlock:(id /* block */)arg3 completionHandler:(id /* block */)arg4;
-- (void)vui_applySectionChangeSet:(id)arg1 updateDataSourceBlock:(id /* block */)arg2 completionHandler:(id /* block */)arg3;
+
+// Image: /System/Library/PrivateFrameworks/WorkflowUI.framework/WorkflowUI
+
+- (void)wf_scrollToItemAtIndexPath:(id)arg1 atScrollPosition:(unsigned long long)arg2 animated:(bool)arg3;
+- (void)wf_scrollViewWillEndDraggingWithVelocity:(struct CGPoint { double x1; double x2; })arg1 targetContentOffset:(inout struct CGPoint { double x1; double x2; }*)arg2 itemOffset:(double)arg3;
 
 @end

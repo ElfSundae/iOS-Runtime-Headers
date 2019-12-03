@@ -3,12 +3,12 @@
  */
 
 @interface FMFSpecifierProvider : NSObject <AAUISpecifierProvider> {
-    AAUIAccountManager * _accountManager;
+    AIDAAccountManager * _accountManager;
     <AAUISpecifierProviderDelegate> * _delegate;
     NSArray * _specifiers;
 }
 
-@property (nonatomic, retain) AAUIAccountManager *accountManager;
+@property (nonatomic, retain) AIDAAccountManager *accountManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <AAUISpecifierProviderDelegate> *delegate;
 @property (readonly, copy) NSString *description;

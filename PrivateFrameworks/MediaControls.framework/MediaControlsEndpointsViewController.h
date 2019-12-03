@@ -5,6 +5,7 @@
 @interface MediaControlsEndpointsViewController : MediaControlsCollectionViewController <CCUIContentModuleContentViewController, MRPlatterViewControllerDelegate, MediaControlsCollectionViewDataSource, MediaControlsCollectionViewDelegate, MediaControlsEndpointsManagerDelegate> {
     MPMediaControlsConfiguration * _configuration;
     bool  _didRetrieveActiveSystemRouteOnce;
+    bool  _didTransitionToVisible;
     bool  _dismissing;
     MediaControlsEndpointsManager * _endpointsManager;
     AVExternalPlaybackMonitor * _externalPlaybackMonitor;
@@ -23,6 +24,7 @@
 }
 
 @property (nonatomic, retain) MPMediaControlsConfiguration *configuration;
+@property (nonatomic, readonly) UIViewPropertyAnimator *customAnimator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (getter=isDismissing, nonatomic) bool dismissing;
@@ -33,6 +35,7 @@
 @property (getter=isOnScreen, nonatomic) bool onScreen;
 @property (nonatomic, readonly) double preferredExpandedContentHeight;
 @property (nonatomic, readonly) double preferredExpandedContentWidth;
+@property (nonatomic, readonly) double preferredExpandedContinuousCornerRadius;
 @property (nonatomic, readonly) bool providesOwnPlatter;
 @property (nonatomic, copy) NSString *routingContextUID;
 @property (nonatomic, copy) id /* block */ routingCornerViewTappedBlock;
@@ -45,11 +48,12 @@
 
 - (void).cxx_destruct;
 - (void)_assignRouteViewControllerToSelectedPanelViewController;
+- (bool)_canShowWhileLocked;
 - (bool)_isReadyForAppearanceTransition;
 - (bool)_isSelectedRouteInRoutes;
 - (void)_routeDidChangeNotification:(id)arg1;
 - (void)_selectActiveSystemRouteIfNeeded;
-- (void)_setSelectedRoute:(id)arg1 isUserSelected:(bool)arg2;
+- (void)_setSelectedRoute:(id)arg1 isUserSelected:(bool)arg2 animated:(bool)arg3;
 - (void)_setupEndpointsManager;
 - (void)_setupRoutingViewController;
 - (void)_supportedModesForSelectedRoute:(unsigned long long*)arg1 selectedMode:(long long*)arg2;
@@ -66,6 +70,7 @@
 - (void)didSelectEndpoint:(id)arg1;
 - (void)dismissPlatterViewController:(id)arg1 completion:(id /* block */)arg2;
 - (void)dismissPresentedContentAnimated:(bool)arg1 completion:(id /* block */)arg2;
+- (void)endUpdates;
 - (id)endpointsManager;
 - (void)endpointsManager:(id)arg1 activeSystemRouteDidChange:(id)arg2;
 - (void)endpointsManager:(id)arg1 defersRoutesReplacement:(id /* block */)arg2;

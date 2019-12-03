@@ -6,9 +6,12 @@
     id /* block */  _acceptHandler;
     bool  _activateCalled;
     id /* block */  _authCompletionHandler;
+    bool  _changesPending;
+    unsigned long long  _controlFlags;
     NSObject<OS_dispatch_queue> * _dispatchQueue;
     id /* block */  _errorHandler;
     id /* block */  _hidePasswordHandler;
+    unsigned int  _internalAuthFlags;
     id /* block */  _interruptionHandler;
     bool  _invalidateCalled;
     bool  _invalidateDone;
@@ -28,9 +31,11 @@
 
 @property (nonatomic, copy) id /* block */ acceptHandler;
 @property (nonatomic, copy) id /* block */ authCompletionHandler;
+@property (nonatomic) unsigned long long controlFlags;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *dispatchQueue;
 @property (nonatomic, copy) id /* block */ errorHandler;
 @property (nonatomic, copy) id /* block */ hidePasswordHandler;
+@property (nonatomic, readonly) unsigned int internalAuthFlags;
 @property (nonatomic, copy) id /* block */ interruptionHandler;
 @property (nonatomic, copy) id /* block */ invalidationHandler;
 @property (nonatomic, copy) NSString *label;
@@ -50,9 +55,12 @@
 - (void)_ensureXPCStarted;
 - (void)_interrupted;
 - (void)_invalidated;
+- (void)_update;
+- (void)_updateIfNeededWithBlock:(id /* block */)arg1;
 - (id /* block */)acceptHandler;
 - (void)activate;
 - (id /* block */)authCompletionHandler;
+- (unsigned long long)controlFlags;
 - (void)dealloc;
 - (id)description;
 - (id)descriptionWithLevel:(int)arg1;
@@ -62,6 +70,7 @@
 - (id /* block */)hidePasswordHandler;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (unsigned int)internalAuthFlags;
 - (id /* block */)interruptionHandler;
 - (void)invalidate;
 - (id /* block */)invalidationHandler;
@@ -75,6 +84,7 @@
 - (id)serviceType;
 - (void)setAcceptHandler:(id /* block */)arg1;
 - (void)setAuthCompletionHandler:(id /* block */)arg1;
+- (void)setControlFlags:(unsigned long long)arg1;
 - (void)setDispatchQueue:(id)arg1;
 - (void)setErrorHandler:(id /* block */)arg1;
 - (void)setHidePasswordHandler:(id /* block */)arg1;
@@ -91,5 +101,7 @@
 - (id /* block */)showPasswordHandler;
 - (void)tryPassword:(id)arg1;
 - (void)xpcServerAcceptSession:(id)arg1 completion:(id /* block */)arg2;
+- (void)xpcServerHidePassword:(unsigned int)arg1;
+- (void)xpcServerShowPassword:(id)arg1 flags:(unsigned int)arg2;
 
 @end

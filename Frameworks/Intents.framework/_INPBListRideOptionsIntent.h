@@ -3,12 +3,14 @@
  */
 
 @interface _INPBListRideOptionsIntent : PBCodable <NSCopying, NSSecureCoding, _INPBListRideOptionsIntent> {
+    bool  __encodeLegacyGloryData;
     _INPBLocation * _dropOffLocation;
     struct { }  _has;
     _INPBIntentMetadata * _intentMetadata;
     _INPBLocation * _pickupLocation;
 }
 
+@property (setter=_setEncodeLegacyGloryData:, nonatomic) bool _encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) _INPBLocation *dropOffLocation;
@@ -20,14 +22,20 @@
 @property (nonatomic, retain) _INPBLocation *pickupLocation;
 @property (readonly) Class superclass;
 
++ (bool)supportsSecureCoding;
+
 - (void).cxx_destruct;
+- (bool)_encodeLegacyGloryData;
+- (void)_setEncodeLegacyGloryData:(bool)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)dictionaryRepresentation;
 - (id)dropOffLocation;
+- (void)encodeWithCoder:(id)arg1;
 - (bool)hasDropOffLocation;
 - (bool)hasIntentMetadata;
 - (bool)hasPickupLocation;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)intentMetadata;
 - (bool)isEqual:(id)arg1;
 - (id)pickupLocation;

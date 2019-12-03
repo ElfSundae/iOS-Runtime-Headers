@@ -3,7 +3,6 @@
  */
 
 @interface SKUIMenuViewController : UITableViewController {
-    UIColor * _borderColor;
     <SKUIMenuViewControllerDelegate> * _delegate;
     long long  _indexOfCheckedTitle;
     NSArray * _menuImages;
@@ -18,7 +17,6 @@
 @property (nonatomic, readonly) NSArray *menuTitles;
 
 - (void).cxx_destruct;
-- (void)_reloadViewStyling;
 - (id)delegate;
 - (long long)indexOfCheckedTitle;
 - (id)initWithMenuTitles:(id)arg1;
@@ -27,6 +25,7 @@
 - (id)menuImages;
 - (long long)menuStyle;
 - (id)menuTitles;
+- (long long)preferredUserInterfaceStyle;
 - (void)setDelegate:(id)arg1;
 - (void)setIndexOfCheckedTitle:(long long)arg1;
 - (void)setMenuStyle:(long long)arg1;

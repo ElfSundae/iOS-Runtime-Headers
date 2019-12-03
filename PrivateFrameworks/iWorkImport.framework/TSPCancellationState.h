@@ -3,7 +3,7 @@
  */
 
 @interface TSPCancellationState : NSObject {
-    bool  _isCancelled;
+    _Atomic bool  _isCancelled;
 }
 
 @property bool isCancelled;

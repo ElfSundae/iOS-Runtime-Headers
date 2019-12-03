@@ -3,13 +3,10 @@
  */
 
 @interface _NSKeyValueObservation : NSObject {
-    void callback;
-    void object;
-    void path;
+    void helper;
 }
 
 - (void).cxx_destruct;
-- (void)_swizzle_me_observeValueForKeyPath:(id)arg1 of:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (void)dealloc;
 - (id)init;
 - (void)invalidate;

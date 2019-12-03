@@ -24,7 +24,6 @@
 - (void)_presentActivityViewController:(id)arg1;
 - (void)_updateNavigationBarItems;
 - (id /* block */)beforeDismissHandler;
-- (void)dealloc;
 - (void)icsPreviewControllerWantsDismissal:(id)arg1;
 - (id)initWithFilePath:(id)arg1 sourceURL:(id)arg2;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(bool)arg3;

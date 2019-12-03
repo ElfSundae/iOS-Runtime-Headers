@@ -39,7 +39,6 @@
 - (void)dealloc;
 - (bool)displaysNonForcedSubtitles;
 - (id)extendedLanguageTag;
-- (void)finalize;
 - (unsigned long long)hash;
 - (id)initWithAssetWriterInput:(id)arg1;
 - (id)initWithAssetWriterInput:(id)arg1 displaysNonForcedSubtitles:(bool)arg2;

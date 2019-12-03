@@ -2,11 +2,16 @@
    Image: /System/Library/Frameworks/MapKit.framework/MapKit
  */
 
-@interface _MKBezierPathView : UIView
+@interface _MKBezierPathView : UIView {
+    UIColor * _fillColor;
+    UIColor * _strokeColor;
+}
 
 + (id)_pathForBalloonRadius:(double)arg1 tailLength:(double)arg2;
 + (Class)layerClass;
 
+- (void).cxx_destruct;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (id)initWithBalloonRadius:(double)arg1 tailLength:(double)arg2;
 - (id)initWithOvalInSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setFillColor:(id)arg1;

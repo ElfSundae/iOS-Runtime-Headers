@@ -21,6 +21,7 @@
 - (struct __CFRunLoopTimer { }*)_deathTimer;
 - (long long)_incrementClientCount;
 - (int)_registerForNotificationOnDeathPort:(unsigned int)arg1;
+- (bool)_registerWithMachServiceName:(char *)arg1;
 - (void)_setClientCount:(long long)arg1;
 - (id)delegate;
 - (id)init;

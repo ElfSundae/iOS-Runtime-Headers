@@ -9,11 +9,11 @@
     int  _clientpid;
     unsigned int  _clientuid;
     bool  _privacySystemWriteEntitled;
-    long long  _privacySystemWriteEntitlementChecked;
+    unsigned char  _privacySystemWriteEntitlementChecked;
     bool  _privacyUserReadEntitled;
-    long long  _privacyUserReadEntitlementChecked;
+    unsigned char  _privacyUserReadEntitlementChecked;
     bool  _privacyUserWriteEntitled;
-    long long  _privacyUserWriteEntitlementChecked;
+    unsigned char  _privacyUserWriteEntitlementChecked;
 }
 
 @property struct { unsigned int x1[8]; } auditToken;

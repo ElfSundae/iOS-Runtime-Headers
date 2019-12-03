@@ -56,6 +56,7 @@
 @property (nonatomic) int slotPosition;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (bool)_considerClosingAdSpace;
 - (void)_dismissModalInterstitial;
 - (id)_initWithInternalAdType:(int)arg1 layoutOptions:(id)arg2 options:(long long)arg3;

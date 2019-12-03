@@ -135,6 +135,7 @@
 
 // Image: /System/Library/PrivateFrameworks/SearchUI.framework/SearchUI
 
+- (Class)_searchUIHorizontallyScrollingButtonControllerClass;
 - (Class)_searchUIViewClass;
 
 // Image: /System/Library/PrivateFrameworks/SearchUICardKitProviderSupport.framework/SearchUICardKitProviderSupport

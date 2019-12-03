@@ -16,6 +16,7 @@
 - (void).cxx_destruct;
 - (id)assetExpirationDate;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)fileAssetWithFlavorType:(long long)arg1;
 - (id)fileAssets;
 - (id)hlsAsset;
 - (id)initWithItemResponseDictionary:(id)arg1 urlBag:(id)arg2;

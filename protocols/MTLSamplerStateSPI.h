@@ -6,6 +6,7 @@
 @optional
 
 - (unsigned long long)resourceIndex;
+- (void)setResourceIndex:(unsigned long long)arg1;
 - (unsigned long long)uniqueIdentifier;
 
 @end

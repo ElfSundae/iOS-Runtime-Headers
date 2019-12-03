@@ -4,7 +4,7 @@
 
 @interface BCCloudKitTransaction : NSObject {
     long long  _clientCount;
-    BDSCoalescingCallBlock * _coalescedNotification;
+    BUCoalescingCallBlock * _coalescedNotification;
     <BCCloudKitTransactionDelegate> * _delegate;
     NSString * _entityName;
     NSObject<OS_dispatch_queue> * _lifecycleAccessQueue;
@@ -13,7 +13,7 @@
 }
 
 @property (nonatomic) long long clientCount;
-@property (nonatomic, retain) BDSCoalescingCallBlock *coalescedNotification;
+@property (nonatomic, retain) BUCoalescingCallBlock *coalescedNotification;
 @property (nonatomic) <BCCloudKitTransactionDelegate> *delegate;
 @property (nonatomic, copy) NSString *entityName;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *lifecycleAccessQueue;

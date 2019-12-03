@@ -17,7 +17,11 @@
         double longitude; 
     }  _origin;
     NSDictionary * _pointTimestamps;
+    GEODirectionsRequest * _request;
+    GEODirectionsResponse * _response;
     GEOComposedRoute * _route;
+    GEORouteAttributes * _routeAttributes;
+    unsigned int  _routeIndex;
     NSDate * _startTime;
     double  _verticalAccuracy;
     struct { 
@@ -38,7 +42,11 @@
 @property (nonatomic, retain) NSMutableArray *mutableLocations;
 @property (nonatomic) struct { double x1; double x2; } origin;
 @property (nonatomic, readonly) NSDictionary *pointTimestamps;
+@property (nonatomic, readonly) GEODirectionsRequest *request;
+@property (nonatomic, readonly) GEODirectionsResponse *response;
 @property (nonatomic, readonly) GEOComposedRoute *route;
+@property (nonatomic, readonly) GEORouteAttributes *routeAttributes;
+@property (nonatomic, readonly) unsigned int routeIndex;
 @property (nonatomic, retain) NSDate *startTime;
 @property (nonatomic) double verticalAccuracy;
 @property (nonatomic) struct { double x1; double x2; } walkingEnd;
@@ -53,12 +61,17 @@
 - (void)generateLocations;
 - (void)generateLocationsWithSpeedOverride:(double)arg1;
 - (double)horizontalAccuracy;
-- (id)initWithRoute:(id)arg1;
+- (id)initWithRoute:(id)arg1 request:(id)arg2 response:(id)arg3 routeAttributes:(id)arg4 routeIndex:(unsigned int)arg5;
+- (id)initWithRoute:(id)arg1 request:(id)arg2 response:(id)arg3 routeAttributes:(id)arg4 routeIndex:(unsigned int)arg5 locations:(id)arg6;
 - (id)locations;
 - (id)mutableLocations;
 - (struct { double x1; double x2; })origin;
 - (id)pointTimestamps;
+- (id)request;
+- (id)response;
 - (id)route;
+- (id)routeAttributes;
+- (unsigned int)routeIndex;
 - (void)setDeltaT:(double)arg1;
 - (void)setDestination:(struct { double x1; double x2; })arg1;
 - (void)setDuration:(double)arg1;

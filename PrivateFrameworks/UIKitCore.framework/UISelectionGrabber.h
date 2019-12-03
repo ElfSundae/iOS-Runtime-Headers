@@ -11,6 +11,7 @@
     bool  m_isDotted;
     bool  m_navigationTransitionFlattened;
     long long  m_orientation;
+    double  m_screenScale;
 }
 
 @property (nonatomic) bool activeFlattened;
@@ -69,5 +70,6 @@
 - (void)setOrientation:(long long)arg1;
 - (void)transitionDot:(long long)arg1 completion:(id /* block */)arg2;
 - (void)updateDot;
+- (void)willMoveToWindow:(id)arg1;
 
 @end

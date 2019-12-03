@@ -9,6 +9,7 @@
     bool  _forceDoNotReport;
     unsigned long long  _numberOfValidationErrors;
     unsigned long long  _numberOfValidationWarnings;
+    unsigned long long  _numberOfValidations;
     NSString * _overrideProcessName;
     bool  _shouldCrashOnError;
     bool  _shouldLogToConsole;
@@ -24,6 +25,7 @@
 @property (nonatomic) bool forceDoNotReport;
 @property (nonatomic) unsigned long long numberOfValidationErrors;
 @property (nonatomic) unsigned long long numberOfValidationWarnings;
+@property (nonatomic) unsigned long long numberOfValidations;
 @property (nonatomic, copy) NSString *overrideProcessName;
 @property (nonatomic) bool shouldCrashOnError;
 @property (nonatomic) bool shouldLogToConsole;
@@ -52,13 +54,13 @@
 - (bool)client:(id)arg1 validateClass:(id)arg2 hasInstanceMethod:(id)arg3 withFullSignature:(const char *)arg4;
 - (bool)client:(id)arg1 validateClass:(id)arg2 hasInstanceMethod:(id)arg3 withFullSignature:(const char *)arg4 argList:(char *)arg5;
 - (bool)client:(id)arg1 validateClass:(id)arg2 hasInstanceVariable:(id)arg3 withType:(const char *)arg4;
+- (bool)client:(id)arg1 validateClass:(id)arg2 hasProperty:(id)arg3 customGetter:(id)arg4 customSetter:(id)arg5 withType:(const char *)arg6;
 - (bool)client:(id)arg1 validateClass:(id)arg2 hasProperty:(id)arg3 withType:(const char *)arg4;
 - (bool)client:(id)arg1 validateClass:(id)arg2 isKindOfClass:(id)arg3;
 - (bool)client:(id)arg1 validateProtocol:(id)arg2 conformsToProtocol:(id)arg3;
 - (bool)client:(id)arg1 validateProtocol:(id)arg2 hasMethod:(id)arg3 isInstanceMethod:(bool)arg4 isRequired:(bool)arg5;
 - (bool)client:(id)arg1 validateProtocol:(id)arg2 hasOptionalClassMethod:(id)arg3;
 - (bool)client:(id)arg1 validateProtocol:(id)arg2 hasOptionalInstanceMethod:(id)arg3;
-- (bool)client:(id)arg1 validateProtocol:(id)arg2 hasProperty:(id)arg3;
 - (bool)client:(id)arg1 validateProtocol:(id)arg2 hasRequiredClassMethod:(id)arg3;
 - (bool)client:(id)arg1 validateProtocol:(id)arg2 hasRequiredInstanceMethod:(id)arg3;
 - (id)consoleErrorMessages;
@@ -71,11 +73,13 @@
 - (bool)isDebugBuild;
 - (unsigned long long)numberOfValidationErrors;
 - (unsigned long long)numberOfValidationWarnings;
+- (unsigned long long)numberOfValidations;
 - (id)overrideProcessName;
 - (void)performValidations:(id /* block */)arg1 withPreValidationHandler:(id /* block */)arg2 postValidationHandler:(id /* block */)arg3;
 - (void)performValidations:(id /* block */)arg1 withPreValidationHandler:(id /* block */)arg2 postValidationHandler:(id /* block */)arg3 safeCategoryInstallationHandler:(id /* block */)arg4;
 - (void)sendExceptionForInstallingSafeCategory:(id)arg1 onTarget:(id)arg2 overrideProcessName:(id)arg3;
 - (void)sendExceptionForSafeBlock:(id)arg1 overrideProcessName:(id)arg2;
+- (void)sendExceptionForSafeCategoryOnWrongTarget:(id)arg1 targetBundle:(id)arg2 expectedBundle:(id)arg3 overrideProcessName:(id)arg4;
 - (void)sendExceptionForSafeIVarKey:(id)arg1 onTarget:(id)arg2 overrideProcessName:(id)arg3;
 - (void)sendExceptionForSafeValueKey:(id)arg1 onTarget:(id)arg2 overrideProcessName:(id)arg3;
 - (void)sendFailedAssertionWithErrorMessage:(id)arg1 overrideProcessName:(id)arg2;
@@ -98,6 +102,7 @@
 - (void)setForceDoNotReport:(bool)arg1;
 - (void)setNumberOfValidationErrors:(unsigned long long)arg1;
 - (void)setNumberOfValidationWarnings:(unsigned long long)arg1;
+- (void)setNumberOfValidations:(unsigned long long)arg1;
 - (void)setOverrideProcessName:(id)arg1;
 - (void)setShouldCrashOnError:(bool)arg1;
 - (void)setShouldLogToConsole:(bool)arg1;
@@ -114,13 +119,13 @@
 - (bool)validateClass:(id)arg1 hasClassMethod:(id)arg2 withFullSignature:(const char *)arg3;
 - (bool)validateClass:(id)arg1 hasInstanceMethod:(id)arg2 withFullSignature:(const char *)arg3;
 - (bool)validateClass:(id)arg1 hasInstanceVariable:(id)arg2 withType:(const char *)arg3;
+- (bool)validateClass:(id)arg1 hasProperty:(id)arg2 customGetter:(id)arg3 customSetter:(id)arg4 withType:(const char *)arg5;
 - (bool)validateClass:(id)arg1 hasProperty:(id)arg2 withType:(const char *)arg3;
 - (bool)validateClass:(id)arg1 isKindOfClass:(id)arg2;
 - (bool)validateProtocol:(id)arg1 conformsToProtocol:(id)arg2;
 - (bool)validateProtocol:(id)arg1 hasMethod:(id)arg2 isInstanceMethod:(bool)arg3 isRequired:(bool)arg4;
 - (bool)validateProtocol:(id)arg1 hasOptionalClassMethod:(id)arg2;
 - (bool)validateProtocol:(id)arg1 hasOptionalInstanceMethod:(id)arg2;
-- (bool)validateProtocol:(id)arg1 hasProperty:(id)arg2;
 - (bool)validateProtocol:(id)arg1 hasRequiredClassMethod:(id)arg2;
 - (bool)validateProtocol:(id)arg1 hasRequiredInstanceMethod:(id)arg2;
 - (id)validationReportingServices;

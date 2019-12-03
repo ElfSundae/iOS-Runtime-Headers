@@ -3,12 +3,17 @@
  */
 
 @interface PURootSettings : PXSettings {
+    NSString * __internal_libraryStateBriefDescription;
+    UIImage * __internal_libraryStateImage;
     PUAirPlaySettings * _airPlaySettings;
     PUAlbumListSettings * _albumListSettings;
     bool  _allowIrisUI;
+    PUAudioClassificationSettings * _audioClassificationSettings;
+    PUCompositeVideoSettings * _compositeVideoSettings;
+    PUCurationSettings * _curation;
     bool  _enforceDisableIrisUI;
     PUFeedSettings * _feedSettings;
-    PUImportSettings * _importSettings;
+    PXImportSettings * _importSettings;
     Class  _interfaceThemeClass;
     PUIrisSettings * _irisSettings;
     PUMedusaSettings * _medusaSettings;
@@ -20,7 +25,7 @@
     PUPhotoEditProtoSettings * _photoEditingSettings;
     PUPhotosGridSettings * _photosGridSettings;
     PUSceneSettings * _sceneSettings;
-    PUSearchSettings * _searchSettings;
+    PXSharingSettings * _sharingSettings;
     PUSlideshowSettings * _slideshowSettings;
     PUTabbedLibrarySettings * _tabbedLibrarySettings;
     PUTilingViewSettings * _tilingViewSettings;
@@ -28,11 +33,16 @@
     PUWorkaroundSettings * _workaroundSettings;
 }
 
+@property (nonatomic, retain) NSString *_internal_libraryStateBriefDescription;
+@property (nonatomic, retain) UIImage *_internal_libraryStateImage;
 @property (nonatomic, retain) PUAirPlaySettings *airPlaySettings;
 @property (nonatomic, retain) PUAlbumListSettings *albumListSettings;
 @property (nonatomic) bool allowIrisUI;
+@property (nonatomic, retain) PUAudioClassificationSettings *audioClassificationSettings;
+@property (nonatomic, retain) PUCompositeVideoSettings *compositeVideoSettings;
+@property (nonatomic, retain) PUCurationSettings *curation;
 @property (nonatomic, retain) PUFeedSettings *feedSettings;
-@property (nonatomic, retain) PUImportSettings *importSettings;
+@property (nonatomic, retain) PXImportSettings *importSettings;
 @property (nonatomic, retain) Class interfaceThemeClass;
 @property (nonatomic, retain) PUIrisSettings *irisSettings;
 @property (nonatomic, retain) PUMedusaSettings *medusaSettings;
@@ -44,18 +54,21 @@
 @property (nonatomic, retain) PUPhotoEditProtoSettings *photoEditingSettings;
 @property (nonatomic, retain) PUPhotosGridSettings *photosGridSettings;
 @property (nonatomic, retain) PUSceneSettings *sceneSettings;
-@property (nonatomic, retain) PUSearchSettings *searchSettings;
+@property (nonatomic, retain) PXSharingSettings *sharingSettings;
 @property (nonatomic, retain) PUSlideshowSettings *slideshowSettings;
 @property (nonatomic, retain) PUTabbedLibrarySettings *tabbedLibrarySettings;
 @property (nonatomic, retain) PUTilingViewSettings *tilingViewSettings;
 @property (nonatomic, retain) PUWelcomeSettings *welcomeSettings;
 @property (nonatomic, retain) PUWorkaroundSettings *workaroundSettings;
 
++ (id)_audioClassificationSettings;
 + (id)_debugRowsForViewControllerStack:(id)arg1;
 + (void)_deleteAllDiagnosticFiles;
 + (id)_memoriesRelatedSettings;
 + (id)_photoKitSettings;
 + (id)_photosUICoreSettings;
++ (void)_presentTapToRadar;
++ (id)_saveScreenshot:(id)arg1;
 + (void)_setCurrentAsset:(id)arg1;
 + (void)_setDebugRows:(id)arg1;
 + (id)currentAsset;
@@ -64,14 +77,20 @@
 + (void)presentSettingsController;
 + (id)settingsControllerModule;
 + (void)setupStatusBarDoubleTapOnInternalDevices;
++ (void)setupStatusBarInternalSettingsGestureOnInternalDevices;
 + (id)sharedInstance;
 
 - (void).cxx_destruct;
+- (id)_internal_libraryStateBriefDescription;
+- (id)_internal_libraryStateImage;
 - (id)airPlaySettings;
 - (id)albumListSettings;
 - (bool)allowIrisUI;
 - (void)applyArchiveValue:(id)arg1 forKey:(id)arg2;
 - (id)archiveValueForKey:(id)arg1;
+- (id)audioClassificationSettings;
+- (id)compositeVideoSettings;
+- (id)curation;
 - (id)feedSettings;
 - (id)importSettings;
 - (Class)interfaceThemeClass;
@@ -88,10 +107,12 @@
 - (id)photosGridSettings;
 - (void)restoreDefaultValues;
 - (id)sceneSettings;
-- (id)searchSettings;
 - (void)setAirPlaySettings:(id)arg1;
 - (void)setAlbumListSettings:(id)arg1;
 - (void)setAllowIrisUI:(bool)arg1;
+- (void)setAudioClassificationSettings:(id)arg1;
+- (void)setCompositeVideoSettings:(id)arg1;
+- (void)setCuration:(id)arg1;
 - (void)setDefaultValues;
 - (void)setEnforceDisableIrisUI:(bool)arg1;
 - (void)setFeedSettings:(id)arg1;
@@ -107,12 +128,15 @@
 - (void)setPhotoEditingSettings:(id)arg1;
 - (void)setPhotosGridSettings:(id)arg1;
 - (void)setSceneSettings:(id)arg1;
-- (void)setSearchSettings:(id)arg1;
+- (void)setSharingSettings:(id)arg1;
 - (void)setSlideshowSettings:(id)arg1;
 - (void)setTabbedLibrarySettings:(id)arg1;
 - (void)setTilingViewSettings:(id)arg1;
 - (void)setWelcomeSettings:(id)arg1;
 - (void)setWorkaroundSettings:(id)arg1;
+- (void)set_internal_libraryStateBriefDescription:(id)arg1;
+- (void)set_internal_libraryStateImage:(id)arg1;
+- (id)sharingSettings;
 - (id)slideshowSettings;
 - (id)tabbedLibrarySettings;
 - (id)tilingViewSettings;

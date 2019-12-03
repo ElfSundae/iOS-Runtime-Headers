@@ -17,7 +17,6 @@
 - (void)contentViewWillAppear;
 - (void)dealloc;
 - (id)initWithCollection:(id)arg1 albumGadgetDelegate:(id)arg2;
-- (void)loadContentData;
 - (void)reconfigure;
 - (void)setAlbumProvider:(id)arg1;
 - (id)title;

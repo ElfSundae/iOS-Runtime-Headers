@@ -26,7 +26,7 @@
 - (id)ipc;
 - (id)ipcIdleTimer;
 - (void)resetIPCIdleTimer;
-- (void)setConfiguration:(id)arg1 extensionIdentifier:(id)arg2 deviceIdentifier:(id)arg3;
+- (void)setConfiguration:(id)arg1 extensionIdentifier:(id)arg2;
 - (void)setIpc:(id)arg1;
 - (void)setIpcIdleTimer:(id)arg1;
 - (void)setTunnelConfiguration:(id)arg1 completionHandler:(id /* block */)arg2;

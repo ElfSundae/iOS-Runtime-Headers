@@ -10,7 +10,7 @@
     NSLayoutConstraint * _detailLabelLeadingConstraint;
     STSegmentItem * _item;
     UILabel * _titleLabel;
-    bool  _widget;
+    bool  _useVibrancy;
 }
 
 @property (nonatomic, readonly) NSLayoutConstraint *detailImageHeightConstraint;
@@ -20,7 +20,7 @@
 @property (nonatomic, readonly) NSLayoutConstraint *detailLabelLeadingConstraint;
 @property (nonatomic, retain) STSegmentItem *item;
 @property (nonatomic, readonly) UILabel *titleLabel;
-@property (getter=isWidget, readonly) bool widget;
+@property (readonly) bool useVibrancy;
 
 - (void).cxx_destruct;
 - (id)detailImageHeightConstraint;
@@ -28,11 +28,12 @@
 - (id)detailImageWidthConstraint;
 - (id)detailLabel;
 - (id)detailLabelLeadingConstraint;
-- (id)initWithItem:(id)arg1 isWidget:(bool)arg2;
-- (bool)isWidget;
+- (id)initWithItem:(id)arg1 useVibrancy:(bool)arg2 truncateLabels:(bool)arg3;
 - (id)item;
 - (void)setItem:(id)arg1;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (id)titleLabel;
+- (void)traitCollectionDidChange:(id)arg1;
+- (bool)useVibrancy;
 
 @end

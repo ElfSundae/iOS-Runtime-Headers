@@ -28,7 +28,9 @@
     NSMutableArray * _attributesStack;
     double  _bMargin;
     NSMapTable * _cachedRTFFontTable;
+    long long  _cocoaPlatform;
     int  _cocoaSubVersion;
+    long long  _cocoaTextScaling;
     int  _cocoaVersion;
     int  _colorTblColorSpace;
     NSMutableAttributedString * _curAttributedString;
@@ -49,6 +51,7 @@
     NSColor * _documentBackgroundColor;
     NSMutableDictionary * _documentInfoDictionary;
     bool  _explicitCharSetEncountered;
+    long long  _finalTextScaling;
     NSMutableDictionary * _fontAttributesTable;
     NSMutableDictionary * _fontTable;
     NSCalendar * _gregorianCalendar;
@@ -105,7 +108,9 @@
     NSData * _rtfData;
     int  _rtfVersion;
     bool  _setTableCells;
+    long long  _sourceTextScaling;
     double  _tMargin;
+    long long  _targetTextScaling;
     NSArray * _textBlocks;
     union { 
         unsigned char thin[128]; 
@@ -138,6 +143,8 @@
 - (id)_currentTable;
 - (id)_currentTableCell;
 - (bool)_currentTableCellIsPlaceholder;
+- (void)_determineFinalTextScalingType;
+- (void)_determineSourceTextScalingType;
 - (id)_documentInfoDictionary;
 - (void)_endTableCell;
 - (void)_endTableCellDefinition;
@@ -157,15 +164,20 @@
 - (void)_setCurrentListLevel:(long long)arg1;
 - (void)_setCurrentListNumber:(long long)arg1;
 - (void)_setRTFDFileWrapper:(id)arg1;
+- (void)_setSourceTextScaling:(long long)arg1;
 - (void)_setTableCells;
 - (void)_setTableNestingLevel:(long long)arg1;
+- (void)_setTargetTextScaling:(long long)arg1;
 - (void)_startTableRowDefinition;
 - (void)_updateAttributes;
+- (double)_updateFontSizeForTextScalingIfNeeded:(double)arg1;
 - (id)attributedString;
 - (id)attributedStringToEndOfGroup;
 - (id)attributesAtEndOfGroup;
 - (long long)baseWritingDirection;
+- (long long)cocoaPlatform;
 - (long long)cocoaSubVersion;
+- (long long)cocoaTextScaling;
 - (long long)cocoaVersion;
 - (void)dealloc;
 - (id)defaultParagraphStyle;
@@ -184,7 +196,9 @@
 - (void)setBackgroundColor:(id)arg1;
 - (void)setBaseWritingDirection:(long long)arg1;
 - (void)setBottomMargin:(double)arg1;
+- (void)setCocoaPlatform:(long long)arg1;
 - (void)setCocoaSubVersion:(long long)arg1;
+- (void)setCocoaTextScaling:(long long)arg1;
 - (void)setCocoaVersion:(long long)arg1;
 - (void)setDefaultTabInterval:(double)arg1;
 - (void)setHyphenationFactor:(float)arg1;

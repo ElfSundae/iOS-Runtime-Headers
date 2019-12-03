@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/AVKit.framework/AVKit
  */
 
-@interface AVPlayerView : UIView {
+@interface AVPlayerView : AVPresentationContainerView {
     AVPlayerViewControllerContentView * _contentView;
     bool  _needsInitialLayout;
 }
@@ -16,7 +16,6 @@
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 contentView:(id)arg2;
 - (void)layoutSubviews;
 - (bool)needsInitialLayout;
-- (void)setClipsToBounds:(bool)arg1;
 - (void)setNeedsInitialLayout:(bool)arg1;
 
 @end

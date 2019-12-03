@@ -12,6 +12,7 @@
     bool  _requestedOnThisDevice;
     NSNumber * _requesterDSID;
     NSNumber * _responderDSID;
+    NSString * _statusDescription;
 }
 
 @property (copy) NSString *ask;
@@ -32,7 +33,6 @@
 - (id)cacheRepresentation;
 - (id)clientIdentifier;
 - (id)dateAddedToLocalCache;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithAsk:(id)arg1 requestInfo:(id)arg2;
 - (id)initWithCacheRepresentation:(id)arg1;

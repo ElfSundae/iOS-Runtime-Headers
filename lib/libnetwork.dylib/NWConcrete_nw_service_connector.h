@@ -8,7 +8,12 @@
     NSObject<OS_nw_parameters> * clientParameters;
     NSObject<OS_nw_listener> * listener;
     unsigned short  localPortHBO;
+    unsigned char  localPrivKey;
+    unsigned char  localPubKey;
     NSObject<OS_nw_dictionary> * pendingIncomingRequests;
+    NSObject<OS_nw_array> * pendingUnverifiedIncomingRequests;
+    NSObject<OS_xpc_object> * remotePubKeys;
+    unsigned char  retryCounterForAddressInUse;
     id /* block */  serviceAvailableBlock;
     NSObject<OS_dispatch_queue> * serviceConnectorQueue;
     unsigned int  state;

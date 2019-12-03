@@ -26,6 +26,7 @@
         unsigned int gestureType : 1; 
         unsigned int interfaceOrientation : 1; 
         unsigned int reachabilityStatus : 1; 
+        unsigned int isAmplifyUser : 1; 
         unsigned int isBundlePurchaser : 1; 
         unsigned int isPaidSubscriberDuringEvent : 1; 
         unsigned int isPaidSubscriberFromAppStoreDuringEvent : 1; 
@@ -33,6 +34,7 @@
         unsigned int isPaidSubscriberFromThirdPartyDuringEvent : 1; 
     }  _has;
     int  _interfaceOrientation;
+    bool  _isAmplifyUser;
     bool  _isBundlePurchaser;
     bool  _isPaidSubscriberDuringEvent;
     bool  _isPaidSubscriberFromAppStoreDuringEvent;
@@ -78,6 +80,7 @@
 @property (nonatomic, readonly) bool hasEventObject;
 @property (nonatomic) bool hasGestureType;
 @property (nonatomic) bool hasInterfaceOrientation;
+@property (nonatomic) bool hasIsAmplifyUser;
 @property (nonatomic) bool hasIsBundlePurchaser;
 @property (nonatomic) bool hasIsPaidSubscriberDuringEvent;
 @property (nonatomic) bool hasIsPaidSubscriberFromAppStoreDuringEvent;
@@ -98,6 +101,7 @@
 @property (nonatomic, readonly) bool hasWidgetUserId;
 @property (nonatomic, readonly) bool hasWindowFrameInScreen;
 @property (nonatomic) int interfaceOrientation;
+@property (nonatomic) bool isAmplifyUser;
 @property (nonatomic) bool isBundlePurchaser;
 @property (nonatomic) bool isPaidSubscriberDuringEvent;
 @property (nonatomic) bool isPaidSubscriberFromAppStoreDuringEvent;
@@ -157,6 +161,7 @@
 - (bool)hasEventObject;
 - (bool)hasGestureType;
 - (bool)hasInterfaceOrientation;
+- (bool)hasIsAmplifyUser;
 - (bool)hasIsBundlePurchaser;
 - (bool)hasIsPaidSubscriberDuringEvent;
 - (bool)hasIsPaidSubscriberFromAppStoreDuringEvent;
@@ -178,6 +183,7 @@
 - (bool)hasWindowFrameInScreen;
 - (unsigned long long)hash;
 - (int)interfaceOrientation;
+- (bool)isAmplifyUser;
 - (bool)isBundlePurchaser;
 - (bool)isEqual:(id)arg1;
 - (bool)isPaidSubscriberDuringEvent;
@@ -213,6 +219,7 @@
 - (void)setHasDuration:(bool)arg1;
 - (void)setHasGestureType:(bool)arg1;
 - (void)setHasInterfaceOrientation:(bool)arg1;
+- (void)setHasIsAmplifyUser:(bool)arg1;
 - (void)setHasIsBundlePurchaser:(bool)arg1;
 - (void)setHasIsPaidSubscriberDuringEvent:(bool)arg1;
 - (void)setHasIsPaidSubscriberFromAppStoreDuringEvent:(bool)arg1;
@@ -223,6 +230,7 @@
 - (void)setHasReachabilityStatus:(bool)arg1;
 - (void)setHasStartTimestamp:(bool)arg1;
 - (void)setInterfaceOrientation:(int)arg1;
+- (void)setIsAmplifyUser:(bool)arg1;
 - (void)setIsBundlePurchaser:(bool)arg1;
 - (void)setIsPaidSubscriberDuringEvent:(bool)arg1;
 - (void)setIsPaidSubscriberFromAppStoreDuringEvent:(bool)arg1;

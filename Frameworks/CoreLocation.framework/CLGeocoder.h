@@ -6,7 +6,10 @@
     CLGeocoderInternal * _internal;
 }
 
+@property (setter=_setResponseSilo:) CLSilo *_responseSilo;
 @property (getter=isGeocoding, nonatomic, readonly) bool geocoding;
+
++ (id)_timeZoneAtLocation:(id)arg1;
 
 - (void)_ensureMainThreadExecutionContextForBlock:(id /* block */)arg1;
 - (void)_notifyCancel;
@@ -15,6 +18,8 @@
 - (void)_notifyPartialResult:(id)arg1;
 - (void)_notifyResult:(id)arg1;
 - (void)_notifyResult:(id)arg1 error:(id)arg2;
+- (id)_responseSilo;
+- (void)_setResponseSilo:(id)arg1;
 - (void)_ticket:(id)arg1 didReturnError:(id)arg2;
 - (void)_ticket:(id)arg1 didReturnError:(id)arg2 partialResultForLocation:(id)arg3;
 - (void)_ticket:(id)arg1 didReturnGeoMapItems:(id)arg2;

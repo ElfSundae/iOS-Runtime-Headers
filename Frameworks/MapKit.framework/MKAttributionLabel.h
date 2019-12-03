@@ -20,5 +20,6 @@
 - (unsigned long long)mapType;
 - (void)setMapType:(unsigned long long)arg1;
 - (void)sizeToFit;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end

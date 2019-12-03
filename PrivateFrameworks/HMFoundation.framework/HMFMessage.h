@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/HMFoundation.framework/HMFoundation
  */
 
-@interface HMFMessage : HMFObject <NSCopying, NSMutableCopying> {
+@interface HMFMessage : HMFObject <NSCopying, NSMutableCopying, NSSecureCoding> {
     HMFMessageInternal * _internal;
 }
 
@@ -15,30 +15,36 @@
 @property (readonly) NSString *clientName;
 @property (nonatomic, readonly, copy) NSString *companionAppBundleIdentifier;
 @property (nonatomic, retain) HMFMessageDestination *destination;
-@property (nonatomic, readonly, copy) NSString *effectiveLocationBundleIdentifier;
 @property (getter=isEntitledForAPIAccess, nonatomic, readonly) bool entitledForAPIAccess;
 @property (getter=isEntitledForBackgroundMode, nonatomic, readonly) bool entitledForBackgroundMode;
+@property (getter=isEntitledForHomeLocationAccess, nonatomic, readonly) bool entitledForHomeLocationAccess;
 @property (getter=isEntitledForSPIAccess, nonatomic, readonly) bool entitledForSPIAccess;
+@property (getter=isEntitledForShortcutsAutomationAccess, nonatomic, readonly) bool entitledForShortcutsAutomationAccess;
+@property (getter=isEntitledToProvideAccessorySetupPayload, nonatomic, readonly) bool entitledToProvideAccessorySetupPayload;
 @property (nonatomic, readonly, copy) NSDictionary *headers;
+@property (getter=requiresHomeLocationEntitlement, nonatomic, readonly) bool homeLocationEntitlementRequired;
 @property (nonatomic, copy) NSUUID *identifier;
 @property (getter=isInternal, nonatomic, readonly) bool internal;
 @property (nonatomic, readonly) HMFMessageInternal *internal;
 @property (getter=isLocationAuthorized, nonatomic, readonly) bool locationAuthorized;
 @property (nonatomic, copy) NSDictionary *messagePayload;
 @property (nonatomic, readonly, copy) NSString *name;
-@property (readonly) HMDConnectionProxy *proxyConnection;
+@property (readonly) HMDXPCClientConnection *proxyConnection;
 @property (nonatomic, readonly) long long qualityOfService;
 @property (getter=isRemote, nonatomic, readonly) bool remote;
 @property (nonatomic, readonly) unsigned long long remoteRestriction;
 @property (nonatomic, readonly) HMDDevice *remoteSourceDevice;
 @property (nonatomic, readonly) NSString *remoteSourceID;
 @property (nonatomic, readonly) HAPPairingIdentity *remoteUserPairingIdentity;
+@property (nonatomic, readonly) bool requiresCameraClipsEntitlement;
+@property (nonatomic, readonly) bool requiresMultiUserSetupEntitlement;
 @property (nonatomic, readonly) bool requiresNoSPIEntitlement;
 @property (nonatomic, readonly) bool requiresSPIEntitlement;
 @property (nonatomic, copy) id /* block */ responseHandler;
 @property (getter=isSecureRemote, nonatomic, readonly) bool secureRemote;
 @property (nonatomic, readonly) int sourcePid;
 @property (nonatomic, readonly, copy) NSString *teamIdentifier;
+@property (nonatomic, readonly) double timeout;
 @property (nonatomic, readonly) HMFMessageTransport *transport;
 @property (nonatomic, readonly, copy) NSDictionary *userInfo;
 
@@ -53,6 +59,8 @@
 + (id)messageWithName:(id)arg1 messagePayload:(id)arg2 responseHandler:(id /* block */)arg3;
 + (id)messageWithName:(id)arg1 qualityOfService:(long long)arg2 destination:(id)arg3 payload:(id)arg4;
 + (id)shortDescription;
++ (id)supportedClasses;
++ (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
 - (void)__initWithInternalMessage:(id)arg1;
@@ -71,17 +79,18 @@
 - (id)descriptionWithPointer:(bool)arg1;
 - (id)destination;
 - (id)dictionaryForKey:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)errorForKey:(id)arg1;
 - (id)headers;
 - (id)identifier;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithInternalMessage:(id)arg1;
 - (id)initWithName:(id)arg1 destination:(id)arg2 payload:(id)arg3;
 - (id)initWithName:(id)arg1 identifier:(id)arg2 messagePayload:(id)arg3 responseHandler:(id /* block */)arg4;
 - (id)initWithName:(id)arg1 qualityOfService:(long long)arg2 destination:(id)arg3 payload:(id)arg4;
 - (id)initWithName:(id)arg1 qualityOfService:(long long)arg2 destination:(id)arg3 userInfo:(id)arg4 headers:(id)arg5 payload:(id)arg6;
 - (id)internal;
-- (id)locationForKey:(id)arg1;
 - (id)messagePayload;
 - (id)mutableCopyWithZone:(struct _NSZone { }*)arg1;
 - (id)name;
@@ -89,6 +98,9 @@
 - (id)numberForKey:(id)arg1;
 - (id)predicateForKey:(id)arg1;
 - (long long)qualityOfService;
+- (bool)respondWithError:(id)arg1;
+- (bool)respondWithPayload:(id)arg1;
+- (bool)respondWithPayload:(id)arg1 error:(id)arg2;
 - (id /* block */)responseHandler;
 - (void)setDestination:(id)arg1;
 - (void)setIdentifier:(id)arg1;
@@ -97,14 +109,20 @@
 - (id)shortDescription;
 - (id)stringForKey:(id)arg1;
 - (id)timeZoneForKey:(id)arg1;
+- (double)timeout;
 - (id)transport;
 - (id)userInfo;
 - (id)uuidForKey:(id)arg1;
+
+// Image: /System/Library/Frameworks/HomeKit.framework/HomeKit
+
+- (id)locationForKey:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
 
 + (id)entitledMessageWithName:(id)arg1 identifier:(id)arg2 messagePayload:(id)arg3;
 + (id)entitledMessageWithName:(id)arg1 messagePayload:(id)arg2;
++ (id)homeLocationAuthorizedAndEntitledMessageWithName:(id)arg1 target:(id)arg2 messagePayload:(id)arg3;
 + (id)internalMessageWithName:(id)arg1 destination:(id)arg2 messagePayload:(id)arg3;
 + (id)internalMessageWithName:(id)arg1 messagePayload:(id)arg2;
 + (id)internalMessageWithName:(id)arg1 messagePayload:(id)arg2 responseHandler:(id /* block */)arg3;
@@ -115,7 +133,6 @@
 - (id)applicationBundleIdentifier;
 - (id)clientName;
 - (id)companionAppBundleIdentifier;
-- (id)effectiveLocationBundleIdentifier;
 - (id)hmd_safeUserInfo;
 - (bool)isAuthorizedForHomeDataAccess;
 - (bool)isAuthorizedForLocationAccess;
@@ -123,7 +140,10 @@
 - (bool)isBackground;
 - (bool)isEntitledForAPIAccess;
 - (bool)isEntitledForBackgroundMode;
+- (bool)isEntitledForHomeLocationAccess;
 - (bool)isEntitledForSPIAccess;
+- (bool)isEntitledForShortcutsAutomationAccess;
+- (bool)isEntitledToProvideAccessorySetupPayload;
 - (bool)isInternal;
 - (bool)isLocationAuthorized;
 - (bool)isRemote;
@@ -133,13 +153,18 @@
 - (id)remoteSourceDevice;
 - (id)remoteSourceID;
 - (id)remoteUserPairingIdentity;
+- (bool)requiresCameraClipsEntitlement;
+- (bool)requiresHomeLocationEntitlement;
+- (bool)requiresMultiUserSetupEntitlement;
 - (bool)requiresNoSPIEntitlement;
 - (bool)requiresSPIEntitlement;
+- (bool)requiresSetupPayloadEntitlement;
 - (void)sendResponseWithError:(id)arg1 payload:(id)arg2;
 - (int)sourcePid;
 - (bool)supportsRequestedFeature:(unsigned long long)arg1;
 - (bool)supportsRequiredFeature:(unsigned long long)arg1;
 - (id)teamIdentifier;
 - (id)transactionResult;
+- (id)userForHome:(id)arg1;
 
 @end

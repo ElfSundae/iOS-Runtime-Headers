@@ -5,6 +5,20 @@
 @interface GEOPDLocationDirectedSearchResult : PBCodable <NSCopying> {
     NSMutableArray * _disambiguationLabels;
     GEOMapRegion * _displayMapRegion;
+    struct { 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_disambiguationLabels : 1; 
+        unsigned int read_displayMapRegion : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_disambiguationLabels : 1; 
+        unsigned int wrote_displayMapRegion : 1; 
+    }  _flags;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     PBUnknownFields * _unknownFields;
 }
 
@@ -14,10 +28,15 @@
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 + (Class)disambiguationLabelType;
++ (bool)isValid:(id)arg1;
 
 - (void).cxx_destruct;
+- (void)_addNoFlagsDisambiguationLabel:(id)arg1;
+- (void)_readDisambiguationLabels;
+- (void)_readDisplayMapRegion;
 - (void)addDisambiguationLabel:(id)arg1;
 - (void)clearDisambiguationLabels;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -28,8 +47,11 @@
 - (id)displayMapRegion;
 - (bool)hasDisplayMapRegion;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setDisambiguationLabels:(id)arg1;
 - (void)setDisplayMapRegion:(id)arg1;

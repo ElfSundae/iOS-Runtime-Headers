@@ -18,7 +18,7 @@
 
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithMemory:(id)arg1;
+- (id)initWithMemory:(id)arg1 memoryInfo:(id)arg2;
 - (id)initWithOptions:(id)arg1;
 - (id)memory;
 - (id)name;

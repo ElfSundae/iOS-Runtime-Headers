@@ -6,9 +6,11 @@
     NSArray * _accessKeys;
     NSArray * _accountTypes;
     NSArray * _accounts;
-    ACDDatabase * _database;
+    ACDDatabaseConnection * _databaseConnection;
     NSArray * _dataclasses;
 }
+
++ (id)new;
 
 - (void).cxx_destruct;
 - (id)_accessKeyWithName:(id)arg1;
@@ -118,6 +120,7 @@
 - (void)_removeMessagesFromAOLSupportedDataclasses;
 - (void)_removeMessagesFromGoogleSupportedDataclasses;
 - (void)_removeMessengerFromYahooSupportedDataclasses;
+- (void)_removeRedundantDataclasses;
 - (id)_resultsForEntityNamed:(id)arg1;
 - (void)_setCloudKitAllowsMultipleAccounts;
 - (void)_setCloudKitCredentialType;
@@ -141,8 +144,8 @@
 - (void)_updateVimeoCredentialTypeToOAuth;
 - (void)_updateWeiboAccountTypeIfNecessary;
 - (void)_upgradeLinkedInAccountType;
-- (id)initWithDatabase:(id)arg1;
-- (void)insertAllDefaultContent;
-- (void)updateDefaultContent;
+- (id)init;
+- (id)initWithDatabaseConnection:(id)arg1;
+- (bool)updateDefaultContentIfNecessary:(id*)arg1;
 
 @end

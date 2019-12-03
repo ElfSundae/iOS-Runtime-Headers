@@ -98,6 +98,8 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })stickyViewFrameForNoteEditor:(id)arg1;
 - (bool)superviewDependentThingsWereSetUp;
 - (void)teardown;
+- (void)unregisterFromUndoManager:(id)arg1;
+- (void)updateOverlayViewLayers;
 - (void)updateScaleFactor:(double)arg1 isLiveUpdate:(bool)arg2 forceUpdate:(bool)arg3;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })visibleRectOfOverlay;
 

@@ -2,23 +2,20 @@
    Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
  */
 
-@interface HMDSecureRemoteMessageTransport : HMFMessageTransport <HMDRemoteDeviceMonitorDelegate, HMDSecureRemoteSessionDelegate, HMFDumpState, HMFLogging, HMFMessageTransportDelegate> {
-    NSObject<OS_dispatch_queue> * _clientQueue;
+@interface HMDSecureRemoteMessageTransport : HMFMessageTransport <HMDSecureRemoteSessionDelegate, HMFDumpState, HMFLogging, HMFMessageTransportDelegate> {
     NSMutableDictionary * _currentHomeConfigurations;
     HMDRemoteDeviceMonitor * _deviceMonitor;
-    NSObject<OS_dispatch_queue> * _propertyQueue;
+    NSObject<OS_dispatch_queue> * _queue;
     NSMutableSet * _secureRemoteSessions;
     HMDRemoteMessageNotifications * _sessionNotifications;
     NSArray * _transports;
 }
 
-@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *clientQueue;
 @property (nonatomic, retain) NSMutableDictionary *currentHomeConfigurations;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) HMDRemoteDeviceMonitor *deviceMonitor;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) NSObject<OS_dispatch_queue> *propertyQueue;
 @property (nonatomic, readonly) NSMutableSet *secureRemoteSessions;
 @property (nonatomic, retain) HMDRemoteMessageNotifications *sessionNotifications;
 @property (readonly) Class superclass;
@@ -46,7 +43,6 @@
 - (void)_sendSecureMessage:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)_updateDeviceInformationFromMessage:(id)arg1;
 - (id)accountRegistry;
-- (id)clientQueue;
 - (id)currentHomeConfigurations;
 - (void)dealloc;
 - (id)debugDescription;
@@ -60,7 +56,6 @@
 - (void)openSecureSessionToDevice:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)pingDevice:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)prepareAnswerForRequestedCapabilities:(id)arg1;
-- (id)propertyQueue;
 - (void)removeHome:(id)arg1;
 - (void)reset;
 - (void)secureRemoteSession:(id)arg1 didCloseWithError:(id)arg2;

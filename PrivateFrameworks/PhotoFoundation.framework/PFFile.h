@@ -10,6 +10,7 @@
     NSString * _uti;
 }
 
+@property (readonly) NSString *UTI;
 @property (readonly) NSDate *fileCreationDate;
 @property (readonly) NSString *fileExtension;
 @property (readonly) NSDate *fileModificationDate;
@@ -19,7 +20,6 @@
 @property (readonly) NSString *path;
 @property (nonatomic, readonly) unsigned long long pathHash;
 @property (readonly) NSURL *url;
-@property (readonly) NSString *uti;
 
 + (id)assetType:(id)arg1;
 + (bool)createEmptyFileAtURL:(id)arg1;
@@ -41,6 +41,7 @@
 + (id)uniqueFileSystemNameForName:(id)arg1 inDirectory:(id)arg2;
 
 - (void).cxx_destruct;
+- (id)UTI;
 - (id)assetType;
 - (id)attributes;
 - (const struct stat { int x1; unsigned short x2; unsigned short x3; unsigned long long x4; unsigned int x5; unsigned int x6; int x7; struct timespec { long long x_8_1_1; long long x_8_1_2; } x8; struct timespec { long long x_9_1_1; long long x_9_1_2; } x9; struct timespec { long long x_10_1_1; long long x_10_1_2; } x10; struct timespec { long long x_11_1_1; long long x_11_1_2; } x11; long long x12; long long x13; int x14; unsigned int x15; unsigned int x16; int x17; long long x18[2]; }*)cachedStat;
@@ -93,7 +94,6 @@
 - (void)unlock;
 - (id)unlockInFinder;
 - (id)url;
-- (id)uti;
 - (id)volume;
 
 @end

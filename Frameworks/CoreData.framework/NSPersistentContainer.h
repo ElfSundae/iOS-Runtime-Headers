@@ -17,12 +17,15 @@
 
 + (id)_newModelForName:(id)arg1;
 + (id)defaultDirectoryURL;
++ (id)persistentContainerUsingCachedModelWithPath:(id)arg1;
 + (id)persistentContainerWithName:(id)arg1;
 + (id)persistentContainerWithName:(id)arg1 managedObjectModel:(id)arg2;
 + (id)persistentContainerWithPath:(id)arg1;
 + (id)persistentContainerWithPath:(id)arg1 managedObjectModel:(id)arg2;
 + (id)persistentContainerWithPath:(id)arg1 modelNamed:(id)arg2;
++ (Class)persistentStoreDescriptionClass;
 
+- (void)_loadStoreDescriptons:(id)arg1 withCompletionHandler:(id /* block */)arg2;
 - (void)dealloc;
 - (id)init;
 - (id)initWithName:(id)arg1;

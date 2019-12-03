@@ -14,7 +14,6 @@
 
 - (void).cxx_destruct;
 - (id)activityCreate;
-- (bool)canBeUsedForOperation:(id)arg1;
 - (id)containerInfo;
 - (id)infoFetchedGroup;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;

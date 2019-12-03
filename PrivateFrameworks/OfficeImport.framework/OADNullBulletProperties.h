@@ -4,8 +4,6 @@
 
 @interface OADNullBulletProperties : OADBulletProperties
 
-+ (id)nullBulletProperties;
-
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
 

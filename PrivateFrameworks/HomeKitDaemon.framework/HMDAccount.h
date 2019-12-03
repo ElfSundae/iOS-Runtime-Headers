@@ -23,8 +23,9 @@
 @property (readonly, copy) HMDAccountIdentifier *identifier;
 @property (readonly, copy) NSArray *identities;
 @property <HMDAccountManager> *manager;
-@property (nonatomic, readonly) NSUUID *modelIdentifier;
-@property (nonatomic, readonly) NSUUID *modelParentIdentifier;
+@property (readonly) Class modelClass;
+@property (nonatomic, readonly, copy) NSUUID *modelIdentifier;
+@property (nonatomic, readonly, copy) NSUUID *modelParentIdentifier;
 @property (readonly, copy) NSString *name;
 @property (readonly, copy) HMDAccountHandle *primaryHandle;
 @property (readonly) bool shouldCache;
@@ -36,14 +37,13 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
-- (void)__notifyDelegateUpdatedDevice:(id)arg1;
 - (id)accountHandleWithModelIdentifier:(id)arg1;
 - (void)addDevice:(id)arg1;
 - (void)addHandle:(id)arg1;
 - (id)attributeDescriptions;
 - (id)backingStoreObjectsWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (id)contact;
-- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
+- (unsigned long long)countByEnumeratingWithState:(struct { unsigned long long x1; id *x2; unsigned long long *x3; unsigned long long x4[5]; }*)arg1 objects:(id*)arg2 count:(unsigned long long)arg3;
 - (id)currentDevice;
 - (id)currentDeviceModelsWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (id)destination;
@@ -65,12 +65,11 @@
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToAccount:(id)arg1;
 - (bool)isRelatedToAccount:(id)arg1;
-- (id)locallyTrackedAccountHandleModelsWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
-- (id)locallyTrackedDeviceModelsWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (id)logIdentifier;
 - (id)manager;
 - (bool)mergeObject:(id)arg1;
 - (id)modelBackedObjects;
+- (Class)modelClass;
 - (id)modelIdentifier;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (id)modelParentIdentifier;

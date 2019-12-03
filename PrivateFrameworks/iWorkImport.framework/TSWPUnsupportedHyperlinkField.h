@@ -8,11 +8,13 @@
 
 @property (nonatomic, copy) NSString *href;
 
++ (Class)classForUnarchiver:(id)arg1;
+
 - (void).cxx_destruct;
 - (bool)allowsPasteAsSmartField;
-- (id)bookmarkHyperlinkForUnarchiving;
 - (id)copyWithContext:(id)arg1;
 - (id)href;
+- (id)initFromSmartField:(id)arg1 href:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)saveToArchiver:(id)arg1;
 - (void)setHref:(id)arg1;

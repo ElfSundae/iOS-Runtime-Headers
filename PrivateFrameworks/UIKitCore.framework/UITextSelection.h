@@ -18,9 +18,11 @@
 @property (nonatomic, retain) UITextRange *initialExtent;
 @property (nonatomic, readonly) bool isCommitting;
 @property (nonatomic, retain) UITextRange *selectedRange;
+@property (nonatomic, readonly) bool willSelectionChange;
 
 - (void).cxx_destruct;
 - (id)_domRange;
+- (void)aggressivelyExpandSelectionToSmartSelectionContainingCaretSelection;
 - (void)aggressivelyExpandSelectionToWordContainingCaretSelection;
 - (void)alterSelection:(struct CGPoint { double x1; double x2; })arg1 granularity:(long long)arg2;
 - (void)alterSelectionGranularity:(long long)arg1;
@@ -44,6 +46,7 @@
 - (id)initialExtent;
 - (void)invalidate;
 - (bool)isCommitting;
+- (bool)isRangedSelectionSpanningDocument;
 - (void)moveCaretToBoundaryOfWhitespaceOrLine;
 - (unsigned long long)offsetInMarkedText;
 - (bool)pointAtEndOfLine:(struct CGPoint { double x1; double x2; })arg1;
@@ -54,6 +57,7 @@
 - (void)selectionChanged;
 - (id)selectionRects;
 - (void)setBase:(id)arg1;
+- (void)setGranularRangedSelectionWithExtentPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setGranularity:(long long)arg1;
 - (void)setHybridSelectionWithPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setInitialExtent:(id)arg1;
@@ -69,6 +73,7 @@
 - (void)setSelectionWithFirstPoint:(struct CGPoint { double x1; double x2; })arg1 secondPoint:(struct CGPoint { double x1; double x2; })arg2;
 - (void)setSelectionWithPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (void)smartExtendRangedSelection:(int)arg1 downstream:(bool)arg2;
+- (bool)willSelectionChange;
 - (id)wordContainingCaretSelection;
 
 @end

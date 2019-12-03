@@ -15,6 +15,7 @@
 
 - (void).cxx_destruct;
 - (void)addSubAttachment:(id)arg1;
+- (id)additionalIndexableTextContentInNote;
 - (void)attachmentDidRefresh:(bool)arg1;
 - (bool)attachmentHasMergeableData;
 - (id)attachmentIdentifiersOrderedSet;
@@ -30,13 +31,18 @@
 - (unsigned long long)indexOfSubAttachmentWithIdentifier:(id)arg1;
 - (void)insertSubAttachment:(id)arg1 atIndex:(unsigned long long)arg2;
 - (bool)mergeWithMergeableData:(id)arg1;
+- (long long)previewImageOrientation;
 - (id)previewImageTypeUTI;
+- (bool)providesStandaloneTitleForNote;
 - (void)removeSubAttachment:(id)arg1;
+- (id)searchableStringArray;
+- (id)searchableTextContent;
 - (short)sectionForSubAttachments;
 - (void)setAttachmentIdentifiersOrderedSetDocument:(id)arg1;
 - (bool)shouldGeneratePreviewAfterChangeInSubAttachmentWithIdentifier:(id)arg1;
 - (bool)showThumbnailInNoteList;
 - (id)singleSubAttachmentAtIndex:(unsigned long long)arg1;
+- (id)standaloneTitleForNote;
 - (id)subAttachmentIdentifierAtIndex:(unsigned long long)arg1;
 - (id)subAttachmentIdentifiers;
 - (unsigned long long)subAttachmentsCount;
@@ -49,8 +55,9 @@
 // Image: /System/Library/PrivateFrameworks/NotesUI.framework/NotesUI
 
 - (id)activityItems;
+- (void)drawPreviewInRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)fileURLForTypeIdentifier:(id)arg1;
-- (void)generatePreviewsInOperation:(id)arg1;
+- (bool)generatePreviewsInOperation:(id)arg1;
 - (id /* block */)genericBrickThumbnailCreator;
 - (id /* block */)genericListThumbnailCreator;
 - (bool)needToGeneratePreviews;

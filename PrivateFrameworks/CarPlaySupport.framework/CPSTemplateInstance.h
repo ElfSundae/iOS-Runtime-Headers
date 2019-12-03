@@ -5,7 +5,7 @@
 @interface CPSTemplateInstance : NSObject <CPBannerDelegate, CPSSafeAreaDelegate, CPSTemplateViewControllerDelegate, CPTemplateProviding, NSXPCListenerDelegate, UINavigationControllerDelegate> {
     NSUUID * _actionSheetIdentifier;
     CPSApplicationStateMonitor * _applicationStateMonitor;
-    CPSBannerSource * _bannerSource;
+    CPSBannerSourceProxy * _bannerSourceProxy;
     NSXPCConnection * _connection;
     <CPSTemplateInstanceDelegate> * _delegate;
     NSMutableDictionary * _identifierToViewControllerDictionary;
@@ -19,7 +19,7 @@
 
 @property (nonatomic, copy) NSUUID *actionSheetIdentifier;
 @property (nonatomic, retain) CPSApplicationStateMonitor *applicationStateMonitor;
-@property (nonatomic, retain) CPSBannerSource *bannerSource;
+@property (nonatomic, retain) CPSBannerSourceProxy *bannerSourceProxy;
 @property (nonatomic, retain) NSXPCConnection *connection;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, readonly) <CPSTemplateInstanceDelegate> *delegate;
@@ -39,7 +39,7 @@
 - (id)applicationStateMonitor;
 - (void)bannerDidAppearWithIdentifier:(id)arg1;
 - (void)bannerDidDisappearWithIdentifier:(id)arg1;
-- (id)bannerSource;
+- (id)bannerSourceProxy;
 - (void)bannerTappedWithIdentifier:(id)arg1;
 - (id)connection;
 - (void)containsTemplate:(id)arg1 reply:(id /* block */)arg2;
@@ -53,6 +53,7 @@
 - (void)getTopTemplateWithReply:(id /* block */)arg1;
 - (id)identifierToViewControllerDictionary;
 - (id)initWithSceneIdentifier:(id)arg1 delegate:(id)arg2;
+- (id)initWithWindowScene:(id)arg1;
 - (id)listener;
 - (bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(bool)arg3;
@@ -62,25 +63,21 @@
 - (void)popToTemplate:(id)arg1 animated:(id)arg2;
 - (void)presentActionSheetTemplate:(id)arg1 withProxyDelegate:(id)arg2 animated:(id)arg3;
 - (void)presentAlertTemplate:(id)arg1 withProxyDelegate:(id)arg2;
-- (void)presentVoiceTemplate:(id)arg1 animated:(id)arg2;
-- (void)pushGridTemplate:(id)arg1 animated:(id)arg2 presentationStyle:(unsigned long long)arg3;
-- (void)pushListTemplate:(id)arg1 animated:(id)arg2 presentationStyle:(unsigned long long)arg3;
-- (void)pushMapTemplate:(id)arg1 animated:(id)arg2 presentationStyle:(unsigned long long)arg3;
-- (void)pushSearchTemplate:(id)arg1 animated:(id)arg2 presentationStyle:(unsigned long long)arg3;
+- (void)presentVoiceTemplate:(id)arg1 withProxyDelegate:(id)arg2 animated:(id)arg3 reply:(id /* block */)arg4;
+- (void)pushGridTemplate:(id)arg1 withProxyDelegate:(id)arg2 animated:(id)arg3 presentationStyle:(unsigned long long)arg4 reply:(id /* block */)arg5;
+- (void)pushListTemplate:(id)arg1 withProxyDelegate:(id)arg2 animated:(id)arg3 presentationStyle:(unsigned long long)arg4 reply:(id /* block */)arg5;
+- (void)pushMapTemplate:(id)arg1 withProxyDelegate:(id)arg2 animated:(id)arg3 presentationStyle:(unsigned long long)arg4 reply:(id /* block */)arg5;
+- (void)pushSearchTemplate:(id)arg1 withProxyDelegate:(id)arg2 animated:(id)arg3 presentationStyle:(unsigned long long)arg4 reply:(id /* block */)arg5;
 - (id)remoteObjectProxy;
 - (void)requestBannerProviderWithReply:(id /* block */)arg1;
-- (void)requestGridTemplateProviderForInterface:(id)arg1 withProxyDelegate:(id)arg2 reply:(id /* block */)arg3;
-- (void)requestListTemplateProviderForTemplate:(id)arg1 withProxyDelegate:(id)arg2 reply:(id /* block */)arg3;
-- (void)requestMapTemplateProviderForTemplate:(id)arg1 withProxyDelegate:(id)arg2 reply:(id /* block */)arg3;
-- (void)requestSearchTemplateProviderForTemplate:(id)arg1 withProxyDelegate:(id)arg2 reply:(id /* block */)arg3;
-- (void)requestVoiceControlProviderForTemplate:(id)arg1 withProxyDelegate:(id)arg2 reply:(id /* block */)arg3;
 - (id)rootMapController;
 - (id)scene;
 - (id)sceneIdentifier;
 - (void)setActionSheetIdentifier:(id)arg1;
 - (void)setApplicationStateMonitor:(id)arg1;
-- (void)setBannerSource:(id)arg1;
+- (void)setBannerSourceProxy:(id)arg1;
 - (void)setConnection:(id)arg1;
+- (void)setHostPrefersDarkUserInterfaceStyle:(bool)arg1;
 - (void)setIdentifierToViewControllerDictionary:(id)arg1;
 - (void)setListener:(id)arg1;
 - (void)setOverlayViewController:(id)arg1;

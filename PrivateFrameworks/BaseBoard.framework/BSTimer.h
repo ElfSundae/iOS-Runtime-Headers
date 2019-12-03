@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/BaseBoard.framework/BaseBoard
  */
 
-@interface BSTimer : NSObject {
+@interface BSTimer : NSObject <BSTimer> {
     NSObject<OS_dispatch_queue> * _callOutQueue;
     unsigned long long  _fireCount;
     double  _fireInterval;
@@ -16,11 +16,15 @@
     double  _startTime;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) unsigned long long fireCount;
 @property (nonatomic, readonly) double fireInterval;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) double repeatInterval;
 @property (getter=isScheduled, nonatomic, readonly) bool scheduled;
 @property (nonatomic, readonly) double startTime;
+@property (readonly) Class superclass;
 
 + (id)scheduledTimerWithFireInterval:(double)arg1 queue:(id)arg2 handler:(id /* block */)arg3;
 

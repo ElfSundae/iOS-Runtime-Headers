@@ -3,6 +3,7 @@
  */
 
 @interface NTCatchUpOperationForYouRequest : NSObject <NSCopying> {
+    <FCBundleSubscriptionProviderType> * _bundleSubscriptionProvider;
     long long  _cutoffTime;
     long long  _fetchingBin;
     unsigned long long  _headlinesPerFeedFetchCount;
@@ -14,6 +15,7 @@
     NSString * _topStoriesChannelID;
 }
 
+@property (nonatomic, readonly, copy) <FCBundleSubscriptionProviderType> *bundleSubscriptionProvider;
 @property (nonatomic, readonly) long long cutoffTime;
 @property (nonatomic, readonly) long long fetchingBin;
 @property (nonatomic, readonly) unsigned long long headlinesPerFeedFetchCount;
@@ -25,13 +27,14 @@
 @property (nonatomic, readonly, copy) NSString *topStoriesChannelID;
 
 - (void).cxx_destruct;
+- (id)bundleSubscriptionProvider;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (long long)cutoffTime;
 - (long long)fetchingBin;
 - (unsigned long long)headlinesPerFeedFetchCount;
 - (id)hiddenFeedIDs;
 - (id)init;
-- (id)initWithForYouTodaySectionSpecificConfig:(id)arg1 topStoriesChannelID:(id)arg2 hiddenFeedIDs:(id)arg3 paidBundleFeedID:(id)arg4 mutedTagIDs:(id)arg5 purchasedTagIDs:(id)arg6 subscribedTagIDs:(id)arg7;
+- (id)initWithForYouTodaySectionSpecificConfig:(id)arg1 topStoriesChannelID:(id)arg2 hiddenFeedIDs:(id)arg3 paidBundleFeedID:(id)arg4 mutedTagIDs:(id)arg5 purchasedTagIDs:(id)arg6 subscribedTagIDs:(id)arg7 bundleSubscriptionProvider:(id)arg8;
 - (id)mutedTagIDs;
 - (id)paidBundleFeedID;
 - (id)purchasedTagIDs;

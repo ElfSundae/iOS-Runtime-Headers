@@ -2,11 +2,21 @@
    Image: /System/Library/Frameworks/Foundation.framework/Foundation
  */
 
-@interface NSCoder : NSObject <MTCoder>
+@interface NSCoder : NSObject <BSXPCDecoding, BSXPCEncoding, MTSerializer>
 
+@property (nonatomic, readonly) UIStoryboardDecodingContext *_storyboardDecodingContext;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) FPXPCSanitizer *fp_sanitizer;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hmd_homeManagerOptions;
 @property (readonly) HMFMessage *hmd_message;
+@property (setter=msv_setUserInfo:, nonatomic, copy) NSDictionary *msv_userInfo;
+@property (nonatomic, readonly) NSCoder *mtCoder;
+@property (nonatomic, readonly) unsigned long long mtType;
 @property (getter=isSharedUser, readonly) bool sharedUser;
+@property (readonly) Class superclass;
+@property (nonatomic, retain) WFFileCoder *wfFileCoder;
 @property (getter=isXPCTransport, readonly) bool xpcTransport;
 
 // Image: /System/Library/Frameworks/Foundation.framework/Foundation
@@ -102,11 +112,13 @@
 - (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[3]; })decodeMatrix3x3ForKey:(id)arg1;
 - (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })decodeMatrix4x3ForKey:(id)arg1;
 - (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })decodeMatrix4x4ForKey:(id)arg1;
+- (void)decodeVector2ForKey:(id)arg1;
 - (void)decodeVector3ForKey:(id)arg1;
 - (void)encodeCMRotationMatrix:(struct { double x1; double x2; double x3; double x4; double x5; double x6; double x7; double x8; double x9; })arg1 forKey:(id)arg2;
 - (void)encodeMatrix3x3:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[3]; })arg1 forKey:(id)arg2;
 - (void)encodeMatrix4x3:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })arg1 forKey:(id)arg2;
 - (void)encodeMatrix4x4:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })arg1 forKey:(id)arg2;
+- (void)encodeVector2:(void *)arg1 forKey:(void *)arg2; // needs 2 arg types, found 1: id
 - (void)encodeVector3:(void *)arg1 forKey:(void *)arg2; // needs 2 arg types, found 1: id
 
 // Image: /System/Library/Frameworks/AVFoundation.framework/AVFoundation
@@ -123,7 +135,14 @@
 - (id)ls_decodeArrayWithValuesOfClass:(Class)arg1 forKey:(id)arg2;
 - (id)ls_decodeDictionaryWithKeysOfClass:(Class)arg1 valuesOfClass:(Class)arg2 forKey:(id)arg3;
 - (id)ls_decodeDictionaryWithKeysOfClass:(Class)arg1 valuesOfClasses:(id)arg2 forKey:(id)arg3;
+- (id)ls_decodeObjectOfClass:(Class)arg1 forKey:(id)arg2;
+- (id)ls_decodeObjectOfClasses:(id)arg1 forKey:(id)arg2;
 - (id)ls_decodeSetWithValuesOfClass:(Class)arg1 forKey:(id)arg2;
+
+// Image: /System/Library/Frameworks/FileProvider.framework/FileProvider
+
+- (bool)fp_checkProviderIdentifier:(id)arg1;
+- (id)fp_sanitizer;
 
 // Image: /System/Library/Frameworks/HomeKit.framework/HomeKit
 
@@ -131,6 +150,27 @@
 - (id)decodeSetOfConditionalObjects:(Class)arg1 forKey:(id)arg2;
 - (void)encodeArrayOfConditionalObjects:(id)arg1 forKey:(id)arg2;
 - (void)encodeSetOfConditionalObjects:(id)arg1 forKey:(id)arg2;
+
+// Image: /System/Library/Frameworks/LinkPresentation.framework/LinkPresentation
+
+- (void)_lp_encodeArrayIfNotEmpty:(id)arg1 forKey:(id)arg2;
+- (void)_lp_encodeColorIfNotNil:(id)arg1 forKey:(id)arg2;
+- (void)_lp_encodeObjectIfNotNil:(id)arg1 forKey:(id)arg2;
+- (void)_lp_encodeURLIfNotNilOrLocalFile:(id)arg1 forKey:(id)arg2;
+- (id)_lp_strictlyDecodeArrayOfLPImagesForKey:(id)arg1;
+- (id)_lp_strictlyDecodeArrayOfObjectsOfClass:(Class)arg1 forKey:(id)arg2;
+- (id)_lp_strictlyDecodeArrayOfObjectsOfClasses:(id)arg1 forKey:(id)arg2;
+- (id)_lp_strictlyDecodeColorForKey:(id)arg1;
+- (id)_lp_strictlyDecodeDictionaryOfObjectsWithKeysOfClass:(Class)arg1 andObjectsOfClass:(Class)arg2 forKey:(id)arg3;
+- (id)_lp_strictlyDecodeLPImageForKey:(id)arg1;
+- (id)_lp_strictlyDecodeLPVideoForKey:(id)arg1;
+- (id)_lp_strictlyDecodeNSAttributedStringForKey:(id)arg1;
+- (id)_lp_strictlyDecodeNSDataForKey:(id)arg1;
+- (id)_lp_strictlyDecodeNSStringForKey:(id)arg1;
+- (id)_lp_strictlyDecodeObjectOfClass:(Class)arg1 forKey:(id)arg2;
+- (id)_lp_strictlyDecodeObjectOfClasses:(id)arg1 forKey:(id)arg2;
+- (id)_lp_strictlyDecodeTopLevelObjectOfClass:(Class)arg1 forKey:(id)arg2 error:(id*)arg3;
+- (id)_lp_strictlyDecodeTopLevelObjectOfClasses:(id)arg1 forKey:(id)arg2 error:(id*)arg3;
 
 // Image: /System/Library/Frameworks/Photos.framework/Photos
 
@@ -165,6 +205,25 @@
 - (void)vn_encodeCGAffineTransform:(struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })arg1 forKey:(id)arg2;
 - (void)vn_encodeCodingVersion:(unsigned int)arg1 forKey:(id)arg2;
 
+// Image: /System/Library/PrivateFrameworks/ARDisplayDevice.framework/ARDisplayDevice
+
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arddDecodeCGRectForKey:(id)arg1;
+- (struct { double x1; double x2; double x3; double x4; double x5; double x6; })arddDecodeMTLViewportForKey:(id)arg1;
+- (struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })arddDecodeMatrixFloat4x4ForKey:(id)arg1;
+- (void)arddDecodeVectorFloat2ForKey:(id)arg1;
+- (void)arddDecodeVectorFloat3ForKey:(id)arg1;
+- (void)arddDecodeVectorFloat4ForKey:(id)arg1;
+- (void)arddDecodeVectorUint2ForKey:(id)arg1;
+- (void)arddEncodeCGRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 forKey:(id)arg2;
+- (void)arddEncodeMTLViewport:(struct { double x1; double x2; double x3; double x4; double x5; double x6; })arg1 forKey:(id)arg2;
+- (void)arddEncodeMatrixFloat4x4:(struct { /* Warning: Unrecognized filer type: ']' using 'void*' */ void*x1[4]; })arg1 forKey:(id)arg2;
+- (void)arddEncodeVectorFloat2:(void *)arg1 forKey:(void *)arg2; // needs 2 arg types, found 1: id
+- (void)arddEncodeVectorFloat3:(void *)arg1 forKey:(void *)arg2; // needs 2 arg types, found 1: id
+- (void)arddEncodeVectorFloat4:(void *)arg1 forKey:(void *)arg2; // needs 2 arg types, found 1: id
+- (void)arddEncodeVectorUint2:(void *)arg1 forKey:(void *)arg2; // needs 2 arg types, found 1: id
+- (struct { double x1; double x2; double x3; double x4; })decodeConfigViewForKey:(id)arg1;
+- (void)encodeConfigView:(struct { double x1; double x2; double x3; double x4; })arg1 forKey:(id)arg2;
+
 // Image: /System/Library/PrivateFrameworks/AXMediaUtilities.framework/AXMediaUtilities
 
 - (struct CGPoint { double x1; double x2; })axmDecodePointForKey:(id)arg1;
@@ -185,12 +244,28 @@
 
 - (id)_bcs_strictlyDecodeObjectOfClass:(Class)arg1 forKey:(id)arg2;
 
-// Image: /System/Library/PrivateFrameworks/CoreUI.framework/CoreUI
+// Image: /System/Library/PrivateFrameworks/BaseBoard.framework/BaseBoard
 
-- (unsigned long long)decodeTheme;
-- (unsigned long long)decodeThemeForKey:(id)arg1;
-- (void)encodeTheme:(unsigned long long)arg1;
-- (void)encodeTheme:(unsigned long long)arg1 forKey:(id)arg2;
+- (struct CGPoint { double x1; double x2; })decodeCGPointForKey:(id)arg1;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })decodeCGRectForKey:(id)arg1;
+- (struct CGSize { double x1; double x2; })decodeCGSizeForKey:(id)arg1;
+- (id)decodeCollectionOfClass:(Class)arg1 containingClass:(Class)arg2 forKey:(id)arg3;
+- (id)decodeStringForKey:(id)arg1;
+- (unsigned long long)decodeUInt64ForKey:(id)arg1;
+- (void)encodeCGPoint:(struct CGPoint { double x1; double x2; })arg1 forKey:(id)arg2;
+- (void)encodeCGRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 forKey:(id)arg2;
+- (void)encodeCGSize:(struct CGSize { double x1; double x2; })arg1 forKey:(id)arg2;
+- (void)encodeCollection:(id)arg1 forKey:(id)arg2;
+- (void)encodeUInt64:(unsigned long long)arg1 forKey:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/ContentKit.framework/ContentKit
+
+- (void)setWfFileCoder:(id)arg1;
+- (id)wfFileCoder;
+
+// Image: /System/Library/PrivateFrameworks/EmailFoundation.framework/EmailFoundation
+
+- (bool)ef_isNSXPCCoder;
 
 // Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
 
@@ -200,14 +275,18 @@
 // Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
 
 - (id)applicationBundleIdentifier;
+- (long long)dataVersion;
 - (id)decodeArrayOfConditionalObjects:(Class)arg1 forKey:(id)arg2;
 - (id)decodeSetOfConditionalObjects:(Class)arg1 forKey:(id)arg2;
 - (void)encodeArrayOfConditionalObjects:(id)arg1 forKey:(id)arg2;
 - (void)encodeSetOfConditionalObjects:(id)arg1 forKey:(id)arg2;
 - (unsigned long long)hmd_homeManagerOptions;
 - (id)hmd_message;
+- (bool)isAtLeastDataVersion4;
 - (bool)isAuthorizedForLocationAccess;
+- (bool)isEntitledForHomeLocationAccess;
 - (bool)isEntitledForSPIAccess;
+- (bool)isEntitledToProvideAccessorySetupPayload;
 - (bool)isForNonAdminSharedUser;
 - (bool)isLocalStore;
 - (bool)isRemoteGatewayCoder;
@@ -219,25 +298,20 @@
 - (id)supportedFeatures;
 - (id)user;
 
-// Image: /System/Library/PrivateFrameworks/LinkPresentation.framework/LinkPresentation
+// Image: /System/Library/PrivateFrameworks/IntentsFoundation.framework/IntentsFoundation
 
-- (void)_lp_encodeArrayIfNotEmpty:(id)arg1 forKey:(id)arg2;
-- (void)_lp_encodeObjectIfNotNil:(id)arg1 forKey:(id)arg2;
-- (id)_lp_strictlyDecodeArrayOfObjectsOfClass:(Class)arg1 forKey:(id)arg2;
-- (id)_lp_strictlyDecodeDictionaryOfObjectsWithKeysOfClass:(Class)arg1 andObjectsOfClass:(Class)arg2 forKey:(id)arg3;
-- (id)_lp_strictlyDecodeObjectOfClass:(Class)arg1 forKey:(id)arg2;
+- (id)if_decodeBytesNoCopyForKey:(id)arg1;
+- (void)if_encodeBytesNoCopy:(id)arg1 forKey:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/MediaServices.framework/MediaServices
+
+- (void)msv_setUserInfo:(id)arg1;
+- (id)msv_userInfo;
 
 // Image: /System/Library/PrivateFrameworks/MobileTimer.framework/MobileTimer
 
-- (bool)mt_isReadingFromPersistence;
-- (bool)mt_isWritingToPersistence;
-- (bool)mt_isWritingToStorage;
-
-// Image: /System/Library/PrivateFrameworks/PhotoEditSupport.framework/PhotoEditSupport
-
-- (void)decodeObjectsForKeys:(id)arg1 forObject:(id)arg2;
-- (void)encodeObjectIfNotNil:(id)arg1 forKey:(id)arg2;
-- (void)encodeObjectsForKeys:(id)arg1 forObject:(id)arg2;
+- (id)mtCoder;
+- (unsigned long long)mtType;
 
 // Image: /System/Library/PrivateFrameworks/PhysicsKit.framework/PhysicsKit
 
@@ -247,6 +321,15 @@
 - (void)encodeCGPoint:(struct CGPoint { double x1; double x2; })arg1 forKey:(id)arg2;
 - (void)encodeCGSize:(struct CGSize { double x1; double x2; })arg1 forKey:(id)arg2;
 - (void)encodeCGVector:(struct CGVector { double x1; double x2; })arg1 forKey:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/SharedWebCredentials.framework/SharedWebCredentials
+
+- (id)swc_decodeObjectOfClass:(Class)arg1 forKey:(id)arg2;
+- (id)swc_decodeObjectOfClasses:(id)arg1 forKey:(id)arg2;
+
+// Image: /System/Library/PrivateFrameworks/SidecarCore.framework/SidecarCore
+
+- (id)decodeObjectOfClass:(Class)arg1;
 
 // Image: /System/Library/PrivateFrameworks/SpotlightServices.framework/SpotlightServices
 
@@ -266,6 +349,13 @@
 
 // Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 
+- (void)_createStoryboardDecodingContextIfNeeded;
+- (id)_decodeObjectsAndTrackChildViewControllerIndexWithParent:(id)arg1 forKey:(id)arg2;
+- (id)_decodeObjectsWithSourceSegueTemplate:(id)arg1 creator:(id /* block */)arg2 sender:(id)arg3 forKey:(id)arg4;
+- (void)_initializeClassSwapperWithCurrentDecodingViewControllerIfNeeded:(id)arg1;
+- (id)_storyboardDecodingContext;
+- (id)_ui_decodeTextAttributesForKey:(id)arg1;
+- (void)_ui_encodeTextAttributes:(id)arg1 forKey:(id)arg2;
 - (bool)_ui_isInterprocess;
 - (struct CGAffineTransform { double x1; double x2; double x3; double x4; double x5; double x6; })decodeCGAffineTransformForKey:(id)arg1;
 - (struct CGPoint { double x1; double x2; })decodeCGPointForKey:(id)arg1;

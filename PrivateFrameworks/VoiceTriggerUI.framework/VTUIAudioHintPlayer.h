@@ -19,6 +19,7 @@
 
 - (void).cxx_destruct;
 - (id)_audioHintPathForFileName:(id)arg1;
+- (id)_getTrainingPageAudioHintFiles;
 - (bool)_hasValidHints;
 - (void)_setupHints;
 - (bool)_systemLanguageMatchesSiriLanguage:(id)arg1 siriLanguage:(id)arg2;

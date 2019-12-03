@@ -52,7 +52,9 @@
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, readonly) UILabel *titleLabel;
 
-+ (id)placeholderFilters;
++ (id)_gaussianBlurFilter;
++ (id)darkPlaceholderFilters;
++ (id)lightPlaceholderFilters;
 + (void)preloadResources;
 + (double)scaledSubtitleBaselineDistance;
 + (double)scaledSuggestionBaselineDistance;
@@ -68,6 +70,7 @@
 - (void)_contentSizeCategoryDidChange:(id)arg1;
 - (void)_handleChangedAsset:(id)arg1;
 - (void)_updateAssetView;
+- (void)_updateAssetViewAnimatedContentEnabled;
 - (void)_updateAssetViewPlaceholderFilters;
 - (void)_updateBadgeContents;
 - (void)_updateBadgeViews;
@@ -93,6 +96,7 @@
 - (id)mediaProvider;
 - (long long)mode;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
+- (id)previewAssetView;
 - (id)roundedOverlayView;
 - (void)setAssetContentHidden:(bool)arg1;
 - (void)setAssetView:(id)arg1;

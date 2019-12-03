@@ -8,6 +8,7 @@
     NSObject<OS_os_log> * _telemetryLog;
     NSObject<OS_dispatch_source> * _timer;
     double  _timerScale;
+    struct MTLTelemetryAnisoClippedCountsRec { unsigned int x1[4]; } * anisoClippedCounts;
     struct MTLTelemetryStatisticUIRec { unsigned int x1; unsigned int x2; unsigned long long x3; unsigned int x4; } * attachmentCount;
     struct MTLTelemetryStencilStateDistributionRec { unsigned int x1[8][8]; unsigned int x2[8][8]; unsigned int x3[8][8]; } * backFaceStencilStateDistribution;
     struct MTLTelemetryStatisticUIRec { unsigned int x1; unsigned int x2; unsigned long long x3; unsigned int x4; } * blitEncoderBlitDistribution;

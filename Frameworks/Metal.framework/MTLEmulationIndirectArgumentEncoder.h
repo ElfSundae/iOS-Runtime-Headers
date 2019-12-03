@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Metal.framework/Metal
  */
 
-@interface MTLEmulationIndirectArgumentEncoder : _MTLIndirectArgumentEncoder <MTLIndirectArgumentEncoderSPI> {
+@interface MTLEmulationIndirectArgumentEncoder : _MTLIndirectArgumentEncoder <MTLArgumentEncoderSPI> {
     char * _destination;
     MTLEmulationIndirectArgumentBufferLayout * _emulationLayout;
 }
@@ -22,11 +22,12 @@
 - (void)dealloc;
 - (unsigned long long)encodedLength;
 - (id)initWithLayout:(id)arg1 device:(id)arg2;
+- (id)newArgumentEncoderForBufferAtIndex:(unsigned long long)arg1;
+- (void)setArgumentBuffer:(id)arg1 offset:(unsigned long long)arg2;
 - (void)setBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setBuffers:(const id*)arg1 offsets:(const unsigned long long*)arg2 withRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3;
 - (void)setComputePipelineState:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)setComputePipelineStates:(const id*)arg1 withRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
-- (void)setIndirectArgumentBuffer:(id)arg1 offset:(unsigned long long)arg2;
 - (void)setRenderPipelineState:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)setRenderPipelineStates:(const id*)arg1 withRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (void)setSamplerState:(id)arg1 atIndex:(unsigned long long)arg2;

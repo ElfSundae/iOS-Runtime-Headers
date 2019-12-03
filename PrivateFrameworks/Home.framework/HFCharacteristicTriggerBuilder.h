@@ -33,6 +33,7 @@
 - (void)setTriggerEvents:(id)arg1;
 - (bool)supportsConditions;
 - (bool)supportsEndEvents;
+- (id)thresholdValueForCharacteristic:(id)arg1 thresholdValueRange:(id)arg2;
 - (id)triggerEvents;
 - (bool)wouldFireForCharacteristic:(id)arg1 value:(id)arg2;
 

@@ -20,6 +20,8 @@
     unsigned int  _hotspotInfo;
     NSUUID * _identifier;
     NSString * _idsIdentifier;
+    NSString * _mediaRemoteID;
+    NSString * _mediaRouteID;
     NSString * _model;
     NSString * _name;
     bool  _needsAWDL;
@@ -28,6 +30,7 @@
     unsigned char  _osVersion;
     bool  _paired;
     unsigned long long  _problemFlags;
+    NSString * _rapportIdentifier;
     NSString * _requestSSID;
     unsigned int  _systemPairState;
     bool  _wakeDevice;
@@ -55,6 +58,8 @@
 @property (nonatomic) unsigned int hotspotInfo;
 @property (nonatomic, copy) NSUUID *identifier;
 @property (nonatomic, copy) NSString *idsIdentifier;
+@property (nonatomic, readonly, copy) NSString *mediaRemoteID;
+@property (nonatomic, readonly, copy) NSString *mediaRouteID;
 @property (nonatomic, copy) NSString *model;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, readonly) bool needsAWDL;
@@ -64,6 +69,7 @@
 @property (nonatomic) unsigned char osVersion;
 @property (nonatomic) bool paired;
 @property (nonatomic, readonly) unsigned long long problemFlags;
+@property (nonatomic, readonly) NSString *rapportIdentifier;
 @property (nonatomic, copy) NSString *requestSSID;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned int systemPairState;
@@ -98,6 +104,8 @@
 - (id)idsIdentifier;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)mediaRemoteID;
+- (id)mediaRouteID;
 - (id)model;
 - (id)name;
 - (bool)needsAWDL;
@@ -107,6 +115,7 @@
 - (unsigned char)osVersion;
 - (bool)paired;
 - (unsigned long long)problemFlags;
+- (id)rapportIdentifier;
 - (id)requestSSID;
 - (void)setAccountID:(id)arg1;
 - (void)setAutoUnlockEnabled:(bool)arg1;

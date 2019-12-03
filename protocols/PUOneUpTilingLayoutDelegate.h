@@ -9,7 +9,7 @@
 - (struct CGPoint { double x1; double x2; })layout:(PUOneUpTilingLayout *)arg1 accessoryOffsetForItemAtIndexPath:(NSIndexPath *)arg2;
 - (double)layout:(PUOneUpTilingLayout *)arg1 aspectRatioForItemAtIndexPath:(NSIndexPath *)arg2;
 - (struct CGSize { double x1; double x2; })layout:(PUOneUpTilingLayout *)arg1 assetExplorerReviewScreenBadgeSizeForItemAtIndexPath:(NSIndexPath *)arg2;
-- (struct CGSize { double x1; double x2; })layout:(PUOneUpTilingLayout *)arg1 badgeSizeForItemAtIndexPath:(NSIndexPath *)arg2;
+- (struct CGSize { double x1; double x2; })layout:(PUOneUpTilingLayout *)arg1 badgeSizeForItemAtIndexPath:(NSIndexPath *)arg2 contentWidth:(double)arg3;
 - (struct CGPoint { double x1; double x2; })layout:(PUOneUpTilingLayout *)arg1 contentOffsetForItemAtIndexPath:(NSIndexPath *)arg2;
 - (bool)layout:(PUOneUpTilingLayout *)arg1 disableInitialZoomToFillForItemAtIndexPath:(NSIndexPath *)arg2;
 - (struct CGSize { double x1; double x2; })layout:(PUOneUpTilingLayout *)arg1 loadingIndicatorSizeForItemAtIndexPath:(NSIndexPath *)arg2;

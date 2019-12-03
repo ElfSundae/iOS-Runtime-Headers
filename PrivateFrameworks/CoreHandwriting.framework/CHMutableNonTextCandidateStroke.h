@@ -4,16 +4,15 @@
 
 @interface CHMutableNonTextCandidateStroke : CHNonTextCandidateStroke
 
-@property (nonatomic) bool active;
-@property (nonatomic) double support;
 @property (nonatomic, retain) NSDictionary *supportByStrokeIdentifier;
 
-- (bool)_adjustSupportForContainerClassificationWithStroke:(id)arg1 consistingOfSubstrokes:(id)arg2;
-- (bool)_adjustSupportForLineClassificationWithStroke:(id)arg1 consistingOfSubstrokes:(id)arg2;
-- (bool)adjustSupportWithStroke:(id)arg1 consistingOfSubstrokes:(id)arg2;
-- (void)setActive:(bool)arg1;
-- (void)setSupport:(double)arg1;
+- (bool)_adjustSupportForContainerClassificationByAddingStroke:(id)arg1 consistingOfSubstrokes:(id)arg2;
+- (bool)_adjustSupportForLineClassificationByAddingStroke:(id)arg1 consistingOfSubstrokes:(id)arg2;
+- (bool)_removeSupportForStrokeIdentifier:(id)arg1;
+- (void)_setSupportForStrokeIdentifier:(id)arg1 support:(double)arg2;
+- (bool)adjustSupportByAddingStroke:(id)arg1 consistingOfSubstrokes:(id)arg2;
+- (bool)adjustSupportByRemovingStrokeIdentifier:(id)arg1;
+- (id)description;
 - (void)setSupportByStrokeIdentifier:(id)arg1;
-- (bool)updateByRemovingStrokeIdentifier:(id)arg1;
 
 @end

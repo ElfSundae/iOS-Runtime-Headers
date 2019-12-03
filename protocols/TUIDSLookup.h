@@ -5,7 +5,6 @@
 
 @required
 
-- (NSString *)idsCanonicalDestination;
 - (NSArray *)idsCanonicalDestinations;
 
 @end

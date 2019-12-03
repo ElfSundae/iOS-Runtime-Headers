@@ -34,6 +34,7 @@
 - (void)presentComponentWithChanges:(struct { bool x1; bool x2; })arg1;
 - (void)provideInfosLayoutTo:(id)arg1;
 - (void)receivedInfo:(id)arg1 fromLayoutingPhaseWithIdentifier:(id)arg2;
+- (void)renderContents;
 - (void)setAbsoluteFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)setCalculatedSize:(struct CGSize { double x1; double x2; })arg1;
 - (void)setHighlighted:(bool)arg1;

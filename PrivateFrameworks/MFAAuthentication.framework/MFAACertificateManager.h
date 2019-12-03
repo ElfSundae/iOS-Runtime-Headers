@@ -16,7 +16,7 @@
 - (void).cxx_destruct;
 - (int)_getCachedCertStatus:(id)arg1 issuerSeq:(id)arg2 ppid:(id)arg3;
 - (id)_init;
-- (int)_validateCertificate:(struct __SecCertificate { }*)arg1 realtime:(bool)arg2 error:(id*)arg3;
+- (int)_validateCertificateChain:(id)arg1 realtime:(bool)arg2 error:(id*)arg3;
 - (int)_validateCertificateWithServer:(id)arg1 issuerSeq:(id)arg2 ppid:(id)arg3 error:(id*)arg4;
 - (id)init;
 - (void)requestMetadataForCertificate:(id)arg1 requestedLocale:(id)arg2 requestInfo:(id)arg3 completionHandler:(id /* block */)arg4;
@@ -25,6 +25,7 @@
 - (id)userDefaults;
 - (void)validateCertificate:(id)arg1 realtime:(bool)arg2 completionHandler:(id /* block */)arg3;
 - (int)validateCertificate:(id)arg1 realtime:(bool)arg2 error:(id*)arg3;
+- (int)validateCertificateChain:(id)arg1 realtime:(bool)arg2 error:(id*)arg3;
 - (id)xpcConnection;
 
 @end

@@ -3,22 +3,26 @@
  */
 
 @interface _UILabelAttributedStringContent : _UILabelContent {
-    NSMutableAttributedString * _attributedString;
+    NSAttributedString * _attributedString;
 }
 
 - (void).cxx_destruct;
-- (void)applyToEntireRangeAttribute:(id)arg1 withValue:(id)arg2;
-- (void)applyToRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1 attribute:(id)arg2 withValue:(id)arg3;
+- (bool)_isContentEqualToContent:(id)arg1;
 - (id)attributedString;
 - (id)attributedStringContent;
+- (id)contentByApplyingAttribute:(id)arg1 value:(id)arg2 toRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg3;
+- (id)contentByApplyingAttributeToEntireRange:(id)arg1 value:(id)arg2;
+- (id)contentWithString:(id)arg1;
 - (id)defaultValueForAttribute:(id)arg1;
-- (id)initWithAttributedString:(id)arg1 defaultAttributesProvider:(id /* block */)arg2;
+- (unsigned long long)hash;
+- (id)initWithAttributedString:(id)arg1 defaultAttributesProvider:(id)arg2;
+- (bool)isAttribute:(id)arg1 uniformlyEqualToValue:(id)arg2;
 - (bool)isAttributed;
 - (bool)isEqualToAttributedString:(id)arg1;
 - (bool)isEqualToString:(id)arg1;
 - (bool)isNil;
+- (bool)isWidthVariant;
 - (long long)length;
 - (id)string;
-- (id)valueForAttribute:(id)arg1 isUniform:(bool*)arg2;
 
 @end

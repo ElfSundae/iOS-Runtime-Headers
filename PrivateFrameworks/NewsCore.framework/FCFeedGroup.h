@@ -8,6 +8,10 @@
     FCColor * _cardBackgroundColor;
     NSDate * _creationDate;
     NSString * _ctaText;
+    FCColorGradient * _darkStyleBackgroundGradient;
+    FCColor * _darkStyleCardBackgroundColor;
+    FCColorGradient * _darkStyleSauceGradient;
+    FCColor * _darkStyleTitleColor;
     NTPBDiscoverMoreVideosInfo * _discoverMoreVideosInfo;
     FCFeedEdition * _edition;
     NSArray * _elements;
@@ -35,6 +39,10 @@
 @property (nonatomic, readonly, copy) FCColor *cardBackgroundColor;
 @property (nonatomic, readonly) NSDate *creationDate;
 @property (nonatomic, readonly, copy) NSString *ctaText;
+@property (nonatomic, readonly, copy) FCColorGradient *darkStyleBackgroundGradient;
+@property (nonatomic, readonly, copy) FCColor *darkStyleCardBackgroundColor;
+@property (nonatomic, readonly, copy) FCColorGradient *darkStyleSauceGradient;
+@property (nonatomic, readonly, copy) FCColor *darkStyleTitleColor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly, copy) NTPBDiscoverMoreVideosInfo *discoverMoreVideosInfo;
@@ -76,6 +84,10 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)creationDate;
 - (id)ctaText;
+- (id)darkStyleBackgroundGradient;
+- (id)darkStyleCardBackgroundColor;
+- (id)darkStyleSauceGradient;
+- (id)darkStyleTitleColor;
 - (id)description;
 - (id)discoverMoreVideosInfo;
 - (id)edition;
@@ -90,10 +102,10 @@
 - (id)initWithGroupType:(long long)arg1 sourceIdentifier:(id)arg2 elements:(id)arg3 options:(unsigned long long)arg4;
 - (id)initWithGroupType:(long long)arg1 sourceIdentifier:(id)arg2 magazineGroup:(id)arg3;
 - (id)initWithGroupType:(long long)arg1 sourceIdentifier:(id)arg2 title:(id)arg3 L2FeedDescriptor:(id)arg4 issueIDs:(id)arg5;
-- (id)initWithGroupType:(long long)arg1 sourceIdentifier:(id)arg2 title:(id)arg3 subtitle:(id)arg4 eyebrowText:(id)arg5 ctaText:(id)arg6 titleColor:(id)arg7 sauceGradient:(id)arg8 backgroundGradient:(id)arg9 cardBackgroundColor:(id)arg10 elements:(id)arg11 options:(unsigned long long)arg12;
-- (id)initWithGroupType:(long long)arg1 sourceIdentifier:(id)arg2 title:(id)arg3 subtitle:(id)arg4 titleColor:(id)arg5 backgroundGradient:(id)arg6 discoverMoreVideosInfo:(id)arg7 videoPlaylistHeadlines:(id)arg8 L2FeedDescriptor:(id)arg9 elements:(id)arg10 options:(unsigned long long)arg11;
-- (id)initWithIdentifier:(id)arg1 groupType:(long long)arg2 sourceIdentifier:(id)arg3 creationDate:(id)arg4 title:(id)arg5 subtitle:(id)arg6 eyebrowText:(id)arg7 ctaText:(id)arg8 titleColor:(id)arg9 cardBackgroundColor:(id)arg10 sauceGradient:(id)arg11 backgroundGradient:(id)arg12 discoverMoreVideosInfo:(id)arg13 videoPlaylistHeadlines:(id)arg14 L2FeedDescriptor:(id)arg15 edition:(id)arg16 isFirstFromEdition:(bool)arg17 elements:(id)arg18 issueIDs:(id)arg19 magazineGroup:(id)arg20 options:(unsigned long long)arg21 mergeID:(unsigned long long)arg22;
-- (id)initWithIdentifier:(id)arg1 groupType:(long long)arg2 sourceIdentifier:(id)arg3 title:(id)arg4 subtitle:(id)arg5 titleColor:(id)arg6 backgroundGradient:(id)arg7 discoverMoreVideosInfo:(id)arg8 videoPlaylistHeadlines:(id)arg9 L2FeedDescriptor:(id)arg10 elements:(id)arg11 options:(unsigned long long)arg12;
+- (id)initWithGroupType:(long long)arg1 sourceIdentifier:(id)arg2 title:(id)arg3 subtitle:(id)arg4 eyebrowText:(id)arg5 ctaText:(id)arg6 titleColor:(id)arg7 darkStyleTitleColor:(id)arg8 sauceGradient:(id)arg9 darkStyleSauceGradient:(id)arg10 backgroundGradient:(id)arg11 darkStyleBackgroundGradient:(id)arg12 cardBackgroundColor:(id)arg13 darkStyleCardBackgroundColor:(id)arg14 elements:(id)arg15 options:(unsigned long long)arg16;
+- (id)initWithGroupType:(long long)arg1 sourceIdentifier:(id)arg2 title:(id)arg3 subtitle:(id)arg4 titleColor:(id)arg5 darkStyleTitleColor:(id)arg6 backgroundGradient:(id)arg7 darkStyleBackgroundGradient:(id)arg8 discoverMoreVideosInfo:(id)arg9 videoPlaylistHeadlines:(id)arg10 L2FeedDescriptor:(id)arg11 elements:(id)arg12 options:(unsigned long long)arg13;
+- (id)initWithIdentifier:(id)arg1 groupType:(long long)arg2 sourceIdentifier:(id)arg3 creationDate:(id)arg4 title:(id)arg5 subtitle:(id)arg6 eyebrowText:(id)arg7 ctaText:(id)arg8 titleColor:(id)arg9 darkStyleTitleColor:(id)arg10 cardBackgroundColor:(id)arg11 darkStyleCardBackgroundColor:(id)arg12 sauceGradient:(id)arg13 darkStyleSauceGradient:(id)arg14 backgroundGradient:(id)arg15 darkStyleBackgroundGradient:(id)arg16 discoverMoreVideosInfo:(id)arg17 videoPlaylistHeadlines:(id)arg18 L2FeedDescriptor:(id)arg19 edition:(id)arg20 isFirstFromEdition:(bool)arg21 elements:(id)arg22 issueIDs:(id)arg23 magazineGroup:(id)arg24 options:(unsigned long long)arg25 mergeID:(unsigned long long)arg26;
+- (id)initWithIdentifier:(id)arg1 groupType:(long long)arg2 sourceIdentifier:(id)arg3 title:(id)arg4 subtitle:(id)arg5 titleColor:(id)arg6 darkStyleTitleColor:(id)arg7 backgroundGradient:(id)arg8 darkStyleBackgroundGradient:(id)arg9 discoverMoreVideosInfo:(id)arg10 videoPlaylistHeadlines:(id)arg11 L2FeedDescriptor:(id)arg12 elements:(id)arg13 options:(unsigned long long)arg14;
 - (bool)isEqual:(id)arg1;
 - (bool)isFirstFromEdition;
 - (bool)isGap;

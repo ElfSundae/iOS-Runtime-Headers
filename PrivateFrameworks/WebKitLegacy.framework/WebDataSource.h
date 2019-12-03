@@ -8,6 +8,7 @@
 
 @property (setter=_setQuickLookContent:, nonatomic, copy) NSDictionary *_quickLookContent;
 @property (nonatomic, readonly) NSDictionary *_quickLookContent;
+@property (setter=_setQuickLookPreviewLoaderClient:, nonatomic) struct PreviewLoaderClient { int (**x1)(); unsigned int x2; }*_quickLookPreviewLoaderClient;
 @property (nonatomic, readonly, copy) NSData *data;
 @property (nonatomic, readonly) NSURLRequest *initialRequest;
 @property (getter=isLoading, nonatomic, readonly) bool loading;
@@ -38,6 +39,7 @@
 - (id)_mainDocumentError;
 - (void)_makeRepresentation;
 - (id)_quickLookContent;
+- (struct PreviewLoaderClient { int (**x1)(); unsigned int x2; }*)_quickLookPreviewLoaderClient;
 - (void)_receivedData:(id)arg1;
 - (void)_replaceSelectionWithArchive:(id)arg1 selectReplacement:(bool)arg2;
 - (id)_responseMIMEType;
@@ -47,6 +49,7 @@
 - (void)_setMainDocumentError:(id)arg1;
 - (void)_setOverrideTextEncodingName:(id)arg1;
 - (void)_setQuickLookContent:(id)arg1;
+- (void)_setQuickLookPreviewLoaderClient:(struct PreviewLoaderClient { int (**x1)(); unsigned int x2; }*)arg1;
 - (void)_setRepresentation:(id)arg1;
 - (id)_webView;
 - (void)addSubresource:(id)arg1;

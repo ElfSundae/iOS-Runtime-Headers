@@ -34,7 +34,7 @@
 - (void)_tryToWriteBufferedOutputData;
 - (void)handleAceObject:(id)arg1;
 - (void)handlePacket:(struct { unsigned char x1; unsigned int x2; }*)arg1;
-- (id)initWithSocket:(id)arg1 isRecording:(bool)arg2 replayFileURL:(id)arg3;
+- (id)initWithSocket:(id)arg1 handler:(id)arg2 replayFileURL:(id)arg3;
 - (void)sessionDJ:(id)arg1 replayAceCommand:(id)arg2;
 - (void)sessionDJReplayDidFinish:(id)arg1;
 

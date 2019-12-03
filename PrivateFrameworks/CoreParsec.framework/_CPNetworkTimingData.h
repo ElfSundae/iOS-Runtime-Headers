@@ -102,7 +102,6 @@
 - (unsigned int)requestEnd;
 - (unsigned int)requestHeaderSize;
 - (unsigned int)requestStart;
-- (bool)requiresQueryId;
 - (unsigned int)responseBodyBytesDecoded;
 - (unsigned int)responseBodyBytesReceived;
 - (unsigned int)responseEnd;

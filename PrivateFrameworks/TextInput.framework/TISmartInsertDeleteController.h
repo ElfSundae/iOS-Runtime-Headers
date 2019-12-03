@@ -11,6 +11,8 @@
 @property (nonatomic, readonly) TITextInputTraits *textInputTraits;
 
 - (void).cxx_destruct;
+- (unsigned long long)_numberOfCharactersInSet:(id)arg1 atBeginningOfString:(id)arg2;
+- (unsigned long long)_numberOfCharactersInSet:(id)arg1 atEndOfString:(id)arg2;
 - (id)initWithTextInputTraits:(id)arg1;
 - (bool)isEnabled;
 - (void)setEnabled:(bool)arg1;

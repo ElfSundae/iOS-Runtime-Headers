@@ -6,13 +6,12 @@
     struct NSMutableDictionary { Class x1; } * _additionalFiltersPerSink;
     GEOAutomobileOptions * _automobileOptions;
     unsigned long long  _countToRequest;
-    CLLocation * _currentLocation;
     int  _defaultTansportType;
     MapsSuggestionsCanKicker * _deferredSourcesUpdater;
     bool  _dirtyFlag;
     NSDate * _etaValidUntil;
     MapsSuggestionsCanKicker * _expiredEntryInvalidator;
-    MapsSuggestionsFakeSource * _fakeSource;
+    MapsSuggestionsFakePullSource * _fakeSource;
     NSObject<OS_dispatch_queue> * _gatheringQueue;
     struct NSArray { Class x1; } * _latestResults;
     <MapsSuggestionsLocationUpdater> * _locationUpdater;
@@ -28,10 +27,9 @@
 }
 
 @property (nonatomic, retain) GEOAutomobileOptions *automobileOptions;
-@property (retain) CLLocation *currentLocation;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, retain) MapsSuggestionsFakeSource *fakeSource;
+@property (nonatomic, retain) MapsSuggestionsFakePullSource *fakeSource;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) <MapsSuggestionsLocationUpdater> *locationUpdater;
 @property (nonatomic) int mapType;
@@ -66,22 +64,22 @@
 - (void)_wipeStaleETAs;
 - (void)addAdditionalFilter:(id)arg1 forSink:(struct NSString { Class x1; }*)arg2;
 - (unsigned long long)addOrUpdateSuggestionEntries:(struct NSArray { Class x1; }*)arg1 source:(struct NSString { Class x1; }*)arg2;
-- (unsigned long long)addOrUpdateSuggestionEntries:(struct NSArray { Class x1; }*)arg1 source:(struct NSString { Class x1; }*)arg2 deleteMissing:(bool)arg3;
-- (bool)attachSink:(id)arg1;
+- (void)attachSink:(id)arg1;
 - (bool)attachSource:(id)arg1;
 - (id)automobileOptions;
 - (void)awaitGatheringQueue;
 - (void)awaitStorageQueue;
 - (unsigned long long)clearAllEntriesFromSource:(struct NSString { Class x1; }*)arg1;
 - (void)clearResults;
-- (id)currentBestLocation;
-- (id)currentLocation;
 - (void)dealloc;
 - (unsigned long long)deleteEntries:(struct NSArray { Class x1; }*)arg1 source:(struct NSString { Class x1; }*)arg2;
 - (bool)detachSink:(id)arg1;
 - (bool)detachSource:(id)arg1;
 - (id)dumpStorage;
 - (id)fakeSource;
+- (void)feedbackForContact:(id)arg1 action:(long long)arg2;
+- (void)feedbackForEntry:(id)arg1 action:(long long)arg2;
+- (void)feedbackForMapItem:(id)arg1 action:(long long)arg2;
 - (void)hintRefreshOfType:(long long)arg1;
 - (id)initWithStrategy:(id)arg1 locationUpdater:(id)arg2 ETARequirements:(id)arg3;
 - (bool)loadStorageFromFile:(id)arg1;
@@ -94,7 +92,6 @@
 - (void)scheduleUpdateAllSourcesOnce;
 - (void)sendInvalidateToAllSinks;
 - (void)setAutomobileOptions:(id)arg1;
-- (void)setCurrentLocation:(id)arg1;
 - (void)setFakeSource:(id)arg1;
 - (void)setLocationUpdater:(id)arg1;
 - (void)setMapType:(int)arg1;

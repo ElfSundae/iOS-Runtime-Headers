@@ -8,21 +8,42 @@
     unsigned int  _endDesiredTime;
     unsigned int  _exclusiveSetIdentifier;
     struct { 
-        unsigned int alignment : 1; 
-        unsigned int endDesiredTime : 1; 
-        unsigned int exclusiveSetIdentifier : 1; 
-        unsigned int numChainedVariants : 1; 
-        unsigned int priority : 1; 
-        unsigned int repetitionInterval : 1; 
-        unsigned int startDesiredTime : 1; 
-        unsigned int tapBeforeAnnouncement : 1; 
-    }  _has;
+        unsigned int has_alignment : 1; 
+        unsigned int has_endDesiredTime : 1; 
+        unsigned int has_exclusiveSetIdentifier : 1; 
+        unsigned int has_numChainedVariants : 1; 
+        unsigned int has_priority : 1; 
+        unsigned int has_repetitionInterval : 1; 
+        unsigned int has_startDesiredTime : 1; 
+        unsigned int has_tapBeforeAnnouncement : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_announcements : 1; 
+        unsigned int read_timeGaps : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_announcements : 1; 
+        unsigned int wrote_timeGaps : 1; 
+        unsigned int wrote_alignment : 1; 
+        unsigned int wrote_endDesiredTime : 1; 
+        unsigned int wrote_exclusiveSetIdentifier : 1; 
+        unsigned int wrote_numChainedVariants : 1; 
+        unsigned int wrote_priority : 1; 
+        unsigned int wrote_repetitionInterval : 1; 
+        unsigned int wrote_startDesiredTime : 1; 
+        unsigned int wrote_tapBeforeAnnouncement : 1; 
+    }  _flags;
     unsigned int  _numChainedVariants;
     unsigned int  _priority;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     unsigned int  _repetitionInterval;
     unsigned int  _startDesiredTime;
     bool  _tapBeforeAnnouncement;
     NSMutableArray * _timeGaps;
+    PBUnknownFields * _unknownFields;
 }
 
 @property (nonatomic) int alignment;
@@ -43,12 +64,18 @@
 @property (nonatomic) unsigned int startDesiredTime;
 @property (nonatomic) bool tapBeforeAnnouncement;
 @property (nonatomic, retain) NSMutableArray *timeGaps;
+@property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
 + (Class)announcementType;
++ (bool)isValid:(id)arg1;
 + (Class)timeGapType;
 
 - (void).cxx_destruct;
 - (int)StringAsAlignment:(id)arg1;
+- (void)_addNoFlagsAnnouncement:(id)arg1;
+- (void)_addNoFlagsTimeGap:(id)arg1;
+- (void)_readAnnouncements;
+- (void)_readTimeGaps;
 - (void)addAnnouncement:(id)arg1;
 - (void)addTimeGap:(id)arg1;
 - (int)alignment;
@@ -58,6 +85,7 @@
 - (unsigned long long)announcementsCount;
 - (void)clearAnnouncements;
 - (void)clearTimeGaps;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -73,10 +101,13 @@
 - (bool)hasStartDesiredTime;
 - (bool)hasTapBeforeAnnouncement;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (unsigned int)numChainedVariants;
 - (unsigned int)priority;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (unsigned int)repetitionInterval;
 - (void)setAlignment:(int)arg1;
@@ -102,6 +133,7 @@
 - (id)timeGapAtIndex:(unsigned long long)arg1;
 - (id)timeGaps;
 - (unsigned long long)timeGapsCount;
+- (id)unknownFields;
 - (void)writeTo:(id)arg1;
 
 @end

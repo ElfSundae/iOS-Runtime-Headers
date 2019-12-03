@@ -17,6 +17,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) long long overriddenVerticalAlignment;
+@property (nonatomic, readonly) bool prefersBaselineAlignment;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) bool wantsCrossfade;
 

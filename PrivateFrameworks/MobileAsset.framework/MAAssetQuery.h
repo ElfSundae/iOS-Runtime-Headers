@@ -5,7 +5,7 @@
 @interface MAAssetQuery : NSObject {
     NSSet * _assetIds;
     NSString * _assetType;
-    bool  _augmentState;
+    bool  _doNotBlockBeforeFirstUnlock;
     NSDate * _lastFetchDate;
     NSDate * _postedDate;
     NSMutableArray * _queryParams;
@@ -15,7 +15,7 @@
 
 @property (nonatomic, readonly) NSSet *assetIds;
 @property (nonatomic, readonly) NSString *assetType;
-@property (nonatomic, readonly) bool augmentState;
+@property (nonatomic) bool doNotBlockBeforeFirstUnlock;
 @property (nonatomic, readonly) NSDate *lastFetchDate;
 @property (nonatomic, readonly) NSDate *postedDate;
 @property (nonatomic, readonly) NSMutableArray *queryParams;
@@ -23,12 +23,13 @@
 @property (nonatomic, readonly) long long returnTypes;
 
 - (long long)addKeyValueArray:(id)arg1 with:(id)arg2;
+- (long long)addKeyValueNull:(id)arg1;
 - (long long)addKeyValuePair:(id)arg1 with:(id)arg2;
 - (id)assetIds;
 - (id)assetType;
 - (void)augmentResultsWithState:(bool)arg1;
-- (bool)augmentState;
 - (void)dealloc;
+- (bool)doNotBlockBeforeFirstUnlock;
 - (void)getResultsFromMessage:(id)arg1;
 - (id)initWithType:(id)arg1;
 - (id)lastFetchDate;
@@ -40,5 +41,6 @@
 - (id)results;
 - (long long)returnTypes;
 - (void)returnTypes:(long long)arg1;
+- (void)setDoNotBlockBeforeFirstUnlock:(bool)arg1;
 
 @end

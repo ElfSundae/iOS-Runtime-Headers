@@ -12,6 +12,8 @@
 @property (copy) NSURL *URL;
 @property (copy) NSDictionary *allHTTPHeaderFields;
 @property bool allowsCellularAccess;
+@property bool allowsConstrainedNetworkAccess;
+@property bool allowsExpensiveNetworkAccess;
 @property unsigned long long cachePolicy;
 @property (copy) NSURL *mainDocumentURL;
 @property unsigned long long networkServiceType;
@@ -31,6 +33,8 @@
 - (unsigned long long)requestPriority;
 - (void)setAllHTTPHeaderFields:(id)arg1;
 - (void)setAllowsCellularAccess:(bool)arg1;
+- (void)setAllowsConstrainedNetworkAccess:(bool)arg1;
+- (void)setAllowsExpensiveNetworkAccess:(bool)arg1;
 - (void)setBoundInterfaceIdentifier:(id)arg1;
 - (void)setCachePolicy:(unsigned long long)arg1;
 - (void)setContentDispositionEncodingFallbackArray:(id)arg1;
@@ -55,6 +59,12 @@
 
 - (void)bindToHotspotHelperCommand:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/ActionKit.framework/ActionKit
+
+- (void)wfo_setAuthorizationWithCredential:(id)arg1;
+- (void)wfo_setAuthorizationWithUsername:(id)arg1 password:(id)arg2;
+- (void)wfo_setBodyWithQueryItems:(id)arg1;
+
 // Image: /System/Library/PrivateFrameworks/AppleAccount.framework/AppleAccount
 
 - (bool)aa_addAuthTokenOrBasicAuthHeaderWithAccount:(id)arg1 preferUsingPassword:(bool)arg2;
@@ -74,7 +84,6 @@
 - (void)aa_addLoggedInAppleIDHeaderWithAccount:(id)arg1;
 - (void)aa_addMultiUserDeviceHeaderIfEnabled;
 - (void)aa_addTokenAuthHeaderWithAccount:(id)arg1;
-- (void)aa_addiTunesHeadersWithAccount:(id)arg1;
 - (void)aa_setBodyWithParameters:(id)arg1;
 - (id)aa_setXMLBodyWithParameters:(id)arg1;
 - (void)aa_setXMLBodyWithParameters:(id)arg1 signingSession:(id)arg2;
@@ -83,28 +92,37 @@
 // Image: /System/Library/PrivateFrameworks/AppleMediaServices.framework/AppleMediaServices
 
 - (void)_ams_addCookies:(id)arg1;
+- (void)ams_addAbsintheHeadersWithBuyParams:(id)arg1 bag:(id)arg2;
 - (void)ams_addAcceptLanguageHeader;
-- (void)ams_addAnisetteHeadersForAccount:(id)arg1 type:(long long)arg2;
+- (void)ams_addAnisetteHeadersForAccount:(id)arg1 type:(long long)arg2 bag:(id)arg3;
 - (void)ams_addAuthKitHeaders;
+- (void)ams_addBiometricsHeadersForAccount:(id)arg1 options:(id)arg2;
 - (void)ams_addCacheBusterParameter;
 - (void)ams_addCachePolicyHeader;
 - (void)ams_addClientIdentifierHeaderForClient:(id)arg1;
-- (void)ams_addClientVersions;
+- (void)ams_addClientVersionsForClient:(id)arg1;
 - (void)ams_addConnectionTypeHeader;
 - (void)ams_addContentLengthHeaderForData:(id)arg1;
 - (void)ams_addContentTypeHeaderForEncoding:(long long)arg1;
-- (void)ams_addCookiesForAccounts:(id)arg1;
-- (void)ams_addGUIDParameterUsingContract:(id)arg1;
+- (void)ams_addCookiesForAccount:(id)arg1 clientInfo:(id)arg2;
+- (void)ams_addGUIDParameterUsingBag:(id)arg1;
+- (void)ams_addHeaders:(id)arg1;
 - (void)ams_addIdentifierHeadersForAccount:(id)arg1;
 - (void)ams_addIssuingProcessHeader;
-- (void)ams_addMescalHeaderWithType:(long long)arg1 bagContract:(id)arg2 logKey:(id)arg3;
+- (void)ams_addMescalHeaderWithType:(long long)arg1 bag:(id)arg2 logKey:(id)arg3;
 - (void)ams_addParameters:(id)arg1 encoding:(long long)arg2 compressBody:(bool)arg3 error:(id*)arg4;
 - (void)ams_addPrimaryiCloudIdentifierHeader;
 - (void)ams_addRequestingProcessWithClient:(id)arg1;
 - (void)ams_addSilentEnrollmentHeadersForAccount:(id)arg1;
-- (void)ams_addStoreFrontHeaderFromAccount:(id)arg1 bagContract:(id)arg2;
+- (void)ams_addStoreFrontHeaderForAccount:(id)arg1 client:(id)arg2 withBag:(id)arg3;
 - (void)ams_addTimezoneOffsetHeader;
-- (void)ams_addUserAgentHeaderFromClient:(id)arg1 additionalComponents:(id)arg2;
+- (void)ams_addUserAgentHeaderFromClient:(id)arg1;
+- (void)ams_addXTokenHeaderWithAccount:(id)arg1;
+- (void)ams_removeAnisetteHeaders;
+
+// Image: /System/Library/PrivateFrameworks/AskPermission.framework/AskPermission
+
+- (void)ap_setNullableValue:(id)arg1 forHTTPHeaderField:(id)arg2;
 
 // Image: /System/Library/PrivateFrameworks/AuthKit.framework/AuthKit
 
@@ -121,6 +139,7 @@
 - (void)ak_addAbsintheHeaderWithValue:(id)arg1;
 - (void)ak_addAcceptedSLAHeaderWithVersion:(unsigned long long)arg1;
 - (void)ak_addAnisetteHeaders;
+- (void)ak_addAppProvidedContext:(id)arg1;
 - (void)ak_addAppleIDHeaderWithValue:(id)arg1;
 - (void)ak_addAppleIDUserModeHeaderWithValue:(unsigned long long)arg1;
 - (void)ak_addAuthorizationHeaderWithHeartbeatToken:(id)arg1 forAltDSID:(id)arg2;
@@ -135,6 +154,7 @@
 - (void)ak_addContextHeaderForServiceType:(long long)arg1;
 - (void)ak_addContinutationKeyHeader:(id)arg1;
 - (void)ak_addCountryHeader;
+- (void)ak_addDeviceConfigurationModeHeader;
 - (void)ak_addDeviceMLBHeader;
 - (void)ak_addDeviceModel;
 - (void)ak_addDeviceROMHeader;
@@ -154,7 +174,13 @@
 - (void)ak_addPhoneNumberCertificateHeaderWithValue:(id)arg1;
 - (void)ak_addPhoneNumberHeader;
 - (void)ak_addProxiedAnisetteHeaders:(id)arg1;
+- (void)ak_addProxiedAttestationHeaders:(id)arg1;
+- (void)ak_addProxiedAuthorizationHeaderWithIdentityToken:(id)arg1 forAltDSID:(id)arg2;
 - (void)ak_addProxiedClientInfoHeader:(id)arg1;
+- (void)ak_addProxiedDeviceCountryHeader:(id)arg1;
+- (void)ak_addProxiedDeviceICSCIntentHeader;
+- (void)ak_addProxiedDevicePRKRequestHeader;
+- (void)ak_addProxiedDeviceSerialNumberHeader:(id)arg1;
 - (void)ak_addProxiedDeviceUDIDHeader:(id)arg1;
 - (void)ak_addProxyApp:(id)arg1;
 - (void)ak_addRecoveryHeaderWithIdentityToken:(id)arg1 forAltDSID:(id)arg2;
@@ -166,12 +192,20 @@
 
 // Image: /System/Library/PrivateFrameworks/CaptiveNetwork.framework/CaptiveNetwork
 
-- (void)bindToCommand:(struct __CNPluginCommand { struct __CFRuntimeBase { unsigned long long x_1_1_1; unsigned long long x_1_1_2; } x1; struct __CFDictionary {} *x2; unsigned int x3; }*)arg1;
+- (void)bindToCommand:(struct __CNPluginCommand { struct __CFRuntimeBase { unsigned long long x_1_1_1; _Atomic unsigned long long x_1_1_2; } x1; struct __CFDictionary {} *x2; unsigned int x3; }*)arg1;
+
+// Image: /System/Library/PrivateFrameworks/ContentKit.framework/ContentKit
+
+- (void)wf_setBodyWithQueryItems:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/CoreCDPInternal.framework/CoreCDPInternal
 
 - (void)cdp_addAuthHeaderWithContext:(id)arg1;
 - (void)cdp_addClientInfoHeader;
+
+// Image: /System/Library/PrivateFrameworks/FamilyCircle.framework/FamilyCircle
+
+- (void)fam_addiTunesHeadersWithAccount:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/GameCenterFoundation.framework/GameCenterFoundation
 
@@ -210,6 +244,10 @@
 
 // Image: /System/Library/PrivateFrameworks/iAdServices.framework/iAdServices
 
+- (id)adSpaceIdentifier;
+- (id)advertisingIdentifier;
+- (id)maximumRequestCount;
+- (void)setAdSpaceIdentifier:(id)arg1;
 - (void)setAdvertisingIdentifier:(id)arg1;
 - (void)setMaximumRequestCount:(id)arg1;
 

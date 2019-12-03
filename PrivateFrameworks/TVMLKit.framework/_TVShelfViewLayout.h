@@ -25,6 +25,7 @@
         double right; 
     }  _sectionInset;
     NSArray * _shelfLayoutSections;
+    bool  _shouldSnapContent;
 }
 
 @property (nonatomic) double headerBottomMargin;
@@ -38,11 +39,13 @@
 @property (nonatomic) long long rowCount;
 @property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } sectionInset;
 @property (nonatomic, retain) NSArray *shelfLayoutSections;
+@property (nonatomic) bool shouldSnapContent;
 
 + (double)defaultHeaderSelectionMargin;
 
 - (void).cxx_destruct;
 - (bool)_bumpHeaderForLayoutSection:(id)arg1 forIndexPath:(id)arg2;
+- (id)_indexPathForItemAtProposedContentOffset:(struct CGPoint { double x1; double x2; })arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })boundingSelectionFrameForFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (struct CGSize { double x1; double x2; })collectionViewContentSize;
 - (double)computedContentHeight;
@@ -50,6 +53,7 @@
 - (double)headerBottomMargin;
 - (struct CGSize { double x1; double x2; })headerReferenceSize;
 - (double)headerSelectionMargin;
+- (id)indexPathForSnappedContent;
 - (id)init;
 - (void)invalidateLayoutWithContext:(id)arg1;
 - (struct CGSize { double x1; double x2; })itemSize;
@@ -74,7 +78,13 @@
 - (void)setRowCount:(long long)arg1;
 - (void)setSectionInset:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;
 - (void)setShelfLayoutSections:(id)arg1;
+- (void)setShouldSnapContent:(bool)arg1;
 - (id)shelfLayoutSections;
 - (bool)shouldInvalidateLayoutForBoundsChange:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (bool)shouldSnapContent;
+- (void)snapContent;
+- (void)snapContentToIndexPath:(id)arg1;
+- (struct CGPoint { double x1; double x2; })targetContentOffsetForProposedContentOffset:(struct CGPoint { double x1; double x2; })arg1;
+- (struct CGPoint { double x1; double x2; })targetContentOffsetForProposedContentOffset:(struct CGPoint { double x1; double x2; })arg1 withScrollingVelocity:(struct CGPoint { double x1; double x2; })arg2;
 
 @end

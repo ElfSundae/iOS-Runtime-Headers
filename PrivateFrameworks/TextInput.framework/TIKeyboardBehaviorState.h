@@ -6,6 +6,7 @@
     bool  _hasAutocorrection;
     bool  _showsCandidatesInLayout;
     bool  _userSelectedCurrentCandidate;
+    bool  followsIncompleteRomaji;
     bool  followsZhuyin;
     bool  hardwareKeyboardMode;
     bool  hasCandidateSelected;
@@ -16,6 +17,7 @@
     bool  spaceConfirmation;
 }
 
+@property (nonatomic) bool followsIncompleteRomaji;
 @property (nonatomic) bool followsZhuyin;
 @property (nonatomic) bool hardwareKeyboardMode;
 @property (nonatomic) bool hasAutocorrection;
@@ -28,6 +30,7 @@
 @property (nonatomic) bool spaceConfirmation;
 @property (nonatomic) bool userSelectedCurrentCandidate;
 
+- (bool)followsIncompleteRomaji;
 - (bool)followsZhuyin;
 - (bool)hardwareKeyboardMode;
 - (bool)hasAutocorrection;
@@ -35,6 +38,7 @@
 - (bool)hasCandidates;
 - (bool)hasInput;
 - (bool)hasNextPage;
+- (void)setFollowsIncompleteRomaji:(bool)arg1;
 - (void)setFollowsZhuyin:(bool)arg1;
 - (void)setHardwareKeyboardMode:(bool)arg1;
 - (void)setHasAutocorrection:(bool)arg1;

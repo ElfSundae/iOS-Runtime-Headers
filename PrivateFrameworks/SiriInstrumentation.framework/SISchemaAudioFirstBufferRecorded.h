@@ -2,30 +2,26 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaAudioFirstBufferRecorded : PBCodable <NSCopying> {
+@interface SISchemaAudioFirstBufferRecorded : PBCodable <NSSecureCoding, SISchemaAudioFirstBufferRecorded> {
     int  _audioInputRoute;
-    struct { 
-        unsigned int audioInputRoute : 1; 
-    }  _has;
 }
 
 @property (nonatomic) int audioInputRoute;
-@property (nonatomic) bool hasAudioInputRoute;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) NSData *jsonData;
+@property (readonly) Class superclass;
 
-- (int)StringAsAudioInputRoute:(id)arg1;
 - (int)audioInputRoute;
-- (id)audioInputRouteAsString:(int)arg1;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone { }*)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (bool)hasAudioInputRoute;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (bool)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
+- (id)jsonData;
 - (bool)readFrom:(id)arg1;
 - (void)setAudioInputRoute:(int)arg1;
-- (void)setHasAudioInputRoute:(bool)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

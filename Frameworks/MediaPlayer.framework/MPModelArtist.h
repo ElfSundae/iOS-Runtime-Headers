@@ -28,8 +28,8 @@
 
 // Image: /System/Library/PrivateFrameworks/MediaPlaybackCore.framework/MediaPlaybackCore
 
-- (id)_radioStationMatchMetadata;
-- (bool)_shouldMatchArtist;
++ (id)mqf_requiredSectionPlaybackProperties;
+
 - (id)mpc_radioContentReference;
 
 @end

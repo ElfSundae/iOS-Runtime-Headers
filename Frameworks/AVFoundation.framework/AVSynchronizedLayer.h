@@ -10,8 +10,8 @@
 
 + (id)synchronizedLayerWithPlayerItem:(id)arg1;
 
+- (void)_removeSelfFromPlayerItem;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (void)layerDidBecomeVisible:(bool)arg1;
 - (id)playerItem;

@@ -6,7 +6,7 @@
     NSMutableDictionary * mObjects;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (id)objectAtIndex:(int)arg1;
 - (void)setObject:(id)arg1 atIndex:(int)arg2;

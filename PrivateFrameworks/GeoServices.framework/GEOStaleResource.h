@@ -6,9 +6,22 @@
     GEOResource * _desiredResource;
     GEOResource * _fallbackResource;
     struct { 
-        unsigned int originalTimestamp : 1; 
-    }  _has;
+        unsigned int has_originalTimestamp : 1; 
+        unsigned int read_unknownFields : 1; 
+        unsigned int read_desiredResource : 1; 
+        unsigned int read_fallbackResource : 1; 
+        unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_desiredResource : 1; 
+        unsigned int wrote_fallbackResource : 1; 
+        unsigned int wrote_originalTimestamp : 1; 
+    }  _flags;
     double  _originalTimestamp;
+    PBDataReader * _reader;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _readerLock;
+    unsigned int  _readerMarkLength;
+    unsigned int  _readerMarkPos;
     PBUnknownFields * _unknownFields;
 }
 
@@ -20,7 +33,12 @@
 @property (nonatomic) double originalTimestamp;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_readDesiredResource;
+- (void)_readFallbackResource;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -31,9 +49,12 @@
 - (bool)hasFallbackResource;
 - (bool)hasOriginalTimestamp;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (double)originalTimestamp;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setDesiredResource:(id)arg1;
 - (void)setFallbackResource:(id)arg1;

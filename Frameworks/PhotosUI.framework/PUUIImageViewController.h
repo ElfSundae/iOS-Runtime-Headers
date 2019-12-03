@@ -65,9 +65,10 @@
 - (void)_setLivePhotoView:(id)arg1;
 - (void)_setVideoAssetURL:(id)arg1;
 - (id)_videoAssetURL;
+- (id)cancelButtonTitle;
 - (id)chooseButtonTitle;
 - (void)cropOverlayWasOKed:(id)arg1;
-- (void)didUpdateNavigationBarAppearance;
+- (id)customBackgroundColor;
 - (bool)disableVideoTrimMessage;
 - (bool)doNotTranscode;
 - (id)exportPreset;
@@ -84,13 +85,13 @@
 - (id)irisPlayerViewViewHostingGestureRecognizers:(id)arg1;
 - (bool)isDisplayedInPhotoPicker;
 - (void)loadView;
+- (id)maxZoomScaleOverride;
 - (void)performPhotoPickerSelection;
 - (id)photoPicker;
 - (void)setIrisPlayer:(id)arg1;
 - (void)setPhotoPicker:(id)arg1;
 - (void)setPhotoPickerMediaTypes:(id)arg1;
 - (void)set_irisPlayer:(id)arg1;
-- (void)setupNavigationItem;
 - (bool)uiipc_useTelephonyUI;
 - (id)videoMaximumDuration;
 - (void)videoPlayerView:(id)arg1 isReadyForDisplayDidChange:(bool)arg2;

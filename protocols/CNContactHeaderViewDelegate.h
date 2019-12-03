@@ -10,6 +10,7 @@
 - (void)headerPhotoDidUpdate;
 - (void)headerViewDidPickPreferredChannel:(NSString *)arg1;
 - (void)headerViewDidUpdateLabelSizes;
+- (bool)isNicknameProhibited;
 - (UIViewController *)viewControllerForHeaderView:(CNContactHeaderView *)arg1;
 
 @end

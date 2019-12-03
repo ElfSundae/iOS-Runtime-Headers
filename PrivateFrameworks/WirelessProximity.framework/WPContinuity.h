@@ -19,7 +19,7 @@
 - (void)advertisingFailedToStart:(id)arg1 ofType:(unsigned char)arg2;
 - (void)advertisingPendingOfType:(unsigned char)arg1;
 - (void)advertisingStartedOfType:(unsigned char)arg1;
-- (void)advertisingStoppedOfType:(unsigned char)arg1;
+- (void)advertisingStoppedOfType:(unsigned char)arg1 withError:(id)arg2;
 - (void)bandwidthStateUpdated:(id)arg1;
 - (long long)btBandwidthState;
 - (void)central:(id)arg1 subscribed:(bool)arg2 toCharacteristic:(id)arg3 inService:(id)arg4;
@@ -31,6 +31,7 @@
 - (void)deviceDiscovered:(id)arg1;
 - (void)disconnectFromPeer:(id)arg1;
 - (void)disconnectedDevice:(id)arg1 withError:(id)arg2;
+- (void)disconnectedDeviceOverLEPipe:(id)arg1 withError:(id)arg2;
 - (void)discoveredCharacteristicsAndServices:(id)arg1 forPeripheral:(id)arg2;
 - (void)failedToStartTrackingPeer:(id)arg1 error:(id)arg2;
 - (void)foundPeer:(id)arg1 ofType:(unsigned char)arg2;
@@ -42,11 +43,13 @@
 - (void)peerTrackingFull;
 - (void)populateClientGATT:(id /* block */)arg1;
 - (void)receivedData:(id)arg1 forCharacteristic:(id)arg2 inService:(id)arg3 forPeripheral:(id)arg4;
+- (void)receivedData:(id)arg1 fromEndpoint:(id)arg2 forPeripheral:(id)arg3;
 - (void)scanningFailedToStart:(id)arg1 ofType:(unsigned char)arg2;
 - (void)scanningStartedOfType:(unsigned char)arg1;
 - (void)scanningStoppedOfType:(unsigned char)arg1;
 - (void)sendData:(id)arg1 toPeer:(id)arg2;
 - (void)sentData:(id)arg1 forCharacteristic:(id)arg2 inService:(id)arg3 forPeripheral:(id)arg4 withError:(id)arg5;
+- (void)sentData:(id)arg1 toEndpoint:(id)arg2 forPeripheral:(id)arg3 withError:(id)arg4;
 - (void)setBtBandwidthState:(long long)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setTransfers:(id)arg1;

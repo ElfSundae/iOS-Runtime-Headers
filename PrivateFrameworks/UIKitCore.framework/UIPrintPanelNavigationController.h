@@ -5,5 +5,6 @@
 @interface UIPrintPanelNavigationController : UINavigationController
 
 - (void)__viewWillLayoutSubviews;
+- (void)_presentationControllerDidDismiss:(id)arg1;
 
 @end

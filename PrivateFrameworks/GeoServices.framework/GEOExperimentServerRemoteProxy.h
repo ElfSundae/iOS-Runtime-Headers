@@ -6,7 +6,9 @@
     <GEOExperimentServerProxyDelegate> * _delegate;
     int  _experimentsChangedToken;
     GEOABAssignmentResponse * _experimentsInfo;
-    NSLock * _experimentsInfoLock;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _experimentsInfoLock;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,6 +24,7 @@
 - (void)_debug_setBucketIdDictionaryRepresentation:(id)arg1;
 - (void)_debug_setQuerySubstring:(id)arg1 forExperimentType:(long long)arg2 dispatcherRequestType:(int)arg3;
 - (void)abAssignUUIDWithCompletionHandler:(id /* block */)arg1;
+- (void)abAssignUUIDWithSyncCompletionHandler:(id /* block */)arg1;
 - (void)dealloc;
 - (id)delegate;
 - (id)experimentsInfo;

@@ -9,7 +9,7 @@
     NSString * _localizedTitle;
     NSString * _messageKey;
     long long  _passQualifier;
-    bool  _reportIdentifier;
+    bool  _reportIdentifierToAggd;
     NSString * _titleKey;
     long long  _type;
 }
@@ -20,7 +20,7 @@
 @property (nonatomic, readonly) NSString *localizedTitle;
 @property (nonatomic, retain) NSString *messageKey;
 @property (nonatomic) long long passQualifier;
-@property (getter=canReportIdentifier, nonatomic) bool reportIdentifier;
+@property (getter=canReportIdentifierToAggd, nonatomic) bool reportIdentifierToAggd;
 @property (nonatomic, retain) NSString *titleKey;
 @property (nonatomic) long long type;
 
@@ -28,7 +28,7 @@
 
 - (void).cxx_destruct;
 - (id)action;
-- (bool)canReportIdentifier;
+- (bool)canReportIdentifierToAggd;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
@@ -46,7 +46,7 @@
 - (void)setIconURLs:(id)arg1;
 - (void)setMessageKey:(id)arg1;
 - (void)setPassQualifier:(long long)arg1;
-- (void)setReportIdentifier:(bool)arg1;
+- (void)setReportIdentifierToAggd:(bool)arg1;
 - (void)setTitleKey:(id)arg1;
 - (void)setType:(long long)arg1;
 - (id)titleKey;

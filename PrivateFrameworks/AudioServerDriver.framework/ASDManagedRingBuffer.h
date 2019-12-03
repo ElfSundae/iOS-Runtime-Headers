@@ -14,12 +14,12 @@
 @property (nonatomic) long long frameCapacity;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) id /* block */ readBlock;
-@property (nonatomic, retain) ASDStreamFormat *readFormat;
+@property (nonatomic, copy) ASDStreamFormat *readFormat;
 @property (nonatomic, readonly) id /* block */ readWithZerosBlock;
 @property (nonatomic) bool readerRunning;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) id /* block */ writeBlock;
-@property (nonatomic, retain) ASDStreamFormat *writeFormat;
+@property (nonatomic, copy) ASDStreamFormat *writeFormat;
 @property (nonatomic) bool writerRunning;
 
 - (void).cxx_destruct;

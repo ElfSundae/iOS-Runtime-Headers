@@ -34,7 +34,7 @@
 
 - (void).cxx_destruct;
 - (id)analyzeImage:(id)arg1 options:(unsigned long long)arg2 error:(id*)arg3;
-- (bool)buildPersonsWithCanceler:(id)arg1 keyFaceUpdateBlock:(id /* block */)arg2 error:(id*)arg3;
+- (bool)buildPersonsWithCanceler:(id)arg1 keyFaceUpdateBlock:(id /* block */)arg2 extendTimeoutBlock:(id /* block */)arg3 error:(id*)arg4;
 - (void)cancelAllSuggestionRequests;
 - (void)cancelFaceClustering;
 - (void)cancelSuggestionRequest:(id)arg1;

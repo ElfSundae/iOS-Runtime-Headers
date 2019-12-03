@@ -4,9 +4,9 @@
 
 @interface GEOPDAutocompleteEntryHighlightSpan : PBCodable <NSCopying> {
     struct { 
-        unsigned int length : 1; 
-        unsigned int startIndex : 1; 
-    }  _has;
+        unsigned int has_length : 1; 
+        unsigned int has_startIndex : 1; 
+    }  _flags;
     unsigned int  _length;
     unsigned int  _startIndex;
     PBUnknownFields * _unknownFields;
@@ -18,7 +18,10 @@
 @property (nonatomic) unsigned int startIndex;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 
++ (bool)isValid:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(bool)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
@@ -29,6 +32,7 @@
 - (bool)isEqual:(id)arg1;
 - (unsigned int)length;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(bool)arg1;
 - (bool)readFrom:(id)arg1;
 - (void)setHasLength:(bool)arg1;
 - (void)setHasStartIndex:(bool)arg1;

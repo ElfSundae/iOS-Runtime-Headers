@@ -11,9 +11,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithEMFPlayer:(id)arg1;
 - (int)play:(id)arg1;
-- (oneway void)release;
 
 @end

@@ -46,6 +46,7 @@
 - (void)_initializeDomainAccessor;
 - (void)_performAfterFirstDeviceUnlockAndSyncRestrictionNone:(id /* block */)arg1;
 - (void)_registerForNotifications;
+- (void)_retrySyncSession:(id)arg1;
 - (id)changeSetForRemoteVoicemails:(id)arg1 fromVMVoicemails:(id)arg2;
 - (void)dealloc;
 - (void)handleSIGTERM;

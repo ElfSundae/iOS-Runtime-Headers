@@ -15,6 +15,7 @@
 - (void)_deleteByWord;
 - (void)_deleteForwardAndNotify:(bool)arg1;
 - (void)_deleteToEndOfLine;
+- (void)_deleteToEndOfParagraph;
 - (void)_deleteToStartOfLine;
 - (void)_expandSelectionToBackwardDeletionCluster;
 - (void)_expandSelectionToStartOfWordBeforeCaretSelection;
@@ -42,9 +43,8 @@
 - (UITextInputArrowKeyHistory *)_moveToStartOfParagraph:(bool)arg1 withHistory:(UITextInputArrowKeyHistory *)arg2;
 - (UITextInputArrowKeyHistory *)_moveToStartOfWord:(bool)arg1 withHistory:(UITextInputArrowKeyHistory *)arg2;
 - (UITextInputArrowKeyHistory *)_moveUp:(bool)arg1 withHistory:(UITextInputArrowKeyHistory *)arg2;
-- (UIPhraseBoundaryGestureRecognizer *)_newPhraseBoundaryGestureRecognizer;
+- (NSString *)_normalizedStringForRangeComparison:(NSString *)arg1;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })_nsrangeForTextRange:(UITextRange *)arg1;
-- (void)_phraseBoundaryGesture:(UIPhraseBoundaryGestureRecognizer *)arg1;
 - (UITextPosition *)_positionAtStartOfWords:(unsigned long long)arg1 beforePosition:(UITextPosition *)arg2;
 - (UITextPosition *)_positionFromPosition:(UITextPosition *)arg1 inDirection:(long long)arg2 offset:(long long)arg3 withAffinityDownstream:(bool)arg4;
 - (UITextPosition *)_positionFromPosition:(UITextPosition *)arg1 pastTextUnit:(long long)arg2 inDirection:(long long)arg3;
@@ -57,6 +57,7 @@
 - (UITextRange *)_rangeOfLineEnclosingPosition:(UITextPosition *)arg1;
 - (UITextRange *)_rangeOfParagraphEnclosingPosition:(UITextPosition *)arg1;
 - (UITextRange *)_rangeOfSentenceEnclosingPosition:(UITextPosition *)arg1;
+- (UITextRange *)_rangeOfSmartSelectionIncludingRange:(UITextRange *)arg1;
 - (UITextRange *)_rangeOfText:(NSString *)arg1 endingAtPosition:(UITextPosition *)arg2;
 - (UITextRange *)_rangeOfTextUnit:(long long)arg1 enclosingPosition:(UITextPosition *)arg2;
 - (UITextRange *)_rangeSpanningTextUnit:(long long)arg1 andPosition:(UITextPosition *)arg2;
@@ -80,6 +81,7 @@
 - (bool)_shouldPerformUICalloutBarButtonReplaceAction:(SEL)arg1 forText:(NSString *)arg2 checkAutocorrection:(bool)arg3;
 - (UIColor *)_textColorForCaretSelection;
 - (UITextRange *)_textRangeFromNSRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
+- (void)_transpose;
 - (void)_unmarkText;
 - (bool)_usesAsynchronousProtocol;
 - (NSString *)_wordContainingCaretSelection;
@@ -89,6 +91,7 @@
 - (bool)_isInteractiveTextSelectionDisabled;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_lastRectForRange:(UITextRange *)arg1;
 - (void)_setInternalGestureRecognizers;
+- (bool)_shouldSuppressSelectionHandles;
 - (UIView<UITextInputPrivate> *)_textSelectingContainer;
 
 @end

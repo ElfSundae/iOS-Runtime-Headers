@@ -7,6 +7,7 @@
     bool  _canShowSupportedAppsButton;
     VSIdentityProvider * _identityProvider;
     VSAppDescription * _msoAppDescription;
+    NSString * _preferredAppID;
     NSString * _providerAccountUsername;
     bool  _shouldOfferAuthenticationFlow;
     bool  _shouldOfferSTBAuthenticationFlow;
@@ -19,6 +20,7 @@
 @property (nonatomic) bool canShowSupportedAppsButton;
 @property (nonatomic, retain) VSIdentityProvider *identityProvider;
 @property (nonatomic, retain) VSAppDescription *msoAppDescription;
+@property (nonatomic, copy) NSString *preferredAppID;
 @property (nonatomic, copy) NSString *providerAccountUsername;
 @property (nonatomic) bool shouldOfferAuthenticationFlow;
 @property (nonatomic) bool shouldOfferSTBAuthenticationFlow;
@@ -40,11 +42,13 @@
 - (id)initWithCoder:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (id)msoAppDescription;
+- (id)preferredAppID;
 - (id)providerAccountUsername;
 - (void)setBundlesIDsToConsent:(id)arg1;
 - (void)setCanShowSupportedAppsButton:(bool)arg1;
 - (void)setIdentityProvider:(id)arg1;
 - (void)setMsoAppDescription:(id)arg1;
+- (void)setPreferredAppID:(id)arg1;
 - (void)setProviderAccountUsername:(id)arg1;
 - (void)setShouldOfferAuthenticationFlow:(bool)arg1;
 - (void)setShouldOfferSTBAuthenticationFlow:(bool)arg1;

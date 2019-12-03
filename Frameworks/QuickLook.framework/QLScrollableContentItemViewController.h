@@ -34,13 +34,13 @@
 - (bool)previewScrollViewShouldResizeContentBasedOnPeripheryInsets:(id)arg1;
 - (void)previewScrollViewWillBeginZooming:(id)arg1;
 - (void)previewWillAppear:(bool)arg1;
-- (id)registeredKeyCommands;
 - (id)scrollView;
 - (void)setAppearance:(id)arg1 animated:(bool)arg2;
 - (void)setContentView:(id)arg1;
 - (void)setShouldFit:(bool)arg1;
 - (bool)shouldFit;
 - (bool)shouldLayoutContentBasedOnPeripheryInsets;
+- (bool)supportsScrollingUpAndDownUsingKeyCommands;
 - (void)transitionWillFinish:(bool)arg1 didComplete:(bool)arg2;
 - (void)viewWillTransitionToSize:(struct CGSize { double x1; double x2; })arg1 withTransitionCoordinator:(id)arg2;
 - (void)willBeginZooming;

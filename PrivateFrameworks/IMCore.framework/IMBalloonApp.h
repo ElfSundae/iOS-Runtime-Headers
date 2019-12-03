@@ -37,6 +37,7 @@
 @property (nonatomic, retain) NSString *identifier;
 @property (nonatomic, readonly) bool isBetaPlugin;
 @property (nonatomic) bool isEnabled;
+@property (nonatomic) bool isEnabledUnremovableApp;
 @property (nonatomic) bool isLaunchProhibited;
 @property (nonatomic, readonly) bool isStickerPackOnly;
 @property (nonatomic, retain) NSNumber *itemID;
@@ -47,6 +48,7 @@
 @property (nonatomic) bool shouldBalloonHideAppIcon;
 @property (nonatomic) bool shouldHideAppSwitcher;
 @property (nonatomic) bool showInBrowser;
+@property (nonatomic, readonly) bool showableInBrowser;
 @property (nonatomic, readonly) NSString *version;
 
 + (void)_setUnremovableDisabledApps:(id)arg1;
@@ -67,11 +69,11 @@
 - (Class)customTypingIndicatorLayerClass;
 - (Class)dataSourceClass;
 - (Class)entryClass;
-- (id)extensionConnection;
 - (id)identifier;
 - (id)initWithPluginBundle:(id)arg1 appBundle:(id)arg2;
 - (bool)isBetaPlugin;
 - (bool)isEnabled;
+- (bool)isEnabledUnremovableApp;
 - (bool)isLaunchProhibited;
 - (bool)isStickerPackOnly;
 - (id)itemID;
@@ -79,7 +81,6 @@
 - (id)pluginBundle;
 - (bool)pluginLoaded;
 - (unsigned long long)presentationContexts;
-- (id)proxyWithErrorHandle:(id /* block */)arg1;
 - (void)setAppBundle:(id)arg1;
 - (void)setBrowserClass:(Class)arg1;
 - (void)setBrowserDisplayName:(id)arg1;
@@ -90,6 +91,7 @@
 - (void)setEntryClass:(Class)arg1;
 - (void)setIdentifier:(id)arg1;
 - (void)setIsEnabled:(bool)arg1;
+- (void)setIsEnabledUnremovableApp:(bool)arg1;
 - (void)setIsLaunchProhibited:(bool)arg1;
 - (void)setItemID:(id)arg1;
 - (void)setPlugin:(id)arg1;
@@ -102,6 +104,7 @@
 - (bool)shouldBalloonHideAppIcon;
 - (bool)shouldHideAppSwitcher;
 - (bool)showInBrowser;
+- (bool)showableInBrowser;
 - (id)version;
 
 @end

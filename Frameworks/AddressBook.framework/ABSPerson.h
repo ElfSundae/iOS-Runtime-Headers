@@ -29,10 +29,13 @@
 + (id)copyCompositeNameDelimiterForPerson:(id)arg1;
 + (id)createPeopleInSource:(id)arg1 withVCardRepresentation:(id)arg2;
 + (id)defaultKeysToFetch;
++ (void)initialize;
 + (id)localizedNameForProperty:(int)arg1;
 + (id)nameForProperty:(int)arg1;
 + (id)propertyKeyForPropertyID:(int)arg1;
 + (void)setCompositeNameFormat:(unsigned int)arg1;
++ (bool)shortNameFormatEnabled;
++ (bool)shortNameFormatPrefersNicknames;
 + (unsigned int)sortOrdering;
 + (unsigned int)typeForProperty:(int)arg1;
 + (id)vCardRepresentationForPeople:(id)arg1;
@@ -46,10 +49,12 @@
 - (bool)completeCNImplIfNeededWithKeysToFetch:(id)arg1;
 - (id)compositeName;
 - (unsigned int)compositeNameFormat;
+- (id)compositeNameIgnoringOrganization:(bool)arg1;
 - (id)copyCompositeNameDelimiter;
 - (id)copyImageData;
 - (id)copyImageDataWithFormat:(int)arg1;
 - (const void*)copyValueForProperty:(int)arg1;
+- (bool)getIdentifier:(int*)arg1 label:(id*)arg2 forMultiValueMatchingValue:(id)arg3 property:(int)arg4;
 - (bool)hasImageData;
 - (int)id;
 - (id)init;
@@ -69,7 +74,11 @@
 - (void)setRevertedRecordIdentifier:(id)arg1;
 - (void)setSource:(id)arg1;
 - (bool)setValue:(void*)arg1 forProperty:(int)arg2 withError:(struct __CFError {}**)arg3;
+- (void)setValue:(id)arg1 forSoundIdentifier:(int)arg2;
+- (id)shortName;
+- (id)soundIdentifierForMultivalueIdentifier:(int)arg1;
 - (id)source;
+- (id)stringFromFormatter:(id)arg1;
 - (unsigned int)type;
 
 @end

@@ -22,7 +22,7 @@
 - (id)delegate;
 - (void)deregisterWithIntents;
 - (void)deregisterWithSearchFoundation;
-- (void)loadDataImageFromImage:(id)arg1 usingPortableImageLoader:(id)arg2 scaledSize:(struct { double x1; double x2; })arg3 accessSpecifier:(id)arg4 completion:(id /* block */)arg5;
+- (void)loadDataImageFromImage:(id)arg1 usingPortableImageLoader:(id)arg2 scaledSize:(struct { double x1; double x2; })arg3 completion:(id /* block */)arg4;
 - (bool)loadImage:(id)arg1 withCompletionHandler:(id /* block */)arg2;
 - (void)registerWithIntents;
 - (void)registerWithSearchFoundation;

@@ -3,7 +3,7 @@
  */
 
 @interface AVDataAsset : AVAsset {
-    long long  _allocateTracksOnceOnly;
+    AVDispatchOnce * _allocateTracksOnceOnly;
     NSDictionary * _initializationOptions;
     AVAssetInspectorLoader * _loader;
     NSArray * _tracks;

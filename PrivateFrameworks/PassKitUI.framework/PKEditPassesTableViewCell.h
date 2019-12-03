@@ -3,7 +3,6 @@
  */
 
 @interface PKEditPassesTableViewCell : UITableViewCell {
-    bool  _isRTL;
     PKPass * _pass;
     bool  _showImage;
 }
@@ -14,9 +13,9 @@
 + (double)height;
 + (struct CGSize { double x1; double x2; })imageSizeNeeded;
 + (bool)needsFullPassImage;
++ (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })separatorInset;
 
 - (void).cxx_destruct;
-- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })imageFrameWithSize:(struct CGSize { double x1; double x2; })arg1;
 - (id)initWithReuseIdentifier:(id)arg1 showImage:(bool)arg2;
 - (void)layoutSubviews;
 - (id)pass;

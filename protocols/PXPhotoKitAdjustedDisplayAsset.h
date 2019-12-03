@@ -6,7 +6,7 @@
 @required
 
 - (NSString *)adjustedContentIdentifier;
-- (PLPhotoEditModel *)applyAdjustmentsToEditModel:(PLPhotoEditModel *)arg1 editSource:(PLEditSource *)arg2 renderer:(PLPhotoEditRenderer *)arg3;
+- (PICompositionController *)applyAdjustmentsToCompositionController:(PICompositionController *)arg1 renderer:(PLPhotoEditRenderer *)arg2;
 - (PHAsset *)photoKitAsset;
 - (bool)wantsAdjustments;
 

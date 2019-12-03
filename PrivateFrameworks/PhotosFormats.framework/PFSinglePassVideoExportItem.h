@@ -78,6 +78,7 @@
 - (id)bitRateController;
 - (id)bitRateControllerForTargetEncodingBitRate:(long long)arg1;
 - (struct OpaqueVTCompressionSession { }*)compressionSession;
+- (void)configureDroppableFrameRateForCompressionSession:(struct OpaqueVTCompressionSession { }*)arg1 inputWidth:(int)arg2 inputHeight:(int)arg3;
 - (id)conversionOutputFileHandle;
 - (long long)currentEncodingBitRate;
 - (void)dealloc;

@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Foundation.framework/Foundation
  */
 
-@interface NSProgress : NSObject <NSProgressPublisher, VSAccountSerializationResult> {
+@interface NSProgress : NSObject <FPCancellable, NSProgressPublisher, VSAccountSerializationResult> {
     NSMutableDictionary * _acknowledgementHandlersByLowercaseBundleID;
     id /* block */  _cancellationHandler;
     NSMutableSet * _children;
@@ -52,6 +52,7 @@
 @property (copy) id /* block */ resumingHandler;
 @property (nonatomic, readonly) NSString *sf_bundleID;
 @property (nonatomic, readonly) NSString *sf_error;
+@property (nonatomic) unsigned int sf_initiator;
 @property (nonatomic, readonly) NSString *sf_personRealName;
 @property (nonatomic, readonly) NSString *sf_publishingKey;
 @property (nonatomic, readonly) NSString *sf_sessionID;
@@ -102,10 +103,10 @@
 - (void)_setRemoteUserInfoValue:(id)arg1 forKey:(id)arg2;
 - (void)_setRemoteValues:(id)arg1 forKeys:(id)arg2;
 - (void)_setUserInfoValue:(id)arg1 forKey:(id)arg2 fromChild:(bool)arg3;
-- (id)_setValueForKeys:(id /* block */)arg1 settingBlock:(id /* block */)arg2;
+- (void)_setValueForKeys:(id /* block */)arg1 settingBlock:(id /* block */)arg2;
 - (void)_unpublish;
-- (void)_updateChild:(id)arg1 fraction:(id)arg2 portion:(long long)arg3;
-- (void)_updateFractionCompleted:(id)arg1;
+- (void)_updateChild:(id)arg1 fraction:(struct _NSProgressFractionTuple { struct _NSProgressFraction { long long x_1_1_1; long long x_1_1_2; bool x_1_1_3; } x1; struct _NSProgressFraction { long long x_2_1_1; long long x_2_1_2; bool x_2_1_3; } x2; })arg2 portion:(long long)arg3;
+- (void)_updateFractionCompleted:(struct _NSProgressFractionTuple { struct _NSProgressFraction { long long x_1_1_1; long long x_1_1_2; bool x_1_1_3; } x1; struct _NSProgressFraction { long long x_2_1_1; long long x_2_1_2; bool x_2_1_3; } x2; })arg1;
 - (void)acknowledge;
 - (void)acknowledgeWithSuccess:(bool)arg1;
 - (id /* block */)acknowledgementHandlerForAppBundleIdentifier:(id)arg1;
@@ -199,6 +200,7 @@
 
 // Image: /System/Library/Frameworks/FileProvider.framework/FileProvider
 
+- (void)fp_addChildProgress:(id)arg1;
 - (id)fp_fileOperationKind;
 - (bool)fp_isOfFileOperationKind:(id)arg1;
 - (void)fp_setFileOperationKind:(id)arg1;
@@ -233,17 +235,19 @@
 - (void)px_appendChild:(id)arg1 withPendingUnitCount:(long long)arg2;
 - (void)px_appendSimulatedProgressWithDuration:(double)arg1 pendingUnitCount:(short)arg2;
 
-// Image: /System/Library/PrivateFrameworks/Sharing.framework/Sharing
+// Image: /System/Library/PrivateFrameworks/SharingUI.framework/SharingUI
 
 + (id)sf_publishingKeyForApp:(id)arg1 sessionID:(id)arg2;
 + (id)sf_transferStateAsString:(long long)arg1;
 
+- (void)setSf_initiator:(unsigned int)arg1;
 - (void)setSf_transferState:(long long)arg1;
 - (id)sf_bundleID;
 - (id)sf_error;
 - (void)sf_failedWithError:(id)arg1;
 - (id)sf_initWithAppBundle:(id)arg1 sessionID:(id)arg2 andPersonRealName:(id)arg3;
 - (id)sf_initWithFileURL:(id)arg1;
+- (unsigned int)sf_initiator;
 - (id)sf_personRealName;
 - (id)sf_publishingKey;
 - (id)sf_sessionID;

@@ -33,7 +33,7 @@
 @property (nonatomic) double startTime;
 @property (nonatomic) double stopTime;
 @property (readonly) Class superclass;
-@property (nonatomic, retain) NSString *videoGravity;
+@property (nonatomic, copy) NSString *videoGravity;
 
 // Image: /System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
 

@@ -9,7 +9,7 @@
     NSData * _handle;
     NSString * _label;
     double  _latitude;
-    unsigned long long  _locationType;
+    int  _locationType;
     double  _longitude;
     double  _quality;
 }
@@ -23,7 +23,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSString *label;
 @property (nonatomic, readonly) double latitude;
-@property (nonatomic, readonly) unsigned long long locationType;
+@property (nonatomic, readonly) int locationType;
 @property (nonatomic, readonly) double longitude;
 @property (nonatomic, readonly) double quality;
 @property (readonly) Class superclass;
@@ -53,14 +53,14 @@
 - (id)handle;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithType:(unsigned long long)arg1 label:(id)arg2 address:(id)arg3 airportCode:(id)arg4 accuracy:(double)arg5 quality:(double)arg6;
-- (id)initWithType:(unsigned long long)arg1 label:(id)arg2 address:(id)arg3 airportCode:(id)arg4 latitude:(double)arg5 longitude:(double)arg6 accuracy:(double)arg7 quality:(double)arg8 handle:(id)arg9;
-- (id)initWithType:(unsigned long long)arg1 label:(id)arg2 airportCode:(id)arg3 latitude:(double)arg4 longitude:(double)arg5 accuracy:(double)arg6 quality:(double)arg7;
+- (id)initWithType:(int)arg1 label:(id)arg2 address:(id)arg3 airportCode:(id)arg4 accuracy:(double)arg5 quality:(double)arg6;
+- (id)initWithType:(int)arg1 label:(id)arg2 address:(id)arg3 airportCode:(id)arg4 latitude:(double)arg5 longitude:(double)arg6 accuracy:(double)arg7 quality:(double)arg8 handle:(id)arg9;
+- (id)initWithType:(int)arg1 label:(id)arg2 airportCode:(id)arg3 latitude:(double)arg4 longitude:(double)arg5 accuracy:(double)arg6 quality:(double)arg7;
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToStorageLocation:(id)arg1;
 - (id)label;
 - (double)latitude;
-- (unsigned long long)locationType;
+- (int)locationType;
 - (double)longitude;
 - (double)quality;
 

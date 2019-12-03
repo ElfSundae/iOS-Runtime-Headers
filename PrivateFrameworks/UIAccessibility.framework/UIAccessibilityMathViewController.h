@@ -14,8 +14,6 @@
 @property (nonatomic, readonly) NSDictionary *mathDictionary;
 @property (readonly) Class superclass;
 
-+ (id)_uiaxBundle;
-
 - (void).cxx_destruct;
 - (void)_doneButtonTapped;
 - (id)_htmlString;

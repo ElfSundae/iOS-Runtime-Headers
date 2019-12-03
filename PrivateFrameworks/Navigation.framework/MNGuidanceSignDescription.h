@@ -30,6 +30,7 @@
 
 - (void).cxx_destruct;
 - (int)composedGuidanceEventIndex;
+- (id)debugDescription;
 - (id)description;
 - (id)details;
 - (long long)distanceDetailLevel;

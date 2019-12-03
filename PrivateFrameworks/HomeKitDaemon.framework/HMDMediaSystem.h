@@ -22,7 +22,7 @@
 @property (nonatomic, readonly) NSArray *accessories;
 @property (nonatomic, retain) HMDApplicationData *appData;
 @property (nonatomic, retain) HMFTimer *auditSettingsTimer;
-@property (nonatomic, retain) NSArray *components;
+@property (nonatomic, copy) NSArray *components;
 @property (nonatomic, retain) NSString *configuredName;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -34,7 +34,7 @@
 @property (readonly, copy) NSSet *messageReceiverChildren;
 @property (nonatomic, readonly) NSUUID *messageTargetUUID;
 @property (nonatomic, retain) HMFMessageDispatcher *msgDispatcher;
-@property (nonatomic, retain) NSString *name;
+@property (nonatomic, copy) NSString *name;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *propertyQueue;
 @property (nonatomic, retain) HMDAccessorySettingGroup *rootSettings;
 @property (readonly) Class superclass;
@@ -61,6 +61,7 @@
 - (id)_mergeSetting:(id)arg1 item:(id)arg2 groupMetadata:(id)arg3;
 - (void)_notifyClientsOfUpdatedRootSettings:(id)arg1;
 - (void)_registerForMessages;
+- (void)_registerForNotifications;
 - (void)_setupSettings:(id)arg1;
 - (void)_transactionMediaSystemUpdated:(id)arg1 message:(id)arg2;
 - (void)_updateAppData:(id)arg1;
@@ -87,7 +88,7 @@
 - (void)fixupAccessorySetting;
 - (id)fixupSettingsTimer;
 - (void)handleAddedRootSettingsModel:(id)arg1 message:(id)arg2;
-- (void)handleHomeDataFetchedNotification:(id)arg1;
+- (void)handleHomeCloudZoneReadyNotification:(id)arg1;
 - (void)handleRemovedAccessory:(id)arg1;
 - (void)handleRemovedRootSettingsModel:(id)arg1 message:(id)arg2;
 - (id)home;

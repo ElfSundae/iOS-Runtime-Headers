@@ -28,7 +28,6 @@
 - (void)deliverMessageWithName:(id)arg1 userInfo:(id)arg2;
 - (void)deliverResponse:(id)arg1 forBulletinRequest:(id)arg2 withCompletion:(id /* block */)arg3;
 - (id)description;
-- (id)displayNameForFilterID:(id)arg1;
 - (id)displayNameForSubsectionID:(id)arg1;
 - (void)getAspectRatioForAttachmentUUID:(id)arg1 recordID:(id)arg2 isPrimary:(bool)arg3 withHandler:(id /* block */)arg4;
 - (void)getDataForAttachmentUUID:(id)arg1 recordID:(id)arg2 isPrimary:(bool)arg3 withHandler:(id /* block */)arg4;
@@ -36,7 +35,6 @@
 - (id)identity;
 - (bool)initialized;
 - (void)invalidate;
-- (bool)isPushDataProvider;
 - (bool)migrateSectionInfo:(id)arg1 oldSectionInfo:(id)arg2;
 - (void)noteSectionInfoDidChange:(id)arg1;
 - (id)parentSectionIdentifier;

@@ -5,6 +5,7 @@
 @interface PKTransitAppletHistoryRecord : NSObject <NSCopying, NSSecureCoding> {
     NSDecimalNumber * _amount;
     NSDecimalNumber * _balance;
+    NSNumber * _cityCode;
     unsigned long long  _detail;
     NSData * _endStation;
     NSNumber * _historySequenceNumber;
@@ -15,11 +16,13 @@
     unsigned long long  _subtype;
     NSDate * _time;
     NSString * _transitDetail;
+    unsigned long long  _transitModifiers;
     unsigned long long  _type;
 }
 
 @property (nonatomic, copy) NSDecimalNumber *amount;
 @property (nonatomic, copy) NSDecimalNumber *balance;
+@property (nonatomic, copy) NSNumber *cityCode;
 @property (nonatomic) unsigned long long detail;
 @property (nonatomic, copy) NSData *endStation;
 @property (nonatomic, copy) NSNumber *historySequenceNumber;
@@ -41,6 +44,7 @@
 - (void)_setTransactionHistoryDetailsFromString:(id)arg1;
 - (id)amount;
 - (id)balance;
+- (id)cityCode;
 - (id)concreteTransactionWithCurrency:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)dealloc;
@@ -57,6 +61,7 @@
 - (long long)recordType;
 - (void)setAmount:(id)arg1;
 - (void)setBalance:(id)arg1;
+- (void)setCityCode:(id)arg1;
 - (void)setDetail:(unsigned long long)arg1;
 - (void)setEndStation:(id)arg1;
 - (void)setHistorySequenceNumber:(id)arg1;

@@ -29,6 +29,7 @@
 @property (nonatomic, copy) <FCTodayPrivateData> *todayData;
 
 - (void).cxx_destruct;
+- (id)_userProfile;
 - (double)articleDiversificationSimilarityExpectationEnd;
 - (double)articleDiversificationSimilarityExpectationStart;
 - (double)articleDiversificationUniquePublisherExpectationSlope;
@@ -47,6 +48,7 @@
 - (void)prepareForUseWithCompletionHandler:(id /* block */)arg1;
 - (id)rankTagIDsDescending:(id)arg1;
 - (id)readonlyPersonalizationAggregateStore;
+- (id)scoreProfilesForItems:(id)arg1 configurationSet:(long long)arg2;
 - (id)scoresForTagIDs:(id)arg1;
 - (void)setArticleDiversificationSimilarityExpectationEnd:(double)arg1;
 - (void)setArticleDiversificationSimilarityExpectationStart:(double)arg1;

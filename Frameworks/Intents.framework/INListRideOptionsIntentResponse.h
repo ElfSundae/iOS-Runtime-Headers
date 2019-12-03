@@ -2,9 +2,7 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface INListRideOptionsIntentResponse : INIntentResponse <INListRideOptionsIntentResponseExport> {
-    _INPBListRideOptionsIntentResponse * _responseMessagePBRepresentation;
-}
+@interface INListRideOptionsIntentResponse : INIntentResponse <INListRideOptionsIntentResponseExport>
 
 @property (nonatomic, readonly) long long code;
 @property (readonly, copy) NSString *debugDescription;
@@ -21,11 +19,10 @@
 + (int)_typeFromCode:(long long)arg1;
 + (bool)supportsSecureCoding;
 
-- (void).cxx_destruct;
+- (long long)_codeWithName:(id)arg1;
 - (id)_dictionaryRepresentation;
 - (id)_initWithCode:(long long)arg1 userActivity:(id)arg2;
 - (long long)_intentResponseCode;
-- (id)_responseMessagePBRepresentation;
 - (long long)code;
 - (void)encodeWithCoder:(id)arg1;
 - (id)expirationDate;

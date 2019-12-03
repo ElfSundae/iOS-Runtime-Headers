@@ -10,6 +10,7 @@
 @property (readonly) Class superclass;
 
 - (bool)canBePerformedByOpeningURL;
+- (id)icon;
 - (int)interactionType;
 - (id)localizedName;
 - (void)messageComposeViewController:(id)arg1 didFinishWithResult:(long long)arg2;

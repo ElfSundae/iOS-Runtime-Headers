@@ -4,8 +4,10 @@
 
 @interface _UITabBarTVTransitioner : NSObject <_UITabBarControllerInterruptibleTransitioning> {
     double  _fromViewLayerOriginalRasterizationScale;
+    bool  _fromViewOriginalShouldRasterize;
     UISpringTimingParameters * _slideTimingParameters;
     double  _toViewLayerOriginalRasterizationScale;
+    bool  _toViewOriginalShouldRasterize;
     UIView * _toViewXFlippedScreenShot;
     <UIViewControllerContextTransitioning> * _transitionContext;
     bool  _transitionFromRight;
@@ -14,11 +16,9 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) double fromViewLayerOriginalRasterizationScale;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) UISpringTimingParameters *slideTimingParameters;
 @property (readonly) Class superclass;
-@property (nonatomic) double toViewLayerOriginalRasterizationScale;
 @property (nonatomic, retain) UIView *toViewXFlippedScreenShot;
 @property (nonatomic, retain) <UIViewControllerContextTransitioning> *transitionContext;
 @property (nonatomic) bool transitionFromRight;
@@ -27,18 +27,14 @@
 - (void).cxx_destruct;
 - (void)animateTransition:(id)arg1;
 - (void)finishTransition;
-- (double)fromViewLayerOriginalRasterizationScale;
 - (id)init;
 - (void)interruptTabBarControllerTransition;
-- (void)setFromViewLayerOriginalRasterizationScale:(double)arg1;
 - (void)setSlideTimingParameters:(id)arg1;
-- (void)setToViewLayerOriginalRasterizationScale:(double)arg1;
 - (void)setToViewXFlippedScreenShot:(id)arg1;
 - (void)setTransitionContext:(id)arg1;
 - (void)setTransitionFromRight:(bool)arg1;
 - (void)setTransitionStyle:(long long)arg1;
 - (id)slideTimingParameters;
-- (double)toViewLayerOriginalRasterizationScale;
 - (id)toViewXFlippedScreenShot;
 - (id)transitionContext;
 - (double)transitionDuration:(id)arg1;

@@ -2,15 +2,28 @@
    Image: /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine
  */
 
-@interface REFeature : NSObject <NSCopying>
+@interface REFeature : NSObject <NSCopying, REFeatureProperties>
 
 @property (nonatomic, readonly) unsigned long long featureType;
 @property (nonatomic, readonly) NSString *name;
 
 + (id)activeEnergyCompletionFeature;
 + (id)activeWorkoutFeature;
++ (id)activitySummaryFeature;
 + (id)appUsageFeature;
++ (id)bluetoothDeviceFeature;
++ (id)bulletinFeature;
++ (id)companionAppUsageFeature;
 + (id)conditionalFeature;
++ (id)coreBehaviorAppIdentifierHashFeature;
++ (id)coreBehaviorDayCoarsePredictionFeature;
++ (id)coreBehaviorDayPredictionFeature;
++ (id)coreBehaviorEventIdentifierHashFeature;
++ (id)coreBehaviorLocationCoarsePredictionFeature;
++ (id)coreBehaviorLocationPredictionFeature;
++ (id)coreBehaviorShortcutTypeFeature;
++ (id)coreBehaviorTimeCoarsePredictionFeature;
++ (id)coreBehaviorTimePredictionFeature;
 + (id)crossedFeatureWithFeatures:(id)arg1;
 + (id)currentTimeFeature;
 + (id)currentlyPlayingFromAppFeature;
@@ -21,12 +34,19 @@
 + (id)dateFeature;
 + (id)dateOccursTodayFeature;
 + (id)dayOfWeekFeature;
++ (id)deviceMotionFeature;
 + (id)exerciseTimeCompletionFeature;
 + (id)featureWithName:(id)arg1 featureType:(unsigned long long)arg2;
++ (id)featuresFromSource:(id)arg1;
++ (id)featuresFromSource:(id)arg1 withNames:(id)arg2;
++ (id)featuresFromSourceAtPath:(id)arg1;
++ (id)featuresFromSourceAtPath:(id)arg1 withNames:(id)arg2;
 + (id)forcedFeature;
 + (id)geofenceFeature;
 + (id)groupFeature;
 + (id)interactionFeature;
++ (id)isConnectedToBluetoothSpeakerFeature;
++ (id)isConnectedToCarFeature;
 + (id)isDeveloperDonationFeature;
 + (id)isInDailyRoutineFeature;
 + (id)isSiriActionFeature;
@@ -55,6 +75,7 @@
 + (id)siriActionRoleFeature;
 + (id)siriDomainFeature;
 + (id)standHourCompletionFeature;
++ (id)systemFeatureNames;
 + (id)transformedFeatureWithTransformer:(id)arg1 features:(id)arg2;
 + (id)travelingFeature;
 + (id)workoutStateFeature;
@@ -64,6 +85,7 @@
 - (void)_replaceDependentFeature:(id)arg1 withFeature:(id)arg2;
 - (id)_rootFeatures;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)description;
 - (id)featureByUsingTransformer:(id)arg1;
 - (unsigned long long)featureType;
 - (unsigned long long)hash;

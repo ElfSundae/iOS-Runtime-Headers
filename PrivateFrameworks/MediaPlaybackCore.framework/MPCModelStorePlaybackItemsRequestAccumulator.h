@@ -23,6 +23,7 @@
     long long  _storePersonalizationStyle;
     long long  _unknownEndpointLibraryPersonalizationStyle;
     NSMutableArray * _unprocessedItemIdentifiers;
+    ICUserIdentity * _userIdentity;
 }
 
 @property (nonatomic, readonly) bool allowsExplicitContent;
@@ -45,6 +46,7 @@
 - (void)_prepareRequestInformation;
 - (void)_removeItemAtOriginalIndexPath:(id)arg1;
 - (bool)_shouldUsePlaylistEntriesForSectionAtIndex:(long long)arg1;
+- (id)_userIdentityWithRequest:(id)arg1;
 - (bool)allowsExplicitContent;
 - (long long)batchSize;
 - (id)earliestExpirationDate;
